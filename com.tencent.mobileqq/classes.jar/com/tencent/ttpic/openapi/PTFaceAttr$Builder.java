@@ -17,6 +17,7 @@ import java.util.Set;
 
 public class PTFaceAttr$Builder
 {
+  private List<Integer> ageList;
   private int[] autoBrightnessCurve;
   private int[] autoContrastCurve;
   private List<List<PointF>> bodyPoints;
@@ -42,6 +43,7 @@ public class PTFaceAttr$Builder
   private List<List<PointF>> facePoints = new ArrayList();
   private List<FaceStatus> faceStatusList;
   private List<int[]> featureIndicesArray;
+  private List<Integer> genderList;
   private Pair<Integer, int[]> histogram;
   private List<List<PointF>> irisPoints;
   private boolean isPhoneFlatHorizontal;
@@ -57,6 +59,12 @@ public class PTFaceAttr$Builder
   private List<PointF> starPoints;
   private long timeStamp;
   private Set<Integer> triggeredExpression = new HashSet();
+  
+  public Builder ageList(List<Integer> paramList)
+  {
+    this.ageList = paramList;
+    return this;
+  }
   
   public Builder autoBrightnessCurve(int[] paramArrayOfInt)
   {
@@ -213,6 +221,12 @@ public class PTFaceAttr$Builder
     return this;
   }
   
+  public Builder genderList(List<Integer> paramList)
+  {
+    this.genderList = paramList;
+    return this;
+  }
+  
   public Builder histogram(Pair<Integer, int[]> paramPair)
   {
     this.histogram = paramPair;
@@ -305,7 +319,7 @@ public class PTFaceAttr$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -24,29 +24,29 @@ import org.json.JSONObject;
 public class Left2RightInfoStickerDrawable
   extends InfoStickerDrawable
 {
-  int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  private Xfermode jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  int jdField_b_of_type_Int = 0;
-  private Typeface jdField_b_of_type_AndroidGraphicsTypeface = null;
-  private String jdField_b_of_type_JavaLangString = "15:29";
-  int jdField_c_of_type_Int = 0;
-  private String jdField_c_of_type_JavaLangString = HardCodeUtil.a(2064515396);
-  int jdField_d_of_type_Int = 0;
-  private String jdField_d_of_type_JavaLangString = null;
+  int a = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
   int e = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
+  int n = 0;
+  int o = 0;
+  int p = 0;
+  private String q = "15:29";
+  private String r = HardCodeUtil.a(2064187683);
+  private Paint s = new Paint();
+  private TextPaint t = new TextPaint();
+  private Xfermode u = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+  private Typeface v = null;
+  private Typeface w = null;
+  private String x = null;
   
   public Left2RightInfoStickerDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
     a(paramString);
     b();
-    c();
+    e();
   }
   
   public static String a(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -75,44 +75,44 @@ public class Left2RightInfoStickerDrawable
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.q;
   }
   
   protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    int m = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicHeight(), this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-    int n = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    float f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
-    int k;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > this.j) {
-      k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(this.j)).intValue();
+    int j = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicHeight(), this.s, 31);
+    int k = a(2.0F, this.h.getResources());
+    this.t.setColor(-1);
+    this.t.setTextSize(a(30.0F, this.h.getResources()));
+    this.t.setTypeface(this.v);
+    float f1 = Math.abs(this.t.getFontMetrics().ascent);
+    int i;
+    if (this.g.size() > this.p) {
+      i = ((Integer)this.g.get(this.p)).intValue();
     } else {
-      k = 0;
+      i = 0;
     }
     if (Build.VERSION.SDK_INT >= 21) {
-      if (k == 0) {
-        this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      if (i == 0) {
+        this.t.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
       } else {
-        this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+        this.t.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
       }
     }
-    paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + k, n + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-    int i1 = a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_b_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    float f2 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
-    paramCanvas.drawText(this.jdField_c_of_type_JavaLangString, a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + k, n + i1 + (f1 + f2), this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    paramCanvas.drawRect(k, 0.0F, a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15322);
-    paramCanvas.drawLine(a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(this.i)).intValue(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restoreToCount(m);
+    paramCanvas.drawText(this.q, a(7.0F, this.h.getResources()) + i, k + f1, this.t);
+    int m = a(6.0F, this.h.getResources());
+    this.t.setTypeface(this.w);
+    this.t.setTextSize(a(12.0F, this.h.getResources()));
+    float f2 = Math.abs(this.t.getFontMetrics().ascent);
+    paramCanvas.drawText(this.r, a(7.0F, this.h.getResources()) + i, k + m + (f1 + f2), this.t);
+    this.t.setXfermode(this.u);
+    this.t.setColor(-1);
+    this.t.setStyle(Paint.Style.FILL_AND_STROKE);
+    paramCanvas.drawRect(i, 0.0F, a(5.0F, this.h.getResources()), this.b, this.t);
+    this.t.setXfermode(null);
+    this.s.setColor(-15322);
+    paramCanvas.drawLine(a(2.0F, this.h.getResources()), a(8.0F, this.h.getResources()), a(2.0F, this.h.getResources()), ((Integer)this.g.get(this.o)).intValue(), this.s);
+    paramCanvas.restoreToCount(j);
   }
   
   public String[] a(String paramString)
@@ -128,36 +128,31 @@ public class Left2RightInfoStickerDrawable
     }
     if (paramString != null)
     {
-      this.f = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("first_line", "");
-      this.jdField_c_of_type_JavaLangString = paramString.optString("second_line", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("font_path", "");
+      this.j = paramString.optInt("type", 0);
+      this.q = paramString.optString("first_line", "");
+      this.r = paramString.optString("second_line", "");
+      this.x = paramString.optString("font_path", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString };
-  }
-  
-  public String b()
-  {
-    return this.jdField_d_of_type_JavaLangString;
+    return new String[] { this.q, this.r, this.x };
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15322);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
-    if (new File(this.jdField_d_of_type_JavaLangString).exists()) {}
+    this.s = new Paint();
+    this.s.setAntiAlias(true);
+    this.s.setDither(true);
+    this.s.setStrokeWidth(a(2.0F, this.h.getResources()));
+    this.s.setStrokeCap(Paint.Cap.ROUND);
+    this.s.setColor(-15322);
+    this.t = new TextPaint();
+    this.t.setAntiAlias(true);
+    this.t.setDither(true);
+    this.t.setColor(-1);
+    this.w = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
+    if (new File(this.x).exists()) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(this.jdField_d_of_type_JavaLangString);
+      this.v = Typeface.createFromFile(this.x);
     }
     catch (Exception localException)
     {
@@ -166,41 +161,46 @@ public class Left2RightInfoStickerDrawable
       String str;
       break label152;
     }
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT_BOLD;
+    this.v = Typeface.DEFAULT_BOLD;
     break label169;
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT_BOLD;
+    this.v = Typeface.DEFAULT_BOLD;
     label169:
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    this.jdField_d_of_type_Int = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    str = this.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_Int = ((int)((TextPaint)localObject).measureText(str, 0, str.length()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    this.h = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    str = this.jdField_c_of_type_JavaLangString;
-    this.h = ((int)((TextPaint)localObject).measureText(str, 0, str.length()));
-    this.jdField_a_of_type_Int = (Math.max(this.jdField_c_of_type_Int, this.h) + a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_Int = (a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("lineHeight", 20L, 200L, 0, this.jdField_b_of_type_Int - a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), new LinearInterpolator());
-    this.j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("offsetX", 180L, 330L, -this.jdField_a_of_type_Int, 0, new LinearInterpolator());
+    this.t.setTextSize(a(30.0F, this.h.getResources()));
+    localObject = this.t.getFontMetrics();
+    this.d = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
+    localObject = this.t;
+    str = this.q;
+    this.c = ((int)((TextPaint)localObject).measureText(str, 0, str.length()));
+    this.t.setTextSize(a(12.0F, this.h.getResources()));
+    localObject = this.t.getFontMetrics();
+    this.n = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
+    localObject = this.t;
+    str = this.r;
+    this.n = ((int)((TextPaint)localObject).measureText(str, 0, str.length()));
+    this.a = (Math.max(this.c, this.n) + a(7.0F, this.h.getResources()));
+    this.b = (a(30.0F, this.h.getResources()) + a(12.0F, this.h.getResources()) + a(10.0F, this.h.getResources()));
+    this.o = this.f.a("lineHeight", 20L, 200L, 0, this.b - a(5.0F, this.h.getResources()), new LinearInterpolator());
+    this.p = this.f.a("offsetX", 180L, 330L, -this.a, 0, new LinearInterpolator());
+  }
+  
+  public String c()
+  {
+    return this.x;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.b;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.Left2RightInfoStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

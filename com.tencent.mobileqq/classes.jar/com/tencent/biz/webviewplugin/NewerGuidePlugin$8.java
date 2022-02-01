@@ -23,8 +23,8 @@ class NewerGuidePlugin$8
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("result", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
-      QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131707465));
+      this.c.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
+      QQCustomDialog.showPermissionSettingDialog(this.b, HardCodeUtil.a(2131905283));
       return;
     }
     catch (Exception localException)
@@ -41,7 +41,7 @@ class NewerGuidePlugin$8
     }
     try
     {
-      NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
+      NewerGuidePlugin.a(this.c, this.a);
       return;
     }
     catch (Exception localException)
@@ -52,7 +52,7 @@ class NewerGuidePlugin$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.8
  * JD-Core Version:    0.7.0.1
  */

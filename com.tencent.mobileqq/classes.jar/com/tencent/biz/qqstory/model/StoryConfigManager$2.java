@@ -16,15 +16,15 @@ class StoryConfigManager$2
   {
     if (paramGetBlackListStatusResponse != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status", Integer.valueOf(paramGetBlackListStatusResponse.b));
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_update_interval", Integer.valueOf(paramGetBlackListStatusResponse.c));
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+      this.b.d("qqstory_black_status", Integer.valueOf(paramGetBlackListStatusResponse.a));
+      this.b.d("qqstory_black_status_update_interval", Integer.valueOf(paramGetBlackListStatusResponse.b));
+      this.b.d("qqstory_black_status_last_update_time", Integer.valueOf((int)this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

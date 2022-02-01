@@ -11,17 +11,17 @@ final class HtmlOffline$4
   
   public void run()
   {
-    if (HtmlOffline.a.a())
+    if (HtmlOffline.f.a())
     {
-      ILog localILog = HtmlOffline.a;
+      ILog localILog = HtmlOffline.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start checkUpThread. delay:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", businessId:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localILog.a("HtmlCheckUpdate", 2, localStringBuilder.toString());
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     long l;
     if (i > 0) {
       l = i * 1000;
@@ -30,7 +30,7 @@ final class HtmlOffline$4
     {
       Thread.sleep(l);
       label96:
-      HtmlOffline.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack, true, this.jdField_a_of_type_Boolean, this.b);
+      HtmlOffline.a(this.c, this.d, this.e, true, this.f, this.g);
       return;
     }
     catch (InterruptedException localInterruptedException)
@@ -41,7 +41,7 @@ final class HtmlOffline$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.4
  * JD-Core Version:    0.7.0.1
  */

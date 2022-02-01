@@ -12,13 +12,13 @@ class TroopFileModel$11
   
   public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.a.a, this.a.d());
+    FileManagerUtil.a(this.a.i, this.a.y());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.11
  * JD-Core Version:    0.7.0.1
  */

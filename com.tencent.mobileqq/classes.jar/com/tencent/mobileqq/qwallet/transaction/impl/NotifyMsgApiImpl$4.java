@@ -17,18 +17,18 @@ final class NotifyMsgApiImpl$4
       if (NotifyMsgApiImpl.gDbHelper == null) {
         NotifyMsgApiImpl.gDbHelper = new NotifyMsgDBHelper(MobileQQ.getContext());
       }
-      ??? = QWalletTools.a();
+      ??? = QWalletTools.b();
       if (??? == null) {
         return;
       }
       if (NotifyMsgApiImpl.gDbHelper != null)
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.a)
         {
-          NotifyMsgApiImpl.gDbHelper.b(((BaseQQAppInterface)???).getCurrentUin(), this.jdField_a_of_type_JavaUtilArrayList);
+          NotifyMsgApiImpl.gDbHelper.b(((BaseQQAppInterface)???).getCurrentUin(), this.b);
           return;
         }
-        NotifyMsgApiImpl.gDbHelper.c(((BaseQQAppInterface)???).getCurrentUin(), this.jdField_a_of_type_JavaUtilArrayList);
+        NotifyMsgApiImpl.gDbHelper.c(((BaseQQAppInterface)???).getCurrentUin(), this.b);
       }
       return;
     }
@@ -36,7 +36,7 @@ final class NotifyMsgApiImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgApiImpl.4
  * JD-Core Version:    0.7.0.1
  */

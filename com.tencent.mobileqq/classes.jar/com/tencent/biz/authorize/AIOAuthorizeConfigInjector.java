@@ -35,14 +35,9 @@ public class AIOAuthorizeConfigInjector
     }
   }
   
-  public boolean a()
-  {
-    return this.a == null;
-  }
-  
   public boolean a(String paramString)
   {
-    AuthorizeConfig.a().k();
+    AuthorizeConfig.a().s();
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
@@ -86,6 +81,11 @@ public class AIOAuthorizeConfigInjector
   public boolean a(String paramString1, String paramString2)
   {
     return false;
+  }
+  
+  public boolean b()
+  {
+    return this.a == null;
   }
 }
 

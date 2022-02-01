@@ -9,21 +9,21 @@ import org.jetbrains.annotations.NotNull;
 
 public class WSJoinGroupDataProcessor
 {
-  private static volatile WSJoinGroupDataProcessor jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor;
-  private String jdField_a_of_type_JavaLangString;
+  private static volatile WSJoinGroupDataProcessor a;
+  private String b;
   
   public static WSJoinGroupDataProcessor a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor == null) {
-          jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor = new WSJoinGroupDataProcessor();
+        if (a == null) {
+          a = new WSJoinGroupDataProcessor();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor;
+    return a;
   }
   
   @NotNull
@@ -38,19 +38,19 @@ public class WSJoinGroupDataProcessor
     localStringBuilder.append("requestGroupSign: UserConfig request  groupId = ");
     localStringBuilder.append(paramString1);
     WSLog.e("WSJoinGroupDataProcessor", localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString1;
     if (paramDataCallback != null) {
       paramDataCallback.b();
     }
     paramString2 = new QQGroupDetailRequest(paramString1, paramString2);
-    paramString2.b = paramString1;
+    paramString2.d = paramString1;
     paramString1 = new WeishiTask(paramString2, null, a(paramString1, paramDataCallback), 4014);
     WeishiBusinessLooper.a().a(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.WSJoinGroupDataProcessor
  * JD-Core Version:    0.7.0.1
  */

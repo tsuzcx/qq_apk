@@ -19,31 +19,31 @@ class RouterHandler$3
   
   public void run()
   {
-    Object localObject2 = (Session)this.this$0.e.get(Long.valueOf(this.jdField_a_of_type_Long));
+    Object localObject2 = (Session)this.this$0.o.get(Long.valueOf(this.a));
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = this.this$0.b.getEntityManagerFactory().createEntityManager();
+      localObject1 = this.this$0.i.getEntityManagerFactory().createEntityManager();
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("select * from ");
       ((StringBuilder)localObject3).append(RouterMsgRecord.sBasicTableName);
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin);
+      ((StringBuilder)localObject3).append(this.b.uint64_src_uin);
       ((StringBuilder)localObject3).append(" where uSessionID=?");
-      localObject3 = ((EntityManager)localObject1).rawQuery(RouterMsgRecord.class, ((StringBuilder)localObject3).toString(), new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+      localObject3 = ((EntityManager)localObject1).rawQuery(RouterMsgRecord.class, ((StringBuilder)localObject3).toString(), new String[] { String.valueOf(this.a) });
       ((EntityManager)localObject1).close();
       if ((localObject3 != null) && (((List)localObject3).size() > 0))
       {
         localObject1 = (RouterMsgRecord)((List)localObject3).get(0);
-        localObject2 = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, ((RouterMsgRecord)localObject1).filename, null, 0, 0, this.jdField_a_of_type_Long, 0, 0, 0);
+        localObject2 = this.this$0.k.genSession(0, ((RouterMsgRecord)localObject1).filename, null, 0, 0, this.a, 0, 0, 0);
         localObject1 = localObject2;
         if (localObject2 != null)
         {
           if (0L == ((Session)localObject2).uSessionID) {
-            ((Session)localObject2).uSessionID = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.generateSessionID(0);
+            ((Session)localObject2).uSessionID = this.this$0.j.generateSessionID(0);
           }
-          ((Session)localObject2).msgHeader = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin);
-          this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject2, null, null);
-          this.this$0.e.put(Long.valueOf(((Session)localObject2).uSessionID), localObject2);
+          ((Session)localObject2).msgHeader = this.this$0.k.msgHeader(this.b.uint64_src_uin);
+          this.this$0.k.fillService((Session)localObject2, null, null);
+          this.this$0.o.put(Long.valueOf(((Session)localObject2).uSessionID), localObject2);
           localObject1 = localObject2;
         }
       }
@@ -54,7 +54,7 @@ class RouterHandler$3
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("cannot find session from db and memory, sessiondi=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject1).append(this.a);
           QLog.d("dataline.Router", 2, ((StringBuilder)localObject1).toString());
           localObject1 = localObject2;
         }
@@ -71,14 +71,14 @@ class RouterHandler$3
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("cannot handle session, sessiondi=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.d("dataline.Router", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.3
  * JD-Core Version:    0.7.0.1
  */

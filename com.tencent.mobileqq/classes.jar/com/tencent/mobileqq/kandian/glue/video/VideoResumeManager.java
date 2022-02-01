@@ -13,15 +13,9 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/video/VideoResumeManager;", "", "()V", "TAG", "", "config", "Lcom/tencent/aladdin/config/AladdinConfig;", "kotlin.jvm.PlatformType", "enable", "", "getEnable", "()Z", "map", "", "", "cacheVideoStatus", "", "key", "position", "rowKey", "vid", "duration", "getPlayPosition", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoResumeManager
 {
-  private static final AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = Aladdin.getConfig(391);
-  public static final VideoResumeManager a;
-  private static final Map<String, Long> jdField_a_of_type_JavaUtilMap;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoResumeManager = new VideoResumeManager();
-    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-  }
+  public static final VideoResumeManager a = new VideoResumeManager();
+  private static final Map<String, Long> b = (Map)new LinkedHashMap();
+  private static final AladdinConfig c = Aladdin.getConfig(391);
   
   public final long a(@Nullable String paramString1, @Nullable String paramString2)
   {
@@ -35,7 +29,7 @@ public final class VideoResumeManager
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(paramString2);
       localObject = ((StringBuilder)localObject).toString();
-      localObject = (Long)jdField_a_of_type_JavaUtilMap.get(localObject);
+      localObject = (Long)b.get(localObject);
       long l1;
       if (localObject != null) {
         l1 = ((Long)localObject).longValue();
@@ -76,7 +70,7 @@ public final class VideoResumeManager
         localStringBuilder.append(paramLong);
         QLog.d("VideoResumeManager", 2, localStringBuilder.toString());
       }
-      jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+      b.put(paramString, Long.valueOf(paramLong));
     }
   }
   
@@ -102,7 +96,7 @@ public final class VideoResumeManager
       localStringBuilder.append("_");
       localStringBuilder.append(paramString2);
       paramString1 = localStringBuilder.toString();
-      paramString2 = jdField_a_of_type_JavaUtilMap;
+      paramString2 = b;
       if (paramLong2 - paramLong1 <= 1500) {
         paramLong1 = 0L;
       }
@@ -112,7 +106,7 @@ public final class VideoResumeManager
   
   public final boolean a()
   {
-    AladdinConfig localAladdinConfig = jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
+    AladdinConfig localAladdinConfig = c;
     boolean bool = false;
     if (localAladdinConfig.getIntegerFromString("resume_enable", 0) == 1) {
       bool = true;
@@ -122,7 +116,7 @@ public final class VideoResumeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoResumeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ public class CaptureAsyncAutomator
   extends Automator
   implements Runnable
 {
-  private AsyncStep jdField_a_of_type_ComTencentMobileqqAppAutomatorAsyncStep = null;
-  private ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  private final LinkedList<AsyncStep> b = new LinkedList();
+  private AsyncStep m = null;
+  private final LinkedList<AsyncStep> n = new LinkedList();
+  private ThreadPoolExecutor o;
   
   public CaptureAsyncAutomator(QQAppInterface paramQQAppInterface)
   {
@@ -24,7 +24,7 @@ public class CaptureAsyncAutomator
   
   private void c(AsyncStep paramAsyncStep)
   {
-    this.b.add(paramAsyncStep);
+    this.n.add(paramAsyncStep);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -34,10 +34,10 @@ public class CaptureAsyncAutomator
     }
   }
   
-  private void e()
+  private void l()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new CaptureAsyncAutomator.MyThreadFactory(this, null));
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
+    this.o = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new CaptureAsyncAutomator.MyThreadFactory(this, null));
+    this.o.allowCoreThreadTimeOut(true);
   }
   
   public void a(AsyncStep paramAsyncStep)
@@ -49,11 +49,11 @@ public class CaptureAsyncAutomator
       ((StringBuilder)???).append(paramAsyncStep.mName);
       QLog.d("CaptureAsyncAutomator", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.b)
+    synchronized (this.n)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAsyncStep == null)
+      if (this.m == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAsyncStep = paramAsyncStep;
+        this.m = paramAsyncStep;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -61,10 +61,10 @@ public class CaptureAsyncAutomator
           localStringBuilder.append(paramAsyncStep.mName);
           QLog.d("CaptureAsyncAutomator", 2, localStringBuilder.toString());
         }
-        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null) {
-          e();
+        if (this.o == null) {
+          l();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(this);
+        this.o.execute(this);
       }
       else
       {
@@ -76,23 +76,23 @@ public class CaptureAsyncAutomator
   
   public void b(AsyncStep paramAsyncStep)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.i)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CameraEmo, mCountRunning ");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.h);
       QLog.d("CaptureAsyncAutomator", 1, localStringBuilder.toString());
-      if (this.c < 3)
+      if (this.h < 3)
       {
-        this.c += 1;
-        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null) {
-          e();
+        this.h += 1;
+        if (this.o == null) {
+          l();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramAsyncStep);
+        this.o.execute(paramAsyncStep);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(paramAsyncStep);
+        this.i.add(paramAsyncStep);
       }
       return;
     }
@@ -102,14 +102,14 @@ public class CaptureAsyncAutomator
   {
     for (;;)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAsyncStep;
+      ??? = this.m;
       if (??? != null) {
         ((AsyncStep)???).run();
       }
-      synchronized (this.b)
+      synchronized (this.n)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAsyncStep = ((AsyncStep)this.b.poll());
-        if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAsyncStep == null) {
+        this.m = ((AsyncStep)this.n.poll());
+        if (this.m == null) {
           return;
         }
       }
@@ -122,7 +122,7 @@ public class CaptureAsyncAutomator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncAutomator
  * JD-Core Version:    0.7.0.1
  */

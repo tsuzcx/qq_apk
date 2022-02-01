@@ -87,7 +87,7 @@ class FastImagePreviewLayout$2
       Object localObject3;
       try
       {
-        localObject1 = this.this$0.context.getResources().getDrawable(2130848074);
+        localObject1 = this.this$0.context.getResources().getDrawable(2130849738);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
@@ -192,7 +192,7 @@ class FastImagePreviewLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FastImagePreviewLayout.2
  * JD-Core Version:    0.7.0.1
  */

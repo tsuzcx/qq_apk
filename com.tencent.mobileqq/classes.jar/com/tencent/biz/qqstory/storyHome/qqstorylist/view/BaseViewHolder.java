@@ -11,75 +11,73 @@ import java.util.HashMap;
 public class BaseViewHolder
   implements View.OnClickListener, View.OnLongClickListener
 {
-  public int a;
-  public SparseArray<View> a;
   public View a;
-  public ChildViewClickListener a;
-  public Object a;
-  public String a;
-  public HashMap<String, Object> a;
-  public boolean a;
-  public int b;
-  public SparseArray<String> b;
-  public int c = -1;
+  public SparseArray<View> b;
+  public SparseArray<String> c;
+  public int d;
+  public String e;
+  public int f = -1;
+  public int g = -1;
+  public Object h;
+  public ChildViewClickListener i;
+  public boolean j = false;
+  public HashMap<String, Object> k;
   
   public BaseViewHolder(View paramView)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a = paramView;
+    this.b = new SparseArray();
+    this.c = new SparseArray();
+    this.k = new HashMap();
     paramView.setTag(this);
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
   
   public <T extends View> T a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView2 = (View)this.b.get(paramInt);
     View localView1 = localView2;
     if (localView2 == null)
     {
-      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+      localView1 = this.a.findViewById(paramInt);
+      this.b.put(paramInt, localView1);
     }
     return localView1;
   }
   
   public Object a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return this.k.get(paramString);
   }
   
   public void a(ChildViewClickListener paramChildViewClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = paramChildViewClickListener;
+    this.i = paramChildViewClickListener;
   }
   
   public void a(String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
+    this.k.put(paramString, paramObject);
   }
   
   public void onClick(View paramView)
   {
-    ChildViewClickListener localChildViewClickListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener;
+    ChildViewClickListener localChildViewClickListener = this.i;
     if (localChildViewClickListener != null) {
-      localChildViewClickListener.a(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+      localChildViewClickListener.a(this.f, paramView, this.h, this);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    ChildViewClickListener localChildViewClickListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener;
+    ChildViewClickListener localChildViewClickListener = this.i;
     if (localChildViewClickListener != null) {
-      localChildViewClickListener.b(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+      localChildViewClickListener.b(this.f, paramView, this.h, this);
     }
     return true;
   }

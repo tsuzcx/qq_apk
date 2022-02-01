@@ -9,12 +9,12 @@ class ViolaBaseView$13$1$1
   
   public void run()
   {
-    FPSCalculator.a().b(ViolaBaseView.a(this.a.a.this$0));
+    FPSCalculator.a().b(ViolaBaseView.q(this.a.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.13.1.1
  * JD-Core Version:    0.7.0.1
  */

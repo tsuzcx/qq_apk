@@ -18,27 +18,27 @@ class TroopGameGuideHelper$5
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    if ((TroopGameGuideHelper.a(this.a) != null) && (TroopGameGuideHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (TroopGameGuideHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    this.a.a.dismiss();
+    if ((TroopGameGuideHelper.a(this.a) != null) && (TroopGameGuideHelper.a(this.a).ah != null) && (TroopGameGuideHelper.a(this.a).d != null))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler == null)
+      if (this.a.e == null)
       {
         TroopGameGuideHelper localTroopGameGuideHelper = this.a;
-        localTroopGameGuideHelper.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler = ((ITroopGameHandler)TroopGameGuideHelper.a(localTroopGameGuideHelper).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_GAME_HANDLER));
+        localTroopGameGuideHelper.e = ((ITroopGameHandler)TroopGameGuideHelper.a(localTroopGameGuideHelper).d.getBusinessHandler(BusinessHandlerFactory.TROOP_GAME_HANDLER));
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler != null)
+      if (this.a.e != null)
       {
-        TroopGameGuideHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(TroopGameGuideHelper.a(this.a));
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler.a(TroopGameGuideHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true);
+        TroopGameGuideHelper.a(this.a).d.addObserver(TroopGameGuideHelper.c(this.a));
+        this.a.e.a(TroopGameGuideHelper.a(this.a).ah.b, true);
       }
-      TroopReportor.a("Grp_AIO", "AIO_clk", "game_tips_clk_on", 0, 0, new String[] { this.a.b });
+      TroopReportor.a("Grp_AIO", "AIO_clk", "game_tips_clk_on", 0, 0, new String[] { this.a.d });
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopGameGuideHelper.5
  * JD-Core Version:    0.7.0.1
  */

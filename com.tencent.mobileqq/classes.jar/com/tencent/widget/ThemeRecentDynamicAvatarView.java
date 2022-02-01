@@ -9,9 +9,9 @@ import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 public class ThemeRecentDynamicAvatarView
   extends RecentDynamicAvatarView
 {
-  public static String c = "1000";
-  Paint d;
-  boolean e = true;
+  public static String t = "1000";
+  Paint r;
+  boolean s = true;
   
   public ThemeRecentDynamicAvatarView(Context paramContext)
   {
@@ -33,21 +33,21 @@ public class ThemeRecentDynamicAvatarView
   
   private void b()
   {
-    this.d = new Paint();
-    this.d.setAntiAlias(true);
-    this.d.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+    this.r = new Paint();
+    this.r.setAntiAlias(true);
+    this.r.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
   }
   
   public static void setCurThemeId(String paramString)
   {
-    c = paramString;
+    t = paramString;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.e) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
+    if ((this.s) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
     {
-      paramCanvas.saveLayer(null, this.d, 31);
+      paramCanvas.saveLayer(null, this.r, 31);
       super.onDraw(paramCanvas);
       paramCanvas.restore();
       return;
@@ -57,12 +57,12 @@ public class ThemeRecentDynamicAvatarView
   
   public void setSupportMaskView(boolean paramBoolean)
   {
-    this.e = paramBoolean;
+    this.s = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ThemeRecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

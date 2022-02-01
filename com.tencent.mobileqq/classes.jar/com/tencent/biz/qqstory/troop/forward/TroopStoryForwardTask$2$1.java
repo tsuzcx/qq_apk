@@ -12,10 +12,10 @@ class TroopStoryForwardTask$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopForwardTroopStoryForwardTask$2.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    this.b.d.d.storyId = this.a;
+    this.b.d.d.serial();
+    this.b.d.c.getMessageFacade().a(this.b.d.d.frienduin, this.b.d.d.istroop, this.b.d.d.uniseq, this.b.d.d.msgData);
+    this.b.d.b.sendEmptyMessage(3);
   }
 }
 

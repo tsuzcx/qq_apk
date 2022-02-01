@@ -17,32 +17,32 @@ class WordChainHbFragment$2
   
   public void run()
   {
-    if ((WordChainHbFragment.a(this.this$0) != null) && (WordChainHbFragment.a(this.this$0).size() > 0) && (WordChainHbFragment.a(this.this$0) != null))
+    if ((WordChainHbFragment.b(this.this$0) != null) && (WordChainHbFragment.b(this.this$0).size() > 0) && (WordChainHbFragment.c(this.this$0) != null))
     {
-      Iterator localIterator = WordChainHbFragment.a(this.this$0).iterator();
+      Iterator localIterator = WordChainHbFragment.b(this.this$0).iterator();
       while (localIterator.hasNext())
       {
         WordChainHbFragment.WordChainTypeLabel localWordChainTypeLabel = (WordChainHbFragment.WordChainTypeLabel)localIterator.next();
-        TextView localTextView = new TextView(this.this$0.a);
+        TextView localTextView = new TextView(this.this$0.f);
         ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-2, -2);
         localMarginLayoutParams.leftMargin = ScreenUtil.dip2px(5.0F);
         localMarginLayoutParams.rightMargin = ScreenUtil.dip2px(5.0F);
         localMarginLayoutParams.bottomMargin = ScreenUtil.dip2px(10.0F);
-        WordChainHbFragment.a(this.this$0).addView(localTextView, localMarginLayoutParams);
+        WordChainHbFragment.c(this.this$0).addView(localTextView, localMarginLayoutParams);
         localTextView.setText(localWordChainTypeLabel.a);
         localTextView.setPadding(ScreenUtil.dip2px(16.0F), ScreenUtil.dip2px(5.0F), ScreenUtil.dip2px(16.0F), ScreenUtil.dip2px(5.0F));
         localTextView.setTextColor(Color.parseColor("#03081A"));
         localTextView.setTag(localWordChainTypeLabel);
-        localTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(R.drawable.W));
+        localTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(R.drawable.X));
         localTextView.setOnClickListener(new WordChainHbFragment.2.1(this, localTextView, localWordChainTypeLabel));
       }
-      WordChainHbFragment.b(this.this$0);
+      WordChainHbFragment.e(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.WordChainHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

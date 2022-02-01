@@ -26,7 +26,7 @@ class NewAlbumListAdapter$1
       localObject2 = (QQAlbumInfo)((Iterator)localObject1).next();
       if ((localObject2 != null) && (((QQAlbumInfo)localObject2).mCoverInfo != null))
       {
-        String str1 = AlbumListAdapter.a(((QQAlbumInfo)localObject2).mCoverInfo.path);
+        String str1 = AlbumListAdapter.b(((QQAlbumInfo)localObject2).mCoverInfo.path);
         String str2 = ((QQAlbumInfo)localObject2).name;
         if ((str1 != null) && (str2 != null) && (!str2.equals("最近照片")) && (!str2.equals("空间照片")))
         {
@@ -44,7 +44,7 @@ class NewAlbumListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewAlbumListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

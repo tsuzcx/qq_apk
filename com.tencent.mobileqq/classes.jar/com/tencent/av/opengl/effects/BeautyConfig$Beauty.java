@@ -5,18 +5,18 @@ import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 public class BeautyConfig$Beauty
 {
   public final int a;
-  final BeautyRealConfig.TYPE a;
-  final int b;
+  final BeautyRealConfig.TYPE b;
   final int c;
-  public int d;
+  final int d;
+  public int e;
   
   BeautyConfig$Beauty(BeautyRealConfig.TYPE paramTYPE, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE = paramTYPE;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.b = paramTYPE;
+    this.a = paramInt1;
+    this.e = paramInt2;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
 }
 

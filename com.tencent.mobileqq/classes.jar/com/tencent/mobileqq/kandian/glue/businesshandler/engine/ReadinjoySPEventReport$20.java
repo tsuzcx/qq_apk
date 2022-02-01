@@ -21,17 +21,17 @@ final class ReadinjoySPEventReport$20
     ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("op_type");
     Object localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
     Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject3).append(this.a);
     ((StringBuilder)localObject3).append("");
     ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
     localArrayList.add(localObject1);
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if (this.b != null)
     {
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(2);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("daily_folderstatus");
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey("folder_status")) {
-        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("folder_status"));
+      if (this.b.containsKey("folder_status")) {
+        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set((String)this.b.get("folder_status"));
       } else {
         ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("1");
       }
@@ -39,15 +39,15 @@ final class ReadinjoySPEventReport$20
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(3);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("strategy_id");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("strategy_id"));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set((String)this.b.get("strategy_id"));
       localArrayList.add(localObject1);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(4);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("algorithm_id");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("algorithm_id"));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set((String)this.b.get("algorithm_id"));
       localArrayList.add(localObject1);
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     long l2 = 0L;
     long l1;
     if (i == 1)
@@ -57,11 +57,11 @@ final class ReadinjoySPEventReport$20
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("operation_bitmap");
       localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(this.b);
+      ((StringBuilder)localObject3).append(this.c);
       ((StringBuilder)localObject3).append("");
       ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
       localArrayList.add(localObject1);
-      localObject1 = ReadinjoySPEventReport.a().b;
+      localObject1 = ReadinjoySPEventReport.a().g;
       localObject2 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(7);
       ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("staticDurationAfterEnter");
@@ -115,10 +115,10 @@ final class ReadinjoySPEventReport$20
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(6);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("durationBeforeEnter");
       l2 = System.currentTimeMillis();
-      if (ReadinjoySPEventReport.f() <= 0L) {
+      if (ReadinjoySPEventReport.C() <= 0L) {
         l1 = ReadinjoySPEventReport.a;
       } else {
-        l1 = ReadinjoySPEventReport.f();
+        l1 = ReadinjoySPEventReport.C();
       }
       localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
       localObject3 = new StringBuilder();
@@ -126,14 +126,14 @@ final class ReadinjoySPEventReport$20
       ((StringBuilder)localObject3).append("");
       ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
       localArrayList.add(localObject1);
-      ReadinjoySPEventReport.n();
+      ReadinjoySPEventReport.t();
     }
     ReadinjoyReportUtils.a(90, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.20
  * JD-Core Version:    0.7.0.1
  */

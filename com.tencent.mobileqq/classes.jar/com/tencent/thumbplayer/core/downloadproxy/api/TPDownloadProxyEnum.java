@@ -7,6 +7,8 @@ public class TPDownloadProxyEnum
   public static final int DLMODE_PLAY = 1;
   public static final int DLMODE_PREPARE = 2;
   public static final String DLPARAM_ADAPTIVE_TYPE = "dl_param_adaptive_type";
+  public static final String DLPARAM_BANDWIDTH_STATS_ENABLE = "dl_param_bandwidth_stats_enable";
+  public static final String DLPARAM_BANDWIDTH_STATS_HOST = "dl_param_bandwidth_stats_host";
   public static final String DLPARAM_CACHE_NEED_ENCRYPT = "dl_param_cache_need_encrypt";
   public static final String DLPARAM_CURRENT_FORMAT = "dl_param_current_format";
   public static final String DLPARAM_CURRENT_FORMATID = "dl_param_current_formatid";
@@ -28,6 +30,7 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_PACKAGE = "package";
   public static final String DLPARAM_PCDN_URLS = "dl_param_pcdn_urls";
   public static final String DLPARAM_PCDN_VTS = "dl_param_pcdn_vts";
+  public static final String DLPARAM_PLAYER_BUFFER_TOTAL_DURATION = "dl_param_player_buffer_total_duration";
   public static final String DLPARAM_PLAY_CLIP_COUNT = "dl_param_play_clip_count";
   public static final String DLPARAM_PLAY_CLIP_NO = "dl_param_play_clip_no";
   public static final String DLPARAM_PLAY_DEFINITION = "dl_param_play_definition";
@@ -48,6 +51,8 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_VINFO_FP2P = "dl_param_vinfo_fp2p";
   public static final String DLPARAM_VINFO_LINK_VID = "dl_param_vinfo_link_vid";
   public static final String DLPARAM_VINFO_M3U8 = "dl_param_vinfo_m3u8";
+  public static final String DLPARAM_VINFO_REQUEST_APP_VER = "dl_param_vinfo_request_app_ver";
+  public static final String DLPARAM_VINFO_REQUEST_PLATFORM = "dl_param_vinfo_request_platform";
   public static final String DLPARAM_VINFO_TESTID = "dl_param_vinfo_testid";
   public static final String DLPARAM_VINFO_TM = "dl_param_vinfo_tm";
   public static final String DLPARAM_XP2P_ID = "xp2p_id";
@@ -77,6 +82,7 @@ public class TPDownloadProxyEnum
   public static final int DL_DATA_TRANSFER_MODE_AV = 1;
   public static final int DL_DATA_TRANSFER_MODE_DEFAULT = 0;
   public static final int DL_DATA_TRANSFER_MODE_FMP4_TO_TS = 2;
+  public static final int DL_NATIVEINFO_TYPE_GLOBAL_BANDWIDTH = 2;
   public static final int DL_NATIVEINFO_TYPE_SUGGEST_BITRATE = 0;
   public static final int DL_NATIVEINFO_TYPE_SUGGEST_DEFN = 1;
   public static final int DL_OFFLINE_SCHEDULE_LEVEL_ALL = 0;
@@ -152,7 +158,7 @@ public class TPDownloadProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyEnum
  * JD-Core Version:    0.7.0.1
  */

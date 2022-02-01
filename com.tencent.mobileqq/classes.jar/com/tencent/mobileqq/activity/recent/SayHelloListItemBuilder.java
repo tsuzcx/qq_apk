@@ -19,9 +19,13 @@ import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
 import com.tencent.mobileqq.nearby.api.INearbyFlowerUtil;
+import com.tencent.mobileqq.nearby.now.utils.IImageLoader;
+import com.tencent.mobileqq.nearby.profilecard.MiniCardManagerUtils;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.utils.BizTroopUtil;
 import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.nowsummarycard.NowSummaryCard.MiniCard;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.CustomWidgetUtil;
 import com.tencent.widget.SingleLineTextView;
@@ -32,6 +36,16 @@ public class SayHelloListItemBuilder
   extends RecentItemBaseBuilder
 {
   private List<String> a;
+  
+  private void a(RecentBaseData paramRecentBaseData, Context paramContext, SayHelloListItemBuilder.SayHelloListItemHolder paramSayHelloListItemHolder)
+  {
+    if (MiniCardManagerUtils.a(paramRecentBaseData.getRecentUserUin()))
+    {
+      paramRecentBaseData = MiniCardManagerUtils.b(paramRecentBaseData.getRecentUserUin());
+      paramSayHelloListItemHolder.d.setText(paramRecentBaseData.nick.get());
+      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramSayHelloListItemHolder.a, paramRecentBaseData.logo.get(), paramContext.getResources().getDrawable(2130847053), paramContext.getResources().getDrawable(2130847053), null, true);
+    }
+  }
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
@@ -44,26 +58,26 @@ public class SayHelloListItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new SayHelloListItemBuilder.SayHelloListItemHolder();
-      paramView = super.a(paramContext, 2131561404, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376905));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378461));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380210));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131365453));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378723));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380937));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131367601));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131364353));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131381297));
-      paramViewGroup.f = ((TextView)paramView.findViewById(2131364471));
-      paramViewGroup.g = ((TextView)paramView.findViewById(2131364999));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377106));
+      paramView = super.a(paramContext, 2131627760, paramViewGroup);
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131445255));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131447063));
+      paramViewGroup.i = ((DragTextView)paramView.findViewById(2131449128));
+      paramViewGroup.h = ((SingleLineTextView)paramView.findViewById(2131431661));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131447382));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131449927));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131434144));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131430381));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131450349));
+      paramViewGroup.j = ((TextView)paramView.findViewById(2131430528));
+      paramViewGroup.k = ((TextView)paramView.findViewById(2131431131));
+      paramViewGroup.l = ((LinearLayout)paramView.findViewById(2131445477));
       paramView.setTag(paramViewGroup);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a());
+      if (this.f != null) {
+        paramViewGroup.i.setOnModeChangeListener(this.f.b());
       }
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(13.0F, 1);
+      paramViewGroup.h.setExtendTextSize(13.0F, 1);
     }
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+    paramViewGroup.i.setTag(Integer.valueOf(paramInt));
     if ((paramViewGroup != null) && ((paramObject instanceof RecentBaseData)))
     {
       RecentBaseData localRecentBaseData = (RecentBaseData)paramObject;
@@ -74,9 +88,9 @@ public class SayHelloListItemBuilder
     }
     else if (paramViewGroup != null)
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText("");
+      paramViewGroup.a.setImageDrawable(null);
+      paramViewGroup.d.setText("");
+      paramViewGroup.h.setText("");
     }
     super.a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
     paramView.setOnClickListener(paramOnClickListener);
@@ -90,14 +104,14 @@ public class SayHelloListItemBuilder
     if ((paramRecentBaseData != null) && (paramContext != null))
     {
       paramRecentBaseData = paramContext.getResources();
-      paramContext = this.jdField_a_of_type_JavaUtilList;
+      paramContext = this.a;
       if (paramContext == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.a = new ArrayList();
       } else {
         paramContext.clear();
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
-      return this.jdField_a_of_type_JavaUtilList;
+      this.a.add(paramRecentBaseData.getString(c[0]));
+      return this.a;
     }
     return null;
   }
@@ -112,103 +126,103 @@ public class SayHelloListItemBuilder
     {
       if (i != 2)
       {
-        i = 2130840545;
-        paramSayHelloListItemHolder.c.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.c.getResources(), Color.parseColor("#ff9cc4f7")));
+        i = 2130841311;
+        paramSayHelloListItemHolder.e.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.e.getResources(), Color.parseColor("#ff9cc4f7")));
         j = 0;
-        break label162;
+        break label169;
       }
-      i = 2130841397;
-      paramSayHelloListItemHolder.c.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.c.getResources(), Color.parseColor("#ffffb4c8")));
+      i = 2130842235;
+      paramSayHelloListItemHolder.e.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.e.getResources(), Color.parseColor("#ffffb4c8")));
       localStringBuilder.append(",");
       localStringBuilder.append("女");
     }
     else
     {
-      i = 2130841399;
-      paramSayHelloListItemHolder.c.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.c.getResources(), Color.parseColor("#ff9cc4f7")));
+      i = 2130842237;
+      paramSayHelloListItemHolder.e.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.e.getResources(), Color.parseColor("#ff9cc4f7")));
       localStringBuilder.append(",");
       localStringBuilder.append("男");
     }
     int j = 1;
-    label162:
+    label169:
     if (paramRecentSayHelloListItem.age > 0)
     {
-      paramSayHelloListItemHolder.c.setText(String.valueOf(paramRecentSayHelloListItem.age));
+      paramSayHelloListItemHolder.e.setText(String.valueOf(paramRecentSayHelloListItem.age));
       localStringBuilder.append(paramRecentSayHelloListItem.age);
       localStringBuilder.append("岁");
     }
     else
     {
-      paramSayHelloListItemHolder.c.setText("");
+      paramSayHelloListItemHolder.e.setText("");
     }
-    paramSayHelloListItemHolder.c.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
+    paramSayHelloListItemHolder.e.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
     if (j != 0)
     {
-      paramSayHelloListItemHolder.c.setVisibility(0);
+      paramSayHelloListItemHolder.e.setVisibility(0);
       i = 1;
     }
     else
     {
-      paramSayHelloListItemHolder.c.setVisibility(8);
+      paramSayHelloListItemHolder.e.setVisibility(8);
       i = 0;
     }
     if ((paramRecentSayHelloListItem.career > 0) && (paramRecentSayHelloListItem.career < 14))
     {
       i += 1;
-      paramSayHelloListItemHolder.d.setText(com.tencent.mobileqq.util.NearbyProfileUtil.e[paramRecentSayHelloListItem.career]);
-      paramSayHelloListItemHolder.d.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.d.getResources(), Color.parseColor("#ff81d4f3")));
-      paramSayHelloListItemHolder.d.setVisibility(0);
+      paramSayHelloListItemHolder.f.setText(com.tencent.mobileqq.util.NearbyProfileUtil.f[paramRecentSayHelloListItem.career]);
+      paramSayHelloListItemHolder.f.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.f.getResources(), Color.parseColor("#ff81d4f3")));
+      paramSayHelloListItemHolder.f.setVisibility(0);
       localStringBuilder.append(",");
-      localStringBuilder.append(com.tencent.mobileqq.util.NearbyProfileUtil.e[paramRecentSayHelloListItem.career]);
+      localStringBuilder.append(com.tencent.mobileqq.util.NearbyProfileUtil.f[paramRecentSayHelloListItem.career]);
     }
     else
     {
-      paramSayHelloListItemHolder.d.setVisibility(8);
+      paramSayHelloListItemHolder.f.setVisibility(8);
     }
     Object localObject = ProfileCardUtil.a((byte)paramRecentSayHelloListItem.constellation);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramSayHelloListItemHolder.e.setVisibility(8);
+      paramSayHelloListItemHolder.g.setVisibility(8);
     }
     else
     {
       i += 1;
-      paramSayHelloListItemHolder.e.setText((CharSequence)localObject);
-      paramSayHelloListItemHolder.e.setBackgroundResource(2130845739);
-      paramSayHelloListItemHolder.e.setVisibility(0);
+      paramSayHelloListItemHolder.g.setText((CharSequence)localObject);
+      paramSayHelloListItemHolder.g.setBackgroundResource(2130847209);
+      paramSayHelloListItemHolder.g.setVisibility(0);
       localStringBuilder.append(",");
       localStringBuilder.append((String)localObject);
     }
     if (paramRecentSayHelloListItem.vip > 0)
     {
-      paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramSayHelloListItemHolder.b.setVisibility(0);
       if (paramRecentSayHelloListItem.vip == 1) {
-        paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841403);
+        paramSayHelloListItemHolder.b.setImageResource(2130842241);
       } else {
-        paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841404);
+        paramSayHelloListItemHolder.b.setImageResource(2130842242);
       }
-      paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColorStateList(2131167200));
+      paramSayHelloListItemHolder.d.setTextColor(paramContext.getResources().getColorStateList(2131168185));
       j = i + 1;
     }
     else
     {
-      paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColorStateList(2131167124));
-      paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramSayHelloListItemHolder.d.setTextColor(paramContext.getResources().getColorStateList(2131168102));
+      paramSayHelloListItemHolder.b.setVisibility(8);
       j = i;
     }
     if (paramRecentSayHelloListItem.charmIcon)
     {
-      if (paramSayHelloListItemHolder.f.getVisibility() != 0) {
-        paramSayHelloListItemHolder.f.setVisibility(0);
+      if (paramSayHelloListItemHolder.j.getVisibility() != 0) {
+        paramSayHelloListItemHolder.j.setVisibility(0);
       }
       j += 1;
-      paramContext = paramSayHelloListItemHolder.f;
+      paramContext = paramSayHelloListItemHolder.j;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("LV");
       ((StringBuilder)localObject).append(paramRecentSayHelloListItem.charmLevel);
       paramContext.setText(((StringBuilder)localObject).toString());
-      paramContext = paramSayHelloListItemHolder.f.getContext().getResources().getDrawable(2130845677);
-      localObject = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).getGlamourLevelColors(paramSayHelloListItemHolder.f.getContext());
+      paramContext = paramSayHelloListItemHolder.j.getContext().getResources().getDrawable(2130847146);
+      localObject = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).getGlamourLevelColors(paramSayHelloListItemHolder.j.getContext());
       int m = Color.parseColor("#FFCC59");
       i = m;
       if (localObject != null)
@@ -218,7 +232,7 @@ public class SayHelloListItemBuilder
           i = localObject[paramRecentSayHelloListItem.charmLevel];
         }
       }
-      paramSayHelloListItemHolder.f.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.f.getContext().getResources(), i, paramContext));
+      paramSayHelloListItemHolder.j.setBackgroundDrawable(BizTroopUtil.a(paramSayHelloListItemHolder.j.getContext().getResources(), i, paramContext));
       localStringBuilder.append(",");
       localStringBuilder.append("拥有魅力勋章");
       i = j;
@@ -226,19 +240,19 @@ public class SayHelloListItemBuilder
     else
     {
       i = j;
-      if (paramSayHelloListItemHolder.f.getVisibility() != 8)
+      if (paramSayHelloListItemHolder.j.getVisibility() != 8)
       {
-        paramSayHelloListItemHolder.f.setVisibility(8);
+        paramSayHelloListItemHolder.j.setVisibility(8);
         i = j;
       }
     }
     if ((paramRecentSayHelloListItem.commonId > 0) && (!TextUtils.isEmpty(paramRecentSayHelloListItem.common)))
     {
       i += 1;
-      paramSayHelloListItemHolder.e.setVisibility(8);
-      paramSayHelloListItemHolder.g.setVisibility(0);
-      paramSayHelloListItemHolder.g.setText(paramRecentSayHelloListItem.common);
-      paramSayHelloListItemHolder.g.setTag(Integer.valueOf(paramRecentSayHelloListItem.commonId));
+      paramSayHelloListItemHolder.g.setVisibility(8);
+      paramSayHelloListItemHolder.k.setVisibility(0);
+      paramSayHelloListItemHolder.k.setText(paramRecentSayHelloListItem.common);
+      paramSayHelloListItemHolder.k.setTag(Integer.valueOf(paramRecentSayHelloListItem.commonId));
       localStringBuilder.append(",");
       localStringBuilder.append(paramRecentSayHelloListItem.common);
       j = k;
@@ -249,15 +263,15 @@ public class SayHelloListItemBuilder
     }
     if (j == 0)
     {
-      paramSayHelloListItemHolder.g.setVisibility(8);
-      paramSayHelloListItemHolder.g.setTag(Integer.valueOf(0));
+      paramSayHelloListItemHolder.k.setVisibility(8);
+      paramSayHelloListItemHolder.k.setTag(Integer.valueOf(0));
     }
     if (i > 0) {
-      paramSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      paramSayHelloListItemHolder.l.setVisibility(0);
     } else {
-      paramSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+      paramSayHelloListItemHolder.l.setVisibility(4);
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       if (paramRecentSayHelloListItem.mUnreadNum > 0)
       {
@@ -266,9 +280,9 @@ public class SayHelloListItemBuilder
         localStringBuilder.append("条未读消息");
       }
       localStringBuilder.append(",");
-      localStringBuilder.append(paramSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText().toString());
+      localStringBuilder.append(paramSayHelloListItemHolder.h.getText().toString());
       localStringBuilder.append(",");
-      localStringBuilder.append(paramSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+      localStringBuilder.append(paramSayHelloListItemHolder.c.getText().toString());
       if (localStringBuilder.length() > 0) {
         paramRecentSayHelloListItem.mContentDesc = localStringBuilder.toString();
       }
@@ -301,18 +315,18 @@ public class SayHelloListItemBuilder
         QLog.i("Q.recent", 1, paramView.toString());
         return;
       }
-      localSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+      localSayHelloListItemHolder.a.setImageDrawable(paramDrawable);
       if ((paramRecentBaseData instanceof RecentSayHelloListItem))
       {
         RecentSayHelloListItem localRecentSayHelloListItem = (RecentSayHelloListItem)paramRecentBaseData;
         localObject1 = localRecentSayHelloListItem.mTitleName;
-        Object localObject3 = localSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.getText();
+        Object localObject3 = localSayHelloListItemHolder.d.getText();
         paramDrawable = (Drawable)localObject1;
         if (localObject1 == null) {
           paramDrawable = "";
         }
         if (!paramDrawable.equals(localObject3)) {
-          localSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramDrawable);
+          localSayHelloListItemHolder.d.setText(paramDrawable);
         }
         int i = paramRecentBaseData.mExtraInfoColor;
         paramDrawable = paramRecentBaseData.mMsgExtroInfo;
@@ -322,24 +336,24 @@ public class SayHelloListItemBuilder
           paramDrawable = "";
         }
         if (!TextUtils.isEmpty(paramDrawable)) {
-          localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(ColorStateList.valueOf(i), 1);
+          localSayHelloListItemHolder.h.setExtendTextColor(ColorStateList.valueOf(i), 1);
         }
-        localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramDrawable, 1);
+        localSayHelloListItemHolder.h.setExtendText(paramDrawable, 1);
         paramDrawable = localRecentSayHelloListItem.mLastMsg;
-        localObject1 = localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText();
+        localObject1 = localSayHelloListItemHolder.h.getText();
         if (paramDrawable == null) {
           paramDrawable = "";
         }
         if (!paramDrawable.equals(localObject1)) {
           try
           {
-            localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramDrawable);
-            localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+            localSayHelloListItemHolder.h.setText(paramDrawable);
+            localSayHelloListItemHolder.h.setCompoundDrawables(null, null);
           }
           catch (Exception localException)
           {
             localException.printStackTrace();
-            localObject2 = localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+            localObject2 = localSayHelloListItemHolder.h;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append(paramDrawable);
             ((StringBuilder)localObject3).append(" ");
@@ -347,45 +361,45 @@ public class SayHelloListItemBuilder
           }
         }
         if (paramRecentBaseData.mStatus == 4) {
-          localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(paramContext.getResources().getDrawable(2130839534), null);
+          localSayHelloListItemHolder.h.setCompoundDrawables(paramContext.getResources().getDrawable(2130839732), null);
         }
         Object localObject2 = localRecentSayHelloListItem.mShowTime;
-        localObject3 = localSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetTextView.getText();
+        localObject3 = localSayHelloListItemHolder.c.getText();
         paramDrawable = (Drawable)localObject2;
         if (localObject2 == null) {
           paramDrawable = "";
         }
         if (!paramDrawable.equals(localObject3)) {
-          localSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramDrawable);
+          localSayHelloListItemHolder.c.setText(paramDrawable);
         }
         int j = localRecentSayHelloListItem.mUnreadNum;
         i = localRecentSayHelloListItem.mUnreadFlag;
         if (j > 0) {
           if (i == 0)
           {
-            localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1);
+            localSayHelloListItemHolder.i.setDragViewType(-1);
           }
           else
           {
             if (i == 2)
             {
-              localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1);
+              localSayHelloListItemHolder.i.setDragViewType(-1);
               i = 1;
               break label554;
             }
             if (i == 3)
             {
               boolean bool = paramRecentBaseData instanceof RecentTroopAssistantItem;
-              localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1);
-              localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167188));
+              localSayHelloListItemHolder.i.setDragViewType(1);
+              localSayHelloListItemHolder.i.setTextColor(paramContext.getResources().getColor(2131168173));
               i = 3;
-              k = 2130850774;
+              k = 2130852596;
               break label560;
             }
-            localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
-            localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167189));
+            localSayHelloListItemHolder.i.setDragViewType(0);
+            localSayHelloListItemHolder.i.setTextColor(paramContext.getResources().getColor(2131168174));
             i = 3;
-            k = 2130850770;
+            k = 2130852592;
             break label560;
           }
         }
@@ -394,14 +408,15 @@ public class SayHelloListItemBuilder
         j = 0;
         int k = 0;
         label560:
-        CustomWidgetUtil.a(localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
-        if (localSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-          localSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        CustomWidgetUtil.a(localSayHelloListItemHolder.i, i, j, k, 99, null);
+        if (localSayHelloListItemHolder.c.getVisibility() != 0) {
+          localSayHelloListItemHolder.c.setVisibility(0);
         }
         a(paramContext, localSayHelloListItemHolder, localRecentSayHelloListItem);
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           paramView.setContentDescription(paramRecentBaseData.mContentDesc);
         }
+        a(paramRecentBaseData, paramContext, localSayHelloListItemHolder);
         return;
       }
       QLog.d("SayHelloListItemBuilder", 1, "data is not RecentSayHelloItem");
@@ -412,7 +427,7 @@ public class SayHelloListItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.SayHelloListItemBuilder
  * JD-Core Version:    0.7.0.1
  */

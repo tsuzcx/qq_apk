@@ -12,13 +12,13 @@ class BrowserDialogViewModel$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BrowserUtilKt.a(BaseApplication.context, this.jdField_a_of_type_ComTencentMobileqqBrowserBrowserItem.d(), BrowserDialogViewModel.a(this.jdField_a_of_type_ComTencentMobileqqBrowserBrowserDialogViewModel));
+    BrowserUtilKt.a(BaseApplication.context, this.a.d(), BrowserDialogViewModel.a(this.b));
     ReportHelperKt.a("0X800ADEF");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserDialogViewModel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,59 +10,84 @@ import org.xmlpull.v1.XmlPullParser;
 
 class HtmlChangeUtil$XmlPullParserWrapper
 {
-  HtmlChangeUtil.TextStyleInfo jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo;
-  XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  HtmlChangeUtil.TextStyleInfo a;
+  XmlPullParser b;
   
   public HtmlChangeUtil$XmlPullParserWrapper(XmlPullParser paramXmlPullParser, HtmlChangeUtil.TextStyleInfo paramTextStyleInfo)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo = paramTextStyleInfo;
+    this.b = paramXmlPullParser;
+    this.a = paramTextStyleInfo;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getText();
+    return this.b.getDepth();
   }
   
   public String a(int paramInt)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(paramInt);
+    return this.b.getAttributeName(paramInt);
   }
   
-  public void a()
+  public void a(Reader paramReader)
   {
-    int j = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    int m = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
+    this.b.setInput(paramReader);
+  }
+  
+  public String b()
+  {
+    return this.b.getText();
+  }
+  
+  public String b(int paramInt)
+  {
+    return this.b.getAttributeValue(paramInt);
+  }
+  
+  public String c()
+  {
+    return this.b.getName();
+  }
+  
+  public int d()
+  {
+    return this.b.getAttributeCount();
+  }
+  
+  public int e()
+  {
+    return this.b.getEventType();
+  }
+  
+  public void f()
+  {
+    int j = this.b.getEventType();
+    int m = this.b.getDepth();
     int i = 0;
     if (j != 2)
     {
       if (j != 3) {
         return;
       }
-      QLog.d("fast_web", 2, new Object[] { "【remove】 depth : ", Integer.valueOf(m), ", name : ", this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName(), " size : ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.b.size()) });
-      if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.jdField_a_of_type_JavaUtilStack.isEmpty())
+      QLog.d("fast_web", 2, new Object[] { "【remove】 depth : ", Integer.valueOf(m), ", name : ", this.b.getName(), " size : ", Integer.valueOf(this.a.b.size()) });
+      if (!this.a.c.isEmpty())
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.jdField_a_of_type_JavaUtilStack.pop();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.b.remove(m);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.jdField_a_of_type_AndroidUtilSparseArray.remove(m);
+        this.a.c.pop();
+        this.a.b.remove(m);
+        this.a.a.remove(m);
         return;
       }
       throw new RuntimeException("tag is not close !");
     }
-    String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.jdField_a_of_type_JavaUtilStack.push(str);
+    String str = this.b.getName();
+    this.a.c.push(str);
     QLog.d("fast_web", 2, new Object[] { "【start】 depth : ", Integer.valueOf(m), ", name : ", str });
     if (HtmlChangeUtil.c().equals(str)) {
-      while (i < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
+      while (i < this.b.getAttributeCount())
       {
-        if (this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(i).trim().equals("style"))
+        if (this.b.getAttributeName(i).trim().equals("style"))
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.b.put(m, HtmlChangeUtil.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(i).trim()));
+          this.a.b.put(m, HtmlChangeUtil.a(this.b.getAttributeValue(i).trim()));
           return;
         }
         i += 1;
@@ -70,31 +95,31 @@ class HtmlChangeUtil$XmlPullParserWrapper
     }
     if (HtmlChangeUtil.d().equals(str))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.b.put(m, HtmlChangeUtil.SpanBuilder.a(4, new Object[] { Integer.valueOf(1) }));
+      this.a.b.put(m, HtmlChangeUtil.SpanBuilder.a(4, new Object[] { Integer.valueOf(1) }));
       return;
     }
     if (HtmlChangeUtil.e().equals(str))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.b.put(m, HtmlChangeUtil.SpanBuilder.a(3, new Object[0]));
+      this.a.b.put(m, HtmlChangeUtil.SpanBuilder.a(3, new Object[0]));
       return;
     }
     if (HtmlChangeUtil.f().equals(str))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.b.put(m, HtmlChangeUtil.SpanBuilder.a(4, new Object[] { Integer.valueOf(2) }));
+      this.a.b.put(m, HtmlChangeUtil.SpanBuilder.a(4, new Object[] { Integer.valueOf(2) }));
       return;
     }
     if ((HtmlChangeUtil.g().equals(str)) || (HtmlChangeUtil.h().equals(str)))
     {
       j = 0;
-      for (int k = 0; j < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount(); k = i)
+      for (int k = 0; j < this.b.getAttributeCount(); k = i)
       {
-        if (!this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(j).trim().equals("style"))
+        if (!this.b.getAttributeName(j).trim().equals("style"))
         {
           i = k;
         }
         else
         {
-          str = (String)HtmlChangeUtil.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(j)).get("text-align");
+          str = (String)HtmlChangeUtil.b(this.b.getAttributeValue(j)).get("text-align");
           i = k;
           if (!TextUtils.isEmpty(str)) {
             if ("right".equals(str))
@@ -116,45 +141,20 @@ class HtmlChangeUtil$XmlPullParserWrapper
         }
         j += 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilHtmlChangeUtil$TextStyleInfo.jdField_a_of_type_AndroidUtilSparseArray.put(m, Integer.valueOf(k));
+      this.a.a.put(m, Integer.valueOf(k));
     }
   }
   
-  public void a(Reader paramReader)
+  public int g()
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.setInput(paramReader);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-  }
-  
-  public String b(int paramInt)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(paramInt);
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-  }
-  
-  public int d()
-  {
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-    a();
+    int i = this.b.next();
+    f();
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.HtmlChangeUtil.XmlPullParserWrapper
  * JD-Core Version:    0.7.0.1
  */

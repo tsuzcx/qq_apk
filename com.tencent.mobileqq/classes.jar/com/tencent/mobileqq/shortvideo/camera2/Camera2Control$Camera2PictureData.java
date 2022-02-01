@@ -7,16 +7,16 @@ import java.io.File;
 
 public class Camera2Control$Camera2PictureData
 {
-  public int a;
-  public Rect a;
-  public CameraCharacteristics a;
-  public CameraCover.PictureCallback a;
   public File a;
-  public boolean a;
+  public Rect b;
+  public CameraCover.PictureCallback c;
+  public int d;
+  public boolean e;
+  public CameraCharacteristics f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.Camera2PictureData
  * JD-Core Version:    0.7.0.1
  */

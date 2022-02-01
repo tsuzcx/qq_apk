@@ -28,12 +28,7 @@ import mqq.app.AppRuntime;
 public class InstallUpgradeBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.q;
-  }
+  public static final int a = BannerTypeCollections.q;
   
   public InstallUpgradeBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -42,18 +37,18 @@ public class InstallUpgradeBannerProcessor
   
   private void a(Message paramMessage)
   {
-    UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().a();
-    if (localUpgradeDetailWrapper.a == null) {
+    UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().d();
+    if (localUpgradeDetailWrapper.f == null) {
       return;
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getPreferences();
+    SharedPreferences localSharedPreferences = this.f.getAppRuntime().getPreferences();
     long l1 = localSharedPreferences.getLong("YELLOW_BAR_LAST_SHOW", 0L);
     long l2 = new Date().getTime();
-    if (l2 - l1 > localUpgradeDetailWrapper.a.dialog.b * 24 * 60 * 60 * 1000)
+    if (l2 - l1 > localUpgradeDetailWrapper.f.dialog.j * 24 * 60 * 60 * 1000)
     {
-      BannerManager.a().a(jdField_a_of_type_Int, 2);
-      BannerManager.a().a(UpgradeBannerProcessor.jdField_a_of_type_Int, 0);
-      BannerManager.a().a(jdField_a_of_type_Int, paramMessage);
+      BannerManager.a().a(a, 2);
+      BannerManager.a().a(UpgradeBannerProcessor.a, 0);
+      BannerManager.a().a(a, paramMessage);
       localSharedPreferences.edit().putLong("YELLOW_BAR_LAST_SHOW", l2).commit();
     }
     if ((paramMessage.obj != null) && ((paramMessage.obj instanceof UpgradeActivity)))
@@ -65,21 +60,16 @@ public class InstallUpgradeBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131563011, null);
-    TextView localTextView = (TextView)paramBanner.findViewById(2131380229);
+    paramBanner = View.inflate(this.f, 2131629619, null);
+    TextView localTextView = (TextView)paramBanner.findViewById(2131449147);
     localTextView.setOnClickListener(new InstallUpgradeBannerProcessor.1(this));
     localTextView.setText("");
-    if (AppSetting.d) {
-      localTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131720138));
+    if (AppSetting.e) {
+      localTextView.setContentDescription(this.f.getString(2131917768));
     }
-    ((ImageView)paramBanner.findViewById(2131364709)).setOnClickListener(new InstallUpgradeBannerProcessor.2(this));
-    paramBanner.findViewById(2131380228).setVisibility(8);
+    ((ImageView)paramBanner.findViewById(2131430815)).setOnClickListener(new InstallUpgradeBannerProcessor.2(this));
+    paramBanner.findViewById(2131449146).setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
@@ -91,39 +81,44 @@ public class InstallUpgradeBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.findViewById(2131380228).setVisibility(0);
-    paramBanner = (TextView)paramBanner.a.findViewById(2131380229);
+    paramBanner.c.findViewById(2131449146).setVisibility(0);
+    paramBanner = (TextView)paramBanner.c.findViewById(2131449147);
     if (paramMessage != null)
     {
-      if (!ConfigHandler.b((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()))
+      if (!ConfigHandler.d((QQAppInterface)this.f.getAppRuntime()))
       {
-        paramMessage = UpgradeController.a().a();
-        if ((paramMessage != null) && (paramMessage.a != null) && (paramMessage.a.dialog != null))
+        paramMessage = UpgradeController.a().d();
+        if ((paramMessage != null) && (paramMessage.f != null) && (paramMessage.f.dialog != null))
         {
-          paramBanner.setText(paramMessage.a.dialog.h);
+          paramBanner.setText(paramMessage.f.dialog.l);
           return;
         }
-        paramBanner.setText(HardCodeUtil.a(2131701135));
+        paramBanner.setText(HardCodeUtil.a(2131899152));
         return;
       }
-      paramMessage = UpgradeController.a().a();
-      if ((paramMessage != null) && (paramMessage.a != null) && (paramMessage.a.dialog != null))
+      paramMessage = UpgradeController.a().d();
+      if ((paramMessage != null) && (paramMessage.f != null) && (paramMessage.f.dialog != null))
       {
-        paramBanner.setText(paramMessage.a.dialog.g);
+        paramBanner.setText(paramMessage.f.dialog.k);
         return;
       }
-      paramBanner.setText(HardCodeUtil.a(2131701143));
+      paramBanner.setText(HardCodeUtil.a(2131899160));
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.InstallUpgradeBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

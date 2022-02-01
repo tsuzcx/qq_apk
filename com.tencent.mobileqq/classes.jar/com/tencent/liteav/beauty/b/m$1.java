@@ -2,7 +2,7 @@ package com.tencent.liteav.beauty.b;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.j;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
 
 class m$1
   implements Runnable
@@ -18,7 +18,7 @@ class m$1
     if (localBitmap != null)
     {
       localm = this.c;
-      m.a(localm, j.a(localBitmap, m.a(localm), false));
+      m.a(localm, TXCOpenGlUtils.a(localBitmap, m.a(localm), false));
       m.b(this.c)[0] = 1.0F;
     }
     else
@@ -33,7 +33,7 @@ class m$1
     if (localBitmap != null)
     {
       localm = this.c;
-      m.b(localm, j.a(localBitmap, m.c(localm), false));
+      m.b(localm, TXCOpenGlUtils.a(localBitmap, m.c(localm), false));
       m.b(this.c)[1] = 1.0F;
       return;
     }
@@ -46,7 +46,7 @@ class m$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.m.1
  * JD-Core Version:    0.7.0.1
  */

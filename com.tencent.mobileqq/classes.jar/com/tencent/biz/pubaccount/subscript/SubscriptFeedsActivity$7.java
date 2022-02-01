@@ -12,12 +12,12 @@ class SubscriptFeedsActivity$7
   public void run()
   {
     ((IPublicAccountDataManager)this.this$0.app.getRuntimeService(IPublicAccountDataManager.class, "all")).initPublicAccountDataManager();
-    TroopBarAssistantManager.a().c(this.this$0.app);
+    TroopBarAssistantManager.a().d(this.this$0.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.7
  * JD-Core Version:    0.7.0.1
  */

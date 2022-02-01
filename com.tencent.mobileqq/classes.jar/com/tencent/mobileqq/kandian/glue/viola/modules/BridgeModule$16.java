@@ -12,12 +12,12 @@ class BridgeModule$16
   
   public void a(@NotNull List<UgcVideo> paramList)
   {
-    BridgeModule.access$1600(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
+    BridgeModule.access$1600(this.b, 0L, paramList, this.a, 0, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.16
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/adv/api/impl/VasAdvApiImpl;", "Lcom/tencent/mobileqq/vas/adv/api/IVasAdvApi;", "()V", "nextRequestAdTime", "", "convertPbToJson", "", "T", "Lcom/tencent/mobileqq/pb/PBField;", "pbField", "(Lcom/tencent/mobileqq/pb/PBField;)Ljava/lang/String;", "doExposure", "", "exposureUrl", "adView", "Landroid/view/View;", "pbAdInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "resultCallback", "Lcom/tencent/mobileqq/vas/adv/common/callback/VasResultCallback;", "", "doOriginalExposure", "context", "Landroid/content/Context;", "jsonGdtAdInfo", "getDeviceInfoAsJson", "gdtBizId", "getGdtCountdownTime", "", "gdtTangramAdJson", "getGdtDanmakuStrContents", "", "(Ljava/lang/String;)[Ljava/lang/String;", "getIndustryLabels", "", "getMarketPendantImgUrl", "initTbsEnvironment", "isAppInstalled", "pkgName", "requestPublicAccountAd", "toLandingPage", "activity", "Landroid/app/Activity;", "params", "Lcom/tencent/mobileqq/vas/adv/common/data/LandingPageParams;", "unregisterAppReceiver", "Companion", "vas-adv-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/adv/api/impl/VasAdvApiImpl;", "Lcom/tencent/mobileqq/vas/adv/api/IVasAdvApi;", "()V", "nextRequestAdTime", "", "convertPbToJson", "", "T", "Lcom/tencent/mobileqq/pb/PBField;", "pbField", "(Lcom/tencent/mobileqq/pb/PBField;)Ljava/lang/String;", "doExposure", "", "exposureUrl", "adView", "Landroid/view/View;", "pbAdInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "resultCallback", "Lcom/tencent/mobileqq/vas/adv/common/callback/VasResultCallback;", "", "doOriginalExposure", "context", "Landroid/content/Context;", "jsonGdtAdInfo", "position", "", "getDeviceInfoAsJson", "gdtBizId", "getGdtCountdownTime", "gdtTangramAdJson", "getGdtDanmakuStrContents", "", "(Ljava/lang/String;)[Ljava/lang/String;", "getIndustryLabels", "", "getMarketPendantImgUrl", "initTbsEnvironment", "isAppInstalled", "pkgName", "requestPublicAccountAd", "toLandingPage", "activity", "Landroid/app/Activity;", "params", "Lcom/tencent/mobileqq/vas/adv/common/data/LandingPageParams;", "unregisterAppReceiver", "Companion", "vas-adv-impl_release"}, k=1, mv={1, 1, 16})
 public final class VasAdvApiImpl
   implements IVasAdvApi
 {
@@ -46,28 +46,28 @@ public final class VasAdvApiImpl
     VasAdvSupport.a.a().a(paramString, paramView, paramAdInfo, paramVasResultCallback);
   }
   
-  public boolean doOriginalExposure(@NotNull Context paramContext, @Nullable String paramString, @Nullable qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  public boolean doOriginalExposure(@NotNull Context paramContext, @Nullable String paramString, @Nullable qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return VasAdvSupport.a.a().a(paramContext, paramString, paramAdInfo);
+    return VasAdvSupport.a.a().a(paramContext, paramString, paramAdInfo, paramInt);
   }
   
   @Nullable
   public String getDeviceInfoAsJson(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "gdtBizId");
-    return VasAdvSupport.a.a().a(paramString);
+    return VasAdvSupport.a.a().c(paramString);
   }
   
   public int getGdtCountdownTime(@Nullable String paramString)
   {
-    return VasAdvSupport.a.a().a(paramString);
+    return VasAdvSupport.a.a().d(paramString);
   }
   
   @Nullable
   public String[] getGdtDanmakuStrContents(@Nullable String paramString)
   {
-    return VasAdvSupport.a.a().a(paramString);
+    return VasAdvSupport.a.a().e(paramString);
   }
   
   @Nullable
@@ -79,12 +79,12 @@ public final class VasAdvApiImpl
   @Nullable
   public String getMarketPendantImgUrl(@Nullable String paramString)
   {
-    return VasAdvSupport.a.a().b(paramString);
+    return VasAdvSupport.a.a().f(paramString);
   }
   
   public void initTbsEnvironment()
   {
-    VasAdvSupport.a.a().a();
+    VasAdvSupport.a.a().c();
   }
   
   public boolean isAppInstalled(@NotNull Context paramContext, @Nullable String paramString)
@@ -110,10 +110,10 @@ public final class VasAdvApiImpl
       return;
     }
     VasAdvAppInterface.DefaultImpls.a(VasAdvSupport.a.a(), (Runnable)new VasAdvApiImpl.requestPublicAccountAd.1(this, l), false, false, 6, null);
-    if ((!isForegroundRegistered) && (GuardManager.a != null))
+    if ((!isForegroundRegistered) && (GuardManager.sInstance != null))
     {
       isForegroundRegistered = true;
-      GuardManager.a.a((IGuardInterface)new VasAdvApiImpl.requestPublicAccountAd.2(this));
+      GuardManager.sInstance.registerCallBack((IGuardInterface)new VasAdvApiImpl.requestPublicAccountAd.2(this));
     }
   }
   
@@ -126,12 +126,12 @@ public final class VasAdvApiImpl
   
   public void unregisterAppReceiver()
   {
-    VasAdvSupport.a.a().b();
+    VasAdvSupport.a.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.api.impl.VasAdvApiImpl
  * JD-Core Version:    0.7.0.1
  */

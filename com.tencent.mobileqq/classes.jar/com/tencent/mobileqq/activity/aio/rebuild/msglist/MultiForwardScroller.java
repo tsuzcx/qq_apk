@@ -31,7 +31,7 @@ public class MultiForwardScroller
       QLog.d("MultiForwardChatPie", 2, ((StringBuilder)localObject).toString());
     }
     MultiForwardContext localMultiForwardContext = (MultiForwardContext)this.a;
-    Object localObject = localMultiForwardContext.a().a();
+    Object localObject = localMultiForwardContext.P().a();
     if (localObject != null)
     {
       Iterator localIterator = ((List)localObject).iterator();
@@ -56,17 +56,17 @@ public class MultiForwardScroller
       }
       QLog.d("MultiForwardChatPie", 2, new Object[] { "refreshHeadMessage==>", "isFind:", Boolean.valueOf(bool1) });
     }
-    localMultiForwardContext.a().b(paramInt3);
-    if ((localObject != null) && (!UniteGrayTipMsgUtil.a((MessageRecord)localObject)))
+    localMultiForwardContext.Q().c(paramInt3);
+    if ((localObject != null) && (!UniteGrayTipMsgUtil.b((MessageRecord)localObject)))
     {
-      paramInt2 = localMultiForwardContext.a().a(((MessageRecord)localObject).uniseq);
+      paramInt2 = localMultiForwardContext.P().a(((MessageRecord)localObject).uniseq);
       if (paramInt2 != -1)
       {
-        localMultiForwardContext.a().a(paramInt1, paramInt2, paramInt2, null, 10);
+        localMultiForwardContext.Q().a(paramInt1, paramInt2, paramInt2, null, 10);
         return;
       }
       if (((MessageRecord)localObject).msgtype == -2006) {
-        QQToast.a(this.a.a(), HardCodeUtil.a(2131707038), 0).b(this.a.b());
+        QQToast.makeText(this.a.b(), HardCodeUtil.a(2131904878), 0).show(this.a.v());
       }
       if (QLog.isColorLevel()) {
         QLog.d("MultiForwardChatPie", 2, new Object[] { "pos is -1, msgtype:", Integer.valueOf(((MessageRecord)localObject).msgtype) });
@@ -74,7 +74,7 @@ public class MultiForwardScroller
     }
     else
     {
-      QQToast.a(this.a.a(), 2131697699, 0).b(this.a.b());
+      QQToast.makeText(this.a.b(), 2131895472, 0).show(this.a.v());
       if (QLog.isColorLevel())
       {
         bool1 = bool2;
@@ -93,7 +93,7 @@ public class MultiForwardScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.MultiForwardScroller
  * JD-Core Version:    0.7.0.1
  */

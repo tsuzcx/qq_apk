@@ -27,15 +27,15 @@ final class VasAdvAppImpl$initJsEnvironment$1
     if (localTouchWebView != null)
     {
       Object localObject;
-      if (WebViewPluginEngine.a != null)
+      if (WebViewPluginEngine.f != null)
       {
-        localObject = WebViewPluginEngine.a;
+        localObject = WebViewPluginEngine.f;
         Intrinsics.checkExpressionValueIsNotNull(localObject, "WebViewPluginEngine.sPreloadEngine");
-        WebViewPluginEngine.a = (WebViewPluginEngine)null;
+        WebViewPluginEngine.f = (WebViewPluginEngine)null;
       }
       else
       {
-        localObject = VasAdvAppImpl.a(this.this$0);
+        localObject = VasAdvAppImpl.b(this.this$0);
         if (localObject == null) {
           break label116;
         }
@@ -54,7 +54,7 @@ final class VasAdvAppImpl$initJsEnvironment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.app.VasAdvAppImpl.initJsEnvironment.1
  * JD-Core Version:    0.7.0.1
  */

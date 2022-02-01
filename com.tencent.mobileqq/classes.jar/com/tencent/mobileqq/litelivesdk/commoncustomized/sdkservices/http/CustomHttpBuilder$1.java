@@ -11,12 +11,12 @@ class CustomHttpBuilder$1
   
   public LogInterface getLog()
   {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
+    return (LogInterface)this.a.getService(LogInterface.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpBuilder.1
  * JD-Core Version:    0.7.0.1
  */

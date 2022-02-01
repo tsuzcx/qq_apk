@@ -33,7 +33,7 @@ class TraeAudioManager$DeviceConfigManager
       if (this.deviceConfigs.containsKey(paramString))
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TRAE", 2, "err dev exist!");
+          QLog.e("TraeAudioManager", 2, "err dev exist!");
         }
         return false;
       }
@@ -46,13 +46,13 @@ class TraeAudioManager$DeviceConfigManager
         paramString.append(getDeviceNumber());
         paramString.append(" 0:");
         paramString.append(getDeviceName(0));
-        QLog.w("TRAE", 2, paramString.toString());
+        QLog.w("TraeAudioManager", 2, paramString.toString());
       }
       AudioDeviceInterface.LogTraceExit();
       return true;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, " err dev init!");
+      QLog.e("TraeAudioManager", 2, " err dev init!");
     }
     return false;
   }
@@ -330,6 +330,14 @@ class TraeAudioManager$DeviceConfigManager
     return bool;
   }
   
+  public boolean resetNullConnecting()
+  {
+    this.mLock.lock();
+    this.connectingDevice = "";
+    this.mLock.unlock();
+    return true;
+  }
+  
   public void resetVisiableUpdateFlag()
   {
     this.mLock.lock();
@@ -415,7 +423,7 @@ class TraeAudioManager$DeviceConfigManager
           paramString = " N";
         }
         ((StringBuilder)localObject).append(paramString);
-        QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
+        QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
         bool1 = bool2;
       }
     }
@@ -429,7 +437,7 @@ class TraeAudioManager$DeviceConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.DeviceConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,15 @@ class TroopFileToTroopForwarder$1
     if (paramBundle == null) {
       return;
     }
-    if (!UUID.fromString(paramBundle).equals(this.a.a())) {
+    if (!UUID.fromString(paramBundle).equals(this.a.b())) {
       return;
     }
     if (!paramBoolean)
     {
-      int i = TroopFileTransferUtil.Log.a;
+      int i = TroopFileTransferUtil.Log.b;
       paramBundle = new StringBuilder();
       paramBundle.append("[");
-      paramBundle.append(TroopFileToTroopForwarder.a(this.a));
+      paramBundle.append(TroopFileToTroopForwarder.b(this.a));
       paramBundle.append("] onFowardToTroopResult isSuccess:false ");
       TroopFileTransferUtil.Log.a("TroopFileToTroopForwarder", i, paramBundle.toString());
     }
@@ -36,7 +36,7 @@ class TroopFileToTroopForwarder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.1
  * JD-Core Version:    0.7.0.1
  */

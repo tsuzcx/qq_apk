@@ -18,11 +18,13 @@ import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.pic.PicUiInterface;
+import com.tencent.mobileqq.pic.api.IPicAIO;
 import com.tencent.mobileqq.pic.api.IPicHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Gallery;
@@ -34,13 +36,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class URLDrawableHelper
   extends BaseURLDrawableHelper
 {
-  public static final float AIO_FILEPIC_ROUND_CORNER = 8.0F;
+  private static final float AIO_FILEPIC_ROUND_CORNER = 8.0F;
   public static final int AIO_IMAGE_DEFAULT_BG_COLOR = -921103;
   public static final int AIO_IMAGE_DEFAULT_HEIGHT = 99;
   public static final int AIO_IMAGE_DEFAULT_WIDTH = 99;
   public static int AIO_IMAGE_MAX_SIZE = 0;
   public static int AIO_IMAGE_MIN_SIZE = 0;
-  public static final float AIO_IMAGE_ROUND_CORNER = 12.0F;
   public static final String TAG = "URLDrawableHelper";
   public static final Drawable TRANSLUCENT;
   public static final Drawable TRANSPARENT;
@@ -93,25 +94,33 @@ public class URLDrawableHelper
     }
   }
   
+  public static float getAioFilePicRoundCorner()
+  {
+    if (QQTheme.isNowSimpleUI()) {
+      return ((IPicAIO)QRoute.api(IPicAIO.class)).getRoundCorner();
+    }
+    return 8.0F;
+  }
+  
   public static Bitmap getCommonProgressBitmap()
   {
     Bitmap localBitmap1;
-    if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("static://CommonProgress");
+    if (GlobalImageCache.b != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.b.get("static://CommonProgress");
     } else {
       localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130839400);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130839584);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
         localBitmap2 = localBitmap1;
-        if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        if (GlobalImageCache.b != null)
         {
-          GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("static://CommonProgress", localBitmap1);
+          GlobalImageCache.b.put("static://CommonProgress", localBitmap1);
           localBitmap2 = localBitmap1;
         }
       }
@@ -231,28 +240,28 @@ public class URLDrawableHelper
   
   public static int getExifRotation(String paramString)
   {
-    return ImageUtil.c(paramString);
+    return ImageUtil.h(paramString);
   }
   
   public static Drawable getLoadingDrawable()
   {
     Bitmap localBitmap1;
-    if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("static://CommonLoadingDrawable");
+    if (GlobalImageCache.b != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.b.get("static://CommonLoadingDrawable");
     } else {
       localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130838022);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130838064);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
         localBitmap2 = localBitmap1;
-        if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        if (GlobalImageCache.b != null)
         {
-          GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("static://CommonLoadingDrawable", localBitmap1);
+          GlobalImageCache.b.put("static://CommonLoadingDrawable", localBitmap1);
           localBitmap2 = localBitmap1;
         }
       }
@@ -284,25 +293,30 @@ public class URLDrawableHelper
     return localURLDrawable;
   }
   
+  public static float getRoundCorner()
+  {
+    return ((IPicAIO)QRoute.api(IPicAIO.class)).getRoundCorner();
+  }
+  
   public static Drawable getStickerFailedDrawable()
   {
     Bitmap localBitmap1;
-    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get("static://CommonFailedDrawable_sticker");
+    if (GlobalImageCache.a != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get("static://CommonFailedDrawable_sticker");
     } else {
       localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130844572);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130845945);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
         localBitmap2 = localBitmap1;
-        if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)
+        if (GlobalImageCache.a != null)
         {
-          GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("static://CommonFailedDrawable_sticker", localBitmap1);
+          GlobalImageCache.a.put("static://CommonFailedDrawable_sticker", localBitmap1);
           localBitmap2 = localBitmap1;
         }
       }
@@ -373,7 +387,7 @@ public class URLDrawableHelper
   
   public static boolean isAutoDownAt2G3GAbled(Context paramContext)
   {
-    return SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694986), "qqsetting_auto_receive_pic_key", true);
+    return SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131892713), "qqsetting_auto_receive_pic_key", true);
   }
   
   public static boolean isMobileNet()
@@ -384,13 +398,13 @@ public class URLDrawableHelper
   public static boolean isMobileNetAndAutodownDisabled(Context paramContext)
   {
     boolean bool1 = AppNetConnInfo.isMobileConn();
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694986), "qqsetting_auto_receive_pic_key", true);
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131892713), "qqsetting_auto_receive_pic_key", true);
     return (bool1) && (!bool2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.URLDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

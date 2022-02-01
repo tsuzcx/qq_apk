@@ -37,52 +37,52 @@ public class AECircleAlbumListPart
   extends AECircleBasePart
   implements View.OnClickListener, AECircleAlbumListFragment.IAlbumListBack
 {
-  private int jdField_a_of_type_Int;
-  public AsyncTask<Object, Object, List<LocalMediaInfo>> a;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AECircleAlbumListFragment a;
-  private final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getResources().getString(2131698008);
-  private int b;
+  public AsyncTask<Object, Object, List<LocalMediaInfo>> b;
+  private FrameLayout f;
+  private TextView g;
+  private ImageView h;
+  private LinearLayout i;
+  private int j;
+  private int k;
+  private final String l = BaseApplication.getContext().getResources().getString(2131895879);
   
   public AECircleAlbumListPart(AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
     super(paramAECirclePhotoListLogic);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a(this);
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment == null)
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment = new AECircleAlbumListFragment();
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment.a(this);
-    }
+    this.c.a(this);
   }
   
   private void c(boolean paramBoolean)
   {
-    FragmentTransaction localFragmentTransaction = a().getFragmentManager().beginTransaction();
+    FragmentTransaction localFragmentTransaction = f().getFragmentManager().beginTransaction();
     localFragmentTransaction.setTransition(4097);
-    if ((paramBoolean) && (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment.isAdded())) {
-      localFragmentTransaction.add(2064121942, this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment, null);
+    if ((paramBoolean) && (!this.a.isAdded())) {
+      localFragmentTransaction.add(2063990877, this.a, null);
     } else {
-      localFragmentTransaction.remove(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment);
+      localFragmentTransaction.remove(this.a);
     }
     localFragmentTransaction.addToBackStack(null);
     localFragmentTransaction.commit();
     SimpleEventBus.getInstance().dispatchEvent(new AECircleTitleAlbumMenuChangeEvent(paramBoolean));
   }
   
+  private void d()
+  {
+    if (this.a == null)
+    {
+      this.a = new AECircleAlbumListFragment();
+      this.a.a(this);
+    }
+  }
+  
   private void d(boolean paramBoolean)
   {
     ObjectAnimator localObjectAnimator;
-    if ((paramBoolean) && (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment.isAdded())) {
-      localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_AndroidWidgetFrameLayout, "backgroundColor", new int[] { this.b, this.jdField_a_of_type_Int });
+    if ((paramBoolean) && (!this.a.isAdded())) {
+      localObjectAnimator = ObjectAnimator.ofInt(this.f, "backgroundColor", new int[] { this.k, this.j });
     } else {
-      localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_AndroidWidgetFrameLayout, "backgroundColor", new int[] { this.jdField_a_of_type_Int, this.b });
+      localObjectAnimator = ObjectAnimator.ofInt(this.f, "backgroundColor", new int[] { this.j, this.k });
     }
     localObjectAnimator.setDuration(300L);
     localObjectAnimator.setEvaluator(new ArgbEvaluator());
@@ -90,26 +90,16 @@ public class AECircleAlbumListPart
     localObjectAnimator.start();
   }
   
-  public String a()
-  {
-    return "AECircleAlbumListPart";
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064121942));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122290));
-    a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122289));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2064122286));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_Int = a().getResources().getColor(2131165485);
-    this.b = a().getResources().getColor(2131165474);
+    this.f = ((FrameLayout)paramView.findViewById(2063990877));
+    this.g = ((TextView)paramView.findViewById(2063991168));
+    a(this.l);
+    this.h = ((ImageView)paramView.findViewById(2063991167));
+    this.i = ((LinearLayout)paramView.findViewById(2063991164));
+    this.i.setOnClickListener(this);
+    this.j = h().getResources().getColor(2131165806);
+    this.k = h().getResources().getColor(2131165795);
   }
   
   public void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, boolean paramBoolean)
@@ -120,39 +110,49 @@ public class AECircleAlbumListPart
       localStringBuilder.append("onAlbumListChoose--albumId=");
       localStringBuilder.append(paramQQAlbumInfo.id);
       AEQLog.b("AECircleAlbumListPart", localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.albumName = paramQQAlbumInfo.name;
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.albumId = paramQQAlbumInfo.id;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.albumName != null) {
-        paramQQAlbumInfo = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.albumName;
+      this.c.c.albumName = paramQQAlbumInfo.name;
+      this.c.c.albumId = paramQQAlbumInfo.id;
+      if (this.c.c.albumName != null) {
+        paramQQAlbumInfo = this.c.c.albumName;
       } else {
-        paramQQAlbumInfo = this.jdField_a_of_type_JavaLangString;
+        paramQQAlbumInfo = this.l;
       }
       a(paramQQAlbumInfo);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.l = true;
-      a().runOnUiThread(new AECircleAlbumListPart.1(this));
+      this.d.y = true;
+      g().runOnUiThread(new AECircleAlbumListPart.1(this));
     }
     a(false);
   }
   
   public void a(CharSequence paramCharSequence)
   {
-    a().setTitle(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    g().setTitle(paramCharSequence);
+    this.g.setText(paramCharSequence);
   }
   
   public void a(boolean paramBoolean)
   {
-    b();
+    d();
     c(paramBoolean);
     d(paramBoolean);
     b(paramBoolean ^ true);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a(paramBoolean);
+    this.c.b(paramBoolean);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask = new AECircleAlbumListPart.QueryPhotoTask(this, paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Object[0]);
+    this.b = new AECircleAlbumListPart.QueryPhotoTask(this, paramBoolean1, paramBoolean2);
+    this.b.execute(new Object[0]);
+  }
+  
+  public void ak_()
+  {
+    a(false);
+  }
+  
+  public String b()
+  {
+    return "AECircleAlbumListPart";
   }
   
   public void b(boolean paramBoolean)
@@ -172,13 +172,13 @@ public class AECircleAlbumListPart
     RotateAnimation localRotateAnimation = new RotateAnimation(f1, f2, 1, 0.5F, 1, 0.5F);
     localRotateAnimation.setDuration(300L);
     localRotateAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotateAnimation);
+    this.h.startAnimation(localRotateAnimation);
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
     super.onActivityDestroyed(paramActivity);
-    paramActivity = this.jdField_a_of_type_AndroidOsAsyncTask;
+    paramActivity = this.b;
     if (paramActivity != null) {
       paramActivity.cancel(true);
     }
@@ -187,35 +187,35 @@ public class AECircleAlbumListPart
   public void onActivityPaused(Activity paramActivity)
   {
     super.onActivityPaused(paramActivity);
-    this.jdField_a_of_type_AndroidOsAsyncTask = null;
+    this.b = null;
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
     super.onActivityResumed(paramActivity);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.o)
+    if (this.d.G)
     {
-      if (this.jdField_a_of_type_AndroidOsAsyncTask == null) {
+      if (this.b == null) {
         a(true, true);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.o = true;
+      this.d.G = true;
     }
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic == null) {
+    if (this.c == null) {
       return;
     }
-    if (paramView.getId() == 2064122286)
+    if (paramView.getId() == 2063991164)
     {
-      AEReportUtils.a(5, 2);
+      AEReportUtils.a(5, 2, this.c.i());
       if (AEFastClickThrottle.a(paramView)) {
         return;
       }
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment;
+      paramView = this.a;
       boolean bool;
       if ((paramView != null) && (paramView.isAdded())) {
         bool = false;
@@ -223,7 +223,7 @@ public class AECircleAlbumListPart
         bool = true;
       }
       if (bool) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.b(a().getIntent());
+        this.c.a(g().getIntent());
       }
       a(bool);
     }
@@ -231,7 +231,7 @@ public class AECircleAlbumListPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECircleAlbumListPart
  * JD-Core Version:    0.7.0.1
  */

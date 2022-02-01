@@ -10,7 +10,7 @@ class DatalineDeviceChooseModel$1
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantUtilDatalineDeviceChooseModel$DeviceChooseInterface.c();
+    this.a.c();
     if (QLog.isColorLevel()) {
       QLog.d("DatalineDeviceChooseModel<FileAssistant>.ACT", 2, "dismiss");
     }
@@ -18,7 +18,7 @@ class DatalineDeviceChooseModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel.1
  * JD-Core Version:    0.7.0.1
  */

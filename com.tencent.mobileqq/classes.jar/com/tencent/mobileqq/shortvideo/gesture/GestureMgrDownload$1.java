@@ -28,9 +28,9 @@ class GestureMgrDownload$1
             QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
           }
           paramIntent = new ArrayList();
-          synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+          synchronized (this.a.c)
           {
-            paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+            paramIntent.addAll(this.a.c);
             ??? = paramIntent.iterator();
             if (!???.hasNext()) {
               return;
@@ -38,26 +38,26 @@ class GestureMgrDownload$1
             ((GestureMgr.GestureStatusListener)???.next()).a(i);
           }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-        int j = this.a.jdField_a_of_type_Int;
+        this.a.a = DownloadInfo.get();
+        int j = this.a.b;
         ??? = this.a;
-        ???.jdField_a_of_type_Int = GestureUtil.a(???.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+        ???.b = GestureUtil.a(???.a);
         boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11)) {
+        if ((i == 100) && (this.a.b != 11)) {
           bool = true;
         } else {
           bool = false;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+          QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.b), this.a.a }));
         }
         paramIntent = new ArrayList();
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        synchronized (this.a.c)
         {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          paramIntent.addAll(this.a.c);
           ??? = paramIntent.iterator();
           if (???.hasNext()) {
-            ((GestureMgr.GestureStatusListener)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+            ((GestureMgr.GestureStatusListener)???.next()).a(bool, this.a.b(), this.a.b);
           }
         }
       }
@@ -66,7 +66,7 @@ class GestureMgrDownload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrDownload.1
  * JD-Core Version:    0.7.0.1
  */

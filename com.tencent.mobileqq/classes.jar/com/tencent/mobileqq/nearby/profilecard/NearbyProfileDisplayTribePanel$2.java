@@ -13,27 +13,27 @@ class NearbyProfileDisplayTribePanel$2
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    if (paramView == this.a)
     {
-      NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel, 1);
-      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.allinone.uin).a();
+      NearbyProfileDisplayTribePanel.a(this.d, 1);
+      new ReportTask(this.d.e.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.d.e.allinone.uin).a();
     }
     else if (paramView == this.b)
     {
-      NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel, 2);
-      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.allinone.uin).a();
+      NearbyProfileDisplayTribePanel.a(this.d, 2);
+      new ReportTask(this.d.e.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.d.e.allinone.uin).a();
     }
     else if (paramView == this.c)
     {
-      NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel, 3);
-      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.allinone.uin).a();
+      NearbyProfileDisplayTribePanel.a(this.d, 3);
+      new ReportTask(this.d.e.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.d.e.allinone.uin).a();
     }
-    NearbyProfileDisplayTribePanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel);
+    NearbyProfileDisplayTribePanel.b(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.2
  * JD-Core Version:    0.7.0.1
  */

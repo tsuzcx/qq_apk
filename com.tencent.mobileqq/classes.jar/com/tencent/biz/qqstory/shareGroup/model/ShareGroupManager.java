@@ -33,46 +33,40 @@ import java.util.List;
 public class ShareGroupManager
   implements IManager
 {
-  private OneObjectCacheList<String, ShareGroupItem> a;
-  protected HashMap<String, String> a;
-  
-  public ShareGroupManager()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList = new OneObjectCacheList(300);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
+  protected HashMap<String, String> a = new HashMap();
+  private OneObjectCacheList<String, ShareGroupItem> b = new OneObjectCacheList(300);
   
   public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public static boolean a(ShareGroupItem paramShareGroupItem)
+  public static boolean b(ShareGroupItem paramShareGroupItem)
   {
     if (paramShareGroupItem == null) {
       return false;
     }
     long l = paramShareGroupItem.groupUin;
-    return TroopAssistantManager.a().a(QQStoryContext.a(), String.valueOf(l));
+    return TroopAssistantManager.a().a(QQStoryContext.j(), String.valueOf(l));
+  }
+  
+  private QQStoryContext c()
+  {
+    return QQStoryContext.a();
   }
   
   public ShareGroupItem a(ShareGroupItem paramShareGroupItem)
   {
-    paramShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
+    paramShareGroupItem = (ShareGroupItem)this.b.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
     ShareGroupEntry localShareGroupEntry = paramShareGroupItem.convertTo();
-    a().a().createEntityManager().persistOrReplace(localShareGroupEntry);
+    c().d().createEntityManager().persistOrReplace(localShareGroupEntry);
     return paramShareGroupItem;
   }
   
   public ShareGroupItem a(String paramString)
   {
     AssertUtils.checkNotNull(paramString);
-    Object localObject = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
+    Object localObject = (ShareGroupItem)this.b.a(paramString);
     if (localObject != null)
     {
       paramString = new StringBuilder();
@@ -81,11 +75,11 @@ public class ShareGroupManager
       SLog.d("Q.qqstory.discover.ShareGroupManager", paramString.toString(), new Object[] { ((ShareGroupItem)localObject).shareGroupId });
       return localObject;
     }
-    localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
+    localObject = a(c().d().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
       localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
-      return (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString, (Copyable)localObject);
+      return (ShareGroupItem)this.b.a(paramString, (Copyable)localObject);
     }
     SLog.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
     return null;
@@ -110,8 +104,8 @@ public class ShareGroupManager
     if (((VideoCollectionItem)localObject1).collectionCount == ((VideoCollectionItem)localObject1).videoVidList.size())
     {
       localObject2 = new ShareGroupManager.GetFeedIdVidListEvent();
-      ((ShareGroupManager.GetFeedIdVidListEvent)localObject2).jdField_a_of_type_JavaLangString = paramString;
-      ((ShareGroupManager.GetFeedIdVidListEvent)localObject2).jdField_a_of_type_JavaUtilArrayList = ((VideoCollectionItem)localObject1).videoVidList;
+      ((ShareGroupManager.GetFeedIdVidListEvent)localObject2).a = paramString;
+      ((ShareGroupManager.GetFeedIdVidListEvent)localObject2).b = ((VideoCollectionItem)localObject1).videoVidList;
       StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject2);
       return;
     }
@@ -123,12 +117,12 @@ public class ShareGroupManager
     ((qqstory_service.ReqLoadMoreVideoList)localObject2).video_count.set(10);
     Bundle localBundle = new Bundle();
     localBundle.putString("extra_feedid", ((VideoCollectionItem)localObject1).feedId);
-    ProtoUtils.a(PlayModeUtils.a(), new ShareGroupManager.1(this, i, paramString, paramInt), ((qqstory_service.ReqLoadMoreVideoList)localObject2).toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), localBundle);
+    ProtoUtils.a(PlayModeUtils.b(), new ShareGroupManager.1(this, i, paramString, paramInt), ((qqstory_service.ReqLoadMoreVideoList)localObject2).toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), localBundle);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+    this.a.put(paramString1, paramString2);
   }
   
   public ShareGroupItem b(String paramString)
@@ -140,7 +134,7 @@ public class ShareGroupManager
       localShareGroupItem1 = new ShareGroupItem();
       localShareGroupItem1.shareGroupId = paramString;
       localShareGroupItem1.name = paramString;
-      localShareGroupItem1.ownerUnionId = QQStoryContext.a().b();
+      localShareGroupItem1.ownerUnionId = QQStoryContext.a().i();
       localShareGroupItem1.assertItem();
       SLog.d("Q.qqstory.discover.ShareGroupManager", "create one fake groupItem:%s", new Object[] { localShareGroupItem1 });
     }

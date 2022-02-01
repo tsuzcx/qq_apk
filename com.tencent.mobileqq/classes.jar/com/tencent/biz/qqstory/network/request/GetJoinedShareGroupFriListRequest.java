@@ -14,10 +14,15 @@ import com.tencent.mobileqq.pb.PBBytesField;
 public class GetJoinedShareGroupFriListRequest
   extends NetworkRequest<GetJoinedShareGroupFriListResponse>
 {
-  protected static final String a = StoryApi.a("StorySvc.get_friend_joined_share_group_status");
-  public String b;
+  protected static final String e = StoryApi.a("StorySvc.get_friend_joined_share_group_status");
+  public String f;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetJoinedShareGroupFriList localRspGetJoinedShareGroupFriList = new qqstory_service.RspGetJoinedShareGroupFriList();
     try
@@ -32,21 +37,16 @@ public class GetJoinedShareGroupFriListRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetJoinedShareGroupFriList localReqGetJoinedShareGroupFriList = new qqstory_service.ReqGetJoinedShareGroupFriList();
-    localReqGetJoinedShareGroupFriList.share_group_unionid.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetJoinedShareGroupFriList.share_group_unionid.set(ByteStringMicro.copyFromUtf8(this.f));
     return localReqGetJoinedShareGroupFriList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetJoinedShareGroupFriListRequest
  * JD-Core Version:    0.7.0.1
  */

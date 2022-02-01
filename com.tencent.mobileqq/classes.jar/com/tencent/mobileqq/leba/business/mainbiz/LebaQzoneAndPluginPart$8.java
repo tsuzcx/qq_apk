@@ -21,18 +21,18 @@ class LebaQzoneAndPluginPart$8
   
   public void run()
   {
-    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.getManager(QQManagerFactory.QZONE_MANAGER);
     int m = 0;
     int n = 0;
     int k;
     if (localQZoneManagerImp != null) {
-      k = localQZoneManagerImp.a(1);
+      k = localQZoneManagerImp.d(1);
     } else {
       k = 0;
     }
     Object localObject1;
     if (localQZoneManagerImp != null) {
-      localObject1 = localQZoneManagerImp.a();
+      localObject1 = localQZoneManagerImp.e();
     } else {
       localObject1 = null;
     }
@@ -47,7 +47,7 @@ class LebaQzoneAndPluginPart$8
     this.this$0.a(new LebaQzoneAndPluginPart.8.1(this, k));
     int i;
     if (localQZoneManagerImp != null) {
-      i = localQZoneManagerImp.a(2);
+      i = localQZoneManagerImp.d(2);
     } else {
       i = 0;
     }
@@ -60,7 +60,7 @@ class LebaQzoneAndPluginPart$8
       }
       this.this$0.a(new LebaQzoneAndPluginPart.8.2(this, (ArrayList)localObject1));
       if (localQZoneManagerImp != null) {
-        localObject1 = localQZoneManagerImp.a(2);
+        localObject1 = localQZoneManagerImp.e(2);
       } else {
         localObject1 = null;
       }
@@ -69,7 +69,7 @@ class LebaQzoneAndPluginPart$8
       } else {
         localObject1 = null;
       }
-      this.this$0.a = 2;
+      this.this$0.j = 2;
       i = 8;
       bool = false;
     }
@@ -91,9 +91,9 @@ class LebaQzoneAndPluginPart$8
         if (localQZoneManagerImp == null) {
           break label1188;
         }
-        localObject1 = localQZoneManagerImp.a(6);
+        localObject1 = localQZoneManagerImp.e(6);
         if (localQZoneManagerImp != null) {
-          localObject6 = localQZoneManagerImp.a(61);
+          localObject6 = localQZoneManagerImp.e(61);
         } else {
           localObject6 = null;
         }
@@ -113,7 +113,7 @@ class LebaQzoneAndPluginPart$8
           ((StringBuilder)localObject2).append(((QZoneCountUserInfo)((QZoneCountInfo)localObject1).friendList.get(0)).uin);
           ((StringBuilder)localObject2).append("");
           localObject2 = ((StringBuilder)localObject2).toString();
-          this.this$0.a = 6;
+          this.this$0.j = 6;
           localObject1 = localObject7;
           i = 1;
           j = i;
@@ -151,7 +151,7 @@ class LebaQzoneAndPluginPart$8
                       ((StringBuilder)localObject1).append(((QZoneCountUserInfo)((QZoneCountInfo)localObject6).friendList.get(0)).uin);
                       ((StringBuilder)localObject1).append("");
                       localObject7 = ((StringBuilder)localObject1).toString();
-                      this.this$0.a = 61;
+                      this.this$0.j = 61;
                       j = 1;
                     }
                   }
@@ -193,17 +193,17 @@ class LebaQzoneAndPluginPart$8
       {
         try
         {
-          localObject1 = localQZoneManagerImp.a(3);
+          localObject1 = localQZoneManagerImp.e(3);
           if (localQZoneManagerImp != null)
           {
-            localQZoneCountInfo = localQZoneManagerImp.a(1013);
+            localQZoneCountInfo = localQZoneManagerImp.e(1013);
             if ((j == 0) && (LebaQzoneAndPluginPart.a((QZoneCountInfo)localObject1)))
             {
               localObject7 = ((QZoneCountInfo)localObject1).strShowMsg;
               localObject6 = localObject7;
               try
               {
-                this.this$0.a = 3;
+                this.this$0.j = 3;
                 localObject6 = localObject1;
                 j = 1;
                 localObject1 = localObject7;
@@ -228,7 +228,7 @@ class LebaQzoneAndPluginPart$8
                 }
                 localObject7 = localException3.strShowMsg;
                 localObject6 = localObject7;
-                this.this$0.a = 1013;
+                this.this$0.j = 1013;
                 localObject6 = localObject7;
                 if (BaseApplicationImpl.getApplication() != null)
                 {
@@ -350,7 +350,7 @@ class LebaQzoneAndPluginPart$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8
  * JD-Core Version:    0.7.0.1
  */

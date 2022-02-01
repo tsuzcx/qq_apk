@@ -5,12 +5,12 @@ class CardHandler$3
 {
   public void run()
   {
-    CardHandler.a(this.this$0);
+    CardHandler.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardHandler.3
  * JD-Core Version:    0.7.0.1
  */

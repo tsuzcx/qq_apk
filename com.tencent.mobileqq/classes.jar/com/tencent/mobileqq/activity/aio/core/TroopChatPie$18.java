@@ -22,42 +22,42 @@ class TroopChatPie$18
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    if (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+    if (!paramString1.equals(this.a.ah.b)) {
       return;
     }
-    TroopManager localTroopManager = (TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = localTroopManager.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    TroopManager localTroopManager = (TroopManager)this.a.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopInfo localTroopInfo = localTroopManager.g(this.a.ah.b);
     if (localTroopInfo == null) {
       return;
     }
     if (!paramBoolean)
     {
       if (!TextUtils.isEmpty(paramString3)) {
-        QQToast.a(BaseApplicationImpl.getContext(), 1, paramString3, 0).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 1, paramString3, 0).show();
       }
     }
     else
     {
       localTroopInfo.troopname = paramString2;
       localTroopInfo.hasSetNewTroopName = true;
-      if ((this.a.l()) && (localTroopInfo.isNewTroop) && (localTroopInfo.hasSetNewTroopName) && (localTroopInfo.hasSetNewTroopHead)) {
+      if ((this.a.aY()) && (localTroopInfo.isNewTroop) && (localTroopInfo.hasSetNewTroopName) && (localTroopInfo.hasSetNewTroopHead)) {
         localTroopInfo.isNewTroop = false;
       }
       localTroopManager.b(localTroopInfo);
-      this.a.aE();
+      this.a.bW();
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramString1)) && (localTroopInfo != null))
+    if ((this.a.ah.b.equals(paramString1)) && (localTroopInfo != null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = localTroopInfo.getTroopDisplayName();
-      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+      this.a.ah.e = localTroopInfo.getTroopDisplayName();
+      paramString1 = this.a.f.getIntent();
       paramString1.putExtra("uinname", localTroopInfo.getTroopDisplayName());
-      this.a.b(paramString1);
+      this.a.c(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.18
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import com.tencent.avgame.gamelogic.data.EngineData;
 
 public abstract interface IGameListView
 {
-  public abstract Context a();
-  
   public abstract void a(EngineData paramEngineData);
   
   public abstract void a(String paramString);
   
   public abstract void c(int paramInt);
+  
+  public abstract Context getViewContext();
 }
 
 

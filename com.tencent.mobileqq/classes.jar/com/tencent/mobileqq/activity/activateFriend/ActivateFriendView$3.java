@@ -13,41 +13,41 @@ class ActivateFriendView$3
   
   public void b()
   {
-    if (ActivateFriendView.a(this.a) != null)
+    if (ActivateFriendView.e(this.a) != null)
     {
-      if (ActivateFriendView.b(this.a) == null) {
+      if (ActivateFriendView.g(this.a) == null) {
         return;
       }
       ActivateFriendView.a(this.a, 0);
       int i = 0;
-      while (i < ActivateFriendView.a(this.a).size())
+      while (i < ActivateFriendView.e(this.a).size())
       {
-        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.e(this.a).get(i)).uin, 2))
         {
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689549));
+          ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setChecked(false);
+          ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setBirthday(this.a.getResources().getString(2131886159));
         }
-        else if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+        else if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.e(this.a).get(i)).uin, 2))
         {
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689552));
+          ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setChecked(false);
+          ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setBirthday(this.a.getResources().getString(2131886162));
         }
         else
         {
           ActivateFriendView.b(this.a);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
+          ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setChecked(true);
         }
         i += 1;
       }
-      if (ActivateFriendView.a(this.a) != null) {
-        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+      if (ActivateFriendView.c(this.a) != null) {
+        ActivateFriendView.c(this.a).a(ActivateFriendView.d(this.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendView.3
  * JD-Core Version:    0.7.0.1
  */

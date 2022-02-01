@@ -26,12 +26,12 @@ import com.tencent.mobileqq.utils.ImageUtil;
 public class MatchingView
   extends FrameLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AnimatorSet jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private RoundImageView jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private RoundImageView a;
+  private TextView b;
+  private View c;
+  private LottieDrawable d;
+  private AnimatorSet e;
+  private boolean f = false;
   
   public MatchingView(Context paramContext)
   {
@@ -51,12 +51,12 @@ public class MatchingView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(1912995843, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView = ((RoundImageView)findViewById(1912930339));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(1912930340));
-    this.jdField_a_of_type_AndroidViewView = findViewById(1912930342);
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setBorderColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setBorderWidth(6);
+    LayoutInflater.from(paramContext).inflate(1912995845, this, true);
+    this.a = ((RoundImageView)findViewById(1912930379));
+    this.b = ((TextView)findViewById(1912930380));
+    this.c = findViewById(1912930382);
+    this.a.setBorderColor(-1);
+    this.a.setBorderWidth(6);
     c();
     d();
   }
@@ -81,9 +81,9 @@ public class MatchingView
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = ImageUtil.e();
+      localObject2 = ImageUtil.j();
     }
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setImageDrawable((Drawable)localObject2);
+    this.a.setImageDrawable((Drawable)localObject2);
   }
   
   private void d()
@@ -93,41 +93,41 @@ public class MatchingView
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet = ((AnimatorSet)AnimatorInflater.loadAnimator(getContext(), 2130903040));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.setTarget(this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.setStartDelay(1000L);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.addListener(new MatchingView.3(this));
+      this.e = ((AnimatorSet)AnimatorInflater.loadAnimator(getContext(), 2130903061));
+      this.e.setTarget(this.a);
+      this.e.setStartDelay(1000L);
+      this.e.addListener(new MatchingView.3(this));
     }
-    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    LottieDrawable localLottieDrawable = this.d;
     if (localLottieDrawable != null) {
       localLottieDrawable.playAnimation();
     }
-    this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.start();
-    this.jdField_a_of_type_Boolean = true;
+    this.e.start();
+    this.f = true;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniUiRoundImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+    this.a.setImageDrawable(null);
+    this.b.setText(null);
     c();
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.b.setText(paramString);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet;
+    this.f = false;
+    Object localObject = this.e;
     if (localObject != null)
     {
       ((AnimatorSet)localObject).cancel();
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.end();
+      this.e.end();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    localObject = this.d;
     if (localObject != null) {
       ((LottieDrawable)localObject).endAnimation();
     }
@@ -140,7 +140,7 @@ public class MatchingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.MatchingView
  * JD-Core Version:    0.7.0.1
  */

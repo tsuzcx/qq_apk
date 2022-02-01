@@ -11,17 +11,17 @@ import java.lang.reflect.Field;
 
 public class SmallScreenToast
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView = null;
-  WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-  WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  boolean jdField_a_of_type_Boolean = false;
+  WindowManager a;
+  Context b;
+  WindowManager.LayoutParams c = new WindowManager.LayoutParams();
+  View d = null;
+  boolean e = false;
   
   public SmallScreenToast(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window"));
-    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    this.b = paramContext;
+    this.a = ((WindowManager)this.b.getSystemService("window"));
+    paramContext = this.c;
     paramContext.height = -2;
     paramContext.width = -2;
     paramContext.flags = 776;
@@ -30,44 +30,39 @@ public class SmallScreenToast
     paramContext.type = 2010;
     paramContext.gravity = 51;
     paramContext.setTitle("Toast");
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.d = paramView;
     a();
-  }
-  
-  public WindowManager.LayoutParams a()
-  {
-    return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   }
   
   void a()
   {
     try
     {
-      int i = ((Integer)this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("privateFlags").get(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams)).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("privateFlags").set(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams, Integer.valueOf(i | 0x40));
+      int i = ((Integer)this.c.getClass().getField("privateFlags").get(this.c)).intValue();
+      this.c.getClass().getField("privateFlags").set(this.c, Integer.valueOf(i | 0x40));
       return;
     }
     catch (Exception localException) {}
   }
   
-  public boolean a()
+  public boolean b()
   {
     for (;;)
     {
       try
       {
-        bool1 = this.jdField_a_of_type_Boolean;
+        bool1 = this.e;
         bool2 = false;
         if (bool1) {
           break label390;
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
         try
         {
           if (QLog.isColorLevel()) {
             QLog.d("SmallScreenToast", 2, "startHandler addView start");
           }
-          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+          this.a.addView(this.d, this.c);
           if (!QLog.isColorLevel()) {
             break label390;
           }
@@ -75,7 +70,7 @@ public class SmallScreenToast
         }
         catch (Exception localException)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.e = false;
           localStringBuilder2 = new StringBuilder();
           localStringBuilder2.append("startHandler error : ");
           localStringBuilder2.append(localException);
@@ -85,7 +80,7 @@ public class SmallScreenToast
         }
         catch (SecurityException localSecurityException)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.e = false;
           bool1 = bool2;
           if (!QLog.isColorLevel()) {
             continue;
@@ -99,7 +94,7 @@ public class SmallScreenToast
         }
         catch (WindowManager.BadTokenException localBadTokenException)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.e = false;
           bool1 = bool2;
           if (!QLog.isColorLevel()) {
             continue;
@@ -113,7 +108,7 @@ public class SmallScreenToast
         }
         catch (IllegalStateException localIllegalStateException)
         {
-          this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+          this.a.updateViewLayout(this.d, this.c);
           if (!QLog.isColorLevel()) {
             break label390;
           }
@@ -125,18 +120,18 @@ public class SmallScreenToast
       }
       finally {}
       boolean bool2 = bool1;
-      if ((WindowManager.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams() != null)
+      if ((WindowManager.LayoutParams)this.d.getLayoutParams() != null)
       {
         bool2 = bool1;
         if (bool1) {
-          bool2 = SmallScreenUtils.c(this.jdField_a_of_type_AndroidContentContext);
+          bool2 = SmallScreenUtils.c(this.b);
         }
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("startHandler isVisible = ");
-        localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder1.append(this.e);
         QLog.d("SmallScreenToast", 2, localStringBuilder1.toString());
         localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("startHandler result = ");
@@ -149,19 +144,19 @@ public class SmallScreenToast
     }
   }
   
-  public void b()
+  public void c()
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.e)
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.e = false;
         try
         {
           if (QLog.isColorLevel()) {
             QLog.d("SmallScreenToast", 2, "stopHandler removeView start");
           }
-          this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+          this.a.removeView(this.d);
           if (QLog.isColorLevel()) {
             QLog.d("SmallScreenToast", 2, "stopHandler removeView end");
           }
@@ -182,17 +177,12 @@ public class SmallScreenToast
     finally {}
   }
   
-  public boolean b()
+  public void d()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       try
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        this.a.updateViewLayout(this.d, this.c);
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
@@ -207,10 +197,20 @@ public class SmallScreenToast
       }
     }
   }
+  
+  public boolean e()
+  {
+    return this.e;
+  }
+  
+  public WindowManager.LayoutParams f()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenToast
  * JD-Core Version:    0.7.0.1
  */

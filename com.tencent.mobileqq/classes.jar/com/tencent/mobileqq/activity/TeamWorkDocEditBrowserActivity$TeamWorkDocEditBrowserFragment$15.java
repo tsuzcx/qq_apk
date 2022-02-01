@@ -15,30 +15,30 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$15
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().jdField_a_of_type_Int;
+    int i = this.a.a().c;
     String str1 = this.this$0.getAppRuntime().getCurrentAccountUin();
-    String str2 = this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().i;
-    String str3 = this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().h;
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().b == 3) {
+    String str2 = this.a.a().n;
+    String str3 = this.a.a().m;
+    if (this.a.a().f == 3) {
       bool = true;
     } else {
       bool = false;
     }
     List localList1;
-    if (this.jdField_a_of_type_Int == 0) {
-      localList1 = this.jdField_a_of_type_JavaUtilList;
+    if (this.b == 0) {
+      localList1 = this.c;
     } else {
       localList1 = null;
     }
     List localList2;
-    if (this.jdField_a_of_type_Int == 1) {
-      localList2 = this.jdField_a_of_type_JavaUtilList;
+    if (this.b == 1) {
+      localList2 = this.c;
     } else {
       localList2 = null;
     }
     List localList3;
-    if (this.jdField_a_of_type_Int == 3000) {
-      localList3 = this.jdField_a_of_type_JavaUtilList;
+    if (this.b == 3000) {
+      localList3 = this.c;
     } else {
       localList3 = null;
     }
@@ -48,7 +48,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.15
  * JD-Core Version:    0.7.0.1
  */

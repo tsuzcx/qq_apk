@@ -3,8 +3,8 @@ package com.tencent.mtt.abtestsdk.report;
 import com.tencent.mtt.abtestsdk.entity.AttaEntity;
 import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import com.tencent.mtt.abtestsdk.utils.ThreadPoolUtil;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class AttaReport
 {
@@ -16,31 +16,31 @@ public class AttaReport
   
   private Map<String, String> createReportData(AttaEntity paramAttaEntity)
   {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    HashMap localHashMap = new HashMap();
     if (paramAttaEntity != null)
     {
-      localConcurrentHashMap.put("attaid", paramAttaEntity.getAttaId());
-      localConcurrentHashMap.put("token", paramAttaEntity.getAttaToken());
-      localConcurrentHashMap.put("eventcode", paramAttaEntity.getEventcode());
-      localConcurrentHashMap.put("guid", paramAttaEntity.getGuid());
-      localConcurrentHashMap.put("grayid", paramAttaEntity.getGrayid());
-      localConcurrentHashMap.put("platform", paramAttaEntity.getPlatform());
-      localConcurrentHashMap.put("bundleid", paramAttaEntity.getBundleid());
-      localConcurrentHashMap.put("bundlerversion", paramAttaEntity.getBundlerversion());
-      localConcurrentHashMap.put("eventtime", paramAttaEntity.getEventtime());
-      localConcurrentHashMap.put("eventpage", paramAttaEntity.getEventpage());
-      localConcurrentHashMap.put("osmodel", paramAttaEntity.getOsmodel());
-      localConcurrentHashMap.put("osversion", paramAttaEntity.getOsversion());
-      localConcurrentHashMap.put("devicebrand", paramAttaEntity.getDevicebrand());
-      localConcurrentHashMap.put("resolution", paramAttaEntity.getResolution());
-      localConcurrentHashMap.put("language", paramAttaEntity.getLanguage());
-      localConcurrentHashMap.put("sdkversion", paramAttaEntity.getSdkversion());
-      localConcurrentHashMap.put("channel", paramAttaEntity.getChannel());
-      localConcurrentHashMap.put("appid", paramAttaEntity.getAppid());
-      localConcurrentHashMap.put("isfirsthint", paramAttaEntity.getIsfirsthint());
-      localConcurrentHashMap.put("devicemodel", paramAttaEntity.getDevicemodel());
+      localHashMap.put("attaid", paramAttaEntity.getAttaId());
+      localHashMap.put("token", paramAttaEntity.getAttaToken());
+      localHashMap.put("eventcode", paramAttaEntity.getEventcode());
+      localHashMap.put("guid", paramAttaEntity.getGuid());
+      localHashMap.put("grayid", paramAttaEntity.getGrayid());
+      localHashMap.put("platform", paramAttaEntity.getPlatform());
+      localHashMap.put("bundleid", paramAttaEntity.getBundleid());
+      localHashMap.put("bundlerversion", paramAttaEntity.getBundlerversion());
+      localHashMap.put("eventtime", paramAttaEntity.getEventtime());
+      localHashMap.put("eventpage", paramAttaEntity.getEventpage());
+      localHashMap.put("osmodel", paramAttaEntity.getOsmodel());
+      localHashMap.put("osversion", paramAttaEntity.getOsversion());
+      localHashMap.put("devicebrand", paramAttaEntity.getDevicebrand());
+      localHashMap.put("resolution", paramAttaEntity.getResolution());
+      localHashMap.put("language", paramAttaEntity.getLanguage());
+      localHashMap.put("sdkversion", paramAttaEntity.getSdkversion());
+      localHashMap.put("channel", paramAttaEntity.getChannel());
+      localHashMap.put("appid", paramAttaEntity.getAppid());
+      localHashMap.put("isfirsthint", paramAttaEntity.getIsfirsthint());
+      localHashMap.put("devicemodel", paramAttaEntity.getDevicemodel());
     }
-    return localConcurrentHashMap;
+    return localHashMap;
   }
   
   public static AttaReport getInstance()
@@ -63,7 +63,7 @@ public class AttaReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.report.AttaReport
  * JD-Core Version:    0.7.0.1
  */

@@ -21,21 +21,21 @@ class ChatHistoryC2CDateFragment$3
       localStringBuilder.append(paramBoolean);
       QLog.d(paramObject, 2, localStringBuilder.toString());
     }
-    this.a.p();
+    this.a.u();
     if (paramBoolean)
     {
       ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
       return;
     }
     paramObject = this.a;
-    paramObject.b(paramObject.getString(2131690800));
+    paramObject.b(paramObject.getString(2131887730));
   }
   
   public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,24 +18,24 @@ final class DrawerCoverUtil$3
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
-    localObject = new UpSideDownDrawable((Context)localObject, this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable((Drawable)localObject);
-    if (this.jdField_a_of_type_Boolean) {
+    localObject = new UpSideDownDrawable((Context)localObject, this.b, 0, 0);
+    this.c.getCoverView().setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.c.getCoverView().setImageDrawable((Drawable)localObject);
+    if (this.d) {
       ((UpSideDownDrawable)localObject).start();
     } else {
       ((UpSideDownDrawable)localObject).stop();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$QQSettingMeListener.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.strDrawerCardUrl, (UpSideDownDrawable)localObject);
+    this.e.a(this.f.strDrawerCardUrl, (UpSideDownDrawable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil.3
  * JD-Core Version:    0.7.0.1
  */

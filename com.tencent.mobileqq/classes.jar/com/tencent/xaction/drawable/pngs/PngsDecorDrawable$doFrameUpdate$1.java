@@ -1,7 +1,7 @@
 package com.tencent.xaction.drawable.pngs;
 
 import android.os.Handler;
-import com.tencent.xaction.api.base.BaseAnim;
+import com.tencent.xaction.api.IDrawable;
 import com.tencent.xaction.impl.XAEngine;
 import com.tencent.xaction.impl.XAEngine.Companion;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -16,25 +16,22 @@ final class PngsDecorDrawable$doFrameUpdate$1
   
   public final void run()
   {
-    if (this.this$0.getBaseAnim().isFirst().get())
+    if (this.this$0.isFirst().get())
     {
-      localObject = this.this$0.getDrawable();
-      if (localObject != null) {
-        ((PngsDrawable)localObject).a(0);
+      IDrawable localIDrawable = this.this$0.getDrawable();
+      if (localIDrawable != null) {
+        ((PngsDrawable)localIDrawable).a(0);
       } else {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.drawable.pngs.PngsDrawable");
       }
     }
-    this.a.a();
-    Object localObject = XAEngine.Companion.a();
-    if (localObject != null) {
-      ((Handler)localObject).post((Runnable)new PngsDecorDrawable.doFrameUpdate.1.1(this));
-    }
+    this.a.b();
+    XAEngine.Companion.c().post((Runnable)new PngsDecorDrawable.doFrameUpdate.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.drawable.pngs.PngsDecorDrawable.doFrameUpdate.1
  * JD-Core Version:    0.7.0.1
  */

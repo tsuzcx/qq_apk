@@ -14,16 +14,16 @@ class QRScanEntryView$4
   
   public void onClick(View paramView)
   {
-    if (QRScanEntryView.a(this.a))
+    if (QRScanEntryView.c(this.a))
     {
-      if (CameraProxy.a().a(QRScanEntryView.b(this.a) ^ true))
+      if (CameraProxy.a().b(QRScanEntryView.d(this.a) ^ true))
       {
         QRScanEntryView localQRScanEntryView = this.a;
-        QRScanEntryView.a(localQRScanEntryView, QRScanEntryView.b(localQRScanEntryView) ^ true);
-        ((QRSession)this.a.a).a(QRScanEntryView.b(this.a) ^ true, 0L);
-        QRScanEntryView.a(this.a, true);
+        QRScanEntryView.a(localQRScanEntryView, QRScanEntryView.d(localQRScanEntryView) ^ true);
+        ((QRSession)this.a.G).a(QRScanEntryView.d(this.a) ^ true, 0L);
+        QRScanEntryView.b(this.a, true);
         localQRScanEntryView = this.a;
-        QRScanEntryView.b(localQRScanEntryView, QRScanEntryView.b(localQRScanEntryView));
+        QRScanEntryView.c(localQRScanEntryView, QRScanEntryView.d(localQRScanEntryView));
       }
     }
     else if (QLog.isColorLevel()) {
@@ -34,7 +34,7 @@ class QRScanEntryView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.4
  * JD-Core Version:    0.7.0.1
  */

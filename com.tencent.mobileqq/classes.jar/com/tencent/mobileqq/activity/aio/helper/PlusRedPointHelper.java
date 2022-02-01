@@ -30,20 +30,20 @@ import org.jetbrains.annotations.Nullable;
 public final class PlusRedPointHelper
   implements ILifeCycleHelper
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private PlusPanelViewModel jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private final String a;
+  private PlusPanelViewModel b;
+  private ArrayList<String> c;
+  private final BaseChatPie d;
   
   public PlusRedPointHelper(@Nullable BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_JavaLangString = "PlusRedPointHelper";
+    this.d = paramBaseChatPie;
+    this.a = "PlusRedPointHelper";
   }
   
   private final void a(ArrayList<PluginData> paramArrayList)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.c;
     if (localObject != null) {
       ((ArrayList)localObject).clear();
     }
@@ -51,9 +51,9 @@ public final class PlusRedPointHelper
     while (paramArrayList.hasNext())
     {
       localObject = (PluginData)paramArrayList.next();
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.c;
       if (localArrayList != null) {
-        localArrayList.add(((PluginData)localObject).c);
+        localArrayList.add(((PluginData)localObject).f);
       }
     }
   }
@@ -61,20 +61,20 @@ public final class PlusRedPointHelper
   @Nullable
   public final List<String> a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+      this.c = new ArrayList();
+      Object localObject = this.b;
       if (localObject != null)
       {
-        localObject = ((PlusPanelViewModel)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+        localObject = ((PlusPanelViewModel)localObject).c(this.d);
         if (localObject != null)
         {
           localObject = ((Iterable)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             PlusPanelAppInfo localPlusPanelAppInfo = (PlusPanelAppInfo)((Iterator)localObject).next();
-            ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+            ArrayList localArrayList = this.c;
             if (localArrayList == null) {
               Intrinsics.throwNpe();
             }
@@ -84,13 +84,13 @@ public final class PlusRedPointHelper
         }
       }
     }
-    return (List)this.jdField_a_of_type_JavaUtilArrayList;
+    return (List)this.c;
   }
   
   @NotNull
   public String getTag()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   @NotNull
@@ -104,24 +104,24 @@ public final class PlusRedPointHelper
     if (paramInt != 9) {
       return;
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onShowFirst create pluspanel");
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    QLog.d(this.a, 1, "onShowFirst create pluspanel");
+    Object localObject1 = this.d;
     if (localObject1 != null) {
-      localObject1 = ((BaseChatPie)localObject1).a();
+      localObject1 = ((BaseChatPie)localObject1).aX();
     } else {
       localObject1 = null;
     }
     if (!(localObject1 instanceof BaseActivity)) {
       return;
     }
-    if (QVipSDKProcessor.c().e())
+    if (QVipSDKProcessor.e().f())
     {
       localObject1 = LifeCycleFragment.a((QBaseActivity)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, PlusPanelViewModel.a).get(PlusPanelViewModel.class));
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+      this.b = ((PlusPanelViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, PlusPanelViewModel.e).get(PlusPanelViewModel.class));
+      localObject2 = this.b;
       if (localObject2 != null)
       {
-        localObject2 = ((PlusPanelViewModel)localObject2).a();
+        localObject2 = ((PlusPanelViewModel)localObject2).b();
         if (localObject2 != null) {
           ((MutableLiveData)localObject2).observe((LifecycleOwner)localObject1, (Observer)new PlusRedPointHelper.onMoveToState.1(this));
         }
@@ -130,19 +130,19 @@ public final class PlusRedPointHelper
       return;
     }
     localObject1 = LifeCycleFragment.a((QBaseActivity)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, PlusPanelViewModel.a).get(PlusPanelViewModel.class));
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+    this.b = ((PlusPanelViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, PlusPanelViewModel.e).get(PlusPanelViewModel.class));
+    Object localObject2 = this.b;
     if (localObject2 != null) {
-      ((PlusPanelViewModel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      ((PlusPanelViewModel)localObject2).a(this.d);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+    localObject2 = this.b;
     if (localObject2 != null) {
-      ((PlusPanelViewModel)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      ((PlusPanelViewModel)localObject2).b(this.d);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+    localObject2 = this.b;
     if (localObject2 != null)
     {
-      localObject2 = ((PlusPanelViewModel)localObject2).a();
+      localObject2 = ((PlusPanelViewModel)localObject2).b();
       if (localObject2 != null) {
         ((MutableLiveData)localObject2).observe((LifecycleOwner)localObject1, (Observer)new PlusRedPointHelper.onMoveToState.2(this));
       }
@@ -151,7 +151,7 @@ public final class PlusRedPointHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusRedPointHelper
  * JD-Core Version:    0.7.0.1
  */

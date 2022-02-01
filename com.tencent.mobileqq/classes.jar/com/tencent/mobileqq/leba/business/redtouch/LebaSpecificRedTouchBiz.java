@@ -29,6 +29,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qqexpand.manager.IExpandManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
@@ -38,6 +40,7 @@ import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQZoneApiProxy;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -50,14 +53,9 @@ import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 public class LebaSpecificRedTouchBiz
   extends ILebaRedTouchBiz
 {
-  public static int a = -1;
-  protected boolean a;
-  private int b;
-  
-  public LebaSpecificRedTouchBiz()
-  {
-    this.jdField_b_of_type_Int = 0;
-  }
+  public static int c = -1;
+  protected boolean b;
+  private int d = 0;
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
@@ -92,7 +90,7 @@ public class LebaSpecificRedTouchBiz
         BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = ((IReadInJoyManager)localObject1).obtainCachedRedTypeInfo();
         paramQQAppInterface = ((IReadInJoyManager)localObject1).obtainCachedAppInfo();
         localObject1 = ((IReadInJoyManager)localObject1).obtainLatestNotifyRedTouchInfo();
-        int i = ((ReadInJoyNotifyRedTouchInfo)localObject1).jdField_a_of_type_Int;
+        int i = ((ReadInJoyNotifyRedTouchInfo)localObject1).b;
         if (i != 0)
         {
           if (i != 1)
@@ -104,7 +102,7 @@ public class LebaSpecificRedTouchBiz
                 if (i != 4) {
                   return;
                 }
-                paramContext = ((ReadInJoyNotifyRedTouchInfo)localObject1).jdField_b_of_type_JavaLangString;
+                paramContext = ((ReadInJoyNotifyRedTouchInfo)localObject1).c;
                 localObject1 = localRedTypeInfo.red_content;
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append(paramContext);
@@ -118,7 +116,7 @@ public class LebaSpecificRedTouchBiz
                 return;
               }
               localRedTypeInfo.red_type.set(3);
-              i = ((ReadInJoyNotifyRedTouchInfo)localObject1).c;
+              i = ((ReadInJoyNotifyRedTouchInfo)localObject1).e;
               paramContext = localRedTypeInfo.red_desc;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("{'drawable':");
@@ -130,7 +128,7 @@ public class LebaSpecificRedTouchBiz
               paramRedTouch.a(paramQQAppInterface);
               return;
             }
-            localObject1 = ((ReadInJoyNotifyRedTouchInfo)localObject1).jdField_b_of_type_JavaLangString;
+            localObject1 = ((ReadInJoyNotifyRedTouchInfo)localObject1).c;
             Object localObject2 = localRedTypeInfo.red_content;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append((String)localObject1);
@@ -155,7 +153,7 @@ public class LebaSpecificRedTouchBiz
             paramRedTouch.a(paramQQAppInterface);
             return;
           }
-          i = ((ReadInJoyNotifyRedTouchInfo)localObject1).jdField_b_of_type_Int;
+          i = ((ReadInJoyNotifyRedTouchInfo)localObject1).d;
           if (i > 99)
           {
             localRedTypeInfo.red_content.set("99+");
@@ -175,7 +173,7 @@ public class LebaSpecificRedTouchBiz
           paramRedTouch.a(paramQQAppInterface);
           return;
         }
-        paramRedTouch.d();
+        paramRedTouch.g();
       }
     }
   }
@@ -186,13 +184,13 @@ public class LebaSpecificRedTouchBiz
     {
       if (ConfessConfig.a(paramQQAppInterface, "redpoint_leba_show"))
       {
-        paramContext = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
+        paramContext = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).d();
         if (paramContext != null) {
           paramQQAppInterface = paramContext.a(paramQQAppInterface);
         } else {
           paramQQAppInterface = "";
         }
-        if ((!TextUtils.isEmpty(paramQQAppInterface)) && (!this.jdField_a_of_type_Boolean))
+        if ((!TextUtils.isEmpty(paramQQAppInterface)) && (!this.b))
         {
           BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
           paramContext = new BusinessInfoCheckUpdate.AppInfo();
@@ -211,10 +209,10 @@ public class LebaSpecificRedTouchBiz
           {
             paramQQAppInterface = (TextView)paramRedTouch.findViewById(30);
             paramContext = (LinearLayout.LayoutParams)paramQQAppInterface.getLayoutParams();
-            paramQQAppInterface.setMaxWidth(ViewUtils.a(200.0F));
+            paramQQAppInterface.setMaxWidth(ViewUtils.dip2px(200.0F));
             paramContext.weight = 1.0F;
             paramContext.width = 0;
-            paramContext.rightMargin = ViewUtils.a(4.0F);
+            paramContext.rightMargin = ViewUtils.dip2px(4.0F);
             paramQQAppInterface.setEllipsize(TextUtils.TruncateAt.END);
             paramQQAppInterface.setLayoutParams(paramContext);
             return;
@@ -235,7 +233,7 @@ public class LebaSpecificRedTouchBiz
         paramRedTouch.a(paramContext);
         return;
       }
-      paramRedTouch.d();
+      paramRedTouch.g();
     }
   }
   
@@ -244,8 +242,8 @@ public class LebaSpecificRedTouchBiz
     if (paramRedTouch == null) {
       return;
     }
-    jdField_a_of_type_Int = paramINearbyRedInfo.getRedAppIdType();
-    this.jdField_b_of_type_Int = paramINearbyRedInfo.getRedPointReportType();
+    c = paramINearbyRedInfo.getRedAppIdType();
+    this.d = paramINearbyRedInfo.getRedPointReportType();
     int i = paramINearbyRedInfo.getRedType();
     if (i != 0)
     {
@@ -259,7 +257,7 @@ public class LebaSpecificRedTouchBiz
             paramRedTouch.a(null);
             return;
           }
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.b)
           {
             paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
             paramQQAppInterface.red_type.set(0);
@@ -327,7 +325,7 @@ public class LebaSpecificRedTouchBiz
       }
       else
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.b)
         {
           paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
           paramQQAppInterface.red_type.set(0);
@@ -360,13 +358,13 @@ public class LebaSpecificRedTouchBiz
       return;
     }
     paramQQAppInterface = (TroopRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
-    oidb_0x791.RedDotInfo localRedDotInfo = paramQQAppInterface.a();
+    oidb_0x791.RedDotInfo localRedDotInfo = paramQQAppInterface.q();
     if (localRedDotInfo == null)
     {
-      paramRedTouch.d();
+      paramRedTouch.g();
       return;
     }
-    StoryReportor.a("dynamic", "exp_story", 0, paramQQAppInterface.b(), new String[0]);
+    StoryReportor.a("dynamic", "exp_story", 0, paramQQAppInterface.r(), new String[0]);
     BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
     BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
     int j = localRedDotInfo.uint32_appid.get();
@@ -426,7 +424,7 @@ public class LebaSpecificRedTouchBiz
               if (l != 0L) {
                 break label365;
               }
-              paramRedTouch.d();
+              paramRedTouch.g();
             }
             catch (JSONException paramQQAppInterface)
             {
@@ -462,7 +460,7 @@ public class LebaSpecificRedTouchBiz
             paramQQAppInterface.append("/");
             paramQQAppInterface.append(localRedDotInfo.uint64_cmd_uin.get());
             paramQQAppInterface.append("/100?t=");
-            paramQQAppInterface.append(TroopRedTouchManager.d);
+            paramQQAppInterface.append(TroopRedTouchManager.f);
             paramQQAppInterface = paramQQAppInterface.toString();
             localRedTypeInfo.red_content.set(paramQQAppInterface);
             localRedTypeInfo.red_desc.set("{'av':1, 'dot':1}");
@@ -495,7 +493,7 @@ public class LebaSpecificRedTouchBiz
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("更新动态红点:");
-      paramQQAppInterface.append(TroopRedTouchManager.a(localRedDotInfo));
+      paramQQAppInterface.append(TroopRedTouchManager.b(localRedDotInfo));
       QLog.i("storyRedDotDebug", 2, paramQQAppInterface.toString());
     }
     localRedTypeInfo.red_type.set(i);
@@ -506,6 +504,12 @@ public class LebaSpecificRedTouchBiz
   
   protected void a(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, long paramLong, int paramInt)
   {
+    String str = ((IQZoneApiProxy)QRoute.api(IQZoneApiProxy.class)).getExpContentInSimpleUI(paramQQAppInterface);
+    if ((SimpleUIUtil.e()) && ("exp_shouq_dongtai_jianjie_B".equals(str)))
+    {
+      paramRedTouch.g();
+      return;
+    }
     ThreadManager.post(new LebaSpecificRedTouchBiz.1(this, paramQQAppInterface, new Handler(), paramRedTouch, paramLong), 8, null, true);
   }
   
@@ -566,7 +570,7 @@ public class LebaSpecificRedTouchBiz
           }
         }
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         paramRedTouch.b(paramString1);
       } else {
         paramRedTouch.a(paramString1);
@@ -589,19 +593,19 @@ public class LebaSpecificRedTouchBiz
   
   public boolean a(AppRuntime paramAppRuntime, Context paramContext, long paramLong, RedTouch paramRedTouch, String paramString, Map<Long, LebaExposureInfo> paramMap, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramMap;
+    this.b = paramBoolean;
     paramMap = String.valueOf(paramLong);
     if ((paramAppRuntime instanceof QQAppInterface))
     {
       paramAppRuntime = (QQAppInterface)paramAppRuntime;
-      if ((paramMap != null) && (ReadInJoyNotifyRedTouchInfo.jdField_a_of_type_JavaLangString.equals(paramMap)))
+      if ((paramMap != null) && (ReadInJoyNotifyRedTouchInfo.a.equals(paramMap)))
       {
         b(paramAppRuntime, paramContext, paramRedTouch);
         a(paramLong, paramRedTouch);
         return true;
       }
-      if (String.valueOf(NowLiveManager.jdField_a_of_type_Int).equals(paramMap))
+      if (String.valueOf(NowLiveManager.a).equals(paramMap))
       {
         a(paramAppRuntime, paramRedTouch);
         a(paramLong, paramRedTouch);
@@ -609,7 +613,7 @@ public class LebaSpecificRedTouchBiz
       }
       if (7759L == paramLong)
       {
-        paramRedTouch.a();
+        paramRedTouch.b();
         a(paramAppRuntime, paramContext, paramRedTouch);
         a(paramLong, paramRedTouch);
         return true;
@@ -630,7 +634,7 @@ public class LebaSpecificRedTouchBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.redtouch.LebaSpecificRedTouchBiz
  * JD-Core Version:    0.7.0.1
  */

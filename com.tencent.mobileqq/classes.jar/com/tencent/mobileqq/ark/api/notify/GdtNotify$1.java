@@ -31,14 +31,14 @@ class GdtNotify$1
         break label479;
       }
       localObject2 = ((BaseActivity)localObject1).getChatFragment();
-      if (((ChatFragment)localObject2).a == null) {
+      if (((ChatFragment)localObject2).c == null) {
         break label420;
       }
-      localObject1 = ((ChatFragment)localObject2).a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      localObject1 = ((ChatFragment)localObject2).c.U;
       localJSONArray1 = new JSONArray();
-      this.jdField_a_of_type_OrgJsonJSONObject.put("results", localJSONArray1);
-      localObject2 = ((ChatFragment)localObject2).a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
-      localJSONArray2 = new JSONObject(this.jdField_a_of_type_JavaLangString).optJSONArray("traceids");
+      this.a.put("results", localJSONArray1);
+      localObject2 = ((ChatFragment)localObject2).c.V.a();
+      localJSONArray2 = new JSONObject(this.b).optJSONArray("traceids");
       i = 0;
     }
     catch (Exception localException)
@@ -77,16 +77,16 @@ class GdtNotify$1
       localObject3 = UIViewUtils.a((ChatMessage)localObject4, (ChatXListView)localObject1);
       if (localObject3 != null)
       {
-        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362947);
+        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131428746);
         if (localObject3 != null)
         {
           localObject4 = UIViewUtils.a((View)localObject3);
           if (localObject4 != null)
           {
-            localJSONObject1.put("left", UIUtils.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
-            localJSONObject1.put("top", UIUtils.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
-            localJSONObject1.put("right", UIUtils.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
-            localJSONObject1.put("bottom", UIUtils.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
+            localJSONObject1.put("left", UIUtils.c(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
+            localJSONObject1.put("top", UIUtils.c(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
+            localJSONObject1.put("right", UIUtils.c(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
+            localJSONObject1.put("bottom", UIUtils.c(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
             break label653;
           }
           localJSONObject1.put("left", 0);
@@ -108,32 +108,32 @@ class GdtNotify$1
       break label653;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("resultJson 0: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+      ((StringBuilder)localObject1).append(this.a.toString());
       QLog.d("GdtNotify", 2, ((StringBuilder)localObject1).toString());
-      ark.arkNotify(this.b, "ad_query_cell_rect_callback", this.jdField_a_of_type_OrgJsonJSONObject.toString(), "json");
+      ark.arkNotify(this.c, "ad_query_cell_rect_callback", this.a.toString(), "json");
       break label535;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("resultJson 1: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+      ((StringBuilder)localObject1).append(this.a.toString());
       QLog.d("GdtNotify", 2, ((StringBuilder)localObject1).toString());
-      ark.arkNotify(this.b, "ad_query_cell_rect_callback", this.jdField_a_of_type_OrgJsonJSONObject.toString(), "json");
+      ark.arkNotify(this.c, "ad_query_cell_rect_callback", this.a.toString(), "json");
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("resultJson 2: ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    ((StringBuilder)localObject1).append(this.a.toString());
     QLog.d("GdtNotify", 2, ((StringBuilder)localObject1).toString());
-    ark.arkNotify(this.b, "ad_query_cell_rect_callback", this.jdField_a_of_type_OrgJsonJSONObject.toString(), "json");
+    ark.arkNotify(this.c, "ad_query_cell_rect_callback", this.a.toString(), "json");
     return;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("resultJson 3: ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    ((StringBuilder)localObject1).append(this.a.toString());
     QLog.d("GdtNotify", 2, ((StringBuilder)localObject1).toString());
-    ark.arkNotify(this.b, "ad_query_cell_rect_callback", this.jdField_a_of_type_OrgJsonJSONObject.toString(), "json");
+    ark.arkNotify(this.c, "ad_query_cell_rect_callback", this.a.toString(), "json");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.notify.GdtNotify.1
  * JD-Core Version:    0.7.0.1
  */

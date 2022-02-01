@@ -10,7 +10,7 @@ class AdProxyImpl$4
   
   public void onDismiss(boolean paramBoolean)
   {
-    AdProxy.ILoadingAdListener localILoadingAdListener = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener;
+    AdProxy.ILoadingAdListener localILoadingAdListener = this.a;
     if (localILoadingAdListener != null) {
       localILoadingAdListener.onAdDismiss(paramBoolean);
     }
@@ -18,7 +18,7 @@ class AdProxyImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

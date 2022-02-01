@@ -1,18 +1,22 @@
 package com.tencent.mtt.hippy.utils;
 
 import android.content.Context;
-import android.text.TextUtils;
 import java.io.File;
 
 public class FileUtils
 {
   public static File createDir(File paramFile, String paramString)
   {
-    if ((paramFile != null) && (paramString != null) && (paramString.length() != 0))
+    if ((paramFile != null) && (paramString != null))
     {
+      if (paramString.length() == 0) {
+        return null;
+      }
       paramFile = new File(paramFile, paramString);
-      if (!paramFile.exists()) {
-        paramFile.mkdirs();
+      if ((!paramFile.exists()) && (!paramFile.mkdirs()))
+      {
+        LogUtils.e("FileUtils", "mkdirs failed!!");
+        return null;
       }
       return paramFile;
     }
@@ -32,18 +36,6 @@ public class FileUtils
     return createDir(paramContext, "hippy");
   }
   
-  public static long getModifiedTime(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0L;
-    }
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      return 0L;
-    }
-    return paramString.lastModified();
-  }
-  
   /* Error */
   public static String readFile(String paramString)
   {
@@ -51,25 +43,25 @@ public class FileUtils
     //   0: new 19	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 56	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 64	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_3
     //   9: aload_3
     //   10: invokevirtual 26	java/io/File:exists	()Z
     //   13: istore_2
-    //   14: ldc 68
+    //   14: ldc 66
     //   16: astore 7
     //   18: iload_2
     //   19: ifne +6 -> 25
-    //   22: ldc 68
+    //   22: ldc 66
     //   24: areturn
-    //   25: new 70	java/io/ByteArrayOutputStream
+    //   25: new 68	java/io/ByteArrayOutputStream
     //   28: dup
-    //   29: invokespecial 71	java/io/ByteArrayOutputStream:<init>	()V
+    //   29: invokespecial 69	java/io/ByteArrayOutputStream:<init>	()V
     //   32: astore_0
-    //   33: new 73	java/io/FileInputStream
+    //   33: new 71	java/io/FileInputStream
     //   36: dup
     //   37: aload_3
-    //   38: invokespecial 76	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   38: invokespecial 74	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   41: astore 5
     //   43: aload_0
     //   44: astore_3
@@ -87,7 +79,7 @@ public class FileUtils
     //   66: iconst_0
     //   67: aload 6
     //   69: arraylength
-    //   70: invokevirtual 80	java/io/FileInputStream:read	([BII)I
+    //   70: invokevirtual 78	java/io/FileInputStream:read	([BII)I
     //   73: istore_1
     //   74: iload_1
     //   75: iconst_m1
@@ -100,30 +92,30 @@ public class FileUtils
     //   86: aload 6
     //   88: iconst_0
     //   89: iload_1
-    //   90: invokevirtual 84	java/io/ByteArrayOutputStream:write	([BII)V
+    //   90: invokevirtual 82	java/io/ByteArrayOutputStream:write	([BII)V
     //   93: goto -37 -> 56
     //   96: aload_0
     //   97: astore_3
     //   98: aload 5
     //   100: astore 4
     //   102: aload_0
-    //   103: invokevirtual 88	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
+    //   103: invokevirtual 86	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
     //   106: astore 6
     //   108: aload 5
-    //   110: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   110: invokevirtual 89	java/io/FileInputStream:close	()V
     //   113: goto +8 -> 121
     //   116: astore_3
     //   117: aload_3
-    //   118: invokevirtual 94	java/lang/Throwable:printStackTrace	()V
+    //   118: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
     //   121: aload 6
     //   123: astore_3
     //   124: aload_0
-    //   125: invokevirtual 95	java/io/ByteArrayOutputStream:close	()V
+    //   125: invokevirtual 93	java/io/ByteArrayOutputStream:close	()V
     //   128: aload 6
     //   130: areturn
     //   131: astore_0
     //   132: aload_0
-    //   133: invokevirtual 94	java/lang/Throwable:printStackTrace	()V
+    //   133: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
     //   136: aload_3
     //   137: areturn
     //   138: astore 6
@@ -156,22 +148,22 @@ public class FileUtils
     //   179: aload 5
     //   181: astore 4
     //   183: aload 6
-    //   185: invokevirtual 96	java/lang/Exception:printStackTrace	()V
+    //   185: invokevirtual 94	java/lang/Exception:printStackTrace	()V
     //   188: aload 5
     //   190: ifnull +16 -> 206
     //   193: aload 5
-    //   195: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   195: invokevirtual 89	java/io/FileInputStream:close	()V
     //   198: goto +8 -> 206
     //   201: astore_3
     //   202: aload_3
-    //   203: invokevirtual 94	java/lang/Throwable:printStackTrace	()V
+    //   203: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
     //   206: aload_0
     //   207: ifnull +10 -> 217
     //   210: aload 7
     //   212: astore_3
     //   213: aload_0
-    //   214: invokevirtual 95	java/io/ByteArrayOutputStream:close	()V
-    //   217: ldc 68
+    //   214: invokevirtual 93	java/io/ByteArrayOutputStream:close	()V
+    //   217: ldc 66
     //   219: areturn
     //   220: astore_0
     //   221: aload 4
@@ -179,19 +171,19 @@ public class FileUtils
     //   225: aload 5
     //   227: ifnull +18 -> 245
     //   230: aload 5
-    //   232: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   232: invokevirtual 89	java/io/FileInputStream:close	()V
     //   235: goto +10 -> 245
     //   238: astore 4
     //   240: aload 4
-    //   242: invokevirtual 94	java/lang/Throwable:printStackTrace	()V
+    //   242: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
     //   245: aload_3
     //   246: ifnull +15 -> 261
     //   249: aload_3
-    //   250: invokevirtual 95	java/io/ByteArrayOutputStream:close	()V
+    //   250: invokevirtual 93	java/io/ByteArrayOutputStream:close	()V
     //   253: goto +8 -> 261
     //   256: astore_3
     //   257: aload_3
-    //   258: invokevirtual 94	java/lang/Throwable:printStackTrace	()V
+    //   258: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
     //   261: goto +5 -> 266
     //   264: aload_0
     //   265: athrow
@@ -250,7 +242,7 @@ public class FileUtils
     //   0: new 19	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 56	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 64	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 5
     //   10: aload 5
     //   12: invokevirtual 26	java/io/File:exists	()Z
@@ -263,16 +255,16 @@ public class FileUtils
     //   23: areturn
     //   24: aload_3
     //   25: astore_0
-    //   26: new 70	java/io/ByteArrayOutputStream
+    //   26: new 68	java/io/ByteArrayOutputStream
     //   29: dup
-    //   30: invokespecial 71	java/io/ByteArrayOutputStream:<init>	()V
+    //   30: invokespecial 69	java/io/ByteArrayOutputStream:<init>	()V
     //   33: astore 4
     //   35: aload_3
     //   36: astore_0
-    //   37: new 73	java/io/FileInputStream
+    //   37: new 71	java/io/FileInputStream
     //   40: dup
     //   41: aload 5
-    //   43: invokespecial 76	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   43: invokespecial 74	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   46: astore 5
     //   48: aload_3
     //   49: astore_0
@@ -286,7 +278,7 @@ public class FileUtils
     //   63: iconst_0
     //   64: aload 6
     //   66: arraylength
-    //   67: invokevirtual 80	java/io/FileInputStream:read	([BII)I
+    //   67: invokevirtual 78	java/io/FileInputStream:read	([BII)I
     //   70: istore_1
     //   71: iload_1
     //   72: iconst_m1
@@ -297,52 +289,52 @@ public class FileUtils
     //   80: aload 6
     //   82: iconst_0
     //   83: iload_1
-    //   84: invokevirtual 84	java/io/ByteArrayOutputStream:write	([BII)V
+    //   84: invokevirtual 82	java/io/ByteArrayOutputStream:write	([BII)V
     //   87: goto -30 -> 57
     //   90: astore 6
     //   92: aload_3
     //   93: astore_0
-    //   94: new 100	java/lang/StringBuilder
+    //   94: new 98	java/lang/StringBuilder
     //   97: dup
-    //   98: invokespecial 101	java/lang/StringBuilder:<init>	()V
+    //   98: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   101: astore 7
     //   103: aload_3
     //   104: astore_0
     //   105: aload 7
-    //   107: ldc 103
-    //   109: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: ldc 101
+    //   109: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: pop
     //   113: aload_3
     //   114: astore_0
     //   115: aload 7
     //   117: aload 6
-    //   119: invokevirtual 110	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   122: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 108	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   122: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: pop
     //   126: aload_3
     //   127: astore_0
-    //   128: ldc 112
+    //   128: ldc 31
     //   130: aload 7
-    //   132: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 119	com/tencent/mtt/hippy/utils/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   132: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 112	com/tencent/mtt/hippy/utils/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: aload_3
     //   139: astore_0
     //   140: aload 5
-    //   142: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   142: invokevirtual 89	java/io/FileInputStream:close	()V
     //   145: aload_3
     //   146: astore_0
     //   147: aload 4
-    //   149: invokevirtual 123	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   149: invokevirtual 116	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   152: astore_3
     //   153: aload_3
     //   154: astore_0
     //   155: aload 4
-    //   157: invokevirtual 95	java/io/ByteArrayOutputStream:close	()V
+    //   157: invokevirtual 93	java/io/ByteArrayOutputStream:close	()V
     //   160: aload_3
     //   161: areturn
     //   162: astore_3
     //   163: aload_3
-    //   164: invokevirtual 96	java/lang/Exception:printStackTrace	()V
+    //   164: invokevirtual 94	java/lang/Exception:printStackTrace	()V
     //   167: aload_0
     //   168: areturn
     // Local variable table:
@@ -378,7 +370,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

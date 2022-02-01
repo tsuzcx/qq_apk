@@ -19,10 +19,10 @@ public final class BottomVideoInfoWidget$GetFeedItemReceiver
   
   public void a(@NonNull BottomVideoInfoWidget paramBottomVideoInfoWidget, @NonNull FeedManager.GetFeedItemEvent paramGetFeedItemEvent)
   {
-    if ((paramGetFeedItemEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetFeedItemEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramBottomVideoInfoWidget.a != null) && (TextUtils.equals(paramGetFeedItemEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramBottomVideoInfoWidget.a.b)))
+    if ((paramGetFeedItemEvent.g.isSuccess()) && (paramGetFeedItemEvent.a != null) && (paramBottomVideoInfoWidget.p != null) && (TextUtils.equals(paramGetFeedItemEvent.a.feedId, paramBottomVideoInfoWidget.p.c)))
     {
-      SLog.a(paramBottomVideoInfoWidget.b, "refresh feed item , feed id :%s", paramBottomVideoInfoWidget.a.b);
-      paramBottomVideoInfoWidget.i();
+      SLog.a(paramBottomVideoInfoWidget.i, "refresh feed item , feed id :%s", paramBottomVideoInfoWidget.p.c);
+      paramBottomVideoInfoWidget.x();
     }
   }
   

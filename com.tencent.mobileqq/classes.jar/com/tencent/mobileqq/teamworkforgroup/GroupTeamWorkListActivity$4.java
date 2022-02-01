@@ -19,23 +19,23 @@ class GroupTeamWorkListActivity$4
     {
       ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).report(this.a.app, "0X800993D");
       paramView.clearFocus();
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      if (this.a.j != null) {
         return;
       }
       paramView = this.a;
       ITeamWorkFacadeCreator localITeamWorkFacadeCreator = (ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class);
       GroupTeamWorkListActivity localGroupTeamWorkListActivity = this.a;
-      paramView.jdField_a_of_type_AndroidAppDialog = localITeamWorkFacadeCreator.getTroopTeamWorkFileSearchDialog(localGroupTeamWorkListActivity, GroupTeamWorkListActivity.a(localGroupTeamWorkListActivity), this.a.app, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_AndroidAppDialog.setTitle(HardCodeUtil.a(2131705488));
-      this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
-      this.a.jdField_a_of_type_AndroidAppDialog.show();
-      this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new GroupTeamWorkListActivity.4.1(this));
+      paramView.j = localITeamWorkFacadeCreator.getTroopTeamWorkFileSearchDialog(localGroupTeamWorkListActivity, GroupTeamWorkListActivity.b(localGroupTeamWorkListActivity), this.a.app, this.a.m);
+      this.a.j.setTitle(HardCodeUtil.a(2131903376));
+      this.a.j.setCanceledOnTouchOutside(true);
+      this.a.j.show();
+      this.a.j.setOnDismissListener(new GroupTeamWorkListActivity.4.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.4
  * JD-Core Version:    0.7.0.1
  */

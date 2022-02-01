@@ -16,9 +16,9 @@ public class TroopGagProcessor
       paramAppInterface = (TroopGagMgr)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.TROOP_GAG_MANAGER);
       int i;
       if (paramLong == 0L) {
-        i = 2131697322;
+        i = 2131895095;
       } else {
-        i = 2131697409;
+        i = 2131895182;
       }
       paramAppInterface.a(i, false);
     }
@@ -32,24 +32,24 @@ public class TroopGagProcessor
       if (paramBoolean1)
       {
         if (paramLong == 0L) {
-          i = 2131697324;
+          i = 2131895097;
         } else {
-          i = 2131697412;
+          i = 2131895185;
         }
         paramAppInterface.a(i, true);
         return;
       }
-      int i = 2131697323;
+      int i = 2131895096;
       if (paramBoolean2)
       {
         if (paramLong != 0L) {
-          i = 2131697410;
+          i = 2131895183;
         }
         paramAppInterface.a(i, false);
         return;
       }
       if (paramLong != 0L) {
-        i = 2131697411;
+        i = 2131895184;
       }
       paramAppInterface.a(i, false);
     }
@@ -57,7 +57,7 @@ public class TroopGagProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopGagProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.liteav.qos;
 
 import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 
 class TXCQoS$1
@@ -14,13 +14,13 @@ class TXCQoS$1
   {
     if (TXCQoS.access$000(this.a) != null)
     {
-      int i = TXCQoS.access$000(this.a).b();
-      int j = TXCQoS.access$000(this.a).c();
-      int k = TXCQoS.access$000(this.a).d();
-      int m = TXCQoS.access$000(this.a).e();
-      int n = TXCQoS.access$000(this.a).f();
-      int i1 = TXCQoS.access$000(this.a).g();
-      int i2 = TXCQoS.access$000(this.a).h();
+      int i = TXCQoS.access$000(this.a).a();
+      int j = TXCQoS.access$000(this.a).b();
+      int k = TXCQoS.access$000(this.a).c();
+      int m = TXCQoS.access$000(this.a).d();
+      int n = TXCQoS.access$000(this.a).e();
+      int i1 = TXCQoS.access$000(this.a).f();
+      int i2 = TXCQoS.access$000(this.a).g();
       Object localObject = this.a;
       TXCQoS.access$200((TXCQoS)localObject, TXCQoS.access$100((TXCQoS)localObject), i);
       localObject = this.a;
@@ -43,7 +43,7 @@ class TXCQoS$1
       {
         if (i != TXCQoS.access$1300(this.a))
         {
-          TXCQoS.access$000(this.a).b(i, 0, 0);
+          TXCQoS.access$000(this.a).a(i, 0, 0);
           if (TXCQoS.access$1200(this.a) != null)
           {
             localObject = new Bundle();
@@ -59,7 +59,7 @@ class TXCQoS$1
       }
       else if ((TXCQoS.access$1100(this.a) == 1) || (TXCQoS.access$1100(this.a) == 5))
       {
-        TXCQoS.access$000(this.a).b(i, j, k);
+        TXCQoS.access$000(this.a).a(i, j, k);
         if (TXCQoS.access$1200(this.a) != null)
         {
           localObject = new Bundle();
@@ -84,7 +84,7 @@ class TXCQoS$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.qos.TXCQoS.1
  * JD-Core Version:    0.7.0.1
  */

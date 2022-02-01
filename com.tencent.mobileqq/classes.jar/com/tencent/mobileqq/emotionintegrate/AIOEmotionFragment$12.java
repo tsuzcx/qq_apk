@@ -11,23 +11,23 @@ class AIOEmotionFragment$12
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.b))
+    if (this.a.equalsIgnoreCase(this.b))
     {
-      float f = this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase.a();
+      float f = this.c / this.d.g();
       if (f > 0.0F)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("AudioPlayer on onProgressChanged, playPosition = ");
         localStringBuilder.append(f);
         QLog.i("AIOEmotionFragment", 2, localStringBuilder.toString());
-        this.this$0.a.setProgress(f);
+        this.this$0.A.setProgress(f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.12
  * JD-Core Version:    0.7.0.1
  */

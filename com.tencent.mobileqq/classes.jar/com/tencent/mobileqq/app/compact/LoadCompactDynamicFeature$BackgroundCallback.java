@@ -10,13 +10,13 @@ class LoadCompactDynamicFeature$BackgroundCallback
 {
   private LoadCompactDynamicFeature$BackgroundCallback(LoadCompactDynamicFeature paramLoadCompactDynamicFeature) {}
   
-  public void G_() {}
+  public void onApplicationBackground() {}
   
-  public void H_() {}
+  public void onApplicationForeground() {}
   
-  public void a(long paramLong)
+  public void onBackgroundTimeTick(long paramLong)
   {
-    if ((paramLong == 5L) && (!this.a.a()))
+    if ((paramLong == 5L) && (!this.a.c()))
     {
       QLog.i("plugin_tag", 1, "trigger start oat service！");
       BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
@@ -24,15 +24,15 @@ class LoadCompactDynamicFeature$BackgroundCallback
     }
   }
   
-  public void a(boolean paramBoolean) {}
+  public void onBackgroundUnguardTimeTick(long paramLong) {}
   
-  public void b(long paramLong) {}
+  public void onLiteTimeTick(long paramLong) {}
   
-  public void c(long paramLong) {}
+  public void onScreensStateChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.compact.LoadCompactDynamicFeature.BackgroundCallback
  * JD-Core Version:    0.7.0.1
  */

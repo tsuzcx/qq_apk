@@ -12,7 +12,7 @@ class PhoneContactUtils$1$1
   public void run()
   {
     if (this.a != null) {
-      this.this$0.a.setImageBitmap(this.a);
+      this.this$0.c.setImageBitmap(this.a);
     }
     if (QLog.isColorLevel()) {
       QLog.i("IMCore.PhoneContact.PhoneContactUtils", 2, "loadIconAsync end");
@@ -21,7 +21,7 @@ class PhoneContactUtils$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.util.PhoneContactUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

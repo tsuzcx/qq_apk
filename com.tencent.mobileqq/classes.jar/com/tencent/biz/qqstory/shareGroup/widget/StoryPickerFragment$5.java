@@ -18,7 +18,7 @@ class StoryPickerFragment$5
         return;
       }
       paramDialogInterface = new Intent();
-      paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
+      paramDialogInterface.putExtra("extra_checked_vidset", this.a.f);
       this.a.getBaseActivity().setResult(-1, paramDialogInterface);
       this.a.getBaseActivity().finish();
     }

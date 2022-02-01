@@ -17,33 +17,33 @@ class ApolloTagActionViewBinder$1$1$1
     {
       try
       {
-        ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0, this.jdField_a_of_type_JavaUtilList);
+        ApolloTagActionViewBinder.a(this.b.a.this$0, this.a);
         Object localObject;
-        if (ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0) != null)
+        if (ApolloTagActionViewBinder.a(this.b.a.this$0) != null)
         {
-          localObject = ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0).iterator();
+          localObject = ApolloTagActionViewBinder.a(this.b.a.this$0).iterator();
           if (((Iterator)localObject).hasNext())
           {
             ApolloTagButtonData localApolloTagButtonData = new ApolloTagButtonData((String)((Iterator)localObject).next(), false);
-            if (ApolloTagActionViewBinder.b(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0) == null) {
+            if (ApolloTagActionViewBinder.b(this.b.a.this$0) == null) {
               continue;
             }
-            ApolloTagActionViewBinder.b(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0).add(localApolloTagButtonData);
+            ApolloTagActionViewBinder.b(this.b.a.this$0).add(localApolloTagButtonData);
             continue;
           }
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0.d != 9) {
+        if (this.b.a.this$0.n != 9) {
           break label363;
         }
         bool = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0.jdField_a_of_type_AndroidContentContext != null)
+        if (this.b.a.this$0.i != null)
         {
-          ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0, new ApolloTagActionViewBinder.ApolloActionTagsAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0.jdField_a_of_type_AndroidContentContext, ApolloTagActionViewBinder.b(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0), this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool));
-          ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0).setAdapter(ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0));
+          ApolloTagActionViewBinder.a(this.b.a.this$0, new ApolloTagActionViewBinder.ApolloActionTagsAdapter(this.b.a.this$0, this.b.a.this$0.i, ApolloTagActionViewBinder.b(this.b.a.this$0), this.b.a.this$0.j, this.b.a.this$0.m, bool));
+          ApolloTagActionViewBinder.d(this.b.a.this$0).setAdapter(ApolloTagActionViewBinder.c(this.b.a.this$0));
         }
         if (QLog.isColorLevel())
         {
-          if (ApolloTagActionViewBinder.b(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0) == null)
+          if (ApolloTagActionViewBinder.b(this.b.a.this$0) == null)
           {
             localObject = "mApolloTagButtonList is null. ";
           }
@@ -51,7 +51,7 @@ class ApolloTagActionViewBinder$1$1$1
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("mApolloTagButtonList size: ");
-            ((StringBuilder)localObject).append(ApolloTagActionViewBinder.b(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$1$1.a.this$0).size());
+            ((StringBuilder)localObject).append(ApolloTagActionViewBinder.b(this.b.a.this$0).size());
             localObject = ((StringBuilder)localObject).toString();
           }
           QLog.d("[cmshow]ApolloActionWithTagsViewBinder", 4, (String)localObject);
@@ -70,7 +70,7 @@ class ApolloTagActionViewBinder$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinder.1.1.1
  * JD-Core Version:    0.7.0.1
  */

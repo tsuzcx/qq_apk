@@ -13,7 +13,7 @@ class RegisterNewBaseActivity$4
   {
     try
     {
-      this.this$0.dialog = DialogUtil.a(this.this$0, this.a);
+      this.this$0.dialog = DialogUtil.b(this.this$0, this.a);
       this.this$0.dialog.show();
       return;
     }
@@ -25,7 +25,7 @@ class RegisterNewBaseActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity.4
  * JD-Core Version:    0.7.0.1
  */

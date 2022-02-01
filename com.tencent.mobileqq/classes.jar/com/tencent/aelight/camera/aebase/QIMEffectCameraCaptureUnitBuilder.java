@@ -4,6 +4,7 @@ import com.tencent.aelight.camera.ae.AECMShowCameraUnit;
 import com.tencent.aelight.camera.ae.AEPituCameraUnit;
 import com.tencent.aelight.camera.ae.IQIMCameraLifeCallback;
 import com.tencent.aelight.camera.ae.biz.circle.AECircleMultiUnit;
+import com.tencent.aelight.camera.ae.flashshow.AEFlashShowMultiUnit;
 import com.tencent.aelight.camera.aioeditor.setting.ICameraEntrance;
 import com.tencent.aelight.camera.aioeditor.setting.IQIMCameraContainer;
 
@@ -20,7 +21,7 @@ public class QIMEffectCameraCaptureUnitBuilder
           if (paramInt != 10001) {
             if (paramInt != 10012) {
               if (paramInt == 10013) {
-                break label144;
+                break label158;
               }
             }
           }
@@ -28,6 +29,8 @@ public class QIMEffectCameraCaptureUnitBuilder
           {
           default: 
             return new AEPituCameraUnit(paramIQIMCameraContainer, paramICameraEntrance);
+          case 10028: 
+            return new AEFlashShowMultiUnit(paramIQIMCameraContainer, paramICameraEntrance);
           case 10027: 
             return new AECMShowCameraUnit(paramIQIMCameraContainer, paramICameraEntrance);
           case 10026: 
@@ -38,7 +41,7 @@ public class QIMEffectCameraCaptureUnitBuilder
             return new AEPituQzoneCameraUnit(paramIQIMCameraContainer, paramICameraEntrance);
           }
         }
-        label144:
+        label158:
         return new AEPituCameraUnit(paramIQIMCameraContainer, paramICameraEntrance);
       }
       return new QIMWebEffectCameraCaptureUnit(paramIQIMCameraContainer, paramICameraEntrance);
@@ -48,7 +51,7 @@ public class QIMEffectCameraCaptureUnitBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMEffectCameraCaptureUnitBuilder
  * JD-Core Version:    0.7.0.1
  */

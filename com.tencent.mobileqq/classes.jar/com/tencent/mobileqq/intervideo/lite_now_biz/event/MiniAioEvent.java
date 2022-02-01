@@ -12,19 +12,19 @@ public class MiniAioEvent
   implements ModuleEventInterface
 {
   public static final Parcelable.Creator<MiniAioEvent> CREATOR = new MiniAioEvent.1();
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private int b;
   
   protected MiniAioEvent(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
   }
   
   public MiniAioEvent(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public JSONObject a()
@@ -33,8 +33,8 @@ public class MiniAioEvent
     JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      localJSONObject1.put("action", this.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("unReadC", this.jdField_a_of_type_Int);
+      localJSONObject1.put("action", this.a);
+      localJSONObject2.put("unReadC", this.b);
       localJSONObject1.put("options", localJSONObject2);
       return localJSONObject1;
     }
@@ -52,13 +52,13 @@ public class MiniAioEvent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.event.MiniAioEvent
  * JD-Core Version:    0.7.0.1
  */

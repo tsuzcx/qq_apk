@@ -22,8 +22,8 @@ import mqq.util.WeakReference;
 
 public class ECommerceDataReportUtil
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private static HashMap<String, String> a;
+  private static String b = "";
   
   private static String a(MessageRecord paramMessageRecord)
   {
@@ -56,7 +56,7 @@ public class ECommerceDataReportUtil
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, int paramInt, String paramString)
   {
-    if (a(paramMessageRecord))
+    if (b(paramMessageRecord))
     {
       paramMessageRecord = a(paramMessageRecord);
       Object localObject;
@@ -64,7 +64,7 @@ public class ECommerceDataReportUtil
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("reportECommerceData  reportConfig -> ");
-        ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilHashMap);
+        ((StringBuilder)localObject).append(a);
         QLog.d("ECommerceDataReportUtil", 2, ((StringBuilder)localObject).toString());
       }
       if (!a(paramQQAppInterface))
@@ -96,31 +96,13 @@ public class ECommerceDataReportUtil
   
   private static boolean a(QQAppInterface paramQQAppInterface)
   {
-    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
-    return (localHashMap != null) && (!localHashMap.isEmpty()) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()));
-  }
-  
-  private static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool;
-    if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForMixedMsg)) && (!(paramMessageRecord instanceof MessageForReplyText))) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramMessageRecord = new StringBuilder();
-      paramMessageRecord.append("isMessageNeedReport : need -> ");
-      paramMessageRecord.append(bool);
-      QLog.d("ECommerceDataReportUtil", 2, paramMessageRecord.toString());
-    }
-    return bool;
+    HashMap localHashMap = a;
+    return (localHashMap != null) && (!localHashMap.isEmpty()) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(b)) && (b.equals(paramQQAppInterface.getCurrentAccountUin()));
   }
   
   private static void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = a.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -151,10 +133,28 @@ public class ECommerceDataReportUtil
       }
     }
   }
+  
+  private static boolean b(MessageRecord paramMessageRecord)
+  {
+    boolean bool;
+    if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForMixedMsg)) && (!(paramMessageRecord instanceof MessageForReplyText))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMessageRecord = new StringBuilder();
+      paramMessageRecord.append("isMessageNeedReport : need -> ");
+      paramMessageRecord.append(bool);
+      QLog.d("ECommerceDataReportUtil", 2, paramMessageRecord.toString());
+    }
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil
  * JD-Core Version:    0.7.0.1
  */

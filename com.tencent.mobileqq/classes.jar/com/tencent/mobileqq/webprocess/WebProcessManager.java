@@ -12,29 +12,29 @@ import mqq.manager.Manager;
 public class WebProcessManager
   implements Manager
 {
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new WebProcessManager.1(this);
-  private final BabyQObserver jdField_a_of_type_ComTencentMobileqqAppBabyQObserver = new WebProcessManager.2(this);
   protected QQAppInterface a;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private final BroadcastReceiver c = new WebProcessManager.1(this);
+  private final BabyQObserver d = new WebProcessManager.2(this);
   
   public WebProcessManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     a();
   }
   
   @Deprecated
   private void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = true;
+    if (!this.b) {
+      this.b = true;
     }
     try
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.babyq.add");
-      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBabyQObserver);
+      BaseApplicationImpl.getContext().registerReceiver(this.c, localIntentFilter);
+      this.a.addObserver(this.d);
       return;
     }
     catch (Exception localException) {}
@@ -43,12 +43,12 @@ public class WebProcessManager
   @Deprecated
   private void b()
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    if (this.b) {}
     try
     {
-      this.jdField_a_of_type_Boolean = false;
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBabyQObserver);
+      this.b = false;
+      BaseApplicationImpl.getContext().unregisterReceiver(this.c);
+      this.a.removeObserver(this.d);
       return;
     }
     catch (Exception localException) {}
@@ -61,7 +61,7 @@ public class WebProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessManager
  * JD-Core Version:    0.7.0.1
  */

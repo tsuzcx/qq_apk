@@ -38,15 +38,15 @@ class DownloadInterfaceNew$1
       DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
       try
       {
-        localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("appid", localDownloadInfo.c);
         localJSONObject.put("packagename", localDownloadInfo.e);
-        localJSONObject.put("versioncode", localDownloadInfo.b);
+        localJSONObject.put("versioncode", localDownloadInfo.n);
         localJSONObject.put("url", localDownloadInfo.d);
-        localJSONObject.put("pro", localDownloadInfo.f);
+        localJSONObject.put("pro", localDownloadInfo.t);
         localJSONObject.put("state", localDownloadInfo.a());
-        localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-        localJSONObject.put("download_from", localDownloadInfo.h);
-        localJSONObject.put("writecodestate", localDownloadInfo.j);
+        localJSONObject.put("ismyapp", localDownloadInfo.o);
+        localJSONObject.put("download_from", localDownloadInfo.z);
+        localJSONObject.put("writecodestate", localDownloadInfo.D);
       }
       catch (JSONException localJSONException)
       {
@@ -57,7 +57,7 @@ class DownloadInterfaceNew$1
     }
     paramList = new StringBuilder();
     paramList.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": ");
-    paramList.append(this.jdField_a_of_type_JavaLangString);
+    paramList.append(this.a);
     paramList.append(", \"r\" : 0, \"data\":");
     paramList.append(((JSONArray)localObject).toString());
     paramList.append("});}void(0);");
@@ -66,12 +66,12 @@ class DownloadInterfaceNew$1
     ((StringBuilder)localObject).append("[innerQuery] querySucess : ");
     ((StringBuilder)localObject).append(paramList);
     LogUtility.c("DownloadInterfaceNew", ((StringBuilder)localObject).toString());
-    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
+    DownloadInterfaceNew.a(this.b, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.js.DownloadInterfaceNew.1
  * JD-Core Version:    0.7.0.1
  */

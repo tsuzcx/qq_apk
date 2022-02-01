@@ -22,7 +22,7 @@ class BaseGaInvite$TimerHandler
       super.sendEmptyMessageDelayed(1, 2000L);
       return;
     }
-    this.a.b();
+    this.a.d();
   }
 }
 

@@ -1,55 +1,30 @@
 package com.tencent.mobileqq.profilesetting;
 
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.BusinessCardObserver;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class ProfileCardMoreActivity$8
-  extends BusinessCardObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  ProfileCardMoreActivity$8(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  ProfileCardMoreActivity$8(ProfileCardMoreActivity paramProfileCardMoreActivity, ActionSheet paramActionSheet) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView, int paramInt)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
+    if (paramInt == 0)
     {
-      localObject = ((BusinessCardManager)this.a.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER)).a(paramString);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onGetCardInfo success : cardId = ");
-      localStringBuilder.append(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, localStringBuilder.toString());
-      this.a.a((BusinessCard)localObject);
-      this.a.a = ((BusinessCard)localObject);
-      return;
+      this.b.j();
+      ((IGPSService)this.b.app.getRuntimeService(IGPSService.class, "")).removeGuild(this.b.b.troopUin, new ProfileCardMoreActivity.8.1(this));
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onGetCardInfo faild : cardId = ");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, ((StringBuilder)localObject).toString());
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    this.a.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.8
  * JD-Core Version:    0.7.0.1
  */

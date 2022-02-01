@@ -24,7 +24,7 @@ public class WSCommercialInfo
     return localstBusinessIconInfo.schema;
   }
   
-  public String a()
+  public String b()
   {
     stBusinessIconInfo localstBusinessIconInfo = this.a;
     if ((localstBusinessIconInfo != null) && (localstBusinessIconInfo.button != null)) {
@@ -33,7 +33,7 @@ public class WSCommercialInfo
     return null;
   }
   
-  public String b()
+  public String c()
   {
     stBusinessIconInfo localstBusinessIconInfo = this.a;
     if ((localstBusinessIconInfo != null) && (localstBusinessIconInfo.button != null)) {
@@ -42,7 +42,7 @@ public class WSCommercialInfo
     return null;
   }
   
-  public int d()
+  public int k()
   {
     stBusinessIconInfo localstBusinessIconInfo = this.a;
     if (localstBusinessIconInfo == null) {
@@ -53,7 +53,7 @@ public class WSCommercialInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.WSCommercialInfo
  * JD-Core Version:    0.7.0.1
  */

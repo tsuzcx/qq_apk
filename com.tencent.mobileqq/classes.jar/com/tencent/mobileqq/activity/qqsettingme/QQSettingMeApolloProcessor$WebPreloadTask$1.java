@@ -12,8 +12,8 @@ class QQSettingMeApolloProcessor$WebPreloadTask$1
   
   public void onResult(boolean paramBoolean)
   {
-    if ((paramBoolean) && (QQSettingMeApolloProcessor.WebPreloadTask.a(this.a).get() != null) && (QQSettingMeApolloProcessor.a((QQSettingMeApolloProcessor)QQSettingMeApolloProcessor.WebPreloadTask.a(this.a).get()) != null)) {
-      QQSettingMeApolloProcessor.a((QQSettingMeApolloProcessor)QQSettingMeApolloProcessor.WebPreloadTask.a(this.a).get()).a();
+    if ((paramBoolean) && (QQSettingMeApolloProcessor.WebPreloadTask.a(this.a).get() != null) && (QQSettingMeApolloProcessor.b((QQSettingMeApolloProcessor)QQSettingMeApolloProcessor.WebPreloadTask.a(this.a).get()) != null)) {
+      QQSettingMeApolloProcessor.b((QQSettingMeApolloProcessor)QQSettingMeApolloProcessor.WebPreloadTask.a(this.a).get()).a();
     }
     if (QLog.isColorLevel())
     {
@@ -26,7 +26,7 @@ class QQSettingMeApolloProcessor$WebPreloadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeApolloProcessor.WebPreloadTask.1
  * JD-Core Version:    0.7.0.1
  */

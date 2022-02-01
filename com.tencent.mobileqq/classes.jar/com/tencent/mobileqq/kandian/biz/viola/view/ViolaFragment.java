@@ -12,10 +12,15 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QBaseFragment;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.colornote.api.IColorNoteController;
+import com.tencent.mobileqq.kandian.base.bandwidth.api.IBandwidthMonitor;
 import com.tencent.mobileqq.kandian.biz.feeds.entity.SerializableMap;
 import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.viola.api.IViolaFragmentPresenter;
@@ -33,6 +38,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class ViolaFragment
@@ -48,6 +54,8 @@ public class ViolaFragment
   public static final String IS_CHANNEL = "is_channel";
   public static final String SHOULD_FINISH_ACTIVITY = "should_finish_activity";
   protected static final String TAG = "ViolaFragment";
+  private static String mCurrentJSUrl;
+  private static int sVShortVideoCount;
   private IColorNoteController colorNoteController;
   private boolean enableColorSwipeRightFlag = true;
   private boolean hasInitFragment = false;
@@ -63,6 +71,11 @@ public class ViolaFragment
     }
   }
   
+  public static String getCurrentJSUrl()
+  {
+    return mCurrentJSUrl;
+  }
+  
   private void handleTopGestureEvent(boolean paramBoolean)
   {
     this.mPresenter.b(paramBoolean);
@@ -70,17 +83,22 @@ public class ViolaFragment
   
   private void initBaseUI(ViewGroup paramViewGroup)
   {
-    this.mPresenter.a().a(paramViewGroup);
+    this.mPresenter.i().a(paramViewGroup);
   }
   
   private void initDataFromBundle(Bundle paramBundle)
   {
-    this.mPresenter.a().a(paramBundle);
+    this.mPresenter.j().a(paramBundle);
   }
   
   private void initViola(Bundle paramBundle, ViewGroup paramViewGroup)
   {
     this.mPresenter.a(paramBundle, paramViewGroup);
+  }
+  
+  private boolean isVShortVideo()
+  {
+    return (this.mPresenter.l().equals("15_VShortVideo")) || (this.mPresenter.l().equals("15_OriginalVideoFeeds"));
   }
   
   protected static ViolaFragment newInstance(Bundle paramBundle)
@@ -115,6 +133,16 @@ public class ViolaFragment
     this.mPresenter.g();
   }
   
+  public static void setCurrentJSUrl(String paramString)
+  {
+    mCurrentJSUrl = paramString;
+  }
+  
+  private boolean vmSizeLogEnable()
+  {
+    return Aladdin.getConfig(508).getIntegerFromString("vmsize_enable", 1) == 1;
+  }
+  
   public void addToColorBall()
   {
     IColorNoteController localIColorNoteController = this.colorNoteController;
@@ -124,7 +152,7 @@ public class ViolaFragment
     if (localIColorNoteController.canAddColorNote())
     {
       this.colorNoteController.insertColorNote();
-      QQToast.a(getContext(), 2, getContext().getResources().getString(2131690892), 5000).a();
+      QQToast.makeText(getContext(), 2, getContext().getResources().getString(2131887831), 5000).show();
     }
     else
     {
@@ -142,7 +170,7 @@ public class ViolaFragment
   
   public void dealFlingEnableWhenSwitcher(int paramInt)
   {
-    this.mPresenter.a().a(paramInt);
+    this.mPresenter.i().a(paramInt);
     if (paramInt != 0)
     {
       IColorNoteController localIColorNoteController = this.colorNoteController;
@@ -168,7 +196,7 @@ public class ViolaFragment
   
   public void disableSwitcher()
   {
-    this.mPresenter.a().a();
+    this.mPresenter.j().c();
   }
   
   public void doOnBackPressed()
@@ -228,23 +256,29 @@ public class ViolaFragment
   
   public void enableFlingRight(boolean paramBoolean)
   {
-    this.mPresenter.a().b(paramBoolean);
+    this.mPresenter.i().b(paramBoolean);
+  }
+  
+  @NonNull
+  public String getBusinessDescription()
+  {
+    return this.mPresenter.l();
   }
   
   public Object getCommonSuspensionGestureLayout()
   {
-    return this.mPresenter.a().a();
+    return this.mPresenter.j().b();
   }
   
   public int getContentViewId()
   {
-    return this.mPresenter.a();
+    return this.mPresenter.h();
   }
   
   public HashMap<String, Long> getPerformanceData()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.putAll(this.mPresenter.a());
+    localHashMap.putAll(this.mPresenter.k());
     localHashMap.put("pageCreateStart", Long.valueOf(this.createViewStartTime));
     localHashMap.put("loadHippyStart", Long.valueOf(this.loadHippyStartTime));
     Bundle localBundle = getArguments();
@@ -266,17 +300,17 @@ public class ViolaFragment
   
   public HashMap getSusConfigMap()
   {
-    return this.mPresenter.a().a();
+    return this.mPresenter.i().b();
   }
   
   public OnTitleChangeListener getTtileChangelistener()
   {
-    return this.mPresenter.a().a();
+    return this.mPresenter.i().c();
   }
   
   public String getUrl()
   {
-    return this.mPresenter.a().a();
+    return this.mPresenter.j().a();
   }
   
   public ViolaFragment.ViolaGestureLayoutListener getViolaGestureLayoutListener()
@@ -320,11 +354,24 @@ public class ViolaFragment
     }
     initSuspension(paramViewGroup);
     initFPS();
+    if (isVShortVideo())
+    {
+      sVShortVideoCount += 1;
+      paramBundle = new StringBuilder();
+      paramBundle.append("initViola: ");
+      paramBundle.append(toString());
+      paramBundle.append(", sVShortVideoCount=");
+      paramBundle.append(sVShortVideoCount);
+      QLog.d("ViolaFragment", 1, paramBundle.toString());
+      if (vmSizeLogEnable()) {
+        ThreadManager.getSubThreadHandler().postDelayed(new ViolaFragment.VMSizePrintTask(this), 0L);
+      }
+    }
   }
   
   public void initBeforeVisible(Bundle paramBundle)
   {
-    this.mPresenter.a().a(paramBundle);
+    this.mPresenter.i().a(paramBundle);
   }
   
   protected void initFPS()
@@ -345,7 +392,7 @@ public class ViolaFragment
   
   public boolean isSuspension()
   {
-    return this.mPresenter.a().a();
+    return this.mPresenter.i().d();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -362,6 +409,21 @@ public class ViolaFragment
   public void onDestroy()
   {
     super.onDestroy();
+    if (isVShortVideo())
+    {
+      sVShortVideoCount -= 1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy: ");
+      localStringBuilder.append(toString());
+      localStringBuilder.append(", sVShortVideoCount=");
+      localStringBuilder.append(sVShortVideoCount);
+      QLog.d("ViolaFragment", 1, localStringBuilder.toString());
+      if (vmSizeLogEnable())
+      {
+        ThreadManager.getSubThreadHandler().postDelayed(new ViolaFragment.VMSizePrintTask(this), 10000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new ViolaFragment.VMSizePrintTask(this), 30000L);
+      }
+    }
     this.mPresenter.d();
   }
   
@@ -380,9 +442,13 @@ public class ViolaFragment
   {
     this.mPresenter.c();
     super.onPause();
-    IColorNoteController localIColorNoteController = this.colorNoteController;
-    if (localIColorNoteController != null) {
-      localIColorNoteController.onPause();
+    Object localObject = this.colorNoteController;
+    if (localObject != null) {
+      ((IColorNoteController)localObject).onPause();
+    }
+    localObject = getActivity();
+    if (localObject != null) {
+      ((IBandwidthMonitor)QRoute.api(IBandwidthMonitor.class)).stop((Context)localObject);
     }
   }
   
@@ -393,9 +459,13 @@ public class ViolaFragment
     if (this.colorNoteController == null) {
       tryInitColorNote(getArguments());
     }
-    IColorNoteController localIColorNoteController = this.colorNoteController;
-    if (localIColorNoteController != null) {
-      localIColorNoteController.onResume();
+    Object localObject = this.colorNoteController;
+    if (localObject != null) {
+      ((IColorNoteController)localObject).onResume();
+    }
+    localObject = getActivity();
+    if (localObject != null) {
+      ((IBandwidthMonitor)QRoute.api(IBandwidthMonitor.class)).start((Context)localObject);
     }
   }
   
@@ -403,7 +473,7 @@ public class ViolaFragment
   {
     IViolaFragmentPresenter localIViolaFragmentPresenter = this.mPresenter;
     if (localIViolaFragmentPresenter != null) {
-      localIViolaFragmentPresenter.a(paramString);
+      localIViolaFragmentPresenter.b(paramString);
     }
   }
   
@@ -426,13 +496,13 @@ public class ViolaFragment
         return;
       }
       this.colorNoteController.deleteColorNote();
-      QQToast.a(getContext(), 2, getContext().getResources().getString(2131690896), 5000).a();
+      QQToast.makeText(getContext(), 2, getContext().getResources().getString(2131887835), 5000).show();
     }
   }
   
   public void setCanCloseFromBottom(boolean paramBoolean)
   {
-    this.mPresenter.a().b(paramBoolean);
+    this.mPresenter.j().b(paramBoolean);
   }
   
   public void setColorBallData(JSONObject paramJSONObject)
@@ -442,13 +512,13 @@ public class ViolaFragment
   
   public void setTitleConf(HashMap<String, Object> paramHashMap, ViewGroup paramViewGroup)
   {
-    this.mPresenter.a().a(paramHashMap, paramViewGroup);
+    this.mPresenter.i().a(paramHashMap, paramViewGroup);
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    this.mPresenter.a().a(paramBoolean);
+    this.mPresenter.j().a(paramBoolean);
   }
   
   public void setViolaGestureLayoutListener(ViolaFragment.ViolaGestureLayoutListener paramViolaGestureLayoutListener)
@@ -471,7 +541,7 @@ public class ViolaFragment
     {
       this.colorNoteController = ((IColorNoteController)QRoute.api(IColorNoteController.class));
       this.colorNoteController.init(getQBaseActivity(), true, false, true, true, 0);
-      this.colorNoteController.setLeftSwipeScope(ViewUtils.a());
+      this.colorNoteController.setLeftSwipeScope(ViewUtils.getScreenWidth());
       this.colorNoteController.attachToActivity(getQBaseActivity());
       this.colorNoteController.setServiceInfo(new ViolaFragment.1(this, paramBundle));
       this.colorNoteController.setOnColorNoteAnimFinishListener(new ViolaFragment.2(this));
@@ -493,7 +563,7 @@ public class ViolaFragment
       if ((getArguments() != null) && (TextUtils.isEmpty(getArguments().getString("url")))) {
         getArguments().putString("url", paramString);
       }
-      this.mPresenter.a().a(paramString, paramJSONObject);
+      this.mPresenter.j().a(paramString, paramJSONObject);
       return;
     }
     if (getArguments() != null) {
@@ -508,7 +578,7 @@ public class ViolaFragment
   
   public void updateViolaPageWhenScroll(String paramString)
   {
-    this.mPresenter.a().a(paramString);
+    this.mPresenter.j().a(paramString);
   }
   
   public void useNightMode()
@@ -532,7 +602,7 @@ public class ViolaFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment
  * JD-Core Version:    0.7.0.1
  */

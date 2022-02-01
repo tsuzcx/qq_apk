@@ -10,12 +10,12 @@ class ReadInJoyCommentDataManager$14
   
   void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
-    paramOnDataChangeListener.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem, this.b);
+    paramOnDataChangeListener.onCommentDelete(this.a, true, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.14
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ class Achilles$AchilesRockDownloadListener
     {
       if (paramInt == 10010)
       {
-        ThreadManager.getFileThreadHandler().postDelayed(Achilles.a(), 10000L);
+        ThreadManager.getFileThreadHandler().postDelayed(Achilles.d(), 10000L);
         return;
       }
       Achilles.a(false, paramRockDownloadInfo.getPackageName(), paramInt, paramString);
@@ -66,7 +66,7 @@ class Achilles$AchilesRockDownloadListener
     localStringBuilder.append("download start: ");
     localStringBuilder.append(paramRockDownloadInfo);
     QLog.d("Achilles", 1, localStringBuilder.toString());
-    Achilles.a().put(paramRockDownloadInfo.getPackageName(), Long.valueOf(System.currentTimeMillis()));
+    Achilles.c().put(paramRockDownloadInfo.getPackageName(), Long.valueOf(System.currentTimeMillis()));
   }
   
   public void onDownloadSuccess(RockDownloadInfo paramRockDownloadInfo)
@@ -106,7 +106,7 @@ class Achilles$AchilesRockDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.Achilles.AchilesRockDownloadListener
  * JD-Core Version:    0.7.0.1
  */

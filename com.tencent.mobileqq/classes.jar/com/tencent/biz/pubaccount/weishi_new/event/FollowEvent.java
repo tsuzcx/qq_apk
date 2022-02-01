@@ -16,6 +16,20 @@ public class FollowEvent
     return this.personId;
   }
   
+  public boolean hasFollowed()
+  {
+    int i = this.isFollow;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 3) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
+  }
+  
   public void setIsFollow(int paramInt)
   {
     this.isFollow = paramInt;
@@ -28,7 +42,7 @@ public class FollowEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.event.FollowEvent
  * JD-Core Version:    0.7.0.1
  */

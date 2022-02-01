@@ -16,7 +16,7 @@ import mqq.os.MqqHandler;
 public class PAMsgListRefresher
   extends MsgListRefresher
 {
-  private long c = 9223372036854775807L;
+  private long f = 9223372036854775807L;
   
   public PAMsgListRefresher(@NonNull AIOContext paramAIOContext)
   {
@@ -27,14 +27,14 @@ public class PAMsgListRefresher
   {
     int i = 0xFFFF0000 & paramInt;
     super.a(paramInt);
-    Object localObject = this.a.a();
+    Object localObject = this.a.O();
     QQAppInterface localQQAppInterface = this.a.a();
     if (localObject != null)
     {
-      if (((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString == null) {
+      if (((BaseSessionInfo)localObject).b == null) {
         return;
       }
-      localObject = localQQAppInterface.getMessageFacade().b(((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString, ((BaseSessionInfo)localObject).jdField_a_of_type_Int);
+      localObject = localQQAppInterface.getMessageFacade().o(((BaseSessionInfo)localObject).b, ((BaseSessionInfo)localObject).a);
       if (((i == 196608) || (i == 131072)) && (((List)localObject).size() > 0))
       {
         i = 0;
@@ -45,11 +45,11 @@ public class PAMsgListRefresher
           int j = i;
           if (i == 0)
           {
-            if ((this.c == 9223372036854775807L) || (localChatMessage.uniseq == this.c)) {
+            if ((this.f == 9223372036854775807L) || (localChatMessage.uniseq == this.f)) {
               i = 1;
             }
             j = i;
-            if (this.c != 9223372036854775807L) {}
+            if (this.f != 9223372036854775807L) {}
           }
           else if (j == 0)
           {
@@ -66,7 +66,7 @@ public class PAMsgListRefresher
                 StructLongMessageDownloadProcessor.getStructLongMessage(localQQAppInterface, (MessageForStructing)localChatMessage);
               }
             }
-            this.c = localChatMessage.uniseq;
+            this.f = localChatMessage.uniseq;
             i = j;
           }
           k -= 1;
@@ -76,15 +76,15 @@ public class PAMsgListRefresher
         }
       }
       if (paramInt != 131072) {
-        this.a.a().sendEmptyMessage(20);
+        this.a.g().sendEmptyMessage(20);
       }
-      this.a.a().sendEmptyMessage(37);
+      this.a.g().sendEmptyMessage(37);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.PAMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

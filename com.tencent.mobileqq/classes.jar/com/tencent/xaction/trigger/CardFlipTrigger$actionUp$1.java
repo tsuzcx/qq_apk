@@ -16,7 +16,7 @@ public final class CardFlipTrigger$actionUp$1
     }
     CardFlipTrigger localCardFlipTrigger = this.a;
     boolean bool;
-    if (Math.abs(paramFloat1) >= CardFlipTrigger.a(this.a).a()) {
+    if (Math.abs(paramFloat1) >= CardFlipTrigger.b(this.a).a()) {
       bool = true;
     } else {
       bool = false;
@@ -31,23 +31,23 @@ public final class CardFlipTrigger$actionUp$1
       if (Intrinsics.areEqual(this.a.a(), "x"))
       {
         f1 = paramInt1;
-        f2 = CardFlipTrigger.a(this.a);
+        f2 = CardFlipTrigger.d(this.a);
         CardFlipTrigger.a(this.a, true, f1 - f2);
         CardFlipTrigger.a(this.a, f1);
         return;
       }
       float f1 = paramInt2;
-      float f2 = CardFlipTrigger.b(this.a);
+      float f2 = CardFlipTrigger.e(this.a);
       CardFlipTrigger.a(this.a, false, f1 - f2);
       CardFlipTrigger.b(this.a, f1);
       return;
     }
-    CardFlipTrigger.a(this.a);
+    CardFlipTrigger.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.CardFlipTrigger.actionUp.1
  * JD-Core Version:    0.7.0.1
  */

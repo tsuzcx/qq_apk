@@ -1,0 +1,23 @@
+package com.tencent.live2.b;
+
+import com.tencent.live2.V2TXLivePusherObserver;
+
+class f$27
+  implements Runnable
+{
+  f$27(f paramf) {}
+  
+  public void run()
+  {
+    V2TXLivePusherObserver localV2TXLivePusherObserver = f.b(this.a);
+    if (localV2TXLivePusherObserver != null) {
+      localV2TXLivePusherObserver.onCaptureFirstAudioFrame();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.live2.b.f.27
+ * JD-Core Version:    0.7.0.1
+ */

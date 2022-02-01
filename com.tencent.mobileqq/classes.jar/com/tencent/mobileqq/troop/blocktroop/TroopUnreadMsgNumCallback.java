@@ -31,7 +31,7 @@ public class TroopUnreadMsgNumCallback
       if (paramAppInterface == null) {
         return false;
       }
-      Object localObject = paramAppInterface.getProxyManager().a().b(paramConversationInfo.uin, paramConversationInfo.type);
+      Object localObject = paramAppInterface.getProxyManager().g().c(paramConversationInfo.uin, paramConversationInfo.type);
       if ((localObject != null) && ((((RecentUser)localObject).lFlag & 1L) != 0L))
       {
         localObject = paramAppInterface.getHotChatMng(true);
@@ -55,7 +55,7 @@ public class TroopUnreadMsgNumCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopUnreadMsgNumCallback
  * JD-Core Version:    0.7.0.1
  */

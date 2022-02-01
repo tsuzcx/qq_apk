@@ -24,41 +24,41 @@ public class KandianMergeNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  public int a(Message paramMessage)
-  {
-    return -113;
-  }
-  
   public NotificationElement a(Message paramMessage)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(b());
     ((StringBuilder)localObject).append(": ");
     localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d(c());
-    a();
-    a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement);
+    this.b.b((String)localObject);
+    this.b.d(d());
+    e();
+    a(paramMessage, this.b);
     if (!((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).needKanDianNotification(paramMessage)) {
       return null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportForLockScreenExposure(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade(), paramMessage, (Intent)localObject);
-    paramMessage = ImageUtil.j();
+    localObject = this.b.b();
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportForLockScreenExposure(this.a.getMessageFacade(), paramMessage, (Intent)localObject);
+    paramMessage = ImageUtil.p();
     Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(ReadInJoyUtilsConstants.b);
     if ((localDrawable instanceof BitmapDrawable)) {
       paramMessage = ((BitmapDrawable)localDrawable).getBitmap();
     } else if ((localDrawable instanceof SkinnableBitmapDrawable)) {
       paramMessage = ((SkinnableBitmapDrawable)localDrawable).getBitmap();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Intent)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(paramMessage);
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
+    this.b.a((Intent)localObject);
+    this.b.a(paramMessage);
+    return this.b;
+  }
+  
+  public int b(Message paramMessage)
+  {
+    return -113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.KandianMergeNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

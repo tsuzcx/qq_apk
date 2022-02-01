@@ -21,23 +21,23 @@ class ReadInJoyNativeAdFragment$1
     int i = ReadInJoyNativeAdFragment.a(localReadInJoyNativeAdFragment);
     int j = paramInt + 1;
     ReadInJoyNativeAdFragment.a(localReadInJoyNativeAdFragment, Math.max(i, j));
-    ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
-    if (j < ReadInJoyNativeAdFragment.a(this.a).size()) {
-      ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(j)).b();
+    ((AdModuleBase)ReadInJoyNativeAdFragment.b(this.a).get(paramInt)).a();
+    if (j < ReadInJoyNativeAdFragment.b(this.a).size()) {
+      ((AdModuleBase)ReadInJoyNativeAdFragment.b(this.a).get(j)).b();
     }
-    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2))) {
-      if (paramInt == ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
-        ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    if ((ReadInJoyNativeAdFragment.c(this.a) != null) && (ReadInJoyNativeAdFragment.c(this.a).a == 1) && ((ReadInJoyNativeAdFragment.d(this.a) == 1) || (ReadInJoyNativeAdFragment.d(this.a) == 2))) {
+      if (paramInt == ReadInJoyNativeAdFragment.b(this.a).size() - 1) {
+        ReadInJoyNativeAdFragment.e(this.a).setVisibility(8);
       } else {
-        ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
+        ReadInJoyNativeAdFragment.e(this.a).setVisibility(0);
       }
     }
-    ReadInJoyNativeAdFragment.a(this.a);
+    ReadInJoyNativeAdFragment.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -129,7 +129,7 @@ public class QzoneFamousShareJsPlugin
       }
       if (paramString3.equalsIgnoreCase("showShareMenu"))
       {
-        handleShare(this.parentPlugin.mRuntime.a(), paramVarArgs);
+        handleShare(this.parentPlugin.mRuntime.d(), paramVarArgs);
         return true;
       }
     }
@@ -138,7 +138,7 @@ public class QzoneFamousShareJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QzoneFamousShareJsPlugin
  * JD-Core Version:    0.7.0.1
  */

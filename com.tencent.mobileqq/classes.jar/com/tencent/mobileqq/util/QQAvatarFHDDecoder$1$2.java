@@ -10,16 +10,16 @@ class QQAvatarFHDDecoder$1$2
   
   public void run()
   {
-    if (QQAvatarFHDDecoder.a(this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder$1.a)) {
+    if (QQAvatarFHDDecoder.b(this.b.a)) {
       return;
     }
-    Setting localSetting = QQAvatarFHDDecoder.a(this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder$1.a).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder$1.a.a(localSetting);
+    Setting localSetting = QQAvatarFHDDecoder.c(this.b.a).getQQHeadSettingFromDB(this.a);
+    this.b.a.a(localSetting);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2
  * JD-Core Version:    0.7.0.1
  */

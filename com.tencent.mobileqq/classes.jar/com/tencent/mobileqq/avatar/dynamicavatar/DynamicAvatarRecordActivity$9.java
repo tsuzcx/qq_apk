@@ -19,25 +19,25 @@ class DynamicAvatarRecordActivity$9
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("stopRecord(): Async, mVideoFileDir:");
-        localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.a.s);
         localStringBuilder.append(",is to call AVideoCodec.recordSubmit()");
         QLog.i("DynamicAvatarRecordActivity", 2, localStringBuilder.toString());
       }
-      RecordManager.a().a().recordSubmit();
+      RecordManager.a().b().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       localUnsatisfiedLinkError.printStackTrace();
-      synchronized (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      synchronized (this.a.H)
       {
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+        this.a.H.set(true);
+        this.a.H.notifyAll();
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder();
           ((StringBuilder)???).append("stopRecord(): Async, mVideoFileDir:");
-          ((StringBuilder)???).append(this.a.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)???).append(this.a.s);
           ((StringBuilder)???).append(", call AVideoCodec.recordSubmit() fail, error = ");
           ((StringBuilder)???).append(localUnsatisfiedLinkError.getMessage());
           QLog.d("DynamicAvatarRecordActivity", 2, ((StringBuilder)???).toString());
@@ -49,7 +49,7 @@ class DynamicAvatarRecordActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.9
  * JD-Core Version:    0.7.0.1
  */

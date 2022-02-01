@@ -10,7 +10,7 @@ class QQStoryBaseActivity$1
   
   public void run()
   {
-    ((UserManager)SuperManager.a(2)).c();
+    ((UserManager)SuperManager.a(2)).d();
   }
 }
 

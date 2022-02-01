@@ -23,8 +23,22 @@ public final class AdLoadReportObj
     return "adload";
   }
   
+  public void a(@NotNull AdReportData paramAdReportData)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
+    try
+    {
+      paramAdReportData = new JSONObject(paramAdReportData.r().optString("exposure_info_report"));
+      this.a = paramAdReportData.optString("last_ad_distance");
+      this.b = paramAdReportData.optString("last_ad_time");
+      this.c = paramAdReportData.optString("last_ad_distance_vv");
+      return;
+    }
+    catch (Throwable paramAdReportData) {}
+  }
+  
   @Nullable
-  public JSONObject a()
+  public JSONObject b()
   {
     JSONObject localJSONObject = new JSONObject();
     try
@@ -69,28 +83,14 @@ public final class AdLoadReportObj
     }
   }
   
-  public void a(@NotNull AdReportData paramAdReportData)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    try
-    {
-      paramAdReportData = new JSONObject(paramAdReportData.e().optString("exposure_info_report"));
-      this.a = paramAdReportData.optString("last_ad_distance");
-      this.b = paramAdReportData.optString("last_ad_time");
-      this.c = paramAdReportData.optString("last_ad_distance_vv");
-      return;
-    }
-    catch (Throwable paramAdReportData) {}
-  }
-  
-  public boolean a()
+  public boolean c()
   {
     return this.a != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.AdLoadReportObj
  * JD-Core Version:    0.7.0.1
  */

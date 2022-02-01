@@ -12,14 +12,14 @@ class NotifyPCActiveActivity$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(true);
+    this.a.b(true);
     BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPCActiveActivity.2
  * JD-Core Version:    0.7.0.1
  */

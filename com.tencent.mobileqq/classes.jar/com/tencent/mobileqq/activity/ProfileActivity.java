@@ -56,7 +56,7 @@ public abstract class ProfileActivity
       }
       paramIntent.putExtra("flc_extra_param", paramActivity.getBundleExtra("flc_extra_param"));
       if (QLog.isColorLevel()) {
-        QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "updateIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s,  subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(paramProfileCardInfo.allInOne.pa), Utils.a(paramProfileCardInfo.allInOne.uin), paramProfileCardInfo.allInOne.troopUin, paramProfileCardInfo.allInOne.discussUin, paramProfileCardInfo.troopUin, Integer.valueOf(paramProfileCardInfo.allInOne.subSourceId), paramActivity.getBundleExtra("flc_extra_param") }));
+        QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "updateIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s,  subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(paramProfileCardInfo.allInOne.pa), Utils.i(paramProfileCardInfo.allInOne.uin), paramProfileCardInfo.allInOne.troopUin, paramProfileCardInfo.allInOne.discussUin, paramProfileCardInfo.troopUin, Integer.valueOf(paramProfileCardInfo.allInOne.subSourceId), paramActivity.getBundleExtra("flc_extra_param") }));
       }
     }
   }
@@ -105,7 +105,7 @@ public abstract class ProfileActivity
       paramIntent.putExtra("flc_extra_param", paramActivity.getBundleExtra("flc_extra_param"));
       paramIntent.putExtra("AllInOne", localAllInOne);
       if (QLog.isColorLevel()) {
-        QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "initProfileIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s, subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(i), Utils.a(paramString), localAllInOne.troopUin, localAllInOne.discussUin, paramActivity.getStringExtra("param_return_profilecard_troop_uin"), Integer.valueOf(localAllInOne.subSourceId), paramActivity.getBundleExtra("flc_extra_param") }));
+        QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "initProfileIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s, subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(i), Utils.i(paramString), localAllInOne.troopUin, localAllInOne.discussUin, paramActivity.getStringExtra("param_return_profilecard_troop_uin"), Integer.valueOf(localAllInOne.subSourceId), paramActivity.getBundleExtra("flc_extra_param") }));
       }
     }
   }
@@ -113,7 +113,7 @@ public abstract class ProfileActivity
   public static void a(Context paramContext, AppInterface paramAppInterface, String paramString)
   {
     int i;
-    if (((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString)) {
+    if (((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString)) {
       i = 1;
     } else {
       i = 114;
@@ -191,37 +191,6 @@ public abstract class ProfileActivity
     }
   }
   
-  public static void a(Context paramContext, AllInOne paramAllInOne, String paramString)
-  {
-    if (paramContext != null)
-    {
-      if (paramAllInOne != null) {}
-      try
-      {
-        ExpandUserInfo localExpandUserInfo = ((IExpandManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a(paramAllInOne.uin, false);
-        int i = 8;
-        if (localExpandUserInfo != null) {
-          i = ExpandUserInfo.fromTypeToSubID(localExpandUserInfo.fromType);
-        }
-        paramAllInOne.subSourceId = i;
-        paramAllInOne = ProfileUtils.getIntent(paramContext, paramAllInOne);
-        if (!TextUtils.isEmpty(paramString)) {
-          paramAllInOne.putExtra(paramString, true);
-        }
-        paramAllInOne.addFlags(536870912);
-        if (!(paramContext instanceof Activity)) {
-          paramAllInOne.addFlags(268435456);
-        }
-        paramContext.startActivity(paramAllInOne);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        QLog.e("ProfileActivity", 1, "openProfileCardFromLimitChatAndScroll fail.", paramContext);
-      }
-    }
-  }
-  
   public static void b(Context paramContext, AllInOne paramAllInOne, Bundle paramBundle)
   {
     if (paramContext != null) {
@@ -263,7 +232,7 @@ public abstract class ProfileActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileActivity
  * JD-Core Version:    0.7.0.1
  */

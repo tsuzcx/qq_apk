@@ -22,12 +22,12 @@ class RIJVideoHandleClick$3
     } else {
       bool = false;
     }
-    RIJVideoReportManager.a(true, bool, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, (Activity)RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick).a().a(), RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick).a().b(), RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick).a().a(), RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick).a().a());
+    RIJVideoReportManager.a(true, bool, this.a, (Activity)RIJVideoHandleClick.b(this.b).a().A(), RIJVideoHandleClick.b(this.b).a().B(), RIJVideoHandleClick.b(this.b).a().y(), RIJVideoHandleClick.b(this.b).a().z());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.3
  * JD-Core Version:    0.7.0.1
  */

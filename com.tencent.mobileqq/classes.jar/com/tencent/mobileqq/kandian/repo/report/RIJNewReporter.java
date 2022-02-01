@@ -2,7 +2,7 @@ package com.tencent.mobileqq.kandian.repo.report;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyOidbHelper;
+import com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyEngineModule;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -11,7 +11,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController.BusinessDataReporter;
 import com.tencent.mobileqq.statistics.Reporting;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -29,8 +28,8 @@ public class RIJNewReporter
   extends ReadInJoyEngineModule
   implements ReportController.BusinessDataReporter
 {
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(new Random().nextInt(10000));
+  private AtomicInteger a = new AtomicInteger(new Random().nextInt(10000));
+  private ArrayList<String> b = new ArrayList();
   
   private void a(ToServiceMsg paramToServiceMsg, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
@@ -44,7 +43,7 @@ public class RIJNewReporter
   {
     Object localObject1 = new oidb_cmd0xe13.ReqBody();
     long l = NetConnInfoCenter.getServerTimeMillis();
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.a.incrementAndGet();
     Object localObject2 = paramArrayList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -55,7 +54,7 @@ public class RIJNewReporter
       ((oidb_cmd0xe13.ReqBody)localObject1).msg_report_info.add(localReportInfo);
     }
     ((oidb_cmd0xe13.ReqBody)localObject1).uint32_seq.set(i);
-    localObject2 = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).makeOIDBPkg("OidbSvc.0xe13", 3603, 0, ((oidb_cmd0xe13.ReqBody)localObject1).toByteArray());
+    localObject2 = ReadInJoyOidbHelper.a("OidbSvc.0xe13", 3603, 0, ((oidb_cmd0xe13.ReqBody)localObject1).toByteArray());
     a((ToServiceMsg)localObject2, i, 0, ((oidb_cmd0xe13.ReqBody)localObject1).toByteArray());
     sendPbReq((ToServiceMsg)localObject2);
     localObject1 = new StringBuilder();
@@ -71,10 +70,10 @@ public class RIJNewReporter
   public void a()
   {
     QLog.d("RIJNewReporter", 1, "notifyCurrentReportLoopFinish");
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.b.size() > 0)
     {
-      a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      a(this.b);
+      this.b.clear();
     }
   }
   
@@ -97,11 +96,11 @@ public class RIJNewReporter
         ((StringBuilder)localObject).append(paramReporting);
         QLog.d("RIJNewReporter", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramReporting);
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 20)
+      this.b.add(paramReporting);
+      if (this.b.size() >= 20)
       {
-        a(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        a(this.b);
+        this.b.clear();
       }
     }
   }
@@ -117,7 +116,7 @@ public class RIJNewReporter
     ((StringBuilder)localObject).append(j);
     QLog.d("RIJNewReporter", 1, ((StringBuilder)localObject).toString());
     localObject = new oidb_cmd0xe13.RspBody();
-    int k = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    int k = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
     if (k == 0)
     {
       paramToServiceMsg = new StringBuilder();
@@ -129,7 +128,7 @@ public class RIJNewReporter
     if (j < 2)
     {
       paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("request_report_datas");
-      paramFromServiceMsg = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).makeOIDBPkg("OidbSvc.0xe13", 3603, 0, paramToServiceMsg);
+      paramFromServiceMsg = ReadInJoyOidbHelper.a("OidbSvc.0xe13", 3603, 0, paramToServiceMsg);
       a(paramFromServiceMsg, i, j + 1, paramToServiceMsg);
       sendPbReq(paramFromServiceMsg);
       paramToServiceMsg = new StringBuilder();
@@ -152,7 +151,7 @@ public class RIJNewReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.RIJNewReporter
  * JD-Core Version:    0.7.0.1
  */

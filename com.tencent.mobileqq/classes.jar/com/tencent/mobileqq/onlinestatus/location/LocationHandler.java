@@ -17,29 +17,29 @@ import mqq.os.MqqHandler;
 public class LocationHandler
 {
   public static LatLng a;
-  private double jdField_a_of_type_Double = 0.0D;
-  private TencentDirectionListener jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener;
-  private TencentLocation jdField_a_of_type_ComTencentMapGeolocationTencentLocation = null;
-  private TencentLocationListener jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener;
-  private TencentLocationManager jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
-  private volatile LocationHandler.LocationChangeListener jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener;
+  private volatile LocationHandler.LocationChangeListener b;
+  private TencentLocationManager c;
+  private TencentLocationListener d;
+  private TencentDirectionListener e;
+  private double f = 0.0D;
+  private TencentLocation g = null;
   
   private void a(boolean paramBoolean)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener != null)
+      if (this.b != null)
       {
-        Object localObject3 = new LatLng(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getLatitude(), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getLongitude());
+        Object localObject3 = new LatLng(this.g.getLatitude(), this.g.getLongitude());
         Object localObject1 = localObject3;
         if (QLog.isColorLevel())
         {
           localObject1 = localObject3;
-          if (jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng != null) {
-            localObject1 = jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+          if (a != null) {
+            localObject1 = a;
           }
         }
-        localObject1 = new Location((LatLng)localObject1, this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getProvider(), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getAccuracy(), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getTime());
+        localObject1 = new Location((LatLng)localObject1, this.g.getProvider(), this.g.getAccuracy(), this.g.getTime());
         if (QLog.isColorLevel())
         {
           localObject3 = new StringBuilder();
@@ -47,7 +47,7 @@ public class LocationHandler
           ((StringBuilder)localObject3).append(localObject1);
           QLog.e("LocationHandler", 2, ((StringBuilder)localObject3).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener.a((Location)localObject1, Double.valueOf(this.jdField_a_of_type_Double), paramBoolean);
+        this.b.a((Location)localObject1, Double.valueOf(this.f), paramBoolean);
       }
       return;
     }
@@ -58,20 +58,20 @@ public class LocationHandler
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
+      Object localObject = this.c;
       if (localObject == null)
       {
         QLog.e("LocationHandler", 1, "mLocationManager is null");
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.getClass().getDeclaredField("c");
+      localObject = this.c.getClass().getDeclaredField("c");
       if (localObject == null)
       {
         QLog.e("LocationHandler", 1, "field c is null");
         return;
       }
       ((Field)localObject).setAccessible(true);
-      localObject = ((Field)localObject).get(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager);
+      localObject = ((Field)localObject).get(this.c);
       if (localObject == null)
       {
         QLog.e("LocationHandler", 1, "cObject is null");
@@ -116,12 +116,12 @@ public class LocationHandler
     if (QLog.isColorLevel()) {
       QLog.d("LocationHandler", 2, "stopLocationUpdate: invoked. ");
     }
-    TencentLocationManager localTencentLocationManager = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
+    TencentLocationManager localTencentLocationManager = this.c;
     if (localTencentLocationManager != null)
     {
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = null;
-      localTencentLocationManager.removeUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.stopDirectionUpdate();
+      this.e = null;
+      localTencentLocationManager.removeUpdates(this.d);
+      this.c.stopDirectionUpdate();
       b();
     }
   }
@@ -136,31 +136,31 @@ public class LocationHandler
     if (paramBoolean1) {
       localMqqHandler.postDelayed((Runnable)localObject, 15000L);
     }
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = TencentLocationManager.getInstance(MobileQQ.sMobileQQ);
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new LocationHandler.2(this, (Runnable)localObject, localMqqHandler);
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = new LocationHandler.3(this);
-    int i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.requestLocationUpdates(TencentLocationRequest.create().setInterval(paramLong), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+    this.c = TencentLocationManager.getInstance(MobileQQ.sMobileQQ);
+    this.d = new LocationHandler.2(this, (Runnable)localObject, localMqqHandler);
+    this.e = new LocationHandler.3(this);
+    int i = this.c.requestLocationUpdates(TencentLocationRequest.create().setInterval(paramLong), this.d);
     if (i != 0)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[LocationManager] requestLocationUpdates: invoked. error: ");
       ((StringBuilder)localObject).append(i);
       QLog.e("LocationHandler", 1, ((StringBuilder)localObject).toString());
-      QQToast.a(MobileQQ.sMobileQQ, "地图定位系统初始化失败，请稍后重试", 0).a();
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener.b(i);
+      QQToast.makeText(MobileQQ.sMobileQQ, "地图定位系统初始化失败，请稍后重试", 0).show();
+      if (this.b != null) {
+        this.b.b(i);
       }
     }
     if (paramBoolean2)
     {
-      i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.startDirectionUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener, Looper.myLooper());
+      i = this.c.startDirectionUpdates(this.e, Looper.myLooper());
       if (i != 0)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[LocationManager] startDirectionUpdates: invoked. error: ");
         ((StringBuilder)localObject).append(i);
         QLog.e("LocationHandler", 1, ((StringBuilder)localObject).toString());
-        QQToast.a(MobileQQ.sMobileQQ, 1, "方向箭头暂不可用", 0).a();
+        QQToast.makeText(MobileQQ.sMobileQQ, 1, "方向箭头暂不可用", 0).show();
       }
     }
   }
@@ -169,7 +169,7 @@ public class LocationHandler
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener = paramLocationChangeListener;
+      this.b = paramLocationChangeListener;
       return;
     }
     finally
@@ -189,11 +189,11 @@ public class LocationHandler
         localStringBuilder.append("removeLocationListener: invoked. listener: ");
         localStringBuilder.append(paramLocationChangeListener);
         localStringBuilder.append(" mLocationListener: ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener);
+        localStringBuilder.append(this.b);
         QLog.d("LocationHandler", 2, localStringBuilder.toString());
       }
-      if (paramLocationChangeListener == this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler$LocationChangeListener = null;
+      if (paramLocationChangeListener == this.b) {
+        this.b = null;
       }
       return;
     }
@@ -202,7 +202,7 @@ public class LocationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.location.LocationHandler
  * JD-Core Version:    0.7.0.1
  */

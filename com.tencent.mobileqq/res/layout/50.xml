@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/5d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgView android:id="@id/mjt" android:background="@color/5d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" />
+    <ImageView android:layout_gravity="center|left" android:id="@id/mjs" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/mjv" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center|left" android:id="@id/mjh" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginLeft="25.0dip" android:layout_marginBottom="28.0dip" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/mji" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="28.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/mjg" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="170.0dip" android:layout_marginBottom="27.0dip" />
+</FrameLayout>

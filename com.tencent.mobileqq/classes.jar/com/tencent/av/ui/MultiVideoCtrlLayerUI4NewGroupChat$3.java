@@ -10,7 +10,7 @@ class MultiVideoCtrlLayerUI4NewGroupChat$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MultiVideoCtrlLayerUI4NewGroupChat.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

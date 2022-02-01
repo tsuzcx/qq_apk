@@ -23,46 +23,46 @@ class ScoreQAVFragment$3
   {
     this.a.a();
     long l1;
-    if ((this.a.jdField_b_of_type_JavaLangString != null) && (!this.a.jdField_b_of_type_JavaLangString.isEmpty())) {
-      l1 = ScoreManager.a(this.a.jdField_b_of_type_JavaLangString);
+    if ((this.a.n != null) && (!this.a.n.isEmpty())) {
+      l1 = ScoreManager.b(this.a.n);
     } else {
       l1 = 0L;
     }
-    SharedPreferences localSharedPreferences = SharedPreUtils.e(this.a.jdField_d_of_type_JavaLangString);
+    SharedPreferences localSharedPreferences = SharedPreUtils.e(this.a.p);
     long l2 = localSharedPreferences.getLong("qav_roomid", 0L);
-    long l3 = localSharedPreferences.getLong(VideoConstants.g, 0L);
-    ScoreReportController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Long, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Long, this.a.jdField_d_of_type_Long, this.a.e, this.a.jdField_a_of_type_Int, l3, l1, l2, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
+    long l3 = localSharedPreferences.getLong(VideoConstants.o, 0L);
+    ScoreReportController.a(this.a.q, this.a.h, this.a.i, this.a.j, this.a.k, this.a.l, this.a.m, l3, l1, l2, this.a.o, this.a.f);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportEvent beginTime: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a.h);
       localStringBuilder.append(", endTime: ");
-      localStringBuilder.append(this.a.jdField_b_of_type_Long);
+      localStringBuilder.append(this.a.i);
       localStringBuilder.append(", sdkVersion: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a.m);
       localStringBuilder.append(", peerSdkVersion: ");
       localStringBuilder.append(l3);
       localStringBuilder.append(", bussinessType: ");
-      localStringBuilder.append(this.a.jdField_c_of_type_Long);
+      localStringBuilder.append(this.a.j);
       localStringBuilder.append(", bussinessFlag: ");
-      localStringBuilder.append(this.a.jdField_d_of_type_Long);
+      localStringBuilder.append(this.a.k);
       localStringBuilder.append(", ip: ");
-      localStringBuilder.append(this.a.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.a.n);
       localStringBuilder.append(", toUin: ");
-      localStringBuilder.append(this.a.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.a.o);
       localStringBuilder.append(", score: ");
-      localStringBuilder.append(this.a.e);
+      localStringBuilder.append(this.a.l);
       localStringBuilder.append(", problems: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a.f);
       QLog.d("ScoreActivity", 2, localStringBuilder.toString());
     }
-    localSharedPreferences.edit().putBoolean(VideoConstants.l, true).commit();
-    if (this.a.f != 0L) {
+    localSharedPreferences.edit().putBoolean(VideoConstants.t, true).commit();
+    if (this.a.s != 0L) {
       try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_b_of_type_Int, this.a.f);
+        this.a.q.getMessageFacade().h(this.a.o, this.a.r, this.a.s);
       }
       catch (Exception localException)
       {
@@ -81,7 +81,7 @@ class ScoreQAVFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.3
  * JD-Core Version:    0.7.0.1
  */

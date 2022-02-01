@@ -172,6 +172,7 @@ public abstract class AbsListView
   int mMotionY;
   AbsListView.MultiChoiceModeWrapper mMultiChoiceModeCallback;
   private boolean mNeedCheckSpringback = false;
+  private AbsListView.OnOverScrollListener mOnOverScrollListener;
   private AbsListView.OnScrollButtomListener mOnScrollButtomListener;
   private AbsListView.OnScrollListener mOnScrollListener;
   private ArrayList<AbsListView.OnScrollListener> mOnScrollListenerList = new ArrayList();
@@ -348,7 +349,7 @@ public abstract class AbsListView
     {
       Context localContext = getContext();
       PopupWindow localPopupWindow = new PopupWindow(localContext);
-      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131563005, null));
+      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131629613, null));
       this.mTextFilter.setRawInputType(177);
       this.mTextFilter.setImeOptions(268435456);
       this.mTextFilter.addTextChangedListener(this);
@@ -365,10 +366,10 @@ public abstract class AbsListView
     }
     if (paramBoolean)
     {
-      this.mPopup.setAnimationStyle(2131755031);
+      this.mPopup.setAnimationStyle(2131951644);
       return;
     }
-    this.mPopup.setAnimationStyle(2131755032);
+    this.mPopup.setAnimationStyle(2131951645);
   }
   
   private void dismissPopup()
@@ -1959,7 +1960,7 @@ public abstract class AbsListView
     boolean bool2 = bool1;
     if (paramInt != 0)
     {
-      Object localObject = AbsListView.RecycleBin.access$2800(this.mRecycler);
+      Object localObject = AbsListView.RecycleBin.access$2900(this.mRecycler);
       i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
@@ -1969,10 +1970,10 @@ public abstract class AbsListView
         }
         paramInt += 1;
       }
-      if (!checkScrap(AbsListView.RecycleBin.access$2900(this.mRecycler))) {
+      if (!checkScrap(AbsListView.RecycleBin.access$3000(this.mRecycler))) {
         bool1 = false;
       }
-      localObject = AbsListView.RecycleBin.access$3000(this.mRecycler);
+      localObject = AbsListView.RecycleBin.access$3100(this.mRecycler);
       i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
@@ -3410,7 +3411,7 @@ public abstract class AbsListView
   public void reclaimViews(List<View> paramList)
   {
     int j = getChildCount();
-    AbsListView.RecyclerListener localRecyclerListener = AbsListView.RecycleBin.access$2700(this.mRecycler);
+    AbsListView.RecyclerListener localRecyclerListener = AbsListView.RecycleBin.access$2800(this.mRecycler);
     int i = 0;
     while (i < j)
     {
@@ -4134,6 +4135,11 @@ public abstract class AbsListView
     this.onNestedScrollingListener = paramOnNestedScrollingListener;
   }
   
+  public void setOnOverScrollListener(AbsListView.OnOverScrollListener paramOnOverScrollListener)
+  {
+    this.mOnOverScrollListener = paramOnOverScrollListener;
+  }
+  
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
     this.mOnScrollListener = paramOnScrollListener;
@@ -4205,7 +4211,7 @@ public abstract class AbsListView
   
   public void setRecyclerListener(AbsListView.RecyclerListener paramRecyclerListener)
   {
-    AbsListView.RecycleBin.access$2702(this.mRecycler, paramRecyclerListener);
+    AbsListView.RecycleBin.access$2802(this.mRecycler, paramRecyclerListener);
   }
   
   public void setScrollIndicators(View paramView1, View paramView2)
@@ -4834,7 +4840,7 @@ public abstract class AbsListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AbsListView
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public final class DynamicList$SubCmd_DynamicItem_Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.DynamicList.DynamicList.SubCmd_DynamicItem_Resp
  * JD-Core Version:    0.7.0.1
  */

@@ -20,19 +20,19 @@ final class SystemDragUtils$3
         if (i != 2) {
           return false;
         }
-        if (SystemDragUtils.a()) {
+        if (SystemDragUtils.c()) {
           return false;
         }
         if ((Math.abs(SystemDragUtils.a - f1) > 20.0F) || (Math.abs(SystemDragUtils.b - f2) > 20.0F))
         {
           SystemDragUtils.b(true);
-          SystemDragUtils.a().removeMessages(SystemDragUtils.TouchHandler.a);
+          SystemDragUtils.b().removeMessages(SystemDragUtils.TouchHandler.a);
           return false;
         }
       }
       else
       {
-        SystemDragUtils.a().removeMessages(SystemDragUtils.TouchHandler.a);
+        SystemDragUtils.b().removeMessages(SystemDragUtils.TouchHandler.a);
         return false;
       }
     }
@@ -44,14 +44,14 @@ final class SystemDragUtils$3
       paramMotionEvent = Message.obtain();
       paramMotionEvent.what = SystemDragUtils.TouchHandler.a;
       paramMotionEvent.obj = paramView;
-      SystemDragUtils.a().sendMessageDelayed(paramMotionEvent, 1000L);
+      SystemDragUtils.b().sendMessageDelayed(paramMotionEvent, 1000L);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.3
  * JD-Core Version:    0.7.0.1
  */

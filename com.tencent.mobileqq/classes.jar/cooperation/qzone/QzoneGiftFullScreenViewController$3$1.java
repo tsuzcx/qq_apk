@@ -12,12 +12,12 @@ class QzoneGiftFullScreenViewController$3$1
   public void run()
   {
     URLDrawable.pause();
-    ((View)this.this$1.this$0.magicfaceReceivePlay).setBackgroundColor(this.val$actionGlobalData.a);
+    ((View)this.this$1.this$0.magicfaceReceivePlay).setBackgroundColor(this.val$actionGlobalData.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController.3.1
  * JD-Core Version:    0.7.0.1
  */

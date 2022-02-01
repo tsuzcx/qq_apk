@@ -16,14 +16,14 @@ final class ConstellationView$bindTextView$$inlined$apply$lambda$1
   
   public final void onClick(View paramView)
   {
-    ConstellationLauncher.a.a((Activity)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView.a(), "VAL_FROM_STATUS_MSG_TAB");
+    ConstellationLauncher.c.a((Activity)this.a.c(), "VAL_FROM_STATUS_MSG_TAB");
     ReportHelperKt.a("0X800AF45", 0, null, null, 14, null);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.ConstellationView.bindTextView..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

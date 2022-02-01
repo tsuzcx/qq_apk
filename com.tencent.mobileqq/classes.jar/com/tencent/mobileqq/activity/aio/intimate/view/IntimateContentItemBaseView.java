@@ -19,15 +19,15 @@ public abstract class IntimateContentItemBaseView
   extends RelativeLayout
   implements View.OnClickListener, View.OnTouchListener
 {
-  protected int a;
-  private long a;
   protected Context a;
-  protected BaseIntimateView a;
-  protected IntimateInfo a;
-  protected boolean a;
-  protected int b;
-  protected boolean b;
+  protected boolean b = false;
   protected boolean c = false;
+  protected IntimateInfo d;
+  protected int e;
+  protected int f;
+  protected boolean g = false;
+  protected BaseIntimateView h;
+  private long i;
   
   public IntimateContentItemBaseView(Context paramContext)
   {
@@ -42,12 +42,8 @@ public abstract class IntimateContentItemBaseView
   public IntimateContentItemBaseView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
-  
-  protected abstract void a();
   
   protected abstract void a(View paramView);
   
@@ -55,19 +51,19 @@ public abstract class IntimateContentItemBaseView
   
   protected abstract boolean a();
   
-  protected void b() {}
+  protected abstract void b();
   
   public void b(IntimateInfo paramIntimateInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramIntimateInfo;
+    this.e = paramInt;
     if (!a())
     {
       setVisibility(8);
       return;
     }
-    if (!this.c) {
-      g();
+    if (!this.g) {
+      h();
     }
     setVisibility(0);
     a(paramIntimateInfo, paramInt);
@@ -81,66 +77,68 @@ public abstract class IntimateContentItemBaseView
   
   protected void f() {}
   
-  public void g()
-  {
-    if (this.c) {
-      return;
-    }
-    this.c = true;
-    a();
-  }
+  protected void g() {}
   
   public void h()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    if (this.g) {
+      return;
+    }
+    this.g = true;
     b();
   }
   
   public void i()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.b = true;
+    this.c = true;
     c();
   }
   
   public void j()
   {
-    if (this.jdField_b_of_type_Int == 1)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onResumed isOpened:");
-        localStringBuilder.append(this.jdField_b_of_type_Boolean);
-        QLog.i("IntimateContentItemBaseView", 2, localStringBuilder.toString());
-      }
-      if (!this.jdField_b_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = false;
+    this.c = false;
     d();
   }
   
   public void k()
   {
-    this.jdField_a_of_type_Boolean = false;
+    if (this.f == 1)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onResumed isOpened:");
+        localStringBuilder.append(this.c);
+        QLog.i("IntimateContentItemBaseView", 2, localStringBuilder.toString());
+      }
+      if (!this.c) {
+        return;
+      }
+    }
+    this.b = true;
     e();
   }
   
   public void l()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     f();
+  }
+  
+  public void m()
+  {
+    this.b = false;
+    g();
   }
   
   public void onClick(View paramView)
   {
     long l = SystemClock.elapsedRealtime();
-    if (l - this.jdField_a_of_type_Long >= 500L)
+    if (l - this.i >= 500L)
     {
-      this.jdField_a_of_type_Long = l;
+      this.i = l;
       a(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -148,10 +146,10 @@ public abstract class IntimateContentItemBaseView
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int j = paramMotionEvent.getAction();
+    if (j != 0)
     {
-      if (((i == 1) || (i == 3)) && (Build.VERSION.SDK_INT >= 11)) {
+      if (((j == 1) || (j == 3)) && (Build.VERSION.SDK_INT >= 11)) {
         paramView.setAlpha(1.0F);
       }
     }
@@ -169,20 +167,20 @@ public abstract class IntimateContentItemBaseView
       localStringBuilder.append("setCurrentShowType showType: ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("  old:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.f);
       QLog.d("IntimateContentItemBaseView", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setIntimateInterface(BaseIntimateView paramBaseIntimateView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView = paramBaseIntimateView;
+    this.h = paramBaseIntimateView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemBaseView
  * JD-Core Version:    0.7.0.1
  */

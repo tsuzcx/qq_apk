@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="30.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textColor="@color/bp" android:id="@id/k6y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:layout_centerVertical="true" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/black" android:id="@id/k6y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:layout_centerVertical="true" />
     <TextView android:textColor="@color/ci" android:id="@id/k6z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
     <View android:id="@id/e_1" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_alignParentBottom="true" />

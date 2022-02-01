@@ -15,12 +15,12 @@ import com.tencent.biz.videostory.capture.widgets.VideoStoryScrollItemTransforme
 public class AEBottomListScrollView
   extends RecyclerView
 {
-  private static final String jdField_a_of_type_JavaLangString = "AEBottomListScrollView";
-  private AEBottomListScrollLayoutManager jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager;
-  private AEBottomListScrollView.AEEditMaterialSelectedListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$AEEditMaterialSelectedListener;
-  private AEBottomListScrollView.OnItemChangedListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$OnItemChangedListener;
-  private AEBottomListScrollView.ScrollStateChangeListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$ScrollStateChangeListener;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String a = "AEBottomListScrollView";
+  private AEBottomListScrollLayoutManager b;
+  private AEBottomListScrollView.ScrollStateChangeListener c;
+  private AEBottomListScrollView.OnItemChangedListener d;
+  private AEBottomListScrollView.AEEditMaterialSelectedListener e;
+  private boolean f;
   
   public AEBottomListScrollView(Context paramContext)
   {
@@ -40,18 +40,9 @@ public class AEBottomListScrollView
     a(paramAttributeSet);
   }
   
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$OnItemChangedListener == null) {
-      return;
-    }
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.b();
-    c(a(i), i);
-  }
-  
   private void a(float paramFloat, int paramInt1, int paramInt2, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
-    AEBottomListScrollView.ScrollStateChangeListener localScrollStateChangeListener = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$ScrollStateChangeListener;
+    AEBottomListScrollView.ScrollStateChangeListener localScrollStateChangeListener = this.c;
     if (localScrollStateChangeListener != null) {
       localScrollStateChangeListener.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
     }
@@ -59,7 +50,7 @@ public class AEBottomListScrollView
   
   private void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    AEBottomListScrollView.ScrollStateChangeListener localScrollStateChangeListener = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$ScrollStateChangeListener;
+    AEBottomListScrollView.ScrollStateChangeListener localScrollStateChangeListener = this.c;
     if (localScrollStateChangeListener != null) {
       localScrollStateChangeListener.c(paramViewHolder, paramInt);
     }
@@ -73,18 +64,27 @@ public class AEBottomListScrollView
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager = new AEBottomListScrollLayoutManager(getContext(), new AEBottomListScrollView.ScrollStateListener(this, null), new DSVOrientation.Horizontal());
-    setLayoutManager(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager);
+    this.f = bool;
+    this.b = new AEBottomListScrollLayoutManager(getContext(), new AEBottomListScrollView.ScrollStateListener(this, null), new DSVOrientation.Horizontal());
+    setLayoutManager(this.b);
+  }
+  
+  private void b()
+  {
+    if (this.d == null) {
+      return;
+    }
+    int i = this.b.e();
+    c(a(i), i);
   }
   
   private void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$OnItemChangedListener;
+    Object localObject = this.d;
     if (localObject != null) {
       ((AEBottomListScrollView.OnItemChangedListener)localObject).a(paramViewHolder, true);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$ScrollStateChangeListener;
+    localObject = this.c;
     if (localObject != null) {
       ((AEBottomListScrollView.ScrollStateChangeListener)localObject).b(paramViewHolder, paramInt);
     }
@@ -92,21 +92,16 @@ public class AEBottomListScrollView
   
   private void c(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    AEBottomListScrollView.OnItemChangedListener localOnItemChangedListener = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$OnItemChangedListener;
+    AEBottomListScrollView.OnItemChangedListener localOnItemChangedListener = this.d;
     if (localOnItemChangedListener != null) {
       localOnItemChangedListener.a(paramViewHolder, paramInt);
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.b();
-  }
-  
   @Nullable
   public RecyclerView.ViewHolder a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.findViewByPosition(paramInt);
+    View localView = this.b.findViewByPosition(paramInt);
     if (localView != null) {
       return getChildViewHolder(localView);
     }
@@ -115,7 +110,7 @@ public class AEBottomListScrollView
   
   public void a(int paramInt, AEMaterialMetaData paramAEMaterialMetaData)
   {
-    AEBottomListAdapter.ViewHolder localViewHolder = (AEBottomListAdapter.ViewHolder)a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.b());
+    AEBottomListAdapter.ViewHolder localViewHolder = (AEBottomListAdapter.ViewHolder)a(this.b.e());
     if (localViewHolder != null) {
       localViewHolder.a(4);
     }
@@ -124,14 +119,14 @@ public class AEBottomListScrollView
     {
       localViewHolder.b(paramAEMaterialMetaData);
       localViewHolder.a(3);
-      if ((paramAEMaterialMetaData != null) && (paramAEMaterialMetaData.e)) {
+      if ((paramAEMaterialMetaData != null) && (paramAEMaterialMetaData.A)) {
         localViewHolder.a(2);
       }
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$AEEditMaterialSelectedListener != null) {
-        if ((localViewHolder.a != null) && (!"0".equals(localViewHolder.a.k)) && (localViewHolder.a.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$AEEditMaterialSelectedListener.a(true);
+      if (this.e != null) {
+        if ((localViewHolder.a != null) && (!"0".equals(localViewHolder.a.m)) && (localViewHolder.a.u)) {
+          this.e.a(true);
         } else {
-          this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$AEEditMaterialSelectedListener.a(false);
+          this.e.a(false);
         }
       }
       scrollToPosition(paramInt);
@@ -143,29 +138,34 @@ public class AEBottomListScrollView
     boolean bool = super.fling(paramInt1, paramInt2);
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.a(paramInt1, paramInt2);
+      this.b.a(paramInt1, paramInt2);
       return bool;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.c();
+    this.b.c();
     return bool;
+  }
+  
+  public int getCurrentItem()
+  {
+    return this.b.e();
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.a(null);
+    this.b.a(null);
   }
   
   public void setAEEditMaterialSelectedListener(@NonNull AEBottomListScrollView.AEEditMaterialSelectedListener paramAEEditMaterialSelectedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$AEEditMaterialSelectedListener = paramAEEditMaterialSelectedListener;
+    this.e = paramAEEditMaterialSelectedListener;
   }
   
   public void setClampTransformProgressAfter(@IntRange(from=1L) int paramInt)
   {
     if (paramInt > 1)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.c(paramInt);
+      this.b.c(paramInt);
       return;
     }
     throw new IllegalArgumentException("must be >= 1");
@@ -173,17 +173,17 @@ public class AEBottomListScrollView
   
   public void setItemTransformer(VideoStoryScrollItemTransformer paramVideoStoryScrollItemTransformer)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.a(paramVideoStoryScrollItemTransformer);
+    this.b.a(paramVideoStoryScrollItemTransformer);
   }
   
   public void setItemTransitionTimeMillis(@IntRange(from=10L) int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.a(paramInt);
+    this.b.a(paramInt);
   }
   
   public void setLayoutCallback(AEBottomListScrollView.LayoutCallback paramLayoutCallback)
   {
-    AEBottomListScrollLayoutManager localAEBottomListScrollLayoutManager = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager;
+    AEBottomListScrollLayoutManager localAEBottomListScrollLayoutManager = this.b;
     if (localAEBottomListScrollLayoutManager != null) {
       localAEBottomListScrollLayoutManager.a(paramLayoutCallback);
     }
@@ -201,43 +201,43 @@ public class AEBottomListScrollView
   
   public void setOffscreenItems(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.b(paramInt);
+    this.b.b(paramInt);
   }
   
   public void setOnItemChangedListener(@NonNull AEBottomListScrollView.OnItemChangedListener<?> paramOnItemChangedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$OnItemChangedListener = paramOnItemChangedListener;
+    this.d = paramOnItemChangedListener;
   }
   
   public void setOrientation(DSVOrientation paramDSVOrientation)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.a(paramDSVOrientation);
+    this.b.a(paramDSVOrientation);
   }
   
   public void setOverScrollEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     setOverScrollMode(2);
   }
   
   public void setScrollStateChangeListener(@NonNull AEBottomListScrollView.ScrollStateChangeListener<?> paramScrollStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView$ScrollStateChangeListener = paramScrollStateChangeListener;
+    this.c = paramScrollStateChangeListener;
   }
   
   public void setSlideOnFling(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.a(paramBoolean);
+    this.b.a(paramBoolean);
   }
   
   public void setSlideOnFlingThreshold(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollLayoutManager.d(paramInt);
+    this.b.d(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class JumpLoginResult$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("-->login success(finish after ls), go to AgentActivity, account:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       QLog.d("JumpLoginResult", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.JumpLoginResult.1
  * JD-Core Version:    0.7.0.1
  */

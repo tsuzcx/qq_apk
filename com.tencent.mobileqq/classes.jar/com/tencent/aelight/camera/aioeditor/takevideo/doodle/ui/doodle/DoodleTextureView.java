@@ -13,9 +13,9 @@ public class DoodleTextureView
   extends GLTextureView
   implements GLSurfaceView.Renderer, DoodleGLCallback
 {
-  int jdField_a_of_type_Int = 320;
-  DoodleOpController jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController;
+  int a = 320;
   int b = 480;
+  DoodleOpController c;
   
   public DoodleTextureView(Context paramContext)
   {
@@ -34,9 +34,9 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    DoodleOpController localDoodleOpController = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController;
+    DoodleOpController localDoodleOpController = this.c;
     if (localDoodleOpController != null) {
-      localDoodleOpController.c(paramInt);
+      localDoodleOpController.d(paramInt);
     }
   }
   
@@ -55,18 +55,18 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    paramGL10 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController;
+    paramGL10 = this.c;
     if (paramGL10 != null) {
-      paramGL10.e();
+      paramGL10.i();
     }
   }
   
   @TargetApi(17)
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    paramGL10 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController;
+    paramGL10 = this.c;
     if (paramGL10 != null)
     {
       paramGL10 = (PersonalityOperator)paramGL10.a(102);
@@ -78,9 +78,9 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    paramGL10 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController;
+    paramGL10 = this.c;
     if (paramGL10 != null) {
-      paramGL10.d();
+      paramGL10.f();
     }
   }
   
@@ -92,14 +92,14 @@ public class DoodleTextureView
   
   public void setOpController(DoodleOpController paramDoodleOpController)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController = paramDoodleOpController;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleOpController.a(this);
+    this.c = paramDoodleOpController;
+    this.c.a(this);
     super.b(new DoodleTextureView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleTextureView
  * JD-Core Version:    0.7.0.1
  */

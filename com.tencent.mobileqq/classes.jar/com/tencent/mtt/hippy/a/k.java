@@ -21,14 +21,14 @@ import java.util.Stack;
 public class k
   implements View.OnClickListener, c.a, m, o.a
 {
-  j a;
+  final j a;
   g b;
   ProgressDialog c;
   c d;
-  private h e;
-  private HashMap<Context, e> f;
-  private Stack<e> g;
-  private o h;
+  private final h e;
+  private final HashMap<Context, e> f;
+  private final Stack<e> g;
+  private final o h;
   
   k(HippyGlobalConfigs paramHippyGlobalConfigs, String paramString1, String paramString2)
   {
@@ -67,7 +67,7 @@ public class k
   
   public void a()
   {
-    b();
+    c();
   }
   
   public void a(HippyRootView paramHippyRootView)
@@ -85,14 +85,6 @@ public class k
     this.g.push(locale);
   }
   
-  public void a(f paramf)
-  {
-    paramf = this.b;
-    if (paramf != null) {
-      paramf.onDevBundleReLoad();
-    }
-  }
-  
   public void a(g paramg)
   {
     this.b = paramg;
@@ -100,7 +92,7 @@ public class k
   
   public void a(String paramString, g paramg)
   {
-    this.a.a(new k.2(this, paramg), paramString, null);
+    this.a.a(new k.2(this, paramg), paramString);
   }
   
   public void a(Throwable paramThrowable)
@@ -119,9 +111,14 @@ public class k
     UIThreadUtils.runOnUiThread(new k.3(this, paramThrowable));
   }
   
-  public void b()
+  void b()
   {
-    a(null);
+    if (this.e.c())
+    {
+      this.h.a(this);
+      return;
+    }
+    this.h.a();
   }
   
   public void b(HippyRootView paramHippyRootView)
@@ -140,24 +137,22 @@ public class k
     }
   }
   
-  void c()
+  public void c()
   {
-    if (this.e.c())
-    {
-      this.h.a(this);
-      return;
+    g localg = this.b;
+    if (localg != null) {
+      localg.onDevBundleReLoad();
     }
-    this.h.a();
   }
   
   public void d()
   {
-    b();
+    c();
   }
   
   public void e()
   {
-    b();
+    c();
   }
   
   public void onClick(View paramView)
@@ -184,7 +179,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -55,15 +55,15 @@ class MiniAppProxyImpl$14
           paramIntent.put("address", str);
           paramIntent.put("latitude", d1);
           paramIntent.put("longitude", d2);
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
+          this.a.onReceiveResult(true, paramIntent);
         }
         catch (JSONException paramIntent)
         {
           QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
+          this.a.onReceiveResult(false, new JSONObject());
         }
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      this.b.removeActivityResultListener(this);
       return true;
     }
     return false;
@@ -71,7 +71,7 @@ class MiniAppProxyImpl$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.14
  * JD-Core Version:    0.7.0.1
  */

@@ -38,9 +38,9 @@ import mqq.app.MobileQQ;
 
 public class SecShareInfoUtil
 {
-  private static SecShareInfoUtil jdField_a_of_type_ComTencentMqpAppSecSecShareInfoUtil;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentLinkedQueue<SecShareInfoUtil.FileInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private static SecShareInfoUtil a;
+  private String b;
+  private ConcurrentLinkedQueue<SecShareInfoUtil.FileInfo> c = new ConcurrentLinkedQueue();
   
   private int a(String paramString)
   {
@@ -76,7 +76,70 @@ public class SecShareInfoUtil
     return 0;
   }
   
-  private long a(PackageInfo paramPackageInfo)
+  public static SecShareInfoUtil a()
+  {
+    try
+    {
+      if (a == null) {
+        a = new SecShareInfoUtil();
+      }
+      SecShareInfoUtil localSecShareInfoUtil = a;
+      return localSecShareInfoUtil;
+    }
+    finally {}
+  }
+  
+  public static String a(PackageInfo paramPackageInfo)
+  {
+    try
+    {
+      PackageManager localPackageManager = BaseApplication.getContext().getPackageManager();
+      paramPackageInfo = paramPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
+      return paramPackageInfo;
+    }
+    catch (Exception paramPackageInfo)
+    {
+      paramPackageInfo.printStackTrace();
+    }
+    return "";
+  }
+  
+  private PackageInfo b(String paramString)
+  {
+    try
+    {
+      paramString = BaseApplication.getContext().getPackageManager().getPackageInfo(paramString, 192);
+      return paramString;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  private String b(PackageInfo paramPackageInfo)
+  {
+    if (paramPackageInfo == null) {
+      return "f0";
+    }
+    if (paramPackageInfo.signatures == null) {
+      return "f1";
+    }
+    if (paramPackageInfo.signatures[0] == null) {
+      return "f2";
+    }
+    paramPackageInfo = paramPackageInfo.signatures[0].toByteArray();
+    if (paramPackageInfo == null) {
+      return "f3";
+    }
+    if (paramPackageInfo.length == 0) {
+      return "f4";
+    }
+    return MD5FileUtil.a(paramPackageInfo);
+  }
+  
+  private long c(PackageInfo paramPackageInfo)
   {
     if (paramPackageInfo == null) {
       return 0L;
@@ -104,49 +167,7 @@ public class SecShareInfoUtil
     return 0L;
   }
   
-  private PackageInfo a(String paramString)
-  {
-    try
-    {
-      paramString = BaseApplication.getContext().getPackageManager().getPackageInfo(paramString, 192);
-      return paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static SecShareInfoUtil a()
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMqpAppSecSecShareInfoUtil == null) {
-        jdField_a_of_type_ComTencentMqpAppSecSecShareInfoUtil = new SecShareInfoUtil();
-      }
-      SecShareInfoUtil localSecShareInfoUtil = jdField_a_of_type_ComTencentMqpAppSecSecShareInfoUtil;
-      return localSecShareInfoUtil;
-    }
-    finally {}
-  }
-  
-  public static String a(PackageInfo paramPackageInfo)
-  {
-    try
-    {
-      PackageManager localPackageManager = BaseApplication.getContext().getPackageManager();
-      paramPackageInfo = paramPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
-      return paramPackageInfo;
-    }
-    catch (Exception paramPackageInfo)
-    {
-      paramPackageInfo.printStackTrace();
-    }
-    return "";
-  }
-  
-  private String a(String paramString)
+  private String c(String paramString)
   {
     String str = "";
     try
@@ -168,35 +189,14 @@ public class SecShareInfoUtil
     return "";
   }
   
-  private String b(PackageInfo paramPackageInfo)
+  private void d()
   {
-    if (paramPackageInfo == null) {
-      return "f0";
-    }
-    if (paramPackageInfo.signatures == null) {
-      return "f1";
-    }
-    if (paramPackageInfo.signatures[0] == null) {
-      return "f2";
-    }
-    paramPackageInfo = paramPackageInfo.signatures[0].toByteArray();
-    if (paramPackageInfo == null) {
-      return "f3";
-    }
-    if (paramPackageInfo.length == 0) {
-      return "f4";
-    }
-    return MD5FileUtil.a(paramPackageInfo);
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaLangString = null;
+    if (this.b != null) {
+      this.b = null;
     }
   }
   
-  private void c()
+  private void e()
   {
     for (;;)
     {
@@ -210,23 +210,23 @@ public class SecShareInfoUtil
         localSharedInfoPacket.version.set(1);
         localSharedInfoPacket.type.set(1);
         localSharedInfoPacket.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
-        localSharedInfoPacket.uint32_appid.set(AppSetting.a());
+        localSharedInfoPacket.uint32_appid.set(AppSetting.d());
         localSharedInfoPacket.str_sysversion.set(Build.VERSION.RELEASE);
         localSharedInfoPacket.str_brand.set(Build.BRAND);
         localSharedInfoPacket.str_model.set(Build.MODEL);
-        localSharedInfoPacket.qq_version.set(a("8.7.0"));
+        localSharedInfoPacket.qq_version.set(a("8.8.17"));
         if (QLog.isColorLevel()) {
-          QLog.d("SecShare.AV", 2, String.format("Version = %s intVersion= 0x%x", new Object[] { "8.7.0", Integer.valueOf(a("8.7.0")) }));
+          QLog.d("SecShare.AV", 2, String.format("Version = %s intVersion= 0x%x", new Object[] { "8.8.17", Integer.valueOf(a("8.8.17")) }));
         }
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+        if (this.c.isEmpty()) {
           continue;
         }
         localSendInfo = new SecSharedInfo.SendInfo();
-        localObject1 = (SecShareInfoUtil.FileInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-        i = ((SecShareInfoUtil.FileInfo)localObject1).a();
+        localObject1 = (SecShareInfoUtil.FileInfo)this.c.poll();
+        i = ((SecShareInfoUtil.FileInfo)localObject1).b();
         localObject2 = ((SecShareInfoUtil.FileInfo)localObject1).a();
-        str3 = ((SecShareInfoUtil.FileInfo)localObject1).b();
-        j = ((SecShareInfoUtil.FileInfo)localObject1).b();
+        str3 = ((SecShareInfoUtil.FileInfo)localObject1).d();
+        j = ((SecShareInfoUtil.FileInfo)localObject1).c();
         localSendInfo.type.set(i);
         if (!QLog.isColorLevel()) {
           continue;
@@ -262,12 +262,12 @@ public class SecShareInfoUtil
       }
       if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        localObject1 = MD5.a((String)localObject2);
+        localObject1 = MD5.b((String)localObject2);
         localSendInfo.md5.set((String)localObject1);
       }
       else if ((i == 2) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        localObject1 = MD5.a((String)localObject2);
+        localObject1 = MD5.b((String)localObject2);
         localSendInfo.md5.set((String)localObject1);
         localSendInfo.url.set((String)localObject2);
       }
@@ -276,7 +276,7 @@ public class SecShareInfoUtil
         localSendInfo.url.set((String)localObject2);
         continue;
         localSendInfo.url.set((String)localObject2);
-        localObject1 = a((String)localObject2);
+        localObject1 = c((String)localObject2);
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           localSendInfo.md5.set((String)localObject1);
         }
@@ -311,22 +311,22 @@ public class SecShareInfoUtil
       localSharedInfoPacket.send_info.add(localSendInfo);
     }
     if (QLog.isColorLevel()) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        QLog.d("SecShare.AV", 2, String.format("Act ref = %s", new Object[] { this.jdField_a_of_type_JavaLangString }));
+      if (!TextUtils.isEmpty(this.b)) {
+        QLog.d("SecShare.AV", 2, String.format("Act ref = %s", new Object[] { this.b }));
       } else {
         QLog.d("SecShare.AV", 2, String.format("Act ref = NullorEmpty", new Object[0]));
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
-      localObject1 = a(this.jdField_a_of_type_JavaLangString);
+      localObject1 = b(this.b);
       if (localObject1 != null)
       {
         localSharedInfoPacket.file_info.setHasFlag(true);
-        localSharedInfoPacket.file_info.package_name.set(this.jdField_a_of_type_JavaLangString);
+        localSharedInfoPacket.file_info.package_name.set(this.b);
         localSharedInfoPacket.file_info.soft_name.set(a((PackageInfo)localObject1));
         localSharedInfoPacket.file_info.cert_md5.set(b((PackageInfo)localObject1));
-        localSharedInfoPacket.file_info.apk_filesize.set((int)a((PackageInfo)localObject1));
+        localSharedInfoPacket.file_info.apk_filesize.set((int)c((PackageInfo)localObject1));
       }
     }
     localObject1 = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), "ShareRiskSvc.SecReport");
@@ -339,17 +339,12 @@ public class SecShareInfoUtil
       QLog.d("SecShare.AV", 2, "Do sso exception.");
     }
     label775:
-    b();
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(new SecShareInfoUtil.1(this), 5, null, true);
+    d();
   }
   
   public void a(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(new SecShareInfoUtil.FileInfo(paramInt1, paramString1, paramInt2, paramString2));
+    this.c.offer(new SecShareInfoUtil.FileInfo(paramInt1, paramString1, paramInt2, paramString2));
   }
   
   public void a(Object paramObject, String paramString)
@@ -374,22 +369,27 @@ public class SecShareInfoUtil
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = paramString;
       return;
     }
     if (!TextUtils.isEmpty(paramObject)) {
-      this.jdField_a_of_type_JavaLangString = paramObject;
+      this.b = paramObject;
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    return !TextUtils.isEmpty(this.b);
+  }
+  
+  public void c()
+  {
+    ThreadManager.post(new SecShareInfoUtil.1(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecShareInfoUtil
  * JD-Core Version:    0.7.0.1
  */

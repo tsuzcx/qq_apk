@@ -13,16 +13,16 @@ final class DarkModeManager$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = DarkModeManager.a();
+    paramDialogInterface = DarkModeManager.d();
     if (paramDialogInterface != null) {
       ((ThemeHandler)paramDialogInterface.getBusinessHandler(BusinessHandlerFactory.THEME_HANDLER)).a(this.a, this.b);
     }
-    DarkModeManager.a("0X800A5B6");
+    DarkModeManager.b("0X800A5B6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager.2
  * JD-Core Version:    0.7.0.1
  */

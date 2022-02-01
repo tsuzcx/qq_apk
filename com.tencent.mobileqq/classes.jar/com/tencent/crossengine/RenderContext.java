@@ -8,7 +8,7 @@ public class RenderContext
   private static final String TAG = "RenderContext";
   private int height;
   private DisplayInfo mDisplayInfo;
-  private long mNativeHandle = nCreateNativeRenderContext(paramDisplayInfo.a());
+  private long mNativeHandle = nCreateNativeRenderContext(paramDisplayInfo.b());
   private int width;
   
   public RenderContext(DisplayInfo paramDisplayInfo)
@@ -83,7 +83,7 @@ public class RenderContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.RenderContext
  * JD-Core Version:    0.7.0.1
  */

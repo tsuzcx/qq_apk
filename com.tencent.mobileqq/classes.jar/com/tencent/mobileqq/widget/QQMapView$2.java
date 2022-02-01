@@ -12,24 +12,24 @@ class QQMapView$2
   
   public void onCameraChange(CameraPosition paramCameraPosition)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver != null) && (!this.a.jdField_a_of_type_Boolean))
+    if ((this.a.a != null) && (!this.a.c))
     {
       QQMapView localQQMapView = this.a;
-      localQQMapView.jdField_a_of_type_Boolean = true;
-      localQQMapView.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+      localQQMapView.c = true;
+      localQQMapView.a.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
     }
   }
   
   public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.c) {
       QQMapView.a(this.a, paramCameraPosition);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView.2
  * JD-Core Version:    0.7.0.1
  */

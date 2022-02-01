@@ -22,6 +22,7 @@ public class SoDetailInfo
   
   public static SoDetailInfo create(JSONObject paramJSONObject, String paramString, RelatedFileInfo paramRelatedFileInfo, int paramInt, boolean paramBoolean)
   {
+    SoDetailInfo localSoDetailInfo = null;
     if (paramJSONObject == null) {
       return null;
     }
@@ -32,18 +33,16 @@ public class SoDetailInfo
       if (TextUtils.isEmpty(str2)) {
         return null;
       }
-      long l = paramJSONObject.optLong("so_crc", -1L);
-      paramJSONObject = new SoDetailInfo();
-      paramJSONObject.md5 = str2;
-      paramJSONObject.url = str1;
-      paramJSONObject.ver = paramString;
-      paramJSONObject.crc = l;
-      paramJSONObject.relatedFileInfo = paramRelatedFileInfo;
-      paramJSONObject.testFlag = paramInt;
-      paramJSONObject.isFlowControl = paramBoolean;
-      return paramJSONObject;
+      localSoDetailInfo = new SoDetailInfo();
+      localSoDetailInfo.md5 = str2;
+      localSoDetailInfo.url = str1;
+      localSoDetailInfo.ver = paramString;
+      localSoDetailInfo.crc = paramJSONObject.optLong("so_crc", -1L);
+      localSoDetailInfo.relatedFileInfo = paramRelatedFileInfo;
+      localSoDetailInfo.testFlag = paramInt;
+      localSoDetailInfo.isFlowControl = paramBoolean;
     }
-    return null;
+    return localSoDetailInfo;
   }
   
   public String toString()
@@ -70,7 +69,7 @@ public class SoDetailInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.SoDetailInfo
  * JD-Core Version:    0.7.0.1
  */

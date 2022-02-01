@@ -11,8 +11,8 @@ import com.tencent.mobileqq.widget.RefreshProgressRunnable;
 public class VideoProgressView
   extends MessageProgressView
 {
-  private boolean a = true;
-  private float g = 0.0F;
+  private float a = 0.0F;
+  private boolean b = true;
   
   public VideoProgressView(Context paramContext)
   {
@@ -21,30 +21,30 @@ public class VideoProgressView
   
   public void a(String paramString, float paramFloat)
   {
-    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F) && (paramFloat > this.g)) {
+    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F) && (paramFloat > this.a)) {
       setVideoCompressPercent(paramString, paramFloat);
     }
   }
   
   public boolean a()
   {
-    return this.a;
+    return this.b;
   }
   
   @TargetApi(11)
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.d == 1)
+    if (this.g == 1)
     {
       d();
       b(paramCanvas);
       if (a()) {
-        a(paramCanvas, this.g);
+        a(paramCanvas, this.a);
       } else {
         c(paramCanvas);
       }
-      if (this.c != null) {
-        a(paramCanvas, this.c);
+      if (this.i != null) {
+        a(paramCanvas, this.i);
       } else {
         a(paramCanvas);
       }
@@ -52,13 +52,13 @@ public class VideoProgressView
       e(paramCanvas);
       return;
     }
-    if (this.d == 2)
+    if (this.g == 2)
     {
       d();
       f(paramCanvas);
       return;
     }
-    if (this.d == 3)
+    if (this.g == 3)
     {
       d();
       g(paramCanvas);
@@ -69,37 +69,37 @@ public class VideoProgressView
   {
     if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F))
     {
-      this.g = paramFloat;
+      this.a = paramFloat;
       boolean bool;
-      if (this.g < 1.0F) {
+      if (this.a < 1.0F) {
         bool = true;
       } else {
         bool = false;
       }
-      this.a = bool;
+      this.b = bool;
     }
-    if (this.d == 1)
+    if (this.g == 1)
     {
       RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
       if (localRefreshProgressRunnable == null)
       {
-        localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, this.e);
+        localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, this.h);
         MessageProgressController.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
         return;
       }
-      localRefreshProgressRunnable.a(this, this.e);
+      localRefreshProgressRunnable.a(this, this.h);
     }
   }
   
   public void setVideoCompressStatus(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.VideoProgressView
  * JD-Core Version:    0.7.0.1
  */

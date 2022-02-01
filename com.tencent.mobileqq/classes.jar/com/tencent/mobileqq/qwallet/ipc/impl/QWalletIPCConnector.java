@@ -6,29 +6,29 @@ import eipc.EIPCClient;
 
 public class QWalletIPCConnector
 {
-  private static volatile QWalletIPCConnector jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCConnector;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile QWalletIPCConnector a;
   private boolean b = false;
+  private boolean c = false;
+  private String d;
+  private Object e = new Object();
   
   public static QWalletIPCConnector a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCConnector == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCConnector == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCConnector = new QWalletIPCConnector();
+        if (a == null) {
+          a = new QWalletIPCConnector();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCConnector;
+    return a;
   }
   
-  private void b()
+  private void c()
   {
-    this.b = true;
+    this.c = true;
     if (QLog.isColorLevel()) {
       QLog.d("QWalletIPCConnector", 2, "begin connect:");
     }
@@ -37,19 +37,19 @@ public class QWalletIPCConnector
     QIPCClientHelper.getInstance().getClient().connect(new QWalletIPCConnector.2(this, l));
   }
   
-  public void a()
+  public void b()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-      b();
+    if ((!this.b) && (!this.c)) {
+      c();
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (!this.b) {
+      synchronized (this.e)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.b;
         if (!bool) {
           try
           {
-            this.jdField_a_of_type_JavaLangObject.wait(500L);
+            this.e.wait(500L);
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -63,7 +63,7 @@ public class QWalletIPCConnector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCConnector
  * JD-Core Version:    0.7.0.1
  */

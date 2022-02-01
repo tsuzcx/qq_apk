@@ -11,8 +11,8 @@ class ChatHistoryBaseFragment$5
   {
     try
     {
-      if (this.this$0.b != null) {
-        this.this$0.b.dismiss();
+      if (this.this$0.q != null) {
+        this.this$0.q.dismiss();
       }
       return;
     }
@@ -21,7 +21,7 @@ class ChatHistoryBaseFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment.5
  * JD-Core Version:    0.7.0.1
  */

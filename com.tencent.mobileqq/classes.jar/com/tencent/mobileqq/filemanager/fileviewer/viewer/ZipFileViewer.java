@@ -21,158 +21,158 @@ import java.util.List;
 public class ZipFileViewer
   extends FileBrowserViewBase
 {
-  private int jdField_a_of_type_Int;
-  private ZipFilesListAdapter jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter;
-  private TriangleView jdField_a_of_type_ComTencentBizWidgetsTriangleView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private View c;
-  private View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private View jdField_e_of_type_AndroidViewView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private View jdField_f_of_type_AndroidViewView;
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private View jdField_g_of_type_AndroidViewView;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
-  private View jdField_h_of_type_AndroidViewView;
-  private TextView jdField_h_of_type_AndroidWidgetTextView;
-  private TextView i;
-  private TextView j;
-  private TextView k;
-  private TextView l;
+  private RelativeLayout A;
+  private ProgressBar B;
+  private TextView C;
+  private View D;
+  private ZipFilesListAdapter E;
+  private int F;
+  private XListView l;
+  private TriangleView m;
+  private View n;
+  private View o;
+  private View p;
+  private View q;
+  private TextView r;
+  private TextView s;
+  private TextView t;
+  private TextView u;
+  private View v;
+  private TextView w;
+  private TextView x;
+  private TextView y;
+  private TextView z;
   
   public ZipFileViewer(Activity paramActivity)
   {
     super(paramActivity);
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
   public void a()
   {
     QLog.i("ZipFileViewer<QFile>", 4, "FileBrowserViewBase: ZipFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560843, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366821));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372040));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380250));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380264));
-      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381348);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381353);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373038);
-      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366915);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379632));
-      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379983));
-      this.j.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView = ((TriangleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379123));
-      this.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter = new ZipFilesListAdapter(null, this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373037);
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381351));
-      this.i = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381349));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
-      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361946));
+      this.b = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131627101, this.a, false);
+      this.l = ((XListView)this.b.findViewById(2131433143));
+      this.s = ((TextView)this.b.findViewById(2131439503));
+      this.t = ((TextView)this.b.findViewById(2131449168));
+      this.u = ((TextView)this.b.findViewById(2131449182));
+      this.q = this.b.findViewById(2131450401);
+      this.n = this.b.findViewById(2131450406);
+      this.o = this.b.findViewById(2131440620);
+      this.p = this.b.findViewById(2131433257);
+      this.r = ((TextView)this.b.findViewById(2131448400));
+      this.y = ((TextView)this.b.findViewById(2131448886));
+      this.y.setVisibility(8);
+      this.m = ((TriangleView)this.b.findViewById(2131447858));
+      this.E = new ZipFilesListAdapter(null, this.c);
+      this.v = this.b.findViewById(2131440618);
+      this.w = ((TextView)this.v.findViewById(2131450404));
+      this.x = ((TextView)this.v.findViewById(2131450402));
+      this.i = ((TextView)this.b.findViewById(2131439595));
+      this.z = ((TextView)this.b.findViewById(2131427500));
     }
   }
   
   public void a(int paramInt)
   {
-    ProgressBar localProgressBar = this.jdField_b_of_type_AndroidWidgetProgressBar;
+    ProgressBar localProgressBar = this.B;
     if (localProgressBar != null) {
       localProgressBar.setProgress(paramInt);
     }
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    if (this.e != null) {
+      this.e.setProgress(paramInt);
     }
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
     super.a(paramOnClickListener);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379108));
-    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379081));
-    this.l = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379090));
-    this.jdField_h_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379079);
-    this.jdField_h_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+    this.A = ((RelativeLayout)this.b.findViewById(2131447842));
+    this.B = ((ProgressBar)this.b.findViewById(2131447808));
+    this.C = ((TextView)this.b.findViewById(2131447817));
+    this.D = this.b.findViewById(2131447806);
+    this.D.setOnClickListener(paramOnClickListener);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
-      this.l.setText(paramString);
+    if (this.A != null) {
+      this.C.setText(paramString);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (this.f != null) {
+      this.f.setText(paramString);
     }
   }
   
   public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
     super.a(paramString, paramOnClickListener);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+    this.r.setText(paramString);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_g_of_type_AndroidWidgetTextView.setText(paramString2);
+    this.t.setText(paramString1);
+    this.u.setText(paramString2);
   }
   
   public void a(List<ZipFilePresenter.FileData> paramList, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, String paramString6, short paramShort)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter.a(paramList);
-    paramList = this.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter;
-    paramList.e = "/";
-    paramList.jdField_b_of_type_Long = paramLong1;
-    paramList.jdField_a_of_type_Long = paramLong2;
-    paramList.jdField_b_of_type_JavaLangString = paramString2;
-    paramList.c = paramString3;
-    paramList.d = paramString4;
-    paramList.jdField_a_of_type_JavaLangString = paramString5;
+    this.E.a(paramList);
+    paramList = this.E;
+    paramList.g = "/";
+    paramList.i = paramLong1;
+    paramList.h = paramLong2;
+    paramList.d = paramString2;
+    paramList.e = paramString3;
+    paramList.f = paramString4;
+    paramList.c = paramString5;
     paramList.a(paramBoolean, paramString6, paramShort);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_g_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Int = 2;
+    this.l.setAdapter(this.E);
+    this.n.setVisibility(0);
+    this.o.setVisibility(8);
+    this.v.setVisibility(8);
+    this.F = 2;
   }
   
   public void a(boolean paramBoolean, String paramString, View.OnClickListener paramOnClickListener)
   {
-    View localView = this.jdField_e_of_type_AndroidViewView;
-    int m;
+    View localView = this.p;
+    int i;
     if (paramBoolean) {
-      m = 0;
+      i = 0;
     } else {
-      m = 8;
+      i = 8;
     }
-    localView.setVisibility(m);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    if (this.jdField_a_of_type_Int != 2) {
-      this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    localView.setVisibility(i);
+    this.r.setText(paramString);
+    this.r.setOnClickListener(paramOnClickListener);
+    if (this.F != 2) {
+      this.p.setVisibility(8);
     }
+  }
+  
+  public View b()
+  {
+    return this.b;
   }
   
   public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    TextView localTextView = this.k;
+    TextView localTextView = this.z;
     if (localTextView != null)
     {
       localTextView.setText(paramString);
-      this.k.setOnClickListener(paramOnClickListener);
+      this.z.setOnClickListener(paramOnClickListener);
       e(true);
     }
   }
   
   public void b(String paramString1, String paramString2)
   {
-    paramString1 = this.jdField_a_of_type_ComTencentBizTroopFileZipFilesListAdapter;
+    paramString1 = this.E;
     if (paramString1 != null) {
       paramString1.notifyDataSetChanged();
     }
@@ -180,152 +180,152 @@ public class ZipFileViewer
   
   public void b(boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    if (this.jdField_a_of_type_Int == 2) {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.A;
+    if (this.F == 2) {
+      localRelativeLayout = this.d;
     }
     if (localRelativeLayout != null)
     {
-      int m;
+      int i;
       if (paramBoolean) {
-        m = 0;
+        i = 0;
       } else {
-        m = 8;
+        i = 8;
       }
-      localRelativeLayout.setVisibility(m);
+      localRelativeLayout.setVisibility(i);
       if (paramBoolean) {
         e(false);
       }
     }
   }
   
-  public void c()
-  {
-    View localView = this.jdField_c_of_type_AndroidViewView;
-    localView.setPadding(0, localView.getPaddingTop(), 0, 0);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-  }
-  
   public void c(String paramString)
   {
-    this.jdField_h_of_type_AndroidWidgetTextView.setText(paramString);
+    this.w.setText(paramString);
   }
   
   public void c(boolean paramBoolean)
   {
-    View localView = this.jdField_e_of_type_AndroidViewView;
-    int m;
+    View localView = this.p;
+    int i;
     if (paramBoolean) {
-      m = 0;
+      i = 0;
     } else {
-      m = 8;
+      i = 8;
     }
-    localView.setVisibility(m);
+    localView.setVisibility(i);
   }
   
   public void d(String paramString)
   {
-    this.i.setText(paramString);
+    this.x.setText(paramString);
   }
   
   public void d(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      this.jdField_g_of_type_AndroidViewView.setVisibility(8);
+      this.v.setVisibility(8);
       return;
     }
-    this.jdField_g_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.i.setVisibility(0);
-    this.jdField_a_of_type_Int = 0;
+    this.v.setVisibility(0);
+    this.w.setVisibility(0);
+    this.x.setVisibility(0);
+    this.F = 0;
+  }
+  
+  public void e()
+  {
+    View localView = this.n;
+    localView.setPadding(0, localView.getPaddingTop(), 0, 0);
+    this.p.setVisibility(8);
   }
   
   public void e(String paramString)
   {
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
+    this.s.setText(paramString);
   }
   
   public void e(boolean paramBoolean)
   {
-    if (this.k != null)
+    if (this.z != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      int m = 0;
+      Object localObject = this.d;
+      int i = 0;
       if (localObject != null)
       {
-        if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0))
+        if ((paramBoolean) && (this.d.getVisibility() != 0))
         {
-          this.k.setVisibility(0);
+          this.z.setVisibility(0);
           return;
         }
-        this.k.setVisibility(8);
+        this.z.setVisibility(8);
         return;
       }
-      localObject = this.k;
+      localObject = this.z;
       if (!paramBoolean) {
-        m = 8;
+        i = 8;
       }
-      ((TextView)localObject).setVisibility(m);
+      ((TextView)localObject).setVisibility(i);
     }
   }
   
   public void f(String paramString)
   {
-    this.j.setText(paramString);
+    this.y.setText(paramString);
     g(true);
   }
   
   public void f(boolean paramBoolean)
   {
-    View localView = this.jdField_d_of_type_AndroidViewView;
+    View localView = this.o;
     if (localView != null)
     {
-      int m;
+      int i;
       if (paramBoolean) {
-        m = 0;
+        i = 0;
       } else {
-        m = 8;
+        i = 8;
       }
-      localView.setVisibility(m);
+      localView.setVisibility(i);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Int = 1;
+      this.F = 1;
     }
   }
   
   public void g(boolean paramBoolean)
   {
-    TextView localTextView = this.j;
-    int m;
+    TextView localTextView = this.y;
+    int i;
     if (paramBoolean) {
-      m = 0;
+      i = 0;
     } else {
-      m = 8;
+      i = 8;
     }
-    localTextView.setVisibility(m);
+    localTextView.setVisibility(i);
   }
   
   public void h(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838739);
-      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167333));
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166390));
-      this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167144));
+      this.b.setBackgroundResource(2130838958);
+      this.m.setColor(this.c.getResources().getColor(2131168376));
+      this.r.setTextColor(this.c.getResources().getColor(2131167226));
+      this.w.setTextColor(this.c.getResources().getColor(2131168125));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#ffffffff"));
-    this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(Color.parseColor("#ffffffff"));
-    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#fff7f7f8"));
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166389));
-    this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165327));
+    this.b.setBackgroundColor(Color.parseColor("#ffffffff"));
+    this.m.setColor(Color.parseColor("#ffffffff"));
+    this.q.setBackgroundColor(Color.parseColor("#fff7f7f8"));
+    this.r.setTextColor(this.c.getResources().getColor(2131167225));
+    this.w.setTextColor(this.c.getResources().getColor(2131165564));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.ZipFileViewer
  * JD-Core Version:    0.7.0.1
  */

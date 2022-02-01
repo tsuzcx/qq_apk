@@ -1,27 +1,21 @@
 package com.tencent.mobileqq.activity.framebusiness;
 
-import androidx.fragment.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameFragment;
-import common.config.service.QzoneConfig.QzoneConfigChangeListener;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 final class QCircleInjectImpl$6
-  implements QzoneConfig.QzoneConfigChangeListener
+  extends BroadcastReceiver
 {
-  QCircleInjectImpl$6(FrameFragment paramFrameFragment) {}
-  
-  public void onConfigChange()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a() == null) {
-      return;
-    }
-    QCircleInjectImpl.a(new WeakReference(this.a));
-    this.a.getActivity().runOnUiThread(new QCircleInjectImpl.6.1(this));
+    ThreadManagerV2.excute(new QCircleInjectImpl.6.1(this, paramIntent), 16, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.6
  * JD-Core Version:    0.7.0.1
  */

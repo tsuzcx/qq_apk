@@ -7,12 +7,12 @@ class AddFriendHelper$5
   
   public void run()
   {
-    this.this$0.d();
+    this.this$0.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AddFriendHelper.5
  * JD-Core Version:    0.7.0.1
  */

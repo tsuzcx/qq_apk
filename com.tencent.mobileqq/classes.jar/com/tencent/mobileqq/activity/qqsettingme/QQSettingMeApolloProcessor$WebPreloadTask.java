@@ -28,11 +28,11 @@ class QQSettingMeApolloProcessor$WebPreloadTask
         QQSettingMeApolloProcessor localQQSettingMeApolloProcessor = (QQSettingMeApolloProcessor)this.a.get();
         if (localQQSettingMeApolloProcessor != null)
         {
-          if (localQQSettingMeApolloProcessor.a == null) {
+          if (localQQSettingMeApolloProcessor.c == null) {
             return;
           }
-          localObject = (IWebProcessManagerService)localQQSettingMeApolloProcessor.a.getRuntimeService(IWebProcessManagerService.class, "");
-          if (((IApolloUtil)QRoute.api(IApolloUtil.class)).checkPreloadOnSettingMe(localQQSettingMeApolloProcessor.a, QQSettingMeApolloProcessor.a(localQQSettingMeApolloProcessor).getView()))
+          localObject = (IWebProcessManagerService)localQQSettingMeApolloProcessor.c.getRuntimeService(IWebProcessManagerService.class, "");
+          if (((IApolloUtil)QRoute.api(IApolloUtil.class)).checkPreloadOnSettingMe(localQQSettingMeApolloProcessor.c, QQSettingMeApolloProcessor.a(localQQSettingMeApolloProcessor).getView()))
           {
             i = 100;
             ((IWebProcessManagerService)localObject).startWebProcess(i, new QQSettingMeApolloProcessor.WebPreloadTask.1(this));
@@ -57,7 +57,7 @@ class QQSettingMeApolloProcessor$WebPreloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeApolloProcessor.WebPreloadTask
  * JD-Core Version:    0.7.0.1
  */

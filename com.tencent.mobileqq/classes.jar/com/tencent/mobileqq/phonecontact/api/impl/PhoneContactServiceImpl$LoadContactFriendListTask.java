@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 class PhoneContactServiceImpl$LoadContactFriendListTask
   extends AsyncTask<RespondQueryQQBindingStat, Void, List<PhoneContact>>
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private List<String> b;
   
   private PhoneContactServiceImpl$LoadContactFriendListTask(PhoneContactServiceImpl paramPhoneContactServiceImpl) {}
   
@@ -29,11 +29,11 @@ class PhoneContactServiceImpl$LoadContactFriendListTask
     }
     Object localObject = paramVarArgs[0];
     paramVarArgs = new ArrayList();
-    paramVarArgs.addAll(PhoneContactServiceImpl.access$1700(this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiImplPhoneContactServiceImpl).values());
+    paramVarArgs.addAll(PhoneContactServiceImpl.access$1700(this.a).values());
     Collections.sort(paramVarArgs, new PhoneContactServiceImpl.LoadContactFriendListTask.1(this));
     ArrayList localArrayList = new ArrayList();
-    IFriendDataService localIFriendDataService = (IFriendDataService)PhoneContactServiceImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiImplPhoneContactServiceImpl).getRuntimeService(IFriendDataService.class, "");
-    IAddFriendServiceApi localIAddFriendServiceApi = (IAddFriendServiceApi)PhoneContactServiceImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiImplPhoneContactServiceImpl).getRuntimeService(IAddFriendServiceApi.class, "");
+    IFriendDataService localIFriendDataService = (IFriendDataService)PhoneContactServiceImpl.access$300(this.a).getRuntimeService(IFriendDataService.class, "");
+    IAddFriendServiceApi localIAddFriendServiceApi = (IAddFriendServiceApi)PhoneContactServiceImpl.access$300(this.a).getRuntimeService(IAddFriendServiceApi.class, "");
     if (paramVarArgs.size() > 0)
     {
       localObject = ((RespondQueryQQBindingStat)localObject).mobileNo;
@@ -73,9 +73,9 @@ class PhoneContactServiceImpl$LoadContactFriendListTask
               }
               else
               {
-                paramVarArgs = this.jdField_a_of_type_JavaUtilList;
+                paramVarArgs = this.b;
                 if ((paramVarArgs != null) && (paramVarArgs.contains(localPhoneContact.mobileNo))) {
-                  localPhoneContact.sortWeight = this.jdField_a_of_type_JavaUtilList.indexOf(localPhoneContact.mobileNo);
+                  localPhoneContact.sortWeight = this.b.indexOf(localPhoneContact.mobileNo);
                 } else {
                   localPhoneContact.sortWeight = 65536;
                 }
@@ -92,13 +92,13 @@ class PhoneContactServiceImpl$LoadContactFriendListTask
   
   public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
   
   protected void b(List<PhoneContact> paramList)
   {
     if (!isCancelled()) {
-      PhoneContactServiceImpl.access$3800(this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiImplPhoneContactServiceImpl, paramList);
+      PhoneContactServiceImpl.access$3800(this.a, paramList);
     }
   }
   
@@ -107,12 +107,12 @@ class PhoneContactServiceImpl$LoadContactFriendListTask
     if (QLog.isColorLevel()) {
       QLog.d("IMCore.PhoneContact.ContactFriendTask", 2, "on cancelled");
     }
-    PhoneContactServiceImpl.access$3702(this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiImplPhoneContactServiceImpl, null);
+    PhoneContactServiceImpl.access$3702(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl.LoadContactFriendListTask
  * JD-Core Version:    0.7.0.1
  */

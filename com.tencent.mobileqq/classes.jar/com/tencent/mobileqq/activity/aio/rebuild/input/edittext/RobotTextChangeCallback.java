@@ -27,8 +27,8 @@ public class RobotTextChangeCallback
       bool = false;
     }
     paramAIOContext = (RobotChatUIHelper)paramAIOContext.a(36);
-    if ((paramAIOContext != null) && (paramAIOContext.b())) {
-      paramAIOContext.a(bool);
+    if ((paramAIOContext != null) && (paramAIOContext.e())) {
+      paramAIOContext.g_(bool);
     }
     return false;
   }
@@ -36,7 +36,7 @@ public class RobotTextChangeCallback
   public void b(AIOContext paramAIOContext, CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     paramCharSequence = (AIOShortcutBarHelper)paramAIOContext.a(52);
-    if (paramAIOContext.a().jdField_a_of_type_Int == 1043)
+    if (paramAIOContext.O().a == 1043)
     {
       Object localObject;
       if (QLog.isColorLevel())
@@ -54,14 +54,14 @@ public class RobotTextChangeCallback
       {
         localObject = new AIOShortcutBarHelper.AIOShortcutBarEvent(23);
         ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putBoolean("isRobot", true);
-        ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putInt("nInputLineCount", paramAIOContext.a().a().a().e());
+        ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putInt("nInputLineCount", paramAIOContext.p().d().f().h());
         paramCharSequence.a((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject);
       }
     }
-    else if (paramAIOContext.a().jdField_a_of_type_Int == 1)
+    else if (paramAIOContext.O().a == 1)
     {
-      paramAIOContext = paramAIOContext.a();
-      if ((!paramAIOContext.l) && (paramAIOContext.jdField_a_of_type_JavaLangString != null) && (paramAIOContext.jdField_a_of_type_JavaLangString.length() != 0))
+      paramAIOContext = paramAIOContext.O();
+      if ((!paramAIOContext.z) && (paramAIOContext.b != null) && (paramAIOContext.b.length() != 0))
       {
         paramAIOContext = new AIOShortcutBarHelper.AIOShortcutBarEvent(23);
         paramAIOContext.a().putBoolean("isTroop", true);
@@ -72,7 +72,7 @@ public class RobotTextChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.RobotTextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

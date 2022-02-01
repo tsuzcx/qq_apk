@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="108.0dip" android:width="108.0dip" android:viewportWidth="108.0" android:viewportHeight="108.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/iik" />
-    <item android:drawable="@drawable/iil" />
-</selector>
+    <path android:fillColor="#00000000" android:pathData="M60.057,25.5L52.678,36L21,36C19.757,36 18.632,36.504 17.818,37.318C17.004,38.132 16.5,39.257 16.5,40.5L16.5,40.5L16.5,78C16.5,79.243 17.004,80.368 17.818,81.182C18.632,81.996 19.757,82.5 21,82.5L21,82.5L87,82.5C88.243,82.5 89.368,81.996 90.182,81.182C90.996,80.368 91.5,79.243 91.5,78L91.5,78L91.5,30C91.5,28.757 90.996,27.632 90.182,26.818C89.368,26.004 88.243,25.5 87,25.5L87,25.5L60.057,25.5Z" android:strokeColor="#ff000000" android:strokeWidth="6.0" android:fillType="evenOdd" />
+</vector>

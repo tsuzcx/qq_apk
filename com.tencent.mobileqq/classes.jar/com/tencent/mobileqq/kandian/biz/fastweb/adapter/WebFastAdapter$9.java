@@ -18,14 +18,14 @@ class WebFastAdapter$9
   
   public void run()
   {
-    Iterator localIterator = this.this$0.a().iterator();
+    Iterator localIterator = this.this$0.f().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject1 = (BaseData)localIterator.next();
       if ((localObject1 instanceof ProteusItemData))
       {
-        JSONObject localJSONObject = ((ProteusItemData)localObject1).c;
+        JSONObject localJSONObject = ((ProteusItemData)localObject1).bb;
         if (localJSONObject != null)
         {
           int j = i;
@@ -61,9 +61,9 @@ class WebFastAdapter$9
                     }
                   }
                   j = i;
-                  KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.a, (String)localObject2, "19"));
+                  KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.c, (String)localObject2, "19"));
                   j = i;
-                  KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.a, (String)localObject2, "106"));
+                  KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.c, (String)localObject2, "106"));
                   j = i;
                   ThreadManager.getUIHandler().postDelayed(new WebFastAdapter.9.1(this), 200L);
                 }
@@ -72,7 +72,7 @@ class WebFastAdapter$9
                 j = k;
                 Object localObject2 = localJSONObject.getJSONObject("id_recommend_category_txt");
                 j = k;
-                ((JSONObject)localObject2).put("text", localFastWebRecommendUGInfo.g);
+                ((JSONObject)localObject2).put("text", localFastWebRecommendUGInfo.i);
                 j = k;
                 ((JSONObject)localObject2).put("label_ug_progress_progress", 100);
               }
@@ -93,7 +93,7 @@ class WebFastAdapter$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.WebFastAdapter.9
  * JD-Core Version:    0.7.0.1
  */

@@ -51,12 +51,12 @@ class QidianManager$5
       d1 = 0.0D;
       d2 = d1;
     }
-    this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+    this.h.a(this.a, this.b, true, d1, d2, this.c, this.d, this.e, this.f, this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.5
  * JD-Core Version:    0.7.0.1
  */

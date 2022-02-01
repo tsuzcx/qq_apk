@@ -2,9 +2,11 @@ package com.tencent.mobileqq.kandian.biz.comment.biuAndCommentMix.api;
 
 import com.tencent.mobileqq.kandian.repo.comment.entity.RIJBiuAndCommentRequestData;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import kotlin.Deprecated;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
+@Deprecated(message="biu和评论融合已经干掉了")
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/biuAndCommentMix/api/IRIJBiuAndCommentMixDataManager;", "", "clear", "", "requestCreateBiuAndCommentMix", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "biuAndCommentRequestData", "Lcom/tencent/mobileqq/kandian/repo/comment/entity/RIJBiuAndCommentRequestData;", "setBiuAndCommentListener", "listener", "Lcom/tencent/mobileqq/kandian/biz/comment/biuAndCommentMix/api/IRIJBiuAndCommentMixDataManager$BiuAndCommentListener;", "BiuAndCommentListener", "Companion", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IRIJBiuAndCommentMixDataManager
 {
@@ -18,7 +20,7 @@ public abstract interface IRIJBiuAndCommentMixDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.biuAndCommentMix.api.IRIJBiuAndCommentMixDataManager
  * JD-Core Version:    0.7.0.1
  */

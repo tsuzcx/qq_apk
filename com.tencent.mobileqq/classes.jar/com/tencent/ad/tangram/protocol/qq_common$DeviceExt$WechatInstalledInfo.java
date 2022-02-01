@@ -2,9 +2,11 @@ package com.tencent.ad.tangram.protocol;
 
 public final class qq_common$DeviceExt$WechatInstalledInfo
 {
+  public long adr_opensdk_ver = 0L;
   public long api_ver = 0L;
   public boolean has_universal_link = false;
   public boolean installed = false;
+  public String ios_opensdk_ver;
 }
 
 

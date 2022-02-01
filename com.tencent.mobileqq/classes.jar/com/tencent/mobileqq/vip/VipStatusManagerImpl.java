@@ -15,19 +15,9 @@ import org.jetbrains.annotations.Nullable;
 public final class VipStatusManagerImpl
   implements IVipStatusManager
 {
-  public static final VipStatusManagerImpl.Companion a;
+  public static final VipStatusManagerImpl.Companion a = new VipStatusManagerImpl.Companion(null);
   @NotNull
-  private final String a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVipVipStatusManagerImpl$Companion = new VipStatusManagerImpl.Companion(null);
-  }
-  
-  public VipStatusManagerImpl()
-  {
-    this.jdField_a_of_type_JavaLangString = "VipStatusManagerImpl";
-  }
+  private final String b = "VipStatusManagerImpl";
   
   @Nullable
   public final AppRuntime a()
@@ -90,7 +80,7 @@ public final class VipStatusManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.VipStatusManagerImpl
  * JD-Core Version:    0.7.0.1
  */

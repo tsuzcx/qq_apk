@@ -23,8 +23,8 @@ class EditVideoButton$2
     localStringBuilder.append("onDownloadFailed ");
     localStringBuilder.append(paramString);
     QLog.i("Q.qqstory.record.EditVideoButton", 2, localStringBuilder.toString());
-    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
-      this.a.a.getActivity().runOnUiThread(new EditVideoButton.2.2(this));
+    if ((this.a.u != null) && (this.a.u.getActivity() != null)) {
+      this.a.u.getActivity().runOnUiThread(new EditVideoButton.2.2(this));
     }
   }
   
@@ -35,14 +35,14 @@ class EditVideoButton$2
     if (!paramString.equals("cyber_clink_version_2.jar")) {
       return;
     }
-    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
-      this.a.a.getActivity().runOnUiThread(new EditVideoButton.2.1(this));
+    if ((this.a.u != null) && (this.a.u.getActivity() != null)) {
+      this.a.u.getActivity().runOnUiThread(new EditVideoButton.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoButton.2
  * JD-Core Version:    0.7.0.1
  */

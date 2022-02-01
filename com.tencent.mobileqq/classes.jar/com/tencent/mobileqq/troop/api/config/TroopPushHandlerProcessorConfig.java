@@ -10,15 +10,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TroopPushHandlerProcessorConfig
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ArrayList<AbsTroopPushHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicBoolean a = new AtomicBoolean(false);
+  private static final Object b = new Object();
+  private static ArrayList<AbsTroopPushHandlerProcessor> c = new ArrayList();
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (a.get()) {
         return;
       }
       if (TroopCustomizedProcessorRegister.c != null)
@@ -30,7 +30,7 @@ public class TroopPushHandlerProcessorConfig
           try
           {
             localObject3 = (AbsTroopPushHandlerProcessor)((Class)localObject3).newInstance();
-            jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+            c.add(localObject3);
           }
           catch (Throwable localThrowable)
           {
@@ -38,7 +38,7 @@ public class TroopPushHandlerProcessorConfig
           }
         }
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      a.set(true);
       return;
     }
     for (;;)
@@ -49,7 +49,7 @@ public class TroopPushHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopPushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramInt1, paramInt2);
     }
@@ -57,7 +57,7 @@ public class TroopPushHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, String paramString, long paramLong, int paramInt)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopPushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramLong, paramInt);
     }
@@ -65,7 +65,7 @@ public class TroopPushHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopPushHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

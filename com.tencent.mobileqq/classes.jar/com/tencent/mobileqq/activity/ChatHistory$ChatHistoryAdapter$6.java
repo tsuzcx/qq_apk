@@ -19,18 +19,18 @@ class ChatHistory$ChatHistoryAdapter$6
     {
       View localView = (View)paramView.getParent();
       Object localObject = paramView.getTag();
-      String str = EmotionPanelConstans.emoticonSoundPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().eId);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
+      String str = EmotionPanelConstans.emoticonSoundPath.replace("[epId]", this.a.getEmoticon().epId).replace("[eId]", this.a.getEmoticon().eId);
+      if (this.b.f.al == null) {
+        this.b.f.al = new ChatHistory.PlayingPttHistoryInfo(this.b.f);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, localObject, str);
+      this.b.f.al.a(1, localView, localObject, str);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.6
  * JD-Core Version:    0.7.0.1
  */

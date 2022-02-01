@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/bdj" android:paddingLeft="1.0dip" android:paddingTop="0.0dip" android:paddingRight="1.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/f1j" android:background="@drawable/jj" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="0.0dip">
+    <RelativeLayout android:id="@id/f1j" android:background="@drawable/common_list_item_background" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="0.0dip">
         <RelativeLayout android:id="@id/c_d" android:paddingLeft="10.0dip" android:paddingTop="9.0dip" android:paddingRight="10.0dip" android:paddingBottom="4.0dip" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:gravity="center" android:id="@id/c_t" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_alignParentTop="true">
                 <com.dataline.util.widget.AsyncImageView android:id="@id/c_6" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />

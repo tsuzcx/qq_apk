@@ -9,22 +9,22 @@ class ShareUtils$2
   
   public void run()
   {
-    if (ShareUtils.a(this.this$0).getWidth() < this.a) {
-      ShareUtils.a(this.this$0).setMove(true);
-    } else {
-      ShareUtils.a(this.this$0).setMove(false);
-    }
-    if (ShareUtils.b(this.this$0).getWidth() < this.b)
-    {
+    if (ShareUtils.b(this.this$0).getWidth() < this.a) {
       ShareUtils.b(this.this$0).setMove(true);
+    } else {
+      ShareUtils.b(this.this$0).setMove(false);
+    }
+    if (ShareUtils.c(this.this$0).getWidth() < this.b)
+    {
+      ShareUtils.c(this.this$0).setMove(true);
       return;
     }
-    ShareUtils.b(this.this$0).setMove(false);
+    ShareUtils.c(this.this$0).setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.ShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

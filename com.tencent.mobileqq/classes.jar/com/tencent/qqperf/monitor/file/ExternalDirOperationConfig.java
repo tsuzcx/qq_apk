@@ -15,22 +15,17 @@ import org.json.JSONObject;
 
 public class ExternalDirOperationConfig
 {
-  public static Boolean a;
   public static String a;
-  public List<String> a;
-  boolean a;
+  public static Boolean b;
+  public List<String> c = new ArrayList();
+  boolean d;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public ExternalDirOperationConfig()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a = localStringBuilder.toString();
   }
   
   public static ExternalDirOperationConfig a()
@@ -44,7 +39,7 @@ public class ExternalDirOperationConfig
     {
       Object localObject = new ExternalDirOperationConfig();
       paramString = new JSONObject(paramString);
-      ((ExternalDirOperationConfig)localObject).jdField_a_of_type_Boolean = paramString.optBoolean("switch", false);
+      ((ExternalDirOperationConfig)localObject).d = paramString.optBoolean("switch", false);
       JSONArray localJSONArray = paramString.optJSONArray("exclude_path");
       int j = localJSONArray.length();
       int i = 0;
@@ -56,10 +51,10 @@ public class ExternalDirOperationConfig
         }
         paramString = (String)localJSONArray.get(i);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(a);
         localStringBuilder.append(paramString);
         paramString = localStringBuilder.toString();
-        ((ExternalDirOperationConfig)localObject).jdField_a_of_type_JavaUtilList.add(paramString);
+        ((ExternalDirOperationConfig)localObject).c.add(paramString);
         i += 1;
       }
       return localObject;
@@ -83,17 +78,17 @@ public class ExternalDirOperationConfig
   public static void a(Context paramContext, boolean paramBoolean)
   {
     paramContext.getSharedPreferences("dt_sdk_start", 4).edit().putBoolean("sp_key_hook_switch", paramBoolean).apply();
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
+    b = Boolean.valueOf(paramBoolean);
   }
   
   public static boolean a(Context paramContext)
   {
     try
     {
-      if (jdField_a_of_type_JavaLangBoolean == null) {
-        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramContext.getSharedPreferences("dt_sdk_start", 4).getBoolean("sp_key_hook_switch", false));
+      if (b == null) {
+        b = Boolean.valueOf(paramContext.getSharedPreferences("dt_sdk_start", 4).getBoolean("sp_key_hook_switch", false));
       }
-      boolean bool = jdField_a_of_type_JavaLangBoolean.booleanValue();
+      boolean bool = b.booleanValue();
       return bool;
     }
     finally {}
@@ -104,9 +99,9 @@ public class ExternalDirOperationConfig
   {
     StringBuilder localStringBuilder = new StringBuilder("ExternalDirOperationConfig={");
     localStringBuilder.append(" hookSwitch:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" excludePaths:");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       localStringBuilder.append((String)localIterator.next());
@@ -118,7 +113,7 @@ public class ExternalDirOperationConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.file.ExternalDirOperationConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class FontBubbleManager$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "/vas/h5pay");
-    localActivityURIRequest.extra().putString("url", this.jdField_a_of_type_JavaLangString);
+    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.a.aX(), "/vas/h5pay");
+    localActivityURIRequest.extra().putString("url", this.b);
     QRoute.startUri(localActivityURIRequest, null);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.3
  * JD-Core Version:    0.7.0.1
  */

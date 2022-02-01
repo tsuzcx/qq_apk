@@ -13,7 +13,7 @@ class BlessActivity$8
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
+      QLog.d(BlessActivity.f(this.a), 2, "videoview onCompletion");
     }
     BlessActivity.a(this.a, true);
     ReportController.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
@@ -21,7 +21,7 @@ class BlessActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.8
  * JD-Core Version:    0.7.0.1
  */

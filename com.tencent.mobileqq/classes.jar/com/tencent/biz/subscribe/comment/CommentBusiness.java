@@ -32,11 +32,11 @@ import java.util.Map;
 
 public class CommentBusiness
 {
-  private static final String jdField_a_of_type_JavaLangString = "CommentBusiness";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Map<String, ArrayList<CertifiedAccountMeta.StComment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, CommentBusiness.CommentResponse> c = new HashMap();
+  private static final String a = "CommentBusiness";
+  private Handler b;
+  private Map<String, ArrayList<CertifiedAccountMeta.StComment>> c = new HashMap();
+  private Map<String, Integer> d = new HashMap();
+  private Map<String, CommentBusiness.CommentResponse> e = new HashMap();
   
   private String a(COMM.StCommonExt paramStCommonExt)
   {
@@ -48,29 +48,29 @@ public class CommentBusiness
   
   private void a(String paramString, COMM.StCommonExt paramStCommonExt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.c.get(paramString) == null)
+    if (this.e.get(paramString) == null)
     {
       Object localObject = new CommentBusiness.CommentResponse();
-      ((CommentBusiness.CommentResponse)localObject).jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-      ((CommentBusiness.CommentResponse)localObject).jdField_a_of_type_Boolean = paramBoolean1;
-      ((CommentBusiness.CommentResponse)localObject).b = paramBoolean2;
-      this.c.put(paramString, localObject);
-      paramString = jdField_a_of_type_JavaLangString;
+      ((CommentBusiness.CommentResponse)localObject).b = paramStCommonExt;
+      ((CommentBusiness.CommentResponse)localObject).a = paramBoolean1;
+      ((CommentBusiness.CommentResponse)localObject).c = paramBoolean2;
+      this.e.put(paramString, localObject);
+      paramString = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getDetailCommentSize: attachInfo:");
       ((StringBuilder)localObject).append(paramStCommonExt.attachInfo.get());
       QLog.d(paramString, 1, ((StringBuilder)localObject).toString());
       return;
     }
-    ((CommentBusiness.CommentResponse)this.c.get(paramString)).jdField_a_of_type_Boolean = paramBoolean1;
-    ((CommentBusiness.CommentResponse)this.c.get(paramString)).jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+    ((CommentBusiness.CommentResponse)this.e.get(paramString)).a = paramBoolean1;
+    ((CommentBusiness.CommentResponse)this.e.get(paramString)).b = paramStCommonExt;
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    Map localMap = this.c;
+    Map localMap = this.e;
     if ((localMap != null) && (localMap.get(paramString) != null)) {
-      ((CommentBusiness.CommentResponse)this.c.get(paramString)).b = paramBoolean;
+      ((CommentBusiness.CommentResponse)this.e.get(paramString)).c = paramBoolean;
     }
   }
   
@@ -85,38 +85,22 @@ public class CommentBusiness
       if (((CertifiedAccountMeta.StFeed)localObject).vecComment.size() > 0)
       {
         localArrayList = (ArrayList)a((ArrayList)((CertifiedAccountMeta.StFeed)localObject).vecComment.get(), a(paramStCommonExt), 1);
-        this.b.put(str, Integer.valueOf(((CertifiedAccountMeta.StFeed)localObject).commentCount.get()));
+        this.d.put(str, Integer.valueOf(((CertifiedAccountMeta.StFeed)localObject).commentCount.get()));
       }
       localObject = localArrayList;
       if (localArrayList == null)
       {
         localObject = new ArrayList(0);
-        this.b.put(str, Integer.valueOf(0));
+        this.d.put(str, Integer.valueOf(0));
       }
-      this.jdField_a_of_type_JavaUtilMap.put(str, localObject);
+      this.c.put(str, localObject);
       paramStGetFeedDetailRsp.feed.vecComment.set((List)localObject);
-      if (a(str) == 0) {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, new Object[] { "后台返回评论数为0" });
+      if (b(str) == 0) {
+        QZLog.e(a, 1, new Object[] { "后台返回评论数为0" });
       }
-      StoryDispatcher.a().dispatch(new CommentEvent(5, new Object[] { str, Integer.valueOf(a(str)) }));
+      StoryDispatcher.a().dispatch(new CommentEvent(5, new Object[] { str, Integer.valueOf(b(str)) }));
     }
     StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(2), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp, Integer.valueOf(hashCode()), paramStCommonExt }));
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)this.b.get(paramString);
-    if (paramString != null) {
-      return paramString.intValue();
-    }
-    return 0;
-  }
-  
-  public long a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
-  {
-    paramStFeed = new DoLikeRequest(paramStFeed);
-    VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.7(this));
-    return Long.parseLong(paramStComment.id.get());
   }
   
   public long a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
@@ -131,60 +115,28 @@ public class CommentBusiness
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    paramString = (CommentBusiness.CommentResponse)this.c.get(paramString);
+    paramString = (CommentBusiness.CommentResponse)this.e.get(paramString);
     if (paramString != null)
     {
-      if ((paramString.b) && (paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_NS_COMMCOMM$StCommonExt != null)) {
-        return paramString.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+      if ((paramString.c) && (paramString.a) && (paramString.b != null)) {
+        return paramString.b;
       }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, paramString.toString());
+      QLog.i(a, 1, paramString.toString());
     }
     return null;
   }
   
   public Handler a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (this.b == null) {
+      this.b = new Handler(Looper.getMainLooper());
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.b;
   }
   
   public CommentEvent a(Object... paramVarArgs)
   {
     return new CommentEvent(6, paramVarArgs);
-  }
-  
-  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
-  {
-    if ((paramStComment != null) && (!paramStComment.id.get().startsWith("fake_id")))
-    {
-      paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 0);
-      VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.4(this, paramStComment));
-      return paramStComment.id.get();
-    }
-    StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131702361), null }));
-    return "";
-  }
-  
-  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    if ((paramStReply != null) && (!paramStReply.id.get().startsWith("fake_id")))
-    {
-      paramStFeed = new DoReplyReq(paramStFeed, paramStComment, paramStReply, 0);
-      VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.6(this, paramStReply, paramStComment));
-      return paramStReply.id.get();
-    }
-    StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131702359), null }));
-    return "";
-  }
-  
-  public ArrayList<CertifiedAccountMeta.StComment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
   public List<CertifiedAccountMeta.StComment> a(List<CertifiedAccountMeta.StComment> paramList, String paramString)
@@ -220,23 +172,10 @@ public class CommentBusiness
     return paramList;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.c.clear();
-    this.b.clear();
-  }
-  
   public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
   {
     paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 1);
     VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.3(this, paramStComment));
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    paramStFeed = new DoLikeRequest(paramStFeed);
-    VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.8(this));
   }
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed, COMM.StCommonExt paramStCommonExt)
@@ -284,7 +223,7 @@ public class CommentBusiness
     if (paramBoolean)
     {
       localStCommonExt = a(paramStFeed.id.get());
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getComments loadMore: ");
       localStringBuilder.append(paramBoolean);
@@ -293,7 +232,7 @@ public class CommentBusiness
       QZLog.i((String)localObject, 1, localStringBuilder.toString());
       if (localStCommonExt == null)
       {
-        paramStFeed = jdField_a_of_type_JavaLangString;
+        paramStFeed = a;
         paramString = new StringBuilder();
         paramString.append("getComments loadMore: ");
         paramString.append(paramBoolean);
@@ -316,6 +255,67 @@ public class CommentBusiness
       return;
     }
     a(paramStFeed, null);
+  }
+  
+  public int b(String paramString)
+  {
+    paramString = (Integer)this.d.get(paramString);
+    if (paramString != null) {
+      return paramString.intValue();
+    }
+    return 0;
+  }
+  
+  public String b(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
+  {
+    if ((paramStComment != null) && (!paramStComment.id.get().startsWith("fake_id")))
+    {
+      paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 0);
+      VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.4(this, paramStComment));
+      return paramStComment.id.get();
+    }
+    StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131900365), null }));
+    return "";
+  }
+  
+  public String b(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  {
+    if ((paramStReply != null) && (!paramStReply.id.get().startsWith("fake_id")))
+    {
+      paramStFeed = new DoReplyReq(paramStFeed, paramStComment, paramStReply, 0);
+      VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.6(this, paramStReply, paramStComment));
+      return paramStReply.id.get();
+    }
+    StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131900363), null }));
+    return "";
+  }
+  
+  public void b()
+  {
+    this.c.clear();
+    this.e.clear();
+    this.d.clear();
+  }
+  
+  public long c(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
+  {
+    paramStFeed = new DoLikeRequest(paramStFeed);
+    VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.7(this));
+    return Long.parseLong(paramStComment.id.get());
+  }
+  
+  public ArrayList<CertifiedAccountMeta.StComment> c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (ArrayList)this.c.get(paramString);
+  }
+  
+  public void c(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  {
+    paramStFeed = new DoLikeRequest(paramStFeed);
+    VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.8(this));
   }
 }
 

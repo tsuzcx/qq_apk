@@ -16,21 +16,21 @@ public class CenterMarginCoverter
   
   void a(int paramInt, BaseTextModel paramBaseTextModel)
   {
-    float f3 = paramBaseTextModel.a.right;
-    float f4 = paramBaseTextModel.a.left;
-    float f1 = paramBaseTextModel.a.bottom;
-    float f2 = paramBaseTextModel.a.top;
+    float f3 = paramBaseTextModel.c.right;
+    float f4 = paramBaseTextModel.c.left;
+    float f1 = paramBaseTextModel.c.bottom;
+    float f2 = paramBaseTextModel.c.top;
     f3 = Math.abs(f3 - f4 - this.a) / 2.0F;
     Math.abs(f1 - f2 - this.b);
-    RectF localRectF = paramBaseTextModel.a;
+    RectF localRectF = paramBaseTextModel.c;
     localRectF.left += f3;
-    paramBaseTextModel = paramBaseTextModel.a;
+    paramBaseTextModel = paramBaseTextModel.c;
     paramBaseTextModel.right += f3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.CenterMarginCoverter
  * JD-Core Version:    0.7.0.1
  */

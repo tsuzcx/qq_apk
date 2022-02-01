@@ -13,7 +13,7 @@ public final class TdsReaderConfigProcessor
   public static void a()
   {
     QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
-    TdsReaderConfigBean.a(false, (TdsReaderConfigBean)QConfigManager.a().a(482));
+    TdsReaderConfigBean.a(false, (TdsReaderConfigBean)QConfigManager.b().b(482));
   }
   
   @NonNull
@@ -78,7 +78,7 @@ public final class TdsReaderConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

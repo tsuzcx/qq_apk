@@ -14,17 +14,17 @@ class PhotoListCustomizationDefault$2
   {
     Message localMessage = Message.obtain();
     localMessage.what = 3;
-    String str = QQAlbumUtils.b(this.a);
+    String str = QQAlbumUtils.c(this.a);
     localMessage.obj = str;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
     QQAlbumUtils.a(localLocalMediaInfo, str);
-    PhotoListBaseData.a.put(str, localLocalMediaInfo);
-    this.this$0.a.a.sendMessage(localMessage);
+    PhotoListBaseData.x.put(str, localLocalMediaInfo);
+    this.this$0.b.u.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListCustomizationDefault.2
  * JD-Core Version:    0.7.0.1
  */

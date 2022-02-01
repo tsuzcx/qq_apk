@@ -23,32 +23,9 @@ public class VideoViewTextureImpl
     this.a = new TextureVideoView(paramContext.getApplicationContext());
   }
   
-  public int a()
-  {
-    TextureVideoView localTextureVideoView = this.a;
-    if (localTextureVideoView == null) {
-      return 0;
-    }
-    double d1 = localTextureVideoView.getCurrentPosition();
-    double d2 = this.a.getDuration();
-    Double.isNaN(d2);
-    Double.isNaN(d1);
-    return (int)(d1 / (d2 + 0.1D) * 100.0D);
-  }
-  
-  public long a()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
   public View a()
   {
     return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.a();
   }
   
   public void a(long paramLong)
@@ -92,34 +69,57 @@ public class VideoViewTextureImpl
     this.a.setVideoPath(paramString2);
   }
   
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public long b()
-  {
-    return this.a.getDuration();
-  }
-  
   public void b()
   {
-    this.a.start();
+    this.a.b();
   }
   
   public void c()
   {
+    this.a.start();
+  }
+  
+  public long d()
+  {
+    return this.a.getCurrentPosition();
+  }
+  
+  public void e()
+  {
     this.a.pause();
   }
   
-  public void d()
+  public void f()
   {
-    b();
+    c();
+  }
+  
+  public long g()
+  {
+    return this.a.getDuration();
+  }
+  
+  public int h()
+  {
+    TextureVideoView localTextureVideoView = this.a;
+    if (localTextureVideoView == null) {
+      return 0;
+    }
+    double d1 = localTextureVideoView.getCurrentPosition();
+    double d2 = this.a.getDuration();
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    return (int)(d1 / (d2 + 0.1D) * 100.0D);
+  }
+  
+  public boolean i()
+  {
+    return this.a.isPlaying();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTextureImpl
  * JD-Core Version:    0.7.0.1
  */

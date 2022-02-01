@@ -92,7 +92,7 @@ public class SubType0x78
       }
       try
       {
-        int j = QConfigManager.a().a(i, paramQQAppInterface.getCurrentAccountUin());
+        int j = QConfigManager.b().a(i, paramQQAppInterface.getCurrentAccountUin());
         int k = localMsgBody.uint32_version.get();
         QLog.d("Q.msg.BaseMessageProcessor", 1, String.format("%s handle_0x210Sub0x78_push type=%d pushV=%d localV=%d", new Object[] { "shua2021_", Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) }));
         if ((k >= 0) && (k != j))
@@ -126,7 +126,7 @@ public class SubType0x78
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x78
  * JD-Core Version:    0.7.0.1
  */

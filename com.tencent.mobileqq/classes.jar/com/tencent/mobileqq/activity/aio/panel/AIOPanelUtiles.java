@@ -37,92 +37,62 @@ import mqq.manager.ServerConfigManager.ConfigType;
 
 public class AIOPanelUtiles
 {
-  public static final int[] A = { 9, 2131698549, 2130844809, 2131374079, 0 };
-  public static final int[] B = { 10, 2131698537, 2130838088, 2131374062, 0, 2130850225, 2130850226 };
-  public static final int[] C = { 10, 2131698537, 2130844812, 2131374062, 0 };
-  public static final int[] D = { 12, 2131698531, 2130838145, 2131374049, 0 };
-  public static final int[] E = { 13, 2131698532, 2130838142, 2131374050, 0 };
-  public static final int[] F = { 14, 2131698539, 2130838083, 2131374067, 0 };
-  public static final int[] G = { 14, 2131698539, 2130844811, 2131374067, 0 };
-  public static final int[] H = { 19, 2131698540, 2130838124, 2131374069, 0 };
-  public static final int[] I = { 19, 2131698540, 2130844816, 2131374069, 0 };
-  public static final int[] J = { 16, 2131698535, 2130838080, 2131374059, 0 };
-  public static final int[] K = { 17, 2131698543, 2130838121, 2131374073, 0 };
-  public static int[] L = { 23, 2131698545, 2130838133, 2131374078, 0, 2130850270, 2130850271 };
-  public static final int[] M = { 26, 2131698555, 2130838133, 2131374093, 0 };
-  public static final int[] N = { 24, 2131698538, 2130838089, 2131374063, 2130838015, 2130838109, 2130838111 };
-  public static final int[] O = { 24, 2131698538, 2130844809, 2131374063, 0 };
-  public static final int[] P = { 31, 2131698544, 2130838125, 2131374074, 0 };
-  public static final int[] Q = { 32, 2131698536, 2130838087, 2131374061, 0 };
-  public static final int[] R = { 24, 2131698538, 2130838091, 2131374064, 0 };
-  public static final int[] S = { 24, 2131698538, 2130838090, 2131374064, 0 };
-  public static final int[] T = { 29, 2131694694, 2130850190, 2131374045, 0 };
-  public static final int[] U = { 29, 2131694694, 2130844808, 2131374045, 0 };
-  public static final int[] V = { 21, 2131690518, 2130838361, 2131374044, 0 };
-  public static final int[] W = { 21, 2131690518, 2130844806, 2131374044, 0 };
-  public static final int[] X = { 21, 2131690518, 2130838405, 2131374048, 0 };
-  public static final int[] Y = { 40, 2131689831, 2130837934, 2131362340, 0 };
+  public static final int[] A = { 9, 2131896495, 2130838177, 2131442174, 0 };
+  public static final int[] B = { 9, 2131896495, 2130846243, 2131442174, 0 };
+  public static final int[] C = { 10, 2131896483, 2130838131, 2131442157, 0, 2130852016, 2130852017 };
+  public static final int[] D = { 10, 2131896483, 2130846246, 2131442157, 0 };
+  public static final int[] E = { 12, 2131896477, 2130838188, 2131442144, 0 };
+  public static final int[] F = { 13, 2131896478, 2130838185, 2131442145, 0 };
+  public static final int[] G = { 14, 2131896485, 2130838126, 2131442162, 0 };
+  public static final int[] H = { 14, 2131896485, 2130846245, 2131442162, 0 };
+  public static final int[] I = { 19, 2131896486, 2130838167, 2131442164, 0 };
+  public static final int[] J = { 19, 2131896486, 2130846250, 2131442164, 0 };
+  public static final int[] K = { 16, 2131896481, 2130838123, 2131442154, 0 };
+  public static final int[] L = { 17, 2131896489, 2130838164, 2131442168, 0 };
+  public static int[] M = { 23, 2131896491, 2130838176, 2131442173, 0, 2130852061, 2130852062 };
+  public static final int[] N = { 26, 2131896501, 2130838176, 2131442188, 0 };
+  public static final int[] O = { 24, 2131896484, 2130838132, 2131442158, 2130838057, 2130838152, 2130838154 };
+  public static final int[] P = { 24, 2131896484, 2130846243, 2131442158, 0 };
+  public static final int[] Q = { 31, 2131896490, 2130838168, 2131442169, 0 };
+  public static final int[] R = { 32, 2131896482, 2130838130, 2131442156, 0 };
+  public static final int[] S = { 24, 2131896484, 2130838134, 2131442159, 0 };
+  public static final int[] T = { 24, 2131896484, 2130838133, 2131442159, 0 };
+  public static final int[] U = { 29, 2131892386, 2130851981, 2131442140, 0 };
+  public static final int[] V = { 29, 2131892386, 2130846242, 2131442140, 0 };
+  public static final int[] W = { 21, 2131887429, 2130838414, 2131442139, 0 };
+  public static final int[] X = { 21, 2131887429, 2130846240, 2131442139, 0 };
+  public static final int[] Y = { 21, 2131887429, 2130838463, 2131442143, 0 };
+  public static final int[] Z = { 40, 2131886472, 2130837958, 2131427940, 0 };
   public static boolean a = true;
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c;
-  public static final int[] d;
-  public static final int[] e;
-  public static final int[] f;
-  public static final int[] g;
-  public static final int[] h;
-  public static final int[] i;
-  public static final int[] j;
-  public static final int[] k;
-  public static final int[] l;
-  public static final int[] m;
-  public static final int[] n;
-  public static final int[] o;
-  public static final int[] p;
-  public static final int[] q;
-  public static final int[] r;
-  public static final int[] s;
-  public static final int[] t;
-  public static final int[] u;
-  public static final int[] v;
-  public static final int[] w;
-  public static final int[] x;
-  public static final int[] y;
-  public static final int[] z;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2, 2131698550, 2130838135, 2131374080, 2130838019, 2130850287, 2130850288 };
-    b = new int[] { 2, 2131698550, 2130838139, 2131374081, 0 };
-    c = new int[] { 2, 2131698550, 2130838137, 2131374081, 0 };
-    d = new int[] { 2, 2131698550, 2130844819, 2131374080, 0 };
-    e = new int[] { 3, 2131698533, 2130838071, 2131374052, 2130838013, 2130850215, 2130850216 };
-    f = new int[] { 3, 2131698533, 2130838075, 2131374053, 0 };
-    g = new int[] { 3, 2131698533, 2130838073, 2131374053, 0 };
-    h = new int[] { 3, 2131698533, 2130844810, 2131374052, 0 };
-    i = new int[] { 3, 2131698533, 2130838078, 2131374052, 2130838014, 2130850213, 2130850214 };
-    j = new int[] { 3, 2131698533, 2130838076, 2131374053, 0 };
-    k = new int[] { 3, 2131698533, 2130838074, 2131374053, 0 };
-    l = new int[] { 4, 2131698541, 2130838113, 2131374070, 2130838016, 2130850244, 2130850245 };
-    m = new int[] { 4, 2131698541, 2130838118, 2131374071, 0 };
-    n = new int[] { 4, 2131698541, 2130838115, 2131374071, 0 };
-    o = new int[] { 4, 2131698541, 2130844815, 2131374070, 0 };
-    p = new int[] { 4, 2131698541, 2130838120, 2131374070, 2130838017, 2130850242, 2130850243 };
-    q = new int[] { 4, 2131698541, 2130838119, 2131374071, 0 };
-    r = new int[] { 4, 2131698541, 2130838116, 2131374071, 0 };
-    s = new int[] { 5, 2131698530, 2130838065, 2131374046, 0, 2130850195, 2130850196 };
-    t = new int[] { 5, 2131698530, 2130838069, 2131374047, 0 };
-    u = new int[] { 5, 2131698530, 2130838067, 2131374047, 0 };
-    v = new int[] { 6, 2131698551, 2130838142, 2131374083, 0, 2130850293, 2130850294 };
-    w = new int[] { 8, 2131698546, 2130838128, 2131374075, 2130838018, 2130850264, 2130850265 };
-    x = new int[] { 8, 2131698546, 2130838130, 2131374076, 0 };
-    y = new int[] { 8, 2131698546, 2130844817, 2131374075, 0 };
-    z = new int[] { 9, 2131698549, 2130838134, 2131374079, 0 };
-  }
+  public static final int[] b = { 2, 2131896496, 2130838178, 2131442175, 2130838061, 2130852078, 2130852079 };
+  public static final int[] c = { 2, 2131896496, 2130838182, 2131442176, 0 };
+  public static final int[] d = { 2, 2131896496, 2130838180, 2131442176, 0 };
+  public static final int[] e = { 2, 2131896496, 2130846253, 2131442175, 0 };
+  public static final int[] f = { 3, 2131896479, 2130838114, 2131442147, 2130838055, 2130852006, 2130852007 };
+  public static final int[] g = { 3, 2131896479, 2130838118, 2131442148, 0 };
+  public static final int[] h = { 3, 2131896479, 2130838116, 2131442148, 0 };
+  public static final int[] i = { 3, 2131896479, 2130846244, 2131442147, 0 };
+  public static final int[] j = { 3, 2131896479, 2130838121, 2131442147, 2130838056, 2130852004, 2130852005 };
+  public static final int[] k = { 3, 2131896479, 2130838119, 2131442148, 0 };
+  public static final int[] l = { 3, 2131896479, 2130838117, 2131442148, 0 };
+  public static final int[] m = { 4, 2131896487, 2130838156, 2131442165, 2130838058, 2130852035, 2130852036 };
+  public static final int[] n = { 4, 2131896487, 2130838161, 2131442166, 0 };
+  public static final int[] o = { 4, 2131896487, 2130838158, 2131442166, 0 };
+  public static final int[] p = { 4, 2131896487, 2130846249, 2131442165, 0 };
+  public static final int[] q = { 4, 2131896487, 2130838163, 2131442165, 2130838059, 2130852033, 2130852034 };
+  public static final int[] r = { 4, 2131896487, 2130838162, 2131442166, 0 };
+  public static final int[] s = { 4, 2131896487, 2130838159, 2131442166, 0 };
+  public static final int[] t = { 5, 2131896476, 2130838107, 2131442141, 0, 2130851986, 2130851987 };
+  public static final int[] u = { 5, 2131896476, 2130838111, 2131442142, 0 };
+  public static final int[] v = { 5, 2131896476, 2130838109, 2131442142, 0 };
+  public static final int[] w = { 6, 2131896497, 2130838185, 2131442178, 0, 2130852084, 2130852085 };
+  public static final int[] x = { 8, 2131896492, 2130838171, 2131442170, 2130838060, 2130852055, 2130852056 };
+  public static final int[] y = { 8, 2131896492, 2130838173, 2131442171, 0 };
+  public static final int[] z = { 8, 2131896492, 2130846251, 2131442170, 0 };
   
   public static PhotoListPanel a(QQAppInterface paramQQAppInterface, AIOContext paramAIOContext, InputBarUI paramInputBarUI, PanelIconLinearLayout paramPanelIconLinearLayout, boolean paramBoolean, Intent paramIntent)
   {
-    PhotoListPanel localPhotoListPanel = (PhotoListPanel)View.inflate(paramAIOContext.a(), 2131560943, null);
+    PhotoListPanel localPhotoListPanel = (PhotoListPanel)View.inflate(paramAIOContext.b(), 2131627284, null);
     if (!paramBoolean)
     {
       paramInputBarUI = paramIntent;
@@ -133,26 +103,26 @@ public class AIOPanelUtiles
       paramInputBarUI = new Intent();
     }
     paramIntent = paramQQAppInterface.getAccount();
-    paramPanelIconLinearLayout = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramIntent);
+    paramPanelIconLinearLayout = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramIntent);
     if (paramPanelIconLinearLayout != null) {
       paramPanelIconLinearLayout = paramPanelIconLinearLayout.name;
     } else {
       paramPanelIconLinearLayout = "";
     }
     String str = paramQQAppInterface.getCustomFaceFilePath(1, paramIntent, 0);
-    boolean bool = paramQQAppInterface.isLBSFriendNewClient(paramAIOContext.a().jdField_a_of_type_JavaLangString);
+    boolean bool = paramQQAppInterface.isLBSFriendNewClient(paramAIOContext.O().b);
     paramInputBarUI.putExtra("key_my_uin", paramIntent);
     paramInputBarUI.putExtra("key_my_nick", paramPanelIconLinearLayout);
     paramInputBarUI.putExtra("key_my_head_dir", str);
     paramInputBarUI.putExtra("key_new_lbs_client", bool);
     paramInputBarUI.putExtra("custom_photolist_panel_editbtn_reportActionName", "0X8005E06");
-    if ((paramAIOContext.a().jdField_a_of_type_Int == 9500) || (paramAIOContext.a().jdField_a_of_type_Int == 9501)) {
+    if ((paramAIOContext.O().a == 9500) || (paramAIOContext.O().a == 9501)) {
       paramInputBarUI.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
     }
-    if ((paramAIOContext.a().jdField_a_of_type_Int == 1) && (((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramAIOContext.a().jdField_a_of_type_JavaLangString))) {
+    if ((paramAIOContext.O().a == 1) && (((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramAIOContext.O().b))) {
       paramInputBarUI.putExtra("filter_photolist_troopalbum_toolbar", true);
     }
-    paramInputBarUI.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", PlusPanelUtils.a(paramAIOContext.a()));
+    paramInputBarUI.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", PlusPanelUtils.a(paramAIOContext.O()));
     if (paramBoolean)
     {
       paramInputBarUI.putExtra("key_disable_quality_cb", true);
@@ -167,13 +137,13 @@ public class AIOPanelUtiles
       paramInputBarUI.putExtra("custom_photopreview_sendbtn_reportActionName", "0X8005978");
       paramInputBarUI.putExtra("custom_photopreview_sendbtn_album_reportReverse2", "1");
       paramPanelIconLinearLayout = (ITroopPhotoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_PHOTO_HANDLER);
-      if ((!TextUtils.isEmpty(paramAIOContext.a().jdField_a_of_type_JavaLangString)) && (paramAIOContext.a().jdField_a_of_type_Int == 1))
+      if ((!TextUtils.isEmpty(paramAIOContext.O().b)) && (paramAIOContext.O().a == 1))
       {
-        paramPanelIconLinearLayout.a(paramAIOContext.a().jdField_a_of_type_JavaLangString, true);
+        paramPanelIconLinearLayout.a(paramAIOContext.O().b, true);
         paramInputBarUI.putExtra("showFlashPic", false);
       }
     }
-    localPhotoListPanel.a(paramQQAppInterface, paramAIOContext.a(), paramAIOContext.a(), paramInputBarUI);
+    localPhotoListPanel.a(paramQQAppInterface, paramAIOContext.b(), paramAIOContext.O(), paramInputBarUI);
     localPhotoListPanel.setOnSwipeUpAndDragListener(new SwipeUpAndDragListener(paramAIOContext, null, localPhotoListPanel));
     return localPhotoListPanel;
   }
@@ -196,13 +166,13 @@ public class AIOPanelUtiles
     ((Intent)localObject2).putExtra("PhotoConst.SEND_BUSINESS_TYPE", paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", 1052));
     ((Intent)localObject2).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject1);
     ((Intent)localObject2).putExtra("PhotoConst.VIDEO_INFOS", paramIntent.getSerializableExtra("PhotoConst.VIDEO_INFOS"));
-    ((Intent)localObject2).putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-    ((Intent)localObject2).putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
-    ((Intent)localObject2).putExtra("troop_uin", paramSessionInfo.b);
-    ((Intent)localObject2).putExtra("key_confess_topicid", paramSessionInfo.e);
+    ((Intent)localObject2).putExtra("uin", paramSessionInfo.b);
+    ((Intent)localObject2).putExtra("uintype", paramSessionInfo.a);
+    ((Intent)localObject2).putExtra("troop_uin", paramSessionInfo.c);
+    ((Intent)localObject2).putExtra("key_confess_topicid", paramSessionInfo.v);
     ((Intent)localObject2).putExtra("PhotoConst.SEND_SIZE_SPEC", i1);
     ((Intent)localObject2).putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    ((Intent)localObject2).putExtra("entrance", paramSessionInfo.c);
+    ((Intent)localObject2).putExtra("entrance", paramSessionInfo.s);
     if (((ArrayList)localObject1).size() == 1) {
       ((Intent)localObject2).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (Serializable)localObject1);
     }
@@ -225,17 +195,17 @@ public class AIOPanelUtiles
       QLog.d("AIOPanelUtiles", 2, ((StringBuilder)localObject3).toString());
     }
     if (paramActivity.getIntent().getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007) == 1040) {
-      if (paramSessionInfo.jdField_a_of_type_Int == 0)
+      if (paramSessionInfo.a == 0)
       {
         ReportController.b(null, "dc00898", "", "", "0X80069A6", "0X80069A6", 0, 0, "", "", "", "");
         ReportController.b(null, "dc00898", "", "", "0X800699A", "0X800699A", 0, 0, "", "", "", "");
       }
-      else if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+      else if (paramSessionInfo.a == 3000)
       {
         ReportController.b(null, "dc00898", "", "", "0X80069A7", "0X80069A7", 0, 0, "", "", "", "");
         ReportController.b(null, "dc00898", "", "", "0X800699B", "0X800699B", 0, 0, "", "", "", "");
       }
-      else if (paramSessionInfo.jdField_a_of_type_Int == 1)
+      else if (paramSessionInfo.a == 1)
       {
         ReportController.b(null, "dc00898", "", "", "0X80069A8", "0X80069A8", 0, 0, "", "", "", "");
         ReportController.b(null, "dc00898", "", "", "0X800699C", "0X800699C", 0, 0, "", "", "", "");
@@ -277,14 +247,14 @@ public class AIOPanelUtiles
           break label111;
         }
         bool = true;
-        jdField_a_of_type_Boolean = bool;
+        a = bool;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getAIOPanelConfig = ");
           localStringBuilder.append(paramQQAppInterface);
           localStringBuilder.append(" isShowQwalletHbEntry = ");
-          localStringBuilder.append(jdField_a_of_type_Boolean);
+          localStringBuilder.append(a);
           QLog.d("AIO_Panel", 2, localStringBuilder.toString());
           return;
         }
@@ -314,23 +284,23 @@ public class AIOPanelUtiles
         localIRedTouchManager.onRedTouchItemClick(paramString, "");
         return;
       }
-      paramInt1 = paramSessionInfo.jdField_a_of_type_Int;
+      paramInt1 = paramSessionInfo.a;
       int i2 = 0;
-      if ((paramInt1 != 0) && (!ChatActivityUtils.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString))) {
+      if ((paramInt1 != 0) && (!ChatActivityUtils.a(paramQQAppInterface, paramSessionInfo.b))) {
         paramInt1 = 0;
       } else {
         paramInt1 = 1;
       }
       int i1;
-      if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
+      if (paramSessionInfo.a == 3000) {
         i1 = 1;
       } else {
         i1 = 0;
       }
-      if (paramSessionInfo.jdField_a_of_type_Int == 1) {
+      if (paramSessionInfo.a == 1) {
         i2 = 1;
       }
-      boolean bool = ChatActivityUtils.a(paramSessionInfo.jdField_a_of_type_Int);
+      boolean bool = ChatActivityUtils.a(paramSessionInfo.a);
       if (paramInt1 != 0) {
         paramInt1 = i3;
       } else if (i1 != 0) {
@@ -358,16 +328,16 @@ public class AIOPanelUtiles
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, SessionInfo paramSessionInfo)
   {
-    if (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-      ReportController.b(paramQQAppInterface, "dc00899", "Qidian", paramSessionInfo.jdField_a_of_type_JavaLangString, paramString1, paramString2, 0, 0, "", "", "", "");
+    if (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).m(paramSessionInfo.b)) {
+      ReportController.b(paramQQAppInterface, "dc00899", "Qidian", paramSessionInfo.b, paramString1, paramString2, 0, 0, "", "", "", "");
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    if (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    if (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).m(paramSessionInfo.b))
     {
-      paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      paramSessionInfo = paramSessionInfo.b;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append("");
@@ -381,7 +351,7 @@ public class AIOPanelUtiles
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles
  * JD-Core Version:    0.7.0.1
  */

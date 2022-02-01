@@ -19,15 +19,13 @@ import org.json.JSONObject;
 public class GVideoWebPlugin
   extends WebViewPlugin
 {
-  protected BroadcastReceiver a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected TroopMemberApiClient a;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  protected TroopMemberApiClient a = null;
+  protected BroadcastReceiver b = new GVideoWebPlugin.2(this);
+  private Context c;
+  private QQProgressDialog d;
   
   public GVideoWebPlugin()
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new GVideoWebPlugin.2(this);
     this.mPluginNameSpace = "groupVideo";
   }
   
@@ -70,7 +68,7 @@ public class GVideoWebPlugin
             if ((i != 1) && (i != 2)) {
               return true;
             }
-            this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramJsBridgeListener);
+            this.c.sendBroadcast(paramJsBridgeListener);
             return true;
           }
         }
@@ -94,7 +92,7 @@ public class GVideoWebPlugin
             paramString3 = ((JSONObject)localObject).optString("action");
             paramVarArgs = ((JSONObject)localObject).optString("openType");
             localObject = ((JSONObject)localObject).optString("extra");
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
+            this.a.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
             GroupVideoManager.a("group_video", new GVideoWebPlugin.1(this, paramString3));
             return true;
           }
@@ -112,7 +110,7 @@ public class GVideoWebPlugin
           paramJsBridgeListener.append("preload url:");
           paramJsBridgeListener.append(paramString1);
           QLog.e("GroupVideoManager.GVideoWebPlugin", 2, paramJsBridgeListener.toString());
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.e(null);
+          this.a.e(null);
           return true;
         }
         catch (Exception paramJsBridgeListener)
@@ -128,29 +126,29 @@ public class GVideoWebPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+    this.c = this.mRuntime.d().getApplicationContext();
+    this.a = TroopMemberApiClient.a();
+    this.a.e();
     if (QLog.isColorLevel()) {
       QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "GVideoWebPlugin onCreate");
     }
     IntentFilter localIntentFilter = new IntentFilter(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction("com.tencent.od"));
     localIntentFilter.addAction(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getBackNotifyAction("com.tencent.od"));
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.mRuntime.a());
+    this.c.registerReceiver(this.b, localIntentFilter);
+    this.d = new QQProgressDialog(this.mRuntime.d());
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    TroopMemberApiClient localTroopMemberApiClient = this.a;
     if (localTroopMemberApiClient != null) {
-      localTroopMemberApiClient.b();
+      localTroopMemberApiClient.f();
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.d.dismiss();
+      this.c.unregisterReceiver(this.b);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -158,7 +156,7 @@ public class GVideoWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -3,43 +3,41 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.model.request;
 public class SimpleStep$GetResultSimpleStep<T>
   extends SimpleStep
 {
-  public SimpleStep.SimpleStepResultCallback<T> a;
-  public T a;
-  public String a;
+  public String a = "GetResultSimpleStep";
+  public T b = null;
+  public SimpleStep.SimpleStepResultCallback<T> c;
   
   public SimpleStep$GetResultSimpleStep(SimpleStep.SimpleStepResultCallback<T> paramSimpleStepResultCallback)
   {
-    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStep$SimpleStepResultCallback = paramSimpleStepResultCallback;
+    this.c = paramSimpleStepResultCallback;
   }
   
   public Object a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    SimpleStep.SimpleStepResultCallback localSimpleStepResultCallback = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStep$SimpleStepResultCallback;
-    if (localSimpleStepResultCallback != null) {
-      localSimpleStepResultCallback.a(this.jdField_a_of_type_JavaLangObject);
-    }
+    return this.b;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramObject;
   }
   
-  public void b() {}
+  public void b()
+  {
+    SimpleStep.SimpleStepResultCallback localSimpleStepResultCallback = this.c;
+    if (localSimpleStepResultCallback != null) {
+      localSimpleStepResultCallback.a(this.b);
+    }
+  }
   
-  public void c() {}
+  public String c()
+  {
+    return this.a;
+  }
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

@@ -50,21 +50,21 @@ class EditLocalVideoActivity$TrimHandler
                     EditLocalVideoActivity.a((EditLocalVideoActivity)localObject, paramMessage);
                     return;
                   case 1101: 
-                    Toast.makeText(((EditLocalVideoActivity)localObject).getApplicationContext(), HardCodeUtil.a(2131703813), 1).show();
-                    EditLocalVideoActivity.d((EditLocalVideoActivity)localObject);
+                    Toast.makeText(((EditLocalVideoActivity)localObject).getApplicationContext(), HardCodeUtil.a(2131901759), 1).show();
+                    EditLocalVideoActivity.e((EditLocalVideoActivity)localObject);
                     return;
                   }
-                  if (EditLocalVideoActivity.a((EditLocalVideoActivity)localObject) != null) {
-                    EditLocalVideoActivity.a((EditLocalVideoActivity)localObject).requestLayout();
+                  if (EditLocalVideoActivity.c((EditLocalVideoActivity)localObject) != null) {
+                    EditLocalVideoActivity.c((EditLocalVideoActivity)localObject).requestLayout();
                   }
                 }
                 else
                 {
-                  EditLocalVideoActivity.c((EditLocalVideoActivity)localObject);
+                  EditLocalVideoActivity.d((EditLocalVideoActivity)localObject);
                 }
               }
               else {
-                EditLocalVideoActivity.e((EditLocalVideoActivity)localObject);
+                EditLocalVideoActivity.f((EditLocalVideoActivity)localObject);
               }
             }
             else {
@@ -87,7 +87,7 @@ class EditLocalVideoActivity$TrimHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.TrimHandler
  * JD-Core Version:    0.7.0.1
  */

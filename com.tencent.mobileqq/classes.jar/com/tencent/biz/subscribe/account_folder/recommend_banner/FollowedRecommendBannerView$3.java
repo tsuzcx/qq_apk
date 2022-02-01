@@ -11,7 +11,7 @@ class FollowedRecommendBannerView$3
   
   public void onClick(View paramView)
   {
-    FollowedRecommendBannerView.a(this.a);
+    FollowedRecommendBannerView.c(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

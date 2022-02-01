@@ -50,7 +50,7 @@ public class ApolloImageDownloaderImpl
   {
     if ((paramFile != null) && ((paramDownloadParams.mExtraInfo instanceof ApolloDrawableExtraInfo)))
     {
-      if (((ApolloDrawableExtraInfo)paramDownloadParams.mExtraInfo).mDrawableType == ApolloConstant.g) {
+      if (((ApolloDrawableExtraInfo)paramDownloadParams.mExtraInfo).mDrawableType == ApolloConstant.ad) {
         try
         {
           Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
@@ -106,10 +106,10 @@ public class ApolloImageDownloaderImpl
       return null;
     }
     DownloadTask localDownloadTask = new DownloadTask(paramOutputStream, paramDownloadParams);
-    localDownloadTask.b = 1;
-    localDownloadTask.p = false;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    localDownloadTask.e = 1;
+    localDownloadTask.N = false;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     int i = DownloaderFactory.a(localDownloadTask, null);
     if (i == 0)
     {
@@ -143,7 +143,7 @@ public class ApolloImageDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.ApolloImageDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -51,85 +51,85 @@ public class MiniProgramSearchResultPresenter
       Object localObject2;
       if (paramISearchResultModel.a() == null)
       {
-        if (localMiniProgramSearchResultView.c() != null) {
-          localMiniProgramSearchResultView.c().setVisibility(8);
+        if (localMiniProgramSearchResultView.d() != null) {
+          localMiniProgramSearchResultView.d().setVisibility(8);
         }
-        if (localMiniProgramSearchResultView.a() != null) {
-          localMiniProgramSearchResultView.a().setVisibility(8);
+        if (localMiniProgramSearchResultView.b() != null) {
+          localMiniProgramSearchResultView.b().setVisibility(8);
         }
-        localObject2 = localMiniProgramSearchResultView.a();
+        localObject2 = localMiniProgramSearchResultView.k();
         if (localObject2 != null) {
           ((URLImageView)localObject2).setVisibility(8);
         }
-        localObject2 = localMiniProgramSearchResultView.e();
+        localObject2 = localMiniProgramSearchResultView.j();
         if (localObject2 != null)
         {
           ((TextView)localObject2).setVisibility(0);
-          if (!TextUtils.isEmpty(((MiniProgramSearchResultModel)localObject1).b())) {
-            ((TextView)localObject2).setText(((MiniProgramSearchResultModel)localObject1).b());
+          if (!TextUtils.isEmpty(((MiniProgramSearchResultModel)localObject1).d())) {
+            ((TextView)localObject2).setText(((MiniProgramSearchResultModel)localObject1).d());
           }
         }
       }
       else
       {
-        if ((localMiniProgramSearchResultView.c() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a())))
+        if ((localMiniProgramSearchResultView.d() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a())))
         {
-          localMiniProgramSearchResultView.c().setVisibility(0);
-          localMiniProgramSearchResultView.c().setText(paramISearchResultModel.a());
+          localMiniProgramSearchResultView.d().setVisibility(0);
+          localMiniProgramSearchResultView.d().setText(paramISearchResultModel.a());
         }
-        else if (paramISearchResultView.c() != null)
+        else if (paramISearchResultView.d() != null)
         {
-          localMiniProgramSearchResultView.c().setVisibility(8);
+          localMiniProgramSearchResultView.d().setVisibility(8);
         }
-        if (localMiniProgramSearchResultView.a() != null) {
-          localMiniProgramSearchResultView.a().setVisibility(0);
+        if (localMiniProgramSearchResultView.b() != null) {
+          localMiniProgramSearchResultView.b().setVisibility(0);
         }
-        localObject2 = localMiniProgramSearchResultView.e();
+        localObject2 = localMiniProgramSearchResultView.j();
         if (localObject2 != null) {
           ((TextView)localObject2).setVisibility(8);
         }
-        if (!TextUtils.isEmpty(paramISearchResultModel.b())) {
-          localMiniProgramSearchResultView.a().setText(((MiniProgramSearchResultModel)localObject1).b());
+        if (!TextUtils.isEmpty(paramISearchResultModel.d())) {
+          localMiniProgramSearchResultView.b().setText(((MiniProgramSearchResultModel)localObject1).d());
         }
       }
-      if ((paramISearchResultView.b() != null) && (!TextUtils.isEmpty(((MiniProgramSearchResultModel)localObject1).f())))
+      if ((paramISearchResultView.g() != null) && (!TextUtils.isEmpty(((MiniProgramSearchResultModel)localObject1).t())))
       {
-        localObject2 = ((MiniProgramSearchResultModel)localObject1).f();
+        localObject2 = ((MiniProgramSearchResultModel)localObject1).t();
         ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = DisplayUtil.a(paramISearchResultView.a().getContext(), 50.0F);
-        localURLDrawableOptions.mRequestHeight = DisplayUtil.a(paramISearchResultView.a().getContext(), 50.0F);
+        localURLDrawableOptions.mRequestWidth = DisplayUtil.a(paramISearchResultView.h().getContext(), 50.0F);
+        localURLDrawableOptions.mRequestHeight = DisplayUtil.a(paramISearchResultView.h().getContext(), 50.0F);
         localURLDrawableOptions.mFailedDrawable = localColorDrawable;
         localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
-        if (URLUtil.a((String)localObject2))
+        if (URLUtil.e((String)localObject2))
         {
           localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
-          ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramISearchResultView.a().getContext(), 50.0F), DisplayUtil.a(paramISearchResultView.a().getContext(), 50.0F), DisplayUtil.a(paramISearchResultView.a().getContext(), 3.0F)));
-          ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.i);
-          paramISearchResultView.b().setImageDrawable((Drawable)localObject2);
+          ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramISearchResultView.h().getContext(), 50.0F), DisplayUtil.a(paramISearchResultView.h().getContext(), 50.0F), DisplayUtil.a(paramISearchResultView.h().getContext(), 3.0F)));
+          ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.j);
+          paramISearchResultView.g().setImageDrawable((Drawable)localObject2);
           if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
             ((URLDrawable)localObject2).restartDownload();
           }
         }
         else
         {
-          paramISearchResultView.b().setImageDrawable(localColorDrawable);
+          paramISearchResultView.g().setImageDrawable(localColorDrawable);
         }
       }
       c(paramISearchResultModel, paramISearchResultView);
-      if ((localMiniProgramSearchResultView.a() != null) && (((MiniProgramSearchResultModel)localObject1).c()))
+      if ((localMiniProgramSearchResultView.k() != null) && (((MiniProgramSearchResultModel)localObject1).x()))
       {
-        paramISearchResultModel = ((MiniProgramSearchResultModel)localObject1).g();
+        paramISearchResultModel = ((MiniProgramSearchResultModel)localObject1).w();
         localObject1 = new ColorDrawable(Color.parseColor("#e7e7e7"));
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = DisplayUtil.a(paramISearchResultView.a().getContext(), 40.0F);
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = DisplayUtil.a(paramISearchResultView.a().getContext(), 12.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = DisplayUtil.a(paramISearchResultView.h().getContext(), 40.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = DisplayUtil.a(paramISearchResultView.h().getContext(), 12.0F);
         ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
         paramISearchResultModel = URLDrawable.getDrawable(paramISearchResultModel, (URLDrawable.URLDrawableOptions)localObject2);
-        paramISearchResultModel.setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramISearchResultView.a().getContext(), 38.0F), DisplayUtil.a(paramISearchResultView.a().getContext(), 12.0F), 0));
-        paramISearchResultModel.setDecodeHandler(URLDrawableDecodeHandler.i);
-        localMiniProgramSearchResultView.a().setImageDrawable(paramISearchResultModel);
+        paramISearchResultModel.setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramISearchResultView.h().getContext(), 38.0F), DisplayUtil.a(paramISearchResultView.h().getContext(), 12.0F), 0));
+        paramISearchResultModel.setDecodeHandler(URLDrawableDecodeHandler.j);
+        localMiniProgramSearchResultView.k().setImageDrawable(paramISearchResultModel);
         if ((paramISearchResultModel.getStatus() != 1) && (paramISearchResultModel.getStatus() != 0)) {
           paramISearchResultModel.restartDownload();
         }
@@ -141,10 +141,10 @@ public class MiniProgramSearchResultPresenter
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView, Bitmap paramBitmap)
   {
-    if (paramISearchResultModel.a() == 103)
+    if (paramISearchResultModel.b() == 103)
     {
-      if (paramISearchResultView.b() != null) {
-        paramISearchResultView.b().setImageDrawable(SearchUtils.a(paramBitmap));
+      if (paramISearchResultView.g() != null) {
+        paramISearchResultView.g().setImageDrawable(SearchUtils.a(paramBitmap));
       }
     }
     else {
@@ -156,8 +156,8 @@ public class MiniProgramSearchResultPresenter
   {
     if (this.a != null)
     {
-      if (paramISearchResultView.a() != null) {
-        paramISearchResultView.a().setOnClickListener(new MiniProgramSearchResultPresenter.1(this));
+      if (paramISearchResultView.h() != null) {
+        paramISearchResultView.h().setOnClickListener(new MiniProgramSearchResultPresenter.1(this));
       }
     }
     else {
@@ -167,7 +167,7 @@ public class MiniProgramSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.MiniProgramSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -33,19 +33,19 @@ public class QzoneEditPicturePartComment
   extends EditVideoPart
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private QzoneEditPicturePartManager jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager;
-  private ExtendEditText jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText;
-  private String jdField_a_of_type_JavaLangString = UgcSettingUtil.getPrivacyDescriptionForShuoShuo(1);
+  private QzoneEditPicturePartManager a;
+  private String b = UgcSettingUtil.getPrivacyDescriptionForShuoShuo(1);
+  private RelativeLayout c;
+  private CheckBox d;
+  private ExtendEditText e;
+  private Button f;
+  private View g;
+  private int h = 0;
   
   public QzoneEditPicturePartComment(@NonNull QzoneEditPicturePartManager paramQzoneEditPicturePartManager)
   {
     super(paramQzoneEditPicturePartManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager = paramQzoneEditPicturePartManager;
+    this.a = paramQzoneEditPicturePartManager;
   }
   
   private void a(long paramLong) {}
@@ -55,7 +55,7 @@ public class QzoneEditPicturePartComment
     return (paramInt == 16) || (paramInt == 128);
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
     try
     {
@@ -65,10 +65,10 @@ public class QzoneEditPicturePartComment
       if (paramString == null) {
         return false;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Int = paramString.fontId;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_c_of_type_Int = paramString.formatType;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_d_of_type_JavaLangString = paramString.fontUrl;
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Int;
+      this.a.l = paramString.fontId;
+      this.a.m = paramString.formatType;
+      this.a.n = paramString.fontUrl;
+      int i = this.a.l;
       return i > 0;
     }
     catch (Throwable paramString)
@@ -81,31 +81,31 @@ public class QzoneEditPicturePartComment
     return false;
   }
   
-  private void g()
+  private void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
-    ((ExtendEditText)localObject).setTextEffect(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_e_of_type_JavaLangString);
+    ((ExtendEditText)localObject).setTextEffect(this.a.p);
     localObject = null;
-    String str = ((IFontManager)QRoute.api(IFontManager.class)).getTrueTypeFont(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Int, null, null, true, null);
+    String str = ((IFontManager)QRoute.api(IFontManager.class)).getTrueTypeFont(this.a.l, null, null, true, null);
     if (TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Int = -1;
+      this.a.l = -1;
     } else {
       localObject = Typeface.createFromFile(str);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText.setTypeface((Typeface)localObject);
+    this.e.setTypeface((Typeface)localObject);
   }
   
   /* Error */
   public String a(String paramString)
   {
     // Byte code:
-    //   0: ldc 149
+    //   0: ldc 155
     //   2: astore 6
-    //   4: invokestatic 155	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 161	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   4: invokestatic 161	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 167	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore 8
     //   12: aconst_null
     //   13: astore 7
@@ -117,9 +117,9 @@ public class QzoneEditPicturePartComment
     //   24: astore_3
     //   25: aload 7
     //   27: astore_2
-    //   28: new 89	java/lang/StringBuilder
+    //   28: new 96	java/lang/StringBuilder
     //   31: dup
-    //   32: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   32: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   35: astore 9
     //   37: aload 4
     //   39: astore 5
@@ -128,8 +128,8 @@ public class QzoneEditPicturePartComment
     //   44: aload 7
     //   46: astore_2
     //   47: aload 9
-    //   49: ldc 163
-    //   51: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: ldc 169
+    //   51: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload 4
     //   57: astore 5
@@ -139,7 +139,7 @@ public class QzoneEditPicturePartComment
     //   64: astore_2
     //   65: aload 9
     //   67: aload_1
-    //   68: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
     //   72: aload 4
     //   74: astore 5
@@ -149,18 +149,18 @@ public class QzoneEditPicturePartComment
     //   81: astore_2
     //   82: aload 8
     //   84: aload 9
-    //   86: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: invokestatic 169	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   86: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: invokestatic 175	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   92: aconst_null
-    //   93: ldc 171
+    //   93: ldc 177
     //   95: iconst_1
-    //   96: anewarray 173	java/lang/String
+    //   96: anewarray 179	java/lang/String
     //   99: dup
     //   100: iconst_0
     //   101: aload_1
     //   102: aastore
     //   103: aconst_null
-    //   104: invokevirtual 179	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   104: invokevirtual 185	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   107: astore 7
     //   109: aload 6
     //   111: astore 4
@@ -175,7 +175,7 @@ public class QzoneEditPicturePartComment
     //   129: aload 7
     //   131: astore_2
     //   132: aload 7
-    //   134: invokeinterface 185 1 0
+    //   134: invokeinterface 191 1 0
     //   139: ifeq +172 -> 311
     //   142: aload 7
     //   144: astore 5
@@ -185,9 +185,9 @@ public class QzoneEditPicturePartComment
     //   151: astore_2
     //   152: aload 7
     //   154: aload 7
-    //   156: ldc 187
-    //   158: invokeinterface 191 2 0
-    //   163: invokeinterface 194 2 0
+    //   156: ldc 193
+    //   158: invokeinterface 197 2 0
+    //   163: invokeinterface 200 2 0
     //   168: astore 4
     //   170: aload 6
     //   172: astore_1
@@ -198,7 +198,7 @@ public class QzoneEditPicturePartComment
     //   180: aload 7
     //   182: astore_2
     //   183: aload 4
-    //   185: invokestatic 134	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   185: invokestatic 140	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   188: ifne +31 -> 219
     //   191: aload 7
     //   193: astore 5
@@ -206,13 +206,13 @@ public class QzoneEditPicturePartComment
     //   197: astore_3
     //   198: aload 7
     //   200: astore_2
-    //   201: new 173	java/lang/String
+    //   201: new 179	java/lang/String
     //   204: dup
     //   205: aload 4
-    //   207: invokevirtual 198	java/lang/String:getBytes	()[B
-    //   210: ldc 200
-    //   212: invokespecial 203	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   215: invokestatic 208	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   207: invokevirtual 204	java/lang/String:getBytes	()[B
+    //   210: ldc 206
+    //   212: invokespecial 209	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   215: invokestatic 214	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   218: astore_1
     //   219: aload_1
     //   220: astore 4
@@ -222,7 +222,7 @@ public class QzoneEditPicturePartComment
     //   227: astore_3
     //   228: aload 7
     //   230: astore_2
-    //   231: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   231: invokestatic 217	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   234: ifeq +77 -> 311
     //   237: aload 7
     //   239: astore 5
@@ -230,9 +230,9 @@ public class QzoneEditPicturePartComment
     //   242: astore_3
     //   243: aload 7
     //   245: astore_2
-    //   246: new 89	java/lang/StringBuilder
+    //   246: new 96	java/lang/StringBuilder
     //   249: dup
-    //   250: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   250: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   253: astore 4
     //   255: aload 7
     //   257: astore 5
@@ -241,8 +241,8 @@ public class QzoneEditPicturePartComment
     //   261: aload 7
     //   263: astore_2
     //   264: aload 4
-    //   266: ldc 213
-    //   268: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: ldc 219
+    //   268: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: pop
     //   272: aload 7
     //   274: astore 5
@@ -252,7 +252,7 @@ public class QzoneEditPicturePartComment
     //   280: astore_2
     //   281: aload 4
     //   283: aload_1
-    //   284: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: pop
     //   288: aload 7
     //   290: astore 5
@@ -260,11 +260,11 @@ public class QzoneEditPicturePartComment
     //   293: astore_3
     //   294: aload 7
     //   296: astore_2
-    //   297: ldc 215
+    //   297: ldc 221
     //   299: iconst_2
     //   300: aload 4
-    //   302: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   305: invokestatic 218	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   302: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokestatic 224	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   308: aload_1
     //   309: astore 4
     //   311: aload 4
@@ -276,7 +276,7 @@ public class QzoneEditPicturePartComment
     //   322: aload 4
     //   324: astore_3
     //   325: aload_2
-    //   326: invokeinterface 221 1 0
+    //   326: invokeinterface 227 1 0
     //   331: aload_3
     //   332: areturn
     //   333: astore_1
@@ -284,34 +284,34 @@ public class QzoneEditPicturePartComment
     //   337: astore_1
     //   338: aload_2
     //   339: astore 5
-    //   341: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   341: invokestatic 217	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   344: ifeq +53 -> 397
     //   347: aload_2
     //   348: astore 5
-    //   350: new 89	java/lang/StringBuilder
+    //   350: new 96	java/lang/StringBuilder
     //   353: dup
-    //   354: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   354: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   357: astore 4
     //   359: aload_2
     //   360: astore 5
     //   362: aload 4
-    //   364: ldc 223
-    //   366: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: ldc 229
+    //   366: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   369: pop
     //   370: aload_2
     //   371: astore 5
     //   373: aload 4
     //   375: aload_1
-    //   376: invokestatic 227	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   379: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   376: invokestatic 233	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   379: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   382: pop
     //   383: aload_2
     //   384: astore 5
-    //   386: ldc 215
+    //   386: ldc 221
     //   388: iconst_2
     //   389: aload 4
-    //   391: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   394: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   391: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   394: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   397: aload_3
     //   398: astore_1
     //   399: aload_2
@@ -322,7 +322,7 @@ public class QzoneEditPicturePartComment
     //   408: aload 5
     //   410: ifnull +10 -> 420
     //   413: aload 5
-    //   415: invokeinterface 221 1 0
+    //   415: invokeinterface 227 1 0
     //   420: goto +5 -> 425
     //   423: aload_1
     //   424: athrow
@@ -377,26 +377,26 @@ public class QzoneEditPicturePartComment
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131366996));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131367019));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText = ((ExtendEditText)a(2131366997));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131367016));
-    this.jdField_a_of_type_AndroidViewView = a(2131367018);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText.setEditableFactory(QzoneTextBuilder.a);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    if (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_e_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.c = ((RelativeLayout)d(2131433444));
+    this.d = ((CheckBox)d(2131433467));
+    this.e = ((ExtendEditText)d(2131433445));
+    this.f = ((Button)d(2131433464));
+    this.g = d(2131433466);
+    this.e.setEditableFactory(QzoneTextBuilder.a);
+    this.e.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    if (!this.a.k) {
+      this.f.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_d_of_type_Boolean))
+    if ((this.a.h) || (this.a.j))
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new QzoneEditPicturePartComment.1(this));
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      this.f.setVisibility(8);
+      this.d.setVisibility(0);
+      this.d.setOnCheckedChangeListener(new QzoneEditPicturePartComment.1(this));
+      this.d.setChecked(true);
     }
-    if (a(QQStoryContext.a().a())) {
-      g();
+    if (b(QQStoryContext.a().g())) {
+      c();
     }
   }
   
@@ -419,31 +419,31 @@ public class QzoneEditPicturePartComment
       {
         paramIntent = paramIntent.getExtras();
         if (paramIntent.containsKey("permission_code")) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int = paramIntent.getInt("permission_code");
+          this.a.c = paramIntent.getInt("permission_code");
         }
         if (paramIntent.containsKey("uin_list"))
         {
-          if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList == null) {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          if (this.a.b == null) {
+            this.a.b = new ArrayList();
           }
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.a.b.clear();
           localObject = paramIntent.getStringArrayList("uin_list");
           if (localObject != null) {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
+            this.a.b.addAll((Collection)localObject);
           }
         }
-        if (a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int))
+        if (a(this.a.c))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_JavaLangString = paramIntent.getString("key_setting_raw_json");
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaLangString = paramIntent.getString("key_selected_tag");
+          this.a.e = paramIntent.getString("key_setting_raw_json");
+          this.a.d = paramIntent.getString("key_selected_tag");
         }
         b();
       }
     }
     else if (paramInt1 == 1009)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (this.a.a != null) {
+        this.a.a.setVisibility(8);
       }
       if ((paramIntent != null) && (paramIntent.getExtras() != null))
       {
@@ -453,19 +453,19 @@ public class QzoneEditPicturePartComment
           paramIntent = localBundle.getBundle("extra_key_bundle_priv_key");
           if (paramIntent != null)
           {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int = paramIntent.getInt("permission_code");
-            if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList == null) {
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            this.a.c = paramIntent.getInt("permission_code");
+            if (this.a.b == null) {
+              this.a.b = new ArrayList();
             }
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.clear();
+            this.a.b.clear();
             localObject = paramIntent.getStringArrayList("uin_list");
             if (localObject != null) {
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
+              this.a.b.addAll((Collection)localObject);
             }
-            if (a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int))
+            if (a(this.a.c))
             {
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_JavaLangString = paramIntent.getString("key_setting_raw_json");
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaLangString = paramIntent.getString("key_selected_tag");
+              this.a.e = paramIntent.getString("key_setting_raw_json");
+              this.a.d = paramIntent.getString("key_selected_tag");
             }
             b();
           }
@@ -473,7 +473,7 @@ public class QzoneEditPicturePartComment
         if (localBundle.containsKey("extraIsTopicSyncQzone"))
         {
           boolean bool = localBundle.getBoolean("extraIsTopicSyncQzone");
-          this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+          this.d.setChecked(bool);
         }
         if (localBundle.containsKey("contentIntentKey"))
         {
@@ -482,19 +482,19 @@ public class QzoneEditPicturePartComment
           if (localObject == null) {
             paramIntent = "";
           }
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_c_of_type_JavaLangString = paramIntent;
+          this.a.f = paramIntent;
         }
         if (localBundle.containsKey("contentIntentKeyForVideoEditWithEmo"))
         {
           paramIntent = localBundle.getString("contentIntentKeyForVideoEditWithEmo");
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewExtendEditText.setText(paramIntent);
+          this.e.setText(paramIntent);
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Int = localBundle.getInt("extra_key_font_id", -1);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_c_of_type_Int = localBundle.getInt("extra_key_font_format_type");
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_d_of_type_JavaLangString = localBundle.getString("extra_key_font_url");
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_d_of_type_Int = localBundle.getInt("extra_key_super_font_id", -1);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_e_of_type_JavaLangString = localBundle.getString("extra_key_super_font_info");
-        g();
+        this.a.l = localBundle.getInt("extra_key_font_id", -1);
+        this.a.m = localBundle.getInt("extra_key_font_format_type");
+        this.a.n = localBundle.getString("extra_key_font_url");
+        this.a.o = localBundle.getInt("extra_key_super_font_id", -1);
+        this.a.p = localBundle.getString("extra_key_super_font_info");
+        c();
       }
     }
   }
@@ -508,18 +508,18 @@ public class QzoneEditPicturePartComment
       {
         if (paramInt != 5)
         {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+          this.c.setVisibility(8);
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        this.c.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.c.setVisibility(8);
       return;
     }
-    paramObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    paramObject = this.c;
     paramInt = i;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_c_of_type_Boolean) {
+    if (this.a.i) {
       paramInt = 0;
     }
     paramObject.setVisibility(paramInt);
@@ -529,81 +529,81 @@ public class QzoneEditPicturePartComment
   {
     if (paramMessage.what != 11)
     {
-      this.jdField_a_of_type_Int = paramMessage.arg1;
+      this.h = paramMessage.arg1;
       return super.a(paramMessage);
     }
-    this.jdField_a_of_type_Long = ((Long)paramMessage.obj).longValue();
+    this.v = ((Long)paramMessage.obj).longValue();
     return true;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaLangString = UgcSettingUtil.getPrivacyDescriptionForShuoShuo(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_JavaLangString);
+    this.b = UgcSettingUtil.getPrivacyDescriptionForShuoShuo(this.a.c);
+    this.f.setText(this.b);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Long > System.currentTimeMillis()) {
+    if (this.v > System.currentTimeMillis()) {
       return;
     }
     int i = paramView.getId();
     Bundle localBundle;
     Object localObject;
     Iterator localIterator;
-    if (i == 2131367016)
+    if (i == 2131433464)
     {
-      paramView = QzoneConfig.getInstance().getConfig("H5Url", "UgcPermitSetting", "https://h5.qzone.qq.com/ugc/setting?_wv=3&type=mood&uin={uin}&qua={qua}&_proxy=1").replace("{uin}", QQStoryContext.a().a()).replace("{qua}", QUA.getQUA3());
-      ((QzoneEditPicturePartManager)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager).a(3004);
+      paramView = QzoneConfig.getInstance().getConfig("H5Url", "UgcPermitSetting", "https://h5.qzone.qq.com/ugc/setting?_wv=3&type=mood&uin={uin}&qua={qua}&_proxy=1").replace("{uin}", QQStoryContext.a().g()).replace("{qua}", QUA.getQUA3());
+      ((QzoneEditPicturePartManager)this.t).a(3004);
       localBundle = new Bundle();
-      localBundle.putInt("permission_code", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      localBundle.putInt("permission_code", this.a.c);
+      if ((this.a.b != null) && (this.a.b.size() > 0))
       {
-        localBundle.putStringArrayList("uin_list", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList);
-        localObject = new ArrayList(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.size());
-        localIterator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localBundle.putStringArrayList("uin_list", this.a.b);
+        localObject = new ArrayList(this.a.b.size());
+        localIterator = this.a.b.iterator();
         while (localIterator.hasNext()) {
           ((ArrayList)localObject).add(a((String)localIterator.next()));
         }
         localBundle.putStringArrayList("key_nicknames", (ArrayList)localObject);
       }
-      if ((a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_JavaLangString))) {
-        localBundle.putString("key_setting_raw_json", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_JavaLangString);
+      if ((a(this.a.c)) && (!TextUtils.isEmpty(this.a.e))) {
+        localBundle.putString("key_setting_raw_json", this.a.e);
       }
-      QZoneHelper.forwardToBrowser((BaseActivity)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi, paramView, 1, localBundle, "");
+      QZoneHelper.forwardToBrowser((BaseActivity)this.u, paramView, 1, localBundle, "");
       return;
     }
-    if (i == 2131366997)
+    if (i == 2131433445)
     {
-      ((QzoneEditPicturePartManager)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager).a(3001);
+      ((QzoneEditPicturePartManager)this.t).a(3001);
       paramView = QZoneHelper.UserInfo.getInstance();
       localBundle = new Bundle();
-      localBundle.putInt("permission_code", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      localBundle.putInt("permission_code", this.a.c);
+      if ((this.a.b != null) && (this.a.b.size() > 0))
       {
-        localBundle.putStringArrayList("uin_list", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList);
-        localObject = new ArrayList(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.size());
-        localIterator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localBundle.putStringArrayList("uin_list", this.a.b);
+        localObject = new ArrayList(this.a.b.size());
+        localIterator = this.a.b.iterator();
         while (localIterator.hasNext()) {
           ((ArrayList)localObject).add(a((String)localIterator.next()));
         }
         localBundle.putStringArrayList("key_nicknames", (ArrayList)localObject);
       }
-      if ((a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Int)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_JavaLangString))) {
-        localBundle.putString("key_setting_raw_json", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_JavaLangString);
+      if ((a(this.a.c)) && (!TextUtils.isEmpty(this.a.e))) {
+        localBundle.putString("key_setting_raw_json", this.a.e);
       }
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
       }
       localObject = new Bundle();
       ((Bundle)localObject).putBoolean("key_at_click_hide_keyboard", true);
-      QZoneHelper.forwardToVideoEditActionPanel((BaseActivity)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi, paramView, 1009, "", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_c_of_type_JavaLangString, "", "", 0, this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Boolean ^ true, 1, 0, 0, 0, "", 10000, localBundle, this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartManager.jdField_d_of_type_Int, true, (Bundle)localObject);
+      QZoneHelper.forwardToVideoEditActionPanel((BaseActivity)this.u, paramView, 1009, "", this.a.f, "", "", 0, this.a.h ^ true, 1, 0, 0, 0, "", 10000, localBundle, this.a.h, this.a.g, this.a.l, this.a.o, true, (Bundle)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPicturePartComment
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ import java.util.UUID;
 
 public abstract class FileUpload
 {
-  private final int jdField_a_of_type_Int;
-  protected AppInterface a;
-  final String jdField_a_of_type_JavaLangString;
+  final String a;
+  protected AppInterface b;
+  private final int c;
   
   protected FileUpload(AppInterface paramAppInterface, int paramInt, long paramLong)
   {
@@ -27,9 +27,9 @@ public abstract class FileUpload
     localStringBuilder.append(paramInt);
     localStringBuilder.append("_");
     localStringBuilder.append(paramLong);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = localStringBuilder.toString();
+    this.c = paramInt;
+    this.b = paramAppInterface;
   }
   
   public static void a(AppInterface paramAppInterface)
@@ -58,16 +58,16 @@ public abstract class FileUpload
     finally {}
   }
   
-  protected boolean a(String paramString, FileUpload.UploadCallback paramUploadCallback)
+  protected boolean b(String paramString, FileUpload.UploadCallback paramUploadCallback)
   {
     long l = new File(paramString).length();
-    String str = ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    String str = ARCloudFileUpload.a(this.b);
     if (l == 0L)
     {
       paramUploadCallback.a(-10001, str, "", null);
       return false;
     }
-    Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    Object localObject = a(this.a, this.b);
     if ((localObject != null) && (localObject.length != 0))
     {
       byte[] arrayOfByte = ARCloudFileUpload.a(paramString);
@@ -77,12 +77,12 @@ public abstract class FileUpload
         Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
         localCommFileExtReq.uint32_action_type.set(0);
         localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-        localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, local1, localCommFileExtReq.toByteArray());
-        int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
+        localObject = new Transaction(this.b.getCurrentAccountUin(), this.c, paramString, 0, (byte[])localObject, arrayOfByte, local1, localCommFileExtReq.toByteArray());
+        int i = this.b.getHwEngine().submitTransactionTask((Transaction)localObject);
         if (i != 0) {
           paramUploadCallback.a(i, str, "", null);
         }
-        paramUploadCallback = this.jdField_a_of_type_JavaLangString;
+        paramUploadCallback = this.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("requestToUpload, localFile[");
         ((StringBuilder)localObject).append(paramString);

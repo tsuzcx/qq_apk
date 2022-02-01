@@ -15,20 +15,20 @@ class LocationShareTipsBar$3
   
   public void onViewDetachedFromWindow(View paramView)
   {
-    if (LocationShareTipsBar.a(this.a) != null) {
-      LocationShareTipsBar.a(this.a).destory();
+    if (LocationShareTipsBar.b(this.a) != null) {
+      LocationShareTipsBar.b(this.a).destory();
     }
     if (LocationShareTipsBar.a(this.a) != null)
     {
       LocationShareTipsBar.a(this.a).c();
       LocationShareTipsBar.a(this.a, null);
     }
-    LocationShareTipsBar.a(this.a).removeOnAttachStateChangeListener(this);
+    LocationShareTipsBar.c(this.a).removeOnAttachStateChangeListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.LocationShareTipsBar.3
  * JD-Core Version:    0.7.0.1
  */

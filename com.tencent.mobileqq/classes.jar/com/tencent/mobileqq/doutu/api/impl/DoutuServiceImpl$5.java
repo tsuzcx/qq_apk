@@ -12,20 +12,20 @@ class DoutuServiceImpl$5
   {
     if (this.this$0.mDoutuAdapter != null)
     {
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() >= 0))
+      if ((this.a) && (this.b.size() >= 0))
       {
-        this.this$0.mDoutuAdapter.a(this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Long);
+        this.this$0.mDoutuAdapter.a(this.b, this.c, this.d);
         return;
       }
-      if (this.b) {
-        this.this$0.mDoutuAdapter.a(this.jdField_a_of_type_Long);
+      if (this.c) {
+        this.this$0.mDoutuAdapter.a(this.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.api.impl.DoutuServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

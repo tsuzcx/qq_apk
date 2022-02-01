@@ -17,93 +17,12 @@ import org.json.JSONObject;
 
 public class FriendSortHelper
 {
-  private static float jdField_a_of_type_Float = 0.85F;
-  private static FriendSortConfig jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig;
+  private static FriendSortConfig a;
+  private static float b = 0.85F;
   
   public static float a()
   {
-    return jdField_a_of_type_Float;
-  }
-  
-  private long a(String paramString, int paramInt)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)AssistantUtils.a().getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      if (localRecentUserProxy != null)
-      {
-        paramString = localRecentUserProxy.b(paramString, paramInt);
-        if (paramString != null) {
-          return paramString.lastmsgtime;
-        }
-      }
-    }
-    return 0L;
-  }
-  
-  private FriendSortConfig a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig == null)
-    {
-      jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig = a(AssistantUtils.a().getSharedPreferences("qq_assistant_sp_key", 0).getString("FriendSort", ""));
-      if (jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig == null) {
-        jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig = new FriendSortConfig();
-      }
-    }
-    return jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig;
-  }
-  
-  public static FriendSortConfig a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (a(paramString))) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        localObject = new FriendSortConfig();
-        ((FriendSortConfig)localObject).jdField_a_of_type_Float = Float.valueOf(paramString.getString("recognitionWeight")).floatValue();
-        ((FriendSortConfig)localObject).b = Float.valueOf(paramString.getString("messageTime")).floatValue();
-        ((FriendSortConfig)localObject).c = Float.valueOf(paramString.getString("topFriend")).floatValue();
-        ((FriendSortConfig)localObject).d = Float.valueOf(paramString.getString("careFriend")).floatValue();
-        jdField_a_of_type_ComTencentMobileqqQassistantConfigFriendSortConfig = (FriendSortConfig)localObject;
-        return localObject;
-      }
-      catch (Exception paramString)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parseContent exception :");
-        ((StringBuilder)localObject).append(paramString.getMessage());
-        AssistantUtils.a("FriendSortHelper", ((StringBuilder)localObject).toString());
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parseContent exception :");
-        ((StringBuilder)localObject).append(paramString.getMessage());
-        AssistantUtils.a("FriendSortHelper", ((StringBuilder)localObject).toString());
-      }
-    }
-    return null;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        jdField_a_of_type_Float = Float.parseFloat(paramString);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("parseFriendConfidence exception :");
-        localStringBuilder.append(paramString.getMessage());
-        AssistantUtils.a("FriendSortHelper", localStringBuilder.toString());
-        return;
-      }
-    }
-    AssistantUtils.a("FriendSortHelper", "parseFriendConfidence confidence is null");
+    return b;
   }
   
   public static boolean a(String paramString)
@@ -128,11 +47,11 @@ public class FriendSortHelper
     boolean bool1 = bool2;
     if (!bool3)
     {
-      RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)AssistantUtils.a().getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+      RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)AssistantUtils.c().getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
       bool1 = bool2;
       if (localRecentUserProxy != null)
       {
-        paramString = localRecentUserProxy.b(paramString, paramInt);
+        paramString = localRecentUserProxy.c(paramString, paramInt);
         bool1 = bool2;
         if (paramString != null)
         {
@@ -144,6 +63,67 @@ public class FriendSortHelper
       }
     }
     return bool1;
+  }
+  
+  private long b(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)AssistantUtils.c().getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+      if (localRecentUserProxy != null)
+      {
+        paramString = localRecentUserProxy.c(paramString, paramInt);
+        if (paramString != null) {
+          return paramString.lastmsgtime;
+        }
+      }
+    }
+    return 0L;
+  }
+  
+  private FriendSortConfig b()
+  {
+    if (a == null)
+    {
+      a = b(AssistantUtils.d().getSharedPreferences("qq_assistant_sp_key", 0).getString("FriendSort", ""));
+      if (a == null) {
+        a = new FriendSortConfig();
+      }
+    }
+    return a;
+  }
+  
+  public static FriendSortConfig b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (a(paramString))) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        localObject = new FriendSortConfig();
+        ((FriendSortConfig)localObject).a = Float.valueOf(paramString.getString("recognitionWeight")).floatValue();
+        ((FriendSortConfig)localObject).b = Float.valueOf(paramString.getString("messageTime")).floatValue();
+        ((FriendSortConfig)localObject).c = Float.valueOf(paramString.getString("topFriend")).floatValue();
+        ((FriendSortConfig)localObject).d = Float.valueOf(paramString.getString("careFriend")).floatValue();
+        a = (FriendSortConfig)localObject;
+        return localObject;
+      }
+      catch (Exception paramString)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseContent exception :");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        AssistantUtils.a("FriendSortHelper", ((StringBuilder)localObject).toString());
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseContent exception :");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        AssistantUtils.a("FriendSortHelper", ((StringBuilder)localObject).toString());
+      }
+    }
+    return null;
   }
   
   private List<FriendItemInfo> b(List<FriendItemInfo> paramList)
@@ -160,7 +140,7 @@ public class FriendSortHelper
       int j = 0;
       int i = 0;
       while (((Iterator)localObject).hasNext()) {
-        if (((FriendItemInfo)((Iterator)localObject).next()).jdField_a_of_type_Long > 0L) {
+        if (((FriendItemInfo)((Iterator)localObject).next()).g > 0L) {
           i += 1;
         }
       }
@@ -171,10 +151,10 @@ public class FriendSortHelper
       {
         localObject = (FriendItemInfo)paramList.get(i);
         j = k - i - 1;
-        if ((((FriendItemInfo)localObject).jdField_a_of_type_Long > 0L) && (j > 0)) {
-          ((FriendItemInfo)localObject).b = (j * 1.0F / k);
+        if ((((FriendItemInfo)localObject).g > 0L) && (j > 0)) {
+          ((FriendItemInfo)localObject).i = (j * 1.0F / k);
         } else {
-          ((FriendItemInfo)localObject).b = 0.0F;
+          ((FriendItemInfo)localObject).i = 0.0F;
         }
         i += 1;
       }
@@ -184,11 +164,31 @@ public class FriendSortHelper
     return null;
   }
   
+  public static void c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        b = Float.parseFloat(paramString);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseFriendConfidence exception :");
+        localStringBuilder.append(paramString.getMessage());
+        AssistantUtils.a("FriendSortHelper", localStringBuilder.toString());
+        return;
+      }
+    }
+    AssistantUtils.a("FriendSortHelper", "parseFriendConfidence confidence is null");
+  }
+  
   private List<FriendItemInfo> d(List<FriendItemInfo> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      FriendSortConfig localFriendSortConfig = a();
+      FriendSortConfig localFriendSortConfig = b();
       if (localFriendSortConfig == null)
       {
         AssistantUtils.a("FriendSortHelper", "computeTotalScore sortConfig is null");
@@ -198,7 +198,7 @@ public class FriendSortHelper
       while (localIterator.hasNext())
       {
         FriendItemInfo localFriendItemInfo = (FriendItemInfo)localIterator.next();
-        localFriendItemInfo.e = (localFriendSortConfig.jdField_a_of_type_Float * localFriendItemInfo.jdField_a_of_type_Float + localFriendSortConfig.b * localFriendItemInfo.b + localFriendSortConfig.c * localFriendItemInfo.c + localFriendSortConfig.d * localFriendItemInfo.d);
+        localFriendItemInfo.l = (localFriendSortConfig.a * localFriendItemInfo.h + localFriendSortConfig.b * localFriendItemInfo.i + localFriendSortConfig.c * localFriendItemInfo.j + localFriendSortConfig.d * localFriendItemInfo.k);
       }
       return paramList;
     }
@@ -224,7 +224,7 @@ public class FriendSortHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.FriendSortHelper
  * JD-Core Version:    0.7.0.1
  */

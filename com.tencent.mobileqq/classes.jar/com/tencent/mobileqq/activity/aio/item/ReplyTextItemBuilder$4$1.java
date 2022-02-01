@@ -9,12 +9,12 @@ class ReplyTextItemBuilder$4$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder$SourceMessagePulledCallBack.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
+    this.this$0.c.a(this.this$0.d, this.this$0.b, this.this$0.e, this.this$0.a, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.4.1
  * JD-Core Version:    0.7.0.1
  */

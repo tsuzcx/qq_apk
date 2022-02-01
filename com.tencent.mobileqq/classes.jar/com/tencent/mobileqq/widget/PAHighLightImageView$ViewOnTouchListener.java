@@ -9,13 +9,13 @@ import com.tencent.qphone.base.util.QLog;
 public class PAHighLightImageView$ViewOnTouchListener
   implements View.OnTouchListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
+  PAHighLightImageView a;
+  Context b;
   
   public PAHighLightImageView$ViewOnTouchListener(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramPAHighLightImageView;
+    this.b = paramContext;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -27,7 +27,7 @@ public class PAHighLightImageView$ViewOnTouchListener
       paramView.append(paramMotionEvent.getAction());
       QLog.d("PAHighLightImageView", 2, paramView.toString());
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131373227);
+    paramView = this.a.getTag(2131440836);
     if (paramView == null) {
       return false;
     }
@@ -45,11 +45,11 @@ public class PAHighLightImageView$ViewOnTouchListener
     }
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
+      this.a.a(this.b, bool);
       return false;
     }
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
+      this.a.a();
     }
     label129:
     return false;
@@ -57,7 +57,7 @@ public class PAHighLightImageView$ViewOnTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAHighLightImageView.ViewOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

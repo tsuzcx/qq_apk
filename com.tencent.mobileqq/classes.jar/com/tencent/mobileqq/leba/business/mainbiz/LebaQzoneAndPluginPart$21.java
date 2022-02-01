@@ -30,13 +30,13 @@ class LebaQzoneAndPluginPart$21
       QLog.d("UndealCount.", 2, localStringBuilder.toString());
     }
     if (paramBoolean1) {
-      this.a.b();
+      this.a.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.21
  * JD-Core Version:    0.7.0.1
  */

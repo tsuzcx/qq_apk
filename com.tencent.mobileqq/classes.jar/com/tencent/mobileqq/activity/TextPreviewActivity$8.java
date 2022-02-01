@@ -38,23 +38,23 @@ class TextPreviewActivity$8
       ((StringBuilder)localObject).append(paramDownloadTask);
       QLog.d("TextPreviewActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramDownloadTask.b()) {
+    if (paramDownloadTask.f()) {
       return;
     }
-    if (paramDownloadTask.a() == -1)
+    if (paramDownloadTask.e() == -1)
     {
       paramDownloadTask = new Message();
       paramDownloadTask.what = 17;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
+      this.a.E.sendMessage(paramDownloadTask);
       return;
     }
-    paramDownloadTask = this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIFontManagerService.getFontNameDrawable(this.a.e);
+    paramDownloadTask = this.a.D.getFontNameDrawable(this.a.F);
     if (paramDownloadTask != null)
     {
       localObject = new Message();
       ((Message)localObject).what = 18;
       ((Message)localObject).obj = paramDownloadTask;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.a.E.sendMessage((Message)localObject);
     }
   }
   
@@ -72,7 +72,7 @@ class TextPreviewActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

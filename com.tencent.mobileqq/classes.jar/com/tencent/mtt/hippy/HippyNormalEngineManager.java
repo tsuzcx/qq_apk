@@ -6,17 +6,12 @@ import com.tencent.mtt.hippy.common.ThreadExecutor;
 public final class HippyNormalEngineManager
   extends HippyEngineManagerImpl
 {
-  private Object mLock = new Object();
+  private final Object mLock = new Object();
   private volatile ThreadExecutor mThreadExecutor;
   
   HippyNormalEngineManager(HippyEngine.EngineInitParams paramEngineInitParams, HippyBundleLoader paramHippyBundleLoader)
   {
     super(paramEngineInitParams, paramHippyBundleLoader);
-  }
-  
-  public void destroyEngine()
-  {
-    super.destroyEngine();
   }
   
   public int getBridgeType()
@@ -71,7 +66,7 @@ public final class HippyNormalEngineManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyNormalEngineManager
  * JD-Core Version:    0.7.0.1
  */

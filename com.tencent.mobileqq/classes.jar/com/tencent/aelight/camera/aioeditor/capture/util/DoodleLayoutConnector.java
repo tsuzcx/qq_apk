@@ -6,44 +6,16 @@ import java.lang.ref.WeakReference;
 
 public class DoodleLayoutConnector
 {
-  private static DoodleLayoutConnector jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilDoodleLayoutConnector;
-  private WeakReference<DoodleLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private static DoodleLayoutConnector a;
   private WeakReference<DoodleLayout> b;
+  private WeakReference<DoodleLayout> c;
   
   public static DoodleLayoutConnector a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilDoodleLayoutConnector == null) {
-      jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilDoodleLayoutConnector = new DoodleLayoutConnector();
+    if (a == null) {
+      a = new DoodleLayoutConnector();
     }
-    return jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilDoodleLayoutConnector;
-  }
-  
-  public DoodleLayout a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-      if ((localObject != null) && (((WeakReference)localObject).get() != null))
-      {
-        localObject = (DoodleLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        break label66;
-      }
-    }
-    else
-    {
-      localObject = this.b;
-      if ((localObject != null) && (((WeakReference)localObject).get() != null))
-      {
-        localObject = (DoodleLayout)this.b.get();
-        break label66;
-      }
-    }
-    Object localObject = null;
-    label66:
-    if ((localObject == null) && (QLog.isColorLevel())) {
-      QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
-    }
-    return localObject;
+    return a;
   }
   
   public void a(int paramInt)
@@ -57,10 +29,10 @@ public class DoodleLayoutConnector
     }
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.b = null;
       return;
     }
-    this.b = null;
+    this.c = null;
   }
   
   public void a(int paramInt, DoodleLayout paramDoodleLayout)
@@ -74,15 +46,43 @@ public class DoodleLayoutConnector
     }
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleLayout);
+      this.b = new WeakReference(paramDoodleLayout);
       return;
     }
-    this.b = new WeakReference(paramDoodleLayout);
+    this.c = new WeakReference(paramDoodleLayout);
+  }
+  
+  public DoodleLayout b(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      localObject = this.b;
+      if ((localObject != null) && (((WeakReference)localObject).get() != null))
+      {
+        localObject = (DoodleLayout)this.b.get();
+        break label66;
+      }
+    }
+    else
+    {
+      localObject = this.c;
+      if ((localObject != null) && (((WeakReference)localObject).get() != null))
+      {
+        localObject = (DoodleLayout)this.c.get();
+        break label66;
+      }
+    }
+    Object localObject = null;
+    label66:
+    if ((localObject == null) && (QLog.isColorLevel())) {
+      QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.util.DoodleLayoutConnector
  * JD-Core Version:    0.7.0.1
  */

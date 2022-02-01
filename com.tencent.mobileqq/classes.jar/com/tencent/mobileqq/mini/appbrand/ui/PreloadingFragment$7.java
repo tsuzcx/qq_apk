@@ -36,7 +36,7 @@ class PreloadingFragment$7
       {
         paramJSONObject = (JSONObject)localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramJSONObject = this.this$0.getString(2131718218);
+          paramJSONObject = this.this$0.getString(2131915700);
         }
         if (PreloadingFragment.access$300(this.this$0) != null)
         {
@@ -80,9 +80,9 @@ class PreloadingFragment$7
           ((LaunchParam)localObject3).reportData = ((StringBuilder)localObject4).toString();
         }
         if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
-          paramJSONObject.forceReroad = 3;
+          paramJSONObject.launchParam.forceReload = 3;
         }
-        if ((((MiniAppInfo)localObject2).clearAuths == 1) && (CommonDataAdapter.a().a() > 0L)) {
+        if ((((MiniAppInfo)localObject2).clearAuths == 1) && (CommonDataAdapter.a().c() > 0L)) {
           paramJSONObject.config.clearAuths = 0;
         }
         try
@@ -153,7 +153,7 @@ class PreloadingFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.7
  * JD-Core Version:    0.7.0.1
  */

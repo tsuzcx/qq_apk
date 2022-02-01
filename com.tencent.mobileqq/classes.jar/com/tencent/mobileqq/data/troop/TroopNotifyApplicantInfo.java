@@ -2,153 +2,153 @@ package com.tencent.mobileqq.data.troop;
 
 public class TroopNotifyApplicantInfo
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
+  private long a;
+  private int b;
+  private String c;
+  private String d;
+  private String e;
+  private int f;
+  private int g;
+  private boolean h;
+  private boolean i;
+  private boolean j = false;
   
   public TroopNotifyApplicantInfo(long paramLong, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.a = paramLong;
+    this.b = paramInt1;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramBoolean1;
+    this.i = paramBoolean2;
+    this.j = paramBoolean3;
   }
   
   public TroopNotifyApplicantInfo(long paramLong, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.a = paramLong;
+    this.b = paramInt1;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.f = paramInt2;
+    this.j = paramBoolean1;
+    this.h = paramBoolean2;
   }
   
   public TroopNotifyApplicantInfo(long paramLong, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramLong;
+    this.g = paramInt;
+    this.i = paramBoolean;
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public TroopNotifyApplicantInfo a()
-  {
-    return new TroopNotifyApplicantInfo(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.h = paramBoolean;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
+    this.i = paramBoolean;
   }
   
   public String c()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void c(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
-  public boolean c()
+  public String d()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public boolean h()
+  {
+    return this.h;
+  }
+  
+  public boolean i()
+  {
+    return this.i;
+  }
+  
+  public boolean j()
+  {
+    return this.j;
+  }
+  
+  public TroopNotifyApplicantInfo k()
+  {
+    return new TroopNotifyApplicantInfo(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.troop.TroopNotifyApplicantInfo
  * JD-Core Version:    0.7.0.1
  */

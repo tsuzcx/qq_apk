@@ -25,6 +25,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdShakeManager;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.baseui.IReadInJoyBaseAdapter;
@@ -51,27 +52,18 @@ import org.json.JSONObject;
 public class ReadInjoyADExposureManager
   implements Manager
 {
-  public static HashMap<String, Long> a;
-  public static HashSet<String> a;
-  public static ConcurrentHashMap<String, AdvertisementInfo> a;
-  public static HashMap<String, Long> b;
-  public static HashSet<String> b;
-  private int jdField_a_of_type_Int = -1;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashSet = new HashSet();
-  }
+  public static HashMap<String, Long> a = new HashMap();
+  public static HashSet<String> b = new HashSet();
+  public static ConcurrentHashMap<String, AdvertisementInfo> c = new ConcurrentHashMap();
+  public static HashMap<String, Long> d = new HashMap();
+  public static HashSet<String> e = new HashSet();
+  private QQAppInterface f;
+  private int g = -1;
   
   public ReadInjoyADExposureManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
+    this.f = paramQQAppInterface;
+    b();
   }
   
   private int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, AdvertisementInfo paramAdvertisementInfo)
@@ -85,18 +77,14 @@ public class ReadInjoyADExposureManager
     return 3;
   }
   
-  private void a()
-  {
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    ReadInjoyADVideoC2sManger.a();
-  }
-  
   private void a(Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo, AdvertisementInfo paramAdvertisementInfo)
   {
     int i = a(paramAbsBaseArticleInfo, paramAdvertisementInfo);
     paramAbsBaseArticleInfo = new HashMap();
     paramAbsBaseArticleInfo.put("ad_strategy_type", Integer.valueOf(paramAdvertisementInfo.adStrategyType));
+    if ((paramAdvertisementInfo.mAdvertisementExtInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo.l == 1035)) {
+      ((IRIJAdShakeManager)QRoute.api(IRIJAdShakeManager.class)).reportExposeLoose();
+    }
     ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramActivity).a(2).b(i).a(paramAdvertisementInfo).e(new JSONObject()).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(paramAbsBaseArticleInfo)).a(Integer.valueOf(2)).b(true));
   }
   
@@ -107,7 +95,7 @@ public class ReadInjoyADExposureManager
       if (paramAdvertisementInfo == null) {
         return;
       }
-      if (jdField_b_of_type_JavaUtilHashSet.contains(paramAdvertisementInfo.mAdTraceId))
+      if (e.contains(paramAdvertisementInfo.mAdTraceId))
       {
         if (QLog.isColorLevel())
         {
@@ -118,7 +106,7 @@ public class ReadInjoyADExposureManager
         }
         return;
       }
-      Object localObject = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.a();
+      Object localObject = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.d();
       boolean bool = false;
       if ((paramInt3 <= paramInt1) || (paramInt3 >= paramInt2))
       {
@@ -141,14 +129,14 @@ public class ReadInjoyADExposureManager
         QLog.d("ReadInjoyADExposureManager", 2, ((StringBuilder)localObject).toString());
       }
       if (bool) {
-        if (!jdField_b_of_type_JavaUtilHashMap.containsKey(paramAdvertisementInfo.mAdTraceId))
+        if (!d.containsKey(paramAdvertisementInfo.mAdTraceId))
         {
-          jdField_b_of_type_JavaUtilHashMap.put(paramAdvertisementInfo.mAdTraceId, Long.valueOf(paramIReadInJoyBaseAdapter.b()));
+          d.put(paramAdvertisementInfo.mAdTraceId, Long.valueOf(paramIReadInJoyBaseAdapter.m()));
           if (QLog.isColorLevel()) {
             QLog.d("ReadInjoyADExposureManager", 2, "checkWebProcess adVisible startTime");
           }
         }
-        else if ((jdField_b_of_type_JavaUtilHashMap.containsKey(paramAdvertisementInfo.mAdTraceId)) && (paramIReadInJoyBaseAdapter.b() - ((Long)jdField_b_of_type_JavaUtilHashMap.get(paramAdvertisementInfo.mAdTraceId)).longValue() >= 500L))
+        else if ((d.containsKey(paramAdvertisementInfo.mAdTraceId)) && (paramIReadInJoyBaseAdapter.m() - ((Long)d.get(paramAdvertisementInfo.mAdTraceId)).longValue() >= 500L))
         {
           PreloadService.b(1);
           if (QLog.isColorLevel())
@@ -158,8 +146,8 @@ public class ReadInjoyADExposureManager
             paramIReadInJoyBaseAdapter.append(paramAdvertisementInfo.mAdTraceId);
             QLog.d("ReadInjoyADExposureManager", 2, paramIReadInJoyBaseAdapter.toString());
           }
-          jdField_b_of_type_JavaUtilHashSet.add(paramAdvertisementInfo.mAdTraceId);
-          jdField_b_of_type_JavaUtilHashMap.remove(paramAdvertisementInfo.mAdTraceId);
+          e.add(paramAdvertisementInfo.mAdTraceId);
+          d.remove(paramAdvertisementInfo.mAdTraceId);
         }
       }
     }
@@ -167,7 +155,7 @@ public class ReadInjoyADExposureManager
   
   private void a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity, double paramDouble, int paramInt1, int paramInt2, AdvertisementInfo paramAdvertisementInfo, View paramView)
   {
-    ViewBase localViewBase = ((IProteusItemView)paramView).a().getVirtualView().findViewBaseByName("id_article_double_image");
+    ViewBase localViewBase = ((IProteusItemView)paramView).getContainer().getVirtualView().findViewBaseByName("id_article_double_image");
     if (!(localViewBase instanceof ReadInjoyDoubleImageView)) {
       return;
     }
@@ -181,7 +169,7 @@ public class ReadInjoyADExposureManager
       } else {
         bool = false;
       }
-      paramInt1 = paramIReadInJoyBaseAdapter.a().getPaddingTop();
+      paramInt1 = paramIReadInJoyBaseAdapter.d().getPaddingTop();
       paramInt2 = paramView.getTop() + localViewBase.getNativeView().getTop();
       i = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().heightPixels;
       int j = localViewBase.getNativeView().getHeight();
@@ -199,7 +187,7 @@ public class ReadInjoyADExposureManager
       if (paramIReadInJoyBaseAdapter[1] != 0) {
         paramInt1 = paramIReadInJoyBaseAdapter[1];
       }
-      localReadInjoyDoubleImageView.a(paramInt2 + i, paramInt1, this.jdField_a_of_type_Int, paramDouble);
+      localReadInjoyDoubleImageView.a(paramInt2 + i, paramInt1, this.g, paramDouble);
       return;
     }
     localReadInjoyDoubleImageView.a();
@@ -207,10 +195,10 @@ public class ReadInjoyADExposureManager
   
   private void a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo.mFeedType == 38) || (ReadInJoyAdUtils.m(paramAbsBaseArticleInfo))) {
+    if ((paramAbsBaseArticleInfo.mFeedType == 38) || (ReadInJoyAdUtils.n(paramAbsBaseArticleInfo))) {
       try
       {
-        paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.a().getChildAt(paramInt3 - paramInt2);
+        paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.d().getChildAt(paramInt3 - paramInt2);
         if ((paramIReadInJoyBaseAdapter instanceof IProteusItemView))
         {
           paramInt1 = paramInt3 - paramInt1;
@@ -231,11 +219,11 @@ public class ReadInjoyADExposureManager
   
   private void a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, View paramView)
   {
-    ViewBase localViewBase = ((IProteusItemView)paramView).a().getVirtualView().findViewBaseByName("id_article_brand_optimization");
+    ViewBase localViewBase = ((IProteusItemView)paramView).getContainer().getVirtualView().findViewBaseByName("id_article_brand_optimization");
     if ((localViewBase instanceof ReadInJoyAdBrandOptimizationView))
     {
       ReadInJoyAdBrandOptimizationView localReadInJoyAdBrandOptimizationView = (ReadInJoyAdBrandOptimizationView)localViewBase;
-      if ((localViewBase.getNativeView() != null) && (paramView.getTop() + localViewBase.getNativeView().getTop() <= AIOUtils.b(120.0F, paramView.getResources()) + paramIReadInJoyBaseAdapter.a().getPaddingTop())) {
+      if ((localViewBase.getNativeView() != null) && (paramView.getTop() + localViewBase.getNativeView().getTop() <= AIOUtils.b(120.0F, paramView.getResources()) + paramIReadInJoyBaseAdapter.d().getPaddingTop())) {
         localReadInJoyAdBrandOptimizationView.b();
       }
     }
@@ -264,23 +252,23 @@ public class ReadInjoyADExposureManager
               Object localObject2 = (AdvertisementInfo)localObject1;
               localObject1 = ((AdvertisementInfo)localObject2).mAdvertisementExtInfo;
               k = paramInt3 - j;
-              double d = Math.abs(paramDouble) * 100.0D;
-              if ((localObject1 != null) && (((AdvertisementExtInfo)localObject1).a()) && (k == ((AdvertisementExtInfo)localObject1).c) && (!((AdvertisementExtInfo)localObject1).jdField_a_of_type_Boolean) && (d < ((AdvertisementExtInfo)localObject1).jdField_a_of_type_Int) && (((AdvertisementInfo)localObject2).hasAddExposure) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isRepeatedValid((AdvertisementInfo)localObject2)))
+              double d1 = Math.abs(paramDouble) * 100.0D;
+              if ((localObject1 != null) && (((AdvertisementExtInfo)localObject1).a()) && (k == ((AdvertisementExtInfo)localObject1).d) && (!((AdvertisementExtInfo)localObject1).j) && (d1 < ((AdvertisementExtInfo)localObject1).b) && (((AdvertisementInfo)localObject2).hasAddExposure) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isRepeatedValid((AdvertisementInfo)localObject2)))
               {
-                ((AdvertisementExtInfo)localObject1).jdField_a_of_type_Boolean = true;
+                ((AdvertisementExtInfo)localObject1).j = true;
                 AdRequestData localAdRequestData = new AdRequestData();
-                localAdRequestData.jdField_a_of_type_Int = ((AdvertisementInfo)localObject2).mAdMaterialId;
+                localAdRequestData.a = ((AdvertisementInfo)localObject2).mAdMaterialId;
                 localAdRequestData.b = 1;
                 localAdRequestData.c = ((AdvertisementInfo)localObject2).mAdKdPos;
-                localAdRequestData.jdField_a_of_type_Long = ((AdvertisementInfo)localObject2).mAdPosID;
-                localAdRequestData.jdField_a_of_type_Boolean = true;
+                localAdRequestData.d = ((AdvertisementInfo)localObject2).mAdPosID;
+                localAdRequestData.e = true;
                 if (QLog.isColorLevel())
                 {
                   localObject2 = new StringBuilder();
                   ((StringBuilder)localObject2).append("checkADScrollAction 符合规则触发请求 distance=");
                   ((StringBuilder)localObject2).append(k);
                   ((StringBuilder)localObject2).append(",scrollSpeed=");
-                  ((StringBuilder)localObject2).append(d);
+                  ((StringBuilder)localObject2).append(d1);
                   ((StringBuilder)localObject2).append(",adExtInfo=");
                   ((StringBuilder)localObject2).append(((AdvertisementExtInfo)localObject1).toString());
                   ((StringBuilder)localObject2).append("|");
@@ -301,17 +289,18 @@ public class ReadInjoyADExposureManager
   
   private void b()
   {
-    jdField_b_of_type_JavaUtilHashMap.clear();
-    jdField_b_of_type_JavaUtilHashSet.clear();
+    a.clear();
+    b.clear();
+    ReadInjoyADVideoC2sManger.a();
   }
   
   private void b(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, View paramView)
   {
     Object localObject1 = (IProteusItemView)paramView;
-    if (((IProteusItemView)localObject1).a() == null) {
+    if (((IProteusItemView)localObject1).getContainer() == null) {
       return;
     }
-    Object localObject2 = ((IProteusItemView)localObject1).a().getVirtualView().findViewBaseByName("id_ad_expand_view");
+    Object localObject2 = ((IProteusItemView)localObject1).getContainer().getVirtualView().findViewBaseByName("id_ad_expand_view");
     if ((localObject2 instanceof ReadInJoyAdExpandCardPic)) {
       try
       {
@@ -321,19 +310,19 @@ public class ReadInjoyADExposureManager
           int i = ((ViewBase)localObject2).getNativeView().getHeight();
           Rect localRect = new Rect();
           ((ViewBase)localObject2).getNativeView().getGlobalVisibleRect(localRect);
-          float f = localRect.height() / i;
+          float f1 = localRect.height() / i;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("ReadInjoyADExposureManager.updateAdExpandCardView ");
-          ((StringBuilder)localObject2).append(f);
+          ((StringBuilder)localObject2).append(f1);
           ReadInJoyAdLog.a("ReadInjoyADExposureManager", ((StringBuilder)localObject2).toString());
           i = paramView.getTop();
           paramView = new StringBuilder();
           paramView.append("ReadInjoyADExposureManager.updateAdExpandCardView top:  ");
           paramView.append(i);
           paramView.append("  ltop:");
-          paramView.append(paramIReadInJoyBaseAdapter.a().getTop());
+          paramView.append(paramIReadInJoyBaseAdapter.d().getTop());
           paramView.append("height:");
-          paramView.append(paramIReadInJoyBaseAdapter.a().getHeight());
+          paramView.append(paramIReadInJoyBaseAdapter.d().getHeight());
           paramView.append("");
           ReadInJoyAdLog.a("ReadInjoyADExposureManager", paramView.toString());
           paramView = new StringBuilder();
@@ -341,9 +330,9 @@ public class ReadInjoyADExposureManager
           paramView.append(i);
           paramView.append("  ");
           ReadInJoyAdLog.a("ReadInjoyADExposureManager", paramView.toString());
-          if (i <= paramIReadInJoyBaseAdapter.a().getPaddingTop())
+          if (i <= paramIReadInJoyBaseAdapter.d().getPaddingTop())
           {
-            ((ReadInJoyAdExpandCardPic)localObject1).a(paramIReadInJoyBaseAdapter.a().getPaddingTop() - i);
+            ((ReadInJoyAdExpandCardPic)localObject1).a(paramIReadInJoyBaseAdapter.d().getPaddingTop() - i);
             return;
           }
         }
@@ -358,21 +347,84 @@ public class ReadInjoyADExposureManager
     }
   }
   
+  private void c()
+  {
+    d.clear();
+    e.clear();
+  }
+  
+  public int a(AdvertisementInfo paramAdvertisementInfo, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
+  {
+    if (paramIReadInJoyBaseAdapter == null) {
+      return 0;
+    }
+    List localList = paramIReadInJoyBaseAdapter.b();
+    ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.d();
+    int k = localReadInJoyXListView.getHeaderViewsCount();
+    int j = localReadInJoyXListView.getFirstVisiblePosition();
+    int m = localReadInJoyXListView.getLastVisiblePosition();
+    int i = j;
+    while (i <= m)
+    {
+      if (i >= k)
+      {
+        int n = i - k;
+        if (n < localList.size())
+        {
+          AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)localList.get(n);
+          if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(localAbsBaseArticleInfo))
+          {
+            paramIReadInJoyBaseAdapter = null;
+            if ((localAbsBaseArticleInfo instanceof AdvertisementInfo)) {
+              paramIReadInJoyBaseAdapter = (AdvertisementInfo)localAbsBaseArticleInfo;
+            }
+            if ((paramIReadInJoyBaseAdapter != null) && (paramIReadInJoyBaseAdapter.mAdTraceId.equals(paramAdvertisementInfo.mAdTraceId)))
+            {
+              paramAdvertisementInfo = localReadInJoyXListView.getChildAt(i - j);
+              i = paramAdvertisementInfo.getHeight();
+              paramIReadInJoyBaseAdapter = new Rect();
+              paramAdvertisementInfo.getGlobalVisibleRect(paramIReadInJoyBaseAdapter);
+              return paramIReadInJoyBaseAdapter.height() * 100 / i;
+            }
+          }
+        }
+      }
+      i += 1;
+    }
+    return 0;
+  }
+  
+  public long a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (a.containsKey(paramAdvertisementInfo.mAdTraceId)) {
+      return System.currentTimeMillis() - ((Long)a.get(paramAdvertisementInfo.mAdTraceId)).longValue();
+    }
+    if (b.contains(paramAdvertisementInfo.mAdTraceId)) {
+      return 1000L;
+    }
+    return 0L;
+  }
+  
+  public void a()
+  {
+    a.clear();
+  }
+  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void a(Activity paramActivity)
   {
-    Object localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject1 = c;
     if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).size() > 0))
     {
-      localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      localObject1 = c.keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         String str = (String)((Iterator)localObject1).next();
-        Object localObject2 = (AdvertisementInfo)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        Object localObject2 = (AdvertisementInfo)c.get(str);
         if ((localObject2 != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd((int)((AdvertisementInfo)localObject2).mChannelID)))
         {
           int i = a((AbsBaseArticleInfo)localObject2, (AdvertisementInfo)localObject2);
@@ -386,21 +438,21 @@ public class ReadInjoyADExposureManager
           }
         }
       }
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      c.clear();
     }
   }
   
   public void a(Context paramContext, int paramInt)
   {
-    Object localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject1 = c;
     if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).size() > 0))
     {
       localObject1 = new HashSet();
-      Iterator localIterator = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      Iterator localIterator = c.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Object localObject2 = (AdvertisementInfo)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        Object localObject2 = (AdvertisementInfo)c.get(str);
         if ((localObject2 != null) && (((AdvertisementInfo)localObject2).mChannelID == paramInt) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd((int)((AdvertisementInfo)localObject2).mChannelID)))
         {
           int i = a((AbsBaseArticleInfo)localObject2, (AdvertisementInfo)localObject2);
@@ -421,7 +473,7 @@ public class ReadInjoyADExposureManager
       while (paramContext.hasNext())
       {
         localObject1 = (String)paramContext.next();
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject1);
+        c.remove(localObject1);
       }
     }
   }
@@ -438,9 +490,9 @@ public class ReadInjoyADExposureManager
             break label687;
           }
           paramView = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0);
-          if (!jdField_a_of_type_JavaUtilHashSet.contains(paramView.innerUniqueID))
+          if (!b.contains(paramView.innerUniqueID))
           {
-            jdField_a_of_type_JavaUtilHashSet.add(paramView.innerUniqueID);
+            b.add(paramView.innerUniqueID);
             ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromArticle(paramContext, paramView, paramInt, 2);
           }
         }
@@ -462,9 +514,9 @@ public class ReadInjoyADExposureManager
           ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSmallMiniGameInfo.a(2));
           String str3 = ((StringBuilder)localObject).toString();
           localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.b;
-          if (!jdField_a_of_type_JavaUtilHashSet.contains(localObject))
+          if (!b.contains(localObject))
           {
-            jdField_a_of_type_JavaUtilHashSet.add(localObject);
+            b.add(localObject);
             AdReportExtData.Builder localBuilder = new AdReportExtData.Builder().a(501L).b(50101L).c(5010102L).d(6L).i(String.valueOf(paramInt)).b(paramAbsBaseArticleInfo.mSmallMiniGameInfo.c);
             if (!paramAbsBaseArticleInfo.mSmallMiniGameInfo.a()) {
               break label692;
@@ -477,23 +529,23 @@ public class ReadInjoyADExposureManager
           {
             int m = ((View)paramView.getParent()).getHeight();
             int n = paramView.getTop();
-            int i = ((IProteusItemView)paramView).a().getVirtualView().findViewBaseByName("id_game_container1").getNativeView().getTop();
-            int j = ((IProteusItemView)paramView).a().getVirtualView().findViewBaseByName("id_game_container2").getNativeView().getTop();
-            int k = ((IProteusItemView)paramView).a().getVirtualView().findViewBaseByName("id_game_container3").getNativeView().getTop();
+            int i = ((IProteusItemView)paramView).getContainer().getVirtualView().findViewBaseByName("id_game_container1").getNativeView().getTop();
+            int j = ((IProteusItemView)paramView).getContainer().getVirtualView().findViewBaseByName("id_game_container2").getNativeView().getTop();
+            int k = ((IProteusItemView)paramView).getContainer().getVirtualView().findViewBaseByName("id_game_container3").getNativeView().getTop();
             m = m - 200 - n;
-            if ((m > k) && (!jdField_a_of_type_JavaUtilHashSet.contains(str3)))
+            if ((m > k) && (!b.contains(str3)))
             {
-              jdField_a_of_type_JavaUtilHashSet.add(str3);
+              b.add(str3);
               ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(paramContext, paramAbsBaseArticleInfo, paramInt, 2, 2);
             }
-            if ((m > j) && (!jdField_a_of_type_JavaUtilHashSet.contains(str2)))
+            if ((m > j) && (!b.contains(str2)))
             {
-              jdField_a_of_type_JavaUtilHashSet.add(str2);
+              b.add(str2);
               ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(paramContext, paramAbsBaseArticleInfo, paramInt, 1, 2);
             }
-            if ((m > i) && (!jdField_a_of_type_JavaUtilHashSet.contains(str1)))
+            if ((m > i) && (!b.contains(str1)))
             {
-              jdField_a_of_type_JavaUtilHashSet.add(str1);
+              b.add(str1);
               ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(paramContext, paramAbsBaseArticleInfo, paramInt, 0, 2);
               return;
             }
@@ -526,9 +578,9 @@ public class ReadInjoyADExposureManager
       if (paramActivity == null) {
         return;
       }
-      localObject1 = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.a();
-      localList = paramIReadInJoyBaseAdapter.a();
-      n = paramIReadInJoyBaseAdapter.a();
+      localObject1 = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.d();
+      localList = paramIReadInJoyBaseAdapter.b();
+      n = paramIReadInJoyBaseAdapter.c();
       if (localObject1 != null)
       {
         if (localList == null) {
@@ -577,7 +629,7 @@ public class ReadInjoyADExposureManager
           }
           AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localObject1;
           int i2 = ((IReadInJoyBaseAdapterUtil)QRoute.api(IReadInJoyBaseAdapterUtil.class)).getBaseItemViewType(localAdvertisementInfo, 0);
-          localObject1 = paramIReadInJoyBaseAdapter.a().getChildAt(k - j);
+          localObject1 = paramIReadInJoyBaseAdapter.d().getChildAt(k - j);
           if ((i2 == 39) && ((localObject1 instanceof IProteusItemView)))
           {
             a(paramIReadInJoyBaseAdapter, paramActivity, paramDouble, m, i1, localAdvertisementInfo, (View)localObject1);
@@ -592,7 +644,7 @@ public class ReadInjoyADExposureManager
             a(paramIReadInJoyBaseAdapter, (View)localObject2);
             break label423;
           }
-          if ((!ReadInJoyAdUtils.t(localAdvertisementInfo)) || (!(localObject1 instanceof IProteusItemView))) {
+          if ((!ReadInJoyAdUtils.v(localAdvertisementInfo)) || (!(localObject1 instanceof IProteusItemView))) {
             break label423;
           }
           b(paramIReadInJoyBaseAdapter, (View)localObject1);
@@ -625,10 +677,10 @@ public class ReadInjoyADExposureManager
     int i;
     if ((paramIReadInJoyBaseAdapter != null) && (paramActivity != null))
     {
-      localObject1 = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.a();
-      paramActivity = paramIReadInJoyBaseAdapter.a();
+      localObject1 = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.d();
+      paramActivity = paramIReadInJoyBaseAdapter.b();
       if ((localObject1 != null) && (paramActivity != null)) {
-        i = paramIReadInJoyBaseAdapter.a();
+        i = paramIReadInJoyBaseAdapter.c();
       }
     }
     for (;;)
@@ -643,7 +695,7 @@ public class ReadInjoyADExposureManager
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("checkADPullRefreshAction 向下滑动=");
             if (paramBoolean) {
-              break label485;
+              break label486;
             }
             paramBoolean = true;
             ((StringBuilder)localObject2).append(paramBoolean);
@@ -664,10 +716,10 @@ public class ReadInjoyADExposureManager
                 {
                   localObject1 = (AdvertisementInfo)localObject2;
                   j = ((IReadInJoyBaseAdapterUtil)QRoute.api(IReadInJoyBaseAdapterUtil.class)).getBaseItemViewType((AbsBaseArticleInfo)localObject1, 0);
-                  localObject1 = paramIReadInJoyBaseAdapter.a().getChildAt(i - m);
+                  localObject1 = paramIReadInJoyBaseAdapter.d().getChildAt(i - m);
                   if ((localObject1 instanceof IProteusItemView))
                   {
-                    Object localObject3 = ((IProteusItemView)localObject1).a().getVirtualView();
+                    Object localObject3 = ((IProteusItemView)localObject1).getContainer().getVirtualView();
                     if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isSuperBackgroundAdType((AdvertisementInfo)localObject2)) && (j == 39))
                     {
                       localObject3 = ((ViewBase)localObject3).findViewBaseByName("id_article_double_image");
@@ -687,7 +739,7 @@ public class ReadInjoyADExposureManager
                         }
                         try
                         {
-                          ((ReadInjoyDoubleImageView)localObject2).a(n + i1, j, this.jdField_a_of_type_Int, 1.0D);
+                          ((ReadInjoyDoubleImageView)localObject2).a(n + i1, j, this.g, 1.0D);
                         }
                         catch (Exception paramIReadInJoyBaseAdapter)
                         {
@@ -718,24 +770,29 @@ public class ReadInjoyADExposureManager
       }
       return;
       return;
-      label485:
+      label486:
       paramBoolean = false;
     }
   }
   
   public boolean a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity)
   {
+    return a(paramIReadInJoyBaseAdapter, paramActivity, false);
+  }
+  
+  public boolean a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity, boolean paramBoolean)
+  {
     if ((paramIReadInJoyBaseAdapter != null) && (paramActivity != null))
     {
-      ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.a();
-      List localList = paramIReadInJoyBaseAdapter.a();
-      int i = paramIReadInJoyBaseAdapter.a();
+      ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.d();
+      List localList = paramIReadInJoyBaseAdapter.b();
+      int i = paramIReadInJoyBaseAdapter.c();
       if ((localReadInJoyXListView != null) && (localList != null))
       {
-        if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i)) && (System.currentTimeMillis() - paramIReadInJoyBaseAdapter.b() > ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKandianConfigAdExposureThreshold(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+        if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i)) && ((!paramBoolean) || (System.currentTimeMillis() - paramIReadInJoyBaseAdapter.m() > ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKandianConfigAdExposureThreshold(this.f))))
         {
           paramIReadInJoyBaseAdapter.b(System.currentTimeMillis());
-          paramIReadInJoyBaseAdapter.a();
+          paramIReadInJoyBaseAdapter.n();
           int i2 = localReadInJoyXListView.getHeaderViewsCount();
           int n = localReadInJoyXListView.getFirstVisiblePosition();
           int i3 = localReadInJoyXListView.getLastVisiblePosition();
@@ -760,12 +817,12 @@ public class ReadInjoyADExposureManager
                   if (localAdvertisementInfo == null) {
                     return false;
                   }
-                  if (ReadInJoyAdSwitchUtil.f(localAdvertisementInfo)) {
+                  if (ReadInJoyAdSwitchUtil.j(localAdvertisementInfo)) {
                     a(localAdvertisementInfo, n, i3, i, paramIReadInJoyBaseAdapter);
                   } else if (QLog.isColorLevel()) {
                     QLog.d("ReadInjoyADExposureManager", 2, "checkWebProcess enableCheckWebProcess : false.");
                   }
-                  if (jdField_a_of_type_JavaUtilHashSet.contains(localAdvertisementInfo.mAdTraceId))
+                  if (b.contains(localAdvertisementInfo.mAdTraceId))
                   {
                     localAdvertisementInfo.hasAddExposure = true;
                   }
@@ -778,9 +835,9 @@ public class ReadInjoyADExposureManager
                     int m;
                     if ((i1 > n) && (i1 < i3))
                     {
-                      if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localAdvertisementInfo.mAdTraceId))
+                      if (!c.containsKey(localAdvertisementInfo.mAdTraceId))
                       {
-                        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localAdvertisementInfo.mAdTraceId, localAdvertisementInfo);
+                        c.put(localAdvertisementInfo.mAdTraceId, localAdvertisementInfo);
                         if (QLog.isColorLevel())
                         {
                           localObject2 = new StringBuilder();
@@ -804,22 +861,22 @@ public class ReadInjoyADExposureManager
                       } else {
                         j = 0;
                       }
-                      float f = i4;
-                      int i5 = AdReqFreshManager.a().a();
+                      float f1 = i4;
+                      int i5 = AdReqFreshManager.a().b();
                       m = j;
-                      if (f > k * i5 / 100.0F) {
+                      if (f1 > k * i5 / 100.0F) {
                         j = 1;
                       } else {
                         j = 0;
                       }
-                      if (f > k * 0.01F) {
+                      if (f1 > k * 0.01F) {
                         k = 1;
                       } else {
                         k = 0;
                       }
-                      if ((i4 > 0) && (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localAdvertisementInfo.mAdTraceId)))
+                      if ((i4 > 0) && (!c.containsKey(localAdvertisementInfo.mAdTraceId)))
                       {
-                        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localAdvertisementInfo.mAdTraceId, localAdvertisementInfo);
+                        c.put(localAdvertisementInfo.mAdTraceId, localAdvertisementInfo);
                         if (QLog.isColorLevel())
                         {
                           localObject2 = new StringBuilder();
@@ -834,29 +891,32 @@ public class ReadInjoyADExposureManager
                     if (j != 0)
                     {
                       AdReqFreshManager.a().a(Long.valueOf(localAdvertisementInfo.mAdAid));
-                      AdExposeFreshManager.a().a(localAdvertisementInfo.scene, localAdvertisementInfo);
+                      AdExposeFreshManager.a().b(localAdvertisementInfo.scene, localAdvertisementInfo);
                     }
                     if (k != 0) {
                       a(paramActivity, (AbsBaseArticleInfo)localObject1, localAdvertisementInfo);
                     }
                     if (m == 0) {
-                      break label1112;
+                      break label1154;
                     }
-                    if (!jdField_a_of_type_JavaUtilHashMap.containsKey(localAdvertisementInfo.mAdTraceId))
+                    if (!a.containsKey(localAdvertisementInfo.mAdTraceId))
                     {
-                      jdField_a_of_type_JavaUtilHashMap.put(localAdvertisementInfo.mAdTraceId, Long.valueOf(paramIReadInJoyBaseAdapter.b()));
+                      a.put(localAdvertisementInfo.mAdTraceId, Long.valueOf(paramIReadInJoyBaseAdapter.m()));
                     }
-                    else if (paramIReadInJoyBaseAdapter.b() - ((Long)jdField_a_of_type_JavaUtilHashMap.get(localAdvertisementInfo.mAdTraceId)).longValue() > 1000L)
+                    else if (paramIReadInJoyBaseAdapter.m() - ((Long)a.get(localAdvertisementInfo.mAdTraceId)).longValue() > 1000L)
                     {
                       if (ReadInJoyAdUtils.a((int)localAdvertisementInfo.mChannelID))
                       {
                         j = a((AbsBaseArticleInfo)localObject1, localAdvertisementInfo);
                         localObject1 = new HashMap();
                         ((HashMap)localObject1).put("ad_strategy_type", Integer.valueOf(localAdvertisementInfo.adStrategyType));
+                        if ((localAdvertisementInfo.mAdvertisementExtInfo != null) && (localAdvertisementInfo.mAdvertisementExtInfo.l == 1035)) {
+                          ((IRIJAdShakeManager)QRoute.api(IRIJAdShakeManager.class)).reportExposeStrict();
+                        }
                         ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramActivity).a(2).b(j).a(Integer.valueOf(1)).a(localAdvertisementInfo).e(new JSONObject()).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson((HashMap)localObject1)));
-                        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localAdvertisementInfo.mAdTraceId))
+                        if (c.containsKey(localAdvertisementInfo.mAdTraceId))
                         {
-                          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localAdvertisementInfo.mAdTraceId);
+                          c.remove(localAdvertisementInfo.mAdTraceId);
                           if (QLog.isColorLevel())
                           {
                             localObject1 = new StringBuilder();
@@ -882,19 +942,19 @@ public class ReadInjoyADExposureManager
                         }
                       }
                       localAdvertisementInfo.hasAddExposure = true;
-                      jdField_a_of_type_JavaUtilHashSet.add(localAdvertisementInfo.mAdTraceId);
-                      jdField_a_of_type_JavaUtilHashMap.remove(localAdvertisementInfo.mAdTraceId);
+                      b.add(localAdvertisementInfo.mAdTraceId);
+                      a.remove(localAdvertisementInfo.mAdTraceId);
                     }
                     paramIReadInJoyBaseAdapter.a(localAdvertisementInfo.mAdTraceId);
-                    break label1112;
+                    break label1154;
                   }
                 }
               }
             }
-            label1112:
+            label1154:
             i += 1;
           }
-          paramIReadInJoyBaseAdapter.a(jdField_a_of_type_JavaUtilHashMap);
+          paramIReadInJoyBaseAdapter.a(a);
           return true;
         }
         return false;
@@ -906,13 +966,13 @@ public class ReadInjoyADExposureManager
   
   public void onDestroy()
   {
-    a();
     b();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.ReadInjoyADExposureManager
  * JD-Core Version:    0.7.0.1
  */

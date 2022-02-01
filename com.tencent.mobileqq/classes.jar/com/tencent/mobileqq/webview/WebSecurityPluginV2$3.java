@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.webview;
 
 import com.tencent.biz.SoftKeyboardObserver.OnSoftKeyboardToggledListener;
-import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
@@ -13,32 +12,32 @@ import mqq.app.AppRuntime;
 class WebSecurityPluginV2$3
   implements SoftKeyboardObserver.OnSoftKeyboardToggledListener
 {
-  WebSecurityPluginV2$3(WebSecurityPluginV2 paramWebSecurityPluginV2, CustomWebView paramCustomWebView) {}
+  WebSecurityPluginV2$3(WebSecurityPluginV2 paramWebSecurityPluginV2) {}
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.mRuntime.a();
+    Object localObject = this.a.mRuntime.e();
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.mRuntime.a() != null) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.mRuntime.a().isLogin()) && (WebSecurityPluginV2.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getUrl())))
+      if ((this.a.mRuntime.c() != null) && (!this.a.mRuntime.c().isLogin()))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("WebSecurityPluginV2", 2, new Object[] { "not login and url in whiteList, mShouldShowInputWarning=", Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.a) });
+          QLog.d("WebSecurityPluginV2", 2, new Object[] { "not login and url in whiteList, mShouldShowInputWarning=", Boolean.valueOf(this.a.c) });
         }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.a = false;
+        this.a.c = false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.a) {
+      if (this.a.c) {
         if ((localObject != null) && (((WebUiUtils.WebViewProviderInterface)localObject).getWebTitleBarInterface() != null))
         {
-          ((WebUiUtils.WebViewProviderInterface)localObject).getWebTitleBarInterface().a(true, 1, 2131691458);
+          ((WebUiUtils.WebViewProviderInterface)localObject).getWebTitleBarInterface().a(true, 1, 2131888416);
         }
         else
         {
-          localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691458, 1);
-          ((QQToast)localObject).b(((QQToast)localObject).b());
+          localObject = QQToast.makeText(BaseApplicationImpl.getContext(), 1, 2131888416, 1);
+          ((QQToast)localObject).show(((QQToast)localObject).getTitleBarHeight());
         }
       }
-      WebSecurityPluginV2.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2);
+      WebSecurityPluginV2.a(this.a);
       return;
     }
     if ((localObject != null) && (((WebUiUtils.WebViewProviderInterface)localObject).getWebTitleBarInterface() != null)) {
@@ -48,7 +47,7 @@ class WebSecurityPluginV2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebSecurityPluginV2.3
  * JD-Core Version:    0.7.0.1
  */

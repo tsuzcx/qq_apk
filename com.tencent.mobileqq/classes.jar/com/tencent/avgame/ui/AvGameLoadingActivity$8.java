@@ -17,26 +17,26 @@ class AvGameLoadingActivity$8
     if (paramInt == 1)
     {
       paramDialogInterface.cancel();
-      if (this.jdField_a_of_type_MqqAppAppRuntime != null)
+      if (this.a != null)
       {
         Object localObject2 = null;
         Object localObject1 = null;
-        AvGameLoadingActivity.d(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, true);
-        AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 5);
+        AvGameLoadingActivity.d(this.d, true);
+        AvGameLoadingActivity.b(this.d, 5);
         paramDialogInterface = localObject2;
-        if (!this.jdField_a_of_type_Boolean) {
-          if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 3)
+        if (!this.b) {
+          if (AvGameLoadingActivity.d(this.d) != 3)
           {
             paramDialogInterface = localObject2;
-            if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 5) {}
+            if (AvGameLoadingActivity.d(this.d) != 5) {}
           }
           else
           {
             paramDialogInterface = (DialogInterface)localObject1;
-            if (AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != null)
+            if (AvGameLoadingActivity.n(this.d) != null)
             {
-              AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 6);
-              paramDialogInterface = AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
+              AvGameLoadingActivity.b(this.d, 6);
+              paramDialogInterface = AvGameLoadingActivity.n(this.d);
             }
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("join failed alert DIALOG change to troop  with  troop UIN ");
@@ -44,24 +44,24 @@ class AvGameLoadingActivity$8
             QLog.e("AvGameLoadingActivity", 2, ((StringBuilder)localObject1).toString());
           }
         }
-        localObject1 = this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity;
-        AvGameLoadingActivity.a((AvGameLoadingActivity)localObject1, AvGameLoadingActivity.c((AvGameLoadingActivity)localObject1), paramDialogInterface);
+        localObject1 = this.d;
+        AvGameLoadingActivity.a((AvGameLoadingActivity)localObject1, AvGameLoadingActivity.o((AvGameLoadingActivity)localObject1), paramDialogInterface);
         return;
       }
       QLog.e("AvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.b) {
         i = -103;
       }
       AVGameNodeReportUtil.b(i);
-      AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
+      AvGameLoadingActivity.a(this.d, false, this.c);
       return;
     }
     paramDialogInterface.cancel();
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       i = -103;
     }
     AVGameNodeReportUtil.b(i);
-    AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
+    AvGameLoadingActivity.a(this.d, false, this.c);
   }
 }
 

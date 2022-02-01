@@ -18,30 +18,30 @@ class VoiceTextSendViewHelper$1
   {
     if (paramBoolean)
     {
-      if (this.a.a().e()) {
+      if (this.a.d().e()) {
         this.a.a(true);
       }
       VoiceTextSendViewHelper.a(this.a, true);
-      VoiceTextSendViewHelper.a(this.a).setText(2131718764);
-      this.a.a().c(true);
-      VoiceTextSendViewHelper.a(this.a);
+      VoiceTextSendViewHelper.a(this.a).setText(2131916270);
+      this.a.e().c(true);
+      VoiceTextSendViewHelper.b(this.a);
     }
     else
     {
       VoiceTextSendViewHelper.a(this.a, false);
-      VoiceTextSendViewHelper.a(this.a).setText(2131718762);
-      if ((this.a.a().f()) && (StringUtil.a(this.a.a.a()))) {
+      VoiceTextSendViewHelper.a(this.a).setText(2131916268);
+      if ((this.a.d().f()) && (StringUtil.isEmpty(this.a.c.a()))) {
         this.a.a(false);
       }
-      this.a.a().c(false);
-      VoiceTextSendViewHelper.b(this.a);
+      this.a.e().c(false);
+      VoiceTextSendViewHelper.c(this.a);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSendViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,6 +21,11 @@ public class QCircleFriendEntity
     this.mGroupName = paramString2;
   }
   
+  protected Object clone()
+  {
+    return super.clone();
+  }
+  
   public int getGroupFlag()
   {
     return this.mGroupFlag;
@@ -63,7 +68,7 @@ public class QCircleFriendEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.relation.entitys.QCircleFriendEntity
  * JD-Core Version:    0.7.0.1
  */

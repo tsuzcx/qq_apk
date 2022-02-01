@@ -7,7 +7,7 @@ class LiteActivity$9$1
   
   public void run()
   {
-    LiteActivity.a(this.a.a.a);
+    LiteActivity.a(this.a.a.f);
   }
 }
 

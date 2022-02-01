@@ -86,8 +86,8 @@ public class StatModule
     localHashMap.put("A85", localObject);
     localHashMap.put("A9", Build.BRAND);
     localHashMap.put("A14", localf.D());
-    localHashMap.put("A20", localf.J());
-    localHashMap.put("A69", localf.K());
+    localHashMap.put("A20", localf.I());
+    localHashMap.put("A69", localf.J());
     if (b(localHashMap)) {
       com.tencent.beacon.a.d.a.a().edit().putString("LAUEVE_DENGTA", com.tencent.beacon.base.util.b.c());
     }
@@ -104,7 +104,7 @@ public class StatModule
       return;
     }
     this.d = ((StrategyModule)BeaconModule.a.get(ModuleName.STRATEGY)).b();
-    this.c = this.d.j();
+    this.c = this.d.k();
     ((Application)this.a).registerActivityLifecycleCallbacks(new com.tencent.beacon.d.a.c(this));
     com.tencent.beacon.a.a.b.a().a(2, this);
     com.tencent.beacon.a.a.b.a().a(10, this);

@@ -13,6 +13,8 @@ public class TAVEffectsModel
   public List<TAVEffectAutomaticEffect> lyricsStyles;
   @SerializedName("overlays")
   public List<TAVEffectAutomaticEffect> overlayEffects;
+  @SerializedName("painting")
+  public List<TAVEffectAutomaticEffect> paintings;
   @SerializedName("text")
   public List<TAVEffectAutomaticEffect> textStickers;
   
@@ -43,6 +45,13 @@ public class TAVEffectsModel
     if (!CollectionUtil.isEmptyList(this.textStickers))
     {
       localIterator = this.textStickers.iterator();
+      while (localIterator.hasNext()) {
+        ((TAVEffectAutomaticEffect)localIterator.next()).fileDir = paramString;
+      }
+    }
+    if (!CollectionUtil.isEmptyList(this.paintings))
+    {
+      localIterator = this.paintings.iterator();
       while (localIterator.hasNext()) {
         ((TAVEffectAutomaticEffect)localIterator.next()).fileDir = paramString;
       }

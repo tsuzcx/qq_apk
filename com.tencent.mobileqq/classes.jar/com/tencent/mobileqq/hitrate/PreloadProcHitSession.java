@@ -14,12 +14,12 @@ import mqq.app.MobileQQ;
 
 public class PreloadProcHitSession
 {
-  public HashMap<String, String> a;
-  protected boolean a;
   public String b;
-  public boolean b;
   public String c;
   public String d;
+  protected boolean e;
+  public HashMap<String, String> f = new HashMap();
+  public boolean g;
   
   public PreloadProcHitSession(String paramString1, String paramString2)
   {
@@ -28,11 +28,10 @@ public class PreloadProcHitSession
   
   protected PreloadProcHitSession(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.b = paramString1;
     this.c = paramString2;
     this.d = paramString3;
-    c();
+    d();
   }
   
   public static boolean a(String paramString)
@@ -56,21 +55,13 @@ public class PreloadProcHitSession
     return false;
   }
   
-  protected String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      d();
+    if (this.e) {
+      e();
     }
     PreloadProcHitMgr.a(this);
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     if (!(this instanceof PreloadProcHitPluginSessionProc)) {
       PreloadProcHitMgr.e(this.d);
     }
@@ -78,37 +69,45 @@ public class PreloadProcHitSession
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.g = true;
     if (!(this instanceof PreloadProcHitPluginSessionProc)) {
       PreloadProcHitMgr.d(this.d);
     }
   }
   
-  void c()
+  protected String c()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
+  }
+  
+  void d()
+  {
+    synchronized (this.f)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put("loss", "0");
-      this.jdField_a_of_type_JavaUtilHashMap.put("benefit", "0");
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
+      this.f.put("loss", "0");
+      this.f.put("benefit", "0");
+      this.e = false;
+      this.g = false;
       return;
     }
   }
   
-  public void d()
+  public void e()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return;
     }
     Object localObject3 = MobileQQ.getMobileQQ();
     HashMap localHashMap = new HashMap();
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.f)
     {
-      localHashMap.putAll(this.jdField_a_of_type_JavaUtilHashMap);
+      localHashMap.putAll(this.f);
       if (localObject3 != null)
       {
         ??? = ((MobileQQ)localObject3).getApplicationContext();
@@ -117,21 +116,21 @@ public class PreloadProcHitSession
         {
           localObject3 = ((AppRuntime)localObject3).getAccount();
           String str = this.c;
-          if (this.jdField_b_of_type_Boolean) {
+          if (this.g) {
             StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject3, str, true, 0L, 0L, localHashMap, null);
           } else {
             StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject3, str, false, 0L, 0L, localHashMap, null);
           }
         }
       }
-      c();
+      d();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hitrate.PreloadProcHitSession
  * JD-Core Version:    0.7.0.1
  */

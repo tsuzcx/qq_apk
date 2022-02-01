@@ -42,7 +42,102 @@ public class MultiAIOStarter
     return 0;
   }
   
-  public static Bitmap a(Context paramContext)
+  public static void a(int paramInt)
+  {
+    try
+    {
+      ((Vibrator)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("vibrator")).vibrate(paramInt);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MultiAIOStarter", 2, "vibratorExecute Vibrator exception.");
+      localException.printStackTrace();
+    }
+  }
+  
+  private static void a(BaseActivity paramBaseActivity, MultiAioContext paramMultiAioContext)
+  {
+    ThreadManagerV2.postImmediately(new MultiAIOStarter.2(paramBaseActivity, paramMultiAioContext), null, false);
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MultiAIOStarter start curType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" from = ");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", hasOpened = ");
+      ((StringBuilder)localObject).append(a);
+      QLog.d("MultiAIOStarter", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!MultiAIOHelper.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start is forbid: local switch is closed! do not start multiAIO!");
+      }
+      return false;
+    }
+    if (!((MultiAIOManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER)).c())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 配置下发限制 do not start multiAIO!");
+      }
+      return false;
+    }
+    if (AppSetting.e)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 无障碍 mode do not start multiAIO!");
+      }
+      return false;
+    }
+    if (((paramContext instanceof BaseActivity)) && (((BaseActivity)paramContext).isInMultiWindow()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 分屏 mode do not start multiAIO!");
+      }
+      return false;
+    }
+    if (a) {
+      return true;
+    }
+    if (MultiAIOHelper.a(paramInt))
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("uin", paramString1);
+      ((Intent)localObject).putExtra("uintype", paramInt);
+      ((Intent)localObject).putExtra("uinname", paramString2);
+      ((Intent)localObject).putExtra("conversation_tab_flag", paramString3);
+      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+      ((Intent)localObject).putExtra("OPEN_MULTI_FROM_ACTIVITY", paramContext.getClass().getSimpleName());
+      MultiAIOHelper.b();
+      BaseActivity localBaseActivity = (BaseActivity)paramContext;
+      QQAppInterface localQQAppInterface = localBaseActivity.app;
+      MultiAioContext localMultiAioContext = MultiAioContext.a(localQQAppInterface);
+      Bitmap localBitmap = b(paramContext);
+      int i = a(paramContext);
+      a = true;
+      localMultiAioContext.a(localBitmap);
+      localMultiAioContext.b(i);
+      a(localBaseActivity, localMultiAioContext);
+      localMultiAioContext.a((QQAppInterface)localQQAppInterface, localBaseActivity, paramString3, paramInt, paramString1, paramString2);
+      localMultiAioContext.a(new MultiAIOStarter.1(paramContext));
+      ((Intent)localObject).putExtra("OPEN_MULTI_AIO_CONTEXT", localMultiAioContext.c());
+      if ("open_from_aio".equals(paramString3)) {
+        ((Intent)localObject).putExtra("OPEN_MULTI_AIO_LIST_VIEW_SPECIFY_BOTTOM", c(paramContext));
+      }
+      PublicFragmentActivity.Launcher.a(paramContext, (Intent)localObject, PublicTransFragmentActivity.class, MultiAIOFragment.class);
+      return true;
+    }
+    return false;
+  }
+  
+  public static Bitmap b(Context paramContext)
   {
     boolean bool = paramContext instanceof BaseActivity;
     Object localObject1 = null;
@@ -85,107 +180,12 @@ public class MultiAIOStarter
     return localObject1;
   }
   
-  public static void a(int paramInt)
-  {
-    try
-    {
-      ((Vibrator)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("vibrator")).vibrate(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MultiAIOStarter", 2, "vibratorExecute Vibrator exception.");
-      localException.printStackTrace();
-    }
-  }
-  
-  private static void a(BaseActivity paramBaseActivity, MultiAioContext paramMultiAioContext)
-  {
-    ThreadManagerV2.postImmediately(new MultiAIOStarter.2(paramBaseActivity, paramMultiAioContext), null, false);
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("MultiAIOStarter start curType = ");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(" from = ");
-      ((StringBuilder)localObject).append(paramString3);
-      ((StringBuilder)localObject).append(", hasOpened = ");
-      ((StringBuilder)localObject).append(a);
-      QLog.d("MultiAIOStarter", 2, ((StringBuilder)localObject).toString());
-    }
-    if (!MultiAIOHelper.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start is forbid: local switch is closed! do not start multiAIO!");
-      }
-      return false;
-    }
-    if (!((MultiAIOManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER)).a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 配置下发限制 do not start multiAIO!");
-      }
-      return false;
-    }
-    if (AppSetting.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 无障碍 mode do not start multiAIO!");
-      }
-      return false;
-    }
-    if (((paramContext instanceof BaseActivity)) && (((BaseActivity)paramContext).isInMultiWindow()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 分屏 mode do not start multiAIO!");
-      }
-      return false;
-    }
-    if (a) {
-      return true;
-    }
-    if (MultiAIOHelper.a(paramInt))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("uin", paramString1);
-      ((Intent)localObject).putExtra("uintype", paramInt);
-      ((Intent)localObject).putExtra("uinname", paramString2);
-      ((Intent)localObject).putExtra("conversation_tab_flag", paramString3);
-      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      ((Intent)localObject).putExtra("OPEN_MULTI_FROM_ACTIVITY", paramContext.getClass().getSimpleName());
-      MultiAIOHelper.a();
-      BaseActivity localBaseActivity = (BaseActivity)paramContext;
-      QQAppInterface localQQAppInterface = localBaseActivity.app;
-      MultiAioContext localMultiAioContext = MultiAioContext.a(localQQAppInterface);
-      Bitmap localBitmap = a(paramContext);
-      int i = a(paramContext);
-      a = true;
-      localMultiAioContext.a(localBitmap);
-      localMultiAioContext.a(i);
-      a(localBaseActivity, localMultiAioContext);
-      localMultiAioContext.a((QQAppInterface)localQQAppInterface, localBaseActivity, paramString3, paramInt, paramString1, paramString2);
-      localMultiAioContext.a(new MultiAIOStarter.1(paramContext));
-      ((Intent)localObject).putExtra("OPEN_MULTI_AIO_CONTEXT", localMultiAioContext.a());
-      if ("open_from_aio".equals(paramString3)) {
-        ((Intent)localObject).putExtra("OPEN_MULTI_AIO_LIST_VIEW_SPECIFY_BOTTOM", a(paramContext));
-      }
-      PublicFragmentActivity.Launcher.a(paramContext, (Intent)localObject, PublicTransFragmentActivity.class, MultiAIOFragment.class);
-      return true;
-    }
-    return false;
-  }
-  
-  private static int[] a(Context paramContext)
+  private static int[] c(Context paramContext)
   {
     int[] arrayOfInt = new int[2];
     if ((paramContext instanceof BaseActivity))
     {
-      paramContext = (ListView)((BaseActivity)paramContext).findViewById(2131370119);
+      paramContext = (ListView)((BaseActivity)paramContext).findViewById(2131437281);
       if (paramContext != null)
       {
         int j = paramContext.getBottom() - paramContext.getPaddingBottom();
@@ -220,7 +220,7 @@ public class MultiAIOStarter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOStarter
  * JD-Core Version:    0.7.0.1
  */

@@ -5,21 +5,31 @@ import com.tencent.mobileqq.data.entitymanager.Provider;
 
 public class RecentUserMsgFactory
 {
-  private static RecentUserMsgFactory jdField_a_of_type_ComTencentMobileqqActivityRecentMsgRecentUserMsgFactory;
-  private Provider<SparseArray<MsgDeserialize>> jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider;
+  private static RecentUserMsgFactory e;
+  private Provider<SparseArray<MsgDeserialize>> a;
   private Provider<SparseArray<MsgSerialize>> b;
   private Provider<SparseArray<Provider<RecentMsgProxy>>> c;
   private Provider<MsgSerialize> d;
   
   private RecentUserMsgFactory(RecentUserMsgFactory.Builder paramBuilder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider = RecentUserMsgFactory.Builder.a(paramBuilder);
+    this.a = RecentUserMsgFactory.Builder.a(paramBuilder);
     this.b = RecentUserMsgFactory.Builder.b(paramBuilder);
     this.c = RecentUserMsgFactory.Builder.c(paramBuilder);
     this.d = RecentUserMsgFactory.Builder.d(paramBuilder);
   }
   
-  private MsgSerialize a(int paramInt)
+  public static RecentUserMsgFactory a()
+  {
+    return e;
+  }
+  
+  public static void a(RecentUserMsgFactory paramRecentUserMsgFactory)
+  {
+    e = paramRecentUserMsgFactory;
+  }
+  
+  private MsgSerialize b(int paramInt)
   {
     Object localObject = this.b;
     if (localObject != null)
@@ -34,16 +44,6 @@ public class RecentUserMsgFactory
       return (MsgSerialize)((Provider)localObject).get();
     }
     return null;
-  }
-  
-  public static RecentUserMsgFactory a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentMsgRecentUserMsgFactory;
-  }
-  
-  public static void a(RecentUserMsgFactory paramRecentUserMsgFactory)
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityRecentMsgRecentUserMsgFactory = paramRecentUserMsgFactory;
   }
   
   RecentMsgProxy a(int paramInt)
@@ -77,7 +77,7 @@ public class RecentUserMsgFactory
       localObject2 = localObject1;
       if (localObject1 == null)
       {
-        Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider;
+        Object localObject3 = this.a;
         localObject2 = localObject1;
         if (localObject3 != null)
         {
@@ -98,7 +98,7 @@ public class RecentUserMsgFactory
     if (paramObject == null) {
       return null;
     }
-    MsgSerialize localMsgSerialize = a(paramInt);
+    MsgSerialize localMsgSerialize = b(paramInt);
     if (localMsgSerialize != null) {
       arrayOfByte = localMsgSerialize.a(paramObject);
     }
@@ -107,7 +107,7 @@ public class RecentUserMsgFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.RecentUserMsgFactory
  * JD-Core Version:    0.7.0.1
  */

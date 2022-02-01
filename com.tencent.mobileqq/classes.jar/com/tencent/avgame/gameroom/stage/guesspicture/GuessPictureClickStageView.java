@@ -29,8 +29,8 @@ import java.util.ArrayList;
 public class GuessPictureClickStageView
   extends BaseGuessPictureStageView
 {
-  public Runnable e = new GuessPictureClickStageView.1(this);
-  public Runnable f = new GuessPictureClickStageView.2(this);
+  public Runnable F = new GuessPictureClickStageView.1(this);
+  public Runnable G = new GuessPictureClickStageView.2(this);
   
   public GuessPictureClickStageView(Context paramContext)
   {
@@ -57,50 +57,50 @@ public class GuessPictureClickStageView
       ((StringBuilder)localObject).append(paramTopicMosaicGuess);
       QLog.i("GuessPictureClickStageView", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_JavaLangString = "";
+    this.D = "";
     if (paramTopicMosaicGuess == null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(null);
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.e);
+      this.k.setImageBitmap(null);
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.F);
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramTopicMosaicGuess.c();
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.startsWith("http")))
+    this.D = paramTopicMosaicGuess.e();
+    if ((!TextUtils.isEmpty(this.D)) && (this.D.startsWith("http")))
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, null);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
+      this.p = URLDrawable.getDrawable(this.D, null);
+      if (this.p.getStatus() == 1)
       {
-        localObject = MosaicUtil.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+        localObject = MosaicUtil.a(this.p.getCurrDrawable());
+        this.o = ((Bitmap)localObject);
         int i;
-        if (paramTopicMosaicGuess.jdField_c_of_type_Int == 0) {
+        if (paramTopicMosaicGuess.m == 0) {
           i = 10;
         } else {
-          i = paramTopicMosaicGuess.jdField_c_of_type_Int;
+          i = paramTopicMosaicGuess.m;
         }
         setMosaicBitmapFromOriginal((Bitmap)localObject, i);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new GuessPictureClickStageView.3(this, paramTopicMosaicGuess));
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+        this.p.setURLDrawableListener(new GuessPictureClickStageView.3(this, paramTopicMosaicGuess));
+        this.p.startDownload();
       }
-      if (paramTopicMosaicGuess.a() != 0L)
+      if (paramTopicMosaicGuess.h() != 0L)
       {
-        ThreadManager.getUIHandlerV2().removeCallbacks(this.e);
-        if (this.jdField_b_of_type_AndroidViewView != null)
+        ThreadManager.getUIHandlerV2().removeCallbacks(this.F);
+        if (this.m != null)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+          this.f.setVisibility(8);
+          this.m.setVisibility(8);
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList = paramTopicMosaicGuess.jdField_a_of_type_JavaUtilArrayList;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      this.u = paramTopicMosaicGuess.k;
+      if ((this.u != null) && (this.u.size() > 0))
       {
-        this.jdField_a_of_type_Int = 0;
-        ThreadManager.getUIHandlerV2().postDelayed(this.e, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).first).intValue() * 1000);
+        this.v = 0;
+        ThreadManager.getUIHandlerV2().postDelayed(this.F, ((Integer)((Pair)this.u.get(this.v)).first).intValue() * 1000);
       }
-      paramTopicMosaicGuess = paramTopicMosaicGuess.jdField_c_of_type_JavaLangString;
+      paramTopicMosaicGuess = paramTopicMosaicGuess.r;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -109,25 +109,25 @@ public class GuessPictureClickStageView
         QLog.i("GuessPictureClickStageView", 2, ((StringBuilder)localObject).toString());
       }
       if (!TextUtils.isEmpty(paramTopicMosaicGuess)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a().a().a(paramTopicMosaicGuess);
+        this.d.a().a().b(paramTopicMosaicGuess);
       }
       return;
     }
     paramTopicMosaicGuess = new StringBuilder();
     paramTopicMosaicGuess.append("onShowMosaicImageGameMosaicImage() illegal url:");
-    paramTopicMosaicGuess.append(this.jdField_a_of_type_JavaLangString);
+    paramTopicMosaicGuess.append(this.D);
     QLog.i("GuessPictureClickStageView", 1, paramTopicMosaicGuess.toString());
-    d();
+    e();
   }
   
   public void a(String paramString)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.f;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getText(2131690340));
+    localStringBuilder.append(getResources().getText(2131887251));
     localStringBuilder.append(paramString);
     localTextView.setText(localStringBuilder.toString());
-    ThreadManager.getUIHandlerV2().postDelayed(this.f, 3000L);
+    ThreadManager.getUIHandlerV2().postDelayed(this.G, 3000L);
     b("Tips");
   }
   
@@ -135,58 +135,58 @@ public class GuessPictureClickStageView
   {
     if (!paramBoolean2)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.l.setVisibility(4);
+      this.m.setVisibility(8);
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.l.setVisibility(0);
+    this.m.setVisibility(8);
   }
   
-  protected void b()
+  protected void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558667, this, true);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379927));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370232);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369421));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370328);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131367771);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378839));
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessPictureClickStagePresenter(this);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    super.b();
+    LayoutInflater.from(getContext()).inflate(2131624284, this, true);
+    this.f = ((TextView)findViewById(2131448811));
+    this.g = ((AVGameText)findViewById(2131448302));
+    this.h = ((AVGameText)findViewById(2131448303));
+    this.i = findViewById(2131437420);
+    this.k = ((ImageView)findViewById(2131436460));
+    this.m = findViewById(2131437582);
+    this.n = findViewById(2131434340);
+    this.l = ((ImageView)findViewById(2131447536));
+    this.d = new GuessPictureClickStagePresenter(this);
+    this.l.setVisibility(4);
+    this.m.setVisibility(4);
+    this.n.setVisibility(8);
+    super.c();
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.o != null) {
+      this.k.setImageBitmap(this.o);
     }
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    if (this.m != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.f.setVisibility(8);
+      this.m.setVisibility(8);
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.i != null) {
+      this.i.setVisibility(8);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.e);
+    this.f.setText("");
+    this.v = 0;
+    this.u = null;
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.F);
     b("Origin Image");
   }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig)
   {
     super.setFontStyle(paramFontStyleConfig);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(paramFontStyleConfig.jdField_d_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.jdField_d_of_type_JavaLangString));
-    QuestionOptionItemConfig localQuestionOptionItemConfig = new QuestionOptionItemConfig(paramFontStyleConfig.e, Color.parseColor(paramFontStyleConfig.jdField_h_of_type_JavaLangString), Color.parseColor(paramFontStyleConfig.jdField_g_of_type_JavaLangString), paramFontStyleConfig.jdField_g_of_type_Int, Color.parseColor(paramFontStyleConfig.u), paramFontStyleConfig.jdField_h_of_type_Int, Color.parseColor(paramFontStyleConfig.v));
+    this.f.setTextSize(paramFontStyleConfig.h);
+    this.f.setTextColor(Color.parseColor(paramFontStyleConfig.g));
+    QuestionOptionItemConfig localQuestionOptionItemConfig = new QuestionOptionItemConfig(paramFontStyleConfig.l, Color.parseColor(paramFontStyleConfig.m), Color.parseColor(paramFontStyleConfig.k), paramFontStyleConfig.B, Color.parseColor(paramFontStyleConfig.A), paramFontStyleConfig.D, Color.parseColor(paramFontStyleConfig.C));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -194,7 +194,7 @@ public class GuessPictureClickStageView
       localStringBuilder.append(paramFontStyleConfig.toString());
       QLog.i("GuessPictureClickStageView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.setConfig(localQuestionOptionItemConfig);
+    this.a.setConfig(localQuestionOptionItemConfig);
   }
 }
 

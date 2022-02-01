@@ -6,12 +6,12 @@ import java.util.List;
 
 public class GeoHashUtils
 {
-  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+  private static final String[] a = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+  private static String b = "0123456789bcdefghjkmnpqrstuvwxyz";
   
   public static GeoHashUtils.Gps a(String paramString)
   {
-    Object localObject = a(paramString);
+    Object localObject = b(paramString);
     GeoHashUtils.Gps localGps = (GeoHashUtils.Gps)((List)localObject).get(0);
     localObject = (GeoHashUtils.Gps)((List)localObject).get(1);
     double d3 = GeoHashUtils.Gps.a(localGps);
@@ -86,7 +86,7 @@ public class GeoHashUtils
         j ^= 0x1;
         m += 1;
       }
-      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+      localStringBuilder.append(a[i]);
       k += 1;
       i = j;
       d7 = d4;
@@ -98,7 +98,7 @@ public class GeoHashUtils
     return localStringBuilder.toString();
   }
   
-  public static List<GeoHashUtils.Gps> a(String paramString)
+  public static List<GeoHashUtils.Gps> b(String paramString)
   {
     if ((paramString != null) && (paramString.length() != 0))
     {
@@ -112,7 +112,7 @@ public class GeoHashUtils
       while (i < paramString.length())
       {
         int k = paramString.charAt(i);
-        int m = jdField_a_of_type_JavaLangString.indexOf(k);
+        int m = b.indexOf(k);
         if (m != -1)
         {
           k = 4;
@@ -164,7 +164,7 @@ public class GeoHashUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.GeoHashUtils
  * JD-Core Version:    0.7.0.1
  */

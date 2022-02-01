@@ -9,12 +9,12 @@ import java.lang.ref.WeakReference;
 class ADView$WeakHandler
   extends Handler
 {
-  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
-  private WeakReference<ADView> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ADView> a;
+  private ADView b;
   
   public ADView$WeakHandler(ADView paramADView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
+    this.a = new WeakReference(paramADView);
   }
   
   public void handleMessage(Message paramMessage)
@@ -29,23 +29,23 @@ class ADView$WeakHandler
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetADView;
+      this.b = ((ADView)this.a.get());
+      localObject = this.b;
       if (localObject == null) {
         break label177;
       }
-      if (((ADView)localObject).a == null) {
+      if (((ADView)localObject).y == null) {
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
+      if ((this.b.y.getChildCount() > 1) && (this.b.y.getWidth() > 0)) {
+        this.b.y.a(this.b.y.getCurrentScreen() + 1);
       }
     }
     try
     {
-      localObject = (PushBanner)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
-      i = ((PushBanner)localObject).a * 1000;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(((PushBanner)localObject).n);
+      localObject = (PushBanner)this.b.y.getChildAt(this.b.y.getCurrentScreen()).getTag();
+      i = ((PushBanner)localObject).d * 1000;
+      this.b.setContentDescription(((PushBanner)localObject).p);
     }
     catch (Exception localException)
     {
@@ -54,14 +54,14 @@ class ADView$WeakHandler
     }
     i = 5000;
     sendEmptyMessageDelayed(0, i);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
+    this.b = null;
     super.handleMessage(paramMessage);
     label177:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView.WeakHandler
  * JD-Core Version:    0.7.0.1
  */

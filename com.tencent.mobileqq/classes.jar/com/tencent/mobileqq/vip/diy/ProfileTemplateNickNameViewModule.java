@@ -11,16 +11,15 @@ import org.json.JSONObject;
 public class ProfileTemplateNickNameViewModule
   extends ViewModel
 {
-  private String a;
-  private String b = "";
-  private int c = -1;
-  private int d = -1;
+  private int a = -1;
+  private int b = -1;
+  private String c = "";
+  private String d = "";
   
   public ProfileTemplateNickNameViewModule(String paramString1, View paramView, String paramString2)
   {
     super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramString2;
+    this.d = paramString2;
   }
   
   protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
@@ -30,9 +29,9 @@ public class ProfileTemplateNickNameViewModule
     Object localObject = (ViewGroup.MarginLayoutParams)paramLayoutParams;
     int i = ((ViewGroup.MarginLayoutParams)localObject).leftMargin;
     ((ViewGroup.MarginLayoutParams)localObject).leftMargin = 0;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    if ((this.h instanceof ProfileTemplateNickNameContainer))
     {
-      localObject = (ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView;
+      localObject = (ProfileTemplateNickNameContainer)this.h;
       ((ProfileTemplateNickNameContainer)localObject).setTextViewX(i);
       if ("center_horizontal".equals(paramJSONObject.optString("gravity"))) {
         ((ProfileTemplateNickNameContainer)localObject).setTextCenter();
@@ -48,13 +47,13 @@ public class ProfileTemplateNickNameViewModule
     {
       try
       {
-        this.c = Integer.parseInt(paramString2);
+        this.a = Integer.parseInt(paramString2);
         if (!QLog.isColorLevel()) {
           return;
         }
         paramString1 = new StringBuilder();
         paramString1.append("parse name font id=");
-        paramString1.append(this.c);
+        paramString1.append(this.a);
         QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, paramString1.toString());
         return;
       }
@@ -73,13 +72,13 @@ public class ProfileTemplateNickNameViewModule
     {
       try
       {
-        this.d = Integer.parseInt(paramString2);
+        this.b = Integer.parseInt(paramString2);
         if (!QLog.isColorLevel()) {
           return;
         }
         paramString1 = new StringBuilder();
         paramString1.append("parse name font type=");
-        paramString1.append(this.d);
+        paramString1.append(this.b);
         QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, paramString1.toString());
         return;
       }
@@ -98,7 +97,7 @@ public class ProfileTemplateNickNameViewModule
     {
       if ("bg".equals(paramString1))
       {
-        this.jdField_a_of_type_JavaLangString = paramString2;
+        this.c = paramString2;
         return;
       }
       super.a(paramString1, paramString2);
@@ -108,39 +107,39 @@ public class ProfileTemplateNickNameViewModule
   protected void b()
   {
     super.b();
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    if ((this.h instanceof ProfileTemplateNickNameContainer))
     {
-      Object localObject = ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).a();
-      if ((this.c > 0) && (this.d > 0))
+      Object localObject = ((ProfileTemplateNickNameContainer)this.h).getTextView();
+      if ((this.a > 0) && (this.b > 0))
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("set name font id=");
-          localStringBuilder.append(this.c);
+          localStringBuilder.append(this.a);
           localStringBuilder.append(" type=");
-          localStringBuilder.append(this.d);
+          localStringBuilder.append(this.b);
           QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, localStringBuilder.toString());
         }
-        ((ETTextViewPlus)localObject).setFontAsync(this.c, this.d);
+        ((ETTextViewPlus)localObject).setFontAsync(this.a, this.b);
       }
       else
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("profile nick name set font error because font id=");
-        ((StringBuilder)localObject).append(this.c);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append(" type=");
-        ((StringBuilder)localObject).append(this.d);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(" is illegal!");
         SLog.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", ((StringBuilder)localObject).toString());
       }
-      ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).setTextBgUrl(this.jdField_a_of_type_JavaLangString);
+      ((ProfileTemplateNickNameContainer)this.h).setTextBgUrl(this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameViewModule
  * JD-Core Version:    0.7.0.1
  */

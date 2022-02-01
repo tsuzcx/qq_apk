@@ -13,9 +13,9 @@ class BlockMerger$2
     paramInt = BlockMerger.a(this.a, paramInt);
     MultiViewBlock localMultiViewBlock = this.a.a(paramInt);
     if (localMultiViewBlock != null) {
-      return localMultiViewBlock.a(localMultiViewBlock.b(paramInt));
+      return localMultiViewBlock.a(localMultiViewBlock.e(paramInt));
     }
-    return ((GridLayoutManager)BlockMerger.a(this.a)).getSpanCount();
+    return ((GridLayoutManager)BlockMerger.b(this.a)).getSpanCount();
   }
 }
 

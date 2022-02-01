@@ -11,7 +11,7 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/nti" android:background="@drawable/qq_profilecard_foot_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+    <LinearLayout android:orientation="vertical" android:id="@id/p2e" android:background="@drawable/qq_profilecard_foot_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
         <View android:background="@color/fo" android:layout_width="fill_parent" android:layout_height="1.0px" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/al_" android:paddingLeft="@dimen/i4" android:paddingRight="@dimen/i4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>

@@ -13,15 +13,15 @@ class BaseBubbleBuilderMenuReplyOnlyProcessor$1
   {
     if ((paramObject instanceof String))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+      this.a.putExtra("troop_uin", (String)paramObject);
+      this.a.putExtra("cSpecialFlag", 0);
+      this.b.startActivity(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuReplyOnlyProcessor.1
  * JD-Core Version:    0.7.0.1
  */

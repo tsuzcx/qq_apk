@@ -8,19 +8,19 @@ public class FileUtil$MyFileCompare
 {
   public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (paramFileInfo1.d())
+    if (paramFileInfo1.k())
     {
-      if (!paramFileInfo2.d()) {
+      if (!paramFileInfo2.k()) {
         return -1;
       }
     }
-    else if (paramFileInfo2.d()) {
+    else if (paramFileInfo2.k()) {
       return 1;
     }
-    if (paramFileInfo1.b() > paramFileInfo2.b()) {
+    if (paramFileInfo1.g() > paramFileInfo2.g()) {
       return -1;
     }
-    if (paramFileInfo1.b() == paramFileInfo2.b()) {
+    if (paramFileInfo1.g() == paramFileInfo2.g()) {
       return 0;
     }
     return 1;
@@ -28,7 +28,7 @@ public class FileUtil$MyFileCompare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileUtil.MyFileCompare
  * JD-Core Version:    0.7.0.1
  */

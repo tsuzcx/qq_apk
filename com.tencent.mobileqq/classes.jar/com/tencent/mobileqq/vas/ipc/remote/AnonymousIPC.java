@@ -15,9 +15,9 @@ public final class AnonymousIPC
   public String getAvatarID(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "troopUin");
-    paramString = AnonymousChatHelper.a().a(paramString);
+    paramString = AnonymousChatHelper.a().b(paramString);
     if (paramString != null) {
-      return String.valueOf(paramString.jdField_a_of_type_Int);
+      return String.valueOf(paramString.c);
     }
     return "";
   }
@@ -26,9 +26,9 @@ public final class AnonymousIPC
   public String getNickname(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "troopUin");
-    paramString = AnonymousChatHelper.a().a(paramString);
+    paramString = AnonymousChatHelper.a().b(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_JavaLangString;
+      return paramString.d;
     }
     return "";
   }
@@ -37,9 +37,9 @@ public final class AnonymousIPC
   public String getRankColor(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "troopUin");
-    paramString = AnonymousChatHelper.a().a(paramString);
+    paramString = AnonymousChatHelper.a().b(paramString);
     if (paramString != null) {
-      return paramString.c;
+      return paramString.g;
     }
     return "";
   }
@@ -47,16 +47,16 @@ public final class AnonymousIPC
   public boolean isAnonymous(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "troopUin");
-    paramString = AnonymousChatHelper.a().a(paramString);
+    paramString = AnonymousChatHelper.a().b(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_Boolean;
+      return paramString.a;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.AnonymousIPC
  * JD-Core Version:    0.7.0.1
  */

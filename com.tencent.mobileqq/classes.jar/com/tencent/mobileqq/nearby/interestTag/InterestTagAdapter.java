@@ -9,31 +9,31 @@ import java.util.List;
 public class InterestTagAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private InterestTagItemView.IInterestTagItemViewCallback jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback;
-  private List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
+  private Context a;
+  private int b;
+  private List<InterestTagInfo> c;
+  private InterestTagItemView.IInterestTagItemViewCallback d;
   
   public InterestTagAdapter(Context paramContext, int paramInt, List<InterestTagInfo> paramList, InterestTagItemView.IInterestTagItemViewCallback paramIInterestTagItemViewCallback)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback = paramIInterestTagItemViewCallback;
+    this.a = paramContext;
+    this.b = paramInt;
+    this.c = paramList;
+    this.d = paramIInterestTagItemViewCallback;
   }
   
   public InterestTagInfo a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (localList.size() > paramInt)) {
-      return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (InterestTagInfo)this.c.get(paramInt);
     }
     return null;
   }
   
   public void a(List<InterestTagInfo> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramList;
     if (paramBoolean) {
       notifyDataSetChanged();
     }
@@ -41,7 +41,7 @@ public class InterestTagAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList == null) {
       return 0;
     }
@@ -57,9 +57,9 @@ public class InterestTagAdapter
   {
     if (paramView == null)
     {
-      paramView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.a(this.jdField_a_of_type_Int);
-      paramView.setCallback(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback);
+      paramView = new InterestTagItemView(this.a);
+      paramView.a(this.b);
+      paramView.setCallback(this.d);
     }
     else
     {
@@ -71,7 +71,7 @@ public class InterestTagAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.InterestTagAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData;", "", "()V", "superMaskExposeType", "", "getSuperMaskExposeType", "()I", "setSuperMaskExposeType", "(I)V", "videoGuide", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "getVideoGuide", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "setVideoGuide", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;)V", "VideoGuide", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class AdExperimentData
 {
-  private int jdField_a_of_type_Int = 1;
   @Nullable
-  private AdExperimentData.VideoGuide jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdExperimentAdExperimentData$VideoGuide;
+  private AdExperimentData.VideoGuide a;
+  private int b = 1;
   
   @Nullable
   public final AdExperimentData.VideoGuide a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdExperimentAdExperimentData$VideoGuide;
+    return this.a;
   }
   
   public final void a(@Nullable AdExperimentData.VideoGuide paramVideoGuide)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdExperimentAdExperimentData$VideoGuide = paramVideoGuide;
+    this.a = paramVideoGuide;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.experiment.AdExperimentData
  * JD-Core Version:    0.7.0.1
  */

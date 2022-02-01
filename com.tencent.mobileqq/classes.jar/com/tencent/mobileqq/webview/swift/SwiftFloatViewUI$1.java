@@ -15,17 +15,17 @@ class SwiftFloatViewUI$1
   public void onGlobalLayout()
   {
     if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     } else {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_ComTencentBizWidgetsHole.setHole((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 30.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_ComTencentBizWidgetsHole.invalidate();
+    this.c.l.setHole((this.c.c.getLeft() + this.c.c.getRight()) / 2 - 1, (this.c.c.getTop() + this.c.c.getBottom()) / 2 - 1, (int)(this.b.density * 30.0F));
+    this.c.l.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI.1
  * JD-Core Version:    0.7.0.1
  */

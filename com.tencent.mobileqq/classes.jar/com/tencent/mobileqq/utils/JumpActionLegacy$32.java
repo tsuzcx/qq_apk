@@ -21,9 +21,9 @@ class JumpActionLegacy$32
   
   public void run()
   {
-    Object localObject1 = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("version");
-    Object localObject3 = ReportHandler.a(this.this$0.b, this.this$0.c, (String)localObject1, "");
-    localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject1 = (String)this.this$0.f.get("version");
+    Object localObject3 = ReportHandler.a(this.this$0.d, this.this$0.e, (String)localObject1, "");
+    localObject1 = this.this$0.H.getEntityManagerFactory().createEntityManager();
     Object localObject4 = ((EntityManager)localObject1).query(PushBannerReportLog.class);
     Object localObject2;
     if ((localObject4 != null) && (((List)localObject4).size() >= 9))
@@ -53,7 +53,7 @@ class JumpActionLegacy$32
         localStringBuilder.append(localObject5);
         ((List)localObject3).add(localStringBuilder.toString());
       }
-      ((ReportHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REPORT_HANDLER)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
+      ((ReportHandler)this.this$0.H.getBusinessHandler(BusinessHandlerFactory.REPORT_HANDLER)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
       ((EntityManager)localObject1).drop(PushBannerReportLog.class);
       ((HashMap)localObject2).clear();
     }
@@ -68,7 +68,7 @@ class JumpActionLegacy$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.32
  * JD-Core Version:    0.7.0.1
  */

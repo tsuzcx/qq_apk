@@ -5,42 +5,32 @@ import com.tencent.gathererga.core.ProviderResult;
 public class ProviderResultImpl
   implements ProviderResult
 {
-  public static final String[] a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Object jdField_a_of_type_JavaLangObject;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private long jdField_b_of_type_Long;
-  private String[] jdField_b_of_type_ArrayOfJavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  }
+  public static final String[] a = new String[0];
+  private long b;
+  private Object c;
+  private int d;
+  private String[] e;
+  private Throwable f;
+  private long g;
   
   public ProviderResultImpl(long paramLong, Object paramObject)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramLong;
+    this.c = paramObject;
   }
   
   public ProviderResultImpl(long paramLong, Object paramObject, int paramInt, String[] paramArrayOfString, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
-  
-  public static ProviderResult a(long paramLong)
-  {
-    return new ProviderResultImpl(paramLong, null, 0, jdField_a_of_type_ArrayOfJavaLangString, null);
+    this.b = paramLong;
+    this.c = paramObject;
+    this.d = paramInt;
+    this.f = paramThrowable;
+    this.e = paramArrayOfString;
   }
   
   public static ProviderResult a(long paramLong, Throwable paramThrowable)
   {
-    return new ProviderResultImpl(paramLong, null, 0, jdField_a_of_type_ArrayOfJavaLangString, paramThrowable);
+    return new ProviderResultImpl(paramLong, null, 0, a, paramThrowable);
   }
   
   public static ProviderResult a(long paramLong, String[] paramArrayOfString)
@@ -50,42 +40,47 @@ public class ProviderResultImpl
   
   public static ProviderResult a(Object paramObject, int paramInt)
   {
-    return new ProviderResultImpl(0L, paramObject, paramInt, jdField_a_of_type_ArrayOfJavaLangString, null);
+    return new ProviderResultImpl(0L, paramObject, paramInt, a, null);
   }
   
-  public int a()
+  public static ProviderResult b(long paramLong)
   {
-    return this.jdField_a_of_type_Int;
+    return new ProviderResultImpl(paramLong, null, 0, a, null);
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.b;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.g = paramLong;
   }
   
-  public boolean a()
+  public Object b()
   {
-    return this.jdField_a_of_type_Long == 0L;
+    return this.c;
   }
   
-  public long b()
+  public boolean c()
   {
-    return this.jdField_b_of_type_Long;
+    return this.b == 0L;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public long e()
+  {
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.provider.ProviderResultImpl
  * JD-Core Version:    0.7.0.1
  */

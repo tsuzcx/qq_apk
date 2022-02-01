@@ -5,6 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJNetworkUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,7 +15,7 @@ import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/videourl/VideoGetUrlReporter;", "", "()V", "reportKandianVideoGetUrl", "", "context", "Landroid/content/Context;", "uin", "", "success", "", "data", "Ljava/util/HashMap;", "reportVideoH265GetURL", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/videourl/VideoGetUrlReporter;", "", "()V", "innerReportKandianVideoGetUrl", "", "context", "Landroid/content/Context;", "uin", "", "success", "", "data", "Ljava/util/HashMap;", "reportKandianVideoGetUrl", "reportVideoH265GetURL", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoGetUrlReporter
 {
   public static final VideoGetUrlReporter a = new VideoGetUrlReporter();
@@ -28,8 +29,18 @@ public final class VideoGetUrlReporter
   @JvmStatic
   public static final void a(@Nullable Context paramContext, @Nullable String paramString, boolean paramBoolean, @Nullable HashMap<String, String> paramHashMap)
   {
+    if (ViolaUtils.isBindDataOpmOpen())
+    {
+      ThreadManager.excute((Runnable)new VideoGetUrlReporter.reportKandianVideoGetUrl.1(paramContext, paramString, paramBoolean, paramHashMap), 16, null, true);
+      return;
+    }
+    a.b(paramContext, paramString, paramBoolean, paramHashMap);
+  }
+  
+  private final void b(Context paramContext, String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
+  {
     if ((paramHashMap != null) && (paramContext != null)) {
-      ((Map)paramHashMap).put("param_networkDetail", Integer.toString(RIJNetworkUtils.a(paramContext)));
+      ((Map)paramHashMap).put("param_networkDetail", Integer.toString(RIJNetworkUtils.d(paramContext)));
     }
     if (QLog.isColorLevel())
     {
@@ -60,7 +71,7 @@ public final class VideoGetUrlReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.videourl.VideoGetUrlReporter
  * JD-Core Version:    0.7.0.1
  */

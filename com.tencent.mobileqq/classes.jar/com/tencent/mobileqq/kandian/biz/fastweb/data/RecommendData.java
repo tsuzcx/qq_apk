@@ -5,19 +5,19 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 public class RecommendData
   extends BaseData
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b = -1;
-  public long b;
   public String b;
-  public int c = -1;
   public String c;
-  public String d;
-  public String e;
+  public long d;
+  public long e;
   public String f;
-  public String g = "";
+  public String g;
+  public String h;
+  public int i;
+  public int j = -1;
+  public int k = -1;
+  public String l = "";
+  public boolean m;
   
   public RecommendData()
   {
@@ -26,7 +26,7 @@ public class RecommendData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.data.RecommendData
  * JD-Core Version:    0.7.0.1
  */

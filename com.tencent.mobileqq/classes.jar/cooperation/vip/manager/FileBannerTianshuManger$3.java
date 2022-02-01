@@ -19,19 +19,19 @@ class FileBannerTianshuManger$3
   {
     QZLog.i("FileBannerTianshuManger", "onLoadSuccessed picUrlDrawable ");
     FileBannerTianshuManger localFileBannerTianshuManger = this.a;
-    localFileBannerTianshuManger.a(localFileBannerTianshuManger.jdField_a_of_type_JavaLangString, paramURLDrawable);
+    localFileBannerTianshuManger.a(localFileBannerTianshuManger.b, paramURLDrawable);
     paramURLDrawable = this.a;
-    paramURLDrawable.a(paramURLDrawable.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 101);
-    if (this.a.b == 1)
+    paramURLDrawable.a(paramURLDrawable.d, 101);
+    if (this.a.j == 1)
     {
       paramURLDrawable = this.a;
-      paramURLDrawable.a(paramURLDrawable.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 137);
+      paramURLDrawable.a(paramURLDrawable.d, 137);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.FileBannerTianshuManger.3
  * JD-Core Version:    0.7.0.1
  */

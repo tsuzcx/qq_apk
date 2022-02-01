@@ -46,11 +46,6 @@ import org.json.JSONObject;
 
 public class FastWebPTSUtils
 {
-  public static float a()
-  {
-    return 16.0F;
-  }
-  
   public static int a(Context paramContext)
   {
     if (paramContext != null)
@@ -66,22 +61,6 @@ public class FastWebPTSUtils
   public static int a(String paramString, Map<Long, FollowingMember> paramMap)
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  protected static int a(List<BaseData> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      int i = 0;
-      while (i < paramList.size())
-      {
-        if ((paramList.get(i) instanceof AuthorData)) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return 2147483647;
   }
   
   public static View a(ViewBase paramViewBase, int paramInt)
@@ -107,19 +86,9 @@ public class FastWebPTSUtils
     return null;
   }
   
-  public static WebProteusViewCreator.ProteusItemViewOnClickListener a()
-  {
-    return new FastWebPTSUtils.2();
-  }
-  
-  public static Float a()
-  {
-    return (Float)RIJSPUtils.a("readinjoy_font_size_ratio_sp", Float.valueOf(1.0F));
-  }
-  
   public static String a()
   {
-    return String.valueOf(a().floatValue());
+    return String.valueOf(b().floatValue());
   }
   
   public static String a(long paramLong, String paramString)
@@ -149,7 +118,7 @@ public class FastWebPTSUtils
       }
       else
       {
-        RIJJumpUtils.a(paramString, paramAbsBaseArticleInfo);
+        RIJJumpUtils.c(paramString, paramAbsBaseArticleInfo);
         RIJJsonUtils.a(paramFastWebArticleInfo, "is_intensify", Integer.valueOf(paramInt));
         paramContext = "0X800898A";
       }
@@ -188,7 +157,7 @@ public class FastWebPTSUtils
       {
         ReadinjoyReportUtils.c(paramAbsBaseArticleInfo, ReadinjoyReportUtils.d, paramBoolean, "");
         Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().a();
+        UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().c();
         localObject = ((QQAppInterface)localObject).getAccount();
         paramFastWebArticleInfo = new FastWebPTSUtils.1(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramBoolean);
         if (!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) {
@@ -218,7 +187,7 @@ public class FastWebPTSUtils
       if (paramFastWebArticleInfo == null) {
         return;
       }
-      if (paramFastWebArticleInfo.jdField_e_of_type_Boolean)
+      if (paramFastWebArticleInfo.N)
       {
         RIJVideoRewardCoinManager.a.a();
         return;
@@ -226,14 +195,7 @@ public class FastWebPTSUtils
       if (paramRIJVideoRewardCoinManager == null) {
         return;
       }
-      paramRIJVideoRewardCoinManager.a(new RIJVideoRewardCoinManager.RIJRewardInfo(paramFastWebArticleInfo.j, paramAbsBaseArticleInfo.getSubscribeUin(), null), paramInt);
-    }
-  }
-  
-  public static void a(BaseData paramBaseData)
-  {
-    if ((paramBaseData instanceof ProteusItemData)) {
-      a(((ProteusItemData)paramBaseData).c);
+      paramRIJVideoRewardCoinManager.a(new RIJVideoRewardCoinManager.RIJRewardInfo(paramFastWebArticleInfo.q, paramAbsBaseArticleInfo.getSubscribeUin(), null), paramInt);
     }
   }
   
@@ -241,8 +203,8 @@ public class FastWebPTSUtils
   {
     if (paramFastWebArticleInfo != null)
     {
-      paramFastWebArticleInfo.jdField_e_of_type_Boolean = paramBoolean;
-      paramFastWebArticleInfo.jdField_e_of_type_Int += paramInt;
+      paramFastWebArticleInfo.N = paramBoolean;
+      paramFastWebArticleInfo.M += paramInt;
     }
   }
   
@@ -267,10 +229,10 @@ public class FastWebPTSUtils
       if ((localObject instanceof ProteusItemData))
       {
         localObject = (ProteusItemData)localObject;
-        if ((((ProteusItemData)localObject).A == 1) && (!((ProteusItemData)localObject).g))
+        if ((((ProteusItemData)localObject).bf == 1) && (!((ProteusItemData)localObject).bg))
         {
-          if (((ProteusItemData)localObject).c != null) {
-            paramList = ((ProteusItemData)localObject).c.toString();
+          if (((ProteusItemData)localObject).bb != null) {
+            paramList = ((ProteusItemData)localObject).bb.toString();
           } else {
             paramList = "data error!!";
           }
@@ -306,7 +268,7 @@ public class FastWebPTSUtils
   
   public static boolean a(int paramInt, List<BaseData> paramList)
   {
-    int j = a(paramList);
+    int j = b(paramList);
     paramList = Aladdin.getConfig(374);
     boolean bool2 = false;
     int i;
@@ -329,15 +291,31 @@ public class FastWebPTSUtils
   public static boolean a(BaseData paramBaseData)
   {
     boolean bool;
-    if ((paramBaseData.u == 26) && ((paramBaseData instanceof ProteusItemData)) && (((ProteusItemData)paramBaseData).A == 1)) {
+    if ((paramBaseData.aP == 26) && ((paramBaseData instanceof ProteusItemData)) && (((ProteusItemData)paramBaseData).bf == 1)) {
       bool = true;
     } else {
       bool = false;
     }
-    if ((paramBaseData.u == 18) || (paramBaseData.u == 22) || (paramBaseData.u == 0)) {
+    if ((paramBaseData.aP == 18) || (paramBaseData.aP == 22) || (paramBaseData.aP == 0)) {
       bool = true;
     }
     return bool;
+  }
+  
+  protected static int b(List<BaseData> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      int i = 0;
+      while (i < paramList.size())
+      {
+        if ((paramList.get(i) instanceof AuthorData)) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return 2147483647;
   }
   
   public static View b(ViewBase paramViewBase, int paramInt)
@@ -351,9 +329,9 @@ public class FastWebPTSUtils
     return a(paramViewBase, str);
   }
   
-  public static WebProteusViewCreator.ProteusItemViewOnClickListener b()
+  public static Float b()
   {
-    return new FastWebPTSUtils.3();
+    return (Float)RIJSPUtils.b("readinjoy_font_size_ratio_sp", Float.valueOf(1.0F));
   }
   
   private static JSONObject b(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, long paramLong)
@@ -371,10 +349,32 @@ public class FastWebPTSUtils
   {
     ThreadManager.a().post(new FastWebPTSUtils.5(paramViewBase, paramInt, paramAbsBaseArticleInfo, paramFastWebArticleInfo));
   }
+  
+  public static void b(BaseData paramBaseData)
+  {
+    if ((paramBaseData instanceof ProteusItemData)) {
+      a(((ProteusItemData)paramBaseData).bb);
+    }
+  }
+  
+  public static float c()
+  {
+    return 16.0F;
+  }
+  
+  public static WebProteusViewCreator.ProteusItemViewOnClickListener d()
+  {
+    return new FastWebPTSUtils.2();
+  }
+  
+  public static WebProteusViewCreator.ProteusItemViewOnClickListener e()
+  {
+    return new FastWebPTSUtils.3();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSUtils
  * JD-Core Version:    0.7.0.1
  */

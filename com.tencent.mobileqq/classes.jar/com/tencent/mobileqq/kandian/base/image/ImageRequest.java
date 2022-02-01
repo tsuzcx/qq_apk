@@ -5,40 +5,31 @@ import java.net.URL;
 
 public class ImageRequest
 {
-  public static int g = 2;
-  public int a;
-  public long a;
-  Bitmap.Config a;
-  public String a;
+  public static int v = 2;
   public URL a;
-  public volatile boolean a;
   public int b;
-  public long b;
-  public String b;
-  public boolean b;
   public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
-  public int f;
-  public long f;
-  public long g;
+  public volatile boolean d = false;
+  public boolean e;
+  Bitmap.Config f = Bitmap.Config.ARGB_8888;
+  public int g = 0;
   public long h;
   public long i;
-  
-  public ImageRequest()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = -2;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
+  public int p = 0;
+  public int q = -2;
+  public String r;
+  public String s;
+  public long t;
+  public int u = 0;
+  public String w = "";
+  public boolean x = false;
+  public boolean y = false;
   
   public String a()
   {
@@ -59,80 +50,84 @@ public class ImageRequest
         return false;
       }
       paramObject = (ImageRequest)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+      if (this.b != paramObject.b) {
         return false;
       }
-      if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
+      if (this.c != paramObject.c) {
         return false;
       }
-      if (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int) {
+      if (this.g != paramObject.g) {
         return false;
       }
-      URL localURL = this.jdField_a_of_type_JavaNetURL;
+      URL localURL = this.a;
       if (localURL != null)
       {
-        if (!localURL.equals(paramObject.jdField_a_of_type_JavaNetURL)) {
+        if (!localURL.equals(paramObject.a)) {
           return false;
         }
       }
-      else if (paramObject.jdField_a_of_type_JavaNetURL != null) {
+      else if (paramObject.a != null) {
         return false;
       }
-      return this.jdField_a_of_type_AndroidGraphicsBitmap$Config == paramObject.jdField_a_of_type_AndroidGraphicsBitmap$Config;
+      return this.f == paramObject.f;
     }
     return false;
   }
   
   public int hashCode()
   {
-    URL localURL = this.jdField_a_of_type_JavaNetURL;
-    int j;
+    URL localURL = this.a;
+    int i1;
     if (localURL != null) {
-      j = localURL.hashCode();
+      i1 = localURL.hashCode();
     } else {
-      j = 0;
+      i1 = 0;
     }
-    return ((j * 31 + this.jdField_a_of_type_Int) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_c_of_type_Int;
+    return ((i1 * 31 + this.b) * 31 + this.c) * 31 + this.g;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaNetURL);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("x");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" isPreload:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" isCancel:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" startTime: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" enterSubThreadTime: ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(" enterThreadPoolTime: ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(" startThreadPoolTime: ");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(" downloadAndWriteFileTime: ");
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append(" decodeTime: ");
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append(" enterMainThreadTime: ");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" endTime: ");
     localStringBuilder.append(this.h);
+    localStringBuilder.append(" enterSubThreadTime: ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(" enterThreadPoolTime: ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(" startThreadPoolTime: ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(" downloadAndWriteFileTime: ");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(" decodeTime: ");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(" enterMainThreadTime: ");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(" endTime: ");
+    localStringBuilder.append(this.o);
     localStringBuilder.append(" failCode: ");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(" errMsg: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(" supportInnerIp: ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(" useIpConnect:");
+    localStringBuilder.append(this.y);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.ImageRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ class QAPMLeakListener
       return false;
     }
     paramInspectUUID.toString();
-    boolean bool = AppSetting.e;
+    boolean bool = AppSetting.f;
     return false;
   }
   
@@ -45,8 +45,8 @@ class QAPMLeakListener
   public List<String> onPrepareDump(@NotNull String paramString)
   {
     ArrayList localArrayList = new ArrayList(4);
-    localArrayList.add(DumpMemInfoHandler.b());
-    localArrayList.add(DumpMemInfoHandler.a());
+    localArrayList.add(DumpMemInfoHandler.d());
+    localArrayList.add(DumpMemInfoHandler.c());
     localArrayList.addAll(DumpMemInfoHandler.b());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("leakDump");
@@ -57,7 +57,7 @@ class QAPMLeakListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMLeakListener
  * JD-Core Version:    0.7.0.1
  */

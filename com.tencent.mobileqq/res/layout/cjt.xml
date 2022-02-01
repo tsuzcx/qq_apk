@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ibt" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/kw9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="#ffffffff" android:paddingTop="2.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="52.0dip">
-        <EditText android:textSize="14.0dip" android:textColor="#ff000000" android:textColorHint="#ffbbbbbb" android:layout_gravity="center" android:id="@id/byp" android:background="@drawable/dho" android:paddingLeft="10.0dip" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="50.0dip" android:hint="@string/wt9" android:cursorVisible="true" android:maxLines="5" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="flagNoFullscreen" android:textCursorDrawable="@drawable/bc" />
-        <View android:id="@id/ni1" android:layout_width="1.0dip" android:layout_height="50.0dip" android:layout_marginTop="1.0dip" />
-        <Button android:textSize="13.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center|right" android:id="@id/mo0" android:background="@drawable/dhp" android:visibility="visible" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="发送" android:shadowDx="1.0" android:shadowDy="1.0" />
+    <FrameLayout android:layout_gravity="center" android:id="@id/nc7" android:background="#ff222222" android:layout_width="200.0dip" android:layout_height="112.0dip" android:layout_margin="8.0dip" />
+    <FrameLayout android:layout_gravity="center" android:id="@id/nc9" android:layout_width="200.0dip" android:layout_height="112.0dip" android:layout_margin="8.0dip" />
+    <ImageView android:layout_gravity="end|center|top" android:id="@id/o84" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="7.5dip" android:src="@drawable/idc" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/nf2" android:background="@drawable/e78" android:layout_width="wrap_content" android:layout_height="16.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/o9z" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:id="@id/qmt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="4.0dip" android:text="主播暂时离开" android:includeFontPadding="false" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

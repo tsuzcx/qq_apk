@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="25.0dip" />
-    <solid android:color="@color/afu" />
-    <stroke android:width="0.5dip" android:color="@color/aju" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/ci8" />
+    <item android:state_enabled="false" android:drawable="@drawable/dit" />
+    <item android:state_enabled="true" android:drawable="@drawable/div" />
+</selector>

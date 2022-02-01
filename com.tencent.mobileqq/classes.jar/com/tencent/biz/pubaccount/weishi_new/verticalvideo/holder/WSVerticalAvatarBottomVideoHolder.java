@@ -11,34 +11,34 @@ public class WSVerticalAvatarBottomVideoHolder
     super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
   
-  public AbsWSVideoItemView a(int paramInt)
+  public void a(boolean paramBoolean)
+  {
+    ((WSVerticalVideoOperationRightItemView)this.c).c(paramBoolean);
+  }
+  
+  public AbsWSVideoItemView b(int paramInt)
   {
     return new WSVerticalVideoAvatarBottomItemView(getContext(), this);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    ((WSVerticalVideoOperationRightItemView)this.a).c(paramBoolean);
-  }
-  
   public void b(boolean paramBoolean)
   {
-    ((WSVerticalVideoOperationRightItemView)this.a).a(paramBoolean);
+    ((WSVerticalVideoOperationRightItemView)this.c).a(paramBoolean);
   }
   
-  public boolean b()
+  public boolean g()
   {
     return false;
   }
   
-  public boolean c()
+  public boolean h()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalAvatarBottomVideoHolder
  * JD-Core Version:    0.7.0.1
  */

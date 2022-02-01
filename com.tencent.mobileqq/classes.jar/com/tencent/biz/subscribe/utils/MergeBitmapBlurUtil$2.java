@@ -10,10 +10,10 @@ final class MergeBitmapBlurUtil$2
   
   public void run()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.a;
     if (localBitmap != null)
     {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.b;
       if (localImageView != null) {
         localImageView.setImageBitmap(localBitmap);
       }

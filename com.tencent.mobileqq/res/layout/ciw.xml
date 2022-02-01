@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bx4" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
+<RelativeLayout android:id="@id/dq8" android:background="@drawable/dsa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="51.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="30.0dip" android:layout_height="29.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/go2" android:scaleType="centerCrop" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/x5f" android:layout_weight="1.0" />
-    <ImageView android:layout_gravity="center_vertical" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/go5" android:scaleType="centerCrop" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="51.0dip" android:layout_alignParentTop="true">
+        <CheckBox android:id="@id/q0o" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/abi" />
+        <ImageView android:id="@id/o1g" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/aqt" android:ellipsize="end" android:gravity="center" android:id="@id/o3o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:maxWidth="200.0dip" android:minWidth="24.0dip" android:text="成员名字" android:singleLine="true" android:layout_toRightOf="@id/o1g" android:layout_centerVertical="true" />
+        <TextView android:textSize="9.0sp" android:textColor="#ffffffff" android:id="@id/o3c" android:background="@drawable/dn2" android:paddingLeft="@dimen/na" android:paddingRight="@dimen/na" android:layout_width="wrap_content" android:layout_height="13.0dip" android:layout_marginLeft="4.0dip" android:text="@string/x4v" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <ImageView android:gravity="center" android:id="@id/bfq" android:background="@drawable/ibv" android:focusable="false" android:clickable="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

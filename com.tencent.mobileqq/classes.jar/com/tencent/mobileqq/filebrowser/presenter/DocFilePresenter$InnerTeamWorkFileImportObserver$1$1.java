@@ -9,14 +9,14 @@ class DocFilePresenter$InnerTeamWorkFileImportObserver$1$1
   
   public void run()
   {
-    if (DocFilePresenter.a(this.a.a.a) != null) {
-      DocFilePresenter.a(this.a.a.a).d();
+    if (DocFilePresenter.a(this.a.c.a) != null) {
+      DocFilePresenter.a(this.a.c.a).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.DocFilePresenter.InnerTeamWorkFileImportObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

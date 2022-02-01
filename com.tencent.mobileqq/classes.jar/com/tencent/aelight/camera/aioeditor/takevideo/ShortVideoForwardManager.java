@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.aebase.AECameraPlugin;
 import com.tencent.aelight.camera.aioeditor.richmedia.capture.util.JumpUtil;
 import com.tencent.aelight.camera.aioeditor.takevideo.sendpanel.SendPanelItemInfo;
 import com.tencent.aelight.camera.log.AEQLog;
@@ -33,10 +34,10 @@ public class ShortVideoForwardManager
   public static Intent a(String paramString1, String paramString2, SendPanelItemInfo paramSendPanelItemInfo, String paramString3, String paramString4)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("uin", paramSendPanelItemInfo.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uin", paramSendPanelItemInfo.a);
     localIntent.putExtra("troop_uin", paramSendPanelItemInfo.b);
-    localIntent.putExtra("uintype", paramSendPanelItemInfo.jdField_a_of_type_Int);
-    localIntent.putExtra("from_uin_type", paramSendPanelItemInfo.jdField_a_of_type_Int);
+    localIntent.putExtra("uintype", paramSendPanelItemInfo.d);
+    localIntent.putExtra("from_uin_type", paramSendPanelItemInfo.d);
     localIntent.putExtra("forward_thumb", paramString2);
     localIntent.putExtra("thumbfile_send_path", paramString2);
     localIntent.putExtra("file_send_path", paramString1);
@@ -48,19 +49,19 @@ public class ShortVideoForwardManager
     paramString4 = new File(paramString1);
     if ((paramString4.exists()) && (new File(paramString2).exists()))
     {
-      String str = HexUtil.bytes2HexStr(FileManagerUtil.d(paramString1));
+      String str = HexUtil.bytes2HexStr(FileManagerUtil.g(paramString1));
       if (str == null)
       {
         QLog.e("ShortVideoForwardManager", 1, "video file md5 compute fail");
         return null;
       }
-      paramString3 = HexUtil.bytes2HexStr(FileManagerUtil.d(paramString2));
+      paramString3 = HexUtil.bytes2HexStr(FileManagerUtil.g(paramString2));
       if (paramString3 == null)
       {
         QLog.e("ShortVideoForwardManager", 1, "thumb file md5 compute fail");
         return null;
       }
-      paramSendPanelItemInfo.g = str;
+      paramSendPanelItemInfo.n = str;
       paramSendPanelItemInfo = new MediaMetadataUtils.MetaData();
       int i = MediaMetadataUtils.a(paramString1, paramSendPanelItemInfo);
       if (i != 0)
@@ -123,6 +124,72 @@ public class ShortVideoForwardManager
     paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
+  public static void a(Activity paramActivity, Intent paramIntent)
+  {
+    Object localObject = paramActivity.getIntent();
+    String str2 = "";
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = paramActivity.getIntent().getStringExtra("loc_play_show_tab_name");
+    }
+    String str1;
+    if (paramActivity.getIntent() == null) {
+      str1 = "";
+    } else {
+      str1 = paramActivity.getIntent().getStringExtra("loc_play_show_material_id");
+    }
+    if (paramActivity.getIntent() != null) {
+      str2 = paramActivity.getIntent().getStringExtra("key_camera_material_name");
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gotoForwardShortVideoUI---activity=");
+    localStringBuilder.append(paramActivity);
+    localStringBuilder.append(", takeSameName=");
+    localStringBuilder.append(str2);
+    AEQLog.b("ShortVideoForwardManager", localStringBuilder.toString());
+    try
+    {
+      boolean bool = str1.startsWith("http");
+      if (bool)
+      {
+        paramIntent.putExtra("widgetinfo", URLEncoder.encode(str1, "UTF-8"));
+        paramIntent.putExtra("qq_camera_scheme", JumpUtil.a(str1));
+        if (!TextUtils.isEmpty(str2))
+        {
+          paramIntent.putExtra("key_camera_material_name", str2);
+          paramIntent.putExtra("qq_camera_top_title", str2);
+          return;
+        }
+        paramIntent.putExtra("qq_camera_top_title", "魔法视频");
+        return;
+      }
+      if ((!StringUtil.isEmpty(str1)) && (!StringUtil.isEmpty((String)localObject)))
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("play^");
+        paramActivity.append(str1);
+        paramActivity.append("^");
+        paramActivity.append((String)localObject);
+        paramActivity = paramActivity.toString();
+        paramIntent.putExtra("widgetinfo", paramActivity);
+        paramIntent.putExtra("qq_camera_scheme", JumpUtil.a(paramActivity));
+        if (!TextUtils.isEmpty(str2))
+        {
+          paramIntent.putExtra("key_camera_material_name", str2);
+          paramIntent.putExtra("qq_camera_top_title", str2);
+          return;
+        }
+        paramIntent.putExtra("qq_camera_top_title", "魔法视频");
+        return;
+      }
+    }
+    catch (UnsupportedEncodingException paramActivity)
+    {
+      paramActivity.printStackTrace();
+    }
+  }
+  
   public static void a(Activity paramActivity, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
     a(paramActivity, paramString1, paramString2, paramBoolean, paramInt, null);
@@ -155,14 +222,14 @@ public class ShortVideoForwardManager
     File localFile = new File(paramString1);
     if ((localFile.exists()) && (new File(paramString2).exists()))
     {
-      String str = HexUtil.bytes2HexStr(FileManagerUtil.d(paramString1));
-      if (str == null)
+      String str2 = HexUtil.bytes2HexStr(FileManagerUtil.g(paramString1));
+      if (str2 == null)
       {
         QLog.e("ShortVideoForwardManager", 1, "video file md5 compute fail");
         return;
       }
-      Object localObject = HexUtil.bytes2HexStr(FileManagerUtil.d(paramString2));
-      if (localObject == null)
+      String str1 = HexUtil.bytes2HexStr(FileManagerUtil.g(paramString2));
+      if (str1 == null)
       {
         QLog.e("ShortVideoForwardManager", 1, "thumb file md5 compute fail");
         return;
@@ -181,7 +248,7 @@ public class ShortVideoForwardManager
       double d = k;
       Double.isNaN(d);
       localIntent.putExtra("file_send_duration", (int)Math.round(d / 1000.0D));
-      localIntent.putExtra("file_shortvideo_md5", str);
+      localIntent.putExtra("file_shortvideo_md5", str2);
       localIntent.putExtra("file_name", localFile.getName());
       localIntent.putExtra("file_width", i);
       localIntent.putExtra("file_height", j);
@@ -190,7 +257,7 @@ public class ShortVideoForwardManager
       BitmapFactory.decodeFile(paramString2, paramString1);
       localIntent.putExtra("thumbfile_send_width", paramString1.outWidth);
       localIntent.putExtra("thumbfile_send_height", paramString1.outHeight);
-      localIntent.putExtra("thumbfile_md5", (String)localObject);
+      localIntent.putExtra("thumbfile_md5", str1);
       localIntent.setClass(paramActivity, ForwardRecentActivity.class);
       if (TextUtils.isEmpty(paramString3)) {
         localIntent.putExtra("caller_name", paramActivity.getClass().getSimpleName());
@@ -229,68 +296,7 @@ public class ShortVideoForwardManager
         paramActivity.startActivityForResult(localIntent, paramInt);
         return;
       }
-      paramString1 = paramActivity.getIntent();
-      paramString3 = "";
-      if (paramString1 == null) {
-        paramString1 = "";
-      } else {
-        paramString1 = paramActivity.getIntent().getStringExtra("loc_play_show_tab_name");
-      }
-      if (paramActivity.getIntent() == null) {
-        paramString2 = "";
-      } else {
-        paramString2 = paramActivity.getIntent().getStringExtra("loc_play_show_material_id");
-      }
-      if (paramActivity.getIntent() != null) {
-        paramString3 = paramActivity.getIntent().getStringExtra("key_camera_material_name");
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("gotoForwardShortVideoUI---activity=");
-      ((StringBuilder)localObject).append(paramActivity);
-      ((StringBuilder)localObject).append(", takeSameName=");
-      ((StringBuilder)localObject).append(paramString3);
-      AEQLog.b("ShortVideoForwardManager", ((StringBuilder)localObject).toString());
-      try
-      {
-        if (paramString2.startsWith("http"))
-        {
-          localIntent.putExtra("widgetinfo", URLEncoder.encode(paramString2, "UTF-8"));
-          localIntent.putExtra("qq_camera_scheme", JumpUtil.a(paramString2));
-          if (!TextUtils.isEmpty(paramString3))
-          {
-            localIntent.putExtra("key_camera_material_name", paramString3);
-            localIntent.putExtra("qq_camera_top_title", paramString3);
-          }
-          else
-          {
-            localIntent.putExtra("qq_camera_top_title", "魔法视频");
-          }
-        }
-        else if ((!StringUtil.a(paramString2)) && (!StringUtil.a(paramString1)))
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("play^");
-          ((StringBuilder)localObject).append(paramString2);
-          ((StringBuilder)localObject).append("^");
-          ((StringBuilder)localObject).append(paramString1);
-          paramString1 = ((StringBuilder)localObject).toString();
-          localIntent.putExtra("widgetinfo", paramString1);
-          localIntent.putExtra("qq_camera_scheme", JumpUtil.a(paramString1));
-          if (!TextUtils.isEmpty(paramString3))
-          {
-            localIntent.putExtra("key_camera_material_name", paramString3);
-            localIntent.putExtra("qq_camera_top_title", paramString3);
-          }
-          else
-          {
-            localIntent.putExtra("qq_camera_top_title", "魔法视频");
-          }
-        }
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
+      a(paramActivity, localIntent);
       paramActivity.startActivityForResult(localIntent, paramInt);
       return;
     }
@@ -337,7 +343,7 @@ public class ShortVideoForwardManager
     }
     else if (paramBoolean2)
     {
-      localIntent.putExtra("forward_summary_extra", HardCodeUtil.a(2131713919));
+      localIntent.putExtra("forward_summary_extra", HardCodeUtil.a(2131911450));
     }
     if ((paramActivity != null) && (paramActivity.getIntent() != null))
     {
@@ -364,6 +370,9 @@ public class ShortVideoForwardManager
         }
       }
     }
+    if (((paramActivity instanceof PublicFragmentActivityForPeak)) || ((paramActivity instanceof QQBrowserActivity))) {
+      a(paramActivity, localIntent);
+    }
     if (paramBoolean2)
     {
       localObject = new StringBuilder();
@@ -383,6 +392,11 @@ public class ShortVideoForwardManager
     localIntent.putExtra("source", "msgTabCamera");
     if ((paramInt != 2) && (paramInt != 1))
     {
+      if (paramInt == 4)
+      {
+        ForwardBaseOption.a(paramActivity, "caller_aecamera", localIntent, AECameraPlugin.a(21), 100200);
+        return;
+      }
       ForwardBaseOption.a(paramActivity, localIntent, 21, 100200);
       return;
     }
@@ -391,7 +405,7 @@ public class ShortVideoForwardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.ShortVideoForwardManager
  * JD-Core Version:    0.7.0.1
  */

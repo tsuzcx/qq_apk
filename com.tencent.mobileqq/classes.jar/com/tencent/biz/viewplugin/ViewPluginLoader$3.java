@@ -35,35 +35,35 @@ class ViewPluginLoader$3
         if ((localObject != null) && (((String)localObject).endsWith("patch")))
         {
           paramString = new StringBuilder();
-          paramString.append(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a));
-          paramString.append(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
+          paramString.append(OfflineEnvHelper.b(this.b.d));
+          paramString.append(this.b.d);
           FileUtils.deleteDirectory(paramString.toString());
-          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.b();
+          this.b.b();
           return;
         }
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramInt != 0))
         {
-          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          this.b.a(paramString, this.a);
           return;
         }
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+        this.b.a();
         return;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+        this.b.a();
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+    this.b.a();
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.3
  * JD-Core Version:    0.7.0.1
  */

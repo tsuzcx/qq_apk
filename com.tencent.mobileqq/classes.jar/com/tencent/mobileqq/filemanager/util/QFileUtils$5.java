@@ -14,7 +14,7 @@ final class QFileUtils$5
   {
     try
     {
-      DirectForwarder.a(this.a, paramAsyncTask, paramInt, new QFileUtils.5.1(this));
+      DirectForwarder.a(this.b, paramAsyncTask, paramInt, new QFileUtils.5.1(this));
       super.a(paramAsyncTask, paramInt);
       return;
     }
@@ -26,7 +26,7 @@ final class QFileUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.5
  * JD-Core Version:    0.7.0.1
  */

@@ -62,11 +62,6 @@ public class TroopFansHandler
     notifyUI(TroopFansObserver.TYPE_GET_MEMBER_IDOLINFO, false, new Object[] { Long.valueOf(l), paramToServiceMsg, Integer.valueOf(i) });
   }
   
-  protected String a()
-  {
-    return "TroopFansHandler";
-  }
-  
   public void a(long paramLong)
   {
     Object localObject2 = new oidb_0xef6.ReqBody();
@@ -111,16 +106,16 @@ public class TroopFansHandler
       paramFromServiceMsg = (oidb_0xef7.IdolInfo)localRspBody.idol_info.get();
       paramObject = new TroopFansInfo.IdolItem();
       if (paramFromServiceMsg.name.has()) {
-        paramObject.jdField_a_of_type_JavaLangString = paramFromServiceMsg.name.get();
+        paramObject.b = paramFromServiceMsg.name.get();
       }
       if (paramFromServiceMsg.alias.has()) {
-        paramObject.b = paramFromServiceMsg.avatar.get();
+        paramObject.c = paramFromServiceMsg.avatar.get();
       }
       if (localRspBody.rank.has()) {
-        paramObject.jdField_a_of_type_Long = localRspBody.rank.get();
+        paramObject.e = localRspBody.rank.get();
       }
       ((ITroopFansService)this.appRuntime.getRuntimeService(ITroopFansService.class, "")).setTroopIdolInfoDate(paramToServiceMsg, paramObject);
-      notifyUI(TroopFansObserver.TYPE_NOTIFY_GET_FANS_TROOP_IDOL_INFO, true, new Object[] { paramToServiceMsg, paramObject.jdField_a_of_type_JavaLangString, Long.valueOf(paramObject.jdField_a_of_type_Long) });
+      notifyUI(TroopFansObserver.TYPE_NOTIFY_GET_FANS_TROOP_IDOL_INFO, true, new Object[] { paramToServiceMsg, paramObject.b, Long.valueOf(paramObject.e) });
       return;
     }
     notifyUI(TroopFansObserver.TYPE_NOTIFY_GET_FANS_TROOP_IDOL_INFO, false, null);
@@ -163,6 +158,11 @@ public class TroopFansHandler
     QLog.e("TroopFansHandler", 1, "getFansTroopIdolInfo_0xef7 parseLong troopUinStr exception");
   }
   
+  protected String dv_()
+  {
+    return "TroopFansHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.a == null)
@@ -195,7 +195,7 @@ public class TroopFansHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -223,7 +223,7 @@ public class TroopFansHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fans.handler.TroopFansHandler
  * JD-Core Version:    0.7.0.1
  */

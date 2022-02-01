@@ -14,14 +14,14 @@ public class StickerReloadFilter
   public List<ChatMessage> a(AIOContext paramAIOContext, List<ChatMessage> paramList)
   {
     StartupTracker.a(null, "AIO_BaseChatPie_Remove_Sticker_Cost");
-    EmojiStickerManager.a().a((BaseChatPie)paramAIOContext.a(), paramList);
+    EmojiStickerManager.a().a((BaseChatPie)paramAIOContext.f(), paramList);
     StartupTracker.a("AIO_BaseChatPie_Remove_Sticker_Cost", null);
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.StickerReloadFilter
  * JD-Core Version:    0.7.0.1
  */

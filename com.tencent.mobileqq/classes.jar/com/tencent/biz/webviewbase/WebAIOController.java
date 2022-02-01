@@ -21,54 +21,54 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WebAIOController
 {
-  static volatile boolean jdField_b_of_type_Boolean = false;
-  static volatile boolean jdField_c_of_type_Boolean = false;
-  int jdField_a_of_type_Int = 2130851230;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new WebAIOController.2(this);
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  OnRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver = new WebAIOController.3(this);
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  String jdField_b_of_type_JavaLangString = "";
-  int jdField_c_of_type_Int = 360000;
-  String jdField_c_of_type_JavaLangString = "";
-  int jdField_d_of_type_Int = 0;
-  String jdField_d_of_type_JavaLangString = "";
+  static volatile boolean n = false;
+  static volatile boolean o = false;
+  boolean a = false;
+  int b = 2130853487;
+  int c = -1;
+  String d = "";
+  int e = 360000;
+  View f;
+  String g = "";
+  int h = 0;
+  String i = "";
+  String j = "";
+  Context k;
+  ImageView l;
+  ImageView m;
+  BroadcastReceiver p = new WebAIOController.2(this);
+  OnRemoteRespObserver q = new WebAIOController.3(this);
   
   void a()
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidContentContext;
-    if ((localObject2 != null) && (this.jdField_a_of_type_Boolean))
+    Object localObject2 = this.k;
+    if ((localObject2 != null) && (this.a))
     {
-      Object localObject1 = this.jdField_a_of_type_AndroidViewView;
+      Object localObject1 = this.f;
       if (!(localObject1 instanceof RelativeLayout)) {
         return;
       }
       localObject1 = (RelativeLayout)localObject1;
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView((Context)localObject2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850766));
-      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(this.jdField_a_of_type_Int));
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new WebAIOController.1(this));
-      localObject2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      this.l = new ImageView((Context)localObject2);
+      this.l.setImageDrawable(this.k.getResources().getDrawable(2130852588));
+      this.m = new ImageView(this.k);
+      this.m.setImageDrawable(this.k.getResources().getDrawable(this.b));
+      this.m.setOnClickListener(new WebAIOController.1(this));
+      localObject2 = new RelativeLayout(this.k);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13, -1);
-      ((RelativeLayout)localObject2).addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+      ((RelativeLayout)localObject2).addView(this.m, localLayoutParams);
+      localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.a(this.k, 8.0F), DisplayUtil.a(this.k, 8.0F));
       localLayoutParams.addRule(10, -1);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.setMargins(0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), 0);
-      ((RelativeLayout)localObject2).addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 36.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 36.0F));
-      localLayoutParams.addRule(0, 2131376756);
+      localLayoutParams.setMargins(0, DisplayUtil.a(this.k, 4.0F), DisplayUtil.a(this.k, 4.0F), 0);
+      ((RelativeLayout)localObject2).addView(this.l, localLayoutParams);
+      localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.a(this.k, 36.0F), DisplayUtil.a(this.k, 36.0F));
+      localLayoutParams.addRule(0, 2131445049);
       localLayoutParams.addRule(15, -1);
-      localLayoutParams.setMargins(0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), 0);
+      localLayoutParams.setMargins(0, 0, DisplayUtil.a(this.k, 4.0F), 0);
       ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.l.setVisibility(8);
     }
   }
   
@@ -90,15 +90,15 @@ public class WebAIOController
       a(((Boolean)paramVarArgs[0]).booleanValue());
       return;
     }
-    paramVarArgs = DataFactory.a("ipc_jump_to_conversation", "", this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, null);
+    paramVarArgs = DataFactory.a("ipc_jump_to_conversation", "", this.q.key, null);
     paramVarArgs.putInt("banner_msg", paramInt);
-    paramVarArgs.putCharSequence("banner_tips", this.jdField_a_of_type_JavaLangString);
-    paramVarArgs.putInt("banner_icon", this.jdField_b_of_type_Int);
-    paramVarArgs.putInt("banner_timeout", this.jdField_c_of_type_Int);
-    paramVarArgs.putCharSequence("activity", this.jdField_b_of_type_JavaLangString);
-    paramVarArgs.putInt("flags", this.jdField_d_of_type_Int);
-    paramVarArgs.putCharSequence("action", this.jdField_c_of_type_JavaLangString);
-    paramVarArgs.putCharSequence("category", this.jdField_d_of_type_JavaLangString);
+    paramVarArgs.putCharSequence("banner_tips", this.d);
+    paramVarArgs.putInt("banner_icon", this.c);
+    paramVarArgs.putInt("banner_timeout", this.e);
+    paramVarArgs.putCharSequence("activity", this.g);
+    paramVarArgs.putInt("flags", this.h);
+    paramVarArgs.putCharSequence("action", this.i);
+    paramVarArgs.putCharSequence("category", this.j);
     a(paramVarArgs);
   }
   
@@ -128,23 +128,23 @@ public class WebAIOController
   
   void a(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.l;
     if (localImageView != null)
     {
-      int i;
+      int i1;
       if (paramBoolean) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 8;
+        i1 = 8;
       }
-      localImageView.setVisibility(i);
+      localImageView.setVisibility(i1);
     }
   }
   
   void b()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Boolean)
+    long l1 = System.currentTimeMillis();
+    if (this.a)
     {
       d();
       c();
@@ -154,7 +154,7 @@ public class WebAIOController
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("init for switch aio cost ");
-      localStringBuilder.append(System.currentTimeMillis() - l);
+      localStringBuilder.append(System.currentTimeMillis() - l1);
       localStringBuilder.append("ms");
       QLog.d("AIOBanner", 2, localStringBuilder.toString());
     }
@@ -170,7 +170,7 @@ public class WebAIOController
       if (paramVarArgs.length < 1) {
         return;
       }
-      this.jdField_b_of_type_Int = ((Integer)paramVarArgs[0]).intValue();
+      this.c = ((Integer)paramVarArgs[0]).intValue();
       return;
     case 1135044: 
       if (paramVarArgs.length >= 1)
@@ -182,34 +182,34 @@ public class WebAIOController
         if (TextUtils.isEmpty(paramVarArgs)) {
           return;
         }
-        this.jdField_a_of_type_JavaLangString = paramVarArgs;
+        this.d = paramVarArgs;
         return;
       }
       return;
     }
-    if (jdField_b_of_type_Boolean)
+    if (n)
     {
       a(false);
       return;
     }
-    if ((jdField_c_of_type_Boolean) && (!jdField_b_of_type_Boolean)) {
+    if ((o) && (!n)) {
       a(true);
     }
   }
   
   void c()
   {
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.msg.newmessage"));
+    this.k.registerReceiver(this.p, new IntentFilter("com.tencent.msg.newmessage"));
   }
   
   void d()
   {
     try
     {
-      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.q);
       if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
       {
-        ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+        ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(this.k.getApplicationContext());
         return;
       }
     }
@@ -227,7 +227,7 @@ public class WebAIOController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.WebAIOController
  * JD-Core Version:    0.7.0.1
  */

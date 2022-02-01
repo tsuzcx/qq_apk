@@ -21,18 +21,18 @@ class HotChatPie$16$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.c = new ReportDialog(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), 2131756189);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.c.setContentView(2131558463);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.c.setCancelable(true);
-    ((TextView)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.c.findViewById(2131365644)).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getString(2131718766));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.c.show();
-    ((IHotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).kickHotChatMember(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
+    this.a.d.bX = new ReportDialog(this.a.d.aX(), 2131953338);
+    this.a.d.bX.setContentView(2131623999);
+    this.a.d.bX.setCancelable(true);
+    ((TextView)this.a.d.bX.findViewById(2131431876)).setText(this.a.d.aX().getString(2131916272));
+    this.a.d.bX.show();
+    ((IHotChatHandler)this.a.d.d.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).kickHotChatMember(this.a.d.ah.b, this.a.d.ah.c, this.a.b.senderuin, this.a.c, 1);
+    ReportController.b(this.a.d.d, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.16.1
  * JD-Core Version:    0.7.0.1
  */

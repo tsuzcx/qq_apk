@@ -10,7 +10,6 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -18,18 +17,15 @@ import com.tencent.mobileqq.troop.api.ITroopInfoService;
 import com.tencent.mobileqq.troop.handler.TroopBaseHandler;
 import com.tencent.mobileqq.troop.troopsetting.api.ITroopSettingHandler;
 import com.tencent.mobileqq.troop.troopsetting.api.TroopSettingObserver;
-import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
 import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
 import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
 import tencent.im.oidb.cmd0x91c.cmd0x91c.ReqBody;
@@ -87,7 +83,7 @@ public class TroopSettingHandler
             paramToServiceMsg.append(paramFromServiceMsg.int32_result.get());
             QLog.i("TroopSettingHandler", 2, paramToServiceMsg.toString());
           }
-          notifyUI(TroopSettingObserver.a, true, new Object[] { str, Integer.valueOf(paramFromServiceMsg.int32_result.get()) });
+          notifyUI(TroopSettingObserver.b, true, new Object[] { str, Integer.valueOf(paramFromServiceMsg.int32_result.get()) });
           return;
         }
       }
@@ -98,7 +94,7 @@ public class TroopSettingHandler
         paramToServiceMsg.append(i);
         QLog.i("TroopSettingHandler", 2, paramToServiceMsg.toString());
       }
-      notifyUI(TroopSettingObserver.a, false, new Object[] { str, Integer.valueOf(0) });
+      notifyUI(TroopSettingObserver.b, false, new Object[] { str, Integer.valueOf(0) });
       return;
     }
     if (QLog.isColorLevel()) {
@@ -115,7 +111,7 @@ public class TroopSettingHandler
       }
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopSettingObserver.b, false, null);
+        notifyUI(TroopSettingObserver.c, false, null);
         return;
       }
       paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -129,12 +125,12 @@ public class TroopSettingHandler
         try
         {
           paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          notifyUI(TroopSettingObserver.b, true, new Object[] { String.valueOf(paramFromServiceMsg.uint64_group_code.get()), Integer.valueOf(paramFromServiceMsg.uint64_application_submit_time.get()) });
+          notifyUI(TroopSettingObserver.c, true, new Object[] { String.valueOf(paramFromServiceMsg.uint64_group_code.get()), Integer.valueOf(paramFromServiceMsg.uint64_application_submit_time.get()) });
           return;
         }
         catch (InvalidProtocolBufferMicroException paramToServiceMsg)
         {
-          notifyUI(TroopSettingObserver.b, false, null);
+          notifyUI(TroopSettingObserver.c, false, null);
           if (QLog.isColorLevel())
           {
             paramFromServiceMsg = new StringBuilder();
@@ -145,7 +141,7 @@ public class TroopSettingHandler
           return;
         }
       }
-      notifyUI(TroopSettingObserver.b, false, null);
+      notifyUI(TroopSettingObserver.c, false, null);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramToServiceMsg)
@@ -153,7 +149,7 @@ public class TroopSettingHandler
       label225:
       break label225;
     }
-    notifyUI(TroopSettingObserver.b, false, null);
+    notifyUI(TroopSettingObserver.c, false, null);
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -179,7 +175,7 @@ public class TroopSettingHandler
     }
     if (!paramFromServiceMsg.isSuccess())
     {
-      notifyUI(TroopSettingObserver.c, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
+      notifyUI(TroopSettingObserver.d, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
       return;
     }
     paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -202,7 +198,7 @@ public class TroopSettingHandler
         }
         if (i != 0)
         {
-          notifyUI(TroopSettingObserver.c, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
+          notifyUI(TroopSettingObserver.d, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
           return;
         }
         paramFromServiceMsg = new oidb_cmd0xa80.RspBody();
@@ -238,7 +234,7 @@ public class TroopSettingHandler
           paramFromServiceMsg.append("handle_oidb_0xa80_0:");
           paramFromServiceMsg.append(paramToServiceMsg.toString());
           QLog.d(".troop.closeRcvMsgTmp", 2, paramFromServiceMsg.toString());
-          notifyUI(TroopSettingObserver.c, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
+          notifyUI(TroopSettingObserver.d, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
           return;
         }
         paramObject = (ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "");
@@ -260,7 +256,7 @@ public class TroopSettingHandler
         paramFromServiceMsg.append("handle_oidb_0xa80_0, pkg.mergeFrom:");
         paramFromServiceMsg.append(paramToServiceMsg.toString());
         QLog.e(".troop.closeRcvMsgTmp", 2, paramFromServiceMsg.toString());
-        notifyUI(TroopSettingObserver.c, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
+        notifyUI(TroopSettingObserver.d, false, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
         return;
       }
       paramToServiceMsg.setCmdUinFlagEx2(bool, k);
@@ -270,7 +266,7 @@ public class TroopSettingHandler
       }
       if (i == 0)
       {
-        notifyUI(TroopSettingObserver.c, true, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
+        notifyUI(TroopSettingObserver.d, true, new Object[] { str1, str2, Integer.valueOf(j), Integer.valueOf(k) });
         return;
       }
       label812:
@@ -336,7 +332,7 @@ public class TroopSettingHandler
     label203:
     boolean bool = false;
     label206:
-    notifyUI(TroopSettingObserver.d, bool, new Object[] { Boolean.valueOf(paramToServiceMsg.extraData.getBoolean("switch", false)) });
+    notifyUI(TroopSettingObserver.e, bool, new Object[] { Boolean.valueOf(paramToServiceMsg.extraData.getBoolean("switch", false)) });
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -423,29 +419,13 @@ public class TroopSettingHandler
     bool1 = false;
     j = 1;
     label305:
-    i = TroopSettingObserver.e;
+    i = TroopSettingObserver.f;
     if (j == 0) {
       bool2 = bool3;
     } else {
       bool2 = false;
     }
     notifyUI(i, bool1, new Object[] { Boolean.valueOf(bool2) });
-  }
-  
-  protected String a()
-  {
-    return "TroopSettingHandler";
-  }
-  
-  public void a()
-  {
-    Object localObject = new oidb_0x5eb.ReqBody();
-    long l = Long.parseLong(this.appRuntime.getCurrentAccountUin());
-    ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.add(Long.valueOf(l));
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_invite2group_auto_agree_flag.set(1);
-    localObject = makeOIDBPkg("OidbSvc.0x5eb_94", 1515, 94, ((oidb_0x5eb.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).extraData.putBoolean("OidbSvc.0x5eb_94", true);
-    sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(String paramString)
@@ -648,13 +628,9 @@ public class TroopSettingHandler
     }
   }
   
-  public void a(boolean paramBoolean)
+  protected String dv_()
   {
-    Object localObject = ByteBuffer.allocate(13);
-    ((ByteBuffer)localObject).putInt(Utils.a(Long.parseLong(this.appRuntime.getCurrentAccountUin()))).put((byte)0).putShort((short)1).putShort((short)-25190).putShort((short)2).putShort(paramBoolean ^ true);
-    localObject = makeOIDBPkg("OidbSvc.0x4ff_86", 1279, 86, ((ByteBuffer)localObject).array());
-    ((ToServiceMsg)localObject).extraData.putBoolean("switch", paramBoolean);
-    sendPbReq((ToServiceMsg)localObject);
+    return "TroopSettingHandler";
   }
   
   public Set<String> getCommandList()
@@ -692,7 +668,7 @@ public class TroopSettingHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -735,7 +711,7 @@ public class TroopSettingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.api.impl.TroopSettingHandler
  * JD-Core Version:    0.7.0.1
  */

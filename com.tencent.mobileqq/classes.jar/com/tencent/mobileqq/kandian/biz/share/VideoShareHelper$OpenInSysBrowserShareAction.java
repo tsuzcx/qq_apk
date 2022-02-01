@@ -34,7 +34,7 @@ class VideoShareHelper$OpenInSysBrowserShareAction
     paramAbsBaseArticleInfo.putExtra("normal", true);
     try
     {
-      VideoShareHelper.a(this.a).startActivity(paramAbsBaseArticleInfo);
+      VideoShareHelper.f(this.a).startActivity(paramAbsBaseArticleInfo);
       return;
     }
     catch (ActivityNotFoundException paramAbsBaseArticleInfo)
@@ -42,7 +42,7 @@ class VideoShareHelper$OpenInSysBrowserShareAction
       label115:
       break label115;
     }
-    QRUtils.a(1, 2131695222);
+    QRUtils.a(1, 2131892956);
   }
   
   public int c()
@@ -52,7 +52,7 @@ class VideoShareHelper$OpenInSysBrowserShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.OpenInSysBrowserShareAction
  * JD-Core Version:    0.7.0.1
  */

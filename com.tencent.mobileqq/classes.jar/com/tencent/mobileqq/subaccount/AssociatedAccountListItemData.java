@@ -2,30 +2,22 @@ package com.tencent.mobileqq.subaccount;
 
 public class AssociatedAccountListItemData
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
+  public int a = 0;
   public String b;
-  public boolean b;
-  public int c = 0;
   public String c;
-  public int d;
-  public String d;
-  public int e = 0;
-  
-  public AssociatedAccountListItemData()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-  }
+  public int d = 0;
+  public String e;
+  public int f = 0;
+  public int g;
+  public String h;
+  public boolean i = true;
+  public int j = 0;
+  public boolean k = false;
+  public Object l;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.AssociatedAccountListItemData
  * JD-Core Version:    0.7.0.1
  */

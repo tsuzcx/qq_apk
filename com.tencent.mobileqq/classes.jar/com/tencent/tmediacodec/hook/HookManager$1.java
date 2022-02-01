@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-final class HookManager$1
+class HookManager$1
   implements THookTextureView.SurfaceTextureHookCallback
 {
   public boolean onSurfaceTextureDestroyedCalled(@Nullable SurfaceTexture paramSurfaceTexture)
@@ -32,7 +32,7 @@ final class HookManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.hook.HookManager.1
  * JD-Core Version:    0.7.0.1
  */

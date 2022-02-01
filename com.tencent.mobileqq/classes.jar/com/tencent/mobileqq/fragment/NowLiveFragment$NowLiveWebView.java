@@ -30,33 +30,32 @@ final class NowLiveFragment$NowLiveWebView
   implements TouchWebView.OnScrollChangedListener
 {
   public int a;
-  public boolean a;
   public boolean b = false;
-  boolean c = false;
+  public boolean c = false;
+  boolean d = false;
   
   public NowLiveFragment$NowLiveWebView(NowLiveFragment paramNowLiveFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
     super(paramContext, paramActivity, paramAppInterface);
-    this.jdField_a_of_type_Boolean = false;
     super.preInitPluginEngine();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     long l;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {
+    if (this.e.b != null) {
       l = System.currentTimeMillis();
     } else {
       l = 0L;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     AuthorizeConfig.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(NearbyActivity.nearByTabUrl);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e.g);
     localStringBuilder.append("&_t=");
     localStringBuilder.append(System.currentTimeMillis());
     localStringBuilder.append(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getUrlJsonToStr(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getLiveTabWebViewUrlByJson()));
@@ -64,8 +63,8 @@ final class NowLiveFragment$NowLiveWebView
     this.mWebview = new TouchWebView(this.mContext);
     this.mWebview.getSettings().setMediaPlaybackRequiresUserGesture(false);
     buildBaseWebView(this.mInterface);
-    this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-    if (this.c) {
+    this.d = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+    if (this.d) {
       this.mWebview.setMask(true);
     }
     this.mWebview.setBackgroundColor(-1);
@@ -78,15 +77,15 @@ final class NowLiveFragment$NowLiveWebView
     if (QLog.isColorLevel()) {
       NearbyUtils.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.mUrl });
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mNowInitWebViewTime == 0L))
+    if ((this.e.b != null) && (this.e.b.mNowInitWebViewTime == 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mNowInitWebViewTime = (System.currentTimeMillis() - l);
+      this.e.b.mNowInitWebViewTime = (System.currentTimeMillis() - l);
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mNowInitWebViewTime) });
+        NearbyUtils.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.e.b.mNowInitWebViewTime) });
       }
     }
-    if (!NowLiveFragment.b()) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(NowLiveFragment.a(), 5000L);
+    if (!NowLiveFragment.i()) {
+      this.e.l.postDelayed(NowLiveFragment.j(), 5000L);
     }
   }
   
@@ -119,30 +118,30 @@ final class NowLiveFragment$NowLiveWebView
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
+    if (this.e.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+      this.e.aj.b(false).c(true);
+      this.e.aj.a();
     }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
+    this.c = true;
+    if (this.e.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+      this.e.aj.b(true).c(true);
+      this.e.aj.a();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_AndroidViewView.getVisibility() != 8)) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if ((this.e.a != null) && (this.e.a.getVisibility() != 8)) {
+      this.e.a.setVisibility(8);
     }
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     if (this.mWebview != null) {
-      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
+      this.a = this.mWebview.getWebScrollY();
     }
   }
   
@@ -153,14 +152,14 @@ final class NowLiveFragment$NowLiveWebView
     {
       paramWebView = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
       paramWebView.addFlags(268435456);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.startActivity(paramWebView);
+      this.e.startActivity(paramWebView);
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView
  * JD-Core Version:    0.7.0.1
  */

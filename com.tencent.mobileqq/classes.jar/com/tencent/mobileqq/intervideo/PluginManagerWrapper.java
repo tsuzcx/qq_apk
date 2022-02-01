@@ -14,17 +14,17 @@ import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
 public class PluginManagerWrapper
   implements IVPluginManager
 {
-  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-  private DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private final PluginManagerUpdater jdField_a_of_type_ComTencentShadowDynamicHostPluginManagerUpdater;
-  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
-  private final String b;
+  private final String a = "shadow::PluginManagerWrapper";
+  private final PluginManagerUpdater b;
+  private final String c;
+  private IVPluginDataReporter d = new IVPluginDataReporter();
+  private DynamicPluginManager e;
   
   public PluginManagerWrapper(String paramString, PluginManagerUpdater paramPluginManagerUpdater)
   {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManagerUpdater = paramPluginManagerUpdater;
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = new DynamicPluginManager(paramPluginManagerUpdater);
+    this.b = paramPluginManagerUpdater;
+    this.c = paramString;
+    this.e = new DynamicPluginManager(paramPluginManagerUpdater);
   }
   
   public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
@@ -53,10 +53,10 @@ public class PluginManagerWrapper
       localStringBuilder1.append(paramEnterCallback);
       QLog.i("shadow::PluginManagerWrapper", 2, localStringBuilder1.toString());
     }
-    ((IPluginEnterManager)QRoute.api(IPluginEnterManager.class)).switchBiz(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    ((IPluginEnterManager)QRoute.api(IPluginEnterManager.class)).switchBiz(this.c, this.e);
     try
     {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      this.e.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
     }
     catch (Exception localException)
     {
@@ -64,17 +64,17 @@ public class PluginManagerWrapper
       localStringBuilder2.append("enter exception :");
       localStringBuilder2.append(localException.getMessage());
       QLog.i("shadow::PluginManagerWrapper", 2, localStringBuilder2.toString());
-      this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = new DynamicPluginManager(this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManagerUpdater);
-      ((IPluginEnterManager)QRoute.api(IPluginEnterManager.class)).switchBiz(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-      this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      this.e = new DynamicPluginManager(this.b);
+      ((IPluginEnterManager)QRoute.api(IPluginEnterManager.class)).switchBiz(this.c, this.e);
+      this.e.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
     }
-    if ("Now".equals(this.b)) {
+    if ("Now".equals(this.c)) {
       paramContext = "33669800";
     } else {
       paramContext = "33669805";
     }
     Monitor.b(paramContext);
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(this.b).opType("enter");
+    paramContext = this.d.opDepartment("shadow").opName(this.c).opType("enter");
     paramBundle = new StringBuilder();
     paramBundle.append(paramLong);
     paramBundle.append("");
@@ -83,7 +83,7 @@ public class PluginManagerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.PluginManagerWrapper
  * JD-Core Version:    0.7.0.1
  */

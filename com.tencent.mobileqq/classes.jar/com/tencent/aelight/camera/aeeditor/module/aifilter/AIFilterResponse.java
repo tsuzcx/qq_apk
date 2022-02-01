@@ -6,17 +6,17 @@ import java.util.List;
 public class AIFilterResponse
 {
   public String a;
-  public List<YoutuResultItem> a;
+  public List<YoutuResultItem> b;
   
   public AIFilterResponse(String paramString, List<YoutuResultItem> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramString;
+    this.b = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.AIFilterResponse
  * JD-Core Version:    0.7.0.1
  */

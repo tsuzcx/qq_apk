@@ -26,7 +26,7 @@ class MarketFaceItemBuilder$7
     if (paramList.hasNext())
     {
       Emoticon localEmoticon = (Emoticon)paramList.next();
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.B.iterator();
       boolean bool;
       do
       {
@@ -36,15 +36,15 @@ class MarketFaceItemBuilder$7
           break;
         }
         paramList = (MarketFaceItemBuilder.Holder)localIterator.next();
-      } while ((paramList.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo == null) || (!paramEmoticonPackage.epId.equals(paramList.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId)));
-      paramBoolean = paramList.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if ((paramList.jdField_a_of_type_Boolean) && (paramList.e.hasWindowFocus())) {
+      } while ((paramList.a == null) || (!paramEmoticonPackage.epId.equals(paramList.a.getEmoticon().epId)));
+      paramBoolean = paramList.q;
+      if ((paramList.x) && (paramList.s.hasWindowFocus())) {
         bool = true;
       } else {
         bool = false;
       }
       Boolean localBoolean = Boolean.valueOf(bool);
-      paramList.jdField_a_of_type_Boolean = false;
+      paramList.x = false;
       paramEmoticonPackage = paramList;
       paramList = localBoolean;
       break label158;
@@ -58,11 +58,11 @@ class MarketFaceItemBuilder$7
         if (paramBoolean != null)
         {
           paramBoolean = paramBoolean.senderuin;
-          ((BaseActivity)this.a.b).runOnUiThread(new MarketFaceItemBuilder.7.2(this, localEmoticon, paramBoolean, paramEmoticonPackage));
+          ((BaseActivity)this.a.A).runOnUiThread(new MarketFaceItemBuilder.7.2(this, localEmoticon, paramBoolean, paramEmoticonPackage));
         }
       }
       else if ((localEmoticon != null) && (localEmoticon.jobType == 4)) {
-        ((BaseActivity)this.a.b).runOnUiThread(new MarketFaceItemBuilder.7.3(this, paramEmoticonPackage, localEmoticon));
+        ((BaseActivity)this.a.A).runOnUiThread(new MarketFaceItemBuilder.7.3(this, paramEmoticonPackage, localEmoticon));
       }
     }
   }
@@ -73,41 +73,41 @@ class MarketFaceItemBuilder$7
     MarketFaceItemBuilder.Holder localHolder;
     if (paramInt != 0)
     {
-      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.a.B.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
         localHolder = (MarketFaceItemBuilder.Holder)((Iterator)localObject).next();
-      } while ((localHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo == null) || (!paramEmoticonPackage.epId.equals(localHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId)));
+      } while ((localHolder.a == null) || (!paramEmoticonPackage.epId.equals(localHolder.a.getEmoticon().epId)));
       if (QLog.isColorLevel()) {
         QLog.d("MarketFaceItemBuilder", 2, "Download magic Emoji fail!");
       }
-      ((BaseActivity)this.a.b).runOnUiThread(new MarketFaceItemBuilder.7.1(this, localHolder));
-      this.a.jdField_a_of_type_JavaUtilList.remove(localHolder);
+      ((BaseActivity)this.a.A).runOnUiThread(new MarketFaceItemBuilder.7.1(this, localHolder));
+      this.a.B.remove(localHolder);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a())
+    if (this.a.d.getMessageFacade().n())
     {
       if (paramEmoticonPackage == null) {
         return;
       }
-      localObject = ((IEmoticonManagerService)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).syncGetSubEmoticonsByPackageId(paramEmoticonPackage.epId);
+      localObject = ((IEmoticonManagerService)this.a.d.getRuntimeService(IEmoticonManagerService.class)).syncGetSubEmoticonsByPackageId(paramEmoticonPackage.epId);
       if (localObject == null) {
         return;
       }
       a(paramEmoticonPackage, Boolean.valueOf(false), (List)localObject);
-      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.a.B.iterator();
       while (((Iterator)localObject).hasNext())
       {
         localHolder = (MarketFaceItemBuilder.Holder)((Iterator)localObject).next();
-        if ((localHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo != null) && (paramEmoticonPackage.epId.equals(localHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId)))
+        if ((localHolder.a != null) && (paramEmoticonPackage.epId.equals(localHolder.a.getEmoticon().epId)))
         {
-          if (localHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().jobType == 2) {
-            VasUtils.a(this.a.b, null);
+          if (localHolder.a.getEmoticon().jobType == 2) {
+            VasUtils.a(this.a.A, null);
           }
-          this.a.jdField_a_of_type_JavaUtilList.remove(localHolder);
+          this.a.B.remove(localHolder);
         }
       }
     }
@@ -115,7 +115,7 @@ class MarketFaceItemBuilder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

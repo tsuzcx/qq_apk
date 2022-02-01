@@ -2,43 +2,43 @@ package com.tencent.aelight.camera.ae.data;
 
 public class AEGiftMaterial
 {
-  long jdField_a_of_type_Long;
-  AEARCakeMaterial jdField_a_of_type_ComTencentAelightCameraAeDataAEARCakeMaterial;
-  String jdField_a_of_type_JavaLangString;
+  long a;
   String b;
-  
-  public AEARCakeMaterial a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeDataAEARCakeMaterial;
-  }
+  AEARCakeMaterial c;
+  String d;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public String b()
   {
-    return this.b;
+    return this.d;
+  }
+  
+  public AEARCakeMaterial c()
+  {
+    return this.c;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AEGiftMaterial{giftuin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", materialInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEARCakeMaterial);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEGiftMaterial
  * JD-Core Version:    0.7.0.1
  */

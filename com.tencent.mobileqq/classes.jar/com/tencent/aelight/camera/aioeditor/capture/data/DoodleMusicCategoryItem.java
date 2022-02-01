@@ -11,25 +11,25 @@ public class DoodleMusicCategoryItem
   implements Cloneable
 {
   public int a;
-  public String a;
-  public List<MusicItemInfo> a;
-  public boolean a;
-  public boolean b = true;
+  public boolean b;
+  public String c;
+  public List<MusicItemInfo> d;
+  public boolean e = true;
   
   public DoodleMusicCategoryItem() {}
   
   public DoodleMusicCategoryItem(JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("categoryName")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("categoryName");
+      this.c = paramJSONObject.getString("categoryName");
     }
     if (paramJSONObject.has("tagid")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("tagid");
+      this.a = paramJSONObject.getInt("tagid");
     }
     if (paramJSONObject.has("enabled")) {
-      this.b = paramJSONObject.getBoolean("enabled");
+      this.e = paramJSONObject.getBoolean("enabled");
     }
-    this.jdField_a_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position"));
+    this.b = "1".equals(paramJSONObject.optString("random_position"));
     if (paramJSONObject.has("content"))
     {
       paramJSONObject = paramJSONObject.getJSONArray("content");
@@ -38,12 +38,12 @@ public class DoodleMusicCategoryItem
       while (i < paramJSONObject.length())
       {
         MusicItemInfo localMusicItemInfo = new MusicItemInfo(paramJSONObject.optString(i));
-        localMusicItemInfo.mTagName = this.jdField_a_of_type_JavaLangString;
+        localMusicItemInfo.mTagName = this.c;
         localMusicItemInfo.isWsBanner();
         localArrayList.add(localMusicItemInfo);
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilList = localArrayList;
+      this.d = localArrayList;
     }
   }
   
@@ -63,7 +63,7 @@ public class DoodleMusicCategoryItem
   
   public MusicItemInfo a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -80,7 +80,7 @@ public class DoodleMusicCategoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.DoodleMusicCategoryItem
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class QRJumpActivity$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRJumpActivity.isFinishing()) {
+    if (this.e.isFinishing()) {
       return;
     }
     boolean bool = QLog.isColorLevel();
@@ -87,7 +87,7 @@ class QRJumpActivity$2
           paramBundle.putString("exttype", str);
           paramBundle.putString("extvalue", (String)localObject);
         }
-        paramBundle.putString("authKey", this.jdField_a_of_type_JavaLangString);
+        paramBundle.putString("authKey", this.a);
         paramBundle.putString("authSig", this.b);
       }
       catch (Exception localException)
@@ -99,16 +99,16 @@ class QRJumpActivity$2
       localQRActionEntity = null;
       paramBundle = str;
       if (paramBundle != null) {
-        QRResultHandler.a(QRJumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRJumpActivity), this.jdField_a_of_type_AndroidAppActivity, localQRActionEntity, this.c, paramBundle);
+        QRResultHandler.a(QRJumpActivity.a(this.e), this.c, localQRActionEntity, this.d, paramBundle);
       }
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.c.finish();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRJumpActivity.2
  * JD-Core Version:    0.7.0.1
  */

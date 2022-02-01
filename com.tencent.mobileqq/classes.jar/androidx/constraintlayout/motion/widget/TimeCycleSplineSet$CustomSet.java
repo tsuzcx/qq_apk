@@ -35,10 +35,17 @@ class TimeCycleSplineSet$CustomSet
   public boolean setProperty(View paramView, float paramFloat, long paramLong, KeyCache paramKeyCache)
   {
     this.mCurveFit.getPos(paramFloat, this.mTempValues);
-    paramKeyCache = this.mTempValues;
-    paramFloat = paramKeyCache[(paramKeyCache.length - 2)];
-    float f1 = paramKeyCache[(paramKeyCache.length - 1)];
+    float[] arrayOfFloat = this.mTempValues;
+    paramFloat = arrayOfFloat[(arrayOfFloat.length - 2)];
+    float f1 = arrayOfFloat[(arrayOfFloat.length - 1)];
     long l = this.last_time;
+    if (Float.isNaN(this.last_cycle))
+    {
+      this.last_cycle = paramKeyCache.getFloatValue(paramView, this.mAttributeName, 0);
+      if (Float.isNaN(this.last_cycle)) {
+        this.last_cycle = 0.0F;
+      }
+    }
     double d1 = this.last_cycle;
     double d2 = paramLong - l;
     Double.isNaN(d2);
@@ -108,7 +115,7 @@ class TimeCycleSplineSet$CustomSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.TimeCycleSplineSet.CustomSet
  * JD-Core Version:    0.7.0.1
  */

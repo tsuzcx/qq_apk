@@ -21,18 +21,18 @@ class LoginView$11
       paramView.append("mScrollRootView.setOnTouch action=");
       paramView.append(paramMotionEvent.getAction());
       paramView.append(" im:");
-      paramView.append(LoginView.a(this.a));
+      paramView.append(LoginView.c(this.a));
       QLog.d("LoginActivity.LoginView", 2, paramView.toString());
     }
-    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
-      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.c(this.a) != null)) {
+      LoginView.c(this.a).hideSoftInputFromWindow(this.a.b.getWindow().getDecorView().getWindowToken(), 0);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.11
  * JD-Core Version:    0.7.0.1
  */

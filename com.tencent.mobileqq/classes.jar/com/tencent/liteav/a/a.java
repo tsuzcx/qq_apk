@@ -8,19 +8,21 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.liteav.audio.g;
 import com.tencent.liteav.audio.impl.Record.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.muxer.c;
 import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import com.tencent.liteav.videoencoder.e;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class a
-  implements com.tencent.liteav.audio.e, com.tencent.liteav.videoencoder.e
+  implements g, e
 {
   private b a = new b();
   private com.tencent.liteav.videoencoder.a b = new com.tencent.liteav.videoencoder.a();
@@ -150,7 +152,7 @@ public class a
     if ((parama.h > 0) && (parama.i > 0) && (parama.j > 0))
     {
       this.a.a(10, parama.i, parama.h, parama.j, new WeakReference(this));
-      parama = f.a(this.d.i, this.d.h, 2);
+      parama = h.a(this.d.i, this.d.h, 2);
       this.c.b(parama);
       this.h = true;
     }
@@ -224,7 +226,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.a.a
  * JD-Core Version:    0.7.0.1
  */

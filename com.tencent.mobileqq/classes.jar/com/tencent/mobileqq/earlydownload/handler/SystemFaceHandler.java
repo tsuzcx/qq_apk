@@ -26,49 +26,48 @@ public class SystemFaceHandler
   extends EarlyHandler
   implements Handler.Callback
 {
-  public static final String c = SystemFaceData.class.getSimpleName();
-  private Handler a;
-  private ArrayList<String> b;
+  public static final String h = SystemFaceData.class.getSimpleName();
+  private Handler i = new Handler(Looper.getMainLooper(), this);
+  private ArrayList<String> j;
   
   public SystemFaceHandler(QQAppInterface paramQQAppInterface)
   {
     super("qq.android.system.face.gifv14", paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  private void c(String paramString)
+  private void d(String paramString)
   {
-    int j = 0;
-    int i = j;
+    int m = 0;
+    int k = m;
     try
     {
-      int m = Integer.parseInt(paramString);
-      i = j;
-      int k = com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMO_GIF_RES[m];
-      i = j;
-      j = com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[m];
-      i = j;
-      URL localURL = new URL("emotion", BaseApplicationImpl.getContext().getResources().getResourceEntryName(k), "");
-      i = j;
+      int i1 = Integer.parseInt(paramString);
+      k = m;
+      int n = com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMO_GIF_RES[i1];
+      k = m;
+      m = com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[i1];
+      k = m;
+      URL localURL = new URL("emotion", BaseApplicationImpl.getContext().getResources().getResourceEntryName(n), "");
+      k = m;
     }
     catch (MalformedURLException localMalformedURLException)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(c, 2, "reloadFaceOnUI() ", localMalformedURLException);
+        QLog.d(h, 2, "reloadFaceOnUI() ", localMalformedURLException);
       }
       localObject1 = null;
     }
     if (localObject1 == null) {
       return;
     }
-    Object localObject2 = BaseApplicationImpl.getApplication().getResources().getDrawable(i);
+    Object localObject2 = BaseApplicationImpl.getApplication().getResources().getDrawable(k);
     Object localObject1 = URLDrawable.getDrawable((URL)localObject1, (Drawable)localObject2, (Drawable)localObject2, true);
     StringBuilder localStringBuilder;
     if ((((URLDrawable)localObject1).getStatus() != 1) && (((URLDrawable)localObject1).getStatus() != 0))
     {
       if (QLog.isColorLevel())
       {
-        localObject2 = c;
+        localObject2 = h;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("reloadFaceOnUI() idx=");
         localStringBuilder.append(paramString);
@@ -81,7 +80,7 @@ public class SystemFaceHandler
     }
     if (QLog.isColorLevel())
     {
-      localObject2 = c;
+      localObject2 = h;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("reloadFaceOnUI() idx=");
       localStringBuilder.append(paramString);
@@ -92,19 +91,9 @@ public class SystemFaceHandler
     }
   }
   
-  public int a()
-  {
-    return 10055;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return SystemFaceData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlySysFaceGif";
   }
   
   public void a(String paramString)
@@ -115,7 +104,7 @@ public class SystemFaceHandler
       FileUtils.uncompressZip(paramString, localFile.getAbsolutePath(), true);
       if (QLog.isColorLevel())
       {
-        String str = c;
+        String str = h;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("doOnDownloadFinish() uncompressZip to:");
         localStringBuilder.append(localFile.getAbsolutePath());
@@ -127,34 +116,34 @@ public class SystemFaceHandler
       localIOException.printStackTrace();
     }
     super.a(paramString);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(196864);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.i.sendEmptyMessage(196864);
   }
   
   public String b()
   {
-    return null;
+    return "actEarlySysFaceGif";
   }
   
-  public void b(String paramString)
+  public int c()
   {
-    IEarlyDownloadService localIEarlyDownloadService = (IEarlyDownloadService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IEarlyDownloadService.class, "");
+    return 10055;
+  }
+  
+  public void c(String paramString)
+  {
+    IEarlyDownloadService localIEarlyDownloadService = (IEarlyDownloadService)this.c.getRuntimeService(IEarlyDownloadService.class, "");
     localIEarlyDownloadService.setEarlyDownloadLock();
     try
     {
-      if (this.b == null) {
-        this.b = new ArrayList();
+      if (this.j == null) {
+        this.j = new ArrayList();
       }
-      if (!this.b.contains(paramString))
+      if (!this.j.contains(paramString))
       {
-        this.b.add(0, paramString);
+        this.j.add(0, paramString);
         if (QLog.isColorLevel())
         {
-          String str = c;
+          String str = h;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("addWaittingFace idx=");
           localStringBuilder.append(paramString);
@@ -169,29 +158,39 @@ public class SystemFaceHandler
     }
   }
   
+  public String d()
+  {
+    return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what != 196864) {
       return false;
     }
     paramMessage = null;
-    Object localObject = this.b;
+    Object localObject = this.j;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject = (IEarlyDownloadService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IEarlyDownloadService.class, "");
+      localObject = (IEarlyDownloadService)this.c.getRuntimeService(IEarlyDownloadService.class, "");
       ((IEarlyDownloadService)localObject).setEarlyDownloadLock();
       try
       {
-        if (this.b.size() > 0) {
-          paramMessage = (String)this.b.remove(0);
+        if (this.j.size() > 0) {
+          paramMessage = (String)this.j.remove(0);
         }
         ((IEarlyDownloadService)localObject).setEarlyDownloadUnLock();
         if ((paramMessage != null) && (paramMessage.length() > 0))
         {
-          c(paramMessage);
-          if (this.b.size() > 0)
+          d(paramMessage);
+          if (this.j.size() > 0)
           {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(196864, 2000L);
+            this.i.sendEmptyMessageDelayed(196864, 2000L);
             return false;
           }
         }
@@ -206,7 +205,7 @@ public class SystemFaceHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.SystemFaceHandler
  * JD-Core Version:    0.7.0.1
  */

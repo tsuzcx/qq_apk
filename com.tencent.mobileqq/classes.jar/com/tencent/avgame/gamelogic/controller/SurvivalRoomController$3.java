@@ -10,12 +10,12 @@ class SurvivalRoomController$3
   
   public void run()
   {
-    if (IGameEngine.a().g())
+    if (IGameEngine.I().B())
     {
-      SurvivalRoomController.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ArrayOfByte);
+      SurvivalRoomController.a(this.this$0, this.a, String.valueOf(this.b), this.c);
       return;
     }
-    SurvivalRoomController.b(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ArrayOfByte);
+    SurvivalRoomController.b(this.this$0, this.a, String.valueOf(this.b), this.c);
   }
 }
 

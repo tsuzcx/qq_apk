@@ -9,21 +9,21 @@ import java.lang.ref.WeakReference;
 class VideoCompressProcessor$HWCompressProcessor
   implements VideoConverter.Processor
 {
-  VideoCompressConfig.CompressInfo jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo;
-  VideoCompressProcessor.HWCompressUpdateListener jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<QQAppInterface> a;
   final String b;
+  final String c;
+  VideoCompressConfig.CompressInfo d;
+  VideoCompressProcessor.HWCompressUpdateListener e;
   
   VideoCompressProcessor$HWCompressProcessor(WeakReference<QQAppInterface> paramWeakReference, String paramString1, String paramString2, VideoCompressConfig.CompressInfo paramCompressInfo, VideoCompressProcessor.HWCompressUpdateListener paramHWCompressUpdateListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener = paramHWCompressUpdateListener;
+    this.a = paramWeakReference;
+    this.b = paramString2;
+    this.c = paramString1;
+    this.e = paramHWCompressUpdateListener;
     if (paramString2 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo = paramCompressInfo;
+      this.d = paramCompressInfo;
       return;
     }
     throw new IllegalArgumentException("null == outputFilePath");
@@ -32,10 +32,10 @@ class VideoCompressProcessor$HWCompressProcessor
   public VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
   {
     VideoConverterConfig localVideoConverterConfig = new VideoConverterConfig();
-    localVideoConverterConfig.output = this.jdField_a_of_type_JavaLangString;
-    localVideoConverterConfig.scaleRate = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo.jdField_a_of_type_Float;
-    localVideoConverterConfig.videoFrameRate = ((int)this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo.b);
-    localVideoConverterConfig.videoBitRate = ((int)this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressConfig$CompressInfo.jdField_a_of_type_Long);
+    localVideoConverterConfig.output = this.b;
+    localVideoConverterConfig.scaleRate = this.d.e;
+    localVideoConverterConfig.videoFrameRate = ((int)this.d.d);
+    localVideoConverterConfig.videoBitRate = ((int)this.d.c);
     return localVideoConverterConfig;
   }
   
@@ -44,7 +44,7 @@ class VideoCompressProcessor$HWCompressProcessor
     if (QLog.isColorLevel()) {
       QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onCanceled!");
     }
-    VideoCompressProcessor.HWCompressUpdateListener localHWCompressUpdateListener = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    VideoCompressProcessor.HWCompressUpdateListener localHWCompressUpdateListener = this.e;
     if (localHWCompressUpdateListener != null) {
       localHWCompressUpdateListener.a(3);
     }
@@ -55,7 +55,7 @@ class VideoCompressProcessor$HWCompressProcessor
     if (QLog.isColorLevel()) {
       QLog.e("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onFailed");
     }
-    paramThrowable = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    paramThrowable = this.e;
     if (paramThrowable != null) {
       paramThrowable.a(2);
     }
@@ -70,7 +70,7 @@ class VideoCompressProcessor$HWCompressProcessor
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("VideoCompressProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    Object localObject = this.e;
     if ((localObject != null) && (paramInt >= 0) && (paramInt <= 10000)) {
       ((VideoCompressProcessor.HWCompressUpdateListener)localObject).a(paramInt / 10000.0F);
     }
@@ -81,7 +81,7 @@ class VideoCompressProcessor$HWCompressProcessor
     if (QLog.isColorLevel()) {
       QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onSucceed");
     }
-    VideoCompressProcessor.HWCompressUpdateListener localHWCompressUpdateListener = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor$HWCompressUpdateListener;
+    VideoCompressProcessor.HWCompressUpdateListener localHWCompressUpdateListener = this.e;
     if (localHWCompressUpdateListener != null) {
       localHWCompressUpdateListener.a(1);
     }
@@ -89,7 +89,7 @@ class VideoCompressProcessor$HWCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoCompressProcessor.HWCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

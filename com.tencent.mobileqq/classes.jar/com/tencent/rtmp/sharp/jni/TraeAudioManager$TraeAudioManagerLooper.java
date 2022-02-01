@@ -13,9 +13,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
-import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 class TraeAudioManager$TraeAudioManagerLooper
   extends Thread
@@ -34,6 +34,7 @@ class TraeAudioManager$TraeAudioManagerLooper
   public static final int MESSAGE_GETDEVICELIST = 32774;
   public static final int MESSAGE_GETSTREAMTYPE = 32784;
   public static final int MESSAGE_ISDEVICECHANGABLED = 32777;
+  public static final int MESSAGE_NOTIFY_DEVICELIST_UPDATE = 32793;
   public static final int MESSAGE_RECOVER_AUDIO_FOCUS = 32791;
   public static final int MESSAGE_REQUEST_RELEASE_AUDIO_FOCUS = 32790;
   public static final int MESSAGE_STARTRING = 32782;
@@ -62,7 +63,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     this._parent = paramTraeAudioManager2;
     long l = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, "TraeAudioManagerLooper start...");
+      QLog.e("TraeAudioManager", 2, "TraeAudioManagerLooper start...");
     }
     start();
     synchronized (this._started)
@@ -80,7 +81,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         ???.append("  start used:");
         ???.append(SystemClock.elapsedRealtime() - l);
         ???.append("ms");
-        QLog.e("TRAE", 2, ???.toString());
+        QLog.e("TraeAudioManager", 2, ???.toString());
       }
       return;
       paramTraeAudioManager2 = finally;
@@ -103,7 +104,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalStopRing am==null!!");
+        QLog.e("TraeAudioManager", 2, " InternalStopRing am==null!!");
       }
       return -1;
     }
@@ -153,7 +154,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalStartRing am==null!!");
+        QLog.e("TraeAudioManager", 2, " InternalStartRing am==null!!");
       }
       return -1;
     }
@@ -171,7 +172,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("  dataSource:");
         ((StringBuilder)localObject).append(i);
-        QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
+        QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
       }
       int j = ((Integer)paramHashMap.get("PARAM_RING_RSID")).intValue();
       localObject = (Uri)paramHashMap.get("PARAM_RING_URI");
@@ -200,7 +201,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         paramHashMap.append(this._ringUserdata);
         paramHashMap.append(" DurationMS:");
         paramHashMap.append(this._ringPlayer.getDuration());
-        QLog.w("TRAE", 2, paramHashMap.toString());
+        QLog.w("TraeAudioManager", 2, paramHashMap.toString());
       }
       InternalNotifyStreamTypeUpdate(this._ringPlayer.getStreamType());
       AudioDeviceInterface.LogTraceExit();
@@ -212,7 +213,7 @@ class TraeAudioManager$TraeAudioManagerLooper
       break label465;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, " startRing err params");
+      QLog.e("TraeAudioManager", 2, " startRing err params");
     }
     return -1;
   }
@@ -244,7 +245,7 @@ class TraeAudioManager$TraeAudioManagerLooper
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, " InternalStopRing am==null!!");
+      QLog.e("TraeAudioManager", 2, " InternalStopRing am==null!!");
     }
     return -1;
   }
@@ -258,21 +259,20 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalVoicecallPostprocess am==null!!");
+        QLog.e("TraeAudioManager", 2, " InternalVoicecallPostprocess am==null!!");
       }
       return -1;
     }
     if (this.this$0._activeMode != 1)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " not ACTIVE_VOICECALL!!");
+        QLog.e("TraeAudioManager", 2, " not ACTIVE_VOICECALL!!");
       }
       localObject = new Intent();
       this.this$0.sendResBroadcast((Intent)localObject, paramHashMap, 3);
       return -1;
     }
     this.this$0._activeMode = 0;
-    abandonAudioFocus();
     AudioDeviceInterface.LogTraceExit();
     return 0;
   }
@@ -292,7 +292,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalVoicecallPreprocess am==null!!");
+        QLog.e("TraeAudioManager", 2, " InternalVoicecallPreprocess am==null!!");
       }
       return -1;
     }
@@ -311,7 +311,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " params.get(PARAM_MODEPOLICY)==null!!");
+        QLog.e("TraeAudioManager", 2, " params.get(PARAM_MODEPOLICY)==null!!");
       }
       this.this$0._modePolicy = -1;
     }
@@ -324,13 +324,13 @@ class TraeAudioManager$TraeAudioManagerLooper
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("  _modePolicy:");
       ((StringBuilder)localObject).append(this.this$0._modePolicy);
-      QLog.e("TRAE", 2, ((StringBuilder)localObject).toString());
+      QLog.e("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
     }
     localObject = (Integer)paramHashMap.get("PARAM_STREAMTYPE");
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " params.get(PARAM_STREAMTYPE)==null!!");
+        QLog.e("TraeAudioManager", 2, " params.get(PARAM_STREAMTYPE)==null!!");
       }
       this.this$0._streamType = 0;
     }
@@ -363,7 +363,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._deviceConfigManager == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "_deviceConfigManager is null");
+        QLog.w("TraeAudioManager", 2, "_deviceConfigManager is null");
       }
       return;
     }
@@ -385,7 +385,7 @@ class TraeAudioManager$TraeAudioManagerLooper
       break label147;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, "======7");
+      QLog.e("TraeAudioManager", 2, "======7");
     }
     AudioDeviceInterface.LogTraceExit();
   }
@@ -395,7 +395,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._deviceConfigManager == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "_deviceConfigManager is null");
+        QLog.w("TraeAudioManager", 2, "_deviceConfigManager is null");
       }
       return;
     }
@@ -421,7 +421,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("stop service failed.");
         localStringBuilder.append(localException.getMessage());
-        QLog.e("TRAE", 2, localStringBuilder.toString());
+        QLog.e("TraeAudioManager", 2, localStringBuilder.toString());
       }
     }
   }
@@ -431,7 +431,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._deviceConfigManager == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "_deviceConfigManager is null");
+        QLog.w("TraeAudioManager", 2, "_deviceConfigManager is null");
       }
       return;
     }
@@ -456,7 +456,7 @@ class TraeAudioManager$TraeAudioManagerLooper
       break label158;
     }
     if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "======7");
+      QLog.w("TraeAudioManager", 2, "======7");
     }
   }
   
@@ -486,7 +486,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("uninit failed.");
         localStringBuilder.append(localException.getMessage());
-        QLog.e("TRAE", 2, localStringBuilder.toString());
+        QLog.e("TraeAudioManager", 2, localStringBuilder.toString());
       }
     }
     AudioDeviceInterface.LogTraceExit();
@@ -506,14 +506,14 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " interruptRing am==null!!");
+        QLog.e("TraeAudioManager", 2, " interruptRing am==null!!");
       }
       return -1;
     }
     if (this.this$0._activeMode != 2)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " not ACTIVE_RING!!");
+        QLog.e("TraeAudioManager", 2, " not ACTIVE_RING!!");
       }
       return -1;
     }
@@ -539,14 +539,14 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (this.this$0._am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " am==null!!");
+        QLog.e("TraeAudioManager", 2, " am==null!!");
       }
       return -1;
     }
     if (this.this$0._activeMode != 1)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " not ACTIVE_RING!!");
+        QLog.e("TraeAudioManager", 2, " not ACTIVE_RING!!");
       }
       return -1;
     }
@@ -581,6 +581,58 @@ class TraeAudioManager$TraeAudioManagerLooper
       }
     }
     return false;
+  }
+  
+  String msgToText(int paramInt)
+  {
+    if (paramInt != 32768)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return "MESSAGE_NONE";
+      case 32791: 
+        return "MESSAGE_RECOVER_AUDIO_FOCUS";
+      case 32790: 
+        return "MESSAGE_REQUEST_RELEASE_AUDIO_FOCUS";
+      case 32789: 
+        return "MESSAGE_CONNECT_HIGHEST_PRIORITY_DEVICE";
+      case 32788: 
+        return "MESSAGE_VOICECALL_AUIDOPARAM_CHANGED";
+      case 32787: 
+        return "MESSAGE_AUTO_DEVICELIST_PLUGOUT_UPDATE";
+      case 32786: 
+        return "MESSAGE_AUTO_DEVICELIST_PLUGIN_UPDATE";
+      case 32785: 
+        return "MESSAGE_AUTO_DEVICELIST_UPDATE";
+      case 32784: 
+        return "MESSAGE_GETSTREAMTYPE";
+      case 32783: 
+        return "MESSAGE_STOPRING";
+      case 32782: 
+        return "MESSAGE_STARTRING";
+      case 32781: 
+        return "MESSAGE_VOICECALLPOSTPROCESS";
+      case 32780: 
+        return "MESSAGE_VOICECALLPREPROCESS";
+      case 32779: 
+        return "MESSAGE_GETCONNECTINGDEVICE";
+      case 32778: 
+        return "MESSAGE_GETCONNECTEDDEVICE";
+      case 32777: 
+        return "MESSAGE_ISDEVICECHANGABLED";
+      case 32776: 
+        return "MESSAGE_EARACTION";
+      case 32775: 
+        return "MESSAGE_CONNECTDEVICE";
+      case 32774: 
+        return "MESSAGE_GETDEVICELIST";
+      case 32773: 
+        return "MESSAGE_DISABLE";
+      }
+      return "MESSAGE_ENABLE";
+    }
+    return "MESSAGE_BEGIN";
   }
   
   void notifyRingCompletion()
@@ -631,7 +683,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         ((StringBuilder)???).append("  quit used:");
         ((StringBuilder)???).append(SystemClock.elapsedRealtime() - l);
         ((StringBuilder)???).append("ms");
-        QLog.e("TRAE", 2, ((StringBuilder)???).toString());
+        QLog.e("TraeAudioManager", 2, ((StringBuilder)???).toString());
       }
       this.mMsgHandler = null;
       AudioDeviceInterface.LogTraceExit();
@@ -689,11 +741,18 @@ class TraeAudioManager$TraeAudioManagerLooper
       return -1;
     }
     paramHashMap = Message.obtain((Handler)localObject, paramInt, paramHashMap);
-    paramInt = i;
-    if (this.mMsgHandler.sendMessage(paramHashMap)) {
-      paramInt = 0;
+    if ((paramInt == 32786) && (!this.this$0.InternalIsDeviceChangeable()))
+    {
+      QLog.w("TraeAudioManager", 2, "sendMessageDelayed, device is connecting, plugin need delay 1 second");
+      if (this.mMsgHandler.sendMessageDelayed(paramHashMap, 1000L)) {
+        i = 0;
+      }
+      return i;
     }
-    return paramInt;
+    if (this.mMsgHandler.sendMessage(paramHashMap)) {
+      i = 0;
+    }
+    return i;
   }
   
   void startService(HashMap<String, Object> paramHashMap)
@@ -702,7 +761,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     paramHashMap = new StringBuilder();
     paramHashMap.append("startService cfg:");
     paramHashMap.append(str);
-    Log.w("TRAE", paramHashMap.toString());
+    QLog.w("TraeAudioManager", 2, paramHashMap.toString());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" _enabled:");
     if (this._enabled) {
@@ -722,7 +781,7 @@ class TraeAudioManager$TraeAudioManagerLooper
     paramHashMap = new StringBuilder();
     paramHashMap.append("   startService:");
     paramHashMap.append(str);
-    QLog.w("TRAE", 2, paramHashMap.toString());
+    QLog.w("TraeAudioManager", 2, paramHashMap.toString());
     if (((this._enabled) && (this._lastCfg.equals(str))) || (this.this$0._activeMode != 0)) {
       return;
     }
@@ -741,11 +800,13 @@ class TraeAudioManager$TraeAudioManagerLooper
       this._preServiceMode = this.this$0._am.getMode();
     }
     this._enabled = true;
+    paramHashMap = this.this$0;
+    paramHashMap.IsServiceReadytoStop = false;
     if (this._ringPlayer == null) {
-      this._ringPlayer = new TraeMediaPlayer(this.this$0._context, new TraeAudioManager.TraeAudioManagerLooper.1(this));
+      this._ringPlayer = new TraeMediaPlayer(paramHashMap._context, new TraeAudioManager.TraeAudioManagerLooper.1(this));
     }
-    notifyServiceState(this._enabled);
     this.this$0.updateDeviceStatus();
+    notifyServiceState(this._enabled);
     AudioDeviceInterface.LogTraceExit();
   }
   
@@ -765,11 +826,14 @@ class TraeAudioManager$TraeAudioManagerLooper
     if (!this._enabled) {
       return;
     }
-    if (this.this$0._activeMode == 1) {
+    Object localObject = this.this$0;
+    ((TraeAudioManager)localObject).IsServiceReadytoStop = true;
+    if (((TraeAudioManager)localObject)._activeMode == 1) {
       interruptVoicecallPostprocess();
     } else if (this.this$0._activeMode == 2) {
       interruptRing();
     }
+    this.this$0._gSwitchTreadlock.lock();
     if (this.this$0._switchThread != null)
     {
       if (QLog.isColorLevel())
@@ -777,12 +841,13 @@ class TraeAudioManager$TraeAudioManagerLooper
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("_switchThread:");
         ((StringBuilder)localObject).append(this.this$0._switchThread.getDeviceName());
-        QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
+        QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
       }
       this.this$0._switchThread.quit();
       this.this$0._switchThread = null;
     }
-    Object localObject = this._ringPlayer;
+    this.this$0._gSwitchTreadlock.unlock();
+    localObject = this._ringPlayer;
     if (localObject != null) {
       ((TraeMediaPlayer)localObject).stopRing();
     }
@@ -795,7 +860,7 @@ class TraeAudioManager$TraeAudioManagerLooper
         this.this$0.InternalSetMode(0);
         if (isNeedForceVolumeType())
         {
-          QLog.w("TRAE", 2, "NeedForceVolumeType: AudioManager.STREAM_MUSIC");
+          QLog.w("TraeAudioManager", 2, "NeedForceVolumeType: AudioManager.STREAM_MUSIC");
           TraeAudioManager.forceVolumeControlStream(this.this$0._am, 3);
         }
       }
@@ -806,7 +871,7 @@ class TraeAudioManager$TraeAudioManagerLooper
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("set mode failed.");
           localStringBuilder.append(localException.getMessage());
-          QLog.e("TRAE", 2, localStringBuilder.toString());
+          QLog.e("TraeAudioManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -816,7 +881,7 @@ class TraeAudioManager$TraeAudioManagerLooper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.TraeAudioManagerLooper
  * JD-Core Version:    0.7.0.1
  */

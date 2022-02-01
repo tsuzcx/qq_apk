@@ -24,7 +24,7 @@ class UniteGrayTipItemBuilder$2
     {
       localViewParent = localViewParent.getParent();
       if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.h = ((ChatXListView)localViewParent).getPositionForView(paramView);
+        EmojiStickerManager.w = ((ChatXListView)localViewParent).getPositionForView(paramView);
       }
     }
     paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
@@ -32,10 +32,10 @@ class UniteGrayTipItemBuilder$2
     int i = 1;
     paramView.putExtra("vasUsePreWebview", true);
     VasWebviewUtil.b(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    if (EmojiStickerManager.a().a != 0) {
-      if (EmojiStickerManager.a().a == 1) {
+    if (EmojiStickerManager.a().h != 0) {
+      if (EmojiStickerManager.a().h == 1) {
         i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
+      } else if (EmojiStickerManager.a().h == 3000) {
         i = 3;
       } else {
         i = -1;
@@ -46,7 +46,7 @@ class UniteGrayTipItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

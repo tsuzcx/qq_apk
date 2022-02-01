@@ -27,62 +27,62 @@ import javax.annotation.Nullable;
 public class RedPacketShowerFragment
   extends QPublicBaseFragment
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new RedPacketShowerFragment.2(this);
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  int jdField_b_of_type_Int;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString;
-  private final int jdField_e_of_type_Int = 1000;
-  String jdField_e_of_type_JavaLangString;
-  private final int jdField_f_of_type_Int = 25;
-  String jdField_f_of_type_JavaLangString;
-  private final int g = 1;
+  View a;
+  View b;
+  ImageView c;
+  ImageView d;
+  ImageView e;
+  Button f;
+  QQAppInterface g;
+  Map<String, String> h = new HashMap();
+  int i;
+  int j;
+  int k;
+  int l;
+  String m;
+  String n;
+  String o;
+  String p;
+  String q;
+  String r;
+  QBaseActivity s;
+  View.OnClickListener t = new RedPacketShowerFragment.2(this);
+  private final int u = 1000;
+  private final int v = 25;
+  private final int w = 1;
+  private long x = 0L;
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getQBaseActivity();
-    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getIntent().getExtras();
+    this.s = getQBaseActivity();
+    Bundle localBundle = this.s.getIntent().getExtras();
     if (QLog.isColorLevel()) {
       QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI", localBundle });
     }
     try
     {
       localBundle.getInt("key_business_id", -1);
-      this.jdField_a_of_type_Int = localBundle.getInt("key_award_type", -1);
-      this.jdField_c_of_type_Int = localBundle.getInt("key_business_id", -1);
-      this.jdField_d_of_type_Int = localBundle.getInt("key_promotion_id", -1);
-      this.jdField_b_of_type_Int = localBundle.getInt("k_state", -1);
-      this.jdField_f_of_type_JavaLangString = localBundle.getString("k_pack_id");
-      this.jdField_e_of_type_JavaLangString = localBundle.getString("key_url");
-      this.jdField_a_of_type_JavaLangString = localBundle.getString("key_business_name");
-      this.jdField_b_of_type_JavaLangString = localBundle.getString("key_business_logo");
-      this.jdField_c_of_type_JavaLangString = localBundle.getString("key_business_name_pic");
-      this.jdField_d_of_type_JavaLangString = localBundle.getString("active_id");
+      this.i = localBundle.getInt("key_award_type", -1);
+      this.k = localBundle.getInt("key_business_id", -1);
+      this.l = localBundle.getInt("key_promotion_id", -1);
+      this.j = localBundle.getInt("k_state", -1);
+      this.r = localBundle.getString("k_pack_id");
+      this.q = localBundle.getString("key_url");
+      this.m = localBundle.getString("key_business_name");
+      this.n = localBundle.getString("key_business_logo");
+      this.o = localBundle.getString("key_business_name_pic");
+      this.p = localBundle.getString("active_id");
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("initUI packId ");
-        ((StringBuilder)localObject1).append(this.jdField_f_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.r);
         ((StringBuilder)localObject1).append("businessNamePic ");
-        ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.o);
         QLog.d("RedPacketShowerFragment", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject1 = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-      Object localObject2 = ((SpringFestivalEntryManager)localObject1).a(this.jdField_c_of_type_JavaLangString, "");
+      Object localObject1 = (SpringFestivalEntryManager)this.g.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+      Object localObject2 = ((SpringFestivalEntryManager)localObject1).a(this.o, "");
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -91,37 +91,37 @@ public class RedPacketShowerFragment
         QLog.d("RedPacketShowerFragment", 2, localStringBuilder.toString());
       }
       if (localObject2 == null) {
-        ((SpringFestivalEntryManager)localObject1).a(new RedPacketShowerFragment.1(this, this.jdField_c_of_type_JavaLangString, (SpringFestivalEntryManager)localObject1));
+        ((SpringFestivalEntryManager)localObject1).a(new RedPacketShowerFragment.1(this, this.o, (SpringFestivalEntryManager)localObject1));
       } else {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject2);
+        this.c.setImageBitmap((Bitmap)localObject2);
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      localObject1 = this.h;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(this.l);
       ((StringBuilder)localObject2).append("");
       ((Map)localObject1).put("jackpot_id", ((StringBuilder)localObject2).toString());
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_JavaUtilMap.put("business_name", this.jdField_a_of_type_JavaLangString);
+      if (this.m != null) {
+        this.h.put("business_name", this.m);
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      localObject1 = this.h;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject2).append(this.k);
       ((StringBuilder)localObject2).append("");
       ((Map)localObject1).put("business_id", ((StringBuilder)localObject2).toString());
-      if (this.jdField_d_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_JavaUtilMap.put("active_id", this.jdField_d_of_type_JavaLangString);
+      if (this.p != null) {
+        this.h.put("active_id", this.p);
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      localObject1 = this.h;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localBundle.getLong("key_current_brush_progress_ms"));
       ((StringBuilder)localObject2).append("");
       ((Map)localObject1).put("ext2", ((StringBuilder)localObject2).toString());
       if (QLog.isColorLevel()) {
-        QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI mParam", this.jdField_a_of_type_JavaUtilMap });
+        QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI mParam", this.h });
       }
-      SpringHbReporter.a(ReportConstant.Event.o, 0, 0, this.jdField_a_of_type_JavaUtilMap, "exp", true);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      SpringHbReporter.a(ReportConstant.Event.o, 0, 0, this.h, "exp", true);
+      this.d.setOnClickListener(this.t);
+      this.f.setOnClickListener(this.t);
       return;
     }
     catch (Exception localException)
@@ -131,32 +131,32 @@ public class RedPacketShowerFragment
     }
   }
   
-  private void b()
+  private void c()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131369475);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369476));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369473));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364028));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369477));
+    this.b = this.a.findViewById(2131436546);
+    this.d = ((ImageView)this.a.findViewById(2131436547));
+    this.c = ((ImageView)this.a.findViewById(2131436544));
+    this.f = ((Button)this.a.findViewById(2131429983));
+    this.e = ((ImageView)this.a.findViewById(2131436548));
   }
   
   public boolean a()
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     boolean bool;
-    if (l - this.jdField_a_of_type_Long >= 1000L) {
+    if (l1 - this.x >= 1000L) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Long = l;
+    this.x = l1;
     return bool;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
-    paramActivity.overridePendingTransition(2130772343, 2130772004);
+    paramActivity.overridePendingTransition(2130772435, 2130772007);
   }
   
   public boolean needImmersive()
@@ -169,24 +169,24 @@ public class RedPacketShowerFragment
     paramBundle = getQBaseActivity();
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561407, paramViewGroup, false);
+      this.a = paramLayoutInflater.inflate(2131627763, paramViewGroup, false);
       if ((paramBundle.getAppRuntime() instanceof QQAppInterface)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle.getAppRuntime());
+        this.g = ((QQAppInterface)paramBundle.getAppRuntime());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      if (this.g != null)
       {
+        c();
         b();
-        a();
       }
     }
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.a;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.RedPacketShowerFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -13,58 +13,58 @@ import com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView;
 public class WSGridFeedInnerAvatarController
   extends AbsWsUIGroup<stSimpleMetaFeed>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSRoundedImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView;
-  private TextView b;
+  private WSRoundedImageView g;
+  private TextView h;
+  private TextView i;
+  private stSimpleMetaFeed j;
   
   public WSGridFeedInnerAvatarController(Context paramContext)
   {
     super(paramContext);
   }
   
-  private void f()
+  private void m()
   {
-    stSimpleMetaPerson localstSimpleMetaPerson = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster;
-    WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, localstSimpleMetaPerson.avatar);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(WSFeedUtils.a(localstSimpleMetaPerson.nick));
-    WSFeedUtils.a(this.b, localstSimpleMetaPerson.medal, false);
+    stSimpleMetaPerson localstSimpleMetaPerson = this.j.poster;
+    WSPicLoader.a().a(this.a, this.g, localstSimpleMetaPerson.avatar);
+    this.h.setTextColor(l());
+    this.h.setText(WSFeedUtils.a(localstSimpleMetaPerson.nick));
+    WSFeedUtils.a(this.i, localstSimpleMetaPerson.medal, false);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
-  }
-  
-  protected int b()
-  {
-    return 2131560420;
+    this.j = ((stSimpleMetaFeed)c());
   }
   
   protected void b()
   {
-    f();
+    m();
+  }
+  
+  protected void f() {}
+  
+  protected int i()
+  {
+    return 2131626465;
+  }
+  
+  protected void j()
+  {
+    this.g = ((WSRoundedImageView)c(2131436087));
+    this.h = ((TextView)c(2131436094));
+    this.i = ((TextView)c(2131436093));
   }
   
   @ColorInt
-  protected int c()
+  protected int l()
   {
     return -1;
-  }
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131369117));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369124));
-    this.b = ((TextView)a(2131369123));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerAvatarController
  * JD-Core Version:    0.7.0.1
  */

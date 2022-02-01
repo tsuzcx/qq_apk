@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/pqe" android:layout_width="57.0dip" android:layout_height="57.0dip" />
+    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/pqb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="8.0dip" android:text="title" android:singleLine="true" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" />
+    <TextView android:textSize="14.0dip" android:textColor="#ccffffff" android:gravity="center" android:id="@id/pqa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="8.0dip" android:text="content" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" />
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

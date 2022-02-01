@@ -16,7 +16,7 @@ class TeamWorkFileImportHandlerImpl$7
   
   public void run()
   {
-    if ((TeamWorkFileImportHandlerImpl.access$000(this.this$0) != null) && (!TextUtils.isEmpty(this.a.jdField_f_of_type_JavaLangString)))
+    if ((TeamWorkFileImportHandlerImpl.access$000(this.this$0) != null) && (!TextUtils.isEmpty(this.a.k)))
     {
       Object localObject = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).url2Doc(this.a, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin());
       boolean bool = false;
@@ -27,8 +27,8 @@ class TeamWorkFileImportHandlerImpl$7
       else
       {
         localObject = this.a;
-        ((TeamWorkFileImportInfo)localObject).jdField_f_of_type_Int = -1000;
-        TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "url2doc network fail", ((TeamWorkFileImportInfo)localObject).k);
+        ((TeamWorkFileImportInfo)localObject).w = -1000;
+        TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "url2doc network fail", ((TeamWorkFileImportInfo)localObject).A);
       }
       if ((!bool) && (TeamWorkFileImportHandlerImpl.access$100(this.this$0) != null))
       {
@@ -38,12 +38,12 @@ class TeamWorkFileImportHandlerImpl$7
       }
       return;
     }
-    TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "srcUrl is null or app is null", this.a.k);
+    TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "srcUrl is null or app is null", this.a.A);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.7
  * JD-Core Version:    0.7.0.1
  */

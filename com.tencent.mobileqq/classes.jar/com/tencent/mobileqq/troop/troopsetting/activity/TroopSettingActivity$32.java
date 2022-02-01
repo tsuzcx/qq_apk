@@ -13,29 +13,29 @@ class TroopSettingActivity$32
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null) && (TextUtils.equals(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin)))
+    if ((paramBoolean) && (this.c.t != null) && (TextUtils.equals(paramString1, this.c.t.troopuin)))
     {
       String str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        str = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.getLatestMemo();
+        str = this.c.t.getLatestMemo();
       }
       if (QLog.isColorLevel()) {
         QLog.i("Q.chatopttroop", 2, String.format("get last memo [%s, %s]", new Object[] { paramString1, str }));
       }
       if (!TextUtils.isEmpty(str))
       {
-        paramString1 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramString1 = this.c.aD.obtainMessage();
         paramString1.what = 20;
         paramString1.obj = str;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
+        this.c.aD.sendMessage(paramString1);
       }
-      TroopSettingActivity.a(this.a, str);
+      TroopSettingActivity.b(this.c, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.32
  * JD-Core Version:    0.7.0.1
  */

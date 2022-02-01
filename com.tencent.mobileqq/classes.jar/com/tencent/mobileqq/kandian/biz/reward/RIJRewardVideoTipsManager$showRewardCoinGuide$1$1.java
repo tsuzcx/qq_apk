@@ -34,14 +34,14 @@ final class RIJRewardVideoTipsManager$showRewardCoinGuide$1$1
         paramBubblePopupWindow.d(85);
       }
       if (paramBubblePopupWindow != null) {
-        paramBubblePopupWindow.a(0, this.$it.getWidth() / 2 + ViewUtils.a(3.0F), 0, 0);
+        paramBubblePopupWindow.a(0, this.$it.getWidth() / 2 + ViewUtils.dip2px(3.0F), 0, 0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardVideoTipsManager.showRewardCoinGuide.1.1
  * JD-Core Version:    0.7.0.1
  */

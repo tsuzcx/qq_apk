@@ -32,20 +32,20 @@ class TroopObserversHelper$3
       i = 0;
     }
     if (i != 0) {
-      new SoLibraryChecker(TroopObserversHelper.a(this.a).a, "3171", "libWXVoice.so", "WXVoice").a();
+      new SoLibraryChecker(TroopObserversHelper.d(this.a).e, "3171", "libWXVoice.so", "WXVoice").a();
     }
-    if ((TextUtils.equals(paramString, TroopObserversHelper.a(this.a).a)) && (paramBoolean) && (paramLong1 != paramLong2))
+    if ((TextUtils.equals(paramString, TroopObserversHelper.b(this.a).b)) && (paramBoolean) && (paramLong1 != paramLong2))
     {
-      TroopClassControllerManager localTroopClassControllerManager = TroopObserversHelper.a(this.a);
+      TroopClassControllerManager localTroopClassControllerManager = TroopObserversHelper.f(this.a);
       if (localTroopClassControllerManager != null) {
-        localTroopClassControllerManager.a(paramLong2, true, TroopObserversHelper.a(this.a), paramString);
+        localTroopClassControllerManager.a(paramLong2, true, TroopObserversHelper.d(this.a), paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.3
  * JD-Core Version:    0.7.0.1
  */

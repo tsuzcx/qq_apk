@@ -14,20 +14,20 @@ public class WSVerticalItemBottomDramaCollectionController
     super(paramContext, paramWSVerticalVideoHolder);
   }
   
-  protected String a()
+  protected boolean l()
   {
-    return ((WSVerticalItemData)a()).a().a().barText;
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
+    return (localWSVerticalItemData != null) && (localWSVerticalItemData.g() != null) && (localWSVerticalItemData.g().d() != null) && (!TextUtils.isEmpty(localWSVerticalItemData.g().d().barText));
   }
   
-  protected boolean a()
+  protected String m()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    return (localWSVerticalItemData != null) && (localWSVerticalItemData.a() != null) && (localWSVerticalItemData.a().a() != null) && (!TextUtils.isEmpty(localWSVerticalItemData.a().a().barText));
+    return ((WSVerticalItemData)c()).g().d().barText;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomDramaCollectionController
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,6 @@ import org.json.JSONObject;
 public class StoryVideoItem$PollLayout
 {
   public final int a;
-  private final String a;
-  public final String[] a;
   public final int b;
   public int c;
   public int d;
@@ -20,17 +18,19 @@ public class StoryVideoItem$PollLayout
   public int g;
   public int h;
   public final int i;
+  public final String[] j;
+  private final String k;
   
   private StoryVideoItem$PollLayout(JSONObject paramJSONObject)
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.k = paramJSONObject.toString();
+      this.a = paramJSONObject.getInt("v");
       this.b = paramJSONObject.getInt("id");
       this.i = paramJSONObject.getJSONObject("a").getInt("r");
       JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      int j = 0;
+      int m = 0;
       this.c = localJSONArray.getInt(0);
       this.d = localJSONArray.getInt(1);
       localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
@@ -40,14 +40,14 @@ public class StoryVideoItem$PollLayout
       this.g = localJSONArray.getInt(0);
       this.h = localJSONArray.getInt(1);
       paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
-      int k = paramJSONObject.length();
-      if (k >= 1)
+      int n = paramJSONObject.length();
+      if (n >= 1)
       {
-        this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
-        while (j < k)
+        this.j = new String[n];
+        while (m < n)
         {
-          this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
-          j += 1;
+          this.j[m] = paramJSONObject.optString(m, "(NULL)");
+          m += 1;
         }
       }
       throw new IllegalArgumentException("content length should more than 1");
@@ -97,14 +97,14 @@ public class StoryVideoItem$PollLayout
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.k;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PollLayout{version=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", id=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", screenWidth=");
@@ -122,14 +122,14 @@ public class StoryVideoItem$PollLayout
     localStringBuilder.append(", rotation=");
     localStringBuilder.append(this.i);
     localStringBuilder.append(", contents=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append(Arrays.toString(this.j));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryVideoItem.PollLayout
  * JD-Core Version:    0.7.0.1
  */

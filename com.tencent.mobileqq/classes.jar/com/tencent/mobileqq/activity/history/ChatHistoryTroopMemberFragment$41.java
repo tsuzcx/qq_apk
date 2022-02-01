@@ -38,33 +38,33 @@ class ChatHistoryTroopMemberFragment$41
     {
       if ((paramArrayList != null) && (paramArrayList.size() > 0))
       {
-        this.a.jdField_o_of_type_Boolean = true;
+        this.a.bf = true;
         localObject = paramArrayList.iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          this.a.a(str);
+          this.a.d(str);
         }
-        if (this.a.jdField_d_of_type_Int == 15) {
+        if (this.a.az == 15) {
           ChatHistoryTroopMemberFragment.a(this.a, paramArrayList);
         }
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(6));
+        this.a.bn.sendMessage(this.a.bn.obtainMessage(6));
       }
     }
     else
     {
       if (paramInt == 2)
       {
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(15));
+        this.a.bn.sendMessage(this.a.bn.obtainMessage(15));
         return;
       }
-      this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(7));
+      this.a.bn.sendMessage(this.a.bn.obtainMessage(7));
     }
   }
   
   protected void onOIDB0X899_0_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    if (!Utils.a(String.valueOf(paramLong1), this.a.c)) {
+    if (!Utils.a(String.valueOf(paramLong1), this.a.w)) {
       return;
     }
     if (QLog.isColorLevel())
@@ -100,80 +100,80 @@ class ChatHistoryTroopMemberFragment$41
       paramString.append(" returnUin:");
       paramString.append(paramLong1);
       paramString.append(" mTroopUin:");
-      paramString.append(this.a.c);
+      paramString.append(this.a.w);
       paramString.append(" time:");
-      paramString.append((System.currentTimeMillis() - this.a.jdField_b_of_type_Long) / 1000L);
+      paramString.append((System.currentTimeMillis() - this.a.aJ) / 1000L);
       paramString.append("s");
       QLog.d("Q.history.BaseFragment", 2, paramString.toString());
     }
     if (paramBoolean)
     {
-      if (!this.a.c.equals(Long.toString(paramLong1))) {
+      if (!this.a.w.equals(Long.toString(paramLong1))) {
         return;
       }
       paramString = this.a.getActivity();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("last_update_time");
-      ((StringBuilder)localObject).append(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(this.a.bc.getCurrentAccountUin());
       paramString = paramString.getSharedPreferences(((StringBuilder)localObject).toString(), 4).edit();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("key_troop_info_last_update");
-      ((StringBuilder)localObject).append(this.a.c);
+      ((StringBuilder)localObject).append(this.a.w);
       paramString.putLong(((StringBuilder)localObject).toString(), System.currentTimeMillis()).commit();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
+      if (this.a.ai != null)
       {
         paramString = this.a;
-        localObject = paramString.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+        localObject = paramString.ai;
         boolean bool = true;
-        if ((localObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isHomeworkTroop())) {
+        if ((localObject != null) && (this.a.ai.isHomeworkTroop())) {
           paramBoolean = true;
         } else {
           paramBoolean = false;
         }
-        paramString.jdField_e_of_type_Boolean = paramBoolean;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopowneruin != null)
+        paramString.u = paramBoolean;
+        if (this.a.ai.troopowneruin != null)
         {
           paramString = this.a;
-          paramString.f = paramString.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopowneruin;
+          paramString.C = paramString.ai.troopowneruin;
         }
         paramString = this.a;
-        paramString.g = TroopMemberUtil.a(paramString.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, paramList, false);
+        paramString.D = TroopMemberUtil.a(paramString.bc, this.a.ai, paramList, false);
         paramList = this.a;
         paramBoolean = bool;
-        if (!paramList.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopowneruin)) {
-          if ((this.a.g != null) && (this.a.g.contains(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+        if (!paramList.bc.getCurrentAccountUin().equals(this.a.ai.troopowneruin)) {
+          if ((this.a.D != null) && (this.a.D.contains(this.a.bc.getCurrentAccountUin()))) {
             paramBoolean = bool;
           } else {
             paramBoolean = false;
           }
         }
-        paramList.jdField_d_of_type_Boolean = paramBoolean;
-        if ((this.a.f != null) && (this.a.f.equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          this.a.jdField_o_of_type_JavaLangString = "0";
-        } else if ((this.a.g != null) && (this.a.g.contains(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          this.a.jdField_o_of_type_JavaLangString = "1";
+        paramList.t = paramBoolean;
+        if ((this.a.C != null) && (this.a.C.equals(this.a.bc.getCurrentAccountUin()))) {
+          this.a.aK = "0";
+        } else if ((this.a.D != null) && (this.a.D.contains(this.a.bc.getCurrentAccountUin()))) {
+          this.a.aK = "1";
         }
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(9));
+        this.a.bn.sendMessage(this.a.bn.obtainMessage(9));
       }
     }
   }
   
   protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (!this.a.c.equals(paramString))
+    if (!this.a.w.equals(paramString))
     {
       if (QLog.isColorLevel())
       {
         paramList = new StringBuilder();
         paramList.append("onUpdateTroopGetMemberList,!mTroopUin.equals(troopUin)==>mTroopUin:");
-        paramList.append(this.a.c);
+        paramList.append(this.a.w);
         paramList.append("|troopUin:");
         paramList.append(paramString);
         QLog.e("Q.history.BaseFragment", 2, paramList.toString());
       }
       return;
     }
-    paramInt2 = ChatHistoryTroopMemberFragment.d(this.a);
+    paramInt2 = ChatHistoryTroopMemberFragment.y(this.a);
     if (paramInt2 != paramInt1)
     {
       if (QLog.isColorLevel())
@@ -187,13 +187,13 @@ class ChatHistoryTroopMemberFragment$41
       }
       return;
     }
-    if (this.a.jdField_a_of_type_Long != paramLong)
+    if (this.a.aI != paramLong)
     {
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("onUpdateTroopGetMemberList,mMemberListReqStartTime != reqTimestamp, mMemberListReqStartTime:");
-        paramString.append(this.a.jdField_a_of_type_Long);
+        paramString.append(this.a.aI);
         paramString.append("|reqTimestamp:");
         paramString.append(paramLong);
         QLog.e("Q.history.BaseFragment", 2, paramString.toString());
@@ -219,7 +219,7 @@ class ChatHistoryTroopMemberFragment$41
       }
       localStringBuilder.append(paramString);
       localStringBuilder.append("|time:");
-      localStringBuilder.append((paramLong - this.a.jdField_a_of_type_Long) / 1000L);
+      localStringBuilder.append((paramLong - this.a.aI) / 1000L);
       localStringBuilder.append("s");
       QLog.d("Q.history.BaseFragment", 2, localStringBuilder.toString());
     }
@@ -230,23 +230,23 @@ class ChatHistoryTroopMemberFragment$41
         paramString = this.a.getActivity();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("last_update_time");
-        localStringBuilder.append(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append(this.a.bc.getCurrentAccountUin());
         paramString = paramString.getSharedPreferences(localStringBuilder.toString(), 4).edit();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("key_last_update_time");
-        localStringBuilder.append(this.a.c);
+        localStringBuilder.append(this.a.w);
         paramString.putLong(localStringBuilder.toString(), System.currentTimeMillis()).commit();
-        this.a.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
-        if ((this.a.jdField_d_of_type_Int != 13) && (this.a.jdField_d_of_type_Int != 21))
+        this.a.bn.removeMessages(1);
+        if ((this.a.az != 13) && (this.a.az != 21))
         {
-          this.a.a(this.a.c, paramList);
+          this.a.b(this.a.w, paramList);
         }
         else
         {
-          paramString = this.a.a(this.a.c, this.a.jdField_e_of_type_JavaUtilList);
-          this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(2, paramString));
+          paramString = this.a.a(this.a.w, this.a.at);
+          this.a.bn.sendMessage(this.a.bn.obtainMessage(2, paramString));
         }
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(5, Boolean.valueOf(paramBoolean)));
+        this.a.bn.sendMessage(this.a.bn.obtainMessage(5, Boolean.valueOf(paramBoolean)));
         return;
       }
       catch (Exception paramString)
@@ -262,24 +262,24 @@ class ChatHistoryTroopMemberFragment$41
     }
     else
     {
-      if ((this.a.jdField_d_of_type_Int != 13) && (this.a.jdField_d_of_type_Int != 21))
+      if ((this.a.az != 13) && (this.a.az != 21))
       {
         paramString = this.a;
-        paramString.a(paramString.c, null);
+        paramString.b(paramString.w, null);
       }
       else
       {
         paramString = this.a;
-        paramString = paramString.a(paramString.c, this.a.jdField_e_of_type_JavaUtilList);
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(2, paramString));
+        paramString = paramString.a(paramString.w, this.a.at);
+        this.a.bn.sendMessage(this.a.bn.obtainMessage(2, paramString));
       }
-      this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(5, Boolean.valueOf(paramBoolean)));
+      this.a.bn.sendMessage(this.a.bn.obtainMessage(5, Boolean.valueOf(paramBoolean)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.41
  * JD-Core Version:    0.7.0.1
  */

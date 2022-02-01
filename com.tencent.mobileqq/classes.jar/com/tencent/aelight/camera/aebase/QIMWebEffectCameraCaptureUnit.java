@@ -28,21 +28,13 @@ import java.io.File;
 public class QIMWebEffectCameraCaptureUnit
   extends AEPituCameraUnit
 {
-  private BroadcastReceiver a;
+  private BroadcastReceiver E = new QIMWebEffectCameraCaptureUnit.1(this);
   
   public QIMWebEffectCameraCaptureUnit(IQIMCameraContainer paramIQIMCameraContainer, ICameraEntrance paramICameraEntrance)
   {
     super(paramIQIMCameraContainer, paramICameraEntrance);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QIMWebEffectCameraCaptureUnit.1(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingCaptureEntranceParams = new CaptureEntranceParams(10007, this.jdField_a_of_type_ComTencentAelightCameraAeAECameraConfig.d(), 6);
-    this.b = 5;
-  }
-  
-  private Bundle a(Intent paramIntent)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dynamic_text", paramIntent.getStringExtra("dynamic_text"));
-    return localBundle;
+    this.r = new CaptureEntranceParams(10007, this.z.j(), 6);
+    this.y = 5;
   }
   
   public static Bundle a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString, boolean paramBoolean6, int paramInt2)
@@ -80,15 +72,22 @@ public class QIMWebEffectCameraCaptureUnit
     return localBundle;
   }
   
+  private Bundle b(Intent paramIntent)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dynamic_text", paramIntent.getStringExtra("dynamic_text"));
+    return localBundle;
+  }
+  
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.a(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 10007) && (paramInt2 == -1) && (paramIntent != null))
     {
       PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
-      if (localPublishParam.i == 1)
+      if (localPublishParam.s == 1)
       {
-        Activity localActivity = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a();
+        Activity localActivity = this.b.getActivity();
         localActivity.getIntent().putExtra("ab_test_send_btn_click_time", SystemClock.uptimeMillis());
         Object localObject = localPublishParam.c;
         if (QLog.isColorLevel())
@@ -102,20 +101,20 @@ public class QIMWebEffectCameraCaptureUnit
           ((StringBuilder)localObject).append(localPublishParam.toString());
           QLog.d("QIMWebEffectCameraCaptureUnit", 2, ((StringBuilder)localObject).toString());
         }
-        PtvFilterUtils.a(new File(localPublishParam.j).getParent(), localPublishParam.b);
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingCaptureEntranceParams.b() == 107) {
+        PtvFilterUtils.a(new File(localPublishParam.t).getParent(), localPublishParam.b);
+        if (this.r.b() == 107) {
           paramInt1 = 15;
         } else {
           paramInt1 = 32;
         }
         localActivity.getIntent().putExtra("param_entrance", paramInt1);
         localActivity.getIntent().putExtra("fake_id", localPublishParam.b);
-        paramIntent = a(paramIntent);
+        paramIntent = b(paramIntent);
         localObject = new SessionInfo();
-        ((SessionInfo)localObject).a = "0";
+        ((SessionInfo)localObject).b = "0";
         ShortVideoProcessUtil.a(localActivity, (SessionInfo)localObject, localPublishParam, paramIntent);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAECaptureController.i();
+      this.R.i();
     }
   }
   
@@ -124,30 +123,30 @@ public class QIMWebEffectCameraCaptureUnit
     super.a(paramBundle);
     paramBundle = new IntentFilter();
     paramBundle.addAction("tencent.video.q2v.startUploadPTV");
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+    this.b.getActivity().registerReceiver(this.E, paramBundle);
   }
   
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
-  
-  public void h(boolean paramBoolean)
+  public void i(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
       localObject = new CaptureVideoParams.CaptureVideoParamsBuilder().b(3).a();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingCaptureEntranceParams.a((CaptureVideoParams)localObject);
+      this.r.a((CaptureVideoParams)localObject);
       return;
     }
-    Object localObject = new CapturePicParams.CapturePicParamsBuilder(this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraManager.getSelectedCamera()).a(3).a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingCaptureEntranceParams.a((CapturePicParams)localObject);
+    Object localObject = new CapturePicParams.CapturePicParamsBuilder(this.d.getSelectedCamera()).a(3).a();
+    this.r.a((CapturePicParams)localObject);
+  }
+  
+  public void m()
+  {
+    super.m();
+    this.b.getActivity().unregisterReceiver(this.E);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMWebEffectCameraCaptureUnit
  * JD-Core Version:    0.7.0.1
  */

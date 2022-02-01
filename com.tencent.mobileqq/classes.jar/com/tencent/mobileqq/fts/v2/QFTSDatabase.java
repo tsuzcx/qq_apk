@@ -8,7 +8,7 @@ import mqq.app.MobileQQ;
 public class QFTSDatabase
   extends FTSDatabase
 {
-  protected boolean a()
+  protected boolean b()
   {
     if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(MobileQQ.getContext(), "sqlite_qq"))) {
       com.tencent.mobileqq.fts.api.impl.FTSDBRuntimeServiceImpl.ENABLE = false;
@@ -22,7 +22,7 @@ public class QFTSDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.QFTSDatabase
  * JD-Core Version:    0.7.0.1
  */

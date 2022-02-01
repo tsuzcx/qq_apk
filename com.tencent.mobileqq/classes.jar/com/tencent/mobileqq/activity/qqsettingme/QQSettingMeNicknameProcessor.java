@@ -19,59 +19,53 @@ import mqq.app.MobileQQ;
 public class QQSettingMeNicknameProcessor
   extends QQSettingMeBaseProcessor
 {
-  public MutableLiveData<String> a;
-  public MutableLiveData<QQSettingMeNicknameBean> b;
-  private String b;
-  
-  public QQSettingMeNicknameProcessor()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  }
-  
-  public String a()
-  {
-    return "d_nickname";
-  }
-  
-  public void a()
-  {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApplication();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
-    localStringBuilder.append(str);
-    this.jdField_b_of_type_JavaLangString = ((MobileQQ)localObject).getProperty(localStringBuilder.toString());
-    localObject = this.jdField_b_of_type_JavaLangString;
-    if ((localObject == null) || ("".equals(((String)localObject).trim()))) {
-      this.jdField_b_of_type_JavaLangString = str;
-    }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(this.jdField_b_of_type_JavaLangString);
-  }
+  public MutableLiveData<String> a = new MutableLiveData();
+  public MutableLiveData<QQSettingMeNicknameBean> b = new MutableLiveData();
+  private String i;
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeNicknameProcessor.1(this, paramQQSettingMe));
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeNicknameProcessor.2(this, paramQQSettingMe));
+    this.a.observe(this.e, new QQSettingMeNicknameProcessor.1(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeNicknameProcessor.2(this, paramQQSettingMe));
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    g();
+    this.c = paramAppRuntime;
+    i();
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    if ((str != null) && (str.equals(this.jdField_b_of_type_JavaLangString))) {
+    return "d_nickname";
+  }
+  
+  public void c()
+  {
+    String str = this.c.getCurrentAccountUin();
+    Object localObject = this.c.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
+    localStringBuilder.append(str);
+    this.i = ((MobileQQ)localObject).getProperty(localStringBuilder.toString());
+    localObject = this.i;
+    if ((localObject == null) || ("".equals(((String)localObject).trim()))) {
+      this.i = str;
+    }
+    this.a.setValue(this.i);
+  }
+  
+  public void d()
+  {
+    super.d();
+    String str = this.c.getCurrentAccountUin();
+    if ((str != null) && (str.equals(this.i))) {
       ThreadManagerV2.executeOnSubThread(new QQSettingMeNicknameProcessor.3(this));
     }
-    g();
+    i();
   }
   
-  public void g()
+  public void i()
   {
     ThreadManagerV2.executeOnSubThread(new QQSettingMeNicknameProcessor.4(this));
   }
@@ -81,17 +75,17 @@ public class QQSettingMeNicknameProcessor
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "jumpToProfile");
     }
-    paramView = new AllInOne(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), 0);
+    paramView = new AllInOne(this.c.getCurrentAccountUin(), 0);
     paramView.lastActivity = 1;
     paramView.profileEntryType = 8;
-    ProfileUtils.openProfileCardForResult(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramView, 1009);
-    ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).checkToCleanSettingMeRedPointGuide((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X80072D6", "0X80072D6", 0, 0, "", "", "", "");
+    ProfileUtils.openProfileCardForResult(this.d, paramView, 1009);
+    ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).checkToCleanSettingMeRedPointGuide((QQAppInterface)this.c);
+    ReportController.b(this.c, "CliOper", "", "", "0X80072D6", "0X80072D6", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeNicknameProcessor
  * JD-Core Version:    0.7.0.1
  */

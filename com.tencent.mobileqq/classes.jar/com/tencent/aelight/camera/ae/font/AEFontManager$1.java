@@ -15,11 +15,11 @@ class AEFontManager$1
   public void run()
   {
     AEQLog.b("AEFontManager", "[preDownloadAndRegisterGifFonts] run");
-    Iterator localIterator = AEEditorResourceManager.a().a().values().iterator();
+    Iterator localIterator = AEEditorResourceManager.a().o().values().iterator();
     while (localIterator.hasNext())
     {
       AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if (AEEditorResourceManager.a().a(localAEEditorDownloadResBean)) {
+      if (AEEditorResourceManager.a().b(localAEEditorDownloadResBean)) {
         AEFontManager.a(this.this$0, localAEEditorDownloadResBean);
       } else if (localAEEditorDownloadResBean.getPreDownload() == 1) {
         AEEditorResourceManager.a().a(localAEEditorDownloadResBean, new AEFontManager.1.1(this, localAEEditorDownloadResBean));
@@ -29,7 +29,7 @@ class AEFontManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.font.AEFontManager.1
  * JD-Core Version:    0.7.0.1
  */

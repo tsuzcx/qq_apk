@@ -13,13 +13,13 @@ public class EmptyPlaceHolderSegment
   extends SegmentView
 {
   public static final String KEY = "EmptyPlaceHolderSegment";
-  private final int jdField_a_of_type_Int;
-  private BaseViewHolder jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
+  private final int a;
+  private BaseViewHolder b;
   
   public EmptyPlaceHolderSegment(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public int a()
@@ -34,25 +34,25 @@ public class EmptyPlaceHolderSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
-    if (QQStoryContext.a()) {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166526));
+    paramViewGroup = new View(this.l);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.a));
+    if (QQStoryContext.e()) {
+      paramViewGroup.setBackgroundColor(this.l.getResources().getColor(2131167383));
     } else {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165535));
+      paramViewGroup.setBackgroundColor(this.l.getResources().getColor(2131165875));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(paramViewGroup);
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
+    this.b = new BaseViewHolder(paramViewGroup);
+    return this.b;
   }
   
-  public String a()
+  public String b()
   {
     return "EmptyPlaceHolderSegment";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.EmptyPlaceHolderSegment
  * JD-Core Version:    0.7.0.1
  */

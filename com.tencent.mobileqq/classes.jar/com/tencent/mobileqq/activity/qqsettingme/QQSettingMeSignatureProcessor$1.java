@@ -11,12 +11,12 @@ class QQSettingMeSignatureProcessor$1
   
   public void a(QQSettingMeSignatureBean paramQQSettingMeSignatureBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a(paramQQSettingMeSignatureBean);
+    this.a.a(paramQQSettingMeSignatureBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSignatureProcessor.1
  * JD-Core Version:    0.7.0.1
  */

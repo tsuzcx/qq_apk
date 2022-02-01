@@ -19,7 +19,7 @@ public class HttpOpenMiniAppAndAdAction
   {
     try
     {
-      boolean bool = ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+      boolean bool = ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.b, this.c, 2016, null);
       return bool;
     }
     catch (Exception localException)
@@ -28,14 +28,14 @@ public class HttpOpenMiniAppAndAdAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("HttpOpenMiniAppAndAdAction", 1, localStringBuilder.toString());
-      b_("HttpOpenMiniAppAndAdAction");
+      h_("HttpOpenMiniAppAndAdAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HttpOpenMiniAppAndAdAction
  * JD-Core Version:    0.7.0.1
  */

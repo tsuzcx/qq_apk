@@ -50,7 +50,7 @@ public class QQMusicClient
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt(QQMusicService.a, 4);
-    localBundle.putInt("seq", this.a.a(paramCallback));
+    localBundle.putInt("seq", this.a.e(paramCallback));
     this.a.a(8, localBundle);
   }
   
@@ -76,7 +76,7 @@ public class QQMusicClient
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt(QQMusicService.a, 6);
-    localBundle.putInt("seq", this.a.a(paramCallback));
+    localBundle.putInt("seq", this.a.e(paramCallback));
     this.a.a(8, localBundle);
   }
   
@@ -94,7 +94,7 @@ public class QQMusicClient
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt(QQMusicService.a, 7);
-    localBundle.putInt("seq", this.a.a(paramCallback));
+    localBundle.putInt("seq", this.a.e(paramCallback));
     this.a.a(8, localBundle);
   }
 }

@@ -24,35 +24,35 @@ import java.util.List;
 public class SavorImgTagAdapter
   extends BaseAdapter
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
-  int b;
+  Context a;
+  List<InterestTagInfo> b;
   int c;
   int d;
   int e;
   int f;
+  int g;
+  Drawable h;
+  int i;
+  float j;
   
   SavorImgTagAdapter(Context paramContext, Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298943);
-    this.d = paramInt1;
-    this.c = (paramInt2 + i);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.f = 0;
-    this.e = paramInt3;
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    this.a = paramContext;
+    this.b = new ArrayList(2);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    int k = this.a.getResources().getDimensionPixelSize(2131299665);
+    this.f = paramInt1;
+    this.e = (paramInt2 + k);
+    this.h = paramDrawable;
+    this.i = 0;
+    this.g = paramInt3;
+    this.j = paramContext.getResources().getDisplayMetrics().density;
   }
   
   public int a()
   {
-    return this.c;
+    return this.e;
   }
   
   public void a(int paramInt)
@@ -60,47 +60,47 @@ public class SavorImgTagAdapter
     if (paramInt < 0) {
       return;
     }
-    if ((paramInt > 0) && (this.f == 0))
+    if ((paramInt > 0) && (this.i == 0))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.b.size() > 0)
       {
-        this.jdField_a_of_type_JavaUtilList.add(0, null);
-        this.jdField_a_of_type_JavaUtilList.add(null);
+        this.b.add(0, null);
+        this.b.add(null);
       }
     }
-    else if ((paramInt == 0) && (this.f > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 2))
+    else if ((paramInt == 0) && (this.i > 0) && (this.b.size() > 2))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(0);
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      this.b.remove(0);
+      List localList = this.b;
       localList.remove(localList.size() - 1);
     }
-    this.f = paramInt;
+    this.i = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(List<InterestTagInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if ((paramList != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.addAll(paramList);
     }
-    if ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.f > 0))
+    if ((this.b.size() > 0) && (this.i > 0))
     {
-      this.jdField_a_of_type_JavaUtilList.add(0, null);
-      this.jdField_a_of_type_JavaUtilList.add(null);
+      this.b.add(0, null);
+      this.b.add(null);
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return (InterestTagInfo)this.b.get(paramInt);
     }
     return null;
   }
@@ -108,8 +108,8 @@ public class SavorImgTagAdapter
   public long getItemId(int paramInt)
   {
     InterestTagInfo localInterestTagInfo;
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      localInterestTagInfo = (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      localInterestTagInfo = (InterestTagInfo)this.b.get(paramInt);
     } else {
       localInterestTagInfo = null;
     }
@@ -129,21 +129,21 @@ public class SavorImgTagAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = getItemViewType(paramInt);
+    int k = getItemViewType(paramInt);
     InterestTagInfo localInterestTagInfo;
     SavorImgTagAdapter.ViewHolder localViewHolder;
     Object localObject1;
-    if (i == 0)
+    if (k == 0)
     {
       localInterestTagInfo = (InterestTagInfo)getItem(paramInt);
       if (paramView == null)
       {
-        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561232, null);
+        paramViewGroup = LayoutInflater.from(this.a).inflate(2131627588, null);
         localViewHolder = new SavorImgTagAdapter.ViewHolder();
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131368591));
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378784));
+        localViewHolder.a = ((URLImageView)paramViewGroup.findViewById(2131435503));
+        localViewHolder.b = ((TextView)paramViewGroup.findViewById(2131447463));
         paramViewGroup.setTag(localViewHolder);
-        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(this.d, this.c));
+        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(this.f, this.e));
       }
       else
       {
@@ -161,11 +161,11 @@ public class SavorImgTagAdapter
       paramView = localInterestTagInfo.tagIconUrl;
       if ((paramView != null) && (paramView.equals("icon_more_url")))
       {
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841418);
+        localViewHolder.a.setImageResource(2130842258);
         if ((localInterestTagInfo.tagType != 10) && (localInterestTagInfo.tagType != 11) && (localInterestTagInfo.tagType != 9)) {
           break label404;
         }
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841419);
+        localViewHolder.a.setImageResource(2130842259);
       }
     }
     for (;;)
@@ -173,9 +173,9 @@ public class SavorImgTagAdapter
       try
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.b;
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.d;
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.c;
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.h;
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable;
         ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "nearbyCard";
         if (TextUtils.isEmpty(paramView)) {
@@ -185,15 +185,15 @@ public class SavorImgTagAdapter
         localObject1 = paramView;
         try
         {
-          if (this.e == 7)
+          if (this.g == 7)
           {
             localObject1 = paramView;
-            paramView.setTag(URLDrawableDecodeHandler.b(this.jdField_a_of_type_Int, this.b, (int)(this.jdField_a_of_type_Float * 10.0F)));
+            paramView.setTag(URLDrawableDecodeHandler.b(this.c, this.d, (int)(this.j * 10.0F)));
             localObject1 = paramView;
-            paramView.setDecodeHandler(URLDrawableDecodeHandler.c);
+            paramView.setDecodeHandler(URLDrawableDecodeHandler.d);
           }
           localObject1 = paramView;
-          paramView.setDownloadListener(new ImgDownloadListener(this.jdField_a_of_type_AndroidContentContext, "actInterestTagPicDownload"));
+          paramView.setDownloadListener(new ImgDownloadListener(this.a, "actInterestTagPicDownload"));
           localObject1 = paramView;
           ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = null;
           localObject1 = paramView;
@@ -207,23 +207,23 @@ public class SavorImgTagAdapter
         localObject1 = null;
       }
       paramView = (View)localObject1;
-      Object localObject2 = localViewHolder.jdField_a_of_type_ComTencentImageURLImageView;
+      Object localObject2 = localViewHolder.a;
       localObject1 = paramView;
       if (paramView == null) {
-        localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = this.h;
       }
       ((URLImageView)localObject2).setImageDrawable((Drawable)localObject1);
       label404:
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localInterestTagInfo.tagName);
+      localViewHolder.b.setText(localInterestTagInfo.tagName);
       return paramViewGroup;
       localObject1 = paramView;
-      if (i == 1)
+      if (k == 1)
       {
         localObject1 = paramView;
         if (paramView == null)
         {
-          localObject1 = new View(this.jdField_a_of_type_AndroidContentContext);
-          ((View)localObject1).setLayoutParams(new ViewGroup.LayoutParams(this.f, this.c));
+          localObject1 = new View(this.a);
+          ((View)localObject1).setLayoutParams(new ViewGroup.LayoutParams(this.i, this.e));
         }
       }
       label468:
@@ -240,7 +240,7 @@ public class SavorImgTagAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.SavorImgTagAdapter
  * JD-Core Version:    0.7.0.1
  */

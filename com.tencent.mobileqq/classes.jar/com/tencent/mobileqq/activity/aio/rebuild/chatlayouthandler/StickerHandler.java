@@ -57,7 +57,7 @@ public class StickerHandler
   
   private int a(Context paramContext, BaseBubbleBuilder.ViewHolder paramViewHolder, StickerHandler.HandleStickersParams paramHandleStickersParams, List<MessageRecord> paramList, int paramInt)
   {
-    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
+    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.b.getRuntimeService(IEmoticonManagerService.class);
     int k = paramList.size() - 1;
     int j = 0;
     int i = paramInt;
@@ -73,17 +73,17 @@ public class StickerHandler
       for (;;)
       {
         break label592;
-        StickerInfo localStickerInfo = EmojiStickerManager.a((MessageRecord)localObject2);
+        StickerInfo localStickerInfo = EmojiStickerManager.d((MessageRecord)localObject2);
         j = paramInt;
         if (localStickerInfo == null) {
           break;
         }
         j = paramInt;
-        if (!EmojiStickerManager.c((MessageRecord)localObject2)) {
+        if (!EmojiStickerManager.h((MessageRecord)localObject2)) {
           break;
         }
         i += 1;
-        if (i > QVipStickerProcessor.jdField_c_of_type_Int)
+        if (i > QVipStickerProcessor.c)
         {
           ((MessageRecord)localObject2).msgtype = -2006;
           paramInt += 1;
@@ -92,27 +92,27 @@ public class StickerHandler
         {
           Object localObject1 = a(localIEmoticonManagerService, (MessageRecord)localObject2, null);
           if (localStickerInfo.x <= 1.0F) {
-            j = (int)(localStickerInfo.x * paramHandleStickersParams.jdField_a_of_type_Int);
+            j = (int)(localStickerInfo.x * paramHandleStickersParams.h);
           } else {
-            j = paramHandleStickersParams.jdField_a_of_type_Int;
+            j = paramHandleStickersParams.h;
           }
           int n;
           if (localStickerInfo.y <= 1.0F) {
-            n = (int)(localStickerInfo.y * paramHandleStickersParams.jdField_a_of_type_Int);
+            n = (int)(localStickerInfo.y * paramHandleStickersParams.h);
           } else {
-            n = paramHandleStickersParams.jdField_a_of_type_Int;
+            n = paramHandleStickersParams.h;
           }
           int m;
           if (localStickerInfo.width <= 1.0F) {
-            m = (int)(localStickerInfo.width * paramHandleStickersParams.jdField_a_of_type_Int);
+            m = (int)(localStickerInfo.width * paramHandleStickersParams.h);
           } else {
-            m = paramHandleStickersParams.jdField_a_of_type_Int;
+            m = paramHandleStickersParams.h;
           }
           int i1;
           if (localStickerInfo.height <= 1.0F) {
-            i1 = (int)(localStickerInfo.height * paramHandleStickersParams.jdField_a_of_type_Int);
+            i1 = (int)(localStickerInfo.height * paramHandleStickersParams.h);
           } else {
-            i1 = paramHandleStickersParams.jdField_a_of_type_Int;
+            i1 = paramHandleStickersParams.h;
           }
           int i2 = localStickerInfo.rotate;
           int i3 = a(paramViewHolder, paramHandleStickersParams, paramList, k, n);
@@ -122,7 +122,7 @@ public class StickerHandler
             localObject2 = (IPicEmoticonInfo)localObject1;
             if (((IPicEmoticonInfo)localObject2).getEmoticon() != null)
             {
-              if ((!EmojiStickerManager.g) && (FileUtils.getAvailableInnernalMemorySize() > 1.048576E+008F)) {
+              if ((!EmojiStickerManager.u) && (FileUtils.getAvailableInnernalMemorySize() > 1.048576E+008F)) {
                 n = 1;
               } else {
                 n = 0;
@@ -130,7 +130,7 @@ public class StickerHandler
               if (n != 0) {
                 localObject1 = ((IPicEmoticonInfo)localObject2).getLoadingDrawable("fromAIO", true, false, null, m, m);
               } else {
-                localObject1 = ((IPicEmoticonInfo)localObject2).getDrawable(paramContext, paramHandleStickersParams.jdField_a_of_type_Float);
+                localObject1 = ((IPicEmoticonInfo)localObject2).getDrawable(paramContext, paramHandleStickersParams.i);
               }
               str = ((IPicEmoticonInfo)localObject2).getEmoticon().epId;
             }
@@ -145,7 +145,7 @@ public class StickerHandler
               break label445;
             }
           }
-          for (localObject1 = ((SystemAndEmojiEmoticonInfo)localObject1).getBigDrawable(paramContext, paramHandleStickersParams.jdField_a_of_type_Float);; localObject1 = ((ISmallEmoticonInfo)localObject1).getBigDrawable(paramContext, paramHandleStickersParams.jdField_a_of_type_Float))
+          for (localObject1 = ((SystemAndEmojiEmoticonInfo)localObject1).getBigDrawable(paramContext, paramHandleStickersParams.i);; localObject1 = ((ISmallEmoticonInfo)localObject1).getBigDrawable(paramContext, paramHandleStickersParams.i))
           {
             str = "";
             break label522;
@@ -168,7 +168,7 @@ public class StickerHandler
           label522:
           if (localObject1 != null)
           {
-            localObject2 = paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+            localObject2 = paramViewHolder.j;
             double d = i2;
             boolean bool = localStickerInfo.isShown;
             float f;
@@ -189,42 +189,42 @@ public class StickerHandler
   
   private int a(BaseBubbleBuilder.ViewHolder paramViewHolder, StickerHandler.HandleStickersParams paramHandleStickersParams, List<MessageRecord> paramList, int paramInt1, int paramInt2)
   {
-    int i = paramHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin + paramInt2;
+    int i = paramHandleStickersParams.b.topMargin + paramInt2;
     paramInt2 = i;
-    if (paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.g != null)
     {
-      paramInt2 = AIOUtils.b(14.0F, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources());
-      paramInt2 = i + (paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin + paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin + paramInt2);
+      paramInt2 = AIOUtils.b(14.0F, this.b.getApp().getResources());
+      paramInt2 = i + (paramHandleStickersParams.g.topMargin + paramHandleStickersParams.g.bottomMargin + paramInt2);
     }
     i = paramInt2;
-    if (paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.e != null)
     {
-      i = AIOUtils.b(14.0F, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources());
-      i = paramInt2 + (paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin + paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin + i);
+      i = AIOUtils.b(14.0F, this.b.getApp().getResources());
+      i = paramInt2 + (paramHandleStickersParams.e.topMargin + paramHandleStickersParams.e.bottomMargin + i);
     }
     paramInt2 = i;
     if (i < 0)
     {
       int j = -i;
-      if (paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams != null) {
-        paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin += j;
+      if (paramHandleStickersParams.c != null) {
+        paramHandleStickersParams.c.topMargin += j;
       }
-      if (paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams != null) {
-        paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin += j;
+      if (paramHandleStickersParams.e != null) {
+        paramHandleStickersParams.e.topMargin += j;
       } else {
-        paramHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin += j;
+        paramHandleStickersParams.b.topMargin += j;
       }
-      if (paramHandleStickersParams.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams != null) {
-        paramHandleStickersParams.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin += j;
+      if (paramHandleStickersParams.f != null) {
+        paramHandleStickersParams.f.topMargin += j;
       }
-      if (paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams != null) {
-        paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin += j;
+      if (paramHandleStickersParams.d != null) {
+        paramHandleStickersParams.d.topMargin += j;
       }
       i = 0;
       paramInt2 = i;
       if (paramInt1 != paramList.size() - 1)
       {
-        paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c(j);
+        paramViewHolder.j.g(j);
         paramInt2 = i;
       }
     }
@@ -251,53 +251,53 @@ public class StickerHandler
   private void a(Context paramContext, View paramView, ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
     boolean bool = paramBaseChatItemLayout.a();
-    if ((paramView != null) && (paramView.getId() == 2131364521) && (!bool) && (EmojiStickerManager.d(paramChatMessage)) && (paramChatMessage.fakeSenderType == 0))
+    if ((paramView != null) && (paramView.getId() == 2131430578) && (!bool) && (EmojiStickerManager.i(paramChatMessage)) && (paramChatMessage.fakeSenderType == 0))
     {
       StickerHandler.HandleStickersParams localHandleStickersParams = new StickerHandler.HandleStickersParams(this);
       a(paramContext, paramView, paramChatMessage, paramBaseChatItemLayout, localHandleStickersParams);
-      if ((localHandleStickersParams.jdField_a_of_type_JavaUtilList != null) && (localHandleStickersParams.jdField_a_of_type_JavaUtilList.size() > 0) && (EmojiStickerManager.b(paramChatMessage)))
+      if ((localHandleStickersParams.a != null) && (localHandleStickersParams.a.size() > 0) && (EmojiStickerManager.g(paramChatMessage)))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localHandleStickersParams.jdField_a_of_type_JavaUtilList);
+        paramView = this.b.getMessageFacade().a(this.c.b, this.c.a, localHandleStickersParams.a);
         if (a(paramContext, paramViewHolder, localHandleStickersParams, paramView, 0) != paramView.size())
         {
           paramView = new Bundle();
-          paramView.putBoolean("haveTimeStamp", localHandleStickersParams.jdField_a_of_type_Boolean);
-          paramView.putBoolean("haveNickName", localHandleStickersParams.jdField_b_of_type_Boolean);
-          paramView.putBoolean("havePendant", localHandleStickersParams.jdField_c_of_type_Boolean);
-          paramView.putBoolean("haveTroopMemberLevel", localHandleStickersParams.jdField_d_of_type_Boolean);
-          if (localHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+          paramView.putBoolean("haveTimeStamp", localHandleStickersParams.v);
+          paramView.putBoolean("haveNickName", localHandleStickersParams.w);
+          paramView.putBoolean("havePendant", localHandleStickersParams.x);
+          paramView.putBoolean("haveTroopMemberLevel", localHandleStickersParams.y);
+          if (localHandleStickersParams.g != null)
           {
-            paramView.putInt("timeStampTop", localHandleStickersParams.jdField_b_of_type_Int);
-            paramView.putInt("timeStampBottom", localHandleStickersParams.jdField_c_of_type_Int);
+            paramView.putInt("timeStampTop", localHandleStickersParams.j);
+            paramView.putInt("timeStampBottom", localHandleStickersParams.k);
           }
-          if (localHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+          if (localHandleStickersParams.b != null)
           {
-            paramView.putInt("textViewTop", localHandleStickersParams.jdField_d_of_type_Int);
-            paramView.putInt("textViewBottom", localHandleStickersParams.jdField_e_of_type_Int);
+            paramView.putInt("textViewTop", localHandleStickersParams.l);
+            paramView.putInt("textViewBottom", localHandleStickersParams.m);
           }
-          if (localHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+          if (localHandleStickersParams.e != null)
           {
-            paramView.putInt("nickNameViewTop", localHandleStickersParams.jdField_f_of_type_Int);
-            paramView.putInt("nickNameViewBottom", localHandleStickersParams.g);
+            paramView.putInt("nickNameViewTop", localHandleStickersParams.n);
+            paramView.putInt("nickNameViewBottom", localHandleStickersParams.o);
           }
-          if (localHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+          if (localHandleStickersParams.c != null)
           {
-            paramView.putInt("headViewTop", localHandleStickersParams.h);
-            paramView.putInt("headViewBottom", localHandleStickersParams.i);
+            paramView.putInt("headViewTop", localHandleStickersParams.p);
+            paramView.putInt("headViewBottom", localHandleStickersParams.q);
           }
-          if (localHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+          if (localHandleStickersParams.d != null)
           {
-            paramView.putInt("pendantViewTop", localHandleStickersParams.j);
-            paramView.putInt("pendantViewBottom", localHandleStickersParams.k);
+            paramView.putInt("pendantViewTop", localHandleStickersParams.r);
+            paramView.putInt("pendantViewBottom", localHandleStickersParams.s);
           }
-          if (localHandleStickersParams.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+          if (localHandleStickersParams.f != null)
           {
-            paramView.putInt("troopMemberLevelTop", localHandleStickersParams.l);
-            paramView.putInt("troopMemberLevelBottom", localHandleStickersParams.m);
+            paramView.putInt("troopMemberLevelTop", localHandleStickersParams.t);
+            paramView.putInt("troopMemberLevelBottom", localHandleStickersParams.u);
           }
-          paramBaseChatItemLayout.setTag(2131374109, paramView);
+          paramBaseChatItemLayout.setTag(2131442204, paramView);
         }
-        paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerDoubleClickListener = new StickerHandler.1(this);
+        paramBaseChatItemLayout.ar = new StickerHandler.1(this);
       }
       paramView = (HeadIconWrapper)paramBaseChatItemLayout.a(HeadIconWrapper.class);
       if (paramView != null)
@@ -306,7 +306,7 @@ public class StickerHandler
         if (paramView != null)
         {
           paramView = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-          paramView.addRule(6, 2131364530);
+          paramView.addRule(6, 2131430587);
           paramView.topMargin = (-AIOUtils.b(1.0F, paramContext.getResources()));
         }
       }
@@ -315,76 +315,76 @@ public class StickerHandler
   
   private void a(Context paramContext, View paramView, ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, StickerHandler.HandleStickersParams paramHandleStickersParams)
   {
-    paramHandleStickersParams.jdField_a_of_type_JavaUtilList = EmojiStickerManager.a().a(paramChatMessage);
-    paramHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
-    paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    paramHandleStickersParams.a = EmojiStickerManager.a().c(paramChatMessage);
+    paramHandleStickersParams.b = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
+    paramHandleStickersParams.c = null;
+    paramHandleStickersParams.d = null;
     paramView = (HeadIconWrapper)paramBaseChatItemLayout.a(HeadIconWrapper.class);
     if (paramView != null)
     {
-      paramView = paramView.a();
+      paramView = paramView.c();
       if ((paramView != null) && (paramView.checkViewNonNull())) {
-        paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
+        paramHandleStickersParams.c = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
       }
     }
-    if ((paramBaseChatItemLayout.jdField_a_of_type_ComTencentImageURLImageView != null) && (paramBaseChatItemLayout.jdField_a_of_type_ComTencentImageURLImageView.getVisibility() == 0)) {
-      paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramBaseChatItemLayout.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams());
+    if ((paramBaseChatItemLayout.ae != null) && (paramBaseChatItemLayout.ae.getVisibility() == 0)) {
+      paramHandleStickersParams.d = ((RelativeLayout.LayoutParams)paramBaseChatItemLayout.ae.getLayoutParams());
     }
     paramView = (NickNameLayoutViewWrapper)paramBaseChatItemLayout.a(NickNameLayoutViewWrapper.class);
     if (paramView != null)
     {
-      paramView = paramView.a();
+      paramView = paramView.c();
       if ((paramView != null) && (paramView.checkViewNonNull())) {
-        paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
+        paramHandleStickersParams.e = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
       }
     }
-    if ((paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView != null) && (paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0)) {
-      paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
+    if ((paramBaseChatItemLayout.aa != null) && (paramBaseChatItemLayout.aa.getVisibility() == 0)) {
+      paramHandleStickersParams.g = ((RelativeLayout.LayoutParams)paramBaseChatItemLayout.aa.getLayoutParams());
     }
-    paramHandleStickersParams.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    paramHandleStickersParams.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    if (paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    paramHandleStickersParams.h = paramContext.getResources().getDisplayMetrics().widthPixels;
+    paramHandleStickersParams.i = paramContext.getResources().getDisplayMetrics().density;
+    if (paramHandleStickersParams.g != null)
     {
-      paramHandleStickersParams.jdField_a_of_type_Boolean = true;
-      paramHandleStickersParams.jdField_b_of_type_Int = paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin;
-      paramHandleStickersParams.jdField_c_of_type_Int = paramHandleStickersParams.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin;
+      paramHandleStickersParams.v = true;
+      paramHandleStickersParams.j = paramHandleStickersParams.g.topMargin;
+      paramHandleStickersParams.k = paramHandleStickersParams.g.bottomMargin;
     }
-    if (paramHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.b != null)
     {
-      paramHandleStickersParams.jdField_d_of_type_Int = paramHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin;
-      paramHandleStickersParams.jdField_e_of_type_Int = paramHandleStickersParams.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin;
+      paramHandleStickersParams.l = paramHandleStickersParams.b.topMargin;
+      paramHandleStickersParams.m = paramHandleStickersParams.b.bottomMargin;
     }
-    if (paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.e != null)
     {
-      paramHandleStickersParams.jdField_b_of_type_Boolean = true;
-      paramHandleStickersParams.jdField_f_of_type_Int = paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin;
-      paramHandleStickersParams.g = paramHandleStickersParams.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin;
+      paramHandleStickersParams.w = true;
+      paramHandleStickersParams.n = paramHandleStickersParams.e.topMargin;
+      paramHandleStickersParams.o = paramHandleStickersParams.e.bottomMargin;
     }
-    if (paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.c != null)
     {
-      paramHandleStickersParams.h = paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin;
-      paramHandleStickersParams.i = paramHandleStickersParams.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin;
+      paramHandleStickersParams.p = paramHandleStickersParams.c.topMargin;
+      paramHandleStickersParams.q = paramHandleStickersParams.c.bottomMargin;
     }
-    if (paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.d != null)
     {
-      paramHandleStickersParams.jdField_c_of_type_Boolean = true;
-      paramHandleStickersParams.j = paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin;
-      paramHandleStickersParams.k = paramHandleStickersParams.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin;
+      paramHandleStickersParams.x = true;
+      paramHandleStickersParams.r = paramHandleStickersParams.d.topMargin;
+      paramHandleStickersParams.s = paramHandleStickersParams.d.bottomMargin;
     }
-    if (paramHandleStickersParams.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
+    if (paramHandleStickersParams.f != null)
     {
-      paramHandleStickersParams.jdField_d_of_type_Boolean = true;
-      paramHandleStickersParams.l = paramHandleStickersParams.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin;
-      paramHandleStickersParams.m = paramHandleStickersParams.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin;
+      paramHandleStickersParams.y = true;
+      paramHandleStickersParams.t = paramHandleStickersParams.f.topMargin;
+      paramHandleStickersParams.u = paramHandleStickersParams.f.bottomMargin;
     }
   }
   
   public void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, Bundle paramBundle)
   {
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.b();
+    paramViewHolder.j.f();
     StartupTracker.a(null, "AIO_Handle_Sticker_Cost");
     long l = System.currentTimeMillis();
-    a(paramContext, paramViewHolder.jdField_a_of_type_AndroidViewView, paramChatMessage, paramBaseChatItemLayout, paramViewHolder);
+    a(paramContext, paramViewHolder.h, paramChatMessage, paramBaseChatItemLayout, paramViewHolder);
     StartupTracker.a("AIO_Handle_Sticker_Cost", null);
     if (QLog.isColorLevel())
     {
@@ -398,7 +398,7 @@ public class StickerHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.StickerHandler
  * JD-Core Version:    0.7.0.1
  */

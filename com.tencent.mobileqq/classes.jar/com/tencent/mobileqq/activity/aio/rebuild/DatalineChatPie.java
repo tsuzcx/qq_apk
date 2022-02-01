@@ -33,7 +33,7 @@ import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgListBuilder;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.FriendListUI;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.Scroller;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.FriendScroller;
 import com.tencent.mobileqq.activity.aio.helper.DatalineHelperProvider;
 import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
 import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
@@ -75,27 +75,21 @@ import java.util.Observable;
 public class DatalineChatPie
   extends FriendChatPie
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new DatalineChatPie.9(this);
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new DatalineChatPie.7(this);
-  private DatalineForwardHandler jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler;
-  private DatalineOldForwardHandler jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler;
-  private String d;
+  private String bC = "3636666661";
+  private DatalineOldForwardHandler bD;
+  private DatalineForwardHandler bE;
+  private PopupWindow bF;
+  private DataLineObserver bG = new DatalineChatPie.7(this);
+  private View.OnClickListener bH = new DatalineChatPie.9(this);
   
   public DatalineChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, Context paramContext)
   {
     super(paramQQAppInterface, paramViewGroup, paramBaseActivity, paramContext);
-    this.jdField_d_of_type_JavaLangString = "3636666661";
-  }
-  
-  private View.OnClickListener a()
-  {
-    return new DatalineChatPie.6(this);
   }
   
   private void a(RefreshMessageContext paramRefreshMessageContext)
   {
-    paramRefreshMessageContext = paramRefreshMessageContext.a;
+    paramRefreshMessageContext = paramRefreshMessageContext.b;
     if (paramRefreshMessageContext != null)
     {
       if (paramRefreshMessageContext.isEmpty()) {
@@ -108,7 +102,7 @@ public class DatalineChatPie
         if (((MessageRecord)localObject).msgtype == -3017)
         {
           localObject = (MessageForDLFile)localObject;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((MessageForDLFile)localObject).deviceType).a(((MessageForDLFile)localObject).associatedId);
+          this.d.getMessageFacade().d(((MessageForDLFile)localObject).deviceType).c(((MessageForDLFile)localObject).associatedId);
         }
       }
     }
@@ -127,11 +121,11 @@ public class DatalineChatPie
     localIntent.putExtra("PhotoConst.AIO_TO_PHOTO_LIST_NEED_SHOW_UPLOAD_BAR", false);
     localIntent.putExtra("PhotoConst.QZONE_ALBUM_FROM_AIO", true);
     localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 50);
-    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "/base/album/photolist");
+    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.f, "/base/album/photolist");
     localActivityURIRequest.extra().putInt("enter_from", 51);
-    localActivityURIRequest.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationFileAssistant.jdField_a_of_type_JavaLangString);
-    localActivityURIRequest.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationFileAssistant.jdField_a_of_type_JavaLangString);
-    int i = PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramArrayList, localIntent, localActivityURIRequest);
+    localActivityURIRequest.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationFileAssistant.a);
+    localActivityURIRequest.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationFileAssistant.a);
+    int i = PlusPanelUtils.a(this.d, this.f, this.ah, paramArrayList, localIntent, localActivityURIRequest);
     localActivityURIRequest.extra().putString("PhotoConst.DEST_ACTIVITY_CLASS_NAME", "");
     localActivityURIRequest.extra().putString("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "");
     localActivityURIRequest.extra().putInt(AlbumConstants.h, 2);
@@ -143,7 +137,7 @@ public class DatalineChatPie
     {
       if (paramPhotoListPanel != null)
       {
-        paramPhotoListPanel = paramPhotoListPanel.a();
+        paramPhotoListPanel = paramPhotoListPanel.s();
         if (paramPhotoListPanel != null) {
           localActivityURIRequest.extra().putSerializable("PhotoConst.editPathMap", paramPhotoListPanel);
         }
@@ -151,7 +145,7 @@ public class DatalineChatPie
       localActivityURIRequest.setRequestCode(i);
     }
     QRoute.startUri(localActivityURIRequest);
-    AlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false, true);
+    AlbumUtil.anim(this.f, false, true);
     if (PeakUtils.a != null) {
       PeakUtils.a.b();
     }
@@ -159,49 +153,49 @@ public class DatalineChatPie
   
   private boolean a(PhotoListPanel paramPhotoListPanel)
   {
-    if (paramPhotoListPanel.a.isEmpty())
+    if (paramPhotoListPanel.d.isEmpty())
     {
-      paramPhotoListPanel.h();
+      paramPhotoListPanel.l();
       return true;
     }
-    Iterator localIterator = new ArrayList(paramPhotoListPanel.a).iterator();
+    Iterator localIterator = new ArrayList(paramPhotoListPanel.d).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
+      this.d.getFileManagerEngine().a(str, this.ah.c, this.ah.b, this.ah.a, true);
     }
-    paramPhotoListPanel.h();
+    paramPhotoListPanel.l();
     return true;
   }
   
-  private void aq()
+  private void bC()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0);
     if (localSharedPreferences.getBoolean("dataline_guide_check_show", false)) {
       return;
     }
     ThreadManagerV2.getUIHandlerV2().post(new DatalineChatPie.4(this, localSharedPreferences));
   }
   
-  private void ar()
+  private void bD()
   {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
+    if (this.bF == null)
     {
-      Object localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559012, null);
+      Object localObject1 = LayoutInflater.from(this.e).inflate(2131624646, null);
       ((View)localObject1).getBackground().setAlpha(100);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject1, -1, -2, true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView((View)localObject1);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setSoftInputMode(16);
-      Object localObject2 = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+      this.bF = new PopupWindow((View)localObject1, -1, -2, true);
+      this.bF.setContentView((View)localObject1);
+      this.bF.setSoftInputMode(16);
+      Object localObject2 = (WindowManager)this.e.getSystemService("window");
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       ((WindowManager)localObject2).getDefaultDisplay().getMetrics(localDisplayMetrics);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(localDisplayMetrics.heightPixels);
+      this.bF.setHeight(localDisplayMetrics.heightPixels);
       if (Build.VERSION.SDK_INT >= 21) {
         try
         {
           localObject2 = PopupWindow.class.getDeclaredField("mLayoutInScreen");
           ((Field)localObject2).setAccessible(true);
-          ((Field)localObject2).set(this.jdField_a_of_type_AndroidWidgetPopupWindow, Boolean.valueOf(true));
+          ((Field)localObject2).set(this.bF, Boolean.valueOf(true));
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
@@ -212,58 +206,40 @@ public class DatalineChatPie
           localNoSuchFieldException.printStackTrace();
         }
       }
-      Object localObject3 = (AsyncImageView)((View)localObject1).findViewById(2131365637);
-      int i = AIOUtils.b(14.0F, a().getResources());
+      Object localObject3 = (AsyncImageView)((View)localObject1).findViewById(2131431868);
+      int i = AIOUtils.b(14.0F, aX().getResources());
       ((AsyncImageView)localObject3).setCornerRadius(i, i, 0, 0);
-      ((AsyncImageView)localObject3).setDefaultImage(2130844278);
-      localObject3 = (TextView)((View)localObject1).findViewById(2131365610);
-      localObject1 = (AsyncImageView)((View)localObject1).findViewById(2131364711);
-      ((TextView)localObject3).setOnClickListener(a());
-      ((AsyncImageView)localObject1).setOnClickListener(a());
+      ((AsyncImageView)localObject3).setDefaultImage(2130845595);
+      localObject3 = (TextView)((View)localObject1).findViewById(2131431841);
+      localObject1 = (AsyncImageView)((View)localObject1).findViewById(2131430817);
+      ((TextView)localObject3).setOnClickListener(bE());
+      ((AsyncImageView)localObject1).setOnClickListener(bE());
       ((AsyncImageView)localObject1).setOnTouchListener(new DatalineChatPie.5(this, (AsyncImageView)localObject1));
     }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.update();
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.c.getRootView(), 17, 0, 0);
+    this.bF.setFocusable(true);
+    this.bF.setOutsideTouchable(true);
+    this.bF.update();
+    this.bF.showAtLocation(this.aZ.getRootView(), 17, 0, 0);
   }
   
-  private void as()
+  private View.OnClickListener bE()
+  {
+    return new DatalineChatPie.6(this);
+  }
+  
+  private void bF()
   {
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("string_from", false);
     localBundle.putBoolean("string_uin", false);
     localBundle.putLong("device_din", 0L);
     localBundle.putInt("sTitleID", 0);
-    QQProxyForDataline.a(a(), localBundle, "com.qqdataline.mpfile.LiteMpFileMainActivity");
+    QQProxyForDataline.a(aX(), localBundle, "com.qqdataline.mpfile.LiteMpFileMainActivity");
   }
   
-  protected void O()
+  public void B()
   {
-    super.O();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
-    }
-  }
-  
-  protected void P()
-  {
-    super.P();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = null;
-    }
-  }
-  
-  protected MsgList a()
-  {
-    return new MsgListBuilder(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).a(new Scroller()).a(new FriendListUI(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a(new DataLineUnreadTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a();
-  }
-  
-  protected HelperProvider a()
-  {
-    return new DatalineHelperProvider(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    PublicFragmentActivity.a(aX(), DatalineAIOSettingFragment.class);
   }
   
   public void a(int paramInt)
@@ -271,136 +247,159 @@ public class DatalineChatPie
     super.a(paramInt);
     if (paramInt == 4)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equalsIgnoreCase(((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin()))
+      if (this.ah.b.equalsIgnoreCase(((IQFileConfigManager)this.d.getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin()))
       {
-        Object localObject = this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-        if (localObject == null)
+        Object localObject = this.n.getCurrentPanelView();
+        if (!(localObject instanceof PhotoListPanel))
         {
           QLog.e("DatalineChatPie", 1, "root.getCurrentPanelView() return null!");
           return;
         }
         localObject = (PhotoListPanel)localObject;
-        ((PhotoListPanel)localObject).findViewById(2131374724).setVisibility(4);
-        ((PhotoListPanel)localObject).findViewById(2131374730).setVisibility(4);
-        ((PhotoListPanel)localObject).findViewById(2131374725).setVisibility(4);
+        ((PhotoListPanel)localObject).findViewById(2131442912).setVisibility(4);
+        ((PhotoListPanel)localObject).findViewById(2131442918).setVisibility(4);
+        ((PhotoListPanel)localObject).findViewById(2131442913).setVisibility(4);
         ((PhotoListPanel)localObject).setCustomOnClickListener(new DatalineChatPie.1(this));
       }
     }
     else if (paramInt == 16) {
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      PlusPanelUtils.a(this.d, aX(), this.ah);
     }
   }
   
   public boolean a(boolean paramBoolean)
   {
     paramBoolean = super.a(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
+    this.d.getFileManagerEngine();
     ThreadManagerV2.getUIHandlerV2().postDelayed(new DatalineChatPie.2(this), 200L);
     new Handler(ThreadManagerV2.getFileThreadLooper()).postDelayed(new DatalineChatPie.3(this), 100L);
     return paramBoolean;
   }
   
-  protected void aj()
+  protected void au()
   {
-    super.aj();
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      this.e.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    super.au();
+    if (this.bG != null) {
+      this.d.addObserver(this.bG);
     }
   }
   
-  protected void b(Intent paramIntent)
+  protected void av()
   {
-    super.b(paramIntent);
-    this.e.setOnClickListener(null);
-    this.e.setClickable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconRight("", 0);
-    this.g.setOnTouchListener(null);
+    super.av();
+    if (this.bG != null)
+    {
+      this.d.removeObserver(this.bG);
+      this.bG = null;
+    }
+  }
+  
+  protected HelperProvider b()
+  {
+    return new DatalineHelperProvider(this.f);
+  }
+  
+  protected void bg()
+  {
+    super.bg();
+    if (this.e != null) {
+      this.C.setTextColor(this.e.getResources().getColor(2131167990));
+    }
   }
   
   protected void c(Intent paramIntent)
   {
     super.c(paramIntent);
+    this.C.setOnClickListener(null);
+    this.C.setClickable(false);
+    this.p.setTitleIconRight("", 0);
+    this.H.setOnTouchListener(null);
   }
   
-  protected void e()
+  protected void d(Intent paramIntent)
   {
-    super.e();
-    ImageView localImageView = new ImageView(a());
-    localImageView.setId(2131366802);
-    localImageView.setContentDescription(a().getString(2131698543));
-    localImageView.setImageResource(2130844271);
-    localImageView.setScaleType(ImageView.ScaleType.CENTER);
-    localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.b.findViewById(2131376643);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
-    localLayoutParams.addRule(15);
-    localLayoutParams.rightMargin = AIOUtils.b(6.0F, a().getResources());
-    localRelativeLayout.addView(localImageView, localLayoutParams);
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      View localView = new View(a());
-      localView.setBackgroundColor(Color.parseColor("#77000000"));
-      localRelativeLayout.addView(localView, localLayoutParams);
-    }
-    if (ThemeUtil.isSimpleDayTheme(false)) {
-      localImageView.setImageResource(2130844272);
-    }
+    super.d(paramIntent);
   }
   
-  protected void f(Intent paramIntent)
+  protected MsgList e()
   {
-    super.f(paramIntent);
+    return new MsgListBuilder(this.i).a(new FriendScroller()).a(new FriendListUI(this.i)).a(new DataLineUnreadTask(this.i)).a();
   }
   
-  protected void h(Intent paramIntent)
+  protected void g(Intent paramIntent)
+  {
+    super.g(paramIntent);
+  }
+  
+  protected void i(Intent paramIntent)
   {
     if (!TextUtils.isEmpty(paramIntent.getAction()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler = new DatalineForwardHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      if (this.bE == null) {
+        this.bE = new DatalineForwardHandler(this.d, aX());
       }
       if ((!paramIntent.getAction().equals("android.intent.action.SEND")) && (!paramIntent.getAction().equals("android.intent.action.SEND_MULTIPLE")))
       {
         if ((paramIntent.getAction().equals("android.intent.action.MAIN")) && (paramIntent.getBooleanExtra("system_share_multi_send", false))) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler.a(paramIntent);
+          this.bE.a(paramIntent);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler.a(paramIntent);
+        this.bE.a(paramIntent);
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler = new DatalineOldForwardHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      if (this.bD == null) {
+        this.bD = new DatalineOldForwardHandler(this.d, aX());
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler.a(paramIntent);
+      this.bD.a(paramIntent);
     }
   }
   
-  protected void j()
+  protected void l()
   {
-    if (this.jdField_d_of_type_AndroidWidgetImageView != null) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+    super.l();
+    ImageView localImageView = new ImageView(aX());
+    localImageView.setId(2131433124);
+    localImageView.setContentDescription(aX().getString(2131896489));
+    localImageView.setImageResource(2130845588);
+    localImageView.setScaleType(ImageView.ScaleType.CENTER);
+    localImageView.setOnClickListener(this.bH);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.z.findViewById(2131444904);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
+    localLayoutParams.addRule(15);
+    localLayoutParams.rightMargin = AIOUtils.b(6.0F, aX().getResources());
+    localRelativeLayout.addView(localImageView, localLayoutParams);
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      View localView = new View(aX());
+      localView.setBackgroundColor(Color.parseColor("#77000000"));
+      localRelativeLayout.addView(localView, localLayoutParams);
     }
-  }
-  
-  public void k()
-  {
-    PublicFragmentActivity.a(a(), DatalineAIOSettingFragment.class);
+    if (ThemeUtil.isSimpleDayTheme(false)) {
+      localImageView.setImageResource(2130845589);
+    }
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof RefreshMessageContext)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new DatalineChatPie.8(this, paramObject));
+      this.f.runOnUiThread(new DatalineChatPie.8(this, paramObject));
     }
     super.update(paramObservable, paramObject);
+  }
+  
+  protected void z()
+  {
+    if (this.A != null) {
+      this.A.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie
  * JD-Core Version:    0.7.0.1
  */

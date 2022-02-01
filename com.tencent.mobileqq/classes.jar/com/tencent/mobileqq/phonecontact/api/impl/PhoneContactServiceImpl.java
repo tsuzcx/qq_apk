@@ -291,7 +291,7 @@ public class PhoneContactServiceImpl
         AppInterface localAppInterface = this.app;
         if ((!this.destroyed) && (localAppInterface != null))
         {
-          this.mInjectProcessor.a(true);
+          this.mInjectProcessor.b(true);
           long l1 = System.currentTimeMillis();
           Object localObject2 = new StringBuilder(200);
           ((StringBuilder)localObject2).append("checkUpdateBindStateAndList, from: ");
@@ -823,7 +823,7 @@ public class PhoneContactServiceImpl
     //   256: ldc 187
     //   258: invokeinterface 1094 2 0
     //   263: invokeinterface 1097 2 0
-    //   268: invokestatic 1101	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   268: invokestatic 1102	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
     //   271: astore 10
     //   273: aload 7
     //   275: astore 6
@@ -854,7 +854,7 @@ public class PhoneContactServiceImpl
     //   333: aload 8
     //   335: ldc 191
     //   337: invokeinterface 1094 2 0
-    //   342: invokeinterface 1105 2 0
+    //   342: invokeinterface 1106 2 0
     //   347: istore_1
     //   348: aload 7
     //   350: astore 6
@@ -864,7 +864,7 @@ public class PhoneContactServiceImpl
     //   358: aload 8
     //   360: ldc 193
     //   362: invokeinterface 1094 2 0
-    //   367: invokeinterface 1105 2 0
+    //   367: invokeinterface 1106 2 0
     //   372: istore_2
     //   373: aload 7
     //   375: astore 6
@@ -905,42 +905,42 @@ public class PhoneContactServiceImpl
     //   457: astore 5
     //   459: aload 14
     //   461: aload 10
-    //   463: putfield 1106	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
+    //   463: putfield 1107	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
     //   466: aload 7
     //   468: astore 6
     //   470: aload 7
     //   472: astore 5
     //   474: aload 14
     //   476: aload 9
-    //   478: putfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   478: putfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   481: aload 7
     //   483: astore 6
     //   485: aload 7
     //   487: astore 5
     //   489: aload 14
     //   491: iload_1
-    //   492: putfield 1112	com/tencent/mobileqq/data/PhoneContact:contactID	I
+    //   492: putfield 1113	com/tencent/mobileqq/data/PhoneContact:contactID	I
     //   495: aload 7
     //   497: astore 6
     //   499: aload 7
     //   501: astore 5
     //   503: aload 14
     //   505: iload_2
-    //   506: putfield 1115	com/tencent/mobileqq/data/PhoneContact:type	I
+    //   506: putfield 1116	com/tencent/mobileqq/data/PhoneContact:type	I
     //   509: aload 7
     //   511: astore 6
     //   513: aload 7
     //   515: astore 5
     //   517: aload 14
     //   519: aload 11
-    //   521: putfield 1118	com/tencent/mobileqq/data/PhoneContact:label	Ljava/lang/String;
+    //   521: putfield 1119	com/tencent/mobileqq/data/PhoneContact:label	Ljava/lang/String;
     //   524: aload 7
     //   526: astore 6
     //   528: aload 7
     //   530: astore 5
     //   532: aload 14
     //   534: lload_3
-    //   535: putfield 1121	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
+    //   535: putfield 1122	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
     //   538: aload 7
     //   540: astore 6
     //   542: aload 7
@@ -948,8 +948,8 @@ public class PhoneContactServiceImpl
     //   546: aload 14
     //   548: aload 9
     //   550: iconst_1
-    //   551: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   554: putfield 1129	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
+    //   551: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   554: putfield 1130	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
     //   557: aload 7
     //   559: astore 6
     //   561: aload 7
@@ -957,15 +957,15 @@ public class PhoneContactServiceImpl
     //   565: aload 14
     //   567: aload 9
     //   569: iconst_2
-    //   570: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   573: putfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   570: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   573: putfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   576: aload 7
     //   578: astore 6
     //   580: aload 7
     //   582: astore 5
     //   584: aload 14
     //   586: aload 14
-    //   588: getfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   588: getfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   591: invokestatic 1135	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   594: putfield 1138	com/tencent/mobileqq/data/PhoneContact:pinyinFirst	Ljava/lang/String;
     //   597: aload 7
@@ -1064,9 +1064,9 @@ public class PhoneContactServiceImpl
     //   815: new 1163	SecurityAccountServer/AddressBookItem
     //   818: dup
     //   819: aload 6
-    //   821: getfield 1106	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
+    //   821: getfield 1107	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
     //   824: aload 6
-    //   826: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   826: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   829: invokespecial 1166	SecurityAccountServer/AddressBookItem:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   832: invokevirtual 1167	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   835: pop
@@ -1307,7 +1307,7 @@ public class PhoneContactServiceImpl
               ((ContactMatch)localObject2).mobileNo = localPhoneContact.mobileNo;
               ((ContactMatch)localObject2).unifiedCode = localPhoneContact.unifiedCode;
               ((ContactMatch)localObject2).name = localPhoneContact.name;
-              ((ContactMatch)localObject2).timestamp = MessageCache.a();
+              ((ContactMatch)localObject2).timestamp = MessageCache.c();
               ((ContactMatch)localObject2).age = ((short)localPhoneContact.age);
               ((ContactMatch)localObject2).gender = ((short)localPhoneContact.sex);
               ((ContactMatch)localObject2).commonFriend = localPhoneContact.samFriend;
@@ -1329,7 +1329,7 @@ public class PhoneContactServiceImpl
           if (this.mContactBinded == null) {
             this.mContactBinded = new ContactBinded();
           }
-          this.mContactBinded.timestamp = MessageCache.a();
+          this.mContactBinded.timestamp = MessageCache.c();
           this.mContactBinded.isReaded = false;
         }
         updateEntity(this.mContactBinded);
@@ -1356,7 +1356,7 @@ public class PhoneContactServiceImpl
   
   private boolean poppedForThisVersion()
   {
-    boolean bool = "8.7.0".equals(this.pref.getString("last_phone_version_popped", "")) ^ true;
+    boolean bool = "8.8.17".equals(this.pref.getString("last_phone_version_popped", "")) ^ true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1369,7 +1369,7 @@ public class PhoneContactServiceImpl
   
   private boolean poppedForThisVersionNotBind()
   {
-    boolean bool = "8.7.0".equals(this.pref.getString("last_phone_version_popped_notbind", "")) ^ true;
+    boolean bool = "8.8.17".equals(this.pref.getString("last_phone_version_popped_notbind", "")) ^ true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1675,9 +1675,9 @@ public class PhoneContactServiceImpl
       {
         String str;
         if (paramBoolean) {
-          str = BaseApplication.getContext().getString(2131698729);
+          str = BaseApplication.getContext().getString(2131896687);
         } else {
-          str = BaseApplication.getContext().getString(2131698718);
+          str = BaseApplication.getContext().getString(2131896676);
         }
         if (Thread.currentThread() == Looper.getMainLooper().getThread())
         {
@@ -1698,7 +1698,7 @@ public class PhoneContactServiceImpl
     } else {
       i = 1;
     }
-    QQToast.a(localBaseApplication, i, paramString, 0).b(localBaseApplication.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(localBaseApplication, i, paramString, 0).show(localBaseApplication.getResources().getDimensionPixelSize(2131299920));
   }
   
   private void syncBindState(RespondQueryQQBindingStat paramRespondQueryQQBindingStat)
@@ -1779,9 +1779,9 @@ public class PhoneContactServiceImpl
   private ArrayList<PhoneContact> updateLocalContact(ArrayList<AddressBookItem> paramArrayList1, ArrayList<AddressBookItem> paramArrayList2)
   {
     // Byte code:
-    //   0: new 1505	java/util/HashMap
+    //   0: new 1508	java/util/HashMap
     //   3: dup
-    //   4: invokespecial 1506	java/util/HashMap:<init>	()V
+    //   4: invokespecial 1509	java/util/HashMap:<init>	()V
     //   7: astore 15
     //   9: new 304	java/util/ArrayList
     //   12: dup
@@ -1791,7 +1791,7 @@ public class PhoneContactServiceImpl
     //   21: lstore 5
     //   23: ldc 74
     //   25: iconst_1
-    //   26: ldc_w 1508
+    //   26: ldc_w 1511
     //   29: invokestatic 516	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   32: aload_0
     //   33: getfield 409	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:app	Lcom/tencent/common/app/AppInterface;
@@ -1814,7 +1814,7 @@ public class PhoneContactServiceImpl
     //   69: astore 9
     //   71: ldc 74
     //   73: iconst_1
-    //   74: ldc_w 1509
+    //   74: ldc_w 1512
     //   77: aload 9
     //   79: invokestatic 1159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   82: aconst_null
@@ -1828,7 +1828,7 @@ public class PhoneContactServiceImpl
     //   100: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   103: astore 10
     //   105: aload 10
-    //   107: ldc_w 1511
+    //   107: ldc_w 1514
     //   110: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: pop
     //   114: aload 10
@@ -1874,7 +1874,7 @@ public class PhoneContactServiceImpl
     //   206: ldc 187
     //   208: invokeinterface 1094 2 0
     //   213: invokeinterface 1097 2 0
-    //   218: invokestatic 1101	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   218: invokestatic 1102	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
     //   221: astore 12
     //   223: aload 10
     //   225: astore 7
@@ -1905,7 +1905,7 @@ public class PhoneContactServiceImpl
     //   283: aload 9
     //   285: ldc 191
     //   287: invokeinterface 1094 2 0
-    //   292: invokeinterface 1105 2 0
+    //   292: invokeinterface 1106 2 0
     //   297: istore_3
     //   298: aload 10
     //   300: astore 7
@@ -1915,7 +1915,7 @@ public class PhoneContactServiceImpl
     //   308: aload 9
     //   310: ldc 193
     //   312: invokeinterface 1094 2 0
-    //   317: invokeinterface 1105 2 0
+    //   317: invokeinterface 1106 2 0
     //   322: istore 4
     //   324: aload 10
     //   326: astore 7
@@ -1968,42 +1968,42 @@ public class PhoneContactServiceImpl
     //   435: astore 8
     //   437: aload 16
     //   439: aload 12
-    //   441: putfield 1106	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
+    //   441: putfield 1107	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
     //   444: aload 10
     //   446: astore 7
     //   448: aload 10
     //   450: astore 8
     //   452: aload 16
     //   454: aload 11
-    //   456: putfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   456: putfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   459: aload 10
     //   461: astore 7
     //   463: aload 10
     //   465: astore 8
     //   467: aload 16
     //   469: iload_3
-    //   470: putfield 1112	com/tencent/mobileqq/data/PhoneContact:contactID	I
+    //   470: putfield 1113	com/tencent/mobileqq/data/PhoneContact:contactID	I
     //   473: aload 10
     //   475: astore 7
     //   477: aload 10
     //   479: astore 8
     //   481: aload 16
     //   483: iload 4
-    //   485: putfield 1115	com/tencent/mobileqq/data/PhoneContact:type	I
+    //   485: putfield 1116	com/tencent/mobileqq/data/PhoneContact:type	I
     //   488: aload 10
     //   490: astore 7
     //   492: aload 10
     //   494: astore 8
     //   496: aload 16
     //   498: aload 13
-    //   500: putfield 1118	com/tencent/mobileqq/data/PhoneContact:label	Ljava/lang/String;
+    //   500: putfield 1119	com/tencent/mobileqq/data/PhoneContact:label	Ljava/lang/String;
     //   503: aload 10
     //   505: astore 7
     //   507: aload 10
     //   509: astore 8
     //   511: aload 16
     //   513: lload 5
-    //   515: putfield 1121	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
+    //   515: putfield 1122	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
     //   518: aload 10
     //   520: astore 7
     //   522: aload 10
@@ -2011,8 +2011,8 @@ public class PhoneContactServiceImpl
     //   526: aload 16
     //   528: aload 11
     //   530: iconst_1
-    //   531: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   534: putfield 1129	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
+    //   531: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   534: putfield 1130	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
     //   537: aload 10
     //   539: astore 7
     //   541: aload 10
@@ -2020,15 +2020,15 @@ public class PhoneContactServiceImpl
     //   545: aload 16
     //   547: aload 11
     //   549: iconst_2
-    //   550: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   553: putfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   550: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   553: putfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   556: aload 10
     //   558: astore 7
     //   560: aload 10
     //   562: astore 8
     //   564: aload 16
     //   566: aload 16
-    //   568: getfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   568: getfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   571: invokestatic 1135	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   574: putfield 1138	com/tencent/mobileqq/data/PhoneContact:pinyinFirst	Ljava/lang/String;
     //   577: aload 10
@@ -2088,14 +2088,14 @@ public class PhoneContactServiceImpl
     //   689: astore 8
     //   691: aload 16
     //   693: iload_3
-    //   694: putfield 1112	com/tencent/mobileqq/data/PhoneContact:contactID	I
+    //   694: putfield 1113	com/tencent/mobileqq/data/PhoneContact:contactID	I
     //   697: aload 10
     //   699: astore 7
     //   701: aload 10
     //   703: astore 8
     //   705: aload 16
     //   707: lload 5
-    //   709: putfield 1121	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
+    //   709: putfield 1122	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
     //   712: aload 10
     //   714: astore 7
     //   716: aload 10
@@ -2110,7 +2110,7 @@ public class PhoneContactServiceImpl
     //   737: astore 8
     //   739: aload 16
     //   741: aload 16
-    //   743: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   743: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   746: aload 12
     //   748: invokestatic 1140	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   751: putfield 1143	com/tencent/mobileqq/data/PhoneContact:md5	Ljava/lang/String;
@@ -2138,7 +2138,7 @@ public class PhoneContactServiceImpl
     //   799: astore 8
     //   801: aload 11
     //   803: aload 16
-    //   805: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   805: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   808: invokevirtual 908	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   811: ifne +80 -> 891
     //   814: aload 10
@@ -2148,7 +2148,7 @@ public class PhoneContactServiceImpl
     //   822: aload 15
     //   824: aload 12
     //   826: aload 11
-    //   828: invokevirtual 1512	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   828: invokevirtual 1515	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   831: pop
     //   832: aload 10
     //   834: astore 7
@@ -2162,13 +2162,13 @@ public class PhoneContactServiceImpl
     //   852: astore 8
     //   854: ldc 74
     //   856: iconst_2
-    //   857: ldc_w 1514
+    //   857: ldc_w 1517
     //   860: iconst_3
     //   861: anewarray 4	java/lang/Object
     //   864: dup
     //   865: iconst_0
     //   866: aload 16
-    //   868: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   868: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   871: aastore
     //   872: dup
     //   873: iconst_1
@@ -2193,7 +2193,7 @@ public class PhoneContactServiceImpl
     //   911: astore 8
     //   913: aload 15
     //   915: aload 12
-    //   917: invokevirtual 1517	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   917: invokevirtual 1520	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   920: ifeq +37 -> 957
     //   923: aload 10
     //   925: astore 7
@@ -2201,7 +2201,7 @@ public class PhoneContactServiceImpl
     //   929: astore 8
     //   931: ldc 74
     //   933: iconst_2
-    //   934: ldc_w 1519
+    //   934: ldc_w 1522
     //   937: iconst_2
     //   938: anewarray 4	java/lang/Object
     //   941: dup
@@ -2220,7 +2220,7 @@ public class PhoneContactServiceImpl
     //   963: astore 8
     //   965: aload 15
     //   967: aload 12
-    //   969: invokevirtual 1521	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   969: invokevirtual 1524	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   972: pop
     //   973: goto +43 -> 1016
     //   976: aload 10
@@ -2256,7 +2256,7 @@ public class PhoneContactServiceImpl
     //   1039: aload 10
     //   1041: astore 8
     //   1043: aload 15
-    //   1045: invokevirtual 1524	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   1045: invokevirtual 1527	java/util/HashMap:keySet	()Ljava/util/Set;
     //   1048: invokeinterface 540 1 0
     //   1053: astore 11
     //   1055: aload 10
@@ -2293,7 +2293,7 @@ public class PhoneContactServiceImpl
     //   1129: astore 8
     //   1131: aload 15
     //   1133: aload 12
-    //   1135: invokevirtual 1525	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1135: invokevirtual 1528	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   1138: checkcast 185	java/lang/String
     //   1141: astore 16
     //   1143: aload 10
@@ -2305,7 +2305,7 @@ public class PhoneContactServiceImpl
     //   1155: dup
     //   1156: aload 12
     //   1158: aload 13
-    //   1160: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   1160: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   1163: invokespecial 1166	SecurityAccountServer/AddressBookItem:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   1166: invokevirtual 1167	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1169: pop
@@ -2327,7 +2327,7 @@ public class PhoneContactServiceImpl
     //   1200: astore 8
     //   1202: aload 13
     //   1204: aload 16
-    //   1206: putfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   1206: putfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   1209: aload 10
     //   1211: astore 7
     //   1213: aload 10
@@ -2335,8 +2335,8 @@ public class PhoneContactServiceImpl
     //   1217: aload 13
     //   1219: aload 16
     //   1221: iconst_1
-    //   1222: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   1225: putfield 1129	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
+    //   1222: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   1225: putfield 1130	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
     //   1228: aload 10
     //   1230: astore 7
     //   1232: aload 10
@@ -2344,15 +2344,15 @@ public class PhoneContactServiceImpl
     //   1236: aload 13
     //   1238: aload 16
     //   1240: iconst_2
-    //   1241: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   1244: putfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   1241: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   1244: putfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   1247: aload 10
     //   1249: astore 7
     //   1251: aload 10
     //   1253: astore 8
     //   1255: aload 13
     //   1257: aload 13
-    //   1259: getfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   1259: getfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   1262: invokestatic 1135	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   1265: putfield 1138	com/tencent/mobileqq/data/PhoneContact:pinyinFirst	Ljava/lang/String;
     //   1268: aload 10
@@ -2364,7 +2364,7 @@ public class PhoneContactServiceImpl
     //   1280: aload 13
     //   1282: getfield 1143	com/tencent/mobileqq/data/PhoneContact:md5	Ljava/lang/String;
     //   1285: aload 13
-    //   1287: invokevirtual 1528	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   1287: invokevirtual 1531	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;Ljava/lang/Object;)Z
     //   1290: pop
     //   1291: aload 10
     //   1293: astore 7
@@ -2434,7 +2434,7 @@ public class PhoneContactServiceImpl
     //   1442: aload 10
     //   1444: astore 8
     //   1446: aload 13
-    //   1448: getfield 1121	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
+    //   1448: getfield 1122	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
     //   1451: lload 5
     //   1453: lcmp
     //   1454: ifeq -62 -> 1392
@@ -2454,7 +2454,7 @@ public class PhoneContactServiceImpl
     //   1485: getfield 274	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:contactCacheByCodeNumber	Ljava/util/concurrent/ConcurrentHashMap;
     //   1488: aload 13
     //   1490: getfield 1223	com/tencent/mobileqq/data/PhoneContact:unifiedCode	Ljava/lang/String;
-    //   1493: invokevirtual 1529	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1493: invokevirtual 1532	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   1496: pop
     //   1497: aload 10
     //   1499: astore 7
@@ -2479,9 +2479,9 @@ public class PhoneContactServiceImpl
     //   1539: new 1163	SecurityAccountServer/AddressBookItem
     //   1542: dup
     //   1543: aload 13
-    //   1545: getfield 1106	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
+    //   1545: getfield 1107	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
     //   1548: aload 13
-    //   1550: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   1550: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   1553: invokespecial 1166	SecurityAccountServer/AddressBookItem:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   1556: invokevirtual 1167	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1559: pop
@@ -2539,7 +2539,7 @@ public class PhoneContactServiceImpl
     //   1680: ifeq +62 -> 1742
     //   1683: ldc 74
     //   1685: iconst_2
-    //   1686: ldc_w 1531
+    //   1686: ldc_w 1534
     //   1689: iconst_4
     //   1690: anewarray 4	java/lang/Object
     //   1693: dup
@@ -2985,7 +2985,7 @@ public class PhoneContactServiceImpl
     } else {
       i = 0;
     }
-    long l1 = MessageCache.a();
+    long l1 = MessageCache.c();
     long l2 = Math.abs(l1 - this.mUserSettingFlag);
     int j;
     if (l2 < 3600L) {
@@ -2995,9 +2995,9 @@ public class PhoneContactServiceImpl
     }
     if ((j != 0) && ((paramBoolean) || (this.runningForegroud)))
     {
-      boolean bool = PermissionChecker.a().b();
+      boolean bool = PermissionChecker.a().d();
       if (i == 0) {
-        bool = PermissionChecker.a().c();
+        bool = PermissionChecker.a().e();
       }
       if (QLog.isColorLevel())
       {
@@ -3150,9 +3150,9 @@ public class PhoneContactServiceImpl
   public boolean existContact(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 1712
+    //   0: ldc_w 1714
     //   3: astore 10
-    //   5: ldc_w 1578
+    //   5: ldc_w 1581
     //   8: astore 9
     //   10: invokestatic 494	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   13: ifeq +58 -> 71
@@ -3161,7 +3161,7 @@ public class PhoneContactServiceImpl
     //   20: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   23: astore 6
     //   25: aload 6
-    //   27: ldc_w 1714
+    //   27: ldc_w 1716
     //   30: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: pop
     //   34: aload 6
@@ -3169,7 +3169,7 @@ public class PhoneContactServiceImpl
     //   37: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload 6
-    //   43: ldc_w 1559
+    //   43: ldc_w 1562
     //   46: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: pop
     //   50: aload 6
@@ -3197,7 +3197,7 @@ public class PhoneContactServiceImpl
     //   93: astore 11
     //   95: aload 8
     //   97: astore_2
-    //   98: getstatic 1590	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   98: getstatic 1593	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
     //   101: astore 13
     //   103: aload 8
     //   105: astore_2
@@ -3208,7 +3208,7 @@ public class PhoneContactServiceImpl
     //   115: aload 8
     //   117: astore_2
     //   118: aload 14
-    //   120: ldc_w 1716
+    //   120: ldc_w 1718
     //   123: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: aload 8
@@ -3220,7 +3220,7 @@ public class PhoneContactServiceImpl
     //   137: aload 8
     //   139: astore_2
     //   140: aload 14
-    //   142: ldc_w 1718
+    //   142: ldc_w 1720
     //   145: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: pop
     //   149: aload 8
@@ -3236,15 +3236,15 @@ public class PhoneContactServiceImpl
     //   166: anewarray 185	java/lang/String
     //   169: dup
     //   170: iconst_0
-    //   171: ldc_w 1578
+    //   171: ldc_w 1581
     //   174: aastore
     //   175: dup
     //   176: iconst_1
-    //   177: ldc_w 1712
+    //   177: ldc_w 1714
     //   180: aastore
     //   181: dup
     //   182: iconst_2
-    //   183: ldc_w 1583
+    //   183: ldc_w 1586
     //   186: aastore
     //   187: dup
     //   188: iconst_3
@@ -3266,16 +3266,16 @@ public class PhoneContactServiceImpl
     //   218: aload 8
     //   220: aload 9
     //   222: invokeinterface 1094 2 0
-    //   227: invokeinterface 1721 2 0
+    //   227: invokeinterface 1723 2 0
     //   232: lstore_3
-    //   233: getstatic 1590	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   233: getstatic 1593	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
     //   236: astore 6
     //   238: new 496	java/lang/StringBuilder
     //   241: dup
     //   242: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   245: astore 7
     //   247: aload 7
-    //   249: ldc_w 1723
+    //   249: ldc_w 1725
     //   252: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   255: pop
     //   256: aload 7
@@ -3283,23 +3283,23 @@ public class PhoneContactServiceImpl
     //   259: invokevirtual 649	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   262: pop
     //   263: aload 7
-    //   265: ldc_w 1725
+    //   265: ldc_w 1727
     //   268: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: pop
     //   272: aload 7
-    //   274: ldc_w 1583
+    //   274: ldc_w 1586
     //   277: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   280: pop
     //   281: aload 7
-    //   283: ldc_w 1727
+    //   283: ldc_w 1729
     //   286: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   289: pop
     //   290: aload 7
-    //   292: ldc_w 1592
+    //   292: ldc_w 1595
     //   295: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   298: pop
     //   299: aload 7
-    //   301: ldc_w 1729
+    //   301: ldc_w 1731
     //   304: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: pop
     //   308: aload 7
@@ -3307,7 +3307,7 @@ public class PhoneContactServiceImpl
     //   312: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   315: pop
     //   316: aload 7
-    //   318: ldc_w 1727
+    //   318: ldc_w 1729
     //   321: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload 7
@@ -3315,7 +3315,7 @@ public class PhoneContactServiceImpl
     //   328: invokevirtual 506	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: aload 7
-    //   334: ldc_w 1718
+    //   334: ldc_w 1720
     //   337: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: pop
     //   341: aload 7
@@ -3335,7 +3335,7 @@ public class PhoneContactServiceImpl
     //   365: aastore
     //   366: dup
     //   367: iconst_2
-    //   368: ldc_w 1583
+    //   368: ldc_w 1586
     //   371: aastore
     //   372: dup
     //   373: iconst_3
@@ -3364,18 +3364,18 @@ public class PhoneContactServiceImpl
     //   412: ldc 187
     //   414: invokeinterface 1094 2 0
     //   419: invokeinterface 1097 2 0
-    //   424: invokestatic 1101	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   424: invokestatic 1102	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
     //   427: astore 11
     //   429: aload_1
     //   430: astore_2
     //   431: aload_1
-    //   432: invokestatic 1101	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   432: invokestatic 1102	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
     //   435: astore 7
     //   437: aload 7
     //   439: astore_2
     //   440: aload 11
     //   442: aload 7
-    //   444: invokestatic 1732	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   444: invokestatic 1734	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   447: ifne +54 -> 501
     //   450: aload 7
     //   452: astore_2
@@ -3386,7 +3386,7 @@ public class PhoneContactServiceImpl
     //   461: aload 7
     //   463: astore_2
     //   464: aload_1
-    //   465: ldc_w 1734
+    //   465: ldc_w 1736
     //   468: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   471: pop
     //   472: aload 7
@@ -3400,7 +3400,7 @@ public class PhoneContactServiceImpl
     //   485: aload_1
     //   486: invokevirtual 512	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   489: aload 7
-    //   491: invokestatic 1732	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   491: invokestatic 1734	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   494: istore 5
     //   496: iload 5
     //   498: ifeq +29 -> 527
@@ -3465,7 +3465,7 @@ public class PhoneContactServiceImpl
     //   628: astore_2
     //   629: ldc 74
     //   631: iconst_2
-    //   632: ldc_w 1735
+    //   632: ldc_w 1737
     //   635: aload 6
     //   637: invokestatic 1159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   640: aload_1
@@ -4497,7 +4497,7 @@ public class PhoneContactServiceImpl
     //   34: aastore
     //   35: aconst_null
     //   36: aconst_null
-    //   37: ldc_w 2025
+    //   37: ldc_w 2027
     //   40: invokevirtual 1072	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   43: astore 7
     //   45: aload 7
@@ -4779,8 +4779,8 @@ public class PhoneContactServiceImpl
     //   30: ifeq +12 -> 42
     //   33: ldc 74
     //   35: iconst_2
-    //   36: ldc_w 2073
-    //   39: invokestatic 2075	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: ldc_w 2075
+    //   39: invokestatic 2077	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: aconst_null
     //   43: astore 5
     //   45: aload 5
@@ -4797,7 +4797,7 @@ public class PhoneContactServiceImpl
     //   72: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   75: astore 6
     //   77: aload 6
-    //   79: ldc_w 2077
+    //   79: ldc_w 2079
     //   82: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: aload 6
@@ -4824,7 +4824,7 @@ public class PhoneContactServiceImpl
     //   135: ldc 187
     //   137: invokeinterface 1094 2 0
     //   142: invokeinterface 1097 2 0
-    //   147: invokestatic 1101	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   147: invokestatic 1102	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
     //   150: astore 7
     //   152: aload 5
     //   154: aload 5
@@ -4843,13 +4843,13 @@ public class PhoneContactServiceImpl
     //   188: aload 5
     //   190: ldc 191
     //   192: invokeinterface 1094 2 0
-    //   197: invokeinterface 1105 2 0
+    //   197: invokeinterface 1106 2 0
     //   202: istore_1
     //   203: aload 5
     //   205: aload 5
     //   207: ldc 193
     //   209: invokeinterface 1094 2 0
-    //   214: invokeinterface 1105 2 0
+    //   214: invokeinterface 1106 2 0
     //   219: istore_2
     //   220: aload 5
     //   222: aload 5
@@ -4870,35 +4870,35 @@ public class PhoneContactServiceImpl
     //   264: astore 10
     //   266: aload 10
     //   268: aload 7
-    //   270: putfield 1106	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
+    //   270: putfield 1107	com/tencent/mobileqq/data/PhoneContact:mobileNo	Ljava/lang/String;
     //   273: aload 10
     //   275: aload 6
-    //   277: putfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   277: putfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   280: aload 10
     //   282: iload_1
-    //   283: putfield 1112	com/tencent/mobileqq/data/PhoneContact:contactID	I
+    //   283: putfield 1113	com/tencent/mobileqq/data/PhoneContact:contactID	I
     //   286: aload 10
     //   288: iload_2
-    //   289: putfield 1115	com/tencent/mobileqq/data/PhoneContact:type	I
+    //   289: putfield 1116	com/tencent/mobileqq/data/PhoneContact:type	I
     //   292: aload 10
     //   294: aload 8
-    //   296: putfield 1118	com/tencent/mobileqq/data/PhoneContact:label	Ljava/lang/String;
+    //   296: putfield 1119	com/tencent/mobileqq/data/PhoneContact:label	Ljava/lang/String;
     //   299: aload 10
     //   301: lload_3
-    //   302: putfield 1121	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
+    //   302: putfield 1122	com/tencent/mobileqq/data/PhoneContact:lastScanTime	J
     //   305: aload 10
     //   307: aload 6
     //   309: iconst_1
-    //   310: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   313: putfield 1129	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
+    //   310: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   313: putfield 1130	com/tencent/mobileqq/data/PhoneContact:pinyinAll	Ljava/lang/String;
     //   316: aload 10
     //   318: aload 6
     //   320: iconst_2
-    //   321: invokestatic 1126	com/tencent/mobileqq/utils/ChnToSpell:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   324: putfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   321: invokestatic 1127	com/tencent/mobileqq/utils/ChnToSpell:b	(Ljava/lang/String;I)Ljava/lang/String;
+    //   324: putfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   327: aload 10
     //   329: aload 10
-    //   331: getfield 1132	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
+    //   331: getfield 1133	com/tencent/mobileqq/data/PhoneContact:pinyinInitial	Ljava/lang/String;
     //   334: invokestatic 1135	com/tencent/mobileqq/phonecontact/util/PhoneContactHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   337: putfield 1138	com/tencent/mobileqq/data/PhoneContact:pinyinFirst	Ljava/lang/String;
     //   340: aload 10
@@ -4909,7 +4909,7 @@ public class PhoneContactServiceImpl
     //   352: aload 9
     //   354: aload 7
     //   356: aload 10
-    //   358: invokeinterface 2078 3 0
+    //   358: invokeinterface 2080 3 0
     //   363: pop
     //   364: aload 5
     //   366: invokeinterface 1154 1 0
@@ -4923,7 +4923,7 @@ public class PhoneContactServiceImpl
     //   385: anewarray 4	java/lang/Object
     //   388: dup
     //   389: iconst_0
-    //   390: ldc_w 2080
+    //   390: ldc_w 2082
     //   393: aastore
     //   394: dup
     //   395: iconst_1
@@ -4941,7 +4941,7 @@ public class PhoneContactServiceImpl
     //   421: ifeq +14 -> 435
     //   424: ldc 74
     //   426: iconst_2
-    //   427: ldc_w 2082
+    //   427: ldc_w 2084
     //   430: aload 6
     //   432: invokestatic 1159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   435: aload 5
@@ -5002,7 +5002,7 @@ public class PhoneContactServiceImpl
     //   10: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   13: astore 5
     //   15: aload 5
-    //   17: ldc_w 2088
+    //   17: ldc_w 2090
     //   20: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 5
@@ -5010,7 +5010,7 @@ public class PhoneContactServiceImpl
     //   27: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload 5
-    //   33: ldc_w 2090
+    //   33: ldc_w 2092
     //   36: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload 5
@@ -5018,7 +5018,7 @@ public class PhoneContactServiceImpl
     //   43: invokevirtual 506	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 5
-    //   49: ldc_w 2092
+    //   49: ldc_w 2094
     //   52: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: aload 5
@@ -5049,14 +5049,14 @@ public class PhoneContactServiceImpl
     //   103: aload 6
     //   105: invokevirtual 606	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   108: aload_0
-    //   109: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   109: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   112: ifnull +340 -> 452
     //   115: aload_0
-    //   116: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
-    //   119: invokevirtual 1543	java/util/ArrayList:isEmpty	()Z
+    //   116: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   119: invokevirtual 1546	java/util/ArrayList:isEmpty	()Z
     //   122: ifne +330 -> 452
     //   125: aload_0
-    //   126: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   126: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   129: invokevirtual 1214	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   132: astore 7
     //   134: aload 7
@@ -5064,38 +5064,38 @@ public class PhoneContactServiceImpl
     //   141: ifeq +311 -> 452
     //   144: aload 7
     //   146: invokeinterface 549 1 0
-    //   151: checkcast 1703	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
+    //   151: checkcast 1705	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
     //   154: astore 8
     //   156: aload 8
-    //   158: getfield 1704	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
+    //   158: getfield 1706	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
     //   161: aload_1
     //   162: invokevirtual 908	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   165: ifeq -31 -> 134
     //   168: aload 8
-    //   170: invokestatic 1229	com/tencent/mobileqq/service/message/MessageCache:a	()J
-    //   173: putfield 2093	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
+    //   170: invokestatic 1230	com/tencent/mobileqq/service/message/MessageCache:c	()J
+    //   173: putfield 2095	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
     //   176: aload_0
     //   177: aload 8
-    //   179: invokevirtual 1255	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   179: invokevirtual 1256	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   182: pop
     //   183: iconst_0
     //   184: istore 4
     //   186: goto +3 -> 189
     //   189: iload 4
     //   191: ifeq +128 -> 319
-    //   194: new 1703	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
+    //   194: new 1705	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
     //   197: dup
-    //   198: invokespecial 2094	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:<init>	()V
+    //   198: invokespecial 2096	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:<init>	()V
     //   201: astore 7
     //   203: aload 7
     //   205: aload_3
-    //   206: putfield 2095	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:name	Ljava/lang/String;
+    //   206: putfield 2097	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:name	Ljava/lang/String;
     //   209: aload 7
     //   211: aload_1
-    //   212: putfield 1704	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
+    //   212: putfield 1706	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
     //   215: aload 7
-    //   217: invokestatic 1229	com/tencent/mobileqq/service/message/MessageCache:a	()J
-    //   220: putfield 2093	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
+    //   217: invokestatic 1230	com/tencent/mobileqq/service/message/MessageCache:c	()J
+    //   220: putfield 2095	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
     //   223: iload_2
     //   224: iconst_1
     //   225: if_icmpne +30 -> 255
@@ -5103,11 +5103,11 @@ public class PhoneContactServiceImpl
     //   230: aload_0
     //   231: getfield 409	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:app	Lcom/tencent/common/app/AppInterface;
     //   234: invokevirtual 1060	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   237: invokevirtual 2099	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   240: invokevirtual 1469	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   243: ldc_w 2100
-    //   246: invokevirtual 2101	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   249: putfield 2104	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:remindInfo	Ljava/lang/String;
+    //   237: invokevirtual 2101	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   240: invokevirtual 1471	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   243: ldc_w 2102
+    //   246: invokevirtual 2103	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   249: putfield 2106	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:remindInfo	Ljava/lang/String;
     //   252: goto +32 -> 284
     //   255: iload_2
     //   256: iconst_4
@@ -5116,34 +5116,34 @@ public class PhoneContactServiceImpl
     //   262: aload_0
     //   263: getfield 409	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:app	Lcom/tencent/common/app/AppInterface;
     //   266: invokevirtual 1060	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   269: invokevirtual 2099	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   272: invokevirtual 1469	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   275: ldc_w 2105
-    //   278: invokevirtual 2101	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   281: putfield 2104	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:remindInfo	Ljava/lang/String;
+    //   269: invokevirtual 2101	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   272: invokevirtual 1471	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   275: ldc_w 2107
+    //   278: invokevirtual 2103	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   281: putfield 2106	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:remindInfo	Ljava/lang/String;
     //   284: aload_0
-    //   285: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   285: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   288: ifnonnull +14 -> 302
     //   291: aload_0
     //   292: new 304	java/util/ArrayList
     //   295: dup
     //   296: invokespecial 305	java/util/ArrayList:<init>	()V
-    //   299: putfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   299: putfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   302: aload_0
-    //   303: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   303: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   306: aload 7
     //   308: invokevirtual 1167	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   311: pop
     //   312: aload_0
     //   313: aload 7
-    //   315: invokevirtual 1255	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   315: invokevirtual 1256	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   318: pop
     //   319: aload_0
     //   320: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
     //   323: ifnull +69 -> 392
     //   326: aload_0
     //   327: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
-    //   330: invokevirtual 1543	java/util/ArrayList:isEmpty	()Z
+    //   330: invokevirtual 1546	java/util/ArrayList:isEmpty	()Z
     //   333: ifne +59 -> 392
     //   336: aload_0
     //   337: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
@@ -5180,7 +5180,7 @@ public class PhoneContactServiceImpl
     //   413: ifeq -16 -> 397
     //   416: ldc 74
     //   418: iconst_2
-    //   419: ldc_w 2106
+    //   419: ldc_w 2108
     //   422: aload_1
     //   423: invokestatic 1159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   426: goto -29 -> 397
@@ -5281,7 +5281,7 @@ public class PhoneContactServiceImpl
   {
     long l;
     if (paramBoolean) {
-      l = MessageCache.a();
+      l = MessageCache.c();
     } else {
       l = 0L;
     }
@@ -5317,7 +5317,7 @@ public class PhoneContactServiceImpl
     //   26: aload_0
     //   27: getfield 425	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactBinded	Lcom/tencent/mobileqq/phonecontact/data/ContactBinded;
     //   30: iconst_1
-    //   31: putfield 1259	com/tencent/mobileqq/phonecontact/data/ContactBinded:isReaded	Z
+    //   31: putfield 1260	com/tencent/mobileqq/phonecontact/data/ContactBinded:isReaded	Z
     //   34: aload_0
     //   35: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
     //   38: ifnull +57 -> 95
@@ -5338,10 +5338,10 @@ public class PhoneContactServiceImpl
     //   77: astore 4
     //   79: aload 4
     //   81: iconst_1
-    //   82: putfield 2115	com/tencent/mobileqq/phonecontact/data/ContactMatch:isReaded	Z
+    //   82: putfield 2117	com/tencent/mobileqq/phonecontact/data/ContactMatch:isReaded	Z
     //   85: aload_0
     //   86: aload 4
-    //   88: invokevirtual 1255	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   88: invokevirtual 1256	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   91: pop
     //   92: goto -33 -> 59
     //   95: aload_2
@@ -5356,7 +5356,7 @@ public class PhoneContactServiceImpl
     //   114: ifeq -15 -> 99
     //   117: ldc 74
     //   119: iconst_2
-    //   120: ldc_w 2117
+    //   120: ldc_w 2119
     //   123: aload_3
     //   124: invokestatic 1159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   127: goto -28 -> 99
@@ -5501,7 +5501,7 @@ public class PhoneContactServiceImpl
     //   10: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   13: astore 6
     //   15: aload 6
-    //   17: ldc_w 2125
+    //   17: ldc_w 2127
     //   20: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 6
@@ -5510,7 +5510,7 @@ public class PhoneContactServiceImpl
     //   30: pop
     //   31: aload_1
     //   32: ifnonnull +11 -> 43
-    //   35: ldc_w 2127
+    //   35: ldc_w 2129
     //   38: astore 5
     //   40: goto +38 -> 78
     //   43: new 496	java/lang/StringBuilder
@@ -5518,7 +5518,7 @@ public class PhoneContactServiceImpl
     //   47: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   50: astore 5
     //   52: aload 5
-    //   54: ldc_w 2129
+    //   54: ldc_w 2131
     //   57: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: pop
     //   61: aload 5
@@ -5535,7 +5535,7 @@ public class PhoneContactServiceImpl
     //   85: pop
     //   86: aload_2
     //   87: ifnonnull +11 -> 98
-    //   90: ldc_w 2131
+    //   90: ldc_w 2133
     //   93: astore 5
     //   95: goto +38 -> 133
     //   98: new 496	java/lang/StringBuilder
@@ -5543,7 +5543,7 @@ public class PhoneContactServiceImpl
     //   102: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   105: astore 5
     //   107: aload 5
-    //   109: ldc_w 2133
+    //   109: ldc_w 2135
     //   112: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: pop
     //   116: aload 5
@@ -5566,12 +5566,12 @@ public class PhoneContactServiceImpl
     //   152: aload_1
     //   153: ifnull +556 -> 709
     //   156: aload_1
-    //   157: invokevirtual 1543	java/util/ArrayList:isEmpty	()Z
+    //   157: invokevirtual 1546	java/util/ArrayList:isEmpty	()Z
     //   160: ifne +549 -> 709
     //   163: aload_2
     //   164: ifnull +545 -> 709
     //   167: aload_2
-    //   168: invokevirtual 1543	java/util/ArrayList:isEmpty	()Z
+    //   168: invokevirtual 1546	java/util/ArrayList:isEmpty	()Z
     //   171: ifeq +4 -> 175
     //   174: return
     //   175: iload_3
@@ -5597,7 +5597,7 @@ public class PhoneContactServiceImpl
     //   217: invokespecial 305	java/util/ArrayList:<init>	()V
     //   220: astore 7
     //   222: aload_0
-    //   223: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   223: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   226: ifnonnull +21 -> 247
     //   229: aload_0
     //   230: new 304	java/util/ArrayList
@@ -5605,7 +5605,7 @@ public class PhoneContactServiceImpl
     //   234: aload 7
     //   236: invokeinterface 483 1 0
     //   241: invokespecial 972	java/util/ArrayList:<init>	(I)V
-    //   244: putfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   244: putfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   247: aload_2
     //   248: invokevirtual 1214	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   251: astore_2
@@ -5614,15 +5614,15 @@ public class PhoneContactServiceImpl
     //   258: ifeq +160 -> 418
     //   261: aload_2
     //   262: invokeinterface 549 1 0
-    //   267: checkcast 2135	com/tencent/mobileqq/app/AddBatchPhoneFriendResult
+    //   267: checkcast 2137	com/tencent/mobileqq/app/AddBatchPhoneFriendResult
     //   270: astore 8
     //   272: aload 8
-    //   274: getfield 2138	com/tencent/mobileqq/app/AddBatchPhoneFriendResult:sendResult	I
+    //   274: getfield 2140	com/tencent/mobileqq/app/AddBatchPhoneFriendResult:sendResult	I
     //   277: ifne -25 -> 252
     //   280: iconst_1
     //   281: istore 4
     //   283: aload_0
-    //   284: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   284: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   287: invokevirtual 1214	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   290: astore 9
     //   292: iload 4
@@ -5632,52 +5632,52 @@ public class PhoneContactServiceImpl
     //   302: ifeq +48 -> 350
     //   305: aload 9
     //   307: invokeinterface 549 1 0
-    //   312: checkcast 1703	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
+    //   312: checkcast 1705	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
     //   315: astore 10
     //   317: aload 10
-    //   319: getfield 1704	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
+    //   319: getfield 1706	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
     //   322: aload 8
-    //   324: getfield 2141	com/tencent/mobileqq/app/AddBatchPhoneFriendResult:mobile	Ljava/lang/String;
+    //   324: getfield 2143	com/tencent/mobileqq/app/AddBatchPhoneFriendResult:mobile	Ljava/lang/String;
     //   327: invokevirtual 908	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   330: ifeq -38 -> 292
     //   333: aload 10
-    //   335: invokestatic 1229	com/tencent/mobileqq/service/message/MessageCache:a	()J
-    //   338: putfield 2093	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
+    //   335: invokestatic 1230	com/tencent/mobileqq/service/message/MessageCache:c	()J
+    //   338: putfield 2095	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
     //   341: aload_0
     //   342: aload 10
-    //   344: invokevirtual 1255	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   344: invokevirtual 1256	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   347: pop
     //   348: iconst_0
     //   349: istore_3
     //   350: iload_3
     //   351: ifeq -99 -> 252
-    //   354: new 1703	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
+    //   354: new 1705	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
     //   357: dup
-    //   358: invokespecial 2094	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:<init>	()V
+    //   358: invokespecial 2096	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:<init>	()V
     //   361: astore 9
     //   363: aload 9
     //   365: aload 8
-    //   367: getfield 2141	com/tencent/mobileqq/app/AddBatchPhoneFriendResult:mobile	Ljava/lang/String;
-    //   370: putfield 1704	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
+    //   367: getfield 2143	com/tencent/mobileqq/app/AddBatchPhoneFriendResult:mobile	Ljava/lang/String;
+    //   370: putfield 1706	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
     //   373: aload 9
-    //   375: invokestatic 1229	com/tencent/mobileqq/service/message/MessageCache:a	()J
-    //   378: putfield 2093	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
+    //   375: invokestatic 1230	com/tencent/mobileqq/service/message/MessageCache:c	()J
+    //   378: putfield 2095	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:timestamp	J
     //   381: aload 9
     //   383: aload_0
     //   384: getfield 409	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:app	Lcom/tencent/common/app/AppInterface;
     //   387: invokevirtual 1060	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   390: invokevirtual 2099	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   393: invokevirtual 1469	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   396: ldc_w 2100
-    //   399: invokevirtual 2101	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   402: putfield 2104	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:remindInfo	Ljava/lang/String;
+    //   390: invokevirtual 2101	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   393: invokevirtual 1471	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   396: ldc_w 2102
+    //   399: invokevirtual 2103	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   402: putfield 2106	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:remindInfo	Ljava/lang/String;
     //   405: aload 7
     //   407: aload 9
     //   409: invokeinterface 975 2 0
     //   414: pop
     //   415: goto -163 -> 252
     //   418: aload 7
-    //   420: invokeinterface 1260 1 0
+    //   420: invokeinterface 1261 1 0
     //   425: ifne +230 -> 655
     //   428: aload 7
     //   430: invokeinterface 1003 1 0
@@ -5687,7 +5687,7 @@ public class PhoneContactServiceImpl
     //   444: ifeq +93 -> 537
     //   447: aload 8
     //   449: invokeinterface 549 1 0
-    //   454: checkcast 1703	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
+    //   454: checkcast 1705	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
     //   457: astore 9
     //   459: aload_1
     //   460: invokevirtual 1214	java/util/ArrayList:iterator	()Ljava/util/Iterator;
@@ -5702,38 +5702,38 @@ public class PhoneContactServiceImpl
     //   486: aload_2
     //   487: getfield 1223	com/tencent/mobileqq/data/PhoneContact:unifiedCode	Ljava/lang/String;
     //   490: aload 9
-    //   492: getfield 1704	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
+    //   492: getfield 1706	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
     //   495: invokevirtual 908	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   498: ifeq -33 -> 465
     //   501: aload_2
-    //   502: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   502: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   505: ifnonnull +11 -> 516
     //   508: aload_2
     //   509: getfield 578	com/tencent/mobileqq/data/PhoneContact:nickName	Ljava/lang/String;
     //   512: astore_2
     //   513: goto +8 -> 521
     //   516: aload_2
-    //   517: getfield 1109	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   517: getfield 1110	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   520: astore_2
     //   521: aload 9
     //   523: aload_2
-    //   524: putfield 2095	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:name	Ljava/lang/String;
+    //   524: putfield 2097	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:name	Ljava/lang/String;
     //   527: aload_0
     //   528: aload 9
-    //   530: invokevirtual 1255	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   530: invokevirtual 1256	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   533: pop
     //   534: goto -69 -> 465
     //   537: aload_0
-    //   538: getfield 1701	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
+    //   538: getfield 1703	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mPhoneContactAddList	Ljava/util/ArrayList;
     //   541: aload 7
-    //   543: invokevirtual 1951	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   543: invokevirtual 1953	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
     //   546: pop
     //   547: aload_0
     //   548: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
     //   551: ifnull +104 -> 655
     //   554: aload_0
     //   555: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
-    //   558: invokevirtual 1543	java/util/ArrayList:isEmpty	()Z
+    //   558: invokevirtual 1546	java/util/ArrayList:isEmpty	()Z
     //   561: ifne +94 -> 655
     //   564: aload_0
     //   565: getfield 836	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:mContactMatch	Ljava/util/ArrayList;
@@ -5754,12 +5754,12 @@ public class PhoneContactServiceImpl
     //   607: ifeq -35 -> 572
     //   610: aload 8
     //   612: invokeinterface 549 1 0
-    //   617: checkcast 1703	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
+    //   617: checkcast 1705	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd
     //   620: astore 9
     //   622: aload_2
     //   623: getfield 1224	com/tencent/mobileqq/phonecontact/data/ContactMatch:unifiedCode	Ljava/lang/String;
     //   626: aload 9
-    //   628: getfield 1704	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
+    //   628: getfield 1706	com/tencent/mobileqq/phonecontact/data/PhoneContactAdd:unifiedCode	Ljava/lang/String;
     //   631: invokevirtual 908	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   634: ifeq -34 -> 600
     //   637: aload_1
@@ -5782,7 +5782,7 @@ public class PhoneContactServiceImpl
     //   676: ifeq -16 -> 660
     //   679: ldc 74
     //   681: iconst_2
-    //   682: ldc_w 2142
+    //   682: ldc_w 2144
     //   685: aload_1
     //   686: invokestatic 1159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   689: goto -29 -> 660
@@ -5959,7 +5959,7 @@ public class PhoneContactServiceImpl
     unRegistContentObservers();
     this.mCurrentBindState = -1;
     this.isCacheInited = false;
-    PermissionChecker.a().a();
+    PermissionChecker.a().c();
     IPhoneContactProcessor localIPhoneContactProcessor = this.mInjectProcessor;
     if (localIPhoneContactProcessor != null)
     {
@@ -6770,12 +6770,12 @@ public class PhoneContactServiceImpl
     //   18: invokespecial 497	java/lang/StringBuilder:<init>	()V
     //   21: astore_2
     //   22: aload_2
-    //   23: ldc_w 2436
+    //   23: ldc_w 2439
     //   26: invokevirtual 503	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
     //   30: aload_2
     //   31: aload_1
-    //   32: invokevirtual 1772	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 1774	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: ldc 74
     //   38: iconst_2
@@ -6791,8 +6791,8 @@ public class PhoneContactServiceImpl
     //   58: ifnonnull +13 -> 71
     //   61: ldc 74
     //   63: iconst_1
-    //   64: ldc_w 2438
-    //   67: invokestatic 2075	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   64: ldc_w 2441
+    //   67: invokestatic 2077	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   70: return
     //   71: aload_3
     //   72: invokevirtual 601	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
@@ -6800,10 +6800,10 @@ public class PhoneContactServiceImpl
     //   76: aload_2
     //   77: invokevirtual 606	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   80: aload_3
-    //   81: ldc_w 2440
+    //   81: ldc_w 2443
     //   84: aconst_null
     //   85: aconst_null
-    //   86: invokevirtual 2441	com/tencent/mobileqq/persistence/EntityManager:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   86: invokevirtual 2444	com/tencent/mobileqq/persistence/EntityManager:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   89: pop
     //   90: aload_1
     //   91: invokeinterface 540 1 0
@@ -6820,7 +6820,7 @@ public class PhoneContactServiceImpl
     //   122: ifne -25 -> 97
     //   125: new 998	com/tencent/mobileqq/phonecontact/data/LastLoginPhoneInfo
     //   128: dup
-    //   129: invokespecial 2442	com/tencent/mobileqq/phonecontact/data/LastLoginPhoneInfo:<init>	()V
+    //   129: invokespecial 2445	com/tencent/mobileqq/phonecontact/data/LastLoginPhoneInfo:<init>	()V
     //   132: astore 5
     //   134: aload 5
     //   136: aload 4
@@ -6837,7 +6837,7 @@ public class PhoneContactServiceImpl
     //   161: astore_1
     //   162: ldc 74
     //   164: iconst_1
-    //   165: ldc_w 2444
+    //   165: ldc_w 2447
     //   168: aload_1
     //   169: invokestatic 528	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   172: aload_2
@@ -7219,7 +7219,7 @@ public class PhoneContactServiceImpl
     //   3: ifeq +12 -> 15
     //   6: ldc 74
     //   8: iconst_2
-    //   9: ldc_w 2563
+    //   9: ldc_w 2566
     //   12: invokestatic 516	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   15: aload_1
     //   16: ifnull +131 -> 147
@@ -7244,13 +7244,13 @@ public class PhoneContactServiceImpl
     //   59: checkcast 556	com/tencent/mobileqq/data/PhoneContact
     //   62: astore_3
     //   63: aload_3
-    //   64: invokevirtual 2564	com/tencent/mobileqq/data/PhoneContact:getStatus	()I
+    //   64: invokevirtual 2567	com/tencent/mobileqq/data/PhoneContact:getStatus	()I
     //   67: sipush 1000
     //   70: if_icmpne +14 -> 84
     //   73: aload_0
     //   74: getfield 421	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   77: aload_3
-    //   78: invokevirtual 2567	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   78: invokevirtual 2570	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   81: goto -37 -> 44
     //   84: aload_0
     //   85: getfield 421	com/tencent/mobileqq/phonecontact/api/impl/PhoneContactServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
@@ -7271,7 +7271,7 @@ public class PhoneContactServiceImpl
     //   118: ldc 74
     //   120: iconst_2
     //   121: aload_1
-    //   122: invokevirtual 2519	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   122: invokevirtual 2522	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   125: invokestatic 516	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: aload_2
     //   129: ifnull +7 -> 136
@@ -7465,7 +7465,7 @@ public class PhoneContactServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl
  * JD-Core Version:    0.7.0.1
  */

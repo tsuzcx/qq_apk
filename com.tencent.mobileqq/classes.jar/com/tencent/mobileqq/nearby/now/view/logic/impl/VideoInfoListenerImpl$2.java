@@ -15,17 +15,17 @@ class VideoInfoListenerImpl$2
   
   public void onClick(View paramView)
   {
-    VideoInfoListenerImpl.access$100(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    VideoInfoListenerImpl.access$100(this.a).f.setVisibility(8);
     ((IVideoPlayerView)VideoInfoListenerImpl.access$000(this.a).getVideoPlayer()).stopPlayback(false);
     VideoInfoListenerImpl.access$000(this.a).startPlayVideo(VideoInfoListenerImpl.access$000(this.a).getCurrentIndex());
-    if (VideoInfoListenerImpl.access$100(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      VideoInfoListenerImpl.access$100(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(true);
+    if (VideoInfoListenerImpl.access$100(this.a).d != null) {
+      VideoInfoListenerImpl.access$100(this.a).d.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.logic.impl.VideoInfoListenerImpl.2
  * JD-Core Version:    0.7.0.1
  */

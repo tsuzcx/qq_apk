@@ -4,7 +4,17 @@ import android.graphics.RectF;
 
 public class RectUtils
 {
-  public static RectF a(float[] paramArrayOfFloat)
+  public static float[] a(RectF paramRectF)
+  {
+    return new float[] { paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.top, paramRectF.right, paramRectF.bottom, paramRectF.left, paramRectF.bottom };
+  }
+  
+  public static float[] a(float[] paramArrayOfFloat)
+  {
+    return new float[] { (float)Math.sqrt(Math.pow(paramArrayOfFloat[0] - paramArrayOfFloat[2], 2.0D) + Math.pow(paramArrayOfFloat[1] - paramArrayOfFloat[3], 2.0D)), (float)Math.sqrt(Math.pow(paramArrayOfFloat[2] - paramArrayOfFloat[4], 2.0D) + Math.pow(paramArrayOfFloat[3] - paramArrayOfFloat[5], 2.0D)) };
+  }
+  
+  public static RectF b(float[] paramArrayOfFloat)
   {
     RectF localRectF = new RectF((1.0F / 1.0F), (1.0F / 1.0F), (1.0F / -1.0F), (1.0F / -1.0F));
     int i = 1;
@@ -39,16 +49,6 @@ public class RectUtils
     return localRectF;
   }
   
-  public static float[] a(RectF paramRectF)
-  {
-    return new float[] { paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.top, paramRectF.right, paramRectF.bottom, paramRectF.left, paramRectF.bottom };
-  }
-  
-  public static float[] a(float[] paramArrayOfFloat)
-  {
-    return new float[] { (float)Math.sqrt(Math.pow(paramArrayOfFloat[0] - paramArrayOfFloat[2], 2.0D) + Math.pow(paramArrayOfFloat[1] - paramArrayOfFloat[3], 2.0D)), (float)Math.sqrt(Math.pow(paramArrayOfFloat[2] - paramArrayOfFloat[4], 2.0D) + Math.pow(paramArrayOfFloat[3] - paramArrayOfFloat[5], 2.0D)) };
-  }
-  
   public static float[] b(RectF paramRectF)
   {
     return new float[] { paramRectF.centerX(), paramRectF.centerY() };
@@ -56,7 +56,7 @@ public class RectUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.util.RectUtils
  * JD-Core Version:    0.7.0.1
  */

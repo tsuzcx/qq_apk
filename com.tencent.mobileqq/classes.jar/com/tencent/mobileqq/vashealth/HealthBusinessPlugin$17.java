@@ -15,8 +15,8 @@ class HealthBusinessPlugin$17
   
   public void run()
   {
-    Object localObject = (TextView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    ISuperPlayer localISuperPlayer = (ISuperPlayer)this.this$0.d.get(this.jdField_a_of_type_JavaLangString);
+    Object localObject = (TextView)this.a.get();
+    ISuperPlayer localISuperPlayer = (ISuperPlayer)this.this$0.l.get(this.b);
     if ((localISuperPlayer != null) && (localObject != null))
     {
       ((TextView)localObject).post(new HealthBusinessPlugin.17.1(this, (TextView)localObject, localISuperPlayer));
@@ -32,7 +32,7 @@ class HealthBusinessPlugin$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.17
  * JD-Core Version:    0.7.0.1
  */

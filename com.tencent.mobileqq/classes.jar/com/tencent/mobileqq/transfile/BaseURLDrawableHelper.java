@@ -14,22 +14,22 @@ public class BaseURLDrawableHelper
   public static Drawable getFailedDrawable()
   {
     Bitmap localBitmap1;
-    if (GlobalImageCache.a != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.a.get("static://CommonFailedDrawable");
+    if (GlobalImageCache.b != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.b.get("static://CommonFailedDrawable");
     } else {
       localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplication.getContext().getResources(), 2130846436);
+      localBitmap1 = BitmapManager.a(BaseApplication.getContext().getResources(), 2130847909);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
         localBitmap2 = localBitmap1;
-        if (GlobalImageCache.a != null)
+        if (GlobalImageCache.b != null)
         {
-          GlobalImageCache.a.put("static://CommonFailedDrawable", localBitmap1);
+          GlobalImageCache.b.put("static://CommonFailedDrawable", localBitmap1);
           localBitmap2 = localBitmap1;
         }
       }
@@ -42,7 +42,7 @@ public class BaseURLDrawableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BaseURLDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

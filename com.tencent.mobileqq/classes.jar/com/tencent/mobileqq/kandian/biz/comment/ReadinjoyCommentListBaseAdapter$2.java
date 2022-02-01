@@ -11,22 +11,22 @@ class ReadinjoyCommentListBaseAdapter$2
 {
   ReadinjoyCommentListBaseAdapter$2(ReadinjoyCommentListBaseAdapter paramReadinjoyCommentListBaseAdapter, CommentViewItem paramCommentViewItem, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a();
+      paramView = this.c.f();
       if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.c);
+        paramView.a(this.a, this.c.s);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.notifyDataSetChanged();
+      this.c.notifyDataSetChanged();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadinjoyCommentListBaseAdapter.2
  * JD-Core Version:    0.7.0.1
  */

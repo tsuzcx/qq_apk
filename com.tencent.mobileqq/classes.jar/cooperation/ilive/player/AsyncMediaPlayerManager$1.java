@@ -12,35 +12,35 @@ class AsyncMediaPlayerManager$1
   
   public void onSurfaceChanged(Object paramObject)
   {
-    TPLogUtil.i(AsyncMediaPlayerManager.a(this.a), "OnSurfaceChanged");
+    TPLogUtil.i(AsyncMediaPlayerManager.c(this.a), "OnSurfaceChanged");
   }
   
   public void onSurfaceCreated(Object paramObject)
   {
-    if ((AsyncMediaPlayerManager.a(this.a) != null) && (AsyncMediaPlayerManager.a(this.a) != null))
+    if ((AsyncMediaPlayerManager.a(this.a) != null) && (AsyncMediaPlayerManager.b(this.a) != null))
     {
-      AsyncMediaPlayerManager.a(this.a).a(AsyncMediaPlayerManager.a(this.a).getViewSurface());
-      TPLogUtil.i(AsyncMediaPlayerManager.a(this.a), "onSurfaceCreated: player setSurface");
-      if (AsyncMediaPlayerManager.a(this.a) != null) {
-        AsyncMediaPlayerManager.a(this.a).onSurfaceCreated();
+      AsyncMediaPlayerManager.a(this.a).a(AsyncMediaPlayerManager.b(this.a).getViewSurface());
+      TPLogUtil.i(AsyncMediaPlayerManager.c(this.a), "onSurfaceCreated: player setSurface");
+      if (AsyncMediaPlayerManager.d(this.a) != null) {
+        AsyncMediaPlayerManager.d(this.a).onSurfaceCreated();
       }
     }
   }
   
   public void onSurfaceDestroy(Object paramObject)
   {
-    TPLogUtil.i(AsyncMediaPlayerManager.a(this.a), "OnSurfaceDestroy");
+    TPLogUtil.i(AsyncMediaPlayerManager.c(this.a), "OnSurfaceDestroy");
     if (AsyncMediaPlayerManager.a(this.a) != null) {
       AsyncMediaPlayerManager.a(this.a).a(null);
     }
-    if (AsyncMediaPlayerManager.a(this.a) != null) {
-      AsyncMediaPlayerManager.a(this.a).onSurfaceDestroyed();
+    if (AsyncMediaPlayerManager.d(this.a) != null) {
+      AsyncMediaPlayerManager.d(this.a).onSurfaceDestroyed();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.AsyncMediaPlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

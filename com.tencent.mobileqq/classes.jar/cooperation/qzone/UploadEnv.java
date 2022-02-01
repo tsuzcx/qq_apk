@@ -96,7 +96,7 @@ public final class UploadEnv
   
   public String getBSSID()
   {
-    return DeviceInfoUtil.b(BaseApplication.getContext());
+    return DeviceInfoUtil.c(BaseApplication.getContext());
   }
   
   public int getBatchControlCount()
@@ -242,7 +242,7 @@ public final class UploadEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.UploadEnv
  * JD-Core Version:    0.7.0.1
  */

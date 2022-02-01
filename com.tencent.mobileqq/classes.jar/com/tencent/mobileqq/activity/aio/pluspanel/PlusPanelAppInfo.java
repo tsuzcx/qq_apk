@@ -27,6 +27,7 @@ public abstract class PlusPanelAppInfo
   public int enableC2C;
   public int enableGroup;
   public int groupType;
+  public boolean guildLiveChannel;
   public String hashVal;
   public String iconPress;
   public String iconUrl;
@@ -112,6 +113,11 @@ public abstract class PlusPanelAppInfo
     return getTitle();
   }
   
+  public String getDTElementId()
+  {
+    return "";
+  }
+  
   public int getManageConfigID()
   {
     return 0;
@@ -128,7 +134,7 @@ public abstract class PlusPanelAppInfo
   {
     boolean bool1;
     if ("miniapp".equals(this.actionType)) {
-      bool1 = a(paramBaseChatPie.a(), this.action, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      bool1 = a(paramBaseChatPie.aX(), this.action, paramBaseChatPie.ah.b);
     } else {
       bool1 = false;
     }
@@ -137,7 +143,7 @@ public abstract class PlusPanelAppInfo
     {
       bool2 = bool1;
       if ("web".equals(this.actionType)) {
-        bool2 = a(paramBaseChatPie.a(), this.action);
+        bool2 = a(paramBaseChatPie.aX(), this.action);
       }
     }
     if (!bool2) {
@@ -181,6 +187,16 @@ public abstract class PlusPanelAppInfo
     return this.uinType == 3000;
   }
   
+  protected boolean isGuild()
+  {
+    return this.uinType == 10014;
+  }
+  
+  protected boolean isGuildLiveChannel()
+  {
+    return this.guildLiveChannel;
+  }
+  
   protected boolean isTroop()
   {
     return this.uinType == 1;
@@ -195,13 +211,13 @@ public abstract class PlusPanelAppInfo
     if (paramInt == 10) {
       QAVGroupConfig.Report.b(paramBoolean);
     }
-    VideoItemBuilder.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramSessionInfo, paramInt, paramBoolean, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString);
-    paramBaseChatPie.Q();
+    VideoItemBuilder.a(paramBaseChatPie.d, paramBaseChatPie.f, paramSessionInfo, paramInt, paramBoolean, paramBaseChatPie.d.getCurrentUin(), paramString);
+    paramBaseChatPie.aw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo
  * JD-Core Version:    0.7.0.1
  */

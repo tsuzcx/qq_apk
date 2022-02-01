@@ -11,14 +11,14 @@ class BaseAuthorityPresenter$1
   
   public void run()
   {
-    this.this$0.c = true;
+    this.this$0.l = true;
     SSOLog.b("BaseAuthorityPresenter", "get app icon done");
-    this.this$0.a.a("", this.a);
+    this.this$0.z.a("", this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.BaseAuthorityPresenter.1
  * JD-Core Version:    0.7.0.1
  */

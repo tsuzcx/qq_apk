@@ -12,9 +12,9 @@ class DefaultDoraemonAppInfoHelper$3
   
   public void a(MiniAppInfo paramMiniAppInfo)
   {
-    DefaultDoraemonAppInfoHelper.OnGetAppInfo localOnGetAppInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$OnGetAppInfo;
+    DefaultDoraemonAppInfoHelper.OnGetAppInfo localOnGetAppInfo = this.a;
     int i;
-    if (paramMiniAppInfo.c == 1) {
+    if (paramMiniAppInfo.h == 1) {
       i = 2;
     } else {
       i = 3;
@@ -37,12 +37,12 @@ class DefaultDoraemonAppInfoHelper$3
     } else {
       i = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$OnGetAppInfo.a(null, i);
+    this.a.a(null, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.3
  * JD-Core Version:    0.7.0.1
  */

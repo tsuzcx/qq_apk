@@ -11,18 +11,18 @@ public class StoryUploadProgressView
   implements StoryVideoUploadProgressManager.UpdateProgressListener
 {
   public MessageProgressView a;
-  private String a;
+  private String b;
   
   public StoryUploadProgressView(MessageProgressView paramMessageProgressView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
+    this.a = paramMessageProgressView;
   }
   
   private void b(String paramString, int paramInt)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+    paramString = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("_");
     localStringBuilder.append(hashCode());
     paramString.setAnimProgress(paramInt, localStringBuilder.toString());
@@ -30,25 +30,25 @@ public class StoryUploadProgressView
   
   public void a()
   {
-    MessageProgressView localMessageProgressView = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+    MessageProgressView localMessageProgressView = this.a;
     localMessageProgressView.setRadius(UIUtils.a(localMessageProgressView.getContext(), 8.0F), false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+    this.a.setShowCorner(false);
+    this.a.setDrawStatus(1);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
+    this.a.setVisibility(paramInt);
   }
   
   public void a(MessageProgressView.AnimRunnableListener paramAnimRunnableListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(paramAnimRunnableListener);
+    this.a.setAnimRunnableListener(paramAnimRunnableListener);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(String paramString, int paramInt)
@@ -59,14 +59,14 @@ public class StoryUploadProgressView
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    MessageProgressView localMessageProgressView = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+    MessageProgressView localMessageProgressView = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("_");
     localStringBuilder.append(hashCode());
-    return localMessageProgressView.a(localStringBuilder.toString());
+    return localMessageProgressView.c(localStringBuilder.toString());
   }
 }
 

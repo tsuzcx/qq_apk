@@ -10,20 +10,20 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 public abstract class TroopSignItemBuilder$SignItemHolder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public FrameLayout a;
-  public ImageView a;
   public RelativeLayout a;
-  public TextView a;
   public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
+  public ImageView c;
   public TextView d;
-  public TextView e;
+  public View e;
+  public TextView f;
+  public TextView g;
+  public View s;
+  public FrameLayout t;
+  public TextView u;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.SignItemHolder
  * JD-Core Version:    0.7.0.1
  */

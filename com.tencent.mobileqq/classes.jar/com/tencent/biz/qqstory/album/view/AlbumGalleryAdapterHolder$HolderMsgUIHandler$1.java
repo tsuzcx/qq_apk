@@ -11,10 +11,10 @@ class AlbumGalleryAdapterHolder$HolderMsgUIHandler$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (AlbumGalleryAdapterHolder.a(this.a.a) == 1)
+    if (AlbumGalleryAdapterHolder.c(this.a.a) == 1)
     {
-      this.a.a.b.setVisibility(8);
-      AlbumGalleryAdapterHolder.a(this.a.a).sendEmptyMessage(1);
+      this.a.a.e.setVisibility(8);
+      AlbumGalleryAdapterHolder.k(this.a.a).sendEmptyMessage(1);
     }
   }
   
@@ -24,7 +24,7 @@ class AlbumGalleryAdapterHolder$HolderMsgUIHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryAdapterHolder.HolderMsgUIHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,43 +20,38 @@ public class GroupTeamWorkAdapter
   extends IGroupTeamWorkAdapter
   implements BaseMenuCloudFileItemBuilder.OnMenuItemClickListener
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
   protected Handler a;
-  protected View.OnClickListener a;
-  protected View.OnLongClickListener a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private OnItemLongClickListener jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener;
-  private EmptyViewInfoForTroop jdField_a_of_type_ComTencentMobileqqTeamworkforgroupEmptyViewInfoForTroop = new EmptyViewInfoForTroop();
-  private TeamWorkItemBuilder jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkItemBuilder;
-  private TroopEmptyViewItemBuilder jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopEmptyViewItemBuilder;
-  protected List<Object> a;
-  protected boolean a;
-  public int b;
-  protected View.OnClickListener b;
-  protected boolean b;
+  protected List<Object> b = new ArrayList();
+  protected int c;
+  protected View.OnClickListener d;
+  protected View.OnLongClickListener e;
+  protected boolean f = false;
+  protected boolean g = false;
+  public int h = -1;
+  protected View.OnClickListener i = new GroupTeamWorkAdapter.1(this);
+  private Activity j;
+  private long k;
+  private OnItemLongClickListener l;
+  private EmptyViewInfoForTroop m = new EmptyViewInfoForTroop();
+  private AppInterface n;
+  private Context o;
+  private TroopEmptyViewItemBuilder p;
+  private TeamWorkItemBuilder q;
   
   public GroupTeamWorkAdapter(AppInterface paramAppInterface, Activity paramActivity, OnItemLongClickListener paramOnItemLongClickListener, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new GroupTeamWorkAdapter.1(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener = paramOnItemLongClickListener;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Long = (MessageCache.a() * 1000L);
+    this.n = paramAppInterface;
+    this.o = paramActivity;
+    this.c = 1;
+    this.j = paramActivity;
+    this.l = paramOnItemLongClickListener;
+    this.a = paramHandler;
+    this.k = (MessageCache.c() * 1000L);
   }
   
   public void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       localList.clear();
     }
@@ -66,16 +61,16 @@ public class GroupTeamWorkAdapter
   {
     paramICloudFile = (PadInfo)paramICloudFile;
     OnItemLongClickListener localOnItemLongClickListener;
-    if (paramInt == 2131364747)
+    if (paramInt == 2131430855)
     {
-      localOnItemLongClickListener = this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener;
+      localOnItemLongClickListener = this.l;
       if (localOnItemLongClickListener != null) {
         localOnItemLongClickListener.b(paramICloudFile);
       }
     }
-    if (paramInt == 2131364745)
+    if (paramInt == 2131430853)
     {
-      localOnItemLongClickListener = this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener;
+      localOnItemLongClickListener = this.l;
       if (localOnItemLongClickListener != null) {
         localOnItemLongClickListener.a(paramICloudFile);
       }
@@ -84,7 +79,7 @@ public class GroupTeamWorkAdapter
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.d = paramOnClickListener;
   }
   
   protected void a(CloudFileItemBuilder paramCloudFileItemBuilder)
@@ -96,11 +91,11 @@ public class GroupTeamWorkAdapter
   
   public void a(List<? extends Object> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.addAll(paramList);
     } else {
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupEmptyViewInfoForTroop);
+      this.b.add(this.m);
     }
     notifyDataSetChanged();
   }
@@ -109,8 +104,8 @@ public class GroupTeamWorkAdapter
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      paramList = this.jdField_a_of_type_AndroidOsHandler;
+      this.b.addAll(paramList);
+      paramList = this.a;
       if (paramList != null) {
         paramList.sendEmptyMessage(4);
       }
@@ -118,7 +113,7 @@ public class GroupTeamWorkAdapter
       return;
     }
     a();
-    paramList = this.jdField_a_of_type_AndroidOsHandler;
+    paramList = this.a;
     if (paramList != null) {
       paramList.sendEmptyMessage(3);
     }
@@ -126,12 +121,12 @@ public class GroupTeamWorkAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -141,36 +136,36 @@ public class GroupTeamWorkAdapter
   
   public int getItemViewType(int paramInt)
   {
-    return ((ICloudFile)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getCloudFileType();
+    return ((ICloudFile)this.b.get(paramInt)).getCloudFileType();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ICloudFile localICloudFile = (ICloudFile)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    ICloudFile localICloudFile = (ICloudFile)this.b.get(paramInt);
     Object localObject2;
     Object localObject1;
     if (localICloudFile.getCloudFileType() == 10)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopEmptyViewItemBuilder;
+      localObject2 = this.p;
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new TroopEmptyViewItemBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopEmptyViewItemBuilder = ((TroopEmptyViewItemBuilder)localObject1);
+        localObject1 = new TroopEmptyViewItemBuilder(this.n, this.o, this, this.c);
+        this.p = ((TroopEmptyViewItemBuilder)localObject1);
       }
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkItemBuilder;
+      localObject2 = this.q;
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new TeamWorkItemBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkItemBuilder = ((TeamWorkItemBuilder)localObject1);
+        localObject1 = new TeamWorkItemBuilder(this.n, this.o, this, this.c);
+        this.q = ((TeamWorkItemBuilder)localObject1);
       }
     }
     a((CloudFileItemBuilder)localObject1);
-    paramView = ((CloudFileItemBuilder)localObject1).a(paramInt, localICloudFile, paramView, paramViewGroup, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
+    paramView = ((CloudFileItemBuilder)localObject1).a(paramInt, localICloudFile, paramView, paramViewGroup, this.f, false, this.i, this.e, this.g, this.h);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
   }
@@ -182,7 +177,7 @@ public class GroupTeamWorkAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkAdapter
  * JD-Core Version:    0.7.0.1
  */

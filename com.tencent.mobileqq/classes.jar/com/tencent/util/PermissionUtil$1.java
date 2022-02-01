@@ -16,11 +16,11 @@ final class PermissionUtil$1
     if (paramInt == 1)
     {
       paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_MqqAppAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_MqqAppAppActivity.startActivity(paramDialogInterface);
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback;
+    paramDialogInterface = this.b;
     if (paramDialogInterface != null) {
       paramDialogInterface.b();
     }
@@ -28,7 +28,7 @@ final class PermissionUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.PermissionUtil.1
  * JD-Core Version:    0.7.0.1
  */

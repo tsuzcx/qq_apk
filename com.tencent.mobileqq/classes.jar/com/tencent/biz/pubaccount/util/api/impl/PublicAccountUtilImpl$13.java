@@ -13,27 +13,27 @@ class PublicAccountUtilImpl$13
   {
     try
     {
-      String str1 = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
-      int i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int == 0) {
+      String str1 = this.a.getQueryParameter("article_id");
+      int i = this.b;
+      if (this.b == 0) {
         i = 100;
       }
       IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      int j = this.b;
-      String str2 = this.jdField_a_of_type_JavaLangString;
+      int j = this.c;
+      String str2 = this.d;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(i);
       localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", j, 0, str1, str2, ((StringBuilder)localObject).toString(), "", false);
       localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      str2 = this.jdField_a_of_type_JavaLangString;
+      str2 = this.d;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(i);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.c);
       localIPublicAccountReportUtils.reportPAinfoToLighthouse("0X8006DF8", "", str1, str2, (String)localObject, localStringBuilder.toString());
       return;
     }
@@ -42,7 +42,7 @@ class PublicAccountUtilImpl$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.13
  * JD-Core Version:    0.7.0.1
  */

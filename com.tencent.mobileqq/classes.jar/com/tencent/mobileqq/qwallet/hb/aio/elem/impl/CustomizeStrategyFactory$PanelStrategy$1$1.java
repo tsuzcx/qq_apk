@@ -19,7 +19,7 @@ class CustomizeStrategyFactory$PanelStrategy$1$1
     if (paramInt == 0) {
       try
       {
-        float f = CustomizeStrategyFactory.a;
+        float f = CustomizeStrategyFactory.d;
         double d = f * 50.0F;
         Double.isNaN(d);
         paramInt = (int)(d + 0.5D);
@@ -43,12 +43,12 @@ class CustomizeStrategyFactory$PanelStrategy$1$1
         paramPathResult.printStackTrace();
       }
     }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    CustomizeStrategyFactory.d().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.PanelStrategy.1.1
  * JD-Core Version:    0.7.0.1
  */

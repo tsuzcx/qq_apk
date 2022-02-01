@@ -7,13 +7,13 @@ class QQMapActivity$11$1
   
   public void run()
   {
-    this.a.a.isRefreshPressed = true;
-    this.a.a.refresh();
+    this.a.b.isRefreshPressed = true;
+    this.a.b.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,25 +22,28 @@ import com.tencent.qphone.base.util.QLog;
 public class RefreshHeaderView
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private RotateAnimation jdField_a_of_type_AndroidViewAnimationRotateAnimation;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RefreshHeaderView.OnRefreshListener jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener;
-  private final String jdField_a_of_type_JavaLangString = getResources().getString(2131719253);
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private RotateAnimation jdField_b_of_type_AndroidViewAnimationRotateAnimation;
-  private final String jdField_b_of_type_JavaLangString = getResources().getString(2131719249);
-  private final String c = getResources().getString(2131719252);
-  private final String d = getResources().getString(2131719250);
+  private LinearLayout a;
+  private ImageView b;
+  private TextView c;
+  private ProgressBar d;
+  private RotateAnimation e;
+  private RotateAnimation f;
+  private int g;
+  private int h;
+  private float i;
+  private float j;
+  private RefreshHeaderView.OnRefreshListener k;
+  private boolean l;
+  private Handler m;
+  private final String n = getResources().getString(2131916805);
+  private final String o = getResources().getString(2131916801);
+  private final String p = getResources().getString(2131916804);
+  private final String q = getResources().getString(2131916802);
+  private Drawable r;
+  private long s;
+  private RefreshHeaderView.ICanRefreshDelegate t;
+  private boolean u;
+  private boolean v;
   
   public RefreshHeaderView(Context paramContext)
   {
@@ -54,12 +58,12 @@ public class RefreshHeaderView
   public RefreshHeaderView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    e();
+    i();
   }
   
   private void a(int paramInt)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { a(), paramInt });
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { getVisibleHeight(), paramInt });
     localValueAnimator.setDuration(200L).start();
     localValueAnimator.addUpdateListener(new RefreshHeaderView.2(this, paramInt));
     localValueAnimator.start();
@@ -67,60 +71,57 @@ public class RefreshHeaderView
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(paramBoolean);
-    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
-    int i;
-    if (paramBoolean) {
-      i = 0;
+    this.d.setIndeterminate(paramBoolean);
+    ProgressBar localProgressBar = this.d;
+    int i1;
+    if ((!paramBoolean) && (!this.u)) {
+      i1 = 8;
     } else {
-      i = 8;
+      i1 = 0;
     }
-    localProgressBar.setVisibility(i);
+    localProgressBar.setVisibility(i1);
   }
   
   private boolean a(float paramFloat, boolean paramBoolean)
   {
-    return (paramFloat > 0.0F) && (!paramBoolean);
+    if ((paramFloat > 0.0F) && (!paramBoolean)) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    this.v = paramBoolean;
+    return paramBoolean;
   }
   
-  private boolean c()
-  {
-    return getParent() != null;
-  }
-  
-  private void e()
+  private void i()
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLayoutParams.setMargins(0, 0, 0, 0);
     setLayoutParams(localLayoutParams);
     setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131560725, null));
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new LinearLayout.LayoutParams(-1, 0));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369374));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379844));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372398));
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(100L);
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(-180.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-    this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setDuration(100L);
-    this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
+    this.a = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131626856, null));
+    addView(this.a, new LinearLayout.LayoutParams(-1, 0));
+    this.b = ((ImageView)findViewById(2131436405));
+    this.c = ((TextView)findViewById(2131448699));
+    this.d = ((ProgressBar)findViewById(2131439918));
+    this.e = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
+    this.e.setDuration(100L);
+    this.e.setFillAfter(true);
+    this.f = new RotateAnimation(-180.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+    this.f.setDuration(100L);
+    this.f.setFillAfter(true);
     measure(-2, -2);
-    this.jdField_a_of_type_Int = getMeasuredHeight();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839406);
+    this.g = getMeasuredHeight();
+    this.r = getResources().getDrawable(2130839590);
   }
   
-  public int a()
+  private boolean j()
   {
-    return ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams()).height;
-  }
-  
-  public Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    RefreshHeaderView.ICanRefreshDelegate localICanRefreshDelegate = this.t;
+    if (localICanRefreshDelegate != null) {
+      return localICanRefreshDelegate.a();
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return getParent() != null;
   }
   
   public void a()
@@ -130,12 +131,12 @@ public class RefreshHeaderView
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if ((a() > 0) || (paramFloat1 > 0.0F))
+    if ((getVisibleHeight() > 0) || (paramFloat1 > 0.0F))
     {
-      setVisibleHeight((int)paramFloat1 + a());
-      if (this.jdField_b_of_type_Int <= 1)
+      setVisibleHeight((int)paramFloat1 + getVisibleHeight());
+      if (this.h <= 1)
       {
-        if (a() > this.jdField_a_of_type_Int)
+        if (getVisibleHeight() > this.g)
         {
           b();
           return;
@@ -145,54 +146,25 @@ public class RefreshHeaderView
     }
   }
   
-  public boolean a()
-  {
-    int i = a();
-    boolean bool;
-    if ((a() > this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int < 2))
-    {
-      setState(2);
-      bool = true;
-    }
-    else
-    {
-      bool = false;
-    }
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      int j = this.jdField_a_of_type_Int;
-      if (i > j) {
-        a(j);
-      }
-    }
-    if (this.jdField_b_of_type_Int != 2) {
-      a(0);
-    }
-    if (this.jdField_b_of_type_Int == 2) {
-      a(this.jdField_a_of_type_Int);
-    }
-    return bool;
-  }
-  
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Float == -1.0F) {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
+    if (this.i == -1.0F) {
+      this.i = paramMotionEvent.getRawY();
     }
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        this.jdField_a_of_type_Float = -1.0F;
-        if ((c()) && (!this.jdField_a_of_type_Boolean)) {
-          a();
+        this.i = -1.0F;
+        if ((j()) && (!this.l)) {
+          c();
         }
       }
       else
       {
         float f2 = paramMotionEvent.getRawY();
-        float f1 = this.jdField_a_of_type_Float;
+        float f1 = this.i;
         f2 = (f2 - f1) / 2.0F;
         boolean bool;
         if (f1 == 0.0F) {
@@ -200,12 +172,13 @@ public class RefreshHeaderView
         } else {
           bool = false;
         }
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
-        this.jdField_b_of_type_Float += f2;
-        if ((c()) && (!this.jdField_a_of_type_Boolean) && (a(f2, bool)))
+        this.i = paramMotionEvent.getRawY();
+        this.j += f2;
+        a(f2, bool);
+        if ((j()) && (this.v) && (!this.l))
         {
-          a(f2, this.jdField_b_of_type_Float);
-          if (a() > 0) {
+          a(f2, this.j);
+          if (getVisibleHeight() > 0) {
             return false;
           }
         }
@@ -213,8 +186,8 @@ public class RefreshHeaderView
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_b_of_type_Float = 0.0F;
+      this.i = paramMotionEvent.getRawY();
+      this.j = 0.0F;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -224,55 +197,131 @@ public class RefreshHeaderView
     setState(1);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Boolean;
+    int i1 = getVisibleHeight();
+    boolean bool;
+    if ((getVisibleHeight() > this.g) && (this.h < 2))
+    {
+      setState(2);
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    if (this.h == 2)
+    {
+      int i2 = this.g;
+      if (i1 > i2) {
+        a(i2);
+      }
+    }
+    if (this.h != 2) {
+      a(0);
+    }
+    if (this.h == 2) {
+      a(this.g);
+    }
+    return bool;
   }
   
-  public void c()
+  public void d()
   {
     QLog.d("RefreshHeaderView", 1, "refreshComplete");
-    long l = 1000L - this.jdField_a_of_type_Long;
-    if (l > 0L)
+    long l1 = 1000L - this.s;
+    if (l1 > 0L)
     {
-      a().postDelayed(new RefreshHeaderView.1(this), l);
+      getMainHandler().postDelayed(new RefreshHeaderView.1(this), l1);
       return;
     }
     setState(3);
   }
   
-  public void d()
+  public boolean e()
   {
-    if (a() != null) {
-      a().removeCallbacksAndMessages(null);
+    return this.v;
+  }
+  
+  public boolean f()
+  {
+    return this.l;
+  }
+  
+  public void g()
+  {
+    setVisibleHeight(this.g);
+  }
+  
+  public View getHeaderView()
+  {
+    return this;
+  }
+  
+  public Handler getMainHandler()
+  {
+    if (this.m == null) {
+      this.m = new Handler(Looper.getMainLooper());
+    }
+    return this.m;
+  }
+  
+  public int getVisibleHeight()
+  {
+    return ((LinearLayout.LayoutParams)this.a.getLayoutParams()).height;
+  }
+  
+  public void h()
+  {
+    if (getMainHandler() != null) {
+      getMainHandler().removeCallbacksAndMessages(null);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_b_of_type_Int == 1) {
+    if (this.h == 1) {
       setState(2);
     }
   }
   
+  public void setAlwaysShowProgressBar(boolean paramBoolean)
+  {
+    this.u = paramBoolean;
+    ProgressBar localProgressBar = this.d;
+    if ((localProgressBar != null) && (paramBoolean)) {
+      localProgressBar.setVisibility(0);
+    }
+  }
+  
+  public void setCanRefreshDelegate(RefreshHeaderView.ICanRefreshDelegate paramICanRefreshDelegate)
+  {
+    this.t = paramICanRefreshDelegate;
+  }
+  
+  public void setMeasuredHeight(int paramInt)
+  {
+    this.g = paramInt;
+  }
+  
   public void setOnRefreshListener(RefreshHeaderView.OnRefreshListener paramOnRefreshListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener = paramOnRefreshListener;
+    this.k = paramOnRefreshListener;
   }
   
   public void setRefreshing(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
     if (!paramBoolean) {
-      c();
+      d();
     }
   }
   
   public void setState(int paramInt)
   {
-    int i = this.jdField_b_of_type_Int;
-    if (paramInt == i) {
+    int i1 = this.h;
+    if (paramInt == i1) {
       return;
     }
     if (paramInt != 0)
@@ -286,75 +335,75 @@ public class RefreshHeaderView
             if (paramInt == 4)
             {
               QLog.d("RefreshHeaderView", 4, "STATE_JUST_SHOW_REFRESH_ANIMATION");
-              this.jdField_a_of_type_Long = System.currentTimeMillis();
-              this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.s = System.currentTimeMillis();
+              this.b.clearAnimation();
+              this.b.setVisibility(8);
               a(true);
-              a(this.jdField_a_of_type_Int);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+              a(this.g);
+              this.c.setText(this.o);
               setRefreshing(true);
             }
           }
           else
           {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            this.b.setVisibility(8);
             a(false);
-            this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+            this.c.setText(this.n);
             a(0);
           }
         }
         else
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.s = System.currentTimeMillis();
+          this.b.clearAnimation();
+          this.b.setVisibility(8);
           a(true);
-          a(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-          localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener;
+          a(this.g);
+          this.c.setText(this.o);
+          localObject = this.k;
           if (localObject != null) {
-            ((RefreshHeaderView.OnRefreshListener)localObject).b();
+            ((RefreshHeaderView.OnRefreshListener)localObject).a();
           }
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.b.setVisibility(0);
         a(false);
-        if (this.jdField_b_of_type_Int != 1)
+        if (this.h != 1)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-          this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
+          this.b.clearAnimation();
+          this.b.startAnimation(this.e);
+          this.c.setText(this.p);
         }
       }
     }
     else
     {
-      if (i == 1) {
-        this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationRotateAnimation);
+      if (i1 == 1) {
+        this.b.startAnimation(this.f);
       }
-      if (this.jdField_b_of_type_Int == 2) {
-        this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+      if (this.h == 2) {
+        this.b.clearAnimation();
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
+      this.c.setText(this.q);
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("state:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("RefreshHeaderView", 1, ((StringBuilder)localObject).toString());
-    this.jdField_b_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void setVisibleHeight(int paramInt)
   {
-    int i = paramInt;
+    int i1 = paramInt;
     if (paramInt < 0) {
-      i = 0;
+      i1 = 0;
     }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.height = i;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.a.getLayoutParams();
+    localLayoutParams.height = i1;
+    this.a.setLayoutParams(localLayoutParams);
   }
 }
 

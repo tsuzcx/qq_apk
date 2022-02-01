@@ -7,15 +7,9 @@ import org.json.JSONObject;
 
 public class TagInfo
 {
-  public int a;
-  public String a;
-  public int b = 0;
-  
-  public TagInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public int a = 0;
+  public String b = "";
+  public int c = 0;
   
   public static String a(ArrayList<TagInfo> paramArrayList)
   {
@@ -31,9 +25,9 @@ public class TagInfo
           Object localObject = new JSONObject();
           try
           {
-            ((JSONObject)localObject).put("tagId", localTagInfo.jdField_a_of_type_Int);
-            ((JSONObject)localObject).put("tagName", localTagInfo.jdField_a_of_type_JavaLangString);
-            ((JSONObject)localObject).put("isHotTag", localTagInfo.b);
+            ((JSONObject)localObject).put("tagId", localTagInfo.a);
+            ((JSONObject)localObject).put("tagName", localTagInfo.b);
+            ((JSONObject)localObject).put("isHotTag", localTagInfo.c);
             localJSONArray.put(localObject);
           }
           catch (Exception localException)
@@ -55,20 +49,20 @@ public class TagInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{tagId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("}");
     localStringBuilder.append("{tagName: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("}");
     localStringBuilder.append("{isHotTag: ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.match.TagInfo
  * JD-Core Version:    0.7.0.1
  */

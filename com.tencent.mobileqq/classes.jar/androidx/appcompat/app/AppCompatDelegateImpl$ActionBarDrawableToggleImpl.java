@@ -2,6 +2,7 @@ package androidx.appcompat.app;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.widget.TintTypedArray;
 
 class AppCompatDelegateImpl$ActionBarDrawableToggleImpl
@@ -16,7 +17,7 @@ class AppCompatDelegateImpl$ActionBarDrawableToggleImpl
   
   public Drawable getThemeUpIndicator()
   {
-    TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(getActionBarThemedContext(), null, new int[] { 2131034656 });
+    TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(getActionBarThemedContext(), null, new int[] { R.attr.homeAsUpIndicator });
     Drawable localDrawable = localTintTypedArray.getDrawable(0);
     localTintTypedArray.recycle();
     return localDrawable;

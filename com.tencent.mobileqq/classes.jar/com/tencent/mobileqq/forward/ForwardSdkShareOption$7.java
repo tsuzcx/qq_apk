@@ -12,33 +12,33 @@ class ForwardSdkShareOption$7
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    if (!this.a.s.isFinishing())
     {
-      if (this.a.k) {
+      if (this.a.ah) {
         return;
       }
-      this.a.A();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.a.ae();
+      if (this.a.ag != null) {
+        this.a.ag.removeCallbacksAndMessages(null);
       }
       if (paramInt == 16)
       {
-        this.a.N();
+        this.a.aG();
         return;
       }
-      if (ForwardSdkShareOption.a(this.a))
+      if (ForwardSdkShareOption.b(this.a))
       {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", "-1010");
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-        this.a.n();
+        this.a.t.putString("uin", "-1010");
+        this.a.t.putInt("uintype", -1);
+        this.a.t.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.f.intValue());
+        this.a.I();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.7
  * JD-Core Version:    0.7.0.1
  */

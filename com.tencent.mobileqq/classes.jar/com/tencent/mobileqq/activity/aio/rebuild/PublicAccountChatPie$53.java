@@ -13,22 +13,22 @@ class PublicAccountChatPie$53
   
   protected void d(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (PublicAccountChatPie.a(this.a).getVisibility() != 0))
+    if ((paramBoolean) && (PublicAccountChatPie.D(this.a).getVisibility() != 0))
     {
-      if (AIOTopRightButtonConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      if (AIOTopRightButtonConfig.a().b(this.a.d.getCurrentAccountUin()))
       {
-        PublicAccountChatPie.b(this.a).setVisibility(0);
-        PublicAccountChatPie.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130847320, 2130847321);
+        PublicAccountChatPie.E(this.a).setVisibility(0);
+        PublicAccountChatPie.F(this.a).setOnClickListener(this.a);
+        this.a.p.setRight2Icon(2130848971, 2130848972);
         return;
       }
-      PublicAccountChatPie.d(this.a).setVisibility(8);
+      PublicAccountChatPie.G(this.a).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.53
  * JD-Core Version:    0.7.0.1
  */

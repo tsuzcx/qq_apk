@@ -20,7 +20,7 @@ public class OnlineMusicStatusPlayerCallback
     }
     IOnlineMusicStatusManager localIOnlineMusicStatusManager = (IOnlineMusicStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
     if (localIOnlineMusicStatusManager != null) {
-      paramAppService.addCallback(localIOnlineMusicStatusManager.a());
+      paramAppService.addCallback(localIOnlineMusicStatusManager.b());
     }
   }
   
@@ -32,13 +32,13 @@ public class OnlineMusicStatusPlayerCallback
     }
     IOnlineMusicStatusManager localIOnlineMusicStatusManager = (IOnlineMusicStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
     if (localIOnlineMusicStatusManager != null) {
-      paramAppService.removeCallback(localIOnlineMusicStatusManager.a());
+      paramAppService.removeCallback(localIOnlineMusicStatusManager.b());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.OnlineMusicStatusPlayerCallback
  * JD-Core Version:    0.7.0.1
  */

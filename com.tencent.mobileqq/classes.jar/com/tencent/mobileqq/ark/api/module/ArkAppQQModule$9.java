@@ -2,7 +2,6 @@ package com.tencent.mobileqq.ark.api.module;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.fragment.app.FragmentManager;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
@@ -31,38 +30,38 @@ class ArkAppQQModule$9
   public void run()
   {
     Object localObject1;
-    if (this.jdField_a_of_type_JavaLangString.equals("fullscreen"))
+    if (this.a.equals("fullscreen"))
     {
       ArkAppDataReport.a(null, ArkAppQQModule.e(this.this$0), "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
-      localObject1 = ArkAppQQModuleBase.a();
+      localObject1 = ArkAppQQModuleBase.f();
       if ((localObject1 instanceof BaseActivity))
       {
         localObject1 = (BaseActivity)localObject1;
         ArkAppDataReport.a(null, ArkAppQQModule.f(this.this$0), "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
-        ArkFullScreenAppActivity.a((Context)localObject1, ArkAppQQModule.g(this.this$0), this.b, "0.0.0.1", this.c, ArkAppCenterUtil.a(), null, 0);
+        ArkFullScreenAppActivity.a((Context)localObject1, ArkAppQQModule.g(this.this$0), this.b, "0.0.0.1", this.c, ArkAppCenterUtil.d(), null, 0);
       }
     }
     else
     {
       Object localObject2;
       Object localObject3;
-      if (this.jdField_a_of_type_JavaLangString.equals("input"))
+      if (this.a.equals("input"))
       {
-        localObject1 = ArkAppQQModuleBase.a();
+        localObject1 = ArkAppQQModuleBase.f();
         if ((localObject1 instanceof BaseActivity))
         {
-          localObject1 = (ChatFragment)((BaseActivity)localObject1).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+          localObject1 = ((BaseActivity)localObject1).getChatFragment();
           if (localObject1 != null)
           {
-            localObject1 = ((ChatFragment)localObject1).a();
+            localObject1 = ((ChatFragment)localObject1).k();
             if (localObject1 != null)
             {
-              localObject1 = ((ArkHelper)((BaseChatPie)localObject1).a(110)).a();
+              localObject1 = ((ArkHelper)((BaseChatPie)localObject1).q(110)).e();
               if (localObject1 != null)
               {
                 localObject2 = new ArrayList();
                 localObject3 = new ArkAiInfo();
-                ((ArkAiInfo)localObject3).jdField_a_of_type_JavaLangString = ArkAppQQModule.h(this.this$0);
+                ((ArkAiInfo)localObject3).a = ArkAppQQModule.h(this.this$0);
                 ((ArkAiInfo)localObject3).d = ArkAppQQModule.i(this.this$0);
                 ((ArkAiInfo)localObject3).e = this.c;
                 ((ArkAiInfo)localObject3).b = this.b;
@@ -73,30 +72,30 @@ class ArkAppQQModule$9
           }
         }
       }
-      else if (this.jdField_a_of_type_JavaLangString.equals("popup"))
+      else if (this.a.equals("popup"))
       {
-        localObject1 = ArkAppQQModuleBase.a();
+        localObject1 = ArkAppQQModuleBase.f();
         if ((localObject1 instanceof BaseActivity))
         {
-          localObject2 = QQCustomArkDialog.AppInfo.a(ArkAppQQModule.j(this.this$0), this.b, "0.0.0.1", this.c, ArkAppCenterUtil.a(), null, null);
-          if (ArkAppQQModule.a(this.this$0) != null)
+          localObject2 = QQCustomArkDialog.AppInfo.a(ArkAppQQModule.j(this.this$0), this.b, "0.0.0.1", this.c, ArkAppCenterUtil.d(), null, null);
+          if (ArkAppQQModule.k(this.this$0) != null)
           {
-            localObject3 = (QQCustomDialog)ArkAppQQModule.a(this.this$0).get();
+            localObject3 = (QQCustomDialog)ArkAppQQModule.k(this.this$0).get();
             if ((localObject3 != null) && (((QQCustomDialog)localObject3).isShowing())) {
               ((QQCustomDialog)localObject3).dismiss();
             }
           }
-          localObject1 = DialogUtils.a((Context)localObject1, null, (Bundle)localObject2);
-          ((QQCustomDialog)localObject1).setNegativeButton(2131690728, null);
-          ((QQCustomDialog)localObject1).setPositiveButton(2131694583, null);
+          localObject1 = DialogUtils.b((Context)localObject1, null, (Bundle)localObject2);
+          ((QQCustomDialog)localObject1).setNegativeButton(2131887648, null);
+          ((QQCustomDialog)localObject1).setPositiveButton(2131892267, null);
           ArkAppQQModule.a(this.this$0, new WeakReference(localObject1));
           ((QQCustomDialog)localObject1).show();
-          ArkAppDataReport.a(null, "ShowView", ArkAppQQModule.k(this.this$0), null, ArkAppDataReport.i, 0, 0);
+          ArkAppDataReport.a(null, "ShowView", ArkAppQQModule.l(this.this$0), null, ArkAppDataReport.i, 0, 0);
         }
       }
-      else if (this.jdField_a_of_type_JavaLangString.equals("card"))
+      else if (this.a.equals("card"))
       {
-        localObject1 = ark.arkGetContainer(this.jdField_a_of_type_Long);
+        localObject1 = ark.arkGetContainer(this.d);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("OpenView card container=");
         ((StringBuilder)localObject2).append(localObject1);
@@ -109,9 +108,9 @@ class ArkAppQQModule$9
           }
         }
       }
-      else if (this.jdField_a_of_type_JavaLangString.equals("bottom_card"))
+      else if (this.a.equals("bottom_card"))
       {
-        localObject1 = ArkAppQQModuleBase.a();
+        localObject1 = ArkAppQQModuleBase.f();
         if ((localObject1 instanceof BaseActivity)) {
           ArkFullScreenAppActivity.a((BaseActivity)localObject1, "com.tencent.cmgame.intent", "GameCard", this.c);
         }
@@ -121,7 +120,7 @@ class ArkAppQQModule$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.9
  * JD-Core Version:    0.7.0.1
  */

@@ -79,7 +79,7 @@ public class QZoneEventTagJsPlugin
       long l = paramWebViewPlugin.getLong("uin");
       int i = paramWebViewPlugin.optInt("sourceId", 3011);
       int j = paramWebViewPlugin.optInt("subSourceId", 21);
-      paramWebViewPlugin = paramPluginRuntime.a();
+      paramWebViewPlugin = paramPluginRuntime.d();
       paramPluginRuntime = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramWebViewPlugin, 1, String.valueOf(l), "", i, j, null, null, null, null, null);
       ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(paramWebViewPlugin, paramPluginRuntime);
       return;
@@ -247,7 +247,7 @@ public class QZoneEventTagJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneEventTagJsPlugin
  * JD-Core Version:    0.7.0.1
  */

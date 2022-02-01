@@ -6,7 +6,7 @@ public abstract interface UniformDownloadUtil$GetApkNameCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.util.UniformDownloadUtil.GetApkNameCallback
  * JD-Core Version:    0.7.0.1
  */

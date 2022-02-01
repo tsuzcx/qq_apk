@@ -53,62 +53,38 @@ public class NewAuthorityPresenter
   extends BaseAuthorityPresenter
   implements INewAuthorityContract.Presenter
 {
-  private final INewAuthorityContract.View jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View;
-  private AuthCallback jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback = new NewAuthorityPresenter.6(this);
-  private Handler b;
-  private int d;
-  private long g;
-  private long h;
-  private long jdField_i_of_type_Long;
-  private boolean jdField_i_of_type_Boolean;
-  private boolean j;
+  private int F;
+  private long G;
+  private long H;
+  private boolean I;
+  private boolean J;
+  private long K;
+  private final INewAuthorityContract.View L;
+  private Handler M = new Handler(new NewAuthorityPresenter.1(this));
+  private AuthCallback N = new NewAuthorityPresenter.6(this);
   
   public NewAuthorityPresenter(INewAuthorityContract.View paramView, ILocalDataSource paramILocalDataSource)
   {
     super(paramView, paramILocalDataSource);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(new NewAuthorityPresenter.1(this));
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View = paramView;
-  }
-  
-  private List<Permission> a()
-  {
-    Object localObject = AuthMemoryCache.a().a(a());
-    ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Permission localPermission1 = (Permission)((Iterator)localObject).next();
-        Permission localPermission2 = new Permission();
-        localPermission2.jdField_b_of_type_JavaLangString = localPermission1.jdField_b_of_type_JavaLangString;
-        localPermission2.jdField_a_of_type_Int = localPermission1.jdField_a_of_type_Int;
-        localPermission2.jdField_b_of_type_Int = localPermission1.jdField_b_of_type_Int;
-        localPermission2.jdField_a_of_type_Boolean = localPermission1.jdField_a_of_type_Boolean;
-        localPermission2.jdField_a_of_type_JavaLangString = localPermission1.jdField_a_of_type_JavaLangString;
-        localPermission2.jdField_b_of_type_Boolean = true;
-        localArrayList.add(localPermission2);
-      }
-    }
-    return localArrayList;
+    this.L = paramView;
   }
   
   private void a(AppInfoResponse paramAppInfoResponse)
   {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "parseAppInfoResponse hasAppIcon=", Boolean.valueOf(this.jdField_c_of_type_Boolean), ", response=", paramAppInfoResponse });
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "parseAppInfoResponse hasAppIcon=", Boolean.valueOf(this.l), ", response=", paramAppInfoResponse });
     if (paramAppInfoResponse == null) {
       return;
     }
     String str = paramAppInfoResponse.a();
     if (!TextUtils.isEmpty(str))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(str, null);
+      this.L.a(str, null);
       SSOLog.a("NewAuthorityPresenter", new Object[] { "parseGetAppInfoResponse appName=", str });
     }
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.l) {
       return;
     }
-    paramAppInfoResponse = paramAppInfoResponse.a();
+    paramAppInfoResponse = paramAppInfoResponse.b();
     if (paramAppInfoResponse.isEmpty())
     {
       SSOLog.a("NewAuthorityPresenter", new Object[] { "parseGetAppInfoResponse iconsURL none" });
@@ -120,195 +96,180 @@ public class NewAuthorityPresenter
   private void a(GetVirtualListResult paramGetVirtualListResult)
   {
     boolean bool;
-    if ((paramGetVirtualListResult != null) && (paramGetVirtualListResult.jdField_a_of_type_Int == 0)) {
+    if ((paramGetVirtualListResult != null) && (paramGetVirtualListResult.a == 0)) {
       bool = true;
     } else {
       bool = false;
     }
     SSOLog.a("NewAuthorityPresenter", new Object[] { "-->onGetVirtualList isSuccess=", Boolean.valueOf(bool) });
-    AuthReporter.a("KEY_GET_VIRTUAL_LIST_D24", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, bool);
-    if (!b())
+    AuthReporter.a("KEY_GET_VIRTUAL_LIST_D24", this.w, bool);
+    if (!r())
     {
       SSOLog.b("NewAuthorityPresenter", new Object[] { " activity is isInvalid" });
       return;
     }
     if (paramGetVirtualListResult == null)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(0, null, this.jdField_g_of_type_Long);
+      this.L.a(0, null, this.G);
       return;
     }
-    if (paramGetVirtualListResult.jdField_a_of_type_Int != 0)
+    if (paramGetVirtualListResult.a != 0)
     {
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualList errorCode ===", Integer.valueOf(paramGetVirtualListResult.jdField_a_of_type_Int) });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(paramGetVirtualListResult.jdField_a_of_type_Int, null, this.jdField_g_of_type_Long);
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualList errorCode ===", Integer.valueOf(paramGetVirtualListResult.a) });
+      this.L.a(paramGetVirtualListResult.a, null, this.G);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a() == 0L) {
+    if (this.L.d() == 0L) {
       bool = true;
     } else {
       bool = false;
     }
     paramGetVirtualListResult = AuthModelUtil.a(paramGetVirtualListResult, bool);
     SSOLog.a("NewAuthorityPresenter", new Object[] { "onGetVirtualList setData accountInfoList.size=", Integer.valueOf(paramGetVirtualListResult.size()) });
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(0, paramGetVirtualListResult, this.jdField_g_of_type_Long);
-    this.jdField_g_of_type_Long = 0L;
+    this.L.a(0, paramGetVirtualListResult, this.G);
+    this.G = 0L;
   }
   
   private void a(preAuth.PreAuthResponse paramPreAuthResponse)
   {
     if (paramPreAuthResponse == null)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.b();
+      this.L.b();
       SSOLog.a("NewAuthorityPresenter", new Object[] { "GET_API_LIST_DONE  response = null" });
       return;
     }
-    int k = paramPreAuthResponse.ret.get();
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "parseGetAuthListResult ret=", Integer.valueOf(k) });
-    if (k == 0)
+    int i = paramPreAuthResponse.ret.get();
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "parseGetAuthListResult ret=", Integer.valueOf(i) });
+    if (i == 0)
     {
       b(paramPreAuthResponse);
       return;
     }
-    b(paramPreAuthResponse.msg.get(), k);
+    b(paramPreAuthResponse.msg.get(), i);
   }
   
-  private void a(List<Permission> paramList)
+  private boolean a(int paramInt, boolean paramBoolean)
+  {
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "handle110537 mIn110537Retry=", Boolean.valueOf(this.I), ", errorCode=", Integer.valueOf(paramInt), ", isGetVirtualList=", Boolean.valueOf(paramBoolean), "mAccount=", this.w });
+    if (paramInt == 110537)
+    {
+      if (this.w == null) {
+        return false;
+      }
+      BaseOpenSdkQIPCClient.a(this.w.a);
+      if ((!this.I) && (AuthorityUtil.a(this.w.a, this.C, false) != null))
+      {
+        if (paramBoolean)
+        {
+          this.I = true;
+          t();
+          return true;
+        }
+        this.I = true;
+        s();
+        return true;
+      }
+      this.I = false;
+      c(this.w.a);
+      return true;
+    }
+    return false;
+  }
+  
+  private void b(int paramInt)
+  {
+    SSOLog.b("NewAuthorityPresenter", new Object[] { "refreshTicketBySSOFailed triggerReason=", Integer.valueOf(paramInt) });
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d(l());
+    AccountManage.a().a(localAccountInfo.a, l(), 3, new NewAuthorityPresenter.5(this, paramInt));
+  }
+  
+  private void b(preAuth.PreAuthResponse paramPreAuthResponse)
+  {
+    this.H = SystemClock.elapsedRealtime();
+    this.m = false;
+    AuthMemoryCache.a().a(l(), this.H);
+    List localList = AuthMemoryCache.a().e(l());
+    a(this.L.a(localList, paramPreAuthResponse.authorized_union_text.get()));
+    this.L.a(true);
+    this.L.b();
+    u();
+  }
+  
+  private void b(List<Permission> paramList)
   {
     SSOLog.a("NewAuthorityPresenter", new Object[] { "onClick doAuthorize" });
-    int k;
-    if (this.f) {
-      k = 2;
+    int i;
+    if (this.o) {
+      i = 2;
     } else {
-      k = 1;
+      i = 1;
     }
-    long l = this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a();
+    long l = this.L.d();
     String str;
     if (l == 0L) {
       str = "0X800A117";
     } else {
       str = "0X800A116";
     }
-    ReportController.b(null, "dc00898", "", "", str, str, k, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", str, str, i, 0, "", "", "", "");
     AuthReporter.a("KEY_AUTHORIZE_REQUEST");
-    AuthReporter.a("KEY_LOGIN_STAGE_2_NEW_TOTAL", this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
+    AuthReporter.a("KEY_LOGIN_STAGE_2_NEW_TOTAL", this.w);
     AuthReporter.a("KEY_LOGIN_STAGE_3_TOTAL");
-    this.jdField_d_of_type_Int = 0;
-    new SSOSdkAuthApiPresenter().a(this.f, b(), c(), paramList, l, this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback, AuthParamUtil.a(this.jdField_a_of_type_AndroidAppActivity));
+    this.F = 0;
+    new SSOSdkAuthApiPresenter().a(this.o, n(), o(), paramList, l, this.N, AuthParamUtil.a(this.A));
   }
   
-  private boolean a(int paramInt1, int paramInt2)
+  private boolean b(int paramInt1, int paramInt2)
   {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "handle110509 mIn110509Retry=", Boolean.valueOf(this.j), ", errorCode=", Integer.valueOf(paramInt1), ", triggerReason=", Integer.valueOf(paramInt2), "mAccount=", this.jdField_a_of_type_ComTencentOpenModelAccountInfo });
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "handle110509 mIn110509Retry=", Boolean.valueOf(this.J), ", errorCode=", Integer.valueOf(paramInt1), ", triggerReason=", Integer.valueOf(paramInt2), "mAccount=", this.w });
     if (paramInt1 == 110509)
     {
-      if (this.jdField_a_of_type_ComTencentOpenModelAccountInfo == null) {
+      if (this.w == null) {
         return false;
       }
-      if (this.j)
+      if (this.J)
       {
-        this.j = false;
-        c(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
+        this.J = false;
+        c(this.w.a);
         return true;
       }
-      this.j = true;
+      this.J = true;
       b(paramInt2);
       return true;
     }
     return false;
   }
   
-  private boolean a(int paramInt, boolean paramBoolean)
-  {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "handle110537 mIn110537Retry=", Boolean.valueOf(this.jdField_i_of_type_Boolean), ", errorCode=", Integer.valueOf(paramInt), ", isGetVirtualList=", Boolean.valueOf(paramBoolean), "mAccount=", this.jdField_a_of_type_ComTencentOpenModelAccountInfo });
-    if (paramInt == 110537)
-    {
-      if (this.jdField_a_of_type_ComTencentOpenModelAccountInfo == null) {
-        return false;
-      }
-      BaseOpenSdkQIPCClient.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
-      if ((!this.jdField_i_of_type_Boolean) && (AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime, false) != null))
-      {
-        if (paramBoolean)
-        {
-          this.jdField_i_of_type_Boolean = true;
-          o();
-          return true;
-        }
-        this.jdField_i_of_type_Boolean = true;
-        n();
-        return true;
-      }
-      this.jdField_i_of_type_Boolean = false;
-      c(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
-      return true;
-    }
-    return false;
-  }
-  
-  private String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  private void b(int paramInt)
-  {
-    SSOLog.b("NewAuthorityPresenter", new Object[] { "refreshTicketBySSOFailed triggerReason=", Integer.valueOf(paramInt) });
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a(a());
-    AccountManage.a().a(localAccountInfo.jdField_a_of_type_JavaLangString, a(), 3, new NewAuthorityPresenter.5(this, paramInt));
-  }
-  
-  private void b(preAuth.PreAuthResponse paramPreAuthResponse)
-  {
-    this.jdField_h_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_d_of_type_Boolean = false;
-    AuthMemoryCache.a().a(a(), this.jdField_h_of_type_Long);
-    List localList = AuthMemoryCache.a().a(a());
-    a(this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(localList, paramPreAuthResponse.authorized_union_text.get()));
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(true);
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.b();
-    p();
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing());
-  }
-  
-  private String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
   private void c(Bundle paramBundle)
   {
-    if (this.jdField_h_of_type_Boolean)
+    if (this.q)
     {
-      AuthModelUtil.a(paramBundle);
+      AuthModelUtil.b(paramBundle);
       i();
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a();
+      this.L.a();
       return;
     }
-    if (!"action_login".equals(AuthParamUtil.a(this.jdField_a_of_type_AndroidContentIntent, "key_action")))
+    if (!"action_login".equals(AuthParamUtil.b(this.B, "key_action")))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a();
+      this.L.a();
       return;
     }
-    if (a())
+    if (m())
     {
-      this.e = false;
+      this.n = false;
       return;
     }
     i();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a();
+    this.L.a();
   }
   
   private void c(String paramString, int paramInt)
   {
     try
     {
-      int k = new JSONObject(paramString).optInt("ErrorCode");
-      paramInt = k;
-      if (k == 0) {
+      int i = new JSONObject(paramString).optInt("ErrorCode");
+      paramInt = i;
+      if (i == 0) {
         return;
       }
     }
@@ -319,9 +280,164 @@ public class NewAuthorityPresenter
     }
   }
   
-  private boolean c()
+  private String n()
   {
-    Object localObject = AuthMemoryCache.a().a(a());
+    return this.t;
+  }
+  
+  private String o()
+  {
+    return this.u;
+  }
+  
+  private void p()
+  {
+    AuthReporter.a("KEY_LOGIN_STAGE_2_NEW_TOTAL");
+    AuthReporter.a("KEY_LOGIN_STAGE_2_1_NEW_TOTAL");
+    int i;
+    if (this.o) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    AuthReporter.a("0X800A115", i);
+    AuthReporter.a(this.v, "0X800B65C");
+    AuthReporter.a(this.v, l(), "1", "0", false);
+    AuthorityUtil.a(null, "0X800B934", new String[] { "", "", this.y.getString("oauth_app_name"), "" });
+  }
+  
+  private void q()
+  {
+    if (this.w == null)
+    {
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "queryAuthList mAccount == null" });
+      this.L.a(30000L);
+      return;
+    }
+    preAuth.PreAuthResponse localPreAuthResponse = AuthMemoryCache.a().g(l());
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "queryAuthorityUseCache response=", localPreAuthResponse });
+    if (localPreAuthResponse == null)
+    {
+      this.I = false;
+      this.J = false;
+      s();
+      return;
+    }
+    Message.obtain(this.M, 4, localPreAuthResponse).sendToTarget();
+  }
+  
+  private boolean r()
+  {
+    return (this.A != null) && (!this.A.isFinishing());
+  }
+  
+  private void s()
+  {
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer--" });
+    if (!r())
+    {
+      SSOLog.b("NewAuthorityPresenter", new Object[] { "updatePreAuthFromServer for activity is finished" });
+      return;
+    }
+    if (!NetworkUtil.isNetworkAvailable(this.A))
+    {
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer isNetworkAvailable false--" });
+      this.L.a(0L);
+      return;
+    }
+    if (this.w == null)
+    {
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer mAccount == null" });
+      this.L.a(30000L);
+      return;
+    }
+    if ((this.w.c != null) && (this.w.c.length != 0))
+    {
+      this.s = 2;
+      new SSOPreAuthPresenter().a(n(), l(), this.A, AuthParamUtil.a(this.A), this.y, new NewAuthorityPresenter.2(this));
+      return;
+    }
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer mAccount.st == null || mAccount.st.length == 0" });
+    a(3000, 2131892323);
+  }
+  
+  private void t()
+  {
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualListFromServer" });
+    if (!NetworkUtil.isNetworkAvailable(this.A))
+    {
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualListFromServer no network" });
+      this.L.a(0L);
+      return;
+    }
+    new SSOPreAuthPresenter().a(n(), l(), this.A, AuthParamUtil.a(this.A), this.y, new NewAuthorityPresenter.3(this));
+  }
+  
+  private void u()
+  {
+    if (!r())
+    {
+      SSOLog.b("NewAuthorityPresenter", new Object[] { "getAppInfo return for activity is finished" });
+      return;
+    }
+    this.s = 2;
+    AppInfoResponse localAppInfoResponse = AuthMemoryCache.a().f(l());
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "getAppInfo use cached appid=", l(), ", appInfo=", localAppInfoResponse });
+    Message.obtain(this.M, 5, localAppInfoResponse).sendToTarget();
+  }
+  
+  private void v()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showUserInfo uin=");
+    localStringBuilder.append(AuthorityUtil.a(this.w.a));
+    SSOLog.a("NewAuthorityPresenter", new Object[] { localStringBuilder.toString() });
+    this.L.a(this.w.a);
+    AvatarUpdateService.a().a(this.A, this.w.a, this.w.b, new NewAuthorityPresenter.4(this));
+  }
+  
+  private void w()
+  {
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualList" });
+    this.I = false;
+    this.J = false;
+    t();
+  }
+  
+  private void x()
+  {
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "onClick to OpenSelectPermissionFragment" });
+    Object localObject = AuthMemoryCache.a().g(l());
+    Intent localIntent = new Intent();
+    localIntent.putExtra("appId", this.t);
+    localIntent.putExtra("key_proxy_appid", this.u);
+    localIntent.putExtra("vid", this.L.d());
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = ((preAuth.PreAuthResponse)localObject).app_name.get();
+    }
+    localIntent.putExtra("appName", (String)localObject);
+    localIntent.putExtra("hasIcon", this.l);
+    localIntent.putExtra("login_cost", this.d - this.c);
+    long l = this.H;
+    if (l == 0L) {
+      l = SystemClock.elapsedRealtime();
+    }
+    localIntent.putExtra("authStartTime", l);
+    localIntent.putExtra("authListCostTime", this.e);
+    localIntent.putExtra("is_from_qr_login", this.o);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    localIntent.putExtra("packagename", this.y.getString("packagename"));
+    localIntent.putExtra("packagesign", this.y.getString("packagesign"));
+    localIntent.putExtra("pkg_name", AuthParamUtil.a(this.A));
+    AuthReporter.a("KEY_LOGIN_STAGE_2_2_NEW_TOTAL");
+    QPublicFragmentActivity.Launcher.a(this.A, localIntent, PublicFragmentActivityForOpenSDK.class, OpenSelectPermissionFragment.class, 102);
+  }
+  
+  private boolean y()
+  {
+    Object localObject = AuthMemoryCache.a().e(l());
     if (localObject != null)
     {
       if (((List)localObject).isEmpty()) {
@@ -331,7 +447,7 @@ public class NewAuthorityPresenter
       while (((Iterator)localObject).hasNext())
       {
         Permission localPermission = (Permission)((Iterator)localObject).next();
-        if ((localPermission.jdField_a_of_type_Int == 2) || (localPermission.jdField_a_of_type_Int == 3)) {
+        if ((localPermission.a == 2) || (localPermission.a == 3)) {
           return true;
         }
       }
@@ -339,189 +455,72 @@ public class NewAuthorityPresenter
     return false;
   }
   
-  private void l()
+  private List<Permission> z()
   {
-    AuthReporter.a("KEY_LOGIN_STAGE_2_NEW_TOTAL");
-    AuthReporter.a("KEY_LOGIN_STAGE_2_1_NEW_TOTAL");
-    int k;
-    if (this.f) {
-      k = 2;
-    } else {
-      k = 1;
-    }
-    AuthReporter.a("0X800A115", k);
-    AuthReporter.a(this.jdField_d_of_type_JavaLangString, "0X800B65C");
-    AuthReporter.a(this.jdField_d_of_type_JavaLangString, a(), "1", "0", false);
-    AuthorityUtil.a(null, "0X800B934", new String[] { "", "", this.jdField_a_of_type_AndroidOsBundle.getString("oauth_app_name"), "" });
-  }
-  
-  private void m()
-  {
-    if (this.jdField_a_of_type_ComTencentOpenModelAccountInfo == null)
+    Object localObject = AuthMemoryCache.a().e(l());
+    ArrayList localArrayList = new ArrayList();
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "queryAuthList mAccount == null" });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(30000L);
-      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Permission localPermission1 = (Permission)((Iterator)localObject).next();
+        Permission localPermission2 = new Permission();
+        localPermission2.d = localPermission1.d;
+        localPermission2.a = localPermission1.a;
+        localPermission2.e = localPermission1.e;
+        localPermission2.c = localPermission1.c;
+        localPermission2.b = localPermission1.b;
+        localPermission2.f = true;
+        localArrayList.add(localPermission2);
+      }
     }
-    preAuth.PreAuthResponse localPreAuthResponse = AuthMemoryCache.a().a(a());
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "queryAuthorityUseCache response=", localPreAuthResponse });
-    if (localPreAuthResponse == null)
-    {
-      this.jdField_i_of_type_Boolean = false;
-      this.j = false;
-      n();
-      return;
-    }
-    Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 4, localPreAuthResponse).sendToTarget();
-  }
-  
-  private void n()
-  {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer--" });
-    if (!b())
-    {
-      SSOLog.b("NewAuthorityPresenter", new Object[] { "updatePreAuthFromServer for activity is finished" });
-      return;
-    }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer isNetworkAvailable false--" });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(0L);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentOpenModelAccountInfo == null)
-    {
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer mAccount == null" });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(30000L);
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_ArrayOfByte.length != 0))
-    {
-      this.jdField_c_of_type_Int = 2;
-      new SSOPreAuthPresenter().a(b(), a(), this.jdField_a_of_type_AndroidAppActivity, AuthParamUtil.a(this.jdField_a_of_type_AndroidAppActivity), this.jdField_a_of_type_AndroidOsBundle, new NewAuthorityPresenter.2(this));
-      return;
-    }
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "-->updatePreAuthFromServer mAccount.st == null || mAccount.st.length == 0" });
-    a(3000, 2131694639);
-  }
-  
-  private void o()
-  {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualListFromServer" });
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualListFromServer no network" });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(0L);
-      return;
-    }
-    new SSOPreAuthPresenter().a(b(), a(), this.jdField_a_of_type_AndroidAppActivity, AuthParamUtil.a(this.jdField_a_of_type_AndroidAppActivity), this.jdField_a_of_type_AndroidOsBundle, new NewAuthorityPresenter.3(this));
-  }
-  
-  private void p()
-  {
-    if (!b())
-    {
-      SSOLog.b("NewAuthorityPresenter", new Object[] { "getAppInfo return for activity is finished" });
-      return;
-    }
-    this.jdField_c_of_type_Int = 2;
-    AppInfoResponse localAppInfoResponse = AuthMemoryCache.a().a(a());
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "getAppInfo use cached appid=", a(), ", appInfo=", localAppInfoResponse });
-    Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 5, localAppInfoResponse).sendToTarget();
-  }
-  
-  private void q()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showUserInfo uin=");
-    localStringBuilder.append(AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString));
-    SSOLog.a("NewAuthorityPresenter", new Object[] { localStringBuilder.toString() });
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
-    AvatarUpdateService.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_b_of_type_JavaLangString, new NewAuthorityPresenter.4(this));
-  }
-  
-  private void r()
-  {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "getVirtualList" });
-    this.jdField_i_of_type_Boolean = false;
-    this.j = false;
-    o();
-  }
-  
-  private void s()
-  {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "onClick to OpenSelectPermissionFragment" });
-    Object localObject = AuthMemoryCache.a().a(a());
-    Intent localIntent = new Intent();
-    localIntent.putExtra("appId", this.jdField_b_of_type_JavaLangString);
-    localIntent.putExtra("key_proxy_appid", this.jdField_c_of_type_JavaLangString);
-    localIntent.putExtra("vid", this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a());
-    if (localObject == null) {
-      localObject = "";
-    } else {
-      localObject = ((preAuth.PreAuthResponse)localObject).app_name.get();
-    }
-    localIntent.putExtra("appName", (String)localObject);
-    localIntent.putExtra("hasIcon", this.jdField_c_of_type_Boolean);
-    localIntent.putExtra("login_cost", this.jdField_c_of_type_Long - this.jdField_b_of_type_Long);
-    long l = this.jdField_h_of_type_Long;
-    if (l == 0L) {
-      l = SystemClock.elapsedRealtime();
-    }
-    localIntent.putExtra("authStartTime", l);
-    localIntent.putExtra("authListCostTime", this.jdField_d_of_type_Long);
-    localIntent.putExtra("is_from_qr_login", this.f);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.putExtra("packagename", this.jdField_a_of_type_AndroidOsBundle.getString("packagename"));
-    localIntent.putExtra("packagesign", this.jdField_a_of_type_AndroidOsBundle.getString("packagesign"));
-    localIntent.putExtra("pkg_name", AuthParamUtil.a(this.jdField_a_of_type_AndroidAppActivity));
-    AuthReporter.a("KEY_LOGIN_STAGE_2_2_NEW_TOTAL");
-    QPublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, PublicFragmentActivityForOpenSDK.class, OpenSelectPermissionFragment.class, 102);
+    return localArrayList;
   }
   
   public void a(int paramInt)
   {
-    r();
+    w();
     if (paramInt == 151)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(HardCodeUtil.a(2131707854), false);
-      c(this.jdField_d_of_type_JavaLangString);
+      this.L.a(HardCodeUtil.a(2131905668), false);
+      c(this.v);
       return;
     }
-    INewAuthorityContract.View localView = this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View;
+    INewAuthorityContract.View localView = this.L;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131707856));
+    localStringBuilder.append(HardCodeUtil.a(2131905670));
     localStringBuilder.append(paramInt);
     localView.a(localStringBuilder.toString(), false);
   }
   
   public void a(int paramInt, Intent paramIntent)
   {
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+    this.d = SystemClock.elapsedRealtime();
     if (paramInt == 0)
     {
-      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.v)) {
         c();
       }
     }
     else if (-1 == paramInt)
     {
       c(paramIntent);
-      if (0L != ParseUtil.a(this.jdField_b_of_type_JavaLangString)) {
-        p();
+      if (0L != ParseUtil.a(this.t)) {
+        u();
       }
-      this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("last_account");
-      if (this.jdField_a_of_type_MqqManagerWtloginManager != null) {
-        this.jdField_d_of_type_JavaLangString = Long.toString(a(this.jdField_d_of_type_JavaLangString)._uin);
+      this.v = paramIntent.getStringExtra("last_account");
+      if (this.D != null) {
+        this.v = Long.toString(d(this.v)._uin);
       }
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a();
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(null, this.jdField_d_of_type_JavaLangString);
-      b(this.jdField_d_of_type_JavaLangString);
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.L.a();
+      this.L.b(null, this.v);
+      b(this.v);
+      this.M.sendEmptyMessage(1);
       if (paramIntent.getBooleanExtra("isLogin", false))
       {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource.a(this.jdField_d_of_type_JavaLangString);
-        AuthorityUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_d_of_type_JavaLangString);
+        this.E.a(this.v);
+        AuthorityUtil.a(this.C, this.v);
       }
       Object localObject = AuthParamUtil.a(paramIntent, "ssobundle");
       if (localObject != null)
@@ -530,64 +529,64 @@ public class NewAuthorityPresenter
         localObject = ((Bundle)localObject).getByteArray("st_temp_key");
         if ((arrayOfByte != null) && (localObject != null))
         {
-          this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-          this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_b_of_type_ArrayOfByte = ((byte[])localObject);
+          this.w.c = arrayOfByte;
+          this.w.d = ((byte[])localObject);
         }
       }
-      this.e = true;
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(false);
-      if ((paramIntent.getBooleanExtra("fromLoginPhoneNum", false)) && (this.jdField_a_of_type_ComTencentOpenModelAccountInfo != null) && (this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_b_of_type_ArrayOfByte == null))
+      this.n = true;
+      this.L.a(false);
+      if ((paramIntent.getBooleanExtra("fromLoginPhoneNum", false)) && (this.w != null) && (this.w.d == null))
       {
-        a(this.jdField_d_of_type_JavaLangString);
+        a(this.v);
         return;
       }
-      AuthMemoryCache.a().a(a(), this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-      this.jdField_i_of_type_Boolean = false;
-      this.j = false;
-      if ((paramIntent.getBooleanExtra("isLogin", false)) || (this.jdField_g_of_type_Boolean))
+      AuthMemoryCache.a().a(l(), this.w);
+      this.I = false;
+      this.J = false;
+      if ((paramIntent.getBooleanExtra("isLogin", false)) || (this.p))
       {
-        this.jdField_g_of_type_Boolean = false;
-        SSOLog.a("NewAuthorityPresenter", new Object[] { "hasQQD2=", Boolean.valueOf(AuthorityUtil.a(this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime)) });
-        AuthMemoryCache.a().a(this.jdField_d_of_type_JavaLangString);
+        this.p = false;
+        SSOLog.a("NewAuthorityPresenter", new Object[] { "hasQQD2=", Boolean.valueOf(AuthorityUtil.a(this.v, this.C)) });
+        AuthMemoryCache.a().a(this.v);
       }
-      n();
+      s();
     }
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+    if (!NetworkUtil.isNetworkAvailable(this.A))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(0L);
+      this.L.a(0L);
       return;
     }
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a(a());
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d(l());
     if (localAccountInfo == null)
     {
       SSOLog.a("NewAuthorityPresenter", new Object[] { "deleteVirtual fail for account is null" });
       a(-1);
       return;
     }
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "deleteVirtual start uin=", AuthorityUtil.a(localAccountInfo.jdField_a_of_type_JavaLangString) });
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "deleteVirtual start uin=", AuthorityUtil.a(localAccountInfo.a) });
     AuthReporter.a("KEY_DELETE_VIRTUAL_D18");
     new NewAuthDataSourceImpl().a(paramLong, localAccountInfo, paramBoolean, new NewAuthorityPresenter.7(this, localAccountInfo));
   }
   
   public void a(Intent paramIntent)
   {
-    int k = paramIntent.getIntExtra("createVirtualAccount", 0);
-    if (k == 1)
+    int i = paramIntent.getIntExtra("createVirtualAccount", 0);
+    if (i == 1)
     {
-      this.jdField_g_of_type_Long = paramIntent.getLongExtra("createVirtualVid", 0L);
-      r();
+      this.G = paramIntent.getLongExtra("createVirtualVid", 0L);
+      w();
     }
-    else if (k == 2)
+    else if (i == 2)
     {
-      c(this.jdField_d_of_type_JavaLangString);
+      c(this.v);
     }
     paramIntent = new StringBuilder();
     paramIntent.append("onActivityResult, CreateVirtualAccount code = ");
-    paramIntent.append(this.jdField_d_of_type_JavaLangString);
+    paramIntent.append(this.v);
     SSOLog.a("NewAuthorityPresenter", new Object[] { paramIntent.toString() });
   }
   
@@ -601,13 +600,13 @@ public class NewAuthorityPresenter
       return;
     }
     b(paramBundle);
-    l();
+    p();
     c(paramBundle);
   }
   
   protected void a(AuthResponse paramAuthResponse)
   {
-    AuthorityUtil.a("0X800BA80");
+    AuthorityUtil.e("0X800BA80");
     super.a(paramAuthResponse);
   }
   
@@ -616,86 +615,86 @@ public class NewAuthorityPresenter
     if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
       SharedPrefs.a(paramString, System.currentTimeMillis());
     }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(true);
-    if (!this.jdField_h_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.h = 0;
+    this.p = false;
+    this.d = SystemClock.elapsedRealtime();
+    this.L.a(true);
+    if (!this.q) {
+      this.M.sendEmptyMessage(1);
     }
-    paramString = AuthMemoryCache.a().a(a());
-    if ((paramString == null) || (!paramString.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString)))
+    paramString = AuthMemoryCache.a().d(l());
+    if ((paramString == null) || (!paramString.a.equals(this.w.a)))
     {
       if (paramString == null) {
         paramString = "null";
       } else {
-        paramString = AuthorityUtil.a(paramString.jdField_a_of_type_JavaLangString);
+        paramString = AuthorityUtil.a(paramString.a);
       }
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "loginSuccess, changeAccount old uin=", paramString, ", new uin=", AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString) });
-      AuthMemoryCache.a().a(a(), this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-      r();
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "loginSuccess, changeAccount old uin=", paramString, ", new uin=", AuthorityUtil.a(this.w.a) });
+      AuthMemoryCache.a().a(l(), this.w);
+      w();
     }
-    if (this.jdField_b_of_type_Int == 1)
+    if (this.r == 1)
     {
-      new SSOSdkAuthApiPresenter().a(this.f, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, new ArrayList(), this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(), this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback, AuthParamUtil.a(this.jdField_a_of_type_AndroidAppActivity));
+      new SSOSdkAuthApiPresenter().a(this.o, this.t, this.u, new ArrayList(), this.L.d(), this.N, AuthParamUtil.a(this.A));
       return;
     }
-    m();
+    q();
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    AuthorityUtil.a("0X800BA7C");
-    a(paramString, paramBoolean);
+    AuthorityUtil.e("0X800BA7C");
+    b(paramString, paramBoolean);
   }
   
   public void b(Intent paramIntent)
   {
-    int k = paramIntent.getIntExtra("key_cancel_auth", 0);
-    int m = paramIntent.getIntExtra("key_error_code", 0);
+    int i = paramIntent.getIntExtra("key_cancel_auth", 0);
+    int j = paramIntent.getIntExtra("key_error_code", 0);
     if (paramIntent.getIntExtra("key_need_login", 0) == 1)
     {
       SSOLog.a("NewAuthorityPresenter", new Object[] { "OpenVirtual.onActivityResult  REQUEST_CODE_SELECT_PERMISSION needLogin " });
-      c(this.jdField_d_of_type_JavaLangString);
+      c(this.v);
       return;
     }
-    if (k == 1)
+    if (i == 1)
     {
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.A.setResult(0);
     }
-    else if ((m == 0) && (this.f))
+    else if ((j == 0) && (this.o))
     {
-      QQLiteStatusUtil.a(this.jdField_a_of_type_AndroidOsBundle);
+      QQLiteStatusUtil.a(this.y);
     }
     else
     {
       String str1 = paramIntent.getStringExtra("key_error_msg");
       String str2 = paramIntent.getStringExtra("key_error_detail");
       paramIntent = paramIntent.getStringExtra("key_response");
-      SSOLog.a("NewAuthorityPresenter", new Object[] { "OpenVirtual.onActivityResult, error: ", Integer.valueOf(m), ", msg:", str1, ", detail:", str2 });
+      SSOLog.a("NewAuthorityPresenter", new Object[] { "OpenVirtual.onActivityResult, error: ", Integer.valueOf(j), ", msg:", str1, ", detail:", str2 });
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_error_code", m);
+      localIntent.putExtra("key_error_code", j);
       localIntent.putExtra("key_error_msg", str1);
       localIntent.putExtra("key_error_detail", str2);
       localIntent.putExtra("key_response", paramIntent);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.A.setResult(-1, localIntent);
     }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.A.finish();
   }
   
   protected void b(String paramString)
   {
     SSOLog.b("NewAuthorityPresenter", new Object[] { "showLocalInfo uin=", AuthorityUtil.a(paramString) });
-    if (!this.jdField_h_of_type_Boolean)
+    if (!this.q)
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      paramString = Long.toString(a(paramString)._uin);
+      paramString = Long.toString(d(paramString)._uin);
       if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0")))
       {
-        this.jdField_d_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(this.jdField_d_of_type_JavaLangString);
+        this.v = paramString;
+        this.L.a(this.v);
         return;
       }
       SSOLog.b("NewAuthorityPresenter", new Object[] { "showLocalInfo uin=", paramString });
@@ -705,66 +704,66 @@ public class NewAuthorityPresenter
   public void c()
   {
     super.c();
-    AuthorityUtil.a("0X800BA79");
+    AuthorityUtil.e("0X800BA79");
   }
   
   public void f()
   {
     super.f();
-    AuthorityUtil.a("0X800BA7D");
+    AuthorityUtil.e("0X800BA7D");
   }
   
   public void g()
   {
-    SSOLog.a("NewAuthorityPresenter", new Object[] { "onLoginBtnClick mGetTicketFailed=", Boolean.valueOf(this.jdField_g_of_type_Boolean) });
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+    SSOLog.a("NewAuthorityPresenter", new Object[] { "onLoginBtnClick mGetTicketFailed=", Boolean.valueOf(this.p) });
+    if (!NetworkUtil.isNetworkAvailable(this.A))
     {
       SSOLog.a("NewAuthorityPresenter", new Object[] { "onClick isNetworkAvailable false" });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(0L);
+      this.L.a(0L);
       return;
     }
-    if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_ComTencentOpenModelAccountInfo != null))
+    if ((!this.m) && (!this.p) && (this.w != null))
     {
-      if (this.jdField_c_of_type_Int == 0)
+      if (this.s == 0)
       {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(2131694640);
-        m();
+        this.L.a(2131892324);
+        q();
         return;
       }
-      AuthReporter.a("KEY_LOGIN_STAGE_2_1_NEW_TOTAL", this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-      List localList = a();
-      AuthMemoryCache.a().a(a(), this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-      AuthMemoryCache.a().a(a(), this.jdField_a_of_type_AndroidOsBundle);
-      if (c()) {
-        s();
+      AuthReporter.a("KEY_LOGIN_STAGE_2_1_NEW_TOTAL", this.w);
+      List localList = z();
+      AuthMemoryCache.a().a(l(), this.w);
+      AuthMemoryCache.a().a(l(), this.y);
+      if (y()) {
+        x();
       } else {
-        a(localList);
+        b(localList);
       }
-      AuthReporter.a(this.jdField_d_of_type_JavaLangString, a(), "2", "0", false);
-      AuthorityUtil.a(null, "0X800BA77", new String[] { String.valueOf(this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$View.a(5)), "", "", "" });
+      AuthReporter.a(this.v, l(), "2", "0", false);
+      AuthorityUtil.a(null, "0X800BA77", new String[] { String.valueOf(this.L.b(5)), "", "", "" });
       return;
     }
-    a(this.jdField_d_of_type_JavaLangString);
+    a(this.v);
   }
   
   public void h()
   {
     SSOLog.a("NewAuthorityPresenter", new Object[] { "onClick to CreateVirtualAccountFragment" });
-    AuthorityUtil.a("0X800BA7A");
-    if (System.currentTimeMillis() - this.jdField_i_of_type_Long <= 1000L) {
+    AuthorityUtil.e("0X800BA7A");
+    if (System.currentTimeMillis() - this.K <= 1000L) {
       return;
     }
-    this.jdField_i_of_type_Long = System.currentTimeMillis();
+    this.K = System.currentTimeMillis();
     Intent localIntent = new Intent();
-    localIntent.putExtra("appid", a());
-    localIntent.putExtra("key_proxy_appid", this.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("appid", l());
+    localIntent.putExtra("key_proxy_appid", this.u);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    QPublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
+    QPublicFragmentActivity.Launcher.a(this.A, localIntent, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.NewAuthorityPresenter
  * JD-Core Version:    0.7.0.1
  */

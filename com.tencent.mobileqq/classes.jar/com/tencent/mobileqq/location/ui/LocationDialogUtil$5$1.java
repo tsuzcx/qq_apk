@@ -16,12 +16,12 @@ class LocationDialogUtil$5$1
     if (QLog.isColorLevel()) {
       QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
     }
-    LocationShareFragment.a(BaseApplication.getContext(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    LocationShareFragment.a(BaseApplication.getContext(), this.a.b, this.a.c, this.a.d);
     try
     {
       LocationShareRoomManager.a().a(true);
       label67:
-      LocationDialogUtil.a(this.a.b, "0X800A769");
+      LocationDialogUtil.b(this.a.d, "0X800A769");
       return;
     }
     catch (Throwable paramDialogInterface)
@@ -32,7 +32,7 @@ class LocationDialogUtil$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.5.1
  * JD-Core Version:    0.7.0.1
  */

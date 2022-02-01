@@ -23,14 +23,14 @@ class AssistantSettingFragment$4
   {
     if (!NetworkUtil.isNetSupport(this.a.getBaseActivity()))
     {
-      AssistantSettingFragment.a(this.a, 2131694475, 1);
+      AssistantSettingFragment.a(this.a, 2131892157, 1);
       AssistantSettingFragment.b(this.a, paramBoolean ^ true, this);
     }
     else
     {
       if (paramBoolean)
       {
-        ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).setAssistantImplSwitch(AssistantSettingFragment.a(this.a), true);
+        ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).setAssistantImplSwitch(AssistantSettingFragment.c(this.a), true);
         ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).setCanOpenInSp(true);
         if (QLog.isColorLevel())
         {
@@ -64,19 +64,19 @@ class AssistantSettingFragment$4
       }
       else
       {
-        ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).setAssistantImplSwitch(AssistantSettingFragment.a(this.a), false);
+        ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).setAssistantImplSwitch(AssistantSettingFragment.c(this.a), false);
         ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).setCanOpenInSp(false);
         ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).stopRecord("AssistantSettingFragment");
       }
-      AssistantSettingFragment.a(this.a);
-      ReportClickEventHelper.a(AssistantSettingFragment.a(this.a), "0X800B885", paramBoolean);
+      AssistantSettingFragment.g(this.a);
+      ReportClickEventHelper.a(AssistantSettingFragment.c(this.a), "0X800B885", paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

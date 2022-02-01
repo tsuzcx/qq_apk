@@ -11,7 +11,7 @@ class Conversation$LoadingStateCallback
   
   public boolean handleMessage(Message paramMessage)
   {
-    LoadingStateManager.a().a(paramMessage.what);
+    LoadingStateManager.b().a(paramMessage.what);
     if (paramMessage.what == 4)
     {
       this.a.a(1134013, 0L, false);
@@ -23,7 +23,7 @@ class Conversation$LoadingStateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.LoadingStateCallback
  * JD-Core Version:    0.7.0.1
  */

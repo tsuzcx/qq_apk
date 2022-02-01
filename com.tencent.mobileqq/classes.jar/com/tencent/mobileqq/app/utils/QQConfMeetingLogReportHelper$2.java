@@ -32,7 +32,7 @@ class QQConfMeetingLogReportHelper$2
         localObject1 = "";
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QQConfMeetingLogReportHelper", 2, new Object[] { "[report] run: invoked. ", Integer.valueOf(AppSetting.a()), this.a, localObject2, "", localObject3, localObject1 });
+        QLog.d("QQConfMeetingLogReportHelper", 2, new Object[] { "[report] run: invoked. ", Integer.valueOf(AppSetting.d()), this.a, localObject2, "", localObject3, localObject1 });
       }
     }
     long l2 = System.currentTimeMillis();
@@ -49,7 +49,7 @@ class QQConfMeetingLogReportHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper.2
  * JD-Core Version:    0.7.0.1
  */

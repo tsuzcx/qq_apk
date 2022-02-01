@@ -10,7 +10,7 @@ class MultiFavoriteHelper$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(paramDialogInterface, paramInt);
     }
@@ -18,7 +18,7 @@ class MultiFavoriteHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiFavoriteHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,22 +16,22 @@ class CopyPromptHelper$3
   
   public void onClick(View paramView)
   {
-    CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).removeCallbacks(CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper));
-    CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).run();
-    int i = CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a.getSelectionStart();
-    Editable localEditable = CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a.getEditableText();
+    CopyPromptHelper.b(this.b).removeCallbacks(CopyPromptHelper.a(this.b));
+    CopyPromptHelper.a(this.b).run();
+    int i = CopyPromptHelper.d(this.b).Y.getSelectionStart();
+    Editable localEditable = CopyPromptHelper.d(this.b).Y.getEditableText();
     if ((i >= 0) && (i < localEditable.length())) {
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
+      localEditable.insert(i, this.a);
     } else {
-      localEditable.append(this.jdField_a_of_type_JavaLangString);
+      localEditable.append(this.a);
     }
-    ReportController.b(CopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptCopyPromptHelper).a(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
+    ReportController.b(CopyPromptHelper.d(this.b).i(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptHelper.3
  * JD-Core Version:    0.7.0.1
  */

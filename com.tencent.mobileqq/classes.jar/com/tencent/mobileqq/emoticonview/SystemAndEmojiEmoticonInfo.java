@@ -33,8 +33,8 @@ public class SystemAndEmojiEmoticonInfo
   public static final int EMOTICON_EMOJI_PAGE_COUNT;
   public static final String TAG = "SystemAndEmojiEmoticonInfo";
   public static final String TITLE_EMOJI;
-  public static final String TITLE_OFTEN = MobileQQ.sMobileQQ.getString(2131719430);
-  public static final String TITLE_SYSTEM = MobileQQ.sMobileQQ.getString(2131719420);
+  public static final String TITLE_OFTEN = MobileQQ.sMobileQQ.getString(2131916990);
+  public static final String TITLE_SYSTEM = MobileQQ.sMobileQQ.getString(2131916980);
   public static final int TYPE_EMOJI = 2;
   public static final int TYPE_SYSTEM = 1;
   public static final int TYPE_TITLE = 3;
@@ -46,7 +46,7 @@ public class SystemAndEmojiEmoticonInfo
   
   static
   {
-    TITLE_EMOJI = MobileQQ.sMobileQQ.getString(2131719426);
+    TITLE_EMOJI = MobileQQ.sMobileQQ.getString(2131916986);
     int j = EmojiEmoticonInfo.EMOJI_COUNT / 20;
     int i;
     if (EmojiEmoticonInfo.EMOJI_COUNT % 20 == 0) {
@@ -416,7 +416,7 @@ public class SystemAndEmojiEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

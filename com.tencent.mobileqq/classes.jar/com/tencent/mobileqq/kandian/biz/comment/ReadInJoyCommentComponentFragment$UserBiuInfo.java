@@ -4,11 +4,11 @@ import android.text.TextUtils;
 
 public class ReadInJoyCommentComponentFragment$UserBiuInfo
 {
-  public int a;
-  public long a;
-  public CharSequence a;
   public String a;
   public CharSequence b;
+  public CharSequence c;
+  public long d;
+  public int e;
   
   public ReadInJoyCommentComponentFragment$UserBiuInfo(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
   {
@@ -17,42 +17,42 @@ public class ReadInJoyCommentComponentFragment$UserBiuInfo
   
   public ReadInJoyCommentComponentFragment$UserBiuInfo(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.d = paramLong;
     paramReadInJoyCommentComponentFragment = paramCharSequence;
     if (paramCharSequence == null) {
       paramReadInJoyCommentComponentFragment = "";
     }
-    this.b = paramReadInJoyCommentComponentFragment;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramReadInJoyCommentComponentFragment;
+    this.e = paramInt;
   }
   
   public String toString()
   {
     int i;
-    if (!TextUtils.isEmpty(this.b)) {
-      i = this.b.length();
+    if (!TextUtils.isEmpty(this.c)) {
+      i = this.c.length();
     } else {
       i = 0;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UserBiuInfo {uin=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", nickName=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
-    localStringBuilder.append(", comment=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", comment=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", length=");
     localStringBuilder.append(i);
     localStringBuilder.append(", feedid=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentComponentFragment.UserBiuInfo
  * JD-Core Version:    0.7.0.1
  */

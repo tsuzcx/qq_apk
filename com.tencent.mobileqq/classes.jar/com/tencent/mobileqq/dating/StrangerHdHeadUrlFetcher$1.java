@@ -13,34 +13,34 @@ class StrangerHdHeadUrlFetcher$1
   
   public void run()
   {
-    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQHeadSetting(32, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Object localObject1 = this.this$0.a.getQQHeadSetting(32, this.a, this.b);
     boolean bool;
     if (localObject1 != null) {
       bool = ((Boolean)((Pair)localObject1).first).booleanValue();
     } else {
       bool = false;
     }
-    if ((bool) && (this.jdField_a_of_type_Boolean))
+    if ((bool) && (this.c))
     {
-      localObject1 = (IQQAvatarHandlerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "");
+      localObject1 = (IQQAvatarHandlerService)this.this$0.a.getRuntimeService(IQQAvatarHandlerService.class, "");
       if (localObject1 != null)
       {
-        this.this$0.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.this$0.f = System.currentTimeMillis();
         synchronized (StrangerHdHeadUrlFetcher.a(this.this$0))
         {
-          if (!this.this$0.jdField_a_of_type_Boolean)
+          if (!this.this$0.e)
           {
-            this.this$0.jdField_a_of_type_Boolean = true;
-            this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(StrangerHdHeadUrlFetcher.a(this.this$0), true);
+            this.this$0.e = true;
+            this.this$0.a.addObserver(StrangerHdHeadUrlFetcher.a(this.this$0), true);
           }
-          synchronized (this.this$0.jdField_a_of_type_JavaUtilSet)
+          synchronized (this.this$0.c)
           {
-            this.this$0.jdField_a_of_type_JavaUtilSet.add(this.b);
-            ((IQQAvatarHandlerService)localObject1).getStrangerHead(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte)1, (byte)2);
-            if (this.this$0.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1)) {
+            this.this$0.c.add(this.d);
+            ((IQQAvatarHandlerService)localObject1).getStrangerHead(this.a, this.b, (byte)1, (byte)2);
+            if (this.this$0.g.hasMessages(1)) {
               return;
             }
-            this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 60000L);
+            this.this$0.g.sendEmptyMessageDelayed(1, 60000L);
             return;
           }
         }
@@ -51,7 +51,7 @@ class StrangerHdHeadUrlFetcher$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1
  * JD-Core Version:    0.7.0.1
  */

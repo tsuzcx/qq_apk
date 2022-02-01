@@ -1,47 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule.RefreshUserInfoCallBack;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import org.jetbrains.annotations.Nullable;
 
 class ChatSettingActivity$4
-  implements ChatSettingActivity.DeleteHistoryListener
+  implements IReadInJoyUserInfoModule.RefreshUserInfoCallBack
 {
   ChatSettingActivity$4(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(Activity paramActivity)
-  {
-    QQToast.a(this.a, 2, 2131691483, 0).b(this.a.getTitleBarHeight());
-  }
+  public void onLoadUserInfoFailed(@Nullable String paramString1, @Nullable String paramString2) {}
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public void onLoadUserInfoSucceed(@Nullable String paramString, @Nullable ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if (paramInt == 0)
-    {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
-      return;
-    }
-    if (paramInt == 1) {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
-    }
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
-      return;
-    }
-    if (paramInt == 1) {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
+    if (TextUtils.equals(paramString, ChatSettingActivity.a(this.a))) {
+      ChatSettingActivity.b(this.a, ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getResultFaceUrl(paramReadInJoyUserInfo));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.4
  * JD-Core Version:    0.7.0.1
  */

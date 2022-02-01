@@ -9,6 +9,8 @@ import com.tencent.mobileqq.kandian.biz.pts.ReadInJoyModelImpl;
 import com.tencent.mobileqq.kandian.biz.pts.util.DynamicItemViewHelper;
 import com.tencent.mobileqq.kandian.biz.pts.util.PTSLiteItemViewUtil;
 import com.tencent.mobileqq.kandian.biz.pts.util.PTSLiteItemViewUtil.Companion;
+import com.tencent.mobileqq.kandian.biz.pts.util.PTSReport;
+import com.tencent.mobileqq.kandian.biz.pts.util.PTSReport.R5Builder;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.pts.PTSPreLayoutHandler;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
@@ -17,6 +19,7 @@ import com.tencent.pts.core.PTSComposer;
 import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.pts.core.lite.IPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,33 +30,33 @@ import java.util.Set;
 
 public class PTSLiteItemViewBuilder
 {
-  private static int jdField_a_of_type_Int = 151;
-  private static int jdField_b_of_type_Int = jdField_a_of_type_Int;
-  private static HashMap<String, Integer> c = new HashMap();
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  private PTSLiteSwiperEventDispatcher jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteSwiperEventDispatcher;
-  private PTSLiteTapEventDispatcher jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteTapEventDispatcher;
-  private IPTSLiteEventListener jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private HashMap<String, AbsBaseArticleInfo> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, Integer> i = new HashMap();
+  private static int j = 154;
+  private static int k = j;
+  private List<String> a;
+  private Context b;
+  private ReadInJoyBaseAdapter c;
+  private HashMap<String, Integer> d = new HashMap();
+  private HashMap<String, AbsBaseArticleInfo> e = new HashMap();
+  private IPTSLiteEventListener f;
+  private PTSLiteTapEventDispatcher g;
+  private PTSLiteSwiperEventDispatcher h;
   
   public PTSLiteItemViewBuilder(Context paramContext, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.b = paramContext;
+    this.c = paramReadInJoyBaseAdapter;
+    this.a = new ArrayList();
+    d();
     c();
-    b();
   }
   
   public static int a()
   {
-    int i = jdField_b_of_type_Int;
-    int j = jdField_a_of_type_Int;
-    if (i > j) {
-      return i - j + 1;
+    int m = k;
+    int n = j;
+    if (m > n) {
+      return m - n + 1;
     }
     return 0;
   }
@@ -62,25 +65,25 @@ public class PTSLiteItemViewBuilder
   {
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.ptsItemData != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.ptsLitePageName)))
     {
-      paramAbsBaseArticleInfo = (Integer)c.get(paramAbsBaseArticleInfo.ptsLitePageName);
+      paramAbsBaseArticleInfo = (Integer)i.get(paramAbsBaseArticleInfo.ptsLitePageName);
       if (paramAbsBaseArticleInfo != null) {
         return paramAbsBaseArticleInfo.intValue();
       }
-      return jdField_a_of_type_Int;
+      return j;
     }
-    return jdField_a_of_type_Int;
+    return j;
   }
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramAbsBaseArticleInfo.innerUniqueID, Integer.valueOf(paramInt));
+    this.d.put(paramAbsBaseArticleInfo.innerUniqueID, Integer.valueOf(paramInt));
     if ((paramAbsBaseArticleInfo.mSubArticleList != null) && (paramAbsBaseArticleInfo.mSubArticleList.size() > 0))
     {
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSubArticleList.iterator();
       while (paramAbsBaseArticleInfo.hasNext())
       {
         AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.next();
-        this.jdField_a_of_type_JavaUtilHashMap.put(localAbsBaseArticleInfo.innerUniqueID, Integer.valueOf(paramInt));
+        this.d.put(localAbsBaseArticleInfo.innerUniqueID, Integer.valueOf(paramInt));
       }
     }
   }
@@ -118,67 +121,67 @@ public class PTSLiteItemViewBuilder
   
   public static boolean a(int paramInt)
   {
-    return (paramInt >= jdField_a_of_type_Int) && (paramInt <= jdField_b_of_type_Int);
+    return (paramInt >= j) && (paramInt <= k);
   }
   
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo == null) {
       return true;
     }
-    if (b(paramAbsBaseArticleInfo)) {
-      return a(paramAbsBaseArticleInfo) == jdField_a_of_type_Int;
+    if (c(paramAbsBaseArticleInfo)) {
+      return a(paramAbsBaseArticleInfo) == j;
     }
     return false;
   }
   
-  private void b()
+  private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteTapEventDispatcher = new PTSLiteTapEventDispatcher.Builder().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter).a(this.jdField_a_of_type_JavaUtilHashMap).b(this.jdField_b_of_type_JavaUtilHashMap).a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteSwiperEventDispatcher = new PTSLiteSwiperEventDispatcher.Builder().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter).a(this.jdField_a_of_type_JavaUtilHashMap).b(this.jdField_b_of_type_JavaUtilHashMap).a();
-    this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener = new PTSLiteItemViewBuilder.1(this);
+    this.g = new PTSLiteTapEventDispatcher.Builder().a(this.c).a(this.d).b(this.e).a();
+    this.h = new PTSLiteSwiperEventDispatcher.Builder().a(this.c).a(this.d).b(this.e).a();
+    this.f = new PTSLiteItemViewBuilder.1(this);
   }
   
-  public static <T extends AbsBaseArticleInfo> boolean b(T paramT)
+  public static <T extends AbsBaseArticleInfo> boolean c(T paramT)
   {
     return (paramT != null) && (!TextUtils.isEmpty(paramT.ptsLitePageName)) && (paramT.ptsItemData != null);
   }
   
-  private void c()
+  private void d()
   {
-    c.clear();
+    i.clear();
     Object localObject = PTSStyleManager.a().a("default_feeds");
     if (localObject == null)
     {
       QLog.i("PTSLiteItemViewBuilder", 1, "[initViewTypeCount], pageNameList is null.");
       return;
     }
-    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a() + 151;
-    int i = jdField_a_of_type_Int;
+    j = this.c.G().a() + 154;
+    int m = j;
     localObject = new ArrayList((Collection)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      int j = i + 1;
-      i = j;
-      if (!c.containsKey(str))
+      int n = m + 1;
+      m = n;
+      if (!i.containsKey(str))
       {
-        c.put(str, Integer.valueOf(j));
+        i.put(str, Integer.valueOf(n));
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[initViewTypeCount], pageName = ");
         localStringBuilder.append(str);
         localStringBuilder.append(", viewType = ");
-        localStringBuilder.append(j);
+        localStringBuilder.append(n);
         QLog.i("PTSLiteItemViewBuilder", 1, localStringBuilder.toString());
-        i = j;
+        m = n;
       }
     }
-    jdField_b_of_type_Int = i;
+    k = m;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[initViewType], type_pts_lite_gone = ");
-    ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(j);
     ((StringBuilder)localObject).append(", type_pts_lite_end = ");
-    ((StringBuilder)localObject).append(jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(k);
     QLog.i("PTSLiteItemViewBuilder", 1, ((StringBuilder)localObject).toString());
   }
   
@@ -196,46 +199,49 @@ public class PTSLiteItemViewBuilder
       if ((paramView instanceof PTSLitePlayableCardView)) {
         paramView = (PTSLitePlayableCardView)paramView;
       } else {
-        paramView = new PTSLitePlayableCardView(this.jdField_a_of_type_AndroidContentContext);
+        paramView = new PTSLitePlayableCardView(this.b);
       }
-      localPTSComposer.layoutToView(paramView.a(), this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener);
-      PTSLiteItemViewUtil.a.a(paramView.a());
-      PTSLiteItemViewUtil.a.a(paramReadInJoyModelImpl, paramView, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
+      localPTSComposer.layoutToView(paramView.getPtsItemView(), this.f);
+      PTSLiteItemViewUtil.a.a(paramView.getPtsItemView());
+      PTSLiteItemViewUtil.a.a(paramReadInJoyModelImpl, paramView, this.c);
       a(paramAbsBaseArticleInfo, paramInt);
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo);
+      this.e.put(paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo);
       a(localPTSItemData);
     }
     else
     {
       paramView = new StringBuilder();
       paramView.append("[getView] error, ptsItemData is null or ptsComposer is null, hide the itemView, ");
-      paramView.append(PTSPreLayoutHandler.a(paramAbsBaseArticleInfo));
-      QLog.e("PTSLiteItemViewBuilder", 1, paramView.toString());
-      paramView = new PTSLitePlayableCardView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.append(PTSPreLayoutHandler.b(paramAbsBaseArticleInfo));
+      paramView = paramView.toString();
+      QLog.e("PTSLiteItemViewBuilder", 1, paramView);
+      PTSReport.a("0X800BC8A", "", "", "", new PTSReport.R5Builder().a("msg", paramView).a());
+      paramView = new PTSLitePlayableCardView(this.b);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(0, 0));
       paramView.setVisibility(8);
     }
-    paramView.setTag(2131369613, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a());
+    paramView.setTag(2131436721, this.c.k());
     return paramView;
   }
   
-  public void a()
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
+    this.a.clear();
+    int m = this.c.c();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[destroy] channelId = ");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(m);
     QLog.i("PTSLiteItemViewBuilder", 1, ((StringBuilder)localObject).toString());
-    if ((i != 41505) && (i != 41697))
+    if ((m != 41505) && (m != 41697))
     {
-      PTSPreLayoutHandler.b(ReadInJoyLogicEngine.a().b(Integer.valueOf(i)));
+      PTSPreLayoutHandler.b(ReadInJoyLogicEngine.a().d(Integer.valueOf(m)));
     }
     else
     {
-      PTSPreLayoutHandler.b(ReadInJoyLogicEngine.a().b(Integer.valueOf(41505)));
-      PTSPreLayoutHandler.b(ReadInJoyLogicEngine.a().b(Integer.valueOf(41697)));
+      PTSPreLayoutHandler.b(ReadInJoyLogicEngine.a().d(Integer.valueOf(41505)));
+      PTSPreLayoutHandler.b(ReadInJoyLogicEngine.a().d(Integer.valueOf(41697)));
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteSwiperEventDispatcher;
+    localObject = this.h;
     if (localObject != null) {
       ((PTSLiteSwiperEventDispatcher)localObject).a();
     }
@@ -243,7 +249,7 @@ public class PTSLiteItemViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteItemViewBuilder
  * JD-Core Version:    0.7.0.1
  */

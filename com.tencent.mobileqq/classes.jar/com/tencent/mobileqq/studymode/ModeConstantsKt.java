@@ -8,10 +8,10 @@ public final class ModeConstantsKt
 {
   public static final int a()
   {
-    if (SimpleUIUtil.a()) {
+    if (SimpleUIUtil.e()) {
       return 1;
     }
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return 2;
     }
     return 0;
@@ -30,7 +30,7 @@ public final class ModeConstantsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeConstantsKt
  * JD-Core Version:    0.7.0.1
  */

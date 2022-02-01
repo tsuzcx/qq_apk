@@ -14,55 +14,55 @@ import java.util.HashMap;
 public final class QavMuteButtonForeGroundDrawable
   extends Drawable
 {
-  private final int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private HashMap<Integer, ArrayList<Bitmap>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int c = -1;
-  private int d;
+  private Paint a;
+  private final int b;
+  private final int c;
+  private RectF d;
+  private Rect e;
+  private HashMap<Integer, ArrayList<Bitmap>> f = new HashMap();
+  private int g = -1;
+  private int h;
+  private Rect i = new Rect();
+  private boolean j = false;
   
   public QavMuteButtonForeGroundDrawable(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.a = new Paint(6);
+    this.a.setAntiAlias(true);
+    this.e = new Rect();
+    this.d = new RectF(0.0F, 0.0F, this.b, this.c);
   }
   
   private ArrayList<Bitmap> a()
   {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.c));
+    return (ArrayList)this.f.get(Integer.valueOf(this.g));
   }
   
   private void a(Canvas paramCanvas) {}
   
-  private boolean a()
+  private boolean b()
   {
-    int i = this.c;
-    if (i != 1) {
-      return i == 3;
+    int k = this.g;
+    if (k != 1) {
+      return k == 3;
     }
     return true;
   }
   
   public void a(int paramInt)
   {
-    if (this.c == paramInt) {
+    if (this.g == paramInt) {
       return;
     }
-    this.c = paramInt;
+    this.g = paramInt;
     invalidateSelf();
   }
   
   public void a(int paramInt, Bitmap paramBitmap)
   {
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList = (ArrayList)this.f.get(Integer.valueOf(paramInt));
     if (localArrayList != null)
     {
       localArrayList.add(paramBitmap);
@@ -70,17 +70,17 @@ public final class QavMuteButtonForeGroundDrawable
     }
     localArrayList = new ArrayList();
     localArrayList.add(paramBitmap);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
+    this.f.put(Integer.valueOf(paramInt), localArrayList);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void b(int paramInt)
   {
-    this.d = paramInt;
+    this.h = paramInt;
     invalidateSelf();
   }
   
@@ -89,56 +89,56 @@ public final class QavMuteButtonForeGroundDrawable
     a(paramCanvas);
     Object localObject2 = a();
     Object localObject1;
-    if (a())
+    if (b())
     {
       localObject1 = (Bitmap)((ArrayList)localObject2).get(0);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.e, this.d, this.a);
       return;
     }
-    int i = this.c;
-    if (i == 0)
+    int k = this.g;
+    if (k == 0)
     {
       localObject1 = (Bitmap)((ArrayList)localObject2).get(0);
       localObject2 = (Bitmap)((ArrayList)localObject2).get(1);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.e, this.d, this.a);
       paramCanvas.save();
-      i = (int)(this.jdField_b_of_type_Int * (10000 - this.d) / 10000.0F);
+      k = (int)(this.c * (10000 - this.h) / 10000.0F);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("doUpdateAudioVolumeChange nexValue:=");
-        ((StringBuilder)localObject1).append(this.d);
+        ((StringBuilder)localObject1).append(this.h);
         QLog.d("huanxxiao", 1, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRect);
-      paramCanvas.drawBitmap((Bitmap)localObject2, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.i.set(0, k, this.b, this.c);
+      paramCanvas.clipRect(this.i);
+      paramCanvas.drawBitmap((Bitmap)localObject2, null, this.d, this.a);
       paramCanvas.restore();
       return;
     }
-    if (i == 2)
+    if (k == 2)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.j) {
         localObject1 = ((ArrayList)localObject2).get(1);
       } else {
         localObject1 = ((ArrayList)localObject2).get(0);
       }
       localObject1 = (Bitmap)localObject1;
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.e, this.d, this.a);
     }
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public int getOpacity()
@@ -148,21 +148,21 @@ public final class QavMuteButtonForeGroundDrawable
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    this.d = new RectF(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
   }
   
   public void setAlpha(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() == paramInt) {
+    if (this.a.getAlpha() == paramInt) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.a.setAlpha(paramInt);
     invalidateSelf();
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.a.setColorFilter(paramColorFilter);
   }
 }
 

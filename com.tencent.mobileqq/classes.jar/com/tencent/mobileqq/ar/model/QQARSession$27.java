@@ -11,16 +11,16 @@ class QQARSession$27
   {
     if ((this.this$0.a == 2) && (QQARSession.a(this.this$0)))
     {
-      if (this.this$0.e())
+      if (this.this$0.z())
       {
-        this.this$0.n();
+        this.this$0.y();
         QQARSession.c(this.this$0, 0L);
         QQARSession.a(this.this$0, null);
         QQARSession.b(this.this$0, null);
       }
       this.this$0.a(5L);
-      QQARSession.d(this.this$0);
-      this.this$0.b = false;
+      QQARSession.o(this.this$0);
+      this.this$0.j = false;
       return;
     }
     QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
@@ -28,7 +28,7 @@ class QQARSession$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.27
  * JD-Core Version:    0.7.0.1
  */

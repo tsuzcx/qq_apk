@@ -20,10 +20,10 @@ final class PlusPanelUtils$2
 {
   PlusPanelUtils$2(VideoActionSheet paramVideoActionSheet, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, Context paramContext, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    paramInt = this.jdField_a_of_type_ArrayOfInt[paramInt];
+    this.a.dismiss();
+    paramInt = this.b[paramInt];
     QQAppInterface localQQAppInterface;
     if (paramInt != 1)
     {
@@ -32,29 +32,29 @@ final class PlusPanelUtils$2
         if (paramInt != 5) {
           return;
         }
-        paramView = ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        paramView = ((QidianManager)this.d.getManager(QQManagerFactory.QIDIAN_MANAGER)).h(this.c.b);
+        CrmUtils.b(this.d, this.f, paramView, this.c.b);
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002))
+      if ((this.c.a != 1001) && (this.c.a != 10002))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+        if ((this.c.a == 1010) && (!DatingUtil.a(this.d, this.c.b)))
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-          paramView.b(paramView.a().getString(2131694403));
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
+          paramView = this.e;
+          paramView.c(paramView.aX().getString(2131892082));
+          ReportController.b(this.d, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
         }
       }
       else
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005151", "0X8005151", 0, 0, "", "", "", "");
-        if (!LBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        ReportController.b(this.d, "CliOper", "", "", "0X8005151", "0X8005151", 0, 0, "", "", "", "");
+        if (!LBSHandler.a(this.d, this.c.b))
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-          paramView.b(paramView.a().getString(2131694403));
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
-          localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) {
+          paramView = this.e;
+          paramView.c(paramView.aX().getString(2131892082));
+          ReportController.b(this.d, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
+          localQQAppInterface = this.d;
+          if (this.c.a == 1001) {
             paramView = "0";
           } else {
             paramView = "1";
@@ -63,29 +63,29 @@ final class PlusPanelUtils$2
           return;
         }
       }
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_JavaLangString, null);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C09", "0X8004C09", 0, 0, "", "", "", "");
+      PlusPanelUtils.a(this.d, this.f, this.c, false, this.g, null);
+      ReportController.b(this.d, "CliOper", "", "", "0X8004C09", "0X8004C09", 0, 0, "", "", "", "");
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002))
+    if ((this.c.a != 1001) && (this.c.a != 10002))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+      if ((this.c.a == 1010) && (!DatingUtil.a(this.d, this.c.b)))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-        paramView.b(paramView.a().getString(2131694402));
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
+        paramView = this.e;
+        paramView.c(paramView.aX().getString(2131892081));
+        ReportController.b(this.d, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005150", "0X8005150", 0, 0, "", "", "", "");
-      if (!LBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+      ReportController.b(this.d, "CliOper", "", "", "0X8005150", "0X8005150", 0, 0, "", "", "", "");
+      if (!LBSHandler.a(this.d, this.c.b))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-        paramView.b(paramView.a().getString(2131694402));
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) {
+        paramView = this.e;
+        paramView.c(paramView.aX().getString(2131892081));
+        ReportController.b(this.d, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
+        localQQAppInterface = this.d;
+        if (this.c.a == 1001) {
           paramView = "0";
         } else {
           paramView = "1";
@@ -94,13 +94,13 @@ final class PlusPanelUtils$2
         return;
       }
     }
-    PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_JavaLangString, null);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004861", "0X8004861", 0, 0, "", "", "", "");
+    PlusPanelUtils.a(this.d, this.f, this.c, true, this.g, null);
+    ReportController.b(this.d, "CliOper", "", "", "0X8004861", "0X8004861", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils.2
  * JD-Core Version:    0.7.0.1
  */

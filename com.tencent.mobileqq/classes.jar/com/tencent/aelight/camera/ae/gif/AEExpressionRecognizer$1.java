@@ -10,18 +10,18 @@ class AEExpressionRecognizer$1
   
   public void onUpdateRecommendText(boolean paramBoolean, RecognizedEmotionBean paramRecognizedEmotionBean)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    this.a.removeObserver(this);
     if (paramBoolean)
     {
-      AEExpressionRecognizer.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEExpressionRecognizer).a(paramRecognizedEmotionBean);
+      AEExpressionRecognizer.a(this.b).a(paramRecognizedEmotionBean);
       return;
     }
-    AEExpressionRecognizer.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEExpressionRecognizer).a(new RecognizedEmotionBean());
+    AEExpressionRecognizer.a(this.b).a(new RecognizedEmotionBean());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEExpressionRecognizer.1
  * JD-Core Version:    0.7.0.1
  */

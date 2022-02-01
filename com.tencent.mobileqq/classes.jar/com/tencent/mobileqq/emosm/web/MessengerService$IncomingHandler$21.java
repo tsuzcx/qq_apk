@@ -12,7 +12,7 @@ class MessengerService$IncomingHandler$21
   
   public int a(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    paramResData = (MessengerService)this.a.a.get();
+    paramResData = (MessengerService)this.a.b.get();
     if (paramResData != null)
     {
       Bundle localBundle = new Bundle();
@@ -31,7 +31,7 @@ class MessengerService$IncomingHandler$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.21
  * JD-Core Version:    0.7.0.1
  */

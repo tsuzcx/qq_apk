@@ -7,136 +7,127 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/bandwidth/BandWidthConfig;", "", "()V", "bitrateWeight", "", "getBitrateWeight", "()F", "setBitrateWeight", "(F)V", "bufferRangeReportTag", "", "getBufferRangeReportTag", "()Ljava/lang/String;", "setBufferRangeReportTag", "(Ljava/lang/String;)V", "defaultPreloadCount", "", "getDefaultPreloadCount", "()I", "setDefaultPreloadCount", "(I)V", "idleBandwithThreshold", "getIdleBandwithThreshold", "setIdleBandwithThreshold", "maxPreloadCount", "getMaxPreloadCount", "setMaxPreloadCount", "preloadStrategy", "Lcom/tencent/mobileqq/kandian/base/bandwidth/BandWidthConfig$PreloadStrategy;", "getPreloadStrategy", "()Lcom/tencent/mobileqq/kandian/base/bandwidth/BandWidthConfig$PreloadStrategy;", "setPreloadStrategy", "(Lcom/tencent/mobileqq/kandian/base/bandwidth/BandWidthConfig$PreloadStrategy;)V", "preplayTimeLimit", "getPreplayTimeLimit", "setPreplayTimeLimit", "resetTimeSecForWifi", "getResetTimeSecForWifi", "setResetTimeSecForWifi", "resetTimeSecForXg", "getResetTimeSecForXg", "setResetTimeSecForXg", "getDecodeConfigsStr", "key", "preloadStrategyEnable", "", "PreloadStrategy", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class BandWidthConfig
 {
-  private static float jdField_a_of_type_Float = 2.0F;
-  private static int jdField_a_of_type_Int;
+  public static final BandWidthConfig a = new BandWidthConfig();
   @Nullable
-  private static BandWidthConfig.PreloadStrategy jdField_a_of_type_ComTencentMobileqqKandianBaseBandwidthBandWidthConfig$PreloadStrategy;
-  public static final BandWidthConfig a;
+  private static String b = "";
+  private static int c = 3600;
+  private static int d = 600;
+  private static int e = 6;
   @Nullable
-  private static String jdField_a_of_type_JavaLangString;
-  private static int b;
-  private static int c;
-  private static int d = 1500;
-  private static int e = 4;
-  private static int f = 4;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseBandwidthBandWidthConfig = new BandWidthConfig();
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_Int = 3600;
-    b = 600;
-    c = 6;
-  }
-  
-  public final float a()
-  {
-    return jdField_a_of_type_Float;
-  }
-  
-  public final int a()
-  {
-    return jdField_a_of_type_Int;
-  }
+  private static BandWidthConfig.PreloadStrategy f;
+  private static float g = 2.0F;
+  private static int h = 1500;
+  private static int i = 4;
+  private static int j = 4;
   
   @Nullable
   public final String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final String a(@Nullable String paramString)
-  {
-    BandWidthConfig.PreloadStrategy localPreloadStrategy = jdField_a_of_type_ComTencentMobileqqKandianBaseBandwidthBandWidthConfig$PreloadStrategy;
-    if (localPreloadStrategy != null) {
-      return localPreloadStrategy.a(paramString);
-    }
-    return "";
+    return b;
   }
   
   public final void a(float paramFloat)
   {
-    jdField_a_of_type_Float = paramFloat;
+    g = paramFloat;
   }
   
   public final void a(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
+    c = paramInt;
   }
   
   public final void a(@Nullable BandWidthConfig.PreloadStrategy paramPreloadStrategy)
   {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseBandwidthBandWidthConfig$PreloadStrategy = paramPreloadStrategy;
+    f = paramPreloadStrategy;
   }
   
   public final void a(@Nullable String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    b = paramString;
   }
   
-  public final boolean a(@Nullable String paramString)
+  public final int b()
   {
-    BandWidthConfig.PreloadStrategy localPreloadStrategy = jdField_a_of_type_ComTencentMobileqqKandianBaseBandwidthBandWidthConfig$PreloadStrategy;
+    return c;
+  }
+  
+  public final void b(int paramInt)
+  {
+    d = paramInt;
+  }
+  
+  public final boolean b(@Nullable String paramString)
+  {
+    BandWidthConfig.PreloadStrategy localPreloadStrategy = f;
     if (localPreloadStrategy != null) {
       return localPreloadStrategy.a(paramString);
     }
     return false;
   }
   
-  public final int b()
-  {
-    return b;
-  }
-  
-  public final void b(int paramInt)
-  {
-    b = paramInt;
-  }
-  
   public final int c()
-  {
-    return c;
-  }
-  
-  public final void c(int paramInt)
-  {
-    c = paramInt;
-  }
-  
-  public final int d()
   {
     return d;
   }
   
-  public final void d(int paramInt)
+  @NotNull
+  public final String c(@Nullable String paramString)
   {
-    d = paramInt;
+    BandWidthConfig.PreloadStrategy localPreloadStrategy = f;
+    if (localPreloadStrategy != null) {
+      return localPreloadStrategy.b(paramString);
+    }
+    return "";
   }
   
-  public final int e()
-  {
-    return e;
-  }
-  
-  public final void e(int paramInt)
+  public final void c(int paramInt)
   {
     e = paramInt;
   }
   
+  public final int d()
+  {
+    return e;
+  }
+  
+  public final void d(int paramInt)
+  {
+    h = paramInt;
+  }
+  
+  public final float e()
+  {
+    return g;
+  }
+  
+  public final void e(int paramInt)
+  {
+    i = paramInt;
+  }
+  
   public final int f()
   {
-    return f;
+    return h;
   }
   
   public final void f(int paramInt)
   {
-    f = paramInt;
+    j = paramInt;
+  }
+  
+  public final int g()
+  {
+    return i;
+  }
+  
+  public final int h()
+  {
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.bandwidth.BandWidthConfig
  * JD-Core Version:    0.7.0.1
  */

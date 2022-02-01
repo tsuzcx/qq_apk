@@ -334,14 +334,14 @@ public class AppStateManager
   private void onMsgCloseInner()
   {
     MiniAppInfo localMiniAppInfo = this.mRuntimeLoader.getMiniAppInfo();
-    BaseRuntime localBaseRuntime = this.mRuntimeLoader.getRuntime();
-    MiniAppReportManager2.reportPageView("2close", "inner_page", getCurPagePath(localBaseRuntime), localMiniAppInfo);
-    if ((this.mRuntimeLoader.isLoadSucceed()) && (localBaseRuntime != null) && (localBaseRuntime.isMiniGame()))
+    MiniAppReportManager2.reportPageView("2close", "inner_page", getCurPagePath(this.mRuntimeLoader.getRuntime()), localMiniAppInfo);
+    String str = MiniReportManager.getAppType(localMiniAppInfo);
+    if (this.mRuntimeLoader.isLoadSucceed())
     {
-      MiniReportManager.reportEventType(localMiniAppInfo, 1025, "1");
+      MiniReportManager.reportEventType(localMiniAppInfo, 1025, str);
       return;
     }
-    MiniReportManager.reportEventType(localMiniAppInfo, 1026, "1");
+    MiniReportManager.reportEventType(localMiniAppInfo, 1026, str);
   }
   
   private void onMsgDomReady()
@@ -668,7 +668,7 @@ public class AppStateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager
  * JD-Core Version:    0.7.0.1
  */

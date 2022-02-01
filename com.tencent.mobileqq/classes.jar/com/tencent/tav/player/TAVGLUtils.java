@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.opengl.GLES20;
-import android.os.Environment;
 import com.tencent.tav.coremedia.TextureInfo;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -15,15 +14,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class TAVGLUtils
 {
-  private static final String TAV_DEBUG_IMAGE_DIR;
-  
-  static
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
-    localStringBuilder.append("/TAV调试图片");
-    TAV_DEBUG_IMAGE_DIR = localStringBuilder.toString();
-  }
+  public static final String OUT_SAVE_DIR = "/sdcard/tavkit_demo/";
+  public static final String OUT_SAVE_EXPORT_DIR = "/sdcard/tavkit_demo/export/";
+  public static final String OUT_SAVE_VIDEOS_DIR = "/sdcard/tavkit_demo/videos/";
+  private static final String TAV_DEBUG_IMAGE_DIR = "/sdcard/tavkit_demo//TAV调试图片";
   
   @NotNull
   public static File newDebugImageFile(int paramInt1, int paramInt2, int paramInt3)
@@ -38,7 +32,7 @@ public class TAVGLUtils
     ((StringBuilder)localObject1).append(paramInt3);
     ((StringBuilder)localObject1).append(".png");
     Object localObject2 = ((StringBuilder)localObject1).toString();
-    localObject1 = new File(TAV_DEBUG_IMAGE_DIR);
+    localObject1 = new File("/sdcard/tavkit_demo//TAV调试图片");
     if ((!((File)localObject1).exists()) && (!((File)localObject1).mkdir()))
     {
       localObject2 = new StringBuilder();
@@ -46,7 +40,7 @@ public class TAVGLUtils
       ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
       throw new RuntimeException(((StringBuilder)localObject2).toString());
     }
-    return new File(TAV_DEBUG_IMAGE_DIR, (String)localObject2);
+    return new File("/sdcard/tavkit_demo//TAV调试图片", (String)localObject2);
   }
   
   public static void readPixelBuffer(TextureInfo paramTextureInfo, ByteBuffer paramByteBuffer)
@@ -76,10 +70,16 @@ public class TAVGLUtils
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     localByteBuffer.rewind();
     readPixelBuffer(paramTextureInfo, localByteBuffer);
-    paramTextureInfo = Bitmap.createBitmap(paramTextureInfo.width, paramTextureInfo.height, Bitmap.Config.ARGB_4444);
-    localByteBuffer.rewind();
-    paramTextureInfo.copyPixelsFromBuffer(localByteBuffer);
-    return paramTextureInfo;
+    return saveBitmap(localByteBuffer, paramTextureInfo.width, paramTextureInfo.height);
+  }
+  
+  @NotNull
+  private static Bitmap saveBitmap(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2)
+  {
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_4444);
+    paramByteBuffer.rewind();
+    localBitmap.copyPixelsFromBuffer(paramByteBuffer);
+    return localBitmap;
   }
   
   public static void saveBitmapToFile(Bitmap paramBitmap)
@@ -115,10 +115,15 @@ public class TAVGLUtils
   {
     saveBitmapToFile(saveBitmap(paramTextureInfo), paramFile);
   }
+  
+  public static void saveBitmapToFile(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2)
+  {
+    saveBitmapToFile(saveBitmap(paramByteBuffer, paramInt1, paramInt2));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.player.TAVGLUtils
  * JD-Core Version:    0.7.0.1
  */

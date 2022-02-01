@@ -14,13 +14,13 @@ public class AnonymousView$VisitorEmptyViewHolder
   public AnonymousView$VisitorEmptyViewHolder(View paramView)
   {
     super(paramView);
-    this.button = ((Button)paramView.findViewById(2131374169));
-    this.imageView = ((ImageView)paramView.findViewById(2131374146));
+    this.button = ((Button)paramView.findViewById(2131442264));
+    this.imageView = ((ImageView)paramView.findViewById(2131442241));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.VisitorEmptyViewHolder
  * JD-Core Version:    0.7.0.1
  */

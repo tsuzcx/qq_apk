@@ -2,131 +2,131 @@ package com.tencent.mobileqq.uftransfer.proto;
 
 public class UFTTroopUploadReq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String jdField_c_of_type_JavaLangString;
-  private byte[] jdField_c_of_type_ArrayOfByte;
+  private int a;
+  private String b;
+  private long c = 0L;
+  private byte[] d;
+  private byte[] e;
+  private byte[] f;
+  private String g;
+  private String h;
+  private long i;
+  private int j;
+  private boolean k;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
+    this.d = paramArrayOfByte;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.i = paramLong;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
   
   public void b(byte[] paramArrayOfByte)
   {
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    this.e = paramArrayOfByte;
   }
   
-  public byte[] b()
+  public long c()
   {
-    return this.jdField_b_of_type_ArrayOfByte;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public void c(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public void c(byte[] paramArrayOfByte)
   {
-    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte;
+    this.f = paramArrayOfByte;
   }
   
-  public byte[] c()
+  public byte[] d()
   {
-    return this.jdField_c_of_type_ArrayOfByte;
+    return this.d;
+  }
+  
+  public byte[] e()
+  {
+    return this.e;
+  }
+  
+  public byte[] f()
+  {
+    return this.f;
+  }
+  
+  public String g()
+  {
+    return this.g;
+  }
+  
+  public String h()
+  {
+    return this.h;
+  }
+  
+  public long i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
+  }
+  
+  public boolean k()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.proto.UFTTroopUploadReq
  * JD-Core Version:    0.7.0.1
  */

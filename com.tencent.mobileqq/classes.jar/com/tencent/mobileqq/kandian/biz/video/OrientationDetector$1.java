@@ -17,13 +17,13 @@ class OrientationDetector$1
   
   public void onOrientationChanged(int paramInt)
   {
-    if (!OrientationDetector.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector, paramInt)) {
+    if (!OrientationDetector.a(this.c, paramInt)) {
       return;
     }
-    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInSplashActivity(this.jdField_a_of_type_AndroidAppActivity)) {
+    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInSplashActivity(this.a)) {
       return;
     }
-    int j = OrientationDetector.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector);
+    int j = OrientationDetector.a(this.c);
     int i;
     if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330))
     {
@@ -48,18 +48,18 @@ class OrientationDetector$1
         }
       }
     }
-    if (i != OrientationDetector.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector))
+    if (i != OrientationDetector.a(this.c))
     {
-      OrientationDetector.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector, i);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-        ((OrientationDetector.OnOrientationChangedListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(i);
+      OrientationDetector.b(this.c, i);
+      if (this.b.get() != null) {
+        ((OrientationDetector.OnOrientationChangedListener)this.b.get()).a(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.OrientationDetector.1
  * JD-Core Version:    0.7.0.1
  */

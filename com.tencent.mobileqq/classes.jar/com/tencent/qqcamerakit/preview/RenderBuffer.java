@@ -4,15 +4,15 @@ import android.opengl.GLES20;
 
 public class RenderBuffer
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int a = 0;
+  private int b = 0;
   private int c = 0;
   private int d = 0;
   private int e = 0;
-  private int f;
-  private int g;
+  private boolean f = true;
+  private boolean g = false;
+  private int h;
+  private int i;
   
   public RenderBuffer(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -21,14 +21,14 @@ public class RenderBuffer
   
   public RenderBuffer(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.f = paramInt1;
-    this.g = paramInt2;
+    this.h = paramInt1;
+    this.i = paramInt2;
     this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     int[] arrayOfInt = new int[1];
     GLES20.glActiveTexture(paramInt3);
-    this.jdField_a_of_type_Int = GlUtil.a(3553);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    this.a = GlUtil.a(3553);
+    this.b = this.a;
     GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
     GLES20.glTexParameterf(3553, 10241, 9729.0F);
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
@@ -44,42 +44,42 @@ public class RenderBuffer
       GLES20.glBindRenderbuffer(36161, this.d);
       GLES20.glRenderbufferStorage(36161, 33189, paramInt1, paramInt2);
     }
-    b();
+    e();
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    GLES20.glViewport(0, 0, this.f, this.g);
-    GLES20.glBindFramebuffer(36160, this.e);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_a_of_type_Int, 0);
-    if (this.jdField_a_of_type_Boolean) {
-      GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.d);
-    }
+    return this.a;
   }
   
   public int b()
   {
-    return this.f;
-  }
-  
-  public void b()
-  {
-    GLES20.glBindFramebuffer(36160, 0);
+    return this.h;
   }
   
   public int c()
   {
-    return this.g;
+    return this.i;
+  }
+  
+  public void d()
+  {
+    GLES20.glViewport(0, 0, this.h, this.i);
+    GLES20.glBindFramebuffer(36160, this.e);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.a, 0);
+    if (this.f) {
+      GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.d);
+    }
+  }
+  
+  public void e()
+  {
+    GLES20.glBindFramebuffer(36160, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.preview.RenderBuffer
  * JD-Core Version:    0.7.0.1
  */

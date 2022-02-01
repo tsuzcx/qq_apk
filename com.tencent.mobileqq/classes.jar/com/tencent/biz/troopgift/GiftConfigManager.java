@@ -22,11 +22,6 @@ import org.json.JSONObject;
 
 public class GiftConfigManager
 {
-  public static int a(String paramString)
-  {
-    return a(paramString).getInt("configVersion", 0);
-  }
-  
   protected static SharedPreferences a(String paramString)
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
@@ -51,9 +46,9 @@ public class GiftConfigManager
         {
           JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
           GiftConfigManager.ImgEntryItem localImgEntryItem = new GiftConfigManager.ImgEntryItem();
-          localImgEntryItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("img");
-          localImgEntryItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("jumpUrl");
-          if ((TextUtils.isEmpty(localImgEntryItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localImgEntryItem.jdField_b_of_type_JavaLangString))) {
+          localImgEntryItem.a = localJSONObject.optString("img");
+          localImgEntryItem.b = localJSONObject.optString("jumpUrl");
+          if ((TextUtils.isEmpty(localImgEntryItem.a)) || (TextUtils.isEmpty(localImgEntryItem.b))) {
             break label220;
           }
           localArrayList.add(localImgEntryItem);
@@ -61,7 +56,7 @@ public class GiftConfigManager
         }
         paramJSONObject = (JSONObject)localObject;
         if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramJSONObject = HardCodeUtil.a(2131705356);
+          paramJSONObject = HardCodeUtil.a(2131903238);
         }
         localObject = paramJSONObject;
         if (paramJSONObject.length() > 4) {
@@ -70,8 +65,8 @@ public class GiftConfigManager
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (localArrayList.size() > 0))
         {
           paramJSONObject = new GiftConfigManager.ActivityTabInfo();
-          paramJSONObject.jdField_a_of_type_JavaLangString = ((String)localObject);
-          paramJSONObject.jdField_a_of_type_JavaUtilList = localArrayList;
+          paramJSONObject.a = ((String)localObject);
+          paramJSONObject.b = localArrayList;
           return paramJSONObject;
         }
       }
@@ -92,72 +87,12 @@ public class GiftConfigManager
     }
   }
   
-  public static GiftConfigManager.ImgEntryItem a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      localObject = paramJSONObject.getString("icon");
-      String str = paramJSONObject.getString("jumpUrl");
-      int i = paramJSONObject.getInt("width");
-      int j = paramJSONObject.getInt("height");
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)) && (i > 0) && (j > 0))
-      {
-        paramJSONObject = new GiftConfigManager.ImgEntryItem();
-        paramJSONObject.jdField_a_of_type_JavaLangString = ((String)localObject);
-        paramJSONObject.jdField_b_of_type_JavaLangString = str;
-        paramJSONObject.jdField_a_of_type_Int = i;
-        paramJSONObject.jdField_b_of_type_Int = j;
-        return paramJSONObject;
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      Object localObject;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parsePanelEntryItem exp:");
-        ((StringBuilder)localObject).append(paramJSONObject.toString());
-        QLog.e("GiftConfigManager", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    return null;
-  }
-  
-  public static GiftConfigManager.TextEntryItem a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      localObject = paramJSONObject.getString("title");
-      paramJSONObject = paramJSONObject.getString("jumpUrl");
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramJSONObject)))
-      {
-        GiftConfigManager.TextEntryItem localTextEntryItem = new GiftConfigManager.TextEntryItem();
-        localTextEntryItem.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localTextEntryItem.jdField_b_of_type_JavaLangString = paramJSONObject;
-        return localTextEntryItem;
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      Object localObject;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parseProfileCardGiftItem exp:");
-        ((StringBuilder)localObject).append(paramJSONObject.toString());
-        QLog.e("GiftConfigManager", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    return null;
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
   {
     try
     {
       String str = paramQQAppInterface.getCurrentUin();
-      int k = a(str);
+      int k = b(str);
       int j = paramConfig.version.get();
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("handleGiftEntryConfig, local=");
@@ -285,10 +220,75 @@ public class GiftConfigManager
   {
     a(paramString1).edit().putString(paramString2, paramString3).commit();
   }
+  
+  public static int b(String paramString)
+  {
+    return a(paramString).getInt("configVersion", 0);
+  }
+  
+  public static GiftConfigManager.TextEntryItem b(JSONObject paramJSONObject)
+  {
+    try
+    {
+      localObject = paramJSONObject.getString("title");
+      paramJSONObject = paramJSONObject.getString("jumpUrl");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramJSONObject)))
+      {
+        GiftConfigManager.TextEntryItem localTextEntryItem = new GiftConfigManager.TextEntryItem();
+        localTextEntryItem.a = ((String)localObject);
+        localTextEntryItem.b = paramJSONObject;
+        return localTextEntryItem;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseProfileCardGiftItem exp:");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        QLog.e("GiftConfigManager", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return null;
+  }
+  
+  public static GiftConfigManager.ImgEntryItem c(JSONObject paramJSONObject)
+  {
+    try
+    {
+      localObject = paramJSONObject.getString("icon");
+      String str = paramJSONObject.getString("jumpUrl");
+      int i = paramJSONObject.getInt("width");
+      int j = paramJSONObject.getInt("height");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)) && (i > 0) && (j > 0))
+      {
+        paramJSONObject = new GiftConfigManager.ImgEntryItem();
+        paramJSONObject.a = ((String)localObject);
+        paramJSONObject.b = str;
+        paramJSONObject.c = i;
+        paramJSONObject.d = j;
+        return paramJSONObject;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parsePanelEntryItem exp:");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        QLog.e("GiftConfigManager", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.GiftConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -37,6 +37,7 @@ public class AppLoaderFactory
   @BindClass(className="com.tencent.qqmini.sdk.manager.CommonManager")
   private ICommonManager commonManager;
   Context mContext;
+  private boolean mIsWebViewSetDataDirSuffix = false;
   private String mProcessName;
   @BindClass(className="com.tencent.qqmini.sdk.core.MiniAppEnv")
   private IMiniAppEnv miniAppEnv;
@@ -228,7 +229,7 @@ public class AppLoaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppLoaderFactory
  * JD-Core Version:    0.7.0.1
  */

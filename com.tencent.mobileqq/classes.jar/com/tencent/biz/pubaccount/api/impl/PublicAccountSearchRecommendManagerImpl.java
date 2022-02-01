@@ -114,7 +114,7 @@ public class PublicAccountSearchRecommendManagerImpl
     while (localIterator.hasNext())
     {
       IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem localPublicAccountSearchHistoryItem = (IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localIterator.next();
-      paramAppInterface.add(new IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem(localPublicAccountSearchHistoryItem.jdField_a_of_type_JavaLangString, localPublicAccountSearchHistoryItem.b, localPublicAccountSearchHistoryItem.jdField_a_of_type_Boolean));
+      paramAppInterface.add(new IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem(localPublicAccountSearchHistoryItem.a, localPublicAccountSearchHistoryItem.b, localPublicAccountSearchHistoryItem.c));
     }
     return paramAppInterface;
   }
@@ -197,7 +197,7 @@ public class PublicAccountSearchRecommendManagerImpl
               localObject = (JSONObject)paramAppInterface.get(i);
               localObject = new IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem(((JSONObject)localObject).optString("uin"), ((JSONObject)localObject).optString("name"), ((JSONObject)localObject).optLong("time"), ((JSONObject)localObject).optBoolean("isPA", true));
               this.mPublicAccountSearchHistoryList.add(localObject);
-              this.mPublicAccountSearchHistoryMap.put(((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject).jdField_a_of_type_JavaLangString, localObject);
+              this.mPublicAccountSearchHistoryMap.put(((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject).a, localObject);
               i += 1;
             }
           }
@@ -403,8 +403,8 @@ public class PublicAccountSearchRecommendManagerImpl
       paramString1 = (IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)this.mPublicAccountSearchHistoryMap.get(paramString1);
       this.mPublicAccountSearchHistoryList.remove(paramString1);
       this.mPublicAccountSearchHistoryList.add(0, paramString1);
-      paramString1.jdField_a_of_type_Long = l;
-      paramString1.jdField_a_of_type_Boolean = paramBoolean;
+      paramString1.d = l;
+      paramString1.c = paramBoolean;
       if (QLog.isColorLevel()) {
         QLog.d(this.TAG, 2, "updatePublicAccountSearchHistoryItem update!");
       }
@@ -422,7 +422,7 @@ public class PublicAccountSearchRecommendManagerImpl
       {
         paramString1 = (IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)this.mPublicAccountSearchHistoryList.get(i - 1);
         this.mPublicAccountSearchHistoryList.remove(paramString1);
-        this.mPublicAccountSearchHistoryMap.remove(paramString1.jdField_a_of_type_JavaLangString);
+        this.mPublicAccountSearchHistoryMap.remove(paramString1.a);
         if (QLog.isColorLevel()) {
           QLog.d(this.TAG, 2, "updatePublicAccountSearchHistoryItem remove lastItem!");
         }
@@ -442,7 +442,7 @@ public class PublicAccountSearchRecommendManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountSearchRecommendManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -34,14 +34,14 @@ class PublicQuickPayServiceImpl$1
       paramInt = -2;
     }
     if ((paramInt == -3) || (paramInt == -4) || (paramInt == -6)) {
-      PublicQuickPayServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletImplPublicQuickPayServiceImpl, this.jdField_a_of_type_AndroidContentContext);
+      PublicQuickPayServiceImpl.access$000(this.d, this.a);
     }
-    PublicQuickPayServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletImplPublicQuickPayServiceImpl, this.jdField_a_of_type_ComTencentMobileqqQwalletIPublicQuickPayService$QQWalletPayCompletionImp, paramInt, paramBundle.getString("retmsg"), paramBundle.getString("payTime"), this.jdField_a_of_type_JavaLangString);
+    PublicQuickPayServiceImpl.access$100(this.d, this.b, paramInt, paramBundle.getString("retmsg"), paramBundle.getString("payTime"), this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.PublicQuickPayServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

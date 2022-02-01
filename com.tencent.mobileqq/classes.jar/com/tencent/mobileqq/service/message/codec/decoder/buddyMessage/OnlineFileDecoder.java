@@ -22,17 +22,17 @@ public class OnlineFileDecoder
 {
   private void a(MessageHandler paramMessageHandler, long paramLong1, boolean paramBoolean, long paramLong2, int paramInt1, im_msg_body.MsgBody paramMsgBody, int paramInt2, long paramLong3, short paramShort, String paramString)
   {
-    paramMsgBody = paramMessageHandler.a.getFileTransferHandler().b(paramMsgBody.msg_content.get().toByteArray());
+    paramMsgBody = paramMessageHandler.n.getFileTransferHandler().b(paramMsgBody.msg_content.get().toByteArray());
     if (paramMsgBody != null)
     {
-      if (!paramMessageHandler.a.getFileTransferHandler().a(paramMsgBody))
+      if (!paramMessageHandler.n.getFileTransferHandler().b(paramMsgBody))
       {
         if (QLog.isColorLevel()) {
           QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x85  is error.");
         }
         return;
       }
-      paramMessageHandler.a.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString, paramLong3, paramShort, paramBoolean, 0, null, paramMsgBody, paramLong2, paramInt1);
+      paramMessageHandler.n.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString, paramLong3, paramShort, paramBoolean, 0, null, paramMsgBody, paramLong2, paramInt1);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -56,24 +56,24 @@ public class OnlineFileDecoder
       }
       return;
     }
-    paramMsgBody = paramMessageHandler.a.getFileTransferHandler().a(paramMsgBody.msg_content.get().toByteArray());
+    paramMsgBody = paramMessageHandler.n.getFileTransferHandler().a(paramMsgBody.msg_content.get().toByteArray());
     if (paramMsgBody != null)
     {
-      if (!paramMessageHandler.a.getFileTransferHandler().a(paramMsgBody))
+      if (!paramMessageHandler.n.getFileTransferHandler().b(paramMsgBody))
       {
         if (QLog.isColorLevel()) {
           QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x81 request is error.");
         }
         return;
       }
-      if (!paramMsgBody.c)
+      if (!paramMsgBody.l)
       {
         if (QLog.isColorLevel()) {
           QLog.w("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x81. requset is no mulitend olfile.");
         }
         return;
       }
-      paramMessageHandler.a.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString1, paramLong3, paramShort, paramBoolean1, 0, null, paramMsgBody, paramLong2, paramInt1);
+      paramMessageHandler.n.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString1, paramLong3, paramShort, paramBoolean1, 0, null, paramMsgBody, paramLong2, paramInt1);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -90,7 +90,7 @@ public class OnlineFileDecoder
     long l = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
     short s = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
     paramMsg = localLong1.toString();
-    String str = paramMessageHandler.a.getCurrentAccountUin();
+    String str = paramMessageHandler.n.getCurrentAccountUin();
     if (i == 129)
     {
       if ((paramMsg.equals(String.valueOf(localLong2))) && (paramMsg.equals(str)))
@@ -124,17 +124,17 @@ public class OnlineFileDecoder
   
   private void b(MessageHandler paramMessageHandler, long paramLong1, boolean paramBoolean, long paramLong2, int paramInt1, im_msg_body.MsgBody paramMsgBody, int paramInt2, long paramLong3, short paramShort, String paramString)
   {
-    paramMsgBody = paramMessageHandler.a.getFileTransferHandler().a(paramMsgBody.msg_content.get().toByteArray());
+    paramMsgBody = paramMessageHandler.n.getFileTransferHandler().a(paramMsgBody.msg_content.get().toByteArray());
     if (paramMsgBody != null)
     {
-      if (!paramMessageHandler.a.getFileTransferHandler().a(paramMsgBody))
+      if (!paramMessageHandler.n.getFileTransferHandler().b(paramMsgBody))
       {
         if (QLog.isColorLevel()) {
           QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x83  is error.");
         }
         return;
       }
-      paramMessageHandler.a.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString, paramLong3, paramShort, paramBoolean, 0, null, paramMsgBody, paramLong2, paramInt1);
+      paramMessageHandler.n.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString, paramLong3, paramShort, paramBoolean, 0, null, paramMsgBody, paramLong2, paramInt1);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -144,12 +144,12 @@ public class OnlineFileDecoder
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.jdField_a_of_type_Boolean, paramDecodeProtoPkgContext.b, paramDecodeProtoPkgContext.d, paramDecodeProtoPkgContext.jdField_a_of_type_Int);
+    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.x, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.h, paramDecodeProtoPkgContext.d, paramDecodeProtoPkgContext.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.buddyMessage.OnlineFileDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class WatchTogetherMediaPlayCtrl$3
   
   public void run()
   {
-    Object localObject = WatchTogetherMediaPlayCtrl.a(this.this$0);
+    Object localObject = WatchTogetherMediaPlayCtrl.d(this.this$0);
     if (localObject != null) {
       ((ISuperPlayer)localObject).stop();
     }
     WatchTogetherMediaPlayCtrl.a(this.this$0, 10);
-    localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    localObject = WatchTogetherMediaPlayCtrl.e(this.this$0).iterator();
     while (((Iterator)localObject).hasNext())
     {
       WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();

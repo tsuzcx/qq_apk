@@ -8,8 +8,8 @@ import com.tencent.mobileqq.search.base.view.SearchResultView;
 public class ContactSearchResultView
   extends SearchResultView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView a;
+  private View b;
   
   public ContactSearchResultView(View paramView)
   {
@@ -24,13 +24,13 @@ public class ContactSearchResultView
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131377636));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131379859);
+    this.a = ((TextView)this.e.findViewById(2131446045));
+    this.b = this.e.findViewById(2131448716);
   }
   
   public void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.b;
     if (localView != null)
     {
       int i;
@@ -43,14 +43,14 @@ public class ContactSearchResultView
     }
   }
   
-  public TextView e()
+  public TextView k()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.view.ContactSearchResultView
  * JD-Core Version:    0.7.0.1
  */

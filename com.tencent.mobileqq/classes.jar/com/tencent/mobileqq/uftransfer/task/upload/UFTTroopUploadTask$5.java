@@ -10,7 +10,7 @@ class UFTTroopUploadTask$5
   
   public void a(boolean paramBoolean, long paramLong, Bundle paramBundle)
   {
-    if (!UFTTroopUploadTask.h(this.a))
+    if (!UFTTroopUploadTask.l(this.a))
     {
       if (paramBoolean)
       {
@@ -42,7 +42,7 @@ class UFTTroopUploadTask$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTTroopUploadTask.5
  * JD-Core Version:    0.7.0.1
  */

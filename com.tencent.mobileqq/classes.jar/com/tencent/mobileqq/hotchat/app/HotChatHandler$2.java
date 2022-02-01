@@ -15,8 +15,8 @@ class HotChatHandler$2
   {
     HotChatInfo localHotChatInfo;
     if ((!((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).getInAIO()) && (!((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).getInvite())) {
-      if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        localHotChatInfo = (HotChatInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+      if ((this.a) && (!this.b.isEmpty())) {
+        localHotChatInfo = (HotChatInfo)this.b.get(0);
       }
     }
     try
@@ -46,7 +46,7 @@ class HotChatHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.app.HotChatHandler.2
  * JD-Core Version:    0.7.0.1
  */

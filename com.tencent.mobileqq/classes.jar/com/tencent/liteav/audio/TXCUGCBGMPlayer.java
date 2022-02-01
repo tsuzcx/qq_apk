@@ -17,11 +17,11 @@ public class TXCUGCBGMPlayer
   private float mSpeedRate = 1.0F;
   private long mStartTimeMS = 0L;
   private float mVolume = 1.0F;
-  private WeakReference<f> mWeakListener = null;
+  private WeakReference<h> mWeakListener = null;
   
   static
   {
-    com.tencent.liteav.basic.util.f.f();
+    com.tencent.liteav.basic.util.h.f();
   }
   
   private TXCUGCBGMPlayer()
@@ -42,9 +42,9 @@ public class TXCUGCBGMPlayer
       {
         if (this.mWeakListener != null)
         {
-          f localf = (f)this.mWeakListener.get();
-          if (localf != null) {
-            localf.onPlayEnd(paramInt);
+          h localh = (h)this.mWeakListener.get();
+          if (localh != null) {
+            localh.onPlayEnd(paramInt);
           }
           return;
         }
@@ -62,9 +62,9 @@ public class TXCUGCBGMPlayer
       {
         if (this.mWeakListener != null)
         {
-          f localf = (f)this.mWeakListener.get();
-          if (localf != null) {
-            localf.onPlayProgress(paramLong1, paramLong2);
+          h localh = (h)this.mWeakListener.get();
+          if (localh != null) {
+            localh.onPlayProgress(paramLong1, paramLong2);
           }
           return;
         }
@@ -82,9 +82,9 @@ public class TXCUGCBGMPlayer
       {
         if (this.mWeakListener != null)
         {
-          f localf = (f)this.mWeakListener.get();
-          if (localf != null) {
-            localf.onPlayStart();
+          h localh = (h)this.mWeakListener.get();
+          if (localh != null) {
+            localh.onPlayStart();
           }
           return;
         }
@@ -140,18 +140,23 @@ public class TXCUGCBGMPlayer
   
   public void seekBytes(long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("seekBytes:");
-    localStringBuilder.append(paramLong);
-    TXCLog.i("AudioCenter:TXCUGCBGMPlayer", localStringBuilder.toString());
-    long l = paramLong;
+    long l1 = paramLong;
     if (paramLong < 0L)
     {
       TXCLog.e("AudioCenter:TXCUGCBGMPlayer", "seek bytes can not be negative. change to 0");
-      l = 0L;
+      l1 = 0L;
     }
-    this.mSeekBytes = l;
-    TXAudioEffectManagerImpl.getCacheInstance().seekMusicToPosInBytes(this.mBGMId, l);
+    long l2 = TXAudioEffectManagerImpl.getCacheInstance().getAvailableBGMBytes(this.mBGMId);
+    paramLong = l1;
+    if (l2 > 0L) {
+      paramLong = l1 % l2;
+    }
+    this.mSeekBytes = paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSeekBytes:");
+    localStringBuilder.append(this.mSeekBytes);
+    TXCLog.i("AudioCenter:TXCUGCBGMPlayer", localStringBuilder.toString());
+    TXAudioEffectManagerImpl.getCacheInstance().seekMusicToPosInBytes(this.mBGMId, paramLong);
   }
   
   public void setChangerType(int paramInt)
@@ -163,13 +168,13 @@ public class TXCUGCBGMPlayer
     TXAudioEffectManagerImpl.getCacheInstance().setMusicChangerType(this.mBGMId, paramInt);
   }
   
-  public void setOnPlayListener(f paramf)
+  public void setOnPlayListener(h paramh)
   {
-    if (paramf == null) {}
+    if (paramh == null) {}
     try
     {
       this.mWeakListener = null;
-      this.mWeakListener = new WeakReference(paramf);
+      this.mWeakListener = new WeakReference(paramh);
       return;
     }
     finally {}
@@ -280,7 +285,7 @@ public class TXCUGCBGMPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCUGCBGMPlayer
  * JD-Core Version:    0.7.0.1
  */

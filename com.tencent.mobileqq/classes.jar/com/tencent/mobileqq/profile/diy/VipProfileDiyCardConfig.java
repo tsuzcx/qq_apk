@@ -12,16 +12,10 @@ import org.json.JSONObject;
 
 public class VipProfileDiyCardConfig
 {
-  public static int a = 50;
   public static SparseArray<String> a;
-  public static String a;
-  private static AtomicBoolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716252);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public static int b = 50;
+  public static String c = HardCodeUtil.a(2131913694);
+  private static AtomicBoolean d = new AtomicBoolean(false);
   
   public static void a(AppRuntime paramAppRuntime)
   {
@@ -49,7 +43,7 @@ public class VipProfileDiyCardConfig
         i += 1;
       }
     }
-    bool = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+    bool = d.compareAndSet(false, true);
     if (!bool) {
       return;
     }
@@ -59,12 +53,12 @@ public class VipProfileDiyCardConfig
       localJSONArray = localJSONObject.optJSONArray("fontList");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        if (jdField_a_of_type_AndroidUtilSparseArray == null)
+        if (a == null)
         {
-          jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+          a = new SparseArray();
           break label253;
         }
-        jdField_a_of_type_AndroidUtilSparseArray.clear();
+        a.clear();
         break label253;
         if (i < localJSONArray.length())
         {
@@ -86,23 +80,23 @@ public class VipProfileDiyCardConfig
               paramAppRuntime = paramAppRuntime.toString();
             }
           }
-          jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
+          a.put(j, paramAppRuntime);
           break label258;
         }
       }
-      jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
-      jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
+      b = localJSONObject.optInt("maxTextLength", b);
+      c = localJSONObject.optString("inputTip", c);
     }
     else
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      d.set(false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.diy.VipProfileDiyCardConfig
  * JD-Core Version:    0.7.0.1
  */

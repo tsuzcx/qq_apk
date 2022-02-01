@@ -39,7 +39,7 @@ public class RecentItemEcShopAssitant
   
   private void a()
   {
-    if ((this.mExtraInfo != null) && (HardCodeUtil.a(2131713099).equalsIgnoreCase(this.mExtraInfo.toString()))) {
+    if ((this.mExtraInfo != null) && (HardCodeUtil.a(2131910658).equalsIgnoreCase(this.mExtraInfo.toString()))) {
       this.mExtraInfo = "";
     }
   }
@@ -60,17 +60,17 @@ public class RecentItemEcShopAssitant
     String str = paramSharedPreferences.getString("str_ecshop_diy", null);
     if (!TextUtils.isEmpty(str))
     {
-      paramEcShopAssistantManager.d = true;
+      paramEcShopAssistantManager.A = true;
       paramMsgSummary.strContent = str;
       paramMsgSummary.suffix = null;
       paramMsgSummary.strPrefix = null;
     }
     else if (TextUtils.isEmpty(paramMsgSummary.suffix))
     {
-      paramMsgSummary.strContent = paramContext.getString(2131691853);
+      paramMsgSummary.strContent = paramContext.getString(2131888818);
       paramMsgSummary.strPrefix = null;
     }
-    this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+    this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
     if (paramSharedPreferences.contains("PUSH_TYPE_COLOR")) {}
     try
     {
@@ -86,7 +86,7 @@ public class RecentItemEcShopAssitant
       break label189;
     }
     QLog.e("RecentItemEcShopAssitant", 1, "parse color exception.");
-    this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+    this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
     if (paramSharedPreferences.getBoolean("folder_reddot", false))
     {
       paramInt = paramSharedPreferences.getInt("last_show_time1", 0);
@@ -98,7 +98,7 @@ public class RecentItemEcShopAssitant
       {
         if ((m >= i) && (m <= j) && (m - paramInt < k))
         {
-          paramEcShopAssistantManager.e = true;
+          paramEcShopAssistantManager.B = true;
           if (l > this.mDisplayTime) {
             this.mDisplayTime = l;
           }
@@ -108,7 +108,7 @@ public class RecentItemEcShopAssitant
         if (QLog.isColorLevel()) {
           QLog.i("EcShopAssistantActivity", 2, "reddot out of date!");
         }
-        paramEcShopAssistantManager.e = false;
+        paramEcShopAssistantManager.B = false;
         this.mUnreadNum = 0;
         this.mMsgExtroInfo = "";
       }
@@ -121,15 +121,15 @@ public class RecentItemEcShopAssitant
   
   private void a(EcShopAssistantManager paramEcShopAssistantManager)
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.mTitleName);
       localStringBuilder.append(",");
       if (this.mUnreadNum > 0)
       {
-        int i = paramEcShopAssistantManager.a();
-        if ((i != 0) && (!paramEcShopAssistantManager.e)) {
+        int i = paramEcShopAssistantManager.i();
+        if ((i != 0) && (!paramEcShopAssistantManager.B)) {
           if (i == 1)
           {
             localStringBuilder.append("有一条未读");
@@ -171,7 +171,7 @@ public class RecentItemEcShopAssitant
   {
     if (paramMessage != null)
     {
-      this.mUnreadNum = paramEcShopAssistantManager.a(paramQQAppInterface);
+      this.mUnreadNum = paramEcShopAssistantManager.b(paramQQAppInterface);
       this.mDisplayTime = paramMessage.time;
       paramEcShopAssistantManager = paramEcShopAssistantManager.a(paramQQAppInterface, paramMessage.frienduin);
       if (paramMessage != null)
@@ -232,10 +232,10 @@ public class RecentItemEcShopAssitant
         this.mUnreadFlag = 2;
       }
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691855);
+        this.mTitleName = paramContext.getString(2131888820);
       }
-      if (!TextUtils.isEmpty(EcShopAssistantManager.c)) {
-        this.mTitleName = EcShopAssistantManager.c;
+      if (!TextUtils.isEmpty(EcShopAssistantManager.h)) {
+        this.mTitleName = EcShopAssistantManager.h;
       }
       Object localObject2 = null;
       EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
@@ -243,7 +243,7 @@ public class RecentItemEcShopAssitant
       Object localObject1 = localObject2;
       if (localObject3 != null)
       {
-        EcShopData localEcShopData = localEcShopAssistantManager.a();
+        EcShopData localEcShopData = localEcShopAssistantManager.c();
         localObject1 = localObject2;
         if (localEcShopData != null) {
           localObject1 = ((QQMessageFacade)localObject3).getLastMessage(localEcShopData.mUin, 1008);
@@ -261,12 +261,12 @@ public class RecentItemEcShopAssitant
       ((StringBuilder)localObject2).append((String)localObject1);
       localObject1 = paramContext.getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
       int i = ((SharedPreferences)localObject1).getInt("last_show_time1", 0);
-      localEcShopAssistantManager.d = false;
+      localEcShopAssistantManager.A = false;
       a(paramContext, localEcShopAssistantManager, (MsgSummary)localObject3, (SharedPreferences)localObject1, i);
       a();
       a(paramQQAppInterface, (MsgSummary)localObject3);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
-      if ((this.mUnreadNum == 0) && (localEcShopAssistantManager.e)) {
+      if ((this.mUnreadNum == 0) && (localEcShopAssistantManager.B)) {
         this.mUnreadNum = 1;
       }
       a(localEcShopAssistantManager);
@@ -295,7 +295,7 @@ public class RecentItemEcShopAssitant
     }
     EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
     if (localEcShopAssistantManager != null) {
-      localObject1 = localEcShopAssistantManager.a();
+      localObject1 = localEcShopAssistantManager.c();
     }
     if (localObject1 != null)
     {
@@ -333,7 +333,7 @@ public class RecentItemEcShopAssitant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemEcShopAssitant
  * JD-Core Version:    0.7.0.1
  */

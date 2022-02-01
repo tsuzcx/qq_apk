@@ -27,7 +27,7 @@ class SystemMsgListView$5
     }
     if (paramBoolean)
     {
-      localObject = SystemMsgListView.a(this.a).a();
+      localObject = SystemMsgListView.a(this.a).o();
       if ((localObject != null) && (((TabLayoutStatus)localObject).a()) && (((TabLayoutStatus)localObject).a == paramInt2) && (!SystemMsgListView.a(this.a, paramInt2, paramInt3))) {
         SystemMsgListView.a(this.a).a(0L);
       }
@@ -68,7 +68,7 @@ class SystemMsgListView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.view.SystemMsgListView.5
  * JD-Core Version:    0.7.0.1
  */

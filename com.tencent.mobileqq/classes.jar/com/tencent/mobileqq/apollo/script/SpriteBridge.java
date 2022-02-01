@@ -18,7 +18,10 @@ import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.cmshow.engine.script.ScriptUtil;
+import com.tencent.mobileqq.cmshow.engine.action.PlayActionScript;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptUtils;
 import com.tencent.mobileqq.cmshow.engine.script.task.InitSpriteTask;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -36,64 +39,33 @@ import org.json.JSONObject;
 public class SpriteBridge
   implements ISpriteBridge
 {
-  private ISpriteTaskHandler jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler;
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private SpriteRscBuilder jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder;
-  private SpriteScriptCreator jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator;
-  private String jdField_a_of_type_JavaLangString;
-  private CopyOnWriteArrayList<WeakReference<ISpriteStatusChanged>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private SpriteContext a;
+  private ISpriteTaskHandler b;
+  private SpriteRscBuilder c;
+  private CopyOnWriteArrayList<WeakReference<ISpriteStatusChanged>> d;
+  private SpriteScriptCreator e;
+  private Script f;
   
   public SpriteBridge(SpriteContext paramSpriteContext, ISpriteTaskHandler paramISpriteTaskHandler, SpriteRscBuilder paramSpriteRscBuilder, SpriteScriptCreator paramSpriteScriptCreator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler = paramISpriteTaskHandler;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder = paramSpriteRscBuilder;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator = paramSpriteScriptCreator;
-  }
-  
-  private String a()
-  {
-    SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
-    localSpriteTaskParam.jdField_a_of_type_Int = 0;
-    localSpriteTaskParam.f = 4;
-    localSpriteTaskParam.k = 2;
-    localSpriteTaskParam.g = 5;
-    localSpriteTaskParam.jdField_a_of_type_Long = 1000000L;
-    return this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder.a(localSpriteTaskParam, null);
-  }
-  
-  private String a(SpriteTaskParam paramSpriteTaskParam)
-  {
-    if (paramSpriteTaskParam == null) {
-      return a();
-    }
-    if (!b(paramSpriteTaskParam.jdField_c_of_type_Int))
-    {
-      QLog.w("[cmshow][scripted]SpriteBridge", 1, "[playAction], fail to load script.");
-      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-      return a();
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder.a(paramSpriteTaskParam, null);
-    if (TextUtils.isEmpty(str))
-    {
-      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-      return a();
-    }
-    return str;
+    this.a = paramSpriteContext;
+    this.b = paramISpriteTaskHandler;
+    this.c = paramSpriteRscBuilder;
+    this.d = new CopyOnWriteArrayList();
+    this.e = paramSpriteScriptCreator;
   }
   
   private void a(SpriteAioScript paramSpriteAioScript, SpriteTaskParam paramSpriteTaskParam)
   {
-    paramSpriteAioScript.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
-    paramSpriteAioScript.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
-    if (paramSpriteTaskParam.jdField_c_of_type_Int != 5) {
+    paramSpriteAioScript.a(paramSpriteTaskParam.j, false);
+    paramSpriteAioScript.a(paramSpriteTaskParam.k, false);
+    if (paramSpriteTaskParam.c != 5) {
       return;
     }
     Gson localGson = new Gson();
     try
     {
-      paramSpriteTaskParam = (ScriptResult)localGson.fromJson(paramSpriteTaskParam.jdField_d_of_type_JavaLangString, new SpriteBridge.3(this).getType());
+      paramSpriteTaskParam = (ScriptResult)localGson.fromJson(paramSpriteTaskParam.t, new SpriteBridge.3(this).getType());
       if (paramSpriteTaskParam != null)
       {
         if (paramSpriteTaskParam.data == null) {
@@ -129,18 +101,18 @@ public class SpriteBridge
     }
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+    Object localObject1 = this.a;
     boolean bool3 = false;
     boolean bool1 = false;
     boolean bool2 = bool3;
     if (localObject1 != null)
     {
-      if (((SpriteContext)localObject1).b == null) {
+      if (((SpriteContext)localObject1).h == null) {
         return false;
       }
-      localObject1 = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b.get();
+      localObject1 = (QQAppInterface)this.a.h.get();
       bool2 = bool3;
       if (localObject1 != null)
       {
@@ -162,33 +134,56 @@ public class SpriteBridge
     return bool2;
   }
   
-  private boolean b(int paramInt)
+  private String c(SpriteTaskParam paramSpriteTaskParam)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.a(paramInt) != null;
+    if (paramSpriteTaskParam == null) {
+      return d();
+    }
+    if (!c(paramSpriteTaskParam.c))
+    {
+      QLog.w("[cmshow][scripted]SpriteBridge", 1, "[playAction], fail to load script.");
+      paramSpriteTaskParam.b = 4;
+      return d();
+    }
+    String str = this.c.a(paramSpriteTaskParam, null).e();
+    if (TextUtils.isEmpty(str))
+    {
+      paramSpriteTaskParam.b = 4;
+      return d();
+    }
+    return str;
   }
   
-  private void c()
+  private boolean c(int paramInt)
+  {
+    return this.e.a(paramInt) != null;
+  }
+  
+  private String d()
+  {
+    SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
+    localSpriteTaskParam.a = 0;
+    localSpriteTaskParam.f = 4;
+    localSpriteTaskParam.v = 2;
+    localSpriteTaskParam.g = 5;
+    localSpriteTaskParam.h = 1000000L;
+    return this.c.a(localSpriteTaskParam, null).e();
+  }
+  
+  private void e()
   {
     ThreadManager.getUIHandler().post(new SpriteBridge.4(this));
   }
   
-  public void a()
-  {
-    InitSpriteTask localInitSpriteTask = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("initSprite");
-    if (localInitSpriteTask != null) {
-      this.jdField_a_of_type_JavaLangString = localInitSpriteTask.a();
-    }
-  }
-  
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.d;
     if (localObject != null)
     {
       if (((CopyOnWriteArrayList)localObject).size() == 0) {
         return;
       }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.d.iterator();
       while (((Iterator)localObject).hasNext())
       {
         ISpriteStatusChanged localISpriteStatusChanged = (ISpriteStatusChanged)((WeakReference)((Iterator)localObject).next()).get();
@@ -209,49 +204,48 @@ public class SpriteBridge
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteBridge", 2, "[initSprite]");
     }
-    int i = TraceReportUtil.a(0);
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder != null) && (paramISpriteContext != null) && (paramISpriteContext.c()))
+    int i = TraceReportUtil.c(0);
+    if ((this.c != null) && ((paramISpriteContext instanceof SpriteContext)) && (paramISpriteContext.c()))
     {
-      if (!b(0)) {
+      if (!c(0)) {
         return;
       }
-      boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-      String str = null;
-      if (bool)
+      Object localObject = this.f;
+      if (localObject == null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("initSprite");
+        localObject = this.a.d("initSprite");
         if (localObject != null)
         {
-          str = ((InitSpriteTask)localObject).a();
+          localObject = ((InitSpriteTask)localObject).a();
           QLog.d("[cmshow][scripted]SpriteBridge", 1, "get spriteJs");
         }
         else
         {
           QLog.w("[cmshow][scripted]SpriteBridge", 1, "get spriteJs but initSpriteTask null");
+          localObject = null;
         }
       }
       else
       {
-        str = this.jdField_a_of_type_JavaLangString;
         QLog.d("[cmshow][scripted]SpriteBridge", 1, "spriteJs from cache");
-        this.jdField_a_of_type_JavaLangString = null;
+        this.f = null;
       }
-      if (TextUtils.isEmpty(str))
+      if (localObject == null)
       {
         TraceReportUtil.a(i, 300, 301, new Object[] { "spriteJs is empty" });
         return;
       }
-      Object localObject = (SpriteActionScript)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.b(0);
-      if (localObject == null) {
+      SpriteActionScript localSpriteActionScript = (SpriteActionScript)this.e.b(0);
+      if (localSpriteActionScript == null) {
         return;
       }
       TraceReportUtil.a(i, 350);
       QLog.d("[cmshow][scripted]SpriteBridge", 1, "TraceReport CmShowStatUtil commitJS:(initSprite )");
-      if (!paramISpriteContext.e()) {
-        paramISpriteContext.a(str);
+      if (!paramISpriteContext.f()) {
+        ((SpriteContext)paramISpriteContext).a((Script)localObject);
       }
       TraceReportUtil.a(i, 350, 0, new Object[] { "enter exeInitSprite" });
-      ThreadManager.executeOnSubThread(new SpriteBridge.2(this, (SpriteActionScript)localObject, paramISpriteContext));
+      ThreadManager.executeOnSubThread(new SpriteBridge.2(this, localSpriteActionScript, paramISpriteContext));
       return;
     }
     TraceReportUtil.a(i, 300, 160, new Object[] { "glview is not ready" });
@@ -259,59 +253,61 @@ public class SpriteBridge
   
   public void a(SpriteTaskParam paramSpriteTaskParam)
   {
-    if ((paramSpriteTaskParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder != null))
+    if ((paramSpriteTaskParam != null) && (this.c != null))
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+      Object localObject1 = this.a;
       if (localObject1 != null)
       {
         if (!((SpriteContext)localObject1).c()) {
           return;
         }
-        if ((paramSpriteTaskParam.jdField_b_of_type_JavaUtilArrayList != null) && (paramSpriteTaskParam.jdField_b_of_type_JavaUtilArrayList.size() > 0) && (!this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.g()))
+        if ((paramSpriteTaskParam.s != null) && (paramSpriteTaskParam.s.size() > 0) && (!this.a.s()))
         {
           QLog.w("[cmshow][scripted]SpriteBridge", 2, "[playAction], BackgroundSurface is not ready and add now");
-          c();
+          e();
           return;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder;
-        SpriteRscBuilder.a(paramSpriteTaskParam.k, paramSpriteTaskParam.f, paramSpriteTaskParam.jdField_c_of_type_Int, paramSpriteTaskParam.h, paramSpriteTaskParam.jdField_d_of_type_Int, paramSpriteTaskParam.jdField_d_of_type_JavaLangString, paramSpriteTaskParam.jdField_a_of_type_Long);
-        if (!b(paramSpriteTaskParam.jdField_c_of_type_Int))
+        localObject1 = this.a.q();
+        if (localObject1 != null) {
+          ((IApolloResManager)localObject1).a(paramSpriteTaskParam.v, paramSpriteTaskParam.f, paramSpriteTaskParam.c, paramSpriteTaskParam.i, paramSpriteTaskParam.d, paramSpriteTaskParam.t, paramSpriteTaskParam.h);
+        }
+        if (!c(paramSpriteTaskParam.c))
         {
           QLog.w("[cmshow][scripted]SpriteBridge", 1, "[playAction], fail to load script.");
-          paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+          paramSpriteTaskParam.b = 4;
           return;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder.a(paramSpriteTaskParam, "playAction");
-        if (TextUtils.isEmpty((CharSequence)localObject1))
+        localObject1 = this.c.a(paramSpriteTaskParam, "playAction");
+        if (localObject1 == null)
         {
-          paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+          paramSpriteTaskParam.b = 4;
           return;
         }
-        SpriteScriptManagerImpl localSpriteScriptManagerImpl = (SpriteScriptManagerImpl)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
+        SpriteScriptManagerImpl localSpriteScriptManagerImpl = (SpriteScriptManagerImpl)this.a.l().getRuntimeService(ISpriteScriptManager.class, "all");
         Object localObject2 = localSpriteScriptManagerImpl.getSpriteCreator();
         if (localObject2 == null) {
           return;
         }
-        localObject2 = ((SpriteScriptCreator)localObject2).b(paramSpriteTaskParam.jdField_c_of_type_Int);
+        localObject2 = ((SpriteScriptCreator)localObject2).b(paramSpriteTaskParam.c);
         if (localObject2 == null)
         {
           QLog.w("[cmshow][scripted]SpriteBridge", 1, "actionScript == null.");
-          paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+          paramSpriteTaskParam.b = 4;
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow][scripted]SpriteBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
         }
-        paramSpriteTaskParam.jdField_b_of_type_Int = 2;
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a((String)localObject1);
+        paramSpriteTaskParam.b = 2;
+        this.a.a((Script)localObject1);
         a((SpriteAioScript)localObject2, paramSpriteTaskParam);
-        ApolloActionHelperImpl.doActionReport(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), paramSpriteTaskParam, TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString) ^ true, paramSpriteTaskParam.jdField_b_of_type_Boolean);
+        ApolloActionHelperImpl.doActionReport(this.a.l(), paramSpriteTaskParam, TextUtils.isEmpty(paramSpriteTaskParam.o) ^ true, paramSpriteTaskParam.q);
         localObject1 = localSpriteScriptManagerImpl.getSpriteBackgroundManager();
-        if ((localObject1 != null) && (!SpriteUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a())))
+        if ((localObject1 != null) && (!SpriteUtil.d(this.a.l())))
         {
-          if ((paramSpriteTaskParam.jdField_b_of_type_JavaUtilArrayList != null) && (paramSpriteTaskParam.jdField_b_of_type_JavaUtilArrayList.size() > 0))
+          if ((paramSpriteTaskParam.s != null) && (paramSpriteTaskParam.s.size() > 0))
           {
-            ((SpriteBackgroundManager)localObject1).a(paramSpriteTaskParam.jdField_b_of_type_JavaUtilArrayList);
+            ((SpriteBackgroundManager)localObject1).a(paramSpriteTaskParam.s);
             return;
           }
           ((SpriteBackgroundManager)localObject1).a();
@@ -322,7 +318,7 @@ public class SpriteBridge
   
   public void a(ISpriteStatusChanged paramISpriteStatusChanged)
   {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.d;
     if (localCopyOnWriteArrayList == null) {
       return;
     }
@@ -334,43 +330,43 @@ public class SpriteBridge
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteBridge", 2, new Object[] { "[buildSpriteTask] actionList:", paramArrayList1, ", backgroundList:", paramArrayList2 });
     }
-    if ((paramChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler != null) && (paramArrayList1 != null))
+    if ((paramChatMessage != null) && (this.a != null) && (this.b != null) && (paramArrayList1 != null))
     {
       if (paramArrayList1.size() == 0) {
         return;
       }
-      if (!SpriteUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), paramChatMessage.istroop, paramChatMessage.frienduin)) {
+      if (!SpriteUtil.b(this.a.l(), paramChatMessage.istroop, paramChatMessage.frienduin)) {
         return;
       }
       SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
       localSpriteTaskParam.f = ((Integer)paramArrayList1.get(0)).intValue();
-      localSpriteTaskParam.jdField_d_of_type_Int = 1;
-      localSpriteTaskParam.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-      localSpriteTaskParam.jdField_b_of_type_JavaUtilArrayList = paramArrayList2;
-      localSpriteTaskParam.jdField_c_of_type_Int = 1;
-      localSpriteTaskParam.h = paramChatMessage.istroop;
+      localSpriteTaskParam.d = 1;
+      localSpriteTaskParam.r = paramArrayList1;
+      localSpriteTaskParam.s = paramArrayList2;
+      localSpriteTaskParam.c = 1;
+      localSpriteTaskParam.i = paramChatMessage.istroop;
       if (paramChatMessage.isSend()) {
         localSpriteTaskParam.g = 0;
       } else {
         localSpriteTaskParam.g = 1;
       }
-      localSpriteTaskParam.jdField_a_of_type_Boolean = paramChatMessage.isSend();
-      localSpriteTaskParam.jdField_a_of_type_Long = paramChatMessage.uniseq;
-      if (CmShowAioMatcherImpl.judgeSupported(localSpriteTaskParam.h, 1))
+      localSpriteTaskParam.l = paramChatMessage.isSend();
+      localSpriteTaskParam.h = paramChatMessage.uniseq;
+      if (CmShowAioMatcherImpl.judgeSupported(localSpriteTaskParam.i, 1))
       {
         if (paramChatMessage.isSend())
         {
-          localSpriteTaskParam.jdField_a_of_type_JavaLangString = paramChatMessage.selfuin;
-          localSpriteTaskParam.jdField_b_of_type_JavaLangString = paramChatMessage.frienduin;
+          localSpriteTaskParam.j = paramChatMessage.selfuin;
+          localSpriteTaskParam.k = paramChatMessage.frienduin;
         }
         else
         {
-          localSpriteTaskParam.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
-          localSpriteTaskParam.jdField_b_of_type_JavaLangString = paramChatMessage.selfuin;
+          localSpriteTaskParam.j = paramChatMessage.frienduin;
+          localSpriteTaskParam.k = paramChatMessage.selfuin;
         }
       }
-      else if (CmShowAioMatcherImpl.judgeSupported(localSpriteTaskParam.h, 2)) {
-        localSpriteTaskParam.jdField_a_of_type_JavaLangString = paramChatMessage.senderuin;
+      else if (CmShowAioMatcherImpl.judgeSupported(localSpriteTaskParam.i, 2)) {
+        localSpriteTaskParam.j = paramChatMessage.senderuin;
       }
       b(localSpriteTaskParam);
     }
@@ -388,7 +384,7 @@ public class SpriteBridge
       }
       paramMessageRecord = (MessageForApollo)paramMessageRecord;
       Object localObject;
-      if (!b(paramMessageRecord.actionType))
+      if (!c(paramMessageRecord.actionType))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[sendMsg], fail to load script, actionType:");
@@ -396,15 +392,15 @@ public class SpriteBridge
         QLog.w("[cmshow][scripted]SpriteBridge", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.i()) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d()))
+      if ((!this.a.x()) && (this.a.d()))
       {
-        localObject = ((ISpriteScriptManager)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all")).getUIHandler();
+        localObject = ((ISpriteScriptManager)this.a.l().getRuntimeService(ISpriteScriptManager.class, "all")).getUIHandler();
         if (localObject != null) {
           ((ISpriteUIHandler)localObject).a(false, "none_apollo_play_action");
         }
       }
-      paramMessageRecord = ScriptUtil.a(paramMessageRecord, a(paramMessageRecord.mApolloMessage.id));
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(paramMessageRecord.toString());
+      paramMessageRecord = ScriptUtils.a(paramMessageRecord, b(paramMessageRecord.mApolloMessage.id));
+      this.a.b(paramMessageRecord.toString());
       return;
     }
     catch (Throwable paramMessageRecord)
@@ -417,46 +413,46 @@ public class SpriteBridge
   {
     if (paramMessageRecord != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+      Object localObject = this.a;
       if (localObject != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler == null) {
+        if (this.b == null) {
           return;
         }
-        if (!SpriteUtil.b(((SpriteContext)localObject).a(), paramMessageRecord.istroop, paramMessageRecord.frienduin)) {
+        if (!SpriteUtil.b(((SpriteContext)localObject).l(), paramMessageRecord.istroop, paramMessageRecord.frienduin)) {
           return;
         }
         localObject = new SpriteTaskParam();
         ((SpriteTaskParam)localObject).f = paramInt;
-        ApolloActionData localApolloActionData = SpriteUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), paramInt);
+        ApolloActionData localApolloActionData = SpriteUtil.a(this.a.l(), paramInt);
         if (localApolloActionData != null)
         {
-          ((SpriteTaskParam)localObject).jdField_c_of_type_Int = localApolloActionData.actionType;
+          ((SpriteTaskParam)localObject).c = localApolloActionData.actionType;
           ((SpriteTaskParam)localObject).e = localApolloActionData.personNum;
         }
-        ((SpriteTaskParam)localObject).h = paramMessageRecord.istroop;
+        ((SpriteTaskParam)localObject).i = paramMessageRecord.istroop;
         if (paramMessageRecord.isSend()) {
           ((SpriteTaskParam)localObject).g = 0;
         } else {
           ((SpriteTaskParam)localObject).g = 1;
         }
-        ((SpriteTaskParam)localObject).jdField_a_of_type_Boolean = paramMessageRecord.isSend();
-        ((SpriteTaskParam)localObject).jdField_a_of_type_Long = paramMessageRecord.uniseq;
-        if (CmShowAioMatcherImpl.judgeSupported(((SpriteTaskParam)localObject).h, 1))
+        ((SpriteTaskParam)localObject).l = paramMessageRecord.isSend();
+        ((SpriteTaskParam)localObject).h = paramMessageRecord.uniseq;
+        if (CmShowAioMatcherImpl.judgeSupported(((SpriteTaskParam)localObject).i, 1))
         {
           if (paramMessageRecord.isSend())
           {
-            ((SpriteTaskParam)localObject).jdField_a_of_type_JavaLangString = paramMessageRecord.selfuin;
-            ((SpriteTaskParam)localObject).jdField_b_of_type_JavaLangString = paramMessageRecord.frienduin;
+            ((SpriteTaskParam)localObject).j = paramMessageRecord.selfuin;
+            ((SpriteTaskParam)localObject).k = paramMessageRecord.frienduin;
           }
           else
           {
-            ((SpriteTaskParam)localObject).jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
-            ((SpriteTaskParam)localObject).jdField_b_of_type_JavaLangString = paramMessageRecord.selfuin;
+            ((SpriteTaskParam)localObject).j = paramMessageRecord.frienduin;
+            ((SpriteTaskParam)localObject).k = paramMessageRecord.selfuin;
           }
         }
-        else if (CmShowAioMatcherImpl.judgeSupported(((SpriteTaskParam)localObject).h, 2)) {
-          ((SpriteTaskParam)localObject).jdField_a_of_type_JavaLangString = paramMessageRecord.senderuin;
+        else if (CmShowAioMatcherImpl.judgeSupported(((SpriteTaskParam)localObject).i, 2)) {
+          ((SpriteTaskParam)localObject).j = paramMessageRecord.senderuin;
         }
         b((SpriteTaskParam)localObject);
       }
@@ -465,15 +461,15 @@ public class SpriteBridge
   
   public void a(List<SpriteTaskParam> paramList)
   {
-    if ((paramList != null) && (paramList.size() != 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder != null))
+    if ((paramList != null) && (paramList.size() != 0) && (this.c != null))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+      Object localObject = this.a;
       if (localObject != null)
       {
         if (!((SpriteContext)localObject).c()) {
           return;
         }
-        localObject = ((SpriteScriptManagerImpl)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteCreator();
+        localObject = ((SpriteScriptManagerImpl)this.a.l().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteCreator();
         if (localObject == null) {
           return;
         }
@@ -490,8 +486,8 @@ public class SpriteBridge
           SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)paramList.next();
           try
           {
-            ((JSONArray)localObject).put(new JSONObject(a(localSpriteTaskParam)));
-            localSpriteAioScript.a(localSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
+            ((JSONArray)localObject).put(new JSONObject(c(localSpriteTaskParam)));
+            localSpriteAioScript.a(localSpriteTaskParam.j, false);
           }
           catch (Exception localException)
           {
@@ -505,18 +501,36 @@ public class SpriteBridge
         paramList.append("playShowAction('");
         paramList.append(((JSONArray)localObject).toString());
         paramList.append("');");
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(paramList.toString());
+        this.a.b(paramList.toString());
       }
     }
   }
   
+  public boolean a()
+  {
+    ISpriteTaskHandler localISpriteTaskHandler = this.b;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localISpriteTaskHandler != null) {
+      if (!localISpriteTaskHandler.c())
+      {
+        bool1 = bool2;
+        if (this.b.b() == null) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
   public void b()
   {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if (localCopyOnWriteArrayList != null) {
-      localCopyOnWriteArrayList.clear();
+    InitSpriteTask localInitSpriteTask = this.a.d("initSprite");
+    if (localInitSpriteTask != null) {
+      this.f = localInitSpriteTask.a();
     }
-    this.jdField_a_of_type_JavaLangString = null;
   }
   
   public void b(SpriteTaskParam paramSpriteTaskParam)
@@ -526,10 +540,19 @@ public class SpriteBridge
     }
     ThreadManager.excute(new SpriteBridge.1(this, paramSpriteTaskParam), 192, null, true);
   }
+  
+  public void c()
+  {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.d;
+    if (localCopyOnWriteArrayList != null) {
+      localCopyOnWriteArrayList.clear();
+    }
+    this.f = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteBridge
  * JD-Core Version:    0.7.0.1
  */

@@ -38,11 +38,11 @@ class ShareStructLongMessageManager$1
     try
     {
       Object localObject1;
-      if (paramSendResult.jdField_a_of_type_Int == 0)
+      if (paramSendResult.a == 0)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing))
+        if ((this.a instanceof MessageForStructing))
         {
-          localObject1 = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          localObject1 = (MessageForStructing)this.a;
           Object localObject2 = ((MessageForStructing)localObject1).richText;
           Object localObject3;
           Object localObject4;
@@ -56,7 +56,7 @@ class ShareStructLongMessageManager$1
               {
                 localObject4 = new StringBuilder();
                 ((StringBuilder)localObject4).append("current uid is");
-                ((StringBuilder)localObject4).append(paramSendResult.c);
+                ((StringBuilder)localObject4).append(paramSendResult.f);
                 QLog.d("ShareStructLongMessageManager", 2, ((StringBuilder)localObject4).toString());
               }
               localObject3 = ((List)localObject3).iterator();
@@ -65,7 +65,7 @@ class ShareStructLongMessageManager$1
                 localObject4 = (im_msg_body.Elem)((Iterator)localObject3).next();
                 if (((im_msg_body.Elem)localObject4).rich_msg.has())
                 {
-                  ((im_msg_body.Elem)localObject4).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramSendResult.c.getBytes()));
+                  ((im_msg_body.Elem)localObject4).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramSendResult.f.getBytes()));
                   ((im_msg_body.Elem)localObject4).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
                 }
                 else if ((((im_msg_body.Elem)localObject4).text.has()) && (((im_msg_body.Elem)localObject4).text.str.has()))
@@ -88,7 +88,7 @@ class ShareStructLongMessageManager$1
             {
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("current uid is");
-              ((StringBuilder)localObject3).append(paramSendResult.c);
+              ((StringBuilder)localObject3).append(paramSendResult.f);
               QLog.d("ShareStructLongMessageManager", 2, ((StringBuilder)localObject3).toString());
             }
             if ((localObject2 != null) && (ShareStructLongMessageManager.b(((MessageForStructing)localObject1).structingMsg)))
@@ -99,7 +99,7 @@ class ShareStructLongMessageManager$1
                 localObject3 = (im_msg_body.Elem)((Iterator)localObject2).next();
                 if (((im_msg_body.Elem)localObject3).rich_msg.has())
                 {
-                  ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramSendResult.c.getBytes()));
+                  ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramSendResult.f.getBytes()));
                   ((im_msg_body.Elem)localObject3).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
                   ((im_msg_body.Elem)localObject3).rich_msg.uint32_service_id.set(((MessageForStructing)localObject1).structingMsg.mMsgServiceID);
                 }
@@ -115,7 +115,7 @@ class ShareStructLongMessageManager$1
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
+          this.b.getMessageFacade().b(this.a, this.c, this.d);
         }
       }
       else
@@ -126,10 +126,10 @@ class ShareStructLongMessageManager$1
           ((StringBuilder)localObject1).append("upload  msg pack failed, result.errStr=");
           ((StringBuilder)localObject1).append(paramSendResult.b);
           ((StringBuilder)localObject1).append(",result.errStr=");
-          ((StringBuilder)localObject1).append(paramSendResult.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramSendResult.c);
           QLog.d("ShareStructLongMessageManager", 2, ((StringBuilder)localObject1).toString());
         }
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilShareStructLongMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        this.e.a(this.b, this.a);
         return;
       }
     }
@@ -138,13 +138,13 @@ class ShareStructLongMessageManager$1
       if (QLog.isColorLevel()) {
         QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramSendResult);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilShareStructLongMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.e.a(this.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareStructLongMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

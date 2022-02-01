@@ -1,18 +1,18 @@
 package androidx.appcompat.widget;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources.NotFoundException;
-import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.CompoundButton;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.ViewCompat;
 import androidx.core.widget.CompoundButtonCompat;
 
 class AppCompatCompoundButtonHelper
@@ -22,9 +22,10 @@ class AppCompatCompoundButtonHelper
   private boolean mHasButtonTint = false;
   private boolean mHasButtonTintMode = false;
   private boolean mSkipNextApply;
+  @NonNull
   private final CompoundButton mView;
   
-  AppCompatCompoundButtonHelper(CompoundButton paramCompoundButton)
+  AppCompatCompoundButtonHelper(@NonNull CompoundButton paramCompoundButton)
   {
     this.mView = paramCompoundButton;
   }
@@ -72,46 +73,48 @@ class AppCompatCompoundButtonHelper
     return this.mButtonTintMode;
   }
   
-  void loadFromAttributes(AttributeSet paramAttributeSet, int paramInt)
+  void loadFromAttributes(@Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = this.mView.getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.CompoundButton, paramInt, 0);
+    localTintTypedArray = TintTypedArray.obtainStyledAttributes(this.mView.getContext(), paramAttributeSet, R.styleable.CompoundButton, paramInt, 0);
+    CompoundButton localCompoundButton = this.mView;
+    ViewCompat.saveAttributeDataForStyleable(localCompoundButton, localCompoundButton.getContext(), R.styleable.CompoundButton, paramAttributeSet, localTintTypedArray.getWrappedTypeArray(), paramInt, 0);
     try
     {
-      if (paramAttributeSet.hasValue(R.styleable.CompoundButton_buttonCompat))
+      if (localTintTypedArray.hasValue(R.styleable.CompoundButton_buttonCompat))
       {
-        paramInt = paramAttributeSet.getResourceId(R.styleable.CompoundButton_buttonCompat, 0);
+        paramInt = localTintTypedArray.getResourceId(R.styleable.CompoundButton_buttonCompat, 0);
         if (paramInt == 0) {}
       }
     }
     finally
     {
-      label63:
-      paramAttributeSet.recycle();
+      label89:
+      localTintTypedArray.recycle();
     }
     try
     {
       this.mView.setButtonDrawable(AppCompatResources.getDrawable(this.mView.getContext(), paramInt));
       paramInt = 1;
     }
-    catch (Resources.NotFoundException localNotFoundException)
+    catch (Resources.NotFoundException paramAttributeSet)
     {
-      break label63;
+      break label89;
     }
     paramInt = 0;
-    if ((paramInt == 0) && (paramAttributeSet.hasValue(R.styleable.CompoundButton_android_button)))
+    if ((paramInt == 0) && (localTintTypedArray.hasValue(R.styleable.CompoundButton_android_button)))
     {
-      paramInt = paramAttributeSet.getResourceId(R.styleable.CompoundButton_android_button, 0);
+      paramInt = localTintTypedArray.getResourceId(R.styleable.CompoundButton_android_button, 0);
       if (paramInt != 0) {
         this.mView.setButtonDrawable(AppCompatResources.getDrawable(this.mView.getContext(), paramInt));
       }
     }
-    if (paramAttributeSet.hasValue(R.styleable.CompoundButton_buttonTint)) {
-      CompoundButtonCompat.setButtonTintList(this.mView, paramAttributeSet.getColorStateList(R.styleable.CompoundButton_buttonTint));
+    if (localTintTypedArray.hasValue(R.styleable.CompoundButton_buttonTint)) {
+      CompoundButtonCompat.setButtonTintList(this.mView, localTintTypedArray.getColorStateList(R.styleable.CompoundButton_buttonTint));
     }
-    if (paramAttributeSet.hasValue(R.styleable.CompoundButton_buttonTintMode)) {
-      CompoundButtonCompat.setButtonTintMode(this.mView, DrawableUtils.parseTintMode(paramAttributeSet.getInt(R.styleable.CompoundButton_buttonTintMode, -1), null));
+    if (localTintTypedArray.hasValue(R.styleable.CompoundButton_buttonTintMode)) {
+      CompoundButtonCompat.setButtonTintMode(this.mView, DrawableUtils.parseTintMode(localTintTypedArray.getInt(R.styleable.CompoundButton_buttonTintMode, -1), null));
     }
-    paramAttributeSet.recycle();
+    localTintTypedArray.recycle();
   }
   
   void onSetButtonDrawable()

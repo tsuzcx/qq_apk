@@ -10,24 +10,24 @@ import java.util.ArrayList;
 public class HiddenMsgSendCallback
   implements ISendMessageCallback
 {
-  public void a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public void afterMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
     ((HiddenChatHelper)paramAIOContext.a(39)).a();
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public boolean beforeMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
     return false;
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
+  public boolean onMessageSending(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.HiddenMsgSendCallback
  * JD-Core Version:    0.7.0.1
  */

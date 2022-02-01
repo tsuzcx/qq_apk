@@ -26,24 +26,24 @@ class DiandianTopConfigManager$1
         List localList = paramBundle.rpt_top_item.get();
         if ((localList != null) && (localList.size() > 0))
         {
-          DiandianTopConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager, paramArrayOfByte, System.currentTimeMillis());
-          if (!this.jdField_a_of_type_Boolean) {
+          DiandianTopConfigManager.a(this.c, paramArrayOfByte, System.currentTimeMillis());
+          if (!this.b) {
             break label208;
           }
-          DiandianTopConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager, paramBundle);
+          DiandianTopConfigManager.a(this.c, paramBundle);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d(DiandianTopConfigManager.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
         }
         ReadInJoyLogicEngineEventDispatcher.a().a(true, null);
-        DiandianTopConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager, paramArrayOfByte, 0L);
+        DiandianTopConfigManager.a(this.c, paramArrayOfByte, 0L);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d(DiandianTopConfigManager.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
       }
-      DiandianTopConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager, paramArrayOfByte, 0L);
+      DiandianTopConfigManager.a(this.c, paramArrayOfByte, 0L);
       ReadInJoyLogicEngineEventDispatcher.a().a(true, null);
       return;
     }
@@ -70,7 +70,7 @@ class DiandianTopConfigManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.DiandianTopConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

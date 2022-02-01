@@ -13,7 +13,27 @@ import java.util.Map.Entry;
 
 public class DownloadingRbResmeInfoMgr
 {
-  private DownloadingRbResmeInfo a(String paramString)
+  private String a(DownloadingRbResmeInfo paramDownloadingRbResmeInfo)
+  {
+    if (paramDownloadingRbResmeInfo == null)
+    {
+      QLog.e("DownloadingRbResmeInfoMgr", 1, "[UniformDL] stringOfRbObject err, obj=null");
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramDownloadingRbResmeInfo.a));
+    localStringBuilder.append("^");
+    localStringBuilder.append(paramDownloadingRbResmeInfo.b);
+    localStringBuilder.append("^");
+    localStringBuilder.append(String.valueOf(paramDownloadingRbResmeInfo.d));
+    localStringBuilder.append("^");
+    localStringBuilder.append(String.valueOf(paramDownloadingRbResmeInfo.e));
+    localStringBuilder.append("^");
+    localStringBuilder.append(paramDownloadingRbResmeInfo.c);
+    return localStringBuilder.toString();
+  }
+  
+  private DownloadingRbResmeInfo b(String paramString)
   {
     if (paramString == null)
     {
@@ -32,112 +52,22 @@ public class DownloadingRbResmeInfoMgr
       return null;
     }
     paramString = new DownloadingRbResmeInfo();
-    paramString.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[0]);
-    paramString.jdField_a_of_type_JavaLangString = arrayOfString[1];
-    paramString.jdField_a_of_type_Long = Long.parseLong(arrayOfString[2]);
-    paramString.jdField_a_of_type_Boolean = Boolean.parseBoolean(arrayOfString[3]);
+    paramString.a = Integer.parseInt(arrayOfString[0]);
+    paramString.b = arrayOfString[1];
+    paramString.d = Long.parseLong(arrayOfString[2]);
+    paramString.e = Boolean.parseBoolean(arrayOfString[3]);
     if (arrayOfString.length > 4)
     {
-      paramString.b = arrayOfString[4];
+      paramString.c = arrayOfString[4];
       return paramString;
     }
-    paramString.b = paramString.jdField_a_of_type_JavaLangString;
+    paramString.c = paramString.b;
     return paramString;
-  }
-  
-  private String a(DownloadingRbResmeInfo paramDownloadingRbResmeInfo)
-  {
-    if (paramDownloadingRbResmeInfo == null)
-    {
-      QLog.e("DownloadingRbResmeInfoMgr", 1, "[UniformDL] stringOfRbObject err, obj=null");
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(paramDownloadingRbResmeInfo.jdField_a_of_type_Int));
-    localStringBuilder.append("^");
-    localStringBuilder.append(paramDownloadingRbResmeInfo.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("^");
-    localStringBuilder.append(String.valueOf(paramDownloadingRbResmeInfo.jdField_a_of_type_Long));
-    localStringBuilder.append("^");
-    localStringBuilder.append(String.valueOf(paramDownloadingRbResmeInfo.jdField_a_of_type_Boolean));
-    localStringBuilder.append("^");
-    localStringBuilder.append(paramDownloadingRbResmeInfo.b);
-    return localStringBuilder.toString();
   }
   
   public SharedPreferences a()
   {
     return BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0);
-  }
-  
-  public Map<String, DownloadingRbResmeInfo> a()
-  {
-    localHashMap = new HashMap();
-    try
-    {
-      Object localObject1 = a().getAll();
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[UniformDL] getDownloadingRbResmeInfo, size:[");
-        ((StringBuilder)localObject2).append(((Map)localObject1).size());
-        ((StringBuilder)localObject2).append("]");
-        QLog.i("DownloadingRbResmeInfoMgr", 1, ((StringBuilder)localObject2).toString());
-      }
-      if ((localObject1 != null) && (((Map)localObject1).size() > 0))
-      {
-        localObject1 = ((Map)localObject1).entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
-          localObject2 = (String)((Map.Entry)localObject3).getKey();
-          localObject3 = a((String)((Map.Entry)localObject3).getValue());
-          if (localObject3 != null)
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[UniformDL] getDownloadingRbResmeInfo, url:[");
-            localStringBuilder.append((String)localObject2);
-            localStringBuilder.append("]] nId:[");
-            localStringBuilder.append(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_Int);
-            localStringBuilder.append("] w:[");
-            localStringBuilder.append(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_Boolean);
-            localStringBuilder.append("]");
-            QLog.i("DownloadingRbResmeInfoMgr", 1, localStringBuilder.toString());
-            localHashMap.put(localObject2, localObject3);
-          }
-          else
-          {
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("[UniformDL] getDownloadingRbResmeInfo, value error. url:[");
-            ((StringBuilder)localObject3).append((String)localObject2);
-            ((StringBuilder)localObject3).append("]");
-            QLog.e("DownloadingRbResmeInfoMgr", 1, ((StringBuilder)localObject3).toString());
-          }
-        }
-      }
-      return localHashMap;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      QLog.i("DownloadingRbResmeInfoMgr", 1, "[UniformDL] clearDownloadingRbResmeInfo...");
-      SharedPreferences.Editor localEditor = a().edit();
-      localEditor.clear();
-      localEditor.apply();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
   }
   
   public void a(String paramString)
@@ -175,16 +105,16 @@ public class DownloadingRbResmeInfoMgr
       QLog.i("DownloadingRbResmeInfoMgr", 1, ((StringBuilder)localObject).toString());
       localObject = a().edit();
       DownloadingRbResmeInfo localDownloadingRbResmeInfo = new DownloadingRbResmeInfo();
-      localDownloadingRbResmeInfo.jdField_a_of_type_Int = paramInt;
-      localDownloadingRbResmeInfo.jdField_a_of_type_JavaLangString = paramString2;
+      localDownloadingRbResmeInfo.a = paramInt;
+      localDownloadingRbResmeInfo.b = paramString2;
       if (!TextUtils.isEmpty(paramString3)) {
-        localDownloadingRbResmeInfo.b = paramString3;
+        localDownloadingRbResmeInfo.c = paramString3;
       } else {
-        localDownloadingRbResmeInfo.b = paramString2;
+        localDownloadingRbResmeInfo.c = paramString2;
       }
-      localDownloadingRbResmeInfo.jdField_a_of_type_Long = paramLong;
-      localDownloadingRbResmeInfo.jdField_a_of_type_Boolean = paramBoolean;
-      localDownloadingRbResmeInfo.jdField_a_of_type_AndroidOsBundle = paramBundle;
+      localDownloadingRbResmeInfo.d = paramLong;
+      localDownloadingRbResmeInfo.e = paramBoolean;
+      localDownloadingRbResmeInfo.f = paramBundle;
       ((SharedPreferences.Editor)localObject).putString(paramString1, a(localDownloadingRbResmeInfo));
       ((SharedPreferences.Editor)localObject).apply();
       return;
@@ -194,10 +124,80 @@ public class DownloadingRbResmeInfoMgr
       paramString1.printStackTrace();
     }
   }
+  
+  public Map<String, DownloadingRbResmeInfo> b()
+  {
+    localHashMap = new HashMap();
+    try
+    {
+      Object localObject1 = a().getAll();
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[UniformDL] getDownloadingRbResmeInfo, size:[");
+        ((StringBuilder)localObject2).append(((Map)localObject1).size());
+        ((StringBuilder)localObject2).append("]");
+        QLog.i("DownloadingRbResmeInfoMgr", 1, ((StringBuilder)localObject2).toString());
+      }
+      if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+      {
+        localObject1 = ((Map)localObject1).entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
+          localObject2 = (String)((Map.Entry)localObject3).getKey();
+          localObject3 = b((String)((Map.Entry)localObject3).getValue());
+          if (localObject3 != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[UniformDL] getDownloadingRbResmeInfo, url:[");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append("]] nId:[");
+            localStringBuilder.append(((DownloadingRbResmeInfo)localObject3).a);
+            localStringBuilder.append("] w:[");
+            localStringBuilder.append(((DownloadingRbResmeInfo)localObject3).e);
+            localStringBuilder.append("]");
+            QLog.i("DownloadingRbResmeInfoMgr", 1, localStringBuilder.toString());
+            localHashMap.put(localObject2, localObject3);
+          }
+          else
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[UniformDL] getDownloadingRbResmeInfo, value error. url:[");
+            ((StringBuilder)localObject3).append((String)localObject2);
+            ((StringBuilder)localObject3).append("]");
+            QLog.e("DownloadingRbResmeInfoMgr", 1, ((StringBuilder)localObject3).toString());
+          }
+        }
+      }
+      return localHashMap;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      QLog.i("DownloadingRbResmeInfoMgr", 1, "[UniformDL] clearDownloadingRbResmeInfo...");
+      SharedPreferences.Editor localEditor = a().edit();
+      localEditor.clear();
+      localEditor.apply();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.DownloadingRbResmeInfoMgr
  * JD-Core Version:    0.7.0.1
  */

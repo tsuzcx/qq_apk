@@ -14,8 +14,8 @@ class BaseLibManager$2$1$1
   
   public void run()
   {
-    BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(2)));
-    Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(3));
+    BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(this.a.optJSONObject(BaseLibInfo.getKey(2)));
+    Object localObject = this.a.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON((JSONObject)localObject);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[MiniEng] gameEngineLib ");
@@ -23,7 +23,7 @@ class BaseLibManager$2$1$1
     localStringBuilder.append(", miniAppEnginLib ");
     localStringBuilder.append(localObject);
     QMLog.i("miniapp-process_BaseLibManager", localStringBuilder.toString());
-    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.22.0.00008".equals(this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2$1.a)))
+    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.29.0.00002".equals(this.b.a)))
     {
       if (!LocalGameEngine.g().isWnsConfigModel())
       {
@@ -50,7 +50,7 @@ class BaseLibManager$2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.2.1.1
  * JD-Core Version:    0.7.0.1
  */

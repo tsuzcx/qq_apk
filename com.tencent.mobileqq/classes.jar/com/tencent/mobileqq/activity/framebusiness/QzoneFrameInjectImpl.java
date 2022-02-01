@@ -16,26 +16,26 @@ import java.util.HashMap;
 public class QzoneFrameInjectImpl
   extends BaseFrameBusiness
 {
-  public static final String a = FrameControllerUtil.c;
+  public static final String a = FrameControllerUtil.n;
   public static final String b = QzoneFrame.class.getName();
   
   public void a()
   {
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(QzoneFrame.class, FrameControllerUtil.i, FrameControllerUtil.c, 2130850754, 2130850755, 2131693876, 14, 4));
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(QzoneFrame.class, FrameControllerUtil.i, FrameControllerUtil.n, 2130852570, 2130852572, 2131891481, 14, 4));
   }
   
   public void a(FrameFragment paramFrameFragment)
   {
     paramFrameFragment = paramFrameFragment.a(QzoneFrame.class);
     if (paramFrameFragment != null) {
-      ((QzoneFrame)paramFrameFragment).k();
+      ((QzoneFrame)paramFrameFragment).n();
     }
   }
   
   public void a(FrameFragment paramFrameFragment, int paramInt1, Frame paramFrame, int paramInt2)
   {
     if ((paramFrame instanceof QzoneFrame)) {
-      ((QzoneFrame)paramFrame).j();
+      ((QzoneFrame)paramFrame).m();
     }
   }
   
@@ -46,11 +46,11 @@ public class QzoneFrameInjectImpl
   
   public boolean a(HashMap<String, View> paramHashMap)
   {
-    paramHashMap = (RedTouch)paramHashMap.get(FrameControllerUtil.d);
+    paramHashMap = (RedTouch)paramHashMap.get(FrameControllerUtil.o);
     if (paramHashMap == null) {
       return false;
     }
-    return paramHashMap.c();
+    return paramHashMap.h();
   }
   
   public void b()
@@ -61,7 +61,7 @@ public class QzoneFrameInjectImpl
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
     localStringBuilder.append(localFrameInfoBean.a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
+    localStringBuilder.append(localFrameInfoBean.c());
     QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
   }
   
@@ -69,10 +69,10 @@ public class QzoneFrameInjectImpl
   {
     if (b.equals(paramString))
     {
-      paramString = paramFrameFragment.a();
+      paramString = paramFrameFragment.v();
       if ((paramString instanceof QzoneFrame))
       {
-        boolean bool = a(paramFrameFragment.a);
+        boolean bool = a(paramFrameFragment.G);
         ((QzoneFrame)paramString).c(bool);
       }
     }
@@ -80,7 +80,7 @@ public class QzoneFrameInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QzoneFrameInjectImpl
  * JD-Core Version:    0.7.0.1
  */

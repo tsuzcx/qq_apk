@@ -3,9 +3,9 @@ package com.tencent.mobileqq.kandian.glue.report;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
 import com.tencent.mobileqq.kandian.repo.account.api.IUserOperationModule;
+import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -20,14 +20,14 @@ final class ReadinjoyReportUtils$6
   {
     try
     {
-      IUserOperationModule localIUserOperationModule = (IUserOperationModule)QRoute.api(IUserOperationModule.class);
-      this.jdField_a_of_type_JavaUtilList.addAll(ReadinjoySPEventReport.a().a(this.jdField_a_of_type_Int));
+      UserOperationModule localUserOperationModule = UserOperationModule.getInstance();
+      this.a.addAll(ReadinjoySPEventReport.a().c(this.b));
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("KDreportPushEffectEvent info : eventId:");
-      ((StringBuilder)localObject).append(Integer.toString(this.jdField_a_of_type_Int));
+      ((StringBuilder)localObject).append(Integer.toString(this.b));
       ((StringBuilder)localObject).append("; AttributeList:[");
       localObject = ((StringBuilder)localObject).toString();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         oidb_cmd0x80a.AttributeList localAttributeList = (oidb_cmd0x80a.AttributeList)localIterator.next();
@@ -45,7 +45,7 @@ final class ReadinjoyReportUtils$6
       if (QLog.isColorLevel()) {
         QLog.d("ReadinjoyReportUtils", 2, (String)localObject);
       }
-      localIUserOperationModule.request0x80aPushEffectEvent(this.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaUtilList);
+      localUserOperationModule.request0x80aPushEffectEvent(this.b, "", this.a);
       return;
     }
     catch (Exception localException)
@@ -57,7 +57,7 @@ final class ReadinjoyReportUtils$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.6
  * JD-Core Version:    0.7.0.1
  */

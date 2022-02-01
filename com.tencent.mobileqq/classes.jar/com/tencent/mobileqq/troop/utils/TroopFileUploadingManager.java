@@ -6,60 +6,55 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class TroopFileUploadingManager
 {
   public static TroopFileUploadingManager a;
-  public BizTroopObserver a;
-  public QQAppInterface a;
-  
-  public TroopFileUploadingManager()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopFileUploadingManager.1(this);
-  }
+  public QQAppInterface b;
+  public BizTroopObserver c = new TroopFileUploadingManager.1(this);
   
   public static TroopFileUploadingManager a(QQAppInterface paramQQAppInterface)
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager == null)
+      if (a == null)
       {
-        b(paramQQAppInterface);
+        c(paramQQAppInterface);
       }
-      else if (jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
+      else if (a.b != paramQQAppInterface)
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+        if (a.b != null)
         {
-          jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-          jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+          a.b.removeObserver(a.c);
+          a.b = null;
         }
-        jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager = null;
-        b(paramQQAppInterface);
+        a = null;
+        c(paramQQAppInterface);
       }
-      paramQQAppInterface = jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager;
+      paramQQAppInterface = a;
       return paramQQAppInterface;
     }
     finally {}
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    TroopFileUploadingManager localTroopFileUploadingManager = jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager;
+    TroopFileUploadingManager localTroopFileUploadingManager = a;
     if (localTroopFileUploadingManager != null)
     {
-      paramQQAppInterface.removeObserver(localTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-      jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager = null;
+      paramQQAppInterface.removeObserver(localTroopFileUploadingManager.c);
+      a.b = null;
+      a = null;
     }
   }
   
-  private static void b(QQAppInterface paramQQAppInterface)
+  private static void c(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager = new TroopFileUploadingManager();
-    TroopFileUploadingManager localTroopFileUploadingManager = jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileUploadingManager;
-    localTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(localTroopFileUploadingManager.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    a = new TroopFileUploadingManager();
+    TroopFileUploadingManager localTroopFileUploadingManager = a;
+    localTroopFileUploadingManager.b = paramQQAppInterface;
+    paramQQAppInterface.addObserver(localTroopFileUploadingManager.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileUploadingManager
  * JD-Core Version:    0.7.0.1
  */

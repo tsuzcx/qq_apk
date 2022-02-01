@@ -16,30 +16,29 @@ import java.util.List;
 public class GetShareGroupDateListResponse
   extends BaseResponse
 {
-  public long a;
-  public String a;
-  public ArrayList<VideoCollectionItem> a;
   public boolean a;
+  public String b;
+  public long e;
+  public ArrayList<VideoCollectionItem> f = new ArrayList();
   
   public GetShareGroupDateListResponse(String paramString, qqstory_service.RspGroupDateVideoList paramRspGroupDateVideoList)
   {
     super(paramRspGroupDateVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     int i = paramRspGroupDateVideoList.is_end.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_JavaLangString = paramRspGroupDateVideoList.next_cookie.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramRspGroupDateVideoList.seqno.get();
+    this.a = bool;
+    this.b = paramRspGroupDateVideoList.next_cookie.get().toStringUtf8();
+    this.e = paramRspGroupDateVideoList.seqno.get();
     paramRspGroupDateVideoList = paramRspGroupDateVideoList.group_node_info.get().iterator();
     while (paramRspGroupDateVideoList.hasNext())
     {
       qqstory_struct.GroupNodeInfo localGroupNodeInfo = (qqstory_struct.GroupNodeInfo)paramRspGroupDateVideoList.next();
       VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
       localVideoCollectionItem.convertFrom("Q.qqstory.shareGroup:GetDateCollectionListResponse", paramString, localGroupNodeInfo);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
+      this.f.add(localVideoCollectionItem);
     }
   }
   
@@ -47,26 +46,26 @@ public class GetShareGroupDateListResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetShareGroupDateListResponse{errorCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", errorMsg='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", nextCookie='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", seq=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", mCollectionItemList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetShareGroupDateListResponse
  * JD-Core Version:    0.7.0.1
  */

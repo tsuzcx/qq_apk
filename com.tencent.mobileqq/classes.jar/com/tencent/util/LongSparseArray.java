@@ -3,11 +3,11 @@ package com.tencent.util;
 public class LongSparseArray<E>
   implements Cloneable
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
-  private long[] jdField_a_of_type_ArrayOfLong;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  private static final Object a = new Object();
+  private boolean b = false;
+  private long[] c;
+  private Object[] d;
+  private int e;
   
   public LongSparseArray()
   {
@@ -16,24 +16,10 @@ public class LongSparseArray<E>
   
   public LongSparseArray(int paramInt)
   {
-    paramInt = b(paramInt);
-    this.jdField_a_of_type_ArrayOfLong = new long[paramInt];
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[paramInt];
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static int a(int paramInt)
-  {
-    int i = 4;
-    while (i < 32)
-    {
-      int j = (1 << i) - 12;
-      if (paramInt <= j) {
-        return j;
-      }
-      i += 1;
-    }
-    return paramInt;
+    paramInt = e(paramInt);
+    this.c = new long[paramInt];
+    this.d = new Object[paramInt];
+    this.e = 0;
   }
   
   private static int a(long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong)
@@ -59,23 +45,32 @@ public class LongSparseArray<E>
     return paramInt1 ^ 0xFFFFFFFF;
   }
   
-  public static int b(int paramInt)
+  public static int d(int paramInt)
   {
-    return a(paramInt * 8) / 8;
+    int i = 4;
+    while (i < 32)
+    {
+      int j = (1 << i) - 12;
+      if (paramInt <= j) {
+        return j;
+      }
+      i += 1;
+    }
+    return paramInt;
   }
   
-  private void b()
+  private void d()
   {
-    int m = this.jdField_a_of_type_Int;
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    int m = this.e;
+    long[] arrayOfLong = this.c;
+    Object[] arrayOfObject = this.d;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
       k = j;
-      if (localObject != jdField_a_of_type_JavaLangObject)
+      if (localObject != a)
       {
         if (i != j)
         {
@@ -87,24 +82,13 @@ public class LongSparseArray<E>
       }
       i += 1;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = j;
+    this.b = false;
+    this.e = j;
   }
   
-  public int a()
+  public static int e(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-    return this.jdField_a_of_type_ArrayOfLong[paramInt];
+    return d(paramInt * 8) / 8;
   }
   
   public LongSparseArray<E> a()
@@ -123,21 +107,13 @@ public class LongSparseArray<E>
       }
       try
       {
-        localLongSparseArray.jdField_a_of_type_ArrayOfLong = ((long[])this.jdField_a_of_type_ArrayOfLong.clone());
-        localLongSparseArray.jdField_a_of_type_ArrayOfJavaLangObject = ((Object[])this.jdField_a_of_type_ArrayOfJavaLangObject.clone());
+        localLongSparseArray.c = ((long[])this.c.clone());
+        localLongSparseArray.d = ((Object[])this.d.clone());
         return localLongSparseArray;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
     }
     return null;
-  }
-  
-  public E a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-    return this.jdField_a_of_type_ArrayOfJavaLangObject[paramInt];
   }
   
   public E a(long paramLong)
@@ -147,11 +123,11 @@ public class LongSparseArray<E>
   
   public E a(long paramLong, E paramE)
   {
-    int i = a(this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_Int, paramLong);
+    int i = a(this.c, 0, this.e, paramLong);
     if (i >= 0)
     {
-      Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      if (arrayOfObject[i] == jdField_a_of_type_JavaLangObject) {
+      Object[] arrayOfObject = this.d;
+      if (arrayOfObject[i] == a) {
         return paramE;
       }
       return arrayOfObject[i];
@@ -159,142 +135,166 @@ public class LongSparseArray<E>
     return paramE;
   }
   
-  public void a()
+  public void a(int paramInt)
   {
-    int j = this.jdField_a_of_type_Int;
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    Object[] arrayOfObject = this.d;
+    Object localObject1 = arrayOfObject[paramInt];
+    Object localObject2 = a;
+    if (localObject1 != localObject2)
+    {
+      arrayOfObject[paramInt] = localObject2;
+      this.b = true;
+    }
+  }
+  
+  public int b()
+  {
+    if (this.b) {
+      d();
+    }
+    return this.e;
+  }
+  
+  public long b(int paramInt)
+  {
+    if (this.b) {
+      d();
+    }
+    return this.c[paramInt];
+  }
+  
+  public void b(long paramLong)
+  {
+    int i = a(this.c, 0, this.e, paramLong);
+    if (i >= 0)
+    {
+      Object[] arrayOfObject = this.d;
+      Object localObject1 = arrayOfObject[i];
+      Object localObject2 = a;
+      if (localObject1 != localObject2)
+      {
+        arrayOfObject[i] = localObject2;
+        this.b = true;
+      }
+    }
+  }
+  
+  public void b(long paramLong, E paramE)
+  {
+    int i = a(this.c, 0, this.e, paramLong);
+    if (i >= 0)
+    {
+      this.d[i] = paramE;
+      return;
+    }
+    int j = i ^ 0xFFFFFFFF;
+    Object localObject1;
+    if (j < this.e)
+    {
+      localObject1 = this.d;
+      if (localObject1[j] == a)
+      {
+        this.c[j] = paramLong;
+        localObject1[j] = paramE;
+        return;
+      }
+    }
+    i = j;
+    if (this.b)
+    {
+      i = j;
+      if (this.e >= this.c.length)
+      {
+        d();
+        i = a(this.c, 0, this.e, paramLong) ^ 0xFFFFFFFF;
+      }
+    }
+    j = this.e;
+    if (j >= this.c.length)
+    {
+      j = e(j + 1);
+      localObject1 = new long[j];
+      Object[] arrayOfObject = new Object[j];
+      Object localObject2 = this.c;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.d;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.c = ((long[])localObject1);
+      this.d = arrayOfObject;
+    }
+    j = this.e;
+    if (j - i != 0)
+    {
+      localObject1 = this.c;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.d;
+      System.arraycopy(localObject1, i, localObject1, k, this.e - i);
+    }
+    this.c[i] = paramLong;
+    this.d[i] = paramE;
+    this.e += 1;
+  }
+  
+  public E c(int paramInt)
+  {
+    if (this.b) {
+      d();
+    }
+    return this.d[paramInt];
+  }
+  
+  public void c()
+  {
+    int j = this.e;
+    Object[] arrayOfObject = this.d;
     int i = 0;
     while (i < j)
     {
       arrayOfObject[i] = null;
       i += 1;
     }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    this.e = 0;
+    this.b = false;
   }
   
-  public void a(int paramInt)
+  public void c(long paramLong)
   {
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-    Object localObject1 = arrayOfObject[paramInt];
-    Object localObject2 = jdField_a_of_type_JavaLangObject;
-    if (localObject1 != localObject2)
-    {
-      arrayOfObject[paramInt] = localObject2;
-      this.jdField_a_of_type_Boolean = true;
-    }
+    b(paramLong);
   }
   
-  public void a(long paramLong)
+  public void c(long paramLong, E paramE)
   {
-    int i = a(this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_Int, paramLong);
-    if (i >= 0)
+    int i = this.e;
+    if ((i != 0) && (paramLong <= this.c[(i - 1)]))
     {
-      Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      Object localObject1 = arrayOfObject[i];
-      Object localObject2 = jdField_a_of_type_JavaLangObject;
-      if (localObject1 != localObject2)
-      {
-        arrayOfObject[i] = localObject2;
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-  }
-  
-  public void a(long paramLong, E paramE)
-  {
-    int i = a(this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_Int, paramLong);
-    if (i >= 0)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangObject[i] = paramE;
+      b(paramLong, paramE);
       return;
     }
-    int j = i ^ 0xFFFFFFFF;
-    Object localObject1;
-    if (j < this.jdField_a_of_type_Int)
-    {
-      localObject1 = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      if (localObject1[j] == jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_ArrayOfLong[j] = paramLong;
-        localObject1[j] = paramE;
-        return;
-      }
+    if ((this.b) && (this.e >= this.c.length)) {
+      d();
     }
-    i = j;
-    if (this.jdField_a_of_type_Boolean)
+    i = this.e;
+    if (i >= this.c.length)
     {
-      i = j;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfLong.length)
-      {
-        b();
-        i = a(this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_Int, paramLong) ^ 0xFFFFFFFF;
-      }
-    }
-    j = this.jdField_a_of_type_Int;
-    if (j >= this.jdField_a_of_type_ArrayOfLong.length)
-    {
-      j = b(j + 1);
-      localObject1 = new long[j];
-      Object[] arrayOfObject = new Object[j];
-      Object localObject2 = this.jdField_a_of_type_ArrayOfLong;
-      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
-      localObject2 = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
-      this.jdField_a_of_type_ArrayOfLong = ((long[])localObject1);
-      this.jdField_a_of_type_ArrayOfJavaLangObject = arrayOfObject;
-    }
-    j = this.jdField_a_of_type_Int;
-    if (j - i != 0)
-    {
-      localObject1 = this.jdField_a_of_type_ArrayOfLong;
-      int k = i + 1;
-      System.arraycopy(localObject1, i, localObject1, k, j - i);
-      localObject1 = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      System.arraycopy(localObject1, i, localObject1, k, this.jdField_a_of_type_Int - i);
-    }
-    this.jdField_a_of_type_ArrayOfLong[i] = paramLong;
-    this.jdField_a_of_type_ArrayOfJavaLangObject[i] = paramE;
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void b(long paramLong)
-  {
-    a(paramLong);
-  }
-  
-  public void b(long paramLong, E paramE)
-  {
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 0) && (paramLong <= this.jdField_a_of_type_ArrayOfLong[(i - 1)]))
-    {
-      a(paramLong, paramE);
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfLong.length)) {
-      b();
-    }
-    i = this.jdField_a_of_type_Int;
-    if (i >= this.jdField_a_of_type_ArrayOfLong.length)
-    {
-      int j = b(i + 1);
+      int j = e(i + 1);
       long[] arrayOfLong = new long[j];
       Object[] arrayOfObject = new Object[j];
-      Object localObject = this.jdField_a_of_type_ArrayOfLong;
+      Object localObject = this.c;
       System.arraycopy(localObject, 0, arrayOfLong, 0, localObject.length);
-      localObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+      localObject = this.d;
       System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
-      this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
-      this.jdField_a_of_type_ArrayOfJavaLangObject = arrayOfObject;
+      this.c = arrayOfLong;
+      this.d = arrayOfObject;
     }
-    this.jdField_a_of_type_ArrayOfLong[i] = paramLong;
-    this.jdField_a_of_type_ArrayOfJavaLangObject[i] = paramE;
-    this.jdField_a_of_type_Int = (i + 1);
+    this.c[i] = paramLong;
+    this.d[i] = paramE;
+    this.e = (i + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.LongSparseArray
  * JD-Core Version:    0.7.0.1
  */

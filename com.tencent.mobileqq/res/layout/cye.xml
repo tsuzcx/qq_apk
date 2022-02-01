@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/is1" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tool="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/bms" android:background="#ffe2e2e2" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="20.0dip" />
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_toLeftOf="@id/mc1" android:layout_below="@id/bms">
-        <TextView android:textSize="16.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="最近上架" android:maxEms="50" android:singleLine="true" />
-        <View android:layout_gravity="center" android:id="@id/o_m" android:background="@color/ajr" android:layout_width="1.0px" android:layout_height="14.0dip" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" />
-        <TextView android:textSize="16.0sp" android:textColor="#ff00c9ff" android:ellipsize="end" android:id="@id/o_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="一个月有效期" android:maxEms="50" android:singleLine="true" />
+<LinearLayout android:gravity="center" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/dwp" android:visibility="gone" android:layout_width="250.0dip" android:layout_height="185.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_ghost" android:gravity="center_horizontal" android:id="@id/o81" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/oe_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/o81">
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_ghost" android:gravity="center" android:id="@id/qit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y1f" />
+            <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" android:src="@drawable/qcircle_skin_icon_general_arrow_right_ghost" android:scaleType="centerCrop" />
+        </LinearLayout>
     </LinearLayout>
-    <Button android:textSize="12.0sp" android:textColor="#ff5b3505" android:ellipsize="end" android:gravity="center" android:id="@id/mc1" android:background="@drawable/iau" android:layout_width="72.0dip" android:layout_height="30.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="5.0dip" android:text="@string/y7q" android:maxEms="9" android:singleLine="true" android:layout_below="@id/bms" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ofl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include layout="@layout/cz2" />
+    </LinearLayout>
+</LinearLayout>

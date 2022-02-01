@@ -30,13 +30,13 @@ import java.util.List;
 public class QzoneSearchResultView
   extends LinearLayout
 {
-  private AccountSearchPb.ResultItem a;
   public ImageView a;
-  public TextView a;
-  public QzoneImagesContainer a;
   public TextView b;
   public TextView c;
   public TextView d;
+  public TextView e;
+  public QzoneImagesContainer f;
+  private AccountSearchPb.ResultItem g;
   
   public QzoneSearchResultView(Context paramContext)
   {
@@ -53,14 +53,9 @@ public class QzoneSearchResultView
     QZoneHelper.forwardToBrowser(paramBaseActivity, paramString, -1, null, null);
   }
   
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$ResultItem.uin.get());
-  }
-  
   public void a(BaseActivity paramBaseActivity)
   {
-    QZoneHelper.forwardToDetail(paramBaseActivity, QZoneHelper.UserInfo.getInstance(), this.jdField_a_of_type_AddcontactsAccountSearchPb$ResultItem.jmp_url.get().toStringUtf8(), -1);
+    QZoneHelper.forwardToDetail(paramBaseActivity, QZoneHelper.UserInfo.getInstance(), this.g.jmp_url.get().toStringUtf8(), -1);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SearchBaseFragment paramSearchBaseFragment, AccountSearchPb.ResultItem paramResultItem)
@@ -68,8 +63,8 @@ public class QzoneSearchResultView
     if ((paramResultItem != null) && (paramSearchBaseFragment != null) && (paramQQAppInterface != null))
     {
       setVisibility(0);
-      this.jdField_a_of_type_AddcontactsAccountSearchPb$ResultItem = paramResultItem;
-      paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(a());
+      this.g = paramResultItem;
+      paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(getUin());
       if (paramQQAppInterface != null) {
         paramQQAppInterface = paramQQAppInterface.name;
       } else {
@@ -85,77 +80,82 @@ public class QzoneSearchResultView
       localObject2 = paramSearchBaseFragment.a(80000004, (String)localObject2);
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+        this.b.setText((CharSequence)localObject2);
       }
       else if (!TextUtils.isEmpty(paramQQAppInterface))
       {
         paramQQAppInterface = paramSearchBaseFragment.a(80000004, paramQQAppInterface);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQQAppInterface);
+        this.b.setText(paramQQAppInterface);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+        this.b.setText(getUin());
       }
       if (l > 0L) {
-        this.b.setText(localCharSequence);
+        this.c.setText(localCharSequence);
       } else {
-        this.b.setVisibility(8);
+        this.c.setVisibility(8);
       }
       paramQQAppInterface = paramSearchBaseFragment.a(80000004, (String)localObject1);
       if (TextUtils.isEmpty(paramQQAppInterface))
       {
-        this.c.setVisibility(8);
-        this.d.setMaxLines(2);
-        this.d.setEllipsize(TextUtils.TruncateAt.END);
+        this.d.setVisibility(8);
+        this.e.setMaxLines(2);
+        this.e.setEllipsize(TextUtils.TruncateAt.END);
       }
       else
       {
-        this.c.setVisibility(0);
+        this.d.setVisibility(0);
         localObject1 = new SpannableStringBuilder("《");
         ((SpannableStringBuilder)localObject1).append(paramQQAppInterface).append("》");
-        this.c.setText((CharSequence)localObject1);
-        this.d.setMaxLines(1);
-        this.d.setEllipsize(TextUtils.TruncateAt.END);
+        this.d.setText((CharSequence)localObject1);
+        this.e.setMaxLines(1);
+        this.e.setEllipsize(TextUtils.TruncateAt.END);
       }
       paramQQAppInterface = paramSearchBaseFragment.a(80000004, str);
       if (TextUtils.isEmpty(paramQQAppInterface)) {
-        this.d.setVisibility(8);
+        this.e.setVisibility(8);
       } else {
-        this.d.setText(paramQQAppInterface);
+        this.e.setText(paramQQAppInterface);
       }
       boolean bool = "1".equals(paramResultItem.has_video.get().toStringUtf8());
-      this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer.setImages(localList, i, bool);
+      this.f.setImages(localList, i, bool);
       return;
     }
     setVisibility(8);
   }
   
+  public String getUin()
+  {
+    return String.valueOf(this.g.uin.get());
+  }
+  
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368066));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366879));
-    this.b = ((TextView)findViewById(2131373261));
-    this.c = ((TextView)findViewById(2131378784));
-    this.d = ((TextView)findViewById(2131378120));
-    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131368530));
+    this.a = ((ImageView)findViewById(2131434916));
+    this.b = ((TextView)findViewById(2131433208));
+    this.c = ((TextView)findViewById(2131440870));
+    this.d = ((TextView)findViewById(2131447463));
+    this.e = ((TextView)findViewById(2131446627));
+    this.f = ((QzoneImagesContainer)findViewById(2131435434));
   }
   
   public void setAvartaView(Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      this.a.setVisibility(0);
+      this.a.setImageBitmap(paramBitmap);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.f());
+    this.a.setVisibility(0);
+    this.a.setImageBitmap(ImageUtil.k());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.QzoneSearchResultView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/iew" android:background="#0c000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/msy" android:background="@drawable/qq_status_card_background" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip">
-        <TextView android:textSize="20.0dip" android:textColor="@color/skin_black" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/wmq" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/aka" android:gravity="center|top" android:id="@id/ogs" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:lines="2" android:layout_below="@id/kbs" android:layout_centerHorizontal="true" />
-        <LinearLayout android:orientation="vertical" android:id="@id/fda" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/ogs" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/moo" android:paddingLeft="88.0dip" android:paddingRight="88.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/fda">
-            <Button android:textSize="@dimen/i9" android:id="@id/aga" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="39.0dip" android:layout_marginRight="12.0dip" android:text="@string/wmr" android:layout_weight="1.0" style="@style/e2" />
-            <Button android:id="@id/mo2" android:layout_width="0.0dip" android:layout_height="39.0dip" android:text="@string/dna" android:layout_weight="1.0" style="@style/et" />
-        </LinearLayout>
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/moo" android:layout_centerHorizontal="true">
-            <TextView android:textColor="@color/aka" android:ellipsize="end" android:id="@id/n21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/skin_online_status_link_color" android:id="@id/o6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="4.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</FrameLayout>
+    <ImageView android:layout_width="176.0dip" android:layout_height="132.0dip" android:layout_marginTop="60.0dip" android:src="@drawable/ibx" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/x55" />
+</LinearLayout>

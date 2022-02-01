@@ -40,13 +40,13 @@ public class AddVideoController
           throw new IllegalArgumentException(paramContext.toString());
         }
         ActionSheet localActionSheet = ActionSheet.create(paramContext);
-        localActionSheet.addButton(HardCodeUtil.a(2131700103), 5);
+        localActionSheet.addButton(HardCodeUtil.a(2131898148), 5);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131700101));
+        localStringBuilder.append(HardCodeUtil.a(2131898146));
         localStringBuilder.append(QQStoryConstant.a);
-        localStringBuilder.append(HardCodeUtil.a(2131700102));
+        localStringBuilder.append(HardCodeUtil.a(2131898147));
         localActionSheet.addButton(localStringBuilder.toString(), 5);
-        localActionSheet.addCancelButton(2131690728);
+        localActionSheet.addCancelButton(2131887648);
         localActionSheet.setOnButtonClickListener(new AddVideoController.1(this, localActionSheet, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
         if (!localActionSheet.isShowing()) {
           localActionSheet.show();
@@ -72,7 +72,7 @@ public class AddVideoController
         {
           paramContext = (Activity)paramContext;
           paramString1.a(paramContext, paramString2, paramInt2);
-          paramContext.overridePendingTransition(2130772281, 2130772067);
+          paramContext.overridePendingTransition(2130772373, 2130772092);
           return;
         }
         paramString1.a(paramContext, paramString2);

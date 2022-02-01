@@ -27,10 +27,10 @@ public class StoryDetailListView
   extends SegmentList
 {
   public int a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RequestDataListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener;
-  private List<SegmentView> jdField_a_of_type_JavaUtilList = new ArrayList();
   public int b;
+  private RequestDataListener c;
+  private Activity d;
+  private List<SegmentView> m = new ArrayList();
   
   public StoryDetailListView(Context paramContext)
   {
@@ -47,9 +47,78 @@ public class StoryDetailListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
+  protected void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    super.setActTAG("list_qqstory_detail");
+    this.m.add(new GeneralFeedProfileSegment(this.d, this.a, this.b));
+    this.m.add(new ShareGroupFeedProfileSegment(this.d, this.a, this.b));
+    this.m.add(new BannerProfileSegment(this.d));
+    this.m.add(new DetailInteractSegment(this.d));
+    this.m.add(new DetailTagListSegment(this.d));
+    this.m.add(new DetailDoubleTabSegment(this.d));
+    this.m.add(new DetailLikeListSegment(this.d));
+    this.m.add(new DetailCommentSegment(this.d));
+    this.m.add(new DetailEmptyInteractionSegment(this.d));
+    this.m.add(new DetailEmptySegment(this.d));
+    Iterator localIterator = this.m.iterator();
+    while (localIterator.hasNext()) {
+      a((SegmentView)localIterator.next());
+    }
+    super.setDivider(null);
+    super.setVerticalScrollBarEnabled(false);
+    super.setHorizontalScrollBarEnabled(false);
+    super.setBackgroundResource(2130852616);
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.d = paramActivity;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      super.a(1);
+      return;
+    }
+    super.a(1, g);
+  }
+  
+  public boolean b()
+  {
+    Iterator localIterator = this.m.iterator();
+    while (localIterator.hasNext())
+    {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof DetailInteractSegment)) {
+        return false;
+      }
+      if (localSegmentView.a() > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public int getCommentSegmentIndex()
+  {
+    Iterator localIterator = this.m.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof DetailCommentSegment)) {
+        return i;
+      }
+      i += localSegmentView.a();
+    }
+    return i;
+  }
+  
+  public int getLastCommentPoi()
+  {
+    Iterator localIterator = this.m.iterator();
     int i = 0;
     int j;
     for (;;)
@@ -72,79 +141,10 @@ public class StoryDetailListView
     return j;
   }
   
-  protected void a()
-  {
-    super.setActTAG("list_qqstory_detail");
-    this.jdField_a_of_type_JavaUtilList.add(new GeneralFeedProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_JavaUtilList.add(new ShareGroupFeedProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_JavaUtilList.add(new BannerProfileSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailInteractSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailTagListSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailDoubleTabSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailLikeListSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailCommentSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailEmptyInteractionSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailEmptySegment(this.jdField_a_of_type_AndroidAppActivity));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      a((SegmentView)localIterator.next());
-    }
-    super.setDivider(null);
-    super.setVerticalScrollBarEnabled(false);
-    super.setHorizontalScrollBarEnabled(false);
-    super.setBackgroundResource(2130850794);
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      super.a(1);
-      return;
-    }
-    super.a(1, e);
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      SegmentView localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof DetailInteractSegment)) {
-        return false;
-      }
-      if (localSegmentView.a() > 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      SegmentView localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof DetailCommentSegment)) {
-        return i;
-      }
-      i += localSegmentView.a();
-    }
-    return i;
-  }
-  
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener;
+    paramView = this.c;
     if (paramView != null) {
       paramView.a();
     }
@@ -153,13 +153,13 @@ public class StoryDetailListView
   
   public void setCallback(DetailEventCallback paramDetailEventCallback)
   {
-    GeneralFeedProfileSegment localGeneralFeedProfileSegment = (GeneralFeedProfileSegment)a("GeneralFeedProfileSegment");
-    ShareGroupFeedProfileSegment localShareGroupFeedProfileSegment = (ShareGroupFeedProfileSegment)a("ShareGroupFeedProfileSegment");
-    BannerProfileSegment localBannerProfileSegment = (BannerProfileSegment)a("BannerProfileSegment");
-    DetailInteractSegment localDetailInteractSegment = (DetailInteractSegment)a("DetailInteractSegment");
-    DetailDoubleTabSegment localDetailDoubleTabSegment = (DetailDoubleTabSegment)a("DetailDoubleTabSegment");
-    DetailLikeListSegment localDetailLikeListSegment = (DetailLikeListSegment)a("DetailLikeListSegment");
-    DetailCommentSegment localDetailCommentSegment = (DetailCommentSegment)a("DetailCommentSegment");
+    GeneralFeedProfileSegment localGeneralFeedProfileSegment = (GeneralFeedProfileSegment)b("GeneralFeedProfileSegment");
+    ShareGroupFeedProfileSegment localShareGroupFeedProfileSegment = (ShareGroupFeedProfileSegment)b("ShareGroupFeedProfileSegment");
+    BannerProfileSegment localBannerProfileSegment = (BannerProfileSegment)b("BannerProfileSegment");
+    DetailInteractSegment localDetailInteractSegment = (DetailInteractSegment)b("DetailInteractSegment");
+    DetailDoubleTabSegment localDetailDoubleTabSegment = (DetailDoubleTabSegment)b("DetailDoubleTabSegment");
+    DetailLikeListSegment localDetailLikeListSegment = (DetailLikeListSegment)b("DetailLikeListSegment");
+    DetailCommentSegment localDetailCommentSegment = (DetailCommentSegment)b("DetailCommentSegment");
     localGeneralFeedProfileSegment.a(paramDetailEventCallback);
     localShareGroupFeedProfileSegment.a(paramDetailEventCallback);
     localBannerProfileSegment.a(paramDetailEventCallback);
@@ -171,20 +171,20 @@ public class StoryDetailListView
   
   public void setProfileSegmentDisplay(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       SegmentView localSegmentView = (SegmentView)localIterator.next();
       if ((localSegmentView instanceof DetailInteractSegment)) {
         return;
       }
-      localSegmentView.a_(paramBoolean);
+      localSegmentView.c(paramBoolean);
     }
   }
   
   public void setRequestDataListener(RequestDataListener paramRequestDataListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener = paramRequestDataListener;
+    this.c = paramRequestDataListener;
   }
 }
 

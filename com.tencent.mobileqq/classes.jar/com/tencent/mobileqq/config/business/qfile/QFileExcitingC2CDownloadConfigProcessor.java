@@ -28,7 +28,7 @@ public class QFileExcitingC2CDownloadConfigProcessor
   {
     QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileExcitingC2CDownloadConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileExcitingC2CDownloadConfigBean.class);
+      return (QFileExcitingC2CDownloadConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileExcitingC2CDownloadConfigBean.class);
     }
     return null;
   }
@@ -37,7 +37,7 @@ public class QFileExcitingC2CDownloadConfigProcessor
   {
     if (paramQFileExcitingC2CDownloadConfigBean != null)
     {
-      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
       if (localBaseQQAppInterface != null)
       {
         if (TextUtils.isEmpty(paramQFileExcitingC2CDownloadConfigBean.a)) {
@@ -96,7 +96,7 @@ public class QFileExcitingC2CDownloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingC2CDownloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,25 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
 class Conversation$47
-  extends DataLineObserver
+  extends FMObserver
 {
   Conversation$47(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0)
-    {
-      this.a.a(8, AppConstants.DATALINE_PC_UIN, 6000);
-      return;
-    }
-    if (i == 1) {
-      this.a.a(8, AppConstants.DATALINE_IPAD_UIN, 6000);
-    }
+    this.a.a(8, paramString, -2147483648);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0)
-    {
-      this.a.a(9, AppConstants.DATALINE_PC_UIN, 6003);
-      return;
-    }
-    if (i == 1) {
-      this.a.a(8, AppConstants.DATALINE_IPAD_UIN, 6003);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0)
-    {
-      this.a.a(8, AppConstants.DATALINE_PC_UIN, 6000);
-      return;
-    }
-    if (i == 1) {
-      this.a.a(8, AppConstants.DATALINE_IPAD_UIN, 6003);
-    }
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.47
  * JD-Core Version:    0.7.0.1
  */

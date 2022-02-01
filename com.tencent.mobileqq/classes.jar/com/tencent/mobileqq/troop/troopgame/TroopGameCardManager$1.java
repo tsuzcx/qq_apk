@@ -11,13 +11,13 @@ class TroopGameCardManager$1
   
   public void run()
   {
-    MemberGradeLevelInfo localMemberGradeLevelInfo = TroopGameCardManager.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    MemberGradeLevelInfo localMemberGradeLevelInfo = TroopGameCardManager.a(this.this$0, this.a);
     ThreadManager.getUIHandler().post(new TroopGameCardManager.1.1(this, localMemberGradeLevelInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardManager.1
  * JD-Core Version:    0.7.0.1
  */

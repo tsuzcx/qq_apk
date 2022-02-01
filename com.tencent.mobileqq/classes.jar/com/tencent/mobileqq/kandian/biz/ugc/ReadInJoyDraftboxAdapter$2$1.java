@@ -12,13 +12,13 @@ class ReadInJoyDraftboxAdapter$2$1
   
   public void run()
   {
-    boolean bool = ReadInJoyDraftboxAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxAdapter).a(this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxItem.getId());
+    boolean bool = ReadInJoyDraftboxAdapter.b(this.a.c).c(this.a.a.getId());
     ThreadManager.getUIHandler().post(new ReadInJoyDraftboxAdapter.2.1.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDraftboxAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

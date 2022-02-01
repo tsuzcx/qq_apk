@@ -13,14 +13,14 @@ class PushApiPlugin$1
   
   public void a(Bundle paramBundle)
   {
-    if (!TextUtils.isEmpty(this.a.a))
+    if (!TextUtils.isEmpty(this.a.b))
     {
       paramBundle = paramBundle.getString("info");
       JSONObject localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        this.a.callJs(this.a.b, new String[] { localJSONObject.toString() });
         if (!QLog.isColorLevel()) {
           return;
         }
@@ -41,7 +41,7 @@ class PushApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.PushApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

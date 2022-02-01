@@ -21,7 +21,7 @@ class TroopOnlineMemberHandler$1
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLocationFinish, time=");
-      localStringBuilder.append(l - this.jdField_a_of_type_Long);
+      localStringBuilder.append(l - this.a);
       localStringBuilder.append("ms");
       QLog.i("TroopOnlineMemberHandler", 2, localStringBuilder.toString());
     }
@@ -32,12 +32,12 @@ class TroopOnlineMemberHandler$1
       localStringBuilder.append(paramInt);
       QLog.i("TroopOnlineMemberHandler", 1, localStringBuilder.toString());
     }
-    TroopOnlineMemberHandler.a(this.jdField_a_of_type_ComTencentMobileqqTroopOnlinememberHandlerTroopOnlineMemberHandler, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
+    TroopOnlineMemberHandler.a(this.c, this.b, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinemember.handler.TroopOnlineMemberHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ class ListenTogetherManager$2
     if (TextUtils.isEmpty(ListenTogetherManager.a(this.this$0))) {
       return;
     }
-    ListenTogetherSession localListenTogetherSession = (ListenTogetherSession)ListenTogetherManager.a(this.this$0).get(ListenTogetherManager.a(this.this$0));
+    ListenTogetherSession localListenTogetherSession = (ListenTogetherSession)ListenTogetherManager.b(this.this$0).get(ListenTogetherManager.a(this.this$0));
     if (localListenTogetherSession == null) {
       return;
     }
-    ListenTogetherManager.a(this.this$0, localListenTogetherSession.f, localListenTogetherSession.e, 1004);
+    ListenTogetherManager.a(this.this$0, localListenTogetherSession.m, localListenTogetherSession.n, 1004);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,19 @@ import mqq.app.AppRuntime;
 public class GameListPresenterImp
   implements IGameListPresenter
 {
-  protected SimpleGameStatusListener a;
-  protected IGameRoomPresenter a;
   protected IGameListView a;
-  private boolean a;
+  protected IGameRoomPresenter b;
+  protected SimpleGameStatusListener c = new GameListPresenterImp.1(this);
+  private boolean d = false;
   
   public GameListPresenterImp(IGameListView paramIGameListView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSimpleGameStatusListener = new GameListPresenterImp.1(this);
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView = paramIGameListView;
+    this.a = paramIGameListView;
   }
   
-  private List<Player> b()
+  private List<Player> l()
   {
-    List localList = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c();
+    List localList = this.b.p();
     ArrayList localArrayList = new ArrayList(localList.size());
     int i = 0;
     while (i < localList.size())
@@ -47,58 +45,44 @@ public class GameListPresenterImp
     return localArrayList;
   }
   
-  public int a()
-  {
-    return IGameEngine.a().a().jdField_a_of_type_Int;
-  }
-  
   public List<GameItem> a()
   {
-    return IGameEngine.a().a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  }
-  
-  public void a()
-  {
-    if (IGameEngine.k()) {
-      return;
-    }
-    EngineData localEngineData = IGameEngine.a().a();
-    IGameEngine.a().a(localEngineData.a(), IGameEngine.a().getAccount(), 0, 3);
+    return IGameEngine.I().s().a;
   }
   
   public void a(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView.a(paramEngineData);
+    this.a.a(paramEngineData);
   }
   
   public void a(GameItem paramGameItem)
   {
-    if ((paramGameItem != null) && (!IGameEngine.k()))
+    if ((paramGameItem != null) && (!IGameEngine.J()))
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("autoStartGame ");
       ((StringBuilder)localObject1).append(paramGameItem);
       QLog.i("GameListPresenterImp", 2, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_Boolean = true;
-      localObject1 = IGameEngine.a().a();
-      Object localObject2 = ((EngineData)localObject1).a(paramGameItem.jdField_a_of_type_Int);
-      String str1 = ((EngineData)localObject1).jdField_a_of_type_JavaLangString;
-      String str2 = ((EngineData)localObject1).b;
-      if ((localObject2 != null) && (((QuestionClassInfo)localObject2).a != null) && (((QuestionClassInfo)localObject2).a.size() > 0) && (str1 != null) && (str2 != null))
+      this.d = true;
+      localObject1 = IGameEngine.I().s();
+      Object localObject2 = ((EngineData)localObject1).b(paramGameItem.a);
+      String str1 = ((EngineData)localObject1).d;
+      String str2 = ((EngineData)localObject1).e;
+      if ((localObject2 != null) && (((QuestionClassInfo)localObject2).b != null) && (((QuestionClassInfo)localObject2).b.size() > 0) && (str1 != null) && (str2 != null))
       {
-        ((EngineData)localObject1).d(true);
-        AVGameQuestionClassSelectDialog.a(this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView.a(), paramGameItem.jdField_a_of_type_Int, ((QuestionClassInfo)localObject2).a, str1, str2, this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView);
+        ((EngineData)localObject1).e(true);
+        AVGameQuestionClassSelectDialog.a(this.a.getViewContext(), paramGameItem.a, ((QuestionClassInfo)localObject2).b, str1, str2, this.a);
         return;
       }
-      localObject2 = b();
+      localObject2 = l();
       if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
       {
-        paramGameItem = this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView;
-        paramGameItem.a(AVGameUtil.a(paramGameItem.a(), (List)localObject2));
+        paramGameItem = this.a;
+        paramGameItem.a(AVGameUtil.a(paramGameItem.getViewContext(), (List)localObject2));
         return;
       }
-      ((EngineData)localObject1).d(true);
-      IGameEngine.a().a(paramGameItem.jdField_a_of_type_Int, null);
+      ((EngineData)localObject1).e(true);
+      IGameEngine.I().a(paramGameItem.a, null);
     }
   }
   
@@ -106,39 +90,25 @@ public class GameListPresenterImp
   {
     if (paramGameItem != null)
     {
-      IGameEngine.a().b(paramGameItem.jdField_a_of_type_Int);
-      paramInt = paramGameItem.jdField_a_of_type_Int;
+      IGameEngine.I().b(paramGameItem.a);
+      paramInt = paramGameItem.a;
       paramGameItem = new StringBuilder();
       paramGameItem.append("");
-      paramGameItem.append(IGameEngine.a().a().a().players.size());
+      paramGameItem.append(IGameEngine.I().s().e().players.size());
       ReportController.b(null, "dc00898", "", "", "0X800B06D", "0X800B06D", paramInt, 0, "", paramGameItem.toString(), "", "");
     }
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = paramIGameRoomPresenter;
-    IGameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSimpleGameStatusListener);
-  }
-  
-  public boolean a()
-  {
-    return IGameEngine.a().a();
-  }
-  
-  public void b()
-  {
-    if (IGameEngine.k()) {
-      return;
-    }
-    EngineData localEngineData = IGameEngine.a().a();
-    IGameEngine.a().a(localEngineData.a(), IGameEngine.a().getAccount(), 1, 3);
+    this.b = paramIGameRoomPresenter;
+    IGameEngine.I().a(this.c);
   }
   
   public void b(GameItem paramGameItem, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c();
+    this.d = false;
+    Object localObject1 = this.b.p();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("clickBeginGame players:");
     ((StringBuilder)localObject2).append(localObject1);
@@ -163,49 +133,77 @@ public class GameListPresenterImp
     if (paramInt != 0) {
       return;
     }
-    if ((paramGameItem != null) && (!IGameEngine.k()))
+    if ((paramGameItem != null) && (!IGameEngine.J()))
     {
-      Object localObject3 = IGameEngine.a().a();
-      ((EngineData)localObject3).d(false);
-      localObject1 = ((EngineData)localObject3).a(paramGameItem.jdField_a_of_type_Int);
-      localObject2 = ((EngineData)localObject3).jdField_a_of_type_JavaLangString;
-      localObject3 = ((EngineData)localObject3).b;
-      if ((localObject1 != null) && (((QuestionClassInfo)localObject1).a != null) && (((QuestionClassInfo)localObject1).a.size() > 0) && (localObject2 != null) && (localObject3 != null))
+      Object localObject3 = IGameEngine.I().s();
+      ((EngineData)localObject3).e(false);
+      localObject1 = ((EngineData)localObject3).b(paramGameItem.a);
+      localObject2 = ((EngineData)localObject3).d;
+      localObject3 = ((EngineData)localObject3).e;
+      if ((localObject1 != null) && (((QuestionClassInfo)localObject1).b != null) && (((QuestionClassInfo)localObject1).b.size() > 0) && (localObject2 != null) && (localObject3 != null))
       {
-        AVGameQuestionClassSelectDialog.a(this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView.a(), paramGameItem.jdField_a_of_type_Int, ((QuestionClassInfo)localObject1).a, (String)localObject2, (String)localObject3, null);
+        AVGameQuestionClassSelectDialog.a(this.a.getViewContext(), paramGameItem.a, ((QuestionClassInfo)localObject1).b, (String)localObject2, (String)localObject3, null);
         return;
       }
-      IGameEngine.a().a(paramGameItem.jdField_a_of_type_Int, null);
+      IGameEngine.I().a(paramGameItem.a, null);
     }
   }
   
-  public void c()
+  public boolean b()
   {
-    IGameEngine.a().c(0);
+    return IGameEngine.I().d();
+  }
+  
+  public int c()
+  {
+    return IGameEngine.I().s().b;
   }
   
   public void d()
   {
-    IGameEngine.a().f();
+    if (IGameEngine.J()) {
+      return;
+    }
+    EngineData localEngineData = IGameEngine.I().s();
+    IGameEngine.I().a(localEngineData.i(), IGameEngine.K().getAccount(), 0, 3);
   }
   
   public void e()
   {
-    if (AVGameUtil.b() == 2) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView.c(GameListView.jdField_a_of_type_Int);
+    if (IGameEngine.J()) {
+      return;
     }
+    EngineData localEngineData = IGameEngine.I().s();
+    IGameEngine.I().a(localEngineData.i(), IGameEngine.K().getAccount(), 1, 3);
   }
   
-  public void f() {}
+  public void f()
+  {
+    IGameEngine.I().c(0);
+  }
   
   public void g()
   {
-    IGameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSimpleGameStatusListener);
+    IGameEngine.I().w();
   }
   
   public void h()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView.c(0);
+    if (AVGameUtil.b() == 2) {
+      this.a.c(GameListView.k);
+    }
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    IGameEngine.I().b(this.c);
+  }
+  
+  public void k()
+  {
+    this.a.c(0);
   }
 }
 

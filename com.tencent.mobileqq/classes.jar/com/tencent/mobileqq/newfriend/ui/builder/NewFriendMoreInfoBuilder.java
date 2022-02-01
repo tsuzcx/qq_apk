@@ -39,17 +39,17 @@ public class NewFriendMoreInfoBuilder
     else
     {
       localNewFriendMoreInfoHolder = new NewFriendMoreInfoBuilder.NewFriendMoreInfoHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561252, null);
-      localNewFriendMoreInfoHolder.a = ((TextView)paramView.findViewById(2131371489));
+      paramView = LayoutInflater.from(this.c).inflate(2131627608, null);
+      localNewFriendMoreInfoHolder.a = ((TextView)paramView.findViewById(2131438864));
       if (ThemeUtil.isDefaultTheme()) {
-        paramView.setBackgroundResource(2130839448);
+        paramView.setBackgroundResource(2130839637);
       } else {
-        paramView.setBackgroundResource(2130839390);
+        paramView.setBackgroundResource(2130839574);
       }
       paramView.setTag(localNewFriendMoreInfoHolder);
     }
-    NewFriendMoreInfo localNewFriendMoreInfo = ((NewFriendMoreInfoMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a;
-    localNewFriendMoreInfoHolder.a.setText(localNewFriendMoreInfo.jdField_a_of_type_JavaLangString);
+    NewFriendMoreInfo localNewFriendMoreInfo = ((NewFriendMoreInfoMessage)this.g).a;
+    localNewFriendMoreInfoHolder.a.setText(localNewFriendMoreInfo.a);
     paramView.setOnClickListener(this);
     return paramView;
   }
@@ -59,20 +59,20 @@ public class NewFriendMoreInfoBuilder
     Object localObject = paramView.getTag();
     if ((localObject != null) && ((localObject instanceof NewFriendMoreInfoBuilder.NewFriendMoreInfoHolder)))
     {
-      int i = ((NewFriendMoreInfoMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a.jdField_a_of_type_Int;
+      int i = ((NewFriendMoreInfoMessage)this.g).a.b;
       if (i != 1000)
       {
         if (i == 1001)
         {
-          ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startAddContactsActivity(this.jdField_a_of_type_AndroidContentContext, 4, 226);
-          ((INewFriendService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(INewFriendService.class, "")).markAllDataReaded();
+          ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startAddContactsActivity(this.c, 4, 226);
+          ((INewFriendService)this.d.getRuntimeService(INewFriendService.class, "")).markAllDataReaded();
         }
       }
       else
       {
-        i = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.a();
-        ((INewFriendApi)QRoute.api(INewFriendApi.class)).startNewFriendMoreSysMsgActivityForResult((Activity)this.jdField_a_of_type_AndroidContentContext, 225, i);
-        ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
+        i = this.e.i();
+        ((INewFriendApi)QRoute.api(INewFriendApi.class)).startNewFriendMoreSysMsgActivityForResult((Activity)this.c, 225, i);
+        ReportController.b(this.d, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -80,7 +80,7 @@ public class NewFriendMoreInfoBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendMoreInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

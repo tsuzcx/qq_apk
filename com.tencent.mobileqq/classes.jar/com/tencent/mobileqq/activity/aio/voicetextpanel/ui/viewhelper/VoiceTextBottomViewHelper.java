@@ -9,24 +9,24 @@ import com.tencent.qphone.base.util.QLog;
 
 public class VoiceTextBottomViewHelper
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private LinearLayout a;
+  private View b;
   
   public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VoiceTextBottomViewHelper", 2, "hideBottom");
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.a.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.bottomMargin = 0;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.b.setLayoutParams(localLayoutParams);
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131363756));
-    this.jdField_a_of_type_AndroidViewView = paramVoiceTextPanel.findViewById(2131370041);
+    this.a = ((LinearLayout)paramVoiceTextPanel.findViewById(2131429680));
+    this.b = paramVoiceTextPanel.findViewById(2131437197);
   }
   
   public void b()
@@ -34,10 +34,10 @@ public class VoiceTextBottomViewHelper
     if (QLog.isColorLevel()) {
       QLog.d("VoiceTextBottomViewHelper", 2, "showBottom");
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.a.setVisibility(0);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.bottomMargin = ScreenUtil.dip2px(75.0F);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.b.setLayoutParams(localLayoutParams);
   }
   
   public void c()
@@ -47,7 +47,7 @@ public class VoiceTextBottomViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextBottomViewHelper
  * JD-Core Version:    0.7.0.1
  */

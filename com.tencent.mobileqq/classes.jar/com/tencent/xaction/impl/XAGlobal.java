@@ -19,12 +19,12 @@ public final class XAGlobal
   @NotNull
   public String getVersion()
   {
-    return "beta.0.0.0.692021-16-01/15:16:08";
+    return "beta.0.0.0.912021-21-09/12:21:29";
   }
   
   public void pauseAll()
   {
-    XAEngine.Companion.a();
+    XAEngine.Companion.f();
   }
   
   public boolean registerAnim(@NotNull String paramString1, @NotNull String paramString2)
@@ -67,17 +67,17 @@ public final class XAGlobal
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "name");
     Intrinsics.checkParameterIsNotNull(paramString2, "clazzName");
-    XAEngine.Companion.a().a(paramString1, paramString2);
+    XAEngine.Companion.d().a(paramString1, paramString2);
   }
   
   public void resumeAll()
   {
-    XAEngine.Companion.b();
+    XAEngine.Companion.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.XAGlobal
  * JD-Core Version:    0.7.0.1
  */

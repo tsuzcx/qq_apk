@@ -21,8 +21,8 @@ public class ZoomOutPageTransformer
     float f2 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
     float f1 = i;
     f2 /= f1;
-    float f3 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / f1;
-    f1 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() + i + ((MultiAIOBaseViewPager)localObject1).b()) / f1;
+    float f3 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).getPageMargin()) / f1;
+    f1 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() + i + ((MultiAIOBaseViewPager)localObject1).getPageMargin()) / f1;
     if (paramFloat < f3)
     {
       f1 = this.d;
@@ -56,15 +56,15 @@ public class ZoomOutPageTransformer
     }
     paramView.setScaleX(f1);
     paramView.setScaleY(f1);
-    Object localObject2 = paramView.getTag(2131371609);
+    Object localObject2 = paramView.getTag(2131439021);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = paramView.findViewById(2131371609);
+      localObject1 = paramView.findViewById(2131439021);
       if (localObject1 == null) {
         return;
       }
-      paramView.setTag(2131371609, localObject1);
+      paramView.setTag(2131439021, localObject1);
     }
     paramView = (View)localObject1;
     paramView.setAlpha(1.0F - paramFloat);
@@ -73,7 +73,7 @@ public class ZoomOutPageTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.ZoomOutPageTransformer
  * JD-Core Version:    0.7.0.1
  */

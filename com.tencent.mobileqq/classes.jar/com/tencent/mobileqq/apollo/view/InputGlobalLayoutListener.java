@@ -16,58 +16,58 @@ public class InputGlobalLayoutListener
   implements View.OnLayoutChangeListener, Runnable
 {
   public int a;
-  private WeakReference<BaseChatPie> a;
+  private WeakReference<BaseChatPie> b;
   
   public InputGlobalLayoutListener(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    this.b = new WeakReference(paramBaseChatPie);
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramInt2 != this.jdField_a_of_type_Int)
+    if (paramInt2 != this.a)
     {
-      this.jdField_a_of_type_Int = paramInt2;
+      this.a = paramInt2;
       paramView.post(this);
     }
     paramInt1 = 0;
-    Object localObject = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (BaseChatPie)this.b.get();
     if (localObject != null)
     {
-      if (((BaseChatPie)localObject).a != null) {
-        paramInt1 = ((BaseChatPie)localObject).a.getHeight();
+      if (((BaseChatPie)localObject).p != null) {
+        paramInt1 = ((BaseChatPie)localObject).p.getHeight();
       }
       paramView = ApolloUtilImpl.getChatPieApolloViewController((BaseChatPie)localObject);
-      localObject = (FullScreenInputHelper)((BaseChatPie)localObject).a(24);
+      localObject = (FullScreenInputHelper)((BaseChatPie)localObject).q(24);
       if ((paramView != null) && (localObject != null)) {
-        paramView.a(paramInt1, ((FullScreenInputHelper)localObject).c());
+        paramView.a(paramInt1, ((FullScreenInputHelper)localObject).e());
       }
     }
   }
   
   public void run()
   {
-    Object localObject = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (BaseChatPie)this.b.get();
     ChatPieApolloViewController localChatPieApolloViewController = ApolloUtilImpl.getChatPieApolloViewController((BaseChatPie)localObject);
     if (localChatPieApolloViewController == null) {
       return;
     }
-    localChatPieApolloViewController.c(this.jdField_a_of_type_Int);
-    localObject = (AIOShortcutBarHelper)((BaseChatPie)localObject).a(52);
+    localChatPieApolloViewController.c(this.a);
+    localObject = (AIOShortcutBarHelper)((BaseChatPie)localObject).q(52);
     int i;
-    if ((localObject != null) && (((AIOShortcutBarHelper)localObject).d() == 2) && (((AIOShortcutBarHelper)localObject).c() == 0)) {
+    if ((localObject != null) && (((AIOShortcutBarHelper)localObject).x() == 2) && (((AIOShortcutBarHelper)localObject).v() == 0)) {
       i = 1;
     } else {
       i = 0;
     }
     if (i == 0) {
-      localChatPieApolloViewController.d(this.jdField_a_of_type_Int);
+      localChatPieApolloViewController.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

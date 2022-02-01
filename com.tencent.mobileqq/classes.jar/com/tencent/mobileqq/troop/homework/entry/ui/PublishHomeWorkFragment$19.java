@@ -15,7 +15,7 @@ class PublishHomeWorkFragment$19
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null)
+    if (this.a.K != null)
     {
       paramContext = paramIntent.getAction();
       if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
@@ -23,7 +23,7 @@ class PublishHomeWorkFragment$19
         if (QLog.isColorLevel()) {
           QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
         }
-        this.a.a.a(102);
+        this.a.K.a(102);
         return;
       }
       if ("android.intent.action.PHONE_STATE".equals(paramContext))
@@ -31,14 +31,14 @@ class PublishHomeWorkFragment$19
         if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
           QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
         }
-        this.a.a.a(102);
+        this.a.K.a(102);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.19
  * JD-Core Version:    0.7.0.1
  */

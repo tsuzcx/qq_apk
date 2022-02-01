@@ -9,23 +9,20 @@ import com.tencent.mobileqq.qwallet.widget.QQWalletTransferBubbleView;
 public class QQWalletTransMsgItemBuilder$QWalletTransMsgHolder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public long a;
-  public ImageView a;
   public RelativeLayout a;
-  public TextView a;
-  public QQWalletTransferBubbleView a;
   public TextView b;
-  public QQWalletTransferBubbleView b;
   public TextView c;
+  public ImageView d;
+  public TextView e;
+  public QQWalletTransferBubbleView f;
+  public QQWalletTransferBubbleView g;
+  public long s = 0L;
   
-  public QQWalletTransMsgItemBuilder$QWalletTransMsgHolder(QQWalletTransMsgItemBuilder paramQQWalletTransMsgItemBuilder)
-  {
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public QQWalletTransMsgItemBuilder$QWalletTransMsgHolder(QQWalletTransMsgItemBuilder paramQQWalletTransMsgItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQWalletTransMsgItemBuilder.QWalletTransMsgHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -9,45 +9,32 @@ public class AIOPictureData
   extends AIOBrowserBaseData
 {
   public static final Parcelable.Creator<RichMediaBaseData> CREATOR = new AIOPictureData.1();
-  public String a = "I:N";
-  public String b = "I:N";
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public boolean d;
-  public long e;
-  public String e;
-  public boolean e;
-  public long f;
-  public String f;
-  public boolean f;
-  public String g;
-  public boolean g;
-  public String h;
-  public boolean h;
-  public String i;
-  public boolean i;
-  public String j;
-  public boolean j;
-  public String k;
-  public boolean k;
-  public String l;
-  public String m;
-  public String n;
-  
-  public AIOPictureData()
-  {
-    this.jdField_c_of_type_JavaLangString = "I:N";
-    this.jdField_d_of_type_JavaLangString = "I:N";
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_e_of_type_JavaLangString = "I:N";
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-  }
+  public boolean A = false;
+  public int B;
+  public boolean C;
+  public String D;
+  public boolean E;
+  public String F;
+  public String G;
+  public String H;
+  public String I;
+  public String j = "I:N";
+  public String k = "I:N";
+  public String l = "I:N";
+  public String m = "I:N";
+  public boolean n = false;
+  public boolean o = false;
+  public boolean p = false;
+  public boolean q;
+  public String r = "I:N";
+  public long s;
+  public long t;
+  public String u;
+  public int v = 0;
+  public boolean w = false;
+  public String x;
+  public String y;
+  public String z;
   
   public int getType()
   {
@@ -57,55 +44,55 @@ public class AIOPictureData
   public void readFromParcel(Parcel paramParcel)
   {
     super.readFromParcel(paramParcel);
-    this.a = paramParcel.readString();
-    this.b = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_Long = paramParcel.readLong();
-    this.jdField_f_of_type_Long = paramParcel.readLong();
-    int i1 = paramParcel.readByte();
+    this.j = paramParcel.readString();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.r = paramParcel.readString();
+    this.s = paramParcel.readLong();
+    this.t = paramParcel.readLong();
+    int i = paramParcel.readByte();
     boolean bool2 = false;
-    if (i1 != 0) {
+    if (i != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_g_of_type_Boolean = bool1;
-    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.q = bool1;
+    this.v = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_h_of_type_Boolean = bool1;
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
+    this.w = bool1;
+    this.x = paramParcel.readString();
+    this.u = paramParcel.readString();
+    this.y = paramParcel.readString();
+    this.z = paramParcel.readString();
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_i_of_type_Boolean = bool1;
-    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.A = bool1;
+    this.B = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_j_of_type_Boolean = bool1;
-    this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+    this.C = bool1;
+    this.D = paramParcel.readString();
     boolean bool1 = bool2;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     }
-    this.jdField_k_of_type_Boolean = bool1;
-    this.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    this.l = paramParcel.readString();
-    this.m = paramParcel.readString();
-    this.n = paramParcel.readString();
+    this.E = bool1;
+    this.F = paramParcel.readString();
+    this.G = paramParcel.readString();
+    this.H = paramParcel.readString();
+    this.I = paramParcel.readString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -115,7 +102,7 @@ public class AIOPictureData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOPictureData
  * JD-Core Version:    0.7.0.1
  */

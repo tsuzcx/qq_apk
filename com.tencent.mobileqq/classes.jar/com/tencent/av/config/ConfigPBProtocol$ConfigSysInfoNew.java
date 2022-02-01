@@ -5,15 +5,15 @@ import java.util.List;
 
 public class ConfigPBProtocol$ConfigSysInfoNew
 {
-  ConfigPBProtocol.ConfigSysInfoNew.AndroidCameraInfo jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo = new ConfigPBProtocol.ConfigSysInfoNew.AndroidCameraInfo(this);
-  ConfigPBProtocol.ConfigSysInfoNew.AudioSwitchPointInfo jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AudioSwitchPointInfo = new ConfigPBProtocol.ConfigSysInfoNew.AudioSwitchPointInfo(this);
-  ConfigPBProtocol.ConfigSysInfoNew.MobileQQPttInfo jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo = new ConfigPBProtocol.ConfigSysInfoNew.MobileQQPttInfo(this);
-  ConfigPBProtocol.ConfigSysInfoNew.SharpTraeInfo jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$SharpTraeInfo = new ConfigPBProtocol.ConfigSysInfoNew.SharpTraeInfo(this);
-  ConfigPBProtocol.ConfigSysInfoNew.SwtichInfo jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$SwtichInfo = new ConfigPBProtocol.ConfigSysInfoNew.SwtichInfo(this);
-  String jdField_a_of_type_JavaLangString = "";
-  List<ConfigPBProtocol.ConfigSysInfoNew.TransBuffer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = true;
+  boolean a = true;
   String b = "";
+  String c = "";
+  ConfigPBProtocol.ConfigSysInfoNew.AndroidCameraInfo d = new ConfigPBProtocol.ConfigSysInfoNew.AndroidCameraInfo(this);
+  ConfigPBProtocol.ConfigSysInfoNew.SharpTraeInfo e = new ConfigPBProtocol.ConfigSysInfoNew.SharpTraeInfo(this);
+  ConfigPBProtocol.ConfigSysInfoNew.SwtichInfo f = new ConfigPBProtocol.ConfigSysInfoNew.SwtichInfo(this);
+  ConfigPBProtocol.ConfigSysInfoNew.MobileQQPttInfo g = new ConfigPBProtocol.ConfigSysInfoNew.MobileQQPttInfo(this);
+  ConfigPBProtocol.ConfigSysInfoNew.AudioSwitchPointInfo h = new ConfigPBProtocol.ConfigSysInfoNew.AudioSwitchPointInfo(this);
+  List<ConfigPBProtocol.ConfigSysInfoNew.TransBuffer> i = new ArrayList();
   
   public ConfigPBProtocol$ConfigSysInfoNew(ConfigPBProtocol paramConfigPBProtocol) {}
 }

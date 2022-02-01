@@ -30,6 +30,8 @@ public abstract class Asset<Track extends AssetTrack>
   protected HashMap<String, Object> extraInfo = new HashMap();
   protected AssetExtractor extractor;
   private int extractorRetryCount = 3;
+  @NonNull
+  private String filePath;
   private boolean hasProtectedContent;
   private String lyrics;
   private MediaFormat mediaFormat;
@@ -43,7 +45,9 @@ public abstract class Asset<Track extends AssetTrack>
   protected float preferredVolume = 1.0F;
   private boolean providesPreciseDurationAndTiming;
   private boolean readable;
+  private boolean safeInit;
   protected int trackCount = 0;
+  private ArrayList<MediaFormat> trackFormats;
   protected int trackIndex = 0;
   protected List<Track> tracks;
   
@@ -51,6 +55,20 @@ public abstract class Asset<Track extends AssetTrack>
   
   protected Asset(@NonNull String paramString)
   {
+    this(paramString, true);
+  }
+  
+  protected Asset(@NonNull String paramString, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Asset() called with: filePath = [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], safeInit = [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Logger.i("Asset", localStringBuilder.toString());
+    this.filePath = paramString;
+    this.safeInit = paramBoolean;
     this.extractor = new AssetExtractor();
     this.extractor.setDataSource(paramString);
     tryInitMembers();
@@ -61,25 +79,55 @@ public abstract class Asset<Track extends AssetTrack>
   
   private void initMembers()
   {
-    this.trackCount = this.extractor.getTrackCount();
-    this.duration = getDuration();
-    this.naturalSize = ExtractorUtils.getVideoSize(this.extractor);
-    this.preferRotation = ExtractorUtils.getPreferRotation(this.extractor);
-    if (this.preferRotation != 0)
+    this.trackFormats = ExtractorUtils.getMediaFormats(this.extractor);
+    if (!this.trackFormats.isEmpty())
     {
-      this.preferredTransform = new Matrix();
-      int i;
-      for (;;)
+      this.trackCount = this.trackFormats.size();
+      this.duration = getDuration();
+      this.naturalSize = ExtractorUtils.getVideoSize(this.trackFormats);
+      this.preferRotation = ExtractorUtils.getPreferRotation(this.trackFormats);
+      if (this.preferRotation != 0)
       {
-        i = this.preferRotation;
-        if (i >= 0) {
-          break;
+        this.preferredTransform = new Matrix();
+        int i;
+        for (;;)
+        {
+          i = this.preferRotation;
+          if (i >= 0) {
+            break;
+          }
+          this.preferRotation = (i + 4);
         }
-        this.preferRotation = (i + 4);
+        this.preferRotation = (i % 4);
+        DecoderUtils.getRotationMatrix(this.preferredTransform, this.preferRotation, this.naturalSize.width, this.naturalSize.height);
       }
-      this.preferRotation = (i % 4);
-      DecoderUtils.getRotationMatrix(this.preferredTransform, this.preferRotation, this.naturalSize.width, this.naturalSize.height);
+      return;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getMediaFormats is empty, path = ");
+    ((StringBuilder)localObject).append(this.filePath);
+    localObject = new RuntimeException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
+  }
+  
+  private void onInitException(Exception paramException)
+  {
+    if (this.safeInit)
+    {
+      paramException = this.extractor;
+      if (paramException != null)
+      {
+        paramException.release();
+        this.extractor = null;
+      }
+      trySleep(100);
+      tryInitMembers();
+      return;
+    }
+    throw new RuntimeException(paramException);
   }
   
   private void tryInitMembers()
@@ -97,10 +145,9 @@ public abstract class Asset<Track extends AssetTrack>
     {
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("Asset: initMembers failed, path = ");
-      localStringBuilder2.append(getSourcePath());
+      localStringBuilder2.append(this.filePath);
       Logger.e("Asset", localStringBuilder2.toString(), localException);
-      trySleep(100);
-      tryInitMembers();
+      onInitException(localException);
     }
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("tryInitMembers: try count = ");
@@ -163,7 +210,7 @@ public abstract class Asset<Track extends AssetTrack>
   
   protected CMTime getAudioDuration()
   {
-    return TimeUtil.us2CMTime(this.extractor.getAudioDuration());
+    return TimeUtil.us2CMTime(ExtractorUtils.getAudioDuration(this.trackFormats));
   }
   
   public CMTime getDuration()
@@ -292,7 +339,7 @@ public abstract class Asset<Track extends AssetTrack>
   
   protected CMTime getVideoDuration()
   {
-    return TimeUtil.us2CMTime(this.extractor.getDuration());
+    return TimeUtil.us2CMTime(ExtractorUtils.getDuration(this.trackFormats));
   }
   
   public boolean isCanContainFragments()
@@ -398,7 +445,7 @@ public abstract class Asset<Track extends AssetTrack>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.asset.Asset
  * JD-Core Version:    0.7.0.1
  */

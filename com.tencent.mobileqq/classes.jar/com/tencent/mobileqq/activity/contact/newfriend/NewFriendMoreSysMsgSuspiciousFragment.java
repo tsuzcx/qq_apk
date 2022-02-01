@@ -16,19 +16,19 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgSuspiciousFragment
   extends PublicBaseFragment
 {
-  private NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter;
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
+  private SwipListView a;
+  private NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter b;
   
   private void a(View paramView)
   {
-    View localView = paramView.findViewById(2131371896);
-    ((TextView)localView.findViewById(2131378796)).setText(2131699387);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131378197));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter = new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter(getBaseActivity(), getBaseActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter);
-    paramView.findViewById(2131369202).setOnClickListener(new NewFriendMoreSysMsgSuspiciousFragment.1(this));
-    ((TextView)paramView.findViewById(2131369249)).setText(2131699384);
+    View localView = paramView.findViewById(2131439340);
+    ((TextView)localView.findViewById(2131447476)).setText(2131897418);
+    this.a = ((SwipListView)paramView.findViewById(2131446714));
+    this.a.setDragEnable(true);
+    this.b = new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter(getBaseActivity(), getBaseActivity().app, this.a, localView);
+    this.a.setAdapter(this.b);
+    paramView.findViewById(2131436180).setOnClickListener(new NewFriendMoreSysMsgSuspiciousFragment.1(this));
+    ((TextView)paramView.findViewById(2131436227)).setText(2131897415);
     ReportController.b(getBaseActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
   }
   
@@ -42,7 +42,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131561244, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131627600, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
@@ -58,7 +58,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onDestroy");
     }
-    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter;
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.b;
     if (localSysMsgSuspiciousAdapter != null) {
       localSysMsgSuspiciousAdapter.c();
     }
@@ -68,7 +68,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment
   public void onPause()
   {
     super.onPause();
-    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter;
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.b;
     if (localSysMsgSuspiciousAdapter != null) {
       localSysMsgSuspiciousAdapter.b();
     }
@@ -77,17 +77,17 @@ public class NewFriendMoreSysMsgSuspiciousFragment
   public void onResume()
   {
     super.onResume();
-    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter;
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.b;
     if (localSysMsgSuspiciousAdapter != null)
     {
       localSysMsgSuspiciousAdapter.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter.d();
+      this.b.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment
  * JD-Core Version:    0.7.0.1
  */

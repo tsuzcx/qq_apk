@@ -65,7 +65,7 @@ class ForwardRecentActivity$3
         if ((localObject2 instanceof ForwardRecentListAdapter.DisplayData))
         {
           localObject2 = (ForwardRecentListAdapter.DisplayData)localObject2;
-          if ((((ForwardRecentListAdapter.DisplayData)localObject2).a != null) && (TextUtils.equals(((ForwardRecentListAdapter.DisplayData)localObject2).a.uin, str)) && (m == ((ForwardRecentListAdapter.DisplayData)localObject2).a.getType()))
+          if ((((ForwardRecentListAdapter.DisplayData)localObject2).d != null) && (TextUtils.equals(((ForwardRecentListAdapter.DisplayData)localObject2).d.uin, str)) && (m == ((ForwardRecentListAdapter.DisplayData)localObject2).d.getType()))
           {
             localObject1 = ((ListAdapter)localObject1).getView(i, null, ForwardRecentActivity.access$200(this.a));
             this.a.onListViewItemClickedInDefaultStatus((View)localObject1);
@@ -79,7 +79,7 @@ class ForwardRecentActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.3
  * JD-Core Version:    0.7.0.1
  */

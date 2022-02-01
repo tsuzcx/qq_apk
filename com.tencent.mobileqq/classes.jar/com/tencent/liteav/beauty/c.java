@@ -9,12 +9,12 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.j.a;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils.a;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.beauty.b.k;
+import com.tencent.liteav.beauty.b.i;
 import com.tencent.liteav.beauty.b.l;
 import com.tencent.liteav.beauty.b.m;
 import com.tencent.liteav.beauty.b.n;
@@ -25,95 +25,96 @@ import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.TimeUnit;
 
 class c
   extends HandlerThread
 {
   private int A = 0;
   private int B = 0;
-  private int C = 0;
-  private int D = 0;
-  private Context E = null;
-  private boolean F = true;
-  private boolean G = false;
-  private d.e H = new d.e();
-  private d.f I = null;
+  private Context C = null;
+  private boolean D = true;
+  private boolean E = false;
+  private d.e F = new d.e();
+  private d.f G = null;
+  private int H = -1;
+  private int I = -1;
   private int J = -1;
   private int K = -1;
   private int L = -1;
   private int M = -1;
-  private int N = -1;
+  private float N = 1.0F;
   private int O = -1;
-  private float P = 1.0F;
-  private int Q = -1;
-  private int R = -1;
-  private int S = 1;
+  private int P = -1;
+  private int Q = 1;
+  private boolean R = false;
+  private float[] S = null;
   private boolean T = false;
-  private float[] U = null;
-  private boolean V = false;
-  private int W = 0;
-  private int X = 0;
-  private com.tencent.liteav.basic.c.a Y = null;
-  private Bitmap Z = null;
+  private int U = 0;
+  private int V = 0;
+  private com.tencent.liteav.basic.opengl.a W = null;
+  private Bitmap X = null;
+  private com.tencent.liteav.beauty.b.k Y = null;
+  private o Z = null;
   boolean a = false;
-  private c.a aA;
-  private float aB = 0.5F;
+  private int aA = 0;
+  private int aB = 0;
   private int aC = 0;
   private int aD = 0;
   private int aE = 0;
-  private int aF = 0;
-  private int aG = 0;
-  private boolean aH = false;
-  private com.tencent.liteav.beauty.a.a.c aI = null;
-  private com.tencent.liteav.beauty.a.a.a aJ = null;
-  private Bitmap aK = null;
-  private List<d.f> aL = null;
-  private long aM = 0L;
-  private int aN = 0;
-  private final int aO = 100;
-  private final float aP = 1000.0F;
-  private byte[] aQ = null;
-  private int[] aR = null;
-  private boolean aS = false;
-  private byte[] aT = null;
-  private int aU = -1;
-  private int aV = 0;
-  private int aW = 1;
-  private int aX = this.aU;
-  private e aY = null;
-  private WeakReference<com.tencent.liteav.basic.b.b> aZ = new WeakReference(null);
-  private k aa = null;
-  private o ab = null;
-  private com.tencent.liteav.beauty.b.b ac = null;
-  private com.tencent.liteav.beauty.b.a.a ad = null;
-  private com.tencent.liteav.beauty.b.b.a ae = null;
-  private com.tencent.liteav.beauty.b.c af = null;
-  private com.tencent.liteav.beauty.b.c.a ag = null;
-  private Bitmap ah;
-  private Bitmap ai;
+  private boolean aF = false;
+  private com.tencent.liteav.beauty.a.a.c aG = null;
+  private com.tencent.liteav.beauty.a.a.a aH = null;
+  private Bitmap aI = null;
+  private List<d.f> aJ = null;
+  private long aK = 0L;
+  private int aL = 0;
+  private final int aM = 100;
+  private final float aN = 1000.0F;
+  private byte[] aO = null;
+  private int[] aP = null;
+  private boolean aQ = false;
+  private byte[] aR = null;
+  private int aS = -1;
+  private int aT = 0;
+  private int aU = 1;
+  private int aV = this.aS;
+  private e aW = null;
+  private WeakReference<com.tencent.liteav.basic.c.b> aX = new WeakReference(null);
+  private com.tencent.liteav.beauty.b.a aY = new com.tencent.liteav.beauty.b.a();
+  private final com.tencent.liteav.basic.util.c aZ;
+  private com.tencent.liteav.beauty.b.b aa = null;
+  private com.tencent.liteav.beauty.b.a.a ab = null;
+  private com.tencent.liteav.beauty.b.b.a ac = null;
+  private com.tencent.liteav.beauty.b.c ad = null;
+  private com.tencent.liteav.beauty.b.c.a ae = null;
+  private Bitmap af;
+  private Bitmap ag;
+  private float ah;
+  private float ai;
   private float aj;
-  private float ak;
-  private float al;
-  private m am;
-  private n an = null;
-  private x ao = null;
-  private com.tencent.liteav.beauty.b.j ap = null;
-  private com.tencent.liteav.beauty.b.i aq = null;
-  private h ar = null;
-  private l as = null;
-  private com.tencent.liteav.basic.c.i at = null;
-  private h au = null;
-  private final Queue<Runnable> av = new LinkedList();
-  private boolean aw;
-  private Object ax = new Object();
-  private Object ay = new Object();
-  private Handler az;
+  private m ak;
+  private n al = null;
+  private x am = null;
+  private com.tencent.liteav.beauty.b.j an = null;
+  private i ao = null;
+  private com.tencent.liteav.basic.opengl.j ap = null;
+  private l aq = null;
+  private com.tencent.liteav.basic.opengl.k ar = null;
+  private com.tencent.liteav.basic.opengl.j as = null;
+  private final Queue<Runnable> at = new LinkedList();
+  private boolean au;
+  private Object av = new Object();
+  private Object aw = new Object();
+  private Handler ax;
+  private c.a ay;
+  private float az = 0.5F;
   protected int[] b = null;
-  private j.a ba = new c.12(this);
+  private TXCOpenGlUtils.a ba = new c.12(this);
   protected int[] c = null;
-  com.tencent.liteav.beauty.b.a d = new com.tencent.liteav.beauty.b.a();
-  com.tencent.liteav.beauty.b.a e = new com.tencent.liteav.beauty.b.a();
-  com.tencent.liteav.beauty.b.a f = new com.tencent.liteav.beauty.b.a();
+  private int d = 0;
+  private int e = 0;
+  private int f = 0;
   private int g = 0;
   private int h = 0;
   private int i = 0;
@@ -138,61 +139,61 @@ class c
   c(Context paramContext, boolean paramBoolean)
   {
     super("TXCFilterDrawer");
-    this.E = paramContext;
-    this.az = new Handler(this.E.getMainLooper());
-    this.aw = paramBoolean;
+    this.C = paramContext;
+    this.ax = new Handler(this.C.getMainLooper());
+    this.au = paramBoolean;
+    this.aZ = new com.tencent.liteav.basic.util.c("filter-drawer", (int)TimeUnit.SECONDS.toMillis(5L));
   }
   
-  private int A(int paramInt)
+  private int B(int paramInt)
   {
-    GLES20.glViewport(0, 0, this.J, this.K);
-    return a(this.aa.q(), paramInt, 0L);
+    GLES20.glViewport(0, 0, this.H, this.I);
+    return a(this.Y.r(), paramInt, 0L);
   }
   
   private int a(int paramInt1, int paramInt2)
   {
-    if (true == this.aw)
+    Object localObject;
+    if (true == this.au)
     {
-      if (this.aY != null)
+      if (this.aW != null)
       {
-        NativeLoad.getInstance();
-        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aQ);
-        this.aY.a(this.aQ, this.Q, this.R, this.X, TXCTimeUtil.generatePtsMS());
+        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aO);
+        this.aW.a(this.aO, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
         return 0;
       }
-      if (this.aT != null)
+      localObject = this.aR;
+      if (localObject != null)
       {
-        NativeLoad.getInstance();
-        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, this.aT);
+        NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, (byte[])localObject);
         return 0;
       }
     }
     else
     {
-      if (3 == com.tencent.liteav.basic.c.j.a())
+      if (3 == TXCOpenGlUtils.a())
       {
-        if (0L == this.aM) {
-          this.aM = TXCTimeUtil.getTimeTick();
+        if (0L == this.aK) {
+          this.aK = TXCTimeUtil.getTimeTick();
         }
-        int i1 = this.aN + 1;
-        this.aN = i1;
+        int i1 = this.aL + 1;
+        this.aL = i1;
         if (i1 >= 100)
         {
-          float f1 = 100.0F / ((float)(TXCTimeUtil.getTimeTick() - this.aM) / 1000.0F);
+          float f1 = 100.0F / ((float)(TXCTimeUtil.getTimeTick() - this.aK) / 1000.0F);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("Real fps ");
           ((StringBuilder)localObject).append(f1);
           TXCLog.i("TXCFilterDrawer", ((StringBuilder)localObject).toString());
-          this.aN = 0;
-          this.aM = TXCTimeUtil.getTimeTick();
+          this.aL = 0;
+          this.aK = TXCTimeUtil.getTimeTick();
         }
         GLES30.glPixelStorei(3333, 1);
         if (Build.VERSION.SDK_INT >= 18) {
           GLES30.glReadBuffer(1029);
         }
-        GLES30.glBindBuffer(35051, this.aR[0]);
-        NativeLoad.getInstance();
-        Object localObject = null;
+        GLES30.glBindBuffer(35051, this.aP[0]);
+        localObject = null;
         NativeLoad.nativeGlReadPixs(paramInt1, paramInt2, null);
         if (Build.VERSION.SDK_INT >= 18)
         {
@@ -204,7 +205,6 @@ class c
             return -1;
           }
         }
-        NativeLoad.getInstance();
         NativeLoad.nativeGlMapBufferToQueue(paramInt1, paramInt2, (ByteBuffer)localObject);
         if (Build.VERSION.SDK_INT >= 18) {
           GLES30.glUnmapBuffer(35051);
@@ -212,7 +212,6 @@ class c
         GLES30.glBindBuffer(35051, 0);
         return 0;
       }
-      NativeLoad.getInstance();
       NativeLoad.nativeGlReadPixsToQueue(paramInt1, paramInt2);
     }
     return 0;
@@ -220,16 +219,16 @@ class c
   
   private int a(int paramInt, long paramLong)
   {
-    int i1 = this.X;
+    int i1 = this.V;
     if (i1 == 0)
     {
-      if (this.aY != null)
+      if (this.aW != null)
       {
         long l1 = paramLong;
         if (paramLong == 0L) {
           l1 = TXCTimeUtil.generatePtsMS();
         }
-        this.aY.a(paramInt, this.Q, this.R, l1);
+        this.aW.a(paramInt, this.O, this.P, l1);
       }
       return paramInt;
     }
@@ -238,18 +237,18 @@ class c
       TXCLog.e("TXCFilterDrawer", "Don't support format!");
       return -1;
     }
-    GLES20.glViewport(0, 0, this.Q, this.R);
-    if (this.ab == null)
+    GLES20.glViewport(0, 0, this.O, this.P);
+    if (this.Z == null)
     {
       TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter is null!");
       return paramInt;
     }
     GLES20.glBindFramebuffer(36160, this.b[0]);
-    this.ab.a(paramInt);
-    if (2 == this.X) {
-      a(this.Q, this.R);
+    this.Z.a(paramInt);
+    if (2 == this.V) {
+      a(this.O, this.P);
     } else {
-      a(this.Q, this.R * 3 / 8);
+      a(this.O, this.P * 3 / 8);
     }
     GLES20.glBindFramebuffer(36160, 0);
     return paramInt;
@@ -257,14 +256,14 @@ class c
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, Bitmap paramBitmap1, float paramFloat2, Bitmap paramBitmap2, float paramFloat3)
   {
-    if (this.am == null)
+    if (this.ak == null)
     {
       TXCLog.i("TXCFilterDrawer", "createComLooKupFilter");
-      this.am = new m(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
-      if (true == this.am.a())
+      this.ak = new m(paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3);
+      if (true == this.ak.a())
       {
-        this.am.a(true);
-        this.am.a(paramInt1, paramInt2);
+        this.ak.a(true);
+        this.ak.a(paramInt1, paramInt2);
         return;
       }
       TXCLog.e("TXCFilterDrawer", "mLookupFilterGroup init failed!");
@@ -276,60 +275,60 @@ class c
     TXCLog.i("TXCFilterDrawer", "create Beauty Filter!");
     if (paramInt3 == 0)
     {
-      if (this.ad == null) {
-        this.ad = new com.tencent.liteav.beauty.b.a.a();
+      if (this.ab == null) {
+        this.ab = new com.tencent.liteav.beauty.b.a.a();
       }
-      this.ac = this.ad;
+      this.aa = this.ab;
       Log.i("TXCFilterDrawer", "0 BeautyFilter");
     }
     else if (1 == paramInt3)
     {
-      if (this.ae == null) {
-        this.ae = new com.tencent.liteav.beauty.b.b.a();
+      if (this.ac == null) {
+        this.ac = new com.tencent.liteav.beauty.b.b.a();
       }
-      this.ac = this.ae;
+      this.aa = this.ac;
       Log.i("TXCFilterDrawer", "1 BeautyFilter");
     }
     else if (2 == paramInt3)
     {
-      if (this.ag == null) {
-        this.ag = new com.tencent.liteav.beauty.b.c.a();
+      if (this.ae == null) {
+        this.ae = new com.tencent.liteav.beauty.b.c.a();
       }
-      this.ac = this.ag;
+      this.aa = this.ae;
       Log.i("TXCFilterDrawer", "2 BeautyFilter");
     }
     else if (3 == paramInt3)
     {
-      if (this.af == null) {
-        this.af = new com.tencent.liteav.beauty.b.c();
+      if (this.ad == null) {
+        this.ad = new com.tencent.liteav.beauty.b.c();
       }
-      this.ac = this.af;
+      this.aa = this.ad;
       Log.i("TXCFilterDrawer", "3 BeautyFilter");
     }
-    com.tencent.liteav.beauty.b.b localb = this.ac;
+    com.tencent.liteav.beauty.b.b localb = this.aa;
     if (localb == null)
     {
       TXCLog.e("TXCFilterDrawer", "mBeautyFilter set error!");
       return;
     }
     localb.a(true);
-    if (true == this.ac.c(paramInt1, paramInt2))
+    if (true == this.aa.c(paramInt1, paramInt2))
     {
-      paramInt1 = this.aD;
+      paramInt1 = this.aB;
       if (paramInt1 > 0) {
-        this.ac.c(paramInt1);
+        this.aa.c(paramInt1);
+      }
+      paramInt1 = this.aC;
+      if (paramInt1 > 0) {
+        this.aa.d(paramInt1);
       }
       paramInt1 = this.aE;
       if (paramInt1 > 0) {
-        this.ac.d(paramInt1);
+        this.aa.e(paramInt1);
       }
-      paramInt1 = this.aG;
+      paramInt1 = this.aD;
       if (paramInt1 > 0) {
-        this.ac.e(paramInt1);
-      }
-      paramInt1 = this.aF;
-      if (paramInt1 > 0) {
-        this.ac.f(paramInt1);
+        this.aa.f(paramInt1);
       }
     }
     else
@@ -340,7 +339,7 @@ class c
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    Object localObject1 = this.ay;
+    Object localObject1 = this.aw;
     paramInt5 = (paramInt5 + 360) % 360;
     try
     {
@@ -348,46 +347,46 @@ class c
       localStringBuilder.append("real outputAngle ");
       localStringBuilder.append(paramInt5);
       TXCLog.i("TXCFilterDrawer", localStringBuilder.toString());
-      if (this.ar == null)
+      if (this.ap == null)
       {
         if ((paramInt1 == paramInt3) && (paramInt2 == paramInt4) && (paramInt5 == 0))
         {
           TXCLog.i("TXCFilterDrawer", "Don't need change output Image, don't create out filter!");
           return;
         }
-        this.ar = new h();
-        if (true == this.ar.a()) {
-          this.ar.a(true);
+        this.ap = new com.tencent.liteav.basic.opengl.j();
+        if (true == this.ap.a()) {
+          this.ap.a(true);
         } else {
           TXCLog.e("TXCFilterDrawer", "mOutputZoomFilter init failed!");
         }
       }
-      this.ar.a(paramInt3, paramInt4);
-      this.ar.a((720 - paramInt5) % 360, null);
+      this.ap.a(paramInt3, paramInt4);
+      this.ap.a((720 - paramInt5) % 360, null);
       return;
     }
     finally {}
   }
   
-  private void a(com.tencent.liteav.basic.c.a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6)
+  private void a(com.tencent.liteav.basic.opengl.a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6)
   {
-    if (this.as == null)
+    if (this.aq == null)
     {
       TXCLog.i("TXCFilterDrawer", "Create CropFilter");
       if (4 == paramInt6) {
-        this.as = new l("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}", true);
+        this.aq = new l("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}", true);
       } else {
-        this.as = new l();
+        this.aq = new l();
       }
-      if (true == this.as.a()) {
-        this.as.a(true);
+      if (true == this.aq.a()) {
+        this.aq.a(true);
       } else {
         TXCLog.e("TXCFilterDrawer", "mInputCropFilter init failed!");
       }
     }
-    l locall = this.as;
+    l locall = this.aq;
     locall.a(paramInt3, paramInt4);
-    parama = this.as.a(this.J, this.K, null, parama, paramInt6);
+    parama = this.aq.a(this.H, this.I, null, parama, paramInt6);
     int i1 = (720 - paramInt5) % 360;
     if ((i1 != 90) && (i1 != 270)) {
       paramInt5 = paramInt3;
@@ -402,14 +401,14 @@ class c
         paramInt6 = paramInt4;
       }
     }
-    this.as.a(paramInt1, paramInt2, i1, parama, paramInt5 / paramInt6, paramBoolean, false);
+    this.aq.a(paramInt1, paramInt2, i1, parama, paramInt5 / paramInt6, paramBoolean, false);
   }
   
   private void a(Runnable paramRunnable)
   {
-    synchronized (this.av)
+    synchronized (this.at)
     {
-      this.av.add(paramRunnable);
+      this.at.add(paramRunnable);
       return;
     }
   }
@@ -442,34 +441,32 @@ class c
   {
     if (!paramBoolean)
     {
-      e locale = this.aY;
+      e locale = this.aW;
       if (locale != null)
       {
-        locale.a(paramArrayOfByte, this.Q, this.R, this.X, TXCTimeUtil.generatePtsMS());
+        locale.a(paramArrayOfByte, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
         return;
       }
       TXCLog.i("TXCFilterDrawer", "First Frame, don't process!");
       return;
     }
-    int i1 = this.R;
+    int i1 = this.P;
     int i2 = i1 * 3 / 8;
-    if (2 != this.X) {
+    if (2 != this.V) {
       i1 = i2;
     }
-    if (this.aY != null)
+    if (this.aW != null)
     {
-      NativeLoad.getInstance();
-      if (true == NativeLoad.nativeGlReadPixsFromQueue(this.Q, i1, this.aQ))
+      if (true == NativeLoad.nativeGlReadPixsFromQueue(this.O, i1, this.aO))
       {
-        this.aY.a(this.aQ, this.Q, this.R, this.X, TXCTimeUtil.generatePtsMS());
+        this.aW.a(this.aO, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
         return;
       }
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
-      this.aY.a(paramArrayOfByte, this.Q, this.R, this.X, TXCTimeUtil.generatePtsMS());
+      this.aW.a(paramArrayOfByte, this.O, this.P, this.V, TXCTimeUtil.generatePtsMS());
       return;
     }
-    NativeLoad.getInstance();
-    if (!NativeLoad.nativeGlReadPixsFromQueue(this.Q, i1, this.aT)) {
+    if (!NativeLoad.nativeGlReadPixsFromQueue(this.O, i1, this.aR)) {
       TXCLog.d("TXCFilterDrawer", "nativeGlReadPixsFromQueue Failed");
     }
   }
@@ -477,7 +474,7 @@ class c
   private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
   {
     GLES20.glGenFramebuffers(1, paramArrayOfInt1, 0);
-    paramArrayOfInt2[0] = com.tencent.liteav.basic.c.j.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
+    paramArrayOfInt2[0] = TXCOpenGlUtils.a(paramInt1, paramInt2, 6408, 6408, paramArrayOfInt2);
     GLES20.glBindFramebuffer(36160, paramArrayOfInt1[0]);
     GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramArrayOfInt2[0], 0);
     GLES20.glBindFramebuffer(36160, 0);
@@ -486,73 +483,73 @@ class c
   private void b()
   {
     TXCLog.i("TXCFilterDrawer", "come into releaseInternal");
-    this.aS = false;
-    Object localObject = this.aa;
+    this.aQ = false;
+    Object localObject = this.Y;
     if (localObject != null)
     {
-      ((k)localObject).d();
-      this.aa = null;
+      ((com.tencent.liteav.beauty.b.k)localObject).d();
+      this.Y = null;
     }
-    localObject = this.ab;
+    localObject = this.Z;
     if (localObject != null)
     {
       ((o)localObject).d();
-      this.ab = null;
+      this.Z = null;
     }
     c();
-    localObject = this.am;
+    localObject = this.ak;
     if (localObject != null)
     {
       ((m)localObject).d();
+      this.ak = null;
+    }
+    localObject = this.al;
+    if (localObject != null)
+    {
+      ((n)localObject).a();
+      this.al = null;
+    }
+    localObject = this.ar;
+    if (localObject != null)
+    {
+      ((com.tencent.liteav.basic.opengl.k)localObject).d();
+      this.ar = null;
+    }
+    localObject = this.aq;
+    if (localObject != null)
+    {
+      ((l)localObject).d();
+      this.aq = null;
+    }
+    localObject = this.ap;
+    if (localObject != null)
+    {
+      ((com.tencent.liteav.basic.opengl.j)localObject).d();
+      this.ap = null;
+    }
+    localObject = this.am;
+    if (localObject != null)
+    {
+      ((x)localObject).d();
       this.am = null;
     }
     localObject = this.an;
     if (localObject != null)
     {
-      ((n)localObject).a();
+      ((com.tencent.liteav.beauty.b.j)localObject).a();
       this.an = null;
-    }
-    localObject = this.at;
-    if (localObject != null)
-    {
-      ((com.tencent.liteav.basic.c.i)localObject).d();
-      this.at = null;
-    }
-    localObject = this.as;
-    if (localObject != null)
-    {
-      ((l)localObject).d();
-      this.as = null;
-    }
-    localObject = this.ar;
-    if (localObject != null)
-    {
-      ((h)localObject).d();
-      this.ar = null;
     }
     localObject = this.ao;
     if (localObject != null)
     {
-      ((x)localObject).d();
+      ((i)localObject).d();
       this.ao = null;
     }
-    localObject = this.ap;
+    localObject = this.as;
     if (localObject != null)
     {
-      ((com.tencent.liteav.beauty.b.j)localObject).a();
-      this.ap = null;
-    }
-    localObject = this.aq;
-    if (localObject != null)
-    {
-      ((com.tencent.liteav.beauty.b.i)localObject).d();
-      this.aq = null;
-    }
-    localObject = this.au;
-    if (localObject != null)
-    {
-      ((h)localObject).d();
-      this.au = null;
+      ((com.tencent.liteav.basic.opengl.j)localObject).d();
+      this.as = null;
     }
     localObject = this.b;
     if (localObject != null)
@@ -566,30 +563,36 @@ class c
       GLES20.glDeleteTextures(1, (int[])localObject, 0);
       this.c = null;
     }
+    localObject = this.aP;
+    if ((localObject != null) && (localObject[0] > 0))
+    {
+      GLES30.glDeleteBuffers(1, (int[])localObject, 0);
+      this.aP = null;
+    }
     TXCLog.i("TXCFilterDrawer", "come out releaseInternal");
   }
   
   private void b(int paramInt1, int paramInt2)
   {
-    if (this.au == null)
+    if (this.as == null)
     {
       TXCLog.i("TXCFilterDrawer", "createRecoverScaleFilter");
-      this.au = new h();
-      if (true == this.au.a()) {
-        this.au.a(true);
+      this.as = new com.tencent.liteav.basic.opengl.j();
+      if (true == this.as.a()) {
+        this.as.a(true);
       } else {
         TXCLog.e("TXCFilterDrawer", "mRecoverScaleFilter init failed!");
       }
     }
-    h localh = this.au;
-    if (localh != null) {
-      localh.a(paramInt1, paramInt2);
+    com.tencent.liteav.basic.opengl.j localj = this.as;
+    if (localj != null) {
+      localj.a(paramInt1, paramInt2);
     }
   }
   
   private void b(byte[] paramArrayOfByte)
   {
-    k localk = this.aa;
+    com.tencent.liteav.beauty.b.k localk = this.Y;
     if (localk == null)
     {
       TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter is null!");
@@ -600,89 +603,89 @@ class c
   
   private void c()
   {
-    Object localObject = this.ad;
+    Object localObject = this.ab;
     if (localObject != null)
     {
       ((com.tencent.liteav.beauty.b.a.a)localObject).d();
+      this.ab = null;
+    }
+    localObject = this.ac;
+    if (localObject != null)
+    {
+      ((com.tencent.liteav.beauty.b.b.a)localObject).d();
+      this.ac = null;
+    }
+    localObject = this.ad;
+    if (localObject != null)
+    {
+      ((com.tencent.liteav.beauty.b.c)localObject).d();
       this.ad = null;
     }
     localObject = this.ae;
     if (localObject != null)
     {
-      ((com.tencent.liteav.beauty.b.b.a)localObject).d();
+      ((com.tencent.liteav.beauty.b.c.a)localObject).d();
       this.ae = null;
     }
-    localObject = this.af;
-    if (localObject != null)
-    {
-      ((com.tencent.liteav.beauty.b.c)localObject).d();
-      this.af = null;
-    }
-    localObject = this.ag;
-    if (localObject != null)
-    {
-      ((com.tencent.liteav.beauty.b.c.a)localObject).d();
-      this.ag = null;
-    }
-    this.ac = null;
+    this.aa = null;
   }
   
   private boolean c(d.b paramb)
   {
     TXCLog.i("TXCFilterDrawer", "come into initInternal");
     b();
-    this.aw = paramb.j;
-    this.J = paramb.d;
-    this.K = paramb.e;
-    this.Y = paramb.m;
+    this.au = paramb.j;
+    this.H = paramb.d;
+    this.I = paramb.e;
+    this.W = paramb.m;
     int i3 = paramb.g;
     int i4 = paramb.f;
     int i5 = paramb.h;
-    this.T = paramb.i;
-    this.Q = paramb.b;
-    this.R = paramb.c;
+    this.R = paramb.i;
+    this.O = paramb.b;
+    this.P = paramb.c;
     int i6 = paramb.a;
-    this.L = paramb.g;
-    this.M = paramb.f;
+    this.J = paramb.g;
+    this.K = paramb.f;
     if ((i5 == 90) || (i5 == 270))
     {
-      this.L = paramb.f;
-      this.M = paramb.g;
+      this.J = paramb.f;
+      this.K = paramb.g;
     }
-    this.X = paramb.l;
-    this.W = paramb.k;
-    this.aQ = new byte[this.Q * this.R * 4];
-    TXCLog.i("TXCFilterDrawer", "processWidth mPituScaleRatio is %f, process size: %d x %d", new Object[] { Float.valueOf(this.P), Integer.valueOf(this.L), Integer.valueOf(this.M) });
-    if (this.P != 1.0F)
+    this.V = paramb.l;
+    this.U = paramb.k;
+    this.aO = new byte[this.O * this.P * 4];
+    TXCLog.i("TXCFilterDrawer", "processWidth mPituScaleRatio is %f, process size: %d x %d", new Object[] { Float.valueOf(this.N), Integer.valueOf(this.J), Integer.valueOf(this.K) });
+    if (this.N != 1.0F)
     {
-      int i1 = this.L;
-      int i2 = this.M;
+      int i1 = this.J;
+      int i2 = this.K;
       if (i1 >= i2) {
         i1 = i2;
       }
       if (i1 > 368) {
-        this.P = (432.0F / i1);
+        this.N = (432.0F / i1);
       }
-      if (this.P > 1.0F) {
-        this.P = 1.0F;
+      if (this.N > 1.0F) {
+        this.N = 1.0F;
       }
     }
-    float f1 = this.L;
-    float f2 = this.P;
-    this.N = ((int)(f1 * f2));
-    this.O = ((int)(this.M * f2));
-    a(this.N, this.O, this.aC);
-    paramb = this.I;
-    if ((paramb != null) && (paramb.a != null) && (this.ao == null))
+    float f1 = this.J;
+    float f2 = this.N;
+    this.L = ((int)(f1 * f2));
+    this.M = ((int)(this.K * f2));
+    a(this.L, this.M, this.aA);
+    paramb = this.G;
+    if ((paramb != null) && (paramb.a != null) && (this.am == null))
     {
       TXCLog.i("TXCFilterDrawer", "reset water mark!");
-      a(this.I.a, this.I.b, this.I.c, this.I.d);
+      a(this.G.a, this.G.b, this.G.c, this.G.d);
     }
-    if (((this.ah != null) || (this.ai != null)) && (this.am == null)) {
-      a(this.N, this.O, this.aj, this.ah, this.ak, this.ai, this.al);
+    if (((this.af != null) || (this.ag != null)) && (this.ak == null)) {
+      a(this.L, this.M, this.ah, this.af, this.ai, this.ag, this.aj);
     }
-    a(this.Y, i3, i4, this.N, this.O, this.T, i5, this.W);
-    a(this.L, this.M, this.Q, this.R, i6);
+    a(this.W, i3, i4, this.L, this.M, this.R, i5, this.U);
+    a(this.J, this.K, this.O, this.P, i6);
     paramb = this.b;
     if (paramb == null) {
       this.b = new int[1];
@@ -695,20 +698,20 @@ class c
     } else {
       GLES20.glDeleteTextures(1, paramb, 0);
     }
-    a(this.b, this.c, this.Q, this.R);
-    if (3 == com.tencent.liteav.basic.c.j.a())
+    a(this.b, this.c, this.O, this.P);
+    if (3 == TXCOpenGlUtils.a())
     {
-      if (this.aR == null)
+      if (this.aP == null)
       {
-        this.aR = new int[1];
+        this.aP = new int[1];
       }
       else
       {
         TXCLog.i("TXCFilterDrawer", "m_pbo0 is not null, delete Buffers, and recreate");
-        GLES30.glDeleteBuffers(1, this.aR, 0);
+        GLES30.glDeleteBuffers(1, this.aP, 0);
       }
       TXCLog.i("TXCFilterDrawer", "opengl es 3.0, use PBO");
-      com.tencent.liteav.basic.c.j.a(i3, i4, this.aR);
+      TXCOpenGlUtils.a(i3, i4, this.aP);
     }
     TXCLog.i("TXCFilterDrawer", "come out initInternal");
     return true;
@@ -716,121 +719,124 @@ class c
   
   private boolean d(d.b paramb)
   {
-    if (((1 == paramb.k) || (3 == paramb.k) || (2 == paramb.k)) && (this.aa == null))
+    if (((1 == paramb.k) || (3 == paramb.k) || (2 == paramb.k)) && (this.Y == null))
     {
-      this.aa = new k(paramb.k);
-      this.aa.a(true);
-      if (!this.aa.a())
+      this.Y = new com.tencent.liteav.beauty.b.k(paramb.k);
+      this.Y.a(true);
+      if (!this.Y.a())
       {
         TXCLog.e("TXCFilterDrawer", "mI4202RGBAFilter init failed!!, break init");
         return false;
       }
-      this.aa.a(paramb.d, paramb.e);
+      this.Y.a(paramb.d, paramb.e);
     }
-    if (((1 == paramb.l) || (3 == paramb.l) || (2 == paramb.l)) && (this.ab == null))
+    if (((1 == paramb.l) || (3 == paramb.l) || (2 == paramb.l)) && (this.Z == null))
     {
-      this.ab = new o(paramb.l);
-      if (!this.ab.a())
+      this.Z = new o(paramb.l);
+      if (!this.Z.a())
       {
         TXCLog.e("TXCFilterDrawer", "mRGBA2I420Filter init failed!!, break init");
         return false;
       }
-      this.ab.a(paramb.b, paramb.c);
+      this.Z.a(paramb.b, paramb.c);
     }
     return true;
   }
   
+  public void A(int paramInt) {}
+  
   public int a(int paramInt1, int paramInt2, long paramLong)
   {
-    a(this.av);
+    this.aZ.a();
+    a(this.at);
     int i1;
-    if (this.P != 1.0F) {
+    if (this.N != 1.0F) {
       i1 = 1;
     } else {
       i1 = 0;
     }
-    GLES20.glViewport(0, 0, this.N, this.O);
+    GLES20.glViewport(0, 0, this.L, this.M);
     int i2 = paramInt1;
-    if (this.as != null)
+    if (this.aq != null)
     {
-      if ((4 == paramInt2) || (true == this.V))
+      if ((4 == paramInt2) || (true == this.T))
       {
-        this.as.a(this.U);
-        this.as.c(this.V);
+        this.aq.a(this.S);
+        this.aq.c(this.T);
       }
-      i2 = this.as.b(paramInt1);
+      i2 = this.aq.b(paramInt1);
     }
     paramInt1 = i2;
-    if (this.ac != null)
+    if (this.aa != null)
     {
-      if (Math.min(this.Q, this.R) < 540) {
-        paramInt2 = 0;
+      if (Math.min(this.O, this.P) < 540) {
+        paramInt1 = 0;
       } else {
-        paramInt2 = this.aF;
+        paramInt1 = this.aD;
       }
-      this.ac.f(paramInt2);
-      if ((this.aD <= 0) && (this.aE <= 0) && (this.aG <= 0))
+      this.aa.f(paramInt1);
+      if ((this.aB <= 0) && (this.aC <= 0))
       {
         paramInt1 = i2;
-        if (paramInt2 <= 0) {}
+        if (this.aE <= 0) {}
       }
       else
       {
-        paramInt1 = this.ac.b(i2);
+        paramInt1 = this.aa.b(i2);
       }
     }
-    Object localObject = this.am;
+    Object localObject = this.ak;
     paramInt2 = paramInt1;
     if (localObject != null) {
       paramInt2 = ((m)localObject).b(paramInt1);
     }
-    GLES20.glViewport(0, 0, this.L, this.M);
-    localObject = this.ap;
+    GLES20.glViewport(0, 0, this.J, this.K);
+    localObject = this.an;
     paramInt1 = paramInt2;
     if (localObject != null)
     {
       paramInt1 = ((com.tencent.liteav.beauty.b.j)localObject).a(paramInt2);
       i1 = 0;
     }
-    localObject = this.aq;
+    localObject = this.ao;
     paramInt2 = paramInt1;
     if (localObject != null)
     {
-      paramInt2 = ((com.tencent.liteav.beauty.b.i)localObject).b(paramInt1);
+      paramInt2 = ((i)localObject).b(paramInt1);
       i1 = 0;
     }
     paramInt1 = paramInt2;
     if (i1 != 0)
     {
-      b(this.L, this.M);
+      b(this.J, this.K);
       paramInt1 = paramInt2;
-      if (this.au != null)
+      if (this.as != null)
       {
-        GLES20.glViewport(0, 0, this.L, this.M);
-        paramInt1 = this.au.b(paramInt2);
+        GLES20.glViewport(0, 0, this.J, this.K);
+        paramInt1 = this.as.b(paramInt2);
       }
     }
-    localObject = this.aY;
+    localObject = this.aW;
     paramInt2 = paramInt1;
     if (localObject != null)
     {
-      i1 = ((e)localObject).a(paramInt1, this.L, this.M);
+      i1 = ((e)localObject).a(paramInt1, this.J, this.K);
       paramInt2 = paramInt1;
       if (i1 > 0) {
         paramInt2 = i1;
       }
     }
-    GLES20.glViewport(0, 0, this.L, this.M);
-    localObject = this.ao;
+    GLES20.glViewport(0, 0, this.J, this.K);
+    localObject = this.am;
     paramInt1 = paramInt2;
     if (localObject != null) {
       paramInt1 = ((x)localObject).b(paramInt2);
     }
     paramInt2 = paramInt1;
-    if (this.ar != null)
+    if (this.ap != null)
     {
-      GLES20.glViewport(0, 0, this.Q, this.R);
-      paramInt2 = this.ar.b(paramInt1);
+      GLES20.glViewport(0, 0, this.O, this.P);
+      paramInt2 = this.ap.b(paramInt1);
     }
     a(paramInt2, paramLong);
     return paramInt2;
@@ -839,30 +845,29 @@ class c
   public int a(byte[] paramArrayOfByte, int paramInt)
   {
     a(paramArrayOfByte);
-    if (!this.aw)
+    if (!this.au)
     {
       paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-      this.aA.obtainMessage(2, paramArrayOfByte).sendToTarget();
-      if (!this.aS)
+      this.ay.obtainMessage(2, paramArrayOfByte).sendToTarget();
+      if (!this.aQ)
       {
         TXCLog.i("TXCFilterDrawer", "First Frame, clear queue");
-        NativeLoad.getInstance();
         NativeLoad.nativeClearQueue();
       }
-      this.aA.obtainMessage(3, paramInt, 0).sendToTarget();
-      a(paramArrayOfByte, this.aS);
-      this.aS = true;
+      this.ay.obtainMessage(3, paramInt, 0).sendToTarget();
+      a(paramArrayOfByte, this.aQ);
+      this.aQ = true;
       return -1;
     }
     b(paramArrayOfByte);
-    return A(paramInt);
+    return B(paramInt);
   }
   
   public void a()
   {
-    if (!this.aw)
+    if (!this.au)
     {
-      c.a locala = this.aA;
+      c.a locala = this.ay;
       if (locala == null) {
         break label36;
       }
@@ -870,7 +875,7 @@ class c
     }
     try
     {
-      this.d.b();
+      this.aY.b();
       return;
     }
     catch (InterruptedException localInterruptedException) {}
@@ -881,29 +886,29 @@ class c
   
   public void a(float paramFloat)
   {
-    this.aB = paramFloat;
+    this.az = paramFloat;
     a(new c.1(this, paramFloat));
   }
   
   public void a(float paramFloat1, Bitmap paramBitmap1, float paramFloat2, Bitmap paramBitmap2, float paramFloat3)
   {
-    if ((this.ah == paramBitmap1) && (this.ai == paramBitmap2))
+    if ((this.af == paramBitmap1) && (this.ag == paramBitmap2))
     {
-      if ((this.am != null) && ((this.aj != paramFloat1) || (this.ak != paramFloat2) || (this.al != paramFloat3)))
+      if ((this.ak != null) && ((this.ah != paramFloat1) || (this.ai != paramFloat2) || (this.aj != paramFloat3)))
       {
-        this.aj = paramFloat1;
-        this.ak = paramFloat2;
-        this.al = paramFloat3;
+        this.ah = paramFloat1;
+        this.ai = paramFloat2;
+        this.aj = paramFloat3;
         a(new c.8(this, paramFloat1, paramFloat2, paramFloat3));
       }
     }
     else
     {
-      this.ah = paramBitmap1;
-      this.ai = paramBitmap2;
-      this.aj = paramFloat1;
-      this.ak = paramFloat2;
-      this.al = paramFloat3;
+      this.af = paramBitmap1;
+      this.ag = paramBitmap2;
+      this.ah = paramFloat1;
+      this.ai = paramFloat2;
+      this.aj = paramFloat3;
       a(new c.6(this, paramFloat1, paramBitmap1, paramFloat2, paramBitmap2, paramFloat3));
     }
   }
@@ -912,20 +917,20 @@ class c
   
   public void a(Bitmap paramBitmap)
   {
-    a(1.0F, paramBitmap, this.aB, null, 0.0F);
+    a(1.0F, paramBitmap, this.az, null, 0.0F);
   }
   
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.I == null) {
-      this.I = new d.f();
+    if (this.G == null) {
+      this.G = new d.f();
     }
-    if ((TXCCommonUtil.equals(this.I.a, paramBitmap)) && (paramFloat1 == this.I.b) && (paramFloat2 == this.I.c) && (paramFloat3 == this.I.d) && (this.ao != null))
+    if ((TXCCommonUtil.equals(this.G.a, paramBitmap)) && (paramFloat1 == this.G.b) && (paramFloat2 == this.G.c) && (paramFloat3 == this.G.d) && (this.am != null))
     {
       Log.d("TXCFilterDrawer", "Same Water Mark; don't set again");
       return;
     }
-    d.f localf = this.I;
+    d.f localf = this.G;
     localf.a = paramBitmap;
     localf.b = paramFloat1;
     localf.c = paramFloat2;
@@ -933,20 +938,20 @@ class c
     a(new c.10(this, paramBitmap, paramFloat1, paramFloat2, paramFloat3));
   }
   
-  void a(com.tencent.liteav.basic.b.b paramb)
+  void a(com.tencent.liteav.basic.c.b paramb)
   {
     TXCLog.i("TXCFilterDrawer", "set notify");
-    this.aZ = new WeakReference(paramb);
-    paramb = this.ap;
+    this.aX = new WeakReference(paramb);
+    paramb = this.an;
     if (paramb != null) {
-      paramb.a((com.tencent.liteav.basic.b.b)this.aZ.get());
+      paramb.a((com.tencent.liteav.basic.c.b)this.aX.get());
     }
   }
   
   void a(e parame)
   {
     TXCLog.i("TXCFilterDrawer", "set listener");
-    this.aY = parame;
+    this.aW = parame;
   }
   
   public void a(String paramString) {}
@@ -960,7 +965,7 @@ class c
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.aT = paramArrayOfByte;
+    this.aR = paramArrayOfByte;
   }
   
   public void a(float[] paramArrayOfFloat)
@@ -975,13 +980,13 @@ class c
     {
       if (!paramb.j)
       {
-        if (this.aA == null)
+        if (this.ay == null)
         {
           start();
-          this.aA = new c.a(this, getLooper(), this.E);
+          this.ay = new c.a(this, getLooper(), this.C);
         }
-        this.aA.obtainMessage(0, paramb).sendToTarget();
-        this.aA.b();
+        this.ay.obtainMessage(0, paramb).sendToTarget();
+        this.ay.b();
       }
       else
       {
@@ -1001,9 +1006,9 @@ class c
   
   public boolean b(d.b paramb)
   {
-    if (!this.aw)
+    if (!this.au)
     {
-      c.a locala = this.aA;
+      c.a locala = this.ay;
       if (locala == null)
       {
         TXCLog.e("TXCFilterDrawer", "mThreadHandler is null!");
@@ -1020,37 +1025,37 @@ class c
   
   public void c(int paramInt)
   {
-    this.aD = paramInt;
+    this.aB = paramInt;
     a(new c.13(this, paramInt));
   }
   
   public void d(int paramInt)
   {
-    if ((this.aC != paramInt) && (paramInt <= 3))
+    if ((this.aA != paramInt) && (paramInt <= 3))
     {
       if (paramInt < 0) {
         return;
       }
-      this.aC = paramInt;
+      this.aA = paramInt;
       a(new c.2(this, paramInt));
     }
   }
   
   public void e(int paramInt)
   {
-    this.aE = paramInt;
+    this.aC = paramInt;
     a(new c.3(this, paramInt));
   }
   
   public void f(int paramInt)
   {
-    this.aF = paramInt;
+    this.aD = paramInt;
     a(new c.4(this, paramInt));
   }
   
   public void g(int paramInt)
   {
-    this.aG = paramInt;
+    this.aE = paramInt;
     a(new c.5(this, paramInt));
   }
   
@@ -1094,7 +1099,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.c
  * JD-Core Version:    0.7.0.1
  */

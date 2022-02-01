@@ -13,16 +13,14 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class GameMsgQuickReplyView$1
   implements AdapterView.OnItemClickListener
 {
-  GameMsgQuickReplyView$1(GameMsgQuickReplyView paramGameMsgQuickReplyView) {}
-  
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (GameMsgQuickReplyView.a(this.a) != null) {
       try
       {
         GameMsgQuickReplyInfo localGameMsgQuickReplyInfo = (GameMsgQuickReplyInfo)paramAdapterView.getItemAtPosition(paramInt);
-        if (GameMsgQuickReplyView.a(this.a).a(localGameMsgQuickReplyInfo.a)) {
-          ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.e, "1", "145", "920", "92005", "207649", localGameMsgQuickReplyInfo.a, "", "20", "");
+        if (GameMsgQuickReplyView.a(this.a).e(localGameMsgQuickReplyInfo.a)) {
+          ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.bi, "1", "145", "920", "92005", "207649", localGameMsgQuickReplyInfo.a, "", "20", "");
         }
       }
       catch (Throwable localThrowable)
@@ -35,7 +33,7 @@ class GameMsgQuickReplyView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameMsgQuickReplyView.1
  * JD-Core Version:    0.7.0.1
  */

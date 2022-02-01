@@ -4,6 +4,7 @@ import android.util.SparseArray;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ActivityConfigurationChangedNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.DispatchTouchEventNotifier;
+import com.tencent.qqlive.module.videoreport.collect.notifier.KeyBoardEditorActionNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ListScrollNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewScrollPositionNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewSetAdapterNotifier;
@@ -15,16 +16,19 @@ import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class ReusablePool
 {
   private static final int MAX_LIST_SIZE = 30;
+  private static final HashMap<Integer, Class<?>> NOTIFY_CLASS_MAP;
   private static final SparseArray<List<Object>> POOL = new SparseArray();
   private static final String TAG = "ReusablePool";
   public static final int TYPE_ACTIVITY_CONFIGURATION_CHANGED = 9;
   public static final int TYPE_DISPATCH_TOUCH_EVENT = 10;
   public static final int TYPE_FINAL_DATA_REUSE = 6;
+  public static final int TYPE_KEYBOARD_ON_EDITOR_ACTION = 11;
   public static final int TYPE_LIST_SCROLL = 1;
   public static final int TYPE_RECYCLER_VIEW_SCROLL_POSITION = 7;
   public static final int TYPE_RECYCLER_VIEW_SET_ADAPTER = 2;
@@ -33,32 +37,38 @@ public class ReusablePool
   public static final int TYPE_VIEW_PAGER_SET_ADAPTER = 4;
   public static final int TYPE_VIEW_REUSE = 5;
   
+  static
+  {
+    NOTIFY_CLASS_MAP = new HashMap();
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(1), ListScrollNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(2), RecyclerViewSetAdapterNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(3), ViewClickNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(4), ViewPagerSetAdapterNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(5), ViewReuseNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(6), FinalData.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(7), RecyclerViewScrollPositionNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(8), ReportData.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(9), ActivityConfigurationChangedNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(10), DispatchTouchEventNotifier.class);
+    NOTIFY_CLASS_MAP.put(Integer.valueOf(11), KeyBoardEditorActionNotifier.class);
+  }
+  
   private static Object createObject(int paramInt)
   {
-    switch (paramInt)
+    Object localObject = (Class)NOTIFY_CLASS_MAP.get(Integer.valueOf(paramInt));
+    try
     {
-    default: 
-      return null;
-    case 10: 
-      return new DispatchTouchEventNotifier();
-    case 9: 
-      return new ActivityConfigurationChangedNotifier();
-    case 8: 
-      return new ReportData();
-    case 7: 
-      return new RecyclerViewScrollPositionNotifier();
-    case 6: 
-      return new FinalData();
-    case 5: 
-      return new ViewReuseNotifier();
-    case 4: 
-      return new ViewPagerSetAdapterNotifier();
-    case 3: 
-      return new ViewClickNotifier();
-    case 2: 
-      return new RecyclerViewSetAdapterNotifier();
+      localObject = ((Class)localObject).newInstance();
+      return localObject;
     }
-    return new ListScrollNotifier();
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new Instance exception ");
+      localStringBuilder.append(localException);
+      Log.e("ReusablePool", localStringBuilder.toString());
+    }
+    return null;
   }
   
   public static Object obtain(int paramInt)
@@ -137,7 +147,7 @@ public class ReusablePool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ReusablePool
  * JD-Core Version:    0.7.0.1
  */

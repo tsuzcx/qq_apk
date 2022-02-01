@@ -15,16 +15,16 @@ class Face2FaceAddContactAdapter$1
   {
     if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
-      paramInt2 = Face2FaceAddContactAdapter.a(this.a).getChildCount();
+      paramInt2 = Face2FaceAddContactAdapter.b(this.a).getChildCount();
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
       {
-        Object localObject = Face2FaceAddContactAdapter.a(this.a).getChildViewHolder(Face2FaceAddContactAdapter.a(this.a).getChildAt(paramInt1));
+        Object localObject = Face2FaceAddContactAdapter.b(this.a).getChildViewHolder(Face2FaceAddContactAdapter.b(this.a).getChildAt(paramInt1));
         if ((localObject instanceof Face2FaceAddContactAdapter.AvatarViewHolder))
         {
           localObject = (Face2FaceAddContactAdapter.AvatarViewHolder)localObject;
-          if (((Face2FaceAddContactAdapter.AvatarViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-            ((Face2FaceAddContactAdapter.AvatarViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          if (((Face2FaceAddContactAdapter.AvatarViewHolder)localObject).a.equals(paramString)) {
+            ((Face2FaceAddContactAdapter.AvatarViewHolder)localObject).b.setImageBitmap(paramBitmap);
           }
         }
         paramInt1 += 1;
@@ -34,7 +34,7 @@ class Face2FaceAddContactAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactAdapter.1
  * JD-Core Version:    0.7.0.1
  */

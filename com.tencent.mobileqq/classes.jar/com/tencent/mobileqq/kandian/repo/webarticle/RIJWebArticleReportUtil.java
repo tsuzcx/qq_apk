@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.repo.webarticle;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sonic.sdk.SonicSession;
@@ -30,7 +29,7 @@ public final class RIJWebArticleReportUtil
     localStringBuilder.append(", r5 = ");
     localStringBuilder.append(paramReportR5Builder.a());
     QLog.i("RIJWebArticleReportUtil", 1, localStringBuilder.toString());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, "", "", "", paramReportR5Builder.a(), false);
+    PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, "", "", "", paramReportR5Builder.a(), false);
   }
   
   public final void a(@NotNull HashMap<String, String> paramHashMap, @Nullable SonicClientImpl paramSonicClientImpl)
@@ -60,7 +59,7 @@ public final class RIJWebArticleReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleReportUtil
  * JD-Core Version:    0.7.0.1
  */

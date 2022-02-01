@@ -21,29 +21,29 @@ class FeedBannerViewHolder$2
         if (i != 3) {
           return true;
         }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+        this.a.setVisibility(4);
         this.b.setAlpha(1.0F);
+        this.c.setAlpha(1.0F);
+        this.d.setAlpha(1.0F);
         return true;
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.a.setVisibility(4);
       this.b.setAlpha(1.0F);
-      FeedBannerViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFeedFeedBannerViewHolder, this.jdField_a_of_type_ComTencentMobileqqQqexpandFeedFeedBannerTabItem, this.jdField_a_of_type_Int);
+      this.c.setAlpha(1.0F);
+      this.d.setAlpha(1.0F);
+      FeedBannerViewHolder.a(this.g, this.e, this.f);
       return true;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.5F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+    this.a.setVisibility(0);
     this.b.setAlpha(0.5F);
+    this.c.setAlpha(0.5F);
+    this.d.setAlpha(0.5F);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.FeedBannerViewHolder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,36 +6,36 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class BaseAccountChecker$DefaultAccountNotify
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
+  private Context a;
   private int b;
   private int c;
-  private int d;
+  private String d;
+  private int e;
+  private int f;
   
   public BaseAccountChecker$DefaultAccountNotify(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = 2131694663;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramContext;
+    this.d = paramString;
+    this.c = 2131892355;
+    this.b = paramInt;
     if (paramInt == 1) {
-      this.c = 2131694665;
+      this.e = 2131892357;
     } else {
-      this.c = 2131694664;
+      this.e = 2131892356;
     }
-    this.d = 2131690728;
+    this.f = 2131887648;
   }
   
   public void a(BaseAccountChecker.DefaultAccountNotify.DialogBtnClickListener paramDialogBtnClickListener)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    localQQCustomDialog.setTitle(this.b);
-    localQQCustomDialog.setMessage(this.jdField_a_of_type_JavaLangString);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230);
+    localQQCustomDialog.setTitle(this.c);
+    localQQCustomDialog.setMessage(this.d);
     BaseAccountChecker.DefaultAccountNotify.1 local1 = new BaseAccountChecker.DefaultAccountNotify.1(this, paramDialogBtnClickListener);
-    localQQCustomDialog.setPositiveButton(this.c, local1);
-    if (this.jdField_a_of_type_Int == 2) {
-      localQQCustomDialog.setNegativeButton(this.d, local1);
+    localQQCustomDialog.setPositiveButton(this.e, local1);
+    if (this.b == 2) {
+      localQQCustomDialog.setNegativeButton(this.f, local1);
     }
     localQQCustomDialog.setOnCancelListener(new BaseAccountChecker.DefaultAccountNotify.2(this, paramDialogBtnClickListener));
     localQQCustomDialog.show();
@@ -43,7 +43,7 @@ public class BaseAccountChecker$DefaultAccountNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.sdk.checker.BaseAccountChecker.DefaultAccountNotify
  * JD-Core Version:    0.7.0.1
  */

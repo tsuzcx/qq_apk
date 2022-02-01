@@ -27,8 +27,8 @@ class LogcatHookThread$WriteHandler
           return;
         }
         LogcatHookThread.b(System.currentTimeMillis());
-        LogcatHookThread.a.removeMessages(2);
-        LogcatHookThread.a.sendEmptyMessageDelayed(2, 300000L);
+        LogcatHookThread.b.removeMessages(2);
+        LogcatHookThread.b.sendEmptyMessageDelayed(2, 300000L);
         return;
       }
       catch (Throwable paramMessage)
@@ -42,8 +42,8 @@ class LogcatHookThread$WriteHandler
       try
       {
         LogcatHookThread.a(System.currentTimeMillis());
-        LogcatHookThread.a.removeMessages(1);
-        LogcatHookThread.a.sendEmptyMessageDelayed(1, 300000L);
+        LogcatHookThread.b.removeMessages(1);
+        LogcatHookThread.b.sendEmptyMessageDelayed(1, 300000L);
         return;
       }
       catch (Throwable paramMessage)
@@ -55,7 +55,7 @@ class LogcatHookThread$WriteHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.logcathook.LogcatHookThread.WriteHandler
  * JD-Core Version:    0.7.0.1
  */

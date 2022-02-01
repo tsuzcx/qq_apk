@@ -12,10 +12,10 @@ class ReadInJoySocializeRecommendFollowView$8
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView).isShowRecommendList = false;
-      ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView);
+      ReadInJoySocializeRecommendFollowView.g(this.b).isShowRecommendList = false;
+      ReadInJoySocializeRecommendFollowView.a(this.b);
     }
   }
   
@@ -25,7 +25,7 @@ class ReadInJoySocializeRecommendFollowView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.8
  * JD-Core Version:    0.7.0.1
  */

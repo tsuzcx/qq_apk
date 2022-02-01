@@ -12,7 +12,7 @@ class OnlineVideoARRenderable$5
   {
     try
     {
-      OnlineVideoARRenderable.a(this.this$0).stop();
+      OnlineVideoARRenderable.l(this.this$0).stop();
     }
     catch (Exception localException1) {}
     try
@@ -25,8 +25,8 @@ class OnlineVideoARRenderable$5
       localStringBuilder.append(localException1.getMessage());
       QLog.d("AREngine_OnlineVideoARRenderable", 1, localStringBuilder.toString());
       OnlineVideoARRenderable.b(this.this$0, true);
-      OnlineVideoARRenderable.a(this.this$0, OnlineVideoARRenderable.a(this.this$0));
-      OnlineVideoARRenderable.h(this.this$0);
+      OnlineVideoARRenderable.a(this.this$0, OnlineVideoARRenderable.m(this.this$0));
+      OnlineVideoARRenderable.n(this.this$0);
       return;
     }
     catch (Exception localException2)
@@ -43,7 +43,7 @@ class OnlineVideoARRenderable$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.5
  * JD-Core Version:    0.7.0.1
  */

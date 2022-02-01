@@ -43,41 +43,21 @@ import mqq.app.AppRuntime;
 public class AppShortcutBarProcessor
   extends IShortcutBarProcessor
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   public NavigateBarManager a;
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
-  private TroopRedDotObserver jdField_a_of_type_ComTencentMobileqqTroopObserverTroopRedDotObserver;
-  private IShortcutBarDataProvider jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
-  private TroopShortcutBarObserver jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver;
-  private String jdField_a_of_type_JavaLangString;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private AIOShortcutBarContext b;
+  private IShortcutBarDataProvider c;
+  private long d;
+  private String e;
+  private int f;
+  private TroopShortcutBarObserver g;
+  private TroopRedDotObserver h;
+  private MessageObserver i;
+  private AppRuntime j;
+  private SessionInfo k;
+  private Context l;
+  private Activity m;
   
   public AppShortcutBarProcessor(AIOShortcutBarContext paramAIOShortcutBarContext, IShortcutBarDataProvider paramIShortcutBarDataProvider) {}
-  
-  private long a()
-  {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if ((localSessionInfo != null) && (localSessionInfo.jdField_a_of_type_JavaLangString != null)) {}
-    try
-    {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      return l;
-    }
-    catch (Exception localException)
-    {
-      label35:
-      break label35;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("AppShortcutBarProcessor", 2, "getTroopUinNoEmpty is Exception");
-    }
-    return 0L;
-  }
   
   private ArrayList<ShortcutBarInfo> a(ArrayList<TroopShortcutBarApp> paramArrayList)
   {
@@ -99,7 +79,7 @@ public class AppShortcutBarProcessor
   
   private void a(BusinessObserver paramBusinessObserver)
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.j;
     if ((localAppRuntime != null) && (paramBusinessObserver != null)) {
       ((QQAppInterface)localAppRuntime).addObserver(paramBusinessObserver);
     }
@@ -107,7 +87,7 @@ public class AppShortcutBarProcessor
   
   private void b(BusinessObserver paramBusinessObserver)
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.j;
     if ((localAppRuntime != null) && (paramBusinessObserver != null)) {
       ((QQAppInterface)localAppRuntime).removeObserver(paramBusinessObserver);
     }
@@ -115,24 +95,24 @@ public class AppShortcutBarProcessor
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = new AppShortcutBarProcessor.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopRedDotObserver = new AppShortcutBarProcessor.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new AppShortcutBarProcessor.3(this);
+    this.g = new AppShortcutBarProcessor.1(this);
+    this.h = new AppShortcutBarProcessor.2(this);
+    this.i = new AppShortcutBarProcessor.3(this);
   }
   
   private void i()
   {
-    Object localObject = (TroopShortcutBarManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
-    if ((!"".equals(this.jdField_a_of_type_JavaLangString)) && (localObject != null))
+    Object localObject = (TroopShortcutBarManager)this.j.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
+    if ((!"".equals(this.e)) && (localObject != null))
     {
-      long l = ((TroopShortcutBarManager)localObject).c(this.jdField_a_of_type_Long);
-      if (l > ((TroopShortcutBarManager)localObject).b(this.jdField_a_of_type_Long)) {
-        ((TroopShortcutBarManager)localObject).a(this.jdField_a_of_type_Long, l);
+      long l1 = ((TroopShortcutBarManager)localObject).e(this.d);
+      if (l1 > ((TroopShortcutBarManager)localObject).c(this.d)) {
+        ((TroopShortcutBarManager)localObject).a(this.d, l1);
       }
-      localObject = ((TroopShortcutBarManager)localObject).a(Long.valueOf(this.jdField_a_of_type_Long));
+      localObject = ((TroopShortcutBarManager)localObject).a(Long.valueOf(this.d));
       if (localObject != null)
       {
-        localObject = ((TroopShortcutBarInfo)localObject).a().iterator();
+        localObject = ((TroopShortcutBarInfo)localObject).d().iterator();
         while (((Iterator)localObject).hasNext()) {
           ((TroopShortcutBarApp)((Iterator)localObject).next()).b(false);
         }
@@ -140,36 +120,56 @@ public class AppShortcutBarProcessor
     }
   }
   
-  private void j()
+  private long j()
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
+    SessionInfo localSessionInfo = this.k;
+    if ((localSessionInfo != null) && (localSessionInfo.b != null)) {}
+    try
+    {
+      long l1 = Long.parseLong(this.k.b);
+      return l1;
+    }
+    catch (Exception localException)
+    {
+      label35:
+      break label35;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("AppShortcutBarProcessor", 2, "getTroopUinNoEmpty is Exception");
+    }
+    return 0L;
+  }
+  
+  private void k()
+  {
+    if (this.j == null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("AppShortcutBarProcessor", 2, "getAIOShortcutBarInfoOnShow.");
     }
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString);
-    TroopShortcutBarConfig localTroopShortcutBarConfig = (TroopShortcutBarConfig)QConfigManager.a().a(590);
-    TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+    TroopInfo localTroopInfo = ((TroopManager)this.j.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.e);
+    TroopShortcutBarConfig localTroopShortcutBarConfig = (TroopShortcutBarConfig)QConfigManager.b().b(590);
+    TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)((QQAppInterface)this.j).getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
     if ((localTroopShortcutBarConfig != null) && (localTroopInfo != null) && ((localTroopShortcutBarConfig.a((int)localTroopInfo.dwGroupClassExt)) || (localTroopShortcutBarConfig.b((int)localTroopInfo.dwGroupClassExt)))) {}
     for (;;)
     {
       try
       {
-        TroopShortcutBarInfo localTroopShortcutBarInfo = ((TroopShortcutBarManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(this.jdField_a_of_type_Long));
+        TroopShortcutBarInfo localTroopShortcutBarInfo = ((TroopShortcutBarManager)this.j.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(this.d));
         if (localTroopShortcutBarInfo != null)
         {
-          if (!StudyModeManager.a()) {
+          if (!StudyModeManager.h()) {
             break label364;
           }
-          i = 1;
-          if ((localTroopShortcutBarInfo.a() < System.currentTimeMillis()) || ((StudyModeManager.a()) && (this.jdField_a_of_type_Int != i)))
+          n = 1;
+          if ((localTroopShortcutBarInfo.c() < System.currentTimeMillis()) || ((StudyModeManager.h()) && (this.f != n)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("AppShortcutBarProcessor", 2, "onShow. AIO TroopShortcutBar cache is out of date. Getting new list from server. ");
             }
-            this.jdField_a_of_type_Int = i;
-            localTroopShortcutBarHandler.a(this.jdField_a_of_type_Long, (int)localTroopInfo.dwGroupClassExt, null);
+            this.f = n;
+            localTroopShortcutBarHandler.a(this.d, (int)localTroopInfo.dwGroupClassExt, null);
           }
           if (QLog.isColorLevel()) {
             QLog.d("AppShortcutBarProcessor", 2, "onShow. updateAppShortcutPanel. ");
@@ -177,29 +177,29 @@ public class AppShortcutBarProcessor
           if (localTroopInfo.isAdmin()) {
             break label374;
           }
-          if (!localTroopInfo.isTroopOwner(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin())) {
+          if (!localTroopInfo.isTroopOwner(this.j.getCurrentAccountUin())) {
             break label369;
           }
           break label374;
-          if (i != 0) {
+          if (n != 0) {
             break label384;
           }
-          if (localTroopShortcutBarConfig.jdField_a_of_type_Int != TroopShortcutBarConfig.c) {
+          if (localTroopShortcutBarConfig.e != TroopShortcutBarConfig.g) {
             break label379;
           }
           break label384;
-          if (((i == 0) && (localTroopShortcutBarInfo.a() == 0)) || ((i != 0) && (localTroopShortcutBarInfo.b() == 0)))
+          if (((n == 0) && (localTroopShortcutBarInfo.a() == 0)) || ((n != 0) && (localTroopShortcutBarInfo.b() == 0)))
           {
-            this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider.a(0, a(localTroopShortcutBarInfo.a()), bool);
+            this.c.a(0, a(localTroopShortcutBarInfo.d()), bool);
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider.a(0, null, bool);
+          this.c.a(0, null, bool);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("AppShortcutBarProcessor", 2, "onShow. AIO TroopShortcutBar cache is null. Getting list from server. ");
         }
-        localTroopShortcutBarHandler.a(this.jdField_a_of_type_Long, (int)localTroopInfo.dwGroupClassExt, null);
+        localTroopShortcutBarHandler.a(this.d, (int)localTroopInfo.dwGroupClassExt, null);
         return;
       }
       catch (Exception localException)
@@ -208,13 +208,13 @@ public class AppShortcutBarProcessor
       }
       return;
       label364:
-      int i = 0;
+      int n = 0;
       continue;
       label369:
-      i = 0;
+      n = 0;
       continue;
       label374:
-      i = 1;
+      n = 1;
       continue;
       label379:
       boolean bool = false;
@@ -227,13 +227,13 @@ public class AppShortcutBarProcessor
   public void a()
   {
     i();
-    b(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopRedDotObserver);
-    b(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    b(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver);
+    b(this.h);
+    b(this.i);
+    b(this.g);
     g();
     f();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider = null;
+    this.b = null;
+    this.c = null;
   }
   
   public void a(Object paramObject)
@@ -245,9 +245,9 @@ public class AppShortcutBarProcessor
     {
       i();
       Object localObject = (TroopShortcutBarApp)paramObject;
-      paramObject = ((TroopShortcutBarApp)localObject).c();
-      long l = ((TroopShortcutBarApp)localObject).b();
-      TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString);
+      paramObject = ((TroopShortcutBarApp)localObject).h();
+      long l1 = ((TroopShortcutBarApp)localObject).d();
+      TroopInfo localTroopInfo = ((TroopManager)this.j.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.e);
       if (localTroopInfo == null)
       {
         if (QLog.isColorLevel()) {
@@ -255,39 +255,39 @@ public class AppShortcutBarProcessor
         }
         return;
       }
-      if (l == 101847770L) {
-        ReportController.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(((TroopShortcutBarApp)localObject).b()), this.jdField_a_of_type_JavaLangString, String.valueOf(localTroopInfo.dwGroupClassExt), "");
+      if (l1 == 101847770L) {
+        ReportController.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(((TroopShortcutBarApp)localObject).d()), this.e, String.valueOf(localTroopInfo.dwGroupClassExt), "");
       }
-      if ((l == 1101236949L) && (QVipBigTroopExpiredProcessor.c().mIsEnable) && (localTroopInfo.mIsFreezed == 1) && ((localTroopInfo.isAdmin()) || (localTroopInfo.isTroopOwner(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin())))) {
-        ReportController.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(((TroopShortcutBarApp)localObject).b()), this.jdField_a_of_type_JavaLangString, String.valueOf(localTroopInfo.dwGroupClassExt), "");
+      if ((l1 == 1101236949L) && (QVipBigTroopExpiredProcessor.e().mIsEnable) && (localTroopInfo.mIsFreezed == 1) && ((localTroopInfo.isAdmin()) || (localTroopInfo.isTroopOwner(this.j.getCurrentAccountUin())))) {
+        ReportController.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(((TroopShortcutBarApp)localObject).d()), this.e, String.valueOf(localTroopInfo.dwGroupClassExt), "");
       }
-      if (l == 101886235L)
+      if (l1 == 101886235L)
       {
-        TroopEssenceReportUtil.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, true);
-        TroopEssenceReportUtil.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, true);
+        TroopEssenceReportUtil.a((QQAppInterface)this.j, this.e, true);
+        TroopEssenceReportUtil.b((QQAppInterface)this.j, this.e, true);
       }
-      int i = ((TroopShortcutBarApp)localObject).c();
+      int n = ((TroopShortcutBarApp)localObject).i();
       if (paramObject.startsWith("local")) {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.b())
+        if (this.b.m())
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(3);
+          this.b.a(true);
+          this.b.b(3);
         }
         else
         {
           Intent localIntent = new Intent();
           localIntent.putExtra("troop_uin", localTroopInfo.troopuin);
-          localIntent.putExtra("session_info", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          localIntent.putExtra("session_info", this.k);
           localIntent.putExtra("fling_action_key", 2);
           localIntent.putExtra("fling_code_key", hashCode());
           localIntent.putExtra("reportfrom", 3);
           PublicFragmentActivity.Launcher.a(PlayModeUtils.a(), localIntent, PublicFragmentActivity.class, TroopAppShortcutFragment.class);
         }
       }
-      ReportController.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(((TroopShortcutBarApp)localObject).b()), this.jdField_a_of_type_JavaLangString, String.valueOf(localTroopInfo.dwGroupClassExt), "");
-      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      ReportController.b(null, "dc00898", "", "", "0X800AAD4", "0X800AAD4", 0, 0, String.valueOf(((TroopShortcutBarApp)localObject).d()), this.e, String.valueOf(localTroopInfo.dwGroupClassExt), "");
+      localObject = this.m;
       if ((localObject instanceof BaseActivity)) {
-        TroopAppShortcutUtils.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentContext, (BaseActivity)localObject, this.jdField_a_of_type_JavaLangString, l, paramObject, 0, i);
+        TroopAppShortcutUtils.a((QQAppInterface)this.j, this.l, (BaseActivity)localObject, this.e, l1, paramObject, 0, n);
       }
     }
   }
@@ -300,33 +300,33 @@ public class AppShortcutBarProcessor
   
   public void d()
   {
-    j();
+    k();
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager.a(4);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager.c(75);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager.a();
+      this.a = this.b.n();
+      this.a.a(4);
+      this.a.c(75);
+      this.a.a();
     }
   }
   
   public void f()
   {
-    NavigateBarManager localNavigateBarManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager;
+    NavigateBarManager localNavigateBarManager = this.a;
     if (localNavigateBarManager != null)
     {
       localNavigateBarManager.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager = null;
+      this.a = null;
     }
   }
   
   public void g()
   {
-    NavigateBarManager localNavigateBarManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager;
+    NavigateBarManager localNavigateBarManager = this.a;
     if (localNavigateBarManager == null) {
       return;
     }
@@ -335,7 +335,7 @@ public class AppShortcutBarProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.troopapp.AppShortcutBarProcessor
  * JD-Core Version:    0.7.0.1
  */

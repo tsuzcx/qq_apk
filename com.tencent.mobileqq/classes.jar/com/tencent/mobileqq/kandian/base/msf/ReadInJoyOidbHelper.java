@@ -114,7 +114,7 @@ public class ReadInJoyOidbHelper
   
   public static ToServiceMsg a(String paramString)
   {
-    return new ToServiceMsg("mobileqq.service", RIJQQAppInterfaceUtil.a(), paramString);
+    return new ToServiceMsg("mobileqq.service", RIJQQAppInterfaceUtil.d(), paramString);
   }
   
   public static ToServiceMsg a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
@@ -122,7 +122,7 @@ public class ReadInJoyOidbHelper
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     paramString = a(paramString);
     paramString.putWupBuffer(localOIDBSSOPkg.toByteArray());
@@ -132,7 +132,7 @@ public class ReadInJoyOidbHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper
  * JD-Core Version:    0.7.0.1
  */

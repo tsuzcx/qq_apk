@@ -12,7 +12,7 @@ public class TencentDocLocalCooperationProcessor
 {
   public static TencentDocLocalCooperationBean a()
   {
-    return (TencentDocLocalCooperationBean)QConfigManager.a().a(525);
+    return (TencentDocLocalCooperationBean)QConfigManager.b().b(525);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class TencentDocLocalCooperationProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocLocalCooperationProcessor
  * JD-Core Version:    0.7.0.1
  */

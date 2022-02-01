@@ -27,7 +27,7 @@ public class UploadImageJob
   public void a()
   {
     QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.j();
     ITransFileController localITransFileController = (ITransFileController)localQQAppInterface.getRuntimeService(ITransFileController.class);
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mUpCallBack = new UploadImageJob.1(this);
@@ -43,18 +43,18 @@ public class UploadImageJob
   protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
-      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+      this.a = ((String)b("UploadImageJob_in_image_file_path"));
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     return TextUtils.isEmpty(this.a) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.UploadImageJob
  * JD-Core Version:    0.7.0.1
  */

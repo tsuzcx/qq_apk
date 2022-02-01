@@ -15,7 +15,7 @@ class ReadInJoyGlobalReporter$3
     {
       if (ReadInJoyGlobalReporter.b(this.this$0) == 1)
       {
-        BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.a);
+        BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.j);
         ReadInJoyGlobalReporter.a(this.this$0, 0);
       }
       if (QLog.isColorLevel())
@@ -39,7 +39,7 @@ class ReadInJoyGlobalReporter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadInJoyGlobalReporter.3
  * JD-Core Version:    0.7.0.1
  */

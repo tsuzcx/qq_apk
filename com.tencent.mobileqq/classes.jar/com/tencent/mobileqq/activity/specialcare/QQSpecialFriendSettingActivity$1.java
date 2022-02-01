@@ -37,14 +37,14 @@ class QQSpecialFriendSettingActivity$1
       }
       if (NetworkUtil.isNetworkAvailable(this.a))
       {
-        boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
-        boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
-        localObject = QQSpecialFriendSettingActivity.a(this.a);
+        boolean bool1 = QQSpecialFriendSettingActivity.b(this.a).a();
+        boolean bool2 = QQSpecialFriendSettingActivity.c(this.a).a();
+        localObject = QQSpecialFriendSettingActivity.e(this.a);
         String str = QQSpecialFriendSettingActivity.a(this.a);
-        int i = QQSpecialFriendSettingActivity.a(this.a);
+        int i = QQSpecialFriendSettingActivity.d(this.a);
         ((FriendListHandler)localObject).setSpecialCareSwitchesOfAPerson(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
         localObject = this.a.a.obtainMessage(8193);
-        ((Message)localObject).obj = this.a.getString(2131699314);
+        ((Message)localObject).obj = this.a.getString(2131897331);
         this.a.a.sendMessage((Message)localObject);
         if ((bool1) && (bool2)) {
           localObject = "0";
@@ -57,7 +57,7 @@ class QQSpecialFriendSettingActivity$1
       {
         localObject = this.a.a.obtainMessage(8195);
         ((Message)localObject).arg1 = 0;
-        ((Message)localObject).arg2 = 2131692183;
+        ((Message)localObject).arg2 = 2131889169;
         this.a.a.sendMessage((Message)localObject);
       }
     }
@@ -66,7 +66,7 @@ class QQSpecialFriendSettingActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

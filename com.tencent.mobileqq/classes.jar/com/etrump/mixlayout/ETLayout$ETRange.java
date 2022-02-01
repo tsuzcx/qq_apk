@@ -4,9 +4,9 @@ import android.text.style.CharacterStyle;
 
 class ETLayout$ETRange
 {
-  int jdField_a_of_type_Int;
-  CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
+  int a;
   int b;
+  CharacterStyle c;
 }
 
 

@@ -24,16 +24,11 @@ public class ReadInJoyLifeCycleLinearLayout
     Object localObject = getTag();
     if ((localObject instanceof FeedItemCell))
     {
-      localObject = ((FeedItemCell)localObject).a();
+      localObject = ((FeedItemCell)localObject).h();
       if ((localObject instanceof IReadInJoyListItemLifeCycle)) {
         ((IReadInJoyListItemLifeCycle)localObject).a();
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
   }
   
   public void b()
@@ -41,11 +36,16 @@ public class ReadInJoyLifeCycleLinearLayout
     Object localObject = getTag();
     if ((localObject instanceof FeedItemCell))
     {
-      localObject = ((FeedItemCell)localObject).a();
+      localObject = ((FeedItemCell)localObject).h();
       if ((localObject instanceof IReadInJoyListItemLifeCycle)) {
         ((IReadInJoyListItemLifeCycle)localObject).b();
       }
     }
+  }
+  
+  public boolean c()
+  {
+    return this.a;
   }
   
   public void setIsResume(boolean paramBoolean)
@@ -55,7 +55,7 @@ public class ReadInJoyLifeCycleLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyLifeCycleLinearLayout
  * JD-Core Version:    0.7.0.1
  */

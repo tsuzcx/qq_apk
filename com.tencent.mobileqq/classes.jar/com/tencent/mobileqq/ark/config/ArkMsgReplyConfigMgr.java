@@ -40,7 +40,7 @@ public class ArkMsgReplyConfigMgr
     ArkMsgReplyConfig localArkMsgReplyConfig = new ArkMsgReplyConfig();
     localArkMsgReplyConfig.a = paramString1;
     localArkMsgReplyConfig.b = paramString2;
-    if (!localArkMsgReplyConfig.a()) {
+    if (!localArkMsgReplyConfig.b()) {
       return null;
     }
     return (ArkMsgReplyConfig)this.mConfigs.get(localArkMsgReplyConfig.a());
@@ -138,7 +138,7 @@ public class ArkMsgReplyConfigMgr
         localArkMsgReplyConfig.e = ((JSONObject)localObject).optString("icon", "");
         localArkMsgReplyConfig.f = ((JSONObject)localObject).optString("action", "");
         localArkMsgReplyConfig.g = ((JSONObject)localObject).optString("jumpURL", "");
-        if (!localArkMsgReplyConfig.a()) {
+        if (!localArkMsgReplyConfig.b()) {
           QLog.i("ArkMsgReplyConfigMgr", 1, "parseConfig, item is invalid");
         } else {
           this.mConfigs.put(localArkMsgReplyConfig.a(), localArkMsgReplyConfig);
@@ -273,7 +273,7 @@ public class ArkMsgReplyConfigMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.ArkMsgReplyConfigMgr
  * JD-Core Version:    0.7.0.1
  */

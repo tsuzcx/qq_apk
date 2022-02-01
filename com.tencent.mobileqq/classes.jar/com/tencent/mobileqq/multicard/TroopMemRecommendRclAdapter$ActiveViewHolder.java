@@ -23,23 +23,23 @@ class TroopMemRecommendRclAdapter$ActiveViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  List<RecommendPerson> jdField_a_of_type_JavaUtilList;
+  List<RecommendPerson> a;
   List<TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView> b;
+  TextView c;
+  LinearLayout d;
   
   public TroopMemRecommendRclAdapter$ActiveViewHolder(TroopMemRecommendRclAdapter paramTroopMemRecommendRclAdapter, View paramView, int paramInt)
   {
     super(paramView);
-    this.jdField_a_of_type_JavaUtilList = ((List)paramTroopMemRecommendRclAdapter.a.get(Integer.valueOf(paramInt)));
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    this.a = ((List)paramTroopMemRecommendRclAdapter.a.get(Integer.valueOf(paramInt)));
+    Object localObject1 = this.a;
     if (localObject1 == null) {
       return;
     }
     this.b = new ArrayList(((List)localObject1).size());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379949));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376766));
-    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c = ((TextView)paramView.findViewById(2131448837));
+    this.d = ((LinearLayout)paramView.findViewById(2131445059));
+    paramView = this.a.iterator();
     while (paramView.hasNext())
     {
       localObject1 = (RecommendPerson)paramView.next();
@@ -49,24 +49,24 @@ class TroopMemRecommendRclAdapter$ActiveViewHolder
         ((StringBuilder)localObject2).append("ActiveViewHolder, person.uin =");
         ((StringBuilder)localObject2).append(((RecommendPerson)localObject1).uin);
         ((StringBuilder)localObject2).append(" size() = ");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject2).append(this.a.size());
         QLog.d("TroopMemberRecommend.Adapter", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562983, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      Object localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131376767);
-      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131369535);
-      TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131379950);
-      TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131379951);
-      Button localButton = (Button)((View)localObject1).findViewById(2131364098);
-      a(AIOUtils.b(85.0F, TroopMemRecommendRclAdapter.a(paramTroopMemRecommendRclAdapter).getResources()), this.jdField_a_of_type_JavaUtilList.size(), (RelativeLayout)localObject2);
+      localObject1 = LayoutInflater.from(this.d.getContext()).inflate(2131629591, this.d, false);
+      Object localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131445060);
+      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131436635);
+      TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131448838);
+      TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131448839);
+      Button localButton = (Button)((View)localObject1).findViewById(2131430064);
+      a(AIOUtils.b(85.0F, TroopMemRecommendRclAdapter.a(paramTroopMemRecommendRclAdapter).getResources()), this.a.size(), (RelativeLayout)localObject2);
       TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView localActiveSubItemView = new TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView(this);
-      localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
-      localActiveSubItemView.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-      localActiveSubItemView.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
-      localActiveSubItemView.b = localTextView2;
-      localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton = localButton;
+      localActiveSubItemView.a = ((RelativeLayout)localObject2);
+      localActiveSubItemView.b = localImageView;
+      localActiveSubItemView.c = localTextView1;
+      localActiveSubItemView.d = localTextView2;
+      localActiveSubItemView.e = localButton;
       this.b.add(localActiveSubItemView);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+      this.d.addView((View)localObject1);
     }
   }
   
@@ -74,7 +74,7 @@ class TroopMemRecommendRclAdapter$ActiveViewHolder
   {
     if (paramInt2 > 1)
     {
-      int i = ViewUtils.a();
+      int i = ViewUtils.getScreenWidth();
       paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
       localLayoutParams.leftMargin = paramInt2;
@@ -97,21 +97,21 @@ class TroopMemRecommendRclAdapter$ActiveViewHolder
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131364098)
+    if (i != 2131430064)
     {
-      if ((i == 2131376767) && (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null)) {
-        TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).a((RecyclerView.ViewHolder)paramView.getTag(2131376767), (RecommendPerson)paramView.getTag(2131364098));
+      if ((i == 2131445060) && (TroopMemRecommendRclAdapter.a(this.e) != null)) {
+        TroopMemRecommendRclAdapter.a(this.e).a((RecyclerView.ViewHolder)paramView.getTag(2131445060), (RecommendPerson)paramView.getTag(2131430064));
       }
     }
-    else if (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null) {
-      TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).b((RecyclerView.ViewHolder)paramView.getTag(2131376767), (RecommendPerson)paramView.getTag(2131364098));
+    else if (TroopMemRecommendRclAdapter.a(this.e) != null) {
+      TroopMemRecommendRclAdapter.a(this.e).b((RecyclerView.ViewHolder)paramView.getTag(2131445060), (RecommendPerson)paramView.getTag(2131430064));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.TroopMemRecommendRclAdapter.ActiveViewHolder
  * JD-Core Version:    0.7.0.1
  */

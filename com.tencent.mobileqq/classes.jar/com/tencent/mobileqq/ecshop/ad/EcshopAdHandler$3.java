@@ -32,9 +32,9 @@ class EcshopAdHandler$3
       try
       {
         qq_ad.QQAdGet localQQAdGet = new qq_ad.QQAdGet();
-        localQQAdGet.trigger_type.set(this.jdField_a_of_type_Int);
+        localQQAdGet.trigger_type.set(this.a);
         Object localObject1 = new GdtDeviceInfoHelper.Params();
-        ((GdtDeviceInfoHelper.Params)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
+        ((GdtDeviceInfoHelper.Params)localObject1).a = "cd22b9";
         long l = System.currentTimeMillis();
         localObject1 = GdtDeviceInfoHelper.a(MobileQQ.sMobileQQ.getApplicationContext(), (GdtDeviceInfoHelper.Params)localObject1);
         if (localObject1 != null)
@@ -47,7 +47,7 @@ class EcshopAdHandler$3
             if (QLog.isColorLevel()) {
               QLog.i("Ecshop_EcshopAdHandler", 2, (String)localObject3);
             }
-            if (!StringUtil.a((String)localObject3)) {
+            if (!StringUtil.isEmpty((String)localObject3)) {
               localQQAdGet.device_info.set((String)localObject3);
             }
           }
@@ -64,15 +64,15 @@ class EcshopAdHandler$3
             ((StringBuilder)localObject3).append(bool);
             QLog.i("Ecshop_EcshopAdHandler", 2, ((StringBuilder)localObject3).toString());
           }
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            localQQAdGet.pos_id.set(this.jdField_a_of_type_JavaUtilList);
-          }
           if (this.b != null) {
-            localQQAdGet.ad_count.set(this.b);
+            localQQAdGet.pos_id.set(this.b);
           }
-          localQQAdGet.get_back.set(this.jdField_a_of_type_Boolean);
+          if (this.c != null) {
+            localQQAdGet.ad_count.set(this.c);
+          }
+          localQQAdGet.get_back.set(this.d);
           localQQAdGet.last_req_time.set(this.this$0.a);
-          localObject1 = new ToServiceMsg("mobileqq.service", AppUtils.a().getCurrentUin(), this.jdField_a_of_type_JavaLangString);
+          localObject1 = new ToServiceMsg("mobileqq.service", AppUtils.a().getCurrentUin(), this.e);
           ((ToServiceMsg)localObject1).putWupBuffer(localQQAdGet.toByteArray());
           this.this$0.sendPbReq((ToServiceMsg)localObject1);
           this.this$0.a = (System.currentTimeMillis() / 1000L);
@@ -92,7 +92,7 @@ class EcshopAdHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.ad.EcshopAdHandler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ public final class BottomVideoInfoWidget$GetFeedFeatureReceiver
   
   public void a(@NonNull BottomVideoInfoWidget paramBottomVideoInfoWidget, @NonNull GetFeedFeatureHandler.GetFeedFeatureEvent paramGetFeedFeatureEvent)
   {
-    if ((paramGetFeedFeatureEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList != null) && (paramBottomVideoInfoWidget.a != null))
+    if ((paramGetFeedFeatureEvent.g.isSuccess()) && (paramGetFeedFeatureEvent.a != null) && (paramBottomVideoInfoWidget.p != null))
     {
-      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.a.iterator();
       while (paramGetFeedFeatureEvent.hasNext())
       {
         FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)paramGetFeedFeatureEvent.next();
-        if (TextUtils.equals(paramBottomVideoInfoWidget.a.b, localFeedFeatureItem.a)) {
-          paramBottomVideoInfoWidget.i();
+        if (TextUtils.equals(paramBottomVideoInfoWidget.p.c, localFeedFeatureItem.a)) {
+          paramBottomVideoInfoWidget.x();
         }
       }
     }

@@ -13,49 +13,49 @@ import java.util.List;
 class ComponentContentRecommendFollowGroup$ViewHolder
   implements View.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  GroupRecommendAccount jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsGroupRecommendAccount;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
-  ImageView[] c;
+  TextView a;
+  TextView b;
+  LinearLayout c;
+  LinearLayout d;
+  RelativeLayout[] e;
+  ImageView[] f;
+  ImageView[] g;
+  ImageView[] h;
+  TextView[] i;
+  GroupRecommendAccount j;
   
   private ComponentContentRecommendFollowGroup$ViewHolder(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131367072)
+    int m = paramView.getId();
+    if (m != 2131433525)
     {
-      if ((i != 2131368067) && (i != 2131371884)) {
+      if ((m != 2131434917) && (m != 2131439327)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
+      this.k.a((RecommendFollowInfo)paramView.getTag());
       return;
     }
-    int j = 0;
-    i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsGroupRecommendAccount.a.size())
+    int n = 0;
+    m = 0;
+    while (m < this.j.b.size())
     {
-      if (!((RecommendFollowInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsGroupRecommendAccount.a.get(i)).isFollowed)
+      if (!((RecommendFollowInfo)this.j.b.get(m)).isFollowed)
       {
-        i = j;
+        m = n;
         break label95;
       }
-      i += 1;
+      m += 1;
     }
-    i = 1;
+    m = 1;
     label95:
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsGroupRecommendAccount.a, i ^ 0x1);
+    this.k.a(this.j.b, m ^ 0x1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommendFollowGroup.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

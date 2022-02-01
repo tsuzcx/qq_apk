@@ -9,17 +9,11 @@ import trpc.qq_vgame.game_list.AvGameList.GameListItemInfo;
 
 public class GameItem
 {
-  public int a;
-  public long a;
-  public GameInfo a;
-  public String a;
-  public int b;
-  public long b;
+  public int a = 0;
   public String b;
-  public long c;
   public String c;
   public String d;
-  public String e;
+  public GameInfo e = new GameInfo();
   public String f;
   public String g;
   public String h;
@@ -29,43 +23,40 @@ public class GameItem
   public String l;
   public String m;
   public String n;
-  public String o;
-  
-  public GameItem()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo = new GameInfo();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-  }
+  public long o;
+  public int p = 0;
+  public long q = 0L;
+  public long r = 0L;
+  public String s;
+  public String t;
+  public String u;
   
   protected GameItem a()
   {
     GameItem localGameItem = new GameItem();
     try
     {
-      localGameItem.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localGameItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localGameItem.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localGameItem.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localGameItem.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo;
-      localGameItem.f = this.f;
-      localGameItem.g = this.g;
+      localGameItem.a = this.a;
+      localGameItem.b = this.b;
+      localGameItem.c = this.c;
+      localGameItem.d = this.d;
+      localGameItem.e = this.e;
       localGameItem.h = this.h;
       localGameItem.i = this.i;
       localGameItem.j = this.j;
-      localGameItem.d = this.d;
-      localGameItem.e = this.e;
       localGameItem.k = this.k;
-      localGameItem.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localGameItem.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-      localGameItem.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
-      localGameItem.n = this.n;
-      localGameItem.m = this.m;
-      localGameItem.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
       localGameItem.l = this.l;
+      localGameItem.f = this.f;
+      localGameItem.g = this.g;
+      localGameItem.m = this.m;
+      localGameItem.p = this.p;
+      localGameItem.q = this.q;
+      localGameItem.r = this.r;
+      localGameItem.t = this.t;
+      localGameItem.s = this.s;
       localGameItem.o = this.o;
+      localGameItem.n = this.n;
+      localGameItem.u = this.u;
       return localGameItem;
     }
     catch (Exception localException) {}
@@ -74,28 +65,28 @@ public class GameItem
   
   public final void a(AvGameList.GameListItemInfo paramGameListItemInfo)
   {
-    this.jdField_a_of_type_Int = paramGameListItemInfo.game_type.get();
-    this.jdField_a_of_type_JavaLangString = paramGameListItemInfo.game_name.get();
-    this.jdField_b_of_type_JavaLangString = paramGameListItemInfo.game_desc.get();
-    this.jdField_c_of_type_JavaLangString = paramGameListItemInfo.backgroup_pic_url.get();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a((AvGameCommon.GameInfo)paramGameListItemInfo.game_info.get());
-    this.f = paramGameListItemInfo.answer_right_pic_url.get();
-    this.g = paramGameListItemInfo.answer_right_pic_url_new.get();
-    this.h = paramGameListItemInfo.game_over_pic_url.get();
-    this.i = paramGameListItemInfo.tips_one_line_pic_url.get();
-    this.j = paramGameListItemInfo.tips_two_line_pic_url.get();
-    this.d = paramGameListItemInfo.prepare_pic_url.get();
-    this.e = paramGameListItemInfo.prepare_pic_tp_url.get();
-    this.k = paramGameListItemInfo.music_name.get();
-    this.jdField_b_of_type_Int = paramGameListItemInfo.status.get();
-    this.jdField_b_of_type_Long = paramGameListItemInfo.online_time.get();
-    this.jdField_c_of_type_Long = paramGameListItemInfo.offline_time.get();
-    this.n = paramGameListItemInfo.prepare_wording.get();
-    this.m = paramGameListItemInfo.game_name_url.get();
-    this.jdField_a_of_type_Long = paramGameListItemInfo.total_player_num.get();
-    this.l = paramGameListItemInfo.backgroup_small_pic_url.get();
-    this.o = paramGameListItemInfo.collaborator_logo_url.get();
+    this.a = paramGameListItemInfo.game_type.get();
+    this.b = paramGameListItemInfo.game_name.get();
+    this.c = paramGameListItemInfo.game_desc.get();
+    this.d = paramGameListItemInfo.backgroup_pic_url.get();
+    this.e.a();
+    this.e.a((AvGameCommon.GameInfo)paramGameListItemInfo.game_info.get());
+    this.h = paramGameListItemInfo.answer_right_pic_url.get();
+    this.i = paramGameListItemInfo.answer_right_pic_url_new.get();
+    this.j = paramGameListItemInfo.game_over_pic_url.get();
+    this.k = paramGameListItemInfo.tips_one_line_pic_url.get();
+    this.l = paramGameListItemInfo.tips_two_line_pic_url.get();
+    this.f = paramGameListItemInfo.prepare_pic_url.get();
+    this.g = paramGameListItemInfo.prepare_pic_tp_url.get();
+    this.m = paramGameListItemInfo.music_name.get();
+    this.p = paramGameListItemInfo.status.get();
+    this.q = paramGameListItemInfo.online_time.get();
+    this.r = paramGameListItemInfo.offline_time.get();
+    this.t = paramGameListItemInfo.prepare_wording.get();
+    this.s = paramGameListItemInfo.game_name_url.get();
+    this.o = paramGameListItemInfo.total_player_num.get();
+    this.n = paramGameListItemInfo.backgroup_small_pic_url.get();
+    this.u = paramGameListItemInfo.collaborator_logo_url.get();
   }
   
   public String toString()
@@ -103,78 +94,78 @@ public class GameItem
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("type");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("name");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
     localStringBuilder.append("desc");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("|");
     localStringBuilder.append("bgUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("|");
     localStringBuilder.append("answerRightPicUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("|");
     localStringBuilder.append("gameOverPicUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("|");
     localStringBuilder.append("oneLineTipBgPicUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("|");
     localStringBuilder.append("twoLinesTipBgPicUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.l);
     localStringBuilder.append("|");
     localStringBuilder.append("preparePicUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("|");
     localStringBuilder.append("prepareAlphaPicUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("|");
     localStringBuilder.append("gameBgName");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.k);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("|");
     localStringBuilder.append("onlineStatus");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append("|");
     localStringBuilder.append("onlineTime");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.q);
     localStringBuilder.append("|");
     localStringBuilder.append("offlineTime");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.r);
     localStringBuilder.append("|");
     localStringBuilder.append("prepareWording");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.t);
     localStringBuilder.append("|");
     localStringBuilder.append("gameNameUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.s);
     localStringBuilder.append("|");
     localStringBuilder.append("bgSmallUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.n);
     localStringBuilder.append("|");
     localStringBuilder.append("playerNum");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.o);
     localStringBuilder.append("|");
     localStringBuilder.append("collaboratorLogoUrl=");
-    localStringBuilder.append(this.o);
+    localStringBuilder.append(this.u);
     localStringBuilder.append("|");
     return localStringBuilder.toString();
   }

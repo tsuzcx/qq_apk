@@ -9,24 +9,24 @@ import java.util.GregorianCalendar;
 
 public class QLogReporter
 {
-  private static volatile QLogReporter jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter = null;
-  static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
+  static final SimpleDateFormat a = new SimpleDateFormat("yy.MM.dd");
+  private static volatile QLogReporter b = null;
   
   public static QLogReporter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter == null) {
-          jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter = new QLogReporter();
+        if (b == null) {
+          b = new QLogReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter;
+    return b;
   }
   
-  public void a()
+  public void b()
   {
     if (new GregorianCalendar().get(11) < 2) {
       return;
@@ -36,9 +36,9 @@ public class QLogReporter
     long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(l2);
-    String str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+    String str = a.format(localCalendar.getTime());
     localCalendar.setTimeInMillis(l1);
-    if (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime()))) {
+    if (str.equals(a.format(localCalendar.getTime()))) {
       return;
     }
     ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
@@ -46,7 +46,7 @@ public class QLogReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.memory.QLogReporter
  * JD-Core Version:    0.7.0.1
  */

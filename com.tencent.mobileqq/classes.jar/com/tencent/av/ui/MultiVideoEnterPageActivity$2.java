@@ -12,7 +12,7 @@ class MultiVideoEnterPageActivity$2
   
   public void onClick(View paramView)
   {
-    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
+    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.i, "", "", "");
     this.a.d(2);
     EventCollector.getInstance().onViewClicked(paramView);
   }

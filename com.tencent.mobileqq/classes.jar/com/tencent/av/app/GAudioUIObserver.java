@@ -82,8 +82,7 @@ public class GAudioUIObserver
       {
         if (i != 409)
         {
-          if (i != 410)
-          {
+          if (i != 410) {
             switch (i)
             {
             default: 
@@ -108,7 +107,14 @@ public class GAudioUIObserver
                         switch (i)
                         {
                         default: 
-                          break;
+                          if (!QLog.isColorLevel()) {
+                            break;
+                          }
+                          paramObject = new StringBuilder();
+                          paramObject.append("OnUpdate-->Wrong notify type.Type = ");
+                          paramObject.append(i);
+                          QLog.e("qav.GAudioUIObserver", 2, paramObject.toString());
+                          return;
                         case 516: 
                           a(((Long)paramObject[1]).longValue(), (String)paramObject[2]);
                           return;
@@ -272,18 +278,12 @@ public class GAudioUIObserver
                 a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue(), ((Boolean)paramObject[4]).booleanValue());
                 return;
               }
+              break;
             case 707: 
               f();
               return;
             case 521: 
               a(((Integer)paramObject[1]).intValue(), (byte[])paramObject[2]);
-              if (!QLog.isColorLevel()) {
-                return;
-              }
-              paramObject = new StringBuilder();
-              paramObject.append("OnUpdate-->Wrong notify type.Type = ");
-              paramObject.append(i);
-              QLog.e("qav.GAudioUIObserver", 2, paramObject.toString());
               return;
             case 502: 
               a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), SeqUtil.a(paramObject, 6), ((Long)paramObject[7]).longValue());
@@ -296,6 +296,9 @@ public class GAudioUIObserver
               return;
             case 404: 
               d(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+              return;
+            case 311: 
+              g();
               return;
             case 309: 
               a((String)paramObject[1], (String)paramObject[2]);
@@ -318,23 +321,29 @@ public class GAudioUIObserver
             case 12: 
               a((RecvMsg)paramObject[1]);
               return;
+            case 10: 
+              b();
+              return;
             }
-            b();
-            return;
+          } else {
+            c(((Long)paramObject[1]).longValue());
           }
-          c(((Long)paramObject[1]).longValue());
-          return;
         }
-        a(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-        return;
+        else {
+          a(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+        }
       }
-      b(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
+      else {
+        b(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "TYPE_NOTIFY_RANDOM_MULTI_OWNER_PUSH [random room owner]");
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qav.GAudioUIObserver", 2, "TYPE_NOTIFY_RANDOM_MULTI_OWNER_PUSH [random room owner]");
+      }
+      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
     }
-    a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
   }
   
   protected void a(String paramString1, String paramString2) {}
@@ -390,6 +399,8 @@ public class GAudioUIObserver
   protected void e(long paramLong) {}
   
   protected void f() {}
+  
+  protected void g() {}
   
   public void update(Observable paramObservable, Object paramObject)
   {

@@ -27,16 +27,16 @@ public abstract class ARCloudObjectClassifyBaseResult
     return (paramARCloudObjectClassifyBaseResult != null) && (paramARCloudObjectClassifyBaseResult.a());
   }
   
-  public int a()
+  public abstract boolean a();
+  
+  public int b()
   {
     return this.b;
   }
-  
-  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudObjectClassifyBaseResult
  * JD-Core Version:    0.7.0.1
  */

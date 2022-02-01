@@ -11,18 +11,18 @@ class WriteTogetherItemBuilder$2
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()))
+    if ((this.a.h.getMeasuredWidth() < this.b) && (this.c.isSend()))
     {
-      WriteTogetherItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      WriteTogetherItemBuilder.a(this.this$0, this.a.A, this.d);
       return;
     }
-    WriteTogetherItemBuilder.a(this.this$0, this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, Integer.valueOf(2131381207), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, -4, Boolean.valueOf(true));
+    WriteTogetherItemBuilder.a(this.this$0, this.e, this.a.j, this.d);
+    this.this$0.a(this.a.A, this.a.j, Integer.valueOf(2131450255), this.c, -4, Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

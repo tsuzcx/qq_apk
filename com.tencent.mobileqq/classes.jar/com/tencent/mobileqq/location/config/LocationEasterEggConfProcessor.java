@@ -20,12 +20,12 @@ public class LocationEasterEggConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      LocationEasterEggBean localLocationEasterEggBean = LocationEasterEggBean.a(paramArrayOfQConfItem[0].a);
+      LocationEasterEggBean localLocationEasterEggBean = LocationEasterEggBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("LocationEasterEggConfProcessor", 2, localStringBuilder.toString());
       }
       return localLocationEasterEggBean;
@@ -84,7 +84,7 @@ public class LocationEasterEggConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.config.LocationEasterEggConfProcessor
  * JD-Core Version:    0.7.0.1
  */

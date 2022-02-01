@@ -84,7 +84,7 @@ public class AddPhoneNumberFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559368, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131625334, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getBaseActivity().getWindow().clearFlags(67108864);
@@ -103,19 +103,19 @@ public class AddPhoneNumberFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371168));
-    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131371049));
+    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131438510));
+    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131438390));
     this.mSendSmsCodeBtn.setText("获取验证码");
     this.mSendSmsCodeBtn.setTextColor(Color.parseColor("#B0B3BF"));
     this.mSendSmsCodeBtn.setEnabled(false);
     this.mSendSmsCodeBtn.setClickable(false);
-    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371048));
-    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131371051));
-    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131371059));
-    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131371060));
-    this.mSaveSwitch = ((Switch)paramView.findViewById(2131371057));
+    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131438389));
+    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131438392));
+    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131438400));
+    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131438401));
+    this.mSaveSwitch = ((Switch)paramView.findViewById(2131438398));
     this.mSaveSwitch.setChecked(false);
-    this.mCommitBtn = ((Button)paramView.findViewById(2131371050));
+    this.mCommitBtn = ((Button)paramView.findViewById(2131438391));
     this.mCommitBtn.setEnabled(false);
     this.mCommitBtn.setClickable(false);
     this.mCommitBtn.setTextColor(Color.parseColor("#3303081A"));
@@ -131,7 +131,7 @@ public class AddPhoneNumberFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment
  * JD-Core Version:    0.7.0.1
  */

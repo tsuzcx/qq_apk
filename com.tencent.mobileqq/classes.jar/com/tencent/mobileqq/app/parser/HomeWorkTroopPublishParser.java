@@ -11,9 +11,9 @@ public class HomeWorkTroopPublishParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new HomeWorkTroopPublishAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "troop_homework";
-    paramBaseQQAppInterface.c = "publish";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "troop_homework";
+    paramBaseQQAppInterface.e = "publish";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -34,7 +34,7 @@ public class HomeWorkTroopPublishParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HomeWorkTroopPublishParser
  * JD-Core Version:    0.7.0.1
  */

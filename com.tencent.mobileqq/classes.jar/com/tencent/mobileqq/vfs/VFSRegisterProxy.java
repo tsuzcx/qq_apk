@@ -23,25 +23,14 @@ import java.util.List;
 
 public class VFSRegisterProxy
 {
-  @Nullable
-  private VFSReportCallback jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  @Nullable
+  private VFSReportCallback c;
   
   public static VFSRegisterProxy a()
   {
     return VFSRegisterProxy.SingletonHolder.a;
-  }
-  
-  private List<String> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(File.separator);
-    localArrayList.add(localStringBuilder.toString());
-    return localArrayList;
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -54,26 +43,6 @@ public class VFSRegisterProxy
       QLog.d("VFSRegisterProxy", 1, localStringBuilder.toString());
       FileSystemManager.instance().publishOnEditorCommit(paramBoolean1);
     }
-  }
-  
-  private boolean a()
-  {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("StepUpdate", 4);
-    boolean bool = false;
-    if (((SharedPreferences)localObject).getInt("vfs_version", 0) < 10) {
-      bool = true;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("initConfig checkSP is called, return val = ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("VFSRegisterProxy", 1, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
-  private void b()
-  {
-    BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).edit().putInt("vfs_version", 10).apply();
-    QLog.d("VFSRegisterProxy", 1, "initConfig updateSP is called, version = 10");
   }
   
   private void b(String paramString)
@@ -99,22 +68,15 @@ public class VFSRegisterProxy
     }
   }
   
-  private boolean b()
+  private List<String> c(String paramString)
   {
-    boolean bool = BaseApplication.getContext().getSharedPreferences("VFS_Config_Register_Proxy", 4).getBoolean("state_account_registered", true);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isFirstRegisterAccount is called, return val = ");
-      localStringBuilder.append(bool);
-      QLog.d("VFSRegisterProxy", 2, localStringBuilder.toString());
-    }
-    return bool;
-  }
-  
-  private void c()
-  {
-    BaseApplication.getContext().getSharedPreferences("VFS_Config_Register_Proxy", 4).edit().putBoolean("state_account_registered", false).apply();
+    ArrayList localArrayList = new ArrayList();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localArrayList.add(localStringBuilder.toString());
+    return localArrayList;
   }
   
   private void c(Context paramContext, VFSReportCallback paramVFSReportCallback, boolean paramBoolean1, boolean paramBoolean2)
@@ -133,7 +95,7 @@ public class VFSRegisterProxy
         if ((!paramVFSReportCallback.startsWith("/")) && (paramVFSReportCallback.indexOf(":") <= 0))
         {
           paramContext = new StringBuilder();
-          paramContext.append(b());
+          paramContext.append(c());
           paramContext.append(File.separator);
           paramContext.append(paramVFSReportCallback);
           paramContext = paramContext.toString();
@@ -161,7 +123,45 @@ public class VFSRegisterProxy
     localEditor.commit();
   }
   
-  private void d()
+  private boolean e()
+  {
+    Object localObject = BaseApplication.getContext().getSharedPreferences("StepUpdate", 4);
+    boolean bool = false;
+    if (((SharedPreferences)localObject).getInt("vfs_version", 0) < 10) {
+      bool = true;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initConfig checkSP is called, return val = ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("VFSRegisterProxy", 1, ((StringBuilder)localObject).toString());
+    return bool;
+  }
+  
+  private void f()
+  {
+    BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).edit().putInt("vfs_version", 10).apply();
+    QLog.d("VFSRegisterProxy", 1, "initConfig updateSP is called, version = 10");
+  }
+  
+  private boolean g()
+  {
+    boolean bool = BaseApplication.getContext().getSharedPreferences("VFS_Config_Register_Proxy", 4).getBoolean("state_account_registered", true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isFirstRegisterAccount is called, return val = ");
+      localStringBuilder.append(bool);
+      QLog.d("VFSRegisterProxy", 2, localStringBuilder.toString());
+    }
+    return bool;
+  }
+  
+  private void h()
+  {
+    BaseApplication.getContext().getSharedPreferences("VFS_Config_Register_Proxy", 4).edit().putBoolean("state_account_registered", false).apply();
+  }
+  
+  private void i()
   {
     for (;;)
     {
@@ -206,27 +206,6 @@ public class VFSRegisterProxy
     }
   }
   
-  @Nullable
-  public final String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null)
-    {
-      File localFile = BaseApplication.getContext().getExternalCacheDir();
-      if (localFile != null) {
-        this.jdField_a_of_type_JavaLangString = localFile.getParent();
-      }
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final void a()
-  {
-    Iterator localIterator = VFSSourcePathConfig.b.iterator();
-    while (localIterator.hasNext()) {
-      b((String)localIterator.next());
-    }
-  }
-  
   public void a(Context paramContext, VFSReportCallback paramVFSReportCallback, boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((!paramBoolean2) || (!paramBoolean1)) {
@@ -235,22 +214,22 @@ public class VFSRegisterProxy
     QLog.d("VFSRegisterProxy", 1, "initConfig start!");
     try
     {
-      if (a())
+      if (e())
       {
         c(paramContext, paramVFSReportCallback, paramBoolean1, paramBoolean2);
         if (!FileSystemManager.instance().isValidConfigFile(paramContext)) {
           c(paramContext, paramVFSReportCallback, paramBoolean1, paramBoolean2);
         }
         if (FileSystemManager.instance().isValidConfigFile(paramContext)) {
-          b();
+          f();
         }
-        a();
         d();
+        i();
       }
     }
     catch (Throwable paramContext)
     {
-      paramVFSReportCallback = this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback;
+      paramVFSReportCallback = this.c;
       if (paramVFSReportCallback != null) {
         paramVFSReportCallback.reportError(new Throwable("FileSystemManager proxy", paramContext));
       }
@@ -261,9 +240,9 @@ public class VFSRegisterProxy
   
   public void a(String paramString)
   {
-    if (b())
+    if (g())
     {
-      Object localObject = a(paramString);
+      Object localObject = c(paramString);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
@@ -284,15 +263,38 @@ public class VFSRegisterProxy
         paramString.install(str1, new MigrationFileSystem(true, new NativeFileSystem(str2, false), new FileSystem[] { new NativeFileSystem(str1, false) })).mount(str2, str1).mount(str1, str1);
       }
       paramString.commit();
-      c();
+      h();
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback;
+    paramString = this.c;
     if (paramString != null) {
       paramString.a();
     }
   }
   
+  @Nullable
   public final String b()
+  {
+    if (this.a == null)
+    {
+      File localFile = BaseApplication.getContext().getExternalCacheDir();
+      if (localFile != null) {
+        this.a = localFile.getParent();
+      }
+    }
+    return this.a;
+  }
+  
+  public void b(Context paramContext, VFSReportCallback paramVFSReportCallback, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.c = paramVFSReportCallback;
+    FileSystemManager.setContext(paramContext);
+    if (paramBoolean1) {
+      FileSystemManager.setStatisticsCallback(this.c);
+    }
+    a(paramBoolean1, paramBoolean2);
+  }
+  
+  public final String c()
   {
     if (this.b == null) {
       this.b = Environment.getExternalStorageDirectory().getPath();
@@ -300,19 +302,17 @@ public class VFSRegisterProxy
     return this.b;
   }
   
-  public void b(Context paramContext, VFSReportCallback paramVFSReportCallback, boolean paramBoolean1, boolean paramBoolean2)
+  public final void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback = paramVFSReportCallback;
-    FileSystemManager.setContext(paramContext);
-    if (paramBoolean1) {
-      FileSystemManager.setStatisticsCallback(this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback);
+    Iterator localIterator = VFSSourcePathConfig.b.iterator();
+    while (localIterator.hasNext()) {
+      b((String)localIterator.next());
     }
-    a(paramBoolean1, paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vfs.VFSRegisterProxy
  * JD-Core Version:    0.7.0.1
  */

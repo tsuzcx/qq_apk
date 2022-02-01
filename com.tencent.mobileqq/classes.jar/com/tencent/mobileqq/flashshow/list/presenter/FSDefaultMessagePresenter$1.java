@@ -1,0 +1,26 @@
+package com.tencent.mobileqq.flashshow.list.presenter;
+
+import com.tencent.mobileqq.qcircle.api.data.Option;
+import com.tencent.mobileqq.qcircle.api.interfaces.QCirclePicStateListener;
+import com.tencent.qphone.base.util.QLog;
+
+class FSDefaultMessagePresenter$1
+  extends QCirclePicStateListener
+{
+  FSDefaultMessagePresenter$1(FSDefaultMessagePresenter paramFSDefaultMessagePresenter) {}
+  
+  public void onStateChang(int paramInt, Option paramOption)
+  {
+    super.onStateChang(paramInt, paramOption);
+    paramOption = new StringBuilder();
+    paramOption.append("state callback:");
+    paramOption.append(paramInt);
+    QLog.d("FSDefaultMessagePresenter", 4, paramOption.toString());
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.flashshow.list.presenter.FSDefaultMessagePresenter.1
+ * JD-Core Version:    0.7.0.1
+ */

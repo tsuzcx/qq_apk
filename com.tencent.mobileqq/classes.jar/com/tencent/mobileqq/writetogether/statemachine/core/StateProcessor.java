@@ -6,25 +6,14 @@ import java.util.List;
 
 public class StateProcessor<E>
 {
-  protected E a;
-  protected String a;
-  protected List<E> a;
+  protected E d;
+  protected List<E> e;
+  protected String f;
   
   public StateProcessor(E paramE, List<E> paramList)
   {
-    this.jdField_a_of_type_JavaLangObject = paramE;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public E a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  @NonNull
-  List<E> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.d = paramE;
+    this.e = paramList;
   }
   
   public void a()
@@ -33,7 +22,7 @@ public class StateProcessor<E>
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onExit] curState: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+      localStringBuilder.append(this.d);
       QLog.d("StateProcessor", 2, localStringBuilder.toString());
     }
   }
@@ -44,7 +33,7 @@ public class StateProcessor<E>
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[handleEvent] state: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(", event: ");
       localStringBuilder.append(paramInt);
       QLog.d("StateProcessor", 2, localStringBuilder.toString());
@@ -57,21 +46,32 @@ public class StateProcessor<E>
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onEnter] enter: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(", lastState: ");
       localStringBuilder.append(paramE);
       QLog.d("StateProcessor", 2, localStringBuilder.toString());
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     return false;
+  }
+  
+  public E c()
+  {
+    return this.d;
+  }
+  
+  @NonNull
+  List<E> d()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.core.StateProcessor
  * JD-Core Version:    0.7.0.1
  */

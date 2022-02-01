@@ -13,16 +13,16 @@ class RedPacketKSongFragment$9
   
   public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
-    if ((!this.a.d()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    if ((!this.a.p()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
       paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
-      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
+      this.a.i.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.9
  * JD-Core Version:    0.7.0.1
  */

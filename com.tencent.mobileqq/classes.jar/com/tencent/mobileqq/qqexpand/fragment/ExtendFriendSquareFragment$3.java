@@ -19,32 +19,32 @@ class ExtendFriendSquareFragment$3
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
+    if (this.a.g != null) {
       if (paramInt == 0)
       {
         ??? = this.a;
-        ???.c = false;
-        ???.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+        ???.A = false;
+        ???.g.resume();
         this.a.c();
       }
       else
       {
         ??? = this.a;
-        ???.c = true;
-        ???.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
+        ???.A = true;
+        ???.g.pause();
+        this.a.g.cancelPendingRequests();
         synchronized (ExtendFriendBaseFragment.a)
         {
-          if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-            this.a.jdField_a_of_type_JavaUtilMap.clear();
+          if (this.a.e != null) {
+            this.a.e.clear();
           }
         }
       }
     }
     if (paramInt == 0)
     {
-      ExtendFriendSquareFragment.c(this.a);
-      this.a.h();
+      ExtendFriendSquareFragment.d(this.a);
+      this.a.l();
       this.a.c(false);
     }
   }
@@ -52,10 +52,10 @@ class ExtendFriendSquareFragment$3
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     paramRecyclerView = this.a;
-    paramRecyclerView.i = paramRecyclerView.d();
-    if (this.a.e != -1L)
+    paramRecyclerView.U = paramRecyclerView.r();
+    if (this.a.W != -1L)
     {
-      long l = System.currentTimeMillis() - this.a.e;
+      long l = System.currentTimeMillis() - this.a.W;
       if ((l > 0L) && (l < 2000L))
       {
         f = paramInt2 * 1.0F / (float)l;
@@ -64,20 +64,20 @@ class ExtendFriendSquareFragment$3
     }
     float f = 0.0F;
     label72:
-    this.a.e = System.currentTimeMillis();
+    this.a.W = System.currentTimeMillis();
     paramRecyclerView = this.a;
-    ExtendFriendSquareFragment.a(paramRecyclerView, paramRecyclerView.i, f);
-    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentRecyclerViewAdapter != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentRecyclerViewAdapter.getItemCount() - 2) != null))
+    ExtendFriendSquareFragment.a(paramRecyclerView, paramRecyclerView.U, f);
+    if ((!ExtendFriendSquareFragment.e(this.a)) && (!ExtendFriendSquareFragment.f(this.a)) && (this.a.o != null) && (this.a.m != null) && (this.a.o.findViewByPosition(this.a.m.getItemCount() - 2) != null))
     {
       this.a.b(true);
       ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+      ReportController.b(this.a.i, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSquareFragment.3
  * JD-Core Version:    0.7.0.1
  */

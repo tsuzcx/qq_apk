@@ -14,13 +14,13 @@ public abstract interface IUFTFileUploaderCallback
   
   public abstract void a(boolean paramBoolean, Object paramObject);
   
-  public abstract void aS_();
-  
   public abstract void b(String paramString);
+  
+  public abstract void dx_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.IUFTFileUploaderCallback
  * JD-Core Version:    0.7.0.1
  */

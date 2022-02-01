@@ -22,7 +22,7 @@ class AVGameControlUIImpl$CheckCameraTask
       }
       return;
     }
-    localObject = ((AVGameBusinessCtrl)localObject).a();
+    localObject = ((AVGameBusinessCtrl)localObject).j();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -30,9 +30,9 @@ class AVGameControlUIImpl$CheckCameraTask
       }
       return;
     }
-    long l = QQAudioHelper.b();
+    long l = QQAudioHelper.d();
     boolean bool1 = true;
-    boolean bool2 = ((AVGameSession)localObject).a(1);
+    boolean bool2 = ((AVGameSession)localObject).c(1);
     if (bool2)
     {
       localObject = CameraUtils.a(BaseApplicationImpl.getApplication());

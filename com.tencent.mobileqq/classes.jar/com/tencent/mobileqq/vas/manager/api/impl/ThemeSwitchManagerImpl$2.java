@@ -23,8 +23,8 @@ class ThemeSwitchManagerImpl$2
   public void handleMessage(Message paramMessage)
   {
     Object localObject;
-    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      localObject = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((this.a.h != null) && (this.a.h.get() != null)) {
+      localObject = (Activity)this.a.h.get();
     } else {
       localObject = null;
     }
@@ -42,7 +42,7 @@ class ThemeSwitchManagerImpl$2
       if (i == 201)
       {
         this.a.onPostThemeChanged();
-        QQToast.a((Context)localObject, HardCodeUtil.a(2131714730), 4000).a();
+        QQToast.makeText((Context)localObject, HardCodeUtil.a(2131912236), 4000).show();
         return;
       }
       localObject = new StringBuilder();
@@ -50,18 +50,18 @@ class ThemeSwitchManagerImpl$2
       ((StringBuilder)localObject).append(paramMessage.what);
       throw new IllegalStateException(((StringBuilder)localObject).toString());
     }
-    if ((!((Activity)localObject).isFinishing()) && ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())))
+    if ((!((Activity)localObject).isFinishing()) && ((this.a.a == null) || (!this.a.a.isShowing())))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)localObject, ((QBaseActivity)localObject).getTitleBarHeight());
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131719399);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.a.a = new QQProgressDialog((Context)localObject, ((QBaseActivity)localObject).getTitleBarHeight());
+      this.a.a.setCancelable(true);
+      this.a.a.c(2131916957);
+      this.a.a.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.manager.api.impl.ThemeSwitchManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

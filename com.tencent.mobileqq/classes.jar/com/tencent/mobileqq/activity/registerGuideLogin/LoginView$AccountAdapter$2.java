@@ -19,39 +19,39 @@ class LoginView$AccountAdapter$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.removeTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_c_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    SimpleAccount localSimpleAccount = (SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_Int);
-    if (!LoginView.j(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a))
+    this.b.b.p.removeTextChangedListener(this.b.b.H);
+    this.b.b.h.removeTextChangedListener(this.b.b.I);
+    this.b.b.p.removeTextChangedListener(this.b.b.J);
+    this.b.b.x = this.a;
+    SimpleAccount localSimpleAccount = (SimpleAccount)this.b.b.v.get(this.b.b.x);
+    if (!LoginView.E(this.b.b))
     {
-      LoginView.g(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      ImageView localImageView = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_c_of_type_AndroidWidgetImageView;
+      LoginView.g(this.b.b, true);
+      this.b.b.h.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      ImageView localImageView = this.b.b.j;
       int i;
-      if ((!LoginView.e(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a)) && (!LoginView.f(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a)) && (!LoginView.g(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a)) && (!LoginView.h(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a))) {
-        i = 2130844690;
+      if ((!LoginView.r(this.b.b)) && (!LoginView.s(this.b.b)) && (!this.b.b.z) && (!LoginView.t(this.b.b))) {
+        i = 2130846063;
       } else {
-        i = 2130847210;
+        i = 2130848790;
       }
       localImageView.setImageResource(i);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131706421));
+      this.b.b.j.setContentDescription(HardCodeUtil.a(2131904280));
     }
-    LoginView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a, localSimpleAccount);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.addTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_c_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.clearFocus();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView$AccountAdapter.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
+    LoginView.a(this.b.b, localSimpleAccount);
+    this.b.b.p.addTextChangedListener(this.b.b.H);
+    this.b.b.h.addTextChangedListener(this.b.b.I);
+    this.b.b.p.clearFocus();
+    this.b.b.p.addTextChangedListener(this.b.b.J);
+    this.b.b.h.clearFocus();
+    this.b.b.h.setClearButtonVisible(false);
+    this.b.b.q.getDelIcon().setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.AccountAdapter.2
  * JD-Core Version:    0.7.0.1
  */

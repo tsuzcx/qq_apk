@@ -25,14 +25,14 @@ public class RecentSortTopProcessor
       return false;
     }
     if ((paramRecentUserBaseData.mUser.getType() == 1) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).checkIsHCRecentUser((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser))) {
-      return ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramRecentUserBaseData.getRecentUserUin());
+      return ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).o(paramRecentUserBaseData.getRecentUserUin());
     }
     return FriendsStatusUtil.a((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentsort.RecentSortTopProcessor
  * JD-Core Version:    0.7.0.1
  */

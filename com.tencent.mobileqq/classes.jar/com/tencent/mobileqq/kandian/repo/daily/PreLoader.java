@@ -24,12 +24,12 @@ import org.json.JSONObject;
 
 public class PreLoader
 {
-  private static String jdField_a_of_type_JavaLangString = "PreLoader";
-  private static boolean b = true;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private boolean jdField_a_of_type_Boolean;
-  private boolean c;
+  private static String a = "PreLoader";
+  private static boolean e = true;
+  private Map<String, String> b = new ConcurrentHashMap();
+  private Set<String> c = Collections.synchronizedSet(new HashSet());
+  private boolean d;
+  private boolean f;
   
   public static PreLoader a()
   {
@@ -49,10 +49,10 @@ public class PreLoader
           if (("com.tencent.reading".equals(paramAbsBaseArticleInfo.get("appPackageName"))) && (str != null))
           {
             paramAbsBaseArticleInfo = (String)URLUtil.a(Uri.decode(str)).get("rowkey");
-            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramAbsBaseArticleInfo))
+            if (!this.b.containsKey(paramAbsBaseArticleInfo))
             {
-              this.jdField_a_of_type_JavaUtilSet.add(paramAbsBaseArticleInfo);
-              str = jdField_a_of_type_JavaLangString;
+              this.c.add(paramAbsBaseArticleInfo);
+              str = a;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("searchKBArticleId cache: ");
               localStringBuilder.append(paramAbsBaseArticleInfo);
@@ -64,7 +64,7 @@ public class PreLoader
       }
       catch (Exception paramAbsBaseArticleInfo)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, paramAbsBaseArticleInfo, new Object[] { "" });
+        QLog.e(a, 1, paramAbsBaseArticleInfo, new Object[] { "" });
       }
     }
   }
@@ -88,8 +88,8 @@ public class PreLoader
           {
             JSONObject localJSONObject = (JSONObject)paramString.get(i);
             String str = localJSONObject.getString("id");
-            this.jdField_a_of_type_JavaUtilMap.put(str, Uri.encode(localJSONObject.toString()));
-            this.jdField_a_of_type_JavaUtilSet.remove(str);
+            this.b.put(str, Uri.encode(localJSONObject.toString()));
+            this.c.remove(str);
             i += 1;
           }
         }
@@ -97,26 +97,12 @@ public class PreLoader
       }
       catch (Exception paramString)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[] { "" });
+        QLog.e(a, 1, paramString, new Object[] { "" });
       }
     }
   }
   
-  private boolean a()
-  {
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isNeedPreload isNeedCheckPreload: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" isConfigNeedPreload: ");
-    localStringBuilder.append(PreLoaderProxy.a.a());
-    localStringBuilder.append(" isInstalledKB:");
-    localStringBuilder.append(this.c);
-    QLog.d(str, 1, localStringBuilder.toString());
-    return (this.jdField_a_of_type_Boolean) && (PreLoaderProxy.a.a()) && (this.c);
-  }
-  
-  private void c()
+  private void e()
   {
     if (PreLoaderProxy.a.b()) {
       return;
@@ -131,21 +117,35 @@ public class PreLoader
         bool = false;
       }
       localPreLoaderProxy.a(bool);
-      if (b)
+      if (e)
       {
-        this.c = PackageUtil.a(BaseApplicationImpl.getApplication(), "com.tencent.reading");
-        b = false;
+        this.f = PackageUtil.a(BaseApplicationImpl.getApplication(), "com.tencent.reading");
+        e = false;
       }
     }
   }
   
+  private boolean f()
+  {
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isNeedPreload isNeedCheckPreload: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" isConfigNeedPreload: ");
+    localStringBuilder.append(PreLoaderProxy.a.a());
+    localStringBuilder.append(" isInstalledKB:");
+    localStringBuilder.append(this.f);
+    QLog.d(str, 1, localStringBuilder.toString());
+    return (this.d) && (PreLoaderProxy.a.a()) && (this.f);
+  }
+  
   public String a(String paramString)
   {
-    if (!a()) {
+    if (!f()) {
       return paramString;
     }
     Object localObject = (String)URLUtil.a(paramString).get("rowkey");
-    String str = (String)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+    String str = (String)this.b.get(localObject);
     localObject = paramString;
     if (!TextUtils.isEmpty(str))
     {
@@ -154,7 +154,7 @@ public class PreLoader
       ((StringBuilder)localObject).append("&item=");
       ((StringBuilder)localObject).append(str);
       localObject = ((StringBuilder)localObject).toString();
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("item=");
       localStringBuilder.append(str.length());
@@ -163,16 +163,9 @@ public class PreLoader
     return localObject;
   }
   
-  public void a()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onCreate");
-    this.jdField_a_of_type_Boolean = true;
-    c();
-  }
-  
   public void a(int paramInt, List<Long> paramList)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     b(ReadInJoyLogicEngine.a().a(Integer.valueOf(paramInt), paramList));
@@ -190,35 +183,42 @@ public class PreLoader
   
   public void b()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onDestroy");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
+    QLog.d(a, 1, "onCreate");
+    this.d = true;
+    e();
   }
   
   public void b(List<AbsBaseArticleInfo> paramList)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if (paramList == null)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "startRequest articleInfos == null");
+      QLog.d(a, 1, "startRequest articleInfos == null");
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "startRequest");
+    QLog.d(a, 1, "startRequest");
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       a((AbsBaseArticleInfo)paramList.next());
     }
-    if (this.jdField_a_of_type_JavaUtilSet.size() > 0) {
-      a(this.jdField_a_of_type_JavaUtilSet);
+    if (this.c.size() > 0) {
+      a(this.c);
     }
+  }
+  
+  public void c()
+  {
+    QLog.d(a, 1, "onDestroy");
+    this.d = false;
+    this.b.clear();
+    this.c.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.daily.PreLoader
  * JD-Core Version:    0.7.0.1
  */

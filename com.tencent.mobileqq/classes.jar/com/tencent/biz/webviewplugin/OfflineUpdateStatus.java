@@ -8,31 +8,25 @@ import java.util.Iterator;
 public class OfflineUpdateStatus
   implements AsyncBack
 {
-  public int a;
   public String a;
-  private ArrayList<LoadedBack2> a;
-  private int b;
   public String b;
-  private int c = 0;
   public String c;
   public String d;
   public String e;
   public String f;
+  public int g;
+  private ArrayList<LoadedBack2> h = new ArrayList();
+  private int i;
+  private int j = 0;
   
   public OfflineUpdateStatus(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.a = paramString;
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext()) {
       ((LoadedBack2)localIterator.next()).a();
     }
@@ -40,34 +34,39 @@ public class OfflineUpdateStatus
   
   public void a(int paramInt)
   {
-    this.b = paramInt;
+    this.i = paramInt;
   }
   
   public void a(LoadedBack2 paramLoadedBack2)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramLoadedBack2)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramLoadedBack2);
+    if (!this.h.contains(paramLoadedBack2)) {
+      this.h.add(paramLoadedBack2);
     }
   }
   
   public int b()
   {
-    return this.b;
+    return this.h.size();
   }
   
   public void b(LoadedBack2 paramLoadedBack2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramLoadedBack2);
+    this.h.remove(paramLoadedBack2);
   }
   
   public int c()
   {
-    return this.c;
+    return this.i;
+  }
+  
+  public int d()
+  {
+    return this.j;
   }
   
   public void loaded(String paramString, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext()) {
       ((LoadedBack2)localIterator.next()).loaded(paramString, paramInt);
     }
@@ -75,8 +74,8 @@ public class OfflineUpdateStatus
   
   public void progress(int paramInt)
   {
-    this.c = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.j = paramInt;
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext()) {
       ((LoadedBack2)localIterator.next()).progress(paramInt);
     }
@@ -84,7 +83,7 @@ public class OfflineUpdateStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflineUpdateStatus
  * JD-Core Version:    0.7.0.1
  */

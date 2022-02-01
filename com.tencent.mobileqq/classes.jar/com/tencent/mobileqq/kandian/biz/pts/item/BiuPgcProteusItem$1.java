@@ -13,21 +13,21 @@ class BiuPgcProteusItem$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    BiuPgcProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemBiuPgcProteusItem, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel, this.jdField_a_of_type_Int);
+    BiuPgcProteusItem.a(this.d, this.a.getContext(), this.b, this.c);
     if (QLog.isColorLevel())
     {
       paramViewBase = new StringBuilder();
       paramViewBase.append("click gallery summary for jumping to gallery articleinfo = ");
-      paramViewBase.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
+      paramViewBase.append(this.b.k());
       paramViewBase.append(" position = ");
-      paramViewBase.append(this.jdField_a_of_type_Int);
+      paramViewBase.append(this.c);
       QLog.d("BiuPgcProteusItem", 2, paramViewBase.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuPgcProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

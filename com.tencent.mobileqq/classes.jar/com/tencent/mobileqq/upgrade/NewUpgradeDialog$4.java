@@ -12,7 +12,7 @@ class NewUpgradeDialog$4
   
   public void onClick(View paramView)
   {
-    int i = NewUpgradeDialog.a(this.a);
+    int i = NewUpgradeDialog.b(this.a);
     if (i != 1)
     {
       if (i != 2)
@@ -33,13 +33,13 @@ class NewUpgradeDialog$4
           }
           else
           {
-            NewUpgradeDialog.b(this.a);
+            NewUpgradeDialog.d(this.a);
             LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
           }
         }
         else
         {
-          NewUpgradeDialog.c(this.a);
+          NewUpgradeDialog.e(this.a);
           LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
         }
       }
@@ -52,14 +52,14 @@ class NewUpgradeDialog$4
     else
     {
       LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
-      NewUpgradeDialog.a(this.a);
+      NewUpgradeDialog.c(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.4
  * JD-Core Version:    0.7.0.1
  */

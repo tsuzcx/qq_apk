@@ -139,9 +139,7 @@ public class FileOperaterUtils
         return localObject;
       }
       paramString1 = new StringBuilder();
-      paramString1.append("8.4.10-FileLocation --- MessageRecord 【msg】");
-      paramString1.append(((MessageRecord)localObject).msg);
-      paramString1.append("；【shmsgseq】");
+      paramString1.append("8.4.10-FileLocation --- ；【shmsgseq】");
       paramString1.append(((MessageRecord)localObject).shmsgseq);
       paramString1.append("； [time] = ");
       paramString1.append(((MessageRecord)localObject).time);
@@ -157,7 +155,7 @@ public class FileOperaterUtils
       if (paramString1.length() == 0) {
         return null;
       }
-      paramQQMessageFacade = paramQQMessageFacade.a(paramString1, paramInt);
+      paramQQMessageFacade = paramQQMessageFacade.h(paramString1, paramInt);
       if (paramQQMessageFacade == null) {
         return null;
       }
@@ -175,7 +173,7 @@ public class FileOperaterUtils
   
   public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
-    paramQQAppInterface = a(paramQQAppInterface).a(paramString1, paramInt);
+    paramQQAppInterface = a(paramQQAppInterface).h(paramString1, paramInt);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.iterator();
@@ -190,7 +188,27 @@ public class FileOperaterUtils
     return null;
   }
   
-  public static void a(Activity paramActivity, Bundle paramBundle, FileManagerEntity paramFileManagerEntity)
+  public static View.OnClickListener b(long paramLong, IFileBrowser paramIFileBrowser, String paramString)
+  {
+    return new FileOperaterUtils.5(paramString, paramIFileBrowser, paramLong);
+  }
+  
+  public static View.OnClickListener b(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
+  {
+    return new FileOperaterUtils.12(paramActivity, paramFileManagerEntity, paramString);
+  }
+  
+  public static View.OnClickListener b(Activity paramActivity, String paramString)
+  {
+    return new FileOperaterUtils.13(paramActivity, paramString);
+  }
+  
+  public static View.OnClickListener b(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
+  {
+    return new FileOperaterUtils.4(paramFileManagerEntity, paramIFileBrowser);
+  }
+  
+  public static void b(Activity paramActivity, Bundle paramBundle, FileManagerEntity paramFileManagerEntity)
   {
     String str = paramFileManagerEntity.peerUin;
     int i;
@@ -206,7 +224,7 @@ public class FileOperaterUtils
     }
     if ((paramFileManagerEntity.uniseq == -1L) && (paramFileManagerEntity.fileName == null) && (paramFileManagerEntity.fileSize == 0L))
     {
-      QQToast.a(paramActivity, 1, 2131698272, 0).a();
+      QQToast.makeText(paramActivity, 1, 2131896173, 0).show();
       return;
     }
     MessageRecord localMessageRecord = a(paramFileManagerEntity.uniseq, str, i, (String)localObject);
@@ -214,10 +232,10 @@ public class FileOperaterUtils
     {
       if (localObject == null)
       {
-        QQToast.a(paramActivity, 1, 2131698272, 0).a();
+        QQToast.makeText(paramActivity, 1, 2131896173, 0).show();
         return;
       }
-      QQToast.a(paramActivity, 1, 2131698271, 0).a();
+      QQToast.makeText(paramActivity, 1, 2131896172, 0).show();
       return;
     }
     int j = paramBundle.getInt("file_location_pos_entrance_type", 0);
@@ -263,24 +281,9 @@ public class FileOperaterUtils
     paramActivity.startActivity((Intent)localObject);
   }
   
-  public static View.OnClickListener b(long paramLong, IFileBrowser paramIFileBrowser, String paramString)
+  public static View.OnClickListener c(Activity paramActivity, String paramString)
   {
-    return new FileOperaterUtils.5(paramString, paramIFileBrowser, paramLong);
-  }
-  
-  public static View.OnClickListener b(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
-  {
-    return new FileOperaterUtils.12(paramActivity, paramFileManagerEntity, paramString);
-  }
-  
-  public static View.OnClickListener b(Activity paramActivity, String paramString)
-  {
-    return new FileOperaterUtils.13(paramActivity, paramString);
-  }
-  
-  public static View.OnClickListener b(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
-  {
-    return new FileOperaterUtils.4(paramFileManagerEntity, paramIFileBrowser);
+    return new FileOperaterUtils.14(paramActivity, paramString);
   }
   
   public static View.OnClickListener c(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
@@ -295,7 +298,7 @@ public class FileOperaterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils
  * JD-Core Version:    0.7.0.1
  */

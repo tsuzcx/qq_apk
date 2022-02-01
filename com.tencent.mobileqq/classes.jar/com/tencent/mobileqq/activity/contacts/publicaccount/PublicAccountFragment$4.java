@@ -12,13 +12,13 @@ class PublicAccountFragment$4
   
   public void onClick(View paramView)
   {
-    PublicAccountSearchActivity.a(PublicAccountFragment.a(this.a), null);
+    PublicAccountSearchActivity.a(PublicAccountFragment.d(this.a), null);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.4
  * JD-Core Version:    0.7.0.1
  */

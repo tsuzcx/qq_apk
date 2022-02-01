@@ -27,48 +27,43 @@ import org.jetbrains.annotations.Nullable;
 public final class CommonProgressDialog
   extends BaseDialog
 {
-  public static final CommonProgressDialog.Companion a;
-  private Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
-  private final View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  public static final CommonProgressDialog.Companion a = new CommonProgressDialog.Companion(null);
+  private final View b;
+  private final TextView c;
+  private ImageView d;
+  private Animatable e;
+  private final RelativeLayout f;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog$Companion = new CommonProgressDialog.Companion(null);
-  }
+  private String g;
   
   public CommonProgressDialog(@NotNull Context paramContext, int paramInt)
   {
     super(paramContext, R.style.a);
     if (paramInt == 2)
     {
-      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.c, null);
+      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.b, null);
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…on_progress_center, null)");
     }
     else
     {
-      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.b, null);
+      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.a, null);
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…og_common_progress, null)");
     }
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.k);
+    this.b = paramContext;
+    paramContext = this.b.findViewById(R.id.c);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.background)");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.aV);
+    this.f = ((RelativeLayout)paramContext);
+    paramContext = this.b.findViewById(R.id.aw);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.tv_content)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.ac);
+    this.c = ((TextView)paramContext);
+    paramContext = this.b.findViewById(R.id.H);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "rootView.findViewById(R.id.iv_progress)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
-    paramContext = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    this.d = ((ImageView)paramContext);
+    paramContext = this.d.getDrawable();
     if (paramContext != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)paramContext);
-      this.jdField_a_of_type_JavaLangString = "";
+      this.e = ((Animatable)paramContext);
+      this.g = "";
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type android.graphics.drawable.Animatable");
@@ -77,13 +72,13 @@ public final class CommonProgressDialog
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramString);
+    this.g = paramString;
+    this.c.setText((CharSequence)paramString);
   }
   
   public boolean a()
   {
-    return TopicSDK.a.a().a().a().a();
+    return TopicSDK.a.a().b().j().a();
   }
   
   /* Error */
@@ -91,36 +86,36 @@ public final class CommonProgressDialog
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 192	com/tencent/tkd/topicsdk/framework/BaseDialog:dismiss	()V
-    //   4: getstatic 197	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	Lcom/tencent/tkd/topicsdk/common/ActivityLeakSolution;
+    //   1: invokespecial 196	com/tencent/tkd/topicsdk/framework/BaseDialog:dismiss	()V
+    //   4: getstatic 201	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	Lcom/tencent/tkd/topicsdk/common/ActivityLeakSolution;
     //   7: aload_0
-    //   8: checkcast 199	android/app/Dialog
-    //   11: invokevirtual 202	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   8: checkcast 203	android/app/Dialog
+    //   11: invokevirtual 206	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_1
     //   16: goto +37 -> 53
     //   19: astore_1
-    //   20: new 204	java/lang/StringBuilder
+    //   20: new 208	java/lang/StringBuilder
     //   23: dup
-    //   24: invokespecial 206	java/lang/StringBuilder:<init>	()V
+    //   24: invokespecial 210	java/lang/StringBuilder:<init>	()V
     //   27: astore_2
     //   28: aload_2
-    //   29: ldc 208
-    //   31: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc 212
+    //   31: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload_2
     //   36: aload_1
-    //   37: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   40: pop
-    //   41: ldc 217
+    //   41: ldc 221
     //   43: aload_2
-    //   44: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 226	com/tencent/tkd/topicsdk/framework/TLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokevirtual 224	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 229	com/tencent/tkd/topicsdk/framework/TLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: goto -46 -> 4
-    //   53: getstatic 197	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	Lcom/tencent/tkd/topicsdk/common/ActivityLeakSolution;
+    //   53: getstatic 201	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	Lcom/tencent/tkd/topicsdk/common/ActivityLeakSolution;
     //   56: aload_0
-    //   57: checkcast 199	android/app/Dialog
-    //   60: invokevirtual 202	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   57: checkcast 203	android/app/Dialog
+    //   60: invokevirtual 206	com/tencent/tkd/topicsdk/common/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   63: goto +5 -> 68
     //   66: aload_1
     //   67: athrow
@@ -143,7 +138,7 @@ public final class CommonProgressDialog
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null) {
-      paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+      paramBundle.setContentView(this.b);
     }
     paramBundle = getWindow();
     if (paramBundle != null) {
@@ -169,21 +164,21 @@ public final class CommonProgressDialog
   
   protected void onStart()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed((Runnable)new CommonProgressDialog.onStart.1(this), 50L);
+    this.d.postDelayed((Runnable)new CommonProgressDialog.onStart.1(this), 50L);
     super.onStart();
   }
   
   protected void onStop()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning()) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    if (this.e.isRunning()) {
+      this.e.stop();
     }
     super.onStop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.CommonProgressDialog
  * JD-Core Version:    0.7.0.1
  */

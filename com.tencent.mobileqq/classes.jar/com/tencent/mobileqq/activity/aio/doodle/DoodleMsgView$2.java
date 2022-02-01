@@ -17,21 +17,21 @@ class DoodleMsgView$2
         this.this$0.a(new DoodleMsgView.2.1(this));
         return;
       }
-      if (DoodleMsgView.a(this.this$0) < 0L) {
+      if (DoodleMsgView.f(this.this$0) < 0L) {
         DoodleMsgView.a(this.this$0, this.a);
       }
-      if (DoodleMsgView.a(this.this$0) < this.a) {
-        DoodleMsgView.a(this.this$0, DoodleMsgView.a(this.this$0) + this.b);
+      if (DoodleMsgView.f(this.this$0) < this.a) {
+        DoodleMsgView.a(this.this$0, DoodleMsgView.f(this.this$0) + this.b);
       }
       if (localDoodleDrawer != null) {
-        localDoodleDrawer.a(DoodleMsgView.a(this.this$0), true);
+        localDoodleDrawer.a(DoodleMsgView.f(this.this$0), true);
       }
-      if (DoodleMsgView.a(this.this$0) >= this.a)
+      if (DoodleMsgView.f(this.this$0) >= this.a)
       {
-        DoodleMsgView.a(this.this$0);
+        DoodleMsgView.h(this.this$0);
         return;
       }
-      if ((!DoodleMsgView.a(this.this$0)) && (localDoodleDrawer != null)) {
+      if ((!DoodleMsgView.e(this.this$0)) && (localDoodleDrawer != null)) {
         localDoodleDrawer.a(this.a, true);
       }
       return;
@@ -41,7 +41,7 @@ class DoodleMsgView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.2
  * JD-Core Version:    0.7.0.1
  */

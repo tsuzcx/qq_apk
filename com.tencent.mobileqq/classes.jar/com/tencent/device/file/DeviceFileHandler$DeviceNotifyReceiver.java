@@ -64,7 +64,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
         if (paramIntent == null) {
           return;
         }
-        if (this.a.b.contains(Long.valueOf(l1)))
+        if (this.a.d.contains(Long.valueOf(l1)))
         {
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
@@ -81,14 +81,14 @@ public class DeviceFileHandler$DeviceNotifyReceiver
             paramContext = localStringBuilder.toString();
             FileUtils.moveFile((String)localObject, paramContext);
             paramIntent.strFilePathSrc = paramContext;
-            this.a.b.remove(Long.valueOf(l1));
+            this.a.d.remove(Long.valueOf(l1));
           }
         }
         else if (paramIntent.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.c)) {
           paramIntent.vFileMD5Src = ((String)localObject).getBytes();
         }
         if (i == -5103058) {
-          this.a.c.put(Long.valueOf(paramIntent.uSessionID), Integer.valueOf(-5103058));
+          this.a.e.put(Long.valueOf(paramIntent.uSessionID), Integer.valueOf(-5103058));
         }
         paramContext = this.a;
         if (i == 0) {
@@ -150,7 +150,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
               }
               else
               {
-                this.a.c.put(Long.valueOf(paramContext.uSessionID), Integer.valueOf(j));
+                this.a.e.put(Long.valueOf(paramContext.uSessionID), Integer.valueOf(j));
                 this.a.notifyUI(103, false, paramContext);
               }
             }
@@ -177,7 +177,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DeviceFileHandler.DeviceNotifyReceiver
  * JD-Core Version:    0.7.0.1
  */

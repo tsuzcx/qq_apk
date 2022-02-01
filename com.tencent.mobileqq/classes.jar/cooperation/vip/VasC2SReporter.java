@@ -15,24 +15,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VasC2SReporter
 {
-  private static VasC2SReporter jdField_a_of_type_CooperationVipVasC2SReporter;
-  private final ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static VasC2SReporter b;
+  private final ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
   public static VasC2SReporter a()
   {
-    if (jdField_a_of_type_CooperationVipVasC2SReporter == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_CooperationVipVasC2SReporter == null) {
-          jdField_a_of_type_CooperationVipVasC2SReporter = new VasC2SReporter();
+        if (b == null) {
+          b = new VasC2SReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationVipVasC2SReporter;
+    return b;
   }
   
-  public static void a(String paramString)
+  public static void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -44,10 +44,10 @@ public class VasC2SReporter
   
   public String a(String paramString)
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    boolean bool = this.a.containsKey(paramString);
     String str;
     if ((!TextUtils.isEmpty(paramString)) && (bool)) {
-      str = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      str = (String)this.a.get(paramString);
     } else {
       str = "";
     }
@@ -65,41 +65,36 @@ public class VasC2SReporter
     return str;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
   public void a(TianShuReportData paramTianShuReportData)
   {
     if (paramTianShuReportData == null) {
       return;
     }
-    if ((paramTianShuReportData.d == 100) || (paramTianShuReportData.d == 101) || (paramTianShuReportData.d == 117) || (paramTianShuReportData.d == 137) || (paramTianShuReportData.d == 139) || (paramTianShuReportData.d == 141) || (paramTianShuReportData.d == 202))
+    if ((paramTianShuReportData.p == 100) || (paramTianShuReportData.p == 101) || (paramTianShuReportData.p == 117) || (paramTianShuReportData.p == 137) || (paramTianShuReportData.p == 139) || (paramTianShuReportData.p == 141) || (paramTianShuReportData.p == 202))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      Object localObject = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramTianShuReportData.g);
+      localStringBuilder.append(paramTianShuReportData.h);
       localStringBuilder.append("_");
-      localStringBuilder.append(paramTianShuReportData.d);
+      localStringBuilder.append(paramTianShuReportData.p);
       if (((ConcurrentHashMap)localObject).containsKey(localStringBuilder.toString()))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramTianShuReportData.g);
+        ((StringBuilder)localObject).append(paramTianShuReportData.h);
         ((StringBuilder)localObject).append("_");
-        ((StringBuilder)localObject).append(paramTianShuReportData.d);
+        ((StringBuilder)localObject).append(paramTianShuReportData.p);
         paramTianShuReportData = a(((StringBuilder)localObject).toString());
       }
-      else if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramTianShuReportData.g))
+      else if (this.a.containsKey(paramTianShuReportData.h))
       {
-        paramTianShuReportData = a(paramTianShuReportData.g);
+        paramTianShuReportData = a(paramTianShuReportData.h);
       }
       else
       {
         paramTianShuReportData = "";
       }
       if (!TextUtils.isEmpty(paramTianShuReportData)) {
-        a(paramTianShuReportData);
+        b(paramTianShuReportData);
       }
     }
   }
@@ -119,7 +114,7 @@ public class VasC2SReporter
       {
         localObject = ((TianShuAccess.MapEntry)localObject).value.get();
         str2 = str2.replace("thirdPartyReportURLForExposure", str1);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, localObject);
+        this.a.put(str2, localObject);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -134,10 +129,15 @@ public class VasC2SReporter
       }
     }
   }
+  
+  public void b()
+  {
+    this.a.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.VasC2SReporter
  * JD-Core Version:    0.7.0.1
  */

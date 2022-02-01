@@ -41,24 +41,24 @@ class RichmediaService$IncomingHandler
         return;
       }
       LOG.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
-      ((RichmediaService)localObject1).b = null;
-      ((RichmediaService)localObject1).a = null;
+      ((RichmediaService)localObject1).d = null;
+      ((RichmediaService)localObject1).f = null;
       return;
     }
     LOG.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
-    ((RichmediaService)localObject1).b = paramMessage.replyTo;
+    ((RichmediaService)localObject1).d = paramMessage.replyTo;
     if (localObject2 != null)
     {
       paramMessage = (BinderWarpper)((Bundle)localObject2).getParcelable("ICallBack_BinderWrapper");
       if (paramMessage != null)
       {
-        ((RichmediaService)localObject1).a = ICallBack.Stub.a(paramMessage.a);
+        ((RichmediaService)localObject1).f = ICallBack.Stub.a(paramMessage.a);
         paramMessage = new Bundle();
         localObject2 = ((ICompressOperator)QRoute.api(ICompressOperator.class)).getCompressConfigFromServer((QQAppInterface)RichmediaService.a((RichmediaService)localObject1));
         try
         {
           paramMessage.putIntArray("key_compress_config", (int[])localObject2);
-          ((RichmediaService)localObject1).a.a(6, paramMessage);
+          ((RichmediaService)localObject1).f.b(6, paramMessage);
           return;
         }
         catch (RemoteException paramMessage)
@@ -75,7 +75,7 @@ class RichmediaService$IncomingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService.IncomingHandler
  * JD-Core Version:    0.7.0.1
  */

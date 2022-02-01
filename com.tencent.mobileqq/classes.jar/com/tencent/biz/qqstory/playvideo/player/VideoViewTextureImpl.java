@@ -11,54 +11,33 @@ import java.io.File;
 public class VideoViewTextureImpl
   implements IVideoView
 {
-  StoryPlayerTVKWrapper.ReportData jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData = new StoryPlayerTVKWrapper.ReportData();
-  TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-  private String jdField_a_of_type_JavaLangString = "VideoViewTextureImpl";
+  StoryPlayerTVKWrapper.ReportData a = new StoryPlayerTVKWrapper.ReportData();
+  TextureVideoView b;
+  private String c = "VideoViewTextureImpl";
   
   public VideoViewTextureImpl(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = new TextureVideoView(paramContext.getApplicationContext());
+    this.b = new TextureVideoView(paramContext.getApplicationContext());
     paramContext = new StringBuilder();
-    paramContext.append(this.jdField_a_of_type_JavaLangString);
+    paramContext.append(this.c);
     paramContext.append(paramString);
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition();
+    this.c = paramContext.toString();
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-  }
-  
-  public StoryPlayerTVKWrapper.ReportData a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData;
-  }
-  
-  public void a()
-  {
-    SLog.d(this.jdField_a_of_type_JavaLangString, "stopPlayback");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.a();
+    return this.b;
   }
   
   @TargetApi(14)
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(paramInt);
+    this.b.setVisibility(paramInt);
   }
   
   public void a(IVideoView.OnCompletionListener paramOnCompletionListener)
   {
-    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    TextureVideoView localTextureVideoView = this.b;
     if (paramOnCompletionListener == null) {
       paramOnCompletionListener = null;
     } else {
@@ -71,7 +50,7 @@ public class VideoViewTextureImpl
   
   public void a(IVideoView.OnErrorListener paramOnErrorListener)
   {
-    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    TextureVideoView localTextureVideoView = this.b;
     Object localObject = null;
     if (paramOnErrorListener == null) {
       paramOnErrorListener = localObject;
@@ -83,7 +62,7 @@ public class VideoViewTextureImpl
   
   public void a(IVideoView.OnInfoListener paramOnInfoListener)
   {
-    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    TextureVideoView localTextureVideoView = this.b;
     if (paramOnInfoListener == null) {
       paramOnInfoListener = null;
     } else {
@@ -94,7 +73,7 @@ public class VideoViewTextureImpl
   
   public void a(IVideoView.OnPreparedListener paramOnPreparedListener)
   {
-    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    TextureVideoView localTextureVideoView = this.b;
     if (paramOnPreparedListener == null) {
       paramOnPreparedListener = null;
     } else {
@@ -105,54 +84,75 @@ public class VideoViewTextureImpl
   
   public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
   {
-    StoryPlayerTVKWrapper.ReportData localReportData = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData;
-    localReportData.jdField_a_of_type_JavaLangString = paramString1;
-    localReportData.jdField_a_of_type_Boolean = true;
+    StoryPlayerTVKWrapper.ReportData localReportData = this.a;
+    localReportData.b = paramString1;
+    localReportData.c = true;
     if ((TextUtils.isEmpty(paramString2)) || (!FileCacheUtils.a(new File(paramString2)))) {
       paramString2 = paramString3;
     }
-    SLog.d(this.jdField_a_of_type_JavaLangString, "setVideoPath");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString2);
+    SLog.d(this.c, "setVideoPath");
+    this.b.setVideoPath(paramString2);
   }
   
-  public boolean a()
+  public StoryPlayerTVKWrapper.ReportData b()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying();
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getDuration();
-  }
-  
-  public void b()
-  {
-    SLog.d(this.jdField_a_of_type_JavaLangString, "start");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+    return this.a;
   }
   
   public void c()
   {
-    SLog.d(this.jdField_a_of_type_JavaLangString, "pause");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.pause();
+    SLog.d(this.c, "stopPlayback");
+    this.b.b();
   }
   
   public void d()
   {
-    SLog.d(this.jdField_a_of_type_JavaLangString, "restart");
-    b();
+    SLog.d(this.c, "start");
+    this.b.start();
   }
   
-  public void e() {}
+  public long e()
+  {
+    return this.b.getCurrentPosition();
+  }
+  
+  public void f()
+  {
+    SLog.d(this.c, "pause");
+    this.b.pause();
+  }
+  
+  public void g()
+  {
+    SLog.d(this.c, "restart");
+    d();
+  }
+  
+  public long h()
+  {
+    return this.b.getDuration();
+  }
+  
+  public boolean i()
+  {
+    return this.b.isPlaying();
+  }
+  
+  public int j()
+  {
+    return 0;
+  }
+  
+  public int k()
+  {
+    return 1;
+  }
+  
+  public void l() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl
  * JD-Core Version:    0.7.0.1
  */

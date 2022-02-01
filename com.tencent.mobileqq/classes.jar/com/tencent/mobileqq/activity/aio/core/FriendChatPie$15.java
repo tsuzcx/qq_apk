@@ -11,11 +11,11 @@ class FriendChatPie$15
   
   public void run()
   {
-    if (CloneFriendPushHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+    if (CloneFriendPushHelper.b(this.this$0.d, this.this$0.ah.b))
     {
       FriendChatPie.b(this.this$0, true);
-      CloneFriendPushHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
+      CloneFriendPushHelper.a(this.this$0.d, this.this$0.ah.b);
+      ReportController.b(this.this$0.d, "CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
       return;
     }
     FriendChatPie.b(this.this$0, false);
@@ -23,7 +23,7 @@ class FriendChatPie$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.15
  * JD-Core Version:    0.7.0.1
  */

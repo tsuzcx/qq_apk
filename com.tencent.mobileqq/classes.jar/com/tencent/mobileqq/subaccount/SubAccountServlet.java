@@ -64,7 +64,7 @@ public class SubAccountServlet
     {
       NewIntent localNewIntent = new NewIntent(paramAppInterface.getApplication(), SubAccountServlet.class);
       localNewIntent.putExtra("key_type", 1);
-      localNewIntent.putExtra("key_appid", AppSetting.a());
+      localNewIntent.putExtra("key_appid", AppSetting.d());
       ArrayList localArrayList1 = new ArrayList(1);
       localArrayList1.add(paramString);
       ArrayList localArrayList2 = new ArrayList(1);
@@ -156,10 +156,10 @@ public class SubAccountServlet
             ((ISubAccountService)localObject4).updateAnotherSubAccountUnreadMsg(((SubAccountMessage)localObject3).subUin);
           }
           localObject3 = new SubAccountBackProtocData();
-          ((SubAccountBackProtocData)localObject3).b = paramFromServiceMsg.getUin();
-          ((SubAccountBackProtocData)localObject3).jdField_c_of_type_JavaLangString = String.valueOf(l1);
-          ((SubAccountBackProtocData)localObject3).jdField_c_of_type_Boolean = true;
-          ((SubAccountBackProtocData)localObject3).d = true;
+          ((SubAccountBackProtocData)localObject3).c = paramFromServiceMsg.getUin();
+          ((SubAccountBackProtocData)localObject3).d = String.valueOf(l1);
+          ((SubAccountBackProtocData)localObject3).l = true;
+          ((SubAccountBackProtocData)localObject3).m = true;
           ((SubAccountBackProtocData)localObject3).a = 0;
           if (MobileQQ.sProcessId != 1) {
             break label741;
@@ -280,7 +280,7 @@ public class SubAccountServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountServlet
  * JD-Core Version:    0.7.0.1
  */

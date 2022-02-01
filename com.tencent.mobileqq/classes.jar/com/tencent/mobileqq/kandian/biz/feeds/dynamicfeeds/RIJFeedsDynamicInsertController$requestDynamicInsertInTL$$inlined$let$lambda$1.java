@@ -21,11 +21,11 @@ public final class RIJFeedsDynamicInsertController$requestDynamicInsertInTL$$inl
   {
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("reqSource: 1, rowkey: ");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(this.a);
     ((StringBuilder)localObject3).append(", articles from server: ");
     Object localObject2 = null;
     if (paramRIJFeedsInsertArticle != null) {
-      localObject1 = paramRIJFeedsInsertArticle.b();
+      localObject1 = paramRIJFeedsInsertArticle.c();
     } else {
       localObject1 = null;
     }
@@ -37,28 +37,28 @@ public final class RIJFeedsDynamicInsertController$requestDynamicInsertInTL$$inl
       localObject1 = paramRIJFeedsInsertArticle.a();
       if (localObject1 != null)
       {
-        localObject1 = (ArrayList)((SortedMap)localObject1).get(new RIJFeedsInsertAction(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType, this.jdField_a_of_type_Int, 0, this.b));
+        localObject1 = (ArrayList)((SortedMap)localObject1).get(new RIJFeedsInsertAction(this.b, this.c, 0, this.d));
         break label122;
       }
     }
     Object localObject1 = null;
     label122:
     List localList = (List)localObject1;
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str == null) {
       Intrinsics.throwNpe();
     }
-    RIJFeedsInsertAction localRIJFeedsInsertAction = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJFeedsInsertAction;
+    RIJFeedsInsertAction localRIJFeedsInsertAction = this.e;
     localObject1 = localObject2;
     if (paramRIJFeedsInsertArticle != null) {
-      localObject1 = paramRIJFeedsInsertArticle.a();
+      localObject1 = paramRIJFeedsInsertArticle.b();
     }
     ((RIJFeedsDynamicInsertController)localObject3).insertArticleInMainTL(localList, 1, str, localRIJFeedsInsertAction, (String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController.requestDynamicInsertInTL..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

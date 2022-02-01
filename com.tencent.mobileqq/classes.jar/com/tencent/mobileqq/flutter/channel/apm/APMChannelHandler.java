@@ -10,7 +10,7 @@ import java.util.HashMap;
 public abstract class APMChannelHandler
   implements MethodChannel.MethodCallHandler
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public static final MethodCodec b = StandardMethodCodec.INSTANCE;
   
   protected abstract void a(String paramString, MethodChannel.Result paramResult);
   
@@ -48,7 +48,7 @@ public abstract class APMChannelHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.apm.APMChannelHandler
  * JD-Core Version:    0.7.0.1
  */

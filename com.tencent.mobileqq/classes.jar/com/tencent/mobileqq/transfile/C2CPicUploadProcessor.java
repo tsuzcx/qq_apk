@@ -204,7 +204,7 @@ public class C2CPicUploadProcessor
             QLog.d("flash", 2, "C2CPicUploadProcessor constructPicRichText send flash");
           }
           localObject1 = new im_msg_body.Text();
-          ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131701512)));
+          ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131899535)));
           localObject2 = new im_msg_body.Elem();
           ((im_msg_body.Elem)localObject2).text.set((MessageMicro)localObject1);
           localRichText.elems.add((MessageMicro)localObject2);
@@ -886,9 +886,9 @@ public class C2CPicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = -1;
+      localSendResult.a = -1;
       localSendResult.b = this.mProcessorReport.errCode;
-      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      localSendResult.c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -899,18 +899,18 @@ public class C2CPicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = 0;
-      localSendResult.jdField_a_of_type_Long = this.mFileSize;
-      localSendResult.d = this.mMd5Str;
+      localSendResult.a = 0;
+      localSendResult.e = this.mFileSize;
+      localSendResult.g = this.mMd5Str;
       String str;
       if (this.mResid == null) {
         str = this.mUuid;
       } else {
         str = this.mResid;
       }
-      localSendResult.c = str;
+      localSendResult.f = str;
       if (this.mUiRequest.isShareImageByServer) {
-        localSendResult.jdField_a_of_type_JavaLangObject = getImageInfo();
+        localSendResult.l = getImageInfo();
       }
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
@@ -1267,7 +1267,7 @@ public class C2CPicUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class AdProxyImpl$1
   
   public void run()
   {
-    MiniAppAd.StGetAdReq localStGetAdReq = AdUtils.createAdRequest(this.jdField_a_of_type_AndroidContentContext, Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.e, this.f, this.g, this.h, this.jdField_d_of_type_Int);
+    MiniAppAd.StGetAdReq localStGetAdReq = AdUtils.createAdRequest(this.a, Long.parseLong(this.b), this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m);
     MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(localStGetAdReq, new AdProxyImpl.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

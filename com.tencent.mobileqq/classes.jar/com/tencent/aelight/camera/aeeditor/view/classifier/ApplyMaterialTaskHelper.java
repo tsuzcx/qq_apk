@@ -37,7 +37,7 @@ public class ApplyMaterialTaskHelper
   
   public static boolean a(@Nullable MetaMaterial paramMetaMaterial)
   {
-    return MetaMaterialKt.b(paramMetaMaterial);
+    return MetaMaterialKt.h(paramMetaMaterial);
   }
   
   public static void b(@NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
@@ -47,12 +47,12 @@ public class ApplyMaterialTaskHelper
   
   public static boolean b(@NonNull MetaMaterial paramMetaMaterial)
   {
-    return AEEditorResourceManager.a().a(paramMetaMaterial);
+    return AEEditorResourceManager.a().b(paramMetaMaterial);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.ApplyMaterialTaskHelper
  * JD-Core Version:    0.7.0.1
  */

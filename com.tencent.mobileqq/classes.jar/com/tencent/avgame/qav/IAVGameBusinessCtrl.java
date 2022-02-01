@@ -9,37 +9,33 @@ import mqq.app.MobileQQ;
 
 public abstract class IAVGameBusinessCtrl
 {
-  private static IAVGameBusinessCtrl jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl;
-  private static String jdField_a_of_type_JavaLangString = "IAVGameBusinessCtrl";
+  private static IAVGameBusinessCtrl a;
+  private static String b = "IAVGameBusinessCtrl";
   
-  public static IAVGameBusinessCtrl a()
+  public static IAVGameBusinessCtrl p()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl == null)
+    if (a == null)
     {
       AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
       if ((localAppRuntime instanceof IAVGameAppInterface)) {
-        jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl = ((IAVGameAppInterface)localAppRuntime).a();
+        a = ((IAVGameAppInterface)localAppRuntime).c();
       }
     }
-    return jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl;
+    return a;
   }
   
-  public static boolean f()
+  public static boolean q()
   {
-    if (a() != null) {
+    if (p() != null) {
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "IAVGameBusinessCtrl = null");
+      QLog.d(b, 2, "IAVGameBusinessCtrl = null");
     }
     return true;
   }
   
   public abstract int a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, IAVGameBusinessCtrl.IOnEnterRoom paramIOnEnterRoom);
-  
-  public abstract IAVGameMediaPlayerCtrl a();
-  
-  public abstract AVGameSession a();
   
   public abstract void a(int paramInt1, int paramInt2);
   
@@ -47,9 +43,13 @@ public abstract class IAVGameBusinessCtrl
   
   public abstract void b(AVGameUIEventCallback paramAVGameUIEventCallback);
   
-  abstract void c();
+  public abstract boolean g();
   
-  public abstract boolean c();
+  public abstract AVGameSession j();
+  
+  abstract void l();
+  
+  public abstract IAVGameMediaPlayerCtrl n();
 }
 
 

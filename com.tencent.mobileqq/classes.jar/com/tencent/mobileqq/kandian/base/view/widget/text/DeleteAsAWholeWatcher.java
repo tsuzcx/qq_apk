@@ -13,7 +13,7 @@ public class DeleteAsAWholeWatcher
   
   private static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (a(paramInt1, paramInt2, paramInt3)) {
+    if (b(paramInt1, paramInt2, paramInt3)) {
       return paramInt3;
     }
     return paramInt1;
@@ -22,7 +22,7 @@ public class DeleteAsAWholeWatcher
   private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = paramInt2;
-    if (a(paramInt2, paramInt3, paramInt4)) {
+    if (b(paramInt2, paramInt3, paramInt4)) {
       i = paramInt4;
     }
     if (i < paramInt1) {
@@ -69,7 +69,7 @@ public class DeleteAsAWholeWatcher
     }
   }
   
-  private static boolean a(int paramInt1, int paramInt2, int paramInt3)
+  private static boolean b(int paramInt1, int paramInt2, int paramInt3)
   {
     return (paramInt1 > paramInt2) && (paramInt1 < paramInt3);
   }
@@ -88,7 +88,7 @@ public class DeleteAsAWholeWatcher
       if ((i >= 0) && (j <= paramEditable.length()))
       {
         paramEditable.delete(i, j);
-        this.a.a();
+        this.a.cO_();
         this.a = null;
       }
     }
@@ -118,7 +118,7 @@ public class DeleteAsAWholeWatcher
         {
           if ((paramInt1 != 0) && (paramInt3 > 1))
           {
-            paramCharSequence[paramInt2].a();
+            paramCharSequence[paramInt2].cO_();
           }
           else
           {
@@ -152,7 +152,7 @@ public class DeleteAsAWholeWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.text.DeleteAsAWholeWatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ class UniformDownloadActivity$5
     boolean bool = false;
     if (paramInt == 4)
     {
-      if (this.a.a != null)
+      if (this.a.n != null)
       {
-        this.a.a.dismiss();
-        this.a.a = null;
+        this.a.n.dismiss();
+        this.a.n = null;
       }
       this.a.finish();
       this.a.overridePendingTransition(0, 0);
@@ -29,7 +29,7 @@ class UniformDownloadActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.5
  * JD-Core Version:    0.7.0.1
  */

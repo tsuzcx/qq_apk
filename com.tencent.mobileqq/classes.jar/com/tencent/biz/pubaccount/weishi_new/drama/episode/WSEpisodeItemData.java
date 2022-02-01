@@ -8,59 +8,59 @@ import com.tencent.biz.pubaccount.weishi_new.drama.checkable.Checkable;
 public class WSEpisodeItemData
   implements Checkable
 {
-  private int jdField_a_of_type_Int;
-  private stDramaFeed jdField_a_of_type_UserGrowthStDramaFeed;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private stDramaFeed a;
   private String b;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private String c;
+  private int d;
+  private boolean e;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public String b()
   {
-    stDramaFeed localstDramaFeed = this.jdField_a_of_type_UserGrowthStDramaFeed;
-    if ((localstDramaFeed != null) && (localstDramaFeed.feed != null) && (this.jdField_a_of_type_UserGrowthStDramaFeed.feed.poster != null)) {
-      return this.jdField_a_of_type_UserGrowthStDramaFeed.feed.poster.id;
-    }
-    return "";
+    return this.b;
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
+  }
+  
+  public int c()
+  {
+    return this.d;
+  }
+  
+  public String d()
+  {
+    stDramaFeed localstDramaFeed = this.a;
+    if ((localstDramaFeed != null) && (localstDramaFeed.feed != null) && (this.a.feed.poster != null)) {
+      return this.a.feed.poster.id;
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.episode.WSEpisodeItemData
  * JD-Core Version:    0.7.0.1
  */

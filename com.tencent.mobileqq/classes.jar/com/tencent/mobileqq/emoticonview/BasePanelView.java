@@ -6,14 +6,21 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
 import com.tencent.mobileqq.EmotionUtils;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,6 +32,7 @@ import com.tencent.mobileqq.emoticonview.api.IEmosmService;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerServiceProxy;
 import com.tencent.mobileqq.emoticonview.view.IBasePanelView;
+import com.tencent.mobileqq.guild.api.IGuildTempApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tianshu.api.IMobileReportManager;
@@ -75,6 +83,7 @@ public class BasePanelView
   public View mSecondTabContainer;
   private int[] mSysEmotionOrder = null;
   public EmotionPanelViewPagerAdapter pageAdapter;
+  boolean showDescInPreview = false;
   int toastOffset;
   public EmoticonPanelViewPager viewPager;
   
@@ -88,10 +97,45 @@ public class BasePanelView
     this.app = this.mPanelController.app;
   }
   
+  private void filterPanelDataListInLiveChannel(List<EmotionPanelInfo> paramList)
+  {
+    if (isInLiveChannel())
+    {
+      if (paramList == null) {
+        return;
+      }
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)paramList.get(i);
+        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.type != 7)) {
+          paramList.remove(i);
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  private int getTabLiveBgColor()
+  {
+    if (isInLiveChannel()) {
+      return 0;
+    }
+    return this.context.getResources().getColor(2131166013);
+  }
+  
+  private void hideTabsListInLiveChannel()
+  {
+    if (isInLiveChannel()) {
+      this.mMainPanel.findViewById(2131446777).setVisibility(8);
+    }
+  }
+  
   private void setViewPagerAdapter(long paramLong, int paramInt, boolean paramBoolean)
   {
     this.mSecondTabContainer.setVisibility(0);
     Object localObject1 = this.mPanelController.getPanelDataList();
+    filterPanelDataListInLiveChannel((List)localObject1);
     int i;
     if ((localObject1 != null) && (paramInt >= 0))
     {
@@ -119,12 +163,12 @@ public class BasePanelView
         if ((paramInt <= j) || (((EmotionPanelInfo)((List)localObject1).get(j)).type != 8))
         {
           BasePanelModel.sLastSelectedSecondTabIndex = i;
-          break label175;
+          break label181;
         }
       }
       BasePanelModel.sLastSelectedSecondTabIndex = sRecommendEmoticonViewPoSition;
       i = sRecommendEmoticonViewPoSition;
-      label175:
+      label181:
       ((SharedPreferences)localObject2).edit().putBoolean("force_to_recommend_panel_sp", false).apply();
     }
     else
@@ -195,25 +239,52 @@ public class BasePanelView
     }
   }
   
+  public void addTabListAdditionalView(boolean paramBoolean, View paramView)
+  {
+    View localView = this.mSecondTabContainer;
+    if ((localView instanceof LinearLayout))
+    {
+      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+      Object localObject = localLayoutParams;
+      if (!(localLayoutParams instanceof LinearLayout.LayoutParams))
+      {
+        int i;
+        if (localLayoutParams != null) {
+          i = localLayoutParams.width;
+        } else {
+          i = -2;
+        }
+        localObject = new LinearLayout.LayoutParams(i, -1);
+      }
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (paramBoolean)
+      {
+        ((LinearLayout)localView).addView(paramView, 0);
+        return;
+      }
+      ((LinearLayout)localView).addView(paramView);
+    }
+  }
+  
   protected EmoticonTabAdapter.EmoticonTabItem convertEmoticonTabItem(EmotionPanelInfo paramEmotionPanelInfo)
   {
     EmoticonTabAdapter.EmoticonTabItem localEmoticonTabItem = new EmoticonTabAdapter.EmoticonTabItem();
     localEmoticonTabItem.type = paramEmotionPanelInfo.type;
     if (paramEmotionPanelInfo.type == 8)
     {
-      paramEmotionPanelInfo = HardCodeUtil.a(2131704166);
+      paramEmotionPanelInfo = HardCodeUtil.a(2131902088);
     }
     else if (paramEmotionPanelInfo.type == 9)
     {
-      paramEmotionPanelInfo = HardCodeUtil.a(2131704168);
+      paramEmotionPanelInfo = HardCodeUtil.a(2131902090);
     }
     else if (paramEmotionPanelInfo.type == 4)
     {
-      paramEmotionPanelInfo = HardCodeUtil.a(2131704190);
+      paramEmotionPanelInfo = HardCodeUtil.a(2131902112);
     }
     else if (paramEmotionPanelInfo.type == 7)
     {
-      paramEmotionPanelInfo = HardCodeUtil.a(2131704189);
+      paramEmotionPanelInfo = HardCodeUtil.a(2131902111);
     }
     else
     {
@@ -221,27 +292,27 @@ public class BasePanelView
       {
         if (paramEmotionPanelInfo.type == 11)
         {
-          paramEmotionPanelInfo = HardCodeUtil.a(2131704154);
+          paramEmotionPanelInfo = HardCodeUtil.a(2131902076);
           break label374;
         }
         if (paramEmotionPanelInfo.type == 13)
         {
-          paramEmotionPanelInfo = this.context.getResources().getString(2131691937);
+          paramEmotionPanelInfo = this.context.getResources().getString(2131888904);
           break label374;
         }
         if (paramEmotionPanelInfo.type == 14)
         {
-          paramEmotionPanelInfo = this.context.getResources().getString(2131691943);
+          paramEmotionPanelInfo = this.context.getResources().getString(2131888910);
           break label374;
         }
         if (paramEmotionPanelInfo.type == 12)
         {
-          paramEmotionPanelInfo = this.context.getResources().getString(2131689860);
+          paramEmotionPanelInfo = this.context.getResources().getString(2131886501);
           break label374;
         }
         if (paramEmotionPanelInfo.type == 15)
         {
-          paramEmotionPanelInfo = this.context.getResources().getString(2131690518);
+          paramEmotionPanelInfo = this.context.getResources().getString(2131887429);
           break label374;
         }
       }
@@ -250,14 +321,14 @@ public class BasePanelView
         EmoticonPackage localEmoticonPackage = paramEmotionPanelInfo.emotionPkg;
         paramEmotionPanelInfo = new StringBuilder();
         paramEmotionPanelInfo.append(localEmoticonPackage.name);
-        paramEmotionPanelInfo.append(HardCodeUtil.a(2131704208));
+        paramEmotionPanelInfo.append(HardCodeUtil.a(2131902129));
         String str = paramEmotionPanelInfo.toString();
         paramEmotionPanelInfo = str;
         if (localEmoticonPackage.status != 2)
         {
           paramEmotionPanelInfo = new StringBuilder();
           paramEmotionPanelInfo.append(str);
-          paramEmotionPanelInfo.append(HardCodeUtil.a(2131704210));
+          paramEmotionPanelInfo.append(HardCodeUtil.a(2131902131));
           paramEmotionPanelInfo = paramEmotionPanelInfo.toString();
         }
         localEmoticonTabItem.epId = localEmoticonPackage.epId;
@@ -351,7 +422,7 @@ public class BasePanelView
     if (localObject == null) {
       return;
     }
-    localObject = ((EmoticonMainPanel)localObject).findViewById(2131378258);
+    localObject = ((EmoticonMainPanel)localObject).findViewById(2131446777);
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
@@ -441,7 +512,7 @@ public class BasePanelView
     }
     execQueryTask(paramInt, l, (String)localObject);
     VasWebviewUtil.a(this.app.getCurrentUin(), "ep_mall", "show_mine", "", 0, 0, 0, "", "", "");
-    ABTestController.a().a("exp_qq_msg_marketface_gif_icon").a();
+    ABTestController.a().a("exp_qq_msg_marketface_gif_icon").h();
   }
   
   public void initEmoticonView(String paramString)
@@ -472,6 +543,11 @@ public class BasePanelView
     }
     initTabView(localInteger.intValue());
     switchTabMode(localInteger.intValue());
+    if (isInLiveChannel())
+    {
+      this.mPanelController.onShowPageFinish();
+      return;
+    }
     if ((!this.mPanelController.getParams().disableGuide) && (!this.mPanelController.getParams().disableGuideOneTime)) {
       this.mPanelController.mPanelSystemAndEmojiHelper.showEmoticonPopupGuide();
     }
@@ -503,8 +579,8 @@ public class BasePanelView
     this.mPanelController.mPanelCameraHelper.tryUpdateGuideImg();
     if ((bool) && (EmoticonStoreTabEntryUtils.checkIsNeedShowGuide()))
     {
-      i = (int)this.mMainPanel.getResources().getDimension(2131296966);
-      j = ViewUtils.b(8.0F);
+      i = (int)this.mMainPanel.getResources().getDimension(2131297347);
+      j = ViewUtils.dpToPx(8.0F);
       this.mPanelController.mPanelSettingHelper.showGuideView(this.mMainPanel, j, i);
     }
     this.mPanelController.onShowPageFinish();
@@ -560,7 +636,7 @@ public class BasePanelView
   {
     this.mOpenFirstTimeInAIO = true;
     this.toastOffset = this.mPanelController.getParams().toastOffset;
-    this.viewPager = ((EmoticonPanelViewPager)this.mMainPanel.findViewById(2131380822));
+    this.viewPager = ((EmoticonPanelViewPager)this.mMainPanel.findViewById(2131449793));
     this.viewPager.setOnPageChangeListener(this);
     this.pageAdapter = new EmotionPanelViewPagerAdapter(this.mPanelController.app, this.mPanelController.getInteractionListener(), this.mPanelController.context, this.mPanelController.callback, this.mPanelController.getBusinessType(), this.kanDianBiu);
     this.pageAdapter.setPanelInjectionInfoManager(this.mPanelController.getEmotionPanelManager());
@@ -568,10 +644,11 @@ public class BasePanelView
     this.pageAdapter.isOnlySysEmotion = this.mPanelController.getParams().mIsOnlySysEmotion;
     Object localObject = this.pageAdapter;
     ((EmotionPanelViewPagerAdapter)localObject).sysEmotionOrder = this.mSysEmotionOrder;
+    ((EmotionPanelViewPagerAdapter)localObject).showDescInPreview = this.showDescInPreview;
     ((EmotionPanelViewPagerAdapter)localObject).isFilterSysFaceBeyond255 = this.mPanelController.isFilterSysFaceBeyond255Enable();
-    this.contentLayout = ((RelativeLayout)this.mMainPanel.findViewById(2131366187));
-    this.mSecondTabContainer = this.mMainPanel.findViewById(2131365162);
-    this.mEmoticonTabs = ((HorizontalListViewEx)this.mMainPanel.findViewById(2131378243));
+    this.contentLayout = ((RelativeLayout)this.mMainPanel.findViewById(2131432475));
+    this.mSecondTabContainer = this.mMainPanel.findViewById(2131431315);
+    this.mEmoticonTabs = ((HorizontalListViewEx)this.mMainPanel.findViewById(2131446762));
     localObject = this.mMainPanel;
     HorizontalListViewEx localHorizontalListViewEx = this.mEmoticonTabs;
     ((EmoticonMainPanel)localObject).mEmoticonTabs = localHorizontalListViewEx;
@@ -579,23 +656,45 @@ public class BasePanelView
     this.mEmoticonTabAdapter = new EmoticonTabAdapter(this.mPanelController.app, this.mPanelController.getEmotionPanelManager(), this.mPanelController.context, this.mPanelController.getBusinessType());
     this.mEmoticonTabAdapter.setAIOShowStyleChange(this.mPanelController.isShowExtendPanel());
     this.mEmoticonTabAdapter.setGifEntranceIconUrl(this.mPanelController.getGifEntranceIconUrl());
+    localObject = this.mPanelController;
+    if ((localObject != null) && (((EmoticonPanelController)localObject).mInteractionListener != null))
+    {
+      boolean bool = ((IGuildTempApi)QRoute.api(IGuildTempApi.class)).checkChatPie(this.mPanelController.mInteractionListener.getBaseChatPie());
+      this.mEmoticonTabAdapter.setInGuildLiveRoom(bool);
+      this.mEmoticonTabs.setInGuildLiveRoom(bool);
+    }
     this.mEmoticonTabs.setTabAnimateEnable(this.mPanelController.isShowExtendPanel());
     this.mEmoticonTabs.setAdapter(this.mEmoticonTabAdapter);
-    this.mNewFlag = ((ImageView)this.mMainPanel.findViewById(2131366153));
-    this.contentLayout.setBackgroundColor(this.context.getResources().getColor(2131165620));
-    this.mSecondTabContainer.setBackgroundColor(this.context.getResources().getColor(2131165619));
-    this.mMainPanel.findViewById(2131378207).setBackgroundColor(this.context.getResources().getColor(2131165618));
-    if (this.mPanelController.getParams().defaultPanelType != -1)
+    this.mNewFlag = ((ImageView)this.mMainPanel.findViewById(2131432440));
+    if ((this.mPanelController.mAIOContext != null) && (this.mPanelController.mAIOContext.O().a == 10014))
     {
-      initEmoticonView(this.mPanelController.getParams().defaultPanelType);
-      return;
+      this.contentLayout.setBackgroundResource(0);
+      this.mSecondTabContainer.setBackgroundResource(0);
+      this.mEmoticonTabAdapter.setNoSkinDrawable();
+      this.mEmoticonTabs.setNoSkinColor(Color.parseColor("#EAEAEA"));
     }
-    initEmoticonView(this.mPanelController.getParams().defaultEpId);
+    else
+    {
+      this.contentLayout.setBackgroundColor(this.context.getResources().getColor(2131166015));
+      this.mSecondTabContainer.setBackgroundColor(this.context.getResources().getColor(2131166014));
+    }
+    this.mMainPanel.findViewById(2131446725).setBackgroundColor(getTabLiveBgColor());
+    if (this.mPanelController.getParams().defaultPanelType != -1) {
+      initEmoticonView(this.mPanelController.getParams().defaultPanelType);
+    } else {
+      initEmoticonView(this.mPanelController.getParams().defaultEpId);
+    }
+    hideTabsListInLiveChannel();
   }
   
   public boolean isFilterSysFaceBeyond255Enable()
   {
     return this.isFilterSysFaceBeyond255Enable;
+  }
+  
+  protected boolean isInLiveChannel()
+  {
+    return this.mMainPanel.getEmoController().getParams().isInGuildLiveChannel;
   }
   
   public void onAttachedToWindow() {}
@@ -687,7 +786,7 @@ public class BasePanelView
           } else if (((EmotionPanelInfo)localObject1).type == 8) {
             i = 4;
           } else if (((EmotionPanelInfo)localObject1).type != 9) {
-            if ((((EmotionPanelInfo)localObject1).emotionPkg != null) && (!StringUtil.a(((EmotionPanelInfo)localObject1).emotionPkg.epId))) {
+            if ((((EmotionPanelInfo)localObject1).emotionPkg != null) && (!StringUtil.isEmpty(((EmotionPanelInfo)localObject1).emotionPkg.epId))) {
               i = 6;
             } else {
               i = -1;
@@ -843,6 +942,7 @@ public class BasePanelView
     this.mMainPanel.onlySysAndEmoji = paramEmoticonPanelParams.onlySysAndEmoji;
     this.mMainPanel.disableGuide = paramEmoticonPanelParams.disableGuide;
     this.mMainPanel.disableGuideOneTime = paramEmoticonPanelParams.disableGuideOneTime;
+    this.showDescInPreview = paramEmoticonPanelParams.showDescInPreview;
   }
   
   public void setVisibility(int paramInt)
@@ -900,13 +1000,15 @@ public class BasePanelView
   
   public void showAllTabs()
   {
-    Object localObject = this.mMainPanel;
-    if (localObject == null) {
-      return;
-    }
-    localObject = ((EmoticonMainPanel)localObject).findViewById(2131378258);
-    if (localObject != null) {
-      ((View)localObject).setVisibility(0);
+    if (this.mMainPanel != null)
+    {
+      if (isInLiveChannel()) {
+        return;
+      }
+      View localView = this.mMainPanel.findViewById(2131446777);
+      if (localView != null) {
+        localView.setVisibility(0);
+      }
     }
   }
   
@@ -957,7 +1059,7 @@ public class BasePanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BasePanelView
  * JD-Core Version:    0.7.0.1
  */

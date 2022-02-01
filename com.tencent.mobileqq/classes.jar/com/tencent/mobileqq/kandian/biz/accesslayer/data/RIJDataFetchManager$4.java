@@ -19,20 +19,20 @@ class RIJDataFetchManager$4
   {
     if (paramRIJBiuAndCommentRespData.a() == 0)
     {
-      ReadInJoyCommentUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, new CommentInfo(), false);
-      QQToast.a(RIJDataFetchManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataFetchManager).a(), 2, RIJDataFetchManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataFetchManager).a().getString(2131717822), 0).a();
+      ReadInJoyCommentUtils.a(this.a, new CommentInfo(), false);
+      QQToast.makeText(RIJDataFetchManager.a(this.b).q(), 2, RIJDataFetchManager.a(this.b).q().getString(2131915297), 0).show();
     }
     else
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131712831), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131910403), 0).show();
     }
-    RIJDataFetchManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataFetchManager);
-    RIJDataFetchManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataFetchManager, null);
+    RIJDataFetchManager.b(this.b);
+    RIJDataFetchManager.a(this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import org.json.JSONObject;
 public abstract class AbstractConfig
 {
   public SharedPreferences a;
-  public AbstractConfig a;
+  public AbstractConfig b;
   
   public AbstractConfig(SharedPreferences paramSharedPreferences, AbstractConfig paramAbstractConfig)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig = paramAbstractConfig;
+    this.a = paramSharedPreferences;
+    this.b = paramAbstractConfig;
   }
   
   public static boolean a(int paramInt)
@@ -38,17 +38,17 @@ public abstract class AbstractConfig
     return paramBoolean1 | bool;
   }
   
-  public abstract String a();
-  
   public abstract JSONArray a(String paramString);
-  
-  public abstract JSONObject a();
   
   public abstract boolean a();
   
   public abstract String b();
   
   public abstract String c();
+  
+  public abstract String d();
+  
+  public abstract JSONObject e();
 }
 
 

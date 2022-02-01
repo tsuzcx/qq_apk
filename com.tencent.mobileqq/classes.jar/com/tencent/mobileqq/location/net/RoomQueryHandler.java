@@ -29,11 +29,11 @@ import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 public class RoomQueryHandler
   extends BaseProto<LocationHandler>
 {
-  private long jdField_a_of_type_Long;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final Handler a = new Handler(ThreadManager.getSubThreadLooper());
+  private long b;
+  private final AtomicBoolean c = new AtomicBoolean(true);
+  private final AtomicInteger d = new AtomicInteger(0);
+  private Runnable e;
   
   private void a(int paramInt, long paramLong, boolean paramBoolean)
   {
@@ -41,12 +41,12 @@ public class RoomQueryHandler
       QLog.d("RoomQueryHandler", 2, new Object[] { "[queryLocationRoom] requestQueryRoom: invoked. ", " uinType: ", Integer.valueOf(paramInt), " sessionUin: ", Long.valueOf(paramLong), " noLimitReq: ", Boolean.valueOf(paramBoolean) });
     }
     long l = System.currentTimeMillis();
-    if ((l - this.jdField_a_of_type_Long < this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() * 1000L) && (!paramBoolean))
+    if ((l - this.b < this.d.get() * 1000L) && (!paramBoolean))
     {
-      QLog.d("RoomQueryHandler", 1, new Object[] { "[queryLocationRoom] requestQueryRoomNoLimit: invoked. frequency limited", " requestIntervalSecond: ", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger });
+      QLog.d("RoomQueryHandler", 1, new Object[] { "[queryLocationRoom] requestQueryRoomNoLimit: invoked. frequency limited", " requestIntervalSecond: ", this.d });
       return;
     }
-    this.jdField_a_of_type_Long = l;
+    this.b = l;
     RoomOperate.ReqRoomQuery localReqRoomQuery = new RoomOperate.ReqRoomQuery();
     localReqRoomQuery.no_limit.set(paramBoolean);
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -57,12 +57,7 @@ public class RoomQueryHandler
     ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt);
     ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
     ((ToServiceMsg)localObject).putWupBuffer(localReqRoomQuery.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  private void c()
-  {
-    a().notifyUI(2, false, null);
+    b().sendPbReq((ToServiceMsg)localObject);
   }
   
   private void c(int paramInt, String paramString)
@@ -80,18 +75,18 @@ public class RoomQueryHandler
     a(paramInt, l, false);
   }
   
-  protected LocationHandler a()
+  private void d()
   {
-    return LocationHandler.a();
+    b().notifyUI(2, false, null);
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RoomQueryHandler", 2, new Object[] { "[queryLocationRoom] stopRequestQueryRoomInLoop: invoked. ", " loopQueryStopped: ", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean });
+      QLog.d("RoomQueryHandler", 2, new Object[] { "[queryLocationRoom] stopRequestQueryRoomInLoop: invoked. ", " loopQueryStopped: ", this.c });
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.c.set(true);
+    this.a.removeCallbacks(this.e);
   }
   
   public void a(int paramInt, String paramString)
@@ -110,7 +105,26 @@ public class RoomQueryHandler
     a(paramInt, l, true);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected LocationHandler b()
+  {
+    return LocationHandler.a();
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if (!this.c.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RoomQueryHandler", 2, new Object[] { "[queryLocationRoom] requestQueryRoomInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
+      }
+      return;
+    }
+    this.c.set(false);
+    this.e = new RoomQueryHandler.1(this, paramInt, paramString);
+    this.a.post(this.e);
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
     if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
@@ -131,7 +145,7 @@ public class RoomQueryHandler
         if (LocationProtoUtil.a((qq_lbs_share.ResultInfo)paramFromServiceMsg.msg_result.get()))
         {
           int j = paramFromServiceMsg.req_interval.get();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(j);
+          this.d.set(j);
           j = paramToServiceMsg.extraData.getInt("uintype", -1);
           paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
           if (i == 2)
@@ -140,10 +154,10 @@ public class RoomQueryHandler
             LocationHandler.a().b(new LocationRoom.RoomKey(j, paramToServiceMsg), -1);
             LocationProtoUtil.a(MobileQQ.sMobileQQ.waitAppRuntime(null), j, paramToServiceMsg, false);
           }
-          a().notifyUI(2, true, new Object[] { paramFromServiceMsg, Integer.valueOf(j), paramToServiceMsg });
+          b().notifyUI(2, true, new Object[] { paramFromServiceMsg, Integer.valueOf(j), paramToServiceMsg });
           return;
         }
-        c();
+        d();
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -159,31 +173,17 @@ public class RoomQueryHandler
         QLog.d("RoomQueryHandler", 2, new Object[] { "[queryLocationRoom] requestQueryRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
       }
     }
-    c();
+    d();
   }
   
-  public void b()
+  public void c()
   {
     a();
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RoomQueryHandler", 2, new Object[] { "[queryLocationRoom] requestQueryRoomInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_JavaLangRunnable = new RoomQueryHandler.1(this, paramInt, paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.RoomQueryHandler
  * JD-Core Version:    0.7.0.1
  */

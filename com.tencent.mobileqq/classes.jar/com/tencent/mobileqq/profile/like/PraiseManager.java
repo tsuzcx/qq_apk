@@ -30,21 +30,21 @@ import mqq.manager.Manager;
 public class PraiseManager
   implements Manager
 {
-  public Context a;
-  public QQLruCache<Integer, PraiseInfo> a;
   public QQAppInterface a;
-  public final List<WeakReference<PraiseManager.OnPraiseLoadListener>> a;
-  public final Vector<Integer> a;
-  public final List<String> b;
+  public Context b;
+  public QQLruCache<Integer, PraiseInfo> c;
+  public final List<WeakReference<PraiseManager.OnPraiseLoadListener>> d;
+  public final Vector<Integer> e;
+  public final List<String> f;
   
   public PraiseManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApp().getApplicationContext();
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(2007, 21, 120000);
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(3);
-    this.b = new ArrayList();
+    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface.getApp().getApplicationContext();
+    this.c = new QQLruCache(2007, 21, 120000);
+    this.e = new Vector();
+    this.d = new ArrayList(3);
+    this.f = new ArrayList();
   }
   
   public static int a(AppInterface paramAppInterface)
@@ -71,36 +71,12 @@ public class PraiseManager
     localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
   }
   
-  public int a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\.");
-      if (paramString.length == 5)
-      {
-        paramString = paramString[2];
-        try
-        {
-          int i = Integer.parseInt(paramString);
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PraiseManager", 2, "getBubbleIdFromScid: parse bubbleId error", paramString);
-          }
-        }
-      }
-    }
-    return 0;
-  }
-  
   public PraiseInfo a(int paramInt, boolean paramBoolean, String paramString)
   {
     if (paramInt <= 0) {
       return null;
     }
-    Object localObject = (PraiseInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
+    Object localObject = (PraiseInfo)this.c.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
       if (QLog.isColorLevel())
@@ -114,7 +90,7 @@ public class PraiseManager
       }
       return localObject;
     }
-    if (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
+    if (!this.e.contains(Integer.valueOf(paramInt)))
     {
       if (QLog.isColorLevel())
       {
@@ -123,7 +99,7 @@ public class PraiseManager
         ((StringBuilder)localObject).append(paramInt);
         QLog.d("PraiseManager", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
+      this.e.add(Integer.valueOf(paramInt));
       ThreadManager.executeOnFileThread(new PraiseManager.1(this, paramInt, paramBoolean, paramString));
     }
     return null;
@@ -131,7 +107,7 @@ public class PraiseManager
   
   public File a(int paramInt)
   {
-    File localFile = new File(new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "praise_info"), String.valueOf(paramInt));
+    File localFile = new File(new File(this.b.getFilesDir(), "praise_info"), String.valueOf(paramInt));
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -149,11 +125,11 @@ public class PraiseManager
     ((StringBuilder)???).append(".");
     ((StringBuilder)???).append("config.zip");
     String str = ((StringBuilder)???).toString();
-    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "");
     if (localIVasQuickUpdateService != null) {
-      synchronized (this.b)
+      synchronized (this.f)
       {
-        if (this.b.contains(str))
+        if (this.f.contains(str))
         {
           if (QLog.isColorLevel())
           {
@@ -171,86 +147,18 @@ public class PraiseManager
           localStringBuilder.append(" is not download, start download.");
           QLog.d("PraiseManager", 2, localStringBuilder.toString());
         }
-        this.b.add(str);
+        this.f.add(str);
         localIVasQuickUpdateService.downloadItem(20L, str, paramString);
         return;
       }
     }
   }
   
-  void a(int paramInt, boolean paramBoolean, String paramString)
-  {
-    String str = a(paramInt).getAbsolutePath();
-    Object localObject = AIOUtils.a();
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append("config.json");
-    PraiseInfo localPraiseInfo = PraiseInfo.a(paramInt, ((StringBuilder)localObject).toString());
-    localObject = Boolean.valueOf(false);
-    if (localPraiseInfo != null)
-    {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("createPraiseInfo from local, id=");
-        localStringBuilder.append(paramInt);
-        localStringBuilder.append(" from:");
-        localStringBuilder.append(paramString);
-        QLog.d("PraiseManager", 2, localStringBuilder.toString());
-      }
-      StringBuilder localStringBuilder = AIOUtils.a();
-      localStringBuilder.append(str);
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("whiteBlackImg.png");
-      localPraiseInfo.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-      localStringBuilder = AIOUtils.a();
-      localStringBuilder.append(str);
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("colorImg.png");
-      localPraiseInfo.d = localStringBuilder.toString();
-      localStringBuilder = AIOUtils.a();
-      localStringBuilder.append(str);
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("goldImg.png");
-      localPraiseInfo.e = localStringBuilder.toString();
-      if (!b(localPraiseInfo))
-      {
-        if (!paramBoolean) {
-          break label310;
-        }
-        a(paramInt, paramString);
-      }
-      else
-      {
-        if (!a(localPraiseInfo)) {
-          break label310;
-        }
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localPraiseInfo);
-        localObject = Boolean.valueOf(true);
-        break label310;
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        break label310;
-      }
-      a(paramInt, paramString);
-    }
-    localObject = null;
-    label310:
-    if (localObject != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt, 0, paramString));
-      this.jdField_a_of_type_JavaUtilVector.removeElement(Integer.valueOf(paramInt));
-    }
-  }
-  
   public void a(PraiseManager.OnPraiseLoadListener paramOnPraiseLoadListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.d)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -258,7 +166,7 @@ public class PraiseManager
           return;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnPraiseLoadListener));
+      this.d.add(new WeakReference(paramOnPraiseLoadListener));
       return;
     }
     for (;;)
@@ -279,11 +187,11 @@ public class PraiseManager
         if (!paramString1.startsWith("praise.android.")) {
           return;
         }
-        paramInt2 = a(paramString1);
-        synchronized (this.b)
+        paramInt2 = b(paramString1);
+        synchronized (this.f)
         {
           StringBuilder localStringBuilder;
-          if (this.b.contains(paramString1))
+          if (this.f.contains(paramString1))
           {
             if (QLog.isColorLevel())
             {
@@ -292,7 +200,7 @@ public class PraiseManager
               localStringBuilder.append(" download completed, remove from download queue.");
               QLog.d("PraiseManager", 2, localStringBuilder.toString());
             }
-            this.b.remove(paramString1);
+            this.f.remove(paramString1);
           }
           if (paramInt1 == 0)
           {
@@ -315,24 +223,24 @@ public class PraiseManager
               localStringBuilder.append(paramString1);
               localStringBuilder.append(File.separator);
               localStringBuilder.append("whiteBlackImg.png");
-              ???.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+              ???.e = localStringBuilder.toString();
               localStringBuilder = AIOUtils.a();
               localStringBuilder.append(paramString1);
               localStringBuilder.append(File.separator);
               localStringBuilder.append("colorImg.png");
-              ???.d = localStringBuilder.toString();
+              ???.g = localStringBuilder.toString();
               localStringBuilder = AIOUtils.a();
               localStringBuilder.append(paramString1);
               localStringBuilder.append(File.separator);
               localStringBuilder.append("goldImg.png");
-              ???.e = localStringBuilder.toString();
+              ???.i = localStringBuilder.toString();
               if ((b(???)) && (a(???))) {
-                this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt2), ???);
+                this.c.put(Integer.valueOf(paramInt2), ???);
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt2, 1, paramString3));
-          this.jdField_a_of_type_JavaUtilVector.removeElement(Integer.valueOf(paramInt2));
+          this.a.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt2, 1, paramString3));
+          this.e.removeElement(Integer.valueOf(paramInt2));
           return;
         }
       }
@@ -348,26 +256,26 @@ public class PraiseManager
   {
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inDensity = 320;
-    ((BitmapFactory.Options)localObject1).inTargetDensity = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    Object localObject2 = BubbleManager.a(paramPraiseInfo.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
+    ((BitmapFactory.Options)localObject1).inTargetDensity = this.b.getResources().getDisplayMetrics().densityDpi;
+    Object localObject2 = BubbleManager.a(paramPraiseInfo.e, (BitmapFactory.Options)localObject1);
     if (localObject2 == null) {
       return false;
     }
-    paramPraiseInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-    localObject2 = BubbleManager.a(paramPraiseInfo.d, (BitmapFactory.Options)localObject1);
+    paramPraiseInfo.f = ((Bitmap)localObject2);
+    localObject2 = BubbleManager.a(paramPraiseInfo.g, (BitmapFactory.Options)localObject1);
     if (localObject2 == null) {
       return false;
     }
-    paramPraiseInfo.b = ((Bitmap)localObject2);
-    paramPraiseInfo.jdField_c_of_type_AndroidGraphicsBitmap = BubbleManager.a(paramPraiseInfo.e, (BitmapFactory.Options)localObject1);
-    localObject1 = a(paramPraiseInfo.jdField_a_of_type_Int).getAbsolutePath();
+    paramPraiseInfo.h = ((Bitmap)localObject2);
+    paramPraiseInfo.j = BubbleManager.a(paramPraiseInfo.i, (BitmapFactory.Options)localObject1);
+    localObject1 = a(paramPraiseInfo.a).getAbsolutePath();
     localObject2 = AIOUtils.a();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(File.separator);
     ((StringBuilder)localObject2).append("dynamicImg.png");
     localObject2 = ((StringBuilder)localObject2).toString();
     if (new File((String)localObject2).exists()) {
-      paramPraiseInfo.f = ((String)localObject2);
+      paramPraiseInfo.k = ((String)localObject2);
     }
     localObject2 = AIOUtils.a();
     ((StringBuilder)localObject2).append((String)localObject1);
@@ -375,7 +283,7 @@ public class PraiseManager
     ((StringBuilder)localObject2).append("goldDynamicImg.png");
     localObject1 = ((StringBuilder)localObject2).toString();
     if (new File((String)localObject1).exists()) {
-      paramPraiseInfo.g = ((String)localObject1);
+      paramPraiseInfo.l = ((String)localObject1);
     }
     return true;
   }
@@ -397,7 +305,7 @@ public class PraiseManager
       if (!paramString.startsWith("praise.android.")) {
         return false;
       }
-      int i = a(paramString);
+      int i = b(paramString);
       bool1 = bool2;
       if (i > 0)
       {
@@ -429,22 +337,22 @@ public class PraiseManager
       }
       PraiseManager.PraiseLoadListener localPraiseLoadListener = new PraiseManager.PraiseLoadListener(this);
       localPraiseLoadListener.b = paramSet.size();
-      localPraiseLoadListener.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener = paramOnPraiseLoadListener;
+      localPraiseLoadListener.c = paramOnPraiseLoadListener;
       paramOnPraiseLoadListener = paramSet.iterator();
       while (paramOnPraiseLoadListener.hasNext())
       {
         int i = ((Integer)paramOnPraiseLoadListener.next()).intValue();
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(i)) == null)
+        if (this.c.get(Integer.valueOf(i)) == null)
         {
           a(localPraiseLoadListener);
           a(i, true, "from_load_all");
         }
         else
         {
-          localPraiseLoadListener.jdField_a_of_type_Int += 1;
+          localPraiseLoadListener.a += 1;
         }
       }
-      if (localPraiseLoadListener.jdField_a_of_type_Int == paramSet.size()) {
+      if (localPraiseLoadListener.a == paramSet.size()) {
         return true;
       }
       bool = false;
@@ -452,13 +360,105 @@ public class PraiseManager
     return bool;
   }
   
+  public int b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("\\.");
+      if (paramString.length == 5)
+      {
+        paramString = paramString[2];
+        try
+        {
+          int i = Integer.parseInt(paramString);
+          return i;
+        }
+        catch (NumberFormatException paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("PraiseManager", 2, "getBubbleIdFromScid: parse bubbleId error", paramString);
+          }
+        }
+      }
+    }
+    return 0;
+  }
+  
+  void b(int paramInt, boolean paramBoolean, String paramString)
+  {
+    String str = a(paramInt).getAbsolutePath();
+    Object localObject = AIOUtils.a();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("config.json");
+    PraiseInfo localPraiseInfo = PraiseInfo.a(paramInt, ((StringBuilder)localObject).toString());
+    localObject = Boolean.valueOf(false);
+    if (localPraiseInfo != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createPraiseInfo from local, id=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" from:");
+        localStringBuilder.append(paramString);
+        QLog.d("PraiseManager", 2, localStringBuilder.toString());
+      }
+      StringBuilder localStringBuilder = AIOUtils.a();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("whiteBlackImg.png");
+      localPraiseInfo.e = localStringBuilder.toString();
+      localStringBuilder = AIOUtils.a();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("colorImg.png");
+      localPraiseInfo.g = localStringBuilder.toString();
+      localStringBuilder = AIOUtils.a();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("goldImg.png");
+      localPraiseInfo.i = localStringBuilder.toString();
+      if (!b(localPraiseInfo))
+      {
+        if (!paramBoolean) {
+          break label310;
+        }
+        a(paramInt, paramString);
+      }
+      else
+      {
+        if (!a(localPraiseInfo)) {
+          break label310;
+        }
+        this.c.put(Integer.valueOf(paramInt), localPraiseInfo);
+        localObject = Boolean.valueOf(true);
+        break label310;
+      }
+    }
+    else
+    {
+      if (!paramBoolean) {
+        break label310;
+      }
+      a(paramInt, paramString);
+    }
+    localObject = null;
+    label310:
+    if (localObject != null)
+    {
+      this.a.runOnUiThread(new PraiseManager.LoadCallback(this, paramInt, 0, paramString));
+      this.e.removeElement(Integer.valueOf(paramInt));
+    }
+  }
+  
   public void b(PraiseManager.OnPraiseLoadListener paramOnPraiseLoadListener)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     Object localObject = null;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -466,7 +466,7 @@ public class PraiseManager
           localObject = localWeakReference;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.remove(localObject);
+      this.d.remove(localObject);
       return;
     }
     finally {}
@@ -478,17 +478,17 @@ public class PraiseManager
   
   boolean b(PraiseInfo paramPraiseInfo)
   {
-    return (new File(paramPraiseInfo.jdField_c_of_type_JavaLangString).exists()) && (new File(paramPraiseInfo.d).exists());
+    return (new File(paramPraiseInfo.e).exists()) && (new File(paramPraiseInfo.g).exists());
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
+    this.c.evictAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager
  * JD-Core Version:    0.7.0.1
  */

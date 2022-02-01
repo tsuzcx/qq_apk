@@ -17,7 +17,7 @@ class DoodleLayout$EditDialogListener
   
   public void a(int paramInt)
   {
-    this.a.a().b(paramInt);
+    this.a.getTextLayer().b(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -31,25 +31,25 @@ class DoodleLayout$EditDialogListener
       localStringBuilder.append(paramInt2);
       QLog.i("DoodleLayout", 2, localStringBuilder.toString());
     }
-    this.a.a().b(paramInt1, paramInt2);
+    this.a.getTextLayer().b(paramInt1, paramInt2);
   }
   
   public void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("editTextDialog onDismiss--isAddingTextForShapeTips=");
-    ((StringBuilder)localObject).append(DoodleLayout.f(this.a));
+    ((StringBuilder)localObject).append(DoodleLayout.w(this.a));
     AEQLog.a("DoodleLayout", ((StringBuilder)localObject).toString());
-    localObject = this.a.a();
+    localObject = this.a.getTextLayer();
     if (paramBoolean1)
     {
-      if ((paramDynamicTextItem != null) && (!paramDynamicTextItem.b()) && ((!paramDynamicTextItem.a(0)) || (paramDynamicTextItem.c() != 0) || (paramBoolean2)))
+      if ((paramDynamicTextItem != null) && (!paramDynamicTextItem.e()) && ((!paramDynamicTextItem.d(0)) || (paramDynamicTextItem.k() != 0) || (paramBoolean2)))
       {
-        if (DoodleLayout.f(this.a))
+        if (DoodleLayout.w(this.a))
         {
-          DoodleLayout.a(this.a, false);
-          ((TextLayer)localObject).a(paramDynamicTextItem, DoodleLayout.a(this.a), DoodleLayout.a(this.a));
-          DoodleLayout.a(this.a, null);
+          DoodleLayout.b(this.a, false);
+          ((TextLayer)localObject).a(paramDynamicTextItem, DoodleLayout.x(this.a), DoodleLayout.y(this.a));
+          DoodleLayout.b(this.a, null);
           DoodleLayout.a(this.a, null);
           break label227;
         }
@@ -57,8 +57,8 @@ class DoodleLayout$EditDialogListener
         break label227;
       }
       ((TextLayer)localObject).a(paramDynamicTextItem);
-      if (this.a.a != null) {
-        this.a.a.a.a(null);
+      if (this.a.w != null) {
+        this.a.w.a.a(null);
       }
     }
     else
@@ -66,9 +66,9 @@ class DoodleLayout$EditDialogListener
       if (paramInt != 0) {
         break label227;
       }
-      ((TextLayer)localObject).f();
-      if (this.a.a != null) {
-        this.a.a.a.a(null);
+      ((TextLayer)localObject).l();
+      if (this.a.w != null) {
+        this.a.w.a.a(null);
       }
     }
     paramInt = 0;
@@ -76,38 +76,38 @@ class DoodleLayout$EditDialogListener
     label227:
     paramInt = 1;
     label229:
-    if (this.a.a() != null) {
-      this.a.a().j();
+    if (this.a.getTextLayer() != null) {
+      this.a.getTextLayer().r();
     }
     if (paramDynamicTextItem != null) {
-      paramDynamicTextItem.b();
+      paramDynamicTextItem.p();
     }
-    if ((DoodleLayout.a(this.a) != null) && (paramInt != 0)) {
-      DoodleLayout.a(this.a).b(false);
+    if ((DoodleLayout.v(this.a) != null) && (paramInt != 0)) {
+      DoodleLayout.v(this.a).b(false);
     }
     if (paramInt != 0)
     {
-      ((TextLayer)localObject).h();
-      DoodleLayout.d(this.a.b);
+      ((TextLayer)localObject).n();
+      DoodleLayout.d(this.a.k);
     }
     DoodleLayout.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.a(true);
+    if (this.a.w != null) {
+      this.a.w.a(true);
     }
     if (QLog.isColorLevel())
     {
       paramDynamicTextItem = new StringBuilder();
       paramDynamicTextItem.append("raymondguo count ");
-      paramDynamicTextItem.append(((TextLayer)localObject).b());
+      paramDynamicTextItem.append(((TextLayer)localObject).q());
       paramDynamicTextItem.append(", items:");
-      paramDynamicTextItem.append(((TextLayer)localObject).a.size());
+      paramDynamicTextItem.append(((TextLayer)localObject).t.size());
       QLog.d("DoodleLayout", 2, paramDynamicTextItem.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    TextLayer localTextLayer = this.a.a();
+    TextLayer localTextLayer = this.a.getTextLayer();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -118,9 +118,9 @@ class DoodleLayout$EditDialogListener
     if (paramBoolean)
     {
       localTextLayer.a(true);
-      if (DoodleLayout.a(this.a) != null)
+      if (DoodleLayout.u(this.a) != null)
       {
-        DoodleLayout.a(this.a).a();
+        DoodleLayout.u(this.a).a();
         DoodleLayout.a(this.a, null);
       }
     }
@@ -128,9 +128,9 @@ class DoodleLayout$EditDialogListener
     {
       DoodleLayout.a(this.a, null);
       localTextLayer.a(false);
-      if (this.a.h == 3)
+      if (this.a.C == 3)
       {
-        this.a.c(0);
+        this.a.setState(0);
         DoodleLayout.a(this.a, 0);
       }
     }
@@ -138,7 +138,7 @@ class DoodleLayout$EditDialogListener
   
   public void b(int paramInt1, int paramInt2)
   {
-    if ((this.a.h == 3) && (QLog.isColorLevel()))
+    if ((this.a.C == 3) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPanelChanged old:");
@@ -151,10 +151,10 @@ class DoodleLayout$EditDialogListener
   
   public void b(boolean paramBoolean)
   {
-    if ((this.a.a != null) && (!paramBoolean)) {
-      DoodleLayout.d(this.a);
+    if ((this.a.w != null) && (!paramBoolean)) {
+      DoodleLayout.g(this.a);
     }
-    if ((paramBoolean) && (!this.a.a().c()))
+    if ((paramBoolean) && (!this.a.getTextLayer().h()))
     {
       DoodleLayout.a(this.a, new DoodleLayout.EditDialogListener.1(this, paramBoolean));
       return;
@@ -165,18 +165,18 @@ class DoodleLayout$EditDialogListener
       localStringBuilder.append("onDialogLayout needAnim:");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" y:");
-      localStringBuilder.append(this.a.a().o);
+      localStringBuilder.append(this.a.getTextLayer().q);
       QLog.i("DoodleLayout", 2, localStringBuilder.toString());
     }
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).b(true);
+    if (DoodleLayout.v(this.a) != null) {
+      DoodleLayout.v(this.a).b(true);
     }
-    this.a.a().b(paramBoolean);
+    this.a.getTextLayer().b(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.EditDialogListener
  * JD-Core Version:    0.7.0.1
  */

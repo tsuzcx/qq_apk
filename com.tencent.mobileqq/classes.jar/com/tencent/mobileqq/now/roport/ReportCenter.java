@@ -28,53 +28,56 @@ import org.json.JSONArray;
 
 public class ReportCenter
 {
-  public static ReportCenter a;
-  private int jdField_a_of_type_Int = 0;
-  private BaseApplication jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication = BaseApplicationImpl.getContext();
-  private String jdField_a_of_type_JavaLangString = DeviceInfoUtil.c();
-  private Callback jdField_a_of_type_Okhttp3Callback = new ReportCenter.1(this);
-  private String b = String.valueOf(DeviceInfoUtil.a(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication));
-  private String c = DeviceInfoUtil.a();
-  private String d;
-  private String e;
-  private String f = Build.MODEL;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqNowRoportReportCenter = new ReportCenter();
-  }
+  public static ReportCenter a = new ReportCenter();
+  private BaseApplication b = BaseApplicationImpl.getContext();
+  private String c = DeviceInfoUtil.e();
+  private String d = String.valueOf(DeviceInfoUtil.a(this.b));
+  private String e = DeviceInfoUtil.b();
+  private String f;
+  private String g;
+  private String h = Build.MODEL;
+  private int i = 0;
+  private Callback j = new ReportCenter.1(this);
   
   private ReportCenter()
   {
+    if (this.h == null) {
+      this.h = "unknown";
+    }
+    this.g = Build.VERSION.RELEASE;
+    if (this.g == null) {
+      this.g = "unknown";
+    }
+    this.f = Build.MANUFACTURER;
     if (this.f == null) {
       this.f = "unknown";
-    }
-    this.e = Build.VERSION.RELEASE;
-    if (this.e == null) {
-      this.e = "unknown";
-    }
-    this.d = Build.MANUFACTURER;
-    if (this.d == null) {
-      this.d = "unknown";
     }
   }
   
   private static int a(Context paramContext)
   {
-    int i = NetworkUtil.getNetworkType(paramContext);
-    if (i == 1) {
+    int k = NetworkUtil.getNetworkType(paramContext);
+    if (k == 1) {
       return 2;
     }
-    if (i == 2) {
+    if (k == 2) {
       return 3;
     }
-    if (i == 3) {
+    if (k == 3) {
       return 4;
     }
     return 1;
   }
   
-  private String a(Bundle paramBundle)
+  private void b(Bundle paramBundle)
+  {
+    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
+    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), c(paramBundle));
+    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
+    OkHttpClientFactory.a().newCall(paramBundle).enqueue(this.j);
+  }
+  
+  private String c(Bundle paramBundle)
   {
     JSONArray localJSONArray1 = new JSONArray();
     JSONArray localJSONArray2 = new JSONArray();
@@ -96,7 +99,7 @@ public class ReportCenter
       else if (!"bid".equals(str2))
       {
         localJSONArray1.put(str2);
-        if (!StringUtil.a(paramBundle.getString(str2))) {
+        if (!StringUtil.isEmpty(paramBundle.getString(str2))) {
           localObject = paramBundle.getString(str2);
         }
         localJSONArray2.put(localObject);
@@ -123,14 +126,6 @@ public class ReportCenter
     return "";
   }
   
-  private void b(Bundle paramBundle)
-  {
-    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
-    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
-    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
-    OkHttpClientFactory.a().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
-  }
-  
   public Bundle a()
   {
     Bundle localBundle = new Bundle();
@@ -139,17 +134,17 @@ public class ReportCenter
     localBundle.putString("platform", "Android");
     localBundle.putString("opername", "now_jiehe");
     localBundle.putString("uin_type", "0");
-    localBundle.putString("uin", String.valueOf(UserInfoMgr.a()));
-    localBundle.putString("rom", this.d);
-    localBundle.putString("deviceID", this.c);
-    localBundle.putString("osversion", this.e);
-    localBundle.putString("clientVersion", this.b);
-    localBundle.putString("qqversion", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("uin", String.valueOf(UserInfoMgr.e()));
+    localBundle.putString("rom", this.f);
+    localBundle.putString("deviceID", this.e);
+    localBundle.putString("osversion", this.g);
+    localBundle.putString("clientVersion", this.d);
+    localBundle.putString("qqversion", this.c);
     localBundle.putString("timestr", String.valueOf(System.currentTimeMillis() / 1000L));
-    localBundle.putString("networktype", String.valueOf(a(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication)));
+    localBundle.putString("networktype", String.valueOf(a(this.b)));
     try
     {
-      str = DeviceInfoUtil.a();
+      str = DeviceInfoUtil.b();
     }
     catch (Exception localException)
     {
@@ -175,7 +170,7 @@ public class ReportCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.roport.ReportCenter
  * JD-Core Version:    0.7.0.1
  */

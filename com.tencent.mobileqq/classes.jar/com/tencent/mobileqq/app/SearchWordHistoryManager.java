@@ -19,16 +19,15 @@ import org.json.JSONArray;
 public class SearchWordHistoryManager
   implements Manager
 {
-  private static final SearchWordHistoryManager jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager;
   public static final String a;
-  private static final CopyOnWriteArrayList<SearchWordHistoryManager.OnSearchHistoryChangeListener> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  public static boolean a;
+  public static boolean b = false;
+  private static final SearchWordHistoryManager d;
+  private static final CopyOnWriteArrayList<SearchWordHistoryManager.OnSearchHistoryChangeListener> e = new CopyOnWriteArrayList();
   
   static
   {
-    jdField_a_of_type_JavaLangString = SearchWordHistoryManager.class.getSimpleName();
-    jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager = new SearchWordHistoryManager();
-    jdField_a_of_type_Boolean = false;
+    a = SearchWordHistoryManager.class.getSimpleName();
+    d = new SearchWordHistoryManager();
   }
   
   public SearchWordHistoryManager() {}
@@ -38,13 +37,7 @@ public class SearchWordHistoryManager
   @NonNull
   public static SearchWordHistoryManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager;
-  }
-  
-  @NonNull
-  private String a()
-  {
-    return (String)((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySpValue("search_keyword_list", "");
+    return d;
   }
   
   @NonNull
@@ -52,7 +45,7 @@ public class SearchWordHistoryManager
   {
     try
     {
-      paramList = new Gson().toJson(paramList, a());
+      paramList = new Gson().toJson(paramList, e());
       return paramList;
     }
     catch (Exception paramList)
@@ -63,18 +56,17 @@ public class SearchWordHistoryManager
     return "";
   }
   
-  @NonNull
-  private Type a()
+  public static void a(@NonNull SearchWordHistoryManager.OnSearchHistoryChangeListener paramOnSearchHistoryChangeListener)
   {
-    return new SearchWordHistoryManager.1(this).getType();
+    e.add(paramOnSearchHistoryChangeListener);
   }
   
   @NonNull
-  private List<TKDSearchHistoryBean> a(String paramString)
+  private List<TKDSearchHistoryBean> b(String paramString)
   {
     try
     {
-      List localList = (List)new Gson().fromJson(paramString, a());
+      List localList = (List)new Gson().fromJson(paramString, e());
       paramString = localList;
       if (localList == null) {
         paramString = new ArrayList();
@@ -89,77 +81,57 @@ public class SearchWordHistoryManager
     return new ArrayList();
   }
   
-  public static void a(@NonNull SearchWordHistoryManager.OnSearchHistoryChangeListener paramOnSearchHistoryChangeListener)
+  public static void b(@NonNull SearchWordHistoryManager.OnSearchHistoryChangeListener paramOnSearchHistoryChangeListener)
   {
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramOnSearchHistoryChangeListener);
+    e.remove(paramOnSearchHistoryChangeListener);
   }
   
-  private void a(@NonNull List<TKDSearchHistoryBean> paramList)
+  private void b(@NonNull List<TKDSearchHistoryBean> paramList)
   {
     Object localObject = paramList;
     if (paramList.size() > 30) {
       localObject = paramList.subList(0, 30);
     }
-    jdField_a_of_type_Boolean = true;
+    b = true;
     ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).updateReadInJoySpValue("search_keyword_list", a((List)localObject));
-    b();
+    g();
   }
   
-  private void b()
+  @NonNull
+  private Type e()
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    return new SearchWordHistoryManager.1(this).getType();
+  }
+  
+  @NonNull
+  private String f()
+  {
+    return (String)((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySpValue("search_keyword_list", "");
+  }
+  
+  private void g()
+  {
+    Iterator localIterator = e.iterator();
     while (localIterator.hasNext()) {
       ((SearchWordHistoryManager.OnSearchHistoryChangeListener)localIterator.next()).onHistoryChanged();
     }
   }
   
-  public static void b(@NonNull SearchWordHistoryManager.OnSearchHistoryChangeListener paramOnSearchHistoryChangeListener)
-  {
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramOnSearchHistoryChangeListener);
-  }
-  
-  @NonNull
-  public ArrayList<String> a()
-  {
-    Object localObject = a();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      TKDSearchHistoryBean localTKDSearchHistoryBean = (TKDSearchHistoryBean)((Iterator)localObject).next();
-      if (localTKDSearchHistoryBean != null) {
-        localArrayList.add(localTKDSearchHistoryBean.getTitle());
-      }
-    }
-    return localArrayList;
-  }
-  
-  @NonNull
-  public List<TKDSearchHistoryBean> a()
-  {
-    return a(a());
-  }
-  
-  public void a()
-  {
-    a(new ArrayList());
-  }
-  
   public void a(int paramInt)
   {
-    List localList = a();
+    List localList = c();
     if (paramInt < localList.size()) {
       localList.remove(paramInt);
     }
-    a(localList);
+    b(localList);
   }
   
   public void a(@NonNull TKDSearchHistoryBean paramTKDSearchHistoryBean)
   {
-    List localList = a();
+    List localList = c();
     localList.remove(paramTKDSearchHistoryBean);
     localList.add(0, paramTKDSearchHistoryBean);
-    a(localList);
+    b(localList);
   }
   
   public void a(@Nullable String paramString)
@@ -167,18 +139,18 @@ public class SearchWordHistoryManager
     if (TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "addSearchHistory key word is null");
+        QLog.i(a, 2, "addSearchHistory key word is null");
       }
       return;
     }
-    List localList = a();
-    if ((!b) && (paramString == null)) {
+    List localList = c();
+    if ((!c) && (paramString == null)) {
       throw new AssertionError();
     }
     paramString = TKDSearchHistoryBean.createFromKeyword(paramString);
     localList.remove(paramString);
     localList.add(0, paramString);
-    a(localList);
+    b(localList);
   }
   
   public void a(@Nullable JSONArray paramJSONArray)
@@ -186,11 +158,11 @@ public class SearchWordHistoryManager
     if (paramJSONArray == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "addAllSearchHistory key word is null");
+        QLog.i(a, 2, "addAllSearchHistory key word is null");
       }
       return;
     }
-    List localList = a();
+    List localList = c();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramJSONArray.length())
@@ -205,14 +177,41 @@ public class SearchWordHistoryManager
       i += 1;
     }
     localArrayList.addAll(localList);
-    a(localArrayList);
+    b(localArrayList);
+  }
+  
+  @NonNull
+  public ArrayList<String> b()
+  {
+    Object localObject = c();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TKDSearchHistoryBean localTKDSearchHistoryBean = (TKDSearchHistoryBean)((Iterator)localObject).next();
+      if (localTKDSearchHistoryBean != null) {
+        localArrayList.add(localTKDSearchHistoryBean.getTitle());
+      }
+    }
+    return localArrayList;
+  }
+  
+  @NonNull
+  public List<TKDSearchHistoryBean> c()
+  {
+    return b(f());
+  }
+  
+  public void d()
+  {
+    b(new ArrayList());
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SearchWordHistoryManager
  * JD-Core Version:    0.7.0.1
  */

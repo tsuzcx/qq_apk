@@ -35,7 +35,11 @@ public abstract interface PeakConstants
   public static final String BUNDLE_KEY_CIRCLE_CAN_MIX_PICK_PHOTO_AND_VIDEO = "BUNDLE_KEY_CIRCLE_CAN_MIX_PICK_PHOTO_AND_VIDEO";
   public static final String BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO = "BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO";
   public static final String BUNDLE_KEY_CIRCLE_CAN_SWITCH_SECTION_MODE = "BUNDLE_KEY_CIRCLE_CAN_SWITCH_SECTION_MODE";
+  public static final String BUNDLE_KEY_CIRCLE_DEFAULT_SELECT_TAB = "BUNDLE_KEY_CIRCLE_DEFAULT_SELECT_TAB";
   public static final String BUNDLE_KEY_CIRCLE_HAS_PICKED_NUM = "BUNDLE_KEY_CIRCLE_HAS_PICKED_NUM";
+  public static final String BUNDLE_KEY_CIRCLE_HIDE_PHOTOLIST_TAB = "BUNDLE_KEY_CIRCLE_HIDE_PHOTOLIST_TAB";
+  public static final String BUNDLE_KEY_CIRCLE_SINGLE_PICK_MODE = "BUNDLE_KEY_CIRCLE_SINGLE_PICK_MODE";
+  public static final String BUNDLE_KEY_FS_CAN_ONLY_EDIT_VIDEO = "BUNDLE_KEY_FS_CAN_ONLY_EDIT_VIDEO";
   public static final String BUSI_TYPE = "extra.busi_type";
   public static final int CAMERA_BACK = 2;
   public static final int CAMERA_FRONT = 1;
@@ -118,6 +122,7 @@ public abstract interface PeakConstants
   public static final String GIF_PHOTO_PATHS = "PhotoConst.GIF_PHOTO_PATHS";
   public static final String GPS_FIX_LOCALMEDIA = "PhotoConst.GPS_FIX_LOCALMEDIA";
   public static final String GPS_SRC_PATH = "PhotoConst.GPS_SRC_PATH";
+  public static final String GUILD_OPEN_AIO_INTENT = "key_guild_open_aio_intent";
   public static final String HAS_CROP = "PhotoConst.HAS_CROP";
   public static final String INIT_ACTIVITY_CLASS_NAME = "PhotoConst.INIT_ACTIVITY_CLASS_NAME";
   public static final String INIT_ACTIVITY_PACKAGE_NAME = "PhotoConst.INIT_ACTIVITY_PACKAGE_NAME";
@@ -160,6 +165,7 @@ public abstract interface PeakConstants
   public static final String IS_VIDEO_SELECTED = "PhotoConst.IS_VIDEO_SELECTED";
   public static final String IS_WAIT_DEST_RESULT = "PhotoConst.HANDLE_DEST_RESULT";
   public static final String KEY_COMPRESS_CONFIG = "key_compress_config";
+  public static final String KEY_CREATE_TIME = "PhotoConst.KEY_CREATE_TIME";
   public static final String KEY_EDIT_TO_PHOTO_LIST = "key_edit_to_photo_list";
   public static final String KEY_EMOTION_SOURCE_EPID = "key_emotion_source_epid";
   public static final String KEY_EMOTION_SOURCE_FROM = "key_emotion_source_from";
@@ -214,6 +220,7 @@ public abstract interface PeakConstants
   public static final String MAXUM_SELECTED_NUM_VIDEO = "PhotoConst.MAXUM_SELECTED_NUM_VIDEO";
   public static final int MAXUN_SELECTED_NUM_CIRCLE = 9;
   public static final int MAXUN_SELECTED_NUM_DEFAULT = 10;
+  public static final int MAXUN_SELECTED_NUM_FS = 35;
   public static final int MESSAGE_IMAGE_TYPE_APNG = 4;
   public static final int MESSAGE_IMAGE_TYPE_GIF = 3;
   public static final int MESSAGE_IMAGE_TYPE_JPEG = 0;
@@ -265,12 +272,24 @@ public abstract interface PeakConstants
   public static final String PLUGIN_APK = "PhotoConst.PLUGIN_APK";
   public static final String PLUGIN_NAME = "PhotoConst.PLUGIN_NAME";
   public static final String PRESEND_CONFIG_SP = "presend_config_sp";
+  public static final String QCIRCLE_CLIENT_COST = "qcircle_client_cost";
+  public static final String QCIRCLE_CLIENT_EXT1 = "qcircle_client_ext1";
+  public static final String QCIRCLE_CLIENT_EXT2 = "qcircle_client_ext2";
+  public static final String QCIRCLE_CLIENT_RESULTCODE = "qcircle_client_resultcode";
   public static final String QCIRCLE_CLIENT_TRACEID = "qcircle_client_traceid";
   public static final int QCIRCLE_FIRST_SCREEN_PHOTO_SIZE_IN_RECENT_PHOTO = 15;
+  public static final String QCIRCLE_IS_BACK_FROM_IMAGE_EDIT = "key_qcircle_is_back_from_image_edit";
+  public static final String QCIRCLE_IS_FROM_PIC_PREVIEW_PART = "key_qcircle_is_from_pic_preview_part";
   public static final String QCIRCLE_PHOTOLIST_FIRST_ACTION = "QCIRCLE_PHOTOLIST_FIRST_ACTION";
+  public static final String QCIRCLE_PHOTO_PATH_FROM_IMAGE_EDIT = "key_qcircle_photo_path_image_edit";
   public static final String QCIRCLE_PUBLISH_BACK_EDIT = "key_qcircle_publish_back_edit";
+  public static final String QCIRCLE_PUBLISH_FROM_MID_PAGE = "key_qcircle_from_mid_page";
   public static final String QCIRCLE_PUBLISH_FROM_PREVIEW = "key_qcircle_publish_from_preview";
   public static final String QCIRCLE_PUBLISH_HAS_DRAFT = "key_qcircle_pulish_has_draft";
+  public static final String QCIRCLE_PUBLISH_MID_PAGE_CLUSTERING_ID = "key_qcircle_mid_page_clustering_id";
+  public static final String QCIRCLE_PUBLISH_MID_PAGE_PHOTO_INFO = "key_qcircle_mid_page_photo_info";
+  public static final String QCIRCLE_PUBLISH_MID_PAGE_TEMPLATEINFO = "key_qcircle_mid_page_template_info";
+  public static final String QCIRCLE_PUBLISH_MID_PGE_PHOTO_PATH = "key_qcircle_mid_page_photo_path";
   public static final String QCIRCLE_PUBLISH_OUTIMAGEPATH = "key_qcircle_publish_out_imagepath";
   public static final String QCIRCLE_PUBLISH_USE_DRAFT = "key_qcircle_pulish_use_draft";
   public static final int QUALITY_NORMAL = 0;
@@ -319,6 +338,8 @@ public abstract interface PeakConstants
   public static final int REQUEST_ALBUMLIST_ACTIVITY_CANCEL_RETURN = 10007;
   public static final String REQUEST_CODE = "peakconstant.request_code";
   public static final int REQUEST_CODE_ALBUM_CHOOSE = 10009;
+  public static final int REQUEST_CODE_EXTEND_FRIEND_AVATAR = 10021;
+  public static final int REQUEST_CODE_EXTEND_FRIEND_PHOTO_WALL = 10020;
   public static final int REQUEST_CODE_FOR_PHOTO_CROP = 10014;
   public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW = 10015;
   public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW_QCIRCLE = 10019;
@@ -338,6 +359,7 @@ public abstract interface PeakConstants
   public static final int REQUEST_PHOTOPLUS_WATERMARK = 4;
   public static final int REQUEST_PHOTOPREVIEW_RETURE = 10004;
   public static final int REQUEST_SELECT_COVER = 8;
+  public static final int REQUEST_SELECT_COVER_FROM_ALBUM = 9;
   public static final int REQUEST_SHORTVIDEO_PREVIEW = 17;
   public static final int RESULT_CODE_BACK_TO_CANCEL_CHANGTU = 2;
   public static final int RESULT_CODE_BACK_TO_EDIT = 1;
@@ -417,10 +439,19 @@ public abstract interface PeakConstants
   public static final int VIDEO_TYPE_TRIM = 1;
   public static final int WAIT_UTIL_FINISH = 2;
   public static final String WEIYUN_FILTER_DATA = "weiyun_filter_data";
+  public static final String WINK_DRAFT_CLIENTKEY_KEY = "wink_draft_clientkey_key";
+  public static final String WINK_DRAFT_STATUS_KEY = "wink_draft_status_key";
+  public static final String WINK_DRAFT_TOAST_STATUS_KEY = "wink_draft_toast_status_key";
+  public static final String WINK_DRAFT_UPLOAD_STATUS_KEY = "wink_draft_status_info_upload_status_key";
+  public static final String WINK_MISSION_ID_KEY = "wink_mission_id_key";
+  public static final int WINK_PHOTO_LIST_ENTRANCE_FROM_CLIPPING_SELECT = 2;
+  public static final int WINK_PHOTO_LIST_ENTRANCE_FROM_COVER_SELECT = 1;
+  public static final int WINK_PHOTO_LIST_ENTRANCE_FROM_PUBLISH = 0;
+  public static final String WINK_PHOTO_LIST_SELECT_ENTRANCE = "WINK_PHOTO_LIST_SELECT_ENTRANCE";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.peak.PeakConstants
  * JD-Core Version:    0.7.0.1
  */

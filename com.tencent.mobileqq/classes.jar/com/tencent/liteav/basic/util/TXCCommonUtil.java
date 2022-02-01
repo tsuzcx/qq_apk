@@ -22,7 +22,7 @@ public class TXCCommonUtil
   
   static
   {
-    f.f();
+    h.f();
   }
   
   public static boolean equals(Object paramObject1, Object paramObject2)
@@ -102,7 +102,7 @@ public class TXCCommonUtil
   
   public static String getAppPackageName()
   {
-    return f.c(sApplicationContext);
+    return h.c(sApplicationContext);
   }
   
   public static String getAppVersion()
@@ -178,7 +178,7 @@ public class TXCCommonUtil
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(((File)localObject).getAbsolutePath());
-    localStringBuilder.append("/log/tencent/liteav");
+    localStringBuilder.append("/log/liteav");
     return localStringBuilder.toString();
   }
   
@@ -641,7 +641,7 @@ public class TXCCommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.util.TXCCommonUtil
  * JD-Core Version:    0.7.0.1
  */

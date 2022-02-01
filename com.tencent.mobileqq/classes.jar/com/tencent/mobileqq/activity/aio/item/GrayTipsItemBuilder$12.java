@@ -17,24 +17,24 @@ class GrayTipsItemBuilder$12
   public void onClick(View paramView)
   {
     paramView = new Bundle();
-    paramView.putString(VasH5PayUtil.i, this.jdField_a_of_type_JavaLangString);
+    paramView.putString(VasH5PayUtil.i, this.a);
     paramView.putString(VasH5PayUtil.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(VasH5PayUtil.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
+    if (!this.c.isSend()) {
+      paramView.putString(VasH5PayUtil.a, this.c.senderuin);
     }
-    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+    VasH5PayUtil.a(this.f.c, paramView);
+    String str = this.d;
+    if (this.c.isSend()) {
       paramView = "0";
     } else {
       paramView = "1";
     }
-    VasWebviewUtil.a(str, paramView, "1", this.jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
+    VasWebviewUtil.a(str, paramView, "1", this.e.a(this.f.d.a), this.f.d.b, "", "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.12
  * JD-Core Version:    0.7.0.1
  */

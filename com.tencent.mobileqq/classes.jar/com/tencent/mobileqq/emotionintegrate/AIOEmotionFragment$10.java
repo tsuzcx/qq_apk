@@ -29,12 +29,12 @@ class AIOEmotionFragment$10
       if ((localEmoticonResp.keySeq != null) && (!localEmoticonResp.keySeq.equals(""))) {
         paramObject = localEmoticonResp.keySeq;
       } else {
-        paramObject = HardCodeUtil.a(2131700242);
+        paramObject = HardCodeUtil.a(2131898285);
       }
     }
     else
     {
-      paramObject = HardCodeUtil.a(2131700243);
+      paramObject = HardCodeUtil.a(2131898286);
       i = -404;
     }
     if (TextUtils.isEmpty(localEmoticonResp.emoticonId))
@@ -44,7 +44,7 @@ class AIOEmotionFragment$10
       }
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a();
+    QQAppInterface localQQAppInterface = this.a.c();
     if (localQQAppInterface != null) {
       ((IEmoticonManagerService)localQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new AIOEmotionFragment.10.1(this, paramInt, localQQAppInterface, i, paramObject));
     }
@@ -52,7 +52,7 @@ class AIOEmotionFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.10
  * JD-Core Version:    0.7.0.1
  */

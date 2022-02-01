@@ -15,7 +15,7 @@ class IntimateContentItemLoverAchievementView$1
   
   public void a(View paramView, int paramInt, LoveAchievementInfo.LoveAchievementItem paramLoveAchievementItem)
   {
-    paramView = FriendIntimateRelationshipConfProcessor.a().T;
+    paramView = FriendIntimateRelationshipConfProcessor.a().aa;
     if (!TextUtils.isEmpty(paramView))
     {
       IntimateContentItemLoverAchievementView.a(this.a);
@@ -25,7 +25,7 @@ class IntimateContentItemLoverAchievementView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView.1
  * JD-Core Version:    0.7.0.1
  */

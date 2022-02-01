@@ -33,25 +33,25 @@ public class UnlimitedBladeWorks
   extends RelativeLayout
   implements GreatMoveCombolEffectView.GreateMoveListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private CustomFrameAnimationDrawable jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable;
-  private UnlimitedBladeWorks.BallAnimationListener jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$BallAnimationListener;
-  private UnlimitedBladeWorks.UnlimitedEndListener jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedEndListener = null;
-  private UnlimitedBladeWorks.UnlimitedState jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState;
-  private MessageForPoke jdField_a_of_type_ComTencentMobileqqDataMessageForPoke;
-  private String jdField_a_of_type_JavaLangString = "chat_item_for_qqultnew";
-  private WeakReference<Context> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private CustomFrameAnimationDrawable jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable;
-  private boolean jdField_b_of_type_Boolean = false;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private boolean jdField_c_of_type_Boolean = false;
+  private ImageView a;
+  private ImageView b;
+  private ImageView c;
+  private CustomFrameAnimationDrawable d;
+  private CustomFrameAnimationDrawable e;
+  private ValueAnimator f;
+  private boolean g = false;
+  private Bitmap h = null;
+  private Drawable i = null;
+  private UnlimitedBladeWorks.UnlimitedState j;
+  private boolean k = false;
+  private float l;
+  private WeakReference<Context> m;
+  private UnlimitedBladeWorks.BallAnimationListener n;
+  private String o = "chat_item_for_qqultnew";
+  private int p;
+  private MessageForPoke q;
+  private boolean r = false;
+  private UnlimitedBladeWorks.UnlimitedEndListener s = null;
   
   public UnlimitedBladeWorks(Context paramContext)
   {
@@ -66,12 +66,23 @@ public class UnlimitedBladeWorks
   public UnlimitedBladeWorks(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131563010, this, true);
+    LayoutInflater.from(paramContext).inflate(2131629618, this, true);
   }
   
-  private AnimationSet a(int paramInt)
+  @TargetApi(17)
+  private void a(int paramInt)
   {
-    int i = 0;
+    Object localObject = this.m;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
+    {
+      localObject = (Activity)this.m.get();
+      ((Activity)localObject).runOnUiThread(new UnlimitedBladeWorks.6(this, (Activity)localObject, paramInt));
+    }
+  }
+  
+  private AnimationSet b(int paramInt)
+  {
+    int i1 = 0;
     AnimationSet localAnimationSet = new AnimationSet(false);
     int[] arrayOfInt = new int[8];
     int[] tmp20_18 = arrayOfInt;
@@ -91,69 +102,280 @@ public class UnlimitedBladeWorks
     int[] tmp56_50 = tmp50_45;
     tmp56_50[7] = 80;
     tmp56_50;
-    int j = paramInt * 0;
-    int k = paramInt * 1;
-    int m = arrayOfInt.length;
-    long l = 0L;
-    while (i < m)
+    int i2 = paramInt * 0;
+    int i3 = paramInt * 1;
+    int i4 = arrayOfInt.length;
+    long l1 = 0L;
+    while (i1 < i4)
     {
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, AIOUtils.b(new int[] { paramInt * 5, paramInt * -12, paramInt * 15, paramInt * -15, paramInt * 12, paramInt * -8, paramInt * 6, j }[i], getResources()), 0.0F, AIOUtils.b(new int[] { k, paramInt * -3, paramInt * 2, paramInt * -2, k, paramInt * -1, k, j }[i], getResources()));
-      localTranslateAnimation.setDuration(arrayOfInt[i]);
-      localTranslateAnimation.setStartOffset(l);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, AIOUtils.b(new int[] { paramInt * 5, paramInt * -12, paramInt * 15, paramInt * -15, paramInt * 12, paramInt * -8, paramInt * 6, i2 }[i1], getResources()), 0.0F, AIOUtils.b(new int[] { i3, paramInt * -3, paramInt * 2, paramInt * -2, i3, paramInt * -1, i3, i2 }[i1], getResources()));
+      localTranslateAnimation.setDuration(arrayOfInt[i1]);
+      localTranslateAnimation.setStartOffset(l1);
       localAnimationSet.addAnimation(localTranslateAnimation);
-      l += arrayOfInt[i];
-      i += 1;
+      l1 += arrayOfInt[i1];
+      i1 += 1;
     }
     return localAnimationSet;
   }
   
   @TargetApi(17)
-  private void a(int paramInt)
+  private void f()
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.m;
     if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      ((Activity)localObject).runOnUiThread(new UnlimitedBladeWorks.6(this, (Activity)localObject, paramInt));
-    }
-  }
-  
-  @TargetApi(17)
-  private void d()
-  {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
-    if ((localObject != null) && (((WeakReference)localObject).get() != null))
-    {
-      localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      localObject = (Activity)this.m.get();
       ((Activity)localObject).runOnUiThread(new UnlimitedBladeWorks.7(this, (Activity)localObject));
     }
   }
   
-  private void e()
+  private void g()
   {
     Object localObject = new int[2];
-    this.jdField_b_of_type_AndroidWidgetImageView.getLocationOnScreen((int[])localObject);
-    int i = localObject[0];
-    int j = localObject[1];
-    PokeItemAnimationManager.a().a(10);
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    this.b.getLocationOnScreen((int[])localObject);
+    int i1 = localObject[0];
+    int i2 = localObject[1];
+    PokeItemAnimationManager.c().a(10);
+    localObject = this.m;
     if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131362288)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke, this.jdField_a_of_type_Boolean, this);
+      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.m.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131427887)).getGreatMoveCombolEffectView().a(this.q, this.g, this);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[x :");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append(", y : ");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(i2);
         ((StringBuilder)localObject).append("]");
         QLog.d("fangdazhao", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
-  public CustomFrameAnimationDrawable a()
+  public void a()
+  {
+    Object localObject = this.j;
+    ((UnlimitedBladeWorks.UnlimitedState)localObject).e = true;
+    ((UnlimitedBladeWorks.UnlimitedState)localObject).d = false;
+    f();
+    localObject = this.s;
+    if (localObject != null) {
+      ((UnlimitedBladeWorks.UnlimitedEndListener)localObject).a();
+    }
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, float paramFloat)
+  {
+    this.r = paramBoolean2;
+    this.a = ((ImageView)findViewById(2131435896));
+    this.b = ((ImageView)findViewById(2131429259));
+    this.c = ((ImageView)findViewById(2131429600));
+    this.d = getHandDrawable();
+    this.e = getBlusterDrawable();
+    this.a.setImageDrawable(this.d);
+    this.g = paramBoolean1;
+    this.d.a(paramBoolean1);
+    this.b.clearAnimation();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inSampleSize = 1;
+    localOptions.inMutable = true;
+    try
+    {
+      this.h = ImageUtil.a(PokeBigResHandler.d, localOptions);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UnlimitedBladeWorks", 2, localOutOfMemoryError.toString());
+      }
+      this.h = null;
+    }
+    Bitmap localBitmap = this.h;
+    if (localBitmap != null) {
+      this.i = PokeItemHelper.a(localBitmap);
+    }
+    this.m = new WeakReference(paramContext);
+    setParams(this.g);
+    if (paramBoolean2) {
+      ThreadManager.postImmediately(new UnlimitedBladeWorks.1(this), null, true);
+    }
+    this.n = new UnlimitedBladeWorks.BallAnimationListener(this, null);
+    this.d.a(new UnlimitedBladeWorks.2(this));
+    this.k = true;
+  }
+  
+  public void a(MessageForPoke paramMessageForPoke, float paramFloat)
+  {
+    this.q = paramMessageForPoke;
+    this.j = this.q.mUnlimitedState;
+    this.l = paramFloat;
+  }
+  
+  public void a(MessageForPoke paramMessageForPoke, boolean paramBoolean, float paramFloat)
+  {
+    if ((paramFloat == 2.0F) && (GreatMoveCombolEffectView.h == true))
+    {
+      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.m.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131427887)).getGreatMoveCombolEffectView().a(paramMessageForPoke, this);
+      return;
+    }
+    this.j = paramMessageForPoke.mUnlimitedState;
+    paramMessageForPoke = this.j;
+    paramMessageForPoke.d = true;
+    paramMessageForPoke.e = false;
+    if (QLog.isColorLevel())
+    {
+      paramMessageForPoke = new StringBuilder();
+      paramMessageForPoke.append("[");
+      paramMessageForPoke.append(this.j.a);
+      paramMessageForPoke.append(",");
+      paramMessageForPoke.append(this.j.c);
+      paramMessageForPoke.append(",");
+      paramMessageForPoke.append(this.j.b);
+      paramMessageForPoke.append("]");
+      QLog.d("fangdazhao", 2, paramMessageForPoke.toString());
+    }
+    if (this.j.a < 23)
+    {
+      this.b.setImageResource(0);
+      this.c.setImageDrawable(null);
+      this.d.b(this.j.a);
+      this.f.cancel();
+      this.b.setImageDrawable(null);
+      this.d.a(new UnlimitedBladeWorks.4(this));
+      this.d.d();
+      return;
+    }
+    if ((this.j.a >= 23) && (this.j.a < 29))
+    {
+      this.c.setImageDrawable(null);
+      if (this.g) {
+        this.b.setImageDrawable(this.i);
+      } else {
+        this.b.setImageBitmap(this.h);
+      }
+      this.d.b(this.j.a);
+      if (this.j.c == -1L)
+      {
+        this.f.start();
+      }
+      else
+      {
+        this.f.start();
+        this.f.setCurrentPlayTime(this.j.c);
+      }
+      this.d.a(null);
+      this.d.d();
+      return;
+    }
+    int i1 = ((Integer)this.f.getAnimatedValue()).intValue();
+    if (i1 > 0)
+    {
+      if (this.g) {
+        this.b.setImageDrawable(this.i);
+      } else {
+        this.b.setImageBitmap(this.h);
+      }
+      this.f.start();
+      this.f.setCurrentPlayTime(this.j.c);
+      return;
+    }
+    if ((i1 <= 0) && (this.j.b >= 0) && (this.j.b < 9))
+    {
+      this.b.setImageResource(0);
+      this.c.setImageDrawable(this.e);
+      this.e.a(new UnlimitedBladeWorks.5(this));
+      this.e.a(paramBoolean);
+      this.e.b(this.j.b);
+      this.e.d();
+      return;
+    }
+    this.a.setImageDrawable(null);
+    this.b.setImageResource(0);
+    this.c.setImageDrawable(this.e);
+    paramMessageForPoke = this.s;
+    if (paramMessageForPoke != null)
+    {
+      paramMessageForPoke.a();
+      if (this.r) {
+        HapticManager.b().d(this.p);
+      }
+      this.p = 0;
+    }
+    paramMessageForPoke = this.j;
+    paramMessageForPoke.d = false;
+    paramMessageForPoke.e = true;
+  }
+  
+  public boolean b()
+  {
+    return this.k;
+  }
+  
+  public void c()
+  {
+    int i1 = ScreenUtil.SCREEN_WIDTH;
+    int i2 = ScreenUtil.dip2px(142.0F);
+    int i3 = (int)(ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(142.0F) * this.l);
+    float f1 = i3 * 1.0F / (i1 - i2);
+    ValueAnimator localValueAnimator = this.f;
+    if (localValueAnimator != null)
+    {
+      localValueAnimator.cancel();
+      this.f.removeAllListeners();
+    }
+    this.f = ValueAnimator.ofInt(new int[] { i3, -ScreenUtil.dip2px(80.0F) });
+    this.f.addUpdateListener(new UnlimitedBladeWorks.3(this));
+    if (this.n == null) {
+      this.n = new UnlimitedBladeWorks.BallAnimationListener(this, null);
+    }
+    this.f.addListener(this.n);
+    this.f.setDuration((f1 * 600.0F));
+    this.f.setTarget(this.b);
+    this.f.setInterpolator(new LinearInterpolator());
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("placeholder", 2, "SHOW_PLACEHOLDER Unlimited");
+    }
+    UnlimitedBladeWorks.UnlimitedState localUnlimitedState = this.j;
+    localUnlimitedState.a = 0;
+    localUnlimitedState.b = 0;
+    localUnlimitedState.c = 0L;
+    localUnlimitedState.d = true;
+    localUnlimitedState.e = false;
+    this.a.setImageDrawable(this.d);
+    this.b.setImageDrawable(null);
+    this.c.setImageDrawable(null);
+    this.d.c();
+    if (this.r) {
+      this.p = HapticManager.b().a(this.o, 2);
+    }
+  }
+  
+  public UnlimitedBladeWorks.UnlimitedState e()
+  {
+    UnlimitedBladeWorks.UnlimitedState localUnlimitedState = this.j;
+    this.d.f();
+    localUnlimitedState.a = this.d.j();
+    if (this.f.isRunning())
+    {
+      localUnlimitedState.c = this.f.getCurrentPlayTime();
+      this.f.cancel();
+      this.b.setImageDrawable(null);
+    }
+    else
+    {
+      localUnlimitedState.c = -1L;
+    }
+    this.e.f();
+    localUnlimitedState.b = this.e.j();
+    return localUnlimitedState;
+  }
+  
+  public CustomFrameAnimationDrawable getBlusterDrawable()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(PokeBigResHandler.c);
@@ -177,215 +399,36 @@ public class UnlimitedBladeWorks
       }
       localObject2 = null;
     }
-    Object localObject2 = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject2, PokeItemAnimationManager.a().a());
-    ((CustomFrameAnimationDrawable)localObject2).i();
-    int j;
-    for (int i = 0; i < 23; i = j)
+    Object localObject2 = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject2, PokeItemAnimationManager.c().b());
+    ((CustomFrameAnimationDrawable)localObject2).l();
+    int i2;
+    for (int i1 = 0; i1 < 23; i1 = i2)
     {
-      j = i + 1;
-      if (j < 10)
+      i2 = i1 + 1;
+      if (i2 < 10)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append("0");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(".png");
-        ((CustomFrameAnimationDrawable)localObject2).a(i, 40, localStringBuilder.toString());
+        ((CustomFrameAnimationDrawable)localObject2).a(i1, 40, localStringBuilder.toString());
       }
       else
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(".png");
-        ((CustomFrameAnimationDrawable)localObject2).a(i, 40, localStringBuilder.toString());
+        ((CustomFrameAnimationDrawable)localObject2).a(i1, 40, localStringBuilder.toString());
       }
     }
     ((CustomFrameAnimationDrawable)localObject2).a();
-    ((CustomFrameAnimationDrawable)localObject2).h();
+    ((CustomFrameAnimationDrawable)localObject2).i();
     return localObject2;
   }
   
-  public UnlimitedBladeWorks.UnlimitedState a()
-  {
-    UnlimitedBladeWorks.UnlimitedState localUnlimitedState = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
-    localUnlimitedState.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())
-    {
-      localUnlimitedState.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidAnimationValueAnimator.getCurrentPlayTime();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    else
-    {
-      localUnlimitedState.jdField_a_of_type_Long = -1L;
-    }
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
-    localUnlimitedState.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    return localUnlimitedState;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState;
-    ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_b_of_type_Boolean = true;
-    ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_a_of_type_Boolean = false;
-    d();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedEndListener;
-    if (localObject != null) {
-      ((UnlimitedBladeWorks.UnlimitedEndListener)localObject).a();
-    }
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, float paramFloat)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368945));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363369));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363685));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = b();
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = a();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(paramBoolean1);
-    this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inSampleSize = 1;
-    localOptions.inMutable = true;
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(PokeBigResHandler.d, localOptions);
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UnlimitedBladeWorks", 2, localOutOfMemoryError.toString());
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = PokeItemHelper.a(localBitmap);
-    }
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
-    setParams(this.jdField_a_of_type_Boolean);
-    if (paramBoolean2) {
-      ThreadManager.postImmediately(new UnlimitedBladeWorks.1(this), null, true);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$BallAnimationListener = new UnlimitedBladeWorks.BallAnimationListener(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new UnlimitedBladeWorks.2(this));
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(MessageForPoke paramMessageForPoke, float paramFloat)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = paramMessageForPoke;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mUnlimitedState;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(MessageForPoke paramMessageForPoke, boolean paramBoolean, float paramFloat)
-  {
-    if ((paramFloat == 2.0F) && (GreatMoveCombolEffectView.jdField_a_of_type_Boolean == true))
-    {
-      ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getWindow().getDecorView()).getChildAt(0).findViewById(2131362288)).a().a(paramMessageForPoke, this);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState = paramMessageForPoke.mUnlimitedState;
-    paramMessageForPoke = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState;
-    paramMessageForPoke.jdField_a_of_type_Boolean = true;
-    paramMessageForPoke.jdField_b_of_type_Boolean = false;
-    if (QLog.isColorLevel())
-    {
-      paramMessageForPoke = new StringBuilder();
-      paramMessageForPoke.append("[");
-      paramMessageForPoke.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Int);
-      paramMessageForPoke.append(",");
-      paramMessageForPoke.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Long);
-      paramMessageForPoke.append(",");
-      paramMessageForPoke.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_b_of_type_Int);
-      paramMessageForPoke.append("]");
-      QLog.d("fangdazhao", 2, paramMessageForPoke.toString());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Int < 23)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new UnlimitedBladeWorks.4(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Int >= 23) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Int < 29))
-    {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      } else {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Long == -1L)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setCurrentPlayTime(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Long);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
-      return;
-    }
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    if (i > 0)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      } else {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setCurrentPlayTime(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_a_of_type_Long);
-      return;
-    }
-    if ((i <= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_b_of_type_Int >= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_b_of_type_Int < 9))
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(new UnlimitedBladeWorks.5(this));
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(paramBoolean);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState.jdField_b_of_type_Int);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
-    paramMessageForPoke = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedEndListener;
-    if (paramMessageForPoke != null)
-    {
-      paramMessageForPoke.a();
-      if (this.jdField_c_of_type_Boolean) {
-        HapticManager.a().c(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_Int = 0;
-    }
-    paramMessageForPoke = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState;
-    paramMessageForPoke.jdField_a_of_type_Boolean = false;
-    paramMessageForPoke.jdField_b_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public CustomFrameAnimationDrawable b()
+  public CustomFrameAnimationDrawable getHandDrawable()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(PokeBigResHandler.c);
@@ -409,126 +452,83 @@ public class UnlimitedBladeWorks
       }
       localObject2 = null;
     }
-    Object localObject2 = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject2, PokeItemAnimationManager.a().a());
-    ((CustomFrameAnimationDrawable)localObject2).i();
-    int j;
-    for (int i = 0; i < 29; i = j)
+    Object localObject2 = new CustomFrameAnimationDrawable(getResources(), (Bitmap)localObject2, PokeItemAnimationManager.c().b());
+    ((CustomFrameAnimationDrawable)localObject2).l();
+    int i2;
+    for (int i1 = 0; i1 < 29; i1 = i2)
     {
-      j = i + 1;
-      if (j < 10)
+      i2 = i1 + 1;
+      if (i2 < 10)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append("0");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(".png");
-        ((CustomFrameAnimationDrawable)localObject2).a(i, 40, localStringBuilder.toString());
+        ((CustomFrameAnimationDrawable)localObject2).a(i1, 40, localStringBuilder.toString());
       }
       else
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(".png");
-        ((CustomFrameAnimationDrawable)localObject2).a(i, 40, localStringBuilder.toString());
+        ((CustomFrameAnimationDrawable)localObject2).a(i1, 40, localStringBuilder.toString());
       }
     }
     ((CustomFrameAnimationDrawable)localObject2).a();
-    ((CustomFrameAnimationDrawable)localObject2).h();
+    ((CustomFrameAnimationDrawable)localObject2).i();
     return localObject2;
-  }
-  
-  public void b()
-  {
-    int i = ScreenUtil.SCREEN_WIDTH;
-    int j = ScreenUtil.dip2px(142.0F);
-    int k = (int)(ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(142.0F) * this.jdField_a_of_type_Float);
-    float f = k * 1.0F / (i - j);
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if (localValueAnimator != null)
-    {
-      localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllListeners();
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { k, -ScreenUtil.dip2px(80.0F) });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new UnlimitedBladeWorks.3(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$BallAnimationListener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$BallAnimationListener = new UnlimitedBladeWorks.BallAnimationListener(this, null);
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$BallAnimationListener);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration((f * 600.0F));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(this.jdField_b_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "SHOW_PLACEHOLDER Unlimited");
-    }
-    UnlimitedBladeWorks.UnlimitedState localUnlimitedState = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedState;
-    localUnlimitedState.jdField_a_of_type_Int = 0;
-    localUnlimitedState.jdField_b_of_type_Int = 0;
-    localUnlimitedState.jdField_a_of_type_Long = 0L;
-    localUnlimitedState.jdField_a_of_type_Boolean = true;
-    localUnlimitedState.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Int = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
-    }
   }
   
   public void setEndListener(UnlimitedBladeWorks.UnlimitedEndListener paramUnlimitedEndListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks$UnlimitedEndListener = paramUnlimitedEndListener;
+    this.s = paramUnlimitedEndListener;
   }
   
   public void setMirror(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (this.g == paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     RelativeLayout.LayoutParams localLayoutParams;
     if (paramBoolean)
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      this.a.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      this.c.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
       localLayoutParams.leftMargin = 0;
       localLayoutParams.rightMargin = AIOUtils.b(100.0F, getResources());
-      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.b.setLayoutParams(localLayoutParams);
     }
     else
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      this.a.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      this.c.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
       localLayoutParams.rightMargin = 0;
       localLayoutParams.leftMargin = AIOUtils.b(100.0F, getResources());
-      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.b.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(paramBoolean);
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a(paramBoolean);
+    this.d.a(paramBoolean);
+    this.e.a(paramBoolean);
   }
   
   public void setParams(boolean paramBoolean)
@@ -536,56 +536,56 @@ public class UnlimitedBladeWorks
     RelativeLayout.LayoutParams localLayoutParams;
     if (paramBoolean == true)
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      this.a.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      this.c.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.height = ((int)(ScreenUtil.dip2px(34.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(ScreenUtil.dip2px(48.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(ScreenUtil.dip2px(34.0F) * this.l));
+      localLayoutParams.width = ((int)(ScreenUtil.dip2px(48.0F) * this.l));
       localLayoutParams.leftMargin = 0;
       localLayoutParams.rightMargin = AIOUtils.b(100.0F, getResources());
-      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.b.setLayoutParams(localLayoutParams);
     }
     else
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      this.a.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.jdField_a_of_type_Float));
-      this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams.height = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      localLayoutParams.width = ((int)(ScreenUtil.dip2px(90.0F) * this.l));
+      this.c.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
       localLayoutParams.addRule(9, -1);
       localLayoutParams.addRule(11, 0);
-      localLayoutParams.height = ((int)(ScreenUtil.dip2px(34.0F) * this.jdField_a_of_type_Float));
-      localLayoutParams.width = ((int)(ScreenUtil.dip2px(48.0F) * this.jdField_a_of_type_Float));
+      localLayoutParams.height = ((int)(ScreenUtil.dip2px(34.0F) * this.l));
+      localLayoutParams.width = ((int)(ScreenUtil.dip2px(48.0F) * this.l));
       localLayoutParams.rightMargin = 0;
       localLayoutParams.leftMargin = AIOUtils.b(100.0F, getResources());
-      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.b.setLayoutParams(localLayoutParams);
     }
-    b();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks
  * JD-Core Version:    0.7.0.1
  */

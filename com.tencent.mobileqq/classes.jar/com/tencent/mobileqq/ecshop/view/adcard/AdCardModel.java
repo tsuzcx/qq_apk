@@ -2,30 +2,23 @@ package com.tencent.mobileqq.ecshop.view.adcard;
 
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.ecshop.view.EcshopAdViewHelper.DeleteMsgListener;
+import java.util.ArrayList;
+import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardModel;", "", "()V", "btnText", "", "getBtnText", "()Ljava/lang/String;", "setBtnText", "(Ljava/lang/String;)V", "cardAdInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "getCardAdInfo", "()Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "setCardAdInfo", "(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;)V", "corporateIconUrl", "getCorporateIconUrl", "setCorporateIconUrl", "corporateName", "getCorporateName", "setCorporateName", "deleteMsgListener", "Lcom/tencent/mobileqq/ecshop/view/EcshopAdViewHelper$DeleteMsgListener;", "getDeleteMsgListener", "()Lcom/tencent/mobileqq/ecshop/view/EcshopAdViewHelper$DeleteMsgListener;", "setDeleteMsgListener", "(Lcom/tencent/mobileqq/ecshop/view/EcshopAdViewHelper$DeleteMsgListener;)V", "disType", "getDisType", "setDisType", "imageUrl", "getImageUrl", "setImageUrl", "isAdMsgType", "", "()Z", "setAdMsgType", "(Z)V", "isReportClick", "setReportClick", "isVideoMsg", "setVideoMsg", "landingUrl", "getLandingUrl", "setLandingUrl", "message", "Lcom/tencent/mobileqq/data/MessageRecord;", "getMessage", "()Lcom/tencent/mobileqq/data/MessageRecord;", "setMessage", "(Lcom/tencent/mobileqq/data/MessageRecord;)V", "title", "getTitle", "setTitle", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardModel;", "", "()V", "btnText", "", "getBtnText", "()Ljava/lang/String;", "setBtnText", "(Ljava/lang/String;)V", "cardAdInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "getCardAdInfo", "()Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "setCardAdInfo", "(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;)V", "corporateIconUrl", "getCorporateIconUrl", "setCorporateIconUrl", "corporateName", "getCorporateName", "setCorporateName", "deleteMsgListener", "Lcom/tencent/mobileqq/ecshop/view/EcshopAdViewHelper$DeleteMsgListener;", "getDeleteMsgListener", "()Lcom/tencent/mobileqq/ecshop/view/EcshopAdViewHelper$DeleteMsgListener;", "setDeleteMsgListener", "(Lcom/tencent/mobileqq/ecshop/view/EcshopAdViewHelper$DeleteMsgListener;)V", "disType", "getDisType", "setDisType", "imageUrl", "getImageUrl", "setImageUrl", "isAdMsgType", "", "()Z", "setAdMsgType", "(Z)V", "isReportClick", "setReportClick", "isVideoMsg", "setVideoMsg", "labelList", "", "getLabelList", "()Ljava/util/List;", "setLabelList", "(Ljava/util/List;)V", "landingUrl", "getLandingUrl", "setLandingUrl", "message", "Lcom/tencent/mobileqq/data/MessageRecord;", "getMessage", "()Lcom/tencent/mobileqq/data/MessageRecord;", "setMessage", "(Lcom/tencent/mobileqq/data/MessageRecord;)V", "title", "getTitle", "setTitle", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class AdCardModel
 {
   @Nullable
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  @Nullable
-  private EcshopAdViewHelper.DeleteMsgListener jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper$DeleteMsgListener;
+  private qq_ad_get.QQAdGetRsp.AdInfo a;
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  @Nullable
-  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
-  private boolean jdField_a_of_type_Boolean;
+  private String b = "";
   @NotNull
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  @NotNull
-  private String jdField_c_of_type_JavaLangString = "";
-  private boolean jdField_c_of_type_Boolean;
+  private String c = "";
   @NotNull
   private String d = "";
   @NotNull
@@ -34,104 +27,82 @@ public final class AdCardModel
   private String f = "";
   @NotNull
   private String g = "";
-  
   @Nullable
-  public final MessageRecord a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  }
-  
-  @Nullable
-  public final EcshopAdViewHelper.DeleteMsgListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper$DeleteMsgListener;
-  }
-  
+  private MessageRecord h;
+  private boolean i;
+  private boolean j = true;
+  private boolean k;
   @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private String l = "";
+  @NotNull
+  private List<String> m = (List)new ArrayList();
+  @Nullable
+  private EcshopAdViewHelper.DeleteMsgListener n;
   
   @Nullable
   public final qq_ad_get.QQAdGetRsp.AdInfo a()
   {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+    return this.a;
   }
   
   public final void a(@Nullable MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.h = paramMessageRecord;
   }
   
   public final void a(@Nullable EcshopAdViewHelper.DeleteMsgListener paramDeleteMsgListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper$DeleteMsgListener = paramDeleteMsgListener;
+    this.n = paramDeleteMsgListener;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public final void a(@Nullable qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
+    this.a = paramAdInfo;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.i = paramBoolean;
   }
   
   @NotNull
   public final String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public final void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public final void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.j = paramBoolean;
   }
   
   @NotNull
   public final String c()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public final void c(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public final void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
+    this.k = paramBoolean;
   }
   
   @NotNull
@@ -143,7 +114,7 @@ public final class AdCardModel
   public final void d(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.d = paramString;
+    this.e = paramString;
   }
   
   @NotNull
@@ -155,7 +126,7 @@ public final class AdCardModel
   public final void e(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.e = paramString;
+    this.f = paramString;
   }
   
   @NotNull
@@ -167,7 +138,7 @@ public final class AdCardModel
   public final void f(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.f = paramString;
+    this.g = paramString;
   }
   
   @NotNull
@@ -179,12 +150,51 @@ public final class AdCardModel
   public final void g(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.g = paramString;
+    this.l = paramString;
+  }
+  
+  @Nullable
+  public final MessageRecord h()
+  {
+    return this.h;
+  }
+  
+  public final boolean i()
+  {
+    return this.i;
+  }
+  
+  public final boolean j()
+  {
+    return this.j;
+  }
+  
+  public final boolean k()
+  {
+    return this.k;
+  }
+  
+  @NotNull
+  public final String l()
+  {
+    return this.l;
+  }
+  
+  @NotNull
+  public final List<String> m()
+  {
+    return this.m;
+  }
+  
+  @Nullable
+  public final EcshopAdViewHelper.DeleteMsgListener n()
+  {
+    return this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.adcard.AdCardModel
  * JD-Core Version:    0.7.0.1
  */

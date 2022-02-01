@@ -9,14 +9,14 @@ class NearbyActivityDialog$1
   
   public void run()
   {
-    if (this.this$0.c.getVisibility() == 0) {
-      this.this$0.c.setVisibility(8);
+    if (this.this$0.h.getVisibility() == 0) {
+      this.this$0.h.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.1
  * JD-Core Version:    0.7.0.1
  */

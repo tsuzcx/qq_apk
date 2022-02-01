@@ -5,83 +5,85 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 class FakeModule
-  implements IModule, IModule.FocusChangeListener
+  implements IModule
 {
-  private static String jdField_a_of_type_JavaLangString = "FakeModule";
-  private final HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final String b;
+  private static String TAG = "FakeModule";
+  private final HashMap<Long, String> mFakeFocusBusiness = new HashMap();
+  private final HashSet<String> mFakeInQueueBusiness = new HashSet();
+  private final String mName;
   
   FakeModule(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(TAG);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.b = paramString;
+    TAG = localStringBuilder.toString();
+    this.mName = paramString;
   }
   
-  public String a()
+  public void abandonAVFocus()
   {
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fake module requestAVFocus, name[");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("]");
-    QLog.e(str, 1, localStringBuilder.toString());
-    return "";
-  }
-  
-  public void a()
-  {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("fake module abandonAVFocus, name[");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.mName);
     localStringBuilder.append("]");
     QLog.e(str, 1, localStringBuilder.toString());
   }
   
-  public void a(IModule.FocusChangeListener paramFocusChangeListener)
+  public String checkAVFocus()
   {
-    paramFocusChangeListener = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fake module setListener, name[");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("]");
-    QLog.e(paramFocusChangeListener, 1, localStringBuilder.toString());
-  }
-  
-  public String b()
-  {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("fake module checkAVFocus, name[");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.mName);
     localStringBuilder.append("]");
     QLog.e(str, 1, localStringBuilder.toString());
     return "";
   }
   
-  public void b()
+  public HashMap<Long, String> getFocusBusiness()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fake module onFocusLoss, name[");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append("fake module getFocusBusiness, name[");
+    localStringBuilder.append(this.mName);
     localStringBuilder.append("]");
     QLog.e(str, 1, localStringBuilder.toString());
+    return this.mFakeFocusBusiness;
   }
   
-  public void c()
+  public HashSet<String> getInQueueBusiness()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fake module onFocusGain, name[");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append("fake module getInQueueBusiness, name[");
+    localStringBuilder.append(this.mName);
     localStringBuilder.append("]");
     QLog.e(str, 1, localStringBuilder.toString());
+    return this.mFakeInQueueBusiness;
+  }
+  
+  public String requestAVFocus()
+  {
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fake module requestAVFocus, name[");
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append("]");
+    QLog.e(str, 1, localStringBuilder.toString());
+    return "";
+  }
+  
+  public void setListener(IModule.FocusChangeListener paramFocusChangeListener)
+  {
+    paramFocusChangeListener = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fake module setListener, name[");
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append("]");
+    QLog.e(paramFocusChangeListener, 1, localStringBuilder.toString());
   }
 }
 

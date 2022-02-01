@@ -20,7 +20,7 @@ public class NewMyStorySegment$UpdateUserInfoReceiver
     if ((paramUpdateUserInfoEvent != null) && (paramUpdateUserInfoEvent.a != null) && (!TextUtils.isEmpty(paramUpdateUserInfoEvent.a.headUrl)))
     {
       if (paramUpdateUserInfoEvent.a.isMe()) {
-        NewMyStorySegment.b(paramNewMyStorySegment);
+        NewMyStorySegment.h(paramNewMyStorySegment);
       }
       return;
     }

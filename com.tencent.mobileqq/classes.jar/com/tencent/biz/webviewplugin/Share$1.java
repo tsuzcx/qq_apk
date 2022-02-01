@@ -27,13 +27,13 @@ class Share$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("QConnect rich START. title=");
-      ((StringBuilder)localObject1).append(this.this$0.jdField_e_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.this$0.e);
       ((StringBuilder)localObject1).append(", desc=");
       ((StringBuilder)localObject1).append(this.this$0.h);
       ((StringBuilder)localObject1).append(", thumb=");
       ((StringBuilder)localObject1).append(this.this$0.i);
       ((StringBuilder)localObject1).append(", shareURL=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.e("shareWebPage", 2, ((StringBuilder)localObject1).toString());
     }
     int j;
@@ -47,7 +47,7 @@ class Share$1
       i = j | 0x2;
     }
     int n = i;
-    if (TextUtils.isEmpty(this.this$0.jdField_e_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.this$0.e)) {
       n = i | 0x4;
     }
     long l2 = System.currentTimeMillis();
@@ -66,19 +66,19 @@ class Share$1
         ((StringBuilder)localObject3).append("");
         ((StringBuilder)localObject3).append(n);
         ((Bundle)localObject1).putString("intext_2", ((StringBuilder)localObject3).toString());
-        ((Bundle)localObject1).putString("stringext_1", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject1).putString("stringext_1", this.a);
         localObject3 = ReportCenter.a();
-        String str2 = this.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+        String str2 = this.this$0.G.getAccount();
         l1 = l2;
         try
         {
           ((ReportCenter)localObject3).a((Bundle)localObject1, "", str2, false);
           l1 = l2;
-          localObject1 = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { this.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+          localObject1 = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { this.this$0.G.getAccount(), URLEncoder.encode(this.a) });
           l1 = l2;
           l2 = System.currentTimeMillis();
           l1 = l2;
-          localObject1 = HttpUtil.openRequest(this.this$0.jdField_a_of_type_AndroidAppActivity, (String)localObject1, null, "GET", null, null, 5000, 5000);
+          localObject1 = HttpUtil.openRequest(this.this$0.y, (String)localObject1, null, "GET", null, null, 5000, 5000);
           l1 = l2;
           l2 = System.currentTimeMillis() - l2;
           if (localObject1 == null) {
@@ -98,7 +98,7 @@ class Share$1
           if (i == 0) {
             try
             {
-              this.this$0.d = 0;
+              this.this$0.w = 0;
               try
               {
                 localObject3 = ((JSONObject)localObject1).getString("title");
@@ -106,8 +106,8 @@ class Share$1
                 if (!bool) {
                   try
                   {
-                    if (TextUtils.isEmpty(this.this$0.jdField_e_of_type_JavaLangString)) {
-                      this.this$0.jdField_e_of_type_JavaLangString = ((String)localObject3);
+                    if (TextUtils.isEmpty(this.this$0.e)) {
+                      this.this$0.e = ((String)localObject3);
                     }
                     j = 4;
                   }
@@ -153,9 +153,9 @@ class Share$1
                         i = j;
                         this.this$0.i = str1;
                         i = j;
-                        this.this$0.jdField_e_of_type_Boolean = false;
+                        this.this$0.p = false;
                         i = j;
-                        this.this$0.b = 0;
+                        this.this$0.q = 0;
                         m = j;
                       }
                     }
@@ -212,13 +212,13 @@ class Share$1
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("QConnect rich END. title=");
-        ((StringBuilder)localObject2).append(this.this$0.jdField_e_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.this$0.e);
         ((StringBuilder)localObject2).append(", desc=");
         ((StringBuilder)localObject2).append(this.this$0.h);
         ((StringBuilder)localObject2).append(", thumb=");
         ((StringBuilder)localObject2).append(this.this$0.i);
         ((StringBuilder)localObject2).append(", shareURL=");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.a);
         QLog.e("shareWebPage", 2, ((StringBuilder)localObject2).toString());
       }
       Object localObject2 = new Bundle();
@@ -246,9 +246,9 @@ class Share$1
       ((StringBuilder)localObject3).append(m);
       ((Bundle)localObject2).putString("intext_4", ((StringBuilder)localObject3).toString());
       if (i > 0) {
-        ((Bundle)localObject2).putString("stringext_1", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject2).putString("stringext_1", this.a);
       }
-      ReportCenter.a().a((Bundle)localObject2, "", this.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), false);
+      ReportCenter.a().a((Bundle)localObject2, "", this.this$0.G.getAccount(), false);
       localObject2 = new Bundle();
       if (TextUtils.isEmpty(this.this$0.i)) {
         j = 1;
@@ -260,7 +260,7 @@ class Share$1
         i = j | 0x2;
       }
       j = i;
-      if (TextUtils.isEmpty(this.this$0.jdField_e_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.this$0.e)) {
         j = i | 0x4;
       }
       ((Bundle)localObject2).putString("report_type", "102");
@@ -280,21 +280,21 @@ class Share$1
       ((Bundle)localObject2).putString("intext_4", ((StringBuilder)localObject3).toString());
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(ReportDef.RepUtil.b(this.jdField_a_of_type_Int));
+      ((StringBuilder)localObject3).append(ReportDef.RepUtil.b(this.b));
       ((Bundle)localObject2).putString("intext_3", ((StringBuilder)localObject3).toString());
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
       ((StringBuilder)localObject3).append(j);
       ((Bundle)localObject2).putString("intext_2", ((StringBuilder)localObject3).toString());
-      ((Bundle)localObject2).putString("stringext_1", this.jdField_a_of_type_JavaLangString);
-      ReportCenter.a().a((Bundle)localObject2, "", this.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), false);
-      localObject2 = Share.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      ((Bundle)localObject2).putString("stringext_1", this.a);
+      ReportCenter.a().a((Bundle)localObject2, "", this.this$0.G.getAccount(), false);
+      localObject2 = Share.a(this.this$0, this.a, this.b);
       if ((TextUtils.isEmpty(this.this$0.i)) && (localObject2 != null))
       {
         ThreadManager.getUIHandler().post(new Share.1.1(this, (SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)localObject2));
         return;
       }
-      Share.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      Share.a(this.this$0, this.a, this.b, this.c);
       return;
       localObject2 = "";
     }
@@ -302,7 +302,7 @@ class Share$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,154 +27,89 @@ import mqq.os.MqqHandler;
 public class SigTlpAnimation
   extends XBubbleAnimation
 {
-  protected static Rect b;
-  protected Rect a;
-  protected View a;
-  private SigTlpAnimation.ItemViewHolder jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder;
-  private RichStatItemBuilder.Holder jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder;
-  protected SignatureTemplateInfo.DynamicItem a;
-  public String a;
-  protected boolean a;
-  public String[] a;
-  protected String b;
-  private int c;
-  
-  static
-  {
-    jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  }
+  protected static Rect k = new Rect();
+  public String d;
+  public String[] e;
+  protected boolean f = false;
+  protected String g;
+  protected View h;
+  protected SignatureTemplateInfo.DynamicItem i;
+  protected Rect j = new Rect();
+  private int u;
+  private RichStatItemBuilder.Holder v;
+  private SigTlpAnimation.ItemViewHolder w;
   
   public SigTlpAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
     super(paramInt, paramAIOAnimationConatiner, paramListView);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable = new VipPngPlayAnimationDrawable(paramListView.getResources());
-    this.jdField_b_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable = null;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.p = new VipPngPlayAnimationDrawable(paramListView.getResources());
+    this.q = null;
+    this.r = new Handler();
   }
   
   public int a(View paramView, boolean paramBoolean)
   {
     View localView = (View)paramView.getParent();
-    int i = paramView.getTop();
+    int m = paramView.getTop();
     if (localView == null) {
-      return i;
+      return m;
     }
     if (paramBoolean)
     {
-      j = i;
+      n = m;
       do
       {
-        i = j;
+        m = n;
         if ((localView instanceof ChatXListView)) {
           break;
         }
-        i = j + localView.getTop();
+        m = n + localView.getTop();
         paramView = (View)localView.getParent();
         localView = paramView;
-        j = i;
+        n = m;
       } while (paramView != null);
-      return i;
+      return m;
     }
     paramView = localView;
-    int j = i;
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    int n = m;
+    if (this.h == null)
     {
-      j = i;
+      n = m;
       do
       {
-        i = j;
+        m = n;
         if ((localView instanceof MutilayoutSlideDetectListView)) {
           break;
         }
-        i = j + localView.getTop();
+        m = n + localView.getTop();
         paramView = (View)localView.getParent();
         localView = paramView;
-        j = i;
+        n = m;
       } while (paramView != null);
-      return i;
+      return m;
     }
     do
     {
-      i = j;
+      m = n;
       if ((paramView instanceof MaxHeightRelativelayout)) {
         break;
       }
-      i = j + paramView.getTop();
+      m = n + paramView.getTop();
       localView = (View)paramView.getParent();
       paramView = localView;
-      j = i;
+      n = m;
     } while (localView != null);
-    return i;
+    return m;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.a(true);
+    this.p.a(true);
   }
   
   protected void a(int paramInt)
   {
-    QQViewCompatUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, paramInt);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    c();
-    if (this.jdField_b_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(this.jdField_b_of_type_AndroidViewView);
-      this.jdField_b_of_type_AndroidViewView = null;
-    }
-    if ((paramBoolean) && ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Boolean)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeAllViews();
-      this.jdField_a_of_type_AndroidViewView = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_b_of_type_AndroidViewView != null)
-    {
-      this.jdField_b_of_type_AndroidViewView.offsetLeftAndRight(this.jdField_a_of_type_AndroidGraphicsRect.left);
-      this.jdField_b_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_AndroidGraphicsRect.top);
-      Object localObject;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("rect.left=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsRect.left);
-        ((StringBuilder)localObject).append(",rect.top=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsRect.top);
-        QLog.d("SigTlpAnimation", 2, ((StringBuilder)localObject).toString());
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        if (localObject != null)
-        {
-          ((View)localObject).offsetLeftAndRight(jdField_b_of_type_AndroidGraphicsRect.left);
-          this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(jdField_b_of_type_AndroidGraphicsRect.top);
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("rectAio.left=");
-            ((StringBuilder)localObject).append(jdField_b_of_type_AndroidGraphicsRect.left);
-            ((StringBuilder)localObject).append(",rectAio.top=");
-            ((StringBuilder)localObject).append(jdField_b_of_type_AndroidGraphicsRect.top);
-            QLog.d("SigTlpAnimation", 2, ((StringBuilder)localObject).toString());
-          }
-        }
-      }
-    }
-    else if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new SigTlpAnimation.1(this));
-    }
-    return true;
+    QQViewCompatUtil.a(this.a, paramInt);
   }
   
   public boolean a(String paramString)
@@ -185,26 +120,26 @@ public class SigTlpAnimation
       if (!((File)localObject).isDirectory()) {
         return false;
       }
-      if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      if (this.e != null) {
         return true;
       }
       localObject = FileUtils.getChildFiles(paramString);
       if (((ArrayList)localObject).size() <= 0) {
         return false;
       }
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[((ArrayList)localObject).size()];
+      this.e = new String[((ArrayList)localObject).size()];
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(File.separator);
       ((StringBuilder)localObject).append("%d.png");
       paramString = ((StringBuilder)localObject).toString();
-      int k = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      int j;
-      for (int i = 0; i < k; i = j)
+      int i1 = this.e.length;
+      int n;
+      for (int m = 0; m < i1; m = n)
       {
-        localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
-        j = i + 1;
-        localObject[i] = String.format(paramString, new Object[] { Integer.valueOf(j) });
+        localObject = this.e;
+        n = m + 1;
+        localObject[m] = String.format(paramString, new Object[] { Integer.valueOf(n) });
       }
       return true;
     }
@@ -213,30 +148,30 @@ public class SigTlpAnimation
   
   public boolean a(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_AndroidViewView == null) {
+    if (this.o == null) {
       return false;
     }
-    if (b())
+    if (f())
     {
       if (paramBoolean) {
-        this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable);
+        this.o.setBackgroundDrawable(this.p);
       }
       ViewGroup.LayoutParams localLayoutParams1 = new ViewGroup.LayoutParams(-2, -2);
-      localLayoutParams1.height = (this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top);
-      localLayoutParams1.width = (this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidGraphicsRect.left);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_b_of_type_AndroidViewView, -1, localLayoutParams1, false);
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null))
+      localLayoutParams1.height = (this.j.bottom - this.j.top);
+      localLayoutParams1.width = (this.j.right - this.j.left);
+      this.a.addViewInLayout(this.o, -1, localLayoutParams1, false);
+      if ((this.f) && (this.h != null))
       {
         ViewGroup.LayoutParams localLayoutParams2 = new ViewGroup.LayoutParams(-2, -2);
-        localLayoutParams2.height = (this.jdField_a_of_type_AndroidViewView.getBottom() - this.jdField_a_of_type_AndroidViewView.getTop());
-        localLayoutParams2.width = (this.jdField_a_of_type_AndroidViewView.getRight() - this.jdField_a_of_type_AndroidViewView.getLeft());
-        Object localObject = (View)this.jdField_a_of_type_AndroidViewView.getParent();
-        View localView = this.jdField_a_of_type_AndroidViewView;
+        localLayoutParams2.height = (this.h.getBottom() - this.h.getTop());
+        localLayoutParams2.width = (this.h.getRight() - this.h.getLeft());
+        Object localObject = (View)this.h.getParent();
+        View localView = this.h;
         if (((localView instanceof TextView)) && (localObject != null) && ((localObject instanceof RelativeLayout)))
         {
           localObject = (RelativeLayout)localView.getParent();
-          jdField_b_of_type_AndroidGraphicsRect.left = (this.jdField_a_of_type_AndroidViewView.getLeft() + ((RelativeLayout)localObject).getLeft() + ((View)((RelativeLayout)localObject).getParent()).getLeft());
-          ((RelativeLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+          k.left = (this.h.getLeft() + ((RelativeLayout)localObject).getLeft() + ((View)((RelativeLayout)localObject).getParent()).getLeft());
+          ((RelativeLayout)localObject).removeView(this.h);
         }
         if (QLog.isColorLevel())
         {
@@ -247,11 +182,11 @@ public class SigTlpAnimation
           ((StringBuilder)localObject).append(localLayoutParams2.height);
           QLog.d("SigTlpAnimation", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, 1, localLayoutParams2, false);
-        this.jdField_a_of_type_AndroidViewView.layout(0, 0, localLayoutParams2.width, localLayoutParams2.height);
+        this.a.addViewInLayout(this.h, 1, localLayoutParams2, false);
+        this.h.layout(0, 0, localLayoutParams2.width, localLayoutParams2.height);
       }
-      this.jdField_b_of_type_AndroidViewView.layout(0, 0, localLayoutParams1.width, localLayoutParams1.height);
-      return a();
+      this.o.layout(0, 0, localLayoutParams1.width, localLayoutParams1.height);
+      return e();
     }
     return false;
   }
@@ -273,9 +208,9 @@ public class SigTlpAnimation
       localStringBuilder.append(paramInt4);
       QLog.d("SigTlpAnimation", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidViewView != null))
+    if ((this.f) && (this.o != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeAllViews();
+      this.a.removeAllViews();
       a(false);
     }
     return false;
@@ -286,40 +221,110 @@ public class SigTlpAnimation
     if (paramVarArgs.length != 7) {
       return false;
     }
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.h = null;
     String str1 = String.valueOf(paramVarArgs[1]);
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramVarArgs[2]);
+    this.g = String.valueOf(paramVarArgs[2]);
     String str2 = (String)paramVarArgs[3];
-    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[4]).booleanValue();
+    this.f = ((Boolean)paramVarArgs[4]).booleanValue();
     if (paramVarArgs[5] != null) {
-      this.jdField_a_of_type_AndroidViewView = ((View)paramVarArgs[5]);
+      this.h = ((View)paramVarArgs[5]);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$DynamicItem = ((SignatureTemplateInfo.DynamicItem)paramVarArgs[6]);
+    this.i = ((SignatureTemplateInfo.DynamicItem)paramVarArgs[6]);
     ThreadManager.getFileThreadHandler().post(new SigTlpAnimation.2(this, str1, str2));
     return true;
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.a(false);
+    this.p.a(false);
   }
   
-  public boolean b()
+  public void b(boolean paramBoolean)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    c();
+    if (this.o != null)
+    {
+      this.a.removeViewInLayout(this.o);
+      this.o = null;
+    }
+    if ((paramBoolean) && ((this.h == null) || (this.f)))
+    {
+      this.a.removeAllViews();
+      this.h = null;
+    }
+    this.a.invalidate();
+  }
+  
+  protected void c()
+  {
+    if (this.p != null) {
+      this.p.c();
+    }
+  }
+  
+  public void d()
+  {
+    b(false);
+  }
+  
+  protected boolean e()
+  {
+    if (this.o != null)
+    {
+      this.o.offsetLeftAndRight(this.j.left);
+      this.o.offsetTopAndBottom(this.j.top);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("rect.left=");
+        ((StringBuilder)localObject).append(this.j.left);
+        ((StringBuilder)localObject).append(",rect.top=");
+        ((StringBuilder)localObject).append(this.j.top);
+        QLog.d("SigTlpAnimation", 2, ((StringBuilder)localObject).toString());
+      }
+      if (this.f)
+      {
+        localObject = this.h;
+        if (localObject != null)
+        {
+          ((View)localObject).offsetLeftAndRight(k.left);
+          this.h.offsetTopAndBottom(k.top);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("rectAio.left=");
+            ((StringBuilder)localObject).append(k.left);
+            ((StringBuilder)localObject).append(",rectAio.top=");
+            ((StringBuilder)localObject).append(k.top);
+            QLog.d("SigTlpAnimation", 2, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
+    else if (this.f)
+    {
+      this.r.post(new SigTlpAnimation.1(this));
+    }
+    return true;
+  }
+  
+  public boolean f()
+  {
+    boolean bool = this.f;
     Object localObject1 = null;
-    int k = 0;
-    int m = 0;
+    int i1 = 0;
+    int i2 = 0;
     Object localObject2;
-    int j;
+    int n;
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder = null;
-      this.c = AIOUtils.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
-      localObject2 = AIOUtils.a(AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetListView, this.c));
+      this.v = null;
+      this.u = AIOUtils.a(Long.valueOf(this.d).longValue(), this.b.getAdapter());
+      localObject2 = AIOUtils.b(AIOUtils.a(this.b, this.u));
       if ((localObject2 != null) && ((localObject2 instanceof RichStatItemBuilder.Holder)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder = ((RichStatItemBuilder.Holder)localObject2);
+        this.v = ((RichStatItemBuilder.Holder)localObject2);
       }
       else if (QLog.isColorLevel())
       {
@@ -327,57 +332,57 @@ public class SigTlpAnimation
         localStringBuilder.append("list view item's tag can not cast to Holder, object:");
         localStringBuilder.append(localObject2);
         localStringBuilder.append(",mPosition:");
-        localStringBuilder.append(this.c);
+        localStringBuilder.append(this.u);
         QLog.e("SigTlpAnimation", 2, localStringBuilder.toString());
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder;
+      localObject2 = this.v;
       if (localObject2 == null)
       {
-        a(true);
+        b(true);
         return false;
       }
-      if (((RichStatItemBuilder.Holder)localObject2).a != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.a();
+      if (((RichStatItemBuilder.Holder)localObject2).d != null) {
+        localObject1 = this.v.d.h();
       }
-      if ((this.jdField_b_of_type_AndroidViewView != null) && (localObject1 != null))
+      if ((this.o != null) && (localObject1 != null))
       {
-        k = ((View)localObject1).getLeft();
-        j = a((View)localObject1, true) - this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
+        i1 = ((View)localObject1).getLeft();
+        n = a((View)localObject1, true) - this.b.getScrollY();
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("getParentTop(mHolder.sigView, true):");
           ((StringBuilder)localObject2).append(a((View)localObject1, true));
           ((StringBuilder)localObject2).append(",istview.getScrollY():");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentWidgetListView.getScrollY());
+          ((StringBuilder)localObject2).append(this.b.getScrollY());
           QLog.e("SigTlpAnimation", 2, ((StringBuilder)localObject2).toString());
         }
-        i = ((View)localObject1).getWidth();
-        m = ((View)localObject1).getHeight();
-        if (this.jdField_a_of_type_AndroidViewView != null) {
-          jdField_b_of_type_AndroidGraphicsRect.top = 0;
+        m = ((View)localObject1).getWidth();
+        i2 = ((View)localObject1).getHeight();
+        if (this.h != null) {
+          k.top = 0;
         }
       }
       else
       {
-        int n = 0;
-        j = 0;
-        i = 0;
-        k = m;
-        m = n;
+        int i3 = 0;
+        n = 0;
+        m = 0;
+        i1 = i2;
+        i2 = i3;
       }
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      localObject1 = this.h;
       if (localObject1 == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder = null;
-        this.c = SignatureManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
-        localObject1 = AIOUtils.a(AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetListView, this.c));
+        this.w = null;
+        this.u = SignatureManager.a(this.d, this.b.getAdapter());
+        localObject1 = AIOUtils.b(AIOUtils.a(this.b, this.u));
         if ((localObject1 != null) && ((localObject1 instanceof SigTlpAnimation.ItemViewHolder)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder = ((SigTlpAnimation.ItemViewHolder)localObject1);
+          this.w = ((SigTlpAnimation.ItemViewHolder)localObject1);
         }
         else if (QLog.isColorLevel())
         {
@@ -386,65 +391,53 @@ public class SigTlpAnimation
           ((StringBuilder)localObject2).append(localObject1);
           QLog.e("SigTlpAnimation", 2, ((StringBuilder)localObject2).toString());
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder == null) {
+        if (this.w == null) {
           return false;
         }
-        if (this.jdField_b_of_type_AndroidViewView != null)
+        if (this.o != null)
         {
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder.a.getRight();
-          j = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder.a.getLeft();
-          m = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder.a.getBottom() - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation$ItemViewHolder.a.getTop();
-          i -= j;
+          m = this.w.a.getRight();
+          n = this.w.a.getLeft();
+          i2 = this.w.a.getBottom() - this.w.a.getTop();
+          m -= n;
         }
         else
         {
+          i2 = 0;
           m = 0;
-          i = 0;
         }
-        j = 0;
+        n = 0;
       }
       else
       {
-        k = ((View)localObject1).getLeft();
-        j = this.jdField_a_of_type_AndroidViewView.getTop();
-        i = this.jdField_a_of_type_AndroidViewView.getRight() - this.jdField_a_of_type_AndroidViewView.getLeft();
-        m = this.jdField_a_of_type_AndroidViewView.getBottom() - this.jdField_a_of_type_AndroidViewView.getTop();
+        i1 = ((View)localObject1).getLeft();
+        n = this.h.getTop();
+        m = this.h.getRight() - this.h.getLeft();
+        i2 = this.h.getBottom() - this.h.getTop();
       }
     }
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$DynamicItem.a;
-    float f1 = i;
-    int i = k + (int)(f2 * f1);
-    f2 = this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$DynamicItem.b;
-    float f3 = m;
-    j += (int)(f2 * f3);
-    this.jdField_a_of_type_AndroidGraphicsRect.set(i, j, (int)(this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$DynamicItem.c * f1) + i, (int)(this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$DynamicItem.d * f3) + j);
+    float f2 = this.i.c;
+    float f1 = m;
+    int m = i1 + (int)(f2 * f1);
+    f2 = this.i.d;
+    float f3 = i2;
+    n += (int)(f2 * f3);
+    this.j.set(m, n, (int)(this.i.e * f1) + m, (int)(this.i.f * f3) + n);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("bindView top=");
-      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(n);
       ((StringBuilder)localObject1).append(",left=");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(m);
       QLog.d("SigTlpAnimation", 2, ((StringBuilder)localObject1).toString());
     }
     return true;
   }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.a();
-    }
-  }
-  
-  public void d()
-  {
-    a(false);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation
  * JD-Core Version:    0.7.0.1
  */

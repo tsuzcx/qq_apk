@@ -13,12 +13,12 @@ public class BuddyFileDataLineMsgTips
   
   protected String a()
   {
-    return this.a.filename;
+    return this.d.filename;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileDataLineMsgTips
  * JD-Core Version:    0.7.0.1
  */

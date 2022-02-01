@@ -1,39 +1,27 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-class QavPanel$7
-  implements Runnable
+final class QavPanel$7
+  implements View.OnTouchListener
 {
-  QavPanel$7(QavPanel paramQavPanel, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2) {}
+  QavPanel$7(View paramView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-      Object localObject = this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiNormalMenuView;
-      int i = this.jdField_a_of_type_Int;
-      if (localObject[i] == null) {
-        return;
+      if ((i == 1) || (i == 3)) {
+        this.a.setAlpha(1.0F);
       }
-      if (i != this.this$0.b)
-      {
-        localObject = this.this$0.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("doShowAnimation, invalid menuType[");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
-        localStringBuilder.append("], curMenuType[");
-        localStringBuilder.append(this.this$0.b);
-        localStringBuilder.append("], seq[");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
-        localStringBuilder.append("]");
-        QLog.w((String)localObject, 1, localStringBuilder.toString());
-        return;
-      }
-      this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiNormalMenuView[this.jdField_a_of_type_Int].a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(123), Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) });
     }
+    else {
+      this.a.setAlpha(0.5F);
+    }
+    return false;
   }
 }
 

@@ -9,12 +9,12 @@ class KandianMergeManager$31
   
   public void run()
   {
-    ReadInJoyHelper.v(KandianMergeManager.a(this.this$0), true);
+    ReadInJoyHelper.w(KandianMergeManager.c(this.this$0), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.31
  * JD-Core Version:    0.7.0.1
  */

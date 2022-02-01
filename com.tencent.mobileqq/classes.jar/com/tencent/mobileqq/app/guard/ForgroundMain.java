@@ -12,13 +12,8 @@ public class ForgroundMain
   extends GuardState
 {
   protected long a;
-  private String a;
   protected long b;
-  
-  public ForgroundMain()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
+  private String h = null;
   
   protected void a()
   {
@@ -26,35 +21,35 @@ public class ForgroundMain
     boolean bool1 = QLog.isColorLevel();
     boolean bool2 = true;
     if (bool1) {
-      QLog.d("GuardManager.ForgroundMain", 2, new Object[] { "ForgroundMain: onTick mClearTick: ", Long.valueOf(this.d), " m" });
+      QLog.d("GuardManager.ForgroundMain", 2, new Object[] { "ForgroundMain: onTick mClearTick: ", Long.valueOf(this.g), " m" });
     }
-    this.jdField_a_of_type_Long += 1L;
+    this.a += 1L;
     this.b += 1L;
-    if (this.d >= 3L)
+    if (this.g >= 3L)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardGuardManager.jdField_a_of_type_JavaLangString != null) {
+      if (this.e.mFgProcess != null) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      QGuardUtils.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:plugins", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      GuardStateScheduler.a().a(2, this.jdField_a_of_type_JavaLangString, 0);
+      QGuardUtils.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:plugins", "com.tencent.mobileqq:mini", this.h });
+      this.g = 0L;
+      GuardStateScheduler.a().a(2, this.h, 0);
     }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.disable_qzone_kill.name())))
+    if ((this.a >= 15L) && (!((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.disable_qzone_kill.name())))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardGuardManager.jdField_a_of_type_JavaLangString != null) {
+      if (this.e.mFgProcess != null) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       QGuardUtils.a(bool1, "com.tencent.mobileqq:qzone");
-      StatisticHitRateCollector.a().d(StatisticHitRateCollector.a());
-      this.jdField_a_of_type_Long = 0L;
+      StatisticHitRateCollector.a().d(StatisticHitRateCollector.b());
+      this.a = 0L;
     }
-    if (this.b >= GuardManager.d)
+    if (this.b >= GuardManager.sTickToolBgFgKill)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardGuardManager.jdField_a_of_type_JavaLangString != null) {
+      if (this.e.mFgProcess != null) {
         bool1 = bool2;
       } else {
         bool1 = false;
@@ -78,15 +73,15 @@ public class ForgroundMain
     if (QLog.isColorLevel()) {
       QLog.d("GuardManager.ForgroundMain", 2, new Object[] { "ForgroundMain: onEnter proc: ", paramString });
     }
-    this.jdField_a_of_type_Long = 0L;
+    this.a = 0L;
     this.b = 0L;
     CoreService.startCoreService(GuardConfig.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardGuardManager.b();
+    this.e.startTimer();
   }
   
   protected void c(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   protected void d(String paramString)
@@ -98,7 +93,7 @@ public class ForgroundMain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guard.ForgroundMain
  * JD-Core Version:    0.7.0.1
  */

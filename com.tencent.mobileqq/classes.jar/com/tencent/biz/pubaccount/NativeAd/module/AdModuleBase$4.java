@@ -11,13 +11,13 @@ class AdModuleBase$4
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    this.a.n.dismiss();
     AdModuleBase.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.4
  * JD-Core Version:    0.7.0.1
  */

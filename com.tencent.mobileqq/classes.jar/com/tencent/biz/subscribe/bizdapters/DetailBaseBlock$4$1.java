@@ -23,38 +23,38 @@ class DetailBaseBlock$4$1
   {
     try
     {
-      Object localObject = LayoutInflater.from(DetailBaseBlock.h(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a)).inflate(2131558759, null, false);
+      Object localObject = LayoutInflater.from(DetailBaseBlock.k(this.b.a)).inflate(2131624379, null, false);
       ((View)localObject).measure(0, 0);
       ((View)localObject).getMeasuredWidth();
       int i = ((View)localObject).getMeasuredHeight();
-      ImageView localImageView = (ImageView)((View)localObject).findViewById(2131369446);
-      DetailBaseBlock.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a, new PopViewAnimationDrawableHelper(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable));
-      DetailBaseBlock.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a).a(new DetailBaseBlock.4.1.1(this));
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(true);
-      localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -2, -2);
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      ImageView localImageView = (ImageView)((View)localObject).findViewById(2131436502);
+      DetailBaseBlock.a(this.b.a, new PopViewAnimationDrawableHelper(this.a));
+      DetailBaseBlock.c(this.b.a).a(new DetailBaseBlock.4.1.1(this));
+      this.a.setOneShot(true);
+      localImageView.setImageDrawable(this.a);
+      this.b.a.f = new PopupWindow((View)localObject, -2, -2);
+      this.b.a.f.setOutsideTouchable(true);
+      this.b.a.f.setTouchable(true);
       localObject = new int[2];
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null)
+      if (this.b.a.b != null)
       {
-        if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())
+        if (this.b.a.b.c())
         {
-          QLog.i(DetailBaseBlock.jdField_a_of_type_JavaLangString, 1, "mCommentBottomBar.isPraised");
+          QLog.i(DetailBaseBlock.a, 1, "mCommentBottomBar.isPraised");
           return;
         }
-        if ((!this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.c()) && (!this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.d()))
+        if ((!this.b.a.b.h()) && (!this.b.a.b.i()))
         {
-          int j = UIUtils.d(DetailBaseBlock.i(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a));
-          this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar, 53, -UIUtils.a(DetailBaseBlock.j(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a), 32.0F), j - i - this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.getMeasuredHeight() + DisplayUtil.a(DetailBaseBlock.k(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a), 10.0F));
-          DetailBaseBlock.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a).a();
-          DetailBaseBlock.b(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a, false);
-          TimeAndCountHelper.a().a(DetailBaseBlock.l(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a), "subscribe_sp_key_show_praise_guide", 1);
-          AnimationDrawableFactory.a().a((String)SubscribeConstants.b.get("praise_guide_pics"));
+          int j = UIUtils.e(DetailBaseBlock.l(this.b.a));
+          this.b.a.f.showAtLocation(this.b.a.b, 53, -UIUtils.a(DetailBaseBlock.m(this.b.a), 32.0F), j - i - this.b.a.b.getMeasuredHeight() + DisplayUtil.a(DetailBaseBlock.n(this.b.a), 10.0F));
+          DetailBaseBlock.c(this.b.a).a();
+          DetailBaseBlock.b(this.b.a, false);
+          TimeAndCountHelper.a().a(DetailBaseBlock.o(this.b.a), "subscribe_sp_key_show_praise_guide", 1);
+          AnimationDrawableFactory.a().a((String)SubscribeConstants.f.get("praise_guide_pics"));
           return;
         }
-        DetailBaseBlock.b(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock$4.a, true);
-        QLog.i(DetailBaseBlock.jdField_a_of_type_JavaLangString, 1, "isShowCommentList or isAddCommentMode");
+        DetailBaseBlock.b(this.b.a, true);
+        QLog.i(DetailBaseBlock.a, 1, "isShowCommentList or isAddCommentMode");
         return;
       }
     }

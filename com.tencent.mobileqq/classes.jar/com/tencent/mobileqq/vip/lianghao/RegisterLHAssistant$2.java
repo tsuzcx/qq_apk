@@ -7,12 +7,12 @@ class RegisterLHAssistant$2
   
   public void run()
   {
-    RegisterLHAssistant.a(this.this$0).a(RegisterLHAssistant.a(this.this$0), new RegisterLHAssistant.2.1(this));
+    RegisterLHAssistant.f(this.this$0).a(RegisterLHAssistant.b(this.this$0), new RegisterLHAssistant.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class StoryHomePushYellowBarHandler
 {
-  public MystoryListView a;
   protected NewMessageYellowBar a;
-  protected AppInterface a;
-  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new StoryHomePushYellowBarHandler.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  protected AppInterface b;
+  public MystoryListView c;
+  private GetRedPointExObserver d = new StoryHomePushYellowBarHandler.1(this);
+  private boolean e;
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    this.e = false;
+    AppInterface localAppInterface = this.b;
     if (localAppInterface != null) {
-      localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver);
+      localAppInterface.removeObserver(this.d);
     }
   }
   
@@ -30,12 +30,12 @@ public class StoryHomePushYellowBarHandler
   {
     if ((paramView instanceof NewMessageYellowBar))
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar = ((NewMessageYellowBar)paramView);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = paramMystoryListView;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new StoryHomePushYellowBarHandler.2(this));
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver);
-      this.jdField_a_of_type_Boolean = true;
+      this.b = paramAppInterface;
+      this.a = ((NewMessageYellowBar)paramView);
+      this.c = paramMystoryListView;
+      this.a.setOnClickListener(new StoryHomePushYellowBarHandler.2(this));
+      this.b.addObserver(this.d);
+      this.e = true;
       return;
     }
     throw new IllegalArgumentException("StoryHomePushYellowBarHandler 传入View不对");
@@ -43,23 +43,23 @@ public class StoryHomePushYellowBarHandler
   
   public void b()
   {
-    NewMessageYellowBar localNewMessageYellowBar = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar;
+    NewMessageYellowBar localNewMessageYellowBar = this.a;
     if (localNewMessageYellowBar == null) {
       return;
     }
     localNewMessageYellowBar.a(0, 0);
-    ((TroopRedTouchManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).b(21);
+    ((TroopRedTouchManager)this.b.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).d(21);
   }
   
   public void c()
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.b;
     if (localAppInterface != null) {
-      localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver);
+      localAppInterface.removeObserver(this.d);
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver);
+    this.b = QQStoryContext.k();
+    if (this.e) {
+      this.b.addObserver(this.d);
     }
   }
 }

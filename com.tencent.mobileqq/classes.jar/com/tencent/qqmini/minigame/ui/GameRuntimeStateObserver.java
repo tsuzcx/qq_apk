@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.util.Pair;
 import com.tencent.mobileqq.triton.statistic.GameLaunchStatistic;
+import com.tencent.qqmini.minigame.report.GameStopType;
 import com.tencent.qqmini.minigame.report.MiniGameBeaconReport;
 import com.tencent.qqmini.minigame.task.LaunchEngineUISteps;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -31,12 +32,14 @@ public class GameRuntimeStateObserver
   private static final String TAG = "GameRuntimeState";
   private Activity mActivity;
   private long mBeginOnCreate;
+  private GameLaunchStatistic mGameLaunchStatistic;
   private final Runnable mGameLaunchWatchDog = new GameRuntimeStateObserver.1(this);
-  private GameUIProxy mGameUI;
+  private final GameUIProxy mGameUI;
+  private boolean mHasFirstFrameFinished = false;
+  private boolean mHasReportLoadCanceled = false;
   private long mLastOnShowTime;
   private final LaunchEngineUISteps mLaunchEngineUISteps = new LaunchEngineUISteps(AppLoaderFactory.g().getContext());
   private long mLoadGameStartTime;
-  private LoadingUI mLoadingUI;
   private final Handler mMainHandler = new Handler(Looper.getMainLooper());
   private MiniAppInfo mMiniAppInfo;
   private long mOnGameLaunchedTime;
@@ -81,12 +84,14 @@ public class GameRuntimeStateObserver
   
   private void onEngineLoaded(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Game engine loaded. ");
-    localStringBuilder.append(this.mMiniAppInfo);
-    QMLog.i("GameRuntimeState", localStringBuilder.toString());
-    if ((paramMiniAppStateMessage.obj instanceof String)) {
-      updateLoadingProcessText((String)paramMiniAppStateMessage.obj, 1.0F);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Game engine loaded. ");
+    ((StringBuilder)localObject).append(this.mMiniAppInfo);
+    QMLog.i("GameRuntimeState", ((StringBuilder)localObject).toString());
+    if ((paramMiniAppStateMessage.obj instanceof String))
+    {
+      localObject = (String)paramMiniAppStateMessage.obj;
+      this.mGameUI.updateLoadingProcessText((String)localObject, 1.0F);
     }
     if (paramMiniAppStateMessage.appRuntimeLoader != null) {
       paramMiniAppStateMessage.appRuntimeLoader.notifyRuntimeEvent(4, new Object[0]);
@@ -128,6 +133,7 @@ public class GameRuntimeStateObserver
     ((StringBuilder)localObject).append("Game First render. ");
     ((StringBuilder)localObject).append(this.mMiniAppInfo);
     QMLog.i("GameRuntimeState", ((StringBuilder)localObject).toString());
+    this.mHasFirstFrameFinished = true;
     int i;
     if ((paramMiniAppStateMessage.obj instanceof Integer)) {
       i = ((Integer)paramMiniAppStateMessage.obj).intValue();
@@ -160,7 +166,7 @@ public class GameRuntimeStateObserver
     } else {
       paramMiniAppStateMessage = "";
     }
-    MiniGameBeaconReport.reportLaunchStatics((TaskExecutionStatics)localObject, paramMiniAppStateMessage, true);
+    MiniGameBeaconReport.reportLaunchStatics(paramMiniAppStateMessage, (TaskExecutionStatics)localObject, this.mGameLaunchStatistic, true, this.mGameUI.getStatMode());
     reportJankTraceStatistics(true);
     paramMiniAppStateMessage = new StringBuilder();
     paramMiniAppStateMessage.append("launchGame ");
@@ -199,7 +205,7 @@ public class GameRuntimeStateObserver
       if (paramMiniAppStateMessage.isInProgress()) {
         this.mGameUI.setPackageDownloadFlag(true);
       }
-      updateLoadingProcessText(paramMiniAppStateMessage.getProcessInPercentage(), paramMiniAppStateMessage.getProgress());
+      this.mGameUI.updateLoadingProcessText(paramMiniAppStateMessage.getProcessInPercentage(), paramMiniAppStateMessage.getProgress());
     }
   }
   
@@ -209,6 +215,25 @@ public class GameRuntimeStateObserver
       reportJankTraceStatistics(false);
     }
     notifyGameOnHide();
+  }
+  
+  private void reportGameLoadCanceled(GameStopType paramGameStopType)
+  {
+    if (!this.mHasFirstFrameFinished)
+    {
+      if (this.mHasReportLoadCanceled) {
+        return;
+      }
+      this.mHasReportLoadCanceled = true;
+      TaskExecutionStatics localTaskExecutionStatics = getTaskExecutionStatics(System.currentTimeMillis() - this.mBeginOnCreate);
+      Object localObject = this.mMiniAppInfo;
+      if (localObject != null) {
+        localObject = ((MiniAppInfo)localObject).appId;
+      } else {
+        localObject = "";
+      }
+      MiniGameBeaconReport.reportGameLoadCancelEvent((String)localObject, localTaskExecutionStatics, this.mGameLaunchStatistic, paramGameStopType, this.mGameUI.getStatMode());
+    }
   }
   
   private void reportJankTraceStatistics(boolean paramBoolean)
@@ -221,122 +246,129 @@ public class GameRuntimeStateObserver
     this.mMainHandler.post(paramRunnable);
   }
   
-  private void updateLoadingProcessText(String paramString, float paramFloat)
-  {
-    if (this.mLoadingUI == null) {
-      return;
-    }
-    runOnUiThread(new GameRuntimeStateObserver.7(this, paramString, paramFloat));
-  }
-  
   public void onStateChange(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
   {
     this.mMiniAppInfo = this.mGameUI.getMiniAppInfo();
     this.mActivity = this.mGameUI.getActivity();
-    this.mLoadingUI = this.mGameUI.getLoadingUI();
     int i = paramMiniAppStateMessage.what;
     if (i != 20)
     {
-      StringBuilder localStringBuilder;
-      if (i != 63)
+      if (i != 60)
       {
-        long l;
-        if (i != 2021)
+        StringBuilder localStringBuilder;
+        if (i != 63)
         {
-          if (i != 2031)
+          long l;
+          if (i != 2021)
           {
-            if (i != 2032) {
-              switch (i)
-              {
-              default: 
+            if (i != 2031)
+            {
+              if (i != 2032) {
                 switch (i)
                 {
                 default: 
                   switch (i)
                   {
                   default: 
+                    switch (i)
+                    {
+                    default: 
+                      return;
+                    case 2053: 
+                      notifyGameStop();
+                      if (!(paramMiniAppStateMessage.obj instanceof GameStopType)) {
+                        break;
+                      }
+                      reportGameLoadCanceled((GameStopType)paramMiniAppStateMessage.obj);
+                      return;
+                    case 2052: 
+                      onMsgHide();
+                      return;
+                    case 2051: 
+                      this.mLastOnShowTime = SystemClock.uptimeMillis();
+                      notifyGameOnShow();
+                      return;
+                    }
+                    break;
+                  case 2013: 
+                    onGameRuntimeMsgEngineFailed(paramMiniAppStateMessage);
                     return;
-                  case 2053: 
-                    notifyGameStop();
+                  case 2012: 
+                    onEngineLoaded(paramMiniAppStateMessage);
                     return;
-                  case 2052: 
-                    onMsgHide();
+                  case 2011: 
+                    localStringBuilder = new StringBuilder();
+                    localStringBuilder.append("Game engine loading. ");
+                    localStringBuilder.append(this.mMiniAppInfo);
+                    QMLog.i("GameRuntimeState", localStringBuilder.toString());
+                    if (!(paramMiniAppStateMessage.obj instanceof LoadingStatus)) {
+                      break;
+                    }
+                    paramMiniAppStateMessage = (LoadingStatus)paramMiniAppStateMessage.obj;
+                    this.mGameUI.updateLoadingProcessText(paramMiniAppStateMessage.getProcessInPercentage(), paramMiniAppStateMessage.getProgress());
                     return;
                   }
-                  this.mLastOnShowTime = SystemClock.uptimeMillis();
-                  notifyGameOnShow();
-                  return;
-                case 2013: 
-                  onGameRuntimeMsgEngineFailed(paramMiniAppStateMessage);
-                  return;
-                case 2012: 
-                  onEngineLoaded(paramMiniAppStateMessage);
-                  return;
-                }
-                localStringBuilder = new StringBuilder();
-                localStringBuilder.append("Game engine loading. ");
-                localStringBuilder.append(this.mMiniAppInfo);
-                QMLog.i("GameRuntimeState", localStringBuilder.toString());
-                if (!(paramMiniAppStateMessage.obj instanceof LoadingStatus)) {
                   break;
+                case 2003: 
+                  onGpkgFailed();
+                  return;
+                case 2002: 
+                  paramMiniAppStateMessage = new StringBuilder();
+                  paramMiniAppStateMessage.append("Game package loaded. ");
+                  paramMiniAppStateMessage.append(this.mMiniAppInfo);
+                  QMLog.i("GameRuntimeState", paramMiniAppStateMessage.toString());
+                  this.mGameUI.updateLoadingProcessText("100%", 1.0F);
+                  l = System.currentTimeMillis() - this.mLoadGameStartTime;
+                  MiniReportManager.reportEventType(this.mMiniAppInfo, 1036, null, this.mGameUI.getLaunchMsg(), null, 0, "1", l, null);
+                  paramMiniAppStateMessage = new StringBuilder();
+                  paramMiniAppStateMessage.append("step[load gpkg] succeed, cost time: ");
+                  paramMiniAppStateMessage.append(l);
+                  QMLog.e("[minigame][timecost] ", paramMiniAppStateMessage.toString());
+                  return;
+                case 2001: 
+                  onGpkgLoading(paramMiniAppStateMessage);
+                  return;
                 }
-                paramMiniAppStateMessage = (LoadingStatus)paramMiniAppStateMessage.obj;
-                updateLoadingProcessText(paramMiniAppStateMessage.getProcessInPercentage(), paramMiniAppStateMessage.getProgress());
-                return;
-              case 2003: 
-                onGpkgFailed();
-                return;
-              case 2002: 
-                paramMiniAppStateMessage = new StringBuilder();
-                paramMiniAppStateMessage.append("Game package loaded. ");
-                paramMiniAppStateMessage.append(this.mMiniAppInfo);
-                QMLog.i("GameRuntimeState", paramMiniAppStateMessage.toString());
-                updateLoadingProcessText("100%", 1.0F);
-                l = System.currentTimeMillis() - this.mLoadGameStartTime;
-                MiniReportManager.reportEventType(this.mMiniAppInfo, 1036, null, this.mGameUI.getLaunchMsg(), null, 0, "1", l, null);
-                paramMiniAppStateMessage = new StringBuilder();
-                paramMiniAppStateMessage.append("step[load gpkg] succeed, cost time: ");
-                paramMiniAppStateMessage.append(l);
-                QMLog.e("[minigame][timecost] ", paramMiniAppStateMessage.toString());
-                return;
-              case 2001: 
-                onGpkgLoading(paramMiniAppStateMessage);
-                return;
+              } else {
+                onGameRuntimeMsgFirstRender(paramMiniAppStateMessage);
               }
-            } else {
-              onGameRuntimeMsgFirstRender(paramMiniAppStateMessage);
+            }
+            else
+            {
+              paramMiniAppStateMessage = new StringBuilder();
+              paramMiniAppStateMessage.append("Game surface create. ");
+              paramMiniAppStateMessage.append(this.mMiniAppInfo);
+              QMLog.i("GameRuntimeState", paramMiniAppStateMessage.toString());
+              this.mOnGameSurfaceCreateTime = System.currentTimeMillis();
             }
           }
           else
           {
+            l = System.currentTimeMillis() - this.mLoadGameStartTime;
+            MiniReportManager.reportEventType(this.mMiniAppInfo, 1037, null, this.mGameUI.getLaunchMsg(), null, 0, "1", l, null);
             paramMiniAppStateMessage = new StringBuilder();
-            paramMiniAppStateMessage.append("Game surface create. ");
-            paramMiniAppStateMessage.append(this.mMiniAppInfo);
-            QMLog.i("GameRuntimeState", paramMiniAppStateMessage.toString());
-            this.mOnGameSurfaceCreateTime = System.currentTimeMillis();
+            paramMiniAppStateMessage.append("[MiniEng] step[init runTime] cost time ");
+            paramMiniAppStateMessage.append(l);
+            paramMiniAppStateMessage.append(", include steps[load baseLib, load gpkg]");
+            QMLog.e("[minigame][timecost] ", paramMiniAppStateMessage.toString());
+            this.mLaunchEngineUISteps.onRuntimeInitDone();
           }
         }
         else
         {
-          l = System.currentTimeMillis() - this.mLoadGameStartTime;
-          MiniReportManager.reportEventType(this.mMiniAppInfo, 1037, null, this.mGameUI.getLaunchMsg(), null, 0, "1", l, null);
-          paramMiniAppStateMessage = new StringBuilder();
-          paramMiniAppStateMessage.append("[MiniEng] step[init runTime] cost time ");
-          paramMiniAppStateMessage.append(l);
-          paramMiniAppStateMessage.append(", include steps[load baseLib, load gpkg]");
-          QMLog.e("[minigame][timecost] ", paramMiniAppStateMessage.toString());
-          this.mLaunchEngineUISteps.onRuntimeInitDone();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Game launched. ");
+          localStringBuilder.append(this.mMiniAppInfo);
+          QMLog.i("GameRuntimeState", localStringBuilder.toString());
+          paramMiniAppStateMessage = (Pair)paramMiniAppStateMessage.obj;
+          this.mOnGameLaunchedTime = System.currentTimeMillis();
+          this.mGameLaunchStatistic = ((GameLaunchStatistic)paramMiniAppStateMessage.second);
+          this.mLaunchEngineUISteps.onGameLaunched((GameLaunchStatistic)paramMiniAppStateMessage.second);
         }
       }
       else
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("Game launched. ");
-        localStringBuilder.append(this.mMiniAppInfo);
-        QMLog.i("GameRuntimeState", localStringBuilder.toString());
-        this.mOnGameLaunchedTime = System.currentTimeMillis();
-        paramMiniAppStateMessage = (Pair)paramMiniAppStateMessage.obj;
-        this.mLaunchEngineUISteps.onGameLaunched((GameLaunchStatistic)paramMiniAppStateMessage.second);
+        reportGameLoadCanceled(GameStopType.CAPSULE_BUTTON);
       }
     }
     else
@@ -357,7 +389,7 @@ public class GameRuntimeStateObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameRuntimeStateObserver
  * JD-Core Version:    0.7.0.1
  */

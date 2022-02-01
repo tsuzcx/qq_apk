@@ -10,17 +10,7 @@ import mqq.app.AppRuntime;
 
 public abstract interface ILebaProxy
 {
-  public abstract int a();
-  
-  public abstract QBaseActivity a();
-  
-  public abstract HashMap<String, LebaViewItem> a();
-  
-  public abstract List<LebaViewItem> a();
-  
   public abstract AppRuntime a();
-  
-  public abstract void a();
   
   public abstract void a(Intent paramIntent);
   
@@ -30,17 +20,25 @@ public abstract interface ILebaProxy
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
   
-  public abstract boolean a();
-  
   public abstract void b();
   
-  public abstract void c();
+  public abstract QBaseActivity c();
   
-  public abstract void d();
+  public abstract int d();
+  
+  public abstract void e();
+  
+  public abstract List<LebaViewItem> f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract HashMap<String, LebaViewItem> i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.proxy.ILebaProxy
  * JD-Core Version:    0.7.0.1
  */

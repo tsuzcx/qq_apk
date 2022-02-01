@@ -7,10 +7,10 @@ class CommentInputPopupWindow$3
 {
   public void a()
   {
-    if (CommentInputPopupWindow.a(this.a))
+    if (CommentInputPopupWindow.e(this.a))
     {
       CommentInputPopupWindow.b(this.a, false);
-      CommentInputPopupWindow.a(this.a).setVisibility(0);
+      CommentInputPopupWindow.f(this.a).setVisibility(0);
     }
     else
     {
@@ -21,12 +21,12 @@ class CommentInputPopupWindow$3
   
   public void a(int paramInt)
   {
-    if (CommentInputPopupWindow.a(this.a) != paramInt)
+    if (CommentInputPopupWindow.b(this.a) != paramInt)
     {
       CommentInputPopupWindow.a(this.a, paramInt);
-      CommentInputPopupWindow.a(this.a);
-      CommentInputPopupWindow.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      CommentInputPopupWindow.a(this.a).commit();
+      CommentInputPopupWindow.c(this.a);
+      CommentInputPopupWindow.d(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      CommentInputPopupWindow.d(this.a).commit();
     }
     CommentInputPopupWindow.a(this.a, true);
   }

@@ -14,7 +14,7 @@ class AEEditorResourceManager$4
   {
     AEEditorResourceManager.a(this.this$0);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(AEEditorResourceManager.a(this.this$0));
+    ((StringBuilder)localObject).append(AEEditorResourceManager.b(this.this$0));
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append(".nomedia");
     localObject = ((StringBuilder)localObject).toString();
@@ -26,14 +26,14 @@ class AEEditorResourceManager$4
       }
       catch (IOException localIOException)
       {
-        AEQLog.a(AEEditorResourceManager.b(this.this$0), "loadAssets", localIOException);
+        AEQLog.a(AEEditorResourceManager.c(this.this$0), "loadAssets", localIOException);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager.4
  * JD-Core Version:    0.7.0.1
  */

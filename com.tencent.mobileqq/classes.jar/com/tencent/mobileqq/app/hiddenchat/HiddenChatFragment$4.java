@@ -19,7 +19,7 @@ class HiddenChatFragment$4
       }
       if (paramBoolean)
       {
-        this.a.a();
+        this.a.b();
         if (QLog.isColorLevel()) {
           QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
         }
@@ -31,7 +31,7 @@ class HiddenChatFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment.4
  * JD-Core Version:    0.7.0.1
  */

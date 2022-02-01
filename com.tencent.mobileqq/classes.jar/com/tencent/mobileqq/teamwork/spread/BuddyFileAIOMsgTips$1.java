@@ -14,7 +14,7 @@ class BuddyFileAIOMsgTips$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(this.this$0.jdField_a_of_type_JavaLangString);
+    Object localObject = this.this$0.a.getFileManagerProxy().a(this.this$0.b);
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
       ThreadManager.post(new BuddyFileAIOMsgTips.1.1(this, (List)localObject), 8, null, true);
@@ -24,7 +24,7 @@ class BuddyFileAIOMsgTips$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("current AIO has not File,peerType[");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.this$0.c);
       ((StringBuilder)localObject).append("]");
       QLog.i("BuddyFileAIOMsgTips", 1, ((StringBuilder)localObject).toString());
     }
@@ -33,7 +33,7 @@ class BuddyFileAIOMsgTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.msf.sdk;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.c.o;
-import com.tencent.mobileqq.msf.core.c.o.a;
+import com.tencent.mobileqq.msf.core.d.o;
+import com.tencent.mobileqq.msf.core.d.o.a;
 import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -153,7 +153,7 @@ class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.u
  * JD-Core Version:    0.7.0.1
  */

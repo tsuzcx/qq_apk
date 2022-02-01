@@ -18,9 +18,9 @@ class SimpleViewCreator$CommonBottomViewHolder
   extends BaseItemViewHolder
   implements View.OnClickListener
 {
-  private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363738);
-  private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363753);
-  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364976);
+  private View b = this.f.findViewById(2131429661);
+  private View c = this.f.findViewById(2131429677);
+  private View d = this.f.findViewById(2131431103);
   
   public SimpleViewCreator$CommonBottomViewHolder(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
   {
@@ -31,7 +31,7 @@ class SimpleViewCreator$CommonBottomViewHolder
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
     paramBaseData1 = (CommonBottomData)paramBaseData2;
-    int j = paramBaseData1.u;
+    int j = paramBaseData1.aP;
     int i = 0;
     if ((j == 14) && (paramBaseData1.b)) {
       this.d.setVisibility(0);
@@ -41,7 +41,7 @@ class SimpleViewCreator$CommonBottomViewHolder
     if (paramBaseData1.a)
     {
       this.c.setVisibility(0);
-      if (paramBaseData2.u == 14) {
+      if (paramBaseData2.aP == 14) {
         this.c.getLayoutParams().height = DisplayUtil.a(this.c.getContext(), 6.0F);
       } else {
         this.c.getLayoutParams().height = DisplayUtil.a(this.c.getContext(), 10.0F);
@@ -52,7 +52,7 @@ class SimpleViewCreator$CommonBottomViewHolder
       this.c.setVisibility(8);
     }
     paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-    if (paramBaseData2.u != 14) {
+    if (paramBaseData2.aP != 14) {
       i = DisplayUtil.a(this.b.getContext(), 12.0F);
     }
     paramBaseData1.rightMargin = i;
@@ -61,15 +61,15 @@ class SimpleViewCreator$CommonBottomViewHolder
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.u == 14)
+    if (this.g.aP == 14)
     {
-      paramView = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
+      paramView = (BaseActivity)this.f.getContext();
       if ((paramView != null) && ((paramView instanceof FastWebActivity))) {
-        ((FastWebActivity)paramView).a();
+        ((FastWebActivity)paramView).b();
       }
-      AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.b;
+      AbsBaseArticleInfo localAbsBaseArticleInfo = this.g.aQ;
       int i = (int)localAbsBaseArticleInfo.mChannelID;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.a.a()) {
+      if (this.g.aR.a()) {
         paramView = "2";
       } else {
         paramView = "1";
@@ -80,7 +80,7 @@ class SimpleViewCreator$CommonBottomViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.SimpleViewCreator.CommonBottomViewHolder
  * JD-Core Version:    0.7.0.1
  */

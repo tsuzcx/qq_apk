@@ -12,7 +12,7 @@ class PublicAccountUtilImpl$12
   {
     try
     {
-      ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
+      ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.a.getQueryParameter("article_id"), this.b, "", "");
       return;
     }
     catch (Exception localException) {}
@@ -20,7 +20,7 @@ class PublicAccountUtilImpl$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.12
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ class BackgroundSelectorAdapter$1
   
   public void onClick(View paramView)
   {
-    if (BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter) != this.jdField_a_of_type_Int)
+    if (BackgroundSelectorAdapter.a(this.b) != this.a)
     {
-      Iterator localIterator = BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter).iterator();
+      Iterator localIterator = BackgroundSelectorAdapter.b(this.b).iterator();
       while (localIterator.hasNext()) {
-        ((BackgroundSelectBean)localIterator.next()).a = false;
+        ((BackgroundSelectBean)localIterator.next()).b = false;
       }
-      ((BackgroundSelectBean)BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter).get(this.jdField_a_of_type_Int)).a = true;
-      BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter.notifyDataSetChanged();
-      if (BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter) != null) {
-        BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter).a((BackgroundSelectBean)BackgroundSelectorAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishAdapterBackgroundSelectorAdapter).get(this.jdField_a_of_type_Int));
+      ((BackgroundSelectBean)BackgroundSelectorAdapter.b(this.b).get(this.a)).b = true;
+      BackgroundSelectorAdapter.a(this.b, this.a);
+      this.b.notifyDataSetChanged();
+      if (BackgroundSelectorAdapter.c(this.b) != null) {
+        BackgroundSelectorAdapter.c(this.b).a((BackgroundSelectBean)BackgroundSelectorAdapter.b(this.b).get(this.a));
       }
       ReportController.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
     }
@@ -34,7 +34,7 @@ class BackgroundSelectorAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.adapter.BackgroundSelectorAdapter.1
  * JD-Core Version:    0.7.0.1
  */

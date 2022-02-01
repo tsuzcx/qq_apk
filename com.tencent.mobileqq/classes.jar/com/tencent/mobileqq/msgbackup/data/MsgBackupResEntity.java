@@ -53,7 +53,7 @@ public class MsgBackupResEntity
       this.extraData = this.extraDataStr.getBytes();
     }
     MsgBackupUtil.a(this);
-    this.filePath = MsgBackupUtil.c(this.filePath);
+    this.filePath = MsgBackupUtil.e(this.filePath);
   }
   
   public String toLogString()
@@ -79,7 +79,7 @@ public class MsgBackupResEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity
  * JD-Core Version:    0.7.0.1
  */

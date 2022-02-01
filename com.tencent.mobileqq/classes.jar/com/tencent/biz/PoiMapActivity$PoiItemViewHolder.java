@@ -7,15 +7,15 @@ import android.widget.TextView;
 public class PoiMapActivity$PoiItemViewHolder
 {
   public View a;
-  public ImageView a;
-  public TextView a;
-  public View b;
-  public ImageView b;
   public TextView b;
-  public View c;
-  public ImageView c;
+  public TextView c;
   public View d;
-  public ImageView d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
+  public ImageView h;
+  public View i;
+  public View j;
   
   public PoiMapActivity$PoiItemViewHolder(PoiMapActivity paramPoiMapActivity) {}
 }

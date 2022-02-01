@@ -12,38 +12,43 @@ import com.tencent.xaction.log.QLog;
 public class TcSdkManager
   implements ITcSdkContext
 {
-  private static ITcSdkContext jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ITcSdkContext.OnCardStateChangeListener jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext$OnCardStateChangeListener;
-  public NetworkReceiver a;
-  public CacheManager a;
-  public NetManager a;
+  private static ITcSdkContext a;
+  private NetManager b = new NetManager();
+  private CacheManager c = new CacheManager();
+  private NetworkReceiver d;
+  private Context e;
+  private ITcSdkContext.OnCardStateChangeListener f;
   
-  public static ITcSdkContext a()
+  public static ITcSdkContext b()
   {
-    if (jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext == null) {
-          jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext = new TcSdkManager();
+        if (a == null) {
+          a = new TcSdkManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext;
+    return a;
   }
   
-  public Context a()
+  public void a()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    this.c.a("");
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ITcSdkContext.OnCardStateChangeListener localOnCardStateChangeListener = this.jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext$OnCardStateChangeListener;
+    ITcSdkContext.OnCardStateChangeListener localOnCardStateChangeListener = this.f;
     if (localOnCardStateChangeListener != null) {
       localOnCardStateChangeListener.a(paramInt1, paramInt2);
     }
+  }
+  
+  public void a(long paramLong)
+  {
+    CacheManager.a = paramLong;
   }
   
   public void a(Context paramContext)
@@ -53,38 +58,49 @@ public class TcSdkManager
       QLog.a("TcSdkManager", 1, "SDK init error, Context is must", null);
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_ComTencentTreasurecardManagerCacheManager = new CacheManager();
-    this.jdField_a_of_type_ComTencentTreasurecardManagerNetManager = new NetManager();
-    paramContext = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    this.jdField_a_of_type_ComTencentTreasurecardCommonNetworkReceiver = new NetworkReceiver();
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentTreasurecardCommonNetworkReceiver, paramContext);
+    this.e = paramContext.getApplicationContext();
+    if (this.d == null)
+    {
+      paramContext = new IntentFilter();
+      paramContext.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+      this.d = new NetworkReceiver();
+      this.e.registerReceiver(this.d, paramContext);
+    }
   }
   
   public void a(ITcSdkContext.OnCardStateChangeListener paramOnCardStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentTreasurecardApiITcSdkContext$OnCardStateChangeListener = paramOnCardStateChangeListener;
+    this.f = paramOnCardStateChangeListener;
   }
   
   public void a(INetCallBack paramINetCallBack)
   {
-    NetManager localNetManager = this.jdField_a_of_type_ComTencentTreasurecardManagerNetManager;
-    if (localNetManager != null) {
-      localNetManager.a(paramINetCallBack);
-    }
+    this.b.a(paramINetCallBack);
   }
   
   public void a(INetRequest paramINetRequest)
   {
-    NetManager localNetManager = this.jdField_a_of_type_ComTencentTreasurecardManagerNetManager;
-    if (localNetManager != null) {
-      localNetManager.a(paramINetRequest);
-    }
+    this.b.a(paramINetRequest);
+  }
+  
+  public CacheManager c()
+  {
+    return this.c;
+  }
+  
+  public NetManager d()
+  {
+    return this.b;
+  }
+  
+  public Context e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.treasurecard.manager.TcSdkManager
  * JD-Core Version:    0.7.0.1
  */

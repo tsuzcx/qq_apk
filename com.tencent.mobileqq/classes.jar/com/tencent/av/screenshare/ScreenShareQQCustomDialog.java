@@ -11,19 +11,21 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 public class ScreenShareQQCustomDialog
   extends QQCustomDialog
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private Handler a = new Handler(Looper.getMainLooper());
   private int b;
+  private int c;
+  private boolean d;
+  private String e;
+  private String f;
   
-  public ScreenShareQQCustomDialog(Context paramContext, int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
+  public ScreenShareQQCustomDialog(Context paramContext, int paramInt1, String paramString1, String paramString2, boolean paramBoolean, int paramInt2)
   {
     super(paramContext, paramInt1);
-    this.jdField_a_of_type_Int = paramInt2;
     this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.d = paramBoolean;
+    this.e = paramString1;
+    this.f = paramString2;
   }
   
   private Runnable a()
@@ -33,29 +35,30 @@ public class ScreenShareQQCustomDialog
   
   private void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.b > 0)
     {
-      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, 1000L);
+      this.lBtn.setText(this.e);
+      this.rBtn.setText(String.format("%s(%d)", new Object[] { this.f, Integer.valueOf(this.b) }));
+      this.a.postDelayed(paramRunnable, 1000L);
       return;
     }
-    this.lBtn.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Int = this.b;
-    this.lBtn.setEnabled(true);
+    this.lBtn.setText(this.e);
+    this.rBtn.setText(this.f);
+    this.b = this.c;
+    this.rBtn.setEnabled(true);
   }
   
   public void a(Typeface paramTypeface, ColorStateList paramColorStateList)
   {
     this.title.setTypeface(paramTypeface);
-    this.rBtn.setTypeface(paramTypeface);
-    this.lBtn.setTypeface(paramTypeface);
     this.lBtn.setTextColor(paramColorStateList);
+    this.rBtn.setTextColor(paramColorStateList);
   }
   
   public void dismiss()
   {
     super.dismiss();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.a.removeCallbacksAndMessages(null);
   }
   
   public void onBackPressed() {}
@@ -63,11 +66,13 @@ public class ScreenShareQQCustomDialog
   public void show()
   {
     super.show();
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int > 0))
+    if ((this.d) && (this.b > 0))
     {
-      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
-      this.lBtn.setEnabled(false);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(a(), 1000L);
+      this.lBtn.setText(this.e);
+      this.lBtn.setEnabled(true);
+      this.rBtn.setText(String.format("%s(%d)", new Object[] { this.f, Integer.valueOf(this.b) }));
+      this.rBtn.setEnabled(false);
+      this.a.postDelayed(a(), 1000L);
     }
   }
 }

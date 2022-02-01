@@ -15,15 +15,15 @@ class PhotoPreviewCustomizationReadInJoy$1$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", this.a.a.a().a());
-    PhotoPreviewCustomizationReadInJoy.e(this.a.a).setResult(-1, paramDialogInterface);
-    PhotoPreviewCustomizationReadInJoy.f(this.a.a).finish();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", this.a.a.s().m());
+    PhotoPreviewCustomizationReadInJoy.f(this.a.a).setResult(-1, paramDialogInterface);
+    PhotoPreviewCustomizationReadInJoy.g(this.a.a).finish();
     PhotoPreviewCustomizationReadInJoy.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationReadInJoy.1.1
  * JD-Core Version:    0.7.0.1
  */

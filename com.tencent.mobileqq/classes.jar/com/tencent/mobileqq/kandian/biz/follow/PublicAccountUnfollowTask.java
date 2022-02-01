@@ -18,12 +18,12 @@ import mqq.os.MqqHandler;
 public class PublicAccountUnfollowTask
   implements Ox978RespCallBack
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PublicAccountUnfollowTask.UnFollowPublicAccountListenner jdField_a_of_type_ComTencentMobileqqKandianBizFollowPublicAccountUnfollowTask$UnFollowPublicAccountListenner;
-  private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private int a = 0;
+  private QQAppInterface b;
+  private String c;
+  private Context d;
+  private MqqHandler e;
+  private PublicAccountUnfollowTask.UnFollowPublicAccountListenner f;
   
   public PublicAccountUnfollowTask(QQAppInterface paramQQAppInterface, String paramString, Context paramContext)
   {
@@ -32,46 +32,46 @@ public class PublicAccountUnfollowTask
   
   public PublicAccountUnfollowTask(QQAppInterface paramQQAppInterface, String paramString, Context paramContext, PublicAccountUnfollowTask.UnFollowPublicAccountListenner paramUnFollowPublicAccountListenner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPublicAccountUnfollowTask$UnFollowPublicAccountListenner = paramUnFollowPublicAccountListenner;
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
+    this.b = paramQQAppInterface;
+    this.c = paramString;
+    this.f = paramUnFollowPublicAccountListenner;
+    this.d = paramContext.getApplicationContext();
+    this.e = ThreadManager.getSubThreadHandler();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Int < 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((this.a < 3) && (this.b != null))
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.1(this));
+      this.e.post(new PublicAccountUnfollowTask.1(this));
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("retry count reach max value or app = null ! retryCount : ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     QLog.d("PublicAccountUnfollowTask", 2, localStringBuilder.toString());
   }
   
   public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    int i = this.a;
+    this.a = (i + 1);
     if (i < 3)
     {
       paramPublicAccountInfo = new StringBuilder();
       paramPublicAccountInfo.append("unfollow account fail ! uin : ");
-      paramPublicAccountInfo.append(this.jdField_a_of_type_JavaLangString);
+      paramPublicAccountInfo.append(this.c);
       paramPublicAccountInfo.append(" , errCode : ");
       paramPublicAccountInfo.append(paramInt);
       paramPublicAccountInfo.append(", retry : ");
-      paramPublicAccountInfo.append(this.jdField_a_of_type_Int);
+      paramPublicAccountInfo.append(this.a);
       QLog.d("PublicAccountUnfollowTask", 2, paramPublicAccountInfo.toString());
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.2(this));
+      this.e.post(new PublicAccountUnfollowTask.2(this));
       return;
     }
-    paramPublicAccountInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPublicAccountUnfollowTask$UnFollowPublicAccountListenner;
+    paramPublicAccountInfo = this.f;
     if (paramPublicAccountInfo != null) {
-      paramPublicAccountInfo.a(false, this.jdField_a_of_type_JavaLangString);
+      paramPublicAccountInfo.a(false, this.c);
     }
   }
   
@@ -83,13 +83,13 @@ public class PublicAccountUnfollowTask
       ((StringBuilder)localObject).append("unfollow account success ! uin : ");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(",retry : ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("PublicAccountUnfollowTask", 2, ((StringBuilder)localObject).toString());
-      paramInt = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      RecentUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
-      ((ReadInJoyLogicManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().e();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPublicAccountUnfollowTask$UnFollowPublicAccountListenner;
+      paramInt = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.b, this.c);
+      RecentUtil.b(this.b, this.c, paramInt);
+      this.b.getMessageFacade().a(this.c, 1008);
+      ((ReadInJoyLogicManager)this.b.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().y();
+      localObject = this.f;
       if (localObject != null) {
         ((PublicAccountUnfollowTask.UnFollowPublicAccountListenner)localObject).a(true, paramString);
       }
@@ -102,7 +102,7 @@ public class PublicAccountUnfollowTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.PublicAccountUnfollowTask
  * JD-Core Version:    0.7.0.1
  */

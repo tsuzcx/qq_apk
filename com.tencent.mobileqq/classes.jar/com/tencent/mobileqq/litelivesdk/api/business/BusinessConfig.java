@@ -12,78 +12,76 @@ public class BusinessConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<BusinessConfig> CREATOR = new BusinessConfig.1();
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public List<String> a;
-  public boolean a;
-  public int b;
+  public String a = "";
   public String b;
-  public boolean b;
   public int c;
-  public String c;
   public int d;
-  public String d;
   public int e;
-  public String e;
+  public int f;
+  public String g;
+  public int h;
+  public String i;
+  public String j;
+  public boolean k;
+  public boolean l;
+  public HashMap<String, String> m;
+  public List<String> n;
   
   public BusinessConfig()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.k = true;
+    this.l = true;
+    this.m = new HashMap();
+    this.n = new ArrayList();
   }
   
   protected BusinessConfig(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
     boolean bool2 = true;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    this.k = true;
+    this.l = true;
+    this.m = new HashMap();
+    this.n = new ArrayList();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    this.g = paramParcel.readString();
+    this.h = paramParcel.readInt();
+    this.i = paramParcel.readString();
+    this.j = paramParcel.readString();
     boolean bool1;
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.k = bool1;
+    this.m = paramParcel.readHashMap(getClass().getClassLoader());
+    if (this.m == null) {
+      this.m = new HashMap();
     }
-    paramParcel.readStringList(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramParcel.readStringList(this.n);
+    if (this.n == null) {
+      this.n = new ArrayList();
     }
     if (paramParcel.readByte() != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.l = bool1;
   }
   
   public LiveConfig.SDKType a()
   {
-    int i = this.jdField_e_of_type_Int;
-    if (i == 0) {
+    int i1 = this.h;
+    if (i1 == 0) {
       return LiveConfig.SDKType.AUDIENCE;
     }
-    if (i == 1) {
+    if (i1 == 1) {
       return LiveConfig.SDKType.ANCHOR;
     }
     return LiveConfig.SDKType.FULL;
@@ -96,25 +94,25 @@ public class BusinessConfig
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilHashMap);
-    paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeString(this.g);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeString(this.j);
+    paramParcel.writeByte((byte)this.k);
+    paramParcel.writeMap(this.m);
+    paramParcel.writeStringList(this.n);
+    paramParcel.writeByte((byte)this.l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig
  * JD-Core Version:    0.7.0.1
  */

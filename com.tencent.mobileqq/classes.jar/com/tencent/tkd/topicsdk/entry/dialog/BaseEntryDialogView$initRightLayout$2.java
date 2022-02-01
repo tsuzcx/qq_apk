@@ -13,7 +13,7 @@ final class BaseEntryDialogView$initRightLayout$2
   
   public final boolean onLongClick(View paramView)
   {
-    paramView = this.a.d();
+    paramView = this.a.getRightLongClickListener();
     if (paramView != null)
     {
       paramView = (Boolean)paramView.invoke();
@@ -26,7 +26,7 @@ final class BaseEntryDialogView$initRightLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.dialog.BaseEntryDialogView.initRightLayout.2
  * JD-Core Version:    0.7.0.1
  */

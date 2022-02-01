@@ -23,7 +23,7 @@ final class MediaSelectorPanel$updateSelectMediaList$1
   
   public final void invoke()
   {
-    Object localObject1 = (Iterable)this.this$0.a();
+    Object localObject1 = (Iterable)this.this$0.getMediaList();
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -39,7 +39,7 @@ final class MediaSelectorPanel$updateSelectMediaList$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.updateSelectMediaList.1
  * JD-Core Version:    0.7.0.1
  */

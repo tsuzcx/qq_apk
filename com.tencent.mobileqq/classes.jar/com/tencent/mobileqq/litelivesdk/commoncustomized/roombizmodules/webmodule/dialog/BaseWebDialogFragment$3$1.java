@@ -10,7 +10,7 @@ class BaseWebDialogFragment$3$1
   
   public void a(String paramString)
   {
-    JsBizAdapter.ValueCallback localValueCallback = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter$ValueCallback;
+    JsBizAdapter.ValueCallback localValueCallback = this.a;
     if (localValueCallback != null) {
       localValueCallback.onReceiveValue(paramString);
     }
@@ -18,7 +18,7 @@ class BaseWebDialogFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.BaseWebDialogFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

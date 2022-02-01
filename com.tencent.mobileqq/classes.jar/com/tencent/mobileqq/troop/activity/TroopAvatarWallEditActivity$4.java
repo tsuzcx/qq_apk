@@ -15,7 +15,7 @@ class TroopAvatarWallEditActivity$4
     EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("troop_");
-    ((StringBuilder)localObject).append(this.this$0.a);
+    ((StringBuilder)localObject).append(this.this$0.k);
     localObject = (Setting)localEntityManager.find(Setting.class, ((StringBuilder)localObject).toString());
     localEntityManager.close();
     this.this$0.runOnUiThread(new TroopAvatarWallEditActivity.4.1(this, (Setting)localObject));
@@ -23,7 +23,7 @@ class TroopAvatarWallEditActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.4
  * JD-Core Version:    0.7.0.1
  */

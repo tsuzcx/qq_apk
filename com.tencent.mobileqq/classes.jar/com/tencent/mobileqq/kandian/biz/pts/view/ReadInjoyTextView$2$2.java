@@ -9,12 +9,12 @@ class ReadInjoyTextView$2$2
   
   public void run()
   {
-    this.a.a.setText(RIJStringUtils.a(this.a.b));
+    this.a.c.setText(RIJStringUtils.a(this.a.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyTextView.2.2
  * JD-Core Version:    0.7.0.1
  */

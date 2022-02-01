@@ -9,20 +9,20 @@ public class BMQQPlusPanelAppLoader
 {
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 201);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 202);
-    if (HotPicManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 204);
+    a(paramBaseChatPie.ah.a, 201);
+    a(paramBaseChatPie.ah.a, 202);
+    if (HotPicManager.a(paramBaseChatPie.d).j()) {
+      a(paramBaseChatPie.ah.a, 204);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 206);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 208);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 205);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 212);
+    a(paramBaseChatPie.ah.a, 206);
+    a(paramBaseChatPie.ah.a, 208);
+    a(paramBaseChatPie.ah.a, 205);
+    a(paramBaseChatPie.ah.a, 212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.BMQQPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

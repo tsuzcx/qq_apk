@@ -20,8 +20,8 @@ class ReadInJoyNewFeedsActivity$9
   
   public void a(int paramInt)
   {
-    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
-      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().az_();
+    if ((ReadInJoyNewFeedsActivity.a(this.a).c(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).c(paramInt).a() != null)) {
+      ReadInJoyNewFeedsActivity.a(this.a).c(paramInt).a().g();
     }
   }
   
@@ -33,8 +33,8 @@ class ReadInJoyNewFeedsActivity$9
     if (paramInt2 == 1) {
       this.a.getIntent().putExtra("channel_from", 7);
     }
-    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment))) {
-      this.a.a().f();
+    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.j() instanceof ReadInJoySubChannelFragment))) {
+      this.a.j().l();
     } else {
       this.a.a(paramInt2, 256, null, true);
     }
@@ -42,15 +42,15 @@ class ReadInJoyNewFeedsActivity$9
     AlphaAnimation localAlphaAnimation;
     if (paramInt2 == 3)
     {
-      localView = this.a.b.findViewById(2131378810);
+      localView = this.a.s.findViewById(2131447492);
       if (localView.getVisibility() == 0)
       {
         if (paramInt1 == 0) {
-          ((TextView)localView.findViewById(2131369249)).setText(HardCodeUtil.a(2131693524));
+          ((TextView)localView.findViewById(2131436227)).setText(HardCodeUtil.a(2131891080));
         } else if (paramInt1 == 1) {
-          ((TextView)localView.findViewById(2131369249)).setText(HardCodeUtil.a(2131712832));
+          ((TextView)localView.findViewById(2131436227)).setText(HardCodeUtil.a(2131910404));
         } else if (paramInt1 == 2) {
-          ((TextView)localView.findViewById(2131369249)).setText(HardCodeUtil.a(2131712981));
+          ((TextView)localView.findViewById(2131436227)).setText(HardCodeUtil.a(2131910545));
         }
         localView.clearAnimation();
         localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
@@ -61,7 +61,7 @@ class ReadInJoyNewFeedsActivity$9
     }
     else
     {
-      localView = this.a.b.findViewById(2131378810);
+      localView = this.a.s.findViewById(2131447492);
       if (localView.getVisibility() != 0)
       {
         localView.clearAnimation();
@@ -76,7 +76,7 @@ class ReadInJoyNewFeedsActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.9
  * JD-Core Version:    0.7.0.1
  */

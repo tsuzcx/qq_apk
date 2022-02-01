@@ -28,84 +28,84 @@ class WebFastTextViewCreator$TextViewHolder
   public WebFastTextViewCreator$TextViewHolder(View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379920));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363680);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131380154);
+    this.a = ((TextView)paramView.findViewById(2131448801));
+    this.b = paramView.findViewById(2131429593);
+    this.c = paramView.findViewById(2131449070);
     paramView.setOnLongClickListener(this);
   }
   
   private void a(TextData paramTextData)
   {
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    localTextView.setTextColor(localTextView.getResources().getColor(2131166921));
-    if (paramTextData.jdField_b_of_type_Int == 3)
+    this.b.setVisibility(8);
+    this.c.setVisibility(8);
+    TextView localTextView = this.a;
+    localTextView.setTextColor(localTextView.getResources().getColor(2131167842));
+    if (paramTextData.c == 3)
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#999999"));
+      this.b.setVisibility(0);
+      this.a.setTextColor(Color.parseColor("#999999"));
       return;
     }
-    if (paramTextData.jdField_b_of_type_Int == 2)
+    if (paramTextData.c == 2)
     {
-      if ((this.jdField_c_of_type_AndroidViewView.getLayoutParams() instanceof LinearLayout.LayoutParams))
+      if ((this.c.getLayoutParams() instanceof LinearLayout.LayoutParams))
       {
         paramTextData = new TextPaint();
-        paramTextData.setTextSize(this.jdField_a_of_type_Float);
+        paramTextData.setTextSize(this.i);
         double d2 = paramTextData.getFontMetrics().descent - paramTextData.getFontMetrics().ascent;
         double d1 = d2;
         if (d2 <= 0.0D) {
-          d1 = this.jdField_a_of_type_Float;
+          d1 = this.i;
         }
-        paramTextData = (LinearLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
+        paramTextData = (LinearLayout.LayoutParams)this.c.getLayoutParams();
         d1 /= 2.0D;
-        d2 = this.jdField_c_of_type_Int;
+        d2 = this.l;
         Double.isNaN(d2);
-        paramTextData.setMargins(0, (int)(d1 + 0.5D + d2), AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidWidgetTextView.getResources()), 0);
+        paramTextData.setMargins(0, (int)(d1 + 0.5D + d2), AIOUtils.b(12.0F, this.a.getResources()), 0);
       }
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      this.c.setVisibility(0);
     }
   }
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    if (paramBaseData2.u != 1) {
+    if (paramBaseData2.aP != 1) {
       return;
     }
     paramBaseData1 = (TextData)paramBaseData2;
-    if (this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_Float);
+    if (this.i > 0.0F) {
+      this.a.setTextSize(0, this.i);
     }
-    if ((this.d > 0) && (this.jdField_c_of_type_Int > 0))
+    if ((this.m > 0) && (this.l > 0))
     {
-      this.jdField_c_of_type_Int = Utils.dp2px(Double.valueOf(this.jdField_c_of_type_Int).doubleValue());
-      this.d = Utils.dp2px(Double.valueOf(this.d).doubleValue());
-      this.jdField_a_of_type_AndroidViewView.setPadding(this.d, 0, this.d, 0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, this.jdField_c_of_type_Int, 0, this.jdField_c_of_type_Int);
+      this.l = Utils.dp2px(Double.valueOf(this.l).doubleValue());
+      this.m = Utils.dp2px(Double.valueOf(this.m).doubleValue());
+      this.f.setPadding(this.m, 0, this.m, 0);
+      this.a.setPadding(0, this.l, 0, this.l);
     }
-    if (this.jdField_b_of_type_Float > 0.0F)
+    if (this.j > 0.0F)
     {
-      this.jdField_b_of_type_Float = Utils.dp2px(Double.valueOf(this.jdField_b_of_type_Float).doubleValue());
-      this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(this.jdField_b_of_type_Float, 1.0F);
+      this.j = Utils.dp2px(Double.valueOf(this.j).doubleValue());
+      this.a.setLineSpacing(this.j, 1.0F);
     }
-    if (this.jdField_b_of_type_Int != 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
+    if (this.k != 0) {
+      this.a.setTextColor(this.k);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(paramBaseData1.jdField_a_of_type_Int);
+    this.a.setText(paramBaseData1.a);
+    this.a.setGravity(paramBaseData1.b);
     a(paramBaseData1);
   }
   
   public boolean onLongClick(View paramView)
   {
-    new QQCustomMenu().a(0, HardCodeUtil.a(2131716362));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebOnItemClickListener.a(this);
+    new QQCustomMenu().a(0, HardCodeUtil.a(2131913803));
+    this.h.a(this);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastTextViewCreator.TextViewHolder
  * JD-Core Version:    0.7.0.1
  */

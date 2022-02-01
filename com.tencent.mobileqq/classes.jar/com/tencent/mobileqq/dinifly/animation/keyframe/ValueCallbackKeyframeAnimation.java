@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import com.tencent.mobileqq.dinifly.value.LottieFrameInfo;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
@@ -47,10 +47,15 @@ public class ValueCallbackKeyframeAnimation<K, A>
       super.notifyListeners();
     }
   }
+  
+  public void setProgress(float paramFloat)
+  {
+    this.progress = paramFloat;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.ValueCallbackKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

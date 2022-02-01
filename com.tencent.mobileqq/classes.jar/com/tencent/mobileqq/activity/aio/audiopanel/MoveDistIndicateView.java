@@ -21,16 +21,16 @@ public class MoveDistIndicateView
   implements IBasePresenterView
 {
   public int a;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private IThemeViewPresenter jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelIThemeViewPresenter;
   public int b;
-  private Bitmap b;
-  private int c;
-  private int d = 0;
-  private int e = 0;
+  private Paint c;
+  private int d;
+  private Bitmap e;
+  private Bitmap f;
+  private Matrix g = new Matrix();
+  private Rect h = new Rect();
+  private int i = 0;
+  private int j = 0;
+  private IThemeViewPresenter k;
   
   public MoveDistIndicateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,83 +40,83 @@ public class MoveDistIndicateView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_Int = ViewUtils.a(29.0F);
-    this.jdField_b_of_type_Int = ViewUtils.a(42.0F);
-    this.e = ViewUtils.a(10.0F);
-    this.c = this.jdField_a_of_type_Int;
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.a = ViewUtils.dip2px(29.0F);
+    this.b = ViewUtils.dip2px(42.0F);
+    this.j = ViewUtils.dip2px(10.0F);
+    this.d = this.a;
     if (QLog.isDevelopLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("init(), mRaidusMin:");
-      paramContext.append(this.jdField_a_of_type_Int);
+      paramContext.append(this.a);
       paramContext.append(",mRaidusMax:");
-      paramContext.append(this.jdField_b_of_type_Int);
+      paramContext.append(this.b);
       QLog.d("MoveDistIndicateView", 4, paramContext.toString());
     }
   }
   
-  public IBasePresenter a()
+  public IBasePresenter getPresenter()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelIThemeViewPresenter;
+    return this.k;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int i = getWidth();
-    int j = getHeight();
-    int m = i / 2;
-    int n = j / 2;
-    int k = paramCanvas.getSaveCount();
+    int m = getWidth();
+    int n = getHeight();
+    int i2 = m / 2;
+    int i3 = n / 2;
+    int i1 = paramCanvas.getSaveCount();
     paramCanvas.save();
-    int i1 = this.c;
-    int i2 = this.jdField_a_of_type_Int;
+    int i4 = this.d;
+    int i5 = this.a;
     float f1;
-    if (i1 > this.e + i2)
+    if (i4 > this.j + i5)
     {
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+      if (this.f != null)
       {
-        f1 = this.jdField_b_of_type_Int / i2;
-        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        m = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
-        n = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((i - m * f1) / 2.0F, (j - n * f1) / 2.0F);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, m, n);
-        paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
+        f1 = this.b / i5;
+        this.g.reset();
+        i2 = this.f.getWidth();
+        i3 = this.f.getHeight();
+        this.g.setScale(f1, f1);
+        this.g.postTranslate((m - i2 * f1) / 2.0F, (n - i3 * f1) / 2.0F);
+        this.h.set(0, 0, i2, i3);
+        paramCanvas.concat(this.g);
+        paramCanvas.drawBitmap(this.f, null, this.h, null);
       }
       else
       {
-        if (this.d == 1) {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167173));
+        if (this.i == 1) {
+          this.c.setColor(getResources().getColor(2131168158));
         } else {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167174));
+          this.c.setColor(getResources().getColor(2131168159));
         }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.c.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.c.setStrokeWidth(1.0F);
+        paramCanvas.drawCircle(i2, i3, this.d, this.c);
       }
     }
-    else if (i1 > i2)
+    else if (i4 > i5)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167055));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-      paramCanvas.drawCircle(m, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.c.setColor(getResources().getColor(2131167992));
+      this.c.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.c.setStrokeWidth(1.0F);
+      paramCanvas.drawCircle(i2, i3, this.a, this.c);
     }
     else
     {
       Object localObject;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      if (this.e != null)
       {
-        f1 = i1 / i2;
-        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        m = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-        float f2 = (i - m * f1) * 0.5F + 0.5F;
-        float f3 = (j - n * f1) * 0.5F + 0.5F;
+        f1 = i4 / i5;
+        this.g.reset();
+        i2 = this.e.getWidth();
+        i3 = this.e.getHeight();
+        float f2 = (m - i2 * f1) * 0.5F + 0.5F;
+        float f3 = (n - i3 * f1) * 0.5F + 0.5F;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -126,54 +126,54 @@ public class MoveDistIndicateView
           ((StringBuilder)localObject).append(f3);
           QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f2, f3);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, m, n);
-        paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
+        this.g.setScale(f1, f1);
+        this.g.postTranslate(f2, f3);
+        this.h.set(0, 0, i2, i3);
+        paramCanvas.concat(this.g);
+        paramCanvas.drawBitmap(this.e, null, this.h, null);
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelIThemeViewPresenter;
+        localObject = this.k;
         if ((localObject != null) && (((IThemeViewPresenter)localObject).a(MobileQQ.sMobileQQ.peekAppRuntime(), false, null))) {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711423);
+          this.c.setColor(-16711423);
         } else {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+          this.c.setColor(-1);
         }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.c.setStyle(Paint.Style.FILL);
+        this.c.setStrokeWidth(1.0F);
+        paramCanvas.drawCircle(i2, i3, this.d, this.c);
       }
     }
-    paramCanvas.restoreToCount(k);
+    paramCanvas.restoreToCount(i1);
     super.onDraw(paramCanvas);
   }
   
   public void setAfterBitmap(Bitmap paramBitmap)
   {
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.f = paramBitmap;
   }
   
   public void setLevel(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    this.c = (i + (this.jdField_b_of_type_Int - i) * paramInt / 100);
+    int m = this.a;
+    this.d = (m + (this.b - m) * paramInt / 100);
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setLevel(), max=");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(" min=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" mRadius=");
-      localStringBuilder.append(this.c);
-      localStringBuilder.append(" type =");
       localStringBuilder.append(this.d);
+      localStringBuilder.append(" type =");
+      localStringBuilder.append(this.i);
       localStringBuilder.append(" level=");
       localStringBuilder.append(paramInt);
       QLog.d("MoveDistIndicateView", 4, localStringBuilder.toString());
     }
-    if (this.c > this.jdField_a_of_type_Int + this.e) {
+    if (this.d > this.a + this.j) {
       setPressed(true);
     } else {
       setPressed(false);
@@ -184,26 +184,26 @@ public class MoveDistIndicateView
   public void setPresenter(IBasePresenter paramIBasePresenter)
   {
     if ((paramIBasePresenter != null) && ((paramIBasePresenter instanceof IThemeViewPresenter))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelIThemeViewPresenter = ((IThemeViewPresenter)paramIBasePresenter);
+      this.k = ((IThemeViewPresenter)paramIBasePresenter);
     }
     if (paramIBasePresenter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelIThemeViewPresenter = null;
+      this.k = null;
     }
   }
   
   public void setScaleBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.e = paramBitmap;
   }
   
   public void setType(int paramInt)
   {
-    this.d = paramInt;
+    this.i = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.MoveDistIndicateView
  * JD-Core Version:    0.7.0.1
  */

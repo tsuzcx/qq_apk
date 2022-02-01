@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
-import android.util.JsonToken;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.value.ScaleXY;
 
 public class ScaleXYParser
@@ -12,7 +12,7 @@ public class ScaleXYParser
   public ScaleXY parse(JsonReader paramJsonReader, float paramFloat)
   {
     int i;
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY) {
       i = 1;
     } else {
       i = 0;
@@ -33,7 +33,7 @@ public class ScaleXYParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ScaleXYParser
  * JD-Core Version:    0.7.0.1
  */

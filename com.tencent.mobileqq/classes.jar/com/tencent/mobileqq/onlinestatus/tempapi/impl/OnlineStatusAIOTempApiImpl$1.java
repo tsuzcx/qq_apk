@@ -10,12 +10,12 @@ class OnlineStatusAIOTempApiImpl$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusTempapiIOnlineStatusAIOTempApi$PaiYiPaiCallback.a(paramInt, paramBoolean, paramObject);
+    this.a.a(paramInt, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.tempapi.impl.OnlineStatusAIOTempApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

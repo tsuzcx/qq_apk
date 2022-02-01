@@ -13,12 +13,12 @@ class VipGeneralAdvPopWindow$4
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.a.d();
+      this.a.f();
       return true;
     }
     if (paramMotionEvent.getAction() == 4)
     {
-      this.a.d();
+      this.a.f();
       return true;
     }
     return paramView.onTouchEvent(paramMotionEvent);
@@ -26,7 +26,7 @@ class VipGeneralAdvPopWindow$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralAdvPopWindow.4
  * JD-Core Version:    0.7.0.1
  */

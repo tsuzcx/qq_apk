@@ -40,6 +40,7 @@ import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.editor.composite.VideoCompositeHelper;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.VidUtil;
 import com.tencent.mobileqq.statistics.AVShortVideoReportController;
@@ -198,6 +199,90 @@ public class ShortVideoUtils
     return new int[] { j, k };
   }
   
+  public static int[] adjustSizeforGuild(int paramInt1, int paramInt2)
+  {
+    int k = 100;
+    if (paramInt1 > 0) {
+      j = paramInt1;
+    } else {
+      j = 100;
+    }
+    if (paramInt2 > 0) {
+      k = paramInt2;
+    }
+    double d = ((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getCONTENTVIEW_MAX_WIDTH_SIZE();
+    Double.isNaN(d);
+    int m = (int)(d + 0.5D);
+    int n = AIOUtils.b(305.0F, BaseApplicationImpl.getApplication().getResources());
+    int i = m;
+    if (m > n) {
+      i = n;
+    }
+    if (j >= k) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    String str;
+    if (m != 0)
+    {
+      float f = j / k;
+      if (f > 1.555556F)
+      {
+        d = i * 9.0F / 16.0F;
+        Double.isNaN(d);
+        j = (int)(d + 0.5D);
+      }
+      for (str = "landscape close to 16:9";; str = "landscape close to 4:3")
+      {
+        k = j;
+        j = i;
+        break label264;
+        if (f <= 1.166667F) {
+          break;
+        }
+        d = i * 3.0F / 4.0F;
+        Double.isNaN(d);
+        j = (int)(d + 0.5D);
+      }
+      str = "landscape close to 1:1";
+    }
+    else
+    {
+      if (k / j > 1.3F)
+      {
+        d = i * 10.0F / 16.0F;
+        Double.isNaN(d);
+        j = (int)(d + 0.5D);
+        str = "portrait close to 10:16";
+        k = i;
+        break label264;
+      }
+      str = "portrait close to 1:1";
+    }
+    int j = i;
+    k = j;
+    label264:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("adjustSize ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" maxPixel:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ow:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" oh:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" w:");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" h:");
+      localStringBuilder.append(k);
+      QLog.d("ShortVideoUtils", 2, localStringBuilder.toString());
+    }
+    return new int[] { j, k };
+  }
+  
   public static int[] calculateScaledThumbWH(Bitmap paramBitmap)
   {
     if (paramBitmap == null)
@@ -327,7 +412,7 @@ public class ShortVideoUtils
     return true;
   }
   
-  public static boolean checkShortVideoSoReadyToLoad(AppInterface paramAppInterface)
+  public static boolean checkShortVideoSoReadyToLoad()
   {
     try
     {
@@ -340,11 +425,11 @@ public class ShortVideoUtils
         return bool;
       }
     }
-    catch (Exception paramAppInterface)
+    catch (Exception localException)
     {
-      paramAppInterface.printStackTrace();
+      localException.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoUtils", 2, "checkShortVideoSoReadyToLoad failure.", paramAppInterface);
+        QLog.e("ShortVideoUtils", 2, "checkShortVideoSoReadyToLoad failure.", localException);
       }
     }
     return false;
@@ -457,7 +542,7 @@ public class ShortVideoUtils
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(AppConstants.SDCARD_ROOT);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131700831));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898855));
       localObject = ((StringBuilder)localObject).toString();
     }
     else if ((!((String)localObject).contains("MX4")) && (!((String)localObject).contains("MX6")) && (!((String)localObject).contains("MX5")) && (!((String)localObject).contains("M355")) && (!((String)localObject).contains("M571C")))
@@ -474,7 +559,7 @@ public class ShortVideoUtils
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(AppConstants.SDCARD_ROOT);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131700832));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131898856));
         localObject = ((StringBuilder)localObject).toString();
       }
     }
@@ -532,13 +617,13 @@ public class ShortVideoUtils
   public static long getDuration(String paramString)
   {
     // Byte code:
-    //   0: new 357	java/io/File
+    //   0: new 362	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 363	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokevirtual 366	java/io/File:exists	()Z
+    //   5: invokespecial 368	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: invokevirtual 371	java/io/File:exists	()Z
     //   11: istore_2
-    //   12: ldc2_w 504
+    //   12: ldc2_w 510
     //   15: lstore 5
     //   17: iload_2
     //   18: ifne +58 -> 76
@@ -549,7 +634,7 @@ public class ShortVideoUtils
     //   31: invokespecial 194	java/lang/StringBuilder:<init>	()V
     //   34: astore 7
     //   36: aload 7
-    //   38: ldc_w 507
+    //   38: ldc_w 513
     //   41: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: pop
     //   45: aload 7
@@ -557,54 +642,54 @@ public class ShortVideoUtils
     //   48: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: pop
     //   52: aload 7
-    //   54: ldc_w 509
+    //   54: ldc_w 515
     //   57: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: pop
     //   61: ldc 65
     //   63: iconst_2
     //   64: aload 7
     //   66: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   69: invokestatic 228	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   72: ldc2_w 504
+    //   69: invokestatic 240	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: ldc2_w 510
     //   75: lreturn
-    //   76: new 511	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
+    //   76: new 517	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
     //   79: dup
-    //   80: invokespecial 512	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
+    //   80: invokespecial 518	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
     //   83: astore 7
     //   85: aload 7
     //   87: aload_0
-    //   88: invokevirtual 517	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
+    //   88: invokevirtual 523	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
     //   91: aload 7
-    //   93: invokevirtual 520	android/media/MediaPlayer:prepare	()V
+    //   93: invokevirtual 526	android/media/MediaPlayer:prepare	()V
     //   96: aload 7
-    //   98: invokevirtual 522	android/media/MediaPlayer:getDuration	()I
+    //   98: invokevirtual 528	android/media/MediaPlayer:getDuration	()I
     //   101: istore_1
     //   102: iload_1
     //   103: i2l
     //   104: lstore_3
     //   105: aload 7
-    //   107: invokevirtual 525	android/media/MediaPlayer:release	()V
+    //   107: invokevirtual 531	android/media/MediaPlayer:release	()V
     //   110: lload_3
     //   111: lreturn
     //   112: astore_0
     //   113: goto +33 -> 146
     //   116: astore_0
     //   117: aload_0
-    //   118: invokevirtual 308	java/lang/Exception:printStackTrace	()V
+    //   118: invokevirtual 313	java/lang/Exception:printStackTrace	()V
     //   121: lload 5
     //   123: lstore_3
     //   124: invokestatic 191	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   127: ifeq -22 -> 105
     //   130: ldc 65
     //   132: iconst_2
-    //   133: ldc_w 526
+    //   133: ldc_w 532
     //   136: aload_0
-    //   137: invokestatic 528	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   137: invokestatic 534	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: lload 5
     //   142: lstore_3
     //   143: goto -38 -> 105
     //   146: aload 7
-    //   148: invokevirtual 525	android/media/MediaPlayer:release	()V
+    //   148: invokevirtual 531	android/media/MediaPlayer:release	()V
     //   151: goto +5 -> 156
     //   154: aload_0
     //   155: athrow
@@ -631,7 +716,7 @@ public class ShortVideoUtils
     if (!FileUtils.fileExists(paramString)) {
       return 0L;
     }
-    return VideoCompositeHelper.a(paramString);
+    return VideoCompositeHelper.b(paramString);
   }
   
   public static int getHotPiCRedDotConfigVersion(String paramString)
@@ -678,7 +763,7 @@ public class ShortVideoUtils
     }
     paramFile = VidUtil.getVidFromSourceDirFile(paramFile);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(QQStoryConstant.f);
+    localStringBuilder.append(QQStoryConstant.g);
     localStringBuilder.append(paramFile);
     localStringBuilder.append(".mp4");
     return localStringBuilder.toString();
@@ -963,63 +1048,63 @@ public class ShortVideoUtils
     //   17: iconst_0
     //   18: iastore
     //   19: pop
-    //   20: invokestatic 668	com/tencent/util/VersionUtils:d	()Z
+    //   20: invokestatic 675	com/tencent/util/VersionUtils:d	()Z
     //   23: ifeq +285 -> 308
-    //   26: new 670	android/media/MediaMetadataRetriever
+    //   26: new 677	android/media/MediaMetadataRetriever
     //   29: dup
-    //   30: invokespecial 671	android/media/MediaMetadataRetriever:<init>	()V
+    //   30: invokespecial 678	android/media/MediaMetadataRetriever:<init>	()V
     //   33: astore_3
     //   34: aload_3
     //   35: aload_0
-    //   36: invokevirtual 672	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   36: invokevirtual 679	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   39: aload_3
     //   40: bipush 18
-    //   42: invokevirtual 675	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   42: invokevirtual 682	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   45: astore 5
     //   47: aload_3
     //   48: bipush 19
-    //   50: invokevirtual 675	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   50: invokevirtual 682	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   53: astore 6
     //   55: aload_3
     //   56: bipush 9
-    //   58: invokevirtual 675	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   58: invokevirtual 682	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   61: astore 7
-    //   63: ldc_w 345
+    //   63: ldc_w 350
     //   66: astore_2
-    //   67: getstatic 680	android/os/Build$VERSION:SDK_INT	I
+    //   67: getstatic 687	android/os/Build$VERSION:SDK_INT	I
     //   70: bipush 17
     //   72: if_icmplt +10 -> 82
     //   75: aload_3
     //   76: bipush 24
-    //   78: invokevirtual 675	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   78: invokevirtual 682	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   81: astore_2
     //   82: aload 4
     //   84: iconst_0
     //   85: aload 5
-    //   87: invokestatic 686	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   90: invokevirtual 689	java/lang/Integer:intValue	()I
+    //   87: invokestatic 693	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   90: invokevirtual 696	java/lang/Integer:intValue	()I
     //   93: iastore
     //   94: aload 4
     //   96: iconst_1
     //   97: aload 6
-    //   99: invokestatic 686	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   102: invokevirtual 689	java/lang/Integer:intValue	()I
+    //   99: invokestatic 693	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   102: invokevirtual 696	java/lang/Integer:intValue	()I
     //   105: iastore
     //   106: aload 4
     //   108: iconst_2
     //   109: aload 7
-    //   111: invokestatic 686	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   114: invokevirtual 689	java/lang/Integer:intValue	()I
+    //   111: invokestatic 693	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   114: invokevirtual 696	java/lang/Integer:intValue	()I
     //   117: i2f
-    //   118: ldc_w 690
+    //   118: ldc_w 697
     //   121: fdiv
-    //   122: invokestatic 696	java/lang/Math:round	(F)I
+    //   122: invokestatic 703	java/lang/Math:round	(F)I
     //   125: iastore
     //   126: aload_2
-    //   127: invokestatic 326	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   127: invokestatic 331	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   130: ifne +202 -> 332
     //   133: aload_2
-    //   134: invokestatic 699	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   134: invokestatic 706	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   137: istore_1
     //   138: iload_1
     //   139: bipush 90
@@ -1035,7 +1120,7 @@ public class ShortVideoUtils
     //   164: invokespecial 194	java/lang/StringBuilder:<init>	()V
     //   167: astore 5
     //   169: aload 5
-    //   171: ldc_w 701
+    //   171: ldc_w 708
     //   174: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload 5
@@ -1045,7 +1130,7 @@ public class ShortVideoUtils
     //   184: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   187: pop
     //   188: aload 5
-    //   190: ldc_w 703
+    //   190: ldc_w 710
     //   193: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: pop
     //   197: aload 5
@@ -1055,7 +1140,7 @@ public class ShortVideoUtils
     //   203: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   206: pop
     //   207: aload 5
-    //   209: ldc_w 705
+    //   209: ldc_w 712
     //   212: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   215: pop
     //   216: aload 5
@@ -1065,7 +1150,7 @@ public class ShortVideoUtils
     //   222: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   225: pop
     //   226: aload 5
-    //   228: ldc_w 707
+    //   228: ldc_w 714
     //   231: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: pop
     //   235: aload 5
@@ -1073,14 +1158,14 @@ public class ShortVideoUtils
     //   238: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: pop
     //   242: aload 5
-    //   244: ldc_w 709
+    //   244: ldc_w 716
     //   247: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   250: pop
     //   251: aload 5
     //   253: aload_0
     //   254: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   257: pop
-    //   258: ldc_w 711
+    //   258: ldc_w 718
     //   261: iconst_2
     //   262: aload 5
     //   264: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1091,17 +1176,17 @@ public class ShortVideoUtils
     //   277: astore_0
     //   278: invokestatic 191	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   281: ifeq +14 -> 295
-    //   284: ldc_w 711
+    //   284: ldc_w 718
     //   287: iconst_2
-    //   288: ldc_w 713
+    //   288: ldc_w 720
     //   291: aload_0
-    //   292: invokestatic 313	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   292: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   295: aload_3
-    //   296: invokevirtual 714	android/media/MediaMetadataRetriever:release	()V
+    //   296: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
     //   299: aload 4
     //   301: areturn
     //   302: aload_3
-    //   303: invokevirtual 714	android/media/MediaMetadataRetriever:release	()V
+    //   303: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
     //   306: aload_0
     //   307: athrow
     //   308: aload 4
@@ -1193,37 +1278,37 @@ public class ShortVideoUtils
     //   4: ifgt +8 -> 12
     //   7: sipush 640
     //   10: istore 6
-    //   12: invokestatic 392	java/lang/System:currentTimeMillis	()J
+    //   12: invokestatic 397	java/lang/System:currentTimeMillis	()J
     //   15: lstore 9
-    //   17: new 670	android/media/MediaMetadataRetriever
+    //   17: new 677	android/media/MediaMetadataRetriever
     //   20: dup
-    //   21: invokespecial 671	android/media/MediaMetadataRetriever:<init>	()V
+    //   21: invokespecial 678	android/media/MediaMetadataRetriever:<init>	()V
     //   24: astore 12
     //   26: aconst_null
     //   27: astore 11
     //   29: aload 12
     //   31: aload_1
-    //   32: invokevirtual 672	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   32: invokevirtual 679	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   35: aload 12
     //   37: lload_3
-    //   38: invokevirtual 747	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
+    //   38: invokevirtual 754	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
     //   41: astore_0
     //   42: aload 12
-    //   44: invokevirtual 714	android/media/MediaMetadataRetriever:release	()V
+    //   44: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
     //   47: goto +35 -> 82
     //   50: astore_0
     //   51: goto +22 -> 73
     //   54: astore_0
     //   55: ldc 65
     //   57: iconst_1
-    //   58: ldc_w 749
+    //   58: ldc_w 756
     //   61: aload_0
-    //   62: invokestatic 528	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   62: invokestatic 534	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   65: aload 12
-    //   67: invokevirtual 714	android/media/MediaMetadataRetriever:release	()V
+    //   67: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
     //   70: goto +10 -> 80
     //   73: aload 12
-    //   75: invokevirtual 714	android/media/MediaMetadataRetriever:release	()V
+    //   75: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
     //   78: aload_0
     //   79: athrow
     //   80: aconst_null
@@ -1233,14 +1318,14 @@ public class ShortVideoUtils
     //   86: aconst_null
     //   87: areturn
     //   88: aload_0
-    //   89: invokevirtual 238	android/graphics/Bitmap:getWidth	()I
+    //   89: invokevirtual 250	android/graphics/Bitmap:getWidth	()I
     //   92: istore 7
     //   94: aload_0
-    //   95: invokevirtual 241	android/graphics/Bitmap:getHeight	()I
+    //   95: invokevirtual 253	android/graphics/Bitmap:getHeight	()I
     //   98: istore_2
     //   99: iload 7
     //   101: iload_2
-    //   102: invokestatic 752	java/lang/Math:max	(II)I
+    //   102: invokestatic 759	java/lang/Math:max	(II)I
     //   105: istore 8
     //   107: iload 8
     //   109: iload 6
@@ -1255,28 +1340,28 @@ public class ShortVideoUtils
     //   125: i2f
     //   126: fload 5
     //   128: fmul
-    //   129: invokestatic 696	java/lang/Math:round	(F)I
+    //   129: invokestatic 703	java/lang/Math:round	(F)I
     //   132: istore 6
     //   134: fload 5
     //   136: iload_2
     //   137: i2f
     //   138: fmul
-    //   139: invokestatic 696	java/lang/Math:round	(F)I
+    //   139: invokestatic 703	java/lang/Math:round	(F)I
     //   142: istore_2
     //   143: aload_0
     //   144: iload 6
     //   146: iload_2
     //   147: iconst_1
-    //   148: invokestatic 756	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   148: invokestatic 763	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   151: astore_0
     //   152: goto +14 -> 166
     //   155: astore_0
     //   156: aload_0
-    //   157: invokevirtual 757	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   157: invokevirtual 764	java/lang/OutOfMemoryError:printStackTrace	()V
     //   160: aload 11
     //   162: astore_0
     //   163: goto +3 -> 166
-    //   166: invokestatic 392	java/lang/System:currentTimeMillis	()J
+    //   166: invokestatic 397	java/lang/System:currentTimeMillis	()J
     //   169: lstore_3
     //   170: aload_0
     //   171: ifnull +113 -> 284
@@ -1287,25 +1372,25 @@ public class ShortVideoUtils
     //   184: invokespecial 194	java/lang/StringBuilder:<init>	()V
     //   187: astore 11
     //   189: aload 11
-    //   191: ldc_w 759
+    //   191: ldc_w 766
     //   194: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: pop
     //   198: aload 11
     //   200: aload_0
-    //   201: invokevirtual 238	android/graphics/Bitmap:getWidth	()I
+    //   201: invokevirtual 250	android/graphics/Bitmap:getWidth	()I
     //   204: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   207: pop
     //   208: aload 11
-    //   210: ldc_w 761
+    //   210: ldc_w 768
     //   213: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   216: pop
     //   217: aload 11
     //   219: aload_0
-    //   220: invokevirtual 241	android/graphics/Bitmap:getHeight	()I
+    //   220: invokevirtual 253	android/graphics/Bitmap:getHeight	()I
     //   223: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   226: pop
     //   227: aload 11
-    //   229: ldc_w 763
+    //   229: ldc_w 770
     //   232: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   235: pop
     //   236: aload 11
@@ -1313,17 +1398,17 @@ public class ShortVideoUtils
     //   239: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   242: pop
     //   243: aload 11
-    //   245: ldc_w 765
+    //   245: ldc_w 772
     //   248: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: pop
     //   252: aload 11
     //   254: lload_3
     //   255: lload 9
     //   257: lsub
-    //   258: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   258: invokevirtual 775	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   261: pop
     //   262: aload 11
-    //   264: ldc_w 770
+    //   264: ldc_w 777
     //   267: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   270: pop
     //   271: ldc 65
@@ -1340,7 +1425,7 @@ public class ShortVideoUtils
     //   294: invokespecial 194	java/lang/StringBuilder:<init>	()V
     //   297: astore 11
     //   299: aload 11
-    //   301: ldc_w 772
+    //   301: ldc_w 779
     //   304: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: pop
     //   308: aload 11
@@ -1351,7 +1436,7 @@ public class ShortVideoUtils
     //   317: iconst_2
     //   318: aload 11
     //   320: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   323: invokestatic 228	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   323: invokestatic 240	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   326: aload_0
     //   327: areturn
     //   328: astore_0
@@ -1458,36 +1543,36 @@ public class ShortVideoUtils
   public static boolean isH265FormatShortVideo(String paramString)
   {
     // Byte code:
-    //   0: new 799	android/media/MediaExtractor
+    //   0: new 806	android/media/MediaExtractor
     //   3: dup
-    //   4: invokespecial 800	android/media/MediaExtractor:<init>	()V
+    //   4: invokespecial 807	android/media/MediaExtractor:<init>	()V
     //   7: astore 4
     //   9: iconst_0
     //   10: istore_3
     //   11: aload 4
     //   13: aload_0
-    //   14: invokevirtual 801	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   14: invokevirtual 808	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
     //   17: iconst_0
     //   18: istore_1
     //   19: iload_3
     //   20: istore_2
     //   21: iload_1
     //   22: aload 4
-    //   24: invokevirtual 804	android/media/MediaExtractor:getTrackCount	()I
+    //   24: invokevirtual 811	android/media/MediaExtractor:getTrackCount	()I
     //   27: if_icmpge +69 -> 96
     //   30: aload 4
     //   32: iload_1
-    //   33: invokevirtual 808	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   36: ldc_w 810
-    //   39: invokevirtual 814	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   33: invokevirtual 815	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   36: ldc_w 817
+    //   39: invokevirtual 821	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   42: astore_0
     //   43: aload_0
-    //   44: ldc_w 816
-    //   47: invokevirtual 819	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   44: ldc_w 823
+    //   47: invokevirtual 826	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   50: ifeq +14 -> 64
     //   53: aload_0
-    //   54: ldc_w 821
-    //   57: invokevirtual 824	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   54: ldc_w 828
+    //   57: invokevirtual 831	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   60: istore_2
     //   61: goto +35 -> 96
     //   64: iload_1
@@ -1504,17 +1589,17 @@ public class ShortVideoUtils
     //   81: ifeq +15 -> 96
     //   84: ldc 65
     //   86: iconst_2
-    //   87: ldc_w 826
+    //   87: ldc_w 833
     //   90: aload_0
-    //   91: invokestatic 313	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   91: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   94: iload_3
     //   95: istore_2
     //   96: aload 4
-    //   98: invokevirtual 827	android/media/MediaExtractor:release	()V
+    //   98: invokevirtual 834	android/media/MediaExtractor:release	()V
     //   101: iload_2
     //   102: ireturn
     //   103: aload 4
-    //   105: invokevirtual 827	android/media/MediaExtractor:release	()V
+    //   105: invokevirtual 834	android/media/MediaExtractor:release	()V
     //   108: goto +5 -> 113
     //   111: aload_0
     //   112: athrow
@@ -1817,7 +1902,7 @@ public class ShortVideoUtils
   {
     AVShortVideoReportController.ReportData localReportData = new AVShortVideoReportController.ReportData();
     localReportData.b = paramString;
-    int i = paramSessionInfo.jdField_a_of_type_Int;
+    int i = paramSessionInfo.a;
     if (i != 0)
     {
       if (i != 1)
@@ -1841,7 +1926,7 @@ public class ShortVideoUtils
     if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForShortVideo)))
     {
       paramString = (MessageForShortVideo)paramMessageRecord;
-      localReportData.jdField_a_of_type_JavaLangString = String.valueOf(paramString.videoFileTime * 1000);
+      localReportData.a = String.valueOf(paramString.videoFileTime * 1000);
       i = paramString.busiType;
       if (i != 0)
       {
@@ -1858,7 +1943,7 @@ public class ShortVideoUtils
     }
     else
     {
-      localReportData.jdField_a_of_type_JavaLangString = "0";
+      localReportData.a = "0";
       localReportData.e = "3";
     }
     if ((!(paramContext instanceof SplashActivity)) && (!(paramContext instanceof ChatActivity))) {
@@ -1866,13 +1951,13 @@ public class ShortVideoUtils
     } else {
       localReportData.f = "1";
     }
-    AVShortVideoReportController.a(paramAppInterface.getAccount(), "dc01178", paramSessionInfo.jdField_a_of_type_JavaLangString, localReportData);
+    AVShortVideoReportController.a(paramAppInterface.getAccount(), "dc01178", paramSessionInfo.b, localReportData);
   }
   
   public static void reportVideoPlay(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
     AVShortVideoReportController.ReportData localReportData = new AVShortVideoReportController.ReportData();
-    localReportData.jdField_a_of_type_JavaLangString = paramString3;
+    localReportData.a = paramString3;
     localReportData.b = "0X8008E53";
     if (paramInt != 0)
     {
@@ -1950,10 +2035,12 @@ public class ShortVideoUtils
   
   public static RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, DownloadParams paramDownloadParams, ThumbWidthHeightDP paramThumbWidthHeightDP, boolean paramBoolean)
   {
+    label512:
     try
     {
       f3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
       i6 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().densityDpi;
+      f4 = URLDrawableHelper.getRoundCorner();
       i = CommonImgThumbHelper.getImgThumbMinPx(paramBoolean);
       j = CommonImgThumbHelper.getImgThumbMinPx(paramBoolean);
       k = CommonImgThumbHelper.getImgThumbMaxPx(paramBoolean);
@@ -1966,65 +2053,66 @@ public class ShortVideoUtils
         m = AIOUtils.b(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
       }
       n = paramBitmap.getWidth();
-      i1 = paramBitmap.getHeight();
+      i2 = paramBitmap.getHeight();
       paramDownloadParams = new Paint(1);
       paramDownloadParams.setColor(-16777216);
+      i1 = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
       i3 = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
-      i4 = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
+      i4 = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
       i5 = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
-      i2 = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
       if (paramThumbWidthHeightDP == null) {
-        break label443;
+        break label421;
       }
-      i3 = paramThumbWidthHeightDP.mMinWidth;
-      i4 = paramThumbWidthHeightDP.mMinHeight;
-      i5 = paramThumbWidthHeightDP.mMaxWidth;
-      i2 = paramThumbWidthHeightDP.mMaxHeight;
+      i1 = paramThumbWidthHeightDP.mMinWidth;
+      i3 = paramThumbWidthHeightDP.mMinHeight;
+      i4 = paramThumbWidthHeightDP.mMaxWidth;
+      i5 = paramThumbWidthHeightDP.mMaxHeight;
     }
     catch (OutOfMemoryError paramDownloadParams)
     {
-      label443:
-      label605:
-      label608:
+      label421:
+      label587:
+      label590:
       for (;;)
       {
         float f3;
         int i6;
+        float f4;
         int i;
         int j;
         int k;
         int m;
         int n;
+        int i2;
         int i1;
         int i3;
         int i4;
         int i5;
-        int i2;
         Object localObject1;
         Object localObject2;
-        label354:
         continue;
         float f2 = n;
-        float f1 = i1;
-        float f4 = f1 * 3.0F;
-        if (f2 > f4)
+        float f1 = i2;
+        float f5 = f1 * 3.0F;
+        if (f2 > f5)
         {
-          n = (int)f4;
+          n = (int)f5;
         }
         else
         {
           f2 *= 3.0F;
           if (f1 > f2) {
-            i1 = (int)f2;
+            i2 = (int)f2;
           }
         }
-        if ((n >= i3) && (i1 >= i4)) {
-          if ((n < i5) && (i1 < i2))
+        if ((n >= i1) && (i2 >= i3)) {
+          if ((n < i4) && (i2 < i5))
           {
-            i = (int)(n * f3 + 0.5F);
-            j = (int)(i1 * f3 + 0.5F);
+            f1 = f3;
+            i = (int)(n * f1 + 0.5F);
+            j = (int)(i2 * f1 + 0.5F);
           }
-          else if (n > i1)
+          else if (n > i2)
           {
             f1 = k;
             f2 = n;
@@ -2032,7 +2120,7 @@ public class ShortVideoUtils
           else
           {
             f1 = m;
-            f2 = i1;
+            f2 = i2;
             continue;
             f1 = i;
             f2 = n;
@@ -2040,39 +2128,37 @@ public class ShortVideoUtils
         }
       }
     }
-    f4 = localObject1 / localObject2;
-    if (n > i1)
+    f5 = localObject1 / localObject2;
+    if (n > i2)
     {
       f1 = j;
-      f2 = i1;
+      f2 = i2;
       f1 /= f2;
-      f1 = Math.max(f4, f1);
-      i = (int)(n * f1 + 0.5F);
-      j = (int)(i1 * f1 + 0.5F);
-      break label354;
-      if (n < i1)
+      f1 = Math.max(f5, f1);
+      break label512;
+      if (n < i2)
       {
         f1 = i / n;
-        j = (int)(i1 * f1 + 0.5F);
+        j = (int)(i2 * f1 + 0.5F);
         if (j <= m) {
-          break label605;
+          break label587;
         }
         j = m;
-        break label608;
+        break label590;
       }
-      f1 = j / i1;
+      f1 = j / i2;
       i = (int)(n * f1 + 0.5F);
       if (i <= k) {
-        break label608;
+        break label590;
       }
       i = k;
-      break label608;
+      break label590;
       paramThumbWidthHeightDP = Bitmap.createBitmap(i, j, URLDrawableHelper.mThumbConfig);
       paramThumbWidthHeightDP.setDensity(i6);
-      new Canvas(paramThumbWidthHeightDP).drawBitmap(paramBitmap, new Rect(0, 0, n, i1), new Rect(0, 0, i, j), paramDownloadParams);
-      paramDownloadParams = new RoundRectBitmap(paramThumbWidthHeightDP, f3 * 12.0F);
+      new Canvas(paramThumbWidthHeightDP).drawBitmap(paramBitmap, new Rect(0, 0, n, i2), new Rect(0, 0, i, j), paramDownloadParams);
+      paramDownloadParams = new RoundRectBitmap(paramThumbWidthHeightDP, f4 * f3);
       return paramDownloadParams;
-      return new RoundRectBitmap(paramBitmap, 12.0F);
+      return new RoundRectBitmap(paramBitmap, URLDrawableHelper.getRoundCorner());
     }
   }
   
@@ -2248,7 +2334,7 @@ public class ShortVideoUtils
     paramMessageForShortVideo = new Intent(paramActivity, ShortVideoPlayActivity.class);
     paramMessageForShortVideo.putExtras(localBundle);
     paramActivity.startActivityForResult(paramMessageForShortVideo, 13002);
-    paramActivity.overridePendingTransition(2130772065, 2130772067);
+    paramActivity.overridePendingTransition(2130772090, 2130772092);
   }
   
   public static String stringForFileSize(Context paramContext, long paramLong)
@@ -2355,7 +2441,7 @@ public class ShortVideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -50,7 +50,7 @@ public class PhoneContactHelper
       paramString = "#";
     }
     String str = paramString;
-    if (!StringUtil.b(paramString.charAt(0))) {
+    if (!StringUtil.isAsciiAlpha(paramString.charAt(0))) {
       str = "#";
     }
     return str;
@@ -58,7 +58,7 @@ public class PhoneContactHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.util.PhoneContactHelper
  * JD-Core Version:    0.7.0.1
  */

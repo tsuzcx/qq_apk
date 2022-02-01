@@ -20,37 +20,37 @@ public class SlideBottomPanel
   extends FrameLayout
 {
   protected static float a = 5.0F;
-  protected int a;
-  protected long a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  protected Interpolator a;
-  protected ISlidePanelListener a;
-  protected boolean a;
-  protected float b;
-  protected int b;
-  protected Interpolator b;
-  protected boolean b;
-  protected float c;
-  protected int c;
-  protected boolean c;
+  private int A;
+  private float B;
+  private int C;
+  private VelocityTracker D;
+  private Context E;
+  private int F;
+  protected boolean b = false;
+  protected boolean c = false;
   protected float d;
-  protected int d;
-  protected boolean d;
   protected float e;
-  protected int e;
-  protected boolean e;
   protected float f;
-  protected int f;
-  protected float g;
-  private int g;
-  protected float h;
-  private int h;
+  protected int g;
+  protected int h;
   protected float i;
-  private int i;
   protected float j;
   protected float k;
-  private float l;
+  protected float l;
+  protected long m;
+  protected boolean n = false;
+  protected float o;
+  protected float p;
+  protected float q;
+  protected int r;
+  protected boolean s = false;
+  protected int t;
+  protected int u;
+  protected int v;
+  protected boolean w = false;
+  protected Interpolator x = new AccelerateInterpolator();
+  protected Interpolator y = new AccelerateInterpolator();
+  protected ISlidePanelListener z;
   
   public SlideBottomPanel(Context paramContext)
   {
@@ -65,46 +65,39 @@ public class SlideBottomPanel
   public SlideBottomPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateInterpolator();
-    this.jdField_b_of_type_AndroidViewAnimationInterpolator = new AccelerateInterpolator();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.l = getResources().getDisplayMetrics().density;
-    paramContext = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_h_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
-    this.jdField_a_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
-    this.jdField_d_of_type_Float = paramContext.getScaledTouchSlop();
-    paramContext = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    this.E = paramContext;
+    this.B = getResources().getDisplayMetrics().density;
+    paramContext = ViewConfiguration.get(this.E);
+    this.C = paramContext.getScaledMaximumFlingVelocity();
+    this.g = paramContext.getScaledMinimumFlingVelocity();
+    this.f = paramContext.getScaledTouchSlop();
+    paramContext = (WindowManager)this.E.getSystemService("window");
     paramAttributeSet = new DisplayMetrics();
     paramContext.getDefaultDisplay().getMetrics(paramAttributeSet);
-    this.jdField_i_of_type_Int = paramAttributeSet.heightPixels;
-    this.jdField_i_of_type_Float = (this.jdField_i_of_type_Int - a(60));
+    this.F = paramAttributeSet.heightPixels;
+    this.o = (this.F - a(60));
     float f1 = a(84);
-    this.j = f1;
-    jdField_a_of_type_Float = f1;
-    this.k = a(30);
-    this.jdField_c_of_type_Int = 250;
-    this.jdField_b_of_type_Int = this.jdField_i_of_type_Int;
-    if (a(this.jdField_a_of_type_AndroidContentContext))
+    this.p = f1;
+    a = f1;
+    this.q = a(30);
+    this.r = 250;
+    this.h = this.F;
+    if (a(this.E))
     {
-      this.jdField_d_of_type_Int = a(30);
-      this.jdField_e_of_type_Int = ((int)(this.j - this.jdField_d_of_type_Int + QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext)));
+      this.t = a(30);
+      this.u = ((int)(this.p - this.t + QQUIDelegate.b(this.E)));
     }
     else
     {
-      this.jdField_d_of_type_Int = a(51);
-      this.jdField_e_of_type_Int = ((int)(this.j - this.jdField_d_of_type_Int));
+      this.t = a(51);
+      this.u = ((int)(this.p - this.t));
     }
-    this.jdField_f_of_type_Int = a(5);
+    this.v = a(5);
   }
   
   private int a(int paramInt)
   {
-    return (int)(paramInt * this.l + 0.5F);
+    return (int)(paramInt * this.B + 0.5F);
   }
   
   private boolean a(Context paramContext)
@@ -112,22 +105,22 @@ public class SlideBottomPanel
     return QQUIDelegate.a(paramContext);
   }
   
-  private void c(MotionEvent paramMotionEvent)
+  private void d(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.D == null) {
+      this.D = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.D.addMovement(paramMotionEvent);
   }
   
-  private void g()
+  private void i()
   {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    VelocityTracker localVelocityTracker = this.D;
     if (localVelocityTracker != null)
     {
       localVelocityTracker.clear();
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.D.recycle();
+      this.D = null;
     }
   }
   
@@ -138,44 +131,23 @@ public class SlideBottomPanel
     return Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
   }
   
-  protected int a()
-  {
-    if (this.jdField_e_of_type_Boolean)
-    {
-      int m;
-      int n;
-      if (a(this.jdField_a_of_type_AndroidContentContext))
-      {
-        m = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int;
-        n = QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext);
-      }
-      else
-      {
-        m = this.jdField_b_of_type_Int;
-        n = this.jdField_d_of_type_Int;
-      }
-      return m - n;
-    }
-    return (int)(this.jdField_b_of_type_Int - this.j);
-  }
-  
   public void a()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.c)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         return;
       }
       Object localObject = findViewWithTag(Integer.valueOf(1));
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { ((View)localObject).getY(), this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int);
+      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { ((View)localObject).getY(), this.h - this.o }).setDuration(this.r);
       localValueAnimator.setTarget(localObject);
-      localValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+      localValueAnimator.setInterpolator(this.x);
       localValueAnimator.addUpdateListener(new SlideBottomPanel.4(this, (View)localObject));
       localValueAnimator.addListener(new SlideBottomPanel.5(this));
       localValueAnimator.start();
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_e_of_type_Boolean = false;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+      this.c = true;
+      this.w = false;
+      localObject = this.z;
       if (localObject != null) {
         ((ISlidePanelListener)localObject).displayPanel();
       }
@@ -184,123 +156,78 @@ public class SlideBottomPanel
   
   protected void a(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_d_of_type_Boolean) {
+    if (!this.s) {
       return;
     }
-    f();
-    if (Math.abs(this.jdField_b_of_type_Float) > Math.abs(this.jdField_c_of_type_Float)) {
+    g();
+    if (Math.abs(this.d) > Math.abs(this.e)) {
       return;
     }
     View localView = findViewWithTag(Integer.valueOf(1));
-    if ((!this.jdField_c_of_type_Boolean) && (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) > this.jdField_d_of_type_Float))
+    if ((!this.n) && (Math.abs(paramMotionEvent.getY() - this.j) > this.f))
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_g_of_type_Float = paramMotionEvent.getY();
+      this.n = true;
+      this.k = paramMotionEvent.getY();
       localView.addOnLayoutChangeListener(new SlideBottomPanel.1(this));
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.n)
     {
-      this.jdField_h_of_type_Float = (paramMotionEvent.getY() - this.jdField_g_of_type_Float);
-      this.jdField_g_of_type_Float = paramMotionEvent.getY();
+      this.l = (paramMotionEvent.getY() - this.k);
+      this.k = paramMotionEvent.getY();
       float f1 = localView.getY();
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+      paramMotionEvent = this.z;
       if (paramMotionEvent != null)
       {
-        m = this.jdField_b_of_type_Int;
-        if (f1 > m - this.jdField_i_of_type_Float)
+        i1 = this.h;
+        if (f1 > i1 - this.o)
         {
-          f2 = m;
-          f3 = this.j;
+          f2 = i1;
+          f3 = this.p;
           if (f1 < f2 - f3) {
-            paramMotionEvent.fadeBackground(1.0F - f1 / (m - f3));
+            paramMotionEvent.fadeBackground(1.0F - f1 / (i1 - f3));
           }
         }
       }
-      float f2 = this.jdField_h_of_type_Float;
-      int m = this.jdField_b_of_type_Int;
-      float f3 = m;
-      float f4 = this.jdField_i_of_type_Float;
+      float f2 = this.l;
+      int i1 = this.h;
+      float f3 = i1;
+      float f4 = this.o;
       if (f1 + f2 <= f3 - f4)
       {
-        localView.offsetTopAndBottom((int)(m - f4 - f1));
+        localView.offsetTopAndBottom((int)(i1 - f4 - f1));
         return;
       }
-      if (f1 + f2 >= a())
+      if (f1 + f2 >= getBottomHeight())
       {
-        if (this.jdField_e_of_type_Boolean) {
+        if (this.w) {
           return;
         }
-        f1 = this.jdField_h_of_type_Float;
-        m = this.jdField_e_of_type_Int;
-        if (f1 > m) {
-          this.jdField_h_of_type_Float = m;
+        f1 = this.l;
+        i1 = this.u;
+        if (f1 > i1) {
+          this.l = i1;
         }
-        localView.offsetTopAndBottom((int)this.jdField_h_of_type_Float);
+        localView.offsetTopAndBottom((int)this.l);
         return;
       }
-      localView.offsetTopAndBottom((int)this.jdField_h_of_type_Float);
+      localView.offsetTopAndBottom((int)this.l);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_e_of_type_Float = paramMotionEvent.getX();
-    float f1 = paramMotionEvent.getY();
-    this.jdField_g_of_type_Float = f1;
-    this.jdField_f_of_type_Float = f1;
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float > a()))
-    {
-      this.jdField_d_of_type_Boolean = true;
-      return true;
-    }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float <= a()))
-    {
-      this.jdField_d_of_type_Boolean = false;
-    }
-    else
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        f1 = this.jdField_g_of_type_Float;
-        int m = this.jdField_b_of_type_Int;
-        float f2 = m;
-        float f3 = this.jdField_i_of_type_Float;
-        if ((f1 > f2 - f3) && (f1 <= m - f3 + this.j))
-        {
-          this.jdField_d_of_type_Boolean = true;
-          break label180;
-        }
-      }
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float < this.jdField_b_of_type_Int - this.jdField_i_of_type_Float))
-      {
-        b();
-        this.jdField_d_of_type_Boolean = false;
-      }
-    }
-    label180:
-    return false;
   }
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     Object localObject = findViewWithTag(Integer.valueOf(1));
-    int m = (int)(this.jdField_b_of_type_Int - this.j);
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { ((View)localObject).getY(), this.jdField_b_of_type_Int - this.j });
-    localValueAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
+    int i1 = (int)(this.h - this.p);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { ((View)localObject).getY(), this.h - this.p });
+    localValueAnimator.setInterpolator(this.y);
     localValueAnimator.setTarget(localObject);
-    localValueAnimator.addUpdateListener(new SlideBottomPanel.2(this, (View)localObject, m));
+    localValueAnimator.addUpdateListener(new SlideBottomPanel.2(this, (View)localObject, i1));
     localValueAnimator.addListener(new SlideBottomPanel.3(this));
     localValueAnimator.start();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+    localObject = this.z;
     if (localObject != null) {
       ((ISlidePanelListener)localObject).hidePanel();
     }
@@ -308,130 +235,163 @@ public class SlideBottomPanel
   
   protected void b(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_d_of_type_Boolean) {
+    if (!this.s) {
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    f();
+    long l2 = this.m;
+    g();
     float f1;
-    if ((this.jdField_b_of_type_Boolean) || (paramMotionEvent.getY() - this.jdField_f_of_type_Float >= 0.0F) || (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) <= this.k))
+    if ((this.c) || (paramMotionEvent.getY() - this.j >= 0.0F) || (Math.abs(paramMotionEvent.getY() - this.j) <= this.q))
     {
-      f1 = this.jdField_c_of_type_Float;
-      if ((f1 >= 0.0F) || (Math.abs(f1) <= Math.abs(this.jdField_b_of_type_Float)) || (Math.abs(this.jdField_c_of_type_Float) <= this.jdField_a_of_type_Int)) {}
+      f1 = this.e;
+      if ((f1 >= 0.0F) || (Math.abs(f1) <= Math.abs(this.d)) || (Math.abs(this.e) <= this.g)) {}
     }
     else
     {
       a();
-      break label330;
+      break label284;
     }
     float f2;
-    if ((!this.jdField_b_of_type_Boolean) && (l1 - l2 < 300L))
+    if ((!this.c) && (l1 - l2 < 300L))
     {
       f1 = paramMotionEvent.getY();
-      f2 = this.jdField_f_of_type_Float;
-      if ((f1 - f2 < 0.0F) && (a(this.jdField_e_of_type_Float, f2, paramMotionEvent.getX(), paramMotionEvent.getY()) < jdField_a_of_type_Float))
+      f2 = this.j;
+      if ((f1 - f2 < 0.0F) && (a(this.i, f2, paramMotionEvent.getX(), paramMotionEvent.getY()) < a))
       {
         a();
-        break label330;
+        break label284;
       }
     }
-    int m;
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    int i1;
+    if ((!this.c) && (this.n))
     {
-      m = (int)(paramMotionEvent.getY() - this.jdField_f_of_type_Float);
-      if (((!this.jdField_e_of_type_Boolean) && (m > this.jdField_f_of_type_Int)) || ((this.jdField_e_of_type_Boolean) && (m < 0) && (Math.abs(m) < this.k))) {
+      i1 = (int)(paramMotionEvent.getY() - this.j);
+      if (((!this.w) && (i1 > this.v)) || ((this.w) && (i1 < 0) && (Math.abs(i1) < this.q))) {
         c();
       }
-      if ((!this.jdField_e_of_type_Boolean) && (m < 0) && (Math.abs(m) < this.k))
-      {
-        paramMotionEvent = findViewWithTag(Integer.valueOf(1));
-        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { paramMotionEvent.getY(), this.jdField_b_of_type_Int - this.j }).setDuration(this.jdField_c_of_type_Int).start();
+      if ((!this.w) && (i1 < 0) && (Math.abs(i1) < this.q)) {
+        d();
       }
     }
-    label330:
-    if (this.jdField_b_of_type_Boolean)
+    label284:
+    if (this.c)
     {
       paramMotionEvent = findViewWithTag(Integer.valueOf(1));
       f1 = paramMotionEvent.getY();
-      m = this.jdField_b_of_type_Int;
-      float f3 = m;
-      f2 = this.jdField_i_of_type_Float;
+      i1 = this.h;
+      float f3 = i1;
+      f2 = this.o;
       if (f1 >= f3 - f2)
       {
-        f3 = m;
-        float f4 = this.k;
+        f3 = i1;
+        float f4 = this.q;
         if (f1 >= f3 - f2 + f4)
         {
-          if (f1 <= m - f2 + f4) {
-            break label460;
+          if (f1 <= i1 - f2 + f4) {
+            break label414;
           }
           b();
-          break label460;
+          break label414;
         }
       }
-      ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { f1, this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int).start();
+      ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { f1, this.h - this.o }).setDuration(this.r).start();
     }
-    label460:
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_h_of_type_Float = 0.0F;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    label414:
+    this.s = false;
+    this.n = false;
+    this.l = 0.0F;
   }
   
   public void c()
   {
     View localView = findViewWithTag(Integer.valueOf(1));
     float f1 = localView.getY();
-    int m;
-    if (a(this.jdField_a_of_type_AndroidContentContext)) {
-      m = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int + QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext);
+    int i1;
+    if (a(this.E)) {
+      i1 = this.h - this.t + QQUIDelegate.b(this.E);
     } else {
-      m = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int;
+      i1 = this.h - this.t;
     }
-    ObjectAnimator.ofFloat(localView, "y", new float[] { f1, m }).setDuration(this.jdField_c_of_type_Int).start();
-    this.jdField_e_of_type_Boolean = true;
+    ObjectAnimator.ofFloat(localView, "y", new float[] { f1, i1 }).setDuration(this.r).start();
+    this.w = true;
+  }
+  
+  protected boolean c(MotionEvent paramMotionEvent)
+  {
+    this.m = System.currentTimeMillis();
+    this.i = paramMotionEvent.getX();
+    float f1 = paramMotionEvent.getY();
+    this.k = f1;
+    this.j = f1;
+    if ((!this.c) && (this.k > getBottomHeight()))
+    {
+      this.s = true;
+      return true;
+    }
+    if ((!this.c) && (this.k <= getBottomHeight()))
+    {
+      this.s = false;
+    }
+    else
+    {
+      if (this.c)
+      {
+        f1 = this.k;
+        int i1 = this.h;
+        float f2 = i1;
+        float f3 = this.o;
+        if ((f1 > f2 - f3) && (f1 <= i1 - f3 + this.p))
+        {
+          this.s = true;
+          break label180;
+        }
+      }
+      if ((this.c) && (this.k < this.h - this.o))
+      {
+        b();
+        this.s = false;
+      }
+    }
+    label180:
+    return false;
   }
   
   public void d()
   {
     View localView = findViewWithTag(Integer.valueOf(1));
-    ObjectAnimator.ofFloat(localView, "y", new float[] { localView.getY(), this.jdField_b_of_type_Int - this.j }).setDuration(this.jdField_c_of_type_Int).start();
-    this.jdField_e_of_type_Boolean = false;
+    ObjectAnimator.ofFloat(localView, "y", new float[] { localView.getY(), this.h - this.p }).setDuration(this.r).start();
+    this.w = false;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    c(paramMotionEvent);
-    ISlidePanelListener localISlidePanelListener = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+    d(paramMotionEvent);
+    ISlidePanelListener localISlidePanelListener = this.z;
     if (localISlidePanelListener != null) {
       localISlidePanelListener.cancelAnimator();
     }
-    int m = paramMotionEvent.getAction();
+    int i1 = paramMotionEvent.getAction();
     boolean bool2 = true;
     boolean bool1;
-    if (m != 0)
+    if (i1 != 0)
     {
-      if (m != 1)
+      if (i1 != 1)
       {
-        if (m == 2) {
+        if (i1 == 2) {
           a(paramMotionEvent);
         }
       }
       else
       {
         b(paramMotionEvent);
-        g();
+        i();
       }
       bool1 = false;
     }
     else
     {
-      bool1 = a(paramMotionEvent);
+      bool1 = c(paramMotionEvent);
     }
     if (!bool1)
     {
@@ -443,33 +403,55 @@ public class SlideBottomPanel
     return bool2;
   }
   
-  public void e()
+  public boolean e()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    return this.w;
+  }
+  
+  public void f()
+  {
+    if (!this.c) {
       return;
     }
     b();
   }
   
-  protected void f()
+  protected void g()
   {
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000, this.jdField_h_of_type_Int);
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-    this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
+    this.D.computeCurrentVelocity(1000, this.C);
+    this.d = this.D.getXVelocity();
+    this.e = this.D.getYVelocity();
+  }
+  
+  protected int getBottomHeight()
+  {
+    if (this.w)
+    {
+      if (a(this.E)) {
+        return this.h - this.t + QQUIDelegate.b(this.E);
+      }
+      return this.h - this.t;
+    }
+    return (int)(this.h - this.p);
+  }
+  
+  public boolean h()
+  {
+    return this.c;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.n;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_g_of_type_Int = getChildCount();
-    paramInt2 = (int)(this.jdField_b_of_type_Int - this.j);
+    this.A = getChildCount();
+    paramInt2 = (int)(this.h - this.p);
     paramInt1 = 0;
-    while (paramInt1 < this.jdField_g_of_type_Int)
+    while (paramInt1 < this.A)
     {
       View localView = getChildAt(paramInt1);
       localView.layout(0, paramInt2, localView.getMeasuredWidth(), localView.getMeasuredHeight() + paramInt2);
@@ -480,17 +462,17 @@ public class SlideBottomPanel
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return (this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
+    return (this.n) || (this.c);
   }
   
   public void setSlidePanelListener(ISlidePanelListener paramISlidePanelListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener = paramISlidePanelListener;
+    this.z = paramISlidePanelListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

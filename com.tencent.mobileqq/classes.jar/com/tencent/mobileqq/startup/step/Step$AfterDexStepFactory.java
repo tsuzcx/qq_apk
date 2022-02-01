@@ -13,7 +13,7 @@ public class Step$AfterDexStepFactory
     case 9: 
     case 10: 
     case 13: 
-    case 21: 
+    case 22: 
     case 49: 
     default: 
       return new Step();
@@ -40,45 +40,45 @@ public class Step$AfterDexStepFactory
     case 39: 
       return new QzoneTracer();
     case 38: 
-      return new ThreadHookStep();
-    case 37: 
       return new HuayangPluginContainer();
-    case 36: 
+    case 37: 
       return new InstallPlugins();
-    case 35: 
+    case 36: 
       return new UpdateSecureFileStrategy();
-    case 34: 
+    case 35: 
       return new UpdatePatchConfig();
-    case 33: 
+    case 34: 
       return new MigrateSubscribeDB();
-    case 32: 
+    case 33: 
       return new InjectBitmap();
-    case 31: 
+    case 32: 
       return new PreInitValues();
-    case 30: 
+    case 31: 
       return null;
-    case 29: 
+    case 30: 
       return new InitHook();
-    case 28: 
+    case 29: 
       return new WebP();
-    case 27: 
+    case 28: 
       return new UpdatePluginVersion();
-    case 26: 
+    case 27: 
       return new SetPlugin();
-    case 25: 
+    case 26: 
       return new UpdateArkSo();
-    case 24: 
+    case 25: 
       return new AVSoUtils();
-    case 23: 
+    case 24: 
       return new UpdateBubbleZip();
-    case 22: 
+    case 23: 
       return new StartServiceLiteCmp();
-    case 20: 
+    case 21: 
       return new InitQzoneTracer();
-    case 18: 
+    case 19: 
       return new LoadOtherStuff();
-    case 17: 
+    case 18: 
       return new LoadUi();
+    case 17: 
+      return new InitQQRMonitorSDK();
     case 16: 
       return new InitMagnifierSDK();
     case 15: 
@@ -90,7 +90,7 @@ public class Step$AfterDexStepFactory
     case 11: 
       return new InitSkin();
     case 7: 
-    case 19: 
+    case 20: 
       return new LoadData();
     case 6: 
       return new LoadModule();
@@ -100,7 +100,7 @@ public class Step$AfterDexStepFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Step.AfterDexStepFactory
  * JD-Core Version:    0.7.0.1
  */

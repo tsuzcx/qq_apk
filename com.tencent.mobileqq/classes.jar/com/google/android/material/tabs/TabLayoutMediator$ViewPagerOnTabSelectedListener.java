@@ -6,12 +6,12 @@ import androidx.viewpager2.widget.ViewPager2;
 class TabLayoutMediator$ViewPagerOnTabSelectedListener
   implements TabLayout.OnTabSelectedListener
 {
-  private final ViewPager2 jdField_a_of_type_AndroidxViewpager2WidgetViewPager2;
-  private final boolean jdField_a_of_type_Boolean;
+  private final ViewPager2 a;
+  private final boolean b;
   
   public void a(@NonNull TabLayout.Tab paramTab)
   {
-    this.jdField_a_of_type_AndroidxViewpager2WidgetViewPager2.setCurrentItem(paramTab.a(), this.jdField_a_of_type_Boolean);
+    this.a.setCurrentItem(paramTab.c(), this.b);
   }
   
   public void b(TabLayout.Tab paramTab) {}
@@ -20,7 +20,7 @@ class TabLayoutMediator$ViewPagerOnTabSelectedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayoutMediator.ViewPagerOnTabSelectedListener
  * JD-Core Version:    0.7.0.1
  */

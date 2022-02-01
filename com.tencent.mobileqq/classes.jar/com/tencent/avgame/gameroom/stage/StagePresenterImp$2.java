@@ -15,9 +15,9 @@ class StagePresenterImp$2
     if (QLog.isColorLevel()) {
       QLog.i("StagePresenterImp", 2, "realStartRunnale");
     }
-    View localView = this.this$0.a.a().a();
-    this.this$0.a.a().c(localView);
-    this.this$0.a.a().a();
+    View localView = this.this$0.b.e().b();
+    this.this$0.b.g().c(localView);
+    this.this$0.b.e().a();
   }
 }
 

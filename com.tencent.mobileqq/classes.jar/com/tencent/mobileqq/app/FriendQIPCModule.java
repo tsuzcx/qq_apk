@@ -7,6 +7,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.chat.MessageNotificationSettingManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -18,6 +19,7 @@ import eipc.EIPCResult;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import mqq.app.AppRuntime.Status;
 
 public class FriendQIPCModule
   extends QIPCModule
@@ -50,7 +52,7 @@ public class FriendQIPCModule
     Bundle localBundle = new Bundle();
     boolean bool;
     if (paramQQAppInterface != null) {
-      bool = paramQQAppInterface.b(paramBundle);
+      bool = paramQQAppInterface.n(paramBundle);
     } else {
       bool = false;
     }
@@ -61,9 +63,10 @@ public class FriendQIPCModule
     return EIPCResult.createSuccessResult(localBundle);
   }
   
-  private void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  private void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    ((IOnlineStatusService)paramQQAppInterface.getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(AppRuntime.Status.online, 1080L);
+    paramQQAppInterface.addObserver(new FriendQIPCModule.IPCOnlineStatusObserver(this, paramInt, paramQQAppInterface));
   }
   
   private EIPCResult b(QQAppInterface paramQQAppInterface, Bundle paramBundle)
@@ -73,7 +76,7 @@ public class FriendQIPCModule
     Bundle localBundle = new Bundle();
     boolean bool;
     if (localFriendsManager != null) {
-      bool = localFriendsManager.b(paramBundle);
+      bool = localFriendsManager.n(paramBundle);
     } else {
       bool = false;
     }
@@ -83,7 +86,7 @@ public class FriendQIPCModule
       if (paramQQAppInterface != null)
       {
         int i = paramQQAppInterface.getSelfBindState();
-        if (((i == 9) || (i == 8) || (i == 4) || (i == 2)) && (PermissionChecker.a().c()))
+        if (((i == 9) || (i == 8) || (i == 4) || (i == 2)) && (PermissionChecker.a().e()))
         {
           paramQQAppInterface = paramQQAppInterface.queryPhoneContactByUin(paramBundle);
           if (paramQQAppInterface != null)
@@ -106,7 +109,7 @@ public class FriendQIPCModule
   private EIPCResult c(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
     String str1 = paramBundle.getString("KEY_UIN");
-    paramBundle = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str1);
+    paramBundle = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).y(str1);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("KEY_SCF_INFO", paramBundle);
     if (QLog.isColorLevel()) {
@@ -139,7 +142,7 @@ public class FriendQIPCModule
   private EIPCResult d(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("KEY_UIN");
-    ExtensionInfo localExtensionInfo = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramBundle, false);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramBundle, false);
     int i;
     if (localExtensionInfo != null) {
       i = localExtensionInfo.friendRingId;
@@ -155,7 +158,12 @@ public class FriendQIPCModule
     return EIPCResult.createSuccessResult(paramBundle);
   }
   
-  private EIPCResult e(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  private void e(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  private EIPCResult f(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
     paramBundle = paramBundle.getStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS");
     StringBuilder localStringBuilder = new StringBuilder();
@@ -193,18 +201,21 @@ public class FriendQIPCModule
     }
     if ("ACTION_SET_SAVE_SWITCH".equals(paramString))
     {
-      a((QQAppInterface)localObject, paramBundle);
+      e((QQAppInterface)localObject, paramBundle);
       return null;
     }
     if ("ACTION_DELETE_SINGLE_WAY_FRIENDS".equals(paramString)) {
-      return e((QQAppInterface)localObject, paramBundle);
+      return f((QQAppInterface)localObject, paramBundle);
+    }
+    if ("ACTION_SET_OLYMPIC_ONLINE_STATUS".equals(paramString)) {
+      a((QQAppInterface)localObject, paramInt);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendQIPCModule
  * JD-Core Version:    0.7.0.1
  */

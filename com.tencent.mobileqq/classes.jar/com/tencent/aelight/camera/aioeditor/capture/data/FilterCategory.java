@@ -15,49 +15,49 @@ public class FilterCategory
 {
   public static final Parcelable.Creator<FilterCategory> CREATOR = new FilterCategory.1();
   public int a;
-  public String a;
-  public List<QIMFilterCategoryItem> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public String b;
+  public List<QIMFilterCategoryItem> c;
+  public boolean d;
+  public boolean e;
+  public int f;
+  public int g;
   
   public FilterCategory(int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
+    this.f = 0;
+    this.g = 0;
+    this.a = paramInt1;
+    this.b = paramString;
+    this.c = new ArrayList();
+    this.d = paramBoolean1;
+    this.e = paramBoolean2;
+    this.f = paramInt2;
+    this.g = paramInt3;
   }
   
   protected FilterCategory(Parcel paramParcel)
   {
     boolean bool = false;
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilList = paramParcel.createTypedArrayList(QIMFilterCategoryItem.CREATOR);
+    this.f = 0;
+    this.g = 0;
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.createTypedArrayList(QIMFilterCategoryItem.CREATOR);
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.d = bool;
   }
   
   public FilterCategory(JSONObject paramJSONObject, QIMRedDotConfig paramQIMRedDotConfig)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("categoryId");
-    this.jdField_b_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position", "0"));
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("hide_mask", 0);
-    this.c = paramJSONObject.optInt("source_type", 0);
+    this.f = 0;
+    this.g = 0;
+    this.b = paramJSONObject.optString("name");
+    this.a = paramJSONObject.optInt("categoryId");
+    this.e = "1".equals(paramJSONObject.optString("random_position", "0"));
+    this.f = paramJSONObject.optInt("hide_mask", 0);
+    this.g = paramJSONObject.optInt("source_type", 0);
     int i;
     boolean bool;
     Object localObject2;
@@ -66,7 +66,7 @@ public class FilterCategory
     {
       i = paramJSONObject.optInt("redDotVersion");
       bool = paramJSONObject.optBoolean("needRedDot");
-      localObject2 = (QIMRedDotConfig.CategoryRedConfig)paramQIMRedDotConfig.categories.get(Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject2 = (QIMRedDotConfig.CategoryRedConfig)paramQIMRedDotConfig.categories.get(Integer.valueOf(this.a));
       if (localObject2 != null)
       {
         localObject1 = localObject2;
@@ -82,7 +82,7 @@ public class FilterCategory
       else
       {
         localObject1 = new QIMRedDotConfig.CategoryRedConfig();
-        ((QIMRedDotConfig.CategoryRedConfig)localObject1).categoryId = this.jdField_a_of_type_Int;
+        ((QIMRedDotConfig.CategoryRedConfig)localObject1).categoryId = this.a;
         ((QIMRedDotConfig.CategoryRedConfig)localObject1).version = i;
         ((QIMRedDotConfig.CategoryRedConfig)localObject1).showRedDot = bool;
       }
@@ -102,15 +102,15 @@ public class FilterCategory
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         QIMFilterCategoryItem localQIMFilterCategoryItem = new QIMFilterCategoryItem();
-        localQIMFilterCategoryItem.jdField_d_of_type_JavaLangString = localJSONObject.optString("iconUrl");
-        localQIMFilterCategoryItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("name");
-        localQIMFilterCategoryItem.g = localJSONObject.optString("camera");
-        localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("id");
-        localQIMFilterCategoryItem.f = localJSONObject.optString("type_combo");
-        localQIMFilterCategoryItem.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localQIMFilterCategoryItem.e = this.jdField_a_of_type_JavaLangString;
-        localQIMFilterCategoryItem.jdField_b_of_type_Int = this.c;
-        localQIMFilterCategoryItem.h = localJSONObject.optString("jump_app");
+        localQIMFilterCategoryItem.d = localJSONObject.optString("iconUrl");
+        localQIMFilterCategoryItem.b = localJSONObject.optString("name");
+        localQIMFilterCategoryItem.i = localJSONObject.optString("camera");
+        localQIMFilterCategoryItem.a = localJSONObject.optString("id");
+        localQIMFilterCategoryItem.h = localJSONObject.optString("type_combo");
+        localQIMFilterCategoryItem.e = this.a;
+        localQIMFilterCategoryItem.f = this.b;
+        localQIMFilterCategoryItem.g = this.g;
+        localQIMFilterCategoryItem.q = localJSONObject.optString("jump_app");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
         if (localJSONArray != null)
         {
@@ -122,40 +122,40 @@ public class FilterCategory
             String str = ((JSONObject)localObject3).optString("name");
             if (!TextUtils.isEmpty(str))
             {
-              localQIMFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList.add(str);
+              localQIMFilterCategoryItem.j.add(str);
             }
             else
             {
               localObject3 = ((JSONObject)localObject3).optString("name_android");
               if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-                localQIMFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+                localQIMFilterCategoryItem.j.add(localObject3);
               }
             }
             j += 1;
           }
         }
-        localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("pasters");
-        localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("musics");
-        localQIMFilterCategoryItem.c = localJSONObject.optJSONArray("ufaces");
-        localQIMFilterCategoryItem.jdField_d_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("texts");
-        localQIMFilterCategoryItem.i = localJSONObject.optString("desc", "");
-        if (((localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray != null) && (localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray.length() != 0)) || ((localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray != null) && (localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray.length() != 0)) || ((localQIMFilterCategoryItem.c != null) && (localQIMFilterCategoryItem.c.length() != 0)))
+        localQIMFilterCategoryItem.k = localJSONObject.optJSONArray("pasters");
+        localQIMFilterCategoryItem.l = localJSONObject.optJSONArray("musics");
+        localQIMFilterCategoryItem.m = localJSONObject.optJSONArray("ufaces");
+        localQIMFilterCategoryItem.n = localJSONObject.optJSONArray("texts");
+        localQIMFilterCategoryItem.r = localJSONObject.optString("desc", "");
+        if (((localQIMFilterCategoryItem.k != null) && (localQIMFilterCategoryItem.k.length() != 0)) || ((localQIMFilterCategoryItem.l != null) && (localQIMFilterCategoryItem.l.length() != 0)) || ((localQIMFilterCategoryItem.m != null) && (localQIMFilterCategoryItem.m.length() != 0)))
         {
-          localQIMFilterCategoryItem.jdField_a_of_type_Boolean = true;
+          localQIMFilterCategoryItem.p = true;
           bool = true;
         }
         else
         {
-          localQIMFilterCategoryItem.jdField_a_of_type_Boolean = false;
+          localQIMFilterCategoryItem.p = false;
         }
         ((List)localObject2).add(localQIMFilterCategoryItem);
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilList = ((List)localObject2);
+      this.c = ((List)localObject2);
       if ((paramQIMRedDotConfig != null) && (localObject1 != null)) {
         paramQIMRedDotConfig.categories.put(Integer.valueOf(((QIMRedDotConfig.CategoryRedConfig)localObject1).categoryId), localObject1);
       }
-      this.jdField_a_of_type_Boolean = bool;
+      this.d = bool;
     }
   }
   
@@ -166,15 +166,15 @@ public class FilterCategory
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeTypedList(this.c);
+    paramParcel.writeByte((byte)this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

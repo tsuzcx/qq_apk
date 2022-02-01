@@ -21,109 +21,51 @@ import org.json.JSONException;
 public class XMediaEditorAdapter
   extends RecyclerView.Adapter
 {
-  int jdField_a_of_type_Int = 0;
-  public EditorViewHolderManager a;
-  private ArrayList<EditItemInfoBase> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public EditorViewHolderManager a = new EditorViewHolderManager();
+  int b = 0;
+  private ArrayList<EditItemInfoBase> c = new ArrayList();
   
   public XMediaEditorAdapter(SparseArray<EditItemBase> paramSparseArray)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager = new EditorViewHolderManager();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(paramSparseArray);
+    this.a.a(paramSparseArray);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public EditItemInfoBase a(int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
-    {
-      if ((paramInt >= 0) && (paramInt < ((ArrayList)localObject).size())) {
-        return (EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getEditItemInfo index out of bound, index:");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(", mItemList.size():");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
-      QLog.e("XMediaEditor", 2, ((StringBuilder)localObject).toString());
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      EditItemInfoBase localEditItemInfoBase = (EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localEditItemInfoBase.b() != -1) {
-        localJSONArray.put(localEditItemInfoBase.a());
-      }
-      i += 1;
-    }
-    return localJSONArray.toString();
-  }
-  
-  public ArrayList<UploadEditItemInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      Object localObject = (EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localObject instanceof UploadEditItemInfo))
-      {
-        localObject = (UploadEditItemInfo)localObject;
-        if (((UploadEditItemInfo)localObject).f != 3) {
-          localArrayList.add(localObject);
-        }
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a();
+    return this.b;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(int paramInt, EditItemInfoBase paramEditItemInfoBase)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.c != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(paramEditItemInfoBase);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramEditItemInfoBase);
+      this.a.a(paramEditItemInfoBase);
+      this.c.add(paramInt, paramEditItemInfoBase);
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    EditItemInfoBase localEditItemInfoBase = a(paramInt);
+    EditItemInfoBase localEditItemInfoBase = c(paramInt);
     if (localEditItemInfoBase != null)
     {
       localEditItemInfoBase.c(paramString);
       notifyItemChanged(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.b(localEditItemInfoBase);
+      this.a.b(localEditItemInfoBase);
     }
   }
   
   public void a(EditItemInfoBase paramEditItemInfoBase)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.c != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(paramEditItemInfoBase);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramEditItemInfoBase);
+      this.a.a(paramEditItemInfoBase);
+      this.c.add(paramEditItemInfoBase);
     }
   }
   
@@ -133,7 +75,7 @@ public class XMediaEditorAdapter
     while (i < paramArrayList.size())
     {
       UploadEditItemInfo localUploadEditItemInfo = (UploadEditItemInfo)paramArrayList.get(i);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(localUploadEditItemInfo);
+      this.a.a(localUploadEditItemInfo);
       i += 1;
     }
   }
@@ -146,13 +88,13 @@ public class XMediaEditorAdapter
       int j;
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        if (i < this.c.size())
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.c((EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          this.a.c((EditItemInfoBase)this.c.get(i));
           i += 1;
           continue;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.c.clear();
         i = 0;
         if (i < paramJSONArray.length())
         {
@@ -164,11 +106,11 @@ public class XMediaEditorAdapter
         else
         {
           localObject1 = null;
-          j = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          j = this.c.size() - 1;
           i = 0;
           if (j >= 0)
           {
-            Object localObject2 = (EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+            Object localObject2 = (EditItemInfoBase)this.c.get(j);
             if (!(localObject2 instanceof TextInfo)) {
               break label286;
             }
@@ -179,7 +121,7 @@ public class XMediaEditorAdapter
             if (i == 0) {
               break label281;
             }
-            localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+            localObject1 = this.c;
             int k = j + 1;
             localObject1 = (TextInfo)((ArrayList)localObject1).get(k);
             localObject2 = (TextInfo)localObject2;
@@ -223,12 +165,60 @@ public class XMediaEditorAdapter
     }
   }
   
-  public boolean a()
+  public String b()
+  {
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    while (i < this.c.size())
+    {
+      EditItemInfoBase localEditItemInfoBase = (EditItemInfoBase)this.c.get(i);
+      if (localEditItemInfoBase.b() != -1) {
+        localJSONArray.put(localEditItemInfoBase.d());
+      }
+      i += 1;
+    }
+    return localJSONArray.toString();
+  }
+  
+  public void b(int paramInt)
+  {
+    ArrayList localArrayList = this.c;
+    if (localArrayList != null)
+    {
+      this.a.c((EditItemInfoBase)localArrayList.get(paramInt));
+      this.c.remove(paramInt);
+    }
+  }
+  
+  public EditItemInfoBase c(int paramInt)
+  {
+    Object localObject = this.c;
+    if (localObject != null)
+    {
+      if ((paramInt >= 0) && (paramInt < ((ArrayList)localObject).size())) {
+        return (EditItemInfoBase)this.c.get(paramInt);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getEditItemInfo index out of bound, index:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", mItemList.size():");
+      ((StringBuilder)localObject).append(this.c.size());
+      QLog.e("XMediaEditor", 2, ((StringBuilder)localObject).toString());
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    this.a.a();
+  }
+  
+  public boolean d()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.c.size())
     {
-      if (!((EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a()) {
+      if (!((EditItemInfoBase)this.c.get(i)).c()) {
         return false;
       }
       i += 1;
@@ -236,25 +226,44 @@ public class XMediaEditorAdapter
     return true;
   }
   
-  public int b()
+  public int e()
   {
     int i = 0;
     int j = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.c.size())
     {
-      j += ((EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      j += ((EditItemInfoBase)this.c.get(i)).a();
       i += 1;
     }
     return j;
   }
   
-  public ArrayList<HomeWorkInfoInterface> b()
+  public ArrayList<UploadEditItemInfo> f()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.c.size())
     {
-      EditItemInfoBase localEditItemInfoBase = (EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject = (EditItemInfoBase)this.c.get(i);
+      if ((localObject instanceof UploadEditItemInfo))
+      {
+        localObject = (UploadEditItemInfo)localObject;
+        if (((UploadEditItemInfo)localObject).o != 3) {
+          localArrayList.add(localObject);
+        }
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public ArrayList<HomeWorkInfoInterface> g()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.c.size())
+    {
+      EditItemInfoBase localEditItemInfoBase = (EditItemInfoBase)this.c.get(i);
       if ((localEditItemInfoBase instanceof HomeWorkInfoInterface)) {
         localArrayList.add((HomeWorkInfoInterface)localEditItemInfoBase);
       }
@@ -263,34 +272,24 @@ public class XMediaEditorAdapter
     return localArrayList;
   }
   
-  public void b(int paramInt)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.c((EditItemInfoBase)localArrayList.get(paramInt));
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (((EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(0)).b() == -1);
-  }
-  
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.c.size();
   }
   
   public long getItemId(int paramInt)
   {
-    return ((EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).hashCode();
+    return ((EditItemInfoBase)this.c.get(paramInt)).hashCode();
   }
   
   public int getItemViewType(int paramInt)
   {
-    return ((EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b();
+    return ((EditItemInfoBase)this.c.get(paramInt)).b();
+  }
+  
+  public boolean h()
+  {
+    return (this.c.size() > 0) && (((EditItemInfoBase)this.c.get(0)).b() == -1);
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -301,9 +300,9 @@ public class XMediaEditorAdapter
     ((StringBuilder)localObject).append(", position:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("xmediaEditor", 2, ((StringBuilder)localObject).toString());
-    localObject = (EditItemInfoBase)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((EditItemInfoBase)localObject).c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(paramViewHolder, (EditItemInfoBase)localObject, this.jdField_a_of_type_Int);
+    localObject = (EditItemInfoBase)this.c.get(paramInt);
+    ((EditItemInfoBase)localObject).g = paramInt;
+    this.a.a(paramViewHolder, (EditItemInfoBase)localObject, this.b);
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
@@ -313,7 +312,7 @@ public class XMediaEditorAdapter
     localStringBuilder.append("Adapter onCreateViewHolder, type:");
     localStringBuilder.append(paramInt);
     QLog.i("xmediaEditor", 2, localStringBuilder.toString());
-    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(paramViewGroup, paramInt);
+    return this.a.a(paramViewGroup, paramInt);
   }
   
   public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
@@ -323,7 +322,7 @@ public class XMediaEditorAdapter
     localStringBuilder.append(paramViewHolder.getItemViewType());
     QLog.i("xmediaEditor", 2, localStringBuilder.toString());
     super.onViewAttachedToWindow(paramViewHolder);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.c(paramViewHolder);
+    this.a.c(paramViewHolder);
   }
   
   public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
@@ -333,7 +332,7 @@ public class XMediaEditorAdapter
     localStringBuilder.append(paramViewHolder.getItemViewType());
     QLog.i("xmediaEditor", 2, localStringBuilder.toString());
     super.onViewDetachedFromWindow(paramViewHolder);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.b(paramViewHolder);
+    this.a.b(paramViewHolder);
   }
   
   public void onViewRecycled(RecyclerView.ViewHolder paramViewHolder)
@@ -343,12 +342,12 @@ public class XMediaEditorAdapter
     localStringBuilder.append(paramViewHolder.getItemViewType());
     QLog.i("xmediaEditor", 2, localStringBuilder.toString());
     super.onViewRecycled(paramViewHolder);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditorViewHolderManager.a(paramViewHolder);
+    this.a.a(paramViewHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter
  * JD-Core Version:    0.7.0.1
  */

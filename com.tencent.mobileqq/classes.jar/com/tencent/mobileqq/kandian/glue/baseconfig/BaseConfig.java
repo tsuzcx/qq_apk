@@ -6,21 +6,16 @@ import kotlin.Metadata;
 public final class BaseConfig
   implements IConfig
 {
-  public static final BaseConfig a;
-  private static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueBaseconfigBaseConfig = new BaseConfig();
-  }
+  public static final BaseConfig a = new BaseConfig();
+  private static boolean b;
   
   public final void a()
   {
     try
     {
-      if (!jdField_a_of_type_Boolean)
+      if (!b)
       {
-        jdField_a_of_type_Boolean = true;
+        b = true;
         b();
       }
       c();
@@ -44,7 +39,7 @@ public final class BaseConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.baseconfig.BaseConfig
  * JD-Core Version:    0.7.0.1
  */

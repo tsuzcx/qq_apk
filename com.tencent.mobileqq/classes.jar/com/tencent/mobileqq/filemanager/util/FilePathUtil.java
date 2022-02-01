@@ -15,11 +15,6 @@ public class FilePathUtil
     return a().copyImageFileToMediaStorage(paramString);
   }
   
-  public static boolean a(String paramString)
-  {
-    return a().fileExistsAndNotEmpty(paramString);
-  }
-  
   public static String b(String paramString)
   {
     return a().getRealPath(paramString);
@@ -29,10 +24,15 @@ public class FilePathUtil
   {
     return a().renameImageFileToMediaStorage(paramString);
   }
+  
+  public static boolean d(String paramString)
+  {
+    return a().fileExistsAndNotEmpty(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FilePathUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class FrameFragment$DragViewPunctureClickListener
   public void onClick(View paramView)
   {
     ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if (!FrameFragment.e) {
+    if (!FrameFragment.o) {
       localViewGroup.callOnClick();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -19,7 +19,7 @@ public class FrameFragment$DragViewPunctureClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameFragment.DragViewPunctureClickListener
  * JD-Core Version:    0.7.0.1
  */

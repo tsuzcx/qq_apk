@@ -20,11 +20,11 @@ public class NetSearchTemplateHorizontalBaseView
   public void a()
   {
     super.a();
-    TextView localTextView = c();
+    TextView localTextView = d();
     if (ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.peekAppRuntime(), false, null))
     {
       if (localTextView != null) {
-        ((TextView)localTextView).setTextColor(localTextView.getContext().getResources().getColor(2131166982));
+        ((TextView)localTextView).setTextColor(localTextView.getContext().getResources().getColor(2131167916));
       }
     }
     else if (localTextView != null) {
@@ -34,7 +34,7 @@ public class NetSearchTemplateHorizontalBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateHorizontalBaseView
  * JD-Core Version:    0.7.0.1
  */

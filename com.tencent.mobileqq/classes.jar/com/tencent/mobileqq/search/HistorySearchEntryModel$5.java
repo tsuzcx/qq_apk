@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.search;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.activity.recent.RecentUtil;
@@ -14,6 +15,7 @@ import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.SearchHistory;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
 import com.tencent.mobileqq.profilecard.data.AllInOne;
@@ -25,13 +27,13 @@ import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.temporaryban.api.ITemporarilyBannedTroopUtilApi;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.AdapterView<*>;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -43,16 +45,16 @@ class HistorySearchEntryModel$5
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     ThreadPriorityManager.a(true);
-    if ((paramAdapterView == this.a.jdField_a_of_type_ComTencentWidgetXListView) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter != null))
+    if ((paramAdapterView == this.a.d) && (this.a.h != null))
     {
       paramAdapterView = new StringBuilder();
       paramAdapterView.append("");
       paramAdapterView.append(paramInt);
       SearchUtils.a("home_page", "clk_history", new String[] { paramAdapterView.toString() });
-      paramAdapterView = (IContactSearchable)this.a.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.getItem(paramInt);
+      paramAdapterView = (IContactSearchable)this.a.h.getItem(paramInt);
       if ((paramAdapterView instanceof ContactSearchableSearchHistory))
       {
-        SearchHistory localSearchHistory = ((ContactSearchableSearchHistory)paramAdapterView).a();
+        SearchHistory localSearchHistory = ((ContactSearchableSearchHistory)paramAdapterView).e();
         paramAdapterView = new StringBuilder();
         paramAdapterView.append("on serarch history click, ");
         paramAdapterView.append(localSearchHistory.toString());
@@ -66,16 +68,22 @@ class HistorySearchEntryModel$5
             if (paramInt != 1000)
             {
               if (paramInt == 1001) {
-                break label945;
+                break label987;
               }
               if (paramInt != 1008)
               {
                 if (paramInt == 3000) {
-                  break label945;
+                  break label987;
                 }
-                if (paramInt != 7220) {
-                  if ((paramInt == 10002) || (paramInt == 10004) || (paramInt == 10010)) {
-                    break label945;
+                if (paramInt != 7220)
+                {
+                  if ((paramInt == 10002) || (paramInt == 10004)) {
+                    break label987;
+                  }
+                  if (paramInt != 10007) {
+                    if (paramInt == 10010) {
+                      break label987;
+                    }
                   }
                 }
               }
@@ -125,7 +133,7 @@ class HistorySearchEntryModel$5
                     {
                       ArrayList localArrayList = ((AllInOne)localObject1).contactArray;
                       StringBuilder localStringBuilder = new StringBuilder();
-                      localStringBuilder.append(HardCodeUtil.a(2131705579));
+                      localStringBuilder.append(HardCodeUtil.a(2131903465));
                       if (localObject2.length > 0) {
                         paramAdapterView = Integer.valueOf(paramInt + 1);
                       } else {
@@ -142,10 +150,10 @@ class HistorySearchEntryModel$5
               }
               break;
             case 1004: 
-              paramAdapterView = (DiscussionManager)HistorySearchEntryModel.a(this.a).getManager(QQManagerFactory.DISCUSSION_MANAGER);
+              paramAdapterView = (DiscussionManager)HistorySearchEntryModel.c(this.a).getManager(QQManagerFactory.DISCUSSION_MANAGER);
               if (paramAdapterView != null)
               {
-                paramAdapterView = paramAdapterView.a(localSearchHistory.troopUin);
+                paramAdapterView = paramAdapterView.b(localSearchHistory.troopUin);
                 if (paramAdapterView != null)
                 {
                   paramAdapterView = (DiscussionMemberInfo)paramAdapterView.get(localSearchHistory.uin);
@@ -159,6 +167,8 @@ class HistorySearchEntryModel$5
               }
               RecentUtil.a = true;
               RecentUtil.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, localSearchHistory.displayName, false, null, null);
+              break;
+              ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).enterGameMsgChatPie(HistorySearchEntryModel.c(this.a), paramView.getContext(), localSearchHistory.uin, 6);
               break;
               ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800671B", "0X800671B", 0, 0, "", "", "", "", false);
               ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramView.getContext(), 1, 0);
@@ -184,41 +194,48 @@ class HistorySearchEntryModel$5
               break;
             }
           }
-          label945:
+          label987:
           RecentUtil.a = true;
-          Object localObject1 = localSearchHistory.displayName;
-          paramAdapterView = (AdapterView<?>)localObject1;
+          paramAdapterView = localSearchHistory.displayName;
+          Object localObject1 = paramAdapterView;
           if (localSearchHistory.type == 1)
           {
-            localObject2 = ((TroopManager)HistorySearchEntryModel.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).b(localSearchHistory.uin);
-            paramAdapterView = (AdapterView<?>)localObject1;
-            if (localObject2 != null) {
-              paramAdapterView = ((TroopInfo)localObject2).getTroopDisplayName();
+            localObject1 = ((TroopManager)HistorySearchEntryModel.c(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).f(localSearchHistory.uin);
+            if (localObject1 != null) {
+              paramAdapterView = ((TroopInfo)localObject1).getTroopDisplayName();
             }
+            localObject2 = new Intent();
+            ((Intent)localObject2).putExtra("uin", localSearchHistory.uin);
+            ((Intent)localObject2).putExtra("uintype", localSearchHistory.type);
+            localObject1 = paramAdapterView;
+            if (((ITemporarilyBannedTroopUtilApi)QRoute.api(ITemporarilyBannedTroopUtilApi.class)).checkTemporarilyBannedTroop(paramView.getContext(), HistorySearchEntryModel.c(this.a), (Intent)localObject2)) {}
           }
-          RecentUtil.a(paramView.getContext(), HistorySearchEntryModel.a(this.a), localSearchHistory.uin, localSearchHistory.type, paramAdapterView, false);
+          else
+          {
+            RecentUtil.a(paramView.getContext(), HistorySearchEntryModel.c(this.a), localSearchHistory.uin, localSearchHistory.type, (String)localObject1, false);
+          }
         }
         else
         {
-          paramAdapterView = (FriendsManager)HistorySearchEntryModel.a(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+          paramAdapterView = (FriendsManager)HistorySearchEntryModel.c(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
           if (paramAdapterView == null) {
-            break label1108;
+            break label1220;
           }
-          paramAdapterView = paramAdapterView.e(localSearchHistory.uin);
+          paramAdapterView = paramAdapterView.m(localSearchHistory.uin);
           if (paramAdapterView != null)
           {
             RecentUtil.a = true;
-            RecentUtil.a(paramView.getContext(), HistorySearchEntryModel.a(this.a), localSearchHistory.uin, 0, ContactUtils.a(paramAdapterView), false);
+            RecentUtil.a(paramView.getContext(), HistorySearchEntryModel.c(this.a), localSearchHistory.uin, 0, ContactUtils.a(paramAdapterView), false);
           }
         }
         paramInt = 1;
-        break label1110;
-        label1108:
+        break label1222;
+        label1220:
         paramInt = 0;
-        label1110:
+        label1222:
         if (paramInt != 0)
         {
-          SearchUtils.a(HistorySearchEntryModel.a(this.a), localSearchHistory.displayName, localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type);
+          SearchUtils.a(HistorySearchEntryModel.c(this.a), localSearchHistory.displayName, localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type);
           int i;
           if (localSearchHistory.type == 1) {
             i = 2;
@@ -227,11 +244,11 @@ class HistorySearchEntryModel$5
           } else {
             i = 1;
           }
-          if (this.a.b == 2) {
+          if (this.a.g == 2) {
             paramInt = 3;
-          } else if (this.a.b == 10) {
+          } else if (this.a.g == 10) {
             paramInt = 2;
-          } else if (this.a.b == 1) {
+          } else if (this.a.g == 1) {
             paramInt = 1;
           } else {
             paramInt = 0;
@@ -241,23 +258,23 @@ class HistorySearchEntryModel$5
         if (localSearchHistory.type == 0)
         {
           paramInt = 1;
-          break label1299;
+          break label1411;
         }
         if ((localSearchHistory.type == 1) || (localSearchHistory.type == 3000))
         {
           paramInt = 2;
-          break label1299;
+          break label1411;
         }
       }
       paramInt = 0;
-      label1299:
-      UniteSearchReportController.a(HistorySearchEntryModel.a(this.a), 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D19", paramInt, 0, null, null);
+      label1411:
+      UniteSearchReportController.a(HistorySearchEntryModel.c(this.a), 0, SearchEntryFragment.b(this.a.a), "0X8009D19", paramInt, 0, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HistorySearchEntryModel.5
  * JD-Core Version:    0.7.0.1
  */

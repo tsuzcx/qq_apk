@@ -12,7 +12,7 @@ final class SpecialCareUtils$1
   
   public void run()
   {
-    if (QFlutterDPC.a().a())
+    if (QFlutterDPC.a().c())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SpecialCareUtils", 2, "preLoadSpecialCareSettingPage");
@@ -23,7 +23,7 @@ final class SpecialCareUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1
  * JD-Core Version:    0.7.0.1
  */

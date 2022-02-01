@@ -7,51 +7,27 @@ import java.util.Date;
 
 public class CrashProtector
 {
-  private static String jdField_a_of_type_JavaLangString = "CPSP";
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
+  private static String a = "CPSP";
   private String b;
+  private long c;
+  private boolean d;
   
   public CrashProtector(String paramString, long paramLong)
   {
     this.b = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    Object localObject = BaseApplication.getContext();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(a());
-    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
-    try
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).remove(this.b);
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  private boolean a()
+  private boolean b()
   {
     Object localObject = BaseApplication.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("_");
     localStringBuilder.append(a());
     localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     boolean bool = true;
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     try
     {
       long l3 = ((SharedPreferences)localObject).getLong(this.b, 0L);
@@ -59,11 +35,11 @@ public class CrashProtector
       long l2 = l1 - l3;
       if (l3 != 0L)
       {
-        l3 = this.jdField_a_of_type_Long;
+        l3 = this.c;
         if ((l2 < l3) && (l2 > 0L)) {
           try
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.d = false;
             return true;
           }
           catch (Exception localException1) {}
@@ -82,40 +58,64 @@ public class CrashProtector
     return bool;
   }
   
+  private void c()
+  {
+    if (!this.d) {
+      return;
+    }
+    Object localObject = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(a());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    try
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).remove(this.b);
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
   /* Error */
   public String a()
   {
     // Byte code:
-    //   0: new 34	java/lang/StringBuilder
+    //   0: new 35	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   7: astore_2
     //   8: aload_2
-    //   9: ldc 91
-    //   11: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: ldc 93
+    //   11: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: pop
     //   15: aload_2
-    //   16: invokestatic 97	android/os/Process:myPid	()I
-    //   19: invokevirtual 100	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16: invokestatic 99	android/os/Process:myPid	()I
+    //   19: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   22: pop
     //   23: aload_2
-    //   24: ldc 102
-    //   26: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 104
+    //   26: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
-    //   30: new 104	java/io/File
+    //   30: new 106	java/io/File
     //   33: dup
     //   34: aload_2
-    //   35: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+    //   35: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
     //   41: astore_3
     //   42: aload_3
-    //   43: invokevirtual 110	java/io/File:exists	()Z
+    //   43: invokevirtual 112	java/io/File:exists	()Z
     //   46: istore_1
-    //   47: ldc 112
+    //   47: ldc 114
     //   49: astore 7
     //   51: iload_1
     //   52: ifne +6 -> 58
-    //   55: ldc 112
+    //   55: ldc 114
     //   57: areturn
     //   58: aconst_null
     //   59: astore 9
@@ -125,43 +125,43 @@ public class CrashProtector
     //   65: astore 4
     //   67: aconst_null
     //   68: astore_2
-    //   69: new 114	java/io/FileReader
+    //   69: new 116	java/io/FileReader
     //   72: dup
     //   73: aload_3
-    //   74: invokespecial 117	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   74: invokespecial 119	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   77: astore_3
-    //   78: new 119	java/io/BufferedReader
+    //   78: new 121	java/io/BufferedReader
     //   81: dup
     //   82: aload_3
-    //   83: invokespecial 122	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   83: invokespecial 124	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   86: astore 6
     //   88: aload 6
     //   90: astore 5
     //   92: aload_3
     //   93: astore 4
     //   95: aload 6
-    //   97: invokevirtual 125	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   97: invokevirtual 127	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   100: astore 10
     //   102: aload 6
     //   104: astore 5
     //   106: aload_3
     //   107: astore 4
     //   109: aload 10
-    //   111: invokestatic 131	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   111: invokestatic 133	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   114: ifne +16 -> 130
     //   117: aload 6
     //   119: astore 5
     //   121: aload_3
     //   122: astore 4
     //   124: aload 10
-    //   126: invokevirtual 136	java/lang/String:trim	()Ljava/lang/String;
+    //   126: invokevirtual 138	java/lang/String:trim	()Ljava/lang/String;
     //   129: astore_2
     //   130: aload_3
-    //   131: invokevirtual 139	java/io/FileReader:close	()V
+    //   131: invokevirtual 141	java/io/FileReader:close	()V
     //   134: goto +8 -> 142
     //   137: astore_3
     //   138: aload_3
-    //   139: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   139: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   142: aload_2
     //   143: astore_3
     //   144: aload 6
@@ -169,13 +169,13 @@ public class CrashProtector
     //   149: aload_2
     //   150: astore_3
     //   151: aload 6
-    //   153: invokevirtual 141	java/io/BufferedReader:close	()V
+    //   153: invokevirtual 143	java/io/BufferedReader:close	()V
     //   156: aload_2
     //   157: astore_3
     //   158: goto +90 -> 248
     //   161: astore_2
     //   162: aload_2
-    //   163: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   163: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   166: goto +82 -> 248
     //   169: astore 4
     //   171: aload 6
@@ -203,15 +203,15 @@ public class CrashProtector
     //   207: aload_3
     //   208: astore 4
     //   210: aload 6
-    //   212: invokevirtual 72	java/lang/Exception:printStackTrace	()V
+    //   212: invokevirtual 85	java/lang/Exception:printStackTrace	()V
     //   215: aload_3
     //   216: ifnull +15 -> 231
     //   219: aload_3
-    //   220: invokevirtual 139	java/io/FileReader:close	()V
+    //   220: invokevirtual 141	java/io/FileReader:close	()V
     //   223: goto +8 -> 231
     //   226: astore_3
     //   227: aload_3
-    //   228: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   228: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   231: aload 8
     //   233: astore_3
     //   234: aload_2
@@ -219,17 +219,17 @@ public class CrashProtector
     //   238: aload 9
     //   240: astore_3
     //   241: aload_2
-    //   242: invokevirtual 141	java/io/BufferedReader:close	()V
+    //   242: invokevirtual 143	java/io/BufferedReader:close	()V
     //   245: aload 8
     //   247: astore_3
     //   248: aload 7
     //   250: astore_2
     //   251: aload_3
-    //   252: invokestatic 131	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   252: invokestatic 133	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   255: ifne +26 -> 281
     //   258: aload_3
-    //   259: ldc 143
-    //   261: invokevirtual 147	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   259: ldc 145
+    //   261: invokevirtual 149	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   264: astore_3
     //   265: aload 7
     //   267: astore_2
@@ -254,19 +254,19 @@ public class CrashProtector
     //   291: aload_3
     //   292: ifnull +15 -> 307
     //   295: aload_3
-    //   296: invokevirtual 139	java/io/FileReader:close	()V
+    //   296: invokevirtual 141	java/io/FileReader:close	()V
     //   299: goto +8 -> 307
     //   302: astore_3
     //   303: aload_3
-    //   304: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   304: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   307: aload 4
     //   309: ifnull +16 -> 325
     //   312: aload 4
-    //   314: invokevirtual 141	java/io/BufferedReader:close	()V
+    //   314: invokevirtual 143	java/io/BufferedReader:close	()V
     //   317: goto +8 -> 325
     //   320: astore_3
     //   321: aload_3
-    //   322: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   322: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   325: aload_2
     //   326: athrow
     // Local variable table:
@@ -324,18 +324,18 @@ public class CrashProtector
   {
     if (paramIProtectedMethod != null)
     {
-      if (!a()) {
+      if (!b()) {
         paramIProtectedMethod.a();
       } else {
         paramIProtectedMethod.b();
       }
-      a();
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CrashProtector
  * JD-Core Version:    0.7.0.1
  */

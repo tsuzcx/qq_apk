@@ -20,22 +20,22 @@ public class ApolloSlaveViewBinder
   public ApolloSlaveViewBinder(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramContext);
-    this.c = 4;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.f = 2;
+    this.l = 4;
+    this.m = paramSessionInfo;
+    this.q = 2;
   }
   
   public View a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView == null)
+    if (this.r == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.setDivider(null);
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.setVerticalScrollBarEnabled(true);
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.setEdgeEffectEnabled(false);
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.setSelector(2130851081);
+      this.r = new ApolloPanelListView(this.i);
+      this.r.setDivider(null);
+      this.r.setVerticalScrollBarEnabled(true);
+      this.r.setEdgeEffectEnabled(false);
+      this.r.setSelector(2130853313);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView;
+    return this.r;
   }
   
   public ApolloInfo a(String paramString)
@@ -45,18 +45,18 @@ public class ApolloSlaveViewBinder
   
   public ArrayList<ApolloInfo> a(int paramInt)
   {
-    int i = this.b;
+    int i = this.k;
     ArrayList localArrayList2 = null;
     ArrayList localArrayList1 = localArrayList2;
     if (i == 9)
     {
       localArrayList1 = localArrayList2;
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.o != null)
       {
-        if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+        if (this.o.size() == 0) {
           return null;
         }
-        i = a();
+        i = c();
         localArrayList1 = localArrayList2;
         if (paramInt >= 0)
         {
@@ -64,23 +64,23 @@ public class ApolloSlaveViewBinder
             return null;
           }
           localArrayList1 = localArrayList2;
-          if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView != null)
+          if (this.r != null)
           {
-            paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.getFirstVisiblePosition() * this.f;
-            i = this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.getLastVisiblePosition();
-            int j = this.f;
+            paramInt = this.r.getFirstVisiblePosition() * this.q;
+            i = this.r.getLastVisiblePosition();
+            int j = this.q;
             localArrayList2 = new ArrayList();
             for (;;)
             {
               localArrayList1 = localArrayList2;
-              if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+              if (paramInt >= this.o.size()) {
                 break;
               }
               localArrayList1 = localArrayList2;
               if (paramInt > (i + 1) * j - 1) {
                 break;
               }
-              localArrayList2.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+              localArrayList2.add(this.o.get(paramInt));
               paramInt += 1;
             }
           }
@@ -98,21 +98,21 @@ public class ApolloSlaveViewBinder
   public void a(BaseChatPie paramBaseChatPie)
   {
     super.a(paramBaseChatPie);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.a(paramBaseChatPie);
+    if (this.s != null) {
+      this.s.a(paramBaseChatPie);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilList = null;
+    this.o = null;
   }
   
   public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloSlaveViewBinder
  * JD-Core Version:    0.7.0.1
  */

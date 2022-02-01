@@ -10,14 +10,14 @@ class ApolloLottieAnim$4
   
   public void run()
   {
-    if ((ApolloLottieAnim.a(this.this$0) != null) && (ApolloLottieAnim.a(this.this$0).get() != null)) {
-      ((DiniFlyAnimationView)ApolloLottieAnim.a(this.this$0).get()).endAnimation();
+    if ((ApolloLottieAnim.b(this.this$0) != null) && (ApolloLottieAnim.b(this.this$0).get() != null)) {
+      ((DiniFlyAnimationView)ApolloLottieAnim.b(this.this$0).get()).endAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim.4
  * JD-Core Version:    0.7.0.1
  */

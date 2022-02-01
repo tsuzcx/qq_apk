@@ -29,21 +29,21 @@ import java.util.List;
 
 public class AfterDecodeMsg
 {
-  private long jdField_a_of_type_Long;
-  private C2CMessageProcessor jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor;
-  private DecodeProtoPkgContext jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext;
-  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
+  private ArrayList<MessageRecord> a;
   private long b;
+  private long c;
+  private List<MessageRecord> d;
+  private C2CMessageProcessor e;
+  private DecodeProtoPkgContext f;
   
   public AfterDecodeMsg(C2CMessageProcessor paramC2CMessageProcessor, ArrayList<MessageRecord> paramArrayList, long paramLong1, long paramLong2, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor = paramC2CMessageProcessor;
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext = paramDecodeProtoPkgContext;
+    this.a = paramArrayList;
+    this.b = paramLong1;
+    this.c = paramLong2;
+    this.d = paramList;
+    this.e = paramC2CMessageProcessor;
+    this.f = paramDecodeProtoPkgContext;
   }
   
   private void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, MessageRecord paramMessageRecord)
@@ -64,7 +64,7 @@ public class AfterDecodeMsg
       {
         paramMessageForPtt1.directUrl = paramMessageForPtt2.directUrl;
         paramMessageForPtt1.serial();
-        ((IMessageFacade)paramC2CMessageProcessor.a.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramMessageForPtt1.frienduin, paramMessageForPtt1.istroop, paramMessageForPtt1.uniseq, paramMessageForPtt1.msgData);
+        ((IMessageFacade)paramC2CMessageProcessor.q.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramMessageForPtt1.frienduin, paramMessageForPtt1.istroop, paramMessageForPtt1.uniseq, paramMessageForPtt1.msgData);
         bool = true;
       }
       catch (Exception paramMessageForPtt1)
@@ -83,19 +83,6 @@ public class AfterDecodeMsg
     }
   }
   
-  private void a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.istroop == 1008) && ((paramMessageRecord instanceof MessageForStructing)) && ((StructLongMessageDownloadProcessor.isPALongMsg(paramMessageRecord)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(paramMessageRecord))))
-    {
-      String str = paramMessageRecord.getExtInfoFromExtStr("longMsg_State");
-      if ((str == null) || (!String.valueOf(3).equals(str)))
-      {
-        paramMessageRecord.saveExtInfoToExtStr("longMsg_State", String.valueOf(1));
-        StructLongMessageDownloadProcessor.getStructLongMessage(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a, paramMessageRecord);
-      }
-    }
-  }
-  
   private void a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     if (paramMessageRecord.msgtype == -2002)
@@ -105,12 +92,12 @@ public class AfterDecodeMsg
       }
       if ((paramBoolean) && ((paramMessageRecord instanceof MessageForPtt)) && (UinTypeUtil.b(paramMessageRecord.istroop)))
       {
-        Iterator localIterator = ((IMessageFacade)this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a.getRuntimeService(IMessageFacade.class, "")).getMsgList(paramMessageRecord.frienduin, paramMessageRecord.istroop).iterator();
+        Iterator localIterator = ((IMessageFacade)this.e.q.getRuntimeService(IMessageFacade.class, "")).getMsgList(paramMessageRecord.frienduin, paramMessageRecord.istroop).iterator();
         while (localIterator.hasNext())
         {
           MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
           if (((localMessageRecord instanceof MessageForPtt)) && (localMessageRecord.msgUid == paramMessageRecord.msgUid) && (localMessageRecord.shmsgseq == paramMessageRecord.shmsgseq)) {
-            a((MessageForPtt)localMessageRecord, (MessageForPtt)paramMessageRecord, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor);
+            a((MessageForPtt)localMessageRecord, (MessageForPtt)paramMessageRecord, this.e);
           }
         }
       }
@@ -121,21 +108,21 @@ public class AfterDecodeMsg
   {
     if ((!paramBoolean1) && (!paramBoolean2))
     {
-      a(paramMessageRecord);
+      b(paramMessageRecord);
       if ((paramMessageRecord instanceof MessageForMarketFace)) {
-        CommercialDrainageManagerConstants.a(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a, (MessageForMarketFace)paramMessageRecord);
+        CommercialDrainageManagerConstants.a(this.e.q, (MessageForMarketFace)paramMessageRecord);
       }
       if (AppConstants.NEW_KANDIAN_UIN.equals(paramMessageRecord.frienduin)) {
         paramMessageRecord.time = NetConnInfoCenter.getServerTime();
       }
       if (AppConstants.KANDIAN_DAILY_UIN.equals(paramMessageRecord.frienduin)) {
-        ((IKandianDailyManagerService)((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a).getRuntimeService(IKandianDailyManagerService.class)).onReceiveKandianDailyMsg(paramMessageRecord);
+        ((IKandianDailyManagerService)((QQAppInterface)this.e.q).getRuntimeService(IKandianDailyManagerService.class)).onReceiveKandianDailyMsg(paramMessageRecord);
       }
       paramArrayList.add(paramMessageRecord);
-      int i = ((IKanDianMergeManager)((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a).getRuntimeService(IKanDianMergeManager.class)).getMsgFromSource(paramMessageRecord);
+      int i = ((IKanDianMergeManager)((QQAppInterface)this.e.q).getRuntimeService(IKanDianMergeManager.class)).getMsgFromSource(paramMessageRecord);
       if ((i == 0) || (i == 1))
       {
-        paramMessageRecord = ((IKanDianMergeManager)((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a).getRuntimeService(IKanDianMergeManager.class)).createFakeFromNewMsg(paramMessageRecord);
+        paramMessageRecord = ((IKanDianMergeManager)((QQAppInterface)this.e.q).getRuntimeService(IKanDianMergeManager.class)).createFakeFromNewMsg(paramMessageRecord);
         if (paramMessageRecord != null) {
           paramArrayList.add(paramMessageRecord);
         }
@@ -145,19 +132,19 @@ public class AfterDecodeMsg
   
   private boolean a(MessageRecord paramMessageRecord)
   {
-    return ((MessageCache)this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a.getMsgCache()).a(paramMessageRecord.frienduin, paramMessageRecord.msgUid, paramMessageRecord.shmsgseq);
+    return ((MessageCache)this.e.q.getMsgCache()).c(paramMessageRecord.frienduin, paramMessageRecord.msgUid, paramMessageRecord.shmsgseq);
   }
   
   private void b(long paramLong1, long paramLong2, long paramLong3, long paramLong4, MessageRecord paramMessageRecord)
   {
-    if (MessageRecordInfo.a(paramMessageRecord.issend))
+    if (MessageRecordInfo.b(paramMessageRecord.issend))
     {
       if (paramLong2 != -1L)
       {
         paramMessageRecord.vipBubbleID = paramLong2;
         return;
       }
-      paramMessageRecord.vipBubbleID = LastC2CBubbleID.a(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a, String.valueOf(paramLong4), String.valueOf(paramLong3));
+      paramMessageRecord.vipBubbleID = LastC2CBubbleID.a(this.e.q, String.valueOf(paramLong4), String.valueOf(paramLong3));
       return;
     }
     if (paramLong1 != -1L)
@@ -165,38 +152,51 @@ public class AfterDecodeMsg
       paramMessageRecord.vipBubbleID = paramLong1;
       return;
     }
-    paramMessageRecord.vipBubbleID = LastC2CBubbleID.a(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a, String.valueOf(paramLong4), String.valueOf(paramLong3));
+    paramMessageRecord.vipBubbleID = LastC2CBubbleID.a(this.e.q, String.valueOf(paramLong4), String.valueOf(paramLong3));
+  }
+  
+  private void b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord.istroop == 1008) && ((paramMessageRecord instanceof MessageForStructing)) && ((StructLongMessageDownloadProcessor.isPALongMsg(paramMessageRecord)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(paramMessageRecord))))
+    {
+      String str = paramMessageRecord.getExtInfoFromExtStr("longMsg_State");
+      if ((str == null) || (!String.valueOf(3).equals(str)))
+      {
+        paramMessageRecord.saveExtInfoToExtStr("longMsg_State", String.valueOf(1));
+        StructLongMessageDownloadProcessor.getStructLongMessage(this.e.q, paramMessageRecord);
+      }
+    }
   }
   
   private void b(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     if ((!paramBoolean) && (paramMessageRecord.istroop == 1008)) {
-      PublicAccountEventReport.a(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a, paramMessageRecord);
+      PublicAccountEventReport.a(this.e.q, paramMessageRecord);
     }
   }
   
   public AfterDecodeMsg a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       long l = localMessageRecord.vipBubbleID;
       if (l != -1L)
       {
-        if (MessageRecordInfo.a(localMessageRecord.issend)) {
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.f = l;
+        if (MessageRecordInfo.b(localMessageRecord.issend)) {
+          this.f.s = l;
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.jdField_e_of_type_Long = l;
+          this.f.r = l;
         }
       }
       else {
-        a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.jdField_e_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.f, this.jdField_a_of_type_Long, this.b, localMessageRecord);
+        a(this.f.r, this.f.s, this.b, this.c, localMessageRecord);
       }
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.jdField_e_of_type_Int = localMessageRecord.istroop;
-      boolean bool1 = this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a(localMessageRecord, true);
+      this.f.u = localMessageRecord.istroop;
+      boolean bool1 = this.e.a(localMessageRecord, true);
       boolean bool2 = a(localMessageRecord);
-      a(this.jdField_a_of_type_JavaUtilArrayList, localMessageRecord, bool1, bool2);
+      a(this.a, localMessageRecord, bool1, bool2);
       a(localMessageRecord, bool1);
       b(localMessageRecord, bool1);
     }
@@ -205,7 +205,7 @@ public class AfterDecodeMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.AfterDecodeMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ class GamePKResultFragment$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      GamePKResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGamePKResultFragment, this.jdField_a_of_type_Int);
+    if (this.a) {
+      GamePKResultFragment.a(this.c, this.b);
     }
   }
 }

@@ -9,16 +9,16 @@ class TogetherPopupDialog$1$1
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryAdapter != null) && (this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout != null))
+    if ((this.a.a.c != null) && (this.a.a.g != null))
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryAdapter.a();
-      this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
+      this.a.a.c.b();
+      this.a.a.g.bringToFront();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPopupDialog.1.1
  * JD-Core Version:    0.7.0.1
  */

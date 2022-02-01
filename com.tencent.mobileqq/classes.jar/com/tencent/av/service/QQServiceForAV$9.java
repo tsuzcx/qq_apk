@@ -16,12 +16,12 @@ class QQServiceForAV$9
     Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
     localIntent.putExtra("uin", paramString);
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.b.contains(paramString)) {
+    if (this.a.t.contains(paramString)) {
       localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    this.a.b.remove(paramString);
-    if (this.a.b()) {
-      localQQAppInterface.removeObserver(this.a.a);
+    this.a.t.remove(paramString);
+    if (this.a.c()) {
+      localQQAppInterface.removeObserver(this.a.u);
     }
   }
 }

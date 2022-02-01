@@ -13,29 +13,24 @@ import com.google.android.material.shape.ShapeAppearancePathProvider;
 @RequiresApi(21)
 class MaskEvaluator
 {
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private final ShapeAppearancePathProvider jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider = ShapeAppearancePathProvider.a();
+  private final Path a = new Path();
   private final Path b = new Path();
   private final Path c = new Path();
+  private final ShapeAppearancePathProvider d = ShapeAppearancePathProvider.a();
+  private ShapeAppearanceModel e;
   
   Path a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsPath;
-  }
-  
-  ShapeAppearanceModel a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
+    return this.a;
   }
   
   void a(float paramFloat, ShapeAppearanceModel paramShapeAppearanceModel1, ShapeAppearanceModel paramShapeAppearanceModel2, RectF paramRectF1, RectF paramRectF2, RectF paramRectF3, MaterialContainerTransform.ProgressThresholds paramProgressThresholds)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = TransitionUtils.a(paramShapeAppearanceModel1, paramShapeAppearanceModel2, paramRectF1, paramRectF3, paramProgressThresholds.a(), paramProgressThresholds.b(), paramFloat);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel, 1.0F, paramRectF2, this.b);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel, 1.0F, paramRectF3, this.c);
+    this.e = TransitionUtils.a(paramShapeAppearanceModel1, paramShapeAppearanceModel2, paramRectF1, paramRectF3, paramProgressThresholds.a(), paramProgressThresholds.b(), paramFloat);
+    this.d.a(this.e, 1.0F, paramRectF2, this.b);
+    this.d.a(this.e, 1.0F, paramRectF3, this.c);
     if (Build.VERSION.SDK_INT >= 23) {
-      this.jdField_a_of_type_AndroidGraphicsPath.op(this.b, this.c, Path.Op.UNION);
+      this.a.op(this.b, this.c, Path.Op.UNION);
     }
   }
   
@@ -43,16 +38,21 @@ class MaskEvaluator
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.a);
       return;
     }
     paramCanvas.clipPath(this.b);
     paramCanvas.clipPath(this.c, Region.Op.UNION);
   }
+  
+  ShapeAppearanceModel b()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaskEvaluator
  * JD-Core Version:    0.7.0.1
  */

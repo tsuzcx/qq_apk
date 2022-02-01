@@ -12,7 +12,7 @@ class ChatFragment$2
   public void onAnimationEnd(Animation paramAnimation)
   {
     QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
+    this.a.c(1);
   }
   
   public void onAnimationRepeat(Animation paramAnimation)
@@ -27,7 +27,7 @@ class ChatFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatFragment.2
  * JD-Core Version:    0.7.0.1
  */

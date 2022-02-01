@@ -31,8 +31,8 @@ public class RoundCorneredFrameLayout
   
   int a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cs);
-    int i = paramContext.getInt(R.styleable.u, 6);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cO);
+    int i = paramContext.getInt(R.styleable.cP, 6);
     paramContext.recycle();
     return i;
   }
@@ -67,7 +67,7 @@ public class RoundCorneredFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.RoundCorneredFrameLayout
  * JD-Core Version:    0.7.0.1
  */

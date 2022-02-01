@@ -27,8 +27,38 @@ public final class AMSReportObj
     return "report";
   }
   
+  public void a(@NotNull AdReportData paramAdReportData)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
+    ReportAction localReportAction = AdReportUtil.a(paramAdReportData);
+    if (localReportAction == null) {
+      return;
+    }
+    int i = AMSReportObj.WhenMappings.$EnumSwitchMapping$0[localReportAction.ordinal()];
+    if ((i != 1) && (i != 2))
+    {
+      if (i != 3)
+      {
+        if (i != 4) {
+          return;
+        }
+        this.d = AdReportUtil.f(paramAdReportData);
+        return;
+      }
+      if (paramAdReportData.g() != null)
+      {
+        this.b = paramAdReportData.g().mAdRl;
+        this.c = paramAdReportData.g().mAdEffectUrl;
+      }
+    }
+    else if (paramAdReportData.g() != null)
+    {
+      this.a = paramAdReportData.g().mAdApurl;
+    }
+  }
+  
   @Nullable
-  public JSONObject a()
+  public JSONObject b()
   {
     JSONObject localJSONObject = new JSONObject();
     ReportExKt.a(localJSONObject, "amsExpUrl", this.a);
@@ -38,44 +68,14 @@ public final class AMSReportObj
     return localJSONObject;
   }
   
-  public void a(@NotNull AdReportData paramAdReportData)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    ReportAction localReportAction = AdReportUtil.a(paramAdReportData);
-    if (localReportAction == null) {
-      return;
-    }
-    int i = AMSReportObj.WhenMappings.a[localReportAction.ordinal()];
-    if ((i != 1) && (i != 2))
-    {
-      if (i != 3)
-      {
-        if (i != 4) {
-          return;
-        }
-        this.d = AdReportUtil.c(paramAdReportData);
-        return;
-      }
-      if (paramAdReportData.a() != null)
-      {
-        this.b = paramAdReportData.a().mAdRl;
-        this.c = paramAdReportData.a().mAdEffectUrl;
-      }
-    }
-    else if (paramAdReportData.a() != null)
-    {
-      this.a = paramAdReportData.a().mAdApurl;
-    }
-  }
-  
-  public boolean a()
+  public boolean c()
   {
     return (this.a != null) || (this.b != null) || (this.c != null) || (this.d != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.AMSReportObj
  * JD-Core Version:    0.7.0.1
  */

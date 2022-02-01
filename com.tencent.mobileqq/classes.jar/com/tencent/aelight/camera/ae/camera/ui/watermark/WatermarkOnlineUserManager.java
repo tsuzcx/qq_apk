@@ -8,84 +8,84 @@ import java.util.Random;
 
 public class WatermarkOnlineUserManager
 {
-  private static volatile WatermarkOnlineUserManager jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager;
-  private final int jdField_a_of_type_Int = 2000;
-  private long jdField_a_of_type_Long = 0L;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final int jdField_b_of_type_Int = 60000;
-  private long jdField_b_of_type_Long = 0L;
-  private final int c = 1000;
-  private int d = 0;
+  private static volatile WatermarkOnlineUserManager a;
+  private final int b = 2000;
+  private final int c = 60000;
+  private final int d = 1000;
+  private long e = 0L;
+  private long f = 0L;
+  private int g = 0;
+  private final Object h = new Object();
   
   public static WatermarkOnlineUserManager a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager = new WatermarkOnlineUserManager();
+        if (a == null) {
+          a = new WatermarkOnlineUserManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager;
-  }
-  
-  private void a()
-  {
-    AppInterface localAppInterface = QQStoryContext.a();
-    if (localAppInterface != null)
-    {
-      CameraPeakServiceHandler localCameraPeakServiceHandler = (CameraPeakServiceHandler)localAppInterface.getBusinessHandler(PeakAppInterface.d);
-      localAppInterface.addObserver(new WatermarkOnlineUserManager.3(this, localAppInterface));
-      localCameraPeakServiceHandler.e();
-    }
+    return a;
   }
   
   private void a(long paramLong)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.e;
     if (paramLong - l > 1000L)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      this.e = paramLong;
+      synchronized (this.h)
       {
-        if (this.d != 0) {
-          this.d = (this.d - 1000 + new Random().nextInt(2000));
+        if (this.g != 0) {
+          this.g = (this.g - 1000 + new Random().nextInt(2000));
         }
         return;
       }
     }
     if (paramLong - l < 0L) {
-      this.jdField_a_of_type_Long = paramLong;
+      this.e = paramLong;
     }
   }
   
   private void b(long paramLong)
   {
-    long l = this.jdField_b_of_type_Long;
+    long l = this.f;
     if (paramLong - l > 60000L)
     {
-      this.jdField_b_of_type_Long = paramLong;
+      this.f = paramLong;
       new Thread(new WatermarkOnlineUserManager.1(this)).start();
       return;
     }
     if (paramLong - l < 0L) {
-      this.jdField_b_of_type_Long = paramLong;
+      this.f = paramLong;
     }
   }
   
-  public int a()
+  private void c()
+  {
+    AppInterface localAppInterface = QQStoryContext.k();
+    if (localAppInterface != null)
+    {
+      CameraPeakServiceHandler localCameraPeakServiceHandler = (CameraPeakServiceHandler)localAppInterface.getBusinessHandler(PeakAppInterface.e);
+      localAppInterface.addObserver(new WatermarkOnlineUserManager.3(this, localAppInterface));
+      localCameraPeakServiceHandler.g();
+    }
+  }
+  
+  public int b()
   {
     long l = System.currentTimeMillis();
     b(l);
     a(l);
-    return this.d;
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkOnlineUserManager
  * JD-Core Version:    0.7.0.1
  */

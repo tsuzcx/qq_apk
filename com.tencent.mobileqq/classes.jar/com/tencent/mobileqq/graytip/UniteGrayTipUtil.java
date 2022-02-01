@@ -2,6 +2,7 @@ package com.tencent.mobileqq.graytip;
 
 import OnlinePushPack.MsgInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Xml;
 import com.tencent.common.app.AppInterface;
@@ -66,9 +67,9 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class UniteGrayTipUtil
 {
-  private static MessageRecord a;
   public static String a = "UniteGrayTip";
   private static MessageRecord b;
+  private static MessageRecord c;
   
   public static int a(int paramInt)
   {
@@ -118,7 +119,7 @@ public class UniteGrayTipUtil
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("createUniteGrayTip contentXml ");
       ((StringBuilder)localObject2).append(paramString2);
@@ -152,10 +153,10 @@ public class UniteGrayTipUtil
         localObject1 = new MessageForUniteGrayTip();
         ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject2);
         ((MessageForUniteGrayTip)localObject1).saveExtInfoToExtStr("unite_gray_tips_align", paramString2);
-        if (((UniteGrayTipParam)localObject2).g) {
+        if (((UniteGrayTipParam)localObject2).r) {
           ((MessageForUniteGrayTip)localObject1).saveExtInfoToExtStr("pai_yi_pai_trigger_from_local", "1");
         }
-        if (((UniteGrayTipParam)localObject2).h) {
+        if (((UniteGrayTipParam)localObject2).s) {
           ((MessageForUniteGrayTip)localObject1).saveExtInfoToExtStr("pai_yi_pai_online_status", "1");
         }
         a(paramQQAppInterface, paramString1, paramInt1, paramLong2, paramLong3, paramArrayOfByte);
@@ -168,7 +169,7 @@ public class UniteGrayTipUtil
   private static UniteEntity.Note a(UniteEntity.Note paramNote1, UniteEntity.Note paramNote2)
   {
     if (paramNote1 != null) {
-      paramNote2 = paramNote1.a();
+      paramNote2 = paramNote1.b();
     }
     return paramNote2;
   }
@@ -179,7 +180,7 @@ public class UniteGrayTipUtil
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("parseXML ");
       ((StringBuilder)localObject2).append(paramString);
@@ -225,7 +226,7 @@ public class UniteGrayTipUtil
                       continue;
                     }
                     localObject5 = localObject2;
-                    if (!((UniteEntity.Note)localObject4).a()) {
+                    if (!((UniteEntity.Note)localObject4).c()) {
                       continue;
                     }
                     localObject5 = localObject2;
@@ -453,7 +454,7 @@ public class UniteGrayTipUtil
                 if (QLog.isColorLevel())
                 {
                   localObject5 = localObject3;
-                  paramString = jdField_a_of_type_JavaLangString;
+                  paramString = a;
                   localObject5 = localObject3;
                   StringBuilder localStringBuilder = new StringBuilder();
                   localObject5 = localObject3;
@@ -503,7 +504,7 @@ public class UniteGrayTipUtil
       {
         paramString = null;
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "parseXML, exception: ", localException2);
+          QLog.e(a, 2, "parseXML, exception: ", localException2);
         }
         bool1 = false;
       }
@@ -521,72 +522,127 @@ public class UniteGrayTipUtil
     }
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, UniteGrayTipParam paramUniteGrayTipParam, UniteEntity.Note paramNote)
+  private static String a(QQAppInterface paramQQAppInterface, UniteGrayTipParam paramUniteGrayTipParam, UniteEntity.Note paramNote, StringBuilder paramStringBuilder)
   {
-    HashMap localHashMap = paramNote.a();
-    Iterator localIterator = localHashMap.keySet().iterator();
-    paramNote = "";
+    paramQQAppInterface = paramNote.a();
+    paramNote = paramQQAppInterface.keySet();
+    int m = paramStringBuilder.length();
+    paramNote = paramNote.iterator();
     long l1 = 0L;
-    int i = 0;
-    while (localIterator.hasNext())
+    int j = 0;
+    int i = 100;
+    while (paramNote.hasNext())
     {
-      Integer localInteger = (Integer)localIterator.next();
-      int j = i;
+      Integer localInteger = (Integer)paramNote.next();
+      int k = j;
       if (localInteger.intValue() == 11) {
         try
         {
-          j = Integer.parseInt((String)localHashMap.get(localInteger));
+          k = Integer.parseInt((String)paramQQAppInterface.get(localInteger));
         }
-        catch (Exception localException1)
+        catch (Exception localException2)
         {
-          QLog.d(jdField_a_of_type_JavaLangString, 1, "parse status err: ", localException1);
-          j = i;
+          QLog.d(a, 1, "parse status err: ", localException2);
+          k = j;
         }
       }
       long l2 = l1;
       if (localInteger.intValue() == 12) {
         try
         {
-          l2 = Long.parseLong((String)localHashMap.get(localInteger));
+          l2 = Long.parseLong((String)paramQQAppInterface.get(localInteger));
         }
-        catch (Exception localException2)
+        catch (Exception localException3)
         {
-          QLog.d(jdField_a_of_type_JavaLangString, 1, "parse status err: ", localException2);
+          QLog.d(a, 1, "parse status err: ", localException3);
           l2 = l1;
         }
       }
-      i = j;
+      j = k;
       l1 = l2;
-      if (localInteger.intValue() == 6)
-      {
-        paramNote = (String)localHashMap.get(localInteger);
-        i = j;
-        l1 = l2;
+      if (localInteger.intValue() == 13) {
+        try
+        {
+          l1 = Long.parseLong((String)paramQQAppInterface.get(localInteger));
+          i = (int)l1 & 0x7F;
+          j = k;
+          l1 = l2;
+        }
+        catch (Exception localException1)
+        {
+          QLog.d(a, 1, "parse battery status err: ", localException1);
+          j = k;
+          l1 = l2;
+        }
       }
     }
-    boolean bool = paramQQAppInterface.getCurrentUin().equals(paramNote);
     paramQQAppInterface = (IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class);
-    paramQQAppInterface = paramQQAppInterface.getOnlineStatusItem(paramQQAppInterface.translateStatus(i), l1, bool ^ true);
-    if (paramQQAppInterface.a == 40001L) {
-      paramQQAppInterface = paramQQAppInterface.e;
+    OnlineStatusItem localOnlineStatusItem = paramQQAppInterface.getOnlineStatusItem(paramQQAppInterface.translateStatus(j), l1, false);
+    if (localOnlineStatusItem.b == 40001L) {
+      paramNote = localOnlineStatusItem.i;
     } else {
-      paramQQAppInterface = paramQQAppInterface.b;
+      paramNote = localOnlineStatusItem.c;
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("image_alt", "");
+    if (localOnlineStatusItem.f == 2)
+    {
+      localBundle.putParcelable("image_bitmap", paramQQAppInterface.getOldStatusAIOIcon(localOnlineStatusItem));
+      localBundle.putString("image_resource", "bitmap");
+    }
+    else
+    {
+      Object localObject;
+      if (localOnlineStatusItem.b == 1000L)
+      {
+        localObject = paramQQAppInterface.getOnlineStatusBatteryIcon(i, 3);
+        paramQQAppInterface = localBundle;
+        paramQQAppInterface.putParcelable("image_bitmap", (Parcelable)localObject);
+        paramQQAppInterface.putString("image_resource", "bitmap");
+      }
+      else
+      {
+        localObject = localBundle;
+        if (localOnlineStatusItem.b == 1080L)
+        {
+          if (TextUtils.isEmpty(localOnlineStatusItem.e)) {
+            paramQQAppInterface = localOnlineStatusItem.d;
+          } else {
+            paramQQAppInterface = localOnlineStatusItem.e;
+          }
+          if (((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).isInOlympicMedalEvent()) {
+            paramQQAppInterface = localOnlineStatusItem.m;
+          }
+          ((Bundle)localObject).putString("image_resource", paramQQAppInterface);
+        }
+        else
+        {
+          if (TextUtils.isEmpty(localOnlineStatusItem.e)) {
+            paramQQAppInterface = localOnlineStatusItem.d;
+          } else {
+            paramQQAppInterface = localOnlineStatusItem.e;
+          }
+          ((Bundle)localObject).putString("image_resource", paramQQAppInterface);
+        }
+      }
+    }
+    paramStringBuilder.append("icon");
+    paramUniteGrayTipParam.a(m, m + 4, localBundle);
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "cur Status: ", Integer.valueOf(i), " exStatus: ", Long.valueOf(l1) });
+      QLog.d(a, 2, new Object[] { "cur Status: ", Integer.valueOf(j), " exStatus: ", Long.valueOf(l1) });
     }
-    paramUniteGrayTipParam.h = true;
-    return paramQQAppInterface;
+    paramUniteGrayTipParam.s = true;
+    return paramNote;
   }
   
   public static void a()
   {
-    b = jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+    c = b;
+    b = null;
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
-      Object localObject = b;
+      String str = a;
+      Object localObject = c;
       if (localObject == null) {
         localObject = "null";
       } else {
@@ -613,7 +669,7 @@ public class UniteGrayTipUtil
     }
     if (QLog.isColorLevel())
     {
-      paramMsgInviteExt = jdField_a_of_type_JavaLangString;
+      paramMsgInviteExt = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("addTroopTipsFromSystemMsg-->from:");
       ((StringBuilder)localObject).append(i);
@@ -636,7 +692,7 @@ public class UniteGrayTipUtil
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("----------addTroopTipsMr troopUin: ");
       localStringBuilder.append(paramString);
@@ -660,7 +716,7 @@ public class UniteGrayTipUtil
   {
     Object localObject2 = (TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     String str = String.valueOf(SystemMsg.getTroopCodeFromTroopSysMsg(paramArrayOfByte));
-    Object localObject1 = ((TroopManager)localObject2).b(str);
+    Object localObject1 = ((TroopManager)localObject2).f(str);
     ITroopMemberListHandler localITroopMemberListHandler = (ITroopMemberListHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
     paramArrayOfByte = (QQAppInterface)paramAppInterface;
     ITroopInfoHandler localITroopInfoHandler = (ITroopInfoHandler)paramArrayOfByte.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER);
@@ -678,7 +734,7 @@ public class UniteGrayTipUtil
     localITroopBatchInfohandler.a(paramArrayOfByte.troopuin, Boolean.valueOf(false));
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("handleTroopSystemMessageResp-->msgTime:");
       ((StringBuilder)localObject2).append(paramLong2);
@@ -706,25 +762,25 @@ public class UniteGrayTipUtil
   public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
     if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "rebuildUniteTipsContent");
+      QLog.e(a, 2, "rebuildUniteTipsContent");
     }
     UniteGrayTipParam localUniteGrayTipParam = paramMessageForUniteGrayTip.tipParam;
     Object localObject = paramMessageForUniteGrayTip.getExtInfoFromExtStr("bytes_content");
-    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.b == 655397) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.i == 655397) && (!TextUtils.isEmpty((CharSequence)localObject))) {
       try
       {
         localObject = a((String)localObject);
         if (localObject != null) {
           a(paramQQAppInterface, localUniteGrayTipParam, ((UniteEntity)localObject).a(), paramMessageForUniteGrayTip.istroop, paramMessageForUniteGrayTip.frienduin);
         }
-        boolean bool = localUniteGrayTipParam.g;
+        boolean bool = localUniteGrayTipParam.r;
         if (bool) {
           paramMessageForUniteGrayTip.saveExtInfoToExtStr("pai_yi_pai_trigger_from_local", "1");
         }
-        if (localUniteGrayTipParam.h) {
+        if (localUniteGrayTipParam.s) {
           paramMessageForUniteGrayTip.saveExtInfoToExtStr("pai_yi_pai_online_status", "1");
         }
-        paramMessageForUniteGrayTip.msg = localUniteGrayTipParam.c;
+        paramMessageForUniteGrayTip.msg = localUniteGrayTipParam.g;
         paramMessageForUniteGrayTip.entity = ((UniteEntity)localObject);
         return;
       }
@@ -738,17 +794,17 @@ public class UniteGrayTipUtil
   private static void a(QQAppInterface paramQQAppInterface, UniteGrayTipParam paramUniteGrayTipParam, UniteEntity.Note paramNote, int paramInt, String paramString)
   {
     Object localObject1 = paramUniteGrayTipParam;
-    if (paramUniteGrayTipParam.a() != null) {
-      paramUniteGrayTipParam.a();
+    if (paramUniteGrayTipParam.b() != null) {
+      paramUniteGrayTipParam.c();
     }
     Object localObject2 = new StringBuilder();
-    Iterator localIterator = paramNote.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = paramNote.d.iterator();
     int i = 1;
     paramNote = (UniteEntity.Note)localObject2;
     while (localIterator.hasNext())
     {
       localObject2 = (UniteEntity.Note)localIterator.next();
-      int j = ((UniteEntity.Note)localObject2).jdField_a_of_type_Int;
+      int j = ((UniteEntity.Note)localObject2).a;
       Object localObject3;
       Object localObject4;
       Object localObject5;
@@ -770,7 +826,7 @@ public class UniteGrayTipUtil
             {
               localObject2 = localObject1;
               break;
-              paramNote.append(a(paramQQAppInterface, (UniteGrayTipParam)localObject1, (UniteEntity.Note)localObject2));
+              paramNote.append(a(paramQQAppInterface, (UniteGrayTipParam)localObject1, (UniteEntity.Note)localObject2, paramNote));
               continue;
               localObject7 = ((UniteEntity.Note)localObject2).a();
               localObject2 = ((HashMap)localObject7).keySet();
@@ -921,7 +977,7 @@ public class UniteGrayTipUtil
                   localObject8 = localObject3;
                   m = k;
                   if (!((String)localObject10).startsWith("mqq")) {
-                    break label955;
+                    break label956;
                   }
                   ((Bundle)localObject9).putInt("key_action", 3);
                   ((Bundle)localObject9).putString("key_action_DATA", (String)localObject10);
@@ -937,7 +993,7 @@ public class UniteGrayTipUtil
                 paramNote = (UniteEntity.Note)localObject5;
               }
             }
-            label955:
+            label956:
             localObject5 = paramNote;
             localObject4 = localObject7;
             localObject3 = localObject8;
@@ -945,12 +1001,12 @@ public class UniteGrayTipUtil
           }
           if (((String)localObject5).equals(paramQQAppInterface.getCurrentAccountUin()))
           {
-            paramNote = HardCodeUtil.a(2131715665);
+            paramNote = HardCodeUtil.a(2131913133);
             if (i != 0) {
-              ((UniteGrayTipParam)localObject1).g = true;
+              ((UniteGrayTipParam)localObject1).r = true;
             }
             if (TextUtils.equals("1", (CharSequence)localObject4)) {
-              paramNote = BaseApplicationImpl.getContext().getString(2131692874);
+              paramNote = BaseApplicationImpl.getContext().getString(2131889985);
             }
           }
           else if (UinTypeUtil.b(paramInt))
@@ -960,13 +1016,13 @@ public class UniteGrayTipUtil
           else
           {
             paramNote = (UniteEntity.Note)localObject3;
-            if (UinTypeUtil.g(paramInt)) {
+            if (UinTypeUtil.h(paramInt)) {
               paramNote = ContactUtils.b(paramQQAppInterface, paramString, (String)localObject5);
             }
           }
           if (QLog.isColorLevel())
           {
-            localObject3 = jdField_a_of_type_JavaLangString;
+            localObject3 = a;
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("parseUniteGrayTipsContent name : ");
             ((StringBuilder)localObject4).append(paramNote);
@@ -1003,7 +1059,7 @@ public class UniteGrayTipUtil
             for (;;)
             {
               i = j;
-              break label1460;
+              break label1461;
               if (((Integer)localObject1).intValue() != 5) {
                 break;
               }
@@ -1040,7 +1096,7 @@ public class UniteGrayTipUtil
                 ((Bundle)localObject4).putString("key_action_DATA", (String)localObject1);
               }
             }
-            label1460:
+            label1461:
             localObject1 = paramUniteGrayTipParam;
           }
           ((UniteGrayTipParam)localObject1).a(m, i, (Bundle)localObject4);
@@ -1071,8 +1127,8 @@ public class UniteGrayTipUtil
       }
       localObject1 = localObject2;
     }
-    ((UniteGrayTipParam)localObject1).c = paramNote.toString();
-    paramQQAppInterface = jdField_a_of_type_JavaLangString;
+    ((UniteGrayTipParam)localObject1).g = paramNote.toString();
+    paramQQAppInterface = a;
     paramUniteGrayTipParam = new StringBuilder();
     paramUniteGrayTipParam.append("parseUniteGrayTipsContent content :");
     paramUniteGrayTipParam.append(paramNote);
@@ -1084,7 +1140,7 @@ public class UniteGrayTipUtil
     boolean bool = QLog.isColorLevel();
     int i = 0;
     if (bool) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, String.format("handleReserveData, friendUin: %s, uinType: %s, busiType: %s, busiId: %s", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      QLog.d(a, 2, String.format("handleReserveData, friendUin: %s, uinType: %s, busiType: %s, busiId: %s", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
     }
     bool = TroopHonorUtils.a(paramLong1, paramLong2);
     Object localObject = "";
@@ -1124,7 +1180,7 @@ public class UniteGrayTipUtil
         catch (InvalidProtocolBufferMicroException paramQQAppInterface)
         {
           paramQQAppInterface.printStackTrace();
-          QLog.d(jdField_a_of_type_JavaLangString, 1, "updatePushTroopGray", paramQQAppInterface);
+          QLog.d(a, 1, "updatePushTroopGray", paramQQAppInterface);
         }
         localObject = new JSONObject();
         try
@@ -1134,7 +1190,7 @@ public class UniteGrayTipUtil
         }
         catch (JSONException paramQQAppInterface)
         {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "jsonObj.put", paramQQAppInterface);
+          QLog.e(a, 1, "jsonObj.put", paramQQAppInterface);
         }
         try
         {
@@ -1142,7 +1198,7 @@ public class UniteGrayTipUtil
         }
         catch (UnsatisfiedLinkError paramQQAppInterface)
         {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "Error: arkNotify com.tencent.mannounce error. UpdateaAllConfirm.", paramQQAppInterface);
+          QLog.e(a, 1, "Error: arkNotify com.tencent.mannounce error. UpdateaAllConfirm.", paramQQAppInterface);
         }
         if ((50001L == paramLong2) && (paramArrayOfByte != null)) {
           try
@@ -1167,7 +1223,7 @@ public class UniteGrayTipUtil
           catch (InvalidProtocolBufferMicroException paramQQAppInterface)
           {
             paramQQAppInterface.printStackTrace();
-            QLog.d(jdField_a_of_type_JavaLangString, 1, "updatePushTroopGray", paramQQAppInterface);
+            QLog.d(a, 1, "updatePushTroopGray", paramQQAppInterface);
           }
         }
         return;
@@ -1186,7 +1242,7 @@ public class UniteGrayTipUtil
   public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, MsgInfo paramMsgInfo, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleC2COnlinePushMsgGrayTipResp message prepared");
+      QLog.d(a, 2, "handleC2COnlinePushMsgGrayTipResp message prepared");
     }
     if (paramBoolean) {}
     try
@@ -1209,11 +1265,11 @@ public class UniteGrayTipUtil
   
   public static void a(MessageRecord paramMessageRecord)
   {
-    jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    b = paramMessageRecord;
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
-      paramMessageRecord = jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      String str = a;
+      paramMessageRecord = b;
       if (paramMessageRecord == null) {
         paramMessageRecord = "null";
       } else {
@@ -1229,23 +1285,23 @@ public class UniteGrayTipUtil
     if ((paramMessageForUniteGrayTip != null) && (paramMessageForUniteGrayTip.editState == 1))
     {
       long l1 = NetConnInfoCenter.getServerTimeMillis() - paramMessageForUniteGrayTip.editTime;
-      if (((b != null) && (paramMessageForUniteGrayTip.uniseq == b.uniseq)) || (Math.abs(l1) >= 180000L))
+      if (((c != null) && (paramMessageForUniteGrayTip.uniseq == c.uniseq)) || (Math.abs(l1) >= 180000L))
       {
         long l2 = System.currentTimeMillis();
-        if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.a() != null)) {
-          paramMessageForUniteGrayTip.tipParam.a();
+        if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b() != null)) {
+          paramMessageForUniteGrayTip.tipParam.c();
         }
         paramMessageForUniteGrayTip.editState = 0;
         paramMessageForUniteGrayTip.editTime = 0L;
         Object localObject2 = new StringBuilder();
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(" ");
-        ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getString(2131694327));
+        ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getString(2131891965));
         String str = ((StringBuilder)localObject1).toString();
         UniteGrayTipParam localUniteGrayTipParam = paramMessageForUniteGrayTip.tipParam;
         localObject1 = "";
-        if ((localUniteGrayTipParam != null) && (paramMessageForUniteGrayTip.tipParam.c != null)) {
-          paramMessageForUniteGrayTip.tipParam.c = paramMessageForUniteGrayTip.tipParam.c.replace(str, "");
+        if ((localUniteGrayTipParam != null) && (paramMessageForUniteGrayTip.tipParam.g != null)) {
+          paramMessageForUniteGrayTip.tipParam.g = paramMessageForUniteGrayTip.tipParam.g.replace(str, "");
         }
         if (paramMessageForUniteGrayTip.msg != null) {
           paramMessageForUniteGrayTip.msg = paramMessageForUniteGrayTip.msg.replace(((StringBuilder)localObject2).toString(), "");
@@ -1256,11 +1312,11 @@ public class UniteGrayTipUtil
         if (paramMessageForUniteGrayTip.tipParam != null) {
           paramMessageForUniteGrayTip.updateUniteGrayTipMsgData(paramQQAppInterface);
         }
-        if ((b != null) && (paramMessageForUniteGrayTip.uniseq == b.uniseq)) {
+        if ((c != null) && (paramMessageForUniteGrayTip.uniseq == c.uniseq)) {
           ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X8008E55", "0X8008E55", 1, 0, "", "", "", "");
         }
-        if ((b != null) && (paramMessageForUniteGrayTip.uniseq == b.uniseq)) {
-          b = null;
+        if ((c != null) && (paramMessageForUniteGrayTip.uniseq == c.uniseq)) {
+          c = null;
         }
         if (!QLog.isColorLevel()) {
           break label487;
@@ -1275,7 +1331,7 @@ public class UniteGrayTipUtil
         if (i > 2) {
           j = 2;
         }
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         long l3 = System.currentTimeMillis();
         long l4 = paramMessageForUniteGrayTip.msgUid;
         long l5 = paramMessageForUniteGrayTip.uniseq;
@@ -1294,7 +1350,7 @@ public class UniteGrayTipUtil
   
   private static boolean a(UniteEntity.Note paramNote1, UniteEntity.Note paramNote2, XmlPullParser paramXmlPullParser)
   {
-    paramNote1.a(paramNote2);
+    paramNote1.b(paramNote2);
     int j = paramXmlPullParser.getAttributeCount();
     boolean bool = false;
     int i = 0;
@@ -1346,20 +1402,24 @@ public class UniteGrayTipUtil
       {
         paramNote1.a(11, str);
       }
+      else if (paramNote2.equals("ex_status"))
+      {
+        paramNote1.a(12, str);
+      }
       else
       {
-        if (!paramNote2.equals("ex_status")) {
-          break label292;
+        if (!paramNote2.equals("battery_status")) {
+          break label313;
         }
-        paramNote1.a(12, str);
+        paramNote1.a(13, str);
       }
       i += 1;
       continue;
-      label292:
+      label313:
       if (!QLog.isColorLevel()) {
-        break label338;
+        break label359;
       }
-      paramNote1 = jdField_a_of_type_JavaLangString;
+      paramNote1 = a;
       paramXmlPullParser = new StringBuilder();
       paramXmlPullParser.append("parseXML, illegel field: ");
       paramXmlPullParser.append(paramNote2);
@@ -1367,7 +1427,7 @@ public class UniteGrayTipUtil
       return false;
     }
     bool = true;
-    label338:
+    label359:
     return bool;
   }
   
@@ -1380,7 +1440,7 @@ public class UniteGrayTipUtil
     {
       if (QLog.isColorLevel())
       {
-        paramQQAppInterface = jdField_a_of_type_JavaLangString;
+        paramQQAppInterface = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("friendUin friendUin :");
         localStringBuilder.append(paramString);
@@ -1395,7 +1455,7 @@ public class UniteGrayTipUtil
     paramQQAppInterface.isSupportTroopHonor(paramString);
     bool1 = bool2;
     if (TroopHonorUtils.a(paramLong1, paramLong2)) {
-      if (!SimpleUIUtil.a())
+      if (!SimpleUIUtil.e())
       {
         bool1 = bool2;
         if (paramQQAppInterface.isSupportTroopHonor(paramString)) {}
@@ -1407,7 +1467,7 @@ public class UniteGrayTipUtil
     }
     if (QLog.isColorLevel())
     {
-      paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      paramQQAppInterface = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("friendUin:");
       localStringBuilder.append(paramString);
@@ -1423,18 +1483,18 @@ public class UniteGrayTipUtil
       bool2 = bool1;
       if (paramLong2 == 1021L)
       {
-        paramQQAppInterface = (TroopDragonKingAnimEntryConfig)QConfigManager.a().a(609);
+        paramQQAppInterface = (TroopDragonKingAnimEntryConfig)QConfigManager.b().b(609);
         bool2 = bool1;
         if (paramQQAppInterface != null)
         {
-          boolean bool3 = paramQQAppInterface.a(paramString);
+          boolean bool3 = paramQQAppInterface.b(paramString);
           if (!bool3) {
             bool1 = true;
           }
           bool2 = bool1;
           if (QLog.isColorLevel())
           {
-            paramQQAppInterface = jdField_a_of_type_JavaLangString;
+            paramQQAppInterface = a;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("friendUin:");
             localStringBuilder.append(paramString);
@@ -1459,7 +1519,7 @@ public class UniteGrayTipUtil
     {
       if (QLog.isColorLevel())
       {
-        paramQQAppInterface = jdField_a_of_type_JavaLangString;
+        paramQQAppInterface = a;
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("shieldTroopInteractionIconGrayTip friendUin :");
         paramArrayOfByte.append(paramString);
@@ -1483,7 +1543,7 @@ public class UniteGrayTipUtil
         paramArrayOfByte = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         paramQQAppInterface = null;
         if (paramArrayOfByte != null) {
-          paramQQAppInterface = paramArrayOfByte.c(paramString);
+          paramQQAppInterface = paramArrayOfByte.g(paramString);
         }
         if (paramQQAppInterface != null)
         {
@@ -1511,7 +1571,7 @@ public class UniteGrayTipUtil
     label207:
     if (QLog.isColorLevel())
     {
-      paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      paramQQAppInterface = a;
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("shieldTroopInteractionIconGrayTip friendUin :");
       paramArrayOfByte.append(paramString);
@@ -1545,9 +1605,6 @@ public class UniteGrayTipUtil
                 default: 
                   i = -1;
                   break;
-                case 168: 
-                  i = 10009;
-                  break;
                 case 167: 
                   i = 10010;
                   break;
@@ -1576,6 +1633,9 @@ public class UniteGrayTipUtil
               break;
             case 201: 
               i = 1005;
+              break;
+            case 170: 
+              i = 10013;
               break;
             case 163: 
               i = 1044;
@@ -1629,19 +1689,19 @@ public class UniteGrayTipUtil
       StringBuilder localStringBuilder = new StringBuilder("<---getTempUinType: dump info:");
       localStringBuilder.append(" serviceType:");
       localStringBuilder.append(paramInt);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+      QLog.d(a, 2, localStringBuilder.toString());
     }
     return i;
   }
   
   public static void b()
   {
-    jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
     b = null;
+    c = null;
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
-      Object localObject = b;
+      String str = a;
+      Object localObject = c;
       if (localObject == null) {
         localObject = "null";
       } else {
@@ -1715,7 +1775,7 @@ public class UniteGrayTipUtil
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "handleC2COnlinePushMsgGrayTipResp fail content is null");
+        QLog.e(a, 2, "handleC2COnlinePushMsgGrayTipResp fail content is null");
       }
       localObject1 = "";
     }
@@ -1735,10 +1795,10 @@ public class UniteGrayTipUtil
     if (paramArrayOfByte == null) {
       return;
     }
-    paramArrayOfByte.tipParam.d = String.valueOf(l4);
+    paramArrayOfByte.tipParam.p = String.valueOf(l4);
     if (QLog.isColorLevel())
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleC2COnlinePushMsgGrayTipResp uint64_tips_seq_id");
       localStringBuilder.append(l4);
@@ -1774,13 +1834,13 @@ public class UniteGrayTipUtil
     if (!TroopLuckyCharacterConstant.a.contains(Long.valueOf(paramLong2))) {
       return false;
     }
-    paramString = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+    paramString = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString);
     return !((ITroopLuckyCharacterService)paramQQAppInterface.getRuntimeService(ITroopLuckyCharacterService.class, "")).isSupportLuckyCharacter(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipUtil
  * JD-Core Version:    0.7.0.1
  */

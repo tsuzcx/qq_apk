@@ -20,45 +20,45 @@ public class DeviceMsgPanelBarLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie) {}
   
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return paramSessionInfo.a == 9501;
-  }
-  
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     if ((paramBaseChatPie instanceof DeviceMsgChatPie))
     {
       paramSessionInfo = (DeviceMsgChatPie)paramBaseChatPie;
-      if (paramSessionInfo.y()) {
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.a);
+      if (paramSessionInfo.bF()) {
+        this.a.add(AIOPanelUtiles.b);
       }
-      if (paramSessionInfo.x())
+      if (paramSessionInfo.bE())
       {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-        paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
+        boolean bool = this.c.a().i();
+        paramBaseChatPie = this.a;
         if (bool) {
-          paramQQAppInterface = AIOPanelUtiles.p;
+          paramQQAppInterface = AIOPanelUtiles.q;
         } else {
-          paramQQAppInterface = AIOPanelUtiles.l;
+          paramQQAppInterface = AIOPanelUtiles.m;
         }
         paramBaseChatPie.add(paramQQAppInterface);
         c();
       }
-      if (paramSessionInfo.u())
+      if (paramSessionInfo.bB())
       {
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.E);
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.D);
+        this.a.add(AIOPanelUtiles.F);
+        this.a.add(AIOPanelUtiles.E);
       }
-      if (paramSessionInfo.w()) {
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.J);
+      if (paramSessionInfo.bD()) {
+        this.a.add(AIOPanelUtiles.K);
       }
     }
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return paramSessionInfo.a == 9501;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.DeviceMsgPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

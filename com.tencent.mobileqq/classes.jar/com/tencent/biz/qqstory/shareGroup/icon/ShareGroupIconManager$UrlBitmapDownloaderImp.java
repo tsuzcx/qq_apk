@@ -16,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ShareGroupIconManager$UrlBitmapDownloaderImp
   implements UrlBitmapDownloader
 {
-  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final ConcurrentHashMap<String, HashSet<UrlBitmapDownloader.Listener>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final HashSet<URLDrawable> a = new HashSet();
+  private final ConcurrentHashMap<String, HashSet<UrlBitmapDownloader.Listener>> b = new ConcurrentHashMap();
   
   private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
   {
@@ -57,9 +57,9 @@ public class ShareGroupIconManager$UrlBitmapDownloaderImp
         return;
       }
       SLog.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
-      ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramListener);
-      this.jdField_a_of_type_JavaUtilHashSet.add(localObject);
+      this.b.putIfAbsent(paramString, new HashSet());
+      ((HashSet)this.b.get(paramString)).add(paramListener);
+      this.a.add(localObject);
       ((URLDrawable)localObject).startDownload();
       return;
     }

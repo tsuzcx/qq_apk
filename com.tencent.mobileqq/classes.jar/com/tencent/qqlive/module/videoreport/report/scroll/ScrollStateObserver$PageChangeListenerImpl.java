@@ -38,9 +38,7 @@ class ScrollStateObserver$PageChangeListenerImpl
       bool = false;
     }
     ScrollStateObserver.access$100(localScrollStateObserver, (View)localObject, bool);
-    if (paramInt == 0) {
-      this.this$0.onIdle((View)localObject);
-    }
+    this.this$0.onScrollViewStateChanged((View)localObject, paramInt);
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
@@ -49,7 +47,7 @@ class ScrollStateObserver$PageChangeListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollStateObserver.PageChangeListenerImpl
  * JD-Core Version:    0.7.0.1
  */

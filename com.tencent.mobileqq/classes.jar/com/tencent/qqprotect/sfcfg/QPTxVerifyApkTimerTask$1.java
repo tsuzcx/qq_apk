@@ -7,12 +7,12 @@ class QPTxVerifyApkTimerTask$1
   
   public void run()
   {
-    this.this$0.a();
+    this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask.1
  * JD-Core Version:    0.7.0.1
  */

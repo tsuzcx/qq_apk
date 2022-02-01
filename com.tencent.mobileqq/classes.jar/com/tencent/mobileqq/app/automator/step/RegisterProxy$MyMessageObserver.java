@@ -31,16 +31,16 @@ class RegisterProxy$MyMessageObserver
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("stateC2C=");
-      ((StringBuilder)localObject).append(RegisterProxy.a(this.a));
+      ((StringBuilder)localObject).append(RegisterProxy.b(this.a));
       ((StringBuilder)localObject).append(" stateGroupFirstMsg=");
-      ((StringBuilder)localObject).append(RegisterProxy.c(this.a));
+      ((StringBuilder)localObject).append(RegisterProxy.d(this.a));
       QLog.d("QQInitHandler1", 2, ((StringBuilder)localObject).toString());
     }
-    if ((RegisterProxy.a(this.a) == 2) && (RegisterProxy.c(this.a) == 2))
+    if ((RegisterProxy.b(this.a) == 2) && (RegisterProxy.d(this.a) == 2))
     {
       long l1 = SystemClock.uptimeMillis();
-      this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a.d = true;
-      this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().c(true);
+      this.a.mAutomator.k.getMsgHandler().e.m = true;
+      this.a.mAutomator.k.getMsgHandler().d(true);
       long l2;
       if ((BaseApplicationImpl.sLaunchTime < 0L) && (BaseApplicationImpl.sShowTime < 0L))
       {
@@ -59,7 +59,7 @@ class RegisterProxy$MyMessageObserver
           ((StringBuilder)localObject).append(l2);
           Log.i("AutoMonitor", ((StringBuilder)localObject).toString());
         }
-        StatisticCollector.getInstance(this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).collectPerformance(null, "prxyRegisterB", true, l2, 0L, null, null);
+        StatisticCollector.getInstance(this.a.mAutomator.k.getApp()).collectPerformance(null, "prxyRegisterB", true, l2, 0L, null, null);
       }
       if (BaseApplicationImpl.appStartTime > 0L)
       {
@@ -75,17 +75,17 @@ class RegisterProxy$MyMessageObserver
         }
         HashMap localHashMap = new HashMap();
         localHashMap.put("actLoginType", localObject);
-        StatisticCollector.getInstance(this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).collectPerformance(null, "prxyRegisterT", true, l1 - l2, 0L, localHashMap, null);
+        StatisticCollector.getInstance(this.a.mAutomator.k.getApp()).collectPerformance(null, "prxyRegisterT", true, l1 - l2, 0L, localHashMap, null);
       }
-      if (this.a.mAutomator.jdField_a_of_type_Long > 0L)
+      if (this.a.mAutomator.a > 0L)
       {
-        l1 = System.currentTimeMillis() - this.a.mAutomator.jdField_a_of_type_Long;
-        if (NetworkUtil.isNetworkAvailable(this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+        l1 = System.currentTimeMillis() - this.a.mAutomator.a;
+        if (NetworkUtil.isNetworkAvailable(this.a.mAutomator.k.getApp()))
         {
-          boolean bool = this.a.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isFirstQQInit", true);
+          boolean bool = this.a.mAutomator.d.getBoolean("isFirstQQInit", true);
           localObject = new HashMap();
           ((HashMap)localObject).put("param_isFirstInit", String.valueOf(bool));
-          StatisticCollector.getInstance(this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).collectPerformance(null, "prxyRegisterM", RegisterProxy.a(this.a), l1, 0L, (HashMap)localObject, null);
+          StatisticCollector.getInstance(this.a.mAutomator.k.getApp()).collectPerformance(null, "prxyRegisterM", RegisterProxy.e(this.a), l1, 0L, (HashMap)localObject, null);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -97,8 +97,8 @@ class RegisterProxy$MyMessageObserver
           }
         }
       }
-      if (GuardManager.a != null) {
-        GuardManager.a(this.a.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), GuardManager.a.a());
+      if (GuardManager.sInstance != null) {
+        GuardManager.reportLoginActive(this.a.mAutomator.k.getApp(), GuardManager.sInstance.isApplicationForeground());
       }
     }
   }
@@ -125,7 +125,7 @@ class RegisterProxy$MyMessageObserver
       ((StringBuilder)localObject).append(paramLong2);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPA", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RPA", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     if (paramLong2 == 0L)
     {
       localObject = this.a;
@@ -144,8 +144,8 @@ class RegisterProxy$MyMessageObserver
         i = 1;
       }
       RegisterProxy.c((RegisterProxy)localObject, i);
-      this.a.jdField_a_of_type_Long = paramLong1;
-      if (RegisterProxyHandler.c)
+      this.a.a = paramLong1;
+      if (RegisterProxyHandler.l)
       {
         localObject = this.a;
         if (paramBoolean) {
@@ -160,7 +160,7 @@ class RegisterProxy$MyMessageObserver
           i = 2;
         }
         RegisterProxy.e((RegisterProxy)localObject, i);
-        RegisterProxyHandler.c = false;
+        RegisterProxyHandler.l = false;
       }
       b();
     }
@@ -178,7 +178,7 @@ class RegisterProxy$MyMessageObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPD", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RPD", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     MsgAutoMonitorUtil.getInstance().markDisFinishCost();
     Object localObject = this.a;
     if (!paramBoolean) {
@@ -200,7 +200,7 @@ class RegisterProxy$MyMessageObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPF", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RPF", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     Object localObject = this.a;
     if (!paramBoolean) {
       i = 1;
@@ -219,7 +219,7 @@ class RegisterProxy$MyMessageObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPC", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RPC", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     MsgAutoMonitorUtil.getInstance().markC2CFinishCost();
     Object localObject = this.a;
     boolean bool = true;
@@ -230,7 +230,7 @@ class RegisterProxy$MyMessageObserver
       i = 1;
     }
     RegisterProxy.b((RegisterProxy)localObject, i);
-    if (RegisterProxyHandler.c)
+    if (RegisterProxyHandler.l)
     {
       if (QLog.isColorLevel())
       {
@@ -239,19 +239,19 @@ class RegisterProxy$MyMessageObserver
         ((StringBuilder)localObject).append(" on GetDiscussionMsg Fin: Receive empty package set isC2CMsgSuccess true");
         QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
       }
-      this.a.mAutomator.b = true;
+      this.a.mAutomator.f = true;
     }
     else
     {
       localObject = this.a.mAutomator;
-      if (RegisterProxy.a(this.a) == 2) {
+      if (RegisterProxy.b(this.a) == 2) {
         paramBoolean = bool;
       } else {
         paramBoolean = false;
       }
-      ((Automator)localObject).b = paramBoolean;
+      ((Automator)localObject).f = paramBoolean;
     }
-    if (RegisterProxyHandler.a) {
+    if (RegisterProxyHandler.c) {
       a();
     }
     b();
@@ -267,7 +267,7 @@ class RegisterProxy$MyMessageObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPP", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RPP", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     Object localObject = this.a;
     boolean bool = true;
     int i;
@@ -277,19 +277,19 @@ class RegisterProxy$MyMessageObserver
       i = 1;
     }
     RegisterProxy.e((RegisterProxy)localObject, i);
-    if (RegisterProxyHandler.c)
+    if (RegisterProxyHandler.l)
     {
-      this.a.mAutomator.c = true;
+      this.a.mAutomator.g = true;
     }
     else
     {
       localObject = this.a.mAutomator;
-      if (RegisterProxy.b(this.a) == 2) {
+      if (RegisterProxy.c(this.a) == 2) {
         paramBoolean = bool;
       } else {
         paramBoolean = false;
       }
-      ((Automator)localObject).c = paramBoolean;
+      ((Automator)localObject).g = paramBoolean;
     }
     b();
   }
@@ -306,7 +306,7 @@ class RegisterProxy$MyMessageObserver
       paramArrayOfString.append(paramBoolean);
       QLog.d("QQInitHandler", 2, paramArrayOfString.toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RPT", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RPT", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     MsgAutoMonitorUtil.getInstance().markGrpFinishCost();
     paramArrayOfString = this.a;
     if (!paramBoolean) {
@@ -327,7 +327,7 @@ class RegisterProxy$MyMessageObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("RP", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
+    this.a.mAutomator.j.put("RP", Long.valueOf(SystemClock.uptimeMillis() - RegisterProxy.a(this.a)));
     Object localObject = this.a;
     if (!paramBoolean) {
       i = 1;
@@ -344,7 +344,7 @@ class RegisterProxy$MyMessageObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.RegisterProxy.MyMessageObserver
  * JD-Core Version:    0.7.0.1
  */

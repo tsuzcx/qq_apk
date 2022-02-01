@@ -11,12 +11,12 @@ class WatermarkEditListAdapter$5
   
   public void onClick(View paramView)
   {
-    WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.a, this.jdField_a_of_type_OrgLightBeanWMElement);
+    WatermarkEditListAdapter.a(this.c, this.a.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter.5
  * JD-Core Version:    0.7.0.1
  */

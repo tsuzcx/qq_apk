@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class ResInfo
   extends ConfigInfo
 {
-  public static final String[] ALL_RES_ID_LIST = { "AVVoiceRecogSo", "AVVoiceRecogModel", "AVGameVoiceRecogSo", "AVGameVoiceRecogModel", "AVGameVoiceRecogAILabSo", "AVGameVoiceRecogAILabModel", "AVTraeSo", "AVAINSMediaLabModel", "AVSDKSo" };
+  public static final String[] ALL_RES_ID_LIST = { "AVVoiceRecogSo", "AVVoiceRecogModel", "AVGameVoiceRecogSo", "AVGameVoiceRecogModel", "AVGameVoiceRecogAILabSo", "AVGameVoiceRecogAILabModel", "AVTraeSo", "AVAINSMediaLabModel", "AVAINSMediaLabGruModel", "AVSDKSo" };
   private static final String FIELD_FOR_ARM64 = "ForArm64";
   private static final String FIELD_RES_FILE_NAME = "resFileName";
   private static final String FIELD_RES_ID = "resId";
@@ -25,6 +25,7 @@ public class ResInfo
   public static final String RES_ID_AVGAME_VOICE_RECOG_AILAB_SO = "AVGameVoiceRecogAILabSo";
   public static final String RES_ID_AVGAME_VOICE_RECOG_MODEL = "AVGameVoiceRecogModel";
   public static final String RES_ID_AVGAME_VOICE_RECOG_SO = "AVGameVoiceRecogSo";
+  public static final String RES_ID_AV_AI_NS_MEDIALAB_GRU_MODEL = "AVAINSMediaLabGruModel";
   public static final String RES_ID_AV_AI_NS_MEDIALAB_MODEL = "AVAINSMediaLabModel";
   public static final String RES_ID_AV_SDK_SO = "AVSDKSo";
   public static final String RES_ID_AV_TRAE_SO = "AVTraeSo";
@@ -36,6 +37,7 @@ public class ResInfo
   public static final String RES_VERSION_AVGAME_VOICE_RECOG_AILAB_SO = "QQ8.4.17";
   public static final String RES_VERSION_AVGAME_VOICE_RECOG_MODEL = "QQ8.4.8";
   public static final String RES_VERSION_AVGAME_VOICE_RECOG_SO = "QQ8.4.8";
+  public static final String RES_VERSION_AV_AI_NS_MEDIALAB_GRU_MODEL = "QQ8.7.5";
   public static final String RES_VERSION_AV_AI_NS_MEDIALAB_MODEL = "QQ8.5.8";
   public static final String RES_VERSION_AV_SDK_SO = "QQ8.6.0";
   public static final String RES_VERSION_AV_TRAE_SO = "QQ8.6.5";
@@ -76,6 +78,9 @@ public class ResInfo
     if ("AVAINSMediaLabModel".equalsIgnoreCase(paramString)) {
       return "model";
     }
+    if ("AVAINSMediaLabGruModel".equalsIgnoreCase(paramString)) {
+      return "model";
+    }
     if ("AVSDKSo".equalsIgnoreCase(paramString)) {
       return "so";
     }
@@ -107,6 +112,9 @@ public class ResInfo
     }
     if ("AVAINSMediaLabModel".equalsIgnoreCase(paramString)) {
       return "QQ8.5.8";
+    }
+    if ("AVAINSMediaLabGruModel".equalsIgnoreCase(paramString)) {
+      return "QQ8.7.5";
     }
     if ("AVSDKSo".equalsIgnoreCase(paramString)) {
       return "QQ8.6.0";

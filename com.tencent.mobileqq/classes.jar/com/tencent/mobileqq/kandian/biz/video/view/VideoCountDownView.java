@@ -22,21 +22,21 @@ public class VideoCountDownView
   extends RelativeLayout
 {
   public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private BaseVideoPlayParam jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-  private boolean jdField_a_of_type_Boolean;
   public final int b;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
   public final int c;
-  private ImageView c;
-  private ImageView d;
-  private ImageView e;
+  private Context d;
+  private TextView e;
+  private Button f;
+  private Button g;
+  private KandianUrlImageView h;
+  private View i;
+  private ImageView j;
+  private ImageView k;
+  private ImageView l;
+  private ImageView m;
+  private ImageView n;
+  private boolean o;
+  private BaseVideoPlayParam p;
   
   public VideoCountDownView(@NonNull Context paramContext)
   {
@@ -51,51 +51,51 @@ public class VideoCountDownView
   public VideoCountDownView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131296927);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296915);
-    this.jdField_c_of_type_Int = getResources().getDimensionPixelOffset(2131296917);
+    this.d = paramContext;
+    this.a = getResources().getDimensionPixelOffset(2131297307);
+    this.b = getResources().getDimensionPixelOffset(2131297295);
+    this.c = getResources().getDimensionPixelOffset(2131297297);
     d();
   }
   
   private void d()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560374, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379926));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364034));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364000));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369547));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367410);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369495));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369496));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369497));
-    this.d = ((ImageView)findViewById(2131369498));
-    this.e = ((ImageView)findViewById(2131369499));
-    Drawable localDrawable = getResources().getDrawable(2130843379);
-    int i = this.jdField_a_of_type_Int;
-    localDrawable.setBounds(0, 0, i, i);
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
-    localDrawable = getResources().getDrawable(2130843375);
-    localDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
+    LayoutInflater.from(this.d).inflate(2131626420, this);
+    this.e = ((TextView)findViewById(2131448810));
+    this.f = ((Button)findViewById(2131429990));
+    this.g = ((Button)findViewById(2131429957));
+    this.h = ((KandianUrlImageView)findViewById(2131436650));
+    this.i = findViewById(2131433911);
+    this.j = ((ImageView)findViewById(2131436573));
+    this.k = ((ImageView)findViewById(2131436574));
+    this.l = ((ImageView)findViewById(2131436575));
+    this.m = ((ImageView)findViewById(2131436576));
+    this.n = ((ImageView)findViewById(2131436577));
+    Drawable localDrawable = getResources().getDrawable(2130844333);
+    int i1 = this.a;
+    localDrawable.setBounds(0, 0, i1, i1);
+    this.f.setCompoundDrawables(localDrawable, null, null, null);
+    localDrawable = getResources().getDrawable(2130844329);
+    localDrawable.setBounds(0, 0, this.b, this.c);
+    this.g.setCompoundDrawables(localDrawable, null, null, null);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.e.setVisibility(8);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718108, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.jdField_a_of_type_JavaLangString }));
+    this.e.setText(getResources().getString(2131915585, new Object[] { Integer.valueOf(paramInt), this.p.a }));
   }
   
   public void a(URL paramURL)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImage(paramURL);
+      this.h.setVisibility(0);
+      this.h.setImage(paramURL);
       return;
     }
     catch (Exception paramURL)
@@ -106,55 +106,55 @@ public class VideoCountDownView
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
   public void c()
   {
-    this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.g.setVisibility(8);
+    this.e.setVisibility(8);
   }
   
   public void setIsXgMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
   }
   
   public void setNextVideoInfo(BaseVideoPlayParam paramBaseVideoPlayParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam = paramBaseVideoPlayParam;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam == null) {
+    this.p = paramBaseVideoPlayParam;
+    if (this.p == null) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (this.jdField_a_of_type_Boolean)
+    this.g.setVisibility(0);
+    this.e.setVisibility(0);
+    if (this.o)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718109, new Object[] { this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.jdField_a_of_type_JavaLangString }));
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131718107, new Object[] { VideoFeedsHelper.b(paramBaseVideoPlayParam.jdField_a_of_type_Long) }));
+      this.e.setText(getResources().getString(2131915586, new Object[] { this.p.a }));
+      this.g.setText(getResources().getString(2131915584, new Object[] { VideoFeedsHelper.c(paramBaseVideoPlayParam.c) }));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131718110));
+    this.g.setText(getResources().getString(2131915587));
   }
   
   public void setOnCustomClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    this.d.setOnClickListener(paramOnClickListener);
+    this.f.setOnClickListener(paramOnClickListener);
+    this.i.setOnClickListener(paramOnClickListener);
+    this.j.setOnClickListener(paramOnClickListener);
+    this.k.setOnClickListener(paramOnClickListener);
+    this.l.setOnClickListener(paramOnClickListener);
+    this.m.setOnClickListener(paramOnClickListener);
+    this.n.setOnClickListener(paramOnClickListener);
+    this.g.setOnClickListener(paramOnClickListener);
     this.e.setOnClickListener(paramOnClickListener);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
   }
   
   public void setTitle(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.view.VideoCountDownView
  * JD-Core Version:    0.7.0.1
  */

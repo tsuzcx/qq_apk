@@ -13,7 +13,7 @@ class GLViewGroup$1
   {
     try
     {
-      Collections.sort(GLViewGroup.a(this.a), GLViewGroup.a(this.a));
+      Collections.sort(GLViewGroup.a(this.a), GLViewGroup.b(this.a));
       return;
     }
     catch (ConcurrentModificationException paramGLView)

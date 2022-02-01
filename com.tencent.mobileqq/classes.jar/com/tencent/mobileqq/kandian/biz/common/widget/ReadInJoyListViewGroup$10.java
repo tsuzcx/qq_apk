@@ -10,11 +10,11 @@ class ReadInJoyListViewGroup$10
 {
   ReadInJoyListViewGroup$10(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void e_(String paramString)
+  public void l_(String paramString)
   {
-    boolean bool = StudyModeManager.a();
+    boolean bool = StudyModeManager.h();
     if (bool) {
-      this.a.a.b(true, 3, false);
+      this.a.r.b(true, 3, false);
     }
     paramString = new StringBuilder();
     paramString.append("onRefreshArticles! isLearnModelNow=");
@@ -24,7 +24,7 @@ class ReadInJoyListViewGroup$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyListViewGroup.10
  * JD-Core Version:    0.7.0.1
  */

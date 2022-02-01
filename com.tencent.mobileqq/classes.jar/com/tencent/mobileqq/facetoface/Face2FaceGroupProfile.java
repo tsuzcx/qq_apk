@@ -18,8 +18,8 @@ public class Face2FaceGroupProfile
     if (this.b == null) {
       this.b = "";
     }
-    if (this.e == null) {
-      this.e = "";
+    if (this.f == null) {
+      this.f = "";
     }
   }
   
@@ -35,7 +35,7 @@ public class Face2FaceGroupProfile
       if (this.b.equals(paramObject.b))
       {
         bool1 = bool2;
-        if (this.e.equals(paramObject.e)) {
+        if (this.f.equals(paramObject.f)) {
           bool1 = true;
         }
       }
@@ -46,7 +46,7 @@ public class Face2FaceGroupProfile
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("_");
     localStringBuilder.append(this.b);
     return localStringBuilder.toString();
@@ -54,7 +54,7 @@ public class Face2FaceGroupProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceGroupProfile
  * JD-Core Version:    0.7.0.1
  */

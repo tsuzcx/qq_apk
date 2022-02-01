@@ -36,6 +36,8 @@ public abstract interface IRIJAdActionUtilService
   
   public abstract Object getAdInfoParams(AdvertisementInfo paramAdvertisementInfo);
   
+  public abstract Object getAdInfoParams(AdvertisementInfo paramAdvertisementInfo, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter);
+  
   public abstract Integer gotoAdvVideoCellPage(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, Object paramObject, int paramInt, boolean paramBoolean, AdJumpParams paramAdJumpParams);
   
   public abstract boolean isUgcAd(AbsBaseArticleInfo paramAbsBaseArticleInfo);
@@ -47,6 +49,8 @@ public abstract interface IRIJAdActionUtilService
   public abstract Integer jumpToGdtAdPage(Object paramObject, Context paramContext, AdvertisementInfo paramAdvertisementInfo);
   
   public abstract Object obtainGdtParams(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, Object paramObject);
+  
+  public abstract Object obtainGdtParams(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, Object paramObject, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter);
   
   public abstract Integer openAppFromGdtApi(Context paramContext, AdvertisementInfo paramAdvertisementInfo, Object paramObject, int paramInt, boolean paramBoolean, AdJumpParams paramAdJumpParams);
   
@@ -72,7 +76,7 @@ public abstract interface IRIJAdActionUtilService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService
  * JD-Core Version:    0.7.0.1
  */

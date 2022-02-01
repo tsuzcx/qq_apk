@@ -9,14 +9,14 @@ class ConfessChatPie$3$1$2
   
   public void run()
   {
-    if (ConfessChatPie.a(this.a.a.this$0) != null) {
-      ConfessChatPie.a(this.a.a.this$0).setBackgroundDrawable(ConfessChatPie.a(this.a.a.this$0));
+    if (ConfessChatPie.d(this.a.a.this$0) != null) {
+      ConfessChatPie.d(this.a.a.this$0).setBackgroundDrawable(ConfessChatPie.e(this.a.a.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2
  * JD-Core Version:    0.7.0.1
  */

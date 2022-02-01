@@ -6,12 +6,14 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams;
 import com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic;
 import com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.PhotoListGuideData;
 import com.tencent.aelight.camera.ae.biz.circle.AECircleSinglePhotoListFragment;
 import com.tencent.aelight.camera.ae.biz.circle.event.AECircleSelectChangeEvent;
 import com.tencent.aelight.camera.ae.biz.circle.part.base.AECircleBasePart;
 import com.tencent.aelight.camera.ae.view.NoScrollViewPager;
+import com.tencent.aelight.camera.ae.view.scrollingheader.ScrollingHeaderLayout.ScrollingViewBehavior;
 import com.tencent.aelight.camera.aebase.AEReportUtils;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -24,93 +26,101 @@ public class AECirclePhotoListPart
   extends AECircleBasePart
   implements CompoundButton.OnCheckedChangeListener, SimpleEventReceiver
 {
-  private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
-  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private NoScrollViewPager jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager;
-  private ArrayList<AECircleSinglePhotoListFragment> jdField_a_of_type_JavaUtilArrayList;
-  private RadioButton b;
-  private RadioButton c;
+  private NoScrollViewPager a;
+  private RadioGroup b;
+  private RadioButton f;
+  private RadioButton g;
+  private RadioButton h;
+  private ArrayList<AECircleSinglePhotoListFragment> i;
   
   public AECirclePhotoListPart(AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
     super(paramAECirclePhotoListLogic);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a(this);
+    this.c.a(this);
   }
   
   private void a(int paramInt)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int j = 0;
+    while (j < this.i.size())
     {
-      if (i == paramInt) {
-        ((AECircleSinglePhotoListFragment)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+      if (j == paramInt) {
+        ((AECircleSinglePhotoListFragment)this.i.get(j)).b(paramInt);
       } else {
-        ((AECircleSinglePhotoListFragment)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+        ((AECircleSinglePhotoListFragment)this.i.get(j)).a();
       }
-      i += 1;
+      j += 1;
     }
   }
   
-  private void c()
+  private void b(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.add(new AECircleSinglePhotoListFragment().a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).a(1));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new AECircleSinglePhotoListFragment().a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).a(2));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new AECircleSinglePhotoListFragment().a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).a(3));
+    this.b = ((RadioGroup)paramView.findViewById(2063991365));
+    this.f = ((RadioButton)paramView.findViewById(2063991354));
+    this.g = ((RadioButton)paramView.findViewById(2063991355));
+    this.h = ((RadioButton)paramView.findViewById(2063991356));
+    this.f.setTypeface(Typeface.DEFAULT_BOLD);
+    this.f.setOnCheckedChangeListener(this);
+    this.g.setOnCheckedChangeListener(this);
+    this.h.setOnCheckedChangeListener(this);
+    this.b.setOnCheckedChangeListener(new AECirclePhotoListPart.1(this));
+  }
+  
+  private void c(View paramView)
+  {
+    this.a = ((NoScrollViewPager)paramView.findViewById(2063991266));
+    this.a.setOffscreenPageLimit(2);
+    if ((this.a.getLayoutParams() instanceof CoordinatorLayout.LayoutParams)) {
+      ((CoordinatorLayout.LayoutParams)this.a.getLayoutParams()).setBehavior(new ScrollingHeaderLayout.ScrollingViewBehavior());
+    }
+    paramView = new AECirclePhotoListPart.PhotoPagerAdapter(this, f());
+    this.a.setAdapter(paramView);
+    this.a.addOnPageChangeListener(new AECirclePhotoListPart.2(this));
+    if ((this.c != null) && (this.c.e != null)) {
+      this.a.setCurrentItem(this.c.e.a, false);
+    }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioButton.setTypeface(Typeface.DEFAULT_BOLD);
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new AECirclePhotoListPart.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.addOnPageChangeListener(new AECirclePhotoListPart.2(this));
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a != null)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.setCurrentItem(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.a, false);
-    }
-  }
-  
-  public String a()
-  {
-    return "AECirclePhotoListPart";
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AECircleSinglePhotoListFragment)localIterator.next()).b();
-    }
+    this.i = new ArrayList();
+    this.i.add(new AECircleSinglePhotoListFragment().a(this.c).a(1));
+    this.i.add(new AECircleSinglePhotoListFragment().a(this.c).a(2));
+    this.i.add(new AECircleSinglePhotoListFragment().a(this.c).a(3));
   }
   
   protected void a(View paramView)
   {
     super.a(paramView);
-    c();
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager = ((NoScrollViewPager)paramView.findViewById(2064122437));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2064122548));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2064122535));
-    this.b = ((RadioButton)paramView.findViewById(2064122536));
-    this.c = ((RadioButton)paramView.findViewById(2064122537));
-    this.jdField_a_of_type_AndroidWidgetRadioButton.setOnCheckedChangeListener(this);
-    this.b.setOnCheckedChangeListener(this);
-    this.c.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.setOffscreenPageLimit(2);
-    paramView = new AECirclePhotoListPart.PhotoPagerAdapter(this, a());
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.setAdapter(paramView);
     d();
+    b(paramView);
+    c(paramView);
   }
   
   public void a(List<LocalMediaInfo> paramList)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((AECircleSinglePhotoListFragment)localIterator.next()).a(paramList);
     }
   }
   
-  public void b()
+  public void al_()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.i.iterator();
+    while (localIterator.hasNext()) {
+      ((AECircleSinglePhotoListFragment)localIterator.next()).b();
+    }
+  }
+  
+  public String b()
+  {
+    return "AECirclePhotoListPart";
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       AECircleSinglePhotoListFragment localAECircleSinglePhotoListFragment = (AECircleSinglePhotoListFragment)localIterator.next();
@@ -129,33 +139,38 @@ public class AECirclePhotoListPart
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Typeface localTypeface;
+    Object localObject;
     if (paramBoolean) {
-      localTypeface = Typeface.DEFAULT_BOLD;
+      localObject = Typeface.DEFAULT_BOLD;
     } else {
-      localTypeface = Typeface.DEFAULT;
+      localObject = Typeface.DEFAULT;
     }
-    paramCompoundButton.setTypeface(localTypeface);
-    if (this.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()) {
+    paramCompoundButton.setTypeface((Typeface)localObject);
+    if (this.f.isChecked()) {
       paramCompoundButton = "1";
-    } else if (this.b.isChecked()) {
+    } else if (this.g.isChecked()) {
       paramCompoundButton = "2";
     } else {
       paramCompoundButton = "3";
     }
-    AEReportUtils.a(paramCompoundButton);
+    if (this.c != null) {
+      localObject = this.c.i();
+    } else {
+      localObject = "";
+    }
+    AEReportUtils.a(paramCompoundButton, (String)localObject);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof AECircleSelectChangeEvent)) {
-      a();
+      al_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECirclePhotoListPart
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ class ApolloRecentManager$1
 {
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (ApolloRecentManager.a(this.this$0) == null) {
       return;
     }
     if (this.a == null)
     {
-      ApolloDaoManagerServiceImpl.insertRecentData(this.this$0.a, this.b);
+      ApolloDaoManagerServiceImpl.insertRecentData(ApolloRecentManager.a(this.this$0), this.b);
       return;
     }
-    ApolloDaoManagerServiceImpl.insertAndDeleteData(this.this$0.a, this.b, this.a);
+    ApolloDaoManagerServiceImpl.insertAndDeleteData(ApolloRecentManager.a(this.this$0), this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloRecentManager.1
  * JD-Core Version:    0.7.0.1
  */

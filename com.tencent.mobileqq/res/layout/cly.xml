@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:paddingTop="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/nnj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/bdq">
-        <ImageView android:id="@id/nnh" android:layout_width="@dimen/beg" android:layout_height="@dimen/bef" android:layout_marginTop="@dimen/ben" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
-        <ImageView android:id="@id/nnl" android:layout_width="@dimen/beg" android:layout_height="@dimen/bef" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nnh" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
-        <ImageView android:id="@id/nni" android:layout_width="@dimen/bej" android:layout_height="@dimen/beh" android:layout_marginTop="@dimen/bei" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nnl" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
-        <Button android:id="@id/nnk" android:background="@android:color/transparent" android:layout_width="@dimen/bel" android:layout_height="@dimen/bel" android:layout_marginBottom="@dimen/bek" android:layout_alignBottom="@id/nni" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/nnf" android:layout_width="@dimen/bdj" android:layout_height="@dimen/bdj" android:layout_marginTop="@dimen/bem" android:src="@drawable/f27" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nni" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_gravity="center" android:id="@id/nnd" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/bdq">
-        <ImageView android:id="@id/nnc" android:layout_width="@dimen/bej" android:layout_height="@dimen/beh" android:layout_marginTop="@dimen/ben" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
-        <ImageView android:id="@id/nng" android:layout_width="@dimen/bdl" android:layout_height="@dimen/bdk" android:layout_marginTop="@dimen/bdr" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/nnc" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
-        <TextView android:textSize="@dimen/bdo" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nne" android:layout_width="@dimen/bdp" android:layout_height="@dimen/bdm" android:layout_marginTop="@dimen/bdn" android:text="@string/wy3" android:layout_below="@id/nng" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</FrameLayout>
+    <include android:id="@id/oj0" layout="@layout/clm" />
+    <include layout="@layout/clo" />
+    <include android:id="@id/oj3" layout="@layout/clm" />
+</LinearLayout>

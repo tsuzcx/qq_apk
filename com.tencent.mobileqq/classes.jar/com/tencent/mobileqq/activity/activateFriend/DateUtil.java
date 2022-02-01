@@ -24,10 +24,10 @@ public class DateUtil
   
   public static boolean a(long paramLong)
   {
-    return a(paramLong, "yyyy-MM-dd");
+    return b(paramLong, "yyyy-MM-dd");
   }
   
-  private static boolean a(long paramLong, String paramString)
+  private static boolean b(long paramLong, String paramString)
   {
     Date localDate = new Date(paramLong);
     paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
@@ -36,7 +36,7 @@ public class DateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.DateUtil
  * JD-Core Version:    0.7.0.1
  */

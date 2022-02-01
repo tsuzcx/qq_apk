@@ -12,13 +12,13 @@ class AddFriendVerifyActivity$31
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    if ((this.b.j != null) && (this.b.j.isShowing()) && (this.b.j.getWindow() != null)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
+      this.b.j.dismiss();
+      AddFriendVerifyActivity.a(this.b, -1, this.a);
       label58:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
+      this.b.j = null;
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
@@ -30,7 +30,7 @@ class AddFriendVerifyActivity$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.31
  * JD-Core Version:    0.7.0.1
  */

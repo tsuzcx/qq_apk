@@ -14,12 +14,12 @@ class IliveReportModule$6
     localStringBuilder.append("float window PermissionCallback isAuth = ");
     localStringBuilder.append(paramBoolean);
     QLog.e("IliveReportModule", 1, localStringBuilder.toString());
-    IliveReportModule.a(this.a);
+    IliveReportModule.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveReportModule.6
  * JD-Core Version:    0.7.0.1
  */

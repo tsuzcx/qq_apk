@@ -12,20 +12,20 @@ class RedPacketKSongFragment$10$1$1
   
   public void a(boolean paramBoolean)
   {
-    if (!this.a.a.a.d())
+    if (!this.a.a.a.p())
     {
       if (paramBoolean)
       {
-        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
+        this.a.a.a.i.post(new RedPacketKSongFragment.10.1.1.1(this));
         return;
       }
-      this.a.a.a.g();
+      this.a.a.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.10.1.1
  * JD-Core Version:    0.7.0.1
  */

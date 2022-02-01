@@ -17,33 +17,33 @@ import java.util.List;
 @TargetApi(18)
 public class HwVideoMerge
 {
-  private int jdField_a_of_type_Int;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
-  private HwVideoMerge.SampaleData jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData = new HwVideoMerge.SampaleData(null);
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor;
-  private String jdField_b_of_type_JavaLangString;
+  private String a;
+  private String b;
+  private MediaExtractor c;
+  private MediaExtractor d;
+  private int e;
+  private int f;
+  private MediaMuxer g;
+  private HwVideoMerge.SampaleData h = new HwVideoMerge.SampaleData(null);
   
   public HwVideoMerge(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
   private int a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
+    this.h.a.position(0);
+    if (this.c.readSampleData(this.h.a, 0) <= 0)
     {
-      a();
+      b();
       return -5;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
+    this.h.a.position(0);
+    if (this.d.readSampleData(this.h.a, 0) <= 0)
     {
-      a();
+      b();
       return -6;
     }
     return 0;
@@ -118,66 +118,6 @@ public class HwVideoMerge
       return -12;
     }
     return -9;
-  }
-  
-  private final MediaExtractor a(String paramString)
-  {
-    if (a(paramString))
-    {
-      MediaExtractor localMediaExtractor = new MediaExtractor();
-      try
-      {
-        localMediaExtractor.setDataSource(paramString);
-        int i = localMediaExtractor.getTrackCount();
-        if (i != 1)
-        {
-          localMediaExtractor.release();
-          try
-          {
-            StringBuilder localStringBuilder1 = new StringBuilder();
-            localStringBuilder1.append("createExtractor:invalid media file:numTracks=");
-            localStringBuilder1.append(i);
-            localStringBuilder1.append(" path=");
-            localStringBuilder1.append(paramString);
-            b(localStringBuilder1.toString(), null);
-            return null;
-          }
-          catch (IOException localIOException1)
-          {
-            localMediaExtractor = null;
-          }
-        }
-        else
-        {
-          return localMediaExtractor;
-        }
-      }
-      catch (IOException localIOException2)
-      {
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("createExtractor path:");
-        localStringBuilder2.append(paramString);
-        b(localStringBuilder2.toString(), localIOException2);
-        localMediaExtractor.release();
-      }
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    MediaExtractor localMediaExtractor = this.jdField_a_of_type_AndroidMediaMediaExtractor;
-    if (localMediaExtractor != null)
-    {
-      localMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-    localMediaExtractor = this.jdField_b_of_type_AndroidMediaMediaExtractor;
-    if (localMediaExtractor != null)
-    {
-      localMediaExtractor.release();
-      this.jdField_b_of_type_AndroidMediaMediaExtractor = null;
-    }
   }
   
   private boolean a(String paramString)
@@ -314,6 +254,66 @@ public class HwVideoMerge
     return i;
   }
   
+  private final MediaExtractor b(String paramString)
+  {
+    if (a(paramString))
+    {
+      MediaExtractor localMediaExtractor = new MediaExtractor();
+      try
+      {
+        localMediaExtractor.setDataSource(paramString);
+        int i = localMediaExtractor.getTrackCount();
+        if (i != 1)
+        {
+          localMediaExtractor.release();
+          try
+          {
+            StringBuilder localStringBuilder1 = new StringBuilder();
+            localStringBuilder1.append("createExtractor:invalid media file:numTracks=");
+            localStringBuilder1.append(i);
+            localStringBuilder1.append(" path=");
+            localStringBuilder1.append(paramString);
+            b(localStringBuilder1.toString(), null);
+            return null;
+          }
+          catch (IOException localIOException1)
+          {
+            localMediaExtractor = null;
+          }
+        }
+        else
+        {
+          return localMediaExtractor;
+        }
+      }
+      catch (IOException localIOException2)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("createExtractor path:");
+        localStringBuilder2.append(paramString);
+        b(localStringBuilder2.toString(), localIOException2);
+        localMediaExtractor.release();
+      }
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    MediaExtractor localMediaExtractor = this.c;
+    if (localMediaExtractor != null)
+    {
+      localMediaExtractor.release();
+      this.c = null;
+    }
+    localMediaExtractor = this.d;
+    if (localMediaExtractor != null)
+    {
+      localMediaExtractor.release();
+      this.d = null;
+    }
+  }
+  
   private static void b(String paramString, Throwable paramThrowable)
   {
     if (QLog.isColorLevel())
@@ -401,36 +401,36 @@ public class HwVideoMerge
   
   public int a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = a(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor == null) {
+    this.c = b(this.a);
+    if (this.c == null) {
       return -1;
     }
-    this.jdField_b_of_type_AndroidMediaMediaExtractor = a(this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null)
+    this.d = b(this.b);
+    if (this.d == null)
     {
-      a();
+      b();
       return -2;
     }
-    MediaFormat localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(0);
+    MediaFormat localMediaFormat = this.c.getTrackFormat(0);
     Object localObject = localMediaFormat.getString("mime");
-    this.jdField_a_of_type_Int = localMediaFormat.getInteger("width");
-    this.jdField_b_of_type_Int = localMediaFormat.getInteger("height");
+    this.e = localMediaFormat.getInteger("width");
+    this.f = localMediaFormat.getInteger("height");
     int i;
     if (((String)localObject).startsWith("video/"))
     {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(0);
-      localObject = this.jdField_b_of_type_AndroidMediaMediaExtractor.getTrackFormat(0);
+      this.c.selectTrack(0);
+      localObject = this.d.getTrackFormat(0);
       if (((MediaFormat)localObject).getString("mime").startsWith("audio/"))
       {
-        this.jdField_b_of_type_AndroidMediaMediaExtractor.selectTrack(0);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.d.selectTrack(0);
+        this.h.a(this.e, this.f);
         i = a();
         if (i != 0) {
           return i;
         }
         if (!a(paramString))
         {
-          a();
+          b();
           return -9;
         }
       }
@@ -439,14 +439,14 @@ public class HwVideoMerge
     {
       if (new File(paramString).exists())
       {
-        a();
+        b();
         return -8;
       }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
-      paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilHwVideoMerge$SampaleData.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+      this.g = new MediaMuxer(paramString, 0);
+      paramInt = b(this.a, paramInt);
+      this.g.setOrientationHint(paramInt);
+      this.h.c = this.g.addTrack(localMediaFormat);
+      this.h.d = this.g.addTrack((MediaFormat)localObject);
       return i;
     }
     catch (IOException paramString)
@@ -454,18 +454,18 @@ public class HwVideoMerge
       label271:
       break label271;
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-    a();
+    this.g = null;
+    b();
     return -7;
-    a();
+    b();
     return -4;
-    a();
+    b();
     return -3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.util.HwVideoMerge
  * JD-Core Version:    0.7.0.1
  */

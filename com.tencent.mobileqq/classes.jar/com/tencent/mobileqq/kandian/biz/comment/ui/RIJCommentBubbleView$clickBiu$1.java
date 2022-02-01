@@ -13,12 +13,12 @@ final class RIJCommentBubbleView$clickBiu$1
   
   public final void a(UserLevelInfo paramUserLevelInfo)
   {
-    RIJCommentBubbleView.a(this.a).e(RIJCommentBubbleView.a(this.a));
+    RIJCommentBubbleView.a(this.a).e(RIJCommentBubbleView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.RIJCommentBubbleView.clickBiu.1
  * JD-Core Version:    0.7.0.1
  */

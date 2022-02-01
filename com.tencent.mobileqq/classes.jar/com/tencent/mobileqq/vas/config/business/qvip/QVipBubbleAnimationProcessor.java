@@ -11,7 +11,7 @@ public class QVipBubbleAnimationProcessor
 {
   public static QVipBubbleAnimationConfig a()
   {
-    QVipBubbleAnimationConfig localQVipBubbleAnimationConfig2 = (QVipBubbleAnimationConfig)QConfigManager.a().a(727);
+    QVipBubbleAnimationConfig localQVipBubbleAnimationConfig2 = (QVipBubbleAnimationConfig)QConfigManager.b().b(727);
     QVipBubbleAnimationConfig localQVipBubbleAnimationConfig1 = localQVipBubbleAnimationConfig2;
     if (localQVipBubbleAnimationConfig2 == null) {
       localQVipBubbleAnimationConfig1 = new QVipBubbleAnimationConfig();
@@ -23,12 +23,12 @@ public class QVipBubbleAnimationProcessor
   public QVipBubbleAnimationConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.QVipServiceAccountFolderProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QVIP.SDK.QVipServiceAccountFolderProcessor", 1, paramArrayOfQConfItem[0].b);
     }
     QVipBubbleAnimationConfig localQVipBubbleAnimationConfig = new QVipBubbleAnimationConfig();
     try
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
       {
         localQVipBubbleAnimationConfig.a = paramArrayOfQConfItem;
@@ -48,15 +48,15 @@ public class QVipBubbleAnimationProcessor
     return new QVipBubbleAnimationConfig();
   }
   
-  @NonNull
-  public QVipBubbleAnimationConfig c()
-  {
-    return new QVipBubbleAnimationConfig();
-  }
-  
   public Class<QVipBubbleAnimationConfig> clazz()
   {
     return QVipBubbleAnimationConfig.class;
+  }
+  
+  @NonNull
+  public QVipBubbleAnimationConfig e()
+  {
+    return new QVipBubbleAnimationConfig();
   }
   
   public int type()
@@ -66,7 +66,7 @@ public class QVipBubbleAnimationProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipBubbleAnimationProcessor
  * JD-Core Version:    0.7.0.1
  */

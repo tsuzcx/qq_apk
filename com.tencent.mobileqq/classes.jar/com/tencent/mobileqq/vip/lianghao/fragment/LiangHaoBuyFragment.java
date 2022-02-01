@@ -29,14 +29,14 @@ import org.json.JSONObject;
 public class LiangHaoBuyFragment
   extends QPublicBaseFragment
 {
-  private int jdField_a_of_type_Int = 1;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private LiangHaoUinData jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 1;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int a = 1;
+  private int b = 1;
+  private LiangHaoUinData c;
+  private Dialog d;
+  private QQProgressDialog e;
+  private Intent f;
+  private boolean g = false;
+  private boolean h = false;
   
   public static int a(Intent paramIntent)
   {
@@ -85,9 +85,9 @@ public class LiangHaoBuyFragment
     if (localQBaseActivity == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAppDialog = new LiangHaoDialog().a(localQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData, new LiangHaoBuyFragment.1(this));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new LiangHaoBuyFragment.2(this));
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    this.d = new LiangHaoDialog().a(localQBaseActivity, this.c, new LiangHaoBuyFragment.1(this));
+    this.d.setOnDismissListener(new LiangHaoBuyFragment.2(this));
+    this.d.show();
   }
   
   public static void a(Context paramContext, Intent paramIntent, LiangHaoUinData paramLiangHaoUinData)
@@ -104,15 +104,15 @@ public class LiangHaoBuyFragment
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      QQToast.a(BaseApplication.getContext(), 1, paramString, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, paramString, 0).show();
       return;
     }
     if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131693609, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, 2131891184, 0).show();
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131693601, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, 2131891176, 0).show();
   }
   
   private void a(String paramString, byte[] paramArrayOfByte)
@@ -121,12 +121,12 @@ public class LiangHaoBuyFragment
     if (localQBaseActivity == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    this.g = true;
+    Object localObject = this.d;
     if ((localObject != null) && (((Dialog)localObject).isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.d.dismiss();
     }
-    if (this.jdField_b_of_type_Int != 2) {
+    if (this.b != 2) {
       localObject = "mvip.p.a.lianghao_tj";
     } else {
       localObject = "mvip.p.a.lianghao_gd";
@@ -139,7 +139,7 @@ public class LiangHaoBuyFragment
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unit", HardCodeUtil.a(2131706104));
+      localJSONObject.put("unit", HardCodeUtil.a(2131903976));
       localJSONObject.put("userId", paramString);
       localJSONObject.put("openMonth", "1");
       localJSONObject.put("offerId", "1450000833");
@@ -163,7 +163,7 @@ public class LiangHaoBuyFragment
       paramString.putExtras(paramArrayOfByte);
       paramString.putExtra("payparmas_from_is_login_state", false);
       paramString.putExtra("pay_requestcode", 4);
-      LoginUtils.a(localQBaseActivity, paramString, "/base/payBridge", this.jdField_b_of_type_Int);
+      LoginUtils.a(localQBaseActivity, paramString, "/base/payBridge", this.b);
       return;
     }
     catch (Exception paramString)
@@ -178,13 +178,13 @@ public class LiangHaoBuyFragment
     if (getQBaseActivity() == null) {
       return;
     }
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.e;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.e.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getQBaseActivity(), getQBaseActivity().getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131694668);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.e = new QQProgressDialog(getQBaseActivity(), getQBaseActivity().getTitleBarHeight());
+    this.e.c(2131892360);
+    this.e.show();
   }
   
   public static void b(Context paramContext, Intent paramIntent, LiangHaoUinData paramLiangHaoUinData)
@@ -199,7 +199,7 @@ public class LiangHaoBuyFragment
   
   private void c()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.e;
     if (localQQProgressDialog != null) {
       localQQProgressDialog.dismiss();
     }
@@ -215,49 +215,49 @@ public class LiangHaoBuyFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("lockLiangHao uin=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a);
+      localStringBuilder.append(this.c.a);
       QLog.i("LiangHaoBuyFragment", 4, localStringBuilder.toString());
     }
     b();
-    new LHLoginMng(localQBaseActivity.getAppRuntime()).a(localQBaseActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, new LiangHaoBuyFragment.3(this));
+    new LHLoginMng(localQBaseActivity.getAppRuntime()).a(localQBaseActivity.getIntent(), this.c.a, new LiangHaoBuyFragment.3(this));
   }
   
   private void e()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    this.h = true;
+    Object localObject = this.d;
     if ((localObject != null) && (((Dialog)localObject).isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.d.dismiss();
     }
     QBaseActivity localQBaseActivity = getQBaseActivity();
     if (localQBaseActivity == null) {
       return;
     }
-    if (this.jdField_b_of_type_Int == 2)
+    if (this.b == 2)
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
       if ((i == 2) || (i == 3)) {
         localQBaseActivity.setResult(4660);
       }
     }
-    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    Intent localIntent = this.f;
     localObject = localIntent;
     if (localIntent == null) {
       localObject = localQBaseActivity.getIntent();
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 1) {
       if (i != 2)
       {
         if (i == 3) {
-          RegisterLHAssistant.a(localQBaseActivity, false, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.b, (Intent)localObject);
+          RegisterLHAssistant.a(localQBaseActivity, false, this.c.a, this.c.b, (Intent)localObject);
         }
       }
       else {
-        RegisterLHAssistant.a(localQBaseActivity, true, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.b, (Intent)localObject);
+        RegisterLHAssistant.a(localQBaseActivity, true, this.c.a, this.c.b, (Intent)localObject);
       }
     }
     localQBaseActivity.finish();
@@ -289,24 +289,24 @@ public class LiangHaoBuyFragment
       return;
     }
     paramBundle = paramBundle.getIntent();
-    this.jdField_b_of_type_Int = paramBundle.getIntExtra("lh_request_code", 1);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData = new LiangHaoUinData(paramBundle.getStringExtra("lh_uin"), paramBundle.getStringExtra("lh_light"));
+    this.b = paramBundle.getIntExtra("lh_request_code", 1);
+    this.c = new LiangHaoUinData(paramBundle.getStringExtra("lh_uin"), paramBundle.getStringExtra("lh_light"));
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onActivityCreated from=");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(",lh=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.toString());
+      localStringBuilder.append(this.c.toString());
       QLog.i("LiangHaoBuyFragment", 4, localStringBuilder.toString());
     }
-    int i = this.jdField_b_of_type_Int;
+    int i = this.b;
     if ((i != 1) && (i != 2))
     {
       if (i != 3) {
         return;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, paramBundle.getByteArrayExtra("key_register_lhsig"));
+      a(this.c.a, paramBundle.getByteArrayExtra("key_register_lhsig"));
       return;
     }
     a();
@@ -315,15 +315,15 @@ public class LiangHaoBuyFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_b_of_type_Int != paramInt1)
+    if (this.b != paramInt1)
     {
       e();
       return;
     }
     if (a(paramIntent) == 0) {
-      this.jdField_a_of_type_Int = 2;
+      this.a = 2;
     } else {
-      this.jdField_a_of_type_Int = 3;
+      this.a = 3;
     }
     e();
   }
@@ -340,7 +340,7 @@ public class LiangHaoBuyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment
  * JD-Core Version:    0.7.0.1
  */

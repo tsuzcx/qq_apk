@@ -23,9 +23,9 @@ class EssenceMsgProcessor$3
     while (paramHashMap.hasNext())
     {
       TroopEssenceMsgItem.TroopEssenceMsgItemValue localTroopEssenceMsgItemValue = (TroopEssenceMsgItem.TroopEssenceMsgItemValue)paramHashMap.next();
-      if ((localTroopEssenceMsgItemValue.jdField_a_of_type_Int == 1) && (paramLong < localTroopEssenceMsgItemValue.jdField_a_of_type_Long))
+      if ((localTroopEssenceMsgItemValue.a == 1) && (paramLong < localTroopEssenceMsgItemValue.d))
       {
-        paramLong = localTroopEssenceMsgItemValue.jdField_a_of_type_Long;
+        paramLong = localTroopEssenceMsgItemValue.d;
         i = 1;
       }
     }
@@ -36,7 +36,7 @@ class EssenceMsgProcessor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.essencemsg.EssenceMsgProcessor.3
  * JD-Core Version:    0.7.0.1
  */

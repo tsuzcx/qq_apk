@@ -24,14 +24,14 @@ public class RecommendAlbumFilter
   public RecommendAlbumFilter(int paramInt, ScanInfo paramScanInfo)
   {
     super(2);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
-    this.jdField_a_of_type_Boolean = false;
+    this.c = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
+    this.b = false;
     Object localObject = new KMeansSplitStrategy();
     ((KMeansSplitStrategy)localObject).a(paramInt);
     ((KMeansSplitStrategy)localObject).a(paramScanInfo);
     a((AbstractSplitStrategy)localObject);
     paramScanInfo = new GroupTreeSplitStrategy();
-    localObject = ((StoryScanManager)SuperManager.a(30)).b();
+    localObject = ((StoryScanManager)SuperManager.a(30)).f();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -65,33 +65,33 @@ public class RecommendAlbumFilter
     Object localObject2 = paramStoryAlbum.a();
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
-      Object localObject1 = ((StoryAlbum.PicInfo)((List)localObject2).get(0)).a;
-      localObject2 = ((StoryAlbum.PicInfo)((List)localObject2).get(((List)localObject2).size() - 1)).a;
+      Object localObject1 = ((StoryAlbum.PicInfo)((List)localObject2).get(0)).o;
+      localObject2 = ((StoryAlbum.PicInfo)((List)localObject2).get(((List)localObject2).size() - 1)).o;
       if ((localObject1 != null) && (localObject2 != null))
       {
         if ((paramInt <= 5) && (a(((AddressItem)localObject1).building, ((AddressItem)localObject2).building)))
         {
-          paramStoryAlbum.b = ((AddressItem)localObject1).building;
+          paramStoryAlbum.f = ((AddressItem)localObject1).building;
           return true;
         }
         if ((paramInt <= 4) && (a(((AddressItem)localObject1).district, ((AddressItem)localObject2).district)))
         {
-          paramStoryAlbum.b = ((AddressItem)localObject1).district;
+          paramStoryAlbum.f = ((AddressItem)localObject1).district;
           return true;
         }
         if ((paramInt <= 3) && (a(((AddressItem)localObject1).city, ((AddressItem)localObject2).city)))
         {
-          paramStoryAlbum.b = ((AddressItem)localObject1).city;
+          paramStoryAlbum.f = ((AddressItem)localObject1).city;
           return true;
         }
         if ((paramInt <= 2) && (a(((AddressItem)localObject1).province, ((AddressItem)localObject2).province)))
         {
-          paramStoryAlbum.b = ((AddressItem)localObject1).province;
+          paramStoryAlbum.f = ((AddressItem)localObject1).province;
           return true;
         }
         if ((paramInt <= 1) && (a(((AddressItem)localObject1).country, ((AddressItem)localObject2).country)))
         {
-          paramStoryAlbum.b = ((AddressItem)localObject1).country;
+          paramStoryAlbum.f = ((AddressItem)localObject1).country;
           return true;
         }
       }
@@ -101,11 +101,11 @@ public class RecommendAlbumFilter
         ((StringBuilder)localObject1).append("initAlbumNameByPOI find no poi item :");
         ((StringBuilder)localObject1).append(paramStoryAlbum);
         SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", ((StringBuilder)localObject1).toString());
-        paramStoryAlbum.b = "";
+        paramStoryAlbum.f = "";
         return false;
       }
     }
-    paramStoryAlbum.b = "";
+    paramStoryAlbum.f = "";
     return false;
   }
   
@@ -125,7 +125,7 @@ public class RecommendAlbumFilter
     while (((Iterator)localObject2).hasNext())
     {
       StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)((Iterator)localObject2).next();
-      if (localPicInfo.a != null) {
+      if (localPicInfo.o != null) {
         ((List)localObject1).add(localPicInfo);
       }
     }
@@ -140,7 +140,7 @@ public class RecommendAlbumFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.flter.RecommendAlbumFilter
  * JD-Core Version:    0.7.0.1
  */

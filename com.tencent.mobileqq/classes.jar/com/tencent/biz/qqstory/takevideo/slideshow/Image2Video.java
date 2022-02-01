@@ -17,20 +17,20 @@ public class Image2Video
 {
   public static final String a;
   public static final String b;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private HashMap<Long, Image2Video.ConvertContext> jdField_a_of_type_JavaUtilHashMap;
-  private LinkedList<Image2Video.ConvertContext> jdField_a_of_type_JavaUtilLinkedList;
-  private boolean jdField_a_of_type_Boolean;
+  private Image2Video.EglHandlerThreadEx c;
+  private boolean d;
+  private HashMap<Long, Image2Video.ConvertContext> e;
+  private LinkedList<Image2Video.ConvertContext> f;
+  private Context g;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/Android/data/com.tencent.mobileqq/qq/video/imagevideo/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("cache/");
     b = localStringBuilder.toString();
   }
@@ -270,47 +270,47 @@ public class Image2Video
   public static String a()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(a);
     ((StringBuilder)localObject).append("/noaudio");
     localObject = ((StringBuilder)localObject).toString();
     FileUtils.createFileIfNotExits((String)localObject);
     return localObject;
   }
   
-  private void a()
+  private void b()
   {
     try
     {
       Object localObject1;
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
+      if (this.e.size() > 0)
       {
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("tryStartPendingTask,[not start new request] mRunningTasks.size=:");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+          ((StringBuilder)localObject1).append(this.e.size());
           QLog.d("Image2Video", 2, ((StringBuilder)localObject1).toString());
         }
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+      if (this.f.size() > 0)
       {
-        localObject1 = (Image2Video.ConvertContext)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+        localObject1 = (Image2Video.ConvertContext)this.f.removeFirst();
         if (localObject1 == null) {
           return;
         }
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((Image2Video.ConvertContext)localObject1).jdField_a_of_type_Long), localObject1);
-        Object localObject3 = new ConvertRunnable(this.jdField_a_of_type_AndroidContentContext, ((Image2Video.ConvertContext)localObject1).jdField_a_of_type_Long, ((Image2Video.ConvertContext)localObject1).jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo, ((Image2Video.ConvertContext)localObject1).jdField_b_of_type_Int, ((Image2Video.ConvertContext)localObject1).c, ((Image2Video.ConvertContext)localObject1).jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
+        this.e.put(Long.valueOf(((Image2Video.ConvertContext)localObject1).d), localObject1);
+        Object localObject3 = new ConvertRunnable(this.g, ((Image2Video.ConvertContext)localObject1).d, ((Image2Video.ConvertContext)localObject1).h, ((Image2Video.ConvertContext)localObject1).e, ((Image2Video.ConvertContext)localObject1).f, ((Image2Video.ConvertContext)localObject1).g, this.d, this);
+        if (this.c != null)
         {
-          ((Image2Video.ConvertContext)localObject1).jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowConvertRunnable = ((ConvertRunnable)localObject3);
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.a().post((Runnable)localObject3);
+          ((Image2Video.ConvertContext)localObject1).b = ((ConvertRunnable)localObject3);
+          this.c.b().post((Runnable)localObject3);
         }
         if (QLog.isColorLevel())
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("tryStartPendingTask, taskid:");
-          ((StringBuilder)localObject3).append(((Image2Video.ConvertContext)localObject1).jdField_a_of_type_Long);
+          ((StringBuilder)localObject3).append(((Image2Video.ConvertContext)localObject1).d);
           QLog.d("Image2Video", 2, ((StringBuilder)localObject3).toString());
         }
       }
@@ -337,18 +337,18 @@ public class Image2Video
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onConvertResult, taskId:");
-      ((StringBuilder)localObject).append(paramResultInfo.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(paramResultInfo.a);
       ((StringBuilder)localObject).append(", resultcode:");
-      ((StringBuilder)localObject).append(paramResultInfo.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(", image:");
-      ((StringBuilder)localObject).append(paramResultInfo.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(". destfile:");
       ((StringBuilder)localObject).append(paramResultInfo.b);
+      ((StringBuilder)localObject).append(", image:");
+      ((StringBuilder)localObject).append(paramResultInfo.c);
+      ((StringBuilder)localObject).append(". destfile:");
+      ((StringBuilder)localObject).append(paramResultInfo.d);
       QLog.d("Image2Video", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      localObject = (Image2Video.ConvertContext)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramResultInfo.jdField_a_of_type_Long));
+      localObject = (Image2Video.ConvertContext)this.e.remove(Long.valueOf(paramResultInfo.a));
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -356,19 +356,19 @@ public class Image2Video
         }
         return;
       }
-      if (paramResultInfo.jdField_a_of_type_Int == 7)
+      if (paramResultInfo.b == 7)
       {
-        localObject = (Image2Video.Image2VideoListener)((Image2Video.ConvertContext)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (Image2Video.Image2VideoListener)((Image2Video.ConvertContext)localObject).c.get();
         if (localObject != null) {
           ((Image2Video.Image2VideoListener)localObject).a(paramResultInfo);
         }
       }
       else
       {
-        if (paramResultInfo.jdField_a_of_type_Int == 0) {
-          a();
+        if (paramResultInfo.b == 0) {
+          b();
         }
-        localObject = (Image2Video.Image2VideoListener)((Image2Video.ConvertContext)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (Image2Video.Image2VideoListener)((Image2Video.ConvertContext)localObject).c.get();
         if (localObject != null) {
           ((Image2Video.Image2VideoListener)localObject).a(paramResultInfo);
         }

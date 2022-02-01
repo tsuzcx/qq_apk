@@ -14,7 +14,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
-import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyTimeUtils;
+import com.tencent.mobileqq.kandian.base.utils.ReadInJoyTimeUtils;
 import com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity;
 import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
 import com.tencent.mobileqq.kandian.biz.framework.RIJWebSearchUtils;
@@ -94,7 +94,7 @@ public class ReadinjoyJumpUtils
     paramContext.putExtra("detail_url", localStringBuilder.toString());
     paramContext.putExtra("video_url", paramAbsBaseArticleInfo.getVideoVid());
     paramContext.putExtra("title", paramAbsBaseArticleInfo.mTitle);
-    paramContext.putExtra("req_create_time", ((IReadInJoyTimeUtils)QRoute.api(IReadInJoyTimeUtils.class)).getDateTimeString(paramAbsBaseArticleInfo.mTime));
+    paramContext.putExtra("req_create_time", ReadInJoyTimeUtils.INSTANCE.getDateTimeString(paramAbsBaseArticleInfo.mTime));
     paramContext.putExtra("brief_key", paramAbsBaseArticleInfo.mTitle);
     paramContext.putExtra("KEY_VIDEO_JSON_LIST", paramAbsBaseArticleInfo.mJsonVideoList);
     return paramContext;
@@ -102,11 +102,11 @@ public class ReadinjoyJumpUtils
   
   public static void a(Intent paramIntent)
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject == null) {
       return;
     }
-    KandianRedDotInfo localKandianRedDotInfo = ((KandianMergeManager)((QQAppInterface)localObject).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
+    KandianRedDotInfo localKandianRedDotInfo = ((KandianMergeManager)((QQAppInterface)localObject).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).e();
     if (localKandianRedDotInfo == null)
     {
       QLog.d("ReadinjoyJumpActivity", 2, "redDot info is null");
@@ -199,7 +199,7 @@ public class ReadinjoyJumpUtils
   {
     if (RIJFeedsType.a(paramAbsBaseArticleInfo.mArticleContentUrl, paramAbsBaseArticleInfo.mChannelID, paramAbsBaseArticleInfo))
     {
-      localObject1 = ReadInJoyLogicEngine.a().a();
+      localObject1 = ReadInJoyLogicEngine.a().d();
       if (localObject1 != null) {
         ((FastWebModule)localObject1).a(paramAbsBaseArticleInfo.mArticleContentUrl, String.valueOf(paramAbsBaseArticleInfo.innerUniqueID), paramAbsBaseArticleInfo.mSubscribeID, 1, null);
       }
@@ -217,7 +217,7 @@ public class ReadinjoyJumpUtils
     {
       localObject1 = localObject2;
       if (!RIJItemViewTypeUtils.z(paramAbsBaseArticleInfo)) {
-        localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.a.a.get(0)).b;
+        localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.v.g.get(0)).c;
       }
     }
     localObject2 = localObject1;
@@ -284,10 +284,10 @@ public class ReadinjoyJumpUtils
     long l = System.currentTimeMillis();
     localBundle.putLong("startOpenPageTime", l);
     localBundle.putLong("click_time", l);
-    localBundle.putLong("available_memory", DeviceInfoUtil.e());
+    localBundle.putLong("available_memory", DeviceInfoUtil.r());
     localBundle.putBoolean("preload_tool_white_list", RIJWebSearchUtils.a());
     localObject2 = new Intent(paramContext, ReadInJoyArticleDetailActivity.class);
-    localObject1 = PreloadManager.a((String)localObject1);
+    localObject1 = PreloadManager.d((String)localObject1);
     paramContext = (Context)localObject1;
     if (localObject1 == null) {
       paramContext = "";
@@ -295,7 +295,7 @@ public class ReadinjoyJumpUtils
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD);
     ((StringBuilder)localObject1).append(paramContext);
-    if ((FileUtils.fileExistsAndNotEmpty(((StringBuilder)localObject1).toString())) && (PreloadManager.a().b(paramContext) != null))
+    if ((FileUtils.fileExistsAndNotEmpty(((StringBuilder)localObject1).toString())) && (PreloadManager.a().f(paramContext) != null))
     {
       localBundle.putString("read_in_joy_from_cache", paramContext);
       if (!ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID))
@@ -331,7 +331,7 @@ public class ReadinjoyJumpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadinjoyJumpUtils
  * JD-Core Version:    0.7.0.1
  */

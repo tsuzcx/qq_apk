@@ -42,8 +42,8 @@ public class AgentActivity
   
   private boolean handleAction()
   {
-    waitAppRuntime().a(new AgentActivity.1(this));
-    String str = AuthParamUtil.a(getIntent(), "key_action");
+    waitAppRuntime().a(new AgentActivity.2(this));
+    String str = AuthParamUtil.b(getIntent(), "key_action");
     SSOLog.a("AgentActivity", new Object[] { "handleAction action=", str });
     ActionFactory.a(str).a(this);
     return true;
@@ -53,7 +53,7 @@ public class AgentActivity
   {
     String str = paramIntent.getStringExtra("param_qr_code_url");
     paramIntent.putExtra("key_error_code", 0);
-    paramIntent.putExtra("key_response", AuthorityUtil.a(str).toString());
+    paramIntent.putExtra("key_response", AuthorityUtil.c(str).toString());
     super.setResult(paramInt, paramIntent);
     super.finish();
     this.mIsBackToAPP = true;
@@ -82,11 +82,12 @@ public class AgentActivity
   {
     SSOLog.a("AgentActivity", new Object[] { "onCreate" });
     super.doOnCreate(paramBundle);
-    OpenSdkQIPCClient.b();
+    OpenSdkQIPCClient.c();
     ForwardStatisticsReporter.b();
     ForwardStatisticsReporter.a("KEY_LOGIN_STAGE_1_TOTAL");
     ForwardStatisticsReporter.a("KEY_AUTHORITY_TOTAL");
-    this.mProgress = AuthUIUtil.a(this, this.mProgress, 2131561397);
+    this.mProgress = AuthUIUtil.a(this, this.mProgress, 2131627753);
+    this.mProgress.a(new AgentActivity.1(this));
     if ((super.getIntent() != null) && (paramBundle == null)) {
       return handleAction();
     }
@@ -158,7 +159,7 @@ public class AgentActivity
     super.onDestroy();
     AuthUIUtil.a(this, this.mProgress);
     waitAppRuntime().a(4, null);
-    waitAppRuntime().a();
+    waitAppRuntime().b();
     if (this.mIsBackToAPP)
     {
       if (!GesturePWDUtils.isAppOnForeground(this)) {
@@ -170,7 +171,7 @@ public class AgentActivity
       localStringBuilder.append(localEIPCResult.code);
       SSOLog.a("AgentActivity", new Object[] { localStringBuilder.toString() });
     }
-    OpenSdkQIPCClient.c();
+    OpenSdkQIPCClient.d();
     if (this.mIsBackToAPP)
     {
       QLog.flushLog(true);
@@ -180,7 +181,7 @@ public class AgentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AgentActivity
  * JD-Core Version:    0.7.0.1
  */

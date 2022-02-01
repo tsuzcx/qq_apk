@@ -11,13 +11,13 @@ class AVGameShareBase$1
   public void run()
   {
     if ((this.this$0.a() != null) && (!this.this$0.a().isFinishing())) {
-      QQToast.a(this.this$0.a(), 2, this.this$0.a().getString(2131690305), 1).a();
+      QQToast.makeText(this.this$0.a(), 2, this.this$0.a().getString(2131887216), 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareBase.1
  * JD-Core Version:    0.7.0.1
  */

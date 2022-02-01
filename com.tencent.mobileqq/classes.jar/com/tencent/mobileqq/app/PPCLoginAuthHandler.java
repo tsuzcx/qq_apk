@@ -19,25 +19,24 @@ import com.tencent.qphone.base.util.QLog;
 public class PPCLoginAuthHandler
   extends BusinessHandler
 {
-  private long a;
   protected QQAppInterface a;
+  private long b = 0L;
   
   protected PPCLoginAuthHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject = this.a.getCurrentAccountUin();
     PPCLoginAuth.plat_info localplat_info = new PPCLoginAuth.plat_info();
     localplat_info.implat.set(109L);
-    localplat_info.mqqver.set("8.7.0.5295");
+    localplat_info.mqqver.set("8.8.17.5770");
     localplat_info.osver.set(Build.VERSION.RELEASE);
     PPCLoginAuth.comering_req localcomering_req = new PPCLoginAuth.comering_req();
-    localcomering_req.id.set(String.valueOf(this.jdField_a_of_type_Long));
+    localcomering_req.id.set(String.valueOf(this.b));
     PPCLoginAuth.req localreq = new PPCLoginAuth.req();
     localreq.comm.set(localplat_info);
     localreq.reqcmd_0x01.set(localcomering_req);
@@ -69,7 +68,7 @@ public class PPCLoginAuthHandler
         paramToServiceMsg.mergeFrom((byte[])paramObject);
         if ((paramToServiceMsg.ret.get() == 0L) && (((PPCLoginAuth.comering_rsp)paramToServiceMsg.rspcmd_0x01.get()).ret.get() != 0))
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new PPCLoginAuthHandler.1(this));
+          this.a.execute(new PPCLoginAuthHandler.1(this));
           return;
         }
       }
@@ -82,13 +81,13 @@ public class PPCLoginAuthHandler
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.a;
     localObject = ((QQAppInterface)localObject).getEntityManagerFactory(((QQAppInterface)localObject).getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)((EntityManager)localObject).find(ExtensionInfo.class, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    ExtensionInfo localExtensionInfo = (ExtensionInfo)((EntityManager)localObject).find(ExtensionInfo.class, this.a.getAccount());
     ((EntityManager)localObject).close();
     if ((localExtensionInfo != null) && (localExtensionInfo.commingRingId != 0L))
     {
-      this.jdField_a_of_type_Long = localExtensionInfo.commingRingId;
+      this.b = localExtensionInfo.commingRingId;
       a();
     }
   }
@@ -111,7 +110,7 @@ public class PPCLoginAuthHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PPCLoginAuthHandler
  * JD-Core Version:    0.7.0.1
  */

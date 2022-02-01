@@ -60,157 +60,110 @@ public class SystemMsgListView
   extends BaseNewFriendView
   implements View.OnClickListener, IPhoneContactListener, Observer
 {
-  public static final int a;
-  float jdField_a_of_type_Float = 0.0F;
-  private Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler = new SystemMsgListView.1(this);
-  private SparseArray<ListviewScrollStatus> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ListviewScrollStatus jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsListviewScrollStatus;
-  private ThemeTabLayout jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout;
-  private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqDiscussionObserverDiscussionObserver = new SystemMsgListView.6(this);
-  FriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver = new SystemMsgListView.4(this);
-  private NewFriendServiceImpl jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl;
-  private NewFriendCardObserver jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendCardObserver = new SystemMsgListView.8(this);
-  NewFriendListObserver jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendListObserver = new SystemMsgListView.5(this);
-  NewFriendMessageObserver jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendMessageObserver = new SystemMsgListView.MessageObserverForSystemMsgListView(this);
-  private NewFriendVerificationObserver jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendVerificationObserver = new SystemMsgListView.7(this);
-  private SystemMsgListAdapter jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private TabLayoutCompat.OnTabSelectedListener jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener = new SystemMsgListView.2(this);
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new SystemMsgListView.9(this);
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  public boolean a;
-  int jdField_b_of_type_Int = -1;
-  private SparseArray<Boolean> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private int jdField_c_of_type_Int;
-  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
-  private final int d = 0;
-  private int e;
-  
-  static
-  {
-    jdField_a_of_type_Int = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getRequestForSetting();
-  }
+  public static final int d = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getRequestForSetting();
+  private ListviewScrollStatus A;
+  private SparseArray<ListviewScrollStatus> B = new SparseArray();
+  private SparseArray<Boolean> C = new SparseArray();
+  private TabLayoutCompat.OnTabSelectedListener D = new SystemMsgListView.2(this);
+  private NewFriendVerificationObserver E = new SystemMsgListView.7(this);
+  private NewFriendCardObserver F = new SystemMsgListView.8(this);
+  private final int G = 0;
+  private int H;
+  private AbsListView.OnScrollListener I = new SystemMsgListView.9(this);
+  public boolean e = false;
+  Handler f = new SystemMsgListView.1(this);
+  FriendObserver g = new SystemMsgListView.4(this);
+  NewFriendListObserver h = new SystemMsgListView.5(this);
+  DiscussionObserver i = new SystemMsgListView.6(this);
+  NewFriendMessageObserver j = new SystemMsgListView.MessageObserverForSystemMsgListView(this);
+  int k = -1;
+  float l = 0.0F;
+  private RelativeLayout m;
+  private TextView n;
+  private SwipListView o;
+  private View p;
+  private QQProgressDialog q;
+  private Context r;
+  private SystemMsgListAdapter s;
+  private NewFriendServiceImpl t;
+  private FlingHandler u;
+  private int v;
+  private ViewGroup w;
+  private ViewGroup x;
+  private ViewGroup y;
+  private ThemeTabLayout z;
   
   public SystemMsgListView(Context paramContext, FlingHandler paramFlingHandler)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = paramFlingHandler;
+    this.r = paramContext;
+    this.u = paramFlingHandler;
   }
   
   private void a(Intent paramIntent)
   {
-    int i = paramIntent.getIntExtra("EntranceId", 0);
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter = new SystemMsgListAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, this, i, this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter);
-    i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsListviewScrollStatus = new ListviewScrollStatus(23, 0, 0);
+    int i1 = paramIntent.getIntExtra("EntranceId", 0);
+    this.s = new SystemMsgListAdapter(this.r, this.b, this.o, this, i1, this.u);
+    this.o.setAdapter(this.s);
+    j();
+    this.A = new ListviewScrollStatus(23, 0, 0);
   }
   
   private boolean a(int paramInt1, int paramInt2)
   {
     if (paramInt2 == ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getMayKnowLoadConnectionBizTypeFirstLoad())
     {
-      Object localObject = this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt1);
+      Object localObject = this.C.get(paramInt1);
       if ((localObject != null) && ((localObject instanceof Boolean))) {
         return ((Boolean)localObject).booleanValue();
       }
-      this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt1, Boolean.valueOf(true));
+      this.C.put(paramInt1, Boolean.valueOf(true));
     }
     return false;
   }
   
   private void e(int paramInt)
   {
-    if ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter;
-      if (localObject == null) {
-        return;
-      }
-      if ((paramInt >= 0) && (paramInt < ((SystemMsgListAdapter)localObject).getCount()))
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getItem(paramInt);
-        if ((paramInt == 0) && (((localObject instanceof NewFriendBindContactGuideBuilder)) || ((localObject instanceof NewFriendBindContactGuideBuilderV2))))
-        {
-          this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-          return;
-        }
-        if ((localObject instanceof NewFriendVerifyBlockedBuilder))
-        {
-          this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-          return;
-        }
-        if ((localObject instanceof NewFriendSysEmptyBuilder))
-        {
-          this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-          return;
-        }
-        if ((localObject instanceof NewFriendSubTitleBuilder))
-        {
-          this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-          return;
-        }
-        if (paramInt + 1 >= this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getCount()) {
-          return;
-        }
-        f(paramInt);
-        return;
-      }
-      this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-    }
-  }
-  
-  private void f(int paramInt)
-  {
-    boolean bool = (NewFriendBaseBuilder)this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getItem(paramInt) instanceof NewFriendSlideTabBuilder;
-    int i = 0;
+    boolean bool = (NewFriendBaseBuilder)this.s.getItem(paramInt) instanceof NewFriendSlideTabBuilder;
+    int i1 = 0;
     Object localObject1;
     Object localObject2;
     if (bool)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      localObject1 = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(0);
-      if ((localObject1 != null) && (!this.jdField_c_of_type_AndroidViewViewGroup.isShown()))
+      this.k = paramInt;
+      localObject1 = this.o.getChildAt(0);
+      if ((localObject1 != null) && (!this.y.isShown()))
       {
-        this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(0);
+        this.y.setVisibility(0);
         localObject2 = ((View)localObject1).getTag();
         if ((localObject2 instanceof NewFriendSlideTabBuilder.NewFriendSildeTabHolder))
         {
           localObject2 = (NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject2;
-          if ((((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject2).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null))
+          if ((((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject2).a != null) && (this.z != null))
           {
-            float f = ((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject2).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a();
+            float f1 = ((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject2).a.getScrollPositionOffset();
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("visable position: scrollposOffset = ");
-              ((StringBuilder)localObject2).append(f);
+              ((StringBuilder)localObject2).append(f1);
               QLog.d("Q.newfriendSystemMsgListView", 2, ((StringBuilder)localObject2).toString());
             }
-            this.jdField_a_of_type_Float = f;
-            this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setScrollPosition(f);
+            this.l = f1;
+            this.z.setScrollPosition(f1);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsListviewScrollStatus.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsListviewScrollStatus.jdField_c_of_type_Int = ((View)localObject1).getTop();
-        int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-        paramInt = i;
-        while (paramInt < j)
+        this.A.b = this.o.getFirstVisiblePosition();
+        this.A.c = ((View)localObject1).getTop();
+        int i2 = this.B.size();
+        paramInt = i1;
+        while (paramInt < i2)
         {
-          localObject2 = (ListviewScrollStatus)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt);
+          localObject2 = (ListviewScrollStatus)this.B.valueAt(paramInt);
           if (localObject2 != null)
           {
-            ((ListviewScrollStatus)localObject2).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
-            ((ListviewScrollStatus)localObject2).jdField_c_of_type_Int = ((View)localObject1).getTop();
+            ((ListviewScrollStatus)localObject2).b = this.o.getFirstVisiblePosition();
+            ((ListviewScrollStatus)localObject2).c = ((View)localObject1).getTop();
           }
           paramInt += 1;
         }
@@ -218,23 +171,23 @@ public class SystemMsgListView
     }
     else
     {
-      i = this.jdField_b_of_type_Int;
-      if (i <= -1)
+      i1 = this.k;
+      if (i1 <= -1)
       {
-        this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
+        this.y.setVisibility(4);
         return;
       }
-      if (paramInt > i)
+      if (paramInt > i1)
       {
-        this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(0);
+        this.y.setVisibility(0);
         return;
       }
-      if (this.jdField_c_of_type_AndroidViewViewGroup.isShown())
+      if (this.y.isShown())
       {
-        this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-        if (((NewFriendBaseBuilder)this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getItem(paramInt + 1) instanceof NewFriendSlideTabBuilder))
+        this.y.setVisibility(4);
+        if (((NewFriendBaseBuilder)this.s.getItem(paramInt + 1) instanceof NewFriendSlideTabBuilder))
         {
-          localObject1 = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(1);
+          localObject1 = this.o.getChildAt(1);
           if (localObject1 != null)
           {
             localObject1 = ((View)localObject1).getTag();
@@ -245,11 +198,11 @@ public class SystemMsgListView
               {
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append("invisable position: scrollposOffset = ");
-                ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a());
+                ((StringBuilder)localObject2).append(this.z.getScrollPositionOffset());
                 QLog.d("Q.newfriendSystemMsgListView", 2, ((StringBuilder)localObject2).toString());
               }
-              if ((((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null)) {
-                ((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setScrollPosition(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a());
+              if ((((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject1).a != null) && (this.z != null)) {
+                ((NewFriendSlideTabBuilder.NewFriendSildeTabHolder)localObject1).a.setScrollPosition(this.z.getScrollPositionOffset());
               }
             }
           }
@@ -258,48 +211,84 @@ public class SystemMsgListView
     }
   }
   
-  private void l()
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqDiscussionObserverDiscussionObserver, true);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendListObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendMessageObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendVerificationObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendCardObserver);
-    ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).addObserver(this);
-  }
-  
   private void m()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqDiscussionObserverDiscussionObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendListObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendMessageObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendVerificationObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqNewfriendObserverNewFriendCardObserver);
-    ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).deleteObserver(this);
+    this.b.addObserver(this.i, true);
+    this.b.addObserver(this.h);
+    this.b.addObserver(this.g);
+    this.b.addObserver(this.j);
+    this.b.addObserver(this.E);
+    this.b.addObserver(this.F);
+    ((IMessageFacade)this.b.getRuntimeService(IMessageFacade.class, "")).addObserver(this);
   }
   
   private void n()
   {
-    super.d(2131561513);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370141));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377262));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366277));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378198));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371896);
-    this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131297486);
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377261));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout = ((ThemeTabLayout)findViewById(2131378236));
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
+    this.b.removeObserver(this.i);
+    this.b.removeObserver(this.h);
+    this.b.removeObserver(this.g);
+    this.b.removeObserver(this.j);
+    this.b.removeObserver(this.E);
+    this.b.removeObserver(this.F);
+    ((IMessageFacade)this.b.getRuntimeService(IMessageFacade.class, "")).deleteObserver(this);
   }
   
-  public int a()
+  private void o()
   {
-    return getResources().getDimensionPixelSize(2131299168);
+    super.setContentView(2131627874);
+    this.m = ((RelativeLayout)findViewById(2131437304));
+    this.w = ((ViewGroup)findViewById(2131445649));
+    this.n = ((TextView)findViewById(2131447463));
+    this.x = ((ViewGroup)findViewById(2131432580));
+    this.o = ((SwipListView)findViewById(2131446715));
+    this.p = findViewById(2131439340);
+    this.v = getResources().getDimensionPixelSize(2131298137);
+    this.y = ((ViewGroup)findViewById(2131445648));
+    this.z = ((ThemeTabLayout)findViewById(2131446755));
+    a(this.z);
+    this.w.setVisibility(4);
+    this.y.setVisibility(4);
+  }
+  
+  private void setFloatingTab(int paramInt)
+  {
+    if ((NewFriendActivity)this.r != null)
+    {
+      Object localObject = this.s;
+      if (localObject == null) {
+        return;
+      }
+      if ((paramInt >= 0) && (paramInt < ((SystemMsgListAdapter)localObject).getCount()))
+      {
+        localObject = this.s.getItem(paramInt);
+        if ((paramInt == 0) && (((localObject instanceof NewFriendBindContactGuideBuilder)) || ((localObject instanceof NewFriendBindContactGuideBuilderV2))))
+        {
+          this.y.setVisibility(4);
+          return;
+        }
+        if ((localObject instanceof NewFriendVerifyBlockedBuilder))
+        {
+          this.y.setVisibility(4);
+          return;
+        }
+        if ((localObject instanceof NewFriendSysEmptyBuilder))
+        {
+          this.y.setVisibility(4);
+          return;
+        }
+        if ((localObject instanceof NewFriendSubTitleBuilder))
+        {
+          this.y.setVisibility(4);
+          return;
+        }
+        if (paramInt + 1 >= this.s.getCount()) {
+          return;
+        }
+        e(paramInt);
+        return;
+      }
+      this.y.setVisibility(4);
+    }
   }
   
   public void a(int paramInt)
@@ -311,8 +300,8 @@ public class SystemMsgListView
       localStringBuilder.append(paramInt);
       QLog.i("Q.newfriendSystemMsgListView", 2, localStringBuilder.toString());
     }
-    h();
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.c();
+    i();
+    this.s.c();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -332,27 +321,27 @@ public class SystemMsgListView
           QLog.i("BindMsgConstant", 2, ((StringBuilder)localObject).toString());
         }
         if (paramInt2 == -1) {
-          this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.c();
+          this.s.c();
         }
       }
-      else if (paramInt1 == jdField_a_of_type_Int)
+      else if (paramInt1 == d)
       {
         if (QLog.isColorLevel()) {
           QLog.i("BindMsgConstant", 2, "REQ_FOR_SETTING");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getCount() > 0) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getItem(0);
+        if (this.s.getCount() > 0) {
+          localObject = this.s.getItem(0);
         } else {
           localObject = null;
         }
-        if (((localObject instanceof NewFriendBindContactGuideBuilderV2)) && (((IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "")).checkAndUploadContact(true))) {
-          ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startContactBindFromOther(this.jdField_a_of_type_ComTencentCommonAppAppInterface, -1, 2, null);
+        if (((localObject instanceof NewFriendBindContactGuideBuilderV2)) && (((IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "")).checkAndUploadContact(true))) {
+          ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startContactBindFromOther(this.b, -1, 2, null);
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.c();
+      this.s.c();
     }
     super.a(paramInt1, paramInt2, paramIntent);
   }
@@ -362,14 +351,14 @@ public class SystemMsgListView
   public void a(Intent paramIntent, BaseNewFriendView.INewFriendContext paramINewFriendContext)
   {
     super.a(paramIntent, paramINewFriendContext);
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl = ((NewFriendServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(INewFriendService.class, ""));
-    ((IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "")).addListener(this);
-    n();
-    h();
+    this.t = ((NewFriendServiceImpl)this.b.getRuntimeService(INewFriendService.class, ""));
+    ((IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "")).addListener(this);
+    o();
+    i();
     a(paramIntent);
-    l();
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
+    m();
+    this.o.setDragEnable(true);
+    this.o.setOnScrollListener(this.I);
   }
   
   public void a(View paramView)
@@ -379,19 +368,19 @@ public class SystemMsgListView
     }
     if (ThemeUtil.isDefaultTheme())
     {
-      paramView.setBackgroundResource(2130839393);
+      paramView.setBackgroundResource(2130839577);
       return;
     }
-    paramView.setBackgroundResource(2130850578);
+    paramView.setBackgroundResource(2130852374);
   }
   
   public void a(String paramString)
   {
-    if (!((IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "")).isBindedIgnoreUpload())
+    if (!((IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "")).isBindedIgnoreUpload())
     {
-      String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getPreferences().getString("systemmsg_addFriendCount", "");
+      String str = this.b.getPreferences().getString("systemmsg_addFriendCount", "");
       boolean bool = TextUtils.isEmpty(str);
-      int k = 0;
+      int i3 = 0;
       String[] arrayOfString;
       if (bool) {
         arrayOfString = new String[0];
@@ -401,23 +390,23 @@ public class SystemMsgListView
       if (arrayOfString.length >= 3) {
         return;
       }
-      int m = arrayOfString.length;
-      int i = 0;
-      int j;
+      int i4 = arrayOfString.length;
+      int i1 = 0;
+      int i2;
       for (;;)
       {
-        j = k;
-        if (i >= m) {
+        i2 = i3;
+        if (i1 >= i4) {
           break;
         }
-        if (TextUtils.equals(arrayOfString[i], paramString))
+        if (TextUtils.equals(arrayOfString[i1], paramString))
         {
-          j = 1;
+          i2 = 1;
           break;
         }
-        i += 1;
+        i1 += 1;
       }
-      if (j != 0)
+      if (i2 != 0)
       {
         paramString = str;
       }
@@ -431,34 +420,25 @@ public class SystemMsgListView
           localStringBuilder.append(paramString);
           paramString = localStringBuilder.toString();
         }
-        i = arrayOfString.length;
+        i1 = arrayOfString.length;
       }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getPreferences().edit().putString("systemmsg_addFriendCount", paramString).commit();
+      this.b.getPreferences().edit().putString("systemmsg_addFriendCount", paramString).commit();
     }
   }
   
   public void a(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
-    ThemeTabLayout localThemeTabLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout;
+    ThemeTabLayout localThemeTabLayout = this.z;
     if (localThemeTabLayout != null)
     {
       localThemeTabLayout.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a(paramArrayList, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setOnTabSelectedListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener);
+      this.z.a(this.D);
+      this.z.a(paramArrayList, paramInt);
+      this.z.setOnTabSelectedListener(this.D);
     }
   }
   
   public void a(boolean paramBoolean, int paramInt) {}
-  
-  public boolean a(int paramInt)
-  {
-    Object localObject = this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if ((localObject != null) && ((localObject instanceof Boolean))) {
-      return ((Boolean)localObject).booleanValue();
-    }
-    return false;
-  }
   
   public void b(int paramInt) {}
   
@@ -468,11 +448,11 @@ public class SystemMsgListView
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onResume");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.f();
-    if (this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.b() == 23) {
-      this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.i();
+    this.s.g();
+    if (this.s.m() == 23) {
+      this.s.k();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.a(0L);
+    this.s.a(0L);
   }
   
   public void c(int paramInt) {}
@@ -480,19 +460,28 @@ public class SystemMsgListView
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.b() == 23) {
-      this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.h();
+    if (this.s.m() == 23) {
+      this.s.j();
     }
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onPause");
     }
   }
   
+  public boolean d(int paramInt)
+  {
+    Object localObject = this.C.get(paramInt);
+    if ((localObject != null) && ((localObject instanceof Boolean))) {
+      return ((Boolean)localObject).booleanValue();
+    }
+    return false;
+  }
+  
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.e();
-    ((INewFriendVerificationService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(INewFriendVerificationService.class, "")).leaveNewFriend();
+    this.s.f();
+    ((INewFriendVerificationService)this.b.getRuntimeService(INewFriendVerificationService.class, "")).leaveNewFriend();
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onStop");
     }
@@ -501,70 +490,75 @@ public class SystemMsgListView
   public void f()
   {
     super.f();
-    m();
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl.markAllDataReaded();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_b_of_type_AndroidUtilSparseArray.clear();
-    SystemMsgListAdapter localSystemMsgListAdapter = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter;
+    n();
+    this.t.markAllDataReaded();
+    this.B.clear();
+    this.C.clear();
+    SystemMsgListAdapter localSystemMsgListAdapter = this.s;
     if (localSystemMsgListAdapter != null) {
-      localSystemMsgListAdapter.g();
+      localSystemMsgListAdapter.h();
     }
     ((INewFriendApi)QRoute.api(INewFriendApi.class)).clearStructMsgMap();
-    ((IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "")).removeListener(this);
+    ((IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "")).removeListener(this);
   }
   
-  public void h()
+  public int getTitleBarHeight()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl.updateBindContactGuideState();
-    if (this.jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl.isShowContactGuide())
-    {
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(getResources().getDrawable(2130850433));
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X80077C6", "0X80077C6", 0, 0, "", "", "", "");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(null);
+    return getResources().getDimensionPixelSize(2131299920);
   }
   
   public void i()
   {
+    this.t.updateBindContactGuideState();
+    if (this.t.isShowContactGuide())
+    {
+      this.o.setOverscrollHeader(getResources().getDrawable(2130852228));
+      ReportController.b(this.b, "dc00898", "", "", "0X80077C6", "0X80077C6", 0, 0, "", "", "", "");
+      return;
+    }
+    this.o.setOverscrollHeader(null);
+  }
+  
+  public void j()
+  {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getCount() > 0)
+      if (this.s.getCount() > 0)
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.m.setVisibility(0);
+        this.p.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.p.setVisibility(0);
+      this.m.setVisibility(8);
       return;
     }
     catch (Exception localException) {}
   }
   
-  public void j()
+  public void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, a());
+    if (this.q == null) {
+      this.q = new QQProgressDialog(this.r, getTitleBarHeight());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.jdField_a_of_type_AndroidContentContext.getString(2131718766));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.q.a(this.r.getString(2131916272));
+    this.q.show();
   }
   
-  void k()
+  void l()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.q;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.q.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+    this.q = null;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131377262)
+    if (paramView.getId() == 2131445649)
     {
-      ((INewFriendApi)QRoute.api(INewFriendApi.class)).jumpToNewFriendVerifyListAct((Activity)this.jdField_a_of_type_AndroidContentContext);
+      ((INewFriendApi)QRoute.api(INewFriendApi.class)).jumpToNewFriendVerifyListAct((Activity)this.r);
       ReportController.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -572,14 +566,14 @@ public class SystemMsgListView
   
   public void setSelection(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter.getCount())) {
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setSelection(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.s.getCount())) {
+      this.o.setSelection(paramInt);
     }
   }
   
   public void setStickHeadSelection(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null)
+    if (this.z != null)
     {
       if (QLog.isColorLevel())
       {
@@ -588,18 +582,18 @@ public class SystemMsgListView
         localStringBuilder.append(paramInt);
         QLog.i("Q.newfriendSystemMsgListView", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a(paramInt);
+      this.z.a(paramInt);
     }
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(new SystemMsgListView.3(this));
+    this.b.runOnUiThread(new SystemMsgListView.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.view.SystemMsgListView
  * JD-Core Version:    0.7.0.1
  */

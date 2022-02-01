@@ -11,8 +11,8 @@ public class ForceIgnoreInterceptor
   
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    String str = a(paramChain);
-    if (ArrayUtils.a(a, str))
+    String str = b(paramChain);
+    if (ArrayUtils.contains(a, str))
     {
       if (QLog.isColorLevel())
       {
@@ -29,7 +29,7 @@ public class ForceIgnoreInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.ForceIgnoreInterceptor
  * JD-Core Version:    0.7.0.1
  */

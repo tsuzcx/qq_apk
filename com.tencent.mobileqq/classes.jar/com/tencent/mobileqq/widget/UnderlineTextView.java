@@ -17,9 +17,9 @@ import cooperation.qzone.util.QZLog;
 public class UnderlineTextView
   extends TextView
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Rect a;
+  private Paint b;
+  private float c;
   
   public UnderlineTextView(Context paramContext)
   {
@@ -42,13 +42,23 @@ public class UnderlineTextView
     float f = paramContext.getResources().getDisplayMetrics().density;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.UnderlineTextView, paramInt, 0);
     paramInt = paramContext.getColor(0, -65536);
-    this.jdField_a_of_type_Float = paramContext.getDimension(1, f * 2.0F);
+    this.c = paramContext.getDimension(1, f * 2.0F);
     paramContext.recycle();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
+    this.a = new Rect();
+    this.b = new Paint();
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setColor(paramInt);
+    this.b.setStrokeWidth(this.c);
+  }
+  
+  public int getUnderLineColor()
+  {
+    return this.b.getColor();
+  }
+  
+  public float getUnderlineWidth()
+  {
+    return this.c;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -62,7 +72,7 @@ public class UnderlineTextView
       if (i < j) {
         try
         {
-          int k = getLineBounds(i, this.jdField_a_of_type_AndroidGraphicsRect);
+          int k = getLineBounds(i, this.a);
           int m = ((Layout)localObject).getLineStart(i);
           int n = ((Layout)localObject).getLineEnd(i);
           float f1 = ((Layout)localObject).getPrimaryHorizontal(m);
@@ -70,7 +80,7 @@ public class UnderlineTextView
           float f3 = ((Layout)localObject).getPrimaryHorizontal(n - 1);
           float f4 = getPaddingLeft();
           float f5 = k;
-          paramCanvas.drawLine(f1 + f4, this.jdField_a_of_type_Float + f5 + 15.0F, f3 + (f2 - f1) + getPaddingLeft(), f5 + this.jdField_a_of_type_Float + 15.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawLine(f1 + f4, this.c + f5 + 15.0F, f3 + (f2 - f1) + getPaddingLeft(), f5 + this.c + 15.0F, this.b);
           i += 1;
         }
         catch (Exception paramCanvas)
@@ -86,19 +96,19 @@ public class UnderlineTextView
   
   public void setUnderLineColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.b.setColor(paramInt);
     invalidate();
   }
   
   public void setUnderlineWidth(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.UnderlineTextView
  * JD-Core Version:    0.7.0.1
  */

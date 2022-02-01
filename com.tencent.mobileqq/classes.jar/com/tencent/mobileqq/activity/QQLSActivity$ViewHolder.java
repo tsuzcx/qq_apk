@@ -6,15 +6,15 @@ import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 class QQLSActivity$ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView a;
   TextView b;
   TextView c;
+  DragTextView d;
+  ImageView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

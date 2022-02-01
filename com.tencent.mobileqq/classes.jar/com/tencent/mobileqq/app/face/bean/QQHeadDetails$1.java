@@ -9,10 +9,10 @@ final class QQHeadDetails$1
   public QQHeadDetails a(Parcel paramParcel)
   {
     QQHeadDetails localQQHeadDetails = new QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    localQQHeadDetails.a = paramParcel.readInt();
+    localQQHeadDetails.b = paramParcel.readString();
+    localQQHeadDetails.c = paramParcel.readLong();
+    localQQHeadDetails.d = paramParcel.readByte();
     return localQQHeadDetails;
   }
   
@@ -23,7 +23,7 @@ final class QQHeadDetails$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.bean.QQHeadDetails.1
  * JD-Core Version:    0.7.0.1
  */

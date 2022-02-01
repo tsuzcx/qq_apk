@@ -36,14 +36,14 @@ public class PreviewSimpleFilePresenter
     return bool;
   }
   
-  private boolean b()
+  private boolean t()
   {
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c();
+    boolean bool2 = this.c.o();
     boolean bool1 = false;
     if (bool2) {
       return false;
     }
-    if ((a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a(), this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a())) || (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).supportTencentDoc(TencentDocPreviewConfigProcessor.a().a(), this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.b(), this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a(), this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a()))) {
+    if ((a(this.f, this.d.a(), this.d.b())) || (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).supportTencentDoc(TencentDocPreviewConfigProcessor.a().a(), this.d.c(), this.d.a(), this.d.b()))) {
       bool1 = true;
     }
     return bool1;
@@ -55,43 +55,43 @@ public class PreviewSimpleFilePresenter
     if (QLog.isColorLevel()) {
       QLog.i("DocFilePresenter", 1, "FileBrowserPresenter init: type = preview simple");
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c())) && (16 != this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.h(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c());
+    if ((!TextUtils.isEmpty(this.c.i())) && (16 != this.d.g())) {
+      this.b.h(this.c.i());
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.g(false);
+      this.b.g(false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d() == 16) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131692353));
-    } else if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.d()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131692559));
+    if (this.d.g() == 16) {
+      this.b.d(this.f.getString(2131889341));
+    } else if (this.c.p()) {
+      this.b.d(this.f.getString(2131889582));
     }
     h();
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.e(true ^ this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.b());
+    this.b.e(true ^ this.c.n());
   }
   
   protected void h()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d() != 16)
+    if (this.d.g() != 16)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.d()) {
+      if (this.c.p()) {
         return;
       }
-      if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.b()))
+      if (FileUtils.fileExistsAndNotEmpty(this.d.c()))
       {
         super.h();
         return;
       }
-      if ((NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext)) && (b()))
+      if ((NetworkUtil.isNetSupport(this.f)) && (t()))
       {
-        String str = this.jdField_a_of_type_AndroidContentContext.getString(2131692718);
-        this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.b(str, new PreviewSimpleFilePresenter.1(this));
+        String str = this.f.getString(2131889789);
+        this.b.b(str, new PreviewSimpleFilePresenter.1(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.PreviewSimpleFilePresenter
  * JD-Core Version:    0.7.0.1
  */

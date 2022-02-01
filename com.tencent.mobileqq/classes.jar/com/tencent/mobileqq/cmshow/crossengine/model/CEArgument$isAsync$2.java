@@ -17,12 +17,12 @@ final class CEArgument$isAsync$2
   
   public final boolean invoke()
   {
-    return this.this$0.a().optBoolean("isAsync");
+    return this.this$0.d().optBoolean("isAsync");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.model.CEArgument.isAsync.2
  * JD-Core Version:    0.7.0.1
  */

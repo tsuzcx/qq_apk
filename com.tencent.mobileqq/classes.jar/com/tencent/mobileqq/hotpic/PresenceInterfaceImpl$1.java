@@ -9,16 +9,16 @@ class PresenceInterfaceImpl$1
   
   public void run()
   {
-    if (this.this$0.b())
+    if (this.this$0.i())
     {
-      this.this$0.c();
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
+      this.this$0.d();
+      this.this$0.e.postDelayed(this.this$0.j, 100L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

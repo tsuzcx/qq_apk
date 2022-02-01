@@ -26,7 +26,7 @@ class DevicePttItemBuilder$3
       ((StringBuilder)localObject).append(this.a.uniseq);
       QLog.d("FileTrans", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = ((DeviceMsgHandle)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a();
+    Object localObject = ((DeviceMsgHandle)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a();
     MessageForPtt localMessageForPtt = this.a;
     if ((localMessageForPtt instanceof MessageForDevPtt)) {
       ((DeviceAVFileMsgObserver)localObject).a((MessageForDevPtt)localMessageForPtt);
@@ -35,7 +35,7 @@ class DevicePttItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevicePttItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

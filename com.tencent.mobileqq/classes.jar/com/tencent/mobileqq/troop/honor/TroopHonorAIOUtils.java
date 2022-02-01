@@ -33,12 +33,12 @@ public class TroopHonorAIOUtils
     if (paramTroopHonor != null)
     {
       MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = new MutualMarkForDisplayInfo();
-      localMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString = paramTroopHonor.b;
-      String str = paramTroopHonor.jdField_a_of_type_JavaLangString;
-      localMutualMarkForDisplayInfo.jdField_a_of_type_JavaLangString = str;
-      localMutualMarkForDisplayInfo.d = str;
-      localMutualMarkForDisplayInfo.jdField_a_of_type_Long = paramTroopHonor.jdField_a_of_type_Int;
-      localMutualMarkForDisplayInfo.jdField_c_of_type_Boolean = true;
+      localMutualMarkForDisplayInfo.s = paramTroopHonor.c;
+      String str = paramTroopHonor.b;
+      localMutualMarkForDisplayInfo.o = str;
+      localMutualMarkForDisplayInfo.t = str;
+      localMutualMarkForDisplayInfo.a = paramTroopHonor.a;
+      localMutualMarkForDisplayInfo.p = true;
       return localMutualMarkForDisplayInfo;
     }
     return null;
@@ -50,10 +50,10 @@ public class TroopHonorAIOUtils
       return null;
     }
     MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = new MutualMarkForDisplayInfo();
-    localMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString = paramString;
-    localMutualMarkForDisplayInfo.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131699499);
-    localMutualMarkForDisplayInfo.d = HardCodeUtil.a(2131699499);
-    localMutualMarkForDisplayInfo.jdField_c_of_type_Boolean = true;
+    localMutualMarkForDisplayInfo.s = paramString;
+    localMutualMarkForDisplayInfo.o = HardCodeUtil.a(2131897530);
+    localMutualMarkForDisplayInfo.t = HardCodeUtil.a(2131897530);
+    localMutualMarkForDisplayInfo.p = true;
     return localMutualMarkForDisplayInfo;
   }
   
@@ -70,7 +70,7 @@ public class TroopHonorAIOUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if (AnonymousChatHelper.a(paramMessageRecord)) {
+    if (AnonymousChatHelper.c(paramMessageRecord)) {
       return false;
     }
     if ((paramMessageRecord instanceof MessageForTroopConfess)) {
@@ -84,10 +84,37 @@ public class TroopHonorAIOUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString) != null;
+    return ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString) != null;
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ImageView> paramList, List<MutualMarkForDisplayInfo> paramList1, TroopInfo paramTroopInfo, boolean paramBoolean)
+  private static boolean c(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ImageView> paramList, List<MutualMarkForDisplayInfo> paramList1, TroopInfo paramTroopInfo, boolean paramBoolean)
+  {
+    if ((paramList != null) && (paramList.size() == 2) && (paramList1 != null) && (paramList1.size() < 2))
+    {
+      if (paramTroopInfo == null) {
+        return false;
+      }
+      Object localObject = TroopLuckyCharacterUtil.b(paramQQAppInterface, paramTroopInfo);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      localObject = a((String)localObject);
+      if (localObject == null) {
+        return false;
+      }
+      paramList = (ImageView)paramList.get(paramList1.size());
+      if (paramList != null)
+      {
+        paramList1.add(localObject);
+        paramList.setTag(localObject);
+        paramList.setOnTouchListener(a(paramQQAppInterface, paramBoolean, paramActivity, paramTroopInfo.troopuin));
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static void d(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ImageView> paramList, List<MutualMarkForDisplayInfo> paramList1, TroopInfo paramTroopInfo, boolean paramBoolean)
   {
     if ((paramList != null) && (paramList.size() == 2) && (paramList1 != null) && (paramList1.size() < 2))
     {
@@ -139,37 +166,10 @@ public class TroopHonorAIOUtils
       }
     }
   }
-  
-  private static boolean b(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ImageView> paramList, List<MutualMarkForDisplayInfo> paramList1, TroopInfo paramTroopInfo, boolean paramBoolean)
-  {
-    if ((paramList != null) && (paramList.size() == 2) && (paramList1 != null) && (paramList1.size() < 2))
-    {
-      if (paramTroopInfo == null) {
-        return false;
-      }
-      Object localObject = TroopLuckyCharacterUtil.a(paramQQAppInterface, paramTroopInfo);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return false;
-      }
-      localObject = a((String)localObject);
-      if (localObject == null) {
-        return false;
-      }
-      paramList = (ImageView)paramList.get(paramList1.size());
-      if (paramList != null)
-      {
-        paramList1.add(localObject);
-        paramList.setTag(localObject);
-        paramList.setOnTouchListener(a(paramQQAppInterface, paramBoolean, paramActivity, paramTroopInfo.troopuin));
-        return true;
-      }
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopHonorAIOUtils
  * JD-Core Version:    0.7.0.1
  */

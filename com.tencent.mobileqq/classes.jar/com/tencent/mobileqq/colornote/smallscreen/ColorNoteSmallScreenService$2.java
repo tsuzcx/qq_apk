@@ -40,8 +40,8 @@ class ColorNoteSmallScreenService$2
       paramActivity = this.a;
       paramActivity.f = false;
       paramActivity.d = true;
-      paramActivity.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
+      paramActivity.f().removeCallbacks(this.a.i);
+      this.a.f().postDelayed(this.a.i, 200L);
     }
   }
   
@@ -71,7 +71,7 @@ class ColorNoteSmallScreenService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService.2
  * JD-Core Version:    0.7.0.1
  */

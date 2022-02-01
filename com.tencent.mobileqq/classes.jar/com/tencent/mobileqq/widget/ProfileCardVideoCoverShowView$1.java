@@ -39,16 +39,16 @@ class ProfileCardVideoCoverShowView$1
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561311, null, false);
-      localView.setTag((ImageView)localView.findViewById(2131368461));
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131627667, null, false);
+      localView.setTag((ImageView)localView.findViewById(2131435357));
       paramView = new StateListDrawable();
       paramView.addState(ProfileCardVideoCoverShowView.a(), new ColorDrawable(855638016));
       paramView.addState(ProfileCardVideoCoverShowView.b(), new ColorDrawable(0));
-      localView.findViewById(2131379074).setBackgroundDrawable(paramView);
+      localView.findViewById(2131447801).setBackgroundDrawable(paramView);
     }
     paramView = (ImageView)localView.getTag();
     ProfileCardVideoCoverShowView.DataItem localDataItem = a(paramInt);
-    if (TextUtils.isEmpty(localDataItem.a))
+    if (TextUtils.isEmpty(localDataItem.c))
     {
       paramView.setImageDrawable(null);
     }
@@ -59,7 +59,7 @@ class ProfileCardVideoCoverShowView$1
       localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
       localURLDrawableOptions.mRequestHeight = AIOUtils.b(178.0F, this.a.getResources());
       localURLDrawableOptions.mRequestWidth = AIOUtils.b(100.0F, this.a.getResources());
-      paramView.setImageDrawable(URLDrawable.getDrawable(localDataItem.a, localURLDrawableOptions));
+      paramView.setImageDrawable(URLDrawable.getDrawable(localDataItem.c, localURLDrawableOptions));
     }
     if (paramInt == 0) {
       localView.setPadding(AIOUtils.b(12.0F, this.a.getResources()), 0, 0, 0);
@@ -72,7 +72,7 @@ class ProfileCardVideoCoverShowView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView.1
  * JD-Core Version:    0.7.0.1
  */

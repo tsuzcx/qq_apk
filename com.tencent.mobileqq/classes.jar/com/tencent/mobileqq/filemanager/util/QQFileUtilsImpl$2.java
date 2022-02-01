@@ -10,12 +10,12 @@ final class QQFileUtilsImpl$2
   
   public void run()
   {
-    QQFileUtilsImpl.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$TipsClickedInterface);
+    QQFileUtilsImpl.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileUtilsImpl.2
  * JD-Core Version:    0.7.0.1
  */

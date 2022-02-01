@@ -113,7 +113,7 @@ public class ThumbPlayerService
     paramFrameLayout = new AVCatonReport4PlayerTransfer((AVCatonReport)AVReportManager.get(AVReportManager.ReportType.Caton_Report));
     paramContext = localObject2;
     if (this.adapter.getMediaPlayerInterface() != null) {
-      paramContext = this.adapter.getMediaPlayerInterface().a();
+      paramContext = this.adapter.getMediaPlayerInterface().b();
     }
     localObject1 = AVCatonReportManager.a();
     if (paramContext != null) {
@@ -272,7 +272,7 @@ public class ThumbPlayerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.thumbplayerservice.ThumbPlayerService
  * JD-Core Version:    0.7.0.1
  */

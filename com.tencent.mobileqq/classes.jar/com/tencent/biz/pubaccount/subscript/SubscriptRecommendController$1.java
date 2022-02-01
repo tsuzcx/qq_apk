@@ -21,15 +21,15 @@ class SubscriptRecommendController$1
       localStringBuilder.append(" | data: ");
       localStringBuilder.append(paramList);
       localStringBuilder.append(" | isShowRecommend: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a.i);
       QLog.d("SubscriptObserver", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Boolean)) {
+    if ((paramBoolean) && (this.a.i)) {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
         this.a.a(paramList);
-        paramList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-        if ((paramList != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
+        paramList = this.a.f.getHandler(SubscriptFeedsActivity.class);
+        if ((paramList != null) && (this.a.e.get() != null) && ((this.a.e.get() instanceof SubscriptFeedsActivity))) {
           paramList.sendEmptyMessage(1004);
         }
       }
@@ -42,7 +42,7 @@ class SubscriptRecommendController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.1
  * JD-Core Version:    0.7.0.1
  */

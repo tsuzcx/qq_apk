@@ -407,15 +407,15 @@ public class QzoneLiveVideoInterface
   
   public static Notification generationNotification(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2)
   {
-    if ("oppo".equalsIgnoreCase(DeviceInfoUtil.k())) {
-      return QZoneNotificationAdapter.getInstance().newNotificationForOppo(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130848609);
+    if ("oppo".equalsIgnoreCase(DeviceInfoUtil.w())) {
+      return QZoneNotificationAdapter.getInstance().newNotificationForOppo(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130850272);
     }
-    return QZoneNotificationAdapter.getInstance().buildNotification(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130848609);
+    return QZoneNotificationAdapter.getInstance().buildNotification(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130850272);
   }
   
   public static int getAppId()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public static Application getApplication()
@@ -430,7 +430,7 @@ public class QzoneLiveVideoInterface
   
   public static String getBuildNumber()
   {
-    return "5295";
+    return "5770";
   }
   
   public static String getBuilderNumber()
@@ -506,7 +506,7 @@ public class QzoneLiveVideoInterface
   
   public static String getHtmlData(String paramString)
   {
-    return WebSoUtils.c(paramString);
+    return WebSoUtils.f(paramString);
   }
   
   public static Drawable getHuangzuanIcon(String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString2, LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner)
@@ -566,7 +566,7 @@ public class QzoneLiveVideoInterface
   
   public static String getIMSI()
   {
-    return DeviceInfoUtil.b();
+    return DeviceInfoUtil.c();
   }
   
   public static int getIPStackType()
@@ -632,7 +632,7 @@ public class QzoneLiveVideoInterface
     //   3: aload_1
     //   4: invokevirtual 852	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   7: ifne +464 -> 471
-    //   10: invokestatic 566	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: invokestatic 567	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   13: invokevirtual 858	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   16: astore 6
     //   18: new 258	java/lang/StringBuilder
@@ -704,7 +704,7 @@ public class QzoneLiveVideoInterface
     //   157: aload 6
     //   159: astore_0
     //   160: aload 7
-    //   162: invokestatic 646	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   162: invokestatic 647	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   165: ifeq +6 -> 171
     //   168: goto +210 -> 378
     //   171: aload 6
@@ -726,7 +726,7 @@ public class QzoneLiveVideoInterface
     //   207: aload 6
     //   209: astore_0
     //   210: aload 7
-    //   212: invokestatic 646	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   212: invokestatic 647	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   215: ifne +43 -> 258
     //   218: aload 6
     //   220: astore_0
@@ -755,7 +755,7 @@ public class QzoneLiveVideoInterface
     //   272: aload 6
     //   274: astore_0
     //   275: aload 7
-    //   277: invokestatic 646	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   277: invokestatic 647	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   280: ifne +98 -> 378
     //   283: aload 6
     //   285: astore_0
@@ -931,7 +931,7 @@ public class QzoneLiveVideoInterface
   public static String getPluginVersion()
   {
     if (QZonePluginUtils.getLoadQZoneLivePluginId().equals("qzone_live_video_plugin.apk")) {
-      version = "2013 8.7.0";
+      version = "2013 8.8.17";
     }
     return version;
   }
@@ -978,7 +978,7 @@ public class QzoneLiveVideoInterface
   
   public static String getVersion()
   {
-    return AppSetting.f();
+    return AppSetting.h();
   }
   
   public static String getVersionForHabo()
@@ -993,12 +993,12 @@ public class QzoneLiveVideoInterface
   
   public static int getVipLevel()
   {
-    return QZoneVipInfoManager.a().b();
+    return QZoneVipInfoManager.a().d();
   }
   
   public static int getVipType()
   {
-    return QZoneVipInfoManager.a().a();
+    return QZoneVipInfoManager.a().b();
   }
   
   public static IWebviewWrapper getWebviewInstance(Context paramContext)
@@ -1031,7 +1031,7 @@ public class QzoneLiveVideoInterface
   
   public static boolean isAnnualVip()
   {
-    return QZoneVipInfoManager.a().b();
+    return QZoneVipInfoManager.a().e();
   }
   
   public static boolean isBestPerformanceDevice()
@@ -1167,7 +1167,7 @@ public class QzoneLiveVideoInterface
   
   public static Toast makeToast(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2, int paramInt3)
   {
-    return QQToast.a(BaseApplication.getContext(), paramInt1, paramCharSequence, paramInt2).a(paramInt3);
+    return QQToast.makeText(BaseApplication.getContext(), paramInt1, paramCharSequence, paramInt2).create(paramInt3);
   }
   
   public static void onIORunningBackground() {}
@@ -1299,7 +1299,7 @@ public class QzoneLiveVideoInterface
   
   public static void showToast(String paramString, int paramInt)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), paramInt, paramString, 1).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), paramInt, paramString, 1).show();
   }
   
   public static void showToastInQZone(CharSequence paramCharSequence)
@@ -1362,7 +1362,7 @@ public class QzoneLiveVideoInterface
   
   public static void startInspect(Object paramObject, long paramLong)
   {
-    MagnifierSDK.a().a().a(paramObject, String.format("%d", new Object[] { Long.valueOf(paramLong) }));
+    MagnifierSDK.b().c().a(paramObject, String.format("%d", new Object[] { Long.valueOf(paramLong) }));
   }
   
   public static void startLiveVideoFloatService(Context paramContext, String paramString, Bundle paramBundle, ServiceConnection paramServiceConnection)
@@ -1409,7 +1409,7 @@ public class QzoneLiveVideoInterface
   
   public static void startWebSoRequest(String paramString, Handler paramHandler)
   {
-    WebSoService.a().a(paramString, paramHandler);
+    WebSoService.a().b(paramString, paramHandler);
   }
   
   public static void startWebSoRequestWithCheck(String paramString, Handler paramHandler)
@@ -1445,7 +1445,7 @@ public class QzoneLiveVideoInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoInterface
  * JD-Core Version:    0.7.0.1
  */

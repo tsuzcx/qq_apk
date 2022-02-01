@@ -11,7 +11,7 @@ class WatchTogetherVideoDecodeHelper$3
   {
     WatchTogetherVideoDecodeHelper.a(this.this$0, this.a);
     WatchTogetherVideoDecodeHelper.b(this.this$0, this.b);
-    WatchTogetherVideoDecodeHelper.a(this.this$0).setDefaultBufferSize(WatchTogetherVideoDecodeHelper.a(this.this$0), WatchTogetherVideoDecodeHelper.b(this.this$0));
+    WatchTogetherVideoDecodeHelper.c(this.this$0).setDefaultBufferSize(WatchTogetherVideoDecodeHelper.a(this.this$0), WatchTogetherVideoDecodeHelper.b(this.this$0));
     WatchTogetherVideoDecodeHelper.a(this.this$0, "onTextureDefaultSize");
   }
 }

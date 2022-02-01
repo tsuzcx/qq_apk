@@ -14,8 +14,8 @@ class QQSettingMeNicknameProcessor$4
   
   public void run()
   {
-    Object localObject2 = this.this$0.a.getCurrentUin();
-    String str = ContactUtils.c((QQAppInterface)this.this$0.a, (String)localObject2);
+    Object localObject2 = this.this$0.c.getCurrentUin();
+    String str = ContactUtils.c((QQAppInterface)this.this$0.c, (String)localObject2);
     Object localObject1 = localObject2;
     if (str != null) {
       if ("".equals(str.trim())) {
@@ -25,14 +25,14 @@ class QQSettingMeNicknameProcessor$4
       }
     }
     localObject2 = new QQSettingMeNicknameBean();
-    ((QQSettingMeNicknameBean)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ImageUtil.e();
-    ((QQSettingMeNicknameBean)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+    ((QQSettingMeNicknameBean)localObject2).b = ImageUtil.j();
+    ((QQSettingMeNicknameBean)localObject2).a = ((String)localObject1);
     this.this$0.b.postValue(localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeNicknameProcessor.4
  * JD-Core Version:    0.7.0.1
  */

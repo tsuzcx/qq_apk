@@ -28,7 +28,7 @@ public class WechatSimpleVideoProteusItem
   {
     if (paramIReadInJoyModel != null)
     {
-      AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+      AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
       if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.isAccountShown)) {
         AccountShowUtils.a(paramContainer, paramIReadInJoyModel);
       }
@@ -36,7 +36,7 @@ public class WechatSimpleVideoProteusItem
       {
         paramContainer = paramContainer.getVirtualView();
         if (paramContainer != null) {
-          BindViewHelper.a(paramContainer, paramIReadInJoyModel.a());
+          BindViewHelper.a(paramContainer, paramIReadInJoyModel.k());
         }
       }
     }
@@ -49,7 +49,7 @@ public class WechatSimpleVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.WechatSimpleVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

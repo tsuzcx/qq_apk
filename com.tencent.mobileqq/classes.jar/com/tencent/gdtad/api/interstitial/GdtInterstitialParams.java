@@ -16,28 +16,26 @@ public class GdtInterstitialParams
   implements Parcelable
 {
   public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new GdtInterstitialParams.1();
-  public int a;
-  public GdtHandler.Options a;
-  public JSONObject a;
-  public boolean a;
-  int b;
-  int c;
+  public JSONObject c;
+  public GdtHandler.Options d;
+  public int e = -2147483648;
+  public boolean f;
+  int g;
+  int h;
   
   public GdtInterstitialParams()
   {
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = -2147483648;
-    this.c = -2147483648;
+    this.f = false;
+    this.g = -2147483648;
+    this.h = -2147483648;
   }
   
   protected GdtInterstitialParams(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -2147483648;
     boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = -2147483648;
-    this.c = -2147483648;
+    this.f = false;
+    this.g = -2147483648;
+    this.h = -2147483648;
     if (paramParcel == null)
     {
       GdtLog.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
@@ -47,37 +45,37 @@ public class GdtInterstitialParams
     if (!TextUtils.isEmpty(str)) {
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str);
+        this.c = new JSONObject(str);
       }
       catch (Throwable localThrowable)
       {
         AdLog.e("GdtInterstitialParams", "GdtInterstitialParams(Parcel in)", localThrowable);
       }
     }
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.d = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
+    this.e = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
-  }
-  
-  String a()
-  {
-    if ((!a()) || (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a == null) || (!this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.isValid())) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.getTraceId();
+    this.f = bool;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null) && (this.jdField_a_of_type_Int != -2147483648);
+    return (this.d != null) && (this.e != -2147483648);
   }
   
   boolean b()
   {
-    return (a()) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a());
+    return (a()) && (this.d.a());
+  }
+  
+  String c()
+  {
+    if ((!a()) || (this.d.a == null) || (!this.d.a.isValid())) {
+      return null;
+    }
+    return this.d.a.getTraceId();
   }
   
   public int describeContents()
@@ -93,20 +91,20 @@ public class GdtInterstitialParams
       return;
     }
     String str;
-    if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (!JSONObject.NULL.equals(this.jdField_a_of_type_OrgJsonJSONObject))) {
-      str = this.jdField_a_of_type_OrgJsonJSONObject.toString();
+    if ((this.c != null) && (!JSONObject.NULL.equals(this.c))) {
+      str = this.c.toString();
     } else {
       str = null;
     }
     paramParcel.writeString(str);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeParcelable(this.d, paramInt);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeByte((byte)this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialParams
  * JD-Core Version:    0.7.0.1
  */

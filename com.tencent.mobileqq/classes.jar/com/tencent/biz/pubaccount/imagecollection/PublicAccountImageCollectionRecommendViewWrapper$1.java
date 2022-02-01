@@ -23,7 +23,7 @@ class PublicAccountImageCollectionRecommendViewWrapper$1
     if (QLog.isColorLevel()) {
       QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "onItemClick!");
     }
-    paramAdapterView = (IPublicAccountImageCollectionUtils.RecommendItemInfo)PublicAccountImageCollectionRecommendViewWrapper.a.get(paramInt);
+    paramAdapterView = (IPublicAccountImageCollectionUtils.RecommendItemInfo)PublicAccountImageCollectionRecommendViewWrapper.b.get(paramInt);
     paramView = new Intent(paramView.getContext(), PublicAccountImageCollectionMainActivityImpl.class);
     paramView.putExtra("recommend_source", paramAdapterView.c);
     paramInt += 1;
@@ -50,7 +50,7 @@ class PublicAccountImageCollectionRecommendViewWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionRecommendViewWrapper.1
  * JD-Core Version:    0.7.0.1
  */

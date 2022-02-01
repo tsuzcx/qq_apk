@@ -10,59 +10,59 @@ public class BaseReportEvent
   implements IEvent
 {
   @NotNull
-  private ReportEventBusiness jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventBusiness = ReportEventBusiness.BUSINESS_PUBLISHER;
+  private ReportEventBusiness a = ReportEventBusiness.BUSINESS_PUBLISHER;
   @NotNull
-  private ReportEventElement jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventElement = ReportEventElement.ELEMENT_INVALID;
+  private ReportEventKey b = ReportEventKey.EVENT_INVALID;
   @NotNull
-  private ReportEventKey jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventKey = ReportEventKey.EVENT_INVALID;
+  private ReportEventPage c = ReportEventPage.PAGE_INVALID;
   @NotNull
-  private ReportEventPage jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventPage = ReportEventPage.PAGE_INVALID;
-  
-  @NotNull
-  public final ReportEventElement a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventElement;
-  }
+  private ReportEventElement d = ReportEventElement.ELEMENT_INVALID;
   
   @NotNull
   public final ReportEventKey a()
   {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventKey;
-  }
-  
-  @NotNull
-  public final ReportEventPage a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventPage;
+    return this.b;
   }
   
   public final void a(@NotNull ReportEventBusiness paramReportEventBusiness)
   {
     Intrinsics.checkParameterIsNotNull(paramReportEventBusiness, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventBusiness = paramReportEventBusiness;
+    this.a = paramReportEventBusiness;
   }
   
   public final void a(@NotNull ReportEventElement paramReportEventElement)
   {
     Intrinsics.checkParameterIsNotNull(paramReportEventElement, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventElement = paramReportEventElement;
+    this.d = paramReportEventElement;
   }
   
   public final void a(@NotNull ReportEventKey paramReportEventKey)
   {
     Intrinsics.checkParameterIsNotNull(paramReportEventKey, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventKey = paramReportEventKey;
+    this.b = paramReportEventKey;
   }
   
   public final void a(@NotNull ReportEventPage paramReportEventPage)
   {
     Intrinsics.checkParameterIsNotNull(paramReportEventPage, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchReportReportEventPage = paramReportEventPage;
+    this.c = paramReportEventPage;
+  }
+  
+  @NotNull
+  public final ReportEventPage b()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final ReportEventElement c()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.eventdispatch.report.BaseReportEvent
  * JD-Core Version:    0.7.0.1
  */

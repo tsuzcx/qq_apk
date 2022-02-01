@@ -17,16 +17,16 @@ import java.util.List;
 public class GetUserGroupUnionIDHandler$GetUserGroupUnionIDRequest
   extends NetworkRequest<GetUserGroupUnionIDHandler.GetUserGroupUnionIDResponse>
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  public static final String e = StoryApi.a("StoryGroupSvc.convert_group_id");
+  public int f;
+  public List<String> g;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.convert_group_id");
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
     try
@@ -41,16 +41,11 @@ public class GetUserGroupUnionIDHandler$GetUserGroupUnionIDRequest
     return null;
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
-    localReqConvertGroupId.convert_from.set(this.c);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    localReqConvertGroupId.convert_from.set(this.f);
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -67,7 +62,7 @@ public class GetUserGroupUnionIDHandler$GetUserGroupUnionIDRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler.GetUserGroupUnionIDRequest
  * JD-Core Version:    0.7.0.1
  */

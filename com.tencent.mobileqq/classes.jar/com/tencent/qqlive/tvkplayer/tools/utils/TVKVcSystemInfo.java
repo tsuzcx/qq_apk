@@ -24,6 +24,8 @@ import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qqlive.tvkplayer.TVideoMgr;
 import com.tencent.qqlive.tvkplayer.tools.config.TVKConfigField;
 import com.tencent.qqlive.tvkplayer.tools.config.TVKMediaPlayerConfig.PlayerConfig;
@@ -136,11 +138,12 @@ public class TVKVcSystemInfo
   
   static
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Environment.getDataDirectory());
-    localStringBuilder.append("/data/");
-    GUID_PHONE_PATH = localStringBuilder.toString();
-    cpuPerfList = new String[][] { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro" }, { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" }, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960" }, { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" } };
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getDataDirectory());
+    ((StringBuilder)localObject).append("/data/");
+    GUID_PHONE_PATH = ((StringBuilder)localObject).toString();
+    localObject = new String[] { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" };
+    cpuPerfList = new String[][] { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro" }, { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" }, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960" }, localObject };
     mPackageName = "";
     maxCpuFreq = -1L;
     currentCpuFreq = -1L;
@@ -292,7 +295,7 @@ public class TVKVcSystemInfo
     }
     try
     {
-      paramContext = ((WifiManager)paramContext.getApplicationContext().getSystemService("wifi")).getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getApplicationContext().getSystemService("wifi"));
       if (paramContext != null)
       {
         sSSID = paramContext.getSSID();
@@ -401,47 +404,47 @@ public class TVKVcSystemInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore_1
-    //   2: new 626	java/io/InputStreamReader
+    //   2: new 628	java/io/InputStreamReader
     //   5: dup
-    //   6: new 628	java/io/FileInputStream
+    //   6: new 630	java/io/FileInputStream
     //   9: dup
-    //   10: ldc_w 630
-    //   13: invokespecial 633	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   16: ldc_w 635
-    //   19: invokespecial 638	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   10: ldc_w 632
+    //   13: invokespecial 635	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   16: ldc_w 637
+    //   19: invokespecial 640	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   22: astore_3
-    //   23: new 640	java/io/BufferedReader
+    //   23: new 642	java/io/BufferedReader
     //   26: dup
     //   27: aload_3
-    //   28: invokespecial 643	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   28: invokespecial 645	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_2
     //   32: aload_2
-    //   33: invokevirtual 646	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   33: invokevirtual 648	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   36: astore_1
     //   37: aload_1
     //   38: ifnonnull +12 -> 50
     //   41: aload_3
-    //   42: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   42: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   45: aload_2
-    //   46: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   46: invokevirtual 652	java/io/BufferedReader:close	()V
     //   49: return
     //   50: aload_1
-    //   51: ldc_w 652
+    //   51: ldc_w 654
     //   54: invokevirtual 482	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   57: ifne +13 -> 70
     //   60: aload_1
-    //   61: ldc_w 654
+    //   61: ldc_w 656
     //   64: invokevirtual 482	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   67: ifeq +8 -> 75
     //   70: bipush 64
     //   72: putstatic 518	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuArchitecture	I
     //   75: aload_1
-    //   76: ldc_w 656
-    //   79: invokevirtual 660	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   76: ldc_w 658
+    //   79: invokevirtual 662	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   82: ifeq +41 -> 123
     //   85: aload_1
     //   86: bipush 58
-    //   88: invokevirtual 664	java/lang/String:indexOf	(I)I
+    //   88: invokevirtual 666	java/lang/String:indexOf	(I)I
     //   91: istore_0
     //   92: iload_0
     //   93: iconst_1
@@ -451,22 +454,22 @@ public class TVKVcSystemInfo
     //   99: iconst_1
     //   100: iadd
     //   101: aload_1
-    //   102: invokevirtual 620	java/lang/String:length	()I
-    //   105: invokevirtual 668	java/lang/String:substring	(II)Ljava/lang/String;
+    //   102: invokevirtual 622	java/lang/String:length	()I
+    //   105: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
     //   108: putstatic 540	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mProcessorName	Ljava/lang/String;
     //   111: getstatic 540	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mProcessorName	Ljava/lang/String;
-    //   114: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
+    //   114: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
     //   117: putstatic 540	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mProcessorName	Ljava/lang/String;
     //   120: goto -88 -> 32
     //   123: aload_1
-    //   124: ldc_w 673
-    //   127: invokevirtual 660	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   124: ldc_w 675
+    //   127: invokevirtual 662	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   130: ifeq +86 -> 216
     //   133: getstatic 518	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuArchitecture	I
     //   136: ifne -104 -> 32
     //   139: aload_1
     //   140: bipush 58
-    //   142: invokevirtual 664	java/lang/String:indexOf	(I)I
+    //   142: invokevirtual 666	java/lang/String:indexOf	(I)I
     //   145: istore_0
     //   146: iload_0
     //   147: iconst_1
@@ -476,41 +479,41 @@ public class TVKVcSystemInfo
     //   153: iconst_1
     //   154: iadd
     //   155: aload_1
-    //   156: invokevirtual 620	java/lang/String:length	()I
-    //   159: invokevirtual 668	java/lang/String:substring	(II)Ljava/lang/String;
-    //   162: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
+    //   156: invokevirtual 622	java/lang/String:length	()I
+    //   159: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
+    //   162: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
     //   165: astore_1
     //   166: aload_1
-    //   167: invokevirtual 620	java/lang/String:length	()I
+    //   167: invokevirtual 622	java/lang/String:length	()I
     //   170: ifle +22 -> 192
     //   173: aload_1
-    //   174: invokevirtual 620	java/lang/String:length	()I
+    //   174: invokevirtual 622	java/lang/String:length	()I
     //   177: iconst_2
     //   178: if_icmpge +14 -> 192
     //   181: aload_1
-    //   182: invokestatic 679	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   182: invokestatic 681	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   185: l2i
     //   186: putstatic 518	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuArchitecture	I
     //   189: goto -157 -> 32
     //   192: aload_1
-    //   193: invokevirtual 620	java/lang/String:length	()I
+    //   193: invokevirtual 622	java/lang/String:length	()I
     //   196: iconst_1
     //   197: if_icmple -165 -> 32
     //   200: aload_1
     //   201: iconst_0
     //   202: iconst_1
-    //   203: invokevirtual 668	java/lang/String:substring	(II)Ljava/lang/String;
-    //   206: invokestatic 679	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   203: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
+    //   206: invokestatic 681	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   209: l2i
     //   210: putstatic 518	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuArchitecture	I
     //   213: goto -181 -> 32
     //   216: aload_1
-    //   217: ldc_w 681
-    //   220: invokevirtual 660	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   217: ldc_w 683
+    //   220: invokevirtual 662	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   223: ifeq +35 -> 258
     //   226: aload_1
     //   227: bipush 58
-    //   229: invokevirtual 664	java/lang/String:indexOf	(I)I
+    //   229: invokevirtual 666	java/lang/String:indexOf	(I)I
     //   232: istore_0
     //   233: iload_0
     //   234: iconst_1
@@ -520,18 +523,18 @@ public class TVKVcSystemInfo
     //   240: iconst_1
     //   241: iadd
     //   242: aload_1
-    //   243: invokevirtual 620	java/lang/String:length	()I
-    //   246: invokevirtual 668	java/lang/String:substring	(II)Ljava/lang/String;
-    //   249: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
+    //   243: invokevirtual 622	java/lang/String:length	()I
+    //   246: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
+    //   249: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
     //   252: putstatic 544	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mFeature	Ljava/lang/String;
     //   255: goto -223 -> 32
     //   258: aload_1
-    //   259: ldc_w 683
-    //   262: invokevirtual 660	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   259: ldc_w 685
+    //   262: invokevirtual 662	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   265: ifeq -233 -> 32
     //   268: aload_1
     //   269: bipush 58
-    //   271: invokevirtual 664	java/lang/String:indexOf	(I)I
+    //   271: invokevirtual 666	java/lang/String:indexOf	(I)I
     //   274: istore_0
     //   275: iload_0
     //   276: iconst_1
@@ -541,19 +544,19 @@ public class TVKVcSystemInfo
     //   282: iconst_1
     //   283: iadd
     //   284: aload_1
-    //   285: invokevirtual 620	java/lang/String:length	()I
-    //   288: invokevirtual 668	java/lang/String:substring	(II)Ljava/lang/String;
-    //   291: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
-    //   294: ldc_w 685
+    //   285: invokevirtual 622	java/lang/String:length	()I
+    //   288: invokevirtual 670	java/lang/String:substring	(II)Ljava/lang/String;
+    //   291: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
+    //   294: ldc_w 687
     //   297: ldc 115
-    //   299: invokevirtual 689	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   299: invokevirtual 691	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   302: putstatic 523	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuHardware	Ljava/lang/String;
     //   305: new 142	java/lang/StringBuilder
     //   308: dup
     //   309: invokespecial 145	java/lang/StringBuilder:<init>	()V
     //   312: astore_1
     //   313: aload_1
-    //   314: ldc_w 691
+    //   314: ldc_w 693
     //   317: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   320: pop
     //   321: aload_1
@@ -563,9 +566,9 @@ public class TVKVcSystemInfo
     //   329: ldc 85
     //   331: aload_1
     //   332: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: invokestatic 695	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   335: invokestatic 697	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   338: getstatic 523	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuHardware	Ljava/lang/String;
-    //   341: invokestatic 697	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:getCpuHWProductIndex	(Ljava/lang/String;)I
+    //   341: invokestatic 699	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:getCpuHWProductIndex	(Ljava/lang/String;)I
     //   344: pop
     //   345: goto -313 -> 32
     //   348: astore_1
@@ -587,19 +590,19 @@ public class TVKVcSystemInfo
     //   370: goto +49 -> 419
     //   373: aconst_null
     //   374: astore_2
-    //   375: ldc_w 699
+    //   375: ldc_w 701
     //   378: putstatic 523	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuHardware	Ljava/lang/String;
     //   381: iconst_0
     //   382: putstatic 518	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mCpuArchitecture	I
     //   385: aload_1
     //   386: ifnull +10 -> 396
     //   389: aload_1
-    //   390: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   390: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   393: goto +3 -> 396
     //   396: aload_2
     //   397: ifnull +14 -> 411
     //   400: aload_2
-    //   401: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   401: invokevirtual 652	java/io/BufferedReader:close	()V
     //   404: return
     //   405: ldc 85
     //   407: aload_1
@@ -613,12 +616,12 @@ public class TVKVcSystemInfo
     //   419: aload_3
     //   420: ifnull +10 -> 430
     //   423: aload_3
-    //   424: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   424: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   427: goto +3 -> 430
     //   430: aload_2
     //   431: ifnull +16 -> 447
     //   434: aload_2
-    //   435: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   435: invokevirtual 652	java/io/BufferedReader:close	()V
     //   438: goto +9 -> 447
     //   441: ldc 85
     //   443: aload_2
@@ -727,7 +730,7 @@ public class TVKVcSystemInfo
     //   7: ifle +5 -> 12
     //   10: lload_0
     //   11: lreturn
-    //   12: ldc2_w 722
+    //   12: ldc2_w 724
     //   15: lstore_2
     //   16: aconst_null
     //   17: astore 13
@@ -739,19 +742,19 @@ public class TVKVcSystemInfo
     //   26: astore 16
     //   28: aconst_null
     //   29: astore 15
-    //   31: new 626	java/io/InputStreamReader
+    //   31: new 628	java/io/InputStreamReader
     //   34: dup
-    //   35: new 628	java/io/FileInputStream
+    //   35: new 630	java/io/FileInputStream
     //   38: dup
-    //   39: ldc_w 725
-    //   42: invokespecial 633	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   45: ldc_w 635
-    //   48: invokespecial 638	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   39: ldc_w 727
+    //   42: invokespecial 635	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   45: ldc_w 637
+    //   48: invokespecial 640	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   51: astore 12
-    //   53: new 640	java/io/BufferedReader
+    //   53: new 642	java/io/BufferedReader
     //   56: dup
     //   57: aload 12
-    //   59: invokespecial 643	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   59: invokespecial 645	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   62: astore 13
     //   64: lload_2
     //   65: lstore 4
@@ -762,7 +765,7 @@ public class TVKVcSystemInfo
     //   73: lload_2
     //   74: lstore 10
     //   76: aload 13
-    //   78: invokevirtual 646	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   78: invokevirtual 648	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   81: astore 14
     //   83: aload 14
     //   85: ifnonnull +60 -> 145
@@ -775,7 +778,7 @@ public class TVKVcSystemInfo
     //   97: lload_2
     //   98: lstore 10
     //   100: aload 12
-    //   102: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   102: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   105: lload_2
     //   106: lstore 4
     //   108: lload_2
@@ -785,11 +788,11 @@ public class TVKVcSystemInfo
     //   114: lload_2
     //   115: lstore 10
     //   117: aload 13
-    //   119: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   119: invokevirtual 652	java/io/BufferedReader:close	()V
     //   122: aload 12
-    //   124: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   124: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   127: aload 13
-    //   129: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   129: invokevirtual 652	java/io/BufferedReader:close	()V
     //   132: lconst_0
     //   133: lreturn
     //   134: astore 12
@@ -807,7 +810,7 @@ public class TVKVcSystemInfo
     //   154: lload_2
     //   155: lstore 10
     //   157: aload 14
-    //   159: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
+    //   159: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
     //   162: astore 14
     //   164: lload_2
     //   165: lstore_0
@@ -820,7 +823,7 @@ public class TVKVcSystemInfo
     //   175: lload_2
     //   176: lstore 10
     //   178: aload 14
-    //   180: invokevirtual 620	java/lang/String:length	()I
+    //   180: invokevirtual 622	java/lang/String:length	()I
     //   183: ifle +21 -> 204
     //   186: lload_2
     //   187: lstore 4
@@ -831,7 +834,7 @@ public class TVKVcSystemInfo
     //   195: lload_2
     //   196: lstore 10
     //   198: aload 14
-    //   200: invokestatic 679	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   200: invokestatic 681	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   203: lstore_0
     //   204: lload_0
     //   205: lstore 4
@@ -844,9 +847,9 @@ public class TVKVcSystemInfo
     //   216: lload_0
     //   217: putstatic 410	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:currentCpuFreq	J
     //   220: aload 12
-    //   222: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   222: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   225: aload 13
-    //   227: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   227: invokevirtual 652	java/io/BufferedReader:close	()V
     //   230: lload_0
     //   231: lreturn
     //   232: astore 12
@@ -902,7 +905,7 @@ public class TVKVcSystemInfo
     //   332: astore 16
     //   334: aconst_null
     //   335: astore 14
-    //   337: ldc2_w 722
+    //   337: ldc2_w 724
     //   340: lstore_2
     //   341: aload 12
     //   343: astore 15
@@ -910,7 +913,7 @@ public class TVKVcSystemInfo
     //   348: astore 16
     //   350: aconst_null
     //   351: astore 14
-    //   353: ldc2_w 722
+    //   353: ldc2_w 724
     //   356: lstore_2
     //   357: aload 12
     //   359: astore 15
@@ -918,7 +921,7 @@ public class TVKVcSystemInfo
     //   364: astore 16
     //   366: aconst_null
     //   367: astore 14
-    //   369: ldc2_w 722
+    //   369: ldc2_w 724
     //   372: lstore_2
     //   373: aload 12
     //   375: astore 15
@@ -926,7 +929,7 @@ public class TVKVcSystemInfo
     //   380: astore 16
     //   382: aconst_null
     //   383: astore 14
-    //   385: ldc2_w 722
+    //   385: ldc2_w 724
     //   388: lstore_2
     //   389: aload 12
     //   391: astore 15
@@ -938,7 +941,7 @@ public class TVKVcSystemInfo
     //   403: astore 14
     //   405: goto +271 -> 676
     //   408: astore 16
-    //   410: ldc2_w 722
+    //   410: ldc2_w 724
     //   413: lstore_2
     //   414: aconst_null
     //   415: astore 14
@@ -952,14 +955,14 @@ public class TVKVcSystemInfo
     //   432: aload 15
     //   434: ifnull +11 -> 445
     //   437: aload 15
-    //   439: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   439: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   442: goto +3 -> 445
     //   445: lload_2
     //   446: lstore_0
     //   447: aload 14
     //   449: ifnull +215 -> 664
     //   452: aload 14
-    //   454: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   454: invokevirtual 652	java/io/BufferedReader:close	()V
     //   457: lload_2
     //   458: lreturn
     //   459: ldc 85
@@ -968,7 +971,7 @@ public class TVKVcSystemInfo
     //   466: lconst_0
     //   467: lreturn
     //   468: astore 16
-    //   470: ldc2_w 722
+    //   470: ldc2_w 724
     //   473: lstore_2
     //   474: aconst_null
     //   475: astore 14
@@ -984,14 +987,14 @@ public class TVKVcSystemInfo
     //   496: aload 15
     //   498: ifnull +11 -> 509
     //   501: aload 15
-    //   503: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   503: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   506: goto +3 -> 509
     //   509: lload_2
     //   510: lstore_0
     //   511: aload 14
     //   513: ifnull +151 -> 664
     //   516: aload 14
-    //   518: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   518: invokevirtual 652	java/io/BufferedReader:close	()V
     //   521: lload_2
     //   522: lreturn
     //   523: ldc 85
@@ -1000,7 +1003,7 @@ public class TVKVcSystemInfo
     //   530: lconst_0
     //   531: lreturn
     //   532: astore 16
-    //   534: ldc2_w 722
+    //   534: ldc2_w 724
     //   537: lstore_2
     //   538: aconst_null
     //   539: astore 12
@@ -1018,14 +1021,14 @@ public class TVKVcSystemInfo
     //   564: aload 15
     //   566: ifnull +11 -> 577
     //   569: aload 15
-    //   571: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   571: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   574: goto +3 -> 577
     //   577: lload_2
     //   578: lstore_0
     //   579: aload 14
     //   581: ifnull +83 -> 664
     //   584: aload 14
-    //   586: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   586: invokevirtual 652	java/io/BufferedReader:close	()V
     //   589: lload_2
     //   590: lreturn
     //   591: ldc 85
@@ -1034,7 +1037,7 @@ public class TVKVcSystemInfo
     //   598: lconst_0
     //   599: lreturn
     //   600: astore 16
-    //   602: ldc2_w 722
+    //   602: ldc2_w 724
     //   605: lstore_2
     //   606: aconst_null
     //   607: astore 14
@@ -1050,14 +1053,14 @@ public class TVKVcSystemInfo
     //   628: aload 15
     //   630: ifnull +11 -> 641
     //   633: aload 15
-    //   635: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   635: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   638: goto +3 -> 641
     //   641: lload_2
     //   642: lstore_0
     //   643: aload 14
     //   645: ifnull +19 -> 664
     //   648: aload 14
-    //   650: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   650: invokevirtual 652	java/io/BufferedReader:close	()V
     //   653: lload_2
     //   654: lreturn
     //   655: ldc 85
@@ -1075,12 +1078,12 @@ public class TVKVcSystemInfo
     //   676: aload 14
     //   678: ifnull +11 -> 689
     //   681: aload 14
-    //   683: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   683: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   686: goto +3 -> 689
     //   689: aload 13
     //   691: ifnull +20 -> 711
     //   694: aload 13
-    //   696: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   696: invokevirtual 652	java/io/BufferedReader:close	()V
     //   699: goto +12 -> 711
     //   702: ldc 85
     //   704: aload 12
@@ -1250,7 +1253,7 @@ public class TVKVcSystemInfo
       if (paramContext == null) {
         break label89;
       }
-      deviceIMEI = paramContext.getDeviceId();
+      deviceIMEI = PhoneInfoMonitor.getDeviceId(paramContext);
       if (TextUtils.isEmpty(deviceIMEI)) {
         deviceIMEI = "NONE";
       }
@@ -1285,7 +1288,7 @@ public class TVKVcSystemInfo
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (paramContext != null)
       {
-        deviceIMSI = paramContext.getSubscriberId();
+        deviceIMSI = PhoneInfoMonitor.getSubscriberId(paramContext);
         if (deviceIMSI == null) {
           deviceIMSI = "";
         }
@@ -1458,7 +1461,7 @@ public class TVKVcSystemInfo
       if (paramContext == null) {
         return "";
       }
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
       if (paramContext != null)
       {
         paramContext = paramContext.getMacAddress();
@@ -1526,9 +1529,9 @@ public class TVKVcSystemInfo
   public static int getMarketId(Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 856	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mReadMarketId	Z
+    //   0: getstatic 861	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mReadMarketId	Z
     //   3: ifeq +7 -> 10
-    //   6: getstatic 858	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mMarketId	I
+    //   6: getstatic 863	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mMarketId	I
     //   9: ireturn
     //   10: iconst_m1
     //   11: istore_2
@@ -1538,24 +1541,24 @@ public class TVKVcSystemInfo
     //   17: ireturn
     //   18: aload_0
     //   19: invokevirtual 553	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   22: invokevirtual 862	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   25: ldc_w 864
-    //   28: invokevirtual 870	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   22: invokevirtual 867	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   25: ldc_w 869
+    //   28: invokevirtual 875	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   31: astore 4
-    //   33: new 640	java/io/BufferedReader
+    //   33: new 642	java/io/BufferedReader
     //   36: dup
-    //   37: new 626	java/io/InputStreamReader
+    //   37: new 628	java/io/InputStreamReader
     //   40: dup
     //   41: aload 4
-    //   43: invokespecial 873	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   46: invokespecial 643	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   43: invokespecial 878	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   46: invokespecial 645	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   49: astore_0
     //   50: aload_0
     //   51: astore 5
     //   53: aload 4
     //   55: astore 6
     //   57: aload_0
-    //   58: invokevirtual 646	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   58: invokevirtual 648	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   61: astore 7
     //   63: iload_2
     //   64: istore_1
@@ -1573,7 +1576,7 @@ public class TVKVcSystemInfo
     //   85: aload 4
     //   87: astore 6
     //   89: aload 7
-    //   91: ldc_w 875
+    //   91: ldc_w 880
     //   94: invokevirtual 482	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   97: ifeq +60 -> 157
     //   100: aload_0
@@ -1582,11 +1585,11 @@ public class TVKVcSystemInfo
     //   105: astore 6
     //   107: aload 7
     //   109: aload 7
-    //   111: ldc_w 877
-    //   114: invokevirtual 879	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   111: ldc_w 882
+    //   114: invokevirtual 884	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   117: iconst_1
     //   118: iadd
-    //   119: invokevirtual 881	java/lang/String:substring	(I)Ljava/lang/String;
+    //   119: invokevirtual 886	java/lang/String:substring	(I)Ljava/lang/String;
     //   122: astore 7
     //   124: iload_2
     //   125: istore_1
@@ -1602,23 +1605,23 @@ public class TVKVcSystemInfo
     //   144: aload 4
     //   146: astore 6
     //   148: aload 7
-    //   150: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
-    //   153: invokestatic 884	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   150: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
+    //   153: invokestatic 889	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   156: istore_1
     //   157: aload 4
     //   159: ifnull +13 -> 172
     //   162: iload_1
     //   163: istore_3
     //   164: aload 4
-    //   166: invokevirtual 887	java/io/InputStream:close	()V
+    //   166: invokevirtual 892	java/io/InputStream:close	()V
     //   169: goto +3 -> 172
     //   172: iload_1
     //   173: istore_3
     //   174: aload_0
-    //   175: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   175: invokevirtual 652	java/io/BufferedReader:close	()V
     //   178: goto +89 -> 267
     //   181: aload_0
-    //   182: invokevirtual 888	java/lang/Throwable:printStackTrace	()V
+    //   182: invokevirtual 893	java/lang/Throwable:printStackTrace	()V
     //   185: iload_3
     //   186: istore_1
     //   187: goto +80 -> 267
@@ -1655,7 +1658,7 @@ public class TVKVcSystemInfo
     //   246: iload_2
     //   247: istore_3
     //   248: aload 4
-    //   250: invokevirtual 887	java/io/InputStream:close	()V
+    //   250: invokevirtual 892	java/io/InputStream:close	()V
     //   253: iload_2
     //   254: istore_1
     //   255: aload_0
@@ -1663,13 +1666,13 @@ public class TVKVcSystemInfo
     //   259: iload_2
     //   260: istore_3
     //   261: aload_0
-    //   262: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   262: invokevirtual 652	java/io/BufferedReader:close	()V
     //   265: iload_2
     //   266: istore_1
     //   267: iload_1
-    //   268: putstatic 858	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mMarketId	I
+    //   268: putstatic 863	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mMarketId	I
     //   271: iconst_1
-    //   272: putstatic 856	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mReadMarketId	Z
+    //   272: putstatic 861	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:mReadMarketId	Z
     //   275: iload_1
     //   276: ireturn
     //   277: astore_0
@@ -1678,15 +1681,15 @@ public class TVKVcSystemInfo
     //   282: aload 4
     //   284: ifnull +11 -> 295
     //   287: aload 4
-    //   289: invokevirtual 887	java/io/InputStream:close	()V
+    //   289: invokevirtual 892	java/io/InputStream:close	()V
     //   292: goto +3 -> 295
     //   295: aload 5
     //   297: ifnull +16 -> 313
     //   300: aload 5
-    //   302: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   302: invokevirtual 652	java/io/BufferedReader:close	()V
     //   305: goto +8 -> 313
     //   308: aload 4
-    //   310: invokevirtual 888	java/lang/Throwable:printStackTrace	()V
+    //   310: invokevirtual 893	java/lang/Throwable:printStackTrace	()V
     //   313: aload_0
     //   314: athrow
     //   315: astore_0
@@ -1754,33 +1757,33 @@ public class TVKVcSystemInfo
     //   21: astore 8
     //   23: lconst_0
     //   24: lstore_2
-    //   25: new 626	java/io/InputStreamReader
+    //   25: new 628	java/io/InputStreamReader
     //   28: dup
-    //   29: new 628	java/io/FileInputStream
+    //   29: new 630	java/io/FileInputStream
     //   32: dup
-    //   33: ldc_w 891
-    //   36: invokespecial 633	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   39: ldc_w 635
-    //   42: invokespecial 638	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   33: ldc_w 896
+    //   36: invokespecial 635	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   39: ldc_w 637
+    //   42: invokespecial 640	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   45: astore 6
-    //   47: new 640	java/io/BufferedReader
+    //   47: new 642	java/io/BufferedReader
     //   50: dup
     //   51: aload 6
-    //   53: invokespecial 643	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   53: invokespecial 645	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   56: astore 7
     //   58: aload 7
-    //   60: invokevirtual 646	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   60: invokevirtual 648	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   63: astore 8
     //   65: aload 8
     //   67: ifnonnull +36 -> 103
     //   70: aload 6
-    //   72: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   72: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   75: aload 7
-    //   77: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   77: invokevirtual 652	java/io/BufferedReader:close	()V
     //   80: aload 6
-    //   82: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   82: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   85: aload 7
-    //   87: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   87: invokevirtual 652	java/io/BufferedReader:close	()V
     //   90: lconst_0
     //   91: lreturn
     //   92: astore 6
@@ -1790,24 +1793,24 @@ public class TVKVcSystemInfo
     //   101: lconst_0
     //   102: lreturn
     //   103: aload 8
-    //   105: invokevirtual 671	java/lang/String:trim	()Ljava/lang/String;
+    //   105: invokevirtual 673	java/lang/String:trim	()Ljava/lang/String;
     //   108: astore 8
     //   110: lload_2
     //   111: lstore_0
     //   112: aload 8
-    //   114: invokevirtual 620	java/lang/String:length	()I
+    //   114: invokevirtual 622	java/lang/String:length	()I
     //   117: ifle +9 -> 126
     //   120: aload 8
-    //   122: invokestatic 679	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   122: invokestatic 681	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   125: lstore_0
     //   126: lload_0
     //   127: lstore 4
     //   129: aload 6
-    //   131: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   131: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   134: lload_0
     //   135: lstore 4
     //   137: aload 7
-    //   139: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   139: invokevirtual 652	java/io/BufferedReader:close	()V
     //   142: goto +153 -> 295
     //   145: astore 6
     //   147: ldc 85
@@ -1832,12 +1835,12 @@ public class TVKVcSystemInfo
     //   189: aload 6
     //   191: ifnull +11 -> 202
     //   194: aload 6
-    //   196: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   196: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   199: goto +3 -> 202
     //   202: aload 8
     //   204: ifnull +18 -> 222
     //   207: aload 8
-    //   209: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   209: invokevirtual 652	java/io/BufferedReader:close	()V
     //   212: goto +10 -> 222
     //   215: ldc 85
     //   217: aload 6
@@ -1853,7 +1856,7 @@ public class TVKVcSystemInfo
     //   237: lload_2
     //   238: lstore 4
     //   240: aload 6
-    //   242: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   242: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   245: lload_2
     //   246: lstore_0
     //   247: aload 7
@@ -1861,7 +1864,7 @@ public class TVKVcSystemInfo
     //   252: lload_2
     //   253: lstore 4
     //   255: aload 7
-    //   257: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   257: invokevirtual 652	java/io/BufferedReader:close	()V
     //   260: lload_2
     //   261: lstore_0
     //   262: goto +33 -> 295
@@ -1870,7 +1873,7 @@ public class TVKVcSystemInfo
     //   270: lload_2
     //   271: lstore 4
     //   273: aload 6
-    //   275: invokevirtual 649	java/io/InputStreamReader:close	()V
+    //   275: invokevirtual 651	java/io/InputStreamReader:close	()V
     //   278: lload_2
     //   279: lstore_0
     //   280: aload 7
@@ -1878,7 +1881,7 @@ public class TVKVcSystemInfo
     //   285: lload_2
     //   286: lstore 4
     //   288: aload 7
-    //   290: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   290: invokevirtual 652	java/io/BufferedReader:close	()V
     //   293: lload_2
     //   294: lstore_0
     //   295: lload_0
@@ -1888,17 +1891,17 @@ public class TVKVcSystemInfo
     //   303: invokespecial 145	java/lang/StringBuilder:<init>	()V
     //   306: astore 6
     //   308: aload 6
-    //   310: ldc_w 893
+    //   310: ldc_w 898
     //   313: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: pop
     //   317: aload 6
     //   319: getstatic 408	com/tencent/qqlive/tvkplayer/tools/utils/TVKVcSystemInfo:maxCpuFreq	J
-    //   322: invokevirtual 896	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 901	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   325: pop
     //   326: ldc 85
     //   328: aload 6
     //   330: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   333: invokestatic 695	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   333: invokestatic 697	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   336: lload_0
     //   337: lreturn
     //   338: astore 6
@@ -2372,7 +2375,7 @@ public class TVKVcSystemInfo
     }
     try
     {
-      paramContext = ((WifiManager)paramContext.getApplicationContext().getSystemService("wifi")).getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getApplicationContext().getSystemService("wifi"));
       if (paramContext != null)
       {
         sSSID = paramContext.getSSID();
@@ -2554,7 +2557,7 @@ public class TVKVcSystemInfo
     }
     try
     {
-      paramContext = ((WifiManager)paramContext.getApplicationContext().getSystemService("wifi")).getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getApplicationContext().getSystemService("wifi"));
       if (paramContext == null) {
         return 0;
       }
@@ -2736,26 +2739,26 @@ public class TVKVcSystemInfo
     //   6: astore 5
     //   8: aconst_null
     //   9: astore_3
-    //   10: new 640	java/io/BufferedReader
+    //   10: new 642	java/io/BufferedReader
     //   13: dup
-    //   14: new 1155	java/io/FileReader
+    //   14: new 1160	java/io/FileReader
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 1158	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   22: invokespecial 643	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   19: invokespecial 1163	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   22: invokespecial 645	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   25: astore_1
     //   26: aload_1
     //   27: astore_2
     //   28: aload_0
-    //   29: invokevirtual 1160	java/io/File:length	()J
-    //   32: ldc2_w 1161
+    //   29: invokevirtual 1165	java/io/File:length	()J
+    //   32: ldc2_w 1166
     //   35: lcmp
     //   36: ifle +6 -> 42
     //   39: goto +43 -> 82
     //   42: aload_1
     //   43: astore_2
     //   44: aload_0
-    //   45: invokevirtual 1160	java/io/File:length	()J
+    //   45: invokevirtual 1165	java/io/File:length	()J
     //   48: l2i
     //   49: newarray char
     //   51: astore 5
@@ -2765,26 +2768,26 @@ public class TVKVcSystemInfo
     //   56: aload 5
     //   58: iconst_0
     //   59: aload_0
-    //   60: invokevirtual 1160	java/io/File:length	()J
+    //   60: invokevirtual 1165	java/io/File:length	()J
     //   63: l2i
-    //   64: invokevirtual 1166	java/io/BufferedReader:read	([CII)I
+    //   64: invokevirtual 1171	java/io/BufferedReader:read	([CII)I
     //   67: ifle +15 -> 82
     //   70: aload_1
     //   71: astore_2
-    //   72: new 170	java/lang/String
+    //   72: new 168	java/lang/String
     //   75: dup
     //   76: aload 5
-    //   78: invokespecial 1169	java/lang/String:<init>	([C)V
+    //   78: invokespecial 1174	java/lang/String:<init>	([C)V
     //   81: astore_3
     //   82: aload_3
     //   83: astore_0
     //   84: aload_1
-    //   85: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   85: invokevirtual 652	java/io/BufferedReader:close	()V
     //   88: aload_3
     //   89: areturn
     //   90: astore_1
     //   91: aload_1
-    //   92: invokevirtual 888	java/lang/Throwable:printStackTrace	()V
+    //   92: invokevirtual 893	java/lang/Throwable:printStackTrace	()V
     //   95: aload_0
     //   96: areturn
     //   97: astore_0
@@ -2801,13 +2804,13 @@ public class TVKVcSystemInfo
     //   114: aload_1
     //   115: astore_2
     //   116: aload_0
-    //   117: invokevirtual 888	java/lang/Throwable:printStackTrace	()V
+    //   117: invokevirtual 893	java/lang/Throwable:printStackTrace	()V
     //   120: aload_1
     //   121: ifnull +10 -> 131
     //   124: aload 4
     //   126: astore_0
     //   127: aload_1
-    //   128: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   128: invokevirtual 652	java/io/BufferedReader:close	()V
     //   131: aconst_null
     //   132: areturn
     //   133: astore_0
@@ -2820,11 +2823,11 @@ public class TVKVcSystemInfo
     //   143: aload_2
     //   144: ifnull +15 -> 159
     //   147: aload_2
-    //   148: invokevirtual 650	java/io/BufferedReader:close	()V
+    //   148: invokevirtual 652	java/io/BufferedReader:close	()V
     //   151: goto +8 -> 159
     //   154: astore_1
     //   155: aload_1
-    //   156: invokevirtual 888	java/lang/Throwable:printStackTrace	()V
+    //   156: invokevirtual 893	java/lang/Throwable:printStackTrace	()V
     //   159: aload_0
     //   160: athrow
     // Local variable table:
@@ -2870,21 +2873,21 @@ public class TVKVcSystemInfo
     //   1: astore_2
     //   2: aconst_null
     //   3: astore_3
-    //   4: new 1172	java/io/RandomAccessFile
+    //   4: new 1177	java/io/RandomAccessFile
     //   7: dup
-    //   8: ldc_w 1174
-    //   11: ldc_w 1176
-    //   14: invokespecial 1178	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   8: ldc_w 1179
+    //   11: ldc_w 1181
+    //   14: invokespecial 1183	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: astore_1
     //   18: aload_1
     //   19: astore_0
     //   20: aload_1
-    //   21: invokevirtual 1179	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
+    //   21: invokevirtual 1184	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   24: astore_2
     //   25: aload_2
     //   26: astore_0
     //   27: aload_1
-    //   28: invokevirtual 1180	java/io/RandomAccessFile:close	()V
+    //   28: invokevirtual 1185	java/io/RandomAccessFile:close	()V
     //   31: aload_2
     //   32: areturn
     //   33: astore_1
@@ -2903,13 +2906,13 @@ public class TVKVcSystemInfo
     //   53: aload_1
     //   54: astore_0
     //   55: aload_2
-    //   56: invokevirtual 888	java/lang/Throwable:printStackTrace	()V
+    //   56: invokevirtual 893	java/lang/Throwable:printStackTrace	()V
     //   59: aload_1
     //   60: ifnull +9 -> 69
     //   63: aload_3
     //   64: astore_0
     //   65: aload_1
-    //   66: invokevirtual 1180	java/io/RandomAccessFile:close	()V
+    //   66: invokevirtual 1185	java/io/RandomAccessFile:close	()V
     //   69: aconst_null
     //   70: areturn
     //   71: astore_1
@@ -2920,7 +2923,7 @@ public class TVKVcSystemInfo
     //   76: aload_2
     //   77: ifnull +17 -> 94
     //   80: aload_2
-    //   81: invokevirtual 1180	java/io/RandomAccessFile:close	()V
+    //   81: invokevirtual 1185	java/io/RandomAccessFile:close	()V
     //   84: goto +10 -> 94
     //   87: astore_1
     //   88: ldc 85
@@ -2965,7 +2968,7 @@ public class TVKVcSystemInfo
       }
       if ((paramContext.isWifiEnabled()) && (paramContext.getWifiState() == 3))
       {
-        paramContext = paramContext.getConnectionInfo();
+        paramContext = NetworkMonitor.getConnectionInfo(paramContext);
         if (paramContext != null)
         {
           int i = paramContext.getIpAddress();
@@ -2992,7 +2995,7 @@ public class TVKVcSystemInfo
       TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
       try
       {
-        paramContext = NetworkInterface.getNetworkInterfaces();
+        paramContext = NetworkMonitor.getNetworkInterfaces();
         if (paramContext == null) {}
         InetAddress localInetAddress;
         do
@@ -3081,7 +3084,7 @@ public class TVKVcSystemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKVcSystemInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,11 @@ public class CustomSwitchRoomModule
   extends RoomBizModule
   implements ThreadCenter.HandlerKeyable
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 0L;
-  private RoomSwitchInterface.QueryRoomListTrigger jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$QueryRoomListTrigger;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomSwitchRoomModule.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
+  private long a = 0L;
+  private RoomSwitchInterface.QueryRoomListTrigger b;
+  private int c = 1;
+  private boolean d = true;
+  private Runnable e = new CustomSwitchRoomModule.1(this);
   
   protected boolean a()
   {
@@ -57,7 +57,7 @@ public class CustomSwitchRoomModule
       } else {
         paramContext.putBoolean("is_preload", true);
       }
-      this.jdField_a_of_type_Int = paramContext.getInt("content_type");
+      this.c = paramContext.getInt("content_type");
       LogFactory.a().c("CustomSwitchRoomModule", paramContext.toString());
     }
     else
@@ -65,7 +65,7 @@ public class CustomSwitchRoomModule
       LogFactory.a().c("CustomSwitchRoomModule", "extData = null");
     }
     paramContext = getAudienceRoomPager();
-    if ((RoomUtil.a(this.jdField_a_of_type_Int)) || ((paramContext != null) && (!this.jdField_a_of_type_Boolean))) {
+    if ((RoomUtil.a(this.c)) || ((paramContext != null) && (!this.d))) {
       paramContext.setScrollForbidden(true);
     }
   }
@@ -79,23 +79,23 @@ public class CustomSwitchRoomModule
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$QueryRoomListTrigger = ((RoomSwitchInterface)getRoomEngine().getService(RoomSwitchInterface.class)).getQueryRoomListTrigger();
+    this.a = System.currentTimeMillis();
+    this.b = ((RoomSwitchInterface)getRoomEngine().getService(RoomSwitchInterface.class)).getQueryRoomListTrigger();
     LogInterface localLogInterface = LogFactory.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onEnterRoom contentType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localLogInterface.c("CustomSwitchRoomModule", localStringBuilder.toString());
-    if ((a()) && (!RoomUtil.a(this.jdField_a_of_type_Int))) {
-      ThreadCenter.postDelayedUITask(this, this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    if ((a()) && (!RoomUtil.a(this.c))) {
+      ThreadCenter.postDelayedUITask(this, this.e, 30000L);
     }
   }
   
   public void onExitRoom(boolean paramBoolean)
   {
     super.onExitRoom(paramBoolean);
-    ThreadCenter.removeUITask(this, this.jdField_a_of_type_JavaLangRunnable);
-    long l = (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L;
+    ThreadCenter.removeUITask(this, this.e);
+    long l = (System.currentTimeMillis() - this.a) / 1000L;
     getRoomBizContext().getEnterRoomInfo().extData.putInt("watch_sec", (int)l);
   }
   
@@ -134,7 +134,7 @@ public class CustomSwitchRoomModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.switchroom.CustomSwitchRoomModule
  * JD-Core Version:    0.7.0.1
  */

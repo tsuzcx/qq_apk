@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.apollo.emotionview.api.impl;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class CmShowEmotionAdapter$1
-  implements View.OnClickListener
+  implements Runnable
 {
   CmShowEmotionAdapter$1(CmShowEmotionAdapter paramCmShowEmotionAdapter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    CmShowEmotionAdapter.a(this.a);
+    this.this$0.refreshPanelData();
+    this.this$0.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.emotionview.api.impl.CmShowEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

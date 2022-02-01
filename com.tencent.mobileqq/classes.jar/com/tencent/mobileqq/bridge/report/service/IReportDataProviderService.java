@@ -6,8 +6,6 @@ import mqq.manager.ServerConfigManager.ConfigType;
 
 public abstract interface IReportDataProviderService
 {
-  public abstract <T> T a();
-  
   public abstract <T> T a(AppRuntime paramAppRuntime);
   
   public abstract String a(AppRuntime paramAppRuntime, ServerConfigManager.ConfigType paramConfigType, String paramString);
@@ -17,10 +15,12 @@ public abstract interface IReportDataProviderService
   public abstract boolean a(String paramString);
   
   public abstract List<String> b();
+  
+  public abstract <T> T c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bridge.report.service.IReportDataProviderService
  * JD-Core Version:    0.7.0.1
  */

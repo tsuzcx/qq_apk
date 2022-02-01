@@ -12,23 +12,18 @@ public class FileSearchResultView
   implements ISearchResultView
 {
   protected int a;
-  protected View a;
-  protected ImageView a;
-  protected TextView a;
-  protected TextView b;
+  protected View b;
+  protected ImageView c;
+  protected TextView d;
+  protected TextView e;
   
   public FileSearchResultView() {}
   
   public FileSearchResultView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = 2131562799;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    this.a = 2131629244;
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.a, paramViewGroup, false);
     a();
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public View a(String paramString)
@@ -36,48 +31,53 @@ public class FileSearchResultView
     return null;
   }
   
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378784));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365536));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131378860).setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    this.c = ((ImageView)this.b.findViewById(2131435357));
+    this.d = ((TextView)this.b.findViewById(2131447463));
+    this.d.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
+    this.e = ((TextView)this.b.findViewById(2131431757));
+    this.b.findViewById(2131447560).setVisibility(8);
   }
   
   public TextView b()
   {
-    return null;
+    return this.d;
   }
   
   public TextView c()
   {
-    return this.b;
+    return null;
   }
   
   public TextView d()
   {
+    return this.e;
+  }
+  
+  public TextView e()
+  {
     return null;
+  }
+  
+  public ImageView f()
+  {
+    return null;
+  }
+  
+  public ImageView g()
+  {
+    return this.c;
+  }
+  
+  public View h()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchResultView
  * JD-Core Version:    0.7.0.1
  */

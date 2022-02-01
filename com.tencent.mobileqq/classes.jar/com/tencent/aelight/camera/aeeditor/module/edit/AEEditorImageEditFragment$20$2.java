@@ -9,12 +9,12 @@ class AEEditorImageEditFragment$20$2
   
   public void run()
   {
-    QQToast.a(this.a.a.a, 2064515278, 0).a();
+    QQToast.makeText(this.a.a.o, 2064187628, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.20.2
  * JD-Core Version:    0.7.0.1
  */

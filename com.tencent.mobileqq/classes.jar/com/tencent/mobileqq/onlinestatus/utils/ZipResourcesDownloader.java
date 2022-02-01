@@ -6,6 +6,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.ar.ArConfigUtils;
 import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
 import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -19,34 +20,10 @@ import mqq.util.WeakReference;
 
 public class ZipResourcesDownloader
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  WeakReference<IPreDownloadController> jdField_a_of_type_MqqUtilWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  ArrayList<ZipResourcesDownloader.CallbackCacheItem> b = new ArrayList();
-  
-  private static String a()
-  {
-    Object localObject1 = MobileQQ.sMobileQQ.getFilesDir();
-    if (localObject1 != null)
-    {
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-      ((StringBuilder)localObject2).append("/pddata/prd/common_resources");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      File localFile = new File((String)localObject2);
-      localObject1 = localObject2;
-      if (!localFile.exists())
-      {
-        localFile.mkdirs();
-        return localObject2;
-      }
-    }
-    else
-    {
-      localObject1 = null;
-    }
-    return localObject1;
-  }
+  WeakReference<IPreDownloadController> a;
+  ArrayList<String> b = new ArrayList();
+  ArrayList<ZipResourcesDownloader.CallbackCacheItem> c = new ArrayList();
+  boolean d = false;
   
   public static String a(String paramString)
   {
@@ -86,6 +63,94 @@ public class ZipResourcesDownloader
     return d(paramString2);
   }
   
+  private void a(BaseQQAppInterface arg1, int paramInt, String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback, IPreDownloadController paramIPreDownloadController, String paramString4)
+  {
+    synchronized (this.b)
+    {
+      boolean bool = this.b.contains(paramString2);
+      if (bool)
+      {
+        if (paramOnZipResourcesDownloadCallback != null) {
+          synchronized (this.c)
+          {
+            this.c.add(new ZipResourcesDownloader.CallbackCacheItem(this, paramString2, paramOnZipResourcesDownloadCallback));
+            return;
+          }
+        }
+        return;
+      }
+      e(paramString4);
+      ??? = new HttpNetReq();
+      ((HttpNetReq)???).mCallback = new ZipResourcesDownloader.1(this);
+      ((HttpNetReq)???).mReqUrl = paramString2;
+      ((HttpNetReq)???).mHttpMethod = 0;
+      ((HttpNetReq)???).mOutPath = paramString4;
+      ((HttpNetReq)???).mPrioty = 0;
+      ((HttpNetReq)???).mSupportBreakResume = true;
+      paramIPreDownloadController.requestPreDownload(paramInt, paramString1, paramString3, 0, paramString2, paramString4, 2, 0, false, new HttpEngineTask(???, paramString3, new ZipResourcesDownloader.2(this, paramString3, paramArrayOfString, paramOnZipResourcesDownloadCallback), (HttpNetReq)???));
+      synchronized (this.b)
+      {
+        this.b.add(paramString2);
+        return;
+      }
+    }
+  }
+  
+  private void a(NetResp paramNetResp, String paramString, String[] paramArrayOfString, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
+  {
+    String str = ((HttpNetReq)paramNetResp.mReq).mReqUrl;
+    if (QLog.isColorLevel()) {
+      QLog.d("ZipResourcesDownloader", 2, String.format("onResp url=%s result=%s", new Object[] { str, Integer.valueOf(paramNetResp.mResult) }));
+    }
+    int i = paramNetResp.mResult;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (i != 0)
+    {
+      if (i != 1) {
+        return;
+      }
+      paramArrayOfString = this.a;
+      paramNetResp = (NetResp)localObject1;
+      if (paramArrayOfString != null) {
+        paramNetResp = (IPreDownloadController)paramArrayOfString.get();
+      }
+      if (paramNetResp != null) {
+        paramNetResp.preDownloadSuccess(str, -1L);
+      }
+      a(str, paramString, false, paramOnZipResourcesDownloadCallback);
+      return;
+    }
+    WeakReference localWeakReference = this.a;
+    localObject1 = localObject2;
+    if (localWeakReference != null) {
+      localObject1 = (IPreDownloadController)localWeakReference.get();
+    }
+    if (localObject1 != null) {
+      ((IPreDownloadController)localObject1).preDownloadSuccess(str, paramNetResp.mTotalFileLen);
+    }
+    paramNetResp = (HttpNetReq)paramNetResp.mReq;
+    if (b(paramNetResp.mOutPath, paramString))
+    {
+      localObject1 = new File(d(paramString));
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
+      }
+      boolean bool1 = c(paramNetResp.mOutPath, d(paramString));
+      boolean bool2 = b(str, paramString, paramArrayOfString);
+      if (QLog.isColorLevel()) {
+        QLog.d("ZipResourcesDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      a(str, paramString, bool2, paramOnZipResourcesDownloadCallback);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ZipResourcesDownloader", 2, "onResp ResultOk file check invalid.");
+    }
+    e(paramNetResp.mOutPath);
+    a(str, paramString, false, paramOnZipResourcesDownloadCallback);
+  }
+  
   private void a(String paramString1, String arg2, boolean paramBoolean, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
   {
     if (QLog.isColorLevel())
@@ -96,31 +161,31 @@ public class ZipResourcesDownloader
       ???.append(" success:");
       ???.append(paramBoolean);
       ???.append(" mDestroyed:");
-      ???.append(this.jdField_a_of_type_Boolean);
+      ???.append(this.d);
       QLog.d("ZipResourcesDownloader", 2, ???.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     int i;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramString1);
+      this.b.remove(paramString1);
       if (paramOnZipResourcesDownloadCallback != null) {
         paramOnZipResourcesDownloadCallback.a(paramBoolean);
       }
-      synchronized (this.b)
+      synchronized (this.c)
       {
-        i = this.b.size() - 1;
+        i = this.c.size() - 1;
         if (i >= 0)
         {
-          paramOnZipResourcesDownloadCallback = (ZipResourcesDownloader.CallbackCacheItem)this.b.get(i);
-          if ((paramOnZipResourcesDownloadCallback != null) && (TextUtils.equals(paramString1, paramOnZipResourcesDownloadCallback.jdField_a_of_type_JavaLangString)))
+          paramOnZipResourcesDownloadCallback = (ZipResourcesDownloader.CallbackCacheItem)this.c.get(i);
+          if ((paramOnZipResourcesDownloadCallback != null) && (TextUtils.equals(paramString1, paramOnZipResourcesDownloadCallback.a)))
           {
-            if (paramOnZipResourcesDownloadCallback.jdField_a_of_type_ComTencentMobileqqOnlinestatusUtilsZipResourcesDownloader$OnZipResourcesDownloadCallback != null) {
-              paramOnZipResourcesDownloadCallback.jdField_a_of_type_ComTencentMobileqqOnlinestatusUtilsZipResourcesDownloader$OnZipResourcesDownloadCallback.a(paramBoolean);
+            if (paramOnZipResourcesDownloadCallback.b != null) {
+              paramOnZipResourcesDownloadCallback.b.a(paramBoolean);
             }
-            this.b.remove(i);
+            this.c.remove(i);
           }
         }
         else
@@ -131,27 +196,41 @@ public class ZipResourcesDownloader
     }
   }
   
-  private static boolean a(String paramString)
+  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return b(paramString1, paramString2, paramArrayOfString);
+  }
+  
+  private static String b()
+  {
+    Object localObject1 = MobileQQ.sMobileQQ.getFilesDir();
+    if (localObject1 != null)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+      ((StringBuilder)localObject2).append("/pddata/prd/common_resources");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      File localFile = new File((String)localObject2);
+      localObject1 = localObject2;
+      if (!localFile.exists())
+      {
+        localFile.mkdirs();
+        return localObject2;
+      }
+    }
+    else
+    {
+      localObject1 = null;
+    }
+    return localObject1;
+  }
+  
+  private static boolean b(String paramString)
   {
     return new File(paramString).exists();
   }
   
-  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return c(paramString1, paramString2, paramArrayOfString);
-  }
-  
-  private static void b(String paramString)
-  {
-    FileUtils.delete(paramString, false);
-  }
-  
-  private static String c(String paramString)
-  {
-    return String.format("%s/%s.zip", new Object[] { a(), paramString });
-  }
-  
-  private static boolean c(String paramString1, String paramString2)
+  private static boolean b(String paramString1, String paramString2)
   {
     boolean bool3 = new File(paramString1).exists();
     boolean bool2 = false;
@@ -171,12 +250,12 @@ public class ZipResourcesDownloader
     return bool1;
   }
   
-  private static boolean c(String paramString1, String paramString2, String[] paramArrayOfString)
+  private static boolean b(String paramString1, String paramString2, String[] paramArrayOfString)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       paramString1 = a(paramString1, paramString2);
-      if (!a(paramString1)) {
+      if (!b(paramString1)) {
         return false;
       }
       if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
@@ -191,7 +270,7 @@ public class ZipResourcesDownloader
           localStringBuilder.append("/");
           localStringBuilder.append(paramString2);
           paramString2 = localStringBuilder.toString();
-          if (!a(paramString2))
+          if (!b(paramString2))
           {
             QLog.e("ZipResourcesDownloader", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { paramString2 }));
             return false;
@@ -204,12 +283,12 @@ public class ZipResourcesDownloader
     return false;
   }
   
-  private static String d(String paramString)
+  private static String c(String paramString)
   {
-    return String.format("%s/%s", new Object[] { a(), paramString });
+    return String.format("%s/%s.zip", new Object[] { b(), paramString });
   }
   
-  private static boolean d(String paramString1, String paramString2)
+  private static boolean c(String paramString1, String paramString2)
   {
     try
     {
@@ -223,79 +302,63 @@ public class ZipResourcesDownloader
     return false;
   }
   
+  private static String d(String paramString)
+  {
+    return String.format("%s/%s", new Object[] { b(), paramString });
+  }
+  
+  private static void e(String paramString)
+  {
+    FileUtils.delete(paramString, false);
+  }
+  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    this.d = true;
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      synchronized (this.b)
+      this.b.clear();
+      synchronized (this.c)
       {
-        this.b.clear();
+        this.c.clear();
         return;
       }
     }
   }
   
-  public void a(AppInterface arg1, int paramInt, String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
+  public void a(AppInterface paramAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource url=%s md5=%s callback=%s", new Object[] { paramString2, paramString3, paramOnZipResourcesDownloadCallback }));
     }
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (??? != null))
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (paramAppInterface != null))
     {
       Object localObject1 = null;
-      Object localObject2 = this.jdField_a_of_type_MqqUtilWeakReference;
+      Object localObject2 = this.a;
       if (localObject2 != null) {
         localObject1 = (IPreDownloadController)((WeakReference)localObject2).get();
       }
       localObject2 = localObject1;
       if (localObject1 == null)
       {
-        localObject2 = (IPreDownloadController)???.getRuntimeService(IPreDownloadController.class, "");
-        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject2);
+        localObject2 = (IPreDownloadController)paramAppInterface.getRuntimeService(IPreDownloadController.class, "");
+        this.a = new WeakReference(localObject2);
       }
       if (localObject2 == null) {
         return;
       }
       localObject1 = c(paramString3);
-      if (!c((String)localObject1, paramString3)) {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          bool1 = this.jdField_a_of_type_JavaUtilArrayList.contains(paramString2);
-          if (bool1)
-          {
-            if (paramOnZipResourcesDownloadCallback != null) {
-              synchronized (this.b)
-              {
-                this.b.add(new ZipResourcesDownloader.CallbackCacheItem(this, paramString2, paramOnZipResourcesDownloadCallback));
-                return;
-              }
-            }
-            return;
-          }
-          b((String)localObject1);
-          ??? = new HttpNetReq();
-          ((HttpNetReq)???).mCallback = new ZipResourcesDownloader.1(this);
-          ((HttpNetReq)???).mReqUrl = paramString2;
-          ((HttpNetReq)???).mHttpMethod = 0;
-          ((HttpNetReq)???).mOutPath = ((String)localObject1);
-          ((HttpNetReq)???).mPrioty = 0;
-          ((HttpNetReq)???).mSupportBreakResume = true;
-          ((IPreDownloadController)localObject2).requestPreDownload(paramInt, paramString1, paramString3, 0, paramString2, (String)localObject1, 2, 0, false, new HttpEngineTask((BaseQQAppInterface)???, paramString3, new ZipResourcesDownloader.2(this, paramString3, paramArrayOfString, paramOnZipResourcesDownloadCallback), (HttpNetReq)???));
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
-            return;
-          }
-        }
+      if (!b((String)localObject1, paramString3))
+      {
+        a((BaseQQAppInterface)paramAppInterface, paramInt, paramString1, paramString2, paramString3, paramArrayOfString, paramOnZipResourcesDownloadCallback, (IPreDownloadController)localObject2, (String)localObject1);
+        return;
       }
-      boolean bool2 = c(paramString2, paramString3, paramArrayOfString);
+      boolean bool2 = b(paramString2, paramString3, paramArrayOfString);
       boolean bool1 = bool2;
       if (!bool2)
       {
-        bool2 = d((String)localObject1, d(paramString3));
-        bool1 = c(paramString2, paramString3, paramArrayOfString);
+        bool2 = c((String)localObject1, d(paramString3));
+        bool1 = b(paramString2, paramString3, paramArrayOfString);
         if (QLog.isColorLevel()) {
           QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
         }
@@ -310,7 +373,7 @@ public class ZipResourcesDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.ZipResourcesDownloader
  * JD-Core Version:    0.7.0.1
  */

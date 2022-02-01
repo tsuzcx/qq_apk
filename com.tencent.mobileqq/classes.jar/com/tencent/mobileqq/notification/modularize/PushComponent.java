@@ -13,37 +13,37 @@ public final class PushComponent
   @JvmField
   public int a;
   @JvmField
-  @NotNull
-  public String a;
-  @JvmField
-  public boolean a;
-  @JvmField
-  @NotNull
-  public byte[] a;
-  @JvmField
   public int b;
   @JvmField
-  @NotNull
-  public String b;
-  @JvmField
-  public boolean b;
-  @JvmField
   public int c;
-  @JvmField
-  @NotNull
-  public String c;
-  @JvmField
-  public boolean c;
   @JvmField
   public int d;
   @JvmField
   @NotNull
-  public String d;
-  @JvmField
-  public boolean d;
+  public String e;
   @JvmField
   @NotNull
-  public String e;
+  public String f;
+  @JvmField
+  @NotNull
+  public String g;
+  @JvmField
+  @NotNull
+  public String h;
+  @JvmField
+  @NotNull
+  public String i;
+  @JvmField
+  public boolean j;
+  @JvmField
+  public boolean k;
+  @JvmField
+  public boolean l;
+  @JvmField
+  public boolean m;
+  @JvmField
+  @NotNull
+  public byte[] n;
   
   public PushComponent()
   {
@@ -52,26 +52,26 @@ public final class PushComponent
   
   public PushComponent(int paramInt1, int paramInt2, int paramInt3, int paramInt4, @NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, @NotNull byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_Boolean = paramBoolean4;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramString1;
+    this.f = paramString2;
+    this.g = paramString3;
+    this.h = paramString4;
+    this.i = paramString5;
+    this.j = paramBoolean1;
+    this.k = paramBoolean2;
+    this.l = paramBoolean3;
+    this.m = paramBoolean4;
+    this.n = paramArrayOfByte;
   }
   
   public final boolean a()
   {
-    int i = this.jdField_d_of_type_Int;
-    return (528 <= i) && (3000528 >= i);
+    int i1 = this.d;
+    return (528 <= i1) && (3000528 >= i1);
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -80,7 +80,7 @@ public final class PushComponent
       if ((paramObject instanceof PushComponent))
       {
         paramObject = (PushComponent)paramObject;
-        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int) && (this.jdField_d_of_type_Int == paramObject.jdField_d_of_type_Int) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean == paramObject.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean == paramObject.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean == paramObject.jdField_d_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_a_of_type_ArrayOfByte, paramObject.jdField_a_of_type_ArrayOfByte))) {}
+        if ((this.a == paramObject.a) && (this.b == paramObject.b) && (this.c == paramObject.c) && (this.d == paramObject.d) && (Intrinsics.areEqual(this.e, paramObject.e)) && (Intrinsics.areEqual(this.f, paramObject.f)) && (Intrinsics.areEqual(this.g, paramObject.g)) && (Intrinsics.areEqual(this.h, paramObject.h)) && (Intrinsics.areEqual(this.i, paramObject.i)) && (this.j == paramObject.j) && (this.k == paramObject.k) && (this.l == paramObject.l) && (this.m == paramObject.m) && (Intrinsics.areEqual(this.n, paramObject.n))) {}
       }
       else
       {
@@ -100,40 +100,40 @@ public final class PushComponent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PushComponent(mainBusinessId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", subBusinessId=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", pushId=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", notifyId=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", title=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", iconUrl=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", contentText=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", jumpScheme=");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(", triggerInfo=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", iconUrl=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", contentText=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", jumpScheme=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", triggerInfo=");
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", isUrlJump=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", isRevokePush=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", needForegroundPush=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", needBackgroundPush=");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(", bytesExtData=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(Arrays.toString(this.n));
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.PushComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -53,13 +53,13 @@ public class OpenSdkQIPCModule
     {
       String str = paramBundle.getString("uin");
       boolean bool = paramBundle.getBoolean("is_from_login");
-      SharedPrefs.b(str);
+      SharedPrefs.c(str);
       LoginHelper.a(BaseActivity.sTopActivity, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
       OpenSdkIMBlockFragment.a(BaseActivity.sTopActivity, str, bool);
     }
     else
     {
-      QQToast.a(BaseActivity.sTopActivity, 2131694647, 0).a();
+      QQToast.makeText(BaseActivity.sTopActivity, 2131892333, 0).show();
     }
     if (((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).isBlockNotifyActivity(QBaseActivity.sTopActivity)) {
       QBaseActivity.sTopActivity.finish();
@@ -106,7 +106,7 @@ public class OpenSdkQIPCModule
       }
       if ("action_on_agent_activity_destroy".equals(paramString))
       {
-        GuardManager.a.a("com.tencent.mobileqq:openSdk");
+        GuardManager.sInstance.noticeSubThreadBackground("com.tencent.mobileqq:openSdk");
         return EIPCResult.createResult(0, null);
       }
       if ("action_on_qr_code_login_success".equals(paramString))
@@ -126,7 +126,7 @@ public class OpenSdkQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.OpenSdkQIPCModule
  * JD-Core Version:    0.7.0.1
  */

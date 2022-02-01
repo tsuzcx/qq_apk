@@ -11,9 +11,9 @@ class MoreVideoInfoWidget$5
   
   public void onDismiss()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!this.a.get())
     {
-      VideoViewVideoHolder localVideoViewVideoHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+      VideoViewVideoHolder localVideoViewVideoHolder = this.b;
       if (localVideoViewVideoHolder != null) {
         localVideoViewVideoHolder.c(false);
       }

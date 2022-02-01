@@ -18,7 +18,7 @@ class ReadInJoyLikeButton$1
   public void onAnimationEnd(Animator paramAnimator)
   {
     ReadInJoyLikeButton.a(this.a).setSelected(this.a.isSelected());
-    ReadInJoyLikeButton.a(this.a).start();
+    ReadInJoyLikeButton.b(this.a).start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -30,7 +30,7 @@ class ReadInJoyLikeButton$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyLikeButton.1
  * JD-Core Version:    0.7.0.1
  */

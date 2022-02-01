@@ -18,21 +18,6 @@ public final class RIJRewardTaskConfig
 {
   public static final RIJRewardTaskConfig a = new RIJRewardTaskConfig();
   
-  public static final int a()
-  {
-    if (Utils.a()) {
-      return (int)(a.a().getFloatFromString("consume_single_task_total_time", 30.0F) * 60 * 1000);
-    }
-    return RIJAidlClientRedPacketModule.c();
-  }
-  
-  private final AladdinConfig a()
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(372);
-    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…KANDIAN_COIN_REWARD_TASK)");
-    return localAladdinConfig;
-  }
-  
   public static final boolean a()
   {
     boolean bool1 = Utils.a();
@@ -40,12 +25,12 @@ public final class RIJRewardTaskConfig
     boolean bool2;
     if (bool1)
     {
-      if (a.a().getIntegerFromString("reward_enable", 0) == 1) {
+      if (a.t().getIntegerFromString("reward_enable", 0) == 1) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      boolean bool4 = StudyModeManager.a();
+      boolean bool4 = StudyModeManager.h();
       boolean bool5 = RIJUserLevelModule.getInstance().getCacheUserLevel(5);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isHighestRewardTaskAuthorityOn: ");
@@ -70,7 +55,7 @@ public final class RIJRewardTaskConfig
     }
     else
     {
-      bool2 = RIJAidlClientRedPacketModule.b();
+      bool2 = RIJAidlClientRedPacketModule.f();
     }
     return bool2;
   }
@@ -78,89 +63,128 @@ public final class RIJRewardTaskConfig
   public static final int b()
   {
     if (Utils.a()) {
-      return a.a().getIntegerFromString("consume_task_total_count", 1);
+      return (int)(a.t().getFloatFromString("consume_single_task_total_time", 30.0F) * 60 * 1000);
     }
-    return RIJAidlClientRedPacketModule.d();
+    return RIJAidlClientRedPacketModule.g();
   }
   
   public static final int c()
   {
     if (Utils.a()) {
-      return a.a().getIntegerFromString("reward_single_articel_task_consume_time", 40) * 1000;
+      return a.t().getIntegerFromString("consume_task_total_count", 1);
     }
-    return RIJAidlClientRedPacketModule.e();
+    return RIJAidlClientRedPacketModule.h();
   }
   
   public static final int d()
   {
     if (Utils.a()) {
-      return a.a().getIntegerFromString("reward_articel_stationary_consume", 3) * 1000;
+      return a.t().getIntegerFromString("reward_single_articel_task_consume_time", 40) * 1000;
     }
-    return RIJAidlClientRedPacketModule.f();
+    return RIJAidlClientRedPacketModule.i();
   }
   
-  public final float a()
+  public static final int e()
   {
-    return a().getFloatFromString("reward_guide_condition_video_progress", 0.8F);
+    if (Utils.a()) {
+      return a.t().getIntegerFromString("reward_articel_stationary_consume", 3) * 1000;
+    }
+    return RIJAidlClientRedPacketModule.j();
+  }
+  
+  private final AladdinConfig t()
+  {
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(372);
+    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…KANDIAN_COIN_REWARD_TASK)");
+    return localAladdinConfig;
   }
   
   @NotNull
-  public final String a()
+  public final String f()
   {
-    String str = a().getString("reward_send_coin_dialog_header_hint", "投币数量决定内容额外推荐量");
+    String str = t().getString("reward_send_coin_dialog_header_hint", "投币数量决定内容额外推荐量");
     Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…LT_SEND_COIN_DIALOG_HINT)");
     return str;
   }
   
-  public final void a()
+  public final int g()
   {
-    Integer localInteger2 = Integer.valueOf(0);
-    Integer localInteger1 = (Integer)RIJSPUtils.a("total_show_guide_times", localInteger2);
-    localInteger2 = (Integer)RIJSPUtils.a("today_show_guide_times", localInteger2);
-    RIJSPUtils.a("total_show_guide_times", Integer.valueOf(localInteger1.intValue() + 1));
-    RIJSPUtils.a("today_show_guide_times", Integer.valueOf(localInteger2.intValue() + 1));
-    RIJSPUtils.a("last_show_guide_times_stamps", Long.valueOf(System.currentTimeMillis()));
+    return t().getIntegerFromString("reward_send_coin_dialog_first_btn_num", 1);
+  }
+  
+  public final int h()
+  {
+    return t().getIntegerFromString("reward_send_coin_dialog_second_btn_num", 3);
+  }
+  
+  public final float i()
+  {
+    return t().getFloatFromString("reward_guide_condition_video_progress", 0.8F);
   }
   
   @NotNull
-  public final String b()
+  public final String j()
   {
-    String str = a().getString("reward_guide_word", "喜欢就投个硬币吧~ ");
+    String str = t().getString("reward_guide_word", "喜欢就投个硬币吧~ ");
     Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…EFAULT_REWARD_GUIDE_WORD)");
     return str;
   }
   
-  public final boolean b()
-  {
-    return a().getIntegerFromString("reward_send_coin_dialog_anim", 1) == 1;
-  }
-  
   @NotNull
-  public final String c()
+  public final String k()
   {
-    String str = a().getString("reward_send_coin_success_tips", "感谢支持~ Y(^o^)Y，我会加油的");
+    String str = t().getString("reward_send_coin_success_tips", "感谢支持~ Y(^o^)Y，我会加油的");
     Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…T_SEND_COIN_SUCCESS_TIPS)");
     return str;
   }
   
-  public final boolean c()
+  public final boolean l()
   {
-    return a().getIntegerFromString("reward_send_coin_dialog_two_btn_anim", 1) == 1;
+    return t().getIntegerFromString("reward_send_coin_dialog_anim", 1) == 1;
+  }
+  
+  public final boolean m()
+  {
+    return t().getIntegerFromString("reward_send_coin_dialog_two_btn_anim", 1) == 1;
   }
   
   @NotNull
-  public final String d()
+  public final String n()
   {
-    String str = a().getString("reward_send_one_coin_text", "");
+    String str = t().getString("reward_send_one_coin_text", "");
     Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…D_SEND_ONE_COIN_TEXT, \"\")");
     return str;
   }
   
-  public final boolean d()
+  @NotNull
+  public final String o()
   {
-    int i = a().getIntegerFromString("reward_guide_times_per_person", 3);
+    String str = t().getString("reward_send_three_coin_text", "");
+    Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…SEND_THREE_COIN_TEXT, \"\")");
+    return str;
+  }
+  
+  @NotNull
+  public final String p()
+  {
+    String str = t().getString("reward_send_one_coin_text_white", "");
+    Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…_ONE_COIN_TEXT_WHITE, \"\")");
+    return str;
+  }
+  
+  @NotNull
+  public final String q()
+  {
+    String str = t().getString("reward_send_three_coin_text_white", "");
+    Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…HREE_COIN_TEXT_WHITE, \"\")");
+    return str;
+  }
+  
+  public final boolean r()
+  {
+    int i = t().getIntegerFromString("reward_guide_times_per_person", 3);
     Integer localInteger = Integer.valueOf(0);
-    Object localObject = (Integer)RIJSPUtils.a("total_show_guide_times", localInteger);
+    Object localObject = (Integer)RIJSPUtils.b("total_show_guide_times", localInteger);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -174,7 +198,7 @@ public final class RIJRewardTaskConfig
     if (Intrinsics.compare(((Integer)localObject).intValue(), i) >= 0) {
       return false;
     }
-    localObject = (Integer)RIJSPUtils.a("last_show_guide_times_stamps", localInteger);
+    localObject = (Integer)RIJSPUtils.b("last_show_guide_times_stamps", localInteger);
     long l = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
@@ -198,8 +222,8 @@ public final class RIJRewardTaskConfig
     if (l - ((Integer)localObject).intValue() > TimeUnit.DAYS.toMillis(1L)) {
       RIJSPUtils.a("today_show_guide_times", localInteger);
     }
-    localInteger = (Integer)RIJSPUtils.a("today_show_guide_times", localInteger);
-    i = a().getIntegerFromString("reward_guide_times_per_day", 1);
+    localInteger = (Integer)RIJSPUtils.b("today_show_guide_times", localInteger);
+    i = t().getIntegerFromString("reward_guide_times_per_day", 1);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -212,43 +236,19 @@ public final class RIJRewardTaskConfig
     return Intrinsics.compare(localInteger.intValue(), i) < 0;
   }
   
-  public final int e()
+  public final void s()
   {
-    return a().getIntegerFromString("reward_send_coin_dialog_first_btn_num", 1);
-  }
-  
-  @NotNull
-  public final String e()
-  {
-    String str = a().getString("reward_send_three_coin_text", "");
-    Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…SEND_THREE_COIN_TEXT, \"\")");
-    return str;
-  }
-  
-  public final int f()
-  {
-    return a().getIntegerFromString("reward_send_coin_dialog_second_btn_num", 3);
-  }
-  
-  @NotNull
-  public final String f()
-  {
-    String str = a().getString("reward_send_one_coin_text_white", "");
-    Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…_ONE_COIN_TEXT_WHITE, \"\")");
-    return str;
-  }
-  
-  @NotNull
-  public final String g()
-  {
-    String str = a().getString("reward_send_three_coin_text_white", "");
-    Intrinsics.checkExpressionValueIsNotNull(str, "aladdinConfig.getString(…HREE_COIN_TEXT_WHITE, \"\")");
-    return str;
+    Integer localInteger2 = Integer.valueOf(0);
+    Integer localInteger1 = (Integer)RIJSPUtils.b("total_show_guide_times", localInteger2);
+    localInteger2 = (Integer)RIJSPUtils.b("today_show_guide_times", localInteger2);
+    RIJSPUtils.a("total_show_guide_times", Integer.valueOf(localInteger1.intValue() + 1));
+    RIJSPUtils.a("today_show_guide_times", Integer.valueOf(localInteger2.intValue() + 1));
+    RIJSPUtils.a("last_show_guide_times_stamps", Long.valueOf(System.currentTimeMillis()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskConfig
  * JD-Core Version:    0.7.0.1
  */

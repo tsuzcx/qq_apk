@@ -3,10 +3,10 @@ package com.tencent.mobileqq.cmshow.crossengine.script.plugin;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.cmshow.crossengine.model.CEArgument;
+import com.tencent.mobileqq.cmshow.crossengine.resource.util.CEGetResPathUtil;
 import com.tencent.mobileqq.cmshow.engine.EngineHelper;
 import com.tencent.mobileqq.cmshow.engine.model.Argument;
 import com.tencent.mobileqq.cmshow.engine.script.plugin.PluginCmdConstant.PlugPriority;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -24,21 +24,41 @@ import org.json.JSONObject;
 public final class FileModulePlugin
   implements IModuleEventPlugin
 {
-  public static final FileModulePlugin.Companion a;
+  public static final FileModulePlugin.Companion a = new FileModulePlugin.Companion(null);
   @NotNull
-  private final PluginCmdConstant.PlugPriority a;
+  private final PluginCmdConstant.PlugPriority c = PluginCmdConstant.PlugPriority.GENERAL;
   
-  static
+  private final JSONObject b(CEArgument paramCEArgument)
   {
-    jdField_a_of_type_ComTencentMobileqqCmshowCrossengineScriptPluginFileModulePlugin$Companion = new FileModulePlugin.Companion(null);
+    if (paramCEArgument.e() != null) {
+      try
+      {
+        localObject2 = new JSONObject(paramCEArgument.e());
+        localObject1 = ((JSONObject)localObject2).optString("path");
+        paramCEArgument = (CEArgument)localObject1;
+        if (((JSONObject)localObject2).optInt("pathType") > 0)
+        {
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "filePath");
+          paramCEArgument = CEGetResPathUtil.a((String)localObject1, "");
+        }
+        Intrinsics.checkExpressionValueIsNotNull(paramCEArgument, "absoluteFilePath");
+        paramCEArgument = b(paramCEArgument);
+        return paramCEArgument;
+      }
+      catch (Exception paramCEArgument)
+      {
+        Object localObject1 = EngineHelper.a.c(paramCEArgument.getMessage());
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[print] error, ");
+        ((StringBuilder)localObject2).append(paramCEArgument);
+        QLog.e("[cmshow][CECMShowOffscreenEngine]_FileModulePlugin", 1, ((StringBuilder)localObject2).toString());
+        return localObject1;
+      }
+    }
+    return EngineHelper.a.c("params is invalid!");
   }
   
-  public FileModulePlugin()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.GENERAL;
-  }
-  
-  private final JSONObject a(String paramString)
+  private final JSONObject b(String paramString)
   {
     if (!TextUtils.isEmpty((CharSequence)paramString))
     {
@@ -48,45 +68,15 @@ public final class FileModulePlugin
         paramString = FileUtils.readFileContent(paramString);
         if (!TextUtils.isEmpty((CharSequence)paramString))
         {
-          JSONObject localJSONObject = EngineHelper.a.a();
+          JSONObject localJSONObject = EngineHelper.a.b();
           localJSONObject.put("content", paramString);
           return localJSONObject;
         }
-        return EngineHelper.a.a("empty fileContent!");
+        return EngineHelper.a.c("empty fileContent!");
       }
-      return EngineHelper.a.a("file not exits!");
+      return EngineHelper.a.c("file not exits!");
     }
-    return EngineHelper.a.a("params is invalid!");
-  }
-  
-  private final JSONObject b(CEArgument paramCEArgument)
-  {
-    if (paramCEArgument.b() != null) {
-      try
-      {
-        localObject2 = new JSONObject(paramCEArgument.b());
-        localObject1 = ((JSONObject)localObject2).optString("path");
-        paramCEArgument = (CEArgument)localObject1;
-        if (((JSONObject)localObject2).optInt("pathType") > 0)
-        {
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "filePath");
-          paramCEArgument = CMGetResPathUtil.a((String)localObject1, "");
-        }
-        Intrinsics.checkExpressionValueIsNotNull(paramCEArgument, "absoluteFilePath");
-        paramCEArgument = a(paramCEArgument);
-        return paramCEArgument;
-      }
-      catch (Exception paramCEArgument)
-      {
-        Object localObject1 = EngineHelper.a.a(paramCEArgument.getMessage());
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[print] error, ");
-        ((StringBuilder)localObject2).append(paramCEArgument);
-        QLog.e("[cmshow][CECMShowOffscreenEngine]_FileModulePlugin", 1, ((StringBuilder)localObject2).toString());
-        return localObject1;
-      }
-    }
-    return EngineHelper.a.a("params is invalid!");
+    return EngineHelper.a.c("params is invalid!");
   }
   
   private final JSONObject c(CEArgument paramCEArgument)
@@ -103,23 +93,23 @@ public final class FileModulePlugin
   
   private final JSONObject e(CEArgument paramCEArgument)
   {
-    if (paramCEArgument.b() != null) {
+    if (paramCEArgument.e() != null) {
       try
       {
-        paramCEArgument = new JSONObject(paramCEArgument.b()).optString("path");
+        paramCEArgument = new JSONObject(paramCEArgument.e()).optString("path");
         if (!TextUtils.isEmpty((CharSequence)paramCEArgument))
         {
           if (new File(paramCEArgument).exists()) {
-            return EngineHelper.a.a();
+            return EngineHelper.a.b();
           }
-          return EngineHelper.a.a("file not exits!");
+          return EngineHelper.a.c("file not exits!");
         }
-        paramCEArgument = EngineHelper.a.a("params is invalid!");
+        paramCEArgument = EngineHelper.a.c("params is invalid!");
         return paramCEArgument;
       }
       catch (Exception paramCEArgument)
       {
-        JSONObject localJSONObject = EngineHelper.a.a(paramCEArgument.getMessage());
+        JSONObject localJSONObject = EngineHelper.a.c(paramCEArgument.getMessage());
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[print] error, ");
         localStringBuilder.append(paramCEArgument);
@@ -127,44 +117,44 @@ public final class FileModulePlugin
         return localJSONObject;
       }
     }
-    return EngineHelper.a.a("params is invalid!");
+    return EngineHelper.a.c("params is invalid!");
   }
   
   private final JSONObject f(CEArgument paramCEArgument)
   {
-    if (paramCEArgument.b() != null) {
+    if (paramCEArgument.e() != null) {
       try
       {
-        paramCEArgument = new JSONObject(paramCEArgument.b()).optString("name");
+        paramCEArgument = new JSONObject(paramCEArgument.e()).optString("name");
         if (!TextUtils.isEmpty((CharSequence)paramCEArgument))
         {
           Intrinsics.checkExpressionValueIsNotNull(paramCEArgument, "resName");
-          String str = CMGetResPathUtil.a(paramCEArgument, "");
+          String str = CEGetResPathUtil.a(paramCEArgument, "");
           if (!TextUtils.isEmpty((CharSequence)str))
           {
-            paramCEArgument = EngineHelper.a.a();
+            paramCEArgument = EngineHelper.a.b();
             paramCEArgument.put("path", str);
           }
           else
           {
-            paramCEArgument = EngineHelper.a.a("file not exits!");
+            paramCEArgument = EngineHelper.a.c("file not exits!");
           }
         }
         else
         {
-          paramCEArgument = EngineHelper.a.a("params is invalid!");
+          paramCEArgument = EngineHelper.a.c("params is invalid!");
         }
       }
       catch (Exception localException)
       {
-        paramCEArgument = EngineHelper.a.a(localException.getMessage());
+        paramCEArgument = EngineHelper.a.c(localException.getMessage());
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("[print] error, ");
         localStringBuilder2.append(localException);
         QLog.e("[cmshow][CECMShowOffscreenEngine]_FileModulePlugin", 1, localStringBuilder2.toString());
       }
     } else {
-      paramCEArgument = EngineHelper.a.a("params is invalid!");
+      paramCEArgument = EngineHelper.a.c("params is invalid!");
     }
     if (QLog.isColorLevel())
     {
@@ -179,13 +169,7 @@ public final class FileModulePlugin
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "File";
+    return this.c;
   }
   
   @Deprecated(message="ModuleEventPlugin通过handleModuleEvent进行分发", replaceWith=@ReplaceWith(expression="null", imports={}))
@@ -196,18 +180,11 @@ public final class FileModulePlugin
     return IModuleEventPlugin.DefaultImpls.a(this, paramArgument);
   }
   
-  @Deprecated(message="ModuleEventPlugin依赖moduleName进行分发", replaceWith=@ReplaceWith(expression="emptyList()", imports={}))
-  @NotNull
-  public List<String> a()
-  {
-    return IModuleEventPlugin.DefaultImpls.a(this);
-  }
-  
   @Nullable
   public JSONObject a(@NotNull CEArgument paramCEArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramCEArgument, "argument");
-    String str = paramCEArgument.c();
+    String str = paramCEArgument.f();
     switch (str.hashCode())
     {
     default: 
@@ -241,20 +218,33 @@ public final class FileModulePlugin
     return IModuleEventPlugin.DefaultImpls.a(this, paramCEArgument);
   }
   
-  public boolean a()
-  {
-    return IModuleEventPlugin.DefaultImpls.a(this);
-  }
-  
   public boolean a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IModuleEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "File";
+  }
+  
+  @Deprecated(message="ModuleEventPlugin依赖moduleName进行分发", replaceWith=@ReplaceWith(expression="emptyList()", imports={}))
+  @NotNull
+  public List<String> c()
+  {
+    return IModuleEventPlugin.DefaultImpls.a(this);
+  }
+  
+  public boolean d()
+  {
+    return IModuleEventPlugin.DefaultImpls.b(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.plugin.FileModulePlugin
  * JD-Core Version:    0.7.0.1
  */

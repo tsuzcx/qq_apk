@@ -14,8 +14,8 @@ class GroupTeamWorkAdapter$1
     if ((paramView.getTag() instanceof CloudFileItemBuilder.CloudFileHolder))
     {
       CloudFileItemBuilder.CloudFileHolder localCloudFileHolder = (CloudFileItemBuilder.CloudFileHolder)paramView.getTag();
-      if ((this.a.a != null) && (localCloudFileHolder.a.isClickable())) {
-        this.a.a.onClick(paramView);
+      if ((this.a.d != null) && (localCloudFileHolder.a.isClickable())) {
+        this.a.d.onClick(paramView);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -23,7 +23,7 @@ class GroupTeamWorkAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkAdapter.1
  * JD-Core Version:    0.7.0.1
  */

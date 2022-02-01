@@ -42,7 +42,7 @@ public class MiniAppGameDebugSettingFragment
   
   protected int getContentLayoutId()
   {
-    return 2131562373;
+    return 2131628804;
   }
   
   public void onAttach(Activity paramActivity)
@@ -54,13 +54,13 @@ public class MiniAppGameDebugSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371389);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131438733);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_system_webview", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.1(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371387);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131438731);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_old_desktop", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.2(this));
-    Object localObject1 = (FormSwitchItem)paramView.findViewById(2131371388);
+    Object localObject1 = (FormSwitchItem)paramView.findViewById(2131438732);
     paramBundle = BaseApplicationImpl.getApplication();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
@@ -68,38 +68,38 @@ public class MiniAppGameDebugSettingFragment
     paramBundle = paramBundle.getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
     ((FormSwitchItem)localObject1).setChecked(paramBundle.getBoolean("_minigame_start_with_sdk", false));
     ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.3(this, paramBundle));
-    localObject1 = (FormSwitchItem)paramView.findViewById(2131371354);
+    localObject1 = (FormSwitchItem)paramView.findViewById(2131438698);
     localObject2 = BaseApplicationImpl.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
     localStringBuilder.append("_user_sdk_miniapp_");
     ((FormSwitchItem)localObject1).setChecked(((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 4).getBoolean("_miniapp_start_with_sdk", true));
     ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.4(this));
-    localObject1 = (FormSwitchItem)paramView.findViewById(2131371353);
+    localObject1 = (FormSwitchItem)paramView.findViewById(2131438697);
     ((FormSwitchItem)localObject1).setChecked(paramBundle.getBoolean("_minigame_enable_jank_canary_brief", false));
     ((FormSwitchItem)localObject1).setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.5(this, paramBundle));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371357);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131438701);
     localObject1 = BaseApplicationImpl.getApplication();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
     ((StringBuilder)localObject2).append("_user_ipv6only_miniapp_");
     paramBundle.setChecked(((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4).getBoolean("_user_ipv6only_miniapp_", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.6(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371356);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131438700);
     localObject1 = BaseApplicationImpl.getApplication();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
     ((StringBuilder)localObject2).append("_user_embedded_video_");
     paramBundle.setChecked(((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4).getBoolean("_user_embedded_video_", true));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.7(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371355);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131438699);
     localObject1 = BaseApplicationImpl.getApplication();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
     ((StringBuilder)localObject2).append("_user_embedded_live_");
     paramBundle.setChecked(((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4).getBoolean("_user_embedded_live_", true));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.8(this));
-    paramView = (FormSwitchItem)paramView.findViewById(2131371358);
+    paramView = (FormSwitchItem)paramView.findViewById(2131438702);
     paramBundle = BaseApplicationImpl.getApplication();
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
@@ -110,7 +110,7 @@ public class MiniAppGameDebugSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppGameDebugSettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -23,16 +23,9 @@ import org.json.JSONObject;
 
 public class QQGameConstant
 {
-  public static Map<String, String> a;
-  public static Queue<String> a;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilQueue = new ArrayDeque(100);
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_Boolean = true;
-  }
+  public static Queue<String> a = new ArrayDeque(100);
+  public static Map<String, String> b = new HashMap();
+  public static boolean c = true;
   
   public static String a(MessageRecord paramMessageRecord)
   {
@@ -53,7 +46,7 @@ public class QQGameConstant
         return paramMessageRecord;
       }
       localObject2 = new JSONObject((String)localObject2);
-      paramMessageRecord = PublicAccountEventReport.a(((JSONObject)localObject2).optString("report_key_bytes_oac_msg_extend", ""));
+      paramMessageRecord = PublicAccountEventReport.b(((JSONObject)localObject2).optString("report_key_bytes_oac_msg_extend", ""));
       if (!TextUtils.isEmpty(paramMessageRecord)) {
         return paramMessageRecord;
       }
@@ -124,9 +117,9 @@ public class QQGameConstant
       ((StringBuilder)localObject1).append("_orted_configs");
       localObject1 = ((StringBuilder)localObject1).toString();
     }
-    if (jdField_a_of_type_JavaUtilMap.containsKey(localObject1))
+    if (b.containsKey(localObject1))
     {
-      localObject1 = (String)jdField_a_of_type_JavaUtilMap.get(localObject1);
+      localObject1 = (String)b.get(localObject1);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -177,7 +170,7 @@ public class QQGameConstant
           localObject1 = localObject2;
           localObject6 = ((JSONObject)localObject6).optString("ext_json", "");
           localObject1 = localObject2;
-          Object localObject7 = jdField_a_of_type_JavaUtilMap;
+          Object localObject7 = b;
           localObject1 = localObject2;
           StringBuilder localStringBuilder = new StringBuilder();
           localObject1 = localObject2;
@@ -187,7 +180,7 @@ public class QQGameConstant
           localObject1 = localObject2;
           ((Map)localObject7).put(localStringBuilder.toString(), localObject2);
           localObject1 = localObject2;
-          localObject7 = jdField_a_of_type_JavaUtilMap;
+          localObject7 = b;
           localObject1 = localObject2;
           localStringBuilder = new StringBuilder();
           localObject1 = localObject2;
@@ -197,7 +190,7 @@ public class QQGameConstant
           localObject1 = localObject2;
           ((Map)localObject7).put(localStringBuilder.toString(), localObject3);
           localObject1 = localObject2;
-          localObject7 = jdField_a_of_type_JavaUtilMap;
+          localObject7 = b;
           localObject1 = localObject2;
           localStringBuilder = new StringBuilder();
           localObject1 = localObject2;
@@ -207,7 +200,7 @@ public class QQGameConstant
           localObject1 = localObject2;
           ((Map)localObject7).put(localStringBuilder.toString(), localObject6);
           localObject1 = localObject2;
-          localObject7 = jdField_a_of_type_JavaUtilMap;
+          localObject7 = b;
           localObject1 = localObject2;
           localStringBuilder = new StringBuilder();
           localObject1 = localObject2;
@@ -328,7 +321,7 @@ public class QQGameConstant
         if (!(((ArrayList)localObject1).get(j) instanceof AbsStructMsgItem)) {
           break label1537;
         }
-        localObject2 = ((AbsStructMsgItem)((ArrayList)localObject1).get(j)).a;
+        localObject2 = ((AbsStructMsgItem)((ArrayList)localObject1).get(j)).ax;
         k = paramInt;
         m = 0;
         paramInt = i;
@@ -351,7 +344,7 @@ public class QQGameConstant
           }
         }
         if ((m != 0) && (paramInt != 0)) {
-          return GamePubAccountConstant.a(((AbsStructMsgElement)((ArrayList)localObject1).get(j)).b);
+          return GamePubAccountConstant.a(((AbsStructMsgElement)((ArrayList)localObject1).get(j)).d);
         }
       }
       else
@@ -362,7 +355,7 @@ public class QQGameConstant
           return paramMessageRecord;
         }
         return "";
-        paramMessageRecord = jdField_a_of_type_JavaUtilMap;
+        paramMessageRecord = b;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(str);
         ((StringBuilder)localObject2).append("_appid");
@@ -421,7 +414,7 @@ public class QQGameConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameConstant
  * JD-Core Version:    0.7.0.1
  */

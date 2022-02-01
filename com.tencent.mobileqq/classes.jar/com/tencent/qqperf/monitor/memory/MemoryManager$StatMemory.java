@@ -17,53 +17,53 @@ import mqq.app.MobileQQ;
 class MemoryManager$StatMemory
 {
   public int a;
-  public long a;
-  private String a;
-  public int b;
   public long b;
-  public int c;
   public long c;
   public long d;
   public long e;
   public long f;
-  public long g;
-  public long h;
+  public int g;
+  public int h;
+  public long i;
+  public long j;
+  public long k;
+  private String l;
   
   public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
+    this.a = 0;
+    this.b = 0L;
+    this.c = 0L;
     this.d = 0L;
     this.e = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
     this.f = 0L;
-    this.g = 0L;
-    this.h = 0L;
+    this.g = 0;
+    this.h = 0;
+    this.i = 0L;
+    this.j = 0L;
+    this.k = 0L;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.l = paramString;
     try
     {
-      paramString = MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0).getString(this.jdField_a_of_type_JavaLangString, null);
+      paramString = MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0).getString(this.l, null);
       if ((paramString != null) && (paramString.length() != 0))
       {
         paramString = new DataInputStream(new ByteArrayInputStream(Base64Util.decode(paramString, 0)));
-        this.jdField_a_of_type_Int = paramString.readInt();
-        this.jdField_a_of_type_Long = paramString.readLong();
-        this.jdField_b_of_type_Long = paramString.readLong();
-        this.jdField_c_of_type_Long = paramString.readLong();
+        this.a = paramString.readInt();
+        this.b = paramString.readLong();
+        this.c = paramString.readLong();
         this.d = paramString.readLong();
         this.e = paramString.readLong();
-        this.jdField_b_of_type_Int = paramString.readInt();
-        this.jdField_c_of_type_Int = paramString.readInt();
         this.f = paramString.readLong();
-        this.g = paramString.readLong();
-        this.h = paramString.readLong();
+        this.g = paramString.readInt();
+        this.h = paramString.readInt();
+        this.i = paramString.readLong();
+        this.j = paramString.readLong();
+        this.k = paramString.readLong();
         return;
       }
       a();
@@ -88,20 +88,20 @@ class MemoryManager$StatMemory
     {
       Object localObject = new ByteArrayOutputStream();
       DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
-      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_c_of_type_Long);
+      localDataOutputStream.writeInt(this.a);
+      localDataOutputStream.writeLong(this.b);
+      localDataOutputStream.writeLong(this.c);
       localDataOutputStream.writeLong(this.d);
       localDataOutputStream.writeLong(this.e);
-      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
-      localDataOutputStream.writeInt(this.jdField_c_of_type_Int);
       localDataOutputStream.writeLong(this.f);
-      localDataOutputStream.writeLong(this.g);
-      localDataOutputStream.writeLong(this.h);
+      localDataOutputStream.writeInt(this.g);
+      localDataOutputStream.writeInt(this.h);
+      localDataOutputStream.writeLong(this.i);
+      localDataOutputStream.writeLong(this.j);
+      localDataOutputStream.writeLong(this.k);
       localDataOutputStream.flush();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString(this.jdField_a_of_type_JavaLangString, Base64Util.encodeToString((byte[])localObject, 0)).commit();
+      MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString(this.l, Base64Util.encodeToString((byte[])localObject, 0)).commit();
       return;
     }
     catch (Exception localException)
@@ -114,7 +114,7 @@ class MemoryManager$StatMemory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.MemoryManager.StatMemory
  * JD-Core Version:    0.7.0.1
  */

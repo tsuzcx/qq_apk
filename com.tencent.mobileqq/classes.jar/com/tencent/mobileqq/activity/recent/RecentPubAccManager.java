@@ -15,47 +15,47 @@ public class RecentPubAccManager
   implements Manager
 {
   public static RecentPubAccManager a;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private Set<String> c = new HashSet();
   
   public RecentPubAccManager()
   {
-    a();
+    c();
   }
   
   public static RecentPubAccManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager = new RecentPubAccManager();
+        if (a == null) {
+          a = new RecentPubAccManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager;
+    return a;
   }
   
-  private void a()
+  private void c()
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = SharedPreUtils.o(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin());
+    this.b = SharedPreUtils.bq(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin());
     BaseApplication localBaseApplication = ((QQAppInterface)localObject).getApp();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RecentPubAccManager");
     localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
-    this.jdField_a_of_type_JavaUtilSet = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getStringSet("white_list_key", null);
+    this.c = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getStringSet("white_list_key", null);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("loadFromSp   mBlackUinList:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilSet);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(",  Switch: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("RecentPubAccManager", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -74,7 +74,7 @@ public class RecentPubAccManager
         ((StringBuilder)localObject).append(paramSet);
         QLog.d("RecentPubAccManager", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaUtilSet = paramSet;
+      this.c = paramSet;
       Object localObject = paramQQAppInterface.getApp();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("RecentPubAccManager");
@@ -97,26 +97,26 @@ public class RecentPubAccManager
       localStringBuilder.append(paramBoolean);
       QLog.d("RecentPubAccManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    SharedPreUtils.h(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.b = paramBoolean;
+    SharedPreUtils.g(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
   }
   
   public boolean a(String paramString)
   {
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    Set localSet = this.c;
     return (localSet != null) && (localSet.contains(paramString));
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccManager
  * JD-Core Version:    0.7.0.1
  */

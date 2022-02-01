@@ -16,16 +16,16 @@ class ViolaInitDelegate$3
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if ((!TextUtils.isEmpty(ViolaInitDelegate.a(this.a))) && (paramFloat != 0.0F) && (paramInt2 != 0))
+    if ((!TextUtils.isEmpty(ViolaInitDelegate.d(this.a))) && (paramFloat != 0.0F) && (paramInt2 != 0))
     {
       Object localObject = this.a;
-      ((ViolaInitDelegate)localObject).a(ViolaInitDelegate.a((ViolaInitDelegate)localObject));
+      ((ViolaInitDelegate)localObject).a(ViolaInitDelegate.d((ViolaInitDelegate)localObject));
       ViolaInitDelegate.a(this.a, null);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("violaViewPager onPageScrolled potition : ");
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append(" , mCurrentPosition:");
-      ((StringBuilder)localObject).append(ViolaInitDelegate.a(this.a));
+      ((StringBuilder)localObject).append(ViolaInitDelegate.e(this.a));
       QLog.d("ViolaInitDelegate", 1, ((StringBuilder)localObject).toString());
     }
   }
@@ -33,9 +33,9 @@ class ViolaInitDelegate$3
   public void onPageSelected(int paramInt)
   {
     int i = 0;
-    while (i < ViolaInitDelegate.a(this.a).size())
+    while (i < ViolaInitDelegate.c(this.a).size())
     {
-      ViolaBaseView localViolaBaseView = (ViolaBaseView)ViolaInitDelegate.a(this.a).get(i);
+      ViolaBaseView localViolaBaseView = (ViolaBaseView)ViolaInitDelegate.c(this.a).get(i);
       if (localViolaBaseView != null) {
         if (i != paramInt)
         {
@@ -51,12 +51,12 @@ class ViolaInitDelegate$3
       i += 1;
     }
     ViolaInitDelegate.a(this.a, paramInt);
-    ViolaInitDelegate.a(this.a).dealFlingEnableWhenSwitcher(paramInt);
+    ViolaInitDelegate.f(this.a).dealFlingEnableWhenSwitcher(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.delegate.ViolaInitDelegate.3
  * JD-Core Version:    0.7.0.1
  */

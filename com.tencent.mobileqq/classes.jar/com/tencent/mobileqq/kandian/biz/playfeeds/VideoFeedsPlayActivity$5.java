@@ -22,7 +22,7 @@ class VideoFeedsPlayActivity$5
     } else {
       i = 0;
     }
-    if (VideoFeedsPlayActivity.a(this.a) == 0)
+    if (VideoFeedsPlayActivity.g(this.a) == 0)
     {
       paramBundle = this.a;
       if (i == 0) {
@@ -30,24 +30,24 @@ class VideoFeedsPlayActivity$5
       }
       VideoFeedsPlayActivity.a(paramBundle, j);
     }
-    paramBundle = VideoFeedsPlayActivity.a(this.a);
+    paramBundle = VideoFeedsPlayActivity.c(this.a);
     if (paramBundle != null) {
-      paramBundle.u = VideoFeedsPlayActivity.a(this.a);
+      paramBundle.av = VideoFeedsPlayActivity.g(this.a);
     }
-    if (VideoFeedsPlayActivity.a(this.a) == 3) {
-      VideoFeedsPlayActivity.a(this.a, ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).createRecentColorNote(VideoFeedsPlayActivity.a(this.a)));
+    if (VideoFeedsPlayActivity.g(this.a) == 3) {
+      VideoFeedsPlayActivity.a(this.a, ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).createRecentColorNote(VideoFeedsPlayActivity.d(this.a)));
     }
-    VideoFeedsPlayActivity.a(this.a).mReserve = VideoFeedsHelper.a(paramBundle);
-    VideoFeedsPlayActivity.a(this.a).updateColorNote(VideoFeedsPlayActivity.a(this.a));
+    VideoFeedsPlayActivity.d(this.a).mReserve = VideoFeedsHelper.b(paramBundle);
+    VideoFeedsPlayActivity.f(this.a).updateColorNote(VideoFeedsPlayActivity.d(this.a));
     ReportUtil.a(paramBundle);
     if (i == 0) {
-      this.a.e();
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayActivity.5
  * JD-Core Version:    0.7.0.1
  */

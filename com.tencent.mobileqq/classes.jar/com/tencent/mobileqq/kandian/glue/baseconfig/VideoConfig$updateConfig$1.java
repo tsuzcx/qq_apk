@@ -12,22 +12,22 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoConfig$updateConfig$1
   implements BandWidthConfig.PreloadStrategy
 {
+  public boolean a(@Nullable String paramString)
+  {
+    return Aladdin.getConfig(298).getIntegerFromString(paramString, 0) == 1;
+  }
+  
   @NotNull
-  public String a(@Nullable String paramString)
+  public String b(@Nullable String paramString)
   {
     paramString = Aladdin.getConfig(288).getString(paramString, "");
     Intrinsics.checkExpressionValueIsNotNull(paramString, "Aladdin.getConfig(QQAlad…RANGE).getString(key, \"\")");
     return paramString;
   }
-  
-  public boolean a(@Nullable String paramString)
-  {
-    return Aladdin.getConfig(298).getIntegerFromString(paramString, 0) == 1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.baseconfig.VideoConfig.updateConfig.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,18 +33,13 @@ public class ShortVideoMomentItemBuilder
     super(paramContext, paramQQAppInterface);
   }
   
-  public int a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    return 1;
-  }
-  
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561225, paramViewGroup, false);
-    paramMomentViewHolder.g = ((TextView)paramViewGroup.findViewById(2131379920));
-    paramMomentViewHolder.e = ((ImageView)paramViewGroup.findViewById(2131369331));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131369441));
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131627579, paramViewGroup, false);
+    paramMomentViewHolder.t = ((TextView)paramViewGroup.findViewById(2131448801));
+    paramMomentViewHolder.u = ((ImageView)paramViewGroup.findViewById(2131436334));
+    paramMomentViewHolder.v = ((ImageView)paramViewGroup.findViewById(2131436497));
     return paramViewGroup;
   }
   
@@ -53,24 +48,12 @@ public class ShortVideoMomentItemBuilder
     return new ShortVideoMomentItemBuilder.ShortVideoViewHolder(this);
   }
   
-  public String a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    long l = ((ShortVideoMomentFeedInfo)((ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder).a).jdField_b_of_type_Long;
-    int i;
-    if (l % 1000L > 500L) {
-      i = (int)l / 1000 + 1;
-    } else {
-      i = (int)l / 1000;
-    }
-    return String.valueOf(i);
-  }
-  
   public void d(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     ShortVideoMomentFeedInfo localShortVideoMomentFeedInfo = (ShortVideoMomentFeedInfo)paramMomentViewHolder.a;
-    if ((localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry != null) && (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.publishState != 0))
+    if ((localShortVideoMomentFeedInfo.d != null) && (localShortVideoMomentFeedInfo.d.publishState != 0))
     {
-      NearbyMomentUtils.a(this.a, localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry, 2);
+      NearbyMomentUtils.a(this.a, localShortVideoMomentFeedInfo.d, 2);
       return;
     }
     super.d(paramMomentViewHolder);
@@ -80,28 +63,28 @@ public class ShortVideoMomentItemBuilder
   {
     ShortVideoMomentItemBuilder.ShortVideoViewHolder localShortVideoViewHolder = (ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder;
     ShortVideoMomentFeedInfo localShortVideoMomentFeedInfo = (ShortVideoMomentFeedInfo)localShortVideoViewHolder.a;
-    paramMomentViewHolder = TopicHelper.a(this.a, localShortVideoViewHolder.a.a, localShortVideoMomentFeedInfo.n);
+    paramMomentViewHolder = TopicHelper.a(this.a, localShortVideoViewHolder.a.y, localShortVideoMomentFeedInfo.s);
     boolean bool2 = TextUtils.isEmpty(paramMomentViewHolder);
     boolean bool1 = false;
     if (bool2)
     {
-      localShortVideoViewHolder.g.setVisibility(8);
+      localShortVideoViewHolder.t.setVisibility(8);
     }
     else
     {
-      localShortVideoViewHolder.g.setVisibility(0);
+      localShortVideoViewHolder.t.setVisibility(0);
       if ((paramMomentViewHolder instanceof SpannableString)) {
-        localShortVideoViewHolder.g.setMovementMethod(LinkMovementMethod.getInstance());
+        localShortVideoViewHolder.t.setMovementMethod(LinkMovementMethod.getInstance());
       }
-      localShortVideoViewHolder.g.setText(paramMomentViewHolder);
+      localShortVideoViewHolder.t.setText(paramMomentViewHolder);
     }
     int k = UIUtils.a(this.a, 180.0F);
-    String str = (String)localShortVideoViewHolder.e.getTag(2131378314);
+    String str = (String)localShortVideoViewHolder.u.getTag(2131446833);
     File localFile = null;
-    if (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry != null)
+    if (localShortVideoMomentFeedInfo.d != null)
     {
       paramMomentViewHolder = new StringBuilder();
-      paramMomentViewHolder.append(localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath);
+      paramMomentViewHolder.append(localShortVideoMomentFeedInfo.d.thumbPath);
       paramMomentViewHolder.append("");
       localFile = new File(paramMomentViewHolder.toString());
       bool1 = localFile.exists();
@@ -109,14 +92,14 @@ public class ShortVideoMomentItemBuilder
     Object localObject;
     if (bool1)
     {
-      localObject = localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath;
+      localObject = localShortVideoMomentFeedInfo.d.thumbPath;
       paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
-      if (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoWidth > 0)
+      if (localShortVideoMomentFeedInfo.d.videoWidth > 0)
       {
         paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
-        if (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoHeight > 0)
+        if (localShortVideoMomentFeedInfo.d.videoHeight > 0)
         {
-          i = localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoHeight * k / localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoWidth;
+          i = localShortVideoMomentFeedInfo.d.videoHeight * k / localShortVideoMomentFeedInfo.d.videoWidth;
           paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
           break label308;
         }
@@ -124,14 +107,14 @@ public class ShortVideoMomentItemBuilder
     }
     else
     {
-      localObject = localShortVideoMomentFeedInfo.jdField_a_of_type_JavaLangString;
+      localObject = localShortVideoMomentFeedInfo.c;
       paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
-      if (localShortVideoMomentFeedInfo.jdField_a_of_type_Int > 0)
+      if (localShortVideoMomentFeedInfo.a > 0)
       {
         paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
-        if (localShortVideoMomentFeedInfo.jdField_b_of_type_Int > 0)
+        if (localShortVideoMomentFeedInfo.b > 0)
         {
-          i = localShortVideoMomentFeedInfo.jdField_b_of_type_Int * k / localShortVideoMomentFeedInfo.jdField_a_of_type_Int;
+          i = localShortVideoMomentFeedInfo.b * k / localShortVideoMomentFeedInfo.a;
           paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
           break label308;
         }
@@ -146,47 +129,64 @@ public class ShortVideoMomentItemBuilder
     }
     if (!TextUtils.equals(str, paramMomentViewHolder))
     {
-      localShortVideoViewHolder.e.setTag(2131378314, paramMomentViewHolder);
-      localObject = (FrameLayout.LayoutParams)localShortVideoViewHolder.e.getLayoutParams();
+      localShortVideoViewHolder.u.setTag(2131446833, paramMomentViewHolder);
+      localObject = (FrameLayout.LayoutParams)localShortVideoViewHolder.u.getLayoutParams();
       if (localObject == null)
       {
         localObject = new FrameLayout.LayoutParams(k, j);
-        localShortVideoViewHolder.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localShortVideoViewHolder.u.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       else if ((((FrameLayout.LayoutParams)localObject).width != k) || (((FrameLayout.LayoutParams)localObject).height != j))
       {
         ((FrameLayout.LayoutParams)localObject).width = k;
         ((FrameLayout.LayoutParams)localObject).height = j;
-        localShortVideoViewHolder.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localShortVideoViewHolder.u.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       try
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.a.getResources().getDrawable(2130845650);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.a.getResources().getDrawable(2130845650);
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.a.getResources().getDrawable(2130847114);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.a.getResources().getDrawable(2130847114);
         if (bool1) {
           paramMomentViewHolder = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject);
         } else {
           paramMomentViewHolder = URLDrawable.getDrawable(paramMomentViewHolder, (URLDrawable.URLDrawableOptions)localObject);
         }
         paramMomentViewHolder.setTag(URLDrawableDecodeHandler.b(k, j, DisplayUtil.a(this.a, 3.0F)));
-        paramMomentViewHolder.setDecodeHandler(URLDrawableDecodeHandler.d);
-        localShortVideoViewHolder.e.setImageDrawable(paramMomentViewHolder);
+        paramMomentViewHolder.setDecodeHandler(URLDrawableDecodeHandler.e);
+        localShortVideoViewHolder.u.setImageDrawable(paramMomentViewHolder);
         return;
       }
       catch (Exception paramMomentViewHolder)
       {
-        localShortVideoViewHolder.e.setImageDrawable(this.a.getResources().getDrawable(2130845650));
+        localShortVideoViewHolder.u.setImageDrawable(this.a.getResources().getDrawable(2130847114));
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoMomentItemBuilder", 1, paramMomentViewHolder.toString());
         }
       }
     }
   }
+  
+  public int g(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    return 1;
+  }
+  
+  public String h(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    long l = ((ShortVideoMomentFeedInfo)((ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder).a).e;
+    int i;
+    if (l % 1000L > 500L) {
+      i = (int)l / 1000 + 1;
+    } else {
+      i = (int)l / 1000;
+    }
+    return String.valueOf(i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.ShortVideoMomentItemBuilder
  * JD-Core Version:    0.7.0.1
  */

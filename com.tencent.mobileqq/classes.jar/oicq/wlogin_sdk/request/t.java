@@ -514,7 +514,7 @@ public class t
     ((StringBuilder)localObject1).append(" cur_guid:");
     ((StringBuilder)localObject1).append(util.buf_to_string(B));
     ((StringBuilder)localObject1).append(" svn ");
-    ((StringBuilder)localObject1).append(2473L);
+    ((StringBuilder)localObject1).append(2477L);
     ((StringBuilder)localObject1).append(" at ");
     ((StringBuilder)localObject1).append(m());
     util.LOGI(((StringBuilder)localObject1).toString(), "");
@@ -918,7 +918,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.t
  * JD-Core Version:    0.7.0.1
  */

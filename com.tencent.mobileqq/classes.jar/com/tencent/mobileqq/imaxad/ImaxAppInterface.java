@@ -21,7 +21,7 @@ public class ImaxAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public String getCurrentAccountUin()
@@ -36,7 +36,7 @@ public class ImaxAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAppInterface
  * JD-Core Version:    0.7.0.1
  */

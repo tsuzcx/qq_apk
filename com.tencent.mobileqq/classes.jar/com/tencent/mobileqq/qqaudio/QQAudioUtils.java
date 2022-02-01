@@ -18,27 +18,25 @@ import mqq.os.MqqHandler;
 
 public class QQAudioUtils
 {
-  private static MediaFocusManager.OnMediaFocusChangeListener a;
+  public static final int[] a = { 8000, 12000, 16000, 24000, 36000, 44100, 48000 };
   @ConfigInject(configPath="Foundation/QQAudio/src/main/resources/Inject_QQAudioFocusLossProcessor.yml", version=1)
-  public static ArrayList<Class<? extends IAudioFocusLossProcessor>> a;
-  public static final int[] a;
-  private static ArrayList<IAudioFocusLossProcessor> b;
+  public static ArrayList<Class<? extends IAudioFocusLossProcessor>> b = new ArrayList();
+  private static ArrayList<IAudioFocusLossProcessor> c;
+  private static MediaFocusManager.OnMediaFocusChangeListener d;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 8000, 12000, 16000, 24000, 36000, 44100, 48000 };
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(QQPttAudioFocusLossProcessor.class);
-    jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener = new QQAudioUtils.1();
-    b = new ArrayList();
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    b.add(QQPttAudioFocusLossProcessor.class);
+    d = new QQAudioUtils.1();
+    c = new ArrayList();
+    Iterator localIterator = b.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Class)localIterator.next();
       try
       {
         localObject = (IAudioFocusLossProcessor)((Class)localObject).newInstance();
-        b.add(localObject);
+        c.add(localObject);
       }
       catch (InstantiationException localInstantiationException)
       {
@@ -65,7 +63,7 @@ public class QQAudioUtils
   {
     if (paramByte >= 0)
     {
-      int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt = a;
       if (paramByte < arrayOfInt.length) {
         return arrayOfInt[paramByte];
       }
@@ -79,7 +77,7 @@ public class QQAudioUtils
     paramByte = 0;
     while (paramInputStream.read(arrayOfByte) > 0)
     {
-      int i = a(arrayOfByte);
+      int i = b(arrayOfByte);
       byte b1 = paramByte + 20;
       paramByte = b1;
       if (i > 0)
@@ -96,14 +94,9 @@ public class QQAudioUtils
     return paramInt * 20 * 2 / 1000;
   }
   
-  public static int a(byte[] paramArrayOfByte)
-  {
-    return (paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8);
-  }
-  
   protected static void a()
   {
-    Iterator localIterator = b.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((IAudioFocusLossProcessor)localIterator.next()).a();
     }
@@ -135,7 +128,7 @@ public class QQAudioUtils
       if (paramContext.requestAudioFocus(null, 3, 2) == 1) {
         bool1 = true;
       }
-      MediaFocusManager.a().a(1, jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
+      MediaFocusManager.b().a(1, d);
     }
     else
     {
@@ -199,10 +192,15 @@ public class QQAudioUtils
     paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 8 & 0xFF));
     return paramArrayOfByte;
   }
+  
+  public static int b(byte[] paramArrayOfByte)
+  {
+    return (paramArrayOfByte[0] & 0xFF) + ((paramArrayOfByte[1] & 0xFF) << 8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.QQAudioUtils
  * JD-Core Version:    0.7.0.1
  */

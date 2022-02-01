@@ -11,13 +11,13 @@ class a$3
   
   public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    Log.d(a.j(), "on buffering update");
+    Log.d("MediaPlayerWrapper", "on buffering update");
     a.a(this.a).a(paramMediaPlayer, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.audio.a.3
  * JD-Core Version:    0.7.0.1
  */

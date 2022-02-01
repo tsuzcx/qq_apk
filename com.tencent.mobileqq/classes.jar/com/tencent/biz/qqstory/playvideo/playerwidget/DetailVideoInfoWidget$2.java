@@ -11,7 +11,7 @@ class DetailVideoInfoWidget$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.c(false);
     }

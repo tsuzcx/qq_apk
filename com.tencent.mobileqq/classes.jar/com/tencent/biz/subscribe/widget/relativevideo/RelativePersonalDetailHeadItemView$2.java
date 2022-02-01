@@ -9,7 +9,7 @@ class RelativePersonalDetailHeadItemView$2
   
   public void run()
   {
-    TextView localTextView = RelativePersonalDetailHeadItemView.a(this.this$0);
+    TextView localTextView = RelativePersonalDetailHeadItemView.b(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.a);
     localStringBuilder.append("");
@@ -18,7 +18,7 @@ class RelativePersonalDetailHeadItemView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView.2
  * JD-Core Version:    0.7.0.1
  */

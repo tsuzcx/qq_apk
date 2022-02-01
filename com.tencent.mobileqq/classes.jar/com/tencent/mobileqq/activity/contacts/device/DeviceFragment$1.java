@@ -9,12 +9,12 @@ class DeviceFragment$1
   
   protected void a(int paramInt)
   {
-    this.a.a.notifyDataSetChanged();
+    this.a.b.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.1
  * JD-Core Version:    0.7.0.1
  */

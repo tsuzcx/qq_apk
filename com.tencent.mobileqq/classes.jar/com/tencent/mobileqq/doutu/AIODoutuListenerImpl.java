@@ -20,21 +20,13 @@ import java.util.ArrayList;
 public class AIODoutuListenerImpl
   implements IDoutuListener
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private BaseChatPie b;
   
   AIODoutuListenerImpl(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a()
-  {
-    IApolloAIOHelper localIApolloAIOHelper = (IApolloAIOHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(8);
-    if (localIApolloAIOHelper != null) {
-      localIApolloAIOHelper.showApolloView(false);
-    }
+    this.a = paramQQAppInterface;
+    this.b = paramBaseChatPie;
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, DoutuData paramDoutuData, QBaseActivity paramQBaseActivity)
@@ -67,41 +59,33 @@ public class AIODoutuListenerImpl
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a())) {
+    if ((this.b.aU != null) && (this.b.aU.c())) {
       return false;
     }
-    return !((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteActive(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "combo");
-  }
-  
-  public void b()
-  {
-    IApolloAIOHelper localIApolloAIOHelper = (IApolloAIOHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(8);
-    if (localIApolloAIOHelper != null) {
-      localIApolloAIOHelper.getChatPieApolloViewController().a();
-    }
+    return !((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteActive(this.a, "combo");
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.m())
+    if (this.b.aZ())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AIODoutuListenerImpl", 2, "shouldShowCombo, isMsgBoxShown");
       }
       return false;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    if ((localObject != null) && (((TipsManager)localObject).a() != -1))
+    Object localObject = this.b.J();
+    if ((localObject != null) && (((TipsManager)localObject).b() != -1))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AIODoutuListenerImpl", 2, "shouldShowCombo, isTipsShown");
       }
       return false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips;
+    localObject = (TroopAioTips)this.b.au;
     if (localObject != null)
     {
-      if (((TroopAioTips)localObject).h())
+      if (((TroopAioTips)localObject).q())
       {
         if (QLog.isColorLevel()) {
           QLog.d("AIODoutuListenerImpl", 2, "shouldShowCombo, isTroopAioTipsShown");
@@ -118,10 +102,26 @@ public class AIODoutuListenerImpl
     }
     return true;
   }
+  
+  public void c()
+  {
+    IApolloAIOHelper localIApolloAIOHelper = (IApolloAIOHelper)this.b.q(8);
+    if (localIApolloAIOHelper != null) {
+      localIApolloAIOHelper.showApolloView(false);
+    }
+  }
+  
+  public void d()
+  {
+    IApolloAIOHelper localIApolloAIOHelper = (IApolloAIOHelper)this.b.q(8);
+    if (localIApolloAIOHelper != null) {
+      localIApolloAIOHelper.getChatPieApolloViewController().b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.AIODoutuListenerImpl
  * JD-Core Version:    0.7.0.1
  */

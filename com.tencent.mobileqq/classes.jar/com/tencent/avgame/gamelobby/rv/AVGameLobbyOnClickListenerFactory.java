@@ -5,20 +5,20 @@ import com.tencent.common.app.AppInterface;
 
 public class AVGameLobbyOnClickListenerFactory
 {
-  IAVGameRoomCenterFragment jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment = null;
-  private BaseViewHolder.OnClickListener jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener = new AVGameLobbyOnClickListenerFactory.1(this);
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  private BaseViewHolder.OnClickListener b = new AVGameLobbyOnClickListenerFactory.2(this);
-  private BaseViewHolder.OnClickListener c = new AVGameLobbyOnClickListenerFactory.3(this);
-  private BaseViewHolder.OnClickListener d = new AVGameLobbyOnClickListenerFactory.4(this);
-  private BaseViewHolder.OnClickListener e = new AVGameLobbyOnClickListenerFactory.5(this);
-  private BaseViewHolder.OnClickListener f = new AVGameLobbyOnClickListenerFactory.6(this);
-  private BaseViewHolder.OnClickListener g = new AVGameLobbyOnClickListenerFactory.7(this);
+  IAVGameRoomCenterFragment a = null;
+  AppInterface b = null;
+  private BaseViewHolder.OnClickListener c = new AVGameLobbyOnClickListenerFactory.1(this);
+  private BaseViewHolder.OnClickListener d = new AVGameLobbyOnClickListenerFactory.2(this);
+  private BaseViewHolder.OnClickListener e = new AVGameLobbyOnClickListenerFactory.3(this);
+  private BaseViewHolder.OnClickListener f = new AVGameLobbyOnClickListenerFactory.4(this);
+  private BaseViewHolder.OnClickListener g = new AVGameLobbyOnClickListenerFactory.5(this);
+  private BaseViewHolder.OnClickListener h = new AVGameLobbyOnClickListenerFactory.6(this);
+  private BaseViewHolder.OnClickListener i = new AVGameLobbyOnClickListenerFactory.7(this);
   
   public AVGameLobbyOnClickListenerFactory(IAVGameRoomCenterFragment paramIAVGameRoomCenterFragment)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment = paramIAVGameRoomCenterFragment;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramIAVGameRoomCenterFragment.a();
+    this.a = paramIAVGameRoomCenterFragment;
+    this.b = paramIAVGameRoomCenterFragment.a();
   }
   
   private String a(String paramString)
@@ -40,30 +40,6 @@ public class AVGameLobbyOnClickListenerFactory
     return localObject;
   }
   
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 8: 
-      return 2131558686;
-    case 7: 
-      return 2131558683;
-    case 6: 
-      return 2131558685;
-    case 5: 
-      return 2131558681;
-    case 4: 
-      return 2131558682;
-    case 3: 
-      return 2131558687;
-    case 2: 
-      return 2131558684;
-    }
-    return 2131558680;
-  }
-  
   public BaseViewHolder.OnClickListener a(int paramInt)
   {
     switch (paramInt)
@@ -71,19 +47,43 @@ public class AVGameLobbyOnClickListenerFactory
     default: 
       return null;
     case 7: 
-      return this.g;
+      return this.i;
     case 6: 
-      return this.f;
+      return this.h;
     case 5: 
-      return this.e;
+      return this.g;
     case 4: 
-      return this.d;
+      return this.f;
     case 3: 
-      return this.c;
+      return this.e;
     case 2: 
-      return this.b;
+      return this.d;
     }
-    return this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener;
+    return this.c;
+  }
+  
+  public int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 8: 
+      return 2131624303;
+    case 7: 
+      return 2131624300;
+    case 6: 
+      return 2131624302;
+    case 5: 
+      return 2131624298;
+    case 4: 
+      return 2131624299;
+    case 3: 
+      return 2131624304;
+    case 2: 
+      return 2131624301;
+    }
+    return 2131624297;
   }
 }
 

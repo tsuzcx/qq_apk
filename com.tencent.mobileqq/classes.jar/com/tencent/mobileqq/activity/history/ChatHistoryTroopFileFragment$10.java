@@ -15,13 +15,13 @@ class ChatHistoryTroopFileFragment$10
       if (this.this$0.getBaseActivity().isFinishing()) {
         return;
       }
-      ChatHistoryTroopFileFragment.a(this.this$0).setVisibility(0);
+      ChatHistoryTroopFileFragment.d(this.this$0).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.10
  * JD-Core Version:    0.7.0.1
  */

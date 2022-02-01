@@ -13,15 +13,15 @@ class QQAppInterface$6
   
   public void run()
   {
-    if (!QQAppInterface.access$1800(this.this$0).verifyAuthentication())
+    if (!QQAppInterface.access$1900(this.this$0).verifyAuthentication())
     {
       QLog.e("QQAppInterface", 1, "", new RuntimeException("WTF"));
       if (this.this$0.isLogin()) {
         this.this$0.logout(true);
       }
       Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", HardCodeUtil.a(2131710078));
-      localIntent.putExtra("msg", HardCodeUtil.a(2131710080));
+      localIntent.putExtra("title", HardCodeUtil.a(2131907785));
+      localIntent.putExtra("msg", HardCodeUtil.a(2131907787));
       localIntent.putExtra("reason", Constants.LogoutReason.kicked);
       localIntent.addFlags(268435456);
       BaseApplicationImpl.sApplication.startActivity(localIntent);
@@ -30,7 +30,7 @@ class QQAppInterface$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.6
  * JD-Core Version:    0.7.0.1
  */

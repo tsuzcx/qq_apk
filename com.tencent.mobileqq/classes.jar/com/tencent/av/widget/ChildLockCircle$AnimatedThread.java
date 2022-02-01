@@ -16,19 +16,19 @@ class ChildLockCircle$AnimatedThread
     {
       ChildLockCircle.a(this.this$0, 0);
       localChildLockCircle = this.this$0;
-      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.a(localChildLockCircle));
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.b(localChildLockCircle));
       localChildLockCircle = this.this$0;
-      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.a(localChildLockCircle));
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.c(localChildLockCircle));
     }
     else
     {
       ChildLockCircle.a(this.this$0, 100);
       localChildLockCircle = this.this$0;
-      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.b(localChildLockCircle));
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.d(localChildLockCircle));
       localChildLockCircle = this.this$0;
-      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.b(localChildLockCircle));
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.e(localChildLockCircle));
     }
-    ChildLockCircle.a(this.this$0, 0);
+    ChildLockCircle.b(this.this$0, 0);
     if (!ChildLockCircle.a(this.this$0)) {}
     try
     {
@@ -41,25 +41,25 @@ class ChildLockCircle$AnimatedThread
           if (ChildLockCircle.a(this.this$0))
           {
             localChildLockCircle = this.this$0;
-            ChildLockCircle.a(localChildLockCircle, (int)((float)(ChildLockCircle.a(localChildLockCircle) + 1L) + f));
-            if (ChildLockCircle.a(this.this$0) >= 100)
+            ChildLockCircle.a(localChildLockCircle, (int)((float)(ChildLockCircle.f(localChildLockCircle) + 1L) + f));
+            if (ChildLockCircle.f(this.this$0) >= 100)
             {
               localChildLockCircle = this.this$0;
-              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.c(localChildLockCircle));
+              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.g(localChildLockCircle));
               this.b = true;
             }
           }
           else
           {
             localChildLockCircle = this.this$0;
-            ChildLockCircle.a(localChildLockCircle, (int)((float)(ChildLockCircle.a(localChildLockCircle) - 1L) - f));
-            if (ChildLockCircle.a(this.this$0) <= 0)
+            ChildLockCircle.a(localChildLockCircle, (int)((float)(ChildLockCircle.f(localChildLockCircle) - 1L) - f));
+            if (ChildLockCircle.f(this.this$0) <= 0)
             {
               ChildLockCircle.a(this.this$0, 0);
               localChildLockCircle = this.this$0;
-              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.d(localChildLockCircle));
+              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.h(localChildLockCircle));
               localChildLockCircle = this.this$0;
-              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.a(localChildLockCircle));
+              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.c(localChildLockCircle));
               this.b = true;
             }
           }
@@ -70,9 +70,9 @@ class ChildLockCircle$AnimatedThread
             this.this$0.postInvalidate();
           }
           if ((this.b) && (!ChildLockCircle.a(this.this$0))) {
-            ChildLockCircle.a(this.this$0);
+            ChildLockCircle.i(this.this$0);
           } else if ((this.b) && (ChildLockCircle.a(this.this$0))) {
-            ChildLockCircle.a(this.this$0, 3);
+            ChildLockCircle.b(this.this$0, 3);
           }
         }
         try
@@ -96,8 +96,8 @@ class ChildLockCircle$AnimatedThread
         if (ChildLockCircle.a(this.this$0))
         {
           localChildLockCircle = this.this$0;
-          ChildLockCircle.a(localChildLockCircle, (int)(ChildLockCircle.a(localChildLockCircle) - 2L));
-          if (ChildLockCircle.a(this.this$0) > 0) {
+          ChildLockCircle.a(localChildLockCircle, (int)(ChildLockCircle.f(localChildLockCircle) - 2L));
+          if (ChildLockCircle.f(this.this$0) > 0) {
             break label547;
           }
           ChildLockCircle.a(this.this$0, 0);
@@ -105,16 +105,16 @@ class ChildLockCircle$AnimatedThread
         else
         {
           localChildLockCircle = this.this$0;
-          ChildLockCircle.a(localChildLockCircle, (int)(ChildLockCircle.a(localChildLockCircle) + 2L));
-          if (ChildLockCircle.a(this.this$0) < 100) {
+          ChildLockCircle.a(localChildLockCircle, (int)(ChildLockCircle.f(localChildLockCircle) + 2L));
+          if (ChildLockCircle.f(this.this$0) < 100) {
             break label547;
           }
         }
         this.this$0.postInvalidate();
-        ChildLockCircle.b(this.this$0);
+        ChildLockCircle.j(this.this$0);
         Thread.sleep(30L);
         label539:
-        ChildLockCircle.c(this.this$0);
+        ChildLockCircle.k(this.this$0);
         return;
         label547:
         this.this$0.postInvalidate();

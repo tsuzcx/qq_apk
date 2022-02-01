@@ -9,33 +9,33 @@ import mqq.os.MqqHandler;
 public abstract class BaseAIOContext
 {
   @NonNull
-  protected BaseSessionInfo a;
+  protected BaseSessionInfo d;
+  
+  public abstract void M();
+  
+  public abstract int N();
   
   @NonNull
-  public BaseSessionInfo a()
+  public BaseSessionInfo O()
   {
-    return this.a;
+    return this.d;
   }
   
   public abstract <T extends IHelper> T a(int paramInt);
   
-  public abstract PanelManager a();
+  public abstract boolean b(int paramInt);
   
-  public abstract MqqHandler a();
+  public abstract void e(int paramInt);
   
-  public abstract boolean a(int paramInt);
+  public abstract MqqHandler g();
   
-  public abstract int b();
+  public abstract PanelManager q();
   
-  public abstract void b(int paramInt);
-  
-  public abstract int e();
-  
-  public abstract void f();
+  public abstract int v();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseAIOContext
  * JD-Core Version:    0.7.0.1
  */

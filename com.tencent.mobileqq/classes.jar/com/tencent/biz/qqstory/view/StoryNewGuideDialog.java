@@ -11,42 +11,42 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class StoryNewGuideDialog
   extends ReportDialog
 {
-  protected TextView a;
   protected AnimationPoint a;
+  protected TextView b;
   
   public StoryNewGuideDialog(Context paramContext)
   {
-    super(paramContext, 2131755015);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561721, null);
+    super(paramContext, 2131951625);
+    View localView = LayoutInflater.from(paramContext).inflate(2131628100, null);
     localView.setOnTouchListener(new StoryNewGuideDialog.1(this));
     super.setContentView(localView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362695));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367929));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(UIUtils.a(paramContext, 25.0F));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new StoryNewGuideDialog.2(this, paramContext));
+    this.a = ((AnimationPoint)super.findViewById(2131428367));
+    this.b = ((TextView)super.findViewById(2131434517));
+    this.a.setRadius(UIUtils.a(paramContext, 25.0F));
+    this.a.setLoopTime(2000L);
+    this.a.setDuration(4000L);
+    this.a.setOnAnimationListener(new StoryNewGuideDialog.2(this, paramContext));
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.b.setText(paramString);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+    this.a.setIsVertical(paramBoolean);
   }
   
   public void dismiss()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    this.a.b();
     super.dismiss();
   }
   
   public void show()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    this.a.a();
     super.show();
   }
 }

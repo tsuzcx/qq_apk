@@ -29,15 +29,15 @@ class SSOWebviewPlugin$3
         localJSONObject.put("data", localWebSsoResponseBody.data.get());
         localJSONObject.put("retcode", localWebSsoResponseBody.ret.get());
         localJSONObject.put("cret", 0);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.c.callJs(this.a, new String[] { localJSONObject.toString() });
         if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()) {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.a = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.get();
+          this.c.d = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.get();
         }
         if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.has()) {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.b = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.get();
+          this.c.e = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.get();
         }
         if (QLog.isDevelopLevel()) {
-          QLog.i("SSOWebviewPlugin", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()), Integer.valueOf(this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.a), localJSONObject }));
+          QLog.i("SSOWebviewPlugin", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()), Integer.valueOf(this.c.d), localJSONObject }));
         }
       }
       if (!QLog.isColorLevel()) {
@@ -60,7 +60,7 @@ class SSOWebviewPlugin$3
     return;
     paramBundle = new JSONObject();
     paramBundle.put("cret", 1);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+    this.c.callJs(this.a, new String[] { paramBundle.toString() });
     if (QLog.isColorLevel())
     {
       QLog.d("SSOWebviewPlugin", 2, new Object[] { "onReceive type:", Integer.valueOf(paramInt), " isSuccess:", Boolean.valueOf(paramBoolean) });
@@ -74,14 +74,14 @@ class SSOWebviewPlugin$3
       {
         localJSONException.printStackTrace();
       }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      this.c.callJs(this.a, new String[] { paramBundle.toString() });
     }
     label426:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.SSOWebviewPlugin.3
  * JD-Core Version:    0.7.0.1
  */

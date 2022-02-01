@@ -48,6 +48,8 @@ public abstract interface IDavEventListener
   
   public abstract void onGroundGlassWaitTimeChange(String paramString, int paramInt);
   
+  public abstract void onInitAIDenoiseStatus();
+  
   public abstract void onInviteReached(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte);
   
   public abstract void onMediaCameraNotify(byte[] paramArrayOfByte, long paramLong);
@@ -60,13 +62,15 @@ public abstract interface IDavEventListener
   
   public abstract void onNetworkInfo_S2C(String paramString, byte[] paramArrayOfByte, long paramLong);
   
-  public abstract void onNetworkMonitorInfo(String paramString, byte[] paramArrayOfByte, long paramLong);
-  
   public abstract void onNetworkQualityChanged(int paramInt);
   
   public abstract void onNotRecvAudioData(boolean paramBoolean);
   
   public abstract void onNotifyAIDenoiseTips(boolean paramBoolean);
+  
+  public abstract void onNotifyRecvAvatar2d(String paramString, byte[] paramArrayOfByte);
+  
+  public abstract void onNotifyRecvAvatar2dSwitchPeer(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
   public abstract void onOtherTerminalChatingStatus(String paramString, long paramLong, int paramInt);
   
@@ -92,6 +96,8 @@ public abstract interface IDavEventListener
   
   public abstract void onRequestVideoMode(String paramString);
   
+  public abstract void onResponseRecvAvatar2dSwitch(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
   public abstract void onResumeAudio(String paramString);
   
   public abstract void onResumeVideo(String paramString);
@@ -99,6 +105,8 @@ public abstract interface IDavEventListener
   public abstract void onSDKCustomCommand(String paramString, long paramLong1, long paramLong2, long paramLong3);
   
   public abstract void onSendC2CMsg(String paramString);
+  
+  public abstract void onStateInfo(String paramString, byte[] paramArrayOfByte);
   
   public abstract void onSwitchGroup(String paramString, byte[] paramArrayOfByte, long paramLong);
   

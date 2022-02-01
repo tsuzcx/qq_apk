@@ -28,9 +28,9 @@ public class ReadInJoyHeadImageView
   extends NativeReadInjoyImageView
   implements IView, IReadInJoyHeadImageView, IReadInJoyUserInfoModule.RefreshUserInfoCallBack
 {
-  private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication().getResources(), 2130841788));
-  private WeakReference<IReadInJoyUserInfoModule.RefreshUserInfoCallBack> jdField_a_of_type_MqqUtilWeakReference;
+  private Drawable a = new BitmapDrawable(BitmapFactory.decodeResource(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication().getResources(), 2130842705));
+  private long b;
+  private WeakReference<IReadInJoyUserInfoModule.RefreshUserInfoCallBack> c;
   
   public ReadInJoyHeadImageView(Context paramContext)
   {
@@ -59,6 +59,19 @@ public class ReadInJoyHeadImageView
   
   private void a(ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
+    if (paramReadInJoyUserInfo != null)
+    {
+      if (RIJThreadHandler.f())
+      {
+        setHeadImg(paramReadInJoyUserInfo);
+        return;
+      }
+      RIJThreadHandler.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
+    }
+  }
+  
+  private void setHeadImg(ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
     if (paramReadInJoyUserInfo == null) {
       return;
     }
@@ -67,24 +80,6 @@ public class ReadInJoyHeadImageView
     localStringBuilder.append(paramReadInJoyUserInfo.uin);
     QLog.d("ReadInJoyHeadImageView", 1, localStringBuilder.toString());
     setImageSrc(((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getResultFaceUrl(paramReadInJoyUserInfo));
-  }
-  
-  private void b(ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    if (paramReadInJoyUserInfo != null)
-    {
-      if (RIJThreadHandler.a())
-      {
-        a(paramReadInJoyUserInfo);
-        return;
-      }
-      RIJThreadHandler.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
-    }
-  }
-  
-  public View a()
-  {
-    return this;
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -97,6 +92,11 @@ public class ReadInJoyHeadImageView
   public int getComMeasuredWidth()
   {
     return getMeasuredWidth();
+  }
+  
+  public View getView()
+  {
+    return this;
   }
   
   public void measureComponent(int paramInt1, int paramInt2)
@@ -122,9 +122,9 @@ public class ReadInJoyHeadImageView
     ((StringBuilder)localObject).append(" onLoadUserInfoFailed:");
     ((StringBuilder)localObject).append(paramString2);
     QLog.d("ReadInJoyHeadImageView", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    localObject = this.c;
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-      ((IReadInJoyUserInfoModule.RefreshUserInfoCallBack)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoFailed(paramString1, paramString2);
+      ((IReadInJoyUserInfoModule.RefreshUserInfoCallBack)this.c.get()).onLoadUserInfoFailed(paramString1, paramString2);
     }
   }
   
@@ -136,15 +136,15 @@ public class ReadInJoyHeadImageView
     ((StringBuilder)localObject).append(" ");
     ((StringBuilder)localObject).append(paramReadInJoyUserInfo);
     QLog.d("ReadInJoyHeadImageView", 2, ((StringBuilder)localObject).toString());
-    if (TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long)))
+    if (TextUtils.equals(paramString, String.valueOf(this.b)))
     {
       if (paramReadInJoyUserInfo == null) {
         return;
       }
       ThreadManager.getUIHandler().post(new ReadInJoyHeadImageView.1(this, paramReadInJoyUserInfo));
-      localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      localObject = this.c;
       if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-        ((IReadInJoyUserInfoModule.RefreshUserInfoCallBack)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
+        ((IReadInJoyUserInfoModule.RefreshUserInfoCallBack)this.c.get()).onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
       }
     }
   }
@@ -171,15 +171,15 @@ public class ReadInJoyHeadImageView
       QLog.d("ReadInJoyHeadImageView", 2, "Uin is illegal");
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
     if (paramBoolean1) {
-      setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      setImagePlaceHolder(this.a);
     }
     if (paramRefreshUserInfoCallBack != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramRefreshUserInfoCallBack);
+      this.c = new WeakReference(paramRefreshUserInfoCallBack);
     }
-    paramRefreshUserInfoCallBack = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getSingleKDUserInfo(this.jdField_a_of_type_Long, this, paramBoolean2);
-    b(paramRefreshUserInfoCallBack);
+    paramRefreshUserInfoCallBack = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getSingleKDUserInfo(this.b, this, paramBoolean2);
+    a(paramRefreshUserInfoCallBack);
     if ((paramRefreshUserInfoCallBack != null) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -211,7 +211,7 @@ public class ReadInJoyHeadImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView
  * JD-Core Version:    0.7.0.1
  */

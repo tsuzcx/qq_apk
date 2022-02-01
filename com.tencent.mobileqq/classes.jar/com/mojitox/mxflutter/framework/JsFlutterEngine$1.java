@@ -49,12 +49,12 @@ class JsFlutterEngine$1
         if (i != 2) {
           return;
         }
-        MxLog.c("MXJSFlutterEngine", paramMethodCall.arguments.toString());
+        MxLog.b("MXJSFlutterEngine", paramMethodCall.arguments.toString());
         return;
       }
       localObject = (String)paramMethodCall.argument("callbackId");
       paramMethodCall = (Map)paramMethodCall.argument("param");
-      JsEngineLoader.a().a().a((String)localObject, paramMethodCall);
+      JsEngineLoader.a().d().a((String)localObject, paramMethodCall);
     }
     else
     {
@@ -67,7 +67,7 @@ class JsFlutterEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.JsFlutterEngine.1
  * JD-Core Version:    0.7.0.1
  */

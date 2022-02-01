@@ -25,8 +25,6 @@ public abstract class LoadingLayoutBase
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract int a();
-  
   public abstract void a(float paramFloat);
   
   public abstract void d();
@@ -34,6 +32,8 @@ public abstract class LoadingLayoutBase
   public abstract void e();
   
   public abstract void f();
+  
+  public abstract int getContentSize();
   
   public abstract void h();
   
@@ -59,7 +59,7 @@ public abstract class LoadingLayoutBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.pulltorefresh.LoadingLayoutBase
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ class GAudioMembersCtrlActivity$2$1
   
   public void run()
   {
-    if ((GAudioMembersCtrlActivity.a(this.a.a) != null) && (GAudioMembersCtrlActivity.a(this.a.a).size() != 0))
+    if ((GAudioMembersCtrlActivity.a(this.a.b) != null) && (GAudioMembersCtrlActivity.a(this.a.b).size() != 0))
     {
-      this.a.a.c();
+      this.a.b.c();
       return;
     }
     QLog.d("GAudioMembersCtrlActivity", 1, "mInviteMemberInfoChange null");

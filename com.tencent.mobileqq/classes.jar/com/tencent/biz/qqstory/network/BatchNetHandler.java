@@ -4,45 +4,40 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 
 public abstract class BatchNetHandler
 {
-  protected int a;
-  protected BatchHandlerListPuller a;
-  
-  public BatchNetHandler()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  protected int a = 0;
+  protected BatchHandlerListPuller b;
   
   public abstract void a();
   
   public void a(BatchHandlerListPuller paramBatchHandlerListPuller)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = paramBatchHandlerListPuller;
+    this.b = paramBatchHandlerListPuller;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i < 1)
     {
-      this.jdField_a_of_type_Int = (i + 1);
-      SLog.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      this.a = (i + 1);
+      SLog.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.a) }));
       a();
       return true;
     }
     return false;
   }
   
-  public void b()
+  public void c()
   {
-    BatchHandlerListPuller localBatchHandlerListPuller = this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
+    BatchHandlerListPuller localBatchHandlerListPuller = this.b;
     if (localBatchHandlerListPuller != null) {
       localBatchHandlerListPuller.a(this);
     }
   }
   
-  public void c()
+  public void d()
   {
-    BatchHandlerListPuller localBatchHandlerListPuller = this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
+    BatchHandlerListPuller localBatchHandlerListPuller = this.b;
     if (localBatchHandlerListPuller != null) {
       localBatchHandlerListPuller.b(this);
     }
@@ -50,7 +45,7 @@ public abstract class BatchNetHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.BatchNetHandler
  * JD-Core Version:    0.7.0.1
  */

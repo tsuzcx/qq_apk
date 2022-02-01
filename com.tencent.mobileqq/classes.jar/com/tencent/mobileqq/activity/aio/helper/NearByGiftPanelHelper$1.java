@@ -12,9 +12,9 @@ class NearByGiftPanelHelper$1
   
   public void a()
   {
-    INearbyGiftPanelDialog localINearbyGiftPanelDialog = this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftINearbyGiftPanelDialog;
+    INearbyGiftPanelDialog localINearbyGiftPanelDialog = this.a.g;
     int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a == 10002) {
+    if (this.a.b.O().a == 10002) {
       i = 8;
     } else {
       i = 6;
@@ -24,12 +24,12 @@ class NearByGiftPanelHelper$1
   
   public void b()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftINearbyGiftPanelDialog.a();
+    this.a.g.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearByGiftPanelHelper.1
  * JD-Core Version:    0.7.0.1
  */

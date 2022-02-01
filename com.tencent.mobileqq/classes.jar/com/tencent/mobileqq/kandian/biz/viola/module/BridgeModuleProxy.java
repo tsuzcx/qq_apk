@@ -8,7 +8,7 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/viola/module/BridgeModuleProxy;", "Lcom/tencent/mobileqq/kandian/biz/viola/api/IBridgeModule;", "()V", "addFavorite", "", "jsonObject", "Lorg/json/JSONObject;", "c2sReport", "cancelUploadingVideo", "callbackId", "", "cancelVideoPreDownload", "chooseVideoAddToTopic", "callback", "dwellTimeMillisReport", "getCreateTopicPermission", "getDeviceInfo", "getFailInvokeObj", "errorMsg", "getMotiveAd", "callBack", "getSuccInvokeObj", "data", "", "getUploadVideoPermission", "getUploadingVideoInfo", "getUserInfo", "getViolaInstance", "Lcom/tencent/viola/core/ViolaInstance;", "handleClick", "hideTopicVideoComment", "invoke", "callBackId", "openAddVideoView", "openApp", "schema", "openCreateTopicView", "openEditTopicView", "openLevelDialog", "openVideo", "pauseUploadingVideo", "performLikeAnimation", "popBack", "resetSatusBarBlackStyle", "resetSatusBarWhiteStyle", "resumeUploadingVideo", "sendRequest", "params", "setInvokeCallJSCallback", "Lcom/tencent/mobileqq/kandian/biz/viola/api/InvokeCallJSCallback;", "setNavBtnWithFragment", "fragment", "Landroidx/fragment/app/Fragment;", "setTitle", "shareVideoWithFriend", "showShareReadInJoyMenu", "currentFragment", "startImagePreDownload", "startVideoPreDownload", "updateIndepentTabState", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/viola/module/BridgeModuleProxy;", "Lcom/tencent/mobileqq/kandian/biz/viola/api/IBridgeModule;", "()V", "addFavorite", "", "jsonObject", "Lorg/json/JSONObject;", "c2sReport", "cancelUploadingVideo", "callbackId", "", "cancelVideoPreDownload", "dwellTimeMillisReport", "getDeviceInfo", "getFailInvokeObj", "errorMsg", "getMotiveAd", "callBack", "getSuccInvokeObj", "data", "", "getUploadVideoPermission", "callback", "getUploadingVideoInfo", "getUserInfo", "getViolaInstance", "Lcom/tencent/viola/core/ViolaInstance;", "handleClick", "hideTopicVideoComment", "invoke", "callBackId", "openAddVideoView", "openApp", "schema", "openLevelDialog", "openVideo", "pauseUploadingVideo", "performLikeAnimation", "popBack", "resetSatusBarBlackStyle", "resetSatusBarWhiteStyle", "resumeUploadingVideo", "sendRequest", "params", "setInvokeCallJSCallback", "Lcom/tencent/mobileqq/kandian/biz/viola/api/InvokeCallJSCallback;", "setNavBtnWithFragment", "fragment", "Landroidx/fragment/app/Fragment;", "setTitle", "shareVideoWithFriend", "showShareReadInJoyMenu", "currentFragment", "startImagePreDownload", "startVideoPreDownload", "updateIndepentTabState", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public class BridgeModuleProxy
   implements IBridgeModule
 {
@@ -32,19 +32,9 @@ public class BridgeModuleProxy
     this.$$delegate_0.cancelVideoPreDownload();
   }
   
-  public void chooseVideoAddToTopic(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
-  {
-    this.$$delegate_0.chooseVideoAddToTopic(paramJSONObject, paramString);
-  }
-  
   public void dwellTimeMillisReport(@Nullable JSONObject paramJSONObject)
   {
     this.$$delegate_0.dwellTimeMillisReport(paramJSONObject);
-  }
-  
-  public void getCreateTopicPermission(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
-  {
-    this.$$delegate_0.getCreateTopicPermission(paramJSONObject, paramString);
   }
   
   @Nullable
@@ -115,16 +105,6 @@ public class BridgeModuleProxy
   public void openApp(@Nullable String paramString)
   {
     this.$$delegate_0.openApp(paramString);
-  }
-  
-  public void openCreateTopicView(@Nullable String paramString)
-  {
-    this.$$delegate_0.openCreateTopicView(paramString);
-  }
-  
-  public void openEditTopicView(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
-  {
-    this.$$delegate_0.openEditTopicView(paramJSONObject, paramString);
   }
   
   public void openLevelDialog(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
@@ -214,7 +194,7 @@ public class BridgeModuleProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.module.BridgeModuleProxy
  * JD-Core Version:    0.7.0.1
  */

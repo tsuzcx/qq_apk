@@ -16,12 +16,12 @@ class TransitionAnimHelper$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (TransitionAnimHelper.a(this.a) != null) {
-      TransitionAnimHelper.a(this.a).a(3);
+    if (TransitionAnimHelper.c(this.a) != null) {
+      TransitionAnimHelper.c(this.a).a(3);
     }
-    if (TransitionAnimHelper.a(this.a) != null)
+    if (TransitionAnimHelper.d(this.a) != null)
     {
-      TransitionAnimHelper.a(this.a).setAlpha(0.0F);
+      TransitionAnimHelper.e(this.a).setAlpha(0.0F);
       TransitionAnimHelper.a(this.a, null);
     }
   }

@@ -19,10 +19,10 @@ final class ShortVideoShareUtil$7
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+    paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
     WXShareHelper.a().a(new ShortVideoShareUtil.7.2(this));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    WXShareHelper.a().a(this.a, this.c, paramURLDrawable, this.d, this.e);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(this.f);
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -32,16 +32,16 @@ final class ShortVideoShareUtil$7
     Bitmap localBitmap = ShortVideoShareUtil.a(paramURLDrawable);
     paramURLDrawable = localBitmap;
     if (localBitmap == null) {
-      paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+      paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
     }
     WXShareHelper.a().a(new ShortVideoShareUtil.7.1(this));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    WXShareHelper.a().a(this.a, this.c, paramURLDrawable, this.d, this.e);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.7
  * JD-Core Version:    0.7.0.1
  */

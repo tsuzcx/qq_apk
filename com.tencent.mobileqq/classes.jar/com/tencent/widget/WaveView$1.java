@@ -19,8 +19,8 @@ class WaveView$1
     default: 
       break;
     case 1003: 
-      WaveView.a(this.a).removeMessages(1001);
-      WaveView.a(this.a).removeMessages(1002);
+      WaveView.e(this.a).removeMessages(1001);
+      WaveView.e(this.a).removeMessages(1002);
       break;
     case 1002: 
       this.a.invalidate();
@@ -33,8 +33,8 @@ class WaveView$1
         paramMessage = this.a;
         WaveView.b(paramMessage, WaveView.d(paramMessage) - WaveView.c(this.a));
       }
-      WaveView.a(this.a).removeMessages(1002);
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      WaveView.e(this.a).removeMessages(1002);
+      WaveView.e(this.a).sendEmptyMessageDelayed(1002, 40L);
       break;
     case 1001: 
       this.a.invalidate();
@@ -47,14 +47,14 @@ class WaveView$1
         paramMessage = this.a;
         WaveView.b(paramMessage, WaveView.d(paramMessage) - WaveView.c(this.a));
       }
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      WaveView.e(this.a).sendEmptyMessageDelayed(1002, 40L);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.WaveView.1
  * JD-Core Version:    0.7.0.1
  */

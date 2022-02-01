@@ -11,12 +11,12 @@ class QlinkReliableReport$1
   {
     QLog.d("QlinkReliableReport", 2, "doStopReportTimer :  on timer");
     QlinkReliableReport.a(this.this$0, null);
-    QlinkReliableReport.g();
+    QlinkReliableReport.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkReliableReport.1
  * JD-Core Version:    0.7.0.1
  */

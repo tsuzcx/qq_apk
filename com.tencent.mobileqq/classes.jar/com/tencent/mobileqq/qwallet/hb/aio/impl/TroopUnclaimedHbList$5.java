@@ -15,19 +15,19 @@ class TroopUnclaimedHbList$5
   public void onDismiss()
   {
     ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).onActiveAccount();
-    if ((TroopUnclaimedHbList.a(this.a) != null) && (TroopUnclaimedHbList.HbListAdapter.a(TroopUnclaimedHbList.a(this.a)) != null))
+    if ((TroopUnclaimedHbList.c(this.a) != null) && (TroopUnclaimedHbList.HbListAdapter.a(TroopUnclaimedHbList.c(this.a)) != null))
     {
-      TroopUnclaimedHbList.HbListAdapter.a(TroopUnclaimedHbList.a(this.a)).clear();
-      TroopUnclaimedHbList.a(this.a).notifyDataSetChanged();
+      TroopUnclaimedHbList.HbListAdapter.a(TroopUnclaimedHbList.c(this.a)).clear();
+      TroopUnclaimedHbList.c(this.a).notifyDataSetChanged();
     }
-    if ((!TroopUnclaimedHbList.a(this.a)) && (TroopUnclaimedHbList.a(this.a) != null)) {
+    if ((!TroopUnclaimedHbList.d(this.a)) && (TroopUnclaimedHbList.a(this.a) != null)) {
       QWalletTools.a(TroopUnclaimedHbList.a(this.a), TroopUnclaimedHbList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.5
  * JD-Core Version:    0.7.0.1
  */

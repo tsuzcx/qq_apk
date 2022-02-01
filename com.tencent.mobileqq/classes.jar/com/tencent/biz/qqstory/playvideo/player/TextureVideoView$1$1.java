@@ -11,20 +11,20 @@ class TextureVideoView$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.d = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.c();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.e = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.d();
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.d != 0) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.e != 0))
+    this.b.a.k = this.a.l();
+    this.b.a.l = this.a.m();
+    if ((this.b.a.k != 0) && (this.b.a.l != 0))
     {
       if (Build.VERSION.SDK_INT >= 15) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.getSurfaceTexture().setDefaultBufferSize(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.e);
+        this.b.a.getSurfaceTexture().setDefaultBufferSize(this.b.a.k, this.b.a.l);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView$1.a.requestLayout();
+      this.b.a.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1
  * JD-Core Version:    0.7.0.1
  */

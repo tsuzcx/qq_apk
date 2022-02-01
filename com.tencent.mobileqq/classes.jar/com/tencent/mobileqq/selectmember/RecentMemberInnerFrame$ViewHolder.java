@@ -8,13 +8,13 @@ class RecentMemberInnerFrame$ViewHolder
   extends FacePreloadHolder.ViewHolder
 {
   public CheckBox a;
-  public TextView a;
+  public TextView b;
   
   private RecentMemberInnerFrame$ViewHolder(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.RecentMemberInnerFrame.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

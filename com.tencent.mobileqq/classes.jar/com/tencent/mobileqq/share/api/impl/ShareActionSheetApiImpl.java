@@ -3,6 +3,8 @@ package com.tencent.mobileqq.share.api.impl;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.share.api.IShareActionSheetApi;
 import com.tencent.mobileqq.share.api.QCircleActionSheetClickListener;
 import com.tencent.mobileqq.share.api.ShareActionSheetClickListener;
@@ -28,31 +30,37 @@ public class ShareActionSheetApiImpl
       return localArrayList;
     }
     if (paramShareConfig.isShowDelete) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(40));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(40, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowSave) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(39));
-    }
-    if (paramShareConfig.isShowDeletePush) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(140));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(39, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowBarrageOpen) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(142));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(142, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowBarrageClose) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(143));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(143, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowDisLike) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(44, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowHideThisWork) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(141));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(141, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowReport) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(11, paramShareConfig.isForceNightTheme));
+    }
+    if (paramShareConfig.isShowFeedback) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(151, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowDebug) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(74));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(74, paramShareConfig.isForceNightTheme));
+    }
+    if (paramShareConfig.isShowDeletePush) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(140, paramShareConfig.isForceNightTheme));
+    }
+    if (paramShareConfig.isShowDeletePushDisable) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(167, paramShareConfig.isForceNightTheme));
     }
     return localArrayList;
   }
@@ -64,16 +72,16 @@ public class ShareActionSheetApiImpl
       return localArrayList;
     }
     if (paramShareConfig.isShowShareToFriend) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowShareToQZone) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowShareToWechat) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9, paramShareConfig.isForceNightTheme));
     }
     if (paramShareConfig.isShowShareToWechatCircle) {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10, paramShareConfig.isForceNightTheme));
     }
     return localArrayList;
   }
@@ -93,90 +101,110 @@ public class ShareActionSheetApiImpl
             {
               if (i != 86)
               {
-                if (i != 162)
+                if (i != 151)
                 {
-                  switch (i)
+                  if (i != 162)
                   {
-                  default: 
-                    switch (i)
+                    if (i != 167)
                     {
-                    default: 
                       switch (i)
                       {
                       default: 
+                        switch (i)
+                        {
+                        default: 
+                          switch (i)
+                          {
+                          default: 
+                            break;
+                          case 143: 
+                            paramActionSheetItem = this.mShareActionSheetClickListener;
+                            if (paramActionSheetItem == null) {
+                              break;
+                            }
+                            paramActionSheetItem.switchBarrageClose();
+                            break;
+                          case 142: 
+                            paramActionSheetItem = this.mShareActionSheetClickListener;
+                            if (paramActionSheetItem == null) {
+                              break;
+                            }
+                            paramActionSheetItem.switchBarrageOpen();
+                            break;
+                          case 141: 
+                            paramActionSheetItem = this.mShareActionSheetClickListener;
+                            if (paramActionSheetItem == null) {
+                              break;
+                            }
+                            paramActionSheetItem.hideThisWork();
+                            break;
+                          case 140: 
+                            paramActionSheetItem = this.mShareActionSheetClickListener;
+                            if (paramActionSheetItem == null) {
+                              break;
+                            }
+                            paramActionSheetItem.deleteHasPush();
+                          }
+                          break;
+                        case 74: 
+                          paramActionSheetItem = this.mShareActionSheetClickListener;
+                          if (paramActionSheetItem == null) {
+                            break;
+                          }
+                          paramActionSheetItem.miniAppDebugOn();
+                          break;
+                        case 72: 
+                          ShareActionSheetClickListener localShareActionSheetClickListener = this.mShareActionSheetClickListener;
+                          if (localShareActionSheetClickListener == null) {
+                            break;
+                          }
+                          localShareActionSheetClickListener.shareToSpecifiedFriend(paramActionSheetItem.uin, paramActionSheetItem.uinType);
+                        }
                         break;
-                      case 143: 
+                      case 11: 
                         paramActionSheetItem = this.mShareActionSheetClickListener;
                         if (paramActionSheetItem == null) {
                           break;
                         }
-                        paramActionSheetItem.switchBarrageClose();
+                        paramActionSheetItem.report();
                         break;
-                      case 142: 
+                      case 10: 
                         paramActionSheetItem = this.mShareActionSheetClickListener;
                         if (paramActionSheetItem == null) {
                           break;
                         }
-                        paramActionSheetItem.switchBarrageOpen();
+                        paramActionSheetItem.shareToWeChatCircle();
                         break;
-                      case 141: 
+                      case 9: 
                         paramActionSheetItem = this.mShareActionSheetClickListener;
                         if (paramActionSheetItem == null) {
                           break;
                         }
-                        paramActionSheetItem.hideThisWork();
+                        paramActionSheetItem.shareToWeChat();
                         break;
-                      case 140: 
-                        paramActionSheetItem = this.mShareActionSheetClickListener;
-                        if (paramActionSheetItem == null) {
-                          break;
-                        }
-                        paramActionSheetItem.deleteHasPush();
                       }
-                      break;
-                    case 74: 
+                    }
+                    else
+                    {
                       paramActionSheetItem = this.mShareActionSheetClickListener;
-                      if (paramActionSheetItem == null) {
-                        break;
+                      if (paramActionSheetItem != null) {
+                        paramActionSheetItem.cancelPushDisable();
                       }
-                      paramActionSheetItem.miniAppDebugOn();
-                      break;
-                    case 72: 
-                      ShareActionSheetClickListener localShareActionSheetClickListener = this.mShareActionSheetClickListener;
-                      if (localShareActionSheetClickListener == null) {
-                        break;
-                      }
-                      localShareActionSheetClickListener.shareToSpecifiedFriend(paramActionSheetItem.uin, paramActionSheetItem.uinType);
                     }
-                    break;
-                  case 11: 
+                  }
+                  else
+                  {
                     paramActionSheetItem = this.mShareActionSheetClickListener;
-                    if (paramActionSheetItem == null) {
-                      break;
+                    if (paramActionSheetItem != null) {
+                      paramActionSheetItem.jumpQcirclePrivateMessage();
                     }
-                    paramActionSheetItem.report();
-                    break;
-                  case 10: 
-                    paramActionSheetItem = this.mShareActionSheetClickListener;
-                    if (paramActionSheetItem == null) {
-                      break;
-                    }
-                    paramActionSheetItem.shareToWeChatCircle();
-                    break;
-                  case 9: 
-                    paramActionSheetItem = this.mShareActionSheetClickListener;
-                    if (paramActionSheetItem == null) {
-                      break;
-                    }
-                    paramActionSheetItem.shareToWeChat();
-                    break;
                   }
                 }
                 else
                 {
                   paramActionSheetItem = this.mShareActionSheetClickListener;
                   if (paramActionSheetItem != null) {
-                    paramActionSheetItem.jumpQcirclePrivateMessage();
+                    paramActionSheetItem.feedback();
                   }
                 }
               }
@@ -195,7 +223,7 @@ public class ShareActionSheetApiImpl
                 paramActionSheetItem.showReportDisLike();
               }
               bool = false;
-              break label435;
+              break label487;
             }
           }
           else
@@ -230,7 +258,7 @@ public class ShareActionSheetApiImpl
       }
     }
     boolean bool = true;
-    label435:
+    label487:
     if ((i == 3) || (i == 9) || (i == 10) || (i == 72) || (i == 73) || (i == 2) || (i == 142) || (i == 143))
     {
       paramActionSheetItem = this.mQCircleClickListener;
@@ -260,6 +288,7 @@ public class ShareActionSheetApiImpl
   {
     ShareActionSheetV2.Param localParam = new ShareActionSheetV2.Param();
     localParam.context = paramContext;
+    localParam.dimAmount = -1.0F;
     this.mShareActionSheet = ShareActionSheetFactory.create(localParam);
     this.mShareActionSheet.setItemClickListenerV2(new ShareActionSheetApiImpl.1(this));
   }
@@ -287,6 +316,19 @@ public class ShareActionSheetApiImpl
     this.mShareActionSheet.setCancelListener(paramOnCancelListener);
   }
   
+  public void setExtras(Bundle paramBundle)
+  {
+    ShareActionSheet localShareActionSheet = this.mShareActionSheet;
+    if (localShareActionSheet != null) {
+      localShareActionSheet.setExtras(paramBundle);
+    }
+  }
+  
+  public void setIntentForStartForwardRecentActivity(Intent paramIntent)
+  {
+    this.mShareActionSheet.setIntentForStartForwardRecentActivity(paramIntent);
+  }
+  
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
     this.mShareActionSheet.setOnDismissListener(paramOnDismissListener);
@@ -309,7 +351,7 @@ public class ShareActionSheetApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.share.api.impl.ShareActionSheetApiImpl
  * JD-Core Version:    0.7.0.1
  */

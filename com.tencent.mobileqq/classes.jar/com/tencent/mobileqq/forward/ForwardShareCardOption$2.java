@@ -17,18 +17,18 @@ class ForwardShareCardOption$2
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
     }
-    this.a.A();
+    this.a.ae();
     if (ForwardShareCardOption.a(this.a) != -1) {
-      if ((paramBoolean) && (paramTroopShareResp.jdField_a_of_type_Int == 0))
+      if ((paramBoolean) && (paramTroopShareResp.b == 0))
       {
-        if (paramTroopShareResp.jdField_a_of_type_Boolean)
+        if (paramTroopShareResp.c)
         {
-          ForwardShareCardOption.a(this.a, paramTroopShareResp.b);
+          ForwardShareCardOption.a(this.a, paramTroopShareResp.d);
           if (ForwardShareCardOption.a(this.a) == 0) {}
         }
         else
         {
-          ForwardShareCardOption.b(this.a, paramTroopShareResp.b);
+          ForwardShareCardOption.b(this.a, paramTroopShareResp.d);
           if (ForwardShareCardOption.a(this.a) != 1) {
             return;
           }
@@ -37,24 +37,24 @@ class ForwardShareCardOption$2
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("mTroopVerifyLink=");
-          localStringBuilder.append(ForwardShareCardOption.a(this.a));
-          localStringBuilder.append(" mTroopNotNeedVefifyLink=");
           localStringBuilder.append(ForwardShareCardOption.b(this.a));
+          localStringBuilder.append(" mTroopNotNeedVefifyLink=");
+          localStringBuilder.append(ForwardShareCardOption.c(this.a));
           QLog.d("ForwardOption.ForwardShareCardOption", 2, localStringBuilder.toString());
         }
-        if ((paramTroopShareResp.jdField_a_of_type_JavaLangString != null) && (paramTroopShareResp.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
-          ForwardShareCardOption.a(this.a);
+        if ((paramTroopShareResp.a != null) && (paramTroopShareResp.a.equals(ForwardShareCardOption.d(this.a)))) {
+          ForwardShareCardOption.e(this.a);
         }
       }
       else
       {
-        if ((paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) {
+        if ((paramTroopShareResp.c) && (ForwardShareCardOption.a(this.a) != 0)) {
           return;
         }
-        if ((!paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1)) {
+        if ((!paramTroopShareResp.c) && (ForwardShareCardOption.a(this.a) != 1)) {
           return;
         }
-        QQToast.a(this.a.a, 1, this.a.a.getString(2131692928), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+        QQToast.makeText(this.a.s, 1, this.a.s.getString(2131890039), 0).show(((BaseActivity)this.a.s).getTitleBarHeight());
       }
     }
     ForwardShareCardOption.a(this.a, -1);
@@ -62,7 +62,7 @@ class ForwardShareCardOption$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareCardOption.2
  * JD-Core Version:    0.7.0.1
  */

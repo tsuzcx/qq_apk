@@ -25,16 +25,16 @@ import org.jetbrains.annotations.Nullable;
 
 public class BubbleUnRead
 {
-  private int jdField_a_of_type_Int = 0;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = null;
-  private final LruCache<String, Bitmap> jdField_a_of_type_AndroidUtilLruCache;
-  private final BubbleManager jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager;
-  private String jdField_a_of_type_JavaLangString;
+  private int a = 0;
+  private Rect b = null;
+  private String c;
+  private final LruCache<String, Bitmap> d;
+  private final BubbleManager e;
   
   BubbleUnRead(BubbleManager paramBubbleManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = paramBubbleManager;
-    this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(10);
+    this.e = paramBubbleManager;
+    this.d = new LruCache(10);
   }
   
   @Nullable
@@ -46,7 +46,7 @@ public class BubbleUnRead
       if (str == null) {
         return null;
       }
-      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+      Bitmap localBitmap = (Bitmap)this.d.get(str);
       if ((localBitmap != null) || (FileUtils.fileExists(str)))
       {
         paramArrayOfString = localBitmap;
@@ -55,7 +55,7 @@ public class BubbleUnRead
           paramArrayOfString = BitmapFactory.decodeFile(str);
           if (paramArrayOfString != null)
           {
-            this.jdField_a_of_type_AndroidUtilLruCache.put(str, paramArrayOfString);
+            this.d.put(str, paramArrayOfString);
           }
           else
           {
@@ -73,14 +73,14 @@ public class BubbleUnRead
   @NotNull
   private BubbleUnRead.BubbleUnreadBundle a(TextView paramTextView, String paramString, BubbleInfo paramBubbleInfo, Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsRect == null) || (!TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString))) {}
+    if ((this.b == null) || (!TextUtils.equals(paramString, this.c))) {}
     try
     {
       int i;
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+        this.c = paramString;
+        this.b = new Rect();
         paramString = paramTextView.getText();
         Rect localRect = new Rect(paramTextView.getPaddingLeft(), paramTextView.getPaddingTop(), paramTextView.getPaddingRight(), paramTextView.getPaddingBottom());
         Drawable localDrawable = paramTextView.getBackground();
@@ -120,7 +120,7 @@ public class BubbleUnRead
           m = i1 + i2 / 2;
           k = n + (i2 - i2 / 2);
         }
-        this.jdField_a_of_type_AndroidGraphicsRect.set(j, m, i, k);
+        this.b.set(j, m, i, k);
         paramTextView.setText(paramString);
         if (Build.VERSION.SDK_INT >= 16) {
           paramTextView.setBackground(localDrawable);
@@ -130,12 +130,12 @@ public class BubbleUnRead
         paramTextView.setPadding(localRect.left, localRect.top, localRect.right, localRect.bottom);
       }
       paramTextView = new BitmapDrawable(paramBitmap);
-      if (paramBubbleInfo.jdField_a_of_type_Int > 0) {
-        i = paramBubbleInfo.b;
+      if (paramBubbleInfo.a > 0) {
+        i = paramBubbleInfo.l;
       } else {
         i = -1;
       }
-      return new BubbleUnRead.BubbleUnreadBundle(paramTextView, i, this.jdField_a_of_type_AndroidGraphicsRect);
+      return new BubbleUnRead.BubbleUnreadBundle(paramTextView, i, this.b);
     }
     finally {}
   }
@@ -159,8 +159,8 @@ public class BubbleUnRead
   
   private String[] a(int paramInt, String[] paramArrayOfString, BubbleInfo paramBubbleInfo)
   {
-    if (paramBubbleInfo.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return paramBubbleInfo.jdField_a_of_type_ArrayOfJavaLangString;
+    if (paramBubbleInfo.i != null) {
+      return paramBubbleInfo.i;
     }
     if (paramInt > 0) {
       paramArrayOfString = a(paramInt);
@@ -170,7 +170,7 @@ public class BubbleUnRead
   
   public BubbleUnRead.BubbleUnreadBundle a(TextView paramTextView, int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
+    Object localObject = this.e.d;
     if (localObject == null) {
       return null;
     }
@@ -180,7 +180,7 @@ public class BubbleUnRead
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
+    Object localObject = this.e.d;
     if (localObject == null) {
       return;
     }
@@ -197,7 +197,7 @@ public class BubbleUnRead
       } else {
         i = -1;
       }
-      this.jdField_a_of_type_Int = i;
+      this.a = i;
       SharedPreferences.Editor localEditor = ((AppInterface)localObject).getApp().getSharedPreferences(((AppInterface)localObject).getCurrentAccountUin(), 0).edit();
       if (i != 1) {
         bool1 = false;
@@ -216,12 +216,12 @@ public class BubbleUnRead
   
   public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a;
+    Object localObject = this.e.d;
     boolean bool = false;
     if (localObject == null) {
       return false;
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
       int i;
       if (((AppRuntime)localObject).getApp().getSharedPreferences(((AppRuntime)localObject).getCurrentAccountUin(), 0).getBoolean("svip_bubble_unread_switch", true)) {
@@ -229,13 +229,13 @@ public class BubbleUnRead
       } else {
         i = -1;
       }
-      this.jdField_a_of_type_Int = i;
+      this.a = i;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("showBubbleUnread ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     QLog.d("BubbleManager", 2, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.a == 1) {
       bool = true;
     }
     return bool;
@@ -244,21 +244,21 @@ public class BubbleUnRead
   String[] a(int paramInt)
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath());
+    ((StringBuilder)localObject1).append(this.e.d(paramInt).getAbsolutePath());
     ((StringBuilder)localObject1).append(File.separatorChar);
     ((StringBuilder)localObject1).append("unread");
     ((StringBuilder)localObject1).append(File.separatorChar);
     ((StringBuilder)localObject1).append("unread1.png");
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath());
+    ((StringBuilder)localObject2).append(this.e.d(paramInt).getAbsolutePath());
     ((StringBuilder)localObject2).append(File.separatorChar);
     ((StringBuilder)localObject2).append("unread");
     ((StringBuilder)localObject2).append(File.separatorChar);
     ((StringBuilder)localObject2).append("unread2.png");
     localObject2 = ((StringBuilder)localObject2).toString();
     Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt).getAbsolutePath());
+    ((StringBuilder)localObject3).append(this.e.d(paramInt).getAbsolutePath());
     ((StringBuilder)localObject3).append(File.separatorChar);
     ((StringBuilder)localObject3).append("unread");
     ((StringBuilder)localObject3).append(File.separatorChar);
@@ -282,7 +282,7 @@ public class BubbleUnRead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleUnRead
  * JD-Core Version:    0.7.0.1
  */

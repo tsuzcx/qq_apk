@@ -5,8 +5,8 @@ import com.tencent.mtt.hippy.HippyRootView;
 
 public class n
 {
-  m a;
-  boolean b;
+  final m a;
+  final boolean b;
   
   public n(HippyGlobalConfigs paramHippyGlobalConfigs, boolean paramBoolean, String paramString1, String paramString2)
   {
@@ -23,8 +23,6 @@ public class n
   {
     this.a.a(paramHippyRootView);
   }
-  
-  public void a(f paramf) {}
   
   public void a(g paramg)
   {
@@ -48,7 +46,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.n
  * JD-Core Version:    0.7.0.1
  */

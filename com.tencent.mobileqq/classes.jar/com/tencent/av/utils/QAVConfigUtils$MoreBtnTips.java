@@ -2,16 +2,10 @@ package com.tencent.av.utils;
 
 public class QAVConfigUtils$MoreBtnTips
 {
-  public int a;
-  public String a;
-  public int b = 0;
+  public int a = -1;
+  public String b = "";
   public int c = 0;
-  
-  QAVConfigUtils$MoreBtnTips()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public int d = 0;
 }
 
 

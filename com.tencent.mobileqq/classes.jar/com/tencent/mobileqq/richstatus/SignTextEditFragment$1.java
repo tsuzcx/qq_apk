@@ -3,6 +3,7 @@ package com.tencent.mobileqq.richstatus;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.InputMethodUtil;
 
 class SignTextEditFragment$1
@@ -15,12 +16,13 @@ class SignTextEditFragment$1
     if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)) {
       InputMethodUtil.b(paramTextView);
     }
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ class SpriteUIHandler$6
   
   public void run()
   {
-    ICMShowView localICMShowView = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    ICMShowView localICMShowView = this.a;
     if (localICMShowView == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       localICMShowView.getView().setVisibility(8);
       return;
@@ -24,7 +24,7 @@ class SpriteUIHandler$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.6
  * JD-Core Version:    0.7.0.1
  */

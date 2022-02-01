@@ -63,20 +63,20 @@ public class QzoneEditPictureActivity
     if (paramIntent != null)
     {
       localObject = this.a;
-      if ((localObject != null) && (((QzoneEditPicturePartManager)localObject).a()))
+      if ((localObject != null) && (((QzoneEditPicturePartManager)localObject).d()))
       {
-        paramIntent.putExtra("key_content", this.a.jdField_c_of_type_JavaLangString);
-        paramIntent.putExtra("key_priv", this.a.jdField_a_of_type_Int);
-        paramIntent.putExtra("key_priv_uin_list", this.a.jdField_a_of_type_JavaUtilArrayList);
-        paramIntent.putExtra("key_font_id", this.a.b);
-        paramIntent.putExtra("key_font_format_type", this.a.jdField_c_of_type_Int);
-        paramIntent.putExtra("key_font_url", this.a.jdField_d_of_type_JavaLangString);
-        paramIntent.putExtra("key_super_font_id", this.a.jdField_d_of_type_Int);
-        paramIntent.putExtra("key_super_font_info", this.a.e);
-        paramIntent.putExtra("key_timer_delete", this.a.b());
+        paramIntent.putExtra("key_content", this.a.f);
+        paramIntent.putExtra("key_priv", this.a.c);
+        paramIntent.putExtra("key_priv_uin_list", this.a.b);
+        paramIntent.putExtra("key_font_id", this.a.l);
+        paramIntent.putExtra("key_font_format_type", this.a.m);
+        paramIntent.putExtra("key_font_url", this.a.n);
+        paramIntent.putExtra("key_super_font_id", this.a.o);
+        paramIntent.putExtra("key_super_font_info", this.a.p);
+        paramIntent.putExtra("key_timer_delete", this.a.e());
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("EditPic mSetTimerDelete: ");
-        ((StringBuilder)localObject).append(this.a.b());
+        ((StringBuilder)localObject).append(this.a.e());
         QLog.i("QzoneEditPictureActivit", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -102,10 +102,10 @@ public class QzoneEditPictureActivity
       if (!bool)
       {
         QZoneHelper.launchQZone(this, "", paramIntent, -1);
-        super.finish(-1, null, 2130772056, 0, paramBoolean);
+        super.finish(-1, null, 2130772081, 0, paramBoolean);
         return;
       }
-      super.finish(-1, paramIntent, 2130772056, 0, paramBoolean);
+      super.finish(-1, paramIntent, 2130772081, 0, paramBoolean);
       return;
     }
     super.finish(paramInt1, paramIntent, paramInt2, paramInt3, paramBoolean);
@@ -133,7 +133,7 @@ public class QzoneEditPictureActivity
       a();
       return bool;
     }
-    paramBundle = findViewById(2064122522);
+    paramBundle = findViewById(2063991341);
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
@@ -153,10 +153,10 @@ public class QzoneEditPictureActivity
   public Intent getPublishIntent(GenerateContext paramGenerateContext)
   {
     Intent localIntent;
-    if (this.mEditVideoPartManager.jdField_a_of_type_AndroidContentIntent == null) {
+    if (this.mEditVideoPartManager.G == null) {
       localIntent = getIntent();
     } else {
-      localIntent = this.mEditVideoPartManager.jdField_a_of_type_AndroidContentIntent;
+      localIntent = this.mEditVideoPartManager.G;
     }
     String str = localIntent.getStringExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
     Object localObject1 = localIntent.getStringExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_PACKAGE_NAME");
@@ -166,21 +166,21 @@ public class QzoneEditPictureActivity
       localIntent.putExtra("open_chatfragment_fromphoto", true);
     }
     ArrayList localArrayList = new ArrayList();
-    if ((!paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c) && (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean))
+    if ((!paramGenerateContext.l.h) && (paramGenerateContext.l.g))
     {
-      localObject1 = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString;
+      localObject1 = paramGenerateContext.l.b;
       if (getIntent().getIntExtra("camera_type", -1) != -1)
       {
-        FileUtils.deleteFile(paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.a);
-        new File(paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.a);
-        ImageUtil.a(this, paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.a);
+        FileUtils.deleteFile(paramGenerateContext.l.a);
+        new File(paramGenerateContext.l.a);
+        ImageUtil.b(this, paramGenerateContext.l.a);
       }
       localIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
     }
     else
     {
       QLog.d("QzoneEditPictureActivit", 1, "send sourcePath");
-      localObject1 = this.mEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a.a();
+      localObject1 = this.mEditVideoPartManager.I.e.a();
     }
     localArrayList.add(localObject1);
     Object localObject2 = null;
@@ -188,14 +188,14 @@ public class QzoneEditPictureActivity
     if (this.mEditVideoPartManager != null)
     {
       localObject1 = localObject2;
-      if (this.mEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle != null)
+      if (this.mEditVideoPartManager.O != null)
       {
         localObject1 = localObject2;
-        if (this.mEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a() != null)
+        if (this.mEditVideoPartManager.O.b() != null)
         {
           localObject1 = localObject2;
-          if (this.mEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a().a() != null) {
-            localObject1 = this.mEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a().a().jdField_a_of_type_JavaUtilArrayList;
+          if (this.mEditVideoPartManager.O.b().getTextLayer() != null) {
+            localObject1 = this.mEditVideoPartManager.O.b().getTextLayer().t;
           }
         }
       }
@@ -207,8 +207,8 @@ public class QzoneEditPictureActivity
       while (((Iterator)localObject1).hasNext())
       {
         localObject3 = (TextLayer.TextItem)((Iterator)localObject1).next();
-        if ((((TextLayer.TextItem)localObject3).a != null) && (((TextLayer.TextItem)localObject3).a.a() != null)) {
-          ((JSONArray)localObject2).put(((TextLayer.TextItem)localObject3).a.a().toString());
+        if ((((TextLayer.TextItem)localObject3).c != null) && (((TextLayer.TextItem)localObject3).c.i() != null)) {
+          ((JSONArray)localObject2).put(((TextLayer.TextItem)localObject3).c.i().toString());
         }
       }
     }
@@ -222,9 +222,9 @@ public class QzoneEditPictureActivity
     if (((JSONArray)localObject2).length() > 0) {
       localIntent.putExtra("dynamic_text", ((JSONArray)localObject2).toString());
     }
-    localIntent.putExtra(PublishParam.a, paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraStructEditorPublishParam);
+    localIntent.putExtra(PublishParam.a, paramGenerateContext.m);
     boolean bool;
-    if ((!paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c) && (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean)) {
+    if ((!paramGenerateContext.l.h) && (paramGenerateContext.l.g)) {
       bool = false;
     } else {
       bool = true;
@@ -240,7 +240,7 @@ public class QzoneEditPictureActivity
           if ((i != 6) && (i != 7))
           {
             localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-            break label747;
+            break label748;
           }
         }
         else
@@ -253,7 +253,7 @@ public class QzoneEditPictureActivity
           ((ArrayList)localObject1).addAll(localArrayList);
           localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject1);
           localIntent.putExtra("go_publish_activity", true);
-          break label747;
+          break label748;
         }
       }
       localObject2 = localIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
@@ -274,7 +274,7 @@ public class QzoneEditPictureActivity
       localIntent.putExtra("go_publish_activity", true);
       localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
     }
-    label747:
+    label748:
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -316,9 +316,9 @@ public class QzoneEditPictureActivity
         localObject1 = compactAPI21SystemShare(localIntent);
       }
     }
-    ((Intent)localObject1).putExtra("VIDEO_LOCATE_DESCRIPTION", paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoLocationDescription);
-    ((Intent)localObject1).putExtra("VIDEO_LOCAL_LONGITUDE", paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoLongitude);
-    ((Intent)localObject1).putExtra("VIDEO_LOCAL_LATITUDE", paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoLatitude);
+    ((Intent)localObject1).putExtra("VIDEO_LOCATE_DESCRIPTION", paramGenerateContext.d.videoLocationDescription);
+    ((Intent)localObject1).putExtra("VIDEO_LOCAL_LONGITUDE", paramGenerateContext.d.videoLongitude);
+    ((Intent)localObject1).putExtra("VIDEO_LOCAL_LATITUDE", paramGenerateContext.d.videoLatitude);
     return localObject1;
   }
   
@@ -330,7 +330,7 @@ public class QzoneEditPictureActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPictureActivity
  * JD-Core Version:    0.7.0.1
  */

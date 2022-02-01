@@ -11,7 +11,7 @@ class ARVideoRecordUIControllerImpl$5
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(ARVideoRecordUIControllerImpl.a(this.a), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(ARVideoRecordUIControllerImpl.b(this.a), paramArrayOfString, paramArrayOfInt);
     QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
   }
   
@@ -22,7 +22,7 @@ class ARVideoRecordUIControllerImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.5
  * JD-Core Version:    0.7.0.1
  */

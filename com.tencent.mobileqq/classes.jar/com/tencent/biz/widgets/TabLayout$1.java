@@ -12,27 +12,27 @@ class TabLayout$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     paramValueAnimator = System.out;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("value = ");
-    localStringBuilder.append(f);
+    localStringBuilder.append(f1);
     paramValueAnimator.println(localStringBuilder.toString());
     int i = 0;
-    while (i < this.jdField_a_of_type_Int - this.b)
+    while (i < this.a - this.b)
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
+      paramValueAnimator = this.g.getChildAt(this.c + i);
       if (paramValueAnimator != null) {
-        paramValueAnimator.setTranslationX(this.d * f);
+        paramValueAnimator.setTranslationX(this.d * f1);
       }
       i += 1;
     }
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
+    this.e.setTranslationX(f1 * -this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ class VideoControlUI$9
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    if (this.a.aw != null) {
+      return this.a.aw.onTouchEvent(paramMotionEvent);
     }
     return false;
   }

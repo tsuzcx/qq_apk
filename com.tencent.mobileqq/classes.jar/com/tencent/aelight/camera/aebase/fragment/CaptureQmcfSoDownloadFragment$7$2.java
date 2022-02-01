@@ -11,12 +11,12 @@ class CaptureQmcfSoDownloadFragment$7$2
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
+    CaptureQmcfSoDownloadFragment.h(this.a.this$0).setCameraPermissionResult(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.fragment.CaptureQmcfSoDownloadFragment.7.2
  * JD-Core Version:    0.7.0.1
  */

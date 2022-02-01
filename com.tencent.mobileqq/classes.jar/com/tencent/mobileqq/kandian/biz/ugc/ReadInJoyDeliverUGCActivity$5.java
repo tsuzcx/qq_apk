@@ -10,17 +10,17 @@ class ReadInJoyDeliverUGCActivity$5
   public void run()
   {
     ReadInJoyDeliverUGCActivity localReadInJoyDeliverUGCActivity = this.this$0;
-    localReadInJoyDeliverUGCActivity.b = localReadInJoyDeliverUGCActivity.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxModule.a(this.this$0.jdField_a_of_type_Long);
-    if (this.this$0.b != null) {
-      ReadInJoyDeliverUGCActivity.a(this.this$0);
+    localReadInJoyDeliverUGCActivity.Y = localReadInJoyDeliverUGCActivity.V.b(this.this$0.W);
+    if (this.this$0.Y != null) {
+      ReadInJoyDeliverUGCActivity.f(this.this$0);
     }
     localReadInJoyDeliverUGCActivity = this.this$0;
-    localReadInJoyDeliverUGCActivity.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxItem$ReadInJoyDraftboxContent = localReadInJoyDeliverUGCActivity.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxModule.a(this.this$0.jdField_a_of_type_Long);
+    localReadInJoyDeliverUGCActivity.X = localReadInJoyDeliverUGCActivity.V.b(this.this$0.W);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.5
  * JD-Core Version:    0.7.0.1
  */

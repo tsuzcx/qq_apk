@@ -156,6 +156,30 @@ class MiniAppCmdUtil$1
     }
   }
   
+  protected void onBatchGetFollowingCount(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    {
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (paramBoolean) {
+        try
+        {
+          localObject1 = new JSONObject(paramBundle.getString("key_follow_count"));
+        }
+        catch (JSONException paramBundle)
+        {
+          QLog.e("[mini] MiniAppObserver", 1, "onBatchGetFollowingCount error. ", paramBundle);
+          localObject1 = localObject2;
+        }
+      }
+      if (localMiniAppCmdInterface != null) {
+        localMiniAppCmdInterface.onCmdListener(paramBoolean, (JSONObject)localObject1);
+      }
+    }
+  }
+  
   protected void onBatchGetUserInfoResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
@@ -455,7 +479,7 @@ class MiniAppCmdUtil$1
       localJSONObject = new JSONObject();
       if (!paramBoolean) {}
     }
-    label285:
+    label287:
     try
     {
       paramInt = paramBundle.getInt("key_result");
@@ -472,7 +496,7 @@ class MiniAppCmdUtil$1
         localJSONObject.put("ext", localObject);
       }
       if (localMiniAppCmdInterface == null) {
-        break label285;
+        break label287;
       }
       localMiniAppCmdInterface.onCmdListener(true, localJSONObject);
       return;
@@ -480,8 +504,8 @@ class MiniAppCmdUtil$1
     catch (Exception localException)
     {
       Object localObject;
-      label204:
-      break label204;
+      label206:
+      break label206;
     }
     QLog.d("[mini] MiniAppObserver", 1, "call onCheckOfferIdFin fail.");
     if (localMiniAppCmdInterface != null)
@@ -878,7 +902,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131706809));
+        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131904658));
         if (paramBoolean)
         {
           com.tencent.mobileqq.mini.apkg.MiniAppInfo localMiniAppInfo = (com.tencent.mobileqq.mini.apkg.MiniAppInfo)paramBundle.getSerializable("appInfo");
@@ -950,7 +974,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131706809));
+        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131904658));
         if (paramBoolean)
         {
           com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("mini_app_info_data");
@@ -1448,7 +1472,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131706811));
+        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131904660));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -1513,7 +1537,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131706815));
+        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131904664));
         if (paramBoolean)
         {
           MiniAppRecommInfo localMiniAppRecommInfo = (MiniAppRecommInfo)paramBundle.getSerializable("mini_kuolie_applist_data");
@@ -2206,7 +2230,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131706813));
+        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131904662));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -2371,7 +2395,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        localObject1 = paramBundle.getString("errMsg", HardCodeUtil.a(2131706808));
+        localObject1 = paramBundle.getString("errMsg", HardCodeUtil.a(2131904657));
         if (paramBoolean)
         {
           if ((l != -100070004L) && (l != -1000710003L))
@@ -2418,7 +2442,7 @@ class MiniAppCmdUtil$1
         try
         {
           ((JSONObject)localObject1).put("retCode", -1);
-          ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131706806));
+          ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131904655));
         }
         catch (JSONException localJSONException)
         {
@@ -2634,7 +2658,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131706810));
+        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131904659));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -2696,7 +2720,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131706811));
+        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131904660));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -3064,6 +3088,70 @@ class MiniAppCmdUtil$1
     QLog.e("[mini] MiniAppObserver", 1, paramBundle.toString());
   }
   
+  protected void onGetWeixinSDKAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    super.onGetWeixinSDKAppInfoFin(paramInt, paramBoolean, paramBundle);
+    MiniAppCmdInterface localMiniAppCmdInterface;
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
+    }
+    for (;;)
+    {
+      try
+      {
+        long l = paramBundle.getLong("retCode", -1L);
+        Object localObject = paramBundle.getString("errMsg", HardCodeUtil.a(2131904658));
+        if (paramBoolean)
+        {
+          byte[] arrayOfByte = paramBundle.getByteArray("mini_app_info_pb_data");
+          paramBundle = new JSONObject();
+          paramBundle.put("appInfo_pb", arrayOfByte);
+          paramBundle.put("retCode", l);
+          paramBundle.put("errMsg", localObject);
+          if (localMiniAppCmdInterface == null) {
+            break label304;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("  onGetWeixinSDKAppInfoFin . ");
+          ((StringBuilder)localObject).append(paramInt);
+          QLog.e("[mini] MiniAppObserver", 1, ((StringBuilder)localObject).toString());
+          if (l != 0L) {
+            break label305;
+          }
+          paramBoolean = true;
+          localMiniAppCmdInterface.onCmdListener(paramBoolean, paramBundle);
+          return;
+        }
+        QLog.d("[mini] MiniAppObserver", 1, "call onGetWeixinSDKAppInfoFin fail.");
+        if (localMiniAppCmdInterface == null) {
+          break label304;
+        }
+        paramBundle = new JSONObject();
+        paramBundle.put("retCode", l);
+        paramBundle.put("errMsg", localObject);
+        localMiniAppCmdInterface.onCmdListener(false, paramBundle);
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("[mini] MiniAppObserver", 1, "call onGetWeixinSDKAppInfoFin exception ", paramBundle);
+        if (localMiniAppCmdInterface == null) {
+          break label304;
+        }
+      }
+      localMiniAppCmdInterface.onCmdListener(false, new JSONObject());
+      return;
+      paramBundle = new StringBuilder();
+      paramBundle.append("onGetWeixinSDKAppInfoFin can not found listener. ");
+      paramBundle.append(paramInt);
+      QLog.e("[mini] MiniAppObserver", 1, paramBundle.toString());
+      label304:
+      return;
+      label305:
+      paramBoolean = false;
+    }
+  }
+  
   protected void onGetuserCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
@@ -3102,7 +3190,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131706811));
+        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131904660));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -3320,7 +3408,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        paramBundle = paramBundle.getString("errMsg", HardCodeUtil.a(2131706811));
+        paramBundle = paramBundle.getString("errMsg", HardCodeUtil.a(2131904660));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", paramBundle);
@@ -3520,7 +3608,7 @@ class MiniAppCmdUtil$1
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131706811));
+        String str = paramBundle.getString("errMsg", HardCodeUtil.a(2131904660));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -3695,7 +3783,7 @@ class MiniAppCmdUtil$1
     {
       localJSONObject = new JSONObject();
       l = paramBundle.getLong("retCode", -1L);
-      paramBundle = paramBundle.getString("errMsg", HardCodeUtil.a(2131706812));
+      paramBundle = paramBundle.getString("errMsg", HardCodeUtil.a(2131904661));
       localJSONObject.put("retCode", l);
       localJSONObject.put("errMsg", paramBundle);
       localMiniAppCmdInterface.onCmdListener(false, localJSONObject);
@@ -4249,7 +4337,7 @@ class MiniAppCmdUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil.1
  * JD-Core Version:    0.7.0.1
  */

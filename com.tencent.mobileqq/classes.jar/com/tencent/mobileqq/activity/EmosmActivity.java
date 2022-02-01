@@ -91,14 +91,14 @@ public class EmosmActivity
   
   private void initBlur()
   {
-    this.mBottomBlurView = ((QQBlurView)findViewById(2131363722));
-    this.mBottomBlurView = ((QQBlurView)findViewById(2131363722));
-    this.mSpaceLine = findViewById(2131377735);
-    this.mSpaceLine.setBackgroundColor(getResources().getColor(2131165618));
-    this.mBottomBlurView.a(findViewById(2131366172));
+    this.mBottomBlurView = ((QQBlurView)findViewById(2131429645));
+    this.mBottomBlurView = ((QQBlurView)findViewById(2131429645));
+    this.mSpaceLine = findViewById(2131446193);
+    this.mSpaceLine.setBackgroundColor(getResources().getColor(2131166013));
+    this.mBottomBlurView.a(findViewById(2131432459));
     Object localObject = this.mBottomBlurView;
     ((QQBlurView)localObject).b((View)localObject);
-    localObject = getResources().getDrawable(2130850703);
+    localObject = getResources().getDrawable(2130852507);
     ((Drawable)localObject).setAlpha(235);
     this.mBottomBlurView.a((Drawable)localObject);
     this.mBottomBlurView.b(0);
@@ -137,8 +137,8 @@ public class EmosmActivity
   public DragSortController buildController(DragSortListView paramDragSortListView)
   {
     paramDragSortListView = new DragSortController(paramDragSortListView);
-    paramDragSortListView.d(2131365886);
-    paramDragSortListView.e(2131364686);
+    paramDragSortListView.d(2131432152);
+    paramDragSortListView.e(2131430779);
     paramDragSortListView.b(true);
     paramDragSortListView.a(true);
     paramDragSortListView.a(0);
@@ -158,7 +158,7 @@ public class EmosmActivity
   void dismissDialog()
   {
     if (this.mIsEdited) {
-      setTitle(String.format(getResources().getString(2131692128), new Object[] { Integer.valueOf(0) }));
+      setTitle(String.format(getResources().getString(2131889109), new Object[] { Integer.valueOf(0) }));
     }
     this.progressDialog.dismiss();
     if ((this.mLaunchMode == 2) && (this.mAdapter.getCount() == 0)) {
@@ -178,18 +178,18 @@ public class EmosmActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561587);
-    super.setContentBackgroundResource(2130838739);
-    super.setTitle(2131692136);
+    super.setContentView(2131627950);
+    super.setContentBackgroundResource(2130838958);
+    super.setTitle(2131889117);
     this.app = ((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null));
     parseOptions();
     this.mTitleRight = this.rightViewText;
     this.mTitleRight.setVisibility(0);
-    this.mTitleRight.setText(2131692127);
+    this.mTitleRight.setText(2131889108);
     this.mTitleRight.setOnClickListener(new EmosmActivity.3(this));
-    this.mDeleteButton = ((Button)findViewById(2131364171));
+    this.mDeleteButton = ((Button)findViewById(2131430150));
     this.mDeleteButton.setOnClickListener(this);
-    this.mTipFinish = ((TextView)findViewById(2131366397));
+    this.mTipFinish = ((TextView)findViewById(2131432710));
     this.mTipFinish.setOnClickListener(new EmosmActivity.4(this));
     try
     {
@@ -199,21 +199,21 @@ public class EmosmActivity
       this.mListView.setOnTouchListener(paramBundle);
       this.mListView.setDragEnabled(false);
       this.mListView.setDelImmediately(false);
-      this.headerView = View.inflate(this.mListView.getContext(), 2131561588, null);
-      this.emosmFavCon = this.headerView.findViewById(2131366161);
-      this.emosmFavIcon = this.headerView.findViewById(2131366162);
-      this.emosmFavName = ((TextView)this.headerView.findViewById(2131366163));
+      this.headerView = View.inflate(this.mListView.getContext(), 2131627951, null);
+      this.emosmFavCon = this.headerView.findViewById(2131432448);
+      this.emosmFavIcon = this.headerView.findViewById(2131432449);
+      this.emosmFavName = ((TextView)this.headerView.findViewById(2131432450));
       this.emosmFavCon.setOnClickListener(this);
-      this.emosmFavCon.setBackgroundDrawable(getResources().getDrawable(2130839631));
-      this.emosmCameraCon = this.headerView.findViewById(2131366157);
-      this.emosmCameraIcon = this.headerView.findViewById(2131366158);
-      this.emosmCameraName = this.headerView.findViewById(2131366159);
+      this.emosmFavCon.setBackgroundDrawable(getResources().getDrawable(2130840100));
+      this.emosmCameraCon = this.headerView.findViewById(2131432444);
+      this.emosmCameraIcon = this.headerView.findViewById(2131432445);
+      this.emosmCameraName = this.headerView.findViewById(2131432446);
       this.emosmCameraCon.setOnClickListener(this);
-      this.emosmCameraCon.setBackgroundDrawable(getResources().getDrawable(2130839631));
-      this.emosmMagicCon = this.headerView.findViewById(2131366174);
-      this.emosmMagicIcon = this.headerView.findViewById(2131366175);
-      this.emosmMagicName = this.headerView.findViewById(2131366176);
-      this.emosmMagicCon.setBackgroundResource(2130839631);
+      this.emosmCameraCon.setBackgroundDrawable(getResources().getDrawable(2130840100));
+      this.emosmMagicCon = this.headerView.findViewById(2131432461);
+      this.emosmMagicIcon = this.headerView.findViewById(2131432462);
+      this.emosmMagicName = this.headerView.findViewById(2131432463);
+      this.emosmMagicCon.setBackgroundResource(2130840100);
       this.emosmMagicCon.setOnClickListener(this);
       this.mListView.addHeaderView(this.headerView);
       this.mDBManager = ((IEmoticonManagerService)this.app.getRuntimeService(IEmoticonManagerService.class));
@@ -223,7 +223,7 @@ public class EmosmActivity
       this.mRefreshTask.run();
       this.mAdapter = new DragSortAdapter(this, this.mEPDatas);
       DragSortAdapter localDragSortAdapter = this.mAdapter;
-      localDragSortAdapter.a = -16745986;
+      localDragSortAdapter.e = -16745986;
       this.mListView.setAdapter(localDragSortAdapter);
       this.mListView.setDropListener(this.onDrop);
       this.mListView.setRemoveListener(this.onRemove);
@@ -239,7 +239,7 @@ public class EmosmActivity
       {
         this.mDeleteButton.setVisibility(8);
         this.mIsEdited = false;
-        this.mTitleRight.setText(2131692127);
+        this.mTitleRight.setText(2131889108);
         this.mListView.setDragEnabled(false);
         this.mAdapter.a(false);
         this.mAdapter.notifyDataSetChanged();
@@ -363,7 +363,7 @@ public class EmosmActivity
   {
     EmojiListenerManager.a().b(this.mEPChangeListener);
     EmojiListenerManager.a().removeEmoticonPackageDownloadListener(this.mEPDownloadListener);
-    this.mAdapter.b();
+    this.mAdapter.c();
     super.finish();
   }
   
@@ -373,7 +373,7 @@ public class EmosmActivity
     {
       if (this.mIsEdited)
       {
-        this.mTitleRight.setText(2131692127);
+        this.mTitleRight.setText(2131889108);
         this.mListView.setDragEnabled(false);
         this.mAdapter.a(false);
         this.mIsEdited = false;
@@ -400,19 +400,19 @@ public class EmosmActivity
   {
     int i = paramView.getId();
     Object localObject1;
-    if (i == 2131364171)
+    if (i == 2131430150)
     {
       if (!NetworkUtil.isNetSupport(this))
       {
         localObject1 = new QQToast(this);
-        ((QQToast)localObject1).a(2130839548);
-        ((QQToast)localObject1).d(1500);
-        ((QQToast)localObject1).a(HardCodeUtil.a(2131704150));
-        ((QQToast)localObject1).b(0);
+        ((QQToast)localObject1).setToastIcon(2130839752);
+        ((QQToast)localObject1).setDuration(1500);
+        ((QQToast)localObject1).setToastMsg(HardCodeUtil.a(2131902072));
+        ((QQToast)localObject1).show(0);
       }
       else
       {
-        this.progressDialog.a(getString(2131691928));
+        this.progressDialog.a(getString(2131888895));
         this.progressDialog.show();
         Object localObject3 = this.mAdapter.a();
         if (((List)localObject3).size() > 0)
@@ -442,19 +442,19 @@ public class EmosmActivity
         }
       }
     }
-    else if (i == 2131366161)
+    else if (i == 2131432448)
     {
       startActivity(new Intent(this, FavEmosmManageActivity.class));
       ReportController.b(this.app, "dc00898", "", "", "0X800AB0B", "0X800AB0B", 0, 0, "", "", "", "");
     }
-    else if (i == 2131366157)
+    else if (i == 2131432444)
     {
       localObject1 = new Intent(this, FavEmosmManageActivity.class);
       ((Intent)localObject1).putExtra("camera_emo_mode", 1);
       startActivity((Intent)localObject1);
       ReportController.b(this.app, "dc00898", "", "", "0X800AB0C", "0X800AB0C", 0, 0, "", "", "", "");
     }
-    else if (i == 2131366174)
+    else if (i == 2131432461)
     {
       onChangeLaunchMode(2);
       ReportController.b(this.app, "dc00898", "", "", "0X800AB0D", "0X800AB0D", 0, 0, "", "", "", "");
@@ -484,10 +484,10 @@ public class EmosmActivity
     {
       if (TextUtils.isEmpty(str))
       {
-        this.leftView.setText(2131691916);
+        this.leftView.setText(2131888883);
         return;
       }
-      str = new JSONObject(str).optString("leftText", getString(2131691916));
+      str = new JSONObject(str).optString("leftText", getString(2131888883));
       this.leftView.setText(str);
       return;
     }
@@ -509,10 +509,10 @@ public class EmosmActivity
   void showAuthErrorTips()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130839548);
-    localQQToast.d(1500);
-    localQQToast.a(HardCodeUtil.a(2131704151));
-    localQQToast.b(0);
+    localQQToast.setToastIcon(2130839752);
+    localQQToast.setDuration(1500);
+    localQQToast.setToastMsg(HardCodeUtil.a(2131902073));
+    localQQToast.show(0);
   }
   
   void updatePackageStatus(int paramInt)
@@ -551,7 +551,7 @@ public class EmosmActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity
  * JD-Core Version:    0.7.0.1
  */

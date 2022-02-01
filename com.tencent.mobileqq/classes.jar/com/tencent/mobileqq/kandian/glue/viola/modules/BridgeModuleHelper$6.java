@@ -15,7 +15,7 @@ final class BridgeModuleHelper$6
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("result", false);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      this.a.invokeCallJS(this.b, localJSONObject);
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ final class BridgeModuleHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper.6
  * JD-Core Version:    0.7.0.1
  */

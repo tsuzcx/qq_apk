@@ -63,13 +63,13 @@ public class ProfilePhotoWallComponent
     String str;
     if (paramBoolean)
     {
-      str = MobileQQ.sMobileQQ.getApplicationContext().getString(2131699156);
-      QQToast.a(BaseApplication.getContext(), 2, str, 0).a();
+      str = MobileQQ.sMobileQQ.getApplicationContext().getString(2131897172);
+      QQToast.makeText(BaseApplication.getContext(), 2, str, 0).show();
     }
     else
     {
-      str = MobileQQ.sMobileQQ.getApplicationContext().getString(2131699157);
-      QQToast.a(BaseApplication.getContext(), 1, str, 0).a();
+      str = MobileQQ.sMobileQQ.getApplicationContext().getString(2131897173);
+      QQToast.makeText(BaseApplication.getContext(), 1, str, 0).show();
     }
     freshQZonePhotoWall();
   }
@@ -97,7 +97,7 @@ public class ProfilePhotoWallComponent
       paramBoolean = false;
     }
     boolean bool4 = ProfilePAUtils.isPaTypeStrangerInContact(((ProfileCardInfo)this.mData).allInOne);
-    boolean bool5 = Utils.b(((ProfileCardInfo)this.mData).allInOne.uin);
+    boolean bool5 = Utils.c(((ProfileCardInfo)this.mData).allInOne.uin);
     paramCard = this.mConfigHelper;
     boolean bool3 = true;
     boolean bool2 = true;
@@ -120,7 +120,7 @@ public class ProfilePhotoWallComponent
         {
           localObject = new PhotoWallView(this.mActivity, this.mApp, ((ProfileCardInfo)this.mData).allInOne.uin);
           paramCard = new ProfileCardFavorShowView(this.mActivity);
-          paramCard.setTitle(HardCodeUtil.a(2131708454));
+          paramCard.setTitle(HardCodeUtil.a(2131906240));
           paramCard.setVisibility(8);
           paramCard.addView((View)localObject);
         }
@@ -195,8 +195,8 @@ public class ProfilePhotoWallComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       DataTag localDataTag = (DataTag)paramView.getTag();
-      if ((localDataTag.jdField_a_of_type_Int == 85) && ((localDataTag.jdField_a_of_type_JavaLangObject instanceof PhotoWallView))) {
-        ((PhotoWallView)localDataTag.jdField_a_of_type_JavaLangObject).peformClickMoreText();
+      if ((localDataTag.a == 85) && ((localDataTag.b instanceof PhotoWallView))) {
+        ((PhotoWallView)localDataTag.b).peformClickMoreText();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -258,7 +258,7 @@ public class ProfilePhotoWallComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.photowall.ProfilePhotoWallComponent
  * JD-Core Version:    0.7.0.1
  */

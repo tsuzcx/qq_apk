@@ -15,7 +15,7 @@ class UniformDownloaderAppBabySdk$4
   public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
     UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
+    if (!UniformDownloaderAppBabySdk.c(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
       QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
     }
   }
@@ -73,11 +73,11 @@ class UniformDownloaderAppBabySdk$4
     UniformDownloaderAppBabySdk.b(this.a);
     if (j != 0)
     {
-      if (!UniformDownloaderAppBabySdk.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, i, paramTMAssistantDownloadClient))) {
+      if (!UniformDownloaderAppBabySdk.c(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, i, paramTMAssistantDownloadClient))) {
         QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
       }
     }
-    else if ((UniformDownloaderAppBabySdk.a(this.a) != null) && (!UniformDownloaderAppBabySdk.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject2)))) {
+    else if ((UniformDownloaderAppBabySdk.c(this.a) != null) && (!UniformDownloaderAppBabySdk.c(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject2)))) {
       QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
     }
   }
@@ -86,14 +86,14 @@ class UniformDownloaderAppBabySdk$4
   {
     QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] ABSdkdownload service invalid ");
     UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
+    if (!UniformDownloaderAppBabySdk.c(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
       QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderAppBabySdk.4
  * JD-Core Version:    0.7.0.1
  */

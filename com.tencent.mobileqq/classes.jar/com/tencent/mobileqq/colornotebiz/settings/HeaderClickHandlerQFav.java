@@ -16,14 +16,9 @@ import cooperation.qqfav.QfavUtil;
 public class HeaderClickHandlerQFav
   implements IOnHeaderClickHandler
 {
-  public int a()
-  {
-    return 17104896;
-  }
-  
   public String a()
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692234);
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131889221);
   }
   
   public void a(View paramView, int paramInt)
@@ -40,10 +35,15 @@ public class HeaderClickHandlerQFav
     QfavUtil.a(localQQAppInterface.getCurrentAccountUin());
     ReportController.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
   }
+  
+  public int b()
+  {
+    return 17104896;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornotebiz.settings.HeaderClickHandlerQFav
  * JD-Core Version:    0.7.0.1
  */

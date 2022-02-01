@@ -9,10 +9,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class TextureProgram
 {
-  int jdField_a_of_type_Int = -1;
-  ShaderParameter[] jdField_a_of_type_ArrayOfComTencentAvOpenglShaderShaderParameter;
+  int a = -1;
   int b = -1;
   int c = -1;
+  ShaderParameter[] d;
   
   public TextureProgram()
   {
@@ -23,8 +23,8 @@ public class TextureProgram
   {
     this.b = a(35633, paramString1);
     this.c = a(35632, paramString2);
-    this.jdField_a_of_type_ArrayOfComTencentAvOpenglShaderShaderParameter = paramArrayOfShaderParameter;
-    this.jdField_a_of_type_Int = a(this.b, this.c, this.jdField_a_of_type_ArrayOfComTencentAvOpenglShaderShaderParameter);
+    this.d = paramArrayOfShaderParameter;
+    this.a = a(this.b, this.c, this.d);
   }
   
   public static int a(int paramInt1, int paramInt2, ShaderParameter[] paramArrayOfShaderParameter)
@@ -74,12 +74,12 @@ public class TextureProgram
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public ShaderParameter[] a()
+  public ShaderParameter[] b()
   {
-    return this.jdField_a_of_type_ArrayOfComTencentAvOpenglShaderShaderParameter;
+    return this.d;
   }
 }
 

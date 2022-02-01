@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.search.util;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -8,24 +9,24 @@ import java.util.LinkedList;
 
 public class SearchCostStat
 {
-  private static SearchCostStat.SearchScene jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static SearchCostStat.SearchScene a;
+  private static final Object b = new Object();
   
   public static void a()
   {
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene != null)
+        if (a != null)
         {
           Object localObject1 = new SearchCostStat.SearchStep(null);
-          ((SearchCostStat.SearchStep)localObject1).jdField_a_of_type_JavaLangString = "End";
-          ((SearchCostStat.SearchStep)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-          ((SearchCostStat.SearchStep)localObject1).jdField_a_of_type_Boolean = true;
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.jdField_a_of_type_JavaUtilLinkedList.add(localObject1);
-          localObject1 = jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.a();
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene = null;
+          ((SearchCostStat.SearchStep)localObject1).a = "End";
+          ((SearchCostStat.SearchStep)localObject1).b = System.currentTimeMillis();
+          ((SearchCostStat.SearchStep)localObject1).c = true;
+          a.c.add(localObject1);
+          localObject1 = a.a();
+          a = null;
           a((SearchCostStat.SearchSceneRecord)localObject1);
           return;
         }
@@ -36,12 +37,12 @@ public class SearchCostStat
   
   public static void a(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene != null)
+      if (a != null)
       {
-        SearchCostStat.SearchScene localSearchScene = jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene;
-        localSearchScene.jdField_a_of_type_Long |= paramInt;
+        SearchCostStat.SearchScene localSearchScene = a;
+        localSearchScene.b |= paramInt;
       }
       return;
     }
@@ -52,18 +53,18 @@ public class SearchCostStat
     if (paramSearchSceneRecord == null) {
       return;
     }
-    Object localObject = paramSearchSceneRecord.jdField_a_of_type_JavaLangStringBuilder;
+    Object localObject = paramSearchSceneRecord.a;
     ((StringBuilder)localObject).append(",needReport=");
-    ((StringBuilder)localObject).append(paramSearchSceneRecord.jdField_a_of_type_Boolean);
-    QLog.i("SearchCostStat", 1, paramSearchSceneRecord.jdField_a_of_type_JavaLangStringBuilder.toString());
-    if (paramSearchSceneRecord.jdField_a_of_type_Boolean)
+    ((StringBuilder)localObject).append(paramSearchSceneRecord.c);
+    QLog.i("SearchCostStat", 1, paramSearchSceneRecord.a.toString());
+    if (paramSearchSceneRecord.c)
     {
-      if (Utils.b()) {
+      if (Utils.d()) {
         localObject = "qq_search_vip_cost";
       } else {
         localObject = "qq_search_cost";
       }
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, true, 0L, 0L, paramSearchSceneRecord.jdField_a_of_type_JavaUtilHashMap, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, true, 0L, 0L, paramSearchSceneRecord.b, "");
     }
   }
   
@@ -82,25 +83,25 @@ public class SearchCostStat
     }
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene != null)
+        if (a != null)
         {
-          localSearchSceneRecord = jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.a();
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene = new SearchCostStat.SearchScene(null);
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.jdField_a_of_type_JavaLangString = paramString;
+          localSearchSceneRecord = a.a();
+          a = new SearchCostStat.SearchScene(null);
+          a.a = paramString;
           paramString = new SearchCostStat.SearchParam(null);
-          paramString.jdField_a_of_type_JavaLangString = "from";
+          paramString.a = "from";
           paramString.b = String.valueOf(paramInt);
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.b.add(paramString);
+          a.d.add(paramString);
           paramString = new SearchCostStat.SearchParam(null);
-          paramString.jdField_a_of_type_JavaLangString = "isActivityFirstTime";
+          paramString.a = "isActivityFirstTime";
           paramString.b = String.valueOf(paramBoolean);
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.b.add(paramString);
+          a.d.add(paramString);
           paramString = new SearchCostStat.SearchStep(null);
-          paramString.jdField_a_of_type_JavaLangString = "Start";
-          paramString.jdField_a_of_type_Long = System.currentTimeMillis();
-          jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.jdField_a_of_type_JavaUtilLinkedList.add(paramString);
+          paramString.a = "Start";
+          paramString.b = System.currentTimeMillis();
+          a.c.add(paramString);
           a(localSearchSceneRecord);
           return;
         }
@@ -111,14 +112,14 @@ public class SearchCostStat
   
   public static void a(String paramString1, String paramString2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene != null)
+      if (a != null)
       {
         SearchCostStat.SearchParam localSearchParam = new SearchCostStat.SearchParam(null);
-        localSearchParam.jdField_a_of_type_JavaLangString = paramString1;
+        localSearchParam.a = paramString1;
         localSearchParam.b = paramString2;
-        jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.b.add(localSearchParam);
+        a.d.add(localSearchParam);
       }
       return;
     }
@@ -126,15 +127,15 @@ public class SearchCostStat
   
   private static void a(String paramString, boolean paramBoolean)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene != null)
+      if (a != null)
       {
         SearchCostStat.SearchStep localSearchStep = new SearchCostStat.SearchStep(null);
-        localSearchStep.jdField_a_of_type_JavaLangString = paramString;
-        localSearchStep.jdField_a_of_type_Long = System.currentTimeMillis();
-        localSearchStep.jdField_a_of_type_Boolean = paramBoolean;
-        jdField_a_of_type_ComTencentMobileqqSearchUtilSearchCostStat$SearchScene.jdField_a_of_type_JavaUtilLinkedList.add(localSearchStep);
+        localSearchStep.a = paramString;
+        localSearchStep.b = System.currentTimeMillis();
+        localSearchStep.c = paramBoolean;
+        a.c.add(localSearchStep);
       }
       return;
     }
@@ -144,10 +145,30 @@ public class SearchCostStat
   {
     a(paramString, true);
   }
+  
+  public static void c(String paramString)
+  {
+    synchronized (b)
+    {
+      if ((a != null) && (!TextUtils.isEmpty(paramString)) && (!paramString.equals(a.e)))
+      {
+        a.e = paramString;
+        a.f = System.currentTimeMillis();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveShowContactTime time=");
+        localStringBuilder.append(a.f);
+        localStringBuilder.append(",contactList=[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.i("SearchCostStat", 1, localStringBuilder.toString());
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SearchCostStat
  * JD-Core Version:    0.7.0.1
  */

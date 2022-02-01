@@ -17,8 +17,8 @@ class ArkQQAPIIPCModule$GetPSKeyAsyncHandler$2
     if (QLog.isColorLevel()) {
       QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
     }
-    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    ArkQQAPIIPCModule.GetPSKeyAsyncHandler.OnGetPSKeyHandler localOnGetPSKeyHandler = this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkQQAPIIPCModule$GetPSKeyAsyncHandler$OnGetPSKeyHandler;
+    paramTicket = this.a.getPskey(this.b.getCurrentAccountUin(), this.c);
+    ArkQQAPIIPCModule.GetPSKeyAsyncHandler.OnGetPSKeyHandler localOnGetPSKeyHandler = this.d;
     if (localOnGetPSKeyHandler != null) {
       localOnGetPSKeyHandler.a(paramTicket);
     }
@@ -30,7 +30,7 @@ class ArkQQAPIIPCModule$GetPSKeyAsyncHandler$2
     localStringBuilder.append("--- pskey async failed---  ");
     localStringBuilder.append(paramErrMsg.getMessage());
     QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, localStringBuilder.toString());
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkQQAPIIPCModule$GetPSKeyAsyncHandler$OnGetPSKeyHandler;
+    paramErrMsg = this.d;
     if (paramErrMsg != null) {
       paramErrMsg.a(null);
     }
@@ -42,7 +42,7 @@ class ArkQQAPIIPCModule$GetPSKeyAsyncHandler$2
     localStringBuilder.append("--- pskey async timeout---  ");
     localStringBuilder.append(paramErrMsg.getMessage());
     QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, localStringBuilder.toString());
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkQQAPIIPCModule$GetPSKeyAsyncHandler$OnGetPSKeyHandler;
+    paramErrMsg = this.d;
     if (paramErrMsg != null) {
       paramErrMsg.a(null);
     }
@@ -50,7 +50,7 @@ class ArkQQAPIIPCModule$GetPSKeyAsyncHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetPSKeyAsyncHandler.2
  * JD-Core Version:    0.7.0.1
  */

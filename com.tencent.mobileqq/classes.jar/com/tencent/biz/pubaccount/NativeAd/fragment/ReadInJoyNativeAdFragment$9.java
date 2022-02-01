@@ -11,12 +11,12 @@ class ReadInJoyNativeAdFragment$9
   
   public void onClick(View paramView)
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    ReadInJoyNativeAdFragment.n(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.9
  * JD-Core Version:    0.7.0.1
  */

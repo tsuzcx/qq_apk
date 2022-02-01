@@ -303,7 +303,7 @@ public class ForwardSdkShareProcessor
       ((ForwardSdkShareProcessor.ForwardStep)localObject1).cancel();
     }
     Object localObject3 = new UpCallBack.SendResult();
-    ((UpCallBack.SendResult)localObject3).jdField_a_of_type_Int = -1;
+    ((UpCallBack.SendResult)localObject3).a = -1;
     if ((this.mUiRequest != null) && (this.mUiRequest.mUpCallBack != null))
     {
       if ((isSdkShare()) && (this.mProcessorReport.errCode == 9402) && (!ForwardUtils.a(this.mAppContext)))
@@ -314,7 +314,7 @@ public class ForwardSdkShareProcessor
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = this.mAudioUrl;
         }
-        ((UpCallBack.SendResult)localObject3).jdField_a_of_type_JavaLangObject = new String[] { str, localObject1 };
+        ((UpCallBack.SendResult)localObject3).l = new String[] { str, localObject1 };
         ((UpCallBack.SendResult)localObject3).b = this.mProcessorReport.errCode;
       }
       this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject3);
@@ -442,12 +442,12 @@ public class ForwardSdkShareProcessor
     }
     this.mSendMsgStep.doStep();
     sendMessageToUpdate(1001);
-    sendMessageToUpdateDelay(1002, MessageHandler.c);
+    sendMessageToUpdateDelay(1002, MessageHandler.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class TaskOfflineUtils$1
   {
     try
     {
-      HtmlOffline.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime(), new TaskOfflineUtils.TaskAsyncBack(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskOfflineUtils$OfflineCallBack), true, 5, true);
+      HtmlOffline.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), new TaskOfflineUtils.TaskAsyncBack(this.a, this.b, this.c), true, 5, true);
       return;
     }
     catch (Throwable localThrowable)
@@ -24,7 +24,7 @@ final class TaskOfflineUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskOfflineUtils.1
  * JD-Core Version:    0.7.0.1
  */

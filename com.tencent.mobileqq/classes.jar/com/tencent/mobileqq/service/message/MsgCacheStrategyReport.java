@@ -28,13 +28,13 @@ public class MsgCacheStrategyReport
         HashMap localHashMap = new HashMap();
         localHashMap.put("isFirstOpen", String.valueOf(paramInt3));
         Object localObject1 = UinTypeUtil.a(paramString, paramInt1);
-        Object localObject2 = MessageCache.b;
-        if ((localObject2 != null) && (MessageCache.b.containsKey(localObject1)))
+        Object localObject2 = MessageCache.p;
+        if ((localObject2 != null) && (MessageCache.p.containsKey(localObject1)))
         {
-          localObject1 = (MessageCache.MsgCacheStrategyParam)MessageCache.b.get(localObject1);
-          localHashMap.put("isInited", String.valueOf(((MessageCache.MsgCacheStrategyParam)localObject1).jdField_a_of_type_Boolean));
-          localHashMap.put("isMsgExisted", String.valueOf(((MessageCache.MsgCacheStrategyParam)localObject1).b));
-          localHashMap.put("msgCostTime", String.valueOf(((MessageCache.MsgCacheStrategyParam)localObject1).jdField_a_of_type_Long));
+          localObject1 = (MessageCache.MsgCacheStrategyParam)MessageCache.p.get(localObject1);
+          localHashMap.put("isInited", String.valueOf(((MessageCache.MsgCacheStrategyParam)localObject1).b));
+          localHashMap.put("isMsgExisted", String.valueOf(((MessageCache.MsgCacheStrategyParam)localObject1).c));
+          localHashMap.put("msgCostTime", String.valueOf(((MessageCache.MsgCacheStrategyParam)localObject1).d));
         }
         else
         {
@@ -44,8 +44,8 @@ public class MsgCacheStrategyReport
         }
         if (paramInt1 == 1)
         {
-          i = paramMessageCache.c(paramString);
-          paramString = ((IRecentUserProxyService)paramMessageCache.a().getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().a(paramString, paramInt1);
+          i = paramMessageCache.V(paramString);
+          paramString = ((IRecentUserProxyService)paramMessageCache.a().getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().e(paramString, paramInt1);
           int j = -2;
           if (paramString == null) {
             break label627;
@@ -53,7 +53,7 @@ public class MsgCacheStrategyReport
           j = paramString.a;
           k = paramString.b;
           m = paramString.c;
-          paramString = paramMessageCache.a().a().b();
+          paramString = paramMessageCache.H().a().b();
           localObject1 = paramString.keySet();
           if (((Set)localObject1).size() <= 0) {
             break label641;
@@ -78,7 +78,7 @@ public class MsgCacheStrategyReport
           localHashMap.put("troopSpeType", String.valueOf(i));
           localHashMap.put("msgCacheSize", String.valueOf(paramInt3));
           localHashMap.put("cacheSize", String.valueOf(n));
-          localHashMap.put("isCacheExpired", String.valueOf(MessageCache.jdField_a_of_type_Boolean));
+          localHashMap.put("isCacheExpired", String.valueOf(MessageCache.q));
           long l2 = Runtime.getRuntime().freeMemory() / 1024L / 1024L;
           long l3 = Runtime.getRuntime().totalMemory() / 1024L / 1024L;
           long l4 = Runtime.getRuntime().maxMemory() / 1024L / 1024L;
@@ -86,7 +86,7 @@ public class MsgCacheStrategyReport
           localHashMap.put("totalMemory", String.valueOf(l3));
           localHashMap.put("maxMemory", String.valueOf(l4));
           localHashMap.put("cacheVersion", "2");
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramMessageCache.a().getCurrentAccountUin(), "msg_cache_strategy_tag", true, StartupTracker.jdField_a_of_type_Long, 0L, localHashMap, "");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramMessageCache.a().getCurrentAccountUin(), "msg_cache_strategy_tag", true, StartupTracker.b, 0L, localHashMap, "");
           if (QLog.isColorLevel()) {
             QLog.d("Q.aio.ChatFragment", 2, new Object[] { "AIOTime reportMsgCacheStrategy cost:%d ", Long.valueOf((System.nanoTime() - l1) / 1000000L), " param: ", localHashMap });
           }
@@ -114,7 +114,7 @@ public class MsgCacheStrategyReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MsgCacheStrategyReport
  * JD-Core Version:    0.7.0.1
  */

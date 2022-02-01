@@ -10,70 +10,70 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class VenueHolder
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  LocationShareViewModel jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel;
-  LocationShareController jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView a;
+  TextView b;
+  TextView c;
+  View d;
+  View e;
+  View f;
+  LocationShareController g;
+  LocationShareViewModel h;
   
   VenueHolder(LocationShareController paramLocationShareController, LocationShareViewModel paramLocationShareViewModel, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController = paramLocationShareController;
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel = paramLocationShareViewModel;
+    this.g = paramLocationShareController;
+    this.h = paramLocationShareViewModel;
     a(paramView);
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380390);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380392));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380389));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380394));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131380391);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131380393);
-    if (QQUIDelegate.b())
+    this.d = paramView.findViewById(2131449339);
+    this.a = ((TextView)paramView.findViewById(2131449341));
+    this.b = ((TextView)paramView.findViewById(2131449338));
+    this.c = ((TextView)paramView.findViewById(2131449343));
+    this.e = paramView.findViewById(2131449340);
+    this.f = paramView.findViewById(2131449342);
+    if (QQUIDelegate.c())
     {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130845533);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845531);
-      paramView = this.jdField_b_of_type_AndroidViewView;
+      this.f.setBackgroundResource(2130846996);
+      this.e.setBackgroundResource(2130846994);
+      paramView = this.e;
       if ((paramView instanceof TextView)) {
         ((TextView)paramView).setTextColor(-1);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
+      this.a.setTextColor(-1);
+      this.b.setTextColor(-1);
+      ((TextView)this.e).setTextColor(-1);
     }
   }
   
   void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.d.setVisibility(0);
   }
   
   void a(LocationRoom.Venue paramVenue)
   {
     LocationRoom.Venue localVenue = paramVenue;
     if (paramVenue == null) {
-      localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController.a.a();
+      localVenue = this.g.a.getVenue();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(BaseApplication.getContext().getResources().getString(2131693834), new Object[] { localVenue.b }));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-    MapUtils.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel.a(localVenue.a), BaseApplication.getContext().getResources().getString(2131693835), this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new VenueHolder.1(this));
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new VenueHolder.2(this));
+    this.a.setText(String.format(BaseApplication.getContext().getResources().getString(2131891410), new Object[] { localVenue.c }));
+    this.b.setText(localVenue.d);
+    MapUtils.a(this.h.b(localVenue.b), BaseApplication.getContext().getResources().getString(2131891411), this.c);
+    this.e.setOnClickListener(new VenueHolder.1(this));
+    this.f.setOnClickListener(new VenueHolder.2(this));
   }
   
   void b()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.d.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.VenueHolder
  * JD-Core Version:    0.7.0.1
  */

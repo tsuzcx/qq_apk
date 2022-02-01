@@ -28,74 +28,74 @@ class LebaTabRedTouch$1
     //   42: checkcast 48	com/tencent/biz/TroopRedpoint/TroopRedTouchManager
     //   45: astore_2
     //   46: aload_2
-    //   47: invokevirtual 51	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	()Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;
+    //   47: invokevirtual 52	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:q	()Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;
     //   50: astore_3
     //   51: iconst_m1
     //   52: istore_1
     //   53: aload_3
     //   54: ifnull +11 -> 65
     //   57: aload_3
-    //   58: getfield 57	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint32_appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   61: invokevirtual 63	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   58: getfield 58	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint32_appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   61: invokevirtual 64	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   64: istore_1
     //   65: aload_0
     //   66: getfield 14	com/tencent/mobileqq/activity/main/LebaTabRedTouch$1:this$0	Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch;
     //   69: getfield 28	com/tencent/mobileqq/activity/main/LebaTabRedTouch:a	Lcom/tencent/mobileqq/activity/SplashActivity;
     //   72: getfield 34	com/tencent/mobileqq/activity/SplashActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   75: invokevirtual 67	com/tencent/mobileqq/app/QQAppInterface:getNowLiveManager	()Lcom/tencent/biz/now/NowLiveManager;
-    //   78: getfield 72	com/tencent/biz/now/NowLiveManager:a	Z
+    //   75: invokevirtual 68	com/tencent/mobileqq/app/QQAppInterface:getNowLiveManager	()Lcom/tencent/biz/now/NowLiveManager;
+    //   78: getfield 74	com/tencent/biz/now/NowLiveManager:d	Z
     //   81: ifne +85 -> 166
     //   84: iload_1
     //   85: bipush 11
     //   87: if_icmpne +79 -> 166
-    //   90: new 74	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo
+    //   90: new 76	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo
     //   93: dup
-    //   94: invokespecial 75	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:<init>	()V
+    //   94: invokespecial 77	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:<init>	()V
     //   97: astore_2
     //   98: aload_2
-    //   99: getfield 78	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:red_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   99: getfield 80	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:red_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   102: iconst_4
-    //   103: invokevirtual 82	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   103: invokevirtual 84	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   106: aload_2
-    //   107: getfield 86	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:red_content	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   107: getfield 88	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:red_content	Lcom/tencent/mobileqq/pb/PBStringField;
     //   110: aload_3
-    //   111: getfield 90	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:str_custom_buffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   114: invokevirtual 95	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   117: invokevirtual 101	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   120: invokevirtual 106	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   111: getfield 92	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:str_custom_buffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   114: invokevirtual 97	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   117: invokevirtual 103	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   120: invokevirtual 108	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   123: aload_2
-    //   124: getfield 109	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:red_desc	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   127: ldc 111
-    //   129: invokevirtual 106	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   132: new 113	java/lang/StringBuilder
+    //   124: getfield 111	com/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo:red_desc	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   127: ldc 113
+    //   129: invokevirtual 108	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   132: new 115	java/lang/StringBuilder
     //   135: dup
-    //   136: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   136: invokespecial 116	java/lang/StringBuilder:<init>	()V
     //   139: astore_3
     //   140: aload_3
-    //   141: ldc 116
-    //   143: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: ldc 118
+    //   143: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: pop
     //   147: aload_3
     //   148: iload_1
-    //   149: invokevirtual 123	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   149: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   152: pop
-    //   153: ldc 125
+    //   153: ldc 127
     //   155: iconst_1
     //   156: aload_3
-    //   157: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   160: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   157: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   160: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   163: goto +14 -> 177
     //   166: aload_0
     //   167: getfield 14	com/tencent/mobileqq/activity/main/LebaTabRedTouch$1:this$0	Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch;
     //   170: aload_2
     //   171: aconst_null
     //   172: aload_3
-    //   173: invokestatic 137	com/tencent/mobileqq/activity/main/LebaTabRedTouch:a	(Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch;Lcom/tencent/biz/TroopRedpoint/TroopRedTouchManager;Lcom/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo;Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;)Lcom/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   173: invokestatic 139	com/tencent/mobileqq/activity/main/LebaTabRedTouch:a	(Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch;Lcom/tencent/biz/TroopRedpoint/TroopRedTouchManager;Lcom/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo;Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;)Lcom/tencent/mobileqq/tianshu/pb/BusinessInfoCheckUpdate$RedTypeInfo;
     //   176: astore_2
     //   177: aload_0
     //   178: getfield 16	com/tencent/mobileqq/activity/main/LebaTabRedTouch$1:a	Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch$RefreshCallback;
     //   181: aload_2
-    //   182: invokeinterface 142 2 0
+    //   182: invokeinterface 144 2 0
     //   187: aload_0
     //   188: getfield 16	com/tencent/mobileqq/activity/main/LebaTabRedTouch$1:a	Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch$RefreshCallback;
     //   191: astore_2
@@ -108,23 +108,23 @@ class LebaTabRedTouch$1
     //   204: aload_2
     //   205: ifnull +9 -> 214
     //   208: aload_2
-    //   209: invokeinterface 144 1 0
+    //   209: invokeinterface 146 1 0
     //   214: return
     //   215: astore_2
     //   216: goto +29 -> 245
     //   219: astore_2
-    //   220: ldc 146
+    //   220: ldc 148
     //   222: iconst_1
-    //   223: ldc 148
+    //   223: ldc 150
     //   225: aload_2
-    //   226: invokestatic 152	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   226: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   229: aload_0
     //   230: getfield 16	com/tencent/mobileqq/activity/main/LebaTabRedTouch$1:a	Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch$RefreshCallback;
     //   233: astore_2
     //   234: aload_2
     //   235: ifnull +9 -> 244
     //   238: aload_2
-    //   239: invokeinterface 144 1 0
+    //   239: invokeinterface 146 1 0
     //   244: return
     //   245: aload_0
     //   246: getfield 16	com/tencent/mobileqq/activity/main/LebaTabRedTouch$1:a	Lcom/tencent/mobileqq/activity/main/LebaTabRedTouch$RefreshCallback;
@@ -132,7 +132,7 @@ class LebaTabRedTouch$1
     //   250: aload_3
     //   251: ifnull +9 -> 260
     //   254: aload_3
-    //   255: invokeinterface 144 1 0
+    //   255: invokeinterface 146 1 0
     //   260: aload_2
     //   261: athrow
     // Local variable table:
@@ -165,7 +165,7 @@ class LebaTabRedTouch$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.LebaTabRedTouch.1
  * JD-Core Version:    0.7.0.1
  */

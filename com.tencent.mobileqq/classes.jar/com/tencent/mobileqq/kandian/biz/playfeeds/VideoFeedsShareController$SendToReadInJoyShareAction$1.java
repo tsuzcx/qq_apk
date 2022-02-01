@@ -12,12 +12,12 @@ class VideoFeedsShareController$SendToReadInJoyShareAction$1
   
   public void a(UserLevelInfo paramUserLevelInfo)
   {
-    VideoFeedsShareController.SendToReadInJoyShareAction.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController$SendToReadInJoyShareAction, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
+    VideoFeedsShareController.SendToReadInJoyShareAction.a(this.e, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.SendToReadInJoyShareAction.1
  * JD-Core Version:    0.7.0.1
  */

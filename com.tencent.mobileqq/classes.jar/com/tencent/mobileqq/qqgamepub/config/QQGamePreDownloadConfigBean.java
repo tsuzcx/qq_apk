@@ -6,20 +6,12 @@ import org.json.JSONObject;
 
 public class QQGamePreDownloadConfigBean
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c = -1L;
-  
-  public QQGamePreDownloadConfigBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-  }
+  public int a = 0;
+  public int b = 0;
+  public String c;
+  public long d = -1L;
+  public long e = -1L;
+  public long f = -1L;
   
   public static QQGamePreDownloadConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -35,27 +27,27 @@ public class QQGamePreDownloadConfigBean
         i = 0;
         if (i < j)
         {
-          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].b);
           if (localJSONObject.has((String)localObject)) {
-            localQQGamePreDownloadConfigBean.jdField_a_of_type_Int = localJSONObject.optInt((String)localObject);
+            localQQGamePreDownloadConfigBean.a = localJSONObject.optInt((String)localObject);
           }
           if (localJSONObject.has(str)) {
-            localQQGamePreDownloadConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.optString(str);
+            localQQGamePreDownloadConfigBean.c = localJSONObject.optString(str);
           }
           if (!localJSONObject.has("cleanResFolderMaxSize")) {
             break label262;
           }
-          localQQGamePreDownloadConfigBean.jdField_a_of_type_Long = localJSONObject.optLong("cleanResFolderMaxSize", -1L);
+          localQQGamePreDownloadConfigBean.d = localJSONObject.optLong("cleanResFolderMaxSize", -1L);
           if (localJSONObject.has("cleanIntervalTime")) {
-            localQQGamePreDownloadConfigBean.jdField_b_of_type_Long = localJSONObject.optLong("cleanIntervalTime", -1L);
+            localQQGamePreDownloadConfigBean.e = localJSONObject.optLong("cleanIntervalTime", -1L);
           }
           if (localJSONObject.has("checkIntervalTime")) {
-            localQQGamePreDownloadConfigBean.c = localJSONObject.optLong("checkIntervalTime", -1L);
+            localQQGamePreDownloadConfigBean.f = localJSONObject.optLong("checkIntervalTime", -1L);
           }
           if (!localJSONObject.has("downOfflineSwitch")) {
             break label265;
           }
-          localQQGamePreDownloadConfigBean.jdField_b_of_type_Int = localJSONObject.optInt("downOfflineSwitch");
+          localQQGamePreDownloadConfigBean.b = localJSONObject.optInt("downOfflineSwitch");
           break label265;
         }
         if (QLog.isColorLevel())
@@ -86,25 +78,25 @@ public class QQGamePreDownloadConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QQGamePreDownloadConfigBean{mPreDownloadSwitch=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mPreDownloadNetType='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mCleanResFolderMaxSize=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mCleanIntervalTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", mCheckIntervalTime=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", mDownOfflineSwitch=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.config.QQGamePreDownloadConfigBean
  * JD-Core Version:    0.7.0.1
  */

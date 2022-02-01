@@ -12,23 +12,17 @@ import mqq.app.MobileQQ;
 
 public class SwiftWebAccelerator$TbsAccelerator
 {
-  public static long a;
-  static final AtomicBoolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Long = 0L;
-  }
+  static final AtomicBoolean a = new AtomicBoolean(false);
+  public static long b = 0L;
   
   public static boolean a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return a.get();
   }
   
   public static boolean b()
   {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (a.compareAndSet(false, true))
     {
       long l = System.currentTimeMillis();
       Object localObject = new HashMap();
@@ -39,8 +33,8 @@ public class SwiftWebAccelerator$TbsAccelerator
       if (MobileQQ.sProcessId == 1) {
         CaughtExceptionReport.a(new RuntimeException("Webview init. "));
       }
-      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.E = SystemClock.elapsedRealtime();
-      jdField_a_of_type_Long = System.currentTimeMillis() - l;
+      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.I = SystemClock.elapsedRealtime();
+      b = System.currentTimeMillis() - l;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("WebAccelerator.initTbsEnvironment, cost=");
       ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
@@ -52,7 +46,7 @@ public class SwiftWebAccelerator$TbsAccelerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator
  * JD-Core Version:    0.7.0.1
  */

@@ -55,7 +55,7 @@ public class QQBaseWebIpcModule
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715804), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131913261), 0).show();
       }
       QLog.e("", 1, "sendRemoteReq error ipc service not ready");
       return;
@@ -70,7 +70,7 @@ public class QQBaseWebIpcModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBaseWebIpcModule
  * JD-Core Version:    0.7.0.1
  */

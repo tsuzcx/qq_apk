@@ -2,18 +2,18 @@ package com.tencent.mobileqq.qassistant.data;
 
 public class FriendItemInfo
 {
-  public float a;
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public float b;
-  public int b;
   public String b;
-  public float c;
-  public String c;
-  public float d;
-  public float e;
+  public int c;
+  public boolean d;
+  public int e;
+  public String f;
+  public long g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
   
   public static String a(int paramInt)
   {
@@ -41,7 +41,7 @@ public class FriendItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.data.FriendItemInfo
  * JD-Core Version:    0.7.0.1
  */

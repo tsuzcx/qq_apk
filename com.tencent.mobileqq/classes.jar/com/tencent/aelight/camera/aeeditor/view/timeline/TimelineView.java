@@ -16,14 +16,14 @@ import androidx.annotation.MainThread;
 public class TimelineView
   extends RelativeLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  protected ViewGroup a;
-  protected SliderView a;
-  private TimelineListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimelineListener;
-  private View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  protected int b;
+  private View a;
   private View b;
-  protected SliderView b;
+  private View[] c;
+  private TimelineListener d;
+  protected SliderView m;
+  protected SliderView n;
+  protected ViewGroup o;
+  protected int p = 0;
   
   public TimelineView(@NonNull Context paramContext)
   {
@@ -38,21 +38,20 @@ public class TimelineView
   public TimelineView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Int = 0;
     a();
   }
   
   private void a()
   {
     b();
-    h();
-    g();
+    m();
+    l();
   }
   
   private void a(boolean paramBoolean)
   {
     getParent().requestDisallowInterceptTouchEvent(false);
-    TimelineListener localTimelineListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimelineListener;
+    TimelineListener localTimelineListener = this.d;
     if (localTimelineListener != null) {
       localTimelineListener.a(paramBoolean);
     }
@@ -60,36 +59,36 @@ public class TimelineView
   
   private void b()
   {
-    d();
-    e();
-    f();
+    c();
+    j();
+    k();
   }
   
-  private void d()
+  private void c()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = a();
-    this.jdField_a_of_type_AndroidViewViewGroup.setId(c());
-    addView(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.o = e();
+    this.o.setId(getContentViewId());
+    addView(this.o);
   }
   
-  private void e()
+  private void j()
   {
-    n();
-    o();
+    s();
+    t();
   }
   
-  private void f()
+  private void k()
   {
-    p();
-    q();
+    u();
+    v();
   }
   
-  private void g()
+  private void l()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView;
+    Object localObject1 = this.m;
     int i = 0;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { localObject1, this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_AndroidViewView };
-    localObject1 = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    this.c = new View[] { localObject1, this.n, this.a, this.b };
+    localObject1 = this.c;
     int j = localObject1.length;
     while (i < j)
     {
@@ -101,144 +100,111 @@ public class TimelineView
     }
   }
   
-  private void h()
-  {
-    i();
-    j();
-    k();
-    l();
-    m();
-  }
-  
-  private void i()
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup.setPadding(e(), 0, e(), 0);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    localLayoutParams.addRule(9, -1);
-    localLayoutParams.addRule(10, -1);
-    localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.leftMargin = h();
-    localLayoutParams.rightMargin = h();
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-  }
-  
-  private void j()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.getLayoutParams();
-    localLayoutParams.addRule(10, -1);
-    localLayoutParams.addRule(9, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.width = h();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void k()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.getLayoutParams();
-    localLayoutParams.addRule(10, -1);
-    localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.width = h();
-    this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void l()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.addRule(5, this.jdField_a_of_type_AndroidViewViewGroup.getId());
-    localLayoutParams.addRule(6, this.jdField_a_of_type_AndroidViewViewGroup.getId());
-    localLayoutParams.addRule(7, this.jdField_a_of_type_AndroidViewViewGroup.getId());
-    localLayoutParams.height = k();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-  }
-  
   private void m()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.addRule(5, this.jdField_a_of_type_AndroidViewViewGroup.getId());
-    localLayoutParams.addRule(7, this.jdField_a_of_type_AndroidViewViewGroup.getId());
-    localLayoutParams.addRule(8, this.jdField_a_of_type_AndroidViewViewGroup.getId());
-    localLayoutParams.height = k();
-    this.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    n();
+    o();
+    p();
+    q();
+    r();
   }
   
   private void n()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView = a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.setId(f());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.setSliderListener(new TimelineView.1(this));
-    addView(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView);
+    this.o.setPadding(getContentPadding(), 0, getContentPadding(), 0);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.o.getLayoutParams();
+    localLayoutParams.addRule(9, -1);
+    localLayoutParams.addRule(10, -1);
+    localLayoutParams.addRule(11, -1);
+    localLayoutParams.addRule(12, -1);
+    localLayoutParams.leftMargin = getSliderWidth();
+    localLayoutParams.rightMargin = getSliderWidth();
+    this.o.setLayoutParams(localLayoutParams);
   }
   
   private void o()
   {
-    this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView = b();
-    this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.setId(g());
-    this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView.setSliderListener(new TimelineView.2(this));
-    addView(this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.m.getLayoutParams();
+    localLayoutParams.addRule(10, -1);
+    localLayoutParams.addRule(9, -1);
+    localLayoutParams.addRule(12, -1);
+    localLayoutParams.width = getSliderWidth();
+    this.m.setLayoutParams(localLayoutParams);
   }
   
   private void p()
   {
-    this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_a_of_type_AndroidViewView.setId(i());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2064056498);
-    addView(this.jdField_a_of_type_AndroidViewView);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.n.getLayoutParams();
+    localLayoutParams.addRule(10, -1);
+    localLayoutParams.addRule(11, -1);
+    localLayoutParams.addRule(12, -1);
+    localLayoutParams.width = getSliderWidth();
+    this.n.setLayoutParams(localLayoutParams);
   }
   
   private void q()
   {
-    this.jdField_b_of_type_AndroidViewView = b();
-    this.jdField_b_of_type_AndroidViewView.setId(j());
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2064056497);
-    addView(this.jdField_b_of_type_AndroidViewView);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    localLayoutParams.addRule(5, this.o.getId());
+    localLayoutParams.addRule(6, this.o.getId());
+    localLayoutParams.addRule(7, this.o.getId());
+    localLayoutParams.height = getFrameHeight();
+    this.a.setLayoutParams(localLayoutParams);
   }
   
-  protected View a()
+  private void r()
   {
-    return new FrameView(getContext());
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    localLayoutParams.addRule(5, this.o.getId());
+    localLayoutParams.addRule(7, this.o.getId());
+    localLayoutParams.addRule(8, this.o.getId());
+    localLayoutParams.height = getFrameHeight();
+    this.b.setLayoutParams(localLayoutParams);
   }
   
-  @MainThread
-  protected ViewGroup a()
+  private void s()
   {
-    return new ContentView(getContext());
+    this.m = f();
+    this.m.setId(getLeftSliderViewId());
+    this.m.setSliderListener(new TimelineView.1(this));
+    addView(this.m);
   }
   
-  @MainThread
-  protected SliderView a()
+  private void t()
   {
-    SliderView localSliderView = new SliderView(getContext());
-    localSliderView.setImageResource(2064056476);
-    return localSliderView;
+    this.n = g();
+    this.n.setId(getRightSliderViewId());
+    this.n.setSliderListener(new TimelineView.2(this));
+    addView(this.n);
+  }
+  
+  private void u()
+  {
+    this.a = h();
+    this.a.setId(getTopFrameViewId());
+    this.a.setBackgroundResource(2063925462);
+    addView(this.a);
+  }
+  
+  private void v()
+  {
+    this.b = i();
+    this.b.setId(getBottomFrameViewId());
+    this.b.setBackgroundResource(2063925461);
+    addView(this.b);
   }
   
   protected void a(float paramFloat)
   {
-    TimelineListener localTimelineListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimelineListener;
+    TimelineListener localTimelineListener = this.d;
     if (localTimelineListener != null) {
       localTimelineListener.a(paramFloat, true);
     }
   }
   
-  @MainThread
-  protected View b()
-  {
-    return new FrameView(getContext());
-  }
-  
-  @MainThread
-  protected SliderView b()
-  {
-    SliderView localSliderView = new SliderView(getContext());
-    localSliderView.setImageResource(2064056477);
-    return localSliderView;
-  }
-  
   protected void b(float paramFloat)
   {
-    TimelineListener localTimelineListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimelineListener;
+    TimelineListener localTimelineListener = this.d;
     if (localTimelineListener != null) {
       localTimelineListener.a(paramFloat, false);
     }
@@ -246,13 +212,13 @@ public class TimelineView
   
   public void b(boolean paramBoolean)
   {
-    int j = this.jdField_b_of_type_Int;
+    int j = this.p;
     int i = 0;
     View[] arrayOfView;
     View localView;
     if (j == 0)
     {
-      arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+      arrayOfView = this.c;
       int k = arrayOfView.length;
       i = 0;
       while (i < k)
@@ -272,7 +238,7 @@ public class TimelineView
     }
     if (j == 1)
     {
-      arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+      arrayOfView = this.c;
       j = arrayOfView.length;
       while (i < j)
       {
@@ -285,63 +251,116 @@ public class TimelineView
     }
   }
   
-  @IdRes
-  protected int c()
-  {
-    return 2064121888;
-  }
-  
-  protected void c()
+  protected void d()
   {
     getParent().requestDisallowInterceptTouchEvent(true);
-    TimelineListener localTimelineListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimelineListener;
+    TimelineListener localTimelineListener = this.d;
     if (localTimelineListener != null) {
       localTimelineListener.b();
     }
   }
   
-  protected int d()
+  @MainThread
+  protected ViewGroup e()
   {
-    return getResources().getDimensionPixelOffset(2063990843);
+    return new ContentView(getContext());
   }
   
-  protected int e()
+  @MainThread
+  protected SliderView f()
   {
-    return getResources().getDimensionPixelOffset(2063990806);
+    SliderView localSliderView = new SliderView(getContext());
+    localSliderView.setImageResource(2063925444);
+    return localSliderView;
   }
   
-  @IdRes
-  protected int f()
+  @MainThread
+  protected SliderView g()
   {
-    return 2064121889;
-  }
-  
-  @IdRes
-  protected int g()
-  {
-    return 2064121890;
-  }
-  
-  protected int h()
-  {
-    return getResources().getDimensionPixelOffset(2063990845);
+    SliderView localSliderView = new SliderView(getContext());
+    localSliderView.setImageResource(2063925445);
+    return localSliderView;
   }
   
   @IdRes
-  protected int i()
+  protected int getBottomFrameViewId()
   {
-    return 2064121891;
+    return 2063990814;
+  }
+  
+  protected int getContentHeight()
+  {
+    return 0;
+  }
+  
+  protected int getContentMargin()
+  {
+    return getResources().getDimensionPixelOffset(2063859770);
+  }
+  
+  protected int getContentPadding()
+  {
+    return getResources().getDimensionPixelOffset(2063859733);
   }
   
   @IdRes
-  protected int j()
+  protected int getContentViewId()
   {
-    return 2064121887;
+    return 2063990815;
   }
   
-  protected int k()
+  protected int getContentWidth()
   {
-    return getResources().getDimensionPixelOffset(2063990807);
+    return 0;
+  }
+  
+  protected int getFrameHeight()
+  {
+    return getResources().getDimensionPixelOffset(2063859734);
+  }
+  
+  protected int getFrameWidth()
+  {
+    return 0;
+  }
+  
+  @IdRes
+  protected int getLeftSliderViewId()
+  {
+    return 2063990816;
+  }
+  
+  @IdRes
+  protected int getRightSliderViewId()
+  {
+    return 2063990817;
+  }
+  
+  protected int getSliderHeight()
+  {
+    return 0;
+  }
+  
+  protected int getSliderWidth()
+  {
+    return getResources().getDimensionPixelOffset(2063859772);
+  }
+  
+  @IdRes
+  protected int getTopFrameViewId()
+  {
+    return 2063990818;
+  }
+  
+  protected View h()
+  {
+    return new FrameView(getContext());
+  }
+  
+  @MainThread
+  protected View i()
+  {
+    return new FrameView(getContext());
   }
   
   public void setSelected(boolean paramBoolean)
@@ -352,17 +371,17 @@ public class TimelineView
   
   public void setSelectedStyle(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.p = paramInt;
   }
   
   public void setTimelineListener(TimelineListener paramTimelineListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimelineListener = paramTimelineListener;
+    this.d = paramTimelineListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timeline.TimelineView
  * JD-Core Version:    0.7.0.1
  */

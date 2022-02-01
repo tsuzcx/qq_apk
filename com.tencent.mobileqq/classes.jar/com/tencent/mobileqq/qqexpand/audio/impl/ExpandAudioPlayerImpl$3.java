@@ -9,16 +9,16 @@ class ExpandAudioPlayerImpl$3
   
   public void run()
   {
-    Object localObject = ExpandAudioPlayerImpl.access$200(this.this$0, this.jdField_a_of_type_JavaLangString);
+    Object localObject = ExpandAudioPlayerImpl.access$200(this.this$0, this.a);
     boolean bool = true;
     if (localObject == null)
     {
-      ExpandAudioPlayerImpl.access$100(this.this$0).onAudioPlayFailed(this.jdField_a_of_type_JavaLangString, 1, "音频文件不存在");
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIMethodCallback.setResult(true);
+      ExpandAudioPlayerImpl.access$100(this.this$0).onAudioPlayFailed(this.a, 1, "音频文件不存在");
+      this.b.setResult(true);
       return;
     }
     int i = ExpandAudioPlayerImpl.access$300(this.this$0, (String)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIMethodCallback;
+    localObject = this.b;
     if (i != 1) {
       bool = false;
     }
@@ -27,7 +27,7 @@ class ExpandAudioPlayerImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.audio.impl.ExpandAudioPlayerImpl.3
  * JD-Core Version:    0.7.0.1
  */

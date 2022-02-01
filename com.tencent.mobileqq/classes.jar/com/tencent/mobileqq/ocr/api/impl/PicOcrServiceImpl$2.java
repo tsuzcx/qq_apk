@@ -39,14 +39,14 @@ class PicOcrServiceImpl$2
       }
       if (-1 == i)
       {
-        paramSendResult = this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver;
+        paramSendResult = this.a;
         if (paramSendResult != null) {
           paramSendResult.onUpdate(100, false, new PicOcrRspResult());
         }
       }
       if ((-1 == i) || (i == 0))
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.d.equals(this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.e)) {
+        if (!this.b.f.equals(this.b.g)) {
           ThreadManager.excute(new PicOcrServiceImpl.2.1(this), 64, null, true);
         }
         HashMap localHashMap = new HashMap();
@@ -56,7 +56,7 @@ class PicOcrServiceImpl$2
           paramSendResult = "1";
         }
         localHashMap.put("param_upload", paramSendResult);
-        localHashMap.put("param_md5", this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.d);
+        localHashMap.put("param_md5", this.b.f);
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actUploadProcessState", true, 0L, 0L, localHashMap, "");
       }
     }
@@ -64,7 +64,7 @@ class PicOcrServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.PicOcrServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

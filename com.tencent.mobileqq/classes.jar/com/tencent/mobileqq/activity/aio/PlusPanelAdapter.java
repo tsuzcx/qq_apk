@@ -16,12 +16,12 @@ import java.util.ArrayList;
 public class PlusPanelAdapter
   extends BaseAdapter
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  ArrayList<PluginData> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<PluginData> a;
+  View.OnClickListener b;
   
   public int getCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (localArrayList != null) {
       return localArrayList.size();
     }
@@ -43,11 +43,11 @@ public class PlusPanelAdapter
     Object localObject1 = BaseApplication.getContext();
     if (paramView == null)
     {
-      localObject1 = LayoutInflater.from((Context)localObject1).inflate(2131558842, null);
+      localObject1 = LayoutInflater.from((Context)localObject1).inflate(2131624462, null);
       paramView = new PlusPanelAdapter.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131368487));
-      paramView.b = ((ImageView)((View)localObject1).findViewById(2131366954));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131378476));
+      paramView.a = ((ImageView)((View)localObject1).findViewById(2131435389));
+      paramView.b = ((ImageView)((View)localObject1).findViewById(2131433314));
+      paramView.c = ((TextView)((View)localObject1).findViewById(2131447090));
       ((View)localObject1).setTag(paramView);
     }
     else
@@ -56,24 +56,24 @@ public class PlusPanelAdapter
       localObject1 = paramView;
       paramView = (View)localObject2;
     }
-    Object localObject2 = (PluginData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((PluginData)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PluginData)localObject2).jdField_a_of_type_JavaLangString);
-    if (((PluginData)localObject2).jdField_a_of_type_Boolean) {
+    Object localObject2 = (PluginData)this.a.get(paramInt);
+    paramView.a.setBackgroundDrawable(((PluginData)localObject2).k);
+    paramView.c.setText(((PluginData)localObject2).d);
+    if (((PluginData)localObject2).c) {
       paramView.b.setVisibility(0);
     } else {
       paramView.b.setVisibility(8);
     }
-    paramView.jdField_a_of_type_Int = ((PluginData)localObject2).jdField_a_of_type_Int;
-    ((View)localObject1).setContentDescription(((PluginData)localObject2).b);
-    ((View)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramView.d = ((PluginData)localObject2).a;
+    ((View)localObject1).setContentDescription(((PluginData)localObject2).e);
+    ((View)localObject1).setOnClickListener(this.b);
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PlusPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

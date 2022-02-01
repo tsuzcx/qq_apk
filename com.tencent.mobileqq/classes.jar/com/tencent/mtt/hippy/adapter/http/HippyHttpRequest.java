@@ -14,7 +14,7 @@ public class HippyHttpRequest
   private static String USER_AGENT;
   private String mBody;
   private int mConnectTimeout = 3000;
-  private Map<String, Object> mHeaderMap = new HashMap();
+  private final Map<String, Object> mHeaderMap = new HashMap();
   private boolean mInstanceFollowRedirects = false;
   private String mMethod = "GET";
   private int mReadTimeout = 3000;
@@ -168,7 +168,7 @@ public class HippyHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.http.HippyHttpRequest
  * JD-Core Version:    0.7.0.1
  */

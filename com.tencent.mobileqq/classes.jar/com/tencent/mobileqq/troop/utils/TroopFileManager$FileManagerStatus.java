@@ -10,39 +10,39 @@ import java.util.Map;
 public class TroopFileManager$FileManagerStatus
 {
   public int a;
-  public long a;
-  public ByteStringMicro a;
-  public List<TroopFileInfo> a;
-  public Map<String, TroopFileInfo> a;
-  public boolean a;
   public int b;
-  public boolean b;
-  public int c;
+  public boolean c;
   public int d;
+  public boolean e;
+  public ByteStringMicro f;
+  public List<TroopFileInfo> g;
+  public Map<String, TroopFileInfo> h;
+  public int i;
+  public long j;
   
   public TroopFileManager$FileManagerStatus(TroopFileManager paramTroopFileManager, long paramLong)
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    int m = 0;
+    this.a = 0;
+    this.c = false;
+    this.e = false;
+    this.b = 0;
+    this.i = 0;
+    this.j = 0L;
+    this.f = ByteStringMicro.copyFromUtf8("");
+    this.g = new ArrayList();
+    this.h = new HashMap();
     if (paramLong == 0L) {
-      this.c = 0;
+      this.d = 0;
     } else {
-      i = 3;
+      m = 3;
     }
-    this.c = i;
+    this.d = m;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.FileManagerStatus
  * JD-Core Version:    0.7.0.1
  */

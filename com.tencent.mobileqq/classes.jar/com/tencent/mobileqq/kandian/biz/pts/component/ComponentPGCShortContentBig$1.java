@@ -15,14 +15,14 @@ class ComponentPGCShortContentBig$1
   
   public void a(String[] paramArrayOfString1, String[] paramArrayOfString2, VideoUrlInfo paramVideoUrlInfo)
   {
-    if ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPGCShortContentBig) != null) && ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPGCShortContentBig) instanceof VideoView)))
+    if ((ComponentPGCShortContentBig.a(this.b) != null) && ((ComponentPGCShortContentBig.a(this.b) instanceof VideoView)))
     {
       if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
       {
         paramArrayOfString2 = paramArrayOfString2[0];
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.e)) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.e.equals(paramArrayOfString1[0])) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.e.equals(((MediaVideoView)ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPGCShortContentBig)).getVideoVid())))
+        if ((!TextUtils.isEmpty(this.a.e)) && (this.a.e.equals(paramArrayOfString1[0])) && (this.a.e.equals(((MediaVideoView)ComponentPGCShortContentBig.a(this.b)).getVideoVid())))
         {
-          ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPGCShortContentBig, paramArrayOfString2);
+          ComponentPGCShortContentBig.a(this.b, paramArrayOfString2);
           return;
         }
         QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not current video");
@@ -36,7 +36,7 @@ class ComponentPGCShortContentBig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentPGCShortContentBig.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ class ReadInJoyDeliverVideoActivity$2$1
   public void run()
   {
     QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: success, update UI");
-    ReadInJoyDeliverVideoActivity.a(this.a.a).setVisibility(4);
-    ReadInJoyDeliverVideoActivity.a(this.a.a).setVisibility(0);
-    ReadInJoyDeliverVideoActivity.a(this.a.a).setClickable(true);
+    ReadInJoyDeliverVideoActivity.c(this.a.a).setVisibility(4);
+    ReadInJoyDeliverVideoActivity.d(this.a.a).setVisibility(0);
+    ReadInJoyDeliverVideoActivity.e(this.a.a).setClickable(true);
     this.a.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

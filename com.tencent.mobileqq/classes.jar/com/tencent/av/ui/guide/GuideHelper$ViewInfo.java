@@ -7,16 +7,16 @@ import com.tencent.qphone.base.util.QLog;
 
 class GuideHelper$ViewInfo
 {
-  View jdField_a_of_type_AndroidViewView = null;
-  ViewStub jdField_a_of_type_AndroidViewViewStub = null;
-  LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+  ViewStub a = null;
   View b = null;
+  View c = null;
+  LottieDrawable d = null;
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+    this.a = null;
+    this.b = null;
+    this.d = null;
   }
   
   public void a(boolean paramBoolean)
@@ -32,27 +32,27 @@ class GuideHelper$ViewInfo
     } else {
       i = 8;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    localObject = this.d;
     if (localObject != null) {
       if (paramBoolean)
       {
         ((LottieDrawable)localObject).pauseAnimation();
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+        this.d.playAnimation();
       }
       else
       {
         ((LottieDrawable)localObject).pauseAnimation();
       }
     }
-    localObject = this.jdField_a_of_type_AndroidViewViewStub;
+    localObject = this.a;
     if (localObject != null) {
       ((ViewStub)localObject).setVisibility(i);
     }
-    localObject = this.b;
+    localObject = this.c;
     if (localObject != null) {
       ((View)localObject).setVisibility(i);
     }
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.b;
     if (localObject != null) {
       ((View)localObject).setVisibility(i);
     }

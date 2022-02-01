@@ -13,38 +13,33 @@ public class FullMessageSearchManager
   extends Observable
   implements Manager
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, SoftReference<FullMessageSearchTask>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final QQAppInterface a;
+  private HashMap<String, SoftReference<FullMessageSearchTask>> b = new HashMap();
   
   public FullMessageSearchManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
-  private FullMessageSearchTask a(String paramString)
+  private FullMessageSearchTask d(String paramString)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     FullMessageSearchTask localFullMessageSearchTask = null;
     try
     {
-      Object localObject = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      Object localObject = (SoftReference)this.b.get(paramString);
       if (localObject != null) {
         localFullMessageSearchTask = (FullMessageSearchTask)((SoftReference)localObject).get();
       }
       localObject = localFullMessageSearchTask;
       if (localFullMessageSearchTask == null)
       {
-        localObject = new FullMessageSearchTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new FullMessageSearchManager.1(this));
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject));
+        localObject = new FullMessageSearchTask(this.a, paramString, new FullMessageSearchManager.1(this));
+        this.b.put(paramString, new SoftReference(localObject));
       }
       return localObject;
     }
     finally {}
-  }
-  
-  public FullMessageSearchResult a(String paramString)
-  {
-    return a(paramString).b();
   }
   
   public void a()
@@ -53,12 +48,12 @@ public class FullMessageSearchManager
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("stopSearch ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+      ((StringBuilder)???).append(this.b.size());
       QLog.d("Q.msg.FullMessageSearch", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      Iterator localIterator = this.b.values().iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (SoftReference)localIterator.next();
@@ -70,7 +65,7 @@ public class FullMessageSearchManager
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.b.clear();
       return;
     }
     for (;;)
@@ -89,9 +84,9 @@ public class FullMessageSearchManager
       QLog.d("Q.msg.FullMessageSearch", 2, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = null;
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.b)
     {
-      SoftReference localSoftReference = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      SoftReference localSoftReference = (SoftReference)this.b.get(paramString);
       paramString = localStringBuilder;
       if (localSoftReference != null) {
         paramString = (FullMessageSearchTask)localSoftReference.get();
@@ -105,7 +100,12 @@ public class FullMessageSearchManager
   
   public FullMessageSearchResult b(String paramString)
   {
-    return a(paramString).c();
+    return d(paramString).c();
+  }
+  
+  public FullMessageSearchResult c(String paramString)
+  {
+    return d(paramString).d();
   }
   
   public void onDestroy()
@@ -115,7 +115,7 @@ public class FullMessageSearchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.FullMessageSearchManager
  * JD-Core Version:    0.7.0.1
  */

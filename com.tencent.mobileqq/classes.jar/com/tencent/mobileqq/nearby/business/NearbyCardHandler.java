@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.util.Pair;
 import appoint.define.appoint_define.CommonLabel;
 import appoint.define.appoint_define.InterestTag;
 import appoint.define.appoint_define.LBSInfo;
@@ -79,6 +80,7 @@ import com.tencent.mobileqq.utils.AppIntefaceReportWrap;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.nowsummarycard.NowSummaryCard.ClientInfo;
 import com.tencent.nowsummarycard.NowSummaryCard.GiftInfo;
+import com.tencent.nowsummarycard.NowSummaryCard.GroupInfo;
 import com.tencent.nowsummarycard.NowSummaryCard.InterestTagInfo;
 import com.tencent.nowsummarycard.NowSummaryCard.LocationInfo;
 import com.tencent.nowsummarycard.NowSummaryCard.NearbySummaryCardReq;
@@ -146,56 +148,17 @@ public class NearbyCardHandler
   implements INearbyCardHandler
 {
   public static final String a = "com.tencent.mobileqq.nearby.business.NearbyCardHandler";
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected Set<String> a;
+  protected Set<String> b;
+  private QQAppInterface c;
+  private AppInterface d;
   
   public NearbyCardHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.d = paramAppInterface;
     if ((paramAppInterface instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+      this.c = ((QQAppInterface)paramAppInterface);
     }
-  }
-  
-  private long a(String paramString)
-  {
-    try
-    {
-      long l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      label7:
-      break label7;
-    }
-    return 0L;
-  }
-  
-  private NowSummaryCard.ClientInfo a()
-  {
-    NowSummaryCard.ClientInfo localClientInfo = new NowSummaryCard.ClientInfo();
-    localClientInfo.client_version.set(ByteStringMicro.copyFrom(AppSetting.f().getBytes()));
-    localClientInfo.platform.set(2);
-    localClientInfo.imei.set(ByteStringMicro.copyFrom(MobileInfoUtil.getImei().getBytes()));
-    return localClientInfo;
-  }
-  
-  private NowSummaryCard.LocationInfo a()
-  {
-    NowSummaryCard.LocationInfo localLocationInfo = new NowSummaryCard.LocationInfo();
-    Object localObject = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("NearbyProtocolCoder.Encounter");
-    if ((localObject != null) && (((SosoLbsInfo)localObject).mLocation != null))
-    {
-      localObject = ((SosoLbsInfo)localObject).mLocation;
-      long l1 = Double.valueOf(((SosoLocation)localObject).mLat02 * 1000000.0D).longValue();
-      long l2 = Double.valueOf(((SosoLocation)localObject).mLon02 * 1000000.0D).longValue();
-      localLocationInfo.latitude.set(Long.valueOf(l1).longValue());
-      localLocationInfo.longitude.set(Long.valueOf(l2).longValue());
-    }
-    return localLocationInfo;
   }
   
   private void a(long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString, byte paramByte, ToServiceMsg paramToServiceMsg)
@@ -212,29 +175,35 @@ public class NearbyCardHandler
       Object localObject2;
       break label38;
     }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("getNearbySummaryCard, illegal uin: ");
-    ((StringBuilder)localObject2).append(paramString);
-    QLog.e("NearbyCardHandler", 1, ((StringBuilder)localObject2).toString());
-    ((NowSummaryCard.ReqNearbySummaryCard)localObject1).location.set(a());
-    ((NowSummaryCard.ReqNearbySummaryCard)localObject1).client_info.set(a());
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getNearbySummaryCard, illegal uin: ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.e("NearbyCardHandler", 2, ((StringBuilder)localObject2).toString());
+    }
+    ((NowSummaryCard.ReqNearbySummaryCard)localObject1).location.set(b());
+    ((NowSummaryCard.ReqNearbySummaryCard)localObject1).client_info.set(c());
     ((NowSummaryCard.ReqNearbySummaryCard)localObject1).come_from.set(paramInt2);
     localObject2 = new NowSummaryCard.NearbySummaryCardReq();
     ((NowSummaryCard.NearbySummaryCardReq)localObject2).id.set(paramLong1);
     ((NowSummaryCard.NearbySummaryCardReq)localObject2).id_type.set(paramInt1);
     ((NowSummaryCard.NearbySummaryCardReq)localObject2).gender.set(1L);
     ((NowSummaryCard.NearbySummaryCardReq)localObject2).pb_data.set(ByteStringMicro.copyFrom(((NowSummaryCard.ReqNearbySummaryCard)localObject1).toByteArray()));
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("start uin:");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(", tinyId:");
-    ((StringBuilder)localObject1).append(paramLong2);
-    ((StringBuilder)localObject1).append(", nowId:");
-    ((StringBuilder)localObject1).append(paramLong1);
-    ((StringBuilder)localObject1).append(", from:");
-    ((StringBuilder)localObject1).append(paramInt2);
-    QLog.e("NearbyCardHandler", 1, ((StringBuilder)localObject1).toString());
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new NearbyCardHandler.2(this, false, paramToServiceMsg), ((NowSummaryCard.NearbySummaryCardReq)localObject2).toByteArray(), "NowSummaryCard.NearbySummaryCardReq");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("start uin:");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(", tinyId:");
+      ((StringBuilder)localObject1).append(paramLong2);
+      ((StringBuilder)localObject1).append(", nowId:");
+      ((StringBuilder)localObject1).append(paramLong1);
+      ((StringBuilder)localObject1).append(", from:");
+      ((StringBuilder)localObject1).append(paramInt2);
+      QLog.e("NearbyCardHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    ProtoUtils.a(this.c, new NearbyCardHandler.2(this, false, paramToServiceMsg), ((NowSummaryCard.NearbySummaryCardReq)localObject2).toByteArray(), "NowSummaryCard.NearbySummaryCardReq");
   }
   
   private void a(boolean paramBoolean, NowSummaryCard.RespNearbySummaryCard paramRespNearbySummaryCard, Bundle paramBundle)
@@ -254,7 +223,7 @@ public class NearbyCardHandler
       ((StringBuilder)localObject1).append(", nickName:");
       ((StringBuilder)localObject1).append(paramRespNearbySummaryCard.nick.get());
       QLog.e("NearbyCardHandler", 1, ((StringBuilder)localObject1).toString());
-      localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localEntityManager = this.c.getEntityManagerFactory().createEntityManager();
       localEntityTransaction = localEntityManager.getTransaction();
       localEntityTransaction.begin();
       long l1 = paramBundle.getLong("tinyId", 0L);
@@ -304,7 +273,7 @@ public class NearbyCardHandler
       }
       paramBundle.isHostSelf = paramBoolean;
       if (paramBundle.isHostSelf) {
-        paramBundle.uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        paramBundle.uin = this.c.getCurrentAccountUin();
       }
       for (;;)
       {
@@ -325,20 +294,21 @@ public class NearbyCardHandler
           }
           catch (Exception localException4)
           {
-            label558:
+            label548:
             Object localObject4;
             Object localObject5;
             Object localObject2;
             Object localObject3;
             StringBuilder localStringBuilder;
             Cursor localCursor;
-            break label558;
+            break label548;
           }
         }
       }
       paramBundle.nowId = l2;
       paramBundle.nowUserType = i;
       paramBundle.nickname = paramRespNearbySummaryCard.nick.get();
+      paramBundle.sign = paramRespNearbySummaryCard.sign.get();
       paramBundle.xuanYan = paramRespNearbySummaryCard.rich_sign.get().toByteArray();
       paramBundle.gender = ((byte)(int)paramRespNearbySummaryCard.gender.get());
       paramBundle.age = paramRespNearbySummaryCard.age.get();
@@ -365,21 +335,31 @@ public class NearbyCardHandler
       }
       paramBundle.isFriend = paramBoolean;
       paramBundle.chatId = paramRespNearbySummaryCard.chat_id.get();
+      paramBundle.nearbyTag = paramRespNearbySummaryCard.nearby_tag;
+      paramBundle.commonTag = paramRespNearbySummaryCard.common_tag;
+      if (paramRespNearbySummaryCard.is_verified.get() != 0) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      paramBundle.isVerified = paramBoolean;
+      localObject1 = (NowSummaryCard.GroupInfo)paramRespNearbySummaryCard.group_info.get();
+      paramBundle.recentlyJoinedGroup = new Pair(Long.valueOf(((NowSummaryCard.GroupInfo)localObject1).group_id.get()), ((NowSummaryCard.GroupInfo)localObject1).group_name.get());
       paramBundle.favoriteSource = j;
       if (paramBundle.vTempChatSig != null)
       {
         if ((paramBundle.vTempChatSig.length == 0) && (!paramBundle.isHostSelf))
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          localObject1 = this.c;
           ReportController.b((AppRuntime)localObject1, "dc00899", "grp_lbs", "", "nearby_chat", "nearby_card_get_sig_length_0", 0, 0, ((QQAppInterface)localObject1).getCurrentAccountUin(), String.valueOf(paramBundle.tinyId), "", "");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().m(String.valueOf(paramBundle.tinyId)) == null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().g(String.valueOf(paramBundle.tinyId), paramBundle.vTempChatSig);
+        if (this.c.getMsgCache().r(String.valueOf(paramBundle.tinyId)) == null) {
+          this.c.getMsgCache().g(String.valueOf(paramBundle.tinyId), paramBundle.vTempChatSig);
         }
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject1 = this.c;
         ReportController.b((AppRuntime)localObject1, "dc00899", "grp_lbs", "", "nearby_chat", "nearby_card_get_sig_null", 0, 0, ((QQAppInterface)localObject1).getCurrentAccountUin(), String.valueOf(paramBundle.tinyId), "", "");
       }
       localObject1 = paramRespNearbySummaryCard.common_label.get().toByteArray();
@@ -453,7 +433,7 @@ public class NearbyCardHandler
         catch (Exception localException2)
         {
           if (!QLog.isColorLevel()) {
-            break label1493;
+            break label1574;
           }
         }
         QLog.i("InterestTag", 2, localException2.toString());
@@ -462,7 +442,7 @@ public class NearbyCardHandler
       {
         QLog.i("Q.profilecard.SummaryCard", 2, "stInterestTag is null");
       }
-      label1493:
+      label1574:
       if (paramRespNearbySummaryCard.gift_info.has())
       {
         paramBundle.switchGiftVisible = ((NowSummaryCard.GiftInfo)paramRespNearbySummaryCard.gift_info.get()).open_flag.get();
@@ -491,10 +471,10 @@ public class NearbyCardHandler
     {
       ((nearby.Cmd0x1RspBody)localObject3).mergeFrom(paramBundle.nearbyInfo);
       if (j != 51) {
-        break label1762;
+        break label1843;
       }
       if (((nearby.Cmd0x1RspBody)localObject3).uint32_if_mask_msg.get() != 1) {
-        break label3791;
+        break label3870;
       }
       paramBoolean = true;
     }
@@ -502,13 +482,13 @@ public class NearbyCardHandler
     {
       for (;;)
       {
-        label1762:
+        label1843:
+        label3792:
+        label3837:
         continue;
-        label1844:
-        label2997:
+        label1925:
+        label3078:
         paramBoolean = false;
-        label3713:
-        label3758:
         continue;
         paramBoolean = false;
         continue;
@@ -526,15 +506,15 @@ public class NearbyCardHandler
       paramBundle.isForbidSendGiftMsgForTribar = paramBoolean;
       paramBundle.disableSendMsgBtnTipsForTribar = ((nearby.Cmd0x1RspBody)localObject3).bytes_mask_msg_reason.get().toStringUtf8();
       paramBundle.disableSendGiftBtnTipsForTribar = ((nearby.Cmd0x1RspBody)localObject3).bytes_mask_gift_reason.get().toStringUtf8();
-      break label1844;
+      break label1925;
       paramBundle.maskMsgFlag = ((nearby.Cmd0x1RspBody)localObject3).uint32_if_mask_msg.get();
       if (paramBundle.maskMsgFlag != 1) {
-        break label3801;
+        break label3880;
       }
       paramBoolean = true;
       paramBundle.isForbidSendMsg = paramBoolean;
       if (((nearby.Cmd0x1RspBody)localObject3).uint32_if_mask_gift.get() != 1) {
-        break label3806;
+        break label3885;
       }
       paramBoolean = true;
       paramBundle.isForbidSendGiftMsg = paramBoolean;
@@ -553,7 +533,7 @@ public class NearbyCardHandler
           ((StringBuilder)localObject4).append(", maskMsgTip=");
           ((StringBuilder)localObject4).append(((nearby.Cmd0x1RspBody)localObject3).bytes_mask_msg_reason.get().toStringUtf8());
           ((StringBuilder)localObject4).append(", curUin=");
-          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          ((StringBuilder)localObject4).append(this.c.getCurrentAccountUin());
           QLog.d("nearby.bindphone", 2, ((StringBuilder)localObject4).toString());
         }
         else
@@ -598,7 +578,7 @@ public class NearbyCardHandler
         paramBundle.entryAbility = 0;
       }
       if (((nearby.Cmd0x1RspBody)localObject3).uint32_jump_app_open.get() != 1) {
-        break label3811;
+        break label3890;
       }
       paramBoolean = true;
       paramBundle.isSendMsgBtnDownloadAppOpen = paramBoolean;
@@ -672,7 +652,7 @@ public class NearbyCardHandler
       else if (QLog.isColorLevel())
       {
         QLog.i("NearbyCardHandler", 2, "(nearbyInfo.nearby_popover_info not has");
-        break label2997;
+        break label3078;
         if (QLog.isColorLevel()) {
           QLog.d("NearbyCardHandler", 2, "decode nearbyInfo failed!");
         }
@@ -709,7 +689,7 @@ public class NearbyCardHandler
       }
       paramBundle.nearbyNowData = paramRespNearbySummaryCard;
       notifyUI(51, true, paramBundle, bool);
-      paramRespNearbySummaryCard = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+      paramRespNearbySummaryCard = (NearbyCardManager)this.c.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
       if (j == 51) {
         paramRespNearbySummaryCard.b(paramBundle.uin, SystemClock.elapsedRealtime());
       } else {
@@ -724,17 +704,17 @@ public class NearbyCardHandler
         paramRespNearbySummaryCard.append(SystemClock.elapsedRealtime());
         QLog.i("NearbyPeopleProfileActivity", 4, paramRespNearbySummaryCard.toString());
       }
-      paramRespNearbySummaryCard = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramRespNearbySummaryCard = (FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramBundle.isHostSelf)
       {
-        localObject3 = paramRespNearbySummaryCard.b(paramBundle.uin);
+        localObject3 = paramRespNearbySummaryCard.g(paramBundle.uin);
         ((Card)localObject3).iVoteIncrement = paramBundle.likeCountInc;
         ((Card)localObject3).lVoteCount = paramBundle.likeCount;
-        NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), ((Card)localObject3).lVoteCount, ((Card)localObject3).iVoteIncrement);
+        NearbySPUtil.a(this.c.getAccount(), ((Card)localObject3).lVoteCount, ((Card)localObject3).iVoteIncrement);
         try
         {
           paramRespNearbySummaryCard.a((Card)localObject3);
-          NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_school_name", paramBundle.college);
+          NearbySPUtil.b(this.c.getAccount(), "self_school_name", paramBundle.college);
         }
         catch (Exception localException3)
         {
@@ -742,7 +722,7 @@ public class NearbyCardHandler
         }
       }
       if ((paramBundle.isHostSelf) && (paramBundle.charmLevel > 0)) {
-        ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramBundle.charmLevel);
+        ((HotChatManager)this.c.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramBundle.charmLevel);
       }
       paramRespNearbySummaryCard.a(paramBundle);
       try
@@ -791,7 +771,7 @@ public class NearbyCardHandler
           paramRespNearbySummaryCard = localCursor;
           localEntityManager.persistOrReplace(paramBundle);
           paramBundle = localCursor;
-          break label3713;
+          break label3792;
           if ((paramBundle.getStatus() == 1001) || (paramBundle.getStatus() == 1002)) {
             localEntityManager.update(paramBundle);
           }
@@ -807,7 +787,7 @@ public class NearbyCardHandler
         }
         finally {}
         if (paramRespNearbySummaryCard == null) {
-          break label3758;
+          break label3837;
         }
       }
       finally
@@ -913,3488 +893,3527 @@ public class NearbyCardHandler
   private void a(boolean paramBoolean, Object paramObject, Bundle paramBundle, SummaryCard.RespHead paramRespHead)
   {
     // Byte code:
-    //   0: ldc_w 958
+    //   0: ldc_w 933
     //   3: astore 15
     //   5: aload_3
-    //   6: ldc_w 257
-    //   9: invokevirtual 263	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
-    //   12: istore 12
-    //   14: aload_3
-    //   15: ldc_w 265
-    //   18: invokevirtual 269	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   21: istore 5
-    //   23: iload_1
-    //   24: ifeq +7094 -> 7118
-    //   27: aload_2
-    //   28: checkcast 1258	SummaryCard/RespSummaryCard
-    //   31: astore_2
-    //   32: aload_0
-    //   33: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   36: invokevirtual 292	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   39: invokevirtual 298	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   42: astore 27
-    //   44: aload 27
-    //   46: invokevirtual 304	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   49: astore 28
-    //   51: aload 28
-    //   53: invokevirtual 309	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   56: aload_3
-    //   57: ldc_w 311
-    //   60: lconst_0
-    //   61: invokevirtual 315	android/os/Bundle:getLong	(Ljava/lang/String;J)J
-    //   64: lstore 13
-    //   66: aload_3
-    //   67: ldc_w 317
-    //   70: invokevirtual 319	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   73: pop2
-    //   74: aload_3
-    //   75: ldc_w 321
-    //   78: invokevirtual 269	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   81: pop
-    //   82: new 323	com/tencent/mobileqq/data/NearbyPeopleCard
-    //   85: dup
-    //   86: invokespecial 335	com/tencent/mobileqq/data/NearbyPeopleCard:<init>	()V
-    //   89: astore 16
-    //   91: aload_2
-    //   92: getfield 1262	SummaryCard/RespSummaryCard:stDateCard	LSummaryCard/DateCard;
-    //   95: astore 17
-    //   97: aload 16
-    //   99: aload_2
-    //   100: getfield 1265	SummaryCard/RespSummaryCard:lUIN	J
-    //   103: invokestatic 328	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   106: putfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   109: lload 13
-    //   111: lconst_0
-    //   112: lcmp
-    //   113: ifle +13 -> 126
-    //   116: aload 16
-    //   118: lload 13
-    //   120: putfield 416	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
-    //   123: goto +13 -> 136
-    //   126: aload 16
-    //   128: aload 17
-    //   130: getfield 1270	SummaryCard/DateCard:lTinyId	J
-    //   133: putfield 416	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
-    //   136: aload 16
-    //   138: aload_3
-    //   139: ldc_w 317
-    //   142: invokevirtual 319	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   145: putfield 418	com/tencent/mobileqq/data/NearbyPeopleCard:nowId	J
-    //   148: aload 16
-    //   150: aload_3
-    //   151: ldc_w 321
-    //   154: invokevirtual 269	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   157: putfield 420	com/tencent/mobileqq/data/NearbyPeopleCard:nowUserType	I
-    //   160: iload 5
-    //   162: ifeq +45 -> 207
-    //   165: aload 16
-    //   167: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   170: aload_0
-    //   171: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   174: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   177: invokevirtual 1273	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   180: ifeq +6 -> 186
-    //   183: goto +24 -> 207
-    //   186: aload 16
-    //   188: aload_2
-    //   189: getfield 1276	SummaryCard/RespSummaryCard:iVoteCount	I
-    //   192: putfield 765	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
-    //   195: aload 16
-    //   197: aload_2
-    //   198: getfield 1279	SummaryCard/RespSummaryCard:iLastestVoteCount	I
-    //   201: putfield 771	com/tencent/mobileqq/data/NearbyPeopleCard:likeCountInc	I
-    //   204: goto +89 -> 293
-    //   207: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   210: ifeq +56 -> 266
-    //   213: new 167	java/lang/StringBuilder
-    //   216: dup
-    //   217: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   220: astore_3
-    //   221: aload_3
-    //   222: ldc_w 1281
-    //   225: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: pop
-    //   229: aload_3
-    //   230: aload_2
-    //   231: getfield 1276	SummaryCard/RespSummaryCard:iVoteCount	I
-    //   234: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   237: pop
-    //   238: aload_3
-    //   239: ldc_w 775
-    //   242: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: pop
-    //   246: aload_3
-    //   247: aload_2
-    //   248: getfield 1279	SummaryCard/RespSummaryCard:iLastestVoteCount	I
-    //   251: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   254: pop
-    //   255: ldc_w 661
-    //   258: iconst_2
-    //   259: aload_3
-    //   260: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   263: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   266: aload 16
-    //   268: aload_2
-    //   269: getfield 1276	SummaryCard/RespSummaryCard:iVoteCount	I
-    //   272: putfield 765	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
-    //   275: aload 16
-    //   277: aload_2
-    //   278: getfield 1279	SummaryCard/RespSummaryCard:iLastestVoteCount	I
-    //   281: putfield 771	com/tencent/mobileqq/data/NearbyPeopleCard:likeCountInc	I
-    //   284: aload 16
-    //   286: aload_2
-    //   287: getfield 1285	SummaryCard/RespSummaryCard:vPraiseList	Ljava/util/ArrayList;
-    //   290: putfield 1288	com/tencent/mobileqq/data/NearbyPeopleCard:praiseList	Ljava/util/List;
-    //   293: aload 16
-    //   295: aload_2
-    //   296: getfield 1291	SummaryCard/RespSummaryCard:strNick	Ljava/lang/String;
-    //   299: putfield 423	com/tencent/mobileqq/data/NearbyPeopleCard:nickname	Ljava/lang/String;
-    //   302: aload 16
-    //   304: aload_2
-    //   305: getfield 1294	SummaryCard/RespSummaryCard:vRichSign	[B
-    //   308: putfield 434	com/tencent/mobileqq/data/NearbyPeopleCard:xuanYan	[B
-    //   311: aload 16
-    //   313: aload 17
-    //   315: getfield 1297	SummaryCard/DateCard:bMarriage	B
-    //   318: putfield 492	com/tencent/mobileqq/data/NearbyPeopleCard:maritalStatus	B
-    //   321: aload 16
-    //   323: aload_2
-    //   324: getfield 1300	SummaryCard/RespSummaryCard:bSex	B
-    //   327: putfield 438	com/tencent/mobileqq/data/NearbyPeopleCard:gender	B
-    //   330: aload 16
-    //   332: aload_2
-    //   333: getfield 1303	SummaryCard/RespSummaryCard:bAge	B
-    //   336: putfield 447	com/tencent/mobileqq/data/NearbyPeopleCard:age	I
-    //   339: aload 16
-    //   341: aload_2
-    //   342: getfield 1306	SummaryCard/RespSummaryCard:iBirthday	I
-    //   345: putfield 453	com/tencent/mobileqq/data/NearbyPeopleCard:birthday	I
-    //   348: aload 16
-    //   350: aload 17
-    //   352: getfield 1309	SummaryCard/DateCard:uProfession	J
-    //   355: l2i
-    //   356: putfield 459	com/tencent/mobileqq/data/NearbyPeopleCard:job	I
-    //   359: aload 16
-    //   361: aload 17
-    //   363: getfield 1312	SummaryCard/DateCard:bConstellation	B
-    //   366: putfield 464	com/tencent/mobileqq/data/NearbyPeopleCard:constellation	B
-    //   369: aload 16
-    //   371: aload 17
-    //   373: getfield 1315	SummaryCard/DateCard:strDistance	Ljava/lang/String;
-    //   376: putfield 469	com/tencent/mobileqq/data/NearbyPeopleCard:distance	Ljava/lang/String;
-    //   379: aload 16
-    //   381: aload 17
-    //   383: getfield 1318	SummaryCard/DateCard:strElapse	Ljava/lang/String;
-    //   386: putfield 475	com/tencent/mobileqq/data/NearbyPeopleCard:timeDiff	Ljava/lang/String;
-    //   389: aload 16
-    //   391: aload_2
-    //   392: getfield 1321	SummaryCard/RespSummaryCard:iPhotoCount	I
-    //   395: putfield 1324	com/tencent/mobileqq/data/NearbyPeopleCard:oldPhotoCount	I
-    //   398: aload 16
-    //   400: aload 17
-    //   402: getfield 1327	SummaryCard/DateCard:vDateInfo	[B
-    //   405: putfield 1330	com/tencent/mobileqq/data/NearbyPeopleCard:dateInfo	[B
-    //   408: aload 16
-    //   410: aload 17
-    //   412: getfield 1333	SummaryCard/DateCard:strCompany	Ljava/lang/String;
-    //   415: putfield 480	com/tencent/mobileqq/data/NearbyPeopleCard:company	Ljava/lang/String;
-    //   418: aload 16
-    //   420: aload 17
-    //   422: getfield 1336	SummaryCard/DateCard:strSchool	Ljava/lang/String;
-    //   425: putfield 486	com/tencent/mobileqq/data/NearbyPeopleCard:college	Ljava/lang/String;
-    //   428: aload 16
-    //   430: aload 17
-    //   432: getfield 1339	SummaryCard/DateCard:uHomeCountry	J
-    //   435: invokestatic 511	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   438: putfield 514	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCountry	Ljava/lang/String;
-    //   441: aload 16
-    //   443: aload 17
-    //   445: getfield 1342	SummaryCard/DateCard:uHomeProvince	J
-    //   448: invokestatic 511	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   451: putfield 520	com/tencent/mobileqq/data/NearbyPeopleCard:hometownProvice	Ljava/lang/String;
-    //   454: aload 16
-    //   456: aload 17
-    //   458: getfield 1345	SummaryCard/DateCard:uHomeCity	J
-    //   461: invokestatic 511	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   464: putfield 526	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCity	Ljava/lang/String;
-    //   467: aload 16
-    //   469: aload 17
-    //   471: getfield 1348	SummaryCard/DateCard:uHomeZone	J
-    //   474: invokestatic 511	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   477: putfield 532	com/tencent/mobileqq/data/NearbyPeopleCard:hometownDistrict	Ljava/lang/String;
-    //   480: aload 16
-    //   482: aload_2
-    //   483: getfield 1351	SummaryCard/RespSummaryCard:strQzoneFeedsDesc	Ljava/lang/String;
-    //   486: putfield 1354	com/tencent/mobileqq/data/NearbyPeopleCard:qzoneFeed	Ljava/lang/String;
-    //   489: aload 16
-    //   491: aload_2
-    //   492: getfield 1357	SummaryCard/RespSummaryCard:strSpaceName	Ljava/lang/String;
-    //   495: putfield 1360	com/tencent/mobileqq/data/NearbyPeopleCard:qzoneName	Ljava/lang/String;
-    //   498: aload 16
-    //   500: aload_2
-    //   501: getfield 1363	SummaryCard/RespSummaryCard:ulShowControl	J
-    //   504: putfield 1366	com/tencent/mobileqq/data/NearbyPeopleCard:uiShowControl	J
-    //   507: aload 16
-    //   509: aload_2
-    //   510: getfield 1369	SummaryCard/RespSummaryCard:lUserFlag	J
-    //   513: putfield 674	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
-    //   516: aload 16
-    //   518: aload_2
-    //   519: getfield 1372	SummaryCard/RespSummaryCard:vSeed	[B
-    //   522: putfield 1373	com/tencent/mobileqq/data/NearbyPeopleCard:vSeed	[B
-    //   525: aload 16
-    //   527: aload_2
-    //   528: getfield 1376	SummaryCard/RespSummaryCard:lCacheControl	J
-    //   531: invokevirtual 1379	com/tencent/mobileqq/data/NearbyPeopleCard:setPhotoUseCache	(J)V
-    //   534: aload 16
-    //   536: invokestatic 537	java/lang/System:currentTimeMillis	()J
-    //   539: putfield 540	com/tencent/mobileqq/data/NearbyPeopleCard:lastUpdateNickTime	J
+    //   6: ldc 182
+    //   8: invokevirtual 188	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   11: istore 12
+    //   13: aload_3
+    //   14: ldc 190
+    //   16: invokevirtual 194	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   19: istore 5
+    //   21: iload_1
+    //   22: ifeq +7087 -> 7109
+    //   25: aload_2
+    //   26: checkcast 1233	SummaryCard/RespSummaryCard
+    //   29: astore_2
+    //   30: aload_0
+    //   31: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   34: invokevirtual 217	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   37: invokevirtual 223	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   40: astore 27
+    //   42: aload 27
+    //   44: invokevirtual 229	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   47: astore 28
+    //   49: aload 28
+    //   51: invokevirtual 234	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   54: aload_3
+    //   55: ldc 236
+    //   57: lconst_0
+    //   58: invokevirtual 240	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   61: lstore 13
+    //   63: aload_3
+    //   64: ldc 242
+    //   66: invokevirtual 245	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   69: pop2
+    //   70: aload_3
+    //   71: ldc 247
+    //   73: invokevirtual 194	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   76: pop
+    //   77: new 249	com/tencent/mobileqq/data/NearbyPeopleCard
+    //   80: dup
+    //   81: invokespecial 263	com/tencent/mobileqq/data/NearbyPeopleCard:<init>	()V
+    //   84: astore 16
+    //   86: aload_2
+    //   87: getfield 1237	SummaryCard/RespSummaryCard:stDateCard	LSummaryCard/DateCard;
+    //   90: astore 17
+    //   92: aload 16
+    //   94: aload_2
+    //   95: getfield 1240	SummaryCard/RespSummaryCard:lUIN	J
+    //   98: invokestatic 256	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   101: putfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   104: lload 13
+    //   106: lconst_0
+    //   107: lcmp
+    //   108: ifle +13 -> 121
+    //   111: aload 16
+    //   113: lload 13
+    //   115: putfield 344	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
+    //   118: goto +13 -> 131
+    //   121: aload 16
+    //   123: aload 17
+    //   125: getfield 1245	SummaryCard/DateCard:lTinyId	J
+    //   128: putfield 344	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
+    //   131: aload 16
+    //   133: aload_3
+    //   134: ldc 242
+    //   136: invokevirtual 245	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   139: putfield 349	com/tencent/mobileqq/data/NearbyPeopleCard:nowId	J
+    //   142: aload 16
+    //   144: aload_3
+    //   145: ldc 247
+    //   147: invokevirtual 194	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   150: putfield 351	com/tencent/mobileqq/data/NearbyPeopleCard:nowUserType	I
+    //   153: iload 5
+    //   155: ifeq +45 -> 200
+    //   158: aload 16
+    //   160: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   163: aload_0
+    //   164: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   167: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   170: invokevirtual 1248	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   173: ifeq +6 -> 179
+    //   176: goto +24 -> 200
+    //   179: aload 16
+    //   181: aload_2
+    //   182: getfield 1251	SummaryCard/RespSummaryCard:iVoteCount	I
+    //   185: putfield 741	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
+    //   188: aload 16
+    //   190: aload_2
+    //   191: getfield 1254	SummaryCard/RespSummaryCard:iLastestVoteCount	I
+    //   194: putfield 747	com/tencent/mobileqq/data/NearbyPeopleCard:likeCountInc	I
+    //   197: goto +89 -> 286
+    //   200: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   203: ifeq +56 -> 259
+    //   206: new 68	java/lang/StringBuilder
+    //   209: dup
+    //   210: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   213: astore_3
+    //   214: aload_3
+    //   215: ldc_w 1256
+    //   218: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: aload_3
+    //   223: aload_2
+    //   224: getfield 1251	SummaryCard/RespSummaryCard:iVoteCount	I
+    //   227: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload_3
+    //   232: ldc_w 751
+    //   235: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload_3
+    //   240: aload_2
+    //   241: getfield 1254	SummaryCard/RespSummaryCard:iLastestVoteCount	I
+    //   244: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   247: pop
+    //   248: ldc_w 639
+    //   251: iconst_2
+    //   252: aload_3
+    //   253: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   259: aload 16
+    //   261: aload_2
+    //   262: getfield 1251	SummaryCard/RespSummaryCard:iVoteCount	I
+    //   265: putfield 741	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
+    //   268: aload 16
+    //   270: aload_2
+    //   271: getfield 1254	SummaryCard/RespSummaryCard:iLastestVoteCount	I
+    //   274: putfield 747	com/tencent/mobileqq/data/NearbyPeopleCard:likeCountInc	I
+    //   277: aload 16
+    //   279: aload_2
+    //   280: getfield 1260	SummaryCard/RespSummaryCard:vPraiseList	Ljava/util/ArrayList;
+    //   283: putfield 1263	com/tencent/mobileqq/data/NearbyPeopleCard:praiseList	Ljava/util/List;
+    //   286: aload 16
+    //   288: aload_2
+    //   289: getfield 1266	SummaryCard/RespSummaryCard:strNick	Ljava/lang/String;
+    //   292: putfield 354	com/tencent/mobileqq/data/NearbyPeopleCard:nickname	Ljava/lang/String;
+    //   295: aload 16
+    //   297: aload_2
+    //   298: getfield 1269	SummaryCard/RespSummaryCard:vRichSign	[B
+    //   301: putfield 370	com/tencent/mobileqq/data/NearbyPeopleCard:xuanYan	[B
+    //   304: aload 16
+    //   306: aload 17
+    //   308: getfield 1272	SummaryCard/DateCard:bMarriage	B
+    //   311: putfield 431	com/tencent/mobileqq/data/NearbyPeopleCard:maritalStatus	B
+    //   314: aload 16
+    //   316: aload_2
+    //   317: getfield 1275	SummaryCard/RespSummaryCard:bSex	B
+    //   320: putfield 374	com/tencent/mobileqq/data/NearbyPeopleCard:gender	B
+    //   323: aload 16
+    //   325: aload_2
+    //   326: getfield 1278	SummaryCard/RespSummaryCard:bAge	B
+    //   329: putfield 383	com/tencent/mobileqq/data/NearbyPeopleCard:age	I
+    //   332: aload 16
+    //   334: aload_2
+    //   335: getfield 1281	SummaryCard/RespSummaryCard:iBirthday	I
+    //   338: putfield 392	com/tencent/mobileqq/data/NearbyPeopleCard:birthday	I
+    //   341: aload 16
+    //   343: aload 17
+    //   345: getfield 1284	SummaryCard/DateCard:uProfession	J
+    //   348: l2i
+    //   349: putfield 398	com/tencent/mobileqq/data/NearbyPeopleCard:job	I
+    //   352: aload 16
+    //   354: aload 17
+    //   356: getfield 1287	SummaryCard/DateCard:bConstellation	B
+    //   359: putfield 403	com/tencent/mobileqq/data/NearbyPeopleCard:constellation	B
+    //   362: aload 16
+    //   364: aload 17
+    //   366: getfield 1290	SummaryCard/DateCard:strDistance	Ljava/lang/String;
+    //   369: putfield 408	com/tencent/mobileqq/data/NearbyPeopleCard:distance	Ljava/lang/String;
+    //   372: aload 16
+    //   374: aload 17
+    //   376: getfield 1293	SummaryCard/DateCard:strElapse	Ljava/lang/String;
+    //   379: putfield 414	com/tencent/mobileqq/data/NearbyPeopleCard:timeDiff	Ljava/lang/String;
+    //   382: aload 16
+    //   384: aload_2
+    //   385: getfield 1296	SummaryCard/RespSummaryCard:iPhotoCount	I
+    //   388: putfield 1299	com/tencent/mobileqq/data/NearbyPeopleCard:oldPhotoCount	I
+    //   391: aload 16
+    //   393: aload 17
+    //   395: getfield 1302	SummaryCard/DateCard:vDateInfo	[B
+    //   398: putfield 1305	com/tencent/mobileqq/data/NearbyPeopleCard:dateInfo	[B
+    //   401: aload 16
+    //   403: aload 17
+    //   405: getfield 1308	SummaryCard/DateCard:strCompany	Ljava/lang/String;
+    //   408: putfield 419	com/tencent/mobileqq/data/NearbyPeopleCard:company	Ljava/lang/String;
+    //   411: aload 16
+    //   413: aload 17
+    //   415: getfield 1311	SummaryCard/DateCard:strSchool	Ljava/lang/String;
+    //   418: putfield 425	com/tencent/mobileqq/data/NearbyPeopleCard:college	Ljava/lang/String;
+    //   421: aload 16
+    //   423: aload 17
+    //   425: getfield 1314	SummaryCard/DateCard:uHomeCountry	J
+    //   428: invokestatic 450	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
+    //   431: putfield 453	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCountry	Ljava/lang/String;
+    //   434: aload 16
+    //   436: aload 17
+    //   438: getfield 1317	SummaryCard/DateCard:uHomeProvince	J
+    //   441: invokestatic 450	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
+    //   444: putfield 459	com/tencent/mobileqq/data/NearbyPeopleCard:hometownProvice	Ljava/lang/String;
+    //   447: aload 16
+    //   449: aload 17
+    //   451: getfield 1320	SummaryCard/DateCard:uHomeCity	J
+    //   454: invokestatic 450	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
+    //   457: putfield 465	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCity	Ljava/lang/String;
+    //   460: aload 16
+    //   462: aload 17
+    //   464: getfield 1323	SummaryCard/DateCard:uHomeZone	J
+    //   467: invokestatic 450	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
+    //   470: putfield 471	com/tencent/mobileqq/data/NearbyPeopleCard:hometownDistrict	Ljava/lang/String;
+    //   473: aload 16
+    //   475: aload_2
+    //   476: getfield 1326	SummaryCard/RespSummaryCard:strQzoneFeedsDesc	Ljava/lang/String;
+    //   479: putfield 1329	com/tencent/mobileqq/data/NearbyPeopleCard:qzoneFeed	Ljava/lang/String;
+    //   482: aload 16
+    //   484: aload_2
+    //   485: getfield 1332	SummaryCard/RespSummaryCard:strSpaceName	Ljava/lang/String;
+    //   488: putfield 1335	com/tencent/mobileqq/data/NearbyPeopleCard:qzoneName	Ljava/lang/String;
+    //   491: aload 16
+    //   493: aload_2
+    //   494: getfield 1338	SummaryCard/RespSummaryCard:ulShowControl	J
+    //   497: putfield 1341	com/tencent/mobileqq/data/NearbyPeopleCard:uiShowControl	J
+    //   500: aload 16
+    //   502: aload_2
+    //   503: getfield 1344	SummaryCard/RespSummaryCard:lUserFlag	J
+    //   506: putfield 652	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
+    //   509: aload 16
+    //   511: aload_2
+    //   512: getfield 1347	SummaryCard/RespSummaryCard:vSeed	[B
+    //   515: putfield 1348	com/tencent/mobileqq/data/NearbyPeopleCard:vSeed	[B
+    //   518: aload 16
+    //   520: aload_2
+    //   521: getfield 1351	SummaryCard/RespSummaryCard:lCacheControl	J
+    //   524: invokevirtual 1354	com/tencent/mobileqq/data/NearbyPeopleCard:setPhotoUseCache	(J)V
+    //   527: aload 16
+    //   529: invokestatic 476	java/lang/System:currentTimeMillis	()J
+    //   532: putfield 479	com/tencent/mobileqq/data/NearbyPeopleCard:lastUpdateNickTime	J
+    //   535: aload 16
+    //   537: iload 5
+    //   539: putfield 541	com/tencent/mobileqq/data/NearbyPeopleCard:favoriteSource	I
     //   542: aload 16
-    //   544: iload 5
-    //   546: putfield 558	com/tencent/mobileqq/data/NearbyPeopleCard:favoriteSource	I
-    //   549: aload 16
-    //   551: aload_2
-    //   552: getfield 1380	SummaryCard/RespSummaryCard:vTempChatSig	[B
-    //   555: putfield 546	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
-    //   558: aload 16
-    //   560: getfield 546	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
-    //   563: ifnull +112 -> 675
-    //   566: aload 16
-    //   568: getfield 546	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
-    //   571: arraylength
-    //   572: ifne +62 -> 634
-    //   575: aload_0
-    //   576: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   579: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   582: aload 16
-    //   584: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   587: invokestatic 1385	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   590: ifne +44 -> 634
-    //   593: aload_0
-    //   594: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   597: astore_3
-    //   598: aload_3
-    //   599: ldc_w 560
-    //   602: ldc_w 562
-    //   605: ldc_w 564
-    //   608: ldc_w 566
-    //   611: ldc_w 568
-    //   614: iconst_0
-    //   615: iconst_0
-    //   616: aload_3
-    //   617: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   620: aload 16
-    //   622: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   625: ldc_w 564
-    //   628: ldc_w 564
-    //   631: invokestatic 574	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   634: aload_0
-    //   635: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   638: invokevirtual 578	com/tencent/mobileqq/app/QQAppInterface:getMsgCache	()Lcom/tencent/mobileqq/service/message/MessageCache;
-    //   641: aload 16
-    //   643: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   646: invokevirtual 584	com/tencent/mobileqq/service/message/MessageCache:m	(Ljava/lang/String;)[B
-    //   649: ifnonnull +67 -> 716
-    //   652: aload_0
-    //   653: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   656: invokevirtual 578	com/tencent/mobileqq/app/QQAppInterface:getMsgCache	()Lcom/tencent/mobileqq/service/message/MessageCache;
-    //   659: aload 16
-    //   661: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   664: aload 16
-    //   666: getfield 546	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
-    //   669: invokevirtual 588	com/tencent/mobileqq/service/message/MessageCache:g	(Ljava/lang/String;[B)V
-    //   672: goto +44 -> 716
-    //   675: aload_0
-    //   676: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   679: astore_3
-    //   680: aload_3
-    //   681: ldc_w 560
-    //   684: ldc_w 562
-    //   687: ldc_w 564
-    //   690: ldc_w 566
-    //   693: ldc_w 590
-    //   696: iconst_0
-    //   697: iconst_0
-    //   698: aload_3
-    //   699: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   702: aload 16
-    //   704: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   707: ldc_w 564
-    //   710: ldc_w 564
-    //   713: invokestatic 574	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   716: aload 16
-    //   718: aload 17
-    //   720: getfield 1388	SummaryCard/DateCard:uSchoolId	J
-    //   723: putfield 498	com/tencent/mobileqq/data/NearbyPeopleCard:collegeId	J
-    //   726: aload 16
-    //   728: aload 17
-    //   730: getfield 1391	SummaryCard/DateCard:vGroupList	[B
-    //   733: putfield 1392	com/tencent/mobileqq/data/NearbyPeopleCard:vGroupList	[B
-    //   736: aload 16
-    //   738: aload 17
-    //   740: getfield 1395	SummaryCard/DateCard:vNearbyInfo	[B
-    //   743: putfield 504	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyInfo	[B
-    //   746: aload 16
-    //   748: aload 17
-    //   750: getfield 1398	SummaryCard/DateCard:vActivityList	[B
-    //   753: putfield 1399	com/tencent/mobileqq/data/NearbyPeopleCard:vActivityList	[B
-    //   756: aload 16
-    //   758: aload_2
-    //   759: getfield 1369	SummaryCard/RespSummaryCard:lUserFlag	J
-    //   762: putfield 1400	com/tencent/mobileqq/data/NearbyPeopleCard:lUserFlag	J
-    //   765: aload 16
+    //   544: aload_2
+    //   545: getfield 1355	SummaryCard/RespSummaryCard:vTempChatSig	[B
+    //   548: putfield 485	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
+    //   551: aload 16
+    //   553: getfield 485	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
+    //   556: ifnull +112 -> 668
+    //   559: aload 16
+    //   561: getfield 485	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
+    //   564: arraylength
+    //   565: ifne +62 -> 627
+    //   568: aload_0
+    //   569: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   572: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   575: aload 16
+    //   577: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   580: invokestatic 1360	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   583: ifne +44 -> 627
+    //   586: aload_0
+    //   587: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   590: astore_3
+    //   591: aload_3
+    //   592: ldc_w 543
+    //   595: ldc_w 545
+    //   598: ldc_w 547
+    //   601: ldc_w 549
+    //   604: ldc_w 551
+    //   607: iconst_0
+    //   608: iconst_0
+    //   609: aload_3
+    //   610: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   613: aload 16
+    //   615: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   618: ldc_w 547
+    //   621: ldc_w 547
+    //   624: invokestatic 556	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   627: aload_0
+    //   628: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   631: invokevirtual 560	com/tencent/mobileqq/app/QQAppInterface:getMsgCache	()Lcom/tencent/mobileqq/service/message/MessageCache;
+    //   634: aload 16
+    //   636: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   639: invokevirtual 566	com/tencent/mobileqq/service/message/MessageCache:r	(Ljava/lang/String;)[B
+    //   642: ifnonnull +67 -> 709
+    //   645: aload_0
+    //   646: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   649: invokevirtual 560	com/tencent/mobileqq/app/QQAppInterface:getMsgCache	()Lcom/tencent/mobileqq/service/message/MessageCache;
+    //   652: aload 16
+    //   654: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   657: aload 16
+    //   659: getfield 485	com/tencent/mobileqq/data/NearbyPeopleCard:vTempChatSig	[B
+    //   662: invokevirtual 570	com/tencent/mobileqq/service/message/MessageCache:g	(Ljava/lang/String;[B)V
+    //   665: goto +44 -> 709
+    //   668: aload_0
+    //   669: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   672: astore_3
+    //   673: aload_3
+    //   674: ldc_w 543
+    //   677: ldc_w 545
+    //   680: ldc_w 547
+    //   683: ldc_w 549
+    //   686: ldc_w 572
+    //   689: iconst_0
+    //   690: iconst_0
+    //   691: aload_3
+    //   692: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   695: aload 16
+    //   697: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   700: ldc_w 547
+    //   703: ldc_w 547
+    //   706: invokestatic 556	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   709: aload 16
+    //   711: aload 17
+    //   713: getfield 1363	SummaryCard/DateCard:uSchoolId	J
+    //   716: putfield 437	com/tencent/mobileqq/data/NearbyPeopleCard:collegeId	J
+    //   719: aload 16
+    //   721: aload 17
+    //   723: getfield 1366	SummaryCard/DateCard:vGroupList	[B
+    //   726: putfield 1367	com/tencent/mobileqq/data/NearbyPeopleCard:vGroupList	[B
+    //   729: aload 16
+    //   731: aload 17
+    //   733: getfield 1370	SummaryCard/DateCard:vNearbyInfo	[B
+    //   736: putfield 443	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyInfo	[B
+    //   739: aload 16
+    //   741: aload 17
+    //   743: getfield 1373	SummaryCard/DateCard:vActivityList	[B
+    //   746: putfield 1374	com/tencent/mobileqq/data/NearbyPeopleCard:vActivityList	[B
+    //   749: aload 16
+    //   751: aload_2
+    //   752: getfield 1344	SummaryCard/RespSummaryCard:lUserFlag	J
+    //   755: putfield 1375	com/tencent/mobileqq/data/NearbyPeopleCard:lUserFlag	J
+    //   758: aload 16
+    //   760: aload_2
+    //   761: getfield 1378	SummaryCard/RespSummaryCard:strRemark	Ljava/lang/String;
+    //   764: putfield 1379	com/tencent/mobileqq/data/NearbyPeopleCard:strRemark	Ljava/lang/String;
     //   767: aload_2
-    //   768: getfield 1403	SummaryCard/RespSummaryCard:strRemark	Ljava/lang/String;
-    //   771: putfield 1404	com/tencent/mobileqq/data/NearbyPeopleCard:strRemark	Ljava/lang/String;
-    //   774: aload_2
-    //   775: getfield 1408	SummaryCard/RespSummaryCard:stHeartInfo	LSummaryCard/HeartInfo;
-    //   778: ifnull +15 -> 793
-    //   781: aload 16
-    //   783: aload_2
-    //   784: getfield 1408	SummaryCard/RespSummaryCard:stHeartInfo	LSummaryCard/HeartInfo;
-    //   787: getfield 1413	SummaryCard/HeartInfo:iHeartCount	I
-    //   790: putfield 1416	com/tencent/mobileqq/data/NearbyPeopleCard:mHeartNum	I
-    //   793: aload_2
-    //   794: getfield 1420	SummaryCard/RespSummaryCard:stNearbyGodInfo	LSummaryCard/TNearbyGodInfo;
-    //   797: ifnull +30 -> 827
-    //   800: aload 16
-    //   802: aload_2
-    //   803: getfield 1420	SummaryCard/RespSummaryCard:stNearbyGodInfo	LSummaryCard/TNearbyGodInfo;
-    //   806: getfield 1425	SummaryCard/TNearbyGodInfo:strJumpUrl	Ljava/lang/String;
-    //   809: putfield 1428	com/tencent/mobileqq/data/NearbyPeopleCard:strGodJumpUrl	Ljava/lang/String;
-    //   812: aload 16
-    //   814: aload_2
-    //   815: getfield 1420	SummaryCard/RespSummaryCard:stNearbyGodInfo	LSummaryCard/TNearbyGodInfo;
-    //   818: getfield 1431	SummaryCard/TNearbyGodInfo:iIsGodFlag	I
-    //   821: putfield 1432	com/tencent/mobileqq/data/NearbyPeopleCard:iIsGodFlag	I
-    //   824: goto +42 -> 866
-    //   827: invokestatic 657	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   830: ifeq +36 -> 866
-    //   833: new 167	java/lang/StringBuilder
-    //   836: dup
-    //   837: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   840: astore_3
-    //   841: aload_3
-    //   842: ldc_w 1434
-    //   845: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   848: pop
-    //   849: aload_3
-    //   850: aconst_null
-    //   851: invokevirtual 1437	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   854: pop
-    //   855: ldc_w 661
-    //   858: iconst_2
-    //   859: aload_3
-    //   860: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   863: invokestatic 1010	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   866: aload_2
-    //   867: getfield 1440	SummaryCard/RespSummaryCard:vCommLabel	[B
-    //   870: astore 18
-    //   872: ldc 176
-    //   874: astore_3
-    //   875: aload 18
-    //   877: ifnull +201 -> 1078
-    //   880: aload 16
-    //   882: new 595	java/util/ArrayList
-    //   885: dup
-    //   886: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   889: putfield 600	com/tencent/mobileqq/data/NearbyPeopleCard:commonLabels	Ljava/util/List;
-    //   892: new 602	appoint/define/appoint_define$CommonLabel
-    //   895: dup
-    //   896: invokespecial 603	appoint/define/appoint_define$CommonLabel:<init>	()V
-    //   899: astore 19
-    //   901: aload 19
-    //   903: aload 18
-    //   905: invokevirtual 607	appoint/define/appoint_define$CommonLabel:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   908: pop
-    //   909: aload 19
-    //   911: getfield 611	appoint/define/appoint_define$CommonLabel:rpt_interst_name	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   914: invokevirtual 616	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
-    //   917: astore 18
-    //   919: aload 19
-    //   921: getfield 619	appoint/define/appoint_define$CommonLabel:rpt_interst_type	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   924: invokevirtual 616	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
-    //   927: astore 20
-    //   929: new 621	org/json/JSONArray
-    //   932: dup
-    //   933: invokespecial 622	org/json/JSONArray:<init>	()V
-    //   936: astore 19
-    //   938: aload 18
-    //   940: invokeinterface 627 1 0
-    //   945: aload 20
-    //   947: invokeinterface 627 1 0
-    //   952: if_icmpne +65 -> 1017
-    //   955: iconst_0
-    //   956: istore 6
-    //   958: iload 6
-    //   960: aload 18
-    //   962: invokeinterface 627 1 0
-    //   967: if_icmpge +50 -> 1017
-    //   970: aload 18
-    //   972: iload 6
-    //   974: invokeinterface 630 2 0
-    //   979: checkcast 58	com/tencent/mobileqq/pb/ByteStringMicro
-    //   982: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   985: astore 20
-    //   987: aload 16
-    //   989: getfield 600	com/tencent/mobileqq/data/NearbyPeopleCard:commonLabels	Ljava/util/List;
-    //   992: aload 20
-    //   994: invokeinterface 637 2 0
-    //   999: pop
-    //   1000: aload 19
-    //   1002: aload 20
-    //   1004: invokevirtual 641	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   1007: pop
-    //   1008: iload 6
-    //   1010: iconst_1
-    //   1011: iadd
-    //   1012: istore 6
-    //   1014: goto -56 -> 958
-    //   1017: aload 16
-    //   1019: aload 19
-    //   1021: invokevirtual 642	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   1024: putfield 645	com/tencent/mobileqq/data/NearbyPeopleCard:commonLabelString	Ljava/lang/String;
-    //   1027: goto +51 -> 1078
-    //   1030: astore 18
-    //   1032: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1035: ifeq +43 -> 1078
-    //   1038: new 167	java/lang/StringBuilder
-    //   1041: dup
-    //   1042: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   1045: astore 19
-    //   1047: aload 19
-    //   1049: ldc_w 651
-    //   1052: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1055: pop
-    //   1056: aload 19
-    //   1058: aload 18
-    //   1060: invokevirtual 654	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1063: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1066: pop
-    //   1067: ldc 176
-    //   1069: iconst_2
-    //   1070: aload 19
-    //   1072: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1075: invokestatic 185	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1078: invokestatic 657	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   1081: ifeq +44 -> 1125
-    //   1084: new 167	java/lang/StringBuilder
-    //   1087: dup
-    //   1088: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   1091: astore 18
-    //   1093: aload 18
-    //   1095: ldc_w 659
-    //   1098: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1101: pop
-    //   1102: aload 18
-    //   1104: aload 17
-    //   1106: getfield 1388	SummaryCard/DateCard:uSchoolId	J
-    //   1109: invokevirtual 229	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1112: pop
-    //   1113: ldc_w 661
-    //   1116: iconst_4
-    //   1117: aload 18
-    //   1119: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1122: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1125: aload 16
-    //   1127: aload_2
-    //   1128: getfield 1443	SummaryCard/RespSummaryCard:strVoteLimitedNotice	Ljava/lang/String;
-    //   1131: putfield 1444	com/tencent/mobileqq/data/NearbyPeopleCard:strVoteLimitedNotice	Ljava/lang/String;
-    //   1134: aload 16
-    //   1136: aload_2
-    //   1137: getfield 1448	SummaryCard/RespSummaryCard:bHaveVotedCnt	S
-    //   1140: putfield 1449	com/tencent/mobileqq/data/NearbyPeopleCard:bHaveVotedCnt	S
-    //   1143: aload 16
-    //   1145: aload_2
-    //   1146: getfield 1452	SummaryCard/RespSummaryCard:bAvailVoteCnt	S
-    //   1149: putfield 1453	com/tencent/mobileqq/data/NearbyPeopleCard:bAvailVoteCnt	S
-    //   1152: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1155: ifeq +80 -> 1235
-    //   1158: new 167	java/lang/StringBuilder
-    //   1161: dup
-    //   1162: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   1165: astore 18
-    //   1167: aload 18
-    //   1169: ldc_w 1455
-    //   1172: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1175: pop
-    //   1176: aload 18
-    //   1178: aload_2
-    //   1179: getfield 1443	SummaryCard/RespSummaryCard:strVoteLimitedNotice	Ljava/lang/String;
-    //   1182: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1185: pop
-    //   1186: aload 18
-    //   1188: ldc_w 1457
-    //   1191: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1194: pop
-    //   1195: aload 18
-    //   1197: aload_2
-    //   1198: getfield 1448	SummaryCard/RespSummaryCard:bHaveVotedCnt	S
-    //   1201: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1204: pop
-    //   1205: aload 18
-    //   1207: ldc_w 1459
-    //   1210: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1213: pop
-    //   1214: aload 18
-    //   1216: aload_2
-    //   1217: getfield 1452	SummaryCard/RespSummaryCard:bAvailVoteCnt	S
-    //   1220: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1223: pop
-    //   1224: ldc 176
-    //   1226: iconst_2
-    //   1227: aload 18
-    //   1229: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1232: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1235: aload_2
-    //   1236: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1239: ifnull +54 -> 1293
-    //   1242: aload 16
-    //   1244: aload_2
-    //   1245: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1248: getfield 1468	SummaryCard/PanSocialInfo:uCharm	J
-    //   1251: putfield 1471	com/tencent/mobileqq/data/NearbyPeopleCard:charm	J
-    //   1254: aload 16
-    //   1256: aload_2
-    //   1257: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1260: getfield 1474	SummaryCard/PanSocialInfo:uCharmLevel	J
-    //   1263: l2i
-    //   1264: putfield 1083	com/tencent/mobileqq/data/NearbyPeopleCard:charmLevel	I
-    //   1267: aload 16
-    //   1269: aload_2
-    //   1270: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1273: getfield 1477	SummaryCard/PanSocialInfo:uNextLevelCharm	J
-    //   1276: l2i
-    //   1277: putfield 1480	com/tencent/mobileqq/data/NearbyPeopleCard:nextThreshold	I
-    //   1280: aload 16
-    //   1282: aload_2
-    //   1283: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1286: getfield 1483	SummaryCard/PanSocialInfo:uCurLevelCharm	J
-    //   1289: l2i
-    //   1290: putfield 1486	com/tencent/mobileqq/data/NearbyPeopleCard:curThreshold	I
-    //   1293: iload 5
-    //   1295: ifeq +29 -> 1324
-    //   1298: aload 16
-    //   1300: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   1303: aload_0
-    //   1304: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1307: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1310: invokevirtual 1273	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1313: ifeq +6 -> 1319
-    //   1316: goto +8 -> 1324
-    //   1319: iconst_0
-    //   1320: istore_1
-    //   1321: goto +5 -> 1326
-    //   1324: iconst_1
-    //   1325: istore_1
-    //   1326: aload 16
-    //   1328: aload 17
-    //   1330: getfield 1489	SummaryCard/DateCard:vFaces	[B
-    //   1333: aload_2
-    //   1334: getfield 1493	SummaryCard/RespSummaryCard:stVideoHeadInfo	LSummaryCard/TVideoHeadInfo;
-    //   1337: iload_1
-    //   1338: invokevirtual 671	com/tencent/mobileqq/data/NearbyPeopleCard:updateDisplayPicInfos	([BLSummaryCard/TVideoHeadInfo;Z)Ljava/util/List;
-    //   1341: pop
-    //   1342: aload 16
-    //   1344: aload_2
-    //   1345: getfield 1497	SummaryCard/RespSummaryCard:stQiqiVideoInfo	LSummaryCard/QiqiVideoInfo;
-    //   1348: getfield 1502	SummaryCard/QiqiVideoInfo:uRoomid	J
-    //   1351: putfield 1503	com/tencent/mobileqq/data/NearbyPeopleCard:uRoomid	J
-    //   1354: aload_2
-    //   1355: getfield 1506	SummaryCard/RespSummaryCard:bValid4Vote	B
-    //   1358: ifne +12 -> 1370
-    //   1361: aload 16
-    //   1363: iconst_1
-    //   1364: putfield 1509	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
-    //   1367: goto +9 -> 1376
-    //   1370: aload 16
-    //   1372: iconst_0
-    //   1373: putfield 1509	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
+    //   768: getfield 1383	SummaryCard/RespSummaryCard:stHeartInfo	LSummaryCard/HeartInfo;
+    //   771: ifnull +15 -> 786
+    //   774: aload 16
+    //   776: aload_2
+    //   777: getfield 1383	SummaryCard/RespSummaryCard:stHeartInfo	LSummaryCard/HeartInfo;
+    //   780: getfield 1388	SummaryCard/HeartInfo:iHeartCount	I
+    //   783: putfield 1391	com/tencent/mobileqq/data/NearbyPeopleCard:mHeartNum	I
+    //   786: aload_2
+    //   787: getfield 1395	SummaryCard/RespSummaryCard:stNearbyGodInfo	LSummaryCard/TNearbyGodInfo;
+    //   790: ifnull +30 -> 820
+    //   793: aload 16
+    //   795: aload_2
+    //   796: getfield 1395	SummaryCard/RespSummaryCard:stNearbyGodInfo	LSummaryCard/TNearbyGodInfo;
+    //   799: getfield 1400	SummaryCard/TNearbyGodInfo:strJumpUrl	Ljava/lang/String;
+    //   802: putfield 1403	com/tencent/mobileqq/data/NearbyPeopleCard:strGodJumpUrl	Ljava/lang/String;
+    //   805: aload 16
+    //   807: aload_2
+    //   808: getfield 1395	SummaryCard/RespSummaryCard:stNearbyGodInfo	LSummaryCard/TNearbyGodInfo;
+    //   811: getfield 1406	SummaryCard/TNearbyGodInfo:iIsGodFlag	I
+    //   814: putfield 1407	com/tencent/mobileqq/data/NearbyPeopleCard:iIsGodFlag	I
+    //   817: goto +42 -> 859
+    //   820: invokestatic 635	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   823: ifeq +36 -> 859
+    //   826: new 68	java/lang/StringBuilder
+    //   829: dup
+    //   830: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   833: astore_3
+    //   834: aload_3
+    //   835: ldc_w 1409
+    //   838: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   841: pop
+    //   842: aload_3
+    //   843: aconst_null
+    //   844: invokevirtual 1412	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   847: pop
+    //   848: ldc_w 639
+    //   851: iconst_2
+    //   852: aload_3
+    //   853: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   856: invokestatic 985	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   859: aload_2
+    //   860: getfield 1415	SummaryCard/RespSummaryCard:vCommLabel	[B
+    //   863: astore 18
+    //   865: ldc 77
+    //   867: astore_3
+    //   868: aload 18
+    //   870: ifnull +201 -> 1071
+    //   873: aload 16
+    //   875: new 577	java/util/ArrayList
+    //   878: dup
+    //   879: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   882: putfield 582	com/tencent/mobileqq/data/NearbyPeopleCard:commonLabels	Ljava/util/List;
+    //   885: new 584	appoint/define/appoint_define$CommonLabel
+    //   888: dup
+    //   889: invokespecial 585	appoint/define/appoint_define$CommonLabel:<init>	()V
+    //   892: astore 19
+    //   894: aload 19
+    //   896: aload 18
+    //   898: invokevirtual 589	appoint/define/appoint_define$CommonLabel:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   901: pop
+    //   902: aload 19
+    //   904: getfield 593	appoint/define/appoint_define$CommonLabel:rpt_interst_name	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   907: invokevirtual 598	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
+    //   910: astore 18
+    //   912: aload 19
+    //   914: getfield 601	appoint/define/appoint_define$CommonLabel:rpt_interst_type	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   917: invokevirtual 598	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
+    //   920: astore 20
+    //   922: new 603	org/json/JSONArray
+    //   925: dup
+    //   926: invokespecial 604	org/json/JSONArray:<init>	()V
+    //   929: astore 19
+    //   931: aload 18
+    //   933: invokeinterface 609 1 0
+    //   938: aload 20
+    //   940: invokeinterface 609 1 0
+    //   945: if_icmpne +65 -> 1010
+    //   948: iconst_0
+    //   949: istore 6
+    //   951: iload 6
+    //   953: aload 18
+    //   955: invokeinterface 609 1 0
+    //   960: if_icmpge +50 -> 1010
+    //   963: aload 18
+    //   965: iload 6
+    //   967: invokeinterface 612 2 0
+    //   972: checkcast 138	com/tencent/mobileqq/pb/ByteStringMicro
+    //   975: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   978: astore 20
+    //   980: aload 16
+    //   982: getfield 582	com/tencent/mobileqq/data/NearbyPeopleCard:commonLabels	Ljava/util/List;
+    //   985: aload 20
+    //   987: invokeinterface 619 2 0
+    //   992: pop
+    //   993: aload 19
+    //   995: aload 20
+    //   997: invokevirtual 623	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   1000: pop
+    //   1001: iload 6
+    //   1003: iconst_1
+    //   1004: iadd
+    //   1005: istore 6
+    //   1007: goto -56 -> 951
+    //   1010: aload 16
+    //   1012: aload 19
+    //   1014: invokevirtual 624	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   1017: putfield 627	com/tencent/mobileqq/data/NearbyPeopleCard:commonLabelString	Ljava/lang/String;
+    //   1020: goto +51 -> 1071
+    //   1023: astore 18
+    //   1025: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1028: ifeq +43 -> 1071
+    //   1031: new 68	java/lang/StringBuilder
+    //   1034: dup
+    //   1035: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1038: astore 19
+    //   1040: aload 19
+    //   1042: ldc_w 629
+    //   1045: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1048: pop
+    //   1049: aload 19
+    //   1051: aload 18
+    //   1053: invokevirtual 632	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1056: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1059: pop
+    //   1060: ldc 77
+    //   1062: iconst_2
+    //   1063: aload 19
+    //   1065: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1068: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1071: invokestatic 635	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1074: ifeq +44 -> 1118
+    //   1077: new 68	java/lang/StringBuilder
+    //   1080: dup
+    //   1081: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1084: astore 18
+    //   1086: aload 18
+    //   1088: ldc_w 637
+    //   1091: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1094: pop
+    //   1095: aload 18
+    //   1097: aload 17
+    //   1099: getfield 1363	SummaryCard/DateCard:uSchoolId	J
+    //   1102: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1105: pop
+    //   1106: ldc_w 639
+    //   1109: iconst_4
+    //   1110: aload 18
+    //   1112: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1115: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1118: aload 16
+    //   1120: aload_2
+    //   1121: getfield 1418	SummaryCard/RespSummaryCard:strVoteLimitedNotice	Ljava/lang/String;
+    //   1124: putfield 1419	com/tencent/mobileqq/data/NearbyPeopleCard:strVoteLimitedNotice	Ljava/lang/String;
+    //   1127: aload 16
+    //   1129: aload_2
+    //   1130: getfield 1423	SummaryCard/RespSummaryCard:bHaveVotedCnt	S
+    //   1133: putfield 1424	com/tencent/mobileqq/data/NearbyPeopleCard:bHaveVotedCnt	S
+    //   1136: aload 16
+    //   1138: aload_2
+    //   1139: getfield 1427	SummaryCard/RespSummaryCard:bAvailVoteCnt	S
+    //   1142: putfield 1428	com/tencent/mobileqq/data/NearbyPeopleCard:bAvailVoteCnt	S
+    //   1145: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1148: ifeq +80 -> 1228
+    //   1151: new 68	java/lang/StringBuilder
+    //   1154: dup
+    //   1155: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1158: astore 18
+    //   1160: aload 18
+    //   1162: ldc_w 1430
+    //   1165: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1168: pop
+    //   1169: aload 18
+    //   1171: aload_2
+    //   1172: getfield 1418	SummaryCard/RespSummaryCard:strVoteLimitedNotice	Ljava/lang/String;
+    //   1175: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1178: pop
+    //   1179: aload 18
+    //   1181: ldc_w 1432
+    //   1184: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1187: pop
+    //   1188: aload 18
+    //   1190: aload_2
+    //   1191: getfield 1423	SummaryCard/RespSummaryCard:bHaveVotedCnt	S
+    //   1194: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1197: pop
+    //   1198: aload 18
+    //   1200: ldc_w 1434
+    //   1203: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1206: pop
+    //   1207: aload 18
+    //   1209: aload_2
+    //   1210: getfield 1427	SummaryCard/RespSummaryCard:bAvailVoteCnt	S
+    //   1213: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1216: pop
+    //   1217: ldc 77
+    //   1219: iconst_2
+    //   1220: aload 18
+    //   1222: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1225: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1228: aload_2
+    //   1229: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1232: ifnull +54 -> 1286
+    //   1235: aload 16
+    //   1237: aload_2
+    //   1238: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1241: getfield 1443	SummaryCard/PanSocialInfo:uCharm	J
+    //   1244: putfield 1446	com/tencent/mobileqq/data/NearbyPeopleCard:charm	J
+    //   1247: aload 16
+    //   1249: aload_2
+    //   1250: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1253: getfield 1449	SummaryCard/PanSocialInfo:uCharmLevel	J
+    //   1256: l2i
+    //   1257: putfield 1058	com/tencent/mobileqq/data/NearbyPeopleCard:charmLevel	I
+    //   1260: aload 16
+    //   1262: aload_2
+    //   1263: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1266: getfield 1452	SummaryCard/PanSocialInfo:uNextLevelCharm	J
+    //   1269: l2i
+    //   1270: putfield 1455	com/tencent/mobileqq/data/NearbyPeopleCard:nextThreshold	I
+    //   1273: aload 16
+    //   1275: aload_2
+    //   1276: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1279: getfield 1458	SummaryCard/PanSocialInfo:uCurLevelCharm	J
+    //   1282: l2i
+    //   1283: putfield 1461	com/tencent/mobileqq/data/NearbyPeopleCard:curThreshold	I
+    //   1286: iload 5
+    //   1288: ifeq +29 -> 1317
+    //   1291: aload 16
+    //   1293: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   1296: aload_0
+    //   1297: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1300: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1303: invokevirtual 1248	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1306: ifeq +6 -> 1312
+    //   1309: goto +8 -> 1317
+    //   1312: iconst_0
+    //   1313: istore_1
+    //   1314: goto +5 -> 1319
+    //   1317: iconst_1
+    //   1318: istore_1
+    //   1319: aload 16
+    //   1321: aload 17
+    //   1323: getfield 1464	SummaryCard/DateCard:vFaces	[B
+    //   1326: aload_2
+    //   1327: getfield 1468	SummaryCard/RespSummaryCard:stVideoHeadInfo	LSummaryCard/TVideoHeadInfo;
+    //   1330: iload_1
+    //   1331: invokevirtual 649	com/tencent/mobileqq/data/NearbyPeopleCard:updateDisplayPicInfos	([BLSummaryCard/TVideoHeadInfo;Z)Ljava/util/List;
+    //   1334: pop
+    //   1335: aload 16
+    //   1337: aload_2
+    //   1338: getfield 1472	SummaryCard/RespSummaryCard:stQiqiVideoInfo	LSummaryCard/QiqiVideoInfo;
+    //   1341: getfield 1477	SummaryCard/QiqiVideoInfo:uRoomid	J
+    //   1344: putfield 1478	com/tencent/mobileqq/data/NearbyPeopleCard:uRoomid	J
+    //   1347: aload_2
+    //   1348: getfield 1481	SummaryCard/RespSummaryCard:bValid4Vote	B
+    //   1351: ifne +12 -> 1363
+    //   1354: aload 16
+    //   1356: iconst_1
+    //   1357: putfield 1484	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
+    //   1360: goto +9 -> 1369
+    //   1363: aload 16
+    //   1365: iconst_0
+    //   1366: putfield 1484	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
+    //   1369: aload 4
+    //   1371: ifnull +13 -> 1384
+    //   1374: aload 16
     //   1376: aload 4
-    //   1378: ifnull +13 -> 1391
-    //   1381: aload 16
-    //   1383: aload 4
-    //   1385: getfield 1514	SummaryCard/RespHead:vCookies	[B
-    //   1388: putfield 1515	com/tencent/mobileqq/data/NearbyPeopleCard:vCookies	[B
-    //   1391: aload 16
-    //   1393: getfield 674	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
-    //   1396: ldc2_w 675
-    //   1399: land
-    //   1400: lconst_0
-    //   1401: lcmp
-    //   1402: ifeq +12 -> 1414
-    //   1405: aload 16
-    //   1407: iconst_1
-    //   1408: putfield 679	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
-    //   1411: goto +9 -> 1420
-    //   1414: aload 16
-    //   1416: iconst_0
-    //   1417: putfield 679	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
-    //   1420: aload 16
-    //   1422: getfield 674	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
-    //   1425: ldc2_w 680
-    //   1428: land
-    //   1429: lconst_0
-    //   1430: lcmp
-    //   1431: ifeq +12 -> 1443
-    //   1434: aload 16
-    //   1436: iconst_1
-    //   1437: putfield 684	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
-    //   1440: goto +9 -> 1449
-    //   1443: aload 16
-    //   1445: iconst_0
-    //   1446: putfield 684	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
-    //   1449: aload 16
-    //   1451: invokevirtual 687	com/tencent/mobileqq/data/NearbyPeopleCard:isPhotoUseCache	()Z
-    //   1454: istore_1
-    //   1455: ldc_w 564
-    //   1458: astore 23
-    //   1460: iload_1
-    //   1461: ifne +168 -> 1629
-    //   1464: aload 16
-    //   1466: ldc_w 564
-    //   1469: putfield 690	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_1	Ljava/lang/String;
-    //   1472: aload 16
-    //   1474: ldc_w 564
-    //   1477: putfield 693	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_2	Ljava/lang/String;
-    //   1480: aload 16
-    //   1482: ldc_w 564
-    //   1485: putfield 696	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_3	Ljava/lang/String;
-    //   1488: aload_2
-    //   1489: getfield 1519	SummaryCard/RespSummaryCard:oLatestPhotos	LSummaryCard/AlbumInfo;
-    //   1492: astore 4
-    //   1494: aload 4
-    //   1496: ifnull +133 -> 1629
-    //   1499: aload 4
-    //   1501: getfield 1524	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1504: ifnull +125 -> 1629
-    //   1507: aload 4
-    //   1509: getfield 1524	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1512: invokevirtual 1525	java/util/ArrayList:size	()I
-    //   1515: ifle +114 -> 1629
-    //   1518: iconst_0
-    //   1519: istore 6
-    //   1521: iload 6
-    //   1523: aload 4
-    //   1525: getfield 1524	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1528: invokevirtual 1525	java/util/ArrayList:size	()I
-    //   1531: if_icmpge +98 -> 1629
-    //   1534: iload 6
-    //   1536: ifne +27 -> 1563
-    //   1539: aload 16
-    //   1541: aload 4
-    //   1543: getfield 1524	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1546: iload 6
-    //   1548: invokevirtual 1526	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1551: checkcast 1528	SummaryCard/PhotoInfo
-    //   1554: getfield 1531	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
-    //   1557: putfield 690	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_1	Ljava/lang/String;
-    //   1560: goto +60 -> 1620
-    //   1563: iload 6
-    //   1565: iconst_1
-    //   1566: if_icmpne +27 -> 1593
-    //   1569: aload 16
-    //   1571: aload 4
-    //   1573: getfield 1524	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1576: iload 6
-    //   1578: invokevirtual 1526	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1581: checkcast 1528	SummaryCard/PhotoInfo
-    //   1584: getfield 1531	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
-    //   1587: putfield 693	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_2	Ljava/lang/String;
-    //   1590: goto +30 -> 1620
-    //   1593: iload 6
-    //   1595: iconst_2
-    //   1596: if_icmpne +24 -> 1620
-    //   1599: aload 16
-    //   1601: aload 4
-    //   1603: getfield 1524	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1606: iload 6
-    //   1608: invokevirtual 1526	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1611: checkcast 1528	SummaryCard/PhotoInfo
-    //   1614: getfield 1531	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
-    //   1617: putfield 696	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_3	Ljava/lang/String;
-    //   1620: iload 6
-    //   1622: iconst_1
-    //   1623: iadd
-    //   1624: istore 6
-    //   1626: goto -105 -> 1521
-    //   1629: aload_2
-    //   1630: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1633: astore 4
-    //   1635: aload 4
-    //   1637: ifnull +38 -> 1675
-    //   1640: aload 4
-    //   1642: getfield 1534	SummaryCard/PanSocialInfo:uCharmRank	J
-    //   1645: lconst_1
-    //   1646: lcmp
-    //   1647: ifne +12 -> 1659
-    //   1650: aload 16
-    //   1652: iconst_1
-    //   1653: putfield 1537	com/tencent/mobileqq/data/NearbyPeopleCard:godFlag	Z
-    //   1656: goto +9 -> 1665
-    //   1659: aload 16
-    //   1661: iconst_0
-    //   1662: putfield 1537	com/tencent/mobileqq/data/NearbyPeopleCard:godFlag	Z
-    //   1665: aload 16
-    //   1667: aload 4
-    //   1669: getfield 1540	SummaryCard/PanSocialInfo:strLevelType	Ljava/lang/String;
-    //   1672: putfield 1541	com/tencent/mobileqq/data/NearbyPeopleCard:strLevelType	Ljava/lang/String;
-    //   1675: aload_2
-    //   1676: getfield 1544	SummaryCard/RespSummaryCard:vRespLastGameInfo	[B
-    //   1679: ifnull +29 -> 1708
-    //   1682: aload 16
-    //   1684: aload_0
-    //   1685: aload_2
-    //   1686: getfield 1544	SummaryCard/RespSummaryCard:vRespLastGameInfo	[B
-    //   1689: ldc_w 1546
-    //   1692: new 1548	GameCenter/RespLastGameInfo
-    //   1695: dup
-    //   1696: invokespecial 1549	GameCenter/RespLastGameInfo:<init>	()V
-    //   1699: invokevirtual 1553	com/tencent/mobileqq/nearby/business/NearbyCardHandler:decodePacket	([BLjava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1702: checkcast 1548	GameCenter/RespLastGameInfo
-    //   1705: invokevirtual 1557	com/tencent/mobileqq/data/NearbyPeopleCard:updateLastGameInfo	(LGameCenter/RespLastGameInfo;)V
-    //   1708: aload_2
-    //   1709: getfield 1463	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
-    //   1712: astore 4
+    //   1378: getfield 1489	SummaryCard/RespHead:vCookies	[B
+    //   1381: putfield 1490	com/tencent/mobileqq/data/NearbyPeopleCard:vCookies	[B
+    //   1384: aload 16
+    //   1386: getfield 652	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
+    //   1389: ldc2_w 653
+    //   1392: land
+    //   1393: lconst_0
+    //   1394: lcmp
+    //   1395: ifeq +12 -> 1407
+    //   1398: aload 16
+    //   1400: iconst_1
+    //   1401: putfield 657	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
+    //   1404: goto +9 -> 1413
+    //   1407: aload 16
+    //   1409: iconst_0
+    //   1410: putfield 657	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
+    //   1413: aload 16
+    //   1415: getfield 652	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
+    //   1418: ldc2_w 658
+    //   1421: land
+    //   1422: lconst_0
+    //   1423: lcmp
+    //   1424: ifeq +12 -> 1436
+    //   1427: aload 16
+    //   1429: iconst_1
+    //   1430: putfield 662	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
+    //   1433: goto +9 -> 1442
+    //   1436: aload 16
+    //   1438: iconst_0
+    //   1439: putfield 662	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
+    //   1442: aload 16
+    //   1444: invokevirtual 665	com/tencent/mobileqq/data/NearbyPeopleCard:isPhotoUseCache	()Z
+    //   1447: istore_1
+    //   1448: ldc_w 547
+    //   1451: astore 23
+    //   1453: iload_1
+    //   1454: ifne +168 -> 1622
+    //   1457: aload 16
+    //   1459: ldc_w 547
+    //   1462: putfield 668	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_1	Ljava/lang/String;
+    //   1465: aload 16
+    //   1467: ldc_w 547
+    //   1470: putfield 671	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_2	Ljava/lang/String;
+    //   1473: aload 16
+    //   1475: ldc_w 547
+    //   1478: putfield 674	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_3	Ljava/lang/String;
+    //   1481: aload_2
+    //   1482: getfield 1494	SummaryCard/RespSummaryCard:oLatestPhotos	LSummaryCard/AlbumInfo;
+    //   1485: astore 4
+    //   1487: aload 4
+    //   1489: ifnull +133 -> 1622
+    //   1492: aload 4
+    //   1494: getfield 1499	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
+    //   1497: ifnull +125 -> 1622
+    //   1500: aload 4
+    //   1502: getfield 1499	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
+    //   1505: invokevirtual 1500	java/util/ArrayList:size	()I
+    //   1508: ifle +114 -> 1622
+    //   1511: iconst_0
+    //   1512: istore 6
+    //   1514: iload 6
+    //   1516: aload 4
+    //   1518: getfield 1499	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
+    //   1521: invokevirtual 1500	java/util/ArrayList:size	()I
+    //   1524: if_icmpge +98 -> 1622
+    //   1527: iload 6
+    //   1529: ifne +27 -> 1556
+    //   1532: aload 16
+    //   1534: aload 4
+    //   1536: getfield 1499	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
+    //   1539: iload 6
+    //   1541: invokevirtual 1501	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1544: checkcast 1503	SummaryCard/PhotoInfo
+    //   1547: getfield 1506	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
+    //   1550: putfield 668	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_1	Ljava/lang/String;
+    //   1553: goto +60 -> 1613
+    //   1556: iload 6
+    //   1558: iconst_1
+    //   1559: if_icmpne +27 -> 1586
+    //   1562: aload 16
+    //   1564: aload 4
+    //   1566: getfield 1499	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
+    //   1569: iload 6
+    //   1571: invokevirtual 1501	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1574: checkcast 1503	SummaryCard/PhotoInfo
+    //   1577: getfield 1506	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
+    //   1580: putfield 671	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_2	Ljava/lang/String;
+    //   1583: goto +30 -> 1613
+    //   1586: iload 6
+    //   1588: iconst_2
+    //   1589: if_icmpne +24 -> 1613
+    //   1592: aload 16
+    //   1594: aload 4
+    //   1596: getfield 1499	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
+    //   1599: iload 6
+    //   1601: invokevirtual 1501	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1604: checkcast 1503	SummaryCard/PhotoInfo
+    //   1607: getfield 1506	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
+    //   1610: putfield 674	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_3	Ljava/lang/String;
+    //   1613: iload 6
+    //   1615: iconst_1
+    //   1616: iadd
+    //   1617: istore 6
+    //   1619: goto -105 -> 1514
+    //   1622: aload_2
+    //   1623: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1626: astore 4
+    //   1628: aload 4
+    //   1630: ifnull +38 -> 1668
+    //   1633: aload 4
+    //   1635: getfield 1509	SummaryCard/PanSocialInfo:uCharmRank	J
+    //   1638: lconst_1
+    //   1639: lcmp
+    //   1640: ifne +12 -> 1652
+    //   1643: aload 16
+    //   1645: iconst_1
+    //   1646: putfield 1512	com/tencent/mobileqq/data/NearbyPeopleCard:godFlag	Z
+    //   1649: goto +9 -> 1658
+    //   1652: aload 16
+    //   1654: iconst_0
+    //   1655: putfield 1512	com/tencent/mobileqq/data/NearbyPeopleCard:godFlag	Z
+    //   1658: aload 16
+    //   1660: aload 4
+    //   1662: getfield 1515	SummaryCard/PanSocialInfo:strLevelType	Ljava/lang/String;
+    //   1665: putfield 1516	com/tencent/mobileqq/data/NearbyPeopleCard:strLevelType	Ljava/lang/String;
+    //   1668: aload_2
+    //   1669: getfield 1519	SummaryCard/RespSummaryCard:vRespLastGameInfo	[B
+    //   1672: ifnull +29 -> 1701
+    //   1675: aload 16
+    //   1677: aload_0
+    //   1678: aload_2
+    //   1679: getfield 1519	SummaryCard/RespSummaryCard:vRespLastGameInfo	[B
+    //   1682: ldc_w 1521
+    //   1685: new 1523	GameCenter/RespLastGameInfo
+    //   1688: dup
+    //   1689: invokespecial 1524	GameCenter/RespLastGameInfo:<init>	()V
+    //   1692: invokevirtual 1528	com/tencent/mobileqq/nearby/business/NearbyCardHandler:decodePacket	([BLjava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1695: checkcast 1523	GameCenter/RespLastGameInfo
+    //   1698: invokevirtual 1532	com/tencent/mobileqq/data/NearbyPeopleCard:updateLastGameInfo	(LGameCenter/RespLastGameInfo;)V
+    //   1701: aload_2
+    //   1702: getfield 1438	SummaryCard/RespSummaryCard:stPanSocialInfo	LSummaryCard/PanSocialInfo;
+    //   1705: astore 4
+    //   1707: aload 4
+    //   1709: ifnull +14 -> 1723
+    //   1712: aload 16
     //   1714: aload 4
-    //   1716: ifnull +14 -> 1730
-    //   1719: aload 16
-    //   1721: aload 4
-    //   1723: getfield 1560	SummaryCard/PanSocialInfo:uChatflag	J
-    //   1726: l2i
-    //   1727: putfield 1563	com/tencent/mobileqq/data/NearbyPeopleCard:sayHelloFlag	I
-    //   1730: new 595	java/util/ArrayList
-    //   1733: dup
-    //   1734: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   1737: astore 29
-    //   1739: aload 23
-    //   1741: astore 18
-    //   1743: aload 15
-    //   1745: astore 22
-    //   1747: iload 12
-    //   1749: istore 11
-    //   1751: iload 5
-    //   1753: istore 6
-    //   1755: aload 16
-    //   1757: astore 20
-    //   1759: aload_2
-    //   1760: astore 21
-    //   1762: aload 27
-    //   1764: astore 19
-    //   1766: aload_3
-    //   1767: astore 17
-    //   1769: aload_2
-    //   1770: getfield 1566	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
-    //   1773: ifnull +1759 -> 3532
-    //   1776: aload 23
-    //   1778: astore 18
-    //   1780: aload 15
-    //   1782: astore 22
-    //   1784: iload 12
-    //   1786: istore 11
-    //   1788: iload 5
-    //   1790: istore 6
-    //   1792: aload 16
-    //   1794: astore 20
-    //   1796: aload_2
-    //   1797: astore 21
-    //   1799: aload 27
-    //   1801: astore 19
-    //   1803: aload_3
-    //   1804: astore 17
-    //   1806: aload_2
-    //   1807: getfield 1566	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
-    //   1810: invokevirtual 1525	java/util/ArrayList:size	()I
-    //   1813: ifle +1719 -> 3532
-    //   1816: iconst_0
-    //   1817: istore 8
-    //   1819: aload_3
-    //   1820: astore 4
-    //   1822: aload 16
-    //   1824: astore_3
-    //   1825: iload 12
-    //   1827: istore_1
-    //   1828: aload 23
-    //   1830: astore 16
-    //   1832: aload 16
-    //   1834: astore 18
-    //   1836: aload 15
-    //   1838: astore 22
-    //   1840: iload_1
-    //   1841: istore 11
-    //   1843: iload 5
-    //   1845: istore 6
-    //   1847: aload_3
-    //   1848: astore 20
-    //   1850: aload_2
-    //   1851: astore 21
-    //   1853: aload 27
-    //   1855: astore 19
-    //   1857: aload 4
-    //   1859: astore 17
-    //   1861: iload 8
-    //   1863: aload_2
-    //   1864: getfield 1566	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
-    //   1867: invokevirtual 1525	java/util/ArrayList:size	()I
-    //   1870: if_icmpge +1662 -> 3532
-    //   1873: aload_2
-    //   1874: getfield 1566	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
-    //   1877: iload 8
-    //   1879: invokevirtual 1526	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1882: checkcast 1567	[B
-    //   1885: astore 18
-    //   1887: aload 18
-    //   1889: ifnonnull +9 -> 1898
-    //   1892: iconst_0
-    //   1893: istore 6
-    //   1895: goto +8 -> 1903
-    //   1898: aload 18
-    //   1900: arraylength
-    //   1901: istore 6
-    //   1903: iload 6
-    //   1905: bipush 10
-    //   1907: if_icmpgt +6 -> 1913
-    //   1910: goto +1569 -> 3479
-    //   1913: aload 18
-    //   1915: iconst_1
-    //   1916: invokestatic 1573	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
-    //   1919: l2i
-    //   1920: istore 7
-    //   1922: aload 18
-    //   1924: iconst_5
-    //   1925: invokestatic 1573	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
-    //   1928: pop2
+    //   1716: getfield 1535	SummaryCard/PanSocialInfo:uChatflag	J
+    //   1719: l2i
+    //   1720: putfield 1538	com/tencent/mobileqq/data/NearbyPeopleCard:sayHelloFlag	I
+    //   1723: new 577	java/util/ArrayList
+    //   1726: dup
+    //   1727: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   1730: astore 29
+    //   1732: aload 23
+    //   1734: astore 18
+    //   1736: aload 15
+    //   1738: astore 22
+    //   1740: iload 12
+    //   1742: istore 11
+    //   1744: iload 5
+    //   1746: istore 6
+    //   1748: aload 16
+    //   1750: astore 20
+    //   1752: aload_2
+    //   1753: astore 21
+    //   1755: aload 27
+    //   1757: astore 19
+    //   1759: aload_3
+    //   1760: astore 17
+    //   1762: aload_2
+    //   1763: getfield 1541	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
+    //   1766: ifnull +1759 -> 3525
+    //   1769: aload 23
+    //   1771: astore 18
+    //   1773: aload 15
+    //   1775: astore 22
+    //   1777: iload 12
+    //   1779: istore 11
+    //   1781: iload 5
+    //   1783: istore 6
+    //   1785: aload 16
+    //   1787: astore 20
+    //   1789: aload_2
+    //   1790: astore 21
+    //   1792: aload 27
+    //   1794: astore 19
+    //   1796: aload_3
+    //   1797: astore 17
+    //   1799: aload_2
+    //   1800: getfield 1541	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
+    //   1803: invokevirtual 1500	java/util/ArrayList:size	()I
+    //   1806: ifle +1719 -> 3525
+    //   1809: iconst_0
+    //   1810: istore 8
+    //   1812: aload_3
+    //   1813: astore 4
+    //   1815: aload 16
+    //   1817: astore_3
+    //   1818: iload 12
+    //   1820: istore_1
+    //   1821: aload 23
+    //   1823: astore 16
+    //   1825: aload 16
+    //   1827: astore 18
+    //   1829: aload 15
+    //   1831: astore 22
+    //   1833: iload_1
+    //   1834: istore 11
+    //   1836: iload 5
+    //   1838: istore 6
+    //   1840: aload_3
+    //   1841: astore 20
+    //   1843: aload_2
+    //   1844: astore 21
+    //   1846: aload 27
+    //   1848: astore 19
+    //   1850: aload 4
+    //   1852: astore 17
+    //   1854: iload 8
+    //   1856: aload_2
+    //   1857: getfield 1541	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
+    //   1860: invokevirtual 1500	java/util/ArrayList:size	()I
+    //   1863: if_icmpge +1662 -> 3525
+    //   1866: aload_2
+    //   1867: getfield 1541	SummaryCard/RespSummaryCard:vvRespServicesBigOrder	Ljava/util/ArrayList;
+    //   1870: iload 8
+    //   1872: invokevirtual 1501	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1875: checkcast 1542	[B
+    //   1878: astore 18
+    //   1880: aload 18
+    //   1882: ifnonnull +9 -> 1891
+    //   1885: iconst_0
+    //   1886: istore 6
+    //   1888: goto +8 -> 1896
+    //   1891: aload 18
+    //   1893: arraylength
+    //   1894: istore 6
+    //   1896: iload 6
+    //   1898: bipush 10
+    //   1900: if_icmpgt +6 -> 1906
+    //   1903: goto +1569 -> 3472
+    //   1906: aload 18
+    //   1908: iconst_1
+    //   1909: invokestatic 1548	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
+    //   1912: l2i
+    //   1913: istore 7
+    //   1915: aload 18
+    //   1917: iconst_5
+    //   1918: invokestatic 1548	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
+    //   1921: pop2
+    //   1922: iload 7
+    //   1924: ifle +1548 -> 3472
+    //   1927: bipush 9
     //   1929: iload 7
-    //   1931: ifle +1548 -> 3479
-    //   1934: bipush 9
-    //   1936: iload 7
-    //   1938: iadd
-    //   1939: iload 6
-    //   1941: if_icmplt +6 -> 1947
-    //   1944: goto +1535 -> 3479
-    //   1947: iload 7
-    //   1949: newarray byte
-    //   1951: astore 17
-    //   1953: aload 17
-    //   1955: iconst_0
-    //   1956: aload 18
-    //   1958: bipush 9
-    //   1960: iload 7
-    //   1962: invokestatic 1577	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
-    //   1965: new 1579	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm
-    //   1968: dup
-    //   1969: invokespecial 1580	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:<init>	()V
-    //   1972: astore 30
-    //   1974: aload 30
-    //   1976: aload 17
-    //   1978: invokevirtual 1581	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1981: pop
-    //   1982: aload 30
-    //   1984: getfield 1584	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1987: invokevirtual 445	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1990: istore 10
-    //   1992: new 1586	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry
-    //   1995: dup
-    //   1996: invokespecial 1587	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:<init>	()V
-    //   1999: astore 24
-    //   2001: iload 10
-    //   2003: ifne +5234 -> 7237
-    //   2006: aload 24
-    //   2008: aload 30
-    //   2010: getfield 1591	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
-    //   2013: getfield 1596	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:strName	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2016: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2019: putfield 1598	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:strName	Ljava/lang/String;
-    //   2022: aload 24
-    //   2024: aload 30
-    //   2026: getfield 1591	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
-    //   2029: getfield 1601	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:strServiceUrl	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2032: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2035: putfield 1603	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:strServiceUrl	Ljava/lang/String;
-    //   2038: aload 24
-    //   2040: aload 30
-    //   2042: getfield 1606	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2045: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2048: putfield 1609	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:serviceType	I
-    //   2051: new 595	java/util/ArrayList
-    //   2054: dup
-    //   2055: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   2058: astore 31
-    //   2060: iconst_0
-    //   2061: istore 7
-    //   2063: aload 4
-    //   2065: astore 17
-    //   2067: aload 16
-    //   2069: astore 4
-    //   2071: iload 7
-    //   2073: aload 30
-    //   2075: getfield 1591	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
-    //   2078: getfield 1612	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:rptUiList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   2081: invokevirtual 1613	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   2084: if_icmpge +873 -> 2957
-    //   2087: aload 30
-    //   2089: getfield 1591	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
-    //   2092: getfield 1612	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:rptUiList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   2095: iload 7
-    //   2097: invokevirtual 1616	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   2100: checkcast 1618	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info
-    //   2103: astore 23
-    //   2105: new 1620	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem
-    //   2108: dup
-    //   2109: invokespecial 1621	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:<init>	()V
-    //   2112: astore 25
-    //   2114: aload 25
-    //   2116: aload 23
-    //   2118: getfield 1624	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strTitle	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2121: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2124: putfield 1626	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strTitle	Ljava/lang/String;
-    //   2127: aload 25
-    //   2129: aload 23
-    //   2131: getfield 1629	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strCoverUrl	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2134: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2137: putfield 1631	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strCoverUrl	Ljava/lang/String;
-    //   2140: aload 25
-    //   2142: aload 23
-    //   2144: getfield 1634	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strJmpUrl	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2147: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2150: putfield 1636	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strJmpUrl	Ljava/lang/String;
-    //   2153: aload 25
-    //   2155: aload 23
-    //   2157: getfield 1639	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strSubInfo	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2160: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2163: putfield 1641	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strSubInfo	Ljava/lang/String;
-    //   2166: aload 25
-    //   2168: aload 23
-    //   2170: getfield 1644	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strDesc	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2173: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2176: putfield 1646	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strDesc	Ljava/lang/String;
-    //   2179: aload 25
-    //   2181: aload 23
-    //   2183: getfield 1649	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strTitleIconUrl	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2186: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2189: putfield 1651	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strTitleIconUrl	Ljava/lang/String;
-    //   2192: aload 23
-    //   2194: getfield 1654	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   2197: astore 19
-    //   2199: aload 4
-    //   2201: astore 21
-    //   2203: iload 5
-    //   2205: istore 6
-    //   2207: aload_3
-    //   2208: astore 18
-    //   2210: aload_2
-    //   2211: astore 16
-    //   2213: aload 25
-    //   2215: aload 19
-    //   2217: invokevirtual 277	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   2220: putfield 1657	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:groupCode	J
-    //   2223: iload 5
-    //   2225: istore 6
-    //   2227: aload_3
-    //   2228: astore 18
-    //   2230: aload_2
-    //   2231: astore 16
-    //   2233: aload 25
-    //   2235: aload 24
-    //   2237: getfield 1609	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:serviceType	I
-    //   2240: putfield 1658	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:serviceType	I
-    //   2243: iload 5
-    //   2245: istore 6
-    //   2247: aload_3
-    //   2248: astore 18
-    //   2250: aload_2
-    //   2251: astore 16
-    //   2253: aload 23
-    //   2255: getfield 1661	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:rptGroupTagList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   2258: invokevirtual 1613	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   2261: ifle +4897 -> 7158
-    //   2264: iload 5
-    //   2266: istore 6
-    //   2268: aload_3
-    //   2269: astore 18
-    //   2271: aload_2
-    //   2272: astore 16
-    //   2274: new 595	java/util/ArrayList
-    //   2277: dup
-    //   2278: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   2281: astore 26
-    //   2283: iconst_0
-    //   2284: istore 9
-    //   2286: iload 5
-    //   2288: istore 6
-    //   2290: aload_3
-    //   2291: astore 18
-    //   2293: aload_2
-    //   2294: astore 16
-    //   2296: iload 9
-    //   2298: aload 23
-    //   2300: getfield 1661	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:rptGroupTagList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   2303: invokevirtual 1613	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   2306: if_icmpge +556 -> 2862
-    //   2309: iload 5
-    //   2311: istore 6
-    //   2313: aload_3
-    //   2314: astore 18
-    //   2316: aload_2
-    //   2317: astore 16
-    //   2319: aload 23
-    //   2321: getfield 1661	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:rptGroupTagList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   2324: iload 9
-    //   2326: invokevirtual 1616	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   2329: checkcast 1663	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label
-    //   2332: astore 32
-    //   2334: iload 5
-    //   2336: istore 6
-    //   2338: aload_3
-    //   2339: astore 18
-    //   2341: aload_2
-    //   2342: astore 16
-    //   2344: new 1665	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel
-    //   2347: dup
-    //   2348: invokespecial 1666	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:<init>	()V
-    //   2351: astore 33
-    //   2353: iload 5
-    //   2355: istore 6
-    //   2357: aload 33
-    //   2359: aload 32
-    //   2361: getfield 1669	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:bytes_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   2364: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   2367: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   2370: putfield 1672	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:strWording	Ljava/lang/String;
-    //   2373: aload 32
-    //   2375: getfield 1675	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:uint32_label_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2378: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2381: istore 5
-    //   2383: aload_3
-    //   2384: astore 20
-    //   2386: aload_2
-    //   2387: astore 22
-    //   2389: iload 5
-    //   2391: i2l
-    //   2392: lstore 13
-    //   2394: aload 15
-    //   2396: astore 19
-    //   2398: aload 17
-    //   2400: astore 18
-    //   2402: aload 21
-    //   2404: astore 16
-    //   2406: iload 6
-    //   2408: istore 5
-    //   2410: aload 22
-    //   2412: astore_3
-    //   2413: aload 20
-    //   2415: astore_2
-    //   2416: aload 33
-    //   2418: lload 13
-    //   2420: putfield 1678	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:type	J
-    //   2423: aload 15
-    //   2425: astore 19
-    //   2427: aload 17
-    //   2429: astore 18
-    //   2431: aload 21
-    //   2433: astore 16
-    //   2435: iload 6
-    //   2437: istore 5
-    //   2439: aload 22
-    //   2441: astore_3
-    //   2442: aload 20
-    //   2444: astore_2
-    //   2445: aload 33
-    //   2447: aload 32
-    //   2449: getfield 1681	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:uint32_label_attr	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2452: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2455: i2l
-    //   2456: putfield 1684	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:attr	J
-    //   2459: aload 15
-    //   2461: astore 19
-    //   2463: aload 17
-    //   2465: astore 18
-    //   2467: aload 21
-    //   2469: astore 16
-    //   2471: iload 6
-    //   2473: istore 5
-    //   2475: aload 22
-    //   2477: astore_3
-    //   2478: aload 20
-    //   2480: astore_2
-    //   2481: new 1686	com/tencent/mobileqq/profilecard/entity/ProfileColor
-    //   2484: dup
-    //   2485: invokespecial 1687	com/tencent/mobileqq/profilecard/entity/ProfileColor:<init>	()V
-    //   2488: astore 34
-    //   2490: aload 15
-    //   2492: astore 19
-    //   2494: aload 17
-    //   2496: astore 18
-    //   2498: aload 21
-    //   2500: astore 16
-    //   2502: iload 6
-    //   2504: istore 5
-    //   2506: aload 22
-    //   2508: astore_3
-    //   2509: aload 20
-    //   2511: astore_2
-    //   2512: aload 34
-    //   2514: aload 32
-    //   2516: getfield 1691	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:edging_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
-    //   2519: getfield 1696	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_r	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2522: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2525: i2l
-    //   2526: putfield 1699	com/tencent/mobileqq/profilecard/entity/ProfileColor:red	J
-    //   2529: aload 15
-    //   2531: astore 19
-    //   2533: aload 17
-    //   2535: astore 18
-    //   2537: aload 21
-    //   2539: astore 16
-    //   2541: iload 6
-    //   2543: istore 5
-    //   2545: aload 22
-    //   2547: astore_3
-    //   2548: aload 20
-    //   2550: astore_2
-    //   2551: aload 34
-    //   2553: aload 32
-    //   2555: getfield 1691	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:edging_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
-    //   2558: getfield 1702	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_g	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2561: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2564: i2l
-    //   2565: putfield 1705	com/tencent/mobileqq/profilecard/entity/ProfileColor:green	J
-    //   2568: aload 15
-    //   2570: astore 19
-    //   2572: aload 17
-    //   2574: astore 18
-    //   2576: aload 21
-    //   2578: astore 16
-    //   2580: iload 6
-    //   2582: istore 5
-    //   2584: aload 22
-    //   2586: astore_3
-    //   2587: aload 20
-    //   2589: astore_2
-    //   2590: aload 34
-    //   2592: aload 32
-    //   2594: getfield 1691	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:edging_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
-    //   2597: getfield 1708	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_b	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2600: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2603: i2l
-    //   2604: putfield 1711	com/tencent/mobileqq/profilecard/entity/ProfileColor:blue	J
-    //   2607: aload 15
-    //   2609: astore 19
-    //   2611: aload 17
-    //   2613: astore 18
-    //   2615: aload 21
-    //   2617: astore 16
-    //   2619: iload 6
-    //   2621: istore 5
-    //   2623: aload 22
-    //   2625: astore_3
-    //   2626: aload 20
-    //   2628: astore_2
-    //   2629: aload 33
-    //   2631: aload 34
-    //   2633: putfield 1715	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:edgingColor	Lcom/tencent/mobileqq/profilecard/entity/ProfileColor;
-    //   2636: aload 15
-    //   2638: astore 19
-    //   2640: aload 17
-    //   2642: astore 18
-    //   2644: aload 21
-    //   2646: astore 16
-    //   2648: iload 6
-    //   2650: istore 5
-    //   2652: aload 22
-    //   2654: astore_3
-    //   2655: aload 20
-    //   2657: astore_2
-    //   2658: new 1686	com/tencent/mobileqq/profilecard/entity/ProfileColor
-    //   2661: dup
-    //   2662: invokespecial 1687	com/tencent/mobileqq/profilecard/entity/ProfileColor:<init>	()V
-    //   2665: astore 34
-    //   2667: aload 15
-    //   2669: astore 19
-    //   2671: aload 17
-    //   2673: astore 18
-    //   2675: aload 21
-    //   2677: astore 16
-    //   2679: iload 6
-    //   2681: istore 5
-    //   2683: aload 22
-    //   2685: astore_3
-    //   2686: aload 20
-    //   2688: astore_2
-    //   2689: aload 34
-    //   2691: aload 32
-    //   2693: getfield 1718	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:text_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
-    //   2696: getfield 1696	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_r	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2699: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2702: i2l
-    //   2703: putfield 1699	com/tencent/mobileqq/profilecard/entity/ProfileColor:red	J
-    //   2706: aload 15
-    //   2708: astore 19
-    //   2710: aload 17
-    //   2712: astore 18
-    //   2714: aload 21
-    //   2716: astore 16
-    //   2718: iload 6
-    //   2720: istore 5
-    //   2722: aload 22
-    //   2724: astore_3
-    //   2725: aload 20
-    //   2727: astore_2
-    //   2728: aload 34
-    //   2730: aload 32
-    //   2732: getfield 1718	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:text_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
-    //   2735: getfield 1702	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_g	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2738: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2741: i2l
-    //   2742: putfield 1705	com/tencent/mobileqq/profilecard/entity/ProfileColor:green	J
-    //   2745: aload 15
-    //   2747: astore 19
-    //   2749: aload 17
-    //   2751: astore 18
-    //   2753: aload 21
-    //   2755: astore 16
-    //   2757: iload 6
-    //   2759: istore 5
-    //   2761: aload 22
-    //   2763: astore_3
-    //   2764: aload 20
-    //   2766: astore_2
-    //   2767: aload 34
-    //   2769: aload 32
-    //   2771: getfield 1718	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:text_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
-    //   2774: getfield 1708	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_b	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2777: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2780: i2l
-    //   2781: putfield 1711	com/tencent/mobileqq/profilecard/entity/ProfileColor:blue	J
-    //   2784: aload 15
-    //   2786: astore 19
-    //   2788: aload 17
-    //   2790: astore 18
-    //   2792: aload 21
-    //   2794: astore 16
-    //   2796: iload 6
-    //   2798: istore 5
-    //   2800: aload 22
-    //   2802: astore_3
-    //   2803: aload 20
-    //   2805: astore_2
-    //   2806: aload 33
-    //   2808: aload 34
-    //   2810: putfield 1721	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:textColor	Lcom/tencent/mobileqq/profilecard/entity/ProfileColor;
-    //   2813: aload 15
-    //   2815: astore 19
-    //   2817: aload 17
-    //   2819: astore 18
-    //   2821: aload 21
-    //   2823: astore 16
-    //   2825: iload 6
-    //   2827: istore 5
-    //   2829: aload 22
-    //   2831: astore_3
-    //   2832: aload 20
-    //   2834: astore_2
-    //   2835: aload 26
-    //   2837: aload 33
-    //   2839: invokevirtual 1722	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   2842: pop
-    //   2843: iload 9
-    //   2845: iconst_1
-    //   2846: iadd
-    //   2847: istore 9
-    //   2849: iload 6
-    //   2851: istore 5
-    //   2853: aload 22
-    //   2855: astore_2
-    //   2856: aload 20
-    //   2858: astore_3
-    //   2859: goto -573 -> 2286
-    //   2862: iload 5
-    //   2864: istore 6
-    //   2866: aload_3
-    //   2867: astore 20
-    //   2869: aload_2
-    //   2870: astore 4
-    //   2872: aload 15
-    //   2874: astore 19
-    //   2876: aload 17
-    //   2878: astore 18
-    //   2880: aload 21
-    //   2882: astore 16
-    //   2884: iload 6
-    //   2886: istore 5
-    //   2888: aload 4
-    //   2890: astore_3
-    //   2891: aload 20
-    //   2893: astore_2
-    //   2894: aload 25
-    //   2896: aload 26
-    //   2898: putfield 1725	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:labels	Ljava/util/ArrayList;
-    //   2901: goto +3 -> 2904
-    //   2904: aload 15
-    //   2906: astore 19
-    //   2908: aload 17
-    //   2910: astore 18
-    //   2912: aload 21
-    //   2914: astore 16
-    //   2916: iload 6
-    //   2918: istore 5
-    //   2920: aload 4
-    //   2922: astore_3
-    //   2923: aload 20
-    //   2925: astore_2
-    //   2926: aload 31
-    //   2928: aload 25
-    //   2930: invokevirtual 1722	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   2933: pop
-    //   2934: iload 7
-    //   2936: iconst_1
-    //   2937: iadd
-    //   2938: istore 7
-    //   2940: iload 6
-    //   2942: istore 5
-    //   2944: aload 4
-    //   2946: astore_2
-    //   2947: aload 20
-    //   2949: astore_3
-    //   2950: aload 21
-    //   2952: astore 4
-    //   2954: goto -883 -> 2071
-    //   2957: iload 5
-    //   2959: istore 7
-    //   2961: aload_3
-    //   2962: astore 26
-    //   2964: aload_2
-    //   2965: astore 25
-    //   2967: aload 15
-    //   2969: astore 19
-    //   2971: aload 17
-    //   2973: astore 18
-    //   2975: aload 4
-    //   2977: astore 16
-    //   2979: iload 7
-    //   2981: istore 5
-    //   2983: aload 25
-    //   2985: astore_3
-    //   2986: aload 26
-    //   2988: astore_2
-    //   2989: aload 24
-    //   2991: aload 31
-    //   2993: putfield 1728	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:sProfileSummaryHobbiesItem	Ljava/util/ArrayList;
-    //   2996: aload 15
-    //   2998: astore 20
-    //   3000: aload 17
-    //   3002: astore 22
-    //   3004: aload 4
-    //   3006: astore 23
-    //   3008: goto +3 -> 3011
-    //   3011: aload 20
-    //   3013: astore 19
-    //   3015: aload 22
-    //   3017: astore 18
-    //   3019: aload 23
-    //   3021: astore 16
-    //   3023: iload 7
-    //   3025: istore 5
-    //   3027: aload 25
-    //   3029: astore_3
-    //   3030: aload 26
-    //   3032: astore_2
-    //   3033: aload 29
-    //   3035: aload 24
-    //   3037: invokeinterface 637 2 0
-    //   3042: pop
-    //   3043: aload 20
-    //   3045: astore 19
-    //   3047: aload 22
-    //   3049: astore 18
-    //   3051: aload 23
-    //   3053: astore 16
-    //   3055: iload 7
-    //   3057: istore 5
-    //   3059: aload 25
-    //   3061: astore_3
-    //   3062: aload 26
-    //   3064: astore_2
-    //   3065: aload 20
-    //   3067: astore 24
-    //   3069: aload 22
-    //   3071: astore 21
-    //   3073: aload 23
-    //   3075: astore 17
-    //   3077: iload 7
-    //   3079: istore 6
-    //   3081: aload 25
-    //   3083: astore 15
-    //   3085: aload 26
-    //   3087: astore 4
-    //   3089: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3092: ifeq +409 -> 3501
-    //   3095: aload 20
-    //   3097: astore 19
-    //   3099: aload 22
-    //   3101: astore 18
-    //   3103: aload 23
-    //   3105: astore 16
-    //   3107: iload 7
-    //   3109: istore 5
-    //   3111: aload 25
-    //   3113: astore_3
-    //   3114: aload 26
-    //   3116: astore_2
-    //   3117: new 167	java/lang/StringBuilder
-    //   3120: dup
-    //   3121: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   3124: astore 4
-    //   3126: aload 20
-    //   3128: astore 19
-    //   3130: aload 22
-    //   3132: astore 18
-    //   3134: aload 23
-    //   3136: astore 16
-    //   3138: iload 7
-    //   3140: istore 5
-    //   3142: aload 25
-    //   3144: astore_3
-    //   3145: aload 26
-    //   3147: astore_2
-    //   3148: aload 4
-    //   3150: ldc_w 1730
-    //   3153: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3156: pop
-    //   3157: aload 20
-    //   3159: astore 19
-    //   3161: aload 22
-    //   3163: astore 18
-    //   3165: aload 23
-    //   3167: astore 16
-    //   3169: iload 7
-    //   3171: istore 5
-    //   3173: aload 25
-    //   3175: astore_3
-    //   3176: aload 26
-    //   3178: astore_2
-    //   3179: aload 4
-    //   3181: aload 30
-    //   3183: getfield 1606	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   3186: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   3189: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3192: pop
-    //   3193: aload 20
-    //   3195: astore 19
-    //   3197: aload 22
-    //   3199: astore 18
-    //   3201: aload 23
-    //   3203: astore 16
-    //   3205: iload 7
-    //   3207: istore 5
-    //   3209: aload 25
-    //   3211: astore_3
-    //   3212: aload 26
-    //   3214: astore_2
-    //   3215: aload 4
-    //   3217: ldc_w 1732
-    //   3220: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3223: pop
-    //   3224: aload 20
-    //   3226: astore 19
-    //   3228: aload 22
-    //   3230: astore 18
-    //   3232: aload 23
-    //   3234: astore 16
-    //   3236: iload 7
-    //   3238: istore 5
-    //   3240: aload 25
-    //   3242: astore_3
-    //   3243: aload 26
-    //   3245: astore_2
-    //   3246: aload 4
-    //   3248: iload 10
-    //   3250: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3253: pop
-    //   3254: aload 20
-    //   3256: astore 19
-    //   3258: aload 22
-    //   3260: astore 18
-    //   3262: aload 23
-    //   3264: astore 16
-    //   3266: iload 7
-    //   3268: istore 5
-    //   3270: aload 25
-    //   3272: astore_3
-    //   3273: aload 26
-    //   3275: astore_2
-    //   3276: aload 4
-    //   3278: ldc_w 1734
-    //   3281: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3284: pop
-    //   3285: aload 20
-    //   3287: astore 19
-    //   3289: aload 22
-    //   3291: astore 18
-    //   3293: aload 23
-    //   3295: astore 16
-    //   3297: iload 7
-    //   3299: istore 5
-    //   3301: aload 25
-    //   3303: astore_3
-    //   3304: aload 26
-    //   3306: astore_2
-    //   3307: aload 4
-    //   3309: aload 30
-    //   3311: getfield 1737	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3314: invokevirtual 1437	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3317: pop
-    //   3318: aload 20
-    //   3320: astore 19
-    //   3322: aload 22
-    //   3324: astore 18
-    //   3326: aload 23
-    //   3328: astore 16
-    //   3330: iload 7
-    //   3332: istore 5
-    //   3334: aload 25
-    //   3336: astore_3
-    //   3337: aload 26
-    //   3339: astore_2
-    //   3340: ldc_w 661
-    //   3343: iconst_2
-    //   3344: aload 4
-    //   3346: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3349: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3352: aload 20
-    //   3354: astore 24
-    //   3356: aload 22
-    //   3358: astore 21
-    //   3360: aload 23
-    //   3362: astore 17
-    //   3364: iload 7
-    //   3366: istore 6
-    //   3368: aload 25
-    //   3370: astore 15
-    //   3372: aload 26
-    //   3374: astore 4
-    //   3376: goto +125 -> 3501
-    //   3379: astore 20
-    //   3381: goto +33 -> 3414
-    //   3384: astore 18
-    //   3386: aload 4
-    //   3388: astore 17
-    //   3390: aload 18
-    //   3392: astore 4
-    //   3394: aload_2
-    //   3395: astore 18
-    //   3397: aload_3
-    //   3398: astore_2
-    //   3399: aload 18
-    //   3401: astore_3
-    //   3402: aload 17
-    //   3404: astore 18
-    //   3406: aload 15
-    //   3408: astore 19
-    //   3410: aload 4
-    //   3412: astore 20
-    //   3414: aload 19
-    //   3416: astore 24
-    //   3418: aload 18
-    //   3420: astore 21
-    //   3422: aload 16
-    //   3424: astore 17
-    //   3426: iload 5
-    //   3428: istore 6
-    //   3430: aload_3
-    //   3431: astore 15
-    //   3433: aload_2
-    //   3434: astore 4
-    //   3436: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3439: ifeq +62 -> 3501
-    //   3442: ldc_w 661
-    //   3445: iconst_2
-    //   3446: aload 20
-    //   3448: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3451: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3454: aload 19
-    //   3456: astore 24
-    //   3458: aload 18
-    //   3460: astore 21
-    //   3462: aload 16
-    //   3464: astore 17
-    //   3466: iload 5
-    //   3468: istore 6
-    //   3470: aload_3
-    //   3471: astore 15
-    //   3473: aload_2
-    //   3474: astore 4
-    //   3476: goto +25 -> 3501
-    //   3479: aload 15
-    //   3481: astore 24
-    //   3483: aload 4
-    //   3485: astore 21
-    //   3487: aload_3
-    //   3488: astore 4
-    //   3490: aload_2
-    //   3491: astore 15
-    //   3493: iload 5
-    //   3495: istore 6
-    //   3497: aload 16
-    //   3499: astore 17
-    //   3501: iload 8
-    //   3503: iconst_1
-    //   3504: iadd
-    //   3505: istore 8
-    //   3507: aload 17
-    //   3509: astore 16
-    //   3511: iload 6
-    //   3513: istore 5
-    //   3515: aload 15
-    //   3517: astore_2
-    //   3518: aload 4
-    //   3520: astore_3
-    //   3521: aload 24
-    //   3523: astore 15
-    //   3525: aload 21
-    //   3527: astore 4
-    //   3529: goto -1697 -> 1832
-    //   3532: aload 18
-    //   3534: astore_2
-    //   3535: new 595	java/util/ArrayList
-    //   3538: dup
-    //   3539: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   3542: astore 4
-    //   3544: aload_2
-    //   3545: astore_3
-    //   3546: aload 21
-    //   3548: getfield 1740	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
-    //   3551: ifnull +410 -> 3961
-    //   3554: aload_2
-    //   3555: astore_3
-    //   3556: aload 21
-    //   3558: getfield 1740	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
-    //   3561: invokevirtual 1525	java/util/ArrayList:size	()I
-    //   3564: ifle +397 -> 3961
-    //   3567: iconst_0
-    //   3568: istore 5
-    //   3570: aload_2
-    //   3571: astore_3
-    //   3572: iload 5
-    //   3574: aload 21
-    //   3576: getfield 1740	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
-    //   3579: invokevirtual 1525	java/util/ArrayList:size	()I
-    //   3582: if_icmpge +379 -> 3961
-    //   3585: aload 21
-    //   3587: getfield 1740	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
-    //   3590: iload 5
-    //   3592: invokevirtual 1526	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3595: checkcast 1567	[B
-    //   3598: astore_3
-    //   3599: aload_3
-    //   3600: ifnonnull +9 -> 3609
-    //   3603: iconst_0
+    //   1931: iadd
+    //   1932: iload 6
+    //   1934: if_icmplt +6 -> 1940
+    //   1937: goto +1535 -> 3472
+    //   1940: iload 7
+    //   1942: newarray byte
+    //   1944: astore 17
+    //   1946: aload 17
+    //   1948: iconst_0
+    //   1949: aload 18
+    //   1951: bipush 9
+    //   1953: iload 7
+    //   1955: invokestatic 1552	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
+    //   1958: new 1554	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm
+    //   1961: dup
+    //   1962: invokespecial 1555	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:<init>	()V
+    //   1965: astore 30
+    //   1967: aload 30
+    //   1969: aload 17
+    //   1971: invokevirtual 1556	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1974: pop
+    //   1975: aload 30
+    //   1977: getfield 1559	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1980: invokevirtual 381	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   1983: istore 10
+    //   1985: new 1561	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry
+    //   1988: dup
+    //   1989: invokespecial 1562	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:<init>	()V
+    //   1992: astore 24
+    //   1994: iload 10
+    //   1996: ifne +5232 -> 7228
+    //   1999: aload 24
+    //   2001: aload 30
+    //   2003: getfield 1566	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
+    //   2006: getfield 1571	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:strName	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2009: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2012: putfield 1573	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:strName	Ljava/lang/String;
+    //   2015: aload 24
+    //   2017: aload 30
+    //   2019: getfield 1566	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
+    //   2022: getfield 1576	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:strServiceUrl	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2025: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2028: putfield 1578	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:strServiceUrl	Ljava/lang/String;
+    //   2031: aload 24
+    //   2033: aload 30
+    //   2035: getfield 1581	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2038: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2041: putfield 1584	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:serviceType	I
+    //   2044: new 577	java/util/ArrayList
+    //   2047: dup
+    //   2048: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   2051: astore 31
+    //   2053: iconst_0
+    //   2054: istore 7
+    //   2056: aload 4
+    //   2058: astore 17
+    //   2060: aload 16
+    //   2062: astore 4
+    //   2064: iload 7
+    //   2066: aload 30
+    //   2068: getfield 1566	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
+    //   2071: getfield 1587	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:rptUiList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   2074: invokevirtual 1588	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   2077: if_icmpge +873 -> 2950
+    //   2080: aload 30
+    //   2082: getfield 1566	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:msg_rich_display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui;
+    //   2085: getfield 1587	com/tencent/pb/profilecard/SummaryCardBusiEntry$rich_ui:rptUiList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   2088: iload 7
+    //   2090: invokevirtual 1591	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   2093: checkcast 1593	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info
+    //   2096: astore 23
+    //   2098: new 1595	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem
+    //   2101: dup
+    //   2102: invokespecial 1596	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:<init>	()V
+    //   2105: astore 25
+    //   2107: aload 25
+    //   2109: aload 23
+    //   2111: getfield 1599	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strTitle	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2114: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2117: putfield 1601	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strTitle	Ljava/lang/String;
+    //   2120: aload 25
+    //   2122: aload 23
+    //   2124: getfield 1604	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strCoverUrl	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2127: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2130: putfield 1606	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strCoverUrl	Ljava/lang/String;
+    //   2133: aload 25
+    //   2135: aload 23
+    //   2137: getfield 1609	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strJmpUrl	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2140: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2143: putfield 1611	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strJmpUrl	Ljava/lang/String;
+    //   2146: aload 25
+    //   2148: aload 23
+    //   2150: getfield 1614	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strSubInfo	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2153: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2156: putfield 1616	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strSubInfo	Ljava/lang/String;
+    //   2159: aload 25
+    //   2161: aload 23
+    //   2163: getfield 1619	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strDesc	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2166: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2169: putfield 1621	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strDesc	Ljava/lang/String;
+    //   2172: aload 25
+    //   2174: aload 23
+    //   2176: getfield 1624	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:strTitleIconUrl	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   2179: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   2182: putfield 1626	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:strTitleIconUrl	Ljava/lang/String;
+    //   2185: aload 23
+    //   2187: getfield 1629	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   2190: astore 19
+    //   2192: aload 4
+    //   2194: astore 21
+    //   2196: iload 5
+    //   2198: istore 6
+    //   2200: aload_3
+    //   2201: astore 18
+    //   2203: aload_2
+    //   2204: astore 16
+    //   2206: aload 25
+    //   2208: aload 19
+    //   2210: invokevirtual 202	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   2213: putfield 1632	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:groupCode	J
+    //   2216: iload 5
+    //   2218: istore 6
+    //   2220: aload_3
+    //   2221: astore 18
+    //   2223: aload_2
+    //   2224: astore 16
+    //   2226: aload 25
+    //   2228: aload 24
+    //   2230: getfield 1584	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:serviceType	I
+    //   2233: putfield 1633	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:serviceType	I
+    //   2236: iload 5
+    //   2238: istore 6
+    //   2240: aload_3
+    //   2241: astore 18
+    //   2243: aload_2
+    //   2244: astore 16
+    //   2246: aload 23
+    //   2248: getfield 1636	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:rptGroupTagList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   2251: invokevirtual 1588	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   2254: ifle +4895 -> 7149
+    //   2257: iload 5
+    //   2259: istore 6
+    //   2261: aload_3
+    //   2262: astore 18
+    //   2264: aload_2
+    //   2265: astore 16
+    //   2267: new 577	java/util/ArrayList
+    //   2270: dup
+    //   2271: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   2274: astore 26
+    //   2276: iconst_0
+    //   2277: istore 9
+    //   2279: iload 5
+    //   2281: istore 6
+    //   2283: aload_3
+    //   2284: astore 18
+    //   2286: aload_2
+    //   2287: astore 16
+    //   2289: iload 9
+    //   2291: aload 23
+    //   2293: getfield 1636	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:rptGroupTagList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   2296: invokevirtual 1588	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   2299: if_icmpge +556 -> 2855
+    //   2302: iload 5
+    //   2304: istore 6
+    //   2306: aload_3
+    //   2307: astore 18
+    //   2309: aload_2
+    //   2310: astore 16
+    //   2312: aload 23
+    //   2314: getfield 1636	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui_info:rptGroupTagList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   2317: iload 9
+    //   2319: invokevirtual 1591	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   2322: checkcast 1638	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label
+    //   2325: astore 32
+    //   2327: iload 5
+    //   2329: istore 6
+    //   2331: aload_3
+    //   2332: astore 18
+    //   2334: aload_2
+    //   2335: astore 16
+    //   2337: new 1640	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel
+    //   2340: dup
+    //   2341: invokespecial 1641	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:<init>	()V
+    //   2344: astore 33
+    //   2346: iload 5
+    //   2348: istore 6
+    //   2350: aload 33
+    //   2352: aload 32
+    //   2354: getfield 1644	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:bytes_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   2357: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   2360: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   2363: putfield 1647	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:strWording	Ljava/lang/String;
+    //   2366: aload 32
+    //   2368: getfield 1650	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:uint32_label_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2371: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2374: istore 5
+    //   2376: aload_3
+    //   2377: astore 20
+    //   2379: aload_2
+    //   2380: astore 22
+    //   2382: iload 5
+    //   2384: i2l
+    //   2385: lstore 13
+    //   2387: aload 15
+    //   2389: astore 19
+    //   2391: aload 17
+    //   2393: astore 18
+    //   2395: aload 21
+    //   2397: astore 16
+    //   2399: iload 6
+    //   2401: istore 5
+    //   2403: aload 22
+    //   2405: astore_3
+    //   2406: aload 20
+    //   2408: astore_2
+    //   2409: aload 33
+    //   2411: lload 13
+    //   2413: putfield 1653	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:type	J
+    //   2416: aload 15
+    //   2418: astore 19
+    //   2420: aload 17
+    //   2422: astore 18
+    //   2424: aload 21
+    //   2426: astore 16
+    //   2428: iload 6
+    //   2430: istore 5
+    //   2432: aload 22
+    //   2434: astore_3
+    //   2435: aload 20
+    //   2437: astore_2
+    //   2438: aload 33
+    //   2440: aload 32
+    //   2442: getfield 1656	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:uint32_label_attr	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2445: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2448: i2l
+    //   2449: putfield 1659	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:attr	J
+    //   2452: aload 15
+    //   2454: astore 19
+    //   2456: aload 17
+    //   2458: astore 18
+    //   2460: aload 21
+    //   2462: astore 16
+    //   2464: iload 6
+    //   2466: istore 5
+    //   2468: aload 22
+    //   2470: astore_3
+    //   2471: aload 20
+    //   2473: astore_2
+    //   2474: new 1661	com/tencent/mobileqq/profilecard/entity/ProfileColor
+    //   2477: dup
+    //   2478: invokespecial 1662	com/tencent/mobileqq/profilecard/entity/ProfileColor:<init>	()V
+    //   2481: astore 34
+    //   2483: aload 15
+    //   2485: astore 19
+    //   2487: aload 17
+    //   2489: astore 18
+    //   2491: aload 21
+    //   2493: astore 16
+    //   2495: iload 6
+    //   2497: istore 5
+    //   2499: aload 22
+    //   2501: astore_3
+    //   2502: aload 20
+    //   2504: astore_2
+    //   2505: aload 34
+    //   2507: aload 32
+    //   2509: getfield 1666	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:edging_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
+    //   2512: getfield 1671	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_r	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2515: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2518: i2l
+    //   2519: putfield 1674	com/tencent/mobileqq/profilecard/entity/ProfileColor:red	J
+    //   2522: aload 15
+    //   2524: astore 19
+    //   2526: aload 17
+    //   2528: astore 18
+    //   2530: aload 21
+    //   2532: astore 16
+    //   2534: iload 6
+    //   2536: istore 5
+    //   2538: aload 22
+    //   2540: astore_3
+    //   2541: aload 20
+    //   2543: astore_2
+    //   2544: aload 34
+    //   2546: aload 32
+    //   2548: getfield 1666	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:edging_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
+    //   2551: getfield 1677	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_g	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2554: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2557: i2l
+    //   2558: putfield 1680	com/tencent/mobileqq/profilecard/entity/ProfileColor:green	J
+    //   2561: aload 15
+    //   2563: astore 19
+    //   2565: aload 17
+    //   2567: astore 18
+    //   2569: aload 21
+    //   2571: astore 16
+    //   2573: iload 6
+    //   2575: istore 5
+    //   2577: aload 22
+    //   2579: astore_3
+    //   2580: aload 20
+    //   2582: astore_2
+    //   2583: aload 34
+    //   2585: aload 32
+    //   2587: getfield 1666	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:edging_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
+    //   2590: getfield 1683	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_b	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2593: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2596: i2l
+    //   2597: putfield 1686	com/tencent/mobileqq/profilecard/entity/ProfileColor:blue	J
+    //   2600: aload 15
+    //   2602: astore 19
+    //   2604: aload 17
+    //   2606: astore 18
+    //   2608: aload 21
+    //   2610: astore 16
+    //   2612: iload 6
+    //   2614: istore 5
+    //   2616: aload 22
+    //   2618: astore_3
+    //   2619: aload 20
+    //   2621: astore_2
+    //   2622: aload 33
+    //   2624: aload 34
+    //   2626: putfield 1690	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:edgingColor	Lcom/tencent/mobileqq/profilecard/entity/ProfileColor;
+    //   2629: aload 15
+    //   2631: astore 19
+    //   2633: aload 17
+    //   2635: astore 18
+    //   2637: aload 21
+    //   2639: astore 16
+    //   2641: iload 6
+    //   2643: istore 5
+    //   2645: aload 22
+    //   2647: astore_3
+    //   2648: aload 20
+    //   2650: astore_2
+    //   2651: new 1661	com/tencent/mobileqq/profilecard/entity/ProfileColor
+    //   2654: dup
+    //   2655: invokespecial 1662	com/tencent/mobileqq/profilecard/entity/ProfileColor:<init>	()V
+    //   2658: astore 34
+    //   2660: aload 15
+    //   2662: astore 19
+    //   2664: aload 17
+    //   2666: astore 18
+    //   2668: aload 21
+    //   2670: astore 16
+    //   2672: iload 6
+    //   2674: istore 5
+    //   2676: aload 22
+    //   2678: astore_3
+    //   2679: aload 20
+    //   2681: astore_2
+    //   2682: aload 34
+    //   2684: aload 32
+    //   2686: getfield 1693	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:text_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
+    //   2689: getfield 1671	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_r	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2692: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2695: i2l
+    //   2696: putfield 1674	com/tencent/mobileqq/profilecard/entity/ProfileColor:red	J
+    //   2699: aload 15
+    //   2701: astore 19
+    //   2703: aload 17
+    //   2705: astore 18
+    //   2707: aload 21
+    //   2709: astore 16
+    //   2711: iload 6
+    //   2713: istore 5
+    //   2715: aload 22
+    //   2717: astore_3
+    //   2718: aload 20
+    //   2720: astore_2
+    //   2721: aload 34
+    //   2723: aload 32
+    //   2725: getfield 1693	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:text_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
+    //   2728: getfield 1677	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_g	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2731: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2734: i2l
+    //   2735: putfield 1680	com/tencent/mobileqq/profilecard/entity/ProfileColor:green	J
+    //   2738: aload 15
+    //   2740: astore 19
+    //   2742: aload 17
+    //   2744: astore 18
+    //   2746: aload 21
+    //   2748: astore 16
+    //   2750: iload 6
+    //   2752: istore 5
+    //   2754: aload 22
+    //   2756: astore_3
+    //   2757: aload 20
+    //   2759: astore_2
+    //   2760: aload 34
+    //   2762: aload 32
+    //   2764: getfield 1693	com/tencent/pb/profilecard/SummaryCardBusiEntry$Label:text_color	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$Color;
+    //   2767: getfield 1683	com/tencent/pb/profilecard/SummaryCardBusiEntry$Color:uint32_b	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2770: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2773: i2l
+    //   2774: putfield 1686	com/tencent/mobileqq/profilecard/entity/ProfileColor:blue	J
+    //   2777: aload 15
+    //   2779: astore 19
+    //   2781: aload 17
+    //   2783: astore 18
+    //   2785: aload 21
+    //   2787: astore 16
+    //   2789: iload 6
+    //   2791: istore 5
+    //   2793: aload 22
+    //   2795: astore_3
+    //   2796: aload 20
+    //   2798: astore_2
+    //   2799: aload 33
+    //   2801: aload 34
+    //   2803: putfield 1696	com/tencent/mobileqq/profilecard/entity/ProfileGroupLabel:textColor	Lcom/tencent/mobileqq/profilecard/entity/ProfileColor;
+    //   2806: aload 15
+    //   2808: astore 19
+    //   2810: aload 17
+    //   2812: astore 18
+    //   2814: aload 21
+    //   2816: astore 16
+    //   2818: iload 6
+    //   2820: istore 5
+    //   2822: aload 22
+    //   2824: astore_3
+    //   2825: aload 20
+    //   2827: astore_2
+    //   2828: aload 26
+    //   2830: aload 33
+    //   2832: invokevirtual 1697	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2835: pop
+    //   2836: iload 9
+    //   2838: iconst_1
+    //   2839: iadd
+    //   2840: istore 9
+    //   2842: iload 6
+    //   2844: istore 5
+    //   2846: aload 22
+    //   2848: astore_2
+    //   2849: aload 20
+    //   2851: astore_3
+    //   2852: goto -573 -> 2279
+    //   2855: iload 5
+    //   2857: istore 6
+    //   2859: aload_3
+    //   2860: astore 20
+    //   2862: aload_2
+    //   2863: astore 4
+    //   2865: aload 15
+    //   2867: astore 19
+    //   2869: aload 17
+    //   2871: astore 18
+    //   2873: aload 21
+    //   2875: astore 16
+    //   2877: iload 6
+    //   2879: istore 5
+    //   2881: aload 4
+    //   2883: astore_3
+    //   2884: aload 20
+    //   2886: astore_2
+    //   2887: aload 25
+    //   2889: aload 26
+    //   2891: putfield 1700	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesItem:labels	Ljava/util/ArrayList;
+    //   2894: goto +3 -> 2897
+    //   2897: aload 15
+    //   2899: astore 19
+    //   2901: aload 17
+    //   2903: astore 18
+    //   2905: aload 21
+    //   2907: astore 16
+    //   2909: iload 6
+    //   2911: istore 5
+    //   2913: aload 4
+    //   2915: astore_3
+    //   2916: aload 20
+    //   2918: astore_2
+    //   2919: aload 31
+    //   2921: aload 25
+    //   2923: invokevirtual 1697	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2926: pop
+    //   2927: iload 7
+    //   2929: iconst_1
+    //   2930: iadd
+    //   2931: istore 7
+    //   2933: iload 6
+    //   2935: istore 5
+    //   2937: aload 4
+    //   2939: astore_2
+    //   2940: aload 20
+    //   2942: astore_3
+    //   2943: aload 21
+    //   2945: astore 4
+    //   2947: goto -883 -> 2064
+    //   2950: iload 5
+    //   2952: istore 7
+    //   2954: aload_3
+    //   2955: astore 26
+    //   2957: aload_2
+    //   2958: astore 25
+    //   2960: aload 15
+    //   2962: astore 19
+    //   2964: aload 17
+    //   2966: astore 18
+    //   2968: aload 4
+    //   2970: astore 16
+    //   2972: iload 7
+    //   2974: istore 5
+    //   2976: aload 25
+    //   2978: astore_3
+    //   2979: aload 26
+    //   2981: astore_2
+    //   2982: aload 24
+    //   2984: aload 31
+    //   2986: putfield 1703	com/tencent/mobileqq/profilecard/entity/ProfileSummaryHobbiesEntry:sProfileSummaryHobbiesItem	Ljava/util/ArrayList;
+    //   2989: aload 15
+    //   2991: astore 20
+    //   2993: aload 17
+    //   2995: astore 22
+    //   2997: aload 4
+    //   2999: astore 23
+    //   3001: goto +3 -> 3004
+    //   3004: aload 20
+    //   3006: astore 19
+    //   3008: aload 22
+    //   3010: astore 18
+    //   3012: aload 23
+    //   3014: astore 16
+    //   3016: iload 7
+    //   3018: istore 5
+    //   3020: aload 25
+    //   3022: astore_3
+    //   3023: aload 26
+    //   3025: astore_2
+    //   3026: aload 29
+    //   3028: aload 24
+    //   3030: invokeinterface 619 2 0
+    //   3035: pop
+    //   3036: aload 20
+    //   3038: astore 19
+    //   3040: aload 22
+    //   3042: astore 18
+    //   3044: aload 23
+    //   3046: astore 16
+    //   3048: iload 7
+    //   3050: istore 5
+    //   3052: aload 25
+    //   3054: astore_3
+    //   3055: aload 26
+    //   3057: astore_2
+    //   3058: aload 20
+    //   3060: astore 24
+    //   3062: aload 22
+    //   3064: astore 21
+    //   3066: aload 23
+    //   3068: astore 17
+    //   3070: iload 7
+    //   3072: istore 6
+    //   3074: aload 25
+    //   3076: astore 15
+    //   3078: aload 26
+    //   3080: astore 4
+    //   3082: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3085: ifeq +409 -> 3494
+    //   3088: aload 20
+    //   3090: astore 19
+    //   3092: aload 22
+    //   3094: astore 18
+    //   3096: aload 23
+    //   3098: astore 16
+    //   3100: iload 7
+    //   3102: istore 5
+    //   3104: aload 25
+    //   3106: astore_3
+    //   3107: aload 26
+    //   3109: astore_2
+    //   3110: new 68	java/lang/StringBuilder
+    //   3113: dup
+    //   3114: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3117: astore 4
+    //   3119: aload 20
+    //   3121: astore 19
+    //   3123: aload 22
+    //   3125: astore 18
+    //   3127: aload 23
+    //   3129: astore 16
+    //   3131: iload 7
+    //   3133: istore 5
+    //   3135: aload 25
+    //   3137: astore_3
+    //   3138: aload 26
+    //   3140: astore_2
+    //   3141: aload 4
+    //   3143: ldc_w 1705
+    //   3146: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3149: pop
+    //   3150: aload 20
+    //   3152: astore 19
+    //   3154: aload 22
+    //   3156: astore 18
+    //   3158: aload 23
+    //   3160: astore 16
+    //   3162: iload 7
+    //   3164: istore 5
+    //   3166: aload 25
+    //   3168: astore_3
+    //   3169: aload 26
+    //   3171: astore_2
+    //   3172: aload 4
+    //   3174: aload 30
+    //   3176: getfield 1581	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   3179: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   3182: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3185: pop
+    //   3186: aload 20
+    //   3188: astore 19
+    //   3190: aload 22
+    //   3192: astore 18
+    //   3194: aload 23
+    //   3196: astore 16
+    //   3198: iload 7
+    //   3200: istore 5
+    //   3202: aload 25
+    //   3204: astore_3
+    //   3205: aload 26
+    //   3207: astore_2
+    //   3208: aload 4
+    //   3210: ldc_w 1707
+    //   3213: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3216: pop
+    //   3217: aload 20
+    //   3219: astore 19
+    //   3221: aload 22
+    //   3223: astore 18
+    //   3225: aload 23
+    //   3227: astore 16
+    //   3229: iload 7
+    //   3231: istore 5
+    //   3233: aload 25
+    //   3235: astore_3
+    //   3236: aload 26
+    //   3238: astore_2
+    //   3239: aload 4
+    //   3241: iload 10
+    //   3243: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3246: pop
+    //   3247: aload 20
+    //   3249: astore 19
+    //   3251: aload 22
+    //   3253: astore 18
+    //   3255: aload 23
+    //   3257: astore 16
+    //   3259: iload 7
+    //   3261: istore 5
+    //   3263: aload 25
+    //   3265: astore_3
+    //   3266: aload 26
+    //   3268: astore_2
+    //   3269: aload 4
+    //   3271: ldc_w 1709
+    //   3274: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3277: pop
+    //   3278: aload 20
+    //   3280: astore 19
+    //   3282: aload 22
+    //   3284: astore 18
+    //   3286: aload 23
+    //   3288: astore 16
+    //   3290: iload 7
+    //   3292: istore 5
+    //   3294: aload 25
+    //   3296: astore_3
+    //   3297: aload 26
+    //   3299: astore_2
+    //   3300: aload 4
+    //   3302: aload 30
+    //   3304: getfield 1712	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3307: invokevirtual 1412	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3310: pop
+    //   3311: aload 20
+    //   3313: astore 19
+    //   3315: aload 22
+    //   3317: astore 18
+    //   3319: aload 23
+    //   3321: astore 16
+    //   3323: iload 7
+    //   3325: istore 5
+    //   3327: aload 25
+    //   3329: astore_3
+    //   3330: aload 26
+    //   3332: astore_2
+    //   3333: ldc_w 639
+    //   3336: iconst_2
+    //   3337: aload 4
+    //   3339: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3342: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3345: aload 20
+    //   3347: astore 24
+    //   3349: aload 22
+    //   3351: astore 21
+    //   3353: aload 23
+    //   3355: astore 17
+    //   3357: iload 7
+    //   3359: istore 6
+    //   3361: aload 25
+    //   3363: astore 15
+    //   3365: aload 26
+    //   3367: astore 4
+    //   3369: goto +125 -> 3494
+    //   3372: astore 20
+    //   3374: goto +33 -> 3407
+    //   3377: astore 18
+    //   3379: aload 4
+    //   3381: astore 17
+    //   3383: aload 18
+    //   3385: astore 4
+    //   3387: aload_2
+    //   3388: astore 18
+    //   3390: aload_3
+    //   3391: astore_2
+    //   3392: aload 18
+    //   3394: astore_3
+    //   3395: aload 17
+    //   3397: astore 18
+    //   3399: aload 15
+    //   3401: astore 19
+    //   3403: aload 4
+    //   3405: astore 20
+    //   3407: aload 19
+    //   3409: astore 24
+    //   3411: aload 18
+    //   3413: astore 21
+    //   3415: aload 16
+    //   3417: astore 17
+    //   3419: iload 5
+    //   3421: istore 6
+    //   3423: aload_3
+    //   3424: astore 15
+    //   3426: aload_2
+    //   3427: astore 4
+    //   3429: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3432: ifeq +62 -> 3494
+    //   3435: ldc_w 639
+    //   3438: iconst_2
+    //   3439: aload 20
+    //   3441: invokevirtual 707	java/lang/Exception:toString	()Ljava/lang/String;
+    //   3444: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3447: aload 19
+    //   3449: astore 24
+    //   3451: aload 18
+    //   3453: astore 21
+    //   3455: aload 16
+    //   3457: astore 17
+    //   3459: iload 5
+    //   3461: istore 6
+    //   3463: aload_3
+    //   3464: astore 15
+    //   3466: aload_2
+    //   3467: astore 4
+    //   3469: goto +25 -> 3494
+    //   3472: aload 15
+    //   3474: astore 24
+    //   3476: aload 4
+    //   3478: astore 21
+    //   3480: aload_3
+    //   3481: astore 4
+    //   3483: aload_2
+    //   3484: astore 15
+    //   3486: iload 5
+    //   3488: istore 6
+    //   3490: aload 16
+    //   3492: astore 17
+    //   3494: iload 8
+    //   3496: iconst_1
+    //   3497: iadd
+    //   3498: istore 8
+    //   3500: aload 17
+    //   3502: astore 16
+    //   3504: iload 6
+    //   3506: istore 5
+    //   3508: aload 15
+    //   3510: astore_2
+    //   3511: aload 4
+    //   3513: astore_3
+    //   3514: aload 24
+    //   3516: astore 15
+    //   3518: aload 21
+    //   3520: astore 4
+    //   3522: goto -1697 -> 1825
+    //   3525: aload 18
+    //   3527: astore_2
+    //   3528: new 577	java/util/ArrayList
+    //   3531: dup
+    //   3532: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   3535: astore 4
+    //   3537: aload_2
+    //   3538: astore_3
+    //   3539: aload 21
+    //   3541: getfield 1715	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
+    //   3544: ifnull +410 -> 3954
+    //   3547: aload_2
+    //   3548: astore_3
+    //   3549: aload 21
+    //   3551: getfield 1715	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
+    //   3554: invokevirtual 1500	java/util/ArrayList:size	()I
+    //   3557: ifle +397 -> 3954
+    //   3560: iconst_0
+    //   3561: istore 5
+    //   3563: aload_2
+    //   3564: astore_3
+    //   3565: iload 5
+    //   3567: aload 21
+    //   3569: getfield 1715	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
+    //   3572: invokevirtual 1500	java/util/ArrayList:size	()I
+    //   3575: if_icmpge +379 -> 3954
+    //   3578: aload 21
+    //   3580: getfield 1715	SummaryCard/RespSummaryCard:vvRespServices	Ljava/util/ArrayList;
+    //   3583: iload 5
+    //   3585: invokevirtual 1501	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3588: checkcast 1542	[B
+    //   3591: astore_3
+    //   3592: aload_3
+    //   3593: ifnonnull +9 -> 3602
+    //   3596: iconst_0
+    //   3597: istore 7
+    //   3599: goto +7 -> 3606
+    //   3602: aload_3
+    //   3603: arraylength
     //   3604: istore 7
-    //   3606: goto +7 -> 3613
-    //   3609: aload_3
-    //   3610: arraylength
-    //   3611: istore 7
-    //   3613: iload 7
-    //   3615: bipush 10
-    //   3617: if_icmpgt +6 -> 3623
-    //   3620: goto +332 -> 3952
-    //   3623: aload_3
-    //   3624: iconst_1
-    //   3625: invokestatic 1573	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
-    //   3628: l2i
-    //   3629: istore 8
-    //   3631: aload_3
-    //   3632: iconst_5
-    //   3633: invokestatic 1573	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
-    //   3636: pop2
+    //   3606: iload 7
+    //   3608: bipush 10
+    //   3610: if_icmpgt +6 -> 3616
+    //   3613: goto +332 -> 3945
+    //   3616: aload_3
+    //   3617: iconst_1
+    //   3618: invokestatic 1548	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
+    //   3621: l2i
+    //   3622: istore 8
+    //   3624: aload_3
+    //   3625: iconst_5
+    //   3626: invokestatic 1548	com/tencent/mobileqq/utils/httputils/PkgTools:getLongData	([BI)J
+    //   3629: pop2
+    //   3630: iload 8
+    //   3632: ifle +313 -> 3945
+    //   3635: bipush 9
     //   3637: iload 8
-    //   3639: ifle +313 -> 3952
-    //   3642: bipush 9
-    //   3644: iload 8
-    //   3646: iadd
-    //   3647: iload 7
-    //   3649: if_icmplt +6 -> 3655
-    //   3652: goto +300 -> 3952
-    //   3655: iload 8
-    //   3657: newarray byte
-    //   3659: astore 15
-    //   3661: aload 15
-    //   3663: iconst_0
-    //   3664: aload_3
-    //   3665: bipush 9
-    //   3667: iload 8
-    //   3669: invokestatic 1577	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
-    //   3672: new 1579	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm
-    //   3675: dup
-    //   3676: invokespecial 1580	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:<init>	()V
-    //   3679: astore_3
+    //   3639: iadd
+    //   3640: iload 7
+    //   3642: if_icmplt +6 -> 3648
+    //   3645: goto +300 -> 3945
+    //   3648: iload 8
+    //   3650: newarray byte
+    //   3652: astore 15
+    //   3654: aload 15
+    //   3656: iconst_0
+    //   3657: aload_3
+    //   3658: bipush 9
+    //   3660: iload 8
+    //   3662: invokestatic 1552	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
+    //   3665: new 1554	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm
+    //   3668: dup
+    //   3669: invokespecial 1555	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:<init>	()V
+    //   3672: astore_3
+    //   3673: aload_3
+    //   3674: aload 15
+    //   3676: invokevirtual 1556	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3679: pop
     //   3680: aload_3
-    //   3681: aload 15
-    //   3683: invokevirtual 1581	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3686: pop
-    //   3687: aload_3
-    //   3688: getfield 1584	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   3691: invokevirtual 445	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   3694: istore 7
-    //   3696: iload 7
-    //   3698: ifne +141 -> 3839
-    //   3701: new 1742	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry
-    //   3704: dup
-    //   3705: invokespecial 1743	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:<init>	()V
-    //   3708: astore 15
-    //   3710: aload 15
-    //   3712: aload_3
-    //   3713: getfield 1606	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   3716: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   3719: putfield 1746	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:nBusiEntryType	I
-    //   3722: aload_3
-    //   3723: getfield 1750	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
-    //   3726: ifnull +66 -> 3792
-    //   3729: aload 15
-    //   3731: aload_3
-    //   3732: getfield 1750	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
-    //   3735: getfield 1755	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3738: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3741: putfield 1758	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strLogoUrl	Ljava/lang/String;
-    //   3744: aload 15
-    //   3746: aload_3
-    //   3747: getfield 1750	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
-    //   3750: getfield 1761	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:title	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3753: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3756: putfield 1762	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strTitle	Ljava/lang/String;
-    //   3759: aload 15
-    //   3761: aload_3
-    //   3762: getfield 1750	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
-    //   3765: getfield 1765	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:content	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3768: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3771: putfield 1768	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strContent	Ljava/lang/String;
-    //   3774: aload 15
-    //   3776: aload_3
-    //   3777: getfield 1750	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
-    //   3780: getfield 1771	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:jump_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3783: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3786: putfield 1772	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strJumpUrl	Ljava/lang/String;
-    //   3789: goto +29 -> 3818
-    //   3792: aload_2
-    //   3793: astore_3
-    //   3794: aload 15
-    //   3796: aload_3
-    //   3797: putfield 1758	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strLogoUrl	Ljava/lang/String;
-    //   3800: aload 15
-    //   3802: aload_3
-    //   3803: putfield 1762	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strTitle	Ljava/lang/String;
-    //   3806: aload 15
-    //   3808: aload_3
-    //   3809: putfield 1768	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strContent	Ljava/lang/String;
-    //   3812: aload 15
-    //   3814: aload_3
-    //   3815: putfield 1772	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strJumpUrl	Ljava/lang/String;
-    //   3818: aload 15
-    //   3820: invokevirtual 1775	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:isEmpty	()Z
-    //   3823: ifne +129 -> 3952
-    //   3826: aload 4
-    //   3828: aload 15
-    //   3830: invokeinterface 637 2 0
-    //   3835: pop
-    //   3836: goto +116 -> 3952
-    //   3839: invokestatic 657	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   3842: ifeq +110 -> 3952
-    //   3845: new 167	java/lang/StringBuilder
-    //   3848: dup
-    //   3849: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   3852: astore 15
-    //   3854: aload 15
-    //   3856: ldc_w 1777
-    //   3859: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3862: pop
-    //   3863: aload 15
-    //   3865: aload_3
-    //   3866: getfield 1606	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   3869: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   3872: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3875: pop
-    //   3876: aload 15
-    //   3878: ldc_w 1779
-    //   3881: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3884: pop
-    //   3885: aload 15
-    //   3887: iload 7
-    //   3889: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3892: pop
-    //   3893: aload 15
-    //   3895: ldc_w 1779
-    //   3898: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3901: pop
-    //   3902: aload 15
-    //   3904: aload_3
-    //   3905: getfield 1737	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3908: invokevirtual 1437	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3911: pop
-    //   3912: ldc_w 661
-    //   3915: iconst_4
-    //   3916: aload 15
-    //   3918: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3921: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3924: goto +28 -> 3952
-    //   3927: astore_3
-    //   3928: goto +4 -> 3932
-    //   3931: astore_3
-    //   3932: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3935: ifeq +17 -> 3952
-    //   3938: ldc_w 661
-    //   3941: iconst_2
-    //   3942: aload_3
-    //   3943: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3946: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3949: goto +3 -> 3952
-    //   3952: iload 5
-    //   3954: iconst_1
-    //   3955: iadd
-    //   3956: istore 5
-    //   3958: goto -388 -> 3570
-    //   3961: aload 20
-    //   3963: aload 4
-    //   3965: invokevirtual 1783	com/tencent/mobileqq/data/NearbyPeopleCard:saveBusiEntrys	(Ljava/util/List;)V
-    //   3968: aload 21
-    //   3970: getfield 1787	SummaryCard/RespSummaryCard:stInterestTag	LSummaryCard/InterestTagInfo;
-    //   3973: ifnonnull +22 -> 3995
-    //   3976: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3979: ifeq +82 -> 4061
-    //   3982: ldc_w 661
-    //   3985: iconst_2
-    //   3986: ldc_w 731
-    //   3989: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3992: goto +69 -> 4061
-    //   3995: aload 21
-    //   3997: getfield 1787	SummaryCard/RespSummaryCard:stInterestTag	LSummaryCard/InterestTagInfo;
-    //   4000: getfield 1792	SummaryCard/InterestTagInfo:uFlag	J
-    //   4003: lstore 13
-    //   4005: new 710	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody
-    //   4008: dup
-    //   4009: invokespecial 711	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody:<init>	()V
-    //   4012: astore_2
-    //   4013: aload_2
-    //   4014: aload 21
-    //   4016: getfield 1787	SummaryCard/RespSummaryCard:stInterestTag	LSummaryCard/InterestTagInfo;
-    //   4019: getfield 1793	SummaryCard/InterestTagInfo:vGiftInfo	[B
-    //   4022: invokevirtual 715	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4025: pop
-    //   4026: aload 20
-    //   4028: lload 13
-    //   4030: aload_2
-    //   4031: getfield 719	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody:msg_interest_tags	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   4034: invokevirtual 722	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   4037: invokevirtual 726	com/tencent/mobileqq/data/NearbyPeopleCard:updateInterestTags	(JLjava/util/List;)V
-    //   4040: goto +21 -> 4061
-    //   4043: astore_2
-    //   4044: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4047: ifeq +14 -> 4061
-    //   4050: ldc_w 728
-    //   4053: iconst_2
-    //   4054: aload_2
-    //   4055: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
-    //   4058: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4061: aload 21
-    //   4063: getfield 1796	SummaryCard/RespSummaryCard:vHotChatInfo	[B
-    //   4066: ifnull +243 -> 4309
-    //   4069: new 1798	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody
-    //   4072: dup
-    //   4073: invokespecial 1799	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody:<init>	()V
-    //   4076: astore_2
-    //   4077: aload_2
-    //   4078: aload 21
-    //   4080: getfield 1796	SummaryCard/RespSummaryCard:vHotChatInfo	[B
-    //   4083: invokevirtual 1800	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4086: pop
-    //   4087: goto +23 -> 4110
-    //   4090: astore 4
-    //   4092: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4095: ifeq +15 -> 4110
-    //   4098: ldc_w 661
-    //   4101: iconst_2
-    //   4102: aload 4
-    //   4104: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
-    //   4107: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4110: aload_2
-    //   4111: getfield 1803	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody:rpt_msg_wifi_poi_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   4114: invokevirtual 722	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   4117: astore_2
-    //   4118: new 595	java/util/ArrayList
-    //   4121: dup
-    //   4122: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   4125: astore 4
-    //   4127: aload_2
-    //   4128: ifnull +66 -> 4194
+    //   3681: getfield 1559	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   3684: invokevirtual 381	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   3687: istore 7
+    //   3689: iload 7
+    //   3691: ifne +141 -> 3832
+    //   3694: new 1717	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry
+    //   3697: dup
+    //   3698: invokespecial 1718	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:<init>	()V
+    //   3701: astore 15
+    //   3703: aload 15
+    //   3705: aload_3
+    //   3706: getfield 1581	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   3709: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   3712: putfield 1721	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:nBusiEntryType	I
+    //   3715: aload_3
+    //   3716: getfield 1725	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
+    //   3719: ifnull +66 -> 3785
+    //   3722: aload 15
+    //   3724: aload_3
+    //   3725: getfield 1725	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
+    //   3728: getfield 1730	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3731: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3734: putfield 1733	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strLogoUrl	Ljava/lang/String;
+    //   3737: aload 15
+    //   3739: aload_3
+    //   3740: getfield 1725	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
+    //   3743: getfield 1736	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:title	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3746: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3749: putfield 1737	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strTitle	Ljava/lang/String;
+    //   3752: aload 15
+    //   3754: aload_3
+    //   3755: getfield 1725	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
+    //   3758: getfield 1740	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:content	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3761: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3764: putfield 1743	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strContent	Ljava/lang/String;
+    //   3767: aload 15
+    //   3769: aload_3
+    //   3770: getfield 1725	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:display	Lcom/tencent/pb/profilecard/SummaryCardBusiEntry$ui;
+    //   3773: getfield 1746	com/tencent/pb/profilecard/SummaryCardBusiEntry$ui:jump_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3776: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3779: putfield 1747	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strJumpUrl	Ljava/lang/String;
+    //   3782: goto +29 -> 3811
+    //   3785: aload_2
+    //   3786: astore_3
+    //   3787: aload 15
+    //   3789: aload_3
+    //   3790: putfield 1733	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strLogoUrl	Ljava/lang/String;
+    //   3793: aload 15
+    //   3795: aload_3
+    //   3796: putfield 1737	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strTitle	Ljava/lang/String;
+    //   3799: aload 15
+    //   3801: aload_3
+    //   3802: putfield 1743	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strContent	Ljava/lang/String;
+    //   3805: aload 15
+    //   3807: aload_3
+    //   3808: putfield 1747	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:strJumpUrl	Ljava/lang/String;
+    //   3811: aload 15
+    //   3813: invokevirtual 1750	com/tencent/mobileqq/profilecard/entity/ProfileBusiEntry:isEmpty	()Z
+    //   3816: ifne +129 -> 3945
+    //   3819: aload 4
+    //   3821: aload 15
+    //   3823: invokeinterface 619 2 0
+    //   3828: pop
+    //   3829: goto +116 -> 3945
+    //   3832: invokestatic 635	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   3835: ifeq +110 -> 3945
+    //   3838: new 68	java/lang/StringBuilder
+    //   3841: dup
+    //   3842: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3845: astore 15
+    //   3847: aload 15
+    //   3849: ldc_w 1752
+    //   3852: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3855: pop
+    //   3856: aload 15
+    //   3858: aload_3
+    //   3859: getfield 1581	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:service	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   3862: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   3865: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3868: pop
+    //   3869: aload 15
+    //   3871: ldc_w 1754
+    //   3874: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3877: pop
+    //   3878: aload 15
+    //   3880: iload 7
+    //   3882: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3885: pop
+    //   3886: aload 15
+    //   3888: ldc_w 1754
+    //   3891: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3894: pop
+    //   3895: aload 15
+    //   3897: aload_3
+    //   3898: getfield 1712	com/tencent/pb/profilecard/SummaryCardBusiEntry$comm:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3901: invokevirtual 1412	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3904: pop
+    //   3905: ldc_w 639
+    //   3908: iconst_4
+    //   3909: aload 15
+    //   3911: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3914: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3917: goto +28 -> 3945
+    //   3920: astore_3
+    //   3921: goto +4 -> 3925
+    //   3924: astore_3
+    //   3925: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3928: ifeq +17 -> 3945
+    //   3931: ldc_w 639
+    //   3934: iconst_2
+    //   3935: aload_3
+    //   3936: invokevirtual 707	java/lang/Exception:toString	()Ljava/lang/String;
+    //   3939: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3942: goto +3 -> 3945
+    //   3945: iload 5
+    //   3947: iconst_1
+    //   3948: iadd
+    //   3949: istore 5
+    //   3951: goto -388 -> 3563
+    //   3954: aload 20
+    //   3956: aload 4
+    //   3958: invokevirtual 1758	com/tencent/mobileqq/data/NearbyPeopleCard:saveBusiEntrys	(Ljava/util/List;)V
+    //   3961: aload 21
+    //   3963: getfield 1762	SummaryCard/RespSummaryCard:stInterestTag	LSummaryCard/InterestTagInfo;
+    //   3966: ifnonnull +22 -> 3988
+    //   3969: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3972: ifeq +82 -> 4054
+    //   3975: ldc_w 639
+    //   3978: iconst_2
+    //   3979: ldc_w 709
+    //   3982: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3985: goto +69 -> 4054
+    //   3988: aload 21
+    //   3990: getfield 1762	SummaryCard/RespSummaryCard:stInterestTag	LSummaryCard/InterestTagInfo;
+    //   3993: getfield 1767	SummaryCard/InterestTagInfo:uFlag	J
+    //   3996: lstore 13
+    //   3998: new 688	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody
+    //   4001: dup
+    //   4002: invokespecial 689	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody:<init>	()V
+    //   4005: astore_2
+    //   4006: aload_2
+    //   4007: aload 21
+    //   4009: getfield 1762	SummaryCard/RespSummaryCard:stInterestTag	LSummaryCard/InterestTagInfo;
+    //   4012: getfield 1768	SummaryCard/InterestTagInfo:vGiftInfo	[B
+    //   4015: invokevirtual 693	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4018: pop
+    //   4019: aload 20
+    //   4021: lload 13
+    //   4023: aload_2
+    //   4024: getfield 697	tencent/im/oidb/cmd0x9c5/cmd0x9c5$RspBody:msg_interest_tags	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   4027: invokevirtual 700	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   4030: invokevirtual 704	com/tencent/mobileqq/data/NearbyPeopleCard:updateInterestTags	(JLjava/util/List;)V
+    //   4033: goto +21 -> 4054
+    //   4036: astore_2
+    //   4037: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4040: ifeq +14 -> 4054
+    //   4043: ldc_w 706
+    //   4046: iconst_2
+    //   4047: aload_2
+    //   4048: invokevirtual 707	java/lang/Exception:toString	()Ljava/lang/String;
+    //   4051: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4054: aload 21
+    //   4056: getfield 1771	SummaryCard/RespSummaryCard:vHotChatInfo	[B
+    //   4059: ifnull +243 -> 4302
+    //   4062: new 1773	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody
+    //   4065: dup
+    //   4066: invokespecial 1774	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody:<init>	()V
+    //   4069: astore_2
+    //   4070: aload_2
+    //   4071: aload 21
+    //   4073: getfield 1771	SummaryCard/RespSummaryCard:vHotChatInfo	[B
+    //   4076: invokevirtual 1775	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4079: pop
+    //   4080: goto +23 -> 4103
+    //   4083: astore 4
+    //   4085: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4088: ifeq +15 -> 4103
+    //   4091: ldc_w 639
+    //   4094: iconst_2
+    //   4095: aload 4
+    //   4097: invokevirtual 707	java/lang/Exception:toString	()Ljava/lang/String;
+    //   4100: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4103: aload_2
+    //   4104: getfield 1778	tencent/im/oidb/hotchat/GetJoinedHotChatList$RspBody:rpt_msg_wifi_poi_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   4107: invokevirtual 700	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   4110: astore_2
+    //   4111: new 577	java/util/ArrayList
+    //   4114: dup
+    //   4115: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   4118: astore 4
+    //   4120: aload_2
+    //   4121: ifnull +66 -> 4187
+    //   4124: aload_2
+    //   4125: invokeinterface 1178 1 0
+    //   4130: astore_2
     //   4131: aload_2
-    //   4132: invokeinterface 1203 1 0
-    //   4137: astore_2
-    //   4138: aload_2
-    //   4139: invokeinterface 1208 1 0
-    //   4144: ifeq +50 -> 4194
-    //   4147: aload_2
-    //   4148: invokeinterface 1212 1 0
-    //   4153: checkcast 1805	tencent/im/oidb/hotchat/Common$WifiPOIInfo
-    //   4156: astore 15
-    //   4158: aload 15
-    //   4160: getfield 1808	tencent/im/oidb/hotchat/Common$WifiPOIInfo:uint32_wifi_poi_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4163: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4166: iconst_1
-    //   4167: if_icmpne +8 -> 4175
-    //   4170: iconst_1
-    //   4171: istore_1
-    //   4172: goto +5 -> 4177
-    //   4175: iconst_0
-    //   4176: istore_1
-    //   4177: aload 4
-    //   4179: aload 15
-    //   4181: iload_1
-    //   4182: invokestatic 1814	com/tencent/mobileqq/data/HotChatInfo:createHotChat	(Ltencent/im/oidb/hotchat/Common$WifiPOIInfo;Z)Lcom/tencent/mobileqq/data/HotChatInfo;
-    //   4185: invokeinterface 637 2 0
-    //   4190: pop
-    //   4191: goto -53 -> 4138
-    //   4194: aload 4
-    //   4196: invokeinterface 627 1 0
-    //   4201: ifle +47 -> 4248
-    //   4204: iconst_0
-    //   4205: istore 5
-    //   4207: iload 5
-    //   4209: aload 4
-    //   4211: invokeinterface 627 1 0
-    //   4216: if_icmpge +32 -> 4248
-    //   4219: aload 4
-    //   4221: iload 5
-    //   4223: invokeinterface 630 2 0
-    //   4228: checkcast 1810	com/tencent/mobileqq/data/HotChatInfo
-    //   4231: astore_2
-    //   4232: aload_2
-    //   4233: ifnull +6 -> 4239
-    //   4236: goto +14 -> 4250
-    //   4239: iload 5
-    //   4241: iconst_1
-    //   4242: iadd
-    //   4243: istore 5
-    //   4245: goto -38 -> 4207
-    //   4248: aconst_null
-    //   4249: astore_2
-    //   4250: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4253: ifeq +43 -> 4296
-    //   4256: new 167	java/lang/StringBuilder
-    //   4259: dup
-    //   4260: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   4263: astore 4
-    //   4265: aload 4
-    //   4267: ldc_w 1816
-    //   4270: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4132: invokeinterface 1183 1 0
+    //   4137: ifeq +50 -> 4187
+    //   4140: aload_2
+    //   4141: invokeinterface 1187 1 0
+    //   4146: checkcast 1780	tencent/im/oidb/hotchat/Common$WifiPOIInfo
+    //   4149: astore 15
+    //   4151: aload 15
+    //   4153: getfield 1783	tencent/im/oidb/hotchat/Common$WifiPOIInfo:uint32_wifi_poi_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4156: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4159: iconst_1
+    //   4160: if_icmpne +8 -> 4168
+    //   4163: iconst_1
+    //   4164: istore_1
+    //   4165: goto +5 -> 4170
+    //   4168: iconst_0
+    //   4169: istore_1
+    //   4170: aload 4
+    //   4172: aload 15
+    //   4174: iload_1
+    //   4175: invokestatic 1789	com/tencent/mobileqq/data/HotChatInfo:createHotChat	(Ltencent/im/oidb/hotchat/Common$WifiPOIInfo;Z)Lcom/tencent/mobileqq/data/HotChatInfo;
+    //   4178: invokeinterface 619 2 0
+    //   4183: pop
+    //   4184: goto -53 -> 4131
+    //   4187: aload 4
+    //   4189: invokeinterface 609 1 0
+    //   4194: ifle +47 -> 4241
+    //   4197: iconst_0
+    //   4198: istore 5
+    //   4200: iload 5
+    //   4202: aload 4
+    //   4204: invokeinterface 609 1 0
+    //   4209: if_icmpge +32 -> 4241
+    //   4212: aload 4
+    //   4214: iload 5
+    //   4216: invokeinterface 612 2 0
+    //   4221: checkcast 1785	com/tencent/mobileqq/data/HotChatInfo
+    //   4224: astore_2
+    //   4225: aload_2
+    //   4226: ifnull +6 -> 4232
+    //   4229: goto +14 -> 4243
+    //   4232: iload 5
+    //   4234: iconst_1
+    //   4235: iadd
+    //   4236: istore 5
+    //   4238: goto -38 -> 4200
+    //   4241: aconst_null
+    //   4242: astore_2
+    //   4243: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4246: ifeq +43 -> 4289
+    //   4249: new 68	java/lang/StringBuilder
+    //   4252: dup
+    //   4253: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   4256: astore 4
+    //   4258: aload 4
+    //   4260: ldc_w 1791
+    //   4263: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4266: pop
+    //   4267: aload 4
+    //   4269: aload_2
+    //   4270: invokevirtual 1412	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   4273: pop
-    //   4274: aload 4
-    //   4276: aload_2
-    //   4277: invokevirtual 1437	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   4280: pop
-    //   4281: ldc_w 661
-    //   4284: iconst_2
-    //   4285: aload 4
-    //   4287: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4290: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4293: goto +3 -> 4296
-    //   4296: aload_2
-    //   4297: ifnull +28 -> 4325
-    //   4300: aload 20
-    //   4302: aload_2
-    //   4303: invokevirtual 1820	com/tencent/mobileqq/data/NearbyPeopleCard:updateHotChatInfo	(Lcom/tencent/mobileqq/data/HotChatInfo;)V
-    //   4306: goto +19 -> 4325
-    //   4309: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4312: ifeq +13 -> 4325
-    //   4315: ldc_w 661
-    //   4318: iconst_2
-    //   4319: ldc_w 1822
-    //   4322: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4325: aload 20
-    //   4327: getfield 504	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyInfo	[B
-    //   4330: ifnull +1223 -> 5553
-    //   4333: new 777	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody
-    //   4336: dup
-    //   4337: invokespecial 778	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:<init>	()V
-    //   4340: astore 4
-    //   4342: aload 4
-    //   4344: aload 20
-    //   4346: getfield 504	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyInfo	[B
-    //   4349: invokevirtual 779	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4352: pop
-    //   4353: iload 6
-    //   4355: istore 5
-    //   4357: iload 5
-    //   4359: bipush 51
-    //   4361: if_icmpne +84 -> 4445
-    //   4364: aload 4
-    //   4366: getfield 782	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4369: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4372: iconst_1
-    //   4373: if_icmpne +2889 -> 7262
-    //   4376: iconst_1
-    //   4377: istore_1
-    //   4378: goto +3 -> 4381
-    //   4381: aload 20
-    //   4383: iload_1
-    //   4384: putfield 362	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendMsgForTribar	Z
-    //   4387: aload 4
-    //   4389: getfield 785	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_gift	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4392: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4395: iconst_1
-    //   4396: if_icmpne +2871 -> 7267
-    //   4399: iconst_1
-    //   4400: istore_1
-    //   4401: goto +3 -> 4404
-    //   4404: aload 20
-    //   4406: iload_1
-    //   4407: putfield 349	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendGiftMsgForTribar	Z
-    //   4410: aload 20
-    //   4412: aload 4
-    //   4414: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4417: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4420: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4423: putfield 374	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendMsgBtnTipsForTribar	Ljava/lang/String;
-    //   4426: aload 20
-    //   4428: aload 4
-    //   4430: getfield 791	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_gift_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4433: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4436: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4439: putfield 368	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendGiftBtnTipsForTribar	Ljava/lang/String;
-    //   4442: goto +91 -> 4533
-    //   4445: aload 20
-    //   4447: aload 4
-    //   4449: getfield 782	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4452: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4455: putfield 356	com/tencent/mobileqq/data/NearbyPeopleCard:maskMsgFlag	I
-    //   4458: aload 20
-    //   4460: getfield 356	com/tencent/mobileqq/data/NearbyPeopleCard:maskMsgFlag	I
-    //   4463: iconst_1
-    //   4464: if_icmpne +2808 -> 7272
-    //   4467: iconst_1
-    //   4468: istore_1
-    //   4469: goto +3 -> 4472
-    //   4472: aload 20
-    //   4474: iload_1
-    //   4475: putfield 352	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendMsg	Z
-    //   4478: aload 4
-    //   4480: getfield 785	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_gift	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4483: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4486: iconst_1
-    //   4487: if_icmpne +2790 -> 7277
-    //   4490: iconst_1
-    //   4491: istore_1
-    //   4492: goto +3 -> 4495
-    //   4495: aload 20
-    //   4497: iload_1
-    //   4498: putfield 346	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendGiftMsg	Z
-    //   4501: aload 20
-    //   4503: aload 4
-    //   4505: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4508: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4511: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4514: putfield 371	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendMsgBtnTips	Ljava/lang/String;
-    //   4517: aload 20
-    //   4519: aload 4
-    //   4521: getfield 791	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_gift_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4524: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4527: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4530: putfield 365	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendGiftBtnTips	Ljava/lang/String;
-    //   4533: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4536: ifeq +105 -> 4641
-    //   4539: new 167	java/lang/StringBuilder
-    //   4542: dup
-    //   4543: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   4546: astore_2
-    //   4547: aload_2
-    //   4548: ldc_w 793
-    //   4551: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4274: ldc_w 639
+    //   4277: iconst_2
+    //   4278: aload 4
+    //   4280: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4283: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4286: goto +3 -> 4289
+    //   4289: aload_2
+    //   4290: ifnull +28 -> 4318
+    //   4293: aload 20
+    //   4295: aload_2
+    //   4296: invokevirtual 1795	com/tencent/mobileqq/data/NearbyPeopleCard:updateHotChatInfo	(Lcom/tencent/mobileqq/data/HotChatInfo;)V
+    //   4299: goto +19 -> 4318
+    //   4302: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4305: ifeq +13 -> 4318
+    //   4308: ldc_w 639
+    //   4311: iconst_2
+    //   4312: ldc_w 1797
+    //   4315: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4318: aload 20
+    //   4320: getfield 443	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyInfo	[B
+    //   4323: ifnull +1223 -> 5546
+    //   4326: new 753	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody
+    //   4329: dup
+    //   4330: invokespecial 754	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:<init>	()V
+    //   4333: astore 4
+    //   4335: aload 4
+    //   4337: aload 20
+    //   4339: getfield 443	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyInfo	[B
+    //   4342: invokevirtual 755	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4345: pop
+    //   4346: iload 6
+    //   4348: istore 5
+    //   4350: iload 5
+    //   4352: bipush 51
+    //   4354: if_icmpne +84 -> 4438
+    //   4357: aload 4
+    //   4359: getfield 758	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4362: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4365: iconst_1
+    //   4366: if_icmpne +2887 -> 7253
+    //   4369: iconst_1
+    //   4370: istore_1
+    //   4371: goto +3 -> 4374
+    //   4374: aload 20
+    //   4376: iload_1
+    //   4377: putfield 290	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendMsgForTribar	Z
+    //   4380: aload 4
+    //   4382: getfield 761	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_gift	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4385: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4388: iconst_1
+    //   4389: if_icmpne +2869 -> 7258
+    //   4392: iconst_1
+    //   4393: istore_1
+    //   4394: goto +3 -> 4397
+    //   4397: aload 20
+    //   4399: iload_1
+    //   4400: putfield 277	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendGiftMsgForTribar	Z
+    //   4403: aload 20
+    //   4405: aload 4
+    //   4407: getfield 764	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4410: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4413: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4416: putfield 302	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendMsgBtnTipsForTribar	Ljava/lang/String;
+    //   4419: aload 20
+    //   4421: aload 4
+    //   4423: getfield 767	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_gift_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4426: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4429: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4432: putfield 296	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendGiftBtnTipsForTribar	Ljava/lang/String;
+    //   4435: goto +91 -> 4526
+    //   4438: aload 20
+    //   4440: aload 4
+    //   4442: getfield 758	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4445: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4448: putfield 284	com/tencent/mobileqq/data/NearbyPeopleCard:maskMsgFlag	I
+    //   4451: aload 20
+    //   4453: getfield 284	com/tencent/mobileqq/data/NearbyPeopleCard:maskMsgFlag	I
+    //   4456: iconst_1
+    //   4457: if_icmpne +2806 -> 7263
+    //   4460: iconst_1
+    //   4461: istore_1
+    //   4462: goto +3 -> 4465
+    //   4465: aload 20
+    //   4467: iload_1
+    //   4468: putfield 280	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendMsg	Z
+    //   4471: aload 4
+    //   4473: getfield 761	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_gift	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4476: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4479: iconst_1
+    //   4480: if_icmpne +2788 -> 7268
+    //   4483: iconst_1
+    //   4484: istore_1
+    //   4485: goto +3 -> 4488
+    //   4488: aload 20
+    //   4490: iload_1
+    //   4491: putfield 274	com/tencent/mobileqq/data/NearbyPeopleCard:isForbidSendGiftMsg	Z
+    //   4494: aload 20
+    //   4496: aload 4
+    //   4498: getfield 764	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4501: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4504: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4507: putfield 299	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendMsgBtnTips	Ljava/lang/String;
+    //   4510: aload 20
+    //   4512: aload 4
+    //   4514: getfield 767	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_gift_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4517: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4520: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4523: putfield 293	com/tencent/mobileqq/data/NearbyPeopleCard:disableSendGiftBtnTips	Ljava/lang/String;
+    //   4526: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4529: ifeq +105 -> 4634
+    //   4532: new 68	java/lang/StringBuilder
+    //   4535: dup
+    //   4536: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   4539: astore_2
+    //   4540: aload_2
+    //   4541: ldc_w 769
+    //   4544: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4547: pop
+    //   4548: aload_2
+    //   4549: iload 5
+    //   4551: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   4554: pop
     //   4555: aload_2
-    //   4556: iload 5
-    //   4558: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4561: pop
-    //   4562: aload_2
-    //   4563: ldc_w 795
-    //   4566: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4569: pop
-    //   4570: aload_2
-    //   4571: aload 4
-    //   4573: getfield 782	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4576: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4579: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4582: pop
-    //   4583: aload_2
-    //   4584: ldc_w 797
-    //   4587: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4590: pop
-    //   4591: aload_2
-    //   4592: aload 4
-    //   4594: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4597: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4600: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4603: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4606: pop
-    //   4607: aload_2
-    //   4608: ldc_w 799
-    //   4611: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4614: pop
-    //   4615: aload_2
-    //   4616: aload_0
-    //   4617: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4620: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   4623: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4626: pop
-    //   4627: ldc_w 801
-    //   4630: iconst_2
-    //   4631: aload_2
-    //   4632: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4635: invokestatic 804	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4638: goto +2644 -> 7282
-    //   4641: new 167	java/lang/StringBuilder
-    //   4644: dup
-    //   4645: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   4648: astore_2
-    //   4649: aload_2
-    //   4650: ldc_w 793
-    //   4653: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4556: ldc_w 771
+    //   4559: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4562: pop
+    //   4563: aload_2
+    //   4564: aload 4
+    //   4566: getfield 758	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4569: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4572: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4575: pop
+    //   4576: aload_2
+    //   4577: ldc_w 773
+    //   4580: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4583: pop
+    //   4584: aload_2
+    //   4585: aload 4
+    //   4587: getfield 764	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4590: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4593: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4596: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4599: pop
+    //   4600: aload_2
+    //   4601: ldc_w 775
+    //   4604: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4607: pop
+    //   4608: aload_2
+    //   4609: aload_0
+    //   4610: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4613: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   4616: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4619: pop
+    //   4620: ldc_w 777
+    //   4623: iconst_2
+    //   4624: aload_2
+    //   4625: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4628: invokestatic 779	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4631: goto +2642 -> 7273
+    //   4634: new 68	java/lang/StringBuilder
+    //   4637: dup
+    //   4638: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   4641: astore_2
+    //   4642: aload_2
+    //   4643: ldc_w 769
+    //   4646: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4649: pop
+    //   4650: aload_2
+    //   4651: iload 5
+    //   4653: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   4656: pop
     //   4657: aload_2
-    //   4658: iload 5
-    //   4660: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4663: pop
-    //   4664: aload_2
-    //   4665: ldc_w 795
-    //   4668: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4671: pop
-    //   4672: aload_2
-    //   4673: aload 4
-    //   4675: getfield 782	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4678: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4681: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4684: pop
-    //   4685: aload_2
-    //   4686: ldc_w 797
-    //   4689: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4692: pop
-    //   4693: aload_2
-    //   4694: aload 4
-    //   4696: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4699: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4702: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4705: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4708: pop
-    //   4709: ldc_w 801
-    //   4712: iconst_1
-    //   4713: aload_2
-    //   4714: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4717: invokestatic 804	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4720: goto +2562 -> 7282
-    //   4723: astore_2
-    //   4724: goto +4 -> 4728
-    //   4727: astore_2
-    //   4728: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4731: ifeq +2551 -> 7282
-    //   4734: new 167	java/lang/StringBuilder
-    //   4737: dup
-    //   4738: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   4741: astore 15
-    //   4743: aload 15
-    //   4745: ldc_w 806
-    //   4748: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4751: pop
-    //   4752: aload 15
-    //   4754: aload_2
-    //   4755: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
-    //   4758: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4761: pop
-    //   4762: aload 15
-    //   4764: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4767: astore_2
-    //   4768: aload 17
-    //   4770: iconst_2
-    //   4771: aload_2
-    //   4772: invokestatic 185	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4775: goto +3 -> 4778
-    //   4778: aload 17
-    //   4780: astore_2
-    //   4781: aload 20
-    //   4783: aload 4
-    //   4785: getfield 809	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_high_score_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4788: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4791: putfield 359	com/tencent/mobileqq/data/NearbyPeopleCard:highScoreNum	I
-    //   4794: aload 4
-    //   4796: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4799: invokevirtual 816	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:has	()Z
-    //   4802: ifeq +147 -> 4949
-    //   4805: aload 20
-    //   4807: aload 4
-    //   4809: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4812: invokevirtual 817	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4815: checkcast 815	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
-    //   4818: getfield 820	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:bytes_icon_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4821: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4824: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4827: putfield 392	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreIconUrl	Ljava/lang/String;
-    //   4830: aload 20
-    //   4832: aload 4
-    //   4834: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4837: invokevirtual 817	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4840: checkcast 815	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
-    //   4843: getfield 823	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:bytes_tail_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4846: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4849: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4852: putfield 389	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWording	Ljava/lang/String;
-    //   4855: aload 20
-    //   4857: aload 4
-    //   4859: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4862: invokevirtual 817	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4865: checkcast 815	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
-    //   4868: getfield 826	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:uint32_tail_wording_color	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4871: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4874: putfield 386	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWordingColor	I
-    //   4877: aload 20
-    //   4879: aload 4
-    //   4881: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4884: invokevirtual 817	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4887: checkcast 815	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
-    //   4890: getfield 829	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:bytes_card_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4893: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4896: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   4899: putfield 377	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWording	Ljava/lang/String;
-    //   4902: aload 20
-    //   4904: aload 4
-    //   4906: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4909: invokevirtual 817	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4912: checkcast 815	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
-    //   4915: getfield 832	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:uint32_card_wording_color	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4918: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4921: putfield 380	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWordingColor	I
-    //   4924: aload 20
-    //   4926: aload 4
-    //   4928: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
-    //   4931: invokevirtual 817	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4934: checkcast 815	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
-    //   4937: getfield 835	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:uint32_entry_ability	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4940: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4943: putfield 383	com/tencent/mobileqq/data/NearbyPeopleCard:entryAbility	I
-    //   4946: goto +39 -> 4985
-    //   4949: aload 20
-    //   4951: aload_3
-    //   4952: putfield 392	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreIconUrl	Ljava/lang/String;
-    //   4955: aload 20
-    //   4957: aload_3
-    //   4958: putfield 389	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWording	Ljava/lang/String;
-    //   4961: aload 20
-    //   4963: iconst_0
-    //   4964: putfield 386	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWordingColor	I
-    //   4967: aload 20
-    //   4969: aload_3
-    //   4970: putfield 377	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWording	Ljava/lang/String;
-    //   4973: aload 20
-    //   4975: iconst_0
-    //   4976: putfield 380	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWordingColor	I
-    //   4979: aload 20
-    //   4981: iconst_0
-    //   4982: putfield 383	com/tencent/mobileqq/data/NearbyPeopleCard:entryAbility	I
-    //   4985: aload 4
-    //   4987: getfield 838	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_jump_app_open	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4990: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4993: iconst_1
-    //   4994: if_icmpne +2291 -> 7285
-    //   4997: iconst_1
-    //   4998: istore_1
-    //   4999: goto +3 -> 5002
-    //   5002: aload 20
-    //   5004: iload_1
-    //   5005: putfield 841	com/tencent/mobileqq/data/NearbyPeopleCard:isSendMsgBtnDownloadAppOpen	Z
-    //   5008: aload 20
-    //   5010: aload 4
-    //   5012: getfield 844	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:str_jump_app_result_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5015: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5018: putfield 847	com/tencent/mobileqq/data/NearbyPeopleCard:sendMsgBtnDownloadAppTips	Ljava/lang/String;
-    //   5021: aload 20
-    //   5023: aload 4
-    //   5025: getfield 850	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:str_jump_app_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5028: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5031: putfield 853	com/tencent/mobileqq/data/NearbyPeopleCard:tribeAppDownloadPageUrl	Ljava/lang/String;
-    //   5034: aload 20
-    //   5036: aload 4
-    //   5038: getfield 856	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:str_plus_download_app_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5041: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5044: putfield 859	com/tencent/mobileqq/data/NearbyPeopleCard:addPicBtnDownloadAppTips	Ljava/lang/String;
-    //   5047: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5050: ifeq +130 -> 5180
-    //   5053: new 167	java/lang/StringBuilder
-    //   5056: dup
-    //   5057: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   5060: astore_3
-    //   5061: aload_3
-    //   5062: ldc_w 861
-    //   5065: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5068: pop
-    //   5069: aload_3
-    //   5070: aload 20
-    //   5072: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   5075: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5078: pop
-    //   5079: aload_3
-    //   5080: ldc_w 863
-    //   5083: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5086: pop
-    //   5087: aload_3
-    //   5088: aload 20
-    //   5090: getfield 841	com/tencent/mobileqq/data/NearbyPeopleCard:isSendMsgBtnDownloadAppOpen	Z
-    //   5093: invokevirtual 866	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   5096: pop
-    //   5097: aload_3
-    //   5098: ldc_w 868
-    //   5101: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5104: pop
-    //   5105: aload_3
-    //   5106: aload 20
-    //   5108: invokevirtual 871	com/tencent/mobileqq/data/NearbyPeopleCard:isAddPicBtnDownloadAppOpen	()Z
-    //   5111: invokevirtual 866	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   5114: pop
-    //   5115: aload_3
-    //   5116: ldc_w 873
-    //   5119: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5122: pop
-    //   5123: aload_3
-    //   5124: aload 20
-    //   5126: getfield 847	com/tencent/mobileqq/data/NearbyPeopleCard:sendMsgBtnDownloadAppTips	Ljava/lang/String;
-    //   5129: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5132: pop
-    //   5133: aload_3
-    //   5134: ldc_w 875
-    //   5137: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5140: pop
-    //   5141: aload_3
-    //   5142: aload 20
-    //   5144: getfield 859	com/tencent/mobileqq/data/NearbyPeopleCard:addPicBtnDownloadAppTips	Ljava/lang/String;
-    //   5147: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5150: pop
-    //   5151: aload_3
-    //   5152: ldc_w 877
-    //   5155: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5158: pop
-    //   5159: aload_3
-    //   5160: aload 20
-    //   5162: getfield 853	com/tencent/mobileqq/data/NearbyPeopleCard:tribeAppDownloadPageUrl	Ljava/lang/String;
-    //   5165: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5168: pop
-    //   5169: ldc_w 879
-    //   5172: iconst_2
-    //   5173: aload_3
-    //   5174: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5177: invokestatic 804	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5180: aload 4
-    //   5182: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5185: invokevirtual 898	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:has	()Z
-    //   5188: ifeq +324 -> 5512
-    //   5191: aload 20
-    //   5193: aload 4
-    //   5195: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5198: getfield 901	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_content	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5201: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5204: putfield 904	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTip	Ljava/lang/String;
-    //   5207: aload 20
-    //   5209: aload 4
-    //   5211: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5214: getfield 907	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_left_btn	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5217: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5220: putfield 910	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipLeftBtn	Ljava/lang/String;
-    //   5223: aload 20
-    //   5225: aload 4
-    //   5227: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5230: getfield 913	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_right_btn_installed	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5233: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5236: putfield 916	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnInstalled	Ljava/lang/String;
-    //   5239: aload 20
-    //   5241: aload 4
-    //   5243: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5246: getfield 919	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_right_btn_not_installed	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5249: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5252: putfield 922	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnNotInstalled	Ljava/lang/String;
-    //   5255: aload 20
-    //   5257: aload 4
-    //   5259: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5262: getfield 925	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:android_app_key	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5265: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5268: putfield 928	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowPackage	Ljava/lang/String;
-    //   5271: aload 20
-    //   5273: aload 4
-    //   5275: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5278: getfield 931	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:jump_uri	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5281: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5284: putfield 934	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowJumpUri	Ljava/lang/String;
-    //   5287: aload 20
-    //   5289: aload 4
-    //   5291: getfield 895	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
-    //   5294: getfield 937	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:app_download_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   5297: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   5300: putfield 940	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowDownloadUrl	Ljava/lang/String;
-    //   5303: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5306: ifeq +247 -> 5553
-    //   5309: new 167	java/lang/StringBuilder
-    //   5312: dup
-    //   5313: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   5316: astore_3
-    //   5317: aload_3
-    //   5318: ldc_w 954
-    //   5321: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5324: pop
-    //   5325: aload_3
-    //   5326: ldc_w 956
-    //   5329: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5332: pop
-    //   5333: aload_3
-    //   5334: aload 20
-    //   5336: getfield 904	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTip	Ljava/lang/String;
-    //   5339: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4658: ldc_w 771
+    //   4661: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4664: pop
+    //   4665: aload_2
+    //   4666: aload 4
+    //   4668: getfield 758	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_if_mask_msg	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4671: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4674: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4677: pop
+    //   4678: aload_2
+    //   4679: ldc_w 773
+    //   4682: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4685: pop
+    //   4686: aload_2
+    //   4687: aload 4
+    //   4689: getfield 764	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_mask_msg_reason	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4692: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4695: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4698: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4701: pop
+    //   4702: ldc_w 777
+    //   4705: iconst_1
+    //   4706: aload_2
+    //   4707: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4710: invokestatic 779	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4713: goto +2560 -> 7273
+    //   4716: astore_2
+    //   4717: goto +4 -> 4721
+    //   4720: astore_2
+    //   4721: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4724: ifeq +2549 -> 7273
+    //   4727: new 68	java/lang/StringBuilder
+    //   4730: dup
+    //   4731: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   4734: astore 15
+    //   4736: aload 15
+    //   4738: ldc_w 781
+    //   4741: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4744: pop
+    //   4745: aload 15
+    //   4747: aload_2
+    //   4748: invokevirtual 707	java/lang/Exception:toString	()Ljava/lang/String;
+    //   4751: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4754: pop
+    //   4755: aload 15
+    //   4757: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4760: astore_2
+    //   4761: aload 17
+    //   4763: iconst_2
+    //   4764: aload_2
+    //   4765: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4768: goto +3 -> 4771
+    //   4771: aload 17
+    //   4773: astore_2
+    //   4774: aload 20
+    //   4776: aload 4
+    //   4778: getfield 784	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_high_score_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4781: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4784: putfield 287	com/tencent/mobileqq/data/NearbyPeopleCard:highScoreNum	I
+    //   4787: aload 4
+    //   4789: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4792: invokevirtual 791	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:has	()Z
+    //   4795: ifeq +147 -> 4942
+    //   4798: aload 20
+    //   4800: aload 4
+    //   4802: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4805: invokevirtual 792	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4808: checkcast 790	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
+    //   4811: getfield 795	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:bytes_icon_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4814: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4817: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4820: putfield 320	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreIconUrl	Ljava/lang/String;
+    //   4823: aload 20
+    //   4825: aload 4
+    //   4827: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4830: invokevirtual 792	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4833: checkcast 790	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
+    //   4836: getfield 798	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:bytes_tail_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4839: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4842: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4845: putfield 317	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWording	Ljava/lang/String;
+    //   4848: aload 20
+    //   4850: aload 4
+    //   4852: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4855: invokevirtual 792	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4858: checkcast 790	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
+    //   4861: getfield 801	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:uint32_tail_wording_color	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4864: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4867: putfield 314	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWordingColor	I
+    //   4870: aload 20
+    //   4872: aload 4
+    //   4874: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4877: invokevirtual 792	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4880: checkcast 790	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
+    //   4883: getfield 804	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:bytes_card_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4886: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4889: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   4892: putfield 305	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWording	Ljava/lang/String;
+    //   4895: aload 20
+    //   4897: aload 4
+    //   4899: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4902: invokevirtual 792	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4905: checkcast 790	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
+    //   4908: getfield 807	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:uint32_card_wording_color	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4911: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4914: putfield 308	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWordingColor	I
+    //   4917: aload 20
+    //   4919: aload 4
+    //   4921: getfield 788	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:bytes_face_score_config	Lcom/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig;
+    //   4924: invokevirtual 792	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4927: checkcast 790	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig
+    //   4930: getfield 810	com/tencent/jungle/nearby/nio/proto/oidb_common$DataCardConfig:uint32_entry_ability	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4933: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4936: putfield 311	com/tencent/mobileqq/data/NearbyPeopleCard:entryAbility	I
+    //   4939: goto +39 -> 4978
+    //   4942: aload 20
+    //   4944: aload_3
+    //   4945: putfield 320	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreIconUrl	Ljava/lang/String;
+    //   4948: aload 20
+    //   4950: aload_3
+    //   4951: putfield 317	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWording	Ljava/lang/String;
+    //   4954: aload 20
+    //   4956: iconst_0
+    //   4957: putfield 314	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreTailWordingColor	I
+    //   4960: aload 20
+    //   4962: aload_3
+    //   4963: putfield 305	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWording	Ljava/lang/String;
+    //   4966: aload 20
+    //   4968: iconst_0
+    //   4969: putfield 308	com/tencent/mobileqq/data/NearbyPeopleCard:faceScoreWordingColor	I
+    //   4972: aload 20
+    //   4974: iconst_0
+    //   4975: putfield 311	com/tencent/mobileqq/data/NearbyPeopleCard:entryAbility	I
+    //   4978: aload 4
+    //   4980: getfield 813	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:uint32_jump_app_open	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4983: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4986: iconst_1
+    //   4987: if_icmpne +2289 -> 7276
+    //   4990: iconst_1
+    //   4991: istore_1
+    //   4992: goto +3 -> 4995
+    //   4995: aload 20
+    //   4997: iload_1
+    //   4998: putfield 816	com/tencent/mobileqq/data/NearbyPeopleCard:isSendMsgBtnDownloadAppOpen	Z
+    //   5001: aload 20
+    //   5003: aload 4
+    //   5005: getfield 819	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:str_jump_app_result_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5008: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5011: putfield 822	com/tencent/mobileqq/data/NearbyPeopleCard:sendMsgBtnDownloadAppTips	Ljava/lang/String;
+    //   5014: aload 20
+    //   5016: aload 4
+    //   5018: getfield 825	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:str_jump_app_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5021: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5024: putfield 828	com/tencent/mobileqq/data/NearbyPeopleCard:tribeAppDownloadPageUrl	Ljava/lang/String;
+    //   5027: aload 20
+    //   5029: aload 4
+    //   5031: getfield 831	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:str_plus_download_app_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5034: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5037: putfield 834	com/tencent/mobileqq/data/NearbyPeopleCard:addPicBtnDownloadAppTips	Ljava/lang/String;
+    //   5040: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5043: ifeq +130 -> 5173
+    //   5046: new 68	java/lang/StringBuilder
+    //   5049: dup
+    //   5050: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   5053: astore_3
+    //   5054: aload_3
+    //   5055: ldc_w 836
+    //   5058: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5061: pop
+    //   5062: aload_3
+    //   5063: aload 20
+    //   5065: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   5068: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5071: pop
+    //   5072: aload_3
+    //   5073: ldc_w 838
+    //   5076: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5079: pop
+    //   5080: aload_3
+    //   5081: aload 20
+    //   5083: getfield 816	com/tencent/mobileqq/data/NearbyPeopleCard:isSendMsgBtnDownloadAppOpen	Z
+    //   5086: invokevirtual 841	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5089: pop
+    //   5090: aload_3
+    //   5091: ldc_w 843
+    //   5094: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5097: pop
+    //   5098: aload_3
+    //   5099: aload 20
+    //   5101: invokevirtual 846	com/tencent/mobileqq/data/NearbyPeopleCard:isAddPicBtnDownloadAppOpen	()Z
+    //   5104: invokevirtual 841	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5107: pop
+    //   5108: aload_3
+    //   5109: ldc_w 848
+    //   5112: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5115: pop
+    //   5116: aload_3
+    //   5117: aload 20
+    //   5119: getfield 822	com/tencent/mobileqq/data/NearbyPeopleCard:sendMsgBtnDownloadAppTips	Ljava/lang/String;
+    //   5122: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5125: pop
+    //   5126: aload_3
+    //   5127: ldc_w 850
+    //   5130: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5133: pop
+    //   5134: aload_3
+    //   5135: aload 20
+    //   5137: getfield 834	com/tencent/mobileqq/data/NearbyPeopleCard:addPicBtnDownloadAppTips	Ljava/lang/String;
+    //   5140: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5143: pop
+    //   5144: aload_3
+    //   5145: ldc_w 852
+    //   5148: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5151: pop
+    //   5152: aload_3
+    //   5153: aload 20
+    //   5155: getfield 828	com/tencent/mobileqq/data/NearbyPeopleCard:tribeAppDownloadPageUrl	Ljava/lang/String;
+    //   5158: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5161: pop
+    //   5162: ldc_w 854
+    //   5165: iconst_2
+    //   5166: aload_3
+    //   5167: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5170: invokestatic 779	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5173: aload 4
+    //   5175: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5178: invokevirtual 873	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:has	()Z
+    //   5181: ifeq +324 -> 5505
+    //   5184: aload 20
+    //   5186: aload 4
+    //   5188: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5191: getfield 876	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_content	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5194: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5197: putfield 879	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTip	Ljava/lang/String;
+    //   5200: aload 20
+    //   5202: aload 4
+    //   5204: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5207: getfield 882	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_left_btn	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5210: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5213: putfield 885	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipLeftBtn	Ljava/lang/String;
+    //   5216: aload 20
+    //   5218: aload 4
+    //   5220: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5223: getfield 888	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_right_btn_installed	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5226: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5229: putfield 891	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnInstalled	Ljava/lang/String;
+    //   5232: aload 20
+    //   5234: aload 4
+    //   5236: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5239: getfield 894	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:tip_right_btn_not_installed	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5242: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5245: putfield 897	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnNotInstalled	Ljava/lang/String;
+    //   5248: aload 20
+    //   5250: aload 4
+    //   5252: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5255: getfield 900	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:android_app_key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5258: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5261: putfield 903	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowPackage	Ljava/lang/String;
+    //   5264: aload 20
+    //   5266: aload 4
+    //   5268: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5271: getfield 906	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:jump_uri	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5274: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5277: putfield 909	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowJumpUri	Ljava/lang/String;
+    //   5280: aload 20
+    //   5282: aload 4
+    //   5284: getfield 870	com/tencent/jungle/nearby/nio/proto/nearby$Cmd0x1RspBody:nearby_popover_info	Lcom/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo;
+    //   5287: getfield 912	com/tencent/jungle/nearby/nio/proto/nearby$NearbyJumpInfo:app_download_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5290: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5293: putfield 915	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowDownloadUrl	Ljava/lang/String;
+    //   5296: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5299: ifeq +247 -> 5546
+    //   5302: new 68	java/lang/StringBuilder
+    //   5305: dup
+    //   5306: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   5309: astore_3
+    //   5310: aload_3
+    //   5311: ldc_w 929
+    //   5314: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5317: pop
+    //   5318: aload_3
+    //   5319: ldc_w 931
+    //   5322: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5325: pop
+    //   5326: aload_3
+    //   5327: aload 20
+    //   5329: getfield 879	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTip	Ljava/lang/String;
+    //   5332: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5335: pop
+    //   5336: aload_3
+    //   5337: aload 22
+    //   5339: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5342: pop
     //   5343: aload_3
-    //   5344: aload 22
-    //   5346: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5349: pop
-    //   5350: aload_3
-    //   5351: ldc_w 960
-    //   5354: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5357: pop
-    //   5358: aload_3
-    //   5359: aload 20
-    //   5361: getfield 910	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipLeftBtn	Ljava/lang/String;
-    //   5364: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5344: ldc_w 935
+    //   5347: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5350: pop
+    //   5351: aload_3
+    //   5352: aload 20
+    //   5354: getfield 885	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipLeftBtn	Ljava/lang/String;
+    //   5357: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5360: pop
+    //   5361: aload_3
+    //   5362: aload 22
+    //   5364: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5367: pop
     //   5368: aload_3
-    //   5369: aload 22
-    //   5371: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5374: pop
-    //   5375: aload_3
-    //   5376: ldc_w 962
-    //   5379: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5382: pop
-    //   5383: aload_3
-    //   5384: aload 20
-    //   5386: getfield 916	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnInstalled	Ljava/lang/String;
-    //   5389: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5369: ldc_w 937
+    //   5372: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5375: pop
+    //   5376: aload_3
+    //   5377: aload 20
+    //   5379: getfield 891	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnInstalled	Ljava/lang/String;
+    //   5382: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5385: pop
+    //   5386: aload_3
+    //   5387: aload 22
+    //   5389: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5392: pop
     //   5393: aload_3
-    //   5394: aload 22
-    //   5396: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5399: pop
-    //   5400: aload_3
-    //   5401: ldc_w 964
-    //   5404: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5407: pop
-    //   5408: aload_3
-    //   5409: aload 20
-    //   5411: getfield 922	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnNotInstalled	Ljava/lang/String;
-    //   5414: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5394: ldc_w 939
+    //   5397: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5400: pop
+    //   5401: aload_3
+    //   5402: aload 20
+    //   5404: getfield 897	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowTipRightBtnNotInstalled	Ljava/lang/String;
+    //   5407: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5410: pop
+    //   5411: aload_3
+    //   5412: aload 22
+    //   5414: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5417: pop
     //   5418: aload_3
-    //   5419: aload 22
-    //   5421: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5424: pop
-    //   5425: aload_3
-    //   5426: ldc_w 966
-    //   5429: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5432: pop
-    //   5433: aload_3
-    //   5434: aload 20
-    //   5436: getfield 928	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowPackage	Ljava/lang/String;
-    //   5439: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5419: ldc_w 941
+    //   5422: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5425: pop
+    //   5426: aload_3
+    //   5427: aload 20
+    //   5429: getfield 903	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowPackage	Ljava/lang/String;
+    //   5432: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5435: pop
+    //   5436: aload_3
+    //   5437: aload 22
+    //   5439: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5442: pop
     //   5443: aload_3
-    //   5444: aload 22
-    //   5446: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5449: pop
-    //   5450: aload_3
-    //   5451: ldc_w 968
-    //   5454: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5457: pop
-    //   5458: aload_3
-    //   5459: aload 20
-    //   5461: getfield 934	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowJumpUri	Ljava/lang/String;
-    //   5464: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5444: ldc_w 943
+    //   5447: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5450: pop
+    //   5451: aload_3
+    //   5452: aload 20
+    //   5454: getfield 909	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowJumpUri	Ljava/lang/String;
+    //   5457: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5460: pop
+    //   5461: aload_3
+    //   5462: aload 22
+    //   5464: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5467: pop
     //   5468: aload_3
-    //   5469: aload 22
-    //   5471: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5474: pop
-    //   5475: aload_3
-    //   5476: ldc_w 970
-    //   5479: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5482: pop
-    //   5483: aload_3
-    //   5484: aload 20
-    //   5486: getfield 940	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowDownloadUrl	Ljava/lang/String;
-    //   5489: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5469: ldc_w 945
+    //   5472: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5475: pop
+    //   5476: aload_3
+    //   5477: aload 20
+    //   5479: getfield 915	com/tencent/mobileqq/data/NearbyPeopleCard:guideAppNowDownloadUrl	Ljava/lang/String;
+    //   5482: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5485: pop
+    //   5486: aload_3
+    //   5487: aload 22
+    //   5489: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   5492: pop
-    //   5493: aload_3
-    //   5494: aload 22
-    //   5496: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5499: pop
-    //   5500: aload_2
-    //   5501: iconst_2
-    //   5502: aload_3
-    //   5503: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5506: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5509: goto +44 -> 5553
-    //   5512: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5515: ifeq +38 -> 5553
-    //   5518: aload_2
-    //   5519: iconst_2
-    //   5520: ldc_w 976
-    //   5523: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5526: goto +27 -> 5553
-    //   5529: goto +6 -> 5535
-    //   5532: goto +3 -> 5535
-    //   5535: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5538: ifeq +15 -> 5553
-    //   5541: aload 17
-    //   5543: iconst_2
-    //   5544: ldc_w 978
-    //   5547: invokestatic 804	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5550: goto +3 -> 5553
-    //   5553: aload_0
-    //   5554: astore_3
-    //   5555: aload 21
-    //   5557: getfield 1826	SummaryCard/RespSummaryCard:stGiftInfo	LSummaryCard/GiftInfo;
-    //   5560: ifnull +29 -> 5589
-    //   5563: aload 20
-    //   5565: aload 21
-    //   5567: getfield 1826	SummaryCard/RespSummaryCard:stGiftInfo	LSummaryCard/GiftInfo;
-    //   5570: getfield 1831	SummaryCard/GiftInfo:uOpenFlag	J
-    //   5573: putfield 747	com/tencent/mobileqq/data/NearbyPeopleCard:switchGiftVisible	J
-    //   5576: aload 20
-    //   5578: aload 21
-    //   5580: getfield 1826	SummaryCard/RespSummaryCard:stGiftInfo	LSummaryCard/GiftInfo;
-    //   5583: getfield 1832	SummaryCard/GiftInfo:vGiftInfo	[B
-    //   5586: putfield 751	com/tencent/mobileqq/data/NearbyPeopleCard:vGiftInfo	[B
-    //   5589: aload 21
-    //   5591: getfield 1835	SummaryCard/RespSummaryCard:vRespQQStoryInfo	[B
-    //   5594: ifnull +234 -> 5828
-    //   5597: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5600: ifeq +12 -> 5612
-    //   5603: aload 17
-    //   5605: iconst_2
-    //   5606: ldc_w 1837
-    //   5609: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5612: new 1839	tencent/im/group/group_member_info$RspGroupCardGetStory
-    //   5615: dup
-    //   5616: invokespecial 1840	tencent/im/group/group_member_info$RspGroupCardGetStory:<init>	()V
-    //   5619: astore_2
-    //   5620: aload_2
-    //   5621: aload 21
-    //   5623: getfield 1835	SummaryCard/RespSummaryCard:vRespQQStoryInfo	[B
-    //   5626: invokevirtual 1841	tencent/im/group/group_member_info$RspGroupCardGetStory:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   5629: pop
-    //   5630: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5633: ifeq +102 -> 5735
-    //   5636: new 167	java/lang/StringBuilder
-    //   5639: dup
-    //   5640: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   5643: astore 4
-    //   5645: aload 4
-    //   5647: ldc_w 1843
-    //   5650: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5653: pop
-    //   5654: aload 4
-    //   5656: aload_2
-    //   5657: getfield 1844	tencent/im/group/group_member_info$RspGroupCardGetStory:flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   5660: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   5663: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5666: pop
-    //   5667: aload 17
-    //   5669: iconst_2
-    //   5670: aload 4
-    //   5672: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5675: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5678: aload_2
-    //   5679: getfield 1847	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   5682: invokevirtual 1000	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   5685: ifeq +50 -> 5735
-    //   5688: new 167	java/lang/StringBuilder
-    //   5691: dup
-    //   5692: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   5695: astore 4
-    //   5697: aload 4
-    //   5699: ldc_w 1849
-    //   5702: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5705: pop
-    //   5706: aload 4
-    //   5708: aload_2
-    //   5709: getfield 1847	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   5712: invokevirtual 722	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   5715: invokeinterface 627 1 0
-    //   5720: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5723: pop
-    //   5724: aload 17
-    //   5726: iconst_2
-    //   5727: aload 4
-    //   5729: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5732: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5735: aload_2
-    //   5736: getfield 1844	tencent/im/group/group_member_info$RspGroupCardGetStory:flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   5739: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   5742: iconst_1
-    //   5743: if_icmpne +1547 -> 7290
-    //   5746: iconst_1
-    //   5747: istore_1
-    //   5748: goto +3 -> 5751
-    //   5751: aload 20
-    //   5753: iload_1
-    //   5754: putfield 1852	com/tencent/mobileqq/data/NearbyPeopleCard:mHasStory	Z
-    //   5757: aload_2
-    //   5758: getfield 1847	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   5761: invokevirtual 1000	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   5764: ifeq +64 -> 5828
-    //   5767: aload 20
-    //   5769: aload_2
-    //   5770: getfield 1847	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   5773: invokevirtual 722	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   5776: invokevirtual 1855	com/tencent/mobileqq/data/NearbyPeopleCard:addQQStoryList	(Ljava/util/List;)V
-    //   5779: goto +49 -> 5828
-    //   5782: astore_2
-    //   5783: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5786: ifeq +42 -> 5828
-    //   5789: new 167	java/lang/StringBuilder
-    //   5792: dup
-    //   5793: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   5796: astore 4
-    //   5798: aload 4
-    //   5800: ldc_w 1857
-    //   5803: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5806: pop
-    //   5807: aload 4
-    //   5809: aload_2
-    //   5810: invokevirtual 1858	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
-    //   5813: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5816: pop
-    //   5817: aload 17
-    //   5819: iconst_2
-    //   5820: aload 4
-    //   5822: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5825: invokestatic 185	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5828: aload 21
-    //   5830: getfield 1861	SummaryCard/RespSummaryCard:vNearbyTaskInfo	[B
-    //   5833: astore_2
-    //   5834: aload_2
-    //   5835: ifnull +48 -> 5883
-    //   5838: new 1863	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody
-    //   5841: dup
-    //   5842: invokespecial 1864	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:<init>	()V
-    //   5845: astore 4
-    //   5847: aload 4
-    //   5849: aload_2
-    //   5850: invokevirtual 1865	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   5853: pop
-    //   5854: aload 20
-    //   5856: aload 4
-    //   5858: getfield 1868	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:uint32_finish_task_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   5861: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   5864: putfield 1871	com/tencent/mobileqq/data/NearbyPeopleCard:taskFinished	I
-    //   5867: aload 20
-    //   5869: aload 4
-    //   5871: getfield 1874	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:uint32_all_task_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   5874: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   5877: putfield 1877	com/tencent/mobileqq/data/NearbyPeopleCard:taskTotal	I
-    //   5880: goto +3 -> 5883
-    //   5883: aload 21
-    //   5885: getfield 1880	SummaryCard/RespSummaryCard:vNowInfo	[B
-    //   5888: astore_2
-    //   5889: aload_2
-    //   5890: ifnull +396 -> 6286
-    //   5893: aload 20
-    //   5895: new 595	java/util/ArrayList
-    //   5898: dup
-    //   5899: invokespecial 596	java/util/ArrayList:<init>	()V
-    //   5902: putfield 1883	com/tencent/mobileqq/data/NearbyPeopleCard:hiWanList	Ljava/util/List;
-    //   5905: new 1885	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData
-    //   5908: dup
-    //   5909: invokespecial 1886	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData:<init>	()V
-    //   5912: astore 4
+    //   5493: aload_2
+    //   5494: iconst_2
+    //   5495: aload_3
+    //   5496: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5499: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5502: goto +44 -> 5546
+    //   5505: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5508: ifeq +38 -> 5546
+    //   5511: aload_2
+    //   5512: iconst_2
+    //   5513: ldc_w 951
+    //   5516: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5519: goto +27 -> 5546
+    //   5522: goto +6 -> 5528
+    //   5525: goto +3 -> 5528
+    //   5528: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5531: ifeq +15 -> 5546
+    //   5534: aload 17
+    //   5536: iconst_2
+    //   5537: ldc_w 953
+    //   5540: invokestatic 779	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5543: goto +3 -> 5546
+    //   5546: aload_0
+    //   5547: astore_3
+    //   5548: aload 21
+    //   5550: getfield 1801	SummaryCard/RespSummaryCard:stGiftInfo	LSummaryCard/GiftInfo;
+    //   5553: ifnull +29 -> 5582
+    //   5556: aload 20
+    //   5558: aload 21
+    //   5560: getfield 1801	SummaryCard/RespSummaryCard:stGiftInfo	LSummaryCard/GiftInfo;
+    //   5563: getfield 1806	SummaryCard/GiftInfo:uOpenFlag	J
+    //   5566: putfield 723	com/tencent/mobileqq/data/NearbyPeopleCard:switchGiftVisible	J
+    //   5569: aload 20
+    //   5571: aload 21
+    //   5573: getfield 1801	SummaryCard/RespSummaryCard:stGiftInfo	LSummaryCard/GiftInfo;
+    //   5576: getfield 1807	SummaryCard/GiftInfo:vGiftInfo	[B
+    //   5579: putfield 727	com/tencent/mobileqq/data/NearbyPeopleCard:vGiftInfo	[B
+    //   5582: aload 21
+    //   5584: getfield 1810	SummaryCard/RespSummaryCard:vRespQQStoryInfo	[B
+    //   5587: ifnull +234 -> 5821
+    //   5590: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5593: ifeq +12 -> 5605
+    //   5596: aload 17
+    //   5598: iconst_2
+    //   5599: ldc_w 1812
+    //   5602: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5605: new 1814	tencent/im/group/group_member_info$RspGroupCardGetStory
+    //   5608: dup
+    //   5609: invokespecial 1815	tencent/im/group/group_member_info$RspGroupCardGetStory:<init>	()V
+    //   5612: astore_2
+    //   5613: aload_2
+    //   5614: aload 21
+    //   5616: getfield 1810	SummaryCard/RespSummaryCard:vRespQQStoryInfo	[B
+    //   5619: invokevirtual 1816	tencent/im/group/group_member_info$RspGroupCardGetStory:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   5622: pop
+    //   5623: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5626: ifeq +102 -> 5728
+    //   5629: new 68	java/lang/StringBuilder
+    //   5632: dup
+    //   5633: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   5636: astore 4
+    //   5638: aload 4
+    //   5640: ldc_w 1818
+    //   5643: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5646: pop
+    //   5647: aload 4
+    //   5649: aload_2
+    //   5650: getfield 1819	tencent/im/group/group_member_info$RspGroupCardGetStory:flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   5653: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   5656: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5659: pop
+    //   5660: aload 17
+    //   5662: iconst_2
+    //   5663: aload 4
+    //   5665: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5668: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5671: aload_2
+    //   5672: getfield 1822	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   5675: invokevirtual 975	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   5678: ifeq +50 -> 5728
+    //   5681: new 68	java/lang/StringBuilder
+    //   5684: dup
+    //   5685: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   5688: astore 4
+    //   5690: aload 4
+    //   5692: ldc_w 1824
+    //   5695: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5698: pop
+    //   5699: aload 4
+    //   5701: aload_2
+    //   5702: getfield 1822	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   5705: invokevirtual 700	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   5708: invokeinterface 609 1 0
+    //   5713: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5716: pop
+    //   5717: aload 17
+    //   5719: iconst_2
+    //   5720: aload 4
+    //   5722: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5725: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5728: aload_2
+    //   5729: getfield 1819	tencent/im/group/group_member_info$RspGroupCardGetStory:flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   5732: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   5735: iconst_1
+    //   5736: if_icmpne +1545 -> 7281
+    //   5739: iconst_1
+    //   5740: istore_1
+    //   5741: goto +3 -> 5744
+    //   5744: aload 20
+    //   5746: iload_1
+    //   5747: putfield 1827	com/tencent/mobileqq/data/NearbyPeopleCard:mHasStory	Z
+    //   5750: aload_2
+    //   5751: getfield 1822	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   5754: invokevirtual 975	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   5757: ifeq +64 -> 5821
+    //   5760: aload 20
+    //   5762: aload_2
+    //   5763: getfield 1822	tencent/im/group/group_member_info$RspGroupCardGetStory:video_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   5766: invokevirtual 700	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   5769: invokevirtual 1830	com/tencent/mobileqq/data/NearbyPeopleCard:addQQStoryList	(Ljava/util/List;)V
+    //   5772: goto +49 -> 5821
+    //   5775: astore_2
+    //   5776: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5779: ifeq +42 -> 5821
+    //   5782: new 68	java/lang/StringBuilder
+    //   5785: dup
+    //   5786: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   5789: astore 4
+    //   5791: aload 4
+    //   5793: ldc_w 1832
+    //   5796: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5799: pop
+    //   5800: aload 4
+    //   5802: aload_2
+    //   5803: invokevirtual 1833	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   5806: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5809: pop
+    //   5810: aload 17
+    //   5812: iconst_2
+    //   5813: aload 4
+    //   5815: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5818: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5821: aload 21
+    //   5823: getfield 1836	SummaryCard/RespSummaryCard:vNearbyTaskInfo	[B
+    //   5826: astore_2
+    //   5827: aload_2
+    //   5828: ifnull +48 -> 5876
+    //   5831: new 1838	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody
+    //   5834: dup
+    //   5835: invokespecial 1839	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:<init>	()V
+    //   5838: astore 4
+    //   5840: aload 4
+    //   5842: aload_2
+    //   5843: invokevirtual 1840	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   5846: pop
+    //   5847: aload 20
+    //   5849: aload 4
+    //   5851: getfield 1843	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:uint32_finish_task_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   5854: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   5857: putfield 1846	com/tencent/mobileqq/data/NearbyPeopleCard:taskFinished	I
+    //   5860: aload 20
+    //   5862: aload 4
+    //   5864: getfield 1849	tencent/im/oidb/cmd0xa5c/oidb_0xa5c$RspBody:uint32_all_task_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   5867: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   5870: putfield 1852	com/tencent/mobileqq/data/NearbyPeopleCard:taskTotal	I
+    //   5873: goto +3 -> 5876
+    //   5876: aload 21
+    //   5878: getfield 1855	SummaryCard/RespSummaryCard:vNowInfo	[B
+    //   5881: astore_2
+    //   5882: aload_2
+    //   5883: ifnull +396 -> 6279
+    //   5886: aload 20
+    //   5888: new 577	java/util/ArrayList
+    //   5891: dup
+    //   5892: invokespecial 578	java/util/ArrayList:<init>	()V
+    //   5895: putfield 1858	com/tencent/mobileqq/data/NearbyPeopleCard:hiWanList	Ljava/util/List;
+    //   5898: new 1860	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData
+    //   5901: dup
+    //   5902: invokespecial 1861	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData:<init>	()V
+    //   5905: astore 4
+    //   5907: aload 4
+    //   5909: aload_2
+    //   5910: invokevirtual 1862	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   5913: pop
     //   5914: aload 4
-    //   5916: aload_2
-    //   5917: invokevirtual 1887	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   5920: pop
-    //   5921: aload 4
-    //   5923: getfield 1890	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData:rpt_msg_now_haiwan	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   5926: invokevirtual 722	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   5929: astore_2
-    //   5930: aload_2
-    //   5931: ifnull +355 -> 6286
-    //   5934: new 621	org/json/JSONArray
-    //   5937: dup
-    //   5938: invokespecial 622	org/json/JSONArray:<init>	()V
-    //   5941: astore 4
-    //   5943: iconst_0
-    //   5944: istore 5
-    //   5946: iload 5
-    //   5948: aload_2
-    //   5949: invokeinterface 627 1 0
-    //   5954: if_icmpge +273 -> 6227
-    //   5957: new 1892	org/json/JSONObject
-    //   5960: dup
-    //   5961: invokespecial 1893	org/json/JSONObject:<init>	()V
-    //   5964: astore 15
-    //   5966: new 1895	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem
-    //   5969: dup
-    //   5970: invokespecial 1896	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:<init>	()V
-    //   5973: astore 16
-    //   5975: aload 16
-    //   5977: aload_2
-    //   5978: iload 5
-    //   5980: invokeinterface 630 2 0
-    //   5985: checkcast 1898	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
-    //   5988: getfield 1901	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:bytes_title	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   5991: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   5994: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   5997: putfield 1903	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:title	Ljava/lang/String;
-    //   6000: aload 16
-    //   6002: getfield 1903	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:title	Ljava/lang/String;
-    //   6005: invokestatic 1906	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6008: ifne +17 -> 6025
-    //   6011: aload 15
-    //   6013: ldc_w 1907
-    //   6016: aload 16
-    //   6018: getfield 1903	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:title	Ljava/lang/String;
-    //   6021: invokevirtual 1910	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   6024: pop
-    //   6025: aload 16
-    //   6027: aload_2
-    //   6028: iload 5
-    //   6030: invokeinterface 630 2 0
-    //   6035: checkcast 1898	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
-    //   6038: getfield 1913	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:bytes_icon	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   6041: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   6044: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   6047: putfield 1916	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:icon	Ljava/lang/String;
-    //   6050: aload 16
-    //   6052: getfield 1916	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:icon	Ljava/lang/String;
-    //   6055: invokestatic 1906	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6058: ifne +17 -> 6075
-    //   6061: aload 15
-    //   6063: ldc_w 1917
-    //   6066: aload 16
-    //   6068: getfield 1916	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:icon	Ljava/lang/String;
-    //   6071: invokevirtual 1910	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   6074: pop
-    //   6075: aload 16
-    //   6077: aload_2
-    //   6078: iload 5
-    //   6080: invokeinterface 630 2 0
-    //   6085: checkcast 1898	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
-    //   6088: getfield 1920	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:bytes_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   6091: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   6094: invokevirtual 633	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   6097: putfield 1922	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:url	Ljava/lang/String;
-    //   6100: aload 16
-    //   6102: getfield 1922	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:url	Ljava/lang/String;
-    //   6105: invokestatic 1906	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6108: ifne +17 -> 6125
-    //   6111: aload 15
-    //   6113: ldc_w 1923
-    //   6116: aload 16
-    //   6118: getfield 1922	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:url	Ljava/lang/String;
-    //   6121: invokevirtual 1910	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   6124: pop
-    //   6125: aload 16
-    //   6127: aload_2
-    //   6128: iload 5
-    //   6130: invokeinterface 630 2 0
-    //   6135: checkcast 1898	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
-    //   6138: getfield 1926	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:uint32_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   6141: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   6144: putfield 1929	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:status	I
-    //   6147: aload 15
-    //   6149: ldc_w 1930
-    //   6152: aload 16
-    //   6154: getfield 1929	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:status	I
-    //   6157: invokevirtual 1933	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   6160: pop
-    //   6161: aload 16
-    //   6163: aload_2
-    //   6164: iload 5
-    //   6166: invokeinterface 630 2 0
-    //   6171: checkcast 1898	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
-    //   6174: getfield 1936	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:uint32_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   6177: invokevirtual 411	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   6180: putfield 1938	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:type	I
-    //   6183: aload 15
-    //   6185: ldc_w 1939
-    //   6188: aload 16
-    //   6190: getfield 1938	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:type	I
-    //   6193: invokevirtual 1933	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   6196: pop
-    //   6197: aload 20
-    //   6199: getfield 1883	com/tencent/mobileqq/data/NearbyPeopleCard:hiWanList	Ljava/util/List;
-    //   6202: aload 16
-    //   6204: invokeinterface 637 2 0
-    //   6209: pop
-    //   6210: aload 4
-    //   6212: aload 15
-    //   6214: invokevirtual 641	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   6217: pop
-    //   6218: iload 5
-    //   6220: iconst_1
-    //   6221: iadd
-    //   6222: istore 5
-    //   6224: goto -278 -> 5946
-    //   6227: aload 20
-    //   6229: aload 4
-    //   6231: invokevirtual 642	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   6234: putfield 1942	com/tencent/mobileqq/data/NearbyPeopleCard:hiWanInfo	Ljava/lang/String;
-    //   6237: goto +49 -> 6286
-    //   6240: astore_2
-    //   6241: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6244: ifeq +42 -> 6286
-    //   6247: new 167	java/lang/StringBuilder
-    //   6250: dup
-    //   6251: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   6254: astore 4
-    //   6256: aload 4
-    //   6258: ldc_w 1944
-    //   6261: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6264: pop
-    //   6265: aload 4
-    //   6267: aload_2
-    //   6268: invokevirtual 654	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   6271: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6274: pop
-    //   6275: aload 17
-    //   6277: iconst_2
-    //   6278: aload 4
-    //   6280: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6283: invokestatic 185	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   6286: aload 20
-    //   6288: aload 21
-    //   6290: getfield 1880	SummaryCard/RespSummaryCard:vNowInfo	[B
-    //   6293: putfield 984	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyNowDataBytes	[B
-    //   6296: new 986	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData
-    //   6299: dup
-    //   6300: invokespecial 987	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:<init>	()V
-    //   6303: astore 4
-    //   6305: aload 4
-    //   6307: aload 21
-    //   6309: getfield 1880	SummaryCard/RespSummaryCard:vNowInfo	[B
-    //   6312: invokevirtual 988	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   6315: pop
-    //   6316: aload 4
-    //   6318: astore_2
-    //   6319: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6322: ifeq +138 -> 6460
-    //   6325: new 167	java/lang/StringBuilder
-    //   6328: dup
-    //   6329: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   6332: astore_2
-    //   6333: aload_2
-    //   6334: ldc_w 990
-    //   6337: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6340: pop
-    //   6341: aload_2
-    //   6342: aload 4
-    //   6344: getfield 993	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:bytes_more_video_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   6347: invokevirtual 994	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   6350: invokevirtual 866	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6353: pop
-    //   6354: aload_2
-    //   6355: ldc_w 996
-    //   6358: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6361: pop
-    //   6362: aload_2
-    //   6363: aload 4
-    //   6365: getfield 999	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:rpt_msg_now_video_feed	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   6368: invokevirtual 1000	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   6371: invokevirtual 866	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6374: pop
-    //   6375: aload_2
-    //   6376: ldc_w 1002
-    //   6379: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6382: pop
-    //   6383: aload_2
-    //   6384: aload 4
-    //   6386: getfield 1005	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:rpt_msg_now_follow_anchor	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   6389: invokevirtual 1000	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   6392: invokevirtual 866	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6395: pop
-    //   6396: aload 17
-    //   6398: iconst_2
-    //   6399: aload_2
-    //   6400: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6403: invokestatic 804	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   6406: aload 4
-    //   6408: astore_2
-    //   6409: goto +51 -> 6460
-    //   6412: astore_2
-    //   6413: invokestatic 649	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6416: ifeq +42 -> 6458
-    //   6419: new 167	java/lang/StringBuilder
-    //   6422: dup
-    //   6423: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   6426: astore 4
-    //   6428: aload 4
-    //   6430: ldc_w 1007
-    //   6433: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6436: pop
-    //   6437: aload 4
-    //   6439: aload_2
-    //   6440: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
-    //   6443: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6446: pop
-    //   6447: aload 17
-    //   6449: iconst_2
-    //   6450: aload 4
-    //   6452: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6455: invokestatic 1010	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   6458: aconst_null
-    //   6459: astore_2
-    //   6460: aload 20
-    //   6462: aload_2
-    //   6463: putfield 1014	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyNowData	Ltencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData;
-    //   6466: aload_3
-    //   6467: bipush 51
-    //   6469: iconst_1
-    //   6470: aload 20
-    //   6472: iload 11
-    //   6474: invokevirtual 1018	com/tencent/mobileqq/nearby/business/NearbyCardHandler:notifyUI	(IZLjava/lang/Object;Z)V
-    //   6477: aload_3
-    //   6478: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6481: getstatic 1023	com/tencent/mobileqq/app/QQManagerFactory:NEARBY_CARD_MANAGER	I
-    //   6484: invokevirtual 1027	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   6487: checkcast 1029	com/tencent/mobileqq/nearby/NearbyCardManager
-    //   6490: astore_2
-    //   6491: iload 6
-    //   6493: bipush 51
-    //   6495: if_icmpne +18 -> 6513
-    //   6498: aload_2
-    //   6499: aload 20
-    //   6501: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   6504: invokestatic 1034	android/os/SystemClock:elapsedRealtime	()J
-    //   6507: invokevirtual 1037	com/tencent/mobileqq/nearby/NearbyCardManager:b	(Ljava/lang/String;J)V
-    //   6510: goto +18 -> 6528
-    //   6513: aload_2
-    //   6514: aload 20
-    //   6516: getfield 416	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
-    //   6519: invokestatic 328	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   6522: invokestatic 1034	android/os/SystemClock:elapsedRealtime	()J
-    //   6525: invokevirtual 1039	com/tencent/mobileqq/nearby/NearbyCardManager:a	(Ljava/lang/String;J)V
-    //   6528: invokestatic 657	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   6531: ifeq +56 -> 6587
-    //   6534: new 167	java/lang/StringBuilder
-    //   6537: dup
-    //   6538: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   6541: astore_2
-    //   6542: aload_2
-    //   6543: ldc_w 1041
-    //   6546: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6549: pop
-    //   6550: aload_2
-    //   6551: aload 20
-    //   6553: getfield 416	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
-    //   6556: invokevirtual 229	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6559: pop
-    //   6560: aload_2
-    //   6561: ldc_w 1043
-    //   6564: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6567: pop
-    //   6568: aload_2
-    //   6569: invokestatic 1034	android/os/SystemClock:elapsedRealtime	()J
-    //   6572: invokevirtual 229	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6575: pop
-    //   6576: ldc_w 1045
-    //   6579: iconst_4
-    //   6580: aload_2
-    //   6581: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6584: invokestatic 664	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   6587: aload_3
-    //   6588: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6591: getstatic 1048	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
-    //   6594: invokevirtual 1027	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   6597: checkcast 1050	com/tencent/mobileqq/app/FriendsManager
-    //   6600: astore_2
-    //   6601: invokestatic 1948	com/tencent/mobileqq/nearby/NearbyUtils:b	()Z
-    //   6604: ifeq +55 -> 6659
-    //   6607: aload 17
-    //   6609: iconst_5
-    //   6610: anewarray 1178	java/lang/Object
-    //   6613: dup
-    //   6614: iconst_0
-    //   6615: ldc_w 1950
-    //   6618: aastore
-    //   6619: dup
-    //   6620: iconst_1
-    //   6621: iload 6
-    //   6623: invokestatic 1186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   6626: aastore
-    //   6627: dup
-    //   6628: iconst_2
-    //   6629: aload 20
-    //   6631: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   6634: aastore
-    //   6635: dup
-    //   6636: iconst_3
-    //   6637: aload_3
-    //   6638: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6641: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   6644: aastore
-    //   6645: dup
-    //   6646: iconst_4
-    //   6647: aload 21
-    //   6649: getfield 1265	SummaryCard/RespSummaryCard:lUIN	J
-    //   6652: invokestatic 137	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6655: aastore
-    //   6656: invokestatic 1953	com/tencent/mobileqq/nearby/NearbyUtils:a	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6659: iload 6
-    //   6661: ifeq +21 -> 6682
-    //   6664: aload 20
-    //   6666: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   6669: aload_3
-    //   6670: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6673: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   6676: invokevirtual 1273	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6679: ifeq +92 -> 6771
-    //   6682: aload_2
-    //   6683: aload 20
-    //   6685: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   6688: invokevirtual 1053	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
-    //   6691: astore 4
-    //   6693: aload 4
-    //   6695: aload 20
-    //   6697: getfield 771	com/tencent/mobileqq/data/NearbyPeopleCard:likeCountInc	I
-    //   6700: putfield 1058	com/tencent/mobileqq/data/Card:iVoteIncrement	I
-    //   6703: aload 4
-    //   6705: aload 20
-    //   6707: getfield 765	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
-    //   6710: i2l
-    //   6711: putfield 1061	com/tencent/mobileqq/data/Card:lVoteCount	J
-    //   6714: aload_3
-    //   6715: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6718: invokevirtual 1064	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   6721: aload 4
-    //   6723: getfield 1061	com/tencent/mobileqq/data/Card:lVoteCount	J
-    //   6726: aload 4
-    //   6728: getfield 1058	com/tencent/mobileqq/data/Card:iVoteIncrement	I
-    //   6731: invokestatic 1069	com/tencent/mobileqq/nearby/api/NearbySPUtil:a	(Ljava/lang/String;JI)Z
+    //   5916: getfield 1865	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NearbyNowData:rpt_msg_now_haiwan	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   5919: invokevirtual 700	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   5922: astore_2
+    //   5923: aload_2
+    //   5924: ifnull +355 -> 6279
+    //   5927: new 603	org/json/JSONArray
+    //   5930: dup
+    //   5931: invokespecial 604	org/json/JSONArray:<init>	()V
+    //   5934: astore 4
+    //   5936: iconst_0
+    //   5937: istore 5
+    //   5939: iload 5
+    //   5941: aload_2
+    //   5942: invokeinterface 609 1 0
+    //   5947: if_icmpge +273 -> 6220
+    //   5950: new 1867	org/json/JSONObject
+    //   5953: dup
+    //   5954: invokespecial 1868	org/json/JSONObject:<init>	()V
+    //   5957: astore 15
+    //   5959: new 1870	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem
+    //   5962: dup
+    //   5963: invokespecial 1871	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:<init>	()V
+    //   5966: astore 16
+    //   5968: aload 16
+    //   5970: aload_2
+    //   5971: iload 5
+    //   5973: invokeinterface 612 2 0
+    //   5978: checkcast 1873	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
+    //   5981: getfield 1876	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:bytes_title	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   5984: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   5987: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   5990: putfield 1878	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:title	Ljava/lang/String;
+    //   5993: aload 16
+    //   5995: getfield 1878	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:title	Ljava/lang/String;
+    //   5998: invokestatic 1881	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6001: ifne +17 -> 6018
+    //   6004: aload 15
+    //   6006: ldc_w 1882
+    //   6009: aload 16
+    //   6011: getfield 1878	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:title	Ljava/lang/String;
+    //   6014: invokevirtual 1885	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   6017: pop
+    //   6018: aload 16
+    //   6020: aload_2
+    //   6021: iload 5
+    //   6023: invokeinterface 612 2 0
+    //   6028: checkcast 1873	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
+    //   6031: getfield 1888	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:bytes_icon	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   6034: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   6037: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   6040: putfield 1891	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:icon	Ljava/lang/String;
+    //   6043: aload 16
+    //   6045: getfield 1891	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:icon	Ljava/lang/String;
+    //   6048: invokestatic 1881	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6051: ifne +17 -> 6068
+    //   6054: aload 15
+    //   6056: ldc_w 1892
+    //   6059: aload 16
+    //   6061: getfield 1891	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:icon	Ljava/lang/String;
+    //   6064: invokevirtual 1885	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   6067: pop
+    //   6068: aload 16
+    //   6070: aload_2
+    //   6071: iload 5
+    //   6073: invokeinterface 612 2 0
+    //   6078: checkcast 1873	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
+    //   6081: getfield 1895	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:bytes_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   6084: invokevirtual 365	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   6087: invokevirtual 615	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   6090: putfield 1897	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:url	Ljava/lang/String;
+    //   6093: aload 16
+    //   6095: getfield 1897	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:url	Ljava/lang/String;
+    //   6098: invokestatic 1881	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6101: ifne +17 -> 6118
+    //   6104: aload 15
+    //   6106: ldc_w 1898
+    //   6109: aload 16
+    //   6111: getfield 1897	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:url	Ljava/lang/String;
+    //   6114: invokevirtual 1885	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   6117: pop
+    //   6118: aload 16
+    //   6120: aload_2
+    //   6121: iload 5
+    //   6123: invokeinterface 612 2 0
+    //   6128: checkcast 1873	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
+    //   6131: getfield 1901	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:uint32_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   6134: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   6137: putfield 1904	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:status	I
+    //   6140: aload 15
+    //   6142: ldc_w 1905
+    //   6145: aload 16
+    //   6147: getfield 1904	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:status	I
+    //   6150: invokevirtual 1908	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   6153: pop
+    //   6154: aload 16
+    //   6156: aload_2
+    //   6157: iload 5
+    //   6159: invokeinterface 612 2 0
+    //   6164: checkcast 1873	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan
+    //   6167: getfield 1911	com/tencent/mobileqq/troop/org/pb/oidb_0xac5$NowHaiWan:uint32_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   6170: invokevirtual 339	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   6173: putfield 1913	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:type	I
+    //   6176: aload 15
+    //   6178: ldc_w 1914
+    //   6181: aload 16
+    //   6183: getfield 1913	com/tencent/mobileqq/data/NearbyPeopleCard$HiWanItem:type	I
+    //   6186: invokevirtual 1908	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   6189: pop
+    //   6190: aload 20
+    //   6192: getfield 1858	com/tencent/mobileqq/data/NearbyPeopleCard:hiWanList	Ljava/util/List;
+    //   6195: aload 16
+    //   6197: invokeinterface 619 2 0
+    //   6202: pop
+    //   6203: aload 4
+    //   6205: aload 15
+    //   6207: invokevirtual 623	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   6210: pop
+    //   6211: iload 5
+    //   6213: iconst_1
+    //   6214: iadd
+    //   6215: istore 5
+    //   6217: goto -278 -> 5939
+    //   6220: aload 20
+    //   6222: aload 4
+    //   6224: invokevirtual 624	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   6227: putfield 1917	com/tencent/mobileqq/data/NearbyPeopleCard:hiWanInfo	Ljava/lang/String;
+    //   6230: goto +49 -> 6279
+    //   6233: astore_2
+    //   6234: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6237: ifeq +42 -> 6279
+    //   6240: new 68	java/lang/StringBuilder
+    //   6243: dup
+    //   6244: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   6247: astore 4
+    //   6249: aload 4
+    //   6251: ldc_w 1919
+    //   6254: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6257: pop
+    //   6258: aload 4
+    //   6260: aload_2
+    //   6261: invokevirtual 632	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   6264: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6267: pop
+    //   6268: aload 17
+    //   6270: iconst_2
+    //   6271: aload 4
+    //   6273: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6276: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6279: aload 20
+    //   6281: aload 21
+    //   6283: getfield 1855	SummaryCard/RespSummaryCard:vNowInfo	[B
+    //   6286: putfield 959	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyNowDataBytes	[B
+    //   6289: new 961	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData
+    //   6292: dup
+    //   6293: invokespecial 962	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:<init>	()V
+    //   6296: astore 4
+    //   6298: aload 4
+    //   6300: aload 21
+    //   6302: getfield 1855	SummaryCard/RespSummaryCard:vNowInfo	[B
+    //   6305: invokevirtual 963	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   6308: pop
+    //   6309: aload 4
+    //   6311: astore_2
+    //   6312: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6315: ifeq +138 -> 6453
+    //   6318: new 68	java/lang/StringBuilder
+    //   6321: dup
+    //   6322: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   6325: astore_2
+    //   6326: aload_2
+    //   6327: ldc_w 965
+    //   6330: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6333: pop
+    //   6334: aload_2
+    //   6335: aload 4
+    //   6337: getfield 968	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:bytes_more_video_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   6340: invokevirtual 969	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   6343: invokevirtual 841	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   6346: pop
+    //   6347: aload_2
+    //   6348: ldc_w 971
+    //   6351: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6354: pop
+    //   6355: aload_2
+    //   6356: aload 4
+    //   6358: getfield 974	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:rpt_msg_now_video_feed	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   6361: invokevirtual 975	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   6364: invokevirtual 841	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   6367: pop
+    //   6368: aload_2
+    //   6369: ldc_w 977
+    //   6372: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6375: pop
+    //   6376: aload_2
+    //   6377: aload 4
+    //   6379: getfield 980	tencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData:rpt_msg_now_follow_anchor	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   6382: invokevirtual 975	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   6385: invokevirtual 841	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   6388: pop
+    //   6389: aload 17
+    //   6391: iconst_2
+    //   6392: aload_2
+    //   6393: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6396: invokestatic 779	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6399: aload 4
+    //   6401: astore_2
+    //   6402: goto +51 -> 6453
+    //   6405: astore_2
+    //   6406: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6409: ifeq +42 -> 6451
+    //   6412: new 68	java/lang/StringBuilder
+    //   6415: dup
+    //   6416: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   6419: astore 4
+    //   6421: aload 4
+    //   6423: ldc_w 982
+    //   6426: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6429: pop
+    //   6430: aload 4
+    //   6432: aload_2
+    //   6433: invokevirtual 707	java/lang/Exception:toString	()Ljava/lang/String;
+    //   6436: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6439: pop
+    //   6440: aload 17
+    //   6442: iconst_2
+    //   6443: aload 4
+    //   6445: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6448: invokestatic 985	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6451: aconst_null
+    //   6452: astore_2
+    //   6453: aload 20
+    //   6455: aload_2
+    //   6456: putfield 989	com/tencent/mobileqq/data/NearbyPeopleCard:nearbyNowData	Ltencent/im/oidb/cmd0xac5/cmd0xac5$NearbyNowData;
+    //   6459: aload_3
+    //   6460: bipush 51
+    //   6462: iconst_1
+    //   6463: aload 20
+    //   6465: iload 11
+    //   6467: invokevirtual 993	com/tencent/mobileqq/nearby/business/NearbyCardHandler:notifyUI	(IZLjava/lang/Object;Z)V
+    //   6470: aload_3
+    //   6471: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6474: getstatic 998	com/tencent/mobileqq/app/QQManagerFactory:NEARBY_CARD_MANAGER	I
+    //   6477: invokevirtual 1002	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   6480: checkcast 1004	com/tencent/mobileqq/nearby/NearbyCardManager
+    //   6483: astore_2
+    //   6484: iload 6
+    //   6486: bipush 51
+    //   6488: if_icmpne +18 -> 6506
+    //   6491: aload_2
+    //   6492: aload 20
+    //   6494: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   6497: invokestatic 1009	android/os/SystemClock:elapsedRealtime	()J
+    //   6500: invokevirtual 1012	com/tencent/mobileqq/nearby/NearbyCardManager:b	(Ljava/lang/String;J)V
+    //   6503: goto +18 -> 6521
+    //   6506: aload_2
+    //   6507: aload 20
+    //   6509: getfield 344	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
+    //   6512: invokestatic 256	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   6515: invokestatic 1009	android/os/SystemClock:elapsedRealtime	()J
+    //   6518: invokevirtual 1014	com/tencent/mobileqq/nearby/NearbyCardManager:a	(Ljava/lang/String;J)V
+    //   6521: invokestatic 635	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   6524: ifeq +56 -> 6580
+    //   6527: new 68	java/lang/StringBuilder
+    //   6530: dup
+    //   6531: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   6534: astore_2
+    //   6535: aload_2
+    //   6536: ldc_w 1016
+    //   6539: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6542: pop
+    //   6543: aload_2
+    //   6544: aload 20
+    //   6546: getfield 344	com/tencent/mobileqq/data/NearbyPeopleCard:tinyId	J
+    //   6549: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   6552: pop
+    //   6553: aload_2
+    //   6554: ldc_w 1018
+    //   6557: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6560: pop
+    //   6561: aload_2
+    //   6562: invokestatic 1009	android/os/SystemClock:elapsedRealtime	()J
+    //   6565: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   6568: pop
+    //   6569: ldc_w 1020
+    //   6572: iconst_4
+    //   6573: aload_2
+    //   6574: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6577: invokestatic 642	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   6580: aload_3
+    //   6581: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6584: getstatic 1023	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   6587: invokevirtual 1002	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   6590: checkcast 1025	com/tencent/mobileqq/app/FriendsManager
+    //   6593: astore_2
+    //   6594: invokestatic 1923	com/tencent/mobileqq/nearby/NearbyUtils:b	()Z
+    //   6597: ifeq +55 -> 6652
+    //   6600: aload 17
+    //   6602: iconst_5
+    //   6603: anewarray 1153	java/lang/Object
+    //   6606: dup
+    //   6607: iconst_0
+    //   6608: ldc_w 1925
+    //   6611: aastore
+    //   6612: dup
+    //   6613: iconst_1
+    //   6614: iload 6
+    //   6616: invokestatic 1161	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   6619: aastore
+    //   6620: dup
+    //   6621: iconst_2
+    //   6622: aload 20
+    //   6624: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   6627: aastore
+    //   6628: dup
+    //   6629: iconst_3
+    //   6630: aload_3
+    //   6631: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6634: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   6637: aastore
+    //   6638: dup
+    //   6639: iconst_4
+    //   6640: aload 21
+    //   6642: getfield 1240	SummaryCard/RespSummaryCard:lUIN	J
+    //   6645: invokestatic 347	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6648: aastore
+    //   6649: invokestatic 1928	com/tencent/mobileqq/nearby/NearbyUtils:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6652: iload 6
+    //   6654: ifeq +21 -> 6675
+    //   6657: aload 20
+    //   6659: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   6662: aload_3
+    //   6663: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6666: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   6669: invokevirtual 1248	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6672: ifeq +92 -> 6764
+    //   6675: aload_2
+    //   6676: aload 20
+    //   6678: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   6681: invokevirtual 1028	com/tencent/mobileqq/app/FriendsManager:g	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   6684: astore 4
+    //   6686: aload 4
+    //   6688: aload 20
+    //   6690: getfield 747	com/tencent/mobileqq/data/NearbyPeopleCard:likeCountInc	I
+    //   6693: putfield 1033	com/tencent/mobileqq/data/Card:iVoteIncrement	I
+    //   6696: aload 4
+    //   6698: aload 20
+    //   6700: getfield 741	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
+    //   6703: i2l
+    //   6704: putfield 1036	com/tencent/mobileqq/data/Card:lVoteCount	J
+    //   6707: aload_3
+    //   6708: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6711: invokevirtual 1039	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   6714: aload 4
+    //   6716: getfield 1036	com/tencent/mobileqq/data/Card:lVoteCount	J
+    //   6719: aload 4
+    //   6721: getfield 1033	com/tencent/mobileqq/data/Card:iVoteIncrement	I
+    //   6724: invokestatic 1044	com/tencent/mobileqq/nearby/api/NearbySPUtil:a	(Ljava/lang/String;JI)Z
+    //   6727: pop
+    //   6728: aload_2
+    //   6729: aload 4
+    //   6731: invokevirtual 1047	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   6734: pop
-    //   6735: aload_2
-    //   6736: aload 4
-    //   6738: invokevirtual 1072	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
-    //   6741: pop
-    //   6742: aload_3
-    //   6743: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6746: invokevirtual 1064	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   6749: ldc_w 1074
-    //   6752: aload 20
-    //   6754: getfield 486	com/tencent/mobileqq/data/NearbyPeopleCard:college	Ljava/lang/String;
-    //   6757: invokestatic 1077	com/tencent/mobileqq/nearby/api/NearbySPUtil:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)Z
-    //   6760: pop
-    //   6761: goto +10 -> 6771
-    //   6764: astore 4
-    //   6766: aload 4
-    //   6768: invokevirtual 1080	java/lang/Exception:printStackTrace	()V
-    //   6771: aload_3
-    //   6772: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6775: invokevirtual 404	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   6778: aload 20
-    //   6780: getfield 406	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
-    //   6783: invokevirtual 1273	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6786: ifeq +32 -> 6818
-    //   6789: aload 20
-    //   6791: getfield 1083	com/tencent/mobileqq/data/NearbyPeopleCard:charmLevel	I
-    //   6794: ifle +24 -> 6818
-    //   6797: aload_3
-    //   6798: getfield 27	com/tencent/mobileqq/nearby/business/NearbyCardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6801: getstatic 1086	com/tencent/mobileqq/app/QQManagerFactory:HOT_CHAT_MANAGER	I
-    //   6804: invokevirtual 1027	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   6807: checkcast 1088	com/tencent/mobileqq/app/HotChatManager
-    //   6810: aload 20
-    //   6812: getfield 1083	com/tencent/mobileqq/data/NearbyPeopleCard:charmLevel	I
-    //   6815: invokevirtual 1090	com/tencent/mobileqq/app/HotChatManager:a	(I)V
-    //   6818: aload_2
-    //   6819: aload 20
-    //   6821: invokevirtual 1093	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/NearbyPeopleCard;)V
-    //   6824: aload 20
-    //   6826: invokevirtual 339	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
-    //   6829: sipush 1000
-    //   6832: if_icmpne +187 -> 7019
-    //   6835: aload 19
-    //   6837: iconst_0
-    //   6838: ldc_w 323
-    //   6841: invokevirtual 1098	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   6844: aconst_null
-    //   6845: aconst_null
-    //   6846: aconst_null
-    //   6847: aconst_null
-    //   6848: aconst_null
-    //   6849: aconst_null
-    //   6850: aconst_null
-    //   6851: invokevirtual 1102	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   6854: astore_2
-    //   6855: aload_2
-    //   6856: ifnull +444 -> 7300
+    //   6735: aload_3
+    //   6736: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6739: invokevirtual 1039	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   6742: ldc_w 1049
+    //   6745: aload 20
+    //   6747: getfield 425	com/tencent/mobileqq/data/NearbyPeopleCard:college	Ljava/lang/String;
+    //   6750: invokestatic 1052	com/tencent/mobileqq/nearby/api/NearbySPUtil:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)Z
+    //   6753: pop
+    //   6754: goto +10 -> 6764
+    //   6757: astore 4
+    //   6759: aload 4
+    //   6761: invokevirtual 1055	java/lang/Exception:printStackTrace	()V
+    //   6764: aload_3
+    //   6765: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6768: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   6771: aload 20
+    //   6773: getfield 334	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   6776: invokevirtual 1248	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6779: ifeq +32 -> 6811
+    //   6782: aload 20
+    //   6784: getfield 1058	com/tencent/mobileqq/data/NearbyPeopleCard:charmLevel	I
+    //   6787: ifle +24 -> 6811
+    //   6790: aload_3
+    //   6791: getfield 30	com/tencent/mobileqq/nearby/business/NearbyCardHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6794: getstatic 1061	com/tencent/mobileqq/app/QQManagerFactory:HOT_CHAT_MANAGER	I
+    //   6797: invokevirtual 1002	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   6800: checkcast 1063	com/tencent/mobileqq/app/HotChatManager
+    //   6803: aload 20
+    //   6805: getfield 1058	com/tencent/mobileqq/data/NearbyPeopleCard:charmLevel	I
+    //   6808: invokevirtual 1065	com/tencent/mobileqq/app/HotChatManager:a	(I)V
+    //   6811: aload_2
+    //   6812: aload 20
+    //   6814: invokevirtual 1068	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/NearbyPeopleCard;)V
+    //   6817: aload 20
+    //   6819: invokevirtual 267	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
+    //   6822: sipush 1000
+    //   6825: if_icmpne +185 -> 7010
+    //   6828: aload 19
+    //   6830: iconst_0
+    //   6831: ldc 249
+    //   6833: invokevirtual 1073	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   6836: aconst_null
+    //   6837: aconst_null
+    //   6838: aconst_null
+    //   6839: aconst_null
+    //   6840: aconst_null
+    //   6841: aconst_null
+    //   6842: aconst_null
+    //   6843: invokevirtual 1077	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   6846: astore_2
+    //   6847: aload_2
+    //   6848: ifnull +443 -> 7291
+    //   6851: aload_2
+    //   6852: invokeinterface 1082 1 0
+    //   6857: istore 5
     //   6859: aload_2
-    //   6860: invokeinterface 1107 1 0
-    //   6865: istore 5
-    //   6867: aload_2
-    //   6868: invokeinterface 1110 1 0
-    //   6873: pop
+    //   6860: invokeinterface 1085 1 0
+    //   6865: pop
+    //   6866: iload 5
+    //   6868: sipush 200
+    //   6871: if_icmple +420 -> 7291
     //   6874: iload 5
-    //   6876: sipush 200
-    //   6879: if_icmple +421 -> 7300
-    //   6882: iload 5
-    //   6884: bipush 100
-    //   6886: if_icmple +19 -> 6905
-    //   6889: aload_2
-    //   6890: invokeinterface 1113 1 0
-    //   6895: pop
-    //   6896: iload 5
-    //   6898: iconst_1
-    //   6899: isub
-    //   6900: istore 5
-    //   6902: goto -20 -> 6882
-    //   6905: aload_2
-    //   6906: aload_2
-    //   6907: ldc_w 1115
-    //   6910: invokeinterface 1118 2 0
-    //   6915: invokeinterface 1121 2 0
-    //   6920: istore 5
-    //   6922: new 167	java/lang/StringBuilder
-    //   6925: dup
-    //   6926: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   6929: astore_3
+    //   6876: bipush 100
+    //   6878: if_icmple +19 -> 6897
+    //   6881: aload_2
+    //   6882: invokeinterface 1088 1 0
+    //   6887: pop
+    //   6888: iload 5
+    //   6890: iconst_1
+    //   6891: isub
+    //   6892: istore 5
+    //   6894: goto -20 -> 6874
+    //   6897: aload_2
+    //   6898: aload_2
+    //   6899: ldc_w 1090
+    //   6902: invokeinterface 1093 2 0
+    //   6907: invokeinterface 1096 2 0
+    //   6912: istore 5
+    //   6914: new 68	java/lang/StringBuilder
+    //   6917: dup
+    //   6918: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   6921: astore_3
+    //   6922: aload_3
+    //   6923: ldc_w 1098
+    //   6926: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6929: pop
     //   6930: aload_3
-    //   6931: ldc_w 1123
-    //   6934: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6937: pop
-    //   6938: aload_3
-    //   6939: ldc_w 323
-    //   6942: invokevirtual 1098	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   6945: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6948: pop
-    //   6949: aload_3
-    //   6950: ldc_w 1125
-    //   6953: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6956: pop
-    //   6957: aload_3
-    //   6958: ldc_w 1115
-    //   6961: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6964: pop
-    //   6965: aload_3
-    //   6966: ldc_w 1127
-    //   6969: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6972: pop
-    //   6973: aload_3
-    //   6974: iload 5
-    //   6976: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6979: pop
-    //   6980: aload_3
-    //   6981: ldc_w 1129
-    //   6984: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6987: pop
-    //   6988: aload_3
-    //   6989: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6992: astore 4
-    //   6994: aload_2
-    //   6995: astore_3
-    //   6996: aload 19
-    //   6998: aload 4
-    //   7000: invokevirtual 1132	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
-    //   7003: pop
-    //   7004: goto +3 -> 7007
-    //   7007: aload_2
-    //   7008: astore_3
-    //   7009: aload 19
-    //   7011: aload 20
-    //   7013: invokevirtual 1136	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   7016: goto +35 -> 7051
-    //   7019: aload 20
-    //   7021: invokevirtual 339	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
-    //   7024: sipush 1001
-    //   7027: if_icmpeq +14 -> 7041
-    //   7030: aload 20
-    //   7032: invokevirtual 339	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
-    //   7035: sipush 1002
-    //   7038: if_icmpne +11 -> 7049
-    //   7041: aload 19
-    //   7043: aload 20
-    //   7045: invokevirtual 1140	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   7048: pop
-    //   7049: aconst_null
-    //   7050: astore_2
-    //   7051: aload_2
-    //   7052: astore_3
-    //   7053: aload 28
-    //   7055: invokevirtual 1143	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   7058: aload_2
-    //   7059: ifnull +9 -> 7068
-    //   7062: aload_2
-    //   7063: invokeinterface 1146 1 0
-    //   7068: aload 28
-    //   7070: invokevirtual 1149	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   7073: aload 19
-    //   7075: invokevirtual 1150	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   7078: return
-    //   7079: astore 4
-    //   7081: aload_3
-    //   7082: astore_2
-    //   7083: goto +12 -> 7095
-    //   7086: astore 4
-    //   7088: goto +5 -> 7093
-    //   7091: astore 4
-    //   7093: aconst_null
-    //   7094: astore_2
-    //   7095: aload_2
-    //   7096: ifnull +9 -> 7105
-    //   7099: aload_2
-    //   7100: invokeinterface 1146 1 0
-    //   7105: aload 28
-    //   7107: invokevirtual 1149	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   7110: aload 19
-    //   7112: invokevirtual 1150	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   7115: aload 4
-    //   7117: athrow
-    //   7118: aload_0
-    //   7119: bipush 51
-    //   7121: iconst_0
-    //   7122: aconst_null
-    //   7123: iload 12
-    //   7125: invokevirtual 1018	com/tencent/mobileqq/nearby/business/NearbyCardHandler:notifyUI	(IZLjava/lang/Object;Z)V
-    //   7128: return
-    //   7129: astore_2
-    //   7130: goto -1595 -> 5535
-    //   7133: astore_2
-    //   7134: goto -1602 -> 5532
-    //   7137: astore_2
-    //   7138: goto -1606 -> 5532
-    //   7141: astore_2
-    //   7142: goto -1613 -> 5529
-    //   7145: astore_2
-    //   7146: goto -1263 -> 5883
-    //   7149: astore 20
-    //   7151: iload 6
-    //   7153: istore 5
-    //   7155: goto +33 -> 7188
-    //   7158: iload 5
-    //   7160: istore 6
-    //   7162: aload_2
-    //   7163: astore 4
-    //   7165: aload_3
-    //   7166: astore 20
-    //   7168: goto -4264 -> 2904
-    //   7171: astore 20
-    //   7173: iload 6
-    //   7175: istore 5
-    //   7177: aload 18
-    //   7179: astore_3
-    //   7180: aload 16
-    //   7182: astore_2
-    //   7183: goto +5 -> 7188
-    //   7186: astore 20
-    //   7188: aload 4
-    //   7190: astore 16
-    //   7192: aload_3
-    //   7193: astore 4
-    //   7195: aload 15
-    //   7197: astore 19
-    //   7199: aload 17
-    //   7201: astore 18
-    //   7203: aload_2
-    //   7204: astore_3
-    //   7205: aload 4
-    //   7207: astore_2
-    //   7208: goto -3794 -> 3414
-    //   7211: astore 18
-    //   7213: aload 4
-    //   7215: astore 16
-    //   7217: aload 18
-    //   7219: astore 4
-    //   7221: goto -3827 -> 3394
-    //   7224: astore 18
-    //   7226: aload 4
-    //   7228: astore 16
-    //   7230: aload 18
-    //   7232: astore 4
-    //   7234: goto -3840 -> 3394
-    //   7237: aload 15
-    //   7239: astore 20
-    //   7241: aload 4
-    //   7243: astore 22
-    //   7245: aload 16
-    //   7247: astore 23
-    //   7249: iload 5
-    //   7251: istore 7
-    //   7253: aload_2
-    //   7254: astore 25
-    //   7256: aload_3
-    //   7257: astore 26
-    //   7259: goto -4248 -> 3011
-    //   7262: iconst_0
-    //   7263: istore_1
-    //   7264: goto -2883 -> 4381
-    //   7267: iconst_0
-    //   7268: istore_1
-    //   7269: goto -2865 -> 4404
-    //   7272: iconst_0
-    //   7273: istore_1
-    //   7274: goto -2802 -> 4472
-    //   7277: iconst_0
-    //   7278: istore_1
-    //   7279: goto -2784 -> 4495
-    //   7282: goto -2504 -> 4778
-    //   7285: iconst_0
-    //   7286: istore_1
-    //   7287: goto -2285 -> 5002
-    //   7290: iconst_0
-    //   7291: istore_1
-    //   7292: goto -1541 -> 5751
-    //   7295: astore 4
-    //   7297: goto -202 -> 7095
-    //   7300: goto -293 -> 7007
+    //   6931: ldc 249
+    //   6933: invokevirtual 1073	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   6936: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6939: pop
+    //   6940: aload_3
+    //   6941: ldc_w 1100
+    //   6944: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6947: pop
+    //   6948: aload_3
+    //   6949: ldc_w 1090
+    //   6952: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6955: pop
+    //   6956: aload_3
+    //   6957: ldc_w 1102
+    //   6960: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6963: pop
+    //   6964: aload_3
+    //   6965: iload 5
+    //   6967: invokevirtual 161	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   6970: pop
+    //   6971: aload_3
+    //   6972: ldc_w 1104
+    //   6975: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6978: pop
+    //   6979: aload_3
+    //   6980: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6983: astore 4
+    //   6985: aload_2
+    //   6986: astore_3
+    //   6987: aload 19
+    //   6989: aload 4
+    //   6991: invokevirtual 1107	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   6994: pop
+    //   6995: goto +3 -> 6998
+    //   6998: aload_2
+    //   6999: astore_3
+    //   7000: aload 19
+    //   7002: aload 20
+    //   7004: invokevirtual 1111	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   7007: goto +35 -> 7042
+    //   7010: aload 20
+    //   7012: invokevirtual 267	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
+    //   7015: sipush 1001
+    //   7018: if_icmpeq +14 -> 7032
+    //   7021: aload 20
+    //   7023: invokevirtual 267	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
+    //   7026: sipush 1002
+    //   7029: if_icmpne +11 -> 7040
+    //   7032: aload 19
+    //   7034: aload 20
+    //   7036: invokevirtual 1115	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   7039: pop
+    //   7040: aconst_null
+    //   7041: astore_2
+    //   7042: aload_2
+    //   7043: astore_3
+    //   7044: aload 28
+    //   7046: invokevirtual 1118	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   7049: aload_2
+    //   7050: ifnull +9 -> 7059
+    //   7053: aload_2
+    //   7054: invokeinterface 1121 1 0
+    //   7059: aload 28
+    //   7061: invokevirtual 1124	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   7064: aload 19
+    //   7066: invokevirtual 1125	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   7069: return
+    //   7070: astore 4
+    //   7072: aload_3
+    //   7073: astore_2
+    //   7074: goto +12 -> 7086
+    //   7077: astore 4
+    //   7079: goto +5 -> 7084
+    //   7082: astore 4
+    //   7084: aconst_null
+    //   7085: astore_2
+    //   7086: aload_2
+    //   7087: ifnull +9 -> 7096
+    //   7090: aload_2
+    //   7091: invokeinterface 1121 1 0
+    //   7096: aload 28
+    //   7098: invokevirtual 1124	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   7101: aload 19
+    //   7103: invokevirtual 1125	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   7106: aload 4
+    //   7108: athrow
+    //   7109: aload_0
+    //   7110: bipush 51
+    //   7112: iconst_0
+    //   7113: aconst_null
+    //   7114: iload 12
+    //   7116: invokevirtual 993	com/tencent/mobileqq/nearby/business/NearbyCardHandler:notifyUI	(IZLjava/lang/Object;Z)V
+    //   7119: return
+    //   7120: astore_2
+    //   7121: goto -1593 -> 5528
+    //   7124: astore_2
+    //   7125: goto -1600 -> 5525
+    //   7128: astore_2
+    //   7129: goto -1604 -> 5525
+    //   7132: astore_2
+    //   7133: goto -1611 -> 5522
+    //   7136: astore_2
+    //   7137: goto -1261 -> 5876
+    //   7140: astore 20
+    //   7142: iload 6
+    //   7144: istore 5
+    //   7146: goto +33 -> 7179
+    //   7149: iload 5
+    //   7151: istore 6
+    //   7153: aload_2
+    //   7154: astore 4
+    //   7156: aload_3
+    //   7157: astore 20
+    //   7159: goto -4262 -> 2897
+    //   7162: astore 20
+    //   7164: iload 6
+    //   7166: istore 5
+    //   7168: aload 18
+    //   7170: astore_3
+    //   7171: aload 16
+    //   7173: astore_2
+    //   7174: goto +5 -> 7179
+    //   7177: astore 20
+    //   7179: aload 4
+    //   7181: astore 16
+    //   7183: aload_3
+    //   7184: astore 4
+    //   7186: aload 15
+    //   7188: astore 19
+    //   7190: aload 17
+    //   7192: astore 18
+    //   7194: aload_2
+    //   7195: astore_3
+    //   7196: aload 4
+    //   7198: astore_2
+    //   7199: goto -3792 -> 3407
+    //   7202: astore 18
+    //   7204: aload 4
+    //   7206: astore 16
+    //   7208: aload 18
+    //   7210: astore 4
+    //   7212: goto -3825 -> 3387
+    //   7215: astore 18
+    //   7217: aload 4
+    //   7219: astore 16
+    //   7221: aload 18
+    //   7223: astore 4
+    //   7225: goto -3838 -> 3387
+    //   7228: aload 15
+    //   7230: astore 20
+    //   7232: aload 4
+    //   7234: astore 22
+    //   7236: aload 16
+    //   7238: astore 23
+    //   7240: iload 5
+    //   7242: istore 7
+    //   7244: aload_2
+    //   7245: astore 25
+    //   7247: aload_3
+    //   7248: astore 26
+    //   7250: goto -4246 -> 3004
+    //   7253: iconst_0
+    //   7254: istore_1
+    //   7255: goto -2881 -> 4374
+    //   7258: iconst_0
+    //   7259: istore_1
+    //   7260: goto -2863 -> 4397
+    //   7263: iconst_0
+    //   7264: istore_1
+    //   7265: goto -2800 -> 4465
+    //   7268: iconst_0
+    //   7269: istore_1
+    //   7270: goto -2782 -> 4488
+    //   7273: goto -2502 -> 4771
+    //   7276: iconst_0
+    //   7277: istore_1
+    //   7278: goto -2283 -> 4995
+    //   7281: iconst_0
+    //   7282: istore_1
+    //   7283: goto -1539 -> 5744
+    //   7286: astore 4
+    //   7288: goto -202 -> 7086
+    //   7291: goto -293 -> 6998
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	7303	0	this	NearbyCardHandler
-    //   0	7303	1	paramBoolean	boolean
-    //   0	7303	2	paramObject	Object
-    //   0	7303	3	paramBundle	Bundle
-    //   0	7303	4	paramRespHead	SummaryCard.RespHead
-    //   21	7229	5	i	int
-    //   956	6218	6	j	int
-    //   1920	5332	7	k	int
-    //   1817	1851	8	m	int
-    //   2284	564	9	n	int
-    //   1990	1259	10	i1	int
-    //   1749	4724	11	bool1	boolean
-    //   12	7112	12	bool2	boolean
-    //   64	3965	13	l	long
-    //   3	7235	15	localObject1	Object
-    //   89	7157	16	localObject2	Object
-    //   95	7105	17	localObject3	Object
-    //   870	101	18	localObject4	Object
-    //   1030	29	18	localException1	Exception
-    //   1091	2234	18	localObject5	Object
-    //   3384	7	18	localException2	Exception
-    //   3395	3807	18	localObject6	Object
-    //   7211	7	18	localException3	Exception
-    //   7224	7	18	localException4	Exception
-    //   899	6299	19	localObject7	Object
-    //   927	2426	20	localObject8	Object
-    //   3379	1	20	localException5	Exception
-    //   3412	3632	20	localRespHead	SummaryCard.RespHead
-    //   7149	1	20	localException6	Exception
-    //   7166	1	20	localBundle	Bundle
-    //   7171	1	20	localException7	Exception
-    //   7186	1	20	localException8	Exception
-    //   7239	1	20	localObject9	Object
-    //   1760	4888	21	localObject10	Object
-    //   1745	5499	22	localObject11	Object
-    //   1458	5790	23	localObject12	Object
-    //   1999	1523	24	localObject13	Object
-    //   2112	5143	25	localObject14	Object
-    //   2281	4977	26	localObject15	Object
-    //   42	1812	27	localEntityManager	EntityManager
-    //   49	7057	28	localEntityTransaction	EntityTransaction
-    //   1737	1297	29	localArrayList1	ArrayList
-    //   1972	1338	30	localcomm	com.tencent.pb.profilecard.SummaryCardBusiEntry.comm
-    //   2058	934	31	localArrayList2	ArrayList
-    //   2332	438	32	localLabel	com.tencent.pb.profilecard.SummaryCardBusiEntry.Label
-    //   2351	487	33	localProfileGroupLabel	com.tencent.mobileqq.profilecard.entity.ProfileGroupLabel
-    //   2488	321	34	localProfileColor	com.tencent.mobileqq.profilecard.entity.ProfileColor
+    //   0	7294	0	this	NearbyCardHandler
+    //   0	7294	1	paramBoolean	boolean
+    //   0	7294	2	paramObject	Object
+    //   0	7294	3	paramBundle	Bundle
+    //   0	7294	4	paramRespHead	SummaryCard.RespHead
+    //   19	7222	5	i	int
+    //   949	6216	6	j	int
+    //   1913	5330	7	k	int
+    //   1810	1851	8	m	int
+    //   2277	564	9	n	int
+    //   1983	1259	10	i1	int
+    //   1742	4724	11	bool1	boolean
+    //   11	7104	12	bool2	boolean
+    //   61	3961	13	l	long
+    //   3	7226	15	localObject1	Object
+    //   84	7153	16	localObject2	Object
+    //   90	7101	17	localObject3	Object
+    //   863	101	18	localObject4	Object
+    //   1023	29	18	localException1	Exception
+    //   1084	2234	18	localObject5	Object
+    //   3377	7	18	localException2	Exception
+    //   3388	3805	18	localObject6	Object
+    //   7202	7	18	localException3	Exception
+    //   7215	7	18	localException4	Exception
+    //   892	6297	19	localObject7	Object
+    //   920	2426	20	localObject8	Object
+    //   3372	1	20	localException5	Exception
+    //   3405	3630	20	localRespHead	SummaryCard.RespHead
+    //   7140	1	20	localException6	Exception
+    //   7157	1	20	localBundle	Bundle
+    //   7162	1	20	localException7	Exception
+    //   7177	1	20	localException8	Exception
+    //   7230	1	20	localObject9	Object
+    //   1753	4888	21	localObject10	Object
+    //   1738	5497	22	localObject11	Object
+    //   1451	5788	23	localObject12	Object
+    //   1992	1523	24	localObject13	Object
+    //   2105	5141	25	localObject14	Object
+    //   2274	4975	26	localObject15	Object
+    //   40	1807	27	localEntityManager	EntityManager
+    //   47	7050	28	localEntityTransaction	EntityTransaction
+    //   1730	1297	29	localArrayList1	ArrayList
+    //   1965	1338	30	localcomm	com.tencent.pb.profilecard.SummaryCardBusiEntry.comm
+    //   2051	934	31	localArrayList2	ArrayList
+    //   2325	438	32	localLabel	com.tencent.pb.profilecard.SummaryCardBusiEntry.Label
+    //   2344	487	33	localProfileGroupLabel	com.tencent.mobileqq.profilecard.entity.ProfileGroupLabel
+    //   2481	321	34	localProfileColor	com.tencent.mobileqq.profilecard.entity.ProfileColor
     // Exception table:
     //   from	to	target	type
-    //   901	955	1030	java/lang/Exception
-    //   958	1008	1030	java/lang/Exception
-    //   1017	1027	1030	java/lang/Exception
-    //   2416	2423	3379	java/lang/Exception
-    //   2445	2459	3379	java/lang/Exception
-    //   2481	2490	3379	java/lang/Exception
-    //   2512	2529	3379	java/lang/Exception
-    //   2551	2568	3379	java/lang/Exception
-    //   2590	2607	3379	java/lang/Exception
-    //   2629	2636	3379	java/lang/Exception
-    //   2658	2667	3379	java/lang/Exception
-    //   2689	2706	3379	java/lang/Exception
-    //   2728	2745	3379	java/lang/Exception
-    //   2767	2784	3379	java/lang/Exception
-    //   2806	2813	3379	java/lang/Exception
-    //   2835	2843	3379	java/lang/Exception
-    //   2894	2901	3379	java/lang/Exception
-    //   2926	2934	3379	java/lang/Exception
-    //   2989	2996	3379	java/lang/Exception
-    //   3033	3043	3379	java/lang/Exception
-    //   3089	3095	3379	java/lang/Exception
-    //   3117	3126	3379	java/lang/Exception
-    //   3148	3157	3379	java/lang/Exception
-    //   3179	3193	3379	java/lang/Exception
-    //   3215	3224	3379	java/lang/Exception
-    //   3246	3254	3379	java/lang/Exception
-    //   3276	3285	3379	java/lang/Exception
-    //   3307	3318	3379	java/lang/Exception
-    //   3340	3352	3379	java/lang/Exception
-    //   1974	2001	3384	java/lang/Exception
-    //   2006	2060	3384	java/lang/Exception
-    //   3794	3818	3927	java/lang/Exception
-    //   3818	3836	3927	java/lang/Exception
-    //   3839	3924	3927	java/lang/Exception
-    //   3680	3696	3931	java/lang/Exception
-    //   3701	3789	3931	java/lang/Exception
-    //   4005	4040	4043	java/lang/Exception
-    //   4077	4087	4090	java/lang/Exception
-    //   4615	4638	4723	java/lang/Exception
-    //   4641	4720	4723	java/lang/Exception
-    //   4533	4615	4727	java/lang/Exception
-    //   5597	5612	5782	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5612	5735	5782	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5735	5746	5782	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5751	5779	5782	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5914	5930	6240	java/lang/Exception
-    //   5934	5943	6240	java/lang/Exception
-    //   5946	6025	6240	java/lang/Exception
-    //   6025	6075	6240	java/lang/Exception
-    //   6075	6125	6240	java/lang/Exception
-    //   6125	6218	6240	java/lang/Exception
-    //   6227	6237	6240	java/lang/Exception
-    //   6296	6316	6412	java/lang/Exception
-    //   6319	6406	6412	java/lang/Exception
-    //   6742	6761	6764	java/lang/Exception
-    //   6996	7004	7079	finally
-    //   7009	7016	7079	finally
-    //   7053	7058	7079	finally
-    //   7019	7041	7086	finally
-    //   7041	7049	7086	finally
-    //   6824	6855	7091	finally
-    //   4342	4353	7129	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4364	4376	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4381	4399	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4404	4442	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4445	4467	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4472	4490	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4495	4533	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4533	4615	7133	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4615	4638	7137	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4641	4720	7137	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4728	4768	7137	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4768	4775	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4781	4946	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4949	4985	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4985	4997	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5002	5180	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5180	5509	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5512	5526	7141	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   5847	5880	7145	java/lang/Exception
-    //   2357	2383	7149	java/lang/Exception
-    //   2213	2223	7171	java/lang/Exception
-    //   2233	2243	7171	java/lang/Exception
-    //   2253	2264	7171	java/lang/Exception
-    //   2274	2283	7171	java/lang/Exception
-    //   2296	2309	7171	java/lang/Exception
-    //   2319	2334	7171	java/lang/Exception
-    //   2344	2353	7171	java/lang/Exception
-    //   2114	2199	7186	java/lang/Exception
-    //   2105	2114	7211	java/lang/Exception
-    //   2071	2105	7224	java/lang/Exception
-    //   6859	6874	7295	finally
-    //   6889	6896	7295	finally
-    //   6905	6994	7295	finally
+    //   894	948	1023	java/lang/Exception
+    //   951	1001	1023	java/lang/Exception
+    //   1010	1020	1023	java/lang/Exception
+    //   2409	2416	3372	java/lang/Exception
+    //   2438	2452	3372	java/lang/Exception
+    //   2474	2483	3372	java/lang/Exception
+    //   2505	2522	3372	java/lang/Exception
+    //   2544	2561	3372	java/lang/Exception
+    //   2583	2600	3372	java/lang/Exception
+    //   2622	2629	3372	java/lang/Exception
+    //   2651	2660	3372	java/lang/Exception
+    //   2682	2699	3372	java/lang/Exception
+    //   2721	2738	3372	java/lang/Exception
+    //   2760	2777	3372	java/lang/Exception
+    //   2799	2806	3372	java/lang/Exception
+    //   2828	2836	3372	java/lang/Exception
+    //   2887	2894	3372	java/lang/Exception
+    //   2919	2927	3372	java/lang/Exception
+    //   2982	2989	3372	java/lang/Exception
+    //   3026	3036	3372	java/lang/Exception
+    //   3082	3088	3372	java/lang/Exception
+    //   3110	3119	3372	java/lang/Exception
+    //   3141	3150	3372	java/lang/Exception
+    //   3172	3186	3372	java/lang/Exception
+    //   3208	3217	3372	java/lang/Exception
+    //   3239	3247	3372	java/lang/Exception
+    //   3269	3278	3372	java/lang/Exception
+    //   3300	3311	3372	java/lang/Exception
+    //   3333	3345	3372	java/lang/Exception
+    //   1967	1994	3377	java/lang/Exception
+    //   1999	2053	3377	java/lang/Exception
+    //   3787	3811	3920	java/lang/Exception
+    //   3811	3829	3920	java/lang/Exception
+    //   3832	3917	3920	java/lang/Exception
+    //   3673	3689	3924	java/lang/Exception
+    //   3694	3782	3924	java/lang/Exception
+    //   3998	4033	4036	java/lang/Exception
+    //   4070	4080	4083	java/lang/Exception
+    //   4608	4631	4716	java/lang/Exception
+    //   4634	4713	4716	java/lang/Exception
+    //   4526	4608	4720	java/lang/Exception
+    //   5590	5605	5775	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5605	5728	5775	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5728	5739	5775	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5744	5772	5775	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5907	5923	6233	java/lang/Exception
+    //   5927	5936	6233	java/lang/Exception
+    //   5939	6018	6233	java/lang/Exception
+    //   6018	6068	6233	java/lang/Exception
+    //   6068	6118	6233	java/lang/Exception
+    //   6118	6211	6233	java/lang/Exception
+    //   6220	6230	6233	java/lang/Exception
+    //   6289	6309	6405	java/lang/Exception
+    //   6312	6399	6405	java/lang/Exception
+    //   6735	6754	6757	java/lang/Exception
+    //   6987	6995	7070	finally
+    //   7000	7007	7070	finally
+    //   7044	7049	7070	finally
+    //   7010	7032	7077	finally
+    //   7032	7040	7077	finally
+    //   6817	6847	7082	finally
+    //   4335	4346	7120	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4357	4369	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4374	4392	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4397	4435	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4438	4460	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4465	4483	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4488	4526	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4526	4608	7124	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4608	4631	7128	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4634	4713	7128	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4721	4761	7128	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4761	4768	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4774	4939	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4942	4978	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4978	4990	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4995	5173	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5173	5502	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5505	5519	7132	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   5840	5873	7136	java/lang/Exception
+    //   2350	2376	7140	java/lang/Exception
+    //   2206	2216	7162	java/lang/Exception
+    //   2226	2236	7162	java/lang/Exception
+    //   2246	2257	7162	java/lang/Exception
+    //   2267	2276	7162	java/lang/Exception
+    //   2289	2302	7162	java/lang/Exception
+    //   2312	2327	7162	java/lang/Exception
+    //   2337	2346	7162	java/lang/Exception
+    //   2107	2192	7177	java/lang/Exception
+    //   2098	2107	7202	java/lang/Exception
+    //   2064	2098	7215	java/lang/Exception
+    //   6851	6866	7286	finally
+    //   6881	6888	7286	finally
+    //   6897	6985	7286	finally
+  }
+  
+  private long b(String paramString)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      label7:
+      break label7;
+    }
+    return 0L;
+  }
+  
+  private NowSummaryCard.LocationInfo b()
+  {
+    NowSummaryCard.LocationInfo localLocationInfo = new NowSummaryCard.LocationInfo();
+    Object localObject = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("NearbyProtocolCoder.Encounter");
+    if ((localObject != null) && (((SosoLbsInfo)localObject).mLocation != null))
+    {
+      localObject = ((SosoLbsInfo)localObject).mLocation;
+      long l1 = Double.valueOf(((SosoLocation)localObject).mLat02 * 1000000.0D).longValue();
+      long l2 = Double.valueOf(((SosoLocation)localObject).mLon02 * 1000000.0D).longValue();
+      localLocationInfo.latitude.set(Long.valueOf(l1).longValue());
+      localLocationInfo.longitude.set(Long.valueOf(l2).longValue());
+    }
+    return localLocationInfo;
+  }
+  
+  private NowSummaryCard.ClientInfo c()
+  {
+    NowSummaryCard.ClientInfo localClientInfo = new NowSummaryCard.ClientInfo();
+    localClientInfo.client_version.set(ByteStringMicro.copyFrom(AppSetting.h().getBytes()));
+    localClientInfo.platform.set(2);
+    localClientInfo.imei.set(ByteStringMicro.copyFrom(MobileInfoUtil.getImei().getBytes()));
+    return localClientInfo;
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
@@ -4452,7 +4471,7 @@ public class NearbyCardHandler
         } else {
           paramToServiceMsg = null;
         }
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        paramObject = this.c;
         localObject2 = paramObject.getEntityManagerFactory(paramObject.getAccount()).createEntityManager();
         int n;
         if ((i == 0) && (TextUtils.isEmpty(str)) && (paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty())) {
@@ -4470,10 +4489,10 @@ public class NearbyCardHandler
           paramObject.append(k);
           paramObject.append(";");
           ((EntityManager)localObject2).execSQL(paramObject.toString());
-          paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+          paramObject = this.c.getApplication();
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("dating_pref");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          ((StringBuilder)localObject1).append(this.c.getCurrentAccountUin());
           paramObject = paramObject.getSharedPreferences(((StringBuilder)localObject1).toString(), 0).edit();
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("list_last_update_time_");
@@ -4539,7 +4558,7 @@ public class NearbyCardHandler
       NearbyUtils.a("Q.nearby_people_card.", "handle_oidb_0x9c8_0", new Object[] { Integer.valueOf(i2), Boolean.valueOf(false), paramToServiceMsg });
       return;
     }
-    notifyUI(1, false, new Object[] { localObject2, localObject2, null, null, "", localObject2, localObject2, HardCodeUtil.a(2131707151) });
+    notifyUI(1, false, new Object[] { localObject2, localObject2, null, null, "", localObject2, localObject2, HardCodeUtil.a(2131904985) });
   }
   
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -4562,18 +4581,18 @@ public class NearbyCardHandler
         bool1 = false;
       }
       paramObject = "";
-      label431:
+      label430:
       boolean bool2;
       if (i == 0)
       {
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        paramFromServiceMsg = this.c;
         localEntityManager = paramFromServiceMsg.getEntityManagerFactory(paramFromServiceMsg.getAccount()).createEntityManager();
-        Object localObject2 = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() });
+        Object localObject2 = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { this.c.getCurrentAccountUin() });
         paramFromServiceMsg = (FromServiceMsg)localObject2;
         if (localObject2 == null)
         {
           localObject2 = new NearbyPeopleCard();
-          ((NearbyPeopleCard)localObject2).uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+          ((NearbyPeopleCard)localObject2).uin = this.c.getCurrentAccountUin();
           paramFromServiceMsg = (FromServiceMsg)localObject2;
           if (QLog.isColorLevel())
           {
@@ -4589,7 +4608,7 @@ public class NearbyCardHandler
         }
         localObject1 = paramFromServiceMsg.updateEditPicInfos((byte[])localObject1, (PicInfo)paramToServiceMsg.extraData.getParcelable("avatar_picinfo"));
         if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
-          NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "nearby_people_avatar_upload_ok", Integer.valueOf(1));
+          NearbySPUtil.b(this.c.getAccount(), "nearby_people_avatar_upload_ok", Integer.valueOf(1));
         }
         localObject1 = paramToServiceMsg.extraData.getByteArray("9c7_body");
         if ((localObject1 != null) && (localObject1.length > 0))
@@ -4604,7 +4623,7 @@ public class NearbyCardHandler
             }
             catch (Exception localException1) {}
             if (!NearbyCardConstants.a) {
-              break label431;
+              break label430;
             }
           }
           catch (Exception localException2) {}
@@ -4629,9 +4648,9 @@ public class NearbyCardHandler
         if (paramToServiceMsg.extraData.containsKey("sex"))
         {
           paramFromServiceMsg.gender = paramToServiceMsg.extraData.getByte("sex");
-          localNearbyCardManager = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+          localNearbyCardManager = (NearbyCardManager)this.c.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
           if (localNearbyCardManager != null) {
-            localNearbyCardManager.b(paramFromServiceMsg.gender);
+            localNearbyCardManager.c(paramFromServiceMsg.gender);
           }
         }
         if (paramToServiceMsg.extraData.containsKey("birthday"))
@@ -4639,9 +4658,9 @@ public class NearbyCardHandler
           paramFromServiceMsg.birthday = paramToServiceMsg.extraData.getInt("birthday");
           paramFromServiceMsg.age = paramToServiceMsg.extraData.getInt("age");
           paramFromServiceMsg.constellation = ((byte)paramToServiceMsg.extraData.getInt("key_constellation"));
-          localNearbyCardManager = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+          localNearbyCardManager = (NearbyCardManager)this.c.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
           if (localNearbyCardManager != null) {
-            localNearbyCardManager.a(paramFromServiceMsg.age);
+            localNearbyCardManager.b(paramFromServiceMsg.age);
           }
         }
         if (paramToServiceMsg.extraData.containsKey("profession")) {
@@ -4655,7 +4674,7 @@ public class NearbyCardHandler
           paramFromServiceMsg.college = paramToServiceMsg.extraData.getString("college");
           try
           {
-            NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "self_school_name", paramFromServiceMsg.college);
+            NearbySPUtil.b(this.c.getCurrentAccountUin(), "self_school_name", paramFromServiceMsg.college);
           }
           catch (Throwable localThrowable)
           {
@@ -4719,7 +4738,7 @@ public class NearbyCardHandler
       notifyUI(3, bool2, new Object[] { paramToServiceMsg, Boolean.valueOf(bool1), paramObject });
       paramFromServiceMsg = new HashMap();
       paramFromServiceMsg.put("errorCode", String.valueOf(i));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actEditNearbyProfile", bool2, l2 - l3, 0L, paramFromServiceMsg, "");
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.d.getCurrentAccountUin(), "actEditNearbyProfile", bool2, l2 - l3, 0L, paramFromServiceMsg, "");
       NearbyUtils.a("Q.nearby_people_card.", "handle_oidb_0x9c9_0", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), paramToServiceMsg, paramObject });
       return;
     }
@@ -4763,12 +4782,12 @@ public class NearbyCardHandler
           if (bool)
           {
             j = paramFromServiceMsg.uint32_config_seq.get();
-            NearbySPUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "toplist_hide_boygod_seq", Integer.valueOf(j));
+            NearbySPUtil.b(this.d.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "toplist_hide_boygod_seq", Integer.valueOf(j));
           }
           if (paramFromServiceMsg.uint32_config_time.has())
           {
             j = paramFromServiceMsg.uint32_config_time.get();
-            NearbySPUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "key_last_config_time", Integer.valueOf(j));
+            NearbySPUtil.b(this.d.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "key_last_config_time", Integer.valueOf(j));
           }
           bool = paramFromServiceMsg.msg_rank_config.has();
           Oidb_0x686.CharmEvent localCharmEvent = null;
@@ -4792,7 +4811,7 @@ public class NearbyCardHandler
             }
             paramFromServiceMsg = (Oidb_0x686.NearbyCharmNotify)paramFromServiceMsg.msg_notify_event.get();
           }
-          NearbyManagerHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramToServiceMsg.getUin(), paramObject, localObject, localCharmEvent, paramFromServiceMsg);
+          NearbyManagerHelper.a(this.c).a(paramToServiceMsg.getUin(), paramObject, localObject, localCharmEvent, paramFromServiceMsg);
           paramToServiceMsg = "";
           int k;
           int m;
@@ -4815,7 +4834,7 @@ public class NearbyCardHandler
             if (k - i < 0) {
               paramToServiceMsg = "0X80052B2";
             }
-            AppIntefaceReportWrap.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "CliOper", "", "", paramToServiceMsg, paramToServiceMsg, 0, 0, "", "", "", "");
+            AppIntefaceReportWrap.a(this.d, "CliOper", "", "", paramToServiceMsg, paramToServiceMsg, 0, 0, "", "", "", "");
             return;
           }
           if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_pop_flag.get() == 1))
@@ -4838,7 +4857,7 @@ public class NearbyCardHandler
             if (k - i < 0) {
               paramToServiceMsg = "0X80052AF";
             }
-            AppIntefaceReportWrap.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "CliOper", "", "", paramToServiceMsg, paramToServiceMsg, 0, 0, "", "", "", "");
+            AppIntefaceReportWrap.a(this.d, "CliOper", "", "", paramToServiceMsg, paramToServiceMsg, 0, 0, "", "", "", "");
             return;
           }
         }
@@ -4950,7 +4969,7 @@ public class NearbyCardHandler
       a(bool1, paramObject, paramToServiceMsg.extraData, (SummaryCard.RespHead)localObject);
       paramToServiceMsg = new HashMap();
       paramToServiceMsg.put("errorCode", String.valueOf(i));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actGetNearbySummaryCard", bool1, l3 - l2, 0L, paramToServiceMsg, "");
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.d.getCurrentAccountUin(), "actGetNearbySummaryCard", bool1, l3 - l2, 0L, paramToServiceMsg, "");
       if (QLog.isDevelopLevel())
       {
         paramToServiceMsg = new StringBuilder();
@@ -5151,7 +5170,7 @@ public class NearbyCardHandler
           if (bool2)
           {
             bool1 = bool2;
-            NearbyCardManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            NearbyCardManager.c(this.c);
             bool3 = bool2;
           }
         }
@@ -5490,7 +5509,7 @@ public class NearbyCardHandler
         }
         paramFromServiceMsg.put("param_FailCode", String.valueOf(paramToServiceMsg.stHeader.iReplyCode));
       }
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()).collectPerformance(String.valueOf(l2), "profileCardSendFavorite", bool, 0L, 0L, paramFromServiceMsg, "", false);
+      StatisticCollector.getInstance(this.d.getApp()).collectPerformance(String.valueOf(l2), "profileCardSendFavorite", bool, 0L, 0L, paramFromServiceMsg, "", false);
       paramToServiceMsg = "Q.profilecard.";
     }
     else
@@ -5517,7 +5536,7 @@ public class NearbyCardHandler
         paramToServiceMsg = "-202";
       }
       paramFromServiceMsg.put("param_FailCode", paramToServiceMsg);
-      localObject1 = StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
+      localObject1 = StatisticCollector.getInstance(this.d.getApp());
       paramToServiceMsg = "Q.profilecard.";
       ((StatisticCollector)localObject1).collectPerformance(String.valueOf(l2), "profileCardSendFavorite", false, 0L, 0L, paramFromServiceMsg, "", false);
       bool = false;
@@ -5528,7 +5547,7 @@ public class NearbyCardHandler
       l2 = l1;
       if (l2 > 0L)
       {
-        localObject1 = paramFromServiceMsg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        localObject1 = paramFromServiceMsg.c.getEntityManagerFactory().createEntityManager();
         localObject2 = (NearbyPeopleCard)((EntityManager)localObject1).find(NearbyPeopleCard.class, "uin=?", new String[] { String.valueOf(l2) });
         if (localObject2 != null)
         {
@@ -5540,7 +5559,7 @@ public class NearbyCardHandler
           }
           ((EntityManager)localObject1).update((Entity)localObject2);
         }
-        VoteUtil.a(paramFromServiceMsg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l2, j);
+        VoteUtil.a(paramFromServiceMsg.c, l2, j);
       }
     }
     if (QLog.isColorLevel())
@@ -5626,16 +5645,16 @@ public class NearbyCardHandler
     if (localObject2 != null) {
       ((Oidb_0x686.ReqBody)localObject1).msg_lbs_info.set((MessageMicro)localObject2);
     }
-    int i = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "toplist_hide_boygod_seq", Integer.valueOf(0))).intValue();
+    int i = ((Integer)NearbySPUtil.a(this.d.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "toplist_hide_boygod_seq", Integer.valueOf(0))).intValue();
     ((Oidb_0x686.ReqBody)localObject1).uint32_last_config_seq.set(i);
-    i = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "key_last_config_time", Integer.valueOf(0))).intValue();
+    i = ((Integer)NearbySPUtil.a(this.d.getCurrentAccountUin(), "NEW_FRESH_SP", 0, "key_last_config_time", Integer.valueOf(0))).intValue();
     ((Oidb_0x686.ReqBody)localObject1).uint32_last_config_time.set(i);
     localObject2 = new oidb_sso.OIDBSSOPkg();
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1670);
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(paramInt);
     ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((Oidb_0x686.ReqBody)localObject1).toByteArray()));
-    ((oidb_sso.OIDBSSOPkg)localObject2).str_client_version.set(AppSetting.f());
+    ((oidb_sso.OIDBSSOPkg)localObject2).str_client_version.set(AppSetting.h());
     localObject1 = createToServiceMsg("OidbSvc.0x686");
     ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
     sendPbReq((ToServiceMsg)localObject1);
@@ -5688,7 +5707,7 @@ public class NearbyCardHandler
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject3 = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    Object localObject3 = ((TicketManager)this.c.getManager(2)).getSkey(this.c.getCurrentAccountUin());
     if (TextUtils.isEmpty((CharSequence)localObject3))
     {
       if (QLog.isColorLevel()) {
@@ -5712,7 +5731,7 @@ public class NearbyCardHandler
     localObject3 = new oidb_0x8e7.ExtParam();
     ((oidb_0x8e7.ExtParam)localObject3).uint32_client.set(1);
     ((oidb_0x8e7.ExtParam)localObject3).uint32_portal.set(paramInt);
-    ((oidb_0x8e7.ExtParam)localObject3).bytes_version.set(ByteStringMicro.copyFrom(AppSetting.f().getBytes()));
+    ((oidb_0x8e7.ExtParam)localObject3).bytes_version.set(ByteStringMicro.copyFrom(AppSetting.h().getBytes()));
     ((oidb_0x8e7.ExtParam)localObject3).msg_login_sig.set((MessageMicro)localObject2);
     ((oidb_0x8e7.ReqBody)localObject1).msg_ext_parm.set((MessageMicro)localObject3);
     localObject1 = makeOIDBPkg("OidbSvc.0x8e7_1", 2279, 1, ((oidb_0x8e7.ReqBody)localObject1).toByteArray());
@@ -5758,14 +5777,14 @@ public class NearbyCardHandler
       while (localIterator.hasNext())
       {
         PicInfo localPicInfo = (PicInfo)localIterator.next();
-        if (localPicInfo.jdField_a_of_type_Int >= 0)
+        if (localPicInfo.a >= 0)
         {
           localObject1 = new UpdatePhotoList.RichHead();
-          ((UpdatePhotoList.RichHead)localObject1).uint32_headid.set(localPicInfo.jdField_a_of_type_Int);
+          ((UpdatePhotoList.RichHead)localObject1).uint32_headid.set(localPicInfo.a);
           paramArrayOfObject = (Object[])localObject1;
-          if (!TextUtils.isEmpty(localPicInfo.f))
+          if (!TextUtils.isEmpty(localPicInfo.g))
           {
-            ((UpdatePhotoList.RichHead)localObject1).str_video_id.set(localPicInfo.f);
+            ((UpdatePhotoList.RichHead)localObject1).str_video_id.set(localPicInfo.g);
             paramArrayOfObject = (Object[])localObject1;
           }
         }
@@ -5946,6 +5965,13 @@ public class NearbyCardHandler
           }
         }
       }
+      if (paramBundle.containsKey("interests"))
+      {
+        localObject1 = paramBundle.getByteArray("interests");
+        if (localObject1 != null) {
+          localReqBody.bytes_reqbody_tag.set(ByteStringMicro.copyFrom((byte[])localObject1));
+        }
+      }
       i = j;
       if (paramBundle.containsKey("hometown"))
       {
@@ -5955,11 +5981,11 @@ public class NearbyCardHandler
         i = 0;
         while (i < 3)
         {
-          PkgTools.copyData((byte[])localObject2, i * 4, PkgTools.intToBytes2(ConditionSearchManager.a(localObject1[i])), 4);
+          PkgTools.copyData((byte[])localObject2, i * 4, PkgTools.intToBytes2(ConditionSearchManager.f(localObject1[i])), 4);
           i += 1;
         }
         localReqBody.bytes_hometown.set(ByteStringMicro.copyFrom((byte[])localObject2));
-        i = ConditionSearchManager.a(localObject1[3]);
+        i = ConditionSearchManager.f(localObject1[3]);
         localReqBody.bytes_hometown_district.set(ByteStringMicro.copyFrom(PkgTools.intToBytes2(i)));
         i = j;
         if (NearbyCardConstants.a)
@@ -5992,11 +6018,11 @@ public class NearbyCardHandler
         i = 0;
         while (i < 3)
         {
-          PkgTools.copyData((byte[])localObject2, i * 4, PkgTools.intToBytes2(ConditionSearchManager.a(localObject1[i])), 4);
+          PkgTools.copyData((byte[])localObject2, i * 4, PkgTools.intToBytes2(ConditionSearchManager.f(localObject1[i])), 4);
           i += 1;
         }
         localReqBody.bytes_location.set(ByteStringMicro.copyFrom((byte[])localObject2));
-        i = ConditionSearchManager.a(localObject1[3]);
+        i = ConditionSearchManager.f(localObject1[3]);
         localReqBody.bytes_location_district.set(ByteStringMicro.copyFrom(PkgTools.intToBytes2(i)));
         j = k;
         if (NearbyCardConstants.a)
@@ -6321,7 +6347,7 @@ public class NearbyCardHandler
       ((cmd0x8b4.ReqBody)localObject1).uint64_dst_uin.set(l);
       ((cmd0x8b4.ReqBody)localObject1).uint32_start.set(paramInt1);
       ((cmd0x8b4.ReqBody)localObject1).uint32_cnt.set(paramInt2);
-      Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      Object localObject2 = (TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER);
       localObject2 = new oidb_sso.OIDBSSOPkg();
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2228);
       ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((cmd0x8b4.ReqBody)localObject1).toByteArray()));
@@ -6414,7 +6440,7 @@ public class NearbyCardHandler
     {
       ((nearby_ice_break.IceReq)localObject).uin.set(Long.parseLong(paramString));
       ((nearby_ice_break.IceReq)localObject).tinyid.set(String.valueOf(paramLong));
-      new CsTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(13569).b(1).a(new NearbyCardHandler.4(this)).a(new NearbyCardHandler.3(this)).a(((nearby_ice_break.IceReq)localObject).toByteArray());
+      new CsTask(this.c).a(13569).b(1).a(new NearbyCardHandler.4(this)).a(new NearbyCardHandler.3(this)).a(((nearby_ice_break.IceReq)localObject).toByteArray());
       return;
     }
     catch (NumberFormatException paramString)
@@ -6428,8 +6454,8 @@ public class NearbyCardHandler
   
   public void a(String paramString1, String paramString2, int paramInt1, long paramLong1, byte paramByte, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, String paramString3, long paramLong4, int paramInt2, byte[] paramArrayOfByte2, long paramLong5, boolean paramBoolean1, boolean paramBoolean2, long paramLong6, boolean paramBoolean3, long paramLong7, int paramInt3)
   {
-    long l1 = a(paramString1);
-    long l2 = a(paramString2);
+    long l1 = b(paramString1);
+    long l2 = b(paramString2);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -6547,7 +6573,7 @@ public class NearbyCardHandler
     }
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      Object localObject2 = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      Object localObject2 = ((TicketManager)this.c.getManager(2)).getSkey(this.c.getCurrentAccountUin());
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         if (QLog.isColorLevel()) {
@@ -6558,7 +6584,7 @@ public class NearbyCardHandler
       localObject1 = new oidb_0x8e6.ReqBody();
       ((oidb_0x8e6.ReqBody)localObject1).uint32_portal.set(paramInt);
       ((oidb_0x8e6.ReqBody)localObject1).uint32_client.set(1);
-      ((oidb_0x8e6.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom(AppSetting.f().getBytes()));
+      ((oidb_0x8e6.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom(AppSetting.h().getBytes()));
       Object localObject3 = new oidb_0x8e6.LoginSig();
       ((oidb_0x8e6.LoginSig)localObject3).uint32_type.set(1);
       ((oidb_0x8e6.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
@@ -6576,10 +6602,10 @@ public class NearbyCardHandler
           ((StringBuilder)localObject2).append(" | ");
         }
         oidb_0x8e6.VoteInfo localVoteInfo = new oidb_0x8e6.VoteInfo();
-        localVoteInfo.uint64_uin.set(localLikeItem.jdField_a_of_type_Long);
-        localVoteInfo.uint32_free_vote_count.set(localLikeItem.jdField_a_of_type_Int);
-        localVoteInfo.uint32_pay_vote_count.set(localLikeItem.jdField_b_of_type_Int);
-        localVoteInfo.uint32_source.set(localLikeItem.d);
+        localVoteInfo.uint64_uin.set(localLikeItem.a);
+        localVoteInfo.uint32_free_vote_count.set(localLikeItem.b);
+        localVoteInfo.uint32_pay_vote_count.set(localLikeItem.c);
+        localVoteInfo.uint32_source.set(localLikeItem.e);
         ((ArrayList)localObject3).add(localVoteInfo);
         i += 1;
       }
@@ -6696,9 +6722,9 @@ public class NearbyCardHandler
       {
         INearbyLikeLimitManager.LimitInfo localLimitInfo = new INearbyLikeLimitManager.LimitInfo();
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.jdField_a_of_type_JavaLangString = localRspBody.bytes_recharge_url.get().toStringUtf8();
+        localLimitInfo.c = localRspBody.bytes_recharge_url.get().toStringUtf8();
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.jdField_b_of_type_JavaLangString = localRspBody.bytes_update_url.get().toStringUtf8();
+        localLimitInfo.d = localRspBody.bytes_update_url.get().toStringUtf8();
         paramFromServiceMsg = paramToServiceMsg;
         if (!localRspBody.msg_zan_limit.has()) {
           break label658;
@@ -6706,15 +6732,15 @@ public class NearbyCardHandler
         paramFromServiceMsg = paramToServiceMsg;
         Object localObject = (oidb_0x8e7.ZanLimitInfo)localRspBody.msg_zan_limit.get();
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.jdField_a_of_type_Int = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_level.get());
+        localLimitInfo.a = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_level.get());
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.c = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_can_free_zan_user_limit.get());
+        localLimitInfo.f = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_can_free_zan_user_limit.get());
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.d = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_free_zan_total_limit.get());
+        localLimitInfo.g = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_free_zan_total_limit.get());
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.jdField_b_of_type_Int = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_price.get());
+        localLimitInfo.b = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_price.get());
         paramFromServiceMsg = paramToServiceMsg;
-        localLimitInfo.f = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_free_zan_user.get());
+        localLimitInfo.i = ((int)((oidb_0x8e7.ZanLimitInfo)localObject).uint64_free_zan_user.get());
         paramFromServiceMsg = paramToServiceMsg;
         ArrayList localArrayList = new ArrayList();
         paramObject = paramToServiceMsg;
@@ -6754,13 +6780,13 @@ public class NearbyCardHandler
         }
         try
         {
-          localLikeItem.jdField_a_of_type_Long = l;
+          localLikeItem.a = l;
           paramToServiceMsg = paramFromServiceMsg;
-          localLikeItem.jdField_a_of_type_Int = ((int)paramObject.uint64_free_zan.get());
+          localLikeItem.b = ((int)paramObject.uint64_free_zan.get());
           paramToServiceMsg = paramFromServiceMsg;
-          localLikeItem.jdField_b_of_type_Int = ((int)paramObject.uint64_pay_zan.get());
+          localLikeItem.c = ((int)paramObject.uint64_pay_zan.get());
           paramToServiceMsg = paramFromServiceMsg;
-          localLikeItem.c = ((int)paramObject.uint64_pay_stock.get());
+          localLikeItem.d = ((int)paramObject.uint64_pay_stock.get());
           if (l <= 0L) {
             break label662;
           }
@@ -6775,16 +6801,16 @@ public class NearbyCardHandler
         if (localRspBody.msg_warn.has())
         {
           paramToServiceMsg = paramObject;
-          localLimitInfo.jdField_a_of_type_JavaLangObject = localRspBody.msg_warn.get();
+          localLimitInfo.e = localRspBody.msg_warn.get();
         }
         paramToServiceMsg = paramObject;
         if (localRspBody.msg_stock_rsp.has())
         {
           paramToServiceMsg = paramObject;
-          localLimitInfo.e = ((oidb_0x8e7.StockRsp)localRspBody.msg_stock_rsp.get()).int32_total.get();
+          localLimitInfo.h = ((oidb_0x8e7.StockRsp)localRspBody.msg_stock_rsp.get()).int32_total.get();
         }
         paramToServiceMsg = paramObject;
-        ((INearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(localLimitInfo, localArrayList, j);
+        ((INearbyLikeLimitManager)this.c.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(localLimitInfo, localArrayList, j);
         try
         {
           notifyUI(16, true, str);
@@ -6841,7 +6867,7 @@ public class NearbyCardHandler
       int j = paramToServiceMsg.uint32_can_vote_free_user_count.get();
       int n = paramToServiceMsg.uint32_can_vote_free_count.get();
       paramToServiceMsg.uint32_remain_total.get();
-      paramObject = (INearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER);
+      paramObject = (INearbyLikeLimitManager)this.c.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER);
       paramToServiceMsg = paramToServiceMsg.rpt_vote_result.get();
       int i1 = paramToServiceMsg.size();
       int k = 0;
@@ -6849,21 +6875,21 @@ public class NearbyCardHandler
       {
         Object localObject = (oidb_0x8e6.VoteResult)paramToServiceMsg.get(k);
         INearbyLikeLimitManager.LikeResultItem localLikeResultItem = new INearbyLikeLimitManager.LikeResultItem();
-        localLikeResultItem.jdField_a_of_type_Int = ((oidb_0x8e6.VoteResult)localObject).uint32_ret.get();
-        localLikeResultItem.jdField_a_of_type_JavaLangString = ((oidb_0x8e6.VoteResult)localObject).bytes_err_msg.get().toStringUtf8();
-        localLikeResultItem.jdField_a_of_type_Long = ((oidb_0x8e6.VoteResult)localObject).uint64_uin.get();
-        localLikeResultItem.jdField_b_of_type_Int = ((oidb_0x8e6.VoteResult)localObject).uint32_succ_free_vote_count.get();
-        localLikeResultItem.c = ((oidb_0x8e6.VoteResult)localObject).uint32_succ_pay_vote_count.get();
-        localLikeResultItem.d = ((oidb_0x8e6.VoteResult)localObject).uint32_vote_count.get();
-        localLikeResultItem.e = ((int)((oidb_0x8e6.VoteResult)localObject).uint64_pay_stock.get());
+        localLikeResultItem.a = ((oidb_0x8e6.VoteResult)localObject).uint32_ret.get();
+        localLikeResultItem.b = ((oidb_0x8e6.VoteResult)localObject).bytes_err_msg.get().toStringUtf8();
+        localLikeResultItem.c = ((oidb_0x8e6.VoteResult)localObject).uint64_uin.get();
+        localLikeResultItem.d = ((oidb_0x8e6.VoteResult)localObject).uint32_succ_free_vote_count.get();
+        localLikeResultItem.e = ((oidb_0x8e6.VoteResult)localObject).uint32_succ_pay_vote_count.get();
+        localLikeResultItem.f = ((oidb_0x8e6.VoteResult)localObject).uint32_vote_count.get();
+        localLikeResultItem.g = ((int)((oidb_0x8e6.VoteResult)localObject).uint64_pay_stock.get());
         paramFromServiceMsg.add(localLikeResultItem);
-        int i2 = localLikeResultItem.jdField_b_of_type_Int + localLikeResultItem.c;
-        if (localLikeResultItem.jdField_a_of_type_Int == 0) {
-          if ((localLikeResultItem.jdField_a_of_type_Long > 0L) && (i2 > 0))
+        int i2 = localLikeResultItem.d + localLikeResultItem.e;
+        if (localLikeResultItem.a == 0) {
+          if ((localLikeResultItem.c > 0L) && (i2 > 0))
           {
-            VoteUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localLikeResultItem.jdField_a_of_type_Long, i2);
-            localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-            NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject).find(NearbyPeopleCard.class, "uin=?", new String[] { String.valueOf(localLikeResultItem.jdField_a_of_type_Long) });
+            VoteUtil.a(this.c, localLikeResultItem.c, i2);
+            localObject = this.c.getEntityManagerFactory().createEntityManager();
+            NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject).find(NearbyPeopleCard.class, "uin=?", new String[] { String.valueOf(localLikeResultItem.c) });
             if (localNearbyPeopleCard != null)
             {
               localNearbyPeopleCard.likeCount += i2;
@@ -6885,7 +6911,7 @@ public class NearbyCardHandler
           QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(localLikeResultItem.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(localLikeResultItem.c);
         ((StringBuilder)localObject).append("");
         paramObject.a(((StringBuilder)localObject).toString(), true);
         k += 1;
@@ -6899,33 +6925,33 @@ public class NearbyCardHandler
   
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("SummaryCard.ReqSummaryCard");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x9c8_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x9c5_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x9c9_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x9c9_1");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x9c7_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x682");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x686");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x5ea_1");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x5ea_3");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x5ea_4");
-      this.jdField_a_of_type_JavaUtilSet.add("SQQzoneSvc.getCover");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x8b4");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x5ea_6");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x5ea_7");
-      this.jdField_a_of_type_JavaUtilSet.add("VisitorSvc.ReqFavorite");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x66b");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x66b");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x66b");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x8e6_1");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x8e7_1");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0xb5b");
+      this.b = new HashSet();
+      this.b.add("SummaryCard.ReqSummaryCard");
+      this.b.add("OidbSvc.0x9c8_0");
+      this.b.add("OidbSvc.0x9c5_0");
+      this.b.add("OidbSvc.0x9c9_0");
+      this.b.add("OidbSvc.0x9c9_1");
+      this.b.add("OidbSvc.0x9c7_0");
+      this.b.add("OidbSvc.0x682");
+      this.b.add("OidbSvc.0x686");
+      this.b.add("OidbSvc.0x5ea_1");
+      this.b.add("OidbSvc.0x5ea_3");
+      this.b.add("OidbSvc.0x5ea_4");
+      this.b.add("SQQzoneSvc.getCover");
+      this.b.add("OidbSvc.0x8b4");
+      this.b.add("OidbSvc.0x5ea_6");
+      this.b.add("OidbSvc.0x5ea_7");
+      this.b.add("VisitorSvc.ReqFavorite");
+      this.b.add("OidbSvc.0x66b");
+      this.b.add("OidbSvc.0x66b");
+      this.b.add("OidbSvc.0x66b");
+      this.b.add("OidbSvc.0x8e6_1");
+      this.b.add("OidbSvc.0x8e7_1");
+      this.b.add("OidbSvc.0xb5b");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.b;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -7044,7 +7070,7 @@ public class NearbyCardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.business.NearbyCardHandler
  * JD-Core Version:    0.7.0.1
  */

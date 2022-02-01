@@ -12,13 +12,13 @@ class BlessSelectMemberActivity$11
   public void a(int paramInt)
   {
     this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    if (BlessSelectMemberActivity.g() != null) {
+      BlessSelectMemberActivity.g().sendEmptyMessage(1);
     }
-    synchronized (BlessSelectMemberActivity.a())
+    synchronized (BlessSelectMemberActivity.h())
     {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
+      BlessSelectMemberActivity.h().set(true);
+      BlessSelectMemberActivity.h().notifyAll();
       this.a.finish();
       return;
     }
@@ -27,17 +27,17 @@ class BlessSelectMemberActivity$11
   public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
     BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
+    synchronized (BlessSelectMemberActivity.h())
     {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
+      BlessSelectMemberActivity.h().set(true);
+      BlessSelectMemberActivity.h().notifyAll();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.11
  * JD-Core Version:    0.7.0.1
  */

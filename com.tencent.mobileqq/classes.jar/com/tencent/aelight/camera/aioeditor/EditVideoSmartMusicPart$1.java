@@ -19,21 +19,21 @@ class EditVideoSmartMusicPart$1
   {
     Object localObject = new HttpNetReq();
     ((HttpNetReq)localObject).mCallback = new EditVideoSmartMusicPart.1.1(this);
-    ((HttpNetReq)localObject).mReqUrl = EditVideoSmartMusicPart.a(this.this$0);
+    ((HttpNetReq)localObject).mReqUrl = EditVideoSmartMusicPart.b(this.this$0);
     ((HttpNetReq)localObject).mHttpMethod = 0;
     ((HttpNetReq)localObject).mOutPath = EditVideoSmartMusicPart.a(this.this$0).getPath();
     ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     QQStoryContext.a();
-    ((IHttpEngineService)QQStoryContext.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+    ((IHttpEngineService)QQStoryContext.k().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("startDownloadAnim, url: ");
-    ((StringBuilder)localObject).append(EditVideoSmartMusicPart.a(this.this$0));
+    ((StringBuilder)localObject).append(EditVideoSmartMusicPart.b(this.this$0));
     QLog.i("EditVideoSmartMusicPart", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.EditVideoSmartMusicPart.1
  * JD-Core Version:    0.7.0.1
  */

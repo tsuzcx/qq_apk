@@ -33,7 +33,7 @@ public class NewFriendBindContactGuideBuilder
     }
     else
     {
-      localView = LayoutInflater.from(this.a).inflate(2131561514, null);
+      localView = LayoutInflater.from(this.c).inflate(2131627875, null);
     }
     localView.setOnClickListener(this);
     localView.setTag(new NewFriendBindContactGuideBuilder.MyHolder());
@@ -53,7 +53,7 @@ public class NewFriendBindContactGuideBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBindContactGuideBuilder
  * JD-Core Version:    0.7.0.1
  */

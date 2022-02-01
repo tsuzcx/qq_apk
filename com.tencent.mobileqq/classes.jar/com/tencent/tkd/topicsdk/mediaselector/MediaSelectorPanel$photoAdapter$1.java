@@ -29,29 +29,13 @@ import org.jetbrains.annotations.Nullable;
 public final class MediaSelectorPanel$photoAdapter$1
   extends CommonListAdapter<Media, MediaSelectorPanel.ListPhotoViewHolder>
 {
-  MediaSelectorPanel$photoAdapter$1(Context paramContext1, Context paramContext2)
-  {
-    super(localContext);
-  }
-  
   @NotNull
   public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.o, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.j, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…_photo, viewGroup, false)");
     return paramContext;
-  }
-  
-  @NotNull
-  public MediaSelectorPanel.ListPhotoViewHolder a(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    int i = DisplayUtils.a.a(paramContext, 2.0F);
-    i = (DisplayUtils.a.a(paramContext) - i * 3) / 4;
-    paramView.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(i, i));
-    return new MediaSelectorPanel.ListPhotoViewHolder(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel, paramView);
   }
   
   @SuppressLint({"SetTextI18n"})
@@ -65,53 +49,53 @@ public final class MediaSelectorPanel$photoAdapter$1
     boolean bool = StringsKt.endsWith(paramMedia.getFilePath(), ".gif", true);
     if (paramMedia.getType() == MediaType.PHOTO)
     {
-      paramListPhotoViewHolder.a().a(paramMedia.getFilePath());
-      paramView = paramListPhotoViewHolder.b();
+      paramListPhotoViewHolder.d().a(paramMedia.getFilePath());
+      paramView = paramListPhotoViewHolder.c();
       if (bool) {
         paramInt = 0;
       } else {
         paramInt = 8;
       }
       paramView.setVisibility(paramInt);
-      paramListPhotoViewHolder.b().setText(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.getResources().getText(R.string.D));
+      paramListPhotoViewHolder.c().setText(this.a.getResources().getText(R.string.x));
     }
     else
     {
-      paramListPhotoViewHolder.a().a(paramMedia.getFilePath());
-      paramListPhotoViewHolder.b().setVisibility(0);
-      paramListPhotoViewHolder.b().setText((CharSequence)paramMedia.getDurationStr());
+      paramListPhotoViewHolder.d().a(paramMedia.getFilePath());
+      paramListPhotoViewHolder.c().setVisibility(0);
+      paramListPhotoViewHolder.c().setText((CharSequence)paramMedia.getDurationStr());
     }
-    paramInt = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().indexOf(paramMedia);
+    paramInt = this.a.getSelectedMedias().indexOf(paramMedia);
     if (paramInt >= 0)
     {
-      paramListPhotoViewHolder.a().setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a() > 1)
+      paramListPhotoViewHolder.b().setVisibility(0);
+      if (this.a.getMaxSelectCount() > 1)
       {
-        paramListPhotoViewHolder.a().setBackgroundResource(R.drawable.j);
-        paramListPhotoViewHolder.a().setSelected(true);
-        paramListPhotoViewHolder.a().setText((CharSequence)String.valueOf(paramInt + 1));
+        paramListPhotoViewHolder.b().setBackgroundResource(R.drawable.e);
+        paramListPhotoViewHolder.b().setSelected(true);
+        paramListPhotoViewHolder.b().setText((CharSequence)String.valueOf(paramInt + 1));
       }
       else
       {
-        paramListPhotoViewHolder.a().setBackgroundResource(R.drawable.l);
-        paramListPhotoViewHolder.a().setText((CharSequence)"");
+        paramListPhotoViewHolder.b().setBackgroundResource(R.drawable.g);
+        paramListPhotoViewHolder.b().setText((CharSequence)"");
       }
       paramListPhotoViewHolder.a().setVisibility(0);
       paramListPhotoViewHolder.a().setBackgroundResource(R.color.a);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a() > 1)
+    if (this.a.getMaxSelectCount() > 1)
     {
-      paramListPhotoViewHolder.a().setVisibility(0);
-      paramListPhotoViewHolder.a().setBackgroundResource(R.drawable.j);
-      paramListPhotoViewHolder.a().setSelected(false);
-      paramListPhotoViewHolder.a().setText((CharSequence)"");
+      paramListPhotoViewHolder.b().setVisibility(0);
+      paramListPhotoViewHolder.b().setBackgroundResource(R.drawable.e);
+      paramListPhotoViewHolder.b().setSelected(false);
+      paramListPhotoViewHolder.b().setText((CharSequence)"");
     }
     else
     {
-      paramListPhotoViewHolder.a().setVisibility(8);
+      paramListPhotoViewHolder.b().setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() >= this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
+    if (this.a.getSelectedMedias().size() >= this.a.getMaxSelectCount())
     {
       paramListPhotoViewHolder.a().setVisibility(0);
       paramListPhotoViewHolder.a().setBackgroundResource(R.color.d);
@@ -119,10 +103,21 @@ public final class MediaSelectorPanel$photoAdapter$1
     }
     paramListPhotoViewHolder.a().setVisibility(8);
   }
+  
+  @NotNull
+  public MediaSelectorPanel.ListPhotoViewHolder b(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
+    int i = DisplayUtils.a.a(paramContext, 2.0F);
+    i = (DisplayUtils.a.a(paramContext) - i * 3) / 4;
+    paramView.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(i, i));
+    return new MediaSelectorPanel.ListPhotoViewHolder(this.a, paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.photoAdapter.1
  * JD-Core Version:    0.7.0.1
  */

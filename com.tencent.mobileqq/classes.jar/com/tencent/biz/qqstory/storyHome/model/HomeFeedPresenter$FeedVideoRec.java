@@ -17,25 +17,25 @@ public class HomeFeedPresenter$FeedVideoRec
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    Object localObject = paramHomeFeedPresenter.a(paramGetVideoListEvent.jdField_a_of_type_JavaLangString);
+    Object localObject = paramHomeFeedPresenter.a(paramGetVideoListEvent.e);
     if (localObject == null)
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramGetVideoListEvent.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramGetVideoListEvent.e });
       return;
     }
     if (!(localObject instanceof VideoListHomeFeed))
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramGetVideoListEvent.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramGetVideoListEvent.e });
       return;
     }
     localObject = (VideoListHomeFeed)localObject;
-    if (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetVideoListEvent.g.isSuccess())
     {
-      ((VideoListHomeFeed)localObject).c(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, false);
-      ((VideoListFeedItem)((VideoListHomeFeed)localObject).a).updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramGetVideoListEvent.jdField_a_of_type_JavaLangString, Integer.valueOf(((VideoListHomeFeed)localObject).a().size()));
+      ((VideoListHomeFeed)localObject).c(paramGetVideoListEvent.h, false);
+      ((VideoListFeedItem)((VideoListHomeFeed)localObject).f).updateVideoInfo(paramGetVideoListEvent.i);
+      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramGetVideoListEvent.e, Integer.valueOf(((VideoListHomeFeed)localObject).a().size()));
     }
-    HomeFeedPresenter.a(paramHomeFeedPresenter).a((VideoListHomeFeed)localObject);
+    HomeFeedPresenter.c(paramHomeFeedPresenter).a((VideoListHomeFeed)localObject);
   }
   
   public Class acceptEventClass()

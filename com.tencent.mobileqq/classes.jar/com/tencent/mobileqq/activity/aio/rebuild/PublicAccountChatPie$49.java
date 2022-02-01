@@ -10,12 +10,12 @@ class PublicAccountChatPie$49
   
   public void run()
   {
-    TroopBarAssistantManager.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    TroopBarAssistantManager.a().a(this.this$0.ah.b, this.this$0.d, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.49
  * JD-Core Version:    0.7.0.1
  */

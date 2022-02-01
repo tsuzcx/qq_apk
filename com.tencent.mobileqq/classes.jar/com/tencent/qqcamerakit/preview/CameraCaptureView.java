@@ -32,93 +32,63 @@ public class CameraCaptureView
   extends GLSurfaceView
   implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, CameraProxy.CameraAutoFocusCallBack, CameraProxy.PictureCallback, Observer
 {
-  public int a;
-  private long jdField_a_of_type_Long = -1L;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new CameraCaptureView.1(this);
-  private CameraPreviewCallBack jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack;
-  private CameraProxy jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy;
-  private FocusOperator jdField_a_of_type_ComTencentQqcamerakitCaptureCameraextendFocusOperator;
-  private CameraCaptureView.FrameListener jdField_a_of_type_ComTencentQqcamerakitPreviewCameraCaptureView$FrameListener;
-  private EglHandlerThread jdField_a_of_type_ComTencentQqcamerakitPreviewEglHandlerThread;
-  private RenderBuffer jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentQqcamerakitPreviewTextureRender;
-  public EGLConfig a;
-  public EGLContext a;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private boolean A;
+  private Matrix B = new Matrix();
+  private long C = -1L;
+  private long D = 0L;
+  private CameraCaptureView.FrameListener E;
+  private CameraPreviewCallBack F;
+  private GLSurfaceView.EGLContextFactory G = new CameraCaptureView.1(this);
+  public int a = 2;
   protected int b;
-  private long jdField_b_of_type_Long = 0L;
-  private boolean jdField_b_of_type_Boolean = false;
   protected int c;
-  private boolean c;
   protected int d;
-  private boolean d;
   protected int e;
-  private boolean e;
   protected int f;
-  private boolean f;
   protected int g;
-  private boolean g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
+  public EGLConfig h = null;
+  public EGLContext i = null;
+  private CameraProxy k;
+  private boolean l = false;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
+  private int p;
+  private int q;
+  private final float[] r = new float[16];
+  private int s;
+  private int t;
+  private SurfaceTexture u;
+  private EglHandlerThread v;
+  private TextureRender w;
+  private RenderBuffer x;
+  private boolean y = false;
+  private FocusOperator z;
   
   public CameraCaptureView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_f_of_type_Boolean = false;
     b();
   }
   
   public CameraCaptureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_f_of_type_Boolean = false;
     b();
-  }
-  
-  private int a()
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer == null)) {
-      throw new AssertionError();
-    }
-    this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer.a();
-    synchronized (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture)
-    {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      float[] arrayOfFloat = GPUBaseFilter.a(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer.b(), this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer.c());
-      this.jdField_a_of_type_ComTencentQqcamerakitPreviewTextureRender.a(36197, this.k, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat);
-      this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer.b();
-      return this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer.a();
-    }
   }
   
   public static int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
     float f1 = paramInt1;
-    int m = c((int)(f1 * paramFloat));
+    int i1 = c((int)(f1 * paramFloat));
     float f2 = paramInt2;
-    int n = c((int)(f2 * paramFloat));
+    int i2 = c((int)(f2 * paramFloat));
     f1 = f2 * 1.0F / f1;
     f2 = paramInt4 * 1.0F / paramInt3;
     if (f1 > f2) {
-      n = c((int)(m * f2));
+      i2 = c((int)(i1 * f2));
     } else {
-      m = c((int)(n / f2));
+      i1 = c((int)(i2 / f2));
     }
     if (QLog.a())
     {
@@ -134,105 +104,121 @@ public class CameraCaptureView
       localStringBuilder.append(",");
       localStringBuilder.append(paramFloat);
       localStringBuilder.append(") = (");
-      localStringBuilder.append(m);
+      localStringBuilder.append(i1);
       localStringBuilder.append(",");
-      localStringBuilder.append(n);
+      localStringBuilder.append(i2);
       localStringBuilder.append(")");
       QLog.d("CameraCaptureView", 2, new Object[] { localStringBuilder.toString() });
     }
-    return new int[] { m, n };
+    return new int[] { i1, i2 };
   }
   
   private void b()
   {
-    setEGLContextFactory(this.jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory);
+    setEGLContextFactory(this.G);
     setEGLContextClientVersion(2);
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy = new CameraProxy(getContext(), null);
+    this.k = new CameraProxy(getContext(), null);
     setRenderer(this);
     setRenderMode(0);
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraextendFocusOperator = new FocusOperator();
+    this.z = new FocusOperator();
+  }
+  
+  private int c()
+  {
+    if ((!j) && (this.x == null)) {
+      throw new AssertionError();
+    }
+    this.x.d();
+    synchronized (this.u)
+    {
+      this.u.getTransformMatrix(this.r);
+      float[] arrayOfFloat = GPUBaseFilter.a(this.d, this.e, this.x.b(), this.x.c());
+      this.w.a(36197, this.t, this.r, arrayOfFloat);
+      this.x.e();
+      return this.x.a();
+    }
   }
   
   public static int c(int paramInt)
   {
-    int n = paramInt % 16;
-    int m = paramInt;
-    if (n != 0)
+    int i2 = paramInt % 16;
+    int i1 = paramInt;
+    if (i2 != 0)
     {
-      if (n < 8) {
-        return paramInt - n;
+      if (i2 < 8) {
+        return paramInt - i2;
       }
-      m = paramInt + (16 - n);
+      i1 = paramInt + (16 - i2);
     }
-    return m;
-  }
-  
-  private void c()
-  {
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      if (!this.jdField_b_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.a(this);
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.a(this.jdField_a_of_type_Int);
-      this.jdField_d_of_type_Boolean = true;
-    }
+    return i1;
   }
   
   private void d()
   {
-    if (!this.jdField_d_of_type_Boolean) {
-      return;
+    if (!this.n)
+    {
+      if (!this.l) {
+        return;
+      }
+      this.k.a(this);
+      this.k.a(this.a);
+      this.n = true;
     }
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.a(false);
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.b(false);
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.b(this);
   }
   
   private void e()
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && ((!this.jdField_e_of_type_Boolean) || (this.h != this.jdField_b_of_type_Int) || (this.i != this.jdField_c_of_type_Int)))
+    if (!this.n) {
+      return;
+    }
+    this.k.a(false);
+    this.o = false;
+    this.k.b(false);
+    this.n = false;
+    this.k.b(this);
+  }
+  
+  private void f()
+  {
+    if ((this.m) && (this.n) && ((!this.o) || (this.p != this.b) || (this.q != this.c)))
     {
       if (QLog.a())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("startCameraPreview, surfaceWidth:");
-        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(", surfaceHeight:");
-        localStringBuilder.append(this.jdField_c_of_type_Int);
+        localStringBuilder.append(this.c);
         QLog.d("CameraCaptureView", 2, new Object[] { localStringBuilder.toString() });
       }
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.a(new CameraSize(1920, 1080), 30);
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack);
-      this.jdField_e_of_type_Boolean = true;
-      this.h = this.jdField_b_of_type_Int;
-      this.i = this.jdField_c_of_type_Int;
+      this.k.a(new CameraSize(1920, 1080), 30);
+      this.k.a(this.u, this.F);
+      this.o = true;
+      this.p = this.b;
+      this.q = this.c;
     }
   }
   
-  private void f()
+  private void g()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.C;
     if (l2 == -1L)
     {
-      this.jdField_a_of_type_Long = l1;
+      this.C = l1;
       return;
     }
     if (l1 - l2 >= 500L)
     {
-      int m = (int)((float)this.jdField_b_of_type_Long / ((float)(l1 - l2) / 1000.0F));
-      CameraCaptureView.FrameListener localFrameListener = this.jdField_a_of_type_ComTencentQqcamerakitPreviewCameraCaptureView$FrameListener;
+      int i1 = (int)((float)this.D / ((float)(l1 - l2) / 1000.0F));
+      CameraCaptureView.FrameListener localFrameListener = this.E;
       if (localFrameListener != null) {
-        localFrameListener.a(m);
+        localFrameListener.a(i1);
       }
-      this.jdField_a_of_type_Long = l1;
-      this.jdField_b_of_type_Long = 0L;
+      this.C = l1;
+      this.D = 0L;
     }
-    this.jdField_b_of_type_Long += 1L;
+    this.D += 1L;
   }
   
   protected int a(int paramInt)
@@ -245,22 +231,22 @@ public class CameraCaptureView
     if (QLog.a()) {
       QLog.d("CameraCaptureView", 2, new Object[] { "onSurfaceDestroy" });
     }
-    this.jdField_c_of_type_Boolean = false;
-    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    this.m = false;
+    SurfaceTexture localSurfaceTexture = this.u;
     if (localSurfaceTexture != null) {
       localSurfaceTexture.setOnFrameAvailableListener(null);
     }
-    d();
+    e();
   }
   
   protected void a(CameraSize paramCameraSize)
   {
-    this.jdField_d_of_type_Int = paramCameraSize.jdField_b_of_type_Int;
-    this.jdField_e_of_type_Int = paramCameraSize.jdField_a_of_type_Int;
-    paramCameraSize = a(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 1.0F);
-    this.jdField_f_of_type_Int = paramCameraSize[0];
-    this.jdField_g_of_type_Int = paramCameraSize[1];
-    this.jdField_a_of_type_AndroidGraphicsMatrix = this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraextendFocusOperator.a(this.jdField_f_of_type_Int, this.jdField_g_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int);
+    this.d = paramCameraSize.b;
+    this.e = paramCameraSize.a;
+    paramCameraSize = a(this.d, this.e, this.b, this.c, 1.0F);
+    this.f = paramCameraSize[0];
+    this.g = paramCameraSize[1];
+    this.B = this.z.a(this.f, this.g, this.b, this.c, this.a);
     queueEvent(new CameraCaptureView.3(this));
   }
   
@@ -307,26 +293,26 @@ public class CameraCaptureView
   
   public void onAutoFocusCallback(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    this.A = paramBoolean;
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if ((this.jdField_d_of_type_Int != 0) && (this.jdField_e_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentQqcamerakitPreviewRenderBuffer != null))
+    if ((this.d != 0) && (this.e != 0) && (this.x != null))
     {
-      if (!this.jdField_d_of_type_Boolean)
+      if (!this.n)
       {
         if (QLog.a()) {
           QLog.d("CameraCaptureView", 2, new Object[] { "onDrawFrame ignore" });
         }
         return;
       }
-      this.j = a();
-      int m = b(a(this.j));
+      this.s = c();
+      int i1 = b(a(this.s));
       GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComTencentQqcamerakitPreviewTextureRender.a(3553, m, null, null);
-      f();
+      GLES20.glViewport(0, 0, this.b, this.c);
+      this.w.a(3553, i1, null, null);
+      g();
       return;
     }
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
@@ -339,9 +325,9 @@ public class CameraCaptureView
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
     paramSurfaceTexture = new CameraCaptureView.2(this, paramSurfaceTexture);
-    if ((this.jdField_a_of_type_ComTencentQqcamerakitPreviewEglHandlerThread.a()) && (!this.jdField_f_of_type_Boolean))
+    if ((this.v.a()) && (!this.y))
     {
-      this.jdField_a_of_type_ComTencentQqcamerakitPreviewEglHandlerThread.a().post(paramSurfaceTexture);
+      this.v.b().post(paramSurfaceTexture);
       return;
     }
     queueEvent(paramSurfaceTexture);
@@ -358,11 +344,11 @@ public class CameraCaptureView
       paramGL10.append(paramInt2);
       QLog.d("CameraCaptureView", 2, new Object[] { paramGL10.toString() });
     }
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    c();
-    e();
+    this.m = true;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    d();
+    f();
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
@@ -370,43 +356,43 @@ public class CameraCaptureView
     if (QLog.a()) {
       QLog.d("CameraCaptureView", 2, new Object[] { "onSurfaceCreated" });
     }
-    this.jdField_c_of_type_Boolean = false;
-    paramGL10 = this.jdField_a_of_type_ComTencentQqcamerakitPreviewEglHandlerThread;
-    this.jdField_a_of_type_ComTencentQqcamerakitPreviewEglHandlerThread = new EglHandlerThread("update_texture", EGL14.eglGetCurrentContext());
-    this.jdField_a_of_type_ComTencentQqcamerakitPreviewEglHandlerThread.start();
+    this.m = false;
+    paramGL10 = this.v;
+    this.v = new EglHandlerThread("update_texture", EGL14.eglGetCurrentContext());
+    this.v.start();
     if (paramGL10 != null) {
       paramGL10.quitSafely();
     }
-    this.jdField_a_of_type_ComTencentQqcamerakitPreviewTextureRender = new TextureRender();
-    this.k = GlUtil.a(36197);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.k);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_f_of_type_Boolean = CameraCompatible.d(CameraCompatibleConfig.KEY.e);
+    this.w = new TextureRender();
+    this.t = GlUtil.a(36197);
+    this.u = new SurfaceTexture(this.t);
+    this.u.setOnFrameAvailableListener(this);
+    this.y = CameraCompatible.d(CameraCompatibleConfig.KEY.e);
   }
   
   public void setFrameListener(CameraCaptureView.FrameListener paramFrameListener)
   {
-    this.jdField_a_of_type_ComTencentQqcamerakitPreviewCameraCaptureView$FrameListener = paramFrameListener;
+    this.E = paramFrameListener;
   }
   
   public void setFrontFlashEnable(Activity paramActivity, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.a(paramActivity, paramBoolean);
+    this.k.a(paramActivity, paramBoolean);
   }
   
   public void setPreviewCallBack(CameraPreviewCallBack paramCameraPreviewCallBack)
   {
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack = paramCameraPreviewCallBack;
+    this.F = paramCameraPreviewCallBack;
   }
   
   public void setZoom(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy.b(paramInt);
+    this.k.b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.preview.CameraCaptureView
  * JD-Core Version:    0.7.0.1
  */

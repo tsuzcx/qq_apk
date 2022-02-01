@@ -7,26 +7,26 @@ class VideoControlUI$SubControlUIObserver
   
   protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (this.a.h()) {
+    if (this.a.V()) {
       return;
     }
-    if (!this.a.i()) {
+    if (!this.a.ab()) {
       if (paramBoolean) {
-        this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
+        this.a.ao.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
       } else {
         return;
       }
     }
-    this.a.a.a(paramLong, paramInt);
+    this.a.aA.a(paramLong, paramInt);
   }
   
   protected void g(long paramLong)
   {
-    if (this.a.h()) {
+    if (this.a.V()) {
       return;
     }
-    if ((this.a.i()) && (this.a.a.b(0))) {
-      this.a.a.a(paramLong, 0, true);
+    if ((this.a.ab()) && (this.a.aA.i(0))) {
+      this.a.aA.a(paramLong, 0, true);
     }
   }
 }

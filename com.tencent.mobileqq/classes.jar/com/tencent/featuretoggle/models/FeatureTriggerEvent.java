@@ -26,8 +26,8 @@ public final class FeatureTriggerEvent
   public FeatureTriggerEvent()
   {
     this.sn = Utils.a();
-    this.userId = ToggleSetting.i();
-    this.qimei = ToggleSetting.a();
+    this.userId = ToggleSetting.t();
+    this.qimei = ToggleSetting.c();
   }
   
   public FeatureTriggerEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7, String paramString8, String paramString9)
@@ -278,7 +278,7 @@ public final class FeatureTriggerEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.models.FeatureTriggerEvent
  * JD-Core Version:    0.7.0.1
  */

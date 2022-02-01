@@ -1,7 +1,6 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.d;
-import com.tencent.liteav.g;
+import com.tencent.trtc.TRTCCloudListener;
 
 class TRTCCloudImpl$63
   implements Runnable
@@ -10,19 +9,15 @@ class TRTCCloudImpl$63
   
   public void run()
   {
-    this.this$0.mConfig.m ^= true;
-    this.this$0.mCaptureAndEnc.k();
-    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("switchCamera ");
-    localStringBuilder.append(this.this$0.mConfig.m);
-    localTRTCCloudImpl.apiLog(localStringBuilder.toString());
-    TRTCCloudImpl.access$2100(this.this$0);
+    TRTCCloudListener localTRTCCloudListener = this.this$0.mTRTCListener;
+    if (localTRTCCloudListener != null) {
+      localTRTCCloudListener.onScreenCapturePaused();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.63
  * JD-Core Version:    0.7.0.1
  */

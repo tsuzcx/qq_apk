@@ -29,7 +29,7 @@ public class StatusBarUtil
   
   public static void a(Activity paramActivity, boolean paramBoolean)
   {
-    if (QQTheme.a(MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin(), true))
+    if (QQTheme.isCustomTheme(MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin(), true))
     {
       a(paramActivity, 0);
       return;
@@ -37,10 +37,10 @@ public class StatusBarUtil
     if (paramBoolean)
     {
       a(paramActivity, -16777216);
-      a(paramActivity, false);
+      b(paramActivity, false);
       return;
     }
-    if (a(paramActivity, true))
+    if (b(paramActivity, true))
     {
       a(paramActivity, -1);
       return;
@@ -53,11 +53,11 @@ public class StatusBarUtil
     return ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
   }
   
-  public static boolean a(Activity paramActivity, boolean paramBoolean)
+  public static boolean b(Activity paramActivity, boolean paramBoolean)
   {
     int j = Build.VERSION.SDK_INT;
     int i = 9216;
-    if ((j >= 23) && (!SystemUtil.d()) && (!SystemUtil.b()))
+    if ((j >= 23) && (!SystemUtil.g()) && (!SystemUtil.d()))
     {
       if (!paramBoolean) {
         i = 1280;
@@ -73,7 +73,7 @@ public class StatusBarUtil
       if (Build.VERSION.SDK_INT >= 23)
       {
         bool = paramBoolean;
-        if (SystemUtil.b())
+        if (SystemUtil.d())
         {
           if (!paramBoolean) {
             i = 1280;
@@ -92,7 +92,7 @@ public class StatusBarUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.utils.StatusBarUtil
  * JD-Core Version:    0.7.0.1
  */

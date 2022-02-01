@@ -22,37 +22,37 @@ import java.util.List;
 public class SDKSetEmotionDialog
   extends ReportDialog
 {
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView a;
+  private TextView b;
   private TextView c;
   private TextView d;
   private TextView e;
   private TextView f;
+  private ProgressBar g;
+  private ImageView h;
+  private RecyclerView i;
+  private LinearLayout j;
+  private LinearLayout k;
+  private ValueAnimator l;
   
   public SDKSetEmotionDialog(Context paramContext)
   {
-    super(paramContext, 2131756189);
+    super(paramContext, 2131953338);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
-    setContentView(2131558976);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365644));
-    this.c = ((TextView)findViewById(2131365633));
-    this.d = ((TextView)findViewById(2131365639));
-    this.e = ((TextView)findViewById(2131365603));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367217));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377181));
-    this.f = ((TextView)findViewById(2131373153));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131366199));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365651));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365677));
+    setContentView(2131624609);
+    this.a = ((TextView)findViewById(2131431880));
+    this.b = ((TextView)findViewById(2131431876));
+    this.c = ((TextView)findViewById(2131431864));
+    this.d = ((TextView)findViewById(2131431870));
+    this.e = ((TextView)findViewById(2131431834));
+    this.h = ((ImageView)findViewById(2131433674));
+    this.i = ((RecyclerView)findViewById(2131445559));
+    this.f = ((TextView)findViewById(2131440762));
+    this.g = ((ProgressBar)findViewById(2131432487));
+    this.j = ((LinearLayout)findViewById(2131431884));
+    this.k = ((LinearLayout)findViewById(2131431911));
   }
   
   public SDKSetEmotionDialog a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -66,7 +66,7 @@ public class SDKSetEmotionDialog
     TextView localTextView = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getContext().getString(paramInt));
-    localStringBuilder.append(getContext().getString(2131691115));
+    localStringBuilder.append(getContext().getString(2131888061));
     localTextView.setContentDescription(localStringBuilder.toString());
     this.c.setVisibility(0);
     this.c.setOnClickListener(new SDKSetEmotionDialog.1(this, paramOnClickListener));
@@ -77,12 +77,12 @@ public class SDKSetEmotionDialog
   {
     if (paramString != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.setText(paramString);
+      this.a.setContentDescription(paramString);
+      this.a.setVisibility(0);
       return this;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.setVisibility(8);
     return this;
   }
   
@@ -93,11 +93,11 @@ public class SDKSetEmotionDialog
       if (paramOnClickListener == null) {
         return this;
       }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(new StackAdapter(paramList));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
+      this.i.setVisibility(0);
+      this.i.setAdapter(new StackAdapter(paramList));
+      this.i.setItemAnimator(new DefaultItemAnimator());
       paramList = new CardLayoutManager(paramOnClickListener);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramList);
+      this.i.setLayoutManager(paramList);
     }
     return this;
   }
@@ -106,26 +106,26 @@ public class SDKSetEmotionDialog
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.j.setVisibility(8);
+      this.k.setVisibility(0);
       return;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.j.setVisibility(0);
+      this.k.setVisibility(8);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.l;
     if ((localValueAnimator != null) && (paramInt > 0)) {
       localValueAnimator.cancel();
     }
     if (this.f != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
+      if (this.g == null) {
         return;
       }
       if (!TextUtils.isEmpty(paramString))
@@ -138,13 +138,13 @@ public class SDKSetEmotionDialog
         if (paramInt > 100) {
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.g.setVisibility(0);
         if (Build.VERSION.SDK_INT >= 24)
         {
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt, true);
+          this.g.setProgress(paramInt, true);
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+        this.g.setProgress(paramInt);
       }
     }
   }
@@ -160,7 +160,7 @@ public class SDKSetEmotionDialog
     TextView localTextView = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getContext().getString(paramInt));
-    localStringBuilder.append(getContext().getString(2131691115));
+    localStringBuilder.append(getContext().getString(2131888061));
     localTextView.setContentDescription(localStringBuilder.toString());
     this.e.setVisibility(0);
     this.e.setOnClickListener(new SDKSetEmotionDialog.2(this, paramOnClickListener));
@@ -171,7 +171,7 @@ public class SDKSetEmotionDialog
   {
     if (this.f != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
+      if (this.g == null) {
         return this;
       }
       if (!TextUtils.isEmpty(paramString))
@@ -187,12 +187,12 @@ public class SDKSetEmotionDialog
   
   public void b(int paramInt)
   {
-    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    ProgressBar localProgressBar = this.g;
     if (localProgressBar == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = SDKSetEmotionHelper.a(localProgressBar, paramInt);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.l = SDKSetEmotionHelper.a(localProgressBar, paramInt);
+    this.l.start();
   }
   
   public SDKSetEmotionDialog c(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -206,7 +206,7 @@ public class SDKSetEmotionDialog
     TextView localTextView = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getContext().getString(paramInt));
-    localStringBuilder.append(getContext().getString(2131691115));
+    localStringBuilder.append(getContext().getString(2131888061));
     localTextView.setContentDescription(localStringBuilder.toString());
     this.d.setVisibility(0);
     this.d.setOnClickListener(new SDKSetEmotionDialog.3(this, paramOnClickListener));
@@ -219,8 +219,8 @@ public class SDKSetEmotionDialog
     {
       try
       {
-        if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        if (this.l != null) {
+          this.l.cancel();
         }
         super.dismiss();
       }
@@ -239,7 +239,7 @@ public class SDKSetEmotionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKSetEmotionDialog
  * JD-Core Version:    0.7.0.1
  */

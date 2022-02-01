@@ -20,18 +20,13 @@ public class ApprovalTmpRoutingType
     return 7400;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(144);
     localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().n(paramMessageRecord.frienduin);
+    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().s(paramMessageRecord.frienduin);
     if (paramMessageRecord != null) {
       localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
@@ -39,14 +34,19 @@ public class ApprovalTmpRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 3014;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.ApprovalTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

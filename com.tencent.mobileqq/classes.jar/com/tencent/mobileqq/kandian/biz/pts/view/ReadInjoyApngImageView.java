@@ -21,18 +21,13 @@ import java.util.Date;
 public class ReadInjoyApngImageView
   extends ImageBase
 {
-  private static final Drawable a;
+  private static final Drawable b = new ColorDrawable(Color.parseColor("#00000000"));
   protected NativeReadInjoyImageView a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#00000000"));
-  }
   
   public ReadInjoyApngImageView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
+    this.a = new NativeReadInjoyImageView(paramVafContext.getContext());
   }
   
   private static long a(Date paramDate1, Date paramDate2)
@@ -47,34 +42,34 @@ public class ReadInjoyApngImageView
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredHeight();
+    return this.a.getComMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredWidth();
+    return this.a.getComMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+    return this.a;
   }
   
   public void loadImage(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")) && (!DateUtils.isToday(SharedPreUtils.b("search_word_prefix_ug_weishi_opt_day_show_time"))))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")) && (!DateUtils.isToday(SharedPreUtils.k("search_word_prefix_ug_weishi_opt_day_show_time"))))
     {
       SharedPreUtils.a("search_word_prefix_ug_weishi_opt_day_show_time", System.currentTimeMillis());
-      if (a(new Date(System.currentTimeMillis()), new Date(SharedPreUtils.b("search_word_prefix_ug_weishi_opt_week_first_show_time"))) > 7L)
+      if (a(new Date(System.currentTimeMillis()), new Date(SharedPreUtils.k("search_word_prefix_ug_weishi_opt_week_first_show_time"))) > 7L)
       {
         SharedPreUtils.a("search_word_prefix_ug_weishi_opt_week_first_show_time", System.currentTimeMillis());
-        SharedPreUtils.a("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
+        SharedPreUtils.c("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
         a(paramString);
         return;
       }
-      if (SharedPreUtils.a("search_word_prefix_ug_weishi_opt_week_first_show_count") < 3)
+      if (SharedPreUtils.l("search_word_prefix_ug_weishi_opt_week_first_show_count") < 3)
       {
-        SharedPreUtils.a("search_word_prefix_ug_weishi_opt_week_first_show_count", SharedPreUtils.a("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
+        SharedPreUtils.c("search_word_prefix_ug_weishi_opt_week_first_show_count", SharedPreUtils.l("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
         a(paramString);
       }
     }
@@ -87,20 +82,20 @@ public class ReadInjoyApngImageView
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
+    this.a.measureComponent(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.a.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
+    this.a.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     loadImage(this.mSrc);
     refresh();
   }
@@ -108,23 +103,23 @@ public class ReadInjoyApngImageView
   public void reset()
   {
     super.reset();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageSrc(null);
+    this.a.setImageSrc(null);
     this.mSrc = null;
   }
   
   public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageBitmap(paramBitmap);
+    this.a.setImageBitmap(paramBitmap);
   }
   
   public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageDrawable(paramDrawable);
+    this.a.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyApngImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -27,131 +27,131 @@ import mqq.app.MobileQQ;
 public class AudioItem
   extends UploadEditItem<AudioItem.AudioViewHolder, AudioInfo>
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AudioItem.4(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AudioInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo;
-  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new AudioItem.3(this);
-  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
-  boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  boolean a = false;
+  private LayoutInflater d;
+  private Context e;
+  private VoicePlayer f;
+  private boolean g = false;
+  private AudioInfo h;
+  private VoicePlayer.VoicePlayerListener i = new AudioItem.3(this);
+  private BroadcastReceiver j = new AudioItem.4(this);
   
   public AudioItem(XMediaEditor paramXMediaEditor, Context paramContext)
   {
     super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.e = paramContext;
+    this.d = LayoutInflater.from(paramContext);
     paramXMediaEditor = new IntentFilter();
     paramXMediaEditor.addAction("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action");
     paramXMediaEditor.addAction("com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video");
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramXMediaEditor);
-      this.jdField_a_of_type_Boolean = true;
+      this.e.registerReceiver(this.j, paramXMediaEditor);
+      this.a = true;
     }
   }
   
   private void g(AudioInfo paramAudioInfo)
   {
-    if (this.b) {
+    if (this.g) {
       return;
     }
-    this.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo = paramAudioInfo;
-    paramAudioInfo.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(paramAudioInfo.jdField_a_of_type_JavaLangString, new Handler());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(paramAudioInfo.jdField_c_of_type_Int);
+    this.g = true;
+    this.h = paramAudioInfo;
+    paramAudioInfo.f = true;
+    this.f = new VoicePlayer(paramAudioInfo.a, new Handler());
+    this.f.a(this.e);
+    this.f.h();
+    this.f.a(this.i);
+    this.f.c();
+    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.b.findViewHolderForAdapterPosition(paramAudioInfo.g);
     if (localAudioViewHolder != null)
     {
-      if (paramAudioInfo.jdField_a_of_type_Boolean)
+      if (paramAudioInfo.f)
       {
-        paramAudioInfo = (AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130772313);
-        localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramAudioInfo);
+        paramAudioInfo = (AnimationDrawable)this.e.getResources().getDrawable(2130772405);
+        localAudioViewHolder.a.setImageDrawable(paramAudioInfo);
         paramAudioInfo.start();
         return;
       }
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847265);
+      localAudioViewHolder.a.setImageResource(2130848916);
     }
   }
   
   private void h(AudioInfo paramAudioInfo)
   {
-    TroopHomeworkHelper.UploadFileTask localUploadFileTask = new TroopHomeworkHelper.UploadFileTask(MobileQQ.sMobileQQ.waitAppRuntime(null), paramAudioInfo.jdField_a_of_type_JavaLangString, paramAudioInfo.jdField_c_of_type_JavaLangString);
+    TroopHomeworkHelper.UploadFileTask localUploadFileTask = new TroopHomeworkHelper.UploadFileTask(MobileQQ.sMobileQQ.waitAppRuntime(null), paramAudioInfo.a, paramAudioInfo.e);
     localUploadFileTask.a(new AudioItem.AudioUploadCallback(this, paramAudioInfo));
-    paramAudioInfo.f = 1;
+    paramAudioInfo.o = 1;
     ThreadManager.post(new AudioItem.2(this, localUploadFileTask), 8, null, true);
   }
   
   public AudioItem.AudioViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new AudioItem.AudioViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561524, paramViewGroup, false));
+    paramViewGroup = new AudioItem.AudioViewHolder(this.d.inflate(2131627885, paramViewGroup, false));
     b(paramViewGroup.b, paramViewGroup);
     b(paramViewGroup.c, paramViewGroup);
-    b(paramViewGroup.jdField_a_of_type_AndroidViewView, paramViewGroup);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0)
+    b(paramViewGroup.e, paramViewGroup);
+    if (this.b.getLeftRightPadding() != 0)
     {
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramViewGroup.itemView.getLayoutParams();
-      localLayoutParams.leftMargin = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
-      localLayoutParams.rightMargin = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
+      localLayoutParams.leftMargin = this.b.getLeftRightPadding();
+      localLayoutParams.rightMargin = this.b.getLeftRightPadding();
     }
     return paramViewGroup;
   }
   
   public void a()
   {
-    if (this.b) {
-      b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo);
+    if (this.g) {
+      b(this.h);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.e.unregisterReceiver(this.j);
+      this.a = false;
     }
   }
   
   public void a(View paramView, AudioItem.AudioViewHolder paramAudioViewHolder)
   {
-    int i = paramView.getId();
-    if (i == 2131363049)
+    int k = paramView.getId();
+    if (k == 2131428877)
     {
-      if ((TextUtils.isEmpty(((AudioInfo)paramAudioViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(((AudioInfo)paramAudioViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).b))) {
+      if ((TextUtils.isEmpty(((AudioInfo)paramAudioViewHolder.f).a)) && (TextUtils.isEmpty(((AudioInfo)paramAudioViewHolder.f).b))) {
         return;
       }
-      a((AudioInfo)paramAudioViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase);
+      a((AudioInfo)paramAudioViewHolder.f);
       return;
     }
-    if (i == 2131376497)
+    if (k == 2131444738)
     {
-      h((AudioInfo)paramAudioViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase);
-      paramAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      h((AudioInfo)paramAudioViewHolder.f);
+      paramAudioViewHolder.d.setVisibility(4);
+      paramAudioViewHolder.a.setVisibility(4);
       paramAudioViewHolder.c.setVisibility(4);
       return;
     }
-    if (i == 2131364719)
+    if (k == 2131430825)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(paramAudioViewHolder);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo;
-      if ((paramView != null) && (paramView.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.jdField_c_of_type_Int == ((AudioInfo)paramAudioViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_c_of_type_Int)) {
-        b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo);
+      this.c.a(paramAudioViewHolder);
+      paramView = this.h;
+      if ((paramView != null) && (paramView.f) && (this.h.g == ((AudioInfo)paramAudioViewHolder.f).g)) {
+        b(this.h);
       }
     }
   }
   
   public void a(AudioInfo paramAudioInfo)
   {
-    if (this.b)
+    if (this.g)
     {
-      if (paramAudioInfo.jdField_a_of_type_Boolean)
+      if (paramAudioInfo.f)
       {
         b(paramAudioInfo);
         return;
       }
-      b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo);
+      b(this.h);
       c(paramAudioInfo);
       return;
     }
@@ -162,14 +162,14 @@ public class AudioItem
   {
     if (paramInt != 0)
     {
-      paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramAudioViewHolder.a.setVisibility(0);
       paramAudioViewHolder.b.setVisibility(4);
       paramAudioViewHolder.c.setVisibility(4);
     }
     else
     {
       paramAudioViewHolder.b.setVisibility(0);
-      paramInt = paramAudioInfo.f;
+      paramInt = paramAudioInfo.o;
       if (paramInt != 0)
       {
         if (paramInt != 1)
@@ -178,84 +178,84 @@ public class AudioItem
           {
             if (paramInt == 3)
             {
-              paramAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+              paramAudioViewHolder.d.setVisibility(0);
+              paramAudioViewHolder.a.setVisibility(0);
               paramAudioViewHolder.c.setVisibility(4);
             }
           }
           else
           {
-            paramAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-            paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+            paramAudioViewHolder.d.setVisibility(4);
+            paramAudioViewHolder.a.setVisibility(4);
             paramAudioViewHolder.c.setVisibility(0);
           }
         }
         else
         {
-          paramAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          paramAudioViewHolder.d.setVisibility(4);
+          paramAudioViewHolder.a.setVisibility(4);
           paramAudioViewHolder.c.setVisibility(4);
         }
       }
       else
       {
-        paramAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-        paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        paramAudioViewHolder.d.setVisibility(4);
+        paramAudioViewHolder.a.setVisibility(4);
         paramAudioViewHolder.c.setVisibility(4);
       }
     }
-    TextView localTextView = paramAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = paramAudioViewHolder.d;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramAudioInfo.jdField_a_of_type_Int);
+    localStringBuilder.append(paramAudioInfo.c);
     localStringBuilder.append("\"");
     localTextView.setText(localStringBuilder.toString());
-    if (paramAudioInfo.jdField_a_of_type_Boolean)
+    if (paramAudioInfo.f)
     {
-      paramAudioInfo = (AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130772313);
-      paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramAudioInfo);
+      paramAudioInfo = (AnimationDrawable)this.e.getResources().getDrawable(2130772405);
+      paramAudioViewHolder.a.setImageDrawable(paramAudioInfo);
       paramAudioInfo.start();
       return;
     }
-    paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847265);
+    paramAudioViewHolder.a.setImageResource(2130848916);
   }
   
   public void b(AudioInfo paramAudioInfo)
   {
-    if ((paramAudioInfo != null) && (paramAudioInfo.jdField_a_of_type_Boolean))
+    if ((paramAudioInfo != null) && (paramAudioInfo.f))
     {
-      this.b = false;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.e();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
-      paramAudioInfo.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo = null;
-      AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(paramAudioInfo.jdField_c_of_type_Int);
+      this.g = false;
+      this.f.f();
+      this.f = null;
+      paramAudioInfo.f = false;
+      this.h = null;
+      AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.b.findViewHolderForAdapterPosition(paramAudioInfo.g);
       if (localAudioViewHolder != null)
       {
-        if (paramAudioInfo.jdField_a_of_type_Boolean)
+        if (paramAudioInfo.f)
         {
-          paramAudioInfo = (AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130772313);
-          localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramAudioInfo);
+          paramAudioInfo = (AnimationDrawable)this.e.getResources().getDrawable(2130772405);
+          localAudioViewHolder.a.setImageDrawable(paramAudioInfo);
           paramAudioInfo.start();
           return;
         }
-        localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847265);
+        localAudioViewHolder.a.setImageResource(2130848916);
       }
     }
   }
   
   public void c(AudioInfo paramAudioInfo)
   {
-    if ((!TextUtils.isEmpty(paramAudioInfo.jdField_a_of_type_JavaLangString)) && (new File(paramAudioInfo.jdField_a_of_type_JavaLangString).exists()))
+    if ((!TextUtils.isEmpty(paramAudioInfo.a)) && (new File(paramAudioInfo.a).exists()))
     {
       g(paramAudioInfo);
       return;
     }
     if (!TextUtils.isEmpty(paramAudioInfo.b))
     {
-      if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+      if (!NetworkUtil.isNetworkAvailable(this.e))
       {
-        paramAudioInfo = this.jdField_a_of_type_AndroidContentContext;
-        QQToast.a(paramAudioInfo, paramAudioInfo.getString(2131693759), 0).a();
+        paramAudioInfo = this.e;
+        QQToast.makeText(paramAudioInfo, paramAudioInfo.getString(2131891334), 0).show();
         return;
       }
       ThreadManager.post(new AudioItem.1(this, paramAudioInfo), 8, null, true);
@@ -271,7 +271,7 @@ public class AudioItem
   {
     if (TextUtils.isEmpty(paramAudioInfo.b))
     {
-      if (paramAudioInfo.f != 0) {
+      if (paramAudioInfo.o != 0) {
         return;
       }
       h(paramAudioInfo);
@@ -280,14 +280,14 @@ public class AudioItem
   
   public void f(AudioInfo paramAudioInfo)
   {
-    if ((TextUtils.isEmpty(paramAudioInfo.b)) && (paramAudioInfo.f == 1)) {
+    if ((TextUtils.isEmpty(paramAudioInfo.b)) && (paramAudioInfo.o == 1)) {
       h(paramAudioInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem
  * JD-Core Version:    0.7.0.1
  */

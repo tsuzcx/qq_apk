@@ -45,7 +45,7 @@ public final class ExpandManagerProxyImpl
     paramAppRuntime = (ExpandManager)paramAppRuntime.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     if (paramAppRuntime != null)
     {
-      paramAppRuntime = paramAppRuntime.a();
+      paramAppRuntime = paramAppRuntime.t();
       if (paramAppRuntime != null) {
         return paramAppRuntime.voiceMaxLength;
       }
@@ -58,7 +58,7 @@ public final class ExpandManagerProxyImpl
     Intrinsics.checkParameterIsNotNull(paramAppRuntime, "appRuntime");
     paramAppRuntime = (ExpandManager)paramAppRuntime.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     if (paramAppRuntime != null) {
-      return paramAppRuntime.d();
+      return paramAppRuntime.x();
     }
     return false;
   }
@@ -93,7 +93,7 @@ public final class ExpandManagerProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.impl.ExpandManagerProxyImpl
  * JD-Core Version:    0.7.0.1
  */

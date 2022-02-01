@@ -15,27 +15,27 @@ public class NativeTemplateOneRichNode
   public void a(String paramString1, String paramString2, String paramString3)
   {
     super.a(paramString1, paramString2, paramString3);
-    paramString1 = a();
+    paramString1 = h();
     if (paramString1 != null) {
-      paramString1.e();
+      paramString1.j();
     }
   }
   
-  public void b()
+  public void e()
   {
-    super.b();
+    super.e();
     AbstractGifImage.pauseAll();
   }
   
-  public void c()
+  public void f()
   {
-    super.c();
+    super.f();
     AbstractGifImage.resumeAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.NativeTemplateOneRichNode
  * JD-Core Version:    0.7.0.1
  */

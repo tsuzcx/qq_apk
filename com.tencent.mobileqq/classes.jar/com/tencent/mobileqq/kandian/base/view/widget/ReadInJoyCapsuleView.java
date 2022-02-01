@@ -27,18 +27,18 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class ReadInJoyCapsuleView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private int c;
+  TextView a;
+  ImageView b;
+  private final Path c = new Path();
+  private final RectF d = new RectF();
+  private final Paint e = new Paint(1);
+  private final PorterDuffXfermode f = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+  private String g;
+  private Drawable h;
+  private Drawable i;
+  private int j;
+  private int k;
+  private int l;
   
   public ReadInJoyCapsuleView(@NonNull Context paramContext)
   {
@@ -51,12 +51,12 @@ public class ReadInJoyCapsuleView
     paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.ReadInJoyCapsuleView, 0, 0);
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(3);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(4);
-      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(5, 6);
-      this.jdField_b_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, 24);
-      this.c = paramAttributeSet.getColor(1, -1);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(2);
+      this.g = paramAttributeSet.getString(3);
+      this.h = paramAttributeSet.getDrawable(4);
+      this.j = paramAttributeSet.getDimensionPixelSize(5, 6);
+      this.k = paramAttributeSet.getDimensionPixelSize(0, 24);
+      this.l = paramAttributeSet.getColor(1, -1);
+      this.i = paramAttributeSet.getDrawable(2);
       paramAttributeSet.recycle();
       a(paramContext);
       return;
@@ -69,56 +69,56 @@ public class ReadInJoyCapsuleView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.b = new ImageView(paramContext);
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b.setImageDrawable(this.i);
+    addView(this.b, new FrameLayout.LayoutParams(-1, -1));
+    this.a = new TextView(paramContext);
+    Object localObject = this.a;
     ((TextView)localObject).setTypeface(((TextView)localObject).getTypeface(), 1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.c);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_b_of_type_Int);
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.a.setTextColor(this.l);
+    this.a.setText(this.g);
+    this.a.setTextSize(0, this.k);
+    localObject = this.h;
     if (localObject != null) {
       setDrawableLeft((Drawable)localObject);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+    this.a.setIncludeFontPadding(false);
+    this.a.setGravity(16);
     localObject = new FrameLayout.LayoutParams(-2, -2, 17);
     ((FrameLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(12.0F, paramContext.getResources());
     ((FrameLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(12.0F, paramContext.getResources());
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    addView(this.a, (ViewGroup.LayoutParams)localObject);
   }
   
   private void a(Canvas paramCanvas)
   {
-    int i = getWidth();
+    int m = getWidth();
     float f1 = getHeight();
     float f2 = 0.5F * f1;
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f2, 0.0F);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f3 = i;
+    this.c.moveTo(f2, 0.0F);
+    Object localObject = this.c;
+    float f3 = m;
     ((Path)localObject).lineTo(f3 - f2, 0.0F);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.d;
     float f4 = 2.0F * f2;
     ((RectF)localObject).set(f3 - f4, 0.0F, f3, f1);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 180.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f4, f1);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 90.0F, 180.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.c.arcTo(this.d, -90.0F, 180.0F);
+    this.c.lineTo(f2, f1);
+    this.d.set(0.0F, 0.0F, f4, f1);
+    this.c.arcTo(this.d, 90.0F, 180.0F);
+    this.c.close();
+    this.e.setXfermode(this.f);
+    this.e.setColor(-16777216);
+    this.e.setStyle(Paint.Style.FILL);
+    paramCanvas.drawPath(this.c, this.e);
+    this.e.setXfermode(null);
+    this.c.reset();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearColorFilter();
+    this.b.clearColorFilter();
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -129,51 +129,56 @@ public class ReadInJoyCapsuleView
     paramCanvas.restore();
   }
   
+  public Drawable getBackgroundSrc()
+  {
+    return this.i;
+  }
+  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    measureChildWithMargins(this.jdField_a_of_type_AndroidWidgetTextView, paramInt1, 0, paramInt2, 0);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    paramInt1 = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() + localLayoutParams.leftMargin + localLayoutParams.rightMargin, 1073741824);
-    this.jdField_a_of_type_AndroidWidgetImageView.measure(paramInt1, paramInt2);
+    measureChildWithMargins(this.a, paramInt1, 0, paramInt2, 0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.a.getLayoutParams();
+    paramInt1 = View.MeasureSpec.makeMeasureSpec(this.a.getMeasuredWidth() + localLayoutParams.leftMargin + localLayoutParams.rightMargin, 1073741824);
+    this.b.measure(paramInt1, paramInt2);
     setMeasuredDimension(paramInt1, paramInt2);
   }
   
   public void setBackgroundSrc(Drawable paramDrawable)
   {
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    this.i = paramDrawable;
+    this.b.setImageDrawable(this.i);
   }
   
   public void setColorFilter(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(paramInt, PorterDuff.Mode.DARKEN);
+    this.b.setColorFilter(paramInt, PorterDuff.Mode.DARKEN);
   }
   
   public void setDrawableLeft(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    float f = this.jdField_b_of_type_Int / this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    paramDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    paramDrawable.setBounds(0, 0, (int)(paramDrawable.getIntrinsicWidth() * f), (int)(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() * f));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.jdField_a_of_type_Int);
+    this.h = paramDrawable;
+    float f1 = this.k / this.h.getIntrinsicHeight();
+    paramDrawable = this.h;
+    paramDrawable.setBounds(0, 0, (int)(paramDrawable.getIntrinsicWidth() * f1), (int)(this.h.getIntrinsicHeight() * f1));
+    this.a.setCompoundDrawables(this.h, null, null, null);
+    this.a.setCompoundDrawablePadding(this.j);
   }
   
   public void setText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.g = paramString;
+    this.a.setText(paramString);
   }
   
   public void setTextColor(int paramInt)
   {
-    this.c = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+    this.l = paramInt;
+    this.a.setTextColor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyCapsuleView
  * JD-Core Version:    0.7.0.1
  */

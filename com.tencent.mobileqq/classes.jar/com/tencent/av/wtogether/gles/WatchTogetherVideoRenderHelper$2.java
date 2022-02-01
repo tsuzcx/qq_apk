@@ -9,15 +9,15 @@ class WatchTogetherVideoRenderHelper$2
   
   public void run()
   {
-    if ((WatchTogetherVideoRenderHelper.a(this.this$0) != null) && (Build.VERSION.SDK_INT >= 16)) {
-      synchronized (WatchTogetherVideoRenderHelper.a(this.this$0))
+    if ((WatchTogetherVideoRenderHelper.b(this.this$0) != null) && (Build.VERSION.SDK_INT >= 16)) {
+      synchronized (WatchTogetherVideoRenderHelper.b(this.this$0))
       {
-        if (WatchTogetherVideoRenderHelper.b(this.this$0))
+        if (WatchTogetherVideoRenderHelper.c(this.this$0))
         {
-          WatchTogetherVideoRenderHelper.a(this.this$0).c();
+          WatchTogetherVideoRenderHelper.b(this.this$0).d();
           WatchTogetherVideoRenderHelper.a(this.this$0, false);
         }
-        WatchTogetherVideoRenderHelper.a(this.this$0).e();
+        WatchTogetherVideoRenderHelper.b(this.this$0).f();
         WatchTogetherVideoRenderHelper.a(this.this$0, -1);
         return;
       }

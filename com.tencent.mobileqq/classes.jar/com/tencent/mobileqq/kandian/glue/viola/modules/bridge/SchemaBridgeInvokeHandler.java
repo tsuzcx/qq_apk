@@ -38,8 +38,8 @@ public final class SchemaBridgeInvokeHandler
       a(paramString, "schema is null");
       return;
     }
-    Activity localActivity = a();
-    AppRuntime localAppRuntime = ReadInJoyUtils.a();
+    Activity localActivity = c();
+    AppRuntime localAppRuntime = ReadInJoyUtils.b();
     Object localObject = localAppRuntime;
     if (!(localAppRuntime instanceof QQAppInterface)) {
       localObject = null;
@@ -53,7 +53,7 @@ public final class SchemaBridgeInvokeHandler
         if (paramJSONObject == null) {
           return;
         }
-        paramJSONObject.b("viola");
+        paramJSONObject.c("viola");
         paramJSONObject.a();
         a(paramString, null);
         return;
@@ -68,20 +68,20 @@ public final class SchemaBridgeInvokeHandler
     }
   }
   
-  @NotNull
-  public String a()
-  {
-    return "schema";
-  }
-  
   public void a()
   {
     a("jumpAction", (Function2)new SchemaBridgeInvokeHandler.register.1((SchemaBridgeInvokeHandler)this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "schema";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.SchemaBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

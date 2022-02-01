@@ -13,17 +13,17 @@ class TopPanelPresenter$1$1
   
   public void run()
   {
-    TopPanelContract.View localView = TopPanelPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelPresenter$1.a);
+    TopPanelContract.View localView = TopPanelPresenter.a(this.d.b);
     CertifiedAccountMeta.StEntry localStEntry;
-    if (((QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverEntryEnable", 1) & (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) ^ 0xFFFFFFFF)) == 1) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.entry.has())) {
-      localStEntry = (CertifiedAccountMeta.StEntry)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.entry.get();
+    if (((QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverEntryEnable", 1) & (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) ^ 0xFFFFFFFF)) == 1) && (this.a.entry.has())) {
+      localStEntry = (CertifiedAccountMeta.StEntry)this.a.entry.get();
     } else {
       localStEntry = null;
     }
     if (localView != null)
     {
-      localView.a(localStEntry, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
-      int i = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.noticeCount.get();
+      localView.a(localStEntry, this.b, this.c);
+      int i = this.a.noticeCount.get();
       if (i > 0)
       {
         localView.a(i);

@@ -30,7 +30,7 @@ class ThemeJsPlugin$ThemeSwitchListener
   
   public void beginSwitch()
   {
-    VasUtil.a().getThemeSwitchManager().openSwitchDialog(this.this$0.mRuntime.a());
+    VasUtil.a().getThemeSwitchManager().openSwitchDialog(this.this$0.mRuntime.d());
   }
   
   public void doSwitch(String paramString1, String paramString2)
@@ -131,7 +131,7 @@ class ThemeJsPlugin$ThemeSwitchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.ThemeSwitchListener
  * JD-Core Version:    0.7.0.1
  */

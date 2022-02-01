@@ -13,16 +13,16 @@ import org.json.JSONObject;
 class LaunchAECameraPlugin$AECameraBackBroadcastReceiver
   extends BroadcastReceiver
 {
-  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
   
   public LaunchAECameraPlugin$AECameraBackBroadcastReceiver(LaunchAECameraPlugin paramLaunchAECameraPlugin, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (LaunchAECameraPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsLaunchAECameraPlugin).getContext() == null) {
+    if (LaunchAECameraPlugin.a(this.a).getContext() == null) {
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -47,7 +47,7 @@ class LaunchAECameraPlugin$AECameraBackBroadcastReceiver
           localJSONObject.put("materialId", paramContext.get("extra_info_key_widget_id"));
         }
       }
-      localJSONObject.put("filePath", ((IMiniAppFileManager)LaunchAECameraPlugin.b(this.jdField_a_of_type_ComTencentQqminiNativePluginsLaunchAECameraPlugin).getManager(IMiniAppFileManager.class)).getWxFilePath(str1));
+      localJSONObject.put("filePath", ((IMiniAppFileManager)LaunchAECameraPlugin.b(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str1));
       if (bool) {
         i = 1;
       }
@@ -55,7 +55,7 @@ class LaunchAECameraPlugin$AECameraBackBroadcastReceiver
       if (bool)
       {
         localJSONObject.put("videoDuration", (l + 999L) / 1000L);
-        localJSONObject.put("cover", ((IMiniAppFileManager)LaunchAECameraPlugin.c(this.jdField_a_of_type_ComTencentQqminiNativePluginsLaunchAECameraPlugin).getManager(IMiniAppFileManager.class)).getWxFilePath(str2));
+        localJSONObject.put("cover", ((IMiniAppFileManager)LaunchAECameraPlugin.c(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str2));
       }
     }
     catch (JSONException paramContext)
@@ -65,16 +65,16 @@ class LaunchAECameraPlugin$AECameraBackBroadcastReceiver
     paramContext = localJSONObject.toString();
     paramIntent = new StringBuilder();
     paramIntent.append("AECameraBackBroadcastReceiver---sendBackTo=");
-    paramIntent.append(this.jdField_a_of_type_JavaLangString);
+    paramIntent.append(this.b);
     paramIntent.append(", data: ");
     paramIntent.append(paramContext);
     QLog.i("LaunchAECameraPlugin", 1, paramIntent.toString());
-    LaunchAECameraPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsLaunchAECameraPlugin, this.jdField_a_of_type_JavaLangString, paramContext);
+    LaunchAECameraPlugin.a(this.a, this.b, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.LaunchAECameraPlugin.AECameraBackBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

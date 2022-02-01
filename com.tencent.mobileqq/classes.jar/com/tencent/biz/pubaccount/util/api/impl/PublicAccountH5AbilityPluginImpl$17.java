@@ -60,13 +60,13 @@ class PublicAccountH5AbilityPluginImpl$17
                 {
                   localJSONException4.printStackTrace();
                 }
-                this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-                this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startNextDownloadTask((String)localObject);
+                this.e.callJs(this.a, new String[] { localJSONObject.toString() });
+                this.e.startNextDownloadTask((String)localObject);
                 ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
               }
               else
               {
-                this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startDownload(this.jdField_a_of_type_Int, paramBundle, (String)localObject, true, this.jdField_a_of_type_JavaLangString);
+                this.e.startDownload(this.b, paramBundle, (String)localObject, true, this.a);
               }
             }
             else
@@ -87,13 +87,13 @@ class PublicAccountH5AbilityPluginImpl$17
                 {
                   localJSONException3.printStackTrace();
                 }
-                this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+                this.e.callJs(this.a, new String[] { ((JSONObject)localObject).toString() });
                 ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
               }
               else
               {
                 localObject = ((JSONObject)localObject).optString("mediaid");
-                this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startDownload(this.jdField_a_of_type_Int, paramBundle, (String)localObject, false, this.jdField_a_of_type_JavaLangString);
+                this.e.startDownload(this.b, paramBundle, (String)localObject, false, this.a);
               }
             }
             if (QLog.isColorLevel())
@@ -127,10 +127,10 @@ class PublicAccountH5AbilityPluginImpl$17
             {
               localJSONException1.printStackTrace();
             }
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-            if (this.jdField_a_of_type_Boolean)
+            this.e.callJs(this.a, new String[] { paramBundle.toString() });
+            if (this.c)
             {
-              this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startNextDownloadTask(this.b);
+              this.e.startNextDownloadTask(this.d);
               ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
               return;
             }
@@ -156,10 +156,10 @@ class PublicAccountH5AbilityPluginImpl$17
           {
             localJSONException2.printStackTrace();
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-          if (this.jdField_a_of_type_Boolean)
+          this.e.callJs(this.a, new String[] { paramBundle.toString() });
+          if (this.c)
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startNextDownloadTask(this.b);
+            this.e.startNextDownloadTask(this.d);
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
             return;
           }
@@ -182,7 +182,7 @@ class PublicAccountH5AbilityPluginImpl$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.17
  * JD-Core Version:    0.7.0.1
  */

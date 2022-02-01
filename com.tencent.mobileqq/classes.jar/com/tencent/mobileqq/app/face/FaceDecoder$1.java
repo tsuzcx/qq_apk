@@ -11,41 +11,41 @@ final class FaceDecoder$1
   public void run()
   {
     IQQAvatarHandlerService localIQQAvatarHandlerService = (IQQAvatarHandlerService)this.val$app.getRuntimeService(IQQAvatarHandlerService.class, "");
-    if ((this.val$faceInfo.jdField_a_of_type_Int != 1) && (this.val$faceInfo.jdField_a_of_type_Int != 101) && (this.val$faceInfo.jdField_a_of_type_Int != 115))
+    if ((this.val$faceInfo.b != 1) && (this.val$faceInfo.b != 101) && (this.val$faceInfo.b != 115))
     {
-      if (this.val$faceInfo.jdField_a_of_type_Int == 11)
+      if (this.val$faceInfo.b == 11)
       {
-        localIQQAvatarHandlerService.getMobileQQHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Byte);
+        localIQQAvatarHandlerService.getMobileQQHead(this.val$faceInfo.c, this.val$faceInfo.g);
         return;
       }
-      if (this.val$faceInfo.jdField_a_of_type_Int == 4)
+      if (this.val$faceInfo.b == 4)
       {
-        localIQQAvatarHandlerService.getTroopHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Byte);
+        localIQQAvatarHandlerService.getTroopHead(this.val$faceInfo.c, this.val$faceInfo.g);
         return;
       }
-      if (this.val$faceInfo.jdField_a_of_type_Int == 32)
+      if (this.val$faceInfo.b == 32)
       {
-        localIQQAvatarHandlerService.getStrangerHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Int, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte);
+        localIQQAvatarHandlerService.getStrangerHead(this.val$faceInfo.c, this.val$faceInfo.d, this.val$faceInfo.f, this.val$faceInfo.g);
         return;
       }
-      if (this.val$faceInfo.jdField_a_of_type_Int == 16)
+      if (this.val$faceInfo.b == 16)
       {
-        localIQQAvatarHandlerService.getQCallHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_b_of_type_Int, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte);
+        localIQQAvatarHandlerService.getQCallHead(this.val$faceInfo.c, this.val$faceInfo.d, this.val$faceInfo.f, this.val$faceInfo.g);
         return;
       }
-      if (this.val$faceInfo.jdField_a_of_type_Int == 116) {
-        localIQQAvatarHandlerService.getApolloHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte, this.val$faceInfo.d);
+      if (this.val$faceInfo.b == 116) {
+        localIQQAvatarHandlerService.getApolloHead(this.val$faceInfo.c, this.val$faceInfo.f, this.val$faceInfo.g, this.val$faceInfo.j);
       }
     }
     else
     {
-      localIQQAvatarHandlerService.getCustomHead(this.val$faceInfo.jdField_a_of_type_JavaLangString, this.val$faceInfo.jdField_a_of_type_Byte, this.val$faceInfo.jdField_b_of_type_Byte);
+      localIQQAvatarHandlerService.getCustomHead(this.val$faceInfo.c, this.val$faceInfo.f, this.val$faceInfo.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoder.1
  * JD-Core Version:    0.7.0.1
  */

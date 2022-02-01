@@ -27,40 +27,49 @@ public class OpenSdkJumpAction
     super(paramQQAppInterface, paramContext);
   }
   
-  protected Bundle a()
+  public boolean a()
   {
-    Bundle localBundle = new Bundle();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doAction: action=");
+    localStringBuilder.append(this.e);
+    QLog.i("OpenSdkJumpAction", 1, localStringBuilder.toString());
+    if ("join_group".equals(this.e))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      String str2 = (String)localEntry.getValue();
-      if (!TextUtils.isEmpty(str2))
-      {
-        String str1 = str2;
-        if (!((String)localEntry.getKey()).equals("src_type")) {
-          str1 = c(str2);
-        }
-        localBundle.putString((String)localEntry.getKey(), str1);
-      }
+      d();
+      return true;
     }
-    localBundle.putString("pkg_name", this.e);
-    localBundle.putString("pkg_sig", this.f);
-    return localBundle;
+    if ("bind_group".equals(this.e))
+    {
+      e();
+      return true;
+    }
+    if ("open_auth_manage".equals(this.e)) {
+      b();
+    }
+    return true;
   }
   
-  protected BasicSdkJumpInfo a()
+  protected void b()
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("src_type");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("app_id");
-    Object localObject = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("open_id"));
-    String str3 = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("app_name"));
-    String str4 = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("sdk_version"));
-    if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(this.e))) {
+    BasicSdkJumpInfo localBasicSdkJumpInfo = c();
+    if (localBasicSdkJumpInfo == null) {
+      return;
+    }
+    AuthorityControlAppDetailsFragment.a(this.b, new AuthoritySdkJumpInfo(localBasicSdkJumpInfo));
+  }
+  
+  protected BasicSdkJumpInfo c()
+  {
+    String str1 = (String)this.f.get("src_type");
+    String str2 = (String)this.f.get("app_id");
+    Object localObject = h((String)this.f.get("open_id"));
+    String str3 = h((String)this.f.get("app_name"));
+    String str4 = h((String)this.f.get("sdk_version"));
+    if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(this.i))) {
       try
       {
         long l = Long.parseLong(str2);
-        return new BasicSdkJumpInfo(l, (String)localObject, str1, this.e, this.f, str3, str4);
+        return new BasicSdkJumpInfo(l, (String)localObject, str1, this.i, this.j, str3, str4);
       }
       catch (NumberFormatException localNumberFormatException)
       {
@@ -70,7 +79,7 @@ public class OpenSdkJumpAction
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getBasicInfo: appId/openId/src/pkgName is empty!");
-    ((StringBuilder)localObject).append(this.e);
+    ((StringBuilder)localObject).append(this.i);
     ((StringBuilder)localObject).append(" appId: ");
     ((StringBuilder)localObject).append(str2);
     ((StringBuilder)localObject).append(" src=");
@@ -79,58 +88,49 @@ public class OpenSdkJumpAction
     return null;
   }
   
-  protected void a()
-  {
-    BasicSdkJumpInfo localBasicSdkJumpInfo = a();
-    if (localBasicSdkJumpInfo == null) {
-      return;
-    }
-    AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_AndroidContentContext, new AuthoritySdkJumpInfo(localBasicSdkJumpInfo));
-  }
-  
-  public boolean a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("doAction: action=");
-    localStringBuilder.append(this.c);
-    QLog.i("OpenSdkJumpAction", 1, localStringBuilder.toString());
-    if ("join_group".equals(this.c))
-    {
-      b();
-      return true;
-    }
-    if ("bind_group".equals(this.c))
-    {
-      c();
-      return true;
-    }
-    if ("open_auth_manage".equals(this.c)) {
-      a();
-    }
-    return true;
-  }
-  
-  protected void b()
+  protected void d()
   {
     Intent localIntent = new Intent();
-    Bundle localBundle = a();
+    Bundle localBundle = f();
     localBundle.putInt("action", 3);
     localIntent.putExtra("key_params", localBundle);
-    PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
+    PublicFragmentActivity.Launcher.a(this.b, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
   }
   
-  protected void c()
+  protected void e()
   {
     Intent localIntent = new Intent();
-    Bundle localBundle = a();
+    Bundle localBundle = f();
     localBundle.putInt("action", 1);
     localIntent.putExtra("key_params", localBundle);
-    PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
+    PublicFragmentActivity.Launcher.a(this.b, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
+  }
+  
+  protected Bundle f()
+  {
+    Bundle localBundle = new Bundle();
+    Iterator localIterator = this.f.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      String str2 = (String)localEntry.getValue();
+      if (!TextUtils.isEmpty(str2))
+      {
+        String str1 = str2;
+        if (!((String)localEntry.getKey()).equals("src_type")) {
+          str1 = h(str2);
+        }
+        localBundle.putString((String)localEntry.getKey(), str1);
+      }
+    }
+    localBundle.putString("pkg_name", this.i);
+    localBundle.putString("pkg_sig", this.j);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenSdkJumpAction
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class WadlQIPCConnector$2
   
   public void connectFailed()
   {
-    WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector, false);
-    WadlQIPCConnector.b(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector, false);
-    synchronized (WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector))
+    WadlQIPCConnector.a(this.b, false);
+    WadlQIPCConnector.b(this.b, false);
+    synchronized (WadlQIPCConnector.a(this.b))
     {
-      WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector).notifyAll();
+      WadlQIPCConnector.a(this.b).notifyAll();
       ??? = new StringBuilder();
       ((StringBuilder)???).append("connectFailed:");
-      ((StringBuilder)???).append(WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector));
+      ((StringBuilder)???).append(WadlQIPCConnector.b(this.b));
       QLog.d("Wadl_QIPCConnector", 1, ((StringBuilder)???).toString());
       return;
     }
@@ -28,18 +28,18 @@ class WadlQIPCConnector$2
   {
     long l = System.currentTimeMillis();
     if (??? != null) {
-      WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector, ???.procName);
+      WadlQIPCConnector.a(this.b, ???.procName);
     }
-    WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector, true);
-    WadlQIPCConnector.b(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector, false);
-    synchronized (WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector))
+    WadlQIPCConnector.a(this.b, true);
+    WadlQIPCConnector.b(this.b, false);
+    synchronized (WadlQIPCConnector.a(this.b))
     {
-      WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector).notifyAll();
+      WadlQIPCConnector.a(this.b).notifyAll();
       ??? = new StringBuilder();
       ???.append("connectSuccess:");
-      ???.append(WadlQIPCConnector.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector));
+      ???.append(WadlQIPCConnector.b(this.b));
       ???.append("|");
-      ???.append(l - this.jdField_a_of_type_Long);
+      ???.append(l - this.a);
       QLog.d("Wadl_QIPCConnector", 1, ???.toString());
       return;
     }
@@ -47,7 +47,7 @@ class WadlQIPCConnector$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.ipc.WadlQIPCConnector.2
  * JD-Core Version:    0.7.0.1
  */

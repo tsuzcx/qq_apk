@@ -17,24 +17,24 @@ class QQPimGetTipsInfoIPC$GetContactTipsRunnable$1
       String str = QQPimDefineList.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("QQPimGetTipsInfoIPC.onCallback() ");
-      localStringBuilder.append(QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+      localStringBuilder.append(QQPimGetTipsInfoIPC.e(this.a.this$0).hashCode());
       QLog.i(str, 2, localStringBuilder.toString());
     }
     if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
     {
-      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.n);
+      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.o);
       if (paramEIPCResult != null)
       {
         paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
         this.a.this$0.a = paramEIPCResult;
-        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
+        QQPimGetTipsInfoIPC.e(this.a.this$0).a(paramEIPCResult);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable.1
  * JD-Core Version:    0.7.0.1
  */

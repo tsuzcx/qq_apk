@@ -40,31 +40,6 @@ public class MemoriesFeedSegment
     super(paramContext, paramActivity, paramInt, paramIMyStoryListView, paramBoolean);
   }
   
-  private String a(String paramString)
-  {
-    Object localObject = Calendar.getInstance();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, ((Calendar)localObject).get(1));
-    localCalendar.set(2, ((Calendar)localObject).get(2));
-    localCalendar.set(5, ((Calendar)localObject).get(5) - 1);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    paramString = DateUtils.a(paramString);
-    if ((((Calendar)localObject).get(1) + 0 == paramString[0]) && (((Calendar)localObject).get(2) + 1 == paramString[1]) && (((Calendar)localObject).get(5) + 0 == paramString[2])) {
-      return HardCodeUtil.a(2131706566);
-    }
-    if ((localCalendar.get(1) + 0 == paramString[0]) && (localCalendar.get(2) + 1 == paramString[1]) && (localCalendar.get(5) + 0 == paramString[2])) {
-      return HardCodeUtil.a(2131706568);
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString[1]);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131706571));
-    ((StringBuilder)localObject).append(paramString[2]);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131706569));
-    return ((StringBuilder)localObject).toString();
-  }
-  
   private String a(String paramString1, String paramString2)
   {
     Calendar localCalendar1 = Calendar.getInstance();
@@ -76,81 +51,86 @@ public class MemoriesFeedSegment
     localCalendar2.set(12, 0);
     localCalendar2.set(13, 0);
     if (TextUtils.isEmpty(paramString2)) {
-      return String.valueOf(DateUtils.a(paramString1)[0]);
+      return String.valueOf(DateUtils.b(paramString1)[0]);
     }
-    paramString2 = DateUtils.a(paramString2);
-    paramString1 = DateUtils.a(paramString1);
+    paramString2 = DateUtils.b(paramString2);
+    paramString1 = DateUtils.b(paramString1);
     if (paramString2[0] != paramString1[0]) {
       return String.valueOf(paramString1[0]);
     }
     return null;
   }
   
-  private void n()
+  private String e(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
+    Object localObject = Calendar.getInstance();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, ((Calendar)localObject).get(1));
+    localCalendar.set(2, ((Calendar)localObject).get(2));
+    localCalendar.set(5, ((Calendar)localObject).get(5) - 1);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    paramString = DateUtils.b(paramString);
+    if ((((Calendar)localObject).get(1) + 0 == paramString[0]) && (((Calendar)localObject).get(2) + 1 == paramString[1]) && (((Calendar)localObject).get(5) + 0 == paramString[2])) {
+      return HardCodeUtil.a(2131904420);
+    }
+    if ((localCalendar.get(1) + 0 == paramString[0]) && (localCalendar.get(2) + 1 == paramString[1]) && (localCalendar.get(5) + 0 == paramString[2])) {
+      return HardCodeUtil.a(2131904422);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString[1]);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131904425));
+    ((StringBuilder)localObject).append(paramString[2]);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131904423));
+    return ((StringBuilder)localObject).toString();
   }
   
-  public void P_()
+  private void y()
   {
-    super.P_();
-    n();
+    this.m = true;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      if (!((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_Boolean) {
+      if (!((ProfileFeedPresenter)this.b).a) {
         return 1;
       }
-      if (((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_JavaUtilList.size() > 0) {
+      if (((ProfileFeedPresenter)this.b).b.size() > 0) {
         return super.a();
       }
     }
     return 0;
   }
   
-  protected int a(int paramInt)
-  {
-    if (((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_Boolean) {
-      return super.a(paramInt);
-    }
-    return 4;
-  }
-  
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    if (a(paramInt) == 4) {
+    if (g_(paramInt) == 4) {
       return paramBaseViewHolder.a();
     }
     return super.a(paramInt, paramBaseViewHolder, paramViewGroup);
   }
   
-  @NonNull
-  protected HomeFeedPresenter a(boolean paramBoolean)
-  {
-    return new ProfileFeedPresenter(this.jdField_a_of_type_Int, this, this, paramBoolean);
-  }
-  
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    if (a(paramInt) == 4) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561703, paramViewGroup, false));
+    if (g_(paramInt) == 4) {
+      return new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628082, paramViewGroup, false));
     }
     return super.a(paramInt, paramViewGroup);
   }
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, QQUserUIItem paramQQUserUIItem)
   {
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131374505);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131374501);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131374500);
-    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131374491);
-    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131362184);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131442675);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131442671);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131442670);
+    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131442661);
+    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131427766);
     ((RelativeLayout)localObject).setVisibility(0);
     localRelativeLayout.setVisibility(0);
-    localTextView.setText(a(((StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a().date));
+    localTextView.setText(e(((StoryHomeFeed)this.b.i().get(paramInt)).g().date));
     localObject = a(paramVideoListHomeFeed.a());
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -161,46 +141,46 @@ public class MemoriesFeedSegment
     {
       paramQQUserUIItem.setVisibility(8);
     }
-    if (paramVideoListHomeFeed.a().type == 3)
+    if (paramVideoListHomeFeed.i().type == 3)
     {
-      if (paramVideoListHomeFeed.a().getOwner().isSubscribe())
+      if (paramVideoListHomeFeed.i().getOwner().isSubscribe())
       {
         paramBaseViewHolder.setVisibility(8);
       }
       else
       {
-        paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
-        int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
-        paramBaseViewHolder.setText(HardCodeUtil.a(2131706574));
+        paramInt = UIUtils.a(this.l, 13.0F);
+        int i = UIUtils.a(this.l, 3.0F);
+        paramBaseViewHolder.setText(HardCodeUtil.a(2131899712));
         paramBaseViewHolder.setVisibility(0);
-        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167056));
-        paramBaseViewHolder.setBackgroundResource(2130846771);
+        paramBaseViewHolder.setTextColor(this.l.getResources().getColor(2131167993));
+        paramBaseViewHolder.setBackgroundResource(2130848323);
         paramBaseViewHolder.setPadding(paramInt, i, paramInt, i);
       }
-      paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+      paramInt = UIUtils.a(this.l, 20.0F);
       UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
       return;
     }
-    if (paramVideoListHomeFeed.a().type == 1)
+    if (paramVideoListHomeFeed.i().type == 1)
     {
       paramBaseViewHolder.setVisibility(8);
-      paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166512));
+      paramBaseViewHolder.setTextColor(this.l.getResources().getColor(2131167369));
       paramBaseViewHolder.setBackgroundDrawable(null);
-      paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+      paramInt = UIUtils.a(this.l, 20.0F);
       UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
     }
   }
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, boolean paramBoolean)
   {
-    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131374497);
-    Object localObject2 = (TextView)paramBaseViewHolder.a(2131374515);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131374512);
+    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131442667);
+    Object localObject2 = (TextView)paramBaseViewHolder.a(2131442685);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131442682);
     localTextView.setVisibility(8);
-    paramBaseViewHolder = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a();
-    String str = ((StoryHomeFeed)paramBaseViewHolder.get(paramInt)).a().date;
+    paramBaseViewHolder = this.b.i();
+    String str = ((StoryHomeFeed)paramBaseViewHolder.get(paramInt)).g().date;
     if (paramInt > 0) {
-      paramBaseViewHolder = ((StoryHomeFeed)paramBaseViewHolder.get(paramInt - 1)).a().date;
+      paramBaseViewHolder = ((StoryHomeFeed)paramBaseViewHolder.get(paramInt - 1)).g().date;
     } else {
       paramBaseViewHolder = null;
     }
@@ -213,57 +193,77 @@ public class MemoriesFeedSegment
     ((RelativeLayout)localObject1).setVisibility(0);
     ((TextView)localObject2).setVisibility(0);
     ((TextView)localObject2).setText(paramBaseViewHolder);
-    paramBaseViewHolder = DateUtils.a(str);
-    localObject1 = ((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_JavaUtilList.iterator();
+    paramBaseViewHolder = DateUtils.b(str);
+    localObject1 = ((ProfileFeedPresenter)this.b).b.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (MomeriesYearNode)((Iterator)localObject1).next();
       if (((MomeriesYearNode)localObject2).year == paramBaseViewHolder[0])
       {
         localTextView.setVisibility(0);
-        localTextView.setText(String.format(HardCodeUtil.a(2131706576), new Object[] { Integer.valueOf(((MomeriesYearNode)localObject2).videoCount) }));
+        localTextView.setText(String.format(HardCodeUtil.a(2131904428), new Object[] { Integer.valueOf(((MomeriesYearNode)localObject2).videoCount) }));
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    c(paramBoolean);
+    e(paramBoolean);
   }
   
-  public boolean a()
+  @NonNull
+  protected HomeFeedPresenter b(boolean paramBoolean)
   {
-    if (c()) {
-      return super.a();
-    }
-    return true;
-  }
-  
-  public void a_(boolean paramBoolean)
-  {
-    super.a_(paramBoolean);
-    if (paramBoolean) {
-      h();
-    }
+    return new ProfileFeedPresenter(this.a, this, this, paramBoolean);
   }
   
   protected BaseViewHolder b(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561662, paramViewGroup, false));
-    paramViewGroup.a(2131362184).setOnClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628041, paramViewGroup, false));
+    paramViewGroup.a(2131427766).setOnClickListener(paramViewGroup);
     a(paramViewGroup);
     return paramViewGroup;
   }
   
-  protected void b()
+  public void br_()
   {
-    super.b();
-    h();
+    super.br_();
+    y();
   }
   
-  protected int d_()
+  protected void bs_()
   {
-    return super.d_() + 1;
+    super.bs_();
+    k();
+  }
+  
+  public boolean bt_()
+  {
+    if (t()) {
+      return super.bt_();
+    }
+    return true;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    super.c(paramBoolean);
+    if (paramBoolean) {
+      k();
+    }
+  }
+  
+  protected int f()
+  {
+    return super.f() + 1;
+  }
+  
+  protected int g_(int paramInt)
+  {
+    if (((ProfileFeedPresenter)this.b).a) {
+      return super.g_(paramInt);
+    }
+    return 4;
   }
 }
 

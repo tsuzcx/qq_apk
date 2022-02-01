@@ -10,39 +10,17 @@ import org.json.JSONObject;
 
 public class VideoServerInfoManager$ServerInfo
 {
-  public long a;
   public String a;
-  public byte[] a;
   public String b;
   public String c;
   public String d;
   public String e;
-  
-  public VideoServerInfoManager$ServerInfo()
-  {
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  public void a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("t", this.jdField_a_of_type_Long);
-      localJSONObject.put("ak", HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-      ((StoryConfigManager)SuperManager.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
-      SLog.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
+  public byte[] f = new byte[1];
+  public long g;
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
+    if (this.g > NetConnInfoCenter.getServerTimeMillis())
     {
       SLog.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
       return true;
@@ -53,14 +31,31 @@ public class VideoServerInfoManager$ServerInfo
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+    return this.g <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+  }
+  
+  public void c()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", this.g);
+      localJSONObject.put("ak", HexUtil.bytes2HexStr(this.f));
+      ((StoryConfigManager)SuperManager.a(10)).d("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
+      SLog.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ServerInfo{, userIp='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", serverIp1='");
     localStringBuilder.append(this.b);
@@ -75,7 +70,7 @@ public class VideoServerInfoManager$ServerInfo
     localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", expireTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("");
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
@@ -84,7 +79,7 @@ public class VideoServerInfoManager$ServerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.VideoServerInfoManager.ServerInfo
  * JD-Core Version:    0.7.0.1
  */

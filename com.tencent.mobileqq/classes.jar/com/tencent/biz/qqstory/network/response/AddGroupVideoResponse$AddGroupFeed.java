@@ -19,13 +19,13 @@ public class AddGroupVideoResponse$AddGroupFeed
   @NonNull
   public final String a;
   @NonNull
-  public final Map<String, String> a;
-  @NonNull
   public String b;
+  @NonNull
+  public final Map<String, String> c;
   
   public AddGroupVideoResponse$AddGroupFeed(@NonNull qqstory_group.GroupFeed paramGroupFeed)
   {
-    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
+    this.a = paramGroupFeed.union_id.get().toStringUtf8();
     HashMap localHashMap = new HashMap();
     Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
     while (localIterator.hasNext())
@@ -39,25 +39,25 @@ public class AddGroupVideoResponse$AddGroupFeed
     if (TextUtils.isEmpty(this.b)) {
       this.b = paramGroupFeed.feed_id.get().toStringUtf8();
     }
-    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
+    this.c = Collections.unmodifiableMap(localHashMap);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AddGroupFeed[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.AddGroupVideoResponse.AddGroupFeed
  * JD-Core Version:    0.7.0.1
  */

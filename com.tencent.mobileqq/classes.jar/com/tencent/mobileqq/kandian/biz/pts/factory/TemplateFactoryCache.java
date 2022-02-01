@@ -41,7 +41,7 @@ public class TemplateFactoryCache
   
   protected void clearMemory()
   {
-    if (!ReadInJoyHelper.r()) {
+    if (!ReadInJoyHelper.E()) {
       clear();
     }
   }
@@ -65,26 +65,26 @@ public class TemplateFactoryCache
     try
     {
       StyleConfigHelper.TemplateFactoryWrapper localTemplateFactoryWrapper = get(paramString);
-      if ((localTemplateFactoryWrapper != null) && (localTemplateFactoryWrapper.a != null))
+      if ((localTemplateFactoryWrapper != null) && (localTemplateFactoryWrapper.c != null))
       {
         paramContext = OfflineUtils.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
-        if ((paramContext != null) && (localTemplateFactoryWrapper.a.a().equals(paramContext.a())))
+        if ((paramContext != null) && (localTemplateFactoryWrapper.c.a().equals(paramContext.a())))
         {
-          int i = localTemplateFactoryWrapper.a.getTemplateId();
+          int i = localTemplateFactoryWrapper.c.getTemplateId();
           int j = paramContext.getTemplateId();
           if (i != j) {
             return paramContext;
           }
         }
-        paramContext = localTemplateFactoryWrapper.a;
+        paramContext = localTemplateFactoryWrapper.c;
         return paramContext;
       }
       paramContext = this.mStyleConfigHelper.a(paramContext, paramString);
-      if ((paramContext != null) && (paramContext.a != null))
+      if ((paramContext != null) && (paramContext.c != null))
       {
-        paramContext.a.b(paramString);
+        paramContext.c.b(paramString);
         put(paramString, paramContext);
-        paramContext = paramContext.a;
+        paramContext = paramContext.c;
         return paramContext;
       }
       return null;
@@ -124,13 +124,13 @@ public class TemplateFactoryCache
   {
     Object localObject1 = this.mStyleConfigHelper;
     StyleConfigHelper localStyleConfigHelper = new StyleConfigHelper();
-    Object localObject2 = ((StyleConfigHelper)localObject1).a();
+    Object localObject2 = ((StyleConfigHelper)localObject1).d();
     localObject1 = new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!((StyleConfigHelper.Config)localEntry.getValue()).equals(localStyleConfigHelper.a((String)localEntry.getKey()))) {
+      if (!((StyleConfigHelper.Config)localEntry.getValue()).equals(localStyleConfigHelper.b((String)localEntry.getKey()))) {
         ((List)localObject1).add(localEntry.getKey());
       }
     }
@@ -147,7 +147,7 @@ public class TemplateFactoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.factory.TemplateFactoryCache
  * JD-Core Version:    0.7.0.1
  */

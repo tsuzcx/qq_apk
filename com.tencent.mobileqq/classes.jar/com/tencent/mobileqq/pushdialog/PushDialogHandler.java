@@ -30,30 +30,22 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.MsgBody;
 
 public class PushDialogHandler
 {
-  private static volatile PushDialogHandler jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
-  
-  private Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
+  private static volatile PushDialogHandler a;
+  private EntityManager b = null;
+  private Handler c = null;
   
   public static PushDialogHandler a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler == null) {
-          jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler = new PushDialogHandler();
+        if (a == null) {
+          a = new PushDialogHandler();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogHandler;
+    return a;
   }
   
   private void a(long paramLong1, long paramLong2, submsgtype0x122.MsgBody paramMsgBody)
@@ -78,12 +70,12 @@ public class PushDialogHandler
       if (paramMsgBody != null)
       {
         paramMsgBody = paramMsgBody.a();
-        if (paramMsgBody.a() != 6)
+        if (paramMsgBody.d() != 6)
         {
-          QLog.e("PushDialogHandler", 1, new Object[] { "error note type:", Integer.valueOf(paramMsgBody.a()) });
+          QLog.e("PushDialogHandler", 1, new Object[] { "error note type:", Integer.valueOf(paramMsgBody.d()) });
           return;
         }
-        paramMsgBody = paramMsgBody.a();
+        paramMsgBody = paramMsgBody.e();
         if (paramMsgBody != null)
         {
           Iterator localIterator = paramMsgBody.iterator();
@@ -101,7 +93,7 @@ public class PushDialogHandler
           {
             UniteEntity.Note localNote = (UniteEntity.Note)localIterator.next();
             localObject10 = localNote.a();
-            Object localObject21 = localNote.a();
+            Object localObject21 = localNote.e();
             Object localObject20;
             Object localObject18;
             Object localObject17;
@@ -110,7 +102,7 @@ public class PushDialogHandler
             Object localObject13;
             Object localObject12;
             Object localObject11;
-            if (localNote.a() == 7)
+            if (localNote.d() == 7)
             {
               localObject20 = (String)((HashMap)localObject10).get(Integer.valueOf(2));
               localObject19 = localObject5;
@@ -126,7 +118,7 @@ public class PushDialogHandler
             for (;;)
             {
               break;
-              if (localNote.a() == 8)
+              if (localNote.d() == 8)
               {
                 localObject10 = (String)((HashMap)localObject10).get(Integer.valueOf(1));
                 localObject20 = localObject16;
@@ -171,7 +163,7 @@ public class PushDialogHandler
                       }
                       localObject11 = (UniteEntity.Note)((Iterator)localObject21).next();
                       localObject10 = ((UniteEntity.Note)localObject11).a();
-                      if (((UniteEntity.Note)localObject11).a() == 2)
+                      if (((UniteEntity.Note)localObject11).d() == 2)
                       {
                         if (localObject10 != null)
                         {
@@ -181,7 +173,7 @@ public class PushDialogHandler
                           }
                         }
                       }
-                      else if ((((UniteEntity.Note)localObject11).a() == 3) && (localObject10 != null))
+                      else if ((((UniteEntity.Note)localObject11).d() == 3) && (localObject10 != null))
                       {
                         localObject8 = (String)((HashMap)localObject10).get(Integer.valueOf(2));
                         localObject9 = (String)((HashMap)localObject10).get(Integer.valueOf(4));
@@ -202,7 +194,7 @@ public class PushDialogHandler
                 localObject17 = localObject2;
                 localObject18 = localObject4;
                 localObject19 = localObject5;
-                if (localNote.a() == 9)
+                if (localNote.d() == 9)
                 {
                   localObject20 = localObject16;
                   localObject10 = localObject7;
@@ -234,7 +226,7 @@ public class PushDialogHandler
                         break;
                       }
                       localObject10 = (UniteEntity.Note)((Iterator)localObject21).next();
-                      if (((UniteEntity.Note)localObject10).a() == 10)
+                      if (((UniteEntity.Note)localObject10).d() == 10)
                       {
                         localObject11 = ((UniteEntity.Note)localObject10).a();
                         localObject10 = (String)((HashMap)localObject11).get(Integer.valueOf(2));
@@ -318,6 +310,14 @@ public class PushDialogHandler
     }
   }
   
+  private Handler b()
+  {
+    if (this.c == null) {
+      this.c = new Handler(Looper.getMainLooper());
+    }
+    return this.c;
+  }
+  
   public void a(submsgtype0x122.MsgBody paramMsgBody, MsgInfo paramMsgInfo, QQAppInterface paramQQAppInterface)
   {
     if (paramMsgBody.uint64_busi_type.has()) {
@@ -372,18 +372,18 @@ public class PushDialogHandler
       paramMsgInfo = AIOAssist.a();
       if (paramMsgInfo != null)
       {
-        a().post(new PushDialogHandler.1(this, paramMsgInfo, paramMsgBody));
+        b().post(new PushDialogHandler.1(this, paramMsgInfo, paramMsgBody));
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    PushDialogDbUtil.a().b(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramMsgBody);
+    this.b = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    PushDialogDbUtil.a().b(this.b, paramMsgBody);
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo)
   {
     boolean bool2 = false;
-    paramQQAppInterface = paramQQAppInterface.getMessageProxy(0).d(String.valueOf(paramMsgInfo.lFromUin), 0);
+    paramQQAppInterface = paramQQAppInterface.getMessageProxy(0).g(String.valueOf(paramMsgInfo.lFromUin), 0);
     boolean bool1 = bool2;
     if (paramQQAppInterface != null)
     {
@@ -397,7 +397,7 @@ public class PushDialogHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogHandler
  * JD-Core Version:    0.7.0.1
  */

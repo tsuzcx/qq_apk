@@ -2,11 +2,11 @@ package com.tencent.av.opengl.gesturedetectors;
 
 public abstract interface MoveGestureDetector$OnMoveGestureListener
 {
-  public abstract void a(MoveGestureDetector paramMoveGestureDetector);
-  
   public abstract boolean a(MoveGestureDetector paramMoveGestureDetector);
   
   public abstract boolean b(MoveGestureDetector paramMoveGestureDetector);
+  
+  public abstract void c(MoveGestureDetector paramMoveGestureDetector);
 }
 
 

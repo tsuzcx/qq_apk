@@ -11,15 +11,15 @@ class PublicAccountImageCollectionMainActivityImpl$3$2
   {
     if (PublicAccountImageCollectionMainActivityImpl.access$500(this.a.a))
     {
-      this.a.a.zanImage.setImageResource(2130841682);
+      this.a.a.zanImage.setImageResource(2130842597);
       return;
     }
-    this.a.a.zanImage.setImageResource(2130841681);
+    this.a.a.zanImage.setImageResource(2130842596);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.3.2
  * JD-Core Version:    0.7.0.1
  */

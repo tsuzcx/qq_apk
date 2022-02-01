@@ -12,7 +12,7 @@ class LiteActivity$22
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
     ItemHolder localItemHolder = (ItemHolder)((ItemHolder)paramView.getTag()).clone();
     this.a.a(localItemHolder);
     EventCollector.getInstance().onViewClicked(paramView);

@@ -10,12 +10,12 @@ class ReadInJoyDailyXListView$2
   
   public void run()
   {
-    ProteusSupportUtil.a(ReadInJoyDailyXListView.a(this.this$0), null, this.a);
+    ProteusSupportUtil.a(ReadInJoyDailyXListView.c(this.this$0), null, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyXListView.2
  * JD-Core Version:    0.7.0.1
  */

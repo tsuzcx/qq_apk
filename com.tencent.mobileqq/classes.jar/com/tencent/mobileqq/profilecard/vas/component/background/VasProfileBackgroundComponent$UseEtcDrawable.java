@@ -31,7 +31,7 @@ class VasProfileBackgroundComponent$UseEtcDrawable
   
   public UseEtcDrawable invoke()
   {
-    if ((this.bgDrawable == null) && (TextUtils.isEmpty(this.dynamicFileDirectory)) && (QVipSDKProcessor.c().b()))
+    if ((this.bgDrawable == null) && (TextUtils.isEmpty(this.dynamicFileDirectory)) && (QVipSDKProcessor.e().b()))
     {
       String str = this.backgroundFile.getAbsolutePath();
       if ((VasProfileBackgroundComponent.access$100(this.this$0) != null) && (TextUtils.equals(VasProfileBackgroundComponent.access$200(this.this$0), str)) && ((VasProfileBackgroundComponent.access$100(this.this$0) instanceof IGLDrawable)))
@@ -66,7 +66,7 @@ class VasProfileBackgroundComponent$UseEtcDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileBackgroundComponent.UseEtcDrawable
  * JD-Core Version:    0.7.0.1
  */

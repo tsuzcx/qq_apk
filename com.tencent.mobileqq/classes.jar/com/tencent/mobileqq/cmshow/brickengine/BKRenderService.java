@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.cmshow.brickengine;
 
+import android.content.Context;
 import android.util.Pair;
 import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.listener.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderInterfaceImpl;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderRunner;
 import com.tencent.mobileqq.cmshow.engine.EngineContext;
 import com.tencent.mobileqq.cmshow.engine.EngineState;
 import com.tencent.mobileqq.cmshow.engine.model.RenderConfig;
@@ -36,43 +37,38 @@ public final class BKRenderService
   implements IRenderService
 {
   @Deprecated
-  public static final BKRenderService.Companion a;
-  private final BKRenderService.apolloViewListener.1 jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService$apolloViewListener$1;
-  private final EngineContext jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext;
-  private RenderConfig jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-  private IRecordFrameListener jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderIRecordFrameListener;
-  private ISurfaceStateListener jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderISurfaceStateListener;
-  private ITouchListener jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderITouchListener;
-  private final String jdField_a_of_type_JavaLangString;
-  private final Lazy jdField_a_of_type_KotlinLazy;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService$Companion = new BKRenderService.Companion(null);
-  }
+  public static final BKRenderService.Companion a = new BKRenderService.Companion(null);
+  private final String b;
+  private ISurfaceStateListener c;
+  private IRecordFrameListener d;
+  private ITouchListener e;
+  private RenderConfig f;
+  private final BKRenderService.apolloViewListener.1 g;
+  private boolean h;
+  private final Lazy i;
+  private final EngineContext j;
   
   public BKRenderService(@NotNull EngineContext paramEngineContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext = paramEngineContext;
+    this.j = paramEngineContext;
     paramEngineContext = new StringBuilder();
     paramEngineContext.append("[cmshow][BKCMShowEngine][BKRenderService][");
-    paramEngineContext.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    paramEngineContext.append(this.j.k());
     paramEngineContext.append(']');
-    this.jdField_a_of_type_JavaLangString = paramEngineContext.toString();
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService$apolloViewListener$1 = new BKRenderService.apolloViewListener.1(this);
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new BKRenderService.cmshowView.2(this));
-    paramEngineContext = this.jdField_a_of_type_JavaLangString;
+    this.b = paramEngineContext.toString();
+    this.g = new BKRenderService.apolloViewListener.1(this);
+    this.i = LazyKt.lazy((Function0)new BKRenderService.cmshowView.2(this));
+    paramEngineContext = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("create ");
     localStringBuilder.append(this);
     localStringBuilder.append(" for ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    localStringBuilder.append(this.j.k());
     QLog.i(paramEngineContext, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a((IRenderService)this);
+    this.j.a((IRenderService)this);
   }
   
-  private final ApolloRender a(ICMShowView paramICMShowView)
+  private final ApolloRender b(ICMShowView paramICMShowView)
   {
     if ((paramICMShowView instanceof ApolloTextureView)) {
       return ((ApolloTextureView)paramICMShowView).getRender();
@@ -83,120 +79,118 @@ public final class BKRenderService
     return null;
   }
   
-  private final ApolloSurfaceView a()
+  private final ICMShowView e()
   {
-    ApolloSurfaceView localApolloSurfaceView = new ApolloSurfaceView(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a(), null, true);
-    int i = 0;
-    localApolloSurfaceView.mRenderMode = 0;
-    localApolloSurfaceView.init((OnApolloViewListener)this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService$apolloViewListener$1, 0);
-    RenderConfig localRenderConfig = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-    if (localRenderConfig != null) {
-      i = localRenderConfig.jdField_a_of_type_Int;
-    }
-    localApolloSurfaceView.setInitHeight(i);
-    return localApolloSurfaceView;
+    return (ICMShowView)this.i.getValue();
   }
   
-  private final ApolloTextureView a()
+  private final ApolloTextureView f()
   {
-    ApolloTextureView localApolloTextureView = new ApolloTextureView(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a(), null);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
+    Object localObject2 = this.j.j();
+    Object localObject1 = null;
+    localObject2 = new ApolloTextureView((Context)localObject2, null);
+    Object localObject3 = this.f;
     boolean bool3 = false;
-    if (localObject != null) {
-      bool1 = ((RenderConfig)localObject).b;
+    if (localObject3 != null) {
+      bool1 = ((RenderConfig)localObject3).c;
     } else {
       bool1 = false;
     }
-    localApolloTextureView.setDestroyOnAsync(bool1);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-    if (localObject != null)
+    ((ApolloTextureView)localObject2).setDestroyOnAsync(bool1);
+    localObject3 = this.f;
+    if (localObject3 != null)
     {
-      localObject = ((RenderConfig)localObject).jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderRenderMode;
-      if (localObject != null)
+      localObject3 = ((RenderConfig)localObject3).f;
+      if (localObject3 != null)
       {
-        bool1 = ((RenderMode)localObject).isOffscreen();
-        break label82;
+        bool1 = ((RenderMode)localObject3).isOffscreen();
+        break label89;
       }
     }
     boolean bool1 = false;
-    label82:
-    int i;
+    label89:
+    int k;
     if (bool1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-      if (localObject != null)
+      localObject3 = this.f;
+      if (localObject3 != null)
       {
-        localObject = ((RenderConfig)localObject).jdField_a_of_type_AndroidUtilPair;
-        if (localObject != null)
+        BKRenderService.Companion localCompanion = a;
+        if (localObject3 != null) {
+          localObject1 = ((RenderConfig)localObject3).g;
+        }
+        ((RenderConfig)localObject3).g = localCompanion.a((Pair)localObject1);
+      }
+      localObject1 = this.f;
+      if (localObject1 != null)
+      {
+        localObject1 = ((RenderConfig)localObject1).g;
+        if (localObject1 != null)
         {
-          localObject = (Integer)((Pair)localObject).first;
-          if (localObject != null)
+          localObject1 = (Integer)((Pair)localObject1).first;
+          if (localObject1 != null)
           {
-            i = ((Integer)localObject).intValue();
-            break label135;
+            k = ((Integer)localObject1).intValue();
+            break label182;
           }
         }
       }
-      i = 0;
-      label135:
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-      if (localObject != null)
+      k = 0;
+      label182:
+      localObject1 = this.f;
+      if (localObject1 != null)
       {
-        localObject = ((RenderConfig)localObject).jdField_a_of_type_AndroidUtilPair;
-        if (localObject != null)
+        localObject1 = ((RenderConfig)localObject1).g;
+        if (localObject1 != null)
         {
-          localObject = (Integer)((Pair)localObject).second;
-          if (localObject != null)
+          localObject1 = (Integer)((Pair)localObject1).second;
+          if (localObject1 != null)
           {
-            j = ((Integer)localObject).intValue();
-            break label184;
+            m = ((Integer)localObject1).intValue();
+            break label231;
           }
         }
       }
-      int j = 0;
-      label184:
-      localApolloTextureView.setOffscreenSize(i, j);
+      int m = 0;
+      label231:
+      ((ApolloTextureView)localObject2).setOffscreenSize(k, m);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-    if (localObject != null) {
-      bool2 = ((RenderConfig)localObject).c;
+    localObject1 = this.f;
+    if (localObject1 != null) {
+      bool2 = ((RenderConfig)localObject1).d;
     } else {
       bool2 = false;
     }
-    localApolloTextureView.setDumplicateCreateRenderThread(bool2);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-    if (localObject != null) {
-      i = ((RenderConfig)localObject).jdField_a_of_type_Int;
+    ((ApolloTextureView)localObject2).setDumplicateCreateRenderThread(bool2);
+    localObject1 = this.f;
+    if (localObject1 != null) {
+      k = ((RenderConfig)localObject1).b;
     } else {
-      i = 0;
+      k = 0;
     }
-    localApolloTextureView.setInitHeight(i);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
+    ((ApolloTextureView)localObject2).setInitHeight(k);
+    localObject1 = this.f;
     boolean bool2 = bool3;
-    if (localObject != null) {
-      bool2 = ((RenderConfig)localObject).d;
+    if (localObject1 != null) {
+      bool2 = ((RenderConfig)localObject1).e;
     }
-    localApolloTextureView.mIsDrawerView = bool2;
-    localApolloTextureView.init((OnApolloViewListener)this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService$apolloViewListener$1, bool1);
-    return localApolloTextureView;
+    ((ApolloTextureView)localObject2).mIsDrawerView = bool2;
+    ((ApolloTextureView)localObject2).init((OnApolloViewListener)this.g, bool1);
+    return localObject2;
   }
   
-  private final ICMShowView b()
+  private final ApolloSurfaceView g()
   {
-    return (ICMShowView)this.jdField_a_of_type_KotlinLazy.getValue();
-  }
-  
-  public final long a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ICMShowView localICMShowView = b();
-      if (localICMShowView != null) {
-        return ((IRenderRunner)localICMShowView).getLuaState();
-      }
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.render.IRenderRunner");
+    ApolloSurfaceView localApolloSurfaceView = new ApolloSurfaceView(this.j.j(), null, true);
+    int k = 0;
+    localApolloSurfaceView.mRenderMode = 0;
+    localApolloSurfaceView.init((OnApolloViewListener)this.g, 0);
+    RenderConfig localRenderConfig = this.f;
+    if (localRenderConfig != null) {
+      k = localRenderConfig.b;
     }
-    return -1L;
+    localApolloSurfaceView.setInitHeight(k);
+    return localApolloSurfaceView;
   }
   
   @Nullable
@@ -215,56 +209,17 @@ public final class BKRenderService
   @NotNull
   public ICMShowView a()
   {
-    return b();
-  }
-  
-  @Nullable
-  public IRecordFrameListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderIRecordFrameListener;
-  }
-  
-  public final void a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("destroy ");
-    localStringBuilder.append(this);
-    localStringBuilder.append(" for ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
-    QLog.i((String)localObject, 1, localStringBuilder.toString());
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    localObject = a(b());
-    if (localObject != null)
-    {
-      ((ApolloRender)localObject).queueDestroy();
-      if ((((ApolloRender)localObject).isOffscreen()) && (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a() == Scene.MEME_PLAYER))
-      {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "call surfaceDestroyed on destroy MEME_PLAYER RenderService");
-        localObject = b();
-        if (localObject != null) {
-          ((ApolloTextureView)localObject).surfaceDestroyed(null);
-        } else {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView");
-        }
-      }
-    }
-    localObject = a(b());
-    if (localObject != null) {
-      ((ApolloRenderInterfaceImpl)localObject).c();
-    }
+    return e();
   }
   
   public final void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setBubbleType error on !hasCreateView");
+      QLog.w(this.b, 1, "setBubbleType error on !hasCreateView");
       return;
     }
-    ApolloRender localApolloRender = a(b());
+    ApolloRender localApolloRender = b(e());
     if (localApolloRender != null) {
       localApolloRender.setBubbleType(paramInt);
     }
@@ -273,88 +228,142 @@ public final class BKRenderService
   public void a(@NotNull RenderConfig paramRenderConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramRenderConfig, "config");
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig = paramRenderConfig;
+    this.f = paramRenderConfig;
   }
   
   public void a(@Nullable IRecordFrameListener paramIRecordFrameListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderIRecordFrameListener = paramIRecordFrameListener;
-    if (this.jdField_a_of_type_Boolean)
+    this.d = paramIRecordFrameListener;
+    if (this.h)
     {
-      paramIRecordFrameListener = a(b());
+      paramIRecordFrameListener = b(e());
       if (paramIRecordFrameListener != null) {
-        paramIRecordFrameListener.setRecordFrameListener(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderIRecordFrameListener);
+        paramIRecordFrameListener.setRecordFrameListener(this.d);
       }
     }
   }
   
   public void a(@Nullable ISurfaceStateListener paramISurfaceStateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderISurfaceStateListener = paramISurfaceStateListener;
+    this.c = paramISurfaceStateListener;
   }
   
   public void a(@Nullable ITouchListener paramITouchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderITouchListener = paramITouchListener;
+    this.e = paramITouchListener;
   }
   
   public final void a(@NotNull Script paramScript)
   {
     Intrinsics.checkParameterIsNotNull(paramScript, "script");
     Object localObject2;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.b;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("renderJs error on !hasCreateView, script: ");
       ((StringBuilder)localObject2).append(paramScript);
       QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       return;
     }
-    Object localObject1 = b();
+    Object localObject1 = e();
     if (localObject1 != null)
     {
       localObject1 = (IRenderRunner)localObject1;
-      if (CmShowWnsUtils.y())
+      if (CmShowWnsUtils.F())
       {
         long l = ((IRenderRunner)localObject1).getRenderThreadId();
         localObject2 = Thread.currentThread();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "Thread.currentThread()");
-        if ((l == ((Thread)localObject2).getId()) && ((this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a() == EngineState.INITIALIZED) || (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a() == EngineState.STARTED)))
+        if ((l == ((Thread)localObject2).getId()) && ((this.j.e() == EngineState.INITIALIZED) || (this.j.e() == EngineState.STARTED)))
         {
           if (QLog.isColorLevel())
           {
-            localObject1 = this.jdField_a_of_type_JavaLangString;
+            localObject1 = this.b;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("renderJs directly on GLThread, content:");
-            ((StringBuilder)localObject2).append(paramScript.a());
+            ((StringBuilder)localObject2).append(paramScript.e());
             QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
           }
-          localObject1 = a(b());
+          paramScript.b();
+          localObject1 = b(e());
           if (localObject1 != null)
           {
             localObject1 = ((ApolloRender)localObject1).getSavaWrapper();
             if (localObject1 != null) {
-              ((ApolloEngine)localObject1).execScriptString(paramScript.a());
+              ((ApolloEngine)localObject1).execScriptString(paramScript.e());
             }
           }
+          paramScript.j();
           return;
         }
       }
-      ((IRenderRunner)localObject1).runRenderTask(paramScript.a(), paramScript.a());
+      ((IRenderRunner)localObject1).runRenderTask(paramScript);
       return;
     }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.render.IRenderRunner");
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderRunner");
   }
   
   public void a(boolean paramBoolean)
   {
     IRenderService.DefaultImpls.a(this, paramBoolean);
   }
+  
+  @Nullable
+  public IRecordFrameListener b()
+  {
+    return this.d;
+  }
+  
+  public final void c()
+  {
+    Object localObject = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("destroy ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" for ");
+    localStringBuilder.append(this.j.k());
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
+    if (!this.h) {
+      return;
+    }
+    localObject = b(e());
+    if (localObject != null)
+    {
+      ((ApolloRender)localObject).queueDestroy();
+      if ((((ApolloRender)localObject).isOffscreen()) && (this.j.k() == Scene.MEME_PLAYER))
+      {
+        QLog.w(this.b, 1, "call surfaceDestroyed on destroy MEME_PLAYER RenderService");
+        localObject = e();
+        if (localObject != null) {
+          ((ApolloTextureView)localObject).surfaceDestroyed(null);
+        } else {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView");
+        }
+      }
+    }
+    localObject = a(e());
+    if (localObject != null) {
+      ((ApolloRenderInterfaceImpl)localObject).c();
+    }
+  }
+  
+  public final long d()
+  {
+    if (this.h)
+    {
+      ICMShowView localICMShowView = e();
+      if (localICMShowView != null) {
+        return ((IRenderRunner)localICMShowView).getLuaState();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderRunner");
+    }
+    return -1L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKRenderService
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ public class ReadInJoyLargeVideoCell
     } else {
       Util.a(paramAbsBaseArticleInfo, localJSONObject1, true);
     }
-    Util.ab(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.ac(paramAbsBaseArticleInfo, localJSONObject1);
     if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo))
     {
       Util.a(paramAbsBaseArticleInfo, localJSONObject1);
@@ -52,7 +52,7 @@ public class ReadInJoyLargeVideoCell
     {
       Util.f(paramAbsBaseArticleInfo, localJSONObject1);
     }
-    Util.n(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject1);
     Util.g(paramAbsBaseArticleInfo, localJSONObject1);
     localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
     localObject = new JSONObject();
@@ -61,17 +61,17 @@ public class ReadInJoyLargeVideoCell
     localJSONObject1.put("id_large_video_activity_label", new JSONObject());
     Util.h(paramAbsBaseArticleInfo, localJSONObject1);
     localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-    Util.an(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.ae(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.ap(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.H(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.ao(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.af(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.aq(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.I(paramAbsBaseArticleInfo, localJSONObject1);
     Util.a(localJSONObject1, paramAbsBaseArticleInfo);
     return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoyLargeVideoCell
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class WSExpDataModule$1
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigExperimentIGetExperimentListener);
+    this.this$0.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpDataModule.1
  * JD-Core Version:    0.7.0.1
  */

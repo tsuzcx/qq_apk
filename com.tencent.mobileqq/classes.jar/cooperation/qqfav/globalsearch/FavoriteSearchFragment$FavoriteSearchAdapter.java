@@ -35,7 +35,7 @@ class FavoriteSearchFragment$FavoriteSearchAdapter
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new SearchResultView(paramViewGroup, 2131562793);
+    return new SearchResultView(paramViewGroup, 2131629238);
   }
   
   public int getCount()
@@ -44,7 +44,7 @@ class FavoriteSearchFragment$FavoriteSearchAdapter
     int i = j;
     if (j > 0)
     {
-      FavoriteSearchResultModel localFavoriteSearchResultModel = (FavoriteSearchResultModel)super.a(j - 1);
+      FavoriteSearchResultModel localFavoriteSearchResultModel = (FavoriteSearchResultModel)super.c(j - 1);
       i = j;
       if (localFavoriteSearchResultModel != null)
       {
@@ -75,7 +75,7 @@ class FavoriteSearchFragment$FavoriteSearchAdapter
       {
         localObject1 = new TextView(paramViewGroup.getContext());
         ((TextView)localObject1).setTextSize(18.0F);
-        ((TextView)localObject1).setTextColor(paramViewGroup.getResources().getColor(2131167067));
+        ((TextView)localObject1).setTextColor(paramViewGroup.getResources().getColor(2131168007));
         ((TextView)localObject1).setGravity(1);
         ((TextView)localObject1).setClickable(true);
         ((TextView)localObject1).setOnClickListener(this);
@@ -86,14 +86,14 @@ class FavoriteSearchFragment$FavoriteSearchAdapter
       {
         localObject1 = (TextView)paramView;
       }
-      localObject2 = (FavoriteSearchResultModel)super.a(paramInt);
+      localObject2 = (FavoriteSearchResultModel)super.c(paramInt);
       if ((localObject2 != null) && (((FavoriteSearchResultModel)localObject2).a == -1L))
       {
         ((TextView)localObject1).performClick();
       }
       else
       {
-        ((TextView)localObject1).setText(2131698100);
+        ((TextView)localObject1).setText(2131896001);
         localObject2 = (Animatable)localObject1.getCompoundDrawables()[1];
         ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         if (localObject2 != null) {
@@ -121,18 +121,18 @@ class FavoriteSearchFragment$FavoriteSearchAdapter
   {
     Object localObject = (TextView)paramView;
     ((TextView)localObject).setText(null);
-    Animatable localAnimatable = (Animatable)BaseApplicationImpl.sApplication.getResources().getDrawable(2130839401);
+    Animatable localAnimatable = (Animatable)BaseApplicationImpl.sApplication.getResources().getDrawable(2130839585);
     ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localAnimatable, null, null);
     localAnimatable.start();
-    localObject = (FavoriteSearchEngine)this.a.a;
-    FavoriteSearchFragment.a(this.a).a = this.a.c;
-    ((FavoriteSearchEngine)localObject).a(FavoriteSearchFragment.a(this.a), this.a);
+    localObject = (FavoriteSearchEngine)this.a.o;
+    FavoriteSearchFragment.b(this.a).a = this.a.q;
+    ((FavoriteSearchEngine)localObject).a(FavoriteSearchFragment.b(this.a), this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchFragment.FavoriteSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

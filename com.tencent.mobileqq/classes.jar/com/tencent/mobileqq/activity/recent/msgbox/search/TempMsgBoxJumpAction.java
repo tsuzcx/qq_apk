@@ -22,7 +22,7 @@ public class TempMsgBoxJumpAction
     {
       Intent localIntent = new Intent();
       localIntent.setFlags(67108864);
-      PublicFragmentActivity.a(this.a, localIntent, TempMsgBoxFragment.class);
+      PublicFragmentActivity.a(this.b, localIntent, TempMsgBoxFragment.class);
       return true;
     }
     catch (RuntimeException localRuntimeException)
@@ -34,7 +34,7 @@ public class TempMsgBoxJumpAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.search.TempMsgBoxJumpAction
  * JD-Core Version:    0.7.0.1
  */

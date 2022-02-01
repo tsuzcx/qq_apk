@@ -12,29 +12,29 @@ import org.json.JSONObject;
 
 public class QZoneUnreadServletLogic$WMDConfig
 {
-  int jdField_a_of_type_Int;
   public String a;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   int b;
-  public int c;
+  int c;
   public int d;
+  public int e;
+  ArrayList<String> f;
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("reportId", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("switch_qzone", this.jdField_a_of_type_Int);
-        localJSONObject.put("switch_qq", this.b);
-        localJSONObject.put("report_count", this.c);
-        localJSONObject.put("report_time", this.d);
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        localJSONObject.put("reportId", this.a);
+        localJSONObject.put("switch_qzone", this.b);
+        localJSONObject.put("switch_qq", this.c);
+        localJSONObject.put("report_count", this.d);
+        localJSONObject.put("report_time", this.e);
+        if ((this.f != null) && (this.f.size() > 0))
         {
           localObject = new JSONArray();
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator = this.f.iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
@@ -69,7 +69,13 @@ public class QZoneUnreadServletLogic$WMDConfig
     }
   }
   
-  public boolean a()
+  public boolean a(String paramString)
+  {
+    ArrayList localArrayList = this.f;
+    return (localArrayList != null) && (localArrayList.size() > 0) && (this.f.contains(paramString));
+  }
+  
+  public boolean b()
   {
     boolean bool = false;
     try
@@ -85,20 +91,20 @@ public class QZoneUnreadServletLogic$WMDConfig
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = new JSONObject((String)localObject);
-        this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("reportId");
-        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch_qzone");
-        this.b = ((JSONObject)localObject).optInt("switch_qq");
-        this.c = ((JSONObject)localObject).optInt("report_count");
-        this.d = ((JSONObject)localObject).optInt("report_time");
+        this.a = ((JSONObject)localObject).optString("reportId");
+        this.b = ((JSONObject)localObject).optInt("switch_qzone");
+        this.c = ((JSONObject)localObject).optInt("switch_qq");
+        this.d = ((JSONObject)localObject).optInt("report_count");
+        this.e = ((JSONObject)localObject).optInt("report_time");
         localObject = ((JSONObject)localObject).optJSONArray("blacks");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0))
         {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          this.f = new ArrayList();
           int i = 0;
           while (i < ((JSONArray)localObject).length())
           {
             if (!TextUtils.isEmpty(((JSONArray)localObject).optString(i))) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject).optString(i));
+              this.f.add(((JSONArray)localObject).optString(i));
             }
             i += 1;
           }
@@ -110,16 +116,10 @@ public class QZoneUnreadServletLogic$WMDConfig
     catch (Exception localException) {}
     return false;
   }
-  
-  public boolean a(String paramString)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    return (localArrayList != null) && (localArrayList.size() > 0) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.WMDConfig
  * JD-Core Version:    0.7.0.1
  */

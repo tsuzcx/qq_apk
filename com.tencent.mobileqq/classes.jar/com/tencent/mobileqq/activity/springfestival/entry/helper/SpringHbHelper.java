@@ -9,22 +9,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SpringHbHelper
 {
-  private static volatile long jdField_a_of_type_Long = 0L;
-  private static volatile SpringHbHelper jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryHelperSpringHbHelper;
   public static volatile boolean a = false;
+  private static volatile long b;
+  private static volatile SpringHbHelper c;
   
   public static SpringHbHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryHelperSpringHbHelper == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryHelperSpringHbHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryHelperSpringHbHelper = new SpringHbHelper();
+        if (c == null) {
+          c = new SpringHbHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryHelperSpringHbHelper;
+    return c;
   }
   
   public static String a(String paramString)
@@ -46,15 +46,15 @@ public class SpringHbHelper
       return;
     }
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long > 60000L)
+    if (l - b > 60000L)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("nowCallTime =");
       localStringBuilder.append(l);
       localStringBuilder.append("gLastLoadToolsProcessTime =");
-      localStringBuilder.append(jdField_a_of_type_Long);
+      localStringBuilder.append(b);
       QLog.e("springHb_SpringHbHelper", 1, localStringBuilder.toString());
-      jdField_a_of_type_Long = l;
+      b = l;
       QLog.i("springHb_SpringHbHelper", 1, "preloadToolsProcessImpl running");
       paramQQAppInterface = (IWebProcessManagerService)paramQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
       if (paramQQAppInterface != null) {
@@ -65,7 +65,7 @@ public class SpringHbHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.helper.SpringHbHelper
  * JD-Core Version:    0.7.0.1
  */

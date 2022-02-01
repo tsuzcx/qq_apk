@@ -26,9 +26,9 @@ final class WSDramaOperationRecordManager$2
     ((StringBuilder)localObject).append("[followDrama] successOnUIThread status:");
     ((StringBuilder)localObject).append(paramstUpdateFollowDramaRsp.isFollow);
     WSLog.a("WSDramaOperationRecordManager", ((StringBuilder)localObject).toString());
-    localObject = new WSDramaFollowEvent(this.jdField_a_of_type_JavaLangString, paramstUpdateFollowDramaRsp.isFollow);
+    localObject = new WSDramaFollowEvent(this.a, paramstUpdateFollowDramaRsp.isFollow);
     WSSimpleEventBus.a().a((WSSimpleBaseEvent)localObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener.a(Integer.valueOf(paramstUpdateFollowDramaRsp.isFollow));
+    this.b.a(Integer.valueOf(paramstUpdateFollowDramaRsp.isFollow));
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -39,14 +39,14 @@ final class WSDramaOperationRecordManager$2
     localStringBuilder.append("[followDrama] failureOnUIThread errCode:");
     localStringBuilder.append(paramWSServiceErrorInfo.a());
     localStringBuilder.append(", errMsg:");
-    localStringBuilder.append(paramWSServiceErrorInfo.a());
+    localStringBuilder.append(paramWSServiceErrorInfo.b());
     WSLog.a("WSDramaOperationRecordManager", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a());
+    this.b.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaOperationRecordManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.tavkit.component.effectchain;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.tavkit.ciimage.CIImage;
@@ -21,11 +20,27 @@ import java.util.List;
 class VideoMixEffectProxy$FilterProxy
   implements TAVVideoMixEffect.Filter, IReportable
 {
-  @NonNull
   private final HashMap<String, TAVVideoMixEffect.Filter> filterMap = new HashMap();
   private boolean onEffectRemove;
-  @NonNull
   private final FilterChainReportSession reportSession = new FilterChainReportSession();
+  
+  private CIImage apply(ImageCollection paramImageCollection, RenderInfo paramRenderInfo, CIImage paramCIImage, TAVVideoMixEffect paramTAVVideoMixEffect)
+  {
+    TAVVideoMixEffect.Filter localFilter = getCacheFilter(paramTAVVideoMixEffect);
+    if (localFilter == null) {
+      return paramCIImage;
+    }
+    paramCIImage = null;
+    long l = System.nanoTime();
+    if ((localFilter instanceof IReportable)) {
+      paramCIImage = ((IReportable)localFilter).getReportKey();
+    }
+    paramImageCollection = localFilter.apply(paramTAVVideoMixEffect, paramImageCollection, paramRenderInfo);
+    if (!TextUtils.isEmpty(paramCIImage)) {
+      this.reportSession.tick(paramCIImage, System.nanoTime() - l);
+    }
+    return paramImageCollection;
+  }
   
   private void checkRuntimeRelease(List<TAVVideoMixEffect> paramList)
   {
@@ -78,35 +93,18 @@ class VideoMixEffectProxy$FilterProxy
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
   {
-    if (!(paramTAVVideoMixEffect instanceof VideoMixEffectProxy)) {
+    boolean bool = paramTAVVideoMixEffect instanceof VideoMixEffectProxy;
+    Object localObject1 = null;
+    if (!bool) {
       return null;
     }
     paramTAVVideoMixEffect = (VideoMixEffectProxy)paramTAVVideoMixEffect;
-    Object localObject = paramTAVVideoMixEffect.getEffects();
+    Object localObject2 = paramTAVVideoMixEffect.getEffects();
     if ((paramTAVVideoMixEffect.isAutoCheckEffectRemove()) || (this.onEffectRemove)) {
-      checkRuntimeRelease((List)localObject);
+      checkRuntimeRelease((List)localObject2);
     }
-    Iterator localIterator = ((List)localObject).iterator();
-    paramTAVVideoMixEffect = null;
-    while (localIterator.hasNext())
-    {
-      localObject = (TAVVideoMixEffect)localIterator.next();
-      TAVVideoMixEffect.Filter localFilter = getCacheFilter((TAVVideoMixEffect)localObject);
-      if (localFilter != null)
-      {
-        long l = System.nanoTime();
-        if ((localFilter instanceof IReportable)) {
-          paramTAVVideoMixEffect = ((IReportable)localFilter).getReportKey();
-        } else {
-          paramTAVVideoMixEffect = null;
-        }
-        localObject = localFilter.apply((TAVVideoMixEffect)localObject, paramImageCollection, paramRenderInfo);
-        if (!TextUtils.isEmpty(paramTAVVideoMixEffect)) {
-          this.reportSession.tick(paramTAVVideoMixEffect, System.nanoTime() - l);
-        }
-        paramTAVVideoMixEffect = (TAVVideoMixEffect)localObject;
-      }
-    }
+    localObject2 = ((List)localObject2).iterator();
+    for (paramTAVVideoMixEffect = localObject1; ((Iterator)localObject2).hasNext(); paramTAVVideoMixEffect = apply(paramImageCollection, paramRenderInfo, paramTAVVideoMixEffect, (TAVVideoMixEffect)((Iterator)localObject2).next())) {}
     return paramTAVVideoMixEffect;
   }
   
@@ -136,7 +134,7 @@ class VideoMixEffectProxy$FilterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoMixEffectProxy.FilterProxy
  * JD-Core Version:    0.7.0.1
  */

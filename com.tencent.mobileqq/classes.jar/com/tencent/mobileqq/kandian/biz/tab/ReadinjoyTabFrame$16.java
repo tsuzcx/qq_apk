@@ -13,8 +13,8 @@ class ReadinjoyTabFrame$16
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetZImageView.setImagePlaceHolder(ImageUtil.f()).setImage(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyUserInfo)));
+      this.a.setRound(true);
+      this.a.setImagePlaceHolder(ImageUtil.m()).setImage(new URL(ReadInJoyUserInfoModule.a(this.b)));
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -25,7 +25,7 @@ class ReadinjoyTabFrame$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.16
  * JD-Core Version:    0.7.0.1
  */

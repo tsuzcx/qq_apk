@@ -6,54 +6,49 @@ import com.tencent.common.app.AppInterface;
 public abstract class AbstractSession
   implements CameraProxy.OnCameraPreviewCallback
 {
-  protected int a;
-  protected Context a;
-  protected AppInterface a;
+  protected int a = 0;
   protected int b = 0;
   protected int c = 0;
   protected int d = 0;
+  protected Context e;
+  protected AppInterface f;
   
-  public AbstractSession()
+  public void a(Context paramContext, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
+    this.e = paramContext;
+    this.f = paramAppInterface;
   }
   
-  public int a()
+  public int j()
   {
     return 0;
   }
   
-  public void a(Context paramContext, AppInterface paramAppInterface)
+  public void k()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = 2;
   }
   
-  public int b()
+  public int l()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public void g()
+  public void m()
   {
-    this.jdField_a_of_type_Int = 2;
+    this.a = 3;
   }
   
-  public void h()
-  {
-    this.jdField_a_of_type_Int = 3;
-  }
+  public void n() {}
   
-  public void i() {}
-  
-  public void j()
+  public void o()
   {
-    this.jdField_a_of_type_Int = 5;
+    this.a = 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.AbstractSession
  * JD-Core Version:    0.7.0.1
  */

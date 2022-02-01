@@ -21,45 +21,15 @@ import org.json.JSONObject;
 
 public class ArkVipReporter
 {
-  static ArkVipReporter jdField_a_of_type_ComTencentMobileqqArkVipreportArkVipReporter = new ArkVipReporter();
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  static boolean jdField_a_of_type_Boolean = true;
-  private final HashMap<String, ArkVipSceneConfig> jdField_a_of_type_JavaUtilHashMap = new HashMap(2);
-  private final HashMap<String, ArkVipReportScene> b = new HashMap(2);
+  static boolean a = true;
+  static ArkVipReporter b = new ArkVipReporter();
+  private static final Object c = new Object();
+  private final HashMap<String, ArkVipSceneConfig> d = new HashMap(2);
+  private final HashMap<String, ArkVipReportScene> e = new HashMap(2);
   
   public static ArkVipReporter a()
   {
-    return jdField_a_of_type_ComTencentMobileqqArkVipreportArkVipReporter;
-  }
-  
-  ArkVipSceneConfig a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      ArkVipSceneConfig localArkVipSceneConfig = (ArkVipSceneConfig)((Map.Entry)localIterator.next()).getValue();
-      if ((localArkVipSceneConfig.jdField_a_of_type_JavaUtilSet != null) && (localArkVipSceneConfig.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        return localArkVipSceneConfig;
-      }
-    }
-    return null;
-  }
-  
-  void a(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      ArkVipReportScene localArkVipReportScene = (ArkVipReportScene)this.b.remove(paramString);
-      if (localArkVipReportScene != null)
-      {
-        localArkVipReportScene.jdField_b_of_type_Long = System.currentTimeMillis();
-        localArkVipReportScene.jdField_c_of_type_Long = (localArkVipReportScene.jdField_b_of_type_Long - localArkVipReportScene.jdField_a_of_type_Long);
-        ??? = localArkVipReportScene.a().toString();
-        QLog.d("ArkVipReporter", 1, new Object[] { "report() sceneName:", paramString, ",total cost time=", Long.valueOf(localArkVipReportScene.jdField_c_of_type_Long) });
-        ArkVipReporterIPCHandler.a((String)???);
-      }
-      return;
-    }
+    return b;
   }
   
   public void a(String paramString, long paramLong)
@@ -67,14 +37,14 @@ public class ArkVipReporter
     if (!a(paramString)) {
       return;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      ArkVipSceneConfig localArkVipSceneConfig = a(paramString);
-      if ((localArkVipSceneConfig != null) && (paramString.equals(localArkVipSceneConfig.jdField_b_of_type_JavaLangString)))
+      ArkVipSceneConfig localArkVipSceneConfig = c(paramString);
+      if ((localArkVipSceneConfig != null) && (paramString.equals(localArkVipSceneConfig.b)))
       {
-        String str = localArkVipSceneConfig.jdField_a_of_type_JavaLangString;
-        if (this.b.containsKey(str)) {
-          a(str);
+        String str = localArkVipSceneConfig.a;
+        if (this.e.containsKey(str)) {
+          b(str);
         }
         ArkVipReportScene localArkVipReportScene = new ArkVipReportScene();
         Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -83,22 +53,22 @@ public class ArkVipReporter
         } else {
           localObject1 = ((AppRuntime)localObject1).getAccount();
         }
-        localArkVipReportScene.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        localArkVipReportScene.a = ((String)localObject1);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(Build.MANUFACTURER);
         ((StringBuilder)localObject1).append("_");
         ((StringBuilder)localObject1).append(Build.MODEL);
-        localArkVipReportScene.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
-        localArkVipReportScene.jdField_c_of_type_JavaLangString = "android";
-        localArkVipReportScene.d = "8.7.0_5295";
+        localArkVipReportScene.b = ((StringBuilder)localObject1).toString();
+        localArkVipReportScene.c = "android";
+        localArkVipReportScene.d = "8.8.17_5770";
         localArkVipReportScene.e = str;
-        localArkVipReportScene.f = localArkVipSceneConfig.jdField_b_of_type_JavaLangString;
-        localArkVipReportScene.g = localArkVipSceneConfig.jdField_c_of_type_JavaLangString;
-        localArkVipReportScene.jdField_a_of_type_Long = paramLong;
-        localArkVipReportScene.jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
-        this.b.put(str, localArkVipReportScene);
+        localArkVipReportScene.f = localArkVipSceneConfig.b;
+        localArkVipReportScene.g = localArkVipSceneConfig.c;
+        localArkVipReportScene.h = paramLong;
+        localArkVipReportScene.k = new ArrayList(8);
+        this.e.put(str, localArkVipReportScene);
         QLog.d("ArkVipReporter", 1, new Object[] { "startSceneByEvent() sceneName=", str, ",evt =", paramString });
-        ArkDispatchTask.getInstance().postToArkThreadDelay(new ArkVipReporter.1(this, str, localArkVipSceneConfig), localArkVipSceneConfig.jdField_a_of_type_Long);
+        ArkDispatchTask.getInstance().postToArkThreadDelay(new ArkVipReporter.1(this, str, localArkVipSceneConfig), localArkVipSceneConfig.d);
         return;
       }
       return;
@@ -107,11 +77,11 @@ public class ArkVipReporter
   
   public void a(String paramString, ArkVipSceneConfig paramArkVipSceneConfig)
   {
-    jdField_a_of_type_Boolean = a();
-    if ((jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramArkVipSceneConfig);
+    a = b();
+    if ((a) && (!TextUtils.isEmpty(paramString)) && (!this.d.containsKey(paramString))) {
+      this.d.put(paramString, paramArkVipSceneConfig);
     }
-    QLog.d("ArkVipReporter", 1, new Object[] { "initScene() sceneName=", paramString, ", enable =", Boolean.valueOf(jdField_a_of_type_Boolean) });
+    QLog.d("ArkVipReporter", 1, new Object[] { "initScene() sceneName=", paramString, ", enable =", Boolean.valueOf(a) });
   }
   
   public void a(String paramString, boolean paramBoolean, long paramLong, HashMap<String, String> paramHashMap)
@@ -119,51 +89,81 @@ public class ArkVipReporter
     if (!a(paramString)) {
       return;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      ArkVipSceneConfig localArkVipSceneConfig = a(paramString);
+      ArkVipSceneConfig localArkVipSceneConfig = c(paramString);
       if (localArkVipSceneConfig != null)
       {
-        ArkVipReportScene localArkVipReportScene = (ArkVipReportScene)this.b.get(localArkVipSceneConfig.jdField_a_of_type_JavaLangString);
+        ArkVipReportScene localArkVipReportScene = (ArkVipReportScene)this.e.get(localArkVipSceneConfig.a);
         if (localArkVipReportScene == null) {
           return;
         }
         ArkVipReportItem localArkVipReportItem = new ArkVipReportItem();
-        localArkVipReportItem.jdField_a_of_type_JavaLangString = paramString;
-        localArkVipReportItem.jdField_a_of_type_Int = localArkVipReportScene.jdField_a_of_type_JavaUtilArrayList.size();
-        localArkVipReportItem.jdField_a_of_type_Boolean = paramBoolean;
-        localArkVipReportItem.jdField_b_of_type_Long = System.currentTimeMillis();
-        localArkVipReportItem.jdField_c_of_type_Long = paramLong;
-        localArkVipReportItem.jdField_a_of_type_Long = (localArkVipReportItem.jdField_b_of_type_Long - paramLong);
-        localArkVipReportItem.d = NetworkUtil.getNetworkType(null);
-        localArkVipReportItem.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-        localArkVipReportScene.jdField_a_of_type_JavaUtilArrayList.add(localArkVipReportItem);
+        localArkVipReportItem.a = paramString;
+        localArkVipReportItem.b = localArkVipReportScene.k.size();
+        localArkVipReportItem.c = paramBoolean;
+        localArkVipReportItem.e = System.currentTimeMillis();
+        localArkVipReportItem.f = paramLong;
+        localArkVipReportItem.d = (localArkVipReportItem.e - paramLong);
+        localArkVipReportItem.g = NetworkUtil.getNetworkType(null);
+        localArkVipReportItem.h = paramHashMap;
+        localArkVipReportScene.k.add(localArkVipReportItem);
         QLog.d("ArkVipReporter", 1, new Object[] { "addEventToScene() evt:", paramString, ", cost time=", Long.valueOf(paramLong) });
-        if (paramString.equals(localArkVipSceneConfig.jdField_c_of_type_JavaLangString)) {
-          a(localArkVipSceneConfig.jdField_a_of_type_JavaLangString);
+        if (paramString.equals(localArkVipSceneConfig.c)) {
+          b(localArkVipSceneConfig.a);
         }
       }
       return;
     }
   }
   
-  boolean a()
+  boolean a(String paramString)
+  {
+    return (a) && (Utils.d()) && (!TextUtils.isEmpty(paramString));
+  }
+  
+  void b(String paramString)
+  {
+    synchronized (c)
+    {
+      ArkVipReportScene localArkVipReportScene = (ArkVipReportScene)this.e.remove(paramString);
+      if (localArkVipReportScene != null)
+      {
+        localArkVipReportScene.i = System.currentTimeMillis();
+        localArkVipReportScene.j = (localArkVipReportScene.i - localArkVipReportScene.h);
+        ??? = localArkVipReportScene.a().toString();
+        QLog.d("ArkVipReporter", 1, new Object[] { "report() sceneName:", paramString, ",total cost time=", Long.valueOf(localArkVipReportScene.j) });
+        ArkVipReporterIPCHandler.a((String)???);
+      }
+      return;
+    }
+  }
+  
+  boolean b()
   {
     ArkPlatformConfigBean localArkPlatformConfigBean = (ArkPlatformConfigBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkPlatformConfigBean.class);
-    if ((localArkPlatformConfigBean != null) && (localArkPlatformConfigBean.a() != null)) {
-      return localArkPlatformConfigBean.a().c;
+    if ((localArkPlatformConfigBean != null) && (localArkPlatformConfigBean.b() != null)) {
+      return localArkPlatformConfigBean.b().d;
     }
     return true;
   }
   
-  boolean a(String paramString)
+  ArkVipSceneConfig c(String paramString)
   {
-    return (jdField_a_of_type_Boolean) && (Utils.b()) && (!TextUtils.isEmpty(paramString));
+    Iterator localIterator = this.d.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      ArkVipSceneConfig localArkVipSceneConfig = (ArkVipSceneConfig)((Map.Entry)localIterator.next()).getValue();
+      if ((localArkVipSceneConfig.e != null) && (localArkVipSceneConfig.e.contains(paramString))) {
+        return localArkVipSceneConfig;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReporter
  * JD-Core Version:    0.7.0.1
  */

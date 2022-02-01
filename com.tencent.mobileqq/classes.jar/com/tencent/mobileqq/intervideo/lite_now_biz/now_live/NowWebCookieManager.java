@@ -14,24 +14,24 @@ public class NowWebCookieManager
 {
   public static String a()
   {
-    BusinessConfig localBusinessConfig = BusinessManager.a.a();
-    Object localObject3 = LoginManager.a.a();
+    BusinessConfig localBusinessConfig = BusinessManager.a.b();
+    Object localObject3 = LoginManager.c.c();
     if (localObject3 == null) {
       localObject1 = "";
     } else {
-      localObject1 = String.valueOf(LoginManager.a.a().a);
+      localObject1 = String.valueOf(LoginManager.c.c().e);
     }
     IPUtils.a(BaseApplicationImpl.getContext());
     String str1 = NetworkUtils.getAPN(BaseApplicationImpl.getContext());
     String str3 = DeviceUtils.a(BaseApplicationImpl.getContext());
-    String str2 = DeviceInfoUtil.a();
+    String str2 = DeviceInfoUtil.b();
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("ilive_a2=");
     if (localObject3 == null) {
       localObject2 = "";
     } else {
-      localObject2 = ((LoginResult)localObject3).e;
+      localObject2 = ((LoginResult)localObject3).f;
     }
     localStringBuilder2.append((String)localObject2);
     localStringBuilder1.append(localStringBuilder2.toString());
@@ -40,7 +40,7 @@ public class NowWebCookieManager
     if (localObject3 == null) {
       localObject2 = "";
     } else {
-      localObject2 = ((LoginResult)localObject3).f;
+      localObject2 = ((LoginResult)localObject3).g;
     }
     localStringBuilder2.append((String)localObject2);
     localStringBuilder1.append(localStringBuilder2.toString());
@@ -50,7 +50,7 @@ public class NowWebCookieManager
     if (localObject3 == null) {
       l = 0L;
     } else {
-      l = ((LoginResult)localObject3).a;
+      l = ((LoginResult)localObject3).e;
     }
     ((StringBuilder)localObject2).append(l);
     localStringBuilder1.append(((StringBuilder)localObject2).toString());
@@ -69,7 +69,7 @@ public class NowWebCookieManager
     if (localBusinessConfig == null) {
       localObject2 = Integer.valueOf(0);
     } else {
-      localObject2 = localBusinessConfig.e;
+      localObject2 = localBusinessConfig.j;
     }
     ((StringBuilder)localObject3).append(localObject2);
     localStringBuilder1.append(((StringBuilder)localObject3).toString());
@@ -82,7 +82,7 @@ public class NowWebCookieManager
     if (localBusinessConfig == null) {
       localObject2 = Integer.valueOf(0);
     } else {
-      localObject2 = localBusinessConfig.e;
+      localObject2 = localBusinessConfig.j;
     }
     ((StringBuilder)localObject3).append(localObject2);
     localStringBuilder1.append(((StringBuilder)localObject3).toString());
@@ -123,7 +123,7 @@ public class NowWebCookieManager
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("; __client_type=");
     if (localBusinessConfig != null) {
-      i = localBusinessConfig.d;
+      i = localBusinessConfig.f;
     }
     ((StringBuilder)localObject1).append(i);
     localStringBuilder1.append(((StringBuilder)localObject1).toString());
@@ -137,7 +137,7 @@ public class NowWebCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.NowWebCookieManager
  * JD-Core Version:    0.7.0.1
  */

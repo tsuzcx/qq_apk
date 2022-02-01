@@ -395,16 +395,9 @@ public class PermissionUtils
       }
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        a(paramActivity, (String)((Iterator)localObject).next());
+        b(paramActivity, (String)((Iterator)localObject).next());
       }
     }
-  }
-  
-  static void a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("GENERIC_PREFERENCES", 0).edit();
-    paramContext.putBoolean(paramString, true);
-    paramContext.apply();
   }
   
   @RequiresApi(api=23)
@@ -461,6 +454,13 @@ public class PermissionUtils
     }
     Log.d("permissions_handler", "Unable to check manifest for permission: ", paramContext);
     return false;
+  }
+  
+  static void b(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("GENERIC_PREFERENCES", 0).edit();
+    paramContext.putBoolean(paramString, true);
+    paramContext.apply();
   }
   
   @RequiresApi(api=23)

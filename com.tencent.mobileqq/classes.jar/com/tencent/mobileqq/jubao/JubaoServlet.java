@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.jubao;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
@@ -24,6 +26,7 @@ import mqq.app.Packet;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0xccb.C2cMsgInfo;
 import tencent.im.oidb.cmd0xccb.GroupMsgInfo;
+import tencent.im.oidb.cmd0xccb.GuildMsgInfo;
 import tencent.im.oidb.cmd0xccb.LocalMsgInfo;
 import tencent.im.oidb.cmd0xccb.ReqBody;
 import tencent.im.oidb.cmd0xccb.RspBody;
@@ -52,7 +55,7 @@ public class JubaoServlet
         bool = paramFromServiceMsg.isSuccess();
         k = -1;
         if (!bool) {
-          break label1017;
+          break label1166;
         }
         paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
         localObject1 = new byte[paramFromServiceMsg.getInt() - 4];
@@ -67,7 +70,7 @@ public class JubaoServlet
           ((cmd0xccb.RspBody)localObject2).dest_uin.get();
           m = ((cmd0xccb.RspBody)localObject2).type.get();
           if (!((cmd0xccb.RspBody)localObject2).c2c_type.has()) {
-            break label973;
+            break label1122;
           }
           j = ((cmd0xccb.RspBody)localObject2).c2c_type.get();
           if (((cmd0xccb.RspBody)localObject2).service_type.has()) {
@@ -80,7 +83,30 @@ public class JubaoServlet
           JubaoMsgData localJubaoMsgData;
           if ((m != 1) && (m != 6))
           {
-            if ((m == 2) || (m == 3) || (m == 4) || (m == 5))
+            if ((m != 2) && (m != 3) && (m != 4) && (m != 5))
+            {
+              if ((m == 7) || (m == 8))
+              {
+                localIterator = ((cmd0xccb.RspBody)localObject2).guild_msg.get().iterator();
+                if (localIterator.hasNext())
+                {
+                  localObject3 = (cmd0xccb.GuildMsgInfo)localIterator.next();
+                  localJubaoMsgData = new JubaoMsgData();
+                  localJubaoMsgData.msgSeq = ((int)((cmd0xccb.GuildMsgInfo)localObject3).msg_seq.get());
+                  localJubaoMsgData.result = ((cmd0xccb.GuildMsgInfo)localObject3).roam_flag.get();
+                  ((ArrayList)localObject1).add(localJubaoMsgData);
+                  if (!QLog.isColorLevel()) {
+                    break label1128;
+                  }
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append("servlet upload onReceive GuildMsgInfo = ");
+                  ((StringBuilder)localObject3).append(localJubaoMsgData.toJson().toString());
+                  QLog.d("jubaoApiPlugin", 2, ((StringBuilder)localObject3).toString());
+                  break label1128;
+                }
+              }
+            }
+            else
             {
               localIterator = ((cmd0xccb.RspBody)localObject2).group_msg.get().iterator();
               if (localIterator.hasNext())
@@ -91,13 +117,13 @@ public class JubaoServlet
                 localJubaoMsgData.result = ((cmd0xccb.GroupMsgInfo)localObject3).roam_flag.get();
                 ((ArrayList)localObject1).add(localJubaoMsgData);
                 if (!QLog.isColorLevel()) {
-                  break label979;
+                  continue;
                 }
                 localObject3 = new StringBuilder();
                 ((StringBuilder)localObject3).append("servlet upload onReceive data = ");
                 ((StringBuilder)localObject3).append(localJubaoMsgData.toJson().toString());
                 QLog.d("jubaoApiPlugin", 2, ((StringBuilder)localObject3).toString());
-                break label979;
+                continue;
               }
             }
           }
@@ -126,19 +152,19 @@ public class JubaoServlet
           if (!((cmd0xccb.RspBody)localObject2).local_msg.has())
           {
             if (!QLog.isColorLevel()) {
-              break label982;
+              break label1131;
             }
             QLog.d("jubaoApiPlugin", 2, "onReceiver first success");
-            break label982;
+            break label1131;
           }
           if (!QLog.isColorLevel()) {
-            break label982;
+            break label1131;
           }
           QLog.d("jubaoApiPlugin", 2, "onReceiver second success");
-          break label982;
+          break label1131;
         }
         if ((i != 506) || (j != 3275)) {
-          break label1005;
+          break label1154;
         }
         localObject1 = new cmd0xccb.RspBody();
         ((cmd0xccb.RspBody)localObject1).mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
@@ -146,7 +172,7 @@ public class JubaoServlet
         j = ((cmd0xccb.RspBody)localObject1).type.get();
         long l2 = ((cmd0xccb.RspBody)localObject1).group_code.get();
         if (((cmd0xccb.RspBody)localObject1).local_msg.has()) {
-          break label1005;
+          break label1154;
         }
         if (QLog.isColorLevel()) {
           QLog.d("jubaoApiPlugin", 2, "onReceiver first failure");
@@ -191,12 +217,12 @@ public class JubaoServlet
       paramIntent.putExtra("jubao_result_code", i);
       notifyObserver(paramIntent, 0, bool, paramIntent.getExtras(), JubaoIPCServer.class);
       return;
-      label973:
+      label1122:
       int j = -1;
       continue;
-      label979:
+      label1128:
       continue;
-      label982:
+      label1131:
       int n = i;
       int m = k;
       int k = j;
@@ -204,14 +230,14 @@ public class JubaoServlet
       j = i;
       int i = n;
       continue;
-      label1005:
+      label1154:
       m = i;
       j = i;
       i = m;
-      break label1020;
-      label1017:
+      break label1169;
+      label1166:
       j = 0;
-      label1020:
+      label1169:
       Object localObject1 = null;
       paramFromServiceMsg = null;
       m = -1;
@@ -224,38 +250,44 @@ public class JubaoServlet
     QLog.d("jubaoApiPlugin", 1, "servlet onSend  start = ");
     for (;;)
     {
-      int i;
+      int j;
       try
       {
         localObject1 = new cmd0xccb.ReqBody();
-        Object localObject2 = paramIntent.getStringExtra("jubao_chat_uin");
-        Object localObject3 = paramIntent.getStringExtra("jubao_group_code");
+        Object localObject2 = paramIntent.getStringExtra("jubao_evil_uin");
+        Object localObject3 = paramIntent.getStringExtra("jubao_chat_uin");
+        Object localObject4 = paramIntent.getStringExtra("jubao_group_code");
         int m = paramIntent.getIntExtra("jubao_chat_type", 0);
         try
         {
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label1155;
+            break label1520;
           }
-          l1 = Long.parseLong((String)localObject2);
-          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-            l2 = Long.parseLong((String)localObject3);
+          l2 = Long.parseLong((String)localObject2);
+          if (TextUtils.isEmpty((CharSequence)localObject3)) {
+            break label1526;
+          }
+          l3 = Long.parseLong((String)localObject3);
+          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+            l1 = Long.parseLong((String)localObject4);
           } else {
-            l2 = 0L;
+            l1 = 0L;
           }
           if (m == 1)
           {
-            if (l1 == 0L) {
+            if (l3 == 0L) {
               i = 3;
             } else {
               i = 2;
             }
-            j = -1;
+            j = i;
+            i = -1;
             k = 2;
           }
           else if (m == 1000)
           {
-            i = 1;
-            j = 0;
+            i = 0;
+            j = 1;
             k = 1;
           }
           else
@@ -263,12 +295,11 @@ public class JubaoServlet
             if (m == 1020)
             {
               i = 1;
-              j = 1;
               continue;
             }
             if (m == 3000)
             {
-              if (l1 == 0L)
+              if (l3 == 0L)
               {
                 i = 5;
                 continue;
@@ -281,128 +312,154 @@ public class JubaoServlet
             }
             if (m == 1006)
             {
-              i = 6;
-              j = 130;
+              i = 130;
+              j = 6;
               continue;
             }
             if (m == 1022)
             {
-              i = 6;
-              j = 134;
+              i = 134;
               continue;
             }
-            if ((m != 1032) && (m != 1034) && (m != 1033))
+            if ((m == 1032) || (m == 1034) || (m == 1033)) {
+              break label1544;
+            }
+            if (m == 10008)
             {
-              if (m == 10008)
-              {
-                i = 6;
-                j = 165;
-                continue;
-              }
-              if (m == 1008)
-              {
-                i = 6;
-                j = 129;
-                continue;
-              }
-              if (m == 1001)
-              {
-                i = 6;
-                j = 124;
-                continue;
-              }
-              if (m == 1024)
-              {
-                i = 6;
-                j = 58;
-                continue;
-              }
-              if (m == 1023)
-              {
-                i = 6;
-                j = 133;
-                continue;
-              }
-              if (m == 10002)
-              {
-                i = 6;
-                j = 146;
-                continue;
-              }
-              if (m == 10004)
-              {
-                i = 6;
-                j = 153;
-                continue;
-              }
-              if (m == 1005)
-              {
-                i = 6;
-                j = 201;
-                continue;
-              }
-              if (m == 1036)
-              {
-                i = 6;
-                j = 160;
-                continue;
-              }
-              if (m == 1044)
-              {
-                i = 1;
-                j = 163;
-                continue;
-              }
-              if (m == 1045)
-              {
-                i = 1;
-                j = 166;
-                continue;
-              }
-              if (m == 10009)
-              {
-                i = 1;
-                j = 168;
-                continue;
-              }
-              if (m == 10010)
-              {
-                i = 6;
-                j = 167;
-                continue;
-              }
-              i = 1;
-              j = -1;
+              i = 165;
               continue;
             }
-            i = 6;
-            j = 156;
-            continue;
+            if (m == 1008)
+            {
+              i = 129;
+              continue;
+            }
+            if (m == 1001)
+            {
+              i = 124;
+              continue;
+            }
+            if (m == 1024)
+            {
+              i = 58;
+              continue;
+            }
+            if (m == 1023)
+            {
+              i = 133;
+              continue;
+            }
+            if (m == 10002)
+            {
+              i = 146;
+              continue;
+            }
+            if (m == 10004)
+            {
+              i = 153;
+              continue;
+            }
+            if (m == 1005)
+            {
+              i = 201;
+              continue;
+            }
+            if (m == 1036)
+            {
+              i = 160;
+              continue;
+            }
+            if (m == 1044)
+            {
+              i = 163;
+              continue;
+            }
+            if (m == 1045)
+            {
+              i = 166;
+              continue;
+            }
+            if (m == 10010)
+            {
+              i = 167;
+              continue;
+            }
+            if (m == 10013)
+            {
+              i = 170;
+              continue;
+            }
+            if (m == 10014)
+            {
+              long l4 = l1;
+              if (l4 == 0L)
+              {
+                i = 8;
+                ((cmd0xccb.ReqBody)localObject1).guild_id.set(l2);
+              }
+              else
+              {
+                i = 7;
+                ((cmd0xccb.ReqBody)localObject1).guild_id.set(l4);
+              }
+              ((cmd0xccb.ReqBody)localObject1).channel_id.set(l3);
+              ((cmd0xccb.ReqBody)localObject1).dest_uin.set(l2);
+              j = i;
+              i = -1;
+              continue;
+            }
+            if (m != 10007) {
+              break label1539;
+            }
+            localObject2 = Base64.decode(paramIntent.getStringExtra("jubao_game_sig"), 0);
+            ((cmd0xccb.ReqBody)localObject1).sig.set(ByteStringMicro.copyFrom((byte[])localObject2));
+            if (!QLog.isColorLevel()) {
+              break label1532;
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(" sig = ");
+            ((StringBuilder)localObject3).append(localObject2);
+            QLog.d("jubaoApiPlugin", 2, ((StringBuilder)localObject3).toString());
+            break label1532;
           }
-          ((cmd0xccb.ReqBody)localObject1).type.set(i);
-          if ((i != 1) && (i != 2) && (i != 4) && (i != 6)) {
-            break label1161;
+          i1 = m;
+          ((cmd0xccb.ReqBody)localObject1).type.set(j);
+          if ((j != 1) && (j != 2) && (j != 4) && (j != 6)) {
+            break label1551;
           }
-          ((cmd0xccb.ReqBody)localObject1).dest_uin.set(l1);
+          ((cmd0xccb.ReqBody)localObject1).dest_uin.set(l3);
         }
         catch (NumberFormatException paramPacket)
         {
-          long l2;
-          int j;
+          long l1;
           int k;
-          JubaoMsgData localJubaoMsgData;
-          Object localObject4;
+          int i1;
+          int n;
+          Object localObject5;
+          StringBuilder localStringBuilder;
           QLog.e("jubaoApiPlugin", 1, paramPacket, new Object[0]);
           paramIntent.putExtra("jubao_result_code", 2);
           notifyObserver(paramIntent, 0, false, paramIntent.getExtras(), JubaoIPCServer.class);
           return;
         }
-        ((cmd0xccb.ReqBody)localObject1).group_code.set(l2);
-        if (j >= 0)
+        ((cmd0xccb.ReqBody)localObject1).group_code.set(l1);
+        localObject2 = new ArrayList();
+        localObject3 = (ArrayList)paramIntent.getExtras().get("jubao_msg_list");
+        n = i;
+        if (localObject3 != null)
         {
-          ((cmd0xccb.ReqBody)localObject1).c2c_type.set(k);
-          ((cmd0xccb.ReqBody)localObject1).service_type.set(j);
+          m = 0;
+          n = i;
+          if (m < ((ArrayList)localObject3).size())
+          {
+            localObject4 = new cmd0xccb.GuildMsgInfo();
+            ((cmd0xccb.GuildMsgInfo)localObject4).msg_seq.set(((JubaoMsgData)((ArrayList)localObject3).get(m)).msgSeq);
+            ((List)localObject2).add(localObject4);
+            m += 1;
+            continue;
+          }
         }
+        ((cmd0xccb.ReqBody)localObject1).guild_msg.set((List)localObject2);
         localObject2 = paramIntent.getStringExtra("multi_msg_resID");
         if ((localObject2 != null) && (((String)localObject2).length() != 0))
         {
@@ -413,20 +470,24 @@ public class JubaoServlet
         localObject3 = (List)paramIntent.getSerializableExtra("jubao_msg_list");
         if (localObject3 != null)
         {
-          if (i != 1)
+          if (j != 1)
           {
-            if (i != 6) {
-              break label1184;
+            if (j != 6) {
+              break label1578;
             }
             continue;
             localObject2 = new ArrayList();
             localObject3 = ((List)localObject3).iterator();
             if (((Iterator)localObject3).hasNext())
             {
-              localJubaoMsgData = (JubaoMsgData)((Iterator)localObject3).next();
-              localObject4 = new cmd0xccb.GroupMsgInfo();
-              ((cmd0xccb.GroupMsgInfo)localObject4).msg_seq.set(localJubaoMsgData.msgSeq);
-              ((List)localObject2).add(localObject4);
+              localObject4 = (JubaoMsgData)((Iterator)localObject3).next();
+              localObject5 = new cmd0xccb.GroupMsgInfo();
+              ((cmd0xccb.GroupMsgInfo)localObject5).msg_seq.set(((JubaoMsgData)localObject4).msgSeq);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("data.msgSeq :");
+              localStringBuilder.append(((JubaoMsgData)localObject4).msgSeq);
+              QLog.d("jubaoApiPlugin", 1, localStringBuilder.toString());
+              ((List)localObject2).add(localObject5);
               continue;
             }
             ((cmd0xccb.ReqBody)localObject1).group_msg.set((List)localObject2);
@@ -436,26 +497,39 @@ public class JubaoServlet
           localObject3 = ((List)localObject3).iterator();
           if (((Iterator)localObject3).hasNext())
           {
-            localJubaoMsgData = (JubaoMsgData)((Iterator)localObject3).next();
-            localObject4 = new cmd0xccb.C2cMsgInfo();
-            ((cmd0xccb.C2cMsgInfo)localObject4).msg_seq.set(localJubaoMsgData.msgSeq);
-            ((cmd0xccb.C2cMsgInfo)localObject4).msg_time.set(localJubaoMsgData.msgTime);
-            ((cmd0xccb.C2cMsgInfo)localObject4).msg_random.set(localJubaoMsgData.msgRandom);
-            ((List)localObject2).add(localObject4);
+            localObject4 = (JubaoMsgData)((Iterator)localObject3).next();
+            localObject5 = new cmd0xccb.C2cMsgInfo();
+            ((cmd0xccb.C2cMsgInfo)localObject5).msg_seq.set(((JubaoMsgData)localObject4).msgSeq);
+            ((cmd0xccb.C2cMsgInfo)localObject5).msg_time.set(((JubaoMsgData)localObject4).msgTime);
+            ((cmd0xccb.C2cMsgInfo)localObject5).msg_random.set(((JubaoMsgData)localObject4).msgRandom);
+            ((List)localObject2).add(localObject5);
             continue;
           }
           ((cmd0xccb.ReqBody)localObject1).c2c_msg.set((List)localObject2);
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("servlet onSend uinTypeDst:");
-        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(j);
         ((StringBuilder)localObject2).append(" c2CType:");
         ((StringBuilder)localObject2).append(k);
         ((StringBuilder)localObject2).append(" serviceType:");
-        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(n);
         ((StringBuilder)localObject2).append(" chatType:");
-        ((StringBuilder)localObject2).append(m);
+        ((StringBuilder)localObject2).append(i1);
         QLog.d("jubaoApiPlugin", 1, ((StringBuilder)localObject2).toString());
+        if (i1 == 10014)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("guildId :");
+          ((StringBuilder)localObject2).append(((cmd0xccb.ReqBody)localObject1).guild_id.get());
+          ((StringBuilder)localObject2).append("\n channelId : ");
+          ((StringBuilder)localObject2).append(((cmd0xccb.ReqBody)localObject1).channel_id.get());
+          ((StringBuilder)localObject2).append("\n evilId : ");
+          ((StringBuilder)localObject2).append(((cmd0xccb.ReqBody)localObject1).dest_uin.get());
+          ((StringBuilder)localObject2).append("\n msgInfo : ");
+          ((StringBuilder)localObject2).append(((cmd0xccb.ReqBody)localObject1).guild_msg.get());
+          QLog.d("jubaoApiPlugin", 1, ((StringBuilder)localObject2).toString());
+        }
         localObject2 = new oidb_sso.OIDBSSOPkg();
         ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3275);
         ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
@@ -478,17 +552,29 @@ public class JubaoServlet
         notifyObserver(paramIntent, 0, false, paramIntent.getExtras(), JubaoIPCServer.class);
         return;
       }
-      label1155:
-      long l1 = 0L;
+      label1520:
+      long l2 = 0L;
       continue;
-      label1161:
-      if ((i != 2) && (i != 3) && (i != 4)) {
-        if (i == 5)
+      label1526:
+      long l3 = 0L;
+      continue;
+      label1532:
+      int i = 164;
+      continue;
+      label1539:
+      i = -1;
+      continue;
+      label1544:
+      i = 156;
+      continue;
+      label1551:
+      if ((j != 2) && (j != 3) && (j != 4)) {
+        if (j == 5)
         {
           continue;
-          label1184:
-          if ((i != 2) && (i != 3) && (i != 4)) {
-            if (i != 5) {}
+          label1578:
+          if ((j != 2) && (j != 3) && (j != 4)) {
+            if (j != 5) {}
           }
         }
       }
@@ -497,7 +583,7 @@ public class JubaoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoServlet
  * JD-Core Version:    0.7.0.1
  */

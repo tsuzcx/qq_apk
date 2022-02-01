@@ -13,17 +13,17 @@ import org.json.JSONObject;
 class ConferenceFlyTicketActivity$OnGetDiscNameCardTask
   extends BaseDownloadAsyncTask
 {
-  String jdField_a_of_type_JavaLangString;
+  String a;
   
   public ConferenceFlyTicketActivity$OnGetDiscNameCardTask(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
   }
   
   public void a(DownloadParams paramDownloadParams)
   {
-    boolean bool = paramDownloadParams.a.jdField_a_of_type_Boolean;
+    boolean bool = paramDownloadParams.f.f;
     Object localObject4 = null;
     Object localObject2 = null;
     Object localObject6 = null;
@@ -33,13 +33,13 @@ class ConferenceFlyTicketActivity$OnGetDiscNameCardTask
     {
       try
       {
-        paramDownloadParams = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        paramDownloadParams = new String(paramDownloadParams.f.a, "UTF-8");
       }
       catch (Exception paramDownloadParams)
       {
         if (QLog.isColorLevel())
         {
-          localObject1 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString;
+          localObject1 = this.b.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("OnGetDiscNameCardTask.onPostDownloadComplete e = ");
           localStringBuilder.append(paramDownloadParams.toString());
@@ -122,7 +122,7 @@ class ConferenceFlyTicketActivity$OnGetDiscNameCardTask
           i = -2;
           if (QLog.isColorLevel())
           {
-            localObject4 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString;
+            localObject4 = this.b.a;
             localObject5 = new StringBuilder();
             ((StringBuilder)localObject5).append("OnGetDiscNameCardTask.onPostDownloadComplete e = ");
             ((StringBuilder)localObject5).append(localJSONException3.toString());
@@ -137,7 +137,7 @@ class ConferenceFlyTicketActivity$OnGetDiscNameCardTask
     localObject2 = localObject1;
     Object localObject3 = localObject2;
     paramDownloadParams = localObject6;
-    localObject4 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.jdField_a_of_type_JavaLangString;
+    localObject4 = this.b.a;
     localObject5 = new StringBuilder();
     ((StringBuilder)localObject5).append("OnGetDiscNameCardTask.onPostDownloadComplete, result_code[");
     ((StringBuilder)localObject5).append(paramDownloadParams);
@@ -150,15 +150,15 @@ class ConferenceFlyTicketActivity$OnGetDiscNameCardTask
     ((StringBuilder)localObject5).append("], retcode[");
     ((StringBuilder)localObject5).append(i);
     ((StringBuilder)localObject5).append("], mDiscID[");
-    ((StringBuilder)localObject5).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject5).append(this.a);
     ((StringBuilder)localObject5).append("]");
     QLog.w((String)localObject4, 1, ((StringBuilder)localObject5).toString());
-    localObject4 = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity;
-    ConferenceFlyTicketActivity.a((ConferenceFlyTicketActivity)localObject4, this.jdField_a_of_type_JavaLangString, ((ConferenceFlyTicketActivity)localObject4).app.getCurrentUin(), (String)localObject2, (String)localObject3);
+    localObject4 = this.b;
+    ConferenceFlyTicketActivity.a((ConferenceFlyTicketActivity)localObject4, this.a, ((ConferenceFlyTicketActivity)localObject4).app.getCurrentUin(), (String)localObject2, (String)localObject3);
     if ((i == 0) && (TextUtils.equals(paramDownloadParams, "0")) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals("null")))
     {
-      paramDownloadParams = this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity;
-      paramDownloadParams.a((String)localObject1, this.jdField_a_of_type_JavaLangString, paramDownloadParams.app.getCurrentUin(), (String)localObject2, (String)localObject3);
+      paramDownloadParams = this.b;
+      paramDownloadParams.a((String)localObject1, this.a, paramDownloadParams.app.getCurrentUin(), (String)localObject2, (String)localObject3);
     }
   }
 }

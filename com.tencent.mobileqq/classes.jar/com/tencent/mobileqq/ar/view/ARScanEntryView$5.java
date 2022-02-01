@@ -14,7 +14,7 @@ class ARScanEntryView$5
   
   public void a(boolean paramBoolean, int paramInt, long paramLong)
   {
-    SharedPreferences localSharedPreferences = ArMapUtil.a(this.a.a);
+    SharedPreferences localSharedPreferences = ArMapUtil.a(this.a.C);
     long l = localSharedPreferences.getLong("key_ar_act_id", 0L);
     if (QLog.isColorLevel())
     {
@@ -30,7 +30,7 @@ class ARScanEntryView$5
       QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
     }
     localSharedPreferences.edit().putLong("key_ar_act_id", paramLong).commit();
-    if (!this.a.m)
+    if (!this.a.J)
     {
       QLog.d("AREngine_ARScanEntryView", 1, "onGetARRedDotInfo,not deal redhot message when pause");
       return;
@@ -45,27 +45,27 @@ class ARScanEntryView$5
     {
       if ((paramLong > l) || ((paramBoolean) && (paramLong == l)))
       {
-        ARScanEntryView.a(this.a).post(new ARScanEntryView.5.1(this));
+        ARScanEntryView.d(this.a).post(new ARScanEntryView.5.1(this));
         localSharedPreferences.edit().putBoolean("key_show_reddot", true).commit();
         ARScanEntryView.a(this.a, true);
       }
       if (paramLong < l)
       {
         ARScanEntryView.a(this.a, false);
-        ARScanEntryView.a(this.a).post(new ARScanEntryView.5.2(this));
+        ARScanEntryView.d(this.a).post(new ARScanEntryView.5.2(this));
         localSharedPreferences.edit().putBoolean("key_show_reddot", false).commit();
       }
     }
     else
     {
       ARScanEntryView.a(this.a, false);
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.5.3(this));
+      ARScanEntryView.d(this.a).post(new ARScanEntryView.5.3(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.5
  * JD-Core Version:    0.7.0.1
  */

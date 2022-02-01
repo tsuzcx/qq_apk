@@ -14,7 +14,7 @@ class VideoFeedsWithColumnViewHolder$2
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(VideoFeedsWithColumnViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewholderVideoFeedsWithColumnViewHolder, this.jdField_a_of_type_Boolean));
+    this.a.setImageResource(VideoFeedsWithColumnViewHolder.a(this.c, this.b));
     paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
   
@@ -22,7 +22,7 @@ class VideoFeedsWithColumnViewHolder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.viewholder.VideoFeedsWithColumnViewHolder.2
  * JD-Core Version:    0.7.0.1
  */

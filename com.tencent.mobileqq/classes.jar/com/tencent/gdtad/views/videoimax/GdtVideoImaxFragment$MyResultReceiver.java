@@ -33,13 +33,13 @@ public class GdtVideoImaxFragment$MyResultReceiver
     GdtLog.a("GdtVideoImaxFragment", localStringBuilder.toString());
     paramBundle = (GdtVideoImaxFragment)this.a.get();
     if ((paramBundle != null) && (paramInt == 1)) {
-      GdtVideoImaxFragment.b(paramBundle);
+      GdtVideoImaxFragment.k(paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

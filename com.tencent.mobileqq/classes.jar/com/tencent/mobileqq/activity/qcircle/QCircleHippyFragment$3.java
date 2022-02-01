@@ -15,17 +15,17 @@ class QCircleHippyFragment$3
   public void run()
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0.getQBaseActivity(), 230);
-    localQQCustomDialog.setContentView(2131558954);
+    localQQCustomDialog.setContentView(2131624587);
     localQQCustomDialog.setTitle(((QCircleRewardAdResultEvent)this.a).mToast);
     localQQCustomDialog.setMessage(null);
-    localQQCustomDialog.setPositiveButton(this.this$0.getQBaseActivity().getResources().getString(2131694583), new QCircleHippyFragment.3.1(this));
+    localQQCustomDialog.setPositiveButton(this.this$0.getQBaseActivity().getResources().getString(2131892267), new QCircleHippyFragment.3.1(this));
     localQQCustomDialog.setNegativeButton(null, null);
     localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleHippyFragment.3
  * JD-Core Version:    0.7.0.1
  */

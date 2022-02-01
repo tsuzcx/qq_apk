@@ -11,20 +11,20 @@ class UFTRunnableQueue$2
   
   public void run()
   {
-    UFTRunnableQueue.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqUftransferCommonUFTRunnableQueue$IUFTRunnable);
-    UFTRunnableQueue.a(this.this$0).add(Long.valueOf(this.jdField_a_of_type_Long));
+    UFTRunnableQueue.a(this.this$0).put(Long.valueOf(this.a), this.b);
+    UFTRunnableQueue.b(this.this$0).add(Long.valueOf(this.a));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("] add Runnable. ");
-    localStringBuilder.append(this.this$0.a());
+    localStringBuilder.append(this.this$0.c());
     UFTLog.b("[UFTTransfer] UFTRunnableQueue", 1, localStringBuilder.toString());
-    UFTRunnableQueue.a(this.this$0);
+    UFTRunnableQueue.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.UFTRunnableQueue.2
  * JD-Core Version:    0.7.0.1
  */

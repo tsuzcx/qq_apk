@@ -35,25 +35,25 @@ public class Proto2JsonUtil
 {
   private static Object a(Object paramObject)
   {
-    if (d(paramObject)) {
-      return b(paramObject);
+    if (e(paramObject)) {
+      return g(paramObject);
     }
-    if (f(paramObject)) {
-      return a((MessageMicro)paramObject);
-    }
-    if (a(paramObject)) {
-      return ((PBBytesField)paramObject).get().toStringUtf8();
-    }
-    if (g(paramObject)) {
-      return ((ByteStringMicro)paramObject).toStringUtf8();
+    if (h(paramObject)) {
+      return b((MessageMicro)paramObject);
     }
     if (b(paramObject)) {
-      return a(((PBRepeatMessageField)paramObject).get());
+      return ((PBBytesField)paramObject).get().toStringUtf8();
+    }
+    if (i(paramObject)) {
+      return ((ByteStringMicro)paramObject).toStringUtf8();
     }
     if (c(paramObject)) {
+      return a(((PBRepeatMessageField)paramObject).get());
+    }
+    if (d(paramObject)) {
       return b(((PBRepeatField)paramObject).get());
     }
-    if (e(paramObject)) {
+    if (f(paramObject)) {
       return paramObject;
     }
     return null;
@@ -84,7 +84,7 @@ public class Proto2JsonUtil
   
   public static String a(MessageMicro<?> paramMessageMicro)
   {
-    paramMessageMicro = a(paramMessageMicro);
+    paramMessageMicro = b(paramMessageMicro);
     if (paramMessageMicro == null) {
       return null;
     }
@@ -120,37 +120,9 @@ public class Proto2JsonUtil
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localJSONArray.put(a((MessageMicro)paramList.next()));
+      localJSONArray.put(b((MessageMicro)paramList.next()));
     }
     return localJSONArray;
-  }
-  
-  public static JSONObject a(MessageMicro<?> paramMessageMicro)
-  {
-    Field[] arrayOfField = paramMessageMicro.getClass().getFields();
-    if (arrayOfField.length == 0)
-    {
-      QLog.d("Proto2JsonUtil", 1, "proto2Json, pb fields length is 0");
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      int j = arrayOfField.length;
-      int i = 0;
-      while (i < j)
-      {
-        Field localField = arrayOfField[i];
-        localJSONObject.put(localField.getName(), a(localField, paramMessageMicro));
-        i += 1;
-      }
-      return localJSONObject;
-    }
-    catch (JSONException paramMessageMicro)
-    {
-      QLog.d("Proto2JsonUtil", 1, "proto2Json error : ", paramMessageMicro);
-    }
-    return null;
   }
   
   private static void a(JSONObject paramJSONObject, Object paramObject, String paramString)
@@ -219,27 +191,27 @@ public class Proto2JsonUtil
     {
       paramObject = paramField.get(paramObject);
       paramField = paramField.getName();
-      if (f(paramObject))
+      if (h(paramObject))
       {
         b(paramJSONObject, paramObject, paramField);
         return;
       }
-      if (c(paramObject))
+      if (d(paramObject))
       {
         d(paramJSONObject, paramObject, paramField);
         return;
       }
-      if (b(paramObject))
+      if (c(paramObject))
       {
         c(paramJSONObject, paramObject, paramField);
         return;
       }
-      if (d(paramObject))
+      if (e(paramObject))
       {
         a(paramJSONObject, paramObject, paramField);
         return;
       }
-      if (a(paramObject))
+      if (b(paramObject))
       {
         ((PBBytesField)paramObject).set(ByteStringMicro.copyFromUtf8(paramJSONObject.optString(paramField)));
         return;
@@ -249,11 +221,6 @@ public class Proto2JsonUtil
     {
       QLog.e("Proto2JsonUtil", 1, "fillField error : ", paramJSONObject);
     }
-  }
-  
-  private static boolean a(Object paramObject)
-  {
-    return paramObject instanceof PBBytesField;
   }
   
   public static boolean a(String paramString, MessageMicro<?> paramMessageMicro)
@@ -301,30 +268,6 @@ public class Proto2JsonUtil
     return false;
   }
   
-  private static Object b(Object paramObject)
-  {
-    try
-    {
-      Object localObject = paramObject.getClass().getMethod("get", new Class[0]).invoke(paramObject, new Object[0]);
-      return localObject;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      QLog.e("Proto2JsonUtil", 1, new Object[] { "fValue ", paramObject, " getBasicPbValue InvocationTargetException ", localInvocationTargetException });
-      return null;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      QLog.e("Proto2JsonUtil", 1, new Object[] { "fValue ", paramObject, " getBasicPbValue IllegalAccessException ", localIllegalAccessException });
-      return null;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      QLog.e("Proto2JsonUtil", 1, new Object[] { "fValue ", paramObject, " getBasicPbValue NoSuchMethodException ", localNoSuchMethodException });
-    }
-    return null;
-  }
-  
   private static JSONArray b(List<?> paramList)
   {
     if (paramList == null)
@@ -343,6 +286,34 @@ public class Proto2JsonUtil
     return localJSONArray;
   }
   
+  public static JSONObject b(MessageMicro<?> paramMessageMicro)
+  {
+    Field[] arrayOfField = paramMessageMicro.getClass().getFields();
+    if (arrayOfField.length == 0)
+    {
+      QLog.d("Proto2JsonUtil", 1, "proto2Json, pb fields length is 0");
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
+      {
+        Field localField = arrayOfField[i];
+        localJSONObject.put(localField.getName(), a(localField, paramMessageMicro));
+        i += 1;
+      }
+      return localJSONObject;
+    }
+    catch (JSONException paramMessageMicro)
+    {
+      QLog.d("Proto2JsonUtil", 1, "proto2Json error : ", paramMessageMicro);
+    }
+    return null;
+  }
+  
   private static void b(JSONObject paramJSONObject, Object paramObject, String paramString)
   {
     paramJSONObject = paramJSONObject.optJSONObject(paramString);
@@ -354,7 +325,7 @@ public class Proto2JsonUtil
   
   private static boolean b(Object paramObject)
   {
-    return paramObject instanceof PBRepeatMessageField;
+    return paramObject instanceof PBBytesField;
   }
   
   private static <T extends MessageMicro<T>> void c(JSONObject paramJSONObject, Object paramObject, String paramString)
@@ -413,7 +384,7 @@ public class Proto2JsonUtil
   
   private static boolean c(Object paramObject)
   {
-    return paramObject instanceof PBRepeatField;
+    return paramObject instanceof PBRepeatMessageField;
   }
   
   private static <T> void d(JSONObject paramJSONObject, Object paramObject, String paramString)
@@ -440,6 +411,11 @@ public class Proto2JsonUtil
   
   private static boolean d(Object paramObject)
   {
+    return paramObject instanceof PBRepeatField;
+  }
+  
+  private static boolean e(Object paramObject)
+  {
     boolean bool1 = paramObject instanceof PBPrimitiveField;
     boolean bool2 = false;
     if (!bool1) {
@@ -456,24 +432,48 @@ public class Proto2JsonUtil
     return bool1;
   }
   
-  private static boolean e(Object paramObject)
+  private static boolean f(Object paramObject)
   {
     return ((paramObject instanceof String)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Short)) || ((paramObject instanceof Byte)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Long)) || ((paramObject instanceof Float)) || ((paramObject instanceof Double)) || ((paramObject instanceof Character));
   }
   
-  private static boolean f(Object paramObject)
+  private static Object g(Object paramObject)
+  {
+    try
+    {
+      Object localObject = paramObject.getClass().getMethod("get", new Class[0]).invoke(paramObject, new Object[0]);
+      return localObject;
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      QLog.e("Proto2JsonUtil", 1, new Object[] { "fValue ", paramObject, " getBasicPbValue InvocationTargetException ", localInvocationTargetException });
+      return null;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      QLog.e("Proto2JsonUtil", 1, new Object[] { "fValue ", paramObject, " getBasicPbValue IllegalAccessException ", localIllegalAccessException });
+      return null;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      QLog.e("Proto2JsonUtil", 1, new Object[] { "fValue ", paramObject, " getBasicPbValue NoSuchMethodException ", localNoSuchMethodException });
+    }
+    return null;
+  }
+  
+  private static boolean h(Object paramObject)
   {
     return paramObject instanceof MessageMicro;
   }
   
-  private static boolean g(Object paramObject)
+  private static boolean i(Object paramObject)
   {
     return paramObject instanceof ByteStringMicro;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.Proto2JsonUtil
  * JD-Core Version:    0.7.0.1
  */

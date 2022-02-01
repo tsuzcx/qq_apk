@@ -19,10 +19,10 @@ import cooperation.vip.manager.LoverRequestManager;
 public class IntimateContentItemLoverEntranceView
   extends IntimateContentItemBaseView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LoverRequestManager jdField_a_of_type_CooperationVipManagerLoverRequestManager;
-  private boolean d = true;
+  private View i;
+  private TextView j;
+  private LoverRequestManager k;
+  private boolean l = true;
   
   public IntimateContentItemLoverEntranceView(Context paramContext)
   {
@@ -39,21 +39,12 @@ public class IntimateContentItemLoverEntranceView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void a()
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559257, this, true);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131370488);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370490));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
-  }
-  
   protected void a(View paramView)
   {
-    if (paramView.getId() != 2131370488) {
+    if (paramView.getId() != 2131437760) {
       return;
     }
-    LoverZoneUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), 2064, "2");
+    LoverZoneUtils.a(this.h.n(), this.h.l(), 2064, "2");
     ReportController.b(null, "dc00898", "", "", "0X800A05E", "0X800A05E", 0, 0, "", "", "", "");
   }
   
@@ -61,7 +52,7 @@ public class IntimateContentItemLoverEntranceView
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (this.c)
+    if (this.g)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("<font color=\"#878B99\">");
@@ -70,32 +61,27 @@ public class IntimateContentItemLoverEntranceView
       localStringBuilder.append(paramString2);
       localStringBuilder.append("</font>");
       paramString1 = String.format(localStringBuilder.toString(), new Object[0]);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(paramString1));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTag(paramString3);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.j.setText(Html.fromHtml(paramString1));
+      this.j.setTag(paramString3);
+      this.j.setVisibility(0);
     }
   }
   
   protected boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.e == 1;
   }
   
-  public void m()
+  protected void b()
   {
-    if (this.c) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
+    View localView = LayoutInflater.from(this.a).inflate(2131625178, this, true);
+    this.i = localView.findViewById(2131437760);
+    this.j = ((TextView)localView.findViewById(2131437762));
+    this.i.setOnClickListener(this);
+    this.i.setOnTouchListener(this);
   }
   
-  public void n()
-  {
-    if (this.d) {
-      o();
-    }
-  }
-  
-  public void o()
+  public void getLoverIntimateValue()
   {
     if (!a())
     {
@@ -104,16 +90,16 @@ public class IntimateContentItemLoverEntranceView
       }
       return;
     }
-    this.d = false;
+    this.l = false;
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, "getLoverIntimateValue sendRequest");
     }
-    if (this.jdField_a_of_type_CooperationVipManagerLoverRequestManager == null) {
-      this.jdField_a_of_type_CooperationVipManagerLoverRequestManager = new LoverRequestManager();
+    if (this.k == null) {
+      this.k = new LoverRequestManager();
     }
     try
     {
-      this.jdField_a_of_type_CooperationVipManagerLoverRequestManager.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getCurrentAccountUin()));
+      this.k.a(Long.parseLong(this.h.n().getCurrentAccountUin()));
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -121,10 +107,24 @@ public class IntimateContentItemLoverEntranceView
     }
     LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", "6", "1", "1"));
   }
+  
+  public void getLoverValueFailed()
+  {
+    if (this.g) {
+      this.j.setVisibility(8);
+    }
+  }
+  
+  public void n()
+  {
+    if (this.l) {
+      getLoverIntimateValue();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverEntranceView
  * JD-Core Version:    0.7.0.1
  */

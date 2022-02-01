@@ -20,6 +20,7 @@ import com.tencent.mobileqq.activity.ShortcutGuideActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
@@ -120,7 +121,7 @@ public class QZoneHelperProxyImpl
   
   public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, int paramInt)
   {
-    paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.a());
+    paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.d());
     int i = paramInt;
     if ((paramPluginRuntime instanceof WebViewPluginContainer)) {
       i = ((WebViewPluginContainer)paramPluginRuntime).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
@@ -143,6 +144,11 @@ public class QZoneHelperProxyImpl
     localPublishMoodInfo.mText = paramString1;
     localPublishMoodInfo.mMediaInfo = localArrayList;
     return (PublishMoodInfo)((IMiniAppService)QRoute.api(IMiniAppService.class)).validMoodInfo(localPublishMoodInfo);
+  }
+  
+  private boolean isRouteToQzoneTab()
+  {
+    return (QQTheme.isNowSimpleUI()) && (QzoneFrame.p());
   }
   
   public static Bundle parseUrlParams(String paramString)
@@ -260,12 +266,12 @@ public class QZoneHelperProxyImpl
     localIntent.putExtra("useSkinEngine", 1);
     localIntent.setAction("com.qzone.intent.action.LAUNCH_PUBLISH_QUEUE");
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = QzonePluginProxyActivity.getQZonePluginName();
-    localPluginParams.e = "QQ空间";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getCurrentAccountUin();
-    localPluginParams.f = "com.qzone.publish.business.publishqueue.PublishQueueService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    localPluginParams.d = QzonePluginProxyActivity.getQZonePluginName();
+    localPluginParams.g = "QQ空间";
+    localPluginParams.c = paramAppRuntime.getCurrentAccountUin();
+    localPluginParams.h = "com.qzone.publish.business.publishqueue.PublishQueueService";
+    localPluginParams.j = localIntent;
+    localPluginParams.o = paramServiceConnection;
     if (QLog.isColorLevel()) {
       QLog.d("QPlugin", 2, "start and bind QzonePublishQueueService");
     }
@@ -338,7 +344,7 @@ public class QZoneHelperProxyImpl
     if (paramContext != null) {}
     try
     {
-      if (QQTheme.f())
+      if (isRouteToQzoneTab())
       {
         if ((paramContext instanceof BaseActivity))
         {
@@ -361,7 +367,7 @@ public class QZoneHelperProxyImpl
         return true;
       }
       if ((paramBoolean) || (paramContext == null)) {
-        break label151;
+        break label152;
       }
       if ((paramContext instanceof BasePluginActivity)) {
         QzonePluginProxyActivity.setActivityNameToIntent(paramIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
@@ -371,14 +377,14 @@ public class QZoneHelperProxyImpl
     }
     catch (Throwable paramIntent)
     {
-      label119:
-      break label119;
+      label120:
+      break label120;
     }
     paramContext = new StringBuilder();
     paramContext.append("qzone start error");
     paramContext.append(paramIntent);
     QLog.e("QZoneHelperProxyImpl", 1, paramContext.toString());
-    label151:
+    label152:
     return false;
   }
   
@@ -387,7 +393,7 @@ public class QZoneHelperProxyImpl
     if (CaptureUtil.a()) {
       paramActivity.startActivityForResult(((IQIMCameraCapture)QRoute.api(IQIMCameraCapture.class)).getLaunchIntent(paramActivity, paramBundle), paramInt);
     } else if (!paramActivity.isFinishing()) {
-      DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2080702465)).setPositiveButton(2131694583, new QZoneHelperProxyImpl.2(this)).show();
+      DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2080702466)).setPositiveButton(2131892267, new QZoneHelperProxyImpl.2(this)).show();
     }
     paramActivity.overridePendingTransition(2080440321, 2080440320);
   }
@@ -423,7 +429,7 @@ public class QZoneHelperProxyImpl
       paramAppRuntime.putString("PhotoConst.PLUGIN_APK", "qzone_plugin.apk");
       paramAppRuntime.putBoolean("DirectBackToQzone", true);
       paramAppRuntime.putString("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
-      paramAppRuntime.putString("pic_confirm_text", HardCodeUtil.a(2080702466));
+      paramAppRuntime.putString("pic_confirm_text", HardCodeUtil.a(2080702465));
     }
     paramAppRuntime.putInt("entry_source", paramInt2);
     paramAppRuntime.putBoolean("go_publish_activity", paramBoolean13);
@@ -433,7 +439,7 @@ public class QZoneHelperProxyImpl
     if (CaptureUtil.a()) {
       ((IQIMCameraCapture)QRoute.api(IQIMCameraCapture.class)).launch(paramActivity, paramAppRuntime);
     } else {
-      DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2080702465)).setPositiveButton(2131694583, new QZoneHelperProxyImpl.1(this)).show();
+      DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2080702466)).setPositiveButton(2131892267, new QZoneHelperProxyImpl.1(this)).show();
     }
     paramActivity.overridePendingTransition(2080440321, 2080440320);
   }
@@ -511,12 +517,12 @@ public class QZoneHelperProxyImpl
   public void launchPluginService(BaseApplication paramBaseApplication, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, String paramString, Intent paramIntent)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = QzonePluginProxyActivity.getQZonePluginName();
-    localPluginParams.e = "QQ空间";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = paramPreloadProcHitPluginSession;
-    localPluginParams.f = "com.qzone.preview.service.PictureService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.d = QzonePluginProxyActivity.getQZonePluginName();
+    localPluginParams.g = "QQ空间";
+    localPluginParams.c = paramString;
+    localPluginParams.m = paramPreloadProcHitPluginSession;
+    localPluginParams.h = "com.qzone.preview.service.PictureService";
+    localPluginParams.j = paramIntent;
     IPluginManager.c(paramBaseApplication, localPluginParams);
   }
   
@@ -528,11 +534,11 @@ public class QZoneHelperProxyImpl
     localIntent.putExtra("qunid", paramString);
     localIntent.putExtra("qzone_uin", paramAppRuntime.getCurrentAccountUin());
     paramString = new IPluginManager.PluginParams(0);
-    paramString.b = QzonePluginProxyActivity.getQZonePluginName();
-    paramString.e = "QQ空间";
-    paramString.jdField_a_of_type_JavaLangString = paramAppRuntime.getCurrentAccountUin();
-    paramString.f = "com.qzone.preview.service.PictureService";
-    paramString.jdField_a_of_type_AndroidContentIntent = localIntent;
+    paramString.d = QzonePluginProxyActivity.getQZonePluginName();
+    paramString.g = "QQ空间";
+    paramString.c = paramAppRuntime.getCurrentAccountUin();
+    paramString.h = "com.qzone.preview.service.PictureService";
+    paramString.j = localIntent;
     if (QLog.isColorLevel()) {
       QLog.d("QPlugin", 2, "Start QZone QunAlbum Preload");
     }
@@ -602,7 +608,7 @@ public class QZoneHelperProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QZoneHelperProxyImpl
  * JD-Core Version:    0.7.0.1
  */

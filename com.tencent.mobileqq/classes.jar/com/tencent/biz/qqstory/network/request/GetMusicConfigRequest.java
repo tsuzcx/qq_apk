@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 public class GetMusicConfigRequest
   extends NetworkRequest<GetMusicConfigResponse>
 {
-  private static final String a = StoryApi.a("StorySvc.video_music_get");
+  private static final String e = StoryApi.a("StorySvc.video_music_get");
   
   public GetMusicConfigResponse a(byte[] paramArrayOfByte)
   {
@@ -29,17 +29,17 @@ public class GetMusicConfigRequest
   
   public String a()
   {
-    return a;
+    return e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetMusicConfigRequest
  * JD-Core Version:    0.7.0.1
  */

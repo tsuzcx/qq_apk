@@ -20,9 +20,9 @@ public class OdAddFriendAction
   
   private boolean c()
   {
-    Object localObject = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("friendUin"));
-    localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend((Activity)this.jdField_a_of_type_AndroidContentContext, 1, (String)localObject, "", 3001, 11, "", "", null, "", "");
-    ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject);
+    Object localObject = h((String)this.f.get("friendUin"));
+    localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend((Activity)this.b, 1, (String)localObject, "", 3001, 11, "", "", null, "", "");
+    ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.b, (Intent)localObject);
     return true;
   }
   
@@ -39,14 +39,14 @@ public class OdAddFriendAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("OdAddFriendAction", 1, localStringBuilder.toString());
-      b_("OdAddFriendAction");
+      h_("OdAddFriendAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OdAddFriendAction
  * JD-Core Version:    0.7.0.1
  */

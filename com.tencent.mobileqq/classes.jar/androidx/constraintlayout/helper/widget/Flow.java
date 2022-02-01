@@ -3,6 +3,7 @@ package androidx.constraintlayout.helper.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View.MeasureSpec;
@@ -64,11 +65,19 @@ public class Flow
           this.mFlow.setOrientation(paramAttributeSet.getInt(k, 0));
         } else if (k == R.styleable.ConstraintLayout_Layout_android_padding) {
           this.mFlow.setPadding(paramAttributeSet.getDimensionPixelSize(k, 0));
-        } else if (k == R.styleable.ConstraintLayout_Layout_android_paddingStart) {
-          this.mFlow.setPaddingStart(paramAttributeSet.getDimensionPixelSize(k, 0));
-        } else if (k == R.styleable.ConstraintLayout_Layout_android_paddingEnd) {
-          this.mFlow.setPaddingEnd(paramAttributeSet.getDimensionPixelSize(k, 0));
-        } else if (k == R.styleable.ConstraintLayout_Layout_android_paddingLeft) {
+        } else if (k == R.styleable.ConstraintLayout_Layout_android_paddingStart)
+        {
+          if (Build.VERSION.SDK_INT >= 17) {
+            this.mFlow.setPaddingStart(paramAttributeSet.getDimensionPixelSize(k, 0));
+          }
+        }
+        else if (k == R.styleable.ConstraintLayout_Layout_android_paddingEnd)
+        {
+          if (Build.VERSION.SDK_INT >= 17) {
+            this.mFlow.setPaddingEnd(paramAttributeSet.getDimensionPixelSize(k, 0));
+          }
+        }
+        else if (k == R.styleable.ConstraintLayout_Layout_android_paddingLeft) {
           this.mFlow.setPaddingLeft(paramAttributeSet.getDimensionPixelSize(k, 0));
         } else if (k == R.styleable.ConstraintLayout_Layout_android_paddingTop) {
           this.mFlow.setPaddingTop(paramAttributeSet.getDimensionPixelSize(k, 0));
@@ -115,6 +124,7 @@ public class Flow
         }
         i += 1;
       }
+      paramAttributeSet.recycle();
     }
     this.mHelperWidget = this.mFlow;
     validateParams();
@@ -280,7 +290,7 @@ public class Flow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.helper.widget.Flow
  * JD-Core Version:    0.7.0.1
  */

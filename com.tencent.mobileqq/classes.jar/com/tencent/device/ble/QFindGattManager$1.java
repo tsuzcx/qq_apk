@@ -25,13 +25,13 @@ class QFindGattManager$1
         QLog.i("DeviceBLE2", 2, localStringBuilder.toString());
       }
       QFindGattManager.a(this.a, paramMessage.arg1);
-      this.a.a((String)paramMessage.obj);
+      this.a.b((String)paramMessage.obj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.ble.QFindGattManager.1
  * JD-Core Version:    0.7.0.1
  */

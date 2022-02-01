@@ -12,7 +12,7 @@ class TroopRobotManager$2
   
   protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (!((ITroopRobotService)this.a.a.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramString)) {
+    if (!((ITroopRobotService)this.a.g.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramString)) {
       return;
     }
     if (paramBoolean1) {
@@ -22,7 +22,7 @@ class TroopRobotManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.2
  * JD-Core Version:    0.7.0.1
  */

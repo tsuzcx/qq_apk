@@ -31,20 +31,15 @@ import org.jetbrains.annotations.Nullable;
 public final class VasAdvWebManager
   implements VasAdvWebEvent.Publisher
 {
-  public static final VasAdvWebManager a;
-  private static SoftReference<TouchWebView> jdField_a_of_type_JavaLangRefSoftReference;
-  private static final Map<String, List<WeakReference<VasAdvWebEvent.Subscriber>>> jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasAdvWebVasAdvWebManager = new VasAdvWebManager();
-  }
+  public static final VasAdvWebManager a = new VasAdvWebManager();
+  private static SoftReference<TouchWebView> b;
+  private static final Map<String, List<WeakReference<VasAdvWebEvent.Subscriber>>> c = (Map)new LinkedHashMap();
   
   @Nullable
   public final TouchWebView a(@NotNull Activity paramActivity)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Object localObject1 = jdField_a_of_type_JavaLangRefSoftReference;
+    Object localObject1 = b;
     if (localObject1 != null)
     {
       localObject1 = (TouchWebView)((SoftReference)localObject1).get();
@@ -74,7 +69,7 @@ public final class VasAdvWebManager
   
   public final void a()
   {
-    Object localObject = jdField_a_of_type_JavaLangRefSoftReference;
+    Object localObject = b;
     if (localObject != null)
     {
       TouchWebView localTouchWebView = (TouchWebView)((SoftReference)localObject).get();
@@ -102,7 +97,7 @@ public final class VasAdvWebManager
     Intrinsics.checkParameterIsNotNull(paramString1, "businessId");
     Intrinsics.checkParameterIsNotNull(paramString2, "eventKey");
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "params");
-    paramString1 = (List)jdField_a_of_type_JavaUtilMap.get(paramString1);
+    paramString1 = (List)c.get(paramString1);
     if (paramString1 != null)
     {
       paramString1 = ((Iterable)paramString1).iterator();
@@ -125,7 +120,7 @@ public final class VasAdvWebManager
   {
     Intrinsics.checkParameterIsNotNull(paramString, "businessId");
     Intrinsics.checkParameterIsNotNull(paramSubscriber, "subscriber");
-    Object localObject = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Object localObject = (List)c.get(paramString);
     if (localObject != null)
     {
       ((List)localObject).add(new WeakReference(paramSubscriber));
@@ -134,7 +129,7 @@ public final class VasAdvWebManager
       }
     }
     localObject = (VasAdvWebManager)this;
-    jdField_a_of_type_JavaUtilMap.put(paramString, CollectionsKt.mutableListOf(new WeakReference[] { new WeakReference(paramSubscriber) }));
+    c.put(paramString, CollectionsKt.mutableListOf(new WeakReference[] { new WeakReference(paramSubscriber) }));
     paramString = Unit.INSTANCE;
   }
   
@@ -142,7 +137,7 @@ public final class VasAdvWebManager
   {
     Intrinsics.checkParameterIsNotNull(paramString, "businessId");
     Intrinsics.checkParameterIsNotNull(paramSubscriber, "subscriber");
-    paramString = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (List)c.get(paramString);
     if (paramString != null) {
       CollectionsKt.removeAll(paramString, (Function1)new VasAdvWebManager.unsubscribe.1(paramSubscriber));
     }
@@ -151,7 +146,7 @@ public final class VasAdvWebManager
   public void unsubscribeAll(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "businessId");
-    paramString = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (List)c.get(paramString);
     if (paramString != null) {
       paramString.clear();
     }
@@ -159,7 +154,7 @@ public final class VasAdvWebManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.web.VasAdvWebManager
  * JD-Core Version:    0.7.0.1
  */

@@ -12,24 +12,24 @@ class AVGamePKPosterView$1$1
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
-    //   4: getfield 31	com/tencent/avgame/ui/AVGamePKPosterView$1:a	Ljava/lang/String;
-    //   7: invokestatic 37	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: getfield 14	com/tencent/avgame/ui/AVGamePKPosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
+    //   4: getfield 32	com/tencent/avgame/ui/AVGamePKPosterView$1:a	Ljava/lang/String;
+    //   7: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   10: ifeq +17 -> 27
     //   13: aload_0
-    //   14: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
-    //   17: getfield 41	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
-    //   20: invokevirtual 46	com/tencent/avgame/ui/AVGamePKPosterView:a	()Ljava/lang/String;
+    //   14: getfield 14	com/tencent/avgame/ui/AVGamePKPosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
+    //   17: getfield 42	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
+    //   20: invokevirtual 48	com/tencent/avgame/ui/AVGamePKPosterView:c	()Ljava/lang/String;
     //   23: astore_3
     //   24: goto +11 -> 35
     //   27: aload_0
-    //   28: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
-    //   31: getfield 31	com/tencent/avgame/ui/AVGamePKPosterView$1:a	Ljava/lang/String;
+    //   28: getfield 14	com/tencent/avgame/ui/AVGamePKPosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
+    //   31: getfield 32	com/tencent/avgame/ui/AVGamePKPosterView$1:a	Ljava/lang/String;
     //   34: astore_3
-    //   35: new 48	java/io/File
+    //   35: new 50	java/io/File
     //   38: dup
     //   39: aload_3
-    //   40: invokespecial 51	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
     //   43: astore_2
     //   44: aconst_null
     //   45: astore 4
@@ -37,34 +37,34 @@ class AVGamePKPosterView$1$1
     //   48: astore 5
     //   50: aconst_null
     //   51: astore_1
-    //   52: new 53	java/io/FileOutputStream
+    //   52: new 55	java/io/FileOutputStream
     //   55: dup
     //   56: aload_2
-    //   57: invokespecial 56	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   57: invokespecial 58	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   60: astore_2
     //   61: aload_0
-    //   62: getfield 15	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   65: getstatic 62	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   62: getfield 16	com/tencent/avgame/ui/AVGamePKPosterView$1$1:a	Landroid/graphics/Bitmap;
+    //   65: getstatic 64	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   68: bipush 90
     //   70: aload_2
-    //   71: invokevirtual 68	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   71: invokevirtual 70	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   74: pop
     //   75: aload_0
-    //   76: getfield 15	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   79: invokevirtual 71	android/graphics/Bitmap:recycle	()V
+    //   76: getfield 16	com/tencent/avgame/ui/AVGamePKPosterView$1$1:a	Landroid/graphics/Bitmap;
+    //   79: invokevirtual 73	android/graphics/Bitmap:recycle	()V
     //   82: aload_0
-    //   83: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
-    //   86: getfield 41	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
-    //   89: invokestatic 74	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
+    //   83: getfield 14	com/tencent/avgame/ui/AVGamePKPosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
+    //   86: getfield 42	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
+    //   89: invokestatic 76	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
     //   92: ifnull +19 -> 111
     //   95: aload_0
-    //   96: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
-    //   99: getfield 41	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
-    //   102: invokestatic 74	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
+    //   96: getfield 14	com/tencent/avgame/ui/AVGamePKPosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
+    //   99: getfield 42	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
+    //   102: invokestatic 76	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
     //   105: aload_3
-    //   106: invokeinterface 79 2 0
+    //   106: invokeinterface 80 2 0
     //   111: aload_2
-    //   112: invokevirtual 82	java/io/FileOutputStream:close	()V
+    //   112: invokevirtual 83	java/io/FileOutputStream:close	()V
     //   115: return
     //   116: astore_1
     //   117: goto +63 -> 180
@@ -84,11 +84,11 @@ class AVGamePKPosterView$1$1
     //   140: aload_2
     //   141: astore_1
     //   142: aload_3
-    //   143: invokevirtual 85	java/io/IOException:printStackTrace	()V
+    //   143: invokevirtual 86	java/io/IOException:printStackTrace	()V
     //   146: aload_2
     //   147: ifnull +32 -> 179
     //   150: aload_2
-    //   151: invokevirtual 82	java/io/FileOutputStream:close	()V
+    //   151: invokevirtual 83	java/io/FileOutputStream:close	()V
     //   154: return
     //   155: astore_3
     //   156: aload 5
@@ -96,24 +96,24 @@ class AVGamePKPosterView$1$1
     //   159: aload_2
     //   160: astore_1
     //   161: aload_3
-    //   162: invokevirtual 86	java/io/FileNotFoundException:printStackTrace	()V
+    //   162: invokevirtual 87	java/io/FileNotFoundException:printStackTrace	()V
     //   165: aload_2
     //   166: ifnull +13 -> 179
     //   169: aload_2
-    //   170: invokevirtual 82	java/io/FileOutputStream:close	()V
+    //   170: invokevirtual 83	java/io/FileOutputStream:close	()V
     //   173: return
     //   174: astore_1
     //   175: aload_1
-    //   176: invokevirtual 87	java/lang/Exception:printStackTrace	()V
+    //   176: invokevirtual 88	java/lang/Exception:printStackTrace	()V
     //   179: return
     //   180: aload_2
     //   181: ifnull +15 -> 196
     //   184: aload_2
-    //   185: invokevirtual 82	java/io/FileOutputStream:close	()V
+    //   185: invokevirtual 83	java/io/FileOutputStream:close	()V
     //   188: goto +8 -> 196
     //   191: astore_2
     //   192: aload_2
-    //   193: invokevirtual 87	java/lang/Exception:printStackTrace	()V
+    //   193: invokevirtual 88	java/lang/Exception:printStackTrace	()V
     //   196: aload_1
     //   197: athrow
     // Local variable table:

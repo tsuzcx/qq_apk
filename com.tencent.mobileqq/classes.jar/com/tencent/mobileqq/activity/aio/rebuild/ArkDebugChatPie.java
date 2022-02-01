@@ -32,11 +32,11 @@ import org.json.JSONObject;
 public class ArkDebugChatPie
   extends BaseChatPie
 {
-  private ArkAiAppPanel jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel = null;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-  private String d;
-  private String e;
-  private final String f = ((IArkEnvironment)QRoute.api(IArkEnvironment.class)).getAppDebugInstallDirectory();
+  private String bi;
+  private String bj;
+  private QQCustomDialog bk = null;
+  private ArkAiAppPanel bl = null;
+  private final String bm = ((IArkEnvironment)QRoute.api(IArkEnvironment.class)).getAppDebugInstallDirectory();
   
   public ArkDebugChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, Context paramContext)
   {
@@ -45,53 +45,30 @@ public class ArkDebugChatPie
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.bk;
     if (localObject != null)
     {
       ((QQCustomDialog)localObject).dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.bk = null;
     }
-    ao();
+    bz();
     if ((BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity)) {
       ((ArkFullScreenAppActivity)BaseActivity.sTopActivity).finish();
     }
-    Q();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
+    aw();
+    localObject = this.bl;
     if (localObject != null)
     {
-      ((ArkAiAppPanel)localObject).c();
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel = null;
+      ((ArkAiAppPanel)localObject).d();
+      this.bl = null;
     }
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArkAppMessage paramArkAppMessage)
   {
-    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.b, paramSessionInfo.jdField_a_of_type_Int, paramArkAppMessage);
+    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a, paramArkAppMessage);
     paramQQAppInterface.getMessageFacade().a(paramSessionInfo);
     return true;
-  }
-  
-  private void ao()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(str, i);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(str, i);
-    ArkAioContainerWrapper.a(2);
-  }
-  
-  private void ap()
-  {
-    long l = NetConnInfoCenter.getServerTime();
-    RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-    RecentUser localRecentUser = localRecentUserProxy.a(AppConstants.ARK_DEBUG_UIN, 1031);
-    if (localRecentUser.lastmsgtime < l) {
-      localRecentUser.lastmsgtime = l;
-    }
-    localRecentUserProxy.b(localRecentUser);
-    if ((localRecentUserProxy instanceof FullCache)) {
-      ((FullCache)localRecentUserProxy).updateCache(localRecentUser);
-    }
   }
   
   private static void b(JSONObject paramJSONObject)
@@ -116,7 +93,30 @@ public class ArkDebugChatPie
     }
   }
   
-  private void d(String paramString)
+  private void bA()
+  {
+    long l = NetConnInfoCenter.getServerTime();
+    RecentUserProxy localRecentUserProxy = this.d.getProxyManager().g();
+    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.ARK_DEBUG_UIN, 1031);
+    if (localRecentUser.lastmsgtime < l) {
+      localRecentUser.lastmsgtime = l;
+    }
+    localRecentUserProxy.b(localRecentUser);
+    if ((localRecentUserProxy instanceof FullCache)) {
+      ((FullCache)localRecentUserProxy).updateCache(localRecentUser);
+    }
+  }
+  
+  private void bz()
+  {
+    String str = this.ah.b;
+    int i = this.ah.a;
+    this.d.getMessageFacade().c(str, i);
+    this.d.getMessageFacade().g(str, i);
+    ArkAioContainerWrapper.a(2);
+  }
+  
+  private void e(String paramString)
   {
     paramString = new File(paramString);
     if (!paramString.exists()) {
@@ -124,35 +124,35 @@ public class ArkDebugChatPie
     }
   }
   
+  public void K()
+  {
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToLogicThread(new ArkDebugChatPie.2(this));
+    super.K();
+  }
+  
+  public void O()
+  {
+    this.f.getWindow().clearFlags(128);
+    super.O();
+  }
+  
   public boolean a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().addFlags(128);
+    this.f.getWindow().addFlags(128);
     JSDebuggerSoLoader.a(2, null);
     ArkMultiProcUtil.a();
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToLogicThread(new ArkDebugChatPie.1(this));
     return super.a(paramBoolean);
   }
   
-  protected void c()
+  protected void h()
   {
-    this.b = "ArkDebugChatPie";
-  }
-  
-  public void p()
-  {
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToLogicThread(new ArkDebugChatPie.2(this));
-    super.p();
-  }
-  
-  public void u()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().clearFlags(128);
-    super.u();
+    this.c = "ArkDebugChatPie";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie
  * JD-Core Version:    0.7.0.1
  */

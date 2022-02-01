@@ -19,19 +19,19 @@ class PluginLoaderServiceAdapter$1
       str = paramJSONObject.toString();
     }
     String str = String.format("onResponse: code[%d] jsonObject[%s]", new Object[] { Integer.valueOf(paramInt), str });
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesPluginLoaderServiceAdapter.a().i("PluginLoaderService", str, new Object[0]);
+    this.b.d().i("PluginLoaderService", str, new Object[0]);
     if ((paramInt == 0) && (paramJSONObject != null))
     {
-      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIGetInstallPlugins.a(PluginLoaderServiceAdapter.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesPluginLoaderServiceAdapter, paramJSONObject));
+      this.a.a(PluginLoaderServiceAdapter.a(this.b, paramJSONObject));
       return;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIGetInstallPlugins.a(null);
+    this.a.a(null);
     DataReport.b(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.PluginLoaderServiceAdapter.1
  * JD-Core Version:    0.7.0.1
  */

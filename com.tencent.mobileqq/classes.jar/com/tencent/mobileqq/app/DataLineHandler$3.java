@@ -11,29 +11,29 @@ class DataLineHandler$3
   
   public void onNetMobile2Wifi(String paramString)
   {
-    this.a.b();
+    this.a.c();
   }
   
   public void onNetNone2Mobile(String paramString) {}
   
   public void onNetNone2Wifi(String paramString)
   {
-    this.a.b();
+    this.a.c();
   }
   
   public void onNetWifi2Mobile(String paramString)
   {
-    this.a.c();
+    this.a.d();
   }
   
   public void onNetWifi2None()
   {
-    this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.3
  * JD-Core Version:    0.7.0.1
  */

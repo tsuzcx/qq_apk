@@ -3,6 +3,7 @@ package com.tencent.mobileqq.apollo.aio.panel;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
@@ -20,6 +21,8 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -28,20 +31,38 @@ import org.json.JSONObject;
 public class ApolloTabAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<ApolloActionPackage> jdField_a_of_type_JavaUtilList;
-  private int b = -1;
+  int a;
+  private List<ApolloActionPackage> b;
+  private Context c;
+  private LayoutInflater d;
+  private int e = -1;
   
   public ApolloTabAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131165618);
+    this.c = paramContext;
+    this.d = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.a = paramContext.getResources().getColor(2131166013);
   }
   
-  private boolean a(ApolloActionPackage paramApolloActionPackage)
+  private Drawable b()
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      localObject = ViewUtils.getShapeDrawable(this.c.getResources().getColor(2131166584), ViewUtils.dip2px(13.5F));
+      localStateListDrawable.addState(new int[] { 16842913 }, (Drawable)localObject);
+      localObject = new ColorDrawable(0);
+      localStateListDrawable.addState(new int[0], (Drawable)localObject);
+      return localStateListDrawable;
+    }
+    Object localObject = ViewUtils.getShapeDrawable(this.c.getResources().getColor(2131165475), ViewUtils.dip2px(13.5F));
+    localStateListDrawable.addState(new int[] { 16842913 }, (Drawable)localObject);
+    localObject = new ColorDrawable(0);
+    localStateListDrawable.addState(new int[0], (Drawable)localObject);
+    return localStateListDrawable;
+  }
+  
+  private boolean b(ApolloActionPackage paramApolloActionPackage)
   {
     return ((paramApolloActionPackage.isUpdate) && (NetConnInfoCenter.getServerTimeMillis() >= paramApolloActionPackage.redStartTime)) || ((paramApolloActionPackage.packageId == 8) && (!paramApolloActionPackage.isRecommendTabClick));
   }
@@ -96,7 +117,7 @@ public class ApolloTabAdapter
   
   public ApolloActionPackage a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return null;
     }
@@ -105,22 +126,22 @@ public class ApolloTabAdapter
   
   public List<ApolloActionPackage> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
+    return this.b;
   }
   
   public void a(List<ApolloActionPackage> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.e = paramInt;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
@@ -137,31 +158,33 @@ public class ApolloTabAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558630, paramViewGroup, false);
+      paramView = this.d.inflate(2131624195, paramViewGroup, false);
       paramViewGroup = new ApolloTabAdapter.ViewHolder();
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131378211));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setActivated(true);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378207);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378209));
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131446729));
+      paramViewGroup.a.setActivated(true);
+      paramViewGroup.a.setFocusable(true);
+      paramViewGroup.a.setEnabled(true);
+      paramViewGroup.b = paramView.findViewById(2131446725);
+      paramViewGroup.b.setBackgroundColor(this.a);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131446727));
+      paramViewGroup.d = paramView.findViewById(2131428490);
       paramView.setTag(paramViewGroup);
     }
     else
     {
       paramViewGroup = (ApolloTabAdapter.ViewHolder)paramView.getTag();
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramViewGroup.c.setVisibility(8);
+    paramViewGroup.d.setBackgroundDrawable(b());
     ApolloActionPackage localApolloActionPackage = a(paramInt);
     if (localApolloActionPackage != null)
     {
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(a(localApolloActionPackage));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(localApolloActionPackage.name);
-      boolean bool = ApolloPanelRedDotUtil.a(localApolloActionPackage.packageId);
-      if ((bool) || (a(localApolloActionPackage)))
+      paramViewGroup.a.setImageDrawable(a(localApolloActionPackage));
+      paramViewGroup.a.setContentDescription(localApolloActionPackage.name);
+      boolean bool = ApolloPanelRedDotUtil.b(localApolloActionPackage.packageId);
+      if ((bool) || (b(localApolloActionPackage)))
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramViewGroup.c.setVisibility(0);
         if (bool) {
           try
           {
@@ -185,7 +208,7 @@ public class ApolloTabAdapter
         }
       }
     }
-    if (paramInt == this.b)
+    if (paramInt == this.e)
     {
       paramView.setSelected(true);
       return paramView;
@@ -196,7 +219,7 @@ public class ApolloTabAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloTabAdapter
  * JD-Core Version:    0.7.0.1
  */

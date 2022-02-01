@@ -11,7 +11,7 @@ class OkHttpNetworkManager$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    paramCall = this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback;
+    paramCall = this.a;
     if (paramCall != null) {
       paramCall.onError(paramIOException.getMessage());
     }
@@ -22,20 +22,20 @@ class OkHttpNetworkManager$1
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager	Lcom/tencent/crossengine/net/OkHttpNetworkManager;
+    //   1: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:c	Lcom/tencent/crossengine/net/OkHttpNetworkManager;
     //   4: aload_2
-    //   5: invokestatic 43	com/tencent/crossengine/net/OkHttpNetworkManager:a	(Lcom/tencent/crossengine/net/OkHttpNetworkManager;Lokhttp3/Response;)Ljava/util/List;
+    //   5: invokestatic 45	com/tencent/crossengine/net/OkHttpNetworkManager:a	(Lcom/tencent/crossengine/net/OkHttpNetworkManager;Lokhttp3/Response;)Ljava/util/List;
     //   8: astore 11
     //   10: aload_0
-    //   11: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   11: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   14: astore 10
     //   16: aload 10
     //   18: ifnull +10 -> 28
     //   21: aload 10
     //   23: aload 11
-    //   25: invokevirtual 47	com/tencent/crossengine/net/NetworkManager$Callback:onHeader	(Ljava/util/List;)V
+    //   25: invokevirtual 49	com/tencent/crossengine/net/NetworkManager$Callback:onHeader	(Ljava/util/List;)V
     //   28: aload_2
-    //   29: invokevirtual 53	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   29: invokevirtual 55	okhttp3/Response:body	()Lokhttp3/ResponseBody;
     //   32: astore 10
     //   34: iconst_2
     //   35: istore 4
@@ -45,30 +45,30 @@ class OkHttpNetworkManager$1
     //   45: newarray byte
     //   47: astore 12
     //   49: aload_2
-    //   50: invokevirtual 53	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   53: invokevirtual 59	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
+    //   50: invokevirtual 55	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   53: invokevirtual 61	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
     //   56: astore 10
     //   58: aload_0
-    //   59: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ArrayOfLong	[J
+    //   59: getfield 20	com/tencent/crossengine/net/OkHttpNetworkManager$1:b	[J
     //   62: iconst_2
     //   63: aload_2
-    //   64: invokevirtual 53	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   67: invokevirtual 63	okhttp3/ResponseBody:contentLength	()J
+    //   64: invokevirtual 55	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   67: invokevirtual 65	okhttp3/ResponseBody:contentLength	()J
     //   70: lastore
     //   71: aload 10
     //   73: aload 12
-    //   75: invokevirtual 69	java/io/InputStream:read	([B)I
+    //   75: invokevirtual 71	java/io/InputStream:read	([B)I
     //   78: istore_3
     //   79: iload_3
     //   80: ifle +128 -> 208
     //   83: aload_0
-    //   84: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   84: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   87: ifnull -16 -> 71
     //   90: aload_0
-    //   91: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   91: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   94: aload 12
     //   96: iload_3
-    //   97: invokevirtual 73	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
+    //   97: invokevirtual 75	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
     //   100: lstore 6
     //   102: iload_3
     //   103: i2l
@@ -78,7 +78,7 @@ class OkHttpNetworkManager$1
     //   110: lcmp
     //   111: iflt +54 -> 165
     //   114: aload_0
-    //   115: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ArrayOfLong	[J
+    //   115: getfield 20	com/tencent/crossengine/net/OkHttpNetworkManager$1:b	[J
     //   118: astore 13
     //   120: aload 13
     //   122: iconst_3
@@ -89,63 +89,63 @@ class OkHttpNetworkManager$1
     //   129: ladd
     //   130: lastore
     //   131: aload_0
-    //   132: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   132: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   135: aload_0
-    //   136: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ArrayOfLong	[J
+    //   136: getfield 20	com/tencent/crossengine/net/OkHttpNetworkManager$1:b	[J
     //   139: iconst_3
     //   140: laload
     //   141: aload_0
-    //   142: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ArrayOfLong	[J
+    //   142: getfield 20	com/tencent/crossengine/net/OkHttpNetworkManager$1:b	[J
     //   145: iconst_2
     //   146: laload
     //   147: aload_0
-    //   148: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ArrayOfLong	[J
+    //   148: getfield 20	com/tencent/crossengine/net/OkHttpNetworkManager$1:b	[J
     //   151: iconst_1
     //   152: laload
     //   153: aload_0
-    //   154: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ArrayOfLong	[J
+    //   154: getfield 20	com/tencent/crossengine/net/OkHttpNetworkManager$1:b	[J
     //   157: iconst_0
     //   158: laload
-    //   159: invokevirtual 77	com/tencent/crossengine/net/NetworkManager$Callback:onProgress	(JJJJ)V
+    //   159: invokevirtual 79	com/tencent/crossengine/net/NetworkManager$Callback:onProgress	(JJJJ)V
     //   162: goto -91 -> 71
-    //   165: new 79	java/lang/StringBuilder
+    //   165: new 81	java/lang/StringBuilder
     //   168: dup
-    //   169: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   169: invokespecial 82	java/lang/StringBuilder:<init>	()V
     //   172: astore 11
     //   174: aload 11
-    //   176: ldc 82
-    //   178: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: ldc 84
+    //   178: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: pop
     //   182: aload 11
     //   184: aload_2
-    //   185: invokevirtual 90	okhttp3/Response:request	()Lokhttp3/Request;
-    //   188: invokevirtual 96	okhttp3/Request:url	()Lokhttp3/HttpUrl;
-    //   191: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 92	okhttp3/Response:request	()Lokhttp3/Request;
+    //   188: invokevirtual 98	okhttp3/Request:url	()Lokhttp3/HttpUrl;
+    //   191: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   194: pop
-    //   195: new 26	java/io/IOException
+    //   195: new 28	java/io/IOException
     //   198: dup
     //   199: aload 11
-    //   201: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokespecial 104	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   201: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokespecial 106	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   207: athrow
     //   208: aload_0
-    //   209: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   209: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   212: astore 12
     //   214: aload 12
     //   216: ifnull +11 -> 227
     //   219: aload 12
     //   221: aconst_null
     //   222: iconst_0
-    //   223: invokevirtual 73	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
+    //   223: invokevirtual 75	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
     //   226: pop2
     //   227: aload 10
     //   229: ifnull +140 -> 369
     //   232: aload 10
-    //   234: invokevirtual 107	java/io/InputStream:close	()V
+    //   234: invokevirtual 109	java/io/InputStream:close	()V
     //   237: goto +132 -> 369
     //   240: astore 10
     //   242: aload 10
-    //   244: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   244: invokevirtual 112	java/io/IOException:printStackTrace	()V
     //   247: goto +122 -> 369
     //   250: astore_2
     //   251: aload 10
@@ -167,25 +167,25 @@ class OkHttpNetworkManager$1
     //   279: aload_0
     //   280: aload_1
     //   281: aload 10
-    //   283: invokevirtual 112	com/tencent/crossengine/net/OkHttpNetworkManager$1:onFailure	(Lokhttp3/Call;Ljava/io/IOException;)V
+    //   283: invokevirtual 114	com/tencent/crossengine/net/OkHttpNetworkManager$1:onFailure	(Lokhttp3/Call;Ljava/io/IOException;)V
     //   286: aload_0
-    //   287: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   287: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   290: astore_1
     //   291: aload_1
     //   292: ifnull +10 -> 302
     //   295: aload_1
     //   296: aconst_null
     //   297: iconst_0
-    //   298: invokevirtual 73	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
+    //   298: invokevirtual 75	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
     //   301: pop2
     //   302: aload_2
     //   303: ifnull +13 -> 316
     //   306: aload_2
-    //   307: invokevirtual 107	java/io/InputStream:close	()V
+    //   307: invokevirtual 109	java/io/InputStream:close	()V
     //   310: return
     //   311: astore_1
     //   312: aload_1
-    //   313: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   313: invokevirtual 112	java/io/IOException:printStackTrace	()V
     //   316: return
     //   317: astore 10
     //   319: aload_2
@@ -199,32 +199,32 @@ class OkHttpNetworkManager$1
     //   329: aload 10
     //   331: astore_1
     //   332: aload_0
-    //   333: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   333: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   336: astore 10
     //   338: aload 10
     //   340: ifnull +11 -> 351
     //   343: aload 10
     //   345: aconst_null
     //   346: iconst_0
-    //   347: invokevirtual 73	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
+    //   347: invokevirtual 75	com/tencent/crossengine/net/NetworkManager$Callback:writeResponseContent	([BI)J
     //   350: pop2
     //   351: aload_2
     //   352: ifnull +15 -> 367
     //   355: aload_2
-    //   356: invokevirtual 107	java/io/InputStream:close	()V
+    //   356: invokevirtual 109	java/io/InputStream:close	()V
     //   359: goto +8 -> 367
     //   362: astore_2
     //   363: aload_2
-    //   364: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   364: invokevirtual 112	java/io/IOException:printStackTrace	()V
     //   367: aload_1
     //   368: athrow
     //   369: aload_0
-    //   370: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   370: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   373: ifnull +82 -> 455
-    //   376: getstatic 117	com/tencent/crossengine/net/OkHttpNetworkManager$6:a	[I
+    //   376: getstatic 119	com/tencent/crossengine/net/OkHttpNetworkManager$6:a	[I
     //   379: aload_2
-    //   380: invokevirtual 121	okhttp3/Response:protocol	()Lokhttp3/Protocol;
-    //   383: invokevirtual 127	okhttp3/Protocol:ordinal	()I
+    //   380: invokevirtual 123	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   383: invokevirtual 129	okhttp3/Protocol:ordinal	()I
     //   386: iaload
     //   387: istore 5
     //   389: iload 5
@@ -250,16 +250,16 @@ class OkHttpNetworkManager$1
     //   427: iconst_1
     //   428: istore_3
     //   429: aload_0
-    //   430: getfield 16	com/tencent/crossengine/net/OkHttpNetworkManager$1:jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback	Lcom/tencent/crossengine/net/NetworkManager$Callback;
+    //   430: getfield 18	com/tencent/crossengine/net/OkHttpNetworkManager$1:a	Lcom/tencent/crossengine/net/NetworkManager$Callback;
     //   433: aload_1
-    //   434: invokeinterface 130 1 0
-    //   439: invokevirtual 96	okhttp3/Request:url	()Lokhttp3/HttpUrl;
-    //   442: invokevirtual 133	okhttp3/HttpUrl:toString	()Ljava/lang/String;
+    //   434: invokeinterface 132 1 0
+    //   439: invokevirtual 98	okhttp3/Request:url	()Lokhttp3/HttpUrl;
+    //   442: invokevirtual 135	okhttp3/HttpUrl:toString	()Ljava/lang/String;
     //   445: aload_2
-    //   446: invokevirtual 136	okhttp3/Response:code	()I
+    //   446: invokevirtual 138	okhttp3/Response:code	()I
     //   449: aload 11
     //   451: iload_3
-    //   452: invokevirtual 139	com/tencent/crossengine/net/NetworkManager$Callback:onResponse	(Ljava/lang/String;ILjava/util/List;I)V
+    //   452: invokevirtual 141	com/tencent/crossengine/net/NetworkManager$Callback:onResponse	(Ljava/lang/String;ILjava/util/List;I)V
     //   455: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -305,7 +305,7 @@ class OkHttpNetworkManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager.1
  * JD-Core Version:    0.7.0.1
  */

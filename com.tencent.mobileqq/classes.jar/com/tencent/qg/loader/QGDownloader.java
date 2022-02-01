@@ -11,11 +11,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class QGDownloader
 {
   public int a;
-  private Map<String, List<QGDownloader.QGDownloadCallback>> a;
+  private Map<String, List<QGDownloader.QGDownloadCallback>> b;
   
   private void c(String paramString, boolean paramBoolean)
   {
-    paramString = (List)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    paramString = (List)this.b.remove(paramString);
     if (paramString != null)
     {
       paramString = paramString.iterator();
@@ -36,7 +36,7 @@ public abstract class QGDownloader
     if (QLog.isColorLevel()) {
       QLog.d("QGDownloader", 2, "onFail.");
     }
-    this.jdField_a_of_type_Int = 1;
+    this.a = 1;
     b(paramString, false);
     c(paramString, false);
   }
@@ -45,11 +45,11 @@ public abstract class QGDownloader
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    boolean bool = QGLoader.b.get();
+    boolean bool = QGLoader.c.get();
     if (QLog.isColorLevel()) {
       QLog.d("QGDownloader", 2, new Object[] { "onSuccess. loadSo=", Boolean.valueOf(paramBoolean), ", soLoaded=", Boolean.valueOf(bool) });
     }
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
     b(paramString, true);
     if (!paramBoolean)
     {
@@ -66,7 +66,7 @@ public abstract class QGDownloader
   
   protected void b(String paramString, boolean paramBoolean)
   {
-    paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (List)this.b.get(paramString);
     long l;
     if ((paramString != null) && (!paramString.isEmpty()))
     {
@@ -87,7 +87,7 @@ public abstract class QGDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.loader.QGDownloader
  * JD-Core Version:    0.7.0.1
  */

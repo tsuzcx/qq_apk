@@ -17,20 +17,20 @@ import org.json.JSONObject;
 public class RandomTextDrawable
   extends InfoStickerDrawable
 {
-  int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  PerLineFontBitmapsInfo jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo;
-  PerLineFontBitmapsInfo jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo;
-  private String jdField_b_of_type_JavaLangString = "05:36";
-  private String c = "2017 SEPTEMBER 30";
+  PerLineFontBitmapsInfo a;
+  PerLineFontBitmapsInfo b;
+  int c = 0;
+  private String d = "05:36";
+  private String e = "2017 SEPTEMBER 30";
+  private Paint n = new Paint();
+  private TextPaint o = new TextPaint();
   
   public RandomTextDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
     a(paramString);
     b();
-    c();
+    e();
   }
   
   private PerLineFontBitmapsInfo a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, AnimStateTypeEvaluator paramAnimStateTypeEvaluator, int paramInt7)
@@ -68,29 +68,29 @@ public class RandomTextDrawable
     if (paramArrayList == null) {
       return;
     }
-    paramArrayList = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramArrayList = this.a.g.iterator();
     FontBitmapInfo localFontBitmapInfo;
     Bitmap localBitmap;
     TextPaint localTextPaint;
     while (paramArrayList.hasNext())
     {
       localFontBitmapInfo = (FontBitmapInfo)paramArrayList.next();
-      localBitmap = localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-      localTextPaint = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_AndroidTextTextPaint;
-      localTextPaint.setAlpha(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(localFontBitmapInfo.b)).intValue());
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_Int + localFontBitmapInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.b, localTextPaint);
+      localBitmap = localFontBitmapInfo.a;
+      localTextPaint = this.a.a;
+      localTextPaint.setAlpha(((Integer)this.g.get(localFontBitmapInfo.c)).intValue());
+      paramCanvas.drawBitmap(localBitmap, this.a.b + localFontBitmapInfo.b, this.a.c, localTextPaint);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    float f = a(55.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramCanvas.drawLine(0.0F, f, ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).intValue(), f, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramArrayList = this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.n.setStrokeWidth(a(2.0F, this.h.getResources()));
+    float f = a(55.0F, this.h.getResources());
+    paramCanvas.drawLine(0.0F, f, ((Integer)this.g.get(this.c)).intValue(), f, this.n);
+    paramArrayList = this.b.g.iterator();
     while (paramArrayList.hasNext())
     {
       localFontBitmapInfo = (FontBitmapInfo)paramArrayList.next();
-      localBitmap = localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-      localTextPaint = this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_AndroidTextTextPaint;
-      localTextPaint.setAlpha(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(localFontBitmapInfo.b)).intValue());
-      paramCanvas.drawBitmap(localBitmap, this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_Int + localFontBitmapInfo.jdField_a_of_type_Int, this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.b, localTextPaint);
+      localBitmap = localFontBitmapInfo.a;
+      localTextPaint = this.b.a;
+      localTextPaint.setAlpha(((Integer)this.g.get(localFontBitmapInfo.c)).intValue());
+      paramCanvas.drawBitmap(localBitmap, this.b.b + localFontBitmapInfo.b, this.b.c, localTextPaint);
     }
   }
   
@@ -107,24 +107,24 @@ public class RandomTextDrawable
     }
     if (paramString != null)
     {
-      this.f = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("first_line", "");
-      this.c = paramString.optString("second_line", "");
+      this.j = paramString.optInt("type", 0);
+      this.d = paramString.optString("first_line", "");
+      this.e = paramString.optString("second_line", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.c };
+    return new String[] { this.d, this.e };
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    this.n = new Paint();
+    this.n.setAntiAlias(true);
+    this.n.setDither(true);
+    this.n.setColor(-1);
+    this.o = new TextPaint();
+    this.o.setAntiAlias(true);
+    this.o.setDither(true);
+    this.o.setColor(-1);
+    Object localObject = this.h.getAssets();
     try
     {
       localTypeface = Typeface.createFromAsset((AssetManager)localObject, "info_sticker_typeface/roboto-medium.ttf");
@@ -146,24 +146,24 @@ public class RandomTextDrawable
       break label102;
     }
     localObject = Typeface.DEFAULT;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo = a(this.jdField_b_of_type_JavaLangString, a(48.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1, 0, 0, 0, 600, localTypeface, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator, 0);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("", 300L, 500L, 0, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.e, new LinearInterpolator());
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo = a(this.c, a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1, 0, a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 500, 800, (Typeface)localObject, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.e - 10);
+    this.a = a(this.d, a(48.0F, this.h.getResources()), -1, 0, 0, 0, 600, localTypeface, this.f, 0);
+    this.c = this.f.a("", 300L, 500L, 0, this.a.f, new LinearInterpolator());
+    this.b = a(this.e, a(11.0F, this.h.getResources()), -1, 0, a(60.0F, this.h.getResources()), 500, 800, (Typeface)localObject, this.f, this.a.f - 10);
   }
   
   public int getIntrinsicHeight()
   {
-    return a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return a(75.0F, this.h.getResources());
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.e;
+    return this.a.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.RandomTextDrawable
  * JD-Core Version:    0.7.0.1
  */

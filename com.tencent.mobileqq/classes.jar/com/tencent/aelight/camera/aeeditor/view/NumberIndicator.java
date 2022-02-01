@@ -8,9 +8,9 @@ import android.widget.TextView;
 public class NumberIndicator
   extends TextView
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private int b;
+  private int c;
   
   public NumberIndicator(Context paramContext)
   {
@@ -30,17 +30,17 @@ public class NumberIndicator
   private void a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" / ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(" / ");
+    localStringBuilder.append(this.c);
     setText(localStringBuilder.toString());
   }
   
   public void setCurrentIndex(int paramInt)
   {
-    if ((paramInt > 0) && (paramInt <= this.b))
+    if ((paramInt > 0) && (paramInt <= this.c))
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.b = paramInt;
       a();
       return;
     }
@@ -49,9 +49,9 @@ public class NumberIndicator
   
   public void setTotalCount(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_Int)
+    if (paramInt >= this.b)
     {
-      this.b = paramInt;
+      this.c = paramInt;
       a();
       return;
     }
@@ -60,7 +60,7 @@ public class NumberIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.NumberIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -39,10 +39,10 @@ import java.util.List;
 
 public class IliveEntranceUtil
 {
-  private static long a = 0L;
   public static boolean a = false;
-  private static long b = 0L;
   public static boolean b = false;
+  private static long c;
+  private static long d;
   
   public static void a(Context paramContext, String paramString)
   {
@@ -55,7 +55,8 @@ public class IliveEntranceUtil
     localBundle.putInt("page_type", 1);
     localBundle.putString("source", paramString);
     localBundle.putBoolean("isDebugVersion", false);
-    localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
+    localBundle.putBoolean("useNewGiftSDK", true);
+    localBundle.putString("qqVersion", AppSetting.b);
     localBundle.putLong("start_time", System.currentTimeMillis());
     ((Intent)localObject).putExtra("KEY_EXTRAS", localBundle);
     ((Intent)localObject).putExtra("KEY_IS_START_LIVE", true);
@@ -68,33 +69,33 @@ public class IliveEntranceUtil
     if (paramIliveJumpParams == null) {
       return;
     }
-    if (!a(paramIliveJumpParams)) {
+    if ((!e()) && (!b(paramIliveJumpParams))) {
       return;
     }
-    if (!TextUtils.isEmpty(paramIliveJumpParams.c)) {
+    if (!TextUtils.isEmpty(paramIliveJumpParams.d)) {
       try
       {
-        paramIliveJumpParams.c = Uri.decode(paramIliveJumpParams.c);
+        paramIliveJumpParams.d = Uri.decode(paramIliveJumpParams.d);
       }
       catch (Exception localException1)
       {
         localException1.printStackTrace();
       }
     }
-    if (!TextUtils.isEmpty(paramIliveJumpParams.e)) {
+    if (!TextUtils.isEmpty(paramIliveJumpParams.h)) {
       try
       {
-        paramIliveJumpParams.e = Uri.decode(paramIliveJumpParams.e);
+        paramIliveJumpParams.h = Uri.decode(paramIliveJumpParams.h);
       }
       catch (Exception localException2)
       {
         localException2.printStackTrace();
       }
     }
-    if (!TextUtils.isEmpty(paramIliveJumpParams.g)) {
+    if (!TextUtils.isEmpty(paramIliveJumpParams.l)) {
       try
       {
-        paramIliveJumpParams.g = Uri.decode(paramIliveJumpParams.g);
+        paramIliveJumpParams.l = Uri.decode(paramIliveJumpParams.l);
       }
       catch (Exception localException3)
       {
@@ -103,46 +104,46 @@ public class IliveEntranceUtil
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("liveWatchEntranceJump source = ");
-    ((StringBuilder)localObject1).append(paramIliveJumpParams.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject1).append(" roomID = ");
     ((StringBuilder)localObject1).append(paramIliveJumpParams.b);
+    ((StringBuilder)localObject1).append(" roomID = ");
+    ((StringBuilder)localObject1).append(paramIliveJumpParams.c);
     ((StringBuilder)localObject1).append(" retain = ");
-    ((StringBuilder)localObject1).append(paramIliveJumpParams.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject1).append(paramIliveJumpParams.f);
     ((StringBuilder)localObject1).append(" sIsAnchorIsLive = ");
-    ((StringBuilder)localObject1).append(jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject1).append(a);
     ((StringBuilder)localObject1).append(" sIsAudienceIsLive = ");
-    ((StringBuilder)localObject1).append(jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject1).append(b);
     QLog.e("IliveEntranceUtil", 1, ((StringBuilder)localObject1).toString());
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(" rtmp = ");
-      ((StringBuilder)localObject1).append(paramIliveJumpParams.c);
+      ((StringBuilder)localObject1).append(paramIliveJumpParams.d);
       ((StringBuilder)localObject1).append(" closeJump = ");
-      ((StringBuilder)localObject1).append(paramIliveJumpParams.e);
+      ((StringBuilder)localObject1).append(paramIliveJumpParams.h);
       ((StringBuilder)localObject1).append(" traceInfo = ");
-      ((StringBuilder)localObject1).append(paramIliveJumpParams.f);
+      ((StringBuilder)localObject1).append(paramIliveJumpParams.j);
       QLog.i("IliveEntranceUtil", 2, ((StringBuilder)localObject1).toString());
     }
-    if (TextUtils.isEmpty(paramIliveJumpParams.b)) {
-      paramIliveJumpParams.b = "-1";
+    if (TextUtils.isEmpty(paramIliveJumpParams.c)) {
+      paramIliveJumpParams.c = "-1";
     }
-    if (paramIliveJumpParams.g == null) {
-      paramIliveJumpParams.g = "";
+    if (paramIliveJumpParams.l == null) {
+      paramIliveJumpParams.l = "";
     }
-    b(paramIliveJumpParams);
+    c(paramIliveJumpParams);
     localObject1 = IliveManagerConfProcessor.a();
     if ((localObject1 != null) && (((IliveManagerCfgBean)localObject1).d()))
     {
-      IliveLiteHelper.a().a();
-      localObject2 = LiteLiveSDKFactory.a().a();
-      if ((localObject2 != null) && (((BusinessConfig)localObject2).jdField_a_of_type_JavaLangString.equals("1037")))
+      IliveLiteHelper.a().b();
+      localObject2 = LiteLiveSDKFactory.a().b();
+      if ((localObject2 != null) && (((BusinessConfig)localObject2).a.equals("1037")))
       {
-        ((BusinessConfig)localObject2).jdField_a_of_type_JavaUtilHashMap.put("recom_info", paramIliveJumpParams.g);
-        ((BusinessConfig)localObject2).jdField_a_of_type_JavaUtilHashMap.put("closejump", paramIliveJumpParams.e);
-        ((BusinessConfig)localObject2).jdField_a_of_type_JavaUtilHashMap.put("enter_room", "1");
-        HashMap localHashMap = ((BusinessConfig)localObject2).jdField_a_of_type_JavaUtilHashMap;
-        boolean bool = TextUtils.isEmpty(paramIliveJumpParams.c);
+        ((BusinessConfig)localObject2).m.put("recom_info", paramIliveJumpParams.l);
+        ((BusinessConfig)localObject2).m.put("closejump", paramIliveJumpParams.h);
+        ((BusinessConfig)localObject2).m.put("enter_room", "1");
+        HashMap localHashMap = ((BusinessConfig)localObject2).m;
+        boolean bool = TextUtils.isEmpty(paramIliveJumpParams.d);
         String str = "0";
         if (!bool) {
           localObject1 = "1";
@@ -150,9 +151,9 @@ public class IliveEntranceUtil
           localObject1 = "0";
         }
         localHashMap.put("has_rtmp", localObject1);
-        localHashMap = ((BusinessConfig)localObject2).jdField_a_of_type_JavaUtilHashMap;
+        localHashMap = ((BusinessConfig)localObject2).m;
         localObject1 = str;
-        if (IliveLiteMonitorUtil.a()) {
+        if (IliveLiteMonitorUtil.f()) {
           localObject1 = "1";
         }
         localHashMap.put("is_process_launch", localObject1);
@@ -162,57 +163,57 @@ public class IliveEntranceUtil
       {
         QLog.e("IliveEntranceUtil", 1, "enter init businessConfig = null");
         localObject1 = new BusinessConfig();
-        ((BusinessConfig)localObject1).jdField_a_of_type_JavaUtilHashMap.put("enter_room", "1");
+        ((BusinessConfig)localObject1).m.put("enter_room", "1");
       }
       LiteLiveSDKFactory.a().b((BusinessConfig)localObject1);
       IliveLiteHelper.a().a(paramIliveJumpParams);
       return;
     }
-    if ((jdField_a_of_type_Boolean) && (b(paramIliveJumpParams.jdField_a_of_type_AndroidContentContext)))
+    if ((a) && (b(paramIliveJumpParams.a)))
     {
       QLog.e("IliveEntranceUtil", 1, "sIsAnchorIsLive current anchor is live stop jump");
       return;
     }
-    jdField_a_of_type_Boolean = false;
+    a = false;
     VasStatisticCollector.a("watch_enter_count", null, 0L);
     localObject1 = new Intent();
     Object localObject2 = new Bundle();
     ((Bundle)localObject2).putInt("page_type", 3);
-    ((Bundle)localObject2).putString("source", paramIliveJumpParams.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject2).putString("room_id", paramIliveJumpParams.b);
-    ((Bundle)localObject2).putString("rtmp_Url", paramIliveJumpParams.c);
-    ((Bundle)localObject2).putString("cover_url", paramIliveJumpParams.d);
-    ((Bundle)localObject2).putString("trace_info", paramIliveJumpParams.f);
+    ((Bundle)localObject2).putString("source", paramIliveJumpParams.b);
+    ((Bundle)localObject2).putString("room_id", paramIliveJumpParams.c);
+    ((Bundle)localObject2).putString("rtmp_Url", paramIliveJumpParams.d);
+    ((Bundle)localObject2).putString("cover_url", paramIliveJumpParams.e);
+    ((Bundle)localObject2).putString("trace_info", paramIliveJumpParams.j);
     ((Bundle)localObject2).putLong("start_time", System.currentTimeMillis());
-    ((Bundle)localObject2).putStringArrayList("playlist", paramIliveJumpParams.jdField_a_of_type_JavaUtilArrayList);
-    ((Bundle)localObject2).putInt("from", paramIliveJumpParams.jdField_a_of_type_Int);
-    ((Bundle)localObject2).putBoolean("retaion", paramIliveJumpParams.jdField_a_of_type_Boolean);
-    ((Bundle)localObject2).putString("close_jump", paramIliveJumpParams.e);
+    ((Bundle)localObject2).putStringArrayList("playlist", paramIliveJumpParams.g);
+    ((Bundle)localObject2).putInt("from", paramIliveJumpParams.i);
+    ((Bundle)localObject2).putBoolean("retaion", paramIliveJumpParams.f);
+    ((Bundle)localObject2).putString("close_jump", paramIliveJumpParams.h);
     ((Bundle)localObject2).putBoolean("isDebugVersion", false);
-    ((Bundle)localObject2).putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject2).putString("qqVersion", AppSetting.b);
     ((Intent)localObject1).putExtra("KEY_EXTRAS", (Bundle)localObject2);
     ((Intent)localObject1).putExtra("KEY_IS_START_LIVE", false);
-    IliveLaunchFragment.startSelf(paramIliveJumpParams.jdField_a_of_type_AndroidContentContext, (Intent)localObject1);
+    IliveLaunchFragment.startSelf(paramIliveJumpParams.a, (Intent)localObject1);
   }
   
   public static boolean a()
   {
-    return (b(BaseApplicationImpl.getContext())) && ((jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean));
+    return (b(BaseApplicationImpl.getContext())) && ((a) || (b));
   }
   
   public static boolean a(int paramInt)
   {
-    jdField_b_of_type_Long = System.currentTimeMillis();
+    d = System.currentTimeMillis();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" offest = ");
-    ((StringBuilder)localObject).append(jdField_b_of_type_Long - jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(d - c);
     localObject = ((StringBuilder)localObject).toString();
     boolean bool = true;
     QLog.i("IliveEntranceUtil", 1, (String)localObject);
-    if (jdField_b_of_type_Long - jdField_a_of_type_Long <= paramInt) {
+    if (d - c <= paramInt) {
       bool = false;
     }
-    jdField_a_of_type_Long = jdField_b_of_type_Long;
+    c = d;
     return bool;
   }
   
@@ -226,7 +227,55 @@ public class IliveEntranceUtil
     return false;
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public static boolean a(boolean paramBoolean)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
+      localObject = (IAvGameManager)localQQAppInterface.getRuntimeService(IAvGameManager.class, "");
+      if ((localObject != null) && (((IAvGameManager)localObject).isAvGameRoomExist()))
+      {
+        c(localQQAppInterface.getApp().getBaseContext(), "进入直播间失败");
+        return false;
+      }
+      if (paramBoolean) {
+        localObject = "通话中，不可发起直播";
+      } else {
+        localObject = "通话中，不可进入直播间";
+      }
+      if (localQQAppInterface.getAVNotifyCenter().c())
+      {
+        c(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
+        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isPhoneCalling");
+        return false;
+      }
+      if (localQQAppInterface.getAVNotifyCenter().d())
+      {
+        c(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
+        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isAvChating");
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public static boolean b()
+  {
+    return Build.VERSION.SDK_INT >= QVipSDKProcessor.e().e();
+  }
+  
+  private static boolean b(Context paramContext)
+  {
+    boolean bool = b(paramContext, "com.tencent.proxyinner.plugin.loader.PluginToolProcessService");
+    paramContext = new StringBuilder();
+    paramContext.append("isIlivePluginsServiceExisted : ");
+    paramContext.append(bool);
+    QLog.e("IliveEntranceUtil", 1, paramContext.toString());
+    return bool;
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
   {
     for (;;)
     {
@@ -271,19 +320,19 @@ public class IliveEntranceUtil
     }
   }
   
-  private static boolean a(IliveJumpParams paramIliveJumpParams)
+  private static boolean b(IliveJumpParams paramIliveJumpParams)
   {
     if (paramIliveJumpParams != null)
     {
-      if (paramIliveJumpParams.jdField_a_of_type_AndroidContentContext == null) {
+      if (paramIliveJumpParams.a == null) {
         return true;
       }
-      Object localObject = AVBizModuleFactory.a("开播啦鹅");
-      paramIliveJumpParams = paramIliveJumpParams.jdField_a_of_type_AndroidContentContext;
-      localObject = ((IModule)localObject).b();
+      Object localObject = AVBizModuleFactory.getModuleByName("QQ直播");
+      paramIliveJumpParams = paramIliveJumpParams.a;
+      localObject = ((IModule)localObject).checkAVFocus();
       if (!"true".equals(localObject))
       {
-        String str = String.format(paramIliveJumpParams.getResources().getString(2131690259), new Object[] { localObject });
+        String str = String.format(paramIliveJumpParams.getResources().getString(2131887170), new Object[] { localObject });
         ThreadManagerV2.getUIHandlerV2().post(new IliveEntranceUtil.2(paramIliveJumpParams, str));
         paramIliveJumpParams = new StringBuilder();
         paramIliveJumpParams.append("preCheckIsUserGamePlaying, res[");
@@ -296,67 +345,19 @@ public class IliveEntranceUtil
     return true;
   }
   
-  public static boolean a(boolean paramBoolean)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      localObject = (IAvGameManager)localQQAppInterface.getRuntimeService(IAvGameManager.class, "");
-      if ((localObject != null) && (((IAvGameManager)localObject).isAvGameRoomExist()))
-      {
-        b(localQQAppInterface.getApp().getBaseContext(), "进入直播间失败");
-        return false;
-      }
-      if (paramBoolean) {
-        localObject = "通话中，不可发起直播";
-      } else {
-        localObject = "通话中，不可进入直播间";
-      }
-      if (localQQAppInterface.getAVNotifyCenter().a())
-      {
-        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
-        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isPhoneCalling");
-        return false;
-      }
-      if (localQQAppInterface.getAVNotifyCenter().b())
-      {
-        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
-        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isAvChating");
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private static void b(Context paramContext, String paramString)
+  private static void c(Context paramContext, String paramString)
   {
     ThreadManagerV2.getUIHandlerV2().post(new IliveEntranceUtil.1(paramContext, paramString));
   }
   
-  private static void b(IliveJumpParams paramIliveJumpParams)
+  private static void c(IliveJumpParams paramIliveJumpParams)
   {
-    IliveLiteMonitorUtil.a(TextUtils.isEmpty(paramIliveJumpParams.c) ^ true, paramIliveJumpParams.jdField_a_of_type_Int);
-    IliveLiteMonitorUtil.a(paramIliveJumpParams.jdField_a_of_type_Int);
-    IliveLiteMonitorUtil.f();
+    IliveLiteMonitorUtil.a(TextUtils.isEmpty(paramIliveJumpParams.d) ^ true, paramIliveJumpParams.i);
+    IliveLiteMonitorUtil.a(paramIliveJumpParams.i);
+    IliveLiteMonitorUtil.h();
     IliveLiteMonitorUtil.a("live_on_bind");
     IliveLiteMonitorUtil.d(String.valueOf(System.currentTimeMillis()));
-    IliveLiteMonitorUtil.g();
-  }
-  
-  public static boolean b()
-  {
-    return Build.VERSION.SDK_INT >= QVipSDKProcessor.c().a();
-  }
-  
-  private static boolean b(Context paramContext)
-  {
-    boolean bool = a(paramContext, "com.tencent.proxyinner.plugin.loader.PluginToolProcessService");
-    paramContext = new StringBuilder();
-    paramContext.append("isIlivePluginsServiceExisted : ");
-    paramContext.append(bool);
-    QLog.e("IliveEntranceUtil", 1, paramContext.toString());
-    return bool;
+    IliveLiteMonitorUtil.k();
   }
   
   public static boolean c()
@@ -368,10 +369,25 @@ public class IliveEntranceUtil
   {
     return IliveDbManager.getIliveSwitch(2) == 1;
   }
+  
+  private static boolean e()
+  {
+    Object localObject = AVBizModuleFactory.getModuleByName("QQ直播").getFocusBusiness();
+    if (localObject != null)
+    {
+      boolean bool = ((HashMap)localObject).containsValue("游戏组队");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("is isTimiGameFocusAV ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("IliveEntranceUtil", 1, ((StringBuilder)localObject).toString());
+      return bool;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.util.IliveEntranceUtil
  * JD-Core Version:    0.7.0.1
  */

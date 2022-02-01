@@ -9,11 +9,11 @@ class ARTransferPromotionRenderable$9
   
   public void run()
   {
-    if ((ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.a(this.this$0) == 6))
+    if ((ARTransferPromotionRenderable.g(this.this$0) != null) && (ARTransferPromotionRenderable.b(this.this$0) == 6))
     {
-      ARPromotionSoundPlayer localARPromotionSoundPlayer = ARTransferPromotionRenderable.a(this.this$0);
+      ARPromotionSoundPlayer localARPromotionSoundPlayer = ARTransferPromotionRenderable.g(this.this$0);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(ARTransferPromotionRenderable.a(this.this$0).c);
+      localStringBuilder.append(ARTransferPromotionRenderable.e(this.this$0).o);
       localStringBuilder.append("doorOpen.mp3");
       localARPromotionSoundPlayer.a(localStringBuilder.toString(), false);
     }
@@ -21,7 +21,7 @@ class ARTransferPromotionRenderable$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.9
  * JD-Core Version:    0.7.0.1
  */

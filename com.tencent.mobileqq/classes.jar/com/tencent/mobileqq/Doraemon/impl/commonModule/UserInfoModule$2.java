@@ -30,14 +30,14 @@ class UserInfoModule$2
     Object localObject1;
     if (QLog.isColorLevel())
     {
-      paramBundle = UserInfoModule.jdField_a_of_type_JavaLangString;
+      paramBundle = UserInfoModule.b;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onResult appid=");
-      ((StringBuilder)localObject1).append(UserInfoModule.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule).jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(UserInfoModule.a(this.b).b);
       ((StringBuilder)localObject1).append(", openid=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b.c.a);
       ((StringBuilder)localObject1).append(", openkey=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b);
+      ((StringBuilder)localObject1).append(this.b.c.b);
       ((StringBuilder)localObject1).append(", code=");
       ((StringBuilder)localObject1).append(paramInt);
       QLog.i(paramBundle, 2, ((StringBuilder)localObject1).toString());
@@ -78,7 +78,7 @@ class UserInfoModule$2
             }
             catch (JSONException localJSONException) {}
             if (QLog.isColorLevel()) {
-              QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+              QLog.e(UserInfoModule.b, 2, localJSONException.getMessage(), localJSONException);
             }
           }
         }
@@ -89,21 +89,21 @@ class UserInfoModule$2
         catch (JSONException paramArrayOfByte)
         {
           if (QLog.isColorLevel()) {
-            QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+            QLog.e(UserInfoModule.b, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
           }
         }
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle);
+        DoraemonUtil.a(this.a, paramBundle);
         return;
       }
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "parse result error, try again");
+      DoraemonUtil.a(this.a, -1, "parse result error, try again");
       return;
     }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "getappfriends result error, try again");
+    DoraemonUtil.a(this.a, paramInt, "getappfriends result error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -39,12 +39,12 @@ public class StreamDataManagerImpl
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getStreamFileInfoEntryByMsg  random is:");
-          localStringBuilder.append(MessageUtils.a((int)localStreamFileInfo.b));
+          localStringBuilder.append(MessageUtils.a((int)localStreamFileInfo.c));
           localStringBuilder.append(",msgSeq is:");
-          localStringBuilder.append(localStreamFileInfo.a);
+          localStringBuilder.append(localStreamFileInfo.b);
           QLog.d("StreamDataManagerImpl", 2, localStringBuilder.toString());
         }
-        if ((MessageUtils.a((int)localStreamFileInfo.b) == paramLong1) && (paramLong2 == localStreamFileInfo.a)) {
+        if ((MessageUtils.a((int)localStreamFileInfo.c) == paramLong1) && (paramLong2 == localStreamFileInfo.b)) {
           return localObject2;
         }
       }
@@ -68,7 +68,7 @@ public class StreamDataManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.streamtransfile.impl.StreamDataManagerImpl
  * JD-Core Version:    0.7.0.1
  */

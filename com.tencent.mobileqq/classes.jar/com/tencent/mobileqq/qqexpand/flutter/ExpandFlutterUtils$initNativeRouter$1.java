@@ -3,14 +3,17 @@ package com.tencent.mobileqq.qqexpand.flutter;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.webkit.URLUtil;
 import com.qflutter.qflutter_native_router.NativeRouter;
 import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qqexpand.flutter.router.BaseRouter;
 import com.tencent.mobileqq.qqexpand.flutter.router.RouterManager;
 import com.tencent.mobileqq.qqexpand.flutter.router.RouterManager.Companion;
 import com.tencent.mobileqq.qqexpand.utils.ILog;
 import com.tencent.mobileqq.qqexpand.utils.LogUtils;
 import com.tencent.mobileqq.qqexpand.utils.NativeNavigateUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.plugin.common.MethodChannel.Result;
 import java.util.Map;
@@ -37,13 +40,32 @@ public final class ExpandFlutterUtils$initNativeRouter$1
       localStringBuilder.append(paramString2);
       ((ILog)localObject).a("ExpandFlutterUtils", 2, localStringBuilder.toString());
     }
-    if (paramString1 != null) {
-      switch (paramString1.hashCode())
+    if (TextUtils.isEmpty((CharSequence)paramString1))
+    {
+      if ((!((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString2)) && (!((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppScheme(paramString2)))
+      {
+        if (URLUtil.isNetworkUrl(paramString2)) {
+          localObject = "webView";
+        } else if (ExpandFlutterUtils.a.a(paramString2)) {
+          localObject = "withoutSchema";
+        } else {
+          localObject = "bySchema";
+        }
+      }
+      else {
+        localObject = "miniApp";
+      }
+    }
+    else {
+      localObject = paramString1;
+    }
+    if (localObject != null) {
+      switch (((String)localObject).hashCode())
       {
       default: 
         break;
       case 1481330904: 
-        if (paramString1.equals("bySchema"))
+        if (((String)localObject).equals("bySchema"))
         {
           paramString1 = QBaseActivity.sTopActivity;
           if (paramString1 == null) {
@@ -54,7 +76,7 @@ public final class ExpandFlutterUtils$initNativeRouter$1
         }
         break;
       case 1223471129: 
-        if (paramString1.equals("webView"))
+        if (((String)localObject).equals("webView"))
         {
           paramString1 = QBaseActivity.sTopActivity;
           if (paramString1 == null) {
@@ -65,7 +87,7 @@ public final class ExpandFlutterUtils$initNativeRouter$1
         }
         break;
       case 1064495690: 
-        if (paramString1.equals("miniApp"))
+        if (((String)localObject).equals("miniApp"))
         {
           paramString1 = QBaseActivity.sTopActivity;
           if (paramString1 == null) {
@@ -76,7 +98,7 @@ public final class ExpandFlutterUtils$initNativeRouter$1
         }
         break;
       case 191523977: 
-        if (paramString1.equals("withoutSchema"))
+        if (((String)localObject).equals("withoutSchema"))
         {
           if (TextUtils.isEmpty((CharSequence)paramString2)) {
             return;
@@ -111,7 +133,7 @@ public final class ExpandFlutterUtils$initNativeRouter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterUtils.initNativeRouter.1
  * JD-Core Version:    0.7.0.1
  */

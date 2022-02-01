@@ -14,17 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.R.layout;
 import com.google.android.material.R.string;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Calendar;
 import java.util.Locale;
 
 class DaysOfWeekAdapter
   extends BaseAdapter
 {
-  private static final int c;
-  private final int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilCalendar.getMaximum(7);
+  private static final int d;
   @NonNull
-  private final Calendar jdField_a_of_type_JavaUtilCalendar = UtcDates.b();
-  private final int b = this.jdField_a_of_type_JavaUtilCalendar.getFirstDayOfWeek();
+  private final Calendar a = UtcDates.c();
+  private final int b = this.a.getMaximum(7);
+  private final int c = this.a.getFirstDayOfWeek();
   
   static
   {
@@ -34,13 +35,13 @@ class DaysOfWeekAdapter
     } else {
       i = 1;
     }
-    c = i;
+    d = i;
   }
   
-  private int a(int paramInt)
+  private int b(int paramInt)
   {
-    int i = paramInt + this.b;
-    int j = this.jdField_a_of_type_Int;
+    int i = paramInt + this.c;
+    int j = this.b;
     paramInt = i;
     if (i > j) {
       paramInt = i - j;
@@ -51,15 +52,15 @@ class DaysOfWeekAdapter
   @Nullable
   public Integer a(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_Int) {
+    if (paramInt >= this.b) {
       return null;
     }
-    return Integer.valueOf(a(paramInt));
+    return Integer.valueOf(b(paramInt));
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public long getItemId(int paramInt)
@@ -75,16 +76,17 @@ class DaysOfWeekAdapter
     if (paramView == null) {
       localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.u, paramViewGroup, false);
     }
-    this.jdField_a_of_type_JavaUtilCalendar.set(7, a(paramInt));
-    paramView = localTextView.getResources().getConfiguration().locale;
-    localTextView.setText(this.jdField_a_of_type_JavaUtilCalendar.getDisplayName(7, c, paramView));
-    localTextView.setContentDescription(String.format(paramViewGroup.getContext().getString(R.string.z), new Object[] { this.jdField_a_of_type_JavaUtilCalendar.getDisplayName(7, 2, Locale.getDefault()) }));
+    this.a.set(7, b(paramInt));
+    Locale localLocale = localTextView.getResources().getConfiguration().locale;
+    localTextView.setText(this.a.getDisplayName(7, d, localLocale));
+    localTextView.setContentDescription(String.format(paramViewGroup.getContext().getString(R.string.z), new Object[] { this.a.getDisplayName(7, 2, Locale.getDefault()) }));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.DaysOfWeekAdapter
  * JD-Core Version:    0.7.0.1
  */

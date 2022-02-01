@@ -12,21 +12,21 @@ import mqq.util.WeakReference;
 
 public class AddTroopAppCgi
 {
-  private long jdField_a_of_type_Long;
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<AddTroopAppCgi.CgiCallBack> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
+  private WeakReference<AddTroopAppCgi.CgiCallBack> a;
+  private String b;
+  private long c;
+  private long d;
+  private boolean e;
+  private Object f;
   
   public AddTroopAppCgi(AddTroopAppCgi.CgiCallBack paramCgiCallBack, String paramString, long paramLong1, long paramLong2, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCgiCallBack);
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramString;
+    this.c = paramLong1;
+    this.d = paramLong2;
+    this.e = paramBoolean;
+    this.a = new WeakReference(paramCgiCallBack);
+    this.f = paramObject;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -62,14 +62,14 @@ public class AddTroopAppCgi
     localStringBuilder.append(";p_skey=");
     localStringBuilder.append((String)localObject);
     localBundle.putString("Cookie", localStringBuilder.toString());
-    localBundle.putString("gc", String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localBundle.putString("append_appid", String.valueOf(this.jdField_a_of_type_Long));
+    localBundle.putString("gc", String.valueOf(this.b));
+    localBundle.putString("append_appid", String.valueOf(this.c));
     localObject = "1";
     localBundle.putString("add_type", "1");
-    localBundle.putString("append_source", String.valueOf(this.b));
-    localBundle.putString("qqver", "8.7.0.5295");
+    localBundle.putString("append_source", String.valueOf(this.d));
+    localBundle.putString("qqver", "8.8.17.5770");
     localBundle.putString("platform", "2");
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       localObject = "0";
     }
     localBundle.putString("open_shortcut", (String)localObject);
@@ -80,18 +80,18 @@ public class AddTroopAppCgi
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("AddTroopAppCgi mTroopUin:");
-      paramQQAppInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramQQAppInterface.append(this.b);
       paramQQAppInterface.append(" append_appid:");
-      paramQQAppInterface.append(this.jdField_a_of_type_Long);
+      paramQQAppInterface.append(this.c);
       paramQQAppInterface.append(" mNeedOpenShortCut:");
-      paramQQAppInterface.append(this.jdField_a_of_type_Boolean);
+      paramQQAppInterface.append(this.e);
       QLog.d("AddTroopAppCgi", 2, paramQQAppInterface.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AddTroopAppCgi
  * JD-Core Version:    0.7.0.1
  */

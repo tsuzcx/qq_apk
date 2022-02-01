@@ -9,74 +9,74 @@ public class ZhuoXusManager
     return ZhuoXusManager.SingletonHolder.a();
   }
   
-  public String a()
-  {
-    return this.a.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
+  public boolean b()
   {
     return this.a.d.a();
   }
   
-  public String b()
-  {
-    return this.a.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
+  public boolean c()
   {
     return this.a.c.a();
   }
   
-  public boolean c()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouOrionZhuosConfig.a();
-  }
-  
   public boolean d()
   {
-    return this.a.jdField_a_of_type_Boolean;
+    return this.a.a.a();
   }
   
   public boolean e()
   {
-    return this.a.jdField_b_of_type_Boolean;
+    return this.a.k;
   }
   
   public boolean f()
   {
-    return this.a.e.a();
+    return this.a.l;
   }
   
-  public boolean g()
+  public String g()
   {
-    return this.a.g.a();
+    return this.a.n;
   }
   
-  public boolean h()
+  public String h()
   {
-    return this.a.f.a();
+    return this.a.o;
   }
   
   public boolean i()
   {
-    return this.a.h.a();
+    return this.a.e.a();
   }
   
   public boolean j()
   {
-    return this.a.i.a();
+    return this.a.g.a();
   }
   
   public boolean k()
+  {
+    return this.a.f.a();
+  }
+  
+  public boolean l()
+  {
+    return this.a.h.a();
+  }
+  
+  public boolean m()
+  {
+    return this.a.i.a();
+  }
+  
+  public boolean n()
   {
     return this.a.j.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.orion.ZhuoXusManager
  * JD-Core Version:    0.7.0.1
  */

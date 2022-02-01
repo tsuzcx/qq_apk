@@ -10,17 +10,17 @@ class DynamicAvatarManager$6
   
   public void run()
   {
-    DynamicAvatar localDynamicAvatar = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.c, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.a);
+    DynamicAvatar localDynamicAvatar = this.this$0.a(this.a.l, this.a.j);
     if (localDynamicAvatar != null)
     {
-      localDynamicAvatar.playTimeStamp = this.jdField_a_of_type_Long;
+      localDynamicAvatar.playTimeStamp = this.b;
       this.this$0.a(localDynamicAvatar);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.6
  * JD-Core Version:    0.7.0.1
  */

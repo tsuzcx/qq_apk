@@ -22,9 +22,9 @@ class DeviceCapabilityExamination$DownloadInfo
     localStringBuilder.append("]");
     QLog.w("DeviceCapabilityExamination", 1, localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131703330));
+    localStringBuilder.append(HardCodeUtil.a(2131901290));
     localStringBuilder.append(paramBoolean);
-    AudioHelper.c(localStringBuilder.toString());
+    AudioHelper.d(localStringBuilder.toString());
     this.a.remove(paramString);
     this.b.remove(paramString);
   }

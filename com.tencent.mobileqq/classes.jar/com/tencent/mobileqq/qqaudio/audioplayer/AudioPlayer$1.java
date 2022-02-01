@@ -23,17 +23,17 @@ class AudioPlayer$1
       {
         localObject = (BluetoothDevice)((List)localObject).get(0);
         if ((localObject != null) && (((BluetoothDevice)localObject).getBluetoothClass() != null)) {
-          AudioDeviceHelper.jdField_a_of_type_Int = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
+          AudioDeviceHelper.c = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
         } else {
-          AudioDeviceHelper.jdField_a_of_type_Int = 0;
+          AudioDeviceHelper.c = 0;
         }
       }
       else
       {
-        AudioDeviceHelper.jdField_a_of_type_Int = 0;
+        AudioDeviceHelper.c = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
+      this.d.a(this.a, this.b);
+      this.c.closeProfileProxy(1, paramBluetoothProfile);
     }
   }
   
@@ -41,7 +41,7 @@ class AudioPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayer.1
  * JD-Core Version:    0.7.0.1
  */

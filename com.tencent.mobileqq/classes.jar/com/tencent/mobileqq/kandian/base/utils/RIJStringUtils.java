@@ -32,7 +32,7 @@ public class RIJStringUtils
   
   public static String a(String paramString)
   {
-    if (DeviceInfoUtil.j() > 720L) {
+    if (DeviceInfoUtil.E() > 720L) {
       return a(paramString, 18);
     }
     return a(paramString, 24);
@@ -78,7 +78,7 @@ public class RIJStringUtils
     return localObject;
   }
   
-  public static BigInteger a(long paramLong)
+  public static BigInteger b(long paramLong)
   {
     BigInteger localBigInteger = BigInteger.valueOf(paramLong);
     if (paramLong >= 0L) {
@@ -87,7 +87,7 @@ public class RIJStringUtils
     return localBigInteger.add(a);
   }
   
-  public static Properties a(String paramString)
+  public static Properties b(String paramString)
   {
     Properties localProperties = new Properties();
     try
@@ -104,7 +104,7 @@ public class RIJStringUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJStringUtils
  * JD-Core Version:    0.7.0.1
  */

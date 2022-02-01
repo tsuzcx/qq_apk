@@ -11,13 +11,6 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"value", "", "isImageTemplateReady", "Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Z", "setImageTemplateReady", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Z)V", "isImageTemplateRealReady", "setImageTemplateRealReady", "", "templateJson", "getTemplateJson", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Ljava/lang/String;", "setTemplateJson", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Ljava/lang/String;)V", "aelight_impl_release"}, k=2, mv={1, 1, 16})
 public final class ImageTemplateMaterialExKt
 {
-  @NotNull
-  public static final String a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$templateJson");
-    return MetaMaterialKt.a(paramMetaMaterial, "templateJson");
-  }
-  
   public static final void a(@NotNull MetaMaterial paramMetaMaterial, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$templateJson");
@@ -33,7 +26,7 @@ public final class ImageTemplateMaterialExKt
   public static final boolean a(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isImageTemplateReady");
-    return MetaMaterialKt.a(paramMetaMaterial, "isImageTemplateReady") == 1;
+    return MetaMaterialKt.e(paramMetaMaterial, "isImageTemplateReady") == 1;
   }
   
   public static final void b(@NotNull MetaMaterial paramMetaMaterial, boolean paramBoolean)
@@ -61,10 +54,17 @@ public final class ImageTemplateMaterialExKt
     localStringBuilder.append(".log");
     return new File(localStringBuilder.toString()).exists();
   }
+  
+  @NotNull
+  public static final String c(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$templateJson");
+    return MetaMaterialKt.d(paramMetaMaterial, "templateJson");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.ImageTemplateMaterialExKt
  * JD-Core Version:    0.7.0.1
  */

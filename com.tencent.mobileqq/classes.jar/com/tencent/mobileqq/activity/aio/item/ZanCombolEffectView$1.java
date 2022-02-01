@@ -44,19 +44,19 @@ class ZanCombolEffectView$1
     {
       ZanCombolEffectView.a(this.this$0, System.currentTimeMillis());
       localObject = this.this$0;
-      ZanCombolEffectView.b((ZanCombolEffectView)localObject, ZanCombolEffectView.a((ZanCombolEffectView)localObject));
+      ZanCombolEffectView.b((ZanCombolEffectView)localObject, ZanCombolEffectView.b((ZanCombolEffectView)localObject));
       ZanCombolEffectView.a(this.this$0, true);
       ZanCombolEffectView.b(this.this$0, false);
       this.this$0.postInvalidate();
     }
-    if (ZanCombolEffectView.a(this.this$0)) {
+    if (ZanCombolEffectView.c(this.this$0)) {
       ThreadManager.postImmediately(new ZanCombolEffectView.1.1(this), null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView.1
  * JD-Core Version:    0.7.0.1
  */

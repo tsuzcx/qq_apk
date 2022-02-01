@@ -9,14 +9,14 @@ class VideoView$8
   {
     synchronized (this.this$0)
     {
-      VideoView.access$400(this.this$0).e();
+      VideoView.access$400(this.this$0).p();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView.8
  * JD-Core Version:    0.7.0.1
  */

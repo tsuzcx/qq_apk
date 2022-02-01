@@ -28,40 +28,29 @@ import java.util.List;
 public class SeatPresenterImp
   implements ISeatPresenter
 {
-  protected IGameRoomPresenter a;
   protected ISeatView a;
-  private Runnable a;
+  protected IGameRoomPresenter b;
+  private Runnable c = new SeatPresenterImp.1(this);
   
   public SeatPresenterImp(ISeatView paramISeatView)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new SeatPresenterImp.1(this);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView = paramISeatView;
-  }
-  
-  public int a(String paramString)
-  {
-    return GameEngine.a().a().a(paramString);
-  }
-  
-  public RectF a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a();
+    this.a = paramISeatView;
   }
   
   public RectF a(long paramLong)
   {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a(paramLong);
+    return this.a.a(paramLong);
   }
   
   public AVGameUserInfo a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(paramString);
+    return this.b.a(paramString);
   }
   
   public List<SeatMemberInfo> a()
   {
     ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c();
+    List localList = this.b.p();
     int i4 = 0;
     int i1 = 0;
     int k = 0;
@@ -75,9 +64,9 @@ public class SeatPresenterImp
         break;
       }
       SeatMemberInfo localSeatMemberInfo = new SeatMemberInfo();
-      localSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localList.get(i1));
+      localSeatMemberInfo.a = ((Player)localList.get(i1));
       localArrayList.add(localSeatMemberInfo);
-      m = a(localSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+      m = b(localSeatMemberInfo.a.uin);
       int i3;
       int n;
       if (m > k)
@@ -110,14 +99,14 @@ public class SeatPresenterImp
     }
     while (j < localArrayList.size())
     {
-      m = a(((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+      m = b(((SeatMemberInfo)localArrayList.get(j)).a.uin);
       if (m > 0) {
         if (m == k) {
-          ((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_Int = 1;
+          ((SeatMemberInfo)localArrayList.get(j)).b = 1;
         } else if (m == i) {
-          ((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_Int = 2;
+          ((SeatMemberInfo)localArrayList.get(j)).b = 2;
         } else if (m == i2) {
-          ((SeatMemberInfo)localArrayList.get(j)).jdField_a_of_type_Int = 3;
+          ((SeatMemberInfo)localArrayList.get(j)).b = 3;
         }
       }
       j += 1;
@@ -125,96 +114,58 @@ public class SeatPresenterImp
     return localArrayList;
   }
   
-  public void a()
-  {
-    QBaseActivity localQBaseActivity = (QBaseActivity)this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
-    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
-    String str1 = localBaseAVGameAppInterface.getCurrentAccountUin();
-    EngineData localEngineData = GameEngine.a().a();
-    long l = localEngineData.a();
-    String str2 = localEngineData.a().getNick(str1);
-    AVGameShareUtil.a().a(localBaseAVGameAppInterface, localQBaseActivity, l, Long.valueOf(str1).longValue(), str2, localEngineData.d());
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getString(2131690349));
-  }
-  
   public void a(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a(paramLong, paramBoolean);
+    this.a.a(paramLong, paramBoolean);
   }
   
   public void a(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a(paramEngineData);
+    this.a.a(paramEngineData);
   }
   
   public void a(Player paramPlayer)
   {
-    if (GameEngine.a().a() != null)
+    if (GameEngine.a().f() != null)
     {
       if (paramPlayer == null) {
         return;
       }
-      EngineData localEngineData = GameEngine.a().a();
-      Object localObject = GameEngine.a().a().getCurrentAccountUin();
-      GameEngine.a().c(localEngineData.a(), (String)localObject, paramPlayer.uin);
+      EngineData localEngineData = GameEngine.a().s();
+      Object localObject = GameEngine.a().f().getCurrentAccountUin();
+      GameEngine.a().c(localEngineData.i(), (String)localObject, paramPlayer.uin);
       paramPlayer = paramPlayer.uin;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(localEngineData.a());
+      ((StringBuilder)localObject).append(localEngineData.i());
       ReportController.b(null, "dc00898", "", "", "0X800B02D", "0X800B02D", 0, 0, paramPlayer, ((StringBuilder)localObject).toString(), "", "");
     }
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = paramIGameRoomPresenter;
-    AVGameHandler.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+    this.b = paramIGameRoomPresenter;
+    AVGameHandler.a().c().postDelayed(this.c, 500L);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a(paramBoolean);
+    this.a.a(paramBoolean);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a(paramBoolean1, paramBoolean2);
+    this.a.a(paramBoolean1, paramBoolean2);
   }
   
-  public boolean a()
+  public int b(String paramString)
   {
-    EngineData localEngineData = GameEngine.a().a();
-    int i = AVGameUtil.b();
-    boolean bool2 = false;
-    if ((i == 2) && (GameEngine.a().e())) {
-      return false;
-    }
-    RoomInfo localRoomInfo = localEngineData.a();
-    i = localEngineData.a();
-    boolean bool1 = bool2;
-    if (localRoomInfo.getPlayers().size() < 8)
-    {
-      bool1 = bool2;
-      if (i == 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public List<MemberVideoDisplayInfo> b()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.a();
-  }
-  
-  public void b()
-  {
-    AVGameHandler.a().b().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    return GameEngine.a().s().b(paramString);
   }
   
   public void b(Player paramPlayer)
   {
-    if (GameEngine.a().a() != null) {
+    if (GameEngine.a().f() != null) {
       if (paramPlayer == null) {
         return;
       }
@@ -227,15 +178,15 @@ public class SeatPresenterImp
         Object localObject = new AllInOne(paramPlayer, 118);
         ((AllInOne)localObject).profileEntryType = 999;
         ((AllInOne)localObject).chatAbility = 1;
-        ProfileUtils.openProfileCard(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(), (AllInOne)localObject);
+        ProfileUtils.openProfileCard(this.b.m(), (AllInOne)localObject);
         localObject = UserInfoHandler.b(paramPlayer);
-        if ((localObject == null) || (!((UserInfo)localObject).a)) {
-          break label139;
+        if ((localObject == null) || (!((UserInfo)localObject).d)) {
+          break label137;
         }
         i = 1;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(GameEngine.a().a().a());
+        ((StringBuilder)localObject).append(GameEngine.a().s().i());
         ReportController.b(null, "dc00898", "", "", "0X800B02B", "0X800B02B", i, 0, paramPlayer, ((StringBuilder)localObject).toString(), "", "");
         return;
       }
@@ -244,35 +195,83 @@ public class SeatPresenterImp
         paramPlayer.printStackTrace();
       }
       return;
-      label139:
+      label137:
       int i = 2;
     }
   }
   
   public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatView.b(paramBoolean1, paramBoolean2);
+    this.a.b(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean b()
+  {
+    EngineData localEngineData = GameEngine.a().s();
+    int i = AVGameUtil.b();
+    boolean bool2 = false;
+    if ((i == 2) && (GameEngine.a().v())) {
+      return false;
+    }
+    RoomInfo localRoomInfo = localEngineData.e();
+    i = localEngineData.j();
+    boolean bool1 = bool2;
+    if (localRoomInfo.getPlayers().size() < 8)
+    {
+      bool1 = bool2;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void c()
+  {
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.b.m();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().f();
+    String str1 = localBaseAVGameAppInterface.getCurrentAccountUin();
+    EngineData localEngineData = GameEngine.a().s();
+    long l = localEngineData.i();
+    String str2 = localEngineData.e().getNick(str1);
+    AVGameShareUtil.a().a(localBaseAVGameAppInterface, localQBaseActivity, l, Long.valueOf(str1).longValue(), str2, localEngineData.p());
+    this.b.e().b(this.b.m().getString(2131887260));
   }
   
   public void c(Player paramPlayer)
   {
-    if ((GameEngine.a().a() != null) && (paramPlayer != null))
+    if ((GameEngine.a().f() != null) && (paramPlayer != null))
     {
-      Object localObject1 = (QBaseActivity)this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
-      String str = GameEngine.a().a().getCurrentAccountUin();
-      EngineData localEngineData = GameEngine.a().a();
+      Object localObject1 = (QBaseActivity)this.b.m();
+      String str = GameEngine.a().f().getCurrentAccountUin();
+      EngineData localEngineData = GameEngine.a().s();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("roomid=");
-      ((StringBuilder)localObject2).append(localEngineData.a());
+      ((StringBuilder)localObject2).append(localEngineData.i());
       localObject2 = ((StringBuilder)localObject2).toString();
-      NewReportPlugin.a((QBaseActivity)localObject1, paramPlayer.uin, "", (String)localObject2, str, 25031, null);
+      NewReportPlugin.a((QBaseActivity)localObject1, paramPlayer.uin, "", (String)localObject2, str, 25031, null, null);
       paramPlayer = paramPlayer.uin;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(localEngineData.a());
+      ((StringBuilder)localObject1).append(localEngineData.i());
       ReportController.b(null, "dc00898", "", "", "0X800B02C", "0X800B02C", 0, 0, paramPlayer, ((StringBuilder)localObject1).toString(), "", "");
       return;
     }
+  }
+  
+  public List<MemberVideoDisplayInfo> d()
+  {
+    return this.a.getMemberHeadViewDisplayInfoList();
+  }
+  
+  public void e()
+  {
+    AVGameHandler.a().c().removeCallbacks(this.c);
+  }
+  
+  public RectF f()
+  {
+    return this.a.getAddMemberViewRectInRootView();
   }
 }
 

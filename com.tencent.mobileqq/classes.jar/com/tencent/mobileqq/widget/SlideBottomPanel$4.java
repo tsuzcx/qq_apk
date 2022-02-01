@@ -14,18 +14,18 @@ class SlideBottomPanel$4
     Object localObject = paramValueAnimator.getAnimatedValue();
     if ((localObject instanceof Float))
     {
-      paramValueAnimator = this.jdField_a_of_type_AndroidViewView;
+      paramValueAnimator = this.a;
       localObject = (Float)localObject;
       paramValueAnimator.setY(((Float)localObject).floatValue());
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.a.fadeBackground(1.0F - ((Float)localObject).floatValue() / (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.b - this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.j));
+      if (this.b.z != null) {
+        this.b.z.fadeBackground(1.0F - ((Float)localObject).floatValue() / (this.b.h - this.b.p));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideBottomPanel.4
  * JD-Core Version:    0.7.0.1
  */

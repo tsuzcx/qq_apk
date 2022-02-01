@@ -9,19 +9,52 @@ import java.util.HashMap;
 
 public class AEQCircleReport
 {
-  private static final AEQCircleReport jdField_a_of_type_ComTencentAelightCameraAeeditorUtilAEQCircleReport = new AEQCircleReport();
-  private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final AEQCircleReport b = new AEQCircleReport();
+  private HashMap<String, Long> a = new HashMap();
   
   public static AEQCircleReport a()
   {
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorUtilAEQCircleReport;
+    return b;
   }
   
-  public long a(String paramString)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    this.a.put(paramString, Long.valueOf(System.currentTimeMillis()));
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    long l = b(paramString1);
+    if (l > 0L)
     {
-      long l = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
+      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pMaterialCostEnd(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), paramString1), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext2(), paramString2), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), String.valueOf(l)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), paramString3) }));
+      return;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("reportEnd... cost < 0 id:");
+    paramString2.append(paramString1);
+    AEQLog.b("AEQCircleReport", paramString2.toString());
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    long l = b(paramString1);
+    if (l > 0L)
+    {
+      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pMaterialCostEnd(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), paramString1), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext2(), paramString2), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), String.valueOf(l)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext4(), paramString3), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), paramString4) }));
+      return;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("reportEnd... cost < 0 id:");
+    paramString2.append(paramString1);
+    AEQLog.b("AEQCircleReport", paramString2.toString());
+  }
+  
+  public long b(String paramString)
+  {
+    if (this.a.containsKey(paramString))
+    {
+      long l = ((Long)this.a.get(paramString)).longValue();
       l = System.currentTimeMillis() - l;
       if (l < 0L)
       {
@@ -39,43 +72,10 @@ public class AEQCircleReport
     AEQLog.b("AEQCircleReport", localStringBuilder.toString());
     return -1L;
   }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    long l = a(paramString1);
-    if (l > 0L)
-    {
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_MATERIAL_COST_END(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), paramString1), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT2(), paramString2), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), String.valueOf(l)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), paramString3) }));
-      return;
-    }
-    paramString2 = new StringBuilder();
-    paramString2.append("reportEnd... cost < 0 id:");
-    paramString2.append(paramString1);
-    AEQLog.b("AEQCircleReport", paramString2.toString());
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    long l = a(paramString1);
-    if (l > 0L)
-    {
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_MATERIAL_COST_END(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), paramString1), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT2(), paramString2), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), String.valueOf(l)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT4(), paramString3), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), paramString4) }));
-      return;
-    }
-    paramString2 = new StringBuilder();
-    paramString2.append("reportEnd... cost < 0 id:");
-    paramString2.append(paramString1);
-    AEQLog.b("AEQCircleReport", paramString2.toString());
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.util.AEQCircleReport
  * JD-Core Version:    0.7.0.1
  */

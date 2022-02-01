@@ -15,8 +15,8 @@ class AEFilterProcessTex$2
     localStringBuilder.append("OnAssetProcessing: ");
     localStringBuilder.append(paramHashMap);
     Log.d("AEFilterProcessTex", localStringBuilder.toString());
-    if (AEFilterProcessTex.a(this.a) != null) {
-      AEFilterProcessTex.a(this.a).OnAssetProcessing(paramHashMap);
+    if (AEFilterProcessTex.b(this.a) != null) {
+      AEFilterProcessTex.b(this.a).OnAssetProcessing(paramHashMap);
     }
   }
   
@@ -26,14 +26,14 @@ class AEFilterProcessTex$2
     localStringBuilder.append("OnLoadAssetError: ");
     localStringBuilder.append(paramInt);
     Log.d("AEFilterProcessTex", localStringBuilder.toString());
-    if (AEFilterProcessTex.a(this.a) != null) {
-      AEFilterProcessTex.a(this.a).OnLoadAssetError(paramInt);
+    if (AEFilterProcessTex.b(this.a) != null) {
+      AEFilterProcessTex.b(this.a).OnLoadAssetError(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.filter.AEFilterProcessTex.2
  * JD-Core Version:    0.7.0.1
  */

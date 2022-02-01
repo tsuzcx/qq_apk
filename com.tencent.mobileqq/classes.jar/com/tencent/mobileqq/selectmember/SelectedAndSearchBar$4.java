@@ -10,14 +10,14 @@ class SelectedAndSearchBar$4
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramBoolean);
+    if (SelectedAndSearchBar.b(this.a) != null) {
+      SelectedAndSearchBar.b(this.a).a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectedAndSearchBar.4
  * JD-Core Version:    0.7.0.1
  */

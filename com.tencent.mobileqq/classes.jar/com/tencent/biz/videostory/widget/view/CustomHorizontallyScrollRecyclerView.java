@@ -13,10 +13,10 @@ import android.view.ViewParent;
 public class CustomHorizontallyScrollRecyclerView
   extends RecyclerView
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private LinearLayoutManager a;
   private float b = 0.0F;
+  private float c = 0.0F;
+  private int d;
   
   public CustomHorizontallyScrollRecyclerView(Context paramContext)
   {
@@ -36,23 +36,23 @@ public class CustomHorizontallyScrollRecyclerView
   
   private void a()
   {
-    this.jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = ((LinearLayoutManager)getLayoutManager());
+    if (this.a == null) {
+      this.a = ((LinearLayoutManager)getLayoutManager());
     }
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildCount();
+    int i = this.a.getChildCount();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (i > 0)
     {
-      float f = this.jdField_a_of_type_Float;
-      paramFloat2 -= this.b;
+      float f = this.b;
+      paramFloat2 -= this.c;
       bool1 = bool2;
-      if (Math.abs(paramFloat2) > this.jdField_a_of_type_Int)
+      if (Math.abs(paramFloat2) > this.d)
       {
         bool1 = bool2;
         if (Math.abs(paramFloat2) > Math.abs(paramFloat1 - f)) {
@@ -90,8 +90,8 @@ public class CustomHorizontallyScrollRecyclerView
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
+      this.b = paramMotionEvent.getX();
+      this.c = paramMotionEvent.getY();
       getParent().requestDisallowInterceptTouchEvent(true);
     }
     label110:
@@ -107,15 +107,15 @@ public class CustomHorizontallyScrollRecyclerView
       if (paramInt != 1) {
         return;
       }
-      this.jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
+      this.d = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
       return;
     }
-    this.jdField_a_of_type_Int = localViewConfiguration.getScaledTouchSlop();
+    this.d = localViewConfiguration.getScaledTouchSlop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.CustomHorizontallyScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

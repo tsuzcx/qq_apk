@@ -43,28 +43,6 @@ public class NewFriendNotifyPokeMsgHelper
   public static ArrayList<Long> c = new ArrayList();
   public static ArrayList<Long> d = new ArrayList();
   
-  public static long a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendNotifyPokeMsgHelper", 2, "getPokeExpiredTime() isDebugVersion = false");
-    }
-    return 604800L;
-  }
-  
-  public static String a(structmsg.StructMsg paramStructMsg)
-  {
-    int i;
-    if (paramStructMsg != null) {
-      i = paramStructMsg.msg.req_uin_gender.get();
-    } else {
-      i = 0;
-    }
-    if (i == 1) {
-      return MobileQQ.getContext().getResources().getString(2131719044);
-    }
-    return MobileQQ.getContext().getResources().getString(2131693128);
-  }
-  
   public static void a()
   {
     a.clear();
@@ -157,23 +135,23 @@ public class NewFriendNotifyPokeMsgHelper
       paramImageView.setVisibility(0);
       int i;
       if (bool) {
-        i = 2130846346;
+        i = 2130847819;
       } else {
-        i = 2130846345;
+        i = 2130847818;
       }
       paramImageView.setImageResource(i);
       if (a(paramStructMsg)) {
-        paramAppInterface = paramTextView.getContext().getString(2131699382);
+        paramAppInterface = paramTextView.getContext().getString(2131897413);
       } else {
-        paramAppInterface = paramTextView.getContext().getString(2131699381);
+        paramAppInterface = paramTextView.getContext().getString(2131897412);
       }
       paramImageView.setContentDescription(paramAppInterface);
       paramTextView.setVisibility(0);
-      paramAppInterface = a(paramStructMsg);
+      paramAppInterface = b(paramStructMsg);
       if (a(paramStructMsg)) {
-        paramAppInterface = paramTextView.getContext().getString(2131699386, new Object[] { paramAppInterface });
+        paramAppInterface = paramTextView.getContext().getString(2131897417, new Object[] { paramAppInterface });
       } else {
-        paramAppInterface = paramTextView.getContext().getString(2131699385, new Object[] { paramAppInterface, paramAppInterface });
+        paramAppInterface = paramTextView.getContext().getString(2131897416, new Object[] { paramAppInterface, paramAppInterface });
       }
       paramTextView.setText(paramAppInterface);
       a(paramStructMsg, bool, paramInt);
@@ -190,13 +168,13 @@ public class NewFriendNotifyPokeMsgHelper
     if ((paramObject instanceof MoreSysMsgHolder))
     {
       paramObject = (MoreSysMsgHolder)paramObject;
-      a(paramAppInterface, paramObject.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, paramObject.e, paramObject.jdField_a_of_type_AndroidWidgetButton, paramObject.b, paramObject.d, 2);
+      a(paramAppInterface, paramObject.i, paramObject.g, paramObject.f, paramObject.o, paramObject.e, 2);
       return;
     }
     if ((paramObject instanceof SystemMsgItemBuilder.SystemMsgItemHolder))
     {
       paramObject = (SystemMsgItemBuilder.SystemMsgItemHolder)paramObject;
-      a(paramAppInterface, paramObject.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, paramObject.k, paramObject.jdField_a_of_type_AndroidWidgetButton, paramObject.g, paramObject.j, 1);
+      a(paramAppInterface, paramObject.b, paramObject.B, paramObject.A, paramObject.E, paramObject.z, 1);
     }
   }
   
@@ -258,7 +236,7 @@ public class NewFriendNotifyPokeMsgHelper
     {
       ((FrdSysMsg.AddtionInfo)localObject).mergeFrom(paramStructMsg.msg.bytes_addtion.get().toByteArray());
       int i = ((FrdSysMsg.AddtionInfo)localObject).uint32_poke.get();
-      boolean bool3 = b(paramStructMsg);
+      boolean bool3 = c(paramStructMsg);
       if (QLog.isColorLevel())
       {
         paramStructMsg = new StringBuilder();
@@ -330,6 +308,20 @@ public class NewFriendNotifyPokeMsgHelper
     return false;
   }
   
+  public static String b(structmsg.StructMsg paramStructMsg)
+  {
+    int i;
+    if (paramStructMsg != null) {
+      i = paramStructMsg.msg.req_uin_gender.get();
+    } else {
+      i = 0;
+    }
+    if (i == 1) {
+      return MobileQQ.getContext().getResources().getString(2131916580);
+    }
+    return MobileQQ.getContext().getResources().getString(2131890667);
+  }
+  
   public static void b()
   {
     c.clear();
@@ -343,8 +335,8 @@ public class NewFriendNotifyPokeMsgHelper
     if ((paramObject instanceof MoreSysMsgHolder))
     {
       localObject = (MoreSysMsgHolder)paramObject;
-      localImageView = ((MoreSysMsgHolder)localObject).b;
-      localObject = ((MoreSysMsgHolder)localObject).jdField_a_of_type_AndroidWidgetImageView;
+      localImageView = ((MoreSysMsgHolder)localObject).o;
+      localObject = ((MoreSysMsgHolder)localObject).a;
     }
     else
     {
@@ -352,14 +344,22 @@ public class NewFriendNotifyPokeMsgHelper
         return;
       }
       localObject = (SystemMsgItemBuilder.SystemMsgItemHolder)paramObject;
-      localImageView = ((SystemMsgItemBuilder.SystemMsgItemHolder)localObject).g;
-      localObject = ((SystemMsgItemBuilder.SystemMsgItemHolder)localObject).f;
+      localImageView = ((SystemMsgItemBuilder.SystemMsgItemHolder)localObject).E;
+      localObject = ((SystemMsgItemBuilder.SystemMsgItemHolder)localObject).w;
     }
     a(localImageView.getContext(), "poke/click_poke.json", "poke/images/", 45, 45, 0, new NewFriendNotifyPokeMsgHelper.2((ImageView)localObject, paramObject, paramAppInterface, localImageView));
     a((View)localObject);
   }
   
-  public static boolean b(structmsg.StructMsg paramStructMsg)
+  public static long c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendNotifyPokeMsgHelper", 2, "getPokeExpiredTime() isDebugVersion = false");
+    }
+    return 604800L;
+  }
+  
+  public static boolean c(structmsg.StructMsg paramStructMsg)
   {
     boolean bool2 = false;
     if (paramStructMsg == null) {
@@ -372,7 +372,7 @@ public class NewFriendNotifyPokeMsgHelper
         return false;
       }
       bool1 = bool2;
-      if (NetConnInfoCenter.getServerTime() - paramStructMsg.msg_time.get() > a()) {
+      if (NetConnInfoCenter.getServerTime() - paramStructMsg.msg_time.get() > c()) {
         bool1 = true;
       }
     }
@@ -381,7 +381,7 @@ public class NewFriendNotifyPokeMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.poke.NewFriendNotifyPokeMsgHelper
  * JD-Core Version:    0.7.0.1
  */

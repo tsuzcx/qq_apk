@@ -17,7 +17,7 @@ public class AioAnimationConfigCheckUpdateItem
   extends ConfigHandler
   implements CheckUpdateItemInterface
 {
-  private ToServiceMsg a;
+  private ToServiceMsg d;
   
   public AioAnimationConfigCheckUpdateItem(QQAppInterface paramQQAppInterface)
   {
@@ -34,20 +34,20 @@ public class AioAnimationConfigCheckUpdateItem
     if (QLog.isColorLevel()) {
       QLog.d("AioAnimationConfigCheckUpdateItem", 2, "getCheckUpdateItemData:");
     }
-    Object localObject1 = a();
+    Object localObject1 = g();
     Object localObject2 = null;
     a(null, new GetResourceReqInfo[] { localObject1 });
     localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null)
+    if (this.d != null)
     {
-      BaseProtocolCoder localBaseProtocolCoder = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mqqService.lookupCoder(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
+      BaseProtocolCoder localBaseProtocolCoder = this.c.mqqService.lookupCoder(this.d.getServiceCmd());
       localObject1 = localObject2;
       if (localBaseProtocolCoder != null)
       {
         UniPacket localUniPacket = new UniPacket(true);
         localUniPacket.setEncodeName("utf-8");
         localObject1 = localObject2;
-        if (localBaseProtocolCoder.encodeReqMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localUniPacket))
+        if (localBaseProtocolCoder.encodeReqMsg(this.d, localUniPacket))
         {
           localObject1 = new ReqItem();
           ((ReqItem)localObject1).eServiceID = 120;
@@ -75,22 +75,22 @@ public class AioAnimationConfigCheckUpdateItem
       }
       if ((paramRespItem.eServiceID == 120) && (paramRespItem.cResult == 2))
       {
-        localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "ResourceConfig.GetResourceReq");
+        localObject = new FromServiceMsg(this.c.getAccount(), "ResourceConfig.GetResourceReq");
         ((FromServiceMsg)localObject).setMsgSuccess();
         ((FromServiceMsg)localObject).putWupBuffer(paramRespItem.vecUpdate);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.receiveToService(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject);
+        this.c.receiveToService(this.d, (FromServiceMsg)localObject);
       }
     }
   }
   
   public void send(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.d = paramToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigCheckUpdateItem
  * JD-Core Version:    0.7.0.1
  */

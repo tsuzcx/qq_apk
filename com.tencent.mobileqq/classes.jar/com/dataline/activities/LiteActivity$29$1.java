@@ -20,52 +20,52 @@ class LiteActivity$29$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause;
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.g.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    boolean bool = this.a.b.isReportPause;
     paramInt = 1;
-    if ((!bool) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335))
+    if ((!bool) && (this.a.b.getGroupType() == -2335))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause = true;
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) {
-        DataLineReportUtil.m(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+      this.a.b.isReportPause = true;
+      if (!this.a.b.isSingle()) {
+        DataLineReportUtil.m(this.a.g.app);
       } else {
-        DataLineReportUtil.k(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+        DataLineReportUtil.k(this.a.g.app);
       }
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
-      DataLineReportUtil.o(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+    if ((this.a.b.getGroupType() == -2000) && (!this.a.b.isSingle())) {
+      DataLineReportUtil.o(this.a.g.app);
     }
     DataLineMsgSet localDataLineMsgSet = null;
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() != -2335))
+    if ((!this.a.b.isSingle()) && (this.a.b.getGroupType() != -2335))
     {
-      localDataLineHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
+      localDataLineHandler.a(this.a.b.getGroupId(), 0L, true);
     }
     else
     {
-      Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+      Iterator localIterator = this.a.b.values().iterator();
       while (localIterator.hasNext())
       {
         DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
         localDataLineHandler.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005))
+      if ((this.a.b.values().size() == 1) && (this.a.b.getGroupType() == -2005))
       {
-        int i = this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.getSetIndex(((DataLineMsgRecord)this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().get(0)).sessionid) + 1;
-        if ((i < this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size()) && (((DataLineMsgRecord)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(i).values().get(0)).msgtype == -5041) && (Long.parseLong(((DataLineMsgRecord)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(i).values().get(0)).getExtInfoFromExtStr("tim_aio_file_msg_uiniseq")) == ((DataLineMsgRecord)this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().get(0)).sessionid))
+        int i = this.a.g.l.getSetIndex(((DataLineMsgRecord)this.a.b.values().get(0)).sessionid) + 1;
+        if ((i < this.a.g.l.size()) && (((DataLineMsgRecord)this.a.g.l.get(i).values().get(0)).msgtype == -5041) && (Long.parseLong(((DataLineMsgRecord)this.a.g.l.get(i).values().get(0)).getExtInfoFromExtStr("tim_aio_file_msg_uiniseq")) == ((DataLineMsgRecord)this.a.b.values().get(0)).sessionid))
         {
-          localDataLineMsgSet = this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(i);
+          localDataLineMsgSet = this.a.g.l.get(i);
           break label455;
         }
       }
     }
     paramInt = 0;
     label455:
-    localDataLineHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+    localDataLineHandler.a(this.a.b);
     if (paramInt != 0) {
       localDataLineHandler.a(localDataLineMsgSet);
     }
-    this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.b();
-    this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
+    this.a.g.m.d();
+    this.a.g.m.notifyDataSetChanged();
     paramDialogInterface.dismiss();
   }
 }

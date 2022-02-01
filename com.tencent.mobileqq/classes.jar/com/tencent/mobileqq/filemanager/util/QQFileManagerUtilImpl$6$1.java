@@ -16,9 +16,9 @@ class QQFileManagerUtilImpl$6$1
     ReportController.b(null, "dc00898", "", "", "0X800AE48", "0X800AE48", 0, 0, "", "", "", "");
     try
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
       localIntent.putExtra("url", "https://upage.imtt.qq.com/m_imtt/qq_download_middle_page/real/qq_download_middle_page.html");
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      this.a.startActivity(localIntent);
       return;
     }
     catch (Throwable localThrowable)
@@ -36,7 +36,7 @@ class QQFileManagerUtilImpl$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.6.1
  * JD-Core Version:    0.7.0.1
  */

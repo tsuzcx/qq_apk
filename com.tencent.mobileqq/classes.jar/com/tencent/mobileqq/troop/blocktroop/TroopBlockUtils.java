@@ -36,7 +36,7 @@ public class TroopBlockUtils
     boolean bool5 = true;
     if (localObject1 != null)
     {
-      localObject1 = ((TroopManager)localObject1).b(paramString);
+      localObject1 = ((TroopManager)localObject1).f(paramString);
       if (localObject1 != null)
       {
         if ((((TroopInfo)localObject1).dwAdditionalFlag & 1L) == 1L) {
@@ -82,7 +82,7 @@ public class TroopBlockUtils
         {
           localObject2 = Calendar.getInstance();
           ((Calendar)localObject2).setTimeInMillis(((TroopInfo)localObject1).appealDeadline * 1000L);
-          localObject1 = paramActivity.getString(2131697296, new Object[] { Integer.valueOf(((Calendar)localObject2).get(1)), Integer.valueOf(((Calendar)localObject2).get(2) + 1), Integer.valueOf(((Calendar)localObject2).get(5)) });
+          localObject1 = paramActivity.getString(2131895069, new Object[] { Integer.valueOf(((Calendar)localObject2).get(1)), Integer.valueOf(((Calendar)localObject2).get(2) + 1), Integer.valueOf(((Calendar)localObject2).get(5)) });
           break label360;
         }
         localObject1 = "";
@@ -94,7 +94,7 @@ public class TroopBlockUtils
     boolean bool2 = false;
     boolean bool3 = false;
     label360:
-    Object localObject2 = DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131697297)).setMessage(2131697295);
+    Object localObject2 = DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131895070)).setMessage(2131895068);
     if ((bool3) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
       ((QQCustomDialog)localObject2).setMessage((CharSequence)localObject1);
     }
@@ -105,18 +105,18 @@ public class TroopBlockUtils
     }
     if (bool3)
     {
-      ((QQCustomDialog)localObject2).setPositiveButton(paramActivity.getString(2131697294), new TroopBlockUtils.1(paramQQAppInterface, paramString, paramActivity));
-      ((QQCustomDialog)localObject2).setPositiveButtonContentDescription(paramActivity.getString(2131697294));
+      ((QQCustomDialog)localObject2).setPositiveButton(paramActivity.getString(2131895067), new TroopBlockUtils.1(paramQQAppInterface, paramString, paramActivity));
+      ((QQCustomDialog)localObject2).setPositiveButtonContentDescription(paramActivity.getString(2131895067));
     }
     else if (bool1)
     {
-      ((QQCustomDialog)localObject2).setPositiveButton(paramActivity.getString(2131697293), new TroopBlockUtils.2(paramQQAppInterface, paramString));
-      ((QQCustomDialog)localObject2).setPositiveButtonContentDescription(paramActivity.getString(2131697293));
+      ((QQCustomDialog)localObject2).setPositiveButton(paramActivity.getString(2131895066), new TroopBlockUtils.2(paramQQAppInterface, paramString));
+      ((QQCustomDialog)localObject2).setPositiveButtonContentDescription(paramActivity.getString(2131895066));
     }
     else
     {
-      ((QQCustomDialog)localObject2).setPositiveButton(paramActivity.getString(2131697292), new TroopBlockUtils.3(paramQQAppInterface, paramString));
-      ((QQCustomDialog)localObject2).setPositiveButtonContentDescription(paramActivity.getString(2131697292));
+      ((QQCustomDialog)localObject2).setPositiveButton(paramActivity.getString(2131895065), new TroopBlockUtils.3(paramQQAppInterface, paramString));
+      ((QQCustomDialog)localObject2).setPositiveButtonContentDescription(paramActivity.getString(2131895065));
     }
     bool3 = bool5;
     if (!bool1) {
@@ -126,8 +126,8 @@ public class TroopBlockUtils
         bool3 = false;
       }
     }
-    ((QQCustomDialog)localObject2).setNegativeButton(paramActivity.getString(2131715053), new TroopBlockUtils.4(paramConstantBlockDialogCallback, bool3));
-    ((QQCustomDialog)localObject2).setNegativeButtonContentDescription(paramActivity.getString(2131715053));
+    ((QQCustomDialog)localObject2).setNegativeButton(paramActivity.getString(2131898212), new TroopBlockUtils.4(paramConstantBlockDialogCallback, bool3));
+    ((QQCustomDialog)localObject2).setNegativeButtonContentDescription(paramActivity.getString(2131898212));
     ((QQCustomDialog)localObject2).setCancelable(false);
     try
     {
@@ -155,8 +155,8 @@ public class TroopBlockUtils
     if (QLog.isColorLevel()) {
       QLog.d("TroopBlockUtils", 2, "updateSearchResultItemViewStatus");
     }
-    ImageView localImageView = (ImageView)paramView.findViewById(2131377847);
-    paramView = (ImageView)paramView.findViewById(2131369416);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131446321);
+    paramView = (ImageView)paramView.findViewById(2131436452);
     if (localImageView != null) {
       if (paramInt1 == 1)
       {
@@ -165,32 +165,32 @@ public class TroopBlockUtils
         {
           if (b(localQQAppInterface, paramString))
           {
-            localImageView.setImageResource(2130851091);
+            localImageView.setImageResource(2130853326);
             localImageView.setVisibility(0);
             paramString = localImageView.getLayoutParams();
             if ((paramString != null) && ((paramString instanceof RelativeLayout.LayoutParams))) {
               if (paramInt2 == 2)
               {
                 paramString = (RelativeLayout.LayoutParams)paramString;
-                paramString.bottomMargin = (-ViewUtils.b(6.0F));
-                paramString.rightMargin = (-ViewUtils.b(3.0F));
+                paramString.bottomMargin = (-ViewUtils.dpToPx(6.0F));
+                paramString.rightMargin = (-ViewUtils.dpToPx(3.0F));
               }
               else
               {
                 paramString = (RelativeLayout.LayoutParams)paramString;
-                paramString.bottomMargin = (-ViewUtils.b(3.0F));
-                paramString.rightMargin = (-ViewUtils.b(3.0F));
+                paramString.bottomMargin = (-ViewUtils.dpToPx(3.0F));
+                paramString.rightMargin = (-ViewUtils.dpToPx(3.0F));
               }
             }
             if (paramView != null)
             {
               paramView.setVisibility(0);
-              if (SimpleUIUtil.a())
+              if (SimpleUIUtil.e())
               {
-                paramView.setBackgroundResource(2130842569);
+                paramView.setBackgroundResource(2130843522);
                 return;
               }
-              paramView.setBackgroundResource(2130842568);
+              paramView.setBackgroundResource(2130843521);
             }
           }
           else
@@ -229,32 +229,32 @@ public class TroopBlockUtils
     {
       if (b(localQQAppInterface, paramString))
       {
-        paramViewTag.b.setImageResource(2130851091);
-        paramString = paramViewTag.b.getLayoutParams();
+        paramViewTag.d.setImageResource(2130853326);
+        paramString = paramViewTag.d.getLayoutParams();
         if ((paramString != null) && ((paramString instanceof RelativeLayout.LayoutParams)))
         {
           paramString = (RelativeLayout.LayoutParams)paramString;
-          paramString.bottomMargin = (-ViewUtils.b(3.0F));
-          paramString.rightMargin = (-ViewUtils.b(3.0F));
+          paramString.bottomMargin = (-ViewUtils.dpToPx(3.0F));
+          paramString.rightMargin = (-ViewUtils.dpToPx(3.0F));
         }
-        if (paramViewTag.d != null)
+        if (paramViewTag.f != null)
         {
-          paramViewTag.d.setVisibility(0);
-          if (SimpleUIUtil.a())
+          paramViewTag.f.setVisibility(0);
+          if (SimpleUIUtil.e())
           {
-            paramViewTag.d.setBackgroundResource(2130842569);
+            paramViewTag.f.setBackgroundResource(2130843522);
             return;
           }
-          paramViewTag.d.setBackgroundResource(2130842568);
+          paramViewTag.f.setBackgroundResource(2130843521);
         }
       }
-      else if (paramViewTag.d != null)
+      else if (paramViewTag.f != null)
       {
-        paramViewTag.d.setVisibility(8);
+        paramViewTag.f.setVisibility(8);
       }
     }
-    else if (paramViewTag.d != null) {
-      paramViewTag.d.setVisibility(8);
+    else if (paramViewTag.f != null) {
+      paramViewTag.f.setVisibility(8);
     }
   }
   
@@ -307,9 +307,9 @@ public class TroopBlockUtils
   
   public static boolean a(String paramString)
   {
-    TroopBlockConfig localTroopBlockConfig = (TroopBlockConfig)QConfigManager.a().a(673);
+    TroopBlockConfig localTroopBlockConfig = (TroopBlockConfig)QConfigManager.b().b(673);
     boolean bool;
-    if ((localTroopBlockConfig != null) && (localTroopBlockConfig.a(paramString))) {
+    if ((localTroopBlockConfig != null) && (localTroopBlockConfig.b(paramString))) {
       bool = true;
     } else {
       bool = false;
@@ -329,7 +329,7 @@ public class TroopBlockUtils
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = paramQQAppInterface.b(paramString);
+      paramQQAppInterface = paramQQAppInterface.f(paramString);
       if (paramQQAppInterface != null) {
         return paramQQAppInterface.isTroopBlocked;
       }
@@ -342,7 +342,7 @@ public class TroopBlockUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils
  * JD-Core Version:    0.7.0.1
  */

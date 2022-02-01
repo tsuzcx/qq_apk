@@ -2,13 +2,13 @@ package androidx.customview;
 
 public final class R$style
 {
-  public static final int TextAppearance_Compat_Notification = 2131755610;
-  public static final int TextAppearance_Compat_Notification_Info = 2131755611;
-  public static final int TextAppearance_Compat_Notification_Line2 = 2131755612;
-  public static final int TextAppearance_Compat_Notification_Time = 2131755613;
-  public static final int TextAppearance_Compat_Notification_Title = 2131755614;
-  public static final int Widget_Compat_NotificationActionContainer = 2131755831;
-  public static final int Widget_Compat_NotificationActionText = 2131755832;
+  public static final int TextAppearance_Compat_Notification = 2131952440;
+  public static final int TextAppearance_Compat_Notification_Info = 2131952441;
+  public static final int TextAppearance_Compat_Notification_Line2 = 2131952442;
+  public static final int TextAppearance_Compat_Notification_Time = 2131952443;
+  public static final int TextAppearance_Compat_Notification_Title = 2131952444;
+  public static final int Widget_Compat_NotificationActionContainer = 2131952809;
+  public static final int Widget_Compat_NotificationActionText = 2131952810;
 }
 
 

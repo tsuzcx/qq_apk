@@ -19,44 +19,44 @@ public class FriendSortComparator
     int i = this.a;
     if (i == 1)
     {
-      if (paramFriendItemInfo1.e > paramFriendItemInfo2.e) {
+      if (paramFriendItemInfo1.l > paramFriendItemInfo2.l) {
         return -1;
       }
-      if (paramFriendItemInfo1.e < paramFriendItemInfo2.e) {
+      if (paramFriendItemInfo1.l < paramFriendItemInfo2.l) {
         return 1;
       }
-      if (paramFriendItemInfo1.jdField_a_of_type_Float > paramFriendItemInfo2.jdField_a_of_type_Float) {
+      if (paramFriendItemInfo1.h > paramFriendItemInfo2.h) {
         return -1;
       }
-      if (paramFriendItemInfo1.jdField_a_of_type_Float < paramFriendItemInfo2.jdField_a_of_type_Float) {
+      if (paramFriendItemInfo1.h < paramFriendItemInfo2.h) {
         return 1;
       }
-      if (paramFriendItemInfo1.jdField_a_of_type_Long > paramFriendItemInfo2.jdField_a_of_type_Long) {
+      if (paramFriendItemInfo1.g > paramFriendItemInfo2.g) {
         return -1;
       }
-      if (paramFriendItemInfo1.jdField_a_of_type_Long < paramFriendItemInfo2.jdField_a_of_type_Long) {
+      if (paramFriendItemInfo1.g < paramFriendItemInfo2.g) {
         return 1;
       }
-      if (paramFriendItemInfo1.c > paramFriendItemInfo2.c) {
+      if (paramFriendItemInfo1.j > paramFriendItemInfo2.j) {
         return -1;
       }
-      if (paramFriendItemInfo1.c < paramFriendItemInfo2.c) {
+      if (paramFriendItemInfo1.j < paramFriendItemInfo2.j) {
         return 1;
       }
-      if (paramFriendItemInfo1.d > paramFriendItemInfo2.d) {
+      if (paramFriendItemInfo1.k > paramFriendItemInfo2.k) {
         return -1;
       }
-      if (paramFriendItemInfo1.d < paramFriendItemInfo2.d) {
+      if (paramFriendItemInfo1.k < paramFriendItemInfo2.k) {
         return 1;
       }
       return 0;
     }
     if (i == 2)
     {
-      if (paramFriendItemInfo1.jdField_a_of_type_Long > paramFriendItemInfo2.jdField_a_of_type_Long) {
+      if (paramFriendItemInfo1.g > paramFriendItemInfo2.g) {
         return -1;
       }
-      if (paramFriendItemInfo1.jdField_a_of_type_Long < paramFriendItemInfo2.jdField_a_of_type_Long) {
+      if (paramFriendItemInfo1.g < paramFriendItemInfo2.g) {
         return 1;
       }
     }
@@ -65,7 +65,7 @@ public class FriendSortComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.FriendSortComparator
  * JD-Core Version:    0.7.0.1
  */

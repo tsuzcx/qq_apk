@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class TianShuAdPosItemData
 {
   public int a;
-  public HashMap<String, String> a;
   public int b;
+  public HashMap<String, String> c;
   
   public String toString()
   {
@@ -19,7 +19,7 @@ public class TianShuAdPosItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData
  * JD-Core Version:    0.7.0.1
  */

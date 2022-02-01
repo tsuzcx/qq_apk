@@ -28,13 +28,13 @@ public class VideoProtoHelper
     if ((paramChannelInfo != null) && (paramChannelInfo.has()))
     {
       if (paramChannelInfo.bytes_channel_name.has()) {
-        localSimpleChannelInfo.jdField_a_of_type_JavaLangString = paramChannelInfo.bytes_channel_name.get().toStringUtf8();
+        localSimpleChannelInfo.a = paramChannelInfo.bytes_channel_name.get().toStringUtf8();
       }
       if (paramChannelInfo.uint32_channel_type.has()) {
-        localSimpleChannelInfo.jdField_a_of_type_Long = paramChannelInfo.uint32_channel_type.get();
+        localSimpleChannelInfo.b = paramChannelInfo.uint32_channel_type.get();
       }
       if (paramChannelInfo.uint32_channel_id.has()) {
-        localSimpleChannelInfo.b = paramChannelInfo.uint32_channel_id.get();
+        localSimpleChannelInfo.c = paramChannelInfo.uint32_channel_id.get();
       }
     }
     return localSimpleChannelInfo;
@@ -55,10 +55,10 @@ public class VideoProtoHelper
     {
       VideoData localVideoData = new VideoData();
       if (paramVideoData.uint32_busi_type.has()) {
-        localVideoData.jdField_a_of_type_Int = paramVideoData.uint32_busi_type.get();
+        localVideoData.a = paramVideoData.uint32_busi_type.get();
       }
       if (paramVideoData.uint32_duration.has()) {
-        localVideoData.jdField_b_of_type_Int = paramVideoData.uint32_duration.get();
+        localVideoData.b = paramVideoData.uint32_duration.get();
       }
       if (paramVideoData.uint32_width.has()) {
         localVideoData.c = paramVideoData.uint32_width.get();
@@ -67,15 +67,15 @@ public class VideoProtoHelper
         localVideoData.d = paramVideoData.uint32_height.get();
       }
       if (paramVideoData.bytes_vid.has()) {
-        localVideoData.jdField_a_of_type_JavaLangString = paramVideoData.bytes_vid.get().toStringUtf8();
+        localVideoData.e = paramVideoData.bytes_vid.get().toStringUtf8();
       }
       if (paramVideoData.uint32_file_size.has()) {
-        localVideoData.e = paramVideoData.uint32_file_size.get();
+        localVideoData.f = paramVideoData.uint32_file_size.get();
       }
       localObject = localVideoData;
       if (paramVideoData.bytes_video_url.has())
       {
-        localVideoData.jdField_b_of_type_JavaLangString = paramVideoData.bytes_video_url.get().toStringUtf8();
+        localVideoData.g = paramVideoData.bytes_video_url.get().toStringUtf8();
         localObject = localVideoData;
       }
     }
@@ -215,23 +215,23 @@ public class VideoProtoHelper
       return null;
     }
     Readinjoy.VideoData localVideoData = new Readinjoy.VideoData();
-    localVideoData.uint32_busi_type.set(paramVideoData.jdField_a_of_type_Int);
-    localVideoData.uint32_duration.set(paramVideoData.jdField_b_of_type_Int);
+    localVideoData.uint32_busi_type.set(paramVideoData.a);
+    localVideoData.uint32_duration.set(paramVideoData.b);
     localVideoData.uint32_width.set(paramVideoData.c);
     localVideoData.uint32_height.set(paramVideoData.d);
-    if (!TextUtils.isEmpty(paramVideoData.jdField_a_of_type_JavaLangString)) {
-      localVideoData.bytes_vid.set(ByteStringMicro.copyFromUtf8(paramVideoData.jdField_a_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(paramVideoData.e)) {
+      localVideoData.bytes_vid.set(ByteStringMicro.copyFromUtf8(paramVideoData.e));
     }
-    localVideoData.uint32_file_size.set(paramVideoData.e);
-    if (!TextUtils.isEmpty(paramVideoData.jdField_b_of_type_JavaLangString)) {
-      localVideoData.bytes_video_url.set(ByteStringMicro.copyFromUtf8(paramVideoData.jdField_b_of_type_JavaLangString));
+    localVideoData.uint32_file_size.set(paramVideoData.f);
+    if (!TextUtils.isEmpty(paramVideoData.g)) {
+      localVideoData.bytes_video_url.set(ByteStringMicro.copyFromUtf8(paramVideoData.g));
     }
     return localVideoData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.VideoProtoHelper
  * JD-Core Version:    0.7.0.1
  */

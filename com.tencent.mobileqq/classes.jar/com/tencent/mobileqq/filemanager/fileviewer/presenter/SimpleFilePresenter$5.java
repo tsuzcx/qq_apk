@@ -16,11 +16,6 @@ class SimpleFilePresenter$5
 {
   SimpleFilePresenter$5(SimpleFilePresenter paramSimpleFilePresenter) {}
   
-  public View a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a());
-  }
-  
   public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
   
   public void a(boolean paramBoolean)
@@ -30,32 +25,37 @@ class SimpleFilePresenter$5
   
   public boolean a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      return this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.b();
+    if (this.a.e != null) {
+      return this.a.e.e();
     }
     return false;
   }
   
+  public View b()
+  {
+    return this.a.k.a(this.a.c.U());
+  }
+  
   public void b(boolean paramBoolean)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a();
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.f != null)) {
+      this.a.f.a();
     }
     if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e() == 10) {
-        QFileBrowserUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
+      if (this.a.c.z() == 10) {
+        QFileBrowserUtils.a(this.a.c.x());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this);
-      SimpleFilePresenter.a(this.a, true);
-      SimpleFilePresenter.a(this.a);
-      this.a.d = false;
+      this.a.k.a(this.a.c.y(), this);
+      SimpleFilePresenter.b(this.a, true);
+      SimpleFilePresenter.d(this.a);
+      this.a.j = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.5
  * JD-Core Version:    0.7.0.1
  */

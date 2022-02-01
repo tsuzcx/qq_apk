@@ -30,19 +30,19 @@ public class OpenSelectPermissionFragment
   extends QPublicBaseFragment
   implements View.OnClickListener, ISelectPermissionContract.View
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private ISelectPermissionContract.Presenter jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter;
-  private boolean jdField_a_of_type_Boolean;
+  private View a;
   private View b;
   private View c;
+  private ImageView d;
+  private QQProgressDialog e;
+  private ISelectPermissionContract.Presenter f;
+  private boolean g;
   
-  private boolean a()
+  private boolean d()
   {
     if (!NetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ))
     {
-      AuthUIUtil.a(getQBaseActivity(), HardCodeUtil.a(2131694647), new OpenSelectPermissionFragment.1(this));
+      AuthUIUtil.a(getQBaseActivity(), HardCodeUtil.a(2131892333), new OpenSelectPermissionFragment.1(this));
       return false;
     }
     return true;
@@ -51,22 +51,22 @@ public class OpenSelectPermissionFragment
   public void a()
   {
     SSOLog.a("OpenSelectPermissionFragment", new Object[] { "showLoading" });
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = AuthUIUtil.a(getQBaseActivity(), null, 2131561398);
+    this.e = AuthUIUtil.a(getQBaseActivity(), null, 2131627754);
   }
   
   public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.d.setImageBitmap(paramBitmap);
   }
   
   public void a(ISelectPermissionContract.Presenter paramPresenter)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter = paramPresenter;
+    this.f = paramPresenter;
   }
   
   public void b()
   {
-    AuthUIUtil.a(getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    AuthUIUtil.a(getQBaseActivity(), this.e);
   }
   
   public boolean isWrapContent()
@@ -76,7 +76,7 @@ public class OpenSelectPermissionFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidViewView)
+    if (paramView == this.a)
     {
       if (getQBaseActivity() != null) {
         getQBaseActivity().finish();
@@ -84,10 +84,10 @@ public class OpenSelectPermissionFragment
     }
     else if (paramView == this.c)
     {
-      if (a())
+      if (d())
       {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter.a();
-        AuthorityUtil.a("0X800BA7E");
+        this.f.c();
+        AuthorityUtil.e("0X800BA7E");
       }
     }
     else if (paramView == this.b)
@@ -96,53 +96,53 @@ public class OpenSelectPermissionFragment
       localIntent.putExtra("key_cancel_auth", 1);
       getQBaseActivity().setResult(102, localIntent);
       getQBaseActivity().finish();
-      AuthorityUtil.a("0X800BA7F");
+      AuthorityUtil.e("0X800BA7F");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559676, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363340);
-    this.b = paramLayoutInflater.findViewById(2131364265);
-    paramLayoutInflater.findViewById(2131378881).setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131362847));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.c = paramLayoutInflater.findViewById(2131365086);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625707, paramViewGroup, false);
+    this.a = paramLayoutInflater.findViewById(2131429218);
+    this.b = paramLayoutInflater.findViewById(2131430281);
+    paramLayoutInflater.findViewById(2131447582).setBackgroundColor(0);
+    this.d = ((ImageView)paramLayoutInflater.findViewById(2131428628));
+    this.a.setOnClickListener(this);
+    this.c = paramLayoutInflater.findViewById(2131431227);
     this.c.setOnClickListener(this);
     this.b.setOnClickListener(this);
     paramViewGroup = new OpenSelectPermissionFragment.PermissionAdapter(this, null);
     paramBundle = getQBaseActivity().getIntent();
     ContractBuilder.a(this, getContext());
-    this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter.a(paramBundle);
-    ((ListView)paramLayoutInflater.findViewById(2131372451)).setAdapter(paramViewGroup);
-    paramViewGroup.a(this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter.a());
-    this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter.a(paramBundle.getBooleanExtra("hasIcon", false));
+    this.f.a(paramBundle);
+    ((ListView)paramLayoutInflater.findViewById(2131439973)).setAdapter(paramViewGroup);
+    paramViewGroup.a(this.f.a());
+    this.f.a(paramBundle.getBooleanExtra("hasIcon", false));
     paramViewGroup = paramBundle.getStringExtra("appName");
     SSOLog.a("OpenSelectPermissionFragment", new Object[] { "onCreateView appName=", paramViewGroup });
     if (!TextUtils.isEmpty(paramViewGroup)) {
-      ((TextView)paramLayoutInflater.findViewById(2131362849)).setText(paramViewGroup);
+      ((TextView)paramLayoutInflater.findViewById(2131428630)).setText(paramViewGroup);
     }
-    AuthorityUtil.a(null, "0X800B935", new String[] { "", "", paramViewGroup, this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$Presenter.a() });
+    AuthorityUtil.a(null, "0X800B935", new String[] { "", "", paramViewGroup, this.f.b() });
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onResume()
   {
-    SSOLog.a("OpenSelectPermissionFragment", new Object[] { "onResume--isSetStatusColor=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    SSOLog.a("OpenSelectPermissionFragment", new Object[] { "onResume--isSetStatusColor=", Boolean.valueOf(this.g) });
     super.onResume();
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.g)
     {
-      AuthorityUtil.a(getQBaseActivity());
-      this.jdField_a_of_type_Boolean = true;
+      AuthorityUtil.b(getQBaseActivity());
+      this.g = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSelectPermissionFragment
  * JD-Core Version:    0.7.0.1
  */

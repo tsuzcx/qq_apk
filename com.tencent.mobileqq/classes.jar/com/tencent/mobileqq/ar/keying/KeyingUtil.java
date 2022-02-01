@@ -7,20 +7,11 @@ import com.tencent.qphone.base.util.QLog;
 
 public class KeyingUtil
 {
-  public static final String a;
-  public static final float[] a;
-  public static String b;
-  public static String c;
-  public static String d;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706027);
-    b = "    //抠像逻辑片段\n";
-    c = "    //用户定义，抠像后逻辑片段\n";
-    d = "}\n";
-    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
-  }
+  public static final String a = HardCodeUtil.a(2131903901);
+  public static String b = "    //抠像逻辑片段\n";
+  public static String c = "    //用户定义，抠像后逻辑片段\n";
+  public static String d = "}\n";
+  public static final float[] e = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
   
   public static int a(int paramInt, String paramString)
   {
@@ -124,7 +115,7 @@ public class KeyingUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.KeyingUtil
  * JD-Core Version:    0.7.0.1
  */

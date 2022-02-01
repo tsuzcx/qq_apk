@@ -3,9 +3,8 @@ package com.tencent.mobileqq.statistics.reportitem;
 public class CaptureMsgReportItem
   extends CaptureBaseReportItem
 {
-  public int a;
   public String d = "";
-  public String e = "";
+  public int e = 0;
   public String f = "";
   public String g = "";
   public String h = "";
@@ -22,27 +21,25 @@ public class CaptureMsgReportItem
   public String s = "";
   public String t = "";
   public String u = "";
+  public String v = "";
   
   public CaptureMsgReportItem()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a = "";
     this.b = "";
     this.c = "";
-    this.jdField_a_of_type_Int = 0;
   }
   
   public String a()
   {
     StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append("|");
     localStringBuffer.append(this.b);
     localStringBuffer.append("|");
     localStringBuffer.append(this.c);
     localStringBuffer.append("|");
     localStringBuffer.append(this.d);
-    localStringBuffer.append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
     localStringBuffer.append("|");
     localStringBuffer.append(this.e);
     localStringBuffer.append("|");
@@ -77,6 +74,8 @@ public class CaptureMsgReportItem
     localStringBuffer.append(this.t);
     localStringBuffer.append("|");
     localStringBuffer.append(this.u);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.v);
     localStringBuffer.append("|");
     return localStringBuffer.toString();
   }
@@ -84,15 +83,13 @@ public class CaptureMsgReportItem
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append("|");
     localStringBuffer.append(this.b);
     localStringBuffer.append("|");
     localStringBuffer.append(this.c);
     localStringBuffer.append("|");
     localStringBuffer.append(this.d);
-    localStringBuffer.append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
     localStringBuffer.append("|");
     localStringBuffer.append(this.e);
     localStringBuffer.append("|");
@@ -128,12 +125,14 @@ public class CaptureMsgReportItem
     localStringBuffer.append("|");
     localStringBuffer.append(this.u);
     localStringBuffer.append("|");
+    localStringBuffer.append(this.v);
+    localStringBuffer.append("|");
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.reportitem.CaptureMsgReportItem
  * JD-Core Version:    0.7.0.1
  */

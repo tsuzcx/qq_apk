@@ -152,7 +152,7 @@ public class LbsPackPoiListServlet
                 QLog.d("LbsPack", 2, paramFromServiceMsg.toString());
               }
               if (k == 0) {
-                LbsPackStatsCollector.a("actLbsSendGetPidFailure");
+                LbsPackStatsCollector.c("actLbsSendGetPidFailure");
               } else {
                 LbsPackStatsCollector.a("actLbsSendGetPidFailure", k);
               }
@@ -237,7 +237,7 @@ public class LbsPackPoiListServlet
           if (k != 0) {
             LbsPackStatsCollector.a("actLbsSendPoiListFailure", k);
           } else {
-            LbsPackStatsCollector.a("actLbsSendPoiListFailure");
+            LbsPackStatsCollector.c("actLbsSendPoiListFailure");
           }
           if (QLog.isColorLevel())
           {
@@ -504,7 +504,7 @@ public class LbsPackPoiListServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.poi.LbsPackPoiListServlet
  * JD-Core Version:    0.7.0.1
  */

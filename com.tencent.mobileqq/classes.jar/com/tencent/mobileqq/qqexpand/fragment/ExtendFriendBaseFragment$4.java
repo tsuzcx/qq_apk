@@ -19,67 +19,67 @@ class ExtendFriendBaseFragment$4
 {
   ExtendFriendBaseFragment$4(ExtendFriendBaseFragment paramExtendFriendBaseFragment, StrangerInfo paramStrangerInfo, boolean paramBoolean1, boolean paramBoolean2, RecyclerView.ViewHolder paramViewHolder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo.mUin, NewReportPlugin.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo.mUin, NewReportPlugin.b(2)), null, null, this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 20005, null, null);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009C8F", "0X8009C8F", 0, 0, "", "", "", "");
+      NewReportPlugin.a(this.e.h, this.a.mUin, NewReportPlugin.b(this.a.mUin, NewReportPlugin.c(2)), null, null, this.e.i.getCurrentAccountUin(), 20005, null, null);
+      ReportController.b(this.e.i, "dc00898", "", "", "0X8009C8F", "0X8009C8F", 0, 0, "", "", "", "");
       paramView = new HashMap();
       paramView.put("frompage", "3");
-      paramView.put("to_uid", this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo.mUin);
+      paramView.put("to_uid", this.a.mUin);
       ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#complaint_page#complaint", true, -1L, -1L, paramView, true, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkIExpandHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkIExpandHandler.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo.mUin);
+      if (this.e.k != null) {
+        this.e.k.a(this.a.mUin);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentWidgetActionSheet != null)
+      if (this.e.L != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentWidgetActionSheet = null;
+        this.e.L.dismiss();
+        this.e.L = null;
       }
       return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (!this.b))
+    if ((this.b) && (!this.c))
     {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.a(false, true, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        this.e.a(false, true, this.d);
         VasWebviewUtil.a("strangers_makefriend", "plaza_actionsheet", "", 0, "", "1");
       }
     }
-    else if ((!this.jdField_a_of_type_Boolean) && (this.b))
+    else if ((!this.b) && (this.c))
     {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.a(true, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        this.e.a(true, false, this.d);
         VasWebviewUtil.a("strangers_makefriend", "plaza_actionsheet", "", 0, "", "2");
       }
     }
-    else if ((this.b) && (this.jdField_a_of_type_Boolean))
+    else if ((this.c) && (this.b))
     {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.a(false, true, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        this.e.a(false, true, this.d);
         VasWebviewUtil.a("strangers_makefriend", "plaza_actionsheet", "", 0, "", "1");
       }
       else if (paramInt == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.a(true, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+        this.e.a(true, false, this.d);
         VasWebviewUtil.a("strangers_makefriend", "plaza_actionsheet", "", 0, "", "2");
       }
     }
-    else if ((!this.jdField_a_of_type_Boolean) && (!this.b) && (paramInt == 1))
+    else if ((!this.b) && (!this.c) && (paramInt == 1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.a(false, false, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      this.e.a(false, false, this.d);
       VasWebviewUtil.a("strangers_makefriend", "plaza_actionsheet", "", 0, "", "3");
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendBaseFragment.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.e.L.cancel();
     VasWebviewUtil.a("strangers_makefriend", "plaza_actionsheet", "", 0, "", "4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendBaseFragment.4
  * JD-Core Version:    0.7.0.1
  */

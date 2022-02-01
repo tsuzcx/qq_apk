@@ -20,27 +20,22 @@ import java.util.List;
 public class GetVideoFullInfoListRequest
   extends NetworkRequest<GetVideoFullInfoListResponse>
 {
-  public static final String a;
-  public List<String> a;
-  public int c = 0;
+  public static final String g = StoryApi.a("StorySvc.union_batch_vid_basic_info");
+  public List<String> e = new ArrayList();
+  public int f = 0;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.union_batch_vid_basic_info");
+    return g;
   }
   
-  public GetVideoFullInfoListRequest()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
     try
     {
       localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
-      SLog.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", PBUtils.a(localRspBatchGetVideoFullInfoList));
+      SLog.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", PBUtils.b(localRspBatchGetVideoFullInfoList));
       return new GetVideoFullInfoListResponse(localRspBatchGetVideoFullInfoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -50,15 +45,10 @@ public class GetVideoFullInfoListRequest
     return null;
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.e;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -69,7 +59,7 @@ public class GetVideoFullInfoListRequest
         localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
       }
     }
-    localReqBatchGetVideoFullInfoList.source.set(this.c);
+    localReqBatchGetVideoFullInfoList.source.set(this.f);
     return localReqBatchGetVideoFullInfoList.toByteArray();
   }
   
@@ -77,7 +67,7 @@ public class GetVideoFullInfoListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetVideoFullInfoListRequest{vidList='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -85,7 +75,7 @@ public class GetVideoFullInfoListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVideoFullInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

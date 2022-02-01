@@ -9,11 +9,6 @@ public class FileIPv6StrateyController
 {
   private static boolean a = false;
   
-  public static IFileIPv6StrateyController a()
-  {
-    return (IFileIPv6StrateyController)QRoute.api(IFileIPv6StrateyController.class);
-  }
-  
   public static void a(List<FileIPv6StrateyController.IPInfo> paramList, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramList != null)
@@ -25,7 +20,7 @@ public class FileIPv6StrateyController
       while (i >= 0)
       {
         FileIPv6StrateyController.IPInfo localIPInfo = (FileIPv6StrateyController.IPInfo)paramList.get(i);
-        if ((localIPInfo != null) && (!TextUtils.isEmpty(localIPInfo.jdField_a_of_type_JavaLangString))) {
+        if ((localIPInfo != null) && (!TextUtils.isEmpty(localIPInfo.a))) {
           if (paramBoolean1)
           {
             if (paramBoolean2)
@@ -35,7 +30,7 @@ public class FileIPv6StrateyController
               }
             }
             else {
-              paramList1.add(0, localIPInfo.jdField_a_of_type_JavaLangString);
+              paramList1.add(0, localIPInfo.a);
             }
           }
           else
@@ -48,16 +43,16 @@ public class FileIPv6StrateyController
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append(localIPInfo.a());
                 localStringBuilder.append(":");
-                localStringBuilder.append(localIPInfo.jdField_a_of_type_Int);
+                localStringBuilder.append(localIPInfo.b);
                 paramList1.add(0, localStringBuilder.toString());
               }
             }
             else
             {
               localStringBuilder = new StringBuilder();
-              localStringBuilder.append(localIPInfo.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(localIPInfo.a);
               localStringBuilder.append(":");
-              localStringBuilder.append(localIPInfo.jdField_a_of_type_Int);
+              localStringBuilder.append(localIPInfo.b);
               paramList1.add(0, localStringBuilder.toString());
             }
           }
@@ -76,10 +71,15 @@ public class FileIPv6StrateyController
   {
     return false;
   }
+  
+  public static IFileIPv6StrateyController b()
+  {
+    return (IFileIPv6StrateyController)QRoute.api(IFileIPv6StrateyController.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController
  * JD-Core Version:    0.7.0.1
  */

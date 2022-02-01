@@ -12,10 +12,10 @@ class QlinkShareJumpActivity$5
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   4: ldc 32
-    //   6: invokestatic 37	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   9: invokestatic 42	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Ljava/lang/String;)Ljava/lang/String;
+    //   1: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   4: ldc 34
+    //   6: invokestatic 39	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   9: invokestatic 44	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Ljava/lang/String;)Ljava/lang/String;
     //   12: pop
     //   13: aconst_null
     //   14: astore 12
@@ -25,50 +25,50 @@ class QlinkShareJumpActivity$5
     //   20: astore 15
     //   22: aconst_null
     //   23: astore 14
-    //   25: new 44	java/io/File
+    //   25: new 46	java/io/File
     //   28: dup
     //   29: aload_0
-    //   30: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   33: invokespecial 47	java/io/File:<init>	(Ljava/lang/String;)V
+    //   30: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:a	Ljava/lang/String;
+    //   33: invokespecial 49	java/io/File:<init>	(Ljava/lang/String;)V
     //   36: astore 17
     //   38: aload 17
-    //   40: invokevirtual 51	java/io/File:exists	()Z
+    //   40: invokevirtual 53	java/io/File:exists	()Z
     //   43: ifne +48 -> 91
     //   46: aload 17
-    //   48: invokevirtual 54	java/io/File:createNewFile	()Z
+    //   48: invokevirtual 56	java/io/File:createNewFile	()Z
     //   51: ifne +40 -> 91
     //   54: aload_0
-    //   55: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   58: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   55: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   58: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   61: iconst_1
-    //   62: invokevirtual 63	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   62: invokevirtual 65	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   65: pop
     //   66: aload_0
-    //   67: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   67: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
     //   70: iconst_0
-    //   71: invokestatic 66	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
+    //   71: invokestatic 68	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
     //   74: pop
     //   75: aload_0
-    //   76: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   79: invokevirtual 71	java/io/InputStream:close	()V
+    //   76: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:b	Ljava/io/InputStream;
+    //   79: invokevirtual 73	java/io/InputStream:close	()V
     //   82: return
     //   83: astore 12
     //   85: aload 12
-    //   87: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   87: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   90: return
-    //   91: new 76	java/io/FileOutputStream
+    //   91: new 78	java/io/FileOutputStream
     //   94: dup
     //   95: aload_0
-    //   96: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   99: invokespecial 77	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   96: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:a	Ljava/lang/String;
+    //   99: invokespecial 79	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   102: astore 16
     //   104: aload 13
     //   106: astore 12
     //   108: aload 16
     //   110: astore 13
-    //   112: invokestatic 83	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   112: invokestatic 85	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   115: sipush 8192
-    //   118: invokevirtual 87	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   118: invokevirtual 89	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   121: astore 15
     //   123: lconst_0
     //   124: lstore 6
@@ -81,9 +81,9 @@ class QlinkShareJumpActivity$5
     //   137: aload 16
     //   139: astore 13
     //   141: aload_0
-    //   142: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   142: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:b	Ljava/io/InputStream;
     //   145: aload 15
-    //   147: invokevirtual 91	java/io/InputStream:read	([B)I
+    //   147: invokevirtual 93	java/io/InputStream:read	([B)I
     //   150: istore 5
     //   152: iload 5
     //   154: iconst_m1
@@ -95,8 +95,8 @@ class QlinkShareJumpActivity$5
     //   166: aload 16
     //   168: astore 13
     //   170: aload_0
-    //   171: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   174: invokestatic 94	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;)Z
+    //   171: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   174: invokestatic 96	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;)Z
     //   177: ifeq +204 -> 381
     //   180: iload 5
     //   182: i2l
@@ -113,7 +113,7 @@ class QlinkShareJumpActivity$5
     //   202: aload 15
     //   204: iconst_0
     //   205: iload 5
-    //   207: invokevirtual 98	java/io/FileOutputStream:write	([BII)V
+    //   207: invokevirtual 100	java/io/FileOutputStream:write	([BII)V
     //   210: lload 6
     //   212: lload 8
     //   214: lsub
@@ -126,21 +126,21 @@ class QlinkShareJumpActivity$5
     //   225: aload 16
     //   227: astore 13
     //   229: aload_0
-    //   230: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_Long	J
+    //   230: getfield 24	cooperation/qlink/QlinkShareJumpActivity$5:c	J
     //   233: lstore 10
     //   235: lload 10
     //   237: l2d
     //   238: dstore_3
     //   239: dload_1
-    //   240: invokestatic 104	java/lang/Double:isNaN	(D)Z
+    //   240: invokestatic 106	java/lang/Double:isNaN	(D)Z
     //   243: pop
     //   244: dload_3
-    //   245: invokestatic 104	java/lang/Double:isNaN	(D)Z
+    //   245: invokestatic 106	java/lang/Double:isNaN	(D)Z
     //   248: pop
     //   249: dload_1
     //   250: dload_3
     //   251: ddiv
-    //   252: ldc2_w 105
+    //   252: ldc2_w 107
     //   255: dcmpl
     //   256: ifle +543 -> 799
     //   259: aload 15
@@ -150,8 +150,8 @@ class QlinkShareJumpActivity$5
     //   267: aload 16
     //   269: astore 13
     //   271: aload_0
-    //   272: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   275: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   272: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   275: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   278: astore 18
     //   280: aload 15
     //   282: astore 14
@@ -160,8 +160,8 @@ class QlinkShareJumpActivity$5
     //   288: aload 16
     //   290: astore 13
     //   292: aload_0
-    //   293: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   296: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   293: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   296: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   299: astore 19
     //   301: lload 6
     //   303: l2d
@@ -173,21 +173,21 @@ class QlinkShareJumpActivity$5
     //   313: aload 16
     //   315: astore 13
     //   317: aload_0
-    //   318: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_Long	J
+    //   318: getfield 24	cooperation/qlink/QlinkShareJumpActivity$5:c	J
     //   321: lstore 8
     //   323: lload 8
     //   325: l2d
     //   326: dstore_3
     //   327: dload_1
-    //   328: invokestatic 104	java/lang/Double:isNaN	(D)Z
+    //   328: invokestatic 106	java/lang/Double:isNaN	(D)Z
     //   331: pop
     //   332: dload_3
-    //   333: invokestatic 104	java/lang/Double:isNaN	(D)Z
+    //   333: invokestatic 106	java/lang/Double:isNaN	(D)Z
     //   336: pop
     //   337: dload_1
     //   338: dload_3
     //   339: ddiv
-    //   340: ldc2_w 107
+    //   340: ldc2_w 109
     //   343: dmul
     //   344: d2i
     //   345: istore 5
@@ -202,8 +202,8 @@ class QlinkShareJumpActivity$5
     //   363: iconst_3
     //   364: iload 5
     //   366: iconst_0
-    //   367: invokevirtual 112	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
-    //   370: invokevirtual 116	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   367: invokevirtual 114	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
+    //   370: invokevirtual 118	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
     //   373: pop
     //   374: lload 6
     //   376: lstore 8
@@ -219,10 +219,10 @@ class QlinkShareJumpActivity$5
     //   396: aload 16
     //   398: astore 13
     //   400: aload_0
-    //   401: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   404: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   401: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   404: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   407: iconst_1
-    //   408: invokevirtual 63	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   408: invokevirtual 65	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   411: pop
     //   412: aload 15
     //   414: astore 14
@@ -231,8 +231,8 @@ class QlinkShareJumpActivity$5
     //   420: aload 16
     //   422: astore 13
     //   424: aload_0
-    //   425: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   428: invokestatic 94	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;)Z
+    //   425: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   428: invokestatic 96	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;)Z
     //   431: ifeq +70 -> 501
     //   434: aload 15
     //   436: astore 14
@@ -241,16 +241,16 @@ class QlinkShareJumpActivity$5
     //   442: aload 16
     //   444: astore 13
     //   446: aload_0
-    //   447: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   450: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   447: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   450: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   453: aload_0
-    //   454: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   457: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   454: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   457: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   460: iconst_3
     //   461: bipush 100
     //   463: iconst_0
-    //   464: invokevirtual 112	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
-    //   467: invokevirtual 116	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   464: invokevirtual 114	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
+    //   467: invokevirtual 118	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
     //   470: pop
     //   471: aload 15
     //   473: astore 14
@@ -259,11 +259,11 @@ class QlinkShareJumpActivity$5
     //   479: aload 16
     //   481: astore 13
     //   483: aload_0
-    //   484: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   487: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   484: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   487: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   490: iconst_2
-    //   491: ldc2_w 117
-    //   494: invokevirtual 122	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
+    //   491: ldc2_w 119
+    //   494: invokevirtual 124	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
     //   497: pop
     //   498: goto +38 -> 536
     //   501: aload 15
@@ -273,7 +273,7 @@ class QlinkShareJumpActivity$5
     //   509: aload 16
     //   511: astore 13
     //   513: aload 16
-    //   515: invokestatic 128	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   515: invokestatic 130	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   518: aload 15
     //   520: astore 14
     //   522: aload 15
@@ -281,27 +281,27 @@ class QlinkShareJumpActivity$5
     //   526: aload 16
     //   528: astore 13
     //   530: aload 17
-    //   532: invokevirtual 131	java/io/File:delete	()Z
+    //   532: invokevirtual 133	java/io/File:delete	()Z
     //   535: pop
     //   536: aload 15
     //   538: ifnull +11 -> 549
-    //   541: invokestatic 83	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   541: invokestatic 85	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   544: aload 15
-    //   546: invokevirtual 135	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   546: invokevirtual 137	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   549: aload_0
-    //   550: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   550: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
     //   553: iconst_0
-    //   554: invokestatic 66	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
+    //   554: invokestatic 68	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
     //   557: pop
     //   558: aload_0
-    //   559: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   562: invokevirtual 71	java/io/InputStream:close	()V
+    //   559: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:b	Ljava/io/InputStream;
+    //   562: invokevirtual 73	java/io/InputStream:close	()V
     //   565: goto +10 -> 575
     //   568: astore 12
     //   570: aload 12
-    //   572: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   572: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   575: aload 16
-    //   577: invokevirtual 136	java/io/FileOutputStream:close	()V
+    //   577: invokevirtual 138	java/io/FileOutputStream:close	()V
     //   580: return
     //   581: astore 17
     //   583: aload 14
@@ -322,52 +322,52 @@ class QlinkShareJumpActivity$5
     //   613: astore 12
     //   615: aload 14
     //   617: astore 13
-    //   619: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   619: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   622: ifeq +21 -> 643
     //   625: aload 15
     //   627: astore 12
     //   629: aload 14
     //   631: astore 13
-    //   633: ldc 143
+    //   633: ldc 145
     //   635: iconst_2
-    //   636: ldc 145
+    //   636: ldc 147
     //   638: aload 17
-    //   640: invokestatic 149	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   640: invokestatic 151	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   643: aload 15
     //   645: astore 12
     //   647: aload 14
     //   649: astore 13
     //   651: aload_0
-    //   652: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
-    //   655: getfield 57	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
+    //   652: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   655: getfield 59	cooperation/qlink/QlinkShareJumpActivity:a	Lmqq/os/MqqHandler;
     //   658: iconst_1
-    //   659: invokevirtual 63	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   659: invokevirtual 65	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   662: pop
     //   663: aload 15
     //   665: ifnull +11 -> 676
-    //   668: invokestatic 83	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   668: invokestatic 85	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   671: aload 15
-    //   673: invokevirtual 135	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   673: invokevirtual 137	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   676: aload_0
-    //   677: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   677: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
     //   680: iconst_0
-    //   681: invokestatic 66	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
+    //   681: invokestatic 68	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
     //   684: pop
     //   685: aload_0
-    //   686: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   689: invokevirtual 71	java/io/InputStream:close	()V
+    //   686: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:b	Ljava/io/InputStream;
+    //   689: invokevirtual 73	java/io/InputStream:close	()V
     //   692: goto +10 -> 702
     //   695: astore 12
     //   697: aload 12
-    //   699: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   699: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   702: aload 14
     //   704: ifnull +16 -> 720
     //   707: aload 14
-    //   709: invokevirtual 136	java/io/FileOutputStream:close	()V
+    //   709: invokevirtual 138	java/io/FileOutputStream:close	()V
     //   712: return
     //   713: astore 12
     //   715: aload 12
-    //   717: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   717: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   720: return
     //   721: astore 14
     //   723: aload 12
@@ -376,29 +376,29 @@ class QlinkShareJumpActivity$5
     //   729: astore 12
     //   731: aload 15
     //   733: ifnull +11 -> 744
-    //   736: invokestatic 83	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   736: invokestatic 85	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   739: aload 15
-    //   741: invokevirtual 135	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   741: invokevirtual 137	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   744: aload_0
-    //   745: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
+    //   745: getfield 18	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
     //   748: iconst_0
-    //   749: invokestatic 66	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
+    //   749: invokestatic 68	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Z)Z
     //   752: pop
     //   753: aload_0
-    //   754: getfield 20	cooperation/qlink/QlinkShareJumpActivity$5:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   757: invokevirtual 71	java/io/InputStream:close	()V
+    //   754: getfield 22	cooperation/qlink/QlinkShareJumpActivity$5:b	Ljava/io/InputStream;
+    //   757: invokevirtual 73	java/io/InputStream:close	()V
     //   760: goto +10 -> 770
     //   763: astore 14
     //   765: aload 14
-    //   767: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   767: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   770: aload 13
     //   772: ifnull +18 -> 790
     //   775: aload 13
-    //   777: invokevirtual 136	java/io/FileOutputStream:close	()V
+    //   777: invokevirtual 138	java/io/FileOutputStream:close	()V
     //   780: goto +10 -> 790
     //   783: astore 13
     //   785: aload 13
-    //   787: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   787: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   790: goto +6 -> 796
     //   793: aload 12
     //   795: athrow
@@ -484,7 +484,7 @@ class QlinkShareJumpActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkShareJumpActivity.5
  * JD-Core Version:    0.7.0.1
  */

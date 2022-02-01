@@ -9,13 +9,13 @@ class InterestLabelInfoModule$3
   
   public void run()
   {
-    InterestLabelInfoModule.a(this.this$0).clear();
-    InterestLabelInfoModule.a(this.this$0).addAll(this.a);
+    InterestLabelInfoModule.b(this.this$0).clear();
+    InterestLabelInfoModule.b(this.this$0).addAll(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.InterestLabelInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

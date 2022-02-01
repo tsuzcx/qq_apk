@@ -6,35 +6,30 @@ import com.tencent.ilive.interfaces.IAudienceRoomPager;
 
 public class App
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  IAudienceRoomPager jdField_a_of_type_ComTencentIliveInterfacesIAudienceRoomPager;
-  boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  private boolean c = false;
-  private boolean d;
+  IAudienceRoomPager a;
+  boolean b = false;
+  private int c;
+  private boolean d = false;
+  private boolean e = false;
+  private Context f;
+  private boolean g;
   
   public App(Context paramContext, IAudienceRoomPager paramIAudienceRoomPager, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentIliveInterfacesIAudienceRoomPager = paramIAudienceRoomPager;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.d = paramBoolean;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentIliveInterfacesIAudienceRoomPager = null;
+    this.a = paramIAudienceRoomPager;
+    this.c = paramInt;
+    this.f = paramContext;
+    this.g = paramBoolean;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public boolean a()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.f;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localContext != null)
@@ -47,16 +42,21 @@ public class App
     return bool1;
   }
   
+  public void b()
+  {
+    this.a = null;
+  }
+  
   public void b(boolean paramBoolean) {}
   
   public void c(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.App
  * JD-Core Version:    0.7.0.1
  */

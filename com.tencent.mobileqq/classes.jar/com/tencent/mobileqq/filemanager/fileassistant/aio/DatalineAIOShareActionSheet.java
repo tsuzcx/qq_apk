@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class DatalineAIOShareActionSheet
   extends AIOShareActionSheet
 {
-  private static final int[] a = { 9, 25, 50, 26 };
+  private static final int[] p = { 9, 25, 50, 26 };
   
   public DatalineAIOShareActionSheet(QQAppInterface paramQQAppInterface, Context paramContext, Activity paramActivity, BaseChatPie paramBaseChatPie, MqqHandler paramMqqHandler)
   {
@@ -40,7 +40,7 @@ public class DatalineAIOShareActionSheet
     int i = 0;
     for (;;)
     {
-      int[] arrayOfInt = a;
+      int[] arrayOfInt = p;
       if (i >= arrayOfInt.length) {
         break;
       }
@@ -60,7 +60,7 @@ public class DatalineAIOShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.aio.DatalineAIOShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

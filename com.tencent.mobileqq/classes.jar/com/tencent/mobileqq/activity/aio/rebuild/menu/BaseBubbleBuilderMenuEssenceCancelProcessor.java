@@ -22,22 +22,22 @@ public class BaseBubbleBuilderMenuEssenceCancelProcessor
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    TroopEssenceUtil.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
+    TroopEssenceUtil.a(paramChatMessage, this.b, this.a, 2);
   }
   
   public void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, ChatMessage paramChatMessage, Bundle paramBundle)
   {
-    TroopEssenceUtil.a(paramChatMessage, paramQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext);
+    TroopEssenceUtil.a(paramChatMessage, paramQQCustomMenu, this.b, this.a, paramContext);
   }
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131366309;
+    return paramInt == 2131432608;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuEssenceCancelProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,7 @@ import com.tencent.qqmini.minigame.GameRuntime;
 import com.tencent.qqmini.minigame.GameRuntimeLoader;
 import com.tencent.qqmini.minigame.gpkg.GpkgManager;
 import com.tencent.qqmini.minigame.manager.GameInfoManager;
+import com.tencent.qqmini.minigame.report.GameStopType;
 import com.tencent.qqmini.minigame.utils.GameActivityStatusWatcher;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
@@ -32,7 +33,6 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
 import com.tencent.qqmini.sdk.launcher.utils.CPUUtil;
-import com.tencent.qqmini.sdk.manager.MiniLoadingAdManager;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
@@ -57,7 +57,7 @@ public class GameUIProxy
   private LoadingUI mLoadingUI;
   private MiniAppInfo mMiniAppInfo;
   private boolean mPkgDownloadFlag = false;
-  private BaseRuntime mRuntime;
+  private GameRuntime mRuntime;
   private int mStartMode = 3;
   
   private void createGameActivityStatusWatcher(Activity paramActivity)
@@ -83,17 +83,6 @@ public class GameUIProxy
     {
       localException.printStackTrace();
     }
-  }
-  
-  private void initOrientation(MiniAppInfo paramMiniAppInfo)
-  {
-    boolean bool;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.isLandScape())) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    setOrientation(bool);
   }
   
   private void initStatusBar(MiniAppInfo paramMiniAppInfo)
@@ -157,11 +146,6 @@ public class GameUIProxy
     }
   }
   
-  private void setOrientation(boolean paramBoolean)
-  {
-    this.mActivity.setRequestedOrientation(paramBoolean ^ true);
-  }
-  
   private void showStatusBar()
   {
     WindowManager.LayoutParams localLayoutParams = this.mActivity.getWindow().getAttributes();
@@ -182,10 +166,7 @@ public class GameUIProxy
   
   GameRuntime getGameRuntime()
   {
-    if (this.mRuntime != null) {
-      return (GameRuntime)getRuntime();
-    }
-    return null;
+    return this.mRuntime;
   }
   
   public String getLaunchMsg()
@@ -245,11 +226,33 @@ public class GameUIProxy
   protected void hideLoading()
   {
     this.hasCompletedLoading = true;
+    this.loadCompleteTimeForLoadingAdReport = System.currentTimeMillis();
     LoadingUI localLoadingUI = this.mLoadingUI;
     if (localLoadingUI == null) {
       return;
     }
     localLoadingUI.hide();
+  }
+  
+  protected boolean isAbleToShowAd()
+  {
+    if (!this.hasCompletedLoading)
+    {
+      GameRuntime localGameRuntime = this.mRuntime;
+      if ((localGameRuntime != null) && (localGameRuntime.isLoadingAdEnabled())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramActivity, paramInt1, paramInt2, paramIntent);
+    paramActivity = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (paramActivity != null) {
+      paramActivity.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void onAttachActivity(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
@@ -271,7 +274,9 @@ public class GameUIProxy
       localMiniAppInfo = (MiniAppInfo)localIntent.getParcelableExtra("KEY_APPINFO");
     }
     this.mStartMode = localIntent.getIntExtra("start_mode", 3);
-    if (paramBundle != null) {
+    if (paramBundle != null)
+    {
+      this.mStartMode = 3;
       l = 0L;
     }
     if (l != 0L) {
@@ -295,7 +300,6 @@ public class GameUIProxy
     createGameActivityStatusWatcher(paramActivity);
     createLoadingUI(paramActivity);
     super.onAttachActivity(paramActivity, paramBundle, paramViewGroup);
-    initOrientation(localMiniAppInfo);
     initStatusBar(localMiniAppInfo);
     long l = System.currentTimeMillis() - this.mBeginOnCreate;
     if (localMiniAppInfo != null)
@@ -310,7 +314,7 @@ public class GameUIProxy
   
   public boolean onBackPressed(Activity paramActivity)
   {
-    AppStateEvent.obtain(2053).notifyRuntime(getRuntime());
+    AppStateEvent.obtain(2053, GameStopType.BACK_PRESS).notifyRuntime(getRuntime());
     return super.onBackPressed(paramActivity);
   }
   
@@ -348,14 +352,6 @@ public class GameUIProxy
       localStringBuilder.append(this.mCurrRuntimeLoader.getMiniAppInfo());
       QMLog.d("minisdk-start_UIProxy", localStringBuilder.toString());
       this.mCurrRuntimeLoader.notifyRuntimeEvent(2051, new Object[0]);
-    }
-    else
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onResume(). runtime is loading. start cold boot. ");
-      localStringBuilder.append(this.mCurrRuntimeLoader.getMiniAppInfo());
-      QMLog.d("minisdk-start_UIProxy", localStringBuilder.toString());
-      this.mCurrRuntimeLoader.start();
     }
     super.onMiniResume();
     l = System.currentTimeMillis() - l;
@@ -396,13 +392,12 @@ public class GameUIProxy
   {
     QMLog.i("minisdk-start_UIProxy", "GameRuntime onRuntimeReady. Here we go, start the runtime lifecycle");
     this.mMiniAppInfo = this.mCurrRuntimeLoader.getMiniAppInfo();
-    this.mRuntime = this.mCurrRuntimeLoader.getRuntime();
+    this.mRuntime = ((GameRuntime)this.mCurrRuntimeLoader.getRuntime());
     Object localObject = this.mRuntime;
     if (localObject != null)
     {
-      localObject = (GameRuntime)localObject;
       ((GameRuntime)localObject).setPackageDownloadFlag(this.mPkgDownloadFlag);
-      ((GameRuntime)localObject).setStartMode(this.mStartMode);
+      this.mRuntime.setStartMode(this.mStartMode);
     }
     if (((this.mCurrRuntimeLoader instanceof GameRuntimeLoader)) && (!((GameRuntimeLoader)this.mCurrRuntimeLoader).isGameReadyStart(this.mMiniAppInfo)))
     {
@@ -437,13 +432,6 @@ public class GameUIProxy
     }
   }
   
-  public void preloadLoadingAd()
-  {
-    this.hasCompletedLoading = true;
-    this.loadCompleteTimeForLoadingAdReport = System.currentTimeMillis();
-    MiniLoadingAdManager.getInstance().preloadLoadingAd(this.mActivity, this.mMiniAppInfo);
-  }
-  
   protected void reloadMiniAppInfoIfNeed(BaseRuntimeLoader paramBaseRuntimeLoader, MiniAppInfo paramMiniAppInfo)
   {
     if (paramBaseRuntimeLoader.isLoadSucceed())
@@ -465,9 +453,9 @@ public class GameUIProxy
   void setPackageDownloadFlag(boolean paramBoolean)
   {
     this.mPkgDownloadFlag = paramBoolean;
-    BaseRuntime localBaseRuntime = this.mRuntime;
-    if (localBaseRuntime != null) {
-      ((GameRuntime)localBaseRuntime).setPackageDownloadFlag(paramBoolean);
+    GameRuntime localGameRuntime = this.mRuntime;
+    if (localGameRuntime != null) {
+      localGameRuntime.setPackageDownloadFlag(paramBoolean);
     }
   }
   
@@ -541,12 +529,20 @@ public class GameUIProxy
   
   protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2)
   {
-    paramActivity.runOnUiThread(new GameUIProxy.3(this, paramMiniAppInfo, paramActivity, paramString, paramLong1, paramLong2));
+    paramActivity.runOnUiThread(new GameUIProxy.4(this, paramMiniAppInfo, paramActivity, paramString, paramLong1, paramLong2));
+  }
+  
+  void updateLoadingProcessText(String paramString, float paramFloat)
+  {
+    if (this.mLoadingUI == null) {
+      return;
+    }
+    this.mActivity.runOnUiThread(new GameUIProxy.3(this, paramString, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameUIProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -10,27 +10,27 @@ class FaceLayer$FaceAndTextItem$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a = false;
+    this.a.j = false;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = false;
+    this.a.j = false;
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    this.a.a = true;
+    this.a.j = true;
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a = true;
+    this.a.j = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.FaceLayer.FaceAndTextItem.2
  * JD-Core Version:    0.7.0.1
  */

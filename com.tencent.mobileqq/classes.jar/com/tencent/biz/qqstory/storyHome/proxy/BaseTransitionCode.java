@@ -10,28 +10,13 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public abstract class BaseTransitionCode
   implements TransitionCode
 {
-  protected Activity a;
-  
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public View a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
-    }
-    SLog.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
-  }
+  protected Activity d;
   
   public void a() {}
   
   public void a(int paramInt)
   {
-    Activity localActivity = this.a;
+    Activity localActivity = this.d;
     if (localActivity != null)
     {
       localActivity.setContentView(paramInt);
@@ -44,7 +29,7 @@ public abstract class BaseTransitionCode
   
   public void a(int paramInt, Intent paramIntent)
   {
-    Activity localActivity = this.a;
+    Activity localActivity = this.d;
     if (localActivity != null)
     {
       localActivity.setResult(paramInt, paramIntent);
@@ -55,10 +40,20 @@ public abstract class BaseTransitionCode
   
   public void a(@NonNull Activity paramActivity)
   {
-    this.a = paramActivity;
+    this.d = paramActivity;
   }
   
   public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public View b(int paramInt)
+  {
+    Activity localActivity = this.d;
+    if (localActivity != null) {
+      return localActivity.findViewById(paramInt);
+    }
+    SLog.e(getClass().getSimpleName(), "findViewById can not access after detach");
+    return null;
+  }
   
   public void b() {}
   
@@ -66,12 +61,17 @@ public abstract class BaseTransitionCode
   
   public void d()
   {
-    this.a = null;
+    this.d = null;
   }
   
-  public void e()
+  public Activity e()
   {
-    Activity localActivity = this.a;
+    return this.d;
+  }
+  
+  public void f()
+  {
+    Activity localActivity = this.d;
     if (localActivity != null)
     {
       localActivity.finish();

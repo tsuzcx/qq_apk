@@ -13,9 +13,9 @@ class PoiMapActivity$15
   
   public void a(ValueAnimation<Integer> paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    paramValueAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramValueAnimation.bottomMargin = (this.a.o - paramInteger.intValue());
-    this.a.b.setLayoutParams(paramValueAnimation);
+    paramValueAnimation = (FrameLayout.LayoutParams)this.a.c.getLayoutParams();
+    paramValueAnimation.bottomMargin = (this.a.N - paramInteger.intValue());
+    this.a.c.setLayoutParams(paramValueAnimation);
   }
 }
 

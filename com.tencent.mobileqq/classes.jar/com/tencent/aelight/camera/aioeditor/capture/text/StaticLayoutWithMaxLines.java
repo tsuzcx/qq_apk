@@ -5,10 +5,10 @@ import java.lang.reflect.Constructor;
 
 public class StaticLayoutWithMaxLines
 {
-  private static Object jdField_a_of_type_JavaLangObject;
-  private static Constructor<StaticLayout> jdField_a_of_type_JavaLangReflectConstructor;
-  private static boolean jdField_a_of_type_Boolean;
-  private static Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  private static boolean a;
+  private static Constructor<StaticLayout> b;
+  private static Object[] c;
+  private static Object d;
   
   /* Error */
   public static StaticLayout a(java.lang.CharSequence paramCharSequence, int paramInt1, int paramInt2, android.text.TextPaint paramTextPaint, int paramInt3, android.text.Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, android.text.TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
@@ -16,94 +16,94 @@ public class StaticLayoutWithMaxLines
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 20	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:a	()V
-    //   6: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   3: invokestatic 23	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:a	()V
+    //   6: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   9: iconst_0
     //   10: aload_0
     //   11: aastore
-    //   12: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   12: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   15: iconst_1
     //   16: iload_1
-    //   17: invokestatic 28	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   17: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   20: aastore
-    //   21: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   21: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   24: iconst_2
     //   25: iload_2
-    //   26: invokestatic 28	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   26: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   29: aastore
-    //   30: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   30: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   33: iconst_3
     //   34: aload_3
     //   35: aastore
-    //   36: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   36: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   39: iconst_4
     //   40: iload 4
-    //   42: invokestatic 28	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   42: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   45: aastore
-    //   46: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   46: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   49: iconst_5
     //   50: aload 5
     //   52: aastore
-    //   53: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   53: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   56: bipush 6
-    //   58: getstatic 30	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   58: getstatic 33	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:d	Ljava/lang/Object;
     //   61: aastore
-    //   62: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   62: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   65: bipush 7
     //   67: fload 6
-    //   69: invokestatic 35	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   69: invokestatic 38	java/lang/Float:valueOf	(F)Ljava/lang/Float;
     //   72: aastore
-    //   73: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   73: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   76: bipush 8
     //   78: fload 7
-    //   80: invokestatic 35	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   80: invokestatic 38	java/lang/Float:valueOf	(F)Ljava/lang/Float;
     //   83: aastore
-    //   84: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   84: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   87: bipush 9
     //   89: iload 8
-    //   91: invokestatic 40	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   91: invokestatic 43	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   94: aastore
-    //   95: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   95: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   98: bipush 10
     //   100: aload 9
     //   102: aastore
-    //   103: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   103: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   106: bipush 11
     //   108: iload 10
-    //   110: invokestatic 28	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   110: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   113: aastore
-    //   114: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   114: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   117: bipush 12
     //   119: iload 11
-    //   121: invokestatic 28	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   121: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   124: aastore
-    //   125: getstatic 42	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_JavaLangReflectConstructor	Ljava/lang/reflect/Constructor;
-    //   128: getstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
-    //   131: invokevirtual 48	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   134: checkcast 50	android/text/StaticLayout
+    //   125: getstatic 45	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:b	Ljava/lang/reflect/Constructor;
+    //   128: getstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
+    //   131: invokevirtual 51	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   134: checkcast 53	android/text/StaticLayout
     //   137: astore_0
     //   138: ldc 2
     //   140: monitorexit
     //   141: aload_0
     //   142: areturn
     //   143: astore_0
-    //   144: new 52	java/lang/StringBuilder
+    //   144: new 55	java/lang/StringBuilder
     //   147: dup
-    //   148: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   148: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   151: astore_3
     //   152: aload_3
-    //   153: ldc 55
-    //   155: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: ldc 58
+    //   155: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: pop
     //   159: aload_3
     //   160: aload_0
-    //   161: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   164: pop
-    //   165: new 64	java/lang/IllegalStateException
+    //   165: new 67	java/lang/IllegalStateException
     //   168: dup
     //   169: aload_3
-    //   170: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokespecial 71	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   170: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokespecial 74	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   176: athrow
     //   177: astore_0
     //   178: ldc 2
@@ -138,64 +138,64 @@ public class StaticLayoutWithMaxLines
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 81	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_Boolean	Z
+    //   3: getstatic 84	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:a	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +7 -> 15
     //   11: ldc 2
     //   13: monitorexit
     //   14: return
-    //   15: getstatic 87	android/os/Build$VERSION:SDK_INT	I
+    //   15: getstatic 90	android/os/Build$VERSION:SDK_INT	I
     //   18: bipush 18
     //   20: if_icmplt +15 -> 35
-    //   23: ldc 89
+    //   23: ldc 92
     //   25: astore_1
-    //   26: getstatic 95	android/text/TextDirectionHeuristics:FIRSTSTRONG_LTR	Landroid/text/TextDirectionHeuristic;
-    //   29: putstatic 30	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   26: getstatic 98	android/text/TextDirectionHeuristics:FIRSTSTRONG_LTR	Landroid/text/TextDirectionHeuristic;
+    //   29: putstatic 33	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:d	Ljava/lang/Object;
     //   32: goto +36 -> 68
     //   35: ldc 2
-    //   37: invokevirtual 101	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   37: invokevirtual 104	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   40: astore_2
     //   41: aload_2
-    //   42: ldc 103
-    //   44: invokevirtual 109	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   42: ldc 106
+    //   44: invokevirtual 112	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   47: astore_1
     //   48: aload_2
-    //   49: ldc 111
-    //   51: invokevirtual 109	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   49: ldc 114
+    //   51: invokevirtual 112	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   54: astore_2
     //   55: aload_2
-    //   56: ldc 112
-    //   58: invokevirtual 116	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   56: ldc 115
+    //   58: invokevirtual 119	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   61: aload_2
-    //   62: invokevirtual 122	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   65: putstatic 30	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   62: invokevirtual 125	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   65: putstatic 33	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:d	Ljava/lang/Object;
     //   68: bipush 13
-    //   70: anewarray 97	java/lang/Class
+    //   70: anewarray 100	java/lang/Class
     //   73: astore_2
     //   74: aload_2
     //   75: iconst_0
-    //   76: ldc 124
+    //   76: ldc 127
     //   78: aastore
     //   79: aload_2
     //   80: iconst_1
-    //   81: getstatic 128	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   81: getstatic 131	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   84: aastore
     //   85: aload_2
     //   86: iconst_2
-    //   87: getstatic 128	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   87: getstatic 131	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   90: aastore
     //   91: aload_2
     //   92: iconst_3
-    //   93: ldc 130
+    //   93: ldc 133
     //   95: aastore
     //   96: aload_2
     //   97: iconst_4
-    //   98: getstatic 128	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   98: getstatic 131	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   101: aastore
     //   102: aload_2
     //   103: iconst_5
-    //   104: ldc 132
+    //   104: ldc 135
     //   106: aastore
     //   107: aload_2
     //   108: bipush 6
@@ -203,77 +203,77 @@ public class StaticLayoutWithMaxLines
     //   111: aastore
     //   112: aload_2
     //   113: bipush 7
-    //   115: getstatic 133	java/lang/Float:TYPE	Ljava/lang/Class;
+    //   115: getstatic 136	java/lang/Float:TYPE	Ljava/lang/Class;
     //   118: aastore
     //   119: aload_2
     //   120: bipush 8
-    //   122: getstatic 133	java/lang/Float:TYPE	Ljava/lang/Class;
+    //   122: getstatic 136	java/lang/Float:TYPE	Ljava/lang/Class;
     //   125: aastore
     //   126: aload_2
     //   127: bipush 9
-    //   129: getstatic 134	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   129: getstatic 137	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   132: aastore
     //   133: aload_2
     //   134: bipush 10
-    //   136: ldc 136
+    //   136: ldc 139
     //   138: aastore
     //   139: aload_2
     //   140: bipush 11
-    //   142: getstatic 128	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   142: getstatic 131	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   145: aastore
     //   146: aload_2
     //   147: bipush 12
-    //   149: getstatic 128	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   149: getstatic 131	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   152: aastore
-    //   153: ldc 50
+    //   153: ldc 53
     //   155: aload_2
-    //   156: invokevirtual 140	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   159: putstatic 42	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_JavaLangReflectConstructor	Ljava/lang/reflect/Constructor;
-    //   162: getstatic 42	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_JavaLangReflectConstructor	Ljava/lang/reflect/Constructor;
+    //   156: invokevirtual 143	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   159: putstatic 45	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:b	Ljava/lang/reflect/Constructor;
+    //   162: getstatic 45	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:b	Ljava/lang/reflect/Constructor;
     //   165: iconst_1
-    //   166: invokevirtual 144	java/lang/reflect/Constructor:setAccessible	(Z)V
+    //   166: invokevirtual 147	java/lang/reflect/Constructor:setAccessible	(Z)V
     //   169: aload_2
     //   170: arraylength
     //   171: anewarray 4	java/lang/Object
-    //   174: putstatic 22	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
+    //   174: putstatic 25	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:c	[Ljava/lang/Object;
     //   177: iconst_1
-    //   178: putstatic 81	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_Boolean	Z
+    //   178: putstatic 84	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:a	Z
     //   181: goto +59 -> 240
     //   184: astore_1
     //   185: goto +59 -> 244
     //   188: astore_1
-    //   189: ldc 146
-    //   191: ldc 148
+    //   189: ldc 149
+    //   191: ldc 151
     //   193: aload_1
-    //   194: invokestatic 154	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   194: invokestatic 157	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   197: pop
     //   198: goto -21 -> 177
     //   201: astore_1
-    //   202: ldc 146
-    //   204: ldc 156
+    //   202: ldc 149
+    //   204: ldc 159
     //   206: aload_1
-    //   207: invokestatic 154	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   207: invokestatic 157	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   210: pop
     //   211: goto -34 -> 177
     //   214: astore_1
-    //   215: ldc 146
-    //   217: ldc 158
+    //   215: ldc 149
+    //   217: ldc 161
     //   219: aload_1
-    //   220: invokestatic 154	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   220: invokestatic 157	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   223: pop
     //   224: goto -47 -> 177
     //   227: astore_1
-    //   228: ldc 146
-    //   230: ldc 160
+    //   228: ldc 149
+    //   230: ldc 163
     //   232: aload_1
-    //   233: invokestatic 154	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   233: invokestatic 157	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   236: pop
     //   237: goto -60 -> 177
     //   240: ldc 2
     //   242: monitorexit
     //   243: return
     //   244: iconst_1
-    //   245: putstatic 81	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:jdField_a_of_type_Boolean	Z
+    //   245: putstatic 84	com/tencent/aelight/camera/aioeditor/capture/text/StaticLayoutWithMaxLines:a	Z
     //   248: aload_1
     //   249: athrow
     //   250: astore_1
@@ -347,7 +347,7 @@ public class StaticLayoutWithMaxLines
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.StaticLayoutWithMaxLines
  * JD-Core Version:    0.7.0.1
  */

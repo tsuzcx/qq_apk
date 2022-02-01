@@ -18,20 +18,20 @@ class AccountPanelViewContainer$2
   {
     if (((paramView.getTag() instanceof AccountPanelViewContainer.AccountItemViewHolder)) && (!((IPwdSetUtilApi)QRoute.api(IPwdSetUtilApi.class)).checkHasNotSetPwd(AccountPanelViewContainer.a(this.a))))
     {
-      int i = ((AccountPanelViewContainer.AccountItemViewHolder)paramView.getTag()).a;
+      int i = ((AccountPanelViewContainer.AccountItemViewHolder)paramView.getTag()).g;
       Object localObject;
       if (i != 1)
       {
         if (i == 2)
         {
           localObject = (ISubAccountApi.SubAccountInfoProxy)paramView.getTag(AccountPanelViewContainer.b);
-          AccountPanelViewContainer.a(this.a).a((ISubAccountApi.SubAccountInfoProxy)localObject);
+          AccountPanelViewContainer.b(this.a).a((ISubAccountApi.SubAccountInfoProxy)localObject);
         }
       }
       else
       {
         localObject = (SimpleAccount)paramView.getTag(AccountPanelViewContainer.b);
-        AccountPanelViewContainer.a(this.a).a((SimpleAccount)localObject);
+        AccountPanelViewContainer.b(this.a).a((SimpleAccount)localObject);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -39,7 +39,7 @@ class AccountPanelViewContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AccountPanelViewContainer.2
  * JD-Core Version:    0.7.0.1
  */

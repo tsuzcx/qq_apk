@@ -12,14 +12,14 @@ public class MatchChatNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  public int a(Message paramMessage)
+  public int b(Message paramMessage)
   {
     return 266;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.MatchChatNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ final class ShareQQArkHelper$4
   {
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      if (this.jdField_a_of_type_Int == 5)
+      if (this.a == 5)
       {
         localObject = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
         if (localObject == null) {
@@ -32,7 +32,7 @@ final class ShareQQArkHelper$4
         }
         ((ShareState)localObject).shareJson = paramJSONObject.toString();
       }
-      ShareQQArkHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniArkShareModel, paramJSONObject, this.jdField_a_of_type_Int);
+      ShareQQArkHelper.a(this.b, this.c, paramJSONObject, this.a);
       return;
     }
     Object localObject = new StringBuilder();
@@ -41,12 +41,12 @@ final class ShareQQArkHelper$4
     ((StringBuilder)localObject).append(" ");
     ((StringBuilder)localObject).append(paramJSONObject);
     QLog.e("ShareQQArkHelper", 1, ((StringBuilder)localObject).toString());
-    ShareQQArkHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramBoolean, paramJSONObject, this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener);
+    ShareQQArkHelper.a(this.b, paramBoolean, paramJSONObject, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareQQArkHelper.4
  * JD-Core Version:    0.7.0.1
  */

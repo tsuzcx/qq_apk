@@ -46,27 +46,22 @@ import mqq.app.MobileQQ;
 public class VasADBannerManager
   implements View.OnClickListener
 {
-  protected View a;
-  protected URLImageView a;
   protected BaseActivity a;
-  private BannerManager jdField_a_of_type_ComTencentMobileqqBannerBannerManager;
-  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
   protected View b;
-  private boolean b;
-  private boolean c = false;
+  protected View c;
+  protected URLImageView d;
+  private BannerManager e;
+  private Map<String, Boolean> f = new HashMap();
+  private boolean g = false;
+  private boolean h = false;
+  private boolean i = false;
   
-  public VasADBannerManager()
+  public static VasADBannerManager b(BaseActivity paramBaseActivity, BannerManager paramBannerManager)
   {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public static VasADBannerManager a(BaseActivity paramBaseActivity, BannerManager paramBannerManager)
-  {
-    Object localObject = VasADBannerResDownloadManager.a().a(a());
+    Object localObject = VasADBannerResDownloadManager.a().c(m());
     if (localObject != null)
     {
-      localObject = ((VasADBannerConfigInfo)localObject).a();
+      localObject = ((VasADBannerConfigInfo)localObject).c();
       if (localObject != null) {
         ((VasADBannerManager)localObject).a(paramBaseActivity, paramBannerManager);
       }
@@ -75,7 +70,28 @@ public class VasADBannerManager
     return null;
   }
   
-  private static String a()
+  private void c(VasADBannerConfigInfo paramVasADBannerConfigInfo)
+  {
+    this.h = paramVasADBannerConfigInfo.b();
+    if (this.h)
+    {
+      this.i = n();
+      if (this.i) {
+        o();
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramVasADBannerConfigInfo = new StringBuilder();
+      paramVasADBannerConfigInfo.append("startPreloadWebView needed: ");
+      paramVasADBannerConfigInfo.append(this.h);
+      paramVasADBannerConfigInfo.append(", done: ");
+      paramVasADBannerConfigInfo.append(this.i);
+      QLog.d("VasADBannerManager", 2, paramVasADBannerConfigInfo.toString());
+    }
+  }
+  
+  private static String m()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime != null)
@@ -92,33 +108,12 @@ public class VasADBannerManager
     return null;
   }
   
-  private boolean b()
+  private boolean n()
   {
-    return ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).mAutomator.c();
+    return ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).mAutomator.h();
   }
   
-  private void c(VasADBannerConfigInfo paramVasADBannerConfigInfo)
-  {
-    this.jdField_b_of_type_Boolean = paramVasADBannerConfigInfo.a();
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.c = b();
-      if (this.c) {
-        h();
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramVasADBannerConfigInfo = new StringBuilder();
-      paramVasADBannerConfigInfo.append("startPreloadWebView needed: ");
-      paramVasADBannerConfigInfo.append(this.jdField_b_of_type_Boolean);
-      paramVasADBannerConfigInfo.append(", done: ");
-      paramVasADBannerConfigInfo.append(this.c);
-      QLog.d("VasADBannerManager", 2, paramVasADBannerConfigInfo.toString());
-    }
-  }
-  
-  private void h()
+  private void o()
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("from", -1);
@@ -127,18 +122,13 @@ public class VasADBannerManager
     BaseApplicationImpl.sApplication.sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
   }
   
-  private void i()
+  private void p()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
+    this.h = false;
+    this.i = false;
     if (QLog.isColorLevel()) {
       QLog.d("VasADBannerManager", 2, "stopPreloadWebView");
     }
-  }
-  
-  protected int a()
-  {
-    return 2131561930;
   }
   
   protected int a(String paramString)
@@ -156,8 +146,8 @@ public class VasADBannerManager
     }
     try
     {
-      int i = Color.parseColor((String)localObject);
-      return i;
+      int j = Color.parseColor((String)localObject);
+      return j;
     }
     catch (Exception paramString)
     {
@@ -173,54 +163,24 @@ public class VasADBannerManager
   public View a()
   {
     QLog.i("VasADBannerManager", 1, "initVasADBanner");
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(a(), null);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368725);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368715));
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    localLayoutParams.width = b();
-    localLayoutParams.height = c();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  protected String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    if ((localObject != null) && (((BaseActivity)localObject).app != null)) {
-      localObject = ContactUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin());
-    } else {
-      localObject = "";
-    }
-    return paramString.replace("{nickname}", (CharSequence)localObject);
-  }
-  
-  public void a()
-  {
-    QLog.e("VasADBannerManager", 1, "hideBanner");
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject != null) {
-      ((View)localObject).setVisibility(8);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqBannerBannerManager;
-    if (localObject != null)
-    {
-      ((BannerManager)localObject).b(VasADBannerProcessor.jdField_a_of_type_Int, 2000);
-      i();
-    }
-    f();
+    this.b = LayoutInflater.from(this.a).inflate(b(), null);
+    this.c = this.b.findViewById(2131435638);
+    this.d = ((URLImageView)this.b.findViewById(2131435628));
+    ViewGroup.LayoutParams localLayoutParams = this.d.getLayoutParams();
+    localLayoutParams.width = k();
+    localLayoutParams.height = l();
+    this.d.setLayoutParams(localLayoutParams);
+    this.d.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.d.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.b.setVisibility(8);
+    return this.b;
   }
   
   public void a(BaseActivity paramBaseActivity, BannerManager paramBannerManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqBannerBannerManager = paramBannerManager;
+    this.a = paramBaseActivity;
+    this.e = paramBannerManager;
   }
   
   protected void a(VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -230,16 +190,16 @@ public class VasADBannerManager
       if (paramVasADBannerConfigInfo.a() == null) {
         return;
       }
-      if (paramVasADBannerConfigInfo.b())
+      if (paramVasADBannerConfigInfo.d())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(a());
+        localStringBuilder.append(m());
         localStringBuilder.append("");
-        VasSplashUtil.a(localStringBuilder.toString());
-        TianshuReportUtils.b(paramVasADBannerConfigInfo.a().c, 137, paramVasADBannerConfigInfo.a().jdField_b_of_type_JavaLangString);
+        VasSplashUtil.b(localStringBuilder.toString());
+        TianshuReportUtils.b(paramVasADBannerConfigInfo.a().e, 137, paramVasADBannerConfigInfo.a().d);
         return;
       }
-      TianshuReportUtils.b(paramVasADBannerConfigInfo.a().c, 101);
+      TianshuReportUtils.b(paramVasADBannerConfigInfo.a().e, 101);
     }
   }
   
@@ -254,25 +214,23 @@ public class VasADBannerManager
     }
   }
   
-  public boolean a()
-  {
-    Object localObject = a();
-    localObject = VasADBannerResDownloadManager.a().a((String)localObject);
-    if ((localObject != null) && (((VasADBannerConfigInfo)localObject).a != null) && (((VasADBannerConfigInfo)localObject).a.size() != 0)) {
-      return true;
-    }
-    QLog.i("VasADBannerManager", 1, "isNeedShowVasADBanner configInfo is null, return false.");
-    return false;
-  }
-  
   protected int b()
   {
-    return ViewUtils.a();
+    return 2131628354;
   }
   
-  public void b()
+  protected String b(String paramString)
   {
-    QLog.e("VasADBannerManager", 1, "onRecycle");
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    Object localObject = this.a;
+    if ((localObject != null) && (((BaseActivity)localObject).app != null)) {
+      localObject = ContactUtils.f(this.a.app, this.a.app.getCurrentAccountUin());
+    } else {
+      localObject = "";
+    }
+    return paramString.replace("{nickname}", (CharSequence)localObject);
   }
   
   public void b(VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -282,43 +240,70 @@ public class VasADBannerManager
       if (paramVasADBannerConfigInfo.a() == null) {
         return;
       }
-      if (paramVasADBannerConfigInfo.b())
+      if (paramVasADBannerConfigInfo.d())
       {
-        TianshuReportUtils.b(paramVasADBannerConfigInfo.a().c, 138, paramVasADBannerConfigInfo.a().jdField_b_of_type_JavaLangString);
+        TianshuReportUtils.b(paramVasADBannerConfigInfo.a().e, 138, paramVasADBannerConfigInfo.a().d);
         return;
       }
-      TianshuReportUtils.b(paramVasADBannerConfigInfo.a().c, 102);
+      TianshuReportUtils.b(paramVasADBannerConfigInfo.a().e, 102);
     }
-  }
-  
-  protected int c()
-  {
-    return (int)(b() * 0.1333333F);
   }
   
   public void c()
   {
-    VasADBannerConfigInfo localVasADBannerConfigInfo = VasADBannerResDownloadManager.a().a(a());
+    QLog.e("VasADBannerManager", 1, "hideBanner");
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(8);
+    }
+    localObject = this.e;
+    if (localObject != null)
+    {
+      ((BannerManager)localObject).b(VasADBannerProcessor.a, 2000);
+      p();
+    }
+    i();
+  }
+  
+  public void d()
+  {
+    QLog.e("VasADBannerManager", 1, "onRecycle");
+  }
+  
+  public boolean e()
+  {
+    Object localObject = m();
+    localObject = VasADBannerResDownloadManager.a().c((String)localObject);
+    if ((localObject != null) && (((VasADBannerConfigInfo)localObject).a != null) && (((VasADBannerConfigInfo)localObject).a.size() != 0)) {
+      return true;
+    }
+    QLog.i("VasADBannerManager", 1, "isNeedShowVasADBanner configInfo is null, return false.");
+    return false;
+  }
+  
+  public void f()
+  {
+    VasADBannerConfigInfo localVasADBannerConfigInfo = VasADBannerResDownloadManager.a().c(m());
     if (localVasADBannerConfigInfo != null)
     {
       if (localVasADBannerConfigInfo.a() == null) {
         return;
       }
-      if (localVasADBannerConfigInfo.b())
+      if (localVasADBannerConfigInfo.d())
       {
-        TianshuReportUtils.b(localVasADBannerConfigInfo.a().c, 122, localVasADBannerConfigInfo.a().jdField_b_of_type_JavaLangString);
+        TianshuReportUtils.b(localVasADBannerConfigInfo.a().e, 122, localVasADBannerConfigInfo.a().d);
         return;
       }
-      TianshuReportUtils.b(localVasADBannerConfigInfo.a().c, 122);
+      TianshuReportUtils.b(localVasADBannerConfigInfo.a().e, 122);
     }
   }
   
-  public void d()
+  public void g()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentImageURLImageView != null))
+    if ((this.b != null) && (this.d != null))
     {
       QLog.i("VasADBannerManager", 1, "start showVasADBanner");
-      Object localObject2 = VasADBannerResDownloadManager.a().a(a());
+      Object localObject2 = VasADBannerResDownloadManager.a().c(m());
       Object localObject1 = null;
       if (localObject2 != null) {
         localObject1 = ((VasADBannerConfigInfo)localObject2).a();
@@ -329,18 +314,18 @@ public class VasADBannerManager
         if (localResourceInfo == null)
         {
           QLog.e("VasADBannerManager", 1, "initVasADBanner resourceInfo = null");
-          a();
+          c();
           return;
         }
-        if ((!TextUtils.isEmpty(localResourceInfo.c)) && ((((VasADBannerData)localObject1).jdField_a_of_type_Int == 1) || (((VasADBannerData)localObject1).jdField_a_of_type_Int == 0)))
+        if ((!TextUtils.isEmpty(localResourceInfo.c)) && ((((VasADBannerData)localObject1).a == 1) || (((VasADBannerData)localObject1).a == 0)))
         {
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
           localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-          localURLDrawableOptions.mRequestWidth = b();
-          localURLDrawableOptions.mRequestHeight = c();
+          localURLDrawableOptions.mRequestWidth = k();
+          localURLDrawableOptions.mRequestHeight = l();
           boolean bool;
-          if (((VasADBannerData)localObject1).jdField_a_of_type_Int == 1) {
+          if (((VasADBannerData)localObject1).a == 1) {
             bool = true;
           } else {
             bool = false;
@@ -353,16 +338,16 @@ public class VasADBannerManager
             ((StringBuilder)localObject1).append("initVasADBanner urlDrawable == null  file path = ");
             ((StringBuilder)localObject1).append(localResourceInfo.c);
             QLog.i("VasADBannerManager", 1, ((StringBuilder)localObject1).toString());
-            a();
+            c();
             return;
           }
-          this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+          this.d.setImageDrawable((Drawable)localObject1);
           if (((URLDrawable)localObject1).getStatus() == 1)
           {
-            this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+            this.b.setVisibility(0);
             QLog.i("VasADBannerManager", 1, "showVasADBanner urlDrawable status is success");
             a((VasADBannerConfigInfo)localObject2);
-            SetSplash.a(this.jdField_a_of_type_AndroidViewView);
+            SetSplash.a(this.b);
             return;
           }
           ((URLDrawable)localObject1).setURLDrawableListener(new VasADBannerManager.1(this, (VasADBannerConfigInfo)localObject2));
@@ -371,77 +356,87 @@ public class VasADBannerManager
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("initVasADBanner resType is wrong: ");
-        ((StringBuilder)localObject2).append(((VasADBannerData)localObject1).jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(((VasADBannerData)localObject1).a);
         ((StringBuilder)localObject2).append(" file path = ");
         ((StringBuilder)localObject2).append(localResourceInfo.c);
         QLog.i("VasADBannerManager", 1, ((StringBuilder)localObject2).toString());
-        a();
+        c();
         return;
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("initVasADBanner config info is null, uin: ");
-      ((StringBuilder)localObject1).append(a());
+      ((StringBuilder)localObject1).append(m());
       QLog.i("VasADBannerManager", 1, ((StringBuilder)localObject1).toString());
-      a();
+      c();
       return;
     }
     QLog.e("VasADBannerManager", 1, "showVasADBanner xml init error");
-    a();
+    c();
   }
   
-  public void e()
+  public void h()
   {
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkIfHideBanner isClick: ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.g);
       QLog.i("VasADBannerManager", 4, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      a();
-      this.jdField_a_of_type_Boolean = false;
+      c();
+      this.g = false;
     }
   }
   
-  public void f()
+  public void i()
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.f;
     if (localMap != null) {
       localMap.clear();
     }
   }
   
-  public void g()
+  public void j()
   {
-    if ((this.jdField_b_of_type_Boolean) && (!this.c))
+    if ((this.h) && (!this.i))
     {
-      this.c = true;
-      h();
+      this.i = true;
+      o();
     }
+  }
+  
+  protected int k()
+  {
+    return ViewUtils.getScreenWidth();
+  }
+  
+  protected int l()
+  {
+    return (int)(k() * 0.1333333F);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131368715)
+    int j = paramView.getId();
+    if (j != 2131435628)
     {
-      if (i == 2131368725)
+      if (j == 2131435638)
       {
+        f();
         c();
-        a();
-        VasADBannerResDownloadManager.a().a(a());
+        VasADBannerResDownloadManager.a().b(m());
       }
     }
     else
     {
-      Object localObject1 = VasADBannerResDownloadManager.a().a(a());
+      Object localObject1 = VasADBannerResDownloadManager.a().c(m());
       if ((localObject1 == null) || (((VasADBannerConfigInfo)localObject1).a() == null)) {
         break label587;
       }
       VasADBannerData localVasADBannerData = ((VasADBannerConfigInfo)localObject1).a();
-      if ((localVasADBannerData == null) || (TextUtils.isEmpty(localVasADBannerData.jdField_a_of_type_JavaLangString))) {
+      if ((localVasADBannerData == null) || (TextUtils.isEmpty(localVasADBannerData.b))) {
         break label575;
       }
       b((VasADBannerConfigInfo)localObject1);
@@ -449,12 +444,12 @@ public class VasADBannerManager
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("qboss banner jump url = ");
-        ((StringBuilder)localObject1).append(localVasADBannerData.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(localVasADBannerData.b);
         QLog.i("VasADBannerManager", 2, ((StringBuilder)localObject1).toString());
       }
-      if (localVasADBannerData.jdField_b_of_type_Int == 1)
+      if (localVasADBannerData.c == 1)
       {
-        Object localObject2 = localVasADBannerData.jdField_a_of_type_JavaLangString;
+        Object localObject2 = localVasADBannerData.b;
         localObject1 = localObject2;
         if (!((String)localObject2).contains("http://"))
         {
@@ -472,7 +467,7 @@ public class VasADBannerManager
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("&qboss_trace=");
-          ((StringBuilder)localObject2).append(localVasADBannerData.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(localVasADBannerData.d);
           localObject1 = ((StringBuilder)localObject2).toString();
         }
         else
@@ -480,12 +475,12 @@ public class VasADBannerManager
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("?qboss_trace=");
-          ((StringBuilder)localObject2).append(localVasADBannerData.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(localVasADBannerData.d);
           localObject1 = ((StringBuilder)localObject2).toString();
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append(MobileReportManager.getStringQboos2H5(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localVasADBannerData.jdField_b_of_type_JavaLangString, "&"));
+        ((StringBuilder)localObject2).append(MobileReportManager.getStringQboos2H5(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localVasADBannerData.d, "&"));
         localObject1 = ((StringBuilder)localObject2).toString();
         if (QLog.isDevelopLevel())
         {
@@ -494,30 +489,30 @@ public class VasADBannerManager
           ((StringBuilder)localObject2).append((String)localObject1);
           QLog.i("VasADBannerManager", 4, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_Boolean = true;
-        localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        this.g = true;
+        localObject2 = new Intent(this.a, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject1);
         ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_vip");
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject2);
+        this.a.startActivity((Intent)localObject2);
       }
-      else if (localVasADBannerData.jdField_b_of_type_Int == 2)
+      else if (localVasADBannerData.c == 2)
       {
-        localObject1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localVasADBannerData.jdField_a_of_type_JavaLangString);
+        localObject1 = JumpParser.a(this.a.app, this.a, localVasADBannerData.b);
         if (localObject1 != null)
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.g = true;
           ((JumpAction)localObject1).a();
         }
         else
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("jumpAction is null, jump url = ");
-          ((StringBuilder)localObject1).append(localVasADBannerData.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(localVasADBannerData.b);
           QLog.e("VasADBannerManager", 1, ((StringBuilder)localObject1).toString());
         }
       }
     }
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 11, 0, "", "", "", "");
+    ReportController.a(this.a.app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 11, 0, "", "", "", "");
     break label596;
     label575:
     QLog.e("VasADBannerManager", 1, "bannerData is null || jumpUrl is empty");
@@ -530,7 +525,7 @@ public class VasADBannerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerManager
  * JD-Core Version:    0.7.0.1
  */

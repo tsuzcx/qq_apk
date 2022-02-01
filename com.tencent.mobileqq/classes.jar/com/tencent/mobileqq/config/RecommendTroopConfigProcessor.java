@@ -13,7 +13,7 @@ public class RecommendTroopConfigProcessor
 {
   public static RecommendTroopConfigProcessor.RecommendTroopConfigBean a()
   {
-    return (RecommendTroopConfigProcessor.RecommendTroopConfigBean)QConfigManager.a().a(457);
+    return (RecommendTroopConfigProcessor.RecommendTroopConfigBean)QConfigManager.b().b(457);
   }
   
   @NonNull
@@ -27,7 +27,7 @@ public class RecommendTroopConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -77,7 +77,7 @@ public class RecommendTroopConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.RecommendTroopConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import java.nio.ByteBuffer;
 public class AROnlineVideoView
   implements IVideoViewBase
 {
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private AROnlineVideoView.DrawCallback jdField_a_of_type_ComTencentMobileqqArOnline_videoAROnlineVideoView$DrawCallback;
+  private SurfaceTexture a;
+  private AROnlineVideoView.DrawCallback b;
   
   public void addViewCallBack(IVideoViewBase.IVideoViewCallBack paramIVideoViewCallBack)
   {
@@ -39,7 +39,7 @@ public class AROnlineVideoView
   
   public void drawFrame(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean, int paramInt5, int paramInt6)
   {
-    AROnlineVideoView.DrawCallback localDrawCallback = this.jdField_a_of_type_ComTencentMobileqqArOnline_videoAROnlineVideoView$DrawCallback;
+    AROnlineVideoView.DrawCallback localDrawCallback = this.b;
     if (localDrawCallback != null) {
       localDrawCallback.a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt1, paramInt2, paramInt3, paramInt4, paramFloat, paramBoolean);
     }
@@ -54,7 +54,7 @@ public class AROnlineVideoView
   public Object getRenderObject()
   {
     QLog.d("AROnlineVideoView", 1, "getRenderObject");
-    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    return this.a;
   }
   
   public String getSeriableNO()
@@ -88,7 +88,7 @@ public class AROnlineVideoView
   public boolean isSurfaceReady()
   {
     QLog.d("AROnlineVideoView", 1, "isSurfaceReady");
-    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null;
+    return this.a != null;
   }
   
   public void onResume()
@@ -162,7 +162,7 @@ public class AROnlineVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.online_video.AROnlineVideoView
  * JD-Core Version:    0.7.0.1
  */

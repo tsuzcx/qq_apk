@@ -15,14 +15,14 @@ class BasePicItemBuilder$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+    if (this.a.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
-      ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+      this.a.b.setVisibility(8);
+      this.a.b.setProgressKey(this.b);
+      this.a.b.b(this.b);
+      this.a.b.setProcessor(null);
+      ((RelativeLayout)this.a.h).removeView(this.a.b);
+      this.a.b = null;
     }
   }
   
@@ -33,30 +33,30 @@ class BasePicItemBuilder$1
     }
     if (paramFileSaveResult != null)
     {
-      if (paramFileSaveResult.jdField_a_of_type_Int == 0) {
-        FileSaveToastUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a);
+      if (paramFileSaveResult.b == 0) {
+        FileSaveToastUtils.a(this.c.e);
       } else {
-        FileSaveToastUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a);
+        FileSaveToastUtils.b(this.c.e);
       }
-      paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.b(this);
+      paramFileSaveResult.g.b(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+    if (this.a.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
-      ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+      this.a.b.setVisibility(8);
+      this.a.b.setProgressKey(this.b);
+      this.a.b.b(this.b);
+      this.a.b.setProcessor(null);
+      ((RelativeLayout)this.a.h).removeView(this.a.b);
+      this.a.b = null;
     }
   }
   
   public void a(FileSaveResult paramFileSaveResult, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+    if (this.a.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.invalidate();
+      this.a.b.setProgress(paramInt);
+      this.a.b.invalidate();
     }
   }
   
@@ -64,7 +64,7 @@ class BasePicItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

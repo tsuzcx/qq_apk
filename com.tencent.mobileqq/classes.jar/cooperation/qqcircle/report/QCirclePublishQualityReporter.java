@@ -2,8 +2,8 @@ package cooperation.qqcircle.report;
 
 import android.os.Build.VERSION;
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.utils.QCircleHostStubUtil;
 import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
@@ -28,6 +28,7 @@ public class QCirclePublishQualityReporter
   public static final String EXT4 = "ext4";
   public static final String EXT5 = "ext5";
   public static final String EXT6 = "ext6";
+  public static String E_CLICK_SEND_MOOD = "E_CLICK_SEND_MOOD";
   public static String E_PEAK_CRASH_PATHINFO = "E_PEAK_CRASH_PATHINFO";
   public static String E_PICKER_ENTER = "E_PICKER_ENTER";
   public static String E_PICKER_EXIT_CANCEL = "E_PICKER_EXIT_CANCEL";
@@ -58,8 +59,9 @@ public class QCirclePublishQualityReporter
   public static String P_MATERIAL_COST_END = "P_MATERIAL_COST_END";
   public static String P_MATERIAL_COST_START = "P_MATERIAL_COST_START";
   public static String P_MATERIAL_DOWNLOAD_FINISH = "P_MATERIAL_DOWNLOAD_FINISH";
+  public static String P_UPLOAD_COST = "P_UPLOAD_COST";
   public static String P_VIDEO_EXPORT_COST = "P_VIDEO_EXPORT_COST";
-  private static final String TAG = "[QcirclePublish]QCirclePublishQualityReporter";
+  private static final String TAG = "[QcirclePublish][PublishUpload]QCirclePublishQualityReporter";
   public static final String TRACEID = "traceid";
   private static final String VALUE_APPID = "100036";
   
@@ -73,11 +75,10 @@ public class QCirclePublishQualityReporter
     localStringBuilder.append("_");
     localStringBuilder.append(UUID.randomUUID());
     str = localStringBuilder.toString();
-    int i = RFLog.USR;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("traceId:");
     localStringBuilder.append(str);
-    RFLog.d("[QcirclePublish]QCirclePublishQualityReporter", i, localStringBuilder.toString());
+    QLog.d("[QcirclePublish][PublishUpload]QCirclePublishQualityReporter", 1, localStringBuilder.toString());
     return str;
   }
   
@@ -89,11 +90,10 @@ public class QCirclePublishQualityReporter
     while (i < paramList.size())
     {
       FeedCloudCommon.Entry localEntry = (FeedCloudCommon.Entry)paramList.get(i);
-      int j = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append(" key:");
-      RFLog.d("[QcirclePublish]QCirclePublishQualityReporter", j, new Object[] { localStringBuilder.toString(), localEntry.key.get(), " value:", localEntry.value.get() });
+      QLog.d("[QcirclePublish][PublishUpload]QCirclePublishQualityReporter", 1, new Object[] { localStringBuilder.toString(), localEntry.key.get(), " value:", localEntry.value.get() });
       i += 1;
     }
     paramList.add(QCircleReportHelper.newEntry("host_uin", QCircleHostStubUtil.getCurrentAccount()));
@@ -119,7 +119,7 @@ public class QCirclePublishQualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCirclePublishQualityReporter
  * JD-Core Version:    0.7.0.1
  */

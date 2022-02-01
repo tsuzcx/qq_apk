@@ -16,66 +16,56 @@ import java.util.List;
 public class StoryPickerListAdapter
   extends BaseAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  StoryPickerHorizontalListView.OnCheckBoxClickListener jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnCheckBoxClickListener;
-  StoryPickerHorizontalListView.OnHorizontalItemClickListener jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalItemClickListener;
-  StoryPickerHorizontalListView.OnHorizontalScrollListener jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener;
-  ArrayList<VideoCollectionItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, WeakReference<StoryPickerListAdapter.DayItemViewHolder>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  Context a;
+  ArrayList<VideoCollectionItem> b = new ArrayList();
+  HashMap<String, WeakReference<StoryPickerListAdapter.DayItemViewHolder>> c = new HashMap();
+  StoryPickerHorizontalListView.OnHorizontalScrollListener d;
+  StoryPickerHorizontalListView.OnHorizontalItemClickListener e;
+  StoryPickerHorizontalListView.OnCheckBoxClickListener f;
   
   public StoryPickerListAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   private View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561777, paramViewGroup, false);
-    paramViewGroup.setTag(new StoryPickerListAdapter.DayItemViewHolder(this, paramViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener));
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131628156, paramViewGroup, false);
+    paramViewGroup.setTag(new StoryPickerListAdapter.DayItemViewHolder(this, paramViewGroup, this.d));
     return paramViewGroup;
   }
   
   private void a(int paramInt, View paramView)
   {
-    VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.b.get(paramInt);
     ((StoryPickerListAdapter.DayItemViewHolder)paramView.getTag()).a(paramInt, localVideoCollectionItem);
-  }
-  
-  public VideoCollectionItem a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      return (VideoCollectionItem)localArrayList.get(localArrayList.size() - 1);
-    }
-    return null;
   }
   
   public List<VideoCollectionItem> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.b;
   }
   
   public void a(StoryPickerHorizontalListView.OnCheckBoxClickListener paramOnCheckBoxClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnCheckBoxClickListener = paramOnCheckBoxClickListener;
+    this.f = paramOnCheckBoxClickListener;
   }
   
   public void a(StoryPickerHorizontalListView.OnHorizontalItemClickListener paramOnHorizontalItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalItemClickListener = paramOnHorizontalItemClickListener;
+    this.e = paramOnHorizontalItemClickListener;
   }
   
   public void a(StoryPickerHorizontalListView.OnHorizontalScrollListener paramOnHorizontalScrollListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener = paramOnHorizontalScrollListener;
+    this.d = paramOnHorizontalScrollListener;
   }
   
   public void a(String paramString, List<VideoCollectionItem.FakeVideoUIItem> paramList)
   {
-    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    WeakReference localWeakReference = (WeakReference)this.c.get(paramString);
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((StoryPickerHorizontalListAdapter)((StoryPickerListAdapter.DayItemViewHolder)localWeakReference.get()).a.a()).b(paramList, paramString);
+      ((StoryPickerHorizontalListAdapter)((StoryPickerListAdapter.DayItemViewHolder)localWeakReference.get()).b.getAdapter()).b(paramList, paramString);
     }
   }
   
@@ -83,29 +73,39 @@ public class StoryPickerListAdapter
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.b.clear();
+      this.b.addAll(paramList);
       notifyDataSetChanged();
     }
+  }
+  
+  public VideoCollectionItem b()
+  {
+    if (!this.b.isEmpty())
+    {
+      ArrayList localArrayList = this.b;
+      return (VideoCollectionItem)localArrayList.get(localArrayList.size() - 1);
+    }
+    return null;
   }
   
   public void b(List<VideoCollectionItem> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.b.addAll(paramList);
       notifyDataSetChanged();
     }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)

@@ -47,36 +47,36 @@ public class KandianCompetitiveAdPandentView
   extends RelativeLayout
   implements View.OnClickListener, KandianAdPandent
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new KandianCompetitiveAdPandentView.1(this));
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int jdField_b_of_type_Int = 20;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  private final String jdField_b_of_type_JavaLangString = "https://img.nfa.qq.com/gmaster_prod/16169760/gmaster_3r6lkqbdi4w0_competitive_ad_close.png";
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_b_of_type_Boolean = false;
-  private URLImageView jdField_c_of_type_ComTencentImageURLImageView;
-  private final String jdField_c_of_type_JavaLangString = "https://img.nfa.qq.com/gmaster_prod/16171488/gmaster_36ds3mpdggs0_competitive_ad_close1.png";
+  private Activity a;
+  private TextView b;
+  private URLImageView c;
+  private URLImageView d;
+  private URLImageView e;
+  private TextView f;
+  private LinearLayout g;
+  private View h;
+  private View i;
+  private int j;
+  private ViewGroup k;
+  private boolean l = false;
+  private ListView m;
+  private String n;
+  private float o = 1.0F;
+  private boolean p = false;
+  private final String q = "https://img.nfa.qq.com/gmaster_prod/16169760/gmaster_3r6lkqbdi4w0_competitive_ad_close.png";
+  private final String r = "https://img.nfa.qq.com/gmaster_prod/16171488/gmaster_36ds3mpdggs0_competitive_ad_close1.png";
+  private final int s = 20;
+  private Handler t = new Handler(new KandianCompetitiveAdPandentView.1(this));
+  private AtomicBoolean u = new AtomicBoolean(false);
+  private AtomicBoolean v = new AtomicBoolean(false);
   
   public KandianCompetitiveAdPandentView(Activity paramActivity, @Nullable ListView paramListView, String paramString)
   {
     super(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramActivity.getWindow().getDecorView());
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.a = paramActivity;
+    this.k = ((ViewGroup)paramActivity.getWindow().getDecorView());
+    this.n = paramString;
+    this.m = paramListView;
     c();
   }
   
@@ -90,7 +90,7 @@ public class KandianCompetitiveAdPandentView
       localURLDrawableOptions.mRequestHeight = AIOUtils.b(paramInt3, paramActivity.getResources());
       paramActivity = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       paramActivity.setTag(URLDrawableDecodeHandler.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, paramInt1));
-      paramActivity.setDecodeHandler(URLDrawableDecodeHandler.i);
+      paramActivity.setDecodeHandler(URLDrawableDecodeHandler.j);
       paramURLImageView.setImageDrawable(paramActivity);
       return;
     }
@@ -108,35 +108,29 @@ public class KandianCompetitiveAdPandentView
     }
   }
   
-  private boolean a()
-  {
-    String str = Aladdin.getConfig(465).getString("mask_competitive_ad_btn_switch", "0");
-    return (str == null) || (!str.equals("1"));
-  }
-  
   private void b(int paramInt)
   {
-    if (!a())
+    if (!d())
     {
-      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
-      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject = this.jdField_c_of_type_ComTencentImageURLImageView;
-      float f = this.jdField_a_of_type_Float;
-      a((URLImageView)localObject, "https://img.nfa.qq.com/gmaster_prod/16171488/gmaster_36ds3mpdggs0_competitive_ad_close1.png", 0, (int)(f * 45.0F), (int)(f * 45.0F), this.jdField_a_of_type_AndroidAppActivity);
-      localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-      ((ViewGroup.MarginLayoutParams)localObject).setMargins(((ViewGroup.MarginLayoutParams)localObject).leftMargin, AIOUtils.b(99.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), ((ViewGroup.MarginLayoutParams)localObject).rightMargin, ((ViewGroup.MarginLayoutParams)localObject).bottomMargin);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.d.setVisibility(8);
+      this.e.setVisibility(0);
+      this.f.setVisibility(0);
+      localObject = this.e;
+      float f1 = this.o;
+      a((URLImageView)localObject, "https://img.nfa.qq.com/gmaster_prod/16171488/gmaster_36ds3mpdggs0_competitive_ad_close1.png", 0, (int)(f1 * 45.0F), (int)(f1 * 45.0F), this.a);
+      localObject = (ViewGroup.MarginLayoutParams)this.c.getLayoutParams();
+      ((ViewGroup.MarginLayoutParams)localObject).setMargins(((ViewGroup.MarginLayoutParams)localObject).leftMargin, AIOUtils.b(99.0F, this.a.getResources()), ((ViewGroup.MarginLayoutParams)localObject).rightMargin, ((ViewGroup.MarginLayoutParams)localObject).bottomMargin);
+      this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     else
     {
-      a(this.jdField_b_of_type_ComTencentImageURLImageView, "https://img.nfa.qq.com/gmaster_prod/16169760/gmaster_3r6lkqbdi4w0_competitive_ad_close.png", 0, 40, 40, this.jdField_a_of_type_AndroidAppActivity);
+      a(this.d, "https://img.nfa.qq.com/gmaster_prod/16169760/gmaster_3r6lkqbdi4w0_competitive_ad_close.png", 0, 40, 40, this.a);
     }
-    this.jdField_a_of_type_Int = ReadInJoyAdUtils.b((AdvertisementInfo)SuperMaskDataMgr.a.a());
-    h();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.j = ReadInJoyAdUtils.o((AdvertisementInfo)SuperMaskDataMgr.a.a());
+    i();
+    Object localObject = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("s后消失");
     ((TextView)localObject).setText(localStringBuilder.toString());
     b();
@@ -144,28 +138,34 @@ public class KandianCompetitiveAdPandentView
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131560224, this, true);
-    setId(2131369607);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365269));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362129));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362083));
-    this.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362084));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365575));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376828);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376878));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376879);
+    LayoutInflater.from(getContext()).inflate(2131626271, this, true);
+    setId(2131436715);
+    this.b = ((TextView)findViewById(2131431442));
+    this.c = ((URLImageView)findViewById(2131427708));
+    this.d = ((URLImageView)findViewById(2131427661));
+    this.e = ((URLImageView)findViewById(2131427662));
+    this.f = ((TextView)findViewById(2131431802));
+    this.i = findViewById(2131445159);
+    this.g = ((LinearLayout)findViewById(2131445220));
+    this.h = findViewById(2131445221);
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+    localGradientDrawable.setCornerRadius(AIOUtils.b(14.0F, this.a.getResources()));
     localGradientDrawable.setColor(Color.argb(102, 0, 0, 0));
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
-    this.jdField_b_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_c_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.b.setBackgroundDrawable(localGradientDrawable);
+    this.d.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    this.i.setOnClickListener(this);
   }
   
-  private void d()
+  private boolean d()
+  {
+    String str = Aladdin.getConfig(465).getString("mask_competitive_ad_btn_switch", "0");
+    return (str == null) || (!str.equals("1"));
+  }
+  
+  private void e()
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     localValueAnimator.setDuration(267L);
@@ -174,7 +174,7 @@ public class KandianCompetitiveAdPandentView
     localValueAnimator.start();
   }
   
-  private void e()
+  private void f()
   {
     Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     ((ValueAnimator)localObject).setDuration(167L);
@@ -188,26 +188,55 @@ public class KandianCompetitiveAdPandentView
     ((ValueAnimator)localObject).addListener(new KandianCompetitiveAdPandentView.8(this, localValueAnimator1));
     localValueAnimator1.addListener(new KandianCompetitiveAdPandentView.9(this, localValueAnimator2));
     ((ValueAnimator)localObject).start();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    if (!a())
+    this.c.setVisibility(0);
+    if (!d())
     {
       localObject = new GradientDrawable();
       localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      localValueAnimator1.addUpdateListener(new KandianCompetitiveAdPandentView.10(this, (GradientDrawable)localObject, AIOUtils.b(22.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
+      localValueAnimator1.addUpdateListener(new KandianCompetitiveAdPandentView.10(this, (GradientDrawable)localObject, AIOUtils.b(22.0F, this.a.getResources())));
       localValueAnimator1.setDuration(433L);
       localValueAnimator1.start();
     }
   }
   
-  private void f()
+  private void g()
   {
     a();
   }
   
-  private void g()
+  private void getScaleRatio()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    long l1 = DeviceInfoUtil.E();
+    long l2 = DeviceInfoUtil.D();
+    if (l1 > 0L)
+    {
+      if (l2 <= 0L) {
+        return;
+      }
+      int i1;
+      if (!d())
+      {
+        l1 -= AIOUtils.b(99.0F, this.a.getResources());
+        i1 = AIOUtils.b(20.0F, this.a.getResources());
+      }
+      else
+      {
+        l1 -= AIOUtils.b(120.0F, this.a.getResources());
+        i1 = AIOUtils.b(20.0F, this.a.getResources());
+      }
+      l1 -= i1;
+      l2 = AIOUtils.b(629.0F, this.a.getResources());
+      if (l2 < l1) {
+        return;
+      }
+      this.o = ((float)l1 * 1.0F / (float)l2);
+    }
+  }
+  
+  private void h()
+  {
+    this.t.removeMessages(1);
+    this.t.sendEmptyMessage(2);
     Object localObject1 = SuperMaskDataMgr.a.a();
     if (!(localObject1 instanceof AdvertisementInfo)) {
       return;
@@ -235,33 +264,33 @@ public class KandianCompetitiveAdPandentView
     localObject1 = localAdvertisementInfo;
     label169:
     SuperMaskReportMgr.a.b(1, localObject1);
-    if (SuperMaskReportMgr.a.a()) {
+    if (SuperMaskReportMgr.a.b()) {
       localObject2 = "clickMask";
     } else {
       localObject2 = "clickMaskNoExpose";
     }
     SuperMaskReportMgr.a.a((String)localObject2, ((AdvertisementInfo)localObject1).mAdTraceId);
     localAdvertisementInfo.clickPos = 11;
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, null, 0, false, false, null);
-    com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoySuperMaskAdUtil.jdField_a_of_type_Boolean = false;
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport(this.a, localAdvertisementInfo, null, 0, false, false, null);
+    com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoySuperMaskAdUtil.a = false;
   }
   
-  private void h()
+  private void i()
   {
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = ((int)(AIOUtils.b(284.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float));
-      localURLDrawableOptions.mRequestHeight = ((int)(AIOUtils.b(504.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float));
+      localURLDrawableOptions.mRequestWidth = ((int)(AIOUtils.b(284.0F, this.a.getResources()) * this.o));
+      localURLDrawableOptions.mRequestHeight = ((int)(AIOUtils.b(504.0F, this.a.getResources()) * this.o));
       localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-      URLDrawable localURLDrawable = URLDrawable.getFileDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+      URLDrawable localURLDrawable = URLDrawable.getFileDrawable(this.n, localURLDrawableOptions);
       if (localURLDrawable == null) {
         return;
       }
-      localURLDrawable.setTag(URLDrawableDecodeHandler.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, AIOUtils.b(30.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
-      localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.i);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new KandianCompetitiveAdPandentView.11(this));
+      localURLDrawable.setTag(URLDrawableDecodeHandler.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, AIOUtils.b(30.0F, this.a.getResources())));
+      localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
+      this.c.setImageDrawable(localURLDrawable);
+      this.c.setURLDrawableDownListener(new KandianCompetitiveAdPandentView.11(this));
       return;
     }
     catch (Exception localException)
@@ -274,53 +303,24 @@ public class KandianCompetitiveAdPandentView
     }
   }
   
-  private void i()
-  {
-    long l1 = DeviceInfoUtil.j();
-    long l2 = DeviceInfoUtil.i();
-    if (l1 > 0L)
-    {
-      if (l2 <= 0L) {
-        return;
-      }
-      int i;
-      if (!a())
-      {
-        l1 -= AIOUtils.b(99.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-        i = AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      }
-      else
-      {
-        l1 -= AIOUtils.b(120.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-        i = AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      }
-      l1 -= i;
-      l2 = AIOUtils.b(629.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      if (l2 < l1) {
-        return;
-      }
-      this.jdField_a_of_type_Float = ((float)l1 * 1.0F / (float)l2);
-    }
-  }
-  
   private void j()
   {
-    i();
-    Object localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject1).width = ((int)(AIOUtils.b(284.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float));
-    ((RelativeLayout.LayoutParams)localObject1).height = ((int)(AIOUtils.b(504.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject1).setMargins(((ViewGroup.MarginLayoutParams)localObject1).leftMargin, (int)(AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float), ((ViewGroup.MarginLayoutParams)localObject1).rightMargin, ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setScaleX(this.jdField_a_of_type_Float);
-    Object localObject2 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    getScaleRatio();
+    Object localObject1 = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject1).width = ((int)(AIOUtils.b(284.0F, this.a.getResources()) * this.o));
+    ((RelativeLayout.LayoutParams)localObject1).height = ((int)(AIOUtils.b(504.0F, this.a.getResources()) * this.o));
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = (ViewGroup.MarginLayoutParams)this.g.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject1).setMargins(((ViewGroup.MarginLayoutParams)localObject1).leftMargin, (int)(AIOUtils.b(20.0F, this.a.getResources()) * this.o), ((ViewGroup.MarginLayoutParams)localObject1).rightMargin, ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
+    this.g.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.f.setScaleX(this.o);
+    Object localObject2 = this.h.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject2).width = -1;
-    ((ViewGroup.LayoutParams)localObject2).height = ((int)(AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = (ViewGroup.MarginLayoutParams)this.jdField_b_of_type_ComTencentImageURLImageView.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject2).setMargins(((ViewGroup.MarginLayoutParams)localObject1).leftMargin, (int)(AIOUtils.b(30.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()) * this.jdField_a_of_type_Float), ((ViewGroup.MarginLayoutParams)localObject1).rightMargin, ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
-    this.jdField_b_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    ((ViewGroup.LayoutParams)localObject2).height = ((int)(AIOUtils.b(16.0F, this.a.getResources()) * this.o));
+    this.h.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = (ViewGroup.MarginLayoutParams)this.d.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject2).setMargins(((ViewGroup.MarginLayoutParams)localObject1).leftMargin, (int)(AIOUtils.b(30.0F, this.a.getResources()) * this.o), ((ViewGroup.MarginLayoutParams)localObject1).rightMargin, ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject2);
   }
   
   public void a()
@@ -331,16 +331,16 @@ public class KandianCompetitiveAdPandentView
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setShowing(false);
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setShowStatus(5);
     long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = SuperMaskConfigMgr.a.a(((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).getChannelID());
+    long l2 = SuperMaskConfigMgr.a.c(((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).getChannelID());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("currentTime = ");
     localStringBuilder.append(l1);
     localStringBuilder.append(" lastShowMaskTime = ");
     localStringBuilder.append(l2);
     QLog.d("ReadInJoySuperMaskAd", 1, localStringBuilder.toString());
-    if (SuperMaskReportMgr.a.a())
+    if (SuperMaskReportMgr.a.b())
     {
-      if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      if (this.v.compareAndSet(false, true)) {
         SuperMaskReportMgr.a.a(1, SuperMaskDataMgr.a.a());
       }
     }
@@ -348,25 +348,25 @@ public class KandianCompetitiveAdPandentView
       QLog.d("ReadInJoySuperMaskAd", 1, "exposure time is less than one second, do not report strict");
     }
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setShowStatus(5);
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler = null;
+    if (this.t != null) {
+      this.t = null;
     }
     SuperMaskReportMgr.a.a("showMaskEnd", "");
-    SuperMaskDataMgr.a.a();
+    SuperMaskDataMgr.a.f();
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).resetUIMgr();
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369607) == null)
+    if (this.k.findViewById(2131436715) == null)
     {
       b(paramInt);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this);
+      this.k.addView(this);
     }
     j();
-    e();
+    f();
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setShowing(true);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+    if (this.u.compareAndSet(false, true)) {
       SuperMaskReportMgr.a.a(2, SuperMaskDataMgr.a.a());
     }
     ThreadManager.getUIHandler().postDelayed(new KandianCompetitiveAdPandentView.2(this), 1000L);
@@ -374,7 +374,7 @@ public class KandianCompetitiveAdPandentView
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+    this.t.sendEmptyMessageDelayed(1, 1000L);
   }
   
   public void onClick(View paramView)
@@ -383,21 +383,21 @@ public class KandianCompetitiveAdPandentView
     {
     default: 
       return;
-    case 2131365575: 
-      g();
+    case 2131431802: 
+      h();
       return;
-    case 2131362129: 
-      if (!a()) {
+    case 2131427708: 
+      if (!d()) {
         return;
       }
-      g();
+      h();
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    d();
+    this.t.removeMessages(1);
+    e();
     AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)SuperMaskDataMgr.a.a();
     SuperMaskReportMgr.a.b(26, localAdvertisementInfo);
-    if (SuperMaskReportMgr.a.a()) {
+    if (SuperMaskReportMgr.a.b()) {
       paramView = "skipMask";
     } else {
       paramView = "skipMaskNoExpose";
@@ -412,7 +412,7 @@ public class KandianCompetitiveAdPandentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianCompetitiveAdPandentView
  * JD-Core Version:    0.7.0.1
  */

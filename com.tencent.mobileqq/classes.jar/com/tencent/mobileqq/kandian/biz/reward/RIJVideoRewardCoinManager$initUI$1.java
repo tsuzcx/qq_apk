@@ -14,12 +14,12 @@ final class RIJVideoRewardCoinManager$initUI$1
   
   public final void onClick(View paramView)
   {
-    ReadInJoyUtils.a((Context)RIJVideoRewardCoinManager.a(this.a), "https://viola.qq.com/js/moonCakeMoney.js?_rij_violaUrl=1&v_tid=6&v_bundleName=moonCakeMoney&_bid=3740&statusBarStyle=1&hideNav=1&v_nav_immer=1&entry=3");
+    ReadInJoyUtils.a((Context)RIJVideoRewardCoinManager.d(this.a), "https://viola.qq.com/js/moonCakeMoney.js?_rij_violaUrl=1&v_tid=6&v_bundleName=moonCakeMoney&_bid=3740&statusBarStyle=1&hideNav=1&v_nav_immer=1&entry=3");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.initUI.1
  * JD-Core Version:    0.7.0.1
  */

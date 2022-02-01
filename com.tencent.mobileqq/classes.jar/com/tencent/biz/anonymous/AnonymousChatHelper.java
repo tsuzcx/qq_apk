@@ -19,75 +19,24 @@ import org.json.JSONObject;
 
 public class AnonymousChatHelper
 {
-  public static final int a;
-  public static long a;
-  public static AnonymousChatHelper a;
-  public static final int b;
-  public static final int c;
-  public static final int d;
-  public static final int e;
-  public AnonymousChatHelper.AnonymousReport a;
-  public AnonymousChatHelper.AnonymousStatusListener a;
-  public HashMap<String, AnonymousChatHelper.AnonymousInfo> a;
-  public boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Int = Color.rgb(64, 64, 65);
-    jdField_b_of_type_Int = Color.rgb(166, 166, 166);
-    jdField_c_of_type_Int = Color.argb(205, 255, 255, 255);
-    d = Color.argb(154, 255, 255, 255);
-    e = Color.rgb(19, 19, 19);
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public AnonymousChatHelper()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static AnonymousChatHelper.AnonymousExtInfo a(MessageRecord paramMessageRecord)
-  {
-    Object localObject = paramMessageRecord.getExtInfoFromExtStr("anonymous");
-    paramMessageRecord = new AnonymousChatHelper.AnonymousExtInfo();
-    try
-    {
-      localObject = new JSONObject((String)localObject);
-      if (((JSONObject)localObject).has("flags")) {
-        paramMessageRecord.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("flags");
-      }
-      if (((JSONObject)localObject).has("an_id")) {
-        paramMessageRecord.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("an_id");
-      }
-      if (((JSONObject)localObject).has("an_nick")) {
-        paramMessageRecord.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).getString("an_nick");
-      }
-      if (((JSONObject)localObject).has("head_protrait")) {
-        paramMessageRecord.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("head_protrait");
-      }
-      if (((JSONObject)localObject).has("expire_time")) {
-        paramMessageRecord.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("expire_time");
-      }
-      if (((JSONObject)localObject).has("rankColor"))
-      {
-        paramMessageRecord.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("rankColor");
-        return paramMessageRecord;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return paramMessageRecord;
-  }
+  public static final int a = Color.rgb(64, 64, 65);
+  public static final int b = Color.rgb(166, 166, 166);
+  public static final int c = Color.argb(205, 255, 255, 255);
+  public static final int d = Color.argb(154, 255, 255, 255);
+  public static final int e = Color.rgb(19, 19, 19);
+  public static long f = -1L;
+  public static AnonymousChatHelper k;
+  public HashMap<String, AnonymousChatHelper.AnonymousInfo> g = new HashMap();
+  public AnonymousChatHelper.AnonymousStatusListener h;
+  public AnonymousChatHelper.AnonymousReport i;
+  public boolean j = false;
   
   public static AnonymousChatHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper == null) {
-      jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper = new AnonymousChatHelper();
+    if (k == null) {
+      k = new AnonymousChatHelper();
     }
-    return jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper;
+    return k;
   }
   
   public static String a(int paramInt)
@@ -127,17 +76,6 @@ public class AnonymousChatHelper
     return "";
   }
   
-  public static String a(MessageRecord paramMessageRecord)
-  {
-    if (!a(paramMessageRecord)) {
-      return "";
-    }
-    if (AskAnonymousUtil.a(paramMessageRecord)) {
-      return BaseApplicationImpl.getApplication().getResources().getString(2131698649);
-    }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131697238);
-  }
-  
   public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
     paramContext = paramContext.getSharedPreferences("anonymous_chat", 0);
@@ -156,30 +94,71 @@ public class AnonymousChatHelper
     return false;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public static boolean c(MessageRecord paramMessageRecord)
   {
     return (paramMessageRecord.extLong & 0x3) == 3;
   }
   
-  public static boolean b(MessageRecord paramMessageRecord)
+  public static String d(MessageRecord paramMessageRecord)
   {
-    int i;
-    if (((paramMessageRecord instanceof ChatMessage)) && (((ChatMessage)paramMessageRecord).fakeSenderType == 2)) {
-      i = 1;
-    } else {
-      i = 0;
+    if (!c(paramMessageRecord)) {
+      return "";
     }
-    return (i == 0) && (!paramMessageRecord.isMultiMsg) && (a(paramMessageRecord).jdField_a_of_type_Int == 2);
+    if (AskAnonymousUtil.a(paramMessageRecord)) {
+      return BaseApplicationImpl.getApplication().getResources().getString(2131896598);
+    }
+    return BaseApplicationImpl.getApplication().getResources().getString(2131895011);
   }
   
-  public static void c(MessageRecord paramMessageRecord)
+  public static void e(MessageRecord paramMessageRecord)
   {
     paramMessageRecord.extLong |= 0x3;
   }
   
-  public AnonymousChatHelper.AnonymousInfo a(String paramString)
+  public static boolean f(MessageRecord paramMessageRecord)
   {
-    return (AnonymousChatHelper.AnonymousInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    int m;
+    if (((paramMessageRecord instanceof ChatMessage)) && (((ChatMessage)paramMessageRecord).fakeSenderType == 2)) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    return (m == 0) && (!paramMessageRecord.isMultiMsg) && (g(paramMessageRecord).a == 2);
+  }
+  
+  public static AnonymousChatHelper.AnonymousExtInfo g(MessageRecord paramMessageRecord)
+  {
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("anonymous");
+    paramMessageRecord = new AnonymousChatHelper.AnonymousExtInfo();
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+      if (((JSONObject)localObject).has("flags")) {
+        paramMessageRecord.a = ((JSONObject)localObject).getInt("flags");
+      }
+      if (((JSONObject)localObject).has("an_id")) {
+        paramMessageRecord.b = ((JSONObject)localObject).getString("an_id");
+      }
+      if (((JSONObject)localObject).has("an_nick")) {
+        paramMessageRecord.c = ((JSONObject)localObject).getString("an_nick");
+      }
+      if (((JSONObject)localObject).has("head_protrait")) {
+        paramMessageRecord.d = ((JSONObject)localObject).getInt("head_protrait");
+      }
+      if (((JSONObject)localObject).has("expire_time")) {
+        paramMessageRecord.e = ((JSONObject)localObject).getInt("expire_time");
+      }
+      if (((JSONObject)localObject).has("rankColor"))
+      {
+        paramMessageRecord.f = ((JSONObject)localObject).optString("rankColor");
+        return paramMessageRecord;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return paramMessageRecord;
   }
   
   public String a(String paramString1, String paramString2)
@@ -189,40 +168,35 @@ public class AnonymousChatHelper
       if (TextUtils.isEmpty(paramString2)) {
         return null;
       }
-      paramString1 = this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport;
+      paramString1 = this.i;
       if (paramString1 == null) {
         return null;
       }
-      return paramString1.jdField_c_of_type_JavaLangString;
+      return paramString1.c;
     }
     return null;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
   public void a(AnonymousChatHelper.AnonymousStatusListener paramAnonymousStatusListener)
   {
-    this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousStatusListener = paramAnonymousStatusListener;
+    this.h = paramAnonymousStatusListener;
   }
   
   public void a(MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
       if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
-        this.jdField_a_of_type_Boolean = false;
+        this.j = false;
       }
       return;
     }
     if (a(paramMessageRecord.frienduin))
     {
-      AnonymousChatHelper.AnonymousInfo localAnonymousInfo = a(paramMessageRecord.frienduin);
-      paramMessageRecord.vipBubbleID = localAnonymousInfo.jdField_a_of_type_Long;
+      AnonymousChatHelper.AnonymousInfo localAnonymousInfo = b(paramMessageRecord.frienduin);
+      paramMessageRecord.vipBubbleID = localAnonymousInfo.b;
       paramMessageRecord.extLong |= 0x3;
-      paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, localAnonymousInfo.jdField_b_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_Int, localAnonymousInfo.jdField_b_of_type_Int, localAnonymousInfo.jdField_c_of_type_JavaLangString));
+      paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, localAnonymousInfo.f, localAnonymousInfo.d, localAnonymousInfo.c, localAnonymousInfo.e, localAnonymousInfo.g));
     }
   }
   
@@ -242,33 +216,33 @@ public class AnonymousChatHelper
       ((StringBuilder)localObject).append(paramInt1);
       QLog.d("AnonymousUpdate", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+    if (this.g.containsKey(paramString1))
     {
-      localObject = (AnonymousChatHelper.AnonymousInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Int = paramInt1;
-      if ((paramString2 != null) && (!paramString2.equals(((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_JavaLangString)))
+      localObject = (AnonymousChatHelper.AnonymousInfo)this.g.get(paramString1);
+      ((AnonymousChatHelper.AnonymousInfo)localObject).c = paramInt1;
+      if ((paramString2 != null) && (!paramString2.equals(((AnonymousChatHelper.AnonymousInfo)localObject).d)))
       {
-        AnonymousChatHelper.AnonymousStatusListener localAnonymousStatusListener = this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousStatusListener;
+        AnonymousChatHelper.AnonymousStatusListener localAnonymousStatusListener = this.h;
         if (localAnonymousStatusListener != null) {
           localAnonymousStatusListener.a(paramString1, paramString2);
         }
       }
-      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Long = paramLong;
-      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_Int = paramInt2;
-      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_JavaLangString = paramString3;
-      ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_c_of_type_JavaLangString = paramString4;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
+      ((AnonymousChatHelper.AnonymousInfo)localObject).d = paramString2;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).b = paramLong;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).e = paramInt2;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).f = paramString3;
+      ((AnonymousChatHelper.AnonymousInfo)localObject).g = paramString4;
+      this.g.put(paramString1, localObject);
       return;
     }
     Object localObject = new AnonymousChatHelper.AnonymousInfo(this, false);
-    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Int = paramInt1;
-    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
-    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_a_of_type_Long = paramLong;
-    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_Int = paramInt2;
-    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_b_of_type_JavaLangString = paramString3;
-    ((AnonymousChatHelper.AnonymousInfo)localObject).jdField_c_of_type_JavaLangString = paramString4;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
+    ((AnonymousChatHelper.AnonymousInfo)localObject).c = paramInt1;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).d = paramString2;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).b = paramLong;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).e = paramInt2;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).f = paramString3;
+    ((AnonymousChatHelper.AnonymousInfo)localObject).g = paramString4;
+    this.g.put(paramString1, localObject);
   }
   
   public void a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
@@ -282,55 +256,65 @@ public class AnonymousChatHelper
       if (TextUtils.isEmpty(paramMessageRecord)) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport == null) {
-        this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport = new AnonymousChatHelper.AnonymousReport(this);
+      if (this.i == null) {
+        this.i = new AnonymousChatHelper.AnonymousReport(this);
       }
-      AnonymousChatHelper.AnonymousReport localAnonymousReport = this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousReport;
-      localAnonymousReport.jdField_a_of_type_JavaLangString = paramString1;
-      localAnonymousReport.jdField_b_of_type_JavaLangString = paramString2;
-      localAnonymousReport.jdField_c_of_type_JavaLangString = paramMessageRecord;
+      AnonymousChatHelper.AnonymousReport localAnonymousReport = this.i;
+      localAnonymousReport.a = paramString1;
+      localAnonymousReport.b = paramString2;
+      localAnonymousReport.c = paramMessageRecord;
     }
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (this.g.containsKey(paramString))
     {
-      ((AnonymousChatHelper.AnonymousInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Boolean = paramBoolean;
+      ((AnonymousChatHelper.AnonymousInfo)this.g.get(paramString)).a = paramBoolean;
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new AnonymousChatHelper.AnonymousInfo(this, paramBoolean));
+    this.g.put(paramString, new AnonymousChatHelper.AnonymousInfo(this, paramBoolean));
   }
   
   public boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      return ((AnonymousChatHelper.AnonymousInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Boolean;
+    if (this.g.containsKey(paramString)) {
+      return ((AnonymousChatHelper.AnonymousInfo)this.g.get(paramString)).a;
     }
     return false;
   }
   
+  public AnonymousChatHelper.AnonymousInfo b(String paramString)
+  {
+    return (AnonymousChatHelper.AnonymousInfo)this.g.get(paramString);
+  }
+  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizAnonymousAnonymousChatHelper$AnonymousStatusListener = null;
+    this.g.clear();
   }
   
   public void b(MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
       if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
-        this.jdField_a_of_type_Boolean = false;
+        this.j = false;
       }
       return;
     }
     if (a(paramMessageRecord.frienduin))
     {
-      AnonymousChatHelper.AnonymousInfo localAnonymousInfo = a(paramMessageRecord.frienduin);
-      paramMessageRecord.vipBubbleID = localAnonymousInfo.jdField_a_of_type_Long;
+      AnonymousChatHelper.AnonymousInfo localAnonymousInfo = b(paramMessageRecord.frienduin);
+      paramMessageRecord.vipBubbleID = localAnonymousInfo.b;
       paramMessageRecord.extLong |= 0x3;
-      paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, null, localAnonymousInfo.jdField_a_of_type_JavaLangString, localAnonymousInfo.jdField_a_of_type_Int, localAnonymousInfo.jdField_b_of_type_Int, localAnonymousInfo.jdField_c_of_type_JavaLangString));
+      paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, null, localAnonymousInfo.d, localAnonymousInfo.c, localAnonymousInfo.e, localAnonymousInfo.g));
     }
+  }
+  
+  public void c()
+  {
+    this.h = null;
   }
 }
 

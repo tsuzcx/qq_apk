@@ -15,15 +15,15 @@ class PicPreDownloader$2
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD", 2, "productAsync(): cannot preDownload");
       }
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -1);
+      this.this$0.a(this.a, -1);
       return;
     }
-    PicPreDownloader.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, 5);
+    PicPreDownloader.a(this.this$0, this.a, this.b, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.2
  * JD-Core Version:    0.7.0.1
  */

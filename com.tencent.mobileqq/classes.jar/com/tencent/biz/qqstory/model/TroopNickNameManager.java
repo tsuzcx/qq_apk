@@ -27,21 +27,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TroopNickNameManager
   implements IManager
 {
-  public static final String a;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  ITroopMemberCardHandler jdField_a_of_type_ComTencentMobileqqTroopApiHandlerITroopMemberCardHandler;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopNickNameManager.1(this);
-  Map<String, Long> jdField_a_of_type_JavaUtilMap;
-  Map<String, Set<String>> b;
+  public static final String a = PlayModeUtils.b;
+  Map<String, Long> b;
+  Map<String, Set<String>> c;
+  QQAppInterface d;
+  TroopManager e;
+  ITroopMemberCardHandler f;
+  Handler g = new Handler(ThreadManager.getSubThreadLooper());
+  TroopObserver h = new TroopNickNameManager.1(this);
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = PlayModeUtils.b;
-  }
-  
-  public static String a(String paramString1, String paramString2)
+  public static String b(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
@@ -59,7 +54,7 @@ public class TroopNickNameManager
       }
       if ((!TextUtils.isEmpty(paramQQUserUIItem.qq)) && (!TextUtils.isEmpty(paramString)))
       {
-        TroopMemberInfo localTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString, paramQQUserUIItem.qq);
+        TroopMemberInfo localTroopMemberInfo = this.e.a(paramString, paramQQUserUIItem.qq);
         if (localTroopMemberInfo != null)
         {
           if (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)) {
@@ -72,24 +67,24 @@ public class TroopNickNameManager
       }
       return paramQQUserUIItem.getDisplayName();
     }
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     this.b = new ConcurrentHashMap();
+    this.c = new ConcurrentHashMap();
     QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiHandlerITroopMemberCardHandler = ((ITroopMemberCardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.d = QQStoryContext.j();
+    this.e = ((TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER));
+    this.f = ((ITroopMemberCardHandler)this.d.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER));
+    this.d.addObserver(this.h);
   }
   
   public void a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean)
   {
-    String str = a(paramString, paramQQUserUIItem.qq);
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+    String str = b(paramString, paramQQUserUIItem.qq);
+    if (!this.b.containsKey(str)) {
       a(paramString, paramQQUserUIItem.qq);
     }
     if (paramBoolean) {
@@ -99,20 +94,20 @@ public class TroopNickNameManager
   
   public void a(String paramString1, String paramString2)
   {
-    Set localSet = (Set)this.b.get(paramString1);
+    Set localSet = (Set)this.c.get(paramString1);
     Object localObject = localSet;
     if (localSet == null)
     {
       localObject = new HashSet();
-      this.b.put(paramString1, localObject);
+      this.c.put(paramString1, localObject);
     }
     ((Set)localObject).add(paramString2);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.d.removeObserver(this.h);
+    this.d = null;
   }
   
   public void c()
@@ -124,14 +119,14 @@ public class TroopNickNameManager
     }
     long l = System.currentTimeMillis();
     int i = 0;
-    Iterator localIterator = this.b.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject1).getKey();
       Object localObject2 = (Set)((Map.Entry)localObject1).getValue();
       localIterator.remove();
-      TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str);
+      TroopInfo localTroopInfo = this.e.f(str);
       if (localTroopInfo == null)
       {
         if (QLog.isColorLevel())
@@ -149,11 +144,11 @@ public class TroopNickNameManager
         while (((Iterator)localObject2).hasNext())
         {
           Object localObject3 = (String)((Iterator)localObject2).next();
-          this.jdField_a_of_type_JavaUtilMap.put(a(str, (String)localObject3), Long.valueOf(l));
+          this.b.put(b(str, (String)localObject3), Long.valueOf(l));
           ((ArrayList)localObject1).add(localObject3);
           if (((ArrayList)localObject1).size() >= 20)
           {
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqTroopApiHandlerITroopMemberCardHandler;
+            localObject3 = this.f;
             if (localObject3 != null) {
               ((ITroopMemberCardHandler)localObject3).a(str, localTroopInfo.troopcode, (ArrayList)localObject1);
             }
@@ -163,7 +158,7 @@ public class TroopNickNameManager
         }
         if (((ArrayList)localObject1).size() > 0)
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopApiHandlerITroopMemberCardHandler;
+          localObject2 = this.f;
           if (localObject2 != null) {
             ((ITroopMemberCardHandler)localObject2).a(str, localTroopInfo.troopcode, (ArrayList)localObject1);
           }
@@ -172,13 +167,13 @@ public class TroopNickNameManager
       }
     }
     if (i != 0) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopNickNameManager.4(this), 30000L);
+      this.g.postDelayed(new TroopNickNameManager.4(this), 30000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager
  * JD-Core Version:    0.7.0.1
  */

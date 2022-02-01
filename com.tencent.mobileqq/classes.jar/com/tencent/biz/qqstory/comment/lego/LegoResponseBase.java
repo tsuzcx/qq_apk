@@ -8,15 +8,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public abstract class LegoResponseBase
 {
-  public int a;
-  public String a;
+  public int d;
+  public String e;
   
   public LegoResponseBase() {}
   
   public LegoResponseBase(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
-    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
+    this.d = paramErrorInfo.error_code.get();
+    this.e = paramErrorInfo.error_desc.get().toStringUtf8();
   }
   
   public abstract void a();
@@ -29,7 +29,7 @@ public abstract class LegoResponseBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.lego.LegoResponseBase
  * JD-Core Version:    0.7.0.1
  */

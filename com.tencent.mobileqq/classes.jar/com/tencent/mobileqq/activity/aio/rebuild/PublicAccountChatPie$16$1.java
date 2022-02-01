@@ -10,15 +10,15 @@ class PublicAccountChatPie$16$1
   
   public void run()
   {
-    if (this.a.a.g != null) {
-      this.a.a.g.clearAnimation();
+    if (this.a.a.bl != null) {
+      this.a.a.bl.clearAnimation();
     }
-    PublicAccountChatPie.b(this.a.a).removeView(this.a.a.g);
+    PublicAccountChatPie.l(this.a.a).removeView(this.a.a.bl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.16.1
  * JD-Core Version:    0.7.0.1
  */

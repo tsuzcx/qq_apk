@@ -15,14 +15,14 @@ final class FaceDetectForThirdPartyServlet$1
     paramArrayOfByte = FaceDetectForThirdPartyServlet.a(paramArrayOfByte);
     if (paramArrayOfByte == null)
     {
-      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, false, null);
+      this.a.onReceive(17, false, null);
       QLog.e("FaceDetectForThirdPartyServlet", 1, "getAppConfigSuccess, but appconf is null");
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putInt("app_id", this.jdField_a_of_type_Int);
+    localBundle.putInt("app_id", this.b);
     localBundle.putSerializable("FaceRecognition.AppConf", paramArrayOfByte);
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, true, localBundle);
+    this.a.onReceive(17, true, localBundle);
     if (QLog.isColorLevel()) {
       QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", paramArrayOfByte });
     }
@@ -30,12 +30,12 @@ final class FaceDetectForThirdPartyServlet$1
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, false, null);
+    this.a.onReceive(paramInt, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.FaceDetectForThirdPartyServlet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ import com.tencent.mobileqq.troop.memberlist.TroopMemberList.ViewHolder;
 public class SelectActivityViewHolder
   extends TroopMemberList.ViewHolder
 {
-  public View a;
   public CheckBox a;
-  public TextView a;
-  public PhoneContact a;
-  public boolean a;
-  public TextView b;
+  public PhoneContact b;
+  public TextView c;
+  public boolean d;
+  public TextView e;
+  public View f;
   
   public static int a(String paramString)
   {
@@ -39,54 +39,54 @@ public class SelectActivityViewHolder
     paramViewGroup = paramLayoutInflater.inflate(paramInt, paramViewGroup, false);
     paramLayoutInflater = new SelectActivityViewHolder();
     paramViewGroup.setTag(paramLayoutInflater);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376702));
-    paramLayoutInflater.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379732));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131364613));
-    paramLayoutInflater.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368343));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379723));
-    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131379793));
-    paramLayoutInflater.d = ((TextView)paramViewGroup.findViewById(2131371697));
-    paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131365713);
+    paramLayoutInflater.g = ((RelativeLayout)paramViewGroup.findViewById(2131444983));
+    paramLayoutInflater.h = ((TextView)paramViewGroup.findViewById(2131448537));
+    paramLayoutInflater.a = ((CheckBox)paramViewGroup.findViewById(2131430688));
+    paramLayoutInflater.A = ((ImageView)paramViewGroup.findViewById(2131435219));
+    paramLayoutInflater.c = ((TextView)paramViewGroup.findViewById(2131448522));
+    paramLayoutInflater.e = ((TextView)paramViewGroup.findViewById(2131448620));
+    paramLayoutInflater.i = ((TextView)paramViewGroup.findViewById(2131439121));
+    paramLayoutInflater.f = paramViewGroup.findViewById(2131431955);
     return paramViewGroup;
   }
   
   public static void a(CharDividedFacePreloadBaseAdapter paramCharDividedFacePreloadBaseAdapter, SelectActivityViewHolder paramSelectActivityViewHolder, PhoneContact paramPhoneContact)
   {
-    paramSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramSelectActivityViewHolder.jdField_c_of_type_Int = a(paramPhoneContact.uin);
+    paramSelectActivityViewHolder.g.setVisibility(0);
+    paramSelectActivityViewHolder.h.setVisibility(8);
+    paramSelectActivityViewHolder.z = a(paramPhoneContact.uin);
     if (TextUtils.isEmpty(paramPhoneContact.uin))
     {
       paramCharDividedFacePreloadBaseAdapter = new StringBuilder();
       paramCharDividedFacePreloadBaseAdapter.append("pstn");
       paramCharDividedFacePreloadBaseAdapter.append(paramPhoneContact.mobileNo);
-      paramSelectActivityViewHolder.jdField_a_of_type_JavaLangString = paramCharDividedFacePreloadBaseAdapter.toString();
-      paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130842159);
-      paramSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(CommonUtils.a(paramPhoneContact.name));
-      paramSelectActivityViewHolder.jdField_a_of_type_Boolean = true;
+      paramSelectActivityViewHolder.y = paramCharDividedFacePreloadBaseAdapter.toString();
+      paramSelectActivityViewHolder.A.setImageResource(2130843087);
+      paramSelectActivityViewHolder.c.setVisibility(0);
+      paramSelectActivityViewHolder.c.setText(CommonUtils.a(paramPhoneContact.name));
+      paramSelectActivityViewHolder.d = true;
       return;
     }
     if (!"0".equals(paramPhoneContact.uin))
     {
-      paramSelectActivityViewHolder.jdField_a_of_type_JavaLangString = paramPhoneContact.uin;
-      paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramCharDividedFacePreloadBaseAdapter.a(paramSelectActivityViewHolder.jdField_a_of_type_JavaLangString, 1, (byte)0));
-      paramSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramSelectActivityViewHolder.jdField_a_of_type_Boolean = false;
+      paramSelectActivityViewHolder.y = paramPhoneContact.uin;
+      paramSelectActivityViewHolder.A.setImageBitmap(paramCharDividedFacePreloadBaseAdapter.a(paramSelectActivityViewHolder.y, 1, (byte)0));
+      paramSelectActivityViewHolder.c.setVisibility(8);
+      paramSelectActivityViewHolder.d = false;
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramPhoneContact.nationCode);
     localStringBuilder.append(paramPhoneContact.mobileCode);
-    paramSelectActivityViewHolder.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramCharDividedFacePreloadBaseAdapter.a(paramSelectActivityViewHolder.jdField_a_of_type_JavaLangString, 11, (byte)0));
-    paramSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramSelectActivityViewHolder.jdField_a_of_type_Boolean = false;
+    paramSelectActivityViewHolder.y = localStringBuilder.toString();
+    paramSelectActivityViewHolder.A.setImageBitmap(paramCharDividedFacePreloadBaseAdapter.a(paramSelectActivityViewHolder.y, 11, (byte)0));
+    paramSelectActivityViewHolder.c.setVisibility(8);
+    paramSelectActivityViewHolder.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectActivityViewHolder
  * JD-Core Version:    0.7.0.1
  */

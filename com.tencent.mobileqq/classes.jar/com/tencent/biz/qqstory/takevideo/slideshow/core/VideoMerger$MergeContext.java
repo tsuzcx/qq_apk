@@ -8,13 +8,13 @@ import java.util.List;
 public class VideoMerger$MergeContext
   extends SlideShowProcessor.TaskContext
 {
-  public int a;
-  public Activity a;
-  public Handler a;
-  public VideoMerger.VideoMergeListener a;
-  public String a;
   public List<SlideItemInfo> a;
-  public int b;
+  public VideoMerger.VideoMergeListener b;
+  public Activity c;
+  public Handler d;
+  public int e;
+  public int f;
+  public String g;
 }
 
 

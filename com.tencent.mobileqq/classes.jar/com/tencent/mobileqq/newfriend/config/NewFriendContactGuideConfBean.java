@@ -7,50 +7,28 @@ import org.json.JSONObject;
 
 public class NewFriendContactGuideConfBean
 {
-  private static final String a;
-  private static final String b;
-  private static final String c;
-  private static final String d;
-  private static final String e;
-  private static final String f;
-  private static final String g = HardCodeUtil.a(2131694805);
-  private static final String h = HardCodeUtil.a(2131694802);
-  private static final String i = HardCodeUtil.a(2131694810);
-  private static final String j = HardCodeUtil.a(2131694807);
-  private static final String k = HardCodeUtil.a(2131694799);
-  private static final String l = HardCodeUtil.a(2131694798);
-  private static final String m = HardCodeUtil.a(2131694812);
-  private static final String n = HardCodeUtil.a(2131694811);
-  public int a;
-  public final NewFriendContactGuideConfBean.UIElement a;
-  public boolean a;
-  public final NewFriendContactGuideConfBean.UIElement b;
-  public final NewFriendContactGuideConfBean.UIElement c;
-  public final NewFriendContactGuideConfBean.UIElement d;
-  public final NewFriendContactGuideConfBean.UIElement e;
-  public final NewFriendContactGuideConfBean.UIElement f;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131694804);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131694803);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131694801);
-    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131694809);
-    jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131694808);
-    jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131694806);
-  }
-  
-  public NewFriendContactGuideConfBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement = new NewFriendContactGuideConfBean.UIElement(jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString, jdField_c_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement = new NewFriendContactGuideConfBean.UIElement(jdField_d_of_type_JavaLangString, jdField_e_of_type_JavaLangString, jdField_f_of_type_JavaLangString);
-    this.jdField_c_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement = new NewFriendContactGuideConfBean.UIElement(g, "", h);
-    this.jdField_d_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement = new NewFriendContactGuideConfBean.UIElement(i, "", j);
-    this.jdField_e_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement = new NewFriendContactGuideConfBean.UIElement(k, "", l);
-    this.jdField_f_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement = new NewFriendContactGuideConfBean.UIElement(m, "", n);
-  }
+  private static final String i = HardCodeUtil.a(2131892507);
+  private static final String j = HardCodeUtil.a(2131892506);
+  private static final String k = HardCodeUtil.a(2131892504);
+  private static final String l = HardCodeUtil.a(2131892512);
+  private static final String m = HardCodeUtil.a(2131892511);
+  private static final String n = HardCodeUtil.a(2131892509);
+  private static final String o = HardCodeUtil.a(2131892508);
+  private static final String p = HardCodeUtil.a(2131892505);
+  private static final String q = HardCodeUtil.a(2131892513);
+  private static final String r = HardCodeUtil.a(2131892510);
+  private static final String s = HardCodeUtil.a(2131892502);
+  private static final String t = HardCodeUtil.a(2131892501);
+  private static final String u = HardCodeUtil.a(2131892515);
+  private static final String v = HardCodeUtil.a(2131892514);
+  public boolean a = false;
+  public int b = 3;
+  public final NewFriendContactGuideConfBean.UIElement c = new NewFriendContactGuideConfBean.UIElement(i, j, k);
+  public final NewFriendContactGuideConfBean.UIElement d = new NewFriendContactGuideConfBean.UIElement(l, m, n);
+  public final NewFriendContactGuideConfBean.UIElement e = new NewFriendContactGuideConfBean.UIElement(o, "", p);
+  public final NewFriendContactGuideConfBean.UIElement f = new NewFriendContactGuideConfBean.UIElement(q, "", r);
+  public final NewFriendContactGuideConfBean.UIElement g = new NewFriendContactGuideConfBean.UIElement(s, "", t);
+  public final NewFriendContactGuideConfBean.UIElement h = new NewFriendContactGuideConfBean.UIElement(u, "", v);
   
   public static NewFriendContactGuideConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -64,18 +42,18 @@ public class NewFriendContactGuideConfBean
         Object localObject = paramArrayOfQConfItem[i1];
         if (localObject != null)
         {
-          localObject = ((QConfItem)localObject).jdField_a_of_type_JavaLangString;
+          localObject = ((QConfItem)localObject).b;
           try
           {
             JSONObject localJSONObject = new JSONObject((String)localObject);
-            localNewFriendContactGuideConfBean.jdField_a_of_type_Boolean = localJSONObject.optBoolean("newFriendContactsBannerEnable", false);
-            localNewFriendContactGuideConfBean.jdField_a_of_type_Int = localJSONObject.optInt("totalCount", 0);
-            a(localNewFriendContactGuideConfBean.jdField_a_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement, localJSONObject.optJSONObject("unauthorized"), jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString, jdField_c_of_type_JavaLangString);
-            a(localNewFriendContactGuideConfBean.jdField_b_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement, localJSONObject.optJSONObject("unbound"), jdField_d_of_type_JavaLangString, jdField_e_of_type_JavaLangString, jdField_c_of_type_JavaLangString);
-            a(localNewFriendContactGuideConfBean.jdField_c_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement, localJSONObject.optJSONObject("contactsListUnauthorized"), g, "", h);
-            a(localNewFriendContactGuideConfBean.jdField_d_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement, localJSONObject.optJSONObject("contactsListUnbinding"), i, "", j);
-            a(localNewFriendContactGuideConfBean.jdField_e_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement, localJSONObject.optJSONObject("contactsListInactive"), k, "", l);
-            a(localNewFriendContactGuideConfBean.jdField_f_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement, localJSONObject.optJSONObject("contactsListUnmatched"), m, "", n);
+            localNewFriendContactGuideConfBean.a = localJSONObject.optBoolean("newFriendContactsBannerEnable", false);
+            localNewFriendContactGuideConfBean.b = localJSONObject.optInt("totalCount", 0);
+            a(localNewFriendContactGuideConfBean.c, localJSONObject.optJSONObject("unauthorized"), i, j, k);
+            a(localNewFriendContactGuideConfBean.d, localJSONObject.optJSONObject("unbound"), l, m, k);
+            a(localNewFriendContactGuideConfBean.e, localJSONObject.optJSONObject("contactsListUnauthorized"), o, "", p);
+            a(localNewFriendContactGuideConfBean.f, localJSONObject.optJSONObject("contactsListUnbinding"), q, "", r);
+            a(localNewFriendContactGuideConfBean.g, localJSONObject.optJSONObject("contactsListInactive"), s, "", t);
+            a(localNewFriendContactGuideConfBean.h, localJSONObject.optJSONObject("contactsListUnmatched"), u, "", v);
           }
           catch (Throwable localThrowable)
           {
@@ -109,42 +87,42 @@ public class NewFriendContactGuideConfBean
     }
     if (paramJSONObject != null)
     {
-      paramUIElement.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title", paramString1);
-      paramUIElement.jdField_b_of_type_JavaLangString = paramJSONObject.optString("subTitle", paramString2);
-      paramUIElement.jdField_c_of_type_JavaLangString = paramJSONObject.optString("buttonTitle", paramString3);
+      paramUIElement.a = paramJSONObject.optString("title", paramString1);
+      paramUIElement.b = paramJSONObject.optString("subTitle", paramString2);
+      paramUIElement.c = paramJSONObject.optString("buttonTitle", paramString3);
       return;
     }
-    paramUIElement.jdField_a_of_type_JavaLangString = paramString1;
-    paramUIElement.jdField_b_of_type_JavaLangString = paramString2;
-    paramUIElement.jdField_c_of_type_JavaLangString = paramString3;
+    paramUIElement.a = paramString1;
+    paramUIElement.b = paramString2;
+    paramUIElement.c = paramString3;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("NewFriendContactGuideConfBean(");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_c_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_d_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_e_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_f_of_type_ComTencentMobileqqNewfriendConfigNewFriendContactGuideConfBean$UIElement);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfBean
  * JD-Core Version:    0.7.0.1
  */

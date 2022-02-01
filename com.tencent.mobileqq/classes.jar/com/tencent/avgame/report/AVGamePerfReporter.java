@@ -24,101 +24,53 @@ import mqq.app.MobileQQ;
 
 public class AVGamePerfReporter
 {
-  private static AVGamePerfReporter jdField_a_of_type_ComTencentAvgameReportAVGamePerfReporter = null;
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "param_StepEntrance", "param_StepLoading", "param_StepPrepareGame", "param_StepGameReady", "param_StepGameCanStart" };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "param_StepEntrance", "param_StepLoading", "param_StepPrepareGame", "param_StepSecure", "param_StepResource", "param_StepRoomProto", "param_StepAvAlive" };
-  private volatile String jdField_a_of_type_JavaLangString;
-  private final ConcurrentHashMap<String, AVGameStep> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
-  private volatile String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
+  private static final String[] a = { "param_StepEntrance", "param_StepLoading", "param_StepPrepareGame", "param_StepGameReady", "param_StepGameCanStart" };
+  private static final String[] b = { "param_StepEntrance", "param_StepLoading", "param_StepPrepareGame", "param_StepSecure", "param_StepResource", "param_StepRoomProto", "param_StepAvAlive" };
+  private static AVGamePerfReporter c = null;
+  private static boolean d = true;
+  private boolean e = false;
+  private final ConcurrentHashMap<String, AVGameStep> f = new ConcurrentHashMap(4);
+  private volatile String g;
+  private volatile String h = "";
   
   public static AVGamePerfReporter a()
   {
-    if (jdField_a_of_type_ComTencentAvgameReportAVGamePerfReporter == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvgameReportAVGamePerfReporter == null) {
-          jdField_a_of_type_ComTencentAvgameReportAVGamePerfReporter = new AVGamePerfReporter();
+        if (c == null) {
+          c = new AVGamePerfReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvgameReportAVGamePerfReporter;
+    return c;
   }
   
-  private AVGameStep a(String paramString)
+  private AVGameStep b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      return (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      return (AVGameStep)this.f.get(paramString);
     }
     return null;
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     if (Build.VERSION.SDK_INT >= 16) {
-      return AudioProcess.a().isRecogStarted();
+      return AudioProcess.b().isRecogStarted();
     }
     return false;
   }
   
-  private AVGameStep b(String paramString)
+  private AVGameStep c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     AVGameStep localAVGameStep = new AVGameStep(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localAVGameStep);
+    this.f.put(paramString, localAVGameStep);
     return localAVGameStep;
-  }
-  
-  public String a()
-  {
-    int i = ((IVoiceRecogEngineFactory)QRoute.api(IVoiceRecogEngineFactory.class)).getVoiceRecogEngineType();
-    if (i == 1) {
-      return "s2";
-    }
-    if (i == 2) {
-      localObject1 = "AVGameVoiceRecogModel";
-    } else {
-      localObject1 = "AVGameVoiceRecogAILabModel";
-    }
-    Object localObject3 = ResMgr.a().a((String)localObject1);
-    String str = "";
-    Object localObject1 = str;
-    if (localObject3 != null) {
-      localObject3 = ((ResInfo)localObject3).resZipUrl;
-    }
-    for (;;)
-    {
-      Object localObject2;
-      try
-      {
-        int k = ((String)localObject3).lastIndexOf(File.separator);
-        int j = 0;
-        if (k < 0) {
-          break label144;
-        }
-        i = 1;
-        if (k < ((String)localObject3).length() - 1) {
-          j = 1;
-        }
-        localObject1 = str;
-        if ((j & i) != 0) {
-          localObject1 = ((String)localObject3).substring(k + 1);
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        localObject2 = str;
-      }
-      this.jdField_a_of_type_JavaLangString = localObject2;
-      return localObject2;
-      label144:
-      i = 0;
-    }
   }
   
   public void a(int paramInt)
@@ -128,24 +80,24 @@ public class AVGamePerfReporter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("exit, report[");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append("], from[");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append("]");
       QLog.i("AVGamePerfReporter", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.e)
     {
       boolean bool = true;
       if (paramInt == 1)
       {
-        localObject = a("param_StepGameCanStart");
+        localObject = b("param_StepGameCanStart");
         if ((localObject != null) && (((AVGameStep)localObject).b())) {}
         do
         {
           bool = true;
           break;
-          localObject = a("param_StepGameReady");
+          localObject = b("param_StepGameReady");
         } while ((localObject != null) && (((AVGameStep)localObject).b()));
         bool = false;
         if (bool) {
@@ -164,7 +116,7 @@ public class AVGamePerfReporter
       }
       else if (paramInt == 2)
       {
-        localObject = a("param_StepLoading");
+        localObject = b("param_StepLoading");
         if ((localObject != null) && (((AVGameStep)localObject).b())) {
           bool = false;
         } else {
@@ -183,8 +135,8 @@ public class AVGamePerfReporter
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_b_of_type_Boolean = false;
+    this.f.clear();
+    this.e = false;
   }
   
   public void a(int paramInt, long paramLong1, String paramString, long paramLong2)
@@ -201,19 +153,19 @@ public class AVGamePerfReporter
   public void a(Intent paramIntent)
   {
     Object localObject1;
-    if ((paramIntent != null) && (!this.jdField_b_of_type_Boolean))
+    if ((paramIntent != null) && (!this.e))
     {
-      localObject1 = jdField_b_of_type_ArrayOfJavaLangString;
+      localObject1 = b;
       int j = localObject1.length;
       int i = 0;
       while (i < j)
       {
         Object localObject2 = localObject1[i];
-        AVGameStep localAVGameStep1 = a((String)localObject2);
+        AVGameStep localAVGameStep1 = b((String)localObject2);
         AVGameStep localAVGameStep2 = (AVGameStep)paramIntent.getParcelableExtra((String)localObject2);
         if ((localAVGameStep2 != null) && ((localAVGameStep1 == null) || (!localAVGameStep1.a()) || ((localAVGameStep2.b()) && (!localAVGameStep1.b()))))
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, localAVGameStep2);
+          this.f.put(localObject2, localAVGameStep2);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -233,7 +185,7 @@ public class AVGamePerfReporter
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("getStepInfoFromIntent, report[");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append("], intent[");
       ((StringBuilder)localObject1).append(paramIntent);
       ((StringBuilder)localObject1).append("]");
@@ -244,16 +196,16 @@ public class AVGamePerfReporter
   public void a(String paramString)
   {
     Object localObject1;
-    if ((!TextUtils.isEmpty(paramString)) && (!this.jdField_b_of_type_Boolean))
+    if ((!TextUtils.isEmpty(paramString)) && (!this.e))
     {
       boolean bool = false;
-      Object localObject2 = a(paramString);
+      Object localObject2 = b(paramString);
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = b(paramString);
+        localObject1 = c(paramString);
       }
-      if ((localObject1 != null) && (((AVGameStep)localObject1).jdField_a_of_type_Long == 0L)) {
-        ((AVGameStep)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+      if ((localObject1 != null) && (((AVGameStep)localObject1).b == 0L)) {
+        ((AVGameStep)localObject1).b = System.currentTimeMillis();
       } else {
         bool = true;
       }
@@ -275,7 +227,7 @@ public class AVGamePerfReporter
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("stepStart, report[");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append("], name[");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append("]");
@@ -286,26 +238,26 @@ public class AVGamePerfReporter
   public void a(String paramString, int paramInt)
   {
     Object localObject;
-    if ((!TextUtils.isEmpty(paramString)) && (!this.jdField_b_of_type_Boolean))
+    if ((!TextUtils.isEmpty(paramString)) && (!this.e))
     {
       boolean bool1 = false;
       boolean bool2 = false;
       long l2 = System.currentTimeMillis();
-      localObject = a(paramString);
+      localObject = b(paramString);
       long l1 = 0L;
       if (localObject != null)
       {
-        if (((AVGameStep)localObject).b == 0L)
+        if (((AVGameStep)localObject).c == 0L)
         {
-          ((AVGameStep)localObject).b = l2;
+          ((AVGameStep)localObject).c = l2;
           bool1 = bool2;
         }
         else
         {
           bool1 = true;
         }
-        l1 = Math.abs(((AVGameStep)localObject).b - ((AVGameStep)localObject).jdField_a_of_type_Long);
-        ((AVGameStep)localObject).jdField_a_of_type_Int = paramInt;
+        l1 = Math.abs(((AVGameStep)localObject).c - ((AVGameStep)localObject).b);
+        ((AVGameStep)localObject).d = paramInt;
       }
       if (QLog.isColorLevel())
       {
@@ -329,7 +281,7 @@ public class AVGamePerfReporter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("stepEnd, report[");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append("], name[");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("]");
@@ -355,7 +307,7 @@ public class AVGamePerfReporter
   public void a(boolean paramBoolean, long paramLong)
   {
     HashMap localHashMap = new HashMap(20);
-    boolean bool = a();
+    boolean bool = b();
     String str;
     if (bool) {
       str = "1";
@@ -364,13 +316,13 @@ public class AVGamePerfReporter
     }
     localHashMap.put("is_local", str);
     if (bool) {
-      str = a();
+      str = c();
     } else {
       str = "";
     }
     localHashMap.put("asr_model", str);
     localHashMap.put("timestamp", String.valueOf(System.currentTimeMillis() / 1000L));
-    localHashMap.put("asr_model", a());
+    localHashMap.put("asr_model", c());
     localHashMap.put("roomID", String.valueOf(paramLong));
     if (paramBoolean) {
       str = "actAVGameASRStart";
@@ -387,10 +339,10 @@ public class AVGamePerfReporter
     if (!paramBoolean)
     {
       if (TextUtils.isEmpty(paramString5)) {
-        paramString5 = this.jdField_b_of_type_JavaLangString;
+        paramString5 = this.h;
       }
-      this.jdField_b_of_type_JavaLangString = paramString5;
-      str = this.jdField_b_of_type_JavaLangString;
+      this.h = paramString5;
+      str = this.h;
     }
     if (paramBoolean) {
       paramString5 = "1";
@@ -415,7 +367,7 @@ public class AVGamePerfReporter
   
   public void b(int paramInt)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
       if (QLog.isColorLevel())
       {
@@ -434,11 +386,11 @@ public class AVGamePerfReporter
     int i = 0;
     for (;;)
     {
-      localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+      localObject1 = a;
       if (i >= localObject1.length) {
         break;
       }
-      localObject1 = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1[i]);
+      localObject1 = (AVGameStep)this.f.get(localObject1[i]);
       if (localObject1 == null)
       {
         l4 = l2;
@@ -448,10 +400,10 @@ public class AVGamePerfReporter
         ((List)localObject2).add(localObject1);
         l2 = l3;
         if (l3 == 0L) {
-          l2 = ((AVGameStep)localObject1).jdField_a_of_type_Long;
+          l2 = ((AVGameStep)localObject1).b;
         }
-        if (((AVGameStep)localObject1).b != 0L) {
-          l1 = ((AVGameStep)localObject1).b;
+        if (((AVGameStep)localObject1).c != 0L) {
+          l1 = ((AVGameStep)localObject1).c;
         }
         l4 = i + 1;
         l3 = l2;
@@ -477,12 +429,12 @@ public class AVGamePerfReporter
     } else {
       l1 = 0L;
     }
-    Object localObject3 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    Object localObject3 = this.f.keySet().iterator();
     Object localObject4;
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (String)((Iterator)localObject3).next();
-      localObject4 = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject4);
+      localObject4 = (AVGameStep)this.f.get(localObject4);
       if ((localObject4 != null) && (!((List)localObject2).contains(localObject4))) {
         ((List)localObject2).add(localObject4);
       }
@@ -491,16 +443,16 @@ public class AVGamePerfReporter
     while (i < ((List)localObject2).size())
     {
       localObject3 = (AVGameStep)((List)localObject2).get(i);
-      if ((((AVGameStep)localObject3).jdField_a_of_type_Long != 0L) && (((AVGameStep)localObject3).b != 0L) && (Math.abs(((AVGameStep)localObject3).b - ((AVGameStep)localObject3).jdField_a_of_type_Long) > 0L))
+      if ((((AVGameStep)localObject3).b != 0L) && (((AVGameStep)localObject3).c != 0L) && (Math.abs(((AVGameStep)localObject3).c - ((AVGameStep)localObject3).b) > 0L))
       {
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(((AVGameStep)localObject3).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(((AVGameStep)localObject3).a);
         ((StringBuilder)localObject4).append("Cost");
-        ((HashMap)localObject1).put(((StringBuilder)localObject4).toString(), String.valueOf(((AVGameStep)localObject3).b - ((AVGameStep)localObject3).jdField_a_of_type_Long));
+        ((HashMap)localObject1).put(((StringBuilder)localObject4).toString(), String.valueOf(((AVGameStep)localObject3).c - ((AVGameStep)localObject3).b));
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(((AVGameStep)localObject3).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(((AVGameStep)localObject3).a);
         ((StringBuilder)localObject4).append("Ret");
-        ((HashMap)localObject1).put(((StringBuilder)localObject4).toString(), String.valueOf(((AVGameStep)localObject3).jdField_a_of_type_Int));
+        ((HashMap)localObject1).put(((StringBuilder)localObject4).toString(), String.valueOf(((AVGameStep)localObject3).d));
       }
       else if (QLog.isColorLevel())
       {
@@ -513,16 +465,16 @@ public class AVGamePerfReporter
       i += 1;
     }
     localObject2 = MobileQQ.sMobileQQ.getQQProcessName();
-    if ((jdField_a_of_type_Boolean) && (localObject2 != null) && (((String)localObject2).endsWith(":avgame")))
+    if ((d) && (localObject2 != null) && (((String)localObject2).endsWith(":avgame")))
     {
-      jdField_a_of_type_Boolean = false;
+      d = false;
       ((HashMap)localObject1).put("param_AVGameFirst", "1");
     }
     else
     {
       ((HashMap)localObject1).put("param_AVGameFirst", "0");
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.e = true;
     localObject2 = StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext());
     boolean bool;
     if (paramInt == 0) {
@@ -552,15 +504,15 @@ public class AVGamePerfReporter
   public void b(Intent paramIntent)
   {
     Object localObject1;
-    if ((paramIntent != null) && (!this.jdField_b_of_type_Boolean))
+    if ((paramIntent != null) && (!this.e))
     {
-      localObject1 = jdField_b_of_type_ArrayOfJavaLangString;
+      localObject1 = b;
       int j = localObject1.length;
       int i = 0;
       while (i < j)
       {
         Object localObject2 = localObject1[i];
-        AVGameStep localAVGameStep = (AVGameStep)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+        AVGameStep localAVGameStep = (AVGameStep)this.f.get(localObject2);
         if (localAVGameStep != null) {
           paramIntent.putExtra((String)localObject2, localAVGameStep);
         }
@@ -580,11 +532,59 @@ public class AVGamePerfReporter
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("addStepInfoToIntent, report[");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append("], intent[");
       ((StringBuilder)localObject1).append(paramIntent);
       ((StringBuilder)localObject1).append("]");
       QLog.i("AVGamePerfReporter", 2, ((StringBuilder)localObject1).toString());
+    }
+  }
+  
+  public String c()
+  {
+    int i = ((IVoiceRecogEngineFactory)QRoute.api(IVoiceRecogEngineFactory.class)).getVoiceRecogEngineType();
+    if (i == 1) {
+      return "s2";
+    }
+    if (i == 2) {
+      localObject1 = "AVGameVoiceRecogModel";
+    } else {
+      localObject1 = "AVGameVoiceRecogAILabModel";
+    }
+    Object localObject3 = ResMgr.a().f((String)localObject1);
+    String str = "";
+    Object localObject1 = str;
+    if (localObject3 != null) {
+      localObject3 = ((ResInfo)localObject3).resZipUrl;
+    }
+    for (;;)
+    {
+      Object localObject2;
+      try
+      {
+        int k = ((String)localObject3).lastIndexOf(File.separator);
+        int j = 0;
+        if (k < 0) {
+          break label148;
+        }
+        i = 1;
+        if (k < ((String)localObject3).length() - 1) {
+          j = 1;
+        }
+        localObject1 = str;
+        if ((j & i) != 0) {
+          localObject1 = ((String)localObject3).substring(k + 1);
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        localObject2 = str;
+      }
+      this.g = localObject2;
+      return localObject2;
+      label148:
+      i = 0;
     }
   }
 }

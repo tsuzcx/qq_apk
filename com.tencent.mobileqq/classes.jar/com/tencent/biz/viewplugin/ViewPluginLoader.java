@@ -28,50 +28,38 @@ import org.json.JSONObject;
 
 public class ViewPluginLoader
 {
-  public static final HashMap<String, ViewPluginLoader> a;
-  int jdField_a_of_type_Int = 0;
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  OfflineDownloader jdField_a_of_type_ComTencentBizCommonOfflineUtilOfflineDownloader = new OfflineDownloader();
-  public ViewPluginContext a;
-  public ClassLoader a;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  public volatile boolean a;
-  public String b;
-  boolean b;
-  String c = null;
-  String d;
+  public static final HashMap<String, ViewPluginLoader> a = new HashMap();
+  public ViewPluginContext b;
+  public ClassLoader c;
+  public String d;
   public String e;
-  private String f;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  String f = null;
+  SharedPreferences g;
+  String h;
+  public volatile boolean i = false;
+  public String j;
+  Object k = new Object();
+  boolean l = false;
+  int m = 0;
+  OfflineDownloader n = new OfflineDownloader();
+  private String o;
   
   public ViewPluginLoader(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.d = paramString1;
+    this.e = paramString2;
     paramString1 = new StringBuilder();
     paramString1.append(BaseApplicationImpl.getContext().getFilesDir());
     paramString1.append("/pluginopt/");
     paramString1.append(paramString2);
     paramString1.append("/opt");
-    this.c = paramString1.toString();
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("viewplugin_sp", 0);
-    jdField_a_of_type_JavaUtilHashMap.put(paramString2, this);
+    this.f = paramString1.toString();
+    this.g = BaseApplicationImpl.getContext().getSharedPreferences("viewplugin_sp", 0);
+    a.put(paramString2, this);
     paramString1 = new StringBuilder();
     paramString1.append(Environment.getExternalStorageDirectory().getPath());
     paramString1.append("/tencent/plugins/");
-    this.f = paramString1.toString();
-  }
-  
-  public DownloaderInterface a()
-  {
-    return ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    this.o = paramString1.toString();
   }
   
   public void a()
@@ -79,25 +67,25 @@ public class ViewPluginLoader
     Object localObject1 = (WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
     try
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.l)
       {
         ((WerewolvesHandler)localObject1).notifyUI(3, true, Integer.valueOf(4));
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.l = true;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("https://");
-      ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.e);
       ((StringBuilder)localObject3).append("?_bid=");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.d);
       localObject3 = ((StringBuilder)localObject3).toString();
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      long l = System.currentTimeMillis();
-      if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), (String)localObject3, new ViewPluginLoader.2(this, l, (WerewolvesHandler)localObject1, localBaseApplication))) && (QLog.isColorLevel()))
+      long l1 = System.currentTimeMillis();
+      if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), (String)localObject3, new ViewPluginLoader.2(this, l1, (WerewolvesHandler)localObject1, localBaseApplication))) && (QLog.isColorLevel()))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("plugin:");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.e);
         ((StringBuilder)localObject1).append(" transToLocalUrl: return false");
         QLog.i("ViewPluginLoader", 2, ((StringBuilder)localObject1).toString());
       }
@@ -108,40 +96,40 @@ public class ViewPluginLoader
   
   public void a(BaseActivity paramBaseActivity)
   {
-    ViewPluginContext localViewPluginContext = this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext;
+    ViewPluginContext localViewPluginContext = this.b;
     if (localViewPluginContext != null)
     {
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(paramBaseActivity, 0, localViewPluginContext);
+      this.b = new ViewPluginContext(paramBaseActivity, 0, localViewPluginContext);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(paramBaseActivity, 0, this.e, this.jdField_a_of_type_JavaLangClassLoader);
+    this.b = new ViewPluginContext(paramBaseActivity, 0, this.j, this.c);
   }
   
   public void a(JSONObject paramJSONObject, QQAppInterface paramQQAppInterface)
   {
-    int i = paramJSONObject.optInt("code");
-    paramQQAppInterface = OfflineEnvHelper.b(this.jdField_a_of_type_JavaLangString);
+    int i1 = paramJSONObject.optInt("code");
+    paramQQAppInterface = OfflineEnvHelper.c(this.d);
     boolean bool2 = TextUtils.isEmpty(paramQQAppInterface);
     boolean bool1 = true;
     if (!bool2)
     {
       StringBuilder localStringBuilder;
-      if (i == 4)
+      if (i1 == 4)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramQQAppInterface);
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.d);
         localStringBuilder.append(".7z");
         paramQQAppInterface = localStringBuilder.toString();
         bool1 = true;
         break label195;
       }
-      if ((i != 3) && (i != 2))
+      if ((i1 != 3) && (i1 != 2))
       {
         QLog.e("ViewPluginLoader", 1, "do not know what format, use default zip name!");
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramQQAppInterface);
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.d);
         localStringBuilder.append(".zip");
         paramQQAppInterface = localStringBuilder.toString();
       }
@@ -149,7 +137,7 @@ public class ViewPluginLoader
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramQQAppInterface);
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.d);
         localStringBuilder.append(".zip");
         paramQQAppInterface = localStringBuilder.toString();
         bool2 = false;
@@ -178,13 +166,13 @@ public class ViewPluginLoader
   {
     try
     {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.d;
       boolean bool2 = TextUtils.isEmpty(str);
       bool1 = false;
       if (bool2) {
         return false;
       }
-      bool2 = TextUtils.isEmpty(OfflineEnvHelper.b(str));
+      bool2 = TextUtils.isEmpty(OfflineEnvHelper.c(str));
       if (bool2) {
         return false;
       }
@@ -200,13 +188,13 @@ public class ViewPluginLoader
         }
         return false;
       }
-      l = System.currentTimeMillis();
+      l1 = System.currentTimeMillis();
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(((File)localObject2).getParent());
       ((StringBuilder)localObject1).append(File.separator);
       ((StringBuilder)localObject1).append(str);
       localObject1 = ((StringBuilder)localObject1).toString();
-      localObject3 = BidDownloader.a(paramString);
+      localObject3 = BidDownloader.d(paramString);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -217,18 +205,18 @@ public class ViewPluginLoader
         QLog.i("ViewPluginLoader", 2, localStringBuilder.toString());
       }
       bool2 = TextUtils.isEmpty((CharSequence)localObject3);
-      i = 1;
+      i1 = 1;
       if (!bool2)
       {
         if (((String)localObject3).equals("zip"))
         {
-          i = ZipUtils.unZipFolder(paramString, (String)localObject1);
-          break label715;
+          i1 = ZipUtils.unZipFolder(paramString, (String)localObject1);
+          break label714;
         }
         if (((String)localObject3).equals("7z"))
         {
-          i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, (String)localObject1);
-          break label715;
+          i1 = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, (String)localObject1);
+          break label714;
         }
       }
       else
@@ -238,26 +226,26 @@ public class ViewPluginLoader
         ((StringBuilder)localObject3).append(paramString);
         QLog.w("ViewPluginLoader", 1, ((StringBuilder)localObject3).toString());
         if (paramBoolean1) {
-          i = ZipUtils.unZipFolder(paramString, (String)localObject1);
+          i1 = ZipUtils.unZipFolder(paramString, (String)localObject1);
         } else if (paramBoolean2) {
-          i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, (String)localObject1);
+          i1 = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, (String)localObject1);
         }
       }
     }
     finally
     {
-      label715:
-      label718:
+      label714:
+      label717:
       for (;;)
       {
         String str;
         boolean bool1;
         Object localObject2;
-        long l;
+        long l1;
         Object localObject1;
         Object localObject3;
         StringBuilder localStringBuilder;
-        int i;
+        int i1;
         for (;;)
         {
           throw paramString;
@@ -272,9 +260,9 @@ public class ViewPluginLoader
       QLog.i("ViewPluginLoader", 2, ((StringBuilder)localObject3).toString());
     }
     Util.b(paramString);
-    if (i > 0)
+    if (i1 > 0)
     {
-      HtmlOffline.a(str, 13, 0L, i, "lixian_update", "0");
+      HtmlOffline.a(str, 13, 0L, i1, "lixian_update", "0");
       paramBoolean1 = bool1;
       if (QLog.isColorLevel())
       {
@@ -309,7 +297,7 @@ public class ViewPluginLoader
       {
         paramBoolean1 = ((File)localObject3).renameTo(new File(str));
         if (paramBoolean1) {
-          break label718;
+          break label717;
         }
         paramBoolean1 = FileUtils.moveFile(paramString, str);
       }
@@ -319,7 +307,7 @@ public class ViewPluginLoader
     {
       paramString = new StringBuilder();
       paramString.append("time of unzip zip：");
-      paramString.append(System.currentTimeMillis() - l);
+      paramString.append(System.currentTimeMillis() - l1);
       paramString.append(", isSuccess: ");
       paramString.append(paramBoolean1);
       QLog.i("ViewPluginLoader", 2, paramString.toString());
@@ -329,8 +317,8 @@ public class ViewPluginLoader
   
   public void b()
   {
-    this.jdField_a_of_type_Int = 0;
-    HtmlOffline.a();
+    this.m = 0;
+    HtmlOffline.b();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     boolean bool;
     if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() % 10L == 6L)) {
@@ -338,8 +326,8 @@ public class ViewPluginLoader
     } else {
       bool = false;
     }
-    HtmlOffline.jdField_a_of_type_Boolean = bool;
-    Object localObject = HtmlOffline.a(this.jdField_a_of_type_JavaLangString);
+    HtmlOffline.i = bool;
+    Object localObject = HtmlOffline.d(this.d);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -348,31 +336,36 @@ public class ViewPluginLoader
       QLog.d("ViewPluginLoader", 2, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(OfflineEnvHelper.a(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(OfflineEnvHelper.b(this.d));
+    localStringBuilder.append(this.d);
     localStringBuilder.append("/");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     if ((!new File(localStringBuilder.toString()).exists()) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!"0".equals(localObject)))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(OfflineEnvHelper.a(this.jdField_a_of_type_JavaLangString));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(OfflineEnvHelper.b(this.d));
+      ((StringBuilder)localObject).append(this.d);
       FileUtils.deleteDirectory(((StringBuilder)localObject).toString());
     }
     if (localQQAppInterface == null) {
       return;
     }
-    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new ViewPluginLoader.3(this, localQQAppInterface), false);
+    HtmlOffline.a(this.d, localQQAppInterface, new ViewPluginLoader.3(this, localQQAppInterface), false);
   }
   
-  public void c()
+  public DownloaderInterface c()
   {
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = null;
+    return ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+  }
+  
+  public void d()
+  {
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class GroupFileSearchExpandableListAdapter$1
   
   public void run()
   {
-    CharSequence localCharSequence = BaseSearchUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.c, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setText("");
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setText(localCharSequence);
+    CharSequence localCharSequence = BaseSearchUtil.a(this.a, this.b.d, this.c, true);
+    this.a.setText("");
+    this.a.setText(localCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.GroupFileSearchExpandableListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

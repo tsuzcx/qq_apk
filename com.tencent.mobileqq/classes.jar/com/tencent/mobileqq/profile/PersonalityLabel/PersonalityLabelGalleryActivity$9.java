@@ -11,15 +11,15 @@ class PersonalityLabelGalleryActivity$9
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = ((Integer)this.a.getAnimatedValue()).intValue();
+    paramValueAnimator = this.b.getLayoutParams();
     paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    this.b.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.9
  * JD-Core Version:    0.7.0.1
  */

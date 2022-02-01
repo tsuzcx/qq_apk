@@ -23,10 +23,10 @@ public class StoryPlayerFragment
   extends BaseFragment
   implements StoryPlayerImpl.Ui
 {
-  private int jdField_a_of_type_Int;
   protected StoryPlayerImpl a;
-  protected AnimationParam a;
-  private boolean jdField_a_of_type_Boolean;
+  protected AnimationParam b;
+  private int c;
+  private boolean d;
   
   @NonNull
   public View a()
@@ -48,44 +48,44 @@ public class StoryPlayerFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a(paramBundle, getArguments());
+    this.a.a(paramBundle, getArguments());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a(paramInt1, paramInt2, paramIntent);
+    this.a.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl = new StoryPlayerImpl();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a(this);
+    this.a = new StoryPlayerImpl();
+    this.a.a(this);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = ((AnimationParam)getArguments().getParcelable("AnimationParam"));
+    this.b = ((AnimationParam)getArguments().getParcelable("AnimationParam"));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561737, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131628116, paramViewGroup, false);
     paramViewGroup = getBaseActivity();
-    this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
-    if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
+    this.c = paramViewGroup.getWindow().getAttributes().flags;
+    if ((this.c & 0x400) != 1024) {
       getBaseActivity().getWindow().setFlags(1024, 1024);
     }
     if (paramViewGroup.mSystemBarComp != null)
     {
-      this.jdField_a_of_type_Boolean = paramViewGroup.mSystemBarComp.isStatusBarVisible;
+      this.d = paramViewGroup.mSystemBarComp.isStatusBarVisible;
       if (paramViewGroup.mSystemBarComp.isStatusBarVisible) {
         paramViewGroup.mSystemBarComp.setgetStatusBarVisible(false, 0);
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
+    if (this.b != null) {
       paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new StoryPlayerFragment.1(this, paramLayoutInflater));
     }
     paramLayoutInflater.setOnTouchListener(new StoryPlayerFragment.2(this));
@@ -96,16 +96,16 @@ public class StoryPlayerFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.g();
+    this.a.h();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
     BaseActivity localBaseActivity = getBaseActivity();
-    localBaseActivity.getWindow().setFlags(this.jdField_a_of_type_Int, -1);
+    localBaseActivity.getWindow().setFlags(this.c, -1);
     if (localBaseActivity.mSystemBarComp != null) {
-      localBaseActivity.mSystemBarComp.setgetStatusBarVisible(this.jdField_a_of_type_Boolean, 0);
+      localBaseActivity.mSystemBarComp.setgetStatusBarVisible(this.d, 0);
     }
   }
   
@@ -117,19 +117,19 @@ public class StoryPlayerFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.e();
+    this.a.f();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.d();
+    this.a.e();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.c();
+    this.a.d();
     getView().setFocusableInTouchMode(true);
     getView().requestFocus();
     getView().setOnKeyListener(new StoryPlayerFragment.3(this));
@@ -138,12 +138,12 @@ public class StoryPlayerFragment
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.f();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerFragment
  * JD-Core Version:    0.7.0.1
  */

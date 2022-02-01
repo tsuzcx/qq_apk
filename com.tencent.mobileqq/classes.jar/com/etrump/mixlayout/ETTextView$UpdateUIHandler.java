@@ -15,7 +15,7 @@ class ETTextView$UpdateUIHandler
     if (localDecorationHolder == null) {
       return;
     }
-    ETTextView localETTextView = (ETTextView)localDecorationHolder.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ETTextView localETTextView = (ETTextView)localDecorationHolder.a.get();
     if (localETTextView != null)
     {
       if (ETTextView.access$600(localETTextView) == null) {
@@ -29,7 +29,7 @@ class ETTextView$UpdateUIHandler
         }
         if (localETTextView.isViewVisible())
         {
-          if ((ETTextView.access$400(localETTextView).a() == localDecorationHolder.jdField_a_of_type_AndroidGraphicsBitmap) && (localETTextView.mMsgId == localDecorationHolder.jdField_a_of_type_Long) && (ETTextView.access$600(localETTextView) != null) && (ETTextView.access$600(localETTextView).currentFrameIndex() == localDecorationHolder.jdField_a_of_type_Int) && (localETTextView.mFont != null) && (localETTextView.mFont.equals(localDecorationHolder.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a)))
+          if ((ETTextView.access$400(localETTextView).a() == localDecorationHolder.f) && (localETTextView.mMsgId == localDecorationHolder.b) && (ETTextView.access$600(localETTextView) != null) && (ETTextView.access$600(localETTextView).currentFrameIndex() == localDecorationHolder.d) && (localETTextView.mFont != null) && (localETTextView.mFont.equals(localDecorationHolder.e.c)))
           {
             boolean bool1;
             if ((ETTextView.access$700(localETTextView)) && (ETTextView.access$800(localETTextView)) && (ETFontUtil.enableAnimation) && (!ETTextView.access$900(localETTextView))) {
@@ -45,7 +45,7 @@ class ETTextView$UpdateUIHandler
               if (paramMessage.nextFrame())
               {
                 int j = paramMessage.getFrameDelay();
-                int k = (int)(System.currentTimeMillis() - localDecorationHolder.b);
+                int k = (int)(System.currentTimeMillis() - localDecorationHolder.c);
                 i = j;
                 if (k > 0) {
                   i = j - k;

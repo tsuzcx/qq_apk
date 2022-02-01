@@ -14,23 +14,18 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/image/RIJSharpPDecoder;", "", "()V", "mDecoder", "Lcom/tencent/sharpP/SharpPDecoder;", "closeDecoderInNative", "", "hObj", "", "createDecoderInNative", "path", "", "sharpPFeature", "Lcom/tencent/sharpP/SharpPDecoder$SharpPFeature;", "(Ljava/lang/String;Lcom/tencent/sharpP/SharpPDecoder$SharpPFeature;)Ljava/lang/Long;", "decodeImageToBitmapInNative", "", "index", "bitmap", "Landroid/graphics/Bitmap;", "delayTime", "(JILandroid/graphics/Bitmap;Ljava/lang/Integer;)Ljava/lang/Integer;", "decodeSharpP", "dstWidth", "dstHeight", "config", "Landroid/graphics/Bitmap$Config;", "reuseBitmap", "decodeSharpPBounds", "Landroid/graphics/BitmapFactory$Options;", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJSharpPDecoder
 {
-  public static final RIJSharpPDecoder.Companion a;
-  private static final String jdField_a_of_type_JavaLangString = "RIJSharpPDecoder";
-  private SharpPDecoder jdField_a_of_type_ComTencentSharpPSharpPDecoder;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseImageRIJSharpPDecoder$Companion = new RIJSharpPDecoder.Companion(null);
-  }
+  public static final RIJSharpPDecoder.Companion a = new RIJSharpPDecoder.Companion(null);
+  private static final String c = "RIJSharpPDecoder";
+  private SharpPDecoder b;
   
   @Nullable
   public final Bitmap a(@Nullable String paramString, int paramInt1, int paramInt2, @NotNull Bitmap.Config paramConfig, @Nullable Bitmap paramBitmap)
   {
     Intrinsics.checkParameterIsNotNull(paramConfig, "config");
-    this.jdField_a_of_type_ComTencentSharpPSharpPDecoder = new SharpPDecoder();
+    this.b = new SharpPDecoder();
     Bitmap localBitmap = (Bitmap)null;
-    SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this.jdField_a_of_type_ComTencentSharpPSharpPDecoder);
-    Object localObject = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this.b);
+    Object localObject = this.b;
     if (localObject != null) {
       localObject = Integer.valueOf(((SharpPDecoder)localObject).ParseHeader2(paramString, localSharpPFeature));
     } else {
@@ -41,7 +36,7 @@ public final class RIJSharpPDecoder
     }
     if (((Integer)localObject).intValue() == 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+      localObject = this.b;
       if (localObject != null) {
         paramString = Long.valueOf(((SharpPDecoder)localObject).CreateDecoder2(paramString, localSharpPFeature));
       } else {
@@ -65,7 +60,7 @@ public final class RIJSharpPDecoder
           }
           else
           {
-            localObject = jdField_a_of_type_JavaLangString;
+            localObject = c;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("decodeSharpP error:layerNo=");
             localStringBuilder.append(paramInt1);
@@ -76,7 +71,7 @@ public final class RIJSharpPDecoder
           }
           paramInt1 += 1;
         }
-        paramConfig = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+        paramConfig = this.b;
         if (paramConfig != null) {
           paramConfig.CloseDecoder2(paramString.longValue());
         }
@@ -85,7 +80,7 @@ public final class RIJSharpPDecoder
         }
         return paramBitmap;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "decodeSharpPInNative error:hDec=0 or null");
+      QLog.d(c, 1, "decodeSharpPInNative error:hDec=0 or null");
       return null;
     }
     return localBitmap;
@@ -94,12 +89,12 @@ public final class RIJSharpPDecoder
   @NotNull
   public final BitmapFactory.Options a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPDecoder = new SharpPDecoder();
+    this.b = new SharpPDecoder();
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.outWidth = -1;
     localOptions.outHeight = -1;
-    SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this.jdField_a_of_type_ComTencentSharpPSharpPDecoder);
-    SharpPDecoder localSharpPDecoder = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this.b);
+    SharpPDecoder localSharpPDecoder = this.b;
     if (localSharpPDecoder != null) {
       paramString = Integer.valueOf(localSharpPDecoder.ParseHeader2(paramString, localSharpPFeature));
     } else {
@@ -119,7 +114,7 @@ public final class RIJSharpPDecoder
   @Nullable
   public final Integer a(long paramLong, int paramInt, @Nullable Bitmap paramBitmap, @Nullable Integer paramInteger)
   {
-    SharpPDecoder localSharpPDecoder = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    SharpPDecoder localSharpPDecoder = this.b;
     if (localSharpPDecoder != null) {
       return Integer.valueOf(localSharpPDecoder.DecodeImageToBitmap2(paramLong, paramInt, paramBitmap, paramInteger));
     }
@@ -128,7 +123,7 @@ public final class RIJSharpPDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RIJSharpPDecoder
  * JD-Core Version:    0.7.0.1
  */

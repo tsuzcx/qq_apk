@@ -40,8 +40,8 @@ public class ForwardDialogMgr
       if (paramIntent.getBooleanExtra("sdk_mult_share_for_local", false))
       {
         QLog.d("ForwardDialogMgr", 1, "showMultShareDialog SDK_MULT_SHARE_FOR_LOCAL");
-        i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168);
-        QQToast.a(localQQAppInterface.getApp(), 2, 2131692645, 0).b(i);
+        i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920);
+        QQToast.makeText(localQQAppInterface.getApp(), 2, 2131889669, 0).show(i);
         ForwardUtils.a(localQQAppInterface, "0X800A738", new String[] { str });
         return;
       }
@@ -57,13 +57,13 @@ public class ForwardDialogMgr
       if (i == 0)
       {
         ForwardUtils.a(localQQAppInterface, "0X800A738", new String[] { str });
-        a(paramActivity, paramIntent, HardCodeUtil.a(2131718872), local1);
+        a(paramActivity, paramIntent, HardCodeUtil.a(2131916405), local1);
         return;
       }
       if (2 == i)
       {
         ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
-        a(paramActivity, paramIntent, HardCodeUtil.a(2131718871), local1);
+        a(paramActivity, paramIntent, HardCodeUtil.a(2131916404), local1);
         return;
       }
       if (1 == i)
@@ -85,7 +85,7 @@ public class ForwardDialogMgr
   
   private static void a(Activity paramActivity, Intent paramIntent, String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    paramActivity = DialogUtil.a(paramActivity, 232, null, paramString, ForwardShareByServerHelper.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), HardCodeUtil.a(2131718867), paramOnClickListener, paramOnClickListener);
+    paramActivity = DialogUtil.a(paramActivity, 232, null, paramString, ForwardShareByServerHelper.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), HardCodeUtil.a(2131916400), paramOnClickListener, paramOnClickListener);
     try
     {
       paramActivity.show();
@@ -100,14 +100,14 @@ public class ForwardDialogMgr
   private static void a(Activity paramActivity, Intent paramIntent, List<ResultRecord> paramList, DialogInterface.OnClickListener paramOnClickListener)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    QQCustomDialogWtihForwardAvatar localQQCustomDialogWtihForwardAvatar = new QQCustomDialogWtihForwardAvatar(paramActivity, 2131756189);
-    localQQCustomDialogWtihForwardAvatar.setContentView(2131558987);
+    QQCustomDialogWtihForwardAvatar localQQCustomDialogWtihForwardAvatar = new QQCustomDialogWtihForwardAvatar(paramActivity, 2131953338);
+    localQQCustomDialogWtihForwardAvatar.setContentView(2131624620);
     localQQCustomDialogWtihForwardAvatar.a(localQQAppInterface, paramActivity, paramList, false);
-    localQQCustomDialogWtihForwardAvatar.c(String.format(paramActivity.getResources().getString(2131718868), new Object[] { Integer.valueOf(paramList.size()) }));
-    localQQCustomDialogWtihForwardAvatar.c();
+    localQQCustomDialogWtihForwardAvatar.e(String.format(paramActivity.getResources().getString(2131916401), new Object[] { Integer.valueOf(paramList.size()) }));
+    localQQCustomDialogWtihForwardAvatar.d();
     localQQCustomDialogWtihForwardAvatar.setNegativeButton(ForwardShareByServerHelper.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), paramOnClickListener);
-    localQQCustomDialogWtihForwardAvatar.setPositiveButton(HardCodeUtil.a(2131718867), paramOnClickListener);
-    localQQCustomDialogWtihForwardAvatar.findViewById(2131378802).setVisibility(8);
+    localQQCustomDialogWtihForwardAvatar.setPositiveButton(HardCodeUtil.a(2131916400), paramOnClickListener);
+    localQQCustomDialogWtihForwardAvatar.findViewById(2131447483).setVisibility(8);
     localQQCustomDialogWtihForwardAvatar.show();
   }
   
@@ -118,7 +118,7 @@ public class ForwardDialogMgr
     {
       paramActivity = DialogUtil.a(paramActivity, 230);
       paramActivity.setMessage(paramString);
-      paramActivity.setPositiveButton(2131694583, paramOnClickListener);
+      paramActivity.setPositiveButton(2131892267, paramOnClickListener);
       paramActivity.show();
       return;
     }
@@ -128,11 +128,11 @@ public class ForwardDialogMgr
   void a(Activity paramActivity)
   {
     b(paramActivity);
-    this.a = new ReportDialog(paramActivity, 2131756189);
+    this.a = new ReportDialog(paramActivity, 2131953338);
     this.a.setCancelable(false);
-    this.a.setContentView(2131559561);
-    paramActivity = HardCodeUtil.a(2131718869);
-    ((TextView)this.a.findViewById(2131372646)).setText(paramActivity);
+    this.a.setContentView(2131625585);
+    paramActivity = HardCodeUtil.a(2131916402);
+    ((TextView)this.a.findViewById(2131440191)).setText(paramActivity);
     this.a.show();
   }
   
@@ -151,7 +151,7 @@ public class ForwardDialogMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardDialogMgr
  * JD-Core Version:    0.7.0.1
  */

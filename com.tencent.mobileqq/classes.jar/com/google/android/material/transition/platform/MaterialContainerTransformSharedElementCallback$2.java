@@ -21,13 +21,13 @@ class MaterialContainerTransformSharedElementCallback$2
         MaterialContainerTransformSharedElementCallback.a(null);
       }
     }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback.2
  * JD-Core Version:    0.7.0.1
  */

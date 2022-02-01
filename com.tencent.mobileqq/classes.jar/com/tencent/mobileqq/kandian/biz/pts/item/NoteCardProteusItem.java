@@ -37,11 +37,11 @@ import org.json.JSONObject;
 public class NoteCardProteusItem
   implements SoundCheckRunnable.OnSoundActionListener, ProteusItem
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SoundCheckRunnable jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
-  private IReadInJoyModel jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  private boolean jdField_a_of_type_Boolean = false;
+  private SoundCheckRunnable a;
   private boolean b = false;
+  private boolean c = false;
+  private Context d;
+  private IReadInJoyModel e;
   
   private SpannableStringBuilder a(JSONArray paramJSONArray)
   {
@@ -64,12 +64,12 @@ public class NoteCardProteusItem
   
   private void a()
   {
-    SoundCheckRunnable localSoundCheckRunnable = this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
-    if ((localSoundCheckRunnable == null) || (!localSoundCheckRunnable.a()))
+    SoundCheckRunnable localSoundCheckRunnable = this.a;
+    if ((localSoundCheckRunnable == null) || (!localSoundCheckRunnable.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable = new SoundCheckRunnable();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable.a(this);
-      ThreadManager.excute(this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable, 16, null, true);
+      this.a = new SoundCheckRunnable();
+      this.a.a(this);
+      ThreadManager.excute(this.a, 16, null, true);
       ThreadManager.getUIHandler().removeCallbacksAndMessages(null);
       ThreadManager.getUIHandler().postDelayed(new NoteCardProteusItem.5(this), 60000L);
     }
@@ -79,7 +79,7 @@ public class NoteCardProteusItem
   {
     try
     {
-      new PermissionPageUtil(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getPackageName()).a();
+      new PermissionPageUtil(this.d, this.d.getPackageName()).a();
       UITools.a(paramActivity);
       return;
     }
@@ -93,12 +93,12 @@ public class NoteCardProteusItem
   
   private void b()
   {
-    SoundCheckRunnable localSoundCheckRunnable = this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
+    SoundCheckRunnable localSoundCheckRunnable = this.a;
     if (localSoundCheckRunnable != null)
     {
       localSoundCheckRunnable.a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable = null;
+      this.a.a(null);
+      this.a = null;
     }
     ThreadManager.getUIHandler().removeCallbacksAndMessages(null);
   }
@@ -119,12 +119,12 @@ public class NoteCardProteusItem
         ScripCmsInfo localScripCmsInfo = paramAbsBaseArticleInfo.scripCmsInfo;
         if (localScripCmsInfo != null)
         {
-          int j = localScripCmsInfo.jdField_a_of_type_Int;
+          int j = localScripCmsInfo.j;
           paramInt = 0;
           int i = 0;
           if ((j != 1) && ((!TextUtils.isEmpty(localScripCmsInfo.g)) || (!TextUtils.isEmpty(localScripCmsInfo.h))))
           {
-            localJSONObject.put("main_title_rich", localScripCmsInfo.g.replace("#$%", ReadInJoyNoteCardUtil.a()));
+            localJSONObject.put("main_title_rich", localScripCmsInfo.g.replace("#$%", ReadInJoyNoteCardUtil.b()));
             paramAbsBaseArticleInfo = BaseApplicationImpl.getContext();
             if ((Build.VERSION.SDK_INT < 23) || (paramAbsBaseArticleInfo == null)) {
               break label412;
@@ -134,20 +134,20 @@ public class NoteCardProteusItem
               break label412;
             }
             if ((paramInt == 0) && (ReadInJoyNoteCardUtil.a() == 1)) {
-              paramAbsBaseArticleInfo = localScripCmsInfo.h.replace("#$%", paramAbsBaseArticleInfo.getString(2131717978));
+              paramAbsBaseArticleInfo = localScripCmsInfo.h.replace("#$%", paramAbsBaseArticleInfo.getString(2131915458));
             } else {
-              paramAbsBaseArticleInfo = localScripCmsInfo.h.replace("#$%", ReadInJoyNoteCardUtil.b());
+              paramAbsBaseArticleInfo = localScripCmsInfo.h.replace("#$%", ReadInJoyNoteCardUtil.c());
             }
             localJSONObject.put("sub_title_rich", paramAbsBaseArticleInfo);
             localJSONObject.put("bg_image_url", localScripCmsInfo.i);
             return localJSONObject;
           }
-          paramAbsBaseArticleInfo = new JSONObject(localScripCmsInfo.jdField_a_of_type_JavaLangString).getJSONArray("S");
+          paramAbsBaseArticleInfo = new JSONObject(localScripCmsInfo.a).getJSONArray("S");
           Object localObject = new JSONObject(localScripCmsInfo.b).getJSONArray("S");
           localJSONObject.put("main_title_rich", a(paramAbsBaseArticleInfo));
           localJSONObject.put("sub_title_rich", a((JSONArray)localObject));
-          localJSONObject.put("privacy_text", localScripCmsInfo.jdField_d_of_type_JavaLangString);
-          paramAbsBaseArticleInfo = ReadInJoyNoteCardUtil.c();
+          localJSONObject.put("privacy_text", localScripCmsInfo.d);
+          paramAbsBaseArticleInfo = ReadInJoyNoteCardUtil.d();
           localObject = BaseApplicationImpl.getContext();
           if ((Build.VERSION.SDK_INT >= 23) && (localObject != null))
           {
@@ -159,7 +159,7 @@ public class NoteCardProteusItem
             paramInt = 1;
           }
           if ((paramInt == 0) && (ReadInJoyNoteCardUtil.a() == 1)) {
-            localJSONObject.put("tips_text", ((Context)localObject).getString(2131717979));
+            localJSONObject.put("tips_text", ((Context)localObject).getString(2131915459));
           } else {
             localJSONObject.put("tips_text", paramAbsBaseArticleInfo);
           }
@@ -181,11 +181,11 @@ public class NoteCardProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.u() != null))
     {
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
-      this.jdField_a_of_type_AndroidContentContext = paramContainer.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
+      this.d = paramContainer.getContext();
+      this.e = paramIReadInJoyModel;
       Object localObject = paramContainer.getViewIdMapping();
       if ((((Map)localObject).get("id_lottie_view") != null) && ((((Map)localObject).get("id_lottie_view") instanceof ReadInJoyLottieView))) {
         localObject = (ReadInJoyLottieView)((Map)localObject).get("id_lottie_view");
@@ -215,27 +215,27 @@ public class NoteCardProteusItem
   
   public void c()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if (this.d != null)
     {
       Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      if (ReadInJoyNoteCardUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject) < ScripCmsInfo.jdField_d_of_type_Int)
+      if (ReadInJoyNoteCardUtil.a(this.d, (String)localObject) < ScripCmsInfo.o)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
+        localObject = this.e;
         if (localObject != null) {
-          ((ReadInJoyBaseAdapter)((IReadInJoyModel)localObject).a()).i();
+          ((ReadInJoyBaseAdapter)((IReadInJoyModel)localObject).u()).T();
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext;
-        QQToast.a((Context)localObject, 0, ((Context)localObject).getString(2131718069), 0).a();
+        localObject = this.d;
+        QQToast.makeText((Context)localObject, 0, ((Context)localObject).getString(2131915546), 0).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NoteCardProteusItem
  * JD-Core Version:    0.7.0.1
  */

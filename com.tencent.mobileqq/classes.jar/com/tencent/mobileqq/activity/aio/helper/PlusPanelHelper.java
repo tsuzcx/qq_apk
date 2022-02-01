@@ -7,20 +7,20 @@ import com.tencent.mobileqq.activity.aio.panel.PanelManager;
 public class PlusPanelHelper
   implements ILifeCycleHelper
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private PanelManager jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager;
+  private BaseChatPie a;
+  private PanelManager b;
   
   public PlusPanelHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   private PlusPanel a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
+    if (this.b == null) {
+      this.b = this.a.bq();
     }
-    return (PlusPanel)this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(8);
+    return (PlusPanel)this.b.d(8);
   }
   
   public String getTag()
@@ -37,13 +37,13 @@ public class PlusPanelHelper
   {
     PlusPanel localPlusPanel = a();
     if (localPlusPanel != null) {
-      localPlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramInt);
+      localPlusPanel.a(this.a, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusPanelHelper
  * JD-Core Version:    0.7.0.1
  */

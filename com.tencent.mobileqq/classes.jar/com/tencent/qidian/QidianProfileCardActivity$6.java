@@ -12,7 +12,7 @@ class QidianProfileCardActivity$6
   
   public void onClick(View paramView)
   {
-    Object localObject = QidianProfileCardActivity.a(this.a);
+    Object localObject = QidianProfileCardActivity.b(this.a);
     int i;
     if (QidianProfileCardActivity.a(this.a)) {
       i = 1;
@@ -27,7 +27,7 @@ class QidianProfileCardActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.6
  * JD-Core Version:    0.7.0.1
  */

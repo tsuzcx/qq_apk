@@ -18,7 +18,7 @@ public class MessageForDeviceSingleStruct
   public long entityID;
   public String ext = "";
   public String faceRect = "";
-  public long nAppearTime = MessageCache.a();
+  public long nAppearTime = MessageCache.c();
   public int nCoverChannelType = 0;
   public long nCoverSessionID = 0L;
   public int nDataType = 1;
@@ -86,8 +86,8 @@ public class MessageForDeviceSingleStruct
     try
     {
       paramString = new JSONObject(paramString);
-      this.time = paramString.optLong("msg_time", MessageCache.a());
-      this.strTitle = paramString.optString("title", HardCodeUtil.a(2131706628));
+      this.time = paramString.optLong("msg_time", MessageCache.c());
+      this.strTitle = paramString.optString("title", HardCodeUtil.a(2131904479));
       localObject = paramString.optString("data_type", "");
       this.nDataType = 1;
       if (((String)localObject).compareToIgnoreCase("PICTURE") == 0) {
@@ -95,7 +95,7 @@ public class MessageForDeviceSingleStruct
       } else if (((String)localObject).compareToIgnoreCase("VIDEO") == 0) {
         this.nDataType = 2;
       }
-      this.nAppearTime = paramString.optLong("appear_time", MessageCache.a());
+      this.nAppearTime = paramString.optLong("appear_time", MessageCache.c());
       this.strDigest = paramString.optString("digest", "");
       this.strGuideWords = paramString.optString("guidewords", "");
       localObject = paramString.optString("cover_key", "");
@@ -229,7 +229,7 @@ public class MessageForDeviceSingleStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeviceSingleStruct
  * JD-Core Version:    0.7.0.1
  */

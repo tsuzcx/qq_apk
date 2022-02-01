@@ -1,33 +1,17 @@
 package com.tencent.av.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.screenshare.ScreenShareManager;
-import com.tencent.av.screenshare.ScreenShareReportHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class DoubleVideoCtrlUI$19
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  DoubleVideoCtrlUI$19(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, View paramView, ActionSheet paramActionSheet) {}
+  DoubleVideoCtrlUI$19(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt != 0)
-    {
-      if (paramInt == 1)
-      {
-        ((ScreenShareManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.a(17)).b();
-        ScreenShareReportHelper.a("0X800B8A2");
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.f(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
-      ScreenShareReportHelper.a("0X800AD8D");
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    DoubleVideoCtrlUI.a(this.c, this.a, this.b);
   }
 }
 

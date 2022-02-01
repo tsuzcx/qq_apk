@@ -14,23 +14,21 @@ import com.tencent.mobileqq.kandian.base.view.widget.KanDianUrlRoundCornerImageV
 public class ReadInJoyColorBandEntranceButton
   extends ColorBandVideoEntranceButton
 {
-  private int a;
+  private int o = 0;
   
   public ReadInJoyColorBandEntranceButton(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public ReadInJoyColorBandEntranceButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
   }
   
   protected void c()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.o;
     if (i == 0)
     {
       super.c();
@@ -39,11 +37,11 @@ public class ReadInJoyColorBandEntranceButton
     AnimatorSet localAnimatorSet;
     if (i == 1)
     {
-      i = getResources().getInteger(2131427368);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setImageDrawable(getResources().getDrawable(2130849666));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setVisibility(0);
+      i = getResources().getInteger(2131492923);
+      this.c.setImageDrawable(getResources().getDrawable(2130851371));
+      this.c.setVisibility(0);
       localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, "translationX", new float[] { 0.0F, -AIOUtils.b(58.0F, getResources()) }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, "translationY", new float[] { 0.0F, AIOUtils.b(54.0F, getResources()) }) });
+      localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a, "scaleX", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.a, "scaleY", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.a, "alpha", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.c, "translationX", new float[] { 0.0F, -AIOUtils.b(58.0F, getResources()) }), ObjectAnimator.ofFloat(this.c, "translationY", new float[] { 0.0F, AIOUtils.b(54.0F, getResources()) }) });
       localAnimatorSet.setDuration(i);
       localAnimatorSet.addListener(new ReadInJoyColorBandEntranceButton.1(this));
       localAnimatorSet.start();
@@ -51,7 +49,7 @@ public class ReadInJoyColorBandEntranceButton
     }
     if (i == 2)
     {
-      i = getResources().getInteger(2131427369);
+      i = getResources().getInteger(2131492924);
       localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.b, "rotation", new float[] { 0.0F, 360.0F }) });
       localAnimatorSet.setDuration(i);
@@ -61,12 +59,12 @@ public class ReadInJoyColorBandEntranceButton
   
   public void setClickAnimMode(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.o = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reddot.ReadInJoyColorBandEntranceButton
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ import mqq.manager.Manager;
 public class NearbyReportManager
   implements Manager
 {
-  INearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
-  LongSparseArray<ReportRecord> jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray();
-  public boolean a;
+  INearbyAppInterface a;
+  LongSparseArray<ReportRecord> b = new LongSparseArray();
+  public boolean c;
   
   public NearbyReportManager(INearbyAppInterface paramINearbyAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface = paramINearbyAppInterface;
+    this.a = paramINearbyAppInterface;
   }
   
   public void a()
@@ -24,16 +24,16 @@ public class NearbyReportManager
     if (QLog.isColorLevel()) {
       QLog.d("NearbyReportManager", 2, "report");
     }
-    LongSparseArray localLongSparseArray = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
-    NearbyHandler localNearbyHandler = (NearbyHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getBusinessHandler(NearbyConstants.a);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
+    LongSparseArray localLongSparseArray = this.b.a();
+    NearbyHandler localNearbyHandler = (NearbyHandler)this.a.getBusinessHandler(NearbyConstants.a);
+    boolean bool = this.c;
+    this.b.c();
     ThreadManager.post(new NearbyReportManager.1(this, localLongSparseArray, localNearbyHandler, bool), 5, null, false);
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = (ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(paramLong);
+    Object localObject = (ReportRecord)this.b.a(paramLong);
     if (localObject == null)
     {
       if (QLog.isColorLevel())
@@ -45,22 +45,22 @@ public class NearbyReportManager
       }
       return;
     }
-    ((ReportRecord)localObject).c += 1;
-    ((ReportRecord)localObject).d += paramInt1;
-    if (paramInt2 > ((ReportRecord)localObject).e) {
-      ((ReportRecord)localObject).e = paramInt2;
+    ((ReportRecord)localObject).d += 1;
+    ((ReportRecord)localObject).e += paramInt1;
+    if (paramInt2 > ((ReportRecord)localObject).f) {
+      ((ReportRecord)localObject).f = paramInt2;
     }
-    ((ReportRecord)localObject).f |= paramInt3;
+    ((ReportRecord)localObject).g |= paramInt3;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
+    this.b.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyReportManager
  * JD-Core Version:    0.7.0.1
  */

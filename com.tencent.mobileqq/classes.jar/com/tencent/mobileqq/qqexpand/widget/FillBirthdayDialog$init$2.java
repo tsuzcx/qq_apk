@@ -17,9 +17,9 @@ final class FillBirthdayDialog$init$2
     if (this.a.isShowing())
     {
       this.a.dismiss();
-      if (FillBirthdayDialog.a(this.a) != null)
+      if (FillBirthdayDialog.b(this.a) != null)
       {
-        paramView = FillBirthdayDialog.a(this.a);
+        paramView = FillBirthdayDialog.b(this.a);
         if (paramView == null) {
           Intrinsics.throwNpe();
         }
@@ -31,7 +31,7 @@ final class FillBirthdayDialog$init$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.FillBirthdayDialog.init.2
  * JD-Core Version:    0.7.0.1
  */

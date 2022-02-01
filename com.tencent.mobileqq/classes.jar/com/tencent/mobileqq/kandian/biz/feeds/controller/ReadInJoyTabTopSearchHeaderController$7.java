@@ -13,13 +13,13 @@ class ReadInJoyTabTopSearchHeaderController$7
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.c);
     this.a.b(false, -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyTabTopSearchHeaderController.7
  * JD-Core Version:    0.7.0.1
  */

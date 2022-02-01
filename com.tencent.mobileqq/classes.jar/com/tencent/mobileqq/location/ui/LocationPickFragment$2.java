@@ -13,15 +13,15 @@ class LocationPickFragment$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.setResult(0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
+    this.a.setResult(0);
+    this.a.finish();
     ReportController.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.2
  * JD-Core Version:    0.7.0.1
  */

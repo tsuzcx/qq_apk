@@ -5,68 +5,66 @@ import com.tencent.mobileqq.data.IntimateInfo;
 
 public class CardContent
 {
-  public int a;
-  private long a;
-  public IntimateInfo a;
-  public String a;
+  public int a = -1;
+  public IntimateInfo b;
+  public String c;
+  private long d = 0L;
   
   public CardContent(IntimateInfo paramIntimateInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
-    paramIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
+    this.b = paramIntimateInfo;
+    paramIntimateInfo = this.b;
     if (paramIntimateInfo != null) {
       if (!paramIntimateInfo.isFriend) {
-        this.jdField_a_of_type_Int = 1;
+        this.a = 1;
       } else {
-        this.jdField_a_of_type_Int = 0;
+        this.a = 0;
       }
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public long a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Long;
+    this.c = paramString;
   }
   
-  public String a()
+  public long b()
   {
-    IntimateInfo localIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
+    return this.d;
+  }
+  
+  public String c()
+  {
+    IntimateInfo localIntimateInfo = this.b;
     if (localIntimateInfo == null) {
       return null;
     }
     return localIntimateInfo.friendUin;
   }
   
-  public void a(String paramString)
+  public String d()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.c;
   }
   
-  public boolean a()
+  public boolean e()
   {
-    IntimateInfo localIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
+    IntimateInfo localIntimateInfo = this.b;
     if (localIntimateInfo == null) {
       return false;
     }
     return IntimateUtil.a(localIntimateInfo.maskType);
   }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.CardContent
  * JD-Core Version:    0.7.0.1
  */

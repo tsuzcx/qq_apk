@@ -7,10 +7,10 @@
     <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleView android:id="@id/boa" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.aelight.camera.aioeditor.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/f8l" android:background="@color/c1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="@dimen/ac2" android:layout_alignParentBottom="true" />
     <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.widget.StoryGuideLineView android:id="@id/fj1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodlePanel android:id="@id/mv7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:useCase="e_1" />
-    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodlePanel android:id="@id/mv8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:useCase="o7o" />
-    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodleShapePanel android:id="@id/mv9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/ifo" android:background="@drawable/bjh" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ac2" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodlePanel android:id="@id/n4w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:useCase="e_1" />
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodlePanel android:id="@id/n4x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:useCase="q1w" />
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodleShapePanel android:id="@id/n4y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/ifo" android:background="@drawable/1r" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ac2" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
         <FrameLayout android:id="@id/ccf" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="1.0dip" android:layout_centerHorizontal="true">
             <ImageView android:layout_gravity="center" android:id="@id/dxw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fi2" />
         </FrameLayout>

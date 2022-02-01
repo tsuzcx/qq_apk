@@ -29,42 +29,28 @@ public class VoiceAdapter
   extends RecyclerView.Adapter<VoiceAdapter.VoiceViewHolder>
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private IViewPresenter jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
-  private CommandInfo jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo;
-  private List<VoiceItemInfo> jdField_a_of_type_JavaUtilList;
+  private Context a;
+  private CommandInfo b;
+  private List<VoiceItemInfo> c;
+  private IViewPresenter d;
+  private AppInterface e;
   
   public VoiceAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     paramContext = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if ((paramContext instanceof AppInterface)) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)paramContext);
+      this.e = ((AppInterface)paramContext);
     }
   }
   
   private VoiceItemInfo a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size())) {
-      return (VoiceItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (VoiceItemInfo)this.c.get(paramInt);
     }
     return null;
-  }
-  
-  public int a()
-  {
-    CommandInfo localCommandInfo = this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo;
-    if (localCommandInfo != null) {
-      return localCommandInfo.jdField_a_of_type_Int;
-    }
-    return -1;
-  }
-  
-  public CommandInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo;
   }
   
   public VoiceAdapter.VoiceViewHolder a(ViewGroup paramViewGroup, int paramInt)
@@ -81,46 +67,46 @@ public class VoiceAdapter
       }
       break;
     case 9: 
-      paramViewGroup = VoiceViewUtils.d(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+      paramViewGroup = VoiceViewUtils.d(this.a, paramViewGroup);
       paramViewGroup.setOnClickListener(this);
       return new VoiceAdapter.VoiceViewHolder(this, paramInt, paramViewGroup);
     case 8: 
-      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.e(this.jdField_a_of_type_AndroidContentContext));
+      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.f(this.a));
     case 7: 
-      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.a(this.jdField_a_of_type_AndroidContentContext));
+      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.e(this.a));
     case 6: 
-      paramViewGroup = VoiceViewUtils.c(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
-      paramViewGroup.findViewById(2131364634).setOnClickListener(this);
-      paramViewGroup.findViewById(2131364631).setOnClickListener(this);
+      paramViewGroup = VoiceViewUtils.c(this.a, paramViewGroup);
+      paramViewGroup.findViewById(2131430719).setOnClickListener(this);
+      paramViewGroup.findViewById(2131430716).setOnClickListener(this);
       return new VoiceAdapter.VoiceViewHolder(this, paramInt, paramViewGroup);
     case 5: 
-      paramViewGroup = VoiceViewUtils.b(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
-      paramViewGroup.findViewById(2131380985).setOnClickListener(this);
+      paramViewGroup = VoiceViewUtils.b(this.a, paramViewGroup);
+      paramViewGroup.findViewById(2131449976).setOnClickListener(this);
       return new VoiceAdapter.VoiceViewHolder(this, paramInt, paramViewGroup);
     case 4: 
-      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.d(this.jdField_a_of_type_AndroidContentContext));
+      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.d(this.a));
     case 3: 
-      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.c(this.jdField_a_of_type_AndroidContentContext));
+      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.c(this.a));
     case 2: 
-      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.b(this.jdField_a_of_type_AndroidContentContext));
+      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.b(this.a));
     case 1: 
-      paramViewGroup = VoiceViewUtils.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+      paramViewGroup = VoiceViewUtils.a(this.a, paramViewGroup);
       paramViewGroup.setOnClickListener(this);
       return new VoiceAdapter.VoiceViewHolder(this, paramInt, paramViewGroup);
     case 0: 
-      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.a(this.jdField_a_of_type_AndroidContentContext));
+      return new VoiceAdapter.VoiceViewHolder(this, paramInt, VoiceViewUtils.a(this.a));
     }
-    return new VoiceAdapter.VoiceViewHolder(this, 0, VoiceViewUtils.a(this.jdField_a_of_type_AndroidContentContext));
+    return new VoiceAdapter.VoiceViewHolder(this, 0, VoiceViewUtils.a(this.a));
   }
   
   public List<VoiceItemInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.c;
   }
   
   public void a(IViewPresenter paramIViewPresenter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter = paramIViewPresenter;
+    this.d = paramIViewPresenter;
   }
   
   public void a(CommandInfo paramCommandInfo, List<VoiceItemInfo> paramList)
@@ -132,15 +118,15 @@ public class VoiceAdapter
       }
       return;
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramList.isEmpty()))
+    if ((this.c != null) && (paramList.isEmpty()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceAdapter", 2, "setData do not need refresh");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo = paramCommandInfo;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramCommandInfo;
+    this.c = paramList;
     notifyDataSetChanged();
   }
   
@@ -149,7 +135,7 @@ public class VoiceAdapter
     Object localObject2 = a(paramInt);
     if (localObject2 != null)
     {
-      paramInt = paramVoiceViewHolder.jdField_a_of_type_Int;
+      paramInt = paramVoiceViewHolder.a;
       if (paramInt != 0)
       {
         Object localObject1;
@@ -162,63 +148,63 @@ public class VoiceAdapter
           }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("onBindViewHolder viewType is error: ");
-          ((StringBuilder)localObject1).append(paramVoiceViewHolder.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(paramVoiceViewHolder.a);
           QLog.d("VoiceAdapter", 2, ((StringBuilder)localObject1).toString());
           return;
         case 9: 
-          if ((paramVoiceViewHolder.jdField_a_of_type_AndroidViewView == null) || (((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo == null) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null)) {
+          if ((paramVoiceViewHolder.b == null) || (((VoiceItemInfo)localObject2).d == null) || (this.e == null)) {
             break;
           }
-          localObject3 = (ImageView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131367327);
-          TextView localTextView1 = (TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131367345);
-          TextView localTextView2 = (TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131367328);
+          localObject3 = (ImageView)paramVoiceViewHolder.b.findViewById(2131433784);
+          TextView localTextView1 = (TextView)paramVoiceViewHolder.b.findViewById(2131433802);
+          TextView localTextView2 = (TextView)paramVoiceViewHolder.b.findViewById(2131433785);
           localObject1 = null;
-          if (((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo.jdField_a_of_type_Int == 0) {
-            localObject1 = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 1, ((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo.jdField_a_of_type_JavaLangString);
-          } else if (1 == ((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo.jdField_a_of_type_Int) {
-            localObject1 = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 4, ((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo.jdField_a_of_type_JavaLangString);
+          if (((VoiceItemInfo)localObject2).d.c == 0) {
+            localObject1 = FaceDrawable.getFaceDrawable(this.e, 1, ((VoiceItemInfo)localObject2).d.a);
+          } else if (1 == ((VoiceItemInfo)localObject2).d.c) {
+            localObject1 = FaceDrawable.getFaceDrawable(this.e, 4, ((VoiceItemInfo)localObject2).d.a);
           }
           if (localObject1 == null) {
-            ((ImageView)localObject3).setImageBitmap(BaseImageUtil.f());
+            ((ImageView)localObject3).setImageBitmap(BaseImageUtil.k());
           } else {
             ((ImageView)localObject3).setImageDrawable((Drawable)localObject1);
           }
-          localTextView1.setText(((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo.b);
-          localTextView2.setText(((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo.c);
-          paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.setTag(((VoiceItemInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo);
+          localTextView1.setText(((VoiceItemInfo)localObject2).d.b);
+          localTextView2.setText(((VoiceItemInfo)localObject2).d.f);
+          paramVoiceViewHolder.b.setTag(((VoiceItemInfo)localObject2).d);
           return;
         case 8: 
-          if (!(paramVoiceViewHolder.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+          if (!(paramVoiceViewHolder.b instanceof TextView)) {
             break;
           }
-          ((TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView).setText(((VoiceItemInfo)localObject2).jdField_a_of_type_JavaLangString);
+          ((TextView)paramVoiceViewHolder.b).setText(((VoiceItemInfo)localObject2).b);
           return;
         case 7: 
-          if (((VoiceItemInfo)localObject2).jdField_a_of_type_Int != 7) {
+          if (((VoiceItemInfo)localObject2).a != 7) {
             break;
           }
-          paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-1, ScreenUtil.dip2px(((VoiceItemInfo)localObject2).b)));
+          paramVoiceViewHolder.b.setLayoutParams(new ViewGroup.LayoutParams(-1, ScreenUtil.dip2px(((VoiceItemInfo)localObject2).c)));
           return;
         case 6: 
-          if (paramVoiceViewHolder.jdField_a_of_type_AndroidViewView == null) {
+          if (paramVoiceViewHolder.b == null) {
             break;
           }
-          localObject3 = (TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131364631);
-          localObject2 = (TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131364634);
-          if (a() == 5)
+          localObject3 = (TextView)paramVoiceViewHolder.b.findViewById(2131430716);
+          localObject2 = (TextView)paramVoiceViewHolder.b.findViewById(2131430719);
+          if (b() == 5)
           {
-            paramVoiceViewHolder = this.jdField_a_of_type_AndroidContentContext.getString(2131695328);
-            localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131720336);
+            paramVoiceViewHolder = this.a.getString(2131893063);
+            localObject1 = this.a.getString(2131917971);
           }
-          else if (a() == 6)
+          else if (b() == 6)
           {
-            paramVoiceViewHolder = this.jdField_a_of_type_AndroidContentContext.getString(2131720334);
-            localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131720335);
+            paramVoiceViewHolder = this.a.getString(2131917969);
+            localObject1 = this.a.getString(2131917970);
           }
           else
           {
-            paramVoiceViewHolder = this.jdField_a_of_type_AndroidContentContext.getString(2131720310);
-            localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131720312);
+            paramVoiceViewHolder = this.a.getString(2131917945);
+            localObject1 = this.a.getString(2131917947);
           }
           if (localObject3 != null)
           {
@@ -230,66 +216,80 @@ public class VoiceAdapter
             ((TextView)localObject2).setText((CharSequence)localObject1);
             ((TextView)localObject2).setVisibility(0);
           }
-          paramVoiceViewHolder = this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo;
-          if ((paramVoiceViewHolder != null) && (paramVoiceViewHolder.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo.c))
+          paramVoiceViewHolder = this.b;
+          if ((paramVoiceViewHolder != null) && (paramVoiceViewHolder.f != null) && (this.b.f.g))
           {
             if (localObject3 != null) {
-              ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131720309));
+              ((TextView)localObject3).setText(this.a.getString(2131917944));
             }
             if (localObject2 != null) {
-              ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131720311));
+              ((TextView)localObject2).setText(this.a.getString(2131917946));
             }
           }
-          paramVoiceViewHolder = this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo;
-          if ((paramVoiceViewHolder == null) || (paramVoiceViewHolder.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo.jdField_a_of_type_JavaUtilList.size() != 1)) {
+          paramVoiceViewHolder = this.b;
+          if ((paramVoiceViewHolder == null) || (paramVoiceViewHolder.d == null) || (this.b.d.size() != 1)) {
             break;
           }
-          paramVoiceViewHolder = (FriendItemInfo)this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo.jdField_a_of_type_JavaUtilList.get(0);
-          if ((paramVoiceViewHolder.jdField_a_of_type_Boolean) || (paramVoiceViewHolder.jdField_a_of_type_Float < FriendSortHelper.a()) || (localObject2 == null)) {
+          paramVoiceViewHolder = (FriendItemInfo)this.b.d.get(0);
+          if ((paramVoiceViewHolder.d) || (paramVoiceViewHolder.h < FriendSortHelper.a()) || (localObject2 == null)) {
             break;
           }
           ((TextView)localObject2).setVisibility(8);
           return;
         case 5: 
-          if (paramVoiceViewHolder.jdField_a_of_type_AndroidViewView == null) {
+          if (paramVoiceViewHolder.b == null) {
             break;
           }
-          paramVoiceViewHolder = (TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131380985);
+          paramVoiceViewHolder = (TextView)paramVoiceViewHolder.b.findViewById(2131449976);
           if (paramVoiceViewHolder == null) {
             break;
           }
-          paramVoiceViewHolder.setText(((VoiceItemInfo)localObject2).jdField_a_of_type_JavaLangString);
+          paramVoiceViewHolder.setText(((VoiceItemInfo)localObject2).b);
           return;
         case 4: 
-          if (!(paramVoiceViewHolder.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+          if (!(paramVoiceViewHolder.b instanceof TextView)) {
             break;
           }
-          ((TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView).setText(((VoiceItemInfo)localObject2).jdField_a_of_type_JavaLangString);
+          ((TextView)paramVoiceViewHolder.b).setText(((VoiceItemInfo)localObject2).b);
           return;
         case 3: 
-          if (!(paramVoiceViewHolder.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+          if (!(paramVoiceViewHolder.b instanceof TextView)) {
             break;
           }
-          ((TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView).setText(((VoiceItemInfo)localObject2).jdField_a_of_type_JavaLangString);
+          ((TextView)paramVoiceViewHolder.b).setText(((VoiceItemInfo)localObject2).b);
           return;
         case 2: 
-          if (!(paramVoiceViewHolder.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+          if (!(paramVoiceViewHolder.b instanceof TextView)) {
             break;
           }
-          ((TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView).setText(((VoiceItemInfo)localObject2).jdField_a_of_type_JavaLangString);
+          ((TextView)paramVoiceViewHolder.b).setText(((VoiceItemInfo)localObject2).b);
           return;
         }
       }
-      else if ((paramVoiceViewHolder.jdField_a_of_type_AndroidViewView instanceof TextView))
+      else if ((paramVoiceViewHolder.b instanceof TextView))
       {
-        ((TextView)paramVoiceViewHolder.jdField_a_of_type_AndroidViewView).setText(((VoiceItemInfo)localObject2).jdField_a_of_type_JavaLangString);
+        ((TextView)paramVoiceViewHolder.b).setText(((VoiceItemInfo)localObject2).b);
       }
     }
   }
   
+  public int b()
+  {
+    CommandInfo localCommandInfo = this.b;
+    if (localCommandInfo != null) {
+      return localCommandInfo.a;
+    }
+    return -1;
+  }
+  
+  public CommandInfo c()
+  {
+    return this.b;
+  }
+  
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList != null) {
       return localList.size();
     }
@@ -298,12 +298,12 @@ public class VoiceAdapter
   
   public int getItemViewType(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.c;
     if ((localObject != null) && (paramInt < ((List)localObject).size()))
     {
-      localObject = (VoiceItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject = (VoiceItemInfo)this.c.get(paramInt);
       if (localObject != null) {
-        return ((VoiceItemInfo)localObject).jdField_a_of_type_Int;
+        return ((VoiceItemInfo)localObject).a;
       }
     }
     return super.getItemViewType(paramInt);
@@ -313,49 +313,49 @@ public class VoiceAdapter
   {
     int i = paramView.getId();
     Object localObject;
-    if (i == 2131380834)
+    if (i == 2131449810)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+      localObject = this.d;
       if (localObject != null) {
         ((IViewPresenter)localObject).a();
       }
     }
-    else if (i == 2131364634)
+    else if (i == 2131430719)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+      localObject = this.d;
       if (localObject != null) {
         ((IViewPresenter)localObject).a(true);
       }
     }
-    else if (i == 2131364631)
+    else if (i == 2131430716)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+      localObject = this.d;
       if (localObject != null) {
         ((IViewPresenter)localObject).a(false);
       }
     }
-    else if (i == 2131380985)
+    else if (i == 2131449976)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+      localObject = this.d;
       if (localObject != null)
       {
-        CommandInfo localCommandInfo = this.jdField_a_of_type_ComTencentMobileqqQassistantDataCommandInfo;
+        CommandInfo localCommandInfo = this.b;
         if (localCommandInfo != null) {
-          ((IViewPresenter)localObject).a(localCommandInfo.jdField_a_of_type_Int);
+          ((IViewPresenter)localObject).a(localCommandInfo.a);
         }
       }
     }
-    else if ((i == 2131367331) && (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter != null) && ((paramView.getTag() instanceof FriendItemInfo)))
+    else if ((i == 2131433788) && (this.d != null) && ((paramView.getTag() instanceof FriendItemInfo)))
     {
       localObject = (FriendItemInfo)paramView.getTag();
-      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter.a((FriendItemInfo)localObject);
+      this.d.a((FriendItemInfo)localObject);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoiceAdapter
  * JD-Core Version:    0.7.0.1
  */

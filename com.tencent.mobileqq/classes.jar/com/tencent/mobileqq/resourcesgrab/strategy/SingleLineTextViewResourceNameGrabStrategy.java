@@ -24,8 +24,8 @@ public class SingleLineTextViewResourceNameGrabStrategy
       {
         paramView = (SkinnableColorStateList)localObject;
         localObject = new ResourceGrabSkinData(3, ((SkinnableColorStateList)localObject).skinData);
-        ((ResourceGrabSkinData)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
-        ((ResourceGrabSkinData)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
+        ((ResourceGrabSkinData)localObject).c = paramView.getStateSpecs();
+        ((ResourceGrabSkinData)localObject).d = paramView.getColors();
         paramList.add(localObject);
         return;
       }
@@ -110,7 +110,7 @@ public class SingleLineTextViewResourceNameGrabStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.strategy.SingleLineTextViewResourceNameGrabStrategy
  * JD-Core Version:    0.7.0.1
  */

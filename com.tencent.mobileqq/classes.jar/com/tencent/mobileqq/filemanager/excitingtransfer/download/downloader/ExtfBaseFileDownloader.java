@@ -19,128 +19,53 @@ import java.util.List;
 public abstract class ExtfBaseFileDownloader
   implements IExcitingTransferRecvListener
 {
-  protected final int a;
-  protected long a;
-  protected final QQAppInterface a;
-  protected final ExtfDownloadFileInfo a;
-  private IExtfDownloaderSink a;
-  protected ExcitingTransferDownloadCompletedInfo a;
-  protected String a;
-  protected boolean a;
-  protected int b;
-  protected long b;
-  protected final long c;
-  protected final long d;
+  protected boolean a = true;
+  protected long b = 0L;
+  protected long c = 0L;
+  protected final QQAppInterface d;
+  protected final long e;
+  protected final int f;
+  protected final long g;
+  protected final ExtfDownloadFileInfo h;
+  protected ExcitingTransferDownloadCompletedInfo i;
+  protected int j = 201;
+  protected String k = "";
+  private IExtfDownloaderSink l;
   
   public ExtfBaseFileDownloader(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, ExtfDownloadFileInfo paramExtfDownloadFileInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 201;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.d = paramLong1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo = paramExtfDownloadFileInfo;
-    this.c = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
+    this.d = paramQQAppInterface;
+    this.g = paramLong1;
+    this.h = paramExtfDownloadFileInfo;
+    this.e = paramLong2;
+    this.f = paramInt;
+    this.a = true;
   }
   
   private void b(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    if (this.jdField_a_of_type_Long != 0L)
+    if (this.b != 0L)
     {
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = 0L;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.b);
+      this.b = 0L;
     }
     ThreadManager.post(new ExtfBaseFileDownloader.3(this, paramInt, paramExcitingTransferDownloadCompletedInfo), 5, null, false);
   }
   
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public ExcitingTransferDownloadCompletedInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
-  }
-  
   protected abstract ExcitingTransferDownloadConfig a();
-  
-  protected ExcitingTransferDownloadReqInfo a()
-  {
-    ExcitingTransferDownloadReqInfo localExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo;
-    if (localObject != null)
-    {
-      localExcitingTransferDownloadReqInfo.fileSize = ((ExtfDownloadFileInfo)localObject).a();
-      localExcitingTransferDownloadReqInfo.md5 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a();
-      localExcitingTransferDownloadReqInfo.isSupportHttps = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.b();
-      localExcitingTransferDownloadReqInfo.sslCName = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.d();
-      localExcitingTransferDownloadReqInfo.strFileName = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a() != null) {
-        localExcitingTransferDownloadReqInfo.mHosts = ((ExcitingTransferHostInfo[])this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a().toArray(new ExcitingTransferHostInfo[this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a().size()]));
-      }
-      localExcitingTransferDownloadReqInfo.strFileName = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a();
-      localExcitingTransferDownloadReqInfo.serverPath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.b();
-    }
-    else
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("Id[");
-      ((StringBuilder)localObject).append(this.d);
-      ((StringBuilder)localObject).append("] getDownloadInfo mFileInfo = null ^^^^");
-      QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    }
-    localExcitingTransferDownloadReqInfo.strCookie = c();
-    localExcitingTransferDownloadReqInfo.strTempFilePath = b();
-    localExcitingTransferDownloadReqInfo.strSaveFileDir = a();
-    a(localExcitingTransferDownloadReqInfo);
-    return localExcitingTransferDownloadReqInfo;
-  }
-  
-  protected String a()
-  {
-    return FMSettings.a().getDefaultRecvPath();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Id[");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append("] stopDownloadFile ^^^^");
-    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Long != 0L)
-    {
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = 0L;
-    }
-  }
   
   protected void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Id[");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append("] *_* *_* onFailure errcode:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderIExtfDownloaderSink;
+    localObject = this.l;
     if (localObject != null) {
       ((IExtfDownloaderSink)localObject).a(paramInt, paramExcitingTransferDownloadCompletedInfo);
     }
@@ -148,7 +73,7 @@ public abstract class ExtfBaseFileDownloader
   
   protected void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    IExtfDownloaderSink localIExtfDownloaderSink = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderIExtfDownloaderSink;
+    IExtfDownloaderSink localIExtfDownloaderSink = this.l;
     if (localIExtfDownloaderSink != null) {
       localIExtfDownloaderSink.a(paramLong1, paramLong2, paramLong3);
     }
@@ -156,17 +81,17 @@ public abstract class ExtfBaseFileDownloader
   
   public void a(IExtfDownloaderSink paramIExtfDownloaderSink)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderIExtfDownloaderSink = paramIExtfDownloaderSink;
+    this.l = paramIExtfDownloaderSink;
   }
   
   protected void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Id[");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append("] ^_^ ^_^ onSuccess");
     QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderIExtfDownloaderSink;
+    localObject = this.l;
     if (localObject != null) {
       ((IExtfDownloaderSink)localObject).a(0, paramExcitingTransferDownloadCompletedInfo);
     }
@@ -174,71 +99,141 @@ public abstract class ExtfBaseFileDownloader
   
   protected void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
   
-  public boolean a()
+  public boolean b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 201;
-    Object localObject = a();
+    this.i = null;
+    this.c = 0L;
+    this.j = 201;
+    Object localObject = g();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Id[");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("] startDownloadFile >>>>");
     QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("Id[");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("] reqInfo   = {");
     localStringBuilder.append(((ExcitingTransferDownloadReqInfo)localObject).toString());
     localStringBuilder.append("}");
     QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, localStringBuilder.toString());
-    long l = ExcitingTransferEngine.getInstance().recvFileEx((ExcitingTransferDownloadReqInfo)localObject, a(), this);
-    if (l == -1L)
+    long l1 = ExcitingTransferEngine.getInstance().recvFileEx((ExcitingTransferDownloadReqInfo)localObject, a(), this);
+    if (l1 == -1L)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Id[");
-      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append("] startDownloadFile fail");
       QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = l;
+    this.a = false;
+    this.b = l1;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Id[");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append("] startDownloadFile excitingId:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.b);
     QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     return true;
   }
   
-  protected abstract String b();
-  
-  protected String c()
+  public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo != null)
+    if (this.a) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Id[");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("] stopDownloadFile ^^^^");
+    QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, localStringBuilder.toString());
+    this.a = true;
+    if (this.b != 0L)
+    {
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.b);
+      this.b = 0L;
+    }
+  }
+  
+  protected String d()
+  {
+    return FMSettings.a().getDefaultRecvPath();
+  }
+  
+  protected abstract String e();
+  
+  protected String f()
+  {
+    if (this.h != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Cookie:t=0;v=");
-      localStringBuilder.append(AppSetting.a());
+      localStringBuilder.append(AppSetting.d());
       localStringBuilder.append(";");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.c());
+      localStringBuilder.append(this.h.g());
       localStringBuilder.append(";\r\n");
       return localStringBuilder.toString();
     }
     return "";
   }
   
+  protected ExcitingTransferDownloadReqInfo g()
+  {
+    ExcitingTransferDownloadReqInfo localExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
+    Object localObject = this.h;
+    if (localObject != null)
+    {
+      localExcitingTransferDownloadReqInfo.fileSize = ((ExtfDownloadFileInfo)localObject).c();
+      localExcitingTransferDownloadReqInfo.md5 = this.h.d();
+      localExcitingTransferDownloadReqInfo.isSupportHttps = this.h.h();
+      localExcitingTransferDownloadReqInfo.sslCName = this.h.i();
+      localExcitingTransferDownloadReqInfo.strFileName = this.h.b();
+      if (this.h.e() != null) {
+        localExcitingTransferDownloadReqInfo.mHosts = ((ExcitingTransferHostInfo[])this.h.e().toArray(new ExcitingTransferHostInfo[this.h.e().size()]));
+      }
+      localExcitingTransferDownloadReqInfo.strFileName = this.h.b();
+      localExcitingTransferDownloadReqInfo.serverPath = this.h.f();
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Id[");
+      ((StringBuilder)localObject).append(this.g);
+      ((StringBuilder)localObject).append("] getDownloadInfo mFileInfo = null ^^^^");
+      QLog.e("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    }
+    localExcitingTransferDownloadReqInfo.strCookie = f();
+    localExcitingTransferDownloadReqInfo.strTempFilePath = e();
+    localExcitingTransferDownloadReqInfo.strSaveFileDir = d();
+    a(localExcitingTransferDownloadReqInfo);
+    return localExcitingTransferDownloadReqInfo;
+  }
+  
+  public long h()
+  {
+    return this.c;
+  }
+  
+  public ExcitingTransferDownloadCompletedInfo i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
+  }
+  
   public void onOneSlotComplete(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Id[");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("] ^_^ OnOneSlotComplete:");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" RP:");
@@ -254,8 +249,8 @@ public abstract class ExtfBaseFileDownloader
     if (paramExcitingTransferOneSlotComplete != null) {
       localObject = paramExcitingTransferOneSlotComplete.mstrIp;
     }
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderIExtfDownloaderSink;
+    this.k = ((String)localObject);
+    localObject = this.l;
     if (localObject != null) {
       ((IExtfDownloaderSink)localObject).a(paramInt, paramExcitingTransferOneSlotComplete);
     }
@@ -263,7 +258,7 @@ public abstract class ExtfBaseFileDownloader
   
   public void onRecvComplete(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     boolean bool;
@@ -274,7 +269,7 @@ public abstract class ExtfBaseFileDownloader
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Id[");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("] onExcitingDownloadResult suc:");
     localStringBuilder.append(bool);
     localStringBuilder.append(" errcode:");
@@ -290,19 +285,19 @@ public abstract class ExtfBaseFileDownloader
     QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, localStringBuilder.toString());
     if (bool)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo;
+      localObject = this.h;
       if (localObject != null) {
-        this.jdField_b_of_type_Long = ((ExtfDownloadFileInfo)localObject).a();
+        this.c = ((ExtfDownloadFileInfo)localObject).c();
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = 0L;
+    this.i = paramExcitingTransferDownloadCompletedInfo;
+    this.j = paramInt;
+    this.b = 0L;
     Object localObject = str;
     if (paramExcitingTransferDownloadCompletedInfo != null) {
       localObject = paramExcitingTransferDownloadCompletedInfo.mstrLastServerHost;
     }
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    this.k = ((String)localObject);
     if (bool)
     {
       ThreadManager.post(new ExtfBaseFileDownloader.2(this, paramExcitingTransferDownloadCompletedInfo), 5, null, false);
@@ -313,32 +308,32 @@ public abstract class ExtfBaseFileDownloader
   
   public void onRecvProgress(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramLong2;
     ThreadManager.post(new ExtfBaseFileDownloader.1(this, paramLong1, paramLong3), 5, null, false);
   }
   
   public void onRecvStart()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Id[");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append("] onExcitingSendStart.");
     QLog.i("ExcitingTransfer.BaseDownloader<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderIExtfDownloaderSink;
+    localObject = this.l;
     if (localObject != null) {
-      ((IExtfDownloaderSink)localObject).a();
+      ((IExtfDownloaderSink)localObject).c();
     }
   }
   
   public void onSpeed(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     ThreadManager.post(new ExtfBaseFileDownloader.4(this, paramExcitingTransferDownloadSpeedInfo), 5, null, false);
@@ -346,7 +341,7 @@ public abstract class ExtfBaseFileDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader
  * JD-Core Version:    0.7.0.1
  */

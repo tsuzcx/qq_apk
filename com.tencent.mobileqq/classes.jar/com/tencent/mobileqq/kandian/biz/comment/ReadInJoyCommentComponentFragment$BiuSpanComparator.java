@@ -7,17 +7,17 @@ import java.util.Comparator;
 public class ReadInJoyCommentComponentFragment$BiuSpanComparator
   implements Comparator<BiuNicknameSpan>
 {
-  private Editable jdField_a_of_type_AndroidTextEditable;
+  private Editable b;
   
   public ReadInJoyCommentComponentFragment$BiuSpanComparator(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
   {
-    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+    this.b = paramEditable;
   }
   
   public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
   {
-    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
-    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    int i = this.b.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.b.getSpanStart(paramBiuNicknameSpan2);
     if (i > j) {
       return 1;
     }
@@ -29,7 +29,7 @@ public class ReadInJoyCommentComponentFragment$BiuSpanComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentComponentFragment.BiuSpanComparator
  * JD-Core Version:    0.7.0.1
  */

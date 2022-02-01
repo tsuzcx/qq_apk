@@ -12,9 +12,9 @@ import java.util.List;
 public class AEHorizontalSelectColorLayout
   extends FrameLayout
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private AEHorizontalSelectColorLayout.ColorListAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private RecyclerView a;
+  private AEHorizontalSelectColorLayout.ColorListAdapter b;
+  private Boolean c;
   
   public AEHorizontalSelectColorLayout(Context paramContext)
   {
@@ -29,30 +29,30 @@ public class AEHorizontalSelectColorLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558515, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376868));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 0, false));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter = new AEHorizontalSelectColorLayout.ColorListAdapter(null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter);
+    LayoutInflater.from(getContext()).inflate(2131624068, this);
+    this.a = ((RecyclerView)findViewById(2131445202));
+    this.a.setLayoutManager(new LinearLayoutManager(getContext(), 0, false));
+    this.b = new AEHorizontalSelectColorLayout.ColorListAdapter(null);
+    this.a.setAdapter(this.b);
   }
   
   public void a(List<Integer> paramList, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter == null)
+    if (this.b == null)
     {
       AEQLog.d("AEHorizontalSelectColorLayout", "color adapter null.");
       return;
     }
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
-    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter, paramBoolean);
-    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter, paramInt);
-    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter, paramList);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter.notifyDataSetChanged();
+    this.c = Boolean.valueOf(paramBoolean);
+    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.b, paramBoolean);
+    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.b, paramInt);
+    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.b, paramList);
+    this.b.notifyDataSetChanged();
   }
   
   public void setColorSelectListener(AEHorizontalSelectColorLayout.IColorSelectListener paramIColorSelectListener)
   {
-    AEHorizontalSelectColorLayout.ColorListAdapter localColorListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter;
+    AEHorizontalSelectColorLayout.ColorListAdapter localColorListAdapter = this.b;
     if (localColorListAdapter != null) {
       AEHorizontalSelectColorLayout.ColorListAdapter.a(localColorListAdapter, paramIColorSelectListener);
     }
@@ -60,7 +60,7 @@ public class AEHorizontalSelectColorLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.AEHorizontalSelectColorLayout
  * JD-Core Version:    0.7.0.1
  */

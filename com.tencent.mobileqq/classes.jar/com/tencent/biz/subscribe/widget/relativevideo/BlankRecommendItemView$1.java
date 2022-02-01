@@ -13,21 +13,21 @@ class BlankRecommendItemView$1
   
   public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
+    String str = this.a.id.get();
     if (paramBoolean) {
       paramStFeed = "blank_content_follow";
     } else {
       paramStFeed = "blank_content_unfollow";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BlankRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView));
+    localStringBuilder.append(BlankRecommendItemView.a(this.b));
     localStringBuilder.append("");
-    VSReporter.b(str, "auth_follow", paramStFeed, 0, 0, new String[] { "", localStringBuilder.toString(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), "" });
+    VSReporter.b(str, "auth_follow", paramStFeed, 0, 0, new String[] { "", localStringBuilder.toString(), this.a.nick.get(), "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView.1
  * JD-Core Version:    0.7.0.1
  */

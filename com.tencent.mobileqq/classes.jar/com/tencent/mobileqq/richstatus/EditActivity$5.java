@@ -9,13 +9,13 @@ class EditActivity$5
   
   public void run()
   {
-    EditActivity.a(this.this$0).requestFocus();
-    ((InputMethodManager)this.this$0.getSystemService("input_method")).showSoftInput(EditActivity.a(this.this$0), 2);
+    EditActivity.c(this.this$0).requestFocus();
+    ((InputMethodManager)this.this$0.getSystemService("input_method")).showSoftInput(EditActivity.c(this.this$0), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.EditActivity.5
  * JD-Core Version:    0.7.0.1
  */

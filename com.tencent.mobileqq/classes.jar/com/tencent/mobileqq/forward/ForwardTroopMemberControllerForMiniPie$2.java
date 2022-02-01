@@ -24,16 +24,16 @@ class ForwardTroopMemberControllerForMiniPie$2
     }
     localStringBuilder.append(i);
     QLog.i("ForwardTroopMemberControllerForMiniPie", 2, localStringBuilder.toString());
-    if ((ForwardTroopMemberControllerForMiniPie.a(this.a).equals(paramString)) && (ForwardTroopMemberControllerForMiniPie.a(this.a) != null))
+    if ((ForwardTroopMemberControllerForMiniPie.d(this.a).equals(paramString)) && (ForwardTroopMemberControllerForMiniPie.b(this.a) != null))
     {
-      ForwardTroopMemberControllerForMiniPie.a(this.a);
-      ForwardTroopMemberControllerForMiniPie.a(this.a).a(paramList);
+      ForwardTroopMemberControllerForMiniPie.c(this.a);
+      ForwardTroopMemberControllerForMiniPie.b(this.a).a(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.2
  * JD-Core Version:    0.7.0.1
  */

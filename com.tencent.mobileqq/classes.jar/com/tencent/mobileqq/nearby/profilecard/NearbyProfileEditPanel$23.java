@@ -11,12 +11,12 @@ class NearbyProfileEditPanel$23
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessINearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_ArrayOfComTencentMobileqqNearbyInterestTagInterestTag, this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mLostGodFlag, this.this$0.b(), false, false);
+    this.a.a(this.b, this.c, this.this$0.T, this.this$0.F.mLostGodFlag, this.this$0.j(), false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.23
  * JD-Core Version:    0.7.0.1
  */

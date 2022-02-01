@@ -88,7 +88,7 @@ class LoginInfoActivity$12
       }
     }
     LoginInfoActivity.access$2600(this.a);
-    paramDevlockInfo = this.a.getString(2131692013);
+    paramDevlockInfo = this.a.getString(2131888980);
     paramWUserSigInfo = paramDevlockInfo;
     if (paramErrMsg != null)
     {
@@ -97,12 +97,12 @@ class LoginInfoActivity$12
         paramWUserSigInfo = paramErrMsg.getMessage();
       }
     }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getApplicationContext(), paramWUserSigInfo, 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.12
  * JD-Core Version:    0.7.0.1
  */

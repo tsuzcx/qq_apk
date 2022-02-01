@@ -8,35 +8,35 @@ import android.graphics.drawable.LayerDrawable;
 
 public final class AvGameMicroPhoneAnimatorHolder
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  private Activity a;
+  private Drawable b;
+  private ClipDrawable c;
+  private LayerDrawable d;
   
   public AvGameMicroPhoneAnimatorHolder(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    a();
+    this.a = paramActivity;
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838674);
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838675));
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    this.b = this.a.getResources().getDrawable(2130838862);
+    this.c = ((ClipDrawable)this.a.getResources().getDrawable(2130838864));
+    this.d = new LayerDrawable(new Drawable[] { this.b, this.c });
+    this.d.setLayerInset(0, 0, 0, 0, 0);
+    this.d.setLayerInset(1, 0, 0, 0, 0);
+    this.d.setBounds(0, 0, this.b.getIntrinsicWidth(), this.b.getIntrinsicHeight());
   }
   
   public Drawable a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+    return this.d;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
+    this.c.setLevel(paramInt);
   }
 }
 

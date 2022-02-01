@@ -26,7 +26,7 @@ class ARTipsManager$CustomHandler
       if (i != 101) {
         return;
       }
-      ARTipsManager.a(localARTipsManager);
+      ARTipsManager.f(localARTipsManager);
       return;
     }
     ARTipsManager.a(localARTipsManager, (ARTipsManager.TipsInfo)paramMessage.obj);
@@ -34,7 +34,7 @@ class ARTipsManager$CustomHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.CustomHandler
  * JD-Core Version:    0.7.0.1
  */

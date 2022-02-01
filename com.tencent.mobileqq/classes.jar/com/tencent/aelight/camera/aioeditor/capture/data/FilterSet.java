@@ -26,17 +26,17 @@ public class FilterSet
       QLog.i("QCombo", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = new ArrayList();
-    Object localObject2 = this.b.iterator();
+    Object localObject2 = this.g.iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (CaptureComboBase)((Iterator)localObject2).next();
       if ((localObject3 instanceof CaptureComboFilter)) {
-        ((List)localObject1).add(((CaptureComboFilter)localObject3).a);
+        ((List)localObject1).add(((CaptureComboFilter)localObject3).f);
       }
     }
-    ((CaptureComboManager)com.tencent.aelight.camera.aioeditor.capture.QIMManager.a(5)).a[paramInt].a(this);
-    localObject2 = (QIMFilterCategoryItem)this.a;
+    ((CaptureComboManager)com.tencent.aelight.camera.aioeditor.capture.QIMManager.a(5)).o[paramInt].a(this);
+    localObject2 = (QIMFilterCategoryItem)this.e;
     VideoFilterTools.a().a((QIMFilterCategoryItem)localObject2, paramInt);
     if ((QLog.isColorLevel()) && (localObject2 != null))
     {
@@ -52,15 +52,29 @@ public class FilterSet
     return 0;
   }
   
-  public boolean a()
+  public void c(Activity paramActivity, int paramInt)
   {
-    Iterator localIterator = this.b.iterator();
+    super.c(paramActivity, paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("select ");
+      ((StringBuilder)localObject).append(toString());
+      QLog.i("QCombo", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (QIMFilterCategoryItem)this.e;
+    VideoFilterTools.a().b((QIMFilterCategoryItem)localObject, paramActivity, paramInt);
+  }
+  
+  public boolean i()
+  {
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (CaptureComboBase)localIterator.next();
       if ((localObject instanceof CaptureComboFilter))
       {
-        localObject = ((CaptureComboFilter)localObject).a;
+        localObject = ((CaptureComboFilter)localObject).f;
         if ((localObject != null) && (((FilterDesc)localObject).predownload == 0)) {
           return false;
         }
@@ -69,23 +83,9 @@ public class FilterSet
     return true;
   }
   
-  public void b(Activity paramActivity, int paramInt)
+  public int j()
   {
-    super.b(paramActivity, paramInt);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("select ");
-      ((StringBuilder)localObject).append(toString());
-      QLog.i("QCombo", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = (QIMFilterCategoryItem)this.a;
-    VideoFilterTools.a().b((QIMFilterCategoryItem)localObject, paramActivity, paramInt);
-  }
-  
-  public int d()
-  {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.g.iterator();
     int k = 0;
     int i = 0;
     int j;
@@ -95,7 +95,7 @@ public class FilterSet
       if (!localIterator.hasNext()) {
         break;
       }
-      j = ((CaptureComboBase)localIterator.next()).a;
+      j = ((CaptureComboBase)localIterator.next()).b;
       if (j == 2)
       {
         j = 1;
@@ -123,13 +123,13 @@ public class FilterSet
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Filter");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.e);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.FilterSet
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 public final class VideoUploadImpl
   extends BaseUploader
 {
-  private final RIJUgcVideoUploader jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadRIJUgcVideoUploader = new RIJUgcVideoUploader(a());
-  private String jdField_a_of_type_JavaLangString = "";
+  private final RIJUgcVideoUploader a = new RIJUgcVideoUploader(e());
+  private String b = "";
   
-  private final QQAppInterface a()
+  private final QQAppInterface e()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
@@ -30,25 +30,43 @@ public final class VideoUploadImpl
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadRIJUgcVideoUploader.b();
+    this.a.a();
   }
   
   public void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uploadKey");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadRIJUgcVideoUploader.b(paramString);
+    this.a.b(paramString);
+  }
+  
+  public void b()
+  {
+    int i;
+    if (((CharSequence)this.b).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      this.a.b(this.b);
+    }
   }
   
   public void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "videoPath");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadRIJUgcVideoUploader.a((IVideoUploadListener)new VideoUploadImpl.upload.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadRIJUgcVideoUploader.a(paramString);
+    this.a.a((IVideoUploadListener)new VideoUploadImpl.upload.1(this));
+    this.a.a(paramString);
+  }
+  
+  public void c()
+  {
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.net.VideoUploadImpl
  * JD-Core Version:    0.7.0.1
  */

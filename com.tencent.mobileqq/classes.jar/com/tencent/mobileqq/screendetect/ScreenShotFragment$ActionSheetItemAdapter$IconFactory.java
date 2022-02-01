@@ -16,8 +16,8 @@ class ScreenShotFragment$ActionSheetItemAdapter$IconFactory
   ScreenShotFragment$ActionSheetItemAdapter$IconFactory(Context paramContext)
   {
     paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837648);
-    this.b = paramContext.getDrawable(2130837652);
+    this.a = paramContext.getDrawable(2130837656);
+    this.b = paramContext.getDrawable(2130837660);
   }
   
   private Drawable a(Drawable paramDrawable)
@@ -49,7 +49,7 @@ class ScreenShotFragment$ActionSheetItemAdapter$IconFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment.ActionSheetItemAdapter.IconFactory
  * JD-Core Version:    0.7.0.1
  */

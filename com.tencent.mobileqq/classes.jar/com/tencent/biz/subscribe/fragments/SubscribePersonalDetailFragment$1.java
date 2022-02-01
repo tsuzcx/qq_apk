@@ -20,7 +20,7 @@ class SubscribePersonalDetailFragment$1
   
   protected BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
   {
-    return SubscribePersonalDetailFragment.a(this.a);
+    return SubscribePersonalDetailFragment.b(this.a);
   }
   
   public void a(Bundle paramBundle) {}
@@ -29,7 +29,7 @@ class SubscribePersonalDetailFragment$1
   {
     if ((paramLoadInfo.c()) || (paramLoadInfo.d()))
     {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).b() == 1))
+      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).d() == 1))
       {
         SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
         SimpleEventBus.getInstance().dispatchEvent(localSubDraftChangeEvent);

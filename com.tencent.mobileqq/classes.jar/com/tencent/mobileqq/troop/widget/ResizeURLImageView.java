@@ -20,12 +20,12 @@ public class ResizeURLImageView
   {
     if (getContext().getResources().getConfiguration().orientation == 1)
     {
-      paramInt1 = ViewUtils.a() - getPaddingLeft();
+      paramInt1 = ViewUtils.getScreenWidth() - getPaddingLeft();
       paramInt2 = getPaddingRight();
     }
     else
     {
-      paramInt1 = ViewUtils.b() - getPaddingTop();
+      paramInt1 = ViewUtils.getScreenHeight() - getPaddingTop();
       paramInt2 = getPaddingBottom();
     }
     paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1 - paramInt2, 1073741824);
@@ -34,7 +34,7 @@ public class ResizeURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ResizeURLImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ final class PermissionUtil$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PermissionUtil.a(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback);
+    PermissionUtil.a(this.b, this.a);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramArrayOfString = this.jdField_a_of_type_ComTencentUtilPermissionUtil$SDCardPermissionCallback;
+    paramArrayOfString = this.a;
     if (paramArrayOfString != null) {
       paramArrayOfString.a();
     }
@@ -23,7 +23,7 @@ final class PermissionUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.PermissionUtil.2
  * JD-Core Version:    0.7.0.1
  */

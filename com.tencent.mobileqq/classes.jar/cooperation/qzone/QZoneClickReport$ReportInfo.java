@@ -235,7 +235,7 @@ public class QZoneClickReport$ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneClickReport.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

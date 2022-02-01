@@ -13,28 +13,28 @@ class RedPacketKSongFragment$12
   
   public void run()
   {
-    if (this.this$0.d()) {
+    if (this.this$0.p()) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(R.string.co));
-      RedPacketKSongFragment.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-      this.this$0.o();
+      this.this$0.g.setText(HardCodeUtil.a(R.string.cr));
+      RedPacketKSongFragment.a(this.this$0, this.b);
+      this.this$0.u();
     }
     else
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(R.string.cq));
-      this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongVolumeView.setVisibility(8);
-      this.this$0.b();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongMicView.b();
+      this.this$0.g.setText(HardCodeUtil.a(R.string.ct));
+      this.this$0.p.setVisibility(8);
+      this.this$0.d();
+      this.this$0.h.b();
     }
-    RedPacketKSongFragment.c(this.this$0);
+    RedPacketKSongFragment.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.12
  * JD-Core Version:    0.7.0.1
  */

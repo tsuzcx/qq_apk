@@ -34,9 +34,9 @@ public class LeftTabBarView
       LinearLayout localLinearLayout1 = new LinearLayout(getContext());
       RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
       localRedDotTextView.setText(paramString);
-      localRedDotTextView.setTextSize(2, this.m);
-      localRedDotTextView.setTextColor(this.f);
-      localRedDotTextView.setPadding(this.i, this.k, this.j, this.l);
+      localRedDotTextView.setTextSize(2, this.n);
+      localRedDotTextView.setTextColor(this.g);
+      localRedDotTextView.setPadding(this.j, this.l, this.k, this.m);
       localRedDotTextView.setSingleLine();
       localRedDotTextView.setFocusable(true);
       localRedDotTextView.setContentDescription(paramString);
@@ -45,13 +45,13 @@ public class LeftTabBarView
         localLinearLayout1.setOnClickListener(new LeftTabBarView.1(this, paramInt));
       }
       ViewCompat.setAccessibilityDelegate(localRedDotTextView, new LeftTabBarView.2(this));
-      this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
-      this.b.add(localLinearLayout1);
-      this.c.add(paramString);
-      int i1 = this.jdField_a_of_type_JavaUtilList.size();
+      this.v.add(localRedDotTextView);
+      this.w.add(localLinearLayout1);
+      this.x.add(paramString);
+      int i1 = this.v.size();
       HashMap localHashMap = new HashMap();
       if ((i1 == 2) || (i1 == 1)) {
-        localHashMap.put("width", Integer.valueOf((int)(jdField_a_of_type_Int / getResources().getDisplayMetrics().density / 3.0F + 0.5F)));
+        localHashMap.put("width", Integer.valueOf((int)(a / getResources().getDisplayMetrics().density / 3.0F + 0.5F)));
       }
       int m = 0;
       int j;
@@ -62,7 +62,7 @@ public class LeftTabBarView
         i = 0;
         for (j = 0; i < i1; j = k)
         {
-          int n = ((String)this.c.get(i)).toString().length();
+          int n = ((String)this.x.get(i)).toString().length();
           if (i == 0)
           {
             k = n;
@@ -97,7 +97,7 @@ public class LeftTabBarView
       int i = m;
       while (i < i1)
       {
-        LinearLayout localLinearLayout2 = (LinearLayout)this.b.get(i);
+        LinearLayout localLinearLayout2 = (LinearLayout)this.w.get(i);
         if (localHashMap.get("width") != null)
         {
           paramString.width = ((int)(Integer.parseInt(localHashMap.get("width").toString()) * getResources().getDisplayMetrics().density + 0.5F));
@@ -119,7 +119,7 @@ public class LeftTabBarView
         localLinearLayout2.setGravity(17);
         i += 1;
       }
-      localRedDotTextView.setId(2131378532);
+      localRedDotTextView.setId(2131447153);
       if (localHashMap.get("paddingLeft") != null) {
         localLinearLayout1.addView(localRedDotTextView, paramString);
       } else {

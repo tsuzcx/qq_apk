@@ -6,7 +6,7 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
 @QAPI(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/businesshandler/api/IRIJHandlerNameApi;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "getBarrageHandlerName", "", "getDanmakuHandlerName", "getReadInJoyHandlerName", "getReadInJoySkinHandlerName", "getVideoColumnSubscribeHandlerCmd", "getVideoColumnSubscribeHandlerName", "getVideoFeedsLikeAnimateHandlerName", "getVideoPlayCountHandlerCmd", "getVideoPlayCountHandlerName", "getVideoPlayRecommendHandlerCmd", "getVideoPlayRecommendHandlerName", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/businesshandler/api/IRIJHandlerNameApi;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "getBarrageHandlerName", "", "getDanmakuHandlerName", "getReadInJoyHandlerName", "getReadInJoySkinHandlerName", "getVideoColumnSubscribeHandlerCmd", "getVideoColumnSubscribeHandlerName", "getVideoFeedsLikeAnimateHandlerName", "getVideoPlayCountHandlerCmd", "getVideoPlayCountHandlerName", "getVideoPlayDianZanHandler", "getVideoPlayRecommendHandlerCmd", "getVideoPlayRecommendHandlerName", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IRIJHandlerNameApi
   extends QRouteApi
 {
@@ -38,6 +38,9 @@ public abstract interface IRIJHandlerNameApi
   public abstract String getVideoPlayCountHandlerName();
   
   @NotNull
+  public abstract String getVideoPlayDianZanHandler();
+  
+  @NotNull
   public abstract String getVideoPlayRecommendHandlerCmd();
   
   @NotNull
@@ -45,7 +48,7 @@ public abstract interface IRIJHandlerNameApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.api.IRIJHandlerNameApi
  * JD-Core Version:    0.7.0.1
  */

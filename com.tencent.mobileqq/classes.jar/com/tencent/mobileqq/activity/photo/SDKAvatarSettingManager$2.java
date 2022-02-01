@@ -24,16 +24,16 @@ class SDKAvatarSettingManager$2
     if (QLog.isColorLevel()) {
       QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
     }
-    if (!SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing())
+    if (!SDKAvatarSettingManager.a(this.b).isFinishing())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b) {
+      if (this.b.b) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.d();
-      if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
-        SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
+      this.b.d();
+      if (SDKAvatarSettingManager.b(this.b) != null) {
+        SDKAvatarSettingManager.b(this.b).removeCallbacks(SDKAvatarSettingManager.c(this.b));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a(HardCodeUtil.a(2131713516), this.jdField_a_of_type_JavaLangString);
+      this.b.a(HardCodeUtil.a(2131911065), this.a);
     }
   }
   
@@ -42,16 +42,16 @@ class SDKAvatarSettingManager$2
     if (QLog.isColorLevel()) {
       QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
     }
-    if (!SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing())
+    if (!SDKAvatarSettingManager.a(this.b).isFinishing())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b) {
+      if (this.b.b) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.d();
-      if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
-        SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
+      this.b.d();
+      if (SDKAvatarSettingManager.b(this.b) != null) {
+        SDKAvatarSettingManager.b(this.b).removeCallbacks(SDKAvatarSettingManager.c(this.b));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a(HardCodeUtil.a(2131713512), this.jdField_a_of_type_JavaLangString);
+      this.b.a(HardCodeUtil.a(2131911061), this.a);
     }
   }
   
@@ -60,15 +60,15 @@ class SDKAvatarSettingManager$2
     if (QLog.isColorLevel()) {
       QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
     }
-    if (!SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing())
+    if (!SDKAvatarSettingManager.a(this.b).isFinishing())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b) {
+      if (this.b.b) {
         return;
       }
-      if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
-        SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
+      if (SDKAvatarSettingManager.b(this.b) != null) {
+        SDKAvatarSettingManager.b(this.b).removeCallbacks(SDKAvatarSettingManager.c(this.b));
       }
-      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager);
+      SDKAvatarSettingManager.d(this.b);
     }
   }
   
@@ -81,7 +81,7 @@ class SDKAvatarSettingManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.2
  * JD-Core Version:    0.7.0.1
  */

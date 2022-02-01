@@ -12,27 +12,17 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/config/CodecReuseHelper;", "", "()V", "cacheDebugText", "", "codecJson", "getDebugText", "setCodecJson", "", "setMediaCodecInfo", "mediaCodecInfo", "Lcom/tencent/thumbplayer/api/TPPlayerMsg$TPMediaCodecInfo;", "Companion", "OnCodecReuseInfoUpdateCallback", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class CodecReuseHelper
 {
-  public static final CodecReuseHelper.Companion a;
-  private String a;
+  public static final CodecReuseHelper.Companion a = new CodecReuseHelper.Companion(null);
   private String b = "";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerConfigCodecReuseHelper$Companion = new CodecReuseHelper.Companion(null);
-  }
-  
-  public CodecReuseHelper()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  private String c = "";
   
   @NotNull
   public final String a()
   {
-    if (TextUtils.isEmpty((CharSequence)this.b)) {}
+    if (TextUtils.isEmpty((CharSequence)this.c)) {}
     try
     {
-      localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      localObject = new JSONObject(this.b);
       if (!((JSONObject)localObject).optBoolean("isVideo", false)) {
         break label168;
       }
@@ -46,7 +36,7 @@ public final class CodecReuseHelper
       ((StringBuilder)localObject).append(bool2);
       ((StringBuilder)localObject).append("\ntotalCodec:");
       ((StringBuilder)localObject).append(i);
-      this.b = ((StringBuilder)localObject).toString();
+      this.c = ((StringBuilder)localObject).toString();
     }
     catch (Throwable localThrowable)
     {
@@ -56,10 +46,10 @@ public final class CodecReuseHelper
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getDebugText error for parse Json:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.w("CodecReuseHelper", 1, ((StringBuilder)localObject).toString());
     label168:
-    return this.b;
+    return this.c;
   }
   
   public final void a(@Nullable TPPlayerMsg.TPMediaCodecInfo paramTPMediaCodecInfo)
@@ -82,16 +72,16 @@ public final class CodecReuseHelper
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "codecJson");
-    if (TextUtils.equals((CharSequence)this.jdField_a_of_type_JavaLangString, (CharSequence)paramString)) {
+    if (TextUtils.equals((CharSequence)this.b, (CharSequence)paramString)) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = "";
+    this.b = paramString;
+    this.c = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.config.CodecReuseHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,52 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.Path.FillType;
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableColorValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
 import com.tencent.mobileqq.dinifly.model.content.ShapeFill;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
+import java.util.Collections;
 
 class ShapeFillParser
 {
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "c", "o", "fillEnabled", "r", "hd" });
+  
   static ShapeFill parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str1 = null;
-    Object localObject1 = str1;
-    Object localObject2 = localObject1;
-    int j = 1;
+    AnimatableIntegerValue localAnimatableIntegerValue = null;
+    String str = null;
+    Object localObject = str;
+    int i = 1;
     boolean bool2 = false;
     boolean bool1 = false;
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      int k = str2.hashCode();
-      if (k != -396065730)
+      int j = paramJsonReader.selectName(NAMES);
+      if (j != 0)
       {
-        if (k != 99)
+        if (j != 1)
         {
-          if (k != 111)
+          if (j != 2)
           {
-            if (k != 114)
+            if (j != 3)
             {
-              if (k != 3324)
+              if (j != 4)
               {
-                if ((k == 3519) && (str2.equals("nm"))) {
-                  i = 0;
-                }
-              }
-              else if (str2.equals("hd")) {
-                i = 5;
-              }
-            }
-            else if (str2.equals("r")) {
-              i = 4;
-            }
-          }
-          else if (str2.equals("o")) {
-            i = 2;
-          }
-        }
-        else if (str2.equals("c")) {
-          i = 1;
-        }
-      }
-      else if (str2.equals("fillEnabled")) {
-        i = 3;
-      }
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 2)
-          {
-            if (i != 3)
-            {
-              if (i != 4)
-              {
-                if (i != 5) {
+                if (j != 5)
+                {
+                  paramJsonReader.skipName();
                   paramJsonReader.skipValue();
-                } else {
+                }
+                else
+                {
                   bool1 = paramJsonReader.nextBoolean();
                 }
               }
               else {
-                j = paramJsonReader.nextInt();
+                i = paramJsonReader.nextInt();
               }
             }
             else {
@@ -80,28 +54,32 @@ class ShapeFillParser
             }
           }
           else {
-            localObject2 = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
+            localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
           }
         }
         else {
-          localObject1 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
+          localObject = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
         }
       }
       else {
-        str1 = paramJsonReader.nextString();
+        str = paramJsonReader.nextString();
       }
     }
-    if (j == 1) {
-      paramJsonReader = Path.FillType.WINDING;
-    } else {
-      paramJsonReader = Path.FillType.EVEN_ODD;
+    paramJsonReader = localAnimatableIntegerValue;
+    if (localAnimatableIntegerValue == null) {
+      paramJsonReader = new AnimatableIntegerValue(Collections.singletonList(new Keyframe(Integer.valueOf(100))));
     }
-    return new ShapeFill(str1, bool2, paramJsonReader, (AnimatableColorValue)localObject1, (AnimatableIntegerValue)localObject2, bool1);
+    if (i == 1) {
+      paramLottieComposition = Path.FillType.WINDING;
+    } else {
+      paramLottieComposition = Path.FillType.EVEN_ODD;
+    }
+    return new ShapeFill(str, bool2, paramLottieComposition, (AnimatableColorValue)localObject, paramJsonReader, bool1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapeFillParser
  * JD-Core Version:    0.7.0.1
  */

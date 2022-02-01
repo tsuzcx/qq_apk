@@ -22,33 +22,33 @@ class MyAppApi$YYBDownloadListener$1$1
   
   public void run()
   {
-    if (CommonDataAdapter.a().a() != null)
+    if (CommonDataAdapter.a().b() != null)
     {
       Object localObject1 = new DisplayMetrics();
-      ((WindowManager)CommonDataAdapter.a().a().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
+      ((WindowManager)CommonDataAdapter.a().b().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
       int i = ((DisplayMetrics)localObject1).widthPixels;
       float f = ((DisplayMetrics)localObject1).density;
       Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      localObject1 = new RelativeLayout(CommonDataAdapter.a().a());
+      localObject1 = new RelativeLayout(CommonDataAdapter.a().b());
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((RelativeLayout)localObject1).setBackgroundColor(-855638017);
       ((RelativeLayout)localObject1).setGravity(17);
       int j = (int)(10.0F * f + 0.5F);
       ((RelativeLayout)localObject1).setPadding(j, j, j, j);
-      localObject2 = new TextView(CommonDataAdapter.a().a());
+      localObject2 = new TextView(CommonDataAdapter.a().b());
       double d = i;
       Double.isNaN(d);
       ((TextView)localObject2).setWidth((int)(d * 0.9D));
       ((TextView)localObject2).setHeight((int)(f * 96.0F + 0.5F));
-      ((TextView)localObject2).setBackgroundColor(CommonDataAdapter.a().a().getResources().getColor(2131167333));
-      ((TextView)localObject2).setText(2131719714);
-      ((TextView)localObject2).setTextColor(CommonDataAdapter.a().a().getResources().getColor(2131165327));
+      ((TextView)localObject2).setBackgroundColor(CommonDataAdapter.a().b().getResources().getColor(2131168376));
+      ((TextView)localObject2).setText(2131917317);
+      ((TextView)localObject2).setTextColor(CommonDataAdapter.a().b().getResources().getColor(2131165564));
       ((TextView)localObject2).setSingleLine();
       ((TextView)localObject2).setGravity(17);
       ((RelativeLayout)localObject1).addView((View)localObject2);
       ToastUtil.a().a((View)localObject1, 1);
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131707083));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904921));
       ((StringBuilder)localObject1).append(System.currentTimeMillis());
       LogUtility.c("MyAppApi", ((StringBuilder)localObject1).toString());
     }
@@ -56,7 +56,7 @@ class MyAppApi$YYBDownloadListener$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.1.1
  * JD-Core Version:    0.7.0.1
  */

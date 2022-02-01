@@ -17,11 +17,11 @@ class WatermarkOnlineUserManager$3
     ((StringBuilder)???).append(", num=");
     ((StringBuilder)???).append(paramInt);
     AEQLog.b("WatermarkOnlineUserManager", ((StringBuilder)???).toString());
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    this.a.removeObserver(this);
     if (paramBoolean) {
-      synchronized (WatermarkOnlineUserManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager))
+      synchronized (WatermarkOnlineUserManager.b(this.b))
       {
-        WatermarkOnlineUserManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkOnlineUserManager, paramInt);
+        WatermarkOnlineUserManager.a(this.b, paramInt);
         return;
       }
     }
@@ -29,7 +29,7 @@ class WatermarkOnlineUserManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkOnlineUserManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -37,66 +37,72 @@ public class WeishiShareUtil
     if (paramWSShareParam == null) {
       return;
     }
-    WSPublicAccReport.getInstance().reportShareClick(paramWSShareParam.c, paramInt, paramWSShareParam.jdField_a_of_type_JavaLangString, paramWSShareParam.jdField_b_of_type_JavaLangString, paramWSShareParam.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    WSPublicAccReport.getInstance().reportShareClick(paramWSShareParam.f, paramInt, paramWSShareParam.d, paramWSShareParam.e, paramWSShareParam.a, paramWSShareParam.g);
   }
   
   public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2)
   {
-    ToastUtil.a().a(2131720424);
+    ToastUtil.a().a(2131918100);
   }
   
   public static void a(Context paramContext, WSShareParam paramWSShareParam)
   {
-    if (WeishiUtils.c()) {
-      return;
-    }
-    Object localObject = new ShareActionSheetV2.Param();
-    ((ShareActionSheetV2.Param)localObject).context = paramContext;
-    localObject = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    if ((paramWSShareParam != null) && (paramWSShareParam.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (paramWSShareParam.jdField_a_of_type_UserGrowthStSimpleMetaFeed.gdt_ad_type == 1) && (paramWSShareParam.jdField_a_of_type_UserGrowthStSimpleMetaFeed.gdt_ad_info != null))
+    if (!WeishiUtils.o())
     {
-      ((ShareActionSheet)localObject).setActionSheetTitle("");
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
-      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(90));
-      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(89));
-      ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
-      ((ShareActionSheet)localObject).setRowVisibility(8, 8, 0);
-    }
-    else
-    {
-      ((ShareActionSheet)localObject).setActionSheetTitle(paramContext.getString(2131692780));
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
-      if (QFileAssistantUtils.a()) {
-        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(26));
+      if (paramWSShareParam == null) {
+        return;
       }
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
-      localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
-      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
-      localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
-      ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
-      ((ShareActionSheet)localObject).setRowVisibility(0, 0, 0);
+      Object localObject = new ShareActionSheetV2.Param();
+      ((ShareActionSheetV2.Param)localObject).context = paramContext;
+      localObject = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
+      ArrayList localArrayList1;
+      ArrayList localArrayList2;
+      if ((paramWSShareParam.a != null) && (paramWSShareParam.a.gdt_ad_type == 1) && (paramWSShareParam.a.gdt_ad_info != null))
+      {
+        ((ShareActionSheet)localObject).setActionSheetTitle("");
+        localArrayList1 = new ArrayList();
+        localArrayList2 = new ArrayList();
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+        localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(90));
+        localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(89));
+        ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
+        ((ShareActionSheet)localObject).setRowVisibility(8, 8, 0);
+      }
+      else
+      {
+        ((ShareActionSheet)localObject).setActionSheetTitle(paramContext.getString(2131889851));
+        localArrayList1 = new ArrayList();
+        localArrayList2 = new ArrayList();
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+        if (QFileAssistantUtils.b()) {
+          localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(26));
+        }
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+        localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+        if (paramWSShareParam.h)
+        {
+          localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
+          localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
+        }
+        ((ShareActionSheet)localObject).setActionSheetItems(localArrayList1, localArrayList2);
+        ((ShareActionSheet)localObject).setRowVisibility(0, 0, 0);
+      }
+      ((ShareActionSheet)localObject).setItemClickListenerV2(new WeishiShareUtil.3(paramContext, paramWSShareParam));
+      paramContext = (Activity)paramContext;
+      if (paramContext != null)
+      {
+        paramContext.getIntent().putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+        ((ShareActionSheet)localObject).setIntentForStartForwardRecentActivity(paramContext.getIntent());
+      }
+      ((ShareActionSheet)localObject).setOnShowListener(new WeishiShareUtil.4(paramWSShareParam));
+      ((ShareActionSheet)localObject).setCancelListener(new WeishiShareUtil.5(paramWSShareParam));
+      ((ShareActionSheet)localObject).setOnDismissListener(new WeishiShareUtil.6(paramWSShareParam));
+      ((ShareActionSheet)localObject).show();
     }
-    ((ShareActionSheet)localObject).setItemClickListenerV2(new WeishiShareUtil.3(paramContext, paramWSShareParam));
-    paramContext = (Activity)paramContext;
-    if (paramContext != null)
-    {
-      paramContext.getIntent().putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
-      ((ShareActionSheet)localObject).setIntentForStartForwardRecentActivity(paramContext.getIntent());
-    }
-    ((ShareActionSheet)localObject).setOnShowListener(new WeishiShareUtil.4(paramWSShareParam));
-    ((ShareActionSheet)localObject).setCancelListener(new WeishiShareUtil.5(paramWSShareParam));
-    ((ShareActionSheet)localObject).setOnDismissListener(new WeishiShareUtil.6(paramWSShareParam));
-    ((ShareActionSheet)localObject).show();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -116,9 +122,9 @@ public class WeishiShareUtil
       paramString2.putExtra("req_type", 1);
       paramString2.putExtra("req_share_id", Long.parseLong("1101083114"));
       paramString2.putExtra("title", paramString1);
-      paramString2.putExtra("app_name", HardCodeUtil.a(2131716396));
+      paramString2.putExtra("app_name", HardCodeUtil.a(2131913836));
       paramString2.putExtra("image_url_remote", paramString3);
-      paramString2.putExtra("desc", HardCodeUtil.a(2131716395));
+      paramString2.putExtra("desc", HardCodeUtil.a(2131913835));
       paramString2.putExtra("detail_url", paramString4);
     }
     paramContext.startActivity(paramString2);
@@ -141,9 +147,9 @@ public class WeishiShareUtil
       ((Intent)localObject).putExtra("req_type", 1);
       ((Intent)localObject).putExtra("req_share_id", Long.parseLong("1101083114"));
       ((Intent)localObject).putExtra("title", paramString1);
-      ((Intent)localObject).putExtra("app_name", HardCodeUtil.a(2131716396));
+      ((Intent)localObject).putExtra("app_name", HardCodeUtil.a(2131913836));
       ((Intent)localObject).putExtra("image_url_remote", paramString2);
-      ((Intent)localObject).putExtra("desc", HardCodeUtil.a(2131716395));
+      ((Intent)localObject).putExtra("desc", HardCodeUtil.a(2131913835));
       ((Intent)localObject).putExtra("detail_url", paramString3);
       ((Intent)localObject).putExtra("key_req", 1);
       ((Intent)localObject).putExtra("key_direct_show_uin_type", paramInt);
@@ -175,7 +181,7 @@ public class WeishiShareUtil
   
   public static void b(Context paramContext, WSShareParam paramWSShareParam)
   {
-    if (WeishiUtils.c()) {
+    if (WeishiUtils.o()) {
       return;
     }
     Object localObject = new ShareActionSheetV2.Param();
@@ -208,15 +214,15 @@ public class WeishiShareUtil
     if (paramWSShareParam == null) {
       return;
     }
-    stSimpleMetaFeed localstSimpleMetaFeed = paramWSShareParam.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    stSimpleMetaFeed localstSimpleMetaFeed = paramWSShareParam.a;
     if (localstSimpleMetaFeed != null)
     {
       if (localstSimpleMetaFeed.share_info == null) {
         return;
       }
       String str = localstSimpleMetaFeed.share_info.jump_url;
-      int k = paramWSShareParam.jdField_b_of_type_Int;
-      int m = paramWSShareParam.jdField_a_of_type_Int;
+      int k = paramWSShareParam.c;
+      int m = paramWSShareParam.b;
       Object localObject4 = null;
       Object localObject5 = null;
       Object localObject2 = null;
@@ -345,10 +351,10 @@ public class WeishiShareUtil
   
   private static void b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    if (!WXShareHelper.a().a()) {
-      ToastUtil.a().a(2131720478);
-    } else if (!WXShareHelper.a().b()) {
-      ToastUtil.a().a(2131720479);
+    if (!WXShareHelper.a().b()) {
+      ToastUtil.a().a(2131918154);
+    } else if (!WXShareHelper.a().c()) {
+      ToastUtil.a().a(2131918155);
     }
     long l = System.currentTimeMillis();
     ThreadManager.getSubThreadHandler().post(new WeishiShareUtil.1(paramString3, String.valueOf(l), paramString1, paramString2, paramString4, paramInt));
@@ -371,7 +377,7 @@ public class WeishiShareUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil
  * JD-Core Version:    0.7.0.1
  */

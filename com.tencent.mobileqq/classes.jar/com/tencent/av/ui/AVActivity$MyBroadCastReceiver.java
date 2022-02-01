@@ -18,28 +18,28 @@ class AVActivity$MyBroadCastReceiver
     if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
       paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
+      if ((paramContext != null) && (this.a.I != null) && (paramContext.equals("homekey")))
       {
-        if (this.a.a.a().d == 4) {
-          if (this.a.d == 3000)
+        if (this.a.I.k().g == 4) {
+          if (this.a.e == 3000)
           {
-            if (this.a.a.a().jdField_j_of_type_Boolean) {
+            if (this.a.I.k().H) {
               ReportController.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
             } else {
               ReportController.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
             }
           }
-          else if (this.a.d == 1) {
-            if (this.a.a.a().jdField_j_of_type_Boolean)
+          else if (this.a.e == 1) {
+            if (this.a.I.k().H)
             {
-              if (this.a.a.a().jdField_j_of_type_Int == 10) {
+              if (this.a.I.k().o == 10) {
                 ReportController.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
               } else {
                 ReportController.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
               }
             }
-            else if (this.a.a.a().k) {
-              if (this.a.a.a().jdField_j_of_type_Int == 10) {
+            else if (this.a.I.k().I) {
+              if (this.a.I.k().o == 10) {
                 ReportController.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
               } else {
                 ReportController.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
@@ -47,17 +47,17 @@ class AVActivity$MyBroadCastReceiver
             }
           }
         }
-        if (this.a.g) {
-          if (this.a.a.a().jdField_j_of_type_Boolean) {
+        if (this.a.A) {
+          if (this.a.I.k().H) {
             ReportController.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
           } else {
             ReportController.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
           }
         }
-        if (AVActivity.a(this.a) != null) {
-          AVActivity.a(this.a).a(this.a.isResume());
+        if (AVActivity.h(this.a) != null) {
+          AVActivity.h(this.a).a(this.a.isResume());
         }
-        this.a.a.a("backgroundReason", "1");
+        this.a.I.b("backgroundReason", "1");
         com.tencent.av.VideoConstants.ProcessInfo.a = "1";
       }
     }

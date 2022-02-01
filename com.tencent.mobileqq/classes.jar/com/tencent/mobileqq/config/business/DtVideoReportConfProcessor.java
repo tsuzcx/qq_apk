@@ -25,7 +25,7 @@ public class DtVideoReportConfProcessor
   public DtVideoReportConfProcessor.DtVideoReportConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return DtVideoReportConfProcessor.DtVideoReportConfBean.a(paramArrayOfQConfItem[0].a);
+      return DtVideoReportConfProcessor.DtVideoReportConfBean.a(paramArrayOfQConfItem[0].b);
     }
     return new DtVideoReportConfProcessor.DtVideoReportConfBean();
   }
@@ -79,7 +79,7 @@ public class DtVideoReportConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DtVideoReportConfProcessor
  * JD-Core Version:    0.7.0.1
  */

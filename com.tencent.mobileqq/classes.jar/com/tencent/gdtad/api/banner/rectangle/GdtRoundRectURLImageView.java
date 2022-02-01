@@ -11,9 +11,9 @@ import com.tencent.image.URLImageView;
 final class GdtRoundRectURLImageView
   extends URLImageView
 {
-  private int jdField_a_of_type_Int;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Path a = new Path();
+  private RectF b = new RectF();
+  private int c;
   
   public GdtRoundRectURLImageView(Context paramContext)
   {
@@ -22,7 +22,7 @@ final class GdtRoundRectURLImageView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -31,13 +31,13 @@ final class GdtRoundRectURLImageView
     int j = getHeight();
     if (Build.VERSION.SDK_INT < 21)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      i = this.jdField_a_of_type_Int;
+      this.a.reset();
+      this.b.set(0.0F, 0.0F, i, j);
+      Path localPath = this.a;
+      RectF localRectF = this.b;
+      i = this.c;
       localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.a);
     }
     else
     {
@@ -49,7 +49,7 @@ final class GdtRoundRectURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.rectangle.GdtRoundRectURLImageView
  * JD-Core Version:    0.7.0.1
  */

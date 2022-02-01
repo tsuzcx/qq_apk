@@ -967,7 +967,7 @@ public class RedPacketServlet
     //   1406: iload_3
     //   1407: ifeq +44 -> 1451
     //   1410: aload 19
-    //   1412: invokevirtual 648	com/tencent/mobileqq/portal/PortalManager:b	()V
+    //   1412: invokevirtual 648	com/tencent/mobileqq/portal/PortalManager:d	()V
     //   1415: aload_2
     //   1416: ldc 117
     //   1418: iconst_3
@@ -1074,7 +1074,7 @@ public class RedPacketServlet
     //   1629: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1632: goto +1273 -> 2905
     //   1635: aload 19
-    //   1637: invokevirtual 648	com/tencent/mobileqq/portal/PortalManager:b	()V
+    //   1637: invokevirtual 648	com/tencent/mobileqq/portal/PortalManager:d	()V
     //   1640: aload_2
     //   1641: ldc 117
     //   1643: iconst_3
@@ -2049,10 +2049,10 @@ public class RedPacketServlet
         localObject3 = new ConfigurationService.Screen();
         ((ConfigurationService.Screen)localObject3).setHasFlag(true);
         ((ConfigurationService.Screen)localObject3).model.set("");
-        ((ConfigurationService.Screen)localObject3).width.set((int)DeviceInfoUtil.g());
-        ((ConfigurationService.Screen)localObject3).height.set((int)DeviceInfoUtil.h());
-        ((ConfigurationService.Screen)localObject3).dpi.set(DeviceInfoUtil.e());
-        ((ConfigurationService.Screen)localObject3).multi_touch.set(DeviceInfoUtil.c());
+        ((ConfigurationService.Screen)localObject3).width.set((int)DeviceInfoUtil.B());
+        ((ConfigurationService.Screen)localObject3).height.set((int)DeviceInfoUtil.C());
+        ((ConfigurationService.Screen)localObject3).dpi.set(DeviceInfoUtil.J());
+        ((ConfigurationService.Screen)localObject3).multi_touch.set(DeviceInfoUtil.K());
         ((ConfigurationService.DeviceInfo)localObject2).setHasFlag(true);
         ((ConfigurationService.DeviceInfo)localObject2).screen = ((ConfigurationService.Screen)localObject3);
         ((ConfigurationService.ReqGetConfigByPage)localObject1).device_info.set((MessageMicro)localObject2);
@@ -2081,7 +2081,7 @@ public class RedPacketServlet
         ((FestivalPack.PkgReq)localObject2).from_id.set(1);
         ((FestivalPack.PkgReq)localObject2).get_eve_pack.set((MessageMicro)localObject3);
         localObject3 = new Unisso.UniSsoServerReqComm();
-        ((Unisso.UniSsoServerReqComm)localObject3).mqqver.set("8.7.0");
+        ((Unisso.UniSsoServerReqComm)localObject3).mqqver.set("8.8.17");
         ((Unisso.UniSsoServerReqComm)localObject3).platform.set(109L);
         ((Unisso.UniSsoServerReqComm)localObject3).osver.set(Build.VERSION.RELEASE);
         ((Unisso.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject3);
@@ -2132,7 +2132,7 @@ public class RedPacketServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.RedPacketServlet
  * JD-Core Version:    0.7.0.1
  */

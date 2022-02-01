@@ -17,7 +17,7 @@ class MsgTabVideoPreloaderDataProvider$2
   public void a(List<MsgTabVideoData> paramList)
   {
     super.onNext(paramList);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null)
+    if (this.a != null)
     {
       ArrayList localArrayList = new ArrayList();
       if ((paramList != null) && (!paramList.isEmpty()))
@@ -28,32 +28,32 @@ class MsgTabVideoPreloaderDataProvider$2
         while (paramList.hasNext())
         {
           MsgTabVideoData localMsgTabVideoData = (MsgTabVideoData)paramList.next();
-          if (i >= MsgTabVideoPreloaderDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider)) {
+          if (i >= MsgTabVideoPreloaderDataProvider.a(this.c)) {
             break;
           }
-          if ((localMsgTabVideoData != null) && (!localMsgTabVideoData.jdField_a_of_type_Boolean) && (localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+          if ((localMsgTabVideoData != null) && (!localMsgTabVideoData.a) && (localMsgTabVideoData.e != null))
           {
-            localArrayList.add(localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+            localArrayList.add(localMsgTabVideoData.e);
             i += 1;
           }
         }
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, localArrayList);
+      this.a.a(this.b, localArrayList);
     }
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.a;
     if (localDataProviderListener != null) {
-      localDataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
+      localDataProviderListener.a(this.b, paramError);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

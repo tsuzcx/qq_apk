@@ -1,51 +1,37 @@
 package com.tencent.biz.richframework.animation.drawable;
 
-import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
 
 class QQAnimationDrawable$WorkerRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private int a;
+  private long b;
   
   public QQAnimationDrawable$WorkerRunnable(QQAnimationDrawable paramQQAnimationDrawable, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramInt;
+    this.b = paramLong;
   }
   
   public void run()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("WorkerRunnable run | drawtime:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-    ((StringBuilder)localObject).append(" main:");
-    boolean bool;
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("QQAnimationDrawable", 2, ((StringBuilder)localObject).toString());
     Process.setThreadPriority(10);
     long l = SystemClock.uptimeMillis();
-    localObject = this.this$0;
-    ((QQAnimationDrawable)localObject).b = ((QQAnimationDrawable)localObject).a(false, this.jdField_a_of_type_Int);
-    QQAnimationDrawable.a(this.this$0, this.jdField_a_of_type_Int);
-    if ((this.this$0.a == null) && (this.jdField_a_of_type_Int == 0))
+    QQAnimationDrawable localQQAnimationDrawable = this.this$0;
+    localQQAnimationDrawable.c = localQQAnimationDrawable.b(false, this.a);
+    QQAnimationDrawable.a(this.this$0, this.a);
+    if ((this.this$0.b == null) && (this.a == 0))
     {
-      localObject = this.this$0;
-      ((QQAnimationDrawable)localObject).a = ((QQAnimationDrawable)localObject).b;
+      localQQAnimationDrawable = this.this$0;
+      localQQAnimationDrawable.b = localQQAnimationDrawable.c;
     }
     if (QQAnimationDrawable.a(this.this$0) != null) {
-      QQAnimationDrawable.a(this.this$0).a(this.jdField_a_of_type_Int);
+      QQAnimationDrawable.a(this.this$0).a(this.a);
     }
-    localObject = this.this$0;
-    ((QQAnimationDrawable)localObject).scheduleSelf((Runnable)localObject, SystemClock.uptimeMillis() + Math.max(this.jdField_a_of_type_Long - l, 0L));
+    localQQAnimationDrawable = this.this$0;
+    localQQAnimationDrawable.scheduleSelf(localQQAnimationDrawable, SystemClock.uptimeMillis() + Math.max(this.b - l, 0L));
   }
 }
 

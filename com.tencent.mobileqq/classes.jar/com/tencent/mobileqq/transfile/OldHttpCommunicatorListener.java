@@ -246,7 +246,7 @@ public class OldHttpCommunicatorListener
       }
       else
       {
-        long l = Utils.b();
+        long l = Utils.c();
         if (this.httpReq != null)
         {
           paramIOException = this.httpReq.mOutPath;
@@ -650,7 +650,7 @@ public class OldHttpCommunicatorListener
     {
       try
       {
-        this.mTempPath = setTempPath(((HttpNetReq)localObject1).mOutPath, ((HttpNetReq)localObject1).mReqUrl);
+        this.mTempPath = HttpEngineServiceImpl.getTempPath(this.httpReq, ((HttpNetReq)localObject1).mReqUrl);
         localNetResp.mReq.mTempPath = this.mTempPath;
         Object localObject2 = new File(this.mTempPath);
         bool = ((File)localObject2).exists();
@@ -701,7 +701,7 @@ public class OldHttpCommunicatorListener
           {
             String str = TransFileUtil.getUinDesc(((HttpNetReq)localObject1).mBusiProtoType);
             if (((HttpNetReq)localObject1).mHttpMethod != 1) {
-              break label517;
+              break label515;
             }
             bool = true;
             TransFileUtil.log(str, bool, String.valueOf(((HttpNetReq)localObject1).mFileType), ((HttpNetReq)localObject1).mMsgId, "createtmp", this.mTempPath);
@@ -736,7 +736,7 @@ public class OldHttpCommunicatorListener
       }
       this.initError = true;
       return;
-      label517:
+      label515:
       boolean bool = false;
     }
   }
@@ -837,17 +837,17 @@ public class OldHttpCommunicatorListener
   
   public void saveData()
   {
-    Object localObject = this.netResp;
+    Object localObject1 = this.netResp;
     int j = 0;
-    ((NetResp)localObject).mResult = 0;
-    ((NetResp)localObject).mErrCode = 0;
-    ((NetResp)localObject).mErrDesc = "";
-    localObject = this.mTempPath;
+    ((NetResp)localObject1).mResult = 0;
+    ((NetResp)localObject1).mErrCode = 0;
+    ((NetResp)localObject1).mErrDesc = "";
+    localObject1 = this.mTempPath;
     int i = j;
-    if (localObject != null)
+    if (localObject1 != null)
     {
       i = j;
-      if (((String)localObject).equalsIgnoreCase(this.httpReq.mOutPath)) {
+      if (((String)localObject1).equalsIgnoreCase(this.httpReq.mOutPath)) {
         i = 1;
       }
     }
@@ -887,6 +887,14 @@ public class OldHttpCommunicatorListener
           localIOException2.printStackTrace();
         }
       }
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("saveData, mTempPath:");
+        ((StringBuilder)localObject2).append(this.mTempPath);
+        QLog.d("Q.richmedia.HttpEngineServiceImpl", 2, ((StringBuilder)localObject2).toString());
+      }
       if (!this.httpReq.mIsRenameInEngine) {
         return;
       }
@@ -895,10 +903,10 @@ public class OldHttpCommunicatorListener
       }
       if (!FileUtils.rename(this.mTempPath, this.httpReq.mOutPath))
       {
-        String str = this.mTempPath;
-        if (str != null)
+        localObject2 = this.mTempPath;
+        if (localObject2 != null)
         {
-          if (FileUtils.copyFile(str, this.httpReq.mOutPath))
+          if (FileUtils.copyFile((String)localObject2, this.httpReq.mOutPath))
           {
             new File(this.mTempPath).delete();
             return;
@@ -908,12 +916,6 @@ public class OldHttpCommunicatorListener
         }
       }
     }
-  }
-  
-  public String setTempPath(String paramString1, String paramString2)
-  {
-    this.mTempPath = HttpEngineServiceImpl.getTempPath(this.httpReq, paramString1, paramString2);
-    return this.mTempPath;
   }
   
   public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
@@ -963,7 +965,7 @@ public class OldHttpCommunicatorListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.OldHttpCommunicatorListener
  * JD-Core Version:    0.7.0.1
  */

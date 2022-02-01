@@ -34,8 +34,8 @@ public class ConversationHelper
       RecentUser localRecentUser = null;
       if (localObject != null)
       {
-        localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.TEMP_MSG_BOX_UIN, 10011);
-        localObject = ((RecentUserProxy)localObject).b(AppConstants.FILTER_MSG_UIN, 10012);
+        localRecentUser = ((RecentUserProxy)localObject).c(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+        localObject = ((RecentUserProxy)localObject).c(AppConstants.FILTER_MSG_UIN, 10012);
       }
       else
       {
@@ -102,7 +102,7 @@ public class ConversationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationHelper
  * JD-Core Version:    0.7.0.1
  */

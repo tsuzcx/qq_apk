@@ -33,7 +33,7 @@ public class H5HbUtilImpl
       localJSONObject = paramJSONObject.optJSONObject("send_object");
       String str = localJSONObject.optString("lucky_uin");
       localJSONObject.remove("lucky_uin");
-      if (!StringUtil.a(str)) {
+      if (!StringUtil.isEmpty(str)) {
         localJSONObject.put("lucky_name", ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).getFriendNickName(str));
       }
       paramJSONObject.remove("send_object");
@@ -98,7 +98,7 @@ public class H5HbUtilImpl
   {
     String str4 = paramJSONObject.optString("listid");
     String str1 = paramJSONObject.optString("uin");
-    if ((!StringUtil.a(str1)) && (str1.equals(paramAppInterface.getCurrentAccountUin())) && (!StringUtil.a(str4)))
+    if ((!StringUtil.isEmpty(str1)) && (str1.equals(paramAppInterface.getCurrentAccountUin())) && (!StringUtil.isEmpty(str4)))
     {
       String str2 = paramJSONObject.optString("feedsid");
       String str3 = paramJSONObject.optString("token");
@@ -116,7 +116,7 @@ public class H5HbUtilImpl
       }
       paramJSONObject = ((ITenCookie)QRoute.api(ITenCookie.class)).getTempArgs(str4);
       paramAppInterface = paramJSONObject;
-      if (StringUtil.a(paramJSONObject))
+      if (StringUtil.isEmpty(paramJSONObject))
       {
         if (QLog.isColorLevel()) {
           QLog.d("H5HbUtil", 2, "get cache from disk");
@@ -277,7 +277,7 @@ public class H5HbUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.H5HbUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class OCRResultFragmentNew$7$1
   
   public void run()
   {
-    OCRResultFragmentNew.a(this.a.a).show();
-    OCRResultFragmentNew.a(this.a.a).a(0);
+    OCRResultFragmentNew.d(this.a.a).show();
+    OCRResultFragmentNew.d(this.a.a).a(0);
     OCRResultFragmentNew.a(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1
  * JD-Core Version:    0.7.0.1
  */

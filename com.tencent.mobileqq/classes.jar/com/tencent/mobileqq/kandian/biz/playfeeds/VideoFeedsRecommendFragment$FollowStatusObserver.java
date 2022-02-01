@@ -24,11 +24,11 @@ class VideoFeedsRecommendFragment$FollowStatusObserver
     while (localIterator.hasNext())
     {
       VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-      if (!TextUtils.isEmpty(localVideoInfo.j))
+      if (!TextUtils.isEmpty(localVideoInfo.q))
       {
-        FollowingMember localFollowingMember = (FollowingMember)paramMap.get(Long.valueOf(Long.parseLong(localVideoInfo.j)));
+        FollowingMember localFollowingMember = (FollowingMember)paramMap.get(Long.valueOf(Long.parseLong(localVideoInfo.q)));
         if (localFollowingMember != null) {
-          localVideoInfo.p = localFollowingMember.a();
+          localVideoInfo.al = localFollowingMember.d();
         }
       }
     }
@@ -36,7 +36,7 @@ class VideoFeedsRecommendFragment$FollowStatusObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.FollowStatusObserver
  * JD-Core Version:    0.7.0.1
  */

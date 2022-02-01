@@ -15,24 +15,24 @@ class PCOnlineBannerProcessor$2
   
   public void onClick(View paramView)
   {
-    if ((PCOnlineBannerProcessor.a(this.a) != null) && ("1600000104".equals(PCOnlineBannerProcessor.a(this.a).trim())))
+    if ((PCOnlineBannerProcessor.b(this.a) != null) && ("1600000104".equals(PCOnlineBannerProcessor.b(this.a).trim())))
     {
       if (PCOnlineBannerProcessor.a(this.a) == 77313L) {
         PCOnlineBannerProcessor.a(this.a, true);
       }
-      this.a.b();
+      this.a.d();
     }
     else
     {
-      Intent localIntent = new Intent(PCOnlineBannerProcessor.a(this.a), QRLoginMgrActivity.class);
-      localIntent.putExtra("loginInfo", PCOnlineBannerProcessor.b(this.a));
-      localIntent.putExtra("appType", PCOnlineBannerProcessor.a(this.a));
-      localIntent.putExtra("subappid", this.a.a);
+      Intent localIntent = new Intent(PCOnlineBannerProcessor.c(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("loginInfo", PCOnlineBannerProcessor.d(this.a));
+      localIntent.putExtra("appType", PCOnlineBannerProcessor.e(this.a));
+      localIntent.putExtra("subappid", this.a.b);
       localIntent.putExtra("clientType", PCOnlineBannerProcessor.a(this.a));
-      PCOnlineBannerProcessor.b(this.a).startActivity(localIntent);
-      ReportController.a(PCOnlineBannerProcessor.c(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
+      PCOnlineBannerProcessor.f(this.a).startActivity(localIntent);
+      ReportController.a(PCOnlineBannerProcessor.g(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
       if (PCOnlineBannerProcessor.a(this.a) == 77313L) {
-        ReportController.b(PCOnlineBannerProcessor.d(this.a).getAppRuntime(), "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
+        ReportController.b(PCOnlineBannerProcessor.h(this.a).getAppRuntime(), "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -40,7 +40,7 @@ class PCOnlineBannerProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PCOnlineBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

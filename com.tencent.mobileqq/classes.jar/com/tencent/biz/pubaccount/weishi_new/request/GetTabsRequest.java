@@ -12,7 +12,7 @@ public class GetTabsRequest
   {
     super("GetTabs", 10010);
     stGetTabsReq localstGetTabsReq = new stGetTabsReq();
-    this.a = localstGetTabsReq;
+    this.c = localstGetTabsReq;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stGetTabsReq  = ");
     localStringBuilder.append(localstGetTabsReq.toString());
@@ -21,7 +21,7 @@ public class GetTabsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.GetTabsRequest
  * JD-Core Version:    0.7.0.1
  */

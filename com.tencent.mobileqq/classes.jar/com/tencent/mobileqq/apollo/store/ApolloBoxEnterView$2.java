@@ -17,14 +17,14 @@ class ApolloBoxEnterView$2
       return;
     }
     Object localObject = (QQAppInterface)ApolloBoxEnterView.a(this.this$0).get();
-    if (ApolloBoxEnterView.a(this.this$0) != null)
+    if (ApolloBoxEnterView.b(this.this$0) != null)
     {
       if (localObject == null) {
         return;
       }
       localObject = (ApolloDaoManagerServiceImpl)((QQAppInterface)localObject).getRuntimeService(IApolloDaoManagerService.class, "all");
-      ApolloBoxEnterView.a(this.this$0).hadStolen = 1;
-      ((ApolloDaoManagerServiceImpl)localObject).saveOrUpdateApolloPandora(ApolloBoxEnterView.a(this.this$0));
+      ApolloBoxEnterView.b(this.this$0).hadStolen = 1;
+      ((ApolloDaoManagerServiceImpl)localObject).saveOrUpdateApolloPandora(ApolloBoxEnterView.b(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow]ApolloBoxEnterView", 2, "updateApolloPandora");
       }
@@ -33,7 +33,7 @@ class ApolloBoxEnterView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBoxEnterView.2
  * JD-Core Version:    0.7.0.1
  */

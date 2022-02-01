@@ -24,8 +24,9 @@ public class DFPluginOatService
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (QRoute.plugin(str).queryPluginInfo().getState() == 4) {
-        LoadCompactDynamicFeature.a().a(str);
+      QRoutePluginInfo localQRoutePluginInfo = QRoute.plugin(str).queryPluginInfo();
+      if ((localQRoutePluginInfo != null) && (localQRoutePluginInfo.getState() == 4)) {
+        LoadCompactDynamicFeature.a().b(str);
       }
     }
   }
@@ -49,7 +50,7 @@ public class DFPluginOatService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.compact.DFPluginOatService
  * JD-Core Version:    0.7.0.1
  */

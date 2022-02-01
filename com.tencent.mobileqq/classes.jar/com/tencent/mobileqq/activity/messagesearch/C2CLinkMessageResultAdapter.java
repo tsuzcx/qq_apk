@@ -30,24 +30,22 @@ import java.util.Set;
 public class C2CLinkMessageResultAdapter
   extends BaseMessageResultAdapter
 {
-  private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
-  private ArrayList<C2CLinkElement> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected List<MessageItem> a;
-  public Set<Long> a;
+  Object a = new Object();
+  protected List<MessageItem> b = new ArrayList();
+  public Set<Long> c = new HashSet();
+  private ArrayList<C2CLinkElement> m = new ArrayList();
+  private SimpleDateFormat n = new SimpleDateFormat("M月d日");
+  private FriendsManager o;
   
   public C2CLinkMessageResultAdapter(Context paramContext, MqqWeakReferenceHandler paramMqqWeakReferenceHandler, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramContext, paramMqqWeakReferenceHandler, paramSessionInfo, paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
+    this.o = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
   }
   
   public C2CLinkElement a(int paramInt)
   {
-    Object localObject = ((MessageItem)getItem(paramInt)).a;
+    Object localObject = ((MessageItem)getItem(paramInt)).b;
     try
     {
       localObject = GroupUtil.a(((MessageRecord)localObject).msgData);
@@ -69,11 +67,11 @@ public class C2CLinkMessageResultAdapter
   {
     paramSessionInfo = new ChatHistorySearchData();
     paramSessionInfo.mSearchData1 = new ArrayList();
-    paramString = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramString = this.m.iterator();
     while (paramString.hasNext())
     {
       C2CLinkElement localC2CLinkElement = (C2CLinkElement)paramString.next();
-      MessageForText localMessageForText = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), localC2CLinkElement.uin, "", 0, (byte)1, (byte)0, (short)0, localC2CLinkElement.description());
+      MessageForText localMessageForText = MessageRecordFactory.a(this.h, this.h.getCurrentUin(), localC2CLinkElement.uin, "", 0, (byte)1, (byte)0, (short)0, localC2CLinkElement.description());
       localMessageForText.msgData = GroupUtil.a(localC2CLinkElement);
       localMessageForText.senderuin = localC2CLinkElement.sendUin;
       localMessageForText.issend = localC2CLinkElement.isSend;
@@ -85,7 +83,7 @@ public class C2CLinkMessageResultAdapter
   
   public void a()
   {
-    this.b.clear();
+    this.d.clear();
     notifyDataSetChanged();
   }
   
@@ -96,14 +94,14 @@ public class C2CLinkMessageResultAdapter
   
   public void a(List<Object> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.m.clear();
     int i = 0;
     while (i < paramList.size())
     {
       Object localObject = paramList.get(i);
-      localObject = C2CLinkElement.parseFrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localObject, this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager, this.jdField_a_of_type_JavaTextSimpleDateFormat, i);
+      localObject = C2CLinkElement.parseFrom(this.h, localObject, this.o, this.n, i);
       if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        this.m.add(localObject);
       }
       i += 1;
     }
@@ -134,12 +132,12 @@ public class C2CLinkMessageResultAdapter
     }
     if ((paramInt1 == 1) && (paramInt2 == 0))
     {
-      this.b = paramList;
+      this.d = paramList;
       return;
     }
     if ((paramInt1 == 2) && (paramInt2 == 0))
     {
-      this.b.addAll(paramList);
+      this.d.addAll(paramList);
       return;
     }
     if ((paramInt1 == 4) && (paramList != null) && (paramList.size() != 0))
@@ -147,11 +145,11 @@ public class C2CLinkMessageResultAdapter
       if (paramInt2 != 1) {
         return;
       }
-      if ((this.b.size() > 0) && (paramList.size() > 0))
+      if ((this.d.size() > 0) && (paramList.size() > 0))
       {
         localObject = (MessageItem)paramList.get(0);
-        MessageItem localMessageItem = (MessageItem)this.b.get(this.b.size() - 1);
-        if (((MessageItem)localObject).a.time > localMessageItem.a.time)
+        MessageItem localMessageItem = (MessageItem)this.d.get(this.d.size() - 1);
+        if (((MessageItem)localObject).b.time > localMessageItem.b.time)
         {
           if (QLog.isColorLevel()) {
             QLog.e("C2CLinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
@@ -159,7 +157,7 @@ public class C2CLinkMessageResultAdapter
           return;
         }
       }
-      this.b.addAll(paramList);
+      this.d.addAll(paramList);
     }
   }
   
@@ -177,8 +175,8 @@ public class C2CLinkMessageResultAdapter
         localStringBuilder.append(paramBoolean);
         QLog.d("C2CLinkMessageResultAdapter", 2, localStringBuilder.toString());
       }
-      this.b.clear();
-      this.b.addAll(paramList);
+      this.d.clear();
+      this.d.addAll(paramList);
     }
   }
   
@@ -189,18 +187,18 @@ public class C2CLinkMessageResultAdapter
     BaseMessageResultAdapter.MessageHolder localMessageHolder;
     if (paramView == null)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559330, null);
+      paramView = View.inflate(this.e, 2131625296, null);
       localMessageHolder = new BaseMessageResultAdapter.MessageHolder();
-      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378886));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365535));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+      localMessageHolder.b = ((ColorNickTextView)paramView.findViewById(2131447587));
+      localMessageHolder.c = ((TextView)paramView.findViewById(2131431754));
+      localMessageHolder.a = ((ImageView)paramView.findViewById(2131435219));
       paramView.setTag(localMessageHolder);
     }
     else
     {
       localMessageHolder = (BaseMessageResultAdapter.MessageHolder)paramView.getTag();
     }
-    Object localObject = localMessageItem.a;
+    Object localObject = localMessageItem.b;
     try
     {
       localObject = GroupUtil.a(((MessageRecord)localObject).msgData);
@@ -210,9 +208,9 @@ public class C2CLinkMessageResultAdapter
       if (localC2CLinkElement != null)
       {
         localObject = localMessageItem.a(localC2CLinkElement.title, -11353092);
-        localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
-        localMessageHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageItem.a(localC2CLinkElement.timeSecond, -11353092));
-        LinkAdapter.a(localMessageHolder.jdField_a_of_type_AndroidWidgetImageView, localC2CLinkElement.iconUrl);
+        localMessageHolder.b.setText((CharSequence)localObject);
+        localMessageHolder.c.setText(localMessageItem.a(localC2CLinkElement.timeSecond, -11353092));
+        LinkAdapter.a(localMessageHolder.a, localC2CLinkElement.iconUrl);
       }
     }
     catch (Exception localException)
@@ -226,7 +224,7 @@ public class C2CLinkMessageResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageResultAdapter
  * JD-Core Version:    0.7.0.1
  */

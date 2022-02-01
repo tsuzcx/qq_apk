@@ -4,18 +4,18 @@ import com.tencent.common.app.AppInterface;
 
 public abstract class IQIMManager
 {
-  public AppInterface a()
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public AppInterface g()
   {
     return CaptureContext.a();
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.IQIMManager
  * JD-Core Version:    0.7.0.1
  */

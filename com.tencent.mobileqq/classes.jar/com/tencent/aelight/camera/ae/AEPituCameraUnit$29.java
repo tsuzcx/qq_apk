@@ -1,27 +1,28 @@
 package com.tencent.aelight.camera.ae;
 
-import android.widget.ImageView;
-import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import com.tencent.aelight.camera.ae.camera.ui.panel.DaoJuPanelOpenState;
+import com.tencent.aelight.camera.ae.part.AEVideoStoryStateViewModel;
 
 class AEPituCameraUnit$29
-  implements Runnable
+  implements Observer<DaoJuPanelOpenState>
 {
   AEPituCameraUnit$29(AEPituCameraUnit paramAEPituCameraUnit) {}
   
-  public void run()
+  public void a(DaoJuPanelOpenState paramDaoJuPanelOpenState)
   {
-    AEPituCameraUnit.a(this.this$0).setVisibility(8);
-    if (AEPituCameraUnit.a(this.this$0).getDrawable() != null)
+    if (paramDaoJuPanelOpenState.a())
     {
-      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)AEPituCameraUnit.a(this.this$0).getDrawable();
-      localLazyLoadAnimationDrawable.stop();
-      localLazyLoadAnimationDrawable.clear();
+      AEPituCameraUnit.o(this.a).b().postValue(Boolean.valueOf(true));
+      return;
     }
+    AEPituCameraUnit.o(this.a).b().postValue(Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.29
  * JD-Core Version:    0.7.0.1
  */

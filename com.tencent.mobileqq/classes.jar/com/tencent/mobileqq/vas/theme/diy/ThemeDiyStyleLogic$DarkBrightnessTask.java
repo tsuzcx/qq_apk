@@ -25,71 +25,71 @@ import mqq.app.AppRuntime;
 public class ThemeDiyStyleLogic$DarkBrightnessTask
   extends AsyncTask<Object, Object, Integer>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  ThemeDIYData jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData;
-  ThemeDiyStyleLogic.StyleCallBack jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack;
-  String jdField_a_of_type_JavaLangString;
-  public AppRuntime a;
-  String b;
+  Context a;
+  public AppRuntime b;
+  String c;
+  String d;
+  ThemeDIYData e;
+  Bundle f;
+  ThemeDiyStyleLogic.StyleCallBack g;
   
   public ThemeDiyStyleLogic$DarkBrightnessTask(Context paramContext, AppRuntime paramAppRuntime, String paramString1, String paramString2, ThemeDIYData paramThemeDIYData, Bundle paramBundle, ThemeDiyStyleLogic.StyleCallBack paramStyleCallBack)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData = paramThemeDIYData;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack = paramStyleCallBack;
-    if ((paramThemeDIYData != null) && (paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData != null)) {
-      paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_Int = 4;
+    this.a = paramContext;
+    this.b = paramAppRuntime;
+    this.c = paramString1;
+    this.e = paramThemeDIYData;
+    this.f = paramBundle;
+    this.d = paramString2;
+    this.g = paramStyleCallBack;
+    if ((paramThemeDIYData != null) && (paramThemeDIYData.i != null)) {
+      paramThemeDIYData.i.f = 4;
     }
   }
   
   protected Integer a(Object... paramVarArgs)
   {
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData;
+    paramVarArgs = this.e;
     Integer localInteger = Integer.valueOf(0);
     if (paramVarArgs == null) {
       return localInteger;
     }
-    if (paramVarArgs.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData == null)
+    if (paramVarArgs.i == null)
     {
-      this.b = this.jdField_a_of_type_JavaLangString;
+      this.d = this.c;
       if (QLog.isColorLevel())
       {
         paramVarArgs = new StringBuilder();
         paramVarArgs.append("DoBrightnessTask.doInBackground, params = null, orgSrc = ");
-        paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+        paramVarArgs.append(this.c);
         QLog.e("ThemeDiyStyleLogic", 2, paramVarArgs.toString());
       }
       return Integer.valueOf(1);
     }
     paramVarArgs = new BitmapFactory.Options();
     paramVarArgs.inPreferredConfig = Bitmap.Config.RGB_565;
-    Bitmap localBitmap = BitmapManager.a(this.jdField_a_of_type_JavaLangString, paramVarArgs);
+    Bitmap localBitmap = BitmapManager.a(this.c, paramVarArgs);
     if (localBitmap == null) {
       return localInteger;
     }
     float f2 = 0.75F;
-    int i = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData.c;
+    int i = this.e.e;
     i = localBitmap.getWidth();
     int k = localBitmap.getHeight();
     if (QLog.isColorLevel())
     {
       paramVarArgs = new StringBuilder();
       paramVarArgs.append("DoBrightnessTask.doInBackground, orgSrc = ");
-      paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+      paramVarArgs.append(this.c);
       QLog.e("ThemeDiyStyleLogic", 2, paramVarArgs.toString());
     }
     float f1 = f2;
     int m = i;
     int j = k;
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.a != 0)
+    if (this.e.i.c != 0)
     {
-      paramVarArgs = this.jdField_a_of_type_AndroidContentContext;
+      paramVarArgs = this.a;
       f1 = f2;
       m = i;
       j = k;
@@ -128,10 +128,10 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
       }
     }
     i = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData.d != 0)
+    if (this.e.f != 0)
     {
-      i = j - (int)(DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 113.0F) * f1);
-      DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 51.0F);
+      i = j - (int)(DisplayUtils.a(this.a, 113.0F) * f1);
+      DisplayUtils.a(this.a, 51.0F);
     }
     try
     {
@@ -145,9 +145,9 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
       Paint localPaint = new Paint();
       localPaint.setAntiAlias(true);
       ((Canvas)localObject).drawBitmap(localBitmap, 0.0F, 0.0F, localPaint);
-      localPaint.setColor(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getResources().getColor(this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData.jdField_b_of_type_Int));
+      localPaint.setColor(this.b.getApp().getResources().getColor(this.e.c));
       ((Canvas)localObject).drawRect(0.0F, 0.0F, m, i, localPaint);
-      BaseImageUtil.a(paramVarArgs, new File(this.b));
+      BaseImageUtil.a(paramVarArgs, new File(this.d));
       return Integer.valueOf(1);
     }
     catch (Exception paramVarArgs)
@@ -192,9 +192,9 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
       if (QLog.isColorLevel()) {
         QLog.e("ThemeDiyStyleLogic", 2, "DoBrightnessTask.onPostExecute, result is ok");
       }
-      paramInteger = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack;
+      paramInteger = this.g;
       if (paramInteger != null) {
-        paramInteger.a(14, 4, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData);
+        paramInteger.a(14, 4, this.f, this.e.i);
       }
     }
     else
@@ -202,16 +202,16 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
       if (QLog.isColorLevel()) {
         QLog.e("ThemeDiyStyleLogic", 2, "DoBrightnessTask.onPostExecute, result is error");
       }
-      paramInteger = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack;
+      paramInteger = this.g;
       if (paramInteger != null) {
-        paramInteger.a(14, 8, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData);
+        paramInteger.a(14, 8, this.f, this.e.i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeDiyStyleLogic.DarkBrightnessTask
  * JD-Core Version:    0.7.0.1
  */

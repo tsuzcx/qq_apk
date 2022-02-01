@@ -23,21 +23,21 @@ import mqq.app.AppRuntime;
 public class VipComicRemoteCommand
   extends RemoteCommand
 {
-  private static Bundle jdField_a_of_type_AndroidOsBundle;
-  boolean jdField_a_of_type_Boolean;
+  private static Bundle b;
+  boolean a;
   
   public VipComicRemoteCommand(String paramString, boolean paramBoolean)
   {
     super(paramString);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public static Bundle a(Bundle paramBundle)
   {
     try
     {
-      Bundle localBundle = jdField_a_of_type_AndroidOsBundle;
-      jdField_a_of_type_AndroidOsBundle = paramBundle;
+      Bundle localBundle = b;
+      b = paramBundle;
       return localBundle;
     }
     finally
@@ -53,14 +53,6 @@ public class VipComicRemoteCommand
     if (localPluginCommunicationHandler != null) {
       localPluginCommunicationHandler.register(new VipComicRemoteCommand("cacomicetinfo", true));
     }
-  }
-  
-  private void a(AppInterface paramAppInterface, String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.addCategory("android.intent.category.LAUNCHER");
-    localIntent.addFlags(268435456);
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).gotoProfile(localIntent, paramAppInterface, BaseApplication.getContext(), paramString, -1);
   }
   
   private boolean a(AppInterface paramAppInterface, String paramString)
@@ -80,7 +72,7 @@ public class VipComicRemoteCommand
   
   private Bundle b(Bundle paramBundle)
   {
-    Object localObject = AppHelper.a();
+    Object localObject = AppHelper.b();
     if (!(localObject instanceof BaseQQAppInterface))
     {
       if (QLog.isColorLevel()) {
@@ -106,7 +98,7 @@ public class VipComicRemoteCommand
       paramBundle = paramBundle.getString("uin");
       if (!TextUtils.isEmpty(paramBundle))
       {
-        a((AppInterface)localObject, paramBundle);
+        b((AppInterface)localObject, paramBundle);
         return null;
       }
     }
@@ -115,12 +107,12 @@ public class VipComicRemoteCommand
       if ("Remotecall_getUserStatus".equals(str))
       {
         paramBundle = new Bundle();
-        if (VasUtil.a((AppRuntime)localObject).getVipStatus().isSVip())
+        if (VasUtil.b((AppRuntime)localObject).getVipStatus().isSVip())
         {
           paramBundle.putInt("userStatus", 3);
           return paramBundle;
         }
-        if (VasUtil.a((AppRuntime)localObject).getVipStatus().isVip())
+        if (VasUtil.b((AppRuntime)localObject).getVipStatus().isVip())
         {
           paramBundle.putInt("userStatus", 2);
           return paramBundle;
@@ -157,6 +149,14 @@ public class VipComicRemoteCommand
     return null;
   }
   
+  private void b(AppInterface paramAppInterface, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.addCategory("android.intent.category.LAUNCHER");
+    localIntent.addFlags(268435456);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).gotoProfile(localIntent, paramAppInterface, BaseApplication.getContext(), paramString, -1);
+  }
+  
   public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
     paramBundle = b(paramBundle);
@@ -168,7 +168,7 @@ public class VipComicRemoteCommand
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicRemoteCommand
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public class HapticMediaPlayer$HapticEffectType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.immersion.touchsensesdk.HapticMediaPlayer.HapticEffectType
  * JD-Core Version:    0.7.0.1
  */

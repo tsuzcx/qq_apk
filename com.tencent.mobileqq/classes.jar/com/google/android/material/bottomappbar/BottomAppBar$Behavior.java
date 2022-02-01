@@ -16,11 +16,11 @@ import java.lang.ref.WeakReference;
 public class BottomAppBar$Behavior
   extends HideBottomViewOnScrollBehavior<BottomAppBar>
 {
-  private int jdField_a_of_type_Int;
   @NonNull
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new BottomAppBar.Behavior.1(this);
-  private WeakReference<BottomAppBar> jdField_a_of_type_JavaLangRefWeakReference;
+  private final Rect a = new Rect();
+  private WeakReference<BottomAppBar> b;
+  private int c;
+  private final View.OnLayoutChangeListener d = new BottomAppBar.Behavior.1(this);
   
   public BottomAppBar$Behavior() {}
   
@@ -31,20 +31,20 @@ public class BottomAppBar$Behavior
   
   public boolean a(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull BottomAppBar paramBottomAppBar, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBottomAppBar);
-    Object localObject = BottomAppBar.a(paramBottomAppBar);
+    this.b = new WeakReference(paramBottomAppBar);
+    Object localObject = BottomAppBar.w(paramBottomAppBar);
     if ((localObject != null) && (!ViewCompat.isLaidOut((View)localObject)))
     {
       CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)((View)localObject).getLayoutParams();
       localLayoutParams.anchorGravity = 49;
-      this.jdField_a_of_type_Int = localLayoutParams.bottomMargin;
+      this.c = localLayoutParams.bottomMargin;
       if ((localObject instanceof FloatingActionButton))
       {
         localObject = (FloatingActionButton)localObject;
-        ((FloatingActionButton)localObject).addOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
+        ((FloatingActionButton)localObject).addOnLayoutChangeListener(this.d);
         BottomAppBar.a(paramBottomAppBar, (FloatingActionButton)localObject);
       }
-      BottomAppBar.b(paramBottomAppBar);
+      BottomAppBar.l(paramBottomAppBar);
     }
     paramCoordinatorLayout.onLayoutChild(paramBottomAppBar, paramInt);
     return super.onLayoutChild(paramCoordinatorLayout, paramBottomAppBar, paramInt);
@@ -52,12 +52,12 @@ public class BottomAppBar$Behavior
   
   public boolean a(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull BottomAppBar paramBottomAppBar, @NonNull View paramView1, @NonNull View paramView2, int paramInt1, int paramInt2)
   {
-    return (paramBottomAppBar.a()) && (super.onStartNestedScroll(paramCoordinatorLayout, paramBottomAppBar, paramView1, paramView2, paramInt1, paramInt2));
+    return (paramBottomAppBar.getHideOnScroll()) && (super.onStartNestedScroll(paramCoordinatorLayout, paramBottomAppBar, paramView1, paramView2, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.Behavior
  * JD-Core Version:    0.7.0.1
  */

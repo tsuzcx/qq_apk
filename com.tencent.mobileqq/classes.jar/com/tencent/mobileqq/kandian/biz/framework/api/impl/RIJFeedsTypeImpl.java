@@ -15,14 +15,14 @@ public final class RIJFeedsTypeImpl
   public int checkArticleType(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    return RIJFeedsType.a(paramAbsBaseArticleInfo);
+    return RIJFeedsType.g(paramAbsBaseArticleInfo);
   }
   
   @NotNull
   public String getAccountType(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    paramAbsBaseArticleInfo = RIJFeedsType.e(paramAbsBaseArticleInfo);
+    paramAbsBaseArticleInfo = RIJFeedsType.n(paramAbsBaseArticleInfo);
     Intrinsics.checkExpressionValueIsNotNull(paramAbsBaseArticleInfo, "RIJFeedsType.getAccountType(articleInfo)");
     return paramAbsBaseArticleInfo;
   }
@@ -30,19 +30,19 @@ public final class RIJFeedsTypeImpl
   @Nullable
   public String getArticleIdOrRowkey(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return RIJFeedsType.f(paramAbsBaseArticleInfo);
+    return RIJFeedsType.T(paramAbsBaseArticleInfo);
   }
   
   public int getMarkType(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return RIJFeedsType.b(paramAbsBaseArticleInfo);
+    return RIJFeedsType.j(paramAbsBaseArticleInfo);
   }
   
   @NotNull
   public String getSpecialFeedsSource(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    paramAbsBaseArticleInfo = RIJFeedsType.c(paramAbsBaseArticleInfo);
+    paramAbsBaseArticleInfo = RIJFeedsType.k(paramAbsBaseArticleInfo);
     Intrinsics.checkExpressionValueIsNotNull(paramAbsBaseArticleInfo, "RIJFeedsType.getSpecialFeedsSource(articleInfo)");
     return paramAbsBaseArticleInfo;
   }
@@ -56,12 +56,12 @@ public final class RIJFeedsTypeImpl
   public boolean isVideoCard(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    return RIJFeedsType.M(paramAbsBaseArticleInfo);
+    return RIJFeedsType.U(paramAbsBaseArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.RIJFeedsTypeImpl
  * JD-Core Version:    0.7.0.1
  */

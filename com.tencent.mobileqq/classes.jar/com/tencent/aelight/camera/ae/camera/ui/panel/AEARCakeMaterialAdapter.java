@@ -22,7 +22,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.common.Observer;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.base.ToastUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,31 +31,30 @@ public class AEARCakeMaterialAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   implements AEMaterialDownloader.MaterialDownloadListener, Observer
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AEARCakeMaterialManager jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager;
-  AEARCakePanel.AEARCakePanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  public ArrayList<AEGiftMaterial> a;
+  AEARCakePanel.AEARCakePanelListener a;
+  public ArrayList<AEGiftMaterial> b = new ArrayList();
+  private LayoutInflater c;
+  private Context d;
+  private RecyclerView e;
+  private AEMaterialManager f;
+  private AEARCakeMaterialManager g;
   
   AEARCakeMaterialAdapter(Context paramContext, AEARCakePanel.AEARCakePanelListener paramAEARCakePanelListener)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener = paramAEARCakePanelListener;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a(1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager = AEARCakeMaterialManager.a();
+    this.a = paramAEARCakePanelListener;
+    this.c = LayoutInflater.from(paramContext);
+    this.d = paramContext;
+    this.f = ((AEMaterialManager)AEQIMManager.a(1));
+    this.g = AEARCakeMaterialManager.a();
   }
   
   private int a(AEMaterialMetaData paramAEMaterialMetaData)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.b.size())
     {
-      String str = ((AEGiftMaterial)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a().C;
-      if ((str != null) && (str.equals(paramAEMaterialMetaData.C))) {
+      String str = ((AEGiftMaterial)this.b.get(i)).c().V;
+      if ((str != null) && (str.equals(paramAEMaterialMetaData.V))) {
         return i;
       }
       i += 1;
@@ -73,22 +71,22 @@ public class AEARCakeMaterialAdapter
     if (paramInt == -1) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener == null)
+    if (this.a == null)
     {
       AEQLog.d("AEARCakeMaterialAdapter", "MaterialPanelListener is null");
       return;
     }
-    localObject = (AEGiftMaterial)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    localObject = (AEGiftMaterial)this.b.get(paramInt);
     if (localObject == null)
     {
       AEQLog.d("AEARCakeMaterialAdapter", "giftMaterial is null");
       return;
     }
-    AEARCakeMaterial localAEARCakeMaterial = ((AEGiftMaterial)localObject).a();
+    AEARCakeMaterial localAEARCakeMaterial = ((AEGiftMaterial)localObject).c();
     if (localAEARCakeMaterial == null) {
       return;
     }
-    if (!a(localAEARCakeMaterial.k))
+    if (!a(localAEARCakeMaterial.m))
     {
       AEQLog.a("AEARCakeMaterialAdapter", "arcake downing can not click");
       return;
@@ -97,49 +95,33 @@ public class AEARCakeMaterialAdapter
     localStringBuilder.append("arcake :onclick :");
     localStringBuilder.append(localAEARCakeMaterial.toString());
     localStringBuilder.append("downloading : ");
-    localStringBuilder.append(localAEARCakeMaterial.f);
+    localStringBuilder.append(localAEARCakeMaterial.B);
     localStringBuilder.append(" usable ");
-    localStringBuilder.append(localAEARCakeMaterial.e);
+    localStringBuilder.append(localAEARCakeMaterial.A);
     AEQLog.a("AEARCakeMaterialAdapter", localStringBuilder.toString());
-    if ((!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext)) && (!localAEARCakeMaterial.e))
+    if ((!NetworkUtil.isNetworkAvailable(this.d)) && (!localAEARCakeMaterial.A))
     {
-      AEQLog.d("AEARCakeMaterialAdapter", "net work not available");
-      ToastUtil.a().a(HardCodeUtil.a(2131716132));
+      AEQLog.d("AEARCakeMaterialAdapter", "arcake net work not available");
+      QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2064187644), 1).show();
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager.a((AEGiftMaterial)localObject, paramInt);
-    if (localAEARCakeMaterial.e)
+    this.g.a((AEGiftMaterial)localObject, paramInt);
+    if (localAEARCakeMaterial.A)
     {
-      if (!AEResUtil.a())
+      if (!AEResUtil.e())
       {
-        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131709780), 0).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131907500), 0).show();
         ThreadManager.excute(new AEARCakeMaterialAdapter.2(this), 64, null, true);
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener.a(localAEARCakeMaterial);
+      this.a.a(localAEARCakeMaterial);
     }
     else
     {
-      a(localAEARCakeMaterial);
+      this.g.a(localAEARCakeMaterial);
+      b(localAEARCakeMaterial);
     }
     notifyDataSetChanged();
-  }
-  
-  private void a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    if (paramAEMaterialMetaData == null) {
-      return;
-    }
-    if (paramAEMaterialMetaData.f) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramAEMaterialMetaData.k)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager == null) {
-      return;
-    }
-    b(paramAEMaterialMetaData);
   }
   
   private boolean a(String paramString)
@@ -147,20 +129,20 @@ public class AEARCakeMaterialAdapter
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = this.b.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (AEGiftMaterial)((Iterator)localObject1).next();
       if (localObject2 != null)
       {
-        localObject2 = ((AEGiftMaterial)localObject2).a();
+        localObject2 = ((AEGiftMaterial)localObject2).c();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("arcake same downloading :");
-        localStringBuilder.append(((AEARCakeMaterial)localObject2).C);
+        localStringBuilder.append(((AEARCakeMaterial)localObject2).V);
         localStringBuilder.append(" downloading ");
-        localStringBuilder.append(((AEARCakeMaterial)localObject2).f);
+        localStringBuilder.append(((AEARCakeMaterial)localObject2).B);
         AEQLog.a("AEARCakeMaterialAdapter", localStringBuilder.toString());
-        if ((paramString.equals(((AEARCakeMaterial)localObject2).k)) && (((AEARCakeMaterial)localObject2).f))
+        if ((paramString.equals(((AEARCakeMaterial)localObject2).m)) && (((AEARCakeMaterial)localObject2).B))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("arcake same downloading :");
@@ -181,21 +163,38 @@ public class AEARCakeMaterialAdapter
   
   private void b(AEMaterialMetaData paramAEMaterialMetaData)
   {
+    if (paramAEMaterialMetaData == null) {
+      return;
+    }
+    if (paramAEMaterialMetaData.B) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramAEMaterialMetaData.m)) {
+      return;
+    }
+    if (this.f == null) {
+      return;
+    }
+    c(paramAEMaterialMetaData);
+  }
+  
+  private void c(AEMaterialMetaData paramAEMaterialMetaData)
+  {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("arcake : doRealDownload");
-    ((StringBuilder)localObject).append(paramAEMaterialMetaData.C);
+    ((StringBuilder)localObject).append(paramAEMaterialMetaData.V);
     AEQLog.b("AEARCakeMaterialAdapter", ((StringBuilder)localObject).toString());
     if (AEMaterialManager.a(paramAEMaterialMetaData))
     {
-      paramAEMaterialMetaData.e = AEMaterialManager.a(paramAEMaterialMetaData);
+      paramAEMaterialMetaData.A = AEMaterialManager.a(paramAEMaterialMetaData);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("arcake : already download ");
-      ((StringBuilder)localObject).append(paramAEMaterialMetaData.C);
+      ((StringBuilder)localObject).append(paramAEMaterialMetaData.V);
       AEQLog.a("AEARCakeMaterialAdapter", ((StringBuilder)localObject).toString());
       onDownloadFinish(paramAEMaterialMetaData, true, 200);
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
+    localObject = this.f;
     ((AEMaterialManager)localObject).a(((AEMaterialManager)localObject).getApp(), paramAEMaterialMetaData, this);
   }
   
@@ -211,14 +210,14 @@ public class AEARCakeMaterialAdapter
     }
     localStringBuilder.append(i);
     AEQLog.a("AEARCakeMaterialAdapter", localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(new AEARCakeMaterialAdapter.5(this, paramInt), 200L);
+    this.b.clear();
+    this.b.addAll(paramList);
+    this.e.postDelayed(new AEARCakeMaterialAdapter.5(this, paramInt), 200L);
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return 0;
     }
@@ -230,25 +229,25 @@ public class AEARCakeMaterialAdapter
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.e = paramRecyclerView;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    AEGiftMaterial localAEGiftMaterial = (AEGiftMaterial)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    AEGiftMaterial localAEGiftMaterial = (AEGiftMaterial)this.b.get(paramInt);
     if (localAEGiftMaterial != null)
     {
       if (paramViewHolder == null) {
         return;
       }
-      AEARCakeMaterial localAEARCakeMaterial = localAEGiftMaterial.a();
+      AEARCakeMaterial localAEARCakeMaterial = localAEGiftMaterial.c();
       if (localAEARCakeMaterial == null) {
         return;
       }
       paramViewHolder = (AEARCakeMaterialHolder)paramViewHolder;
       paramViewHolder.a(localAEARCakeMaterial);
       int i;
-      if (localAEARCakeMaterial.e) {
+      if (localAEARCakeMaterial.A) {
         i = 8;
       } else {
         i = 0;
@@ -256,12 +255,12 @@ public class AEARCakeMaterialAdapter
       paramViewHolder.d(i);
       paramViewHolder.a(localAEGiftMaterial.a());
       paramViewHolder.b(localAEGiftMaterial.b());
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager.a() == paramInt) {
+      if (this.g.g() == paramInt) {
         paramViewHolder.c(0);
       } else {
         paramViewHolder.c(8);
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
+      if (this.b.size() <= 1) {
         paramViewHolder.d(8);
       }
       paramViewHolder.itemView.setOnClickListener(new AEARCakeMaterialAdapter.1(this, paramViewHolder));
@@ -271,8 +270,8 @@ public class AEARCakeMaterialAdapter
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318464, paramViewGroup, false);
-    return new AEARCakeMaterialHolder(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+    paramViewGroup = this.c.inflate(2064056320, paramViewGroup, false);
+    return new AEARCakeMaterialHolder(this.d, paramViewGroup);
   }
   
   public void onDownloadFinish(AEMaterialMetaData paramAEMaterialMetaData, boolean paramBoolean, int paramInt)
@@ -280,18 +279,7 @@ public class AEARCakeMaterialAdapter
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("arcake : onDownloadFinish ");
     localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("cake id ");
-    localStringBuilder.append(paramAEMaterialMetaData.C);
-    AEQLog.a("AEARCakeMaterialAdapter", localStringBuilder.toString());
-    if (paramAEMaterialMetaData == null) {
-      return;
-    }
-    paramInt = a(paramAEMaterialMetaData);
-    if (paramInt <= 0) {
-      return;
-    }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("arcake : onDownloadFinish position");
+    localStringBuilder.append("resCode ");
     localStringBuilder.append(paramInt);
     AEQLog.a("AEARCakeMaterialAdapter", localStringBuilder.toString());
     ThreadManager.getUIHandler().post(new AEARCakeMaterialAdapter.3(this, paramInt, paramAEMaterialMetaData, paramBoolean));
@@ -299,13 +287,13 @@ public class AEARCakeMaterialAdapter
   
   public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
-    paramInt = a(paramAEMaterialMetaData);
-    ThreadManager.getUIHandler().post(new AEARCakeMaterialAdapter.4(this, paramInt));
+    int i = a(paramAEMaterialMetaData);
+    ThreadManager.getUIHandler().post(new AEARCakeMaterialAdapter.4(this, i, paramAEMaterialMetaData, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeMaterialAdapter
  * JD-Core Version:    0.7.0.1
  */

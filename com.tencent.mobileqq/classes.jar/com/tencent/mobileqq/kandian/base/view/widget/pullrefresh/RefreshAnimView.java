@@ -14,48 +14,48 @@ import com.tencent.mobileqq.dinifly.LottieComposition;
 public class RefreshAnimView
   extends RelativeLayout
 {
-  private long jdField_a_of_type_Long = 100L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LottieComposition jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition;
-  private RefreshEyeView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView;
+  private ImageView a;
+  private TextView b;
+  private RefreshEyeView c;
+  private LottieComposition d;
+  private Handler e = new Handler(Looper.getMainLooper());
+  private long f = 100L;
   
   public RefreshAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    inflate(paramContext, 2131562707, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370480));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376349));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView = ((RefreshEyeView)findViewById(2131376343));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.b();
+    inflate(paramContext, 2131629140, this);
+    this.a = ((ImageView)findViewById(2131437752));
+    this.b = ((TextView)findViewById(2131444564));
+    this.c = ((RefreshEyeView)findViewById(2131444558));
+    this.c.b();
     ThreadManager.excute(new RefreshAnimView.1(this, paramContext), 64, null, true);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.b();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.setScaleX(1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.setScaleY(1.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.c.b();
+    this.c.clearAnimation();
+    this.c.setScaleX(1.0F);
+    this.c.setScaleY(1.0F);
+    this.a.setImageDrawable(null);
+    this.b.clearAnimation();
+    this.b.setText("");
+    this.b.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.e.removeCallbacksAndMessages(null);
   }
   
   public void a(double paramDouble)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.setVisibility(0);
+    if (this.c.getVisibility() != 0) {
+      this.c.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.setWaveHeightPercent(paramDouble);
+    this.c.setWaveHeightPercent(paramDouble);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new RefreshAnimView.2(this), paramLong);
+    this.e.postDelayed(new RefreshAnimView.2(this), paramLong);
   }
   
   public void a(boolean paramBoolean, String paramString)
@@ -64,25 +64,25 @@ public class RefreshAnimView
     localScaleAnimation.setDuration(200L);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setAnimationListener(new RefreshAnimView.3(this, paramString, paramBoolean));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.startAnimation(localScaleAnimation);
+    this.c.startAnimation(localScaleAnimation);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshEyeView.setVisibility(0);
+    this.c.a();
+    if (this.c.getVisibility() != 0) {
+      this.c.setVisibility(0);
     }
   }
   
   public void setRefreshBarStayTimeMS(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.f = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshAnimView
  * JD-Core Version:    0.7.0.1
  */

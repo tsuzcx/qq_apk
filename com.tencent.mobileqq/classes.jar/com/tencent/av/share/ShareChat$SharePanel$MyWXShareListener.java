@@ -12,41 +12,41 @@ import java.lang.ref.WeakReference;
 class ShareChat$SharePanel$MyWXShareListener
   implements WXShareHelper.WXShareListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<ShareChat.SharePanel> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int;
-  WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  WeakReference<ShareChat.SharePanel> a;
+  long b;
+  WeakReference<Context> c;
+  String d;
+  int e;
+  int f;
   
   ShareChat$SharePanel$MyWXShareListener(ShareChat.SharePanel paramSharePanel, long paramLong, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSharePanel);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = new WeakReference(paramSharePanel);
+    this.b = paramLong;
+    this.c = new WeakReference(paramContext);
+    this.d = paramString;
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onWXShareResp, mWXTransaction[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("], transaction[");
     ((StringBuilder)localObject).append(paramBaseResp.transaction);
     ((StringBuilder)localObject).append("], errCode[");
     ((StringBuilder)localObject).append(paramBaseResp.errCode);
     ((StringBuilder)localObject).append("], seq[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("]");
     QLog.w("ShareChat", 1, ((StringBuilder)localObject).toString());
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
+    if (!TextUtils.equals(this.d, paramBaseResp.transaction)) {
       return;
     }
-    localObject = (ShareChat.SharePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Context localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    localObject = (ShareChat.SharePanel)this.a.get();
+    Context localContext = (Context)this.c.get();
     if (localObject != null)
     {
       if (localContext == null) {
@@ -56,14 +56,14 @@ class ShareChat$SharePanel$MyWXShareListener
       int i = 2;
       if (j != -2) {
         if (j != 0) {
-          QQToast.a(localContext, 1, localContext.getString(2131719009), 0).a();
+          QQToast.makeText(localContext, 1, localContext.getString(2131916544), 0).show();
         } else {
-          QQToast.a(localContext, 2, localContext.getString(2131719027), 0).a();
+          QQToast.makeText(localContext, 2, localContext.getString(2131916563), 0).show();
         }
       }
       WXShareHelper.a().b(this);
-      j = this.jdField_a_of_type_Int;
-      int k = this.jdField_b_of_type_Int;
+      j = this.e;
+      int k = this.f;
       if (paramBaseResp.errCode != 0) {
         i = 3;
       }
@@ -73,7 +73,7 @@ class ShareChat$SharePanel$MyWXShareListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.MyWXShareListener
  * JD-Core Version:    0.7.0.1
  */

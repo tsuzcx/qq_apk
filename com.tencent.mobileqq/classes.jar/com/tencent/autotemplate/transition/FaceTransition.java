@@ -4,8 +4,42 @@ import com.tencent.tav.coremedia.CMTimeRange;
 
 public class FaceTransition
 {
-  public int procMethod;
-  public CMTimeRange timeRange;
+  private int position;
+  private int procMethod;
+  private CMTimeRange timeRange;
+  
+  public int getPosition()
+  {
+    return this.position;
+  }
+  
+  public int getProcMethod()
+  {
+    return this.procMethod;
+  }
+  
+  public CMTimeRange getTimeRange()
+  {
+    if (this.timeRange == null) {
+      this.timeRange = CMTimeRange.CMTimeRangeInvalid;
+    }
+    return this.timeRange;
+  }
+  
+  public void setPosition(int paramInt)
+  {
+    this.position = paramInt;
+  }
+  
+  public void setProcMethod(int paramInt)
+  {
+    this.procMethod = paramInt;
+  }
+  
+  public void setTimeRange(CMTimeRange paramCMTimeRange)
+  {
+    this.timeRange = paramCMTimeRange;
+  }
 }
 
 

@@ -17,28 +17,28 @@ class MemoriesVideoCollectionPresenter$GetCollectListEventReceiver
   
   public void a(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    if (!TextUtils.equals(String.valueOf(paramMemoriesVideoCollectionPresenter.hashCode()), paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(String.valueOf(paramMemoriesVideoCollectionPresenter.hashCode()), paramGetCollectionListEvent.i)) {
       return;
     }
     SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramGetCollectionListEvent);
-    if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetCollectionListEvent.g.isSuccess())
     {
-      if (paramGetCollectionListEvent.jdField_a_of_type_Int != -1) {
-        paramMemoriesVideoCollectionPresenter.jdField_a_of_type_Int = paramGetCollectionListEvent.jdField_a_of_type_Int;
+      if (paramGetCollectionListEvent.f != -1) {
+        paramMemoriesVideoCollectionPresenter.e = paramGetCollectionListEvent.f;
       }
-      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_Boolean = true;
-      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-      if (paramGetCollectionListEvent.e)
+      paramMemoriesVideoCollectionPresenter.b = true;
+      paramMemoriesVideoCollectionPresenter.c = null;
+      if (paramGetCollectionListEvent.h)
       {
-        paramMemoriesVideoCollectionPresenter.a(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList, paramGetCollectionListEvent.c, paramGetCollectionListEvent.jdField_a_of_type_Boolean);
-        paramMemoriesVideoCollectionPresenter.b = paramGetCollectionListEvent.jdField_a_of_type_Boolean;
+        paramMemoriesVideoCollectionPresenter.a(paramGetCollectionListEvent.e, paramGetCollectionListEvent.c, paramGetCollectionListEvent.a);
+        paramMemoriesVideoCollectionPresenter.f = paramGetCollectionListEvent.a;
       }
     }
     else
     {
-      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+      paramMemoriesVideoCollectionPresenter.c = paramGetCollectionListEvent.g;
     }
-    MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+    MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetCollectionListEvent.g.isSuccess());
   }
   
   public Class acceptEventClass()

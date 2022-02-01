@@ -14,7 +14,7 @@ class FontBubblePanelView$3
   
   public void onGetBubbleRecommend(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
   {
-    if (FontBubblePanelView.a(this.a) == 4)
+    if (FontBubblePanelView.e(this.a) == 4)
     {
       if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0))
       {
@@ -35,7 +35,7 @@ class FontBubblePanelView$3
   
   public void onGetFontRecommend(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
   {
-    if (FontBubblePanelView.a(this.a) == 3)
+    if (FontBubblePanelView.e(this.a) == 3)
     {
       if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0))
       {
@@ -56,7 +56,7 @@ class FontBubblePanelView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.3
  * JD-Core Version:    0.7.0.1
  */

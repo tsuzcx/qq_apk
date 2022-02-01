@@ -43,51 +43,25 @@ public class RobotChatPie
   extends FriendChatPie
   implements Handler.Callback, RobotChatTipLayout.RobotChatTipLayoutListener
 {
-  private RobotChatTipLayout a;
-  private View h;
+  private RobotChatTipLayout bC;
+  private View bD;
   
   public RobotChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, Context paramContext)
   {
     super(paramQQAppInterface, paramViewGroup, paramBaseActivity, paramContext);
   }
   
-  private void aq()
+  private boolean bD()
   {
-    if (SharedPreUtils.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout = new RobotChatTipLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.a(this);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a()).addView(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout, 0);
-  }
-  
-  private void ar()
-  {
-    Object localObject = (ViewGroup)this.e.getParent();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.a();
-    localObject = (ImageView)this.c.findViewById(2131378831);
-    if (localObject != null)
-    {
-      ((ImageView)localObject).setImageDrawable(RobotChatUtil.a(this.jdField_a_of_type_AndroidContentContext));
-      ((ImageView)localObject).setVisibility(0);
-    }
-    localObject = (AIOShortcutBarHelper)a(52);
-    if (localObject != null) {
-      ((AIOShortcutBarHelper)localObject).c(17);
-    }
-  }
-  
-  private boolean u()
-  {
-    int i = this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    int i = this.n.getCurrentPanel();
     boolean bool2 = true;
     boolean bool1;
     if (i != 0)
     {
       bool1 = bool2;
-      if (!((AudioPanelProvider)this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.a(2)).d())
+      if (!((AudioPanelProvider)this.ae.f(2)).g())
       {
-        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(true);
+        this.n.a(true);
         bool1 = bool2;
       }
     }
@@ -97,7 +71,7 @@ public class RobotChatPie
     }
     if (QLog.isColorLevel())
     {
-      String str = this.b;
+      String str = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkConsumeBackEvent, comsumed:");
       localStringBuilder.append(bool1);
@@ -106,54 +80,106 @@ public class RobotChatPie
     return bool1;
   }
   
-  public void F()
+  private void bE()
   {
-    super.F();
-    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)a(36);
-    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.b())) {
-      localRobotChatUIHelper.a(a());
+    if (SharedPreUtils.x(this.e, this.d.getCurrentUin(), this.ah.b)) {
+      return;
+    }
+    this.bC = new RobotChatTipLayout(this.e);
+    this.bC.a(this);
+    ((ViewGroup)this.k.d().c()).addView(this.bC, 0);
+  }
+  
+  private void bF()
+  {
+    Object localObject = (ViewGroup)this.C.getParent();
+    this.p.a();
+    localObject = (ImageView)this.aZ.findViewById(2131447515);
+    if (localObject != null)
+    {
+      ((ImageView)localObject).setImageDrawable(RobotChatUtil.a(this.e));
+      ((ImageView)localObject).setVisibility(0);
+    }
+    localObject = (AIOShortcutBarHelper)q(52);
+    if (localObject != null) {
+      ((AIOShortcutBarHelper)localObject).d(17);
     }
   }
   
-  protected void J()
+  public void B()
   {
-    super.J();
+    RobotUtils.a(this.e, null, this.ah.b);
+    ReportController.b(null, "dc00898", "", "", "0X800A48B", "0X800A48B", 0, 0, "", "", "", "");
+  }
+  
+  protected void E()
+  {
+    super.E();
+    RobotChatTipLayout localRobotChatTipLayout = this.bC;
+    if (localRobotChatTipLayout != null) {
+      localRobotChatTipLayout.setRobotName(bC());
+    }
+  }
+  
+  public void K()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d(this.b, 2, "onShow_otherThings:");
+      QLog.d(this.c, 2, "doOnDestroy:");
+    }
+    if ((this.bC != null) && (this.k.d().c() != null))
+    {
+      ((ViewGroup)this.k.d().c()).removeView(this.bC);
+      this.bC.a();
+      this.bC = null;
+    }
+    View localView = this.bD;
+    if ((localView != null) && (localView.getParent() != null))
+    {
+      ((ViewGroup)this.bD.getParent()).removeView(this.bD);
+      this.bD = null;
+    }
+    super.K();
+  }
+  
+  protected void Q()
+  {
+    super.Q();
+    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)q(36);
+    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.e())) {
+      localRobotChatUIHelper.a(this.s);
     }
   }
   
-  protected AIOContext a()
+  public void S()
   {
-    return new RobotContext();
+    super.S();
+    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)q(36);
+    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.e())) {
+      localRobotChatUIHelper.a(T());
+    }
   }
   
-  protected HelperProvider a()
+  public boolean V()
   {
-    return new RobotHelperProvider(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    aq();
-    paramIntent = this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout;
-    if (paramIntent != null) {
-      paramIntent.setRobotName(e());
+    if (QLog.isColorLevel()) {
+      QLog.d(this.c, 2, "onBackEvent begin");
     }
-    paramIntent = (AIOShortcutBarHelper)a(52);
-    if (paramIntent != null) {
-      paramIntent.c(19);
+    if (bD()) {
+      return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.c, 2, "no confirm dialog");
+    }
+    return super.V();
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)a(52);
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)q(52);
     if (localAIOShortcutBarHelper != null)
     {
       AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(13);
-      localAIOShortcutBarEvent.a().putBoolean("isJubaoMode", this.z);
+      localAIOShortcutBarEvent.a().putBoolean("isJubaoMode", this.aO);
       localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
       if (localAIOShortcutBarEvent.a().getBoolean("result")) {
         return;
@@ -164,14 +190,14 @@ public class RobotChatPie
   
   public void a(RobotChatTipLayout paramRobotChatTipLayout)
   {
-    SharedPreUtils.d(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true);
-    if ((this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a() != null))
+    SharedPreUtils.f(this.e, this.d.getCurrentUin(), this.ah.b, true);
+    if ((this.bC != null) && (this.k.d().c() != null))
     {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a()).removeView(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout);
-      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.a();
-      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout = null;
+      ((ViewGroup)this.k.d().c()).removeView(this.bC);
+      this.bC.a();
+      this.bC = null;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A486", "0X800A486", 0, 0, "", "", "", "");
+    ReportController.b(this.d, "dc00898", "", "", "0X800A486", "0X800A486", 0, 0, "", "", "", "");
   }
   
   public boolean a(boolean paramBoolean)
@@ -179,20 +205,33 @@ public class RobotChatPie
     return super.a(paramBoolean);
   }
   
-  public void b(int paramInt)
+  public void ai()
   {
-    super.b(paramInt);
-    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)a(36);
-    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.b())) {
-      localRobotChatUIHelper.d();
+    super.ai();
+    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)q(36);
+    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.e())) {
+      localRobotChatUIHelper.a(T());
     }
+  }
+  
+  protected void ao()
+  {
+    super.ao();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.c, 2, "onShow_otherThings:");
+    }
+  }
+  
+  protected HelperProvider b()
+  {
+    return new RobotHelperProvider(this.f);
   }
   
   protected void b(int paramInt1, int paramInt2)
   {
     super.b(paramInt1, paramInt2);
-    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)a(36);
-    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.b())) {
+    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)q(36);
+    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.e())) {
       localRobotChatUIHelper.a(paramInt1, paramInt2);
     }
   }
@@ -200,29 +239,69 @@ public class RobotChatPie
   protected void b(Intent paramIntent)
   {
     super.b(paramIntent);
-    this.e.setOnClickListener(new RobotChatPie.1(this));
+    bE();
+    paramIntent = this.bC;
+    if (paramIntent != null) {
+      paramIntent.setRobotName(bC());
+    }
+    paramIntent = (AIOShortcutBarHelper)q(52);
+    if (paramIntent != null) {
+      paramIntent.d(19);
+    }
   }
   
-  protected void c()
+  public String bC()
   {
-    this.b = "RobotChatPie";
+    if (this.ah != null)
+    {
+      if (!TextUtils.isEmpty(this.ah.e)) {
+        return this.ah.e;
+      }
+      return this.ah.b;
+    }
+    return null;
+  }
+  
+  public boolean bz()
+  {
+    return false;
   }
   
   protected void c(Intent paramIntent)
   {
     super.c(paramIntent);
+    this.C.setOnClickListener(new RobotChatPie.1(this));
+  }
+  
+  protected AIOContext d()
+  {
+    return new RobotContext();
+  }
+  
+  public void d(int paramInt)
+  {
+    super.d(paramInt);
+    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)q(36);
+    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.e())) {
+      localRobotChatUIHelper.f();
+    }
+  }
+  
+  protected void d(Intent paramIntent)
+  {
+    super.d(paramIntent);
     paramIntent = paramIntent.getBundleExtra("key_invoke_troop_robot_function");
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)a(52);
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)q(52);
     if (localAIOShortcutBarHelper != null) {
       localAIOShortcutBarHelper.a(new AIOShortcutBarHelper.AIOShortcutBarEvent(20, paramIntent));
     }
   }
   
-  public void c(boolean paramBoolean)
+  public void f(boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      String str = this.b;
+      String str = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("leftBackEvent begin:");
       localStringBuilder.append(paramBoolean);
@@ -232,86 +311,41 @@ public class RobotChatPie
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.b, 2, "no confirm dialog");
+      QLog.d(this.c, 2, "no confirm dialog");
     }
-    super.c(paramBoolean);
+    super.f(paramBoolean);
   }
   
-  public boolean d()
+  protected void h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.b, 2, "onBackEvent begin");
-    }
-    if (u()) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.b, 2, "no confirm dialog");
-    }
-    return super.d();
+    this.c = "RobotChatPie";
   }
   
-  public String e()
+  protected void k(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-    {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) {
-        return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    }
-    return null;
-  }
-  
-  protected void e()
-  {
-    super.e();
-    ar();
-  }
-  
-  protected void f(int paramInt)
-  {
-    super.f(paramInt);
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)a(52);
+    super.k(paramInt);
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)q(52);
     if (localAIOShortcutBarHelper != null) {
-      localAIOShortcutBarHelper.c(21);
+      localAIOShortcutBarHelper.d(21);
     }
   }
   
-  protected void j()
+  protected void l()
   {
-    if (this.d != null)
-    {
-      this.d.setVisibility(4);
-      ThreadManager.post(new RobotChatPie.2(this), 5, null, false);
-    }
-  }
-  
-  public void k()
-  {
-    RobotUtils.a(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    ReportController.b(null, "dc00898", "", "", "0X800A48B", "0X800A48B", 0, 0, "", "", "", "");
-  }
-  
-  protected void n()
-  {
-    super.n();
-    RobotChatTipLayout localRobotChatTipLayout = this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout;
-    if (localRobotChatTipLayout != null) {
-      localRobotChatTipLayout.setRobotName(e());
-    }
+    super.l();
+    bF();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131367417)
+    if (paramView.getId() == 2131433920)
     {
-      RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)a(36);
-      if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.b())) {
-        if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() <= 0)
+      RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)q(36);
+      if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.e())) {
+        if (this.Y.getText().length() <= 0)
         {
           localRobotChatUIHelper.b(false);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A487", "0X800A487", 0, 0, "", "", "", "");
+          ReportController.b(this.d, "dc00898", "", "", "0X800A487", "0X800A487", 0, 0, "", "", "", "");
         }
         else
         {
@@ -323,52 +357,18 @@ public class RobotChatPie
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void p()
+  protected void z()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.b, 2, "doOnDestroy:");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a() != null))
+    if (this.A != null)
     {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a()).removeView(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout);
-      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout.a();
-      this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatTipLayout = null;
-    }
-    View localView = this.h;
-    if ((localView != null) && (localView.getParent() != null))
-    {
-      ((ViewGroup)this.h.getParent()).removeView(this.h);
-      this.h = null;
-    }
-    super.p();
-  }
-  
-  public boolean t()
-  {
-    return false;
-  }
-  
-  protected void w()
-  {
-    super.w();
-    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)a(36);
-    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.b())) {
-      localRobotChatUIHelper.a(this.jdField_a_of_type_AndroidWidgetTextView);
-    }
-  }
-  
-  public void y()
-  {
-    super.y();
-    RobotChatUIHelper localRobotChatUIHelper = (RobotChatUIHelper)a(36);
-    if ((localRobotChatUIHelper != null) && (localRobotChatUIHelper.b())) {
-      localRobotChatUIHelper.a(a());
+      this.A.setVisibility(4);
+      ThreadManager.post(new RobotChatPie.2(this), 5, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ class NonMainProcAvatarLoader$3
     //   52: astore 4
     //   54: aload_0
     //   55: getfield 10	com/tencent/mobileqq/armap/NonMainProcAvatarLoader$3:a	Lcom/tencent/mobileqq/armap/NonMainProcAvatarLoader;
-    //   58: getfield 58	com/tencent/mobileqq/armap/NonMainProcAvatarLoader:b	Landroid/support/v4/util/LruCache;
+    //   58: getfield 58	com/tencent/mobileqq/armap/NonMainProcAvatarLoader:e	Landroid/support/v4/util/LruCache;
     //   61: aload 4
     //   63: invokevirtual 64	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   66: checkcast 52	java/lang/String
@@ -179,55 +179,55 @@ class NonMainProcAvatarLoader$3
     //   320: putfield 26	android/os/Message:what	I
     //   323: aload_0
     //   324: getfield 10	com/tencent/mobileqq/armap/NonMainProcAvatarLoader$3:a	Lcom/tencent/mobileqq/armap/NonMainProcAvatarLoader;
-    //   327: getfield 160	com/tencent/mobileqq/armap/NonMainProcAvatarLoader:a	Landroid/os/Handler;
+    //   327: getfield 161	com/tencent/mobileqq/armap/NonMainProcAvatarLoader:i	Landroid/os/Handler;
     //   330: aload_2
-    //   331: invokevirtual 164	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   331: invokevirtual 165	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   334: pop
-    //   335: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   335: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   338: ifeq -304 -> 34
-    //   341: new 171	java/lang/StringBuilder
+    //   341: new 172	java/lang/StringBuilder
     //   344: dup
-    //   345: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   345: invokespecial 173	java/lang/StringBuilder:<init>	()V
     //   348: astore_1
     //   349: aload_1
-    //   350: ldc 174
-    //   352: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: ldc 175
+    //   352: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   355: pop
     //   356: aload_1
     //   357: aload 4
-    //   359: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   359: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   362: pop
-    //   363: ldc 180
+    //   363: ldc 181
     //   365: iconst_2
     //   366: aload_1
-    //   367: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   370: invokestatic 188	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   367: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   370: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   373: goto -339 -> 34
     //   376: astore_1
-    //   377: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   377: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   380: ifeq +52 -> 432
-    //   383: new 171	java/lang/StringBuilder
+    //   383: new 172	java/lang/StringBuilder
     //   386: dup
-    //   387: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   387: invokespecial 173	java/lang/StringBuilder:<init>	()V
     //   390: astore_2
     //   391: aload_2
-    //   392: ldc 190
-    //   394: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: ldc 191
+    //   394: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   397: pop
     //   398: aload_2
     //   399: aload_1
-    //   400: invokevirtual 191	java/lang/Exception:toString	()Ljava/lang/String;
-    //   403: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: invokevirtual 192	java/lang/Exception:toString	()Ljava/lang/String;
+    //   403: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
-    //   407: ldc 180
+    //   407: ldc 181
     //   409: iconst_2
     //   410: aload_2
-    //   411: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   411: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   414: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   417: return
-    //   418: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   418: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   421: ifeq +11 -> 432
-    //   424: ldc 180
+    //   424: ldc 181
     //   426: iconst_2
     //   427: ldc 196
     //   429: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -265,7 +265,7 @@ class NonMainProcAvatarLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.NonMainProcAvatarLoader.3
  * JD-Core Version:    0.7.0.1
  */

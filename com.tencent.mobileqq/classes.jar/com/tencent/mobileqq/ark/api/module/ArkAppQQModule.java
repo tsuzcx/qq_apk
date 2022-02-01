@@ -9,6 +9,7 @@ import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkViewModelBase.TimeRecord;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.Container;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.ark.open.ArkAppConfigMgr;
@@ -95,26 +96,56 @@ import org.json.JSONObject;
 public class ArkAppQQModule
   extends ArkAppQQModuleBase
 {
-  private static long jdField_a_of_type_Long;
-  private static long jdField_b_of_type_Long;
-  protected ArkSilkAudioPlayerWrapper a;
-  protected ArkAppLocationManager a;
-  private WeakReference<QQCustomDialog> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, String> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, String> c;
+  private static long c;
+  private static long d;
+  protected ArkAppLocationManager a = new ArkAppLocationManager(this.f, 30000L);
+  protected ArkSilkAudioPlayerWrapper b;
+  private HashMap<String, String> k = new HashMap();
+  private HashMap<String, String> l = new HashMap();
+  private HashMap<String, String> m = new HashMap();
+  private WeakReference<QQCustomDialog> n = null;
   
   public ArkAppQQModule(ark.Application paramApplication, int paramInt)
   {
     super(paramApplication, paramInt);
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager = new ArkAppLocationManager(this.jdField_b_of_type_JavaLangString, 30000L);
+  }
+  
+  private int a(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 1004)
+          {
+            if (paramInt != 1008)
+            {
+              if (paramInt != 3000)
+              {
+                if ((paramInt != 10014) && (paramInt != 10016)) {
+                  return -1;
+                }
+                return 7;
+              }
+              return 4;
+            }
+            return 1;
+          }
+          return 6;
+        }
+        return 5;
+      }
+      return 3;
+    }
+    return 2;
   }
   
   private static int a(ark.VariantWrapper[] paramArrayOfVariantWrapper, long paramLong)
   {
     int i = 4;
-    int k = i;
+    int i1 = i;
     if (paramLong >= 2L)
     {
       paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
@@ -122,7 +153,7 @@ public class ArkAppQQModule
       {
         paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.GetString().toLowerCase();
         String[] arrayOfString = new String[8];
-        int m = 0;
+        int i2 = 0;
         arrayOfString[0] = "d";
         arrayOfString[1] = "debug";
         int j = 2;
@@ -152,49 +183,67 @@ public class ArkAppQQModule
             i = 2;
           }
           j = 0;
-          m = 1;
+          i2 = 1;
         }
         label192:
-        k = i;
-        if (m == 0)
+        i1 = i;
+        if (i2 == 0)
         {
-          k = i;
+          i1 = i;
           if (j != 0) {}
         }
       }
       else
       {
-        k = 1;
+        i1 = 1;
       }
     }
-    return k;
+    return i1;
   }
   
-  private static String a(ark.VariantWrapper[] paramArrayOfVariantWrapper)
+  private SessionInfo a(ark.VariantWrapper[] paramArrayOfVariantWrapper)
   {
-    int i = paramArrayOfVariantWrapper.length;
-    String str2 = "";
-    String str1 = str2;
-    if (i >= 3) {
-      if (!paramArrayOfVariantWrapper[2].IsArray())
+    Object localObject1;
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
+    {
+      long l1 = paramArrayOfVariantWrapper[0].GetView();
+      Object localObject2 = null;
+      localObject1 = null;
+      paramArrayOfVariantWrapper = localObject2;
+      if (l1 != 0L)
       {
-        str1 = str2;
-        if (!paramArrayOfVariantWrapper[2].IsTable()) {}
+        ark.Container localContainer = ark.arkGetContainer(l1);
+        paramArrayOfVariantWrapper = localObject2;
+        if (localContainer != null)
+        {
+          paramArrayOfVariantWrapper = (ArkAppContainer)ArkAppContainer.a(localContainer).get();
+          if ((paramArrayOfVariantWrapper instanceof ArkAioContainerWrapper)) {
+            localObject1 = ((ArkAioContainerWrapper)paramArrayOfVariantWrapper).d();
+          }
+          paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
+          if (localObject1 == null) {
+            paramArrayOfVariantWrapper = d();
+          }
+        }
       }
-      else
+      localObject1 = paramArrayOfVariantWrapper;
+      if (QLog.isColorLevel())
       {
-        str1 = paramArrayOfVariantWrapper[2].GetTableAsJsonString();
+        QLog.d("ArkApp.ArkAppQQModule", 2, new Object[] { "multiAio.ArkAppModuleReg GetContainerInfo Extra ViewID viewHandle=", Long.valueOf(l1), a(paramArrayOfVariantWrapper) });
+        return paramArrayOfVariantWrapper;
       }
     }
-    return str1;
-  }
-  
-  private void a()
-  {
-    if (!((IArkEnvironment)QRoute.api(IArkEnvironment.class)).isDebugMode()) {
-      return;
+    else
+    {
+      paramArrayOfVariantWrapper = d();
+      localObject1 = paramArrayOfVariantWrapper;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ArkApp.ArkAppQQModule", 2, new Object[] { "multiAio.ArkAppModuleReg GetContainerInfo, ", a(paramArrayOfVariantWrapper) });
+        localObject1 = paramArrayOfVariantWrapper;
+      }
     }
-    ArkDispatchTask.getInstance().postToMainThread(new ArkAppQQModule.24(this));
+    return localObject1;
   }
   
   private void a(long paramLong, String paramString)
@@ -259,19 +308,19 @@ public class ArkAppQQModule
       a(null, null, paramLong1);
       return;
     }
-    Object localObject = new StringBuilder(this.jdField_b_of_type_JavaLangString);
+    Object localObject = new StringBuilder(this.f);
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramLong3);
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramString);
     paramString = ((StringBuilder)localObject).toString();
-    if ((this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString)) && (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaUtilHashMap.get(paramString))) && (this.jdField_c_of_type_JavaUtilHashMap.containsKey(paramString)) && (!TextUtils.isEmpty((CharSequence)this.jdField_c_of_type_JavaUtilHashMap.get(paramString))))
+    if ((this.l.containsKey(paramString)) && (!TextUtils.isEmpty((CharSequence)this.l.get(paramString))) && (this.m.containsKey(paramString)) && (!TextUtils.isEmpty((CharSequence)this.m.get(paramString))))
     {
       localObject = String.valueOf(paramLong3);
-      if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_b_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsValue(localObject))) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_b_of_type_JavaLangString, localObject);
+      if ((!this.k.containsKey(this.f)) || (!this.k.containsValue(localObject))) {
+        this.k.put(this.f, localObject);
       }
-      a((String)this.jdField_b_of_type_JavaUtilHashMap.get(paramString), (String)this.jdField_c_of_type_JavaUtilHashMap.get(paramString), paramLong1);
+      a((String)this.l.get(paramString), (String)this.m.get(paramString), paramLong1);
       return;
     }
     ArkQQAPIIPCModule.a(paramLong2, paramLong3, new ArkAppQQModule.25(this, paramLong1));
@@ -279,20 +328,47 @@ public class ArkAppQQModule
   
   private void a(String paramString1, String paramString2, long paramLong)
   {
-    ArkDispatchTask.getInstance().post(this.jdField_b_of_type_JavaLangString, new ArkAppQQModule.26(this, paramLong, paramString1, paramString2));
+    ArkDispatchTask.getInstance().post(this.f, new ArkAppQQModule.26(this, paramLong, paramString1, paramString2));
+  }
+  
+  private static String b(ark.VariantWrapper[] paramArrayOfVariantWrapper)
+  {
+    int i = paramArrayOfVariantWrapper.length;
+    String str2 = "";
+    String str1 = str2;
+    if (i >= 3) {
+      if (!paramArrayOfVariantWrapper[2].IsArray())
+      {
+        str1 = str2;
+        if (!paramArrayOfVariantWrapper[2].IsTable()) {}
+      }
+      else
+      {
+        str1 = paramArrayOfVariantWrapper[2].GetTableAsJsonString();
+      }
+    }
+    return str1;
+  }
+  
+  private void i()
+  {
+    if (!((IArkEnvironment)QRoute.api(IArkEnvironment.class)).isDebugMode()) {
+      return;
+    }
+    ArkDispatchTask.getInstance().postToMainThread(new ArkAppQQModule.24(this));
   }
   
   public void Destruct()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ArkAppLocationManager)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArkApiSilkArkSilkAudioPlayerWrapper;
+    localObject = this.b;
     if (localObject != null)
     {
       ((ArkSilkAudioPlayerWrapper)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqArkApiSilkArkSilkAudioPlayerWrapper = null;
+      this.b = null;
       ArkSilkAudioPlayerHelper.b();
     }
     super.Destruct();
@@ -365,7 +441,7 @@ public class ArkAppQQModule
     if (paramString.equals("GetAppInfo")) {
       return true;
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.e == 0)
     {
       if (paramString.equals("GetPskeyAsync")) {
         return true;
@@ -436,12 +512,12 @@ public class ArkAppQQModule
     if (!a(paramString)) {
       return false;
     }
-    QQVipHelper.a(a(), paramString);
+    QQVipHelper.a(f(), paramString);
     if (paramString.equals("NavigateTo"))
     {
-      paramString = a();
+      paramString = f();
       if ((paramString != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1)) {
-        ArkCommonUtil.a(paramString, paramArrayOfVariantWrapper[0].GetString(), true, 0L, null, null, 3, this.jdField_b_of_type_JavaLangString, null);
+        ArkCommonUtil.a(paramString, paramArrayOfVariantWrapper[0].GetString(), true, 0L, null, null, 3, this.f, null);
       }
       return true;
     }
@@ -453,7 +529,7 @@ public class ArkAppQQModule
     if (bool1)
     {
       paramVariantWrapper.SetBool(false);
-      localActivity = a();
+      localActivity = f();
       if (localActivity == null)
       {
         QLog.i("ArkApp.ArkAppQQModule", 1, "open url, no activity found");
@@ -474,7 +550,7 @@ public class ArkAppQQModule
             {
               localObject4 = paramArrayOfVariantWrapper[1].GetTableAsJsonString();
               l1 = 0L;
-              break label197;
+              break label198;
             }
           }
           else {
@@ -486,23 +562,23 @@ public class ArkAppQQModule
     }
     try
     {
-      label197:
+      label198:
       if (paramArrayOfVariantWrapper.length > 2) {
         paramArrayOfVariantWrapper = new JSONObject(paramArrayOfVariantWrapper[2].GetTableAsJsonString());
       }
     }
     catch (JSONException paramString)
     {
-      label220:
+      label221:
       Object localObject2;
       Object localObject3;
       String str1;
       MessageForArkApp localMessageForArkApp;
-      int k;
+      int i1;
       boolean bool2;
       boolean bool3;
       int j;
-      break label220;
+      break label221;
     }
     paramArrayOfVariantWrapper = null;
     if (paramArrayOfVariantWrapper != null) {
@@ -515,32 +591,32 @@ public class ArkAppQQModule
       paramString = (BaseActivity)localActivity;
       if (paramString.getChatFragment() != null)
       {
-        localObject3 = paramString.getChatFragment().a();
+        localObject3 = paramString.getChatFragment().k();
         paramString = (String)localObject3;
         if (!(localObject3 instanceof PublicAccountChatPie)) {
-          break label399;
+          break label400;
         }
         paramString = (String)localObject3;
         if (!"biz_src_ads".equals(localObject2)) {
-          break label399;
+          break label400;
         }
-        str1 = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(((BaseChatPie)localObject3).a.jdField_a_of_type_JavaLangString);
+        str1 = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(((BaseChatPie)localObject3).ah.b);
         paramString = new StringBuilder();
         paramString.append("ArkSafe.OpenUrl set hsSourceID for ");
-        paramString.append(((BaseChatPie)localObject3).a.jdField_a_of_type_JavaLangString);
+        paramString.append(((BaseChatPie)localObject3).ah.b);
         paramString.append(", input ");
         paramString.append((String)localObject2);
         paramString.append(", output ");
         paramString.append(str1);
         QLog.d("ArkApp.ArkAppQQModule", 1, paramString.toString());
-        break label405;
+        break label406;
       }
     }
     paramString = null;
-    label399:
+    label400:
     str1 = null;
     localObject3 = paramString;
-    label405:
+    label406:
     if (l1 != 0L)
     {
       paramString = ark.arkGetContainer(l1);
@@ -549,17 +625,17 @@ public class ArkAppQQModule
         paramString = (ArkAppContainer)ArkAppContainer.a(paramString).get();
         if ((paramString != null) && ((paramString instanceof ArkAioContainerWrapper)))
         {
-          localMessageForArkApp = (MessageForArkApp)((ArkAioContainerWrapper)paramString).jdField_a_of_type_JavaLangRefWeakReference.get();
-          break label465;
+          localMessageForArkApp = (MessageForArkApp)((ArkAioContainerWrapper)paramString).a.get();
+          break label466;
         }
       }
     }
     localMessageForArkApp = null;
-    label465:
+    label466:
     int i;
-    if (((IArkAPIService)QRoute.api(IArkAPIService.class)).dispatchOpenURL((String)localObject1, (String)localObject4, paramArrayOfVariantWrapper, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString))
+    if (((IArkAPIService)QRoute.api(IArkAPIService.class)).dispatchOpenURL((String)localObject1, (String)localObject4, paramArrayOfVariantWrapper, this.e, this.f))
     {
-      ArkAppDataReport.a(null, this.jdField_b_of_type_JavaLangString, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
+      ArkAppDataReport.a(null, this.f, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
       paramVariantWrapper.SetBool(true);
       if (!((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl((String)localObject1))
       {
@@ -589,22 +665,22 @@ public class ArkAppQQModule
     else if ((!((String)localObject1).startsWith("http://")) && (!((String)localObject1).startsWith("https://")))
     {
       paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.e == 0)
       {
-        paramString = JumpParser.a(a(), localActivity, (String)localObject1);
+        paramString = JumpParser.a(e(), localActivity, (String)localObject1);
         paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
         if (paramString != null)
         {
-          paramArrayOfVariantWrapper = ArkAppConfigMgr.getInstance().getUrlChecker(this.jdField_b_of_type_JavaLangString);
+          paramArrayOfVariantWrapper = ArkAppConfigMgr.getInstance().getUrlChecker(this.f);
           if (paramArrayOfVariantWrapper != null)
           {
-            k = paramArrayOfVariantWrapper.checkUrlIsValidByAppNavigationList((String)localObject1);
-            if (k == 0) {
+            i1 = paramArrayOfVariantWrapper.checkUrlIsValidByAppNavigationList((String)localObject1);
+            if (i1 == 0) {
               i = 1;
             } else {
               i = 0;
             }
-            bool2 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(this.jdField_b_of_type_JavaLangString);
+            bool2 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(this.f);
             bool3 = ArkAppCenterUtil.a();
             if ((bool2) && (!bool3)) {
               bool1 = true;
@@ -612,13 +688,13 @@ public class ArkAppQQModule
               bool1 = false;
             }
             if (QLog.isColorLevel()) {
-              QLog.e("ArkApp.ArkAppQQModule", 2, new Object[] { "ArkSafe.UrlCheck.OpenUrl.http.JumpAction=", this.jdField_b_of_type_JavaLangString, ", enableCheck=", Boolean.valueOf(bool1), ", appEnableCheck=", Boolean.valueOf(bool2), ", isPublicAccount=", Boolean.valueOf(bool3) });
+              QLog.e("ArkApp.ArkAppQQModule", 2, new Object[] { "ArkSafe.UrlCheck.OpenUrl.http.JumpAction=", this.f, ", enableCheck=", Boolean.valueOf(bool1), ", appEnableCheck=", Boolean.valueOf(bool2), ", isPublicAccount=", Boolean.valueOf(bool3) });
             }
             if (i == 0)
             {
               if (!bool1)
               {
-                QLog.e("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.OpenUrl.jump appName=", this.jdField_b_of_type_JavaLangString, ",url=", Util.b((String)localObject1, new String[0]), ", isValid set=true" });
+                QLog.e("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.OpenUrl.jump appName=", this.f, ",url=", Util.b((String)localObject1, new String[0]), ", isValid set=true" });
                 i = 1;
                 j = 2;
               }
@@ -630,7 +706,7 @@ public class ArkAppQQModule
             else {
               j = 0;
             }
-            ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(this.jdField_b_of_type_JavaLangString, (String)localObject1, k, j, ArkAppContainer.jdField_c_of_type_JavaLangString);
+            ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(this.f, (String)localObject1, i1, j, ArkAppContainer.l);
           }
           else
           {
@@ -643,7 +719,7 @@ public class ArkAppQQModule
           }
           else
           {
-            QLog.e("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.OpenUrl check url invalid, url=", Util.b((String)localObject1, new String[0]), ", app=", this.jdField_b_of_type_JavaLangString });
+            QLog.e("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.OpenUrl check url invalid, url=", Util.b((String)localObject1, new String[0]), ", app=", this.f });
             paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
           }
         }
@@ -651,21 +727,21 @@ public class ArkAppQQModule
     }
     else
     {
-      if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.BROWSER"))
+      if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.BROWSER"))
       {
         QLog.d("ArkApp.ArkAppQQModule", 1, "ArkSafe.OpenUrl ModuleCheckPermission invalid!");
         return false;
       }
-      paramString = ArkAppConfigMgr.getInstance().getUrlChecker(this.jdField_b_of_type_JavaLangString);
+      paramString = ArkAppConfigMgr.getInstance().getUrlChecker(this.f);
       if (paramString != null)
       {
-        k = paramString.checkUrlIsValidByAppNavigationList((String)localObject1);
-        if (k == 0) {
+        i1 = paramString.checkUrlIsValidByAppNavigationList((String)localObject1);
+        if (i1 == 0) {
           i = 1;
         } else {
           i = 0;
         }
-        bool2 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(this.jdField_b_of_type_JavaLangString);
+        bool2 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(this.f);
         bool3 = ArkAppCenterUtil.a();
         if ((bool2) && (!bool3)) {
           bool1 = true;
@@ -673,13 +749,13 @@ public class ArkAppQQModule
           bool1 = false;
         }
         if (QLog.isColorLevel()) {
-          QLog.e("ArkApp.ArkAppQQModule", 2, new Object[] { "ArkSafe.UrlCheck.OpenUrl.http.appname=", this.jdField_b_of_type_JavaLangString, ", enableCheck=", Boolean.valueOf(bool1), ", appEnableCheck=", Boolean.valueOf(bool2), ", isPublicAccount=", Boolean.valueOf(bool3) });
+          QLog.e("ArkApp.ArkAppQQModule", 2, new Object[] { "ArkSafe.UrlCheck.OpenUrl.http.appname=", this.f, ", enableCheck=", Boolean.valueOf(bool1), ", appEnableCheck=", Boolean.valueOf(bool2), ", isPublicAccount=", Boolean.valueOf(bool3) });
         }
         if (i == 0)
         {
           if (!bool1)
           {
-            QLog.e("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.OpenUrl.http appName=", this.jdField_b_of_type_JavaLangString, ",url=", Util.b((String)localObject1, new String[0]), ", isValid set=true" });
+            QLog.e("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.OpenUrl.http appName=", this.f, ",url=", Util.b((String)localObject1, new String[0]), ", isValid set=true" });
             i = 1;
             j = 2;
           }
@@ -687,13 +763,13 @@ public class ArkAppQQModule
           {
             j = 1;
           }
-          a();
+          i();
         }
         else
         {
           j = 0;
         }
-        ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(this.jdField_b_of_type_JavaLangString, (String)localObject1, k, j, ArkAppContainer.jdField_c_of_type_JavaLangString);
+        ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(this.f, (String)localObject1, i1, j, ArkAppContainer.l);
       }
       else
       {
@@ -701,7 +777,7 @@ public class ArkAppQQModule
       }
       if (i == 0)
       {
-        QLog.d("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.OpenUrl check url invalid!, url=", Util.b((String)localObject1, new String[0]), ", app=", this.jdField_b_of_type_JavaLangString });
+        QLog.d("ArkApp.ArkAppQQModule", 1, new Object[] { "ArkSafe.OpenUrl check url invalid!, url=", Util.b((String)localObject1, new String[0]), ", app=", this.f });
         return false;
       }
       paramString = (String)localObject1;
@@ -735,9 +811,9 @@ public class ArkAppQQModule
           {
             String str2;
             long l2;
-            int m;
-            int n;
-            double d;
+            int i2;
+            int i3;
+            double d1;
             paramString = (String)localObject1;
             continue;
             paramString = null;
@@ -788,14 +864,14 @@ public class ArkAppQQModule
         }
       }
       if ((localObject3 instanceof PublicAccountChatPie)) {
-        ((PublicAccountChatPie)localObject3).a.b();
+        ((PublicAccountChatPie)localObject3).cd.b();
       } else {
-        ArkAppDataReport.a(null, this.jdField_b_of_type_JavaLangString, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
+        ArkAppDataReport.a(null, this.f, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
       }
       if ((localMessageForArkApp != null) && (localMessageForArkApp.ark_app_message != null))
       {
         l1 = ParseUtil.a(localMessageForArkApp.ark_app_message.getAppIdFromMeta(), 0L);
-        ArkCommonUtil.a(localActivity, paramString, true, l1, localMessageForArkApp, (String)localObject2, 0, this.jdField_b_of_type_JavaLangString, str1);
+        ArkCommonUtil.a(localActivity, paramString, true, l1, localMessageForArkApp, (String)localObject2, 0, this.f, str1);
         SdkShareReporter.b(localMessageForArkApp);
         paramArrayOfVariantWrapper = paramString;
         if (localMessageForArkApp.isFromSdkShare())
@@ -811,17 +887,17 @@ public class ArkAppQQModule
       }
       else
       {
-        ArkCommonUtil.a(localActivity, paramString, true, 0L, null, (String)localObject2, 0, this.jdField_b_of_type_JavaLangString, str1);
+        ArkCommonUtil.a(localActivity, paramString, true, 0L, null, (String)localObject2, 0, this.f, str1);
         paramArrayOfVariantWrapper = paramString;
       }
     }
     Log.d("ark.OpenUrl ", paramArrayOfVariantWrapper);
-    ArkAppDataReport.a(null, this.jdField_b_of_type_JavaLangString, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
+    ArkAppDataReport.a(null, this.f, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
     return true;
     if (paramString.equals("OpenVideo"))
     {
       l1 = System.currentTimeMillis();
-      l2 = jdField_a_of_type_Long;
+      l2 = c;
       if ((l1 - l2 < 1000L) && (l1 > l2))
       {
         if (QLog.isColorLevel()) {
@@ -829,9 +905,9 @@ public class ArkAppQQModule
         }
         return true;
       }
-      jdField_a_of_type_Long = l1;
+      c = l1;
       paramVariantWrapper.SetBool(false);
-      paramString = a();
+      paramString = f();
       if (((paramString instanceof BaseActivity)) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1))
       {
         paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
@@ -841,12 +917,12 @@ public class ArkAppQQModule
             localObject1 = new URL(paramArrayOfVariantWrapper).getProtocol();
             if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ((((String)localObject1).equalsIgnoreCase("http")) || (((String)localObject1).equalsIgnoreCase("https"))))
             {
-              if ((this.jdField_a_of_type_ComTencentArkArk$Application != null) && (!this.jdField_a_of_type_ComTencentArkArk$Application.CheckUrlLegality(paramArrayOfVariantWrapper))) {
+              if ((this.i != null) && (!this.i.CheckUrlLegality(paramArrayOfVariantWrapper))) {
                 return false;
               }
               paramVariantWrapper.SetBool(true);
               ArkCommonUtil.a(paramString, paramArrayOfVariantWrapper);
-              ArkAppDataReport.a(a(), this.jdField_b_of_type_JavaLangString, "AIOArkOpenVideo", 1, 0, 0L, 0L, 0L, paramArrayOfVariantWrapper, "");
+              ArkAppDataReport.a(e(), this.f, "AIOArkOpenVideo", 1, 0, 0L, 0L, 0L, paramArrayOfVariantWrapper, "");
               return true;
             }
           }
@@ -864,7 +940,7 @@ public class ArkAppQQModule
     }
     if (paramString.equals("Report"))
     {
-      paramString = a();
+      paramString = e();
       if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length == 3))
       {
         paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
@@ -884,14 +960,14 @@ public class ArkAppQQModule
     }
     catch (Exception paramVariantWrapper)
     {
-      label2196:
-      break label2196;
+      label2218:
+      break label2218;
     }
     ReportController.b(paramString, "CliOper", "", "", "0X8005FFE", "0X8005FFE", i, 0, Long.toString(l1), "0", paramArrayOfVariantWrapper, "");
-    break label2261;
+    break label2289;
     ReportController.b(paramString, "CliOper", "", "", "0X8005FFE", "0X8005FFE", i, 0, Long.toString(l1), "0", paramArrayOfVariantWrapper, "");
-    label2261:
-    ArkAppDataReport.a(paramString, this.jdField_b_of_type_JavaLangString, paramArrayOfVariantWrapper, i);
+    label2289:
+    ArkAppDataReport.a(paramString, this.f, paramArrayOfVariantWrapper, i);
     return true;
     if (paramString.equals("ReportEx"))
     {
@@ -915,18 +991,18 @@ public class ArkAppQQModule
       localObject1 = ((JSONObject)localObject3).optString("targetUin", "");
       i = ((JSONObject)localObject3).optInt("entry", 0);
       j = ((JSONObject)localObject3).optInt("count", 1);
-      k = ((JSONObject)localObject3).optInt("result", 0);
-      m = ((JSONObject)localObject3).optInt("r1", 0);
-      n = ((JSONObject)localObject3).optInt("r2", 0);
+      i1 = ((JSONObject)localObject3).optInt("result", 0);
+      i2 = ((JSONObject)localObject3).optInt("r1", 0);
+      i3 = ((JSONObject)localObject3).optInt("r2", 0);
       localObject2 = ((JSONObject)localObject3).optString("r3", "");
       localObject3 = ((JSONObject)localObject3).optString("r4", "");
-      ReportController.b(null, "dc00898", "", (String)localObject1, paramArrayOfVariantWrapper, paramVariantWrapper, i, j, k, Integer.toString(m), Integer.toString(n), (String)localObject2, (String)localObject3);
+      ReportController.b(null, "dc00898", "", (String)localObject1, paramArrayOfVariantWrapper, paramVariantWrapper, i, j, i1, Integer.toString(i2), Integer.toString(i3), (String)localObject2, (String)localObject3);
       return true;
     }
     catch (JSONException paramArrayOfVariantWrapper)
     {
-      label2500:
-      break label2500;
+      label2532:
+      break label2532;
     }
     paramArrayOfVariantWrapper = new StringBuilder();
     paramArrayOfVariantWrapper.append("QQ.ReportEx, invalid report data, data=");
@@ -948,8 +1024,8 @@ public class ArkAppQQModule
     }
     catch (JSONException paramArrayOfVariantWrapper)
     {
-      label2655:
-      break label2655;
+      label2691:
+      break label2691;
     }
     paramArrayOfVariantWrapper = new StringBuilder();
     paramArrayOfVariantWrapper.append("QQ.ReportEx, invalid report data, data=");
@@ -957,8 +1033,7 @@ public class ArkAppQQModule
     QLog.i("ArkApp.ArkAppQQModule", 1, paramArrayOfVariantWrapper.toString());
     return false;
     if (paramVariantWrapper.equals("Beacon")) {}
-    label3503:
-    label6905:
+    label7574:
     try
     {
       localObject1 = new JSONObject(paramString);
@@ -973,8 +1048,9 @@ public class ArkAppQQModule
     }
     catch (JSONException paramArrayOfVariantWrapper)
     {
-      label2815:
-      break label2815;
+      label2851:
+      label6598:
+      break label2851;
     }
     paramArrayOfVariantWrapper = new StringBuilder();
     paramArrayOfVariantWrapper.append("QQ.ReportEx.Beacon, invalid report data, data=");
@@ -986,10 +1062,10 @@ public class ArkAppQQModule
     Object localObject1 = "";
     if (paramString.equals("GetVersion"))
     {
-      paramArrayOfVariantWrapper = DeviceInfoUtil.c();
+      paramArrayOfVariantWrapper = DeviceInfoUtil.e();
       paramString = paramArrayOfVariantWrapper;
       if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
-        paramString = "8.7.0";
+        paramString = "8.8.17";
       }
       paramVariantWrapper.SetString(paramString);
       return true;
@@ -1062,7 +1138,7 @@ public class ArkAppQQModule
     }
     if (paramString.equals("GetNickName"))
     {
-      localObject2 = a();
+      localObject2 = e();
       if (paramArrayOfVariantWrapper != null) {
         l1 = paramArrayOfVariantWrapper.length;
       } else {
@@ -1079,8 +1155,8 @@ public class ArkAppQQModule
       {
         if (!TextUtils.isEmpty(paramString))
         {
-          if (!TextUtils.isEmpty(ArkAppContainer.jdField_a_of_type_JavaLangString)) {
-            localObject1 = ContactUtils.b((AppInterface)localObject2, ArkAppContainer.jdField_a_of_type_JavaLangString, paramString);
+          if (!TextUtils.isEmpty(ArkAppContainer.e)) {
+            localObject1 = ContactUtils.b((AppInterface)localObject2, ArkAppContainer.e, paramString);
           } else {
             localObject1 = null;
           }
@@ -1091,7 +1167,7 @@ public class ArkAppQQModule
           }
           else
           {
-            localObject1 = ContactUtils.g((AppInterface)localObject2, paramString);
+            localObject1 = ContactUtils.h((AppInterface)localObject2, paramString);
             paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
               paramArrayOfVariantWrapper = ContactUtils.a((AppInterface)localObject2, paramString, 0);
@@ -1115,101 +1191,27 @@ public class ArkAppQQModule
     if (paramString.equals("GetContainerInfo"))
     {
       localObject1 = new HashMap();
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
-      {
-        l1 = paramArrayOfVariantWrapper[0].GetView();
-        if (l1 != 0L)
-        {
-          paramString = ark.arkGetContainer(l1);
-          if (paramString != null)
-          {
-            paramString = (ArkAppContainer)ArkAppContainer.a(paramString).get();
-            if ((paramString != null) && ((paramString instanceof ArkAioContainerWrapper))) {
-              paramArrayOfVariantWrapper = ((ArkAioContainerWrapper)paramString).a();
-            } else {
-              paramArrayOfVariantWrapper = null;
-            }
-            paramString = paramArrayOfVariantWrapper;
-            if (paramArrayOfVariantWrapper != null) {
-              break label3503;
-            }
-            paramString = a();
-            break label3503;
-          }
-        }
-        paramString = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.ArkAppQQModule", 2, new Object[] { "multiAio.ArkAppModuleReg GetContainerInfo Extra ViewID viewHandle=", Long.valueOf(l1), a(paramString) });
-        }
-      }
-      else
-      {
-        paramArrayOfVariantWrapper = a();
-        paramString = paramArrayOfVariantWrapper;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArkApp.ArkAppQQModule", 2, new Object[] { "multiAio.ArkAppModuleReg GetContainerInfo, ", a(paramArrayOfVariantWrapper) });
-          paramString = paramArrayOfVariantWrapper;
-        }
-      }
+      paramString = a(paramArrayOfVariantWrapper);
       if (paramString != null)
       {
-        ((HashMap)localObject1).put("ChatUIN", paramString.jdField_a_of_type_JavaLangString);
-        paramArrayOfVariantWrapper = String.format("%d", new Object[] { Integer.valueOf(-1) });
-        i = paramString.jdField_a_of_type_Int;
-        if (i != 0)
+        ((HashMap)localObject1).put("ChatUIN", paramString.b);
+        ((HashMap)localObject1).put("ChatType", String.valueOf(a(paramString.a)));
+        if ((paramString.a == 1) && (!TextUtils.isEmpty(paramString.b)))
         {
-          if (i != 1)
-          {
-            if (i != 2)
-            {
-              if (i != 1004)
-              {
-                if (i != 1008)
-                {
-                  if (i != 3000) {
-                    paramString = paramArrayOfVariantWrapper;
-                  } else {
-                    paramString = String.format("%d", new Object[] { Integer.valueOf(4) });
-                  }
-                }
-                else {
-                  paramString = String.format("%d", new Object[] { Integer.valueOf(1) });
-                }
-              }
-              else {
-                paramString = String.format("%d", new Object[] { Integer.valueOf(6) });
-              }
-            }
-            else {
-              paramString = String.format("%d", new Object[] { Integer.valueOf(5) });
-            }
+          if (AnonymousChatHelper.a().a(paramString.b)) {
+            paramString = "1";
+          } else {
+            paramString = "0";
           }
-          else
-          {
-            if (!TextUtils.isEmpty(paramString.jdField_a_of_type_JavaLangString))
-            {
-              if (AnonymousChatHelper.a().a(paramString.jdField_a_of_type_JavaLangString)) {
-                paramString = "1";
-              } else {
-                paramString = "0";
-              }
-              ((HashMap)localObject1).put("AnonymousStatus", paramString);
-            }
-            paramString = String.format("%d", new Object[] { Integer.valueOf(3) });
-          }
+          ((HashMap)localObject1).put("AnonymousStatus", paramString);
         }
-        else {
-          paramString = String.format("%d", new Object[] { Integer.valueOf(2) });
-        }
-        ((HashMap)localObject1).put("ChatType", paramString);
       }
       paramVariantWrapper.SetMap((Map)localObject1);
       return true;
     }
     if (paramString.equals("DataRequest"))
     {
-      paramVariantWrapper.CreateObject("DataRequest", new ArkDataRequestObj(a(), this.jdField_b_of_type_JavaLangString));
+      paramVariantWrapper.CreateObject("DataRequest", new ArkDataRequestObj(e(), this.f));
       return true;
     }
     if (paramString.equals("GetPerformance"))
@@ -1222,7 +1224,7 @@ public class ArkAppQQModule
           paramString = ArkAioContainerWrapper.a(paramArrayOfVariantWrapper);
           if ((paramString != null) && (paramString.arkContainer != null))
           {
-            paramString = paramString.arkContainer.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord;
+            paramString = paramString.arkContainer.f;
             if (paramString == null)
             {
               QLog.i("ArkApp.ArkAppQQModule", 1, String.format("QQ.GetPerformance, timeRecord is null, viewID=%s", new Object[] { paramArrayOfVariantWrapper }));
@@ -1235,41 +1237,41 @@ public class ArkAppQQModule
                 localObject1 = new JSONObject();
                 paramArrayOfVariantWrapper.put("Timing", localObject1);
                 l1 = paramString.beginOfGetApp;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("GetApplicationStart", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("GetApplicationStart", d1 + 0.01D);
                 l1 = paramString.endOfGetApp;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("GetApplicationEnd", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("GetApplicationEnd", d1 + 0.01D);
                 l1 = paramString.beginOfGetApp;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("FetchApplicationStart", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("FetchApplicationStart", d1 + 0.01D);
                 l1 = paramString.endOfGetApp;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("FetchApplicationEnd", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("FetchApplicationEnd", d1 + 0.01D);
                 l1 = paramString.mRecord.beginOfCreateView;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("CreateViewStart", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("CreateViewStart", d1 + 0.01D);
                 l1 = paramString.mRecord.endOfCreateView;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("CreateViewEnd", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("CreateViewEnd", d1 + 0.01D);
                 l1 = paramString.mRecord.beginOfDisplyView;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("DisplayViewStart", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("DisplayViewStart", d1 + 0.01D);
                 l1 = paramString.mRecord.endOfDisplyView;
-                d = l1;
-                Double.isNaN(d);
-                ((JSONObject)localObject1).put("DisplayViewEnd", d + 0.01D);
+                d1 = l1;
+                Double.isNaN(d1);
+                ((JSONObject)localObject1).put("DisplayViewEnd", d1 + 0.01D);
                 localObject1 = new JSONObject();
                 paramArrayOfVariantWrapper.put("Navigation", localObject1);
                 if (!paramString.getAppFromLocal) {
-                  break label8411;
+                  break label8104;
                 }
                 i = 1;
                 ((JSONObject)localObject1).put("FetchApplicationFromCache", i);
@@ -1300,36 +1302,36 @@ public class ArkAppQQModule
     {
       if (paramString.equals("GetCurrentPosition"))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0] != null) && (paramArrayOfVariantWrapper[0].IsFunction()))
+        if ((this.a != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0] != null) && (paramArrayOfVariantWrapper[0].IsFunction()))
         {
           if (QLog.isColorLevel()) {
-            QLog.i("ArkApp.ArkAppQQModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
+            QLog.i("ArkApp.ArkAppQQModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.f }));
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager.b(new ArkAppQQModule.1(this, l1));
+          this.a.b(new ArkAppQQModule.1(this, l1));
           return true;
         }
         return false;
       }
       if (paramString.equals("WatchPosition"))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0] != null))
+        if ((this.a != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0] != null))
         {
           if (!paramArrayOfVariantWrapper[0].IsFunction()) {
             return false;
           }
           if (QLog.isColorLevel()) {
-            QLog.i("ArkApp.ArkAppQQModule", 2, String.format("WatchPosition.app.%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
+            QLog.i("ArkApp.ArkAppQQModule", 2, String.format("WatchPosition.app.%s", new Object[] { this.f }));
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager.a(new ArkAppQQModule.2(this, l1));
+          this.a.a(new ArkAppQQModule.2(this, l1));
           return true;
         }
         return false;
       }
       if (paramString.equals("ClearWatch"))
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager;
+        paramString = this.a;
         if (paramString == null) {
           return false;
         }
@@ -1338,13 +1340,13 @@ public class ArkAppQQModule
       }
       if (paramString.equals("GetCurrentAddress"))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0] != null))
+        if ((this.a != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0] != null))
         {
           if (!paramArrayOfVariantWrapper[0].IsFunction()) {
             return false;
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager.a(new ArkAppQQModule.3(this, l1), true);
+          this.a.a(new ArkAppQQModule.3(this, l1), true);
           return true;
         }
         return false;
@@ -1358,27 +1360,27 @@ public class ArkAppQQModule
           {
             paramVariantWrapper = new JSONObject((String)localObject1);
             if ((paramArrayOfVariantWrapper.length <= 1) || (paramArrayOfVariantWrapper[1].GetType() != 2)) {
-              break label8417;
+              break label8110;
             }
             bool1 = paramArrayOfVariantWrapper[1].GetBool();
             if ((paramArrayOfVariantWrapper.length >= 3) && (paramArrayOfVariantWrapper[2].IsView()))
             {
               l1 = paramArrayOfVariantWrapper[2].GetView();
               if (l1 == 0L) {
-                break label8423;
+                break label8116;
               }
               paramString = ark.arkGetContainer(l1);
               if (paramString == null) {
-                break label8423;
+                break label8116;
               }
               paramString = (ArkAppContainer)ArkAppContainer.a(paramString).get();
               if ((paramString == null) || (!(paramString instanceof ArkAioContainerWrapper))) {
-                break label8423;
+                break label8116;
               }
-              paramArrayOfVariantWrapper = ((ArkAioContainerWrapper)paramString).a();
+              paramArrayOfVariantWrapper = ((ArkAioContainerWrapper)paramString).d();
               paramString = paramArrayOfVariantWrapper;
               if (paramArrayOfVariantWrapper == null) {
-                paramString = a();
+                paramString = d();
               }
               paramArrayOfVariantWrapper = paramString;
               if (QLog.isColorLevel())
@@ -1389,7 +1391,7 @@ public class ArkAppQQModule
             }
             else
             {
-              paramString = a();
+              paramString = d();
               paramArrayOfVariantWrapper = paramString;
               if (QLog.isColorLevel())
               {
@@ -1421,7 +1423,7 @@ public class ArkAppQQModule
               }
               ((ArkAppMessage)localObject2).promptText = paramString.optString("Prompt");
               if (TextUtils.isEmpty(((ArkAppMessage)localObject2).promptText)) {
-                ((ArkAppMessage)localObject2).promptText = String.format(HardCodeUtil.a(2131700865), new Object[] { ((ArkAppMessage)localObject2).appDesc });
+                ((ArkAppMessage)localObject2).promptText = String.format(HardCodeUtil.a(2131898889), new Object[] { ((ArkAppMessage)localObject2).appDesc });
               }
               ((ArkAppMessage)localObject2).metaList = paramString.getJSONObject("MetaData").toString();
               paramVariantWrapper = paramString.optJSONObject("Config");
@@ -1434,11 +1436,11 @@ public class ArkAppQQModule
               if (bool1)
               {
                 if (paramArrayOfVariantWrapper == null) {
-                  break label8428;
+                  break label8121;
                 }
-                ChatActivityFacade.b(a(), paramArrayOfVariantWrapper, (ArkAppMessage)localObject2);
+                ChatActivityFacade.b(e(), paramArrayOfVariantWrapper, (ArkAppMessage)localObject2);
                 if (!QLog.isColorLevel()) {
-                  break label8428;
+                  break label8121;
                 }
                 QLog.i("ArkApp", 1, "multiAio.QQ.SendMessage light currentChat success");
                 return true;
@@ -1451,10 +1453,10 @@ public class ArkAppQQModule
               paramVariantWrapper = paramVariantWrapper.getString("text");
               if (bool1)
               {
-                paramString = a();
+                paramString = e();
                 if ((paramArrayOfVariantWrapper != null) && (paramString != null))
                 {
-                  paramArrayOfVariantWrapper = MessageRecordFactory.a(a(), a().getCurrentUin(), paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, paramArrayOfVariantWrapper.jdField_b_of_type_JavaLangString, paramArrayOfVariantWrapper.jdField_a_of_type_Int, (byte)1, (byte)0, (short)0, paramVariantWrapper);
+                  paramArrayOfVariantWrapper = MessageRecordFactory.a(e(), e().getCurrentUin(), paramArrayOfVariantWrapper.b, paramArrayOfVariantWrapper.c, paramArrayOfVariantWrapper.a, (byte)1, (byte)0, (short)0, paramVariantWrapper);
                   paramString.getMessageFacade().a(paramArrayOfVariantWrapper, null);
                   if (QLog.isColorLevel())
                   {
@@ -1501,7 +1503,7 @@ public class ArkAppQQModule
       }
       if (paramString.equals("Login"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.LOGIN"))
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.LOGIN"))
         {
           QLog.e("ArkApp.ArkAppQQModule", 1, "Login.permission not allow");
           return false;
@@ -1510,14 +1512,14 @@ public class ArkAppQQModule
           try
           {
             l1 = Long.parseLong(paramArrayOfVariantWrapper[0].GetString());
-            paramString = a();
+            paramString = e();
             if (paramString == null) {
               paramString = null;
             } else {
               paramString = paramString.getCurrentAccountUin();
             }
             l2 = a(paramArrayOfVariantWrapper[1].Copy());
-            ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).showAuthDialog(paramString, this.jdField_b_of_type_JavaLangString, "ark_authority_api_login", BaseApplicationImpl.getContext().getString(2131690127), new ArkAppQQModule.7(this, l2, paramString, l1));
+            ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).showAuthDialog(paramString, this.f, "ark_authority_api_login", BaseApplicationImpl.getContext().getString(2131887026), new ArkAppQQModule.7(this, l2, paramString, l1));
             return true;
           }
           catch (NumberFormatException paramString)
@@ -1534,29 +1536,29 @@ public class ArkAppQQModule
       }
       if (paramString.equals("GetUserInformation"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.USER_INFORMATION"))
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.USER_INFORMATION"))
         {
           QLog.e("ArkApp.ArkAppQQModule", 1, "GetUserInformation.permission not allow");
           return false;
         }
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsFunction()))
         {
-          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+          if (TextUtils.isEmpty(this.f))
           {
             paramString = new StringBuilder();
             paramString.append("GetUserInformation.error app is null, app=");
-            paramString.append(this.jdField_b_of_type_JavaLangString);
+            paramString.append(this.f);
             QLog.e("ArkApp.ArkAppQQModule", 1, paramString.toString());
             return false;
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          paramString = a();
+          paramString = e();
           if (paramString != null) {
             paramString = paramString.getCurrentUin();
           } else {
             paramString = null;
           }
-          ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).showAuthDialog(paramString, this.jdField_b_of_type_JavaLangString, "ark_authority_api_user_info", BaseApplicationImpl.getContext().getString(2131690128), new ArkAppQQModule.8(this, l1, paramString));
+          ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).showAuthDialog(paramString, this.f, "ark_authority_api_user_info", BaseApplicationImpl.getContext().getString(2131887027), new ArkAppQQModule.8(this, l1, paramString));
           return true;
         }
         QLog.e("ArkApp.ArkAppQQModule", 1, "GetUserInformation.param error");
@@ -1567,7 +1569,7 @@ public class ArkAppQQModule
       }
       if (paramString.equals("OpenView"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.OPENVIEW")) {
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.OPENVIEW")) {
           return false;
         }
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 4) && (paramArrayOfVariantWrapper[0].IsView()) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[2].IsString()) && ((paramArrayOfVariantWrapper[3].IsArray()) || (paramArrayOfVariantWrapper[3].IsTable())))
@@ -1592,7 +1594,7 @@ public class ArkAppQQModule
       }
       if (paramString.equals("CloseView"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.OPENVIEW")) {
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.OPENVIEW")) {
           return false;
         }
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
@@ -1604,21 +1606,21 @@ public class ArkAppQQModule
       }
       if (paramString.equals("ShareView"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.SHARE")) {
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.SHARE")) {
           return false;
         }
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && ((paramArrayOfVariantWrapper[1].IsArray()) || (paramArrayOfVariantWrapper[1].IsTable())))
         {
           paramString = paramArrayOfVariantWrapper[0].GetString();
           paramVariantWrapper = paramArrayOfVariantWrapper[1].GetTableAsJsonString();
-          paramArrayOfVariantWrapper = a(paramArrayOfVariantWrapper);
+          paramArrayOfVariantWrapper = b(paramArrayOfVariantWrapper);
           ArkDispatchTask.getInstance().postToMainThread(new ArkAppQQModule.11(this, paramString, paramVariantWrapper, paramArrayOfVariantWrapper));
         }
         return true;
       }
       if (paramString.equals("ShowStatusBar"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.STATUSBAR")) {
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.STATUSBAR")) {
           return false;
         }
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsView()) && (paramArrayOfVariantWrapper[1].IsString()))
@@ -1631,7 +1633,7 @@ public class ArkAppQQModule
       }
       if (paramString.equals("HideStatusBar"))
       {
-        if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.STATUSBAR")) {
+        if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.STATUSBAR")) {
           return false;
         }
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
@@ -1690,10 +1692,10 @@ public class ArkAppQQModule
                   paramString = paramVariantWrapper;
                   if (!paramVariantWrapper.startsWith("https://"))
                   {
-                    paramVariantWrapper = this.jdField_a_of_type_ComTencentArkArk$Application.GetSystemPathFromLocal(paramVariantWrapper);
+                    paramVariantWrapper = this.i.GetSystemPathFromLocal(paramVariantWrapper);
                     paramString = paramVariantWrapper;
                     if (TextUtils.isEmpty(paramVariantWrapper)) {
-                      break label6905;
+                      break label6598;
                     }
                   }
                 }
@@ -1751,8 +1753,8 @@ public class ArkAppQQModule
           paramVariantWrapper.append(" extraInfo=");
           paramVariantWrapper.append(paramString);
           QLog.i("ArkApp", 1, paramVariantWrapper.toString());
-          if (this.jdField_a_of_type_ComTencentArkArk$Application != null) {
-            localObject1 = this.jdField_a_of_type_ComTencentArkArk$Application.GetEngineResPath();
+          if (this.i != null) {
+            localObject1 = this.i.GetEngineResPath();
           }
           j = (int)paramArrayOfVariantWrapper[0].GetDouble();
           i = j;
@@ -1784,12 +1786,12 @@ public class ArkAppQQModule
       }
       if (paramString.equals("GetAppID"))
       {
-        paramVariantWrapper.SetString(String.valueOf(AppSetting.a()));
+        paramVariantWrapper.SetString(String.valueOf(AppSetting.d()));
         return true;
       }
       if (paramString.equals("GetAudioOutputMode"))
       {
-        i = ArkQQAPIIPCModule.a();
+        i = ArkQQAPIIPCModule.c();
         paramString = new StringBuilder();
         paramString.append("current audio status:");
         paramString.append(i);
@@ -1817,7 +1819,7 @@ public class ArkAppQQModule
             if ((bool2) && (bool1))
             {
               l1 = System.currentTimeMillis();
-              if ((Math.abs(l1 - jdField_b_of_type_Long) < 120000L) && (l1 > jdField_b_of_type_Long))
+              if ((Math.abs(l1 - d) < 120000L) && (l1 > d))
               {
                 if (QLog.isColorLevel()) {
                   QLog.e("ArkApp.ArkAppQQModule", 2, "IsMute() do not show toast so frequently in 2 min");
@@ -1828,23 +1830,23 @@ public class ArkAppQQModule
                 if (QLog.isColorLevel()) {
                   QLog.e("ArkApp.ArkAppQQModule", 2, "IsMute() show toast");
                 }
-                jdField_b_of_type_Long = l1;
+                d = l1;
                 paramArrayOfVariantWrapper = (ArkPlatformConfigBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkPlatformConfigBean.class);
                 paramString = (String)localObject1;
                 if (paramArrayOfVariantWrapper != null)
                 {
                   paramString = (String)localObject1;
-                  if (paramArrayOfVariantWrapper.a() != null) {
-                    paramString = paramArrayOfVariantWrapper.a().jdField_a_of_type_JavaLangString;
+                  if (paramArrayOfVariantWrapper.b() != null) {
+                    paramString = paramArrayOfVariantWrapper.b().h;
                   }
                 }
-                localObject1 = a();
+                localObject1 = f();
                 paramArrayOfVariantWrapper = paramString;
                 if (TextUtils.isEmpty(paramString))
                 {
                   paramArrayOfVariantWrapper = paramString;
                   if (localObject1 != null) {
-                    paramArrayOfVariantWrapper = ((Activity)localObject1).getString(2131690167);
+                    paramArrayOfVariantWrapper = ((Activity)localObject1).getString(2131887066);
                   }
                 }
                 ArkDispatchTask.getInstance().postToMainThread(new ArkAppQQModule.21(this, (Activity)localObject1, paramArrayOfVariantWrapper));
@@ -1883,7 +1885,7 @@ public class ArkAppQQModule
         } else {
           paramString = null;
         }
-        localObject2 = a();
+        localObject2 = e();
         if (localObject2 != null)
         {
           localObject1 = paramString;
@@ -1898,15 +1900,14 @@ public class ArkAppQQModule
               paramString = (ArkAppContainer)ArkAppContainer.a(paramString).get();
               if ((paramString instanceof ArkAioContainerWrapper))
               {
-                paramString = ((ArkAioContainerWrapper)paramString).a();
-                break label7881;
+                paramString = ((ArkAioContainerWrapper)paramString).d();
+                break label7574;
               }
             }
             paramString = null;
-            label7881:
             paramArrayOfVariantWrapper = paramString;
             if (paramString == null) {
-              paramArrayOfVariantWrapper = a();
+              paramArrayOfVariantWrapper = d();
             }
             if (QLog.isColorLevel()) {
               QLog.d("ArkApp.ArkAppQQModule", 2, new Object[] { "ark.GetNickNameByView Extra ViewID viewHandle=", Long.valueOf(l2), a(paramArrayOfVariantWrapper) });
@@ -1914,7 +1915,7 @@ public class ArkAppQQModule
           }
           else
           {
-            paramString = a();
+            paramString = d();
             paramArrayOfVariantWrapper = paramString;
             if (QLog.isColorLevel())
             {
@@ -1936,7 +1937,7 @@ public class ArkAppQQModule
             }
             else
             {
-              paramArrayOfVariantWrapper = ContactUtils.g((AppInterface)localObject2, (String)localObject1);
+              paramArrayOfVariantWrapper = ContactUtils.h((AppInterface)localObject2, (String)localObject1);
               paramString = paramArrayOfVariantWrapper;
               if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
                 paramString = ContactUtils.a((AppInterface)localObject2, (String)localObject1, 0);
@@ -1960,11 +1961,11 @@ public class ArkAppQQModule
         try
         {
           ((JSONObject)localObject1).put("package", BaseApplicationImpl.getApplication().getPackageName());
-          ((JSONObject)localObject1).put("name", BaseApplicationImpl.getApplication().getString(2131690092));
-          paramArrayOfVariantWrapper = DeviceInfoUtil.c();
+          ((JSONObject)localObject1).put("name", BaseApplicationImpl.getApplication().getString(2131886912));
+          paramArrayOfVariantWrapper = DeviceInfoUtil.e();
           paramString = paramArrayOfVariantWrapper;
           if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
-            paramString = "8.7.0";
+            paramString = "8.8.17";
           }
           ((JSONObject)localObject1).put("version", paramString);
         }
@@ -1989,7 +1990,7 @@ public class ArkAppQQModule
       try
       {
         if (!paramArrayOfVariantWrapper[0].IsString()) {
-          break label8430;
+          break label8123;
         }
         paramString = paramArrayOfVariantWrapper[0].GetString();
         if ((int)paramArrayOfVariantWrapper[1].GetDouble() == 0)
@@ -2007,12 +2008,12 @@ public class ArkAppQQModule
       }
       return false;
       return false;
-      label8411:
-      label8417:
-      label8423:
-      label8428:
+      label8104:
+      label8110:
+      label8116:
+      label8121:
       return true;
-      label8430:
+      label8123:
       paramString = null;
     }
   }
@@ -2026,7 +2027,7 @@ public class ArkAppQQModule
     Iterator localIterator;
     do
     {
-      paramAIOContext = paramAIOContext.a().a().a().iterator();
+      paramAIOContext = paramAIOContext.e().b().d().iterator();
       while (!localIterator.hasNext())
       {
         do
@@ -2083,7 +2084,7 @@ public class ArkAppQQModule
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         paramSosoLbsInfo.mLocation.city = ((String)localObject);
       }
-      localObject = LocationSimulator.a();
+      localObject = LocationSimulator.b();
       if ((localObject != null) && (localObject.length == 2))
       {
         paramSosoLbsInfo.mLocation.mLat84 = localObject[0];
@@ -2153,11 +2154,6 @@ public class ArkAppQQModule
     a("SendMessage", 1L, 500L);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   protected ArkModuleMethod[] a()
   {
     return new ArkModuleMethod[] { new ArkAppQQModule.MethodGetUIN(null), new ArkAppQQModule.MethodGetSKey(null), new ArkAppQQModule.MethodGetPSKey(null), new ArkAppQQModule.MethodReplyMessage(null), new ArkAppQQModule.MethodPlaySilkAudio(this, null), new ArkAppQQModule.MethodStopSilkAudio(this, null) };
@@ -2167,10 +2163,15 @@ public class ArkAppQQModule
   {
     return true;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule
  * JD-Core Version:    0.7.0.1
  */

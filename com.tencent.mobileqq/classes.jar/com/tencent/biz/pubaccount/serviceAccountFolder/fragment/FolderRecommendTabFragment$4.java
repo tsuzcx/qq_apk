@@ -16,13 +16,13 @@ class FolderRecommendTabFragment$4
   public void run()
   {
     Object localObject = ServiceAccountFolderManager.a();
-    List localList = ((ServiceAccountFolderManager)localObject).a();
+    List localList = ((ServiceAccountFolderManager)localObject).b();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
       ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)localIterator.next();
-      if (FolderRecommendTabFragment.a(this.this$0, localServiceAccountFolderFeed.a))
+      if (FolderRecommendTabFragment.a(this.this$0, localServiceAccountFolderFeed.b))
       {
         localArrayList.add(localServiceAccountFolderFeed);
         localIterator.remove();
@@ -33,13 +33,13 @@ class FolderRecommendTabFragment$4
     ((Message)localObject).arg1 = this.a;
     ((Message)localObject).obj = localList;
     ((Message)localObject).what = 101;
-    FolderRecommendTabFragment.a(this.this$0).sendMessage((Message)localObject);
+    FolderRecommendTabFragment.c(this.this$0).sendMessage((Message)localObject);
     FolderRecommendTabFragment.a(this.this$0, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.4
  * JD-Core Version:    0.7.0.1
  */

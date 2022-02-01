@@ -28,7 +28,7 @@ public class SubType0x128
     try
     {
       localObject = new submsgtype0x128.MsgBody();
-      if (paramOnLinePushMessageProcessor.b(paramMsgType0x210))
+      if (paramOnLinePushMessageProcessor.d(paramMsgType0x210))
       {
         ((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).notifyPushEvent(paramMsgType0x210.uSubMsgType, paramMsgType0x210.vProtobuf);
         ((submsgtype0x128.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
@@ -59,7 +59,7 @@ public class SubType0x128
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x128
  * JD-Core Version:    0.7.0.1
  */

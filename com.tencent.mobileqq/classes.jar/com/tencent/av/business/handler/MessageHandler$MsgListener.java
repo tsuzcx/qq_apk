@@ -11,11 +11,11 @@ public abstract class MessageHandler$MsgListener<T1 extends MessageMicro, T2 ext
   {
     Object localObject = MessageHandler.a(this);
     ((MessageHandler.ClassInfo)localObject).a("QAVMessageHandler", paramLong);
-    if ((((MessageHandler.ClassInfo)localObject).a != null) && (((MessageHandler.ClassInfo)localObject).b != null)) {
+    if ((((MessageHandler.ClassInfo)localObject).b != null) && (((MessageHandler.ClassInfo)localObject).c != null)) {
       try
       {
-        MessageMicro localMessageMicro = (MessageMicro)((MessageHandler.ClassInfo)localObject).a.newInstance();
-        localObject = (MessageMicro)((MessageHandler.ClassInfo)localObject).b.newInstance();
+        MessageMicro localMessageMicro = (MessageMicro)((MessageHandler.ClassInfo)localObject).b.newInstance();
+        localObject = (MessageMicro)((MessageHandler.ClassInfo)localObject).c.newInstance();
         paramToServiceMsg = paramToServiceMsg.getWupBuffer();
         if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
           localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);

@@ -34,6 +34,11 @@ public class MavEngineProxy
     return this.mMavEngineJni.debugSwitch(paramBoolean);
   }
   
+  public void enableAIDenoise(boolean paramBoolean)
+  {
+    this.mMavEngineJni.enableAIDenoise(paramBoolean);
+  }
+  
   public void enableDumpAudioData(boolean paramBoolean)
   {
     this.mMavEngineJni.enableDumpAudioData(paramBoolean);
@@ -124,9 +129,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.ignore(paramInt1, paramLong, paramInt2);
   }
   
-  public void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4)
+  public void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString1, paramSDKConfigInfo, paramString2, paramString3, paramString4);
+    this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString1, paramSDKConfigInfo, paramString2, paramString3, paramString4, paramBoolean);
   }
   
   protected void initEngine(AVCoreSystemInfo paramAVCoreSystemInfo, IMavAdapter paramIMavAdapter, String paramString)

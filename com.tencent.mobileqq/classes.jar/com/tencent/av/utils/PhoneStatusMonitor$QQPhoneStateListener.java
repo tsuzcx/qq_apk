@@ -16,17 +16,17 @@ class PhoneStatusMonitor$QQPhoneStateListener
       localStringBuilder.append("onCallStateChanged, state[");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("], isCalling[");
-      localStringBuilder.append(PhoneStatusMonitor.a(this.a));
+      localStringBuilder.append(PhoneStatusMonitor.b(this.a));
       localStringBuilder.append("]");
       QLog.i("PhoneStatusMonitor", 2, localStringBuilder.toString());
     }
     if (paramInt != 0)
     {
-      if (((paramInt == 1) || (paramInt == 2)) && (!PhoneStatusMonitor.a(this.a))) {
+      if (((paramInt == 1) || (paramInt == 2)) && (!PhoneStatusMonitor.b(this.a))) {
         PhoneStatusMonitor.a(this.a, true);
       }
     }
-    else if (PhoneStatusMonitor.a(this.a)) {
+    else if (PhoneStatusMonitor.b(this.a)) {
       PhoneStatusMonitor.a(this.a, false);
     }
     super.onCallStateChanged(paramInt, paramString);

@@ -24,84 +24,59 @@ public class WSVerticalItemWidgetController
   extends AbsWsVerticalUIGroup
   implements View.OnClickListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AbsWSRichWidgetData jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  private KandianUrlImageView g;
+  private View h;
+  private TextView i;
+  private AbsWSRichWidgetData j;
+  private WSVerticalPageFragment k;
+  private boolean l;
   
   public WSVerticalItemWidgetController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
     if (paramWSVerticalVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      this.k = paramWSVerticalVideoHolder.d;
     }
-  }
-  
-  private boolean a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-    if ((localObject != null) && (((WSVerticalPageFragment)localObject).a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().a() != null))
-    {
-      localObject = (WSVerticalItemData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().a().jdField_a_of_type_JavaLangObject;
-      if (localObject == null) {
-        return false;
-      }
-      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-      if (localWSVerticalItemData != null)
-      {
-        stSimpleMetaFeed localstSimpleMetaFeed = localWSVerticalItemData.a();
-        if (localstSimpleMetaFeed != null)
-        {
-          if (localWSVerticalItemData.a() == null) {
-            return false;
-          }
-          return TextUtils.equals(((WSVerticalItemData)localObject).a().id, localstSimpleMetaFeed.id);
-        }
-      }
-    }
-    return false;
   }
   
   @SuppressLint({"UseCompatLoadingForDrawables"})
-  private void e(int paramInt)
+  private void f(int paramInt)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.g.getLayoutParams();
     if (paramInt == 3)
     {
-      this.b.setBackgroundResource(2130842787);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      localLayoutParams.width = WeishiUIUtil.i;
-      localLayoutParams.height = WeishiUIUtil.i;
-      localLayoutParams.leftMargin = WeishiUIUtil.f;
+      this.h.setBackgroundResource(2130843740);
+      this.i.setCompoundDrawables(null, null, null, null);
+      localLayoutParams.width = WeishiUIUtil.j;
+      localLayoutParams.height = WeishiUIUtil.j;
+      localLayoutParams.leftMargin = WeishiUIUtil.g;
     }
     else if (paramInt == 1)
     {
-      this.b.setBackgroundResource(2130842788);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, a().getDrawable(2130851242), null);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(WeishiUIUtil.b);
-      localLayoutParams.width = WeishiUIUtil.r;
-      localLayoutParams.height = WeishiUIUtil.l;
+      this.h.setBackgroundResource(2130843741);
+      this.i.setCompoundDrawablesWithIntrinsicBounds(null, null, e().getDrawable(2130853501), null);
+      this.i.setCompoundDrawablePadding(WeishiUIUtil.b);
+      localLayoutParams.width = WeishiUIUtil.t;
+      localLayoutParams.height = WeishiUIUtil.n;
       localLayoutParams.leftMargin = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setLayoutParams(localLayoutParams);
+    this.g.setLayoutParams(localLayoutParams);
   }
   
-  private void f()
+  private void m()
   {
-    int i = c();
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData;
+    int m = l();
+    Object localObject = this.j;
     boolean bool2 = true;
     boolean bool1 = bool2;
     if (localObject != null)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(((AbsWSRichWidgetData)localObject).b()))
+      if (!TextUtils.isEmpty(((AbsWSRichWidgetData)localObject).c()))
       {
         bool1 = bool2;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData.a())) {
-          if ((i != 3) && (i != 1)) {
+        if (!TextUtils.isEmpty(this.j.b())) {
+          if ((m != 3) && (m != 1)) {
             bool1 = bool2;
           } else {
             bool1 = false;
@@ -111,99 +86,124 @@ public class WSVerticalItemWidgetController
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[updateWidgetBtnContent] des : ");
-    ((StringBuilder)localObject).append(((WSVerticalItemData)a()).a().feed_desc);
+    ((StringBuilder)localObject).append(((WSVerticalItemData)c()).b().feed_desc);
     ((StringBuilder)localObject).append(", isGone :");
     ((StringBuilder)localObject).append(bool1);
     WSLog.a("WSVerticalItemWidgetController", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImageBitmap(null);
+    this.g.setImageBitmap(null);
     if (bool1)
     {
-      this.b.setVisibility(8);
+      this.h.setVisibility(8);
       return;
     }
-    e(i);
-    this.b.setVisibility(0);
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData.b();
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData.a();
+    f(m);
+    this.h.setVisibility(0);
+    localObject = this.j.c();
+    String str = this.j.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[updateWidgetBtnContent] text:");
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(", iconUrl:");
     localStringBuilder.append(str);
     WSLog.a("WSVerticalItemWidgetController", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, str, null);
-    if (a()) {
-      g();
+    this.i.setText((CharSequence)localObject);
+    WSPicLoader.a().a(this.g, str, null);
+    if (n()) {
+      o();
     }
   }
   
-  private void g()
+  private boolean n()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject = this.k;
+    if ((localObject != null) && (((WSVerticalPageFragment)localObject).b() != null) && (this.k.b().b() != null))
     {
-      this.jdField_a_of_type_Boolean = true;
-      WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), (WSVerticalItemData)a());
+      localObject = (WSVerticalItemData)this.k.b().b().e;
+      if (localObject == null) {
+        return false;
+      }
+      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
+      if (localWSVerticalItemData != null)
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = localWSVerticalItemData.b();
+        if (localstSimpleMetaFeed != null)
+        {
+          if (localWSVerticalItemData.f() == null) {
+            return false;
+          }
+          return TextUtils.equals(((WSVerticalItemData)localObject).b().id, localstSimpleMetaFeed.id);
+        }
+      }
+    }
+    return false;
+  }
+  
+  private void o()
+  {
+    if (!this.l)
+    {
+      this.l = true;
+      WSVerticalBeaconReport.a(this.k.k(), this.k.l(), (WSVerticalItemData)c());
     }
   }
   
   protected void a()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
     if (localWSVerticalItemData != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData = localWSVerticalItemData.a();
+      this.j = localWSVerticalItemData.f();
     }
-  }
-  
-  protected int b()
-  {
-    return 2131560051;
   }
   
   protected void b()
   {
-    f();
+    m();
   }
   
-  public int c()
+  protected void d(int paramInt)
   {
-    AbsWSRichWidgetData localAbsWSRichWidgetData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData;
+    this.l = false;
+    if (this.h.getVisibility() == 0) {
+      WSVerticalBeaconReport.a(this.k.k(), this.k.l(), (WSVerticalItemData)c());
+    }
+  }
+  
+  protected void e(int paramInt) {}
+  
+  protected void f() {}
+  
+  protected int i()
+  {
+    return 2131626095;
+  }
+  
+  protected void j()
+  {
+    this.h = c(2131449430);
+    this.h.setOnClickListener(this);
+    this.g = ((KandianUrlImageView)c(2131449432));
+    this.i = ((TextView)c(2131449431));
+  }
+  
+  public int l()
+  {
+    AbsWSRichWidgetData localAbsWSRichWidgetData = this.j;
     if (localAbsWSRichWidgetData != null) {
-      return localAbsWSRichWidgetData.a();
+      return localAbsWSRichWidgetData.d();
     }
     return 0;
   }
   
-  protected void c() {}
-  
-  protected void c(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.b.getVisibility() == 0) {
-      WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), (WSVerticalItemData)a());
-    }
-  }
-  
-  protected void d(int paramInt) {}
-  
-  protected void e()
-  {
-    this.b = a(2131380477);
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131380479));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380478));
-  }
-  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380477) {
-      WSVerticalJumpUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, (WSVerticalItemData)a());
+    if (paramView.getId() == 2131449430) {
+      WSVerticalJumpUtils.a(this.k, (WSVerticalItemData)c());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemWidgetController
  * JD-Core Version:    0.7.0.1
  */

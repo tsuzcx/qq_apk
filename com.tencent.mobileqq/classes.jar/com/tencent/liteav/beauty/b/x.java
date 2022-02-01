@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.util.Log;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.d.f;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -14,7 +14,7 @@ import java.nio.ShortBuffer;
 import java.util.List;
 
 public class x
-  extends h
+  extends j
 {
   private static final float[] A = { 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F };
   protected static final short[] v = { 1, 2, 0, 2, 0, 3 };
@@ -44,7 +44,7 @@ public class x
     this.o = true;
   }
   
-  private void q()
+  private void r()
   {
     if (this.r != null)
     {
@@ -176,7 +176,7 @@ public class x
   {
     super.d();
     this.t = false;
-    q();
+    r();
   }
   
   protected void j()
@@ -214,7 +214,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.x
  * JD-Core Version:    0.7.0.1
  */

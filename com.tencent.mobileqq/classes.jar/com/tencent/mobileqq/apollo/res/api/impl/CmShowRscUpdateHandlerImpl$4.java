@@ -20,58 +20,58 @@ class CmShowRscUpdateHandlerImpl$4
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("downloadAllZip task.getStatus:");
-      localStringBuilder.append(paramDownloadTask.a());
+      localStringBuilder.append(paramDownloadTask.e());
       QLog.d("rscContent_CmShowRscUpdateHandler", 2, localStringBuilder.toString());
     }
-    if (3 == paramDownloadTask.a())
+    if (3 == paramDownloadTask.e())
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      if (this.a.exists()) {
         try
         {
-          paramDownloadTask = MD5Utils.encodeFileHexStr(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          paramDownloadTask = MD5Utils.encodeFileHexStr(this.a.getAbsolutePath());
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append(" downloadAllZip onDone dstMd5:");
             localStringBuilder.append(paramDownloadTask);
             localStringBuilder.append(" result.mMd5:");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.d);
+            localStringBuilder.append(this.b.k);
             QLog.d("rscContent_CmShowRscUpdateHandler", 2, localStringBuilder.toString());
           }
-          if (CmShowRscUpdateHandlerImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult, paramDownloadTask))
+          if (CmShowRscUpdateHandlerImpl.access$400(this.b, paramDownloadTask))
           {
-            if (CmShowRscUpdateHandlerImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult))
+            if (CmShowRscUpdateHandlerImpl.access$500(this.b))
             {
-              paramDownloadTask = this.jdField_a_of_type_JavaIoFile;
+              paramDownloadTask = this.a;
               localStringBuilder = new StringBuilder();
-              localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getParent());
+              localStringBuilder.append(this.a.getParent());
               localStringBuilder.append(File.separator);
               ZipUtils.unZipFile(paramDownloadTask, localStringBuilder.toString());
               if (QLog.isColorLevel())
               {
                 paramDownloadTask = new StringBuilder();
                 paramDownloadTask.append("downloadAllZip unZipFile ok file path->");
-                paramDownloadTask.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+                paramDownloadTask.append(this.a.getAbsolutePath());
                 QLog.d("rscContent_CmShowRscUpdateHandler", 2, paramDownloadTask.toString());
               }
             }
             else
             {
-              paramDownloadTask = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+              paramDownloadTask = this.a.getAbsolutePath();
               localStringBuilder = new StringBuilder();
-              localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.b());
-              localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.jdField_e_of_type_JavaLangString);
+              localStringBuilder.append(this.b.b());
+              localStringBuilder.append(this.b.l);
               boolean bool = FileUtils.copyFile(paramDownloadTask, localStringBuilder.toString());
               paramDownloadTask = new StringBuilder();
               paramDownloadTask.append("downloadAllZip no need unzip copy:");
               paramDownloadTask.append(bool);
               QLog.i("rscContent_CmShowRscUpdateHandler", 1, paramDownloadTask.toString());
             }
-            CmShowRscUpdateHandlerImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult);
+            CmShowRscUpdateHandlerImpl.access$600(this.c, this.b.p, this.b);
             return;
           }
           QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-          CmShowRscUpdateHandlerImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.jdField_e_of_type_Int);
+          CmShowRscUpdateHandlerImpl.access$300(this.c, this.b.p);
           return;
         }
         catch (OutOfMemoryError paramDownloadTask)
@@ -80,20 +80,20 @@ class CmShowRscUpdateHandlerImpl$4
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("downloadAllZip unZipFile file error path->");
-            localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+            localStringBuilder.append(this.a.getAbsolutePath());
             localStringBuilder.append(paramDownloadTask.getMessage());
             QLog.d("rscContent_CmShowRscUpdateHandler", 2, localStringBuilder.toString());
           }
-          this.jdField_a_of_type_JavaIoFile.delete();
+          this.a.delete();
           return;
         }
         catch (Exception paramDownloadTask)
         {
-          CmShowRscUpdateHandlerImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.jdField_e_of_type_Int);
-          this.jdField_a_of_type_JavaIoFile.delete();
+          CmShowRscUpdateHandlerImpl.access$300(this.c, this.b.p);
+          this.a.delete();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("downloadAllZip unZipFile file error path->");
-          localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          localStringBuilder.append(this.a.getAbsolutePath());
           localStringBuilder.append(paramDownloadTask.getMessage());
           QLog.d("rscContent_CmShowRscUpdateHandler", 2, localStringBuilder.toString());
           return;
@@ -101,22 +101,22 @@ class CmShowRscUpdateHandlerImpl$4
       }
       paramDownloadTask = new StringBuilder();
       paramDownloadTask.append("downloadAllZip  file error path- no exist:");
-      paramDownloadTask.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      paramDownloadTask.append(this.a.getAbsolutePath());
       QLog.d("rscContent_CmShowRscUpdateHandler", 1, paramDownloadTask.toString());
-      CmShowRscUpdateHandlerImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscUpdateHandlerImpl$ContentUpdateCheckResult.jdField_e_of_type_Int);
+      CmShowRscUpdateHandlerImpl.access$300(this.c, this.b.p);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("downloadAllZip  file error path->");
-    localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    localStringBuilder.append(this.a.getAbsolutePath());
     localStringBuilder.append(" task.getStatus()->");
-    localStringBuilder.append(paramDownloadTask.a());
+    localStringBuilder.append(paramDownloadTask.e());
     QLog.d("rscContent_CmShowRscUpdateHandler", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.CmShowRscUpdateHandlerImpl.4
  * JD-Core Version:    0.7.0.1
  */

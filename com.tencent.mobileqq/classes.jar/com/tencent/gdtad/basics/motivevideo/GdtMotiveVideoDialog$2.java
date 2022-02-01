@@ -1,23 +1,38 @@
 package com.tencent.gdtad.basics.motivevideo;
 
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.ResultReceiver;
+import com.tencent.qphone.base.util.QLog;
 
 class GdtMotiveVideoDialog$2
-  implements View.OnSystemUiVisibilityChangeListener
+  implements IMotiveVideoView
 {
-  GdtMotiveVideoDialog$2(GdtMotiveVideoDialog paramGdtMotiveVideoDialog, ViewGroup paramViewGroup) {}
+  GdtMotiveVideoDialog$2(GdtMotiveVideoDialog paramGdtMotiveVideoDialog) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void a()
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(7942);
+    this.a.dismiss();
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    if (GdtMotiveVideoDialog.d(this.a) == null)
+    {
+      QLog.i("GdtMotiveVideoDialog", 1, "mResultReceiver == null");
+      return;
     }
+    GdtMotiveVideoDialog.d(this.a).send(paramInt, paramIntent.getExtras());
+  }
+  
+  public Activity b()
+  {
+    return GdtMotiveVideoDialog.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoDialog.2
  * JD-Core Version:    0.7.0.1
  */

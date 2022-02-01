@@ -39,15 +39,6 @@ public class AEEditorRecordRecoveryHelper
     this.a = new WeakReference(paramActivity);
   }
   
-  private Activity a()
-  {
-    WeakReference localWeakReference = this.a;
-    if (localWeakReference == null) {
-      return null;
-    }
-    return (Activity)localWeakReference.get();
-  }
-  
   private void a(Activity paramActivity, Intent paramIntent)
   {
     Object localObject1 = (IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class);
@@ -116,7 +107,7 @@ public class AEEditorRecordRecoveryHelper
       }
       i += 1;
     }
-    if (AECameraEntryManager.o(paramIntent))
+    if (AECameraEntryManager.t(paramIntent))
     {
       AEQLog.b("AEEditorRecordRecoveryHelper", "recoveryMixPhotoAndVideo, is additional pick case, setResult and finish");
       paramIntent = new Intent();
@@ -132,7 +123,7 @@ public class AEEditorRecordRecoveryHelper
     ((Bundle)localObject3).putSerializable("PeakConstants.selectedMediaInfoHashMap.recovery", (Serializable)localObject2);
     ((Bundle)localObject3).putBoolean("key_qcircle_publish_back_edit", true);
     i = AECameraEntry.y.a();
-    if (AECameraEntryManager.m(paramIntent)) {
+    if (AECameraEntryManager.r(paramIntent)) {
       i = AECameraEntry.A.a();
     }
     if (localArrayList2.size() == 1)
@@ -176,9 +167,18 @@ public class AEEditorRecordRecoveryHelper
     {
       AEQLog.d("AEEditorRecordRecoveryHelper", "validSelectedMediaExist, media not valid");
       paramIntent.putExtra("key_qcircle_publish_back_edit", false);
-      QQToast.a(paramActivity, 2064515183, 0).a();
+      QQToast.makeText(paramActivity, 2064187529, 0).show();
     }
     return bool;
+  }
+  
+  private Activity b()
+  {
+    WeakReference localWeakReference = this.a;
+    if (localWeakReference == null) {
+      return null;
+    }
+    return (Activity)localWeakReference.get();
   }
   
   private void b(Activity paramActivity, Intent paramIntent)
@@ -211,10 +211,10 @@ public class AEEditorRecordRecoveryHelper
       ((Bundle)localObject1).putStringArrayList("key_qcircle_publish_out_imagepath", localArrayList2);
     }
     i = AECameraEntry.y.a();
-    if (AECameraEntryManager.m(paramIntent)) {
+    if (AECameraEntryManager.r(paramIntent)) {
       i = AECameraEntry.A.a();
     }
-    if (AECameraEntryManager.o(paramIntent))
+    if (AECameraEntryManager.t(paramIntent))
     {
       paramIntent = new Intent();
       paramIntent.putExtra("ae_album_selected_media_models", localArrayList1);
@@ -228,7 +228,7 @@ public class AEEditorRecordRecoveryHelper
   
   public void a()
   {
-    Activity localActivity = a();
+    Activity localActivity = b();
     if (localActivity == null) {
       return;
     }
@@ -256,7 +256,7 @@ public class AEEditorRecordRecoveryHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.record.AEEditorRecordRecoveryHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class InformationFaceAdapter$InformationItemLayout$1
   
   public void onResp(NetResp paramNetResp)
   {
-    String str = ((InformationFacePackage.Item)paramNetResp.mReq.getUserData()).e;
+    String str = ((InformationFacePackage.Item)paramNetResp.mReq.getUserData()).g;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -34,16 +34,16 @@ class InformationFaceAdapter$InformationItemLayout$1
     if (paramNetResp.mHttpCode == 200)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      if (this.a.exists()) {
         try
         {
-          if (ApngDrawable.isApngFile(this.jdField_a_of_type_JavaIoFile))
+          if (ApngDrawable.isApngFile(this.a))
           {
             bool1 = true;
           }
           else
           {
-            this.jdField_a_of_type_JavaIoFile.delete();
+            this.a.delete();
             bool1 = bool2;
             if (QLog.isColorLevel())
             {
@@ -77,7 +77,7 @@ class InformationFaceAdapter$InformationItemLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.InformationItemLayout.1
  * JD-Core Version:    0.7.0.1
  */

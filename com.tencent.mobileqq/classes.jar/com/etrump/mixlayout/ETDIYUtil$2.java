@@ -11,8 +11,8 @@ final class ETDIYUtil$2
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask.a == 0) {
-      ETDIYUtil.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+    if (paramDownloadTask.c == 0) {
+      ETDIYUtil.a(this.a, this.b);
     }
   }
 }

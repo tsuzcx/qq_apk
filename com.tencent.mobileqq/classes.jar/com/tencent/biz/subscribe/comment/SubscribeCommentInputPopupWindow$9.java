@@ -10,7 +10,7 @@ class SubscribeCommentInputPopupWindow$9
   
   public void run()
   {
-    SubscribeCommentInputPopupWindow.a(this.this$0).showSoftInput(this.a, 1);
+    SubscribeCommentInputPopupWindow.i(this.this$0).showSoftInput(this.a, 1);
   }
 }
 

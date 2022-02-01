@@ -60,31 +60,31 @@ public class ServiceAccountFolderActivityNew
   implements SimpleEventReceiver
 {
   public static boolean a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private CertifiedAccountRead.StGetMainPageRsp jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ServiceAccountFolderActivityNew.1(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
-  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private ServiceAccountFolderActivityNew.FolderTabFragmentAdapter jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter;
-  private FolderFollowTabFragment jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment;
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<FolderBaseTabFragment> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RadioButton jdField_b_of_type_AndroidWidgetRadioButton;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private boolean jdField_c_of_type_Boolean;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private boolean jdField_d_of_type_Boolean = true;
+  View.OnClickListener b = new ServiceAccountFolderActivityNew.1(this);
+  private View c;
+  private View d;
+  private ImageView e;
+  private ImageView f;
+  private ImageView g;
+  private SquareImageView h;
+  private RadioGroup i;
+  private RadioButton j;
+  private RadioButton k;
+  private QQViewPager l;
+  private ServiceAccountFolderActivityNew.FolderTabFragmentAdapter m;
+  private ArrayList<FolderBaseTabFragment> n = new ArrayList();
+  private String o;
+  private String p;
+  private ImageView q;
+  private TopGestureLayout r;
+  private boolean s;
+  private long t;
+  private int u;
+  private boolean v;
+  private ExtraTypeInfo w;
+  private CertifiedAccountRead.StGetMainPageRsp x;
+  private FolderFollowTabFragment y;
+  private boolean z = true;
   
   static
   {
@@ -93,17 +93,7 @@ public class ServiceAccountFolderActivityNew
     if (localQzoneConfig.getConfig("qqsubscribe", "DefaultSelectExplorePage", 0) > 0) {
       bool = true;
     }
-    jdField_a_of_type_Boolean = bool;
-  }
-  
-  private COMM.StCommonExt a()
-  {
-    COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
-    COMM.Entry localEntry = new COMM.Entry();
-    localEntry.key.set("user_info");
-    localEntry.value.set("1");
-    localStCommonExt.mapInfo.get().add(localEntry);
-    return localStCommonExt;
+    a = bool;
   }
   
   private static String a(String paramString1, String paramString2, String paramString3)
@@ -117,56 +107,15 @@ public class ServiceAccountFolderActivityNew
     return paramString1.replace(paramString2.toUpperCase(), paramString3);
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = ((ExtraTypeInfo)getIntent().getSerializableExtra("key_subscribe_intent_extra_type_info"));
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment = new FolderFollowTabFragment();
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment);
-    this.jdField_d_of_type_Boolean = QVipServiceAccountFolderProcessor.a().showRecommendPage;
-    if ((!a()) && (this.jdField_d_of_type_Boolean))
-    {
-      FolderRecommendTabFragment localFolderRecommendTabFragment = new FolderRecommendTabFragment();
-      this.jdField_a_of_type_JavaUtilArrayList.add(localFolderRecommendTabFragment);
-    }
-    this.jdField_a_of_type_JavaLangString = this.app.getAccount();
-  }
-  
   private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
     if (paramStGetMainPageRsp.messStatus.get() != null)
     {
-      ServiceAccountFolderActivityNew.FolderTabFragmentAdapter localFolderTabFragmentAdapter = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter;
-      if ((localFolderTabFragmentAdapter != null) && (localFolderTabFragmentAdapter.a(0) != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter.a(0) instanceof FolderFollowTabFragment))) {
-        ((FolderFollowTabFragment)this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter.a(0)).a(paramStGetMainPageRsp.messStatus.noticeCount.get());
+      ServiceAccountFolderActivityNew.FolderTabFragmentAdapter localFolderTabFragmentAdapter = this.m;
+      if ((localFolderTabFragmentAdapter != null) && (localFolderTabFragmentAdapter.a(0) != null) && ((this.m.a(0) instanceof FolderFollowTabFragment))) {
+        ((FolderFollowTabFragment)this.m.a(0)).a(paramStGetMainPageRsp.messStatus.noticeCount.get());
       }
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377268);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376751);
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131376518));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131375994));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131375995));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131381006));
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter = new ServiceAccountFolderActivityNew.FolderTabFragmentAdapter(this, getSupportFragmentManager());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$FolderTabFragmentAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOffscreenPageLimit(1);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369451));
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setTextColor(getResources().getColor(2131165392));
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839031));
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setTextColor(getResources().getColor(2131165392));
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839031));
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130839005));
-      this.jdField_c_of_type_AndroidWidgetImageView.setColorFilter(1308622848);
-    }
-    d();
-    f();
   }
   
   private void b(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
@@ -200,98 +149,127 @@ public class ServiceAccountFolderActivityNew
     SubscribeLaucher.a("https://h5.qzone.qq.com/subscription/followlist?_proxy=1_wv=3");
   }
   
-  private void c()
-  {
-    CertifiedAccountRead.StGetMainPageRsp localStGetMainPageRsp = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
-    if ((localStGetMainPageRsp != null) && (localStGetMainPageRsp.user != null) && (SubscribeUtils.c(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.attr.get())) && (!a()))
-    {
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      VSReporter.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_exp", 0, 0, new String[] { "", "" });
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return;
-    }
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
   private void d()
   {
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379020));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369402));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ServiceAccountFolderActivityNew.2(this));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370513));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131370514));
-    if (this.jdField_b_of_type_Boolean)
+    this.w = ((ExtraTypeInfo)getIntent().getSerializableExtra("key_subscribe_intent_extra_type_info"));
+    this.y = new FolderFollowTabFragment();
+    this.n.add(this.y);
+    this.z = QVipServiceAccountFolderProcessor.a().showRecommendPage;
+    if ((!a()) && (this.z))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130841671));
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838947));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(1711276032);
+      FolderRecommendTabFragment localFolderRecommendTabFragment = new FolderRecommendTabFragment();
+      this.n.add(localFolderRecommendTabFragment);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
-    e();
+    this.o = this.app.getAccount();
   }
   
   private void e()
   {
-    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.jdField_a_of_type_JavaLangString, a());
-    localSubscribePersonalDetailRequest.setEnableCache(true);
-    VSNetworkHelper.getInstance().sendRequest(localSubscribePersonalDetailRequest, new ServiceAccountFolderActivityNew.3(this));
+    this.c = findViewById(2131445655);
+    this.d = findViewById(2131445042);
+    this.i = ((RadioGroup)findViewById(2131444765));
+    this.j = ((RadioButton)findViewById(2131444183));
+    this.k = ((RadioButton)findViewById(2131444192));
+    this.l = ((QQViewPager)findViewById(2131450003));
+    this.y.a(this.l);
+    this.m = new ServiceAccountFolderActivityNew.FolderTabFragmentAdapter(this, getSupportFragmentManager());
+    this.l.setAdapter(this.m);
+    this.l.setOffscreenPageLimit(1);
+    this.g = ((ImageView)findViewById(2131436507));
+    if (this.s)
+    {
+      this.d.setBackgroundColor(-16777216);
+      this.j.setTextColor(getResources().getColor(2131165678));
+      this.j.setBackgroundDrawable(getResources().getDrawable(2130839185));
+      this.k.setTextColor(getResources().getColor(2131165678));
+      this.k.setBackgroundDrawable(getResources().getDrawable(2130839185));
+      this.g.setImageDrawable(getResources().getDrawable(2130839159));
+      this.g.setColorFilter(1308622848);
+    }
+    g();
+    j();
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ServiceAccountFolderActivityNew.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(new ServiceAccountFolderActivityNew.5(this));
-    if ((a()) || (!this.jdField_d_of_type_Boolean)) {
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setVisibility(8);
-    }
-    ExtraTypeInfo localExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-    if ((localExtraTypeInfo != null) && (localExtraTypeInfo.pageType == 7004) && (!a()) && (this.jdField_d_of_type_Boolean))
+    CertifiedAccountRead.StGetMainPageRsp localStGetMainPageRsp = this.x;
+    if ((localStGetMainPageRsp != null) && (localStGetMainPageRsp.user != null) && (SubscribeUtils.c(this.x.user.attr.get())) && (!a()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(0);
+      this.g.setVisibility(8);
+      VSReporter.a(((CertifiedAccountMeta.StUser)this.x.user.get()).id.get(), "auth_person", "post_exp", 0, 0, new String[] { "", "" });
+      this.g.setOnClickListener(this.b);
+      return;
+    }
+    this.g.setVisibility(8);
+  }
+  
+  private void g()
+  {
+    this.q = ((ImageView)findViewById(2131447741));
+    this.e = ((ImageView)findViewById(2131436436));
+    this.e.setOnClickListener(new ServiceAccountFolderActivityNew.2(this));
+    this.f = ((ImageView)findViewById(2131437785));
+    this.h = ((SquareImageView)findViewById(2131437786));
+    if (this.s)
+    {
+      this.e.setImageDrawable(getResources().getDrawable(2130842586));
+      this.f.setImageDrawable(getResources().getDrawable(2130839101));
+      this.h.setFilterColor(1711276032);
+    }
+    this.f.setVisibility(8);
+    this.h.setVisibility(0);
+    h();
+  }
+  
+  private void h()
+  {
+    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.o, i());
+    localSubscribePersonalDetailRequest.setEnableCache(true);
+    VSNetworkHelper.getInstance().sendRequest(localSubscribePersonalDetailRequest, new ServiceAccountFolderActivityNew.3(this));
+  }
+  
+  private COMM.StCommonExt i()
+  {
+    COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
+    COMM.Entry localEntry = new COMM.Entry();
+    localEntry.key.set("user_info");
+    localEntry.value.set("1");
+    localStCommonExt.mapInfo.get().add(localEntry);
+    return localStCommonExt;
+  }
+  
+  private void j()
+  {
+    this.i.setOnCheckedChangeListener(new ServiceAccountFolderActivityNew.4(this));
+    this.l.setOnPageChangeListener(new ServiceAccountFolderActivityNew.5(this));
+    if ((a()) || (!this.z)) {
+      this.k.setVisibility(8);
+    }
+    ExtraTypeInfo localExtraTypeInfo = this.w;
+    if ((localExtraTypeInfo != null) && (localExtraTypeInfo.pageType == 7004) && (!a()) && (this.z))
+    {
+      this.l.setCurrentItem(0);
       MobileReportManager.getInstance().reportActionLive("", "", "qq_live", "find_page", "", 100, 1, System.currentTimeMillis(), "");
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(0);
+      this.l.setCurrentItem(0);
       MobileReportManager.getInstance().reportActionLive("", "", "qq_live", "tab_page", "", 100, 1, System.currentTimeMillis(), "");
     }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  protected TopGestureLayout a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
-    {
-      ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
-      View localView = localViewGroup.getChildAt(0);
-      Object localObject = localViewGroup;
-      if (localView != null)
-      {
-        localObject = localViewGroup;
-        if ((localView instanceof DragFrameLayout)) {
-          localObject = (ViewGroup)localView;
-        }
-      }
-      localObject = ((ViewGroup)localObject).getChildAt(0);
-      if ((localObject instanceof TopGestureLayout)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
+    this.u = this.l.getCurrentItem();
+    this.t = System.currentTimeMillis();
   }
   
   public void a(int paramInt)
   {
-    if (((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem() != 0)) || (paramInt == 8)) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    if (((paramInt == 0) && (this.l.getCurrentItem() != 0)) || (paramInt == 8)) {
+      this.q.setVisibility(paramInt);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = a();
+    Object localObject = c();
     if (localObject != null) {
       ((TopGestureLayout)localObject).setInterceptTouchFlag(paramBoolean);
     }
@@ -306,12 +284,34 @@ public class ServiceAccountFolderActivityNew
   
   public boolean a()
   {
-    return StudyModeManager.a();
+    return StudyModeManager.h();
   }
   
   public boolean b()
   {
-    return this.jdField_d_of_type_AndroidWidgetImageView.getVisibility() == 0;
+    return this.q.getVisibility() == 0;
+  }
+  
+  protected TopGestureLayout c()
+  {
+    if (this.r == null)
+    {
+      ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
+      View localView = localViewGroup.getChildAt(0);
+      Object localObject = localViewGroup;
+      if (localView != null)
+      {
+        localObject = localViewGroup;
+        if ((localView instanceof DragFrameLayout)) {
+          localObject = (ViewGroup)localView;
+        }
+      }
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if ((localObject instanceof TopGestureLayout)) {
+        this.r = ((TopGestureLayout)localObject);
+      }
+    }
+    return this.r;
   }
   
   @Override
@@ -326,14 +326,14 @@ public class ServiceAccountFolderActivityNew
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559635);
-    this.jdField_b_of_type_Boolean = SubscribeUtils.a();
-    a();
-    b();
+    setContentView(2131625664);
+    this.s = SubscribeUtils.a();
+    d();
+    e();
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
-      this.jdField_a_of_type_AndroidViewView.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+      this.c.setFitsSystemWindows(true);
+      this.c.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
     SimpleEventBus.getInstance().registerReceiver(this);
     return true;
@@ -351,20 +351,20 @@ public class ServiceAccountFolderActivityNew
     {
       QLog.e("ServiceAccountFolderActivityNew", 1, localException, new Object[0]);
     }
-    if (this.jdField_a_of_type_Long > 0L)
+    if (this.t > 0L)
     {
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
+      long l2 = this.t;
       String str;
-      if (this.jdField_a_of_type_Int == FolderBaseTabFragment.jdField_a_of_type_Int) {
+      if (this.u == FolderBaseTabFragment.d) {
         str = "auth_follow";
       } else {
         str = "auth_discover";
       }
       VSReporter.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
-      this.jdField_a_of_type_Long = 0L;
+      this.t = 0L;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.n.clear();
     VSNetworkHelper.getInstance().cancelRequest(BaseApplicationImpl.getContext());
   }
   
@@ -390,13 +390,13 @@ public class ServiceAccountFolderActivityNew
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof UserStateUpdateEvent)) {
-      e();
+      h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew
  * JD-Core Version:    0.7.0.1
  */

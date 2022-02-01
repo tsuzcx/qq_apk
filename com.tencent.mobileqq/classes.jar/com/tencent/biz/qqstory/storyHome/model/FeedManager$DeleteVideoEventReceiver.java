@@ -18,7 +18,7 @@ public final class FeedManager$DeleteVideoEventReceiver
   
   public void a(@NonNull FeedManager paramFeedManager, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    Iterator localIterator = paramFeedManager.a.iterator();
+    Iterator localIterator = paramFeedManager.e.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -26,7 +26,7 @@ public final class FeedManager$DeleteVideoEventReceiver
       if ((localObject instanceof GeneralHomeFeed))
       {
         localObject = (GeneralHomeFeed)localObject;
-        if (((GeneralHomeFeed)localObject).b())
+        if (((GeneralHomeFeed)localObject).l())
         {
           localObject = ((GeneralHomeFeed)localObject).a().iterator();
           int j = i;
@@ -44,7 +44,7 @@ public final class FeedManager$DeleteVideoEventReceiver
       }
     }
     if (i != 0) {
-      paramFeedManager.a.clear();
+      paramFeedManager.e.clear();
     }
   }
   

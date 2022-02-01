@@ -13,17 +13,17 @@ public final class ReadInJoyProteusFamilyUtilImpl
 {
   public boolean checkPermission()
   {
-    return ReadInJoyProteusFamilyUtil.a();
+    return ReadInJoyProteusFamilyUtil.e();
   }
   
   public void recordAdArticleInfo(@Nullable articlesummary.ArticleSummary paramArticleSummary, @Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    ReadInJoyProteusFamilyUtil.a().a(paramArticleSummary, paramAbsBaseArticleInfo);
+    ReadInJoyProteusFamilyUtil.c().a(paramArticleSummary, paramAbsBaseArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.api.impl.ReadInJoyProteusFamilyUtilImpl
  * JD-Core Version:    0.7.0.1
  */

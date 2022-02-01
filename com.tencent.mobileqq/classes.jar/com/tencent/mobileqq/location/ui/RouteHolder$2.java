@@ -12,9 +12,9 @@ class RouteHolder$2
   
   public void onClick(View paramView)
   {
-    if (!RouteHolder.a(this.a).a())
+    if (!RouteHolder.a(this.a).d())
     {
-      RouteHolder.a(this.a).a.a(RouteHolder.a(this.a));
+      RouteHolder.a(this.a).a.a(RouteHolder.b(this.a));
       ReportController.b(null, "CliOper", "", "", "0X800A96F", "0X800A96F", 0, 0, "0", "0", "0", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class RouteHolder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.RouteHolder.2
  * JD-Core Version:    0.7.0.1
  */

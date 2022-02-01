@@ -19,16 +19,16 @@ import java.lang.reflect.Field;
 public class IphoneTreeView
   extends ExpandableListView
 {
-  int jdField_a_of_type_Int = -1;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new IphoneTreeView.1(this);
-  View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
+  View a;
+  int b = -1;
   private View c;
+  private View d;
+  private Drawable e;
+  private Drawable f;
+  private final Rect g = new Rect();
+  private boolean h;
+  private boolean i;
+  private View.OnTouchListener j = new IphoneTreeView.1(this);
   
   public IphoneTreeView(Context paramContext)
   {
@@ -68,8 +68,8 @@ public class IphoneTreeView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)a("mGroupIndicator"));
-    setGroupIndicator(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.e = ((Drawable)a("mGroupIndicator"));
+    setGroupIndicator(this.e);
   }
   
   private void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
@@ -98,13 +98,13 @@ public class IphoneTreeView
       super.dispatchDraw(paramCanvas);
       return;
     }
-    int m = getChildCount();
-    if (m != 0)
+    int i1 = getChildCount();
+    if (i1 != 0)
     {
       Object localObject5 = null;
       Object localObject1;
       Object localObject2;
-      if (m != 1)
+      if (i1 != 1)
       {
         localObject1 = getChildAt(0);
         localObject2 = getChildAt(1);
@@ -114,120 +114,120 @@ public class IphoneTreeView
         localObject1 = getChildAt(0);
         localObject2 = null;
       }
-      this.jdField_a_of_type_Boolean = true;
-      int j = getFirstVisiblePosition();
-      int i = j;
+      this.h = true;
+      int m = getFirstVisiblePosition();
+      int k = m;
       if (Build.VERSION.SDK_INT < 8) {
-        i = j - getHeaderViewsCount();
+        k = m - getHeaderViewsCount();
       }
-      j = 0;
+      m = 0;
       Object localObject3;
       Object localObject4;
-      int k;
+      int n;
       for (;;)
       {
         localObject3 = localObject1;
         localObject4 = localObject2;
-        k = i;
-        if (j >= m) {
+        n = k;
+        if (m >= i1) {
           break;
         }
-        localObject3 = getChildAt(j);
+        localObject3 = getChildAt(m);
         if (((View)localObject3).getBottom() > 0)
         {
-          k = j + 1;
-          if (k < m)
+          n = m + 1;
+          if (n < i1)
           {
-            localObject4 = getChildAt(k);
-            k = i + j;
+            localObject4 = getChildAt(n);
+            n = k + m;
             break;
           }
         }
-        j += 1;
+        m += 1;
       }
-      long l = getExpandableListPosition(k);
-      i = getPackedPositionGroup(l);
+      long l = getExpandableListPosition(n);
+      k = getPackedPositionGroup(l);
       getPackedPositionType(l);
-      this.jdField_b_of_type_AndroidViewView = null;
-      if ((i != -1) && (isGroupExpanded(i)))
+      this.c = null;
+      if ((k != -1) && (isGroupExpanded(k)))
       {
-        if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Int != i))
+        if ((this.a == null) || (this.i) || (this.b != k))
         {
-          this.jdField_a_of_type_Int = i;
-          this.jdField_a_of_type_AndroidViewView = getExpandableListAdapter().getGroupView(i, true, this.c, this);
-          this.jdField_a_of_type_AndroidViewView.setSelected(((View)localObject3).isSelected());
-          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+          this.b = k;
+          this.a = getExpandableListAdapter().getGroupView(k, true, this.d, this);
+          this.a.setSelected(((View)localObject3).isSelected());
+          this.a.setOnTouchListener(this.j);
         }
-        localObject1 = this.jdField_a_of_type_AndroidViewView;
-        if (localObject1 != this.c) {
-          this.c = ((View)localObject1);
+        localObject1 = this.a;
+        if (localObject1 != this.d) {
+          this.d = ((View)localObject1);
         }
         if (getPackedPositionType(l) == 0) {
-          this.jdField_b_of_type_AndroidViewView = ((View)localObject3);
+          this.c = ((View)localObject3);
         }
-        a(this.jdField_a_of_type_AndroidViewView, i, 0, ((View)localObject3).getWidth());
-        localObject1 = this.jdField_a_of_type_AndroidViewView;
-        ((View)localObject1).layout(0, 0, ((View)localObject1).getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+        a(this.a, k, 0, ((View)localObject3).getWidth());
+        localObject1 = this.a;
+        ((View)localObject1).layout(0, 0, ((View)localObject1).getMeasuredWidth(), this.a.getMeasuredHeight());
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView = null;
+        this.a = null;
       }
       super.dispatchDraw(paramCanvas);
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      if (this.a != null)
       {
-        if ((getPackedPositionType(getExpandableListPosition(k + 1)) == 0) && (localObject4 != null))
+        if ((getPackedPositionType(getExpandableListPosition(n + 1)) == 0) && (localObject4 != null))
         {
-          i = ((View)localObject4).getTop();
-          j = this.jdField_a_of_type_AndroidViewView.getBottom();
-          if (i < j)
+          k = ((View)localObject4).getTop();
+          m = this.a.getBottom();
+          if (k < m)
           {
-            i -= j;
+            k -= m;
             localObject1 = getDivider();
             break label416;
           }
         }
-        i = 0;
+        k = 0;
         localObject1 = localObject5;
         label416:
-        paramCanvas.translate(0.0F, i);
-        if (this.jdField_a_of_type_AndroidViewView.isPressed())
+        paramCanvas.translate(0.0F, k);
+        if (this.a.isPressed())
         {
           localObject2 = getSelector();
-          ((Drawable)localObject2).setBounds(new Rect(((Drawable)localObject2).getBounds().left, this.jdField_a_of_type_AndroidViewView.getTop(), ((Drawable)localObject2).getBounds().right, this.jdField_a_of_type_AndroidViewView.getBottom()));
+          ((Drawable)localObject2).setBounds(new Rect(((Drawable)localObject2).getBounds().left, this.a.getTop(), ((Drawable)localObject2).getBounds().right, this.a.getBottom()));
           getSelector().draw(paramCanvas);
         }
         paramCanvas.translate(getPaddingLeft(), 0.0F);
-        this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
+        this.a.draw(paramCanvas);
         paramCanvas.translate(-getPaddingLeft(), 0.0F);
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.isStateful()) {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(new int[] { 16842920 });
+        if (this.f.isStateful()) {
+          this.f.setState(new int[] { 16842920 });
         }
         localObject2 = (Integer)a("mIndicatorLeft");
         localObject3 = (Integer)a("mIndicatorRight");
-        localObject4 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        localObject4 = this.f;
         if (localObject2 == null) {
-          j = 0;
+          m = 0;
         } else {
-          j = ((Integer)localObject2).intValue();
+          m = ((Integer)localObject2).intValue();
         }
-        m = this.jdField_a_of_type_AndroidViewView.getTop();
+        i1 = this.a.getTop();
         if (localObject3 == null) {
-          k = 0;
+          n = 0;
         } else {
-          k = ((Integer)localObject3).intValue();
+          n = ((Integer)localObject3).intValue();
         }
-        ((Drawable)localObject4).setBounds(j, m, k, this.jdField_a_of_type_AndroidViewView.getBottom());
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        ((Drawable)localObject4).setBounds(m, i1, n, this.a.getBottom());
+        this.f.draw(paramCanvas);
         if (localObject1 != null)
         {
-          ((Drawable)localObject1).setBounds(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getBottom() - getDividerHeight(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
-          paramCanvas.clipRect(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getBottom() - getDividerHeight() + i, this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom() + i);
+          ((Drawable)localObject1).setBounds(this.a.getLeft(), this.a.getBottom() - getDividerHeight(), this.a.getRight(), this.a.getBottom());
+          paramCanvas.clipRect(this.a.getLeft(), this.a.getBottom() - getDividerHeight() + k, this.a.getRight(), this.a.getBottom() + k);
         }
-        paramCanvas.translate(0.0F, -i);
+        paramCanvas.translate(0.0F, -k);
       }
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = false;
+      this.i = false;
+      this.h = false;
       return;
     }
     super.dispatchDraw(paramCanvas);
@@ -235,21 +235,21 @@ public class IphoneTreeView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.a;
     boolean bool;
     if (localView != null)
     {
-      localView.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      localView.getGlobalVisibleRect(this.g);
+      if (this.g.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
-        bool = this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
+        bool = this.a.dispatchTouchEvent(paramMotionEvent);
         if (bool) {
           return bool;
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView.setPressed(false);
+        this.a.setPressed(false);
         invalidate();
       }
     }
@@ -268,7 +268,7 @@ public class IphoneTreeView
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    if (paramView != this.jdField_b_of_type_AndroidViewView) {
+    if (paramView != this.c) {
       return super.drawChild(paramCanvas, paramView, paramLong);
     }
     return true;
@@ -277,14 +277,14 @@ public class IphoneTreeView
   public View getChildAt(int paramInt)
   {
     View localView = super.getChildAt(paramInt);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (localView == this.jdField_b_of_type_AndroidViewView))
+      if ((this.a != null) && (localView == this.c))
       {
         super.setGroupIndicator(null);
         return localView;
       }
-      super.setGroupIndicator(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      super.setGroupIndicator(this.e);
     }
     return localView;
   }
@@ -297,21 +297,21 @@ public class IphoneTreeView
   public void requestLayout()
   {
     super.requestLayout();
-    this.jdField_b_of_type_Boolean = true;
+    this.i = true;
   }
   
   public void setGroupIndicator(Drawable paramDrawable)
   {
     super.setGroupIndicator(paramDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if ((paramDrawable != null) && (paramDrawable != this.jdField_b_of_type_AndroidGraphicsDrawableDrawable)) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.e = paramDrawable;
+    if ((paramDrawable != null) && (paramDrawable != this.f)) {
+      this.f = paramDrawable;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IphoneTreeView
  * JD-Core Version:    0.7.0.1
  */

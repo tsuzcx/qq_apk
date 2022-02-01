@@ -27,20 +27,20 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgB
 public class PrinterStatusHandler
   extends BusinessHandler
 {
-  private int jdField_a_of_type_Int = 0;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new PrinterStatusHandler.3(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private RegisterProxySvcPackObserver jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver = new PrinterStatusHandler.4(this);
-  private Timer jdField_a_of_type_JavaUtilTimer = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private Timer b = null;
+  private int c = 0;
+  private QQAppInterface d;
+  private MessageObserver e = new PrinterStatusHandler.3(this);
+  private RegisterProxySvcPackObserver f = new PrinterStatusHandler.4(this);
   
   public PrinterStatusHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver);
-    a();
+    this.d = paramQQAppInterface;
+    this.d.addObserver(this.e);
+    this.d.addObserver(this.f);
+    b();
   }
   
   private ToServiceMsg a(boolean paramBoolean, long paramLong1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, long paramLong2)
@@ -53,12 +53,12 @@ public class PrinterStatusHandler
     localToServiceMsg.addAttribute("cookie", Long.valueOf(paramLong1));
     localToServiceMsg.addAttribute("sendFromNative", Boolean.valueOf(paramBoolean));
     localToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", 0);
-    paramLong1 = FileManagerUtil.b();
-    paramLong2 = FileManagerUtil.a();
+    paramLong1 = FileManagerUtil.g();
+    paramLong2 = FileManagerUtil.f();
     TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = paramInt2;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    paramString = MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 13, paramString, localTransMsgContext, paramLong2, MessageUtils.b(paramLong1));
+    localTransMsgContext.a = paramInt2;
+    localTransMsgContext.b = paramArrayOfByte;
+    paramString = MessageProtoCodec.a(this.d, 13, paramString, localTransMsgContext, paramLong2, MessageUtils.b(paramLong1));
     paramArrayOfByte = new im_msg_head.InstInfo();
     paramArrayOfByte.uint32_apppid.set(1);
     paramArrayOfByte.uint32_instid.set(0);
@@ -67,7 +67,7 @@ public class PrinterStatusHandler
     paramString.routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add(paramArrayOfByte);
     paramArrayOfByte = new im_msg_head.InstInfo();
     paramArrayOfByte.uint32_apppid.set(1001);
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
+    paramArrayOfByte.uint32_instid.set(AppSetting.d());
     paramArrayOfByte.enum_device_type.set(2);
     paramArrayOfByte.setHasFlag(true);
     paramString.routing_head.trans_0x211.inst_ctrl.msg_from_inst = paramArrayOfByte;
@@ -80,32 +80,6 @@ public class PrinterStatusHandler
   public ToServiceMsg a(long paramLong1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, long paramLong2)
   {
     return a(true, paramLong1, paramString, paramInt1, paramInt2, paramInt3, paramArrayOfByte, paramLong2);
-  }
-  
-  public void a()
-  {
-    Object localObject1 = (RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
-    if ((((RegisterProxySvcPackHandler)localObject1).a() != 0) && (((RegisterProxySvcPackHandler)localObject1).e() == 1))
-    {
-      if (this.jdField_a_of_type_JavaUtilTimer == null)
-      {
-        localObject1 = new PrinterStatusHandler.1(this);
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule((TimerTask)localObject1, 30000L);
-        Object localObject2 = new C2CType0x211_SubC2CType0x9.MsgBody();
-        ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).str_service.set("printer");
-        ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).uint32_CMD.set(1);
-        this.jdField_a_of_type_Int += 1;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        localObject2 = ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).toByteArray();
-        a(this.jdField_a_of_type_Int, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Boolean = false;
-      notifyUI(12, false, null);
-    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -143,32 +117,58 @@ public class PrinterStatusHandler
   
   public void a(boolean paramBoolean)
   {
-    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    Timer localTimer = this.b;
     if (localTimer != null)
     {
       localTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer = null;
+      this.b = null;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public void b()
   {
-    Object localObject1 = (RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
-    if ((((RegisterProxySvcPackHandler)localObject1).a() != 0) && (((RegisterProxySvcPackHandler)localObject1).e() == 1))
+    Object localObject1 = (RegisterProxySvcPackHandler)this.d.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
+    if ((((RegisterProxySvcPackHandler)localObject1).d() != 0) && (((RegisterProxySvcPackHandler)localObject1).h() == 1))
+    {
+      if (this.b == null)
+      {
+        localObject1 = new PrinterStatusHandler.1(this);
+        this.b = new Timer();
+        this.b.schedule((TimerTask)localObject1, 30000L);
+        Object localObject2 = new C2CType0x211_SubC2CType0x9.MsgBody();
+        ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).str_service.set("printer");
+        ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).uint32_CMD.set(1);
+        this.c += 1;
+        localObject1 = this.d.getCurrentAccountUin();
+        localObject2 = ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).toByteArray();
+        a(this.c, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
+      }
+    }
+    else
+    {
+      this.a = false;
+      notifyUI(12, false, null);
+    }
+  }
+  
+  public void c()
+  {
+    Object localObject1 = (RegisterProxySvcPackHandler)this.d.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
+    if ((((RegisterProxySvcPackHandler)localObject1).d() != 0) && (((RegisterProxySvcPackHandler)localObject1).h() == 1))
     {
       Object localObject2 = new C2CType0x211_SubC2CType0x9.MsgBody();
       ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).str_service.set("printer");
       ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).uint32_CMD.set(5);
-      this.jdField_a_of_type_Int += 1;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.c += 1;
+      localObject1 = this.d.getCurrentAccountUin();
       localObject2 = ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).toByteArray();
-      a(this.jdField_a_of_type_Int, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
+      a(this.c, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
     }
   }
   
@@ -179,11 +179,11 @@ public class PrinterStatusHandler
   
   public void onDestroy()
   {
-    MessageObserver localMessageObserver = this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
+    MessageObserver localMessageObserver = this.e;
     if (localMessageObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localMessageObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
+      this.d.removeObserver(localMessageObserver);
+      this.e = null;
     }
   }
   
@@ -211,7 +211,7 @@ public class PrinterStatusHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterStatusHandler
  * JD-Core Version:    0.7.0.1
  */

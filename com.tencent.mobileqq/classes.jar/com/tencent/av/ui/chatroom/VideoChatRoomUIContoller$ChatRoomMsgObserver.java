@@ -38,7 +38,7 @@ class VideoChatRoomUIContoller$ChatRoomMsgObserver
     if (localObject == null) {
       return;
     }
-    if (((VideoChatRoomUIContoller)localObject).a())
+    if (((VideoChatRoomUIContoller)localObject).b())
     {
       VideoChatRoomUIContoller.a((VideoChatRoomUIContoller)localObject, paramChatRoomInfo);
       return;
@@ -64,8 +64,8 @@ class VideoChatRoomUIContoller$ChatRoomMsgObserver
       if (localObject == null) {
         return;
       }
-      if (((VideoChatRoomUIContoller)localObject).a()) {
-        VideoChatRoomUIContoller.a((VideoChatRoomUIContoller)localObject, paramChatRoomMsg.a);
+      if (((VideoChatRoomUIContoller)localObject).b()) {
+        VideoChatRoomUIContoller.a((VideoChatRoomUIContoller)localObject, paramChatRoomMsg.e);
       }
     }
   }

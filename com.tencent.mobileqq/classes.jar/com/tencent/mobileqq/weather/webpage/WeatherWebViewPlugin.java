@@ -61,7 +61,7 @@ public final class WeatherWebViewPlugin
   {
     Object localObject1 = this.mRuntime;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "mRuntime");
-    Object localObject3 = ((WebViewPlugin.PluginRuntime)localObject1).a();
+    Object localObject3 = ((WebViewPlugin.PluginRuntime)localObject1).d();
     if (localObject3 != null)
     {
       Object localObject2 = new JSONObject(paramString);
@@ -148,7 +148,7 @@ public final class WeatherWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

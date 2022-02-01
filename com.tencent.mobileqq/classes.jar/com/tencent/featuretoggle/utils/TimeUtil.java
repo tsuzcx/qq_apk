@@ -41,6 +41,22 @@ public class TimeUtil
     return "";
   }
   
+  public static String a(long paramLong)
+  {
+    try
+    {
+      String str = a.format(new Date(paramLong));
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (!LogUtils.a(localThrowable)) {
+        localThrowable.printStackTrace();
+      }
+    }
+    return "";
+  }
+  
   public static String a(String paramString, long paramLong)
   {
     return new SimpleDateFormat(paramString, Locale.CHINA).format(new Date(paramLong));
@@ -48,7 +64,7 @@ public class TimeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.TimeUtil
  * JD-Core Version:    0.7.0.1
  */

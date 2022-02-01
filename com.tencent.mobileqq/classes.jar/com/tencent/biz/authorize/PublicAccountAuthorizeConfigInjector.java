@@ -18,11 +18,6 @@ public class PublicAccountAuthorizeConfigInjector
   
   public void a(JSONObject paramJSONObject) {}
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(String paramString)
   {
     return false;
@@ -36,6 +31,11 @@ public class PublicAccountAuthorizeConfigInjector
     if ((((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).hasConfig(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
       return ((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).hasRight(paramString1, paramString2);
     }
+    return false;
+  }
+  
+  public boolean b()
+  {
     return false;
   }
 }

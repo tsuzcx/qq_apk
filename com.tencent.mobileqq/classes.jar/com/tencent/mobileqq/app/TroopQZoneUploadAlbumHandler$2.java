@@ -17,22 +17,22 @@ class TroopQZoneUploadAlbumHandler$2
     while (!TroopQZoneUploadAlbumHandler.a(this.this$0)) {
       try
       {
-        int i = ((Integer)TroopQZoneUploadAlbumHandler.a(this.this$0).take()).intValue();
-        if ((this.this$0.jdField_a_of_type_AndroidOsMessenger != null) && (this.this$0.jdField_a_of_type_AndroidOsMessenger.getBinder() != null) && (this.this$0.jdField_a_of_type_AndroidOsMessenger.getBinder().isBinderAlive()) && (this.this$0.jdField_a_of_type_AndroidOsMessenger.getBinder().pingBinder()))
+        int i = ((Integer)TroopQZoneUploadAlbumHandler.b(this.this$0).take()).intValue();
+        if ((this.this$0.b != null) && (this.this$0.b.getBinder() != null) && (this.this$0.b.getBinder().isBinderAlive()) && (this.this$0.b.getBinder().pingBinder()))
         {
           Message localMessage = Message.obtain(null, 998, i, 0);
-          if (this.this$0.b == null) {
-            this.this$0.b = new Messenger(this.this$0.jdField_a_of_type_AndroidOsHandler);
+          if (this.this$0.c == null) {
+            this.this$0.c = new Messenger(this.this$0.a);
           }
-          localMessage.replyTo = this.this$0.b;
-          this.this$0.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+          localMessage.replyTo = this.this$0.c;
+          this.this$0.b.send(localMessage);
         }
         else
         {
           QLog.i("UploadPhoto", 1, "需要重新创建连接");
           this.this$0.a();
-          TroopQZoneUploadAlbumHandler.a(this.this$0);
-          TroopQZoneUploadAlbumHandler.a(this.this$0).offer(Integer.valueOf(i));
+          TroopQZoneUploadAlbumHandler.c(this.this$0);
+          TroopQZoneUploadAlbumHandler.b(this.this$0).offer(Integer.valueOf(i));
           TroopQZoneUploadAlbumHandler.a(this.this$0, true);
         }
       }
@@ -50,7 +50,7 @@ class TroopQZoneUploadAlbumHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.2
  * JD-Core Version:    0.7.0.1
  */

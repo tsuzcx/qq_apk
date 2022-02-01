@@ -18,42 +18,42 @@ public class RollNumberView
   extends LinearLayout
   implements RollTextView.OnRollTextChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private RollNumberView.OnRollListener jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView$OnRollListener;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 0;
-  private int c;
+  private Context a = null;
+  private int b;
+  private int c = 0;
   private int d;
   private int e;
   private int f;
-  private int g = 0;
+  private int g;
+  private int h = 0;
+  private RollNumberView.OnRollListener i;
+  private boolean j = true;
   
   public RollNumberView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public RollNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a(paramContext, paramAttributeSet);
   }
   
   public RollNumberView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a(paramContext, paramAttributeSet);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cc);
-    this.e = ((int)paramContext.getDimension(R.styleable.s, 12.0F));
-    this.f = paramContext.getColor(R.styleable.r, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cA);
+    this.f = ((int)paramContext.getDimension(R.styleable.cC, 12.0F));
+    this.g = paramContext.getColor(R.styleable.cB, 0);
     paramContext.recycle();
   }
   
@@ -61,31 +61,31 @@ public class RollNumberView
   {
     if (paramInt >= 0)
     {
-      int i = paramInt % 10;
-      localObject = new RollTextView(this.jdField_a_of_type_AndroidContentContext, this.e, this.f, this.jdField_a_of_type_Boolean);
+      int k = paramInt % 10;
+      localObject = new RollTextView(this.a, this.f, this.g, this.j);
       ((RollTextView)localObject).setListener(this);
-      int j = this.c;
-      this.c = (j + 1);
-      ((RollTextView)localObject).setFactor(j);
+      int m = this.d;
+      this.d = (m + 1);
+      ((RollTextView)localObject).setFactor(m);
       addView((View)localObject, 0);
-      j = 4 - new Random().nextInt(3);
-      ((RollTextView)localObject).setScope(i + j, i);
+      m = 4 - new Random().nextInt(3);
+      ((RollTextView)localObject).setScope(k + m, k);
       paramInt /= 10;
-      i = 0;
+      k = 0;
       while (paramInt > 0)
       {
-        i += 1;
-        localObject = new RollTextView(this.jdField_a_of_type_AndroidContentContext, this.e, this.f, this.jdField_a_of_type_Boolean);
+        k += 1;
+        localObject = new RollTextView(this.a, this.f, this.g, this.j);
         ((RollTextView)localObject).setListener(this);
-        int k = this.c;
-        this.c = (k + 1);
-        ((RollTextView)localObject).setFactor(k);
-        k = paramInt % 10;
-        ((RollTextView)localObject).setScope(k + j + i, k);
+        int n = this.d;
+        this.d = (n + 1);
+        ((RollTextView)localObject).setFactor(n);
+        n = paramInt % 10;
+        ((RollTextView)localObject).setScope(n + m + k, n);
         addView((View)localObject, 0);
         paramInt /= 10;
       }
-      return j;
+      return m;
     }
     Object localObject = new Exception("no must be positive");
     for (;;)
@@ -96,15 +96,15 @@ public class RollNumberView
   
   public void a()
   {
-    this.jdField_a_of_type_Int = getChildCount();
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    this.b = getChildCount();
+    int k = 0;
+    while (k < this.b)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(k);
       if ((localView != null) && ((localView instanceof RollTextView))) {
         ((RollTextView)localView).b();
       }
-      i += 1;
+      k += 1;
     }
   }
   
@@ -112,30 +112,30 @@ public class RollNumberView
   {
     if (paramDouble > 0.0D)
     {
-      TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      TextView localTextView = new TextView(this.a);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localTextView.setIncludeFontPadding(false);
       localTextView.setLayoutParams(localLayoutParams);
       localTextView.setGravity(80);
-      localTextView.setTextSize(0, this.e);
-      localTextView.setTextColor(this.f);
-      int i = (int)paramDouble;
-      double d1 = i;
+      localTextView.setTextSize(0, this.f);
+      localTextView.setTextColor(this.g);
+      int k = (int)paramDouble;
+      double d1 = k;
       Double.isNaN(d1);
-      int j = (int)Math.round((paramDouble - d1) * 1000.0D) / 10;
-      this.d = a(j);
-      if (j < 10) {
+      int m = (int)Math.round((paramDouble - d1) * 1000.0D) / 10;
+      this.e = a(m);
+      if (m < 10) {
         a(0);
       }
       localTextView.setText(".");
-      localTextView.setContentDescription(HardCodeUtil.a(R.string.cD));
+      localTextView.setContentDescription(HardCodeUtil.a(R.string.cG));
       addView(localTextView, 0);
-      i = a(i);
-      j = this.d;
-      if (i <= j) {
-        i = j;
+      k = a(k);
+      m = this.e;
+      if (k <= m) {
+        k = m;
       }
-      this.d = i;
+      this.e = k;
       return;
     }
     throw new Exception("no must be positive");
@@ -148,32 +148,32 @@ public class RollNumberView
     if (QLog.isColorLevel()) {
       QLog.d("RollNumberView", 2, "onRollTextComplete---");
     }
-    if (this.g == this.jdField_a_of_type_Int - 2)
+    if (this.h == this.b - 2)
     {
-      RollNumberView.OnRollListener localOnRollListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView$OnRollListener;
+      RollNumberView.OnRollListener localOnRollListener = this.i;
       if (localOnRollListener != null) {
-        localOnRollListener.c();
+        localOnRollListener.d();
       }
     }
-    this.g += 1;
+    this.h += 1;
   }
   
   public void b(double paramDouble)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    int k = 0;
+    while (k < this.b)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(k);
       if ((localView != null) && ((localView instanceof RollTextView))) {
         ((RollTextView)localView).a();
       }
-      i += 1;
+      k += 1;
     }
-    this.c = 0;
+    this.d = 0;
     removeAllViews();
     try
     {
-      this.g = 0;
+      this.h = 0;
       a(paramDouble);
       return;
     }
@@ -186,25 +186,25 @@ public class RollNumberView
   public void setFactor(int paramInt)
   {
     if (paramInt >= 0) {
-      this.c = paramInt;
+      this.d = paramInt;
     }
   }
   
   public void setIsRool(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setLisener(RollNumberView.OnRollListener paramOnRollListener)
   {
     if (paramOnRollListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView$OnRollListener = paramOnRollListener;
+      this.i = paramOnRollListener;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.view.impl.RollNumberView
  * JD-Core Version:    0.7.0.1
  */

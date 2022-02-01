@@ -2,13 +2,13 @@ package androidx.vectordrawable.animated;
 
 public final class R$layout
 {
-  public static final int custom_dialog = 2131558954;
-  public static final int notification_action = 2131559503;
-  public static final int notification_action_tombstone = 2131559504;
-  public static final int notification_template_custom_big = 2131559507;
-  public static final int notification_template_icon_group = 2131559508;
-  public static final int notification_template_part_chronometer = 2131559509;
-  public static final int notification_template_part_time = 2131559510;
+  public static final int custom_dialog = 2131624587;
+  public static final int notification_action = 2131625525;
+  public static final int notification_action_tombstone = 2131625526;
+  public static final int notification_template_custom_big = 2131625529;
+  public static final int notification_template_icon_group = 2131625530;
+  public static final int notification_template_part_chronometer = 2131625531;
+  public static final int notification_template_part_time = 2131625532;
 }
 
 

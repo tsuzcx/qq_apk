@@ -2,12 +2,13 @@ package com.tencent.mobileqq.kandian.biz.video;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.image.ImageManager;
 import com.tencent.mobileqq.kandian.base.image.ImageRequest;
 import com.tencent.mobileqq.kandian.base.image.RIJImageTypeOptHelper;
 import com.tencent.mobileqq.kandian.base.image.api.IBitmapCallback;
-import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
 import com.tencent.mobileqq.kandian.biz.framework.RIJViewInterceptor;
 import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule.RefreshUserInfoCallBack;
+import com.tencent.mobileqq.kandian.repo.aladdin.handlers.MultiVideoConfigHandler;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
@@ -15,7 +16,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
 import com.tencent.mobileqq.kandian.repo.follow.FollowListInfoModule;
 import com.tencent.mobileqq.kandian.repo.follow.IFollowStatusObserver;
 import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,11 +32,6 @@ public final class RIJVideoViewInterceptor
   implements RIJViewInterceptor
 {
   public static final RIJVideoViewInterceptor.Companion a = new RIJVideoViewInterceptor.Companion(null);
-  
-  private final void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    ThreadManager.getUIHandler().post((Runnable)new RIJVideoViewInterceptor.preloadData.1(this, paramAbsBaseArticleInfo));
-  }
   
   private final void a(ReadInJoyUserInfo paramReadInJoyUserInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
@@ -61,9 +56,9 @@ public final class RIJVideoViewInterceptor
       try
       {
         ImageRequest localImageRequest = new ImageRequest();
-        localImageRequest.b = true;
+        localImageRequest.e = true;
         RIJImageTypeOptHelper.a.a(localImageRequest, paramString);
-        ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, (IBitmapCallback)new RIJVideoViewInterceptor.preloadAvatarByImageManager.1(paramString));
+        ImageManager.get().loadImage(localImageRequest, (IBitmapCallback)new RIJVideoViewInterceptor.preloadAvatarByImageManager.1(paramString));
         return;
       }
       catch (Exception paramString)
@@ -74,6 +69,18 @@ public final class RIJVideoViewInterceptor
   }
   
   private final void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (!paramAbsBaseArticleInfo.hasPlayFeedsDataPreloaded)
+    {
+      if (MultiVideoConfigHandler.a(3, paramAbsBaseArticleInfo.getVideoWidth(), paramAbsBaseArticleInfo.getVideoHeight(), paramAbsBaseArticleInfo.mVideoDuration)) {
+        return;
+      }
+      paramAbsBaseArticleInfo.hasPlayFeedsDataPreloaded = true;
+      ThreadManager.getSubThreadHandler().post((Runnable)new RIJVideoViewInterceptor.preloadData.1(this, paramAbsBaseArticleInfo));
+    }
+  }
+  
+  private final void c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Object localObject = paramAbsBaseArticleInfo.getSubscribeUin();
     if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -92,7 +99,7 @@ public final class RIJVideoViewInterceptor
     }
   }
   
-  private final void c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private final void d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo.hasRequestFollowStatus) {
       return;
@@ -103,7 +110,7 @@ public final class RIJVideoViewInterceptor
   public void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    a(paramAbsBaseArticleInfo);
+    b(paramAbsBaseArticleInfo);
     if (paramAbsBaseArticleInfo.mSubArticleList != null)
     {
       Object localObject = paramAbsBaseArticleInfo.mSubArticleList;
@@ -115,7 +122,7 @@ public final class RIJVideoViewInterceptor
         {
           localObject = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.next();
           Intrinsics.checkExpressionValueIsNotNull(localObject, "info");
-          a((AbsBaseArticleInfo)localObject);
+          b((AbsBaseArticleInfo)localObject);
         }
       }
     }
@@ -123,12 +130,12 @@ public final class RIJVideoViewInterceptor
   
   public boolean a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return RIJFeedsType.M(paramAbsBaseArticleInfo);
+    return RIJFeedsType.U(paramAbsBaseArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.RIJVideoViewInterceptor
  * JD-Core Version:    0.7.0.1
  */

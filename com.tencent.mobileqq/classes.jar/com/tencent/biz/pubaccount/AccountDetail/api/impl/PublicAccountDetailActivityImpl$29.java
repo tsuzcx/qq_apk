@@ -25,7 +25,7 @@ class PublicAccountDetailActivityImpl$29
     if (this.a.mShareDialogBuilder.isShowing()) {
       this.a.mShareDialogBuilder.dismiss();
     }
-    int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.action;
+    int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).c.action;
     paramInt = 0;
     int i = PublicAccountDetailImpl.getReportAccountType(this.a.app, this.a.uin, this.a.accountDetail);
     if (j != 2)
@@ -114,7 +114,7 @@ class PublicAccountDetailActivityImpl$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.29
  * JD-Core Version:    0.7.0.1
  */

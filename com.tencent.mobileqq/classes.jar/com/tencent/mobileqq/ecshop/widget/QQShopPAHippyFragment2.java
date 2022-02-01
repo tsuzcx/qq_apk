@@ -2,43 +2,31 @@ package com.tencent.mobileqq.ecshop.widget;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager.widget.ViewPager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.hippy.qq.api.IHippyAccessHelper;
 import com.tencent.hippy.qq.fragment.CommonHippyFragment;
 import com.tencent.hippy.qq.utils.SerializableMap;
-import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.ecshop.ad.EcshopAdHandler;
 import com.tencent.mobileqq.ecshop.ad.IEcshopAdHandler.ReportInfo;
 import com.tencent.mobileqq.ecshop.ad.api.IEcshopAdApi;
 import com.tencent.mobileqq.ecshop.conf.EcshopConfBean;
+import com.tencent.mobileqq.ecshop.conf.EcshopConfBean.MenuConfBean;
 import com.tencent.mobileqq.ecshop.conf.EcshopConfProcessor;
+import com.tencent.mobileqq.ecshop.temp.api.IEcshopMessageApi;
 import com.tencent.mobileqq.ecshop.utils.AppUtils;
 import com.tencent.mobileqq.ecshop.utils.EcshopUtils;
-import com.tencent.mobileqq.ecshop.view.controller.AdViewPagerController;
 import com.tencent.mobileqq.ecshop.view.controller.TitleLayoutController;
-import com.tencent.mobileqq.ecshop.view.hippy.QQShopHeaderView;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mtt.hippy.common.HippyMap;
-import com.tencent.mtt.hippy.views.list.HippyListView;
-import com.tencent.mtt.supportui.views.recyclerview.LinearLayoutManager;
-import com.tencent.mtt.supportui.views.recyclerview.RecyclerView.OnListScrollListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -51,96 +39,36 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/widget/QQShopPAHippyFragment2;", "Lcom/tencent/hippy/qq/fragment/CommonHippyFragment;", "()V", "hasRegist", "", "headPosition", "", "headerView", "Landroid/view/ViewGroup;", "isNeedSetHeadScrollWithHippy", "mExtiReceiver", "Landroid/content/BroadcastReceiver;", "needAddHeight", "reportData", "", "", "titleLayout", "Landroid/widget/LinearLayout;", "titleLayoutController", "Lcom/tencent/mobileqq/ecshop/view/controller/TitleLayoutController;", "trySetHeadTime", "getTrySetHeadTime", "()I", "setTrySetHeadTime", "(I)V", "viewPager", "Landroidx/viewpager/widget/ViewPager;", "doBussinessInitData", "Lorg/json/JSONObject;", "jsInitData", "doHippyScrollWithHead", "", "doReport", "getAllChildViews", "", "Landroid/view/View;", "view", "getLastMsg", "Lcom/tencent/mobileqq/data/MessageRecord;", "getLayoutResId", "getScollYDistance", "listView", "Lcom/tencent/mtt/hippy/views/list/HippyListView;", "position", "getSetHeadDelay", "", "initIntent", "initTitleLayout", "initViewPager", "initViews", "isQQShopHeadAdd", "hippyListView", "isWrapContent", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onLoadHippySuccess", "updateTitleLayout", "params", "Lcom/tencent/mtt/hippy/common/HippyMap;", "Companion", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/widget/QQShopPAHippyFragment2;", "Lcom/tencent/hippy/qq/fragment/CommonHippyFragment;", "()V", "hasRegist", "", "mExtiReceiver", "Landroid/content/BroadcastReceiver;", "needShowBubble", "redPointNum", "", "reportData", "", "", "titleLayout", "Landroid/widget/LinearLayout;", "titleLayoutController", "Lcom/tencent/mobileqq/ecshop/view/controller/TitleLayoutController;", "doBussinessInitData", "Lorg/json/JSONObject;", "jsInitData", "doReport", "", "getLastMsg", "Lcom/tencent/mobileqq/data/MessageRecord;", "getLayoutResId", "initIntent", "initTitleLayout", "initViews", "isWrapContent", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "updateTitleLayout", "params", "Lcom/tencent/mtt/hippy/common/HippyMap;", "Companion", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class QQShopPAHippyFragment2
   extends CommonHippyFragment
 {
-  public static final QQShopPAHippyFragment2.Companion a;
-  private int jdField_a_of_type_Int;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = (BroadcastReceiver)new QQShopPAHippyFragment2.mExtiReceiver.1(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private TitleLayoutController jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = (Map)new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqEcshopWidgetQQShopPAHippyFragment2$Companion = new QQShopPAHippyFragment2.Companion(null);
-  }
-  
-  private final MessageRecord a()
-  {
-    return ((IMessageFacade)AppUtils.a().getRuntimeService(IMessageFacade.class, "")).getLastMsgForMsgTab("3046055438", 1008);
-  }
-  
-  private final List<View> a(View paramView)
-  {
-    List localList = (List)new ArrayList();
-    if ((paramView instanceof ViewGroup))
-    {
-      int i = 0;
-      paramView = (ViewGroup)paramView;
-      int j = paramView.getChildCount();
-      while (i < j)
-      {
-        View localView = paramView.getChildAt(i);
-        Intrinsics.checkExpressionValueIsNotNull(localView, "viewchild");
-        localList.add(localView);
-        localList.addAll((Collection)a(localView));
-        i += 1;
-      }
-    }
-    return localList;
-  }
+  public static final QQShopPAHippyFragment2.Companion a = new QQShopPAHippyFragment2.Companion(null);
+  private LinearLayout b;
+  private TitleLayoutController c;
+  private final Map<String, String> d = (Map)new HashMap();
+  private int e;
+  private boolean f;
+  private boolean g;
+  private final BroadcastReceiver h = (BroadcastReceiver)new QQShopPAHippyFragment2.mExtiReceiver.1(this);
+  private HashMap i;
   
   private final void b()
   {
-    Object localObject = LayoutInflater.from((Context)getQBaseActivity()).inflate(2131561478, this.mRootView, false);
-    if (localObject != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("headerView");
-      }
-      localObject = ((ViewGroup)localObject).findViewById(2131374336);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "headerView.findViewById(…shop_pa_header_viewpager)");
-      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = ((ViewPager)localObject);
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("headerView");
-      }
-      new AdViewPagerController((ViewGroup)localObject, this.jdField_a_of_type_JavaUtilMap);
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("headerView");
-      }
-      ((ViewGroup)localObject).setVisibility(8);
-      localObject = this.mRootView;
-      ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-      if (localViewGroup == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("headerView");
-      }
-      ((ViewGroup)localObject).addView((View)localViewGroup);
-      return;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
-  }
-  
-  private final void c()
-  {
     Object localObject = getArguments();
-    boolean bool = true;
+    boolean bool = false;
+    int j;
     if (localObject != null) {
-      bool = ((Bundle)localObject).getBoolean("show_shop_header", true);
+      j = ((Bundle)localObject).getInt("red_point_num", 0);
+    } else {
+      j = 0;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.e = j;
+    localObject = getArguments();
+    if (localObject != null) {
+      bool = ((Bundle)localObject).getBoolean("need_show_bubble", false);
+    }
+    this.f = bool;
     localObject = AppUtils.a();
     if (localObject != null)
     {
@@ -153,101 +81,61 @@ public final class QQShopPAHippyFragment2
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.common.app.AppInterface");
   }
   
-  private final void d()
+  private final void c()
   {
-    Object localObject1 = this.mRootView.findViewById(2131374338);
+    Object localObject1 = this.mRootView.findViewById(2131442501);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "mRootView.findViewById(R…d.qq_shop_pa_hippy_title)");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject1);
+    this.b = ((LinearLayout)localObject1);
     localObject1 = EcshopConfProcessor.a();
     if (localObject1 != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "EcshopConfProcessor.loadConfig() ?: return");
-      Object localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      int j = this.e;
+      boolean bool2 = false;
+      boolean bool1;
+      if (j != 0)
+      {
+        localObject2 = ((EcshopConfBean)localObject1).l.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (EcshopConfBean.MenuConfBean)((Iterator)localObject2).next();
+          if (((EcshopConfBean.MenuConfBean)localObject3).b == 1) {
+            ((EcshopConfBean.MenuConfBean)localObject3).a = this.e;
+          }
+        }
+        bool1 = true;
+      }
+      else
+      {
+        localObject2 = ((EcshopConfBean)localObject1).l.iterator();
+        do
+        {
+          bool1 = bool2;
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          localObject3 = (EcshopConfBean.MenuConfBean)((Iterator)localObject2).next();
+        } while (((EcshopConfBean.MenuConfBean)localObject3).b != 1);
+        ((EcshopConfBean.MenuConfBean)localObject3).a = 0;
+        bool1 = bool2;
+      }
+      Object localObject2 = this.b;
       if (localObject2 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("titleLayout");
       }
-      QBaseActivity localQBaseActivity = getQBaseActivity();
-      Intrinsics.checkExpressionValueIsNotNull(localQBaseActivity, "qBaseActivity");
-      localObject2 = new TitleLayoutController((LinearLayout)localObject2, (Activity)localQBaseActivity, this.jdField_a_of_type_JavaUtilMap);
-      localObject1 = ((EcshopConfBean)localObject1).b;
+      Object localObject3 = getQBaseActivity();
+      Intrinsics.checkExpressionValueIsNotNull(localObject3, "qBaseActivity");
+      localObject2 = new TitleLayoutController((LinearLayout)localObject2, (Activity)localObject3, this.d);
+      localObject1 = ((EcshopConfBean)localObject1).l;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "ecshopConfBean.menuConfs");
-      ((TitleLayoutController)localObject2).a((List)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController = ((TitleLayoutController)localObject2);
+      ((TitleLayoutController)localObject2).a((List)localObject1, bool1, this.f);
+      this.c = ((TitleLayoutController)localObject2);
     }
   }
   
-  private final void e()
+  private final void d()
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("isSetHeadScrollWithHippy=");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
-    ((StringBuilder)localObject1).append(", setHeadTime= ");
-    ((StringBuilder)localObject1).append(this.c);
-    QLog.d("QQShopPAHippyFragment2", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = a(this.mRootView.findViewById(2131368190)).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject3 = (View)((Iterator)localObject1).next();
-      if ((localObject3 instanceof HippyListView))
-      {
-        localObject1 = (HippyListView)localObject3;
-        if (a((HippyListView)localObject1))
-        {
-          this.jdField_a_of_type_Boolean = false;
-          ((HippyListView)localObject1).setMomentumScrollBeginEventEnable(false);
-          ((HippyListView)localObject1).addOnListScrollListener((RecyclerView.OnListScrollListener)new QQShopPAHippyFragment2.doHippyScrollWithHead.1(this, (View)localObject3));
-          Object localObject2 = new int[2];
-          ((View)localObject3).getLocationInWindow((int[])localObject2);
-          localObject3 = this.jdField_a_of_type_AndroidViewViewGroup;
-          if (localObject3 == null) {
-            Intrinsics.throwUninitializedPropertyAccessException("headerView");
-          }
-          localObject3 = ((ViewGroup)localObject3).getLayoutParams();
-          if (localObject3 != null)
-          {
-            ((RelativeLayout.LayoutParams)localObject3).setMargins(0, localObject2[1], 0, 0);
-            localObject2 = this.jdField_a_of_type_AndroidViewViewGroup;
-            if (localObject2 == null) {
-              Intrinsics.throwUninitializedPropertyAccessException("headerView");
-            }
-            ((ViewGroup)localObject2).bringToFront();
-            localObject2 = this.jdField_a_of_type_AndroidViewViewGroup;
-            if (localObject2 == null) {
-              Intrinsics.throwUninitializedPropertyAccessException("headerView");
-            }
-            ((ViewGroup)localObject2).setVisibility(0);
-            int i = a((HippyListView)localObject1, this.jdField_b_of_type_Int);
-            localObject1 = this.jdField_a_of_type_AndroidViewViewGroup;
-            if (localObject1 == null) {
-              Intrinsics.throwUninitializedPropertyAccessException("headerView");
-            }
-            ((ViewGroup)localObject1).scrollTo(0, i);
-            localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-            if (localObject1 == null) {
-              Intrinsics.throwUninitializedPropertyAccessException("titleLayout");
-            }
-            ((LinearLayout)localObject1).bringToFront();
-          }
-          else
-          {
-            throw new TypeCastException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          }
-        }
-      }
-    }
-    QLog.d("QQShopPAHippyFragment2", 1, "set Head Scrol lWith Hippy");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      long l = a();
-      if (l != -1L) {
-        ThreadManagerV2.getUIHandlerV2().postDelayed((Runnable)new QQShopPAHippyFragment2.doHippyScrollWithHead.2(this), l);
-      }
-    }
-  }
-  
-  private final void f()
-  {
-    Object localObject1 = a();
+    Object localObject1 = e();
     Object localObject2;
     Object localObject3;
     if (localObject1 != null)
@@ -269,15 +157,26 @@ public final class QQShopPAHippyFragment2
       if (Intrinsics.areEqual("1", localObject3))
       {
         localObject2 = new IEcshopAdHandler.ReportInfo();
-        ((IEcshopAdHandler.ReportInfo)localObject2).jdField_a_of_type_Int = 2;
-        localObject1 = ((IEcshopAdApi)QRoute.api(IEcshopAdApi.class)).rebuildReportParam((IEcshopAdHandler.ReportInfo)localObject2, (MessageRecord)localObject1);
-        localObject2 = AppUtils.a();
-        if (localObject2 != null)
+        ((IEcshopAdHandler.ReportInfo)localObject2).a = 2;
+        localObject2 = ((IEcshopAdApi)QRoute.api(IEcshopAdApi.class)).rebuildReportParam((IEcshopAdHandler.ReportInfo)localObject2, (MessageRecord)localObject1);
+        localObject3 = AppUtils.a();
+        if (localObject3 != null)
         {
-          localObject2 = ((AppInterface)localObject2).getBusinessHandler(EcshopAdHandler.class.getName());
-          if (localObject2 != null) {
-            ((EcshopAdHandler)localObject2).a((IEcshopAdHandler.ReportInfo)localObject1, null);
-          } else {
+          localObject3 = ((AppInterface)localObject3).getBusinessHandler(EcshopAdHandler.class.getName());
+          if (localObject3 != null)
+          {
+            ((EcshopAdHandler)localObject3).a((IEcshopAdHandler.ReportInfo)localObject2, null);
+            localObject2 = QRoute.api(IEcshopMessageApi.class);
+            Intrinsics.checkExpressionValueIsNotNull(localObject2, "QRoute.api(IEcshopMessageApi::class.java)");
+            localObject2 = (IEcshopMessageApi)localObject2;
+            if (((IEcshopMessageApi)localObject2).isMessageForStructing((MessageRecord)localObject1)) {
+              ((IEcshopMessageApi)localObject2).GdtC2SReportStructMsg((MessageRecord)localObject1, 1);
+            } else if (((IEcshopMessageApi)localObject2).isMessageForArkApp((MessageRecord)localObject1)) {
+              ((IEcshopMessageApi)localObject2).GdtC2SReportArkMsg((MessageRecord)localObject1, 1);
+            }
+          }
+          else
+          {
             throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.ecshop.ad.EcshopAdHandler");
           }
         }
@@ -287,7 +186,7 @@ public final class QQShopPAHippyFragment2
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilMap.put("pvsrc", "qqshophippy");
+    this.d.put("pvsrc", "qqshophippy");
     localObject1 = getParameters();
     if (localObject1 != null)
     {
@@ -296,7 +195,7 @@ public final class QQShopPAHippyFragment2
       {
         localObject1 = ((SerializableMap)localObject2).getMap().get("_origin");
         localObject3 = ((SerializableMap)localObject2).getMap().get("_source");
-        localObject2 = this.jdField_a_of_type_JavaUtilMap;
+        localObject2 = this.d;
         if (localObject1 != null)
         {
           localObject1 = localObject1.toString();
@@ -316,42 +215,14 @@ public final class QQShopPAHippyFragment2
     }
   }
   
-  public final int a(@NotNull HippyListView paramHippyListView, int paramInt)
+  private final MessageRecord e()
   {
-    Intrinsics.checkParameterIsNotNull(paramHippyListView, "listView");
-    paramHippyListView = paramHippyListView.getLayoutManager();
-    if (paramHippyListView != null)
-    {
-      paramHippyListView = ((LinearLayoutManager)paramHippyListView).findViewByPosition(paramInt);
-      if (paramHippyListView != null) {
-        paramInt = paramHippyListView.getTop();
-      } else {
-        paramInt = 0;
-      }
-      return 0 - paramInt - this.jdField_a_of_type_Int;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mtt.supportui.views.recyclerview.LinearLayoutManager");
-  }
-  
-  public final long a()
-  {
-    int i = this.c;
-    if (i < 10) {
-      i = 200;
-    } else if (i < 6) {
-      i = 500;
-    } else if (i < 5) {
-      i = 1000;
-    } else {
-      i = -1;
-    }
-    this.c += 1;
-    return i;
+    return ((IMessageFacade)AppUtils.a().getRuntimeService(IMessageFacade.class, "")).getLastMsgForMsgTab("3046055438", 1008);
   }
   
   public void a()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.i;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -360,48 +231,10 @@ public final class QQShopPAHippyFragment2
   public final void a(@NotNull HippyMap paramHippyMap)
   {
     Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
-    TitleLayoutController localTitleLayoutController = this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController;
+    TitleLayoutController localTitleLayoutController = this.c;
     if (localTitleLayoutController != null) {
       localTitleLayoutController.a(paramHippyMap);
     }
-  }
-  
-  public final boolean a(@NotNull HippyListView paramHippyListView)
-  {
-    Intrinsics.checkParameterIsNotNull(paramHippyListView, "hippyListView");
-    int j = paramHippyListView.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      this.jdField_a_of_type_Int = 0;
-      View localView = paramHippyListView.getChildAt(i);
-      Object localObject = localView;
-      if ((localView instanceof QQShopHeaderView))
-      {
-        this.jdField_a_of_type_Int = ((QQShopHeaderView)localView).getTop();
-        this.jdField_b_of_type_Int = i;
-        return true;
-      }
-      while ((localObject instanceof ViewGroup))
-      {
-        localObject = (ViewGroup)localObject;
-        if (((ViewGroup)localObject).getChildCount() != 0)
-        {
-          this.jdField_a_of_type_Int += ((ViewGroup)localObject).getTop();
-          localView = ((ViewGroup)localObject).getChildAt(0);
-          localObject = localView;
-          if ((localView instanceof QQShopHeaderView))
-          {
-            this.jdField_a_of_type_Int += ((QQShopHeaderView)localView).getTop();
-            this.jdField_b_of_type_Int = i;
-            return true;
-          }
-        }
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Int = 0;
-    return false;
   }
   
   @NotNull
@@ -434,15 +267,14 @@ public final class QQShopPAHippyFragment2
   
   protected int getLayoutResId()
   {
-    return 2131561477;
+    return 2131627835;
   }
   
   protected void initViews()
   {
     super.initViews();
-    f();
     d();
-    b();
+    c();
   }
   
   public boolean isWrapContent()
@@ -453,16 +285,16 @@ public final class QQShopPAHippyFragment2
   public void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    c();
+    b();
     try
     {
       paramBundle = getActivity();
-      if ((!this.jdField_b_of_type_Boolean) && (paramBundle != null))
+      if ((!this.g) && (paramBundle != null))
       {
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("com.tencent.mobileqq.qqshop.hidemsg");
-        paramBundle.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-        this.jdField_b_of_type_Boolean = true;
+        paramBundle.registerReceiver(this.h, (IntentFilter)localObject);
+        this.g = true;
         return;
       }
     }
@@ -478,30 +310,26 @@ public final class QQShopPAHippyFragment2
   public void onDestroy()
   {
     super.onDestroy();
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((TitleLayoutController)localObject).a();
+    }
     try
     {
-      FragmentActivity localFragmentActivity = getActivity();
-      if ((this.jdField_b_of_type_Boolean) && (localFragmentActivity != null))
+      localObject = getActivity();
+      if ((this.g) && (localObject != null))
       {
-        localFragmentActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_b_of_type_Boolean = false;
+        ((FragmentActivity)localObject).unregisterReceiver(this.h);
+        this.g = false;
       }
       return;
     }
     catch (Throwable localThrowable) {}
   }
-  
-  protected void onLoadHippySuccess()
-  {
-    super.onLoadHippySuccess();
-    if (this.jdField_a_of_type_Boolean) {
-      ThreadManagerV2.getUIHandlerV2().postDelayed((Runnable)new QQShopPAHippyFragment2.onLoadHippySuccess.1(this), 200L);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.widget.QQShopPAHippyFragment2
  * JD-Core Version:    0.7.0.1
  */

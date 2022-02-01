@@ -38,7 +38,7 @@ public class FeedsPreloadDataReport
           }
           l = System.currentTimeMillis() - ((Long)localObject1).longValue();
           QLog.d("FeedsPreloadDataReport", 1, new Object[] { "refreshTime = ", Long.valueOf(l), ", hitFeedsPreloadCache = ", Boolean.valueOf(bool1), ", isRedPoint = ", Boolean.valueOf(bool2) });
-          localObject2 = RIJTransMergeKanDianReport.a();
+          localObject2 = RIJTransMergeKanDianReport.g();
           localObject1 = "1";
           if (bool2) {
             paramToServiceMsg = "1";
@@ -78,7 +78,7 @@ public class FeedsPreloadDataReport
   
   public static void a(boolean paramBoolean, int paramInt)
   {
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g();
     String str1;
     if (paramBoolean) {
       str1 = "1";
@@ -102,7 +102,7 @@ public class FeedsPreloadDataReport
   
   public static void a(boolean paramBoolean, int paramInt, long paramLong)
   {
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g();
     String str3 = "1";
     if (paramBoolean) {
       str1 = "1";
@@ -132,7 +132,7 @@ public class FeedsPreloadDataReport
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g();
     String str3 = "1";
     if (paramBoolean1) {
       str1 = "1";
@@ -160,7 +160,7 @@ public class FeedsPreloadDataReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadDataReport
  * JD-Core Version:    0.7.0.1
  */

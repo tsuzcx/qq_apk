@@ -15,13 +15,8 @@ import org.jetbrains.annotations.Nullable;
 public final class QQDtReporter
   implements IDTReport
 {
-  public static final QQDtReporter.Companion a;
-  private static volatile QQDtReporter a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqDtQQDtReporter$Companion = new QQDtReporter.Companion(null);
-  }
+  public static final QQDtReporter.Companion a = new QQDtReporter.Companion(null);
+  private static volatile QQDtReporter b;
   
   private final boolean a(String paramString)
   {
@@ -31,22 +26,12 @@ public final class QQDtReporter
   @Nullable
   public static final QQDtReporter b()
   {
-    return jdField_a_of_type_ComTencentMobileqqDtQQDtReporter$Companion.a();
+    return a.a();
   }
   
   private final boolean b(String paramString)
   {
     return (Intrinsics.areEqual("qqout", paramString)) || (Intrinsics.areEqual("qqin", paramString)) || (Intrinsics.areEqual(paramString, "dt_pgin")) || (Intrinsics.areEqual(paramString, "dt_clck"));
-  }
-  
-  private final boolean c(String paramString)
-  {
-    return (d(paramString)) || (Intrinsics.areEqual(paramString, "dt_appin")) || (Intrinsics.areEqual(paramString, "dt_appout")) || (Intrinsics.areEqual(paramString, "dt_act")) || (Intrinsics.areEqual(paramString, "dt_vst")) || (Intrinsics.areEqual(paramString, "dt_pgin")) || (Intrinsics.areEqual(paramString, "dt_pgout")) || (Intrinsics.areEqual(paramString, "dt_clck")) || (QLog.isColorLevel());
-  }
-  
-  private final boolean d(String paramString)
-  {
-    return (Intrinsics.areEqual(paramString, "qqin")) || (Intrinsics.areEqual(paramString, "qqout"));
   }
   
   public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString, @Nullable Map<String, String> paramMap, boolean paramBoolean)
@@ -58,14 +43,10 @@ public final class QQDtReporter
     if (b(paramString)) {
       paramBoolean = true;
     }
-    Object localObject;
-    if (c(paramString))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("848QQDT _report event: ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("QQDtReporter", 1, new Object[] { ((StringBuilder)localObject).toString(), ",isImmediatelyUpload:", Boolean.valueOf(paramBoolean), ",params:", paramMap });
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("848QQDT _report event: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("QQDtReporter", 1, new Object[] { ((StringBuilder)localObject).toString(), ",isImmediatelyUpload:", Boolean.valueOf(paramBoolean), ",params:", paramMap });
     QQDtReportHelper.a(paramString, paramMap);
     if (paramMap != null) {
       localObject = (String)paramMap.get("dt_appkey");
@@ -78,7 +59,7 @@ public final class QQDtReporter
     }
     if (i != 0)
     {
-      QQBeaconReport.a("", paramString, paramMap, paramBoolean);
+      QQBeaconReport.a("0S200MNJT807V3GE", "", paramString, true, paramMap, paramBoolean);
       return true;
     }
     dtEvent(paramObject, paramString, paramMap, paramBoolean, (String)localObject);
@@ -100,17 +81,14 @@ public final class QQDtReporter
     }
     paramBoolean = true;
     label49:
-    if (c(paramString1))
-    {
-      paramObject = new StringBuilder();
-      paramObject.append("848QQDT _report eventkey: ");
-      paramObject.append(paramString1);
-      paramObject = paramObject.toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" , appkey:");
-      localStringBuilder.append(paramString2);
-      QLog.d("QQDtReporter", 1, new Object[] { paramObject, localStringBuilder.toString(), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , params:", paramMap });
-    }
+    paramObject = new StringBuilder();
+    paramObject.append("848QQDT _report eventkey: ");
+    paramObject.append(paramString1);
+    paramObject = paramObject.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" , appkey:");
+    localStringBuilder.append(paramString2);
+    QLog.d("QQDtReporter", 1, new Object[] { paramObject, localStringBuilder.toString(), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , params:", paramMap });
     QQDtReportHelper.a(paramString1, paramMap);
     UserAction.onDTUserActionToTunnel((Context)BaseApplication.context, paramString2, paramString1, paramMap, paramBoolean, paramBoolean);
     return false;
@@ -118,7 +96,7 @@ public final class QQDtReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dt.QQDtReporter
  * JD-Core Version:    0.7.0.1
  */

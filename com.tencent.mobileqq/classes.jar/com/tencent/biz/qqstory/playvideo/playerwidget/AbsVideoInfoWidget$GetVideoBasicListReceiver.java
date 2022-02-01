@@ -20,20 +20,20 @@ public class AbsVideoInfoWidget$GetVideoBasicListReceiver
   
   public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if (!paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (!paramGetVideoBasicInfoListEvent.g.isFail())
     {
-      if (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) {
+      if (paramGetVideoBasicInfoListEvent.a == null) {
         return;
       }
-      if (paramAbsVideoInfoWidget.a != null)
+      if (paramAbsVideoInfoWidget.p != null)
       {
-        String str = paramAbsVideoInfoWidget.a.a;
-        paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList.iterator();
+        String str = paramAbsVideoInfoWidget.p.b;
+        paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.a.iterator();
         while (paramGetVideoBasicInfoListEvent.hasNext())
         {
           StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramGetVideoBasicInfoListEvent.next();
           if ((TextUtils.equals(str, localStoryVideoItem.mVid)) && (localStoryVideoItem.isBasicInfoOK())) {
-            paramAbsVideoInfoWidget.i();
+            paramAbsVideoInfoWidget.x();
           }
         }
       }

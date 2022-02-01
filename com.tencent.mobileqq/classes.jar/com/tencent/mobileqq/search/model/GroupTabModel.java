@@ -10,7 +10,7 @@ import tencent.im.oidb.search.UniteSearch.TabItemGroup;
 public class GroupTabModel
 {
   public String a;
-  public List<Long> a;
+  public List<Long> b;
   
   public GroupTabModel() {}
   
@@ -18,8 +18,8 @@ public class GroupTabModel
   {
     if (paramTabItemGroup != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
-      this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+      this.a = paramTabItemGroup.tab_name.get().toStringUtf8();
+      this.b = paramTabItemGroup.rpt_group_mask.get();
       return;
     }
     throw new RuntimeException("group is null in GroupTabModel Constructor.");
@@ -29,8 +29,8 @@ public class GroupTabModel
   {
     if (paramTabItemGroup != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
-      this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+      this.a = paramTabItemGroup.tab_name.get().toStringUtf8();
+      this.b = paramTabItemGroup.rpt_group_mask.get();
       return;
     }
     throw new RuntimeException("group is null in GroupTabModel Constructor.");
@@ -38,7 +38,7 @@ public class GroupTabModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupTabModel
  * JD-Core Version:    0.7.0.1
  */

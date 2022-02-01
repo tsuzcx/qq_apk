@@ -12,7 +12,7 @@ class PtvTemplateManager$2
   public void run()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PtvTemplateManager.a().getPath());
+    localStringBuilder.append(PtvTemplateManager.f().getPath());
     localStringBuilder.append(File.separator);
     FileUtils.writeFile(localStringBuilder.toString(), "dov_doodle_template_new.cfg", this.a);
     if (QLog.isColorLevel()) {
@@ -22,7 +22,7 @@ class PtvTemplateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.PtvTemplateManager.2
  * JD-Core Version:    0.7.0.1
  */

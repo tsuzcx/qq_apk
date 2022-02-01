@@ -171,26 +171,26 @@ public class ApkLibraryInstaller
     //   60: ifne +6 -> 66
     //   63: goto +312 -> 375
     //   66: aload 12
-    //   68: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   68: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   71: aload 12
-    //   73: getfield 137	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipEntry	Ljava/util/zip/ZipEntry;
-    //   76: invokevirtual 141	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   73: getfield 138	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:b	Ljava/util/zip/ZipEntry;
+    //   76: invokevirtual 142	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   79: astore_2
-    //   80: new 143	java/io/FileOutputStream
+    //   80: new 144	java/io/FileOutputStream
     //   83: dup
     //   84: aload 4
-    //   86: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   86: invokespecial 147	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   89: astore_1
     //   90: aload_0
     //   91: aload_2
     //   92: aload_1
-    //   93: invokespecial 148	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+    //   93: invokespecial 149	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
     //   96: lstore 8
     //   98: aload_1
-    //   99: invokevirtual 152	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   102: invokevirtual 157	java/io/FileDescriptor:sync	()V
+    //   99: invokevirtual 153	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
+    //   102: invokevirtual 158	java/io/FileDescriptor:sync	()V
     //   105: aload 4
-    //   107: invokevirtual 161	java/io/File:length	()J
+    //   107: invokevirtual 162	java/io/File:length	()J
     //   110: lstore 10
     //   112: lload 8
     //   114: lload 10
@@ -198,38 +198,38 @@ public class ApkLibraryInstaller
     //   117: ifeq +16 -> 133
     //   120: aload_0
     //   121: aload_2
-    //   122: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   122: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   125: aload_0
     //   126: aload_1
-    //   127: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   127: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   130: goto +245 -> 375
     //   133: aload_0
     //   134: aload_2
-    //   135: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   135: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   138: aload_0
     //   139: aload_1
-    //   140: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   140: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   143: aload 4
     //   145: iconst_1
     //   146: iconst_0
-    //   147: invokevirtual 167	java/io/File:setReadable	(ZZ)Z
+    //   147: invokevirtual 168	java/io/File:setReadable	(ZZ)Z
     //   150: pop
     //   151: aload 4
     //   153: iconst_1
     //   154: iconst_0
-    //   155: invokevirtual 170	java/io/File:setExecutable	(ZZ)Z
+    //   155: invokevirtual 171	java/io/File:setExecutable	(ZZ)Z
     //   158: pop
     //   159: aload 4
     //   161: iconst_1
-    //   162: invokevirtual 174	java/io/File:setWritable	(Z)Z
+    //   162: invokevirtual 175	java/io/File:setWritable	(Z)Z
     //   165: pop
     //   166: aload 12
     //   168: ifnull +19 -> 187
     //   171: aload 12
-    //   173: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   173: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   176: ifnull +11 -> 187
     //   179: aload 12
-    //   181: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   181: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   184: invokevirtual 83	java/util/zip/ZipFile:close	()V
     //   187: return
     //   188: astore 4
@@ -255,36 +255,36 @@ public class ApkLibraryInstaller
     //   220: astore_3
     //   221: aload_0
     //   222: aload_2
-    //   223: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   223: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   226: aload_0
     //   227: aload_3
-    //   228: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   228: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   231: aload_1
     //   232: athrow
     //   233: aload_0
     //   234: aload_2
-    //   235: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   235: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   238: goto -113 -> 125
     //   241: aload_0
     //   242: aload_2
-    //   243: invokespecial 163	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
+    //   243: invokespecial 164	com/getkeepsafe/relinker/ApkLibraryInstaller:a	(Ljava/io/Closeable;)V
     //   246: goto -121 -> 125
     //   249: aload 5
-    //   251: ldc 176
-    //   253: invokevirtual 178	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;)V
+    //   251: ldc 177
+    //   253: invokevirtual 179	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;)V
     //   256: aload 12
     //   258: ifnull +19 -> 277
     //   261: aload 12
-    //   263: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   263: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   266: ifnull +11 -> 277
     //   269: aload 12
-    //   271: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   271: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   274: invokevirtual 83	java/util/zip/ZipFile:close	()V
     //   277: return
-    //   278: new 180	com/getkeepsafe/relinker/MissingLibraryException
+    //   278: new 181	com/getkeepsafe/relinker/MissingLibraryException
     //   281: dup
     //   282: aload_3
-    //   283: invokespecial 181	com/getkeepsafe/relinker/MissingLibraryException:<init>	(Ljava/lang/String;)V
+    //   283: invokespecial 182	com/getkeepsafe/relinker/MissingLibraryException:<init>	(Ljava/lang/String;)V
     //   286: athrow
     //   287: astore_1
     //   288: aload 12
@@ -296,10 +296,10 @@ public class ApkLibraryInstaller
     //   297: aload_2
     //   298: ifnull +17 -> 315
     //   301: aload_2
-    //   302: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   302: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   305: ifnull +10 -> 315
     //   308: aload_2
-    //   309: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
+    //   309: getfield 134	com/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry:a	Ljava/util/zip/ZipFile;
     //   312: invokevirtual 83	java/util/zip/ZipFile:close	()V
     //   315: goto +5 -> 320
     //   318: aload_1

@@ -18,20 +18,20 @@ import java.lang.ref.WeakReference;
 class GrayTipsItemBuilder$TeamWorkFileImportTipsClickableSpan
   extends ClickableSpan
 {
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQAppInterface> a;
   private WeakReference<Context> b;
+  private MessageRecord c;
   
   GrayTipsItemBuilder$TeamWorkFileImportTipsClickableSpan(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = new WeakReference(paramQQAppInterface);
     this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.c = paramMessageRecord;
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramView = (QQAppInterface)this.a.get();
     Object localObject = (Context)this.b.get();
     if (paramView != null)
     {
@@ -43,13 +43,13 @@ class GrayTipsItemBuilder$TeamWorkFileImportTipsClickableSpan
       {
         if (!NetworkUtil.isNetSupport((Context)localObject))
         {
-          QQToast.a((Context)localObject, 2131692183, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText((Context)localObject, 2131889169, 0).show(((Context)localObject).getResources().getDimensionPixelSize(2131299920));
           return;
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.b.get() != null))
+        if ((this.c != null) && (this.b.get() != null))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
-          boolean bool = Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
+          localObject = this.c.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
+          boolean bool = Boolean.parseBoolean(this.c.getExtInfoFromExtStr("team_work_is_message_convert"));
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
             Bundle localBundle = new Bundle();
@@ -70,7 +70,7 @@ class GrayTipsItemBuilder$TeamWorkFileImportTipsClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.TeamWorkFileImportTipsClickableSpan
  * JD-Core Version:    0.7.0.1
  */

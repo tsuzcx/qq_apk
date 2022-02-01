@@ -47,19 +47,19 @@ public class MessageForSystemMsg
               if (j != 6) {
                 paramResources = paramStructMsg.msg.msg_describe.get();
               } else {
-                paramResources = paramResources.getString(2131718177);
+                paramResources = paramResources.getString(2131915656);
               }
             }
             else {
-              paramResources = paramResources.getString(2131689525);
+              paramResources = paramResources.getString(2131886133);
             }
           }
           else {
-            paramResources = paramResources.getString(2131689526);
+            paramResources = paramResources.getString(2131886134);
           }
         }
         else {
-          paramResources = paramResources.getString(2131689622);
+          paramResources = paramResources.getString(2131886233);
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramStructMsg.msg.req_uin_nick.get());
@@ -167,7 +167,7 @@ public class MessageForSystemMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.MessageForSystemMsg
  * JD-Core Version:    0.7.0.1
  */

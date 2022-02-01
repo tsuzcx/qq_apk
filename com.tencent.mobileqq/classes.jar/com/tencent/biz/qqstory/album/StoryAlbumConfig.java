@@ -28,171 +28,13 @@ import org.json.JSONObject;
 
 public class StoryAlbumConfig
 {
-  public static final DateFormat a;
-  private int jdField_a_of_type_Int = -1;
-  private StoryAlbumConfig.ConfigInfo jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
-  
-  static
-  {
-    jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-  }
+  public static final DateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  private StoryAlbumConfig.ConfigInfo b;
+  private int c = -1;
   
   public StoryAlbumConfig()
   {
     a();
-  }
-  
-  private int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "praseHomeEntraConfig. config is null");
-      return -1;
-    }
-    try
-    {
-      int i = new JSONObject(paramString).optInt("story_home_show", -1);
-      return i;
-    }
-    catch (JSONException localJSONException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("praseHomeEntraConfig. error config=");
-      localStringBuilder.append(paramString);
-      SLog.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", localStringBuilder.toString(), localJSONException);
-    }
-    return -1;
-  }
-  
-  private StoryAlbumConfig.ConfigInfo a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig is null");
-      return null;
-    }
-    for (;;)
-    {
-      try
-      {
-        StoryAlbumConfig.ConfigInfo localConfigInfo = new StoryAlbumConfig.ConfigInfo();
-        localObject1 = new JSONObject(paramString);
-        i = ((JSONObject)localObject1).optInt("album_state", 1);
-        int j = 0;
-        if (i == 1)
-        {
-          bool = true;
-          localConfigInfo.jdField_a_of_type_Boolean = bool;
-          localConfigInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("album_mp4");
-          localConfigInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("album_cover");
-          localConfigInfo.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("geohashLevel", 8);
-          Object localObject2 = ((JSONObject)localObject1).optJSONObject("count_limit");
-          if (localObject2 != null)
-          {
-            localConfigInfo.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("first_scan", 500);
-            localConfigInfo.c = ((JSONObject)localObject2).optInt("inc_scan", 100);
-            localConfigInfo.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("first_save", 15);
-          }
-          if (localConfigInfo.jdField_a_of_type_JavaUtilList == null) {
-            localConfigInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
-          }
-          localObject2 = ((JSONObject)localObject1).optJSONObject("home_rule");
-          Object localObject3;
-          if (localObject2 != null)
-          {
-            localObject3 = new RuleConfig(2);
-            ((RuleConfig)localObject3).a((JSONObject)localObject2, 6);
-            localConfigInfo.jdField_a_of_type_JavaUtilList.add(localObject3);
-          }
-          localObject2 = ((JSONObject)localObject1).optJSONObject("native_rule");
-          if (localObject2 != null)
-          {
-            localObject3 = new RuleConfig(4);
-            ((RuleConfig)localObject3).a((JSONObject)localObject2, 10);
-            localConfigInfo.jdField_a_of_type_JavaUtilList.add(localObject3);
-          }
-          localObject2 = ((JSONObject)localObject1).optJSONObject("foreigner_rule");
-          if (localObject2 != null)
-          {
-            localObject3 = new RuleConfig(3);
-            ((RuleConfig)localObject3).a((JSONObject)localObject2, 10);
-            localConfigInfo.jdField_a_of_type_JavaUtilList.add(localObject3);
-          }
-          localObject2 = ((JSONObject)localObject1).optJSONArray("festival_list");
-          if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
-          {
-            if (localConfigInfo.jdField_b_of_type_JavaUtilList != null) {
-              break label584;
-            }
-            localConfigInfo.jdField_b_of_type_JavaUtilList = new ArrayList();
-            break label584;
-            if (i < ((JSONArray)localObject2).length())
-            {
-              localObject3 = ((JSONArray)localObject2).getJSONObject(i);
-              if (localObject3 == null) {
-                break label589;
-              }
-              localObject3 = a((JSONObject)localObject3, false);
-              if (localObject3 == null) {
-                break label589;
-              }
-              localConfigInfo.jdField_b_of_type_JavaUtilList.add(localObject3);
-              break label589;
-            }
-          }
-          else
-          {
-            SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig do not have festival_list");
-          }
-          localObject1 = ((JSONObject)localObject1).optJSONArray("mutableFestivalList");
-          if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
-          {
-            i = j;
-            if (localConfigInfo.jdField_b_of_type_JavaUtilList == null)
-            {
-              localConfigInfo.jdField_b_of_type_JavaUtilList = new ArrayList();
-              i = j;
-            }
-            if (i < ((JSONArray)localObject1).length())
-            {
-              localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-              if (localObject2 == null) {
-                break label596;
-              }
-              localObject2 = a((JSONObject)localObject2, true);
-              if (localObject2 == null) {
-                break label596;
-              }
-              localConfigInfo.jdField_b_of_type_JavaUtilList.add(localObject2);
-              break label596;
-            }
-          }
-          else
-          {
-            SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig do not have mutableFestivalList");
-          }
-          return localConfigInfo;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        Object localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("parseAlbumConfig error config=");
-        ((StringBuilder)localObject1).append(paramString);
-        SLog.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", ((StringBuilder)localObject1).toString(), localJSONException);
-        return null;
-      }
-      boolean bool = false;
-      continue;
-      label584:
-      int i = 0;
-      continue;
-      label589:
-      i += 1;
-      continue;
-      label596:
-      i += 1;
-    }
   }
   
   private StoryAlbumConfig.FestivalConfig a(JSONObject paramJSONObject, boolean paramBoolean)
@@ -203,25 +45,25 @@ public class StoryAlbumConfig
     }
     Object localObject = new StoryAlbumConfig.FestivalConfig(i);
     ((StoryAlbumConfig.FestivalConfig)localObject).a(paramJSONObject, 6);
-    ((StoryAlbumConfig.FestivalConfig)localObject).c = paramJSONObject.optString("name", "");
-    ((StoryAlbumConfig.FestivalConfig)localObject).f = paramJSONObject.optInt("start_age", -2147483648);
-    ((StoryAlbumConfig.FestivalConfig)localObject).g = paramJSONObject.optInt("end_age", -2147483648);
-    if ((((StoryAlbumConfig.FestivalConfig)localObject).f != -2147483648) && (((StoryAlbumConfig.FestivalConfig)localObject).g != -2147483648))
+    ((StoryAlbumConfig.FestivalConfig)localObject).g = paramJSONObject.optString("name", "");
+    ((StoryAlbumConfig.FestivalConfig)localObject).l = paramJSONObject.optInt("start_age", -2147483648);
+    ((StoryAlbumConfig.FestivalConfig)localObject).m = paramJSONObject.optInt("end_age", -2147483648);
+    if ((((StoryAlbumConfig.FestivalConfig)localObject).l != -2147483648) && (((StoryAlbumConfig.FestivalConfig)localObject).m != -2147483648))
     {
-      if (((StoryAlbumConfig.FestivalConfig)localObject).jdField_a_of_type_Int == 6)
+      if (((StoryAlbumConfig.FestivalConfig)localObject).a == 6)
       {
         paramJSONObject = paramJSONObject.optJSONObject("time");
         if (paramJSONObject != null)
         {
-          ((StoryAlbumConfig.FestivalConfig)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("start", "");
-          ((StoryAlbumConfig.FestivalConfig)localObject).jdField_e_of_type_Int = paramJSONObject.optInt("duration", 24);
+          ((StoryAlbumConfig.FestivalConfig)localObject).i = paramJSONObject.optString("start", "");
+          ((StoryAlbumConfig.FestivalConfig)localObject).k = paramJSONObject.optInt("duration", 24);
           return localObject;
         }
       }
       else
       {
-        ((StoryAlbumConfig.FestivalConfig)localObject).jdField_d_of_type_Int = paramJSONObject.optInt("year", 0);
-        if ((((StoryAlbumConfig.FestivalConfig)localObject).jdField_d_of_type_Int == 0) && (paramBoolean))
+        ((StoryAlbumConfig.FestivalConfig)localObject).h = paramJSONObject.optInt("year", 0);
+        if ((((StoryAlbumConfig.FestivalConfig)localObject).h == 0) && (paramBoolean))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("festival_list error: has no year. config=");
@@ -232,8 +74,8 @@ public class StoryAlbumConfig
         paramJSONObject = paramJSONObject.optJSONObject("time");
         if (paramJSONObject != null)
         {
-          ((StoryAlbumConfig.FestivalConfig)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("start", "");
-          ((StoryAlbumConfig.FestivalConfig)localObject).jdField_e_of_type_JavaLangString = paramJSONObject.optString("end", "");
+          ((StoryAlbumConfig.FestivalConfig)localObject).i = paramJSONObject.optString("start", "");
+          ((StoryAlbumConfig.FestivalConfig)localObject).j = paramJSONObject.optString("end", "");
         }
       }
       return localObject;
@@ -259,29 +101,19 @@ public class StoryAlbumConfig
     return paramRuleConfig;
   }
   
-  private Card a()
-  {
-    Object localObject = QQStoryContext.a().getCurrentAccountUin();
-    localObject = (Card)QQEntityManagerFactoryProxy.a((String)localObject).createEntityManager().find(Card.class, (String)localObject);
-    if (localObject == null) {
-      SLog.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "get current user birthday failed..");
-    }
-    return localObject;
-  }
-  
   private List<SplitConfig.TimeSplitConfig> a(@NonNull StoryAlbumConfig.FestivalConfig paramFestivalConfig, long paramLong1, long paramLong2)
   {
     ArrayList localArrayList = new ArrayList();
     boolean bool;
-    if (paramFestivalConfig.jdField_a_of_type_Int == 1) {
+    if (paramFestivalConfig.a == 1) {
       bool = true;
     } else {
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    if (paramFestivalConfig.jdField_d_of_type_Int != 0)
+    if (paramFestivalConfig.h != 0)
     {
-      paramFestivalConfig = new SplitConfig.TimeSplitConfig(paramFestivalConfig, paramFestivalConfig.jdField_d_of_type_Int);
+      paramFestivalConfig = new SplitConfig.TimeSplitConfig(paramFestivalConfig, paramFestivalConfig.h);
       SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initFestivalGatherRule rule=%s", new Object[] { paramFestivalConfig });
       localArrayList.add(paramFestivalConfig);
       return localArrayList;
@@ -299,8 +131,8 @@ public class StoryAlbumConfig
         l = paramLong2;
         paramLong2 = paramLong1;
       }
-      int i = Integer.valueOf(DateUtils.c(paramLong2 * 1000L)).intValue();
-      int j = Integer.valueOf(DateUtils.c(l * 1000L)).intValue();
+      int i = Integer.valueOf(DateUtils.d(paramLong2 * 1000L)).intValue();
+      int j = Integer.valueOf(DateUtils.d(l * 1000L)).intValue();
       while (i <= j)
       {
         SplitConfig.TimeSplitConfig localTimeSplitConfig = new SplitConfig.TimeSplitConfig(paramFestivalConfig, i);
@@ -318,7 +150,7 @@ public class StoryAlbumConfig
   private List<SplitConfig.TimeSplitConfig> a(@NonNull StoryAlbumConfig.FestivalConfig paramFestivalConfig, long paramLong1, long paramLong2, Card paramCard)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramFestivalConfig.jdField_e_of_type_Int > 0) && (!TextUtils.isEmpty(paramFestivalConfig.jdField_d_of_type_JavaLangString)))
+    if ((paramFestivalConfig.k > 0) && (!TextUtils.isEmpty(paramFestivalConfig.i)))
     {
       int i;
       int j;
@@ -335,8 +167,8 @@ public class StoryAlbumConfig
           l = paramLong2;
           paramLong2 = paramLong1;
         }
-        i = Integer.valueOf(DateUtils.c(paramLong2 * 1000L)).intValue();
-        j = Integer.valueOf(DateUtils.c(l * 1000L)).intValue();
+        i = Integer.valueOf(DateUtils.d(paramLong2 * 1000L)).intValue();
+        j = Integer.valueOf(DateUtils.d(l * 1000L)).intValue();
       }
       while (i <= j)
       {
@@ -356,49 +188,188 @@ public class StoryAlbumConfig
     return localArrayList;
   }
   
-  public int a()
+  private int c(String paramString)
   {
-    StoryAlbumConfig.ConfigInfo localConfigInfo = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
-    if (localConfigInfo != null) {
-      return localConfigInfo.jdField_d_of_type_Int;
+    if (TextUtils.isEmpty(paramString))
+    {
+      SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "praseHomeEntraConfig. config is null");
+      return -1;
     }
-    return 0;
+    try
+    {
+      int i = new JSONObject(paramString).optInt("story_home_show", -1);
+      return i;
+    }
+    catch (JSONException localJSONException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("praseHomeEntraConfig. error config=");
+      localStringBuilder.append(paramString);
+      SLog.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", localStringBuilder.toString(), localJSONException);
+    }
+    return -1;
+  }
+  
+  private StoryAlbumConfig.ConfigInfo d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig is null");
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        StoryAlbumConfig.ConfigInfo localConfigInfo = new StoryAlbumConfig.ConfigInfo();
+        localObject1 = new JSONObject(paramString);
+        i = ((JSONObject)localObject1).optInt("album_state", 1);
+        int j = 0;
+        if (i == 1)
+        {
+          bool = true;
+          localConfigInfo.a = bool;
+          localConfigInfo.d = ((JSONObject)localObject1).optString("album_mp4");
+          localConfigInfo.e = ((JSONObject)localObject1).optString("album_cover");
+          localConfigInfo.f = ((JSONObject)localObject1).optInt("geohashLevel", 8);
+          Object localObject2 = ((JSONObject)localObject1).optJSONObject("count_limit");
+          if (localObject2 != null)
+          {
+            localConfigInfo.g = ((JSONObject)localObject2).optInt("first_scan", 500);
+            localConfigInfo.h = ((JSONObject)localObject2).optInt("inc_scan", 100);
+            localConfigInfo.i = ((JSONObject)localObject2).optInt("first_save", 15);
+          }
+          if (localConfigInfo.b == null) {
+            localConfigInfo.b = new ArrayList();
+          }
+          localObject2 = ((JSONObject)localObject1).optJSONObject("home_rule");
+          Object localObject3;
+          if (localObject2 != null)
+          {
+            localObject3 = new RuleConfig(2);
+            ((RuleConfig)localObject3).a((JSONObject)localObject2, 6);
+            localConfigInfo.b.add(localObject3);
+          }
+          localObject2 = ((JSONObject)localObject1).optJSONObject("native_rule");
+          if (localObject2 != null)
+          {
+            localObject3 = new RuleConfig(4);
+            ((RuleConfig)localObject3).a((JSONObject)localObject2, 10);
+            localConfigInfo.b.add(localObject3);
+          }
+          localObject2 = ((JSONObject)localObject1).optJSONObject("foreigner_rule");
+          if (localObject2 != null)
+          {
+            localObject3 = new RuleConfig(3);
+            ((RuleConfig)localObject3).a((JSONObject)localObject2, 10);
+            localConfigInfo.b.add(localObject3);
+          }
+          localObject2 = ((JSONObject)localObject1).optJSONArray("festival_list");
+          if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
+          {
+            if (localConfigInfo.c != null) {
+              break label598;
+            }
+            localConfigInfo.c = new ArrayList();
+            break label598;
+            if (i < ((JSONArray)localObject2).length())
+            {
+              localObject3 = ((JSONArray)localObject2).getJSONObject(i);
+              if (localObject3 == null) {
+                break label603;
+              }
+              localObject3 = a((JSONObject)localObject3, false);
+              if (localObject3 == null) {
+                break label603;
+              }
+              localConfigInfo.c.add(localObject3);
+              break label603;
+            }
+          }
+          else
+          {
+            SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig do not have festival_list");
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("mutableFestivalList");
+          if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+          {
+            i = j;
+            if (localConfigInfo.c == null)
+            {
+              localConfigInfo.c = new ArrayList();
+              i = j;
+            }
+            if (i < ((JSONArray)localObject1).length())
+            {
+              localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+              if (localObject2 == null) {
+                break label610;
+              }
+              localObject2 = a((JSONObject)localObject2, true);
+              if (localObject2 == null) {
+                break label610;
+              }
+              localConfigInfo.c.add(localObject2);
+              break label610;
+            }
+          }
+          else
+          {
+            SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig do not have mutableFestivalList");
+          }
+          return localConfigInfo;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parseAlbumConfig error config=");
+        ((StringBuilder)localObject1).append(paramString);
+        SLog.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", ((StringBuilder)localObject1).toString(), localJSONException);
+        return null;
+      }
+      boolean bool = false;
+      continue;
+      label598:
+      int i = 0;
+      continue;
+      label603:
+      i += 1;
+      continue;
+      label610:
+      i += 1;
+    }
+  }
+  
+  private Card j()
+  {
+    Object localObject = QQStoryContext.k().getCurrentAccountUin();
+    localObject = (Card)QQEntityManagerFactoryProxy.a((String)localObject).createEntityManager().find(Card.class, (String)localObject);
+    if (localObject == null) {
+      SLog.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "get current user birthday failed..");
+    }
+    return localObject;
   }
   
   public int a(boolean paramBoolean)
   {
-    StoryAlbumConfig.ConfigInfo localConfigInfo = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
+    StoryAlbumConfig.ConfigInfo localConfigInfo = this.b;
     if (localConfigInfo != null)
     {
       if (paramBoolean) {
-        return localConfigInfo.c;
+        return localConfigInfo.h;
       }
-      return localConfigInfo.jdField_b_of_type_Int;
+      return localConfigInfo.g;
     }
     return 0;
   }
   
-  public List<SplitConfig.TreeGatherConfig> a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
-    if ((localObject != null) && (((StoryAlbumConfig.ConfigInfo)localObject).jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      localObject = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((List)localObject).add(a((RuleConfig)localIterator.next()));
-      }
-      return localObject;
-    }
-    return null;
-  }
-  
   public List<BaseAlbumFilter> a(long paramLong1, long paramLong2)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
-    if ((localObject1 != null) && (((StoryAlbumConfig.ConfigInfo)localObject1).jdField_b_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo.jdField_b_of_type_JavaUtilList.isEmpty()))
+    Object localObject1 = this.b;
+    if ((localObject1 != null) && (((StoryAlbumConfig.ConfigInfo)localObject1).c != null) && (!this.b.c.isEmpty()))
     {
-      Card localCard = a();
+      Card localCard = j();
       ArrayList localArrayList = new ArrayList();
       if (localCard == null) {
         localObject1 = "card is null";
@@ -406,23 +377,23 @@ public class StoryAlbumConfig
         localObject1 = Byte.valueOf(localCard.age);
       }
       SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "getFestivalFilterList startTime=%s age=%d", new Object[] { Long.valueOf(paramLong1), localObject1 });
-      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo.jdField_b_of_type_JavaUtilList.iterator();
+      localObject1 = this.b.c.iterator();
       for (;;)
       {
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = (StoryAlbumConfig.FestivalConfig)((Iterator)localObject1).next();
-          if ((((StoryAlbumConfig.FestivalConfig)localObject2).f >= 0) && ((localCard == null) || (localCard.age < ((StoryAlbumConfig.FestivalConfig)localObject2).f)))
+          if ((((StoryAlbumConfig.FestivalConfig)localObject2).l >= 0) && ((localCard == null) || (localCard.age < ((StoryAlbumConfig.FestivalConfig)localObject2).l)))
           {
             SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "you are too young. config=%s", new Object[] { localObject2 });
             continue;
           }
-          if ((((StoryAlbumConfig.FestivalConfig)localObject2).g >= 0) && ((localCard == null) || (localCard.age > ((StoryAlbumConfig.FestivalConfig)localObject2).g)))
+          if ((((StoryAlbumConfig.FestivalConfig)localObject2).m >= 0) && ((localCard == null) || (localCard.age > ((StoryAlbumConfig.FestivalConfig)localObject2).m)))
           {
             SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "it's not suitable for you. config=%s", new Object[] { localObject2 });
             continue;
           }
-          int i = ((StoryAlbumConfig.FestivalConfig)localObject2).jdField_a_of_type_Int;
+          int i = ((StoryAlbumConfig.FestivalConfig)localObject2).a;
           if (i != 1)
           {
             if (i != 6) {
@@ -434,7 +405,7 @@ public class StoryAlbumConfig
               while (((Iterator)localObject2).hasNext())
               {
                 SplitConfig.TimeSplitConfig localTimeSplitConfig = (SplitConfig.TimeSplitConfig)((Iterator)localObject2).next();
-                if ((localTimeSplitConfig.a > 0L) && (localTimeSplitConfig.b > 0L)) {
+                if ((localTimeSplitConfig.g > 0L) && (localTimeSplitConfig.h > 0L)) {
                   localArrayList.add(0, new OneDayAlbumFilter(localTimeSplitConfig));
                 }
               }
@@ -457,7 +428,7 @@ public class StoryAlbumConfig
           }
           catch (ParseException localParseException2)
           {
-            SLog.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "getFestivalFilterList config=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo, localParseException2 });
+            SLog.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "getFestivalFilterList config=%s", new Object[] { this.b, localParseException2 });
           }
         }
       }
@@ -468,12 +439,12 @@ public class StoryAlbumConfig
   
   public void a()
   {
-    String str3 = StoryConfigManager.e();
+    String str3 = StoryConfigManager.s();
     if (!TextUtils.isEmpty(str3)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo = a(str3);
+      this.b = d(str3);
     }
-    String str2 = StoryConfigManager.f();
-    this.jdField_a_of_type_Int = a(str2);
+    String str2 = StoryConfigManager.t();
+    this.c = c(str2);
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -485,50 +456,26 @@ public class StoryAlbumConfig
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.loadConfig homeEntraConfig=%s config=%s ", new Object[] { str1, str2 });
   }
   
-  public boolean a()
-  {
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.isConfigEnable config=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo });
-    return this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo != null;
-  }
-  
   public boolean a(String paramString)
   {
-    StoryAlbumConfig.ConfigInfo localConfigInfo1 = a(paramString);
+    StoryAlbumConfig.ConfigInfo localConfigInfo1 = d(paramString);
     boolean bool = false;
     if (localConfigInfo1 != null)
     {
-      StoryAlbumConfig.ConfigInfo localConfigInfo2 = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
+      StoryAlbumConfig.ConfigInfo localConfigInfo2 = this.b;
       bool = true;
       SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleAlbumConfig old config=%s, new config=%s", new Object[] { localConfigInfo2, paramString });
       StoryConfigManager.d(paramString);
-      this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo = localConfigInfo1;
+      this.b = localConfigInfo1;
     }
     return bool;
-  }
-  
-  public int b()
-  {
-    StoryAlbumConfig.ConfigInfo localConfigInfo = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
-    if (localConfigInfo != null) {
-      return localConfigInfo.jdField_a_of_type_Int;
-    }
-    return 8;
   }
   
   public void b()
   {
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.clearAlbumConfig");
     StoryConfigManager.d("");
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo = null;
-  }
-  
-  public boolean b()
-  {
-    StoryAlbumConfig.ConfigInfo localConfigInfo = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo;
-    if (localConfigInfo != null) {
-      return localConfigInfo.jdField_a_of_type_Boolean;
-    }
-    return true;
+    this.b = null;
   }
   
   public boolean b(String paramString)
@@ -538,10 +485,10 @@ public class StoryAlbumConfig
       SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "StoryHomeAlbumEntraConfig is null");
       return false;
     }
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleStoryHomeAlbumEntraConfig old config=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_Int = a(paramString);
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleStoryHomeAlbumEntraConfig new config=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_Int != -1)
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleStoryHomeAlbumEntraConfig old config=%s", new Object[] { Integer.valueOf(this.c) });
+    this.c = c(paramString);
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleStoryHomeAlbumEntraConfig new config=%s", new Object[] { Integer.valueOf(this.c) });
+    if (this.c != -1)
     {
       StoryConfigManager.e(paramString);
       return true;
@@ -553,22 +500,70 @@ public class StoryAlbumConfig
   {
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.clearStoryHomeAlbumEntraConfig");
     StoryConfigManager.e("");
-    this.jdField_a_of_type_Int = -1;
+    this.c = -1;
   }
   
-  public boolean c()
+  public boolean d()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumConfig$ConfigInfo != null)
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.isConfigEnable config=%s", new Object[] { this.b });
+    return this.b != null;
+  }
+  
+  public boolean e()
+  {
+    StoryAlbumConfig.ConfigInfo localConfigInfo = this.b;
+    if (localConfigInfo != null) {
+      return localConfigInfo.a;
+    }
+    return true;
+  }
+  
+  public boolean f()
+  {
+    if (this.b != null)
     {
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager mStoryHomeAlbumEntraState=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      return this.jdField_a_of_type_Int != 0;
+      SLog.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager mStoryHomeAlbumEntraState=%d", new Object[] { Integer.valueOf(this.c) });
+      return this.c != 0;
     }
     return false;
+  }
+  
+  public int g()
+  {
+    StoryAlbumConfig.ConfigInfo localConfigInfo = this.b;
+    if (localConfigInfo != null) {
+      return localConfigInfo.i;
+    }
+    return 0;
+  }
+  
+  public int h()
+  {
+    StoryAlbumConfig.ConfigInfo localConfigInfo = this.b;
+    if (localConfigInfo != null) {
+      return localConfigInfo.f;
+    }
+    return 8;
+  }
+  
+  public List<SplitConfig.TreeGatherConfig> i()
+  {
+    Object localObject = this.b;
+    if ((localObject != null) && (((StoryAlbumConfig.ConfigInfo)localObject).b != null) && (!this.b.b.isEmpty()))
+    {
+      localObject = new ArrayList();
+      Iterator localIterator = this.b.b.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(a((RuleConfig)localIterator.next()));
+      }
+      return localObject;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.k;
-import com.tencent.liteav.basic.c.l;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.l;
+import com.tencent.liteav.basic.opengl.m;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 public class t
-  extends h
+  extends j
 {
   private ByteBuffer r;
   public int u = -1;
@@ -24,7 +24,7 @@ public class t
   public t(String paramString1, String paramString2)
   {
     super(paramString1, paramString2);
-    a(k.a, false, true);
+    a(l.a, false, true);
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -33,12 +33,12 @@ public class t
     return a(paramInt1, paramInt3, paramInt4);
   }
   
-  public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(l paraml, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramk = l.a(paramk, paramBoolean1, paramBoolean2);
+    paraml = m.a(paraml, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramk);
+    localFloatBuffer.put(paraml);
     localFloatBuffer.flip();
     this.r = localByteBuffer;
   }
@@ -48,9 +48,8 @@ public class t
     boolean bool = super.b();
     if (bool)
     {
-      this.u = GLES20.glGetAttribLocation(p(), "inputTextureCoordinate2");
-      this.v = GLES20.glGetUniformLocation(p(), "inputImageTexture2");
-      GLES20.glEnableVertexAttribArray(this.u);
+      this.u = GLES20.glGetAttribLocation(q(), "inputTextureCoordinate2");
+      this.v = GLES20.glGetUniformLocation(q(), "inputImageTexture2");
     }
     return bool;
   }
@@ -82,7 +81,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.t
  * JD-Core Version:    0.7.0.1
  */

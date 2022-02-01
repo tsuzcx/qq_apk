@@ -32,11 +32,11 @@ class CommentPresenter$OnFeedCommentElementClickListener
         if ((paramView.length > 1) && (paramView[0] != null))
         {
           paramObject = (CertifiedAccountMeta.StComment)paramView[0];
-          paramInt1 = CommentPresenter.a(this.a).a(paramObject);
+          paramInt1 = CommentPresenter.a(this.a).c(paramObject);
           if ((paramInt1 >= 0) && (paramView[1] != null))
           {
             int i = ((Integer)paramView[1]).intValue();
-            this.a.a.setSelectionFromTop(paramInt2, paramInt1 * -1 * i);
+            this.a.g.setSelectionFromTop(paramInt2, paramInt1 * -1 * i);
             return;
           }
         }
@@ -57,7 +57,7 @@ class CommentPresenter$OnFeedCommentElementClickListener
         if ((paramView.length > 1) && (paramView[0] != null) && (paramView[1] != null))
         {
           paramObject = (CertifiedAccountMeta.StComment)paramView[0];
-          CommentPresenter.a(this.a).a(CommentPresenter.a(this.a), paramObject, (CertifiedAccountMeta.StReply)paramView[1]);
+          CommentPresenter.i(this.a).c(CommentPresenter.k(this.a), paramObject, (CertifiedAccountMeta.StReply)paramView[1]);
           CommentPresenter.c(this.a, true);
           return;
         }
@@ -71,10 +71,10 @@ class CommentPresenter$OnFeedCommentElementClickListener
         {
           paramView = (CertifiedAccountMeta.StComment)paramObject[0];
           paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
-          localObject = CommentPresenter.a();
+          localObject = CommentPresenter.t();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("click reply, feedId: ");
-          localStringBuilder.append(CommentPresenter.a(this.a).id);
+          localStringBuilder.append(CommentPresenter.k(this.a).id);
           localStringBuilder.append(" commentId: ");
           localStringBuilder.append(paramView.id);
           localStringBuilder.append(" replyId: ");
@@ -90,7 +90,7 @@ class CommentPresenter$OnFeedCommentElementClickListener
       {
         paramView = (CertifiedAccountMeta.StComment)paramObject;
         paramObject = this.a;
-        CommentPresenter.a(paramObject, CommentPresenter.a(paramObject).a(CommentPresenter.a(this.a), paramView));
+        CommentPresenter.a(paramObject, CommentPresenter.i(paramObject).c(CommentPresenter.k(this.a), paramView));
         CommentPresenter.c(this.a, true);
         return;
       }
@@ -99,10 +99,10 @@ class CommentPresenter$OnFeedCommentElementClickListener
       if ((paramObject != null) && ((paramObject instanceof CertifiedAccountMeta.StComment)))
       {
         paramView = (CertifiedAccountMeta.StComment)paramObject;
-        paramObject = CommentPresenter.a();
+        paramObject = CommentPresenter.t();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("click comment, feedId: ");
-        ((StringBuilder)localObject).append(CommentPresenter.a(this.a).id);
+        ((StringBuilder)localObject).append(CommentPresenter.k(this.a).id);
         ((StringBuilder)localObject).append(" commentId: ");
         ((StringBuilder)localObject).append(paramView.id);
         QLog.d(paramObject, 1, ((StringBuilder)localObject).toString());
@@ -116,7 +116,7 @@ class CommentPresenter$OnFeedCommentElementClickListener
       {
         paramView = (CertifiedAccountMeta.StUser)paramObject;
         if (paramView.type.get() == 1) {
-          SubscribeLaucher.a(CommentPresenter.a(this.a), paramView);
+          SubscribeLaucher.a(CommentPresenter.n(this.a), paramView);
         }
       }
       break;
@@ -138,15 +138,15 @@ class CommentPresenter$OnFeedCommentElementClickListener
           paramView = (CertifiedAccountMeta.StComment)paramObject[0];
           paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
           CommentPresenter localCommentPresenter = this.a;
-          CommentPresenter.a(localCommentPresenter, new ActionSheetDialog(CommentPresenter.g(localCommentPresenter), false, true));
-          CommentPresenter.a(this.a).a(CommentPresenter.h(this.a).getString(2131691291), 0, new CommentPresenter.OnFeedCommentElementClickListener.4(this, paramObject));
+          CommentPresenter.a(localCommentPresenter, new ActionSheetDialog(CommentPresenter.v(localCommentPresenter), false, true));
+          CommentPresenter.r(this.a).a(CommentPresenter.w(this.a).getString(2131888241), 0, new CommentPresenter.OnFeedCommentElementClickListener.4(this, paramObject));
           if (CommentPresenter.a(this.a, paramObject.postUser)) {
-            CommentPresenter.a(this.a).a(CommentPresenter.j(this.a).getString(2131691476), 1, new CommentPresenter.OnFeedCommentElementClickListener.5(this, paramView, paramObject));
+            CommentPresenter.r(this.a).a(CommentPresenter.y(this.a).getString(2131888434), 1, new CommentPresenter.OnFeedCommentElementClickListener.5(this, paramView, paramObject));
           } else {
-            CommentPresenter.a(this.a).a(CommentPresenter.k(this.a).getString(2131718216), 6, new CommentPresenter.OnFeedCommentElementClickListener.6(this, paramView, paramObject));
+            CommentPresenter.r(this.a).a(CommentPresenter.z(this.a).getString(2131915698), 6, new CommentPresenter.OnFeedCommentElementClickListener.6(this, paramView, paramObject));
           }
-          CommentPresenter.a(this.a).a(CommentPresenter.l(this.a).getString(2131690728));
-          CommentPresenter.a(this.a).show();
+          CommentPresenter.r(this.a).a(CommentPresenter.A(this.a).getString(2131887648));
+          CommentPresenter.r(this.a).show();
         }
       }
     }
@@ -154,15 +154,15 @@ class CommentPresenter$OnFeedCommentElementClickListener
     {
       paramView = (CertifiedAccountMeta.StComment)paramObject;
       paramObject = this.a;
-      CommentPresenter.a(paramObject, new ActionSheetDialog(CommentPresenter.a(paramObject), false, true));
-      CommentPresenter.a(this.a).a(CommentPresenter.b(this.a).getString(2131691291), 0, new CommentPresenter.OnFeedCommentElementClickListener.1(this, paramView));
+      CommentPresenter.a(paramObject, new ActionSheetDialog(CommentPresenter.o(paramObject), false, true));
+      CommentPresenter.r(this.a).a(CommentPresenter.p(this.a).getString(2131888241), 0, new CommentPresenter.OnFeedCommentElementClickListener.1(this, paramView));
       if (CommentPresenter.a(this.a, paramView.postUser)) {
-        CommentPresenter.a(this.a).a(CommentPresenter.d(this.a).getString(2131691476), 1, new CommentPresenter.OnFeedCommentElementClickListener.2(this, paramView));
+        CommentPresenter.r(this.a).a(CommentPresenter.s(this.a).getString(2131888434), 1, new CommentPresenter.OnFeedCommentElementClickListener.2(this, paramView));
       } else {
-        CommentPresenter.a(this.a).a(CommentPresenter.e(this.a).getString(2131718216), 6, new CommentPresenter.OnFeedCommentElementClickListener.3(this, paramView));
+        CommentPresenter.r(this.a).a(CommentPresenter.t(this.a).getString(2131915698), 6, new CommentPresenter.OnFeedCommentElementClickListener.3(this, paramView));
       }
-      CommentPresenter.a(this.a).a(CommentPresenter.f(this.a).getString(2131690728));
-      CommentPresenter.a(this.a).show();
+      CommentPresenter.r(this.a).a(CommentPresenter.u(this.a).getString(2131887648));
+      CommentPresenter.r(this.a).show();
     }
   }
 }

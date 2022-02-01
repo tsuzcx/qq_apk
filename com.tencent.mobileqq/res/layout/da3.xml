@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.wink.view.WinkMaterialPanel android:layout_gravity="bottom" android:id="@id/oit" android:background="@drawable/glq" android:paddingTop="14.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/bs_" app:categoryContentGap="14.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

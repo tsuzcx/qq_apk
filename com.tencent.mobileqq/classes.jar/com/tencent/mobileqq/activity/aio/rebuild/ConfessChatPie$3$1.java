@@ -17,11 +17,11 @@ class ConfessChatPie$3$1
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = AIOUtils.b(30.0F, this.a.this$0.a.getResources());
-    int j = AIOUtils.b(30.0F, this.a.this$0.a.getResources());
+    int i = AIOUtils.b(30.0F, this.a.this$0.e.getResources());
+    int j = AIOUtils.b(30.0F, this.a.this$0.e.getResources());
     if (paramLottieComposition == null)
     {
-      QLog.e(this.a.this$0.b, 1, "onCompositionLoaded lottieComposition is null");
+      QLog.e(this.a.this$0.c, 1, "onCompositionLoaded lottieComposition is null");
       return;
     }
     Object localObject = paramLottieComposition.getBounds();
@@ -32,13 +32,13 @@ class ConfessChatPie$3$1
     ((LottieDrawable)localObject).setScale(f1, f2);
     ((LottieDrawable)localObject).loop(false);
     ConfessChatPie.a(this.a.this$0, (LottieDrawable)localObject);
-    ConfessChatPie.a(this.a.this$0).addAnimatorListener(new ConfessChatPie.3.1.1(this));
+    ConfessChatPie.e(this.a.this$0).addAnimatorListener(new ConfessChatPie.3.1.1(this));
     ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1
  * JD-Core Version:    0.7.0.1
  */

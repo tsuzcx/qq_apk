@@ -12,19 +12,19 @@ final class NearbyVideoUtilsReal$3
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
       TransferRequest localTransferRequest = new TransferRequest();
       localTransferRequest.mIsUp = true;
-      localTransferRequest.mLocalPath = this.jdField_a_of_type_JavaLangString;
+      localTransferRequest.mLocalPath = this.a;
       localTransferRequest.mFileType = 64;
-      ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+      ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyVideoUtilsReal.3
  * JD-Core Version:    0.7.0.1
  */

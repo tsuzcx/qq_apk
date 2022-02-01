@@ -25,16 +25,16 @@ class NearbyPeopleProfileActivity$16
       localStringBuilder.append(paramString2);
       QLog.i("NearbyPeopleProfileActivity", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.access$300(this.a) != null) && (NearbyPeopleProfileActivity.access$300(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.access$300(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.access$500(this.a) != null))
+    if ((paramBoolean) && (paramInt == 0) && (this.a.mCard != null) && (this.a.mCard.hotInfo != null) && (paramString1 != null) && (paramString1.equals(this.a.mCard.hotInfo.troopUin)) && (NearbyPeopleProfileActivity.access$400(this.a) != null))
     {
-      NearbyPeopleProfileActivity.access$300(this.a).strHotChatInfo = "";
-      NearbyPeopleProfileActivity.access$300(this.a).hotInfo = null;
+      this.a.mCard.strHotChatInfo = "";
+      this.a.mCard.hotInfo = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.16
  * JD-Core Version:    0.7.0.1
  */

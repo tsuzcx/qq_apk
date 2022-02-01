@@ -10,8 +10,8 @@ import java.util.Map;
 
 public abstract class URLUtil
 {
-  public static final String URLPrefix = "http://";
-  public static final String URLSafePrefix = "https://";
+  public static final String URL_PREFIX = "http://";
+  public static final String URL_SAFE_PREFIX = "https://";
   
   public static String addParameter(String paramString1, String paramString2, String paramString3)
   {
@@ -227,7 +227,7 @@ public abstract class URLUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.URLUtil
  * JD-Core Version:    0.7.0.1
  */

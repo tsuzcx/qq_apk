@@ -32,27 +32,27 @@ import com.tencent.widget.XPanelContainer;
 public class PlusPanelProvider
   implements PanelProvider<PlusPanel>
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private PlusPanel jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel;
+  private BaseChatPie a;
+  private PlusPanel b;
   
   public PlusPanelProvider(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public PlusPanel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel;
+    return this.b;
   }
   
   public PlusPanel a(Context paramContext)
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel = ((PlusPanel)View.inflate(paramContext, 2131558565, null));
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel;
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    paramContext.a(localBaseChatPie, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    AIODtReportHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel);
+    this.b = ((PlusPanel)View.inflate(paramContext, 2131624122, null));
+    paramContext = this.b;
+    BaseChatPie localBaseChatPie = this.a;
+    paramContext.a(localBaseChatPie, localBaseChatPie.ah);
+    AIODtReportHelper.a(this.a, this.b);
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
@@ -60,70 +60,70 @@ public class PlusPanelProvider
       paramContext.append(System.currentTimeMillis() - l);
       QLog.d("OpenPanel", 2, paramContext.toString());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel;
-  }
-  
-  public void a()
-  {
-    Object localObject = ((SingTogetherConfigBean)QConfigManager.a().a(551)).a(4);
-    if ((localObject != null) && (((SingTogetherConfigBean.GeneralTogetherItem)localObject).d > 0))
-    {
-      int i;
-      if (((SingTogetherConfigBean.GeneralTogetherItem)localObject).c == 1) {
-        i = 1109995692;
-      } else {
-        i = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).d;
-      }
-      ((FetchOpenIdManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FETCH_OPENID_MANAGER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), i, true);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPlusPanel;
-    if (localObject != null) {
-      ((PlusPanel)localObject).a();
-    }
-    localObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((IRedTouchManager)localObject).getRedTouchInfoByAppSet(10, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ((PlusRedPointHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(89)).a()) != null)) {
-      ((IRedTouchManager)localObject).reportLevelZeroRedInfo(10, 31);
-    }
+    return this.b;
   }
   
   public void a(TroopChatPie paramTroopChatPie)
   {
-    if (!paramTroopChatPie.u()) {
-      ReportController.b(paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_plusentry", 0, 0, paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    if (!paramTroopChatPie.bF()) {
+      ReportController.b(paramTroopChatPie.d, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_plusentry", 0, 0, paramTroopChatPie.ah.b, "", "", "");
     }
-    Object localObject = (GiftPanelHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(136);
-    if (((GiftPanelHelper)localObject).a == null) {
-      ((GiftPanelHelper)localObject).a = new AIOGiftPanelContainer(paramTroopChatPie);
+    Object localObject = (GiftPanelHelper)this.a.q(136);
+    if (((GiftPanelHelper)localObject).e == null) {
+      ((GiftPanelHelper)localObject).e = new AIOGiftPanelContainer(paramTroopChatPie);
     }
-    localObject = ((GiftPanelHelper)localObject).a;
+    localObject = ((GiftPanelHelper)localObject).e;
     int j = TroopGiftPanel.e;
     int i;
-    if (AnonymousChatHelper.a().a(paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (AnonymousChatHelper.a().a(paramTroopChatPie.ah.b)) {
       i = 4;
     } else {
       i = 1;
     }
     ((AIOGiftPanelContainer)localObject).a(j, i);
-    ((ITroopAioAppService)paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopAioAppService.class, "")).getAppsInObserver(GroupUtil.a(paramTroopChatPie.d()));
-    paramTroopChatPie = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramTroopChatPie.getRedTouchInfoByAppSet(11, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ((PlusRedPointHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(89)).a()) != null)) {
+    ((ITroopAioAppService)paramTroopChatPie.d.getRuntimeService(ITroopAioAppService.class, "")).getAppsInObserver(GroupUtil.a(paramTroopChatPie.ag()));
+    paramTroopChatPie = (IRedTouchManager)this.a.d.getRuntimeService(IRedTouchManager.class, "");
+    if ((this.a.ah != null) && (paramTroopChatPie.getRedTouchInfoByAppSet(11, this.a.ah.c, ((PlusRedPointHelper)this.a.q(89)).a()) != null)) {
       paramTroopChatPie.reportLevelZeroRedInfo(11, 31);
     }
   }
   
   public void a(XPanelContainer paramXPanelContainer)
   {
-    ((FastImageHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(83)).b();
+    ((FastImageHelper)this.a.q(83)).c();
     paramXPanelContainer.a(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.h(0);
-    AIOPanelUtiles.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8004078", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    paramXPanelContainer = (IEarlyDownloadService)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+    this.a.m(0);
+    AIOPanelUtiles.a(this.a.d, "0X8004078", this.a.ah.a);
+    paramXPanelContainer = (IEarlyDownloadService)this.a.d.getRuntimeService(IEarlyDownloadService.class, "");
     if (paramXPanelContainer != null)
     {
       paramXPanelContainer = (PokeResHandler)paramXPanelContainer.getEarlyHandler("qq.android.poke.res_0625");
-      if ((paramXPanelContainer != null) && (!paramXPanelContainer.g())) {
+      if ((paramXPanelContainer != null) && (!paramXPanelContainer.r())) {
         paramXPanelContainer.a(false);
       }
+    }
+  }
+  
+  public void b()
+  {
+    Object localObject = ((SingTogetherConfigBean)QConfigManager.b().b(551)).a(4);
+    if ((localObject != null) && (((SingTogetherConfigBean.GeneralTogetherItem)localObject).f > 0))
+    {
+      int i;
+      if (((SingTogetherConfigBean.GeneralTogetherItem)localObject).e == 1) {
+        i = 1109995692;
+      } else {
+        i = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).f;
+      }
+      ((FetchOpenIdManager)this.a.d.getManager(QQManagerFactory.FETCH_OPENID_MANAGER)).a(Long.parseLong(this.a.ah.b), i, true);
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      ((PlusPanel)localObject).a();
+    }
+    localObject = (IRedTouchManager)this.a.d.getRuntimeService(IRedTouchManager.class, "");
+    if ((this.a.ah != null) && (((IRedTouchManager)localObject).getRedTouchInfoByAppSet(10, this.a.ah.c, ((PlusRedPointHelper)this.a.q(89)).a()) != null)) {
+      ((IRedTouchManager)localObject).reportLevelZeroRedInfo(10, 31);
     }
   }
   
@@ -139,8 +139,8 @@ public class PlusPanelProvider
   
   public void onHideAllPanel()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a();
+    if (this.a.W != null) {
+      this.a.W.getPlusRedTouchAndUpdate();
     }
   }
   
@@ -148,13 +148,13 @@ public class PlusPanelProvider
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.a;
     if ((localBaseChatPie instanceof TroopChatPie)) {
       a((TroopChatPie)localBaseChatPie);
     }
     a(paramXPanelContainer);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof FriendChatPie)) {
-      a();
+    if ((this.a instanceof FriendChatPie)) {
+      b();
     }
   }
   
@@ -164,7 +164,7 @@ public class PlusPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PlusPanelProvider
  * JD-Core Version:    0.7.0.1
  */

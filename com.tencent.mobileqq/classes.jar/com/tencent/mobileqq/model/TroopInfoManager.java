@@ -10,33 +10,32 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.troop.TroopInfoCheckUtil;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import com.tencent.mobileqq.troop.navigatebar.BaseInfoManager;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Observable;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
 
 public class TroopInfoManager
-  extends Observable
+  extends BaseInfoManager
   implements Manager
 {
-  protected LruCache<String, String> a;
   protected QQAppInterface a;
-  protected ConcurrentHashMap<Long, TroopFeedsDataManager> a;
-  public boolean a;
-  protected ConcurrentHashMap<String, MessageInfo> b = new ConcurrentHashMap();
+  protected LruCache<String, String> b;
+  protected ConcurrentHashMap<Long, TroopFeedsDataManager> c;
+  public boolean d = false;
+  protected ConcurrentHashMap<String, MessageInfo> e = new ConcurrentHashMap();
   
   public TroopInfoManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
+    this.a = paramQQAppInterface;
+    if (this.b == null) {
       try
       {
-        if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
-          this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(10);
+        if (this.b == null) {
+          this.b = new LruCache(10);
         }
       }
       finally {}
@@ -46,7 +45,7 @@ public class TroopInfoManager
   
   public MessageInfo a(String paramString)
   {
-    return (MessageInfo)this.b.get(paramString);
+    return (MessageInfo)this.e.get(paramString);
   }
   
   public MessageInfo a(String paramString, MessageInfo paramMessageInfo)
@@ -59,22 +58,22 @@ public class TroopInfoManager
       ((StringBuilder)localObject).append(" ");
       ((StringBuilder)localObject).append(paramMessageInfo.a());
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(paramMessageInfo.a());
+      ((StringBuilder)localObject).append(paramMessageInfo.e());
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(paramMessageInfo.a());
+      ((StringBuilder)localObject).append(paramMessageInfo.b());
       QLog.d("TroopInfoManager_At_Me_DISC", 2, ((StringBuilder)localObject).toString());
     }
-    MessageInfo localMessageInfo = (MessageInfo)this.b.get(paramString);
+    MessageInfo localMessageInfo = (MessageInfo)this.e.get(paramString);
     Object localObject = localMessageInfo;
     if (paramMessageInfo != null)
     {
-      if (!paramMessageInfo.a()) {
+      if (!paramMessageInfo.e()) {
         return localMessageInfo;
       }
       if (localMessageInfo == null)
       {
         paramMessageInfo = new MessageInfo(paramMessageInfo);
-        this.b.put(paramString, paramMessageInfo);
+        this.e.put(paramString, paramMessageInfo);
         localObject = paramMessageInfo;
         if (QLog.isColorLevel())
         {
@@ -104,18 +103,18 @@ public class TroopInfoManager
   
   public TroopFeedsDataManager a(Long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (this.c == null) {
+      this.c = new ConcurrentHashMap();
     }
-    TroopFeedsDataManager localTroopFeedsDataManager2 = (TroopFeedsDataManager)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
+    TroopFeedsDataManager localTroopFeedsDataManager2 = (TroopFeedsDataManager)this.c.get(paramLong);
     TroopFeedsDataManager localTroopFeedsDataManager1 = localTroopFeedsDataManager2;
     if (localTroopFeedsDataManager2 == null)
     {
       localTroopFeedsDataManager1 = localTroopFeedsDataManager2;
       if (paramBoolean)
       {
-        localTroopFeedsDataManager1 = new TroopFeedsDataManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramLong, localTroopFeedsDataManager1);
+        localTroopFeedsDataManager1 = new TroopFeedsDataManager(this.a, paramLong);
+        this.c.put(paramLong, localTroopFeedsDataManager1);
       }
     }
     return localTroopFeedsDataManager1;
@@ -123,7 +122,7 @@ public class TroopInfoManager
   
   public void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     paramContext = paramString2;
     if (!TextUtils.isEmpty(paramString1))
@@ -140,7 +139,7 @@ public class TroopInfoManager
   
   public void a(Long paramLong)
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap == null) {
       return;
     }
@@ -152,12 +151,17 @@ public class TroopInfoManager
     if (paramArrayOfByte == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, Base64Util.encodeToString(paramArrayOfByte, 2));
+    this.b.put(paramString, Base64Util.encodeToString(paramArrayOfByte, 2));
   }
   
-  public byte[] a(String paramString)
+  public MessageInfo b(String paramString)
   {
-    paramString = (String)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+    return (MessageInfo)this.e.remove(paramString);
+  }
+  
+  public byte[] c(String paramString)
+  {
+    paramString = (String)this.b.get(paramString);
     if (paramString == null) {
       return null;
     }
@@ -170,14 +174,9 @@ public class TroopInfoManager
     return null;
   }
   
-  public MessageInfo b(String paramString)
-  {
-    return (MessageInfo)this.b.remove(paramString);
-  }
-  
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = ((ConcurrentHashMap)localObject).values().iterator();
@@ -188,13 +187,13 @@ public class TroopInfoManager
           localTroopFeedsDataManager.deleteObservers();
         }
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.c.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.TroopInfoManager
  * JD-Core Version:    0.7.0.1
  */

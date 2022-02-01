@@ -13,24 +13,24 @@ class TroopNickNameManager$2
   
   public void run()
   {
-    if (this.this$0.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
+    if (this.this$0.e.h(this.a, this.b.qq) != null)
     {
       TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localArrayList.add(this.b.qq);
+      localTroopNickNameUpdateEvent.a = localArrayList;
+      localTroopNickNameUpdateEvent.b = this.a;
       StoryDispatcher.a().dispatch(localTroopNickNameUpdateEvent);
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      this.this$0.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
+    if (!this.c) {
+      this.this$0.a(this.b, this.a, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.2
  * JD-Core Version:    0.7.0.1
  */

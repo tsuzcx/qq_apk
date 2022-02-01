@@ -39,7 +39,11 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.mobileqq.nearby.home.INearbyTabInfo;
 import com.tencent.mobileqq.nearby.profilecard.MiniCardManagerUtils;
+import com.tencent.mobileqq.newnearby.INearbyMsgbox;
+import com.tencent.mobileqq.newnearby.INearbyReportHelper;
+import com.tencent.mobileqq.newnearby.INearbyTabBuilder;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tianshu.observer.RedpointObserver;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
@@ -47,6 +51,7 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.CustomHandler;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabLayoutCompat;
 import com.tencent.nowsummarycard.NowSummaryCard.MiniCard;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -74,6 +79,7 @@ public class BaseMsgBoxActivity
   private static final int MSG_REFRESH_NEARBY_UNREAD = 1;
   protected static final String TAG = "Q.msg_box";
   protected boolean isFromNearby = false;
+  protected boolean isFromQQNearby = false;
   AvatarObserver mAvatarObserver = new BaseMsgBoxActivity.1(this);
   ImageView mBottomBarIcon;
   TextView mBottomBarText;
@@ -107,6 +113,7 @@ public class BaseMsgBoxActivity
   private int mScrollState = 0;
   TabBarView mTabBarView;
   ArrayList<INearbyTabInfo> mTabInfos = new ArrayList();
+  private TabLayoutCompat mTabLayout;
   private Handler.Callback mUICallback = new BaseMsgBoxActivity.5(this);
   MqqHandler mUIHandler;
   protected int mUnReadMsgNum = -1;
@@ -134,9 +141,9 @@ public class BaseMsgBoxActivity
   private String getNickname(RecentBaseData paramRecentBaseData)
   {
     if ((this.isFromNearby) && (MiniCardManagerUtils.a(paramRecentBaseData.getRecentUserUin()))) {
-      return MiniCardManagerUtils.a(paramRecentBaseData.getRecentUserUin()).nick.get();
+      return MiniCardManagerUtils.b(paramRecentBaseData.getRecentUserUin()).nick.get();
     }
-    return ContactUtils.g(this.app, paramRecentBaseData.getRecentUserUin());
+    return ContactUtils.h(this.app, paramRecentBaseData.getRecentUserUin());
   }
   
   private void updateNearbyTabRedDot(RedDotTextView paramRedDotTextView)
@@ -156,9 +163,19 @@ public class BaseMsgBoxActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561172);
-    getWindow().setBackgroundDrawable(null);
     paramBundle = getIntent();
+    this.isFromQQNearby = paramBundle.getBooleanExtra("isFromQQNearby", false);
+    ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).setNearbyVersion(this.isFromQQNearby);
+    if (this.isFromQQNearby)
+    {
+      setContentView(2131625510);
+      ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).initStatusBar(this);
+    }
+    else
+    {
+      setContentView(2131627524);
+    }
+    getWindow().setBackgroundDrawable(null);
     this.mBoxMsgType = paramBundle.getIntExtra("uintype", -1);
     this.mBoxUIN = paramBundle.getStringExtra("uin");
     this.isFromNearby = paramBundle.getBooleanExtra("isFromNearby", false);
@@ -172,12 +189,12 @@ public class BaseMsgBoxActivity
       ((StringBuilder)localObject).append(this.mBoxMsgType);
       QLog.d("Q.msg_box", 2, ((StringBuilder)localObject).toString());
     }
-    if (!UinTypeUtil.a(this.mBoxUIN, this.mBoxMsgType))
+    if (!UinTypeUtil.c(this.mBoxUIN, this.mBoxMsgType))
     {
       this.mBoxUIN = AppConstants.LBS_HELLO_UIN;
       this.mBoxMsgType = 1001;
     }
-    this.mLoadingView = ((ViewStub)findViewById(2131374278));
+    this.mLoadingView = ((ViewStub)findViewById(2131442441));
     Object localObject = this.mLoadingView;
     if (localObject == null)
     {
@@ -186,14 +203,14 @@ public class BaseMsgBoxActivity
       return false;
     }
     ((ViewStub)localObject).setVisibility(0);
-    this.mMsgList = ((FPSSwipListView)findViewById(2131365422));
-    this.mMsgBar = findViewById(2131365423);
-    this.mBottomBarIcon = ((ImageView)this.mMsgBar.findViewById(2131365424));
-    this.mBottomBarText = ((TextView)this.mMsgBar.findViewById(2131365425));
-    this.mEmptyTipLayout = findViewById(2131366231);
+    this.mMsgList = ((FPSSwipListView)findViewById(2131431626));
+    this.mMsgBar = findViewById(2131431627);
+    this.mBottomBarIcon = ((ImageView)this.mMsgBar.findViewById(2131431628));
+    this.mBottomBarText = ((TextView)this.mMsgBar.findViewById(2131431629));
+    this.mEmptyTipLayout = findViewById(2131432522);
     this.mDragHost = DragFrameLayout.a(this);
     this.mDragHost.a(this, false);
-    this.mFooterView = getLayoutInflater().inflate(2131558896, null);
+    this.mFooterView = getLayoutInflater().inflate(2131624518, null);
     this.mMsgList.addFooterView(this.mFooterView);
     this.mMsgList.setRightIconMenuListener(this);
     this.mMsgList.setOnScrollListener(this);
@@ -214,7 +231,14 @@ public class BaseMsgBoxActivity
     if (QLog.isColorLevel()) {
       this.mInitUITime = System.currentTimeMillis();
     }
-    if (this.isFromNearby) {
+    if (this.isFromQQNearby)
+    {
+      this.mTabLayout = ((TabLayoutCompat)findViewById(2131446755));
+      localObject = paramBundle.getIntegerArrayListExtra("tabTypes");
+      ArrayList localArrayList = paramBundle.getStringArrayListExtra("tabNames");
+      ((INearbyTabBuilder)QRoute.api(INearbyTabBuilder.class)).buildTabByConfig((ArrayList)localObject, localArrayList, this, this.mTabLayout);
+    }
+    if ((this.isFromNearby) && (!this.isFromQQNearby)) {
       initNearbyTabs(paramBundle);
     }
     return true;
@@ -242,7 +266,10 @@ public class BaseMsgBoxActivity
     }
     localObject = this.mRecentAdapter;
     if (localObject != null) {
-      ((RecentAdapter)localObject).b();
+      ((RecentAdapter)localObject).h();
+    }
+    if (this.isFromQQNearby) {
+      ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).setNearbyVersion(false);
     }
   }
   
@@ -260,6 +287,9 @@ public class BaseMsgBoxActivity
         this.app.getConversationFacade().a(this.mBoxMsgType, ((com.tencent.imcore.message.Message)localObject).time);
       }
     }
+    if (this.isFromQQNearby) {
+      ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).setNearbyVersion(false);
+    }
   }
   
   protected void doOnResume()
@@ -267,6 +297,9 @@ public class BaseMsgBoxActivity
     super.doOnResume();
     refreshListGlobal();
     this.mScrollState = 0;
+    if (this.isFromQQNearby) {
+      ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).setNearbyVersion(true);
+    }
   }
   
   protected void doOnStart()
@@ -382,7 +415,7 @@ public class BaseMsgBoxActivity
     else
     {
       l1 = System.currentTimeMillis();
-      this.mMRListData = this.app.getMessageProxy(this.mBoxMsgType).a(this.mBoxUIN, this.mBoxMsgType);
+      this.mMRListData = this.app.getMessageProxy(this.mBoxMsgType).b(this.mBoxUIN, this.mBoxMsgType);
       preProcessMessageList(this.mMRListData);
       if (QLog.isDevelopLevel())
       {
@@ -463,10 +496,10 @@ public class BaseMsgBoxActivity
       int i = this.mMsgBoxTabIndex;
       if ((i >= 0) && (i < this.mTabInfos.size()))
       {
-        this.mTabBarView = ((TabBarView)findViewById(2131378217));
+        this.mTabBarView = ((TabBarView)findViewById(2131446735));
         NearbyActivityHelper.a(this, this.mTabBarView, this.mTabInfos);
         this.mTabBarView.setOnTabChangeListener(new BaseMsgBoxActivity.3(this));
-        findViewById(2131378218).setVisibility(0);
+        findViewById(2131446736).setVisibility(0);
         this.mTabBarView.setVisibility(0);
         this.mTabBarView.setSelectedTab(this.mMsgBoxTabIndex, false);
         this.mMsgTabRedTouch = NearbyActivityHelper.a(this, this.mTabBarView, this.mTabInfos.size(), this.mMsgBoxTabIndex);
@@ -489,6 +522,11 @@ public class BaseMsgBoxActivity
     }
   }
   
+  public void initQQNearbyTabs(int paramInt)
+  {
+    ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).initQQNearbyTabs(this, this.mTabLayout, this.mRedpointObserver, paramInt, this.mIsNeedShowRedDot, this.mUnReadMsgNum);
+  }
+  
   protected boolean isListViewScrolling()
   {
     int i = this.mScrollState;
@@ -502,7 +540,7 @@ public class BaseMsgBoxActivity
   
   public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if (this.mDragHost.a() == -1) {
+    if (this.mDragHost.getMode() == -1) {
       refreshListGlobal();
     }
   }
@@ -523,22 +561,22 @@ public class BaseMsgBoxActivity
     if (paramRecentBaseData == null) {
       return;
     }
-    paramView = paramRecentBaseData.getRecentUserUin();
+    String str = paramRecentBaseData.getRecentUserUin();
     if (QLog.isColorLevel())
     {
-      paramString = new StringBuilder();
-      paramString.append("onRecentBaseDataClick, uin=");
-      paramString.append(paramView);
-      QLog.i("Q.msg_box", 2, paramString.toString());
+      paramView = new StringBuilder();
+      paramView.append("onRecentBaseDataClick, uin=");
+      paramView.append(str);
+      QLog.i("Q.msg_box", 2, paramView.toString());
     }
-    if (UinTypeUtil.c(paramView))
+    if (UinTypeUtil.c(str))
     {
       this.app.getMessageFacade().a(paramRecentBaseData.getRecentUserUin(), this.mBoxMsgType);
-      paramRecentBaseData = new Intent(this, SayHelloMsgListActivity.class);
-      paramRecentBaseData.putExtra("uin", paramView);
-      paramRecentBaseData.putExtra("uintype", this.mBoxMsgType);
-      paramRecentBaseData.putExtra("isFromNearby", this.isFromNearby);
-      startActivity(paramRecentBaseData);
+      paramView = new Intent(this, SayHelloMsgListActivity.class);
+      paramView.putExtra("uin", str);
+      paramView.putExtra("uintype", this.mBoxMsgType);
+      paramView.putExtra("isFromNearby", this.isFromNearby);
+      startActivity(paramView);
       if (this.isFromNearby) {
         paramView = "1";
       } else {
@@ -547,19 +585,24 @@ public class BaseMsgBoxActivity
       ReportController.b(this.app, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_say_hi", 0, 0, "", "", paramView, "");
       return;
     }
-    paramString = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (paramString != null) {
-      paramBoolean = paramString.b(paramView);
+    paramView = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (paramView != null) {
+      paramBoolean = paramView.n(str);
     } else {
       paramBoolean = false;
     }
-    paramString = new StringBuilder();
-    paramString.append("onRecentBaseDataClick, isFriend=");
-    paramString.append(paramBoolean);
-    QLog.i("Q.msg_box", 2, paramString.toString());
     Intent localIntent = new Intent(this, ChatActivity.class);
-    localIntent.putExtra("uin", paramView);
-    if ((paramBoolean) && (!this.isFromNearby))
+    localIntent.putExtra("uin", str);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onRecentBaseDataClick, uin=");
+      paramView.append(str);
+      paramView.append(", isFriend=");
+      paramView.append(paramBoolean);
+      QLog.i("Q.msg_box", 2, paramView.toString());
+    }
+    if (paramBoolean)
     {
       localIntent.putExtra("uintype", 0);
     }
@@ -593,15 +636,20 @@ public class BaseMsgBoxActivity
         paramRecentBaseData = "1";
       }
       ReportController.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "1", paramView, "");
-      return;
     }
-    paramString = this.app;
-    if (paramRecentBaseData.getRecentUserType() == 1001) {
-      paramRecentBaseData = "0";
-    } else {
-      paramRecentBaseData = "1";
+    else
+    {
+      paramString = this.app;
+      if (paramRecentBaseData.getRecentUserType() == 1001) {
+        paramRecentBaseData = "0";
+      } else {
+        paramRecentBaseData = "1";
+      }
+      ReportController.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "0", paramView, "");
     }
-    ReportController.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "0", paramView, "");
+    if (this.isFromNearby) {
+      ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportMsgListItemClick(this.app, str);
+    }
   }
   
   public void onRecentBaseDataDelete(RecentBaseData paramRecentBaseData, String paramString)
@@ -701,6 +749,17 @@ public class BaseMsgBoxActivity
     }
   }
   
+  public void setMsgTabRedTouch(RedTouch paramRedTouch)
+  {
+    this.mMsgTabRedTouch = paramRedTouch;
+    if (this.mUnReadMsgNum < 0)
+    {
+      ThreadManager.getUIHandler().postDelayed(this.nearbyDelayInitUnReadMsg, 5000L);
+      return;
+    }
+    ThreadManager.getUIHandler().post(this.nearbyDelayInitUnReadMsg);
+  }
+  
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord))
@@ -731,7 +790,7 @@ public class BaseMsgBoxActivity
           this.mDelItemKey = "";
           return;
         }
-        int i = UinTypeUtil.a(paramObservable.istroop);
+        int i = UinTypeUtil.e(paramObservable.istroop);
         boolean bool2 = true;
         boolean bool1;
         if (i == 1010)
@@ -739,7 +798,7 @@ public class BaseMsgBoxActivity
           bool1 = bool2;
           if (this.mBoxMsgType == 1010) {}
         }
-        else if ((UinTypeUtil.a(paramObservable.istroop) == 1001) && (this.mBoxMsgType == 1001))
+        else if ((UinTypeUtil.e(paramObservable.istroop) == 1001) && (this.mBoxMsgType == 1001))
         {
           bool1 = bool2;
         }
@@ -779,7 +838,7 @@ public class BaseMsgBoxActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity
  * JD-Core Version:    0.7.0.1
  */

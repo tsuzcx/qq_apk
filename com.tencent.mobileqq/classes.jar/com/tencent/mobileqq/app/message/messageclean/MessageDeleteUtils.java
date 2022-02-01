@@ -53,15 +53,6 @@ public class MessageDeleteUtils
     return paramInt;
   }
   
-  private static String a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((((MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(paramString, paramInt, localStringBuilder) > 0) && (localStringBuilder.length() > 0)) {
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
   public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
     if ((TextUtils.isEmpty(paramString)) || ((paramInt == 0) || ((paramInt == 1) || ((paramInt != 1000) && (paramInt != 1004) && ((paramInt == 3000) || (paramInt != 10010)))))) {}
@@ -80,11 +71,11 @@ public class MessageDeleteUtils
     {
       break label121;
     }
-    a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+    a(paramString, paramInt, c(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+    return;
+    a(paramString, paramInt, c(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
     return;
     a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
-    return;
-    a(paramString, paramInt, a(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
     return;
     label121:
     if (QLog.isColorLevel())
@@ -100,7 +91,7 @@ public class MessageDeleteUtils
   
   private static void a(String paramString1, int paramInt, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    List localList = paramQQAppInterface.getMessageFacade().a(paramString1, paramInt);
+    List localList = paramQQAppInterface.getMessageFacade().h(paramString1, paramInt);
     long l1;
     if ((localList != null) && (!localList.isEmpty()))
     {
@@ -113,8 +104,8 @@ public class MessageDeleteUtils
     else {
       l1 = 0L;
     }
-    paramQQAppInterface.getMessageFacade().a(paramString1, paramInt);
     paramQQAppInterface.getMessageFacade().c(paramString1, paramInt);
+    paramQQAppInterface.getMessageFacade().g(paramString1, paramInt);
     if (paramString2 != null)
     {
       long l2;
@@ -137,6 +128,15 @@ public class MessageDeleteUtils
   private static String b(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
     StringBuilder localStringBuilder = new StringBuilder();
+    if ((((MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(paramString, paramInt, localStringBuilder) > 0) && (localStringBuilder.length() > 0)) {
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  private static String c(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
     if (a(paramString, paramInt, localStringBuilder, paramQQAppInterface) > 0) {
       return localStringBuilder.toString();
     }
@@ -145,7 +145,7 @@ public class MessageDeleteUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.MessageDeleteUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -68,7 +68,7 @@ class PlayOperationViewModelImpl$32
               ThreadManager.getUIHandler().post(new PlayOperationViewModelImpl.32.1(this));
               PlayOperationViewModelImpl.access$1502(this.a, false);
             }
-            this.a.mVideoData.a = true;
+            this.a.mVideoData.n = true;
             ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_focus").genderInd1().reportByVideo(this.a.app);
             ThreadManagerV2.excute(new PlayOperationViewModelImpl.32.2(this, (INearbyCardManager)this.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
             PlayOperationViewModelImpl.access$1700(this.a, PlayOperationViewModelImpl.access$1400(this.a));
@@ -76,7 +76,7 @@ class PlayOperationViewModelImpl$32
           }
           if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
           {
-            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
+            QQToast.makeText(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).show();
             return;
           }
         }
@@ -90,7 +90,7 @@ class PlayOperationViewModelImpl$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.32
  * JD-Core Version:    0.7.0.1
  */

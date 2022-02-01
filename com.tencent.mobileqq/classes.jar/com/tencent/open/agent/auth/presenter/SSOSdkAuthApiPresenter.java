@@ -26,8 +26,8 @@ import mqq.app.MobileQQ;
 
 public class SSOSdkAuthApiPresenter
 {
-  private INewAuthDataSource jdField_a_of_type_ComTencentOpenAgentAuthModelINewAuthDataSource = new NewAuthDataSourceImpl();
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> a = new ConcurrentHashMap();
+  private INewAuthDataSource b = new NewAuthDataSourceImpl();
   
   private Bundle a(Bundle paramBundle)
   {
@@ -41,7 +41,7 @@ public class SSOSdkAuthApiPresenter
   
   private void a(int paramInt, String paramString1, boolean paramBoolean, String paramString2, List<Permission> paramList, long paramLong, AuthCallback paramAuthCallback, String paramString3)
   {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    Integer localInteger = (Integer)this.a.get(paramString1);
     int i;
     if (localInteger == null) {
       i = 0;
@@ -51,20 +51,20 @@ public class SSOSdkAuthApiPresenter
     if ((paramInt == 1002) && (i < 1))
     {
       SSOLog.a("SSOSdkAuthApiPresenter", new Object[] { "OpenVirtual.doAuthorize retry" });
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, Integer.valueOf(i + 1));
+      this.a.put(paramString1, Integer.valueOf(i + 1));
       a(paramBoolean, paramString1, paramString2, paramList, paramLong, paramAuthCallback, paramString3);
       return;
     }
     if (paramAuthCallback != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, Integer.valueOf(0));
+      this.a.put(paramString1, Integer.valueOf(0));
       paramAuthCallback.a(false, -1, null);
     }
   }
   
   private void a(int paramInt, String paramString1, boolean paramBoolean, String paramString2, List<Permission> paramList, long paramLong, AuthCallback paramAuthCallback, String paramString3, AccountInfo paramAccountInfo)
   {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    Integer localInteger = (Integer)this.a.get(paramString1);
     int i;
     if (localInteger == null) {
       i = 0;
@@ -74,13 +74,13 @@ public class SSOSdkAuthApiPresenter
     if ((paramInt == 1002) && (i < 1))
     {
       SSOLog.a("SSOSdkAuthApiPresenter", new Object[] { "OpenVirtual.doAuthorize retry" });
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, Integer.valueOf(i + 1));
+      this.a.put(paramString1, Integer.valueOf(i + 1));
       a(paramBoolean, paramString1, paramString2, paramList, paramLong, paramAuthCallback, paramString3);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, Integer.valueOf(0));
+    this.a.put(paramString1, Integer.valueOf(0));
     paramAuthCallback.a(false, paramInt, null);
-    AuthReporter.a("agent_authority", AuthMemoryCache.a().a(paramString1), 0L, 0L, paramInt, paramAccountInfo.a, "");
+    AuthReporter.a("agent_authority", AuthMemoryCache.a().h(paramString1), 0L, 0L, paramInt, paramAccountInfo.a, "");
     AuthReporter.a(1, "LOGIN_AUTH", paramAccountInfo.a, paramString1, 3002, "");
     paramString2 = ReportCenter.a();
     paramList = paramAccountInfo.a;
@@ -93,7 +93,7 @@ public class SSOSdkAuthApiPresenter
   
   private void a(Bundle paramBundle, long paramLong, int paramInt, String paramString1, String paramString2, AccountInfo paramAccountInfo, AuthCallback paramAuthCallback)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, Integer.valueOf(0));
+    this.a.put(paramString1, Integer.valueOf(0));
     try
     {
       byte[] arrayOfByte = AuthorityUtil.a(paramBundle, "ConnAuthSvr.sdk_auth_api_emp".equals(paramString2), paramAccountInfo);
@@ -116,7 +116,7 @@ public class SSOSdkAuthApiPresenter
         label131:
         long l1 = localAuthorizeResponse.toByteArray().length;
         AuthReporter.a(paramBundle, paramLong, i, 13, paramString2, paramString1, paramAccountInfo.a);
-        paramLong = AuthMemoryCache.a().a(paramString1);
+        paramLong = AuthMemoryCache.a().h(paramString1);
         long l2 = arrayOfByte.length;
         paramBundle = paramAccountInfo.a;
         paramString2 = new StringBuilder();
@@ -151,7 +151,7 @@ public class SSOSdkAuthApiPresenter
     localStringBuilder.append(" | uin : *");
     localStringBuilder.append(AuthorityUtil.a(paramAccountInfo.a));
     SSOLog.a("SSOSdkAuthApiPresenter", new Object[] { localObject2, localStringBuilder.toString() });
-    this.jdField_a_of_type_ComTencentOpenAgentAuthModelINewAuthDataSource.a(paramBundle, paramAccountInfo, paramBoolean, paramString1, paramString2, paramList, paramLong, paramString3, (Object[])localObject1, new SSOSdkAuthApiPresenter.1(this, l, str, paramAccountInfo, paramString1, paramBoolean, paramString2, paramList, paramLong, paramAuthCallback, paramString3));
+    this.b.a(paramBundle, paramAccountInfo, paramBoolean, paramString1, paramString2, paramList, paramLong, paramString3, (Object[])localObject1, new SSOSdkAuthApiPresenter.1(this, l, str, paramAccountInfo, paramString1, paramBoolean, paramString2, paramList, paramLong, paramAuthCallback, paramString3));
   }
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, List<Permission> paramList, long paramLong, AuthCallback paramAuthCallback, String paramString3)
@@ -163,13 +163,13 @@ public class SSOSdkAuthApiPresenter
     } else {
       localObject = paramString2;
     }
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a((String)localObject);
-    Object localObject = AuthMemoryCache.a().a((String)localObject);
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d((String)localObject);
+    Object localObject = AuthMemoryCache.a().i((String)localObject);
     if ((localAppRuntime != null) && (localObject != null) && (localAccountInfo != null))
     {
       if (!TextUtils.isEmpty(paramString2))
       {
-        new ProxyAuthManager().a(this.jdField_a_of_type_ComTencentOpenAgentAuthModelINewAuthDataSource, paramBoolean, paramString1, paramString2, paramList, paramLong, paramAuthCallback, paramString3, localAccountInfo, (Bundle)localObject);
+        new ProxyAuthManager().a(this.b, paramBoolean, paramString1, paramString2, paramList, paramLong, paramAuthCallback, paramString3, localAccountInfo, (Bundle)localObject);
         return;
       }
       a(paramBoolean, paramString1, paramString2, paramList, paramLong, paramAuthCallback, paramString3, localAccountInfo, (Bundle)localObject);
@@ -181,7 +181,7 @@ public class SSOSdkAuthApiPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.SSOSdkAuthApiPresenter
  * JD-Core Version:    0.7.0.1
  */

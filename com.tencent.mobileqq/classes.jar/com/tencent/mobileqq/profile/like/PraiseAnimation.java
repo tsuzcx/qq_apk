@@ -27,21 +27,14 @@ import com.tencent.util.AnimateUtils.AnimationAdapter;
 public class PraiseAnimation
   extends AnimateUtils.AnimationAdapter
 {
-  int a;
-  public Drawable a;
-  public SparseArray<Pair<Point, Integer>> a;
-  public View a;
-  public FloatViewBuilderFactory a;
-  public boolean a;
-  public Drawable[] a;
+  int a = 0;
   int b = 0;
-  
-  public PraiseAnimation()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
+  public View c;
+  public Drawable[] d;
+  public Drawable e;
+  public boolean f = false;
+  public FloatViewBuilderFactory g;
+  public SparseArray<Pair<Point, Integer>> h = new SparseArray();
   
   public static Animation a(Animation.AnimationListener paramAnimationListener, float paramFloat1, float paramFloat2)
   {
@@ -63,7 +56,7 @@ public class PraiseAnimation
   
   public void a(QQAppInterface paramQQAppInterface, HeartLayout paramHeartLayout, Bitmap paramBitmap, PraiseManager.OnPraiseLoadListener paramOnPraiseLoadListener, int paramInt1, boolean paramBoolean, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       if (QLog.isColorLevel()) {
         QLog.i("PraiseManager", 2, "doZanAnim, SimpleUIMode is open now");
@@ -72,25 +65,25 @@ public class PraiseAnimation
       return;
     }
     PraiseManager localPraiseManager = (PraiseManager)paramQQAppInterface.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER);
-    if ((paramBoolean) && (localPraiseManager.a.get(Integer.valueOf(paramInt1)) == null))
+    if ((paramBoolean) && (localPraiseManager.c.get(Integer.valueOf(paramInt1)) == null))
     {
       localPraiseManager.a(paramOnPraiseLoadListener);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
+      this.h.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
     }
     paramOnPraiseLoadListener = localPraiseManager.a(paramInt1, paramBoolean, "from_nearby_people");
     if (paramOnPraiseLoadListener != null)
     {
-      if ((paramInt2 == 2) && (paramOnPraiseLoadListener.c != null))
+      if ((paramInt2 == 2) && (paramOnPraiseLoadListener.j != null))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory != null)
+        if (this.g != null)
         {
-          paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory.a(paramInt2, paramHeartLayout.a), paramFloat1 - DisplayUtil.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - DisplayUtil.a(paramHeartLayout.getContext(), 120.0F), DisplayUtil.a(paramHeartLayout.getContext(), 75.0F), DisplayUtil.a(paramHeartLayout.getContext(), 65.0F));
+          paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.j, paramQQAppInterface, this.g.a(paramInt2, paramHeartLayout.d), paramFloat1 - DisplayUtil.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - DisplayUtil.a(paramHeartLayout.getContext(), 120.0F), DisplayUtil.a(paramHeartLayout.getContext(), 75.0F), DisplayUtil.a(paramHeartLayout.getContext(), 65.0F));
           return;
         }
-        paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramFloat1, paramFloat2);
+        paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.j, paramFloat1, paramFloat2);
         return;
       }
-      paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.b, paramFloat1, paramFloat2);
+      paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.h, paramFloat1, paramFloat2);
       return;
     }
     if (!paramBoolean) {
@@ -100,23 +93,23 @@ public class PraiseAnimation
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable, Resources paramResources)
   {
-    Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable2 = this.e;
     Drawable localDrawable1;
     if (paramBoolean2)
     {
-      localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131165720));
+      localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131166312));
     }
     else
     {
       localDrawable1 = localDrawable2;
       if (paramBoolean1) {
-        localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131165723));
+        localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131166315));
       }
     }
-    paramResources = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+    paramResources = this.d;
     if (paramResources == null)
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[] { paramDrawable, localDrawable1 };
+      this.d = new Drawable[] { paramDrawable, localDrawable1 };
       return;
     }
     paramResources[0] = paramDrawable;
@@ -125,29 +118,29 @@ public class PraiseAnimation
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Int % 2 == 0)
+    if (this.a % 2 == 0)
     {
       int i = this.b;
-      paramAnimation = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      paramAnimation = this.d;
       this.b = ((i + 1) % paramAnimation.length);
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.c;
       if ((localView instanceof ImageView)) {
         ((ImageView)localView).setImageDrawable(paramAnimation[this.b]);
       } else {
         localView.setBackgroundDrawable(paramAnimation[this.b]);
       }
     }
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int / 2 >= PraiseConfigHelper.jdField_a_of_type_Int)
+    this.a += 1;
+    if (this.a / 2 >= PraiseConfigHelper.c)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Boolean = false;
+      this.c.clearAnimation();
+      this.f = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseAnimation
  * JD-Core Version:    0.7.0.1
  */

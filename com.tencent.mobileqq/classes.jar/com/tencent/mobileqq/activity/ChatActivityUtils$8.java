@@ -13,19 +13,19 @@ final class ChatActivityUtils$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ChatActivityUtils.StartVideoListener)localObject).a();
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("");
     ReportController.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, (String)localObject, localStringBuilder.toString(), "1", "");
-    QAVHrMeeting.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    QAVHrMeeting.a(this.d, Long.valueOf(this.b).longValue(), null);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -33,7 +33,7 @@ final class ChatActivityUtils$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.8
  * JD-Core Version:    0.7.0.1
  */

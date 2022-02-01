@@ -22,7 +22,7 @@ public class AIOOpenWebMonitor
       return;
     }
     int j = CGILoader.a(paramMessageRecord.istroop);
-    if (WebAccelerator.a) {
+    if (WebAccelerator.b) {
       i = 1;
     } else {
       i = 2;
@@ -39,7 +39,7 @@ public class AIOOpenWebMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor
  * JD-Core Version:    0.7.0.1
  */

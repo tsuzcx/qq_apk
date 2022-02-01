@@ -14,21 +14,21 @@ class LiteCopyPromptHelper$3
   
   public void onClick(View paramView)
   {
-    LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).removeCallbacks(LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper));
-    LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).run();
-    int i = LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).getSelectionStart();
-    Editable localEditable = LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).getEditableText();
+    LiteCopyPromptHelper.c(this.b).removeCallbacks(LiteCopyPromptHelper.b(this.b));
+    LiteCopyPromptHelper.b(this.b).run();
+    int i = LiteCopyPromptHelper.e(this.b).getSelectionStart();
+    Editable localEditable = LiteCopyPromptHelper.e(this.b).getEditableText();
     if ((i >= 0) && (i < localEditable.length())) {
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
+      localEditable.insert(i, this.a);
     } else {
-      localEditable.append(this.jdField_a_of_type_JavaLangString);
+      localEditable.append(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper.3
  * JD-Core Version:    0.7.0.1
  */

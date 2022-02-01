@@ -37,13 +37,13 @@ final class GVideoGrayConfig$3
           {
             if (paramInt1 != 4)
             {
-              a(this.jdField_a_of_type_AndroidContentContext);
+              a(this.b);
               return;
             }
-            localObject = this.jdField_a_of_type_AndroidContentContext;
+            localObject = this.b;
             if ((localObject instanceof Activity))
             {
-              GVideoGrayConfig.a((Context)localObject, paramRecord.b, paramRecord.c, new GVideoGrayConfig.3.2(this));
+              GVideoGrayConfig.a((Context)localObject, paramRecord.d, paramRecord.e, new GVideoGrayConfig.3.2(this));
               return;
             }
             if (QLog.isColorLevel()) {
@@ -52,10 +52,10 @@ final class GVideoGrayConfig$3
           }
           else
           {
-            localObject = this.jdField_a_of_type_AndroidContentContext;
+            localObject = this.b;
             if ((localObject instanceof Activity))
             {
-              GVideoGrayConfig.a((Context)localObject, paramRecord.b, paramRecord.c, new GVideoGrayConfig.3.1(this));
+              GVideoGrayConfig.a((Context)localObject, paramRecord.d, paramRecord.e, new GVideoGrayConfig.3.1(this));
               return;
             }
             if (QLog.isColorLevel()) {
@@ -64,23 +64,23 @@ final class GVideoGrayConfig$3
           }
         }
         else {
-          ((IGroupVideoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
+          ((IGroupVideoManager)this.a.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(this.b, this.a.getCurrentAccountUin(), this.d, "4", "openRoom");
         }
       }
       else
       {
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramRecord.jdField_a_of_type_JavaLangString);
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        localObject = new Intent(this.b, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramRecord.c);
+        if (!(this.b instanceof Activity)) {
           ((Intent)localObject).addFlags(268435456);
         }
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        a(this.jdField_a_of_type_AndroidContentContext);
+        this.b.startActivity((Intent)localObject);
+        a(this.b);
       }
     }
     else
     {
-      ((IGroupVideoHelper)QRoute.api(IGroupVideoHelper.class)).enterTroopVideoByPlugin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
+      ((IGroupVideoHelper)QRoute.api(IGroupVideoHelper.class)).enterTroopVideoByPlugin(this.a, this.b, this.c, 1);
     }
   }
 }

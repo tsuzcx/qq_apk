@@ -11,7 +11,7 @@ public class FaceDrawableImpl$InternalDiscussionObserver
   FaceDrawableImpl$InternalDiscussionObserver(FaceDrawableImpl paramFaceDrawableImpl, FaceDrawable paramFaceDrawable)
   {
     if ((paramFaceDrawable != null) && (paramFaceDrawable.mFaceInfo != null)) {
-      this.discussionUin = paramFaceDrawable.mFaceInfo.a;
+      this.discussionUin = paramFaceDrawable.mFaceInfo.c;
     }
   }
   
@@ -19,10 +19,10 @@ public class FaceDrawableImpl$InternalDiscussionObserver
   {
     int i;
     Object localObject;
-    if (AvatarUtil.a(paramString))
+    if (AvatarUtil.b(paramString))
     {
       i = 1001;
-      localObject = AvatarUtil.b(paramString);
+      localObject = AvatarUtil.c(paramString);
     }
     else
     {
@@ -55,7 +55,7 @@ public class FaceDrawableImpl$InternalDiscussionObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl.InternalDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

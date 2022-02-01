@@ -1,27 +1,29 @@
 package com.tencent.mobileqq.cmshow.brickengine.apollo.utils;
 
-import com.tencent.mobileqq.apollo.utils.ApolloHttpProgressCallback;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpResponseCallback;
 import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
+import com.tencent.mobileqq.cmshow.engine.EngineType;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 
 final class HttpUtil$8
   implements Runnable
 {
-  HttpUtil$8(String paramString1, String paramString2, String[] paramArrayOfString, byte[] paramArrayOfByte, ApolloHttpResponseCallback paramApolloHttpResponseCallback, ApolloHttpProgressCallback paramApolloHttpProgressCallback1, ApolloHttpProgressCallback paramApolloHttpProgressCallback2) {}
+  HttpUtil$8(String paramString1, String[] paramArrayOfString, ApolloHttpResponseCallback paramApolloHttpResponseCallback, String paramString2, byte[] paramArrayOfByte, ApolloHttpProgressCallback paramApolloHttpProgressCallback1, ApolloHttpProgressCallback paramApolloHttpProgressCallback2) {}
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_JavaLangString.startsWith("http://stubcmshow.qq.com/cm3d/")) && (!this.jdField_a_of_type_JavaLangString.startsWith("https://stubcmshow.qq.com/cm3d/")))
+    if ((!this.a.startsWith("http://stubcmshow.qq.com/cm3d/")) && (!this.a.startsWith("https://stubcmshow.qq.com/cm3d/")))
     {
-      ApolloHttpUtil.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpProgressCallback, this.jdField_b_of_type_ComTencentMobileqqApolloUtilsApolloHttpProgressCallback);
+      ApolloHttpUtil.a(this.a, this.d, this.b, this.e, this.c, this.f, this.g);
       return;
     }
-    ApolloHttpUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpProgressCallback, this.jdField_b_of_type_ComTencentMobileqqApolloUtilsApolloHttpProgressCallback);
+    IApolloResManager localIApolloResManager = ApolloResManagerFacade.a.a(EngineType.BK);
+    ApolloHttpUtil.a(this.a, this.b, this.c, localIApolloResManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.HttpUtil.8
  * JD-Core Version:    0.7.0.1
  */

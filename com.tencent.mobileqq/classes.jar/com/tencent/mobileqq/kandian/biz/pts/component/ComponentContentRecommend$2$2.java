@@ -11,14 +11,14 @@ class ComponentContentRecommend$2$2
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommend$2.a;
-    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo;
+    paramView = this.b.a;
+    RecommendFollowInfo localRecommendFollowInfo = this.a;
     paramView.a(localRecommendFollowInfo, localRecommendFollowInfo.isFollowed ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommend.2.2
  * JD-Core Version:    0.7.0.1
  */

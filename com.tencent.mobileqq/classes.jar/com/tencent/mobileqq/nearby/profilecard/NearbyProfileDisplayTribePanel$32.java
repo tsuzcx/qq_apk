@@ -118,9 +118,9 @@ class NearbyProfileDisplayTribePanel$32
           }
         }
         paramArrayOfByte.giftNum = ((flower_info.SFlowerInfoRsp)localObject2).num.get();
-        this.a.jdField_a_of_type_JavaUtilList = ((flower_info.SFlowerInfoRsp)localObject2).rpt_flower_url.get();
-        this.a.jdField_a_of_type_JavaLangString = ((flower_info.SFlowerInfoRsp)localObject2).flower_msg_tips.get();
-        this.a.d = ((flower_info.SFlowerInfoRsp)localObject2).flower_flag.get();
+        this.a.ai = ((flower_info.SFlowerInfoRsp)localObject2).rpt_flower_url.get();
+        this.a.aj = ((flower_info.SFlowerInfoRsp)localObject2).flower_msg_tips.get();
+        this.a.ak = ((flower_info.SFlowerInfoRsp)localObject2).flower_flag.get();
       }
       if (paramBundle.rpt_msg_vistor_info.has())
       {
@@ -149,14 +149,14 @@ class NearbyProfileDisplayTribePanel$32
       {
         QLog.i("NearbyProfileDisplayTribePanel", 2, "handleGetNearbyMyTay has no visitor info.");
       }
-      paramArrayOfByte = NearbyProfileDisplayTribePanel.a(this.a, paramArrayOfByte.visitors);
+      paramArrayOfByte = NearbyProfileDisplayTribePanel.b(this.a, paramArrayOfByte.visitors);
       NearbyProfileDisplayTribePanel.a(this.a, paramArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.32
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,21 @@ package com.tencent.biz.pubaccount.weishi_new;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.LooperGifImage;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountGifPlayTimeHttpDownloader;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountGifPlayTimeHttpDownloader;
 import com.tencent.mobileqq.qroute.QRoute;
 import java.net.URL;
 
 public class WSMultiImageManager
 {
-  private LooperGifImage jdField_a_of_type_ComTencentBizPubaccountLooperGifImage;
-  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new WSMultiImageManager.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private LooperGifImage a;
+  private boolean b;
+  private URLDrawableDownListener c = new WSMultiImageManager.1(this);
   
   private URLDrawable a(String paramString, boolean paramBoolean)
   {
@@ -43,14 +43,14 @@ public class WSMultiImageManager
   
   private void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       a();
     }
   }
   
   public void a()
   {
-    LooperGifImage localLooperGifImage = this.jdField_a_of_type_ComTencentBizPubaccountLooperGifImage;
+    LooperGifImage localLooperGifImage = this.a;
     if (localLooperGifImage != null) {
       localLooperGifImage.a();
     }
@@ -64,7 +64,7 @@ public class WSMultiImageManager
       paramURLImageView.setImageDrawable(paramDrawable);
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.b = paramBoolean2;
     paramDrawable = a(paramString, paramBoolean1);
     if (paramDrawable == null) {
       return;
@@ -76,23 +76,23 @@ public class WSMultiImageManager
         AbstractGifImage localAbstractGifImage = ((GifDrawable)paramDrawable.getCurrDrawable()).getImage();
         if ((localAbstractGifImage instanceof LooperGifImage))
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountLooperGifImage = ((LooperGifImage)localAbstractGifImage);
-          this.jdField_a_of_type_ComTencentBizPubaccountLooperGifImage.a(new WSMultiImageManager.2(this, paramString, paramURLImageView));
+          this.a = ((LooperGifImage)localAbstractGifImage);
+          this.a.a(new WSMultiImageManager.2(this, paramString, paramURLImageView));
         }
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramURLImageView, paramDrawable);
+      this.c.onLoadSuccessed(paramURLImageView, paramDrawable);
     }
     else
     {
       paramDrawable.startDownload();
     }
-    paramURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
+    paramURLImageView.setURLDrawableDownListener(this.c);
     paramURLImageView.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSMultiImageManager
  * JD-Core Version:    0.7.0.1
  */

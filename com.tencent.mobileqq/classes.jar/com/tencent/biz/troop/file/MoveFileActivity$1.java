@@ -12,12 +12,12 @@ class MoveFileActivity$1
   {
     if (paramInt1 == paramInt2)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      this.a.setText(MoveFileActivity.a(this.b));
       return;
     }
-    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
-    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str1 = MoveFileActivity.a(this.b).substring(0, paramInt1);
+    String str2 = MoveFileActivity.a(this.b).substring(paramInt2, MoveFileActivity.a(this.b).length());
+    TextView localTextView = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str1);
     localStringBuilder.append("...");
@@ -27,7 +27,7 @@ class MoveFileActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.1
  * JD-Core Version:    0.7.0.1
  */

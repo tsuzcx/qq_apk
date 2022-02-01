@@ -150,9 +150,9 @@ public class DoutuServiceImpl
       long l1;
       while (k < this.duiTimes + i - 1)
       {
-        l1 = ((DoutuMsgItem)paramList.get(k)).jdField_a_of_type_Long;
+        l1 = ((DoutuMsgItem)paramList.get(k)).a;
         k += 1;
-        long l2 = ((DoutuMsgItem)paramList.get(k)).jdField_a_of_type_Long;
+        long l2 = ((DoutuMsgItem)paramList.get(k)).a;
         if ((l1 <= 0L) || (l2 <= 0L) || (l2 - l1 > this.comboDuration))
         {
           m = 0;
@@ -183,9 +183,9 @@ public class DoutuServiceImpl
         k = m;
         while (k < paramList.size())
         {
-          l1 = ((DoutuMsgItem)paramList.get(k)).jdField_a_of_type_Long;
+          l1 = ((DoutuMsgItem)paramList.get(k)).a;
           m = k - 1;
-          if (l1 - ((DoutuMsgItem)paramList.get(m)).jdField_a_of_type_Long > this.comboKeepTime)
+          if (l1 - ((DoutuMsgItem)paramList.get(m)).a > this.comboKeepTime)
           {
             removeComboStamp(paramString1, paramString2);
             k = m;
@@ -225,8 +225,8 @@ public class DoutuServiceImpl
         if (j <= i - k + 1) {
           break;
         }
-        long l1 = ((DoutuMsgItem)paramList.get(j - 1)).jdField_a_of_type_Long;
-        long l2 = ((DoutuMsgItem)paramList.get(j)).jdField_a_of_type_Long;
+        long l1 = ((DoutuMsgItem)paramList.get(j - 1)).a;
+        long l2 = ((DoutuMsgItem)paramList.get(j)).a;
         k = n;
         if (l1 <= 0L) {
           break label166;
@@ -256,7 +256,7 @@ public class DoutuServiceImpl
         ReportController.b(this.mApp, "dc00898", "", "", "0X8007FA7", "0X8007FA7", 0, 0, "", "", "", "");
         recordDoutuStamp(paramString1, paramString2, (DoutuMsgItem)paramList.get(i));
         paramInt = m;
-        if (!((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Boolean) {
+        if (!((DoutuMsgItem)paramList.get(i)).b) {
           paramInt = i;
         }
         if (i == paramList.size() - 1) {
@@ -267,11 +267,11 @@ public class DoutuServiceImpl
         paramInt = j;
         while (paramInt < paramList.size())
         {
-          if (((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long - ((DoutuMsgItem)paramList.get(paramInt - 1)).jdField_a_of_type_Long > this.doutuKeepTime) {
+          if (((DoutuMsgItem)paramList.get(paramInt)).a - ((DoutuMsgItem)paramList.get(paramInt - 1)).a > this.doutuKeepTime) {
             return i;
           }
           recordDoutuStamp(paramString1, paramString2, (DoutuMsgItem)paramList.get(paramInt));
-          if (!((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Boolean) {
+          if (!((DoutuMsgItem)paramList.get(paramInt)).b) {
             i = paramInt;
           }
           paramInt += 1;
@@ -285,7 +285,7 @@ public class DoutuServiceImpl
   
   private boolean checkTime(List<DoutuMsgItem> paramList, int paramInt)
   {
-    if (((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long <= 0L)
+    if (((DoutuMsgItem)paramList.get(paramInt)).a <= 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.e("DoutuServiceImpl", 2, "handleCombo : doutuList.get(i).time <= 0");
@@ -305,14 +305,14 @@ public class DoutuServiceImpl
   
   private DoutuEmotionHorizonListView getDoutuEmotionHorizonListView(MqqHandler paramMqqHandler, DoutuItem paramDoutuItem, int paramInt)
   {
-    Object localObject = (LinearLayout)this.mContentView.findViewById(2131365819);
+    Object localObject = (LinearLayout)this.mContentView.findViewById(2131432077);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("DoutuServiceImpl", 2, "showDoutuEmotionLayout : doutuLayout != null.");
       }
       this.mDoutuLayout = ((LinearLayout)localObject);
-      localObject = (DoutuEmotionHorizonListView)this.mDoutuLayout.findViewById(2131365822);
+      localObject = (DoutuEmotionHorizonListView)this.mDoutuLayout.findViewById(2131432080);
       this.mDoutuAdapter = ((DoutuEmotionAdapter)((DoutuEmotionHorizonListView)localObject).getAdapter());
       if (this.mDoutuAdapter == null)
       {
@@ -325,8 +325,8 @@ public class DoutuServiceImpl
     if (QLog.isColorLevel()) {
       QLog.d("DoutuServiceImpl", 2, "showDoutuEmotionLayout : doutuLayout == null.");
     }
-    this.mDoutuLayout = ((LinearLayout)View.inflate(this.mActity, 2131558534, null));
-    localObject = (DoutuEmotionHorizonListView)this.mDoutuLayout.findViewById(2131365822);
+    this.mDoutuLayout = ((LinearLayout)View.inflate(this.mActity, 2131624087, null));
+    localObject = (DoutuEmotionHorizonListView)this.mDoutuLayout.findViewById(2131432080);
     this.mDoutuAdapter = new DoutuEmotionAdapter(this.mApp, this.mActity, this.mListener, this.mUin, this.mUinType, this.mTroopUin, paramMqqHandler, this.isSmartSwitchNew, paramDoutuItem, this.defaultCount);
     ((DoutuEmotionHorizonListView)localObject).setAdapter(this.mDoutuAdapter);
     setListeners(paramMqqHandler, (DoutuEmotionHorizonListView)localObject);
@@ -465,15 +465,15 @@ public class DoutuServiceImpl
         if (checkTime(paramList, paramInt)) {
           return;
         }
-        localObject = new DoutuServiceImpl.ComboData(this, paramList, i, bool1, paramInt).a();
+        localObject = new DoutuServiceImpl.ComboData(this, paramList, i, bool1, paramInt).e();
         if (((DoutuServiceImpl.ComboData)localObject).a()) {
           break label633;
         }
-        i = ((DoutuServiceImpl.ComboData)localObject).a();
-        bool1 = ((DoutuServiceImpl.ComboData)localObject).b();
-        j = ((DoutuServiceImpl.ComboData)localObject).b();
-        if (((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long < l2) {
-          l1 = ((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long;
+        i = ((DoutuServiceImpl.ComboData)localObject).b();
+        bool1 = ((DoutuServiceImpl.ComboData)localObject).c();
+        j = ((DoutuServiceImpl.ComboData)localObject).d();
+        if (((DoutuMsgItem)paramList.get(paramInt)).a < l2) {
+          l1 = ((DoutuMsgItem)paramList.get(paramInt)).a;
         }
         for (;;)
         {
@@ -486,16 +486,16 @@ public class DoutuServiceImpl
             ((StringBuilder)localObject).append(", i = ");
             ((StringBuilder)localObject).append(paramInt);
             ((StringBuilder)localObject).append(", doutuList.get(i).shmsgseq = ");
-            ((StringBuilder)localObject).append(((DoutuMsgItem)paramList.get(paramInt)).jdField_b_of_type_Long);
+            ((StringBuilder)localObject).append(((DoutuMsgItem)paramList.get(paramInt)).c);
             QLog.d("DoutuServiceImpl", 2, ((StringBuilder)localObject).toString());
           }
-          if ((((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long == l2) && (l3 != 0L) && (((DoutuMsgItem)paramList.get(paramInt)).jdField_b_of_type_Long != 0L) && (((DoutuMsgItem)paramList.get(paramInt)).jdField_b_of_type_Long <= l3))
+          if ((((DoutuMsgItem)paramList.get(paramInt)).a == l2) && (l3 != 0L) && (((DoutuMsgItem)paramList.get(paramInt)).c != 0L) && (((DoutuMsgItem)paramList.get(paramInt)).c <= l3))
           {
-            l1 = ((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long;
+            l1 = ((DoutuMsgItem)paramList.get(paramInt)).a;
           }
           else
           {
-            if (((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long - l1 > this.comboKeepTime)
+            if (((DoutuMsgItem)paramList.get(paramInt)).a - l1 > this.comboKeepTime)
             {
               removeComboStamp(this.mUin, this.mUinType);
               paramInt = j;
@@ -504,7 +504,7 @@ public class DoutuServiceImpl
             }
             i += 1;
             recordComboStamp(this.mUin, this.mUinType, (DoutuMsgItem)paramList.get(paramInt), i, paramInt);
-            l1 = ((DoutuMsgItem)paramList.get(paramInt)).jdField_a_of_type_Long;
+            l1 = ((DoutuMsgItem)paramList.get(paramInt)).a;
           }
         }
         paramInt += 1;
@@ -567,7 +567,7 @@ public class DoutuServiceImpl
   {
     if (this.mComboUIManager != null)
     {
-      long l = this.comboKeepTime - (NetConnInfoCenter.getServerTime() - paramDoutuMsgItem.jdField_a_of_type_Long) + 1L;
+      long l = this.comboKeepTime - (NetConnInfoCenter.getServerTime() - paramDoutuMsgItem.a) + 1L;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -576,7 +576,7 @@ public class DoutuServiceImpl
         localStringBuilder.append(", NetConnInfoCenter.getServerTime() = ");
         localStringBuilder.append(NetConnInfoCenter.getServerTime());
         localStringBuilder.append(", lastMsg.time = ");
-        localStringBuilder.append(paramDoutuMsgItem.jdField_a_of_type_Long);
+        localStringBuilder.append(paramDoutuMsgItem.a);
         QLog.d("DoutuServiceImpl", 2, localStringBuilder.toString());
       }
       if (paramInt == 0)
@@ -585,7 +585,7 @@ public class DoutuServiceImpl
         return;
       }
       this.mComboUIManager.b();
-      paramDoutuMsgItem = new ComboObject(paramDoutuMsgItem.jdField_c_of_type_JavaLangString, paramInt - 2, paramBoolean);
+      paramDoutuMsgItem = new ComboObject(paramDoutuMsgItem.k, paramInt - 2, paramBoolean);
       this.mComboUIManager.a(paramDoutuMsgItem);
       this.mComboUIManager.a(l * 1000L);
       return;
@@ -606,8 +606,8 @@ public class DoutuServiceImpl
     DoutuEmotionAdapter localDoutuEmotionAdapter = this.mDoutuAdapter;
     if (localDoutuEmotionAdapter != null)
     {
-      localDoutuEmotionAdapter.jdField_b_of_type_JavaUtilList = new ArrayList();
-      this.mDoutuAdapter.jdField_b_of_type_JavaUtilList.addAll(this.doutuListShowing);
+      localDoutuEmotionAdapter.c = new ArrayList();
+      this.mDoutuAdapter.c.addAll(this.doutuListShowing);
     }
     this.doutuListPreload.clear();
     dropPersistDoutuData();
@@ -615,7 +615,7 @@ public class DoutuServiceImpl
   
   private void handleDownRes()
   {
-    if (!DuiButtonImageView.jdField_a_of_type_Boolean) {
+    if (!DuiButtonImageView.b) {
       ThreadManager.post(new DoutuServiceImpl.7(this), 5, null, true);
     }
   }
@@ -644,29 +644,29 @@ public class DoutuServiceImpl
         if (i >= paramList.size()) {
           break;
         }
-        if (((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Long <= 0L)
+        if (((DoutuMsgItem)paramList.get(i)).a <= 0L)
         {
           if (QLog.isColorLevel()) {
             QLog.e("DoutuServiceImpl", 2, "doutuList.get(i).time <= 0");
           }
           return -1;
         }
-        if (((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Long < l2)
+        if (((DoutuMsgItem)paramList.get(i)).a < l2)
         {
-          l1 = ((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Long;
+          l1 = ((DoutuMsgItem)paramList.get(i)).a;
         }
         else
         {
-          if (((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Long - l1 > this.doutuKeepTime)
+          if (((DoutuMsgItem)paramList.get(i)).a - l1 > this.doutuKeepTime)
           {
             j = -1;
             m = i;
             break;
           }
           recordDoutuStamp(this.mUin, this.mUinType, (DoutuMsgItem)paramList.get(i));
-          long l3 = ((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Long;
+          long l3 = ((DoutuMsgItem)paramList.get(i)).a;
           l1 = l3;
-          if (!((DoutuMsgItem)paramList.get(i)).jdField_a_of_type_Boolean)
+          if (!((DoutuMsgItem)paramList.get(i)).b)
           {
             k = i;
             l1 = l3;
@@ -712,8 +712,8 @@ public class DoutuServiceImpl
       }
       localObject = (DoutuMsgItem)paramList.get(paramList.size() - 1);
       paramList = (DoutuMsgItem)paramList.get(j);
-      paramList.f = true;
-      if ((((DoutuMsgItem)localObject).jdField_a_of_type_Long > 0L) && (NetConnInfoCenter.getServerTime() - ((DoutuMsgItem)localObject).jdField_a_of_type_Long > this.doutuKeepTime))
+      paramList.l = true;
+      if ((((DoutuMsgItem)localObject).a > 0L) && (NetConnInfoCenter.getServerTime() - ((DoutuMsgItem)localObject).a > this.doutuKeepTime))
       {
         if (QLog.isColorLevel())
         {
@@ -721,36 +721,36 @@ public class DoutuServiceImpl
           localStringBuilder.append("handleDui ：too long for doutuKeepTime ,set Dui false ! NetConnInfoCenter.getServerTime() = ");
           localStringBuilder.append(NetConnInfoCenter.getServerTime());
           localStringBuilder.append(", lastMsg.time = ");
-          localStringBuilder.append(((DoutuMsgItem)localObject).jdField_a_of_type_Long);
+          localStringBuilder.append(((DoutuMsgItem)localObject).a);
           QLog.d("DoutuServiceImpl", 2, localStringBuilder.toString());
         }
-        paramList.f = false;
+        paramList.l = false;
       }
       else
       {
         reportSendDoutuPic((DoutuMsgItem)localObject);
-        if ((paramList.jdField_b_of_type_Boolean) || (paramList.jdField_a_of_type_Boolean))
+        if ((paramList.d) || (paramList.b))
         {
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("handleDui ： duiMsg.isFlowMessage = ");
-            ((StringBuilder)localObject).append(paramList.jdField_b_of_type_Boolean);
+            ((StringBuilder)localObject).append(paramList.d);
             ((StringBuilder)localObject).append(", duiMsg.isSend() = ");
-            ((StringBuilder)localObject).append(paramList.jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject).append(paramList.b);
             QLog.d("DoutuServiceImpl", 2, ((StringBuilder)localObject).toString());
           }
-          paramList.f = false;
+          paramList.l = false;
         }
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("handleDui ： duiMsg.isDui = ");
-        ((StringBuilder)localObject).append(paramList.f);
+        ((StringBuilder)localObject).append(paramList.l);
         QLog.d("DoutuServiceImpl", 2, ((StringBuilder)localObject).toString());
       }
-      if (paramList.f)
+      if (paramList.l)
       {
         if (j != this.lastReportDuiIndex)
         {
@@ -767,10 +767,10 @@ public class DoutuServiceImpl
   private int handleTimeOut(int paramInt, DoutuMsgItem paramDoutuMsgItem)
   {
     int i = paramInt;
-    if (paramDoutuMsgItem.jdField_a_of_type_Long > 0L)
+    if (paramDoutuMsgItem.a > 0L)
     {
       i = paramInt;
-      if (NetConnInfoCenter.getServerTime() - paramDoutuMsgItem.jdField_a_of_type_Long > this.comboKeepTime)
+      if (NetConnInfoCenter.getServerTime() - paramDoutuMsgItem.a > this.comboKeepTime)
       {
         if (QLog.isColorLevel())
         {
@@ -778,7 +778,7 @@ public class DoutuServiceImpl
           localStringBuilder.append("handleCombo ：too long for comboKeepTime ,set combo = 0 ! NetConnInfoCenter.getServerTime() = ");
           localStringBuilder.append(NetConnInfoCenter.getServerTime());
           localStringBuilder.append(", lastMsg.time = ");
-          localStringBuilder.append(paramDoutuMsgItem.jdField_a_of_type_Long);
+          localStringBuilder.append(paramDoutuMsgItem.a);
           QLog.d("DoutuServiceImpl", 2, localStringBuilder.toString());
         }
         removeComboStamp(this.mUin, this.mUinType);
@@ -824,7 +824,7 @@ public class DoutuServiceImpl
   private boolean needHandleCombo(List<DoutuMsgItem> paramList, int paramInt)
   {
     paramInt &= 0xFFFF;
-    if ((paramInt != 4) && (paramInt != 6) && (paramInt != 7)) {
+    if ((paramInt != 4) && (paramInt != 7) && (paramInt != 8)) {
       return true;
     }
     if (QLog.isColorLevel()) {
@@ -919,17 +919,17 @@ public class DoutuServiceImpl
   
   private void reportSendDoutuPic(DoutuMsgItem paramDoutuMsgItem)
   {
-    if (paramDoutuMsgItem.jdField_a_of_type_Boolean)
+    if (paramDoutuMsgItem.b)
     {
       String str;
-      if (paramDoutuMsgItem.jdField_c_of_type_Boolean) {
-        str = paramDoutuMsgItem.jdField_a_of_type_JavaLangString;
-      } else if (paramDoutuMsgItem.d) {
-        str = paramDoutuMsgItem.jdField_b_of_type_JavaLangString;
+      if (paramDoutuMsgItem.e) {
+        str = paramDoutuMsgItem.g;
+      } else if (paramDoutuMsgItem.f) {
+        str = paramDoutuMsgItem.h;
       } else {
         str = "";
       }
-      ReportController.b(this.mApp, "dc00898", "", "", "0X800AF0B", "0X800AF0B", 0, 0, String.valueOf(paramDoutuMsgItem.jdField_a_of_type_Int), "", str, "");
+      ReportController.b(this.mApp, "dc00898", "", "", "0X800AF0B", "0X800AF0B", 0, 0, String.valueOf(paramDoutuMsgItem.i), "", str, "");
     }
   }
   
@@ -1006,7 +1006,7 @@ public class DoutuServiceImpl
     }
     paramNewIntent.putExtra("KEY_SESSION_TYPE", i);
     if (paramDoutuItem != null) {
-      paramNewIntent.putExtra("KEY_TO_UIN", Long.valueOf(paramDoutuItem.d));
+      paramNewIntent.putExtra("KEY_TO_UIN", Long.valueOf(paramDoutuItem.e));
     }
   }
   
@@ -1332,7 +1332,7 @@ public class DoutuServiceImpl
         return 0;
       }
       if ((this.aioComboMap.get(paramString1) != null) && (((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2) != null)) {
-        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).jdField_a_of_type_Int;
+        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).d;
       }
     }
     return 0;
@@ -1346,7 +1346,7 @@ public class DoutuServiceImpl
         return 0;
       }
       if ((this.aioComboMap.get(paramString1) != null) && (((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2) != null)) {
-        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).jdField_b_of_type_Int;
+        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).e;
       }
     }
     return 0;
@@ -1360,7 +1360,7 @@ public class DoutuServiceImpl
         return 0L;
       }
       if ((this.aioComboMap.get(paramString1) != null) && (((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2) != null)) {
-        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).jdField_b_of_type_Long;
+        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).b;
       }
     }
     return 0L;
@@ -1374,7 +1374,7 @@ public class DoutuServiceImpl
         return 0L;
       }
       if ((this.aioComboMap.get(paramString1) != null) && (((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2) != null)) {
-        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).jdField_a_of_type_Long;
+        return ((DoutuServiceImpl.ComboMsgStamp)((ConcurrentHashMap)this.aioComboMap.get(paramString1)).get(paramString2)).a;
       }
     }
     return 0L;
@@ -1388,7 +1388,7 @@ public class DoutuServiceImpl
         return 0L;
       }
       if ((this.aioMap.get(paramString1) != null) && (((ConcurrentHashMap)this.aioMap.get(paramString1)).get(paramString2) != null)) {
-        return ((DoutuServiceImpl.DoutuMsgStamp)((ConcurrentHashMap)this.aioMap.get(paramString1)).get(paramString2)).jdField_b_of_type_Long;
+        return ((DoutuServiceImpl.DoutuMsgStamp)((ConcurrentHashMap)this.aioMap.get(paramString1)).get(paramString2)).b;
       }
     }
     return 0L;
@@ -1402,7 +1402,7 @@ public class DoutuServiceImpl
         return 0L;
       }
       if ((this.aioMap.get(paramString1) != null) && (((ConcurrentHashMap)this.aioMap.get(paramString1)).get(paramString2) != null)) {
-        return ((DoutuServiceImpl.DoutuMsgStamp)((ConcurrentHashMap)this.aioMap.get(paramString1)).get(paramString2)).jdField_a_of_type_Long;
+        return ((DoutuServiceImpl.DoutuMsgStamp)((ConcurrentHashMap)this.aioMap.get(paramString1)).get(paramString2)).a;
       }
     }
     return 0L;
@@ -1457,13 +1457,13 @@ public class DoutuServiceImpl
           QLog.d("DoutuServiceImpl", 2, "add data to doutuListShowing");
         }
         moveDataToShowing();
-        this.mDoutuAdapter.jdField_b_of_type_JavaUtilList = new ArrayList();
-        this.mDoutuAdapter.jdField_b_of_type_JavaUtilList.addAll(this.doutuListShowing);
+        this.mDoutuAdapter.c = new ArrayList();
+        this.mDoutuAdapter.c.addAll(this.doutuListShowing);
         this.doutuListPreload.clear();
         dropPersistDoutuData();
         this.mDoutuAdapter.a();
-        if (this.mDoutuAdapter.jdField_a_of_type_MqqOsMqqHandler != null) {
-          this.mDoutuAdapter.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(81);
+        if (this.mDoutuAdapter.g != null) {
+          this.mDoutuAdapter.g.sendEmptyMessage(81);
         }
       }
       if (this.doutuListPreload.size() <= 0) {
@@ -1529,7 +1529,7 @@ public class DoutuServiceImpl
     if (this.requestCountMap.get(Long.valueOf(paramLong)) != null)
     {
       localObject = (DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong));
-      ((DoutuItem)localObject).jdField_a_of_type_Int += 1;
+      ((DoutuItem)localObject).g += 1;
     }
     int i;
     if (QLog.isColorLevel())
@@ -1541,7 +1541,7 @@ public class DoutuServiceImpl
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(", type:, responseCount:");
       if (this.requestCountMap.get(Long.valueOf(paramLong)) != null) {
-        i = ((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Int;
+        i = ((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).g;
       } else {
         i = 0;
       }
@@ -1606,13 +1606,13 @@ public class DoutuServiceImpl
       }
     }
     boolean bool;
-    if ((this.requestCountMap.get(Long.valueOf(paramLong)) != null) && (((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Int >= 1)) {
+    if ((this.requestCountMap.get(Long.valueOf(paramLong)) != null) && (((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).g >= 1)) {
       bool = true;
     } else {
       bool = false;
     }
     paramList = this.mDoutuAdapter;
-    if ((paramList != null) && (paramList.jdField_a_of_type_Long == paramLong)) {
+    if ((paramList != null) && (paramList.i == paramLong)) {
       ThreadManager.getUIHandler().post(new DoutuServiceImpl.5(this, paramBoolean, localArrayList, bool, paramLong));
     }
     if (bool) {
@@ -1626,7 +1626,7 @@ public class DoutuServiceImpl
     if (this.requestCountMap.get(Long.valueOf(paramLong)) != null)
     {
       localObject = (DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong));
-      ((DoutuItem)localObject).jdField_a_of_type_Int += 1;
+      ((DoutuItem)localObject).g += 1;
     }
     if (QLog.isColorLevel())
     {
@@ -1636,18 +1636,18 @@ public class DoutuServiceImpl
       ((StringBuilder)localObject).append(", smartCount:");
       int i;
       if (this.requestCountMap.get(Long.valueOf(paramLong)) != null) {
-        i = ((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Int;
+        i = ((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).g;
       } else {
         i = 0;
       }
       ((StringBuilder)localObject).append(i);
       QLog.i("DoutuServiceImpl", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.requestCountMap.get(Long.valueOf(paramLong)) != null) && (((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Int >= 1))
+    if ((this.requestCountMap.get(Long.valueOf(paramLong)) != null) && (((DoutuItem)this.requestCountMap.get(Long.valueOf(paramLong))).g >= 1))
     {
       this.requestCountMap.remove(Long.valueOf(paramLong));
       localObject = this.mDoutuAdapter;
-      if ((localObject != null) && (((DoutuEmotionAdapter)localObject).jdField_a_of_type_Long == paramLong)) {
+      if ((localObject != null) && (((DoutuEmotionAdapter)localObject).i == paramLong)) {
         ThreadManager.getUIHandler().post(new DoutuServiceImpl.6(this, paramLong));
       }
     }
@@ -1822,7 +1822,7 @@ public class DoutuServiceImpl
     localComboUIManager = this.mComboUIManager;
     if (localComboUIManager != null)
     {
-      localComboUIManager.e();
+      localComboUIManager.f();
       this.mComboUIManager = null;
     }
   }
@@ -1839,8 +1839,8 @@ public class DoutuServiceImpl
   
   public void recordComboStamp(String paramString1, String paramString2, DoutuMsgItem paramDoutuMsgItem, int paramInt1, int paramInt2)
   {
-    long l1 = paramDoutuMsgItem.jdField_a_of_type_Long;
-    long l2 = paramDoutuMsgItem.jdField_b_of_type_Long;
+    long l1 = paramDoutuMsgItem.a;
+    long l2 = paramDoutuMsgItem.c;
     if ((paramString1 != null) && (paramString1.length() != 0) && (paramString2 != null))
     {
       if (paramString2.length() == 0) {
@@ -1848,22 +1848,22 @@ public class DoutuServiceImpl
       }
       if (this.aioComboMap.get(paramString1) != null)
       {
-        ((ConcurrentHashMap)this.aioComboMap.get(paramString1)).put(paramString2, new DoutuServiceImpl.ComboMsgStamp(this, l1, l2, paramDoutuMsgItem.jdField_c_of_type_JavaLangString, paramInt1, paramInt2));
+        ((ConcurrentHashMap)this.aioComboMap.get(paramString1)).put(paramString2, new DoutuServiceImpl.ComboMsgStamp(this, l1, l2, paramDoutuMsgItem.k, paramInt1, paramInt2));
         return;
       }
       ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-      localConcurrentHashMap.put(paramString2, new DoutuServiceImpl.ComboMsgStamp(this, l1, l2, paramDoutuMsgItem.jdField_c_of_type_JavaLangString, paramInt1, paramInt2));
+      localConcurrentHashMap.put(paramString2, new DoutuServiceImpl.ComboMsgStamp(this, l1, l2, paramDoutuMsgItem.k, paramInt1, paramInt2));
       this.aioComboMap.put(paramString1, localConcurrentHashMap);
     }
   }
   
   public void recordDoutuStamp(String paramString1, String paramString2, DoutuMsgItem paramDoutuMsgItem)
   {
-    if (paramDoutuMsgItem.jdField_a_of_type_Boolean) {
+    if (paramDoutuMsgItem.b) {
       return;
     }
-    long l1 = paramDoutuMsgItem.jdField_a_of_type_Long;
-    long l2 = paramDoutuMsgItem.jdField_b_of_type_Long;
+    long l1 = paramDoutuMsgItem.a;
+    long l2 = paramDoutuMsgItem.c;
     if ((paramString1 != null) && (paramString1.length() != 0) && (paramString2 != null))
     {
       if (paramString2.length() == 0) {
@@ -1919,63 +1919,63 @@ public class DoutuServiceImpl
     if (localObject1 == null) {
       return;
     }
-    if ((((DoutuEmotionAdapter)localObject1).jdField_a_of_type_JavaUtilHashMap == null) && (this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData == null)) {
+    if ((((DoutuEmotionAdapter)localObject1).j == null) && (this.mDoutuAdapter.k == null)) {
       return;
     }
     localObject1 = new DoutuReportData();
-    ((DoutuReportData)localObject1).jdField_a_of_type_JavaLangString = "dc03631";
+    ((DoutuReportData)localObject1).a = "dc03631";
     localObject1.getClass();
     Object localObject2 = new DoutuReportData.Data((DoutuReportData)localObject1);
-    ((DoutuReportData.Data)localObject2).jdField_a_of_type_JavaLangString = String.valueOf(Long.valueOf(this.mApp.getCurrentAccountUin()).longValue());
-    if (this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null)
+    ((DoutuReportData.Data)localObject2).a = String.valueOf(Long.valueOf(this.mApp.getCurrentAccountUin()).longValue());
+    if (this.mDoutuAdapter.k != null)
     {
-      ((DoutuReportData.Data)localObject2).d = this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picMd5;
-      ((DoutuReportData.Data)localObject2).e = this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picDownUrl;
+      ((DoutuReportData.Data)localObject2).f = this.mDoutuAdapter.k.picMd5;
+      ((DoutuReportData.Data)localObject2).g = this.mDoutuAdapter.k.picDownUrl;
     }
-    if (this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuItem != null)
+    if (this.mDoutuAdapter.h != null)
     {
-      ((DoutuReportData.Data)localObject2).jdField_c_of_type_JavaLangString = this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuItem.jdField_c_of_type_JavaLangString;
-      ((DoutuReportData.Data)localObject2).jdField_b_of_type_JavaLangString = this.mDoutuAdapter.jdField_a_of_type_ComTencentMobileqqDoutuDoutuItem.jdField_b_of_type_JavaLangString;
+      ((DoutuReportData.Data)localObject2).c = this.mDoutuAdapter.h.d;
+      ((DoutuReportData.Data)localObject2).b = this.mDoutuAdapter.h.b;
     }
-    if ((this.mDoutuAdapter.jdField_a_of_type_JavaUtilHashMap != null) && (this.mDoutuAdapter.jdField_a_of_type_JavaUtilHashMap.size() > 0))
+    if ((this.mDoutuAdapter.j != null) && (this.mDoutuAdapter.j.size() > 0))
     {
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      Iterator localIterator = this.mDoutuAdapter.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      Iterator localIterator = this.mDoutuAdapter.j.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         localArrayList1.add(str);
-        localArrayList2.add(this.mDoutuAdapter.jdField_a_of_type_JavaUtilHashMap.get(str));
+        localArrayList2.add(this.mDoutuAdapter.j.get(str));
       }
-      ((DoutuReportData.Data)localObject2).jdField_a_of_type_JavaUtilArrayList = localArrayList1;
-      ((DoutuReportData.Data)localObject2).jdField_b_of_type_JavaUtilArrayList = localArrayList2;
+      ((DoutuReportData.Data)localObject2).d = localArrayList1;
+      ((DoutuReportData.Data)localObject2).e = localArrayList2;
     }
-    if (this.mDoutuAdapter.jdField_b_of_type_JavaLangString != null)
+    if (this.mDoutuAdapter.e != null)
     {
-      int i = Integer.valueOf(this.mDoutuAdapter.jdField_b_of_type_JavaLangString).intValue();
+      int i = Integer.valueOf(this.mDoutuAdapter.e).intValue();
       if (i == 0) {
-        ((DoutuReportData.Data)localObject2).f = "c2c";
+        ((DoutuReportData.Data)localObject2).h = "c2c";
       } else if (i == 1) {
-        ((DoutuReportData.Data)localObject2).f = "group";
+        ((DoutuReportData.Data)localObject2).h = "group";
       } else if (i == 3000) {
-        ((DoutuReportData.Data)localObject2).f = "discuss";
+        ((DoutuReportData.Data)localObject2).h = "discuss";
       } else {
-        ((DoutuReportData.Data)localObject2).f = "other";
+        ((DoutuReportData.Data)localObject2).h = "other";
       }
     }
-    if (this.mDoutuAdapter.jdField_a_of_type_JavaLangString != null) {
-      ((DoutuReportData.Data)localObject2).h = this.mDoutuAdapter.jdField_a_of_type_JavaLangString;
+    if (this.mDoutuAdapter.d != null) {
+      ((DoutuReportData.Data)localObject2).j = this.mDoutuAdapter.d;
     }
-    ((DoutuReportData.Data)localObject2).g = "android";
-    ((DoutuReportData)localObject1).jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data = ((DoutuReportData.Data)localObject2);
+    ((DoutuReportData.Data)localObject2).i = "android";
+    ((DoutuReportData)localObject1).b = ((DoutuReportData.Data)localObject2);
     localObject2 = ((DoutuReportData)localObject1).a();
     localObject1 = new NewIntent(this.mApp.getApp(), DoutuServlet.class);
     ((NewIntent)localObject1).putExtra("KEY_CMD", 5);
     ((NewIntent)localObject1).putExtra("key_report_content", ((JSONObject)localObject2).toString());
     localObject2 = this.mDoutuAdapter;
-    ((DoutuEmotionAdapter)localObject2).jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = null;
-    ((DoutuEmotionAdapter)localObject2).jdField_a_of_type_JavaUtilHashMap = null;
+    ((DoutuEmotionAdapter)localObject2).k = null;
+    ((DoutuEmotionAdapter)localObject2).j = null;
     this.mApp.startServlet((NewIntent)localObject1);
   }
   
@@ -2030,8 +2030,8 @@ public class DoutuServiceImpl
           }
           if ((paramDoutuItem != null) && (paramDoutuItem.a()) && (this.isSmartSwitchNew) && (this.mDoutuAdapter != null))
           {
-            this.requestCountMap.put(Long.valueOf(this.mDoutuAdapter.jdField_a_of_type_Long), new DoutuItem(this.mDoutuAdapter.jdField_a_of_type_Long, 0));
-            postGetRecommendPicList(paramDoutuItem, this.mUin, this.mUinType, this.mDoutuAdapter.jdField_a_of_type_Long);
+            this.requestCountMap.put(Long.valueOf(this.mDoutuAdapter.i), new DoutuItem(this.mDoutuAdapter.i, 0));
+            postGetRecommendPicList(paramDoutuItem, this.mUin, this.mUinType, this.mDoutuAdapter.i);
           }
         }
         if (Build.VERSION.SDK_INT >= 14) {
@@ -2083,7 +2083,7 @@ public class DoutuServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.api.impl.DoutuServiceImpl
  * JD-Core Version:    0.7.0.1
  */

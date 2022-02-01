@@ -16,34 +16,29 @@ import org.jetbrains.annotations.Nullable;
 public final class ViolaSoLoader
   implements IViolaSoLoader
 {
-  public static final ViolaSoLoader.Companion a;
-  private volatile int jdField_a_of_type_Int;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public static final ViolaSoLoader.Companion a = new ViolaSoLoader.Companion(null);
   private volatile boolean b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader$Companion = new ViolaSoLoader.Companion(null);
-  }
+  private volatile int c;
+  private volatile boolean d;
+  private final String[] e;
   
   public ViolaSoLoader(@NotNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.e = paramArrayOfString;
     paramArrayOfString = Aladdin.getConfig(433);
     boolean bool = false;
     if (paramArrayOfString.getIntegerFromString("enable_viola_preload", 0) == 1) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
+    if ((this.b) && (!this.d)) {
       a("preloadEngine");
     }
-    if (ViolaAccessHelper.a()) {
+    if (ViolaAccessHelper.b()) {
       ViolaAccessHelper.a();
     }
   }
@@ -55,10 +50,10 @@ public final class ViolaSoLoader
   
   public void a(@Nullable String paramString, @Nullable LoadLibCallback paramLoadLibCallback)
   {
-    if (this.b)
+    if (this.d)
     {
       if (paramLoadLibCallback != null) {
-        paramLoadLibCallback.onFinish(ReadInJoyWebRenderEngine.g);
+        paramLoadLibCallback.onFinish(ReadInJoyWebRenderEngine.h);
       }
       return;
     }
@@ -69,17 +64,17 @@ public final class ViolaSoLoader
       localStringBuilder.append(paramString);
       QLog.d("ViolaSoLoader", 2, localStringBuilder.toString());
     }
-    SoLoadManager.getInstance().loadSequentially(this.jdField_a_of_type_ArrayOfJavaLangString, (OnLoadListener)new ViolaSoLoader.loadLibrary.1(this, paramLoadLibCallback, paramString));
+    SoLoadManager.getInstance().loadSequentially(this.e, (OnLoadListener)new ViolaSoLoader.loadLibrary.1(this, paramLoadLibCallback, paramString));
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.b;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoader
  * JD-Core Version:    0.7.0.1
  */

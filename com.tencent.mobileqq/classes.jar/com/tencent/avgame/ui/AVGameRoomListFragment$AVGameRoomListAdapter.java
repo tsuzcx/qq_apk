@@ -38,29 +38,29 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
   extends FacePreloadBaseAdapter
   implements View.OnClickListener, AbsListView.OnScrollListener
 {
-  private final int jdField_a_of_type_Int = 8;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private AvGameRoomListObserver jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver = new AVGameRoomListFragment.AVGameRoomListAdapter.1(this);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private List<RoomInfo> jdField_a_of_type_JavaUtilList = new ArrayList(0);
-  private boolean jdField_a_of_type_Boolean;
+  private final int a = 8;
   private int b;
   private int c;
-  private int d;
-  private int e;
-  private int f;
+  private AppInterface d;
+  private Activity e;
+  private View f;
+  private String g;
+  private List<RoomInfo> h = new ArrayList(0);
+  private int j;
+  private int k;
+  private boolean l;
+  private int m;
+  private AvGameRoomListObserver n = new AVGameRoomListFragment.AVGameRoomListAdapter.1(this);
   
   public AVGameRoomListFragment$AVGameRoomListAdapter(Activity paramActivity, AppInterface paramAppInterface, SwipListView paramSwipListView, View paramView, String paramString)
   {
     super(paramActivity, paramAppInterface, paramSwipListView, 1, true);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131296616);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131296615);
+    this.d = paramAppInterface;
+    this.e = paramActivity;
+    this.f = paramView;
+    this.g = paramString;
+    this.b = this.e.getResources().getDimensionPixelSize(2131296918);
+    this.c = this.e.getResources().getDimensionPixelSize(2131296917);
     e();
     a(this);
   }
@@ -77,17 +77,17 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
       while ((i < paramList.size()) && (i < 8))
       {
         Object localObject1 = (Player)paramList.get(i);
-        Object localObject2 = ImageUtil.f();
-        localObject1 = FaceDrawable.getFaceDrawableFrom(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 1, ((Player)localObject1).uin, 3, (Drawable)localObject2, (Drawable)localObject2, 4);
-        localObject2 = new ThemeImageView(this.jdField_a_of_type_AndroidAppActivity);
-        int j = this.b;
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+        Object localObject2 = ImageUtil.m();
+        localObject1 = FaceDrawable.getFaceDrawableFrom(this.d, 1, ((Player)localObject1).uin, 3, (Drawable)localObject2, (Drawable)localObject2, 4);
+        localObject2 = new ThemeImageView(this.e);
+        int i1 = this.b;
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i1, i1);
         if (i == 0) {
-          j = 0;
+          i1 = 0;
         } else {
-          j = this.c;
+          i1 = this.c;
         }
-        localLayoutParams.leftMargin = j;
+        localLayoutParams.leftMargin = i1;
         ((ThemeImageView)localObject2).setLayoutParams(localLayoutParams);
         ((ThemeImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((ThemeImageView)localObject2).setBackgroundDrawable((Drawable)localObject1);
@@ -115,22 +115,22 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
   
   private void e()
   {
-    this.d = 0;
-    this.e = 0;
-    this.jdField_a_of_type_Boolean = true;
+    this.j = 0;
+    this.k = 0;
+    this.l = true;
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.l) {
       return;
     }
-    IAvGameManager localIAvGameManager = (IAvGameManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IAvGameManager.class, "");
+    IAvGameManager localIAvGameManager = (IAvGameManager)this.d.getRuntimeService(IAvGameManager.class, "");
     if (localIAvGameManager != null)
     {
-      this.d = this.e;
-      this.jdField_a_of_type_Boolean = true;
-      localIAvGameManager.requestGameRoomListForGroup(this.jdField_a_of_type_JavaLangString, this.d, 2);
+      this.j = this.k;
+      this.l = true;
+      localIAvGameManager.requestGameRoomListForGroup(this.g, this.j, 2);
     }
   }
   
@@ -139,7 +139,7 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
     if (QLog.isColorLevel()) {
       QLog.d("AVGameRoomListFragment", 2, "adapter onResume");
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    this.d.addObserver(this.n);
   }
   
   public void b()
@@ -147,27 +147,27 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
     if (QLog.isColorLevel()) {
       QLog.d("AVGameRoomListFragment", 2, "adapter onPause");
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    this.d.removeObserver(this.n);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    this.d.removeObserver(this.n);
     super.c();
   }
   
   public void d()
   {
     e();
-    IAvGameManager localIAvGameManager = (IAvGameManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IAvGameManager.class, "");
+    IAvGameManager localIAvGameManager = (IAvGameManager)this.d.getRuntimeService(IAvGameManager.class, "");
     if (localIAvGameManager != null) {
-      localIAvGameManager.requestGameRoomListForGroup(this.jdField_a_of_type_JavaLangString, 0, 2);
+      localIAvGameManager.requestGameRoomListForGroup(this.g, 0, 2);
     }
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.h;
     if (localList != null) {
       return localList.size();
     }
@@ -176,9 +176,9 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.h;
     if ((localList != null) && (paramInt < localList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.h.get(paramInt);
     }
     return null;
   }
@@ -190,20 +190,20 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
     Object localObject2;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558700, null);
+      localView = LayoutInflater.from(this.e).inflate(2131624317, null);
       paramView = new AVGameRoomListFragment.AVGameRoomListAdapter.AVGameRoomListItemViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363306));
-      paramView.b = ((TextView)localView.findViewById(2131363307));
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363305));
+      paramView.a = ((TextView)localView.findViewById(2131429180));
+      paramView.b = ((TextView)localView.findViewById(2131429181));
+      paramView.c = ((LinearLayout)localView.findViewById(2131429179));
       localView.setTag(paramView);
       localView.setOnClickListener(this);
       localView.setOnTouchListener(new AVGameRoomListFragment.AVGameRoomListAdapter.2(this));
       localObject1 = new GradientDrawable();
-      ((GradientDrawable)localObject1).setCornerRadius(ViewUtils.a(5.0F));
+      ((GradientDrawable)localObject1).setCornerRadius(ViewUtils.dip2px(5.0F));
       ((GradientDrawable)localObject1).setColor(-7510273);
       ((GradientDrawable)localObject1).setShape(0);
       localObject2 = new GradientDrawable();
-      ((GradientDrawable)localObject2).setCornerRadius(ViewUtils.a(5.0F));
+      ((GradientDrawable)localObject2).setCornerRadius(ViewUtils.dip2px(5.0F));
       ((GradientDrawable)localObject2).setColor(-7510273);
       ((GradientDrawable)localObject2).setShape(0);
       localView.setBackgroundDrawable(URLDrawable.getDrawable("https://static-res.qq.com/static-res/avgames/avgame_room_list_item_bg.png", (Drawable)localObject1, (Drawable)localObject2));
@@ -227,16 +227,16 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
         ((StringBuilder)localObject1).insert(3, "-");
       }
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidAppActivity.getString(2131690454));
+      ((StringBuilder)localObject2).append(this.e.getString(2131887365));
       ((StringBuilder)localObject2).append(" ");
       ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
       localObject1 = ((StringBuilder)localObject2).toString();
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      localObject1 = String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131690453), new Object[] { Integer.valueOf(localRoomInfo.players.size()) });
+      paramView.a.setText((CharSequence)localObject1);
+      localObject1 = String.format(this.e.getString(2131887364), new Object[] { Integer.valueOf(localRoomInfo.players.size()) });
       paramView.b.setText((CharSequence)localObject1);
-      paramView.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo = localRoomInfo;
-      a(paramView.jdField_a_of_type_AndroidWidgetLinearLayout, localRoomInfo.players);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, ViewUtils.a(80.0F)));
+      paramView.d = localRoomInfo;
+      a(paramView.c, localRoomInfo.players);
+      localView.setLayoutParams(new AbsListView.LayoutParams(-1, ViewUtils.dip2px(80.0F)));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -245,14 +245,14 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if ((paramView.getId() == 2131363294) && ((localObject instanceof AVGameRoomListFragment.AVGameRoomListAdapter.AVGameRoomListItemViewHolder)))
+    if ((paramView.getId() == 2131429168) && ((localObject instanceof AVGameRoomListFragment.AVGameRoomListAdapter.AVGameRoomListItemViewHolder)))
     {
-      localObject = ((AVGameRoomListFragment.AVGameRoomListAdapter.AVGameRoomListItemViewHolder)localObject).jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo;
-      IAvGameManager localIAvGameManager = (IAvGameManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IAvGameManager.class, "");
+      localObject = ((AVGameRoomListFragment.AVGameRoomListAdapter.AVGameRoomListItemViewHolder)localObject).d;
+      IAvGameManager localIAvGameManager = (IAvGameManager)this.d.getRuntimeService(IAvGameManager.class, "");
       if (localIAvGameManager != null) {
-        localIAvGameManager.joinAvGameRoom(this.jdField_a_of_type_AndroidAppActivity, 5, String.valueOf(((RoomInfo)localObject).id), this.jdField_a_of_type_JavaLangString);
+        localIAvGameManager.joinAvGameRoom(this.e, 5, String.valueOf(((RoomInfo)localObject).id), this.g);
       }
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.g;
       if (localObject == null) {
         localObject = "";
       }
@@ -263,12 +263,12 @@ public class AVGameRoomListFragment$AVGameRoomListAdapter
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.f = (paramInt1 + paramInt2 - 1);
+    this.m = (paramInt1 + paramInt2 - 1);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (this.f == getCount() - 1)) {
+    if ((paramInt == 0) && (this.m == getCount() - 1)) {
       f();
     }
   }

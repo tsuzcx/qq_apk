@@ -49,7 +49,7 @@ public class ReqSystemMsgNewItem
     PBUInt64Field localPBUInt64Field = ((structmsg.ReqSystemMsgNew)localObject1).latest_friend_seq;
     long l;
     if (bool) {
-      l = ((MessageHandler)localObject2).a().e("last_friend_seq_47");
+      l = ((MessageHandler)localObject2).l().y("last_friend_seq_47");
     } else {
       l = 0L;
     }
@@ -112,7 +112,7 @@ public class ReqSystemMsgNewItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ReqSystemMsgNewItem
  * JD-Core Version:    0.7.0.1
  */

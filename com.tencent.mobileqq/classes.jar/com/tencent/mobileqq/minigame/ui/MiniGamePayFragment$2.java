@@ -23,7 +23,7 @@ class MiniGamePayFragment$2
       try
       {
         paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", HardCodeUtil.a(2131706881));
+        paramJSONObject.put("resultMsg", HardCodeUtil.a(2131904727));
         paramJSONObject = paramJSONObject.toString();
         if (paramJSONObject != null)
         {
@@ -73,7 +73,7 @@ class MiniGamePayFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment.2
  * JD-Core Version:    0.7.0.1
  */

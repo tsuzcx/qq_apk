@@ -2,40 +2,30 @@ package com.tencent.mobileqq.location.bean;
 
 public class OptRoomRespBean
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private int b;
   private int c;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private int d;
+  private String e;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public int b()
@@ -45,7 +35,7 @@ public class OptRoomRespBean
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public int c()
@@ -55,12 +45,22 @@ public class OptRoomRespBean
   
   public void c(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.bean.OptRoomRespBean
  * JD-Core Version:    0.7.0.1
  */

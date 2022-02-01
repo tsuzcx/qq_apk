@@ -7,74 +7,71 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChannelStateManager
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private CopyOnWriteArrayList<Integer> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final Object jdField_b_of_type_JavaLangObject = new Object();
-  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(10);
+  private AtomicInteger a = new AtomicInteger(0);
+  private AtomicInteger b = new AtomicInteger(10);
+  private final Object c = new Object();
+  private final Object d = new Object();
+  private CopyOnWriteArrayList<Integer> e = new CopyOnWriteArrayList();
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(10);
-      return;
-    }
+    return this.a.get();
   }
   
   public void a(int paramInt)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+      this.a.set(paramInt);
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    return this.b.get();
   }
   
   public void b(int paramInt)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+      this.b.set(paramInt);
       return;
     }
   }
   
-  public boolean b()
+  public void c(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+    this.e.add(0, Integer.valueOf(paramInt));
   }
   
-  public int c()
+  public boolean c()
   {
-    ??? = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    return this.a.get() == 2;
+  }
+  
+  public boolean d()
+  {
+    return this.a.get() == 1;
+  }
+  
+  public boolean e()
+  {
+    return this.a.get() == 0;
+  }
+  
+  public int f()
+  {
+    ??? = this.e;
     if ((??? != null) && (!((CopyOnWriteArrayList)???).isEmpty())) {
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      synchronized (this.d)
       {
-        int i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).intValue();
+        int i = ((Integer)this.e.get(0)).intValue();
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder1 = new StringBuilder();
-          Object localObject3 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+          Object localObject3 = this.e.iterator();
           while (((Iterator)localObject3).hasNext())
           {
             int j = ((Integer)((Iterator)localObject3).next()).intValue();
@@ -90,42 +87,45 @@ public class ChannelStateManager
           ((StringBuilder)localObject3).append(localStringBuilder1.toString());
           QLog.d("PeakAudioTransHandler ChannelStateManager", 2, ((StringBuilder)localObject3).toString());
         }
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        this.e.clear();
         return i;
       }
     }
     return -1;
   }
   
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, Integer.valueOf(paramInt));
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 12;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 11;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 10;
-  }
-  
   public boolean g()
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    int j = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    return this.b.get() == 12;
+  }
+  
+  public boolean h()
+  {
+    return this.b.get() == 11;
+  }
+  
+  public boolean i()
+  {
+    return this.b.get() == 10;
+  }
+  
+  public void j()
+  {
+    synchronized (this.d)
+    {
+      if (this.e != null) {
+        this.e.clear();
+      }
+      this.a.set(0);
+      this.b.set(10);
+      return;
+    }
+  }
+  
+  public boolean k()
+  {
+    int i = this.a.get();
+    int j = this.b.get();
     boolean bool2 = false;
     boolean bool1;
     if (i != 0) {
@@ -187,7 +187,7 @@ public class ChannelStateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.server.ChannelStateManager
  * JD-Core Version:    0.7.0.1
  */

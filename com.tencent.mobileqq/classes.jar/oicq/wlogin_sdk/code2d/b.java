@@ -12,7 +12,7 @@ import oicq.wlogin_sdk.request.t;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.cryptor;
-import oicq.wlogin_sdk.tools.e;
+import oicq.wlogin_sdk.tools.f;
 import oicq.wlogin_sdk.tools.util;
 
 public class b
@@ -97,7 +97,7 @@ public class b
         }
         i = util.buf_to_int16((byte[])localObject2, k);
         j = k + 2;
-        i = e.a(i, (byte[])localObject2, j, localObject2.length - j, paramMap);
+        i = f.a(i, (byte[])localObject2, j, localObject2.length - j, paramMap);
         if (i != 0)
         {
           paramArrayOfByte = new StringBuilder();
@@ -276,7 +276,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.code2d.b
  * JD-Core Version:    0.7.0.1
  */

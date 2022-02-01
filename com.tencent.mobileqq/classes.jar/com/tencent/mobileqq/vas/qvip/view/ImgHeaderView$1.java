@@ -13,13 +13,13 @@ class ImgHeaderView$1
   
   public void onClick(View paramView)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.mPaMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.mGameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    ImgHeaderView.a(this.d, this.a, this.b.mPaMsgid, this.b.mGameAppId, this.c, this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.ImgHeaderView.1
  * JD-Core Version:    0.7.0.1
  */

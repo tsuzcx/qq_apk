@@ -21,32 +21,32 @@ class ReadInJoyNewFeedsActivity$5$2
   
   public void onClick(View paramView)
   {
-    paramView = (ReadInJoyRefreshManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
-    if (paramView.a() == 1)
+    paramView = (ReadInJoyRefreshManager)this.b.this$0.app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
+    if (paramView.d() == 1)
     {
       paramView.a(false);
-      paramView = paramView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0, 0);
+      paramView = paramView.a(this.b.this$0, 0);
       if (paramView != null)
       {
         paramView.isShown = false;
-        SharedPreUtils.f(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), paramView.toJson().toString(), 0);
+        SharedPreUtils.f(this.b.this$0, this.b.this$0.app.getCurrentAccountUin(), paramView.toJson().toString(), 0);
       }
     }
-    SharedPreUtils.o(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.a.skinData.toJson().toString());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.a);
+    SharedPreUtils.u(this.b.this$0, this.b.this$0.app.getCurrentAccountUin(), this.b.a.skinData.toJson().toString());
+    this.b.this$0.k.a();
+    this.a.removeView(this.b.this$0.k);
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
       paramView.append("set skin ：id = ");
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.a.skinData.id);
+      paramView.append(this.b.a.skinData.id);
       QLog.d("ReadInJoyNewFeedsActivity", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.5.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,15 +17,15 @@ import mqq.app.MobileQQ;
 public class FTSTroopUpgrader
   implements FTSConstants, FTSUpgrader
 {
-  FTSSyncHandler jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSSyncHandler;
-  FTSTroopOperator jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSTroopOperator;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  AppRuntime a;
+  FTSTroopOperator b;
+  FTSSyncHandler c;
   
   FTSTroopUpgrader(AppRuntime paramAppRuntime, FTSTroopOperator paramFTSTroopOperator)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSTroopOperator = paramFTSTroopOperator;
-    this.jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSSyncHandler = this.jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSTroopOperator.jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSSyncHandler;
+    this.a = paramAppRuntime;
+    this.b = paramFTSTroopOperator;
+    this.c = this.b.d;
   }
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
@@ -47,17 +47,15 @@ public class FTSTroopUpgrader
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
-  public void a() {}
-  
   public boolean a()
   {
-    return !a(this.jdField_a_of_type_MqqAppAppRuntime);
+    return !a(this.a);
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager().drop(FTSTroopSync.class.getSimpleName());
-    Object localObject = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
+    this.a.getEntityManagerFactory().createEntityManager().drop(FTSTroopSync.class.getSimpleName());
+    Object localObject = ((ITroopInfoService)this.a.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
     ArrayList localArrayList = new ArrayList(((ArrayList)localObject).size());
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -76,17 +74,19 @@ public class FTSTroopUpgrader
         QLog.e("FTSTroopUpgrader", 2, localStringBuilder.toString());
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFtsOperatorFTSTroopOperator.a(localArrayList))
+    if (this.b.c(localArrayList))
     {
-      a(this.jdField_a_of_type_MqqAppAppRuntime, true);
+      a(this.a, true);
       return true;
     }
     return false;
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.operator.FTSTroopUpgrader
  * JD-Core Version:    0.7.0.1
  */

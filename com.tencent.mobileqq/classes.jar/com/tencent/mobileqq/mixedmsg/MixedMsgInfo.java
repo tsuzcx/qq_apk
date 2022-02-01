@@ -8,18 +8,6 @@ public class MixedMsgInfo
 {
   private List<MixedMsgInfo.MsgNode> a = new ArrayList(41);
   
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.a.size())
-    {
-      localStringBuilder.append(((MixedMsgInfo.MsgNode)this.a.get(i)).text());
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
   public List<MixedMsgInfo.MsgNode> a()
   {
     return this.a;
@@ -32,18 +20,19 @@ public class MixedMsgInfo
     }
   }
   
-  public boolean a()
+  public String b()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      if (((MixedMsgInfo.MsgNode)localIterator.next() instanceof MixedMsgInfo.PhotoMsgNode)) {
-        return true;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.a.size())
+    {
+      localStringBuilder.append(((MixedMsgInfo.MsgNode)this.a.get(i)).text());
+      i += 1;
     }
-    return false;
+    return localStringBuilder.toString();
   }
   
-  public String b()
+  public String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.a.iterator();
@@ -57,7 +46,18 @@ public class MixedMsgInfo
     return localStringBuilder.toString();
   }
   
-  public List<String> b()
+  public boolean d()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      if (((MixedMsgInfo.MsgNode)localIterator.next() instanceof MixedMsgInfo.PhotoMsgNode)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public List<String> e()
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.a.iterator();
@@ -73,7 +73,7 @@ public class MixedMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgInfo
  * JD-Core Version:    0.7.0.1
  */

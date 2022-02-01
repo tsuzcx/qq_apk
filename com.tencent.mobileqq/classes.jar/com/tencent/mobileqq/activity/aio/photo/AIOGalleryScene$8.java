@@ -32,20 +32,20 @@ class AIOGalleryScene$8
               if (i != 10003) {
                 return;
               }
-              this.a.B();
-              QQToast.a(AIOGalleryScene.m(this.a), 2, HardCodeUtil.a(2131700281), 0).a();
+              this.a.O();
+              QQToast.makeText(AIOGalleryScene.s(this.a), 2, HardCodeUtil.a(2131898321), 0).show();
               NativeVideoImage.resumeAll();
-              AIOGalleryScene.a(this.a);
+              AIOGalleryScene.r(this.a);
               return;
             }
-            this.a.B();
-            QQToast.a(AIOGalleryScene.l(this.a), 1, HardCodeUtil.a(2131700292), 0).a();
+            this.a.O();
+            QQToast.makeText(AIOGalleryScene.q(this.a), 1, HardCodeUtil.a(2131898332), 0).show();
             NativeVideoImage.resumeAll();
-            AIOGalleryScene.a(this.a);
+            AIOGalleryScene.r(this.a);
             return;
           }
           paramMessage = this.a;
-          paramMessage.n = true;
+          paramMessage.ak = true;
           paramMessage.b(100);
           sendEmptyMessageDelayed(10003, 200L);
           return;
@@ -57,7 +57,7 @@ class AIOGalleryScene$8
         if (!paramMessage.exists()) {
           break label318;
         }
-        paramMessage = DialogUtil.a(AIOGalleryScene.i(this.a), 232, AIOGalleryScene.j(this.a).getResources().getString(2131719107), AIOGalleryScene.k(this.a).getResources().getString(2131719106), 2131719090, 2131718205, new AIOGalleryScene.8.1(this, paramMessage), new AIOGalleryScene.8.2(this));
+        paramMessage = DialogUtil.a(AIOGalleryScene.n(this.a), 232, AIOGalleryScene.o(this.a).getResources().getString(2131916643), AIOGalleryScene.p(this.a).getResources().getString(2131916642), 2131916626, 2131915687, new AIOGalleryScene.8.1(this, paramMessage), new AIOGalleryScene.8.2(this));
       }
     }
     try
@@ -66,19 +66,19 @@ class AIOGalleryScene$8
       return;
     }
     catch (Throwable paramMessage) {}
-    AIOGalleryScene.f(this.a).getString(2131719076);
+    AIOGalleryScene.k(this.a).getString(2131916612);
     paramMessage = (String)paramMessage.obj;
-    ImageUtil.a(AIOGalleryScene.g(this.a), paramMessage);
-    QQToast.a(AIOGalleryScene.h(this.a), 2, HardCodeUtil.a(2131700274), 0).a();
+    ImageUtil.b(AIOGalleryScene.l(this.a), paramMessage);
+    QQToast.makeText(AIOGalleryScene.m(this.a), 2, HardCodeUtil.a(2131898316), 0).show();
     return;
-    QQToast.a(AIOGalleryScene.e(this.a), 2131719075, 0).a();
+    QQToast.makeText(AIOGalleryScene.j(this.a), 2131916611, 0).show();
     label318:
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.8
  * JD-Core Version:    0.7.0.1
  */

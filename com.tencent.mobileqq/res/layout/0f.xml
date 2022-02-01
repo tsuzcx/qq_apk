@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="?03"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageButton android:id="@id/2f" android:background="@color/ajr" android:paddingLeft="@dimen/1w" android:paddingRight="@dimen/1w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/02" android:textColor="@color/3o" android:gravity="center" android:id="@id/2e" android:background="@drawable/0p" android:paddingLeft="@dimen/1w" android:paddingRight="@dimen/1w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/7q" android:background="@drawable/hyd" android:paddingLeft="@dimen/2c" android:paddingRight="@dimen/2c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:layout_width="@dimen/8o" android:layout_height="@dimen/8o" android:src="@raw/ag" />
+    </LinearLayout>
+    <Button android:id="@id/2b" android:visibility="gone" android:layout_marginRight="@dimen/1c" android:text="send" style="@style/6n" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/2d" android:paddingRight="@dimen/1w" android:visibility="gone" android:layout_width="@dimen/25" android:layout_height="fill_parent" app:iconColor="@color/xp" />
+        <ImageView android:id="@id/n4z" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignTop="@id/2d" android:layout_alignRight="@id/2d" style="@style/a5w" />
+    </RelativeLayout>
+</LinearLayout>

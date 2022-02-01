@@ -9,12 +9,12 @@ class MultiAIOItemFragment$7
   
   public void run()
   {
-    MultiAIOItemFragment.a(this.this$0).b(false);
+    MultiAIOItemFragment.e(this.this$0).b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.7
  * JD-Core Version:    0.7.0.1
  */

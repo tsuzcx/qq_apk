@@ -14,7 +14,7 @@ class ShareGroupDrawableState$1
   public void a(Bitmap paramBitmap)
   {
     super.onNext(paramBitmap);
-    IconLog.b(ShareGroupDrawableState.a(this.a), "onNext, oldResult=%s, newResult=%s", ShareGroupDrawableState.a(this.a), paramBitmap);
+    IconLog.b(ShareGroupDrawableState.a(this.a), "onNext, oldResult=%s, newResult=%s", ShareGroupDrawableState.b(this.a), paramBitmap);
     ShareGroupDrawableState.a(this.a, paramBitmap);
     ShareGroupDrawableState.a(this.a, true);
   }
@@ -29,7 +29,7 @@ class ShareGroupDrawableState$1
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    IconLog.c(ShareGroupDrawableState.a(this.a), "onError, oldError=%s, newError=%s", ShareGroupDrawableState.a(this.a), paramError);
+    IconLog.c(ShareGroupDrawableState.a(this.a), "onError, oldError=%s, newError=%s", ShareGroupDrawableState.c(this.a), paramError);
     ShareGroupDrawableState.a(this.a, paramError);
     ShareGroupDrawableState.a(this.a, SystemClock.uptimeMillis());
     ShareGroupDrawableState.a(this.a, false);

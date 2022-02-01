@@ -1,7 +1,6 @@
 package androidx.constraintlayout.solver;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ArrayRow
   implements LinearSystem.Row
@@ -570,6 +569,7 @@ public class ArrayRow
     if (localSolverVariable != null)
     {
       this.variables.put(localSolverVariable, -1.0F);
+      this.variable.definitionId = -1;
       this.variable = null;
     }
     float f = this.variables.remove(paramSolverVariable, true) * -1.0F;
@@ -723,14 +723,43 @@ public class ArrayRow
     if (paramBoolean) {
       paramSolverVariable.removeFromRow(this);
     }
+    if ((LinearSystem.SIMPLIFY_SYNONYMS) && (paramSolverVariable != null) && (this.variables.getCurrentSize() == 0))
+    {
+      this.isSimpleDefinition = true;
+      paramLinearSystem.hasSimpleDefinition = true;
+    }
   }
   
-  public void updateFromRow(ArrayRow paramArrayRow, boolean paramBoolean)
+  public void updateFromRow(LinearSystem paramLinearSystem, ArrayRow paramArrayRow, boolean paramBoolean)
   {
     float f = this.variables.use(paramArrayRow, paramBoolean);
     this.constantValue += paramArrayRow.constantValue * f;
     if (paramBoolean) {
       paramArrayRow.variable.removeFromRow(this);
+    }
+    if ((LinearSystem.SIMPLIFY_SYNONYMS) && (this.variable != null) && (this.variables.getCurrentSize() == 0))
+    {
+      this.isSimpleDefinition = true;
+      paramLinearSystem.hasSimpleDefinition = true;
+    }
+  }
+  
+  public void updateFromSynonymVariable(LinearSystem paramLinearSystem, SolverVariable paramSolverVariable, boolean paramBoolean)
+  {
+    if (!paramSolverVariable.isSynonym) {
+      return;
+    }
+    float f = this.variables.get(paramSolverVariable);
+    this.constantValue += paramSolverVariable.synonymDelta * f;
+    this.variables.remove(paramSolverVariable, paramBoolean);
+    if (paramBoolean) {
+      paramSolverVariable.removeFromRow(this);
+    }
+    this.variables.add(paramLinearSystem.mCache.mIndexedVariables[paramSolverVariable.synonym], f, paramBoolean);
+    if ((LinearSystem.SIMPLIFY_SYNONYMS) && (paramSolverVariable != null) && (this.variables.getCurrentSize() == 0))
+    {
+      this.isSimpleDefinition = true;
+      paramLinearSystem.hasSimpleDefinition = true;
     }
   }
   
@@ -744,26 +773,30 @@ public class ArrayRow
     {
       int k = this.variables.getCurrentSize();
       int j = 0;
-      Object localObject;
+      SolverVariable localSolverVariable;
       while (j < k)
       {
-        localObject = this.variables.getVariable(j);
-        if ((((SolverVariable)localObject).definitionId != -1) || (((SolverVariable)localObject).isFinalValue)) {
-          this.variablesToUpdate.add(localObject);
+        localSolverVariable = this.variables.getVariable(j);
+        if ((localSolverVariable.definitionId != -1) || (localSolverVariable.isFinalValue) || (localSolverVariable.isSynonym)) {
+          this.variablesToUpdate.add(localSolverVariable);
         }
         j += 1;
       }
-      if (this.variablesToUpdate.size() > 0)
+      k = this.variablesToUpdate.size();
+      if (k > 0)
       {
-        localObject = this.variablesToUpdate.iterator();
-        while (((Iterator)localObject).hasNext())
+        j = 0;
+        while (j < k)
         {
-          SolverVariable localSolverVariable = (SolverVariable)((Iterator)localObject).next();
+          localSolverVariable = (SolverVariable)this.variablesToUpdate.get(j);
           if (localSolverVariable.isFinalValue) {
             updateFromFinalVariable(paramLinearSystem, localSolverVariable, true);
+          } else if (localSolverVariable.isSynonym) {
+            updateFromSynonymVariable(paramLinearSystem, localSolverVariable, true);
           } else {
-            updateFromRow(paramLinearSystem.mRows[localSolverVariable.definitionId], true);
+            updateFromRow(paramLinearSystem, paramLinearSystem.mRows[localSolverVariable.definitionId], true);
           }
+          j += 1;
         }
         this.variablesToUpdate.clear();
       }
@@ -772,11 +805,16 @@ public class ArrayRow
         i = 1;
       }
     }
+    if ((LinearSystem.SIMPLIFY_SYNONYMS) && (this.variable != null) && (this.variables.getCurrentSize() == 0))
+    {
+      this.isSimpleDefinition = true;
+      paramLinearSystem.hasSimpleDefinition = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.ArrayRow
  * JD-Core Version:    0.7.0.1
  */

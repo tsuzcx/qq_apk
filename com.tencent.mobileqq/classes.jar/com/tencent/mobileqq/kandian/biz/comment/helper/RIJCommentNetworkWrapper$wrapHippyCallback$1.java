@@ -13,17 +13,17 @@ public final class RIJCommentNetworkWrapper$wrapHippyCallback$1
   
   public void onCreateCommentResult(boolean paramBoolean, int paramInt, @Nullable String paramString)
   {
-    if ((paramInt == -4097) && (ReadInJoyCommentEntrance.a()))
+    if ((paramInt == -4097) && (ReadInJoyCommentEntrance.c()))
     {
-      ReadInJoyCommentEntrance.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$CustomDialogClickListener);
+      ReadInJoyCommentEntrance.a(this.a);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentHelperRIJCommentNetworkHelper$RIJCreateCommentForHippyObserver.onCreateCommentResult(paramBoolean, paramInt, paramString);
+    this.b.onCreateCommentResult(paramBoolean, paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkWrapper.wrapHippyCallback.1
  * JD-Core Version:    0.7.0.1
  */

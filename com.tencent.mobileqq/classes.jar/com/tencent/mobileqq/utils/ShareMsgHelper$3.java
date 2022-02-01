@@ -15,7 +15,7 @@ final class ShareMsgHelper$3
       localStringBuilder1.append("StatictisInfo[ ");
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("appSeq: ");
-      localStringBuilder2.append(paramStatictisInfo.jdField_a_of_type_Int);
+      localStringBuilder2.append(paramStatictisInfo.a);
       localStringBuilder1.append(localStringBuilder2.toString());
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("errCode: ");
@@ -27,11 +27,11 @@ final class ShareMsgHelper$3
       localStringBuilder1.append(localStringBuilder2.toString());
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("detailErrorReason: ");
-      localStringBuilder2.append(paramStatictisInfo.jdField_a_of_type_Long);
+      localStringBuilder2.append(paramStatictisInfo.d);
       localStringBuilder1.append(localStringBuilder2.toString());
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("timeoutReason: ");
-      localStringBuilder2.append(paramStatictisInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder2.append(paramStatictisInfo.e);
       localStringBuilder1.append(localStringBuilder2.toString());
       localStringBuilder1.append(" ]");
       paramStatictisInfo = new StringBuilder();
@@ -51,7 +51,7 @@ final class ShareMsgHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShareMsgHelper.3
  * JD-Core Version:    0.7.0.1
  */

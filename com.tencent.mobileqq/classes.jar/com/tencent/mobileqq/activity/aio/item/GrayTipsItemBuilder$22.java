@@ -20,70 +20,70 @@ class GrayTipsItemBuilder$22
   
   public void onClick(View paramView)
   {
-    boolean bool = this.jdField_a_of_type_JavaLangString.startsWith("mqqapi");
+    boolean bool = this.a.startsWith("mqqapi");
     int j = 1;
     if (bool)
     {
-      if ((this.jdField_a_of_type_JavaLangString.contains("c2c")) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0))
+      if ((this.a.contains("c2c")) && (this.c.d.a == 0))
       {
-        paramView = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext);
-        paramView.addButton(2131719732);
-        paramView.addCancelButton(2131690728);
+        paramView = ActionSheet.create(this.c.c);
+        paramView.addButton(2131917335);
+        paramView.addCancelButton(2131887648);
         paramView.setOnDismissListener(new GrayTipsItemBuilder.22.1(this));
         paramView.setOnButtonClickListener(new GrayTipsItemBuilder.22.2(this, paramView));
         paramView.show();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+        ReportController.b(this.c.a, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
       }
-      else if ((this.jdField_a_of_type_JavaLangString.contains("discussion")) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000))
+      else if ((this.a.contains("discussion")) && (this.c.d.a == 3000))
       {
-        paramView = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext);
-        paramView.addButton(2131719742);
-        paramView.addCancelButton(2131690728);
+        paramView = ActionSheet.create(this.c.c);
+        paramView.addButton(2131917345);
+        paramView.addCancelButton(2131887648);
         paramView.setOnDismissListener(new GrayTipsItemBuilder.22.3(this));
         paramView.setOnButtonClickListener(new GrayTipsItemBuilder.22.4(this, paramView));
         paramView.show();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+        ReportController.b(this.c.a, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
       }
     }
-    else if (this.jdField_a_of_type_JavaLangString.startsWith("http"))
+    else if (this.a.startsWith("http"))
     {
-      Object localObject = this.jdField_a_of_type_JavaLangString;
+      Object localObject = this.a;
       paramView = (View)localObject;
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         StringBuilder localStringBuilder;
         if (((String)localObject).contains("?"))
         {
-          paramView = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+          paramView = (TicketManager)this.c.a.getManager(2);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append((String)localObject);
           localStringBuilder.append("&sid=");
-          localStringBuilder.append(paramView.getSkey(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+          localStringBuilder.append(paramView.getSkey(this.c.a.getCurrentAccountUin()));
           paramView = localStringBuilder.toString();
         }
         else
         {
-          paramView = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+          paramView = (TicketManager)this.c.a.getManager(2);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append((String)localObject);
           localStringBuilder.append("?sid=");
-          localStringBuilder.append(paramView.getSkey(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+          localStringBuilder.append(paramView.getSkey(this.c.a.getCurrentAccountUin()));
           paramView = localStringBuilder.toString();
         }
       }
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localObject = new Intent(this.c.c, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramView);
       ((Intent)localObject).putExtra("hide_left_button", true);
       ((Intent)localObject).putExtra("show_right_close_button", true);
       ((Intent)localObject).putExtra("finish_animation_up_down", true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      this.c.c.startActivity((Intent)localObject);
       i = 2;
       break label492;
     }
     int i = 1;
     label492:
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 0) {
+    paramView = this.c.a;
+    if (this.c.d.a != 0) {
       j = 2;
     }
     ReportController.b(paramView, "CliOper", "", "", "0X800416C", "0X800416C", 0, 0, String.valueOf(j), String.valueOf(2), String.valueOf(i), this.b);
@@ -96,7 +96,7 @@ class GrayTipsItemBuilder$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.22
  * JD-Core Version:    0.7.0.1
  */

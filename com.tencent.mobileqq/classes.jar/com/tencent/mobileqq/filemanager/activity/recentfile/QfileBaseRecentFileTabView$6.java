@@ -24,11 +24,11 @@ class QfileBaseRecentFileTabView$6
   public void onClick(View paramView)
   {
     RecentItemHolder localRecentItemHolder = (RecentItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)localRecentItemHolder.jdField_a_of_type_JavaLangObject;
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)localRecentItemHolder.i;
     if (5 != localFileManagerEntity.cloudType) {
-      QQFileManagerUtil.c(localFileManagerEntity);
+      QQFileManagerUtil.j(localFileManagerEntity);
     }
-    int i = localRecentItemHolder.jdField_a_of_type_Int;
+    int i = localRecentItemHolder.d;
     if (i != 0)
     {
       if (i != 1)
@@ -37,44 +37,44 @@ class QfileBaseRecentFileTabView$6
         {
           if (i == 3)
           {
-            this.a.a.a().ac();
+            this.a.C.A().ac();
             if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
             {
-              FMToastUtil.a(2131692554);
+              FMToastUtil.a(2131889577);
               break label383;
             }
             if (localFileManagerEntity.status == 16)
             {
-              FMToastUtil.a(2131692717);
+              FMToastUtil.a(2131889788);
               break label383;
             }
             boolean bool = localFileManagerEntity.isSend();
-            ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).doWithWifiChecked(localFileManagerEntity, bool, this.a.a, new QfileBaseRecentFileTabView.6.2(this, localFileManagerEntity));
+            ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).doWithWifiChecked(localFileManagerEntity, bool, this.a.C, new QfileBaseRecentFileTabView.6.2(this, localFileManagerEntity));
           }
         }
         else
         {
-          this.a.a.a().ab();
+          this.a.C.A().ab();
           if (localFileManagerEntity.getCloudType() == 0) {
-            ((IQQFileEngine)QfileBaseRecentFileTabView.l(this.a).getRuntimeService(IQQFileEngine.class)).pauseOnlineTrans(localFileManagerEntity.nSessionId);
+            ((IQQFileEngine)QfileBaseRecentFileTabView.o(this.a).getRuntimeService(IQQFileEngine.class)).pauseOnlineTrans(localFileManagerEntity.nSessionId);
           } else if (localFileManagerEntity.getCloudType() == 6) {
             ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).cancelDatalineFile(localFileManagerEntity);
           } else {
-            ((IQQFileEngine)QfileBaseRecentFileTabView.m(this.a).getRuntimeService(IQQFileEngine.class)).pause(localFileManagerEntity.nSessionId);
+            ((IQQFileEngine)QfileBaseRecentFileTabView.p(this.a).getRuntimeService(IQQFileEngine.class)).pause(localFileManagerEntity.nSessionId);
           }
         }
       }
       else
       {
-        this.a.a.a().aa();
+        this.a.C.A().aa();
         if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          FMToastUtil.a(2131692554);
+          FMToastUtil.a(2131889577);
           break label383;
         }
         if (localFileManagerEntity.status == 16)
         {
-          FMToastUtil.a(2131692717);
+          FMToastUtil.a(2131889788);
           break label383;
         }
         ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).doWithWifiChecked(localFileManagerEntity, false, this.a.getContext(), new QfileBaseRecentFileTabView.6.1(this, localFileManagerEntity));
@@ -82,8 +82,8 @@ class QfileBaseRecentFileTabView$6
     }
     else
     {
-      this.a.a.a().Z();
-      this.a.a(localFileManagerEntity, localRecentItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+      this.a.C.A().Z();
+      this.a.a(localFileManagerEntity, localRecentItemHolder.f, false);
     }
     this.a.i();
     label383:
@@ -92,7 +92,7 @@ class QfileBaseRecentFileTabView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.6
  * JD-Core Version:    0.7.0.1
  */

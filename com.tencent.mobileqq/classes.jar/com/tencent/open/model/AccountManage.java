@@ -17,17 +17,17 @@ import mqq.os.MqqHandler;
 public class AccountManage
   implements OpenConst
 {
-  private static AccountManage jdField_a_of_type_ComTencentOpenModelAccountManage;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private static AccountManage a;
+  private AppRuntime b = MobileQQ.sMobileQQ.waitAppRuntime(null);
   
   public static AccountManage a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenModelAccountManage == null) {
-        jdField_a_of_type_ComTencentOpenModelAccountManage = new AccountManage();
+      if (a == null) {
+        a = new AccountManage();
       }
-      AccountManage localAccountManage = jdField_a_of_type_ComTencentOpenModelAccountManage;
+      AccountManage localAccountManage = a;
       return localAccountManage;
     }
     finally {}
@@ -45,7 +45,7 @@ public class AccountManage
     } else {
       localBundle = new Bundle();
     }
-    TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
+    TicketManager localTicketManager = (TicketManager)this.b.getManager(2);
     Object localObject3 = localTicketManager.getSkey(paramString);
     if ((!SharedPrefs.a(paramString)) && (paramInt == 1))
     {
@@ -112,7 +112,7 @@ public class AccountManage
         localBundle.putLong("dwSrcAppid", 1600001540L);
         localBundle.putLong("dwDstAppid", 1600001540L);
       }
-      this.jdField_a_of_type_MqqAppAppRuntime.ssoGetTicketNoPasswd(paramString, 4096, new AccountManage.3(this, paramSSOAccountObserver), localBundle);
+      this.b.ssoGetTicketNoPasswd(paramString, 4096, new AccountManage.3(this, paramSSOAccountObserver), localBundle);
     }
   }
   
@@ -128,14 +128,14 @@ public class AccountManage
   public void a(String paramString1, SSOAccountObserver paramSSOAccountObserver, String paramString2, int paramInt)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putByteArray("connect_data", AuthorityUtil.a(paramString2));
-    boolean bool = AuthMemoryCache.a().a(paramString1);
-    a(paramString1, paramSSOAccountObserver, paramInt, localBundle, AuthorityUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString1, bool));
+    localBundle.putByteArray("connect_data", AuthorityUtil.b(paramString2));
+    boolean bool = AuthMemoryCache.a().b(paramString1);
+    a(paramString1, paramSSOAccountObserver, paramInt, localBundle, AuthorityUtil.a(this.b, paramString1, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.model.AccountManage
  * JD-Core Version:    0.7.0.1
  */

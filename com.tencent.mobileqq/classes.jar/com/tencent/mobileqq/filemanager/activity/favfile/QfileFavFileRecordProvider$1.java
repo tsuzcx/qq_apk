@@ -34,17 +34,17 @@ class QfileFavFileRecordProvider$1
     localStringBuilder.append("<<<getMoreFileRecords result errCode:");
     localStringBuilder.append(paramInt);
     QLog.i((String)localObject, 1, localStringBuilder.toString());
-    QfileFavFileRecordProvider.a(this.a);
+    QfileFavFileRecordProvider.b(this.a);
     if (paramInt != 0)
     {
-      int i = 2131698239;
+      int i = 2131896140;
       if (paramInt == 65535) {
-        i = 2131698240;
+        i = 2131896141;
       }
-      int j = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168);
+      int j = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920);
       int k = (int)DisplayUtils.a(BaseApplication.getContext(), 5.0F);
-      QQToast.a(BaseApplication.getContext(), 0, i, 0).b(j - k);
-      QfileFavFileRecordProvider.b(this.a);
+      QQToast.makeText(BaseApplication.getContext(), 0, i, 0).show(j - k);
+      QfileFavFileRecordProvider.c(this.a);
       this.a.notifyObservers(new Object[] { localInteger, { Integer.valueOf(paramInt) } });
       return;
     }
@@ -60,11 +60,11 @@ class QfileFavFileRecordProvider$1
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(QfileFavFileRecordProvider.b);
       ((StringBuilder)localObject).append("getMoreFileRecords result: nextTimestamp:");
-      ((StringBuilder)localObject).append(QfileFavFileRecordProvider.a(this.a));
+      ((StringBuilder)localObject).append(QfileFavFileRecordProvider.d(this.a));
       ((StringBuilder)localObject).append(" gettedListEnd:");
       ((StringBuilder)localObject).append(bool);
       ((StringBuilder)localObject).append(" localEnd:");
-      ((StringBuilder)localObject).append(QfileFavFileRecordProvider.b(this.a));
+      ((StringBuilder)localObject).append(QfileFavFileRecordProvider.e(this.a));
       QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
     }
     else
@@ -73,20 +73,20 @@ class QfileFavFileRecordProvider$1
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(QfileFavFileRecordProvider.b);
       ((StringBuilder)localObject).append("getMoreFileRecords result: lastTimestamp:");
-      ((StringBuilder)localObject).append(QfileFavFileRecordProvider.a(this.a));
+      ((StringBuilder)localObject).append(QfileFavFileRecordProvider.d(this.a));
       ((StringBuilder)localObject).append(" exData=null");
       QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
     }
     paramBundle = new QfileFavFileRecordProvider.FileRecordGroup();
     this.a.a(paramList, paramBundle);
     this.a.a(paramBundle);
-    QfileFavFileRecordProvider.c(this.a);
+    QfileFavFileRecordProvider.f(this.a);
     this.a.notifyObservers(new Object[] { localInteger, { Integer.valueOf(0) } });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider.1
  * JD-Core Version:    0.7.0.1
  */

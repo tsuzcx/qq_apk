@@ -16,71 +16,71 @@ class ArkAppLocationManager$1$1
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     double d1 = 0.0D;
     if (bool)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo;
+      ??? = this.b;
       if (??? != null)
       {
-        if ((Math.abs(((SosoLbsInfo)???).mLocation.mLat84) > 1.0E-006D) && (Math.abs(this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLon84) > 1.0E-006D))
+        if ((Math.abs(((SosoLbsInfo)???).mLocation.mLat84) > 1.0E-006D) && (Math.abs(this.b.mLocation.mLon84) > 1.0E-006D))
         {
-          d1 = this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLat84;
-          d2 = this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLon84;
+          d1 = this.b.mLocation.mLat84;
+          d2 = this.b.mLocation.mLon84;
           break label189;
         }
-        if ((Math.abs(this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLat02) > 1.0E-006D) && (Math.abs(this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLon02) > 1.0E-006D))
+        if ((Math.abs(this.b.mLocation.mLat02) > 1.0E-006D) && (Math.abs(this.b.mLocation.mLon02) > 1.0E-006D))
         {
-          ??? = LocationUtil.a(this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLon02, this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLat02);
+          ??? = LocationUtil.a(this.b.mLocation.mLon02, this.b.mLocation.mLat02);
           d2 = ???[0];
           d1 = ???[1];
-          this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLat84 = d1;
-          this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo.mLocation.mLon84 = d2;
+          this.b.mLocation.mLat84 = d1;
+          this.b.mLocation.mLon84 = d2;
           break label189;
         }
       }
     }
     double d2 = 0.0D;
     label189:
-    synchronized (ArkAppLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a))
+    synchronized (ArkAppLocationManager.a(this.c.a))
     {
-      Object localObject2 = new ArrayList(ArkAppLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a));
+      Object localObject2 = new ArrayList(ArkAppLocationManager.a(this.c.a));
       if (((ArrayList)localObject2).size() == 0) {
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(ArkAppLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a));
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(ArkAppLocationManager.b(this.c.a));
       }
       ??? = ((ArrayList)localObject2).iterator();
       while (((Iterator)???).hasNext())
       {
         localObject2 = (ArkAppLocationManager.LocationCallback)((Iterator)???).next();
-        ((ArkAppLocationManager.LocationCallback)localObject2).a(this.jdField_a_of_type_Boolean, d1, d2);
-        if (!this.jdField_a_of_type_Boolean) {
+        ((ArkAppLocationManager.LocationCallback)localObject2).a(this.a, d1, d2);
+        if (!this.a) {
           ((ArkAppLocationManager.LocationCallback)localObject2).a();
         }
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        synchronized (ArkAppLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a))
+      if (!this.a) {
+        synchronized (ArkAppLocationManager.a(this.c.a))
         {
-          ArkAppLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a).clear();
+          ArkAppLocationManager.a(this.c.a).clear();
         }
       }
-      synchronized (ArkAppLocationManager.b(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a))
+      synchronized (ArkAppLocationManager.c(this.c.a))
       {
-        Object localObject4 = new ArrayList(ArkAppLocationManager.b(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a));
-        ArkAppLocationManager.b(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a).removeAll((Collection)localObject4);
+        Object localObject4 = new ArrayList(ArkAppLocationManager.c(this.c.a));
+        ArkAppLocationManager.c(this.c.a).removeAll((Collection)localObject4);
         ??? = ((ArrayList)localObject4).iterator();
         while (((Iterator)???).hasNext())
         {
           localObject4 = (ArkAppLocationManager.LocationCallback)((Iterator)???).next();
-          ((ArkAppLocationManager.LocationCallback)localObject4).a(this.jdField_a_of_type_Boolean, d1, d2);
+          ((ArkAppLocationManager.LocationCallback)localObject4).a(this.a, d1, d2);
           ((ArkAppLocationManager.LocationCallback)localObject4).a();
         }
-        synchronized (ArkAppLocationManager.c(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a))
+        synchronized (ArkAppLocationManager.d(this.c.a))
         {
-          localObject4 = new ArrayList(ArkAppLocationManager.c(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a));
-          ArkAppLocationManager.c(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager$1.a).removeAll((Collection)localObject4);
+          localObject4 = new ArrayList(ArkAppLocationManager.d(this.c.a));
+          ArkAppLocationManager.d(this.c.a).removeAll((Collection)localObject4);
           ??? = ((ArrayList)localObject4).iterator();
           while (((Iterator)???).hasNext()) {
-            ((ArkAppLocationManager.AddressCallback)((Iterator)???).next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo);
+            ((ArkAppLocationManager.AddressCallback)((Iterator)???).next()).a(this.a, this.b);
           }
           return;
         }
@@ -94,7 +94,7 @@ class ArkAppLocationManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppLocationManager.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class TextLayer$TextItem$3
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
+    this.a.K = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.m.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.TextLayer.TextItem.3
  * JD-Core Version:    0.7.0.1
  */

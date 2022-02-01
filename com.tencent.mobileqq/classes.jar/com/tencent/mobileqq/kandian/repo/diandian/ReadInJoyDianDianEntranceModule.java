@@ -36,8 +36,8 @@ import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.RspBody;
 public class ReadInJoyDianDianEntranceModule
   extends ReadInJoyEngineModule
 {
-  private long jdField_a_of_type_Long;
-  private ReadInJoyDianDianEntranceModule.OnIconRefreshCallback jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianReadInJoyDianDianEntranceModule$OnIconRefreshCallback = null;
+  private ReadInJoyDianDianEntranceModule.OnIconRefreshCallback a = null;
+  private long b;
   
   public ReadInJoyDianDianEntranceModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -46,7 +46,7 @@ public class ReadInJoyDianDianEntranceModule
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return;
     }
     paramToServiceMsg = new oidb_0x6cf.RspBody();
@@ -63,7 +63,7 @@ public class ReadInJoyDianDianEntranceModule
       {
         paramToServiceMsg = (oidb_0x6cf.ArticleSummary)paramToServiceMsg.req_article_summary.get();
         if ((paramToServiceMsg != null) && (paramToServiceMsg.bytes_video_report_info.has())) {
-          paramObject.e = paramToServiceMsg.bytes_video_report_info.get().toStringUtf8();
+          paramObject.g = paramToServiceMsg.bytes_video_report_info.get().toStringUtf8();
         }
       }
       paramObject.a(paramFromServiceMsg);
@@ -88,7 +88,7 @@ public class ReadInJoyDianDianEntranceModule
   
   public void a(ReadInJoyDianDianEntranceModule.OnIconRefreshCallback paramOnIconRefreshCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianReadInJoyDianDianEntranceModule$OnIconRefreshCallback = paramOnIconRefreshCallback;
+    this.a = paramOnIconRefreshCallback;
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -103,16 +103,16 @@ public class ReadInJoyDianDianEntranceModule
     paramToServiceMsg.append(i);
     QLog.d("ReadInJoyDianDianEntranceModule", 1, paramToServiceMsg.toString());
     paramToServiceMsg = new EntranceIconInfo();
-    paramToServiceMsg.jdField_a_of_type_Int = i;
+    paramToServiceMsg.a = i;
     paramFromServiceMsg = new ExtraInfo();
     if ((j == 0) && (localRspBody.msg_icon_info.has()))
     {
       paramObject = (oidb_cmd0xdcb.IconInfo)localRspBody.msg_icon_info.get();
       if (paramObject.feeds_msg_icon_url.has()) {
-        paramToServiceMsg.jdField_a_of_type_JavaLangString = paramObject.feeds_msg_icon_url.get();
+        paramToServiceMsg.b = paramObject.feeds_msg_icon_url.get();
       }
       if (paramObject.feeds_default_icon_url.has()) {
-        paramToServiceMsg.jdField_b_of_type_JavaLangString = paramObject.feeds_default_icon_url.get();
+        paramToServiceMsg.c = paramObject.feeds_default_icon_url.get();
       }
       if (paramObject.uint32_is_use_gif.has())
       {
@@ -122,27 +122,27 @@ public class ReadInJoyDianDianEntranceModule
         } else {
           bool = false;
         }
-        paramToServiceMsg.jdField_a_of_type_Boolean = bool;
+        paramToServiceMsg.e = bool;
       }
       if (paramObject.str_jump_schema.has()) {
-        paramToServiceMsg.c = paramObject.str_jump_schema.get();
+        paramToServiceMsg.d = paramObject.str_jump_schema.get();
       }
       if (paramObject.str_nickname.has()) {
-        paramToServiceMsg.d = paramObject.str_nickname.get();
+        paramToServiceMsg.g = paramObject.str_nickname.get();
       }
       if (paramObject.uint32_op_type.has()) {
-        paramToServiceMsg.jdField_b_of_type_Int = paramObject.uint32_op_type.get();
+        paramToServiceMsg.h = paramObject.uint32_op_type.get();
       }
-      paramToServiceMsg.jdField_a_of_type_Int = i;
+      paramToServiceMsg.a = i;
       if ((localRspBody.msg_extra_info.has()) && (localRspBody.msg_extra_info.str_report_json.has())) {
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = localRspBody.msg_extra_info.str_report_json.get();
+        paramFromServiceMsg.a = localRspBody.msg_extra_info.str_report_json.get();
       }
     }
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append("handleIconRefreshInfoRsp | EntranceIconInfo ");
     paramFromServiceMsg.append(paramToServiceMsg);
     QLog.d("ReadInJoyDianDianEntranceModule", 1, paramFromServiceMsg.toString());
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianReadInJoyDianDianEntranceModule$OnIconRefreshCallback;
+    paramFromServiceMsg = this.a;
     if (paramFromServiceMsg != null) {
       paramFromServiceMsg.a(paramToServiceMsg);
     }
@@ -153,10 +153,10 @@ public class ReadInJoyDianDianEntranceModule
     if (paramInt != 6) {
       return;
     }
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return;
     }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 5000L)
+    if (System.currentTimeMillis() - this.b < 5000L)
     {
       QLog.d("ReadInJoyDianDianEntranceModule", 1, "requestColumn0x6cf ignore! too frequently");
       return;
@@ -164,22 +164,22 @@ public class ReadInJoyDianDianEntranceModule
     oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
     localReqBody.uint32_req_source.set(30);
     localReqBody.uint32_req_sim_type.set(RIJCUKingCardUtils.a());
-    paramInt = ((Integer)RIJSPUtils.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue();
+    paramInt = ((Integer)RIJSPUtils.b("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue();
     localReqBody.uint32_youngster_status.set(paramInt);
     localReqBody.uint32_req_recommend_flag.set(VideoPlayRecommendHelper.a());
-    localReqBody.uint64_uin.set(RIJQQAppInterfaceUtil.a());
-    String str = (String)RIJSPUtils.a(RIJColumnDataSource.f, "");
+    localReqBody.uint64_uin.set(RIJQQAppInterfaceUtil.c());
+    String str = (String)RIJSPUtils.b(RIJColumnDataSource.h, "");
     if (!TextUtils.isEmpty(str)) {
       localReqBody.bytes_entrance_cookie.set(ByteStringMicro.copyFromUtf8(str));
     }
     sendPbReq(ReadInJoyOidbHelper.a("OidbSvc.0x6cf", 1743, 1, localReqBody.toByteArray()));
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.b = System.currentTimeMillis();
     QLog.d("ReadInJoyDianDianEntranceModule", 1, "requestColumn0x6cf");
   }
   
   public void b(ReadInJoyDianDianEntranceModule.OnIconRefreshCallback paramOnIconRefreshCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianReadInJoyDianDianEntranceModule$OnIconRefreshCallback = null;
+    this.a = null;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -198,7 +198,7 @@ public class ReadInJoyDianDianEntranceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.diandian.ReadInJoyDianDianEntranceModule
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ class FileManagerRSWorker$4
   {
     try
     {
-      if (this.this$0.jdField_a_of_type_JavaIoOutputStream == null) {
-        this.this$0.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.this$0.d, true);
+      if (this.this$0.u == null) {
+        this.this$0.u = new FileOutputStream(this.this$0.e, true);
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.this$0.c, 2002);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      this.this$0.i = this.a;
-      FileManagerRSWorker.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
+      this.this$0.a.getFileManagerDataCenter().a(this.this$0.r, 2002);
+      this.this$0.B.status = 0;
+      this.this$0.a.getFileManagerDataCenter().c(this.this$0.B);
+      this.this$0.B.status = 2;
+      this.this$0.t = this.a;
+      FileManagerRSWorker.a(this.this$0, this.this$0.o, this.this$0.t);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
@@ -32,7 +32,7 @@ class FileManagerRSWorker$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.4
  * JD-Core Version:    0.7.0.1
  */

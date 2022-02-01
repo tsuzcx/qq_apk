@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.TextView;
+import com.tencent.mobileqq.login.authdev.AuthDevUgReporter;
 import com.tencent.mobileqq.loginregister.LoginUtils;
 import com.tencent.mobileqq.loginwelcome.GatewayUtil;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -48,16 +49,16 @@ class NewAuthDevUgFragment$1
               NewAuthDevUgFragment.a(this.a);
               NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt2, "");
               NewAuthDevUgFragment.b(this.a);
-              GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 3, NewAuthDevUgFragment.a(this.a));
+              GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 3, NewAuthDevUgFragment.f(this.a));
               return;
             }
-            NewAuthDevUgFragment.b(this.a);
-            if (NewAuthDevUgFragment.c(this.a) > 5)
+            NewAuthDevUgFragment.g(this.a);
+            if (NewAuthDevUgFragment.h(this.a) > 5)
             {
               NewAuthDevUgFragment.a(this.a);
               NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt2, "redirect time out");
               NewAuthDevUgFragment.b(this.a);
-              GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 3, NewAuthDevUgFragment.a(this.a));
+              GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 3, NewAuthDevUgFragment.f(this.a));
               return;
             }
             QLog.d("NewAuthDevUgFragment", 1, "VerifyDevLockObserver redirect");
@@ -67,15 +68,15 @@ class NewAuthDevUgFragment$1
           NewAuthDevUgFragment.a(this.a);
           NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt2, "not match");
           NewAuthDevUgFragment.c(this.a);
-          GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 5, NewAuthDevUgFragment.a(this.a));
-          ReportController.a(NewAuthDevUgFragment.a(this.a), "dc00898", "", NewAuthDevUgFragment.a(this.a), "0X800B663", "0X800B663", NewAuthDevUgFragment.a(this.a), 0, "", "", "", "");
+          GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 5, NewAuthDevUgFragment.f(this.a));
+          AuthDevUgReporter.a().a(NewAuthDevUgFragment.e(this.a), "0X800B663");
           return;
         }
         NewAuthDevUgFragment.a(this.a);
         NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt2, "pre check not match");
         NewAuthDevUgFragment.b(this.a);
-        GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 5, NewAuthDevUgFragment.a(this.a));
-        ReportController.a(NewAuthDevUgFragment.a(this.a), "dc00898", "", NewAuthDevUgFragment.a(this.a), "0X800B664", "0X800B664", NewAuthDevUgFragment.a(this.a), 0, "", "", "", "");
+        GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 5, NewAuthDevUgFragment.f(this.a));
+        AuthDevUgReporter.a().a(NewAuthDevUgFragment.e(this.a), "0X800B664");
         return;
       }
       NewAuthDevUgFragment.a(this.a);
@@ -95,7 +96,7 @@ class NewAuthDevUgFragment$1
     }
     NewAuthDevUgFragment.a(this.a, paramObject, paramInt2, "");
     NewAuthDevUgFragment.b(this.a);
-    GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 3, NewAuthDevUgFragment.a(this.a));
+    GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 3, NewAuthDevUgFragment.f(this.a));
   }
   
   public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
@@ -109,25 +110,25 @@ class NewAuthDevUgFragment$1
     if (paramInt2 == 0)
     {
       NewAuthDevUgFragment.a(this.a, "V_RET_SUCCESS", paramInt2, "");
-      NewAuthDevUgFragment.d(this.a);
-      NewAuthDevUgFragment.a(this.a).postDelayed(new NewAuthDevUgFragment.1.1(this), 800L);
-      if (NewAuthDevUgFragment.a(this.a)) {
-        LoginUtils.a(NewAuthDevUgFragment.a(this.a));
+      NewAuthDevUgFragment.i(this.a);
+      NewAuthDevUgFragment.j(this.a).postDelayed(new NewAuthDevUgFragment.1.1(this), 800L);
+      if (NewAuthDevUgFragment.k(this.a)) {
+        LoginUtils.a(NewAuthDevUgFragment.e(this.a));
       }
-      GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 4, NewAuthDevUgFragment.a(this.a));
-      ReportController.a(NewAuthDevUgFragment.a(this.a), "dc00898", "", NewAuthDevUgFragment.a(this.a), "0X800AEFB", "0X800AEFB", 0, 0, "", "", "", "");
-      ReportController.a(NewAuthDevUgFragment.a(this.a), "dc00898", "", NewAuthDevUgFragment.a(this.a), "0X800B662", "0X800B662", NewAuthDevUgFragment.a(this.a), 0, "", "", "", "");
+      GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 4, NewAuthDevUgFragment.f(this.a));
+      ReportController.a(NewAuthDevUgFragment.e(this.a), "dc00898", "", NewAuthDevUgFragment.f(this.a), "0X800AEFB", "0X800AEFB", 0, 0, "", "", "", "");
+      AuthDevUgReporter.a().a(NewAuthDevUgFragment.e(this.a), "0X800B662");
       return;
     }
     QLog.e("NewAuthDevUgFragment", 1, new Object[] { "VerifyDevLockObserver onVerifyClose error, ret : ", Integer.valueOf(paramInt2) });
     NewAuthDevUgFragment.a(this.a, "V_VERIFY_TOKEN_ERROR", paramInt2, paramErrMsg.getMessage());
     NewAuthDevUgFragment.b(this.a);
-    GatewayUtil.a(NewAuthDevUgFragment.a(this.a), NewAuthDevUgFragment.a(this.a), 3, NewAuthDevUgFragment.a(this.a));
+    GatewayUtil.a(NewAuthDevUgFragment.d(this.a), NewAuthDevUgFragment.e(this.a), 3, NewAuthDevUgFragment.f(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NewAuthDevUgFragment.1
  * JD-Core Version:    0.7.0.1
  */

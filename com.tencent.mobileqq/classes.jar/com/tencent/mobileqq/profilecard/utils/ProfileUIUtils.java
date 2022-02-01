@@ -15,12 +15,12 @@ public class ProfileUIUtils
   
   public static void notifyUser(int paramInt, String paramString)
   {
-    QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), paramInt, paramString, 0).a();
+    QQToast.makeText(MobileQQ.sMobileQQ.getApplicationContext(), paramInt, paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.utils.ProfileUIUtils
  * JD-Core Version:    0.7.0.1
  */

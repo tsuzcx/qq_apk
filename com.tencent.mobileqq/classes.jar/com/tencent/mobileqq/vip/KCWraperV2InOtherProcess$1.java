@@ -9,12 +9,12 @@ class KCWraperV2InOtherProcess$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback.a(true, ((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue(), ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue());
+    this.a.a(true, ((Boolean)this.b.first).booleanValue(), ((Integer)this.b.second).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1
  * JD-Core Version:    0.7.0.1
  */

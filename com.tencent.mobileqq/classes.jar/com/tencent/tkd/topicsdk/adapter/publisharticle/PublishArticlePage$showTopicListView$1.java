@@ -31,16 +31,16 @@ final class PublishArticlePage$showTopicListView$1
     if (paramEditObject != null)
     {
       JSONObject localJSONObject = RichEditTextEvent.a.a(1);
-      PublishArticlePage.a(this.this$0).a(paramEditObject, localJSONObject);
+      PublishArticlePage.h(this.this$0).a(paramEditObject, localJSONObject);
     }
     if ((paramEditObject != null) || ((paramBundle != null) && (paramBundle.getBoolean("isSoftInputActive") == true))) {
-      InputMethodUtils.a.a((Context)this.$activity, (View)PublishArticlePage.a(this.this$0));
+      InputMethodUtils.a.a((Context)this.$activity, (View)PublishArticlePage.h(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.showTopicListView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,23 +35,23 @@ public class WebFastProteusAdInnerCreator$ProteusItemHolder
       if ((paramProteusItemData instanceof AdData))
       {
         paramProteusItemData = (AdData)paramProteusItemData;
-        if ((paramProteusItemData.a != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramProteusItemData)))
+        if ((paramProteusItemData.as != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramProteusItemData)))
         {
           ViewBase localViewBase2 = localViewBase1.findViewBaseByName("id_inner_small_img");
-          if (((localViewBase2 instanceof ReadInjoyImageView)) && (paramProteusItemData.a.a != null) && (!TextUtils.isEmpty(paramProteusItemData.a.k))) {
-            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase2, paramProteusItemData.a.k, 10);
+          if (((localViewBase2 instanceof ReadInjoyImageView)) && (paramProteusItemData.as.B != null) && (!TextUtils.isEmpty(paramProteusItemData.as.l))) {
+            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase2, paramProteusItemData.as.l, 10);
           }
           localViewBase2 = localViewBase1.findViewBaseByName("id_inner_game_img1");
-          if (((localViewBase2 instanceof ReadInjoyImageView)) && (paramProteusItemData.a.a != null) && (!TextUtils.isEmpty(paramProteusItemData.a.a.d))) {
-            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase2, paramProteusItemData.a.a.d, 10);
+          if (((localViewBase2 instanceof ReadInjoyImageView)) && (paramProteusItemData.as.B != null) && (!TextUtils.isEmpty(paramProteusItemData.as.B.e))) {
+            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase2, paramProteusItemData.as.B.e, 10);
           }
           localViewBase2 = localViewBase1.findViewBaseByName("id_inner_game_img2");
-          if (((localViewBase2 instanceof ReadInjoyImageView)) && (paramProteusItemData.a.a != null) && (!TextUtils.isEmpty(paramProteusItemData.a.a.e))) {
-            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase2, paramProteusItemData.a.a.e, 10);
+          if (((localViewBase2 instanceof ReadInjoyImageView)) && (paramProteusItemData.as.B != null) && (!TextUtils.isEmpty(paramProteusItemData.as.B.f))) {
+            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase2, paramProteusItemData.as.B.f, 10);
           }
           localViewBase1 = localViewBase1.findViewBaseByName("id_inner_game_img3");
-          if (((localViewBase1 instanceof ReadInjoyImageView)) && (paramProteusItemData.a.a != null) && (!TextUtils.isEmpty(paramProteusItemData.a.a.f))) {
-            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase1, paramProteusItemData.a.a.f, 10);
+          if (((localViewBase1 instanceof ReadInjoyImageView)) && (paramProteusItemData.as.B != null) && (!TextUtils.isEmpty(paramProteusItemData.as.B.g))) {
+            FastWeqAdUtils.a(paramContainer.getContext(), localViewBase1, paramProteusItemData.as.B.g, 10);
           }
         }
       }
@@ -60,7 +60,7 @@ public class WebFastProteusAdInnerCreator$ProteusItemHolder
   
   protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new WebFastProteusAdInnerCreator.ProteusItemHolder.1(this, paramContext));
+    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new WebFastProteusAdInnerCreator.ProteusItemHolder.1(this, paramContext));
   }
   
   protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
@@ -70,7 +70,7 @@ public class WebFastProteusAdInnerCreator$ProteusItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusAdInnerCreator.ProteusItemHolder
  * JD-Core Version:    0.7.0.1
  */

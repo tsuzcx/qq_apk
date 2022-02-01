@@ -15,6 +15,7 @@ import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVertical
 import com.tencent.mobileqq.activity.recent.data.RecentItemMsgBox;
 import com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine;
 import com.tencent.mobileqq.activity.recent.data.RecentItemQCallData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRIJPrivateItemData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemRouterDataLine;
 import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
@@ -24,6 +25,7 @@ import com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistant;
 import com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification;
 import com.tencent.mobileqq.activity.recent.data.SendBlessRecentItemData;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.data.RecentItemGameMsgBoxData;
 import com.tencent.mobileqq.activity.recent.msgbox.data.RecentItemFilterMsgBoxData;
 import com.tencent.mobileqq.activity.recent.msgbox.data.RecentItemTempMsgBoxData;
 
@@ -63,11 +65,13 @@ final class BusinessConverter$1
     put(8114, RecentItemContactsGuideData.class);
     put(10011, RecentItemTempMsgBoxData.class);
     put(10012, RecentItemFilterMsgBoxData.class);
+    put(10013, RecentItemRIJPrivateItemData.class);
+    put(10015, RecentItemGameMsgBoxData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentconvert.BusinessConverter.1
  * JD-Core Version:    0.7.0.1
  */

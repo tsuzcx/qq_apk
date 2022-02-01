@@ -6,32 +6,31 @@ import mqq.manager.Manager;
 public class ContactFacade
   implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FetchBuddyAndTroopNameHelper jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper;
-  public Object a;
+  public Object a = new Object();
+  private QQAppInterface b;
+  private FetchBuddyAndTroopNameHelper c;
   
   public ContactFacade(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   public FetchBuddyAndTroopNameHelper a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper == null) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (this.c == null) {
+      synchronized (this.a)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper == null) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper = new FetchBuddyAndTroopNameHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if (this.c == null) {
+          this.c = new FetchBuddyAndTroopNameHelper(this.b);
         }
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper;
+    return this.c;
   }
   
   public void onDestroy()
   {
-    FetchBuddyAndTroopNameHelper localFetchBuddyAndTroopNameHelper = this.jdField_a_of_type_ComTencentMobileqqUtilFetchBuddyAndTroopNameHelper;
+    FetchBuddyAndTroopNameHelper localFetchBuddyAndTroopNameHelper = this.c;
     if (localFetchBuddyAndTroopNameHelper != null) {
       localFetchBuddyAndTroopNameHelper.a();
     }
@@ -39,7 +38,7 @@ public class ContactFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactFacade
  * JD-Core Version:    0.7.0.1
  */

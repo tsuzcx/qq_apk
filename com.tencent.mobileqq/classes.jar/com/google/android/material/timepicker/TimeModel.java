@@ -12,13 +12,13 @@ class TimeModel
   implements Parcelable
 {
   public static final Parcelable.Creator<TimeModel> CREATOR = new TimeModel.1();
-  final int jdField_a_of_type_Int;
-  private final MaxInputValidator jdField_a_of_type_ComGoogleAndroidMaterialTimepickerMaxInputValidator;
-  int jdField_b_of_type_Int;
-  private final MaxInputValidator jdField_b_of_type_ComGoogleAndroidMaterialTimepickerMaxInputValidator;
+  final int a;
+  int b;
   int c;
   int d;
   int e;
+  private final MaxInputValidator f;
+  private final MaxInputValidator g;
   
   public TimeModel()
   {
@@ -32,31 +32,23 @@ class TimeModel
   
   public TimeModel(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = paramInt1;
+    this.b = paramInt1;
     this.c = paramInt2;
     this.d = paramInt3;
-    this.jdField_a_of_type_Int = paramInt4;
-    this.e = a(paramInt1);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerMaxInputValidator = new MaxInputValidator(59);
+    this.a = paramInt4;
+    this.e = d(paramInt1);
+    this.f = new MaxInputValidator(59);
     if (paramInt4 == 1) {
       paramInt1 = 24;
     } else {
       paramInt1 = 12;
     }
-    this.jdField_b_of_type_ComGoogleAndroidMaterialTimepickerMaxInputValidator = new MaxInputValidator(paramInt1);
+    this.g = new MaxInputValidator(paramInt1);
   }
   
   protected TimeModel(Parcel paramParcel)
   {
     this(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt());
-  }
-  
-  private static int a(int paramInt)
-  {
-    if (paramInt >= 12) {
-      return 1;
-    }
-    return 0;
   }
   
   public static String a(Resources paramResources, CharSequence paramCharSequence)
@@ -69,12 +61,20 @@ class TimeModel
     return String.format(paramResources.getConfiguration().locale, paramString, new Object[] { Integer.valueOf(Integer.parseInt(String.valueOf(paramCharSequence))) });
   }
   
+  private static int d(int paramInt)
+  {
+    if (paramInt >= 12) {
+      return 1;
+    }
+    return 0;
+  }
+  
   public int a()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      return this.jdField_b_of_type_Int % 24;
+    if (this.a == 1) {
+      return this.b % 24;
     }
-    int j = this.jdField_b_of_type_Int;
+    int j = this.b;
     if (j % 12 == 0) {
       return 12;
     }
@@ -85,28 +85,23 @@ class TimeModel
     return i;
   }
   
-  public MaxInputValidator a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerMaxInputValidator;
-  }
-  
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      this.jdField_b_of_type_Int = paramInt;
+      this.b = paramInt;
       return;
     }
     int i = 12;
     if (this.e != 1) {
       i = 0;
     }
-    this.jdField_b_of_type_Int = (paramInt % 12 + i);
+    this.b = (paramInt % 12 + i);
   }
   
   public MaxInputValidator b()
   {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialTimepickerMaxInputValidator;
+    return this.f;
   }
   
   public void b(@IntRange(from=0L, to=60L) int paramInt)
@@ -114,20 +109,25 @@ class TimeModel
     this.c = (paramInt % 60);
   }
   
+  public MaxInputValidator c()
+  {
+    return this.g;
+  }
+  
   public void c(int paramInt)
   {
     if (paramInt != this.e)
     {
       this.e = paramInt;
-      int i = this.jdField_b_of_type_Int;
+      int i = this.b;
       if ((i < 12) && (paramInt == 1))
       {
-        this.jdField_b_of_type_Int = (i + 12);
+        this.b = (i + 12);
         return;
       }
-      i = this.jdField_b_of_type_Int;
+      i = this.b;
       if ((i >= 12) && (paramInt == 0)) {
-        this.jdField_b_of_type_Int = (i - 12);
+        this.b = (i - 12);
       }
     }
   }
@@ -146,25 +146,25 @@ class TimeModel
       return false;
     }
     paramObject = (TimeModel)paramObject;
-    return (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.c == paramObject.c) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.d == paramObject.d);
+    return (this.b == paramObject.b) && (this.c == paramObject.c) && (this.a == paramObject.a) && (this.d == paramObject.d);
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d) });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d) });
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
     paramParcel.writeInt(this.d);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.timepicker.TimeModel
  * JD-Core Version:    0.7.0.1
  */

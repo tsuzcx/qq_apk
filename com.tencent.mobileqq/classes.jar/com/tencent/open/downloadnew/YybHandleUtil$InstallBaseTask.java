@@ -12,19 +12,19 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 public class YybHandleUtil$InstallBaseTask
   extends AsyncTask<Void, Long, Boolean>
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  String jdField_a_of_type_JavaLangString;
+  ProgressDialog c;
+  Activity d;
+  String e;
   
   public YybHandleUtil$InstallBaseTask(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.d = paramActivity;
   }
   
   public YybHandleUtil$InstallBaseTask(Activity paramActivity, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramActivity;
+    this.e = paramString;
   }
   
   protected Boolean a(Void... paramVarArgs)
@@ -34,9 +34,9 @@ public class YybHandleUtil$InstallBaseTask
   
   protected void a()
   {
-    ProgressDialog localProgressDialog = this.jdField_a_of_type_AndroidAppProgressDialog;
+    ProgressDialog localProgressDialog = this.c;
     if ((localProgressDialog != null) && (localProgressDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      this.c.dismiss();
     }
   }
   
@@ -46,12 +46,12 @@ public class YybHandleUtil$InstallBaseTask
     a();
     if (paramBoolean.booleanValue())
     {
-      if ((YybHandleUtil.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        StaticAnalyz.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
+      if ((YybHandleUtil.a()) && (TextUtils.isEmpty(this.e))) {
+        StaticAnalyz.a("311", this.e, "1101070898");
       }
     }
     else {
-      ToastUtil.a().a(HardCodeUtil.a(2131716504), 1);
+      ToastUtil.a().a(HardCodeUtil.a(2131913937), 1);
     }
   }
   
@@ -64,16 +64,16 @@ public class YybHandleUtil$InstallBaseTask
   protected void onPreExecute()
   {
     super.onPreExecute();
-    this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    this.c = new ReportProgressDialog(this.d);
+    Activity localActivity = this.d;
     if ((localActivity != null) && (!localActivity.isFinishing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.show();
+      this.c.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil.InstallBaseTask
  * JD-Core Version:    0.7.0.1
  */

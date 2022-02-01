@@ -7,6 +7,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.BitSet;
 import java.util.Iterator;
@@ -15,32 +16,18 @@ import java.util.regex.Pattern;
 
 public class BizWifiConfigManager
 {
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[0-9A-Fa-f]+");
-  private final WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
-  protected final String a;
+  private static final Pattern d = Pattern.compile("[0-9A-Fa-f]+");
+  protected final String a = "WEP";
   protected final String b = "WPA";
   protected final String c = "nopass";
+  private final WifiManager e;
   
   public BizWifiConfigManager(WifiManager paramWifiManager)
   {
-    this.jdField_a_of_type_JavaLangString = "WEP";
-    this.jdField_a_of_type_AndroidNetWifiWifiManager = paramWifiManager;
+    this.e = paramWifiManager;
   }
   
-  private static WifiConfiguration a(WifiParsedResult paramWifiParsedResult)
-  {
-    WifiConfiguration localWifiConfiguration = new WifiConfiguration();
-    localWifiConfiguration.allowedAuthAlgorithms.clear();
-    localWifiConfiguration.allowedGroupCiphers.clear();
-    localWifiConfiguration.allowedKeyManagement.clear();
-    localWifiConfiguration.allowedPairwiseCiphers.clear();
-    localWifiConfiguration.allowedProtocols.clear();
-    localWifiConfiguration.SSID = a(paramWifiParsedResult.b(), new int[0]);
-    localWifiConfiguration.hiddenSSID = paramWifiParsedResult.a();
-    return localWifiConfiguration;
-  }
-  
-  private static Integer a(WifiManager paramWifiManager, String paramString)
+  static Integer a(WifiManager paramWifiManager, String paramString)
   {
     paramWifiManager = paramWifiManager.getConfiguredNetworks();
     if (paramWifiManager == null) {
@@ -69,7 +56,7 @@ public class BizWifiConfigManager
         while (i < localObject.length)
         {
           if ((localObject[i].getTypeName().equals("WIFI")) && (localObject[i].isAvailable()) && (localObject[i].isConnected())) {
-            return ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getSSID();
+            return NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi")).getSSID();
           }
           i += 1;
         }
@@ -78,7 +65,7 @@ public class BizWifiConfigManager
     return null;
   }
   
-  private static String a(String paramString)
+  static String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -93,7 +80,7 @@ public class BizWifiConfigManager
     return localStringBuilder.toString();
   }
   
-  private static String a(String paramString, int... paramVarArgs)
+  static String a(String paramString, int... paramVarArgs)
   {
     if (a(paramString, paramVarArgs)) {
       return paramString;
@@ -101,7 +88,7 @@ public class BizWifiConfigManager
     return a(paramString);
   }
   
-  private static boolean a(WifiManager paramWifiManager, WifiConfiguration paramWifiConfiguration)
+  static boolean a(WifiManager paramWifiManager, WifiConfiguration paramWifiConfiguration)
   {
     Object localObject = a(paramWifiManager, paramWifiConfiguration.SSID);
     if (localObject != null)
@@ -153,9 +140,9 @@ public class BizWifiConfigManager
     return false;
   }
   
-  private static boolean a(WifiManager paramWifiManager, WifiParsedResult paramWifiParsedResult)
+  static boolean a(WifiManager paramWifiManager, WifiParsedResult paramWifiParsedResult)
   {
-    WifiConfiguration localWifiConfiguration = a(paramWifiParsedResult);
+    WifiConfiguration localWifiConfiguration = b(paramWifiParsedResult);
     localWifiConfiguration.wepKeys[0] = a(paramWifiParsedResult.d(), new int[] { 10, 26, 58 });
     localWifiConfiguration.wepTxKeyIndex = 0;
     localWifiConfiguration.allowedAuthAlgorithms.set(1);
@@ -167,11 +154,11 @@ public class BizWifiConfigManager
     return a(paramWifiManager, localWifiConfiguration);
   }
   
-  private static boolean a(CharSequence paramCharSequence, int... paramVarArgs)
+  static boolean a(CharSequence paramCharSequence, int... paramVarArgs)
   {
     if (paramCharSequence != null)
     {
-      if (!jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).matches()) {
+      if (!d.matcher(paramCharSequence).matches()) {
         return false;
       }
       if (paramVarArgs.length == 0) {
@@ -191,9 +178,22 @@ public class BizWifiConfigManager
     return false;
   }
   
-  private static boolean b(WifiManager paramWifiManager, WifiParsedResult paramWifiParsedResult)
+  static WifiConfiguration b(WifiParsedResult paramWifiParsedResult)
   {
-    WifiConfiguration localWifiConfiguration = a(paramWifiParsedResult);
+    WifiConfiguration localWifiConfiguration = new WifiConfiguration();
+    localWifiConfiguration.allowedAuthAlgorithms.clear();
+    localWifiConfiguration.allowedGroupCiphers.clear();
+    localWifiConfiguration.allowedKeyManagement.clear();
+    localWifiConfiguration.allowedPairwiseCiphers.clear();
+    localWifiConfiguration.allowedProtocols.clear();
+    localWifiConfiguration.SSID = a(paramWifiParsedResult.b(), new int[0]);
+    localWifiConfiguration.hiddenSSID = paramWifiParsedResult.e();
+    return localWifiConfiguration;
+  }
+  
+  static boolean b(WifiManager paramWifiManager, WifiParsedResult paramWifiParsedResult)
+  {
+    WifiConfiguration localWifiConfiguration = b(paramWifiParsedResult);
     localWifiConfiguration.preSharedKey = a(paramWifiParsedResult.d(), new int[] { 64 });
     localWifiConfiguration.allowedAuthAlgorithms.set(0);
     localWifiConfiguration.allowedProtocols.set(0);
@@ -207,9 +207,9 @@ public class BizWifiConfigManager
     return a(paramWifiManager, localWifiConfiguration);
   }
   
-  private static boolean c(WifiManager paramWifiManager, WifiParsedResult paramWifiParsedResult)
+  static boolean c(WifiManager paramWifiManager, WifiParsedResult paramWifiParsedResult)
   {
-    paramWifiParsedResult = a(paramWifiParsedResult);
+    paramWifiParsedResult = b(paramWifiParsedResult);
     paramWifiParsedResult.allowedKeyManagement.set(0);
     return a(paramWifiManager, paramWifiParsedResult);
   }
@@ -217,12 +217,12 @@ public class BizWifiConfigManager
   public boolean a(WifiParsedResult paramWifiParsedResult)
   {
     int i;
-    if (!this.jdField_a_of_type_AndroidNetWifiWifiManager.isWifiEnabled())
+    if (!this.e.isWifiEnabled())
     {
       if (QLog.isColorLevel()) {
         QLog.d("BizWifiConfigManager", 2, "Enabling wi-fi...");
       }
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager.setWifiEnabled(true))
+      if (this.e.setWifiEnabled(true))
       {
         if (QLog.isColorLevel()) {
           QLog.d("BizWifiConfigManager", 2, "Wi-fi enabled");
@@ -232,7 +232,7 @@ public class BizWifiConfigManager
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager.isWifiEnabled()) {
+      if (!this.e.isWifiEnabled()) {
         if (i >= 10)
         {
           if (QLog.isColorLevel()) {
@@ -257,15 +257,15 @@ public class BizWifiConfigManager
           if (!TextUtils.isEmpty(paramWifiParsedResult.d()))
           {
             if ("WEP".equals(str)) {
-              return a(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+              return a(this.e, paramWifiParsedResult);
             }
             if ("WPA".equals(str)) {
-              return b(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+              return b(this.e, paramWifiParsedResult);
             }
           }
           return false;
         }
-        return c(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+        return c(this.e, paramWifiParsedResult);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -276,7 +276,7 @@ public class BizWifiConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.client.android.wifi.BizWifiConfigManager
  * JD-Core Version:    0.7.0.1
  */

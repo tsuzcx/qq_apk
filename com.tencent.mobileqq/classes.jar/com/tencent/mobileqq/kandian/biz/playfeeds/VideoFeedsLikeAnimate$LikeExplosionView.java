@@ -22,22 +22,22 @@ import java.util.Random;
 public class VideoFeedsLikeAnimate$LikeExplosionView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long = 500L;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private List<VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Random jdField_a_of_type_JavaUtilRandom;
+  private List<VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion> b = new ArrayList();
+  private Paint c = new Paint();
+  private Matrix d = new Matrix();
+  private Random e;
+  private float f;
+  private long g = 500L;
   
   public VideoFeedsLikeAnimate$LikeExplosionView(VideoFeedsLikeAnimate paramVideoFeedsLikeAnimate, Context paramContext, Random paramRandom)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
+    this.e = paramRandom;
   }
   
   private void b()
   {
-    VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimate).removeView(this);
+    VideoFeedsLikeAnimate.a(this.a).removeView(this);
   }
   
   public void a()
@@ -48,14 +48,19 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator2, localObjectAnimator1 });
     localAnimatorSet.setStartDelay(250L);
     localAnimatorSet.addListener(new VideoFeedsLikeAnimate.LikeExplosionView.1(this));
-    localAnimatorSet.setDuration(this.jdField_a_of_type_Long);
+    localAnimatorSet.setDuration(this.g);
     localAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
     localAnimatorSet.start();
   }
   
+  public float getExplosionFraction()
+  {
+    return this.f;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -84,7 +89,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
         }
         try
         {
-          j = (int)(this.jdField_a_of_type_JavaUtilRandom.nextFloat() * (k * 90 - m) + m);
+          j = (int)(this.e.nextFloat() * (k * 90 - m) + m);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder1 = new StringBuilder();
@@ -92,7 +97,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
             localStringBuilder1.append(j);
             QLog.d("VideoFeedsLikeAnimate", 2, localStringBuilder1.toString());
           }
-          this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion(this, j));
+          this.b.add(new VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion(this, j));
           i += 1;
         }
         catch (Exception localException)
@@ -111,8 +116,8 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
   
   public void setExplosionFraction(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.f = paramFloat;
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion)localIterator.next()).a(paramFloat);
     }
@@ -124,7 +129,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
     int i = 0;
     while (i < paramInt)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion(this));
+      this.b.add(new VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion(this));
       i += 1;
     }
   }
@@ -150,9 +155,9 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
         if (i < paramInt1) {
           try
           {
-            int j = this.jdField_a_of_type_JavaUtilRandom.nextInt(paramArrayOfDrawable.length);
-            int k = this.jdField_a_of_type_JavaUtilRandom.nextInt(localObject.length);
-            this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.IconLikeExplosion(this, paramArrayOfDrawable[j], paramInt2, localObject[k]));
+            int j = this.e.nextInt(paramArrayOfDrawable.length);
+            int k = this.e.nextInt(localObject.length);
+            this.b.add(new VideoFeedsLikeAnimate.LikeExplosionView.IconLikeExplosion(this, paramArrayOfDrawable[j], paramInt2, localObject[k]));
             i += 1;
           }
           catch (Exception paramArrayOfDrawable)
@@ -209,9 +214,9 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
       }
       if (i < paramInt1)
       {
-        n = this.jdField_a_of_type_JavaUtilRandom.nextInt(paramArrayOfDrawable.length);
-        i1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(localObject.length);
-        i2 = (int)(this.jdField_a_of_type_JavaUtilRandom.nextFloat() * (k * 90 - m) + m);
+        n = this.e.nextInt(paramArrayOfDrawable.length);
+        i1 = this.e.nextInt(localObject.length);
+        i2 = (int)(this.e.nextFloat() * (k * 90 - m) + m);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -219,7 +224,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
           localStringBuilder.append(i2);
           QLog.d("VideoFeedsLikeAnimate", j, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.IconLikeExplosion(this, paramArrayOfDrawable[n], paramInt2, localObject[i1], i2));
+        this.b.add(new VideoFeedsLikeAnimate.LikeExplosionView.IconLikeExplosion(this, paramArrayOfDrawable[n], paramInt2, localObject[i1], i2));
         i += 1;
         j = 2;
       }
@@ -239,7 +244,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLikeAnimate.LikeExplosionView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,21 @@ class WSGridPageFragment$4
   
   public void a(BaseViewHolder<stSimpleMetaFeed> paramBaseViewHolder)
   {
-    if ((((WSGridPageContract.Presenter)this.a.b()).b()) && (WSGridPageFragment.a(this.a)))
+    if ((((WSGridPageContract.Presenter)this.a.aO_()).g()) && (WSGridPageFragment.e(this.a)))
     {
       int i = paramBaseViewHolder.getAdapterPosition();
-      paramBaseViewHolder = (stSimpleMetaFeed)WSGridPageFragment.a(this.a).getItem(i);
+      paramBaseViewHolder = (stSimpleMetaFeed)WSGridPageFragment.f(this.a).getItem(i);
       if (paramBaseViewHolder == null) {
         return;
       }
-      WSGridPageFragment.a(this.a).a(paramBaseViewHolder, i);
+      WSGridPageFragment.g(this.a).a(paramBaseViewHolder, i);
       WSExposeDataManager.a().a(paramBaseViewHolder);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment.4
  * JD-Core Version:    0.7.0.1
  */

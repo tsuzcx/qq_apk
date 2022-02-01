@@ -19,60 +19,56 @@ import com.tencent.util.LiuHaiUtils;
 public class GuideLineLayer
   extends BaseLayer
 {
-  public int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  private GestureHelper jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 45.0F;
-  public int b;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  public int c;
-  private boolean c;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
   public int d = 0;
   int e = 0;
   int f = 0;
-  private int g;
+  private PointF g;
+  private int h;
+  private Paint i;
+  private Paint j;
+  private Path k;
+  private GestureHelper l;
+  private float m = 45.0F;
+  private boolean n = false;
+  private boolean o = false;
   
   public GuideLineLayer(DoodleView paramDoodleView)
   {
     super(paramDoodleView);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
     d();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setPathEffect(new DashPathEffect(new float[] { 5.0F, 5.0F, 5.0F, 5.0F }, 1.0F));
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
-    this.jdField_c_of_type_Int = 0;
+    this.i = new Paint();
+    this.i.setAntiAlias(true);
+    this.i.setColor(Color.parseColor("#12B7F5"));
+    this.i.setStyle(Paint.Style.STROKE);
+    this.i.setStrokeWidth(2.0F);
+    this.j = new Paint();
+    this.j.setAntiAlias(true);
+    this.j.setColor(Color.parseColor("#12B7F5"));
+    this.j.setStyle(Paint.Style.STROKE);
+    this.j.setStrokeWidth(2.0F);
+    this.j.setPathEffect(new DashPathEffect(new float[] { 5.0F, 5.0F, 5.0F, 5.0F }, 1.0F));
+    this.k = new Path();
+    DisplayMetrics localDisplayMetrics = this.z.getResources().getDisplayMetrics();
+    this.a = 0;
+    this.b = localDisplayMetrics.widthPixels;
+    this.c = 0;
     this.d = localDisplayMetrics.heightPixels;
     if (LiuHaiUtils.b()) {
-      this.d = (localDisplayMetrics.heightPixels - LiuHaiUtils.e - LiuHaiUtils.jdField_a_of_type_Int);
+      this.d = (localDisplayMetrics.heightPixels - LiuHaiUtils.j - LiuHaiUtils.d);
     }
-    this.g = ((int)Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + Math.pow(localDisplayMetrics.widthPixels, 2.0D)));
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(this.jdField_b_of_type_Int / 2, this.d / 2);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper = new GestureHelper();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(true);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(18.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(0.5F);
+    this.h = ((int)Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + Math.pow(localDisplayMetrics.widthPixels, 2.0D)));
+    this.g = new PointF(this.b / 2, this.d / 2);
+    this.l = new GestureHelper();
+    this.l.a(true);
+    this.l.a(18.0F);
+    this.l.b(0.5F);
   }
   
   public String a()
@@ -80,14 +76,12 @@ public class GuideLineLayer
     return "GuideLineLayer";
   }
   
-  public void a() {}
-  
   public void a(float paramFloat)
   {
     if (paramFloat < 0.0F) {
       return;
     }
-    this.jdField_b_of_type_Float = paramFloat;
+    this.m = paramFloat;
   }
   
   public void a(int paramInt)
@@ -103,64 +97,64 @@ public class GuideLineLayer
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLayerDraw  showGuideLine : ");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.o);
       localStringBuilder.append(" currentDegree : ");
-      localStringBuilder.append(this.jdField_b_of_type_Float);
+      localStringBuilder.append(this.m);
       localStringBuilder.append(" centerPoint.x ");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPointF.x);
+      localStringBuilder.append(this.g.x);
       localStringBuilder.append(" centerPoint.y : ");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPointF.y);
+      localStringBuilder.append(this.g.y);
       localStringBuilder.append(" isDualFinger : ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.n);
       localStringBuilder.append(" transX : ");
       localStringBuilder.append(this.e);
       localStringBuilder.append(" transY : ");
       localStringBuilder.append(this.f);
       localStringBuilder.append(" maxLength : ");
-      localStringBuilder.append(this.g);
+      localStringBuilder.append(this.h);
       QLog.d("GuideLineLayer", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (Math.abs((int)this.jdField_b_of_type_Float % 45) < 3))
+    if ((this.o) && (this.n) && (Math.abs((int)this.m % 45) < 3))
     {
-      paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+      paramCanvas.translate(this.g.x, this.g.y);
       paramCanvas.translate(this.e, this.f);
-      int i = Math.round(this.jdField_b_of_type_Float / 45.0F) * 45;
+      int i1 = Math.round(this.m / 45.0F) * 45;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("currentDegree : ");
-        localStringBuilder.append(this.jdField_b_of_type_Float);
+        localStringBuilder.append(this.m);
         localStringBuilder.append("   guideLine Angle : ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         QLog.d("GuideLineLayer", 2, localStringBuilder.toString());
       }
-      paramCanvas.rotate(i);
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(-this.g, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.g, 0.0F);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.rotate(i1);
+      this.k.reset();
+      this.k.moveTo(-this.h, 0.0F);
+      this.k.lineTo(this.h, 0.0F);
+      paramCanvas.drawPath(this.k, this.j);
       if (QLog.isColorLevel()) {
         QLog.d("GuideLineLayer", 2, "draw angle guide line");
       }
     }
     paramCanvas.restore();
     paramCanvas.save();
-    if ((this.jdField_c_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x + this.e - (this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2) < 4.0F))
+    if ((this.o) && (Math.abs(this.g.x + this.e - (this.a + this.b) / 2) < 4.0F))
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, this.d);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.k.reset();
+      this.k.moveTo((this.a + this.b) / 2, 0.0F);
+      this.k.lineTo((this.a + this.b) / 2, this.d);
+      paramCanvas.drawPath(this.k, this.i);
       if (QLog.isColorLevel()) {
         QLog.d("GuideLineLayer", 2, "draw X guide line");
       }
     }
-    if ((this.jdField_c_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y + this.f - (this.jdField_c_of_type_Int + this.d) / 2) < 4.0F))
+    if ((this.o) && (Math.abs(this.g.y + this.f - (this.c + this.d) / 2) < 4.0F))
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_Int, (this.jdField_c_of_type_Int + this.d) / 2);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_Int, (this.jdField_c_of_type_Int + this.d) / 2);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.k.reset();
+      this.k.moveTo(this.a, (this.c + this.d) / 2);
+      this.k.lineTo(this.b, (this.c + this.d) / 2);
+      paramCanvas.drawPath(this.k, this.i);
       if (QLog.isColorLevel()) {
         QLog.d("GuideLineLayer", 2, "draw Y guide line");
       }
@@ -173,7 +167,7 @@ public class GuideLineLayer
     if (paramPointF == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
+    this.g.set(paramPointF);
   }
   
   public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
@@ -185,18 +179,13 @@ public class GuideLineLayer
       localStringBuilder.append(paramInt3);
       QLog.d("GuideLineLayer", 2, localStringBuilder.toString());
     }
-    this.jdField_c_of_type_Boolean = paramBoolean1;
+    this.o = paramBoolean1;
     a(paramFloat);
     a(paramInt1);
     b(paramInt2);
     a(paramPointF);
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    k();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.n = paramBoolean2;
+    u();
   }
   
   public boolean a(long paramLong)
@@ -209,6 +198,8 @@ public class GuideLineLayer
     return false;
   }
   
+  public void b() {}
+  
   public void b(int paramInt)
   {
     this.f = paramInt;
@@ -220,10 +211,15 @@ public class GuideLineLayer
   {
     return false;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.GuideLineLayer
  * JD-Core Version:    0.7.0.1
  */

@@ -60,30 +60,30 @@ public class FloatingActionButton
   extends VisibilityAwareImageButton
   implements CoordinatorLayout.AttachedBehavior, TintableBackgroundView, TintableImageSourceView, ExpandableTransformationWidget, Shapeable
 {
-  private static final int jdField_a_of_type_Int = R.style.l;
+  private static final int c = R.style.n;
+  boolean a;
+  final Rect b = new Rect();
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private ColorStateList d;
   @Nullable
-  private PorterDuff.Mode jdField_a_of_type_AndroidGraphicsPorterDuff$Mode;
-  final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private PorterDuff.Mode e;
+  @Nullable
+  private ColorStateList f;
+  @Nullable
+  private PorterDuff.Mode g;
+  @Nullable
+  private ColorStateList h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private final Rect n = new Rect();
   @NonNull
-  private final AppCompatImageHelper jdField_a_of_type_AndroidxAppcompatWidgetAppCompatImageHelper;
+  private final AppCompatImageHelper o;
   @NonNull
-  private final ExpandableWidgetHelper jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper;
-  private FloatingActionButtonImpl jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl;
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  @Nullable
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  @Nullable
-  private PorterDuff.Mode jdField_b_of_type_AndroidGraphicsPorterDuff$Mode;
-  private final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_c_of_type_Int;
-  @Nullable
-  private ColorStateList jdField_c_of_type_AndroidContentResColorStateList;
-  private int d;
-  private int e;
-  private int f;
+  private final ExpandableWidgetHelper p;
+  private FloatingActionButtonImpl q;
   
   public FloatingActionButton(@NonNull Context paramContext)
   {
@@ -92,53 +92,53 @@ public class FloatingActionButton
   
   public FloatingActionButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.r);
+    this(paramContext, paramAttributeSet, R.attr.y);
   }
   
   public FloatingActionButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, c), paramAttributeSet, paramInt);
     Object localObject = getContext();
-    paramContext = ThemeEnforcement.a((Context)localObject, paramAttributeSet, R.styleable.z, paramInt, jdField_a_of_type_Int, new int[0]);
-    this.jdField_a_of_type_AndroidContentResColorStateList = MaterialResources.a((Context)localObject, paramContext, R.styleable.bH);
-    this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = ViewUtils.a(paramContext.getInt(R.styleable.bI, -1), null);
-    this.jdField_c_of_type_AndroidContentResColorStateList = MaterialResources.a((Context)localObject, paramContext, R.styleable.bS);
-    this.jdField_c_of_type_Int = paramContext.getInt(R.styleable.bN, -1);
-    this.d = paramContext.getDimensionPixelSize(R.styleable.bM, 0);
-    this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.bJ, 0);
-    float f1 = paramContext.getDimension(R.styleable.bK, 0.0F);
-    float f2 = paramContext.getDimension(R.styleable.bP, 0.0F);
-    float f3 = paramContext.getDimension(R.styleable.bR, 0.0F);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(R.styleable.bU, false);
-    int i = getResources().getDimensionPixelSize(R.dimen.ae);
-    this.f = paramContext.getDimensionPixelSize(R.styleable.bQ, 0);
-    MotionSpec localMotionSpec1 = MotionSpec.a((Context)localObject, paramContext, R.styleable.bT);
-    MotionSpec localMotionSpec2 = MotionSpec.a((Context)localObject, paramContext, R.styleable.bO);
-    localObject = ShapeAppearanceModel.a((Context)localObject, paramAttributeSet, paramInt, jdField_a_of_type_Int, ShapeAppearanceModel.a).a();
-    boolean bool = paramContext.getBoolean(R.styleable.bL, false);
-    setEnabled(paramContext.getBoolean(R.styleable.bG, true));
+    paramContext = ThemeEnforcement.a((Context)localObject, paramAttributeSet, R.styleable.cF, paramInt, c, new int[0]);
+    this.d = MaterialResources.a((Context)localObject, paramContext, R.styleable.cH);
+    this.e = ViewUtils.a(paramContext.getInt(R.styleable.cI, -1), null);
+    this.h = MaterialResources.a((Context)localObject, paramContext, R.styleable.cS);
+    this.j = paramContext.getInt(R.styleable.cN, -1);
+    this.k = paramContext.getDimensionPixelSize(R.styleable.cM, 0);
+    this.i = paramContext.getDimensionPixelSize(R.styleable.cJ, 0);
+    float f1 = paramContext.getDimension(R.styleable.cK, 0.0F);
+    float f2 = paramContext.getDimension(R.styleable.cP, 0.0F);
+    float f3 = paramContext.getDimension(R.styleable.cR, 0.0F);
+    this.a = paramContext.getBoolean(R.styleable.cU, false);
+    int i1 = getResources().getDimensionPixelSize(R.dimen.ae);
+    this.m = paramContext.getDimensionPixelSize(R.styleable.cQ, 0);
+    MotionSpec localMotionSpec1 = MotionSpec.a((Context)localObject, paramContext, R.styleable.cT);
+    MotionSpec localMotionSpec2 = MotionSpec.a((Context)localObject, paramContext, R.styleable.cO);
+    localObject = ShapeAppearanceModel.a((Context)localObject, paramAttributeSet, paramInt, c, ShapeAppearanceModel.a).a();
+    boolean bool = paramContext.getBoolean(R.styleable.cL, false);
+    setEnabled(paramContext.getBoolean(R.styleable.cG, true));
     paramContext.recycle();
-    this.jdField_a_of_type_AndroidxAppcompatWidgetAppCompatImageHelper = new AppCompatImageHelper(this);
-    this.jdField_a_of_type_AndroidxAppcompatWidgetAppCompatImageHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper = new ExpandableWidgetHelper(this);
-    a().a((ShapeAppearanceModel)localObject);
-    a().a(this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode, this.jdField_c_of_type_AndroidContentResColorStateList, this.jdField_b_of_type_Int);
-    a().a(i);
-    a().a(f1);
-    a().b(f2);
-    a().c(f3);
-    a().b(this.f);
-    a().a(localMotionSpec1);
-    a().b(localMotionSpec2);
-    a().a(bool);
+    this.o = new AppCompatImageHelper(this);
+    this.o.loadFromAttributes(paramAttributeSet, paramInt);
+    this.p = new ExpandableWidgetHelper(this);
+    getImpl().a((ShapeAppearanceModel)localObject);
+    getImpl().a(this.d, this.e, this.h, this.i);
+    getImpl().a(i1);
+    getImpl().a(f1);
+    getImpl().b(f2);
+    getImpl().c(f3);
+    getImpl().b(this.m);
+    getImpl().a(localMotionSpec1);
+    getImpl().b(localMotionSpec2);
+    getImpl().a(bool);
     setScaleType(ImageView.ScaleType.MATRIX);
   }
   
   private int a(int paramInt)
   {
-    int i = this.d;
-    if (i != 0) {
-      return i;
+    int i1 = this.k;
+    if (i1 != 0) {
+      return i1;
     }
     Resources localResources = getResources();
     if (paramInt != -1)
@@ -156,13 +156,13 @@ public class FloatingActionButton
   
   private static int a(int paramInt1, int paramInt2)
   {
-    int i = View.MeasureSpec.getMode(paramInt2);
+    int i1 = View.MeasureSpec.getMode(paramInt2);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    if (i != -2147483648)
+    if (i1 != -2147483648)
     {
-      if (i != 0)
+      if (i1 != 0)
       {
-        if (i == 1073741824) {
+        if (i1 == 1073741824) {
           return paramInt2;
         }
         throw new IllegalArgumentException();
@@ -175,7 +175,7 @@ public class FloatingActionButton
   }
   
   @Nullable
-  private FloatingActionButtonImpl.InternalVisibilityChangedListener a(@Nullable FloatingActionButton.OnVisibilityChangedListener paramOnVisibilityChangedListener)
+  private FloatingActionButtonImpl.InternalVisibilityChangedListener c(@Nullable FloatingActionButton.OnVisibilityChangedListener paramOnVisibilityChangedListener)
   {
     if (paramOnVisibilityChangedListener == null) {
       return null;
@@ -183,37 +183,37 @@ public class FloatingActionButton
     return new FloatingActionButton.1(this, paramOnVisibilityChangedListener);
   }
   
-  private FloatingActionButtonImpl a()
+  private void c(@NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl == null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl = b();
-    }
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl;
+    paramRect.left += this.b.left;
+    paramRect.top += this.b.top;
+    paramRect.right -= this.b.right;
+    paramRect.bottom -= this.b.bottom;
   }
   
-  private void a()
+  private void d()
   {
     Drawable localDrawable = getDrawable();
     if (localDrawable == null) {
       return;
     }
-    Object localObject = this.jdField_b_of_type_AndroidContentResColorStateList;
+    Object localObject = this.f;
     if (localObject == null)
     {
       DrawableCompat.clearColorFilter(localDrawable);
       return;
     }
-    int i = ((ColorStateList)localObject).getColorForState(getDrawableState(), 0);
-    PorterDuff.Mode localMode = this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode;
+    int i1 = ((ColorStateList)localObject).getColorForState(getDrawableState(), 0);
+    PorterDuff.Mode localMode = this.g;
     localObject = localMode;
     if (localMode == null) {
       localObject = PorterDuff.Mode.SRC_IN;
     }
-    localDrawable.mutate().setColorFilter(AppCompatDrawableManager.getPorterDuffColorFilter(i, (PorterDuff.Mode)localObject));
+    localDrawable.mutate().setColorFilter(AppCompatDrawableManager.getPorterDuffColorFilter(i1, (PorterDuff.Mode)localObject));
   }
   
   @NonNull
-  private FloatingActionButtonImpl b()
+  private FloatingActionButtonImpl e()
   {
     if (Build.VERSION.SDK_INT >= 21) {
       return new FloatingActionButtonImplLollipop(this, new FloatingActionButton.ShadowDelegateImpl(this));
@@ -221,51 +221,22 @@ public class FloatingActionButton
     return new FloatingActionButtonImpl(this, new FloatingActionButton.ShadowDelegateImpl(this));
   }
   
-  private void b(@NonNull Rect paramRect)
+  private FloatingActionButtonImpl getImpl()
   {
-    paramRect.left += this.jdField_a_of_type_AndroidGraphicsRect.left;
-    paramRect.top += this.jdField_a_of_type_AndroidGraphicsRect.top;
-    paramRect.right -= this.jdField_a_of_type_AndroidGraphicsRect.right;
-    paramRect.bottom -= this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper.a();
-  }
-  
-  @Nullable
-  public ColorStateList a()
-  {
-    return this.jdField_a_of_type_AndroidContentResColorStateList;
-  }
-  
-  @Nullable
-  public PorterDuff.Mode a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode;
-  }
-  
-  @NonNull
-  public ShapeAppearanceModel a()
-  {
-    return (ShapeAppearanceModel)Preconditions.checkNotNull(a().a());
+    if (this.q == null) {
+      this.q = e();
+    }
+    return this.q;
   }
   
   public void a(@NonNull Animator.AnimatorListener paramAnimatorListener)
   {
-    a().a(paramAnimatorListener);
-  }
-  
-  public void a(@NonNull Rect paramRect)
-  {
-    paramRect.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    b(paramRect);
+    getImpl().a(paramAnimatorListener);
   }
   
   public void a(@NonNull TransformationCallback<? extends FloatingActionButton> paramTransformationCallback)
   {
-    a().a(new FloatingActionButton.TransformationCallbackWrapper(this, paramTransformationCallback));
+    getImpl().a(new FloatingActionButton.TransformationCallbackWrapper(this, paramTransformationCallback));
   }
   
   public void a(@Nullable FloatingActionButton.OnVisibilityChangedListener paramOnVisibilityChangedListener)
@@ -275,12 +246,12 @@ public class FloatingActionButton
   
   void a(@Nullable FloatingActionButton.OnVisibilityChangedListener paramOnVisibilityChangedListener, boolean paramBoolean)
   {
-    a().b(a(paramOnVisibilityChangedListener), paramBoolean);
+    getImpl().b(c(paramOnVisibilityChangedListener), paramBoolean);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper.a();
+    return this.p.a();
   }
   
   @Deprecated
@@ -289,20 +260,21 @@ public class FloatingActionButton
     if (ViewCompat.isLaidOut(this))
     {
       paramRect.set(0, 0, getWidth(), getHeight());
-      b(paramRect);
+      c(paramRect);
       return true;
     }
     return false;
   }
   
-  int b()
-  {
-    return a(this.jdField_c_of_type_Int);
-  }
-  
   public void b(@NonNull Animator.AnimatorListener paramAnimatorListener)
   {
-    a().b(paramAnimatorListener);
+    getImpl().b(paramAnimatorListener);
+  }
+  
+  public void b(@NonNull Rect paramRect)
+  {
+    paramRect.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
+    c(paramRect);
   }
   
   public void b(@Nullable FloatingActionButton.OnVisibilityChangedListener paramOnVisibilityChangedListener)
@@ -312,23 +284,35 @@ public class FloatingActionButton
   
   void b(@Nullable FloatingActionButton.OnVisibilityChangedListener paramOnVisibilityChangedListener, boolean paramBoolean)
   {
-    a().a(a(paramOnVisibilityChangedListener), paramBoolean);
+    getImpl().a(c(paramOnVisibilityChangedListener), paramBoolean);
   }
   
   public boolean b()
   {
-    return a().f();
+    return getImpl().w();
   }
   
   public boolean c()
   {
-    return a().e();
+    return getImpl().v();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    a().a(getDrawableState());
+    getImpl().a(getDrawableState());
+  }
+  
+  @Nullable
+  public ColorStateList getBackgroundTintList()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public PorterDuff.Mode getBackgroundTintMode()
+  {
+    return this.e;
   }
   
   @NonNull
@@ -337,55 +321,137 @@ public class FloatingActionButton
     return new FloatingActionButton.Behavior();
   }
   
+  public float getCompatElevation()
+  {
+    return getImpl().a();
+  }
+  
+  public float getCompatHoveredFocusedTranslationZ()
+  {
+    return getImpl().b();
+  }
+  
+  public float getCompatPressedTranslationZ()
+  {
+    return getImpl().c();
+  }
+  
+  @Nullable
+  public Drawable getContentBackground()
+  {
+    return getImpl().m();
+  }
+  
+  @Px
+  public int getCustomSize()
+  {
+    return this.k;
+  }
+  
+  public int getExpandedComponentIdHint()
+  {
+    return this.p.c();
+  }
+  
+  @Nullable
+  public MotionSpec getHideMotionSpec()
+  {
+    return getImpl().g();
+  }
+  
+  @Deprecated
+  @ColorInt
+  public int getRippleColor()
+  {
+    ColorStateList localColorStateList = this.h;
+    if (localColorStateList != null) {
+      return localColorStateList.getDefaultColor();
+    }
+    return 0;
+  }
+  
+  @Nullable
+  public ColorStateList getRippleColorStateList()
+  {
+    return this.h;
+  }
+  
+  @NonNull
+  public ShapeAppearanceModel getShapeAppearanceModel()
+  {
+    return (ShapeAppearanceModel)Preconditions.checkNotNull(getImpl().e());
+  }
+  
+  @Nullable
+  public MotionSpec getShowMotionSpec()
+  {
+    return getImpl().f();
+  }
+  
+  public int getSize()
+  {
+    return this.j;
+  }
+  
+  int getSizeDimension()
+  {
+    return a(this.j);
+  }
+  
   @Nullable
   public ColorStateList getSupportBackgroundTintList()
   {
-    return a();
+    return getBackgroundTintList();
   }
   
   @Nullable
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    return a();
+    return getBackgroundTintMode();
   }
   
   @Nullable
   public ColorStateList getSupportImageTintList()
   {
-    return this.jdField_b_of_type_AndroidContentResColorStateList;
+    return this.f;
   }
   
   @Nullable
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    return this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode;
+    return this.g;
+  }
+  
+  public boolean getUseCompatPadding()
+  {
+    return this.a;
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    a().b();
+    getImpl().j();
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    a().g();
+    getImpl().q();
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    a().h();
+    getImpl().r();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i = b();
-    this.e = ((i - this.f) / 2);
-    a().f();
-    paramInt1 = Math.min(a(i, paramInt1), a(i, paramInt2));
-    setMeasuredDimension(this.jdField_a_of_type_AndroidGraphicsRect.left + paramInt1 + this.jdField_a_of_type_AndroidGraphicsRect.right, paramInt1 + this.jdField_a_of_type_AndroidGraphicsRect.top + this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    int i1 = getSizeDimension();
+    this.l = ((i1 - this.m) / 2);
+    getImpl().o();
+    paramInt1 = Math.min(a(i1, paramInt1), a(i1, paramInt2));
+    setMeasuredDimension(this.b.left + paramInt1 + this.b.right, paramInt1 + this.b.top + this.b.bottom);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -397,7 +463,7 @@ public class FloatingActionButton
     }
     paramParcelable = (ExtendableSavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper.a((Bundle)Preconditions.checkNotNull(paramParcelable.a.get("expandableWidgetHelper")));
+    this.p.a((Bundle)Preconditions.checkNotNull(paramParcelable.a.get("expandableWidgetHelper")));
   }
   
   protected Parcelable onSaveInstanceState()
@@ -408,13 +474,13 @@ public class FloatingActionButton
       localObject = new Bundle();
     }
     localObject = new ExtendableSavedState((Parcelable)localObject);
-    ((ExtendableSavedState)localObject).a.put("expandableWidgetHelper", this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper.a());
+    ((ExtendableSavedState)localObject).a.put("expandableWidgetHelper", this.p.b());
     return localObject;
   }
   
   public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) && (a(this.jdField_b_of_type_AndroidGraphicsRect)) && (!this.jdField_b_of_type_AndroidGraphicsRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))) {
+    if ((paramMotionEvent.getAction() == 0) && (a(this.n)) && (!this.n.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -437,25 +503,25 @@ public class FloatingActionButton
   
   public void setBackgroundTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.d != paramColorStateList)
     {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-      a().a(paramColorStateList);
+      this.d = paramColorStateList;
+      getImpl().a(paramColorStateList);
     }
   }
   
   public void setBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode != paramMode)
+    if (this.e != paramMode)
     {
-      this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-      a().a(paramMode);
+      this.e = paramMode;
+      getImpl().a(paramMode);
     }
   }
   
   public void setCompatElevation(float paramFloat)
   {
-    a().a(paramFloat);
+    getImpl().a(paramFloat);
   }
   
   public void setCompatElevationResource(@DimenRes int paramInt)
@@ -465,7 +531,7 @@ public class FloatingActionButton
   
   public void setCompatHoveredFocusedTranslationZ(float paramFloat)
   {
-    a().b(paramFloat);
+    getImpl().b(paramFloat);
   }
   
   public void setCompatHoveredFocusedTranslationZResource(@DimenRes int paramInt)
@@ -475,7 +541,7 @@ public class FloatingActionButton
   
   public void setCompatPressedTranslationZ(float paramFloat)
   {
-    a().c(paramFloat);
+    getImpl().c(paramFloat);
   }
   
   public void setCompatPressedTranslationZResource(@DimenRes int paramInt)
@@ -487,9 +553,9 @@ public class FloatingActionButton
   {
     if (paramInt >= 0)
     {
-      if (paramInt != this.d)
+      if (paramInt != this.k)
       {
-        this.d = paramInt;
+        this.k = paramInt;
         requestLayout();
       }
       return;
@@ -501,26 +567,26 @@ public class FloatingActionButton
   public void setElevation(float paramFloat)
   {
     super.setElevation(paramFloat);
-    a().e(paramFloat);
+    getImpl().e(paramFloat);
   }
   
   public void setEnsureMinTouchTargetSize(boolean paramBoolean)
   {
-    if (paramBoolean != a().b())
+    if (paramBoolean != getImpl().i())
     {
-      a().a(paramBoolean);
+      getImpl().a(paramBoolean);
       requestLayout();
     }
   }
   
   public void setExpandedComponentIdHint(@IdRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidgetHelper.a(paramInt);
+    this.p.a(paramInt);
   }
   
   public void setHideMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    a().b(paramMotionSpec);
+    getImpl().b(paramMotionSpec);
   }
   
   public void setHideMotionSpecResource(@AnimatorRes int paramInt)
@@ -533,17 +599,17 @@ public class FloatingActionButton
     if (getDrawable() != paramDrawable)
     {
       super.setImageDrawable(paramDrawable);
-      a().a();
-      if (this.jdField_b_of_type_AndroidContentResColorStateList != null) {
-        a();
+      getImpl().d();
+      if (this.f != null) {
+        d();
       }
     }
   }
   
   public void setImageResource(@DrawableRes int paramInt)
   {
-    this.jdField_a_of_type_AndroidxAppcompatWidgetAppCompatImageHelper.setImageResource(paramInt);
-    a();
+    this.o.setImageResource(paramInt);
+    d();
   }
   
   public void setRippleColor(@ColorInt int paramInt)
@@ -553,40 +619,40 @@ public class FloatingActionButton
   
   public void setRippleColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_c_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.h != paramColorStateList)
     {
-      this.jdField_c_of_type_AndroidContentResColorStateList = paramColorStateList;
-      a().b(this.jdField_c_of_type_AndroidContentResColorStateList);
+      this.h = paramColorStateList;
+      getImpl().b(this.h);
     }
   }
   
   public void setScaleX(float paramFloat)
   {
     super.setScaleX(paramFloat);
-    a().d();
+    getImpl().l();
   }
   
   public void setScaleY(float paramFloat)
   {
     super.setScaleY(paramFloat);
-    a().d();
+    getImpl().l();
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   @VisibleForTesting
   public void setShadowPaddingEnabled(boolean paramBoolean)
   {
-    a().b(paramBoolean);
+    getImpl().b(paramBoolean);
   }
   
   public void setShapeAppearanceModel(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    a().a(paramShapeAppearanceModel);
+    getImpl().a(paramShapeAppearanceModel);
   }
   
   public void setShowMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    a().a(paramMotionSpec);
+    getImpl().a(paramMotionSpec);
   }
   
   public void setShowMotionSpecResource(@AnimatorRes int paramInt)
@@ -596,10 +662,10 @@ public class FloatingActionButton
   
   public void setSize(int paramInt)
   {
-    this.d = 0;
-    if (paramInt != this.jdField_c_of_type_Int)
+    this.k = 0;
+    if (paramInt != this.j)
     {
-      this.jdField_c_of_type_Int = paramInt;
+      this.j = paramInt;
       requestLayout();
     }
   }
@@ -616,46 +682,46 @@ public class FloatingActionButton
   
   public void setSupportImageTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_b_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.f != paramColorStateList)
     {
-      this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
-      a();
+      this.f = paramColorStateList;
+      d();
     }
   }
   
   public void setSupportImageTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode != paramMode)
+    if (this.g != paramMode)
     {
-      this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-      a();
+      this.g = paramMode;
+      d();
     }
   }
   
   public void setTranslationX(float paramFloat)
   {
     super.setTranslationX(paramFloat);
-    a().c();
+    getImpl().k();
   }
   
   public void setTranslationY(float paramFloat)
   {
     super.setTranslationY(paramFloat);
-    a().c();
+    getImpl().k();
   }
   
   public void setTranslationZ(float paramFloat)
   {
     super.setTranslationZ(paramFloat);
-    a().c();
+    getImpl().k();
   }
   
   public void setUseCompatPadding(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.a != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      a().e();
+      this.a = paramBoolean;
+      getImpl().n();
     }
   }
   
@@ -666,7 +732,7 @@ public class FloatingActionButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButton
  * JD-Core Version:    0.7.0.1
  */

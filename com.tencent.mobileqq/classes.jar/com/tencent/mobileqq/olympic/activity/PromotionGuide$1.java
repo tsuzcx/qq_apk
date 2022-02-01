@@ -18,13 +18,13 @@ class PromotionGuide$1
     localLottieDrawable.setComposition(paramLottieComposition);
     localLottieDrawable.loop(true);
     localLottieDrawable.playAnimation();
-    PromotionGuide.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionGuide).setImageDrawable(localLottieDrawable);
-    PromotionGuide.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionGuide, localLottieDrawable);
+    PromotionGuide.a(this.d).setImageDrawable(localLottieDrawable);
+    PromotionGuide.a(this.d, localLottieDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionGuide.1
  * JD-Core Version:    0.7.0.1
  */

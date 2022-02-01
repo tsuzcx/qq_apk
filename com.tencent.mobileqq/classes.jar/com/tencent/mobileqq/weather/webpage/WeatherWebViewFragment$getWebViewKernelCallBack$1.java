@@ -22,20 +22,20 @@ public final class WeatherWebViewFragment$getWebViewKernelCallBack$1
   
   public boolean interceptStartLoadUrl()
   {
-    if (!WeatherWebViewFragment.b(this.a))
+    if (!WeatherWebViewFragment.j(this.a))
     {
       WeatherWebViewFragment localWeatherWebViewFragment = this.a;
-      WeatherWebViewFragment.a(localWeatherWebViewFragment, URLUtil.a(WeatherWebViewFragment.a(localWeatherWebViewFragment), "start_click_time", String.valueOf(WeatherWebViewFragment.b(this.a))));
+      WeatherWebViewFragment.a(localWeatherWebViewFragment, URLUtil.a(WeatherWebViewFragment.k(localWeatherWebViewFragment), "start_click_time", String.valueOf(WeatherWebViewFragment.l(this.a))));
     }
     return super.interceptStartLoadUrl();
   }
   
   public void loadUrlFinish()
   {
-    if (!WeatherWebViewFragment.b(this.a))
+    if (!WeatherWebViewFragment.j(this.a))
     {
       WeatherWebViewFragment localWeatherWebViewFragment = this.a;
-      WeatherWebViewFragment.a(localWeatherWebViewFragment, URLUtil.a(WeatherWebViewFragment.a(localWeatherWebViewFragment), "start_click_time"));
+      WeatherWebViewFragment.a(localWeatherWebViewFragment, URLUtil.a(WeatherWebViewFragment.k(localWeatherWebViewFragment), "start_click_time"));
     }
     WeatherWebViewFragment.c(this.a, true);
   }
@@ -44,28 +44,28 @@ public final class WeatherWebViewFragment$getWebViewKernelCallBack$1
   {
     super.onFinalState(paramBundle);
     QLog.i("WeatherWebViewFragment", 1, "doCreateLoopStep_Final");
-    WeatherWebViewFragment.c(this.a);
-    WeatherWebViewFragment.d(this.a);
+    WeatherWebViewFragment.h(this.a);
+    WeatherWebViewFragment.i(this.a);
   }
   
   public void onPageFinished(@Nullable WebView paramWebView, @Nullable String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     WeatherWebViewFragment.a(this.a, true);
-    paramWebView = WeatherWebViewFragment.a(this.a);
+    paramWebView = WeatherWebViewFragment.e(this.a);
     if (paramWebView != null) {
       WeatherWebViewFragment.a(this.a, paramWebView);
     }
-    long l = System.currentTimeMillis() - WeatherWebViewFragment.a(this.a);
+    long l = System.currentTimeMillis() - WeatherWebViewFragment.d(this.a);
     WeatherDCReportHelper.a().a(null, "new_webview_loading_times", Long.valueOf(l));
     paramWebView = new StringBuilder();
     paramWebView.append("time = ");
     paramWebView.append(l);
     WeatherPreloadHelper.a(6, paramWebView.toString());
-    if (!WeatherWebViewFragment.a(this.a))
+    if (!WeatherWebViewFragment.f(this.a))
     {
       WeatherWebViewFragment.b(this.a, true);
-      WeatherWebViewFragment.b(this.a);
+      WeatherWebViewFragment.g(this.a);
     }
   }
   
@@ -79,7 +79,7 @@ public final class WeatherWebViewFragment$getWebViewKernelCallBack$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebViewFragment.getWebViewKernelCallBack.1
  * JD-Core Version:    0.7.0.1
  */

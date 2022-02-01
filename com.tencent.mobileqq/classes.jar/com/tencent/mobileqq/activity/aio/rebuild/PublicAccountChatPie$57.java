@@ -14,10 +14,10 @@ class PublicAccountChatPie$57
   
   public void run()
   {
-    QidianHandler localQidianHandler = (QidianHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
+    QidianHandler localQidianHandler = (QidianHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
     int j;
     Object localObject;
-    if (!this.this$0.Y)
+    if (!this.this$0.cC)
     {
       j = 0;
       localObject = new JSONObject();
@@ -25,17 +25,17 @@ class PublicAccountChatPie$57
     try
     {
       ((JSONObject)localObject).put("app", "QD");
-      if (this.this$0.h != null) {
-        ((JSONObject)localObject).put("assignType", Long.parseLong(this.this$0.h));
+      if (this.this$0.cx != null) {
+        ((JSONObject)localObject).put("assignType", Long.parseLong(this.this$0.cx));
       }
-      if (this.this$0.i != null) {
-        ((JSONObject)localObject).put("assignKey", Long.parseLong(this.this$0.i));
+      if (this.this$0.cy != null) {
+        ((JSONObject)localObject).put("assignKey", Long.parseLong(this.this$0.cy));
       }
       i = j;
-      if (this.this$0.j == null) {
+      if (this.this$0.cz == null) {
         break label134;
       }
-      ((JSONObject)localObject).put("ext", this.this$0.j);
+      ((JSONObject)localObject).put("ext", this.this$0.cz);
       i = j;
     }
     catch (Exception localException)
@@ -50,23 +50,23 @@ class PublicAccountChatPie$57
     }
     i = 1;
     label134:
-    str1 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    str2 = this.this$0.g;
-    str3 = this.this$0.f;
-    str4 = this.this$0.k;
+    str1 = this.this$0.ah.b;
+    str2 = this.this$0.cw;
+    str3 = this.this$0.cv;
+    str4 = this.this$0.cA;
     if (i != 0) {
       localObject = null;
     } else {
       localObject = ((JSONObject)localObject).toString();
     }
     localQidianHandler.a(str1, str2, str3, str4, (String)localObject);
-    this.this$0.a().runOnUiThread(new PublicAccountChatPie.57.1(this));
-    localQidianHandler.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.g);
+    this.this$0.aX().runOnUiThread(new PublicAccountChatPie.57.1(this));
+    localQidianHandler.a(this.this$0.ah.b, this.this$0.cw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.57
  * JD-Core Version:    0.7.0.1
  */

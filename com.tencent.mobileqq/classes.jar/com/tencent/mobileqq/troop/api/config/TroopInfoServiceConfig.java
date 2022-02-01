@@ -11,38 +11,37 @@ import mqq.app.MobileQQ;
 
 public class TroopInfoServiceConfig
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object a = new Object();
+  private static AtomicBoolean b = new AtomicBoolean(false);
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_IMCoreTroopInfoServiceConfig.yml", version=1)
-  private static ArrayList<Class<? extends AbsTroopInfoServiceProcessor>> jdField_a_of_type_JavaUtilArrayList;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static ArrayList<AbsTroopInfoServiceProcessor> b = new ArrayList();
+  private static ArrayList<Class<? extends AbsTroopInfoServiceProcessor>> c = new ArrayList();
+  private static ArrayList<AbsTroopInfoServiceProcessor> d = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(UpdateTroopHeadIconProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(DeleteTroopProcessor.class);
+    c.add(UpdateTroopHeadIconProcessor.class);
+    c.add(DeleteTroopProcessor.class);
   }
   
   public static void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopInfoServiceConfig", 2, new Object[] { "call init from ", MobileQQ.processName, " init = ", Boolean.valueOf(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) });
+      QLog.d("TroopInfoServiceConfig", 2, new Object[] { "call init from ", MobileQQ.processName, " init = ", Boolean.valueOf(b.get()) });
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (a)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (b.get()) {
         return;
       }
       b();
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      b.set(true);
       return;
     }
   }
   
   public static void a(String paramString)
   {
-    Object localObject = b;
+    Object localObject = d;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -54,7 +53,7 @@ public class TroopInfoServiceConfig
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    Object localObject = b;
+    Object localObject = d;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -66,7 +65,7 @@ public class TroopInfoServiceConfig
   
   private static void b()
   {
-    Object localObject = jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = c;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -75,7 +74,7 @@ public class TroopInfoServiceConfig
         Class localClass = (Class)((Iterator)localObject).next();
         try
         {
-          b.add(localClass.newInstance());
+          d.add(localClass.newInstance());
         }
         catch (Throwable localThrowable)
         {
@@ -87,7 +86,7 @@ public class TroopInfoServiceConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopInfoServiceConfig
  * JD-Core Version:    0.7.0.1
  */

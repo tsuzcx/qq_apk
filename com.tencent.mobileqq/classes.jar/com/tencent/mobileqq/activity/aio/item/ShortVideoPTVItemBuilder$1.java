@@ -10,21 +10,21 @@ class ShortVideoPTVItemBuilder$1
 {
   ShortVideoPTVItemBuilder$1(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoPTVItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder$Holder);
+      if (this.a.uiOperatorFlag == 2) {
+        this.d.b(this.a, this.b);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder$Holder);
+        this.d.a(this.a, this.b);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

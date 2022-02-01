@@ -17,32 +17,27 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp;
 public final class VasPreloadService
   extends VasGdtService
 {
-  public static final VasPreloadService.Companion a;
-  private static final Map<String, qq_ad_get.QQAdGetRsp> jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<String> jdField_a_of_type_JavaUtilList;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasAdvPreloadVasPreloadService$Companion = new VasPreloadService.Companion(null);
-  }
+  public static final VasPreloadService.Companion a = new VasPreloadService.Companion(null);
+  private static final Map<String, qq_ad_get.QQAdGetRsp> d = (Map)new LinkedHashMap();
+  private final String b;
+  private final List<String> c;
   
   public VasPreloadService(@NotNull String paramString, @NotNull List<String> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.c = paramList;
     a((VasGdtService.GdtCallback)new VasPreloadService.1(this));
   }
   
   @NotNull
-  protected VasGdtService.GdtParams a()
+  protected VasGdtService.GdtParams c()
   {
-    return new VasGdtService.GdtParams(VasAdvSupport.a.a().a(), CollectionsKt.toSet((Iterable)this.jdField_a_of_type_JavaUtilList), 0, 0, null, null, null, null, null, null, null, 2044, null);
+    return new VasGdtService.GdtParams(VasAdvSupport.a.a().a(), CollectionsKt.toSet((Iterable)this.c), 0, 0, null, null, null, null, null, null, null, 2044, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.preload.VasPreloadService
  * JD-Core Version:    0.7.0.1
  */

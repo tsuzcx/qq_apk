@@ -14,24 +14,24 @@ class AutoReplyEditActivity$2
   public void onClick(View paramView)
   {
     OnlineStatusDataReporter.a(AutoReplyEditActivity.a(this.a), false);
-    String str2 = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
+    String str2 = String.valueOf(AutoReplyEditActivity.b(this.a).getText());
     String str1;
-    if (AutoReplyEditActivity.a(this.a) != null) {
-      str1 = AutoReplyEditActivity.a(this.a).getRawText();
+    if (AutoReplyEditActivity.c(this.a) != null) {
+      str1 = AutoReplyEditActivity.c(this.a).getRawText();
     } else {
       str1 = "";
     }
     if (!str2.equals(str1)) {
-      AutoReplyEditActivity.a(this.a);
+      AutoReplyEditActivity.d(this.a);
     } else {
-      AutoReplyEditActivity.a(this.a);
+      AutoReplyEditActivity.e(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.2
  * JD-Core Version:    0.7.0.1
  */

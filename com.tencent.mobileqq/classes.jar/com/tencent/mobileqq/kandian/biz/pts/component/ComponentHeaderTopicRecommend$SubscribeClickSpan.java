@@ -19,21 +19,21 @@ public class ComponentHeaderTopicRecommend$SubscribeClickSpan
   extends ClickableSpan
   implements ClickableSpanPressed
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   protected String a;
-  boolean jdField_a_of_type_Boolean;
+  boolean b;
+  private int d = -1;
+  private TextPaint e;
   
   public ComponentHeaderTopicRecommend$SubscribeClickSpan(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.d = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.b = paramBoolean;
+    TextPaint localTextPaint = this.e;
     if (localTextPaint != null) {
       updateDrawState(localTextPaint);
     }
@@ -42,38 +42,38 @@ public class ComponentHeaderTopicRecommend$SubscribeClickSpan
   public void onClick(View paramView)
   {
     paramView = new StringBuilder();
-    paramView.append(ReadInJoyConstants.k);
-    paramView.append(Base64Util.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0));
+    paramView.append(ReadInJoyConstants.l);
+    paramView.append(Base64Util.encodeToString(this.a.getBytes(), 0));
     paramView = paramView.toString();
-    if ((!TextUtils.isEmpty(paramView)) && (ViolaAccessHelper.c(paramView)))
+    if ((!TextUtils.isEmpty(paramView)) && (ViolaAccessHelper.e(paramView)))
     {
-      ViolaAccessHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderTopicRecommend.getContext(), null, ViolaAccessHelper.c(paramView), null);
+      ViolaAccessHelper.a(this.c.getContext(), null, ViolaAccessHelper.f(paramView), null);
       return;
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderTopicRecommend.getContext(), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountBrowser.class));
+    Intent localIntent = new Intent(this.c.getContext(), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountBrowser.class));
     localIntent.putExtra("url", paramView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderTopicRecommend.getContext().startActivity(localIntent);
+    this.c.getContext().startActivity(localIntent);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.e = paramTextPaint;
+    this.e.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.e;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.jdField_a_of_type_Int;
+    if (this.b) {
+      i = this.d;
     } else {
       i = -1;
     }
     paramTextPaint.bgColor = i;
-    this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+    this.e.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderTopicRecommend.SubscribeClickSpan
  * JD-Core Version:    0.7.0.1
  */

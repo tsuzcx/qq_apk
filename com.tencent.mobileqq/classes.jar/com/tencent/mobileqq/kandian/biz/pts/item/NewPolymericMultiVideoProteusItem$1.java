@@ -14,16 +14,16 @@ class NewPolymericMultiVideoProteusItem$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mNewPolymericInfo.b != null)
+    if (this.a.mNewPolymericInfo.m != null)
     {
-      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mNewPolymericInfo.b;
-      VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+      UrlJumpInfo localUrlJumpInfo = this.a.mNewPolymericInfo.m;
+      VideoFeedsHelper.a(this.b.getContext(), localUrlJumpInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NewPolymericMultiVideoProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

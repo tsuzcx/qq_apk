@@ -15,11 +15,6 @@ public class HotchatTopicRoutingType
     return 1026;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     paramAppInterface = new msg_svc.Grp();
@@ -28,14 +23,19 @@ public class HotchatTopicRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 3013;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.HotchatTopicRoutingType
  * JD-Core Version:    0.7.0.1
  */

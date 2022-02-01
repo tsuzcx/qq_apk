@@ -36,22 +36,22 @@ import java.util.List;
 
 public class ShareHelper
 {
-  public static final String g = HardCodeUtil.a(2131713818);
-  Context jdField_a_of_type_AndroidContentContext;
-  public Bitmap a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
-  public String a;
-  public String b;
-  public String c;
+  public static final String k = HardCodeUtil.a(2131911358);
+  ShareActionSheetBuilder a = null;
+  Context b;
+  QQAppInterface c;
   public String d;
   public String e;
-  public String f = "";
+  public String f;
+  public String g;
+  public String h;
+  public Bitmap i;
+  public String j = "";
   
   public ShareHelper(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramContext;
+    this.c = paramQQAppInterface;
   }
   
   public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
@@ -127,62 +127,46 @@ public class ShareHelper
   
   public static String a(String[] paramArrayOfString)
   {
-    int i = 0;
-    while (i < paramArrayOfString.length)
+    int m = 0;
+    while (m < paramArrayOfString.length)
     {
-      paramArrayOfString[i] = a(paramArrayOfString[i]);
-      i += 1;
+      paramArrayOfString[m] = a(paramArrayOfString[m]);
+      m += 1;
     }
     return b(paramArrayOfString);
   }
   
-  private void a()
-  {
-    AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(114).a(this.b).e(this.jdField_a_of_type_JavaLangString).a();
-    localAbsShareMsg.mSourceName = this.e;
-    localAbsShareMsg.mSourceAction = "web";
-    localAbsShareMsg.mSourceUrl = this.f;
-    Object localObject = StructMsgElementFactory.a(2);
-    ((AbsStructMsgItem)localObject).a(this.d, this.b, this.c);
-    localAbsShareMsg.addItem((AbsStructMsgElement)localObject);
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("forward_type", -3);
-    ((Intent)localObject).putExtra("stuctmsg_bytes", localAbsShareMsg.getBytes());
-    ((Intent)localObject).putExtra("forwardDirect", true);
-    ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
-  }
-  
   private boolean a()
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.e));
+    return (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.h));
   }
   
   private List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696399);
-    localActionSheetItem.icon = 2130839067;
+    localActionSheetItem.label = paramContext.getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696413);
-    localActionSheetItem.icon = 2130839068;
+    localActionSheetItem.label = paramContext.getString(2131894185);
+    localActionSheetItem.icon = 2130839222;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
+    localActionSheetItem.label = paramContext.getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696402);
-    localActionSheetItem.icon = 2130839065;
+    localActionSheetItem.label = paramContext.getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -192,83 +176,99 @@ public class ShareHelper
   private static String b(String[] paramArrayOfString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    int k;
-    for (int i = 0; j < paramArrayOfString.length; i = k)
+    int n = 0;
+    int i1;
+    for (int m = 0; n < paramArrayOfString.length; m = i1)
     {
-      k = i;
-      if (paramArrayOfString[j].length() > i) {
-        k = paramArrayOfString[j].length();
+      i1 = m;
+      if (paramArrayOfString[n].length() > m) {
+        i1 = paramArrayOfString[n].length();
       }
-      j += 1;
+      n += 1;
     }
-    j = 0;
-    while (j < i)
+    n = 0;
+    while (n < m)
     {
-      k = 0;
-      while (k < paramArrayOfString.length)
+      i1 = 0;
+      while (i1 < paramArrayOfString.length)
       {
-        if (paramArrayOfString[k].length() > j) {
-          localStringBuilder.append(paramArrayOfString[k].charAt(j));
+        if (paramArrayOfString[i1].length() > n) {
+          localStringBuilder.append(paramArrayOfString[i1].charAt(n));
         }
-        k += 1;
+        i1 += 1;
       }
-      j += 1;
+      n += 1;
     }
     return a(localStringBuilder.toString());
   }
   
   private void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(this.d)) {
-      localArrayList.add(this.d);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("title", this.b);
-    localBundle.putString("desc", this.c);
-    localBundle.putLong("req_share_id", 0L);
-    localBundle.putString("detail_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putStringArrayList("image_url", localArrayList);
-    QZoneShareManager.jumpToQzoneShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localBundle, null);
+    AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(114).a(this.e).e(this.d).a();
+    localAbsShareMsg.mSourceName = this.h;
+    localAbsShareMsg.mSourceAction = "web";
+    localAbsShareMsg.mSourceUrl = this.j;
+    Object localObject = StructMsgElementFactory.a(2);
+    ((AbsStructMsgItem)localObject).a(this.g, this.e, this.f);
+    localAbsShareMsg.addItem((AbsStructMsgElement)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("forward_type", -3);
+    ((Intent)localObject).putExtra("stuctmsg_bytes", localAbsShareMsg.getBytes());
+    ((Intent)localObject).putExtra("forwardDirect", true);
+    ForwardBaseOption.a((Activity)this.b, (Intent)localObject, 21);
   }
   
   private void c()
   {
-    long l = System.currentTimeMillis();
-    WXShareHelper.a().d(String.valueOf(l), this.b, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(this.g)) {
+      localArrayList.add(this.g);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("title", this.e);
+    localBundle.putString("desc", this.f);
+    localBundle.putLong("req_share_id", 0L);
+    localBundle.putString("detail_url", this.d);
+    localBundle.putString("url", this.d);
+    localBundle.putStringArrayList("image_url", localArrayList);
+    QZoneShareManager.jumpToQzoneShare(this.c, this.b, localBundle, null);
   }
   
   private void d()
   {
     long l = System.currentTimeMillis();
-    WXShareHelper.a().c(String.valueOf(l), this.b, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
+    WXShareHelper.a().d(String.valueOf(l), this.e, this.i, this.f, this.d);
+  }
+  
+  private void e()
+  {
+    long l = System.currentTimeMillis();
+    WXShareHelper.a().c(String.valueOf(l), this.e, this.i, this.f, this.d);
   }
   
   public void a(DialogInterface.OnDismissListener paramOnDismissListener)
   {
     if (!a())
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131713819), 0).a();
+      QQToast.makeText(this.b, HardCodeUtil.a(2131911359), 0).show();
       return;
     }
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    if (this.a == null)
     {
       localObject = new ShareHelper.1(this);
       paramOnDismissListener = new ShareHelper.2(this, paramOnDismissListener);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719029));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener((AdapterView.OnItemClickListener)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(paramOnDismissListener);
+      this.a = new ShareActionSheetBuilder((Activity)this.b);
+      this.a.setActionSheetTitle(this.b.getString(2131916565));
+      this.a.setActionSheetItems(a(this.b));
+      this.a.setItemClickListener((AdapterView.OnItemClickListener)localObject);
+      this.a.setOnDismissListener(paramOnDismissListener);
     }
     try
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing())
+      if (!this.a.getActionSheet().isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+        this.a.show();
         return;
       }
     }
@@ -286,12 +286,12 @@ public class ShareHelper
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    this.b = paramString1;
-    this.c = paramString2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.d = paramString3;
+    this.e = paramString1;
+    this.f = paramString2;
+    this.g = paramString4;
+    this.h = paramString5;
+    this.i = paramBitmap;
   }
 }
 

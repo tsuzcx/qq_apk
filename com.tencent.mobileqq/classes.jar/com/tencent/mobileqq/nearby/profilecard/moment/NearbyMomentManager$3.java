@@ -7,8 +7,8 @@ class NearbyMomentManager$3
   
   public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.f(paramString);
-    DeleteFeedCallback localDeleteFeedCallback = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDeleteFeedCallback;
+    this.b.f(paramString);
+    DeleteFeedCallback localDeleteFeedCallback = this.a;
     if (localDeleteFeedCallback != null) {
       localDeleteFeedCallback.a(paramBoolean, paramString);
     }
@@ -16,7 +16,7 @@ class NearbyMomentManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.3
  * JD-Core Version:    0.7.0.1
  */

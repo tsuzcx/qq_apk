@@ -4,7 +4,10 @@ import android.graphics.Matrix;
 import android.media.MediaFormat;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.decoder.DecoderAssetTrack;
-import com.tencent.tav.decoder.DecoderUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class ExtractorUtils
 {
@@ -41,6 +44,156 @@ public class ExtractorUtils
     paramMatrix.postConcat(localMatrix);
   }
   
+  public static long getAudioDuration(AssetExtractor paramAssetExtractor)
+  {
+    return getAudioDuration(getMediaFormats(paramAssetExtractor));
+  }
+  
+  public static long getAudioDuration(ArrayList<MediaFormat> paramArrayList)
+  {
+    try
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        MediaFormat localMediaFormat = (MediaFormat)paramArrayList.next();
+        if ((localMediaFormat.getString("mime").startsWith("audio/")) && (localMediaFormat.containsKey("durationUs")))
+        {
+          long l = localMediaFormat.getLong("durationUs");
+          return l;
+        }
+      }
+    }
+    catch (Exception|Error paramArrayList)
+    {
+      label56:
+      break label56;
+    }
+    return 0L;
+  }
+  
+  public static long getDuration(AssetExtractor paramAssetExtractor)
+  {
+    return getDuration(getMediaFormats(paramAssetExtractor));
+  }
+  
+  public static long getDuration(String paramString)
+  {
+    try
+    {
+      AssetExtractor localAssetExtractor = new AssetExtractor();
+      localAssetExtractor.setDataSource(paramString);
+      long l = getDuration(localAssetExtractor);
+      try
+      {
+        localAssetExtractor.release();
+        return l;
+      }
+      catch (Error paramString)
+      {
+        paramString.printStackTrace();
+        return l;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return l;
+      }
+    }
+    catch (Exception|Error paramString)
+    {
+      label38:
+      break label38;
+    }
+    return 0L;
+  }
+  
+  public static long getDuration(ArrayList<MediaFormat> paramArrayList)
+  {
+    try
+    {
+      paramArrayList = paramArrayList.iterator();
+      long l2 = 0L;
+      long l1 = l2;
+      while (paramArrayList.hasNext())
+      {
+        MediaFormat localMediaFormat = (MediaFormat)paramArrayList.next();
+        String str = localMediaFormat.getString("mime");
+        boolean bool = str.startsWith("video/");
+        if (bool)
+        {
+          if (localMediaFormat.containsKey("durationUs")) {
+            l2 = localMediaFormat.getLong("durationUs");
+          }
+        }
+        else if ((str.startsWith("audio/")) && (localMediaFormat.containsKey("durationUs"))) {
+          l1 = localMediaFormat.getLong("durationUs");
+        }
+      }
+      if (l2 > 0L) {
+        return l2;
+      }
+      return l1;
+    }
+    catch (Exception|Error paramArrayList) {}
+    return 0L;
+  }
+  
+  public static MediaFormat getFirstFormat(AssetExtractor paramAssetExtractor, String paramString)
+  {
+    return getFirstFormat(getMediaFormats(paramAssetExtractor), paramString);
+  }
+  
+  @Nullable
+  public static MediaFormat getFirstFormat(ArrayList<MediaFormat> paramArrayList, String paramString)
+  {
+    try
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        MediaFormat localMediaFormat = (MediaFormat)paramArrayList.next();
+        boolean bool = localMediaFormat.getString("mime").startsWith(paramString);
+        if (bool) {
+          return localMediaFormat;
+        }
+      }
+    }
+    catch (Exception|Error paramArrayList)
+    {
+      label41:
+      break label41;
+    }
+    return null;
+  }
+  
+  public static int getFirstTrackIndex(AssetExtractor paramAssetExtractor, String paramString)
+  {
+    return getFirstTrackIndex(getMediaFormats(paramAssetExtractor), paramString);
+  }
+  
+  public static int getFirstTrackIndex(ArrayList<MediaFormat> paramArrayList, String paramString)
+  {
+    int i = 0;
+    try
+    {
+      while (i < paramArrayList.size())
+      {
+        boolean bool = ((MediaFormat)paramArrayList.get(i)).getString("mime").startsWith(paramString);
+        if (bool) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    catch (Exception|Error paramArrayList)
+    {
+      label41:
+      break label41;
+    }
+    return -1;
+  }
+  
   public static int getFrameRate(MediaFormat paramMediaFormat)
   {
     if (paramMediaFormat != null) {}
@@ -60,18 +213,42 @@ public class ExtractorUtils
     return 0;
   }
   
+  @NotNull
+  public static ArrayList<MediaFormat> getMediaFormats(AssetExtractor paramAssetExtractor)
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      int j = paramAssetExtractor.getTrackCount();
+      int i = 0;
+      while (i < j)
+      {
+        localArrayList.add(paramAssetExtractor.getTrackFormat(i));
+        i += 1;
+      }
+      return localArrayList;
+    }
+    catch (Throwable paramAssetExtractor) {}
+    return localArrayList;
+  }
+  
   public static int getPreferRotation(AssetExtractor paramAssetExtractor)
+  {
+    return getPreferRotation(getMediaFormats(paramAssetExtractor));
+  }
+  
+  public static int getPreferRotation(ArrayList<MediaFormat> paramArrayList)
   {
     try
     {
-      paramAssetExtractor = DecoderUtils.getFirstFormat(paramAssetExtractor, "video/");
-      if ((paramAssetExtractor != null) && (paramAssetExtractor.containsKey("rotation-degrees")))
+      paramArrayList = getFirstFormat(paramArrayList, "video/");
+      if ((paramArrayList != null) && (paramArrayList.containsKey("rotation-degrees")))
       {
-        int i = paramAssetExtractor.getInteger("rotation-degrees") / 90;
+        int i = paramArrayList.getInteger("rotation-degrees") / 90;
         return i;
       }
     }
-    catch (Exception|Error paramAssetExtractor)
+    catch (Exception|Error paramArrayList)
     {
       label32:
       break label32;
@@ -81,27 +258,33 @@ public class ExtractorUtils
   
   public static CGSize getVideoSize(AssetExtractor paramAssetExtractor)
   {
+    return getVideoSize(getMediaFormats(paramAssetExtractor));
+  }
+  
+  @NotNull
+  public static CGSize getVideoSize(ArrayList<MediaFormat> paramArrayList)
+  {
     try
     {
-      paramAssetExtractor = DecoderUtils.getFirstFormat(paramAssetExtractor, "video/");
+      paramArrayList = getFirstFormat(paramArrayList, "video/");
       CGSize localCGSize = new CGSize();
-      if (paramAssetExtractor != null)
+      if (paramArrayList != null)
       {
-        if (paramAssetExtractor.containsKey("display-width")) {
-          localCGSize.width = paramAssetExtractor.getInteger("display-width");
+        if (paramArrayList.containsKey("display-width")) {
+          localCGSize.width = paramArrayList.getInteger("display-width");
         } else {
-          localCGSize.width = paramAssetExtractor.getInteger("width");
+          localCGSize.width = paramArrayList.getInteger("width");
         }
-        if (paramAssetExtractor.containsKey("display-height"))
+        if (paramArrayList.containsKey("display-height"))
         {
-          localCGSize.height = paramAssetExtractor.getInteger("display-height");
+          localCGSize.height = paramArrayList.getInteger("display-height");
           return localCGSize;
         }
-        localCGSize.height = paramAssetExtractor.getInteger("height");
+        localCGSize.height = paramArrayList.getInteger("height");
       }
       return localCGSize;
     }
-    catch (Exception|Error paramAssetExtractor)
+    catch (Exception|Error paramArrayList)
     {
       label88:
       break label88;
@@ -122,7 +305,7 @@ public class ExtractorUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.extractor.ExtractorUtils
  * JD-Core Version:    0.7.0.1
  */

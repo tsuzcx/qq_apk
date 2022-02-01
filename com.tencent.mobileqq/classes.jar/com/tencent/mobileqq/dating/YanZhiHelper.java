@@ -41,7 +41,7 @@ public class YanZhiHelper
         paramArrayOfByte.pushTime = localMsgBody.push_time.get();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(localMsgBody.uint32_like_count.get());
-        localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131694303));
+        localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131891941));
         paramArrayOfByte.msg = localStringBuilder.toString();
         long l2 = localMsgBody.push_time.get();
         long l1 = l2;
@@ -113,7 +113,7 @@ public class YanZhiHelper
         paramArrayOfByte.pushTime = localMsgBody.push_time.get();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(localMsgBody.uint32_like_count.get());
-        localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131694303));
+        localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131891941));
         paramArrayOfByte.msg = localStringBuilder.toString();
         long l2 = localMsgBody.push_time.get();
         long l1 = l2;
@@ -208,15 +208,15 @@ public class YanZhiHelper
   
   private static void a(QQAppInterface paramQQAppInterface, MessageForYanZhi paramMessageForYanZhi)
   {
-    paramMessageForYanZhi = paramQQAppInterface.getMessageFacade().b(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop);
+    paramMessageForYanZhi = paramQQAppInterface.getMessageFacade().r(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop);
     if (paramMessageForYanZhi != null) {
-      paramQQAppInterface.getMessageFacade().b(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop, paramMessageForYanZhi.uniseq);
+      paramQQAppInterface.getMessageFacade().h(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop, paramMessageForYanZhi.uniseq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.YanZhiHelper
  * JD-Core Version:    0.7.0.1
  */

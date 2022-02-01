@@ -17,23 +17,23 @@ class AVGameControlUIImpl$9
   
   public void a(boolean paramBoolean)
   {
-    if (this.a.a()) {
+    if (this.a.d()) {
       return;
     }
     Object localObject1 = AVGameBusinessCtrl.b();
     if (localObject1 == null) {
       return;
     }
-    localObject1 = ((AVGameBusinessCtrl)localObject1).a();
+    localObject1 = ((AVGameBusinessCtrl)localObject1).j();
     if (localObject1 == null) {
       return;
     }
     AVGameControlUIImpl.a(this.a, "CheckDisableSmallPicTask");
-    if ((this.a.a != null) && (paramBoolean))
+    if ((this.a.h != null) && (paramBoolean))
     {
       boolean bool1 = false;
       paramBoolean = false;
-      boolean bool2 = SecurityPolicyChecker.a().b();
+      boolean bool2 = SecurityPolicyChecker.a().c();
       Object localObject2 = new ArrayList();
       ((AVGameSession)localObject1).b((List)localObject2);
       if (((List)localObject2).size() > 0)
@@ -58,9 +58,9 @@ class AVGameControlUIImpl$9
         }
       }
       if (bool1) {
-        this.a.c();
-      } else {
         this.a.e();
+      } else {
+        this.a.g();
       }
       if (QLog.isDevelopLevel())
       {

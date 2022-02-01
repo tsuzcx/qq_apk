@@ -8,87 +8,87 @@ import com.tencent.mobileqq.text.ClickableImageSpan;
 class RichStatusEditText$1
   implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean b = false;
+  private boolean c = false;
+  private int d;
+  private int e;
+  private String f;
   
   RichStatusEditText$1(RichStatusEditText paramRichStatusEditText) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.a.a) && (this.c))
     {
-      paramEditable = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
-      paramEditable.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
+      paramEditable = this.a;
+      paramEditable.a = false;
+      this.c = false;
       paramEditable = paramEditable.getText();
-      int i = this.jdField_a_of_type_Int;
-      paramEditable.replace(i, this.jdField_b_of_type_Int + i, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
+      int i = this.d;
+      paramEditable.replace(i, this.e + i, this.f);
+      this.a.setSelection(this.d + this.f.length());
+      this.a.a = true;
     }
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+    if (!this.a.a) {
       return;
     }
     if (paramInt3 > 0)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt3;
-      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
+      this.b = true;
+      this.d = paramInt1;
+      this.e = paramInt3;
+      RichStatusEditText.b(this.a);
+      this.a.setCursorVisible(true);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
+    this.b = false;
+    paramCharSequence = RichStatusEditText.a(this.a, paramInt1, false, false);
     if (paramCharSequence != null)
     {
-      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
+      paramInt3 = RichStatusEditText.c(this.a).getSpanStart(paramCharSequence);
       if (paramInt3 != paramInt1)
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = paramInt3;
-        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
-        this.jdField_a_of_type_JavaLangString = "";
+        this.c = true;
+        this.d = paramInt3;
+        this.e = (paramInt1 - paramInt3);
+        this.f = "";
       }
     }
-    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
+    RichStatusEditText.a(this.a, paramInt1, paramInt2);
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+    if (!this.a.a) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
+      Object localObject = this.a;
       paramInt2 = paramInt3 + paramInt1;
       localObject = RichStatusEditText.a((RichStatusEditText)localObject, paramInt2, true, false);
-      if ((localObject != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a((ClickableImageSpan)localObject)))
+      if ((localObject != null) && (RichStatusEditText.a(this.a) != null) && (!RichStatusEditText.a(this.a).b((ClickableImageSpan)localObject)))
       {
-        this.jdField_a_of_type_JavaLangString = "";
-        this.jdField_b_of_type_Boolean = true;
+        this.f = "";
+        this.c = true;
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt2).toString();
-      if (this.jdField_a_of_type_JavaLangString.contains("\n"))
+      this.f = paramCharSequence.subSequence(paramInt1, paramInt2).toString();
+      if (this.f.contains("\n"))
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
+        this.c = true;
+        this.f = this.f.replace("\n", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatusEditText.1
  * JD-Core Version:    0.7.0.1
  */

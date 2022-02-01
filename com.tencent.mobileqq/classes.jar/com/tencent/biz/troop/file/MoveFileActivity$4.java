@@ -15,23 +15,23 @@ class MoveFileActivity$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = (InputDialog)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > TroopFileUtils.a)
+    this.a.b = paramDialogInterface.getInputValue().trim();
+    if (this.a.b.length() > TroopFileUtils.a)
     {
-      paramDialogInterface.a(this.a.getString(2131697381), -65536);
+      paramDialogInterface.a(this.a.getString(2131895154), -65536);
       paramDialogInterface = this.a.app;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a.a);
       ((StringBuilder)localObject).append("");
       ReportController.b(paramDialogInterface, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
       return;
     }
-    if (TroopFileUtils.a(this.a.jdField_a_of_type_JavaLangString))
+    if (TroopFileUtils.b(this.a.b))
     {
-      paramDialogInterface.a(this.a.getString(2131697382), -65536);
+      paramDialogInterface.a(this.a.getString(2131895155), -65536);
       paramDialogInterface = this.a.app;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a.a);
       ((StringBuilder)localObject).append("");
       ReportController.b(paramDialogInterface, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, ((StringBuilder)localObject).toString(), "0", "", "");
       return;
@@ -39,16 +39,16 @@ class MoveFileActivity$4
     paramDialogInterface.dismiss();
     paramDialogInterface = this.a.app;
     Object localObject = this.a;
-    if (TroopFileUtils.a(paramDialogInterface, (Context)localObject, ((MoveFileActivity)localObject).jdField_a_of_type_Long) == 0) {
+    if (TroopFileUtils.a(paramDialogInterface, (Context)localObject, ((MoveFileActivity)localObject).a) == 0) {
       return;
     }
-    TroopFileProtocol.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131697309);
+    TroopFileProtocol.a(this.a.app, this.a.a, "/", this.a.b, MoveFileActivity.k(this.a));
+    this.a.a(2131895082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.4
  * JD-Core Version:    0.7.0.1
  */

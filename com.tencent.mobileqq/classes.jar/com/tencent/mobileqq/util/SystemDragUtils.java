@@ -64,29 +64,28 @@ import java.util.List;
 public class SystemDragUtils
 {
   public static float a;
-  public static int a;
-  private static SystemDragUtils.TouchHandler jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler;
-  private static final Boolean jdField_a_of_type_JavaLangBoolean;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean;
   public static float b;
-  private static final String b;
-  private static final String c;
+  public static int c = -1;
+  private static final String d;
+  private static final String e;
+  private static final String f;
+  private static final Boolean g;
+  private static SystemDragUtils.TouchHandler h;
+  private static boolean i;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/Tencent/MobileQQ/SharedIn/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    d = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/Tencent/MobileQQ/SharedOut/");
-    b = localStringBuilder.toString();
-    c = HardCodeUtil.a(2131714502);
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler = new SystemDragUtils.TouchHandler();
-    jdField_a_of_type_Int = -1;
+    e = localStringBuilder.toString();
+    f = HardCodeUtil.a(2131912011);
+    g = Boolean.valueOf(false);
+    h = new SystemDragUtils.TouchHandler();
   }
   
   /* Error */
@@ -106,49 +105,49 @@ public class SystemDragUtils
     //   18: astore 7
     //   20: aload 6
     //   22: astore_0
-    //   23: new 28	java/io/File
+    //   23: new 34	java/io/File
     //   26: dup
     //   27: aload_2
-    //   28: invokespecial 82	java/io/File:<init>	(Ljava/lang/String;)V
+    //   28: invokespecial 87	java/io/File:<init>	(Ljava/lang/String;)V
     //   31: astore 8
     //   33: aload 6
     //   35: astore_0
     //   36: aload 8
-    //   38: invokevirtual 86	java/io/File:exists	()Z
+    //   38: invokevirtual 91	java/io/File:exists	()Z
     //   41: ifne +12 -> 53
     //   44: aload 6
     //   46: astore_0
     //   47: aload 8
-    //   49: invokevirtual 89	java/io/File:mkdir	()Z
+    //   49: invokevirtual 94	java/io/File:mkdir	()Z
     //   52: pop
     //   53: aload 6
     //   55: astore_0
-    //   56: new 28	java/io/File
+    //   56: new 34	java/io/File
     //   59: dup
     //   60: aload_2
     //   61: aload_3
-    //   62: invokespecial 92	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: invokespecial 97	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   65: astore_3
     //   66: aload 6
     //   68: astore_0
     //   69: aload_3
-    //   70: invokevirtual 86	java/io/File:exists	()Z
+    //   70: invokevirtual 91	java/io/File:exists	()Z
     //   73: ifeq +11 -> 84
     //   76: aload 6
     //   78: astore_0
     //   79: aload_3
-    //   80: invokevirtual 95	java/io/File:delete	()Z
+    //   80: invokevirtual 100	java/io/File:delete	()Z
     //   83: pop
     //   84: aload 6
     //   86: astore_0
-    //   87: new 97	java/io/FileOutputStream
+    //   87: new 102	java/io/FileOutputStream
     //   90: dup
     //   91: aload_3
-    //   92: invokespecial 100	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   92: invokespecial 105	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   95: astore_2
     //   96: aload_1
     //   97: aload 7
-    //   99: invokevirtual 106	java/io/InputStream:read	([B)I
+    //   99: invokevirtual 111	java/io/InputStream:read	([B)I
     //   102: istore 4
     //   104: iload 4
     //   106: iconst_m1
@@ -157,12 +156,12 @@ public class SystemDragUtils
     //   111: aload 7
     //   113: iconst_0
     //   114: iload 4
-    //   116: invokevirtual 112	java/io/OutputStream:write	([BII)V
+    //   116: invokevirtual 117	java/io/OutputStream:write	([BII)V
     //   119: goto -23 -> 96
     //   122: aload_2
-    //   123: invokevirtual 115	java/io/OutputStream:flush	()V
+    //   123: invokevirtual 120	java/io/OutputStream:flush	()V
     //   126: aload_2
-    //   127: invokevirtual 118	java/io/OutputStream:close	()V
+    //   127: invokevirtual 123	java/io/OutputStream:close	()V
     //   130: aload_3
     //   131: areturn
     //   132: astore_1
@@ -192,23 +191,23 @@ public class SystemDragUtils
     //   166: astore_2
     //   167: aload_2
     //   168: astore_0
-    //   169: ldc 120
+    //   169: ldc 125
     //   171: iconst_1
-    //   172: ldc 122
+    //   172: ldc 127
     //   174: aload_3
-    //   175: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   175: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   178: aload_1
     //   179: astore_0
     //   180: aload_2
     //   181: ifnull +21 -> 202
     //   184: aload_2
-    //   185: invokevirtual 118	java/io/OutputStream:close	()V
+    //   185: invokevirtual 123	java/io/OutputStream:close	()V
     //   188: aload_1
     //   189: areturn
     //   190: aload_0
     //   191: ifnull +7 -> 198
     //   194: aload_0
-    //   195: invokevirtual 118	java/io/OutputStream:close	()V
+    //   195: invokevirtual 123	java/io/OutputStream:close	()V
     //   198: aload_1
     //   199: athrow
     //   200: aconst_null
@@ -221,7 +220,7 @@ public class SystemDragUtils
     //   0	204	1	paramInputStream	java.io.InputStream
     //   0	204	2	paramString1	String
     //   0	204	3	paramString2	String
-    //   102	13	4	i	int
+    //   102	13	4	j	int
     //   1	164	5	localObject1	Object
     //   4	81	6	localObject2	Object
     //   18	94	7	arrayOfByte	byte[]
@@ -258,7 +257,7 @@ public class SystemDragUtils
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 136	android/net/Uri:getAuthority	()Ljava/lang/String;
+    //   1: invokevirtual 140	android/net/Uri:getAuthority	()Ljava/lang/String;
     //   4: astore 4
     //   6: aconst_null
     //   7: astore 7
@@ -269,9 +268,9 @@ public class SystemDragUtils
     //   16: aload 4
     //   18: ifnull +120 -> 138
     //   21: aload_0
-    //   22: invokevirtual 142	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   22: invokevirtual 146	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   25: aload_1
-    //   26: invokevirtual 148	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   26: invokevirtual 152	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   29: astore 4
     //   31: aload 4
     //   33: astore_1
@@ -279,8 +278,8 @@ public class SystemDragUtils
     //   35: aload 4
     //   37: aload_2
     //   38: aload_3
-    //   39: invokestatic 150	com/tencent/mobileqq/util/SystemDragUtils:a	(Landroid/content/Context;Ljava/io/InputStream;Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   42: invokevirtual 153	java/io/File:getPath	()Ljava/lang/String;
+    //   39: invokestatic 154	com/tencent/mobileqq/util/SystemDragUtils:a	(Landroid/content/Context;Ljava/io/InputStream;Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   42: invokevirtual 157	java/io/File:getPath	()Ljava/lang/String;
     //   45: astore_0
     //   46: aload_0
     //   47: astore 5
@@ -289,15 +288,15 @@ public class SystemDragUtils
     //   54: aload_0
     //   55: astore_1
     //   56: aload 4
-    //   58: invokevirtual 154	java/io/InputStream:close	()V
+    //   58: invokevirtual 158	java/io/InputStream:close	()V
     //   61: aload_0
     //   62: areturn
     //   63: astore_0
-    //   64: ldc 120
+    //   64: ldc 125
     //   66: iconst_1
-    //   67: ldc 156
+    //   67: ldc 160
     //   69: aload_0
-    //   70: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   70: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   73: aload_1
     //   74: areturn
     //   75: astore_2
@@ -314,7 +313,7 @@ public class SystemDragUtils
     //   91: aload_0
     //   92: astore_1
     //   93: aload_2
-    //   94: invokevirtual 159	java/lang/Exception:printStackTrace	()V
+    //   94: invokevirtual 163	java/lang/Exception:printStackTrace	()V
     //   97: aload 7
     //   99: astore 5
     //   101: aload_0
@@ -322,21 +321,21 @@ public class SystemDragUtils
     //   105: aload 6
     //   107: astore_1
     //   108: aload_0
-    //   109: invokevirtual 154	java/io/InputStream:close	()V
+    //   109: invokevirtual 158	java/io/InputStream:close	()V
     //   112: aconst_null
     //   113: areturn
     //   114: astore_0
     //   115: aload_1
     //   116: ifnull +20 -> 136
     //   119: aload_1
-    //   120: invokevirtual 154	java/io/InputStream:close	()V
+    //   120: invokevirtual 158	java/io/InputStream:close	()V
     //   123: goto +13 -> 136
     //   126: astore_1
-    //   127: ldc 120
+    //   127: ldc 125
     //   129: iconst_1
-    //   130: ldc 156
+    //   130: ldc 160
     //   132: aload_1
-    //   133: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   133: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   136: aload_0
     //   137: athrow
     //   138: aload 5
@@ -388,8 +387,8 @@ public class SystemDragUtils
   
   public static void a(Context paramContext, SystemDragUtils.DragTouchDelegate paramDragTouchDelegate, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener = paramOnLongClickAndTouchListener;
+    h.b = new WeakReference(paramContext);
+    h.c = paramOnLongClickAndTouchListener;
     paramDragTouchDelegate.a(paramOnLongClickAndTouchListener);
     paramDragTouchDelegate.a(new SystemDragUtils.3());
   }
@@ -397,11 +396,11 @@ public class SystemDragUtils
   @RequiresApi(api=16)
   public static void a(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000) && (paramSessionInfo.jdField_a_of_type_Int != 0) && (!MsgProxyUtils.a(paramSessionInfo.jdField_a_of_type_Int)))
+    if ((paramSessionInfo.a != 1) && (paramSessionInfo.a != 3000) && (paramSessionInfo.a != 0) && (!MsgProxyUtils.a(paramSessionInfo.a)))
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("unsupported UinType:");
-      paramQQAppInterface.append(paramSessionInfo.jdField_a_of_type_Int);
+      paramQQAppInterface.append(paramSessionInfo.a);
       QLog.d("SystemDragUtils", 1, paramQQAppInterface.toString());
       return;
     }
@@ -424,15 +423,15 @@ public class SystemDragUtils
     long l;
     if ((paramViewHolder instanceof QFileSimpleItemBuilder.FileHolder))
     {
-      localObject1 = QFileUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      localObject1 = QFileUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramViewHolder.q);
       l = FileUtils.getFileSizes((String)localObject1);
-      localObject2 = paramViewHolder.jdField_a_of_type_AndroidViewView;
+      localObject2 = paramViewHolder.h;
       paramViewHolder = (BaseBubbleBuilder.ViewHolder)localObject1;
       localObject1 = localObject2;
     }
     else if ((paramViewHolder instanceof QFileImageItemBuilder.FileHolder))
     {
-      localObject1 = QFileUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      localObject1 = QFileUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramViewHolder.q);
       l = FileUtils.getFileSizes((String)localObject1);
       localObject2 = ((QFileImageItemBuilder.FileHolder)paramViewHolder).a;
       paramViewHolder = (BaseBubbleBuilder.ViewHolder)localObject1;
@@ -440,7 +439,7 @@ public class SystemDragUtils
     }
     else if ((paramViewHolder instanceof QFileVideoItemBuilder.FileHolder))
     {
-      localObject1 = QFileUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      localObject1 = QFileUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramViewHolder.q);
       l = FileUtils.getFileSizes((String)localObject1);
       localObject2 = ((QFileVideoItemBuilder.FileHolder)paramViewHolder).a;
       paramViewHolder = (BaseBubbleBuilder.ViewHolder)localObject1;
@@ -448,21 +447,21 @@ public class SystemDragUtils
     }
     else if ((paramViewHolder instanceof BasePicItemBuilder.Holder))
     {
-      localObject2 = (MessageForPic)paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      localObject2 = (MessageForPic)paramViewHolder.q;
       localObject3 = ((IPicHelper)QRoute.api(IPicHelper.class)).getBiggestFilePath((MessageForPic)localObject2);
       String str = FileManagerUtil.a((String)localObject3);
-      int i = ((IPicUtil)QRoute.api(IPicUtil.class)).getImageType((String)localObject3);
-      if (i == 1001) {
+      int j = ((IPicUtil)QRoute.api(IPicUtil.class)).getImageType((String)localObject3);
+      if (j == 1001) {
         localObject1 = ".png";
-      } else if (i == 1005) {
+      } else if (j == 1005) {
         localObject1 = ".bmp";
-      } else if (i == 2000) {
+      } else if (j == 2000) {
         localObject1 = ".gif";
       } else {
         localObject1 = ".jpg";
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(b);
+      localStringBuilder.append(e);
       localStringBuilder.append(str);
       localStringBuilder.append((String)localObject1);
       localObject1 = localStringBuilder.toString();
@@ -472,7 +471,7 @@ public class SystemDragUtils
         localStringBuilder.append("startDrag orgPath= ");
         localStringBuilder.append((String)localObject3);
         localStringBuilder.append("  ,imageType=");
-        localStringBuilder.append(i);
+        localStringBuilder.append(j);
         localStringBuilder.append(",filePath=");
         localStringBuilder.append((String)localObject1);
         QLog.d("SystemDragUtils", 2, localStringBuilder.toString());
@@ -496,7 +495,7 @@ public class SystemDragUtils
     {
       if ((paramViewHolder instanceof ShortVideoItemBuilder.Holder))
       {
-        localObject1 = (MessageForShortVideo)paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        localObject1 = (MessageForShortVideo)paramViewHolder.q;
         localObject2 = SVUtils.a((MessageForShortVideo)localObject1, "mp4");
         l = ((MessageForShortVideo)localObject1).videoFileSize;
         localObject1 = ((ShortVideoItemBuilder.Holder)paramViewHolder).a;
@@ -507,7 +506,7 @@ public class SystemDragUtils
         break;
         if ((paramViewHolder instanceof ShortVideoRealItemBuilder.Holder))
         {
-          localObject2 = (MessageForShortVideo)paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+          localObject2 = (MessageForShortVideo)paramViewHolder.q;
           localObject1 = SVUtils.a((MessageForShortVideo)localObject2, "mp4");
           l = ((MessageForShortVideo)localObject2).videoFileSize;
           localObject2 = ((ShortVideoRealItemBuilder.Holder)paramViewHolder).a;
@@ -594,64 +593,23 @@ public class SystemDragUtils
       localIntent.putExtra("PhotoConst.VIDEO_INFOS", paramHashMap);
     }
     localIntent.putExtra("PhotoConst.PHOTO_COUNT", paramArrayList.size());
-    localIntent.putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
-    localIntent.putExtra("troop_uin", paramSessionInfo.b);
-    localIntent.putExtra("key_confess_topicid", paramSessionInfo.e);
+    localIntent.putExtra("uin", paramSessionInfo.b);
+    localIntent.putExtra("uintype", paramSessionInfo.a);
+    localIntent.putExtra("troop_uin", paramSessionInfo.c);
+    localIntent.putExtra("key_confess_topicid", paramSessionInfo.v);
     localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
     localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    localIntent.putExtra("entrance", paramSessionInfo.c);
+    localIntent.putExtra("entrance", paramSessionInfo.s);
     if (paramArrayList.size() == 1) {
       localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramArrayList);
     }
     paramContext.startActivity(localIntent);
   }
   
-  private static boolean b()
-  {
-    if (jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      return true;
-    }
-    int i = Build.VERSION.SDK_INT;
-    boolean bool1 = false;
-    boolean bool3 = false;
-    boolean bool2 = bool1;
-    if (i > 28)
-    {
-      bool2 = bool1;
-      if ("huawei".equalsIgnoreCase(Build.MANUFACTURER))
-      {
-        try
-        {
-          Method localMethod = Class.forName("com.huawei.android.pc.HwPCManagerEx").getDeclaredMethod("isInWindowsCastMode", new Class[0]);
-          bool1 = bool3;
-          if (localMethod != null) {
-            bool1 = ((Boolean)localMethod.invoke(null, new Object[0])).booleanValue();
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("SystemDragUtils", 1, "isInWindowsCastMode", localException);
-          bool1 = bool3;
-        }
-        bool2 = bool1;
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("isInWindowsCastMode = ");
-          localStringBuilder.append(bool1);
-          QLog.e("SystemDragUtils", 2, localStringBuilder.toString());
-          bool2 = bool1;
-        }
-      }
-    }
-    return bool2;
-  }
-  
   private static boolean b(DragEvent paramDragEvent, ImageView paramImageView, ColorDrawable paramColorDrawable1, ViewGroup paramViewGroup, ColorDrawable paramColorDrawable2, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     Object localObject = paramDragEvent.getLocalState();
-    int i = 0;
+    int j = 0;
     if ((localObject != null) && ("QQ_AIO_DRAG".equals(paramDragEvent.getLocalState().toString())))
     {
       QLog.d("SystemDragUtils", 1, "local state is available");
@@ -694,15 +652,15 @@ public class SystemDragUtils
         paramColorDrawable1.append(paramImageView.toString());
         QLog.d("SystemDragUtils", 2, paramColorDrawable1.toString());
       }
-      int j = paramImageView.getMimeTypeCount();
-      if (j == 0)
+      int k = paramImageView.getMimeTypeCount();
+      if (k == 0)
       {
         QLog.d("SystemDragUtils", 1, "drag description.mimetype is null");
         return true;
       }
-      while (i < j)
+      while (j < k)
       {
-        paramColorDrawable1 = paramImageView.getMimeType(i).split("/");
+        paramColorDrawable1 = paramImageView.getMimeType(j).split("/");
         if ((paramColorDrawable1 != null) && (paramColorDrawable1.length != 0))
         {
           paramViewGroup = new StringBuilder();
@@ -714,12 +672,12 @@ public class SystemDragUtils
         {
           QLog.d("SystemDragUtils", 1, "drag description.mimetype is null");
         }
-        i += 1;
+        j += 1;
       }
-      paramImageView = new ReportProgressDialog(paramContext, 2131756189);
+      paramImageView = new ReportProgressDialog(paramContext, 2131953338);
       paramImageView.setCancelable(true);
-      paramImageView.setContentView(2131559561);
-      ((TextView)paramImageView.findViewById(2131372646)).setText(HardCodeUtil.a(2131714501));
+      paramImageView.setContentView(2131625585);
+      ((TextView)paramImageView.findViewById(2131440191)).setText(HardCodeUtil.a(2131912010));
       ThreadManager.executeOnFileThread(new SystemDragUtils.2(paramDragEvent, paramContext, paramQQAppInterface, paramSessionInfo, paramImageView));
     case 2: 
       return true;
@@ -731,10 +689,51 @@ public class SystemDragUtils
     }
     return true;
   }
+  
+  private static boolean e()
+  {
+    if (g.booleanValue()) {
+      return true;
+    }
+    int j = Build.VERSION.SDK_INT;
+    boolean bool1 = false;
+    boolean bool3 = false;
+    boolean bool2 = bool1;
+    if (j > 28)
+    {
+      bool2 = bool1;
+      if ("huawei".equalsIgnoreCase(Build.MANUFACTURER))
+      {
+        try
+        {
+          Method localMethod = Class.forName("com.huawei.android.pc.HwPCManagerEx").getDeclaredMethod("isInWindowsCastMode", new Class[0]);
+          bool1 = bool3;
+          if (localMethod != null) {
+            bool1 = ((Boolean)localMethod.invoke(null, new Object[0])).booleanValue();
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("SystemDragUtils", 1, "isInWindowsCastMode", localException);
+          bool1 = bool3;
+        }
+        bool2 = bool1;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isInWindowsCastMode = ");
+          localStringBuilder.append(bool1);
+          QLog.e("SystemDragUtils", 2, localStringBuilder.toString());
+          bool2 = bool1;
+        }
+      }
+    }
+    return bool2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils
  * JD-Core Version:    0.7.0.1
  */

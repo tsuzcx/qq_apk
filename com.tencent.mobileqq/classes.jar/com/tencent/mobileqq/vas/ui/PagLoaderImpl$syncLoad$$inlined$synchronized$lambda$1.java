@@ -20,7 +20,7 @@ final class PagLoaderImpl$syncLoad$$inlined$synchronized$lambda$1
     synchronized (PagLoaderImpl.a(this.this$0))
     {
       PagLoaderImpl.a(this.this$0, true);
-      PagLoaderImpl.a(this.this$0);
+      PagLoaderImpl.c(this.this$0);
       Unit localUnit = Unit.INSTANCE;
       return;
     }
@@ -28,7 +28,7 @@ final class PagLoaderImpl$syncLoad$$inlined$synchronized$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagLoaderImpl.syncLoad..inlined.synchronized.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ public class QfileLocalFileBaseExpandableListAdapter$LocalItemHolder
   implements Cloneable
 {
   public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
   public int b;
-  public TextView b;
-  public int c;
+  public RelativeLayout c;
+  public CircleFileStateView d;
+  public int e;
+  public CheckBox f;
+  public AsyncImageView g;
+  public TextView h;
+  public TextView i;
+  public Object j;
   
   public QfileLocalFileBaseExpandableListAdapter$LocalItemHolder(QfileLocalFileBaseExpandableListAdapter paramQfileLocalFileBaseExpandableListAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder
  * JD-Core Version:    0.7.0.1
  */

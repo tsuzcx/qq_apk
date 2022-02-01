@@ -10,24 +10,24 @@ import java.util.List;
 
 class ReadInJoyDeliverUGCActivity$CompressFile
 {
-  private long jdField_a_of_type_Long;
-  private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
-  private CompressInfo jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
   private boolean b;
+  private String c;
+  private long d;
+  private CompressInfo e;
+  private boolean f;
+  private BitmapFactory.Options g;
   
   public ReadInJoyDeliverUGCActivity$CompressFile(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString;
+    this.d = paramLong;
   }
   
   private boolean a(String paramString, CompressInfo paramCompressInfo, boolean paramBoolean, BitmapFactory.Options paramOptions)
   {
     if (paramBoolean)
     {
-      if (ReadInJoyDeliverUGCActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity))
+      if (ReadInJoyDeliverUGCActivity.z(this.a))
       {
         paramBoolean = ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramCompressInfo);
         if (QLog.isColorLevel())
@@ -38,19 +38,19 @@ class ReadInJoyDeliverUGCActivity$CompressFile
           QLog.d("ReadInJoyDeliverUGCActivity", 2, paramOptions.toString());
         }
         if (!paramBoolean) {
-          ReadInJoyDeliverUGCActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity, 1001);
+          ReadInJoyDeliverUGCActivity.c(this.a, 1001);
         } else {
-          ReadInJoyDeliverUGCActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).add(paramCompressInfo.jdField_e_of_type_JavaLangString);
+          ReadInJoyDeliverUGCActivity.l(this.a).add(paramCompressInfo.l);
         }
         paramOptions = new StringBuilder();
         paramOptions.append("startUploadPic compressPath=");
-        paramOptions.append(paramCompressInfo.jdField_e_of_type_JavaLangString);
+        paramOptions.append(paramCompressInfo.l);
         paramOptions.append(", path=");
         paramOptions.append(paramString);
         paramOptions.append(", width=");
-        paramOptions.append(paramCompressInfo.d);
+        paramOptions.append(paramCompressInfo.m);
         paramOptions.append(", height=");
-        paramOptions.append(paramCompressInfo.jdField_e_of_type_Int);
+        paramOptions.append(paramCompressInfo.n);
         QLog.d("ReadInJoyDeliverUGCActivity", 2, paramOptions.toString());
       }
       else
@@ -60,8 +60,8 @@ class ReadInJoyDeliverUGCActivity$CompressFile
     }
     else
     {
-      paramCompressInfo.d = paramOptions.outWidth;
-      paramCompressInfo.jdField_e_of_type_Int = paramOptions.outHeight;
+      paramCompressInfo.m = paramOptions.outWidth;
+      paramCompressInfo.n = paramOptions.outHeight;
     }
     return false;
   }
@@ -92,57 +92,57 @@ class ReadInJoyDeliverUGCActivity$CompressFile
     return paramBoolean;
   }
   
-  public BitmapFactory.Options a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
-  }
-  
-  public CompressFile a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = new CompressInfo(this.jdField_a_of_type_JavaLangString, 0);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-    ((CompressInfo)localObject).f = 0;
-    ((CompressInfo)localObject).a = 1036;
-    this.b = true;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-    this.b = a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("beforeCompress picture: w:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outWidth);
-    ((StringBuilder)localObject).append("  h:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outHeight);
-    ((StringBuilder)localObject).append(" size:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long / 1024L);
-    ((StringBuilder)localObject).append("kb isNeedCompress:");
-    ((StringBuilder)localObject).append(this.b);
-    QLog.d("ReadInJoyDeliverUGCActivity", 2, ((StringBuilder)localObject).toString());
-    if (a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo, this.b, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return this;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public CompressInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-  }
-  
   boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
-  public boolean b()
+  public CompressInfo b()
   {
-    return this.b;
+    return this.e;
+  }
+  
+  public boolean c()
+  {
+    return this.f;
+  }
+  
+  public BitmapFactory.Options d()
+  {
+    return this.g;
+  }
+  
+  public CompressFile e()
+  {
+    this.e = new CompressInfo(this.c, 0);
+    Object localObject = this.e;
+    ((CompressInfo)localObject).o = 0;
+    ((CompressInfo)localObject).b = 1036;
+    this.f = true;
+    this.g = new BitmapFactory.Options();
+    this.f = a(this.c, this.f, this.g);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("beforeCompress picture: w:");
+    ((StringBuilder)localObject).append(this.g.outWidth);
+    ((StringBuilder)localObject).append("  h:");
+    ((StringBuilder)localObject).append(this.g.outHeight);
+    ((StringBuilder)localObject).append(" size:");
+    ((StringBuilder)localObject).append(this.d / 1024L);
+    ((StringBuilder)localObject).append("kb isNeedCompress:");
+    ((StringBuilder)localObject).append(this.f);
+    QLog.d("ReadInJoyDeliverUGCActivity", 2, ((StringBuilder)localObject).toString());
+    if (a(this.c, this.e, this.f, this.g))
+    {
+      this.b = true;
+      return this;
+    }
+    this.b = false;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.CompressFile
  * JD-Core Version:    0.7.0.1
  */

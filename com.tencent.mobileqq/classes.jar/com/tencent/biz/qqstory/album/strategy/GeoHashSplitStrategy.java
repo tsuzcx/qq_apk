@@ -24,25 +24,25 @@ public class GeoHashSplitStrategy
   private GeoHashTree a(HashMap<String, List<StoryAlbum.PicInfo>> paramHashMap)
   {
     paramHashMap = new GeoHashTree(paramHashMap);
-    paramHashMap.a();
+    paramHashMap.b();
     return paramHashMap;
   }
   
   private List<StoryAlbum> a(GeoHashTree.TreeNode paramTreeNode, int paramInt1, int paramInt2)
   {
-    if (((paramInt1 != -1) && (paramTreeNode.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_Int >= paramInt1)) || (paramTreeNode.jdField_a_of_type_JavaUtilList.size() <= 0))
+    if (((paramInt1 != -1) && (paramTreeNode.a.a >= paramInt1)) || (paramTreeNode.b.size() <= 0))
     {
-      if (paramTreeNode.a() >= ((SplitConfig.TreeGatherConfig)a()).b)
+      if (paramTreeNode.b() >= ((SplitConfig.TreeGatherConfig)a()).b)
       {
-        localObject1 = new StoryAlbum(((SplitConfig.TreeGatherConfig)a()).jdField_a_of_type_Int);
+        localObject1 = new StoryAlbum(((SplitConfig.TreeGatherConfig)a()).a);
         ((StoryAlbum)localObject1).a(this.a);
-        ((StoryAlbum)localObject1).d = paramTreeNode.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_JavaLangString;
-        ((StoryAlbum)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-        localObject2 = paramTreeNode.a().iterator();
+        ((StoryAlbum)localObject1).i = paramTreeNode.a.b;
+        ((StoryAlbum)localObject1).j = new ArrayList();
+        localObject2 = paramTreeNode.c().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (GeoHashTree.TreeNode)((Iterator)localObject2).next();
-          ((StoryAlbum)localObject1).jdField_a_of_type_JavaUtilList.add(((GeoHashTree.TreeNode)localObject3).jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_JavaLangString);
+          ((StoryAlbum)localObject1).j.add(((GeoHashTree.TreeNode)localObject3).a.b);
         }
         paramTreeNode.a();
         SLog.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find leaf album=%s", localObject1);
@@ -55,7 +55,7 @@ public class GeoHashSplitStrategy
     Object localObject1 = new ArrayList();
     Object localObject2 = new ArrayList();
     int i = 0;
-    Object localObject3 = paramTreeNode.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject3 = paramTreeNode.b.iterator();
     Object localObject4;
     Object localObject5;
     while (((Iterator)localObject3).hasNext())
@@ -69,23 +69,23 @@ public class GeoHashSplitStrategy
       else
       {
         ((ArrayList)localObject2).add(localObject4);
-        i += ((GeoHashTree.TreeNode)localObject4).a();
+        i += ((GeoHashTree.TreeNode)localObject4).b();
       }
     }
-    if ((((ArrayList)localObject2).size() > 0) && (i >= ((SplitConfig.TreeGatherConfig)a()).b) && (paramTreeNode.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_Int >= paramInt2))
+    if ((((ArrayList)localObject2).size() > 0) && (i >= ((SplitConfig.TreeGatherConfig)a()).b) && (paramTreeNode.a.a >= paramInt2))
     {
-      localObject3 = new StoryAlbum(((SplitConfig.TreeGatherConfig)a()).jdField_a_of_type_Int);
+      localObject3 = new StoryAlbum(((SplitConfig.TreeGatherConfig)a()).a);
       ((StoryAlbum)localObject3).a(this.a);
-      ((StoryAlbum)localObject3).d = paramTreeNode.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_JavaLangString;
-      ((StoryAlbum)localObject3).jdField_a_of_type_JavaUtilList = new ArrayList();
+      ((StoryAlbum)localObject3).i = paramTreeNode.a.b;
+      ((StoryAlbum)localObject3).j = new ArrayList();
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject4 = ((GeoHashTree.TreeNode)((Iterator)localObject2).next()).a().iterator();
+        localObject4 = ((GeoHashTree.TreeNode)((Iterator)localObject2).next()).c().iterator();
         while (((Iterator)localObject4).hasNext())
         {
           localObject5 = (GeoHashTree.TreeNode)((Iterator)localObject4).next();
-          ((StoryAlbum)localObject3).jdField_a_of_type_JavaUtilList.add(((GeoHashTree.TreeNode)localObject5).jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashTree$TreeNodeBean.jdField_a_of_type_JavaLangString);
+          ((StoryAlbum)localObject3).j.add(((GeoHashTree.TreeNode)localObject5).a.b);
         }
       }
       paramTreeNode.a();
@@ -104,20 +104,20 @@ public class GeoHashSplitStrategy
     while (paramList.hasNext())
     {
       localObject1 = (StoryAlbum.PicInfo)paramList.next();
-      if (localHashMap.containsKey(((StoryAlbum.PicInfo)localObject1).c))
+      if (localHashMap.containsKey(((StoryAlbum.PicInfo)localObject1).l))
       {
-        ((List)localHashMap.get(((StoryAlbum.PicInfo)localObject1).c)).add(localObject1);
+        ((List)localHashMap.get(((StoryAlbum.PicInfo)localObject1).l)).add(localObject1);
       }
       else
       {
         localObject2 = new ArrayList();
         ((ArrayList)localObject2).add(localObject1);
-        localHashMap.put(((StoryAlbum.PicInfo)localObject1).c, localObject2);
+        localHashMap.put(((StoryAlbum.PicInfo)localObject1).l, localObject2);
       }
     }
     paramList = a(localHashMap);
-    SLog.b("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "start findAlbums node=%s, minGatherLevel=%d, maxGatherLevel=%s", paramList.a(), Integer.valueOf(((SplitConfig.TreeGatherConfig)a()).d), Integer.valueOf(((SplitConfig.TreeGatherConfig)a()).e));
-    paramList = a(paramList.a(), ((SplitConfig.TreeGatherConfig)a()).d, ((SplitConfig.TreeGatherConfig)a()).e);
+    SLog.b("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "start findAlbums node=%s, minGatherLevel=%d, maxGatherLevel=%s", paramList.a(), Integer.valueOf(((SplitConfig.TreeGatherConfig)a()).g), Integer.valueOf(((SplitConfig.TreeGatherConfig)a()).h));
+    paramList = a(paramList.a(), ((SplitConfig.TreeGatherConfig)a()).g, ((SplitConfig.TreeGatherConfig)a()).h);
     if (paramList != null)
     {
       localObject1 = paramList.iterator();
@@ -125,10 +125,10 @@ public class GeoHashSplitStrategy
       {
         localObject2 = (StoryAlbum)((Iterator)localObject1).next();
         Object localObject3;
-        if ((((StoryAlbum)localObject2).jdField_a_of_type_JavaUtilList != null) && (((StoryAlbum)localObject2).jdField_a_of_type_JavaUtilList.size() != 0))
+        if ((((StoryAlbum)localObject2).j != null) && (((StoryAlbum)localObject2).j.size() != 0))
         {
           localObject3 = new ArrayList();
-          Iterator localIterator = ((StoryAlbum)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+          Iterator localIterator = ((StoryAlbum)localObject2).j.iterator();
           while (localIterator.hasNext()) {
             ((List)localObject3).addAll((Collection)localHashMap.get((String)localIterator.next()));
           }
@@ -150,7 +150,7 @@ public class GeoHashSplitStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.GeoHashSplitStrategy
  * JD-Core Version:    0.7.0.1
  */

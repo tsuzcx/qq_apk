@@ -14,25 +14,25 @@ class QidianProfileCardActivity$14
   
   protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin.equals(String.valueOf(paramObject)))) {
-      this.a.b();
+    if ((paramBoolean) && (this.a.e.allInOne.uin.equals(String.valueOf(paramObject)))) {
+      this.a.c();
     }
   }
   
   protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin != null) && (!ProfilePAUtils.isPaTypeFriend(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendsManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.b(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin)) && (!this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin.equals(this.a.app.getCurrentAccountUin())))
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.e.allInOne.uin != null) && (!ProfilePAUtils.isPaTypeFriend(this.a.e.allInOne)) && (this.a.t != null) && (this.a.t.n(this.a.e.allInOne.uin)) && (!this.a.e.allInOne.uin.equals(this.a.app.getCurrentAccountUin())))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.pa = 1;
+      this.a.e.allInOne.pa = 1;
       QidianProfileCardActivity localQidianProfileCardActivity = this.a;
-      QidianProfileCardActivity.b(localQidianProfileCardActivity, localQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin);
-      this.a.b();
+      QidianProfileCardActivity.b(localQidianProfileCardActivity, localQidianProfileCardActivity.e.allInOne.uin);
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.14
  * JD-Core Version:    0.7.0.1
  */

@@ -53,15 +53,15 @@ public class LiveDoubleVideoProteusItem
       localJSONObject.put("left_video_title_text", paramAbsBaseArticleInfo.mTitle);
       localJSONObject.put("left_video_bg_url", paramAbsBaseArticleInfo.mFirstPagePicUrl);
       localJSONObject.put("left_jump_url", paramAbsBaseArticleInfo.mArticleContentUrl);
-      localJSONObject.put("left_live_status_bg_url", localKandianLiveInfo2.a);
-      if (!TextUtils.isEmpty(localKandianLiveInfo2.b)) {
-        localJSONObject.put("left_live_status_icon_url", localKandianLiveInfo2.b);
+      localJSONObject.put("left_live_status_bg_url", localKandianLiveInfo2.b);
+      if (!TextUtils.isEmpty(localKandianLiveInfo2.c)) {
+        localJSONObject.put("left_live_status_icon_url", localKandianLiveInfo2.c);
       }
-      localJSONObject.put("left_live_status_text", localKandianLiveInfo2.c);
-      if (!TextUtils.isEmpty(localKandianLiveInfo2.d)) {
-        localJSONObject.put("left_live_hot_icon_url", localKandianLiveInfo2.d);
+      localJSONObject.put("left_live_status_text", localKandianLiveInfo2.d);
+      if (!TextUtils.isEmpty(localKandianLiveInfo2.e)) {
+        localJSONObject.put("left_live_hot_icon_url", localKandianLiveInfo2.e);
       }
-      localJSONObject.put("left_live_hot_text", localKandianLiveInfo2.e);
+      localJSONObject.put("left_live_hot_text", localKandianLiveInfo2.f);
       localObject1 = localObject2;
       if (localAbsBaseArticleInfo.mSubscribeName != null)
       {
@@ -85,15 +85,15 @@ public class LiveDoubleVideoProteusItem
       localJSONObject.put("right_video_title_text", localAbsBaseArticleInfo.mTitle);
       localJSONObject.put("right_video_bg_url", localAbsBaseArticleInfo.mFirstPagePicUrl);
       localJSONObject.put("right_jump_url", localAbsBaseArticleInfo.mArticleContentUrl);
-      localJSONObject.put("right_live_status_bg_url", localKandianLiveInfo1.a);
-      if (!TextUtils.isEmpty(localKandianLiveInfo1.b)) {
-        localJSONObject.put("right_live_status_icon_url", localKandianLiveInfo1.b);
+      localJSONObject.put("right_live_status_bg_url", localKandianLiveInfo1.b);
+      if (!TextUtils.isEmpty(localKandianLiveInfo1.c)) {
+        localJSONObject.put("right_live_status_icon_url", localKandianLiveInfo1.c);
       }
-      localJSONObject.put("right_live_status_text", localKandianLiveInfo1.c);
-      if (!TextUtils.isEmpty(localKandianLiveInfo1.d)) {
-        localJSONObject.put("right_live_hot_icon_url", localKandianLiveInfo1.d);
+      localJSONObject.put("right_live_status_text", localKandianLiveInfo1.d);
+      if (!TextUtils.isEmpty(localKandianLiveInfo1.e)) {
+        localJSONObject.put("right_live_hot_icon_url", localKandianLiveInfo1.e);
       }
-      localJSONObject.put("right_live_hot_text", localKandianLiveInfo1.e);
+      localJSONObject.put("right_live_hot_text", localKandianLiveInfo1.f);
       localJSONObject.put("left_jump_report_info", paramAbsBaseArticleInfo.mReportCommonData);
       localJSONObject.put("right_jump_report_info", localAbsBaseArticleInfo.mReportCommonData);
       QLog.d("LiveDoubleVideoProteusItem", 1, localJSONObject.toString());
@@ -111,7 +111,7 @@ public class LiveDoubleVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.LiveDoubleVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

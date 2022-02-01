@@ -119,13 +119,13 @@ public class SearchHippyEntryFragment
   public void hideInputMethod()
   {
     if ((getQBaseActivity() instanceof UniteSearchActivity)) {
-      ((UniteSearchActivity)getQBaseActivity()).b();
+      ((UniteSearchActivity)getQBaseActivity()).e();
     }
   }
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    this.mPresenter.a().a(false);
+    this.mPresenter.i().a(false);
     super.initAfterVisible(paramBundle, paramViewGroup);
     Log.d("SearchHippyEntryFragmen", "initAfterVisible: ");
     setBackgroundColor(paramViewGroup);
@@ -133,7 +133,7 @@ public class SearchHippyEntryFragment
     if (this.mHippyQQEngine == null) {
       initHippyEngine(paramViewGroup);
     }
-    this.mPresenter.a().a();
+    this.mPresenter.i().a();
     setNoPadding();
   }
   
@@ -151,7 +151,7 @@ public class SearchHippyEntryFragment
       this.mHippyQQEngine.onDestroy();
     }
     this.hotwordHandler.destroy();
-    ReadInJoySearchWord.a += SearchEntryConfigManager.a;
+    ReadInJoySearchWord.a += SearchEntryConfigManager.d;
   }
   
   public void onError(int paramInt, String paramString)
@@ -210,7 +210,7 @@ public class SearchHippyEntryFragment
   public void onSuccess()
   {
     SearchEntryHippyEngine.hippyError = false;
-    this.mPresenter.a().a();
+    this.mPresenter.i().a();
     this.hotwordHandler.notifyFEHotwordChanged();
     Log.d("SearchHippyEntryFragmen", "hippyengine onSuccess: ");
     this.hotwordHandler.getSearchFEHotwordItems(new SearchHippyEntryFragment.3(this));
@@ -250,7 +250,7 @@ public class SearchHippyEntryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.SearchHippyEntryFragment
  * JD-Core Version:    0.7.0.1
  */

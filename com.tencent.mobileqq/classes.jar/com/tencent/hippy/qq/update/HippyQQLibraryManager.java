@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.hippy.qq.api.LibraryLoadListener;
 import com.tencent.mobileqq.soload.api.SoLoadManager;
 import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ public class HippyQQLibraryManager
   public static final int STATE_UNLOAD = 0;
   private final String[] SO_NAME = { "mtt_shared", "mttv8", "hippybridge", "flexbox" };
   private String mCommonPackagePath;
+  private boolean mIsStartDownloadSo = false;
   private List<LibraryLoadListener> mLibraryLoadListeners = new ArrayList();
   private HashMap<String, String> mLibraryVerions = new HashMap();
   private Object mListenerLock = new Object();
@@ -111,6 +113,23 @@ public class HippyQQLibraryManager
     finally {}
   }
   
+  public void downloadSo()
+  {
+    this.mIsStartDownloadSo = true;
+    SoLoadManager.getInstance().download(this.SO_NAME, new HippyQQLibraryManager.1(this));
+  }
+  
+  public void downloadWhenSoInfoUpdated()
+  {
+    if (!this.mIsStartDownloadSo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Hippy", 2, "SoLoadManager downloadWhenSoInfoUpdated");
+      }
+      downloadSo();
+    }
+  }
+  
   public String getCoreJsFilePath(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -199,11 +218,6 @@ public class HippyQQLibraryManager
     }
   }
   
-  public void preDownload()
-  {
-    SoLoadManager.getInstance().download(this.SO_NAME, new HippyQQLibraryManager.1(this));
-  }
-  
   protected void updateSoVersions(LoadExtResult paramLoadExtResult)
   {
     if (paramLoadExtResult == null) {
@@ -224,7 +238,7 @@ public class HippyQQLibraryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQLibraryManager
  * JD-Core Version:    0.7.0.1
  */

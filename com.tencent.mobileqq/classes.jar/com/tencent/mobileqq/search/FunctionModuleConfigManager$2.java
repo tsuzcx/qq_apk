@@ -13,12 +13,12 @@ class FunctionModuleConfigManager$2
   {
     paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c;
     paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c;
-    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
+    return ChnToSpell.b(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.b(paramGroupBaseNetSearchModelItem2, 2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.FunctionModuleConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

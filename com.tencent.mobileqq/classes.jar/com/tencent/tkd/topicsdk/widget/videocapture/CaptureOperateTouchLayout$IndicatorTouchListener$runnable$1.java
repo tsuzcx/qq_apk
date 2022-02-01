@@ -12,13 +12,13 @@ final class CaptureOperateTouchLayout$IndicatorTouchListener$runnable$1
   public final void run()
   {
     CaptureOperateTouchLayout.a(this.this$0.a, true);
-    CaptureOperateTouchLayout.a(this.this$0.a).abortAnimation();
+    CaptureOperateTouchLayout.b(this.this$0.a).abortAnimation();
     CaptureOperateTouchLayout.IndicatorTouchListener.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.IndicatorTouchListener.runnable.1
  * JD-Core Version:    0.7.0.1
  */

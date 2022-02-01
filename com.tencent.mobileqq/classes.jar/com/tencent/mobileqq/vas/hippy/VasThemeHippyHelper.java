@@ -34,19 +34,19 @@ import org.json.JSONObject;
 
 public class VasThemeHippyHelper
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  public Context a;
-  private ThemeDiyModule jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  HashMap<Integer, String> a = new HashMap();
+  final Object b = new Object();
+  public Context c;
+  AppRuntime d;
+  Activity e;
+  private ThemeDiyModule f;
   
   public VasThemeHippyHelper(Context paramContext, AppInterface paramAppInterface, Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule = new ThemeDiyModule(paramContext, paramAppInterface);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.c = paramContext;
+    this.d = BaseApplicationImpl.getApplication().getRuntime();
+    this.f = new ThemeDiyModule(paramContext, paramAppInterface);
+    this.e = paramActivity;
   }
   
   private void a(Promise paramPromise, ThemeUtil.ThemeInfo paramThemeInfo, String paramString, Bundle arg4)
@@ -73,19 +73,19 @@ public class VasThemeHippyHelper
           paramPromise.reject(VasHippyUtils.a(5, "setup theme setSV error.", paramThemeInfo));
           return;
         }
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.b)
         {
           VasThemeHippyHelper.ThemeSwitchListener localThemeSwitchListener = new VasThemeHippyHelper.ThemeSwitchListener(this, str, true, paramThemeInfo, paramPromise);
-          if ((paramPromise != null) && (!TextUtils.isEmpty(str)) && (paramThemeInfo != null) && (str.equals(paramThemeInfo.themeId)) && (!DarkModeManager.a(this.jdField_a_of_type_AndroidAppActivity, str, new VasThemeHippyHelper.2(this, str, localThemeSwitchListener)))) {
-            if (!SimpleUIUtil.a())
+          if ((paramPromise != null) && (!TextUtils.isEmpty(str)) && (paramThemeInfo != null) && (str.equals(paramThemeInfo.themeId)) && (!DarkModeManager.b(this.e, str, new VasThemeHippyHelper.2(this, str, localThemeSwitchListener)))) {
+            if (!SimpleUIUtil.e())
             {
-              this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule.a();
+              this.f.b();
               ThemeSwitcher.a(str, "200", localThemeSwitchListener);
             }
             else
             {
               if (!ThemeUtil.isFixTheme(str)) {
-                ThemeSwitchUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, str, "20000000");
+                ThemeSwitchUtil.a(this.d, str, "20000000");
               }
               localThemeSwitchListener.postSwitch(0);
             }
@@ -109,7 +109,7 @@ public class VasThemeHippyHelper
   
   private void a(String paramString1, String paramString2, String paramString3, Promise paramPromise)
   {
-    ThemeUtil.ThemeInfo localThemeInfo = ThemeUtil.getThemeInfo(this.jdField_a_of_type_AndroidContentContext, paramString1);
+    ThemeUtil.ThemeInfo localThemeInfo = ThemeUtil.getThemeInfo(this.c, paramString1);
     Object localObject = localThemeInfo;
     if (localThemeInfo == null)
     {
@@ -119,11 +119,11 @@ public class VasThemeHippyHelper
       if ("1000".equals(paramString1)) {
         ((ThemeUtil.ThemeInfo)localObject).status = "5";
       }
-      ThemeUtil.setThemeInfo(this.jdField_a_of_type_AndroidContentContext, (ThemeUtil.ThemeInfo)localObject);
+      ThemeUtil.setThemeInfo(this.c, (ThemeUtil.ThemeInfo)localObject);
     }
     if ("1103".equals(paramString1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule.a();
+      this.f.b();
       ThemeSwitcher.a(paramString1, "200", new VasThemeHippyHelper.ThemeSwitchListener(this, paramString1, true, (ThemeUtil.ThemeInfo)localObject, paramPromise));
       return;
     }
@@ -145,7 +145,7 @@ public class VasThemeHippyHelper
     if (!TextUtils.isEmpty(str1))
     {
       long l = paramBundle.getLong("downloadTime");
-      int j = ((ISVIPHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+      int j = ((ISVIPHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
       if (j == 2)
       {
         i = 0;
@@ -254,14 +254,14 @@ public class VasThemeHippyHelper
         QLog.i("VasThemeHippyHelper", 2, ((StringBuilder)localObject1).toString());
       }
       localObject1 = this;
-      Object localObject2 = ((VasThemeHippyHelper)localObject1).jdField_a_of_type_JavaUtilHashMap;
+      Object localObject2 = ((VasThemeHippyHelper)localObject1).a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString1);
       localStringBuilder.append("_");
       localStringBuilder.append(paramJSONArray);
       if (((HashMap)localObject2).containsKey(Integer.valueOf(localStringBuilder.toString().hashCode())))
       {
-        localObject1 = ((VasThemeHippyHelper)localObject1).jdField_a_of_type_JavaUtilHashMap;
+        localObject1 = ((VasThemeHippyHelper)localObject1).a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(paramString1);
         ((StringBuilder)localObject2).append("_");
@@ -282,7 +282,7 @@ public class VasThemeHippyHelper
       paramString1 = ???;
     }
     paramJSONArray = this;
-    synchronized (paramJSONArray.jdField_a_of_type_JavaLangObject)
+    synchronized (paramJSONArray.b)
     {
       paramJSONArray.a(paramString2, paramString3, paramString4, paramString1);
       if (QLog.isColorLevel())
@@ -337,7 +337,7 @@ public class VasThemeHippyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.VasThemeHippyHelper
  * JD-Core Version:    0.7.0.1
  */

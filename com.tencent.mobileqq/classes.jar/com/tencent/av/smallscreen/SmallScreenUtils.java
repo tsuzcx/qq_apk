@@ -34,21 +34,12 @@ import java.util.List;
 
 public class SmallScreenUtils
 {
-  static int a;
-  public static final String[] a;
-  static int jdField_b_of_type_Int;
-  static String[] jdField_b_of_type_ArrayOfJavaLangString = { "com.qzone.preview.BasePictureViewer", "com.qzone.preview.LocalPictureViewer", "com.qzone.preview.QzonePictureViewer", "com.qzone.preview.QZoneVideoFloatActivity", "com.tencent.mobileqq.activity.FriendProfileImageActivity", "com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity", "com.tencent.mobileqq.activity.photo.PhotoPreviewActivity", "com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity", "com.tencent.av.gaudio.GaInviteDialogActivity", "com.tencent.av.ui.MultiIncomingCallsActivity", "com.tencent.av.ui.GAudioMembersCtrlActivity", "com.tencent.av.ui.VideoInviteActivity", "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", "cooperation.qzone.QzonePicturePluginProxyActivity", "com.tencent.av.utils.PopupDialog", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity", "com.miui.permcenter.permissions.AppPermissionsEditorActivity", "com.meizu.safe.security.AppSecActivity", "com.android.settings.Settings$AppDrawOverlaySettingsActivity", "com.tencent.biz.qrcode.activity.QRDisplayActivity", "com.tencent.mobileqq.activity.ForwardRecentActivity", "cooperation.qzone.share.QZoneShareActivity" };
-  static int c;
-  public static int d;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "vivo Y51A", "2014011", "vivo Y67" };
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    c = -1;
-    d = 0;
-  }
+  public static final String[] a = { "vivo Y51A", "2014011", "vivo Y67" };
+  static int b = -1;
+  static int c = -1;
+  static int d = -1;
+  public static int e = 0;
+  static String[] f = { "com.qzone.preview.BasePictureViewer", "com.qzone.preview.LocalPictureViewer", "com.qzone.preview.QzonePictureViewer", "com.qzone.preview.QZoneVideoFloatActivity", "com.tencent.mobileqq.activity.FriendProfileImageActivity", "com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity", "com.tencent.mobileqq.activity.photo.PhotoPreviewActivity", "com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity", "com.tencent.av.gaudio.GaInviteDialogActivity", "com.tencent.av.ui.MultiIncomingCallsActivity", "com.tencent.av.ui.GAudioMembersCtrlActivity", "com.tencent.av.ui.VideoInviteActivity", "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", "cooperation.qzone.QzonePicturePluginProxyActivity", "com.tencent.av.utils.PopupDialog", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity", "com.miui.permcenter.permissions.AppPermissionsEditorActivity", "com.meizu.safe.security.AppSecActivity", "com.android.settings.Settings$AppDrawOverlaySettingsActivity", "com.tencent.biz.qrcode.activity.QRDisplayActivity", "com.tencent.mobileqq.activity.ForwardRecentActivity", "cooperation.qzone.share.QZoneShareActivity" };
   
   public static int a(int paramInt)
   {
@@ -68,14 +59,14 @@ public class SmallScreenUtils
     //   10: aload 8
     //   12: astore 5
     //   14: aload_0
-    //   15: invokevirtual 101	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   15: invokevirtual 103	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   18: astore 9
     //   20: aload 7
     //   22: astore 6
     //   24: aload 8
     //   26: astore 5
-    //   28: ldc 103
-    //   30: invokestatic 109	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   28: ldc 105
+    //   30: invokestatic 111	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   33: astore 10
     //   35: iconst_0
     //   36: istore 4
@@ -85,17 +76,17 @@ public class SmallScreenUtils
     //   42: astore 6
     //   44: aload 8
     //   46: astore 5
-    //   48: new 111	java/lang/StringBuilder
+    //   48: new 113	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   52: invokespecial 114	java/lang/StringBuilder:<init>	()V
     //   55: astore 11
     //   57: aload 7
     //   59: astore 6
     //   61: aload 8
     //   63: astore 5
     //   65: aload 11
-    //   67: ldc 114
-    //   69: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc 116
+    //   69: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload 7
     //   75: astore 6
@@ -103,23 +94,23 @@ public class SmallScreenUtils
     //   79: astore 5
     //   81: aload 11
     //   83: aload_0
-    //   84: invokevirtual 122	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   87: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 124	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   87: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: pop
     //   91: aload 7
     //   93: astore 6
     //   95: aload 8
     //   97: astore 5
     //   99: aload 11
-    //   101: ldc 124
-    //   103: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: ldc 126
+    //   103: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: pop
     //   107: aload 7
     //   109: astore 6
     //   111: aload 8
     //   113: astore 5
     //   115: aload 11
-    //   117: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: astore 11
     //   122: aload 7
     //   124: astore 6
@@ -128,15 +119,15 @@ public class SmallScreenUtils
     //   130: aload 9
     //   132: aload 10
     //   134: iconst_1
-    //   135: anewarray 14	java/lang/String
+    //   135: anewarray 16	java/lang/String
     //   138: dup
     //   139: iconst_0
-    //   140: ldc 129
+    //   140: ldc 131
     //   142: aastore
     //   143: aload 11
     //   145: aconst_null
     //   146: aconst_null
-    //   147: invokevirtual 135	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   147: invokevirtual 137	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   150: astore 7
     //   152: iload 4
     //   154: istore_2
@@ -149,7 +140,7 @@ public class SmallScreenUtils
     //   167: aload 7
     //   169: astore 5
     //   171: aload 7
-    //   173: invokeinterface 141 1 0
+    //   173: invokeinterface 143 1 0
     //   178: ifeq +146 -> 324
     //   181: aload 7
     //   183: astore 6
@@ -157,7 +148,7 @@ public class SmallScreenUtils
     //   187: astore 5
     //   189: aload 7
     //   191: iconst_0
-    //   192: invokeinterface 144 2 0
+    //   192: invokeinterface 146 2 0
     //   197: istore 4
     //   199: iload 4
     //   201: ifne +205 -> 406
@@ -168,17 +159,17 @@ public class SmallScreenUtils
     //   211: astore 6
     //   213: aload 7
     //   215: astore 5
-    //   217: new 111	java/lang/StringBuilder
+    //   217: new 113	java/lang/StringBuilder
     //   220: dup
-    //   221: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   221: invokespecial 114	java/lang/StringBuilder:<init>	()V
     //   224: astore 8
     //   226: aload 7
     //   228: astore 6
     //   230: aload 7
     //   232: astore 5
     //   234: aload 8
-    //   236: ldc 146
-    //   238: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: ldc 148
+    //   238: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: pop
     //   242: aload 7
     //   244: astore 6
@@ -186,15 +177,15 @@ public class SmallScreenUtils
     //   248: astore 5
     //   250: aload 8
     //   252: iload 4
-    //   254: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   257: pop
     //   258: aload 7
     //   260: astore 6
     //   262: aload 7
     //   264: astore 5
     //   266: aload 8
-    //   268: ldc 151
-    //   270: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: ldc 153
+    //   270: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   273: pop
     //   274: aload 7
     //   276: astore 6
@@ -202,25 +193,25 @@ public class SmallScreenUtils
     //   280: astore 5
     //   282: aload 8
     //   284: iload_2
-    //   285: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   285: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   288: pop
     //   289: aload 7
     //   291: astore 6
     //   293: aload 7
     //   295: astore 5
     //   297: aload 8
-    //   299: ldc 153
-    //   301: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: ldc 155
+    //   301: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   304: pop
     //   305: aload 7
     //   307: astore 6
     //   309: aload 7
     //   311: astore 5
-    //   313: ldc 155
+    //   313: ldc 157
     //   315: iconst_1
     //   316: aload 8
-    //   318: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: invokestatic 161	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   318: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   321: invokestatic 163	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   324: iload_2
     //   325: istore_1
     //   326: aload 7
@@ -228,7 +219,7 @@ public class SmallScreenUtils
     //   331: aload 7
     //   333: astore 5
     //   335: aload 5
-    //   337: invokeinterface 164 1 0
+    //   337: invokeinterface 166 1 0
     //   342: iload_2
     //   343: ireturn
     //   344: astore_0
@@ -236,16 +227,16 @@ public class SmallScreenUtils
     //   348: astore 7
     //   350: aload 5
     //   352: astore 6
-    //   354: ldc 155
+    //   354: ldc 157
     //   356: iconst_1
-    //   357: ldc 166
+    //   357: ldc 168
     //   359: aload 7
-    //   361: invokestatic 169	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   361: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   364: aload 5
     //   366: astore 6
     //   368: aload_0
     //   369: iload_1
-    //   370: invokestatic 171	com/tencent/av/smallscreen/SmallScreenUtils:b	(Landroid/content/Context;I)I
+    //   370: invokestatic 173	com/tencent/av/smallscreen/SmallScreenUtils:b	(Landroid/content/Context;I)I
     //   373: istore_2
     //   374: iload_2
     //   375: istore_1
@@ -257,7 +248,7 @@ public class SmallScreenUtils
     //   386: aload 6
     //   388: ifnull +10 -> 398
     //   391: aload 6
-    //   393: invokeinterface 164 1 0
+    //   393: invokeinterface 166 1 0
     //   398: goto +5 -> 403
     //   401: aload_0
     //   402: athrow
@@ -322,7 +313,7 @@ public class SmallScreenUtils
   
   public static int a(String paramString, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = a(paramString);
+    SharedPreferences localSharedPreferences = b(paramString);
     if (paramBoolean) {
       paramString = "pref_show_dialog_video";
     } else {
@@ -337,15 +328,6 @@ public class SmallScreenUtils
       QLog.e("SmallScreenUtils", 2, paramString.toString());
     }
     return i;
-  }
-  
-  static SharedPreferences a(String paramString)
-  {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("com.tencent.av.smallscreen");
-    localStringBuilder.append(paramString);
-    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   public static void a()
@@ -379,7 +361,7 @@ public class SmallScreenUtils
   
   public static void a(long paramLong, int paramInt, Context paramContext, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    d = paramInt;
+    e = paramInt;
     ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).actionOn(paramLong, paramInt, paramContext, paramBoolean1, paramString, paramBoolean2);
   }
   
@@ -431,7 +413,7 @@ public class SmallScreenUtils
   
   public static void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    SharedPreferences.Editor localEditor = a(paramString).edit();
+    SharedPreferences.Editor localEditor = b(paramString).edit();
     if (paramBoolean) {
       paramString = "pref_show_dialog_video";
     } else {
@@ -445,28 +427,6 @@ public class SmallScreenUtils
       paramString.append(paramInt);
       QLog.e("SmallScreenUtils", 2, paramString.toString());
     }
-  }
-  
-  public static boolean a()
-  {
-    Object localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject2 = localObject1[i];
-      if (Build.MODEL.equals(localObject2))
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("useTypeToast, model[");
-        ((StringBuilder)localObject1).append(Build.MODEL);
-        ((StringBuilder)localObject1).append("]");
-        QLog.w("SmallScreenUtils", 1, ((StringBuilder)localObject1).toString());
-        return true;
-      }
-      i += 1;
-    }
-    return false;
   }
   
   public static boolean a(long paramLong, BaseVideoAppInterface paramBaseVideoAppInterface, int paramInt)
@@ -526,12 +486,12 @@ public class SmallScreenUtils
   
   public static boolean a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    boolean bool2 = e();
+    boolean bool2 = f();
     boolean bool1 = false;
     if (bool2) {
       return false;
     }
-    if (d())
+    if (e())
     {
       paramInt = a(paramContext, paramInt);
     }
@@ -543,7 +503,7 @@ public class SmallScreenUtils
       {
         paramInt = i;
         if (i != 0) {
-          if (c()) {
+          if (d()) {
             paramInt = 0;
           } else {
             paramInt = 2;
@@ -572,7 +532,7 @@ public class SmallScreenUtils
     {
       paramBoolean1 = true;
       break;
-      if (e())
+      if (f())
       {
         i = 7;
         paramBoolean1 = bool;
@@ -615,7 +575,7 @@ public class SmallScreenUtils
       paramString.putExtra("is_video", paramBoolean2);
       paramContext.startActivity(paramString);
     }
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       paramContext = new StringBuilder();
       paramContext.append("startSmallScreenDialogActivity, ret[");
@@ -641,7 +601,7 @@ public class SmallScreenUtils
       {
         try
         {
-          boolean bool = b();
+          boolean bool = c();
           if (bool)
           {
             i = m;
@@ -743,24 +703,35 @@ public class SmallScreenUtils
     }
   }
   
-  @TargetApi(23)
-  static boolean b()
+  static SharedPreferences b(String paramString)
   {
-    int i = jdField_a_of_type_Int;
-    boolean bool = false;
-    if (i == -1)
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.av.smallscreen");
+    localStringBuilder.append(paramString);
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+  }
+  
+  public static boolean b()
+  {
+    Object localObject1 = a;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
     {
-      jdField_a_of_type_Int = 0;
-      if (Build.VERSION.SDK_INT >= 28) {
-        jdField_a_of_type_Int = 1;
-      } else {
-        i = Build.VERSION.SDK_INT;
+      Object localObject2 = localObject1[i];
+      if (Build.MODEL.equals(localObject2))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("useTypeToast, model[");
+        ((StringBuilder)localObject1).append(Build.MODEL);
+        ((StringBuilder)localObject1).append("]");
+        QLog.w("SmallScreenUtils", 1, ((StringBuilder)localObject1).toString());
+        return true;
       }
+      i += 1;
     }
-    if (jdField_a_of_type_Int == 1) {
-      bool = true;
-    }
-    return bool;
+    return false;
   }
   
   public static boolean b(Context paramContext)
@@ -768,18 +739,21 @@ public class SmallScreenUtils
     return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isLock(paramContext);
   }
   
+  @TargetApi(23)
   static boolean c()
   {
-    int i = jdField_b_of_type_Int;
+    int i = b;
     boolean bool = false;
     if (i == -1)
     {
-      jdField_b_of_type_Int = 0;
-      if ((Build.MANUFACTURER.equals("vivo")) && (!"vivo X6D".equalsIgnoreCase(Build.MODEL)) && (!"vivo X6D".equalsIgnoreCase(Build.MODEL))) {
-        jdField_b_of_type_Int = 1;
+      b = 0;
+      if (Build.VERSION.SDK_INT >= 28) {
+        b = 1;
+      } else {
+        i = Build.VERSION.SDK_INT;
       }
     }
-    if (jdField_b_of_type_Int == 1) {
+    if (b == 1) {
       bool = true;
     }
     return bool;
@@ -788,15 +762,27 @@ public class SmallScreenUtils
   public static boolean c(Context paramContext)
   {
     boolean bool = false;
-    if ((a(paramContext, 24, false)) || (a())) {
+    if ((a(paramContext, 24, false)) || (b())) {
       bool = true;
     }
     return bool;
   }
   
-  public static boolean d()
+  static boolean d()
   {
-    return (Build.VERSION.SDK_INT >= 21) && (Build.MANUFACTURER.equalsIgnoreCase("vivo"));
+    int i = c;
+    boolean bool = false;
+    if (i == -1)
+    {
+      c = 0;
+      if ((Build.MANUFACTURER.equals("vivo")) && (!"vivo X6D".equalsIgnoreCase(Build.MODEL)) && (!"vivo X6D".equalsIgnoreCase(Build.MODEL))) {
+        c = 1;
+      }
+    }
+    if (c == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean d(Context paramContext)
@@ -804,7 +790,7 @@ public class SmallScreenUtils
     boolean bool = true;
     if (!a(paramContext, 24, true))
     {
-      if (a()) {
+      if (b()) {
         return true;
       }
       bool = false;
@@ -814,7 +800,7 @@ public class SmallScreenUtils
   
   public static boolean e()
   {
-    return false;
+    return (Build.VERSION.SDK_INT >= 21) && (Build.MANUFACTURER.equalsIgnoreCase("vivo"));
   }
   
   public static boolean e(Context paramContext)
@@ -844,7 +830,7 @@ public class SmallScreenUtils
         boolean bool;
         return false;
       }
-      bool = ArrayUtils.contains(jdField_b_of_type_ArrayOfJavaLangString, paramContext.getClassName());
+      bool = ArrayUtils.contains(f, paramContext.getClassName());
       if (QLog.isDevelopLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -862,7 +848,7 @@ public class SmallScreenUtils
   
   public static boolean f()
   {
-    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreen();
+    return false;
   }
   
   public static boolean f(Context paramContext)
@@ -944,15 +930,20 @@ public class SmallScreenUtils
   
   public static boolean g()
   {
-    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreenVideo();
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreen();
   }
   
   public static boolean h()
   {
-    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreenAudio();
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreenVideo();
   }
   
   public static boolean i()
+  {
+    return ((ISmallScreenUtilsApi)QRoute.api(ISmallScreenUtilsApi.class)).isSupportSmallScreenAudio();
+  }
+  
+  public static boolean j()
   {
     boolean bool1 = Build.MANUFACTURER.equalsIgnoreCase("meizu");
     boolean bool3 = false;

@@ -2,23 +2,23 @@ package com.tencent.mobileqq.app.identity.jwt;
 
 public class JwtContext
 {
-  private JsonWebSignature jdField_a_of_type_ComTencentMobileqqAppIdentityJwtJsonWebSignature;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private JsonWebSignature b;
   
   public JwtContext(String paramString, JsonWebSignature paramJsonWebSignature)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityJwtJsonWebSignature = paramJsonWebSignature;
+    this.a = paramString;
+    this.b = paramJsonWebSignature;
   }
   
   public JsonWebSignature a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppIdentityJwtJsonWebSignature;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.JwtContext
  * JD-Core Version:    0.7.0.1
  */

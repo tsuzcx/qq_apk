@@ -50,9 +50,9 @@ class SelectMemberActivity$6
     else
     {
       if (this.a.mEntrance == 11) {
-        if (this.a.mInnerFrameManager.a() == 0) {
+        if (this.a.mInnerFrameManager.getCurrentPage() == 0) {
           ReportController.b(this.a.app, "CliOper", "", "", "0X8005527", "0X8005527", 0, 0, "", "", "", "");
-        } else if (this.a.mInnerFrameManager.a() == 1) {
+        } else if (this.a.mInnerFrameManager.getCurrentPage() == 1) {
           ReportController.b(this.a.app, "CliOper", "", "", "0X8005526", "0X8005526", 0, 0, "", "", "", "");
         }
       }
@@ -78,13 +78,13 @@ class SelectMemberActivity$6
       }
       else if (((this.a.mEntrance == 32) || (this.a.mEntrance == 43)) && (this.a.mResultList.size() > this.a.mMaxSelectNumber))
       {
-        localObject1 = MessageFormat.format(this.a.getString(2131718717), new Object[] { Integer.valueOf(this.a.mMaxSelectNumber) });
-        QQToast.a(this.a, (CharSequence)localObject1, 0).b(this.a.mTitleBar.getHeight());
+        localObject1 = MessageFormat.format(this.a.getString(2131916219), new Object[] { Integer.valueOf(this.a.mMaxSelectNumber) });
+        QQToast.makeText(this.a, (CharSequence)localObject1, 0).show(this.a.mTitleBar.getHeight());
       }
       else if (!NetworkUtil.isNetSupport(this.a))
       {
         localObject1 = this.a;
-        QQToast.a((Context)localObject1, ((SelectMemberActivity)localObject1).getString(2131692183), 0).b(this.a.mTitleBar.getHeight());
+        QQToast.makeText((Context)localObject1, ((SelectMemberActivity)localObject1).getString(2131889169), 0).show(this.a.mTitleBar.getHeight());
       }
       else
       {
@@ -95,8 +95,8 @@ class SelectMemberActivity$6
           if ((localObject2 != null) && (((ResultRecord)localObject1).uin != null) && (((String)localObject2).equals(((ResultRecord)localObject1).uin)))
           {
             localObject1 = this.a;
-            QQToast.a((Context)localObject1, ((SelectMemberActivity)localObject1).getString(2131718715), 0).b(this.a.mTitleBar.getHeight());
-            break label1881;
+            QQToast.makeText((Context)localObject1, ((SelectMemberActivity)localObject1).getString(2131916217), 0).show(this.a.mTitleBar.getHeight());
+            break label1883;
           }
         }
         localObject1 = this.a.mResultList.iterator();
@@ -124,7 +124,7 @@ class SelectMemberActivity$6
         if (((this.a.mEntrance == 36) || (this.a.mEntrance == 11)) && (bool))
         {
           localObject1 = this.a;
-          DialogUtil.a((Context)localObject1, 230, ((SelectMemberActivity)localObject1).getString(2131695691), this.a.getString(2131719758), 2131695421, 2131691064, new SelectMemberActivity.6.1(this), new SelectMemberActivity.6.2(this)).show();
+          DialogUtil.a((Context)localObject1, 230, ((SelectMemberActivity)localObject1).getString(2131893450), this.a.getString(2131917362), 2131893167, 2131888010, new SelectMemberActivity.6.1(this), new SelectMemberActivity.6.2(this)).show();
           ReportController.b(null, "CliOper", "", "", "0X8004CED", "0X8004CED", 0, 0, "", "", "", "");
         }
         else
@@ -267,13 +267,13 @@ class SelectMemberActivity$6
         }
       }
     }
-    label1881:
+    label1883:
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberActivity.6
  * JD-Core Version:    0.7.0.1
  */

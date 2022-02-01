@@ -10,12 +10,12 @@ class TroopAllMessageSearchDialog$8$1
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TroopAllMessageSearchDialog.8.1
  * JD-Core Version:    0.7.0.1
  */

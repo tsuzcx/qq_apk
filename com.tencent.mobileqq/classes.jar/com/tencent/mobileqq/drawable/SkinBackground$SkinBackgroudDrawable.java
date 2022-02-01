@@ -10,9 +10,9 @@ import android.graphics.drawable.BitmapDrawable;
 public class SkinBackground$SkinBackgroudDrawable
   extends BitmapDrawable
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private final Paint a;
+  private Bitmap b;
+  private Rect c;
   
   protected Rect a(Rect paramRect)
   {
@@ -34,7 +34,7 @@ public class SkinBackground$SkinBackgroudDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.b, this.c, getBounds(), this.a);
   }
   
   public int getOpacity()
@@ -44,7 +44,7 @@ public class SkinBackground$SkinBackgroudDrawable
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = a(getBounds());
+    this.c = a(getBounds());
   }
   
   public void setAlpha(int paramInt) {}
@@ -53,7 +53,7 @@ public class SkinBackground$SkinBackgroudDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.drawable.SkinBackground.SkinBackgroudDrawable
  * JD-Core Version:    0.7.0.1
  */

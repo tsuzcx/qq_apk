@@ -16,7 +16,7 @@ final class ToPayManagerImpl$2
     if (ToPayManagerImpl.mData == null) {
       return;
     }
-    Object localObject1 = QWalletTools.a();
+    Object localObject1 = QWalletTools.b();
     if (localObject1 != null) {}
     try
     {
@@ -65,7 +65,7 @@ final class ToPayManagerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.ToPayManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

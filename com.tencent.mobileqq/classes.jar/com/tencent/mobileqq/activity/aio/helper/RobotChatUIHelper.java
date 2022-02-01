@@ -10,21 +10,16 @@ import com.tencent.widget.PatchedButton;
 public class RobotChatUIHelper
   extends SimpleUIAIOHelper
 {
-  private boolean c = false;
+  private boolean a = false;
   
   public RobotChatUIHelper(BaseChatPie paramBaseChatPie)
   {
     super(paramBaseChatPie);
   }
   
-  public int a()
-  {
-    return 2130846419;
-  }
-  
   protected void a()
   {
-    if (!this.c) {
+    if (!this.a) {
       return;
     }
     super.a();
@@ -32,7 +27,7 @@ public class RobotChatUIHelper
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (!this.c) {
+    if (!this.a) {
       return;
     }
     super.a(paramInt1, paramInt2);
@@ -40,7 +35,7 @@ public class RobotChatUIHelper
   
   public void a(TextView paramTextView)
   {
-    if (!this.c) {
+    if (!this.a) {
       return;
     }
     super.a(paramTextView);
@@ -48,66 +43,71 @@ public class RobotChatUIHelper
   
   public void a(Boolean paramBoolean)
   {
-    if (!this.c) {
+    if (!this.a) {
       return;
     }
     super.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.c) {
-      return;
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
   
   protected void b()
   {
-    this.b = true;
-    if (!this.jdField_a_of_type_Boolean)
+    this.g = true;
+    if (!this.d)
     {
-      this.c = true;
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
+      this.d = true;
       return;
     }
-    this.c = false;
+    this.a = false;
   }
   
   public void b(boolean paramBoolean)
   {
-    if (!this.c) {
+    if (!this.a) {
       return;
     }
     super.b(paramBoolean);
-    boolean bool = c();
+    boolean bool = o();
     if (paramBoolean)
     {
       if (!bool) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.setBackgroundResource(2130838132);
+        this.c.Z.setBackgroundResource(2130838175);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.setBackgroundResource(2130838132);
+      this.c.Z.setBackgroundResource(2130838175);
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return this.c;
+    return true;
   }
   
-  public void d()
+  public boolean e()
   {
-    if (!this.c) {
+    return this.a;
+  }
+  
+  public void f()
+  {
+    if (!this.a) {
       return;
     }
-    super.d();
+    super.f();
+  }
+  
+  public int g()
+  {
+    return 2130847892;
+  }
+  
+  public void g_(boolean paramBoolean)
+  {
+    if (!this.a) {
+      return;
+    }
+    super.g_(paramBoolean);
   }
   
   public String getTag()
@@ -118,7 +118,7 @@ public class RobotChatUIHelper
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if (paramView.getId() == 2131363032) {
+    if (paramView.getId() == 2131428843) {
       ReportController.b(null, "dc00898", "", "", "0X800A48A", "0X800A48A", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -126,7 +126,7 @@ public class RobotChatUIHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.RobotChatUIHelper
  * JD-Core Version:    0.7.0.1
  */

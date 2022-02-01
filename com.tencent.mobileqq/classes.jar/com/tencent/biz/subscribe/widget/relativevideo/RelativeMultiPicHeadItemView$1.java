@@ -82,7 +82,7 @@ class RelativeMultiPicHeadItemView$1
     return paramView;
   }
   
-  protected URLImageView a(ViewGroup paramViewGroup)
+  protected URLImageView b(ViewGroup paramViewGroup)
   {
     paramViewGroup = new URLImageView(paramViewGroup.getContext());
     int i;
@@ -97,7 +97,7 @@ class RelativeMultiPicHeadItemView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView.1
  * JD-Core Version:    0.7.0.1
  */

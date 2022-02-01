@@ -10,38 +10,38 @@ import mqq.app.AppRuntime;
 public class ArkDataRequestObj
   implements ark.RuntimeClassCallbackWrapper, ArkDataRequest.IDataRequestCallback
 {
-  private ark.VariantWrapper jdField_a_of_type_ComTencentArkArk$VariantWrapper;
-  private ArkDataRequest jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQAppInterface> a;
+  private ArkDataRequest b;
+  private ark.VariantWrapper c;
+  private String d;
   
   public ArkDataRequestObj(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.d = paramString;
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
   private void a(ark.VariantWrapper paramVariantWrapper)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_ComTencentArkArk$VariantWrapper;
+    ark.VariantWrapper localVariantWrapper = this.c;
     if (localVariantWrapper != null)
     {
       localVariantWrapper.Reset();
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = null;
+      this.c = null;
     }
     if (paramVariantWrapper != null) {
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = paramVariantWrapper.Copy();
+      this.c = paramVariantWrapper.Copy();
     }
   }
   
   private void b()
   {
-    ArkDataRequest localArkDataRequest = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest;
+    ArkDataRequest localArkDataRequest = this.b;
     if (localArkDataRequest != null)
     {
       localArkDataRequest.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest = null;
+      this.b.c();
+      this.b = null;
     }
   }
   
@@ -108,16 +108,16 @@ public class ArkDataRequestObj
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest == null) {
+    if (this.b == null) {
       return;
     }
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_ComTencentArkArk$VariantWrapper;
+    ark.VariantWrapper localVariantWrapper = this.c;
     if (localVariantWrapper != null)
     {
       if (!localVariantWrapper.IsFunction()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.InvokeDefault(null, null);
+      this.c.InvokeDefault(null, null);
     }
   }
   
@@ -132,13 +132,13 @@ public class ArkDataRequestObj
         Object localObject = a(paramArrayOfVariantWrapper);
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase("sso")))
         {
-          localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          localObject = (QQAppInterface)this.a.get();
           if (localObject != null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest = new ArkSSODataRequest((AppRuntime)localObject, this.jdField_a_of_type_JavaLangString);
+            this.b = new ArkSSODataRequest((AppRuntime)localObject, this.d);
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest = new ArkIPCSSODataRequest(this.jdField_a_of_type_JavaLangString);
+            this.b = new ArkIPCSSODataRequest(this.d);
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest.a(paramArrayOfVariantWrapper))
+          if (this.b.a(paramArrayOfVariantWrapper))
           {
             paramVariantWrapper.SetBool(true);
             return true;
@@ -192,7 +192,7 @@ public class ArkDataRequestObj
   
   protected boolean e(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2))
+    if ((this.b != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2))
     {
       paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
       if (paramArrayOfVariantWrapper != null)
@@ -212,8 +212,8 @@ public class ArkDataRequestObj
           }
           paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.GetTableAsJsonString();
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest.a(this);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest.b(paramArrayOfVariantWrapper))
+        this.b.a(this);
+        if (this.b.b(paramArrayOfVariantWrapper))
         {
           paramVariantWrapper.SetBool(true);
           return true;
@@ -227,7 +227,7 @@ public class ArkDataRequestObj
   
   protected boolean f(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2))
+    if ((this.b != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2))
     {
       paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
       if (paramArrayOfVariantWrapper == null) {}
@@ -246,7 +246,7 @@ public class ArkDataRequestObj
       if (i < 0) {
         j = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest.a(j);
+      this.b.a(j);
       paramVariantWrapper.SetBool(true);
       return true;
     }
@@ -256,7 +256,7 @@ public class ArkDataRequestObj
   
   protected boolean g(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    ArkDataRequest localArkDataRequest = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest;
+    ArkDataRequest localArkDataRequest = this.b;
     boolean bool = false;
     if ((localArkDataRequest != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1))
     {
@@ -272,10 +272,10 @@ public class ArkDataRequestObj
   
   protected boolean h(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest;
+    Object localObject = this.b;
     if ((localObject != null) && (paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (((ArkDataRequest)localObject).a() == 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest.a();
+      localObject = this.b.b();
       if (localObject != null)
       {
         paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
@@ -303,7 +303,7 @@ public class ArkDataRequestObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkDataRequestObj
  * JD-Core Version:    0.7.0.1
  */

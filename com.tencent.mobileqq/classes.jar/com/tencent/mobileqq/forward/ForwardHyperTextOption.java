@@ -11,22 +11,22 @@ public class ForwardHyperTextOption
     super(paramIntent);
   }
   
-  protected void b()
+  protected void c()
   {
-    if (p()) {
-      this.a.add(d);
+    if (ag()) {
+      this.C.add(e);
     }
-    if (q()) {
-      this.a.add(c);
+    if (ah()) {
+      this.C.add(d);
     }
-    if (r()) {
-      this.a.add(b);
+    if (ai()) {
+      this.C.add(c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardHyperTextOption
  * JD-Core Version:    0.7.0.1
  */

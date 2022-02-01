@@ -6,21 +6,17 @@ import java.nio.ByteBuffer;
 
 public class SVHwCodec$BufferData
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public MediaFormat a;
   public ByteBuffer a;
-  public boolean a;
+  public MediaFormat b;
+  public int c;
+  public MediaCodec.BufferInfo d = new MediaCodec.BufferInfo();
+  public boolean e = true;
   
-  public SVHwCodec$BufferData(SVHwCodec paramSVHwCodec)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public SVHwCodec$BufferData(SVHwCodec paramSVHwCodec) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwCodec.BufferData
  * JD-Core Version:    0.7.0.1
  */

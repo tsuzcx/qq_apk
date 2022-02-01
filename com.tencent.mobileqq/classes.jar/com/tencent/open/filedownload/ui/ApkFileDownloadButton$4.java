@@ -16,12 +16,12 @@ class ApkFileDownloadButton$4
   {
     this.a.b(false, true);
     paramDialogInterface.dismiss();
-    AppCenterReporter.b(ClickDataBuilder.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
+    AppCenterReporter.b(ClickDataBuilder.a().a("203").l(this.a.c.a).k("5").m(this.a.c.c).n(this.a.c.d).b(this.a.c.i).c(this.a.c.f).h(this.a.c.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.ApkFileDownloadButton.4
  * JD-Core Version:    0.7.0.1
  */

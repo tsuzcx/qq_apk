@@ -18,11 +18,6 @@ public class SwiftFragmentTabBar
     super(paramContext);
   }
   
-  public View a()
-  {
-    return this;
-  }
-  
   public void a(Intent paramIntent, List<WebViewTabBarData> paramList, TabBarView.OnTabChangeListener paramOnTabChangeListener)
   {
     if (paramList != null)
@@ -41,10 +36,15 @@ public class SwiftFragmentTabBar
       super.setVisibility(0);
     }
   }
+  
+  public View getTabBarView()
+  {
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class QfavMergeData$MessageData
 {
   public ChatMessage a;
-  public String a;
+  public String b;
   
   public QfavMergeData$MessageData(ChatMessage paramChatMessage, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramChatMessage;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavMergeData.MessageData
  * JD-Core Version:    0.7.0.1
  */

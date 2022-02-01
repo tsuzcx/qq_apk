@@ -28,7 +28,7 @@ class ReadInJoyUploadAvatarFragment$2
     Bundle localBundle = new Bundle();
     if (paramMessage.what != 1003)
     {
-      localBundle.putString("msg", HardCodeUtil.a(2131712962));
+      localBundle.putString("msg", HardCodeUtil.a(2131910528));
       localBundle.putInt("retCode", 3);
       localIntent.putExtra("Bundle", localBundle);
       localBaseActivity.setResult(-1, localIntent);
@@ -37,7 +37,7 @@ class ReadInJoyUploadAvatarFragment$2
     {
       localBundle.putString("url", (String)paramMessage.obj);
       localBundle.putInt("retCode", 0);
-      localBundle.putString("msg", HardCodeUtil.a(2131713020));
+      localBundle.putString("msg", HardCodeUtil.a(2131910582));
       localIntent.putExtra("Bundle", localBundle);
       localBaseActivity.setResult(-1, localIntent);
     }
@@ -46,7 +46,7 @@ class ReadInJoyUploadAvatarFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.cmshow.brickengine;
 import android.graphics.RectF;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.apollo.task.ApolloActionManager;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +15,7 @@ public class BKUtils
   public static RectF a(String paramString, ApolloRender paramApolloRender)
   {
     RectF localRectF = new RectF();
-    ReentrantLock localReentrantLock = ApolloActionManager.a().a();
+    ReentrantLock localReentrantLock = ApolloRender.getLock();
     QLog.d("ApolloLock", 2, "onGetDressRect");
     localReentrantLock.lock();
     if (paramApolloRender != null) {
@@ -65,7 +64,7 @@ public class BKUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class GdtMVEndcardWebController$1
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    this.a.e();
+    this.a.f();
     paramWebView = new StringBuilder();
     paramWebView.append("onReceivedError url = ");
     paramWebView.append(paramInt);
@@ -24,19 +24,24 @@ class GdtMVEndcardWebController$1
     paramWebView.append(paramString2);
     QLog.i("EndCardWebGdtMVEndcardWebController", 1, paramWebView.toString());
     this.a.a();
-    if ((!GdtMVEndcardWebController.a(this.a)) && (this.a.a))
+    if ((!GdtMVEndcardWebController.a(this.a)) && (this.a.g))
     {
       GdtADFlyingStreamingReportHelper.a().a(1020017L);
       GdtMVEndcardWebController.a(this.a, true);
     }
   }
   
-  public void a(WebView paramWebView, String paramString)
+  public boolean a(WebView paramWebView, String paramString)
   {
-    if ((!this.a.b) && (!GdtMVEndcardWebController.a(this.a)) && (this.a.a))
+    return GdtMVEndcardWebController.a(this.a, paramWebView, paramString);
+  }
+  
+  public void b(WebView paramWebView, String paramString)
+  {
+    if ((!this.a.h) && (!GdtMVEndcardWebController.a(this.a)) && (this.a.g))
     {
       long l1 = System.currentTimeMillis();
-      long l2 = GdtMVEndcardWebController.a(this.a);
+      long l2 = GdtMVEndcardWebController.b(this.a);
       try
       {
         paramWebView = new JSONObject();
@@ -54,15 +59,10 @@ class GdtMVEndcardWebController$1
       }
     }
   }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    return GdtMVEndcardWebController.a(this.a, paramWebView, paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.web.endcrad.GdtMVEndcardWebController.1
  * JD-Core Version:    0.7.0.1
  */

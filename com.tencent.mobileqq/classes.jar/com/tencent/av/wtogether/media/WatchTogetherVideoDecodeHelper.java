@@ -16,30 +16,30 @@ import com.tencent.qphone.base.util.QLog;
 public class WatchTogetherVideoDecodeHelper
   implements WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VideoSink jdField_a_of_type_ComTencentAvWtogetherCallbackVideoSink;
-  private WatchTogetherSurfaceTextureHolder jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder;
-  private final EglHandlerThread jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d = false;
-  private boolean e = false;
+  private final EglHandlerThread a;
+  private Handler b;
+  private int c = -1;
+  private int d = -1;
+  private boolean e;
+  private int f = 0;
+  private SurfaceTexture g;
+  private WatchTogetherSurfaceTextureHolder h;
+  private boolean i;
+  private boolean j;
+  private boolean k = false;
+  private boolean l = false;
+  private VideoSink m;
   
   private WatchTogetherVideoDecodeHelper(Handler paramHandler, EglHandlerThread paramEglHandlerThread)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread = paramEglHandlerThread;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = GlUtil.createTexture(36197);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder = new WatchTogetherSurfaceTextureHolder(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a(this);
-    a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, new WatchTogetherVideoDecodeHelper.1(this), paramHandler);
+    this.b = paramHandler;
+    this.a = paramEglHandlerThread;
+    this.e = true;
+    this.f = GlUtil.createTexture(36197);
+    this.g = new SurfaceTexture(this.f);
+    this.h = new WatchTogetherSurfaceTextureHolder(this.g, this.f);
+    this.h.a(this);
+    a(this.g, new WatchTogetherVideoDecodeHelper.1(this), paramHandler);
   }
   
   public static WatchTogetherVideoDecodeHelper a(String paramString)
@@ -61,33 +61,33 @@ public class WatchTogetherVideoDecodeHelper
     paramSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
   }
   
-  private void a(String arg1)
+  private void b(String arg1)
   {
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
+    if ((!this.i) && (this.j) && (this.c != -1) && (this.d != -1))
     {
-      this.jdField_c_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackVideoSink != null) && (this.e))
+      this.j = false;
+      if ((this.m != null) && (this.l))
       {
-        this.d = true;
-        if (this.jdField_a_of_type_Boolean) {
-          synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
+        this.k = true;
+        if (this.e) {
+          synchronized (this.h)
           {
-            this.jdField_c_of_type_Int = -1;
-            this.jdField_a_of_type_Boolean = false;
-            this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.c();
+            this.f = -1;
+            this.e = false;
+            this.h.d();
             QLog.d("WatchTogetherVideoDecodeHelper", 1, "release image stream");
           }
         }
-        this.jdField_a_of_type_ComTencentAvWtogetherCallbackVideoSink.a(this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.m.a(this.h, this.c, this.d);
         return;
       }
-      synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
+      synchronized (this.h)
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.e)
         {
-          if (!this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a())
+          if (!this.h.c())
           {
-            this.jdField_c_of_type_Boolean = true;
+            this.j = true;
             QLog.d("WatchTogetherVideoDecodeHelper", 1, "try recycle surfaceTexture later");
             return;
           }
@@ -100,56 +100,51 @@ public class WatchTogetherVideoDecodeHelper
     localStringBuilder.append("tryDeliverTextureFrame from:=");
     localStringBuilder.append(???);
     localStringBuilder.append(",mIsQuiting:= ");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(",mHasPendingTexture:=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.j);
     QLog.d("WatchTogetherVideoDecodeHelper", 1, localStringBuilder.toString());
   }
   
-  private void d()
+  private void e()
   {
     QLog.d("WatchTogetherVideoDecodeHelper", 1, "release");
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      if (this.d) {
+      if (this.k) {
         return;
       }
-      int i = this.jdField_c_of_type_Int;
-      if (i > 0)
+      int n = this.f;
+      if (n > 0)
       {
-        GlUtil.deleteTexture(i);
-        this.jdField_c_of_type_Int = -1;
+        GlUtil.deleteTexture(n);
+        this.f = -1;
       }
-      Object localObject = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+      Object localObject = this.g;
       if (localObject != null)
       {
         ((SurfaceTexture)localObject).release();
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+        this.g = null;
       }
-      localObject = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder;
+      localObject = this.h;
       if (localObject != null)
       {
         ((WatchTogetherSurfaceTextureHolder)localObject).b();
-        this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder = null;
+        this.h = null;
       }
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.quitSafely();
-        this.jdField_a_of_type_AndroidOsHandler = null;
+        this.a.quitSafely();
+        this.b = null;
       }
       QLog.d("WatchTogetherVideoDecodeHelper", 1, "real release");
     }
   }
   
-  public SurfaceTexture a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  }
-  
   public void a()
   {
     QLog.d("WatchTogetherVideoDecodeHelper", 1, "onResponsePauseMessage");
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler == null) {
       return;
     }
@@ -164,7 +159,7 @@ public class WatchTogetherVideoDecodeHelper
     ((StringBuilder)localObject).append(",height:=");
     ((StringBuilder)localObject).append(paramInt2);
     QLog.d("WatchTogetherVideoDecodeHelper", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -174,7 +169,7 @@ public class WatchTogetherVideoDecodeHelper
   public void a(VideoSink paramVideoSink)
   {
     QLog.d("WatchTogetherVideoDecodeHelper", 1, "startVideoSinkListener");
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler == null) {
       return;
     }
@@ -183,26 +178,31 @@ public class WatchTogetherVideoDecodeHelper
   
   public void a(Thread paramThread)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if ((localHandler != null) && (localHandler.getLooper().getThread() != paramThread)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherVideoDecodeHelper.7(this));
+      this.b.post(new WatchTogetherVideoDecodeHelper.7(this));
     }
   }
   
-  public void b()
+  public SurfaceTexture b()
+  {
+    return this.g;
+  }
+  
+  public void c()
   {
     QLog.d("WatchTogetherVideoDecodeHelper", 1, "stopVideoSinkListener");
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler == null) {
       return;
     }
     localHandler.post(new WatchTogetherVideoDecodeHelper.5(this));
   }
   
-  public void c()
+  public void d()
   {
     QLog.d("WatchTogetherVideoDecodeHelper", 1, "dispose");
-    ThreadUtils.a(this.jdField_a_of_type_AndroidOsHandler, new WatchTogetherVideoDecodeHelper.6(this));
+    ThreadUtils.a(this.b, new WatchTogetherVideoDecodeHelper.6(this));
   }
 }
 

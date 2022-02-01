@@ -28,7 +28,6 @@ import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicMa
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.SPEventReportSwitch;
 import com.tencent.mobileqq.kandian.glue.report.RIJUserDeviceInfoReport;
-import com.tencent.mobileqq.kandian.glue.report.task.TaskManager;
 import com.tencent.mobileqq.kandian.repo.account.api.BaseOx978RespCallBack;
 import com.tencent.mobileqq.kandian.repo.account.api.IUserOperationModule;
 import com.tencent.mobileqq.kandian.repo.account.api.Ox978RespCallBack;
@@ -99,10 +98,11 @@ public class UserOperationModule
   static int KandianTopBit = 42105;
   public static final String REQ_FROM_READINJOY_HANDLER = "reqFromReadinjoyHandler";
   private static final String TAG = "UserOperationModule";
+  private static volatile UserOperationModule instance;
   private SparseArray<WeakReference<BaseOx978RespCallBack>> m978RequestCallbacks = new SparseArray();
   private AtomicInteger m978RequestSeqFactory = new AtomicInteger(0);
   
-  public UserOperationModule()
+  private UserOperationModule()
   {
     super(RIJQQAppInterfaceUtil.b(), null, null, ReadInJoyMSFService.getInstance(), null);
   }
@@ -166,8 +166,8 @@ public class UserOperationModule
       {
         localObject2 = (BatchFollowModel)paramArrayList.get(i);
         oidb_cmd0x978.OneFollowOperationInfo localOneFollowOperationInfo = new oidb_cmd0x978.OneFollowOperationInfo();
-        localOneFollowOperationInfo.uint64_dst_uin.set(Long.valueOf(((BatchFollowModel)localObject2).jdField_a_of_type_Long).longValue());
-        localOneFollowOperationInfo.uint32_op_account_type.set(((BatchFollowModel)localObject2).jdField_a_of_type_Int);
+        localOneFollowOperationInfo.uint64_dst_uin.set(Long.valueOf(((BatchFollowModel)localObject2).a).longValue());
+        localOneFollowOperationInfo.uint32_op_account_type.set(((BatchFollowModel)localObject2).b);
         ((oidb_cmd0x978.ReqFollowOperationPara)localObject1).rpt_follow_operation_info.add(localOneFollowOperationInfo);
         i += 1;
       }
@@ -265,6 +265,20 @@ public class UserOperationModule
     return new Pair("OidbSvc.0xc42", Integer.valueOf(3138));
   }
   
+  public static UserOperationModule getInstance()
+  {
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new UserOperationModule();
+        }
+      }
+      finally {}
+    }
+    return instance;
+  }
+  
   private int getNetType()
   {
     int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
@@ -343,7 +357,7 @@ public class UserOperationModule
     if (localObject == null) {
       return null;
     }
-    return ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
+    return ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().e();
   }
   
   private void handle0x64eUserOperationReport(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -392,22 +406,22 @@ public class UserOperationModule
         ReadInJoyHelper.a((int)paramToServiceMsg.lastRecvMsgDuration.get(), (int)paramToServiceMsg.lastSendMsgDuration.get());
       }
       if ((paramToServiceMsg.pulseTimerDuration.has()) && (paramToServiceMsg.pulseTimerDuration.get() != 12345678L)) {
-        ReadinjoySPEventReport.a().b((int)paramToServiceMsg.pulseTimerDuration.get());
+        ReadinjoySPEventReport.a().d((int)paramToServiceMsg.pulseTimerDuration.get());
       }
       if (paramToServiceMsg.leftBtmRedCntMaxForExitAIO.has()) {
-        ReadInJoyHelper.a((int)paramToServiceMsg.leftBtmRedCntMaxForExitAIO.get());
+        ReadInJoyHelper.i((int)paramToServiceMsg.leftBtmRedCntMaxForExitAIO.get());
       }
       if ((paramToServiceMsg.uint64_main_video_tab_red.has()) && (paramToServiceMsg.uint64_main_video_tab_red.get() > 0L)) {
-        ((KandianMergeManager)RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(new KandianRedDotInfo("kandian_video_tab_reddot_info"));
+        ((KandianMergeManager)RIJQQAppInterfaceUtil.e().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(new KandianRedDotInfo("kandian_video_tab_reddot_info"));
       }
       if (paramToServiceMsg.uint64_scroll_interval_time.has()) {
-        com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScrollReportUtil.jdField_a_of_type_Long = paramToServiceMsg.uint64_scroll_interval_time.get();
+        com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScrollReportUtil.a = paramToServiceMsg.uint64_scroll_interval_time.get();
       }
       if (paramToServiceMsg.uint64_scroll_all_time.has()) {
-        com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScrollReportUtil.jdField_b_of_type_Long = paramToServiceMsg.uint64_scroll_all_time.get();
+        com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScrollReportUtil.b = paramToServiceMsg.uint64_scroll_all_time.get();
       }
       if (paramToServiceMsg.uint64_chat_aio_time.has()) {
-        ReadinjoySPEventReport.c = paramToServiceMsg.uint64_chat_aio_time.get();
+        ReadinjoySPEventReport.e = paramToServiceMsg.uint64_chat_aio_time.get();
       }
       if (paramToServiceMsg.force_top_daily_red_day_offset.has())
       {
@@ -613,7 +627,7 @@ public class UserOperationModule
             if (QLog.isColorLevel()) {
               QLog.d("UserOperationModule", 2, "handleGetKandianTopFromServer server no set,upload local ");
             }
-            boolean bool = paramToServiceMsg.d();
+            boolean bool = paramToServiceMsg.k();
             if (bool) {
               paramToServiceMsg.c(bool);
             }
@@ -831,10 +845,10 @@ public class UserOperationModule
     {
       paramReportInfo.enum_operation.set(59);
       oidb_cmd0x64e.DynamicInsertCardReport localDynamicInsertCardReport = new oidb_cmd0x64e.DynamicInsertCardReport();
-      localDynamicInsertCardReport.action_type.set(paramReportInfo1.jdField_a_of_type_Int);
-      localDynamicInsertCardReport.progress.set(paramReportInfo1.jdField_b_of_type_Int);
-      localDynamicInsertCardReport.seq_no.set(ByteStringMicro.copyFromUtf8(paramReportInfo1.jdField_a_of_type_JavaLangString));
-      localDynamicInsertCardReport.watch_time.set(paramReportInfo1.c);
+      localDynamicInsertCardReport.action_type.set(paramReportInfo1.c);
+      localDynamicInsertCardReport.progress.set(paramReportInfo1.d);
+      localDynamicInsertCardReport.seq_no.set(ByteStringMicro.copyFromUtf8(paramReportInfo1.b));
+      localDynamicInsertCardReport.watch_time.set(paramReportInfo1.e);
       paramReportInfo.dynamic_insert_card_report.set(localDynamicInsertCardReport);
     }
   }
@@ -846,14 +860,14 @@ public class UserOperationModule
     if (localObject != null)
     {
       paramReportInfo1 = new oidb_cmd0x64e.FeedsReportData();
-      paramReportInfo1.uint64_feeds_id.set(((FeedsReportData)localObject).jdField_a_of_type_Long);
-      paramReportInfo1.uint64_publish_uin.set(((FeedsReportData)localObject).jdField_b_of_type_Long);
-      paramReportInfo1.uint32_like_total_count.set(((FeedsReportData)localObject).jdField_a_of_type_Int);
-      paramReportInfo1.uint32_comment_total_count.set(((FeedsReportData)localObject).jdField_b_of_type_Int);
+      paramReportInfo1.uint64_feeds_id.set(((FeedsReportData)localObject).a);
+      paramReportInfo1.uint64_publish_uin.set(((FeedsReportData)localObject).b);
+      paramReportInfo1.uint32_like_total_count.set(((FeedsReportData)localObject).d);
+      paramReportInfo1.uint32_comment_total_count.set(((FeedsReportData)localObject).e);
       ArrayList localArrayList2 = new ArrayList();
-      if ((((FeedsReportData)localObject).jdField_a_of_type_JavaUtilList != null) && (!((FeedsReportData)localObject).jdField_a_of_type_JavaUtilList.isEmpty()))
+      if ((((FeedsReportData)localObject).c != null) && (!((FeedsReportData)localObject).c.isEmpty()))
       {
-        localObject = ((FeedsReportData)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        localObject = ((FeedsReportData)localObject).c.iterator();
         while (((Iterator)localObject).hasNext()) {
           localArrayList2.add((Long)((Iterator)localObject).next());
         }
@@ -871,14 +885,14 @@ public class UserOperationModule
     {
       paramReportInfo.enum_network_type.set(getNetTypeFor64eVideo());
       paramReportInfo.operator_platform.set(3);
-      if (localVideoExtraRepoerData.jdField_b_of_type_Boolean) {
-        paramReportInfo.whether_click_in.set(localVideoExtraRepoerData.jdField_a_of_type_Boolean);
+      if (localVideoExtraRepoerData.h) {
+        paramReportInfo.whether_click_in.set(localVideoExtraRepoerData.f);
       }
-      if (localVideoExtraRepoerData.jdField_a_of_type_Int != -1) {
-        paramReportInfo.enum_jumpway_which.set(localVideoExtraRepoerData.jdField_a_of_type_Int);
+      if (localVideoExtraRepoerData.a != -1) {
+        paramReportInfo.enum_jumpway_which.set(localVideoExtraRepoerData.a);
       }
-      if (localVideoExtraRepoerData.jdField_b_of_type_Int != -1) {
-        paramReportInfo.enum_in_onetree_source.set(localVideoExtraRepoerData.jdField_b_of_type_Int);
+      if (localVideoExtraRepoerData.b != -1) {
+        paramReportInfo.enum_in_onetree_source.set(localVideoExtraRepoerData.b);
       }
       if (localVideoExtraRepoerData.c != -1) {
         paramReportInfo.enum_in_videochannel_source.set(localVideoExtraRepoerData.c);
@@ -889,8 +903,8 @@ public class UserOperationModule
       if (localVideoExtraRepoerData.e != -1) {
         paramReportInfo.uint32_video_duration.set(localVideoExtraRepoerData.e);
       }
-      if ((paramReportInfo1.mOpSource == 5) && (localVideoExtraRepoerData.f != -1)) {
-        paramReportInfo.uint32_onetree_video_from_type.set(localVideoExtraRepoerData.f);
+      if ((paramReportInfo1.mOpSource == 5) && (localVideoExtraRepoerData.g != -1)) {
+        paramReportInfo.uint32_onetree_video_from_type.set(localVideoExtraRepoerData.g);
       }
     }
   }
@@ -1045,8 +1059,8 @@ public class UserOperationModule
       if (((oidb_cmd0x80a.KDEventReportResp)paramRspBody.rsp_kd_event_report_resp.get()).condParams.has()) {
         SPEventReportSwitch.a(((oidb_cmd0x80a.KDEventReportResp)paramRspBody.rsp_kd_event_report_resp.get()).condParams.get());
       }
-      if ((((oidb_cmd0x80a.KDEventReportResp)paramRspBody.rsp_kd_event_report_resp.get()).unit_reset.has()) && (((oidb_cmd0x80a.KDEventReportResp)paramRspBody.rsp_kd_event_report_resp.get()).unit_reset.get() == 1)) {
-        TaskManager.a().d();
+      if (((oidb_cmd0x80a.KDEventReportResp)paramRspBody.rsp_kd_event_report_resp.get()).unit_reset.has()) {
+        ((oidb_cmd0x80a.KDEventReportResp)paramRspBody.rsp_kd_event_report_resp.get()).unit_reset.get();
       }
       if (QLog.isColorLevel())
       {
@@ -1069,7 +1083,7 @@ public class UserOperationModule
       QLog.d("UserOperationModule", 1, "notify to clear msgbox redpnt !");
       QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
       if (localQQAppInterface != null) {
-        ((KandianMergeManager)localQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).q();
+        ((KandianMergeManager)localQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).T();
       }
     }
     if (paramRspBody.uint64_should_hide_kdtab_num_redpnt.has())
@@ -1105,7 +1119,7 @@ public class UserOperationModule
       long l1 = paramRspBody.leftBtmRedPntPulseMaxCnt.get();
       long l2 = paramRspBody.firstScnRedPntPulseMaxCnt.get();
       long l3 = paramRspBody.AIOPulseMaxCnt.get();
-      ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a(), l1, l2, l3);
+      ReadInJoyHelper.a(RIJQQAppInterfaceUtil.e(), l1, l2, l3);
     }
   }
   
@@ -1329,7 +1343,7 @@ public class UserOperationModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule
  * JD-Core Version:    0.7.0.1
  */

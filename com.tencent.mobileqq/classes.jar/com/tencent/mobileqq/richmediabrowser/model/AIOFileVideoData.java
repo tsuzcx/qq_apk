@@ -11,63 +11,49 @@ public class AIOFileVideoData
   extends AIOBrowserBaseData
 {
   public static final Parcelable.Creator<RichMediaBaseData> CREATOR = new AIOFileVideoData.1();
-  public Bundle a;
-  public String a;
-  public ArrayList<String> a;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public long f;
-  public String f;
-  public boolean f;
-  public int g;
-  public long g;
-  public String g;
-  public boolean g;
-  public String h;
-  public boolean h;
-  public String i;
-  public boolean i;
-  public boolean j = false;
-  
-  public AIOFileVideoData()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_g_of_type_Long = 0L;
-  }
+  public boolean A = false;
+  public String B;
+  public int C;
+  public int D;
+  public String E;
+  public String F;
+  public Bundle G;
+  public int H = 0;
+  public long I = 0L;
+  public String j;
+  public String k;
+  public String l;
+  public long m;
+  public int n;
+  public int o;
+  public String p;
+  public ArrayList<String> q = null;
+  public long r;
+  public String s;
+  public boolean t = false;
+  public boolean u = false;
+  public boolean v = false;
+  public String w = null;
+  public boolean x = false;
+  public boolean y = false;
+  public boolean z = false;
   
   public String a()
   {
-    int k = this.status;
-    if (k != 0)
+    int i = this.status;
+    if (i != 0)
     {
-      if (k != 1)
+      if (i != 1)
       {
-        if (k != 2)
+        if (i != 2)
         {
-          if (k != 3)
+          if (i != 3)
           {
-            if (k != 4)
+            if (i != 4)
             {
-              if (k != 6)
+              if (i != 6)
               {
-                if (k != 7) {
+                if (i != 7) {
                   return "undefine";
                 }
                 return "Saving";
@@ -93,23 +79,23 @@ public class AIOFileVideoData
   public void readFromParcel(Parcel paramParcel)
   {
     super.readFromParcel(paramParcel);
-    this.b = paramParcel.readString();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    int k = paramParcel.readInt();
+    this.k = paramParcel.readString();
+    this.j = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readLong();
+    this.n = paramParcel.readInt();
+    this.o = paramParcel.readInt();
+    int i = paramParcel.readInt();
     boolean bool = true;
-    if (k != 1) {
+    if (i != 1) {
       bool = false;
     }
-    this.jdField_f_of_type_Boolean = bool;
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
+    this.v = bool;
+    this.B = paramParcel.readString();
+    this.C = paramParcel.readInt();
+    this.D = paramParcel.readInt();
+    this.E = paramParcel.readString();
+    this.F = paramParcel.readString();
   }
   
   public void updateProgress(int paramInt)
@@ -129,7 +115,7 @@ public class AIOFileVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

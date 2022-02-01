@@ -23,12 +23,12 @@ class KandianDailyManager$2
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
     if (localQQAppInterface == null) {
       return;
     }
     QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
-    MessageForStructing localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(AppConstants.KANDIAN_DAILY_UIN, 1008);
+    MessageForStructing localMessageForStructing = (MessageForStructing)localQQMessageFacade.r(AppConstants.KANDIAN_DAILY_UIN, 1008);
     if (localMessageForStructing == null) {
       return;
     }
@@ -40,9 +40,9 @@ class KandianDailyManager$2
     }
     String str1 = localMessageForStructing.getExtInfoFromExtStr("puin");
     String str2 = localMessageForStructing.structingMsg.mMsgBrief;
-    if ((localMessageForStructing.isread) && (!TextUtils.isEmpty(str2)) && (str2.contains(ReadInJoyUserInfoModule.a())) && (TextUtils.equals(str1, paramString)))
+    if ((localMessageForStructing.isread) && (!TextUtils.isEmpty(str2)) && (str2.contains(ReadInJoyUserInfoModule.d())) && (TextUtils.equals(str1, paramString)))
     {
-      localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+      localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.d(), paramReadInJoyUserInfo.nick);
       localMessageForStructing.createMessageUniseq();
       localMessageForStructing.doPrewrite();
       localQQMessageFacade.a(localMessageForStructing.frienduin, localMessageForStructing.istroop, localMessageForStructing.uniseq, localMessageForStructing.msgData);
@@ -61,7 +61,7 @@ class KandianDailyManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianDailyManager.2
  * JD-Core Version:    0.7.0.1
  */

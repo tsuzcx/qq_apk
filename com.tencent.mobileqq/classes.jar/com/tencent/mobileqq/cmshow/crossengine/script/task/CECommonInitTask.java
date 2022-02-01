@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.cmshow.crossengine.script.task;
 
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.script.task.CommonInitTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -11,14 +12,19 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CECommonInitTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/CommonInitTask;", "()V", "build3DJSON", "Lorg/json/JSONObject;", "buildBasicJSON", "getCameraConfig", "Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CECommonInitTask$CameraInfo;", "", "CameraInfo", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CECommonInitTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/CommonInitTask;", "apolloResManager", "Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;", "(Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;)V", "build3DJSON", "Lorg/json/JSONObject;", "buildBasicJSON", "getCameraConfig", "Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CECommonInitTask$CameraInfo;", "", "CameraInfo", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CECommonInitTask
   extends CommonInitTask
 {
   @Deprecated
   public static final CECommonInitTask.Companion a = new CECommonInitTask.Companion(null);
   
-  private final CECommonInitTask.CameraInfo a(int paramInt)
+  public CECommonInitTask(@NotNull IApolloResManager paramIApolloResManager)
+  {
+    super(paramIApolloResManager);
+  }
+  
+  private final CECommonInitTask.CameraInfo f(int paramInt)
   {
     if ((paramInt != 1) && (paramInt != 2)) {
       return null;
@@ -27,7 +33,7 @@ public final class CECommonInitTask
   }
   
   @Nullable
-  protected JSONObject a()
+  protected JSONObject b()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(ApolloConstant.a);
@@ -92,7 +98,7 @@ public final class CECommonInitTask
       ((StringBuilder)localObject3).append("transformAction/2to3");
       ((JSONObject)localObject1).put("2to3DAction", ((StringBuilder)localObject3).toString());
     }
-    if ((b() == 2) && (new File((File)localObject2, "friendcard/1/action.bin").exists()))
+    if ((i() == 2) && (new File((File)localObject2, "friendcard/1/action.bin").exists()))
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("def/role/0/3D/");
@@ -143,10 +149,10 @@ public final class CECommonInitTask
   }
   
   @NotNull
-  protected JSONObject b()
+  protected JSONObject c()
   {
-    JSONObject localJSONObject1 = super.b();
-    Object localObject = a(b());
+    JSONObject localJSONObject1 = super.c();
+    Object localObject = f(i());
     if (localObject != null)
     {
       JSONObject localJSONObject2 = new JSONObject();
@@ -174,7 +180,7 @@ public final class CECommonInitTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.task.CECommonInitTask
  * JD-Core Version:    0.7.0.1
  */

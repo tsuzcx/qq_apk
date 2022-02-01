@@ -11,18 +11,6 @@ import org.json.JSONException;
 
 public class HistoryChatMsgSearchKeyUtil
 {
-  private static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static void a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("history_chat_msg_search_key", 0).edit();
-    localEditor.remove(a(paramString));
-    localEditor.commit();
-  }
-  
   public static void a(String paramString1, String paramString2)
   {
     Object localObject1;
@@ -36,7 +24,7 @@ public class HistoryChatMsgSearchKeyUtil
         return;
       }
       localObject1 = paramString2.toLowerCase();
-      str1 = a(paramString1);
+      str1 = c(paramString1);
       paramString1 = BaseApplication.getContext();
       j = 0;
       localSharedPreferences = paramString1.getSharedPreferences("history_chat_msg_search_key", 0);
@@ -152,7 +140,7 @@ public class HistoryChatMsgSearchKeyUtil
   
   public static String[] a(String paramString)
   {
-    paramString = a(paramString);
+    paramString = c(paramString);
     paramString = BaseApplication.getContext().getSharedPreferences("history_chat_msg_search_key", 0).getString(paramString, "");
     Object localObject;
     if (QLog.isColorLevel())
@@ -198,10 +186,22 @@ public class HistoryChatMsgSearchKeyUtil
       i -= 1;
     }
   }
+  
+  public static void b(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("history_chat_msg_search_key", 0).edit();
+    localEditor.remove(c(paramString));
+    localEditor.commit();
+  }
+  
+  private static String c(String paramString)
+  {
+    return paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil
  * JD-Core Version:    0.7.0.1
  */

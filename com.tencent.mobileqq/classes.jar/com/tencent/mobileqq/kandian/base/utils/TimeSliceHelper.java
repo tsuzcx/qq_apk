@@ -13,45 +13,15 @@ import java.util.Map;
 
 public class TimeSliceHelper
 {
-  private static final Map<String, TimeSliceHelper> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private long jdField_a_of_type_Long = -1L;
-  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final Map<String, TimeSliceHelper> a = new HashMap();
   private long b = -1L;
-  
-  public static long a(String paramString)
-  {
-    return a(paramString, false).a();
-  }
+  private List<Long> c = new ArrayList();
+  private boolean d = false;
+  private long e = -1L;
   
   public static long a(String paramString, boolean paramBoolean)
   {
-    return a(paramString, false).a(paramBoolean);
-  }
-  
-  public static TimeSliceHelper a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return (TimeSliceHelper)jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  private static TimeSliceHelper a(String paramString, boolean paramBoolean)
-  {
-    TimeSliceHelper localTimeSliceHelper2 = a(paramString);
-    TimeSliceHelper localTimeSliceHelper1 = localTimeSliceHelper2;
-    if (localTimeSliceHelper2 == null)
-    {
-      localTimeSliceHelper2 = new TimeSliceHelper();
-      localTimeSliceHelper1 = localTimeSliceHelper2;
-      if (paramBoolean)
-      {
-        a(paramString, localTimeSliceHelper2);
-        localTimeSliceHelper1 = localTimeSliceHelper2;
-      }
-    }
-    return localTimeSliceHelper1;
+    return b(paramString, false).a(paramBoolean);
   }
   
   public static String a()
@@ -72,7 +42,7 @@ public class TimeSliceHelper
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaUtilMap.remove(paramString);
+    a.remove(paramString);
   }
   
   public static void a(String paramString, TimeSliceHelper paramTimeSliceHelper)
@@ -82,54 +52,79 @@ public class TimeSliceHelper
       if (paramTimeSliceHelper == null) {
         return;
       }
-      jdField_a_of_type_JavaUtilMap.put(paramString, paramTimeSliceHelper);
+      a.put(paramString, paramTimeSliceHelper);
     }
   }
   
-  public static long b(String paramString)
+  public static TimeSliceHelper b(String paramString)
   {
-    return a(paramString, false).b();
+    if (paramString == null) {
+      return null;
+    }
+    return (TimeSliceHelper)a.get(paramString);
   }
   
-  public static void b(String paramString)
+  private static TimeSliceHelper b(String paramString, boolean paramBoolean)
   {
-    a(paramString, true).a();
+    TimeSliceHelper localTimeSliceHelper2 = b(paramString);
+    TimeSliceHelper localTimeSliceHelper1 = localTimeSliceHelper2;
+    if (localTimeSliceHelper2 == null)
+    {
+      localTimeSliceHelper2 = new TimeSliceHelper();
+      localTimeSliceHelper1 = localTimeSliceHelper2;
+      if (paramBoolean)
+      {
+        a(paramString, localTimeSliceHelper2);
+        localTimeSliceHelper1 = localTimeSliceHelper2;
+      }
+    }
+    return localTimeSliceHelper1;
   }
   
   public static void c(String paramString)
   {
-    a(paramString, false).b();
+    b(paramString, true).b();
   }
   
-  public long a()
+  public static void d(String paramString)
   {
-    return this.jdField_a_of_type_Long;
+    b(paramString, false).c();
+  }
+  
+  public static long e(String paramString)
+  {
+    return b(paramString, false).d();
+  }
+  
+  public static long f(String paramString)
+  {
+    return b(paramString, false).e();
   }
   
   public long a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      b();
+      c();
     }
-    Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+    Object localObject1 = new ArrayList(this.c);
     long l1 = 0L;
     Object localObject2 = ((List)localObject1).iterator();
     while (((Iterator)localObject2).hasNext()) {
       l1 += ((Long)((Iterator)localObject2).next()).longValue();
     }
     long l2 = l1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
       l2 = l1;
       if (!paramBoolean) {
-        l2 = l1 + (SystemClock.elapsedRealtime() - this.b);
+        l2 = l1 + (SystemClock.elapsedRealtime() - this.e);
       }
     }
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("startMillis : ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append("  during : ");
       ((StringBuilder)localObject2).append(l2);
       ((StringBuilder)localObject2).append("  :  ");
@@ -144,38 +139,28 @@ public class TimeSliceHelper
     return l2;
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.b = SystemClock.elapsedRealtime();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return a(true);
-  }
-  
   public void b()
+  {
+    if (this.b < 0L) {
+      this.b = NetConnInfoCenter.getServerTimeMillis();
+    }
+    if (!this.d)
+    {
+      this.d = true;
+      this.e = SystemClock.elapsedRealtime();
+    }
+  }
+  
+  public void c()
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
-        this.jdField_a_of_type_Boolean = false;
-        long l = SystemClock.elapsedRealtime() - this.b;
+        this.d = false;
+        long l = SystemClock.elapsedRealtime() - this.e;
         if (l >= 0L) {
-          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(l));
+          this.c.add(Long.valueOf(l));
         } else {
           AIOUtils.a("", "", new IllegalArgumentException());
         }
@@ -185,17 +170,32 @@ public class TimeSliceHelper
     finally {}
   }
   
-  public void c()
+  public long d()
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
+    return this.b;
+  }
+  
+  public long e()
+  {
+    return a(true);
+  }
+  
+  public boolean f()
+  {
+    return this.d;
+  }
+  
+  public void g()
+  {
     this.b = -1L;
+    this.c.clear();
+    this.d = false;
+    this.e = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.TimeSliceHelper
  * JD-Core Version:    0.7.0.1
  */

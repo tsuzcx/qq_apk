@@ -11,20 +11,20 @@ class VideoCompositeHelper$2
   
   public void a(VideoStoryPicToVideo.RetCode paramRetCode)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeEnd = 60000;
-    VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper, "convertImageToVideo ");
+    this.a.a(0);
+    this.b.videoRangeEnd = 60000;
+    VideoCompositeHelper.a(this.c, "convertImageToVideo ");
   }
   
   public void b(VideoStoryPicToVideo.RetCode paramRetCode)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode.a(paramRetCode.a());
-    VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper, "convertImageToVideo ");
+    this.a.a(paramRetCode.a());
+    VideoCompositeHelper.a(this.c, "convertImageToVideo ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.VideoCompositeHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,48 +8,36 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class Job
 {
-  public Job.JobExecutorCallback a;
-  public ConcurrentHashMap<String, Object> a;
-  public boolean a;
-  public final String b;
-  public boolean b;
+  public final String e;
+  public boolean f;
+  public boolean g;
+  public ConcurrentHashMap<String, Object> h;
+  public Job.JobExecutorCallback i;
   
   public Job()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.qqstory.share");
     localStringBuilder.append(getClass().getSimpleName());
-    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    this.e = localStringBuilder.toString();
+    this.f = true;
+    this.g = true;
   }
   
   public final Job a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.f = paramBoolean1;
+    this.g = paramBoolean2;
     return this;
-  }
-  
-  public <T> T a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      SLog.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result %s, stack = %s", String.valueOf(paramString), String.valueOf(localObject), FeedUtils.a(7));
-      return localObject;
-    }
-    SLog.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result null, stack = %s", String.valueOf(paramString), FeedUtils.a(7));
-    return null;
   }
   
   public abstract void a();
   
   public void a(String paramString, Object paramObject)
   {
-    SLog.a(this.jdField_b_of_type_JavaLangString, "putResult key %s, value %s, stack = %s", String.valueOf(paramString), String.valueOf(paramObject), FeedUtils.a(7));
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramObject);
+    SLog.a(this.e, "putResult key %s, value %s, stack = %s", String.valueOf(paramString), String.valueOf(paramObject), FeedUtils.a(7));
+    if ((this.h != null) && (!TextUtils.isEmpty(paramString))) {
+      this.h.put(paramString, paramObject);
     }
   }
   
@@ -57,22 +45,29 @@ public abstract class Job
   
   protected final void a(boolean paramBoolean)
   {
-    SLog.a(this.jdField_b_of_type_JavaLangString, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), FeedUtils.a(7));
-    Job.JobExecutorCallback localJobExecutorCallback = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback;
+    SLog.a(this.e, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), FeedUtils.a(7));
+    Job.JobExecutorCallback localJobExecutorCallback = this.i;
     if (localJobExecutorCallback != null) {
       localJobExecutorCallback.b(paramBoolean);
     }
   }
   
-  public boolean a()
+  public <T> T b(String paramString)
   {
-    return true;
+    if ((this.h != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      Object localObject = this.h.get(paramString);
+      SLog.a(this.e, "getResult key %s, result %s, stack = %s", String.valueOf(paramString), String.valueOf(localObject), FeedUtils.a(7));
+      return localObject;
+    }
+    SLog.a(this.e, "getResult key %s, result null, stack = %s", String.valueOf(paramString), FeedUtils.a(7));
+    return null;
   }
   
   protected final void b(boolean paramBoolean)
   {
-    SLog.a(this.jdField_b_of_type_JavaLangString, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), FeedUtils.a(7));
-    Job.JobExecutorCallback localJobExecutorCallback = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback;
+    SLog.a(this.e, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), FeedUtils.a(7));
+    Job.JobExecutorCallback localJobExecutorCallback = this.i;
     if (localJobExecutorCallback != null) {
       localJobExecutorCallback.a(paramBoolean);
     }
@@ -82,10 +77,15 @@ public abstract class Job
   {
     return true;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.Job
  * JD-Core Version:    0.7.0.1
  */

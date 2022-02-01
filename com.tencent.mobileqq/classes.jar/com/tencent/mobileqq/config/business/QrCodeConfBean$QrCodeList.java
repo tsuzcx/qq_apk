@@ -4,77 +4,67 @@ import com.tencent.mobileqq.jsonconverter.Alias;
 
 public class QrCodeConfBean$QrCodeList
 {
-  @Alias(a="isStatusBarWhite")
-  public int a;
   @Alias(a="bkgURL")
-  public String a;
+  public String a = "";
+  @Alias(a="isStatusBarWhite")
+  public int b = 0;
   @Alias(a="isNavBarWhite")
-  public int b;
+  public int c = 0;
   @Alias(a="logoColor")
-  public String b;
+  public String d = "";
   @Alias(a="needShowLogo")
-  public int c = 1;
+  public int e = 1;
   
-  public QrCodeConfBean$QrCodeList()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public QrCodeConfBean$QrCodeList() {}
   
   public QrCodeConfBean$QrCodeList(QrCodeList paramQrCodeList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
     QrCodeList localQrCodeList = paramQrCodeList;
     if (paramQrCodeList == null) {
       localQrCodeList = new QrCodeList();
     }
-    this.jdField_a_of_type_Int = localQrCodeList.jdField_a_of_type_Int;
-    this.jdField_b_of_type_JavaLangString = localQrCodeList.jdField_b_of_type_JavaLangString;
-    this.c = localQrCodeList.c;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = localQrCodeList.b;
+    this.d = localQrCodeList.d;
+    this.e = localQrCodeList.e;
+    this.c = paramInt;
+    this.a = paramString;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.b == 1;
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Int == 1;
+    return this.c == 1;
   }
   
   public boolean c()
   {
-    return this.c == 1;
+    return this.e == 1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QrCodeList{bkgURL = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", isStatusBarWhite = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", isNavBarWhite = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", logoColor = ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", needShowLogo = ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", logoColor = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", needShowLogo = ");
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeConfBean.QrCodeList
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ public class IliveFloatWindowConfigServiceInterface
   
   public boolean getFloatWindowEnabledAllTime()
   {
-    return (FWPermission.hasPermission(BaseApplicationImpl.getContext())) && (IliveFloatWindowHelper.a());
+    return (FWPermission.hasPermission(BaseApplicationImpl.getContext())) && (IliveFloatWindowHelper.b());
   }
   
   public boolean getFloatWindowEnabledOnce()
   {
-    return (FWPermission.hasPermission(BaseApplicationImpl.getContext())) && (IliveFloatWindowHelper.a());
+    return (FWPermission.hasPermission(BaseApplicationImpl.getContext())) && (IliveFloatWindowHelper.b());
   }
   
   public void onCreate(Context paramContext) {}
@@ -31,7 +31,7 @@ public class IliveFloatWindowConfigServiceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveFloatWindowConfigServiceInterface
  * JD-Core Version:    0.7.0.1
  */

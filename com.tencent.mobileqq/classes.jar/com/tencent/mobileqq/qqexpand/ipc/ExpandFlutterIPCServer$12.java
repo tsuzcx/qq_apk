@@ -12,12 +12,12 @@ class ExpandFlutterIPCServer$12
   @NotNull
   public Bundle a(@NotNull String paramString, @Nullable Bundle paramBundle, int paramInt)
   {
-    return ExpandFlutterIPCServer.c(this.a);
+    return ExpandFlutterIPCServer.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.ipc.ExpandFlutterIPCServer.12
  * JD-Core Version:    0.7.0.1
  */

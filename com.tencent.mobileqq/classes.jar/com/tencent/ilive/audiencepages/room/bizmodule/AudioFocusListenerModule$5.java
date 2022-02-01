@@ -23,7 +23,7 @@ class AudioFocusListenerModule$5
         return;
       }
       this.this$0.getLog().i("AudioFocusListener", "onAudioFocusChange: 成功获得音频焦点", new Object[0]);
-      if ((AudioFocusListenerModule.access$900(this.this$0) != null) && ((!AudioFocusListenerModule.access$300(this.this$0)) || (AudioFocusListenerModule.access$200(this.this$0)) || (AudioFocusListenerModule.access$1400(this.this$0).isLiteSdk())) && (!AudienceMultiRoomActivityLogic.a().a()))
+      if ((AudioFocusListenerModule.access$900(this.this$0) != null) && ((!AudioFocusListenerModule.access$300(this.this$0)) || (AudioFocusListenerModule.access$200(this.this$0)) || (AudioFocusListenerModule.access$1400(this.this$0).isLiteSdk())) && (!AudienceMultiRoomActivityLogic.a().f()))
       {
         AudioFocusListenerModule.access$900(this.this$0).resumePlay();
         AudioFocusListenerModule.access$900(this.this$0).mutePlay(false);
@@ -52,7 +52,7 @@ class AudioFocusListenerModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AudioFocusListenerModule.5
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.qqaudio.audioplayer;
 public class AudioPlayerHelper$AudioPlayerParameter
 {
   public int a;
-  public boolean a;
   public int b;
+  public boolean c;
   
   public AudioPlayerHelper$AudioPlayerParameter(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramInt2;
+    this.c = paramBoolean;
   }
   
   public boolean equals(Object paramObject)
@@ -24,14 +24,14 @@ public class AudioPlayerHelper$AudioPlayerParameter
     if ((paramObject instanceof AudioPlayerParameter))
     {
       paramObject = (AudioPlayerParameter)paramObject;
-      return (paramObject.b == this.b) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Boolean == this.jdField_a_of_type_Boolean);
+      return (paramObject.b == this.b) && (paramObject.a == this.a) && (paramObject.c == this.c);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerHelper.AudioPlayerParameter
  * JD-Core Version:    0.7.0.1
  */

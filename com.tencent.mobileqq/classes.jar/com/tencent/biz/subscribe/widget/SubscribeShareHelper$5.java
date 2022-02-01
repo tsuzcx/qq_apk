@@ -21,7 +21,7 @@ class SubscribeShareHelper$5
       if (SubscribeShareHelper.a(this.this$0) == null) {
         return;
       }
-      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), SubscribeShareHelper.a(this.this$0).e(), "GET", null, null);
+      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), SubscribeShareHelper.a(this.this$0).f(), "GET", null, null);
       if (localObject != null)
       {
         Bitmap localBitmap = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
@@ -46,7 +46,7 @@ class SubscribeShareHelper$5
             localObject = Bitmap.createScaledBitmap(localBitmap, j, i, true);
             localBitmap.recycle();
           }
-          this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+          this.a.put("image", localObject);
         }
       }
     }
@@ -56,13 +56,13 @@ class SubscribeShareHelper$5
       break label171;
     }
     if (this.this$0.a != null) {
-      this.this$0.a.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+      this.this$0.a.runOnUiThread(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.5
  * JD-Core Version:    0.7.0.1
  */

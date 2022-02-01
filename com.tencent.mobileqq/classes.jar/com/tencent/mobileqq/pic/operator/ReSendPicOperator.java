@@ -12,16 +12,16 @@ public class ReSendPicOperator
   {
     super.a(paramMessageForPic, paramPicUploadInfo);
     boolean bool;
-    if (paramPicUploadInfo.a != null) {
+    if (paramPicUploadInfo.ad != null) {
       bool = true;
     } else {
       bool = false;
     }
     if (bool)
     {
-      paramMessageForPic.msgseq = paramPicUploadInfo.a.a;
-      paramMessageForPic.shmsgseq = paramPicUploadInfo.a.b;
-      paramMessageForPic.msgUid = paramPicUploadInfo.a.c;
+      paramMessageForPic.msgseq = paramPicUploadInfo.ad.a;
+      paramMessageForPic.shmsgseq = paramPicUploadInfo.ad.b;
+      paramMessageForPic.msgUid = paramPicUploadInfo.ad.c;
     }
     paramMessageForPic = this.b;
     String str = this.a;
@@ -29,13 +29,13 @@ public class ReSendPicOperator
     localStringBuilder.append("retry:");
     localStringBuilder.append(bool);
     localStringBuilder.append(" info.DLSendKey:");
-    localStringBuilder.append(paramPicUploadInfo.b);
+    localStringBuilder.append(paramPicUploadInfo.u);
     Logger.a(paramMessageForPic, str, "packMsg", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.ReSendPicOperator
  * JD-Core Version:    0.7.0.1
  */

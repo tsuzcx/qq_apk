@@ -28,7 +28,7 @@ class NearbyCardHandler$2
       paramArrayOfByte.append("NowSummaryCard error, code=");
       paramArrayOfByte.append(paramInt);
       QLog.e("NearbyCardHandler", 1, paramArrayOfByte.toString());
-      NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+      NearbyCardHandler.a(this.b, false, null, this.a.extraData);
       return;
     }
     Object localObject = new NowSummaryCard.NearbySummaryCardRsp();
@@ -56,7 +56,7 @@ class NearbyCardHandler$2
       paramArrayOfByte.append("NowSummaryCard error, ret_code=");
       paramArrayOfByte.append(((NowSummaryCard.NearbySummaryCardRsp)localObject).ret_code.get());
       QLog.i("NearbyCardHandler", 1, paramArrayOfByte.toString());
-      NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+      NearbyCardHandler.a(this.b, false, null, this.a.extraData);
       return;
     }
     if (((NowSummaryCard.NearbySummaryCardRsp)localObject).ret_code.get() == 0)
@@ -87,15 +87,15 @@ class NearbyCardHandler$2
     }
     if (paramInt != 0)
     {
-      NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, true, paramBundle, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+      NearbyCardHandler.a(this.b, true, paramBundle, this.a.extraData);
       return;
     }
-    NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+    NearbyCardHandler.a(this.b, false, null, this.a.extraData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.business.NearbyCardHandler.2
  * JD-Core Version:    0.7.0.1
  */

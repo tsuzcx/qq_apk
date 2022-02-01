@@ -15,14 +15,14 @@ public class ProfileTemplateAvatarViewModel
   public ProfileTemplateAvatarViewModel(String paramString, View paramView, HashMap<String, ViewModel> paramHashMap)
   {
     super(paramString, paramView);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.a = paramHashMap;
   }
   
   protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    float f = UIUtils.b(this.jdField_a_of_type_AndroidViewView.getContext());
-    paramLayoutParams.width = Math.max((int)(f * 108.0F / 360.0F), UIUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
-    paramLayoutParams.height = Math.max((int)(f * 126.0F / 360.0F), UIUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    float f = UIUtils.c(this.h.getContext());
+    paramLayoutParams.width = Math.max((int)(f * 108.0F / 360.0F), UIUtils.a(this.h.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(f * 126.0F / 360.0F), UIUtils.a(this.h.getContext(), 126.0F));
     return paramLayoutParams;
   }
   
@@ -30,7 +30,7 @@ public class ProfileTemplateAvatarViewModel
   {
     if ("border".equals(paramString1))
     {
-      paramString1 = (ViewModel)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+      paramString1 = (ViewModel)this.a.get(paramString1);
       return;
     }
     super.a(paramString1, paramString2);
@@ -38,7 +38,7 @@ public class ProfileTemplateAvatarViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.ProfileTemplateAvatarViewModel
  * JD-Core Version:    0.7.0.1
  */

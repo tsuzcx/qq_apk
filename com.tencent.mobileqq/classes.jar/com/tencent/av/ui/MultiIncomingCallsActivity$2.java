@@ -14,26 +14,26 @@ class MultiIncomingCallsActivity$2
   
   public void run()
   {
-    if (MultiIncomingCallsActivity.a(this.this$0) == null) {
+    if (MultiIncomingCallsActivity.d(this.this$0) == null) {
       return;
     }
     Object localObject1;
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.this$0.b;
+      localObject1 = this.this$0.l;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("mTaskCheckRunnable before");
-      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.this$0));
+      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.e(this.this$0));
       ((StringBuilder)localObject2).append(";currentMemberSize=");
-      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.this$0).size());
+      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.b(this.this$0).size());
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (MultiIncomingCallsActivity.a(this.this$0))
+    if (MultiIncomingCallsActivity.e(this.this$0))
     {
-      long l = QQAudioHelper.a() / 1000L;
+      long l = QQAudioHelper.c() / 1000L;
       localObject1 = new ArrayList();
-      localObject2 = MultiIncomingCallsActivity.a(this.this$0).iterator();
+      localObject2 = MultiIncomingCallsActivity.b(this.this$0).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Memberinfo localMemberinfo = (Memberinfo)((Iterator)localObject2).next();
@@ -43,7 +43,7 @@ class MultiIncomingCallsActivity$2
         }
         else if (QLog.isColorLevel())
         {
-          String str = this.this$0.b;
+          String str = this.this$0.l;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("mTaskCheckRunnable ");
           localStringBuilder.append(localMemberinfo.b);
@@ -54,15 +54,15 @@ class MultiIncomingCallsActivity$2
       }
       MultiIncomingCallsActivity.a(this.this$0, (ArrayList)localObject1);
     }
-    MultiIncomingCallsActivity.a(this.this$0).postDelayed(MultiIncomingCallsActivity.b(this.this$0), 10000L);
+    MultiIncomingCallsActivity.d(this.this$0).postDelayed(MultiIncomingCallsActivity.f(this.this$0), 10000L);
     if (QLog.isColorLevel())
     {
-      localObject1 = this.this$0.b;
+      localObject1 = this.this$0.l;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("mTaskCheckRunnable after");
-      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.this$0));
+      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.e(this.this$0));
       ((StringBuilder)localObject2).append(";currentMemberSize=");
-      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.this$0).size());
+      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.b(this.this$0).size());
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
   }

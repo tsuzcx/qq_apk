@@ -15,20 +15,15 @@ import android.widget.TextView;
 public class CommonLinkMovementMethod
   extends LinkMovementMethod
 {
-  private static LinkMovementMethod jdField_a_of_type_AndroidTextMethodLinkMovementMethod;
-  private long jdField_a_of_type_Long;
-  
-  private static long a()
-  {
-    return SystemClock.uptimeMillis();
-  }
+  private static LinkMovementMethod a;
+  private long b;
   
   public static MovementMethod a()
   {
-    if (jdField_a_of_type_AndroidTextMethodLinkMovementMethod == null) {
-      jdField_a_of_type_AndroidTextMethodLinkMovementMethod = new CommonLinkMovementMethod();
+    if (a == null) {
+      a = new CommonLinkMovementMethod();
     }
-    return jdField_a_of_type_AndroidTextMethodLinkMovementMethod;
+    return a;
   }
   
   private static boolean a(long paramLong1, long paramLong2)
@@ -49,11 +44,16 @@ public class CommonLinkMovementMethod
     return (ClickableSpan[])paramSpanned.getSpans(i, i, ClickableSpan.class);
   }
   
+  private static long b()
+  {
+    return SystemClock.uptimeMillis();
+  }
+  
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
     if (i == 0) {
-      this.jdField_a_of_type_Long = a();
+      this.b = b();
     }
     if (i == 1)
     {
@@ -63,7 +63,7 @@ public class CommonLinkMovementMethod
       {
         boolean bool = false;
         paramSpannable = arrayOfClickableSpan[0];
-        if (a(a(), this.jdField_a_of_type_Long))
+        if (a(b(), this.b))
         {
           paramSpannable.onClick(paramTextView);
           bool = true;
@@ -76,7 +76,7 @@ public class CommonLinkMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CommonLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

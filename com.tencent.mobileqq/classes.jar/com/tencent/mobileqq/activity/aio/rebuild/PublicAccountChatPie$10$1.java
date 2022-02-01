@@ -10,12 +10,12 @@ class PublicAccountChatPie$10$1
   
   public void a()
   {
-    this.a.this$0.a.sendEmptyMessage(1);
+    this.a.this$0.ce.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.10.1
  * JD-Core Version:    0.7.0.1
  */

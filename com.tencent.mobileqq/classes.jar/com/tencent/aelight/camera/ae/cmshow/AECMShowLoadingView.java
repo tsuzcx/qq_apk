@@ -19,14 +19,14 @@ import org.libpag.PAGView;
 public class AECMShowLoadingView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = 1;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AECMShowSquareLayout jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowSquareLayout;
-  private String jdField_a_of_type_JavaLangString;
-  private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
-  private PAGView jdField_a_of_type_OrgLibpagPAGView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private PAGFile b;
+  private AECMShowSquareLayout a;
+  private PAGView b;
+  private TextView c;
+  private boolean d = false;
+  private PAGFile e;
+  private PAGFile f;
+  private int g = 1;
+  private String h;
   
   public AECMShowLoadingView(@NonNull Context paramContext)
   {
@@ -51,13 +51,13 @@ public class AECMShowLoadingView
     {
       if (FeatureManager.Features.PAG.init())
       {
-        this.jdField_a_of_type_OrgLibpagPAGFile = PAGFile.Load(BaseApplicationImpl.getApplication().getResources().getAssets(), "camera/cmshow/ae_camera_cmshow_loading_success.pag");
-        this.b = PAGFile.Load(BaseApplicationImpl.getApplication().getResources().getAssets(), "camera/cmshow/ae_camera_cmshow_loading_fail.pag");
-        this.jdField_a_of_type_Boolean = true;
+        this.e = PAGFile.Load(BaseApplicationImpl.getApplication().getResources().getAssets(), "camera/cmshow/ae_camera_cmshow_loading_success.pag");
+        this.f = PAGFile.Load(BaseApplicationImpl.getApplication().getResources().getAssets(), "camera/cmshow/ae_camera_cmshow_loading_fail.pag");
+        this.d = true;
         return;
       }
-      this.jdField_a_of_type_OrgLibpagPAGFile = null;
-      this.b = null;
+      this.e = null;
+      this.f = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -65,40 +65,40 @@ public class AECMShowLoadingView
       label62:
       break label62;
     }
-    this.jdField_a_of_type_OrgLibpagPAGFile = null;
-    this.b = null;
+    this.e = null;
+    this.f = null;
   }
   
   private void a(@NonNull Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2064318487, this, true);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowSquareLayout = ((AECMShowSquareLayout)findViewById(2064122049));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122785));
-    if (this.jdField_a_of_type_Boolean)
+    LayoutInflater.from(paramContext).inflate(2064056347, this, true);
+    this.a = ((AECMShowSquareLayout)findViewById(2063990969));
+    this.c = ((TextView)findViewById(2063991560));
+    if (this.d)
     {
-      this.jdField_a_of_type_OrgLibpagPAGView = new PAGView(paramContext);
-      this.jdField_a_of_type_OrgLibpagPAGView.addPAGFlushListener(new AECMShowLoadingView.1(this));
+      this.b = new PAGView(paramContext);
+      this.b.addPAGFlushListener(new AECMShowLoadingView.1(this));
       paramContext = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowSquareLayout.addView(this.jdField_a_of_type_OrgLibpagPAGView, paramContext);
+      this.a.addView(this.b, paramContext);
     }
     paramContext = new StringBuilder();
     paramContext.append("[initViews] mPagInitSucceeded=");
-    paramContext.append(this.jdField_a_of_type_Boolean);
+    paramContext.append(this.d);
     AEQLog.a("AECMShowLoadingView", paramContext.toString());
   }
   
   private void b()
   {
-    PAGView localPAGView = this.jdField_a_of_type_OrgLibpagPAGView;
+    PAGView localPAGView = this.b;
     if (localPAGView != null)
     {
-      PAGFile localPAGFile = this.jdField_a_of_type_OrgLibpagPAGFile;
+      PAGFile localPAGFile = this.e;
       if (localPAGFile != null)
       {
-        localPAGView.setFile(localPAGFile);
-        this.jdField_a_of_type_OrgLibpagPAGView.setRepeatCount(0);
-        if (!this.jdField_a_of_type_OrgLibpagPAGView.isPlaying()) {
-          this.jdField_a_of_type_OrgLibpagPAGView.play();
+        localPAGView.setComposition(localPAGFile);
+        this.b.setRepeatCount(0);
+        if (!this.b.isPlaying()) {
+          this.b.play();
         }
       }
     }
@@ -106,17 +106,17 @@ public class AECMShowLoadingView
   
   private void c()
   {
-    PAGView localPAGView = this.jdField_a_of_type_OrgLibpagPAGView;
+    PAGView localPAGView = this.b;
     if (localPAGView != null)
     {
-      PAGFile localPAGFile = this.b;
+      PAGFile localPAGFile = this.f;
       if (localPAGFile != null)
       {
-        localPAGView.setFile(localPAGFile);
-        this.jdField_a_of_type_OrgLibpagPAGView.setRepeatCount(1);
-        this.jdField_a_of_type_OrgLibpagPAGView.addListener(new AECMShowLoadingView.2(this));
-        if (!this.jdField_a_of_type_OrgLibpagPAGView.isPlaying()) {
-          this.jdField_a_of_type_OrgLibpagPAGView.play();
+        localPAGView.setComposition(localPAGFile);
+        this.b.setRepeatCount(1);
+        this.b.addListener(new AECMShowLoadingView.2(this));
+        if (!this.b.isPlaying()) {
+          this.b.play();
         }
       }
     }
@@ -124,16 +124,16 @@ public class AECMShowLoadingView
   
   public void a(int paramInt)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null) {
-      localTextView.setText(getContext().getString(2064515080, new Object[] { Integer.valueOf(paramInt) }));
+      localTextView.setText(getContext().getString(2064187405, new Object[] { Integer.valueOf(paramInt) }));
     }
   }
   
   public void a(int paramInt, @Nullable String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramInt = this.jdField_a_of_type_Int;
+    this.g = paramInt;
+    paramInt = this.g;
     if (paramInt == 1)
     {
       b();
@@ -141,14 +141,14 @@ public class AECMShowLoadingView
     }
     if (paramInt == 2)
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.h = paramString;
       c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowLoadingView
  * JD-Core Version:    0.7.0.1
  */

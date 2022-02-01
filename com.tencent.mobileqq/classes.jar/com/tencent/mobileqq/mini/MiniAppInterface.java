@@ -16,6 +16,7 @@ import com.tencent.mobileqq.mini.network.RequestStrategy;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,6 +41,23 @@ public class MiniAppInterface
   public MiniAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
+  }
+  
+  private void initSuperplayer()
+  {
+    try
+    {
+      if (!QQVideoPlaySDKManager.isSDKReady())
+      {
+        QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), new MiniAppInterface.3(this));
+        QLog.d("MiniAppInterface", 1, "superplayer not ready !");
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("MiniAppInterface", 1, "initSuperplayer failed", localThrowable);
+    }
   }
   
   private void registerAccountReceiver()
@@ -101,7 +119,7 @@ public class MiniAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public AuthorizeCenter getAuthorizeCenter(String paramString)
@@ -152,6 +170,7 @@ public class MiniAppInterface
     if (Build.VERSION.SDK_INT >= 15) {
       getApp().registerActivityLifecycleCallbacks(new MiniAppInterface.1(this));
     }
+    initSuperplayer();
     RequestStrategy.g.notifyNetWorkStatusChange();
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppInterface", 2, "Application OnCreate complete");
@@ -190,7 +209,7 @@ public class MiniAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.MiniAppInterface
  * JD-Core Version:    0.7.0.1
  */

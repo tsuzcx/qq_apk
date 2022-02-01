@@ -39,9 +39,9 @@ public class PreloadStaticApiImpl
     ResourceInfo localResourceInfo = getResInfoByUrl(paramString, paramBoolean, paramInt);
     if (localResourceInfo != null)
     {
-      ResUtil.b(paramString, paramInt);
-      QWalletTools.a(localResourceInfo.filePath);
-      QWalletTools.a(localResourceInfo.folderPath);
+      ResUtil.d(paramString, paramInt);
+      QWalletTools.b(localResourceInfo.filePath);
+      QWalletTools.b(localResourceInfo.folderPath);
     }
   }
   
@@ -81,7 +81,7 @@ public class PreloadStaticApiImpl
   
   public String getRealMd5(String paramString1, String paramString2, int paramInt)
   {
-    return ResUtil.b(paramString1, paramString2, paramInt);
+    return ResUtil.c(paramString1, paramString2, paramInt);
   }
   
   public ResourceInfo getResInfoByUrl(String paramString, boolean paramBoolean, int paramInt)
@@ -224,7 +224,7 @@ public class PreloadStaticApiImpl
       {
         l = 0L;
         paramDownloadParam.md5Time = 0L;
-        Object localObject = QWalletTools.a();
+        Object localObject = QWalletTools.b();
         if (localObject != null)
         {
           localObject = (IQWalletConfigService)((BaseQQAppInterface)localObject).getRuntimeService(IQWalletConfigService.class, "");
@@ -283,7 +283,7 @@ public class PreloadStaticApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadStaticApiImpl
  * JD-Core Version:    0.7.0.1
  */

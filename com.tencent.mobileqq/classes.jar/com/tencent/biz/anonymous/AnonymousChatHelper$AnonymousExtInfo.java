@@ -7,20 +7,20 @@ import java.io.UnsupportedEncodingException;
 public class AnonymousChatHelper$AnonymousExtInfo
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
+  public int d;
+  public int e;
+  public String f;
   
   public byte[] a()
   {
-    if (TextUtils.isEmpty(this.a)) {
+    if (TextUtils.isEmpty(this.b)) {
       return null;
     }
     try
     {
-      byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
+      byte[] arrayOfByte = this.b.getBytes("ISO-8859-1");
       return arrayOfByte;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)

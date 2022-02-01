@@ -25,11 +25,11 @@ class QRLoginAuthActivity$4
         if (i != 3) {
           return;
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        if ((this.a.u != null) && (this.a.u.isShowing())) {
+          this.a.u.dismiss();
         }
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.a.j.setVisibility(8);
+        this.a.f.setVisibility(0);
         this.a.a(null);
         return;
       }
@@ -40,19 +40,19 @@ class QRLoginAuthActivity$4
         try
         {
           localObject = new JSONObject(new String((byte[])localObject, "UTF-8"));
-          this.a.b = ((JSONObject)localObject).optInt("app_type");
-          this.a.i = ((JSONObject)localObject).optString("login_tips");
-          this.a.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("sub_appid");
+          this.a.w = ((JSONObject)localObject).optInt("app_type");
+          this.a.x = ((JSONObject)localObject).optString("login_tips");
+          this.a.y = ((JSONObject)localObject).optLong("sub_appid");
           if (!QLog.isColorLevel()) {
             break label280;
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("ON CLOSE appType:");
-          ((StringBuilder)localObject).append(this.a.b);
+          ((StringBuilder)localObject).append(this.a.w);
           ((StringBuilder)localObject).append(",bannerTips:");
-          ((StringBuilder)localObject).append(this.a.i);
+          ((StringBuilder)localObject).append(this.a.x);
           ((StringBuilder)localObject).append(",subappid:");
-          ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Long);
+          ((StringBuilder)localObject).append(this.a.y);
           QLog.d("QRLoginAuthActivity", 2, ((StringBuilder)localObject).toString());
         }
         catch (Exception localException)
@@ -63,8 +63,8 @@ class QRLoginAuthActivity$4
         QLog.d("QRLoginAuthActivity", 4, "ON CLOSE devInfo == null");
       }
       label280:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if (this.a.u.isShowing()) {
+        this.a.u.dismiss();
       }
       if (i == 0)
       {

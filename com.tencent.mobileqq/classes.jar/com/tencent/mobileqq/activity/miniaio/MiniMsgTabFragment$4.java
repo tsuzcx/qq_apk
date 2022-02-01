@@ -11,8 +11,8 @@ class MiniMsgTabFragment$4
   
   public void run()
   {
-    Intent localIntent = MiniMsgTabFragment.a(this.this$0);
-    localIntent.putExtra("miniAppID", MiniMsgTabFragment.a(this.this$0));
+    Intent localIntent = MiniMsgTabFragment.k(this.this$0);
+    localIntent.putExtra("miniAppID", MiniMsgTabFragment.d(this.this$0));
     localIntent.putExtra("clickID", -1);
     BaseActivity localBaseActivity = this.this$0.getBaseActivity();
     if (localBaseActivity != null)
@@ -24,7 +24,7 @@ class MiniMsgTabFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment.4
  * JD-Core Version:    0.7.0.1
  */

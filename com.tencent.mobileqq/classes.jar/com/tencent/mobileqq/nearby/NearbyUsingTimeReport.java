@@ -22,15 +22,14 @@ public class NearbyUsingTimeReport
   extends BaseUsingTimeReport
   implements QActivityLifecycleCallbacks
 {
-  protected long a;
-  private INearbyAppInterface a;
-  private long b;
+  protected long a = System.currentTimeMillis();
+  private INearbyAppInterface e;
+  private long f;
   
   public NearbyUsingTimeReport(INearbyAppInterface paramINearbyAppInterface, String paramString1, String paramString2, String paramString3)
   {
     super(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface = paramINearbyAppInterface;
+    this.e = paramINearbyAppInterface;
   }
   
   private String a(long paramLong, String paramString)
@@ -42,73 +41,73 @@ public class NearbyUsingTimeReport
     return new SimpleDateFormat(str).format(new Long(paramLong));
   }
   
-  private void f()
+  private void g()
   {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    String str = a(this.jdField_b_of_type_Long, null);
+    this.f = System.currentTimeMillis();
+    String str = a(this.f, null);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reportPageInTime: =");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("-------date=");
     localStringBuilder.append(str);
     QLog.d("NearbyUsingTimeReport", 4, localStringBuilder.toString());
-    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setOperName("now_jiehe").setAction("app_in").setUin(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin()).addKeyValue("timestr", this.jdField_b_of_type_Long).addKeyValue("qimei", ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getQimei()).addKeyValue("client_build", String.valueOf(DeviceUtils.a())).addKeyValue("uin", this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getAccount()).addKeyValue("appid", 406).addKeyValue("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication, QBaseActivity.sTopActivity)).addKeyValue("imei", MobileInfoUtil.getImei()).report();
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setOperName("now_jiehe").setAction("app_in").setUin(this.e.getCurrentAccountUin()).addKeyValue("timestr", this.f).addKeyValue("qimei", ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getQimei()).addKeyValue("client_build", String.valueOf(DeviceUtils.a())).addKeyValue("uin", this.e.getAccount()).addKeyValue("appid", 406).addKeyValue("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication, QBaseActivity.sTopActivity)).addKeyValue("imei", MobileInfoUtil.getImei()).report();
   }
   
-  private void g()
+  private void h()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface == null) {
+    if (this.e == null) {
       return;
     }
     long l = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reportPageOutTime: mStartTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("---------stop: =");
     localStringBuilder.append(l);
     localStringBuilder.append("-----------time_long=");
-    localStringBuilder.append(l - this.jdField_b_of_type_Long);
+    localStringBuilder.append(l - this.f);
     QLog.d("NearbyUsingTimeReport", 4, localStringBuilder.toString());
-    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setOperName("now_jiehe").setAction("app_out").setUin(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin()).addKeyValue("timestr", l).addKeyValue("timelong", l - this.jdField_b_of_type_Long).addKeyValue("qimei", ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getQimei()).addKeyValue("res1", this.jdField_b_of_type_Long).addKeyValue("uin", this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getAccount()).addKeyValue("appid", 406).addKeyValue("client_build", String.valueOf(DeviceUtils.a())).addKeyValue("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication, QBaseActivity.sTopActivity)).addKeyValue("imei", MobileInfoUtil.getImei()).report();
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setOperName("now_jiehe").setAction("app_out").setUin(this.e.getCurrentAccountUin()).addKeyValue("timestr", l).addKeyValue("timelong", l - this.f).addKeyValue("qimei", ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getQimei()).addKeyValue("res1", this.f).addKeyValue("uin", this.e.getAccount()).addKeyValue("appid", 406).addKeyValue("client_build", String.valueOf(DeviceUtils.a())).addKeyValue("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication, QBaseActivity.sTopActivity)).addKeyValue("imei", MobileInfoUtil.getImei()).report();
   }
   
   public UsingTimeReportManager a()
   {
-    INearbyAppInterface localINearbyAppInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
+    INearbyAppInterface localINearbyAppInterface = this.e;
     if (localINearbyAppInterface == null) {
       return null;
     }
-    return (UsingTimeReportManager)localINearbyAppInterface.getManager(NearbyConstants.j);
-  }
-  
-  public void a()
-  {
-    super.a();
-    Foreground.addActivityLifeCallback(this);
+    return (UsingTimeReportManager)localINearbyAppInterface.getManager(NearbyConstants.l);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface == null) {
+    if (this.e == null) {
       return;
     }
-    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setAction("nearby_tab_staying").setUin(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin()).setRes1(String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long)).setExtCol1(String.valueOf(paramInt1)).setExtCol2(String.valueOf(paramInt2)).report();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setAction("nearby_tab_staying").setUin(this.e.getCurrentAccountUin()).setRes1(String.valueOf(System.currentTimeMillis() - this.a)).setExtCol1(String.valueOf(paramInt1)).setExtCol2(String.valueOf(paramInt2)).report();
+    this.a = System.currentTimeMillis();
   }
   
   public void a(long paramLong)
   {
-    INearbyAppInterface localINearbyAppInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
+    INearbyAppInterface localINearbyAppInterface = this.e;
     if (localINearbyAppInterface == null) {
       return;
     }
-    localINearbyAppInterface.nearbyReportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.jdField_b_of_type_JavaLangString, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
-    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setAction("nearby_page_staying").setUin(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin()).setRes1(String.valueOf(paramLong)).setExtCol3(String.valueOf(MatchMakerPlugin.a())).report();
+    localINearbyAppInterface.nearbyReportClickEvent("dc00899", this.b, "", this.c, this.d, 0, 0, String.valueOf(paramLong), "", "", "");
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby").setAction("nearby_page_staying").setUin(this.e.getCurrentAccountUin()).setRes1(String.valueOf(paramLong)).setExtCol3(String.valueOf(MatchMakerPlugin.b())).report();
   }
   
   public void b()
   {
     super.b();
+    Foreground.addActivityLifeCallback(this);
+  }
+  
+  public void c()
+  {
+    super.c();
     Foreground.removeActivityLifeCallback(this);
   }
   
@@ -128,17 +127,17 @@ public class NearbyUsingTimeReport
   
   public void onProcessBackground()
   {
-    g();
+    h();
   }
   
   public void onProcessForeground()
   {
-    f();
+    g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyUsingTimeReport
  * JD-Core Version:    0.7.0.1
  */

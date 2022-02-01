@@ -6,61 +6,51 @@ import java.util.List;
 
 public class AEOldResInfo
 {
-  public static final AEOldResInfo a;
-  public static final AEOldResInfo[] a;
-  public static final AEOldResInfo b;
-  public static final AEOldResInfo[] b;
-  public final int a;
-  public final String a;
-  public final boolean a;
-  public final int b;
-  public final String b;
-  public boolean b;
-  public final int c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo = new AEOldResInfo(-1, "215Config");
-    jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo = new AEOldResInfo(0, "AEBasePackage", "old_qq_android_native_short_filter_", 850003, 8500);
-    jdField_a_of_type_ArrayOfComTencentAelightCameraDownloadOldApiAEOldResInfo = new AEOldResInfo[] { jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo };
-    jdField_b_of_type_ArrayOfComTencentAelightCameraDownloadOldApiAEOldResInfo = a();
-  }
+  public static final AEOldResInfo a = new AEOldResInfo(-1, "215Config");
+  public static final AEOldResInfo b = new AEOldResInfo(0, "AEBasePackage", "old_qq_android_native_short_filter_", 850003, 8500);
+  public static final AEOldResInfo[] c = { a, b };
+  public static final AEOldResInfo[] d = a();
+  public final int e;
+  public final String f;
+  public final String g;
+  public final int h;
+  public final int i;
+  public final boolean j;
+  public boolean k = true;
   
   private AEOldResInfo(int paramInt, String paramString)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = -1;
-    this.c = -1;
-    this.jdField_a_of_type_Boolean = false;
+    this.e = paramInt;
+    this.f = paramString;
+    this.g = null;
+    this.h = -1;
+    this.i = -1;
+    this.j = false;
   }
   
   private AEOldResInfo(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = true;
+    this.e = paramInt1;
+    this.f = paramString1;
+    this.g = paramString2;
+    this.h = paramInt2;
+    this.i = paramInt3;
+    this.j = true;
   }
   
   private static AEOldResInfo[] a()
   {
     LinkedList localLinkedList = new LinkedList();
-    AEOldResInfo[] arrayOfAEOldResInfo = jdField_a_of_type_ArrayOfComTencentAelightCameraDownloadOldApiAEOldResInfo;
-    int j = arrayOfAEOldResInfo.length;
-    int i = 0;
-    while (i < j)
+    AEOldResInfo[] arrayOfAEOldResInfo = c;
+    int n = arrayOfAEOldResInfo.length;
+    int m = 0;
+    while (m < n)
     {
-      AEOldResInfo localAEOldResInfo = arrayOfAEOldResInfo[i];
-      if (localAEOldResInfo.jdField_a_of_type_Boolean) {
+      AEOldResInfo localAEOldResInfo = arrayOfAEOldResInfo[m];
+      if (localAEOldResInfo.j) {
         localLinkedList.add(localAEOldResInfo);
       }
-      i += 1;
+      m += 1;
     }
     return (AEOldResInfo[])localLinkedList.toArray(new AEOldResInfo[0]);
   }
@@ -70,17 +60,17 @@ public class AEOldResInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{index:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", description:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", resPrefix:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", resVersionLimit:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", resVersion:");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", isPackage:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

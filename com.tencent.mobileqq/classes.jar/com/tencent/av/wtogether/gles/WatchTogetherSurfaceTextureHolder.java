@@ -7,47 +7,47 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WatchTogetherSurfaceTextureHolder
 {
-  private volatile int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener;
-  private volatile Thread jdField_a_of_type_JavaLangThread;
-  private boolean jdField_a_of_type_Boolean = false;
+  private SurfaceTexture a;
+  private volatile Thread b;
+  private volatile int c;
+  private boolean d = false;
+  private WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener e;
   
   public WatchTogetherSurfaceTextureHolder(SurfaceTexture paramSurfaceTexture, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
+    this.a = paramSurfaceTexture;
+    this.c = paramInt;
+    this.b = Thread.currentThread();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    this.a.updateTexImage();
   }
   
   public void a(int paramInt)
   {
     int i;
-    if (this.jdField_a_of_type_Int != paramInt) {
+    if (this.c != paramInt) {
       i = 1;
     } else {
       i = 0;
     }
-    if ((this.jdField_a_of_type_JavaLangThread == null) || ((this.jdField_a_of_type_JavaLangThread == Thread.currentThread()) && (i != 0)))
+    if ((this.b == null) || ((this.b == Thread.currentThread()) && (i != 0)))
     {
       if ((i != 0) && (Build.VERSION.SDK_INT >= 16))
       {
-        if ((this.jdField_a_of_type_Int != 0) && (!this.jdField_a_of_type_Boolean))
+        if ((this.c != 0) && (!this.d))
         {
-          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+          this.a.detachFromGLContext();
           QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext detach");
         }
-        this.jdField_a_of_type_Int = paramInt;
+        this.c = paramInt;
       }
-      if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
+      if ((Build.VERSION.SDK_INT >= 16) && (!this.d))
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(paramInt);
-        this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
+        this.a.attachToGLContext(paramInt);
+        this.b = Thread.currentThread();
         QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext real attch");
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -61,62 +61,62 @@ public class WatchTogetherSurfaceTextureHolder
   
   public void a(WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener paramOnSurfaceTextureEglFoucusListener)
   {
-    this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener = paramOnSurfaceTextureEglFoucusListener;
+    this.e = paramOnSurfaceTextureEglFoucusListener;
   }
   
   public void a(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
-  }
-  
-  public boolean a()
-  {
-    return ((this.jdField_a_of_type_JavaLangThread == null) && (this.jdField_a_of_type_Int == 0)) || (this.jdField_a_of_type_JavaLangThread == Thread.currentThread());
+    this.a.getTransformMatrix(paramArrayOfFloat);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
-  public void c()
+  public boolean c()
+  {
+    return ((this.b == null) && (this.c == 0)) || (this.b == Thread.currentThread());
+  }
+  
+  public void d()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("detachFromGLContext Thread.currentThread()):=");
     ((StringBuilder)localObject).append(Thread.currentThread());
     QLog.d("WatchTogetherSurfaceTextureHolder", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_JavaLangThread != Thread.currentThread()) {
+    if (this.b != Thread.currentThread()) {
       QLog.d("WatchTogetherSurfaceTextureHolder", 1, "detachFromGLContext error", new Throwable("detachFromGLContext"));
     }
-    if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
+    if ((Build.VERSION.SDK_INT >= 16) && (!this.d))
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+      this.a.detachFromGLContext();
       localObject = new int[1];
-      localObject[0] = this.jdField_a_of_type_Int;
+      localObject[0] = this.c;
       GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangThread = null;
-  }
-  
-  public void d()
-  {
-    QLog.d("WatchTogetherSurfaceTextureHolder", 1, "lostEglContext");
-    WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener localOnSurfaceTextureEglFoucusListener = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener;
-    if (localOnSurfaceTextureEglFoucusListener != null) {
-      localOnSurfaceTextureEglFoucusListener.a(this.jdField_a_of_type_JavaLangThread);
-    }
-    this.jdField_a_of_type_JavaLangThread = null;
+    this.c = 0;
+    this.b = null;
   }
   
   public void e()
   {
+    QLog.d("WatchTogetherSurfaceTextureHolder", 1, "lostEglContext");
+    WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener localOnSurfaceTextureEglFoucusListener = this.e;
+    if (localOnSurfaceTextureEglFoucusListener != null) {
+      localOnSurfaceTextureEglFoucusListener.a(this.b);
+    }
+    this.b = null;
+  }
+  
+  public void f()
+  {
     QLog.d("WatchTogetherSurfaceTextureHolder", 1, "onResponsePauseMessage");
-    WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener localOnSurfaceTextureEglFoucusListener = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener;
+    WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener localOnSurfaceTextureEglFoucusListener = this.e;
     if (localOnSurfaceTextureEglFoucusListener != null) {
       localOnSurfaceTextureEglFoucusListener.a();
     }
-    this.jdField_a_of_type_JavaLangThread = null;
+    this.b = null;
   }
 }
 

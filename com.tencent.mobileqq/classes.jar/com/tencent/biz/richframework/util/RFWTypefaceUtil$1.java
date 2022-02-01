@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.TextView;
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
-import java.util.Hashtable;
+import java.util.concurrent.ConcurrentHashMap;
 
 final class RFWTypefaceUtil$1
   implements RFWDownloader.RFWDownloadListener
@@ -24,7 +24,7 @@ final class RFWTypefaceUtil$1
         try
         {
           Typeface localTypeface = Typeface.createFromFile(paramString);
-          RFWTypefaceUtil.a().put(this.jdField_a_of_type_JavaLangString, localTypeface);
+          RFWTypefaceUtil.a().put(this.a, localTypeface);
           new Handler(Looper.getMainLooper()).post(new RFWTypefaceUtil.1.1(this, localTypeface));
           return;
         }

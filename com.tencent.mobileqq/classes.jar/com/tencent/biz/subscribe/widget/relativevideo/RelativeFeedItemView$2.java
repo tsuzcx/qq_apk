@@ -20,11 +20,11 @@ class RelativeFeedItemView$2
   
   public void onClick(View paramView)
   {
-    CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)this.a.a();
+    CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)this.a.getData();
     if (localStFeed != null)
     {
-      SubscribeLaucher.a(this.a.getContext(), localStFeed, 0, TransitionAnimHelper.a(this.a.a, localStFeed.cover.width.get(), localStFeed.cover.height.get()));
-      ExtraTypeInfo localExtraTypeInfo = this.a.a();
+      SubscribeLaucher.a(this.a.getContext(), localStFeed, 0, TransitionAnimHelper.a(this.a.c, localStFeed.cover.width.get(), localStFeed.cover.height.get()));
+      ExtraTypeInfo localExtraTypeInfo = this.a.getExtraTypeInfo();
       if ((localExtraTypeInfo != null) && (localStFeed != null)) {
         if (localExtraTypeInfo.pageType == 7003) {
           VSReporter.a(localStFeed.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
@@ -38,7 +38,7 @@ class RelativeFeedItemView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView.2
  * JD-Core Version:    0.7.0.1
  */

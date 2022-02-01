@@ -6,8 +6,8 @@ import com.tencent.aelight.camera.ae.util.AEFastClickThrottle;
 import com.tencent.aelight.camera.aeeditor.module.clip.video.VideoSetSpeedDialog;
 import com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
 
 class AEEditorMultiCutEditFragment$15
   implements View.OnClickListener
@@ -19,16 +19,16 @@ class AEEditorMultiCutEditFragment$15
     if (AEFastClickThrottle.a(paramView)) {
       return;
     }
-    if ((AEEditorMultiCutEditFragment.a(this.a) != null) && (AEEditorMultiCutEditFragment.a(this.a).isShowing())) {
+    if ((AEEditorMultiCutEditFragment.h(this.a) != null) && (AEEditorMultiCutEditFragment.h(this.a).isShowing())) {
       return;
     }
-    if (this.a.a == null) {
+    if (this.a.h == null) {
       return;
     }
-    paramView = this.a.a.a();
+    paramView = this.a.h.getSelectedVideoClip();
     if ((paramView != null) && (paramView.getResource() != null) && (paramView.getResource().getType() != 2))
     {
-      AEEditorMultiCutEditFragment.a(this.a);
+      AEEditorMultiCutEditFragment.i(this.a);
       return;
     }
     AEQLog.a("AEEditorMultiCutEditFragment", "[mIvSpeedBtn.onClick] type==IMAGE_TYPE");
@@ -36,7 +36,7 @@ class AEEditorMultiCutEditFragment$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.15
  * JD-Core Version:    0.7.0.1
  */

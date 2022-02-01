@@ -11,13 +11,13 @@ class ArkDebugChatPie$1$1$2$1
   
   public void run()
   {
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkDebugChatPie.a(this.a.a.a.this$0));
-    QQToast.a(this.a.a.a.this$0.a, HardCodeUtil.a(2131700891), 0).a();
+    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkDebugChatPie.b(this.a.b.a.this$0));
+    QQToast.makeText(this.a.b.a.this$0.e, HardCodeUtil.a(2131898915), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.2.1
  * JD-Core Version:    0.7.0.1
  */

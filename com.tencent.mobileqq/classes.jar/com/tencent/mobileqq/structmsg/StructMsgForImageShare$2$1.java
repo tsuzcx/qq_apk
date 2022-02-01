@@ -11,13 +11,13 @@ class StructMsgForImageShare$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.b(3.0F, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidContentResResources));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
+    this.b.c.setCompoundDrawablePadding(AIOUtils.b(3.0F, this.b.b));
+    this.b.c.setCompoundDrawables(this.a, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForImageShare.2.1
  * JD-Core Version:    0.7.0.1
  */

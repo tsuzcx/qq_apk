@@ -15,13 +15,13 @@ import mqq.os.MqqHandler;
 public class RIJImageOptReport
 {
   public static int a;
-  public static long a;
-  public static IRIJImageOptReport a;
   public static long b;
   public static long c;
   public static long d;
   public static long e;
   public static long f;
+  public static long g;
+  public static IRIJImageOptReport h;
   
   private static int a(String paramString)
   {
@@ -47,14 +47,14 @@ public class RIJImageOptReport
   
   public static void a(int paramInt, ImageRequest paramImageRequest)
   {
-    if ((((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).isReportOn()) && (paramImageRequest != null))
+    if (paramImageRequest != null)
     {
       if (paramInt == 1)
       {
-        paramImageRequest.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramImageRequest.h = System.currentTimeMillis();
         return;
       }
-      if (paramImageRequest.jdField_a_of_type_Long != 0L)
+      if (paramImageRequest.h != 0L)
       {
         if (paramInt != 2)
         {
@@ -74,26 +74,26 @@ public class RIJImageOptReport
                   QLog.d("RIJImageOptReport", 1, localStringBuilder.toString());
                   return;
                 }
-                paramImageRequest.h = System.currentTimeMillis();
+                paramImageRequest.o = System.currentTimeMillis();
                 return;
               }
-              paramImageRequest.g = System.currentTimeMillis();
+              paramImageRequest.n = System.currentTimeMillis();
               return;
             }
-            paramImageRequest.jdField_d_of_type_Long = System.currentTimeMillis();
+            paramImageRequest.k = System.currentTimeMillis();
             return;
           }
-          paramImageRequest.c = System.currentTimeMillis();
+          paramImageRequest.j = System.currentTimeMillis();
           return;
         }
-        paramImageRequest.jdField_b_of_type_Long = System.currentTimeMillis();
+        paramImageRequest.i = System.currentTimeMillis();
       }
     }
   }
   
   public static void a(ImageRequest paramImageRequest)
   {
-    IRIJImageOptReport localIRIJImageOptReport = jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageloaderIRIJImageOptReport;
+    IRIJImageOptReport localIRIJImageOptReport = h;
     if (localIRIJImageOptReport != null) {
       localIRIJImageOptReport.reportSlowImageRequest(paramImageRequest);
     }
@@ -101,6 +101,7 @@ public class RIJImageOptReport
   
   public static void a(ImageRequest paramImageRequest, boolean paramBoolean, String paramString)
   {
+    a(6, paramImageRequest);
     ThreadManager.getSubThreadHandler().post(new RIJImageOptReport.1(paramImageRequest, paramString));
   }
   
@@ -109,52 +110,33 @@ public class RIJImageOptReport
     if (paramImageRequest == null) {
       return;
     }
-    paramImageRequest.jdField_d_of_type_Int = paramInt;
+    paramImageRequest.p = paramInt;
   }
   
-  private static boolean b(ImageRequest paramImageRequest)
+  private static void d(ImageRequest paramImageRequest)
   {
-    boolean bool3 = ((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).isReportOn();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bool3)
-    {
-      bool1 = bool2;
-      if (paramImageRequest != null)
-      {
-        bool1 = bool2;
-        if (paramImageRequest.jdField_a_of_type_Long != 0L) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static void c(ImageRequest paramImageRequest)
-  {
-    long l2 = paramImageRequest.c - paramImageRequest.jdField_b_of_type_Long;
-    long l3 = paramImageRequest.jdField_d_of_type_Long - paramImageRequest.c;
-    long l4 = paramImageRequest.jdField_e_of_type_Long;
-    long l5 = paramImageRequest.f;
+    long l2 = paramImageRequest.j - paramImageRequest.i;
+    long l3 = paramImageRequest.k - paramImageRequest.j;
+    long l4 = paramImageRequest.l;
+    long l5 = paramImageRequest.m;
     long l1;
-    if (paramImageRequest.g > 0L) {
-      l1 = paramImageRequest.h - paramImageRequest.g;
+    if (paramImageRequest.n > 0L) {
+      l1 = paramImageRequest.o - paramImageRequest.n;
     } else {
       l1 = 0L;
     }
-    long l6 = paramImageRequest.h - paramImageRequest.jdField_a_of_type_Long;
-    int j = paramImageRequest.jdField_d_of_type_Int;
-    int i = paramImageRequest.jdField_e_of_type_Int;
-    long l7 = paramImageRequest.i;
-    if (paramImageRequest.jdField_a_of_type_JavaNetURL != null) {
-      localObject = paramImageRequest.jdField_a_of_type_JavaNetURL.toString();
+    long l6 = paramImageRequest.o - paramImageRequest.h;
+    int j = paramImageRequest.p;
+    int i = paramImageRequest.q;
+    long l7 = paramImageRequest.t;
+    if (paramImageRequest.a != null) {
+      localObject = paramImageRequest.a.toString();
     } else {
       localObject = "";
     }
     int k = a((String)localObject);
-    String str1 = paramImageRequest.jdField_b_of_type_JavaLangString;
-    String str2 = paramImageRequest.jdField_a_of_type_JavaLangString;
+    String str1 = paramImageRequest.s;
+    String str2 = paramImageRequest.r;
     paramImageRequest = new HashMap();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(l2);
@@ -197,49 +179,68 @@ public class RIJImageOptReport
       bool = true;
     }
     paramImageRequest.put("ipv6", Boolean.valueOf(bool));
-    Object localObject = jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageloaderIRIJImageOptReport;
+    Object localObject = h;
     if (localObject != null) {
       ((IRIJImageOptReport)localObject).reportQualityDataDimension(i, 6, l6, paramImageRequest);
     }
     if (QLog.isColorLevel())
     {
-      jdField_a_of_type_Int += 1;
-      jdField_a_of_type_Long += l6;
-      jdField_b_of_type_Long += l3;
-      c += l1;
-      jdField_d_of_type_Long += l4;
-      jdField_e_of_type_Long += l5;
-      f += l7;
-      if (jdField_a_of_type_Int == 100)
+      a += 1;
+      b += l6;
+      c += l3;
+      d += l1;
+      e += l4;
+      f += l5;
+      g += l7;
+      if (a == 100)
       {
         paramImageRequest = new StringBuilder();
         paramImageRequest.append("average  total: ");
-        paramImageRequest.append((float)jdField_a_of_type_Long / jdField_a_of_type_Int);
+        paramImageRequest.append((float)b / a);
         paramImageRequest.append(" size: ");
-        paramImageRequest.append(f / jdField_a_of_type_Int);
+        paramImageRequest.append(g / a);
         paramImageRequest.append(" threapool: ");
-        paramImageRequest.append((float)jdField_b_of_type_Long / jdField_a_of_type_Int);
+        paramImageRequest.append((float)c / a);
         paramImageRequest.append(" mainthread: ");
-        paramImageRequest.append((float)c / jdField_a_of_type_Int);
+        paramImageRequest.append((float)d / a);
         paramImageRequest.append(" downloadAndWriteFileTime: ");
-        paramImageRequest.append((float)jdField_d_of_type_Long / jdField_a_of_type_Int);
+        paramImageRequest.append((float)e / a);
         paramImageRequest.append(" decodeTime: ");
-        paramImageRequest.append((float)jdField_e_of_type_Long / jdField_a_of_type_Int);
+        paramImageRequest.append((float)f / a);
         QLog.d("RIJImageOptReport", 2, paramImageRequest.toString());
-        jdField_a_of_type_Int = 0;
-        jdField_a_of_type_Long = 0L;
-        jdField_b_of_type_Long = 0L;
+        a = 0;
+        b = 0L;
         c = 0L;
-        jdField_d_of_type_Long = 0L;
-        jdField_e_of_type_Long = 0L;
+        d = 0L;
+        e = 0L;
         f = 0L;
+        g = 0L;
       }
     }
+  }
+  
+  private static boolean e(ImageRequest paramImageRequest)
+  {
+    boolean bool3 = ((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).isReportOn();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (paramImageRequest != null)
+      {
+        bool1 = bool2;
+        if (paramImageRequest.h != 0L) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.imageloader.RIJImageOptReport
  * JD-Core Version:    0.7.0.1
  */

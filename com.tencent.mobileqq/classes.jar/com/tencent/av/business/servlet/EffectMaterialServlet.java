@@ -28,7 +28,7 @@ public class EffectMaterialServlet
       paramIntent.append(localToServiceMsg.getServiceCmd());
       QLog.i("EffectMaterialServlet", 2, paramIntent.toString());
     }
-    ((EffectMaterialHandler)((AppInterface)getAppRuntime()).getBusinessHandler(EffectMaterialHandler.class.getName())).a().a(localToServiceMsg, paramFromServiceMsg);
+    ((EffectMaterialHandler)((AppInterface)getAppRuntime()).getBusinessHandler(EffectMaterialHandler.class.getName())).b().a(localToServiceMsg, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)

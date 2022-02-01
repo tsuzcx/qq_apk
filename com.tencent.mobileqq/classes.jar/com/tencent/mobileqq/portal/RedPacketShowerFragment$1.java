@@ -17,7 +17,7 @@ class RedPacketShowerFragment$1
   
   public void a(boolean paramBoolean, String paramString, Object paramObject)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqPortalRedPacketShowerFragment.a != null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.a)) && (this.c.c != null))
     {
       if ((paramBoolean) && ((paramObject instanceof Bitmap)))
       {
@@ -29,7 +29,7 @@ class RedPacketShowerFragment$1
           QLog.d("RedPacketShowerFragment", 2, localStringBuilder.toString());
         }
         paramObject = (Bitmap)paramObject;
-        this.jdField_a_of_type_ComTencentMobileqqPortalRedPacketShowerFragment.a.setImageBitmap(paramObject);
+        this.c.c.setImageBitmap(paramObject);
       }
       if (!paramBoolean)
       {
@@ -41,21 +41,21 @@ class RedPacketShowerFragment$1
           QLog.d("RedPacketShowerFragment", 2, paramObject.toString());
         }
         paramString = null;
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqPortalRedPacketShowerFragment.getResources().getDrawable(2130845404);
+        paramObject = this.c.getResources().getDrawable(2130846860);
         if ((paramObject instanceof SkinnableBitmapDrawable)) {
           paramString = ((SkinnableBitmapDrawable)paramObject).getBitmap();
         } else if ((paramObject instanceof BitmapDrawable)) {
           paramString = ((BitmapDrawable)paramObject).getBitmap();
         }
-        this.jdField_a_of_type_ComTencentMobileqqPortalRedPacketShowerFragment.a.setImageBitmap(paramString);
+        this.c.c.setImageBitmap(paramString);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalEntryManager.b(this);
+      this.b.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.RedPacketShowerFragment.1
  * JD-Core Version:    0.7.0.1
  */

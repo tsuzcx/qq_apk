@@ -11,12 +11,12 @@ class EditLocalVideoActivity$11
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+    EditLocalVideoActivity.b(this.a, "an_yuanshipin");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.11
  * JD-Core Version:    0.7.0.1
  */

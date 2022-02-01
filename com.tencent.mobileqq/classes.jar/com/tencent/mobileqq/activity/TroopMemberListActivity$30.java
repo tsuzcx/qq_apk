@@ -14,18 +14,18 @@ class TroopMemberListActivity$30
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramAnimation == this.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mSearchDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTitleBar.setVisibility(8);
+      this.d.mSearchDialog.show();
+      this.d.mRootView.setAnimation(null);
+      this.d.mTitleBar.setVisibility(8);
       return;
     }
     if (paramAnimation == this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.requestLayout();
+      this.d.mRootView.setAnimation(null);
+      this.d.mRootView.offsetTopAndBottom(this.c);
+      this.d.mRootView.requestLayout();
     }
   }
   
@@ -35,7 +35,7 @@ class TroopMemberListActivity$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.30
  * JD-Core Version:    0.7.0.1
  */

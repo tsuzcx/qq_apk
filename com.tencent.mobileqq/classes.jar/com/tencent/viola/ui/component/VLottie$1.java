@@ -1,11 +1,11 @@
 package com.tencent.viola.ui.component;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.viola.ui.view.D8SafeAnimatorListener;
 import com.tencent.viola.utils.ViolaLogUtils;
 
 class VLottie$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   VLottie$1(VLottie paramVLottie) {}
   
@@ -34,7 +34,7 @@ class VLottie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VLottie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class GroupTeamWorkListActivity$1
   
   public void onClick(View paramView)
   {
-    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportClickWithTroopType(this.a.app, "0X800993E", String.valueOf(this.a.a));
+    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportClickWithTroopType(this.a.app, "0X800993E", String.valueOf(this.a.m));
     PadInfo localPadInfo = (PadInfo)((CloudFileItemBuilder.CloudFileHolder)paramView.getTag()).a;
     Bundle localBundle = new Bundle();
     localBundle.putString("url", HtmlOffline.a(localPadInfo.pad_url, "_bid=2517"));
@@ -32,7 +32,7 @@ class GroupTeamWorkListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.1
  * JD-Core Version:    0.7.0.1
  */

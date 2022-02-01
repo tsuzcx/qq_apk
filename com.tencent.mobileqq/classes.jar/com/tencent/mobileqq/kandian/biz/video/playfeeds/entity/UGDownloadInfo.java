@@ -2,11 +2,8 @@ package com.tencent.mobileqq.kandian.biz.video.playfeeds.entity;
 
 public class UGDownloadInfo
 {
-  public int a = 5;
   public String a;
-  public int b = 10;
   public String b;
-  public int c;
   public String c;
   public String d;
   public String e;
@@ -18,11 +15,14 @@ public class UGDownloadInfo
   public String k;
   public String l;
   public String m;
-  public String n;
+  public int n = 5;
+  public int o = 10;
+  public String p;
+  public int q;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.UGDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

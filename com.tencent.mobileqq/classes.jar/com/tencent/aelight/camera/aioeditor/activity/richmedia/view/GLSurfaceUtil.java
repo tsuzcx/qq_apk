@@ -8,37 +8,27 @@ import java.nio.FloatBuffer;
 @TargetApi(9)
 public class GLSurfaceUtil
 {
-  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  public static boolean a;
-  public static final float[] a;
-  private static final int jdField_b_of_type_Int;
-  public static final float[] b;
-  public int a;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  public static final float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F };
+  public static final float[] b = { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F };
+  public static boolean d = false;
+  private static final int e = a.length * 4 + b.length * 4;
+  private static final FloatBuffer f = ByteBuffer.allocateDirect(e * 2).order(ByteOrder.nativeOrder()).asFloatBuffer();
+  public int c = 0;
+  private int[] g = new int[3];
+  private int[] h = new int[1];
   
   static
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F };
-    jdField_b_of_type_Int = jdField_a_of_type_ArrayOfFloat.length * 4 + jdField_b_of_type_ArrayOfFloat.length * 4;
-    jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(jdField_b_of_type_Int * 2).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    int i = jdField_a_of_type_JavaNioFloatBuffer.capacity();
-    jdField_a_of_type_JavaNioFloatBuffer.limit(i);
-    jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    jdField_a_of_type_JavaNioFloatBuffer.put(jdField_a_of_type_ArrayOfFloat);
-    jdField_a_of_type_JavaNioFloatBuffer.put(jdField_b_of_type_ArrayOfFloat);
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public GLSurfaceUtil()
-  {
-    this.jdField_a_of_type_Int = 0;
+    int i = f.capacity();
+    f.limit(i);
+    f.position(0);
+    f.put(a);
+    f.put(b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.view.GLSurfaceUtil
  * JD-Core Version:    0.7.0.1
  */

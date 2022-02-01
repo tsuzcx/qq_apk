@@ -29,14 +29,14 @@ import org.jetbrains.annotations.NotNull;
 public class EcshopQggChatPie
   implements IEcshopChatPieDelegate, QQShopRedPointUtil.IGetRedPointCallback
 {
-  private final IEcshopChatPieCallback jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieCallback;
-  private TabLayoutController jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController;
-  private final boolean jdField_a_of_type_Boolean;
+  private TabLayoutController a;
+  private final boolean b;
+  private final IEcshopChatPieCallback c;
   
   public EcshopQggChatPie(Intent paramIntent, IEcshopChatPieCallback paramIEcshopChatPieCallback)
   {
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("req_qgg_hide_tab", false);
-    this.jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieCallback = paramIEcshopChatPieCallback;
+    this.b = paramIntent.getBooleanExtra("req_qgg_hide_tab", false);
+    this.c = paramIEcshopChatPieCallback;
     ((EcshopAdHandler)((AppInterface)AppUtils.a()).getBusinessHandler(EcshopAdHandler.class.getName())).a(this);
     QQShopRedPointUtil.a(this);
   }
@@ -62,7 +62,7 @@ public class EcshopQggChatPie
   
   public void a(@NotNull ArrayList<RedPointInfo> paramArrayList)
   {
-    TabLayoutController localTabLayoutController = this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController;
+    TabLayoutController localTabLayoutController = this.a;
     if (localTabLayoutController != null) {
       localTabLayoutController.a(paramArrayList);
     }
@@ -70,7 +70,7 @@ public class EcshopQggChatPie
   
   public void a(List<Long> paramList)
   {
-    EcshopAdUtil.a(this.jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieCallback, paramList);
+    EcshopAdUtil.a(this.c, paramList);
   }
   
   public void a(List<ChatMessage> paramList, IEcshopChatPieDelegate.IRefreshCallback paramIRefreshCallback)
@@ -82,7 +82,7 @@ public class EcshopQggChatPie
       {
         ChatMessage localChatMessage = (ChatMessage)localIterator.next();
         localChatMessage.removeExtInfoToExtStr("add_title");
-        if (EcshopUtils.a(localChatMessage) == 1) {
+        if (EcshopUtils.d(localChatMessage) == 1) {
           localIterator.remove();
         }
       }
@@ -94,7 +94,7 @@ public class EcshopQggChatPie
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
@@ -110,13 +110,13 @@ public class EcshopQggChatPie
       }
       if (QQShopConfigUtil.a(paramContext))
       {
-        LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(paramRelativeLayout.getContext()).inflate(2131561893, paramRelativeLayout, false);
+        LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(paramRelativeLayout.getContext()).inflate(2131628311, paramRelativeLayout, false);
         paramRelativeLayout.addView(localLinearLayout);
         paramRelativeLayout = new TabLayoutController(localLinearLayout);
-        paramRelativeLayout.a(paramContext.a, paramContext.b);
+        paramRelativeLayout.a(paramContext.k, paramContext.e);
         paramRelativeLayout.a(1);
-        paramRelativeLayout.a(QQShopRedPointUtil.a());
-        this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController = paramRelativeLayout;
+        paramRelativeLayout.a(QQShopRedPointUtil.b());
+        this.a = paramRelativeLayout;
         return true;
       }
     }
@@ -125,12 +125,12 @@ public class EcshopQggChatPie
   
   public boolean a(RelativeLayout paramRelativeLayout)
   {
-    return (!a()) && (EcshopConfUtil.a()) && (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopCustomTabView") != null);
+    return (!a()) && (EcshopConfUtil.b()) && (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopCustomTabView") != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.aio.EcshopQggChatPie
  * JD-Core Version:    0.7.0.1
  */

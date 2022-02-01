@@ -15,13 +15,13 @@ class QQStoryCmdHandler$6
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
+    this.b.a(this.a);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.6
  * JD-Core Version:    0.7.0.1
  */

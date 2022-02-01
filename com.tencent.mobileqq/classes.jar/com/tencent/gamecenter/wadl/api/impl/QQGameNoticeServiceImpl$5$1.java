@@ -10,12 +10,12 @@ class QQGameNoticeServiceImpl$5$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentGamecenterWadlApiImplQQGameNoticeServiceImpl$5.a.setTipsIcon(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.b.a.setTipsIcon(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameNoticeServiceImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,30 @@ import org.jetbrains.annotations.Nullable;
 
 public class Automator
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ArrayList<BaseStep> a = new ArrayList();
+  private final LinkedList<BaseStep> b = new LinkedList();
+  private final Handler c = new Handler(Looper.getMainLooper());
   @Nullable
-  private ILog jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorILog;
+  private ILog d;
   @Nullable
-  private IThreadExecutor jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorIThreadExecutor;
+  private IThreadExecutor e;
   @Nullable
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private ArrayList<BaseStep> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final LinkedList<BaseStep> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Runnable f;
   
-  private void c()
+  private void e()
   {
-    if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+    if (!this.b.isEmpty())
     {
-      Object localObject2 = (BaseStep)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      Object localObject2 = (BaseStep)this.b.removeFirst();
       if (((BaseStep)localObject2).a())
       {
         localObject1 = new Automator.4(this, (BaseStep)localObject2);
-        if (((BaseStep)localObject2).c())
+        if (((BaseStep)localObject2).i())
         {
           ((Runnable)localObject1).run();
           return;
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorIThreadExecutor;
+        localObject2 = this.e;
         if (localObject2 != null)
         {
           ((IThreadExecutor)localObject2).a((Runnable)localObject1);
@@ -45,7 +45,7 @@ public class Automator
       b(new Automator.5(this, (BaseStep)localObject2));
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangRunnable;
+    Object localObject1 = this.f;
     if (localObject1 != null) {
       ((Runnable)localObject1).run();
     }
@@ -54,18 +54,7 @@ public class Automator
   @Nullable
   public final ILog a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorILog;
-  }
-  
-  @Nullable
-  public final IThreadExecutor a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorIThreadExecutor;
-  }
-  
-  public final void a()
-  {
-    b(new Automator.3(this));
+    return this.d;
   }
   
   public final void a(@NotNull BaseStep paramBaseStep)
@@ -75,17 +64,17 @@ public class Automator
   
   public final void a(@Nullable ILog paramILog)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorILog = paramILog;
+    this.d = paramILog;
   }
   
   public final void a(@Nullable IThreadExecutor paramIThreadExecutor)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorIThreadExecutor = paramIThreadExecutor;
+    this.e = paramIThreadExecutor;
   }
   
   public final void a(@Nullable Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.f = paramRunnable;
   }
   
   public final void a(@NotNull BaseStep[] paramArrayOfBaseStep, boolean paramBoolean)
@@ -93,12 +82,10 @@ public class Automator
     b(new Automator.1(this, paramArrayOfBaseStep, paramBoolean));
   }
   
-  public final void b()
+  @Nullable
+  public final IThreadExecutor b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((BaseStep)localIterator.next()).a();
-    }
+    return this.e;
   }
   
   public void b(@NotNull Runnable paramRunnable)
@@ -114,12 +101,25 @@ public class Automator
       paramRunnable.run();
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    this.c.post(paramRunnable);
+  }
+  
+  public final void c()
+  {
+    b(new Automator.3(this));
+  }
+  
+  public final void d()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((BaseStep)localIterator.next()).c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.Automator
  * JD-Core Version:    0.7.0.1
  */

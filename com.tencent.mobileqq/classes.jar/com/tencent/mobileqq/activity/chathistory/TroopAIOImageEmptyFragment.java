@@ -49,14 +49,14 @@ public class TroopAIOImageEmptyFragment
       paramViewGroup.mLoadingDrawable = URLDrawableHelperConstants.a;
       paramViewGroup.mFailedDrawable = URLDrawableHelperConstants.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131378667)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131447324)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131378475)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131447089)).setText(this.c);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560628;
+    return 2131626673;
   }
   
   protected void init(Bundle paramBundle)
@@ -69,7 +69,7 @@ public class TroopAIOImageEmptyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageEmptyFragment
  * JD-Core Version:    0.7.0.1
  */

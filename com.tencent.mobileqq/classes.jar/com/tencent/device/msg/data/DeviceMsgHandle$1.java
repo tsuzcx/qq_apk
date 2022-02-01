@@ -14,7 +14,18 @@ class DeviceMsgHandle$1
 {
   DeviceMsgHandle$1(DeviceMsgHandle paramDeviceMsgHandle) {}
   
-  private List<DeviceFileObserver> a(Session paramSession)
+  private List<DeviceFileObserver> a(String paramString)
+  {
+    if (paramString == null) {
+      paramString = "";
+    }
+    if (paramString != null) {
+      return (List)this.a.i.get(paramString);
+    }
+    return null;
+  }
+  
+  private List<DeviceFileObserver> c(Session paramSession)
   {
     if ((paramSession != null) && (paramSession.actionInfo != null)) {
       paramSession = paramSession.actionInfo.strServiceName;
@@ -24,21 +35,10 @@ class DeviceMsgHandle$1
     return a(paramSession);
   }
   
-  private List<DeviceFileObserver> a(String paramString)
-  {
-    if (paramString == null) {
-      paramString = "";
-    }
-    if (paramString != null) {
-      return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    }
-    return null;
-  }
-  
   public void a(Bundle paramBundle)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgProgress");
+      QLog.d(DeviceMsgHandle.a, 4, "OnDataPointFileMsgProgress");
     }
     Object localObject = a("");
     if (localObject != null)
@@ -57,13 +57,13 @@ class DeviceMsgHandle$1
     }
     if (QLog.isDevelopLevel())
     {
-      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      localObject = DeviceMsgHandle.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onServiceSessionNew:");
       localStringBuilder.append(paramSession.uSessionID);
       QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
-    Object localObject = a(paramSession);
+    Object localObject = c(paramSession);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -77,13 +77,13 @@ class DeviceMsgHandle$1
   {
     if (QLog.isDevelopLevel())
     {
-      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      localObject = DeviceMsgHandle.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onServiceSessionProgress:");
       localStringBuilder.append(paramSession.uSessionID);
       QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
-    Object localObject = a(paramSession);
+    Object localObject = c(paramSession);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -97,13 +97,13 @@ class DeviceMsgHandle$1
   {
     if (QLog.isDevelopLevel())
     {
-      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      localObject = DeviceMsgHandle.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onServiceSessionComplete:");
       localStringBuilder.append(paramSession.uSessionID);
       QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
-    Object localObject = a(paramSession);
+    Object localObject = c(paramSession);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -116,7 +116,7 @@ class DeviceMsgHandle$1
   public void b(Bundle paramBundle)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgSendRet");
+      QLog.d(DeviceMsgHandle.a, 4, "OnDataPointFileMsgSendRet");
     }
     Object localObject = a("");
     if (localObject != null)
@@ -132,13 +132,13 @@ class DeviceMsgHandle$1
   {
     if (QLog.isDevelopLevel())
     {
-      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      localObject = DeviceMsgHandle.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onServiceSessionStart:");
       localStringBuilder.append(paramSession.uSessionID);
       QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
-    Object localObject = a(paramSession);
+    Object localObject = c(paramSession);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -150,7 +150,7 @@ class DeviceMsgHandle$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.1
  * JD-Core Version:    0.7.0.1
  */

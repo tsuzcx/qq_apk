@@ -37,7 +37,7 @@ public class DoraemonBridge
         paramInt1 = paramBundle.getInt("type");
         localObject = paramBundle.getString("appid");
         paramBundle = paramBundle.getString("api");
-        DoraemonFrequenceController.a().b(paramMessenger, paramInt1, (String)localObject, paramBundle);
+        DoraemonFrequenceController.a().c(paramMessenger, paramInt1, (String)localObject, paramBundle);
         return;
       }
       paramMessenger = paramBundle.getString("key");
@@ -70,7 +70,7 @@ public class DoraemonBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonBridge
  * JD-Core Version:    0.7.0.1
  */

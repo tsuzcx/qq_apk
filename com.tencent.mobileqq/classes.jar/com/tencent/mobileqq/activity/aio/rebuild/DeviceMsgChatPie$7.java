@@ -26,8 +26,8 @@ class DeviceMsgChatPie$7
           return;
         }
         long l = paramContext.getLong("deviceopdin", 0L);
-        if ((paramContext.getInt("deviceoprstcode", 0) == 0) && (Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == l)) {
-          this.a.q();
+        if ((paramContext.getInt("deviceoprstcode", 0) == 0) && (Long.parseLong(this.a.ah.b) == l)) {
+          this.a.L();
         }
       }
       else if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ProductFetchRst"))
@@ -37,7 +37,7 @@ class DeviceMsgChatPie$7
           return;
         }
         if (paramContext.getInt("deviceoprstcode", 0) == 0) {
-          this.a.a();
+          this.a.bz();
         }
       }
       else
@@ -49,24 +49,24 @@ class DeviceMsgChatPie$7
             return;
           }
           int i = paramContext.getInt("Flag", 0);
-          paramContext = (DeviceMsgHandle)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+          paramContext = (DeviceMsgHandle)this.a.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
           if (i == 1)
           {
-            DeviceMsgChatPie.H = true;
+            DeviceMsgChatPie.br = true;
             paramIntent = new StringBuilder();
-            paramIntent.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691804));
-            paramIntent.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691536));
+            paramIntent.append(this.a.d.getApp().getString(2131888766));
+            paramIntent.append(this.a.d.getApp().getString(2131888498));
             paramIntent = paramIntent.toString();
-            paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, MessageCache.a(), true, false, 0);
+            paramContext.a(this.a.ah.b, paramIntent, MessageCache.c(), true, false, 0);
             return;
           }
-          DeviceMsgChatPie.H = false;
+          DeviceMsgChatPie.br = false;
           paramIntent = new StringBuilder();
-          paramIntent.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691804));
-          paramIntent.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691535));
-          paramIntent.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691518));
+          paramIntent.append(this.a.d.getApp().getString(2131888766));
+          paramIntent.append(this.a.d.getApp().getString(2131888497));
+          paramIntent.append(this.a.d.getApp().getString(2131888480));
           paramIntent = paramIntent.toString();
-          paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, MessageCache.a(), true, false, 2);
+          paramContext.a(this.a.ah.b, paramIntent, MessageCache.c(), true, false, 2);
           return;
         }
         if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgProgress"))
@@ -83,7 +83,7 @@ class DeviceMsgChatPie$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.7
  * JD-Core Version:    0.7.0.1
  */

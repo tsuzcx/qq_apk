@@ -17,33 +17,27 @@ import java.util.List;
 
 public class RecentDataListManager
 {
-  private static volatile RecentDataListManager jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager;
   public static final String a = "RecentDataListManager";
-  private final RecentDataListManager.CacheController jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager$CacheController = new RecentDataListManager.CacheController(null);
-  public final List<RecentBaseData> a;
-  public boolean a;
-  public String b;
-  public List<RecentBaseData> b;
-  private boolean b;
-  
-  private RecentDataListManager()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(IMCoreConstantsRoute.RecentConstants.a);
-  }
+  private static volatile RecentDataListManager f;
+  public boolean b = false;
+  public final List<RecentBaseData> c = new ArrayList(IMCoreConstantsRoute.RecentConstants.a);
+  public List<RecentBaseData> d;
+  public String e;
+  private boolean g;
+  private final RecentDataListManager.CacheController h = new RecentDataListManager.CacheController(null);
   
   public static RecentDataListManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager = new RecentDataListManager();
+        if (f == null) {
+          f = new RecentDataListManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager;
+    return f;
   }
   
   public static String a(String paramString, int paramInt)
@@ -57,29 +51,18 @@ public class RecentDataListManager
   
   public RecentBaseData a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager$CacheController.a(paramString);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager$CacheController.a();
-    this.jdField_a_of_type_JavaUtilList.clear();
+    return this.h.a(paramString);
   }
   
   public void a(RecentBaseData paramRecentBaseData, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager$CacheController.a(paramRecentBaseData, paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentDataListManager$CacheController.a(paramString);
+    this.h.a(paramRecentBaseData, paramString);
   }
   
   public void a(List<RecentBaseData> paramList, String paramString)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramList;
+    this.e = paramString;
   }
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
@@ -87,13 +70,13 @@ public class RecentDataListManager
     boolean bool2 = QLog.isColorLevel();
     boolean bool1 = false;
     if (bool2) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "preloadRecentBaseData, isPreloaded= ", Boolean.valueOf(this.jdField_b_of_type_Boolean), ", forUI=", Boolean.valueOf(paramBoolean2), ", loadMore=", Boolean.valueOf(paramBoolean1) });
+      QLog.d(a, 2, new Object[] { "preloadRecentBaseData, isPreloaded= ", Boolean.valueOf(this.g), ", forUI=", Boolean.valueOf(paramBoolean2), ", loadMore=", Boolean.valueOf(paramBoolean1) });
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.g) {
       return true;
     }
     if (paramBoolean2) {
-      this.jdField_b_of_type_Boolean = true;
+      this.g = true;
     }
     StartupTracker.a(null, "Recent_LoadData_query_recent_list");
     Object localObject2 = ((IRecentUserProxyService)paramBaseQQAppInterface.getRuntimeService(IRecentUserProxyService.class)).getRecentUserCache();
@@ -117,8 +100,8 @@ public class RecentDataListManager
         RecentDataListManagerProxy.a(paramBaseQQAppInterface, (List)localObject1);
       }
       StartupTracker.a("Recent_LoadData_preloadData", "Recent_LoadData_convert");
-      this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
-      this.jdField_b_of_type_JavaLangString = paramBaseQQAppInterface.getCurrentUin();
+      this.d = new ArrayList(k);
+      this.e = paramBaseQQAppInterface.getCurrentUin();
       if (RecentParcelUtil.a(paramBaseQQAppInterface))
       {
         i = 0;
@@ -132,16 +115,16 @@ public class RecentDataListManager
           } else {
             localObject2 = ConversationDataFactory.a(localRecentUser, paramBaseQQAppInterface, paramContext, true);
           }
-          this.jdField_b_of_type_JavaUtilList.add(localObject2);
+          this.d.add(localObject2);
           i += 1;
         }
         RecentParcelUtil.a(((List)localObject1).size(), ((List)localObject1).size() - j);
-        QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Recover from parcel, success size=", Integer.valueOf(j), " RU size=", Integer.valueOf(((List)localObject1).size()) });
+        QLog.d(a, 1, new Object[] { "Recover from parcel, success size=", Integer.valueOf(j), " RU size=", Integer.valueOf(((List)localObject1).size()) });
       }
       else
       {
-        ConversationDataFactory.a((List)localObject1, paramBaseQQAppInterface, paramContext, this.jdField_b_of_type_JavaUtilList, k);
-        QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Recover from old way, success size= RU size=", Integer.valueOf(((List)localObject1).size()), " limit=", Integer.valueOf(k) });
+        ConversationDataFactory.a((List)localObject1, paramBaseQQAppInterface, paramContext, this.d, k);
+        QLog.d(a, 1, new Object[] { "Recover from old way, success size= RU size=", Integer.valueOf(((List)localObject1).size()), " limit=", Integer.valueOf(k) });
       }
       StartupTracker.a("Recent_LoadData_convert", null);
       StartupTracker.a(null, "Recent_LoadMoreData_getFaceDrawable");
@@ -157,16 +140,16 @@ public class RecentDataListManager
         }
         i += 1;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       StartupTracker.a("Recent_LoadMoreData_getFaceDrawable", null);
     }
-    paramBaseQQAppInterface = this.jdField_b_of_type_JavaUtilList;
+    paramBaseQQAppInterface = this.d;
     if (QLog.isColorLevel())
     {
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("preloadRecentBaseData end: ");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.g);
       if (paramBaseQQAppInterface != null) {
         i = paramBaseQQAppInterface.size();
       } else {
@@ -181,10 +164,21 @@ public class RecentDataListManager
     }
     return paramBoolean1;
   }
+  
+  public void b()
+  {
+    this.h.a();
+    this.c.clear();
+  }
+  
+  public void b(String paramString)
+  {
+    this.h.b(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentDataListManager
  * JD-Core Version:    0.7.0.1
  */

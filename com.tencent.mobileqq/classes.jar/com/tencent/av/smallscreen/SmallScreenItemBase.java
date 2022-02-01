@@ -8,36 +8,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SmallScreenItemBase
 {
-  protected SmallScreenRelativeLayout a;
-  protected SmallScreenToast a;
-  protected String a;
-  protected int i;
-  protected int j;
-  protected int k;
-  
-  public SmallScreenItemBase()
-  {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast = null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.b();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.c();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast = null;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
-  }
+  protected String l;
+  protected SmallScreenRelativeLayout m = null;
+  protected SmallScreenToast n = null;
+  protected int o;
+  protected int p;
+  protected int q;
   
   public void a(Context paramContext, LayoutInflater paramLayoutInflater, SmallScreenRelativeLayout.FloatListener paramFloatListener)
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)paramLayoutInflater.inflate(this.i, null));
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.b();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setFloatListener(paramFloatListener);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast = new SmallScreenToast(paramContext, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setIsRotateSize(true);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-    a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.a());
+    this.m = ((SmallScreenRelativeLayout)paramLayoutInflater.inflate(this.o, null));
+    this.m.b();
+    this.m.setFloatListener(paramFloatListener);
+    this.n = new SmallScreenToast(paramContext, this.m);
+    this.m.setIsRotateSize(true);
+    this.m.setSize(this.p, this.q);
+    a(this.n.f());
   }
   
   public void a(WindowManager.LayoutParams paramLayoutParams)
@@ -48,19 +34,19 @@ public class SmallScreenItemBase
       paramLayoutParams.type = 2038;
       return;
     }
-    int m;
-    if (SmallScreenUtils.a()) {
-      m = 2005;
+    int i;
+    if (SmallScreenUtils.b()) {
+      i = 2005;
     } else {
-      m = 2002;
+      i = 2002;
     }
-    paramLayoutParams.type = m;
+    paramLayoutParams.type = i;
   }
   
   public void a(BaseSmallScreenService paramBaseSmallScreenService)
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.f();
+    this.m.setSize(this.p, this.q);
+    this.m.f();
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -70,19 +56,19 @@ public class SmallScreenItemBase
     StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      if (!this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.b()) {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.a();
+      if (!this.n.e()) {
+        this.n.b();
       }
       if (!bool)
       {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(paramInt);
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.d();
+        this.m.setCurPosition(paramInt);
+        this.m.d();
         if (QLog.isDevelopLevel())
         {
-          str = this.jdField_a_of_type_JavaLangString;
+          str = this.l;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("showOrHide, show toast view , tag[");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.l);
           localStringBuilder.append("]");
           QLog.w(str, 4, localStringBuilder.toString());
         }
@@ -90,13 +76,13 @@ public class SmallScreenItemBase
     }
     else if (bool)
     {
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.e();
+      this.m.e();
       if (QLog.isDevelopLevel())
       {
-        str = this.jdField_a_of_type_JavaLangString;
+        str = this.l;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("showOrHide, hide toast view , tag[");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.l);
         localStringBuilder.append("]");
         QLog.w(str, 4, localStringBuilder.toString());
       }
@@ -105,12 +91,20 @@ public class SmallScreenItemBase
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a());
+    return (this.m.getVisibility() == 0) && (this.m.getIsShow());
+  }
+  
+  public void b()
+  {
+    this.n.c();
+    this.m.c();
+    this.n = null;
+    this.m = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenItemBase
  * JD-Core Version:    0.7.0.1
  */

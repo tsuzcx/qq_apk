@@ -5,17 +5,12 @@ import com.tencent.mobileqq.utils.StringUtil;
 
 public class ARCoreManager
 {
-  private static volatile ARCoreManager jdField_a_of_type_ComTencentMobileqqArArcoreARCoreManager;
-  volatile IARCoreAbilityManager jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreAbilityManager;
-  
-  public ARCoreManager()
-  {
-    this.a = null;
-  }
+  private static volatile ARCoreManager b;
+  volatile IARCoreAbilityManager a = null;
   
   public static boolean a(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return false;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -26,7 +21,7 @@ public class ARCoreManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcore.ARCoreManager
  * JD-Core Version:    0.7.0.1
  */

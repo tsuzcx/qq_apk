@@ -23,48 +23,26 @@ import org.json.JSONObject;
 
 public class AVEffectPendantReport
 {
-  private static int jdField_a_of_type_Int;
-  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
+  private static ArrayList<PendantItem> a;
   private static int b;
-  
-  private static Class<?> a()
-  {
-    return PendantItem.class;
-  }
-  
-  private static String a()
-  {
-    return "content";
-  }
-  
-  private static String a(PendantItem paramPendantItem)
-  {
-    if (paramPendantItem != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(AVPathUtil.c());
-      localStringBuilder.append(paramPendantItem.getName());
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
+  private static int c;
   
   private static ArrayList<PendantItem> a(String paramString)
   {
     localArrayList = new ArrayList();
     int i = 0;
+    c = 0;
     b = 0;
-    jdField_a_of_type_Int = 0;
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
         paramString = new JSONObject(paramString);
         int j = UITools.getQQVersion();
-        Object localObject = a();
+        Object localObject = k();
         if (paramString.has((String)localObject))
         {
           paramString = paramString.getJSONArray((String)localObject);
-          localObject = a();
+          localObject = l();
           while (i < paramString.length())
           {
             PendantItem localPendantItem = (PendantItem)JSONUtils.a((JSONObject)paramString.get(i), (Class)localObject);
@@ -73,12 +51,12 @@ public class AVEffectPendantReport
               int k = localPendantItem.getPlatform();
               if ((k == 0) || (j >= k))
               {
-                boolean bool = b(localPendantItem);
+                boolean bool = c(localPendantItem);
                 localPendantItem.setUsable(bool);
                 localArrayList.add(localPendantItem);
-                b += 1;
+                c += 1;
                 if (bool) {
-                  jdField_a_of_type_Int += 1;
+                  b += 1;
                 }
               }
             }
@@ -96,50 +74,34 @@ public class AVEffectPendantReport
   
   public static void a()
   {
-    SharedPreUtils.b(jdField_a_of_type_Int, b);
+    SharedPreUtils.b(b, c);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setAVPendantDownloadInfo()  mTotalCount = ");
-    localStringBuilder.append(b);
+    localStringBuilder.append(c);
     localStringBuilder.append("  mDownloadCount = ");
-    localStringBuilder.append(jdField_a_of_type_Int);
+    localStringBuilder.append(b);
     AVLog.printColorLog("AVEffectPendantReport", localStringBuilder.toString());
   }
   
-  private static String b()
+  private static String b(PendantItem paramPendantItem)
   {
-    return QAVConfig.b(e()).a;
+    if (paramPendantItem != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AVPathUtil.c());
+      localStringBuilder.append(paramPendantItem.getName());
+      return localStringBuilder.toString();
+    }
+    return null;
   }
   
   public static void b()
   {
-    SharedPreUtils.b();
+    SharedPreUtils.j();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setAVPendantUseInfo()  time = ");
     localStringBuilder.append(System.currentTimeMillis());
     AVLog.printColorLog("AVEffectPendantReport", localStringBuilder.toString());
-  }
-  
-  private static boolean b(PendantItem paramPendantItem)
-  {
-    if ((e() > 0) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
-    {
-      if (TextUtils.isEmpty(paramPendantItem.getResUrl())) {
-        return true;
-      }
-      if (!new File(a(paramPendantItem)).exists()) {
-        return false;
-      }
-      System.currentTimeMillis();
-      String str = SecUtil.getFileMd5(a(paramPendantItem));
-      System.currentTimeMillis();
-      return paramPendantItem.getMd5().equalsIgnoreCase(str);
-    }
-    paramPendantItem = new StringBuilder();
-    paramPendantItem.append("isTemplateUsable:");
-    paramPendantItem.append(e());
-    paramPendantItem.append("|");
-    AVLog.printErrorLog("AVEffectPendantReport", paramPendantItem.toString());
-    return false;
   }
   
   public static void c()
@@ -147,16 +109,34 @@ public class AVEffectPendantReport
     ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
   }
   
-  public static void d()
+  private static boolean c(PendantItem paramPendantItem)
   {
-    String str = b();
-    jdField_a_of_type_JavaUtilArrayList = null;
-    jdField_a_of_type_JavaUtilArrayList = a(str);
+    if ((n() > 0) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
+    {
+      if (TextUtils.isEmpty(paramPendantItem.getResUrl())) {
+        return true;
+      }
+      if (!new File(b(paramPendantItem)).exists()) {
+        return false;
+      }
+      System.currentTimeMillis();
+      String str = SecUtil.getFileMd5(b(paramPendantItem));
+      System.currentTimeMillis();
+      return paramPendantItem.getMd5().equalsIgnoreCase(str);
+    }
+    paramPendantItem = new StringBuilder();
+    paramPendantItem.append("isTemplateUsable:");
+    paramPendantItem.append(n());
+    paramPendantItem.append("|");
+    AVLog.printErrorLog("AVEffectPendantReport", paramPendantItem.toString());
+    return false;
   }
   
-  private static int e()
+  public static void d()
   {
-    return 106;
+    String str = m();
+    a = null;
+    a = a(str);
   }
   
   public static void e()
@@ -167,13 +147,13 @@ public class AVEffectPendantReport
       try
       {
         localHashMap = new HashMap();
-        bool = SharedPreUtils.b();
-        localObject1 = SharedPreUtils.b();
-        l2 = SharedPreUtils.b();
+        bool = SharedPreUtils.m();
+        localObject1 = SharedPreUtils.i();
+        l2 = SharedPreUtils.k();
         if ((!bool) && (localObject1[1] <= 0))
         {
           CapturePtvTemplateManager.a().b(false);
-          SharedPreUtils.c();
+          SharedPreUtils.l();
         }
         l1 = -1L;
         if (l2 <= 0L) {
@@ -229,6 +209,26 @@ public class AVEffectPendantReport
       AVLog.printColorLog("AVEffectPendantReport", ((StringBuilder)localObject1).toString());
       return;
     } while (((localObject1[0] > 0) || (localObject1[1] > 0)) && (localObject1[0] <= localObject1[1]));
+  }
+  
+  private static String k()
+  {
+    return "content";
+  }
+  
+  private static Class<?> l()
+  {
+    return PendantItem.class;
+  }
+  
+  private static String m()
+  {
+    return QAVConfig.b(n()).b;
+  }
+  
+  private static int n()
+  {
+    return 106;
   }
 }
 

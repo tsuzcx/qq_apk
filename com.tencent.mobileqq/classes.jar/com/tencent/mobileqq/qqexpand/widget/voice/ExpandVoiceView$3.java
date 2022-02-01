@@ -1,19 +1,22 @@
 package com.tencent.mobileqq.qqexpand.widget.voice;
 
-class ExpandVoiceView$3
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import mqq.app.AppRuntime;
+
+final class ExpandVoiceView$3
   implements Runnable
 {
-  ExpandVoiceView$3(ExpandVoiceView paramExpandVoiceView) {}
+  ExpandVoiceView$3(AppRuntime paramAppRuntime, File paramFile) {}
   
   public void run()
   {
-    ExpandVoiceView.a(this.this$0, false);
-    this.this$0.d();
+    HttpDownloadUtil.downloadData(this.a, "https://down.qq.com/extendfriend/voicewave.png", this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.voice.ExpandVoiceView.3
  * JD-Core Version:    0.7.0.1
  */

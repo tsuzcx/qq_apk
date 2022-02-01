@@ -6,55 +6,28 @@ import com.tencent.av.opengl.utils.Utils;
 
 public class ScrollerHelper
 {
-  private int jdField_a_of_type_Int;
-  private OverScroller jdField_a_of_type_ComTencentAvOpenglUiOverScroller;
-  private boolean jdField_a_of_type_Boolean;
+  private OverScroller a;
+  private int b;
+  private boolean c;
   
   public ScrollerHelper(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller = new OverScroller(paramContext);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledOverflingDistance();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a();
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a();
-    int i;
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a()) {
-      i = j;
-    } else {
-      i = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.b();
-    }
-    paramInt1 = i + paramInt1;
-    paramInt2 = Utils.a(paramInt1, paramInt2, paramInt3);
-    if (paramInt2 != j) {
-      this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a(j, 0, paramInt2 - j, 0, 0);
-    }
-    return paramInt1 - paramInt2;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a(true);
+    this.a = new OverScroller(paramContext);
+    this.b = ViewConfiguration.get(paramContext).getScaledOverflingDistance();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
+    this.b = Math.max(paramInt, this.b);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = a();
-    OverScroller localOverScroller = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller;
+    int j = c();
+    OverScroller localOverScroller = this.a;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.jdField_a_of_type_Int;
+    if (this.c) {
+      i = this.b;
     } else {
       i = 0;
     }
@@ -63,23 +36,50 @@ public class ScrollerHelper
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a();
+    return this.a.a();
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.b();
+    return this.a.d();
+  }
+  
+  public int b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j = this.a.b();
+    int i;
+    if (this.a.a()) {
+      i = j;
+    } else {
+      i = this.a.c();
+    }
+    paramInt1 = i + paramInt1;
+    paramInt2 = Utils.a(paramInt1, paramInt2, paramInt3);
+    if (paramInt2 != j) {
+      this.a.a(j, 0, paramInt2 - j, 0, 0);
+    }
+    return paramInt1 - paramInt2;
+  }
+  
+  public void b()
+  {
+    this.a.a(true);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a(paramInt, 0, 0, 0, 0);
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a();
+    this.a.a(paramInt, 0, 0, 0, 0);
+    this.a.e();
+  }
+  
+  public int c()
+  {
+    return this.a.b();
   }
 }
 

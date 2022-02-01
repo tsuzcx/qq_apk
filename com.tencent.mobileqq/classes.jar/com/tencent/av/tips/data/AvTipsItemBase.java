@@ -5,19 +5,19 @@ import com.tencent.av.business.manager.tips.TipsManager;
 public abstract class AvTipsItemBase
 {
   protected int a;
-  protected String a;
   protected int b = 0;
   protected int c = 3;
   protected int d = 0;
-  protected int e = 1;
+  protected int e = 0;
+  protected String f;
   
   protected AvTipsItemBase(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.d = paramInt2;
     this.c = paramInt3;
     this.e = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public static boolean a(AvTipsItemBase paramAvTipsItemBase1, AvTipsItemBase paramAvTipsItemBase2)
@@ -41,17 +41,17 @@ public abstract class AvTipsItemBase
     localStringBuilder.append("], idOld[");
     localStringBuilder.append(paramAvTipsItemBase1.b());
     localStringBuilder.append("]");
-    TipsManager.a(localStringBuilder.toString());
+    TipsManager.b(localStringBuilder.toString());
     if (i < j) {
       return true;
     }
     if (i > j) {
       return false;
     }
-    if (paramAvTipsItemBase1.a()) {
+    if (paramAvTipsItemBase1.g()) {
       return true;
     }
-    if (paramAvTipsItemBase2.a()) {
+    if (paramAvTipsItemBase2.g()) {
       return false;
     }
     if (paramAvTipsItemBase2.c() <= paramAvTipsItemBase1.c()) {
@@ -62,11 +62,6 @@ public abstract class AvTipsItemBase
   
   public abstract int a();
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a(int paramInt)
   {
     this.c = paramInt;
@@ -75,18 +70,13 @@ public abstract class AvTipsItemBase
   public void a(String paramString)
   {
     if (paramString != null) {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.f = paramString;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.c == 0;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public int c()
@@ -120,6 +110,16 @@ public abstract class AvTipsItemBase
       }
     }
     return bool1;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public boolean g()
+  {
+    return this.c == 0;
   }
 }
 

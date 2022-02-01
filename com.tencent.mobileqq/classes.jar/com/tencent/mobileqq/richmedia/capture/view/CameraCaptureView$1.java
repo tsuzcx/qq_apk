@@ -10,13 +10,13 @@ import javax.microedition.khronos.egl.EGLDisplay;
 class CameraCaptureView$1
   implements GLSurfaceView.EGLContextFactory
 {
-  private int jdField_a_of_type_Int = 12440;
+  private int b = 12440;
   
   CameraCaptureView$1(CameraCaptureView paramCameraCaptureView) {}
   
   public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -26,15 +26,15 @@ class CameraCaptureView$1
       ((StringBuilder)localObject).append(Thread.currentThread().getId());
       QLog.d("CameraCaptureView", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView;
-    ((CameraCaptureView)localObject).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
-    ((CameraCaptureView)localObject).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+    Object localObject = this.a;
+    ((CameraCaptureView)localObject).K = paramEGLConfig;
+    ((CameraCaptureView)localObject).L = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    return this.a.L;
   }
   
   public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.i();
+    this.a.k();
     if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
       paramEGL10 = new StringBuilder();
@@ -61,7 +61,7 @@ class CameraCaptureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.1
  * JD-Core Version:    0.7.0.1
  */

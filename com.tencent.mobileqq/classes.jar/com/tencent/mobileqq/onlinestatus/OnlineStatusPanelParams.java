@@ -3,32 +3,22 @@ package com.tencent.mobileqq.onlinestatus;
 public class OnlineStatusPanelParams
 {
   public int a;
-  public boolean a = false;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 39;
-  public int f = 9;
-  public int g = 14;
-  public int h;
-  public int i = 16;
-  
-  public OnlineStatusPanelParams()
-  {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 4;
-    this.jdField_d_of_type_Int = 9;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
+  public boolean b = false;
+  public int c = 3;
+  public int d = 4;
+  public int e = 9;
+  public int f = 39;
+  public int g = 9;
+  public int h = 14;
+  public int i;
+  public boolean j = true;
+  public boolean k = false;
+  public int l = 16;
+  public boolean m = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPanelParams
  * JD-Core Version:    0.7.0.1
  */

@@ -13,28 +13,28 @@ import java.util.List;
 public class RequestPermission
   implements PermissionListener
 {
-  private int jdField_a_of_type_Int;
-  private PermissionCallback jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int a;
   private String[] b;
+  private PermissionCallback c;
+  private String[] d;
   
   private void a()
   {
-    PermissionCallback localPermissionCallback = this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback;
+    PermissionCallback localPermissionCallback = this.c;
     if (localPermissionCallback != null) {
-      localPermissionCallback.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int);
+      localPermissionCallback.a(this.b, this.a);
     }
   }
   
   private void a(List<String> paramList)
   {
-    PermissionCallback localPermissionCallback = this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback;
+    PermissionCallback localPermissionCallback = this.c;
     if (localPermissionCallback != null) {
-      localPermissionCallback.a(paramList, this.jdField_a_of_type_Int);
+      localPermissionCallback.a(paramList, this.a);
     }
   }
   
-  private String[] a(String... paramVarArgs)
+  private String[] b(String... paramVarArgs)
   {
     ArrayList localArrayList = new ArrayList(1);
     int j = paramVarArgs.length;
@@ -52,19 +52,19 @@ public class RequestPermission
   
   public RequestPermission a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public RequestPermission a(PermissionCallback paramPermissionCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionPermissionCallback = paramPermissionCallback;
+    this.c = paramPermissionCallback;
     return this;
   }
   
   public RequestPermission a(String... paramVarArgs)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
+    this.b = paramVarArgs;
     return this;
   }
   
@@ -75,8 +75,8 @@ public class RequestPermission
       a();
       return;
     }
-    this.b = a(this.jdField_a_of_type_ArrayOfJavaLangString);
-    Object localObject = this.b;
+    this.d = b(this.b);
+    Object localObject = this.d;
     if (localObject.length > 0)
     {
       localObject = MainProcessPermissionFragment.a((String[])localObject);
@@ -108,7 +108,7 @@ public class RequestPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.permission.RequestPermission
  * JD-Core Version:    0.7.0.1
  */

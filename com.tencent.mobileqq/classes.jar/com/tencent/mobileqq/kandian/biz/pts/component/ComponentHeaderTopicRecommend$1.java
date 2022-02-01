@@ -20,7 +20,7 @@ class ComponentHeaderTopicRecommend$1
     if ((paramObject instanceof CloseableBitmap))
     {
       paramURL = (CloseableBitmap)paramObject;
-      ComponentHeaderTopicRecommend.a(this.a, paramURL.a());
+      ComponentHeaderTopicRecommend.a(this.a, paramURL.b());
     }
   }
   
@@ -28,7 +28,7 @@ class ComponentHeaderTopicRecommend$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderTopicRecommend.1
  * JD-Core Version:    0.7.0.1
  */

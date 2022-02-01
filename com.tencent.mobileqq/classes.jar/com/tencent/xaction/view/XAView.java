@@ -23,7 +23,7 @@ public final class XAView
   }
   
   @NotNull
-  public DecorView a()
+  public DecorView getDecor()
   {
     return this.a;
   }
@@ -36,7 +36,7 @@ public final class XAView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.view.XAView
  * JD-Core Version:    0.7.0.1
  */

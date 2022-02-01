@@ -9,13 +9,13 @@ class RegisterActivity$13$2
   
   public void run()
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, HardCodeUtil.a(2131713283));
+    RegisterActivity.e(this.a.a);
+    RegisterActivity.a(this.a.a, HardCodeUtil.a(2131910836));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.13.2
  * JD-Core Version:    0.7.0.1
  */

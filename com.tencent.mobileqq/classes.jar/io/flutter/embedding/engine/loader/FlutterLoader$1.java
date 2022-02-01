@@ -1,6 +1,5 @@
 package io.flutter.embedding.engine.loader;
 
-import android.content.Context;
 import io.flutter.FlutterInjector;
 import io.flutter.util.PathUtils;
 import java.io.File;
@@ -11,8 +10,6 @@ import java.util.concurrent.Executors;
 class FlutterLoader$1
   implements Callable<FlutterLoader.InitResult>
 {
-  FlutterLoader$1(FlutterLoader paramFlutterLoader, Context paramContext) {}
-  
   public FlutterLoader.InitResult call()
   {
     ResourceExtractor localResourceExtractor = FlutterLoader.access$000(this.this$0, this.val$appContext);
@@ -39,7 +36,7 @@ class FlutterLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.FlutterLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class AEEditorMusicWaveRandomGenerator
 {
-  private static LruCache<String, ArrayList<Double>> jdField_a_of_type_AndroidUtilLruCache = new LruCache(10);
-  private static ArrayList<Double> jdField_a_of_type_JavaUtilArrayList;
+  private static LruCache<String, ArrayList<Double>> a = new LruCache(10);
+  private static ArrayList<Double> b;
   
   private static double a()
   {
@@ -22,7 +22,7 @@ public class AEEditorMusicWaveRandomGenerator
   
   static double a(int paramInt)
   {
-    ArrayList localArrayList = jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = b;
     if (localArrayList == null)
     {
       AEQLog.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() mRandoms == null.");
@@ -32,7 +32,7 @@ public class AEEditorMusicWaveRandomGenerator
     {
       AEQLog.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index == mRandoms.size().");
       d = a();
-      jdField_a_of_type_JavaUtilArrayList.add(paramInt, Double.valueOf(d));
+      b.add(paramInt, Double.valueOf(d));
       return d;
     }
     if (paramInt < 0)
@@ -40,19 +40,19 @@ public class AEEditorMusicWaveRandomGenerator
       AEQLog.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index < 0.");
       return a();
     }
-    if (paramInt > jdField_a_of_type_JavaUtilArrayList.size())
+    if (paramInt > b.size())
     {
       AEQLog.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index > mRandoms.size().");
       d = a();
-      int i = jdField_a_of_type_JavaUtilArrayList.size();
+      int i = b.size();
       while (i <= paramInt)
       {
         d = a();
-        jdField_a_of_type_JavaUtilArrayList.add(i, Double.valueOf(d));
+        b.add(i, Double.valueOf(d));
         i += 1;
       }
     }
-    double d = ((Double)jdField_a_of_type_JavaUtilArrayList.get(paramInt)).doubleValue();
+    double d = ((Double)b.get(paramInt)).doubleValue();
     return d;
   }
   
@@ -62,9 +62,9 @@ public class AEEditorMusicWaveRandomGenerator
     if (TextUtils.isEmpty(paramString1)) {
       str = paramString2;
     }
-    if ((jdField_a_of_type_AndroidUtilLruCache != null) && (!TextUtils.isEmpty(str)) && (jdField_a_of_type_AndroidUtilLruCache.get(str) != null))
+    if ((a != null) && (!TextUtils.isEmpty(str)) && (a.get(str) != null))
     {
-      jdField_a_of_type_JavaUtilArrayList = (ArrayList)jdField_a_of_type_AndroidUtilLruCache.get(str);
+      b = (ArrayList)a.get(str);
       return;
     }
     int i = Math.min(paramInt, 10000);
@@ -75,16 +75,16 @@ public class AEEditorMusicWaveRandomGenerator
       paramString1.add(Double.valueOf(a()));
       paramInt += 1;
     }
-    paramString2 = jdField_a_of_type_AndroidUtilLruCache;
+    paramString2 = a;
     if (paramString2 != null) {
       paramString2.put(str, paramString1);
     }
-    jdField_a_of_type_JavaUtilArrayList = paramString1;
+    b = paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorMusicWaveRandomGenerator
  * JD-Core Version:    0.7.0.1
  */

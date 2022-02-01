@@ -13,7 +13,7 @@ public class FilePathUtilImpl
   
   public boolean fileExistsAndNotEmpty(String paramString)
   {
-    return QQFilePathUtil.a(paramString);
+    return QQFilePathUtil.d(paramString);
   }
   
   public String getRealPath(String paramString)
@@ -28,7 +28,7 @@ public class FilePathUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FilePathUtilImpl
  * JD-Core Version:    0.7.0.1
  */

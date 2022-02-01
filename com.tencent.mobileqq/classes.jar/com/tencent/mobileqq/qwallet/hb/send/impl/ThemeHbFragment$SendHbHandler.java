@@ -16,13 +16,13 @@ class ThemeHbFragment$SendHbHandler
       return;
     }
     if (!TextUtils.isEmpty(ThemeHbFragment.a(this.a))) {
-      ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+      ThemeHbFragment.b(this.a).setText(ThemeHbFragment.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ThemeHbFragment.SendHbHandler
  * JD-Core Version:    0.7.0.1
  */

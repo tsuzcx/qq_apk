@@ -27,12 +27,12 @@ class ImaxadThirdProcessorImpl$1
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     paramURLDrawable = ((IShortVideoShareUtil)QRoute.api(IShortVideoShareUtil.class)).drawableToBitmap(paramURLDrawable);
-    ImaxadThirdProcessorImpl.a(this.jdField_a_of_type_ComTencentMobileqqImaxadImaxadThirdProcessorImpl, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
+    ImaxadThirdProcessorImpl.a(this.g, this.a, this.b, this.c, this.d, paramURLDrawable, this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxadThirdProcessorImpl.1
  * JD-Core Version:    0.7.0.1
  */

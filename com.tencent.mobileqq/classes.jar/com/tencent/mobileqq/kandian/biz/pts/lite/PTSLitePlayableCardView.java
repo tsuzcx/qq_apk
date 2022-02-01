@@ -27,27 +27,22 @@ public final class PTSLitePlayableCardView
   extends LinearLayout
   implements IPlayableView
 {
-  public static final PTSLitePlayableCardView.Companion a;
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private VideoView jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  private ComponentLastRead jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead;
+  public static final PTSLitePlayableCardView.Companion a = new PTSLitePlayableCardView.Companion(null);
   @NotNull
-  private final PTSItemView jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLitePlayableCardView$Companion = new PTSLitePlayableCardView.Companion(null);
-  }
+  private final PTSItemView b;
+  private boolean c;
+  private VideoView d;
+  private final View e;
+  private int f;
+  private ComponentLastRead g;
+  private boolean h;
   
   public PTSLitePlayableCardView(@NotNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView = new PTSItemView(paramContext);
-    this.jdField_a_of_type_AndroidViewView = new View(paramContext);
-    c();
+    this.b = new PTSItemView(paramContext);
+    this.e = new View(paramContext);
+    d();
   }
   
   private final VideoView a(ViewGroup paramViewGroup)
@@ -68,14 +63,14 @@ public final class PTSLitePlayableCardView
     return null;
   }
   
-  private final boolean b(int paramInt)
+  private final boolean c(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = a((ViewGroup)this);
-      this.jdField_a_of_type_Boolean = true;
+      this.d = a((ViewGroup)this);
+      this.c = true;
     }
-    VideoView localVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
+    VideoView localVideoView = this.d;
     if (localVideoView != null)
     {
       if (paramInt != 3) {
@@ -112,46 +107,79 @@ public final class PTSLitePlayableCardView
     return false;
   }
   
-  private final void c()
+  private final void d()
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-1, 1);
     localMarginLayoutParams.leftMargin = PTSLiteItemViewUtil.a.b();
     localMarginLayoutParams.rightMargin = PTSLiteItemViewUtil.a.b();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localMarginLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1710619);
+    this.e.setLayoutParams((ViewGroup.LayoutParams)localMarginLayoutParams);
+    this.e.setBackgroundColor(-1710619);
     setOrientation(1);
-    addView((View)this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView);
-    addView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  @Nullable
-  public AbsBaseArticleInfo a()
-  {
-    VideoView localVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-    if (localVideoView != null) {
-      return localVideoView.getArticleInfo();
-    }
-    return null;
-  }
-  
-  @NotNull
-  public final PTSItemView a()
-  {
-    return this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView;
+    addView((View)this.b);
+    addView(this.e);
   }
   
   public void a()
   {
-    b(6);
+    c(6);
   }
   
-  public final void a(int paramInt)
+  public final void a(@NotNull IReadInJoyModel paramIReadInJoyModel, @NotNull ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if (paramInt == this.jdField_a_of_type_Int) {
+    Intrinsics.checkParameterIsNotNull(paramIReadInJoyModel, "readInJoyModel");
+    Intrinsics.checkParameterIsNotNull(paramReadInJoyBaseAdapter, "adapter");
+    boolean bool = paramIReadInJoyModel.i();
+    if (this.h == bool) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.h = bool;
+    if (bool)
+    {
+      if (this.g == null)
+      {
+        this.g = new ComponentLastRead(getContext());
+        localObject = new LinearLayout.LayoutParams(-2, -2);
+        addView((View)this.g, (ViewGroup.LayoutParams)localObject);
+      }
+      Object localObject = this.g;
+      if (localObject != null) {
+        ((ComponentLastRead)localObject).setVisibility(0);
+      }
+      localObject = this.g;
+      if (localObject != null) {
+        ((ComponentLastRead)localObject).a(paramIReadInJoyModel);
+      }
+      paramIReadInJoyModel = this.g;
+      if (paramIReadInJoyModel != null) {
+        paramIReadInJoyModel.a((FeedItemCell.CellListener)new PTSLitePlayableCardView.updateComponentLastRead.1(paramReadInJoyBaseAdapter));
+      }
+    }
+    else
+    {
+      paramIReadInJoyModel = this.g;
+      if (paramIReadInJoyModel != null) {
+        paramIReadInJoyModel.setVisibility(8);
+      }
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return c(paramInt);
+  }
+  
+  public void b()
+  {
+    c(5);
+  }
+  
+  public final void b(int paramInt)
+  {
+    if (paramInt == this.f) {
+      return;
+    }
+    this.f = paramInt;
+    ViewGroup.LayoutParams localLayoutParams = this.e.getLayoutParams();
     ViewGroup.MarginLayoutParams localMarginLayoutParams;
     if (paramInt != 0)
     {
@@ -174,7 +202,7 @@ public final class PTSLitePlayableCardView
             localMarginLayoutParams.leftMargin = PTSLiteItemViewUtil.a.c();
             localMarginLayoutParams.rightMargin = PTSLiteItemViewUtil.a.c();
           }
-          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1710619);
+          this.e.setBackgroundColor(-1710619);
         }
       }
       else
@@ -188,7 +216,7 @@ public final class PTSLitePlayableCardView
           localMarginLayoutParams.leftMargin = 0;
           localMarginLayoutParams.rightMargin = 0;
         }
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-855310);
+        this.e.setBackgroundColor(-855310);
       }
     }
     else
@@ -202,69 +230,36 @@ public final class PTSLitePlayableCardView
         localMarginLayoutParams.leftMargin = PTSLiteItemViewUtil.a.b();
         localMarginLayoutParams.rightMargin = PTSLiteItemViewUtil.a.b();
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1710619);
+      this.e.setBackgroundColor(-1710619);
     }
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.e.setLayoutParams(localLayoutParams);
   }
   
-  public final void a(@NotNull IReadInJoyModel paramIReadInJoyModel, @NotNull ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
+  public boolean c()
   {
-    Intrinsics.checkParameterIsNotNull(paramIReadInJoyModel, "readInJoyModel");
-    Intrinsics.checkParameterIsNotNull(paramReadInJoyBaseAdapter, "adapter");
-    boolean bool = paramIReadInJoyModel.g();
-    if (this.b == bool) {
-      return;
-    }
-    this.b = bool;
-    if (bool)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead = new ComponentLastRead(getContext());
-        localObject = new LinearLayout.LayoutParams(-2, -2);
-        addView((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead, (ViewGroup.LayoutParams)localObject);
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead;
-      if (localObject != null) {
-        ((ComponentLastRead)localObject).setVisibility(0);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead;
-      if (localObject != null) {
-        ((ComponentLastRead)localObject).a(paramIReadInJoyModel);
-      }
-      paramIReadInJoyModel = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead;
-      if (paramIReadInJoyModel != null) {
-        paramIReadInJoyModel.a((FeedItemCell.CellListener)new PTSLitePlayableCardView.updateComponentLastRead.1(paramReadInJoyBaseAdapter));
-      }
-    }
-    else
-    {
-      paramIReadInJoyModel = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead;
-      if (paramIReadInJoyModel != null) {
-        paramIReadInJoyModel.setVisibility(8);
-      }
-    }
+    this.d = a((ViewGroup)this);
+    return this.d != null;
   }
   
-  public boolean a()
+  @Nullable
+  public AbsBaseArticleInfo getArticleInfo()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = a((ViewGroup)this);
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView != null;
+    VideoView localVideoView = this.d;
+    if (localVideoView != null) {
+      return localVideoView.getArticleInfo();
+    }
+    return null;
   }
   
-  public boolean a(int paramInt)
+  @NotNull
+  public final PTSItemView getPtsItemView()
   {
-    return b(paramInt);
-  }
-  
-  public void b()
-  {
-    b(5);
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLitePlayableCardView
  * JD-Core Version:    0.7.0.1
  */

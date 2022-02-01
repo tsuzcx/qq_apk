@@ -15,9 +15,9 @@ class IntimateInfoView$1
   {
     try
     {
-      QzonePluginProxyActivity.getQZonePluginClassLoader(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      QZoneApiProxy.initServlet(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QZoneApiProxy.initEnv(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QzonePluginProxyActivity.getQZonePluginClassLoader(this.a);
+      QZoneApiProxy.initServlet(this.a, this.b);
+      QZoneApiProxy.initEnv(this.a, this.b);
       return;
     }
     catch (Throwable localThrowable)
@@ -28,7 +28,7 @@ class IntimateInfoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.1
  * JD-Core Version:    0.7.0.1
  */

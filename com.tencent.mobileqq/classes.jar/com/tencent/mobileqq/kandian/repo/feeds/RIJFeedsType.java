@@ -5,7 +5,6 @@ import androidx.annotation.VisibleForTesting;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.TimeSliceHelper;
-import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
 import com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfoKt;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
@@ -41,31 +40,28 @@ import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class RIJFeedsType
 {
-  private static String a;
-  public static List<Integer> a;
-  public static List<Integer> b;
-  public static List<Integer> c;
+  public static List<Integer> a = new ArrayList();
+  public static List<Integer> b = new ArrayList();
+  public static List<Integer> c = new ArrayList();
+  private static String d;
   
   static
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    b = new ArrayList();
-    c = new ArrayList();
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-    Object localObject1 = jdField_a_of_type_JavaUtilList;
+    a.add(Integer.valueOf(0));
+    Object localObject1 = a;
     Integer localInteger1 = Integer.valueOf(8);
     ((List)localObject1).add(localInteger1);
-    Object localObject2 = jdField_a_of_type_JavaUtilList;
+    Object localObject2 = a;
     localObject1 = Integer.valueOf(12);
     ((List)localObject2).add(localObject1);
-    Object localObject3 = jdField_a_of_type_JavaUtilList;
+    Object localObject3 = a;
     localObject2 = Integer.valueOf(16);
     ((List)localObject3).add(localObject2);
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(17));
-    Object localObject4 = jdField_a_of_type_JavaUtilList;
+    a.add(Integer.valueOf(17));
+    Object localObject4 = a;
     localObject3 = Integer.valueOf(10);
     ((List)localObject4).add(localObject3);
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(58));
+    a.add(Integer.valueOf(58));
     List localList = b;
     localObject4 = Integer.valueOf(1);
     localList.add(localObject4);
@@ -100,27 +96,125 @@ public class RIJFeedsType
   
   public static boolean A(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (y(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mGroupSubArticleList != null);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAbsBaseArticleInfo != null)
+    {
+      bool1 = bool2;
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        bool1 = bool2;
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
+        {
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.x == null) {
+            return false;
+          }
+          bool1 = bool2;
+          if (paramAbsBaseArticleInfo.mFeedType == 21) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public static boolean B(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
+    return (C(paramAbsBaseArticleInfo)) || (D(paramAbsBaseArticleInfo));
+  }
+  
+  public static boolean C(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAbsBaseArticleInfo != null)
+    {
+      bool1 = bool2;
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        bool1 = bool2;
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null)
+        {
+          bool1 = bool2;
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null)
+          {
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c == null) {
+              return false;
+            }
+            bool1 = bool2;
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.intValue() == 21) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean D(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAbsBaseArticleInfo != null)
+    {
+      bool1 = bool2;
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        bool1 = bool2;
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null)
+        {
+          bool1 = bool2;
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null)
+          {
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c == null) {
+              return false;
+            }
+            bool1 = bool2;
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.intValue() == 22) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean E(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mPolymericInfo != null) && (paramAbsBaseArticleInfo.mPolymericInfo.e >= 6);
+  }
+  
+  public static boolean F(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (E(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mIsInPolymeric);
+  }
+  
+  public static boolean G(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (E(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mGroupSubArticleList != null);
+  }
+  
+  public static boolean H(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null))
     {
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo;
-      if ((paramAbsBaseArticleInfo.l == 1) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.f)) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.g))) {
+      if ((paramAbsBaseArticleInfo.G == 1) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.H)) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.I))) {
         return true;
       }
     }
     return false;
   }
   
-  public static boolean C(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean I(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (y(paramAbsBaseArticleInfo)) && ((paramAbsBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int == 9) || (paramAbsBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int == 10) || (paramAbsBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int == 11));
+    return (E(paramAbsBaseArticleInfo)) && ((paramAbsBaseArticleInfo.mPolymericInfo.e == 9) || (paramAbsBaseArticleInfo.mPolymericInfo.e == 10) || (paramAbsBaseArticleInfo.mPolymericInfo.e == 11));
   }
   
-  public static boolean D(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean J(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     NewPolymericInfo localNewPolymericInfo = paramAbsBaseArticleInfo.mNewPolymericInfo;
     boolean bool2 = true;
@@ -133,14 +227,14 @@ public class RIJFeedsType
     if (i != 0)
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 9) {
+      if (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 9) {
         return bool1;
       }
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 10) {
+      if (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 10) {
         return bool1;
       }
-      if (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 11) {
+      if (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 11) {
         return true;
       }
     }
@@ -148,22 +242,22 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean E(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean K(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 15);
+    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 15);
   }
   
-  public static boolean F(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean L(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12);
+    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 12);
   }
   
-  public static boolean G(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean M(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 13);
+    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 13);
   }
   
-  public static boolean H(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean N(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     KandianLiveInfo localKandianLiveInfo = paramAbsBaseArticleInfo.mKdLiveInfo;
     boolean bool2 = false;
@@ -190,27 +284,78 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean I(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean O(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     return (paramAbsBaseArticleInfo.mFeedType == 24) && (paramAbsBaseArticleInfo.mNewPolymericInfo != null);
   }
   
-  public static boolean J(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean P(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 29);
   }
   
-  public static boolean K(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static int Q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.p != null) && (!paramAbsBaseArticleInfo.mNewPolymericInfo.p.isEmpty()) && (paramAbsBaseArticleInfo.mNewPolymericInfo.a))
+    {
+      NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.p.get(0);
+      if (S(paramAbsBaseArticleInfo)) {
+        return 79;
+      }
+      if (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 15) {
+        return 131;
+      }
+      if (localPackArticleInfo.k == 10) {
+        return 78;
+      }
+      if ((localPackArticleInfo.k != 4) && (localPackArticleInfo.k != 5))
+      {
+        if ((localPackArticleInfo.k != 6) && (localPackArticleInfo.k != 7) && (localPackArticleInfo.k != 8) && (localPackArticleInfo.k != 9))
+        {
+          if (localPackArticleInfo.k == 12) {
+            return 77;
+          }
+          if (localPackArticleInfo.k == 0) {
+            return 77;
+          }
+          paramAbsBaseArticleInfo = new StringBuilder();
+          paramAbsBaseArticleInfo.append("新聚合类卡片没有找到对应的FeedCell feedType = ");
+          paramAbsBaseArticleInfo.append(localPackArticleInfo.k);
+          QLog.e("FeedItemCellTypeNewPolymericBaseHeader", 1, paramAbsBaseArticleInfo.toString());
+        }
+        return 77;
+      }
+      return 76;
+    }
+    QLog.e("RIJFeedsType", 1, "articleInfo = null");
+    return 0;
+  }
+  
+  public static boolean R(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 20) && (paramAbsBaseArticleInfo.mRecommendFollowInfos != null);
   }
   
-  public static boolean L(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean S(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && ((paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 7) || (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 8) || (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 9));
+    return (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && ((paramAbsBaseArticleInfo.mNewPolymericInfo.d == 7) || (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 8) || (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 9));
   }
   
-  public static boolean M(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static String T(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return "";
+    }
+    if (((paramAbsBaseArticleInfo.mFeedType == 1) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.b == 5)) || (a(paramAbsBaseArticleInfo))) {
+      return paramAbsBaseArticleInfo.innerUniqueID;
+    }
+    if ((RIJItemViewTypeUtils.o(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null) && (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo.mSocialFeedInfo.s.a))) {
+      return paramAbsBaseArticleInfo.innerUniqueID;
+    }
+    return String.valueOf(paramAbsBaseArticleInfo.mArticleID);
+  }
+  
+  public static boolean U(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -220,19 +365,19 @@ public class RIJFeedsType
       return a(paramAbsBaseArticleInfo);
     }
     if (paramAbsBaseArticleInfo.mProteusTemplateBean != null) {
-      bool = a(ProteusReportUtil.a(paramAbsBaseArticleInfo.mProteusTemplateBean));
+      bool = a(ProteusReportUtil.b(paramAbsBaseArticleInfo.mProteusTemplateBean));
     }
     return bool;
   }
   
-  public static boolean N(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean V(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool;
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 36) && (!paramAbsBaseArticleInfo.isPGCShortContent()) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int != 4) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int != 5) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int != 6))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 36) && (!paramAbsBaseArticleInfo.isPGCShortContent()) && (paramAbsBaseArticleInfo.mSocialFeedInfo.b != 4) && (paramAbsBaseArticleInfo.mSocialFeedInfo.b != 5) && (paramAbsBaseArticleInfo.mSocialFeedInfo.b != 6))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isImageArticle, style= ");
-      localStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.b);
       QLog.d("RIJFeedsType", 1, localStringBuilder.toString());
       bool = true;
     }
@@ -247,7 +392,7 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean O(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean W(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo != null)
     {
@@ -266,13 +411,13 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean P(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean X(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramAbsBaseArticleInfo != null)
     {
-      if (!Q(paramAbsBaseArticleInfo)) {
+      if (!Y(paramAbsBaseArticleInfo)) {
         return false;
       }
       bool1 = bool2;
@@ -283,12 +428,12 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean Q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean Y(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 36))
     {
       if (a(paramAbsBaseArticleInfo)) {}
-      while ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 4) || (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 5) || (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 6)))
+      while ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && ((paramAbsBaseArticleInfo.mSocialFeedInfo.b == 4) || (paramAbsBaseArticleInfo.mSocialFeedInfo.b == 5) || (paramAbsBaseArticleInfo.mSocialFeedInfo.b == 6)))
       {
         bool = true;
         break;
@@ -302,7 +447,7 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean R(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean Z(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool;
     if ((paramAbsBaseArticleInfo == null) || (paramAbsBaseArticleInfo.mFeedType != 36) || (paramAbsBaseArticleInfo.isCardJumpUrlAvailable != 1) || (TextUtils.isEmpty(paramAbsBaseArticleInfo.getCardJumpUrl()))) {
@@ -317,118 +462,27 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean S(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool;
-    if ((paramAbsBaseArticleInfo == null) || (TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID)) || (TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleContentUrl))) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("canOpenNativeArticle,articleInfo=");
-    localStringBuilder.append(paramAbsBaseArticleInfo);
-    QLog.d("RIJFeedsType", 1, localStringBuilder.toString());
-    return bool;
-  }
-  
-  public static boolean T(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return false;
-    }
-    if ((paramAbsBaseArticleInfo.mFeedType == 0) && (paramAbsBaseArticleInfo.mIsGallery > 0) && (paramAbsBaseArticleInfo.mGalleryFeedsInfo != null))
-    {
-      int i = paramAbsBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get();
-      if ((i == 3) || (i == 2) || (i == 1))
-      {
-        paramAbsBaseArticleInfo.mIsGalleryChannel = true;
-        return true;
-      }
-    }
-    paramAbsBaseArticleInfo.mIsGalleryChannel = false;
-    return false;
-  }
-  
-  public static boolean U(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null);
-  }
-  
-  private static boolean V(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    int i;
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j;
-    if ((!f(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo))) {
-      j = 0;
-    } else {
-      j = 1;
-    }
-    return (i != 0) && (j != 0);
-  }
-  
-  private static boolean W(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (UtilsForComponent.a(paramAbsBaseArticleInfo) == 3) || (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.t(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.u(paramAbsBaseArticleInfo)) || (h(paramAbsBaseArticleInfo)) || (paramAbsBaseArticleInfo.isPGCShortContent()) || (paramAbsBaseArticleInfo.isAccountShown) || (paramAbsBaseArticleInfo.mKdLiveInfo != null);
-  }
-  
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    int k = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
-    RIJUtilsHelper localRIJUtilsHelper = new RIJUtilsHelper(paramAbsBaseArticleInfo);
-    int j = localRIJUtilsHelper.a(k, 0);
-    int i = j;
-    if (UtilsForComponent.a(paramAbsBaseArticleInfo) == 3) {
-      i = localRIJUtilsHelper.b(k, j);
-    }
-    i = localRIJUtilsHelper.a(paramAbsBaseArticleInfo, i);
-    if (paramAbsBaseArticleInfo.isTwoItem) {
-      i = 43;
-    }
-    if (BaseArticleInfoKt.e(paramAbsBaseArticleInfo)) {
-      i = 69;
-    }
-    j = localRIJUtilsHelper.d(paramAbsBaseArticleInfo.mFeedType, i);
-    i = j;
-    if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
-    {
-      i = j;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo != null) {
-        i = localRIJUtilsHelper.c(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_Int, j);
-      }
-    }
-    if (RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo)) {
-      i = 1065;
-    }
-    return i;
-  }
-  
   public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null) && ((paramBoolean) || (paramAbsBaseArticleInfo.mFeedType == 21) || (paramAbsBaseArticleInfo.mFeedType == 22)) && ((!paramBoolean) || (v(paramAbsBaseArticleInfo))))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null) && ((paramBoolean) || (paramAbsBaseArticleInfo.mFeedType == 21) || (paramAbsBaseArticleInfo.mFeedType == 22)) && ((!paramBoolean) || (B(paramAbsBaseArticleInfo))))
     {
-      if ((paramBoolean) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 3)) {
+      if ((paramBoolean) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s.i == 3)) {
         return 75;
       }
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 3) {
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.s.i == 3) {
         return 74;
       }
-      if ((paramBoolean) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 4)) {
+      if ((paramBoolean) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s.i == 4)) {
         return 73;
       }
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 4) {
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.s.i == 4) {
         return 72;
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("error ugcFeedsSrc = ");
-        localStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b);
+        localStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.s.i);
         QLog.e("RIJFeedsType", 1, localStringBuilder.toString());
       }
       return 7;
@@ -437,22 +491,6 @@ public class RIJFeedsType
       QLog.e("RIJFeedsType", 1, "something is null.");
     }
     return 7;
-  }
-  
-  public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (!c(paramAbsBaseArticleInfo)) {
-      return null;
-    }
-    if ((paramAbsBaseArticleInfo.mGalleryFeedsInfo != null) && (paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.has()) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8())))
-    {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
-      String str = ViolaAccessHelper.c(paramAbsBaseArticleInfo);
-      if ((ViolaAccessHelper.c(paramAbsBaseArticleInfo)) && (!TextUtils.isEmpty(str))) {
-        return str;
-      }
-    }
-    return null;
   }
   
   public static String a(articlesummary.ChannelInfo paramChannelInfo)
@@ -465,11 +503,11 @@ public class RIJFeedsType
   
   public static void a(String paramString)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = d;
     if (str != null) {
       TimeSliceHelper.a(str);
     }
-    jdField_a_of_type_JavaLangString = paramString;
+    d = paramString;
   }
   
   public static boolean a(int paramInt)
@@ -507,7 +545,7 @@ public class RIJFeedsType
     if (paramInt2 == 0) {
       return false;
     }
-    float f = FeedsSPUtils.a(RIJQQAppInterfaceUtil.a());
+    float f = FeedsSPUtils.b(RIJQQAppInterfaceUtil.e());
     if (f <= 0.0F) {
       f = 0.75F;
     }
@@ -541,16 +579,16 @@ public class RIJFeedsType
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo1, AbsBaseArticleInfo paramAbsBaseArticleInfo2)
   {
-    boolean bool3 = y(paramAbsBaseArticleInfo1);
+    boolean bool3 = E(paramAbsBaseArticleInfo1);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (bool3)
     {
       bool1 = bool2;
-      if (y(paramAbsBaseArticleInfo2))
+      if (E(paramAbsBaseArticleInfo2))
       {
         bool1 = bool2;
-        if (paramAbsBaseArticleInfo1.mPolymericInfo.c == paramAbsBaseArticleInfo2.mPolymericInfo.c) {
+        if (paramAbsBaseArticleInfo1.mPolymericInfo.h == paramAbsBaseArticleInfo2.mPolymericInfo.h) {
           bool1 = true;
         }
       }
@@ -565,17 +603,17 @@ public class RIJFeedsType
     if (paramUGCFeedsInfo != null)
     {
       bool1 = bool2;
-      if (paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null)
+      if (paramUGCFeedsInfo.h != null)
       {
         bool1 = bool2;
-        if (paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList != null) {
-          if (paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() <= 1)
+        if (paramUGCFeedsInfo.h.a != null) {
+          if (paramUGCFeedsInfo.h.a.size() <= 1)
           {
             bool1 = bool2;
-            if (paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() == 1)
+            if (paramUGCFeedsInfo.h.a.size() == 1)
             {
               bool1 = bool2;
-              if (TextUtils.isEmpty(((BiuCommentInfo)paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.get(0)).mBiuComment)) {}
+              if (TextUtils.isEmpty(((BiuCommentInfo)paramUGCFeedsInfo.h.a.get(0)).mBiuComment)) {}
             }
           }
           else
@@ -590,10 +628,10 @@ public class RIJFeedsType
   
   public static boolean a(String paramString, long paramLong, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (!FeedsSPUtils.a(RIJQQAppInterfaceUtil.a())) {
+    if (!FeedsSPUtils.a(RIJQQAppInterfaceUtil.e())) {
       return false;
     }
-    if (RIJWebArticleUtil.a.a()) {
+    if (RIJWebArticleUtil.a.b()) {
       return false;
     }
     if ((paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
@@ -609,117 +647,113 @@ public class RIJFeedsType
         return false;
       }
     }
-    return i(paramAbsBaseArticleInfo);
+    return o(paramAbsBaseArticleInfo);
   }
   
-  public static int b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean aa(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool;
+    if ((paramAbsBaseArticleInfo == null) || (TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID)) || (TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleContentUrl))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("canOpenNativeArticle,articleInfo=");
+    localStringBuilder.append(paramAbsBaseArticleInfo);
+    QLog.d("RIJFeedsType", 1, localStringBuilder.toString());
+    return bool;
+  }
+  
+  public static boolean ab(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo == null) {
-      return 0;
+      return false;
     }
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null))
+    if ((paramAbsBaseArticleInfo.mFeedType == 0) && (paramAbsBaseArticleInfo.mIsGallery > 0) && (paramAbsBaseArticleInfo.mGalleryFeedsInfo != null))
     {
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.jdField_a_of_type_Boolean) {
-        return 4;
+      int i = paramAbsBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get();
+      if ((i == 3) || (i == 2) || (i == 1))
+      {
+        paramAbsBaseArticleInfo.mIsGalleryChannel = true;
+        return true;
       }
-      return 2;
     }
-    if (paramAbsBaseArticleInfo.isSuperTopic) {
-      return 1;
-    }
-    return 3;
+    paramAbsBaseArticleInfo.mIsGalleryChannel = false;
+    return false;
   }
   
-  public static String b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static int ac(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a())) {
-      return "1";
+    if ((ad(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c != null)) {
+      return paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.intValue();
     }
-    return "0";
+    return 0;
+  }
+  
+  public static boolean ad(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null);
+  }
+  
+  private static String ae(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    paramAbsBaseArticleInfo = new ArrayList(((articlesummary.FriendRecommendInfo)paramAbsBaseArticleInfo.mPackInfoObj.msg_friend_recommend_info.get()).rpt_recommenders.get());
+    if (paramAbsBaseArticleInfo.size() == 0) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramAbsBaseArticleInfo.size())
+    {
+      localStringBuilder.append(paramAbsBaseArticleInfo.get(i));
+      localStringBuilder.append(",");
+      i += 1;
+    }
+    paramAbsBaseArticleInfo = localStringBuilder.toString();
+    return paramAbsBaseArticleInfo.substring(0, paramAbsBaseArticleInfo.length() - 1);
+  }
+  
+  private static boolean af(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    int i;
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j;
+    if ((!f(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo))) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    return (i != 0) && (j != 0);
+  }
+  
+  private static boolean ag(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (UtilsForComponent.c(paramAbsBaseArticleInfo) == 3) || (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.t(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.u(paramAbsBaseArticleInfo)) || (l(paramAbsBaseArticleInfo)) || (paramAbsBaseArticleInfo.isPGCShortContent()) || (paramAbsBaseArticleInfo.isAccountShown) || (paramAbsBaseArticleInfo.mKdLiveInfo != null);
   }
   
   public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    boolean bool3 = h(paramAbsBaseArticleInfo);
+    boolean bool3 = l(paramAbsBaseArticleInfo);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (bool3)
     {
-      paramAbsBaseArticleInfo = (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+      paramAbsBaseArticleInfo = (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.p.get(0);
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.a != null)
+      if (paramAbsBaseArticleInfo.o != null)
       {
         bool1 = bool2;
-        if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.a.jdField_a_of_type_JavaLangString)) {
+        if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.o.b)) {
           bool1 = true;
         }
       }
     }
     return bool1;
-  }
-  
-  public static int c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null) && (!paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Boolean))
-    {
-      NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-      if (L(paramAbsBaseArticleInfo)) {
-        return 79;
-      }
-      if (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 15) {
-        return 131;
-      }
-      if (localPackArticleInfo.b == 10) {
-        return 78;
-      }
-      if ((localPackArticleInfo.b != 4) && (localPackArticleInfo.b != 5))
-      {
-        if ((localPackArticleInfo.b != 6) && (localPackArticleInfo.b != 7) && (localPackArticleInfo.b != 8) && (localPackArticleInfo.b != 9))
-        {
-          if (localPackArticleInfo.b == 12) {
-            return 77;
-          }
-          if (localPackArticleInfo.b == 0) {
-            return 77;
-          }
-          paramAbsBaseArticleInfo = new StringBuilder();
-          paramAbsBaseArticleInfo.append("新聚合类卡片没有找到对应的FeedCell feedType = ");
-          paramAbsBaseArticleInfo.append(localPackArticleInfo.b);
-          QLog.e("FeedItemCellTypeNewPolymericBaseHeader", 1, paramAbsBaseArticleInfo.toString());
-        }
-        return 77;
-      }
-      return 76;
-    }
-    QLog.e("RIJFeedsType", 1, "articleInfo = null");
-    return 0;
-  }
-  
-  public static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    int i = UtilsForComponent.a(paramAbsBaseArticleInfo);
-    int j = 0;
-    if (i == 2) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (UtilsForComponent.a(paramAbsBaseArticleInfo) == 1) {
-      j = 1;
-    }
-    if (V(paramAbsBaseArticleInfo)) {
-      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a);
-    }
-    if (i != 0) {
-      return g(paramAbsBaseArticleInfo);
-    }
-    if (j != 0) {
-      return ((articlesummary.SpecialTopicInfo)paramAbsBaseArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_title.get();
-    }
-    if (W(paramAbsBaseArticleInfo)) {
-      return paramAbsBaseArticleInfo.mSubscribeID;
-    }
-    return "";
   }
   
   public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -736,7 +770,7 @@ public class RIJFeedsType
         if ((paramAbsBaseArticleInfo.articleStyle != 3) && (paramAbsBaseArticleInfo.articleStyle != 4) && (paramAbsBaseArticleInfo.articleStyle != 5) && (paramAbsBaseArticleInfo.articleStyle != 6))
         {
           bool1 = bool2;
-          if (!T(paramAbsBaseArticleInfo)) {}
+          if (!ab(paramAbsBaseArticleInfo)) {}
         }
         else
         {
@@ -747,15 +781,119 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static int d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((U(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b != null)) {
-      return paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue();
-    }
-    return 0;
+    return paramAbsBaseArticleInfo.mIsPolymericGallery;
   }
   
-  public static String d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a.size() > 0);
+  }
+  
+  public static boolean f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return false;
+    }
+    return RIJItemViewTypeUtils.c(RIJBaseItemViewType.c(paramAbsBaseArticleInfo));
+  }
+  
+  public static int g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    int k = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
+    RIJUtilsHelper localRIJUtilsHelper = new RIJUtilsHelper(paramAbsBaseArticleInfo);
+    int j = localRIJUtilsHelper.a(k, 0);
+    int i = j;
+    if (UtilsForComponent.c(paramAbsBaseArticleInfo) == 3) {
+      i = localRIJUtilsHelper.b(k, j);
+    }
+    i = localRIJUtilsHelper.a(paramAbsBaseArticleInfo, i);
+    if (paramAbsBaseArticleInfo.isTwoItem) {
+      i = 43;
+    }
+    if (BaseArticleInfoKt.e(paramAbsBaseArticleInfo)) {
+      i = 69;
+    }
+    j = localRIJUtilsHelper.d(paramAbsBaseArticleInfo.mFeedType, i);
+    i = j;
+    if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
+    {
+      i = j;
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.L != null) {
+        i = localRIJUtilsHelper.c(paramAbsBaseArticleInfo.mSocialFeedInfo.L.a, j);
+      }
+    }
+    if (RIJItemViewTypeUtils.E(paramAbsBaseArticleInfo)) {
+      i = 1065;
+    }
+    return i;
+  }
+  
+  public static String h(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c.b())) {
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static boolean i(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (!RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s.a == 6);
+  }
+  
+  public static int j(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return 0;
+    }
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null))
+    {
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.x.a) {
+        return 4;
+      }
+      return 2;
+    }
+    if (paramAbsBaseArticleInfo.isSuperTopic) {
+      return 1;
+    }
+    return 3;
+  }
+  
+  public static String k(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    int i = UtilsForComponent.c(paramAbsBaseArticleInfo);
+    int j = 0;
+    if (i == 2) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (UtilsForComponent.c(paramAbsBaseArticleInfo) == 1) {
+      j = 1;
+    }
+    if (af(paramAbsBaseArticleInfo)) {
+      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a);
+    }
+    if (i != 0) {
+      return ae(paramAbsBaseArticleInfo);
+    }
+    if (j != 0) {
+      return ((articlesummary.SpecialTopicInfo)paramAbsBaseArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_title.get();
+    }
+    if (ag(paramAbsBaseArticleInfo)) {
+      return paramAbsBaseArticleInfo.mSubscribeID;
+    }
+    return "";
+  }
+  
+  public static boolean l(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return paramAbsBaseArticleInfo.mNewPolymericInfo != null;
+  }
+  
+  public static String m(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo.isSubscriptFeed()) {
       return "3";
@@ -784,12 +922,7 @@ public class RIJFeedsType
     return str1;
   }
   
-  public static boolean d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return paramAbsBaseArticleInfo.mIsPolymericGallery;
-  }
-  
-  public static String e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static String n(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo == null) {
       return "";
@@ -803,63 +936,8 @@ public class RIJFeedsType
     return "";
   }
   
-  public static boolean e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() > 0);
-  }
-  
-  public static String f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return "";
-    }
-    if (((paramAbsBaseArticleInfo.mFeedType == 1) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 5)) || (a(paramAbsBaseArticleInfo))) {
-      return paramAbsBaseArticleInfo.innerUniqueID;
-    }
-    if ((RIJItemViewTypeUtils.o(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null) && (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Int))) {
-      return paramAbsBaseArticleInfo.innerUniqueID;
-    }
-    return String.valueOf(paramAbsBaseArticleInfo.mArticleID);
-  }
-  
-  public static boolean f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return false;
-    }
-    return RIJItemViewTypeUtils.c(RIJBaseItemViewType.a(paramAbsBaseArticleInfo));
-  }
-  
-  private static String g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    paramAbsBaseArticleInfo = new ArrayList(((articlesummary.FriendRecommendInfo)paramAbsBaseArticleInfo.mPackInfoObj.msg_friend_recommend_info.get()).rpt_recommenders.get());
-    if (paramAbsBaseArticleInfo.size() == 0) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramAbsBaseArticleInfo.size())
-    {
-      localStringBuilder.append(paramAbsBaseArticleInfo.get(i));
-      localStringBuilder.append(",");
-      i += 1;
-    }
-    paramAbsBaseArticleInfo = localStringBuilder.toString();
-    return paramAbsBaseArticleInfo.substring(0, paramAbsBaseArticleInfo.length() - 1);
-  }
-  
-  public static boolean g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (!RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Int == 6);
-  }
-  
-  public static boolean h(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return paramAbsBaseArticleInfo.mNewPolymericInfo != null;
-  }
-  
   @VisibleForTesting
-  public static boolean i(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean o(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo == null) {
       return false;
@@ -867,17 +945,17 @@ public class RIJFeedsType
     if (paramAbsBaseArticleInfo.isAccountShown) {
       return false;
     }
-    if (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramAbsBaseArticleInfo.mFeedType))) {
+    if (a.contains(Integer.valueOf(paramAbsBaseArticleInfo.mFeedType))) {
       return true;
     }
     if (!b.contains(Integer.valueOf(paramAbsBaseArticleInfo.mFeedType))) {
       return false;
     }
-    int i = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
+    int i = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
     return c.contains(Integer.valueOf(i));
   }
   
-  public static boolean j(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean p(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -889,7 +967,7 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean k(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -901,12 +979,12 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean l(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.longValue() == 23L);
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.longValue() == 23L);
   }
   
-  public static boolean m(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -918,7 +996,7 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean n(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean t(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -930,7 +1008,7 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean o(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean u(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -939,13 +1017,13 @@ public class RIJFeedsType
       bool1 = bool2;
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo == null) {
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.n == null) {
           return false;
         }
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.longValue() != 17L)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.longValue() != 17L)
         {
           bool1 = bool2;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.longValue() != 16L) {}
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.longValue() != 16L) {}
         }
         else
         {
@@ -956,7 +1034,7 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean p(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean v(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -965,13 +1043,13 @@ public class RIJFeedsType
       bool1 = bool2;
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo == null) {
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.n == null) {
           return false;
         }
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.longValue() != 19L)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.longValue() != 19L)
         {
           bool1 = bool2;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.longValue() != 18L) {}
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.longValue() != 18L) {}
         }
         else
         {
@@ -982,7 +1060,7 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean w(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -994,7 +1072,7 @@ public class RIJFeedsType
     return bool;
   }
   
-  public static boolean r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean x(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     SocializeFeedsInfo localSocializeFeedsInfo = paramAbsBaseArticleInfo.mSocialFeedInfo;
     boolean bool2 = true;
@@ -1002,18 +1080,18 @@ public class RIJFeedsType
     if (localSocializeFeedsInfo != null)
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null)
       {
         bool1 = bool2;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAnswerDetailInfo != null)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.x.v != null)
         {
           bool1 = bool2;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.c != null)
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.x.s != null)
           {
             bool1 = bool2;
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.c.size() > 0)
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.x.s.size() > 0)
             {
-              if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAnswerDetailInfo.b != 1) {
+              if (paramAbsBaseArticleInfo.mSocialFeedInfo.x.v.e != 1) {
                 return true;
               }
               bool1 = false;
@@ -1025,7 +1103,7 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean y(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool3 = false;
     boolean bool2 = false;
@@ -1036,9 +1114,9 @@ public class RIJFeedsType
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
         bool1 = bool3;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
         {
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo == null) {
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.x == null) {
             return false;
           }
           if (paramAbsBaseArticleInfo.mFeedType == 21)
@@ -1053,13 +1131,13 @@ public class RIJFeedsType
           if (paramAbsBaseArticleInfo.mFeedType == 1)
           {
             bool1 = bool3;
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null)
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null)
             {
               bool1 = bool3;
-              if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b != null)
+              if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c != null)
               {
                 bool1 = bool3;
-                if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() == 21)
+                if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.intValue() == 21)
                 {
                   bool1 = bool3;
                   if (a(paramAbsBaseArticleInfo, true) == 75) {
@@ -1075,7 +1153,7 @@ public class RIJFeedsType
     return bool1;
   }
   
-  public static boolean t(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean z(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool3 = false;
     boolean bool4 = false;
@@ -1087,9 +1165,9 @@ public class RIJFeedsType
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
         bool1 = bool4;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
         {
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo == null) {
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.x == null) {
             return false;
           }
           if (paramAbsBaseArticleInfo.mFeedType == 22)
@@ -1100,7 +1178,7 @@ public class RIJFeedsType
             }
             return bool1;
           }
-          if ((paramAbsBaseArticleInfo.mFeedType == 1) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() == 22))
+          if ((paramAbsBaseArticleInfo.mFeedType == 1) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.c.intValue() == 22))
           {
             bool1 = bool3;
             if (a(paramAbsBaseArticleInfo, true) == 73) {
@@ -1112,7 +1190,7 @@ public class RIJFeedsType
           if (paramAbsBaseArticleInfo.mFeedType == 1)
           {
             bool1 = bool4;
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 4) {
+            if (paramAbsBaseArticleInfo.mSocialFeedInfo.s.i == 4) {
               bool1 = true;
             }
           }
@@ -1120,109 +1198,11 @@ public class RIJFeedsType
       }
     }
     return bool1;
-  }
-  
-  public static boolean u(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAbsBaseArticleInfo != null)
-    {
-      bool1 = bool2;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
-      {
-        bool1 = bool2;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
-        {
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo == null) {
-            return false;
-          }
-          bool1 = bool2;
-          if (paramAbsBaseArticleInfo.mFeedType == 21) {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean v(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (w(paramAbsBaseArticleInfo)) || (x(paramAbsBaseArticleInfo));
-  }
-  
-  public static boolean w(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAbsBaseArticleInfo != null)
-    {
-      bool1 = bool2;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
-      {
-        bool1 = bool2;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null)
-        {
-          bool1 = bool2;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null)
-          {
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b == null) {
-              return false;
-            }
-            bool1 = bool2;
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() == 21) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean x(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAbsBaseArticleInfo != null)
-    {
-      bool1 = bool2;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
-      {
-        bool1 = bool2;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null)
-        {
-          bool1 = bool2;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null)
-          {
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b == null) {
-              return false;
-            }
-            bool1 = bool2;
-            if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() == 22) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean y(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mPolymericInfo != null) && (paramAbsBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int >= 6);
-  }
-  
-  public static boolean z(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (y(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mIsInPolymeric);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType
  * JD-Core Version:    0.7.0.1
  */

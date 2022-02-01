@@ -8,13 +8,13 @@ class OpenSdkFriendService$1
 {
   public void run()
   {
-    ArrayList localArrayList = this.this$0.a();
+    ArrayList localArrayList = this.this$0.b();
     Message.obtain(this.a, 888802, localArrayList).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService.1
  * JD-Core Version:    0.7.0.1
  */

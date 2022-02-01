@@ -10,13 +10,13 @@ class SparkDot$1
   public void run()
   {
     SparkDot localSparkDot = this.this$0;
-    localSparkDot.c %= this.this$0.e;
+    localSparkDot.e %= this.this$0.h;
     localSparkDot = this.this$0;
-    localSparkDot.a(localSparkDot.c);
+    localSparkDot.a(localSparkDot.e);
     localSparkDot = this.this$0;
-    localSparkDot.c += 1;
+    localSparkDot.e += 1;
     if (SparkDot.a(this.this$0)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, this.this$0.jdField_a_of_type_Int);
+      this.this$0.m.postDelayed(this.this$0.n, this.this$0.c);
     }
   }
 }

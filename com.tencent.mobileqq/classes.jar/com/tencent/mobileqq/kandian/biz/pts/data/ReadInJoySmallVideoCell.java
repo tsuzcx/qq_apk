@@ -39,10 +39,10 @@ public class ReadInJoySmallVideoCell
     {
       Util.f(paramAbsBaseArticleInfo, localJSONObject1);
     }
-    Util.n(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject1);
     Util.g(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.i(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.ap(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.j(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.aq(paramAbsBaseArticleInfo, localJSONObject1);
     localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
     Util.a(localJSONObject1, paramAbsBaseArticleInfo);
     return localJSONObject1;
@@ -50,7 +50,7 @@ public class ReadInJoySmallVideoCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoySmallVideoCell
  * JD-Core Version:    0.7.0.1
  */

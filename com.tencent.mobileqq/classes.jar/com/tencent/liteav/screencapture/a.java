@@ -6,9 +6,8 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import android.view.Display;
-import android.view.WindowManager;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.h;
 import java.lang.ref.WeakReference;
 import java.util.Locale;
 import javax.microedition.khronos.egl.EGLContext;
@@ -29,7 +28,7 @@ public class a
   private Object l = null;
   private int m = this.f;
   private int n = this.g;
-  private WeakReference<com.tencent.liteav.basic.b.b> o = null;
+  private WeakReference<com.tencent.liteav.basic.c.b> o = null;
   private WeakReference<a.a> p;
   private c.b q = new a.1(this);
   
@@ -45,7 +44,7 @@ public class a
   {
     if (this.j)
     {
-      int i1 = ((WindowManager)this.k.getSystemService("window")).getDefaultDisplay().getRotation();
+      int i1 = h.g(this.k);
       if ((i1 != 0) && (i1 != 2))
       {
         if (paramInt1 < paramInt2)
@@ -175,7 +174,7 @@ public class a
     }
   }
   
-  public void a(com.tencent.liteav.basic.b.b paramb)
+  public void a(com.tencent.liteav.basic.c.b paramb)
   {
     this.o = new WeakReference(paramb);
   }
@@ -346,7 +345,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.screencapture.a
  * JD-Core Version:    0.7.0.1
  */

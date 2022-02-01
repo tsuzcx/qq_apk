@@ -12,12 +12,12 @@ class QQSettingMeSignatureProcessor$6
   
   public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    if (QQSettingMeSignatureProcessor.a(this.a))
+    if (QQSettingMeSignatureProcessor.b(this.a))
     {
       if (paramInt != 100) {
-        QQToast.a(this.a.a, 2131690781, 0).b(this.a.a.getTitleBarHeight());
+        QQToast.makeText(this.a.d, 2131887703, 0).show(this.a.d.getTitleBarHeight());
       }
-      this.a.g();
+      this.a.i();
     }
   }
   
@@ -27,7 +27,7 @@ class QQSettingMeSignatureProcessor$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSignatureProcessor.6
  * JD-Core Version:    0.7.0.1
  */

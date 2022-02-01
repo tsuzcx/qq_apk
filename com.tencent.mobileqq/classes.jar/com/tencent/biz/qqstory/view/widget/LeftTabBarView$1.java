@@ -12,10 +12,10 @@ class LeftTabBarView$1
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) >= 500L)
+    if (l - LeftTabBarView.a(this.b) >= 500L)
     {
-      LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+      LeftTabBarView.a(this.b, l);
+      this.b.setSelectedTab(this.a, true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

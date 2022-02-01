@@ -12,8 +12,8 @@ class GMEAVEngineWalper$8
   public void a()
   {
     QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-      this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.a();
+    if (this.a.b != null) {
+      this.a.b.a();
     }
   }
   
@@ -25,8 +25,8 @@ class GMEAVEngineWalper$8
     localStringBuilder.append(", errinfo=");
     localStringBuilder.append(paramString);
     QLog.e("AVEngineWalper", 1, localStringBuilder.toString());
-    if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-      this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.c(paramInt, paramString);
+    if (this.a.b != null) {
+      this.a.b.c(paramInt, paramString);
     }
   }
   
@@ -39,8 +39,8 @@ class GMEAVEngineWalper$8
       String str = paramArrayOfString[j];
       QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
       int i;
-      if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();
+      if (this.a.c.containsKey(str)) {
+        i = ((Integer)this.a.c.get(str)).intValue();
       } else {
         i = 0;
       }
@@ -66,28 +66,28 @@ class GMEAVEngineWalper$8
         i |= 0x20;
       }
       if (i != 0) {
-        this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-      } else if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        this.a.c.put(str, Integer.valueOf(i));
+      } else if (this.a.c.containsKey(str)) {
+        this.a.c.remove(str);
       }
       j += 1;
     }
-    if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-      this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.a(paramInt, paramArrayOfString);
+    if (this.a.b != null) {
+      this.a.b.a(paramInt, paramArrayOfString);
     }
   }
   
   public void a(String[] paramArrayOfString)
   {
     QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-      this.a.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.a(paramArrayOfString);
+    if (this.a.b != null) {
+      this.a.b.a(paramArrayOfString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper.8
  * JD-Core Version:    0.7.0.1
  */

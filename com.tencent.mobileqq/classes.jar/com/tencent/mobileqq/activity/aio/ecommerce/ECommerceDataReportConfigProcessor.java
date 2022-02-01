@@ -19,7 +19,7 @@ public class ECommerceDataReportConfigProcessor
   {
     ECommerceDataReportConfigProcessor.Config localConfig = new ECommerceDataReportConfigProcessor.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      ECommerceDataReportConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      ECommerceDataReportConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -55,7 +55,7 @@ public class ECommerceDataReportConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

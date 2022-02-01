@@ -15,12 +15,12 @@ class PlusPanel$1
   
   public void onPageSelected(int paramInt)
   {
-    ((GiftPanelHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(136)).a(paramInt);
+    ((GiftPanelHelper)this.a.q(136)).a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -51,7 +51,7 @@ public class SimpleUIHandler$SimpleUIThemeSwitchCallback
       if (!AppNetConnInfo.isNetSupport())
       {
         this.this$0.notifyUI(3, false, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.this$0.a), Integer.valueOf(6) });
-        bool1 = this.this$0.a(false, "211", SimpleUIUtil.a(), true, SimpleUIUtil.a(SimpleUIUtil.f()));
+        bool1 = this.this$0.a(false, "211", SimpleUIUtil.e(), true, SimpleUIUtil.a(SimpleUIUtil.i()));
         if (!bool1)
         {
           localSimpleUIHandler1 = this.this$0;
@@ -62,7 +62,7 @@ public class SimpleUIHandler$SimpleUIThemeSwitchCallback
         }
         return true;
       }
-      localSimpleUIHandler1 = (SimpleUIHandler)SimpleUIHandler.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER);
+      localSimpleUIHandler1 = (SimpleUIHandler)SimpleUIHandler.d(this.this$0).getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER);
       SimpleUIHandler localSimpleUIHandler2 = this.this$0;
       if (SimpleUIHandler.a(localSimpleUIHandler2, SimpleUIHandler.a(localSimpleUIHandler2)) == 1) {
         bool1 = true;
@@ -79,7 +79,7 @@ public class SimpleUIHandler$SimpleUIThemeSwitchCallback
     try
     {
       long l = localSimpleUIHandler1.a(bool1, paramInt, this.this$0.a, bool2);
-      SimpleUIHandler.a(this.this$0).set(l);
+      SimpleUIHandler.e(this.this$0).set(l);
       return true;
     }
     catch (Exception localException) {}
@@ -92,7 +92,7 @@ public class SimpleUIHandler$SimpleUIThemeSwitchCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIHandler.SimpleUIThemeSwitchCallback
  * JD-Core Version:    0.7.0.1
  */

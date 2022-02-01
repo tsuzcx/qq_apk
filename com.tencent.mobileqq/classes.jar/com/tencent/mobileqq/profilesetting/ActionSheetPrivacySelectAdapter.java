@@ -21,62 +21,62 @@ import org.jetbrains.annotations.Nullable;
 public final class ActionSheetPrivacySelectAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
+  private final List<ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean> a;
+  private final LayoutInflater b;
+  private final ProfileDisplaySettingItem c;
+  private ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener d;
   @NotNull
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;
-  private final ProfileDisplaySettingItem jdField_a_of_type_ComTencentMobileqqProfilesettingProfileDisplaySettingItem;
-  private final List<ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean> jdField_a_of_type_JavaUtilList;
+  private Context e;
   @NotNull
-  private ProfileDisplaySettingItem b;
+  private ProfileDisplaySettingItem f;
   
   public ActionSheetPrivacySelectAdapter(@NotNull Context paramContext, @NotNull ProfileDisplaySettingItem paramProfileDisplaySettingItem)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramProfileDisplaySettingItem;
-    this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileDisplaySettingItem = this.b;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.e = paramContext;
+    this.f = paramProfileDisplaySettingItem;
+    this.c = this.f;
+    this.a = ((List)new ArrayList());
+    paramContext = LayoutInflater.from(this.e);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(mContext)");
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramContext;
+    this.b = paramContext;
   }
   
   public final void a(@Nullable ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener paramPrivacySelectActionSheetClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener = paramPrivacySelectActionSheetClickListener;
+    this.d = paramPrivacySelectActionSheetClickListener;
   }
   
   public final void a(@Nullable List<ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean> paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)paramList);
+      this.a.clear();
+      this.a.addAll((Collection)paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public void onBindViewHolder(@NotNull RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramViewHolder, "holder");
     paramViewHolder = (ActionSheetPrivacySelectAdapter.PrivacyHolder)paramViewHolder;
-    paramViewHolder.a().setText((CharSequence)((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
+    paramViewHolder.a().setText((CharSequence)((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.a.get(paramInt)).b());
     if (paramInt == 0) {
-      paramViewHolder.itemView.setBackgroundResource(2130837670);
+      paramViewHolder.itemView.setBackgroundResource(2130837694);
     } else {
-      paramViewHolder.itemView.setBackgroundResource(2130837658);
+      paramViewHolder.itemView.setBackgroundResource(2130837681);
     }
-    if (((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a() == this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileDisplaySettingItem.g()) {
-      paramViewHolder.a().setVisibility(0);
+    if (((ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)this.a.get(paramInt)).a() == this.c.i()) {
+      paramViewHolder.b().setVisibility(0);
     } else {
-      paramViewHolder.a().setVisibility(8);
+      paramViewHolder.b().setVisibility(8);
     }
-    ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener localPrivacySelectActionSheetClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;
+    ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener localPrivacySelectActionSheetClickListener = this.d;
     if (localPrivacySelectActionSheetClickListener != null) {
       paramViewHolder.itemView.setOnClickListener((View.OnClickListener)new ActionSheetPrivacySelectAdapter.onBindViewHolder..inlined.let.lambda.1(localPrivacySelectActionSheetClickListener, this, paramViewHolder, paramInt));
     }
@@ -86,14 +86,14 @@ public final class ActionSheetPrivacySelectAdapter
   public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup paramViewGroup, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "viewGroup");
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561327, paramViewGroup, false);
+    paramViewGroup = this.b.inflate(2131627683, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…w_item, viewGroup, false)");
     return (RecyclerView.ViewHolder)new ActionSheetPrivacySelectAdapter.PrivacyHolder(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ActionSheetPrivacySelectAdapter
  * JD-Core Version:    0.7.0.1
  */

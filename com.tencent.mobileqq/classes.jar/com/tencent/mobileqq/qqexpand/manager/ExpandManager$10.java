@@ -10,27 +10,33 @@ import com.tencent.qphone.base.util.QLog;
 class ExpandManager$10
   implements ExtendFriendGetLocationListener
 {
+  ExpandManager$10(ExpandManager paramExpandManager) {}
+  
   public void a(boolean paramBoolean, ExtendFriendLocationInfo paramExtendFriendLocationInfo)
   {
-    if (ExpandManager.a(this.a) == null)
+    if (ExpandManager.b(this.a) == null)
     {
-      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo null");
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
       return;
     }
     if (!paramBoolean) {
-      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo NOT suc");
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
     }
-    int i = ExtendFriendLimitChatManager.a(ExpandManager.a(this.a));
-    ((ExpandHandlerImpl)ExpandManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(i, paramExtendFriendLocationInfo);
-    paramExtendFriendLocationInfo = new StringBuilder();
-    paramExtendFriendLocationInfo.append("getLocationAndOpenSignal onGetLocationInfo  suc:");
-    paramExtendFriendLocationInfo.append(paramBoolean);
-    QLog.i("ExtendFriendManager", 2, paramExtendFriendLocationInfo.toString());
+    if (this.a.S())
+    {
+      ((ExpandHandlerImpl)ExpandManager.b(this.a).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(paramExtendFriendLocationInfo);
+      paramExtendFriendLocationInfo = new StringBuilder();
+      paramExtendFriendLocationInfo.append("enterExtendFriend onGetLocationInfo NOT suc:");
+      paramExtendFriendLocationInfo.append(paramBoolean);
+      QLog.i("ExtendFriendManager", 2, paramExtendFriendLocationInfo.toString());
+      return;
+    }
+    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExpandManager.10
  * JD-Core Version:    0.7.0.1
  */

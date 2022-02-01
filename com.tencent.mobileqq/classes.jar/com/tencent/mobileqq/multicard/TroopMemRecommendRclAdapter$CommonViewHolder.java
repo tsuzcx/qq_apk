@@ -20,23 +20,23 @@ class TroopMemRecommendRclAdapter$CommonViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  List<RecommendPerson> jdField_a_of_type_JavaUtilList;
+  List<RecommendPerson> a;
   List<TroopMemRecommendRclAdapter.CommonViewHolder.CommonSubItemView> b;
+  TextView c;
+  LinearLayout d;
   
   public TroopMemRecommendRclAdapter$CommonViewHolder(TroopMemRecommendRclAdapter paramTroopMemRecommendRclAdapter, View paramView, int paramInt)
   {
     super(paramView);
-    this.jdField_a_of_type_JavaUtilList = ((List)paramTroopMemRecommendRclAdapter.a.get(Integer.valueOf(paramInt)));
-    paramTroopMemRecommendRclAdapter = this.jdField_a_of_type_JavaUtilList;
+    this.a = ((List)paramTroopMemRecommendRclAdapter.a.get(Integer.valueOf(paramInt)));
+    paramTroopMemRecommendRclAdapter = this.a;
     if (paramTroopMemRecommendRclAdapter == null) {
       return;
     }
     this.b = new ArrayList(paramTroopMemRecommendRclAdapter.size());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379952));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376768));
-    paramTroopMemRecommendRclAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c = ((TextView)paramView.findViewById(2131448840));
+    this.d = ((LinearLayout)paramView.findViewById(2131445061));
+    paramTroopMemRecommendRclAdapter = this.a.iterator();
     while (paramTroopMemRecommendRclAdapter.hasNext())
     {
       paramView = (RecommendPerson)paramTroopMemRecommendRclAdapter.next();
@@ -46,44 +46,44 @@ class TroopMemRecommendRclAdapter$CommonViewHolder
         ((StringBuilder)localObject).append("CommonViewHolder, person.uin =");
         ((StringBuilder)localObject).append(paramView.uin);
         ((StringBuilder)localObject).append(" size() = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject).append(this.a.size());
         QLog.d("TroopMemberRecommend.Adapter", 2, ((StringBuilder)localObject).toString());
       }
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562986, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      Object localObject = (RelativeLayout)paramView.findViewById(2131376769);
-      ImageView localImageView = (ImageView)paramView.findViewById(2131369536);
-      TextView localTextView1 = (TextView)paramView.findViewById(2131379953);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131379954);
-      Button localButton = (Button)paramView.findViewById(2131364099);
+      paramView = LayoutInflater.from(this.d.getContext()).inflate(2131629594, this.d, false);
+      Object localObject = (RelativeLayout)paramView.findViewById(2131445062);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131436636);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131448841);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131448842);
+      Button localButton = (Button)paramView.findViewById(2131430065);
       TroopMemRecommendRclAdapter.CommonViewHolder.CommonSubItemView localCommonSubItemView = new TroopMemRecommendRclAdapter.CommonViewHolder.CommonSubItemView(this);
-      localCommonSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject);
-      localCommonSubItemView.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-      localCommonSubItemView.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
-      localCommonSubItemView.b = localTextView2;
-      localCommonSubItemView.jdField_a_of_type_AndroidWidgetButton = localButton;
+      localCommonSubItemView.a = ((RelativeLayout)localObject);
+      localCommonSubItemView.b = localImageView;
+      localCommonSubItemView.c = localTextView1;
+      localCommonSubItemView.d = localTextView2;
+      localCommonSubItemView.e = localButton;
       this.b.add(localCommonSubItemView);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView);
+      this.d.addView(paramView);
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131364099)
+    if (i != 2131430065)
     {
-      if ((i == 2131376769) && (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null)) {
-        TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).a((RecyclerView.ViewHolder)paramView.getTag(2131376767), (RecommendPerson)paramView.getTag(2131364098));
+      if ((i == 2131445062) && (TroopMemRecommendRclAdapter.a(this.e) != null)) {
+        TroopMemRecommendRclAdapter.a(this.e).a((RecyclerView.ViewHolder)paramView.getTag(2131445060), (RecommendPerson)paramView.getTag(2131430064));
       }
     }
-    else if (TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter) != null) {
-      TroopMemRecommendRclAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMulticardTroopMemRecommendRclAdapter).b((RecyclerView.ViewHolder)paramView.getTag(2131376767), (RecommendPerson)paramView.getTag(2131364098));
+    else if (TroopMemRecommendRclAdapter.a(this.e) != null) {
+      TroopMemRecommendRclAdapter.a(this.e).b((RecyclerView.ViewHolder)paramView.getTag(2131445060), (RecommendPerson)paramView.getTag(2131430064));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.TroopMemRecommendRclAdapter.CommonViewHolder
  * JD-Core Version:    0.7.0.1
  */

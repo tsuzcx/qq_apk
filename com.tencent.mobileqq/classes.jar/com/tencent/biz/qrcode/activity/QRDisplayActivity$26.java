@@ -11,14 +11,14 @@ class QRDisplayActivity$26
   {
     if (this.a)
     {
-      this.this$0.d.setOnClickListener(null);
-      this.this$0.d.setClickable(false);
-      this.this$0.d.setOnTouchListener(new QRDisplayActivity.26.1(this));
+      this.this$0.I.setOnClickListener(null);
+      this.this$0.I.setClickable(false);
+      this.this$0.I.setOnTouchListener(new QRDisplayActivity.26.1(this));
       return;
     }
-    this.this$0.d.setClickable(true);
-    this.this$0.d.setOnClickListener(this.this$0);
-    this.this$0.d.setTouchDelegate(null);
+    this.this$0.I.setClickable(true);
+    this.this$0.I.setOnClickListener(this.this$0);
+    this.this$0.I.setTouchDelegate(null);
   }
 }
 

@@ -30,21 +30,21 @@ class VideoForC2C$1
     }
     paramByteStringMicro = new StringBuilder();
     paramByteStringMicro.append("[");
-    paramByteStringMicro.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForC2C.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    paramByteStringMicro.append(this.b.a.nSessionId);
     paramByteStringMicro.append("],[getOnlinePlay]  ID[");
     paramByteStringMicro.append(paramLong2);
     paramByteStringMicro.append("]onUpdateGetOfflineDownloadInfo");
     QLog.i("VideoForC2C<QFile>XOXO", 2, paramByteStringMicro.toString());
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForC2C.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForC2C.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+    if ((TextUtils.isEmpty(this.b.a.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+      this.b.a.strFileMd5 = paramString6;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForC2C.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bUseMediaPlatform = paramBoolean2;
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForC2C.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForC2C.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new VideoForC2C.1.1(this, paramLong1, paramBoolean1, paramString3, paramBundle, paramShort, paramBoolean2, paramString2, paramString1));
+    this.b.a.bUseMediaPlatform = paramBoolean2;
+    FileManagerUtil.a(this.b.a, this.b.b, new VideoForC2C.1.1(this, paramLong1, paramBoolean1, paramString3, paramBundle, paramShort, paramBoolean2, paramString2, paramString1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForC2C.1
  * JD-Core Version:    0.7.0.1
  */

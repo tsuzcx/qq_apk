@@ -19,15 +19,15 @@ class AccountPanel$1
   public void onClick(@NonNull View paramView)
   {
     paramView = new Intent();
-    paramView.putExtra("KEY_ONLINE_STATUS", this.jdField_a_of_type_MqqAppAppRuntime$Status);
-    paramView.putExtra("KEY_ONLINE_EXT_STATUS", this.jdField_a_of_type_Long);
-    QPublicFragmentActivity.startForResult(AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel), paramView, AccountOnlineStateActivity.class, 234);
-    if ((AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel) != null) && (AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel).isShowing()))
+    paramView.putExtra("KEY_ONLINE_STATUS", this.a);
+    paramView.putExtra("KEY_ONLINE_EXT_STATUS", this.b);
+    QPublicFragmentActivity.startForResult(AccountPanel.a(this.c), paramView, AccountOnlineStateActivity.class, 234);
+    if ((AccountPanel.b(this.c) != null) && (AccountPanel.b(this.c).isShowing()))
     {
-      AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel).dismiss();
-      AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel, null);
+      AccountPanel.b(this.c).dismiss();
+      AccountPanel.a(this.c, null);
     }
-    ReportController.b(AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel), "dc00898", "", "", "0X8009DE2", "0X8009DE2", 0, 0, "", "", "", "");
+    ReportController.b(AccountPanel.c(this.c), "dc00898", "", "", "0X8009DE2", "0X8009DE2", 0, 0, "", "", "", "");
   }
   
   public void updateDrawState(@NonNull TextPaint paramTextPaint)
@@ -39,7 +39,7 @@ class AccountPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.1
  * JD-Core Version:    0.7.0.1
  */

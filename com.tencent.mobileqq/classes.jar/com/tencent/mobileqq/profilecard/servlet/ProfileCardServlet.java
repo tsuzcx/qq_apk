@@ -46,7 +46,7 @@ public class ProfileCardServlet
       int i;
       try
       {
-        i = Integer.parseInt("5295");
+        i = Integer.parseInt("5770");
       }
       catch (Exception localException)
       {
@@ -63,7 +63,7 @@ public class ProfileCardServlet
         ((SummaryCardBusiEntry.comm)localObject).touin.set(paramLong2);
         ((SummaryCardBusiEntry.comm)localObject).service.set(localBusinessReqBuffer.getBusinessType());
         ((SummaryCardBusiEntry.comm)localObject).platform.set(2);
-        ((SummaryCardBusiEntry.comm)localObject).qqver.set("8.7.0.5295");
+        ((SummaryCardBusiEntry.comm)localObject).qqver.set("8.8.17.5770");
         ((SummaryCardBusiEntry.comm)localObject).build.set(i);
         int j = localBusinessReqBuffer.getBusinessType();
         if ((j == 17) || (j == 19) || (j == 18))
@@ -199,7 +199,7 @@ public class ProfileCardServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.servlet.ProfileCardServlet
  * JD-Core Version:    0.7.0.1
  */

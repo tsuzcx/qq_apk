@@ -25,18 +25,18 @@ class QWalletHbApiImpl$3
       localHashMap.put("pskey_type", "27");
       localHashMap.put("pskey", paramVarArgs[0]);
       paramVarArgs = new StringBuilder();
-      paramVarArgs.append(this.jdField_a_of_type_Int);
+      paramVarArgs.append(this.a);
       paramVarArgs.append("");
       localHashMap.put("recv_group_type", paramVarArgs.toString());
-      localHashMap.put("recv_group_id", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-      localHashMap.put("send_nickname", ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getGrayBarShowName(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin()));
-      localHashMap.put("send_uin", this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin());
+      localHashMap.put("recv_group_id", this.b.b);
+      localHashMap.put("send_nickname", ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getGrayBarShowName(this.b.b, this.c.getCurrentUin()));
+      localHashMap.put("send_uin", this.c.getCurrentUin());
       paramVarArgs = new StringBuilder();
-      paramVarArgs.append(this.b);
+      paramVarArgs.append(this.d);
       paramVarArgs.append("");
       localHashMap.put("group_count", paramVarArgs.toString());
-      paramVarArgs = QwUtils.a(this.jdField_a_of_type_JavaLangString, localHashMap, true);
-      ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(this.jdField_a_of_type_AndroidAppActivity, paramVarArgs);
+      paramVarArgs = QwUtils.a(this.e, localHashMap, true);
+      ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(this.f, paramVarArgs);
       return;
     }
     QLog.i("QWalletHbApi", 2, "error get pskey...");
@@ -44,7 +44,7 @@ class QWalletHbApiImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.QWalletHbApiImpl.3
  * JD-Core Version:    0.7.0.1
  */

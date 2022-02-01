@@ -11,19 +11,19 @@ class PhotoListCustomizationQzone$5
   
   public void a()
   {
-    this.a.b();
+    this.a.c();
   }
   
   public void b()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setClickable(true);
+    if (this.a.h.o != null) {
+      this.a.h.o.setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationQzone.5
  * JD-Core Version:    0.7.0.1
  */

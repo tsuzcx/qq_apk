@@ -8,22 +8,6 @@ import mqq.app.AppRuntime;
 
 public class FeedsSPUtils
 {
-  public static float a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null)
-    {
-      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsShortVideoWidthHeightRatio() failed");
-      return 0.0F;
-    }
-    float f = paramAppRuntime.getFloat("readinjoy_short_video_width_height_ratio", -1.0F);
-    paramAppRuntime = new StringBuilder();
-    paramAppRuntime.append("getVideoFeedsShortVideoWidthHeightRatio() result=");
-    paramAppRuntime.append(f);
-    QLog.d("Q.readinjoy.tt_report", 1, paramAppRuntime.toString());
-    return f;
-  }
-  
   public static void a(AppRuntime paramAppRuntime, float paramFloat)
   {
     paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
@@ -77,10 +61,26 @@ public class FeedsSPUtils
     }
     return paramAppRuntime.getBoolean("nw_support", true);
   }
+  
+  public static float b(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsShortVideoWidthHeightRatio() failed");
+      return 0.0F;
+    }
+    float f = paramAppRuntime.getFloat("readinjoy_short_video_width_height_ratio", -1.0F);
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("getVideoFeedsShortVideoWidthHeightRatio() result=");
+    paramAppRuntime.append(f);
+    QLog.d("Q.readinjoy.tt_report", 1, paramAppRuntime.toString());
+    return f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.FeedsSPUtils
  * JD-Core Version:    0.7.0.1
  */

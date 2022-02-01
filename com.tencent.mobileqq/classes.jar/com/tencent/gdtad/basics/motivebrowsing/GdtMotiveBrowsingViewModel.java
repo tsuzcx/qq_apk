@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel;
 import com.tencent.gdtad.inject.GdtThirdProcessorProxy;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.TimeUnit;
@@ -24,26 +25,24 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingViewModel;", "Landroidx/lifecycle/ViewModel;", "()V", "autoCountAfter5Second", "Lrx/Subscription;", "countDownTime", "", "gdtThirdProcessorProxy", "Lcom/tencent/gdtad/inject/GdtThirdProcessorProxy;", "getGdtThirdProcessorProxy", "()Lcom/tencent/gdtad/inject/GdtThirdProcessorProxy;", "hasCountDown", "", "leftSecond", "leftSecondSubscription", "motiveBrowsingData", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/gdtad/basics/motivebrowsing/MotiveBrowsingData;", "getMotiveBrowsingData", "()Landroidx/lifecycle/MutableLiveData;", "msgPathPattern", "Ljava/util/regex/Pattern;", "kotlin.jvm.PlatformType", "autoCountCheck", "", "callbackJs", "url", "", "onCleared", "onCountDown", "onHandleUrl", "model", "Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoModel;", "pauseCountDown", "report", "type", "reportUrl", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "resumeCountDown", "unSubscribe", "subscription", "Companion", "qqad-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingViewModel;", "Landroidx/lifecycle/ViewModel;", "Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingExperimentReportHelper$ReportCallback;", "()V", "autoCountAfter5Second", "Lrx/Subscription;", "countDownTime", "", "gdtThirdProcessorProxy", "Lcom/tencent/gdtad/inject/GdtThirdProcessorProxy;", "getGdtThirdProcessorProxy", "()Lcom/tencent/gdtad/inject/GdtThirdProcessorProxy;", "hasCountDown", "", "leftSecond", "leftSecondSubscription", "mGdtMotiveBrowsingExperimentReportHelper", "Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingExperimentReportHelper;", "getMGdtMotiveBrowsingExperimentReportHelper", "()Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingExperimentReportHelper;", "motiveBrowsingData", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/gdtad/basics/motivebrowsing/MotiveBrowsingData;", "getMotiveBrowsingData", "()Landroidx/lifecycle/MutableLiveData;", "msgPathPattern", "Ljava/util/regex/Pattern;", "kotlin.jvm.PlatformType", "autoCountCheck", "", "callbackJs", "url", "", "onCleared", "onCountDown", "onHandleUrl", "model", "Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoModel;", "onReport", "pauseCountDown", "report", "type", "reportUrl", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "resumeCountDown", "unSubscribe", "subscription", "Companion", "qqad-impl_release"}, k=1, mv={1, 1, 16})
 public final class GdtMotiveBrowsingViewModel
   extends ViewModel
+  implements GdtMotiveBrowsingExperimentReportHelper.ReportCallback
 {
-  public static final GdtMotiveBrowsingViewModel.Companion a;
-  private int jdField_a_of_type_Int;
+  public static final GdtMotiveBrowsingViewModel.Companion a = new GdtMotiveBrowsingViewModel.Companion(null);
+  private Subscription b;
+  private Subscription c;
+  private boolean d;
   @NotNull
-  private final MutableLiveData<MotiveBrowsingData> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
+  private final MutableLiveData<MotiveBrowsingData> e = new MutableLiveData();
+  private int f;
+  private final Pattern g = Pattern.compile("/*(\\w+)/*(\\w+)/*(\\w+)/*");
+  private int h;
   @NotNull
-  private final GdtThirdProcessorProxy jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy = new GdtThirdProcessorProxy();
-  private final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("/*(\\w+)/*(\\w+)/*(\\w+)/*");
-  private Subscription jdField_a_of_type_RxSubscription;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private Subscription jdField_b_of_type_RxSubscription;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingViewModel$Companion = new GdtMotiveBrowsingViewModel.Companion(null);
-  }
+  private final GdtThirdProcessorProxy i = new GdtThirdProcessorProxy();
+  @NotNull
+  private final GdtMotiveBrowsingExperimentReportHelper j = new GdtMotiveBrowsingExperimentReportHelper();
   
   private final void a(int paramInt, String paramString, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
@@ -54,7 +53,7 @@ public final class GdtMotiveBrowsingViewModel
       localStringBuilder.append(paramString);
       QLog.d("GdtMotiveBrowsingViewModel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a(paramInt, 0, paramAdInfo);
+    this.i.a(paramInt, 0, paramAdInfo);
     ThreadManager.excute((Runnable)new GdtMotiveBrowsingViewModel.report.1(paramString), 128, null, true);
   }
   
@@ -73,7 +72,7 @@ public final class GdtMotiveBrowsingViewModel
     if (localObject2 != null)
     {
       paramString = ((Uri)localObject2).getPath();
-      localObject1 = this.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)paramString);
+      localObject1 = this.g.matcher((CharSequence)paramString);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "msgPathPattern.matcher(path)");
       if (((Matcher)localObject1).matches())
       {
@@ -92,11 +91,11 @@ public final class GdtMotiveBrowsingViewModel
         ((JSONObject)localObject2).put("data", localJSONObject);
         ((JSONObject)localObject2).put("code", 0);
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label353;
+          break label354;
         }
         paramString = new JSONObject((String)localObject3).optString("bridgeName");
         if (TextUtils.isEmpty((CharSequence)paramString)) {
-          break label353;
+          break label354;
         }
         Intrinsics.checkExpressionValueIsNotNull(paramString, "paramBridgeName");
         localObject3 = new JSONObject();
@@ -116,7 +115,7 @@ public final class GdtMotiveBrowsingViewModel
           paramString.append(localObject1);
           QLog.d("GdtMotiveBrowsingViewModel", 2, paramString.toString());
         }
-        paramString = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+        paramString = this.e;
         localObject1 = ((StringBuilder)localObject1).toString();
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "sb.toString()");
         paramString.setValue(new MotiveBrowsingData(0, (String)localObject1, 0, 4, null));
@@ -127,7 +126,7 @@ public final class GdtMotiveBrowsingViewModel
         QLog.d("GdtMotiveBrowsingViewModel", 2, paramString, new Object[0]);
       }
       return;
-      label353:
+      label354:
       paramString = "bridge.callback";
     }
   }
@@ -139,67 +138,115 @@ public final class GdtMotiveBrowsingViewModel
     }
   }
   
-  private final void c()
+  private final void e()
   {
-    a(this.jdField_b_of_type_RxSubscription);
-    this.jdField_b_of_type_RxSubscription = ((Subscription)null);
-    if (!this.jdField_a_of_type_Boolean)
+    a(this.c);
+    this.c = ((Subscription)null);
+    if (!this.d)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GdtMotiveBrowsingViewModel", 2, "onCountDown");
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      b();
+      this.d = true;
+      this.h = this.f;
+      d();
     }
   }
   
   @NotNull
   public final MutableLiveData<MotiveBrowsingData> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public final void a()
-  {
-    a(this.jdField_a_of_type_RxSubscription);
-    this.jdField_a_of_type_RxSubscription = ((Subscription)null);
+    return this.e;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
     if (QLog.isColorLevel()) {
       QLog.d("GdtMotiveBrowsingViewModel", 2, "autoCountCheck");
     }
-    this.jdField_b_of_type_RxSubscription = Observable.timer(5L, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe((Action1)new GdtMotiveBrowsingViewModel.autoCountCheck.1(this));
+    this.c = Observable.timer(5L, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe((Action1)new GdtMotiveBrowsingViewModel.autoCountCheck.1(this));
   }
   
-  public final boolean a(@NotNull String paramString, @Nullable GdtMotiveVideoModel paramGdtMotiveVideoModel)
+  public void a(@NotNull String paramString, @Nullable GdtMotiveVideoModel paramGdtMotiveVideoModel)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "url");
-    Object localObject;
-    if (QLog.isColorLevel())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onHandleUrl url: ");
+    ((StringBuilder)localObject1).append(paramString);
+    GdtLog.b("GdtMotiveBrowsingViewModel", ((StringBuilder)localObject1).toString());
+    if (paramGdtMotiveVideoModel != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("onHandleUrl url: ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("GdtMotiveBrowsingViewModel", 2, ((StringBuilder)localObject).toString());
+      localObject1 = null;
+      Object localObject2 = null;
+      if (StringsKt.startsWith$default(paramString, "gdtmsg://e.qq.com/reportExposureRewardAd/rewardAD", false, 2, null))
+      {
+        localObject1 = paramGdtMotiveVideoModel.d();
+        paramString = localObject2;
+        if (localObject1 != null) {
+          paramString = ((GdtAd)localObject1).getUrlForImpression();
+        }
+        if (TextUtils.isEmpty((CharSequence)paramString)) {
+          return;
+        }
+        paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.b();
+        Intrinsics.checkExpressionValueIsNotNull(paramGdtMotiveVideoModel, "model.adInfo");
+        a(0, paramString, paramGdtMotiveVideoModel);
+        return;
+      }
+      if (StringsKt.startsWith$default(paramString, "gdtmsg://e.qq.com/reportClickRewardAd/rewardAD/", false, 2, null))
+      {
+        paramString = paramGdtMotiveVideoModel.d();
+        if (paramString != null) {
+          paramString = paramString.getUrlForClick();
+        } else {
+          paramString = null;
+        }
+        if (TextUtils.isEmpty((CharSequence)paramString)) {
+          return;
+        }
+        if (paramString != null) {
+          localObject1 = this.j.a(paramString);
+        }
+        paramString = paramGdtMotiveVideoModel.b();
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "model.adInfo");
+        a(1, (String)localObject1, paramString);
+      }
     }
+  }
+  
+  @NotNull
+  public final GdtMotiveBrowsingExperimentReportHelper b()
+  {
+    return this.j;
+  }
+  
+  public final boolean b(@NotNull String paramString, @Nullable GdtMotiveVideoModel paramGdtMotiveVideoModel)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onHandleUrl url: ");
+    ((StringBuilder)localObject).append(paramString);
+    GdtLog.b("GdtMotiveBrowsingViewModel", ((StringBuilder)localObject).toString());
     if (paramGdtMotiveVideoModel != null)
     {
       GdtAd localGdtAd1 = null;
       localObject = null;
       if (StringsKt.startsWith$default(paramString, "gdtmsg://e.qq.com/reportExposureRewardAd/rewardAD", false, 2, null))
       {
-        localGdtAd1 = paramGdtMotiveVideoModel.a();
+        localGdtAd1 = paramGdtMotiveVideoModel.d();
+        Intrinsics.checkExpressionValueIsNotNull(localGdtAd1, "it.gdtAd");
+        if (localGdtAd1.isMotiveBrowserStatisticsExperiment()) {
+          return false;
+        }
+        localGdtAd1 = paramGdtMotiveVideoModel.d();
         if (localGdtAd1 != null) {
           localObject = localGdtAd1.getUrlForImpression();
         }
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           return false;
         }
-        paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.a();
+        paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.b();
         Intrinsics.checkExpressionValueIsNotNull(paramGdtMotiveVideoModel, "model.adInfo");
         a(0, (String)localObject, paramGdtMotiveVideoModel);
         a(paramString);
@@ -207,7 +254,12 @@ public final class GdtMotiveBrowsingViewModel
       }
       if (StringsKt.startsWith$default(paramString, "gdtmsg://e.qq.com/reportClickRewardAd/rewardAD/", false, 2, null))
       {
-        GdtAd localGdtAd2 = paramGdtMotiveVideoModel.a();
+        localObject = paramGdtMotiveVideoModel.d();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "it.gdtAd");
+        if (((GdtAd)localObject).isMotiveBrowserStatisticsExperiment()) {
+          return false;
+        }
+        GdtAd localGdtAd2 = paramGdtMotiveVideoModel.d();
         localObject = localGdtAd1;
         if (localGdtAd2 != null) {
           localObject = localGdtAd2.getUrlForClick();
@@ -215,7 +267,7 @@ public final class GdtMotiveBrowsingViewModel
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           return false;
         }
-        paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.a();
+        paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.b();
         Intrinsics.checkExpressionValueIsNotNull(paramGdtMotiveVideoModel, "model.adInfo");
         a(1, (String)localObject, paramGdtMotiveVideoModel);
         a(paramString);
@@ -223,7 +275,7 @@ public final class GdtMotiveBrowsingViewModel
       }
       if (StringsKt.startsWith$default(paramString, "gdtmsg://e.qq.com/startCountDown/rewardAD/", false, 2, null))
       {
-        c();
+        e();
         return true;
       }
       return false;
@@ -231,15 +283,21 @@ public final class GdtMotiveBrowsingViewModel
     return true;
   }
   
-  public final void b()
+  public final void c()
   {
-    if (this.jdField_a_of_type_RxSubscription == null)
+    a(this.b);
+    this.b = ((Subscription)null);
+  }
+  
+  public final void d()
+  {
+    if (this.b == null)
     {
-      int i = this.jdField_b_of_type_Int;
-      if (i > 0)
+      int k = this.h;
+      if (k > 0)
       {
-        this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(new MotiveBrowsingData(1, null, i, 2, null));
-        this.jdField_a_of_type_RxSubscription = Observable.interval(1L, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe((Action1)new GdtMotiveBrowsingViewModel.resumeCountDown.1(this));
+        this.e.setValue(new MotiveBrowsingData(1, null, k, 2, null));
+        this.b = Observable.interval(1L, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe((Action1)new GdtMotiveBrowsingViewModel.resumeCountDown.1(this));
       }
     }
   }
@@ -250,16 +308,16 @@ public final class GdtMotiveBrowsingViewModel
     if (QLog.isColorLevel()) {
       QLog.d("GdtMotiveBrowsingViewModel", 2, "onCleared");
     }
-    a(this.jdField_a_of_type_RxSubscription);
+    a(this.b);
     Subscription localSubscription = (Subscription)null;
-    this.jdField_a_of_type_RxSubscription = localSubscription;
-    a(this.jdField_b_of_type_RxSubscription);
-    this.jdField_b_of_type_RxSubscription = localSubscription;
+    this.b = localSubscription;
+    a(this.c);
+    this.c = localSubscription;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingViewModel
  * JD-Core Version:    0.7.0.1
  */

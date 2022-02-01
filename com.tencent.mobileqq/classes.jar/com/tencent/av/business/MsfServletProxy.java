@@ -20,20 +20,20 @@ import mqq.app.NewIntent;
 
 public class MsfServletProxy
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private final Map<String, String[]> jdField_a_of_type_JavaUtilMap;
+  private final Map<String, String[]> a;
+  private AppInterface b;
+  private final ArrayList<String> c;
   
   public MsfServletProxy(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+    this.b = paramAppInterface;
+    this.a = new ConcurrentHashMap();
+    this.c = new ArrayList(10);
   }
   
   public AppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    return this.b;
   }
   
   public void a(ToServiceMsg paramToServiceMsg, Class<? extends MSFServlet> paramClass)
@@ -53,9 +53,9 @@ public class MsfServletProxy
         ((StringBuilder)localObject).append(paramToServiceMsg.getServiceCmd());
         QLog.d("MsfServletProxy", 2, ((StringBuilder)localObject).toString());
       }
-      paramClass = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramClass = new NewIntent(this.b.getApplication(), paramClass);
       paramClass.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramClass);
+      this.b.startServlet(paramClass);
       l = System.currentTimeMillis();
       paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
@@ -112,7 +112,7 @@ public class MsfServletProxy
       Object localObject2 = paramToServiceMsg.extraData;
       int i = 0;
       boolean bool = ((Bundle)localObject2).getBoolean("req_pb_protocol_flag", false);
-      if (((paramBoolean) || (this.jdField_a_of_type_JavaUtilArrayList.contains(localObject1))) && (bool))
+      if (((paramBoolean) || (this.c.contains(localObject1))) && (bool))
       {
         if (QLog.isColorLevel())
         {
@@ -133,7 +133,7 @@ public class MsfServletProxy
           }
           paramException = paramFromServiceMsg.getWupBuffer();
         }
-        localObject2 = (String[])this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+        localObject2 = (String[])this.a.get(localObject1);
         if ((localObject2 != null) && (localObject2.length > 0)) {
           j = localObject2.length;
         }
@@ -192,9 +192,9 @@ public class MsfServletProxy
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfString);
+      this.a.put(paramString, paramArrayOfString);
       if (paramBoolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.c.add(paramString);
       }
       return true;
     }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.app.QBaseFragment;
 
@@ -21,6 +22,12 @@ public class QPublicBaseFragment
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     return false;
+  }
+  
+  @NonNull
+  public String getBusinessDescription()
+  {
+    return "";
   }
   
   public void initSideFling(Context paramContext, FlingHandler paramFlingHandler) {}
@@ -78,7 +85,7 @@ public class QPublicBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QPublicBaseFragment
  * JD-Core Version:    0.7.0.1
  */

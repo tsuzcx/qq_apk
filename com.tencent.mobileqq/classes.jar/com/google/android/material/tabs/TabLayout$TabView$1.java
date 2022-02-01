@@ -10,14 +10,14 @@ class TabLayout$TabView$1
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-      TabLayout.TabView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView, this.jdField_a_of_type_AndroidViewView);
+    if (this.a.getVisibility() == 0) {
+      TabLayout.TabView.a(this.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.TabView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,7 @@ import com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -19,10 +18,10 @@ final class VideoReporter$2
   {
     long l1;
     Object localObject3;
-    if (this.jdField_a_of_type_Int == -2011)
+    if (this.a == -2011)
     {
       l1 = System.currentTimeMillis();
-      localObject3 = PAVideoStructMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
+      localObject3 = PAVideoStructMsgUtil.a(this.b.getMessageFacade().a(this.c, this.d, this.e));
       if (localObject3 == null) {}
     }
     for (;;)
@@ -31,20 +30,20 @@ final class VideoReporter$2
       try
       {
         Object localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("vid", ((StructMsgItemVideo)localObject3).ae);
+        ((JSONObject)localObject1).put("vid", ((StructMsgItemVideo)localObject3).az);
         ((JSONObject)localObject1).put("os", "1");
-        if (UinTypeUtil.b(this.b))
+        if (UinTypeUtil.b(this.d))
         {
           i = 1;
         }
-        else if (this.b == 1)
+        else if (this.d == 1)
         {
           i = 2;
         }
         else
         {
-          if (this.b != 3000) {
-            break label266;
+          if (this.d != 3000) {
+            break label252;
           }
           i = 3;
         }
@@ -56,13 +55,12 @@ final class VideoReporter$2
         localException.printStackTrace();
         localObject2 = "";
       }
-      IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      if (((StructMsgItemVideo)localObject3).aj == null) {
+      if (((StructMsgItemVideo)localObject3).aO == null) {
         localObject3 = "0";
       } else {
-        localObject3 = ((StructMsgItemVideo)localObject3).aj;
+        localObject3 = ((StructMsgItemVideo)localObject3).aO;
       }
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject3, (String)localObject2, false);
+      PublicAccountReportUtils.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject3, (String)localObject2, false);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
@@ -73,14 +71,14 @@ final class VideoReporter$2
         QLog.d("VideoReporter", 2, ((StringBuilder)localObject2).toString());
       }
       return;
-      label266:
+      label252:
       int i = 4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,21 @@ final class TroopBlockUtils$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    paramDialogInterface = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramDialogInterface != null)
     {
-      TroopInfo localTroopInfo = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString);
+      TroopInfo localTroopInfo = paramDialogInterface.f(this.b);
       if (localTroopInfo != null)
       {
-        if (localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        if (localTroopInfo.isTroopOwner(this.a.getCurrentAccountUin())) {
           paramDialogInterface = "0";
         } else if (localTroopInfo.isAdmin()) {
           paramDialogInterface = "1";
         } else {
           paramDialogInterface = "2";
         }
-        paramDialogInterface = TroopBlockUtils.jdField_a_of_type_JavaLangString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$UIN$", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$ROLE$", paramDialogInterface);
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 2016, ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).createEntryModel(localTroopInfo, this.jdField_a_of_type_JavaLangString), null);
+        paramDialogInterface = TroopBlockUtils.a.replace("$GCODE$", this.b).replace("$UIN$", this.a.getCurrentAccountUin()).replace("$ROLE$", paramDialogInterface);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.c, paramDialogInterface, 2016, ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).createEntryModel(localTroopInfo, this.b), null);
       }
     }
     ReportController.b(null, "dc00898", "", "", "0X800B223", "0X800B223", 0, 0, "", "", "", "");
@@ -41,7 +41,7 @@ final class TroopBlockUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils.1
  * JD-Core Version:    0.7.0.1
  */

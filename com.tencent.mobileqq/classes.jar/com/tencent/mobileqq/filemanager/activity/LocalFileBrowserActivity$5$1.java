@@ -19,25 +19,25 @@ class LocalFileBrowserActivity$5$1
   
   public void onClick(View paramView)
   {
-    Object localObject = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity$5.a.e = ((LocalFileAdapter.LocalFileItemHolder)localObject).a;
-    localObject = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity$5.a.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity$5.a.e);
-    if ((FileUtils.fileExistsAndNotEmpty(((FileInfo)localObject).c())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(((FileInfo)localObject).c())))
+    Object localObject = (LocalFileAdapter.LocalFileItemHolder)this.a.getTag();
+    this.b.a.P = ((LocalFileAdapter.LocalFileItemHolder)localObject).k;
+    localObject = (FileInfo)this.b.a.O.get(this.b.a.P);
+    if ((FileUtils.fileExistsAndNotEmpty(((FileInfo)localObject).d())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(((FileInfo)localObject).d())))
     {
-      FMToastUtil.a(2131692274);
+      FMToastUtil.a(2131889262);
     }
     else
     {
-      QQFileManagerUtil.e(((FileInfo)localObject).c());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity$5.a.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity$5.a.e);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity$5.a);
+      QQFileManagerUtil.u(((FileInfo)localObject).d());
+      this.b.a.O.remove(this.b.a.P);
+      LocalFileBrowserActivity.a(this.b.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

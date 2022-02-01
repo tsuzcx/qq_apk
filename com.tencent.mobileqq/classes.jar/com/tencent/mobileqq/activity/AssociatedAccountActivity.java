@@ -28,6 +28,7 @@ import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.subaccount.AlbumCleanUtil;
 import com.tencent.mobileqq.subaccount.AssociatedAccountListItemData;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
@@ -73,6 +74,7 @@ public class AssociatedAccountActivity
   public static final long MIN_REFRESH_GAP = 30000L;
   private static final String TAG = "AssociatedAccountActivity";
   public SubAccountInfo curSubAccountInfo;
+  private int fromWhereExactly;
   public AssociatedAccountListAdapter mAdapter;
   public SlideDetectListView mAssociatedqqList;
   private AvatarObserver mAvatarObserver = new AssociatedAccountActivity.12(this);
@@ -87,7 +89,6 @@ public class AssociatedAccountActivity
   public boolean mIsFromPull = false;
   public boolean mIsPullReqSuccess = false;
   public boolean mIsStartRefreshList = false;
-  private boolean mIsUseNewSetting = false;
   public ArrayList<AssociatedAccountListItemData> mItemDataList;
   public long mLastRefreshTime = 0L;
   private BusinessObserver mMsgObserver = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getMessageObserver(new AssociatedAccountActivity.15(this));
@@ -152,6 +153,7 @@ public class AssociatedAccountActivity
         localObject1 = AssociatedAccountActivity.class.getSimpleName();
       }
       localIntent.putExtra("fromWhere", (String)localObject1);
+      localIntent.putExtra("fromWhereExactly", this.fromWhereExactly);
       startActivity(localIntent);
       return;
     }
@@ -302,7 +304,7 @@ public class AssociatedAccountActivity
       localIntent.putExtra("fromWhere", ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getAccountManagerName());
     }
     startActivityForResult(localIntent, 1012);
-    overridePendingTransition(2130772011, 2130772004);
+    overridePendingTransition(2130772014, 2130772007);
   }
   
   private void initData()
@@ -335,33 +337,26 @@ public class AssociatedAccountActivity
       }
       QLog.d("AssociatedAccountActivity", 2, new Object[] { "initUI", " app is null: ", Boolean.valueOf(bool) });
     }
-    setTitle(2131690180);
+    setTitle(2131887080);
     TextView localTextView = this.rightViewText;
     localTextView.setVisibility(0);
-    localTextView.setText(2131719285);
+    localTextView.setText(2131916837);
     localTextView.setOnClickListener(new AssociatedAccountActivity.1(this));
-    this.mSubAccountNotifySwitch = ((FormSwitchItem)findViewById(2131364077));
-    if (this.mIsUseNewSetting)
-    {
-      this.mSubAccountNotifySwitch.setVisibility(0);
-      updateSubAccountNotifySwitch();
-      this.mSubAccountNotifySwitch.setOnCheckedChangeListener(new AssociatedAccountActivity.2(this));
+    this.mSubAccountNotifySwitch = ((FormSwitchItem)findViewById(2131430040));
+    this.mSubAccountNotifySwitch.setVisibility(0);
+    updateSubAccountNotifySwitch();
+    this.mSubAccountNotifySwitch.setOnCheckedChangeListener(new AssociatedAccountActivity.2(this));
+    this.mAssociatedqqList = ((SlideDetectListView)findViewById(2131446544));
+    this.thirdRootLayout = findViewById(2131447308);
+    this.thirdAccountsListView = ((HorizontalListView)findViewById(2131447307));
+    this.thirdAccountsListView.setDividerWidth(ViewUtils.dip2px(22.0F));
+    if (AppSetting.e) {
+      localTextView.setContentDescription(getText(2131916837));
     }
-    else
-    {
-      this.mSubAccountNotifySwitch.setVisibility(8);
-    }
-    this.mAssociatedqqList = ((SlideDetectListView)findViewById(2131378044));
-    this.thirdRootLayout = findViewById(2131378652);
-    this.thirdAccountsListView = ((HorizontalListView)findViewById(2131378651));
-    this.thirdAccountsListView.setDividerWidth(ViewUtils.a(22.0F));
-    if (AppSetting.d) {
-      localTextView.setContentDescription(getText(2131719285));
-    }
-    this.mTopRefreshTop = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559642, this.mAssociatedqqList, false));
+    this.mTopRefreshTop = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131625671, this.mAssociatedqqList, false));
     this.mAssociatedqqList.setOverScrollHeader(this.mTopRefreshTop);
     this.mAssociatedqqList.setOverScrollListener(this.mScrollViewListener);
-    this.mAssociatedqqList.setBackgroundResource(2130838739);
+    this.mAssociatedqqList.setBackgroundResource(2130838958);
   }
   
   private void onRefreshRequestBack(boolean paramBoolean1, boolean paramBoolean2)
@@ -424,10 +419,10 @@ public class AssociatedAccountActivity
   
   private void showConfirmDialog()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
-    localActionSheet.setMainTitle(2131720087);
-    localActionSheet.addButton(2131694583, 3);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(getActivity(), null);
+    localActionSheet.setMainTitle(2131917710);
+    localActionSheet.addButton(2131892267, 3);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new AssociatedAccountActivity.17(this, localActionSheet));
     localActionSheet.show();
   }
@@ -441,13 +436,13 @@ public class AssociatedAccountActivity
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("AssociatedAccountActivity", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (ActionSheet)ActionSheetHelper.a(this, null);
+    Object localObject = (ActionSheet)ActionSheetHelper.b(this, null);
     if (paramBoolean) {
-      ((ActionSheet)localObject).addButton(getResources().getString(2131719283), 5);
+      ((ActionSheet)localObject).addButton(getResources().getString(2131916835), 5);
     }
-    ((ActionSheet)localObject).addButton(getResources().getString(2131720086), 5);
-    ((ActionSheet)localObject).addButton(getResources().getString(2131719286), 5);
-    ((ActionSheet)localObject).addCancelButton(2131690728);
+    ((ActionSheet)localObject).addButton(getResources().getString(2131917709), 5);
+    ((ActionSheet)localObject).addButton(getResources().getString(2131916838), 5);
+    ((ActionSheet)localObject).addCancelButton(2131887648);
     ((ActionSheet)localObject).setOnButtonClickListener(new AssociatedAccountActivity.9(this, paramBoolean, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
   }
@@ -515,8 +510,8 @@ public class AssociatedAccountActivity
       return;
     }
     dimissDialog();
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setTitle(getString(2131719311)).setMessage(getString(2131719310));
-    localQQCustomDialog.setPositiveButton(2131691064, new AssociatedAccountActivity.7(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setTitle(getString(2131916863)).setMessage(getString(2131916862));
+    localQQCustomDialog.setPositiveButton(2131888010, new AssociatedAccountActivity.7(this));
     localQQCustomDialog.setCancelable(true);
     localQQCustomDialog.show();
   }
@@ -570,13 +565,13 @@ public class AssociatedAccountActivity
       while (paramSubAccountThirdQQBackProtocData.hasNext())
       {
         AssociatedAccountListItemData localAssociatedAccountListItemData = (AssociatedAccountListItemData)paramSubAccountThirdQQBackProtocData.next();
-        if ((localAssociatedAccountListItemData != null) && (localAssociatedAccountListItemData.jdField_a_of_type_Int == 6) && (localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject != null))
+        if ((localAssociatedAccountListItemData != null) && (localAssociatedAccountListItemData.a == 6) && (localAssociatedAccountListItemData.l != null))
         {
-          SimpleAccount localSimpleAccount = (SimpleAccount)localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject;
-          int j = SubAccountControllUtil.a(this.app, localSimpleAccount.getUin());
-          if (localAssociatedAccountListItemData.jdField_d_of_type_Int != j)
+          SimpleAccount localSimpleAccount = (SimpleAccount)localAssociatedAccountListItemData.l;
+          int j = SubAccountControllUtil.g(this.app, localSimpleAccount.getUin());
+          if (localAssociatedAccountListItemData.g != j)
           {
-            localAssociatedAccountListItemData.jdField_d_of_type_Int = j;
+            localAssociatedAccountListItemData.g = j;
             i = 1;
           }
         }
@@ -598,7 +593,7 @@ public class AssociatedAccountActivity
     }
     Object localObject = this.mThirdAccountList;
     if (((localObject != null) && (((ArrayList)localObject).size() > 0)) || (this.mIsFromAccountManage)) {
-      SubAccountControllUtil.c(this.app);
+      SubAccountControllUtil.e(this.app);
     }
     localObject = this.mSubAccountList;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
@@ -646,7 +641,7 @@ public class AssociatedAccountActivity
       if (paramInt1 != 1012) {
         return;
       }
-      bool = SubAccountControllUtil.d(this.app);
+      bool = SubAccountControllUtil.g(this.app);
       if ((paramInt2 == -1) || (this.mIsDisplayThirdQQChecked != bool))
       {
         this.mIsDisplayThirdQQChecked = bool;
@@ -702,6 +697,7 @@ public class AssociatedAccountActivity
   
   protected void doOnResume()
   {
+    ReportController.b(this.app, "dc00898", "", "", "0X800BDE4", "0X800BDE4", 0, 0, "", "", "", "");
     super.doOnResume();
     if (QLog.isColorLevel())
     {
@@ -734,7 +730,7 @@ public class AssociatedAccountActivity
         }
         localISubAccountService.cancelHintIsNew(localSubAccountInfo.subuin);
       }
-      SubAccountControllUtil.a(this.app, localSubAccountInfo.subuin, false);
+      SubAccountControllUtil.b(this.app, localSubAccountInfo.subuin, false);
       if (this.mIsFromPull) {
         this.mPullReqNeedBackNum += 1;
       }
@@ -929,24 +925,24 @@ public class AssociatedAccountActivity
         if ((localSubAccountInfo != null) && (!TextUtils.isEmpty(localSubAccountInfo.subuin)))
         {
           AssociatedAccountListItemData localAssociatedAccountListItemData = new AssociatedAccountListItemData();
-          localAssociatedAccountListItemData.jdField_a_of_type_Int = 2;
+          localAssociatedAccountListItemData.a = 2;
           localObject2 = ((IContactUtils)QRoute.api(IContactUtils.class)).getBuddyNickName(this.app, localSubAccountInfo.subuin, true);
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             localObject1 = localSubAccountInfo.subuin;
           }
-          localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          localAssociatedAccountListItemData.jdField_c_of_type_JavaLangString = localSubAccountInfo.subuin;
-          localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject = localSubAccountInfo;
-          localAssociatedAccountListItemData.jdField_b_of_type_JavaLangString = "";
+          localAssociatedAccountListItemData.b = ((String)localObject1);
+          localAssociatedAccountListItemData.e = localSubAccountInfo.subuin;
+          localAssociatedAccountListItemData.l = localSubAccountInfo;
+          localAssociatedAccountListItemData.c = "";
           if (localSubAccountInfo.subuin.equals(this.curSubAccountInfo.subuin)) {
-            localAssociatedAccountListItemData.jdField_b_of_type_Boolean = true;
+            localAssociatedAccountListItemData.k = true;
           } else {
-            localAssociatedAccountListItemData.jdField_b_of_type_Boolean = false;
+            localAssociatedAccountListItemData.k = false;
           }
           if (localSubAccountInfo.status != 1)
           {
-            localAssociatedAccountListItemData.e = 1;
+            localAssociatedAccountListItemData.j = 1;
             localObject1 = ((List)localObject4).iterator();
             while (((Iterator)localObject1).hasNext())
             {
@@ -960,21 +956,21 @@ public class AssociatedAccountActivity
             j = 0;
             label368:
             if (j != 0) {
-              localAssociatedAccountListItemData.jdField_a_of_type_Boolean = true;
+              localAssociatedAccountListItemData.i = true;
             } else {
-              localAssociatedAccountListItemData.jdField_a_of_type_Boolean = false;
+              localAssociatedAccountListItemData.i = false;
             }
           }
           else
           {
-            localAssociatedAccountListItemData.e = 0;
+            localAssociatedAccountListItemData.j = 0;
           }
-          localAssociatedAccountListItemData.jdField_b_of_type_Int = 0;
-          if (AppSetting.d) {
-            localAssociatedAccountListItemData.jdField_d_of_type_JavaLangString = getString(2131719292, new Object[] { localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString });
+          localAssociatedAccountListItemData.d = 0;
+          if (AppSetting.e) {
+            localAssociatedAccountListItemData.h = getString(2131916844, new Object[] { localAssociatedAccountListItemData.b });
           }
           if (localSubAccountInfo.subuin.equals(this.curSubAccountInfo.subuin)) {
-            bool = localAssociatedAccountListItemData.jdField_a_of_type_Boolean;
+            bool = localAssociatedAccountListItemData.i;
           }
           localArrayList2.add(localAssociatedAccountListItemData);
         }
@@ -982,9 +978,9 @@ public class AssociatedAccountActivity
       }
       i = 0;
       localObject1 = new AssociatedAccountListItemData();
-      ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_Int = 2;
-      ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_JavaLangObject = localArrayList2;
-      ((AssociatedAccountListItemData)localObject1).jdField_b_of_type_JavaLangString = "";
+      ((AssociatedAccountListItemData)localObject1).a = 2;
+      ((AssociatedAccountListItemData)localObject1).l = localArrayList2;
+      ((AssociatedAccountListItemData)localObject1).c = "";
       localArrayList1.add(localObject1);
       localObject1 = ((SubAccountServiceImpl)localObject3).getAllMessage(this.curSubAccountInfo.subuin);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -999,24 +995,24 @@ public class AssociatedAccountActivity
         }
         if (j > 0)
         {
-          localObject2 = SubAccountControllUtil.a(this.app, this.curSubAccountInfo.subuin);
+          localObject2 = SubAccountControllUtil.h(this.app, this.curSubAccountInfo.subuin);
           while (i < j)
           {
             localObject3 = (SubAccountMessage)((List)localObject1).get(i);
             localObject4 = new AssociatedAccountListItemData();
-            ((AssociatedAccountListItemData)localObject4).jdField_a_of_type_Int = 3;
+            ((AssociatedAccountListItemData)localObject4).a = 3;
             if (i == j - 1) {
-              ((AssociatedAccountListItemData)localObject4).jdField_b_of_type_Int = 2;
+              ((AssociatedAccountListItemData)localObject4).d = 2;
             } else {
-              ((AssociatedAccountListItemData)localObject4).jdField_b_of_type_Int = 1;
+              ((AssociatedAccountListItemData)localObject4).d = 1;
             }
             if ((localObject2 != null) && (((ArrayList)localObject2).contains(((SubAccountMessage)localObject3).senderuin))) {
-              ((AssociatedAccountListItemData)localObject4).jdField_c_of_type_Int = 2;
+              ((AssociatedAccountListItemData)localObject4).f = 2;
             }
             if (i == 0) {
-              ((AssociatedAccountListItemData)localObject4).jdField_b_of_type_Boolean = true;
+              ((AssociatedAccountListItemData)localObject4).k = true;
             }
-            ((AssociatedAccountListItemData)localObject4).jdField_a_of_type_JavaLangObject = localObject3;
+            ((AssociatedAccountListItemData)localObject4).l = localObject3;
             localArrayList1.add(localObject4);
             i += 1;
           }
@@ -1028,28 +1024,28 @@ public class AssociatedAccountActivity
           QLog.d("AssociatedAccountActivity", 2, "loadItemDataList subaccount no msg");
         }
         localObject1 = new AssociatedAccountListItemData();
-        ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_Int = 7;
-        ((AssociatedAccountListItemData)localObject1).jdField_b_of_type_Boolean = true;
-        ((AssociatedAccountListItemData)localObject1).jdField_b_of_type_Int = 3;
-        ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_JavaLangObject = this.curSubAccountInfo;
-        ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_Boolean = bool;
+        ((AssociatedAccountListItemData)localObject1).a = 7;
+        ((AssociatedAccountListItemData)localObject1).k = true;
+        ((AssociatedAccountListItemData)localObject1).d = 3;
+        ((AssociatedAccountListItemData)localObject1).l = this.curSubAccountInfo;
+        ((AssociatedAccountListItemData)localObject1).i = bool;
         localArrayList1.add(localObject1);
       }
     }
     else
     {
       localObject1 = new AssociatedAccountListItemData();
-      ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_Int = 4;
-      ((AssociatedAccountListItemData)localObject1).jdField_b_of_type_Int = 3;
-      ((AssociatedAccountListItemData)localObject1).jdField_a_of_type_JavaLangString = getResources().getString(2131719283);
-      ((AssociatedAccountListItemData)localObject1).jdField_c_of_type_JavaLangString = getResources().getString(2131719284);
-      if (AppSetting.d)
+      ((AssociatedAccountListItemData)localObject1).a = 4;
+      ((AssociatedAccountListItemData)localObject1).d = 3;
+      ((AssociatedAccountListItemData)localObject1).b = getResources().getString(2131916835);
+      ((AssociatedAccountListItemData)localObject1).e = getResources().getString(2131916836);
+      if (AppSetting.e)
       {
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(((AssociatedAccountListItemData)localObject1).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(((AssociatedAccountListItemData)localObject1).b);
         ((StringBuilder)localObject2).append(",");
-        ((StringBuilder)localObject2).append(((AssociatedAccountListItemData)localObject1).jdField_c_of_type_JavaLangString);
-        ((AssociatedAccountListItemData)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+        ((StringBuilder)localObject2).append(((AssociatedAccountListItemData)localObject1).e);
+        ((AssociatedAccountListItemData)localObject1).h = ((StringBuilder)localObject2).toString();
       }
       localArrayList1.add(localObject1);
     }
@@ -1070,15 +1066,15 @@ public class AssociatedAccountActivity
       {
         Object localObject = (SimpleAccount)this.mThirdAccountList.get(i);
         AssociatedAccountListItemData localAssociatedAccountListItemData = new AssociatedAccountListItemData();
-        localAssociatedAccountListItemData.jdField_a_of_type_Int = 6;
-        localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString = SubAccountControllUtil.a(this.app, (SimpleAccount)localObject);
-        localAssociatedAccountListItemData.jdField_d_of_type_Int = SubAccountControllUtil.a(this.app, ((SimpleAccount)localObject).getUin());
-        localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject = localObject;
-        if (AppSetting.d)
+        localAssociatedAccountListItemData.a = 6;
+        localAssociatedAccountListItemData.b = SubAccountControllUtil.b(this.app, (SimpleAccount)localObject);
+        localAssociatedAccountListItemData.g = SubAccountControllUtil.g(this.app, ((SimpleAccount)localObject).getUin());
+        localAssociatedAccountListItemData.l = localObject;
+        if (AppSetting.e)
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString);
-          localAssociatedAccountListItemData.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+          ((StringBuilder)localObject).append(localAssociatedAccountListItemData.b);
+          localAssociatedAccountListItemData.h = ((StringBuilder)localObject).toString();
         }
         localArrayList.add(localAssociatedAccountListItemData);
         i += 1;
@@ -1119,9 +1115,10 @@ public class AssociatedAccountActivity
     }
     SubAccountAssistantForward.a(this.app, this);
     hideJuhua();
+    ReportController.b(this.app, "dc00898", "", "", "0X800BDE6", "0X800BDE6", 0, 0, "", "", "", "");
     this.mCurrentSwitchUin = null;
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra(((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getTabIndex(), FrameControllerUtil.jdField_a_of_type_Int);
+    ((Intent)localObject).putExtra(((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getTabIndex(), FrameControllerUtil.a);
     ((Intent)localObject).setFlags(67108864);
     RouteUtils.a(this, (Intent)localObject, "/base/start/splash");
     startActivity((Intent)localObject);
@@ -1149,7 +1146,7 @@ public class AssociatedAccountActivity
     }
     Object localObject = this.mThirdAccountList;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0) && (!this.mIsFromAccountManage)) {
-      SubAccountControllUtil.c(this.app);
+      SubAccountControllUtil.e(this.app);
     }
     AppInterface localAppInterface = this.app;
     localObject = localAppInterface;
@@ -1162,7 +1159,7 @@ public class AssociatedAccountActivity
     if (!this.mIsFromAccountManage)
     {
       localObject = new Intent();
-      ((Intent)localObject).putExtra(((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getTabIndex(), FrameControllerUtil.jdField_a_of_type_Int);
+      ((Intent)localObject).putExtra(((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getTabIndex(), FrameControllerUtil.a);
       ((Intent)localObject).setFlags(67108864);
       RouteUtils.a(this, (Intent)localObject, "/base/start/splash");
     }
@@ -1225,15 +1222,15 @@ public class AssociatedAccountActivity
               AssociatedAccountListItemData localAssociatedAccountListItemData = (AssociatedAccountListItemData)this.mItemDataList.get(i);
               bool2 = bool1;
               Object localObject3 = localObject2;
-              if (localAssociatedAccountListItemData.jdField_a_of_type_Int == 2)
+              if (localAssociatedAccountListItemData.a == 2)
               {
                 bool2 = bool1;
                 localObject3 = localObject2;
-                if (localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject != null)
+                if (localAssociatedAccountListItemData.l != null)
                 {
                   bool2 = bool1;
                   localObject3 = localObject2;
-                  if ((localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject instanceof ArrayList))
+                  if ((localAssociatedAccountListItemData.l instanceof ArrayList))
                   {
                     localObject1 = localObject2;
                     if (localObject2 == null) {
@@ -1243,7 +1240,7 @@ public class AssociatedAccountActivity
                     localObject3 = localObject1;
                     if (localObject1 != null)
                     {
-                      localObject2 = ((ArrayList)localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject).iterator();
+                      localObject2 = ((ArrayList)localAssociatedAccountListItemData.l).iterator();
                       for (;;)
                       {
                         bool2 = bool1;
@@ -1252,13 +1249,13 @@ public class AssociatedAccountActivity
                           break;
                         }
                         localObject3 = (AssociatedAccountListItemData)((Iterator)localObject2).next();
-                        int j = ((SubAccountServiceImpl)localObject1).getStatus(((SubAccountInfo)((AssociatedAccountListItemData)localObject3).jdField_a_of_type_JavaLangObject).subuin);
-                        if (((j == 1) && (((AssociatedAccountListItemData)localObject3).e != 0)) || ((j != 1) && (((AssociatedAccountListItemData)localObject3).e == 0)))
+                        int j = ((SubAccountServiceImpl)localObject1).getStatus(((SubAccountInfo)((AssociatedAccountListItemData)localObject3).l).subuin);
+                        if (((j == 1) && (((AssociatedAccountListItemData)localObject3).j != 0)) || ((j != 1) && (((AssociatedAccountListItemData)localObject3).j == 0)))
                         {
                           if (j == 1) {
-                            ((AssociatedAccountListItemData)localObject3).e = 0;
+                            ((AssociatedAccountListItemData)localObject3).j = 0;
                           } else {
-                            ((AssociatedAccountListItemData)localObject3).e = 1;
+                            ((AssociatedAccountListItemData)localObject3).j = 1;
                           }
                           bool1 = true;
                         }
@@ -1294,7 +1291,7 @@ public class AssociatedAccountActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity
  * JD-Core Version:    0.7.0.1
  */

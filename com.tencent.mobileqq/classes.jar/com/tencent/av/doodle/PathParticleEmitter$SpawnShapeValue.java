@@ -5,26 +5,21 @@ import java.io.BufferedReader;
 public class PathParticleEmitter$SpawnShapeValue
   extends PathParticleEmitter.ParticleValue
 {
-  int a;
-  int b = 0;
-  boolean c;
-  
-  public PathParticleEmitter$SpawnShapeValue()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  int a = 0;
+  boolean d;
+  int e = 0;
   
   public void a(BufferedReader paramBufferedReader)
   {
     super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_a_of_type_Int = PathParticleEmitter.SpawnShape.a(PathParticleEmitter.a(paramBufferedReader, "shape"));
-    if (this.jdField_a_of_type_Int == 3)
+    this.a = PathParticleEmitter.SpawnShape.a(PathParticleEmitter.a(paramBufferedReader, "shape"));
+    if (this.a == 3)
     {
-      this.c = PathParticleEmitter.a(paramBufferedReader, "edges");
-      this.b = PathParticleEmitter.SpawnEllipseSide.a(PathParticleEmitter.a(paramBufferedReader, "side"));
+      this.d = PathParticleEmitter.b(paramBufferedReader, "edges");
+      this.e = PathParticleEmitter.SpawnEllipseSide.a(PathParticleEmitter.a(paramBufferedReader, "side"));
     }
   }
 }

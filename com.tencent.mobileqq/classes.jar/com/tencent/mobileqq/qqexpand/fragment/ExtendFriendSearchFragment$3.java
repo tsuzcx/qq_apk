@@ -14,10 +14,10 @@ class ExtendFriendSearchFragment$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.isFinishing()) && (this.this$0.isAdded()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendMultiLinesTagsView != null))
+    if ((this.this$0.h != null) && (!this.this$0.h.isFinishing()) && (this.this$0.isAdded()) && (this.this$0.X != null))
     {
-      List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqQqexpandManagerIExpandManager.a().a();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendMultiLinesTagsView.setSearchTags((ArrayList)localList);
+      List localList = this.this$0.l.k().a();
+      this.this$0.X.setSearchTags((ArrayList)localList);
       ExtendFriendSearchFragment localExtendFriendSearchFragment = this.this$0;
       boolean bool;
       if (localList.size() > 0) {
@@ -31,7 +31,7 @@ class ExtendFriendSearchFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSearchFragment.3
  * JD-Core Version:    0.7.0.1
  */

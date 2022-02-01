@@ -14,26 +14,26 @@ import com.tencent.qphone.base.util.QLog;
 public class AVGameHelper
   implements ILifeCycleHelper
 {
-  private AvGameRoomListObserver jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver = new AVGameHelper.1(this);
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private AVGameStatusTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsAVGameStatusTipsBar;
   public BaseActivity a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final AIOContext b;
+  private QQAppInterface c;
+  private BaseSessionInfo d;
+  private AVGameStatusTipsBar e;
+  private AvGameRoomListObserver f = new AVGameHelper.1(this);
   
   public AVGameHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
+    this.b = paramAIOContext;
+    this.c = paramAIOContext.a();
+    this.a = paramAIOContext.b();
+    this.d = paramAIOContext.O();
   }
   
   public void a()
   {
-    AVGameStatusTipsBar localAVGameStatusTipsBar = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsAVGameStatusTipsBar;
+    AVGameStatusTipsBar localAVGameStatusTipsBar = this.e;
     if (localAVGameStatusTipsBar != null) {
-      localAVGameStatusTipsBar.a();
+      localAVGameStatusTipsBar.d();
     }
   }
   
@@ -41,31 +41,31 @@ public class AVGameHelper
   {
     if (paramTipsManager != null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(2002)) {
+      if (!this.b.z().a(2002)) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsAVGameStatusTipsBar == null)
+      if (this.e == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsAVGameStatusTipsBar = new AVGameStatusTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, paramTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        paramTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsAVGameStatusTipsBar);
+        this.e = new AVGameStatusTipsBar(this.c, this.d, paramTipsManager, this.a);
+        paramTipsManager.b(this.e);
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = (IAvGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAvGameManager.class, "");
+    Object localObject = (IAvGameManager)this.c.getRuntimeService(IAvGameManager.class, "");
     if (localObject != null)
     {
-      boolean bool = ((IAvGameManager)localObject).isAVGameOpen(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a);
+      boolean bool = ((IAvGameManager)localObject).isAVGameOpen(this.d.b);
       if (bool) {
-        ((IAvGameManager)localObject).requestGameRoomListForGroup(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, 0, 1);
+        ((IAvGameManager)localObject).requestGameRoomListForGroup(this.d.b, 0, 1);
       }
       if ((QLog.isColorLevel()) && (paramBoolean))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Enter AIO, troopUin :");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a);
+        ((StringBuilder)localObject).append(this.d.b);
         ((StringBuilder)localObject).append("isAVGameOpen is: ");
         ((StringBuilder)localObject).append(bool);
         QLog.d("AVGameHelper", 2, ((StringBuilder)localObject).toString());
@@ -94,22 +94,22 @@ public class AVGameHelper
           if (paramInt != 15) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsAVGameStatusTipsBar = null;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+          this.e = null;
+          this.c.removeObserver(this.f);
           return;
         }
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+        a(this.b.c());
         return;
       }
       a(true);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    this.c.addObserver(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AVGameHelper
  * JD-Core Version:    0.7.0.1
  */

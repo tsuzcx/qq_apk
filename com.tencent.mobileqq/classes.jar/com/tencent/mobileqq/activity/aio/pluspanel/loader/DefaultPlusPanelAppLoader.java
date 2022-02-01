@@ -9,18 +9,18 @@ public class DefaultPlusPanelAppLoader
 {
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    if (RobotUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+    if (RobotUtils.a(paramBaseChatPie.d, paramBaseChatPie.ah.b))
     {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 217);
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 218);
+      a(paramBaseChatPie.ah.a, 217);
+      a(paramBaseChatPie.ah.a, 218);
       return;
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 205);
+    a(paramBaseChatPie.ah.a, 205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.DefaultPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

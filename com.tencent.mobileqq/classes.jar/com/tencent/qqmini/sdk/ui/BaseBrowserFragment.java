@@ -32,8 +32,8 @@ public class BaseBrowserFragment
   extends MiniBaseFragment
   implements View.OnClickListener
 {
-  private final String TAG = "BaseBrowserFragment";
-  BrowserPluginEngine mBrowerEngin;
+  private static final String TAG = "BaseBrowserFragment";
+  BrowserPluginEngine mBrowserEngine;
   ArrayMap<String, Object> mCoreDumpData;
   TextView mLeftBtnView;
   View mTitleBar;
@@ -133,8 +133,8 @@ public class BaseBrowserFragment
     }
     this.mWebView.getSettings().setJavaScriptEnabled(true);
     this.mWebView.setWebViewClient(new BaseBrowserFragment.1(this));
-    this.mBrowerEngin = new BrowserPluginEngine(getActivity(), this.mWebView);
-    this.mBrowerEngin.bindFragment(this);
+    this.mBrowserEngine = new BrowserPluginEngine(getActivity(), this.mWebView);
+    this.mBrowserEngine.bindFragment(this);
   }
   
   private boolean isSchemeUrl(String paramString)
@@ -155,7 +155,7 @@ public class BaseBrowserFragment
     this.mCoreDumpData.put("errorCode", Integer.valueOf(paramInt));
     this.mCoreDumpData.put("errorMsg", paramString1);
     this.mCoreDumpData.put("requestUrl", paramString2);
-    paramString1 = this.mBrowerEngin;
+    paramString1 = this.mBrowserEngine;
     if ((paramString1 != null) && (paramInt >= 400)) {
       paramString1.handleEvent(paramString3, 1L, this.mCoreDumpData);
     }
@@ -183,7 +183,7 @@ public class BaseBrowserFragment
       getActivity().finish();
       return null;
     }
-    if (DisplayUtil.isImmersiveSupported) {
+    if (DisplayUtil.IS_IMMERSIVE_SUPPORTED) {
       paramLayoutInflater.setFitsSystemWindows(true);
     }
     paramViewGroup = getActivity().getIntent();
@@ -207,17 +207,17 @@ public class BaseBrowserFragment
   public void onDestroy()
   {
     super.onDestroy();
-    BrowserPluginEngine localBrowserPluginEngine = this.mBrowerEngin;
+    BrowserPluginEngine localBrowserPluginEngine = this.mBrowserEngine;
     if (localBrowserPluginEngine != null)
     {
       localBrowserPluginEngine.onDestroy();
-      this.mBrowerEngin = null;
+      this.mBrowserEngine = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.BaseBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

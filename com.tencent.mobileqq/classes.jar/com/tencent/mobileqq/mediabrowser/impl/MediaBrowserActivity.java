@@ -38,21 +38,21 @@ import mqq.app.MobileQQ;
 public class MediaBrowserActivity
   extends QBaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private final IMediaBrowserProviderCallBack jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserProviderCallBack = new MediaBrowserActivity.2(this);
-  IMediaBrowserService.BrowserInfo jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo;
-  private IBrowserManager jdField_a_of_type_ComTencentMobileqqRichmediabrowserApiIBrowserManager;
-  MainBrowserPresenter jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
-  BroadcastReceiver b = null;
+  MainBrowserPresenter a;
+  IMediaBrowserService.BrowserInfo b;
+  BroadcastReceiver c = null;
+  BroadcastReceiver d = null;
+  private IBrowserManager e;
+  private final IMediaBrowserProviderCallBack f = new MediaBrowserActivity.2(this);
   
   private void a()
   {
-    this.b = new MediaBrowserActivity.1(this);
+    this.d = new MediaBrowserActivity.1(this);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
     try
     {
-      registerReceiver(this.b, localIntentFilter);
+      registerReceiver(this.d, localIntentFilter);
       return;
     }
     catch (Exception localException)
@@ -68,32 +68,32 @@ public class MediaBrowserActivity
     if (i == 0) {
       finish();
     }
-    this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo = ((IMediaBrowserService)QRoute.api(IMediaBrowserService.class)).getBrowserInfo(i);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo;
+    this.b = ((IMediaBrowserService)QRoute.api(IMediaBrowserService.class)).getBrowserInfo(i);
+    Object localObject2 = this.b;
     if (localObject2 == null)
     {
       finish();
       return;
     }
-    localObject2 = ((IMediaBrowserService.BrowserInfo)localObject2).a();
+    localObject2 = ((IMediaBrowserService.BrowserInfo)localObject2).b();
     if ((localObject2 != null) && (((List)localObject2).size() != 0))
     {
-      IMediaBrowserProvider localIMediaBrowserProvider = this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo.a();
+      IMediaBrowserProvider localIMediaBrowserProvider = this.b.a();
       if (localIMediaBrowserProvider == null)
       {
         finish();
         return;
       }
-      localIMediaBrowserProvider.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserProviderCallBack);
+      localIMediaBrowserProvider.a(this.f);
       AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
       ((Intent)localObject1).putExtra("extra.OCR", ((IOCRService)localAppRuntime.getRuntimeService(IOCRService.class, "")).isSupportOcr(localAppRuntime.getAccount(), 1));
-      ((Intent)localObject1).putExtra("KEY_THUMBNAL_BOUND", this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo.a());
+      ((Intent)localObject1).putExtra("KEY_THUMBNAL_BOUND", this.b.d());
       ((Intent)localObject1).putExtra("extra.EXTRA_ENTRANCE", 6);
-      ((Intent)localObject1).putExtra("extra.EXTRA_CURRENT_IMAGE", ((RichMediaBrowserInfo)((List)localObject2).get(this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo.a())).baseData);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserApiIBrowserManager = ((IBrowserManager)QRoute.api(IBrowserManager.class)).launchRichMediaBrowser(this, (Intent)localObject1, localIMediaBrowserProvider, "KEY_THUMBNAL_BOUND", (List)localObject2, this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo.a());
-      this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserApiIBrowserManager.getPresenter();
+      ((Intent)localObject1).putExtra("extra.EXTRA_CURRENT_IMAGE", ((RichMediaBrowserInfo)((List)localObject2).get(this.b.c())).baseData);
+      this.e = ((IBrowserManager)QRoute.api(IBrowserManager.class)).launchRichMediaBrowser(this, (Intent)localObject1, localIMediaBrowserProvider, "KEY_THUMBNAL_BOUND", (List)localObject2, this.b.c());
+      this.a = this.e.getPresenter();
       a();
-      localObject1 = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+      localObject1 = this.a;
       if (localObject1 != null) {
         ((MainBrowserPresenter)localObject1).onCreate(paramBundle);
       }
@@ -113,7 +113,7 @@ public class MediaBrowserActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if (localMainBrowserPresenter != null) {
       localMainBrowserPresenter.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -121,7 +121,7 @@ public class MediaBrowserActivity
   
   public void doOnBackPressed()
   {
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if ((localMainBrowserPresenter != null) && (!localMainBrowserPresenter.onBackEvent())) {
       super.doOnBackPressed();
     }
@@ -130,7 +130,7 @@ public class MediaBrowserActivity
   public void doOnConfigurationChanged(Configuration paramConfiguration)
   {
     super.doOnConfigurationChanged(paramConfiguration);
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if (localMainBrowserPresenter != null) {
       localMainBrowserPresenter.onConfigurationChanged(paramConfiguration);
     }
@@ -140,7 +140,7 @@ public class MediaBrowserActivity
   {
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
-    LiuHaiUtils.a(this);
+    LiuHaiUtils.f(this);
     LiuHaiUtils.enableNotch(this);
     getWindow().setFlags(1024, 1024);
     super.doOnCreate(paramBundle);
@@ -157,25 +157,25 @@ public class MediaBrowserActivity
     localStringBuilder.append("]");
     ((IBrowserLog)localObject).d("MediaBrowserActivity", 4, localStringBuilder.toString());
     super.doOnDestroy();
-    localObject = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    localObject = this.a;
     if (localObject != null) {
       ((MainBrowserPresenter)localObject).onDestroy();
     }
-    localObject = this.b;
+    localObject = this.d;
     if (localObject != null)
     {
       unregisterReceiver((BroadcastReceiver)localObject);
-      this.b = null;
+      this.d = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserService$BrowserInfo.a();
+    localObject = this.b.a();
     if (localObject != null) {
-      ((IMediaBrowserProvider)localObject).a();
+      ((IMediaBrowserProvider)localObject).b();
     }
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if ((localMainBrowserPresenter != null) && (!localMainBrowserPresenter.onKeyDown(paramInt, paramKeyEvent))) {
       return super.doOnKeyDown(paramInt, paramKeyEvent);
     }
@@ -192,7 +192,7 @@ public class MediaBrowserActivity
     super.doOnPause();
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+      BroadcastReceiver localBroadcastReceiver = this.c;
       if (localBroadcastReceiver != null) {
         try
         {
@@ -208,7 +208,7 @@ public class MediaBrowserActivity
         }
       }
     }
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if (localMainBrowserPresenter != null) {
       localMainBrowserPresenter.onPause();
     }
@@ -225,14 +225,14 @@ public class MediaBrowserActivity
     ApngImage.playByTag(0);
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new MediaBrowserActivity.ScreenBroadcastReceiver(this);
+      this.c = new MediaBrowserActivity.ScreenBroadcastReceiver(this);
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
       ((IntentFilter)localObject).addAction("android.intent.action.USER_PRESENT");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+      registerReceiver(this.c, (IntentFilter)localObject);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    Object localObject = this.a;
     if (localObject != null) {
       ((MainBrowserPresenter)localObject).onResume();
     }
@@ -241,7 +241,7 @@ public class MediaBrowserActivity
   public void doOnStart()
   {
     super.doOnStart();
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if (localMainBrowserPresenter != null) {
       localMainBrowserPresenter.onStart();
     }
@@ -252,7 +252,7 @@ public class MediaBrowserActivity
     BrowserLogHelper.getInstance().getGalleryLog().d("MediaBrowserActivity", 4, "onStop()");
     super.doOnStop();
     ((AudioManager)getSystemService("audio")).abandonAudioFocus(null);
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if (localMainBrowserPresenter != null) {
       localMainBrowserPresenter.onStop();
     }
@@ -263,7 +263,7 @@ public class MediaBrowserActivity
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean)
     {
-      MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+      MainBrowserPresenter localMainBrowserPresenter = this.a;
       if (localMainBrowserPresenter != null) {
         localMainBrowserPresenter.onWindowFocusChanged();
       }
@@ -288,7 +288,7 @@ public class MediaBrowserActivity
   
   public boolean onBackEvent()
   {
-    MainBrowserPresenter localMainBrowserPresenter = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterMainBrowserPresenter;
+    MainBrowserPresenter localMainBrowserPresenter = this.a;
     if (localMainBrowserPresenter != null) {
       return localMainBrowserPresenter.onBackEvent();
     }

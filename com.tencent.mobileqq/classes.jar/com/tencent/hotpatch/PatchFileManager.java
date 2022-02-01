@@ -3,7 +3,6 @@ package com.tencent.hotpatch;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hotpatch.config.PatchConfig;
 import com.tencent.hotpatch.config.PatchConfigManager;
-import com.tencent.kingkong.UpdateManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.core.net.patch.PatchChecker;
@@ -16,23 +15,14 @@ import java.io.File;
 
 public class PatchFileManager
 {
-  private static void a()
-  {
-    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "Native");
-    if (localPatchConfig != null) {
-      UpdateManager.a(localPatchConfig.e());
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface)
   {
     b(paramQQAppInterface);
-    a();
   }
   
   public static boolean a(PatchConfig paramPatchConfig)
   {
-    String str1 = paramPatchConfig.c();
+    String str1 = paramPatchConfig.f();
     Object localObject = PatchCommonUtil.getPatchPath(str1);
     String str2 = PatchCommonUtil.getPatchPath("");
     int j = 701;
@@ -60,8 +50,8 @@ public class PatchFileManager
     }
     if (700 == i)
     {
-      localObject = new File(PatchCommonUtil.getPatchPath(paramPatchConfig.b()));
-      if ((((File)localObject).exists()) && (((File)localObject).length() == paramPatchConfig.b()))
+      localObject = new File(PatchCommonUtil.getPatchPath(paramPatchConfig.e()));
+      if ((((File)localObject).exists()) && (((File)localObject).length() == paramPatchConfig.g()))
       {
         i = 700;
       }
@@ -81,15 +71,15 @@ public class PatchFileManager
   
   private static void b(QQAppInterface paramQQAppInterface)
   {
-    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
+    PatchConfig localPatchConfig = PatchConfigManager.b(BaseApplicationImpl.sApplication, "dex");
     if ((localPatchConfig != null) && (localPatchConfig.a(BaseApplicationImpl.sApplication, null)))
     {
-      String str = localPatchConfig.b();
+      String str = localPatchConfig.e();
       File localFile = new File(PatchCommonUtil.getPatchPath(str));
       boolean bool = localFile.exists();
       int j = 1;
       int i;
-      if ((bool) && (localFile.length() == localPatchConfig.b()))
+      if ((bool) && (localFile.length() == localPatchConfig.g()))
       {
         if (!PatchChecker.checkPatchValid("dex", str))
         {
@@ -123,7 +113,7 @@ public class PatchFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hotpatch.PatchFileManager
  * JD-Core Version:    0.7.0.1
  */

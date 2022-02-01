@@ -10,11 +10,11 @@ public abstract interface VideoCropContract$IView
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void aV_();
+  public abstract void dP_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropContract.IView
  * JD-Core Version:    0.7.0.1
  */

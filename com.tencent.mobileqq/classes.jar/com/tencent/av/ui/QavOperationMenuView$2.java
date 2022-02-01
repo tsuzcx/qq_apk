@@ -1,18 +1,17 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.utils.AVUtil;
+import com.tencent.mobileqq.profile.view.HScrollView.ScrollViewListener;
 
 class QavOperationMenuView$2
-  implements Runnable
+  implements HScrollView.ScrollViewListener
 {
   QavOperationMenuView$2(QavOperationMenuView paramQavOperationMenuView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((!QavOperationMenuView.a(this.this$0)) && (QavOperationMenuView.a(this.this$0, 2131695345)))
-    {
-      AVUtil.a("0X800AF84", AVUtil.a(), 0, "", "", "", "");
-      QavOperationMenuView.a(this.this$0, true);
+    long l = System.currentTimeMillis();
+    if ((paramInt == 1) && (l - QavOperationMenuView.a(this.a) > 1000L)) {
+      QavOperationMenuView.b(this.a);
     }
   }
 }

@@ -14,25 +14,25 @@ class ConfessPlugin$4
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mProcessShareRunable mLastShareData:");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_OrgJsonJSONObject);
+      ((StringBuilder)localObject).append(this.this$0.i);
       ((StringBuilder)localObject).append(" mHeaderLoader:");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader);
+      ((StringBuilder)localObject).append(this.this$0.d);
       QLog.i("ConfessPlugin", 4, ((StringBuilder)localObject).toString());
     }
-    if (this.this$0.jdField_a_of_type_OrgJsonJSONObject != null)
+    if (this.this$0.i != null)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader == null) {
+      if (this.this$0.d == null) {
         return;
       }
       localObject = this.this$0;
-      ConfessPlugin.a((ConfessPlugin)localObject, ((ConfessPlugin)localObject).jdField_a_of_type_OrgJsonJSONObject);
-      this.this$0.jdField_a_of_type_OrgJsonJSONObject = null;
+      ConfessPlugin.a((ConfessPlugin)localObject, ((ConfessPlugin)localObject).i);
+      this.this$0.i = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.4
  * JD-Core Version:    0.7.0.1
  */

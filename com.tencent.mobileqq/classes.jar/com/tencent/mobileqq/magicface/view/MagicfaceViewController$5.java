@@ -12,14 +12,14 @@ class MagicfaceViewController$5
   
   public void run()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.c.getLayoutParams();
-    localLayoutParams.rightMargin = ((int)DisplayUtils.a(this.this$0.a.a(), 10.0F));
-    this.this$0.c.setLayoutParams(localLayoutParams);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.n.getLayoutParams();
+    localLayoutParams.rightMargin = ((int)DisplayUtils.a(this.this$0.b.aX(), 10.0F));
+    this.this$0.n.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.5
  * JD-Core Version:    0.7.0.1
  */

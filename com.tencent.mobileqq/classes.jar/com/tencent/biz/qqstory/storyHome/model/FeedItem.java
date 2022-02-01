@@ -148,7 +148,7 @@ public abstract class FeedItem<T extends StoryHomeFeed, E extends IFeedOwner>
   public T generateAndPackageHomeFeedFromDB()
   {
     StoryHomeFeed localStoryHomeFeed = generateHomeFeed();
-    localStoryHomeFeed.b();
+    localStoryHomeFeed.e();
     return localStoryHomeFeed;
   }
   
@@ -183,12 +183,12 @@ public abstract class FeedItem<T extends StoryHomeFeed, E extends IFeedOwner>
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = FeedManager.a().format(new Date());
+      str = FeedManager.h().format(new Date());
     }
     this.date = str;
     try
     {
-      this.dateTimeMillis = FeedManager.a().parse(str).getTime();
+      this.dateTimeMillis = FeedManager.h().parse(str).getTime();
       return;
     }
     catch (ParseException paramString)

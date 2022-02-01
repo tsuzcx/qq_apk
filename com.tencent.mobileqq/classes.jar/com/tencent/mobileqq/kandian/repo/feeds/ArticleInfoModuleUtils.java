@@ -95,7 +95,7 @@ public final class ArticleInfoModuleUtils
   
   @JvmStatic
   @Nullable
-  public static final byte[] a()
+  public static final byte[] b()
   {
     String str = RIJDeviceUtil.a();
     Object localObject = str;
@@ -120,7 +120,7 @@ public final class ArticleInfoModuleUtils
   {
     Intrinsics.checkParameterIsNotNull(paramRspTrace, "rspTrace");
     if (paramRspTrace.has()) {
-      RIJStatisticCollectorReport.a(RIJQQAppInterfaceUtil.a(), paramRspTrace.rpt_trace_record_list.get());
+      RIJStatisticCollectorReport.a(RIJQQAppInterfaceUtil.e(), paramRspTrace.rpt_trace_record_list.get());
     }
   }
   
@@ -143,7 +143,7 @@ public final class ArticleInfoModuleUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModuleUtils
  * JD-Core Version:    0.7.0.1
  */

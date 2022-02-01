@@ -142,7 +142,9 @@ public class ColorNoteHelperImpl
   private IColorNoteDataService getDataService()
   {
     AppRuntime localAppRuntime = this.appRuntime;
-    if (localAppRuntime == null) {
+    if (localAppRuntime == null)
+    {
+      QLog.e("ColorNoteHelper", 1, "[getDataService] appRuntime is null.");
       return null;
     }
     return (IColorNoteDataService)localAppRuntime.getRuntimeService(IColorNoteDataService.class, "all");
@@ -280,7 +282,7 @@ public class ColorNoteHelperImpl
   {
     if (MobileQQ.sProcessId == 1)
     {
-      ColorNoteHistoryManager.a(this.appRuntime, paramInt);
+      ColorNoteHistoryManager.d(this.appRuntime, paramInt);
       return true;
     }
     Object localObject = new Bundle();
@@ -709,7 +711,7 @@ public class ColorNoteHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.impl.ColorNoteHelperImpl
  * JD-Core Version:    0.7.0.1
  */

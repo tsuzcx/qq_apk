@@ -23,23 +23,23 @@ import javax.annotation.Nullable;
 public class PttSttHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private volatile PttSttItemAnimator jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator = null;
-  private ConcurrentHashMap<PttItemBuilder.Holder, MessageForPtt> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private ConcurrentHashMap<Long, PttSttItemAnimator> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private QQAppInterface a;
+  private Context b;
+  private ConcurrentHashMap<PttItemBuilder.Holder, MessageForPtt> c;
+  private ConcurrentHashMap<Long, PttSttItemAnimator> d;
+  private volatile PttSttItemAnimator e = null;
+  private Handler f;
+  private Handler g;
+  private volatile boolean h = false;
   
   public PttSttHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.a = paramBaseChatPie.d;
+    this.b = paramBaseChatPie.e;
+    this.f = new Handler(Looper.getMainLooper());
+    this.g = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.c = new ConcurrentHashMap();
+    this.d = new ConcurrentHashMap();
   }
   
   private void a(PttSttItemAnimator paramPttSttItemAnimator)
@@ -49,24 +49,19 @@ public class PttSttHelper
       QLog.e("Q.stt_AIOHelper", 1, "startSttAnimator animator is null!");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator = paramPttSttItemAnimator;
+    this.e = paramPttSttItemAnimator;
     c();
   }
   
-  private boolean a(MessageForPtt paramMessageForPtt)
-  {
-    return (paramMessageForPtt.getSttResult() != null) && (paramMessageForPtt.getSttResult().a());
-  }
-  
-  private boolean a(PttSttItemAnimator paramPttSttItemAnimator)
+  private boolean b(PttSttItemAnimator paramPttSttItemAnimator)
   {
     boolean bool = false;
     if (paramPttSttItemAnimator != null)
     {
-      if (!paramPttSttItemAnimator.b()) {
+      if (!paramPttSttItemAnimator.h()) {
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator != null)
+      if (this.e != null)
       {
         paramPttSttItemAnimator.a(false);
         return false;
@@ -79,7 +74,7 @@ public class PttSttHelper
   
   private void c()
   {
-    Handler localHandler = this.jdField_b_of_type_AndroidOsHandler;
+    Handler localHandler = this.g;
     if (localHandler != null)
     {
       localHandler.sendEmptyMessageDelayed(1, 100L);
@@ -89,72 +84,49 @@ public class PttSttHelper
     }
   }
   
-  private void f(MessageForPtt paramMessageForPtt)
+  private boolean i(MessageForPtt paramMessageForPtt)
   {
-    paramMessageForPtt = a(paramMessageForPtt);
+    return (paramMessageForPtt.getSttResult() != null) && (paramMessageForPtt.getSttResult().f());
+  }
+  
+  private void j(MessageForPtt paramMessageForPtt)
+  {
+    paramMessageForPtt = e(paramMessageForPtt);
     if (paramMessageForPtt != null) {
-      paramMessageForPtt.f();
+      paramMessageForPtt.i();
     }
   }
   
-  private void g(MessageForPtt paramMessageForPtt)
+  private void k(MessageForPtt paramMessageForPtt)
   {
     long l = paramMessageForPtt.uniseq;
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(l)))
+    if (this.d.containsKey(Long.valueOf(l)))
     {
-      paramMessageForPtt = (PttSttItemAnimator)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l));
-      if ((paramMessageForPtt != null) && (paramMessageForPtt.equals(this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator)))
+      paramMessageForPtt = (PttSttItemAnimator)this.d.get(Long.valueOf(l));
+      if ((paramMessageForPtt != null) && (paramMessageForPtt.equals(this.e)))
       {
         paramMessageForPtt.a(false);
-        this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator = null;
+        this.e = null;
       }
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(l));
+      this.d.remove(Long.valueOf(l));
     }
-  }
-  
-  @Nullable
-  protected PttSttItemAnimator a(MessageForPtt paramMessageForPtt)
-  {
-    paramMessageForPtt = Long.valueOf(paramMessageForPtt.uniseq);
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessageForPtt)) {
-      return (PttSttItemAnimator)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMessageForPtt);
-    }
-    return null;
-  }
-  
-  public CharSequence a(MessageForPtt paramMessageForPtt)
-  {
-    paramMessageForPtt = Long.valueOf(paramMessageForPtt.uniseq);
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessageForPtt))
-    {
-      paramMessageForPtt = (PttSttItemAnimator)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMessageForPtt);
-      if (paramMessageForPtt != null) {
-        return paramMessageForPtt.a();
-      }
-    }
-    return "";
-  }
-  
-  public String a(MessageForPtt paramMessageForPtt)
-  {
-    return a(paramMessageForPtt).toString();
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator == null) {
+    if (this.e == null) {
       return;
     }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+    Iterator localIterator = this.d.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (localEntry.getValue() == this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator) {
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEntry.getKey());
+      if (localEntry.getValue() == this.e) {
+        this.d.remove(localEntry.getKey());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator.h();
-    this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator = null;
+    this.e.k();
+    this.e = null;
   }
   
   public void a(PttItemBuilder.Holder paramHolder, MessageForPtt paramMessageForPtt, int paramInt)
@@ -163,12 +135,12 @@ public class PttSttHelper
     {
       try
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramHolder);
+        boolean bool = this.c.containsKey(paramHolder);
         PttSttItemAnimator localPttSttItemAnimator = null;
         Object localObject = localPttSttItemAnimator;
         if (bool)
         {
-          localObject = (MessageForPtt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramHolder);
+          localObject = (MessageForPtt)this.c.get(paramHolder);
           if (localObject != paramMessageForPtt) {
             break label210;
           }
@@ -176,24 +148,24 @@ public class PttSttHelper
         }
         if (localObject != null)
         {
-          localObject = (PttSttItemAnimator)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(((MessageForPtt)localObject).uniseq));
+          localObject = (PttSttItemAnimator)this.d.get(Long.valueOf(((MessageForPtt)localObject).uniseq));
           if (localObject != null) {
             ((PttSttItemAnimator)localObject).a();
           }
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramHolder, paramMessageForPtt);
-        localPttSttItemAnimator = (PttSttItemAnimator)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramMessageForPtt.uniseq));
+        this.c.put(paramHolder, paramMessageForPtt);
+        localPttSttItemAnimator = (PttSttItemAnimator)this.d.get(Long.valueOf(paramMessageForPtt.uniseq));
         localObject = localPttSttItemAnimator;
         if (localPttSttItemAnimator == null)
         {
           if (PttSttItemAnimator.b(paramMessageForPtt)) {
             return;
           }
-          localObject = new PttSttItemAnimator(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt, paramInt);
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramMessageForPtt.uniseq), localObject);
+          localObject = new PttSttItemAnimator(this.a, paramMessageForPtt, paramInt);
+          this.d.put(Long.valueOf(paramMessageForPtt.uniseq), localObject);
         }
         ((PttSttItemAnimator)localObject).a(paramHolder);
-        if ((!a((PttSttItemAnimator)localObject)) || (!PttSttItemAnimator.a(paramMessageForPtt))) {
+        if ((!b((PttSttItemAnimator)localObject)) || (!PttSttItemAnimator.a(paramMessageForPtt))) {
           break label213;
         }
         paramInt = 1;
@@ -215,62 +187,90 @@ public class PttSttHelper
     if (paramMessageForPtt == null) {
       return;
     }
-    PttSttItemAnimator localPttSttItemAnimator = (PttSttItemAnimator)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramMessageForPtt.uniseq));
-    if (this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator == localPttSttItemAnimator) {
+    PttSttItemAnimator localPttSttItemAnimator = (PttSttItemAnimator)this.d.get(Long.valueOf(paramMessageForPtt.uniseq));
+    if (this.e == localPttSttItemAnimator) {
       return;
     }
-    boolean bool1 = a(localPttSttItemAnimator);
+    boolean bool1 = b(localPttSttItemAnimator);
     boolean bool2 = PttSttItemAnimator.a(paramMessageForPtt);
     if ((bool1) && (bool2))
     {
       a(localPttSttItemAnimator);
       return;
     }
-    if ((paramMessageForPtt.getSttResult().a() == 3) && (localPttSttItemAnimator != null))
+    if ((paramMessageForPtt.getSttResult().e() == 3) && (localPttSttItemAnimator != null))
     {
-      localPttSttItemAnimator.d();
-      if (!this.jdField_a_of_type_Boolean) {
-        localPttSttItemAnimator.a(this.jdField_a_of_type_AndroidOsHandler);
+      localPttSttItemAnimator.f();
+      if (!this.h) {
+        localPttSttItemAnimator.a(this.f);
       }
     }
   }
   
   public void b()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131719262, 0).a();
+    QQToast.makeText(this.b, 1, 2131916814, 0).show();
   }
   
   public void b(MessageForPtt paramMessageForPtt)
   {
-    if (a(paramMessageForPtt)) {
-      f(paramMessageForPtt);
+    if (i(paramMessageForPtt)) {
+      j(paramMessageForPtt);
     }
-    g(paramMessageForPtt);
+    k(paramMessageForPtt);
     b();
   }
   
   public void c(MessageForPtt paramMessageForPtt)
   {
-    if (a(paramMessageForPtt)) {
+    if (i(paramMessageForPtt)) {
       d(paramMessageForPtt);
     }
   }
   
   protected void d(MessageForPtt paramMessageForPtt)
   {
-    paramMessageForPtt = a(paramMessageForPtt);
+    paramMessageForPtt = e(paramMessageForPtt);
     if (paramMessageForPtt != null)
     {
-      paramMessageForPtt.f();
-      paramMessageForPtt.g();
+      paramMessageForPtt.i();
+      paramMessageForPtt.j();
     }
   }
   
-  public void e(MessageForPtt paramMessageForPtt) {}
+  @Nullable
+  protected PttSttItemAnimator e(MessageForPtt paramMessageForPtt)
+  {
+    paramMessageForPtt = Long.valueOf(paramMessageForPtt.uniseq);
+    if (this.d.containsKey(paramMessageForPtt)) {
+      return (PttSttItemAnimator)this.d.get(paramMessageForPtt);
+    }
+    return null;
+  }
+  
+  public void f(MessageForPtt paramMessageForPtt) {}
+  
+  public CharSequence g(MessageForPtt paramMessageForPtt)
+  {
+    paramMessageForPtt = Long.valueOf(paramMessageForPtt.uniseq);
+    if (this.d.containsKey(paramMessageForPtt))
+    {
+      paramMessageForPtt = (PttSttItemAnimator)this.d.get(paramMessageForPtt);
+      if (paramMessageForPtt != null) {
+        return paramMessageForPtt.e();
+      }
+    }
+    return "";
+  }
   
   public String getTag()
   {
     return getClass().getName();
+  }
+  
+  public String h(MessageForPtt paramMessageForPtt)
+  {
+    return g(paramMessageForPtt).toString();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -278,13 +278,13 @@ public class PttSttHelper
     if (paramMessage.what == 1)
     {
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator != null)
+      if (this.e != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator.d();
-        if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator.a(this.jdField_a_of_type_AndroidOsHandler);
+        this.e.f();
+        if (!this.h) {
+          this.e.a(this.f);
         }
-        bool = this.jdField_a_of_type_ComTencentMobileqqSttUiPttSttItemAnimator.a();
+        bool = this.e.b();
       }
       else
       {
@@ -292,7 +292,7 @@ public class PttSttHelper
       }
       if (!bool)
       {
-        this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
+        this.g.sendEmptyMessageDelayed(1, 100L);
         return false;
       }
       a();
@@ -316,23 +316,23 @@ public class PttSttHelper
           if (paramInt != 15) {
             return;
           }
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          this.f.removeCallbacksAndMessages(null);
+          this.g.removeCallbacksAndMessages(null);
+          this.c.clear();
+          this.d.clear();
           return;
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.h = true;
       }
     }
     else {
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PttSttHelper
  * JD-Core Version:    0.7.0.1
  */

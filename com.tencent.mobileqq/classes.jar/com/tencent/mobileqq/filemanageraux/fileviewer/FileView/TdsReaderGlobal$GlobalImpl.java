@@ -23,7 +23,7 @@ final class TdsReaderGlobal$GlobalImpl
   
   public Executor getExecutor()
   {
-    return TdsReaderGlobal.a(this.a);
+    return TdsReaderGlobal.b(this.a);
   }
   
   public String getFileDir()
@@ -44,7 +44,7 @@ final class TdsReaderGlobal$GlobalImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.GlobalImpl
  * JD-Core Version:    0.7.0.1
  */

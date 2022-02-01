@@ -77,7 +77,7 @@ public class AudioFocusListenerModule
     if ((this.mHostProxyInterface.getHostAppResInterface() != null) && (this.mHostProxyInterface.getHostAppResInterface().getHostAppIconId() != 0)) {
       i = this.mHostProxyInterface.getHostAppResInterface().getHostAppIconId();
     } else {
-      i = 2131167394;
+      i = 2131168464;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("【");
@@ -272,7 +272,7 @@ public class AudioFocusListenerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AudioFocusListenerModule
  * JD-Core Version:    0.7.0.1
  */

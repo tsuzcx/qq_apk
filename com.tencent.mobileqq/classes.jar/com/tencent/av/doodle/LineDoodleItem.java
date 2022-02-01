@@ -18,46 +18,46 @@ import java.util.Queue;
 public class LineDoodleItem
   extends PathDoodleItem
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Queue<LineDoodleItem.DistanceItem> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private Paint l = new Paint();
+  private Queue<LineDoodleItem.DistanceItem> m = new LinkedList();
   
   public LineDoodleItem()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.l.setAntiAlias(true);
+    this.l.setDither(true);
+    this.l.setColor(-65536);
+    this.l.setStyle(Paint.Style.STROKE);
+    this.l.setStrokeJoin(Paint.Join.ROUND);
+    this.l.setStrokeCap(Paint.Cap.ROUND);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilQueue.offer(new LineDoodleItem.DistanceItem(this, this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength()));
+    this.m.offer(new LineDoodleItem.DistanceItem(this, this.k.getLength()));
   }
   
   public void a(long paramLong) {}
   
   public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    float f4 = this.c * 0.01111111F;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f4);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.l.setColor(this.g);
+    float f4 = this.e * 0.01111111F;
+    this.l.setStrokeWidth(f4);
+    this.l.setStyle(Paint.Style.STROKE);
     int i;
-    if ((this.jdField_a_of_type_Long != -1L) && (paramMySurfaceView.jdField_a_of_type_Long - this.jdField_a_of_type_Long > 1200L))
+    if ((this.i != -1L) && (paramMySurfaceView.b - this.i > 1200L))
     {
-      i = (int)(255L - (paramMySurfaceView.jdField_a_of_type_Long - this.jdField_a_of_type_Long - 1200L) * 255L / 800L);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
+      i = (int)(255L - (paramMySurfaceView.b - this.i - 1200L) * 255L / 800L);
+      this.l.setAlpha(i);
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
+      this.l.setAlpha(255);
     }
-    paramMySurfaceView = this.jdField_a_of_type_AndroidGraphicsPaint;
+    paramMySurfaceView = this.l;
     Object localObject1 = null;
     paramMySurfaceView.setMaskFilter(null);
-    float f2 = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
+    float f2 = this.k.getLength();
     float f1 = 0.0F;
     if (f2 > 0.0F) {
       i = 1;
@@ -65,15 +65,15 @@ public class LineDoodleItem
       i = 0;
     }
     if (i != 0) {
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(this.j, this.l);
     } else {
-      paramCanvas.drawPoint(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPoint(this.h.x, this.h.y, this.l);
     }
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilQueue.size() > 0))
+    if ((paramBoolean) && (this.m.size() > 0))
     {
-      long l = SystemClock.elapsedRealtime() - 500L;
-      LineDoodleItem.DistanceItem localDistanceItem = (LineDoodleItem.DistanceItem)((LinkedList)this.jdField_a_of_type_JavaUtilQueue).getLast();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
+      long l1 = SystemClock.elapsedRealtime() - 500L;
+      LineDoodleItem.DistanceItem localDistanceItem = (LineDoodleItem.DistanceItem)((LinkedList)this.m).getLast();
+      Iterator localIterator = this.m.iterator();
       paramMySurfaceView = null;
       for (;;)
       {
@@ -83,57 +83,57 @@ public class LineDoodleItem
         }
         paramMySurfaceView = (LineDoodleItem.DistanceItem)localIterator.next();
         localObject2 = paramMySurfaceView;
-        if (paramMySurfaceView.jdField_a_of_type_Long - l >= 0L) {
+        if (paramMySurfaceView.b - l1 >= 0L) {
           break;
         }
         localObject1 = paramMySurfaceView;
       }
-      f2 = localDistanceItem.jdField_a_of_type_Float;
+      f2 = localDistanceItem.a;
       if (localObject2 != null) {
         if ((localObject1 != null) && (localObject1 != localObject2)) {
-          f1 = (((LineDoodleItem.DistanceItem)localObject1).jdField_a_of_type_Float * (float)(((LineDoodleItem.DistanceItem)localObject2).jdField_a_of_type_Long - l) + ((LineDoodleItem.DistanceItem)localObject2).jdField_a_of_type_Float * (float)(l - ((LineDoodleItem.DistanceItem)localObject1).jdField_a_of_type_Long)) / (float)(((LineDoodleItem.DistanceItem)localObject2).jdField_a_of_type_Long - ((LineDoodleItem.DistanceItem)localObject1).jdField_a_of_type_Long);
+          f1 = (((LineDoodleItem.DistanceItem)localObject1).a * (float)(((LineDoodleItem.DistanceItem)localObject2).b - l1) + ((LineDoodleItem.DistanceItem)localObject2).a * (float)(l1 - ((LineDoodleItem.DistanceItem)localObject1).b)) / (float)(((LineDoodleItem.DistanceItem)localObject2).b - ((LineDoodleItem.DistanceItem)localObject1).b);
         } else {
-          f1 = ((LineDoodleItem.DistanceItem)localObject2).jdField_a_of_type_Float;
+          f1 = ((LineDoodleItem.DistanceItem)localObject2).a;
         }
       }
-      float f3 = this.c * 0.01481482F * (float)(localDistanceItem.jdField_a_of_type_Long - l) / 500.0F;
+      float f3 = this.e * 0.01481482F * (float)(localDistanceItem.b - l1) / 500.0F;
       f4 /= 2.0F;
       localObject1 = new float[2];
       Object localObject2 = new float[2];
       paramMySurfaceView = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      this.l.setStyle(Paint.Style.FILL);
+      this.l.setColor(-1);
       paramMySurfaceView.setFillType(Path.FillType.WINDING);
       float f5 = f2 - f1;
       float f6 = (f3 - f4) / f5;
-      i = this.e;
-      i = this.e;
-      float f7 = this.c * 0.005555556F;
+      i = this.g;
+      i = this.g;
+      float f7 = this.e * 0.005555556F;
       paramMySurfaceView = localDistanceItem;
-      while (f1 <= paramMySurfaceView.jdField_a_of_type_Float)
+      while (f1 <= paramMySurfaceView.a)
       {
-        this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f1, (float[])localObject1, (float[])localObject2);
+        this.k.getPosTan(f1, (float[])localObject1, (float[])localObject2);
         float f8 = f2 - f1;
         float f9 = f8 / f5;
         int j = DoodleUtils.a(new int[] { i, -1 }, 1.0F - f9);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(j);
-        paramCanvas.drawCircle(localObject1[0], localObject1[1], f3 - f6 * f8, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.l.setColor(j);
+        paramCanvas.drawCircle(localObject1[0], localObject1[1], f3 - f6 * f8, this.l);
         f1 += f7;
       }
       if (QLog.isColorLevel())
       {
-        paramCanvas = this.jdField_a_of_type_JavaLangString;
+        paramCanvas = this.a;
         paramMySurfaceView = new StringBuilder();
         paramMySurfaceView.append("doDrawDoodle, mScreenWidth[");
-        paramMySurfaceView.append(this.c);
+        paramMySurfaceView.append(this.e);
         paramMySurfaceView.append("], maxRadius[");
         paramMySurfaceView.append(f3);
         paramMySurfaceView.append("], minRadius[");
         paramMySurfaceView.append(f4);
         paramMySurfaceView.append("], mPoint[");
-        paramMySurfaceView.append(this.jdField_a_of_type_AndroidGraphicsPointF.x);
+        paramMySurfaceView.append(this.h.x);
         paramMySurfaceView.append(", ");
-        paramMySurfaceView.append(this.jdField_a_of_type_AndroidGraphicsPointF.y);
+        paramMySurfaceView.append(this.h.y);
         paramMySurfaceView.append("], startAnimationPathPointDistance[");
         paramMySurfaceView.append(f7);
         paramMySurfaceView.append("]");

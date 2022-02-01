@@ -9,12 +9,12 @@ import android.graphics.drawable.shapes.Shape;
 public class TriangleShape
   extends Shape
 {
-  private int jdField_a_of_type_Int;
-  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  Path a = new Path();
+  private int b;
   
   public TriangleShape(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   private void a(float paramFloat1, float paramFloat2, int paramInt)
@@ -52,25 +52,25 @@ public class TriangleShape
       localPointF2 = localPointF3;
     }
     if (localPointF1 != null) {
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localPointF1.x, localPointF1.y);
+      this.a.moveTo(localPointF1.x, localPointF1.y);
     }
     if (localPointF3 != null) {
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF3.x, localPointF3.y);
+      this.a.lineTo(localPointF3.x, localPointF3.y);
     }
     if (localPointF2 != null) {
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF2.x, localPointF2.y);
+      this.a.lineTo(localPointF2.x, localPointF2.y);
     }
   }
   
   public void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    a(getWidth(), getHeight(), this.jdField_a_of_type_Int);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
+    a(getWidth(), getHeight(), this.b);
+    paramCanvas.drawPath(this.a, paramPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.TriangleShape
  * JD-Core Version:    0.7.0.1
  */

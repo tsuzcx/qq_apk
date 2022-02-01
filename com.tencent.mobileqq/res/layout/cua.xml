@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ibr" android:layout_width="fill_parent" android:layout_height="125.0dip">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
-            <com.tencent.widget.ThemeImageView android:gravity="center" android:id="@id/dvu" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0dip" android:id="@id/tv_name" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" android:layout_below="@id/dvu" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/b5j" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.image.URLImageView android:id="@id/a4i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <FrameLayout android:id="@id/qvc" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:layout_gravity="center" android:id="@id/krz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center|right|top" android:id="@id/eha" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/bb5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <include android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/abg" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/kqx" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsGradientMaskView android:id="@id/dm5" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_alignParentBottom="true" tencent:mask_mode="10" />
+        <FrameLayout android:id="@id/qrl" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_alignParentTop="true">
+            <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsUGView android:layout_gravity="center" android:id="@id/qrm" android:visibility="gone" android:layout_width="153.0dip" android:layout_height="28.0dip" />
+        </FrameLayout>
+        <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsUGView android:id="@id/qrk" android:visibility="gone" android:layout_width="153.0dip" android:layout_height="28.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="12.0dip" android:layout_above="@id/jln" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/qvb" android:layout_alignParentRight="true" layout="@layout/as8" />
+        <LinearLayout android:orientation="vertical" android:id="@id/jln" android:paddingLeft="15.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="86.0dip" android:layout_marginBottom="8.0dip" android:layout_above="@id/qvb">
+            <LinearLayout android:orientation="vertical" android:id="@id/qvr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include layout="@layout/cud" />
+                <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/cub" />
+                <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsTitleTextView android:textSize="14.0dip" android:textColor="#d8ffffff" android:ellipsize="end" android:gravity="left" android:id="@id/jq3" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="8.0dip" android:text="" android:maxLines="3" android:layout_weight="1.0" android:lineSpacingExtra="2.0dip" />
+            </LinearLayout>
+            <ViewStub android:id="@id/gfc" android:visibility="gone" android:layout="@layout/ab7" android:layout_width="218.0dip" android:layout_height="128.0dip" android:layout_marginBottom="10.0dip" />
         </LinearLayout>
-        <ImageView android:id="@id/nbm" android:padding="10.0dip" android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_alignParentRight="true" />
+        <FrameLayout android:id="@id/qvb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/qw8">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/cuc" />
+        </FrameLayout>
+        <ViewStub android:id="@id/qw9" android:visibility="gone" android:layout="@layout/ctz" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginBottom="20.0dip" android:layout_above="@id/qw8" />
+        <include android:layout_width="fill_parent" android:layout_height="15.0dip" android:layout_above="@id/lii" layout="@layout/arj" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginBottom="15.0dip" android:layout_above="@id/lii" layout="@layout/cu5" />
+        <FrameLayout android:id="@id/lii" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+            <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/qvq" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="#b3b3b3b3" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="46.0dip" android:text="@string/z67" />
+        </FrameLayout>
     </RelativeLayout>
-</LinearLayout>
+    <FrameLayout android:id="@id/n20" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.kandian.base.view.widget.VideoFeedsAlphaMaskView android:id="@id/b5u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

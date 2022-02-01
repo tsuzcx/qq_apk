@@ -38,7 +38,7 @@ public final class oidb_0xec4$Quest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xec4.oidb_0xec4.Quest
  * JD-Core Version:    0.7.0.1
  */

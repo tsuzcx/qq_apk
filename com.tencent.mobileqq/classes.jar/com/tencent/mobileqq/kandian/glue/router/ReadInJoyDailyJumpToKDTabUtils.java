@@ -1,100 +1,128 @@
 package com.tencent.mobileqq.kandian.glue.router;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
+import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.xtab.api.impl.RIJXTabConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
 
 public class ReadInJoyDailyJumpToKDTabUtils
 {
+  public static String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_key_viola_json_data_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean a(Context paramContext, Intent paramIntent, int paramInt)
+  {
+    if (paramIntent != null)
+    {
+      if (paramContext == null) {
+        return false;
+      }
+      int i = paramIntent.getIntExtra("arg_channel_id", -1);
+      String str1 = paramIntent.getStringExtra("arg_channel_rowkey");
+      String str2 = paramIntent.getStringExtra("arg_channel_article_url");
+      boolean bool = paramIntent.getBooleanExtra("arg_show_floating_window", false);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[openArticleDetail], channelIdInt = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", rowKey = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", articleUrl = ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(", showFloatingWindow = ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(", channelId = ");
+      localStringBuilder.append(paramInt);
+      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, localStringBuilder.toString());
+      if (i != paramInt) {
+        return false;
+      }
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+      {
+        ReadInJoyUtils.a(paramContext, str2);
+        paramContext = (RIJTabFrameBase)RIJJumpUtils.a(paramContext);
+        if ((paramContext != null) && (bool)) {
+          paramContext.b(32);
+        }
+        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[openArticleDetail] finished.");
+        paramIntent.removeExtra("arg_channel_id");
+        paramIntent.removeExtra("arg_channel_rowkey");
+        paramIntent.removeExtra("arg_channel_article_url");
+        paramIntent.removeExtra("arg_show_floating_window");
+      }
+      return bool;
+    }
+    return false;
+  }
+  
   public static boolean a(Context paramContext, String paramString)
   {
     ReadInJoyChannelGuidingManager.a(paramString);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("jumpToKDTab, scheme = ");
-    ((StringBuilder)localObject1).append(paramString);
-    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, ((StringBuilder)localObject1).toString());
+    return b(paramContext, paramString);
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
     if (TextUtils.isEmpty(paramString))
     {
-      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], scheme is empty.");
+      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKdTabAndOpenDetail] scheme is empty.");
       return false;
     }
-    try
-    {
-      paramString = Uri.parse(paramString);
-      localObject1 = paramString.getQueryParameter("target");
-      if (!"2".equals(localObject1))
-      {
-        paramContext = new StringBuilder();
-        paramContext.append("[jumpToKDTab], target = ");
-        paramContext.append((String)localObject1);
-        paramContext.append(", do not jump to channel.");
-        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, paramContext.toString());
-        return false;
-      }
-      localObject1 = paramString.getQueryParameter("channelid");
-      int i = -1;
-      try
-      {
-        int j = Integer.parseInt((String)localObject1);
-        i = j;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[jumpToKDTab], e = ");
-        ((StringBuilder)localObject2).append(localNumberFormatException);
-        QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, ((StringBuilder)localObject2).toString());
-      }
-      if (i != 0)
-      {
-        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], not recommend tab.");
-        return false;
-      }
-      String str1 = paramString.getQueryParameter("rowkey");
-      Object localObject2 = paramString.getQueryParameter("algorithmid");
-      String str2 = paramString.getQueryParameter("article_url");
-      String str3 = URLDecoder.decode(str2, "utf-8");
-      boolean bool = TextUtils.equals("1", paramString.getQueryParameter("show_floating_window"));
-      paramString = new StringBuilder();
-      paramString.append("[jumpToKDTab], articleURLDecoded = ");
-      paramString.append(str3);
-      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, paramString.toString());
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)))
-      {
-        if (!RIJShowKanDianTabSp.c())
-        {
-          ReadInJoyUtils.a(paramContext, str3);
-          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open article directly.");
-          return true;
-        }
-        if (bool)
-        {
-          paramContext.startActivity(((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabFloatingWindowIntent(paramContext, 12, str1, str2));
-          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open floating window.");
-          return true;
-        }
-      }
+    RIJDailyJumpParser.RIJDailyScheme localRIJDailyScheme = new RIJDailyJumpParser.RIJDailyScheme(paramString);
+    ReadInJoyChannelGuidingManager.a(localRIJDailyScheme.b(), localRIJDailyScheme);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[jumpToKdTabAndOpenDetail], rijDailyScheme = ");
+    ((StringBuilder)localObject).append(localRIJDailyScheme);
+    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, ((StringBuilder)localObject).toString());
+    RIJSPUtils.a(a(localRIJDailyScheme.b()), localRIJDailyScheme.f());
+    if (!"2".equals(localRIJDailyScheme.a())) {
+      return false;
     }
-    catch (Exception paramContext)
+    if (!TextUtils.isEmpty(localRIJDailyScheme.c()))
     {
-      paramString = new StringBuilder();
-      paramString.append("[jumpToKDTab], e = ");
-      paramString.append(paramContext);
-      QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, paramString.toString());
-      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], do not handle.");
+      if (TextUtils.isEmpty(localRIJDailyScheme.d())) {
+        return false;
+      }
+      if (!RIJShowKanDianTabSp.c())
+      {
+        ReadInJoyUtils.a(paramContext, localRIJDailyScheme.d());
+        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKdTabAndOpenDetail] do not show kd tab, open it directly.");
+        return true;
+      }
+      if (RIJXTabConfigHandler.INSTANCE.getHomeFeedsStyle() == 3)
+      {
+        ReadInJoyUtils.a(paramContext, localRIJDailyScheme.d());
+        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKdTabAndOpenDetail] immersive video, open it directly.");
+        return true;
+      }
+      localObject = ReadInJoyActivityHelper.INSTANCE.getJumpReadInJoyTabIntent(paramContext, 12, localRIJDailyScheme.b());
+      ((Intent)localObject).putExtra("arg_channel_id", localRIJDailyScheme.b());
+      ((Intent)localObject).putExtra("arg_channel_rowkey", localRIJDailyScheme.c());
+      ((Intent)localObject).putExtra("arg_channel_article_url", localRIJDailyScheme.d());
+      ((Intent)localObject).putExtra("arg_show_floating_window", localRIJDailyScheme.e());
+      paramContext.startActivity((Intent)localObject);
+      paramContext = new StringBuilder();
+      paramContext.append("[jumpToKdTabAndOpenDetail] jumpToKdTab succeed, scheme = ");
+      paramContext.append(paramString);
+      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, paramContext.toString());
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.ReadInJoyDailyJumpToKDTabUtils
  * JD-Core Version:    0.7.0.1
  */

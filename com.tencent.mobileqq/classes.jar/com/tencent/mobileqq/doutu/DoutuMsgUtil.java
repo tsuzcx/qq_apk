@@ -25,12 +25,12 @@ public class DoutuMsgUtil
   public static DoutuMsgItem a(ChatMessage paramChatMessage)
   {
     DoutuMsgItem localDoutuMsgItem = new DoutuMsgItem();
-    localDoutuMsgItem.jdField_a_of_type_Long = paramChatMessage.time;
-    localDoutuMsgItem.jdField_a_of_type_Boolean = paramChatMessage.isSend();
-    localDoutuMsgItem.jdField_b_of_type_Long = paramChatMessage.shmsgseq;
-    localDoutuMsgItem.jdField_b_of_type_Boolean = paramChatMessage.isFlowMessage;
-    localDoutuMsgItem.jdField_c_of_type_JavaLangString = paramChatMessage.senderuin;
-    localDoutuMsgItem.e = paramChatMessage.hasPlayedDui;
+    localDoutuMsgItem.a = paramChatMessage.time;
+    localDoutuMsgItem.b = paramChatMessage.isSend();
+    localDoutuMsgItem.c = paramChatMessage.shmsgseq;
+    localDoutuMsgItem.d = paramChatMessage.isFlowMessage;
+    localDoutuMsgItem.k = paramChatMessage.senderuin;
+    localDoutuMsgItem.j = paramChatMessage.hasPlayedDui;
     a(paramChatMessage, localDoutuMsgItem);
     return localDoutuMsgItem;
   }
@@ -91,15 +91,15 @@ public class DoutuMsgUtil
     while (((Iterator)localObject).hasNext()) {
       localArrayList.add(a((ChatMessage)((Iterator)localObject).next()));
     }
-    localObject = (DoutuHelper)paramBaseChatPie.a(115);
+    localObject = (DoutuHelper)paramBaseChatPie.q(115);
     if (((DoutuHelper)localObject).a == null)
     {
       ((DoutuHelper)localObject).a = ((IDoutuService)paramQQAppInterface.getRuntimeService(IDoutuService.class, ""));
       AIODoutuListenerImpl localAIODoutuListenerImpl = new AIODoutuListenerImpl(paramQQAppInterface, paramBaseChatPie);
-      String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      int i = paramSessionInfo.jdField_a_of_type_Int;
-      paramSessionInfo = paramSessionInfo.jdField_b_of_type_JavaLangString;
-      ((DoutuHelper)localObject).a.init(paramBaseChatPie.a(), paramQQAppInterface, paramBaseChatPie.a(), localAIODoutuListenerImpl, str, String.valueOf(i), paramSessionInfo);
+      String str = paramSessionInfo.b;
+      int i = paramSessionInfo.a;
+      paramSessionInfo = paramSessionInfo.c;
+      ((DoutuHelper)localObject).a.init(paramBaseChatPie.bl(), paramQQAppInterface, paramBaseChatPie.aX(), localAIODoutuListenerImpl, str, String.valueOf(i), paramSessionInfo);
     }
     paramInt = ((DoutuHelper)localObject).a.handleAioMsgForDoutu(localArrayList, paramInt);
     if (paramInt != -1) {
@@ -113,12 +113,12 @@ public class DoutuMsgUtil
     int i = 4;
     if (bool)
     {
-      paramDoutuMsgItem.jdField_c_of_type_Boolean = true;
+      paramDoutuMsgItem.e = true;
       paramChatMessage = (MessageForMarketFace)paramChatMessage;
       if (paramChatMessage.mMarkFaceMessage != null)
       {
         paramChatMessage = paramChatMessage.mMarkFaceMessage;
-        paramDoutuMsgItem.jdField_a_of_type_JavaLangString = EmosmUtils.a(paramChatMessage.sbufID, paramChatMessage.mediaType);
+        paramDoutuMsgItem.g = EmosmUtils.a(paramChatMessage.sbufID, paramChatMessage.mediaType);
       }
       i = 1;
     }
@@ -126,9 +126,9 @@ public class DoutuMsgUtil
     {
       if ((paramChatMessage instanceof MessageForPic))
       {
-        paramDoutuMsgItem.d = true;
+        paramDoutuMsgItem.f = true;
         paramChatMessage = (MessageForPic)paramChatMessage;
-        paramDoutuMsgItem.jdField_b_of_type_JavaLangString = paramChatMessage.md5;
+        paramDoutuMsgItem.h = paramChatMessage.md5;
         PicMessageExtraData localPicMessageExtraData = paramChatMessage.picExtraData;
         if ((localPicMessageExtraData != null) && (localPicMessageExtraData.imageBizType == 1))
         {
@@ -152,7 +152,7 @@ public class DoutuMsgUtil
       i = 6;
     }
     label172:
-    paramDoutuMsgItem.jdField_a_of_type_Int = i;
+    paramDoutuMsgItem.i = i;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
@@ -177,10 +177,10 @@ public class DoutuMsgUtil
           i = 1;
         }
       }
-      if (Utils.b(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (Utils.c(paramSessionInfo.b)) {
         return true;
       }
-      if (paramBaseChatPie.z) {
+      if (paramBaseChatPie.aO) {
         return true;
       }
       return i != 0;
@@ -226,7 +226,7 @@ public class DoutuMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuMsgUtil
  * JD-Core Version:    0.7.0.1
  */

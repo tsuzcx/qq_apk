@@ -20,9 +20,9 @@ public class ExtendOpenPageParser
       QLog.d("ExtendOpenPageParser", 2, paramJumpParserResult.toString());
     }
     paramBaseQQAppInterface = new ExtendOpenPageAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "expand";
-    paramBaseQQAppInterface.c = "openpage";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "expand";
+    paramBaseQQAppInterface.e = "openpage";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -45,7 +45,7 @@ public class ExtendOpenPageParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ExtendOpenPageParser
  * JD-Core Version:    0.7.0.1
  */

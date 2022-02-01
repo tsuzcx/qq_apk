@@ -20,11 +20,11 @@ class ForwardTroopListFragment$4
       {
         if (paramInt1 == 0)
         {
-          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131704941), 0).a();
+          QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131902833), 0).show();
           return;
         }
         if (paramInt1 == 1) {
-          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131704940), 0).a();
+          QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131902832), 0).show();
         }
       }
     }
@@ -32,15 +32,15 @@ class ForwardTroopListFragment$4
     {
       paramString1 = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = this.a.getResources().getString(2131694666);
+        paramString1 = this.a.getResources().getString(2131892358);
       }
-      QQToast.a(this.a.getBaseActivity(), 1, paramString1, 0).a();
+      QQToast.makeText(this.a.getBaseActivity(), 1, paramString1, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ import org.json.JSONObject;
 public abstract interface IModuleEventPlugin
   extends IEventPlugin
 {
-  @NotNull
-  public abstract String a();
-  
   @Nullable
   public abstract JSONObject a(@NotNull CEArgument paramCEArgument);
+  
+  @NotNull
+  public abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.plugin.IModuleEventPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,11 @@ public abstract interface EmotionDataSource$DataLoadListener
 {
   public abstract void a(List<EmoticonPreviewData> paramList, EmoticonPreviewData paramEmoticonPreviewData);
   
-  public abstract void c();
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDataSource.DataLoadListener
  * JD-Core Version:    0.7.0.1
  */

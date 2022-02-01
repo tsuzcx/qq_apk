@@ -5,9 +5,9 @@ import com.tencent.mobileqq.structmsg.AbsStructMsgTextElement;
 public class StructMsgItemContent
   extends AbsStructMsgTextElement
 {
-  public boolean c = false;
-  public int o = 0;
-  public int p = 3;
+  public int aM = 0;
+  public boolean aN = false;
+  public int aO = 3;
   
   public StructMsgItemContent()
   {
@@ -19,37 +19,37 @@ public class StructMsgItemContent
     super(paramString, "content");
   }
   
-  public String a()
+  public String b()
   {
     return "Content";
   }
   
-  public int b()
+  public int d()
   {
-    return this.p;
+    return this.aO;
   }
   
-  public int c()
+  public int f()
   {
-    return 2131379595;
+    return 2131448353;
   }
   
-  public int e()
+  public int i()
   {
-    if ((this.c) && (this.o != 0)) {
+    if ((this.aN) && (this.aM != 0)) {
       return -1;
     }
     return -8355712;
   }
   
-  public int f()
+  public int j()
   {
     return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemContent
  * JD-Core Version:    0.7.0.1
  */

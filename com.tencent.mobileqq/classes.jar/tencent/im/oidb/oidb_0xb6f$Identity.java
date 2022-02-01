@@ -26,7 +26,7 @@ public final class oidb_0xb6f$Identity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xb6f.Identity
  * JD-Core Version:    0.7.0.1
  */

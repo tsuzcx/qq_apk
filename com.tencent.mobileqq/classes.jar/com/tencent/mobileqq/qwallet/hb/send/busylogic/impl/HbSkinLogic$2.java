@@ -14,7 +14,7 @@ class HbSkinLogic$2
   
   public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    HbSkinInfo localHbSkinInfo = HbSkinInfo.HbSkinFactory.a(HbSkinLogic.a(this.a), paramRedPacketInfoBase.skinId);
+    HbSkinInfo localHbSkinInfo = HbSkinInfo.HbSkinFactory.a(HbSkinLogic.d(this.a), paramRedPacketInfoBase.skinId);
     if (localHbSkinInfo != null)
     {
       List localList = HbSkinLogic.a(this.a).getList();
@@ -22,20 +22,20 @@ class HbSkinLogic$2
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("redl iscache = ");
-        localStringBuilder.append(HbSkinInfo.jdField_a_of_type_Boolean);
+        localStringBuilder.append(HbSkinInfo.e);
         localStringBuilder.append(" info.iscache = ");
         localStringBuilder.append(paramRedPacketInfoBase.isCache);
         QLog.d("HbSkinLogic", 2, localStringBuilder.toString());
       }
-      if ((HbSkinInfo.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localHbSkinInfo)))
+      if ((HbSkinInfo.e == paramRedPacketInfoBase.isCache) && (!localList.contains(localHbSkinInfo)))
       {
         if ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
           return;
         }
         if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-          paramRedPacketInfoBase.title = HbSkinLogic.a();
+          paramRedPacketInfoBase.title = HbSkinLogic.f();
         }
-        localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase = paramRedPacketInfoBase;
+        localHbSkinInfo.g = paramRedPacketInfoBase;
         if (QLog.isColorLevel()) {
           QLog.d("HbSkinLogic", 2, "redl add to list show!");
         }
@@ -52,7 +52,7 @@ class HbSkinLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinLogic.2
  * JD-Core Version:    0.7.0.1
  */

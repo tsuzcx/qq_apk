@@ -11,7 +11,7 @@ public class TencentDocDrawerConfigProcessor
 {
   public static TencentDocDrawerConfigBean a()
   {
-    return (TencentDocDrawerConfigBean)QConfigManager.a().a(740);
+    return (TencentDocDrawerConfigBean)QConfigManager.b().b(740);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class TencentDocDrawerConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.config.TencentDocDrawerConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

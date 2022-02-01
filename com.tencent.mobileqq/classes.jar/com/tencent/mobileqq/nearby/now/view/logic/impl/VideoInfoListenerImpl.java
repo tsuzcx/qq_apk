@@ -46,10 +46,10 @@ public class VideoInfoListenerImpl
     if (QLog.isColorLevel()) {
       QLog.d("VideoInfoListener", 2, "VideoInfoListenerImpl onLayoutChange");
     }
-    if (this.mHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getVisibility() == 0)
+    if (this.mHolder.e.getVisibility() == 0)
     {
-      if ((((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.size() > this.mPlayController.getCurrentIndex()) && (((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mPlayController.getCurrentIndex())).a.size() > 0)) {
-        ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicLayoutStoryImageContainerView(this.mHolder, ((ImageData)((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mPlayController.getCurrentIndex())).a.get(0)).b, ((ImageData)((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mPlayController.getCurrentIndex())).a.get(0)).jdField_a_of_type_Int, ((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mPlayController.getCurrentIndex()), this.mCommentsView);
+      if ((((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.size() > this.mPlayController.getCurrentIndex()) && (((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mPlayController.getCurrentIndex())).M.size() > 0)) {
+        ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicLayoutStoryImageContainerView(this.mHolder, ((ImageData)((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mPlayController.getCurrentIndex())).M.get(0)).c, ((ImageData)((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mPlayController.getCurrentIndex())).M.get(0)).b, ((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mPlayController.getCurrentIndex()), this.mCommentsView);
       }
     }
     else if ((this.mVideoCoverWidth > 0) && (this.mVideoCoverHeight > 0)) {
@@ -144,16 +144,16 @@ public class VideoInfoListenerImpl
   
   public void onPlayError()
   {
-    this.mHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(false);
+    this.mHolder.d.a(false);
     hideLoading();
     QLog.e("VideoInfoListener", 1, "onPlayError");
-    this.mHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
+    this.mHolder.f.setVisibility(0);
     IShortVideoCommentsView localIShortVideoCommentsView = this.mCommentsView;
     if ((localIShortVideoCommentsView != null) && (localIShortVideoCommentsView.getmEmptyCloseBtn() != null)) {
       this.mCommentsView.getmEmptyCloseBtn().setVisibility(0);
     }
-    this.mHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
-    this.mHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnRetryClickListener(new VideoInfoListenerImpl.2(this));
+    this.mHolder.f.a();
+    this.mHolder.f.setOnRetryClickListener(new VideoInfoListenerImpl.2(this));
   }
   
   public void onPlayProgress(int paramInt)
@@ -170,10 +170,10 @@ public class VideoInfoListenerImpl
       }
       if (this.mPlayController.isMultiProgressBar())
       {
-        ((StuffContainerView)this.mPlayController.getStuffContainerView()).a.a(this.mHolder.jdField_a_of_type_Int, i);
+        ((StuffContainerView)this.mPlayController.getStuffContainerView()).h.a(this.mHolder.a, i);
         return;
       }
-      ((StuffContainerView)this.mPlayController.getStuffContainerView()).a.a(0, i);
+      ((StuffContainerView)this.mPlayController.getStuffContainerView()).h.a(0, i);
     }
   }
   
@@ -207,22 +207,22 @@ public class VideoInfoListenerImpl
     Object localObject = this.mHolder;
     if (localObject != null)
     {
-      ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+      ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).f.setVisibility(8);
       localObject = this.mCommentsView;
-      if ((localObject != null) && (((IShortVideoCommentsView)localObject).getmEmptyCloseBtn() != null) && (((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mHolder.jdField_a_of_type_Int)).b != 4)) {
+      if ((localObject != null) && (((IShortVideoCommentsView)localObject).getmEmptyCloseBtn() != null) && (((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mHolder.a)).b != 4)) {
         this.mCommentsView.getmEmptyCloseBtn().setVisibility(8);
       }
       hideLoading();
       this.mPlayController.hideRootCover();
-      this.mHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(true);
-      if ((this.mHolder.jdField_a_of_type_Int >= 0) && (this.mHolder.jdField_a_of_type_Int < ((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.size()))
+      this.mHolder.d.a(true);
+      if ((this.mHolder.a >= 0) && (this.mHolder.a < ((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.size()))
       {
-        localObject = (VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mHolder.jdField_a_of_type_Int);
+        localObject = (VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mHolder.a);
         if (1 == ((VideoData)localObject).b) {
           return;
         }
-        if (this.mPlayController.getCurrentIndex() == this.mHolder.jdField_a_of_type_Int) {
-          ((VideoData)localObject).c = true;
+        if (this.mPlayController.getCurrentIndex() == this.mHolder.a) {
+          ((VideoData)localObject).K = true;
         }
       }
       return;
@@ -239,14 +239,14 @@ public class VideoInfoListenerImpl
     if (localObject == null) {
       return;
     }
-    ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).f.setVisibility(8);
     localObject = this.mCommentsView;
-    if ((localObject != null) && (((IShortVideoCommentsView)localObject).getmEmptyCloseBtn() != null) && (((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).a.get(this.mHolder.jdField_a_of_type_Int)).b != 4)) {
+    if ((localObject != null) && (((IShortVideoCommentsView)localObject).getmEmptyCloseBtn() != null) && (((VideoData)((VideoPlayerPagerAdapter)this.mPlayController.getAdapter()).d.get(this.mHolder.a)).b != 4)) {
       this.mCommentsView.getmEmptyCloseBtn().setVisibility(8);
     }
     localObject = this.mHolder;
     if (localObject != null) {
-      ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(true);
+      ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).d.a(true);
     }
   }
   
@@ -270,13 +270,13 @@ public class VideoInfoListenerImpl
       localStringBuilder.append(bool);
       QLog.i("VideoInfoListener", 2, localStringBuilder.toString());
     }
-    this.mHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.mHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370360));
+    this.mHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.mHolder.c.findViewById(2131437622));
     ThreadManager.getUIHandler().postDelayed(this.mShowLoadingRunable, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.logic.impl.VideoInfoListenerImpl
  * JD-Core Version:    0.7.0.1
  */

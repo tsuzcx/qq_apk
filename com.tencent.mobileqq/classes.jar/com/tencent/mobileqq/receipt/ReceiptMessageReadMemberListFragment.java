@@ -27,9 +27,9 @@ import javax.annotation.Nullable;
 public class ReceiptMessageReadMemberListFragment
   extends BaseFragment
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+  private View a;
+  private QQAppInterface b;
+  private IFaceDecoder c;
   
   @Nonnull
   public static ReceiptMessageReadMemberListFragment a(@Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList, @Nullable String paramString)
@@ -47,7 +47,7 @@ public class ReceiptMessageReadMemberListFragment
     super.onAttach(paramActivity);
     if ((getBaseActivity().getAppInterface() instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppInterface());
+      this.b = ((QQAppInterface)getBaseActivity().getAppInterface());
       return;
     }
     throw new IllegalStateException("only allow used in main process");
@@ -55,15 +55,15 @@ public class ReceiptMessageReadMemberListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558598, paramViewGroup, false);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.a = paramLayoutInflater.inflate(2131624158, paramViewGroup, false);
+    paramLayoutInflater = this.a;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    this.c.destory();
     super.onDestroy();
   }
   
@@ -75,23 +75,23 @@ public class ReceiptMessageReadMemberListFragment
     paramBundle = paramBundle.getString("ReceiptMessageReadMemberListFragment.EXTRA_KEY_EMPTY_TEXT");
     if (((paramView == null) || (paramView.isEmpty())) && (!TextUtils.isEmpty(paramBundle)))
     {
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131366238);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366240)).setText(paramBundle);
+      localObject = this.a.findViewById(2131432530);
+      ((TextView)this.a.findViewById(2131432532)).setText(paramBundle);
       ((View)localObject).setVisibility(0);
     }
-    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370750);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = new ReceiptMessageReadMemberListFragment.MemberAdapter(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, paramBundle, null);
+    paramBundle = (RecyclerView)this.a.findViewById(2131438051);
+    this.c = ((IQQAvatarService)this.b.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.b);
+    Object localObject = new ReceiptMessageReadMemberListFragment.MemberAdapter(BaseApplicationImpl.getContext(), this.c, paramBundle, null);
     ((ReceiptMessageReadMemberListFragment.MemberAdapter)localObject).a(paramView);
     paramBundle.setAdapter((RecyclerView.Adapter)localObject);
     paramBundle.setLayoutManager(new LinearLayoutManager(BaseApplicationImpl.getContext()));
     int i = (int)(getResources().getDisplayMetrics().density * 64.0F);
-    paramBundle.addItemDecoration(new ReceiptMessageReadMemberListFragment.DividerItemDecoration(getResources().getDrawable(2130838200), i, 0, null));
+    paramBundle.addItemDecoration(new ReceiptMessageReadMemberListFragment.DividerItemDecoration(getResources().getDrawable(2130838252), i, 0, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment
  * JD-Core Version:    0.7.0.1
  */

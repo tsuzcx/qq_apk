@@ -20,8 +20,7 @@ class ApolloPanel$4
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloPanel", 2, "tab download Done");
     }
-    ApolloPanel localApolloPanel = this.a;
-    ApolloPanel.a(localApolloPanel, ApolloPanel.a(localApolloPanel));
+    ApolloPanel.j(this.a);
   }
   
   public void a(ApolloActionData paramApolloActionData)
@@ -31,19 +30,19 @@ class ApolloPanel$4
     localStringBuilder.append(paramApolloActionData.actionId);
     QLog.e("[cmshow]ApolloPanel", 1, localStringBuilder.toString());
     this.a.b(paramApolloActionData);
-    if (ApolloPanel.a(this.a) != null) {
-      ApolloPanel.a(this.a).a(paramApolloActionData);
+    if (ApolloPanel.k(this.a) != null) {
+      ApolloPanel.k(this.a).a(paramApolloActionData);
     }
   }
   
   public void a(Boolean paramBoolean)
   {
-    if (ApolloPanel.a(this.a) != null)
+    if (ApolloPanel.g(this.a) != null)
     {
-      if (ApolloPanel.a(this.a).a == null) {
+      if (ApolloPanel.g(this.a).d == null) {
         return;
       }
-      MqqHandler localMqqHandler = ApolloPanel.a(this.a).a.getHandler(ChatActivity.class);
+      MqqHandler localMqqHandler = ApolloPanel.g(this.a).d.getHandler(ChatActivity.class);
       if (localMqqHandler == null) {
         return;
       }
@@ -51,15 +50,13 @@ class ApolloPanel$4
       if (paramBoolean.booleanValue())
       {
         paramBoolean = this.a;
-        paramBoolean.a(ApolloPanel.a(paramBoolean).a.getCurrentAccountUin());
-        if (ApolloPanel.a(this.a) != null)
-        {
-          ApolloPanel.a(this.a).clear();
-          paramBoolean = this.a;
-          paramBoolean.b(paramBoolean.a(ApolloPanel.a));
-        }
+        paramBoolean.a(ApolloPanel.g(paramBoolean).d.getCurrentAccountUin());
+        ApolloPanel.m(this.a).clear();
+        paramBoolean = this.a;
+        paramBoolean.b(paramBoolean.c(ApolloPanel.a));
+        return;
       }
-      else if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).b == 3))
+      if ((ApolloPanel.n(this.a) != null) && (ApolloPanel.n(this.a).k == 3))
       {
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
@@ -71,7 +68,7 @@ class ApolloPanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.4
  * JD-Core Version:    0.7.0.1
  */

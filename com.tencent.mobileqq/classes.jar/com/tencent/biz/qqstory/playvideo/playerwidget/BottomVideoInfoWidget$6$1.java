@@ -10,7 +10,7 @@ class BottomVideoInfoWidget$6$1
   
   public void run()
   {
-    BottomVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$6.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$6.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$6.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$6.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$6.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.nickName, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$6.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.headUrl);
+    BottomVideoInfoWidget.a(this.b.e, this.a, this.b.c.uid, this.b.d, this.b.b.mVid, this.b.c.nickName, this.b.c.headUrl);
   }
 }
 

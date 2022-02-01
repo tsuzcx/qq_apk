@@ -34,25 +34,25 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadinjoySlidingIndicator
   extends FrameLayout
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842901, 16842904 };
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ReadinjoySlidingIndicator.OnIndicatorChangeListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadinjoySlidingIndicator$OnIndicatorChangeListener;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int = 0;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private int c = 0;
-  private int d = -16777216;
-  private int e = -7829368;
-  private int f = 18;
-  private int g = 18;
-  private int h = 4;
-  private int i = -16776961;
-  private int j;
+  private static final int[] a = { 16842901, 16842904 };
+  private LinearLayout b;
+  private int c;
+  private int d = 0;
+  private int e = 0;
+  private String[] f;
+  private int[] g;
+  private LinearLayout.LayoutParams h;
+  private int i = -16777216;
+  private int j = -7829368;
+  private int k = 18;
+  private int l = 18;
+  private int m = 4;
+  private int n = -16776961;
+  private Paint o;
+  private ReadinjoySlidingIndicator.OnIndicatorChangeListener p;
+  private LinearLayout q;
+  private ImageView r;
+  private int s;
   
   public ReadinjoySlidingIndicator(Context paramContext)
   {
@@ -69,18 +69,18 @@ public class ReadinjoySlidingIndicator
     super(paramContext, paramAttributeSet, paramInt);
     setWillNotDraw(false);
     Object localObject = getResources().getDisplayMetrics();
-    this.h = ((int)TypedValue.applyDimension(1, this.h, (DisplayMetrics)localObject));
-    this.f = ((int)TypedValue.applyDimension(1, this.f, (DisplayMetrics)localObject));
-    this.g = ((int)TypedValue.applyDimension(2, this.g, (DisplayMetrics)localObject));
-    localObject = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-    this.g = ((TypedArray)localObject).getDimensionPixelSize(0, this.g);
+    this.m = ((int)TypedValue.applyDimension(1, this.m, (DisplayMetrics)localObject));
+    this.k = ((int)TypedValue.applyDimension(1, this.k, (DisplayMetrics)localObject));
+    this.l = ((int)TypedValue.applyDimension(2, this.l, (DisplayMetrics)localObject));
+    localObject = paramContext.obtainStyledAttributes(paramAttributeSet, a);
+    this.l = ((TypedArray)localObject).getDimensionPixelSize(0, this.l);
     ((TypedArray)localObject).recycle();
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ReadingJoySlidingIndicator);
-    this.i = paramAttributeSet.getColor(2, this.i);
-    this.d = paramAttributeSet.getColor(1, this.d);
-    this.e = paramAttributeSet.getColor(4, this.e);
-    this.h = paramAttributeSet.getDimensionPixelSize(0, this.h);
-    this.f = paramAttributeSet.getDimensionPixelSize(3, this.f);
+    this.n = paramAttributeSet.getColor(2, this.n);
+    this.i = paramAttributeSet.getColor(1, this.i);
+    this.j = paramAttributeSet.getColor(4, this.j);
+    this.m = paramAttributeSet.getDimensionPixelSize(0, this.m);
+    this.k = paramAttributeSet.getDimensionPixelSize(3, this.k);
     paramAttributeSet.recycle();
     a();
     a(paramContext);
@@ -91,16 +91,16 @@ public class ReadinjoySlidingIndicator
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
+    this.o = new Paint();
+    this.o.setAntiAlias(true);
+    this.o.setStyle(Paint.Style.FILL);
+    this.o.setTextSize(this.l);
   }
   
   private void a(int paramInt, View paramView)
   {
     paramView.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    this.b.addView(paramView, paramInt, this.h);
   }
   
   private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
@@ -108,9 +108,9 @@ public class ReadinjoySlidingIndicator
     TextView localTextView = new TextView(getContext());
     localTextView.setGravity(17);
     localTextView.setMaxLines(1);
-    int k = this.f;
-    localTextView.setPadding(k, 0, k, 0);
-    localTextView.setTextSize(0, this.g);
+    int i1 = this.k;
+    localTextView.setPadding(i1, 0, i1, 0);
+    localTextView.setTextSize(0, this.l);
     localTextView.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt3 + 3) });
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
     Object localObject = paramString;
@@ -122,78 +122,62 @@ public class ReadinjoySlidingIndicator
       localObject = ((StringBuilder)localObject).toString();
     }
     localTextView.setText((CharSequence)localObject);
-    paramString = new RedTouch(getContext(), localTextView).b(53).d(8).e(12).a(true).a();
+    paramString = new RedTouch(getContext(), localTextView).c(53).b(8.0F).c(12.0F).a(true).a();
     paramString.setId(paramInt2);
     a(paramInt1, paramString);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(-2, -1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(1);
+    this.h = new LinearLayout.LayoutParams(-2, -1);
+    this.b = new LinearLayout(paramContext);
+    this.b.setOrientation(0);
+    this.b.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.b.setGravity(1);
     b();
   }
   
   private void b()
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(new FrameLayout.LayoutParams(-2, -1, 1));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(a());
-    addView(this.jdField_b_of_type_AndroidWidgetLinearLayout);
+    this.q = new LinearLayout(getContext());
+    this.q.setOrientation(0);
+    this.q.setLayoutParams(new FrameLayout.LayoutParams(-2, -1, 1));
+    this.q.addView(this.b);
+    this.q.addView(getTabsContainerBtnImage());
+    addView(this.q);
   }
   
   private void b(int paramInt)
   {
-    int m = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int k = 0;
-    while (k < m)
+    this.b.removeAllViews();
+    this.c = this.f.length;
+    int i1 = 0;
+    while (i1 < this.c)
     {
-      TextView localTextView = (TextView)((RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k)).a();
-      if (k == paramInt) {
-        localTextView.setTextColor(this.d);
-      } else {
-        localTextView.setTextColor(this.e);
-      }
-      k += 1;
-    }
-  }
-  
-  private void c()
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localImageView != null)
-    {
-      localImageView.setColorFilter(this.d);
-      QLog.d("tag", 2, new Object[] { "color: ", Integer.valueOf(this.d) });
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    int k = 0;
-    while (k < this.jdField_a_of_type_Int)
-    {
-      a(k, this.jdField_a_of_type_ArrayOfJavaLangString[k], this.jdField_b_of_type_ArrayOfInt[k], paramInt);
-      k += 1;
+      a(i1, this.f[i1], this.g[i1], paramInt);
+      i1 += 1;
     }
     getViewTreeObserver().addOnGlobalLayoutListener(new ReadinjoySlidingIndicator.3(this));
   }
   
+  private void c()
+  {
+    ImageView localImageView = this.r;
+    if (localImageView != null)
+    {
+      localImageView.setColorFilter(this.i);
+      QLog.d("tag", 2, new Object[] { "color: ", Integer.valueOf(this.i) });
+    }
+  }
+  
   private void d()
   {
-    int k = this.c;
-    int m = this.jdField_b_of_type_Int;
-    if (k != m)
+    int i1 = this.e;
+    int i2 = this.d;
+    if (i1 != i2)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.jdField_b_of_type_Int);
+      Object localObject = this.b.getChildAt(i1);
+      View localView = this.b.getChildAt(this.d);
       if ((localObject != null) && (localView != null))
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
@@ -204,72 +188,98 @@ public class ReadinjoySlidingIndicator
     }
     else
     {
-      this.j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(m).getLeft();
+      this.s = this.b.getChildAt(i2).getLeft();
       invalidate();
     }
   }
   
-  public ImageView a()
+  private void setChooseTabViewTextColor(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+    int i2 = this.b.getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      c();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849811);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.b(7.0F, getResources()), AIOUtils.b(7.0F, getResources()));
-      localLayoutParams.gravity = 16;
-      localLayoutParams.leftMargin = (-AIOUtils.b(11.0F, getResources()));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      TextView localTextView = (TextView)((RedTouch)this.b.getChildAt(i1)).getTarget();
+      if (i1 == paramInt) {
+        localTextView.setTextColor(this.i);
+      } else {
+        localTextView.setTextColor(this.j);
+      }
+      i1 += 1;
     }
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
   }
   
   public void a(int paramInt)
   {
-    RedTouch localRedTouch = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(paramInt);
-    if ((localRedTouch != null) && (localRedTouch.c())) {
-      localRedTouch.d();
+    RedTouch localRedTouch = (RedTouch)this.b.findViewById(paramInt);
+    if ((localRedTouch != null) && (localRedTouch.h())) {
+      localRedTouch.g();
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.d = getResources().getColor(paramInt1);
-    this.e = (this.d & 0xFFFFFF | 0x99000000);
-    this.i = getResources().getColor(paramInt3);
-    b(this.jdField_b_of_type_Int);
+    this.i = getResources().getColor(paramInt1);
+    this.j = (this.i & 0xFFFFFF | 0x99000000);
+    this.n = getResources().getColor(paramInt3);
+    setChooseTabViewTextColor(this.d);
     c();
     invalidate();
   }
   
   protected void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.c = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = paramInt;
-    int k = this.jdField_b_of_type_Int;
-    if ((k != this.c) && (k >= 0))
+    this.e = this.d;
+    this.d = paramInt;
+    int i1 = this.d;
+    if ((i1 != this.e) && (i1 >= 0))
     {
-      localObject = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
-      b(paramInt);
+      localObject = (RedTouch)this.b.getChildAt(i1);
+      setChooseTabViewTextColor(paramInt);
       if (paramBoolean1)
       {
         d();
       }
       else
       {
-        this.j = ((RedTouch)localObject).getLeft();
+        this.s = ((RedTouch)localObject).getLeft();
         invalidate();
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadinjoySlidingIndicator$OnIndicatorChangeListener;
+    Object localObject = this.p;
     if (localObject != null) {
-      ((ReadinjoySlidingIndicator.OnIndicatorChangeListener)localObject).a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
+      ((ReadinjoySlidingIndicator.OnIndicatorChangeListener)localObject).a(this.e, this.d, paramBoolean2);
     }
+  }
+  
+  public int getCurrentPosition()
+  {
+    return this.d;
+  }
+  
+  public int getPrePosition()
+  {
+    return this.e;
+  }
+  
+  public ImageView getTabsContainerBtnImage()
+  {
+    if (this.r == null)
+    {
+      this.r = new ImageView(getContext());
+      c();
+      this.r.setImageResource(2130851516);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.b(7.0F, getResources()), AIOUtils.b(7.0F, getResources()));
+      localLayoutParams.gravity = 16;
+      localLayoutParams.leftMargin = (-AIOUtils.b(11.0F, getResources()));
+      this.r.setLayoutParams(localLayoutParams);
+    }
+    return this.r;
+  }
+  
+  public LinearLayout getTabsContainerWrapper()
+  {
+    return this.q;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -277,39 +287,39 @@ public class ReadinjoySlidingIndicator
     super.onDraw(paramCanvas);
     if (!isInEditMode())
     {
-      if (this.jdField_a_of_type_Int == 0) {
+      if (this.c == 0) {
         return;
       }
       getHeight();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.i);
+      this.o.setColor(this.n);
     }
   }
   
   public void setAccessibilityMsg()
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      int k = 0;
-      while (k < this.jdField_a_of_type_Int)
+      int i1 = 0;
+      while (i1 < this.c)
       {
-        View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
+        View localView = this.b.getChildAt(i1);
         if (localView != null)
         {
           Object localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfJavaLangString[k]);
-          ((StringBuilder)localObject).append(HardCodeUtil.a(2131712913));
+          ((StringBuilder)localObject).append(this.f[i1]);
+          ((StringBuilder)localObject).append(HardCodeUtil.a(2131910483));
           String str = ((StringBuilder)localObject).toString();
           localObject = str;
-          if (k == this.jdField_b_of_type_Int)
+          if (i1 == this.d)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append(str);
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131713051));
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131910612));
             localObject = ((StringBuilder)localObject).toString();
           }
           localView.setContentDescription((CharSequence)localObject);
         }
-        k += 1;
+        i1 += 1;
       }
     }
   }
@@ -321,7 +331,7 @@ public class ReadinjoySlidingIndicator
   
   public void setOnIndicatorChangeListener(ReadinjoySlidingIndicator.OnIndicatorChangeListener paramOnIndicatorChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadinjoySlidingIndicator$OnIndicatorChangeListener = paramOnIndicatorChangeListener;
+    this.p = paramOnIndicatorChangeListener;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -336,15 +346,15 @@ public class ReadinjoySlidingIndicator
       if (paramArrayOfInt.length != paramArrayOfString.length) {
         return;
       }
-      this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])paramArrayOfString.clone());
-      this.jdField_b_of_type_ArrayOfInt = ((int[])paramArrayOfInt.clone());
-      c(paramInt);
+      this.f = ((String[])paramArrayOfString.clone());
+      this.g = ((int[])paramArrayOfInt.clone());
+      b(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadinjoySlidingIndicator
  * JD-Core Version:    0.7.0.1
  */

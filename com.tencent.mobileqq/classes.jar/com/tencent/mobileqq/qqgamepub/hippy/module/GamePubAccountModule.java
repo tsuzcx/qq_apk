@@ -282,9 +282,9 @@ public class GamePubAccountModule
     {
       paramPromise = new HippyMap();
       GamePAPreloadHelper.a(System.currentTimeMillis());
-      if (GamePAPreloadHelper.a() != null)
+      if (GamePAPreloadHelper.b() != null)
       {
-        paramPromise.pushString("result", GamePAPreloadHelper.a());
+        paramPromise.pushString("result", GamePAPreloadHelper.b());
         sendEvent("onGameListDataPreload", paramPromise);
         GamePAPreloadHelper.b("2");
       }
@@ -292,7 +292,7 @@ public class GamePubAccountModule
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getGameListDataPreload,vCost：");
-        localStringBuilder.append(System.currentTimeMillis() - GamePAPreloadHelper.b());
+        localStringBuilder.append(System.currentTimeMillis() - GamePAPreloadHelper.d());
         localStringBuilder.append(",hippyMap:");
         localStringBuilder.append(paramPromise);
         QLog.i("feedsPreload_GamePubAccountModule", 2, localStringBuilder.toString());
@@ -364,7 +364,7 @@ public class GamePubAccountModule
     paramPromise = getFragment();
     long l = SystemClock.elapsedRealtime();
     if ((paramPromise instanceof GamePAHippyBaseFragment)) {
-      ((GamePAHippyBaseFragment)paramPromise).c(l);
+      ((GamePAHippyBaseFragment)paramPromise).a(l);
     }
   }
   
@@ -395,7 +395,7 @@ public class GamePubAccountModule
     paramPromise = getFragment();
     long l = SystemClock.elapsedRealtime();
     if ((paramPromise instanceof GamePAHippyBaseFragment)) {
-      ((GamePAHippyBaseFragment)paramPromise).d(l);
+      ((GamePAHippyBaseFragment)paramPromise).b(l);
     }
   }
   
@@ -473,7 +473,7 @@ public class GamePubAccountModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.module.GamePubAccountModule
  * JD-Core Version:    0.7.0.1
  */

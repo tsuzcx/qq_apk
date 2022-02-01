@@ -15,13 +15,13 @@ final class RIJUserLevelDenyCallback$showErrorDialog$1
   public final void a(int paramInt, String paramString)
   {
     if (paramInt == 0) {
-      RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoAccountUserLevelInfo.jumpUrl);
+      RIJJumpUtils.c(this.a, this.b.jumpUrl);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.account.RIJUserLevelDenyCallback.showErrorDialog.1
  * JD-Core Version:    0.7.0.1
  */

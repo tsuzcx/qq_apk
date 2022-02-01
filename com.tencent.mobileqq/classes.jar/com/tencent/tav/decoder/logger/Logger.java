@@ -8,7 +8,7 @@ public class Logger
   
   static
   {
-    com.tencent.tav.coremedia.Logger.a(new Logger.1());
+    com.tencent.tav.coremedia.Logger.setProxy(new Logger.1());
   }
   
   public static void d(String paramString1, String paramString2)
@@ -95,7 +95,7 @@ public class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

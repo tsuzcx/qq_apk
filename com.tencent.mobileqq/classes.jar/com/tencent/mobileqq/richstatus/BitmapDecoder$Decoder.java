@@ -14,15 +14,15 @@ import java.util.HashSet;
 class BitmapDecoder$Decoder
   extends AsyncTask<Void, Bitmap, Bitmap>
 {
-  private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
+  private String d;
   
   public BitmapDecoder$Decoder(BitmapDecoder paramBitmapDecoder, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
   }
   
   private Bitmap a(File paramFile)
@@ -56,28 +56,28 @@ class BitmapDecoder$Decoder
     paramVarArgs = null;
     if (localObject2 != null)
     {
-      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
+      localObject1 = new File((File)localObject2, this.b);
       boolean bool3 = ((File)localObject1).exists();
       boolean bool2 = true;
       boolean bool1 = bool2;
       if (!bool3)
       {
-        if (!TextUtils.isEmpty(this.b))
+        if (!TextUtils.isEmpty(this.c))
         {
-          localObject2 = a(new File((File)localObject2, this.b));
+          localObject2 = a(new File((File)localObject2, this.c));
           if (localObject2 != null) {
             publishProgress(new Bitmap[] { localObject2 });
           }
         }
         bool1 = bool2;
-        if (this.c != null)
+        if (this.d != null)
         {
-          if ((BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) > 3L) && (Math.abs(SystemClock.uptimeMillis() - BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder)) > 60000L)) {
-            BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, 0L);
+          if ((BitmapDecoder.a(this.a) > 3L) && (Math.abs(SystemClock.uptimeMillis() - BitmapDecoder.a(this.a)) > 60000L)) {
+            BitmapDecoder.a(this.a, 0L);
           }
           bool1 = bool2;
-          if (BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) < 3L) {
-            bool1 = BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, this.c, (File)localObject1);
+          if (BitmapDecoder.a(this.a) < 3L) {
+            bool1 = BitmapDecoder.a(this.a, this.d, (File)localObject1);
           }
         }
       }
@@ -86,18 +86,18 @@ class BitmapDecoder$Decoder
       }
       if ((bool1) && (paramVarArgs != null))
       {
-        BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, 0L);
+        BitmapDecoder.a(this.a, 0L);
         localObject1 = paramVarArgs;
       }
       else
       {
         localObject1 = paramVarArgs;
-        if (!TextUtils.isEmpty(this.c))
+        if (!TextUtils.isEmpty(this.d))
         {
           localObject1 = paramVarArgs;
-          if (BitmapDecoder.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) == 3L)
+          if (BitmapDecoder.b(this.a) == 3L)
           {
-            BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, SystemClock.uptimeMillis());
+            BitmapDecoder.a(this.a, SystemClock.uptimeMillis());
             localObject1 = paramVarArgs;
           }
         }
@@ -109,7 +109,7 @@ class BitmapDecoder$Decoder
       paramVarArgs.append("decodeBitmap finish with ");
       paramVarArgs.append(localObject1);
       paramVarArgs.append(", ");
-      paramVarArgs.append(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
+      paramVarArgs.append(BitmapDecoder.a(this.a));
       QLog.d("Q.richstatus.img", 2, paramVarArgs.toString());
     }
     return localObject1;
@@ -121,13 +121,13 @@ class BitmapDecoder$Decoder
     {
       MQLruCache localMQLruCache = GlobalImageCache.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(BitmapDecoder.c(this.a));
+      localStringBuilder.append(this.b);
       localMQLruCache.put(localStringBuilder.toString(), paramBitmap, (byte)0);
     }
-    BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder).remove(this.jdField_a_of_type_JavaLangString);
-    if (BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) != null) {
-      BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
+    BitmapDecoder.e(this.a).remove(this.b);
+    if (BitmapDecoder.d(this.a) != null) {
+      BitmapDecoder.d(this.a).a(this.b, this.d, paramBitmap, 1);
     }
   }
   
@@ -136,17 +136,17 @@ class BitmapDecoder$Decoder
     paramVarArgs = paramVarArgs[0];
     MQLruCache localMQLruCache = GlobalImageCache.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(BitmapDecoder.c(this.a));
+    localStringBuilder.append(this.c);
     localMQLruCache.put(localStringBuilder.toString(), paramVarArgs, (byte)0);
-    if (BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) != null) {
-      BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
+    if (BitmapDecoder.d(this.a) != null) {
+      BitmapDecoder.d(this.a).a(this.b, this.d, paramVarArgs, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.BitmapDecoder.Decoder
  * JD-Core Version:    0.7.0.1
  */

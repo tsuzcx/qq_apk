@@ -19,15 +19,15 @@ class LocalCrashCollector$3$1
   {
     try
     {
-      if (LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0) > 0) {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1) {
-          LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).a().getFileManagerEngine().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      if (LocalCrashCollector.b(this.b.this$0) > 0) {
+        if (this.a.a == 1) {
+          LocalCrashCollector.a(this.b.this$0).a().getFileManagerEngine().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.a.b);
         } else {
-          LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).a().getFileManagerEngine().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, true);
+          LocalCrashCollector.a(this.b.this$0).a().getFileManagerEngine().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.a.c, this.a.b, this.a.a, true);
         }
       }
-      LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).a().a().a().a("");
-      LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).delete(0, LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).length());
+      LocalCrashCollector.a(this.b.this$0).p().d().f().a("");
+      LocalCrashCollector.c(this.b.this$0).delete(0, LocalCrashCollector.c(this.b.this$0).length());
       paramDialogInterface.dismiss();
       return;
     }
@@ -39,7 +39,7 @@ class LocalCrashCollector$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector.3.1
  * JD-Core Version:    0.7.0.1
  */

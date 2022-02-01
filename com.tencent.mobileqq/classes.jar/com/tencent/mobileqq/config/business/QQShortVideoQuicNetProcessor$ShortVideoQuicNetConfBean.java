@@ -10,15 +10,7 @@ import org.json.JSONObject;
 
 public class QQShortVideoQuicNetProcessor$ShortVideoQuicNetConfBean
 {
-  public int a;
-  public String a;
-  public String b = "";
-  
-  public QQShortVideoQuicNetProcessor$ShortVideoQuicNetConfBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int a = 0;
   
   public static ShortVideoQuicNetConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -36,21 +28,15 @@ public class QQShortVideoQuicNetProcessor$ShortVideoQuicNetConfBean
       StringBuilder localStringBuilder;
       QLog.d("QQShortVideoQuicNetProcessor", 2, "parse S$EConfBean failed!", paramArrayOfQConfItem);
     }
-    Object localObject = ((QConfItem)localObject).jdField_a_of_type_JavaLangString;
+    Object localObject = ((QConfItem)localObject).b;
     bool = TextUtils.isEmpty((CharSequence)localObject);
     if (!bool)
     {
       try
       {
         JSONObject localJSONObject = new JSONObject((String)localObject);
-        if (localJSONObject.has("quic_url")) {
-          localShortVideoQuicNetConfBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("quic_url");
-        }
-        if (localJSONObject.has("quic_md5")) {
-          localShortVideoQuicNetConfBean.b = localJSONObject.optString("quic_md5");
-        }
         if (localJSONObject.has("quic_open")) {
-          localShortVideoQuicNetConfBean.jdField_a_of_type_Int = localJSONObject.optInt("quic_open");
+          localShortVideoQuicNetConfBean.a = localJSONObject.optInt("quic_open");
         }
       }
       catch (JSONException localJSONException)
@@ -80,27 +66,21 @@ public class QQShortVideoQuicNetProcessor$ShortVideoQuicNetConfBean
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 1) && (Build.VERSION.SDK_INT >= 21) && (!Utils.checkIfCPUx86());
+    return (this.a == 1) && (Build.VERSION.SDK_INT >= 21) && (!Utils.checkIfCPUx86());
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ShortVideoQuicNetConfBean{mQuicUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mQuicMD5='");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mQuicOpen=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("ShortVideoQuicNetConfBean{mQuicOpen=");
+    localStringBuilder.append(this.a);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean
  * JD-Core Version:    0.7.0.1
  */

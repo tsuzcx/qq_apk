@@ -16,20 +16,20 @@ public final class SensorBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "sensor";
-  }
-  
   public void a()
   {
     a("getLocation", (Function2)new SensorBridgeInvokeHandler.register.1(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "sensor";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.SensorBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

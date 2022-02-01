@@ -7,8 +7,8 @@ import android.os.Message;
 class g$b
   extends Handler
 {
-  private g a;
-  private g.a b;
+  private final g a;
+  private final g.a b;
   
   public g$b(g paramg)
   {
@@ -29,12 +29,12 @@ class g$b
       return;
     }
     this.b.handle("onPressIn", -1.0F, -1.0F);
-    g.a(this.a, true);
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.g.b
  * JD-Core Version:    0.7.0.1
  */

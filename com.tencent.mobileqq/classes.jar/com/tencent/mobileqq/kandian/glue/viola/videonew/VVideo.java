@@ -6,9 +6,12 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
 import com.tencent.mobileqq.kandian.biz.viola.video.VVideoInit;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmediacodec.TCodecManager;
 import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.annotation.VComponentProp;
@@ -30,6 +33,7 @@ public class VVideo
   extends VComponentContainer<VVideoView>
 {
   public static String TAG = "VVideo";
+  private boolean mActivityIsLive = false;
   private String mCurrentVid;
   private String mCurrentVideoUrl;
   private Boolean mIsForNV = Boolean.valueOf(false);
@@ -59,7 +63,7 @@ public class VVideo
     if (localObject != null)
     {
       bool1 = bool2;
-      if (getVideoViewControlListener().a())
+      if (getVideoViewControlListener().g())
       {
         localObject = (VVideoView)getHostView();
         bool1 = true;
@@ -117,7 +121,7 @@ public class VVideo
     {
       if (getVideoViewControlListener() != null)
       {
-        getVideoViewControlListener().g();
+        getVideoViewControlListener().h();
         getVideoViewControlListener().f();
       }
     }
@@ -137,7 +141,7 @@ public class VVideo
       QLog.d(str, 2, localStringBuilder.toString());
     }
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().g();
+      getVideoViewControlListener().h();
     }
   }
   
@@ -145,7 +149,7 @@ public class VVideo
   public void detachVideoPlayerFromSeamless()
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().g();
+      getVideoViewControlListener().h();
     }
   }
   
@@ -201,8 +205,8 @@ public class VVideo
   
   public VVideoView.OnVideoViewControlListener getVideoViewControlListener()
   {
-    if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
-      return ((VVideoView)getHostView()).a();
+    if ((getHostView() != null) && (((VVideoView)getHostView()).getVideoViewControlListener() != null)) {
+      return ((VVideoView)getHostView()).getVideoViewControlListener();
     }
     return null;
   }
@@ -211,8 +215,10 @@ public class VVideo
   {
     VVideoView localVVideoView = new VVideoView(paramContext, this);
     localVVideoView.a(this);
+    boolean bool1 = getDomObject().getAttributes().containsKey("playerType");
+    boolean bool2 = false;
     int i;
-    if (getDomObject().getAttributes().containsKey("playerType")) {
+    if (bool1) {
       i = ((Integer)getDomObject().getAttributes().get("playerType")).intValue();
     } else {
       i = 0;
@@ -227,9 +233,7 @@ public class VVideo
     if (getDomObject().getAttributes().containsKey("videoToken")) {
       paramContext = (String)getDomObject().getAttributes().get("videoToken");
     }
-    boolean bool2 = true;
     Object localObject1 = Boolean.valueOf(true);
-    boolean bool1;
     if (getDomObject().getAttributes().containsKey("autoAttachVideoView"))
     {
       if (((Integer)getDomObject().getAttributes().get("autoAttachVideoView")).intValue() == 1) {
@@ -242,14 +246,14 @@ public class VVideo
     Object localObject2 = Boolean.valueOf(false);
     if (getDomObject().getAttributes().containsKey("handAttachVideoView"))
     {
+      bool1 = bool2;
       if (((Integer)getDomObject().getAttributes().get("handAttachVideoView")).intValue() == 1) {
-        bool1 = bool2;
-      } else {
-        bool1 = false;
+        bool1 = true;
       }
       localObject2 = Boolean.valueOf(bool1);
     }
-    localVVideoView.a(i, j, paramContext, ((Boolean)localObject1).booleanValue(), ((Boolean)localObject2).booleanValue());
+    bool1 = Integer.valueOf(1).equals(getDomObject().getAttributes().get("usePlayerPool"));
+    localVVideoView.a(i, j, paramContext, ((Boolean)localObject1).booleanValue(), ((Boolean)localObject2).booleanValue(), bool1);
     try
     {
       if (getDomObject().getAttributes() != null)
@@ -301,7 +305,7 @@ public class VVideo
             ((JSONObject)localObject1).put((String)localObject3, ((Map.Entry)localObject2).getValue());
           }
         }
-        localVVideoView.a().a(localVVideoView, (JSONObject)localObject1);
+        localVVideoView.getVideoViewControlListener().a(localVVideoView, (JSONObject)localObject1);
         return localVVideoView;
       }
     }
@@ -360,7 +364,7 @@ public class VVideo
   public void nativeVueFailed()
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().j();
+      getVideoViewControlListener().k();
     }
   }
   
@@ -382,12 +386,21 @@ public class VVideo
     super.destroy();
     if (QLog.isColorLevel())
     {
-      String str = TAG;
+      localObject = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("video onActivityDestroy:");
       localStringBuilder.append(this.mCurrentVid);
-      QLog.d(str, 2, localStringBuilder.toString());
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
+    Object localObject = Aladdin.getConfig(490);
+    int i = 1;
+    if (((AladdinConfig)localObject).getIntegerFromString("releaseKeepPool", 1) != 1) {
+      i = 0;
+    }
+    if ((this.mActivityIsLive) && (i != 0)) {
+      TCodecManager.getInstance().clearAndReleaseKeepPool();
+    }
+    this.mActivityIsLive = false;
     if (getVideoViewControlListener() != null) {
       getVideoViewControlListener().f();
     }
@@ -513,7 +526,7 @@ public class VVideo
   {
     if ((getHostView() != null) && (getInstance() != null) && (getInstance().getActivity() != null))
     {
-      VideoFeedsHelper.a(getInstance().getActivity(), paramInt1, paramInt2);
+      VideoFeedsHelper.b(getInstance().getActivity(), paramInt1, paramInt2);
       View localView = getHostView();
       while ((localView != null) && (localView.getScaleY() == 1.0F) && (localView.getScaleX() == 1.0F))
       {
@@ -542,11 +555,11 @@ public class VVideo
           ((FrameLayout.LayoutParams)localView.getLayoutParams()).gravity = 17;
         }
         localView.setLayoutParams(localView.getLayoutParams());
-        paramInt1 = VideoFeedsHelper.a(getInstance().getActivity(), paramInt1, paramInt2);
+        paramInt1 = VideoFeedsHelper.c(getInstance().getActivity(), paramInt1, paramInt2);
         if (paramInt1 == 2)
         {
           getVideoViewControlListener().a((VVideoView)getHostView(), "cover");
-          localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), VideoFeedsHelper.a(getInstance().getActivity()));
+          localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), VideoFeedsHelper.d(getInstance().getActivity()));
           return;
         }
         if (paramInt1 == 0) {
@@ -597,7 +610,7 @@ public class VVideo
   public void seamlessStart()
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().h();
+      getVideoViewControlListener().i();
     }
   }
   
@@ -653,7 +666,7 @@ public class VVideo
   public void setEndWithLastFrame(boolean paramBoolean)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().g_(paramBoolean);
+      getVideoViewControlListener().l_(paramBoolean);
     }
   }
   
@@ -664,7 +677,7 @@ public class VVideo
       super.setHostLayoutParams(paramVVideoView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
       return;
     }
-    if ((((VVideoView)getHostView()).a() == 1) || (((VVideoView)getHostView()).a() == 9)) {
+    if ((((VVideoView)getHostView()).getScreenOrientation() == 1) || (((VVideoView)getHostView()).getScreenOrientation() == 9)) {
       super.setHostLayoutParams(paramVVideoView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
     }
   }
@@ -679,7 +692,7 @@ public class VVideo
   public void setLoopBack(boolean paramBoolean)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().f_(paramBoolean);
+      getVideoViewControlListener().k_(paramBoolean);
     }
   }
   
@@ -727,7 +740,7 @@ public class VVideo
   public void setstartPosition(int paramInt)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().l_(paramInt);
+      getVideoViewControlListener().r_(paramInt);
     }
   }
   
@@ -770,7 +783,7 @@ public class VVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VVideo
  * JD-Core Version:    0.7.0.1
  */

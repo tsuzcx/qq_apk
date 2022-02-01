@@ -11,6 +11,10 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_ADD_CARD_TO_EX_CARD_PACKAGE = 9;
   public static final int COMMAND_CHOOSE_CARD_FROM_EX_CARD_PACKAGE = 16;
   public static final int COMMAND_CREATE_CHATROOM = 14;
+  public static final int COMMAND_FINDER_OPEN_FEED = 36;
+  public static final int COMMAND_FINDER_OPEN_LIVE = 35;
+  public static final int COMMAND_FINDER_OPEN_PROFILE = 34;
+  public static final int COMMAND_FINDER_SHARE_VIDEO = 33;
   public static final int COMMAND_GETMESSAGE_FROM_WX = 3;
   public static final int COMMAND_HANDLE_SCAN_RESULT = 17;
   public static final int COMMAND_INVOICE_AUTH_INSERT = 20;
@@ -23,6 +27,8 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_LAUNCH_BY_WX = 6;
   public static final int COMMAND_LAUNCH_WX_MINIPROGRAM = 19;
   public static final int COMMAND_LAUNCH_WX_MINIPROGRAM_WITH_TOKEN = 29;
+  public static final int COMMAND_LAUNCH_WX_SEND_TDI_AUTH = 31;
+  public static final int COMMAND_LAUNCH_WX_WXA_REDIRECTING_PAGE = 30;
   public static final int COMMAND_NON_TAX_PAY = 21;
   public static final int COMMAND_OPEN_BUSINESS_VIEW = 26;
   public static final int COMMAND_OPEN_BUSINESS_WEBVIEW = 25;
@@ -32,6 +38,7 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_PAY_BY_WX = 5;
   public static final int COMMAND_PAY_INSURANCE = 22;
   public static final int COMMAND_PRELOAD_MINI_PROGRAM = 28;
+  public static final int COMMAND_PRELOAD_MINI_PROGRAM_ENVIRONMENT = 32;
   public static final int COMMAND_SENDAUTH = 1;
   public static final int COMMAND_SENDMESSAGE_TO_WX = 2;
   public static final int COMMAND_SHOWMESSAGE_FROM_WX = 4;
@@ -44,7 +51,7 @@ public abstract interface ConstantsAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.constants.ConstantsAPI
  * JD-Core Version:    0.7.0.1
  */

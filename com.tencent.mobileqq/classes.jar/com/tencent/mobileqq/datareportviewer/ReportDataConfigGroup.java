@@ -9,20 +9,20 @@ import org.json.JSONObject;
 public class ReportDataConfigGroup
   extends BaseReportDataConfig
 {
-  public ArrayList<ReportDataConfig> a;
+  public ArrayList<ReportDataConfig> c;
   
   public static ReportDataConfigGroup a(JSONObject paramJSONObject)
   {
     ReportDataConfigGroup localReportDataConfigGroup = new ReportDataConfigGroup();
-    localReportDataConfigGroup.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
+    localReportDataConfigGroup.a = paramJSONObject.optString("group");
     paramJSONObject = paramJSONObject.optJSONArray("configs");
-    localReportDataConfigGroup.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
+    localReportDataConfigGroup.c = new ArrayList(paramJSONObject.length());
     int i = 0;
     while (i < paramJSONObject.length())
     {
       ReportDataConfig localReportDataConfig = ReportDataConfig.a(paramJSONObject.optJSONObject(i));
-      localReportDataConfig.a = localReportDataConfigGroup;
-      localReportDataConfigGroup.jdField_a_of_type_JavaUtilArrayList.add(localReportDataConfig);
+      localReportDataConfig.d = localReportDataConfigGroup;
+      localReportDataConfigGroup.c.add(localReportDataConfig);
       i += 1;
     }
     return localReportDataConfigGroup;
@@ -33,10 +33,10 @@ public class ReportDataConfigGroup
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("group", this.a);
+      localJSONObject.put("isChecked", this.b);
       JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
         localJSONArray.put(((ReportDataConfig)localIterator.next()).a());
       }
@@ -50,14 +50,14 @@ public class ReportDataConfigGroup
     return localJSONObject;
   }
   
-  public boolean a()
+  public boolean b()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.ReportDataConfigGroup
  * JD-Core Version:    0.7.0.1
  */

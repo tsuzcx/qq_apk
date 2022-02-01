@@ -28,8 +28,8 @@ public class SubscribeJsPlugin
   extends WebViewPlugin
   implements FaceObserver
 {
-  private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  private INonMainProcAvatarLoader jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+  private INonMainProcAvatarLoader a;
+  private TroopMemberApiClient b;
   
   private void a(String paramString)
   {
@@ -37,12 +37,12 @@ public class SubscribeJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("code", paramString.optString("code"));
     localBundle.putString("location", paramString.optString("location"));
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+      this.b = TroopMemberApiClient.a();
+      this.b.e();
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.d(localBundle);
+    this.b.d(localBundle);
   }
   
   private void a(String paramString, Bitmap paramBitmap)
@@ -58,13 +58,13 @@ public class SubscribeJsPlugin
         return;
       }
       paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]);
-      QLog.d(this.TAG, 2, paramString.toString());
-      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+      QLog.d(this.mTAG, 2, paramString.toString());
+      if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof SubscribeHybirdFragment)))
       {
-        ((SubscribeHybirdFragment)this.mRuntime.a()).a(SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+        ((SubscribeHybirdFragment)this.mRuntime.f()).a(SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
         return;
       }
-      if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
+      if ((this.mRuntime != null) && (this.mRuntime.d() != null)) {
         SubscribeLaucher.a(null, SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
       }
     }
@@ -74,16 +74,16 @@ public class SubscribeJsPlugin
         return;
       }
       paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]);
-      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+      if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof SubscribeHybirdFragment)))
       {
-        QLog.d(this.TAG, 2, paramString.toString());
-        ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
+        QLog.d(this.mTAG, 2, paramString.toString());
+        ((SubscribeHybirdFragment)this.mRuntime.f()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
       }
     }
     else if ("reloadmainpage".equals(paramString))
     {
-      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
-        ((SubscribeHybirdFragment)this.mRuntime.a()).a();
+      if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.f()).a();
       }
     }
     else if ("openpublishpage".equals(paramString))
@@ -91,11 +91,11 @@ public class SubscribeJsPlugin
       if (!a(paramArrayOfString)) {
         return;
       }
-      if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+      if ((this.mRuntime != null) && (this.mRuntime.f() != null))
       {
         paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]).optString("puin");
         new Intent().putExtra("postUin", paramString);
-        QZoneHelper.forwardToQQPublicAccountPublishPage(this.mRuntime.a().getHostActivity(), null, 0);
+        QZoneHelper.forwardToQQPublicAccountPublishPage(this.mRuntime.f().getHostActivity(), null, 0);
       }
     }
     else
@@ -126,8 +126,8 @@ public class SubscribeJsPlugin
       }
       if ("refreshreturnpage".equals(paramString))
       {
-        if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
-          ((SubscribeHybirdFragment)this.mRuntime.a()).b();
+        if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof SubscribeHybirdFragment))) {
+          ((SubscribeHybirdFragment)this.mRuntime.f()).b();
         }
       }
       else
@@ -156,7 +156,7 @@ public class SubscribeJsPlugin
     if ((paramArrayOfString != null) && (paramArrayOfString.length >= 1)) {
       return true;
     }
-    QLog.e(this.TAG, 2, "args is null");
+    QLog.e(this.mTAG, 2, "args is null");
     return false;
   }
   
@@ -175,32 +175,32 @@ public class SubscribeJsPlugin
         }
         i += 1;
       }
-      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
-        ((SubscribeHybirdFragment)this.mRuntime.a()).a(localArrayList);
+      if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.f()).a(localArrayList);
       }
     }
   }
   
   private void c(String paramString)
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.f() != null))
     {
-      if (this.mRuntime.a().getHostActivity() == null) {
+      if (this.mRuntime.f().getHostActivity() == null) {
         return;
       }
       Object localObject = new SubscribeJsPlugin.SafeJsonObject(this, paramString);
       paramString = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("uin");
       String str = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("nick");
       localObject = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("callback");
-      SubscribeFollowUserUtil.a(this.mRuntime.a().getHostActivity(), paramString, str, new SubscribeJsPlugin.1(this, (String)localObject, str));
+      SubscribeFollowUserUtil.a(this.mRuntime.f().getHostActivity(), paramString, str, new SubscribeJsPlugin.1(this, (String)localObject, str));
     }
   }
   
   private void d(String paramString)
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.f() != null))
     {
-      if (this.mRuntime.a().getHostActivity() == null) {
+      if (this.mRuntime.f().getHostActivity() == null) {
         return;
       }
       Object localObject = new SubscribeJsPlugin.SafeJsonObject(this, paramString);
@@ -211,12 +211,12 @@ public class SubscribeJsPlugin
       } else {
         i = 1;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+      localObject = this.a;
       if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.mRuntime.a(), i);
-        this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-        this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(this);
+        this.a = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.mRuntime.d(), i);
+        this.a.a();
+        this.a.a(this);
       }
       else
       {
@@ -231,7 +231,7 @@ public class SubscribeJsPlugin
     a(paramString1, paramBitmap);
     if (QLog.isColorLevel())
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleGetAvatar onFaceUpdate uin: ");
       localStringBuilder.append(paramString1);
@@ -247,7 +247,7 @@ public class SubscribeJsPlugin
   {
     if ("qsubscribe".equals(paramString2))
     {
-      paramJsBridgeListener = this.TAG;
+      paramJsBridgeListener = this.mTAG;
       paramString2 = new StringBuilder();
       paramString2.append("handleJsRequest:");
       paramString2.append(paramString1);
@@ -258,7 +258,7 @@ public class SubscribeJsPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
+        QLog.d(this.mTAG, 2, paramJsBridgeListener, new Object[0]);
       }
       return true;
     }
@@ -268,17 +268,17 @@ public class SubscribeJsPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      ((TroopMemberApiClient)localObject).b();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
+      ((TroopMemberApiClient)localObject).f();
+      this.b = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+    localObject = this.a;
     if (localObject != null)
     {
-      ((INonMainProcAvatarLoader)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = null;
+      ((INonMainProcAvatarLoader)localObject).c();
+      this.a = null;
     }
   }
 }

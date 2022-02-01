@@ -28,13 +28,7 @@ public abstract class EmoticonPreviewData
   
   public abstract int a(List<EmoticonPreviewData> paramList);
   
-  public abstract long a();
-  
   public abstract Drawable a(Context paramContext);
-  
-  public abstract CustomEmotionData a();
-  
-  public abstract EmoticonInfo a();
   
   public void a(Bundle paramBundle, int paramInt)
   {
@@ -45,15 +39,21 @@ public abstract class EmoticonPreviewData
   
   public abstract boolean a(EmoticonPreviewData paramEmoticonPreviewData);
   
-  public abstract boolean b();
+  public abstract long b();
   
-  public abstract boolean c();
+  public abstract EmoticonInfo c();
   
-  public abstract boolean d();
+  public abstract CustomEmotionData d();
+  
+  public abstract boolean e();
+  
+  public abstract boolean f();
+  
+  public abstract boolean g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmoticonPreviewData
  * JD-Core Version:    0.7.0.1
  */

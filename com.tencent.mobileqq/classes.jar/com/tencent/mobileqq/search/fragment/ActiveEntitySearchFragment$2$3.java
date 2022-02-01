@@ -12,13 +12,13 @@ class ActiveEntitySearchFragment$2$3
   public void onClick(View paramView)
   {
     this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
+    this.a.a.w.setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment.2.3
  * JD-Core Version:    0.7.0.1
  */

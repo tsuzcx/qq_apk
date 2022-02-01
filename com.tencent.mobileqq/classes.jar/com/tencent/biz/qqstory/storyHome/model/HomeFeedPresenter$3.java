@@ -20,7 +20,7 @@ class HomeFeedPresenter$3
       if ((localObject instanceof VideoListHomeFeed))
       {
         localObject = (VideoListHomeFeed)localObject;
-        FeedVideoInfo localFeedVideoInfo = ((VideoListHomeFeed)localObject).a().getVideoInfo();
+        FeedVideoInfo localFeedVideoInfo = ((VideoListHomeFeed)localObject).i().getVideoInfo();
         localFeedVideoInfo.mVideoItemList.addAll(((VideoListHomeFeed)localObject).a());
         localFeedVideoManager.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
       }

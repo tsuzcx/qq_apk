@@ -16,6 +16,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import androidx.core.content.ContextCompat;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class TPSystemInfo
   public static final int CPU_HW_QUALCOMM = 0;
   public static final int CPU_HW_SUMSUNG = 3;
   private static int cpuArch = -1;
-  private static final String[][] cpuPerfList = { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro", "MSM8998", "SDM845", "SM8150", "SM8250", "SM8350" }, { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" }, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960", "Kirin970", "Kirin980", "Kirin990" }, { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" } };
+  private static final String[][] cpuPerfList;
   private static long currentCpuFreq = 0L;
   private static String deviceID;
   private static String deviceIMEI;
@@ -58,11 +60,14 @@ public class TPSystemInfo
   private static String mProcessorName = "N/A";
   public static int mScreenHeight;
   public static int mScreenWidth;
-  private static long maxCpuFreq = -1L;
+  private static long maxCpuFreq;
   private static int numOfCores;
   
   static
   {
+    String[] arrayOfString = { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" };
+    cpuPerfList = new String[][] { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro", "MSM8998", "SDM845", "SM8150", "SM8250", "SM8350" }, arrayOfString, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960", "Kirin970", "Kirin980", "Kirin990" }, { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" } };
+    maxCpuFreq = -1L;
     currentCpuFreq = -1L;
     numOfCores = -1;
   }
@@ -946,7 +951,7 @@ public class TPSystemInfo
       if (paramContext == null) {
         break label89;
       }
-      deviceIMEI = paramContext.getDeviceId();
+      deviceIMEI = PhoneInfoMonitor.getDeviceId(paramContext);
       if (TextUtils.isEmpty(deviceIMEI)) {
         deviceIMEI = "NONE";
       }
@@ -981,7 +986,7 @@ public class TPSystemInfo
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (paramContext != null)
       {
-        deviceIMSI = paramContext.getSubscriberId();
+        deviceIMSI = PhoneInfoMonitor.getSubscriberId(paramContext);
         if (deviceIMSI == null) {
           deviceIMSI = "";
         }
@@ -1022,7 +1027,7 @@ public class TPSystemInfo
       if (paramContext == null) {
         return "";
       }
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
       if (paramContext != null)
       {
         paramContext = paramContext.getMacAddress();
@@ -1060,7 +1065,7 @@ public class TPSystemInfo
     //   28: dup
     //   29: new 523	java/io/FileInputStream
     //   32: dup
-    //   33: ldc_w 638
+    //   33: ldc_w 643
     //   36: invokespecial 528	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   39: ldc_w 530
     //   42: invokespecial 533	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
@@ -1193,12 +1198,12 @@ public class TPSystemInfo
     //   309: invokespecial 358	java/lang/StringBuilder:<init>	()V
     //   312: astore 6
     //   314: aload 6
-    //   316: ldc_w 640
+    //   316: ldc_w 645
     //   319: invokevirtual 375	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload 6
     //   325: getstatic 319	com/tencent/thumbplayer/core/common/TPSystemInfo:maxCpuFreq	J
-    //   328: invokevirtual 643	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   328: invokevirtual 648	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: iconst_2
     //   333: aload 6
@@ -1600,24 +1605,24 @@ public class TPSystemInfo
     //   9: astore_3
     //   10: new 535	java/io/BufferedReader
     //   13: dup
-    //   14: new 816	java/io/FileReader
+    //   14: new 821	java/io/FileReader
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 819	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 824	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   22: invokespecial 538	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   25: astore_1
     //   26: aload_1
     //   27: astore_2
     //   28: aload_0
-    //   29: invokevirtual 821	java/io/File:length	()J
-    //   32: ldc2_w 822
+    //   29: invokevirtual 826	java/io/File:length	()J
+    //   32: ldc2_w 827
     //   35: lcmp
     //   36: ifle +6 -> 42
     //   39: goto +43 -> 82
     //   42: aload_1
     //   43: astore_2
     //   44: aload_0
-    //   45: invokevirtual 821	java/io/File:length	()J
+    //   45: invokevirtual 826	java/io/File:length	()J
     //   48: l2i
     //   49: newarray char
     //   51: astore 5
@@ -1627,16 +1632,16 @@ public class TPSystemInfo
     //   56: aload 5
     //   58: iconst_0
     //   59: aload_0
-    //   60: invokevirtual 821	java/io/File:length	()J
+    //   60: invokevirtual 826	java/io/File:length	()J
     //   63: l2i
-    //   64: invokevirtual 827	java/io/BufferedReader:read	([CII)I
+    //   64: invokevirtual 832	java/io/BufferedReader:read	([CII)I
     //   67: ifle +15 -> 82
     //   70: aload_1
     //   71: astore_2
-    //   72: new 67	java/lang/String
+    //   72: new 65	java/lang/String
     //   75: dup
     //   76: aload 5
-    //   78: invokespecial 830	java/lang/String:<init>	([C)V
+    //   78: invokespecial 835	java/lang/String:<init>	([C)V
     //   81: astore_3
     //   82: aload_3
     //   83: astore_0
@@ -1646,7 +1651,7 @@ public class TPSystemInfo
     //   89: areturn
     //   90: astore_1
     //   91: aload_1
-    //   92: invokevirtual 721	java/lang/Throwable:printStackTrace	()V
+    //   92: invokevirtual 726	java/lang/Throwable:printStackTrace	()V
     //   95: aload_0
     //   96: areturn
     //   97: astore_0
@@ -1663,7 +1668,7 @@ public class TPSystemInfo
     //   114: aload_1
     //   115: astore_2
     //   116: aload_0
-    //   117: invokevirtual 721	java/lang/Throwable:printStackTrace	()V
+    //   117: invokevirtual 726	java/lang/Throwable:printStackTrace	()V
     //   120: aload_1
     //   121: ifnull +10 -> 131
     //   124: aload 4
@@ -1686,7 +1691,7 @@ public class TPSystemInfo
     //   151: goto +8 -> 159
     //   154: astore_1
     //   155: aload_1
-    //   156: invokevirtual 721	java/lang/Throwable:printStackTrace	()V
+    //   156: invokevirtual 726	java/lang/Throwable:printStackTrace	()V
     //   159: aload_0
     //   160: athrow
     // Local variable table:
@@ -1732,21 +1737,21 @@ public class TPSystemInfo
     //   1: astore_2
     //   2: aconst_null
     //   3: astore_3
-    //   4: new 833	java/io/RandomAccessFile
+    //   4: new 838	java/io/RandomAccessFile
     //   7: dup
-    //   8: ldc_w 835
-    //   11: ldc_w 837
-    //   14: invokespecial 840	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   8: ldc_w 840
+    //   11: ldc_w 842
+    //   14: invokespecial 845	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: astore_1
     //   18: aload_1
     //   19: astore_0
     //   20: aload_1
-    //   21: invokevirtual 841	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
+    //   21: invokevirtual 846	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   24: astore_2
     //   25: aload_2
     //   26: astore_0
     //   27: aload_1
-    //   28: invokevirtual 842	java/io/RandomAccessFile:close	()V
+    //   28: invokevirtual 847	java/io/RandomAccessFile:close	()V
     //   31: aload_2
     //   32: areturn
     //   33: astore_1
@@ -1766,13 +1771,13 @@ public class TPSystemInfo
     //   55: aload_1
     //   56: astore_0
     //   57: aload_2
-    //   58: invokevirtual 721	java/lang/Throwable:printStackTrace	()V
+    //   58: invokevirtual 726	java/lang/Throwable:printStackTrace	()V
     //   61: aload_1
     //   62: ifnull +9 -> 71
     //   65: aload_3
     //   66: astore_0
     //   67: aload_1
-    //   68: invokevirtual 842	java/io/RandomAccessFile:close	()V
+    //   68: invokevirtual 847	java/io/RandomAccessFile:close	()V
     //   71: aconst_null
     //   72: areturn
     //   73: astore_1
@@ -1783,7 +1788,7 @@ public class TPSystemInfo
     //   78: aload_2
     //   79: ifnull +19 -> 98
     //   82: aload_2
-    //   83: invokevirtual 842	java/io/RandomAccessFile:close	()V
+    //   83: invokevirtual 847	java/io/RandomAccessFile:close	()V
     //   86: goto +12 -> 98
     //   89: astore_1
     //   90: iconst_4
@@ -1899,7 +1904,7 @@ public class TPSystemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPSystemInfo
  * JD-Core Version:    0.7.0.1
  */

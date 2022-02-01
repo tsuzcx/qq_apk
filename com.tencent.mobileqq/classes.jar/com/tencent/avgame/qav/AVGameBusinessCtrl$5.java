@@ -12,9 +12,9 @@ class AVGameBusinessCtrl$5
   
   public void run()
   {
-    synchronized (AVGameBusinessCtrl.a(this.this$0))
+    synchronized (AVGameBusinessCtrl.g(this.this$0))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.this$0).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.this$0).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();

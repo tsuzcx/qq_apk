@@ -25,7 +25,7 @@ public final class cmd0x7c4$GetRecommendSNFrdListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7c4.cmd0x7c4.GetRecommendSNFrdListRsp
  * JD-Core Version:    0.7.0.1
  */

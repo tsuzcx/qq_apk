@@ -130,8 +130,8 @@ public class QIMCircleProgress
   {
     setLayerType(1, null);
     this.mDensity = getResources().getDisplayMetrics().density;
-    this.mBgColor = getResources().getColor(2131165655);
-    this.mProgressColor = getResources().getColor(2131166325);
+    this.mBgColor = getResources().getColor(2131166114);
+    this.mProgressColor = getResources().getColor(2131167113);
     this.mBgAlpha = 51;
     this.mProgressAlpha = 100;
     this.mPaint = new Paint();
@@ -141,7 +141,7 @@ public class QIMCircleProgress
     this.mBlinkPaint = new Paint();
     this.mBlinkPaint.setAntiAlias(true);
     this.mBlinkPaint.setStyle(Paint.Style.STROKE);
-    this.mBlinkPaint.setColor(getResources().getColor(2131167394));
+    this.mBlinkPaint.setColor(getResources().getColor(2131168464));
     this.mPaintOrangeFill = new Paint();
     this.mPaintOrangeFill.setAntiAlias(true);
     this.mPaintOrangeFill.setStyle(Paint.Style.FILL);
@@ -224,7 +224,7 @@ public class QIMCircleProgress
           ((Paint)localObject).setStrokeWidth((int)(d1 * (1.0D - d2 * 0.38D)));
           this.mBlinkPaint.setAlpha((int)(this.mBlinkAlpha * 255.0F));
           if (Build.VERSION.SDK_INT >= 21) {
-            this.mBlinkPaint.setShadowLayer(this.mMaxBlinkShadowRadius * this.mBlinkAlpha, 0.0F, 0.0F, getResources().getColor(2131167394));
+            this.mBlinkPaint.setShadowLayer(this.mMaxBlinkShadowRadius * this.mBlinkAlpha, 0.0F, 0.0F, getResources().getColor(2131168464));
           }
           paramCanvas.drawArc(this.oval, f3, f1, false, this.mPaint);
           paramCanvas.drawArc(this.oval, f3, f1, false, this.mBlinkPaint);
@@ -271,8 +271,8 @@ public class QIMCircleProgress
   
   public void setCenterView()
   {
-    this.idleSize = ViewUtils.a(24.0F);
-    this.captureSize = ViewUtils.a(54.0F);
+    this.idleSize = ViewUtils.dip2px(24.0F);
+    this.captureSize = ViewUtils.dip2px(54.0F);
   }
   
   public void setProgress(float paramFloat)
@@ -328,7 +328,7 @@ public class QIMCircleProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.QIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

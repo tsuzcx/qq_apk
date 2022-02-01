@@ -19,39 +19,9 @@ class ReadInJoyBaseDeliverActivity$5
 {
   ReadInJoyBaseDeliverActivity$5(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public View a(int paramInt)
-  {
-    Object localObject;
-    if (paramInt == 3)
-    {
-      if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
-      {
-        localObject = this.a;
-        ReadInJoyBaseDeliverActivity.a((ReadInJoyBaseDeliverActivity)localObject, ((IEmoticonMainPanelService)((ReadInJoyBaseDeliverActivity)localObject).app.getRuntimeService(IEmoticonMainPanelService.class)).newBuilder(this.a, 99999).setCallBack(ReadInJoyBaseDeliverActivity.a(this.a)).setOnlySysAndEmoji(true).setKanDianBiu(this.a instanceof ReadInJoyDeliverBiuActivity).setToastOffset(this.a.getTitleBarHeight()).create());
-        ReadInJoyBaseDeliverActivity.a(this.a).hideAllTabs();
-      }
-      return ReadInJoyBaseDeliverActivity.a(this.a).getView();
-    }
-    if (paramInt == 24)
-    {
-      if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
-      {
-        localObject = this.a;
-        ReadInJoyBaseDeliverActivity.a((ReadInJoyBaseDeliverActivity)localObject, (PublicAccountHotPicPanel)View.inflate((Context)localObject, 2131559604, null));
-        localObject = ReadInJoyBaseDeliverActivity.a(this.a);
-        QQAppInterface localQQAppInterface = this.a.app;
-        ReadInJoyBaseDeliverActivity localReadInJoyBaseDeliverActivity = this.a;
-        ((PublicAccountHotPicPanel)localObject).a(localQQAppInterface, localReadInJoyBaseDeliverActivity, null, localReadInJoyBaseDeliverActivity.a);
-        ReadInJoyBaseDeliverActivity.a(this.a).setPublicAccountGifListener(ReadInJoyBaseDeliverActivity.a(this.a));
-      }
-      return ReadInJoyBaseDeliverActivity.a(this.a);
-    }
-    return null;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 24) && (ReadInJoyBaseDeliverActivity.a(this.a) != null))
+    if ((paramInt1 == 24) && (ReadInJoyBaseDeliverActivity.b(this.a) != null))
     {
       boolean bool;
       if (paramInt2 == 1) {
@@ -59,47 +29,77 @@ class ReadInJoyBaseDeliverActivity$5
       } else {
         bool = false;
       }
-      ReadInJoyBaseDeliverActivity.a(this.a).a(bool);
+      ReadInJoyBaseDeliverActivity.b(this.a).a(bool);
     }
-    else if ((paramInt2 == 24) && (ReadInJoyBaseDeliverActivity.a(this.a) != null))
+    else if ((paramInt2 == 24) && (ReadInJoyBaseDeliverActivity.b(this.a) != null))
     {
-      ReadInJoyBaseDeliverActivity.a(this.a).f();
+      ReadInJoyBaseDeliverActivity.b(this.a).g();
     }
     if (paramInt2 == 1)
     {
-      this.a.c(1);
+      this.a.d(1);
       return;
     }
     if (paramInt2 == 3)
     {
       ((IAIOEmoticonPanelService)QRoute.api(IAIOEmoticonPanelService.class)).setOpenStartTime(System.currentTimeMillis());
       StartupTracker.a(null, "AIO_EmoticonPanel_OpenDuration");
-      this.a.c(2);
+      this.a.d(2);
       return;
     }
     if (paramInt2 == 0)
     {
-      this.a.c(0);
+      this.a.d(0);
       return;
     }
     if (paramInt2 == 24) {
-      this.a.c(3);
+      this.a.d(3);
     }
   }
   
-  public boolean a(int paramInt)
+  public View b(int paramInt)
+  {
+    Object localObject;
+    if (paramInt == 3)
+    {
+      if (ReadInJoyBaseDeliverActivity.c(this.a) == null)
+      {
+        localObject = this.a;
+        ReadInJoyBaseDeliverActivity.a((ReadInJoyBaseDeliverActivity)localObject, ((IEmoticonMainPanelService)((ReadInJoyBaseDeliverActivity)localObject).app.getRuntimeService(IEmoticonMainPanelService.class)).newBuilder(this.a, 99999).setCallBack(ReadInJoyBaseDeliverActivity.d(this.a)).setOnlySysAndEmoji(true).setKanDianBiu(this.a instanceof ReadInJoyDeliverBiuActivity).setToastOffset(this.a.getTitleBarHeight()).create());
+        ReadInJoyBaseDeliverActivity.c(this.a).hideAllTabs();
+      }
+      return ReadInJoyBaseDeliverActivity.c(this.a).getView();
+    }
+    if (paramInt == 24)
+    {
+      if (ReadInJoyBaseDeliverActivity.b(this.a) == null)
+      {
+        localObject = this.a;
+        ReadInJoyBaseDeliverActivity.a((ReadInJoyBaseDeliverActivity)localObject, (PublicAccountHotPicPanel)View.inflate((Context)localObject, 2131625633, null));
+        localObject = ReadInJoyBaseDeliverActivity.b(this.a);
+        QQAppInterface localQQAppInterface = this.a.app;
+        ReadInJoyBaseDeliverActivity localReadInJoyBaseDeliverActivity = this.a;
+        ((PublicAccountHotPicPanel)localObject).a(localQQAppInterface, localReadInJoyBaseDeliverActivity, null, localReadInJoyBaseDeliverActivity.j);
+        ReadInJoyBaseDeliverActivity.b(this.a).setPublicAccountGifListener(ReadInJoyBaseDeliverActivity.e(this.a));
+      }
+      return ReadInJoyBaseDeliverActivity.b(this.a);
+    }
+    return null;
+  }
+  
+  public boolean c(int paramInt)
   {
     return false;
   }
   
-  public void s()
+  public void v()
   {
-    ((IAIOEmoticonPanelService)QRoute.api(IAIOEmoticonPanelService.class)).removeStickerMask(this.a.a.a());
+    ((IAIOEmoticonPanelService)QRoute.api(IAIOEmoticonPanelService.class)).removeStickerMask(this.a.j.getCurrentPanelView());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyBaseDeliverActivity.5
  * JD-Core Version:    0.7.0.1
  */

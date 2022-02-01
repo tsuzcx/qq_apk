@@ -40,13 +40,13 @@ import com.tencent.mobileqq.pic.api.IPicPreDownload;
 import com.tencent.mobileqq.transfile.CommonImgThumbHelper;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
 import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
 import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
 import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
@@ -59,27 +59,21 @@ public class TroopEffectPicItemBuilder
   extends BaseBubbleBuilder
   implements View.OnClickListener, Callback
 {
-  protected static SparseArray<TroopEffectPicItemBuilder.ItemData> a;
+  protected static SparseArray<TroopEffectPicItemBuilder.ItemData> a = new SparseArray(3);
   
   static
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    jdField_a_of_type_AndroidUtilSparseArray.put(40000, new TroopEffectPicItemBuilder.ItemData(40000, HardCodeUtil.a(2131715084), Color.parseColor("#F2836DE1")));
-    jdField_a_of_type_AndroidUtilSparseArray.put(40001, new TroopEffectPicItemBuilder.ItemData(40001, HardCodeUtil.a(2131715082), Color.parseColor("#F2EF7AEE")));
-    jdField_a_of_type_AndroidUtilSparseArray.put(40002, new TroopEffectPicItemBuilder.ItemData(40002, HardCodeUtil.a(2131715083), Color.parseColor("#F23FCCDF")));
-    jdField_a_of_type_AndroidUtilSparseArray.put(40003, new TroopEffectPicItemBuilder.ItemData(40003, HardCodeUtil.a(2131715080), Color.parseColor("#F2FFA02D")));
-    jdField_a_of_type_AndroidUtilSparseArray.put(40004, new TroopEffectPicItemBuilder.ItemData(40004, HardCodeUtil.a(2131715077), Color.parseColor("#F21CD28C")));
-    jdField_a_of_type_AndroidUtilSparseArray.put(40005, new TroopEffectPicItemBuilder.ItemData(40005, HardCodeUtil.a(2131715076), Color.parseColor("#F2FF6EA2")));
+    a.put(40000, new TroopEffectPicItemBuilder.ItemData(40000, HardCodeUtil.a(2131912572), Color.parseColor("#F2836DE1")));
+    a.put(40001, new TroopEffectPicItemBuilder.ItemData(40001, HardCodeUtil.a(2131912570), Color.parseColor("#F2EF7AEE")));
+    a.put(40002, new TroopEffectPicItemBuilder.ItemData(40002, HardCodeUtil.a(2131912571), Color.parseColor("#F23FCCDF")));
+    a.put(40003, new TroopEffectPicItemBuilder.ItemData(40003, HardCodeUtil.a(2131912568), Color.parseColor("#F2FFA02D")));
+    a.put(40004, new TroopEffectPicItemBuilder.ItemData(40004, HardCodeUtil.a(2131912565), Color.parseColor("#F21CD28C")));
+    a.put(40005, new TroopEffectPicItemBuilder.ItemData(40005, HardCodeUtil.a(2131912564), Color.parseColor("#F2FF6EA2")));
   }
   
   public TroopEffectPicItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -88,18 +82,18 @@ public class TroopEffectPicItemBuilder
     TroopEffectPicItemBuilder.TroopEffectPicMsgHolder localTroopEffectPicMsgHolder = (TroopEffectPicItemBuilder.TroopEffectPicMsgHolder)paramViewHolder;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562958, null);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewHolder);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramViewHolder.findViewById(2131379199));
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(12.0F);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d(false);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131377727));
-      localTroopEffectPicMsgHolder.b = ((TextView)paramViewHolder.findViewById(2131379338));
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131379198));
-      localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnClickListener(this);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnTouchListener(paramOnLongClickAndTouchListener);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramViewHolder = LayoutInflater.from(this.e).inflate(2131629566, null);
+      localTroopEffectPicMsgHolder.a = ((RelativeLayout)paramViewHolder);
+      localTroopEffectPicMsgHolder.b = ((BubbleImageView)paramViewHolder.findViewById(2131447936));
+      localTroopEffectPicMsgHolder.b.setRadius(12.0F);
+      localTroopEffectPicMsgHolder.b.c(false);
+      localTroopEffectPicMsgHolder.d = ((TextView)paramViewHolder.findViewById(2131446185));
+      localTroopEffectPicMsgHolder.f = ((TextView)paramViewHolder.findViewById(2131448075));
+      localTroopEffectPicMsgHolder.c = ((URLImageView)paramViewHolder.findViewById(2131447935));
+      localTroopEffectPicMsgHolder.d.setOnClickListener(this);
+      localTroopEffectPicMsgHolder.b.setOnClickListener(this);
+      localTroopEffectPicMsgHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
+      localTroopEffectPicMsgHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
     }
@@ -107,15 +101,15 @@ public class TroopEffectPicItemBuilder
     {
       paramViewHolder = paramView;
     }
-    paramView = localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+    paramView = localTroopEffectPicMsgHolder.b;
     int i = CommonImgThumbHelper.getImgThumbMaxPx(false);
     int j = CommonImgThumbHelper.getImgThumbMinPx(false);
     paramView.setMaxWidth(i);
     paramView.setMaxHeight(i);
     paramView.setMinimumWidth(j);
     paramView.setMinimumHeight(j);
-    if (e) {
-      paramView.setContentDescription(HardCodeUtil.a(2131715075));
+    if (v) {
+      paramView.setContentDescription(HardCodeUtil.a(2131912563));
     }
     if (!localMessageForTroopEffectPic.isSendFromLocal())
     {
@@ -126,27 +120,27 @@ public class TroopEffectPicItemBuilder
       BaseChatItemLayout tmp254_250 = tmp250_248;
       tmp254_250[1] = 0;
       tmp254_250;
-      if ((localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable != null) && (localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable.getURL().equals(paramOnLongClickAndTouchListener)))
+      if ((localTroopEffectPicMsgHolder.e != null) && (localTroopEffectPicMsgHolder.e.getURL().equals(paramOnLongClickAndTouchListener)))
       {
-        paramView = localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable;
-        paramBaseChatItemLayout[0] = localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getWidth();
-        paramBaseChatItemLayout[1] = localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getHeight();
+        paramView = localTroopEffectPicMsgHolder.e;
+        paramBaseChatItemLayout[0] = localTroopEffectPicMsgHolder.b.getWidth();
+        paramBaseChatItemLayout[1] = localTroopEffectPicMsgHolder.b.getHeight();
       }
       else
       {
-        if (localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable != null)
+        if (localTroopEffectPicMsgHolder.e != null)
         {
           paramView = new StringBuilder();
           paramView.append("holder.d=");
-          paramView.append(localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable.getURL());
+          paramView.append(localTroopEffectPicMsgHolder.e.getURL());
           paramView.append("==url=");
           paramView.append(paramOnLongClickAndTouchListener);
           QLog.d("tdrawable", 2, paramView.toString());
         }
-        paramBaseChatItemLayout = PicItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, localMessageForTroopEffectPic, localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, paramBaseChatItemLayout);
-        localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramBaseChatItemLayout);
-        localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable = paramBaseChatItemLayout;
-        ((IPicPreDownload)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPicPreDownload.class, "")).productFromAIO(localMessageForTroopEffectPic, 2);
+        paramBaseChatItemLayout = PicItemBuilder.a(this.e, localMessageForTroopEffectPic, localTroopEffectPicMsgHolder.b, paramBaseChatItemLayout);
+        localTroopEffectPicMsgHolder.b.setImageDrawable(paramBaseChatItemLayout);
+        localTroopEffectPicMsgHolder.e = paramBaseChatItemLayout;
+        ((IPicPreDownload)this.d.getRuntimeService(IPicPreDownload.class, "")).productFromAIO(localMessageForTroopEffectPic, 2);
         paramView = paramBaseChatItemLayout;
         if (QLog.isColorLevel())
         {
@@ -162,28 +156,28 @@ public class TroopEffectPicItemBuilder
       if (paramView == null) {
         QLog.d("tdrawable", 2, "d==null");
       }
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLDrawable.setWatermarkVisibility(4);
+      localTroopEffectPicMsgHolder.e.setWatermarkVisibility(4);
       QLog.d("tdrawable", 2, "not isDynamic tag gone");
     }
-    paramView = (TroopEffectPicItemBuilder.ItemData)jdField_a_of_type_AndroidUtilSparseArray.get(localMessageForTroopEffectPic.effectId, null);
+    paramView = (TroopEffectPicItemBuilder.ItemData)a.get(localMessageForTroopEffectPic.effectId, null);
     if (paramView != null)
     {
-      localTroopEffectPicMsgHolder.b.setVisibility(0);
-      localTroopEffectPicMsgHolder.b.setText(paramView.jdField_a_of_type_JavaLangString);
+      localTroopEffectPicMsgHolder.f.setVisibility(0);
+      localTroopEffectPicMsgHolder.f.setText(paramView.b);
       paramBaseChatItemLayout = new GradientDrawable();
       paramBaseChatItemLayout.setShape(0);
-      float f = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
+      float f = DisplayUtil.a(this.e, 12.0F);
       paramBaseChatItemLayout.setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f });
-      paramBaseChatItemLayout.setColor(paramView.b);
-      localTroopEffectPicMsgHolder.b.setBackgroundDrawable(paramBaseChatItemLayout);
+      paramBaseChatItemLayout.setColor(paramView.c);
+      localTroopEffectPicMsgHolder.f.setBackgroundDrawable(paramBaseChatItemLayout);
     }
     else
     {
-      localTroopEffectPicMsgHolder.b.setVisibility(8);
+      localTroopEffectPicMsgHolder.f.setVisibility(8);
     }
     if ((localMessageForTroopEffectPic.effectId >= 40003) && (localMessageForTroopEffectPic.effectId <= 40005))
     {
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      localTroopEffectPicMsgHolder.c.setVisibility(0);
       paramView = URLDrawable.URLDrawableOptions.obtain();
       paramBaseChatItemLayout = new ColorDrawable(0);
       paramView.mFailedDrawable = paramBaseChatItemLayout;
@@ -193,16 +187,16 @@ public class TroopEffectPicItemBuilder
       paramBaseChatItemLayout.append(localMessageForTroopEffectPic.effectId);
       paramBaseChatItemLayout.append(".png");
       paramView = URLDrawable.getDrawable(paramBaseChatItemLayout.toString(), paramView);
-      paramView.setTag(URLDrawableDecodeHandler.b(190, 270, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
-      paramView.setDecodeHandler(URLDrawableDecodeHandler.i);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
+      paramView.setTag(URLDrawableDecodeHandler.b(190, 270, DisplayUtil.a(this.e, 12.0F)));
+      paramView.setDecodeHandler(URLDrawableDecodeHandler.j);
+      localTroopEffectPicMsgHolder.c.setImageDrawable(paramView);
     }
     else
     {
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      localTroopEffectPicMsgHolder.c.setVisibility(8);
     }
-    localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setTag(paramChatMessage);
-    localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setTag(paramChatMessage);
+    localTroopEffectPicMsgHolder.b.setTag(paramChatMessage);
+    localTroopEffectPicMsgHolder.d.setTag(paramChatMessage);
     return paramViewHolder;
   }
   
@@ -211,30 +205,35 @@ public class TroopEffectPicItemBuilder
     return new TroopEffectPicItemBuilder.TroopEffectPicMsgHolder();
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return HardCodeUtil.a(2131715081);
-  }
-  
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131365480)
+    if (paramInt != 2131431695)
     {
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
-    ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    ChatActivityFacade.b(this.e, this.d, paramChatMessage);
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    paramView = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376417, paramView, null);
-    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376430, paramView, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return localQQCustomMenu.a();
+    paramView = ((ChatItemBuilder.BaseHolder)AIOUtils.b(paramView)).q;
+    a(localQQCustomMenu, this.e, 2131444634, paramView, null);
+    ChatActivityFacade.a(localQQCustomMenu, this.e, this.f.a);
+    a(localQQCustomMenu, this.e, 2131444651, paramView, null);
+    super.a(localQQCustomMenu, this.e, 2131428089, null, null);
+    return localQQCustomMenu.d();
+  }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return HardCodeUtil.a(2131912569);
   }
   
   public void handleMessage(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2) {}
@@ -243,30 +242,30 @@ public class TroopEffectPicItemBuilder
   {
     int i = paramView.getId();
     Object localObject;
-    if (i != 2131377727)
+    if (i != 2131446185)
     {
-      if (i != 2131379199)
+      if (i != 2131447936)
       {
         super.onClick(paramView);
       }
       else
       {
-        localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+        localObject = ((BaseActivity)this.e).getChatFragment();
         if (localObject != null)
         {
-          localObject = ((ChatFragment)localObject).a();
+          localObject = ((ChatFragment)localObject).k();
           if ((localObject instanceof TroopChatPie))
           {
             localObject = (TroopChatPie)localObject;
-            if (!((TroopGiftPanelHelper)((TroopChatPie)localObject).a(136)).a().a())
+            if (!((TroopGiftPanelHelper)((TroopChatPie)localObject).q(136)).g().b())
             {
-              AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
+              AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.d.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
               MessageForTroopEffectPic localMessageForTroopEffectPic = (MessageForTroopEffectPic)paramView.getTag();
-              localAIOAnimationControlManager.a(localMessageForTroopEffectPic.frienduin);
-              localAIOAnimationControlManager.g();
+              localAIOAnimationControlManager.b(localMessageForTroopEffectPic.frienduin);
+              localAIOAnimationControlManager.k();
               localAIOAnimationControlManager.a(localMessageForTroopEffectPic, false);
               localAIOAnimationControlManager.a((BaseChatPie)localObject);
-              localAIOAnimationControlManager.f();
+              localAIOAnimationControlManager.j();
             }
           }
           else if (QLog.isColorLevel())
@@ -283,17 +282,17 @@ public class TroopEffectPicItemBuilder
     }
     else
     {
-      if (SharedPreUtils.m(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      if (SharedPreUtils.bf(this.e, this.d.getCurrentAccountUin()))
       {
-        TroopPicEffectsEditActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        TroopPicEffectsEditActivity.a((Activity)this.e, this.f.b, this.f.c);
       }
       else
       {
-        SharedPreUtils.p(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, TroopPicEffectGuidePicActivity.class);
-        ((Intent)localObject).putExtra("friendUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        SharedPreUtils.bg(this.e, this.d.getCurrentAccountUin());
+        localObject = new Intent(this.e, TroopPicEffectGuidePicActivity.class);
+        ((Intent)localObject).putExtra("friendUin", this.f.b);
+        ((Intent)localObject).putExtra("troopUin", this.f.c);
+        this.e.startActivity((Intent)localObject);
       }
       TroopPicEffectsController.a("obj_msg", "clk_tail    ");
     }
@@ -302,7 +301,7 @@ public class TroopEffectPicItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopEffectPicItemBuilder
  * JD-Core Version:    0.7.0.1
  */

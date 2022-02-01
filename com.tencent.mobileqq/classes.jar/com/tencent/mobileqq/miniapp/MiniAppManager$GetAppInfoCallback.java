@@ -17,15 +17,15 @@ class MiniAppManager$GetAppInfoCallback
     }
     if (paramBoolean)
     {
-      MiniAppManager.a(paramMiniAppManager, (IApp)MiniAppManager.a(paramMiniAppManager).get(paramMiniAppInfo.h));
+      MiniAppManager.a(paramMiniAppManager, (IApp)MiniAppManager.b(paramMiniAppManager).get(paramMiniAppInfo.p));
       return;
     }
-    MiniAppManager.a(paramMiniAppManager, paramMiniAppInfo.jdField_a_of_type_JavaLangString, paramMiniAppInfo.jdField_a_of_type_Int, 1001);
+    MiniAppManager.a(paramMiniAppManager, paramMiniAppInfo.a, paramMiniAppInfo.b, 1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppManager.GetAppInfoCallback
  * JD-Core Version:    0.7.0.1
  */

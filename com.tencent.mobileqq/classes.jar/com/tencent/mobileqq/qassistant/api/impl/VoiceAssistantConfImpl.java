@@ -24,7 +24,7 @@ public class VoiceAssistantConfImpl
     if ("mqq.jump.qq".equals(paramString)) {
       return true;
     }
-    if (!StringUtil.a(paramString))
+    if (!StringUtil.isEmpty(paramString))
     {
       Object localObject = this.supportOpenHost;
       if (localObject == null) {
@@ -42,7 +42,7 @@ public class VoiceAssistantConfImpl
   
   public QAssistantConfigItem findItemByOpenJumpAction(String paramString1, String paramString2)
   {
-    if (StringUtil.a(paramString1)) {
+    if (StringUtil.isEmpty(paramString1)) {
       return null;
     }
     if ("mqq.jump.qq".equals(paramString2)) {
@@ -59,7 +59,7 @@ public class VoiceAssistantConfImpl
       while (paramString2.hasNext())
       {
         QAssistantConfigItem localQAssistantConfigItem = (QAssistantConfigItem)paramString2.next();
-        if ((localQAssistantConfigItem.f != null) && (localQAssistantConfigItem.f.equalsIgnoreCase(paramString1))) {
+        if ((localQAssistantConfigItem.g != null) && (localQAssistantConfigItem.g.equalsIgnoreCase(paramString1))) {
           return localQAssistantConfigItem;
         }
       }
@@ -97,7 +97,7 @@ public class VoiceAssistantConfImpl
   
   public void parseDataByJson(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return;
     }
     List localList = this.configItemList;
@@ -120,7 +120,7 @@ public class VoiceAssistantConfImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.api.impl.VoiceAssistantConfImpl
  * JD-Core Version:    0.7.0.1
  */

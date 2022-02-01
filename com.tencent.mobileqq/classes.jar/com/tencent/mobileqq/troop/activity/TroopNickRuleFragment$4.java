@@ -12,7 +12,7 @@ class TroopNickRuleFragment$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == this.a.a)
+    if (paramView == this.a.p)
     {
       int i = paramMotionEvent.getAction();
       if (i == 0)
@@ -29,7 +29,7 @@ class TroopNickRuleFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.4
  * JD-Core Version:    0.7.0.1
  */

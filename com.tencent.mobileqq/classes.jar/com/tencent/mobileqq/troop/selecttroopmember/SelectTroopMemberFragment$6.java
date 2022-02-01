@@ -19,36 +19,36 @@ class SelectTroopMemberFragment$6
   
   public void onClick(View paramView)
   {
-    Object localObject = (ITroopMemberMngHandler)this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_MNG_HANDLER);
+    Object localObject = (ITroopMemberMngHandler)this.e.a.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_MNG_HANDLER);
     if (localObject != null) {}
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_AndroidAppDialog == null)
+      if (this.e.k == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.getBaseActivity(), 2131756189);
-        this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_AndroidAppDialog.setContentView(2131558463);
-        this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-        ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_AndroidAppDialog.findViewById(2131365644)).setText(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.getString(2131691773));
+        this.e.k = new ReportDialog(this.e.getBaseActivity(), 2131953338);
+        this.e.k.setContentView(2131623999);
+        this.e.k.setCancelable(true);
+        ((TextView)this.e.k.findViewById(2131431876)).setText(this.e.getString(2131888735));
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_AndroidAppDialog.show();
-      ((ITroopMemberMngHandler)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
+      this.e.k.show();
+      ((ITroopMemberMngHandler)localObject).a(Long.parseLong(this.e.d), this.a, this.b.isChecked(), this.c);
     }
     catch (Exception localException)
     {
       label148:
       break label148;
     }
-    localObject = this.jdField_a_of_type_AndroidAppDialog;
+    localObject = this.d;
     if ((localObject != null) && (((Dialog)localObject).isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.d.dismiss();
     }
-    SelectTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment);
+    SelectTroopMemberFragment.a(this.e);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberFragment.6
  * JD-Core Version:    0.7.0.1
  */

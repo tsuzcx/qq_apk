@@ -13,7 +13,7 @@ class AEVideoStoryDashboardPart$DashboardHolder
   public AEVideoStoryDashboardPart$DashboardHolder(View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2064121868));
+    this.a = ((TextView)paramView.findViewById(2063990786));
   }
   
   public void a(@NonNull AEVideoStoryDashboardPart.DashboardInfo paramDashboardInfo)
@@ -23,7 +23,7 @@ class AEVideoStoryDashboardPart$DashboardHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.DashboardHolder
  * JD-Core Version:    0.7.0.1
  */

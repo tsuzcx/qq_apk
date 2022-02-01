@@ -44,8 +44,8 @@ public class MiniAppProfileCardGuestView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561351, this, true);
-    this.mRecyclerView = ((RecyclerView)findViewById(2131367351));
+    this.mLayoutInflater.inflate(2131627707, this, true);
+    this.mRecyclerView = ((RecyclerView)findViewById(2131433808));
     this.mRecyclerView.setVisibility(0);
   }
   
@@ -85,7 +85,7 @@ public class MiniAppProfileCardGuestView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.miniapp.MiniAppProfileCardGuestView
  * JD-Core Version:    0.7.0.1
  */

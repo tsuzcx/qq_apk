@@ -38,7 +38,7 @@ final class AdDownloadStateHandler$OnResumeDownload
     localStringBuilder.append(" data = ");
     Object localObject1 = localObject2;
     if (paramRIJDownloadView != null) {
-      localObject1 = paramRIJDownloadView.a();
+      localObject1 = paramRIJDownloadView.getDownloadData();
     }
     localStringBuilder.append(localObject1);
     QLog.d("AD_DOWNLOAD_TAG", 1, localStringBuilder.toString());
@@ -48,7 +48,7 @@ final class AdDownloadStateHandler$OnResumeDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler.OnResumeDownload
  * JD-Core Version:    0.7.0.1
  */

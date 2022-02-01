@@ -11,17 +11,17 @@ class AEEditorMultiCutEditFragment$8
   
   public void run()
   {
-    this.this$0.a.b(1);
-    this.this$0.a.c(2064515127);
-    this.this$0.a.a(AEEditorMultiCutEditFragment.a(this.this$0), 1, 3, 94, 0, false);
-    ThreadManager.getUIHandler().postDelayed(AEEditorMultiCutEditFragment.a(this.this$0), 3000L);
-    this.this$0.a.setOnDismissListener(new AEEditorMultiCutEditFragment.8.1(this));
-    this.this$0.c();
+    this.this$0.i.b(1);
+    this.this$0.i.c(2064187469);
+    this.this$0.i.a(AEEditorMultiCutEditFragment.p(this.this$0), 1, 3, 94, 0, false);
+    ThreadManager.getUIHandler().postDelayed(AEEditorMultiCutEditFragment.q(this.this$0), 3000L);
+    this.this$0.i.setOnDismissListener(new AEEditorMultiCutEditFragment.8.1(this));
+    this.this$0.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.8
  * JD-Core Version:    0.7.0.1
  */

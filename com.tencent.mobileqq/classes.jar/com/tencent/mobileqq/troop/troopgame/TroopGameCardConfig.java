@@ -9,11 +9,11 @@ import org.json.JSONObject;
 
 public class TroopGameCardConfig
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String a = "";
   private String b = "";
   private String c = "";
+  private int d = 0;
+  private List<Integer> e = new ArrayList();
   
   public static TroopGameCardConfig a(String paramString)
   {
@@ -31,10 +31,10 @@ public class TroopGameCardConfig
     try
     {
       Object localObject2 = new JSONObject(paramString);
-      ((TroopGameCardConfig)localObject1).a(((JSONObject)localObject2).optString("resUrl", ""));
-      ((TroopGameCardConfig)localObject1).b(((JSONObject)localObject2).optString("resMd5", ""));
+      ((TroopGameCardConfig)localObject1).b(((JSONObject)localObject2).optString("resUrl", ""));
+      ((TroopGameCardConfig)localObject1).c(((JSONObject)localObject2).optString("resMd5", ""));
       ((TroopGameCardConfig)localObject1).c = ((JSONObject)localObject2).optString("troopCardTipsContent", "");
-      ((TroopGameCardConfig)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("numOfMsgToCheck");
+      ((TroopGameCardConfig)localObject1).d = ((JSONObject)localObject2).getInt("numOfMsgToCheck");
       paramString = new ArrayList();
       localObject2 = ((JSONObject)localObject2).getJSONArray("grayTroopUins");
       if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
@@ -46,7 +46,7 @@ public class TroopGameCardConfig
           i += 1;
         }
       }
-      ((TroopGameCardConfig)localObject1).jdField_a_of_type_JavaUtilList = paramString;
+      ((TroopGameCardConfig)localObject1).e = paramString;
     }
     catch (Exception paramString)
     {
@@ -62,22 +62,37 @@ public class TroopGameCardConfig
     return localObject1;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  void a(String paramString)
+  public String b()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.b;
   }
   
-  public boolean a(String paramString)
+  void b(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  void c(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public boolean d(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -89,17 +104,17 @@ public class TroopGameCardConfig
     boolean bool3 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     boolean bool1 = true;
-    if ((!bool3) && (this.jdField_a_of_type_JavaUtilList != null))
+    if ((!bool3) && (this.e != null))
     {
       paramString = paramString.substring(paramString.length() - 1);
       int i = 0;
       for (;;)
       {
         bool1 = bool2;
-        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        if (i >= this.e.size()) {
           break;
         }
-        if (String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString))
+        if (String.valueOf(this.e.get(i)).equals(paramString))
         {
           bool1 = true;
           break;
@@ -110,7 +125,7 @@ public class TroopGameCardConfig
       {
         paramString = new StringBuilder();
         paramString.append("isGrayTroop grayTroopUinList size = ");
-        paramString.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramString.append(this.e.size());
         paramString.append(", isGrayTroop = ");
         paramString.append(bool1);
         QLog.d("TroopGameCardConfig", 2, paramString.toString());
@@ -121,7 +136,7 @@ public class TroopGameCardConfig
     {
       paramString = new StringBuilder();
       paramString.append("mGrayTroopUinList isNull:  ");
-      if (this.jdField_a_of_type_JavaUtilList != null) {
+      if (this.e != null) {
         bool1 = false;
       }
       paramString.append(bool1);
@@ -129,25 +144,10 @@ public class TroopGameCardConfig
     }
     return false;
   }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardConfig
  * JD-Core Version:    0.7.0.1
  */

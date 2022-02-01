@@ -13,22 +13,21 @@ public abstract class WSAbsSingleCheckAdapter<M extends Checkable, VH extends Ba
   extends BaseAdapter<M, VH>
   implements OnCheckedListener<M>
 {
-  protected int a;
-  private final RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private OnCheckedListener<M> jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableOnCheckedListener;
-  private WSCenterLayoutManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSCenterLayoutManager;
+  protected int a = 0;
+  private final RecyclerView b;
+  private OnCheckedListener<M> c;
+  private WSCenterLayoutManager d;
   
   public WSAbsSingleCheckAdapter(Context paramContext, RecyclerView paramRecyclerView)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.b = paramRecyclerView;
   }
   
   private void b(int paramInt, boolean paramBoolean)
   {
     a(paramInt, paramBoolean);
-    RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(paramInt);
+    RecyclerView.ViewHolder localViewHolder = this.b.findViewHolderForAdapterPosition(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("position:");
     localStringBuilder.append(paramInt);
@@ -45,24 +44,19 @@ public abstract class WSAbsSingleCheckAdapter<M extends Checkable, VH extends Ba
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public WSCenterLayoutManager a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSCenterLayoutManager;
+    return this.d;
   }
   
   public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == paramInt) {
       return;
     }
     b(i, false);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     b(paramInt, true);
   }
   
@@ -73,7 +67,7 @@ public abstract class WSAbsSingleCheckAdapter<M extends Checkable, VH extends Ba
   
   public void a(M paramM, int paramInt)
   {
-    OnCheckedListener localOnCheckedListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableOnCheckedListener;
+    OnCheckedListener localOnCheckedListener = this.c;
     if (localOnCheckedListener != null) {
       localOnCheckedListener.a(paramM, paramInt);
     }
@@ -81,12 +75,17 @@ public abstract class WSAbsSingleCheckAdapter<M extends Checkable, VH extends Ba
   
   public void a(OnCheckedListener<M> paramOnCheckedListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableOnCheckedListener = paramOnCheckedListener;
+    this.c = paramOnCheckedListener;
   }
   
   public void a(WSCenterLayoutManager paramWSCenterLayoutManager)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSCenterLayoutManager = paramWSCenterLayoutManager;
+    this.d = paramWSCenterLayoutManager;
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
   
   public void b(M paramM, int paramInt)
@@ -97,7 +96,7 @@ public abstract class WSAbsSingleCheckAdapter<M extends Checkable, VH extends Ba
       return;
     }
     a(paramInt);
-    OnCheckedListener localOnCheckedListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableOnCheckedListener;
+    OnCheckedListener localOnCheckedListener = this.c;
     if (localOnCheckedListener != null) {
       localOnCheckedListener.b(paramM, paramInt);
     }
@@ -105,7 +104,7 @@ public abstract class WSAbsSingleCheckAdapter<M extends Checkable, VH extends Ba
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.checkable.WSAbsSingleCheckAdapter
  * JD-Core Version:    0.7.0.1
  */

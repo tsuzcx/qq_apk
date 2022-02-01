@@ -19,10 +19,10 @@ class CustomHttpService$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    paramCall = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+    paramCall = CustomHttpService.a(this.c).getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("url = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", onFailure e = ");
     localStringBuilder.append(paramIOException);
     paramCall.i("HttpComponent", localStringBuilder.toString(), new Object[0]);
@@ -31,17 +31,17 @@ class CustomHttpService$1
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    paramCall = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+    paramCall = CustomHttpService.a(this.c).getLog();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("url = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(", onResponse code = ");
     ((StringBuilder)localObject).append(paramResponse.code());
     paramCall.i("HttpComponent", ((StringBuilder)localObject).toString(), new Object[0]);
     if (paramResponse.body() != null)
     {
       paramCall = paramResponse.body().string();
-      paramResponse = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+      paramResponse = CustomHttpService.a(this.c).getLog();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onResponse result = ");
       ((StringBuilder)localObject).append(paramCall);
@@ -51,7 +51,7 @@ class CustomHttpService$1
     {
       paramCall = "";
     }
-    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse != null)
+    if (this.b != null)
     {
       paramResponse = null;
       try
@@ -60,7 +60,7 @@ class CustomHttpService$1
       }
       catch (JSONException paramCall)
       {
-        localObject = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+        localObject = CustomHttpService.a(this.c).getLog();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onResponse JSONException e = ");
         localStringBuilder.append(paramCall);
@@ -73,7 +73,7 @@ class CustomHttpService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.1
  * JD-Core Version:    0.7.0.1
  */

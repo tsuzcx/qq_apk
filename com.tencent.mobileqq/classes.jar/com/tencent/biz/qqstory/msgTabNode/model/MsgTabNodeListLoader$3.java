@@ -10,7 +10,7 @@ import java.util.List;
 class MsgTabNodeListLoader$3
   extends SimpleObserver<List<MsgTabVideoData>>
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<String> a = new ArrayList();
   
   MsgTabNodeListLoader$3(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
   
@@ -23,7 +23,7 @@ class MsgTabNodeListLoader$3
     {
       MsgTabVideoData localMsgTabVideoData = (MsgTabVideoData)paramList.get(i);
       if (!localMsgTabVideoData.a) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localMsgTabVideoData.b);
+        this.a.add(localMsgTabVideoData.c);
       }
       i += 1;
     }
@@ -38,19 +38,19 @@ class MsgTabNodeListLoader$3
   {
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
     super.onComplete();
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.a(this.a);
   }
   
   public void onError(@NonNull Error paramError)
   {
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
     super.onError(paramError);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.3
  * JD-Core Version:    0.7.0.1
  */

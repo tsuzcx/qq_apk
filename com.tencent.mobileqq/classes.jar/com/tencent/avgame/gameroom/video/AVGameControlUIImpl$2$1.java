@@ -12,15 +12,15 @@ class AVGameControlUIImpl$2$1
   
   public void run()
   {
-    if (this.a.a.a()) {
+    if (this.a.a.d()) {
       return;
     }
-    IAVGameMediaPlayerCtrl localIAVGameMediaPlayerCtrl = AVGameBusinessCtrl.b().a();
+    IAVGameMediaPlayerCtrl localIAVGameMediaPlayerCtrl = AVGameBusinessCtrl.b().n();
     if (localIAVGameMediaPlayerCtrl != null) {
-      localIAVGameMediaPlayerCtrl.a(this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer);
+      localIAVGameMediaPlayerCtrl.a(this.a.a.h);
     }
-    if (this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager != null) {
-      this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager.a();
+    if (this.a.a.o != null) {
+      this.a.a.o.b();
     }
     AVGameControlUIImpl.a(this.a.a);
     AVGameControlUIImpl.b(this.a.a);
@@ -31,8 +31,8 @@ class AVGameControlUIImpl$2$1
     } else {
       bool1 = false;
     }
-    boolean bool2 = GameEngine.a().a();
-    int i = AVGameBusinessCtrl.b().a();
+    boolean bool2 = GameEngine.a().d();
+    int i = AVGameBusinessCtrl.b().i();
     if ((bool2) && (i == 1)) {
       AVGameControlUIImpl.a(this.a.a, bool1);
     }

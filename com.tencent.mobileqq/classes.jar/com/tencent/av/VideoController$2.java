@@ -13,13 +13,13 @@ class VideoController$2
     if (QLog.isColorLevel()) {
       QLog.d(VideoController.a, 2, "connectingRunnable");
     }
-    if (!this.this$0.a().j())
+    if (!this.this$0.k().j())
     {
       VideoController localVideoController = this.this$0;
-      localVideoController.a(localVideoController.a().c, 216);
+      localVideoController.a(localVideoController.k().s, 216);
       this.this$0.b(216);
       localVideoController = this.this$0;
-      localVideoController.b(localVideoController.a().c, 5);
+      localVideoController.b(localVideoController.k().s, 5);
     }
   }
 }

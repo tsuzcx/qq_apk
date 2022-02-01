@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.troop.troopcard.TroopInfoActivity;
 import com.tencent.mobileqq.troop.troopcard.api.ITroopInfoActivityApi;
+import com.tencent.mobileqq.troop.troopcard.ui.TroopInfoActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopInfoActivityApiImpl
@@ -56,7 +56,7 @@ public class TroopInfoActivityApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcard.api.impl.TroopInfoActivityApiImpl
  * JD-Core Version:    0.7.0.1
  */

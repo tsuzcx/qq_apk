@@ -20,7 +20,7 @@ final class AppBridgeInvokeHandler$register$4
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    BridgeModule localBridgeModule = this.this$0.a();
+    BridgeModule localBridgeModule = this.this$0.d();
     String str2 = null;
     String str1;
     if (paramJSONObject != null) {
@@ -36,7 +36,7 @@ final class AppBridgeInvokeHandler$register$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.AppBridgeInvokeHandler.register.4
  * JD-Core Version:    0.7.0.1
  */

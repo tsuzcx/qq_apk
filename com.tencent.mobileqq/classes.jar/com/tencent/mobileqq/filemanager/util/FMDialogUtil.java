@@ -59,17 +59,17 @@ public class FMDialogUtil
     }
     if ((paramCharSequence instanceof String))
     {
-      DialogUtil.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692263, 2131692267, local1, paramFMDialogInterface).show();
+      DialogUtil.a(paramContext, 230, paramString, (String)paramCharSequence, 2131889250, 2131889254, local1, paramFMDialogInterface).show();
       return;
     }
     if ((paramCharSequence instanceof SpannableString)) {
-      DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131692263, 2131692267, local1, paramFMDialogInterface).show();
+      DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131889250, 2131889254, local1, paramFMDialogInterface).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FMDialogUtil
  * JD-Core Version:    0.7.0.1
  */

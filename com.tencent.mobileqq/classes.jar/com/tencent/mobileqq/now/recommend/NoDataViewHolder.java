@@ -8,21 +8,21 @@ import com.tencent.mobileqq.now.RecyclerHolder;
 public class NoDataViewHolder
   extends RecyclerHolder
 {
-  public ImageView a;
   public TextView a;
   public ImageView b;
+  public ImageView c;
   
   public NoDataViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376340));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370391));
-    this.b = ((ImageView)paramView.findViewById(2131366460));
+    this.a = ((TextView)paramView.findViewById(2131444553));
+    this.b = ((ImageView)paramView.findViewById(2131437658));
+    this.c = ((ImageView)paramView.findViewById(2131432778));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.NoDataViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,48 +22,48 @@ import mqq.os.MqqHandler;
 public class StatusMonitor
   implements Handler.Callback
 {
-  int jdField_a_of_type_Int = -2147483648;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  ITopic jdField_a_of_type_ComTencentAvgameGamelogicITopic;
-  GameRoomStatusListener jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
-  HeartBeatListener jdField_a_of_type_ComTencentAvgameGamelogicListenerHeartBeatListener;
-  IDataCtrl<EngineData> jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl;
-  SyncListener jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener;
-  BaseAVGameAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
-  volatile boolean jdField_a_of_type_Boolean = true;
-  int jdField_b_of_type_Int = -2147483648;
-  boolean jdField_b_of_type_Boolean;
-  int c = 0;
+  BaseAVGameAppInterface a;
+  GameRoomStatusListener b;
+  IDataCtrl<EngineData> c;
+  HeartBeatListener d;
+  SyncListener e;
+  Handler f;
+  volatile boolean g = true;
+  int h = -2147483648;
+  int i = -2147483648;
+  int j = 0;
+  ITopic k;
+  boolean l;
   
   public StatusMonitor(BaseAVGameAppInterface paramBaseAVGameAppInterface, HeartBeatListener paramHeartBeatListener, SyncListener paramSyncListener, GameRoomStatusListener paramGameRoomStatusListener, IDataCtrl<EngineData> paramIDataCtrl)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface = paramBaseAVGameAppInterface;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener = paramGameRoomStatusListener;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl = paramIDataCtrl;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerHeartBeatListener = paramHeartBeatListener;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener = paramSyncListener;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getUIHandler().getLooper(), this);
+    this.a = paramBaseAVGameAppInterface;
+    this.b = paramGameRoomStatusListener;
+    this.c = paramIDataCtrl;
+    this.d = paramHeartBeatListener;
+    this.e = paramSyncListener;
+    this.f = new Handler(ThreadManager.getUIHandler().getLooper(), this);
   }
   
   private void a(EngineData paramEngineData)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.l) {
       return;
     }
-    ITopic localITopic = paramEngineData.a();
-    if ((localITopic != null) && (!localITopic.a(this.jdField_a_of_type_ComTencentAvgameGamelogicITopic)))
+    ITopic localITopic = paramEngineData.s();
+    if ((localITopic != null) && (!localITopic.a(this.k)))
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = localITopic;
-      int j = this.jdField_a_of_type_Int;
-      int i = 1;
-      if (j != -2147483648) {
-        i = 1 + j;
+      this.k = localITopic;
+      int n = this.h;
+      int m = 1;
+      if (n != -2147483648) {
+        m = 1 + n;
       }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_b_of_type_Int == -2147483648)
+      this.h = m;
+      if (this.i == -2147483648)
       {
-        this.jdField_b_of_type_Int = paramEngineData.g();
-        this.c = paramEngineData.d();
+        this.i = paramEngineData.H();
+        this.j = paramEngineData.p();
       }
     }
   }
@@ -73,10 +73,10 @@ public class StatusMonitor
     paramInt += 10000;
     if (paramInt <= 0)
     {
-      e();
+      f();
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, paramInt);
+    this.f.sendEmptyMessageDelayed(0, paramInt);
   }
   
   private void b(EngineData paramEngineData, boolean paramBoolean)
@@ -85,19 +85,19 @@ public class StatusMonitor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleTopicCountReport status=");
-      localStringBuilder.append(paramEngineData.a());
+      localStringBuilder.append(paramEngineData.j());
       QLog.i("avgame_logic.StatusMonitor", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.l = paramBoolean;
     }
-    int i = paramEngineData.a();
-    if (i != 0) {
-      if (i != 1)
+    int m = paramEngineData.j();
+    if (m != 0) {
+      if (m != 1)
       {
-        if ((i != 2) && (i != 3) && (i != 4))
+        if ((m != 2) && (m != 3) && (m != 4))
         {
-          if (i == 10) {}
+          if (m == 10) {}
         }
         else {
           a(paramEngineData);
@@ -105,70 +105,70 @@ public class StatusMonitor
       }
       else
       {
+        i();
         h();
-        g();
         a(paramEngineData);
         return;
       }
     }
+    i();
     h();
-    g();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.f.removeMessages(0);
   }
   
   private void e()
   {
-    long l1 = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerHeartBeatListener.b();
-    long l2 = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerHeartBeatListener.a();
-    long l3 = SystemClock.elapsedRealtime();
-    long l4 = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener.a();
-    if ((l3 - l1 < 10000L) && (l2 == l4))
-    {
-      QLog.d("avgame_logic.StatusMonitor", 1, String.format("handleStatusTimeout exit!!! [heartBeatSeq,localSeq]=[%d,%d] [heartBeatTs,curTs]=[%d,%d]", new Object[] { Long.valueOf(l2), Long.valueOf(l4), Long.valueOf(l1), Long.valueOf(l3) }));
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(9, MobileQQ.sMobileQQ.getString(2131690331), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-    }
+    this.g = false;
   }
   
   private void f()
   {
-    QLog.d("avgame_logic.StatusMonitor", 1, String.format("handleTopicTimeout exit!!!", new Object[0]));
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.k();
+    long l1 = this.d.d();
+    long l2 = this.d.c();
+    long l3 = SystemClock.elapsedRealtime();
+    long l4 = this.e.a();
+    if ((l3 - l1 < 10000L) && (l2 == l4))
+    {
+      QLog.d("avgame_logic.StatusMonitor", 1, String.format("handleStatusTimeout exit!!! [heartBeatSeq,localSeq]=[%d,%d] [heartBeatTs,curTs]=[%d,%d]", new Object[] { Long.valueOf(l2), Long.valueOf(l4), Long.valueOf(l1), Long.valueOf(l3) }));
+      this.b.a(9, MobileQQ.sMobileQQ.getString(2131887242), (EngineData)this.c.H());
+    }
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_b_of_type_Int = -2147483648;
-    this.c = 0;
+    QLog.d("avgame_logic.StatusMonitor", 1, String.format("handleTopicTimeout exit!!!", new Object[0]));
+    this.b.l();
   }
   
   private void h()
   {
+    this.k = null;
+    this.l = false;
+    this.h = -2147483648;
+    this.i = -2147483648;
+    this.j = 0;
+  }
+  
+  private void i()
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.StatusMonitor", 2, String.format("doReportTopicCountIfNeed [inSnapshotRound=%b count=%d expectCount=%d gType=%d]", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c) }));
+      QLog.i("avgame_logic.StatusMonitor", 2, String.format("doReportTopicCountIfNeed [inSnapshotRound=%b count=%d expectCount=%d gType=%d]", new Object[] { Boolean.valueOf(this.l), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.j) }));
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.l)
     {
-      int i = this.jdField_a_of_type_Int;
-      if (i != -2147483648)
+      int m = this.h;
+      if (m != -2147483648)
       {
-        int j = this.jdField_b_of_type_Int;
-        if (j == -2147483648) {
+        int n = this.i;
+        if (n == -2147483648) {
           return;
         }
-        if (j > i) {
-          QualityReporter.a(j, i, j - i, this.c);
+        if (n > m) {
+          QualityReporter.a(n, m, n - m, this.j);
         }
       }
     }
@@ -179,7 +179,7 @@ public class StatusMonitor
     if (QLog.isColorLevel()) {
       QLog.d("avgame_logic.StatusMonitor", 2, "clearTopicTimeoutMonitor run");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.f.removeMessages(1);
   }
   
   public void a(EngineData paramEngineData, int paramInt)
@@ -191,80 +191,80 @@ public class StatusMonitor
       paramEngineData.append(paramInt);
       QLog.d("avgame_logic.StatusMonitor", 2, paramEngineData.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, paramInt);
+    this.f.removeMessages(1);
+    this.f.sendEmptyMessageDelayed(1, paramInt);
   }
   
   public void a(EngineData paramEngineData, boolean paramBoolean)
   {
-    boolean bool = paramEngineData.d();
-    int j = paramEngineData.a();
-    if (j != 1)
+    boolean bool = paramEngineData.z();
+    int n = paramEngineData.j();
+    if (n != 1)
     {
-      if ((j != 2) && (j != 3) && (j != 4))
+      if ((n != 2) && (n != 3) && (n != 4))
       {
-        c();
+        d();
       }
       else
       {
-        d();
+        e();
         if (bool)
         {
-          c();
-          b(paramEngineData, paramEngineData.a().a.c * 1000 - paramEngineData.a().e());
+          d();
+          b(paramEngineData, paramEngineData.h().f.c * 1000 - paramEngineData.h().o());
         }
       }
     }
     else
     {
-      d();
+      e();
       if (bool)
       {
-        c();
-        int m = paramEngineData.a().a.d * 1000;
-        int k = paramEngineData.a().a.c;
-        int n = paramEngineData.a().d();
-        int i = 0;
-        if (m > n) {
-          i = m - n;
+        d();
+        int i2 = paramEngineData.h().f.d * 1000;
+        int i1 = paramEngineData.h().f.c;
+        int i3 = paramEngineData.h().n();
+        int m = 0;
+        if (i2 > i3) {
+          m = i2 - i3;
         }
-        b(paramEngineData, i + k * 1000);
+        b(paramEngineData, m + i1 * 1000);
       }
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStatusChanged ");
-      localStringBuilder.append(j);
+      localStringBuilder.append(n);
       QLog.i("avgame_logic.StatusMonitor", 2, localStringBuilder.toString());
     }
     b(paramEngineData, paramBoolean);
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public void b()
   {
+    e();
     d();
-    c();
-    g();
+    h();
     a();
+  }
+  
+  public boolean c()
+  {
+    return this.g;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 0)
+    int m = paramMessage.what;
+    if (m != 0)
     {
-      if (i == 1) {
-        f();
+      if (m == 1) {
+        g();
       }
     }
     else {
-      e();
+      f();
     }
     return false;
   }

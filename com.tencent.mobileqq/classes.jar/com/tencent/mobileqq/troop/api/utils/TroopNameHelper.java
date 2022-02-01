@@ -17,21 +17,18 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class TroopNameHelper
 {
-  TroopObserver a;
-  protected TroopNameHelper.Task a;
-  protected ConcurrentHashMap<String, Long> a;
-  protected ConcurrentLinkedQueue<TroopNameHelper.Task> a;
   protected AppRuntime a;
-  protected ConcurrentHashMap<String, TroopNameHelper.GenTroopNameTask> b = new ConcurrentHashMap();
+  protected ConcurrentLinkedQueue<TroopNameHelper.Task> b = new ConcurrentLinkedQueue();
+  protected TroopNameHelper.Task c;
+  protected ConcurrentHashMap<String, Long> d = new ConcurrentHashMap();
+  protected ConcurrentHashMap<String, TroopNameHelper.GenTroopNameTask> e = new ConcurrentHashMap();
+  TroopObserver f = new TroopNameHelper.1(this);
   
   public TroopNameHelper(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopNameHelper.1(this);
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = paramAppRuntime;
     if ((paramAppRuntime instanceof AppInterface)) {
-      ((AppInterface)paramAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+      ((AppInterface)paramAppRuntime).addObserver(this.f);
     }
   }
   
@@ -39,14 +36,14 @@ public class TroopNameHelper
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task == null) || (!this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task.a))
+      if ((this.c == null) || (!this.c.c))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task = null;
-        this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task = ((TroopNameHelper.Task)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll());
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task != null)
+        this.c = null;
+        this.c = ((TroopNameHelper.Task)this.b.poll());
+        if (this.c != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task.a = true;
-          ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$Task, 8, null, false);
+          this.c.c = true;
+          ThreadManager.post(this.c, 8, null, false);
         }
       }
       return;
@@ -87,18 +84,18 @@ public class TroopNameHelper
   
   public void a()
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.a;
     if ((localAppRuntime instanceof AppInterface)) {
-      ((AppInterface)localAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+      ((AppInterface)localAppRuntime).removeObserver(this.f);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
     this.b.clear();
+    this.e.clear();
   }
   
   public void a(TroopNameHelper.Task paramTask)
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramTask)) && (!paramTask.a)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramTask);
+    if ((!this.b.contains(paramTask)) && (!paramTask.c)) {
+      this.b.add(paramTask);
     }
     b();
   }
@@ -108,7 +105,7 @@ public class TroopNameHelper
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    TroopInfo localTroopInfo = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
+    TroopInfo localTroopInfo = ((ITroopInfoService)this.a.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
     if ((localTroopInfo != null) && (!localTroopInfo.hasSetTroopName())) {
       a(paramString, null);
     }
@@ -116,12 +113,12 @@ public class TroopNameHelper
   
   protected void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
-    TroopNameHelper.GenTroopNameTask localGenTroopNameTask = (TroopNameHelper.GenTroopNameTask)this.b.get(paramString);
+    this.d.put(paramString, Long.valueOf(paramLong));
+    TroopNameHelper.GenTroopNameTask localGenTroopNameTask = (TroopNameHelper.GenTroopNameTask)this.e.get(paramString);
     if (localGenTroopNameTask != null)
     {
       a(localGenTroopNameTask);
-      this.b.remove(paramString);
+      this.e.remove(paramString);
     }
   }
   
@@ -132,11 +129,11 @@ public class TroopNameHelper
   
   public void a(String paramString, boolean paramBoolean)
   {
-    TroopNameHelper.GenTroopNameTask localGenTroopNameTask = (TroopNameHelper.GenTroopNameTask)this.b.get(paramString);
+    TroopNameHelper.GenTroopNameTask localGenTroopNameTask = (TroopNameHelper.GenTroopNameTask)this.e.get(paramString);
     if (localGenTroopNameTask != null)
     {
       a(localGenTroopNameTask);
-      this.b.remove(paramString);
+      this.e.remove(paramString);
       return;
     }
     if (paramBoolean) {
@@ -161,8 +158,8 @@ public class TroopNameHelper
       QLog.i("TroopNameHelper", 2, ((StringBuilder)localObject).toString());
     }
     paramString = String.valueOf(paramLong);
-    Object localObject = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
-    if ((paramInt == 1) && (paramBoolean) && (this.b.containsKey(paramString)))
+    Object localObject = (ITroopInfoService)this.a.getRuntimeService(ITroopInfoService.class, "");
+    if ((paramInt == 1) && (paramBoolean) && (this.e.containsKey(paramString)))
     {
       TroopInfo localTroopInfo = ((ITroopInfoService)localObject).findTroopInfo(paramString);
       if (localTroopInfo == null) {
@@ -192,26 +189,26 @@ public class TroopNameHelper
         }
       }
       ((ITroopInfoService)localObject).saveTroopInfo(localTroopInfo);
-      paramList = (TroopNameHelper.GenTroopNameTask)this.b.get(paramString);
-      if ((paramList != null) && (!paramList.a)) {
+      paramList = (TroopNameHelper.GenTroopNameTask)this.e.get(paramString);
+      if ((paramList != null) && (!paramList.c)) {
         a(paramList);
       }
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.b.containsKey(paramString);
   }
   
   public void b(String paramString)
   {
     a(new TroopNameHelper.FriendNameChanedTask(this, paramString));
   }
+  
+  public boolean c(String paramString)
+  {
+    return this.e.containsKey(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

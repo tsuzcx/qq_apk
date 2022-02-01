@@ -29,13 +29,13 @@ class DrawerBizFacade$1
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
       }
-      this.a.a("d_head_vip").g();
+      this.a.b("d_head_vip").i();
     }
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject1 = (QQSettingMeSuperMemberProcessor)this.a.a("d_vip_identity");
+    Object localObject1 = (QQSettingMeSuperMemberProcessor)this.a.b("d_vip_identity");
     if (paramInt == 1)
     {
       if (paramBoolean)
@@ -48,7 +48,7 @@ class DrawerBizFacade$1
           if (localObject2 != null)
           {
             if (localObject1 != null) {
-              ((QQSettingMeSuperMemberProcessor)localObject1).b().a = ((String)localObject2);
+              ((QQSettingMeSuperMemberProcessor)localObject1).l().b = ((String)localObject2);
             }
             if (QLog.isColorLevel())
             {
@@ -60,18 +60,18 @@ class DrawerBizFacade$1
             this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", (String)localObject2).apply();
           }
         }
-        this.a.a("d_head_vip").g();
+        this.a.b("d_head_vip").i();
         if (paramObject.medalInfoList != null) {
           PrettyAccountUtil.a(paramObject.medalInfoList.lhNumFlag, paramObject.medalInfoList.lhLogoLv);
         }
         ThreadManagerV2.getUIHandlerV2().post(new DrawerBizFacade.1.1(this));
       }
-      this.a.a("d_pretty_num").g();
+      this.a.b("d_pretty_num").i();
       return;
     }
     if ((paramBoolean) && (paramInt == 6))
     {
-      this.a.a("d_pretty_num").g();
+      this.a.b("d_pretty_num").i();
       return;
     }
     if (paramInt == 4)
@@ -86,7 +86,7 @@ class DrawerBizFacade$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.1
  * JD-Core Version:    0.7.0.1
  */

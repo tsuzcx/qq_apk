@@ -12,15 +12,15 @@ class AIOPushDialogHelper$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new HttpMqqJumper(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).jdField_a_of_type_AndroidContentContext, AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).a()).a(this.jdField_a_of_type_JavaLangString).a(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper)).a();
-    AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper);
-    ReportController.b(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper), "dc00898", "", "", "0X800B9A3", "0X800B9A3", 0, 0, "", "", "", "");
-    ReportController.b(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).a(), "dc00898", "", "", "0X800A4BD", "0X800A4BD", 0, 0, "", "", "", "");
+    new HttpMqqJumper(AIOPushDialogHelper.a(this.b).e, AIOPushDialogHelper.a(this.b).i()).a(this.a).a(AIOPushDialogHelper.a(this.b).ah).a(AIOPushDialogHelper.a(this.b)).a();
+    AIOPushDialogHelper.b(this.b);
+    ReportController.b(AIOPushDialogHelper.c(this.b), "dc00898", "", "", "0X800B9A3", "0X800B9A3", 0, 0, "", "", "", "");
+    ReportController.b(AIOPushDialogHelper.a(this.b).i(), "dc00898", "", "", "0X800A4BD", "0X800A4BD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.4
  * JD-Core Version:    0.7.0.1
  */

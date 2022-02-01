@@ -19,17 +19,17 @@ import com.tencent.mobileqq.widget.DecelerateAccelerateInterpolator;
 public class ForwardRecentItemView
   extends RelativeLayout
 {
-  public int a;
   public View a;
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ResultRecord a;
-  public String a;
-  public int b;
-  public View b;
   public TextView b;
+  public TextView c;
+  public ImageView d;
+  public CheckBox e;
+  public RelativeLayout f;
+  public View g;
+  public String h;
+  public int i;
+  public int j;
+  public ResultRecord k;
   
   public ForwardRecentItemView(Context paramContext)
   {
@@ -40,25 +40,25 @@ public class ForwardRecentItemView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131562730, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376664));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378461));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378463));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364613));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379859);
+    this.a = View.inflate(getContext(), 2131629164, this);
+    this.f = ((RelativeLayout)this.a.findViewById(2131444929));
+    this.b = ((TextView)this.a.findViewById(2131447063));
+    this.c = ((TextView)this.a.findViewById(2131447065));
+    this.d = ((ImageView)this.a.findViewById(2131435219));
+    this.e = ((CheckBox)this.a.findViewById(2131430688));
+    this.g = this.a.findViewById(2131448716);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298276);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296820);
+    this.i = getResources().getDimensionPixelOffset(2131298977);
+    this.j = getResources().getDimensionPixelOffset(2131297151);
   }
   
   public void a(long paramLong)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -this.i, 0 });
     localValueAnimator.setInterpolator(new DecelerateAccelerateInterpolator());
     localValueAnimator.setDuration(paramLong);
     localValueAnimator.addUpdateListener(new ForwardRecentItemView.1(this, localLayoutParams));
@@ -72,66 +72,66 @@ public class ForwardRecentItemView
   
   public void a(String paramString1, String paramString2, Drawable paramDrawable, ResultRecord paramResultRecord, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord = paramResultRecord;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.h = paramString1;
+    this.k = paramResultRecord;
+    this.b.setText(paramString1);
+    this.d.setImageDrawable(paramDrawable);
     boolean bool = TextUtils.isEmpty(paramString2);
-    int i = 8;
+    int m = 8;
     if (bool)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.c.setVisibility(8);
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(0);
       if (paramString2.startsWith("(")) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
+        this.c.setText(paramString2);
       } else {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("(%s)", new Object[] { paramString2 }));
+        this.c.setText(String.format("(%s)", new Object[] { paramString2 }));
       }
     }
-    paramString2 = this.jdField_b_of_type_AndroidViewView;
+    paramString2 = this.g;
     if (paramString2 != null)
     {
       if (paramBoolean3) {
-        i = 0;
+        m = 0;
       }
-      paramString2.setVisibility(i);
+      paramString2.setVisibility(m);
     }
-    paramString2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    int k = this.jdField_a_of_type_Int;
-    paramString2.leftMargin = (-k);
-    int j = this.jdField_b_of_type_Int;
-    i = j;
+    paramString2 = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+    int i1 = this.i;
+    paramString2.leftMargin = (-i1);
+    int n = this.j;
+    m = n;
     if (paramBoolean1)
     {
       paramString2.leftMargin = 0;
-      i = j - k;
+      m = n - i1;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramString2);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(i);
-    if (AppSetting.d) {
+    this.f.setLayoutParams(paramString2);
+    this.e.setChecked(paramBoolean2);
+    this.b.setMaxWidth(m);
+    if (AppSetting.e) {
       setContentDescription(paramString1);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-    if (AppSetting.d)
+    this.e.setChecked(paramBoolean);
+    if (AppSetting.e)
     {
       Object localObject = getResources();
-      int i;
+      int m;
       if (paramBoolean) {
-        i = 2131690858;
+        m = 2131887795;
       } else {
-        i = 2131720100;
+        m = 2131917725;
       }
-      localObject = ((Resources)localObject).getString(i);
+      localObject = ((Resources)localObject).getString(m);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.h);
       localStringBuilder.append((String)localObject);
       setContentDescription(localStringBuilder.toString());
     }
@@ -139,8 +139,8 @@ public class ForwardRecentItemView
   
   public void b(long paramLong)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.i });
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     localValueAnimator.setDuration(paramLong);
     localValueAnimator.addUpdateListener(new ForwardRecentItemView.2(this, localLayoutParams));
@@ -149,15 +149,15 @@ public class ForwardRecentItemView
   
   public void setMultiSelectStatus()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
     localLayoutParams.leftMargin = 0;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int);
+    this.f.setLayoutParams(localLayoutParams);
+    this.b.setMaxWidth(this.j - this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ForwardRecentItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,8 @@ class LottieLoader$1
       paramDownloadResult.append(paramString);
       QLog.i("LottieLoader", 0, paramDownloadResult.toString());
     }
-    LottieLoader.a(this.jdField_a_of_type_CooperationVipJsoninflateLottieLoader, 2);
-    LottieLoader.a(this.jdField_a_of_type_CooperationVipJsoninflateLottieLoader, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    LottieLoader.a(this.c, 2);
+    LottieLoader.a(this.c, false, paramString, this.a, this.b);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
@@ -35,12 +35,12 @@ class LottieLoader$1
       paramDownloadResult.append(paramString);
       QLog.i("LottieLoader", 0, paramDownloadResult.toString());
     }
-    LottieLoader.b(this.jdField_a_of_type_CooperationVipJsoninflateLottieLoader, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    LottieLoader.b(this.c, true, paramString, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.jsoninflate.LottieLoader.1
  * JD-Core Version:    0.7.0.1
  */

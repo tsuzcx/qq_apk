@@ -38,7 +38,7 @@ public class DataLineMsgSet
       if (paramDataLineMsgRecord.fileMsgStatus == 2L) {
         return true;
       }
-      return (paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!FileUtil.b(paramDataLineMsgRecord.path)));
+      return (paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!FileUtil.d(paramDataLineMsgRecord.path)));
     }
     return true;
   }
@@ -460,7 +460,7 @@ public class DataLineMsgSet
   
   public boolean isTimeOut()
   {
-    return MessageCache.a() - this.mLastArriveTime > 90L;
+    return MessageCache.c() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
@@ -625,7 +625,7 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (MessageCache.a() - 95L);
+    this.mLastArriveTime = (MessageCache.c() - 95L);
     if (QLog.isColorLevel())
     {
       String str = TAG;
@@ -681,7 +681,7 @@ public class DataLineMsgSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgSet
  * JD-Core Version:    0.7.0.1
  */

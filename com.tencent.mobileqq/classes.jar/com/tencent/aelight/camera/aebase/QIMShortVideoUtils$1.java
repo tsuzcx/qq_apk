@@ -20,7 +20,7 @@ final class QIMShortVideoUtils$1
   
   public void run()
   {
-    if (QIMShortVideoUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
+    if (QIMShortVideoUtils.b(this.a)) {
       return;
     }
     int m = 1;
@@ -77,7 +77,7 @@ final class QIMShortVideoUtils$1
     {
       if (PeakUtils.a == null)
       {
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.b;
         localObject2 = str;
         if (str == null) {
           localObject2 = "peak_preload";
@@ -85,11 +85,11 @@ final class QIMShortVideoUtils$1
         PeakUtils.a = new PreloadProcHitSession((String)localObject2, "com.tencent.mobileqq:peak");
         PeakUtils.a.a();
       }
-      Object localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, ((IAEClassManager)QRoute.api(IAEClassManager.class)).getPeakServiceClass());
+      Object localObject2 = new Intent(this.a, ((IAEClassManager)QRoute.api(IAEClassManager.class)).getPeakServiceClass());
       ((Intent)localObject2).putExtra("ServiceAction", 2);
       try
       {
-        this.jdField_a_of_type_AndroidContentContext.startService((Intent)localObject2);
+        this.a.startService((Intent)localObject2);
       }
       catch (Throwable localThrowable)
       {
@@ -105,7 +105,7 @@ final class QIMShortVideoUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMShortVideoUtils.1
  * JD-Core Version:    0.7.0.1
  */

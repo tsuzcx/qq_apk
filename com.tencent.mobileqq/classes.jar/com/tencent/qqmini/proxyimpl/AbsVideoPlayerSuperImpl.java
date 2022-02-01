@@ -23,12 +23,12 @@ import com.tencent.superplayer.view.ISPlayerVideoView;
 public class AbsVideoPlayerSuperImpl
   extends AbsVideoPlayer
 {
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private ISPlayerVideoView jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
+  private ISuperPlayer a;
+  private ISPlayerVideoView b;
   
   public int captureImageInTime(int paramInt1, int paramInt2)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       try
       {
@@ -45,14 +45,14 @@ public class AbsVideoPlayerSuperImpl
   
   public void createVideoView(Context paramContext, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener)
   {
-    if (QQVideoPlaySDKManager.a())
+    if (QQVideoPlaySDKManager.isSDKReady())
     {
       QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "createVideoView: superPlayer sdk is ready");
-      this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView);
+      this.b = SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext());
+      this.a = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, this.b);
       if (paramOnVideoViewInitListener != null)
       {
-        paramContext = this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
+        paramContext = this.b;
         if ((paramContext instanceof View)) {
           paramOnVideoViewInitListener.onVideoViewInit((View)paramContext);
         }
@@ -61,13 +61,13 @@ public class AbsVideoPlayerSuperImpl
     else
     {
       QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "superPlayer sdk no ready when doing createVideoView");
-      QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), new AbsVideoPlayerSuperImpl.1(this, paramOnVideoViewInitListener));
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), new AbsVideoPlayerSuperImpl.1(this, paramOnVideoViewInitListener));
     }
   }
   
   public long getCurrentPostion()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       return localISuperPlayer.getCurrentPositionMs();
     }
@@ -76,7 +76,7 @@ public class AbsVideoPlayerSuperImpl
   
   public long getDuration()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       return localISuperPlayer.getDurationMs();
     }
@@ -85,7 +85,7 @@ public class AbsVideoPlayerSuperImpl
   
   public boolean getOutputMute()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       return localISuperPlayer.isOutputMute();
     }
@@ -94,7 +94,7 @@ public class AbsVideoPlayerSuperImpl
   
   public int getVideoHeight()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       return localISuperPlayer.getVideoHeight();
     }
@@ -103,7 +103,7 @@ public class AbsVideoPlayerSuperImpl
   
   public int getVideoWidth()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       return localISuperPlayer.getVideoWidth();
     }
@@ -112,7 +112,7 @@ public class AbsVideoPlayerSuperImpl
   
   public boolean isPlaying()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       return localISuperPlayer.isPlaying();
     }
@@ -121,19 +121,19 @@ public class AbsVideoPlayerSuperImpl
   
   public void openMediaPlayerByUrl(Context paramContext, String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    if (this.a != null)
     {
       paramString = SuperPlayerFactory.createVideoInfoForUrl(paramString, 104, MD5Utils.toMD5(paramString));
       SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
       localSuperPlayerOption.enableCodecReuse = false;
       localSuperPlayerOption.isPrePlay = false;
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(paramContext, paramString, paramLong);
+      this.a.openMediaPlayer(paramContext, paramString, paramLong);
     }
   }
   
   public void pause()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.pause();
     }
@@ -141,7 +141,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void release()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.release();
     }
@@ -149,7 +149,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void seekTo(int paramInt)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.seekTo(paramInt);
     }
@@ -157,7 +157,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setLoopback(boolean paramBoolean)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setLoopback(paramBoolean);
     }
@@ -165,7 +165,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnCaptureImageListener(AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOnCaptureImageListener(new AbsVideoPlayerSuperImpl.7(this, paramOnCaptureImageListener));
     }
@@ -173,7 +173,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnCompletionListener(AbsVideoPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOnCompletionListener(new AbsVideoPlayerSuperImpl.3(this, paramOnCompletionListener));
     }
@@ -183,7 +183,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnErrorListener(AbsVideoPlayer.OnErrorListener paramOnErrorListener)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOnErrorListener(new AbsVideoPlayerSuperImpl.4(this, paramOnErrorListener));
     }
@@ -191,7 +191,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnInfoListener(AbsVideoPlayer.OnInfoListener paramOnInfoListener)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOnInfoListener(new AbsVideoPlayerSuperImpl.5(this, paramOnInfoListener));
     }
@@ -199,7 +199,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnSeekCompleteListener(AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOnSeekCompleteListener(new AbsVideoPlayerSuperImpl.6(this, paramOnSeekCompleteListener));
     }
@@ -207,7 +207,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnVideoPreparedListener(AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOnVideoPreparedListener(new AbsVideoPlayerSuperImpl.2(this, paramOnVideoPreparedListener));
     }
@@ -215,7 +215,7 @@ public class AbsVideoPlayerSuperImpl
   
   public boolean setOutputMute(boolean paramBoolean)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null)
     {
       localISuperPlayer.setOutputMute(paramBoolean);
@@ -226,7 +226,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void setXYaxis(int paramInt)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.setXYaxis(paramInt);
     }
@@ -234,7 +234,7 @@ public class AbsVideoPlayerSuperImpl
   
   public void start()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.start();
     }
@@ -242,12 +242,12 @@ public class AbsVideoPlayerSuperImpl
   
   public void startPlayDanmu()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
   }
   
   public void stop()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer != null) {
       localISuperPlayer.stop();
     }
@@ -255,12 +255,12 @@ public class AbsVideoPlayerSuperImpl
   
   public void stopPlayDanmu()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerSuperImpl
  * JD-Core Version:    0.7.0.1
  */

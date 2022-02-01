@@ -15,47 +15,47 @@ class BubbleNewAIOAnim$6
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.d != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.e != null))
+    if ((this.b.u != null) && (this.b.v != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.d.setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.e.setVisibility(0);
-      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
-      paramAnimator.jdField_a_of_type_Long = -1L;
-      BubbleNewAIOAnim localBubbleNewAIOAnim = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim;
+      this.b.u.setVisibility(4);
+      this.b.v.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.b.y.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      paramAnimator.c = -1L;
+      BubbleNewAIOAnim localBubbleNewAIOAnim = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("show pendant, ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.e);
       localBubbleNewAIOAnim.a(localStringBuilder.toString());
       paramAnimator.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c.setVisibility(0);
+    if (this.b.t != null) {
+      this.b.t.setVisibility(0);
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.d != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.e != null))
+    if ((this.b.u != null) && (this.b.v != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.d.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.e.setVisibility(4);
-      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
-      BubbleNewAIOAnim localBubbleNewAIOAnim = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim;
+      this.b.u.setVisibility(0);
+      this.b.v.setVisibility(4);
+      paramAnimator = (AvatarPendantManager)this.b.y.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      BubbleNewAIOAnim localBubbleNewAIOAnim = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("stop show pendant, ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.e);
       localBubbleNewAIOAnim.a(localStringBuilder.toString());
-      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.jdField_a_of_type_Long;
+      paramAnimator.c = this.b.e;
       paramAnimator.a();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAnimConf$PendantAnimConf.e))) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c.setVisibility(4);
+    if ((this.b.t != null) && (TextUtils.isEmpty(this.a.m))) {
+      this.b.t.setVisibility(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.6
  * JD-Core Version:    0.7.0.1
  */

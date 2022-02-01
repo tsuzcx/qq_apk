@@ -3,7 +3,7 @@ package com.tencent.mobileqq.popanim.state;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.QQEmoticonPanelLinearLayoutHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import mqq.app.MobileQQ;
 
@@ -17,10 +17,8 @@ public class TouchUpState
   
   public void a(BaseState paramBaseState)
   {
-    if (this.a.a != null) {
-      this.a.a.getView().removeView(this.a.a.getStickerMaskLayout());
-    }
-    if (this.a.d)
+    this.c.g.removeStickerMaskOnPanel();
+    if (this.c.k)
     {
       paramBaseState = MobileQQ.sMobileQQ.waitAppRuntime(null);
       ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(paramBaseState, "StickerBubble", false);
@@ -30,7 +28,7 @@ public class TouchUpState
   public boolean a(MotionEvent paramMotionEvent)
   {
     if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-      this.a.a();
+      this.c.a();
     }
     return true;
   }
@@ -39,7 +37,7 @@ public class TouchUpState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.TouchUpState
  * JD-Core Version:    0.7.0.1
  */

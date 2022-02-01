@@ -16,21 +16,21 @@ class DatalineChatPie$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a(true);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1).a(true);
-    if (QFileAssistantUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+    this.this$0.d.getDataLineMsgProxy(0).a(true);
+    this.this$0.d.getDataLineMsgProxy(1).a(true);
+    if (QFileAssistantUtils.a(this.this$0.ah.b))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().putExtra("qq_sub_business_id", 110);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().putExtra("enter_from", 51);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationFileAssistant.a);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationFileAssistant.a);
+      this.this$0.f.getIntent().putExtra("qq_sub_business_id", 110);
+      this.this$0.f.getIntent().putExtra("enter_from", 51);
+      this.this$0.f.getIntent().putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationFileAssistant.a);
+      this.this$0.f.getIntent().putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationFileAssistant.a);
     }
     DatalineChatPie.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.3
  * JD-Core Version:    0.7.0.1
  */

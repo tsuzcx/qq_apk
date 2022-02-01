@@ -1,32 +1,59 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.subaccount.api.ISubAccountControllUtil;
+import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class AccountManageActivity$9
-  implements View.OnClickListener
+  implements Runnable
 {
   AccountManageActivity$9(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    AccountManageActivity.a(this.a).show();
-    if (AccountManageActivity.a(this.a))
+    if (this.this$0.app.getProxyManager().g().c(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000) != null)
     {
-      ReportController.a(this.a.app, "0X800B7D8");
-      ReportController.a(this.a.app, "0X800B7D9");
+      int i = DBUtils.a().b(this.this$0.app.getCurrentAccountUin());
+      StringBuilder localStringBuilder;
+      if (i >= 3)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refreshSubAccount() set stick2top fail.");
+          localStringBuilder.append(this.this$0.app.getCurrentAccountUin());
+          localStringBuilder.append(" count=");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" >=maxStick2TopCount , return.");
+          QLog.d("AccountManageActivity", 2, localStringBuilder.toString());
+        }
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("refreshSubAccount() RecentList has default subAccount RU. go 2 stick2Top, current count=");
+        localStringBuilder.append(i);
+        QLog.d("AccountManageActivity", 2, localStringBuilder.toString());
+      }
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).setTopInRecentList(this.this$0.app, AppConstants.SUBACCOUNT_ASSISTANT_UIN, true);
+      DBUtils.a().a(this.this$0.app.getCurrentAccountUin(), i);
+      return;
     }
-    AccountManageActivity.a(this.a, false);
-    ReportController.a(this.a.app, "0X800B83B");
-    EventCollector.getInstance().onViewClicked(paramView);
+    DBUtils.a().a(this.this$0.app.getCurrentAccountUin(), 3);
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "recent list does not exist ruDefault.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.9
  * JD-Core Version:    0.7.0.1
  */

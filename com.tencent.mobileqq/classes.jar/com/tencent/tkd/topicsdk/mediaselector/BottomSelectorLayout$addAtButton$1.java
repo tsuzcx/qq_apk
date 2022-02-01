@@ -10,11 +10,9 @@ import kotlin.jvm.functions.Function0;
 final class BottomSelectorLayout$addAtButton$1
   implements View.OnClickListener
 {
-  BottomSelectorLayout$addAtButton$1(BottomSelectorLayout paramBottomSelectorLayout) {}
-  
   public final void onClick(View paramView)
   {
-    paramView = this.a.a();
+    paramView = this.a.getOnAtButtonClickListener();
     if (paramView != null) {
       paramView = (Unit)paramView.invoke();
     }
@@ -22,7 +20,7 @@ final class BottomSelectorLayout$addAtButton$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addAtButton.1
  * JD-Core Version:    0.7.0.1
  */

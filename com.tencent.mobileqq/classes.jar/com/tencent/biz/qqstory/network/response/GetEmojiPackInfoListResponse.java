@@ -16,11 +16,11 @@ import java.util.List;
 public class GetEmojiPackInfoListResponse
   extends BaseResponse
 {
-  public final long a;
-  public final String a;
   public final List<GetEmojiPackInfoListResponse.EmojiPack> a;
-  public final boolean a;
-  public final byte[] a;
+  public final boolean b;
+  public final String e;
+  public final long f;
+  public final byte[] g;
   
   public GetEmojiPackInfoListResponse(qqstory_service.RspGetEmoticonPackList paramRspGetEmoticonPackList, byte[] paramArrayOfByte, long paramLong)
   {
@@ -31,8 +31,8 @@ public class GetEmojiPackInfoListResponse
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
+    this.b = bool;
+    this.e = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
     ArrayList localArrayList = new ArrayList();
     paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
     if (paramRspGetEmoticonPackList != null)
@@ -54,21 +54,21 @@ public class GetEmojiPackInfoListResponse
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+    this.a = Collections.unmodifiableList(localArrayList);
+    this.f = paramLong;
+    this.g = new byte[paramArrayOfByte.length];
+    System.arraycopy(paramArrayOfByte, 0, this.g, 0, paramArrayOfByte.length);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetEmojiPackInfoListResponse{mEmojiPackList.size=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.a.size());
     localStringBuilder.append(", mIsEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mNextCookie='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -76,7 +76,7 @@ public class GetEmojiPackInfoListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse
  * JD-Core Version:    0.7.0.1
  */

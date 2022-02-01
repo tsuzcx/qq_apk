@@ -13,32 +13,22 @@ import java.lang.ref.WeakReference;
 public class GathererCompContext
   extends BaseContext
 {
-  public static final GathererCompContext a;
-  private ProviderResultCache jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGatherergaCoreInternalComponentGathererCompContext = new GathererCompContext();
-  }
+  public static final GathererCompContext a = new GathererCompContext();
+  private WeakReference<Context> b;
+  private String c;
+  private ProviderResultCache d;
   
   public static <T> void a(Class<T> paramClass, Class<?> paramClass1)
   {
-    jdField_a_of_type_ComTencentGatherergaCoreInternalComponentGathererCompContext.b(paramClass, paramClass1);
-  }
-  
-  public ProviderResultCache a()
-  {
-    return this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache;
+    a.b(paramClass, paramClass1);
   }
   
   protected Object a(Class<?> paramClass, Object paramObject)
   {
-    paramClass = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramClass = this.b;
     if ((paramClass != null) && (paramClass.get() != null))
     {
-      ((IBase)paramObject).a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      ((IBase)paramObject).a((Context)this.b.get());
       return paramObject;
     }
     return null;
@@ -46,22 +36,27 @@ public class GathererCompContext
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
   
   public void a(GathererConfigInternal paramGathererConfigInternal)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGathererConfigInternal.a());
-    this.jdField_a_of_type_JavaLangString = paramGathererConfigInternal.a();
-    GLog.a(paramGathererConfigInternal.a());
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache = paramGathererConfigInternal.a();
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache.a(paramGathererConfigInternal.a());
+    this.b = new WeakReference(paramGathererConfigInternal.a());
+    this.c = paramGathererConfigInternal.e();
+    GLog.a(paramGathererConfigInternal.i());
+    this.d = paramGathererConfigInternal.f();
+    this.d.a(paramGathererConfigInternal.a());
     a(CloudConfigDB.class, CouldConfigDBImpl.class);
+  }
+  
+  public ProviderResultCache c()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.component.GathererCompContext
  * JD-Core Version:    0.7.0.1
  */

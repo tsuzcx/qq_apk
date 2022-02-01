@@ -7,17 +7,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 
 class DoodleDrawer$DrawThread
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Handler b;
   
   DoodleDrawer$DrawThread(DoodleDrawer paramDoodleDrawer) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    if (this.b == null)
     {
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
       localHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+      this.b = new Handler(localHandlerThread.getLooper());
     }
   }
   
@@ -25,7 +25,7 @@ class DoodleDrawer$DrawThread
   {
     if (paramRunnable != null)
     {
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      Handler localHandler = this.b;
       if (localHandler == null) {
         return;
       }
@@ -35,18 +35,18 @@ class DoodleDrawer$DrawThread
   
   public void b()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.b.getLooper().quit();
+      this.b = null;
     }
   }
   
   public void c()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -54,7 +54,7 @@ class DoodleDrawer$DrawThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.DrawThread
  * JD-Core Version:    0.7.0.1
  */

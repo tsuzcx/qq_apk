@@ -22,12 +22,12 @@ public class TbsConfig
   public static final boolean TBS_LOG = true;
   public static final boolean TBS_LOG_ENCRYPT = true;
   public static final boolean TBS_NETWORK_SIMULATE_SWITCH = false;
-  public static final String TBS_SDK_VERSIONNAME = "4.3.0.73";
+  public static final String TBS_SDK_VERSIONNAME = "4.3.0.169";
   public static final boolean TBS_UNZIP_SIMULATE_SWITCH = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsConfig
  * JD-Core Version:    0.7.0.1
  */

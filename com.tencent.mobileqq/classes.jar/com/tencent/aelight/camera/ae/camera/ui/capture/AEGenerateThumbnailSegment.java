@@ -86,31 +86,31 @@ public class AEGenerateThumbnailSegment
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
     AEQLog.a("AEGenerateThumbnailSegment", "start generate thumb ...");
-    paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGenerateThumbArgs;
-    int i = paramJobContext.c;
-    Bitmap localBitmap = a(paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource.a());
+    paramJobContext = paramGenerateContext.i;
+    int i = paramJobContext.g;
+    Bitmap localBitmap = a(paramGenerateContext.c.a());
     if (localBitmap != null)
     {
-      String str = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, ".jpg");
-      if (new GenerateThumbTask(localBitmap, str, paramJobContext.jdField_a_of_type_Int, paramJobContext.jdField_b_of_type_Int, i, paramJobContext.jdField_a_of_type_Float, paramJobContext.jdField_a_of_type_Double, paramJobContext.jdField_b_of_type_Double, paramGenerateContext.jdField_a_of_type_Int).a(new Void[0]).intValue() == 0)
+      String str = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".jpg");
+      if (new GenerateThumbTask(localBitmap, str, paramJobContext.b, paramJobContext.c, i, paramJobContext.e, paramJobContext.h, paramJobContext.i, paramGenerateContext.b).a(new Void[0]).intValue() == 0)
       {
-        paramGenerateContext.jdField_a_of_type_JavaLangString = str;
-        paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath = str;
+        paramGenerateContext.j = str;
+        paramGenerateContext.d.thumbPath = str;
         AEQLog.c("AEGenerateThumbnailSegment", "generate %d thumb success ...");
         super.notifyResult(paramGenerateContext);
         return;
       }
       AEQLog.c("AEGenerateThumbnailSegment", "generate %d thumb failed ...");
-      super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131705770)));
+      super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131903655)));
       return;
     }
     AEQLog.c("AEGenerateThumbnailSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null");
-    super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131705771)));
+    super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131903656)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.capture.AEGenerateThumbnailSegment
  * JD-Core Version:    0.7.0.1
  */

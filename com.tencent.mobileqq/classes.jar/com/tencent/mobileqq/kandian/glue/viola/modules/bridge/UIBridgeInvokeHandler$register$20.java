@@ -20,12 +20,12 @@ final class UIBridgeInvokeHandler$register$20
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    this.this$0.a().setTitleClickListener(paramString);
+    this.this$0.d().setTitleClickListener(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.UIBridgeInvokeHandler.register.20
  * JD-Core Version:    0.7.0.1
  */

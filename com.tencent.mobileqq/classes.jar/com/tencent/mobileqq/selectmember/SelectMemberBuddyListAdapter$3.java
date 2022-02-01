@@ -16,13 +16,13 @@ class SelectMemberBuddyListAdapter$3
   public void onClick(View paramView)
   {
     ((ISelectMemberRefatorHelperApi)QRoute.api(ISelectMemberRefatorHelperApi.class)).startGroupManager((Activity)SelectMemberBuddyListAdapter.a(this.a));
-    ReportController.b(SelectMemberBuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    ReportController.b(SelectMemberBuddyListAdapter.b(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberBuddyListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

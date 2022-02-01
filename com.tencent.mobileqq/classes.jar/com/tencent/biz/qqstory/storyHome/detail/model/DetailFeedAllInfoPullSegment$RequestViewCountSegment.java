@@ -24,7 +24,7 @@ class DetailFeedAllInfoPullSegment$RequestViewCountSegment
     GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
-    localGetFeedFeatureRequest.a = localArrayList;
+    localGetFeedFeatureRequest.f = localArrayList;
     CmdTaskManger.a().a(localGetFeedFeatureRequest, new DetailFeedAllInfoPullSegment.RequestViewCountSegment.1(this, paramJobContext, paramString));
   }
 }

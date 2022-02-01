@@ -27,9 +27,9 @@ public class RegisterGuideView
   extends GuideBaseFragment
   implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private Button b;
+  private View f;
+  private Button g;
+  private Button h;
   
   public RegisterGuideView() {}
   
@@ -44,41 +44,41 @@ public class RegisterGuideView
     paramView.getId();
     int i = paramView.getId();
     Object localObject;
-    if (i == 2131363969)
+    if (i == 2131429928)
     {
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
-      ReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800AA26", "0X800AA26", 0, 0, "", "", "", "");
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getIntent();
+      ReportController.b(this.a, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
+      ReportController.a(this.a, "dc00898", "", "", "0X800AA26", "0X800AA26", 0, 0, "", "", "", "");
+      localObject = this.b.getIntent();
       ((Intent)localObject).putExtra("from_register_guide", true);
       ((Intent)localObject).putExtra("is_need_show_logo_animation", true);
-      localObject = GuideHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_MqqAppAppRuntime);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack.changeGuideBaseView((GuideBaseFragment)localObject);
+      localObject = GuideHandler.a(this.b, this.a);
+      if (this.c != null) {
+        this.c.changeGuideBaseView((GuideBaseFragment)localObject);
       }
     }
-    else if (i == 2131364031)
+    else if (i == 2131429986)
     {
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
-      ReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800AA25", "0X800AA25", 0, 0, "", "", "", "");
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, RegisterPhoneNumActivity.class);
-      ((Intent)localObject).putExtra("key_register_from", 2);
-      ((Intent)localObject).putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131690706));
+      ReportController.b(this.a, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
+      ReportController.a(this.a, "dc00898", "", "", "0X800AA25", "0X800AA25", 0, 0, "", "", "", "");
+      localObject = new Intent(this.b, RegisterPhoneNumActivity.class);
+      ((Intent)localObject).putExtra("key_register_from", 3);
+      ((Intent)localObject).putExtra("leftViewText", this.b.getString(2131887625));
       ((Intent)localObject).addFlags(67108864);
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
+      this.b.startActivity((Intent)localObject);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131559318, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131363715);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131363969));
-    this.b = ((Button)paramViewGroup.findViewById(2131364031));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-    paramBundle = (ImageView)paramViewGroup.findViewById(2131377783);
+    paramViewGroup = paramLayoutInflater.inflate(2131625267, paramViewGroup, false);
+    this.f = paramViewGroup.findViewById(2131429638);
+    this.f.setVisibility(0);
+    this.g = ((Button)paramViewGroup.findViewById(2131429928));
+    this.h = ((Button)paramViewGroup.findViewById(2131429986));
+    this.g.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    paramBundle = (ImageView)paramViewGroup.findViewById(2131446244);
     paramLayoutInflater = "splash.jpg";
     try
     {
@@ -98,7 +98,7 @@ public class RegisterGuideView
         paramBundle.append(paramLayoutInflater.getMessage());
         QLog.e("LoginActivity.RegisterGuideView", 1, paramBundle.toString());
       }
-      ReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800AA24", "0X800AA24", 0, 0, "", "", "", "");
+      ReportController.a(this.a, "dc00898", "", "", "0X800AA24", "0X800AA24", 0, 0, "", "", "", "");
     }
     catch (Throwable paramLayoutInflater)
     {
@@ -113,7 +113,7 @@ public class RegisterGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.RegisterGuideView
  * JD-Core Version:    0.7.0.1
  */

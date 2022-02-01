@@ -10,9 +10,9 @@ class PubAccountMailJsPlugin$1
 {
   PubAccountMailJsPlugin$1(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.a.a.dismiss();
+    this.a.b.dismiss();
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -44,7 +44,7 @@ class PubAccountMailJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountMailJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

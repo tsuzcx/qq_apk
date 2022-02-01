@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.combo.publisher.IWSPublisherDialogClickListener;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.subscribe.comment.SafeDialog;
 import com.tencent.image.URLImageView;
 
@@ -22,16 +22,17 @@ public class WSPublisherDialog
   extends SafeDialog
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private stPublisherRsp jdField_a_of_type_UserGrowthStPublisherRsp;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSMultiImageManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
+  private Context a;
+  private View b;
+  private TextView d;
+  private TextView e;
+  private URLImageView f;
+  private ImageView g;
+  private LinearLayout h;
+  private stPublisherRsp i;
+  private WSMultiImageManager j;
+  private IWSPublisherDialogClickListener k;
+  private int l;
   
   public WSPublisherDialog(Context paramContext)
   {
@@ -40,13 +41,13 @@ public class WSPublisherDialog
   
   public WSPublisherDialog(Context paramContext, int paramInt1, int paramInt2)
   {
-    this(paramContext, 2131756308, paramInt1, paramInt2);
+    this(paramContext, 2131953466, paramInt1, paramInt2);
   }
   
   protected WSPublisherDialog(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext, paramInt1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     b();
     paramContext = getWindow();
     if (paramContext == null)
@@ -67,7 +68,7 @@ public class WSPublisherDialog
   private void a(String paramString1, String paramString2, int paramInt)
   {
     String str;
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.l == 0) {
       str = "focus";
     } else {
       str = "feeds";
@@ -77,16 +78,16 @@ public class WSPublisherDialog
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560027, null, false);
-    setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381248));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381249));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381220));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381221));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381225));
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381233);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.b = LayoutInflater.from(getContext()).inflate(2131626070, null, false);
+    setContentView(this.b);
+    this.d = ((TextView)this.b.findViewById(2131450296));
+    this.e = ((TextView)this.b.findViewById(2131450297));
+    this.f = ((URLImageView)this.b.findViewById(2131450268));
+    this.g = ((ImageView)this.b.findViewById(2131450269));
+    this.h = ((LinearLayout)this.b.findViewById(2131450273));
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.b.findViewById(2131450281);
+    this.g.setOnClickListener(this);
+    this.h.setOnClickListener(this);
     localRelativeLayout.setOnClickListener(this);
     a("gzh_exposure", "publish_popup", 0);
   }
@@ -100,54 +101,61 @@ public class WSPublisherDialog
   
   private void d()
   {
-    stPublisherRsp localstPublisherRsp = this.jdField_a_of_type_UserGrowthStPublisherRsp;
-    if (localstPublisherRsp == null) {
+    if (this.i == null) {
       return;
     }
-    WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, localstPublisherRsp.weishiSchema, this.jdField_a_of_type_UserGrowthStPublisherRsp.h5Url, this.jdField_a_of_type_UserGrowthStPublisherRsp.miniAppSchema, 0, new WSPublisherDialog.1(this));
+    IWSPublisherDialogClickListener localIWSPublisherDialogClickListener = this.k;
+    if (localIWSPublisherDialogClickListener != null) {
+      localIWSPublisherDialogClickListener.a();
+    }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public void a(stPublisherRsp paramstPublisherRsp)
   {
-    this.jdField_a_of_type_UserGrowthStPublisherRsp = paramstPublisherRsp;
-    paramstPublisherRsp = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841770);
-    Object localObject = this.jdField_a_of_type_UserGrowthStPublisherRsp;
+    this.i = paramstPublisherRsp;
+    paramstPublisherRsp = this.a.getResources().getDrawable(2130842687);
+    Object localObject = this.i;
     if ((localObject != null) && (((stPublisherRsp)localObject).guide != null))
     {
-      localObject = this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.imageUrl;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.desc);
-      this.b.setText(this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.btnText);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager = new WSMultiImageManager();
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager.a(this.jdField_a_of_type_ComTencentImageURLImageView, paramstPublisherRsp, (String)localObject, true, false);
+      localObject = this.i.guide.imageUrl;
+      this.d.setText(this.i.guide.desc);
+      this.e.setText(this.i.guide.btnText);
+      this.j = new WSMultiImageManager();
+      this.j.a(this.f, paramstPublisherRsp, (String)localObject, true, false);
       return;
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramstPublisherRsp);
+    this.f.setImageDrawable(paramstPublisherRsp);
+  }
+  
+  public void a(IWSPublisherDialogClickListener paramIWSPublisherDialogClickListener)
+  {
+    this.k = paramIWSPublisherDialogClickListener;
   }
   
   public void dismiss()
   {
     super.dismiss();
-    WSMultiImageManager localWSMultiImageManager = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager;
+    WSMultiImageManager localWSMultiImageManager = this.j;
     if (localWSMultiImageManager != null)
     {
       localWSMultiImageManager.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager = null;
+      this.j = null;
     }
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131381221)
+    int m = paramView.getId();
+    if (m != 2131450269)
     {
-      if (i != 2131381225)
+      if (m != 2131450273)
       {
-        if (i != 2131381233) {
+        if (m != 2131450281) {
           return;
         }
         a("gzh_click", "publish_popup", 1000001);
@@ -164,7 +172,7 @@ public class WSPublisherDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSPublisherDialog
  * JD-Core Version:    0.7.0.1
  */

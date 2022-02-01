@@ -10,14 +10,14 @@ class OnSocialHeaderFollowClickListener$2$1
   
   public void run()
   {
-    OnSocialHeaderFollowClickListener.a(this.a.a).invalidateProteusTemplateBean();
+    OnSocialHeaderFollowClickListener.a(this.a.b).invalidateProteusTemplateBean();
     ReadInJoyLogicEngineEventDispatcher.a().c();
-    ReadInJoyLogicEngineEventDispatcher.a().a(OnSocialHeaderFollowClickListener.a(this.a.a), true);
+    ReadInJoyLogicEngineEventDispatcher.a().a(OnSocialHeaderFollowClickListener.a(this.a.b), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnSocialHeaderFollowClickListener.2.1
  * JD-Core Version:    0.7.0.1
  */

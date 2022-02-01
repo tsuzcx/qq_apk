@@ -27,7 +27,7 @@ public class QIMPasterConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -64,10 +64,10 @@ public class QIMPasterConfigProcessor
   
   public int migrateOldVersion()
   {
-    if (!QIMPasterConfigManager.a()) {
+    if (!QIMPasterConfigManager.b()) {
       return 0;
     }
-    return SharedPreUtils.C(BaseApplicationImpl.getContext());
+    return SharedPreUtils.W(BaseApplicationImpl.getContext());
   }
   
   public void onReqFailed(int paramInt)
@@ -79,10 +79,10 @@ public class QIMPasterConfigProcessor
   
   public int onSend(int paramInt)
   {
-    if (!QIMPasterConfigManager.a())
+    if (!QIMPasterConfigManager.b())
     {
       QLog.i("QIMStickerConfigProcessor", 1, "config file not exist");
-      QConfigManager.a().a(304, 0);
+      QConfigManager.b().a(304, 0);
       return 0;
     }
     return super.onSend(paramInt);
@@ -95,7 +95,7 @@ public class QIMPasterConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.config.QIMPasterConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

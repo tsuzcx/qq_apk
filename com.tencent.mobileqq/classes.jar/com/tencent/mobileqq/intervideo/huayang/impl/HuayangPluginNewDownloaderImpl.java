@@ -74,7 +74,7 @@ public class HuayangPluginNewDownloaderImpl
     localObject = new Intent("action_iv_plugin_update");
     ((Intent)localObject).putExtra("plugin", paramInstalledPlugin);
     BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject);
-    log("HuayangPluginNewDownloader", HardCodeUtil.a(2131705741));
+    log("HuayangPluginNewDownloader", HardCodeUtil.a(2131903626));
   }
   
   private InstalledPlugin downloadPluginDownloadInfo(ProgressFuture<InstalledPlugin> paramProgressFuture)
@@ -739,7 +739,7 @@ public class HuayangPluginNewDownloaderImpl
   private void notifyDownloadCompleted(InstalledPlugin paramInstalledPlugin, boolean paramBoolean)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705727));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131903612));
     boolean bool;
     if (paramInstalledPlugin == null) {
       bool = true;
@@ -762,7 +762,7 @@ public class HuayangPluginNewDownloaderImpl
   private void notifyPreloadCompete(InstalledPlugin paramInstalledPlugin, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131705729));
+    localStringBuilder.append(HardCodeUtil.a(2131903614));
     localStringBuilder.append(paramInstalledPlugin);
     log("HuayangPluginNewDownloader", localStringBuilder.toString());
     paramInstalledPlugin = Message.obtain(this.mUiHandler, 5, paramInstalledPlugin);
@@ -789,7 +789,7 @@ public class HuayangPluginNewDownloaderImpl
     try
     {
       this.upgradeablePluginManager.preloadApk(this.mAppContext, paramInstalledPlugin, bool).get();
-      log("HuayangPluginNewDownloader", HardCodeUtil.a(2131705721));
+      log("HuayangPluginNewDownloader", HardCodeUtil.a(2131903606));
       if (!this.mIsHaveCache) {
         notifyPreloadCompete(paramInstalledPlugin, true);
       }
@@ -1050,7 +1050,7 @@ public class HuayangPluginNewDownloaderImpl
     //   432: getfield 111	com/tencent/mobileqq/intervideo/huayang/impl/HuayangPluginNewDownloaderImpl:mAppName	Ljava/lang/String;
     //   435: invokeinterface 613 2 0
     //   440: checkcast 608	com/tencent/mobileqq/intervideo/huayang/MonitorConfig
-    //   443: getfield 616	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:g	I
+    //   443: getfield 616	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:h	I
     //   446: invokestatic 618	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   449: invokestatic 621	com/tencent/mobileqq/intervideo/huayang/Monitor:b	(Ljava/lang/String;)V
     //   452: aconst_null
@@ -1085,7 +1085,7 @@ public class HuayangPluginNewDownloaderImpl
     //   516: aload 6
     //   518: ifnull +57 -> 575
     //   521: aload 6
-    //   523: getfield 634	com/tencent/mobileqq/intervideo/IVPluginInfo:j	Ljava/lang/String;
+    //   523: getfield 634	com/tencent/mobileqq/intervideo/IVPluginInfo:o	Ljava/lang/String;
     //   526: astore 6
     //   528: aload 6
     //   530: ifnull +45 -> 575
@@ -1388,7 +1388,7 @@ public class HuayangPluginNewDownloaderImpl
   {
     this.mAppContext = paramContext;
     this.mUiHandler = new Handler(Looper.getMainLooper(), this.mUiHandlerCallback);
-    this.mTestEnv = IVPluginLoader.a();
+    this.mTestEnv = IVPluginLoader.b();
     this.upgradeablePluginManager = new UpgradeablePluginManager(paramFile, paramString, this.mTestEnv);
     this.mDataReporter = new IVPluginDataReporter();
     this.mDataReporter.opDepartment(paramString);
@@ -1412,7 +1412,7 @@ public class HuayangPluginNewDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangPluginNewDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

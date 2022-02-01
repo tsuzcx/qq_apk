@@ -9,12 +9,12 @@ final class ShortVideoResourceManager$3
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ShortVideoResourceManager.a(), this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_short_video_");
+    ShortVideoResourceManager.a(this.a, ShortVideoResourceManager.g(), this.b, "new_qq_android_native_short_video_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3
  * JD-Core Version:    0.7.0.1
  */

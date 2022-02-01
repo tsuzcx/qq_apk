@@ -13,24 +13,16 @@ import org.json.JSONObject;
 
 public class QQSysAndEmojiConfProcessor$EmoticonGuideConfBean
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  public int d = -1;
-  public int e = 0;
-  public int f = 0;
-  public int g = 0;
-  
-  public QQSysAndEmojiConfProcessor$EmoticonGuideConfBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public int a = 0;
+  public int b = 0;
+  public String c = "";
+  public String d = "";
+  public int e = -1;
+  public int f = -1;
+  public long g;
+  public int h = 0;
+  public int i = 0;
+  public int j = 0;
   
   public static EmoticonGuideConfBean a(JSONObject paramJSONObject)
   {
@@ -46,31 +38,31 @@ public class QQSysAndEmojiConfProcessor$EmoticonGuideConfBean
       QLog.i("QQSysAndEmojiConfProcessor", 2, "parse GuideConfBean: ");
     }
     if (paramJSONObject.has("emoticon_guide_url")) {
-      localEmoticonGuideConfBean.jdField_a_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_url");
+      localEmoticonGuideConfBean.c = paramJSONObject.optString("emoticon_guide_url");
     }
     if (paramJSONObject.has("emoticon_guide_night_url")) {
-      localEmoticonGuideConfBean.jdField_b_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_night_url");
+      localEmoticonGuideConfBean.d = paramJSONObject.optString("emoticon_guide_night_url");
     }
     if (paramJSONObject.has("emoticon_guide_serverid")) {
-      localEmoticonGuideConfBean.c = paramJSONObject.optInt("emoticon_guide_serverid", -1);
+      localEmoticonGuideConfBean.e = paramJSONObject.optInt("emoticon_guide_serverid", -1);
     }
     if (paramJSONObject.has("emoticon_guide_serverid_type")) {
-      localEmoticonGuideConfBean.d = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
+      localEmoticonGuideConfBean.f = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
     }
     if (paramJSONObject.has("emoticon_guide_width")) {
-      localEmoticonGuideConfBean.e = paramJSONObject.optInt("emoticon_guide_width", 0);
+      localEmoticonGuideConfBean.h = paramJSONObject.optInt("emoticon_guide_width", 0);
     }
     if (paramJSONObject.has("emoticon_guide_height")) {
-      localEmoticonGuideConfBean.f = paramJSONObject.optInt("emoticon_guide_height", 0);
+      localEmoticonGuideConfBean.i = paramJSONObject.optInt("emoticon_guide_height", 0);
     }
     if (paramJSONObject.has("emoticon_guide_open")) {
-      localEmoticonGuideConfBean.jdField_a_of_type_Int = paramJSONObject.optInt("emoticon_guide_open", 0);
+      localEmoticonGuideConfBean.a = paramJSONObject.optInt("emoticon_guide_open", 0);
     }
     if (paramJSONObject.has("emoticon_guide_version")) {
-      localEmoticonGuideConfBean.jdField_b_of_type_Int = paramJSONObject.optInt("emoticon_guide_version", 0);
+      localEmoticonGuideConfBean.b = paramJSONObject.optInt("emoticon_guide_version", 0);
     }
     if (paramJSONObject.has("emoticon_guide_time")) {
-      localEmoticonGuideConfBean.g = paramJSONObject.optInt("emoticon_guide_time", 0);
+      localEmoticonGuideConfBean.j = paramJSONObject.optInt("emoticon_guide_time", 0);
     }
     if (paramJSONObject.has("emoticon_guide_invalid_time"))
     {
@@ -80,7 +72,7 @@ public class QQSysAndEmojiConfProcessor$EmoticonGuideConfBean
         SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
         try
         {
-          localEmoticonGuideConfBean.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramJSONObject).getTime();
+          localEmoticonGuideConfBean.g = localSimpleDateFormat.parse(paramJSONObject).getTime();
           return localEmoticonGuideConfBean;
         }
         catch (Exception paramJSONObject)
@@ -103,17 +95,17 @@ public class QQSysAndEmojiConfProcessor$EmoticonGuideConfBean
     catch (Throwable localThrowable)
     {
       label18:
-      int i;
+      int k;
       break label18;
     }
     QLog.e("QQSysAndEmojiConfProcessor", 1, "getAccount faild ！！！");
     if (TextUtils.isEmpty(localObject)) {
       return false;
     }
-    i = ((Integer)BaseSharedPreUtil.a(BaseApplication.getContext(), localObject, "key_emoticon_guide_version", Integer.valueOf(0))).intValue();
-    if (this.jdField_b_of_type_Int > i)
+    k = ((Integer)BaseSharedPreUtil.a(BaseApplication.getContext(), localObject, "key_emoticon_guide_version", Integer.valueOf(0))).intValue();
+    if (this.b > k)
     {
-      BaseSharedPreUtil.a(BaseApplication.getContext(), localObject, true, "key_emoticon_guide_version", Integer.valueOf(this.jdField_b_of_type_Int));
+      BaseSharedPreUtil.a(BaseApplication.getContext(), localObject, true, "key_emoticon_guide_version", Integer.valueOf(this.b));
       BaseSharedPreUtil.a(BaseApplication.getContext(), localObject, true, "key_show_emoticon_guide", Boolean.valueOf(true));
       return true;
     }
@@ -128,35 +120,35 @@ public class QQSysAndEmojiConfProcessor$EmoticonGuideConfBean
       localStringBuilder.append("currentTimeMillis: ");
       localStringBuilder.append(System.currentTimeMillis());
       localStringBuilder.append(" mInvalidTime: ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.g);
       QLog.i("QQSysAndEmojiConfProcessor", 2, localStringBuilder.toString());
     }
-    return (this.jdField_a_of_type_Int == 1) && (System.currentTimeMillis() < this.jdField_a_of_type_Long);
+    return (this.a == 1) && (System.currentTimeMillis() < this.g);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{mOpen=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mDrawableUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mNightDrawableUrl=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mServerId=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", mEmoType=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", mServerId=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mEmoType=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", mInvalidTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor.EmoticonGuideConfBean
  * JD-Core Version:    0.7.0.1
  */

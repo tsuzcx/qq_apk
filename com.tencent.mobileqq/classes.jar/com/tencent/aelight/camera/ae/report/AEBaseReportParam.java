@@ -33,71 +33,64 @@ import org.json.JSONObject;
 public class AEBaseReportParam
 {
   public static final Long a;
-  public static final Long b;
-  public static final Long c;
-  public static final Long d;
-  public static final Long e;
-  public static final Long f;
-  public static final Long g;
-  private static Long jdField_h_of_type_JavaLangLong;
+  public static final Long b = Long.valueOf(1L);
+  public static final Long c = Long.valueOf(2L);
+  public static final Long d = Long.valueOf(3L);
+  public static final Long e = Long.valueOf(4L);
+  public static final Long f = Long.valueOf(5L);
+  public static final Long g = Long.valueOf(6L);
+  private static Long s;
+  private String A = "none";
+  private int B = 0;
+  private int C = 0;
+  private int D = 0;
+  private AEEditReportData E = new AEEditReportData();
+  private int F = -1;
+  private String G = "none";
+  private String H = null;
+  private String I = null;
+  private long J = 0L;
+  private long K = 0L;
+  private long L = 0L;
+  private long M = 0L;
+  private boolean N;
+  private boolean O = true;
+  private long P = -1L;
+  private long Q = -1L;
+  private String R = "none";
+  private long S = 0L;
+  private long T = 1L;
+  private long U = 1L;
+  private String V = "none";
+  private String W = "none";
+  private String X = "#ffffff";
+  private String Y = "";
+  private String Z = "none";
+  public String h;
+  public String i;
+  private HashMap<String, String> j = new HashMap();
+  private String k;
+  private boolean l = false;
+  private String m;
+  private boolean n;
+  private final Map<String, String> o = new HashMap();
+  private String p;
+  private String q = "";
+  private int r = -1;
   @AEBaseReportParam.EditPicFrom
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private AEEditReportData jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData = new AEEditReportData();
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = -1;
-  private long jdField_b_of_type_Long = -1L;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long = 0L;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 0;
-  private long jdField_d_of_type_Long = 0L;
-  private String jdField_d_of_type_JavaLangString = "none";
-  private boolean jdField_d_of_type_Boolean = true;
-  private int jdField_e_of_type_Int = 0;
-  private long jdField_e_of_type_Long = 0L;
-  private String jdField_e_of_type_JavaLangString = "none";
-  private int jdField_f_of_type_Int = -1;
-  private long jdField_f_of_type_Long = 0L;
-  private String jdField_f_of_type_JavaLangString = "-1";
-  private long jdField_g_of_type_Long = -1L;
-  private String jdField_g_of_type_JavaLangString = "none";
-  private long jdField_h_of_type_Long = -1L;
-  private String jdField_h_of_type_JavaLangString = "none";
-  private long jdField_i_of_type_Long = 0L;
-  private String jdField_i_of_type_JavaLangString = null;
-  private long jdField_j_of_type_Long = 1L;
-  private String jdField_j_of_type_JavaLangString = null;
-  private long jdField_k_of_type_Long = 1L;
-  private String jdField_k_of_type_JavaLangString = "none";
-  private String l = "none";
-  private String m = "none";
-  private String n = "#ffffff";
-  private String o = "";
-  private String p = "none";
+  private int t;
+  private long u;
+  private long v = -1L;
+  private String w = "none";
+  private String x = "none";
+  private int y = -1;
+  private String z = "-1";
   
   static
   {
     Long localLong = Long.valueOf(-1L);
-    jdField_h_of_type_JavaLangLong = localLong;
-    jdField_a_of_type_JavaLangLong = localLong;
-    jdField_b_of_type_JavaLangLong = Long.valueOf(1L);
-    jdField_c_of_type_JavaLangLong = Long.valueOf(2L);
-    jdField_d_of_type_JavaLangLong = Long.valueOf(3L);
-    jdField_e_of_type_JavaLangLong = Long.valueOf(4L);
-    jdField_f_of_type_JavaLangLong = Long.valueOf(5L);
-    jdField_g_of_type_JavaLangLong = Long.valueOf(6L);
-  }
-  
-  private long a()
-  {
-    return System.currentTimeMillis() - this.jdField_b_of_type_Long;
+    s = localLong;
+    a = localLong;
   }
   
   public static AEBaseReportParam a()
@@ -108,64 +101,65 @@ public class AEBaseReportParam
   private HashMap<String, String> a(String paramString1, int paramInt, String paramString2)
   {
     HashMap localHashMap = new HashMap();
-    int i1 = this.jdField_f_of_type_Int;
+    int i1 = this.F;
     if ((i1 != 4) && (i1 != 5) && (i1 != 6) && (i1 != 7) && (i1 != 2)) {
-      localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
+      localHashMap.put("face_id", this.w);
     } else {
-      localHashMap.put("face_id", this.jdField_e_of_type_JavaLangString);
+      localHashMap.put("face_id", this.x);
     }
-    localHashMap.put("content_type", jdField_h_of_type_JavaLangLong.toString());
+    a(localHashMap);
+    localHashMap.put("content_type", s.toString());
     localHashMap.put("MD5", paramString1);
-    paramString1 = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
-    String str = new DecimalFormat("0.00").format(this.jdField_d_of_type_Int / 100.0F);
+    paramString1 = new DecimalFormat("0.00").format(this.B / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.C / 100.0F);
     localHashMap.put("beauty_value", paramString1);
     localHashMap.put("facial_value", str);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localHashMap.put("filter_id", this.jdField_b_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.m)) {
+      localHashMap.put("filter_id", this.m);
     } else {
       localHashMap.put("filter_id", "none");
     }
     paramString1 = new StringBuilder();
     paramString1.append("");
-    paramString1.append(this.jdField_a_of_type_Long);
+    paramString1.append(this.u);
     localHashMap.put("duration", paramString1.toString());
-    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.jdField_a_of_type_Int));
-    if (jdField_h_of_type_JavaLangLong.longValue() == 1L) {
+    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    if (s.longValue() == 1L) {
       localHashMap.put("resolution", AEDashboardUtil.a.d());
-    } else if (jdField_h_of_type_JavaLangLong.longValue() == 2L) {
+    } else if (s.longValue() == 2L) {
       localHashMap.put("resolution", AEDashboardUtil.a.g());
     } else {
       localHashMap.put("resolution", "none");
     }
     paramString1 = new StringBuilder();
-    paramString1.append(this.jdField_a_of_type_Int);
+    paramString1.append(this.t);
     paramString1.append("");
     localHashMap.put("pic_from", paramString1.toString());
     localHashMap.put("post_type", String.valueOf(paramInt));
     localHashMap.put("receive_type", paramString2);
-    localHashMap.put("face_index", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("face_from", this.jdField_f_of_type_JavaLangString);
-    localHashMap.put("face_tab", this.jdField_g_of_type_JavaLangString);
+    localHashMap.put("face_index", String.valueOf(this.y));
+    localHashMap.put("face_from", this.z);
+    localHashMap.put("face_tab", this.A);
     paramString1 = new StringBuilder();
-    paramString1.append(this.jdField_f_of_type_Int);
+    paramString1.append(this.F);
     paramString1.append("");
     localHashMap.put("face_type", paramString1.toString());
-    paramInt = this.jdField_f_of_type_Int;
+    paramInt = this.F;
     if ((paramInt != 4) && (paramInt != 5) && (paramInt != 6) && (paramInt != 7))
     {
       paramString1 = new StringBuilder();
-      paramString1.append(this.jdField_d_of_type_JavaLangString);
+      paramString1.append(this.w);
       paramString1.append(UserAction.getQIMEI());
       localHashMap.put("face_uin", paramString1.toString());
     }
     else
     {
       paramString1 = new StringBuilder();
-      paramString1.append(this.jdField_e_of_type_JavaLangString);
+      paramString1.append(this.x);
       paramString1.append(UserAction.getQIMEI());
       localHashMap.put("face_uin", paramString1.toString());
     }
-    paramString1 = new JSONObject(this.jdField_a_of_type_JavaUtilMap).toString();
+    paramString1 = new JSONObject(this.o).toString();
     paramString2 = new StringBuilder();
     paramString2.append("getPostBtnParam---editJsonStr=");
     paramString2.append(paramString1);
@@ -174,136 +168,439 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
-  private HashMap<String, String> a(String paramString1, String paramString2)
+  private long ac()
+  {
+    return System.currentTimeMillis() - this.v;
+  }
+  
+  private HashMap<String, String> b(String paramString1, String paramString2)
   {
     HashMap localHashMap = new HashMap(6);
     localHashMap.put("face_id", paramString1);
-    localHashMap.put("face_tab", this.jdField_g_of_type_JavaLangString);
+    localHashMap.put("face_tab", this.A);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.F);
     localStringBuilder.append("");
     localHashMap.put("face_type", localStringBuilder.toString());
-    localHashMap.put("face_index", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("face_index", String.valueOf(this.y));
     localHashMap.put("face_from", paramString2);
     paramString2 = new StringBuilder();
     paramString2.append(paramString1);
     paramString2.append(UserAction.getQIMEI());
     localHashMap.put("face_uin", paramString2.toString());
+    a(localHashMap);
     return localHashMap;
   }
   
   public HashMap<String, String> A()
   {
     HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(this.p))
-    {
-      localHashMap.put("emo_sort_id", "none");
-      return localHashMap;
-    }
-    localHashMap.put("emo_sort_id", this.p);
+    localHashMap.put("content_type", String.valueOf(this.E.v));
+    localHashMap.put("red_point", String.valueOf(this.E.F));
     return localHashMap;
+  }
+  
+  public void A(String paramString)
+  {
+    this.W = paramString;
   }
   
   public HashMap<String, String> B()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(this.jdField_i_of_type_Long)));
-    localHashMap.put("cutout_type", Long.toString(this.jdField_j_of_type_Long));
-    localHashMap.put("countdown_type", Long.toString(this.jdField_k_of_type_Long));
-    Object localObject = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
-    String str = new DecimalFormat("0.00").format(this.jdField_d_of_type_Int / 100.0F);
-    localHashMap.put("beauty_value", localObject);
-    localHashMap.put("facial_value", str);
-    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.jdField_a_of_type_Int));
-    localHashMap.put("emoticon_id", this.jdField_k_of_type_JavaLangString);
-    localHashMap.put("text_content", this.m);
-    if (this.m.equals("none")) {
-      localHashMap.put("text_color", "none");
-    } else {
-      localHashMap.put("text_color", this.n);
-    }
-    localObject = VideoFilterTools.a().c(0);
-    if (localObject != null) {
-      this.l = ((QIMFilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;
-    } else {
-      this.l = "none";
-    }
-    localHashMap.put("filter_id", this.l);
-    if (this.o.equals("")) {
-      l();
-    }
-    localHashMap.put("MD5", this.o);
-    if (TextUtils.isEmpty(this.p))
-    {
-      localHashMap.put("emo_sort_id", "none");
-      return localHashMap;
-    }
-    localHashMap.put("emo_sort_id", this.p);
+    localHashMap.put("video_id", this.E.d);
     return localHashMap;
   }
   
-  public HashMap<String, String> C()
+  public void B(String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(this.jdField_i_of_type_Long)));
-    localHashMap.put("cutout_type", Long.toString(this.jdField_j_of_type_Long));
-    localHashMap.put("countdown_type", Long.toString(this.jdField_k_of_type_Long));
-    Object localObject = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
-    String str = new DecimalFormat("0.00").format(this.jdField_d_of_type_Int / 100.0F);
-    localHashMap.put("beauty_value", localObject);
-    localHashMap.put("facial_value", str);
-    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.jdField_a_of_type_Int));
-    localHashMap.put("text_content", this.m);
-    if (!localHashMap.containsKey("emoticon_id")) {
-      localHashMap.put("emoticon_id", this.jdField_k_of_type_JavaLangString);
-    }
-    localObject = VideoFilterTools.a().c(0);
-    if (localObject != null) {
-      this.l = ((QIMFilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;
-    } else {
-      this.l = "none";
-    }
-    localHashMap.put("filter_id", this.l);
-    if (!localHashMap.containsKey("text_color")) {
-      if (this.m.equals("none")) {
-        localHashMap.put("text_color", "none");
-      } else {
-        localHashMap.put("text_color", this.n);
-      }
-    }
-    if (this.o.equals("")) {
-      l();
-    }
-    localHashMap.put("MD5", this.o);
-    if (TextUtils.isEmpty(this.p))
-    {
-      localHashMap.put("emo_sort_id", "none");
-      return localHashMap;
-    }
-    localHashMap.put("emo_sort_id", this.p);
-    return localHashMap;
+    this.X = paramString;
+  }
+  
+  public void C()
+  {
+    this.H = null;
+    this.I = null;
+  }
+  
+  public void C(String paramString)
+  {
+    this.R = paramString;
   }
   
   public HashMap<String, String> D()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("emoticon_id", this.jdField_k_of_type_JavaLangString);
+    localHashMap.put("music_id", this.E.n);
+    localHashMap.put("music_list", this.E.z);
+    localHashMap.put("video_id", this.E.d);
+    String str;
+    if (this.E.p) {
+      str = "1";
+    } else {
+      str = "0";
+    }
+    localHashMap.put("is_recommend", str);
+    localHashMap.put("recommend_index", String.valueOf(this.E.q));
+    localHashMap.put("music_duration", String.valueOf(this.E.r));
+    localHashMap.put("video_duration", String.valueOf(this.E.t));
+    localHashMap.put("video_source", String.valueOf(this.E.u));
     return localHashMap;
   }
   
-  public AEEditReportData a()
+  public void D(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData;
+    this.Z = paramString;
   }
   
-  public String a()
+  public HashMap<String, String> E()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("music_id", this.E.n);
+    localHashMap.put("video_id", this.E.d);
+    localHashMap.put("lyric_status", String.valueOf(this.E.A));
+    return localHashMap;
   }
   
-  public HashMap<String, String> a()
+  public HashMap<String, String> E(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("filter_id", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> F()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("content_type", String.valueOf(this.E.v));
+    localHashMap.put("video_id", this.E.d);
+    localHashMap.put("video_source", String.valueOf(this.E.u));
+    localHashMap.put("video_duration", String.valueOf(this.E.t));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> F(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("text_content", paramString);
+    A(paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> G()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("color_type", this.E.B);
+    localHashMap.put("text_item_id", this.E.C);
+    localHashMap.put("common_color_list", String.valueOf(this.E.D));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> G(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("emoticon_id", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> H()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("content_type", String.valueOf(this.E.v));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> H(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("emoticon_id", this.R);
+    if (TextUtils.isEmpty(paramString))
+    {
+      localHashMap.put("word_source", "none");
+      return localHashMap;
+    }
+    localHashMap.put("word_source", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> I()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("content_type", s.toString());
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> I(@NonNull String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("watermark_id", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> J()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration_first_frame", AEBaseDataUtil.a(Long.valueOf(this.K - this.J)));
+    localHashMap.put("duration_bottom_bar", AEBaseDataUtil.a(Long.valueOf(this.L - this.J)));
+    localHashMap.put("duration_photo_btn", AEBaseDataUtil.a(Long.valueOf(this.M - this.J)));
+    String str;
+    if (AEBaseDataUtil.d()) {
+      str = "first_launch";
+    } else if (this.N) {
+      str = "cold_launch";
+    } else {
+      str = "warm_launch";
+    }
+    localHashMap.put("launch_type", str);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> J(@NonNull String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("gps", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> K()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("OpenGL", GLCapabilities.getGlesVersion());
+    localHashMap.put("shader", String.valueOf(GLCapabilities.isFilamentShaderCompileSucceed()));
+    return localHashMap;
+  }
+  
+  public void L()
+  {
+    this.J = 0L;
+    this.K = 0L;
+    this.L = 0L;
+    this.M = 0L;
+    this.N = false;
+  }
+  
+  public void M()
+  {
+    if (this.K == 0L) {
+      this.K = System.currentTimeMillis();
+    }
+  }
+  
+  public void N()
+  {
+    if (this.L == 0L) {
+      this.L = System.currentTimeMillis();
+    }
+  }
+  
+  public void O()
+  {
+    if (this.M == 0L) {
+      this.M = System.currentTimeMillis();
+    }
+  }
+  
+  public boolean P()
+  {
+    long l1 = this.J;
+    if (l1 > 0L)
+    {
+      long l2 = this.K;
+      if (l2 > 0L)
+      {
+        long l3 = this.L;
+        if (l3 > 0L)
+        {
+          long l4 = this.M;
+          if (l4 <= 0L) {
+            return false;
+          }
+          if (l2 - l1 > 120000L) {
+            return false;
+          }
+          if (l3 - l1 > 120000L) {
+            return false;
+          }
+          return l4 - l1 <= 120000L;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void Q()
+  {
+    this.Q = System.currentTimeMillis();
+  }
+  
+  public void R()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(this.k);
+    String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    this.Y = MD5.b(localStringBuilder.toString());
+  }
+  
+  public String S()
+  {
+    if (this.k == null) {
+      this.k = "none";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(this.k);
+    String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    return MD5.b(localStringBuilder.toString());
+  }
+  
+  public HashMap<String, String> T()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.Q;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(l1 - l2)));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> U()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(this.S)));
+    localHashMap.put("cutout_type", Long.toString(this.T));
+    localHashMap.put("countdown_type", Long.toString(this.U));
+    Object localObject = new DecimalFormat("0.00").format(this.B / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.C / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    localObject = VideoFilterTools.a().c(0);
+    if (localObject != null) {
+      this.V = ((QIMFilterCategoryItem)localObject).a;
+    } else {
+      this.V = "none";
+    }
+    localHashMap.put("filter_id", this.V);
+    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    localHashMap.put("emoticon_id", this.R);
+    if (TextUtils.isEmpty(this.Z))
+    {
+      localHashMap.put("emo_sort_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("emo_sort_id", this.Z);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> V()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("emoticon_id", this.R);
+    if (TextUtils.isEmpty(this.Z))
+    {
+      localHashMap.put("emo_sort_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("emo_sort_id", this.Z);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> W()
+  {
+    HashMap localHashMap = new HashMap();
+    if (TextUtils.isEmpty(this.Z))
+    {
+      localHashMap.put("emo_sort_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("emo_sort_id", this.Z);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> X()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(this.S)));
+    localHashMap.put("cutout_type", Long.toString(this.T));
+    localHashMap.put("countdown_type", Long.toString(this.U));
+    Object localObject = new DecimalFormat("0.00").format(this.B / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.C / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    localHashMap.put("emoticon_id", this.R);
+    localHashMap.put("text_content", this.W);
+    if (this.W.equals("none")) {
+      localHashMap.put("text_color", "none");
+    } else {
+      localHashMap.put("text_color", this.X);
+    }
+    localObject = VideoFilterTools.a().c(0);
+    if (localObject != null) {
+      this.V = ((QIMFilterCategoryItem)localObject).a;
+    } else {
+      this.V = "none";
+    }
+    localHashMap.put("filter_id", this.V);
+    if (this.Y.equals("")) {
+      R();
+    }
+    localHashMap.put("MD5", this.Y);
+    if (TextUtils.isEmpty(this.Z))
+    {
+      localHashMap.put("emo_sort_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("emo_sort_id", this.Z);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> Y()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(this.S)));
+    localHashMap.put("cutout_type", Long.toString(this.T));
+    localHashMap.put("countdown_type", Long.toString(this.U));
+    Object localObject = new DecimalFormat("0.00").format(this.B / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.C / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    localHashMap.put("text_content", this.W);
+    if (!localHashMap.containsKey("emoticon_id")) {
+      localHashMap.put("emoticon_id", this.R);
+    }
+    localObject = VideoFilterTools.a().c(0);
+    if (localObject != null) {
+      this.V = ((QIMFilterCategoryItem)localObject).a;
+    } else {
+      this.V = "none";
+    }
+    localHashMap.put("filter_id", this.V);
+    if (!localHashMap.containsKey("text_color")) {
+      if (this.W.equals("none")) {
+        localHashMap.put("text_color", "none");
+      } else {
+        localHashMap.put("text_color", this.X);
+      }
+    }
+    if (this.Y.equals("")) {
+      R();
+    }
+    localHashMap.put("MD5", this.Y);
+    if (TextUtils.isEmpty(this.Z))
+    {
+      localHashMap.put("emo_sort_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("emo_sort_id", this.Z);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> Z()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("emoticon_id", this.R);
+    return localHashMap;
   }
   
   public HashMap<String, String> a(float paramFloat, String paramString)
@@ -311,78 +608,6 @@ public class AEBaseReportParam
     HashMap localHashMap = new HashMap();
     localHashMap.put("change_speed_type", String.valueOf(paramFloat));
     localHashMap.put("change_speed_opin", paramString);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", "-1");
-    localHashMap.put("content_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long));
-    localHashMap.put("MD5", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    Object localObject1 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-    String str = "none";
-    if (bool) {
-      localObject1 = "none";
-    }
-    localHashMap.put("filter_id", localObject1);
-    localObject1 = (Float)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localObject1 == null) {
-      localObject1 = "none";
-    } else {
-      localObject1 = String.valueOf(((Float)localObject1).intValue());
-    }
-    localHashMap.put("filter_value", localObject1);
-    Object localObject2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "none";
-    }
-    localHashMap.put("color_type", localObject1);
-    localObject2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_c_of_type_AndroidUtilSparseArray.get(paramInt);
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "none";
-    }
-    localHashMap.put("ai_color_frame_states", localObject1);
-    localObject2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "none";
-    }
-    localHashMap.put("text_item_id", localObject1);
-    localHashMap.put("music_id", "none");
-    localHashMap.put("sound_type", "0");
-    localHashMap.put("video_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    localObject2 = (Integer)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_c_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = Integer.valueOf(-1);
-    }
-    localHashMap.put("text_count", String.valueOf(localObject1));
-    localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    localObject1 = AEMaterialManager.b();
-    if (localObject1 == null) {
-      localObject1 = str;
-    } else {
-      localObject1 = ((AEMaterialMetaData)localObject1).jdField_k_of_type_JavaLangString;
-    }
-    localHashMap.put("watermark_id", localObject1);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> a(int paramInt, String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("emoticon_id", paramString);
-    localHashMap.put("emo_num", String.valueOf(paramInt));
-    if (TextUtils.isEmpty(this.p))
-    {
-      localHashMap.put("emo_sort_id", "none");
-      return localHashMap;
-    }
-    localHashMap.put("emo_sort_id", this.p);
     return localHashMap;
   }
   
@@ -396,41 +621,6 @@ public class AEBaseReportParam
     localHashMap.put("req_cost", paramString1);
     localHashMap.put("cmd_id", paramString2);
     localHashMap.put("res_code", String.valueOf(paramInt2));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> a(long paramLong)
-  {
-    HashMap localHashMap = new HashMap();
-    int i1 = this.jdField_f_of_type_Int;
-    if ((i1 != 4) && (i1 != 5) && (i1 != 6) && (i1 != 7) && (i1 != 2)) {
-      localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    } else {
-      localHashMap.put("face_id", this.jdField_e_of_type_JavaLangString);
-    }
-    localHashMap.put("content_type", jdField_h_of_type_JavaLangLong.toString());
-    String str1 = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
-    String str2 = new DecimalFormat("0.00").format(this.jdField_d_of_type_Int / 100.0F);
-    localHashMap.put("beauty_value", str1);
-    localHashMap.put("facial_value", str2);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localHashMap.put("filter_id", this.jdField_b_of_type_JavaLangString);
-    } else {
-      localHashMap.put("filter_id", "none");
-    }
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(System.currentTimeMillis() - paramLong)));
-    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.jdField_a_of_type_Int));
-    if (jdField_h_of_type_JavaLangLong.longValue() == 1L)
-    {
-      localHashMap.put("resolution", AEDashboardUtil.a.d());
-      return localHashMap;
-    }
-    if (jdField_h_of_type_JavaLangLong.longValue() == 2L)
-    {
-      localHashMap.put("resolution", AEDashboardUtil.a.g());
-      return localHashMap;
-    }
-    localHashMap.put("resolution", "none");
     return localHashMap;
   }
   
@@ -479,14 +669,10 @@ public class AEBaseReportParam
     else {
       localHashMap.put("receive_type", paramLong.toString());
     }
-    localHashMap.put("content_type", jdField_h_of_type_JavaLangLong.toString());
-    localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
+    localHashMap.put("content_type", s.toString());
+    localHashMap.put("face_id", this.w);
+    a(localHashMap);
     return localHashMap;
-  }
-  
-  public HashMap<String, String> a(String paramString)
-  {
-    return a(paramString, this.jdField_f_of_type_JavaLangString);
   }
   
   public HashMap<String, String> a(String paramString, int paramInt)
@@ -499,14 +685,14 @@ public class AEBaseReportParam
     } else {
       str = "3";
     }
-    Object localObject = this.jdField_i_of_type_JavaLangString;
+    Object localObject = this.H;
     if ((localObject == null) || (!((String)localObject).equals(paramString)))
     {
-      this.jdField_i_of_type_JavaLangString = paramString;
+      this.H = paramString;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(QQStoryContext.a().getAccount());
+      ((StringBuilder)localObject).append(QQStoryContext.k().getAccount());
       ((StringBuilder)localObject).append(AEBaseDataUtil.a());
-      this.jdField_j_of_type_JavaLangString = MD5Utils.toMD5(((StringBuilder)localObject).toString());
+      this.I = MD5Utils.toMD5(((StringBuilder)localObject).toString());
     }
     return a(paramString, 2, str);
   }
@@ -522,6 +708,19 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
+  public HashMap<String, String> a(String paramString1, String paramString2, String paramString3)
+  {
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("face_id", paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(UserAction.getQIMEI());
+    localHashMap.put("face_uin", localStringBuilder.toString());
+    localHashMap.put("sys_race_id", paramString2);
+    localHashMap.put("sys_race_level", paramString3);
+    return localHashMap;
+  }
+  
   public HashMap<String, String> a(String paramString1, boolean paramBoolean, float paramFloat, double paramDouble1, double paramDouble2, String paramString2)
   {
     HashMap localHashMap = new HashMap();
@@ -533,19 +732,6 @@ public class AEBaseReportParam
     localHashMap.put("cameraId", paramString2);
     localHashMap.put("frame_rate", String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }));
     localHashMap.put("face_id", paramString1);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> a(boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    String str;
-    if (paramBoolean) {
-      str = "1";
-    } else {
-      str = "0";
-    }
-    localHashMap.put("base_res_ready", str);
     return localHashMap;
   }
   
@@ -573,201 +759,89 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
-  public void a()
-  {
-    String str = AEBaseDataUtil.a();
-    this.jdField_a_of_type_JavaUtilHashMap.put("operation_time", str);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("【operation_time】:");
-    localStringBuilder.append(str);
-    AEQLog.b("AEBaseReportParam", localStringBuilder.toString());
-  }
-  
   public void a(int paramInt)
   {
-    int i1;
-    if (paramInt <= 3)
-    {
-      i1 = paramInt;
-      if (paramInt >= -1) {}
-    }
-    else
-    {
-      i1 = -1;
-    }
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[setDeviceLevel] level= ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("AEBaseReportParam", 4, ((StringBuilder)localObject).toString());
+    localObject = this.j;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(i1);
-    localHashMap.put("sex", localStringBuilder.toString());
+    localStringBuilder.append(paramInt);
+    ((HashMap)localObject).put("device_level", localStringBuilder.toString());
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put("op_in", String.valueOf(paramInt));
+    this.j.put("op_in", String.valueOf(paramInt));
     if ((paramString != null) && (!TextUtils.isEmpty(paramString)))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", paramString);
+      this.j.put("activity_id", paramString);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", "none");
+    this.j.put("activity_id", "none");
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.u = paramLong;
   }
   
   public void a(String paramString)
   {
-    String str = this.jdField_c_of_type_JavaLangString;
+    String str = this.p;
     if ((str != null) && (!str.equals(paramString)))
     {
-      this.jdField_c_of_type_JavaLangString = null;
-      this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", "none");
+      this.p = null;
+      this.j.put("activity_id", "none");
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_c_of_type_JavaLangString = paramString1;
+    this.p = paramString1;
     if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2)))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", paramString2);
+      this.j.put("activity_id", paramString2);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put("activity_id", "none");
+    this.j.put("activity_id", "none");
+  }
+  
+  public void a(Map<String, String> paramMap)
+  {
+    paramMap.put("sys_race_id", this.h);
+    paramMap.put("sys_race_level", this.i);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
   }
   
-  public boolean a()
+  public void aa()
   {
-    return this.jdField_a_of_type_Boolean;
+    this.T = 1L;
+    this.U = 1L;
   }
   
-  public String b()
+  public void ab()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "none";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date());
-    localStringBuilder.append(" ");
-    localStringBuilder.append(str);
-    return MD5.a(localStringBuilder.toString());
+    this.E = new AEEditReportData();
   }
   
-  public HashMap<String, String> b()
-  {
-    return a(this.jdField_e_of_type_JavaLangString, "3");
-  }
-  
-  public HashMap<String, String> b(int paramInt)
+  public HashMap<String, String> b(int paramInt, String paramString)
   {
     HashMap localHashMap = new HashMap();
-    String str2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_d_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "none";
-    }
-    localHashMap.put("template_id", str1);
-    str2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "none";
-    }
-    localHashMap.put("text_id", str1);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> b(long paramLong)
-  {
-    HashMap localHashMap = new HashMap();
-    int i1 = this.jdField_f_of_type_Int;
-    if ((i1 != 4) && (i1 != 5) && (i1 != 6) && (i1 != 7) && (i1 != 2)) {
-      localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    } else {
-      localHashMap.put("face_id", this.jdField_e_of_type_JavaLangString);
-    }
-    localHashMap.put("content_type", jdField_h_of_type_JavaLangLong.toString());
-    Object localObject = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
-    String str = new DecimalFormat("0.00").format(this.jdField_d_of_type_Int / 100.0F);
-    localHashMap.put("beauty_value", localObject);
-    localHashMap.put("facial_value", str);
-    boolean bool = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-    str = "none";
-    if (!bool) {
-      localHashMap.put("filter_id", this.jdField_b_of_type_JavaLangString);
-    } else {
-      localHashMap.put("filter_id", "none");
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("");
-    long l1 = -1L;
-    if (paramLong == -1L) {
-      paramLong = l1;
-    } else {
-      paramLong /= 1000L;
-    }
-    ((StringBuilder)localObject).append(paramLong);
-    localHashMap.put("duration", ((StringBuilder)localObject).toString());
-    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.jdField_a_of_type_Int));
-    localHashMap.put("face_index", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("face_from", this.jdField_f_of_type_JavaLangString);
-    localHashMap.put("face_tab", this.jdField_g_of_type_JavaLangString);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_f_of_type_Int);
-    ((StringBuilder)localObject).append("");
-    localHashMap.put("face_type", ((StringBuilder)localObject).toString());
-    if (this.jdField_f_of_type_Int == 7)
+    localHashMap.put("emoticon_id", paramString);
+    localHashMap.put("emo_num", String.valueOf(paramInt));
+    if (TextUtils.isEmpty(this.Z))
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_e_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(UserAction.getQIMEI());
-      localHashMap.put("face_uin", ((StringBuilder)localObject).toString());
+      localHashMap.put("emo_sort_id", "none");
+      return localHashMap;
     }
-    else
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(UserAction.getQIMEI());
-      localHashMap.put("face_uin", ((StringBuilder)localObject).toString());
-    }
-    localHashMap.put("preview_view_size", AEDashboardUtil.a.a());
-    localHashMap.put("configed_preview_resolution", AEDashboardUtil.a.b());
-    localHashMap.put("configed_capture_resolution", AEDashboardUtil.a.c());
-    localHashMap.put("render_resolution", AEDashboardUtil.a.e());
-    if (jdField_h_of_type_JavaLangLong.longValue() == 1L) {
-      localHashMap.put("resolution", AEDashboardUtil.a.d());
-    } else if (jdField_h_of_type_JavaLangLong.longValue() == 2L) {
-      localHashMap.put("resolution", AEDashboardUtil.a.g());
-    } else {
-      localHashMap.put("resolution", "none");
-    }
-    if (jdField_h_of_type_JavaLangLong.longValue() == 1L)
-    {
-      if (AEDashboardUtil.a.jdField_b_of_type_Boolean) {
-        localObject = "screenshot";
-      } else {
-        localObject = "camera";
-      }
-      localHashMap.put("photo_capture_mode", localObject);
-    }
-    else
-    {
-      localHashMap.put("photo_capture_mode", "none");
-    }
-    localObject = AEMaterialManager.b();
-    if (localObject == null) {
-      localObject = str;
-    } else {
-      localObject = ((AEMaterialMetaData)localObject).jdField_k_of_type_JavaLangString;
-    }
-    localHashMap.put("watermark_id", localObject);
+    localHashMap.put("emo_sort_id", this.Z);
     return localHashMap;
   }
   
@@ -782,19 +856,217 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
-  public HashMap<String, String> b(String paramString)
+  public void b()
+  {
+    String str = AEBaseDataUtil.a();
+    this.j.put("operation_time", str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("【operation_time】:");
+    localStringBuilder.append(str);
+    AEQLog.b("AEBaseReportParam", localStringBuilder.toString());
+  }
+  
+  public void b(int paramInt)
+  {
+    int i1;
+    if (paramInt <= 3)
+    {
+      i1 = paramInt;
+      if (paramInt >= -1) {}
+    }
+    else
+    {
+      i1 = -1;
+    }
+    HashMap localHashMap = this.j;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(i1);
+    localHashMap.put("sex", localStringBuilder.toString());
+  }
+  
+  public void b(long paramLong)
+  {
+    s = Long.valueOf(paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    this.j.put("recom_reason", paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" 【recom_reason】:");
+    localStringBuilder.append(paramString);
+    AEQLog.b("AEBaseReportParam", localStringBuilder.toString());
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.n = paramBoolean;
+  }
+  
+  public HashMap<String, String> c(long paramLong)
   {
     HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString))
-    {
+    int i1 = this.F;
+    if ((i1 != 4) && (i1 != 5) && (i1 != 6) && (i1 != 7) && (i1 != 2)) {
+      localHashMap.put("face_id", this.w);
+    } else {
+      localHashMap.put("face_id", this.x);
+    }
+    localHashMap.put("content_type", s.toString());
+    String str1 = new DecimalFormat("0.00").format(this.B / 100.0F);
+    String str2 = new DecimalFormat("0.00").format(this.C / 100.0F);
+    localHashMap.put("beauty_value", str1);
+    localHashMap.put("facial_value", str2);
+    if (!TextUtils.isEmpty(this.m)) {
+      localHashMap.put("filter_id", this.m);
+    } else {
       localHashMap.put("filter_id", "none");
+    }
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(System.currentTimeMillis() - paramLong)));
+    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    if (s.longValue() == 1L)
+    {
+      localHashMap.put("resolution", AEDashboardUtil.a.d());
       return localHashMap;
     }
-    localHashMap.put("filter_id", paramString);
+    if (s.longValue() == 2L)
+    {
+      localHashMap.put("resolution", AEDashboardUtil.a.g());
+      return localHashMap;
+    }
+    localHashMap.put("resolution", "none");
     return localHashMap;
   }
   
-  public void b()
+  public void c(int paramInt)
+  {
+    this.D = paramInt;
+  }
+  
+  public void c(@Nullable String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.k = paramString;
+    } else {
+      this.k = "none";
+    }
+    this.j.put("fromuin", this.k);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--HasCut=");
+    localStringBuilder.append(paramBoolean);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (paramBoolean)
+    {
+      this.o.put("cut", "1");
+      return;
+    }
+    this.o.remove("cut");
+  }
+  
+  public boolean c()
+  {
+    return this.l;
+  }
+  
+  public HashMap<String, String> d(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    int i1 = this.F;
+    if ((i1 != 4) && (i1 != 5) && (i1 != 6) && (i1 != 7) && (i1 != 2)) {
+      localHashMap.put("face_id", this.w);
+    } else {
+      localHashMap.put("face_id", this.x);
+    }
+    a(localHashMap);
+    localHashMap.put("content_type", s.toString());
+    Object localObject = new DecimalFormat("0.00").format(this.B / 100.0F);
+    String str = new DecimalFormat("0.00").format(this.C / 100.0F);
+    localHashMap.put("beauty_value", localObject);
+    localHashMap.put("facial_value", str);
+    boolean bool = TextUtils.isEmpty(this.m);
+    str = "none";
+    if (!bool) {
+      localHashMap.put("filter_id", this.m);
+    } else {
+      localHashMap.put("filter_id", "none");
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    long l1 = -1L;
+    if (paramLong == -1L) {
+      paramLong = l1;
+    } else {
+      paramLong /= 1000L;
+    }
+    ((StringBuilder)localObject).append(paramLong);
+    localHashMap.put("duration", ((StringBuilder)localObject).toString());
+    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    localHashMap.put("face_index", String.valueOf(this.y));
+    localHashMap.put("face_from", this.z);
+    localHashMap.put("face_tab", this.A);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.F);
+    ((StringBuilder)localObject).append("");
+    localHashMap.put("face_type", ((StringBuilder)localObject).toString());
+    if (this.F == 7)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.x);
+      ((StringBuilder)localObject).append(UserAction.getQIMEI());
+      localHashMap.put("face_uin", ((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.w);
+      ((StringBuilder)localObject).append(UserAction.getQIMEI());
+      localHashMap.put("face_uin", ((StringBuilder)localObject).toString());
+    }
+    localHashMap.put("preview_view_size", AEDashboardUtil.a.a());
+    localHashMap.put("configed_preview_resolution", AEDashboardUtil.a.b());
+    localHashMap.put("configed_capture_resolution", AEDashboardUtil.a.c());
+    localHashMap.put("render_resolution", AEDashboardUtil.a.e());
+    if (s.longValue() == 1L) {
+      localHashMap.put("resolution", AEDashboardUtil.a.d());
+    } else if (s.longValue() == 2L) {
+      localHashMap.put("resolution", AEDashboardUtil.a.g());
+    } else {
+      localHashMap.put("resolution", "none");
+    }
+    if (s.longValue() == 1L)
+    {
+      if (AEDashboardUtil.a.p) {
+        localObject = "screenshot";
+      } else {
+        localObject = "camera";
+      }
+      localHashMap.put("photo_capture_mode", localObject);
+    }
+    else
+    {
+      localHashMap.put("photo_capture_mode", "none");
+    }
+    localObject = AEMaterialManager.o();
+    if (localObject == null) {
+      localObject = str;
+    } else {
+      localObject = ((AEMaterialMetaData)localObject).m;
+    }
+    localHashMap.put("watermark_id", localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a().k());
+    ((StringBuilder)localObject).append("");
+    localHashMap.put("is_ai_btn", ((StringBuilder)localObject).toString());
+    localHashMap.put("face_info", a().j());
+    return localHashMap;
+  }
+  
+  public void d()
   {
     boolean bool = AppNetConnInfo.isWifiConn();
     int i2 = -1;
@@ -833,192 +1105,13 @@ public class AEBaseReportParam
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put("network_type", String.valueOf(i1));
+    this.j.put("network_type", String.valueOf(i1));
     UserAction.setLogAble(false, false);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    jdField_h_of_type_JavaLangLong = Long.valueOf(paramLong);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put("recom_reason", paramString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" 【recom_reason】:");
-    localStringBuilder.append(paramString);
-    AEQLog.b("AEBaseReportParam", localStringBuilder.toString());
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public HashMap<String, String> c()
-  {
-    return a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
-  }
-  
-  public HashMap<String, String> c(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long);
-    localStringBuilder.append("");
-    localHashMap.put("content_type", localStringBuilder.toString());
-    localHashMap.put("MD5", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("");
-    localHashMap.put("pic_count", localStringBuilder.toString());
-    if (jdField_g_of_type_JavaLangLong.equals(Long.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long)))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_f_of_type_Int);
-      localStringBuilder.append("");
-      localHashMap.put("video_num", localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_c_of_type_Long);
-      localStringBuilder.append("");
-      localHashMap.put("video_duration", localStringBuilder.toString());
-    }
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> c(long paramLong)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("video_duration", String.valueOf(paramLong / 1000L));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> c(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filter_id", paramString);
-    return localHashMap;
-  }
-  
-  public void c()
-  {
-    AEQLog.a("AEBaseReportParam", "EditJson--resetEditInfo");
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public void c(@AEBaseReportParam.EditPicFrom int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(long paramLong)
-  {
-    g();
-    this.jdField_c_of_type_Long = paramLong;
-    this.jdField_c_of_type_Boolean = this.jdField_d_of_type_Boolean;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void c(@Nullable String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } else {
-      this.jdField_a_of_type_JavaLangString = "none";
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put("fromuin", this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--HasCut=");
-    localStringBuilder.append(paramBoolean);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("cut", "1");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("cut");
-  }
-  
-  public boolean c()
-  {
-    long l1 = this.jdField_c_of_type_Long;
-    if (l1 > 0L)
-    {
-      long l2 = this.jdField_d_of_type_Long;
-      if (l2 > 0L)
-      {
-        long l3 = this.jdField_e_of_type_Long;
-        if (l3 > 0L)
-        {
-          long l4 = this.jdField_f_of_type_Long;
-          if (l4 <= 0L) {
-            return false;
-          }
-          if (l2 - l1 > 120000L) {
-            return false;
-          }
-          if (l3 - l1 > 120000L) {
-            return false;
-          }
-          return l4 - l1 <= 120000L;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public HashMap<String, String> d()
-  {
-    return a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
-  }
-  
-  public HashMap<String, String> d(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("pic_scale", String.valueOf(paramInt));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> d(long paramLong)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(paramLong)));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> d(String paramString)
-  {
-    return a(paramString, "3");
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Int = 0;
   }
   
   public void d(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void d(long paramLong)
-  {
-    this.jdField_i_of_type_Long = paramLong;
+    this.r = paramInt;
   }
   
   public void d(String paramString)
@@ -1029,10 +1122,10 @@ public class AEBaseReportParam
     QLog.d("AEBaseReportParam", 4, localStringBuilder.toString());
     if ((paramString != null) && (!TextUtils.isEmpty(paramString)))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put("expirement_id", paramString);
+      this.j.put("expirement_id", paramString);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put("expirement_id", "none");
+    this.j.put("expirement_id", "none");
   }
   
   public void d(boolean paramBoolean)
@@ -1043,20 +1136,355 @@ public class AEBaseReportParam
     AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
     if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilMap.put("swipe", "1");
+      this.o.put("swipe", "1");
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.remove("swipe");
+    this.o.remove("swipe");
   }
   
   public HashMap<String, String> e()
   {
-    HashMap localHashMap = new HashMap(1);
-    localHashMap.put("face_id", AECameraPrefsUtil.a().a("camera_ad_op_id", "", 4));
+    this.j.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.b));
+    return this.j;
+  }
+  
+  public HashMap<String, String> e(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("video_duration", String.valueOf(paramLong / 1000L));
     return localHashMap;
   }
   
-  public HashMap<String, String> e(int paramInt)
+  public void e(@AEBaseReportParam.EditPicFrom int paramInt)
+  {
+    this.t = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[setTabExperimentID] experimentID = ");
+    localStringBuilder.append(paramString);
+    QLog.d("AEBaseReportParam", 4, localStringBuilder.toString());
+    if (TextUtils.isEmpty(paramString))
+    {
+      this.j.put("tab_expirement_id", "none");
+      return;
+    }
+    this.j.put("tab_expirement_id", paramString);
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--enhanced=");
+    localStringBuilder.append(paramBoolean);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (paramBoolean)
+    {
+      this.o.put("is_enhance", "1");
+      return;
+    }
+    this.o.remove("is_enhance");
+  }
+  
+  public String f()
+  {
+    return this.w;
+  }
+  
+  public HashMap<String, String> f(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(paramLong)));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> f(boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "0";
+    }
+    localHashMap.put("base_res_ready", str);
+    return localHashMap;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.y = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.w = paramString;
+  }
+  
+  public void g(int paramInt)
+  {
+    this.F = paramInt;
+  }
+  
+  public void g(long paramLong)
+  {
+    L();
+    this.J = paramLong;
+    this.N = this.O;
+    this.O = false;
+  }
+  
+  public void g(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public void g(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.T = 2L;
+      return;
+    }
+    this.T = 1L;
+  }
+  
+  public boolean g()
+  {
+    return this.n;
+  }
+  
+  public void h()
+  {
+    AEQLog.a("AEBaseReportParam", "EditJson--resetEditInfo");
+    this.o.clear();
+  }
+  
+  public void h(int paramInt)
+  {
+    this.B = paramInt;
+  }
+  
+  public void h(long paramLong)
+  {
+    this.S = paramLong;
+  }
+  
+  public void h(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public void h(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.U = 2L;
+      return;
+    }
+    this.U = 1L;
+  }
+  
+  public void i()
+  {
+    this.q = "";
+  }
+  
+  public void i(int paramInt)
+  {
+    this.C = paramInt;
+  }
+  
+  public void i(String paramString)
+  {
+    this.x = paramString;
+  }
+  
+  public String j()
+  {
+    return this.q;
+  }
+  
+  public HashMap<String, String> j(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", "-1");
+    localHashMap.put("content_type", String.valueOf(this.E.v));
+    localHashMap.put("MD5", this.E.d);
+    Object localObject1 = (String)this.E.e.get(Integer.valueOf(paramInt));
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+    String str = "none";
+    if (bool) {
+      localObject1 = "none";
+    }
+    localHashMap.put("filter_id", localObject1);
+    localObject1 = (Float)this.E.f.get(Integer.valueOf(paramInt));
+    if (localObject1 == null) {
+      localObject1 = "none";
+    } else {
+      localObject1 = String.valueOf(((Float)localObject1).intValue());
+    }
+    localHashMap.put("filter_value", localObject1);
+    Object localObject2 = (String)this.E.a.get(paramInt);
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "none";
+    }
+    localHashMap.put("color_type", localObject1);
+    localObject2 = (String)this.E.c.get(paramInt);
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "none";
+    }
+    localHashMap.put("ai_color_frame_states", localObject1);
+    localObject2 = (String)this.E.b.get(paramInt);
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "none";
+    }
+    localHashMap.put("text_item_id", localObject1);
+    localHashMap.put("music_id", "none");
+    localHashMap.put("sound_type", "0");
+    localHashMap.put("video_id", this.E.d);
+    localObject2 = (Integer)this.E.g.get(Integer.valueOf(paramInt));
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = Integer.valueOf(-1);
+    }
+    localHashMap.put("text_count", String.valueOf(localObject1));
+    localHashMap.put("face_id", this.w);
+    a(localHashMap);
+    localObject1 = AEMaterialManager.o();
+    if (localObject1 == null) {
+      localObject1 = str;
+    } else {
+      localObject1 = ((AEMaterialMetaData)localObject1).m;
+    }
+    localHashMap.put("watermark_id", localObject1);
+    return localHashMap;
+  }
+  
+  public void j(String paramString)
+  {
+    this.m = paramString;
+  }
+  
+  public int k()
+  {
+    return this.r;
+  }
+  
+  public HashMap<String, String> k(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    String str2 = (String)this.E.h.get(Integer.valueOf(paramInt));
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "none";
+    }
+    localHashMap.put("template_id", str1);
+    str2 = (String)this.E.i.get(Integer.valueOf(paramInt));
+    str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "none";
+    }
+    localHashMap.put("text_id", str1);
+    return localHashMap;
+  }
+  
+  public void k(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--sticker=");
+    localStringBuilder.append(paramString);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.o.put("sticker", paramString);
+      return;
+    }
+    this.o.remove("sticker");
+  }
+  
+  public HashMap<String, String> l(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.E.v);
+    localStringBuilder.append("");
+    localHashMap.put("content_type", localStringBuilder.toString());
+    localHashMap.put("MD5", this.E.d);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localHashMap.put("pic_count", localStringBuilder.toString());
+    if (g.equals(Long.valueOf(this.E.v)))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.E.w);
+      localStringBuilder.append("");
+      localHashMap.put("video_num", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.E.x);
+      localStringBuilder.append("");
+      localHashMap.put("video_duration", localStringBuilder.toString());
+    }
+    return localHashMap;
+  }
+  
+  public void l()
+  {
+    this.t = 0;
+  }
+  
+  public void l(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--text=");
+    localStringBuilder.append(paramString);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.o.put("text", paramString);
+      return;
+    }
+    this.o.remove("text");
+  }
+  
+  public HashMap<String, String> m(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("pic_scale", String.valueOf(paramInt));
+    return localHashMap;
+  }
+  
+  public void m()
+  {
+    this.v = System.currentTimeMillis();
+  }
+  
+  public void m(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--mark=");
+    localStringBuilder.append(paramString);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.o.put("mark", paramString);
+      return;
+    }
+    this.o.remove("mark");
+  }
+  
+  public AEEditReportData n()
+  {
+    return this.E;
+  }
+  
+  public HashMap<String, String> n(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     String str;
@@ -1069,7 +1497,154 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
-  public HashMap<String, String> e(String paramString)
+  public void n(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--graffiti=");
+    localStringBuilder.append(paramString);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.o.put("graffiti", paramString);
+      return;
+    }
+    this.o.remove("graffiti");
+  }
+  
+  public HashMap<String, String> o()
+  {
+    return b(this.x, "3");
+  }
+  
+  public void o(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditJson--music=");
+    localStringBuilder.append(paramString);
+    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.o.put("music", paramString);
+      return;
+    }
+    this.o.remove("music");
+  }
+  
+  public HashMap<String, String> p()
+  {
+    return b(this.x, this.z);
+  }
+  
+  public void p(String paramString)
+  {
+    this.q = paramString;
+  }
+  
+  public HashMap<String, String> q()
+  {
+    return b(this.x, this.z);
+  }
+  
+  public void q(String paramString)
+  {
+    this.z = paramString;
+  }
+  
+  public HashMap<String, String> r()
+  {
+    HashMap localHashMap = new HashMap(1);
+    localHashMap.put("face_id", AECameraPrefsUtil.a().b("camera_ad_op_id", "", 4));
+    return localHashMap;
+  }
+  
+  public void r(String paramString)
+  {
+    this.A = paramString;
+  }
+  
+  public HashMap<String, String> s()
+  {
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("face_id", this.w);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.D);
+    localStringBuilder.append("");
+    localHashMap.put("is_sort_icon", localStringBuilder.toString());
+    a(localHashMap);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> s(String paramString)
+  {
+    return b(paramString, this.z);
+  }
+  
+  public HashMap<String, String> t()
+  {
+    HashMap localHashMap = new HashMap(1);
+    localHashMap.put("face_id", this.w);
+    a(localHashMap);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> t(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (TextUtils.isEmpty(paramString))
+    {
+      localHashMap.put("filter_id", "none");
+      return localHashMap;
+    }
+    localHashMap.put("filter_id", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> u()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(ac())));
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> u(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("filter_id", paramString);
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> v()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(this.I))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(QQStoryContext.k().getAccount());
+      ((StringBuilder)localObject).append(AEBaseDataUtil.a());
+      localObject = MD5Utils.toMD5(((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      localObject = this.I;
+    }
+    return a((String)localObject, 1, "-1");
+  }
+  
+  public HashMap<String, String> v(String paramString)
+  {
+    return b(paramString, "3");
+  }
+  
+  public HashMap<String, String> w()
+  {
+    HashMap localHashMap = a().v();
+    if (localHashMap != null) {
+      localHashMap.remove("edit_json");
+    }
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> w(String paramString)
   {
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("face_id", paramString);
@@ -1080,251 +1655,19 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
-  public void e()
-  {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--enhanced=");
-    localStringBuilder.append(paramBoolean);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("is_enhance", "1");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("is_enhance");
-  }
-  
-  public HashMap<String, String> f()
-  {
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("");
-    localHashMap.put("is_sort_icon", localStringBuilder.toString());
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> f(String paramString)
-  {
-    return AEBaseDataUtil.a(i(), a(paramString, "3"));
-  }
-  
-  public void f()
-  {
-    this.jdField_i_of_type_JavaLangString = null;
-    this.jdField_j_of_type_JavaLangString = null;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void f(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_j_of_type_Long = 2L;
-      return;
-    }
-    this.jdField_j_of_type_Long = 1L;
-  }
-  
-  public HashMap<String, String> g()
-  {
-    HashMap localHashMap = new HashMap(1);
-    localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> g(String paramString)
+  public HashMap<String, String> x()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("content_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long));
-    localHashMap.put("filter_id", paramString);
-    return localHashMap;
-  }
-  
-  public void g()
-  {
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void g(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void g(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_k_of_type_Long = 2L;
-      return;
-    }
-    this.jdField_k_of_type_Long = 1L;
-  }
-  
-  public HashMap<String, String> h()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(a())));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> h(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filter_id", paramString);
-    return localHashMap;
-  }
-  
-  public void h()
-  {
-    if (this.jdField_d_of_type_Long == 0L) {
-      this.jdField_d_of_type_Long = System.currentTimeMillis();
-    }
-  }
-  
-  public void h(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--sticker=");
-    localStringBuilder.append(paramString);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("sticker", paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("sticker");
-  }
-  
-  public HashMap<String, String> i()
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(QQStoryContext.a().getAccount());
-      ((StringBuilder)localObject).append(AEBaseDataUtil.a());
-      localObject = MD5Utils.toMD5(((StringBuilder)localObject).toString());
-    }
-    else
-    {
-      localObject = this.jdField_j_of_type_JavaLangString;
-    }
-    return a((String)localObject, 1, "-1");
-  }
-  
-  public HashMap<String, String> i(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("text_content", paramString);
-    p(paramString);
-    return localHashMap;
-  }
-  
-  public void i()
-  {
-    if (this.jdField_e_of_type_Long == 0L) {
-      this.jdField_e_of_type_Long = System.currentTimeMillis();
-    }
-  }
-  
-  public void i(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--text=");
-    localStringBuilder.append(paramString);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("text", paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("text");
-  }
-  
-  public HashMap<String, String> j()
-  {
-    HashMap localHashMap = a().i();
-    if (localHashMap != null) {
-      localHashMap.remove("edit_json");
-    }
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> j(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("emoticon_id", paramString);
-    return localHashMap;
-  }
-  
-  public void j()
-  {
-    if (this.jdField_f_of_type_Long == 0L) {
-      this.jdField_f_of_type_Long = System.currentTimeMillis();
-    }
-  }
-  
-  public void j(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--mark=");
-    localStringBuilder.append(paramString);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("mark", paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("mark");
-  }
-  
-  public HashMap<String, String> k()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    localHashMap.put("face_tab", this.jdField_g_of_type_JavaLangString);
-    localHashMap.put("face_index", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("face_uin", this.jdField_h_of_type_JavaLangString);
+    localHashMap.put("face_id", this.w);
+    localHashMap.put("face_tab", this.A);
+    localHashMap.put("face_index", String.valueOf(this.y));
+    localHashMap.put("face_uin", this.G);
+    a(localHashMap);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.t);
     ((StringBuilder)localObject).append("");
     localHashMap.put("pic_from", ((StringBuilder)localObject).toString());
-    localObject = new JSONObject(this.jdField_a_of_type_JavaUtilMap).toString();
+    localObject = new JSONObject(this.o).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDownloadBtnParam---editJsonStr=");
     localStringBuilder.append((String)localObject);
@@ -1333,343 +1676,94 @@ public class AEBaseReportParam
     return localHashMap;
   }
   
-  public HashMap<String, String> k(String paramString)
+  public HashMap<String, String> x(String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("emoticon_id", this.jdField_k_of_type_JavaLangString);
-    if (TextUtils.isEmpty(paramString))
-    {
-      localHashMap.put("word_source", "none");
-      return localHashMap;
-    }
-    localHashMap.put("word_source", paramString);
-    return localHashMap;
-  }
-  
-  public void k()
-  {
-    this.jdField_h_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void k(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--graffiti=");
-    localStringBuilder.append(paramString);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("graffiti", paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("graffiti");
-  }
-  
-  public HashMap<String, String> l()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("content_type", jdField_h_of_type_JavaLangLong.toString());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("");
-    localHashMap.put("pic_from", localStringBuilder.toString());
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> l(@NonNull String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("watermark_id", paramString);
-    return localHashMap;
-  }
-  
-  public void l()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date());
-    localStringBuilder.append(" ");
-    localStringBuilder.append(str);
-    this.o = MD5.a(localStringBuilder.toString());
-  }
-  
-  public void l(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EditJson--music=");
-    localStringBuilder.append(paramString);
-    AEQLog.a("AEBaseReportParam", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put("music", paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove("music");
-  }
-  
-  public HashMap<String, String> m()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Long));
-    localHashMap.put("content_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long));
-    localHashMap.put("MD5", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_d_of_type_JavaLangString;
-    boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-    String str1 = "none";
-    if (bool) {
-      localObject = "none";
-    }
-    localHashMap.put("filter_id", localObject);
-    localHashMap.put("filter_value", String.valueOf((int)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Float));
-    localHashMap.put("music_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_JavaLangString);
-    String str2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_AndroidUtilSparseArray.get(0);
-    localObject = str2;
-    if (TextUtils.isEmpty(str2)) {
-      localObject = "none";
-    }
-    localHashMap.put("color_type", localObject);
-    str2 = (String)this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_AndroidUtilSparseArray.get(0);
-    localObject = str2;
-    if (TextUtils.isEmpty(str2)) {
-      localObject = "none";
-    }
-    localHashMap.put("text_item_id", localObject);
-    localHashMap.put("sound_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Int));
-    localHashMap.put("text_count", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_d_of_type_Int));
-    localHashMap.put("music_list", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_g_of_type_JavaLangString);
-    localHashMap.put("video_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    localHashMap.put("music_common_info", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_f_of_type_JavaLangString);
-    localHashMap.put("lyric_status", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_g_of_type_Int));
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Boolean) {
-      localObject = "1";
-    } else {
-      localObject = "0";
-    }
-    localHashMap.put("is_recommend", localObject);
-    localHashMap.put("recommend_index", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Int));
-    localHashMap.put("music_duration", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_c_of_type_Int));
-    localHashMap.put("video_duration", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Long));
-    localHashMap.put("video_source", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_Int));
-    localHashMap.put("face_id", this.jdField_d_of_type_JavaLangString);
-    localHashMap.put("change_speed_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Double));
-    localObject = AEMaterialManager.b();
-    if (localObject == null) {
-      localObject = str1;
-    } else {
-      localObject = ((AEMaterialMetaData)localObject).jdField_k_of_type_JavaLangString;
-    }
-    localHashMap.put("watermark_id", localObject);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> m(@NonNull String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("gps", paramString);
-    return localHashMap;
-  }
-  
-  public void m()
-  {
-    this.jdField_j_of_type_Long = 1L;
-    this.jdField_k_of_type_Long = 1L;
-  }
-  
-  public void m(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
-  
-  public HashMap<String, String> n()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("content_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long));
-    localHashMap.put("red_point", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_i_of_type_Int));
-    return localHashMap;
-  }
-  
-  public void n()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData = new AEEditReportData();
-  }
-  
-  public void n(String paramString)
-  {
-    this.jdField_g_of_type_JavaLangString = paramString;
-  }
-  
-  public HashMap<String, String> o()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("video_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    return localHashMap;
-  }
-  
-  public void o(String paramString)
-  {
-    this.l = paramString;
-  }
-  
-  public HashMap<String, String> p()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("music_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_JavaLangString);
-    localHashMap.put("music_list", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_g_of_type_JavaLangString);
-    localHashMap.put("video_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    String str;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Boolean) {
-      str = "1";
-    } else {
-      str = "0";
-    }
-    localHashMap.put("is_recommend", str);
-    localHashMap.put("recommend_index", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Int));
-    localHashMap.put("music_duration", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_c_of_type_Int));
-    localHashMap.put("video_duration", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Long));
-    localHashMap.put("video_source", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_Int));
-    return localHashMap;
-  }
-  
-  public void p(String paramString)
-  {
-    this.m = paramString;
-  }
-  
-  public HashMap<String, String> q()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("music_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_JavaLangString);
-    localHashMap.put("video_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    localHashMap.put("lyric_status", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_g_of_type_Int));
-    return localHashMap;
-  }
-  
-  public void q(String paramString)
-  {
-    this.n = paramString;
-  }
-  
-  public HashMap<String, String> r()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("content_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long));
-    localHashMap.put("video_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_JavaLangString);
-    localHashMap.put("video_source", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_e_of_type_Int));
-    localHashMap.put("video_duration", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_a_of_type_Long));
-    return localHashMap;
-  }
-  
-  public void r(String paramString)
-  {
-    this.jdField_k_of_type_JavaLangString = paramString;
-  }
-  
-  public HashMap<String, String> s()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("color_type", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_h_of_type_JavaLangString);
-    localHashMap.put("text_item_id", this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_i_of_type_JavaLangString);
-    localHashMap.put("common_color_list", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_h_of_type_Int));
-    return localHashMap;
-  }
-  
-  public void s(String paramString)
-  {
-    this.p = paramString;
-  }
-  
-  public HashMap<String, String> t()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("content_type", String.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeReportAEEditReportData.jdField_b_of_type_Long));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> u()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("content_type", jdField_h_of_type_JavaLangLong.toString());
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> v()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration_first_frame", AEBaseDataUtil.a(Long.valueOf(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long)));
-    localHashMap.put("duration_bottom_bar", AEBaseDataUtil.a(Long.valueOf(this.jdField_e_of_type_Long - this.jdField_c_of_type_Long)));
-    localHashMap.put("duration_photo_btn", AEBaseDataUtil.a(Long.valueOf(this.jdField_f_of_type_Long - this.jdField_c_of_type_Long)));
-    String str;
-    if (AEBaseDataUtil.b()) {
-      str = "first_launch";
-    } else if (this.jdField_c_of_type_Boolean) {
-      str = "cold_launch";
-    } else {
-      str = "warm_launch";
-    }
-    localHashMap.put("launch_type", str);
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> w()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("OpenGL", GLCapabilities.getGlesVersion());
-    localHashMap.put("shader", String.valueOf(GLCapabilities.isFilamentShaderCompileSucceed()));
-    return localHashMap;
-  }
-  
-  public HashMap<String, String> x()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_h_of_type_Long;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(l1 - l2)));
-    return localHashMap;
+    return AEBaseDataUtil.a(v(), b(paramString, "3"));
   }
   
   public HashMap<String, String> y()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("duration", AEBaseDataUtil.a(Long.valueOf(this.jdField_i_of_type_Long)));
-    localHashMap.put("cutout_type", Long.toString(this.jdField_j_of_type_Long));
-    localHashMap.put("countdown_type", Long.toString(this.jdField_k_of_type_Long));
-    Object localObject = new DecimalFormat("0.00").format(this.jdField_c_of_type_Int / 100.0F);
-    String str = new DecimalFormat("0.00").format(this.jdField_d_of_type_Int / 100.0F);
-    localHashMap.put("beauty_value", localObject);
-    localHashMap.put("facial_value", str);
-    localObject = VideoFilterTools.a().c(0);
-    if (localObject != null) {
-      this.l = ((QIMFilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;
-    } else {
-      this.l = "none";
-    }
-    localHashMap.put("filter_id", this.l);
-    localHashMap.put("cameraId", AEBaseDataUtil.a(FlowCameraConstant.jdField_a_of_type_Int));
-    localHashMap.put("emoticon_id", this.jdField_k_of_type_JavaLangString);
-    if (TextUtils.isEmpty(this.p))
-    {
-      localHashMap.put("emo_sort_id", "none");
-      return localHashMap;
-    }
-    localHashMap.put("emo_sort_id", this.p);
+    localHashMap.put("content_type", s.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.t);
+    localStringBuilder.append("");
+    localHashMap.put("pic_from", localStringBuilder.toString());
+    return localHashMap;
+  }
+  
+  public HashMap<String, String> y(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("content_type", String.valueOf(this.E.v));
+    localHashMap.put("filter_id", paramString);
     return localHashMap;
   }
   
   public HashMap<String, String> z()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("emoticon_id", this.jdField_k_of_type_JavaLangString);
-    if (TextUtils.isEmpty(this.p))
-    {
-      localHashMap.put("emo_sort_id", "none");
-      return localHashMap;
+    localHashMap.put("duration", String.valueOf(this.E.t));
+    localHashMap.put("content_type", String.valueOf(this.E.v));
+    localHashMap.put("MD5", this.E.d);
+    Object localObject = this.E.l;
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+    String str1 = "none";
+    if (bool) {
+      localObject = "none";
     }
-    localHashMap.put("emo_sort_id", this.p);
+    localHashMap.put("filter_id", localObject);
+    localHashMap.put("filter_value", String.valueOf((int)this.E.m));
+    localHashMap.put("music_id", this.E.n);
+    String str2 = (String)this.E.a.get(0);
+    localObject = str2;
+    if (TextUtils.isEmpty(str2)) {
+      localObject = "none";
+    }
+    localHashMap.put("color_type", localObject);
+    str2 = (String)this.E.b.get(0);
+    localObject = str2;
+    if (TextUtils.isEmpty(str2)) {
+      localObject = "none";
+    }
+    localHashMap.put("text_item_id", localObject);
+    localHashMap.put("sound_type", String.valueOf(this.E.o));
+    localHashMap.put("text_count", String.valueOf(this.E.s));
+    localHashMap.put("music_list", this.E.z);
+    localHashMap.put("video_id", this.E.d);
+    localHashMap.put("music_common_info", this.E.y);
+    localHashMap.put("lyric_status", String.valueOf(this.E.A));
+    if (this.E.p) {
+      localObject = "1";
+    } else {
+      localObject = "0";
+    }
+    localHashMap.put("is_recommend", localObject);
+    localHashMap.put("recommend_index", String.valueOf(this.E.q));
+    localHashMap.put("music_duration", String.valueOf(this.E.r));
+    localHashMap.put("video_duration", String.valueOf(this.E.t));
+    localHashMap.put("video_source", String.valueOf(this.E.u));
+    localHashMap.put("face_id", this.w);
+    a(localHashMap);
+    localHashMap.put("change_speed_type", String.valueOf(this.E.E));
+    localObject = AEMaterialManager.o();
+    if (localObject == null) {
+      localObject = str1;
+    } else {
+      localObject = ((AEMaterialMetaData)localObject).m;
+    }
+    localHashMap.put("watermark_id", localObject);
     return localHashMap;
+  }
+  
+  public void z(String paramString)
+  {
+    this.V = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.report.AEBaseReportParam
  * JD-Core Version:    0.7.0.1
  */

@@ -47,7 +47,7 @@ public class AnimationModule
   private SparseArray<b> b;
   private Handler c;
   private long d;
-  private Set<Integer> e;
+  private final Set<Integer> e = Collections.synchronizedSet(new HashSet());
   private Set<b> f;
   
   public AnimationModule(HippyEngineContext paramHippyEngineContext)
@@ -58,7 +58,7 @@ public class AnimationModule
   private HippyMap a(int paramInt, HippyRootView paramHippyRootView, HippyMap paramHippyMap)
   {
     if (paramHippyMap == null) {
-      return paramHippyMap;
+      return null;
     }
     if ((paramHippyMap.containsKey("handleMessageByAnimation")) && (paramHippyMap.getBoolean("handleMessageByAnimation"))) {
       return paramHippyMap;
@@ -318,10 +318,19 @@ public class AnimationModule
   
   private boolean b(HippyMap paramHippyMap)
   {
+    boolean bool2 = false;
     if (paramHippyMap == null) {
       return false;
     }
-    return (paramHippyMap.containsKey("animationId")) && (paramHippyMap.size() == 1);
+    boolean bool1 = bool2;
+    if (paramHippyMap.containsKey("animationId"))
+    {
+      bool1 = bool2;
+      if (paramHippyMap.size() == 1) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   @HippyMethod(name="createAnimation")
@@ -411,7 +420,7 @@ public class AnimationModule
   {
     stopAnimation(paramInt);
     Object localObject = (a)this.a.get(paramInt);
-    if ((localObject != null) && ((localObject instanceof c)))
+    if ((localObject instanceof c))
     {
       localObject = ((c)localObject).j();
       if (localObject != null)
@@ -457,7 +466,6 @@ public class AnimationModule
   public void initialize()
   {
     super.initialize();
-    this.e = Collections.synchronizedSet(new HashSet());
     this.mContext.addEngineLifecycleEventListener(this);
     this.c = new Handler(this.mContext.getThreadExecutor().getDomThread().getLooper(), this);
     this.a = new SparseArray();
@@ -595,7 +603,7 @@ public class AnimationModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.AnimationModule
  * JD-Core Version:    0.7.0.1
  */

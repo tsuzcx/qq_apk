@@ -20,12 +20,12 @@ class MultiAIOFragment$UpdateMsgReadTimer
     if (QLog.isColorLevel()) {
       QLog.d("MultiAioFragment", 2, "run() called UpdateMsgReadTimer");
     }
-    MultiAIOFragment.a(this.this$0).a(this.a);
+    MultiAIOFragment.i(this.this$0).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.UpdateMsgReadTimer
  * JD-Core Version:    0.7.0.1
  */

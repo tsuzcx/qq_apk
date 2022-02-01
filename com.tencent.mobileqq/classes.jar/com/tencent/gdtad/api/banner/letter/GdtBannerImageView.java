@@ -15,8 +15,8 @@ import java.lang.ref.WeakReference;
 class GdtBannerImageView
   extends LinearLayout
 {
-  private GdtDrawableLoader.Listener jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener = new GdtBannerImageView.1(this);
-  private GdtDrawableLoader jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader;
+  private GdtDrawableLoader a;
+  private GdtDrawableLoader.Listener b = new GdtBannerImageView.1(this);
   
   public GdtBannerImageView(Context paramContext, String paramString)
   {
@@ -32,9 +32,9 @@ class GdtBannerImageView
     {
       paramContext = new URLImageView(paramContext);
       addView(paramContext);
-      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader = new GdtDrawableLoader(paramString, new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener));
-      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
-      paramContext.setImageDrawable(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a());
+      this.a = new GdtDrawableLoader(paramString, new WeakReference(this.b));
+      this.a.b();
+      paramContext.setImageDrawable(this.a.a());
       return;
     }
     GdtLog.d("GdtBannerImageView", "constructor");
@@ -42,7 +42,7 @@ class GdtBannerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.letter.GdtBannerImageView
  * JD-Core Version:    0.7.0.1
  */

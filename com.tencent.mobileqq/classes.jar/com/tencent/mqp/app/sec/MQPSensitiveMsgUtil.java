@@ -38,16 +38,11 @@ import mqq.app.MobileQQ;
 
 public class MQPSensitiveMsgUtil
 {
-  private static int jdField_a_of_type_Int;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new MQPSensitiveMsgUtil.4();
-  private static Bundle jdField_a_of_type_AndroidOsBundle = new Bundle();
-  private static MQPSensitiveMsgUtil jdField_a_of_type_ComTencentMqpAppSecMQPSensitiveMsgUtil;
-  private static String jdField_a_of_type_JavaLangString = "0";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMqpAppSecMQPSensitiveMsgUtil = null;
-  }
+  private static int a;
+  private static Bundle b = new Bundle();
+  private static String c = "0";
+  private static MQPSensitiveMsgUtil d = null;
+  private static BroadcastReceiver e = new MQPSensitiveMsgUtil.4();
   
   private static int a(String paramString, int paramInt)
   {
@@ -87,30 +82,17 @@ public class MQPSensitiveMsgUtil
   
   public static MQPSensitiveMsgUtil a()
   {
-    if (jdField_a_of_type_ComTencentMqpAppSecMQPSensitiveMsgUtil == null)
+    if (d == null)
     {
-      jdField_a_of_type_ComTencentMqpAppSecMQPSensitiveMsgUtil = new MQPSensitiveMsgUtil();
-      a();
+      d = new MQPSensitiveMsgUtil();
+      d();
     }
-    return jdField_a_of_type_ComTencentMqpAppSecMQPSensitiveMsgUtil;
+    return d;
   }
   
   private static Object a(String paramString, int paramInt, long paramLong, boolean paramBoolean, bankcode_info.BankcodeCtrlInfo paramBankcodeCtrlInfo)
   {
     return new MQPSensitiveMsgUtil.6(paramString, paramInt, paramLong, paramBankcodeCtrlInfo, paramBoolean);
-  }
-  
-  private static void a()
-  {
-    Object localObject = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
-    BaseApplication.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-    localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject == null) {
-      return;
-    }
-    if (((AppRuntime)localObject).isLogin()) {
-      c(((AppRuntime)localObject).getAccount());
-    }
   }
   
   private static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2)
@@ -217,32 +199,32 @@ public class MQPSensitiveMsgUtil
   public static void a(MessageRecord paramMessageRecord, List<MessageRecord> paramList, boolean paramBoolean, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 151	com/tencent/ims/bankcode_info$BankcodeCtrlInfo
+    //   0: new 114	com/tencent/ims/bankcode_info$BankcodeCtrlInfo
     //   3: dup
-    //   4: invokespecial 152	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:<init>	()V
+    //   4: invokespecial 115	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:<init>	()V
     //   7: astore 16
     //   9: aload 16
     //   11: aload_3
-    //   12: invokevirtual 162	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   12: invokevirtual 125	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   15: pop
     //   16: aload 16
-    //   18: getfield 230	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:msgtail_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   21: invokevirtual 233	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   18: getfield 196	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:msgtail_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   21: invokevirtual 199	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   24: ifeq +16 -> 40
     //   27: aload 16
-    //   29: getfield 230	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:msgtail_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   32: invokevirtual 234	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   29: getfield 196	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:msgtail_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   32: invokevirtual 200	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   35: istore 5
     //   37: goto +6 -> 43
     //   40: iconst_0
     //   41: istore 5
     //   43: aload 16
-    //   45: getfield 166	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:bankcode_elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   48: invokevirtual 171	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   45: getfield 129	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:bankcode_elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   48: invokevirtual 135	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   51: ifeq +15 -> 66
     //   54: aload 16
-    //   56: getfield 166	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:bankcode_elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   59: invokevirtual 174	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   56: getfield 129	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:bankcode_elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   59: invokevirtual 138	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   62: astore_3
     //   63: goto +5 -> 68
     //   66: aconst_null
@@ -260,7 +242,7 @@ public class MQPSensitiveMsgUtil
     //   87: iconst_0
     //   88: istore 5
     //   90: aload_3
-    //   91: invokevirtual 177	java/lang/Exception:printStackTrace	()V
+    //   91: invokevirtual 141	java/lang/Exception:printStackTrace	()V
     //   94: aconst_null
     //   95: astore_3
     //   96: iload 5
@@ -269,43 +251,43 @@ public class MQPSensitiveMsgUtil
     //   101: ifnonnull +4 -> 105
     //   104: return
     //   105: aload_0
-    //   106: ldc 236
-    //   108: invokevirtual 143	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   106: ldc 202
+    //   108: invokevirtual 106	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   111: astore 17
     //   113: aload 17
-    //   115: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   115: invokestatic 112	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   118: ifne +26 -> 144
     //   121: aload 17
-    //   123: invokestatic 242	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   123: invokestatic 208	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   126: istore 6
     //   128: goto +94 -> 222
     //   131: astore 17
     //   133: aload 17
-    //   135: invokevirtual 177	java/lang/Exception:printStackTrace	()V
+    //   135: invokevirtual 141	java/lang/Exception:printStackTrace	()V
     //   138: iconst_0
     //   139: istore 6
     //   141: goto +81 -> 222
     //   144: aload_3
-    //   145: invokeinterface 183 1 0
+    //   145: invokeinterface 147 1 0
     //   150: astore 17
     //   152: iconst_0
     //   153: istore 5
     //   155: iload 5
     //   157: istore 6
     //   159: aload 17
-    //   161: invokeinterface 188 1 0
+    //   161: invokeinterface 152 1 0
     //   166: ifeq +56 -> 222
     //   169: aload 17
-    //   171: invokeinterface 192 1 0
-    //   176: checkcast 194	com/tencent/ims/bankcode_info$BankcodeElem
+    //   171: invokeinterface 156 1 0
+    //   176: checkcast 158	com/tencent/ims/bankcode_info$BankcodeElem
     //   179: astore 18
     //   181: aload 18
-    //   183: getfield 198	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   186: invokevirtual 201	com/tencent/mobileqq/pb/PBEnumField:has	()Z
+    //   183: getfield 162	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   186: invokevirtual 165	com/tencent/mobileqq/pb/PBEnumField:has	()Z
     //   189: ifeq +16 -> 205
     //   192: aload 18
-    //   194: getfield 198	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   197: invokevirtual 204	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   194: getfield 162	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   197: invokevirtual 168	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   200: istore 6
     //   202: goto +6 -> 208
     //   205: iconst_0
@@ -320,39 +302,39 @@ public class MQPSensitiveMsgUtil
     //   224: bipush 20
     //   226: if_icmpne +164 -> 390
     //   229: aload_0
-    //   230: ldc 244
-    //   232: invokevirtual 143	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   230: ldc 210
+    //   232: invokevirtual 106	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   235: astore 17
     //   237: aload 17
-    //   239: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   239: invokestatic 112	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   242: ifne +23 -> 265
     //   245: aload 17
-    //   247: invokestatic 250	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   247: invokestatic 216	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
     //   250: istore 15
     //   252: goto +141 -> 393
     //   255: astore 17
     //   257: aload 17
-    //   259: invokevirtual 177	java/lang/Exception:printStackTrace	()V
+    //   259: invokevirtual 141	java/lang/Exception:printStackTrace	()V
     //   262: goto +128 -> 390
     //   265: aload_3
-    //   266: invokeinterface 183 1 0
+    //   266: invokeinterface 147 1 0
     //   271: astore 18
     //   273: iconst_0
     //   274: istore 15
     //   276: aload 18
-    //   278: invokeinterface 188 1 0
+    //   278: invokeinterface 152 1 0
     //   283: ifeq +104 -> 387
     //   286: aload 18
-    //   288: invokeinterface 192 1 0
-    //   293: checkcast 194	com/tencent/ims/bankcode_info$BankcodeElem
+    //   288: invokeinterface 156 1 0
+    //   293: checkcast 158	com/tencent/ims/bankcode_info$BankcodeElem
     //   296: astore 17
     //   298: aload 17
-    //   300: getfield 198	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   303: invokevirtual 201	com/tencent/mobileqq/pb/PBEnumField:has	()Z
+    //   300: getfield 162	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   303: invokevirtual 165	com/tencent/mobileqq/pb/PBEnumField:has	()Z
     //   306: ifeq +16 -> 322
     //   309: aload 17
-    //   311: getfield 198	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   314: invokevirtual 204	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   311: getfield 162	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_attr	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   314: invokevirtual 168	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   317: istore 5
     //   319: goto +6 -> 325
     //   322: iconst_0
@@ -362,22 +344,22 @@ public class MQPSensitiveMsgUtil
     //   329: if_icmpeq +6 -> 335
     //   332: goto -56 -> 276
     //   335: aload 17
-    //   337: getfield 208	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   340: invokevirtual 211	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   337: getfield 172	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   340: invokevirtual 175	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   343: ifeq +16 -> 359
     //   346: aload 17
-    //   348: getfield 208	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   351: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   348: getfield 172	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   351: invokevirtual 178	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   354: astore 17
     //   356: goto +6 -> 362
     //   359: aconst_null
     //   360: astore 17
     //   362: aload 17
-    //   364: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   364: invokestatic 112	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   367: ifne -91 -> 276
-    //   370: invokestatic 215	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	()Lcom/tencent/mqp/app/sec/MQPSensitiveMsgUtil;
+    //   370: invokestatic 180	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	()Lcom/tencent/mqp/app/sec/MQPSensitiveMsgUtil;
     //   373: aload 17
-    //   375: invokevirtual 252	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;)Z
+    //   375: invokevirtual 218	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:b	(Ljava/lang/String;)Z
     //   378: ifne -102 -> 276
     //   381: iconst_1
     //   382: istore 15
@@ -404,12 +386,12 @@ public class MQPSensitiveMsgUtil
     //   428: iconst_0
     //   429: istore 15
     //   431: aload_0
-    //   432: ldc 254
+    //   432: ldc 220
     //   434: iload 15
-    //   436: invokestatic 258	java/lang/Boolean:toString	(Z)Ljava/lang/String;
-    //   439: invokevirtual 225	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
+    //   436: invokestatic 224	java/lang/Boolean:toString	(Z)Ljava/lang/String;
+    //   439: invokevirtual 191	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
     //   442: aload_1
-    //   443: invokeinterface 183 1 0
+    //   443: invokeinterface 147 1 0
     //   448: astore 20
     //   450: iconst_0
     //   451: istore 5
@@ -420,14 +402,14 @@ public class MQPSensitiveMsgUtil
     //   459: aload_3
     //   460: astore_1
     //   461: aload 20
-    //   463: invokeinterface 188 1 0
+    //   463: invokeinterface 152 1 0
     //   468: ifeq +743 -> 1211
     //   471: aload 20
-    //   473: invokeinterface 192 1 0
-    //   478: checkcast 140	com/tencent/mobileqq/data/MessageRecord
+    //   473: invokeinterface 156 1 0
+    //   478: checkcast 102	com/tencent/mobileqq/data/MessageRecord
     //   481: astore 21
     //   483: aload 21
-    //   485: instanceof 260
+    //   485: instanceof 226
     //   488: ifeq +710 -> 1198
     //   491: iload 5
     //   493: istore 6
@@ -435,7 +417,7 @@ public class MQPSensitiveMsgUtil
     //   497: istore 7
     //   499: iload 6
     //   501: aload_1
-    //   502: invokeinterface 263 1 0
+    //   502: invokeinterface 229 1 0
     //   507: if_icmpge +609 -> 1116
     //   510: iload 6
     //   512: iconst_1
@@ -443,8 +425,8 @@ public class MQPSensitiveMsgUtil
     //   514: istore 12
     //   516: aload_1
     //   517: iload 6
-    //   519: invokeinterface 266 2 0
-    //   524: checkcast 194	com/tencent/ims/bankcode_info$BankcodeElem
+    //   519: invokeinterface 232 2 0
+    //   524: checkcast 158	com/tencent/ims/bankcode_info$BankcodeElem
     //   527: astore 18
     //   529: aload 18
     //   531: ifnonnull +10 -> 541
@@ -454,32 +436,32 @@ public class MQPSensitiveMsgUtil
     //   537: astore_1
     //   538: goto +567 -> 1105
     //   541: aload 18
-    //   543: getfield 270	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
-    //   546: invokevirtual 273	com/tencent/ims/bankcode_info$ElemPos:has	()Z
+    //   543: getfield 236	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
+    //   546: invokevirtual 239	com/tencent/ims/bankcode_info$ElemPos:has	()Z
     //   549: ifeq +76 -> 625
     //   552: aload 18
-    //   554: getfield 270	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
-    //   557: invokevirtual 276	com/tencent/ims/bankcode_info$ElemPos:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   560: checkcast 272	com/tencent/ims/bankcode_info$ElemPos
+    //   554: getfield 236	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
+    //   557: invokevirtual 242	com/tencent/ims/bankcode_info$ElemPos:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   560: checkcast 238	com/tencent/ims/bankcode_info$ElemPos
     //   563: astore_3
     //   564: aload_3
-    //   565: getfield 279	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   568: invokevirtual 233	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   565: getfield 245	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   568: invokevirtual 199	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   571: ifeq +15 -> 586
     //   574: aload_3
-    //   575: getfield 279	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   578: invokevirtual 234	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   575: getfield 245	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   578: invokevirtual 200	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   581: istore 6
     //   583: goto +6 -> 589
     //   586: iconst_0
     //   587: istore 6
     //   589: aload_3
-    //   590: getfield 282	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   593: invokevirtual 233	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   590: getfield 248	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   593: invokevirtual 199	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   596: ifeq +19 -> 615
     //   599: aload_3
-    //   600: getfield 282	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   603: invokevirtual 234	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   600: getfield 248	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   603: invokevirtual 200	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   606: istore 7
     //   608: iload 6
     //   610: istore 13
@@ -498,39 +480,39 @@ public class MQPSensitiveMsgUtil
     //   635: if_icmplt -101 -> 534
     //   638: iload 13
     //   640: aload 21
-    //   642: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
-    //   645: invokevirtual 288	java/lang/String:length	()I
+    //   642: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   645: invokevirtual 254	java/lang/String:length	()I
     //   648: iload 10
     //   650: iadd
     //   651: if_icmple +6 -> 657
     //   654: goto -120 -> 534
     //   657: aload 18
-    //   659: getfield 291	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_hidden_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
-    //   662: invokevirtual 273	com/tencent/ims/bankcode_info$ElemPos:has	()Z
+    //   659: getfield 257	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_hidden_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
+    //   662: invokevirtual 239	com/tencent/ims/bankcode_info$ElemPos:has	()Z
     //   665: ifeq +68 -> 733
     //   668: aload 18
-    //   670: getfield 291	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_hidden_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
-    //   673: invokevirtual 276	com/tencent/ims/bankcode_info$ElemPos:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   676: checkcast 272	com/tencent/ims/bankcode_info$ElemPos
+    //   670: getfield 257	com/tencent/ims/bankcode_info$BankcodeElem:bankcode_hidden_pos	Lcom/tencent/ims/bankcode_info$ElemPos;
+    //   673: invokevirtual 242	com/tencent/ims/bankcode_info$ElemPos:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   676: checkcast 238	com/tencent/ims/bankcode_info$ElemPos
     //   679: astore_3
     //   680: aload_3
-    //   681: getfield 279	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   684: invokevirtual 233	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   681: getfield 245	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   684: invokevirtual 199	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   687: ifeq +15 -> 702
     //   690: aload_3
-    //   691: getfield 279	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   694: invokevirtual 234	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   691: getfield 245	com/tencent/ims/bankcode_info$ElemPos:start_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   694: invokevirtual 200	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   697: istore 8
     //   699: goto +6 -> 705
     //   702: iconst_0
     //   703: istore 8
     //   705: aload_3
-    //   706: getfield 282	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   709: invokevirtual 233	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   706: getfield 248	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   709: invokevirtual 199	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   712: ifeq +15 -> 727
     //   715: aload_3
-    //   716: getfield 282	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   719: invokevirtual 234	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   716: getfield 248	com/tencent/ims/bankcode_info$ElemPos:end_offset	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   719: invokevirtual 200	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   722: istore 6
     //   724: goto +15 -> 739
     //   727: iconst_0
@@ -541,22 +523,22 @@ public class MQPSensitiveMsgUtil
     //   736: iconst_0
     //   737: istore 8
     //   739: aload 21
-    //   741: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   741: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
     //   744: iload 13
     //   746: iload 11
     //   748: iadd
     //   749: iload 10
     //   751: isub
-    //   752: invokestatic 293	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;I)I
+    //   752: invokestatic 259	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;I)I
     //   755: istore 13
     //   757: aload 21
-    //   759: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   759: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
     //   762: iload 7
     //   764: iload 11
     //   766: iadd
     //   767: iload 10
     //   769: isub
-    //   770: invokestatic 293	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;I)I
+    //   770: invokestatic 259	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;I)I
     //   773: istore 7
     //   775: iload 8
     //   777: iload 13
@@ -564,8 +546,8 @@ public class MQPSensitiveMsgUtil
     //   780: istore 8
     //   782: iload 13
     //   784: aload 21
-    //   786: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
-    //   789: invokevirtual 288	java/lang/String:length	()I
+    //   786: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   789: invokevirtual 254	java/lang/String:length	()I
     //   792: if_icmpge +304 -> 1096
     //   795: iload 7
     //   797: iconst_1
@@ -573,29 +555,29 @@ public class MQPSensitiveMsgUtil
     //   799: istore 7
     //   801: iload 7
     //   803: aload 21
-    //   805: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
-    //   808: invokevirtual 288	java/lang/String:length	()I
+    //   805: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   808: invokevirtual 254	java/lang/String:length	()I
     //   811: if_icmple +6 -> 817
     //   814: goto +282 -> 1096
     //   817: aload 21
-    //   819: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   819: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
     //   822: iload 13
     //   824: iload 7
-    //   826: invokevirtual 297	java/lang/String:substring	(II)Ljava/lang/String;
+    //   826: invokevirtual 263	java/lang/String:substring	(II)Ljava/lang/String;
     //   829: astore 22
-    //   831: ldc_w 299
+    //   831: ldc_w 265
     //   834: astore 19
-    //   836: ldc_w 299
+    //   836: ldc_w 265
     //   839: astore 17
     //   841: iconst_0
     //   842: istore 7
     //   844: iload 7
     //   846: aload 22
-    //   848: invokevirtual 288	java/lang/String:length	()I
+    //   848: invokevirtual 254	java/lang/String:length	()I
     //   851: if_icmpge +74 -> 925
     //   854: aload 22
     //   856: iload 7
-    //   858: invokevirtual 303	java/lang/String:charAt	(I)C
+    //   858: invokevirtual 269	java/lang/String:charAt	(I)C
     //   861: istore 4
     //   863: iload 9
     //   865: iconst_1
@@ -606,22 +588,22 @@ public class MQPSensitiveMsgUtil
     //   875: aload 17
     //   877: astore_3
     //   878: iload 4
-    //   880: invokestatic 309	java/lang/Character:isDigit	(C)Z
+    //   880: invokestatic 275	java/lang/Character:isDigit	(C)Z
     //   883: ifeq +30 -> 913
-    //   886: new 311	java/lang/StringBuilder
+    //   886: new 277	java/lang/StringBuilder
     //   889: dup
-    //   890: invokespecial 312	java/lang/StringBuilder:<init>	()V
+    //   890: invokespecial 278	java/lang/StringBuilder:<init>	()V
     //   893: astore_3
     //   894: aload_3
     //   895: aload 17
-    //   897: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   897: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   900: pop
     //   901: aload_3
     //   902: iload 4
-    //   904: invokevirtual 319	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   904: invokevirtual 285	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   907: pop
     //   908: aload_3
-    //   909: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   909: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   912: astore_3
     //   913: iload 7
     //   915: iconst_1
@@ -631,7 +613,7 @@ public class MQPSensitiveMsgUtil
     //   920: astore 17
     //   922: goto -78 -> 844
     //   925: aload 17
-    //   927: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   927: invokestatic 112	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   930: ifeq +13 -> 943
     //   933: iload 15
     //   935: ifeq +8 -> 943
@@ -639,12 +621,12 @@ public class MQPSensitiveMsgUtil
     //   939: astore_3
     //   940: goto -404 -> 536
     //   943: aload 18
-    //   945: getfield 208	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   948: invokevirtual 211	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   945: getfield 172	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   948: invokevirtual 175	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   951: ifeq +16 -> 967
     //   954: aload 18
-    //   956: getfield 208	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   959: invokevirtual 213	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   956: getfield 172	com/tencent/ims/bankcode_info$BankcodeElem:clean_bankcode	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   959: invokevirtual 178	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   962: astore 18
     //   964: goto +6 -> 970
     //   967: aconst_null
@@ -657,7 +639,7 @@ public class MQPSensitiveMsgUtil
     //   978: astore_3
     //   979: aload 17
     //   981: aload 18
-    //   983: invokestatic 325	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   983: invokestatic 291	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   986: ifeq -450 -> 536
     //   989: iconst_0
     //   990: istore 7
@@ -674,20 +656,20 @@ public class MQPSensitiveMsgUtil
     //   1008: iload 8
     //   1010: isub
     //   1011: if_icmpge +43 -> 1054
-    //   1014: new 311	java/lang/StringBuilder
+    //   1014: new 277	java/lang/StringBuilder
     //   1017: dup
-    //   1018: invokespecial 312	java/lang/StringBuilder:<init>	()V
+    //   1018: invokespecial 278	java/lang/StringBuilder:<init>	()V
     //   1021: astore 17
     //   1023: aload 17
     //   1025: aload_3
-    //   1026: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1026: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1029: pop
     //   1030: aload 17
-    //   1032: ldc_w 327
-    //   1035: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1032: ldc_w 293
+    //   1035: invokevirtual 282	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1038: pop
     //   1039: aload 17
-    //   1041: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1041: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1044: astore_3
     //   1045: iload 7
     //   1047: iconst_1
@@ -695,23 +677,23 @@ public class MQPSensitiveMsgUtil
     //   1049: istore 7
     //   1051: goto -56 -> 995
     //   1054: aload 21
-    //   1056: checkcast 260	com/tencent/mobileqq/data/MessageForText
+    //   1056: checkcast 226	com/tencent/mobileqq/data/MessageForText
     //   1059: astore 18
-    //   1061: new 111	android/text/SpannableStringBuilder
+    //   1061: new 73	android/text/SpannableStringBuilder
     //   1064: dup
     //   1065: aload 18
-    //   1067: getfield 331	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
-    //   1070: invokespecial 334	android/text/SpannableStringBuilder:<init>	(Ljava/lang/CharSequence;)V
+    //   1067: getfield 297	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
+    //   1070: invokespecial 300	android/text/SpannableStringBuilder:<init>	(Ljava/lang/CharSequence;)V
     //   1073: astore 17
     //   1075: aload 17
     //   1077: iload 8
     //   1079: iload 14
     //   1081: aload_3
-    //   1082: invokevirtual 338	android/text/SpannableStringBuilder:replace	(IILjava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
+    //   1082: invokevirtual 304	android/text/SpannableStringBuilder:replace	(IILjava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
     //   1085: pop
     //   1086: aload 18
     //   1088: aload 17
-    //   1090: putfield 331	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
+    //   1090: putfield 297	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
     //   1093: goto +12 -> 1105
     //   1096: iload 12
     //   1098: iconst_1
@@ -724,38 +706,38 @@ public class MQPSensitiveMsgUtil
     //   1111: istore 7
     //   1113: goto -614 -> 499
     //   1116: aload_0
-    //   1117: getfield 341	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1117: getfield 307	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   1120: aload_0
-    //   1121: getfield 344	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   1121: getfield 310	com/tencent/mobileqq/data/MessageRecord:istroop	I
     //   1124: aload_0
-    //   1125: getfield 348	com/tencent/mobileqq/data/MessageRecord:uniseq	J
+    //   1125: getfield 314	com/tencent/mobileqq/data/MessageRecord:uniseq	J
     //   1128: iload_2
     //   1129: aload 16
     //   1131: iload 5
     //   1133: iload 7
     //   1135: aload 21
-    //   1137: checkcast 260	com/tencent/mobileqq/data/MessageForText
+    //   1137: checkcast 226	com/tencent/mobileqq/data/MessageForText
     //   1140: iload 10
     //   1142: iload 11
     //   1144: isub
-    //   1145: invokestatic 351	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;IJZLcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;IILcom/tencent/mobileqq/data/MessageForText;I)V
+    //   1145: invokestatic 317	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;IJZLcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;IILcom/tencent/mobileqq/data/MessageForText;I)V
     //   1148: iload 11
     //   1150: aload 21
-    //   1152: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   1152: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
     //   1155: aload 21
-    //   1157: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
-    //   1160: invokevirtual 288	java/lang/String:length	()I
-    //   1163: invokestatic 293	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;I)I
+    //   1157: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   1160: invokevirtual 254	java/lang/String:length	()I
+    //   1163: invokestatic 259	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Ljava/lang/String;I)I
     //   1166: aload 21
-    //   1168: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
-    //   1171: invokevirtual 288	java/lang/String:length	()I
+    //   1168: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   1171: invokevirtual 254	java/lang/String:length	()I
     //   1174: isub
     //   1175: iadd
     //   1176: istore 11
     //   1178: iload 10
     //   1180: aload 21
-    //   1182: getfield 285	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
-    //   1185: invokevirtual 288	java/lang/String:length	()I
+    //   1182: getfield 251	com/tencent/mobileqq/data/MessageRecord:msg	Ljava/lang/String;
+    //   1185: invokevirtual 254	java/lang/String:length	()I
     //   1188: iadd
     //   1189: istore 6
     //   1191: iload 7
@@ -775,7 +757,7 @@ public class MQPSensitiveMsgUtil
     //   0	1212	1	paramList	List<MessageRecord>
     //   0	1212	2	paramBoolean	boolean
     //   0	1212	3	paramArrayOfByte	byte[]
-    //   861	42	4	c	char
+    //   861	42	4	c1	char
     //   35	1159	5	i	int
     //   126	1079	6	j	int
     //   497	695	7	k	int
@@ -1006,25 +988,38 @@ public class MQPSensitiveMsgUtil
     }
   }
   
-  private static void c(String paramString)
+  private static void d()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = paramString;
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    Object localObject = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
+    BaseApplication.getContext().registerReceiver(e, (IntentFilter)localObject);
+    localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject == null) {
+      return;
+    }
+    if (((AppRuntime)localObject).isLogin()) {
+      e(((AppRuntime)localObject).getAccount());
+    }
+  }
+  
+  private static void e(String paramString)
+  {
+    a = 0;
+    c = paramString;
+    if (!TextUtils.isEmpty(c))
     {
-      jdField_a_of_type_AndroidOsBundle.putBundle(jdField_a_of_type_JavaLangString, null);
+      b.putBundle(c, null);
       ThreadManager.executeOnFileThread(new MQPSensitiveMsgUtil.5());
     }
   }
   
   public void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!a(paramString)))
+    if ((!TextUtils.isEmpty(paramString)) && (!b(paramString)))
     {
-      jdField_a_of_type_Int = (jdField_a_of_type_Int + 1) % 10;
+      a = (a + 1) % 10;
       String str1 = MD5Utils.encodeHexStr(paramString);
-      String str2 = Integer.toString(jdField_a_of_type_Int);
-      Bundle localBundle = jdField_a_of_type_AndroidOsBundle.getBundle(jdField_a_of_type_JavaLangString);
+      String str2 = Integer.toString(a);
+      Bundle localBundle = b.getBundle(c);
       if (localBundle != null)
       {
         Object localObject = null;
@@ -1048,11 +1043,11 @@ public class MQPSensitiveMsgUtil
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Bundle localBundle = jdField_a_of_type_AndroidOsBundle.getBundle(jdField_a_of_type_JavaLangString);
+      Bundle localBundle = b.getBundle(c);
       if ((localBundle != null) && (localBundle.containsKey(MD5Utils.encodeHexStr(paramString)))) {
         return true;
       }
@@ -1062,7 +1057,7 @@ public class MQPSensitiveMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil
  * JD-Core Version:    0.7.0.1
  */

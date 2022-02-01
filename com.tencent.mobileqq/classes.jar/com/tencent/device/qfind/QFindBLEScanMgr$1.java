@@ -23,17 +23,17 @@ class QFindBLEScanMgr$1
   {
     if (paramInt == 0)
     {
-      QFind.DeviceInfo localDeviceInfo = (QFind.DeviceInfo)this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.c.get(this.jdField_a_of_type_JavaLangString);
-      BlePeerInfo localBlePeerInfo = (BlePeerInfo)this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a.remove(this.jdField_a_of_type_JavaLangString);
-      localBlePeerInfo.a = paramSosoLbsInfo;
+      QFind.DeviceInfo localDeviceInfo = (QFind.DeviceInfo)this.b.t.get(this.a);
+      BlePeerInfo localBlePeerInfo = (BlePeerInfo)this.b.r.remove(this.a);
+      localBlePeerInfo.j = paramSosoLbsInfo;
       Object localObject;
       if (localDeviceInfo.bytes_sig.has()) {
         localObject = localDeviceInfo.bytes_sig.get().toByteArray();
       } else {
         localObject = null;
       }
-      localBlePeerInfo.jdField_b_of_type_ArrayOfByte = ((byte[])localObject);
-      localBlePeerInfo.d = localDeviceInfo.uint32_need_verify_dev.get();
+      localBlePeerInfo.k = ((byte[])localObject);
+      localBlePeerInfo.l = localDeviceInfo.uint32_need_verify_dev.get();
       boolean bool;
       if ((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L) - localDeviceInfo.timestamp.get() > localDeviceInfo.uint32_verify_dev_interval.get()) {
         bool = true;
@@ -46,24 +46,24 @@ class QFindBLEScanMgr$1
         ((StringBuilder)localObject).append("reportDevWithLoc get location errorCode=");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append(" ; needVerify = ");
-        ((StringBuilder)localObject).append(localBlePeerInfo.d);
+        ((StringBuilder)localObject).append(localBlePeerInfo.l);
         ((StringBuilder)localObject).append(" ; exceedVerifyInterval= ");
         ((StringBuilder)localObject).append(bool);
         ((StringBuilder)localObject).append(" ; peerInfo.ble_id = ");
-        ((StringBuilder)localObject).append(localBlePeerInfo.c);
+        ((StringBuilder)localObject).append(localBlePeerInfo.i);
         QLog.i("QFindBLE", 2, ((StringBuilder)localObject).toString());
       }
-      if ((localBlePeerInfo.d > 0) && (bool))
+      if ((localBlePeerInfo.l > 0) && (bool))
       {
-        localBlePeerInfo.jdField_b_of_type_Boolean = true;
-        QFindGattManager.a().a(this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a(localBlePeerInfo));
+        localBlePeerInfo.n = true;
+        QFindGattManager.a().a(this.b.a(localBlePeerInfo));
       }
       else
       {
-        localBlePeerInfo.jdField_b_of_type_Boolean = false;
-        QFindBLEScanMgr.a(this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr, localBlePeerInfo, paramSosoLbsInfo, false);
+        localBlePeerInfo.n = false;
+        QFindBLEScanMgr.a(this.b, localBlePeerInfo, paramSosoLbsInfo, false);
       }
-      this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a.put(this.jdField_a_of_type_JavaLangString, localBlePeerInfo);
+      this.b.r.put(this.a, localBlePeerInfo);
       return;
     }
     paramSosoLbsInfo = new StringBuilder();
@@ -74,7 +74,7 @@ class QFindBLEScanMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.webview;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.AuthorizeConfig;
@@ -20,7 +19,6 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.mobileqq.webview.util.WebViewConstant;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
@@ -42,26 +40,91 @@ import org.json.JSONObject;
 public class WebSecurityPluginV2
   extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  SoftKeyboardObserver jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  private WebSecurityPluginV2.URLCheckParams jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2$URLCheckParams;
-  String jdField_a_of_type_JavaLangString = null;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
+  String a = null;
+  String b;
+  boolean c = true;
+  boolean d = true;
+  SoftKeyboardObserver e;
+  TroopMemberApiClient f;
+  private int g;
+  private WebSecurityPluginV2.URLCheckParams h;
+  private ArrayList<String> i = new ArrayList();
   
   public WebSecurityPluginV2()
   {
     this.mPluginNameSpace = "UrlSaveVerifyV2";
   }
   
-  private Object a(String paramString)
+  private void a()
+  {
+    WebSecurityPluginV2.URLCheckParams localURLCheckParams = this.h;
+    if (localURLCheckParams == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSecurityPluginV2", 2, "reportArkMsgOnPageFinish urlCheckParams is null");
+      }
+      return;
+    }
+    if (localURLCheckParams.i)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSecurityPluginV2", 2, "reportArkMsgOnPageFinish isPageFinish");
+      }
+      return;
+    }
+    b();
+    localURLCheckParams = this.h;
+    localURLCheckParams.i = true;
+    this.g = this.f.a(localURLCheckParams, new WebSecurityPluginV2.2(this));
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    if (this.mRuntime != null)
+    {
+      if (this.mRuntime.a() == null) {
+        return;
+      }
+      if (this.i.isEmpty())
+      {
+        if (!TextUtils.isEmpty(paramString2)) {
+          this.i.add(paramString2);
+        }
+        return;
+      }
+      paramString2 = SwiftWebViewUtils.b(paramString1);
+      if (("http".equals(paramString2)) || ("https".equals(paramString2)))
+      {
+        paramString2 = this.mRuntime.a().getHitTestResult();
+        if ((paramString2 != null) && (paramString2.getType() == 0))
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("shouldOverrideUrlLoading detect 302, url: ");
+          paramString2.append(paramString1);
+          QLog.i("WebSecurityPluginV2", 1, paramString2.toString());
+          f(paramString1);
+        }
+      }
+    }
+  }
+  
+  private void b()
+  {
+    int j = this.i.size();
+    if (j <= 0) {
+      return;
+    }
+    String str = (String)this.i.get(j - 1);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(str);
+    this.i = localArrayList;
+  }
+  
+  private Object c(String paramString)
   {
     Object localObject;
     if (this.mRuntime != null) {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
     } else {
       localObject = null;
     }
@@ -81,122 +144,22 @@ public class WebSecurityPluginV2
     return null;
   }
   
-  private void a()
-  {
-    WebSecurityPluginV2.URLCheckParams localURLCheckParams = this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2$URLCheckParams;
-    if (localURLCheckParams == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebSecurityPluginV2", 2, "reportArkMsgOnPageFinish urlCheckParams is null");
-      }
-      return;
-    }
-    if (localURLCheckParams.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebSecurityPluginV2", 2, "reportArkMsgOnPageFinish isPageFinish");
-      }
-      return;
-    }
-    b();
-    localURLCheckParams = this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2$URLCheckParams;
-    localURLCheckParams.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(localURLCheckParams, new WebSecurityPluginV2.2(this));
-  }
-  
-  private void a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    }
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (this.mRuntime != null)
-    {
-      if (this.mRuntime.a() == null) {
-        return;
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-      {
-        if (!TextUtils.isEmpty(paramString2)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
-        }
-        return;
-      }
-      paramString2 = SwiftWebViewUtils.b(paramString1);
-      if (("http".equals(paramString2)) || ("https".equals(paramString2)))
-      {
-        paramString2 = this.mRuntime.a().getHitTestResult();
-        if ((paramString2 != null) && (paramString2.getType() == 0))
-        {
-          paramString2 = new StringBuilder();
-          paramString2.append("shouldOverrideUrlLoading detect 302, url: ");
-          paramString2.append(paramString1);
-          QLog.i("WebSecurityPluginV2", 1, paramString2.toString());
-          a(paramString1);
-        }
-      }
-    }
-  }
-  
-  private String[] a()
-  {
-    Object localObject = AuthorizeConfig.a().a("ban_domain", "douyin.com,huoshan.com,changba.com,toutiao.com,xiguaapp.cn,xiguashipin.cn,365yg.com,snssdk.com,ixigua.com,toutiaocdn.net,music.163.com,weibo.cn,autohome.com.cn");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return null;
-    }
-    localObject = ((String)localObject).split(",");
-    if (localObject == null) {
-      return null;
-    }
-    int i = 0;
-    while (i < localObject.length)
-    {
-      if (TextUtils.isEmpty(localObject[i])) {
-        localObject[i] = "";
-      } else {
-        localObject[i] = localObject[i].trim();
-      }
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  private void b()
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i <= 0) {
-      return;
-    }
-    String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i - 1);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(str);
-    this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-  }
-  
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver == null)
+    if (this.e == null)
     {
       CustomWebView localCustomWebView = this.mRuntime.a();
       if (localCustomWebView != null) {
-        this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = new SoftKeyboardObserver(localCustomWebView, new WebSecurityPluginV2.3(this, localCustomWebView));
+        this.e = new SoftKeyboardObserver(localCustomWebView, new WebSecurityPluginV2.3(this));
       }
     }
-  }
-  
-  private boolean c(String paramString)
-  {
-    return AuthorizeConfig.a().c(paramString);
   }
   
   private void d()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      Object localObject1 = this.mRuntime.a().getIntent();
+      Object localObject1 = this.mRuntime.d().getIntent();
       Object localObject2 = this.mRuntime.a();
       String str2;
       if (localObject2 != null) {
@@ -204,29 +167,29 @@ public class WebSecurityPluginV2
       } else {
         str2 = "";
       }
-      int i = 2;
+      int j = 2;
       if (localObject1 != null)
       {
         if (((Intent)localObject1).getBooleanExtra("fromQrcode", false)) {}
         for (localObject1 = "mqq.qrcode";; localObject1 = "mqq.qzone")
         {
-          break label377;
+          break label360;
           if (!((Intent)localObject1).getBooleanExtra("key_isFromQZone", false)) {
             break;
           }
         }
-        int k = ((Intent)localObject1).getIntExtra("uinType", -1);
-        j = k;
-        if (k == -1) {
-          j = ((Intent)localObject1).getIntExtra("curtype", -1);
+        int m = ((Intent)localObject1).getIntExtra("uinType", -1);
+        k = m;
+        if (m == -1) {
+          k = ((Intent)localObject1).getIntExtra("curtype", -1);
         }
-        if (j != 0)
+        if (k != 0)
         {
-          if (j != 1)
+          if (k != 1)
           {
-            if ((j != 1000) && (j != 1001) && (j != 1004) && (j != 1005))
+            if ((k != 1000) && (k != 1001) && (k != 1004) && (k != 1005))
             {
-              if (j != 3000)
+              if (k != 3000)
               {
                 QLog.d("WebSecurityPluginV2", 4, "reportSoftKeyboardToggled:unknow uinType");
               }
@@ -235,12 +198,12 @@ public class WebSecurityPluginV2
                 str1 = ((Intent)localObject1).getStringExtra("dicussgroup_uin");
                 localObject2 = ((Intent)localObject1).getStringExtra("friendUin");
                 if (((Intent)localObject1).getBooleanExtra("is_send", false)) {
-                  i = 1;
+                  j = 1;
                 }
                 localObject1 = "mqq.discussion";
-                j = i;
-                i = 3;
-                break label389;
+                k = j;
+                j = 3;
+                break label372;
               }
             }
             else
@@ -248,12 +211,12 @@ public class WebSecurityPluginV2
               str1 = ((Intent)localObject1).getStringExtra("friend_uin");
               localObject2 = ((Intent)localObject1).getStringExtra("friendUin");
               if (((Intent)localObject1).getBooleanExtra("is_send", false)) {
-                i = 1;
+                j = 1;
               }
               localObject1 = "";
-              j = i;
-              i = 1;
-              break label389;
+              k = j;
+              j = 1;
+              break label372;
             }
           }
           else
@@ -261,14 +224,14 @@ public class WebSecurityPluginV2
             str1 = ((Intent)localObject1).getStringExtra("groupUin");
             localObject2 = ((Intent)localObject1).getStringExtra("friendUin");
             if (((Intent)localObject1).getBooleanExtra("is_send", false)) {
-              i = 1;
+              j = 1;
             } else {
-              i = 2;
+              j = 2;
             }
             localObject1 = "mqq.group";
-            j = i;
-            i = 2;
-            break label389;
+            k = j;
+            j = 2;
+            break label372;
           }
         }
         else
@@ -276,32 +239,32 @@ public class WebSecurityPluginV2
           str1 = ((Intent)localObject1).getStringExtra("friend_uin");
           localObject2 = ((Intent)localObject1).getStringExtra("friendUin");
           if (((Intent)localObject1).getBooleanExtra("is_send", false)) {
-            i = 1;
+            j = 1;
           }
           localObject1 = "mqq.c2c";
-          j = i;
-          i = 0;
-          break label389;
+          k = j;
+          j = 0;
+          break label372;
         }
       }
       localObject1 = "";
-      label377:
+      label360:
       localObject2 = "";
       String str1 = "";
-      i = -1;
-      int j = 0;
-      label389:
+      j = -1;
+      int k = 0;
+      label372:
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("reportSoftKeyboardToggled-- referer:");
         localStringBuilder.append(str2);
         localStringBuilder.append(" ,url:");
-        localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(" ,msgType:");
-        localStringBuilder.append(i);
-        localStringBuilder.append(",msgFrom:");
         localStringBuilder.append(j);
+        localStringBuilder.append(",msgFrom:");
+        localStringBuilder.append(k);
         localStringBuilder.append(",senderUin:");
         localStringBuilder.append((String)localObject2);
         localStringBuilder.append(",chatId:");
@@ -310,7 +273,7 @@ public class WebSecurityPluginV2
         localStringBuilder.append((String)localObject1);
         QLog.d("WebSecurityPluginV2", 1, localStringBuilder.toString());
       }
-      LpReportInfo_dc04171.report(this.jdField_b_of_type_JavaLangString, str2, (String)localObject1, i, j, (String)localObject2, str1);
+      LpReportInfo_dc04171.report(this.b, str2, (String)localObject1, j, k, (String)localObject2, str1);
       return;
     }
     QLog.e("WebSecurityPluginV2", 1, "reportSoftKeyboardToggled mRuntime empty");
@@ -318,33 +281,42 @@ public class WebSecurityPluginV2
   
   private boolean d(String paramString)
   {
-    return AuthorizeConfig.a().d(paramString);
+    return AuthorizeConfig.a().h(paramString);
   }
   
   private boolean e(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSecurityPluginV2", 2, new Object[] { "isInWhiteList:url=", paramString });
+    return AuthorizeConfig.a().i(paramString);
+  }
+  
+  private String[] e()
+  {
+    Object localObject = AuthorizeConfig.a().c("ban_domain", "douyin.com,huoshan.com,changba.com,toutiao.com,xiguaapp.cn,xiguashipin.cn,365yg.com,snssdk.com,ixigua.com,toutiaocdn.net,music.163.com,weibo.cn,autohome.com.cn");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
     }
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    localObject = ((String)localObject).split(",");
+    if (localObject == null) {
+      return null;
     }
-    paramString = Uri.parse(paramString);
-    if (TextUtils.isEmpty(paramString.getHost())) {
-      return false;
-    }
-    paramString = paramString.getHost().toLowerCase();
-    String[] arrayOfString = WebViewConstant.b;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    int j = 0;
+    while (j < localObject.length)
     {
-      if (AuthorizeConfig.b(arrayOfString[i], paramString)) {
-        return true;
+      if (TextUtils.isEmpty(localObject[j])) {
+        localObject[j] = "";
+      } else {
+        localObject[j] = localObject[j].trim();
       }
-      i += 1;
+      j += 1;
     }
-    return false;
+    return localObject;
+  }
+  
+  private void f(String paramString)
+  {
+    if ((!this.i.contains(paramString)) && (!TextUtils.isEmpty(paramString))) {
+      this.i.add(paramString);
+    }
   }
   
   void a(long paramLong)
@@ -383,7 +355,7 @@ public class WebSecurityPluginV2
     }
     else if ((paramLong & 0x4) != 0L)
     {
-      Object localObject3 = this.mRuntime.a().getIntent();
+      Object localObject3 = this.mRuntime.d().getIntent();
       Object localObject2 = this.mRuntime.a();
       localObject1 = "";
       String str;
@@ -395,11 +367,11 @@ public class WebSecurityPluginV2
       if (localObject3 != null) {
         localObject1 = ((Intent)localObject3).getStringExtra("url");
       }
-      if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) {
+      if (this.f != null) {
         try
         {
-          localObject3 = SwiftBrowserStatistics.a((String)localObject1);
-          ((Bundle)localObject3).putString("uin", this.mRuntime.a().getCurrentAccountUin());
+          localObject3 = SwiftBrowserStatistics.h((String)localObject1);
+          ((Bundle)localObject3).putString("uin", this.mRuntime.b().getCurrentAccountUin());
           if (localObject2 != null)
           {
             localObject2 = ((CustomWebView)localObject2).getTitle();
@@ -407,7 +379,7 @@ public class WebSecurityPluginV2
               ((Bundle)localObject3).putString("title", (String)localObject2);
             }
           }
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(1, str, (String)localObject1, (Bundle)localObject3);
+          this.f.a(1, str, (String)localObject1, (Bundle)localObject3);
           return;
         }
         catch (Throwable localThrowable2)
@@ -428,17 +400,17 @@ public class WebSecurityPluginV2
       return false;
     }
     str = str.toLowerCase();
-    Object localObject1 = a();
+    Object localObject1 = e();
     if (localObject1 != null)
     {
       if (localObject1.length == 0) {
         return false;
       }
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
+      int k = localObject1.length;
+      int j = 0;
+      while (j < k)
       {
-        Object localObject2 = localObject1[i];
+        Object localObject2 = localObject1[j];
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject2 = ((String)localObject2).toLowerCase();
@@ -472,7 +444,7 @@ public class WebSecurityPluginV2
             return true;
           }
         }
-        i += 1;
+        j += 1;
       }
     }
     return false;
@@ -480,7 +452,7 @@ public class WebSecurityPluginV2
   
   public boolean b(String paramString)
   {
-    String str = AuthorizeConfig.a().a("call_app", "['https?://intent\\.music\\.163\\.com.+orpheus.*','^https?://([^/]+\\.)?thefatherofsalmon\\.com[/:].+','^https?://127\\.0\\.0\\.1[/:].+','^https?://0:0:0:0:0:0:0:1[/:].+','^https?://::1[/:].+']");
+    String str = AuthorizeConfig.a().c("call_app", "['https?://intent\\.music\\.163\\.com.+orpheus.*','^https?://([^/]+\\.)?thefatherofsalmon\\.com[/:].+','^https?://127\\.0\\.0\\.1[/:].+','^https?://0:0:0:0:0:0:0:1[/:].+','^https?://::1[/:].+']");
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
@@ -490,10 +462,10 @@ public class WebSecurityPluginV2
     try
     {
       Object localObject = new JSONArray(str);
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
+      int j = 0;
+      while (j < ((JSONArray)localObject).length())
       {
-        str = ((JSONArray)localObject).optString(i);
+        str = ((JSONArray)localObject).optString(j);
         if ((!TextUtils.isEmpty(str)) && (QzoneStringMatcher.isMatch(paramString, str)))
         {
           if (QLog.isColorLevel())
@@ -507,7 +479,7 @@ public class WebSecurityPluginV2
           }
           return true;
         }
-        i += 1;
+        j += 1;
       }
       return false;
     }
@@ -531,7 +503,7 @@ public class WebSecurityPluginV2
   protected Object handleEvent(String paramString, long paramLong)
   {
     if (paramLong == 8L) {
-      return a(paramString);
+      return c(paramString);
     }
     return super.handleEvent(paramString, paramLong);
   }
@@ -541,7 +513,7 @@ public class WebSecurityPluginV2
     if (paramLong == 8589934594L) {
       a();
     } else if (paramLong == 8589934626L) {
-      a(paramString);
+      f(paramString);
     }
     return super.handleEvent(paramString, paramLong, paramMap);
   }
@@ -564,7 +536,7 @@ public class WebSecurityPluginV2
               paramString2.append(Util.b(paramJsBridgeListener, new String[0]));
               QLog.d("WebSecurityPluginV2", 2, paramString2.toString());
             }
-            this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
+            this.a = paramJsBridgeListener;
             paramString1.loadUrl(paramJsBridgeListener);
             return false;
           }
@@ -605,8 +577,8 @@ public class WebSecurityPluginV2
     }
     else
     {
-      if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
-        break label1158;
+      if ((this.mRuntime == null) || (this.mRuntime.d() == null)) {
+        break label1142;
       }
       c();
       paramString2 = BaseApplicationImpl.getApplication().getRuntime();
@@ -624,7 +596,7 @@ public class WebSecurityPluginV2
     for (;;)
     {
       Object localObject2;
-      int i;
+      int j;
       try
       {
         paramString2 = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetActivityPref", new Bundle()).data.getString("activity_pref");
@@ -638,14 +610,14 @@ public class WebSecurityPluginV2
         }
         if (!TextUtils.isEmpty(paramString2))
         {
-          i = 0;
-          if (i < localObject1.length)
+          j = 0;
+          if (j < localObject1.length)
           {
-            if (!paramString1.startsWith(localObject1[i])) {
-              break label1171;
+            if (!paramString1.startsWith(localObject1[j])) {
+              break label1155;
             }
             if (!QLog.isColorLevel()) {
-              break label1169;
+              break label1153;
             }
             paramString2 = new StringBuilder();
             paramString2.append("isDisableSecurityCheck url=");
@@ -668,31 +640,31 @@ public class WebSecurityPluginV2
           QLog.e("springHb_SpringHbSecurity", 2, "handleIsSecurityEnable e:", paramString2);
         }
       }
-      this.jdField_b_of_type_JavaLangString = paramString1;
-      if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
+      this.b = paramString1;
+      if (paramString1.equals(this.a))
       {
-        this.jdField_a_of_type_JavaLangString = null;
+        this.a = null;
         if (QLog.isColorLevel()) {
           QLog.i("WebSecurityPluginV2", 2, "should pass check");
         }
         return false;
       }
       boolean bool2;
-      if (this.jdField_b_of_type_Boolean)
+      if (this.d)
       {
-        bool2 = c(paramString1);
-        this.jdField_a_of_type_Boolean = (d(paramString1) ^ true);
-        this.jdField_b_of_type_Boolean = false;
+        bool2 = d(paramString1);
+        this.c = (e(paramString1) ^ true);
+        this.d = false;
         paramString2 = (SwiftBrowserStatistics)getBrowserComponent(-2);
         if (paramString2 != null) {
-          paramString2.y = (bool2 ^ true);
+          paramString2.aT = (bool2 ^ true);
         }
         bool1 = true;
       }
       else
       {
-        bool1 = d(paramString1) ^ true;
-        this.jdField_a_of_type_Boolean = bool1;
+        bool1 = e(paramString1) ^ true;
+        this.c = bool1;
         bool2 = true;
       }
       bool3 = bool4;
@@ -704,12 +676,12 @@ public class WebSecurityPluginV2
         paramString2.append(", async=");
         paramString2.append(bool2);
         QLog.i("UrlCheckLog", 1, paramString2.toString());
-        if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null)
+        if (this.f == null)
         {
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+          this.f = TroopMemberApiClient.a();
+          this.f.e();
         }
-        localObject2 = this.mRuntime.a().getIntent();
+        localObject2 = this.mRuntime.d().getIntent();
         Object localObject3;
         if (localObject2 != null)
         {
@@ -731,23 +703,23 @@ public class WebSecurityPluginV2
           {
             localObject2 = localObject1;
             localObject3 = paramString2;
-            break label990;
+            break label974;
             if (!((Intent)localObject2).getBooleanExtra("key_isFromQZone", false)) {
               break;
             }
           }
-          j = ((Intent)localObject2).getIntExtra("uinType", -1);
-          i = j;
-          if (j == -1) {
-            i = ((Intent)localObject2).getIntExtra("curtype", -1);
+          k = ((Intent)localObject2).getIntExtra("uinType", -1);
+          j = k;
+          if (k == -1) {
+            j = ((Intent)localObject2).getIntExtra("curtype", -1);
           }
-          if (i != 0)
+          if (j != 0)
           {
-            if (i != 1)
+            if (j != 1)
             {
-              if ((i != 1000) && (i != 1001) && (i != 1004) && (i != 1005))
+              if ((j != 1000) && (j != 1001) && (j != 1004) && (j != 1005))
               {
-                if (i != 3000)
+                if (j != 3000)
                 {
                   localObject2 = "";
                   localObject3 = paramString2;
@@ -757,15 +729,15 @@ public class WebSecurityPluginV2
                   localObject1 = ((Intent)localObject2).getStringExtra("dicussgroup_uin");
                   str = ((Intent)localObject2).getStringExtra("friendUin");
                   if (((Intent)localObject2).getBooleanExtra("is_send", false)) {
-                    i = 1;
+                    j = 1;
                   } else {
-                    i = 2;
+                    j = 2;
                   }
                   localObject2 = "mqq.discussion";
                   localObject3 = paramString2;
                   paramString2 = str;
-                  j = 3;
-                  break label1002;
+                  k = 3;
+                  break label986;
                 }
               }
               else
@@ -773,15 +745,15 @@ public class WebSecurityPluginV2
                 localObject1 = ((Intent)localObject2).getStringExtra("friend_uin");
                 str = ((Intent)localObject2).getStringExtra("friendUin");
                 if (((Intent)localObject2).getBooleanExtra("is_send", false)) {
-                  i = 1;
+                  j = 1;
                 } else {
-                  i = 2;
+                  j = 2;
                 }
                 localObject2 = "";
                 localObject3 = paramString2;
                 paramString2 = str;
-                j = 1;
-                break label1002;
+                k = 1;
+                break label986;
               }
             }
             else
@@ -789,15 +761,15 @@ public class WebSecurityPluginV2
               localObject1 = ((Intent)localObject2).getStringExtra("groupUin");
               str = ((Intent)localObject2).getStringExtra("friendUin");
               if (((Intent)localObject2).getBooleanExtra("is_send", false)) {
-                i = 1;
+                j = 1;
               } else {
-                i = 2;
+                j = 2;
               }
               localObject3 = paramString2;
               localObject2 = "mqq.group";
               paramString2 = str;
-              j = 2;
-              break label1002;
+              k = 2;
+              break label986;
             }
           }
           else
@@ -805,15 +777,15 @@ public class WebSecurityPluginV2
             localObject1 = ((Intent)localObject2).getStringExtra("friend_uin");
             str = ((Intent)localObject2).getStringExtra("friendUin");
             if (((Intent)localObject2).getBooleanExtra("is_send", false)) {
-              i = 1;
+              j = 1;
             } else {
-              i = 2;
+              j = 2;
             }
             localObject3 = paramString2;
             localObject2 = "mqq.c2c";
             paramString2 = str;
-            j = 0;
-            break label1002;
+            k = 0;
+            break label986;
           }
         }
         else
@@ -821,19 +793,19 @@ public class WebSecurityPluginV2
           localObject2 = "";
           localObject3 = localObject2;
         }
-        label990:
+        label974:
         localObject1 = "";
         paramString2 = "";
-        i = 0;
-        int j = -1;
-        label1002:
-        String str = this.mRuntime.a().getIntent().getStringExtra("h5_ark_app_name");
+        j = 0;
+        int k = -1;
+        label986:
+        String str = this.mRuntime.d().getIntent().getStringExtra("h5_ark_app_name");
         a(paramString1, (String)localObject3);
         if (QLog.isColorLevel()) {
           QLog.d("WebSecurityPluginV2", 2, new Object[] { " arkBusinessName =", str });
         }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2$URLCheckParams = WebSecurityPluginV2.URLCheckParams.a(paramString1, j, i, paramString2, (String)localObject1, (String)localObject2, (String)localObject3, str, false, this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2$URLCheckParams, new WebSecurityPluginV2.1(this, paramString1, bool2));
+        this.h = WebSecurityPluginV2.URLCheckParams.a(paramString1, k, j, paramString2, (String)localObject1, (String)localObject2, (String)localObject3, str, false, this.i);
+        this.g = this.f.a(this.h, new WebSecurityPluginV2.1(this, paramString1, bool2));
         if (QLog.isColorLevel())
         {
           paramString2 = new StringBuilder();
@@ -847,35 +819,35 @@ public class WebSecurityPluginV2
         }
       }
       return bool3;
-      label1158:
+      label1142:
       QLog.e("WebSecurityPluginV2", 1, "handleSchemaRequest mRuntime empty");
       return false;
-      label1169:
+      label1153:
       return false;
-      label1171:
-      i += 1;
+      label1155:
+      j += 1;
     }
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    Object localObject = this.f;
     if (localObject != null)
     {
-      ((TroopMemberApiClient)localObject).a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+      ((TroopMemberApiClient)localObject).a(this.g);
+      this.f.f();
     }
-    localObject = this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
+    localObject = this.e;
     if (localObject != null) {
       ((SoftKeyboardObserver)localObject).a();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.i.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebSecurityPluginV2
  * JD-Core Version:    0.7.0.1
  */

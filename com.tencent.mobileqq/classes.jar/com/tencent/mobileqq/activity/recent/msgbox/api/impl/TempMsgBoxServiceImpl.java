@@ -31,7 +31,7 @@ public class TempMsgBoxServiceImpl
   
   public HashMap<String, ITempMsgBoxBusinessHandler> getBusinessHandlerMap()
   {
-    return TempMsgBoxUtil.a();
+    return TempMsgBoxUtil.d();
   }
   
   public Map<Integer, String> getBusinessStringMap()
@@ -116,7 +116,7 @@ public class TempMsgBoxServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.api.impl.TempMsgBoxServiceImpl
  * JD-Core Version:    0.7.0.1
  */

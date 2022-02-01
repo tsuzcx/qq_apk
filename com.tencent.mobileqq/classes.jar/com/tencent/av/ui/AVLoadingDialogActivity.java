@@ -20,27 +20,27 @@ import java.lang.ref.WeakReference;
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AVLoadingDialogActivity.1(this);
-  Handler jdField_a_of_type_AndroidOsHandler;
-  final String jdField_a_of_type_JavaLangString;
+  final String a;
+  Handler b;
+  BroadcastReceiver c = new AVLoadingDialogActivity.1(this);
   
   public AVLoadingDialogActivity()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AVLoadingDialogActivity_");
-    localStringBuilder.append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_AndroidOsHandler = new AVLoadingDialogActivity.MyHandler(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(AudioHelper.c());
+    this.a = localStringBuilder.toString();
+    this.b = new AVLoadingDialogActivity.MyHandler(this.a);
   }
   
   Dialog a()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131756189);
-    localReportDialog.setContentView(2131559561);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131953338);
+    localReportDialog.setContentView(2131625585);
     localReportDialog.setCancelable(false);
-    TextView localTextView = (TextView)localReportDialog.findViewById(2131372646);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131440191);
     if (localTextView != null) {
-      localTextView.setText(2131695888);
+      localTextView.setText(2131893648);
     }
     return localReportDialog;
   }
@@ -59,11 +59,11 @@ public class AVLoadingDialogActivity
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH");
-    registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "avideo doOnCreate");
+    registerReceiver(this.c, paramBundle);
+    QLog.d(this.a, 1, "avideo doOnCreate");
     paramBundle = getIntent();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(".doOnCreate");
     localObject = ((StringBuilder)localObject).toString();
     if (paramBundle != null) {
@@ -78,26 +78,26 @@ public class AVLoadingDialogActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doOnDestroy");
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    QLog.d(this.a, 1, "doOnDestroy");
+    this.b.removeMessages(0);
+    this.b.removeMessages(1);
+    unregisterReceiver(this.c);
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doOnResume");
+    QLog.d(this.a, 1, "doOnResume");
     showDialog(0);
     WeakReference localWeakReference = new WeakReference(this);
     Message localMessage = new Message();
     localMessage.what = 0;
     localMessage.obj = localWeakReference;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 300L);
+    this.b.sendMessageDelayed(localMessage, 300L);
     localMessage = new Message();
     localMessage.what = 1;
     localMessage.obj = localWeakReference;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 5000L);
+    this.b.sendMessageDelayed(localMessage, 5000L);
   }
   
   @Override

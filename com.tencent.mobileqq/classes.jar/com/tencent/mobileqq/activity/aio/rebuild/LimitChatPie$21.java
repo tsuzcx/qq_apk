@@ -19,26 +19,26 @@ class LimitChatPie$21
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.this$0.f.setText(this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131698869));
+    if (TextUtils.isEmpty(this.a)) {
+      this.this$0.I.setText(this.this$0.e.getString(2131896838));
     } else {
-      this.this$0.f.setText(this.jdField_a_of_type_JavaLangString);
+      this.this$0.I.setText(this.a);
     }
-    Object localObject = (AioFriendTitleHelper)this.this$0.a(45);
-    if (((AioFriendTitleHelper)localObject).c()) {
+    Object localObject = (AioFriendTitleHelper)this.this$0.q(45);
+    if (((AioFriendTitleHelper)localObject).h()) {
       return;
     }
     boolean bool = true;
-    if ((this.jdField_a_of_type_Boolean) || (((AioFriendTitleHelper)localObject).b()) || (!this.this$0.C)) {
+    if ((this.b) || (((AioFriendTitleHelper)localObject).g()) || (!this.this$0.bf)) {
       bool = false;
     }
-    localObject = ((FriendsManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).setSubtitleOnlineDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Friends)localObject, this.this$0.f, bool);
+    localObject = ((FriendsManager)this.this$0.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(this.this$0.ah.b);
+    ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).setSubtitleOnlineDrawable(this.this$0.d, (Friends)localObject, this.this$0.I, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.21
  * JD-Core Version:    0.7.0.1
  */

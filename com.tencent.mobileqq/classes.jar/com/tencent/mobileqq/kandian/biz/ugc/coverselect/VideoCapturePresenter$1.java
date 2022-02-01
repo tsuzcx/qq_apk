@@ -13,13 +13,13 @@ class VideoCapturePresenter$1
   
   public void a(Bitmap paramBitmap, CaptureTask paramCaptureTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.a(paramBitmap);
-    VideoCapturePresenter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter, paramBitmap, paramCaptureTask.c);
+    this.a.a(paramBitmap);
+    VideoCapturePresenter.a(this.b, paramBitmap, paramCaptureTask.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.VideoCapturePresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class NotificationBannerConfProcessor
 {
   public static NotificationBannerBean a()
   {
-    return (NotificationBannerBean)QConfigManager.a().a(572);
+    return (NotificationBannerBean)QConfigManager.b().b(572);
   }
   
   @NonNull
@@ -77,7 +77,7 @@ public class NotificationBannerConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.NotificationBannerConfProcessor
  * JD-Core Version:    0.7.0.1
  */

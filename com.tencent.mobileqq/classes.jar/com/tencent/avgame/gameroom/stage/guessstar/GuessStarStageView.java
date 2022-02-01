@@ -15,7 +15,7 @@ import com.tencent.avgame.util.UiUtils;
 public class GuessStarStageView
   extends BaseGuessStarStageView
 {
-  private ImageView b;
+  private ImageView v;
   
   public GuessStarStageView(Context paramContext)
   {
@@ -32,50 +32,50 @@ public class GuessStarStageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void b()
+  protected void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558673, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366776));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379056));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379039));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379041));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367771);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370232);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = UiUtils.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessStarStagePresenter(this);
-    super.b();
+    LayoutInflater.from(getContext()).inflate(2131624290, this, true);
+    this.h = ((ImageView)findViewById(2131431441));
+    this.v = ((ImageView)findViewById(2131433098));
+    this.g = ((LinearLayout)findViewById(2131447779));
+    this.e = ((TextView)findViewById(2131447762));
+    this.f = ((TextView)findViewById(2131447764));
+    this.i = findViewById(2131434340);
+    this.j = ((AVGameText)findViewById(2131448302));
+    this.k = ((AVGameText)findViewById(2131448303));
+    this.l = findViewById(2131437420);
+    this.i.setVisibility(8);
+    this.f.setTextSize(0, UiUtils.b());
+    this.g.getLayoutParams().width = UiUtils.a();
+    this.g.setVisibility(8);
+    this.c = new GuessStarStagePresenter(this);
+    super.c();
   }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig)
   {
     super.setFontStyle(paramFontStyleConfig);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.e));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.f));
+    this.f.setTextColor(Color.parseColor(paramFontStyleConfig.i));
+    this.e.setTextColor(Color.parseColor(paramFontStyleConfig.j));
   }
   
   public void setSpecialMode(boolean paramBoolean)
   {
     super.setSpecialMode(paramBoolean);
-    if (this.c == null) {
+    if (this.n == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.p)
     {
-      this.c.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+      this.n.setVisibility(0);
+      this.v.setVisibility(0);
+      this.h.setVisibility(8);
+      this.h = this.v;
       return;
     }
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.n.setVisibility(8);
+    this.h.setVisibility(0);
+    this.v.setVisibility(8);
   }
 }
 

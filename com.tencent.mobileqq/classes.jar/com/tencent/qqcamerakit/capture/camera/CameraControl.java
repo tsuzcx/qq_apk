@@ -13,10 +13,12 @@ import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PreviewCallback;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.qqcamerakit.capture.CameraHandler.ParamCache;
 import com.tencent.qqcamerakit.capture.CameraHandler.TakePictureData;
+import com.tencent.qqcamerakit.capture.CameraManager;
 import com.tencent.qqcamerakit.capture.CameraPreviewCallBack;
 import com.tencent.qqcamerakit.capture.CameraProxy;
 import com.tencent.qqcamerakit.capture.CameraProxy.CameraAutoFocusCallBack;
@@ -31,46 +33,44 @@ import java.util.List;
 public class CameraControl
   implements Camera.AutoFocusCallback, Camera.PreviewCallback
 {
-  private static CameraControl jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl;
-  public static String a;
-  public int a;
-  private Camera jdField_a_of_type_AndroidHardwareCamera;
-  private CameraPreviewCallBack jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack;
-  private CameraSize jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize;
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  public int b;
-  private CameraSize jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "CameraControl";
-  }
-  
-  public CameraControl()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public static String a = "CameraControl";
+  private static CameraControl f;
+  public boolean b;
+  public int c = -1;
+  public int d;
+  private boolean g;
+  private Camera h;
+  private int i;
+  private CameraSize j;
+  private byte[] k;
+  private byte[] l;
+  private CameraSize m;
+  private int[] n;
+  private CameraPreviewCallBack o;
   
   public static CameraControl a()
   {
-    if (jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl == null) {
-          jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl = new CameraControl();
+        if (f == null) {
+          f = new CameraControl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl;
+    return f;
   }
   
-  public static String a(int paramInt)
+  private void a(byte[] paramArrayOfByte)
+  {
+    Camera localCamera = this.h;
+    if ((localCamera != null) && (paramArrayOfByte != null)) {
+      localCamera.addCallbackBuffer(paramArrayOfByte);
+    }
+  }
+  
+  public static String b(int paramInt)
   {
     if (paramInt != 1)
     {
@@ -94,144 +94,25 @@ public class CameraControl
     return "CAMERA_OPEN_USED_AV";
   }
   
-  private void a(byte[] paramArrayOfByte)
-  {
-    Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
-    if ((localCamera != null) && (paramArrayOfByte != null)) {
-      localCamera.addCallbackBuffer(paramArrayOfByte);
-    }
-  }
-  
-  private int b(int paramInt)
+  private int g(int paramInt)
   {
     if (paramInt != 1)
     {
       if (paramInt != 2) {
-        return CameraAbility.b();
+        return CameraAbility.f();
       }
-      if (CameraAbility.b()) {
-        return CameraAbility.b();
+      if (CameraAbility.c()) {
+        return CameraAbility.f();
       }
     }
-    else if (CameraAbility.c())
+    else if (CameraAbility.d())
     {
-      return CameraAbility.a();
+      return CameraAbility.e();
     }
     return -1;
   }
   
-  private int c()
-  {
-    Object localObject = Build.MODEL.toUpperCase();
-    int i;
-    if ((Build.MANUFACTURER.equalsIgnoreCase("huawei")) && ((((String)localObject).contains("RLI-AN00")) || (((String)localObject).contains("RLI-N29")) || (((String)localObject).contains("TAH-AN00")) || (((String)localObject).contains("TAH-N29")))) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j = 90;
-    if (i == 0)
-    {
-      i = j;
-      if (Build.VERSION.SDK_INT < 29) {}
-    }
-    else
-    {
-      localObject = new Camera.CameraInfo();
-      Camera.getCameraInfo(this.jdField_a_of_type_Int, (Camera.CameraInfo)localObject);
-      int k = ((WindowManager)CameraProxy.a().getSystemService("window")).getDefaultDisplay().getRotation();
-      if (k != 0)
-      {
-        i = j;
-        if (k != 1) {
-          if (k != 2)
-          {
-            if (k != 3) {
-              i = j;
-            } else {
-              i = 270;
-            }
-          }
-          else {
-            i = 180;
-          }
-        }
-      }
-      else
-      {
-        i = 0;
-      }
-      if (((Camera.CameraInfo)localObject).facing == 1) {
-        i = (360 - (((Camera.CameraInfo)localObject).orientation + i) % 360) % 360;
-      } else {
-        i = (((Camera.CameraInfo)localObject).orientation - i + 360) % 360;
-      }
-    }
-    boolean bool2;
-    boolean bool1;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      boolean bool3 = CameraCompatible.a(CameraCompatibleConfig.KEY.jdField_a_of_type_JavaLangString);
-      boolean bool4 = CameraCompatible.c(CameraCompatibleConfig.KEY.b);
-      if (!bool3)
-      {
-        bool2 = bool3;
-        j = i;
-        bool1 = bool4;
-        if (!bool4) {}
-      }
-      else
-      {
-        j = i + 180;
-        bool2 = bool3;
-        bool1 = bool4;
-      }
-    }
-    else
-    {
-      bool2 = CameraCompatible.a(CameraCompatibleConfig.KEY.c);
-      j = i;
-      if (bool2) {
-        j = i + 180;
-      }
-      bool1 = false;
-    }
-    if (QLog.a())
-    {
-      localObject = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setDisplayOrientation degrees=");
-      localStringBuilder.append(j);
-      localStringBuilder.append(" blackPhone = ");
-      localStringBuilder.append(bool2);
-      localStringBuilder.append(" rom_black = ");
-      localStringBuilder.append(bool1);
-      QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-    }
-    return j;
-  }
-  
-  private int d()
-  {
-    int i = ImageFormat.getBitsPerPixel(this.jdField_c_of_type_Int);
-    float f = i * 1.0F / 8.0F;
-    int j = (int)(this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize.jdField_b_of_type_Int * this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize.jdField_a_of_type_Int * f);
-    if (QLog.a())
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("startPreview getPreviewBufferSize:bitpixel=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" byteNum=");
-      localStringBuilder.append(f);
-      localStringBuilder.append(" bufSize=");
-      localStringBuilder.append(j);
-      QLog.c(str, 2, new Object[] { localStringBuilder.toString() });
-    }
-    return j;
-  }
-  
-  private boolean e(int paramInt)
+  private boolean h(int paramInt)
   {
     if (paramInt <= 0) {
       return false;
@@ -240,12 +121,12 @@ public class CameraControl
     {
       try
       {
-        if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramInt)) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        if ((this.k == null) || (this.k.length != paramInt)) {
+          this.k = new byte[paramInt];
         }
-        if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != paramInt))
+        if ((this.l == null) || (this.l.length != paramInt))
         {
-          this.jdField_b_of_type_ArrayOfByte = new byte[paramInt];
+          this.l = new byte[paramInt];
           return true;
         }
       }
@@ -257,17 +138,17 @@ public class CameraControl
       }
       try
       {
-        if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramInt)) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        if ((this.k == null) || (this.k.length != paramInt)) {
+          this.k = new byte[paramInt];
         }
-        if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != paramInt)) {
-          this.jdField_b_of_type_ArrayOfByte = new byte[paramInt];
+        if ((this.l == null) || (this.l.length != paramInt)) {
+          this.l = new byte[paramInt];
         }
         return true;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("allocateFrame failed , size:");
         localStringBuilder.append(paramInt);
@@ -279,7 +160,7 @@ public class CameraControl
     }
   }
   
-  private boolean g()
+  private boolean s()
   {
     try
     {
@@ -289,115 +170,221 @@ public class CameraControl
     catch (NoClassDefFoundError localNoClassDefFoundError)
     {
       if (QLog.a()) {
-        QLog.a(jdField_a_of_type_JavaLangString, 2, "checkCameraDisabled, ", localNoClassDefFoundError);
+        QLog.a(a, 2, "checkCameraDisabled, ", localNoClassDefFoundError);
       }
     }
     catch (Exception localException)
     {
       if (QLog.a()) {
-        QLog.a(jdField_a_of_type_JavaLangString, 2, "checkCameraDisabled, ", localException);
+        QLog.a(a, 2, "checkCameraDisabled, ", localException);
       }
     }
     return true;
   }
   
-  private boolean h()
+  private int t()
   {
-    return CameraCompatible.a(CameraCompatibleConfig.KEY.d) ^ true;
+    Object localObject = Build.MODEL.toUpperCase();
+    int i1;
+    if ((Build.MANUFACTURER.equalsIgnoreCase("huawei")) && ((((String)localObject).contains("RLI-AN00")) || (((String)localObject).contains("RLI-N29")) || (((String)localObject).contains("TAH-AN00")) || (((String)localObject).contains("TAH-N29")))) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int i2 = 90;
+    if (i1 == 0)
+    {
+      i1 = i2;
+      if (Build.VERSION.SDK_INT < 29) {}
+    }
+    else
+    {
+      localObject = new Camera.CameraInfo();
+      Camera.getCameraInfo(this.c, (Camera.CameraInfo)localObject);
+      int i3 = ((WindowManager)CameraProxy.a().getSystemService("window")).getDefaultDisplay().getRotation();
+      if (i3 != 0)
+      {
+        i1 = i2;
+        if (i3 != 1) {
+          if (i3 != 2)
+          {
+            if (i3 != 3) {
+              i1 = i2;
+            } else {
+              i1 = 270;
+            }
+          }
+          else {
+            i1 = 180;
+          }
+        }
+      }
+      else
+      {
+        i1 = 0;
+      }
+      if (((Camera.CameraInfo)localObject).facing == 1) {
+        i1 = (360 - (((Camera.CameraInfo)localObject).orientation + i1) % 360) % 360;
+      } else {
+        i1 = (((Camera.CameraInfo)localObject).orientation - i1 + 360) % 360;
+      }
+    }
+    boolean bool2;
+    boolean bool1;
+    if (this.c == 1)
+    {
+      boolean bool3 = CameraCompatible.a(CameraCompatibleConfig.KEY.a);
+      boolean bool4 = CameraCompatible.c(CameraCompatibleConfig.KEY.b);
+      if (!bool3)
+      {
+        bool2 = bool3;
+        i2 = i1;
+        bool1 = bool4;
+        if (!bool4) {}
+      }
+      else
+      {
+        i2 = i1 + 180;
+        bool2 = bool3;
+        bool1 = bool4;
+      }
+    }
+    else
+    {
+      bool2 = CameraCompatible.a(CameraCompatibleConfig.KEY.c);
+      i2 = i1;
+      if (bool2) {
+        i2 = i1 + 180;
+      }
+      bool1 = false;
+    }
+    if (QLog.a())
+    {
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setDisplayOrientation degrees=");
+      localStringBuilder.append(i2);
+      localStringBuilder.append(" blackPhone = ");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(" rom_black = ");
+      localStringBuilder.append(bool1);
+      QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+    }
+    return i2;
   }
   
-  public int a()
+  private int u()
   {
-    return this.jdField_c_of_type_Int;
+    int i1 = ImageFormat.getBitsPerPixel(this.i);
+    float f1 = i1 * 1.0F / 8.0F;
+    int i2 = (int)(this.j.b * this.j.a * f1);
+    if (QLog.a())
+    {
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startPreview getPreviewBufferSize:bitpixel=");
+      localStringBuilder.append(i1);
+      localStringBuilder.append(" byteNum=");
+      localStringBuilder.append(f1);
+      localStringBuilder.append(" bufSize=");
+      localStringBuilder.append(i2);
+      QLog.c(str, 2, new Object[] { localStringBuilder.toString() });
+    }
+    return i2;
+  }
+  
+  private boolean v()
+  {
+    return CameraCompatible.a(CameraCompatibleConfig.KEY.d) ^ true;
   }
   
   public int a(int paramInt)
   {
     String str;
     Object localObject;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.g)
     {
       if (QLog.a())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("openCamera: Camera is opened, Camera object:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidHardwareCamera);
+        ((StringBuilder)localObject).append(this.h);
         QLog.c(str, 2, new Object[] { ((StringBuilder)localObject).toString() });
       }
       return 6;
     }
-    if (!CameraAbility.a())
+    if (!CameraAbility.b())
     {
       if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "openCamera failed, hasCameras = false" });
+        QLog.c(a, 2, new Object[] { "openCamera failed, hasCameras = false" });
       }
       return 2;
     }
-    if (g())
+    if (s())
     {
       if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "openCamera failed, camera disable" });
+        QLog.c(a, 2, new Object[] { "openCamera failed, camera disable" });
       }
       return 5;
     }
-    int j = 0;
-    int i = 0;
+    int i2 = 0;
+    int i1 = 0;
     for (;;)
     {
-      if (j < 10)
+      if (i2 < 10)
       {
         if (QLog.a())
         {
-          str = jdField_a_of_type_JavaLangString;
+          str = a;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("openCamera: currentCount = ");
-          ((StringBuilder)localObject).append(j);
+          ((StringBuilder)localObject).append(i2);
           QLog.d(str, 2, new Object[] { ((StringBuilder)localObject).toString() });
         }
         try
         {
-          this.jdField_b_of_type_Int = paramInt;
-          this.jdField_a_of_type_Int = b(paramInt);
-          this.jdField_a_of_type_AndroidHardwareCamera = Camera.open(this.jdField_a_of_type_Int);
-          i = 0;
+          this.d = paramInt;
+          this.c = g(paramInt);
+          this.h = Camera.open(this.c);
+          i1 = 0;
         }
         catch (Exception localException)
         {
-          this.jdField_a_of_type_AndroidHardwareCamera = null;
-          j += 1;
+          this.h = null;
+          i2 += 1;
           if (QLog.a())
           {
-            localObject = jdField_a_of_type_JavaLangString;
+            localObject = a;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("openCamera failed, currentCount =");
-            localStringBuilder.append(j);
+            localStringBuilder.append(i2);
             QLog.a((String)localObject, 2, localStringBuilder.toString(), localException);
           }
-          if (j >= 10) {}
+          if (i2 >= 10) {}
         }
       }
       try
       {
         Thread.sleep(300L);
         label296:
-        i = 3;
+        i1 = 3;
         continue;
-        if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+        if (this.h == null)
         {
           if (QLog.a()) {
-            QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "openCamera failed, mCamera = null" });
+            QLog.c(a, 2, new Object[] { "openCamera failed, mCamera = null" });
           }
-          return i;
+          return i1;
         }
-        if (!CameraAbility.a().a(this.jdField_a_of_type_AndroidHardwareCamera))
+        if (!CameraAbility.a().a(this.h))
         {
           if (QLog.a()) {
-            QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "openCamera failed, bindCamera = false" });
+            QLog.c(a, 2, new Object[] { "openCamera failed, bindCamera = false" });
           }
           return 4;
         }
-        this.jdField_c_of_type_Boolean = true;
+        this.g = true;
         return 0;
       }
       catch (InterruptedException localInterruptedException)
@@ -407,69 +394,17 @@ public class CameraControl
     }
   }
   
-  public Camera.Parameters a()
-  {
-    try
-    {
-      Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-      return localParameters;
-    }
-    catch (Exception localException)
-    {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return null;
-  }
-  
-  public CameraSize a()
-  {
-    return this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize;
-  }
-  
-  public String a()
-  {
-    return "continuous-picture";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack = null;
-    if (QLog.a()) {
-      QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "release camera" });
-    }
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    CameraAbility.a().a();
-    Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
-    if (localCamera == null) {
-      return;
-    }
-    try
-    {
-      localCamera.release();
-      this.jdField_a_of_type_AndroidHardwareCamera = null;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_ArrayOfInt = null;
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize = null;
-      this.jdField_c_of_type_Boolean = false;
-      b();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
   public void a(Rect paramRect1, Rect paramRect2, CameraProxy.CameraAutoFocusCallBack paramCameraAutoFocusCallBack)
   {
     if (QLog.a()) {
-      QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "[handleMessage]SET_FOCUS_MODE_REQUEST_FOCUS" });
+      QLog.c(a, 2, new Object[] { "[handleMessage]SET_FOCUS_MODE_REQUEST_FOCUS" });
     }
-    Camera.Parameters localParameters = a().a();
+    Camera.Parameters localParameters = a().c();
     if (paramRect1 != null)
     {
       if (QLog.a())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[handleMessage] focus area = ");
         localStringBuilder.append(paramRect1);
@@ -485,19 +420,19 @@ public class CameraControl
         paramRect1.add(new Camera.Area(new Rect(paramRect2), 1000));
         localParameters.setMeteringAreas(paramRect1);
       }
-      a().jdField_a_of_type_AndroidHardwareCamera.setParameters(localParameters);
+      a().h.setParameters(localParameters);
     }
     a().a(new CameraControl.2(this, paramCameraAutoFocusCallBack));
   }
   
   public void a(CameraHandler.TakePictureData paramTakePictureData)
   {
-    Object localObject = this.jdField_a_of_type_AndroidHardwareCamera;
+    Object localObject = this.h;
     if (localObject == null)
     {
       if (QLog.a())
       {
-        paramTakePictureData = jdField_a_of_type_JavaLangString;
+        paramTakePictureData = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[takePicture]mCamera ");
         ((StringBuilder)localObject).append(null);
@@ -511,54 +446,32 @@ public class CameraControl
     }
     catch (Exception localException)
     {
-      QLog.c(jdField_a_of_type_JavaLangString, 1, new Object[] { "[takePicture]enableShutterSound error, ", localException });
+      QLog.c(a, 1, new Object[] { "[takePicture]enableShutterSound error, ", localException });
     }
     try
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new CameraControl.1(this, paramTakePictureData));
+      this.b = false;
+      this.h.takePicture(null, null, null, new CameraControl.1(this, paramTakePictureData));
       return;
     }
     catch (RuntimeException paramTakePictureData)
     {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, "", paramTakePictureData);
+      QLog.a(a, 1, "", paramTakePictureData);
     }
-  }
-  
-  public boolean a()
-  {
-    return a(c());
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidHardwareCamera.setDisplayOrientation(paramInt);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, "setDisplayOrientation error, ", localException);
-    }
-    return false;
   }
   
   public boolean a(SurfaceTexture paramSurfaceTexture)
   {
-    Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+    Camera localCamera = this.h;
     if (localCamera != null)
     {
       if (paramSurfaceTexture == null) {
         return false;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         if (QLog.a()) {
-          QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "[setPreviewTexture] mIsPreviewing true" });
+          QLog.c(a, 2, new Object[] { "[setPreviewTexture] mIsPreviewing true" });
         }
         return true;
       }
@@ -569,7 +482,7 @@ public class CameraControl
       }
       catch (Exception paramSurfaceTexture)
       {
-        QLog.a(jdField_a_of_type_JavaLangString, 1, "[setPreviewTexture] exp: ", paramSurfaceTexture);
+        QLog.a(a, 1, "[setPreviewTexture] exp: ", paramSurfaceTexture);
       }
     }
     return false;
@@ -577,15 +490,15 @@ public class CameraControl
   
   public boolean a(Camera.AutoFocusCallback paramAutoFocusCallback)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareCamera != null) && (this.jdField_a_of_type_Boolean)) {
-      if (!h()) {
+    if ((this.h != null) && (this.b)) {
+      if (!v()) {
         return false;
       }
     }
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-      Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+      this.h.cancelAutoFocus();
+      Camera localCamera = this.h;
       Object localObject = paramAutoFocusCallback;
       if (paramAutoFocusCallback == null) {
         localObject = this;
@@ -600,7 +513,7 @@ public class CameraControl
   
   public boolean a(Camera.Parameters paramParameters)
   {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
+    if ((!e) && (this.h == null)) {
       throw new AssertionError();
     }
     if (paramParameters == null) {
@@ -608,46 +521,46 @@ public class CameraControl
     }
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera.setParameters(paramParameters);
+      this.h.setParameters(paramParameters);
       return true;
     }
     catch (Exception paramParameters)
     {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, paramParameters, new Object[0]);
+      QLog.a(a, 1, paramParameters, new Object[0]);
     }
     return false;
   }
   
   public boolean a(CameraHandler.ParamCache paramParamCache)
   {
-    Camera.Parameters localParameters = a();
+    Camera.Parameters localParameters = c();
     if (localParameters == null)
     {
       if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "setParamsPreviewFormat failed, getCameraParameters = null" });
+        QLog.c(a, 2, new Object[] { "setParamsPreviewFormat failed, getCameraParameters = null" });
       }
       return false;
     }
-    localParameters.setPreviewFormat(paramParamCache.jdField_a_of_type_Int);
-    localParameters.setPreviewSize(paramParamCache.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize.jdField_a_of_type_Int, paramParamCache.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize.jdField_b_of_type_Int);
-    localParameters.setPreviewFpsRange(paramParamCache.jdField_b_of_type_Int, paramParamCache.jdField_c_of_type_Int);
-    if (paramParamCache.jdField_a_of_type_Boolean) {
-      localParameters.setPictureSize(paramParamCache.jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize.jdField_a_of_type_Int, paramParamCache.jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize.jdField_b_of_type_Int);
+    localParameters.setPreviewFormat(paramParamCache.b);
+    localParameters.setPreviewSize(paramParamCache.e.a, paramParamCache.e.b);
+    localParameters.setPreviewFpsRange(paramParamCache.c, paramParamCache.d);
+    if (paramParamCache.f) {
+      localParameters.setPictureSize(paramParamCache.g.a, paramParamCache.g.b);
     }
     boolean bool = a(localParameters);
     if (bool)
     {
-      this.jdField_c_of_type_Int = paramParamCache.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize = paramParamCache.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize;
-      this.jdField_a_of_type_ArrayOfInt = new int[] { paramParamCache.jdField_b_of_type_Int, paramParamCache.jdField_c_of_type_Int };
-      this.jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize = paramParamCache.jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize;
+      this.i = paramParamCache.b;
+      this.j = paramParamCache.e;
+      this.n = new int[] { paramParamCache.c, paramParamCache.d };
+      this.m = paramParamCache.g;
     }
     return bool;
   }
   
   public boolean a(CameraPreviewCallBack paramCameraPreviewCallBack, boolean paramBoolean)
   {
-    Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+    Camera localCamera = this.h;
     if (localCamera != null)
     {
       if (paramCameraPreviewCallBack == null) {
@@ -655,18 +568,18 @@ public class CameraControl
       }
       try
       {
-        this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack = paramCameraPreviewCallBack;
+        this.o = paramCameraPreviewCallBack;
         if (paramBoolean)
         {
-          if (e(d()))
+          if (h(u()))
           {
-            this.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(this.jdField_a_of_type_ArrayOfByte);
-            this.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(this.jdField_b_of_type_ArrayOfByte);
-            this.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this);
+            this.h.addCallbackBuffer(this.k);
+            this.h.addCallbackBuffer(this.l);
+            this.h.setPreviewCallbackWithBuffer(this);
           }
           else
           {
-            this.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
+            this.h.setPreviewCallback(this);
           }
         }
         else {
@@ -684,25 +597,25 @@ public class CameraControl
   
   public boolean a(CameraSize paramCameraSize)
   {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
+    if ((!e) && (this.h == null)) {
       throw new AssertionError();
     }
-    Object localObject = a();
+    Object localObject = c();
     if (localObject == null)
     {
       if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "setParamsPreviewSize failed, getCameraParameters = null" });
+        QLog.c(a, 2, new Object[] { "setParamsPreviewSize failed, getCameraParameters = null" });
       }
       return false;
     }
     try
     {
-      ((Camera.Parameters)localObject).setPreviewSize(paramCameraSize.jdField_a_of_type_Int, paramCameraSize.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize = paramCameraSize;
+      ((Camera.Parameters)localObject).setPreviewSize(paramCameraSize.a, paramCameraSize.b);
+      this.j = paramCameraSize;
       boolean bool = a((Camera.Parameters)localObject);
       if (QLog.a())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setParamsPreviewSize, result = ");
         localStringBuilder.append(bool);
@@ -714,35 +627,35 @@ public class CameraControl
     }
     catch (Exception paramCameraSize)
     {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, "setParamsPreviewSize", paramCameraSize);
+      QLog.a(a, 1, "setParamsPreviewSize", paramCameraSize);
     }
     return false;
   }
   
   public boolean a(String paramString)
   {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
+    if ((!e) && (this.h == null)) {
       throw new AssertionError();
     }
-    if (!h()) {
+    if (!v()) {
       return false;
     }
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
+      this.h.cancelAutoFocus();
     }
     catch (RuntimeException localRuntimeException)
     {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, "", localRuntimeException);
+      QLog.a(a, 1, "", localRuntimeException);
     }
-    Object localObject1 = a();
+    Object localObject1 = c();
     if (localObject1 == null) {
       return false;
     }
     Object localObject2 = ((Camera.Parameters)localObject1).getFocusMode();
     if (QLog.a())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setParamsFocusMode getFocusMode=");
       localStringBuilder.append((String)localObject2);
@@ -764,7 +677,7 @@ public class CameraControl
     }
     if (QLog.a())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("setParamsFocusMode support=");
       ((StringBuilder)localObject2).append(bool2);
@@ -779,12 +692,12 @@ public class CameraControl
   
   public boolean a(boolean paramBoolean)
   {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
+    if ((!e) && (this.h == null)) {
       throw new AssertionError();
     }
-    if (CameraAbility.a().e())
+    if (CameraAbility.a().h())
     {
-      Camera.Parameters localParameters = a();
+      Camera.Parameters localParameters = c();
       String str;
       if (paramBoolean) {
         str = "torch";
@@ -797,37 +710,320 @@ public class CameraControl
     return false;
   }
   
-  public int[] a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ArrayOfInt;
+    return c(t());
   }
   
-  public int b()
+  public boolean b(CameraSize paramCameraSize)
   {
-    Object localObject = new Camera.CameraInfo();
-    Camera.getCameraInfo(this.jdField_a_of_type_Int, (Camera.CameraInfo)localObject);
-    int i = ((Camera.CameraInfo)localObject).orientation;
-    if (QLog.a())
+    Object localObject = c();
+    if (localObject == null)
     {
-      localObject = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("return orientation = ");
-      localStringBuilder.append(i);
-      QLog.d((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      if (QLog.a()) {
+        QLog.c(a, 2, new Object[] { "setRawPictureSize failed, getCameraParameters = null" });
+      }
+      return false;
     }
-    return i;
+    try
+    {
+      ((Camera.Parameters)localObject).setPictureSize(paramCameraSize.a, paramCameraSize.b);
+      this.m = paramCameraSize;
+      boolean bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setRawPictureSize, result = ");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", size = ");
+        localStringBuilder.append(paramCameraSize);
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    catch (Exception paramCameraSize)
+    {
+      QLog.a(a, 1, "setParamsPictureSize", paramCameraSize);
+    }
+    return false;
   }
   
-  public CameraSize b()
-  {
-    return this.jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize;
-  }
-  
-  public String b()
+  public boolean b(String paramString)
   {
     if (QLog.a())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[setDefaultFocusMode] ");
+      localStringBuilder.append(paramString);
+      QLog.c(str, 2, new Object[] { localStringBuilder.toString() });
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = i();
+    }
+    return (a(str)) || (a("auto")) || (a().a(null));
+  }
+  
+  public Camera.Parameters c()
+  {
+    try
+    {
+      Camera.Parameters localParameters = this.h.getParameters();
+      return localParameters;
+    }
+    catch (Exception localException)
+    {
+      QLog.a(a, 1, localException, new Object[0]);
+    }
+    return null;
+  }
+  
+  public boolean c(int paramInt)
+  {
+    if ((!e) && (this.h == null)) {
+      throw new AssertionError();
+    }
+    try
+    {
+      this.h.setDisplayOrientation(paramInt);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.a(a, 1, "setDisplayOrientation error, ", localException);
+    }
+    return false;
+  }
+  
+  public boolean d()
+  {
+    if ((!e) && (this.h == null)) {
+      throw new AssertionError();
+    }
+    Object localObject = c();
+    if (localObject == null)
+    {
+      if (QLog.a()) {
+        QLog.c(a, 2, new Object[] { "[@] setParamsPreviewFormat[failed]getCameraParameters=null" });
+      }
+      return false;
+    }
+    boolean bool;
+    StringBuilder localStringBuilder;
+    if (CameraAbility.a().a(17))
+    {
+      ((Camera.Parameters)localObject).setPreviewFormat(17);
+      this.i = 17;
+      bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", isSupportPreviewFormat=NV21 ok");
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    if (CameraAbility.a().a(842094169))
+    {
+      ((Camera.Parameters)localObject).setPreviewFormat(842094169);
+      this.i = 842094169;
+      bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("isSupportPreviewFormat=YV12 OK");
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    if (CameraAbility.a().a(20))
+    {
+      ((Camera.Parameters)localObject).setPreviewFormat(20);
+      this.i = 20;
+      bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("isSupportPreviewFormat=YUY2 OK");
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    if (CameraAbility.a().a(4))
+    {
+      ((Camera.Parameters)localObject).setPreviewFormat(4);
+      this.i = 4;
+      bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("isSupportPreviewFormat=RGB_565 OK");
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    if (CameraAbility.a().a(256))
+    {
+      ((Camera.Parameters)localObject).setPreviewFormat(256);
+      this.i = 256;
+      bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("isSupportPreviewFormat=JPEG OK");
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    if (CameraAbility.a().a(16))
+    {
+      ((Camera.Parameters)localObject).setPreviewFormat(16);
+      this.i = 16;
+      bool = a((Camera.Parameters)localObject);
+      if (QLog.a())
+      {
+        localObject = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("isSupportPreviewFormat=NV16 OK");
+        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+      }
+      return bool;
+    }
+    return false;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    if ((!e) && (this.h == null)) {
+      throw new AssertionError();
+    }
+    Camera.Parameters localParameters = c();
+    if (localParameters == null)
+    {
+      QLog.c(a, 1, new Object[] { "setPreviewFps failed, getCameraParameters null" });
+      return false;
+    }
+    int[] arrayOfInt = CameraFpsStrategy.a(paramInt);
+    if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
+    {
+      if (QLog.a()) {
+        QLog.c(a, 2, new Object[] { "setPreviewFps[low fps=", Integer.valueOf(arrayOfInt[0]), " high fps=", Integer.valueOf(arrayOfInt[1]), "]" });
+      }
+      try
+      {
+        localParameters.setPreviewFpsRange(arrayOfInt[0], arrayOfInt[1]);
+        this.n = arrayOfInt;
+        boolean bool = a(localParameters);
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        QLog.a(a, 1, "setPreviewFps, setPreviewFps error, ", localException);
+        return false;
+      }
+    }
+    QLog.c(a, 1, new Object[] { "setPreviewFps, getFpsRange null" });
+    return false;
+  }
+  
+  public int e()
+  {
+    return this.i;
+  }
+  
+  public boolean e(int paramInt)
+  {
+    if (CameraAbility.a().g())
+    {
+      Camera.Parameters localParameters = c();
+      if (localParameters == null) {
+        return false;
+      }
+      return f(localParameters.getZoom() + paramInt);
+    }
+    return false;
+  }
+  
+  public CameraSize f()
+  {
+    return this.j;
+  }
+  
+  public boolean f(int paramInt)
+  {
+    if ((!e) && (this.h == null)) {
+      throw new AssertionError();
+    }
+    if (CameraAbility.a().g())
+    {
+      Camera.Parameters localParameters = c();
+      if (localParameters == null) {
+        return false;
+      }
+      int i2 = localParameters.getMaxZoom();
+      int i1 = paramInt;
+      if (paramInt < 0) {
+        i1 = 0;
+      }
+      paramInt = i1;
+      if (i1 > i2) {
+        paramInt = i2;
+      }
+      localParameters.setZoom(paramInt);
+      return a(localParameters);
+    }
+    return false;
+  }
+  
+  public CameraSize g()
+  {
+    return this.m;
+  }
+  
+  public int[] h()
+  {
+    return this.n;
+  }
+  
+  public String i()
+  {
+    return "continuous-picture";
+  }
+  
+  public boolean j()
+  {
+    return (a(i())) || (a("auto")) || (a().a(null));
+  }
+  
+  public boolean k()
+  {
+    return (a(l())) || (a("auto")) || (a().a(null));
+  }
+  
+  public String l()
+  {
+    if (QLog.a())
+    {
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[@] getRecordingFocusMode: Build.MANUFACTURER=");
       localStringBuilder.append(Build.MANUFACTURER);
@@ -841,259 +1037,22 @@ public class CameraControl
     return "continuous-video";
   }
   
-  public void b()
+  public boolean m()
   {
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    if (QLog.a()) {
-      QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "releasePreviewFrameBuffer" });
-    }
-  }
-  
-  public boolean b()
-  {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
-      throw new AssertionError();
-    }
-    Object localObject = a();
-    if (localObject == null)
-    {
-      if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "[@] setParamsPreviewFormat[failed]getCameraParameters=null" });
-      }
-      return false;
-    }
-    boolean bool;
-    StringBuilder localStringBuilder;
-    if (CameraAbility.a().a(17))
-    {
-      ((Camera.Parameters)localObject).setPreviewFormat(17);
-      this.jdField_c_of_type_Int = 17;
-      bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append(", isSupportPreviewFormat=NV21 ok");
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    if (CameraAbility.a().a(842094169))
-    {
-      ((Camera.Parameters)localObject).setPreviewFormat(842094169);
-      this.jdField_c_of_type_Int = 842094169;
-      bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append("isSupportPreviewFormat=YV12 OK");
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    if (CameraAbility.a().a(20))
-    {
-      ((Camera.Parameters)localObject).setPreviewFormat(20);
-      this.jdField_c_of_type_Int = 20;
-      bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append("isSupportPreviewFormat=YUY2 OK");
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    if (CameraAbility.a().a(4))
-    {
-      ((Camera.Parameters)localObject).setPreviewFormat(4);
-      this.jdField_c_of_type_Int = 4;
-      bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append("isSupportPreviewFormat=RGB_565 OK");
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    if (CameraAbility.a().a(256))
-    {
-      ((Camera.Parameters)localObject).setPreviewFormat(256);
-      this.jdField_c_of_type_Int = 256;
-      bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append("isSupportPreviewFormat=JPEG OK");
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    if (CameraAbility.a().a(16))
-    {
-      ((Camera.Parameters)localObject).setPreviewFormat(16);
-      this.jdField_c_of_type_Int = 16;
-      bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[@] setParamsPreviewFormat:success=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append("isSupportPreviewFormat=NV16 OK");
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    return false;
-  }
-  
-  public boolean b(int paramInt)
-  {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
-      throw new AssertionError();
-    }
-    Camera.Parameters localParameters = a();
-    if (localParameters == null)
-    {
-      QLog.c(jdField_a_of_type_JavaLangString, 1, new Object[] { "setPreviewFps failed, getCameraParameters null" });
-      return false;
-    }
-    int[] arrayOfInt = CameraFpsStrategy.a(paramInt);
-    if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
-    {
-      if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "setPreviewFps[low fps=", Integer.valueOf(arrayOfInt[0]), " high fps=", Integer.valueOf(arrayOfInt[1]), "]" });
-      }
-      try
-      {
-        localParameters.setPreviewFpsRange(arrayOfInt[0], arrayOfInt[1]);
-        this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
-        boolean bool = a(localParameters);
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        QLog.a(jdField_a_of_type_JavaLangString, 1, "setPreviewFps, setPreviewFps error, ", localException);
-        return false;
-      }
-    }
-    QLog.c(jdField_a_of_type_JavaLangString, 1, new Object[] { "setPreviewFps, getFpsRange null" });
-    return false;
-  }
-  
-  public boolean b(CameraSize paramCameraSize)
-  {
-    Object localObject = a();
-    if (localObject == null)
-    {
-      if (QLog.a()) {
-        QLog.c(jdField_a_of_type_JavaLangString, 2, new Object[] { "setRawPictureSize failed, getCameraParameters = null" });
-      }
-      return false;
-    }
-    try
-    {
-      ((Camera.Parameters)localObject).setPictureSize(paramCameraSize.jdField_a_of_type_Int, paramCameraSize.jdField_b_of_type_Int);
-      this.jdField_b_of_type_ComTencentQqcamerakitCaptureCameraSize = paramCameraSize;
-      boolean bool = a((Camera.Parameters)localObject);
-      if (QLog.a())
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("setRawPictureSize, result = ");
-        localStringBuilder.append(bool);
-        localStringBuilder.append(", size = ");
-        localStringBuilder.append(paramCameraSize);
-        QLog.c((String)localObject, 2, new Object[] { localStringBuilder.toString() });
-      }
-      return bool;
-    }
-    catch (Exception paramCameraSize)
-    {
-      QLog.a(jdField_a_of_type_JavaLangString, 1, "setParamsPictureSize", paramCameraSize);
-    }
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return (a(a())) || (a("auto")) || (a().a(null));
-  }
-  
-  public boolean c(int paramInt)
-  {
-    if (CameraAbility.a().d())
-    {
-      Camera.Parameters localParameters = a();
-      if (localParameters == null) {
-        return false;
-      }
-      return d(localParameters.getZoom() + paramInt);
-    }
-    return false;
-  }
-  
-  public boolean d()
-  {
-    return (a(b())) || (a("auto")) || (a().a(null));
-  }
-  
-  public boolean d(int paramInt)
-  {
-    if ((!jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
-      throw new AssertionError();
-    }
-    if (CameraAbility.a().d())
-    {
-      Camera.Parameters localParameters = a();
-      if (localParameters == null) {
-        return false;
-      }
-      int j = localParameters.getMaxZoom();
-      int i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      paramInt = i;
-      if (i > j) {
-        paramInt = j;
-      }
-      localParameters.setZoom(paramInt);
-      return a(localParameters);
-    }
-    return false;
-  }
-  
-  public boolean e()
-  {
-    Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+    Camera localCamera = this.h;
     if (localCamera == null) {
       return false;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return true;
     }
     try
     {
       localCamera.startPreview();
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
+      if (CameraManager.a > 0) {
+        n();
+      }
       return true;
     }
     catch (Exception localException)
@@ -1103,45 +1062,56 @@ public class CameraControl
     return false;
   }
   
+  public void n()
+  {
+    Camera.Parameters localParameters = this.h.getParameters();
+    if (QLog.a()) {
+      QLog.c(a, 2, new Object[] { "startFaceDetection" });
+    }
+    if (localParameters.getMaxNumDetectedFaces() > 0) {
+      this.h.startFaceDetection();
+    }
+  }
+  
   /* Error */
-  public boolean f()
+  public boolean o()
   {
     // Byte code:
     //   0: aload_0
     //   1: aconst_null
-    //   2: putfield 315	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack	Lcom/tencent/qqcamerakit/capture/CameraPreviewCallBack;
+    //   2: putfield 461	com/tencent/qqcamerakit/capture/camera/CameraControl:o	Lcom/tencent/qqcamerakit/capture/CameraPreviewCallBack;
     //   5: aload_0
-    //   6: getfield 60	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   6: getfield 59	com/tencent/qqcamerakit/capture/camera/CameraControl:h	Landroid/hardware/Camera;
     //   9: ifnonnull +5 -> 14
     //   12: iconst_0
     //   13: ireturn
     //   14: aload_0
-    //   15: getfield 398	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_Boolean	Z
+    //   15: getfield 391	com/tencent/qqcamerakit/capture/camera/CameraControl:b	Z
     //   18: ifne +5 -> 23
     //   21: iconst_1
     //   22: ireturn
     //   23: aload_0
     //   24: iconst_0
-    //   25: putfield 398	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_Boolean	Z
+    //   25: putfield 391	com/tencent/qqcamerakit/capture/camera/CameraControl:b	Z
     //   28: aload_0
-    //   29: invokespecial 430	com/tencent/qqcamerakit/capture/camera/CameraControl:h	()Z
+    //   29: invokespecial 411	com/tencent/qqcamerakit/capture/camera/CameraControl:v	()Z
     //   32: istore_1
     //   33: iload_1
     //   34: ifeq +10 -> 44
     //   37: aload_0
-    //   38: getfield 60	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   41: invokevirtual 433	android/hardware/Camera:cancelAutoFocus	()V
+    //   38: getfield 59	com/tencent/qqcamerakit/capture/camera/CameraControl:h	Landroid/hardware/Camera;
+    //   41: invokevirtual 414	android/hardware/Camera:cancelAutoFocus	()V
     //   44: aload_0
-    //   45: getfield 60	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   48: invokevirtual 599	android/hardware/Camera:stopPreview	()V
+    //   45: getfield 59	com/tencent/qqcamerakit/capture/camera/CameraControl:h	Landroid/hardware/Camera;
+    //   48: invokevirtual 623	android/hardware/Camera:stopPreview	()V
     //   51: aload_0
-    //   52: getfield 60	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   52: getfield 59	com/tencent/qqcamerakit/capture/camera/CameraControl:h	Landroid/hardware/Camera;
     //   55: aconst_null
-    //   56: invokevirtual 478	android/hardware/Camera:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
+    //   56: invokevirtual 472	android/hardware/Camera:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
     //   59: aload_0
-    //   60: getfield 60	com/tencent/qqcamerakit/capture/camera/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   60: getfield 59	com/tencent/qqcamerakit/capture/camera/CameraControl:h	Landroid/hardware/Camera;
     //   63: aconst_null
-    //   64: invokevirtual 603	android/hardware/Camera:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
+    //   64: invokevirtual 627	android/hardware/Camera:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
     //   67: iconst_1
     //   68: ireturn
     //   69: astore_2
@@ -1167,27 +1137,80 @@ public class CameraControl
   {
     if (QLog.a())
     {
-      paramCamera = jdField_a_of_type_JavaLangString;
+      paramCamera = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onAutoFocus]success ");
       localStringBuilder.append(paramBoolean);
       QLog.c(paramCamera, 2, new Object[] { localStringBuilder.toString() });
     }
-    a(a());
+    a(i());
   }
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    CameraPreviewCallBack localCameraPreviewCallBack = this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraPreviewCallBack;
+    CameraPreviewCallBack localCameraPreviewCallBack = this.o;
     if (localCameraPreviewCallBack != null) {
       localCameraPreviewCallBack.onPreviewFrame(paramArrayOfByte, paramCamera);
     }
     a(paramArrayOfByte);
   }
+  
+  public void p()
+  {
+    this.o = null;
+    if (QLog.a()) {
+      QLog.c(a, 2, new Object[] { "release camera" });
+    }
+    if (!this.g) {
+      return;
+    }
+    CameraAbility.a().j();
+    Camera localCamera = this.h;
+    if (localCamera == null) {
+      return;
+    }
+    try
+    {
+      localCamera.release();
+      this.h = null;
+      this.i = -1;
+      this.n = null;
+      this.j = null;
+      this.g = false;
+      q();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void q()
+  {
+    this.k = null;
+    this.l = null;
+    if (QLog.a()) {
+      QLog.c(a, 2, new Object[] { "releasePreviewFrameBuffer" });
+    }
+  }
+  
+  public int r()
+  {
+    Object localObject = new Camera.CameraInfo();
+    Camera.getCameraInfo(this.c, (Camera.CameraInfo)localObject);
+    int i1 = ((Camera.CameraInfo)localObject).orientation;
+    if (QLog.a())
+    {
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("return orientation = ");
+      localStringBuilder.append(i1);
+      QLog.d((String)localObject, 2, new Object[] { localStringBuilder.toString() });
+    }
+    return i1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camera.CameraControl
  * JD-Core Version:    0.7.0.1
  */

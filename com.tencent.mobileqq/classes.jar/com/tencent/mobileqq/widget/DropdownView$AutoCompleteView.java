@@ -12,27 +12,27 @@ import java.lang.reflect.Method;
 class DropdownView$AutoCompleteView
   extends AutoCompleteTextView
 {
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public DropdownView$AutoCompleteView(DropdownView paramDropdownView, Context paramContext)
   {
     super(paramContext);
     setId(526);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public DropdownView$AutoCompleteView(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     setId(526);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public DropdownView$AutoCompleteView(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     setId(526);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public boolean enoughToFilter()
@@ -42,7 +42,7 @@ class DropdownView$AutoCompleteView
   
   public boolean isPopupShowing()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return super.isPopupShowing();
     }
     return false;
@@ -116,7 +116,7 @@ class DropdownView$AutoCompleteView
         ((Field)localObject2).setAccessible(true);
         localObject2 = ((Field)localObject2).get(localObject1);
         localObject2.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject2, new Object[] { Integer.valueOf(0) });
-        ((PopupWindow)localObject1).setAnimationStyle(2130772343);
+        ((PopupWindow)localObject1).setAnimationStyle(2130772435);
         return;
       }
       catch (Exception localException3) {}
@@ -133,7 +133,7 @@ class DropdownView$AutoCompleteView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DropdownView.AutoCompleteView
  * JD-Core Version:    0.7.0.1
  */

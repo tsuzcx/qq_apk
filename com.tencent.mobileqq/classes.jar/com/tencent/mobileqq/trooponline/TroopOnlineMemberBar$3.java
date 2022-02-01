@@ -16,20 +16,20 @@ class TroopOnlineMemberBar$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if (paramValueAnimator.intValue() <= -TroopOnlineMemberBar.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168))
+    ((RelativeLayout.LayoutParams)this.a.d.getLayoutParams()).topMargin = paramValueAnimator.intValue();
+    this.a.d.requestLayout();
+    if (paramValueAnimator.intValue() <= -TroopOnlineMemberBar.a + this.a.c.getResources().getDimensionPixelSize(2131299920))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a(false);
+      if (this.a.m != null) {
+        this.a.m.a(false);
       }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+      this.a.d.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberBar.3
  * JD-Core Version:    0.7.0.1
  */

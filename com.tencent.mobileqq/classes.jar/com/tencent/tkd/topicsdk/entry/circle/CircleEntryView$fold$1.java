@@ -31,11 +31,11 @@ final class CircleEntryView$fold$1
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
       if (i < paramValueAnimator.a((Context)localObject, 60.0F))
       {
-        CircleEntryView.a(this.a).setVisibility(8);
         CircleEntryView.b(this.a).setVisibility(8);
-        CircleEntryView.a(this.a).setVisibility(8);
+        CircleEntryView.c(this.a).setVisibility(8);
+        CircleEntryView.d(this.a).setVisibility(8);
       }
-      paramValueAnimator = CircleEntryView.a(this.a).getLayoutParams();
+      paramValueAnimator = CircleEntryView.e(this.a).getLayoutParams();
       localObject = DisplayUtils.a;
       Context localContext = this.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
@@ -48,7 +48,7 @@ final class CircleEntryView$fold$1
       localObject = this.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
       int k = paramValueAnimator.a((Context)localObject, 74.0F);
-      CircleEntryView.a(this.a).setPadding(j + i - k, 0, 0, 0);
+      CircleEntryView.e(this.a).setPadding(j + i - k, 0, 0, 0);
       CircleEntryView.a(this.a).requestLayout();
       return;
     }
@@ -57,7 +57,7 @@ final class CircleEntryView$fold$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.circle.CircleEntryView.fold.1
  * JD-Core Version:    0.7.0.1
  */

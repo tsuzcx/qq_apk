@@ -19,12 +19,12 @@ public final class BusinessConfig$$special$$inlined$observable$1
   protected void afterChange(@NotNull KProperty<?> paramKProperty, Integer paramInteger1, Integer paramInteger2)
   {
     Intrinsics.checkParameterIsNotNull(paramKProperty, "property");
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction3.invoke(paramKProperty, paramInteger1, paramInteger2);
+    this.a.invoke(paramKProperty, paramInteger1, paramInteger2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.model.BusinessConfig..special..inlined.observable.1
  * JD-Core Version:    0.7.0.1
  */

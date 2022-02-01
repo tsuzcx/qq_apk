@@ -31,8 +31,10 @@ import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.R.style;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.SpecialProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
@@ -53,11 +55,14 @@ public class AuthDialog
   public static final int REQUEST_CODE_ADD_PHONENUMBER = 1088;
   public static final int REQUEST_CODE_MANAGER_ADD_PHONENUMBER = 1090;
   public static final int REQUEST_CODE_PHONE_MANAGER = 1089;
+  private static final String SUB_MINIGAME_REPORT = "minigamesubs";
   private static final String TAG = "AuthDialog";
   public static final int TYPE_NORMAL = 1;
   public static final int TYPE_ONCE_SUB_MSG = 3;
   public static final int TYPE_PHONENUMBER = 2;
   public static final int TYPE_SYS_SUB_MSG = 4;
+  public static final int TYPE_USER_INFO = 5;
+  private static final String UNSUB_MINIGAME_REPORT = "no_mgs";
   private String mAppId = null;
   private TextView mAuthDesc;
   private ImageView mAuthInfoBackIcon;
@@ -77,9 +82,11 @@ public class AuthDialog
   private View mLineView2;
   private View mLineView3;
   private View mLineView4;
+  private IMiniAppContext mMiniAppContext;
   private ImageView mMiniAppIcon;
   private LinearLayout mMiniAppInfoLayout;
   private TextView mMiniAppName;
+  private INTERFACE.StSubscribeMessage mMiniGameSubMsg;
   private TextView mOperateNumberBtn;
   private TextView mPhoneNumber1;
   private TextView mPhoneNumber2;
@@ -95,6 +102,7 @@ public class AuthDialog
   private TextView mRightBtn;
   private View mRootView;
   private int mSelectPhoneNumber = 1;
+  private List<INTERFACE.StSubscribeMessage> mSubMsgNoMaintainAuth;
   private int mType = 1;
   private ImageView mUserIcon;
   private TextView mUserName;
@@ -112,6 +120,7 @@ public class AuthDialog
   private ImageView onceSubTips1;
   private ImageView onceSubTips2;
   private ImageView onceSubTips3;
+  private String reserves2 = null;
   private String uin = null;
   
   public AuthDialog(Activity paramActivity)
@@ -121,34 +130,112 @@ public class AuthDialog
     initView(paramActivity);
   }
   
-  public AuthDialog(Activity paramActivity, int paramInt)
+  public AuthDialog(Activity paramActivity, IMiniAppContext paramIMiniAppContext, int paramInt)
   {
     super(paramActivity, R.style.mini_sdk_MiniAppAuthDialog);
     this.mContext = paramActivity;
+    this.mMiniAppContext = paramIMiniAppContext;
     this.mType = paramInt;
-    if (paramInt != 1)
-    {
+    if (paramInt != 1) {
       if (paramInt != 2)
       {
-        if ((paramInt != 3) && (paramInt != 4)) {
-          initView(paramActivity);
-        } else {
+        if ((paramInt != 3) && (paramInt != 4))
+        {
+          if (paramInt != 5)
+          {
+            initView(paramActivity);
+            break label115;
+          }
+        }
+        else
+        {
           initOnceSubMsgView(paramActivity, paramInt);
+          break label115;
         }
       }
-      else {
+      else
+      {
         initPhoneNumberView(paramActivity);
+        break label115;
       }
     }
-    else {
-      initView(paramActivity);
-    }
+    initView(paramActivity);
+    label115:
     setCanceledOnTouchOutside(true);
     paramActivity = getWindow();
     if (paramActivity != null) {
       paramActivity.setGravity(80);
     }
     setActivityResultListener();
+  }
+  
+  private void dealMiniGamePABeforeDismiss()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[dealMiniGamePABeforeDismiss mType=");
+    ((StringBuilder)localObject).append(this.mType);
+    ((StringBuilder)localObject).append("; isRefuse=");
+    ((StringBuilder)localObject).append(isRefuse());
+    ((StringBuilder)localObject).append("; isConfirm=");
+    ((StringBuilder)localObject).append(isConfirm());
+    QMLog.d("AuthDialog", ((StringBuilder)localObject).toString());
+    localObject = this.mSubMsgNoMaintainAuth;
+    if (localObject != null)
+    {
+      INTERFACE.StSubscribeMessage localStSubscribeMessage = this.mMiniGameSubMsg;
+      if ((localStSubscribeMessage != null) && (((List)localObject).contains(localStSubscribeMessage)))
+      {
+        this.mSubMsgNoMaintainAuth.remove(this.mMiniGameSubMsg);
+        localStSubscribeMessage = null;
+        int i = this.mType;
+        if (i == 5)
+        {
+          localObject = this.onceSubCheckBox1;
+        }
+        else if (i != 3)
+        {
+          localObject = localStSubscribeMessage;
+          if (i != 4) {}
+        }
+        else if (this.mSubMsgNoMaintainAuth.size() == 1)
+        {
+          localObject = this.onceSubCheckBox2;
+        }
+        else
+        {
+          localObject = localStSubscribeMessage;
+          if (this.mSubMsgNoMaintainAuth.size() == 2) {
+            localObject = this.onceSubCheckBox3;
+          }
+        }
+        if (localObject == null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[dealMiniGamePABeforeDismiss] miniGameCheck == null type=");
+          ((StringBuilder)localObject).append(this.mType);
+          QMLog.e("AuthDialog", ((StringBuilder)localObject).toString());
+          return;
+        }
+        if (((CheckBox)localObject).isChecked()) {
+          this.reserves2 = "minigamesubs";
+        } else {
+          this.reserves2 = "no_mgs";
+        }
+        if ((isConfirm()) && (((CheckBox)localObject).isChecked())) {
+          followMiniGamePA();
+        }
+        return;
+      }
+    }
+    QMLog.d("AuthDialog", "mMiniGameSubMsg is Empty!");
+  }
+  
+  private void followMiniGamePA()
+  {
+    SpecialProxy localSpecialProxy = (SpecialProxy)ProxyManager.get(SpecialProxy.class);
+    if (localSpecialProxy != null) {
+      localSpecialProxy.sendEventToHost(4, null, null);
+    }
   }
   
   private void initOnceSubMsgView(Context paramContext, int paramInt)
@@ -239,6 +326,93 @@ public class AuthDialog
     this.mRightBtn = ((TextView)paramContext.findViewById(R.id.right_btn));
   }
   
+  private void insertMiniGamePA2Dialog()
+  {
+    if (!isAddMiniGamePASub())
+    {
+      show();
+      return;
+    }
+    SpecialProxy localSpecialProxy = (SpecialProxy)ProxyManager.get(SpecialProxy.class);
+    if (localSpecialProxy == null)
+    {
+      show();
+      return;
+    }
+    localSpecialProxy.sendEventToHost(3, null, new AuthDialog.8(this));
+  }
+  
+  private void insertMiniGamePA2SubDialog()
+  {
+    if (this.mSubMsgNoMaintainAuth.size() == 1)
+    {
+      this.mSubMsgNoMaintainAuth.add(this.mMiniGameSubMsg);
+      this.onceSubLayout2.setVisibility(0);
+      loadOnceSubItemView(this.mSubMsgNoMaintainAuth, 1);
+      return;
+    }
+    if (this.mSubMsgNoMaintainAuth.size() == 2)
+    {
+      this.mSubMsgNoMaintainAuth.add(this.mMiniGameSubMsg);
+      this.onceSubLayout3.setVisibility(0);
+      loadOnceSubItemView(this.mSubMsgNoMaintainAuth, 2);
+    }
+  }
+  
+  private void insertMiniGamePA2UserInfoDialog()
+  {
+    this.onceSubLayout1 = ((RelativeLayout)this.mRootView.findViewById(R.id.rl_once_sub_1));
+    this.onceSubCheckBox1 = ((CheckBox)this.mRootView.findViewById(R.id.cb_once_sub_1));
+    this.onceSubTextView1 = ((TextView)this.mRootView.findViewById(R.id.tv_once_sub_1));
+    this.onceSubTips1 = ((ImageView)this.mRootView.findViewById(R.id.iv_once_sub_1));
+    this.onceSubLayout1.setVisibility(0);
+    this.mSubMsgNoMaintainAuth = new ArrayList();
+    this.mSubMsgNoMaintainAuth.add(this.mMiniGameSubMsg);
+    loadOnceSubItemView(this.mSubMsgNoMaintainAuth, 0);
+  }
+  
+  private boolean isAddMiniGamePASub()
+  {
+    Object localObject = this.mMiniAppContext;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      if (!((IMiniAppContext)localObject).isMiniGame()) {
+        return false;
+      }
+      localObject = this.mSubMsgNoMaintainAuth;
+      int i;
+      if (localObject == null) {
+        i = -1;
+      } else {
+        i = ((List)localObject).size();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[isAddMiniGamePASub] mType=");
+      ((StringBuilder)localObject).append(this.mType);
+      ((StringBuilder)localObject).append(" size=");
+      ((StringBuilder)localObject).append(i);
+      QMLog.d("AuthDialog", ((StringBuilder)localObject).toString());
+      int j = this.mType;
+      if (j == 5) {
+        return true;
+      }
+      if ((j != 3) && (j != 4)) {
+        return false;
+      }
+      bool1 = bool2;
+      if (i > 0)
+      {
+        bool1 = bool2;
+        if (i < 3) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
   private void loadOnceSubItemView(List<INTERFACE.StSubscribeMessage> paramList, int paramInt)
   {
     if (paramInt != 0)
@@ -308,6 +482,7 @@ public class AuthDialog
           }
           i += 1;
         }
+        this.mSubMsgNoMaintainAuth = localArrayList;
         i = localArrayList.size();
         if (i != 1)
         {
@@ -345,7 +520,7 @@ public class AuthDialog
   {
     String str = this.mResBuilder.getReportSubAction();
     MiniAppInfo localMiniAppInfo = this.mResBuilder.getMiniAppInfo();
-    SDKMiniProgramLpReportDC04239.reportMiniAppEvent(localMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(localMiniAppInfo), null, "scope", str, paramString, null);
+    SDKMiniProgramLpReportDC04239.reportMiniAppEvent(localMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(localMiniAppInfo), null, "scope", str, paramString, this.reserves2);
   }
   
   private void setActivityResultListener()
@@ -629,6 +804,12 @@ public class AuthDialog
     }
   }
   
+  public void dismiss()
+  {
+    dealMiniGamePABeforeDismiss();
+    super.dismiss();
+  }
+  
   public int getAuthDialogType()
   {
     return this.mType;
@@ -814,12 +995,12 @@ public class AuthDialog
       setRightBtn(paramAuthDialogResBuilder);
     }
     setAuthDesc(paramAuthDialogResBuilder);
-    show();
+    insertMiniGamePA2Dialog();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.AuthDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -25,24 +25,24 @@ class MediaChooseJsProxyImpl$1$1
       int k;
       try
       {
-        localObject3 = this.jdField_a_of_type_AndroidContentIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-        if ((this.jdField_a_of_type_AndroidContentIntent.getExtras() != null) && (this.jdField_a_of_type_AndroidContentIntent.getExtras().containsKey("PhotoConst.VIDEO_INFOS")))
+        localObject3 = this.a.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+        if ((this.a.getExtras() != null) && (this.a.getExtras().containsKey("PhotoConst.VIDEO_INFOS")))
         {
-          Object localObject1 = (HashMap)this.jdField_a_of_type_AndroidContentIntent.getExtras().get("PhotoConst.VIDEO_INFOS");
+          Object localObject1 = (HashMap)this.a.getExtras().get("PhotoConst.VIDEO_INFOS");
           if ((localObject3 != null) && (((ArrayList)localObject3).size() != 0))
           {
-            MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a, "正在获取媒体信息");
-            localObject4 = this.jdField_a_of_type_AndroidContentIntent;
+            MediaChooseJsProxyImpl.a(this.b.a, "正在获取媒体信息");
+            localObject4 = this.a;
             i = 0;
             int j = ((Intent)localObject4).getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
-            k = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("from_miniapp_cur_sizetype", 0);
+            k = this.a.getIntExtra("from_miniapp_cur_sizetype", 0);
             localObject4 = new JSONArray();
             localObject3 = ((ArrayList)localObject3).iterator();
             if (((Iterator)localObject3).hasNext())
             {
               String str = (String)((Iterator)localObject3).next();
               JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("tempFilePath", ((IMiniAppFileManager)MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str));
+              localJSONObject.put("tempFilePath", ((IMiniAppFileManager)MediaChooseJsProxyImpl.c(this.b.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str));
               localJSONObject.put("size", new File(str).length());
               if ((localObject1 != null) && (((HashMap)localObject1).containsKey(Integer.valueOf(i))))
               {
@@ -51,7 +51,7 @@ class MediaChooseJsProxyImpl$1$1
                 localJSONObject.put("duration", localLocalMediaInfo.mDuration);
                 localJSONObject.put("width", localLocalMediaInfo.mediaWidth);
                 localJSONObject.put("height", localLocalMediaInfo.mediaHeight);
-                MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a, MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a, str), localLocalMediaInfo);
+                MediaChooseJsProxyImpl.a(this.b.a, MediaChooseJsProxyImpl.b(this.b.a, str), localLocalMediaInfo);
                 localJSONObject.put("thumbTempFilePath", localLocalMediaInfo.thumbnailPath);
               }
               else
@@ -60,8 +60,8 @@ class MediaChooseJsProxyImpl$1$1
                 if ((k != 0) || (j != 0)) {
                   break label609;
                 }
-                str = MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a, str);
-                localJSONObject.put("tempFilePath", ((IMiniAppFileManager)MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str));
+                str = MediaChooseJsProxyImpl.c(this.b.a, str);
+                localJSONObject.put("tempFilePath", ((IMiniAppFileManager)MediaChooseJsProxyImpl.c(this.b.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str));
                 localJSONObject.put("size", new File(str).length());
               }
               ((JSONArray)localObject4).put(localJSONObject);
@@ -70,24 +70,24 @@ class MediaChooseJsProxyImpl$1$1
             }
             localObject1 = new JSONObject();
             ((JSONObject)localObject1).put("tempFiles", localObject4);
-            MediaChooseJsProxyImpl.b(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a, MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a), "chooseVideo", (JSONObject)localObject1);
-            MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a);
+            MediaChooseJsProxyImpl.b(this.b.a, MediaChooseJsProxyImpl.b(this.b.a), "chooseVideo", (JSONObject)localObject1);
+            MediaChooseJsProxyImpl.d(this.b.a);
             return;
           }
-          MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a, MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a), "chooseVideo", null);
+          MediaChooseJsProxyImpl.a(this.b.a, MediaChooseJsProxyImpl.b(this.b.a), "chooseVideo", null);
           return;
         }
       }
       catch (Exception localException)
       {
         QLog.e("MediaChooseJsProxyImpl", 1, "get media info failed", localException);
-        Object localObject3 = this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a;
-        int i = MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a);
+        Object localObject3 = this.b.a;
+        int i = MediaChooseJsProxyImpl.b(this.b.a);
         Object localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("chooseMedia exception:");
         ((StringBuilder)localObject4).append(localException.getMessage());
         MediaChooseJsProxyImpl.a((MediaChooseJsProxyImpl)localObject3, i, "chooseVideo", null, ((StringBuilder)localObject4).toString());
-        MediaChooseJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaChooseJsProxyImpl$1.a);
+        MediaChooseJsProxyImpl.d(this.b.a);
         return;
       }
       Object localObject2 = null;
@@ -99,7 +99,7 @@ class MediaChooseJsProxyImpl$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

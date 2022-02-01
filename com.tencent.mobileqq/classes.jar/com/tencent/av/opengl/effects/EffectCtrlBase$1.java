@@ -21,13 +21,13 @@ class EffectCtrlBase$1
     localStringBuilder.append("]");
     QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
     if (paramBoolean) {
-      this.a.b(paramLong);
+      this.b.b(paramLong);
     }
   }
   
   protected void b(boolean paramBoolean)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onAfterReopenCamera, success[");
     localStringBuilder.append(paramBoolean);
@@ -36,7 +36,7 @@ class EffectCtrlBase$1
     localStringBuilder.append("]");
     QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
     if (paramBoolean) {
-      this.a.b(l);
+      this.b.b(l);
     }
   }
 }

@@ -11,7 +11,7 @@ class FontManager$2
   {
     FontManager.a(this.this$0, true);
     VasUtils.a(FontManager.a(this.this$0));
-    FontManager.a(this.this$0);
+    FontManager.b(this.this$0);
   }
 }
 

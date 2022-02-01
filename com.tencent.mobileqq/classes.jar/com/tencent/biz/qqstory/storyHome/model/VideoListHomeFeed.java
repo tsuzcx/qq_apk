@@ -19,50 +19,36 @@ import java.util.List;
 public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
   extends CommentLikeHomeFeed<T>
 {
-  static VideoListHomeFeed.HomeComp jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListHomeFeed$HomeComp = new VideoListHomeFeed.HomeComp(null);
-  private boolean jdField_a_of_type_Boolean;
-  protected HashSet<String> c;
-  protected List<StoryVideoItem> c;
-  public boolean c;
-  public List<TagItem.TagInfoBase> d = new ArrayList();
+  static VideoListHomeFeed.HomeComp l = new VideoListHomeFeed.HomeComp(null);
+  private boolean e;
+  protected List<StoryVideoItem> h = new ArrayList(0);
+  protected HashSet<String> i = new HashSet();
+  public List<TagItem.TagInfoBase> j = new ArrayList();
+  public boolean k = true;
   
   public VideoListHomeFeed(@NonNull T paramT)
   {
     super(paramT);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_c_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_c_of_type_Boolean = true;
   }
   
   private boolean a(String paramString)
   {
     Calendar localCalendar = Calendar.getInstance();
-    paramString = DateUtils.a(paramString);
+    paramString = DateUtils.b(paramString);
     return (localCalendar.get(1) + 0 <= paramString[0]) && (localCalendar.get(2) + 1 <= paramString[1]) && (localCalendar.get(5) + 0 <= paramString[2]);
-  }
-  
-  public T a()
-  {
-    return (VideoListFeedItem)super.a();
   }
   
   public List<StoryVideoItem> a()
   {
-    return Collections.unmodifiableList(this.jdField_c_of_type_JavaUtilList);
-  }
-  
-  public void a()
-  {
-    c(((StoryManager)SuperManager.a(5)).a(((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, 0, a(), true), true);
-    ((FeedVideoManager)SuperManager.a(12)).a(0, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mVideoSeq, a(), ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mVideoNextCookie, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mIsVideoEnd, ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).mVideoPullType, true);
+    return Collections.unmodifiableList(this.h);
   }
   
   public void a(int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_c_of_type_JavaUtilList.remove(paramInt);
-    this.jdField_c_of_type_JavaUtilList.add(paramInt, paramStoryVideoItem);
-    this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
-    paramStoryVideoItem = this.jdField_c_of_type_JavaUtilList.iterator();
+    this.h.remove(paramInt);
+    this.h.add(paramInt, paramStoryVideoItem);
+    this.i.add(paramStoryVideoItem.mVid);
+    paramStoryVideoItem = this.h.iterator();
     paramInt = 0;
     while (paramStoryVideoItem.hasNext()) {
       if (StoryVideoItem.isFakeVid(((StoryVideoItem)paramStoryVideoItem.next()).mVid)) {
@@ -75,40 +61,89 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "feed id %s, fake video count:%d", new Object[] { ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, Integer.valueOf(paramInt) });
+    this.e = bool;
+    SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "feed id %s, fake video count:%d", new Object[] { ((VideoListFeedItem)this.f).feedId, Integer.valueOf(paramInt) });
     AssertUtils.mainThreadCheck();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
-    this.jdField_c_of_type_JavaUtilHashSet.remove(paramStoryVideoItem.mVid);
+    this.h.remove(paramStoryVideoItem);
+    this.i.remove(paramStoryVideoItem.mVid);
     AssertUtils.mainThreadCheck();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_JavaUtilHashSet.contains(paramStoryVideoItem.mVid)) {
-      this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
+    if (this.i.contains(paramStoryVideoItem.mVid)) {
+      this.h.remove(paramStoryVideoItem);
     }
-    this.jdField_c_of_type_JavaUtilList.add(0, paramStoryVideoItem);
-    this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
-    this.jdField_a_of_type_Boolean = true;
+    this.h.add(0, paramStoryVideoItem);
+    this.i.add(paramStoryVideoItem.mVid);
+    this.e = true;
     if (paramBoolean)
     {
-      paramBoolean = a(a().date);
-      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b before %s", Boolean.valueOf(paramBoolean), this.jdField_c_of_type_JavaUtilList);
-      Collections.sort(this.jdField_c_of_type_JavaUtilList, new VideoListHomeFeed.StoryVideoListComp(paramBoolean ^ true));
-      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b after %s", Boolean.valueOf(paramBoolean), this.jdField_c_of_type_JavaUtilList);
+      paramBoolean = a(i().date);
+      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b before %s", Boolean.valueOf(paramBoolean), this.h);
+      Collections.sort(this.h, new VideoListHomeFeed.StoryVideoListComp(paramBoolean ^ true));
+      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b after %s", Boolean.valueOf(paramBoolean), this.h);
     }
   }
   
-  public boolean a()
+  public void b()
+  {
+    c(((StoryManager)SuperManager.a(5)).a(((VideoListFeedItem)this.f).feedId, 0, a(), true), true);
+    ((FeedVideoManager)SuperManager.a(12)).a(0, ((VideoListFeedItem)this.f).feedId, ((VideoListFeedItem)this.f).mVideoSeq, a(), ((VideoListFeedItem)this.f).mVideoNextCookie, ((VideoListFeedItem)this.f).mIsVideoEnd, ((VideoListFeedItem)this.f).mVideoPullType, true);
+  }
+  
+  public void c(List<StoryVideoItem> paramList, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.h.clear();
+      this.i.clear();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
+      if (this.i.contains(localStoryVideoItem.mVid)) {
+        this.h.remove(localStoryVideoItem);
+      } else {
+        this.i.add(localStoryVideoItem.mVid);
+      }
+      this.h.add(localStoryVideoItem);
+      if (StoryVideoItem.isFakeVid(localStoryVideoItem.mVid)) {
+        this.e = true;
+      }
+    }
+    paramBoolean = a(i().date);
+    if ((!(i() instanceof TagFeedItem)) && (i().assignType() != 7)) {
+      Collections.sort(this.h, new VideoListHomeFeed.StoryVideoListComp(paramBoolean ^ true));
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    c(((StoryManager)SuperManager.a(5)).d(((VideoListFeedItem)this.f).feedId), true);
+  }
+  
+  public T i()
+  {
+    return (VideoListFeedItem)super.c();
+  }
+  
+  public List<StoryVideoItem> j()
+  {
+    return Collections.unmodifiableList(this.h);
+  }
+  
+  public boolean k()
   {
     try
     {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.h.iterator();
       while (localIterator.hasNext())
       {
         boolean bool = ((StoryVideoItem)localIterator.next()).isUploadSuc();
@@ -123,19 +158,13 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
       label40:
       break label40;
     }
-    SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "video item size:%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()) });
+    SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "video item size:%d", new Object[] { Integer.valueOf(this.h.size()) });
     return false;
   }
   
-  public void b()
+  public boolean l()
   {
-    super.b();
-    c(((StoryManager)SuperManager.a(5)).a(((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId), true);
-  }
-  
-  public boolean b()
-  {
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext()) {
       if (StoryVideoItem.isFakeVid(((StoryVideoItem)localIterator.next()).mVid)) {
         return true;
@@ -144,45 +173,13 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
     return false;
   }
   
-  public void c(List<StoryVideoItem> paramList, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_c_of_type_JavaUtilList.clear();
-      this.jdField_c_of_type_JavaUtilHashSet.clear();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
-      if (this.jdField_c_of_type_JavaUtilHashSet.contains(localStoryVideoItem.mVid)) {
-        this.jdField_c_of_type_JavaUtilList.remove(localStoryVideoItem);
-      } else {
-        this.jdField_c_of_type_JavaUtilHashSet.add(localStoryVideoItem.mVid);
-      }
-      this.jdField_c_of_type_JavaUtilList.add(localStoryVideoItem);
-      if (StoryVideoItem.isFakeVid(localStoryVideoItem.mVid)) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    paramBoolean = a(a().date);
-    if ((!(a() instanceof TagFeedItem)) && (a().assignType() != 7)) {
-      Collections.sort(this.jdField_c_of_type_JavaUtilList, new VideoListHomeFeed.StoryVideoListComp(paramBoolean ^ true));
-    }
-  }
-  
-  public List<StoryVideoItem> d()
-  {
-    return Collections.unmodifiableList(this.jdField_c_of_type_JavaUtilList);
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("hasFakeVideo=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem);
-    localStringBuilder.append(String.format("video=%d,like=%d,comment=%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()), Integer.valueOf(this.b.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) }));
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(String.format("video=%d,like=%d,comment=%d", new Object[] { Integer.valueOf(this.h.size()), Integer.valueOf(this.c.size()), Integer.valueOf(this.a.size()) }));
     return localStringBuilder.toString();
   }
 }

@@ -11,7 +11,7 @@ final class PBSerialization
   public static PBPackage a(byte[] paramArrayOfByte)
   {
     Object localObject = new PBCommonHead();
-    if (paramArrayOfByte.length < PBCommonHead.d)
+    if (paramArrayOfByte.length < PBCommonHead.f)
     {
       QLog.w(a, 1, "buffer length is short than 16!");
       return null;
@@ -22,12 +22,12 @@ final class PBSerialization
       QLog.w(a, 1, "buffer length is short!");
       return null;
     }
-    int i = ((PBCommonHead)localObject).a() - ((PBCommonHead)localObject).b() - PBCommonHead.d;
+    int i = ((PBCommonHead)localObject).a() - ((PBCommonHead)localObject).b() - PBCommonHead.f;
     int j = ((PBCommonHead)localObject).b();
     localObject = new byte[i];
     byte[] arrayOfByte = new byte[j];
-    System.arraycopy(paramArrayOfByte, PBCommonHead.d, localObject, 0, i);
-    System.arraycopy(paramArrayOfByte, PBCommonHead.d + i, arrayOfByte, 0, j);
+    System.arraycopy(paramArrayOfByte, PBCommonHead.f, localObject, 0, i);
+    System.arraycopy(paramArrayOfByte, PBCommonHead.f + i, arrayOfByte, 0, j);
     paramArrayOfByte = new WeiyunPB.MsgHead();
     try
     {
@@ -46,13 +46,13 @@ final class PBSerialization
   
   public static byte[] a(PBPackage paramPBPackage)
   {
-    byte[] arrayOfByte1 = paramPBPackage.a().toByteArray();
-    paramPBPackage = paramPBPackage.a();
-    int i = PBCommonHead.d + arrayOfByte1.length + paramPBPackage.length;
+    byte[] arrayOfByte1 = paramPBPackage.b().toByteArray();
+    paramPBPackage = paramPBPackage.c();
+    int i = PBCommonHead.f + arrayOfByte1.length + paramPBPackage.length;
     Object localObject = new PBCommonHead();
     ((PBCommonHead)localObject).b(paramPBPackage.length);
     ((PBCommonHead)localObject).a(i);
-    localObject = ((PBCommonHead)localObject).a();
+    localObject = ((PBCommonHead)localObject).c();
     byte[] arrayOfByte2 = new byte[i];
     System.arraycopy(localObject, 0, arrayOfByte2, 0, localObject.length);
     System.arraycopy(arrayOfByte1, 0, arrayOfByte2, localObject.length, arrayOfByte1.length);
@@ -62,7 +62,7 @@ final class PBSerialization
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.channel.PBSerialization
  * JD-Core Version:    0.7.0.1
  */

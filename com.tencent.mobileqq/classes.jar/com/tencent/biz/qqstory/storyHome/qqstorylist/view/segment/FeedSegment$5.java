@@ -11,10 +11,10 @@ class FeedSegment$5
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (paramView.getId() != 2131379766) {
+    if (paramView.getId() != 2131448575) {
       return;
     }
-    this.a.l();
+    this.a.r();
   }
 }
 

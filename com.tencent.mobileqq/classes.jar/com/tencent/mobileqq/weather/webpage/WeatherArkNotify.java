@@ -11,20 +11,15 @@ import org.jetbrains.annotations.Nullable;
 public final class WeatherArkNotify
   implements IAppNotifyCallback
 {
-  public static final WeatherArkNotify.Companion a;
-  private final WeatherWebArkViewModel a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherArkNotify$Companion = new WeatherArkNotify.Companion(null);
-  }
+  public static final WeatherArkNotify.Companion a = new WeatherArkNotify.Companion(null);
+  private final WeatherWebArkViewModel b;
   
   public WeatherArkNotify(@NotNull WeatherWebArkViewModel paramWeatherWebArkViewModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel = paramWeatherWebArkViewModel;
+    this.b = paramWeatherWebArkViewModel;
   }
   
-  public boolean a(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  public boolean notify(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
   {
     if (QLog.isColorLevel())
     {
@@ -52,13 +47,13 @@ public final class WeatherArkNotify
           }
           if (paramString2.equals("notify_web_msg"))
           {
-            this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel.a(paramString3);
+            this.b.a(paramString3);
             return true;
           }
         }
         else if (paramString2.equals("notify_client_msg"))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel.b(paramString3);
+          this.b.b(paramString3);
           return true;
         }
       }
@@ -72,7 +67,7 @@ public final class WeatherArkNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherArkNotify
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ public final class VideoFeedsRecommendPresenter$Companion
   {
     VideoInfo localVideoInfo;
     if (paramVideoPlayParam != null) {
-      localVideoInfo = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+      localVideoInfo = paramVideoPlayParam.c;
     } else {
       localVideoInfo = null;
     }
-    return (localVideoInfo != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizAdReportReadinjoyAdVideoReportData != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.r) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.g());
+    return (localVideoInfo != null) && (paramVideoPlayParam.f != null) && (paramVideoPlayParam.c.aq) && (paramVideoPlayParam.c.n());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendPresenter.Companion
  * JD-Core Version:    0.7.0.1
  */

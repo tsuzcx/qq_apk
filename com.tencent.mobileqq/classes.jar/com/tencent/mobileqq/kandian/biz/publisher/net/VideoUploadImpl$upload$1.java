@@ -14,7 +14,7 @@ public final class VideoUploadImpl$upload$1
   public void a(int paramInt, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "errMsg");
-    IUploadListener localIUploadListener = this.a.a();
+    IUploadListener localIUploadListener = this.a.d();
     if (localIUploadListener != null) {
       localIUploadListener.c(paramString);
     }
@@ -23,7 +23,7 @@ public final class VideoUploadImpl$upload$1
   
   public void a(long paramLong1, long paramLong2)
   {
-    IUploadListener localIUploadListener = this.a.a();
+    IUploadListener localIUploadListener = this.a.d();
     if (localIUploadListener != null) {
       localIUploadListener.a(paramLong1, paramLong2);
     }
@@ -33,7 +33,7 @@ public final class VideoUploadImpl$upload$1
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uploadKey");
     VideoUploadImpl.a(this.a, paramString);
-    IUploadListener localIUploadListener = this.a.a();
+    IUploadListener localIUploadListener = this.a.d();
     if (localIUploadListener != null) {
       localIUploadListener.a(paramString);
     }
@@ -42,7 +42,7 @@ public final class VideoUploadImpl$upload$1
   public void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "result");
-    IUploadListener localIUploadListener = this.a.a();
+    IUploadListener localIUploadListener = this.a.d();
     if (localIUploadListener != null) {
       localIUploadListener.b(paramString);
     }
@@ -51,7 +51,7 @@ public final class VideoUploadImpl$upload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.net.VideoUploadImpl.upload.1
  * JD-Core Version:    0.7.0.1
  */

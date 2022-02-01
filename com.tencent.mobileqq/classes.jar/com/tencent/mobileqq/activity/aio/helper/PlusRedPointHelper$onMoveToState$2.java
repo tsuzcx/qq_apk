@@ -22,16 +22,16 @@ final class PlusRedPointHelper$onMoveToState$2<T>
     paramArrayList = PlusRedPointHelper.a(this.a);
     if (paramArrayList != null)
     {
-      paramArrayList = paramArrayList.a;
+      paramArrayList = paramArrayList.W;
       if (paramArrayList != null) {
-        paramArrayList.a();
+        paramArrayList.getPlusRedTouchAndUpdate();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusRedPointHelper.onMoveToState.2
  * JD-Core Version:    0.7.0.1
  */

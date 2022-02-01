@@ -23,7 +23,7 @@ public final class AdapterUtil$scrollToPosition$scroller$1
   
   public int calculateDtToFit(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    paramInt5 = this.jdField_a_of_type_Int;
+    paramInt5 = this.b;
     if (paramInt5 != -1)
     {
       if (paramInt5 != 1)
@@ -46,7 +46,7 @@ public final class AdapterUtil$scrollToPosition$scroller$1
   
   protected int calculateTimeForScrolling(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return 100;
     }
     return RangesKt.coerceAtMost(200, super.calculateTimeForScrolling(paramInt));
@@ -55,8 +55,8 @@ public final class AdapterUtil$scrollToPosition$scroller$1
   @Nullable
   public PointF computeScrollVectorForPosition(int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+    int i = this.a.findFirstVisibleItemPosition();
+    int j = this.a.findLastVisibleItemPosition();
     float f;
     if (paramInt < i) {
       f = -1.0F;
@@ -65,7 +65,7 @@ public final class AdapterUtil$scrollToPosition$scroller$1
     } else {
       f = 0.0F;
     }
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getOrientation() == 0) {
+    if (this.a.getOrientation() == 0) {
       return new PointF(f, 0.0F);
     }
     return new PointF(0.0F, f);
@@ -73,7 +73,7 @@ public final class AdapterUtil$scrollToPosition$scroller$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AdapterUtil.scrollToPosition.scroller.1
  * JD-Core Version:    0.7.0.1
  */

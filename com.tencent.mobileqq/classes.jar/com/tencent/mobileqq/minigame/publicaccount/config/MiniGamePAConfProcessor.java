@@ -80,10 +80,10 @@ public final class MiniGamePAConfProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("miniGame config onParsed = ");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       QLog.d("MiniGamePAConfProcessor", 2, localStringBuilder.toString());
     }
-    paramArrayOfQConfItem = MiniGamePAConfBean.Companion.convertFromJSONObject(paramArrayOfQConfItem[0].a);
+    paramArrayOfQConfItem = MiniGamePAConfBean.Companion.convertFromJSONObject(paramArrayOfQConfItem[0].b);
     if (paramArrayOfQConfItem == null) {
       QLog.e("MiniGamePAConfProcessor", 1, "miniGame config onParsed config is null!");
     }
@@ -119,7 +119,7 @@ public final class MiniGamePAConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.config.MiniGamePAConfProcessor
  * JD-Core Version:    0.7.0.1
  */

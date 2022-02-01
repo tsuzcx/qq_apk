@@ -15,23 +15,18 @@ import java.util.List;
 public class LikeManager
   implements IManager
 {
-  public static final String a;
+  public static final String a = StoryApi.a("StorySvc.do_like_video");
   public static final String b = StoryApi.a("StoryGroupSvc.do_like_video");
-  private EntityManager a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.do_like_video");
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
+  private EntityManager c;
   
   public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  private QQStoryContext c()
+  {
+    return QQStoryContext.a();
   }
   
   public List<LikeEntry> a(String paramString, boolean paramBoolean)
@@ -42,7 +37,7 @@ public class LikeManager
     } else {
       i = 3;
     }
-    List localList = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, LikeEntry.class, LikeEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
+    List localList = a(this.c, LikeEntry.class, LikeEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
     paramString = localList;
     if (localList == null) {
       paramString = new ArrayList();
@@ -52,12 +47,12 @@ public class LikeManager
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = QQStoryContext.a().a().createEntityManager();
+    this.c = QQStoryContext.a().d().createEntityManager();
   }
   
   public void a(@NonNull LikeEntry paramLikeEntry)
   {
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = c().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     try
     {
@@ -86,7 +81,7 @@ public class LikeManager
     } else {
       i = 3;
     }
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = c().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     if (paramBoolean2) {}
     try
@@ -126,18 +121,18 @@ public class LikeManager
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.c.close();
   }
   
   public void b(@NonNull LikeEntry paramLikeEntry)
   {
     paramLikeEntry.setStatus(1001);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramLikeEntry, "unionId=? and feedId= ? and type in (?,?)", new String[] { paramLikeEntry.unionId, paramLikeEntry.feedId, String.valueOf(4), String.valueOf(3) });
+    this.c.remove(paramLikeEntry, "unionId=? and feedId= ? and type in (?,?)", new String[] { paramLikeEntry.unionId, paramLikeEntry.feedId, String.valueOf(4), String.valueOf(3) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.LikeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,12 +13,12 @@ import java.util.Map;
 class NativeMonitorConfigHelper$1$1
   implements Runnable
 {
-  NativeMonitorConfigHelper$1$1(NativeMonitorConfigHelper.1 param1, String paramString1, String paramString2) {}
+  NativeMonitorConfigHelper$1$1(NativeMonitorConfigHelper.1 param1, String paramString1, String paramString2, Throwable paramThrowable) {}
   
   public void run()
   {
     File localFile = new File(this.a);
-    String str = NativeMonitorConfigHelper.a(localFile);
+    String str = NativeMonitorConfigHelper.access$000(localFile);
     long l = localFile.length();
     Object localObject4 = BaseApplicationImpl.getApplication();
     Object localObject2 = ((BaseApplicationImpl)localObject4).getQQProcessName();
@@ -45,22 +46,19 @@ class NativeMonitorConfigHelper$1$1
     } else if (this.a.startsWith((String)localObject3)) {
       localObject2 = this.a.substring(((String)localObject3).length());
     }
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("soPath: ");
-      ((StringBuilder)localObject3).append((String)localObject2);
-      ((StringBuilder)localObject3).append(", md5: ");
-      ((StringBuilder)localObject3).append(str);
-      ((StringBuilder)localObject3).append(", len: ");
-      ((StringBuilder)localObject3).append(l);
-      ((StringBuilder)localObject3).append(", proc: ");
-      ((StringBuilder)localObject3).append((String)localObject1);
-      ((StringBuilder)localObject3).append(", backtrace:\n");
-      ((StringBuilder)localObject3).append(this.b);
-      QLog.i("NativeMonitorConfig", 2, ((StringBuilder)localObject3).toString());
-    }
-    if (PrivacyPolicyHelper.a())
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("soPath: ");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append(", md5: ");
+    ((StringBuilder)localObject3).append(str);
+    ((StringBuilder)localObject3).append(", len: ");
+    ((StringBuilder)localObject3).append(l);
+    ((StringBuilder)localObject3).append(", proc: ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(", backtrace:\n");
+    ((StringBuilder)localObject3).append(this.b);
+    QLog.d("NativeMonitorConfig", 1, ((StringBuilder)localObject3).toString());
+    if (PrivacyPolicyHelper.d())
     {
       localObject3 = new HashMap();
       ((HashMap)localObject3).put("so", localFile.getName());
@@ -69,13 +67,18 @@ class NativeMonitorConfigHelper$1$1
       ((HashMap)localObject3).put("len", String.valueOf(l));
       ((HashMap)localObject3).put("proc", localObject1);
       ((HashMap)localObject3).put("backtrace", this.b);
+      ((HashMap)localObject3).put("is64Bit", "false");
       UserAction.onUserAction("nativeMonitorOnSoLoad", true, -1L, -1L, (Map)localObject3, false);
+      localObject1 = this.c;
+      if (localObject1 != null) {
+        CaughtExceptionReport.a((Throwable)localObject1);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

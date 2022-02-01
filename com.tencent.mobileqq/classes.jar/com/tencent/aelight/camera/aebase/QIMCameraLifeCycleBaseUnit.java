@@ -20,47 +20,8 @@ import com.tencent.qphone.base.util.QLog;
 public class QIMCameraLifeCycleBaseUnit
   implements LifecycleOwner, ViewModelStoreOwner, IQIMCameraLifeCallback
 {
-  private LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-  private ViewModelStore jdField_a_of_type_AndroidxLifecycleViewModelStore;
-  
-  @CallSuper
-  public void I()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      label11:
-      break label11;
-    }
-    QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-  }
-  
-  @CallSuper
-  public void J()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      label11:
-      break label11;
-    }
-    QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-  }
-  
-  public void K() {}
-  
-  public View a()
-  {
-    return null;
-  }
+  private LifecycleRegistry a = new LifecycleRegistry(this);
+  private ViewModelStore b;
   
   public void a(int paramInt1, int paramInt2) {}
   
@@ -71,10 +32,10 @@ public class QIMCameraLifeCycleBaseUnit
   @CallSuper
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
+    this.a = new LifecycleRegistry(this);
     try
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
       return;
     }
     catch (Throwable paramBundle)
@@ -95,16 +56,78 @@ public class QIMCameraLifeCycleBaseUnit
     return false;
   }
   
+  @CallSuper
+  public void ai()
+  {
+    try
+    {
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_START);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      label11:
+      break label11;
+    }
+    QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+  }
+  
+  @CallSuper
+  public void aj()
+  {
+    try
+    {
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      label11:
+      break label11;
+    }
+    QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+  }
+  
+  public boolean ak()
+  {
+    return false;
+  }
+  
+  public void al() {}
+  
   public void b(Bundle paramBundle) {}
   
-  public void d(boolean paramBoolean) {}
+  public void e(boolean paramBoolean) {}
+  
+  public Lifecycle getLifecycle()
+  {
+    return this.a;
+  }
+  
+  @NonNull
+  public ViewModelStore getViewModelStore()
+  {
+    if (BaseApplicationImpl.getApplication() != null)
+    {
+      if (this.b == null) {
+        this.b = new ViewModelStore();
+      }
+      return this.b;
+    }
+    throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+  }
+  
+  public View j()
+  {
+    return null;
+  }
   
   @CallSuper
-  public void e()
+  public void k()
   {
     try
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
       return;
     }
     catch (Throwable localThrowable)
@@ -116,11 +139,11 @@ public class QIMCameraLifeCycleBaseUnit
   }
   
   @CallSuper
-  public void f()
+  public void l()
   {
     try
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
       return;
     }
     catch (Throwable localThrowable)
@@ -132,11 +155,11 @@ public class QIMCameraLifeCycleBaseUnit
   }
   
   @CallSuper
-  public void g()
+  public void m()
   {
     try
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
     }
     catch (Throwable localThrowable)
     {
@@ -145,38 +168,15 @@ public class QIMCameraLifeCycleBaseUnit
       break label13;
     }
     QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    localViewModelStore = this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
+    localViewModelStore = this.b;
     if (localViewModelStore != null) {
       localViewModelStore.clear();
     }
   }
-  
-  public Lifecycle getLifecycle()
-  {
-    return this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
-  }
-  
-  @NonNull
-  public ViewModelStore getViewModelStore()
-  {
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      if (this.jdField_a_of_type_AndroidxLifecycleViewModelStore == null) {
-        this.jdField_a_of_type_AndroidxLifecycleViewModelStore = new ViewModelStore();
-      }
-      return this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
-    }
-    throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
-  }
-  
-  public boolean i()
-  {
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMCameraLifeCycleBaseUnit
  * JD-Core Version:    0.7.0.1
  */

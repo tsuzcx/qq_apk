@@ -14,18 +14,18 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver$AutoCheckVideoRunnable
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenMultiVideoControlUI", 2, "AutoCheckVideoRunnable");
     }
-    if (this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) {
-      this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().ab = true;
+    if (this.a.b.z != null) {
+      this.a.b.z.k().bv = true;
     }
-    this.a.a.n();
-    if ((this.a.a.c == 1) && (this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.a.a());
+    this.a.b.o();
+    if ((this.a.b.c == 1) && (this.a.b.y != null)) {
+      this.a.b.y.a(this.a.b.r());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.MyGAudioUIObserver.AutoCheckVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

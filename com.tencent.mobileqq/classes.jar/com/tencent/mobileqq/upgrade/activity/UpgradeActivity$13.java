@@ -10,13 +10,13 @@ class UpgradeActivity$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UpgradeActivity.b(this.a);
+    UpgradeActivity.c(this.a);
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeActivity.13
  * JD-Core Version:    0.7.0.1
  */

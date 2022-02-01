@@ -129,54 +129,13 @@ public class NearbyRecommenderUtils
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime");
-    }
-    if (a(paramQQAppInterface))
-    {
-      int i = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getInt("key_expiretime", 172800);
-      long l3 = System.currentTimeMillis();
-      long l2 = 0L;
-      Object localObject1 = paramQQAppInterface.getApplication();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramQQAppInterface.getCurrentAccountUin());
-      ((StringBuilder)localObject2).append("v5.8.nbr");
-      localObject1 = ((MobileQQ)localObject1).getFileStreamPath(((StringBuilder)localObject2).toString());
-      long l1 = l2;
-      if (localObject1 != null)
-      {
-        l1 = l2;
-        if (((File)localObject1).exists()) {
-          l1 = ((File)localObject1).lastModified();
-        }
-      }
-      if (i <= Math.abs(l3 - l1) / 1000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime-->expire true");
-        }
-        paramQQAppInterface = paramQQAppInterface.getMessageFacade();
-        localObject1 = paramQQAppInterface.a(AppConstants.LBS_HELLO_UIN, 1001).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (MessageRecord)((Iterator)localObject1).next();
-          if (((MessageRecord)localObject2).msgtype == -4011) {
-            paramQQAppInterface.a((MessageRecord)localObject2, true);
-          }
-        }
-      }
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
     if (QLog.isColorLevel()) {
       QLog.d("NearbyRecommenderUtils", 2, "addNearbyRecommenderMsg");
     }
     MessageForNearbyRecommenderTips localMessageForNearbyRecommenderTips = (MessageForNearbyRecommenderTips)MessageRecordFactory.a(-4011);
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     localMessageForNearbyRecommenderTips.init(paramQQAppInterface.getCurrentAccountUin(), AppConstants.LBS_NEARBY_RECOMMEND_UIN, AppConstants.LBS_NEARBY_RECOMMEND_UIN, "", l, -4011, 1001, l);
     localMessageForNearbyRecommenderTips.isread = true;
     MsgProxyUtils.a(localMessageForNearbyRecommenderTips, false);
@@ -200,7 +159,7 @@ public class NearbyRecommenderUtils
       ((StringBuilder)localObject).append(MessageRecordUtil.a(paramString3));
       QLog.d("NearbyRecommenderUtils", 2, ((StringBuilder)localObject).toString());
     }
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     Object localObject = (MessageForGrayTips)MessageRecordFactory.a(-5007);
     ((MessageForGrayTips)localObject).init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, l, -5007, paramInt, l);
     ((MessageForGrayTips)localObject).isread = paramBoolean2;
@@ -214,7 +173,7 @@ public class NearbyRecommenderUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(AppConstants.LBS_HELLO_UIN, 1001);
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade().h(AppConstants.LBS_HELLO_UIN, 1001);
     if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
     {
       paramQQAppInterface = paramQQAppInterface.iterator();
@@ -315,23 +274,65 @@ public class NearbyRecommenderUtils
     return bool3;
   }
   
-  public static String[] a(QQAppInterface paramQQAppInterface)
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append("key_nearbyrecommender_reasontype");
-    int i = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append("key_nearbyrecommender_uins");
-    paramQQAppInterface = localSharedPreferences.getString(localStringBuilder.toString(), "");
-    return new String[] { Integer.toString(i), paramQQAppInterface };
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime");
+    }
+    if (a(paramQQAppInterface))
+    {
+      int i = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getInt("key_expiretime", 172800);
+      long l3 = System.currentTimeMillis();
+      long l2 = 0L;
+      Object localObject1 = paramQQAppInterface.getApplication();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append("v5.8.nbr");
+      localObject1 = ((MobileQQ)localObject1).getFileStreamPath(((StringBuilder)localObject2).toString());
+      long l1 = l2;
+      if (localObject1 != null)
+      {
+        l1 = l2;
+        if (((File)localObject1).exists()) {
+          l1 = ((File)localObject1).lastModified();
+        }
+      }
+      if (i <= Math.abs(l3 - l1) / 1000L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime-->expire true");
+        }
+        paramQQAppInterface = paramQQAppInterface.getMessageFacade();
+        localObject1 = paramQQAppInterface.h(AppConstants.LBS_HELLO_UIN, 1001).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (MessageRecord)((Iterator)localObject1).next();
+          if (((MessageRecord)localObject2).msgtype == -4011) {
+            paramQQAppInterface.a((MessageRecord)localObject2, true);
+          }
+        }
+      }
+    }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    int i = paramQQAppInterface.getMessageFacade().getLastMessage(AppConstants.LBS_HELLO_UIN, 1001).msgtype;
+    boolean bool = true;
+    if ((i != -4011) && (!a(paramQQAppInterface))) {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkShowNearbyRecommender,result=");
+      paramQQAppInterface.append(bool);
+      QLog.d("NearbyRecommenderUtils", 2, paramQQAppInterface.toString());
+    }
+    return bool;
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.d("NearbyRecommenderUtils", 2, "setNearbyRecommenderMsgRead");
@@ -354,7 +355,7 @@ public class NearbyRecommenderUtils
         return;
       }
     }
-    Object localObject1 = paramQQAppInterface.a(AppConstants.LBS_HELLO_UIN, 1001);
+    Object localObject1 = paramQQAppInterface.h(AppConstants.LBS_HELLO_UIN, 1001);
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -375,26 +376,25 @@ public class NearbyRecommenderUtils
     }
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface)
+  public static String[] e(QQAppInterface paramQQAppInterface)
   {
-    int i = paramQQAppInterface.getMessageFacade().getLastMessage(AppConstants.LBS_HELLO_UIN, 1001).msgtype;
-    boolean bool = true;
-    if ((i != -4011) && (!a(paramQQAppInterface))) {
-      bool = false;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("checkShowNearbyRecommender,result=");
-      paramQQAppInterface.append(bool);
-      QLog.d("NearbyRecommenderUtils", 2, paramQQAppInterface.toString());
-    }
-    return bool;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append("key_nearbyrecommender_reasontype");
+    int i = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append("key_nearbyrecommender_uins");
+    paramQQAppInterface = localSharedPreferences.getString(localStringBuilder.toString(), "");
+    return new String[] { Integer.toString(i), paramQQAppInterface };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils
  * JD-Core Version:    0.7.0.1
  */

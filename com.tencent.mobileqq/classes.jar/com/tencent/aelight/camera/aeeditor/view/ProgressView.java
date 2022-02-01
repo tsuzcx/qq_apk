@@ -10,8 +10,8 @@ import android.widget.TextView;
 public class ProgressView
   extends FrameLayout
 {
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ProgressBar a;
+  private TextView b;
   
   public ProgressView(Context paramContext)
   {
@@ -27,25 +27,25 @@ public class ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559561, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372645));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372646));
+    LayoutInflater.from(paramContext).inflate(2131625585, this);
+    this.a = ((ProgressBar)findViewById(2131440190));
+    this.b = ((TextView)findViewById(2131440191));
   }
   
   public void setProgressText(CharSequence paramCharSequence)
   {
     if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.b.setVisibility(0);
+      this.b.setText(paramCharSequence);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.ProgressView
  * JD-Core Version:    0.7.0.1
  */

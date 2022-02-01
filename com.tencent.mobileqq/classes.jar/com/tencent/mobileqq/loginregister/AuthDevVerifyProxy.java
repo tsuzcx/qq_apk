@@ -12,27 +12,27 @@ public class AuthDevVerifyProxy
   implements IAuthDevVerifyApi
 {
   @ConfigInject(configPath="Business/qqlogin-api/src/main/resources/Inject_login_register_config.yml", version=1)
-  private static ArrayList<Class<? extends IAuthDevVerifyApi>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final List<IAuthDevVerifyApi> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static ArrayList<Class<? extends IAuthDevVerifyApi>> b = new ArrayList();
+  protected final List<IAuthDevVerifyApi> a = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(DefaultSmsImpl.class);
-    jdField_a_of_type_JavaUtilArrayList.add(DevLockSmsImpl.class);
-    jdField_a_of_type_JavaUtilArrayList.add(FaceSmsVerifyImpl.class);
+    b.add(DevLockSmsImpl.class);
+    b.add(FaceSmsVerifyImpl.class);
+    b.add(DefaultSmsImpl.class);
   }
   
   public AuthDevVerifyProxy()
   {
-    QLog.d("AuthDevVerifyProxy", 1, new Object[] { "sAuthApiList size : ", Integer.valueOf(jdField_a_of_type_JavaUtilArrayList.size()) });
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    QLog.d("AuthDevVerifyProxy", 1, new Object[] { "sAuthApiList size : ", Integer.valueOf(b.size()) });
+    Iterator localIterator = b.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Class)localIterator.next();
       try
       {
         localObject = (IAuthDevVerifyApi)((Class)localObject).newInstance();
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        this.a.add(localObject);
       }
       catch (Exception localException)
       {
@@ -43,7 +43,7 @@ public class AuthDevVerifyProxy
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((IAuthDevVerifyApi)localIterator.next()).a();
     }
@@ -51,7 +51,7 @@ public class AuthDevVerifyProxy
   
   public void a(QBaseActivity paramQBaseActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((IAuthDevVerifyApi)localIterator.next()).a(paramQBaseActivity, paramInt1, paramInt2, paramIntent);
     }
@@ -59,26 +59,15 @@ public class AuthDevVerifyProxy
   
   public void a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((IAuthDevVerifyApi)localIterator.next()).a(paramQBaseActivity, paramICommonSmsView);
     }
   }
   
-  public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((IAuthDevVerifyApi)localIterator.next()).a(paramQBaseActivity, paramICommonSmsView)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       if (((IAuthDevVerifyApi)localIterator.next()).a(paramQBaseActivity, paramICommonSmsView, paramString)) {
         return true;
@@ -89,7 +78,7 @@ public class AuthDevVerifyProxy
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((IAuthDevVerifyApi)localIterator.next()).b();
     }
@@ -97,9 +86,20 @@ public class AuthDevVerifyProxy
   
   public boolean b(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       if (((IAuthDevVerifyApi)localIterator.next()).b(paramQBaseActivity, paramICommonSmsView)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean c(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      if (((IAuthDevVerifyApi)localIterator.next()).c(paramQBaseActivity, paramICommonSmsView)) {
         return true;
       }
     }
@@ -108,7 +108,7 @@ public class AuthDevVerifyProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.AuthDevVerifyProxy
  * JD-Core Version:    0.7.0.1
  */

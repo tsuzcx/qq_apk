@@ -11,17 +11,17 @@ public class VideoInfo$EntranceDownloadInfo
   implements Parcelable, IEntranceButtonDataSource
 {
   public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new VideoInfo.EntranceDownloadInfo.1();
-  public UrlJumpInfo a;
   public String a;
-  public boolean a;
   public String b;
-  public String c;
+  public boolean c;
+  public String d;
+  public UrlJumpInfo e;
   
   public VideoInfo$EntranceDownloadInfo() {}
   
   protected VideoInfo$EntranceDownloadInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     boolean bool;
     if (paramParcel.readByte() != 0) {
@@ -29,44 +29,34 @@ public class VideoInfo$EntranceDownloadInfo
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.c = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.c = bool;
+    this.d = paramParcel.readString();
+    this.e = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString) ^ true;
-  }
-  
-  public String c()
-  {
-    return this.b;
+    return this.a;
   }
   
   public boolean c()
   {
-    return TextUtils.isEmpty(this.b) ^ true;
+    return TextUtils.isEmpty(this.a) ^ true;
+  }
+  
+  public String d()
+  {
+    return this.a;
   }
   
   public int describeContents()
@@ -74,23 +64,33 @@ public class VideoInfo$EntranceDownloadInfo
     return 0;
   }
   
+  public boolean e()
+  {
+    return TextUtils.isEmpty(this.b) ^ true;
+  }
+  
+  public String f()
+  {
+    return this.b;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("EntranceDownloadInfo{iconUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", smallIconUrl='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isUseGif='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", commonData='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
+    localStringBuilder.append(", commonData='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
     localStringBuilder.append(", jumpInfo='");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -98,16 +98,16 @@ public class VideoInfo$EntranceDownloadInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeString(this.c);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo, paramInt);
+    paramParcel.writeByte((byte)this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeParcelable(this.e, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.EntranceDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

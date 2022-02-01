@@ -13,15 +13,15 @@ class GameResultFragment$3$1
   
   public void run()
   {
-    if (TextUtils.isEmpty(GameResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$3.a)))
+    if (TextUtils.isEmpty(GameResultFragment.a(this.b.a)))
     {
-      GameRecordInfo localGameRecordInfo = GameEngine.a().a().a();
-      GameResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$3.a, localGameRecordInfo.photoFilePath);
+      GameRecordInfo localGameRecordInfo = GameEngine.a().s().v();
+      GameResultFragment.a(this.b.a, localGameRecordInfo.photoFilePath);
     }
-    if (GameResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$3.a).a(this.jdField_a_of_type_JavaLangString))
+    if (GameResultFragment.b(this.b.a).a(this.a))
     {
-      GameResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$3.a).setVisibility(0);
-      GameResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$3.a).a("");
+      GameResultFragment.b(this.b.a).setVisibility(0);
+      GameResultFragment.b(this.b.a).b("");
     }
   }
 }

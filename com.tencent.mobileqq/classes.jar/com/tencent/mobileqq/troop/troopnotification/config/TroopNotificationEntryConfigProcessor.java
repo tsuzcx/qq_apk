@@ -26,7 +26,7 @@ public class TroopNotificationEntryConfigProcessor
   public TroopNotificationEntryConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return TroopNotificationEntryConfig.a(paramArrayOfQConfItem[0].a);
+      return TroopNotificationEntryConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -87,7 +87,7 @@ public class TroopNotificationEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.config.TroopNotificationEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

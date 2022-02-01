@@ -13,21 +13,21 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder
   extends RecyclerView.ViewHolder
 {
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private FormSwitchItem a;
   @NotNull
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private TextView b;
   
   public ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder(@NotNull View paramView)
   {
     super(paramView);
-    View localView = paramView.findViewById(2131366375);
+    View localView = paramView.findViewById(2131432685);
     if (localView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
-      paramView = paramView.findViewById(2131366377);
+      this.a = ((FormSwitchItem)localView);
+      paramView = paramView.findViewById(2131432687);
       if (paramView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+        this.b = ((TextView)paramView);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
@@ -36,20 +36,20 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder
   }
   
   @NotNull
-  public final TextView a()
+  public final FormSwitchItem a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.a;
   }
   
   @NotNull
-  public final FormSwitchItem a()
+  public final TextView b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter.ProfileOtherWithSecondHolder
  * JD-Core Version:    0.7.0.1
  */

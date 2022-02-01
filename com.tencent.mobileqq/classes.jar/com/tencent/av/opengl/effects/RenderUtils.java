@@ -9,8 +9,8 @@ public class RenderUtils
 {
   public static void a(boolean paramBoolean)
   {
-    VideoController.a().g(paramBoolean);
-    if (VideoController.a().i() == VideoController.l) {
+    VideoController.f().n(paramBoolean);
+    if (VideoController.f().av() == VideoController.au) {
       QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
     }
   }

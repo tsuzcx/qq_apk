@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/fol" />
-    <item android:drawable="@drawable/fo_" />
-</selector>
+    <item>
+        <shape>
+            <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" />
+            <solid android:color="#ffe3eff0" />
+        </shape>
+    </item>
+    <item android:bottom="1.0dip">
+        <shape>
+            <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" />
+            <solid android:color="#ffffffff" />
+        </shape>
+    </item>
+</layer-list>

@@ -14,13 +14,13 @@ class BindVerifyActivity$5
     if (QLog.isColorLevel()) {
       QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
     }
-    BindVerifyActivity.a(this.a);
-    this.a.showProgressDialog(2131718766, 1000L, true);
+    BindVerifyActivity.f(this.a);
+    this.a.showProgressDialog(2131916272, 1000L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.5
  * JD-Core Version:    0.7.0.1
  */

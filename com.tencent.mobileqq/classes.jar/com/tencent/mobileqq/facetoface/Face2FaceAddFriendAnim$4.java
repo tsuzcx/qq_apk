@@ -10,8 +10,8 @@ class Face2FaceAddFriendAnim$4
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
-    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+    ((Face2FaceAddFriendActivity)this.a.C).j();
+    this.a.y = null;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class Face2FaceAddFriendAnim$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim.4
  * JD-Core Version:    0.7.0.1
  */

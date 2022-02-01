@@ -16,14 +16,14 @@ class SdkAuthDialog$4
   {
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      paramKeyEvent = this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener;
+      paramKeyEvent = this.a;
       if (paramKeyEvent == null)
       {
         QLog.e("SdkAuthDialog", 1, "keyListener is null");
         return true;
       }
       paramKeyEvent.onCancel(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonUiSdkAuthDialog.a();
+      this.b.a();
       ReportController.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
     }
     return true;
@@ -31,7 +31,7 @@ class SdkAuthDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.ui.SdkAuthDialog.4
  * JD-Core Version:    0.7.0.1
  */

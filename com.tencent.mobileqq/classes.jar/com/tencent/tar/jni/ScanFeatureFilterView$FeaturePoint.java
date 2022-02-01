@@ -2,37 +2,37 @@ package com.tencent.tar.jni;
 
 public final class ScanFeatureFilterView$FeaturePoint
 {
-  public float a;
   public int a;
-  public long a;
-  public boolean a;
-  public float b;
   public int b;
-  public long b;
-  public boolean b;
+  public float c;
+  public float d;
+  public long e;
+  public long f;
+  public boolean g;
+  public boolean h;
   
   public float a(int paramInt, long paramLong)
   {
-    long l = this.jdField_b_of_type_Long;
+    long l = this.f;
     if (paramLong < l) {
       return 0.0F;
     }
     if (paramLong - l > paramInt) {
-      this.jdField_a_of_type_Boolean = true;
+      this.g = true;
     }
-    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+    return (float)(paramLong - this.f) / paramInt % 1.0F;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.e = ScanFeatureFilterView.b();
+    this.g = false;
+    this.h = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tar.jni.ScanFeatureFilterView.FeaturePoint
  * JD-Core Version:    0.7.0.1
  */

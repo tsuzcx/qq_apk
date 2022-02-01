@@ -49,19 +49,19 @@ final class AdAppDownloadUtil$getAppDownloadState$1
       return;
     }
     localDownloadStateInfo.a(AdAppDownloadUtil.a.a(((DownloadInfo)localObject).a()));
-    localDownloadStateInfo.b(((DownloadInfo)localObject).f);
+    localDownloadStateInfo.b(((DownloadInfo)localObject).t);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("downloadData state = ");
     localStringBuilder.append(localDownloadStateInfo.a());
     localStringBuilder.append(" progress = ");
-    localStringBuilder.append(((DownloadInfo)localObject).f);
+    localStringBuilder.append(((DownloadInfo)localObject).t);
     ReadInJoyAdLog.a("AdAppDownloadUtil", localStringBuilder.toString());
     ThreadManagerV2.getUIHandlerV2().post((Runnable)new AdAppDownloadUtil.getAppDownloadState.1.5(this, localDownloadStateInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdAppDownloadUtil.getAppDownloadState.1
  * JD-Core Version:    0.7.0.1
  */

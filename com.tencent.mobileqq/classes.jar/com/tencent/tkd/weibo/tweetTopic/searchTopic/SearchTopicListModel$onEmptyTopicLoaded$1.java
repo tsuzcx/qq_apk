@@ -29,7 +29,12 @@ final class SearchTopicListModel$onEmptyTopicLoaded$1
     if (paramBoolean1)
     {
       paramArrayList = (Collection)paramArrayList;
-      if ((paramArrayList.isEmpty() ^ true)) {
+      if ((paramArrayList.isEmpty() ^ true))
+      {
+        paramArrayOfByte = new TweetTopicItem(null, null, null, 0L, null, 0L, null, 127, null);
+        paramArrayOfByte.a("description");
+        paramArrayOfByte.c("没有更多搜索结果了，看看推荐的话题吧");
+        this.$result.add(paramArrayOfByte);
         this.$result.addAll((Collection)new ArrayList(paramArrayList));
       }
     }
@@ -38,7 +43,7 @@ final class SearchTopicListModel$onEmptyTopicLoaded$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.searchTopic.SearchTopicListModel.onEmptyTopicLoaded.1
  * JD-Core Version:    0.7.0.1
  */

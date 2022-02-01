@@ -14,13 +14,13 @@ class AEBottomListAdapter$4
   
   public void onDownloadFinish(AEMaterialMetaData paramAEMaterialMetaData, boolean paramBoolean, int paramInt)
   {
-    if ((paramBoolean) && (AEBottomListAdapter.a(this.a) != null))
+    if ((paramBoolean) && (AEBottomListAdapter.g(this.a) != null))
     {
-      if ((paramAEMaterialMetaData.k.equals(AEBottomListAdapter.a(this.a).a())) && (paramAEMaterialMetaData.k.equals(AEBottomListAdapter.a(this.a).k)))
+      if ((paramAEMaterialMetaData.m.equals(AEBottomListAdapter.c(this.a).b())) && (paramAEMaterialMetaData.m.equals(AEBottomListAdapter.g(this.a).m)))
       {
-        AEBottomListAdapter.a(this.a);
+        AEBottomListAdapter.i(this.a);
         AEBottomListAdapter localAEBottomListAdapter = this.a;
-        AEBottomListAdapter.a(localAEBottomListAdapter, AEBottomListAdapter.a(localAEBottomListAdapter));
+        AEBottomListAdapter.a(localAEBottomListAdapter, AEBottomListAdapter.g(localAEBottomListAdapter));
       }
       ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.2(this, paramAEMaterialMetaData));
     }
@@ -28,7 +28,7 @@ class AEBottomListAdapter$4
     {
       ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.1(this, paramAEMaterialMetaData));
     }
-    VSReporter.a("record_decoration_download", VSReporter.a(paramBoolean ^ true, System.currentTimeMillis() - paramAEMaterialMetaData.a, paramAEMaterialMetaData.n, paramAEMaterialMetaData.b, paramAEMaterialMetaData.k));
+    VSReporter.a("record_decoration_download", VSReporter.a(paramBoolean ^ true, System.currentTimeMillis() - paramAEMaterialMetaData.D, paramAEMaterialMetaData.r, paramAEMaterialMetaData.E, paramAEMaterialMetaData.m));
   }
   
   public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
@@ -38,7 +38,7 @@ class AEBottomListAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListAdapter.4
  * JD-Core Version:    0.7.0.1
  */

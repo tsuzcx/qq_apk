@@ -27,20 +27,20 @@ import org.json.JSONException;
 public class GuidePopuppWindow
   extends PopupWindow
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private GuidePopuppWindow.OnGuideDismissListener jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow$OnGuideDismissListener;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private Activity a;
+  private Container b;
+  private AbsBaseArticleInfo c;
+  private VafContext d;
+  private GuidePopuppWindow.OnGuideDismissListener e;
+  private int f = 0;
+  private Set<String> g = new HashSet();
   
   public GuidePopuppWindow(Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     super(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    a(a());
+    this.a = paramActivity;
+    this.c = paramAbsBaseArticleInfo;
+    b(b());
     setTouchable(true);
     setFocusable(true);
     setOutsideTouchable(false);
@@ -66,7 +66,7 @@ public class GuidePopuppWindow
     if (paramVafContext != null) {
       try
       {
-        paramVafContext = paramVafContext.getTemplateBean(CommentGuideConfigHandler.a());
+        paramVafContext = paramVafContext.getTemplateBean(CommentGuideConfigHandler.e());
         return paramVafContext;
       }
       catch (JSONException paramVafContext)
@@ -77,35 +77,23 @@ public class GuidePopuppWindow
     return null;
   }
   
-  private void a(VafContext paramVafContext)
+  private void b(VafContext paramVafContext)
   {
     TemplateBean localTemplateBean = a(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
+    this.b = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
     if (localTemplateBean != null) {
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
+      ProteusSupportUtil.a(this.b.getVirtualView(), localTemplateBean.getViewBean());
     }
-    setContentView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    paramVafContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    setContentView(this.b);
+    paramVafContext = this.b.getVirtualView().getComLayoutParams();
     setHeight(paramVafContext.mLayoutHeight);
     setWidth(paramVafContext.mLayoutWidth);
-  }
-  
-  public VafContext a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new ReadInjoyContext();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "comment_feeds");
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
   }
   
   public void a()
   {
     setOnDismissListener(new GuidePopuppWindow.1(this));
-    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+    Container localContainer = this.b;
     if (localContainer != null) {
       a(localContainer);
     }
@@ -113,14 +101,14 @@ public class GuidePopuppWindow
   
   protected void a(float paramFloat)
   {
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.a.getWindow().getAttributes();
     localLayoutParams.alpha = paramFloat;
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+    this.a.getWindow().setAttributes(localLayoutParams);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(View paramView)
@@ -130,18 +118,18 @@ public class GuidePopuppWindow
       dismiss();
       return;
     }
-    this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID);
+    this.g.add(this.c.innerUniqueID);
     a(0);
     a(1.0F);
-    setAnimationStyle(2131755043);
+    setAnimationStyle(2131951659);
     showAtLocation(paramView, 17, 0, 0);
     paramView = new RIJTransMergeKanDianReport.ReportR5Builder();
     RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = paramView.addOS();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(CommentGuideConfigHandler.a());
+    localStringBuilder.append(CommentGuideConfigHandler.d());
     localReportR5Builder.addStringNotThrow("wording", localStringBuilder.toString());
-    ReadInJoyCommentUtils.a("0X8009FE7", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramView);
+    ReadInJoyCommentUtils.a("0X8009FE7", this.c, paramView);
   }
   
   public void a(Container paramContainer)
@@ -154,22 +142,34 @@ public class GuidePopuppWindow
   
   public void a(GuidePopuppWindow.OnGuideDismissListener paramOnGuideDismissListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow$OnGuideDismissListener = paramOnGuideDismissListener;
+    this.e = paramOnGuideDismissListener;
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.c = paramAbsBaseArticleInfo;
   }
   
   public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+    return this.g.contains(paramString);
+  }
+  
+  public VafContext b()
+  {
+    if (this.d == null)
+    {
+      this.d = new ReadInjoyContext();
+      this.d.setCurActivity(this.a);
+      this.d.setContext(this.a);
+      ProteusSupportUtil.a(this.d, "comment_feeds");
+    }
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.guide.GuidePopuppWindow
  * JD-Core Version:    0.7.0.1
  */

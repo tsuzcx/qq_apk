@@ -12,17 +12,17 @@ class QQToast$2
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams.a != null)
+    if (this.val$params.onClickListener != null)
     {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams.a.onClick(paramView);
+      this.val$toast.cancel();
+      this.val$params.onClickListener.onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.2
  * JD-Core Version:    0.7.0.1
  */

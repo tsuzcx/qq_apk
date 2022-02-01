@@ -26,44 +26,44 @@ import java.util.List;
 public class GetHotSortVideoHandler$GetHotSortVideoResponse
   extends LegoResponseBase
 {
-  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
-  boolean jdField_a_of_type_Boolean = false;
+  qqstory_group.RspGetGroupHotRankVideo a;
+  boolean b = false;
   
   public GetHotSortVideoHandler$GetHotSortVideoResponse(GetHotSortVideoHandler paramGetHotSortVideoHandler, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
   {
     super(paramRspGetGroupHotRankVideo.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramRspGetGroupHotRankVideo;
+    this.b = paramBoolean;
   }
   
   public GetHotSortVideoHandler$GetHotSortVideoResponse(GetHotSortVideoHandler paramGetHotSortVideoHandler, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler;
+    Object localObject = this.c;
     boolean bool;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {
+    if (this.a.is_end.get() == 1) {
       bool = true;
     } else {
       bool = false;
     }
-    ((GetHotSortVideoHandler)localObject).jdField_a_of_type_Boolean = bool;
-    GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
-    GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
+    ((GetHotSortVideoHandler)localObject).a = bool;
+    GetHotSortVideoHandler.a(this.c, this.a.next_cookie.get().toStringUtf8());
+    GetHotSortVideoHandler.a(this.c, this.a.seq.get());
     localObject = new ArrayList();
     GetHotSortVideoHandler.GetVideoByHotSortEvent localGetVideoByHotSortEvent = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
-    localGetVideoByHotSortEvent.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler.jdField_a_of_type_Boolean;
-    localGetVideoByHotSortEvent.b = this.jdField_a_of_type_Boolean;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() > 0))
+    localGetVideoByHotSortEvent.b = this.c.a;
+    localGetVideoByHotSortEvent.c = this.b;
+    if ((this.a.video_card_list.has()) && (this.a.video_card_list.size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
+      Iterator localIterator = this.a.video_card_list.get().iterator();
       while (localIterator.hasNext()) {
         ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
       }
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.b) {
         ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localGetVideoByHotSortEvent), 5, null, true);
       }
     }
@@ -71,16 +71,16 @@ public class GetHotSortVideoHandler$GetHotSortVideoResponse
     {
       SLog.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
     }
-    localGetVideoByHotSortEvent.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    localGetVideoByHotSortEvent.a = ((ArrayList)localObject);
     StoryDispatcher.a().dispatch(localGetVideoByHotSortEvent);
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
     paramBundle = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
-    paramBundle.c = true;
+    paramBundle.d = true;
     StoryDispatcher.a().dispatch(paramBundle);
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131705353), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131903235), 0).show();
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
@@ -93,9 +93,9 @@ public class GetHotSortVideoHandler$GetHotSortVideoResponse
   public void a(int paramInt, String paramString)
   {
     Object localObject = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
-    ((GetHotSortVideoHandler.GetVideoByHotSortEvent)localObject).c = true;
+    ((GetHotSortVideoHandler.GetVideoByHotSortEvent)localObject).d = true;
     StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131705352), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131903234), 0).show();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -109,7 +109,7 @@ public class GetHotSortVideoHandler$GetHotSortVideoResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse
  * JD-Core Version:    0.7.0.1
  */

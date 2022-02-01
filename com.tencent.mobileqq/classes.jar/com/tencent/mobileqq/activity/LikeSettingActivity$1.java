@@ -33,7 +33,7 @@ class LikeSettingActivity$1
     if (paramBoolean1)
     {
       paramString = this.a;
-      LikeSettingActivity.a(paramString, paramString.c.a(), paramBoolean2);
+      LikeSettingActivity.a(paramString, paramString.e.getSwitch(), paramBoolean2);
     }
   }
   
@@ -52,7 +52,7 @@ class LikeSettingActivity$1
     if (paramBoolean1)
     {
       localObject = this.a;
-      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).b.a(), paramBoolean2);
+      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).d.getSwitch(), paramBoolean2);
       this.a.a.a(paramBoolean2);
     }
   }
@@ -72,14 +72,14 @@ class LikeSettingActivity$1
     if (paramBoolean1)
     {
       localObject = this.a;
-      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).d.a(), paramBoolean2);
+      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).f.getSwitch(), paramBoolean2);
       this.a.a.b(paramBoolean2);
       if (!paramBoolean2)
       {
-        this.a.b.setVisibility(8);
+        this.a.d.setVisibility(8);
         return;
       }
-      this.a.b.setVisibility(0);
+      this.a.d.setVisibility(0);
     }
   }
   
@@ -105,9 +105,9 @@ class LikeSettingActivity$1
       }
       if (!paramBoolean1)
       {
-        QQToast.a(this.a, 1, 2131718834, 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 1, 2131916364, 0).show(this.a.getTitleBarHeight());
         paramString = this.a;
-        LikeSettingActivity.a(paramString, paramString.c.a(), paramBoolean3);
+        LikeSettingActivity.a(paramString, paramString.e.getSwitch(), paramBoolean3);
       }
     }
   }
@@ -126,9 +126,9 @@ class LikeSettingActivity$1
     }
     if (!paramBoolean1)
     {
-      QQToast.a(this.a, 1, 2131718834, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 1, 2131916364, 0).show(this.a.getTitleBarHeight());
       localObject = this.a;
-      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).d.a(), this.a.a.a());
+      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).f.getSwitch(), this.a.a.c());
       return;
     }
     this.a.a.a(paramBoolean2);
@@ -148,23 +148,23 @@ class LikeSettingActivity$1
     }
     if (!paramBoolean1)
     {
-      QQToast.a(this.a, 1, 2131718834, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 1, 2131916364, 0).show(this.a.getTitleBarHeight());
       localObject = this.a;
-      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).d.a(), this.a.a.c());
+      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).f.getSwitch(), this.a.a.e());
       return;
     }
     this.a.a.b(paramBoolean2);
     if (!paramBoolean2)
     {
-      this.a.b.setVisibility(8);
+      this.a.d.setVisibility(8);
       return;
     }
-    this.a.b.setVisibility(0);
+    this.a.d.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

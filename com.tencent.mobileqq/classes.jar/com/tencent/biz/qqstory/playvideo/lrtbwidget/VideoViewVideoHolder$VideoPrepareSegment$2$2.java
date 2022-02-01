@@ -10,17 +10,17 @@ class VideoViewVideoHolder$VideoPrepareSegment$2$2
   
   public void run()
   {
-    SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a.a, "onError, setOnDownloadListener [vid, url, errorCode=%d]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a, 10);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a.a(8, "download error");
-    VideoViewVideoHolder.VideoPrepareSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a, new ErrorMessage(this.jdField_a_of_type_Int, "download error"));
+    SLog.e(this.b.c.b.a, "onError, setOnDownloadListener [vid, url, errorCode=%d]", new Object[] { Integer.valueOf(this.a) });
+    VideoViewVideoHolder.c(this.b.c.b, 10);
+    VideoViewVideoHolder.a(this.b.c.b, false);
+    VideoViewVideoHolder.b(this.b.c.b, this.a);
+    this.b.c.b.a(8, "download error");
+    VideoViewVideoHolder.VideoPrepareSegment.a(this.b.c, new ErrorMessage(this.a, "download error"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.2.2
  * JD-Core Version:    0.7.0.1
  */

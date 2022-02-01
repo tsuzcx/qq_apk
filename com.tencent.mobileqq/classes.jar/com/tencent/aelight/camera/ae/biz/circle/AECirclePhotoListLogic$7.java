@@ -13,17 +13,17 @@ class AECirclePhotoListLogic$7
   {
     this.a.show();
     int i;
-    if (AEEditorRecordDataManager.a().a() == 2L) {
+    if (AEEditorRecordDataManager.a().c() == 2L) {
       i = 2;
     } else {
       i = 1;
     }
-    AEReportUtils.c(i);
+    AEReportUtils.c(i, this.this$0.i());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.7
  * JD-Core Version:    0.7.0.1
  */

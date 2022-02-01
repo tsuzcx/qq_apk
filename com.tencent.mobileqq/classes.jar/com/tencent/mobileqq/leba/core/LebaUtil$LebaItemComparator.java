@@ -9,17 +9,17 @@ public class LebaUtil$LebaItemComparator
 {
   private boolean a(LebaViewItem paramLebaViewItem)
   {
-    return (paramLebaViewItem != null) && (paramLebaViewItem.a != null);
+    return (paramLebaViewItem != null) && (paramLebaViewItem.b != null);
   }
   
   public int a(LebaViewItem paramLebaViewItem1, LebaViewItem paramLebaViewItem2)
   {
     if ((a(paramLebaViewItem1)) && (a(paramLebaViewItem2)))
     {
-      if (paramLebaViewItem1.a.sPriority > paramLebaViewItem2.a.sPriority) {
+      if (paramLebaViewItem1.b.sPriority > paramLebaViewItem2.b.sPriority) {
         return 1;
       }
-      if (paramLebaViewItem1.a.sPriority < paramLebaViewItem2.a.sPriority) {
+      if (paramLebaViewItem1.b.sPriority < paramLebaViewItem2.b.sPriority) {
         return -1;
       }
       return 0;
@@ -35,7 +35,7 @@ public class LebaUtil$LebaItemComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaUtil.LebaItemComparator
  * JD-Core Version:    0.7.0.1
  */

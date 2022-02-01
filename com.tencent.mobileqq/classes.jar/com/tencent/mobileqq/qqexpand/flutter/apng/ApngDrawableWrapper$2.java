@@ -18,23 +18,23 @@ class ApngDrawableWrapper$2
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
     paramDrawable.draw(ApngDrawableWrapper.a(this.a));
-    if ((ApngDrawableWrapper.a(this.a) != null) && ((paramDrawable instanceof URLDrawable)))
+    if ((ApngDrawableWrapper.b(this.a) != null) && ((paramDrawable instanceof URLDrawable)))
     {
       Object localObject = ((URLDrawable)paramDrawable).getCurrDrawable();
       if ((localObject instanceof ApngDrawable))
       {
         localObject = ((ApngDrawable)localObject).getImage();
         Bitmap localBitmap = ((ApngImage)localObject).getCurrentFrame();
-        if (ApngDrawableWrapper.a(this.a) != null)
+        if (ApngDrawableWrapper.b(this.a) != null)
         {
-          ApngDrawableWrapper.a(this.a).onInvalidate(localBitmap, ((ApngImage)localObject).currentApngLoop);
+          ApngDrawableWrapper.b(this.a).onInvalidate(localBitmap, ((ApngImage)localObject).currentApngLoop);
           return;
         }
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("[");
-          ((StringBuilder)localObject).append(ApngDrawableWrapper.a(this.a));
+          ((StringBuilder)localObject).append(ApngDrawableWrapper.c(this.a));
           ((StringBuilder)localObject).append("] ");
           QLog.d("ApngDrawableWrapper", 2, new Object[] { ((StringBuilder)localObject).toString(), "invalidateDrawable() callback is null", paramDrawable });
         }
@@ -43,7 +43,7 @@ class ApngDrawableWrapper$2
       {
         paramDrawable = new StringBuilder();
         paramDrawable.append("[");
-        paramDrawable.append(ApngDrawableWrapper.a(this.a));
+        paramDrawable.append(ApngDrawableWrapper.c(this.a));
         paramDrawable.append("] ");
         QLog.d("ApngDrawableWrapper", 2, new Object[] { paramDrawable.toString(), "invalidateDrawable() strange drawable is: ", localObject });
       }
@@ -56,7 +56,7 @@ class ApngDrawableWrapper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.apng.ApngDrawableWrapper.2
  * JD-Core Version:    0.7.0.1
  */

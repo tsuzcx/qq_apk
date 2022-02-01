@@ -4,21 +4,21 @@ import com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader;
 
 class VideoViewVideoHolder$SingleFileDownloaderHolder
 {
-  StorySingleFileDownloader jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader;
+  StorySingleFileDownloader a;
   
   private VideoViewVideoHolder$SingleFileDownloaderHolder(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
   public StorySingleFileDownloader a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader = new StorySingleFileDownloader();
+    if (this.a == null) {
+      this.a = new StorySingleFileDownloader();
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader;
+    return this.a;
   }
   
-  public void a()
+  public void b()
   {
-    StorySingleFileDownloader localStorySingleFileDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader;
+    StorySingleFileDownloader localStorySingleFileDownloader = this.a;
     if (localStorySingleFileDownloader != null) {
       localStorySingleFileDownloader.a();
     }
@@ -26,7 +26,7 @@ class VideoViewVideoHolder$SingleFileDownloaderHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.SingleFileDownloaderHolder
  * JD-Core Version:    0.7.0.1
  */

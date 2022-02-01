@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout.LayoutParams;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.weishi_new.combo.WSComboExpHelper;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.event.WSPreloadTabEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
@@ -28,6 +28,7 @@ import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabInfo;
 import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout;
 import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,89 +37,48 @@ public class WSRecommendFragment
   extends WSBaseFragment
   implements WSSimpleEventReceiver, OnTabSelectedListener
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#6933CC");
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private WSHomeFragmentAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragmentAdapter;
-  private WSFeedsLinearLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout;
-  private WSViewPager jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager;
-  private WSTabLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout;
-  private String jdField_a_of_type_JavaLangString;
-  private List<BaseFragment> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 0;
-  private List<WSTabInfo> jdField_b_of_type_JavaUtilList;
-  private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  
-  @Nullable
-  private WSGridPageFragment a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (WSGridPageFragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
+  private static final int f = Color.parseColor("#6933CC");
+  private WSFeedsLinearLayout g;
+  private WSViewPager h;
+  private WSTabLayout i;
+  private View j;
+  private ViewGroup k;
+  private WSFragmentAdapter l;
+  private List<QBaseFragment> m;
+  private List<WSTabInfo> n;
+  private String o;
+  private boolean p;
+  private int q = 0;
+  private int r = -1;
   
   public static BaseFragment a(String paramString, boolean paramBoolean)
   {
     WSRecommendFragment localWSRecommendFragment = new WSRecommendFragment();
-    Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
     localBundle.putString("key_context_feed_id", paramString);
     localBundle.putBoolean("key_show_context_feed_musk", paramBoolean);
-    localIntent.putExtras(localBundle);
-    localWSRecommendFragment.setArguments(localIntent.getExtras());
+    localWSRecommendFragment.setArguments(localBundle);
     return localWSRecommendFragment;
-  }
-  
-  private List<BaseFragment> a(List<WSTabInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramList.size() == 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(WSGridPageFragment.a("1000", true, true, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Boolean));
-      return this.jdField_a_of_type_JavaUtilList;
-    }
-    int i = 0;
-    while (i < paramList.size())
-    {
-      WSTabInfo localWSTabInfo = (WSTabInfo)paramList.get(i);
-      boolean bool;
-      if (i != 0) {
-        bool = false;
-      } else {
-        bool = true;
-      }
-      String str;
-      if (TextUtils.equals("1000", localWSTabInfo.a())) {
-        str = this.jdField_a_of_type_JavaLangString;
-      } else {
-        str = "";
-      }
-      this.jdField_a_of_type_JavaUtilList.add(WSGridPageFragment.a(localWSTabInfo.a(), true, bool, str, this.jdField_c_of_type_Boolean));
-      i += 1;
-    }
-    return this.jdField_a_of_type_JavaUtilList;
   }
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout.setTabItemSelect(paramInt, jdField_a_of_type_Int);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    this.i.setTabItemSelect(paramInt, f);
+    Object localObject = this.m;
     if (localObject != null)
     {
       if (paramInt >= ((List)localObject).size()) {
         return;
       }
-      int i = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = paramInt;
-      localObject = a(i);
+      int i1 = this.r;
+      this.r = paramInt;
+      localObject = b(i1);
       if (localObject != null) {
-        ((WSGridPageFragment)localObject).h();
+        ((WSGridPageFragment)localObject).B();
       }
-      localObject = a(paramInt);
+      localObject = b(paramInt);
       if (localObject != null) {
-        ((WSGridPageFragment)localObject).g();
+        ((WSGridPageFragment)localObject).A();
       }
       if (paramInt != 0)
       {
@@ -126,72 +86,124 @@ public class WSRecommendFragment
         ((WSPreloadTabEvent)localObject).setPosition(paramInt);
         WSSimpleEventBus.a().a((WSSimpleBaseEvent)localObject);
       }
-      WSTabBeaconReport.a(paramInt, ((WSTabInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).a());
+      WSTabBeaconReport.a(paramInt, ((WSTabInfo)this.n.get(paramInt)).a());
     }
   }
   
   private void a(WSSubTabData paramWSSubTabData)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new WSRecommendFragment.3(this, paramWSSubTabData));
+    this.g.getViewTreeObserver().addOnGlobalLayoutListener(new WSRecommendFragment.3(this, paramWSSubTabData));
   }
   
   private void a(List<WSTabInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragmentAdapter = new WSHomeFragmentAdapter(getChildFragmentManager(), a(paramList));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragmentAdapter);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager.setOffscreenPageLimit(5);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager.addOnPageChangeListener(new WSRecommendFragment.2(this));
-    this.jdField_c_of_type_Int = 0;
+    this.l = new WSFragmentAdapter(getChildFragmentManager(), b(paramList));
+    this.h.setAdapter(this.l);
+    this.h.setOffscreenPageLimit(5);
+    this.h.addOnPageChangeListener(new WSRecommendFragment.2(this));
+    this.r = 0;
   }
   
-  private void b()
+  @Nullable
+  private WSGridPageFragment b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout = ((WSTabLayout)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.findViewById(2131381238));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager = ((WSViewPager)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.findViewById(2131381256));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.findViewById(2131380853);
-    c();
-    d();
-    e();
-  }
-  
-  private void c()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.setBackgroundColor(-16777216);
-    } else {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.setBackgroundColor(-1);
+    if ((paramInt >= 0) && (paramInt < this.m.size())) {
+      return (WSGridPageFragment)this.m.get(paramInt);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout.setOnActionListener(new WSOnActionListenerImpl(this, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout));
+    return null;
   }
   
-  private void d()
+  private List<QBaseFragment> b(List<WSTabInfo> paramList)
   {
-    WSSubTabData localWSSubTabData = WSSubTabsHelper.a(WSExpABTestManager.a().b());
-    this.jdField_b_of_type_JavaUtilList = WSSubTabsHelper.a(localWSSubTabData);
-    a(this.jdField_b_of_type_JavaUtilList);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.setMargins(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    if (this.jdField_b_of_type_JavaUtilList.size() == 0)
+    this.m = new ArrayList();
+    if (paramList.size() == 0)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout.setVisibility(8);
+      this.m.add(WSGridPageFragment.a("1000", true, true, this.o, this.p));
+      return this.m;
+    }
+    int i1 = 0;
+    while (i1 < paramList.size())
+    {
+      WSTabInfo localWSTabInfo = (WSTabInfo)paramList.get(i1);
+      boolean bool;
+      if (i1 != 0) {
+        bool = false;
+      } else {
+        bool = true;
+      }
+      String str;
+      if (TextUtils.equals("1000", localWSTabInfo.a())) {
+        str = this.o;
+      } else {
+        str = "";
+      }
+      this.m.add(WSGridPageFragment.a(localWSTabInfo.a(), true, bool, str, this.p));
+      i1 += 1;
+    }
+    return this.m;
+  }
+  
+  private void o()
+  {
+    this.i = ((WSTabLayout)this.g.findViewById(2131450286));
+    this.h = ((WSViewPager)this.g.findViewById(2131450304));
+    this.j = this.g.findViewById(2131449831);
+    p();
+    q();
+    r();
+  }
+  
+  private void p()
+  {
+    if (this.e) {
+      this.g.setBackgroundColor(-16777216);
+    } else {
+      this.g.setBackgroundColor(-1);
+    }
+    this.g.setOnActionListener(new WSOnActionListenerImpl(this, this.i));
+  }
+  
+  private void q()
+  {
+    WSSubTabData localWSSubTabData = WSSubTabsHelper.a(WSExpABTestManager.a().n());
+    this.n = WSSubTabsHelper.a(localWSSubTabData);
+    a(this.n);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.j.getLayoutParams();
+    localLayoutParams.setMargins(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
+    this.j.setLayoutParams(localLayoutParams);
+    if (this.n.size() == 0)
+    {
+      this.i.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout.setupWithViewPager(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout.a(this.jdField_b_of_type_JavaUtilList, new WSRecommendFragment.1(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout.setTabItemSelect(0, jdField_a_of_type_Int);
+    this.i.setVisibility(0);
+    this.i.setupWithViewPager(this.h);
+    this.i.a(this.n, new WSRecommendFragment.1(this));
+    this.i.setTabItemSelect(0, f);
     a(localWSSubTabData);
   }
   
-  private void e()
+  private void r()
   {
     WSSimpleEventBus.a().a(this);
   }
   
-  public int a()
+  public void A()
   {
-    return this.jdField_b_of_type_Int;
+    WSLog.b("WSRecommendFragment", "[WSRecommendFragment.java][onTabSelected]");
+    WSGridPageFragment localWSGridPageFragment = b(this.r);
+    if (localWSGridPageFragment != null) {
+      localWSGridPageFragment.A();
+    }
+  }
+  
+  public void B()
+  {
+    WSLog.b("WSRecommendFragment", "[WSRecommendFragment.java][onTabUnselected]");
+    WSGridPageFragment localWSGridPageFragment = b(this.r);
+    if (localWSGridPageFragment != null) {
+      localWSGridPageFragment.B();
+    }
   }
   
   @NonNull
@@ -200,56 +212,44 @@ public class WSRecommendFragment
     return new WSBasePresenter();
   }
   
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(WSPreloadTabEvent.class);
-    return localArrayList;
-  }
-  
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     if (!(paramWSSimpleBaseEvent instanceof WSPreloadTabEvent)) {
       return;
     }
-    int j = ((WSPreloadTabEvent)paramWSSimpleBaseEvent).getPosition();
-    int i = j;
-    if (j == -1) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager.getCurrentItem();
+    int i2 = ((WSPreloadTabEvent)paramWSSimpleBaseEvent).getPosition();
+    int i1 = i2;
+    if (i2 == -1) {
+      i1 = this.h.getCurrentItem();
     }
-    i += 1;
-    if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+    i1 += 1;
+    if (i1 >= this.m.size()) {
       return;
     }
-    ((WSGridPageFragment)this.jdField_a_of_type_JavaUtilList.get(i)).m();
+    ((WSGridPageFragment)this.m.get(i1)).q();
   }
   
-  public void a(boolean paramBoolean)
+  protected boolean aN_()
+  {
+    if (WSComboExpHelper.a.a()) {
+      return false;
+    }
+    return super.aN_();
+  }
+  
+  public void e(boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSRecommendFragment.java][setCurrentViewPagerCanScroll] canScroll:");
     localStringBuilder.append(paramBoolean);
     WSLog.d("WSRecommendFragment", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager.setCanScrollHorizontally(paramBoolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSViewPager.setScrollable(paramBoolean);
+    this.h.setCanScrollHorizontally(paramBoolean);
+    this.h.setScrollable(paramBoolean);
   }
   
-  public void g()
+  public int n()
   {
-    WSLog.b("WSRecommendFragment", "[WSRecommendFragment.java][onTabSelected]");
-    WSGridPageFragment localWSGridPageFragment = a(this.jdField_c_of_type_Int);
-    if (localWSGridPageFragment != null) {
-      localWSGridPageFragment.g();
-    }
-  }
-  
-  public void h()
-  {
-    WSLog.b("WSRecommendFragment", "[WSRecommendFragment.java][onTabUnselected]");
-    WSGridPageFragment localWSGridPageFragment = a(this.jdField_c_of_type_Int);
-    if (localWSGridPageFragment != null) {
-      localWSGridPageFragment.h();
-    }
+    return this.q;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -257,16 +257,16 @@ public class WSRecommendFragment
     super.onCreate(paramBundle);
     if (getArguments() != null)
     {
-      this.jdField_a_of_type_JavaLangString = getArguments().getString("key_context_feed_id");
-      this.jdField_c_of_type_Boolean = getArguments().getBoolean("key_show_context_feed_musk");
+      this.o = getArguments().getString("key_context_feed_id");
+      this.p = getArguments().getBoolean("key_show_context_feed_musk");
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout = ((WSFeedsLinearLayout)paramLayoutInflater.inflate(2131560017, paramViewGroup, false));
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout;
+    this.k = paramViewGroup;
+    this.g = ((WSFeedsLinearLayout)paramLayoutInflater.inflate(2131626060, paramViewGroup, false));
+    return this.g;
   }
   
   public void onDestroyView()
@@ -278,12 +278,33 @@ public class WSRecommendFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    b();
+    o();
+  }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
+    if (!isResumed()) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      A();
+      return;
+    }
+    B();
+  }
+  
+  public ArrayList<Class> z()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(WSPreloadTabEvent.class);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment
  * JD-Core Version:    0.7.0.1
  */

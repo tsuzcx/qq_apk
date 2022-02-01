@@ -14,27 +14,27 @@ class TroopGiftPanel$16
   public void a(int paramInt)
   {
     super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
+    this.a.x.setText(TroopGiftPanel.d(this.a));
     TroopGiftPanel.a(this.a, 0L);
   }
   
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131715205), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
-    TroopGiftPanel.a(true);
+    QQToast.makeText(this.a.m, HardCodeUtil.a(2131912688), 0).show(this.a.getResources().getDimensionPixelSize(2131299920));
+    TroopGiftPanel.c(true);
   }
   
   public void b(int paramInt, String paramString)
   {
     super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131715172), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
-    TroopGiftPanel.a(true);
+    QQToast.makeText(this.a.m, HardCodeUtil.a(2131912659), 0).show(this.a.getResources().getDimensionPixelSize(2131299920));
+    TroopGiftPanel.c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.16
  * JD-Core Version:    0.7.0.1
  */

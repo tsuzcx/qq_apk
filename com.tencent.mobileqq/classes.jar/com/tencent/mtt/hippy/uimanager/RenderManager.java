@@ -16,12 +16,12 @@ import java.util.List;
 
 public class RenderManager
 {
-  SparseArray<RenderNode> a = new SparseArray();
-  SparseArray<Boolean> b = new SparseArray();
-  ArrayList<RenderNode> c = new ArrayList();
-  ArrayList<RenderNode> d = new ArrayList();
-  HippyEngineContext e;
-  ControllerManager f;
+  final SparseArray<RenderNode> a = new SparseArray();
+  final SparseArray<Boolean> b = new SparseArray();
+  final ArrayList<RenderNode> c = new ArrayList();
+  final ArrayList<RenderNode> d = new ArrayList();
+  final HippyEngineContext e;
+  final ControllerManager f;
   
   public RenderManager(HippyEngineContext paramHippyEngineContext, List<HippyAPIProvider> paramList)
   {
@@ -291,7 +291,7 @@ public class RenderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.RenderManager
  * JD-Core Version:    0.7.0.1
  */

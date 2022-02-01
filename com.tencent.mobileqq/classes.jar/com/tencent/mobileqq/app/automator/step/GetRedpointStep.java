@@ -18,15 +18,15 @@ public class GetRedpointStep
       QLog.i("GetRedpointStep", 2, "GetRedpointStep");
     }
     if (BaseActivity.mAppForground) {
-      ((IRedTouchServer)this.mAutomator.a.getRuntimeService(IRedTouchServer.class, "")).sendRedpointReq(false, false, 1);
+      ((IRedTouchServer)this.mAutomator.k.getRuntimeService(IRedTouchServer.class, "")).sendRedpointReq(false, false, 1);
     }
-    ((MedalWallMng)this.mAutomator.a.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a();
+    ((MedalWallMng)this.mAutomator.k.getManager(QQManagerFactory.MEDAL_WALL_MNG)).b();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetRedpointStep
  * JD-Core Version:    0.7.0.1
  */

@@ -13,24 +13,24 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12$1
   
   public void run()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12.this$0.getQBaseActivity(), QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.b.this$0.getQBaseActivity(), QQBrowserActivity.class);
     ITeamWorkUtils localITeamWorkUtils = (ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      str = this.jdField_a_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(this.a)) {
+      str = this.a;
     } else {
       str = "https://docs.qq.com/desktop/m/index.html?_from=1";
     }
     String str = localITeamWorkUtils.getTencentDocSourceAdtagStrUrl(str, "s_qq_myfile");
     localIntent.addFlags(536870912);
     localIntent.addFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12.this$0.startActivity(localIntent.putExtra("url", str));
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12.this$0.getQBaseActivity().overridePendingTransition(2130772002, 2130772003);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12.this$0.getQBaseActivity().finish();
+    this.b.this$0.startActivity(localIntent.putExtra("url", str));
+    this.b.this$0.getQBaseActivity().overridePendingTransition(2130772005, 2130772006);
+    this.b.this$0.getQBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.12.1
  * JD-Core Version:    0.7.0.1
  */

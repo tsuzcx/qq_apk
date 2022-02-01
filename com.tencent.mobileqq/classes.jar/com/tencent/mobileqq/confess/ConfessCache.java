@@ -6,21 +6,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ConfessCache
 {
-  public static final Object a;
-  Pair<String, Boolean> jdField_a_of_type_ComTencentUtilPair = new Pair("", Boolean.valueOf(false));
-  ConcurrentHashMap<String, ConfessInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
+  public static final Object b = new Object();
+  ConcurrentHashMap<String, ConfessInfo> a = new ConcurrentHashMap();
+  Pair<String, Boolean> c = new Pair("", Boolean.valueOf(false));
   
   public ConfessInfo a(String arg1, int paramInt1, int paramInt2)
   {
     Object localObject1 = UinTypeUtil.a(???, paramInt1, paramInt2);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      localObject1 = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
+      localObject1 = (ConfessInfo)this.a.get(localObject1);
       return localObject1;
     }
   }
@@ -53,11 +48,11 @@ public class ConfessCache
   public void a(String arg1, int paramInt, ConfessInfo paramConfessInfo)
   {
     String str = UinTypeUtil.a(???, paramInt, paramConfessInfo.topicId);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      ConfessInfo localConfessInfo = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      ConfessInfo localConfessInfo = (ConfessInfo)this.a.get(str);
       if ((localConfessInfo == null) || (!localConfessInfo.equals(paramConfessInfo))) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramConfessInfo);
+        this.a.put(str, paramConfessInfo);
       }
       return;
     }
@@ -65,7 +60,7 @@ public class ConfessCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessCache
  * JD-Core Version:    0.7.0.1
  */

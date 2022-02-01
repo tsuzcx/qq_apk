@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 public class ShapePath$PathArcOperation
   extends ShapePath.PathOperation
 {
-  private static final RectF a;
+  private static final RectF h = new RectF();
   @Deprecated
   public float a;
   @Deprecated
@@ -22,11 +22,6 @@ public class ShapePath$PathArcOperation
   @Deprecated
   public float f;
   
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  }
-  
   public ShapePath$PathArcOperation(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     a(paramFloat1);
@@ -37,12 +32,12 @@ public class ShapePath$PathArcOperation
   
   private float a()
   {
-    return this.jdField_a_of_type_Float;
+    return this.a;
   }
   
   private void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
   }
   
   private float b()
@@ -97,17 +92,17 @@ public class ShapePath$PathArcOperation
   
   public void a(@NonNull Matrix paramMatrix, @NonNull Path paramPath)
   {
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Matrix localMatrix = this.g;
     paramMatrix.invert(localMatrix);
     paramPath.transform(localMatrix);
-    jdField_a_of_type_AndroidGraphicsRectF.set(a(), b(), c(), d());
-    paramPath.arcTo(jdField_a_of_type_AndroidGraphicsRectF, e(), f(), false);
+    h.set(a(), b(), c(), d());
+    paramPath.arcTo(h, e(), f(), false);
     paramPath.transform(paramMatrix);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapePath.PathArcOperation
  * JD-Core Version:    0.7.0.1
  */

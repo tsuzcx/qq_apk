@@ -104,9 +104,9 @@ public class StructMsgForHypertext
         {
           parseSourceNode(localStructMsgNode);
         }
-        else if (localStructMsgNode.a == 1)
+        else if (localStructMsgNode.f == 1)
         {
-          for (localStructMsgNode = localStructMsgNode.b(); (localStructMsgNode != null) && (localStructMsgNode.a != 1); localStructMsgNode = StructMsgFactory.a(localStructMsgNode)) {}
+          for (localStructMsgNode = localStructMsgNode.c(); (localStructMsgNode != null) && (localStructMsgNode.f != 1); localStructMsgNode = StructMsgFactory.b(localStructMsgNode)) {}
           parseItem(localStructMsgNode);
         }
       }
@@ -180,17 +180,17 @@ public class StructMsgForHypertext
     localLinearLayout.setLayoutParams(paramView);
     paramView = new StructMsgForHypertext.HyperTextView(paramContext);
     Resources localResources = paramContext.getResources();
-    paramView.setPadding((int)localResources.getDimension(2131299074), (int)localResources.getDimension(2131299076), (int)localResources.getDimension(2131299075), (int)localResources.getDimension(2131299073));
+    paramView.setPadding((int)localResources.getDimension(2131299802), (int)localResources.getDimension(2131299804), (int)localResources.getDimension(2131299803), (int)localResources.getDimension(2131299801));
     paramView.setText(getSpannableString(false));
     paramView.setMaxLines(10);
     paramView.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
-    paramView.setTextColor(paramContext.getResources().getColor(2131165399));
-    paramView.setLinkTextColor(paramContext.getResources().getColor(2131165889));
+    paramView.setTextColor(paramContext.getResources().getColor(2131165687));
+    paramView.setLinkTextColor(paramContext.getResources().getColor(2131166583));
     paramView.setLinksClickable(false);
     paramView.setMovementMethod(LinkMovementMethod.getInstance());
     localLinearLayout.addView(paramView);
     localLinearLayout.setLongClickable(true);
-    localLinearLayout.setTag(2131377989, this);
+    localLinearLayout.setTag(2131446476, this);
     return localLinearLayout;
   }
   
@@ -216,7 +216,7 @@ public class StructMsgForHypertext
       ((TextView)localObject1).setTextColor(-1);
       ((TextView)localObject1).setTextSize(2, 12.0F);
       ((TextView)localObject1).setPadding(AIOUtils.b(5.0F, localResources), 0, AIOUtils.b(5.0F, localResources), 0);
-      ((TextView)localObject1).setBackgroundResource(2130842702);
+      ((TextView)localObject1).setBackgroundResource(2130843655);
     }
     paramView = (TextView)localObject1;
     paramView.setText(this.mSourceName);
@@ -234,7 +234,7 @@ public class StructMsgForHypertext
     if ((!TextUtils.isEmpty(this.mSourceIcon)) && (i != 0))
     {
       String str = this.mSourceIcon;
-      Object localObject2 = localResources.getDrawable(2130850833);
+      Object localObject2 = localResources.getDrawable(2130852668);
       ((Drawable)localObject2).setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
       ColorDrawable localColorDrawable = new ColorDrawable(15790320);
       localColorDrawable.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
@@ -336,16 +336,16 @@ public class StructMsgForHypertext
     paramView = (ViewGroup)super.getView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle);
     paramBundle = new StructMsgForHypertext.HyperTextView(paramContext);
     Resources localResources = paramContext.getResources();
-    paramBundle.setPadding((int)localResources.getDimension(2131299074), (int)localResources.getDimension(2131299076), (int)localResources.getDimension(2131299075), (int)localResources.getDimension(2131299073));
+    paramBundle.setPadding((int)localResources.getDimension(2131299802), (int)localResources.getDimension(2131299804), (int)localResources.getDimension(2131299803), (int)localResources.getDimension(2131299801));
     paramBundle.setText(getSpannableString(true));
     paramBundle.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
-    paramBundle.setTextColor(paramContext.getResources().getColor(2131165399));
-    paramBundle.setLinkTextColor(paramContext.getResources().getColor(2131165889));
+    paramBundle.setTextColor(paramContext.getResources().getColor(2131165687));
+    paramBundle.setLinkTextColor(paramContext.getResources().getColor(2131166583));
     paramBundle.setLinksClickable(false);
     paramBundle.setMovementMethod(LinkMovementMethod.getInstance());
     paramBundle.setOnTouchListener(paramOnLongClickAndTouchListener);
     paramBundle.setOnLongClickListener(paramOnLongClickAndTouchListener);
-    paramBundle.setTag(2131368338, this);
+    paramBundle.setTag(2131435213, this);
     paramView.addView(paramBundle);
     paramContext = paramView.getLayoutParams();
     if (paramContext == null)
@@ -358,7 +358,7 @@ public class StructMsgForHypertext
       paramContext.height = -2;
     }
     paramView.setLongClickable(true);
-    paramView.setTag(2131377989, this);
+    paramView.setTag(2131446476, this);
     return paramView;
   }
   
@@ -377,7 +377,7 @@ public class StructMsgForHypertext
       {
         Object localObject1;
         Object localObject2;
-        if (((StructMsgNode)localObject3).a())
+        if (((StructMsgNode)localObject3).d())
         {
           localObject1 = ((StructMsgNode)localObject3).a("url");
           localObject2 = ((StructMsgNode)localObject3).a("action");
@@ -719,7 +719,7 @@ public class StructMsgForHypertext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext
  * JD-Core Version:    0.7.0.1
  */

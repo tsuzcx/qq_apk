@@ -16,13 +16,13 @@ class VideoFeedsShareController$6
   public void onShow(DialogInterface paramDialogInterface)
   {
     VideoFeedsShareController.a(this.a, "mShareActionSheet onShow()");
-    this.a.a.a().getWindow().getDecorView().setSystemUiVisibility(VideoFeedsShareController.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
+    this.a.a.a().getWindow().getDecorView().setSystemUiVisibility(VideoFeedsShareController.f(this.a).getWindow().getDecorView().getSystemUiVisibility());
     this.a.a.a().getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.6
  * JD-Core Version:    0.7.0.1
  */

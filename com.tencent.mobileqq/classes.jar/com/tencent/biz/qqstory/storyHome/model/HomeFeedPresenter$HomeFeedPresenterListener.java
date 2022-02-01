@@ -9,7 +9,7 @@ public abstract interface HomeFeedPresenter$HomeFeedPresenterListener
   
   public abstract void b(String paramString);
   
-  public abstract void f();
+  public abstract void j();
 }
 
 

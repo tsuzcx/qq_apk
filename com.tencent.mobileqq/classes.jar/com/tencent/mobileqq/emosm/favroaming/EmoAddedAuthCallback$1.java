@@ -18,9 +18,9 @@ class EmoAddedAuthCallback$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoAddedAuthCallback.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class);
-    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoAddedAuthCallback.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+    this.a.dismiss();
+    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)this.b.a.getRuntimeService(IFavroamingDBManagerService.class);
+    CustomEmotionData localCustomEmotionData = this.b.c;
     FavoriteEmoticonInfo localFavoriteEmoticonInfo = new FavoriteEmoticonInfo();
     localFavoriteEmoticonInfo.type = 4;
     localFavoriteEmoticonInfo.path = localIFavroamingDBManagerService.getCustomEmoticonPath(localCustomEmotionData);
@@ -30,13 +30,13 @@ class EmoAddedAuthCallback$1
     localFavoriteEmoticonInfo.roamingType = localCustomEmotionData.RomaingType;
     localFavoriteEmoticonInfo.emoId = localCustomEmotionData.emoId;
     localFavoriteEmoticonInfo.resID = localCustomEmotionData.resid;
-    ((IEmosmService)QRoute.api(IEmosmService.class)).enterEmotionPreview(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoAddedAuthCallback.jdField_a_of_type_AndroidContentContext, localFavoriteEmoticonInfo, null);
+    ((IEmosmService)QRoute.api(IEmosmService.class)).enterEmotionPreview(this.b.b, localFavoriteEmoticonInfo, null);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback.1
  * JD-Core Version:    0.7.0.1
  */

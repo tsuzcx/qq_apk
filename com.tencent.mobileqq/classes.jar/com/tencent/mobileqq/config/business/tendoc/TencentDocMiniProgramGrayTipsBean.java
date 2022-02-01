@@ -7,8 +7,8 @@ import org.json.JSONObject;
 
 public class TencentDocMiniProgramGrayTipsBean
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private String b = "";
   
   public static TencentDocMiniProgramGrayTipsBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -17,9 +17,9 @@ public class TencentDocMiniProgramGrayTipsBean
       TencentDocMiniProgramGrayTipsBean localTencentDocMiniProgramGrayTipsBean = new TencentDocMiniProgramGrayTipsBean();
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
-        localTencentDocMiniProgramGrayTipsBean.jdField_a_of_type_Boolean = paramArrayOfQConfItem.getBoolean("enable");
-        localTencentDocMiniProgramGrayTipsBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("content");
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
+        localTencentDocMiniProgramGrayTipsBean.a = paramArrayOfQConfItem.getBoolean("enable");
+        localTencentDocMiniProgramGrayTipsBean.b = paramArrayOfQConfItem.getString("content");
         return localTencentDocMiniProgramGrayTipsBean;
       }
       catch (JSONException paramArrayOfQConfItem)
@@ -33,7 +33,7 @@ public class TencentDocMiniProgramGrayTipsBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocMiniProgramGrayTipsBean
  * JD-Core Version:    0.7.0.1
  */

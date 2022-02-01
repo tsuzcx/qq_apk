@@ -4,35 +4,35 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public abstract interface IFileHttpBase
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract FileManagerEntity a();
-  
   public abstract void a(Object paramObject, int paramInt);
   
   public abstract boolean a();
   
   public abstract int b();
   
-  public abstract String b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public abstract long c();
   
   public abstract void f();
   
-  public abstract void g();
+  public abstract int h();
+  
+  public abstract int i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract String p();
+  
+  public abstract FileManagerEntity q();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.discoperation.IFileHttpBase
  * JD-Core Version:    0.7.0.1
  */

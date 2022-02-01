@@ -122,7 +122,7 @@ public abstract class EIPCChannel$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     eipc.EIPCChannel.Stub
  * JD-Core Version:    0.7.0.1
  */

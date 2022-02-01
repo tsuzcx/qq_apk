@@ -16,13 +16,15 @@ public abstract interface IHippySetting
   
   public abstract File getModuleIndex(String paramString, int paramInt);
   
+  public abstract long getModuleIndexFileLength(String paramString, int paramInt);
+  
   public abstract int getModuleVersion(String paramString);
   
   public abstract void setModuleVersion(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.api.IHippySetting
  * JD-Core Version:    0.7.0.1
  */

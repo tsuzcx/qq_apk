@@ -68,7 +68,7 @@ public class FontSoLoaderAdapterImpl
       {
         Object localObject2 = (QQAppInterface)localObject1;
         ((IVasQuickUpdateService)((QQAppInterface)localObject2).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libVipFont_8417", "FontManager_initHYEngine");
-        localObject1 = ((FriendsManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(((QQAppInterface)localObject2).getAccount());
+        localObject1 = ((FriendsManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(((QQAppInterface)localObject2).getAccount());
         if ((localObject1 != null) && (0L != ((ExtensionInfo)localObject1).uVipFont) && (((ExtensionInfo)localObject1).vipFontType == 1)) {
           localObject1 = "0";
         } else {
@@ -86,7 +86,7 @@ public class FontSoLoaderAdapterImpl
       return false;
     }
     ETEngine.isSOLoaded.set(true);
-    HiBoomFont.a().a();
+    HiBoomFont.a().b();
     sIsVipFontSoLoaded.set(true);
     BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 4).edit().putBoolean("vip_font_so_downloaded", true).commit();
     return true;
@@ -99,7 +99,7 @@ public class FontSoLoaderAdapterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.font.api.impl.FontSoLoaderAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

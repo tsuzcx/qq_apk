@@ -25,13 +25,13 @@ class TenDocMiniAIOHandler$1
       QLog.i("SwiftMiniAIOHandler", 4, localStringBuilder.toString());
     }
     if (paramBitmap != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(paramBitmap));
+      this.a.setImageDrawable(new BitmapDrawable(paramBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocMiniAIOHandler.1
  * JD-Core Version:    0.7.0.1
  */

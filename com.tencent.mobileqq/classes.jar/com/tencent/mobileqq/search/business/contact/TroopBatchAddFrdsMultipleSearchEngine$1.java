@@ -13,18 +13,18 @@ class TroopBatchAddFrdsMultipleSearchEngine$1
   {
     paramIContactSearchModel1 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel1;
     paramIContactSearchModel2 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel2;
-    boolean bool1 = TroopBatchAddFrdsMultipleSearchEngine.a(this.a, (String)paramIContactSearchModel1.a());
-    boolean bool2 = TroopBatchAddFrdsMultipleSearchEngine.a(this.a, (String)paramIContactSearchModel2.a());
+    boolean bool1 = TroopBatchAddFrdsMultipleSearchEngine.a(this.a, (String)paramIContactSearchModel1.i());
+    boolean bool2 = TroopBatchAddFrdsMultipleSearchEngine.a(this.a, (String)paramIContactSearchModel2.i());
     int j;
     int i;
     if ((!bool1) && (!bool2))
     {
-      bool1 = TroopBatchAddFrdsMultipleSearchEngine.b(this.a, (String)paramIContactSearchModel1.a());
-      bool2 = TroopBatchAddFrdsMultipleSearchEngine.b(this.a, (String)paramIContactSearchModel2.a());
+      bool1 = TroopBatchAddFrdsMultipleSearchEngine.b(this.a, (String)paramIContactSearchModel1.i());
+      bool2 = TroopBatchAddFrdsMultipleSearchEngine.b(this.a, (String)paramIContactSearchModel2.i());
       if ((!bool1) && (!bool2))
       {
-        j = paramIContactSearchModel2.f();
-        i = paramIContactSearchModel1.f();
+        j = paramIContactSearchModel2.s();
+        i = paramIContactSearchModel1.s();
       }
     }
     for (;;)
@@ -37,8 +37,8 @@ class TroopBatchAddFrdsMultipleSearchEngine$1
         }
         return 1;
       }
-      j = paramIContactSearchModel2.f();
-      i = paramIContactSearchModel1.f();
+      j = paramIContactSearchModel2.s();
+      i = paramIContactSearchModel1.s();
       continue;
       if (bool1 != bool2)
       {
@@ -47,14 +47,14 @@ class TroopBatchAddFrdsMultipleSearchEngine$1
         }
         return 1;
       }
-      j = paramIContactSearchModel2.f();
-      i = paramIContactSearchModel1.f();
+      j = paramIContactSearchModel2.s();
+      i = paramIContactSearchModel1.s();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.TroopBatchAddFrdsMultipleSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

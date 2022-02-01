@@ -21,24 +21,24 @@ class ChatHistoryTroopAllFragment$6$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("do delete uniseq=");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+      ((StringBuilder)localObject).append(this.a.a.uniseq);
       ((StringBuilder)localObject).append(",id=");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
+      ((StringBuilder)localObject).append(this.a.a.getId());
       QLog.d("chatHistory.troop.msgList", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (QSlowTableManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.getManager(QQManagerFactory.SLOW_TABLE_MANAGER);
+    Object localObject = (QSlowTableManager)this.a.c.v.getManager(QQManagerFactory.SLOW_TABLE_MANAGER);
     if (localObject != null) {
-      ((QSlowTableManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+      ((QSlowTableManager)localObject).a(this.a.a, false);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof IMessageForApollo)) {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b, "chat_history_start_del_msg");
+    this.a.c.v.getMessageFacade().a(this.a.a, true);
+    if ((this.a.a instanceof IMessageForApollo)) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.c.v, "chat_history_start_del_msg");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

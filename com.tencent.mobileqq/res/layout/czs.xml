@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/mm" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge android:orientation="horizontal" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/bh3" android:textStyle="bold" android:textColor="@color/ag1" android:gravity="center_horizontal" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/x6c" />
-    <TextView android:textSize="@dimen/bh_" android:textColor="@color/ag1" android:gravity="left" android:id="@id/bgz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="40.0dip" />
-    <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/bh3" android:textStyle="bold" android:textColor="@color/ag1" android:gravity="center" android:id="@id/n4w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" android:text="@string/wst" />
-</LinearLayout>
+    <RelativeLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/pbm" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_centerHorizontal="true">
+            <com.tencent.biz.qqcircle.widgets.AnimationView android:layout_gravity="center" android:id="@id/pbn" android:background="@color/ajr" android:layout_width="45.0dip" android:layout_height="45.0dip" android:scaleType="centerCrop" />
+            <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/pbo" android:background="@color/ajr" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/pbk" android:background="@drawable/qcircle_skin_gift_price_tag_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/pbm" android:layout_centerHorizontal="true">
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="11.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:layout_gravity="center_vertical" android:id="@id/pbl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="99999" android:includeFontPadding="false" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/pay" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@drawable/iqt" />
+            </LinearLayout>
+        </FrameLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:id="@id/pb8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:text="@string/y1z" android:includeFontPadding="false" android:layout_below="@id/pbm" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</merge>

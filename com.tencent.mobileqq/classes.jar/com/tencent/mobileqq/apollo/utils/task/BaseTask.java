@@ -14,54 +14,45 @@ import java.util.List;
 public abstract class BaseTask
   implements Handler.Callback
 {
-  public int a;
-  protected long a;
-  protected Context a;
-  protected Handler a;
-  private BaseTask.Callback jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
-  private List<BaseTask> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long = 0L;
-  public String b;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 1;
-  private long jdField_c_of_type_Long = -1L;
+  private List<BaseTask> a = new ArrayList();
+  protected Handler b = new Handler(Looper.getMainLooper());
+  protected Context c;
+  protected long d = 0L;
+  public int e = -1;
+  public String f = "";
+  private BaseTask.Callback g;
+  private int h = 1;
+  private boolean i = false;
+  private boolean j = false;
+  private int k = 1;
+  private long l = 0L;
+  private long m = -1L;
   
   public BaseTask(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_c_of_type_Int = paramInt;
+    this.c = paramContext;
+    this.k = paramInt;
   }
   
   public BaseTask a(BaseTask.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback = paramCallback;
+    this.g = paramCallback;
     return this;
   }
   
   public BaseTask a(BaseTask paramBaseTask)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramBaseTask)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramBaseTask);
+    if (!this.a.contains(paramBaseTask)) {
+      this.a.add(paramBaseTask);
     }
     return this;
-  }
-  
-  public List<BaseTask> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(int paramInt)
   {
     try
     {
-      this.jdField_b_of_type_Int = paramInt;
+      this.h = paramInt;
       return;
     }
     finally
@@ -73,7 +64,7 @@ public abstract class BaseTask
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
+    this.d = (SystemClock.uptimeMillis() - this.l);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Task end: ");
     localStringBuilder.append(getClass().getSimpleName());
@@ -83,50 +74,50 @@ public abstract class BaseTask
     localStringBuilder.append(paramString);
     QLog.i("[cmshow]TaskFlow", 1, localStringBuilder.toString());
     a(3);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    paramString = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+    this.i = false;
+    this.e = paramInt;
+    this.f = paramString;
+    paramString = this.g;
     if (paramString != null) {
       paramString.a(this);
     }
   }
   
-  public boolean a()
+  protected abstract void c();
+  
+  public List<BaseTask> d()
   {
-    return this.jdField_b_of_type_Int == 3;
+    return this.a;
+  }
+  
+  public boolean e()
+  {
+    return this.h == 3;
   }
   
   @NonNull
-  public String b()
+  public String f()
   {
     return getClass().getSimpleName();
   }
   
-  protected abstract void b();
-  
-  public boolean b()
+  public void g()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    int i = this.jdField_b_of_type_Int;
-    if (i == 2) {
+    int n = this.h;
+    if (n == 2) {
       return;
     }
-    if (i == 3)
+    if (n == 3)
     {
-      this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+      this.j = true;
+      localObject = this.g;
       if (localObject != null) {
         ((BaseTask.Callback)localObject).a(this);
       }
       return;
     }
     a(2);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+    Object localObject = this.g;
     if (localObject != null) {
       ((BaseTask.Callback)localObject).b(this);
     }
@@ -136,25 +127,35 @@ public abstract class BaseTask
     QLog.i("[cmshow]TaskFlow", 1, ((StringBuilder)localObject).toString());
     try
     {
-      d();
-      b();
+      i();
+      c();
       return;
     }
     catch (Throwable localThrowable)
     {
       QLog.e("[cmshow]TaskFlow", 1, "task exception!", localThrowable);
-      f();
+      k();
     }
   }
   
-  protected final void d()
+  public boolean h()
   {
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    return this.i;
   }
   
-  public void e()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
+    return false;
+  }
+  
+  protected final void i()
+  {
+    this.l = SystemClock.uptimeMillis();
+  }
+  
+  public void j()
+  {
+    this.d = (SystemClock.uptimeMillis() - this.l);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Task end: ");
     ((StringBuilder)localObject).append(getClass().getSimpleName());
@@ -162,27 +163,22 @@ public abstract class BaseTask
     ((StringBuilder)localObject).append(true);
     QLog.i("[cmshow]TaskFlow", 1, ((StringBuilder)localObject).toString());
     a(3);
-    this.jdField_a_of_type_Boolean = true;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask$Callback;
+    this.i = true;
+    localObject = this.g;
     if (localObject != null) {
       ((BaseTask.Callback)localObject).a(this);
     }
   }
   
-  public void f()
+  public void k()
   {
-    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
+    this.d = (SystemClock.uptimeMillis() - this.l);
     a(-1, "");
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.BaseTask
  * JD-Core Version:    0.7.0.1
  */

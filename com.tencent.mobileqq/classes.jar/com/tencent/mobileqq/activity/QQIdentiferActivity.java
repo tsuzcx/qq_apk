@@ -82,12 +82,15 @@ public class QQIdentiferActivity
   public static final String KEY_FACE_SCANN_ERROR = "isScanError";
   private static final String KEY_UIN = "key_uin";
   private static final int LIGHT_THRESHOLD = 175;
+  private static final int MAX_IDENTIFY_TIMES = 5;
   public static final int MSG_NOTICE_REFRESH_NOTICE = 4;
   public static final int MSG_PAGE_CHANGE = 0;
   public static final int MSG_PAGE_INIT_TIMEOUT = 1;
   public static final int MSG_POST_FILE_TIME_OUT = 5;
+  public static final int MSG_RESULT_FAILFUL_FINISH = 6;
   public static final int MSG_RESULT_SUCESSFUL_FINISH = 3;
   public static final int PAGE_ID_UPLOAD = 2;
+  public static final String REPORT_ACTION_CANCEL_CLICK = "0X800A860";
   public static final String TAG = "qq_Identification.act";
   private static final String TAG_IDENTIFICATION_ERROR_CODE = "tagIdentificationErrorCode";
   private static final String YT_MSG_KEY_CODE = "errorcode";
@@ -120,6 +123,7 @@ public class QQIdentiferActivity
   private long mEnterTime;
   private FaceConf mFaceConf;
   private MqqHandler mHandler = new MqqHandler(this);
+  private int mIdentifyTimes = 0;
   private RelativeLayout mInfoLayout;
   private boolean mIsPreCheckOk;
   private byte[] mLastPreviewData;
@@ -131,7 +135,7 @@ public class QQIdentiferActivity
   private BroadcastReceiver mReceiver = new QQIdentiferActivity.7(this);
   private int mReceiverState;
   private boolean mResultCanRetry;
-  private String mResultErrorStr = HardCodeUtil.a(2131694314);
+  private String mResultErrorStr = HardCodeUtil.a(2131891952);
   private ImageView mResultImg;
   private LinearLayout mResultLayout;
   private boolean mResultSucess;
@@ -191,6 +195,32 @@ public class QQIdentiferActivity
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString, "tagIdentificationErrorCode", this.mResultSucess, 0L, 0L, localHashMap, "");
   }
   
+  private void doResultFail()
+  {
+    if (!this.method.equalsIgnoreCase("studyModeIdentify"))
+    {
+      showFailedResult(this.mResultErrorStr);
+      return;
+    }
+    int i = this.mIdentifyTimes;
+    if (i >= 4)
+    {
+      this.mResultCanRetry = false;
+      showFailedResult(this.mResultErrorStr);
+      this.mIdentifyTimes = 0;
+      this.mHandler.sendEmptyMessageDelayed(6, this.DELAY_RESULT_SUCESSFUL_FINISH);
+      return;
+    }
+    this.mIdentifyTimes = (i + 1);
+    showFailedResult(this.mResultErrorStr);
+  }
+  
+  private void doResultSucess()
+  {
+    showSuccessResult();
+    this.mHandler.sendEmptyMessageDelayed(3, this.DELAY_RESULT_SUCESSFUL_FINISH);
+  }
+  
   private String getAppWording()
   {
     int i = this.mFaceConf.getServiceType();
@@ -229,6 +259,16 @@ public class QQIdentiferActivity
     return localCaptureParam;
   }
   
+  private boolean isNeedsetCancelResult()
+  {
+    if ("studyModeIdentify".equals(this.method))
+    {
+      setCanceledResult(201, IdentificationConstant.h);
+      return true;
+    }
+    return false;
+  }
+  
   private void onFailedResultReport()
   {
     reportByEntrance("0X800A865");
@@ -249,8 +289,13 @@ public class QQIdentiferActivity
       ReportController.a(null, "dc00898", "", "", "0X800AEC3", "0X800AEC3", 0, 0, "", "", "", "");
       return;
     }
-    if ("identify".equals(this.method)) {
+    if ("identify".equals(this.method))
+    {
       QQIdentiferUtil.a(this.mFaceConf.getAppConf(), "0X800B2BF");
+      return;
+    }
+    if ("loginVerify".equals(this.method)) {
+      ReportController.b(null, "dc00898", "", "", "0X800BC46", "0X800BC46", 0, 0, "", "", "", "");
     }
   }
   
@@ -288,23 +333,39 @@ public class QQIdentiferActivity
   {
     if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission("android.permission.CAMERA") != 0))
     {
-      setResult(205, HardCodeUtil.a(2131710314));
+      setResult(205, HardCodeUtil.a(2131908008));
       finish();
       return false;
     }
-    if (!this.mCameraProxy.a())
+    if (!this.mCameraProxy.c())
     {
-      setResult(203, HardCodeUtil.a(2131710312));
-      DialogUtil.a(this, 230, HardCodeUtil.a(2131710326), HardCodeUtil.a(2131710312), "", HardCodeUtil.a(2131691064), new QQIdentiferActivity.5(this), null).show();
+      setResult(203, HardCodeUtil.a(2131908006));
+      DialogUtil.a(this, 230, HardCodeUtil.a(2131908020), HardCodeUtil.a(2131908006), "", HardCodeUtil.a(2131888010), new QQIdentiferActivity.5(this), null).show();
       return false;
     }
     if (isInMultiWindow())
     {
-      setResult(206, IdentificationConstant.b);
+      setResult(206, IdentificationConstant.g);
       finish();
       return false;
     }
     return true;
+  }
+  
+  private void reportBackByEntrance()
+  {
+    int i = QQIdentiferUtil.a(this.method);
+    if ("setFaceData".equals(this.method))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800A860", "0X800A860", i, 0, "1", "", "", "");
+      return;
+    }
+    if ("loginVerify".equals(this.method))
+    {
+      ReportController.a(null, "dc00898", "", "", "0X800A860", "0X800A860", i, 0, "2", "", "", "");
+      return;
+    }
+    ReportController.a(null, "dc00898", "", "", "0X800A860", "0X800A860", i, 0, "", "", "", "");
   }
   
   private void reportByEntrance(String paramString)
@@ -341,6 +402,16 @@ public class QQIdentiferActivity
     return localIntent;
   }
   
+  private void setCanceledResult(int paramInt, String paramString)
+  {
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ret", paramInt);
+    localBundle.putString("errMsg", paramString);
+    localIntent.putExtra("data", localBundle);
+    setResult(0, setAllResults(localIntent));
+  }
+  
   private void setResult(int paramInt, String paramString)
   {
     Intent localIntent = new Intent();
@@ -354,7 +425,7 @@ public class QQIdentiferActivity
   private void updateCancelResult()
   {
     if (this.uploading.get()) {
-      setResult(210, IdentificationConstant.c);
+      setResult(210, IdentificationConstant.h);
     }
   }
   
@@ -375,7 +446,7 @@ public class QQIdentiferActivity
     ((Window)localObject).setFlags(128, 128);
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561122);
+    super.setContentView(2131627472);
     ImmersiveUtils.setStatusTextColor(true, (Window)localObject);
     this.mWordingMap = new HashMap();
     this.mCameraProxy = new FaceCameraProxy();
@@ -406,31 +477,31 @@ public class QQIdentiferActivity
     if ((this.mFaceConf.getAppId() == 101868556) && ("changeSecureMobile".equals(this.method))) {
       this.method = "deleteFace";
     }
-    this.mNoticeLayout = ((LinearLayout)findViewById(2131378819));
-    this.mInfoLayout = ((RelativeLayout)findViewById(2131368443));
-    this.mQIdentityCircleLayout = ((QIdentityCircleLayout)findViewById(2131368442));
-    this.mMaskView = findViewById(2131380366);
-    this.mCameraView = ((QIdentifierCaptureView)findViewById(2131364258));
+    this.mNoticeLayout = ((LinearLayout)findViewById(2131447502));
+    this.mInfoLayout = ((RelativeLayout)findViewById(2131435338));
+    this.mQIdentityCircleLayout = ((QIdentityCircleLayout)findViewById(2131435337));
+    this.mMaskView = findViewById(2131449312);
+    this.mCameraView = ((QIdentifierCaptureView)findViewById(2131430271));
     this.mCameraView.a(false);
     this.mCameraView.setCaptureParam(initCaptureParam());
     this.mCameraView.setPreviewCallback(this);
     this.mCameraView.setCaptureListener(new QQIdentiferActivity.2(this));
-    this.mTitleProgressTv = ((TextView)findViewById(2131373159));
-    this.mResultTv = ((TextView)findViewById(2131378858));
-    this.mResultImg = ((ImageView)findViewById(2131378856));
-    this.mCameraTv = ((TextView)findViewById(2131378820));
-    this.mCameraErrorTv = ((TextView)findViewById(2131364251));
-    this.mYTReflectLayout = ((YTReflectLayout)findViewById(2131381317));
-    this.mCircleView = ((CircleBarView)findViewById(2131381316));
-    this.mBtnLayout = ((RelativeLayout)findViewById(2131378855));
-    this.mResultLayout = ((LinearLayout)findViewById(2131378857));
-    this.ytTips = findViewById(2131381318);
-    this.mBlurIv = ((ImageView)findViewById(2131369300));
-    this.mCircleView.a(getResources().getColor(2131165462));
-    paramBundle = findViewById(2131364259);
+    this.mTitleProgressTv = ((TextView)findViewById(2131440768));
+    this.mResultTv = ((TextView)findViewById(2131447558));
+    this.mResultImg = ((ImageView)findViewById(2131447556));
+    this.mCameraTv = ((TextView)findViewById(2131447503));
+    this.mCameraErrorTv = ((TextView)findViewById(2131430264));
+    this.mYTReflectLayout = ((YTReflectLayout)findViewById(2131450369));
+    this.mCircleView = ((CircleBarView)findViewById(2131450368));
+    this.mBtnLayout = ((RelativeLayout)findViewById(2131447555));
+    this.mResultLayout = ((LinearLayout)findViewById(2131447557));
+    this.ytTips = findViewById(2131450370);
+    this.mBlurIv = ((ImageView)findViewById(2131436290));
+    this.mCircleView.a(getResources().getColor(2131165772));
+    paramBundle = findViewById(2131430272);
     paramBundle.setOnClickListener(this);
     paramBundle.post(new QQIdentiferActivity.3(this, paramBundle));
-    findViewById(2131378854).setOnClickListener(this);
+    findViewById(2131447554).setOnClickListener(this);
     this.uploading.set(false);
     this.mActivityHelper = new IdentificationActivityHelper(this, this.identificationType);
     this.mHandler.sendEmptyMessageDelayed(1, this.PAGE_INIT_TIMEOUT);
@@ -453,6 +524,7 @@ public class QQIdentiferActivity
     this.mEnterTime = System.currentTimeMillis();
     int i = this.mFaceConf.getServiceType();
     paramBundle = this.mRuntime;
+    int j = QQIdentiferUtil.a(this.method);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append("");
@@ -460,7 +532,7 @@ public class QQIdentiferActivity
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(this.identificationType);
-    ReportController.b(paramBundle, "dc00898", "", "", "0X80097EA", "0X80097EA", 0, 0, (String)localObject, localStringBuilder.toString(), String.valueOf(this.mFaceConf.getAppId()), "");
+    ReportController.b(paramBundle, "dc00898", "", "", "0X80097EA", "0X80097EA", j, 0, (String)localObject, localStringBuilder.toString(), String.valueOf(this.mFaceConf.getAppId()), "");
     reportByEntrance("0X800A85F");
     onPageShowReport();
     return true;
@@ -476,11 +548,11 @@ public class QQIdentiferActivity
     this.mHandler.removeCallbacksAndMessages(null);
     this.mSubHandler.removeCallbacksAndMessages(null);
     if (TextUtils.isEmpty(getAppWording())) {
-      SensorShower.a().a();
+      SensorShower.a().b();
     }
     Object localObject = this.mActivityHelper;
     if (localObject != null) {
-      ((IdentificationActivityHelper)localObject).g();
+      ((IdentificationActivityHelper)localObject).k();
     }
     if (this.mReceiverState == 1)
     {
@@ -597,11 +669,16 @@ public class QQIdentiferActivity
       {
         if (i != 4)
         {
-          if (i != 5) {
+          if (i != 5)
+          {
+            if (i != 6) {
+              return false;
+            }
+            finish();
             return false;
           }
           QLog.d("qq_Identification.act", 1, "MSG_POST_FILE_TIME_OUT");
-          showFailedResult(HardCodeUtil.a(2131710306));
+          showFailedResult(HardCodeUtil.a(2131908001));
           return false;
         }
         if ((!TextUtils.isEmpty(this.mNoticeText)) && (!this.isCameraOnPause.get())) {
@@ -629,24 +706,27 @@ public class QQIdentiferActivity
   
   protected boolean onBackEvent()
   {
-    updateCancelResult();
+    if (!isNeedsetCancelResult()) {
+      updateCancelResult();
+    }
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131364259)
+    if (i == 2131430272)
     {
       if (!"setFaceData".equals(this.method))
       {
         QLog.d("qq_Identification.act", 1, "click cancel, method is not METHOD_SETTING_FACE_DATA");
         updateCancelResult();
       }
-      reportByEntrance("0X800A860");
+      isNeedsetCancelResult();
+      reportBackByEntrance();
       finish();
     }
-    else if (i == 2131378854)
+    else if (i == 2131447554)
     {
       reportByEntrance("0X800A866");
       YtSDKKitFramework.getInstance().deInit();
@@ -673,7 +753,7 @@ public class QQIdentiferActivity
     }
     if (paramBoolean)
     {
-      setResult(206, HardCodeUtil.a(2131710313));
+      setResult(206, HardCodeUtil.a(2131908007));
       finish();
     }
   }
@@ -727,7 +807,7 @@ public class QQIdentiferActivity
       }
       else
       {
-        this.mResultErrorStr = HardCodeUtil.a(2131710310);
+        this.mResultErrorStr = HardCodeUtil.a(2131908004);
         setResult(-1, setAllResults(null));
       }
       this.mResultSucess = false;
@@ -756,7 +836,7 @@ public class QQIdentiferActivity
     {
       this.mResultSucess = false;
       this.mResultCanRetry = true;
-      this.mResultErrorStr = HardCodeUtil.a(2131710302);
+      this.mResultErrorStr = HardCodeUtil.a(2131907997);
       setResult(-1, setAllResults(null));
     }
     QLog.d("qq_Identification.act", 1, new Object[] { "onRequestFinish: code=", Integer.valueOf(paramInt), ",ret=", Integer.valueOf(i), "|", this.mResultErrorStr, " isSuccess : ", Boolean.valueOf(this.mResultSucess) });
@@ -773,7 +853,7 @@ public class QQIdentiferActivity
   {
     Object localObject = paramCharSequence;
     if (paramCharSequence == null) {
-      localObject = HardCodeUtil.a(2131710310);
+      localObject = HardCodeUtil.a(2131908004);
     }
     this.mCameraView.onPause();
     this.isCameraOnPause.set(true);
@@ -783,17 +863,17 @@ public class QQIdentiferActivity
     this.mNoticeLayout.setVisibility(8);
     this.mResultLayout.setVisibility(0);
     this.mBtnLayout.setVisibility(0);
-    this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+    this.mInfoLayout.findViewById(2131447551).setVisibility(8);
     this.mResultTv.setText((CharSequence)localObject);
-    this.mResultImg.setImageResource(2130840440);
+    this.mResultImg.setImageResource(2130841202);
     this.mCircleView.a();
-    this.mCircleView.a(getResources().getColor(2131165462));
+    this.mCircleView.a(getResources().getColor(2131165772));
     this.mCircleView.b(this.faceClear);
     this.mMaskView.setVisibility(0);
     this.mHandler.removeMessages(5);
     this.isReflecting.set(false);
     blueLastFrameAsync();
-    paramCharSequence = findViewById(2131378854);
+    paramCharSequence = findViewById(2131447554);
     if (!this.mResultCanRetry) {
       i = 8;
     }
@@ -804,7 +884,7 @@ public class QQIdentiferActivity
   
   public void showRetryView()
   {
-    this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+    this.mInfoLayout.findViewById(2131447551).setVisibility(8);
     this.mResultLayout.setVisibility(8);
     this.mBtnLayout.setVisibility(8);
     this.mNoticeLayout.setVisibility(0);
@@ -845,12 +925,12 @@ public class QQIdentiferActivity
     this.isScaningFace.set(false);
     this.mNoticeLayout.setVisibility(8);
     this.ytTips.setVisibility(0);
-    this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+    this.mInfoLayout.findViewById(2131447551).setVisibility(8);
     this.mResultLayout.setVisibility(0);
-    this.mResultTv.setText(HardCodeUtil.a(2131710318));
-    this.mResultImg.setImageResource(2130840441);
+    this.mResultTv.setText(HardCodeUtil.a(2131908012));
+    this.mResultImg.setImageResource(2130841203);
     this.mBtnLayout.setVisibility(0);
-    findViewById(2131378854).setVisibility(8);
+    findViewById(2131447554).setVisibility(8);
     this.mCircleView.a();
     this.mCircleView.a(this.faceOk);
     this.mCircleView.b(this.faceClear);
@@ -893,14 +973,14 @@ public class QQIdentiferActivity
     this.isCameraOnPause.set(true);
     this.isScaningFace.set(false);
     this.mNoticeLayout.setVisibility(8);
-    this.mInfoLayout.findViewById(2131378851).setVisibility(0);
+    this.mInfoLayout.findViewById(2131447551).setVisibility(0);
     this.mMaskView.setVisibility(0);
-    this.mTitleProgressTv.setText(HardCodeUtil.a(2131710303));
-    findViewById(2131368859).setVisibility(8);
-    addWordingRecord(HardCodeUtil.a(2131710303));
+    this.mTitleProgressTv.setText(HardCodeUtil.a(2131907998));
+    findViewById(2131435793).setVisibility(8);
+    addWordingRecord(HardCodeUtil.a(2131907998));
     this.mCircleView.a(this.faceClear);
     this.mCircleView.b(this.faceOk);
-    this.mCircleView.a(1000);
+    this.mCircleView.c(1000);
     blueLastFrameAsync();
     this.mHandler.sendEmptyMessageDelayed(5, 60000L);
   }
@@ -911,7 +991,7 @@ public class QQIdentiferActivity
     if (paramBoolean)
     {
       this.mNoticeLayout.setVisibility(4);
-      this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+      this.mInfoLayout.findViewById(2131447551).setVisibility(8);
       if (!TextUtils.isEmpty(getAppWording()))
       {
         String str = getAppWording();
@@ -920,20 +1000,20 @@ public class QQIdentiferActivity
       }
       this.initYTFinish = true;
       this.mMaskView.setVisibility(8);
-      findViewById(2131364259).post(new QQIdentiferActivity.8(this));
+      findViewById(2131430272).post(new QQIdentiferActivity.8(this));
       return;
     }
     setResult(paramInt, this.mResultErrorStr);
-    showFailedResult(HardCodeUtil.a(2131710319));
+    showFailedResult(HardCodeUtil.a(2131908013));
   }
   
   public void showYTSdkInitStart()
   {
     this.mNoticeLayout.setVisibility(8);
-    this.mInfoLayout.findViewById(2131378851).setVisibility(0);
+    this.mInfoLayout.findViewById(2131447551).setVisibility(0);
     this.mMaskView.setVisibility(0);
-    this.mTitleProgressTv.setText(HardCodeUtil.a(2131710309));
-    addWordingRecord(HardCodeUtil.a(2131710309));
+    this.mTitleProgressTv.setText(HardCodeUtil.a(2131908003));
+    addWordingRecord(HardCodeUtil.a(2131908003));
   }
   
   public void updateLightReflect(ColorMatrixColorFilter paramColorMatrixColorFilter)
@@ -951,7 +1031,7 @@ public class QQIdentiferActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity
  * JD-Core Version:    0.7.0.1
  */

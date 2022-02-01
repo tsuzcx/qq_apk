@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/au0"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n9p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:checked="false" android:src="@drawable/i3n" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/obh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="44.0dip" android:layout_toRightOf="@id/dq1" android:layout_centerVertical="true">
-        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/dr7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bg_" android:maxLines="1" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/aoz" android:ellipsize="end" android:id="@id/j64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-    </LinearLayout>
-    <com.tencent.image.URLImageView android:id="@id/dq1" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/o3r" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" />
+    <TextView android:id="@id/o3x" android:layout_width="10.0dip" android:layout_height="8.5dip" android:layout_marginLeft="6.0dip" android:layout_alignLeft="@id/o3r" android:layout_alignBottom="@id/o3r" />
+    <TextView android:textSize="12.0sp" android:ellipsize="end" android:id="@id/o3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/o3r" />
 </RelativeLayout>

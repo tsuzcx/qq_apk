@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.kandian.glue.report;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.mini.notify.MiniAppNotify;
 import com.tencent.mobileqq.mini.notify.MiniAppNotify.IMiniAppNotifyListener;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -18,41 +17,34 @@ import org.json.JSONObject;
 public final class RIJMiniProgrameReporter
   extends ReadInJoyGlobalReporter
 {
-  public static final RIJMiniProgrameReporter a;
+  public static final RIJMiniProgrameReporter a = new RIJMiniProgrameReporter();
   @NotNull
-  private static final MiniAppNotify.IMiniAppNotifyListener a;
-  private static int b = 0;
+  private static final String m = "0X800B969";
+  @Nullable
+  private static String n;
+  @Nullable
+  private static String o;
+  private static int p;
+  @Nullable
+  private static String q;
+  @Nullable
+  private static String r;
   @NotNull
-  private static final String f = "0X800B969";
-  @Nullable
-  private static String g;
-  @Nullable
-  private static String h;
-  @Nullable
-  private static String i;
-  @Nullable
-  private static String j;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueReportRIJMiniProgrameReporter = new RIJMiniProgrameReporter();
-    f = "0X800B969";
-    jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener = (MiniAppNotify.IMiniAppNotifyListener)RIJMiniProgrameReporter.miniAppNotifyListener.1.a;
-  }
+  private static final MiniAppNotify.IMiniAppNotifyListener s = (MiniAppNotify.IMiniAppNotifyListener)RIJMiniProgrameReporter.miniAppNotifyListener.1.a;
   
   public void a()
   {
     super.a();
     try
     {
-      JSONObject localJSONObject = a();
+      JSONObject localJSONObject = h();
       Intrinsics.checkExpressionValueIsNotNull(localJSONObject, "getReportR5()");
-      localJSONObject.put("from_page", b);
-      localJSONObject.put("rowkey", i);
-      localJSONObject.put("mini_program_name", g);
-      localJSONObject.put("movie_name", h);
-      localJSONObject.put("duration", a());
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, j, f, f, 0, 0, a(), "", "", localJSONObject.toString(), false);
+      localJSONObject.put("from_page", p);
+      localJSONObject.put("rowkey", q);
+      localJSONObject.put("mini_program_name", n);
+      localJSONObject.put("movie_name", o);
+      localJSONObject.put("duration", i());
+      PublicAccountReportUtils.a(null, r, m, m, 0, 0, i(), "", "", localJSONObject.toString(), false);
       d();
       return;
     }
@@ -64,65 +56,65 @@ public final class RIJMiniProgrameReporter
   
   public final void a(int paramInt)
   {
-    b = paramInt;
+    p = paramInt;
   }
   
   public final void a(@Nullable String paramString)
   {
-    g = paramString;
+    n = paramString;
   }
   
   public final void b()
   {
-    MiniAppNotify.g.register(jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener);
+    MiniAppNotify.g.register(s);
   }
   
   public final void b(@Nullable String paramString)
   {
-    h = paramString;
+    o = paramString;
   }
   
   public final void c()
   {
-    MiniAppNotify.g.remove(jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener);
+    MiniAppNotify.g.remove(s);
   }
   
   public final void c(@Nullable String paramString)
   {
-    i = paramString;
+    q = paramString;
   }
   
   public final void d()
   {
     String str = (String)null;
-    g = str;
-    h = str;
-    b = 0;
-    i = str;
+    n = str;
+    o = str;
+    p = 0;
+    q = str;
   }
   
   public final void d(@Nullable String paramString)
   {
-    j = paramString;
+    r = paramString;
   }
   
   public final void e(@Nullable String paramString)
   {
     if (Intrinsics.areEqual("onResume", paramString))
     {
-      int k = RIJAppSetting.a();
-      int m = RIJKanDianFolderStatus.reportFolderStatus;
-      a(null, NetConnInfoCenter.getServerTimeMillis(), k, m);
+      int i = RIJAppSetting.b();
+      int j = RIJKanDianFolderStatus.reportFolderStatus;
+      a(null, NetConnInfoCenter.getServerTimeMillis(), i, j);
       return;
     }
-    if ((Intrinsics.areEqual("onPause", paramString)) && (a() > 0L)) {
+    if ((Intrinsics.areEqual("onPause", paramString)) && (g() > 0L)) {
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJMiniProgrameReporter
  * JD-Core Version:    0.7.0.1
  */

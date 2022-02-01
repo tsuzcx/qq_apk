@@ -21,14 +21,14 @@ class ColorRingManager$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDone, status=");
-      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      ((StringBuilder)localObject).append(paramDownloadTask.e());
       QLog.d("ColorRingManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = paramDownloadTask.a();
+    Object localObject = paramDownloadTask.b();
     int i = ((Bundle)localObject).getInt("callId");
     int j = ((Bundle)localObject).getInt("resourceType");
     boolean bool1;
-    if (paramDownloadTask.a() == 3) {
+    if (paramDownloadTask.e() == 3) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -56,7 +56,7 @@ class ColorRingManager$1
         }
       }
     }
-    if ((this.a.a != null) && (paramDownloadTask.a().getBoolean("isIPC")))
+    if ((this.a.a != null) && (paramDownloadTask.b().getBoolean("isIPC")))
     {
       paramDownloadTask = new Bundle();
       paramDownloadTask.putString("status", "onDone");
@@ -81,21 +81,21 @@ class ColorRingManager$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onProgress, loaded=");
-      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      ((StringBuilder)localObject).append(paramDownloadTask.k);
       ((StringBuilder)localObject).append("percent=");
-      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(paramDownloadTask.l);
       QLog.d("ColorRingManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramDownloadTask.a().getBoolean("isIPC")) && (this.a.a != null))
+    if ((paramDownloadTask.b().getBoolean("isIPC")) && (this.a.a != null))
     {
-      localObject = paramDownloadTask.a();
+      localObject = paramDownloadTask.b();
       Bundle localBundle = new Bundle();
       localBundle.putString("status", "onProgress");
       localBundle.putInt("fcStatus", 2);
       localBundle.putInt("id", ((Bundle)localObject).getInt("callId"));
       localBundle.putInt("callId", ((Bundle)localObject).getInt("callId"));
       localBundle.putInt("srcType", ((Bundle)localObject).getInt("srcType"));
-      localBundle.putInt("progress", (int)paramDownloadTask.a);
+      localBundle.putInt("progress", (int)paramDownloadTask.l);
       localBundle.putInt("resourceType", ((Bundle)localObject).getInt("resourceType"));
       localBundle.putString("colorType", ((Bundle)localObject).getString("colorType"));
       this.a.a.a(localBundle);
@@ -109,14 +109,14 @@ class ColorRingManager$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onStart, loaded=");
-      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      ((StringBuilder)localObject).append(paramDownloadTask.k);
       ((StringBuilder)localObject).append("percent=");
-      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(paramDownloadTask.l);
       QLog.d("ColorRingManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramDownloadTask.a().getBoolean("isIPC")) && (this.a.a != null))
+    if ((paramDownloadTask.b().getBoolean("isIPC")) && (this.a.a != null))
     {
-      paramDownloadTask = paramDownloadTask.a();
+      paramDownloadTask = paramDownloadTask.b();
       localObject = new Bundle();
       ((Bundle)localObject).putString("status", "onStart");
       ((Bundle)localObject).putInt("id", paramDownloadTask.getInt("callId"));
@@ -132,7 +132,7 @@ class ColorRingManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingManager.1
  * JD-Core Version:    0.7.0.1
  */

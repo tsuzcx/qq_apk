@@ -11,32 +11,32 @@ import java.lang.ref.WeakReference;
 class TraeHelper$ActionSheetCustomAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  TraeHelper.SoundOutputRes jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
+  TraeHelper.SoundOutputRes a;
+  private WeakReference<Context> b;
+  private int c;
+  private String[] d = null;
   
   TraeHelper$ActionSheetCustomAdapter(Context paramContext, @NonNull TraeHelper.SoundOutputRes paramSoundOutputRes)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes = paramSoundOutputRes;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramSoundOutputRes.a();
+    this.b = new WeakReference(paramContext);
+    this.c = 0;
+    this.a = paramSoundOutputRes;
+    this.d = paramSoundOutputRes.b();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(Context paramContext, @NonNull TraeHelper.SoundOutputRes paramSoundOutputRes)
   {
     if (paramContext != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+      this.b = new WeakReference(paramContext);
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramSoundOutputRes.a();
-    this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes = paramSoundOutputRes;
+    this.d = paramSoundOutputRes.b();
+    this.a = paramSoundOutputRes;
     notifyDataSetInvalidated();
   }
   
@@ -47,7 +47,7 @@ class TraeHelper$ActionSheetCustomAdapter
     while (i < j)
     {
       TraeHelper.SoundOutputRes.IconAndName localIconAndName = (TraeHelper.SoundOutputRes.IconAndName)getItem(i);
-      if ((localIconAndName != null) && (localIconAndName.jdField_a_of_type_JavaLangString != null) && (localIconAndName.jdField_a_of_type_JavaLangString.equals(paramString)))
+      if ((localIconAndName != null) && (localIconAndName.a != null) && (localIconAndName.a.equals(paramString)))
       {
         a(i);
         return;
@@ -58,7 +58,7 @@ class TraeHelper$ActionSheetCustomAdapter
   
   public int getCount()
   {
-    TraeHelper.SoundOutputRes localSoundOutputRes = this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes;
+    TraeHelper.SoundOutputRes localSoundOutputRes = this.a;
     if (localSoundOutputRes != null) {
       return localSoundOutputRes.a();
     }
@@ -67,7 +67,7 @@ class TraeHelper$ActionSheetCustomAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    return this.a.a(this.d[paramInt]);
   }
   
   public long getItemId(int paramInt)
@@ -82,20 +82,20 @@ class TraeHelper$ActionSheetCustomAdapter
     if (localIconAndName != null) {
       if (paramView == null)
       {
-        localObject = new TraeHelper.ActionSheetCustomView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localIconAndName.jdField_a_of_type_Int, localIconAndName.b);
+        localObject = new TraeHelper.ActionSheetCustomView((Context)this.b.get(), localIconAndName.b, localIconAndName.c);
       }
       else
       {
         localObject = (TraeHelper.ActionSheetCustomView)paramView;
+        ((TraeHelper.ActionSheetCustomView)localObject).a(localIconAndName.c);
+        paramView.setContentDescription(localIconAndName.c);
         ((TraeHelper.ActionSheetCustomView)localObject).a(localIconAndName.b);
-        paramView.setContentDescription(localIconAndName.b);
-        ((TraeHelper.ActionSheetCustomView)localObject).a(localIconAndName.jdField_a_of_type_Int);
         localObject = paramView;
       }
     }
     paramView = (TraeHelper.ActionSheetCustomView)localObject;
     boolean bool;
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (paramInt == this.c) {
       bool = true;
     } else {
       bool = false;

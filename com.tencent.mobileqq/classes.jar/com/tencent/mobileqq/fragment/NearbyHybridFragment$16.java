@@ -23,7 +23,7 @@ class NearbyHybridFragment$16
   
   public void onClick(View paramView)
   {
-    Object localObject = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin(), "nearby_mine_page_url", "");
+    Object localObject = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.k.getCurrentAccountUin(), "nearby_mine_page_url", "");
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
@@ -35,16 +35,16 @@ class NearbyHybridFragment$16
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       paramView = "https://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218";
     }
-    localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
+    localObject = new Intent(this.a.ag, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", paramView);
     this.a.getActivity().startActivity((Intent)localObject);
-    paramView = (AppInterface)this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
+    paramView = (AppInterface)this.a.k;
     boolean bool = false;
     NearbyUtils.b(paramView, "my_click", 0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.c();
+    if (this.a.Z != null) {
+      bool = this.a.Z.h();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getNearbyProcManager().a(42);
+    this.a.k.getNearbyProcManager().b(42);
     try
     {
       paramView = new StringBuilder();
@@ -58,7 +58,7 @@ class NearbyHybridFragment$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.16
  * JD-Core Version:    0.7.0.1
  */

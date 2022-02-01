@@ -15,17 +15,17 @@ class QQGamePubAIOHelper$12
   
   public void run()
   {
-    if (QQGamePubAIOHelper.a(this.this$0).c != null)
+    if (QQGamePubAIOHelper.a(this.this$0).aZ != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)QQGamePubAIOHelper.a(this.this$0).c.findViewById(2131362288);
-      String str = QQGamePubAIOHelper.a(this.this$0).a().getIntent().getStringExtra("qqgame_msg_page_appid_key");
-      ((IQQGameSubscribeService)QQGamePubAIOHelper.a(this.this$0).getRuntimeService(IQQGameSubscribeService.class)).handleGameInfoUiOnRsp(localViewGroup, str, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo, this.jdField_a_of_type_Boolean);
+      ViewGroup localViewGroup = (ViewGroup)QQGamePubAIOHelper.a(this.this$0).aZ.findViewById(2131427887);
+      String str = QQGamePubAIOHelper.a(this.this$0).aX().getIntent().getStringExtra("qqgame_msg_page_appid_key");
+      ((IQQGameSubscribeService)QQGamePubAIOHelper.d(this.this$0).getRuntimeService(IQQGameSubscribeService.class)).handleGameInfoUiOnRsp(localViewGroup, str, this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.12
  * JD-Core Version:    0.7.0.1
  */

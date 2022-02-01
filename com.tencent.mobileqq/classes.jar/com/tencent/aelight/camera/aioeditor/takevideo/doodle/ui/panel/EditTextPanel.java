@@ -24,13 +24,13 @@ public class EditTextPanel
   implements OnHolderItemClickListener
 {
   public static String a = "EditTextPanel";
-  int jdField_a_of_type_Int = -1;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  private DynamicTextConfigManager.IDynamicTextResDownloadCallback jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback = new EditTextPanel.2(this);
-  EditTextEffectView jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView;
-  EditTextPanel.EditTextPanelListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener;
-  int b;
-  int c = 0;
+  EditTextEffectView b;
+  int c = -1;
+  int d;
+  EditTextPanel.EditTextPanelListener e;
+  EditText f;
+  int g = 0;
+  private DynamicTextConfigManager.IDynamicTextResDownloadCallback h = new EditTextPanel.2(this);
   
   public EditTextPanel(Context paramContext)
   {
@@ -40,16 +40,16 @@ public class EditTextPanel
   public EditTextPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView = new EditTextEffectView(paramContext, this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.setClipToPadding(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.setPadding(0, 0, EditTextEffectView.b, 0);
+    this.b = new EditTextEffectView(paramContext, this);
+    this.b.setClipToPadding(false);
+    this.b.setPadding(0, 0, EditTextEffectView.b, 0);
     paramContext = new RelativeLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView, paramContext);
+    addView(this.b, paramContext);
   }
   
   private void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt)
   {
-    EditTextPanel.EditTextPanelListener localEditTextPanelListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener;
+    EditTextPanel.EditTextPanelListener localEditTextPanelListener = this.e;
     if (localEditTextPanelListener != null) {
       localEditTextPanelListener.a(paramDynamicTextConfigBean, paramInt);
     }
@@ -57,13 +57,13 @@ public class EditTextPanel
   
   public int a(int paramInt)
   {
-    paramInt = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.a(paramInt);
+    paramInt = this.b.a(paramInt);
     if (paramInt >= 0)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.a(paramInt);
+      this.b.b(paramInt);
       postDelayed(new EditTextPanel.1(this, paramInt), 200L);
-      this.b = paramInt;
-      this.jdField_a_of_type_Int = paramInt;
+      this.d = paramInt;
+      this.c = paramInt;
     }
     return paramInt;
   }
@@ -72,7 +72,7 @@ public class EditTextPanel
   {
     try
     {
-      DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.a(paramInt2);
+      DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = this.b.c(paramInt2);
       return localDynamicTextConfigBean;
     }
     catch (Exception localException)
@@ -80,12 +80,12 @@ public class EditTextPanel
       localException.printStackTrace();
       if (QLog.isColorLevel())
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getSelectedItem");
         localStringBuilder.append(paramInt1);
         localStringBuilder.append(" ");
-        localStringBuilder.append(this.b);
+        localStringBuilder.append(this.d);
         localStringBuilder.append("itemPosition=");
         localStringBuilder.append(paramInt2);
         QLog.i(str, 2, localStringBuilder.toString());
@@ -94,16 +94,11 @@ public class EditTextPanel
     return null;
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2, false);
-  }
-  
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("selectItem position = ");
       localStringBuilder.append(paramInt2);
@@ -113,28 +108,28 @@ public class EditTextPanel
     if (localObject != null) {
       a((DynamicTextConfigManager.DynamicTextConfigBean)localObject, paramInt2);
     } else if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "cancelChoose");
+      QLog.d(a, 2, "cancelChoose");
     }
-    this.b = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.a(paramInt2);
+    this.d = paramInt2;
+    this.c = paramInt1;
+    this.b.b(paramInt2);
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onItemClick position = ");
       localStringBuilder.append(paramInt1);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.c = paramInt1;
+    this.g = paramInt1;
     Object localObject = a(paramInt2, paramInt1);
     if (localObject != null)
     {
-      if (AppSetting.d) {
+      if (AppSetting.e) {
         try
         {
           AccessibilityUtils.a(paramView, DynamicTextBuilder.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id, 0));
@@ -147,25 +142,30 @@ public class EditTextPanel
       DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)QIMManager.a(7);
       if (localDynamicTextConfigManager.a((DynamicTextConfigManager.DynamicTextConfigBean)localObject))
       {
-        a(paramInt2, paramInt1);
+        b(paramInt2, paramInt1);
         return;
       }
       if (NetConnInfoCenter.isMobileConn())
       {
-        FMDialogUtil.a(paramView.getContext(), 2131698351, 2131698350, new EditTextPanel.3(this, localDynamicTextConfigManager, (DynamicTextConfigManager.DynamicTextConfigBean)localObject));
+        FMDialogUtil.a(paramView.getContext(), 2131896275, 2131896274, new EditTextPanel.3(this, localDynamicTextConfigManager, (DynamicTextConfigManager.DynamicTextConfigBean)localObject));
         return;
       }
-      localDynamicTextConfigManager.a((DynamicTextConfigManager.DynamicTextConfigBean)localObject, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback);
+      localDynamicTextConfigManager.a((DynamicTextConfigManager.DynamicTextConfigBean)localObject, this.h);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onItemClick item null");
+      QLog.d(a, 2, "onItemClick item null");
     }
   }
   
   public void a(EditText paramEditText)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.f = paramEditText;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, paramInt2, false);
   }
   
   public void b(View paramView, int paramInt1, int paramInt2) {}
@@ -177,17 +177,17 @@ public class EditTextPanel
   
   public void setEditPhoto(boolean paramBoolean)
   {
-    EditTextEffectView localEditTextEffectView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView;
+    EditTextEffectView localEditTextEffectView = this.b;
     if (localEditTextEffectView != null)
     {
       localEditTextEffectView.setEditPhoto(paramBoolean);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView.a();
+      this.b.a();
     }
   }
   
   public void setOpIn(int paramInt)
   {
-    EditTextEffectView localEditTextEffectView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView;
+    EditTextEffectView localEditTextEffectView = this.b;
     if (localEditTextEffectView != null) {
       localEditTextEffectView.setOpIn(paramInt);
     }
@@ -195,12 +195,12 @@ public class EditTextPanel
   
   public void setPanelListener(EditTextPanel.EditTextPanelListener paramEditTextPanelListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener = paramEditTextPanelListener;
+    this.e = paramEditTextPanelListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextPanel
  * JD-Core Version:    0.7.0.1
  */

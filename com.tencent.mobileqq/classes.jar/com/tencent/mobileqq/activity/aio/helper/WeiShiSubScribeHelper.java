@@ -43,18 +43,18 @@ public class WeiShiSubScribeHelper
         if (paramInt != 15) {
           return;
         }
-        SubscribePlayerManager.a().c();
+        SubscribePlayerManager.a().d();
         return;
       }
-      SubscribePlayerManager.a().b();
+      SubscribePlayerManager.a().c();
       return;
     }
-    SubscribePlayerManager.a().a();
+    SubscribePlayerManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.WeiShiSubScribeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -6,25 +6,25 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 class CmShowAESurfaceView$3
   implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int = 0;
+  int a = 0;
   
   CmShowAESurfaceView$3(CmShowAESurfaceView paramCmShowAESurfaceView) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_Int > i)
+    if (this.a > i)
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView;
-      CmShowAESurfaceView.a(paramValueAnimator, CmShowAESurfaceView.a(paramValueAnimator) + CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView));
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.requestRender();
+      paramValueAnimator = this.b;
+      CmShowAESurfaceView.a(paramValueAnimator, CmShowAESurfaceView.b(paramValueAnimator) + CmShowAESurfaceView.c(this.b));
+      this.b.requestRender();
     }
-    this.jdField_a_of_type_Int = i;
+    this.a = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.3
  * JD-Core Version:    0.7.0.1
  */

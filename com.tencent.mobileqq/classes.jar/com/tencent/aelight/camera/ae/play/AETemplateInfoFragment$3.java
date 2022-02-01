@@ -12,13 +12,13 @@ class AETemplateInfoFragment$3
   
   public void onClick(View paramView)
   {
-    AECameraLauncher.a(this.this$0.getBaseActivity(), 1024, AECameraEntry.K.a(), null);
+    AECameraLauncher.a(this.this$0.getBaseActivity(), 1024, AECameraEntry.M.a(), null);
     AETemplateInfoFragment.access$200(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AETemplateInfoFragment.3
  * JD-Core Version:    0.7.0.1
  */

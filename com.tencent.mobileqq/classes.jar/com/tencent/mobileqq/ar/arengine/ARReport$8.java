@@ -12,8 +12,8 @@ class ARReport$8
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
+    localHashMap.put("alltime", String.valueOf(this.a));
+    if (this.b) {
       localHashMap.put("result", "0");
     } else {
       localHashMap.put("result", "1");
@@ -23,7 +23,7 @@ class ARReport$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.8
  * JD-Core Version:    0.7.0.1
  */

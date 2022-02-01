@@ -6,10 +6,10 @@ import org.json.JSONObject;
 class a$c
 {
   public int a;
-  public long a;
-  public String a;
-  public int b;
   public String b;
+  public long c;
+  public int d;
+  public String e;
   
   public boolean a(JSONObject paramJSONObject)
   {
@@ -30,11 +30,11 @@ class a$c
     }
     try
     {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("index");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("action");
-      this.jdField_a_of_type_Long = paramJSONObject.getLong("offset");
-      this.jdField_b_of_type_Int = paramJSONObject.getInt("size");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("content");
+      this.a = paramJSONObject.getInt("index");
+      this.b = paramJSONObject.getString("action");
+      this.c = paramJSONObject.getLong("offset");
+      this.d = paramJSONObject.getInt("size");
+      this.e = paramJSONObject.getString("content");
       return true;
     }
     catch (JSONException paramJSONObject)
@@ -46,7 +46,7 @@ class a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.a.a.c
  * JD-Core Version:    0.7.0.1
  */

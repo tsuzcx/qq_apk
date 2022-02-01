@@ -12,11 +12,6 @@ public class NowDefaultStrategy
     return null;
   }
   
-  public String a(Bundle paramBundle)
-  {
-    return null;
-  }
-  
   public void a(Bundle paramBundle, IDoneCallback paramIDoneCallback)
   {
     if (paramIDoneCallback != null) {
@@ -38,10 +33,15 @@ public class NowDefaultStrategy
   {
     return false;
   }
+  
+  public String b(Bundle paramBundle)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.NowDefaultStrategy
  * JD-Core Version:    0.7.0.1
  */

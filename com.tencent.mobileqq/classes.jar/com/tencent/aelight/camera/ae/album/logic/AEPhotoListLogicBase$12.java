@@ -38,17 +38,17 @@ class AEPhotoListLogicBase$12
     ((StringBuilder)localObject).append(", exInfo=");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append("\nvideoPath=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     AEQLog.d("AEPhotoListLogicBase", ((StringBuilder)localObject).toString());
-    paramString = this.jdField_a_of_type_JavaLangString;
-    if ((paramString != null) && (paramString.equals(AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase))) && (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.contains(this.jdField_a_of_type_JavaLangString)))
+    paramString = this.b;
+    if ((paramString != null) && (paramString.equals(AEPhotoListLogicBase.f(this.c))) && (this.c.c.selectedPhotoList.contains(this.b)))
     {
-      paramInt1 = AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase, this.jdField_a_of_type_JavaLangString);
+      paramInt1 = AEPhotoListLogicBase.a(this.c, this.b);
       if (paramInt1 != -1)
       {
-        paramString = (AEAbstractPhotoListFragment.PhotoVH)((AEAbstractPhotoListFragment)this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(paramInt1);
-        localObject = ((AEAbstractPhotoListFragment)this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoGridAdapter.a(paramInt1);
-        AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase, paramInt1, (LocalMediaInfo)localObject, paramString);
+        paramString = (AEAbstractPhotoListFragment.PhotoVH)((AEAbstractPhotoListFragment)this.c.b.get()).r.findViewHolderForAdapterPosition(paramInt1);
+        localObject = ((AEAbstractPhotoListFragment)this.c.b.get()).d.a(paramInt1);
+        AEPhotoListLogicBase.a(this.c, paramInt1, (LocalMediaInfo)localObject, paramString);
       }
     }
   }
@@ -68,22 +68,22 @@ class AEPhotoListLogicBase$12
         if (paramInt != 9) {
           return;
         }
-        AEPhotoListLogicBase.c(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase);
+        AEPhotoListLogicBase.e(this.c);
         return;
       }
-      AEPhotoListLogicBase.c(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase);
-      ((AEAbstractPhotoListFragment)this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.jdField_a_of_type_MqqUtilWeakReference.get()).a(true);
+      AEPhotoListLogicBase.e(this.c);
+      ((AEAbstractPhotoListFragment)this.c.b.get()).a(true);
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsMute) {
-      AEPhotoListLogicBase.b(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase);
+    if (!this.a.mIsMute) {
+      AEPhotoListLogicBase.d(this.c);
     }
-    ((AEAbstractPhotoListFragment)this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.jdField_a_of_type_MqqUtilWeakReference.get()).a(false);
+    ((AEAbstractPhotoListFragment)this.c.b.get()).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.12
  * JD-Core Version:    0.7.0.1
  */

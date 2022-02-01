@@ -16,9 +16,9 @@ class TroopCardGroup$1
 {
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (searchtab.Item1)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramAdapterView = (searchtab.Item1)this.a.e.get(paramInt);
     TroopCardGroup.a(this.a, paramAdapterView);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_grpdata", 0, 0, String.valueOf(paramAdapterView.uint64_group_code.get()), this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
+    ReportController.b(this.a.c, "P_CliOper", "Grp_find", "", "grptab", "Clk_grpdata", 0, 0, String.valueOf(paramAdapterView.uint64_group_code.get()), this.a.d.title_bar.str_desc.get(), "", "");
   }
 }
 

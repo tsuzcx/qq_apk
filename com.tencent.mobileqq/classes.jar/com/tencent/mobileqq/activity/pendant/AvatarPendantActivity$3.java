@@ -42,11 +42,11 @@ class AvatarPendantActivity$3
       QLog.d("AvatarPendantActivity", 2, localStringBuilder.toString());
       if (i == 0)
       {
-        this.a.r = 0;
+        this.a.w = 0;
         return;
       }
       Object localObject = this.a;
-      ((AvatarPendantActivity)localObject).r = 1;
+      ((AvatarPendantActivity)localObject).w = 1;
       localObject = new Intent((Context)localObject, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramFaceRsp.url);
       this.a.startActivity((Intent)localObject);
@@ -55,7 +55,7 @@ class AvatarPendantActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.3
  * JD-Core Version:    0.7.0.1
  */

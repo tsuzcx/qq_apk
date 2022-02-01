@@ -23,6 +23,7 @@ public class PicMessageExtraData
   public int imageBizType;
   public String mAdEmoDescStr;
   public String mAdEmoJumpUrl;
+  public String mDownloadIndex;
   public String mTemplateId;
   public String mTemplateName;
   public String packageName;
@@ -53,6 +54,7 @@ public class PicMessageExtraData
     this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
     this.mAdEmoJumpUrl = paramResvAttr.string_ad_emo_jump_url.get();
     this.mAdEmoDescStr = paramResvAttr.string_ad_emo_desc_str.get();
+    this.mDownloadIndex = paramResvAttr.bytes_download_index.get().toStringUtf8();
   }
   
   public PicMessageExtraData(NotOnlineImageExtPb.ResvAttr paramResvAttr)
@@ -126,6 +128,9 @@ public class PicMessageExtraData
     }
     if (!TextUtils.isEmpty(this.mAdEmoDescStr)) {
       localResvAttr.string_ad_emo_desc_str.set(this.mAdEmoDescStr);
+    }
+    if (!TextUtils.isEmpty(this.mDownloadIndex)) {
+      localResvAttr.bytes_download_index.set(ByteStringMicro.copyFromUtf8(this.mDownloadIndex));
     }
     return localResvAttr;
   }
@@ -261,7 +266,7 @@ public class PicMessageExtraData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PicMessageExtraData
  * JD-Core Version:    0.7.0.1
  */

@@ -74,7 +74,7 @@ public class StructMsgItemLayout8
   {
     if (paramView != null)
     {
-      if (this.p == 0)
+      if (this.av == 0)
       {
         super.a(paramView);
         return;
@@ -119,7 +119,7 @@ public class StructMsgItemLayout8
       {
         localObject = new float[8];
       }
-      localObject = a(paramView.getResources(), this.p, (float[])localObject);
+      localObject = a(paramView.getResources(), this.av, (float[])localObject);
       if (Build.VERSION.SDK_INT < 16)
       {
         paramView.setBackgroundDrawable((Drawable)localObject);
@@ -129,16 +129,11 @@ public class StructMsgItemLayout8
     }
   }
   
-  protected int b()
-  {
-    return 8;
-  }
-  
   @TargetApi(16)
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     Resources localResources = paramContext.getResources();
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = this.ax.size();
     RelativeLayout localRelativeLayout;
     int i;
     Object localObject;
@@ -160,9 +155,9 @@ public class StructMsgItemLayout8
             paramView = localRelativeLayout;
             break;
           }
-          paramView = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-          localObject = paramView.jdField_a_of_type_JavaLangString;
+          paramView = (AbsStructMsgElement)this.ax.get(i);
+          paramView.ar = this.ar;
+          localObject = paramView.b;
           if ("picture".equals(localObject))
           {
             paramView = (ImageView)paramView.a(paramContext, localRelativeLayout.findViewById(1), paramBundle);
@@ -174,9 +169,9 @@ public class StructMsgItemLayout8
           else if ("title".equals(localObject))
           {
             localObject = (StructMsgItemTitle)paramView;
-            ((StructMsgItemTitle)localObject).c("30");
+            ((StructMsgItemTitle)localObject).d("30");
             ((StructMsgItemTitle)localObject).a(true);
-            ((StructMsgItemTitle)localObject).a(a(), this.p);
+            ((StructMsgItemTitle)localObject).a(d(), this.av);
             paramView = paramView.a(paramContext, localRelativeLayout.findViewById(2), paramBundle);
             localObject = new RelativeLayout.LayoutParams(-2, -2);
             ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
@@ -185,12 +180,12 @@ public class StructMsgItemLayout8
           else if ("summary".equals(localObject))
           {
             localObject = (StructMsgItemSummary)paramView;
-            ((StructMsgItemSummary)localObject).c("28");
+            ((StructMsgItemSummary)localObject).d("28");
             ((StructMsgItemSummary)localObject).a(true);
-            if (this.p != 0) {
-              ((StructMsgItemSummary)localObject).a(a(), this.p);
+            if (this.av != 0) {
+              ((StructMsgItemSummary)localObject).a(d(), this.av);
             } else {
-              ((StructMsgItemSummary)localObject).b("black");
+              ((StructMsgItemSummary)localObject).c("black");
             }
             paramView = paramView.a(paramContext, localRelativeLayout.findViewById(3), paramBundle);
             localObject = new RelativeLayout.LayoutParams(-2, -2);
@@ -218,9 +213,9 @@ public class StructMsgItemLayout8
           paramView = localRelativeLayout;
           break;
         }
-        paramView = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject = paramView.jdField_a_of_type_JavaLangString;
+        paramView = (AbsStructMsgElement)this.ax.get(i);
+        paramView.ar = this.ar;
+        localObject = paramView.b;
         if ("picture".equals(localObject))
         {
           paramView = (ImageView)paramView.a(paramContext, null, paramBundle);
@@ -237,9 +232,9 @@ public class StructMsgItemLayout8
           if ("title".equals(localObject))
           {
             localObject = (StructMsgItemTitle)paramView;
-            ((StructMsgItemTitle)localObject).c("30");
+            ((StructMsgItemTitle)localObject).d("30");
             ((StructMsgItemTitle)localObject).a(true);
-            ((StructMsgItemTitle)localObject).a(a(), this.p);
+            ((StructMsgItemTitle)localObject).a(d(), this.av);
             paramView = paramView.a(paramContext, null, paramBundle);
             paramView.setId(2);
             localObject = new RelativeLayout.LayoutParams(-2, -2);
@@ -249,12 +244,12 @@ public class StructMsgItemLayout8
           else if ("summary".equals(localObject))
           {
             localObject = (StructMsgItemSummary)paramView;
-            ((StructMsgItemSummary)localObject).c("28");
+            ((StructMsgItemSummary)localObject).d("28");
             ((StructMsgItemSummary)localObject).a(true);
-            if (this.p != 0) {
-              ((StructMsgItemSummary)localObject).a(a(), this.p);
+            if (this.av != 0) {
+              ((StructMsgItemSummary)localObject).a(d(), this.av);
             } else {
-              ((StructMsgItemSummary)localObject).b("black");
+              ((StructMsgItemSummary)localObject).c("black");
             }
             paramView = paramView.a(paramContext, null, paramBundle);
             int k = localResources.getDisplayMetrics().widthPixels;
@@ -300,14 +295,19 @@ public class StructMsgItemLayout8
     return paramView;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 8;
+  }
+  
+  public String e()
   {
     return "Layout8";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout8
  * JD-Core Version:    0.7.0.1
  */

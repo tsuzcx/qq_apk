@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@android:color/transparent" />
-    <corners android:radius="8.0dip" />
-    <stroke android:width="1.0dip" android:color="@color/al3" />
-</shape>
+    <item android:duration="50" android:drawable="@drawable/j9s" />
+    <item android:duration="50" android:drawable="@drawable/j9t" />
+    <item android:duration="50" android:drawable="@drawable/j9u" />
+    <item android:duration="50" android:drawable="@drawable/j9v" />
+    <item android:duration="50" android:drawable="@drawable/j9w" />
+    <item android:duration="50" android:drawable="@drawable/j9x" />
+    <item android:duration="50" android:drawable="@drawable/j9y" />
+    <item android:duration="50" android:drawable="@drawable/j9z" />
+    <item android:duration="50" android:drawable="@drawable/j_0" />
+    <item android:duration="50" android:drawable="@drawable/j_1" />
+    <item android:duration="50" android:drawable="@drawable/j_2" />
+    <item android:duration="50" android:drawable="@drawable/j_3" />
+    <item android:duration="50" android:drawable="@drawable/j_4" />
+    <item android:duration="50" android:drawable="@drawable/j_5" />
+    <item android:duration="50" android:drawable="@drawable/j_6" />
+</animation-list>

@@ -9,12 +9,12 @@ class CustomEmotionRoamingDBManagerBase$3$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCustomEmotionRoamingDBManagerBase$3.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.b.a.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.3.1
  * JD-Core Version:    0.7.0.1
  */

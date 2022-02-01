@@ -50,7 +50,7 @@ class CustomDataReportBuilder$1
   
   public AppGeneralInfoService getAppInfo()
   {
-    return (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    return (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
   }
   
   public String getAppKey()
@@ -63,7 +63,7 @@ class CustomDataReportBuilder$1
     } else {
       i = 0;
     }
-    localObject = (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    localObject = (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
     if (localObject != null) {
       bool = ((AppGeneralInfoService)localObject).isLiteSdk();
     }
@@ -78,7 +78,7 @@ class CustomDataReportBuilder$1
   
   public String getAppVersion()
   {
-    AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
     if (localAppGeneralInfoService != null) {
       return localAppGeneralInfoService.getVersionName();
     }
@@ -87,7 +87,7 @@ class CustomDataReportBuilder$1
   
   public String getChannelId()
   {
-    AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
     if (localAppGeneralInfoService != null) {
       return localAppGeneralInfoService.getChannelID();
     }
@@ -96,12 +96,12 @@ class CustomDataReportBuilder$1
   
   public HostProxyInterface getHostProxy()
   {
-    return (HostProxyInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HostProxyInterface.class);
+    return (HostProxyInterface)this.a.getService(HostProxyInterface.class);
   }
   
   public LogInterface getLog()
   {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
+    return (LogInterface)this.a.getService(LogInterface.class);
   }
   
   public LoginServiceInterface getLoginInfo()
@@ -176,7 +176,7 @@ class CustomDataReportBuilder$1
   
   public boolean isUserHostBeacon()
   {
-    String str = ((HostProxyInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HostProxyInterface.class)).isUserHostBeacon();
+    String str = ((HostProxyInterface)this.a.getService(HostProxyInterface.class)).isUserHostBeacon();
     if (!TextUtils.isEmpty(str))
     {
       if ((!str.equals("1")) && (!str.equals("0"))) {
@@ -189,7 +189,7 @@ class CustomDataReportBuilder$1
   
   public void onGetBeaconImei(String paramString)
   {
-    AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
     if (localAppGeneralInfoService != null) {
       localAppGeneralInfoService.setDeviceId(paramString);
     }
@@ -197,7 +197,7 @@ class CustomDataReportBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportBuilder.1
  * JD-Core Version:    0.7.0.1
  */

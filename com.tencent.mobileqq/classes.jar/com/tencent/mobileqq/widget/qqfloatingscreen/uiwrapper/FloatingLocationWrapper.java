@@ -31,18 +31,18 @@ public class FloatingLocationWrapper
   public FloatingLocationWrapper(Context paramContext)
   {
     super(paramContext);
-    l();
+    d();
   }
   
-  private void l()
+  private void d()
   {
     a(this);
-    LocationShareServiceHolder.a(MobileQQ.sMobileQQ.waitAppRuntime(null)).setThemeChangedListener(this);
+    LocationShareServiceHolder.b(MobileQQ.sMobileQQ.waitAppRuntime(null)).setThemeChangedListener(this);
   }
   
-  private void m()
+  private void e()
   {
-    View localView = a(2131374409);
+    View localView = d(2131442576);
     if (localView == null) {
       return;
     }
@@ -59,7 +59,7 @@ public class FloatingLocationWrapper
   {
     FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
     if (paramFloatingScreenParams == null) {
-      if (a() != null) {
+      if (m() != null) {
         localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setCanZoom(false).build();
       } else {
         return 2;
@@ -75,14 +75,20 @@ public class FloatingLocationWrapper
     if (QLog.isColorLevel()) {
       QLog.d("FloatingLocationWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingLocationWrapper" });
     }
-    m();
+    e();
+  }
+  
+  public void a(int paramInt)
+  {
+    FloatingLocationWrapper.3 local3 = new FloatingLocationWrapper.3(this, paramInt);
+    ThreadManager.getUIHandlerV2().post(local3);
   }
   
   public void a(Context paramContext)
   {
     super.a(paramContext);
     a("关闭位置共享悬浮窗");
-    m();
+    e();
   }
   
   public void a(FloatingScreenParams paramFloatingScreenParams)
@@ -105,25 +111,14 @@ public class FloatingLocationWrapper
     ReportController.b(null, "CliOper", "", "", "0X800A977", "0X800A977", 0, 0, "", "0", "0", "");
   }
   
-  public void b(int paramInt)
-  {
-    FloatingLocationWrapper.3 local3 = new FloatingLocationWrapper.3(this, paramInt);
-    ThreadManager.getUIHandlerV2().post(local3);
-  }
-  
   public void c()
   {
-    a(1, new FloatingLocationWrapper.1(this));
-  }
-  
-  public void k()
-  {
-    if (!a())
+    if (!n())
     {
-      boolean bool = b();
+      boolean bool = o();
       SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
-      int i = b();
-      int j = c();
+      int i = q();
+      int j = r();
       localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", i);
       localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", j);
       localEditor.apply();
@@ -132,10 +127,15 @@ public class FloatingLocationWrapper
       }
     }
   }
+  
+  public void j()
+  {
+    a(1, new FloatingLocationWrapper.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper
  * JD-Core Version:    0.7.0.1
  */

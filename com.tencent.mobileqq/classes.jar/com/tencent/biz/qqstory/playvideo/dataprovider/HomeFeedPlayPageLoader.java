@@ -16,21 +16,21 @@ import java.util.List;
 public class HomeFeedPlayPageLoader
   extends FeedIdBasePlayPageLoader<HomeFeedPlayInfo>
 {
-  private int a;
-  public FeedListPageLoaderBase.FeedIdListCache b = new FeedListPageLoaderBase.FeedIdListCache();
+  public FeedListPageLoaderBase.FeedIdListCache c = new FeedListPageLoaderBase.FeedIdListCache();
+  private int d;
   
   public HomeFeedPlayPageLoader(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
     super(paramHomeFeedPlayInfo);
     paramHomeFeedPlayInfo = (FeedManager)SuperManager.a(11);
-    if (paramHomeFeedPlayInfo.b != null) {
-      this.b = paramHomeFeedPlayInfo.b;
+    if (paramHomeFeedPlayInfo.h != null) {
+      this.c = paramHomeFeedPlayInfo.h;
     }
   }
   
   public FeedIdListSeqInfo a(String paramString)
   {
-    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.a.iterator();
     while (localIterator.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)localIterator.next();
@@ -43,26 +43,26 @@ public class HomeFeedPlayPageLoader
   
   public void a(boolean paramBoolean, int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
-    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.c.a;
     if ((paramBoolean) && (((List)localObject1).size() > 0))
     {
       localObject2 = b((List)localObject1);
-      paramCallBack.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
+      paramCallBack.a(new ErrorMessage(), (List)localObject2, this.c.b);
       SLog.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
       return;
     }
     localObject1 = (FeedManager)SuperManager.a(11);
     Object localObject2 = new GetStoryFeedIdListRequest();
-    ((GetStoryFeedIdListRequest)localObject2).a = ((FeedManager)localObject1).a;
-    ((GetStoryFeedIdListRequest)localObject2).b = this.b.a();
-    SLog.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((GetStoryFeedIdListRequest)localObject2).b);
-    this.a = 0;
+    ((GetStoryFeedIdListRequest)localObject2).g = ((FeedManager)localObject1).i;
+    ((GetStoryFeedIdListRequest)localObject2).f = this.c.c();
+    SLog.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((GetStoryFeedIdListRequest)localObject2).f);
+    this.d = 0;
     CmdTaskManger.a().a((NetworkRequest)localObject2, new HomeFeedPlayPageLoader.1(this, paramCallBack));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.HomeFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

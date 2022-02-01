@@ -35,12 +35,11 @@ import java.util.HashMap;
 public class LoverChattingGrayTipItemBuilder
   extends UniteGrayTipItemBuilder
 {
-  public HashMap<Long, Integer> a;
+  public HashMap<Long, Integer> e = new HashMap();
   
   public LoverChattingGrayTipItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -60,15 +59,15 @@ public class LoverChattingGrayTipItemBuilder
         if (paramView != null) {
           break label798;
         }
-        Object localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558557, null);
+        Object localObject1 = LayoutInflater.from(this.c).inflate(2131624114, null);
         paramView = (View)localObject1;
         try
         {
-          localHolder.b = ((TextView)((View)localObject1).findViewById(2131367799));
+          localHolder.d = ((TextView)((View)localObject1).findViewById(2131434372));
           paramView = (View)localObject1;
-          localHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131370487));
+          localHolder.e = ((ImageView)((View)localObject1).findViewById(2131437759));
           paramView = (View)localObject1;
-          Object localObject2 = localHolder.b.getLayoutParams();
+          Object localObject2 = localHolder.d.getLayoutParams();
           paramViewHolder = (AbstractChatItemBuilder.ViewHolder)localObject1;
           paramView = (View)localObject1;
           if ((localObject2 instanceof ViewGroup.MarginLayoutParams))
@@ -85,26 +84,26 @@ public class LoverChattingGrayTipItemBuilder
             }
           }
           paramView = paramViewHolder;
-          localHolder.b.setLineSpacing(0.0F, 1.0F);
+          localHolder.d.setLineSpacing(0.0F, 1.0F);
           paramView = paramViewHolder;
-          localHolder.b.setIncludeFontPadding(true);
+          localHolder.d.setIncludeFontPadding(true);
           paramView = paramViewHolder;
-          localHolder.b.setMovementMethod(null);
+          localHolder.d.setMovementMethod(null);
           paramView = paramViewHolder;
-          localHolder.b.setTextColor(paramViewHolder.getResources().getColorStateList(2131167362));
+          localHolder.d.setTextColor(paramViewHolder.getResources().getColorStateList(2131168417));
           paramView = paramViewHolder;
-          if (this.jdField_a_of_type_JavaUtilHashMap == null)
+          if (this.e == null)
           {
             paramView = paramViewHolder;
-            this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+            this.e = new HashMap();
           }
           paramView = paramViewHolder;
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramMessageRecord.uniseq)))
+          if (!this.e.containsKey(Long.valueOf(paramMessageRecord.uniseq)))
           {
             paramView = paramViewHolder;
-            localObject1 = ObjectAnimator.ofFloat(localHolder.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.8F, 1.0F, 0.8F, 1.0F });
+            localObject1 = ObjectAnimator.ofFloat(localHolder.e, "scaleX", new float[] { 1.0F, 0.8F, 1.0F, 0.8F, 1.0F });
             paramView = paramViewHolder;
-            localObject2 = ObjectAnimator.ofFloat(localHolder.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.8F, 1.0F, 0.8F, 1.0F });
+            localObject2 = ObjectAnimator.ofFloat(localHolder.e, "scaleY", new float[] { 1.0F, 0.8F, 1.0F, 0.8F, 1.0F });
             paramView = paramViewHolder;
             AnimatorSet localAnimatorSet = new AnimatorSet();
             paramView = paramViewHolder;
@@ -114,7 +113,7 @@ public class LoverChattingGrayTipItemBuilder
             paramView = paramViewHolder;
             localAnimatorSet.start();
             paramView = paramViewHolder;
-            this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageRecord.uniseq), Integer.valueOf(1));
+            this.e.put(Long.valueOf(paramMessageRecord.uniseq), Integer.valueOf(1));
             paramView = paramViewHolder;
             localObject1 = paramMessageRecord.getExtInfoFromExtStr("love_c2c_aio_businessSubtype");
             paramView = paramViewHolder;
@@ -143,12 +142,12 @@ public class LoverChattingGrayTipItemBuilder
           if (paramMessageRecord.tipParam != null)
           {
             paramView = paramViewHolder;
-            if (paramMessageRecord.tipParam.a() != null)
+            if (paramMessageRecord.tipParam.b() != null)
             {
               paramView = paramViewHolder;
               long l1 = paramMessageRecord.uniseq;
               paramView = paramViewHolder;
-              long l2 = localHolder.jdField_a_of_type_Int;
+              long l2 = localHolder.c;
               paramView = paramViewHolder;
               if (QLog.isColorLevel())
               {
@@ -156,33 +155,33 @@ public class LoverChattingGrayTipItemBuilder
                 QLog.d("LoverChattingGrayTipItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder msg uinseq=", Long.valueOf(l1), ",holder.mPosition=", Long.valueOf(l2) });
               }
               paramView = paramViewHolder;
-              paramLinearLayout = paramMessageRecord.getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext(), false, localHolder.b);
+              paramLinearLayout = paramMessageRecord.getHightlightMsgText(this.a, paramLinearLayout.getContext(), false, localHolder.d);
               paramView = paramViewHolder;
-              paramMessageRecord.tipParam.a();
+              paramMessageRecord.tipParam.b();
               paramView = paramViewHolder;
-              localHolder.b.setText(paramLinearLayout);
+              localHolder.d.setText(paramLinearLayout);
               paramView = paramViewHolder;
-              localHolder.b.setClickable(true);
+              localHolder.d.setClickable(true);
               paramView = paramViewHolder;
-              localHolder.b.setFocusable(true);
+              localHolder.d.setFocusable(true);
               paramView = paramViewHolder;
-              localHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
+              localHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
               return paramViewHolder;
             }
           }
           paramView = paramViewHolder;
-          localHolder.b.setText(paramMessageRecord.msg);
+          localHolder.d.setText(paramMessageRecord.msg);
           paramView = paramViewHolder;
-          localHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
+          localHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
           paramView = paramViewHolder;
-          localHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+          localHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
           paramView = paramViewHolder;
           paramMessageRecord = paramViewHolder;
-          if (!AppSetting.d) {
+          if (!AppSetting.e) {
             break label796;
           }
           paramView = paramViewHolder;
-          localHolder.b.setAccessibilityDelegate(null);
+          localHolder.d.setAccessibilityDelegate(null);
           return paramViewHolder;
         }
         catch (Exception paramMessageRecord) {}
@@ -209,12 +208,12 @@ public class LoverChattingGrayTipItemBuilder
   
   public QQCustomMenuItem[] a(View paramView)
   {
-    return new QQCustomMenu().a();
+    return new QQCustomMenu().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.LoverChattingGrayTipItemBuilder
  * JD-Core Version:    0.7.0.1
  */

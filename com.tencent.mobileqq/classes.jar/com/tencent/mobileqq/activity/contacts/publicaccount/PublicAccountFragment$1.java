@@ -11,14 +11,14 @@ class PublicAccountFragment$1
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 0) {
-      this.a.i();
+      this.a.k();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.1
  * JD-Core Version:    0.7.0.1
  */

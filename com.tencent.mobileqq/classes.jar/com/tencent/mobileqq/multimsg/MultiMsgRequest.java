@@ -12,33 +12,24 @@ import java.util.Map;
 
 public class MultiMsgRequest
 {
-  public int a;
   public SessionInfo a;
-  public MessageForStructing a;
-  public AbsStructMsg a;
-  private Object a = new Object();
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  public List<ChatMessage> a;
-  public Map<String, String> a;
-  public boolean a;
-  public int b;
-  public List<MessageForStructing> b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  private int h;
-  private int i;
-  
-  public int a()
-  {
-    synchronized (this.a)
-    {
-      int j = this.h;
-      return j;
-    }
-  }
+  public List<ChatMessage> b;
+  public Map<String, String> c;
+  public AbsStructMsg d;
+  public MessageForStructing e;
+  public HashMap<String, ArrayList<MessageRecord>> f;
+  public List<MessageForStructing> g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public boolean o;
+  private int p;
+  private Object q = new Object();
+  private int r;
   
   public String a()
   {
@@ -47,38 +38,47 @@ public class MultiMsgRequest
   
   public void a(int paramInt)
   {
-    synchronized (this.a)
+    synchronized (this.q)
     {
-      this.h = (paramInt ^ this.h);
+      this.p = (paramInt ^ this.p);
       return;
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    synchronized (this.a)
+    synchronized (this.q)
     {
-      int j = this.i;
+      int i1 = this.r;
       if (paramInt1 == 0) {
         paramInt2 = 0;
       }
-      this.i = (j + paramInt2);
+      this.r = (i1 + paramInt2);
       return;
     }
   }
   
   public int b()
   {
-    synchronized (this.a)
+    synchronized (this.q)
     {
-      int j = this.i;
-      return j;
+      int i1 = this.p;
+      return i1;
+    }
+  }
+  
+  public int c()
+  {
+    synchronized (this.q)
+    {
+      int i1 = this.r;
+      return i1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public final class apollo_push_msgInfo$STPushMsgElem$STPushMsgElem0x3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x3
  * JD-Core Version:    0.7.0.1
  */

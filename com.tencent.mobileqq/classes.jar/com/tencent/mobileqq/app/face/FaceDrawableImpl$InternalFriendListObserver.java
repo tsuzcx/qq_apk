@@ -12,7 +12,7 @@ public class FaceDrawableImpl$InternalFriendListObserver
   {
     this.faceDrawableWeakReference = new WeakReference(paramFaceDrawable);
     if ((paramFaceDrawable != null) && (paramFaceDrawable.mFaceInfo != null)) {
-      this.uin = paramFaceDrawable.mFaceInfo.a;
+      this.uin = paramFaceDrawable.mFaceInfo.c;
     }
   }
   
@@ -38,7 +38,7 @@ public class FaceDrawableImpl$InternalFriendListObserver
   {
     if (this.this$0.mFaceInfo != null)
     {
-      if (paramInt != this.this$0.mFaceInfo.b) {
+      if (paramInt != this.this$0.mFaceInfo.d) {
         return;
       }
       FaceDrawableImpl localFaceDrawableImpl = this.this$0;
@@ -60,7 +60,7 @@ public class FaceDrawableImpl$InternalFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl.InternalFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

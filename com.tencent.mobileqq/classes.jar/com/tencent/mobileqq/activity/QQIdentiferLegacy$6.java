@@ -18,30 +18,30 @@ class QQIdentiferLegacy$6
   public void onFailed(int paramInt, String paramString1, String paramString2)
   {
     String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    Message localMessage = this.b.d.obtainMessage(2);
     localMessage.arg1 = 24;
     localMessage.obj = str;
     if (paramInt == 3) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
+      this.b.d.sendMessageDelayed(localMessage, 2000L);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
+      this.b.d.sendMessage(localMessage);
     }
-    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.f(this.b).get()) });
   }
   
   public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
   {
-    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.e(this.b).get()) });
     paramYTLiveStyleReq.app_id = "10164651";
     paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
-    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    this.b.d.removeMessages(2);
+    paramLiveStyleResponse = this.b.d.obtainMessage(2);
     paramLiveStyleResponse.arg1 = 23;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
-    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {
+    this.b.d.sendMessage(paramLiveStyleResponse);
+    if (QQIdentiferLegacy.e(this.b).compareAndSet(true, true)) {
       return;
     }
-    QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
+    QQIdentiferLegacy.a(this.b, paramYTLiveStyleReq, this.a);
     if (QLog.isColorLevel()) {
       QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
     }
@@ -49,7 +49,7 @@ class QQIdentiferLegacy$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.6
  * JD-Core Version:    0.7.0.1
  */

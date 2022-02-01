@@ -15,35 +15,16 @@ class FileModelAdapter$2
     return null;
   }
   
-  public void a()
-  {
-    FileModelAdapter.a(this.a).a();
-  }
-  
   public void a(boolean paramBoolean) {}
   
   public void b()
   {
-    FileModelAdapter.a(this.a).g();
+    FileModelAdapter.b(this.a).a();
   }
   
-  public boolean b()
+  public void d()
   {
-    return false;
-  }
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    return FileModelAdapter.a(this.a);
-  }
-  
-  public void d() {}
-  
-  public boolean d()
-  {
-    return false;
+    FileModelAdapter.b(this.a).h();
   }
   
   public boolean e()
@@ -51,21 +32,40 @@ class FileModelAdapter$2
     return false;
   }
   
-  public boolean f()
+  public boolean g()
+  {
+    return FileModelAdapter.c(this.a);
+  }
+  
+  public Activity getActivity()
+  {
+    return this.a.b;
+  }
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public boolean j()
   {
     return false;
   }
   
-  public void g() {}
-  
-  public Activity getActivity()
+  public boolean k()
   {
-    return this.a.a;
+    return false;
+  }
+  
+  public void n() {}
+  
+  public boolean o()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.FileModelAdapter.2
  * JD-Core Version:    0.7.0.1
  */

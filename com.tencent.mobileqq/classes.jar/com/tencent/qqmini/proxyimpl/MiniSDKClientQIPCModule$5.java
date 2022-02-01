@@ -10,12 +10,12 @@ class MiniSDKClientQIPCModule$5
   
   public void run()
   {
-    MiniProgramLpReportDC04239.reportApiInvoke(MiniSdkUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime.getMiniAppInfo()), this.jdField_a_of_type_JavaLangString);
+    MiniProgramLpReportDC04239.reportApiInvoke(MiniSdkUtil.b(this.a.getMiniAppInfo()), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.5
  * JD-Core Version:    0.7.0.1
  */

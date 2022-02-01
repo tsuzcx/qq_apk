@@ -12,14 +12,14 @@ class HongbaoShowerActivity$3
   
   public void onClick(View paramView)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    HongbaoShowerActivity.a(this.a).setChecked(bool ^ true);
+    boolean bool = HongbaoShowerActivity.b(this.a).isChecked();
+    HongbaoShowerActivity.b(this.a).setChecked(bool ^ true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.HongbaoShowerActivity.3
  * JD-Core Version:    0.7.0.1
  */

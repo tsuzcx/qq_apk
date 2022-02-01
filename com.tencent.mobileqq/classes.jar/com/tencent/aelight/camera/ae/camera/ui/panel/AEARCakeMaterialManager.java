@@ -21,46 +21,32 @@ import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.base.ToastUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.os.MqqHandler;
 
 public class AEARCakeMaterialManager
 {
-  private int jdField_a_of_type_Int = -1;
-  AEARCakeMaterialAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter;
-  AEARCakePanel.AEARCakePanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener;
-  private AEGiftMaterial jdField_a_of_type_ComTencentAelightCameraAeDataAEGiftMaterial;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = (AEMaterialManager)AEQIMManager.a(1);
-  private AEMaterialDownloader.MaterialDownloadListener jdField_a_of_type_ComTencentAelightCameraAeDownloadAEMaterialDownloader$MaterialDownloadListener = new AEARCakeMaterialManager.2(this);
-  private String jdField_a_of_type_JavaLangString;
-  private final ArrayList<AEARCakeMaterialManager.IARcakeMgrListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final CopyOnWriteArrayList<AEGiftMaterial> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  AEARCakeMaterialAdapter a;
+  AEARCakePanel.AEARCakePanelListener b;
+  private final CopyOnWriteArrayList<AEGiftMaterial> c = new CopyOnWriteArrayList();
+  private volatile boolean d = false;
+  private String e;
+  private int f = -1;
+  private AEGiftMaterial g;
+  private AEMaterialManager h = (AEMaterialManager)AEQIMManager.a(1);
+  private AEARCakeMaterialManager.IARCakeDownloadListener i;
+  private AEARCakeMaterial j;
+  private boolean k;
+  private final ArrayList<AEARCakeMaterialManager.IARcakeMgrListener> l = new ArrayList();
+  private AEMaterialDownloader.MaterialDownloadListener m = new AEARCakeMaterialManager.3(this);
   
   public static AEARCakeMaterialManager a()
   {
     return AEARCakeMaterialManager.Holder.a();
-  }
-  
-  private void a(AEARCakeMaterial paramAEARCakeMaterial)
-  {
-    if (paramAEARCakeMaterial == null) {
-      return;
-    }
-    if (paramAEARCakeMaterial.f) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramAEARCakeMaterial.k)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager == null) {
-      return;
-    }
-    b(paramAEARCakeMaterial);
   }
   
   private void a(List<AEGiftMaterial> paramList)
@@ -74,9 +60,9 @@ public class AEARCakeMaterialManager
       Object localObject = (AEGiftMaterial)paramList.next();
       if (localObject != null)
       {
-        localObject = ((AEGiftMaterial)localObject).a();
+        localObject = ((AEGiftMaterial)localObject).c();
         if (localObject != null) {
-          ((AEARCakeMaterial)localObject).e = AEMaterialManager.a((AEMaterialMetaData)localObject);
+          ((AEARCakeMaterial)localObject).A = AEMaterialManager.a((AEMaterialMetaData)localObject);
         }
       }
     }
@@ -84,117 +70,37 @@ public class AEARCakeMaterialManager
   
   private void b(AEARCakeMaterial paramAEARCakeMaterial)
   {
-    AEQLog.a("AEARCakeMaterialManager", "arcake : doRealDownload");
-    AEMaterialManager localAEMaterialManager = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-    localAEMaterialManager.a(localAEMaterialManager.getApp(), paramAEARCakeMaterial, this.jdField_a_of_type_ComTencentAelightCameraAeDownloadAEMaterialDownloader$MaterialDownloadListener);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public AEGiftMaterial a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGiftMaterial;
-  }
-  
-  public String a()
-  {
-    Object localObject2 = (PeakAppInterface)AECaptureContext.a();
-    Object localObject1 = "you";
-    this.jdField_a_of_type_JavaLangString = "you";
-    if (localObject2 == null)
-    {
-      AEQLog.d("AEARCakeMaterialManager", "app interface is null");
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    String str = AECameraPrefsUtil.a().a("key_ae_arcake_preview", "", 4);
-    if ((!TextUtils.isEmpty(str)) && ("1".equals(str)))
-    {
-      this.jdField_a_of_type_JavaLangString = "you";
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("arcake preview status info : ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-      AEQLog.a("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    str = AECameraPrefsUtil.a().a("key_ae_arcake_touin", "", 4);
-    if (!TextUtils.isEmpty(str))
-    {
-      IFriendDataService localIFriendDataService = (IFriendDataService)((PeakAppInterface)localObject2).getRuntimeService(IFriendDataService.class, "all");
-      if (localIFriendDataService != null)
-      {
-        localObject2 = localIFriendDataService.getFriend(str, true, true, true);
-        if (localObject2 != null) {
-          localObject1 = ((Friends)localObject2).getFriendNick();
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("arcake current user is giver info : ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-        AEQLog.a("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
-        return this.jdField_a_of_type_JavaLangString;
-      }
-    }
-    this.jdField_a_of_type_JavaLangString = ((PeakAppInterface)localObject2).getCurrentNickname();
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("arcake mSelectedARShowInfo current user: ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-    AEQLog.a("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @WorkerThread
-  public List<AEGiftMaterial> a()
-  {
-    try
-    {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("arcake : getMaterialsSync---mHasLoaded=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
-      AEQLog.b("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-        return localObject1;
-      }
-      localObject1 = AEGiftMaterialConfigParser.a();
-      a((List)localObject1);
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)localObject1);
-      this.jdField_a_of_type_Boolean = true;
-      localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    AEQLog.a("AEARCakeMaterialManager", "arcake : downloadFirstSelectMaterial ");
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() > 0))
-    {
-      localObject = (AEGiftMaterial)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
-      if (localObject == null)
-      {
-        AEQLog.d("AEARCakeMaterialManager", "can not set select first material,giftMaterial is null ");
-        return;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("arcake : can find ");
-      localStringBuilder.append(((AEGiftMaterial)localObject).a());
-      AEQLog.a("AEARCakeMaterialManager", localStringBuilder.toString());
-      a((AEGiftMaterial)localObject);
+    if (paramAEARCakeMaterial == null) {
       return;
     }
-    AEQLog.d("AEARCakeMaterialManager", "can not set select first material");
+    if (paramAEARCakeMaterial.B) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramAEARCakeMaterial.m)) {
+      return;
+    }
+    if (this.h == null) {
+      return;
+    }
+    c(paramAEARCakeMaterial);
+  }
+  
+  private void c(AEARCakeMaterial paramAEARCakeMaterial)
+  {
+    AEQLog.a("AEARCakeMaterialManager", "arcake : doRealDownload");
+    this.j = paramAEARCakeMaterial;
+    AEMaterialManager localAEMaterialManager = this.h;
+    localAEMaterialManager.a(localAEMaterialManager.getApp(), paramAEARCakeMaterial, this.m);
   }
   
   public void a(AEARCakeMaterialAdapter paramAEARCakeMaterialAdapter)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter = paramAEARCakeMaterialAdapter;
+    this.a = paramAEARCakeMaterialAdapter;
+  }
+  
+  public void a(AEARCakeMaterialManager.IARCakeDownloadListener paramIARCakeDownloadListener)
+  {
+    this.i = paramIARCakeDownloadListener;
   }
   
   public void a(AEARCakeMaterialManager.IARcakeMgrListener paramIARcakeMgrListener)
@@ -205,62 +111,67 @@ public class AEARCakeMaterialManager
       return;
     }
     AEQLog.a("AEARCakeMaterialManager", "arcake :registerListener");
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramIARcakeMgrListener))
+    if (!this.l.contains(paramIARcakeMgrListener))
     {
       AEQLog.a("AEARCakeMaterialManager", "add listener");
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramIARcakeMgrListener);
+      this.l.add(paramIARcakeMgrListener);
     }
   }
   
   public void a(AEARCakePanel.AEARCakePanelListener paramAEARCakePanelListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener = paramAEARCakePanelListener;
+    this.b = paramAEARCakePanelListener;
+  }
+  
+  public void a(AEARCakeMaterial paramAEARCakeMaterial)
+  {
+    this.j = paramAEARCakeMaterial;
   }
   
   public void a(AEGiftMaterial paramAEGiftMaterial)
   {
-    AEARCakeMaterial localAEARCakeMaterial = paramAEGiftMaterial.a();
+    AEARCakeMaterial localAEARCakeMaterial = paramAEGiftMaterial.c();
     if (localAEARCakeMaterial == null)
     {
       AEQLog.d("AEARCakeMaterialManager", "can not set select first material,arcakematerial is null ");
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.f = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("arcake : setSelectMaterial");
-    localStringBuilder.append(localAEARCakeMaterial.p);
+    localStringBuilder.append(localAEARCakeMaterial.t);
     localStringBuilder.append(" : ");
-    localStringBuilder.append(localAEARCakeMaterial.e);
+    localStringBuilder.append(localAEARCakeMaterial.A);
     localStringBuilder.append(": mSelectedPosition");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     AEQLog.a("AEARCakeMaterialManager", localStringBuilder.toString());
-    if ((!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (!localAEARCakeMaterial.e))
+    if ((!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (!localAEARCakeMaterial.A))
     {
       AEQLog.d("AEARCakeMaterialManager", "net work not available");
-      ToastUtil.a().a(HardCodeUtil.a(2131716132));
+      ThreadManager.getUIHandler().post(new AEARCakeMaterialManager.1(this));
       return;
     }
-    a(paramAEGiftMaterial, this.jdField_a_of_type_Int);
-    if (localAEARCakeMaterial.e)
+    a(paramAEGiftMaterial, this.f);
+    if (localAEARCakeMaterial.A)
     {
-      if (!AEResUtil.a())
+      if (!AEResUtil.e())
       {
-        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131709780), 0).a();
-        ThreadManager.excute(new AEARCakeMaterialManager.1(this), 64, null, true);
+        QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131907500), 0).show();
+        ThreadManager.excute(new AEARCakeMaterialManager.2(this), 64, null, true);
         return;
       }
       paramAEGiftMaterial = new StringBuilder();
       paramAEGiftMaterial.append("arcake : mMaterialPanelListener");
-      paramAEGiftMaterial.append(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener);
+      paramAEGiftMaterial.append(this.b);
       AEQLog.a("AEARCakeMaterialManager", paramAEGiftMaterial.toString());
-      paramAEGiftMaterial = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener;
+      paramAEGiftMaterial = this.b;
       if (paramAEGiftMaterial != null) {
         paramAEGiftMaterial.a(localAEARCakeMaterial);
       }
     }
     else
     {
-      a(localAEARCakeMaterial);
+      b(localAEARCakeMaterial);
     }
   }
   
@@ -271,16 +182,122 @@ public class AEARCakeMaterialManager
       AEQLog.d("AEARCakeMaterialManager", "arcake gift is null ,can not set anything");
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGiftMaterial = paramAEGiftMaterial;
-    if (paramAEGiftMaterial.a() == null) {
+    this.f = paramInt;
+    this.g = paramAEGiftMaterial;
+    if (paramAEGiftMaterial.c() == null) {
       AEQLog.d("AEARCakeMaterialManager", "arcake material is null, can not set anything");
     }
   }
   
-  public String b()
+  public void a(boolean paramBoolean)
   {
-    String str = a();
+    this.d = paramBoolean;
+  }
+  
+  @WorkerThread
+  public List<AEGiftMaterial> b()
+  {
+    try
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("arcake : getMaterialsSync---mHasLoaded=");
+      ((StringBuilder)localObject1).append(this.d);
+      AEQLog.b("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
+      if (this.d)
+      {
+        localObject1 = new ArrayList(this.c);
+        return localObject1;
+      }
+      localObject1 = AEGiftMaterialConfigParser.a();
+      a((List)localObject1);
+      this.c.clear();
+      this.c.addAll((Collection)localObject1);
+      this.d = true;
+      localObject1 = new ArrayList(this.c);
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  public void b(AEARCakeMaterialManager.IARcakeMgrListener paramIARcakeMgrListener)
+  {
+    this.l.remove(paramIARcakeMgrListener);
+  }
+  
+  public AEGiftMaterial c()
+  {
+    return this.g;
+  }
+  
+  public boolean d()
+  {
+    return this.k;
+  }
+  
+  public AEARCakeMaterialManager.IARCakeDownloadListener e()
+  {
+    return this.i;
+  }
+  
+  public AEARCakeMaterial f()
+  {
+    return this.j;
+  }
+  
+  public int g()
+  {
+    return this.f;
+  }
+  
+  public String h()
+  {
+    Object localObject2 = (PeakAppInterface)AECaptureContext.a();
+    Object localObject1 = "you";
+    this.e = "you";
+    if (localObject2 == null)
+    {
+      AEQLog.d("AEARCakeMaterialManager", "app interface is null");
+      return this.e;
+    }
+    String str = AECameraPrefsUtil.a().b("key_ae_arcake_preview", "", 4);
+    if ((!TextUtils.isEmpty(str)) && ("1".equals(str)))
+    {
+      this.e = "you";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("arcake preview status info : ");
+      ((StringBuilder)localObject1).append(this.e);
+      AEQLog.a("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
+      return this.e;
+    }
+    str = AECameraPrefsUtil.a().b("key_ae_arcake_touin", "", 4);
+    if (!TextUtils.isEmpty(str))
+    {
+      IFriendDataService localIFriendDataService = (IFriendDataService)((PeakAppInterface)localObject2).getRuntimeService(IFriendDataService.class, "all");
+      if (localIFriendDataService != null)
+      {
+        localObject2 = localIFriendDataService.getFriend(str, true, true, true);
+        if (localObject2 != null) {
+          localObject1 = ((Friends)localObject2).getFriendNick();
+        }
+        this.e = ((String)localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("arcake current user is giver info : ");
+        ((StringBuilder)localObject1).append(this.e);
+        AEQLog.a("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
+        return this.e;
+      }
+    }
+    this.e = ((PeakAppInterface)localObject2).getCurrentNickname();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("arcake mSelectedARShowInfo current user: ");
+    ((StringBuilder)localObject1).append(this.e);
+    AEQLog.a("AEARCakeMaterialManager", ((StringBuilder)localObject1).toString());
+    return this.e;
+  }
+  
+  public String i()
+  {
+    String str = h();
     Object localObject = str;
     if (str != null)
     {
@@ -296,13 +313,35 @@ public class AEARCakeMaterialManager
     return localObject;
   }
   
-  public void b()
+  public void j()
+  {
+    AEQLog.a("AEARCakeMaterialManager", "arcake : downloadFirstSelectMaterial ");
+    Object localObject = this.c;
+    if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() > 0))
+    {
+      localObject = (AEGiftMaterial)this.c.get(0);
+      if (localObject == null)
+      {
+        AEQLog.d("AEARCakeMaterialManager", "can not set select first material,giftMaterial is null ");
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("arcake : can find ");
+      localStringBuilder.append(((AEGiftMaterial)localObject).a());
+      AEQLog.a("AEARCakeMaterialManager", localStringBuilder.toString());
+      a((AEGiftMaterial)localObject);
+      return;
+    }
+    AEQLog.d("AEARCakeMaterialManager", "can not set select first material");
+  }
+  
+  public void k()
   {
     try
     {
       AEQLog.b("AEARCakeMaterialManager", "arcake : onConfigUpdated---");
-      this.jdField_a_of_type_Boolean = false;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      this.d = false;
+      Iterator localIterator = this.l.iterator();
       while (localIterator.hasNext()) {
         ((AEARCakeMaterialManager.IARcakeMgrListener)localIterator.next()).a();
       }
@@ -314,15 +353,10 @@ public class AEARCakeMaterialManager
       throw localObject;
     }
   }
-  
-  public void b(AEARCakeMaterialManager.IARcakeMgrListener paramIARcakeMgrListener)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramIARcakeMgrListener);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeMaterialManager
  * JD-Core Version:    0.7.0.1
  */

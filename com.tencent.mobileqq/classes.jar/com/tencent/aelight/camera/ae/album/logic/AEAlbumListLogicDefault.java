@@ -32,27 +32,26 @@ public class AEAlbumListLogicDefault
   extends AEAlbumListLogicBase<AEAlbumListFragment>
   implements AEAlbumListLogic.IalbumListAdapterCallBack
 {
-  protected AlbumListData a;
-  protected final boolean a;
+  protected AlbumListData g;
+  protected final boolean h = AEThemeUtil.b();
   
   protected AEAlbumListLogicDefault(AEAlbumListFragment paramAEAlbumListFragment)
   {
     super(paramAEAlbumListFragment);
-    this.jdField_a_of_type_Boolean = AEThemeUtil.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack = this;
-    this.a = new AlbumListData();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData = ((AlbumListData)this.a);
+    this.e = this;
+    this.c = new AlbumListData();
+    this.g = ((AlbumListData)this.c);
   }
   
   public static AEAlbumListLogic a(AEAlbumListFragment paramAEAlbumListFragment)
   {
-    if ((jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic == null) || (jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic.jdField_a_of_type_MqqUtilWeakReference.get() != paramAEAlbumListFragment)) {}
+    if ((d == null) || (d.a.get() != paramAEAlbumListFragment)) {}
     try
     {
-      if ((jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic == null) || (jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic.jdField_a_of_type_MqqUtilWeakReference.get() != paramAEAlbumListFragment)) {
-        jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic = new AEAlbumListLogicDefault(paramAEAlbumListFragment);
+      if ((d == null) || (d.a.get() != paramAEAlbumListFragment)) {
+        d = new AEAlbumListLogicDefault(paramAEAlbumListFragment);
       }
-      return jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic;
+      return d;
     }
     finally {}
   }
@@ -60,28 +59,18 @@ public class AEAlbumListLogicDefault
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramView = super.a(paramInt, paramView, paramViewGroup);
-    paramViewGroup = a();
+    paramViewGroup = e();
     Object localObject = paramViewGroup.a(paramInt);
     TextView localTextView = (TextView)paramView;
     if (((QQAlbumInfo)localObject).id.equals("qzone_album"))
     {
-      localObject = paramViewGroup.jdField_a_of_type_AndroidContentResResources.getDrawable(2130847897);
-      ((Drawable)localObject).setBounds(0, 0, paramViewGroup.jdField_a_of_type_Int, paramViewGroup.jdField_b_of_type_Int);
+      localObject = paramViewGroup.c.getDrawable(2130853604);
+      ((Drawable)localObject).setBounds(0, 0, paramViewGroup.d, paramViewGroup.e);
       localTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
     }
-    paramView.setBackgroundResource(2063925252);
-    localTextView.setTextColor(paramViewGroup.jdField_a_of_type_AndroidContentResResources.getColor(2131165327));
+    paramView.setBackgroundResource(2063794180);
+    localTextView.setTextColor(paramViewGroup.c.getColor(2131165564));
     return paramView;
-  }
-  
-  protected AEAlbumListAdapter a()
-  {
-    return new AENewAlbumListAdapter((AEAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get());
-  }
-  
-  protected AENewAlbumListAdapter a()
-  {
-    return (AENewAlbumListAdapter)super.b();
   }
   
   public String a()
@@ -97,12 +86,12 @@ public class AEAlbumListLogicDefault
   public List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt)
   {
     paramList1 = super.a(paramList1, paramList2, paramInt);
-    if ((paramList1 != null) && (!paramList1.isEmpty()) && (paramInt == -1) && (a().jdField_b_of_type_Boolean) && (a().jdField_a_of_type_Long > 0L))
+    if ((paramList1 != null) && (!paramList1.isEmpty()) && (paramInt == -1) && (e().o) && (e().p > 0L))
     {
       paramList2 = new QQAlbumInfo();
       paramList2.id = "qzone_album";
       paramList2.name = "空间相册";
-      paramList2.mMediaFileCount = ((int)a().jdField_a_of_type_Long);
+      paramList2.mMediaFileCount = ((int)e().p);
       paramList1.add(0, paramList2);
     }
     return paramList1;
@@ -116,10 +105,10 @@ public class AEAlbumListLogicDefault
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isShowQzoneAlbum) {
-      ((IQzoneReq)QRoute.api(IQzoneReq.class)).sentGetAlbumListNumServlet(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumQZonePhotoObserver, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    this.g.a = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
+    this.b.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
+    if (this.b.isShowQzoneAlbum) {
+      ((IQzoneReq)QRoute.api(IQzoneReq.class)).sentGetAlbumListNumServlet(this.g.b, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
     }
   }
   
@@ -137,7 +126,7 @@ public class AEAlbumListLogicDefault
       localUserInfo.qzone_uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       localBundle.putString("keyAction", "actionSelectPicture");
       localBundle.putBoolean("key_need_change_to_jpg", true);
-      QZoneHelper.forwardToPersonalAlbumSelect(((AEAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), localUserInfo, localBundle, 10016);
+      QZoneHelper.forwardToPersonalAlbumSelect(((AEAlbumListFragment)this.a.get()).getActivity(), localUserInfo, localBundle, 10016);
       return a(paramIntent, paramQQAlbumInfo);
     }
     paramIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramIntent.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
@@ -153,10 +142,20 @@ public class AEAlbumListLogicDefault
   }
   
   public void b() {}
+  
+  protected AEAlbumListAdapter c()
+  {
+    return new AENewAlbumListAdapter((AEAlbumListFragment)this.a.get());
+  }
+  
+  protected AENewAlbumListAdapter e()
+  {
+    return (AENewAlbumListAdapter)super.d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEAlbumListLogicDefault
  * JD-Core Version:    0.7.0.1
  */

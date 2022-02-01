@@ -1,25 +1,32 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.audio.TXCLiveBGMPlayer;
+import com.tencent.liteav.d;
+import com.tencent.trtc.TRTCCloudListener.TRTCVideoRenderListener;
 
 class TRTCCloudImpl$89
   implements Runnable
 {
-  TRTCCloudImpl$89(TRTCCloudImpl paramTRTCCloudImpl, int paramInt) {}
+  TRTCCloudImpl$89(TRTCCloudImpl paramTRTCCloudImpl, int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener) {}
   
   public void run()
   {
-    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setBGMPosition ");
-    localStringBuilder.append(this.val$progress);
-    localTRTCCloudImpl.apiLog(localStringBuilder.toString());
-    TXCLiveBGMPlayer.getInstance().setBGMPosition(this.val$progress);
+    this.this$0.apiLog(String.format("setLocalVideoRenderListener pixelFormat:%d bufferType:%d", new Object[] { Integer.valueOf(this.val$pixelFormat), Integer.valueOf(this.val$bufferType) }));
+    this.this$0.mRoomInfo.localPixelFormat = this.val$pixelFormat;
+    this.this$0.mRoomInfo.localBufferType = this.val$bufferType;
+    TRTCRoomInfo localTRTCRoomInfo = this.this$0.mRoomInfo;
+    TRTCCloudListener.TRTCVideoRenderListener localTRTCVideoRenderListener = this.val$listener;
+    localTRTCRoomInfo.localListener = localTRTCVideoRenderListener;
+    if (localTRTCVideoRenderListener == null)
+    {
+      this.this$0.mCaptureAndEnc.a(null, this.val$pixelFormat);
+      return;
+    }
+    this.this$0.mCaptureAndEnc.a(this.this$0, this.val$pixelFormat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.89
  * JD-Core Version:    0.7.0.1
  */

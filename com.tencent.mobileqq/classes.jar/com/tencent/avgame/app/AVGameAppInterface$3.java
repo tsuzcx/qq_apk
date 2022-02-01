@@ -14,7 +14,7 @@ import com.tencent.mobileqq.vas.VasApngIPCModule;
 class AVGameAppInterface$3
   extends URLDrawableParams
 {
-  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
+  private ProtocolDownloader b;
   
   AVGameAppInterface$3(AVGameAppInterface paramAVGameAppInterface, Context paramContext)
   {
@@ -29,10 +29,10 @@ class AVGameAppInterface$3
     if ("file".equalsIgnoreCase(paramString)) {
       return new LocaleFileDownloader();
     }
-    if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
-      this.jdField_a_of_type_ComTencentImageProtocolDownloader = new HttpDownloader();
+    if (this.b == null) {
+      this.b = new HttpDownloader();
     }
-    return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
+    return this.b;
   }
   
   protected String doGetLocalFilePath(String paramString)

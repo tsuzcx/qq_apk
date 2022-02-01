@@ -23,20 +23,20 @@ class MemoryDumpHelper$1
         QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump init dialog error!");
         return;
       }
-      if (!MemoryDumpHelper.a(this.this$0).isShowing())
+      if (!MemoryDumpHelper.b(this.this$0).isShowing())
       {
-        MemoryDumpHelper.a(this.this$0).setMessage(this.jdField_a_of_type_JavaLangString);
-        MemoryDumpHelper.a(this.this$0).setPositiveButton(2131691516, new MemoryDumpHelper.1.1(this));
-        MemoryDumpHelper.a(this.this$0).show();
-        Object localObject = MemoryDumpHelper.a(this.this$0);
+        MemoryDumpHelper.b(this.this$0).setMessage(this.a);
+        MemoryDumpHelper.b(this.this$0).setPositiveButton(2131888478, new MemoryDumpHelper.1.1(this));
+        MemoryDumpHelper.b(this.this$0).show();
+        Object localObject = MemoryDumpHelper.e(this.this$0);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("DumpCount");
-        localStringBuilder.append(AppSetting.a());
+        localStringBuilder.append(AppSetting.d());
         int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
-        localObject = MemoryDumpHelper.a(this.this$0).edit();
+        localObject = MemoryDumpHelper.e(this.this$0).edit();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("DumpCount");
-        localStringBuilder.append(AppSetting.a());
+        localStringBuilder.append(AppSetting.d());
         ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i + 1).putLong("DumpTime", System.currentTimeMillis()).commit();
         if (QLog.isColorLevel())
         {
@@ -56,7 +56,7 @@ class MemoryDumpHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1
  * JD-Core Version:    0.7.0.1
  */

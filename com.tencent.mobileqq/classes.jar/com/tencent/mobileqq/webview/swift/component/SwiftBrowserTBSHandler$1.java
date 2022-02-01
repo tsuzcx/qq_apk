@@ -16,7 +16,7 @@ class SwiftBrowserTBSHandler$1
     localTextView.setBackgroundColor(2130706432);
     localTextView.setTextColor(2147483647);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localTextView.getResources().getString(2131714489));
+    localStringBuilder.append(localTextView.getResources().getString(2131911998));
     Object localObject;
     if (this.a == 0)
     {
@@ -36,7 +36,7 @@ class SwiftBrowserTBSHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.1
  * JD-Core Version:    0.7.0.1
  */

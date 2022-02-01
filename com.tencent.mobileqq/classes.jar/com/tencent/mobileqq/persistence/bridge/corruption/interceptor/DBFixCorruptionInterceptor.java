@@ -26,9 +26,9 @@ public class DBFixCorruptionInterceptor
     int i = paramInt;
     if (paramInt == 0) {
       if (paramBoolean) {
-        i = DBFixManager.e;
+        i = DBFixManager.u;
       } else {
-        i = DBFixManager.d;
+        i = DBFixManager.t;
       }
     }
     HashMap localHashMap = new HashMap();
@@ -37,7 +37,7 @@ public class DBFixCorruptionInterceptor
     if (paramString2 != null) {
       localHashMap.put("errorStack", paramString2);
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.k, true, -1L, 0L, localHashMap, null, false);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.r, true, -1L, 0L, localHashMap, null, false);
   }
   
   public Void a(Interceptor.Chain<Void> paramChain)
@@ -48,7 +48,7 @@ public class DBFixCorruptionInterceptor
     }
     CorruptionInterceptorChain localCorruptionInterceptorChain = (CorruptionInterceptorChain)paramChain;
     SQLiteDatabase localSQLiteDatabase = localCorruptionInterceptorChain.database;
-    SharedPreferences localSharedPreferences = localAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0);
+    SharedPreferences localSharedPreferences = localAppRuntime.getApplication().getSharedPreferences(DBFixManager.d, 0);
     String str2 = new File(localSQLiteDatabase.getPath()).getName();
     paramChain = new StringBuilder();
     paramChain.append(localAppRuntime.getAccount());
@@ -59,7 +59,7 @@ public class DBFixCorruptionInterceptor
       paramChain = (DBFixManager)localAppRuntime.getManager(QQManagerFactory.DB_FIX_MANAGER);
       try
       {
-        bool1 = paramChain.a();
+        bool1 = paramChain.b();
         Interceptor.Chain<Void> localChain = paramChain;
         i = 0;
         paramChain = null;
@@ -71,7 +71,7 @@ public class DBFixCorruptionInterceptor
     {
       paramChain = null;
     }
-    int i = DBFixManager.jdField_f_of_type_Int;
+    int i = DBFixManager.v;
     String str1 = MsfSdkUtils.getStackTraceString(localThrowable2);
     boolean bool1 = false;
     Object localObject = paramChain;
@@ -91,10 +91,10 @@ public class DBFixCorruptionInterceptor
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(localAppRuntime.getAccount());
-    ((StringBuilder)localObject).append(DBFixManager.jdField_f_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(DBFixManager.m);
     int j = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 0);
     QLog.d("DBFixCorruptionHandler", 1, new Object[] { "db oncorrup, dbobj fileName: ", str2, ", isUinDb: ", Boolean.valueOf(bool2), ", soFailCount", Integer.valueOf(j) });
-    if ((j < DBFixManager.c) && (bool2)) {
+    if ((j < DBFixManager.l) && (bool2)) {
       return null;
     }
     a(localCorruptionInterceptorChain, localSQLiteDatabase, localSharedPreferences);
@@ -105,7 +105,7 @@ public class DBFixCorruptionInterceptor
   void a(CorruptionInterceptorChain paramCorruptionInterceptorChain, SQLiteDatabase paramSQLiteDatabase, SharedPreferences paramSharedPreferences)
   {
     paramCorruptionInterceptorChain.defaultErrorHandler.onCorruption(paramSQLiteDatabase);
-    paramSharedPreferences.edit().remove(DBFixManager.g).apply();
+    paramSharedPreferences.edit().remove(DBFixManager.n).apply();
     DBFixManager.a();
     paramSharedPreferences.edit().putBoolean("isFriendlistok", false).apply();
     QLog.d("DBFixCorruptionHandler", 1, "cleared friendlist flag");
@@ -113,7 +113,7 @@ public class DBFixCorruptionInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.corruption.interceptor.DBFixCorruptionInterceptor
  * JD-Core Version:    0.7.0.1
  */

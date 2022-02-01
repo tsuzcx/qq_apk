@@ -11,9 +11,9 @@ public class QQstoryOpenContentParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QQstoryAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qstory";
-    paramBaseQQAppInterface.c = "opencontent";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qstory";
+    paramBaseQQAppInterface.e = "opencontent";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class QQstoryOpenContentParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQstoryOpenContentParser
  * JD-Core Version:    0.7.0.1
  */

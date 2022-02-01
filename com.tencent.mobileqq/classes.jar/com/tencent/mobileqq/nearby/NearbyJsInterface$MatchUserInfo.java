@@ -2,18 +2,18 @@ package com.tencent.mobileqq.nearby;
 
 class NearbyJsInterface$MatchUserInfo
 {
-  public int a;
   public String a;
+  public int b;
   
   public NearbyJsInterface$MatchUserInfo(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.MatchUserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,14 @@ public class DBFixDialogActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    new DBFixDialogUI(this, this.app).b();
+    paramBundle = getIntent();
+    int i;
+    if (paramBundle != null) {
+      i = paramBundle.getIntExtra(DBFixManager.g, 1);
+    } else {
+      i = 1;
+    }
+    new DBFixDialogUI(this, this.app).a(i);
     return true;
   }
   
@@ -40,7 +47,7 @@ public class DBFixDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogActivity
  * JD-Core Version:    0.7.0.1
  */

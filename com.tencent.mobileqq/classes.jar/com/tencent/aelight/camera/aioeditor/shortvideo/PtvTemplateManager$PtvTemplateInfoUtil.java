@@ -16,110 +16,110 @@ public class PtvTemplateManager$PtvTemplateInfoUtil
     try
     {
       if (paramJSONObject.has("id")) {
-        localPtvTemplateInfo.jdField_a_of_type_JavaLangString = paramJSONObject.getString("id");
+        localPtvTemplateInfo.a = paramJSONObject.getString("id");
       }
       if (paramJSONObject.has("iconurl")) {
-        localPtvTemplateInfo.jdField_b_of_type_JavaLangString = paramJSONObject.getString("iconurl");
+        localPtvTemplateInfo.b = paramJSONObject.getString("iconurl");
       }
       if (paramJSONObject.has("resurl")) {
-        localPtvTemplateInfo.jdField_c_of_type_JavaLangString = paramJSONObject.getString("resurl");
+        localPtvTemplateInfo.c = paramJSONObject.getString("resurl");
       }
       if (paramJSONObject.has("md5")) {
-        localPtvTemplateInfo.jdField_d_of_type_JavaLangString = paramJSONObject.getString("md5");
+        localPtvTemplateInfo.d = paramJSONObject.getString("md5");
       }
       if (paramJSONObject.has("name")) {
-        localPtvTemplateInfo.jdField_e_of_type_JavaLangString = paramJSONObject.getString("name");
+        localPtvTemplateInfo.e = paramJSONObject.getString("name");
       }
       if (paramJSONObject.has("predownload")) {
-        localPtvTemplateInfo.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("predownload");
+        localPtvTemplateInfo.f = paramJSONObject.getBoolean("predownload");
       }
       if (paramJSONObject.has("platform")) {
-        localPtvTemplateInfo.jdField_a_of_type_Int = paramJSONObject.getInt("platform");
+        localPtvTemplateInfo.i = paramJSONObject.getInt("platform");
       }
       if (paramJSONObject.has("businessID")) {
-        localPtvTemplateInfo.jdField_b_of_type_Int = paramJSONObject.getInt("businessID");
+        localPtvTemplateInfo.j = paramJSONObject.getInt("businessID");
       }
       if (paramJSONObject.has("categoryId")) {
-        localPtvTemplateInfo.jdField_c_of_type_Int = paramJSONObject.getInt("categoryId");
+        localPtvTemplateInfo.l = paramJSONObject.getInt("categoryId");
       }
       if (paramJSONObject.has("templateStyle")) {
-        localPtvTemplateInfo.jdField_d_of_type_Int = paramJSONObject.getInt("templateStyle");
+        localPtvTemplateInfo.m = paramJSONObject.getInt("templateStyle");
       }
       if (paramJSONObject.has("needRedDot")) {
-        localPtvTemplateInfo.jdField_d_of_type_Boolean = paramJSONObject.getBoolean("needRedDot");
+        localPtvTemplateInfo.n = paramJSONObject.getBoolean("needRedDot");
       }
       if (paramJSONObject.has("kind")) {
-        localPtvTemplateInfo.jdField_e_of_type_Int = paramJSONObject.getInt("kind");
+        localPtvTemplateInfo.o = paramJSONObject.getInt("kind");
       }
       if (paramJSONObject.has("displayType")) {
-        localPtvTemplateInfo.jdField_f_of_type_Int = paramJSONObject.getInt("displayType");
+        localPtvTemplateInfo.p = paramJSONObject.getInt("displayType");
       }
       if (paramJSONObject.has("qq_camera_top_title")) {
-        localPtvTemplateInfo.jdField_f_of_type_JavaLangString = paramJSONObject.getString("qq_camera_top_title");
+        localPtvTemplateInfo.q = paramJSONObject.getString("qq_camera_top_title");
       }
       if (paramJSONObject.has("qq_camera_scheme")) {
-        localPtvTemplateInfo.jdField_g_of_type_JavaLangString = paramJSONObject.getString("qq_camera_scheme");
+        localPtvTemplateInfo.r = paramJSONObject.getString("qq_camera_scheme");
       }
       if (paramJSONObject.has("activityType")) {
-        localPtvTemplateInfo.jdField_g_of_type_Int = paramJSONObject.getInt("activityType");
+        localPtvTemplateInfo.t = paramJSONObject.getInt("activityType");
       }
       if (paramJSONObject.has("category")) {
-        localPtvTemplateInfo.jdField_h_of_type_Int = paramJSONObject.getInt("category");
+        localPtvTemplateInfo.u = paramJSONObject.getInt("category");
       }
       if (paramJSONObject.has("gestureType")) {
-        localPtvTemplateInfo.jdField_i_of_type_JavaLangString = paramJSONObject.getString("gestureType");
+        localPtvTemplateInfo.v = paramJSONObject.getString("gestureType");
       }
       if (paramJSONObject.has("gestureWording")) {
-        localPtvTemplateInfo.j = paramJSONObject.getString("gestureWording");
+        localPtvTemplateInfo.w = paramJSONObject.getString("gestureWording");
       }
       if (paramJSONObject.has("advertisement")) {
-        localPtvTemplateInfo.jdField_e_of_type_Boolean = paramJSONObject.getBoolean("advertisement");
+        localPtvTemplateInfo.z = paramJSONObject.getBoolean("advertisement");
       }
       if (paramJSONObject.has("androidopenurlheader")) {
-        localPtvTemplateInfo.k = paramJSONObject.getString("androidopenurlheader");
+        localPtvTemplateInfo.A = paramJSONObject.getString("androidopenurlheader");
       }
       if (paramJSONObject.has("openurl")) {
-        localPtvTemplateInfo.l = paramJSONObject.getString("openurl");
+        localPtvTemplateInfo.B = paramJSONObject.getString("openurl");
       }
       if (paramJSONObject.has("storeurl")) {
-        localPtvTemplateInfo.m = paramJSONObject.getString("storeurl");
+        localPtvTemplateInfo.C = paramJSONObject.getString("storeurl");
       }
       if (paramJSONObject.has("popup")) {
-        localPtvTemplateInfo.jdField_f_of_type_Boolean = paramJSONObject.getBoolean("popup");
+        localPtvTemplateInfo.D = paramJSONObject.getBoolean("popup");
       }
       if (paramJSONObject.has("badgeurl")) {
-        localPtvTemplateInfo.n = paramJSONObject.getString("badgeurl");
+        localPtvTemplateInfo.E = paramJSONObject.getString("badgeurl");
       }
       if (paramJSONObject.has("popupimgurl")) {
-        localPtvTemplateInfo.o = paramJSONObject.getString("popupimgurl");
+        localPtvTemplateInfo.F = paramJSONObject.getString("popupimgurl");
       }
       if (paramJSONObject.has("popupcontent")) {
-        localPtvTemplateInfo.p = paramJSONObject.getString("popupcontent");
+        localPtvTemplateInfo.G = paramJSONObject.getString("popupcontent");
       }
       if (paramJSONObject.has("popupbtn")) {
-        localPtvTemplateInfo.q = paramJSONObject.getString("popupbtn");
+        localPtvTemplateInfo.H = paramJSONObject.getString("popupbtn");
       }
       if (paramJSONObject.has("popupcontent2")) {
-        localPtvTemplateInfo.r = paramJSONObject.getString("popupcontent2");
+        localPtvTemplateInfo.I = paramJSONObject.getString("popupcontent2");
       }
       if (paramJSONObject.has("popupbtn2")) {
-        localPtvTemplateInfo.s = paramJSONObject.getString("popupbtn2");
+        localPtvTemplateInfo.J = paramJSONObject.getString("popupbtn2");
       }
       if (paramJSONObject.has("buttonbgcolor")) {
-        localPtvTemplateInfo.t = paramJSONObject.getString("buttonbgcolor");
+        localPtvTemplateInfo.K = paramJSONObject.getString("buttonbgcolor");
       }
       if (paramJSONObject.has("multivideosupport")) {
-        localPtvTemplateInfo.jdField_g_of_type_Boolean = paramJSONObject.getBoolean("multivideosupport");
+        localPtvTemplateInfo.L = paramJSONObject.getBoolean("multivideosupport");
       }
       if (paramJSONObject.has("sizeFree")) {
-        localPtvTemplateInfo.jdField_a_of_type_Double = paramJSONObject.getDouble("sizeFree");
+        localPtvTemplateInfo.V = paramJSONObject.getDouble("sizeFree");
       }
       if (paramJSONObject.has("jump_app")) {
-        localPtvTemplateInfo.jdField_h_of_type_JavaLangString = paramJSONObject.getString("jump_app");
+        localPtvTemplateInfo.s = paramJSONObject.getString("jump_app");
       }
       if (paramJSONObject.has("funcType"))
       {
-        localPtvTemplateInfo.jdField_i_of_type_Int = paramJSONObject.getInt("funcType");
+        localPtvTemplateInfo.x = paramJSONObject.getInt("funcType");
         return localPtvTemplateInfo;
       }
     }
@@ -170,8 +170,8 @@ public class PtvTemplateManager$PtvTemplateInfoUtil
       }
       try
       {
-        Long.parseLong(localPtvTemplateInfo.jdField_a_of_type_JavaLangString);
-        k = localPtvTemplateInfo.jdField_e_of_type_Int;
+        Long.parseLong(localPtvTemplateInfo.a);
+        k = localPtvTemplateInfo.o;
         if (k != 1)
         {
           if (k != 12) {
@@ -180,7 +180,7 @@ public class PtvTemplateManager$PtvTemplateInfoUtil
             localArrayList.add(localPtvTemplateInfo);
           }
         }
-        else if (!PtvTemplateManager.c()) {
+        else if (!PtvTemplateManager.h()) {
           localArrayList.add(localPtvTemplateInfo);
         }
       }
@@ -198,7 +198,7 @@ public class PtvTemplateManager$PtvTemplateInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.PtvTemplateManager.PtvTemplateInfoUtil
  * JD-Core Version:    0.7.0.1
  */

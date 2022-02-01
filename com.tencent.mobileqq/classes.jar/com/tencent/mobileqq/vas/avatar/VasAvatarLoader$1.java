@@ -12,19 +12,19 @@ class VasAvatarLoader$1
   
   public void run()
   {
-    VasAvatar localVasAvatar = (VasAvatar)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localVasAvatar != null) && (localVasAvatar.a == this.this$0))
+    VasAvatar localVasAvatar = (VasAvatar)this.this$0.h.get();
+    if ((localVasAvatar != null) && (localVasAvatar.b == this.this$0))
     {
       localVasAvatar.setImageDrawable(this.a);
-      if (!this.this$0.jdField_a_of_type_Boolean)
+      if (!this.this$0.f)
       {
         Drawable localDrawable = this.a.getCurrDrawable();
         if ((localDrawable instanceof ApngDrawable))
         {
-          if (this.this$0.b != -1) {
+          if (this.this$0.e != -1) {
             VasFaceManager.a((ApngDrawable)localDrawable);
           }
-          VasFaceManager.a(this.this$0.jdField_a_of_type_JavaLangString, (ApngDrawable)localDrawable);
+          VasFaceManager.a(this.this$0.b, (ApngDrawable)localDrawable);
           localVasAvatar.a();
         }
       }
@@ -33,7 +33,7 @@ class VasAvatarLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.util.List;
 public class TimeMonitor
 {
   HippyEngineMonitorEvent mCurrentEvent;
-  boolean mEnable;
+  final boolean mEnable;
   List<HippyEngineMonitorEvent> mEvents;
   long mStartTime;
   int mTotalTime;
@@ -88,7 +88,7 @@ public class TimeMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.TimeMonitor
  * JD-Core Version:    0.7.0.1
  */

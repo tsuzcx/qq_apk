@@ -12,9 +12,9 @@ import org.json.JSONArray;
 
 public class BlessUinList
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, Integer> a = new HashMap();
+  private int b = 0;
+  private long c;
   
   public static BlessUinList a(SharedPreferences paramSharedPreferences, int paramInt)
   {
@@ -31,8 +31,8 @@ public class BlessUinList
       str = "bless_uin_list_time_millis";
     }
     BlessUinList localBlessUinList = new BlessUinList();
-    localBlessUinList.jdField_a_of_type_Long = paramSharedPreferences.getLong(str, 0L);
-    if (DateUtils.isToday(localBlessUinList.jdField_a_of_type_Long)) {
+    localBlessUinList.c = paramSharedPreferences.getLong(str, 0L);
+    if (DateUtils.isToday(localBlessUinList.c)) {
       try
       {
         paramSharedPreferences = paramSharedPreferences.getString((String)localObject, "[]");
@@ -56,7 +56,7 @@ public class BlessUinList
           localBlessUinList.a(paramSharedPreferences.getString(paramInt), paramSharedPreferences.getInt(i));
           paramInt += 2;
         }
-        localBlessUinList.jdField_a_of_type_Long = System.currentTimeMillis();
+        localBlessUinList.c = System.currentTimeMillis();
       }
       catch (Exception paramSharedPreferences)
       {
@@ -71,7 +71,7 @@ public class BlessUinList
   {
     paramBlessUinList.a();
     Object localObject1 = new JSONArray();
-    Object localObject2 = paramBlessUinList.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Object localObject2 = paramBlessUinList.a.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
@@ -90,66 +90,66 @@ public class BlessUinList
     if (paramInt == 2)
     {
       paramSharedPreferences.putString("web_uin_list", (String)localObject1);
-      paramSharedPreferences.putLong("web_uin_list_time_millis", paramBlessUinList.jdField_a_of_type_Long);
+      paramSharedPreferences.putLong("web_uin_list_time_millis", paramBlessUinList.c);
     }
     else
     {
       paramSharedPreferences.putString("bless_uin_list", (String)localObject1);
-      paramSharedPreferences.putLong("bless_uin_list_time_millis", paramBlessUinList.jdField_a_of_type_Long);
+      paramSharedPreferences.putLong("bless_uin_list_time_millis", paramBlessUinList.c);
     }
     paramSharedPreferences.commit();
   }
   
   private void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int += paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.size();
+    this.b += paramInt;
+    this.a.put(paramString, Integer.valueOf(paramInt));
   }
   
   public void a()
   {
-    if (!DateUtils.isToday(this.jdField_a_of_type_Long)) {
-      b();
+    if (!DateUtils.isToday(this.c)) {
+      d();
     }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    this.b += 1;
+    if (this.a.containsKey(paramString))
     {
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      HashMap localHashMap = this.a;
       localHashMap.put(paramString, Integer.valueOf(((Integer)localHashMap.get(paramString)).intValue() + 1));
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(1));
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+    this.a.put(paramString, Integer.valueOf(1));
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a.size();
   }
   
-  public void b()
+  public boolean b(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return this.a.containsKey(paramString);
+  }
+  
+  public int c()
+  {
+    return this.b;
+  }
+  
+  public void d()
+  {
+    this.a.clear();
+    this.b = 0;
+    this.c = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessUinList
  * JD-Core Version:    0.7.0.1
  */

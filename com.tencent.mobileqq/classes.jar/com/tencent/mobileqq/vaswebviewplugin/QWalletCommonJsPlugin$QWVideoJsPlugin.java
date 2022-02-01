@@ -849,7 +849,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   
   protected void onWebViewCreated(WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
-    this.videoParent = ((ViewGroup)paramPluginRuntime.a().findViewById(2131381085));
+    this.videoParent = ((ViewGroup)paramPluginRuntime.d().findViewById(2131450099));
     if (this.videoParent != null)
     {
       this.videoLayout = new FrameLayout(this.mContext);
@@ -899,7 +899,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,15 @@ class StrangerIntimateView$3
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
     {
       paramString = this.a.a.getFaceBitmap(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (StrangerIntimateView.a(this.a) != null)) {
-        StrangerIntimateView.a(this.a).setImageBitmap(paramString);
+      if ((paramString != null) && (StrangerIntimateView.b(this.a) != null)) {
+        StrangerIntimateView.b(this.a).setImageBitmap(paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.StrangerIntimateView.3
  * JD-Core Version:    0.7.0.1
  */

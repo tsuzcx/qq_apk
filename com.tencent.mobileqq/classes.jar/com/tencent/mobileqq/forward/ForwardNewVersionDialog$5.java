@@ -15,18 +15,18 @@ class ForwardNewVersionDialog$5
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramInt1 = ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).getText().length();
-    paramInt2 = this.jdField_a_of_type_Int;
+    paramInt1 = ForwardNewVersionDialog.h(this.b).getText().length();
+    paramInt2 = this.a;
     if ((paramInt1 == paramInt2) && (paramCharSequence.charAt(paramInt2 - 1) == '\024'))
     {
-      ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).setSelection(this.jdField_a_of_type_Int - 1);
+      ForwardNewVersionDialog.h(this.b).setText(paramCharSequence.subSequence(0, this.a - 1));
+      ForwardNewVersionDialog.h(this.b).setSelection(this.a - 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.5
  * JD-Core Version:    0.7.0.1
  */

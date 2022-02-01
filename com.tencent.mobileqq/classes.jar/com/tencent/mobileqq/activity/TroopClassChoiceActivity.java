@@ -22,56 +22,56 @@ public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
   implements AdapterView.OnItemClickListener
 {
-  private TroopClassChoiceActivity.TroopClassChoiceAdapter jdField_a_of_type_ComTencentMobileqqActivityTroopClassChoiceActivity$TroopClassChoiceAdapter;
-  GroupCatalogBean jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<GroupCatalogBean> jdField_a_of_type_JavaUtilArrayList;
-  private String b;
+  ArrayList<GroupCatalogBean> a;
+  GroupCatalogBean b;
+  String c;
+  private XListView d;
+  private TroopClassChoiceActivity.TroopClassChoiceAdapter e;
+  private String f;
   
   private void b()
   {
     Object localObject = getIntent();
-    this.b = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
-    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(this).a();
-    if ((localGroupCatalogBean != null) && (this.b.equals(localGroupCatalogBean.b))) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean = localGroupCatalogBean;
+    this.f = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
+    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(this).d();
+    if ((localGroupCatalogBean != null) && (this.f.equals(localGroupCatalogBean.c))) {
+      this.b = localGroupCatalogBean;
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean = GroupCatalogTool.a(this).a(this, this.b);
+      this.b = GroupCatalogTool.a(this).a(this, this.f);
     }
-    this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("id");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.c = ((Intent)localObject).getStringExtra("id");
+    if (TextUtils.isEmpty(this.c))
     {
-      this.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this).a();
+      this.a = GroupCatalogTool.a(this).b();
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this).a(this.jdField_a_of_type_JavaLangString);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      this.a = GroupCatalogTool.a(this).a(this.c);
+      localObject = this.a;
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        localObject = (GroupCatalogBean)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean != null) {
-          setTitle(((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.jdField_a_of_type_JavaLangString);
+        localObject = (GroupCatalogBean)this.a.get(0);
+        if (((GroupCatalogBean)localObject).e != null) {
+          setTitle(((GroupCatalogBean)localObject).e.b);
         }
       }
     }
-    CacheManager.a(CommonDataAdapter.a().a());
+    CacheManager.a(CommonDataAdapter.a().b());
     a();
   }
   
   private void c()
   {
-    setContentBackgroundResource(2130838739);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379131));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopClassChoiceActivity$TroopClassChoiceAdapter = new TroopClassChoiceActivity.TroopClassChoiceAdapter(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopClassChoiceActivity$TroopClassChoiceAdapter);
+    setContentBackgroundResource(2130838958);
+    this.d = ((XListView)findViewById(2131447867));
+    this.d.setOnItemClickListener(this);
+    this.e = new TroopClassChoiceActivity.TroopClassChoiceAdapter(this);
+    this.d.setAdapter(this.e);
   }
   
   public void a()
   {
-    GroupCatalogTool.a(BaseApplicationImpl.getContext()).a(this.b, new TroopClassChoiceActivity.GetClassChoiceCallBack(this));
+    GroupCatalogTool.a(BaseApplicationImpl.getContext()).a(this.f, new TroopClassChoiceActivity.GetClassChoiceCallBack(this));
   }
   
   @Override
@@ -102,33 +102,33 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562955);
-    setTitle(2131719803);
+    super.setContentView(2131629563);
+    setTitle(2131917407);
     b();
     c();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (GroupCatalogBean)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if ((paramAdapterView.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdapterView.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!paramAdapterView.b.equals("10015")) && (!paramAdapterView.b.equals("10017")))
+    paramAdapterView = (GroupCatalogBean)this.a.get(paramInt);
+    if ((paramAdapterView.d != null) && (paramAdapterView.d.size() > 0) && (!paramAdapterView.c.equals("10015")) && (!paramAdapterView.c.equals("10017")))
     {
       paramView = new Intent(this, TroopClassChoiceActivity.class);
-      paramView.putExtra("id", paramAdapterView.b);
-      paramView.putExtra("troopGroupClassExt", this.b);
+      paramView.putExtra("id", paramAdapterView.c);
+      paramView.putExtra("troopGroupClassExt", this.f);
       startActivityForResult(paramView, 11);
       return;
     }
     GroupCatalogTool.a(this).a(paramAdapterView);
     paramView = new Intent();
-    paramView.putExtra("id", paramAdapterView.b);
+    paramView.putExtra("id", paramAdapterView.c);
     setResult(-1, paramView);
     finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopClassChoiceActivity
  * JD-Core Version:    0.7.0.1
  */

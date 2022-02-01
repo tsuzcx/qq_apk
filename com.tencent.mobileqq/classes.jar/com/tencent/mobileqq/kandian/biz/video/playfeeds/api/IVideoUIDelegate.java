@@ -4,8 +4,6 @@ import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam;
 
 public abstract interface IVideoUIDelegate
 {
-  public abstract long a();
-  
   public abstract void a(VideoPlayParam paramVideoPlayParam);
   
   public abstract void a(VideoPlayParam paramVideoPlayParam, int paramInt1, int paramInt2, String paramString);
@@ -18,11 +16,13 @@ public abstract interface IVideoUIDelegate
   
   public abstract void a(VideoPlayParam paramVideoPlayParam, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean a();
-  
   public abstract void b(VideoPlayParam paramVideoPlayParam);
   
   public abstract void b(VideoPlayParam paramVideoPlayParam, boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract long c();
   
   public abstract void c(VideoPlayParam paramVideoPlayParam);
   
@@ -40,7 +40,7 @@ public abstract interface IVideoUIDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoUIDelegate
  * JD-Core Version:    0.7.0.1
  */

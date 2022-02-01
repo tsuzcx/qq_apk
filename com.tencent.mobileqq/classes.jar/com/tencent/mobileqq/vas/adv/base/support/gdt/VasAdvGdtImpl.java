@@ -62,23 +62,18 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/adv/base/support/gdt/VasAdvGdtImpl;", "Lcom/tencent/mobileqq/vas/adv/base/support/gdt/VasAdvGdtInterface;", "appInterface", "Lcom/tencent/mobileqq/vas/adv/base/support/app/VasAdvAppInterface;", "(Lcom/tencent/mobileqq/vas/adv/base/support/app/VasAdvAppInterface;)V", "exposureCallback", "Lcom/tencent/ad/tangram/util/AdExposureChecker$ExposureCallback;", "gdtAppReceiver", "Lcom/tencent/gdtad/aditem/GdtAppReceiver;", "convertMotiveAdData", "Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData;", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "rewardText", "", "bizSrc", "convertPbToJson", "T", "Lcom/tencent/mobileqq/pb/PBField;", "pbField", "(Lcom/tencent/mobileqq/pb/PBField;)Ljava/lang/String;", "createExposureCallback", "createGdtAdParams", "Lcom/tencent/gdtad/aditem/GdtHandler$Params;", "activity", "Landroid/app/Activity;", "params", "Lcom/tencent/mobileqq/vas/adv/common/data/LandingPageParams;", "createGdtAppReceiver", "doCgiReport", "", "exposureUrl", "doExposure", "adView", "Landroid/view/View;", "pbAdInfo", "resultCallback", "Lcom/tencent/mobileqq/vas/adv/common/callback/VasResultCallback;", "", "doOriginalExposure", "context", "Landroid/content/Context;", "jsonGdtAdInfo", "getDeviceInfo", "Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;", "gdtBizId", "getDeviceInfoAsJson", "getGdtCountdownTime", "", "gdtTangramAdJson", "getGdtDanmakuStrContents", "", "(Ljava/lang/String;)[Ljava/lang/String;", "getIndustryLabels", "", "getMarketPendantImgUrl", "initGdtContext", "showMotiveAd", "profitableCallback", "Lcom/tencent/mobileqq/vas/adv/reward/VasProfitableCallback;", "toLandingPage", "unregisterAppReceiver", "vasGdtBizId", "isBrowsingAd", "Companion", "vas-adv-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/adv/base/support/gdt/VasAdvGdtImpl;", "Lcom/tencent/mobileqq/vas/adv/base/support/gdt/VasAdvGdtInterface;", "appInterface", "Lcom/tencent/mobileqq/vas/adv/base/support/app/VasAdvAppInterface;", "(Lcom/tencent/mobileqq/vas/adv/base/support/app/VasAdvAppInterface;)V", "exposureCallback", "Lcom/tencent/ad/tangram/util/AdExposureChecker$ExposureCallback;", "gdtAppReceiver", "Lcom/tencent/gdtad/aditem/GdtAppReceiver;", "convertMotiveAdData", "Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData;", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "rewardText", "", "bizSrc", "convertPbToJson", "T", "Lcom/tencent/mobileqq/pb/PBField;", "pbField", "(Lcom/tencent/mobileqq/pb/PBField;)Ljava/lang/String;", "createExposureCallback", "createGdtAdParams", "Lcom/tencent/gdtad/aditem/GdtHandler$Params;", "activity", "Landroid/app/Activity;", "params", "Lcom/tencent/mobileqq/vas/adv/common/data/LandingPageParams;", "createGdtAppReceiver", "doCgiReport", "", "exposureUrl", "doExposure", "adView", "Landroid/view/View;", "pbAdInfo", "resultCallback", "Lcom/tencent/mobileqq/vas/adv/common/callback/VasResultCallback;", "", "doOriginalExposure", "context", "Landroid/content/Context;", "jsonGdtAdInfo", "position", "", "getDeviceInfo", "Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;", "gdtBizId", "getDeviceInfoAsJson", "getGdtCountdownTime", "gdtTangramAdJson", "getGdtDanmakuStrContents", "", "(Ljava/lang/String;)[Ljava/lang/String;", "getIndustryLabels", "", "getMarketPendantImgUrl", "initGdtContext", "showMotiveAd", "profitableCallback", "Lcom/tencent/mobileqq/vas/adv/reward/VasProfitableCallback;", "toLandingPage", "unregisterAppReceiver", "vasGdtBizId", "isBrowsingAd", "Companion", "vas-adv-impl_release"}, k=1, mv={1, 1, 16})
 public final class VasAdvGdtImpl
   implements VasAdvGdtInterface
 {
-  public static final VasAdvGdtImpl.Companion a;
-  private AdExposureChecker.ExposureCallback jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback;
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  private final VasAdvAppInterface jdField_a_of_type_ComTencentMobileqqVasAdvBaseSupportAppVasAdvAppInterface;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasAdvBaseSupportGdtVasAdvGdtImpl$Companion = new VasAdvGdtImpl.Companion(null);
-  }
+  public static final VasAdvGdtImpl.Companion a = new VasAdvGdtImpl.Companion(null);
+  private GdtAppReceiver b;
+  private AdExposureChecker.ExposureCallback c;
+  private final VasAdvAppInterface d;
   
   public VasAdvGdtImpl(@NotNull VasAdvAppInterface paramVasAdvAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseSupportAppVasAdvAppInterface = paramVasAdvAppInterface;
+    this.d = paramVasAdvAppInterface;
   }
   
   private final AdExposureChecker.ExposureCallback a()
@@ -86,38 +81,10 @@ public final class VasAdvGdtImpl
     return (AdExposureChecker.ExposureCallback)new VasAdvGdtImpl.createExposureCallback.1(this);
   }
   
-  private final GdtAppReceiver a()
-  {
-    GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
-    localGdtAppReceiver.register(VasAdvSupport.a.a().a());
-    return localGdtAppReceiver;
-  }
-  
-  private final GdtHandler.Params a(Activity paramActivity, LandingPageParams paramLandingPageParams)
-  {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramLandingPageParams.getAdInfo());
-    localParams.jdField_a_of_type_Boolean = true;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localParams.jdField_a_of_type_Int = paramLandingPageParams.getSceneId();
-    localParams.jdField_b_of_type_Int = paramLandingPageParams.getComponentId();
-    localParams.jdField_b_of_type_Boolean = paramLandingPageParams.getAutoDownloadApp();
-    localParams.jdField_c_of_type_Int = 1;
-    localParams.jdField_c_of_type_Boolean = false;
-    localParams.d = false;
-    localParams.e = false;
-    localParams.f = true;
-    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-    paramActivity = new Bundle();
-    paramActivity.putString("big_brother_ref_source_key", paramLandingPageParams.getSrcId());
-    localParams.jdField_a_of_type_AndroidOsBundle = paramActivity;
-    return localParams;
-  }
-  
   private final GdtMotiveVideoPageData a(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, String paramString1, String paramString2)
   {
     GdtAd localGdtAd = new GdtAd(paramAdInfo);
-    ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).preLoadAfterAdLoaded(this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseSupportAppVasAdvAppInterface.a(), localGdtAd);
+    ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).preLoadAfterAdLoaded(this.d.b(), localGdtAd);
     GdtMotiveVideoPageData localGdtMotiveVideoPageData = new GdtMotiveVideoPageData();
     localGdtMotiveVideoPageData.productType = localGdtAd.getProductType();
     localGdtMotiveVideoPageData.vSize = localGdtAd.getCreativeSize();
@@ -179,39 +146,32 @@ public final class VasAdvGdtImpl
     return (paramGdtMotiveVideoPageData.vSize != 585) && (paramGdtMotiveVideoPageData.vSize != 185);
   }
   
-  public int a(@Nullable String paramString)
+  private final GdtAppReceiver b()
   {
-    if (paramString != null) {
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("pos_ads_info").optJSONObject(0).optJSONArray("ads_info").optJSONObject(0).optString("ext_json");
-        if (paramString != null)
-        {
-          paramString = new JSONObject(paramString).optString("countdown_end_time");
-          if (paramString != null)
-          {
-            paramString = StringsKt.toIntOrNull(paramString);
-            if (paramString != null)
-            {
-              long l1 = ((Number)paramString).intValue();
-              long l2 = System.currentTimeMillis() / 1000;
-              return (int)(l1 - l2);
-            }
-          }
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("VasAdvGdtImpl", 1, "fail to get count down time", paramString);
-      }
-    }
-    return 0;
+    GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
+    localGdtAppReceiver.register(VasAdvSupport.a.a().b());
+    return localGdtAppReceiver;
   }
   
-  @NotNull
-  public String a()
+  private final GdtHandler.Params b(Activity paramActivity, LandingPageParams paramLandingPageParams)
   {
-    return "1018ec";
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.a = new GdtAd(paramLandingPageParams.getAdInfo());
+    localParams.b = true;
+    localParams.r = new WeakReference(paramActivity);
+    localParams.c = paramLandingPageParams.getSceneId();
+    localParams.d = paramLandingPageParams.getComponentId();
+    localParams.e = paramLandingPageParams.getAutoDownloadApp();
+    localParams.q = 1;
+    localParams.f = false;
+    localParams.g = false;
+    localParams.i = false;
+    localParams.l = true;
+    localParams.s = new WeakReference(this.b);
+    paramActivity = new Bundle();
+    paramActivity.putString("big_brother_ref_source_key", paramLandingPageParams.getSrcId());
+    localParams.p = paramActivity;
+    return localParams;
   }
   
   @Nullable
@@ -223,24 +183,6 @@ public final class VasAdvGdtImpl
       return paramT.toString();
     }
     return null;
-  }
-  
-  @Nullable
-  public String a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "gdtBizId");
-    Object localObject2 = a(paramString);
-    Object localObject1 = null;
-    paramString = localObject1;
-    if (localObject2 != null)
-    {
-      localObject2 = GdtJsonPbUtil.a((PBField)localObject2);
-      paramString = localObject1;
-      if (localObject2 != null) {
-        paramString = localObject2.toString();
-      }
-    }
-    return paramString;
   }
   
   @Nullable
@@ -279,48 +221,16 @@ public final class VasAdvGdtImpl
     return null;
   }
   
-  @Nullable
-  public qq_ad_get.QQAdGet.DeviceInfo a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "gdtBizId");
-    try
-    {
-      Object localObject = new GdtDeviceInfoHelper.Params();
-      ((GdtDeviceInfoHelper.Params)localObject).a = paramString;
-      localObject = GdtDeviceInfoHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseSupportAppVasAdvAppInterface.a(), (GdtDeviceInfoHelper.Params)localObject);
-      if (localObject != null)
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("gdt device info init success, gdtBizId:");
-          localStringBuilder.append(paramString);
-          QLog.d("VasAdvGdtImpl", 2, localStringBuilder.toString());
-        }
-        localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
-        return localObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Error when get gdt device info, biz id ");
-      localStringBuilder.append(paramString);
-      QLog.e("VasAdvGdtImpl", 1, localStringBuilder.toString(), (Throwable)localException);
-    }
-    return null;
-  }
-  
   public void a(@NotNull Activity paramActivity, @NotNull LandingPageParams paramLandingPageParams)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
     Intrinsics.checkParameterIsNotNull(paramLandingPageParams, "params");
-    if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null) {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = a();
+    if (this.b == null) {
+      this.b = b();
     }
     try
     {
-      paramActivity = a(paramActivity, paramLandingPageParams);
+      paramActivity = b(paramActivity, paramLandingPageParams);
       ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).handleGdtAdClick(paramActivity);
       return;
     }
@@ -366,19 +276,19 @@ public final class VasAdvGdtImpl
     Intrinsics.checkParameterIsNotNull(paramString, "exposureUrl");
     Intrinsics.checkParameterIsNotNull(paramView, "adView");
     Intrinsics.checkParameterIsNotNull(paramVasResultCallback, "resultCallback");
-    if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = a();
+    if (this.c == null) {
+      this.c = a();
     }
     paramVasResultCallback = new WeakReference(paramVasResultCallback);
     paramView = new VasExposureReference(paramView);
     paramView.a(paramVasResultCallback);
     paramView.a(paramString);
     paramString = new AdExposureChecker((Ad)new GdtAd(paramAdInfo), (WeakReference)paramView);
-    paramString.setCallback(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
+    paramString.setCallback(new WeakReference(this.c));
     paramString.startCheck();
   }
   
-  public boolean a(@NotNull Context paramContext, @Nullable String paramString, @Nullable qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  public boolean a(@NotNull Context paramContext, @Nullable String paramString, @Nullable qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     for (;;)
@@ -390,16 +300,16 @@ public final class VasAdvGdtImpl
         {
           Object localObject = null;
           if (paramAdInfo == null) {
-            break label286;
+            break label318;
           }
           paramString = paramAdInfo.product_type;
           if (paramString == null) {
-            break label286;
+            break label318;
           }
           paramString = Integer.valueOf(paramString.get());
-          break label288;
+          break label320;
           if (paramString.intValue() != 12) {
-            break label302;
+            break label334;
           }
           paramAdInfo = paramAdInfo.app_info;
           paramString = localObject;
@@ -412,11 +322,15 @@ public final class VasAdvGdtImpl
             }
           }
           if (!VasAdvSupport.a.a().a(paramContext, paramString)) {
-            break label295;
+            break label327;
           }
           paramContext = "2";
+          paramString = new StringBuilder();
           Intrinsics.checkExpressionValueIsNotNull(str, "rawUrl");
-          paramContext = StringsKt.replace$default(StringsKt.replace$default(StringsKt.replace$default(str, "__ACTION_TYPE__", paramContext, false, 4, null), "__VIEW_PERCENT__", "1", false, 4, null), "__VIEW_TIME__", "0", false, 4, null);
+          paramString.append(StringsKt.replace$default(StringsKt.replace$default(StringsKt.replace$default(str, "__ACTION_TYPE__", paramContext, false, 4, null), "__VIEW_PERCENT__", "1", false, 4, null), "__VIEW_TIME__", "0", false, 4, null));
+          paramString.append("&slot=");
+          paramString.append(paramInt);
+          paramContext = paramString.toString();
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder();
@@ -443,23 +357,111 @@ public final class VasAdvGdtImpl
         QLog.e("VasAdvGdtImpl", 1, "getOriginalExposureUrl fail ", paramContext);
         return false;
       }
-      label286:
+      label318:
       paramString = null;
-      label288:
+      label320:
       if (paramString == null)
       {
-        break label302;
-        label295:
+        break label334;
+        label327:
         paramContext = "1";
         continue;
-        label302:
+        label334:
         paramContext = "0";
       }
     }
   }
   
   @Nullable
-  public String[] a(@Nullable String paramString)
+  public qq_ad_get.QQAdGet.DeviceInfo b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "gdtBizId");
+    try
+    {
+      Object localObject = new GdtDeviceInfoHelper.Params();
+      ((GdtDeviceInfoHelper.Params)localObject).a = paramString;
+      localObject = GdtDeviceInfoHelper.a(this.d.b(), (GdtDeviceInfoHelper.Params)localObject);
+      if (localObject != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("gdt device info init success, gdtBizId:");
+          localStringBuilder.append(paramString);
+          QLog.d("VasAdvGdtImpl", 2, localStringBuilder.toString());
+        }
+        localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Error when get gdt device info, biz id ");
+      localStringBuilder.append(paramString);
+      QLog.e("VasAdvGdtImpl", 1, localStringBuilder.toString(), (Throwable)localException);
+    }
+    return null;
+  }
+  
+  @Nullable
+  public String c(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "gdtBizId");
+    Object localObject2 = b(paramString);
+    Object localObject1 = null;
+    paramString = localObject1;
+    if (localObject2 != null)
+    {
+      localObject2 = GdtJsonPbUtil.a((PBField)localObject2);
+      paramString = localObject1;
+      if (localObject2 != null) {
+        paramString = localObject2.toString();
+      }
+    }
+    return paramString;
+  }
+  
+  public int d(@Nullable String paramString)
+  {
+    if (paramString != null) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("pos_ads_info").optJSONObject(0).optJSONArray("ads_info").optJSONObject(0).optString("ext_json");
+        if (paramString != null)
+        {
+          paramString = new JSONObject(paramString).optString("countdown_end_time");
+          if (paramString != null)
+          {
+            paramString = StringsKt.toIntOrNull(paramString);
+            if (paramString != null)
+            {
+              long l1 = ((Number)paramString).intValue();
+              long l2 = System.currentTimeMillis() / 1000;
+              return (int)(l1 - l2);
+            }
+          }
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("VasAdvGdtImpl", 1, "fail to get count down time", paramString);
+      }
+    }
+    return 0;
+  }
+  
+  public void e()
+  {
+    GdtAppReceiver localGdtAppReceiver = this.b;
+    if (localGdtAppReceiver != null) {
+      localGdtAppReceiver.unregister(VasAdvSupport.a.a().b());
+    }
+    this.b = ((GdtAppReceiver)null);
+  }
+  
+  @Nullable
+  public String[] e(@Nullable String paramString)
   {
     if (paramString != null) {
       try
@@ -491,8 +493,14 @@ public final class VasAdvGdtImpl
     return null;
   }
   
+  @NotNull
+  public String f()
+  {
+    return "1018ec";
+  }
+  
   @Nullable
-  public String b(@Nullable String paramString)
+  public String f(@Nullable String paramString)
   {
     if (paramString != null) {
       try
@@ -507,19 +515,10 @@ public final class VasAdvGdtImpl
     }
     return null;
   }
-  
-  public void b()
-  {
-    GdtAppReceiver localGdtAppReceiver = this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-    if (localGdtAppReceiver != null) {
-      localGdtAppReceiver.unregister(VasAdvSupport.a.a().a());
-    }
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = ((GdtAppReceiver)null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.gdt.VasAdvGdtImpl
  * JD-Core Version:    0.7.0.1
  */

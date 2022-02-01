@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class f
 {
-  public Context a;
+  public final Context a;
   
   public f(Context paramContext)
   {

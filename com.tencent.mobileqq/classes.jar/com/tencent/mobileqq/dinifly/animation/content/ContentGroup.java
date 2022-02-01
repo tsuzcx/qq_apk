@@ -2,10 +2,12 @@ package com.tencent.mobileqq.dinifly.animation.content;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.animation.LPaint;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation.AnimationListener;
 import com.tencent.mobileqq.dinifly.animation.keyframe.TransformKeyframeAnimation;
@@ -15,6 +17,7 @@ import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTransform;
 import com.tencent.mobileqq.dinifly.model.content.ContentModel;
 import com.tencent.mobileqq.dinifly.model.content.ShapeGroup;
 import com.tencent.mobileqq.dinifly.model.layer.BaseLayer;
+import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,8 @@ public class ContentGroup
   private final LottieDrawable lottieDrawable;
   private final Matrix matrix = new Matrix();
   private final String name;
+  private Paint offScreenPaint = new LPaint();
+  private RectF offScreenRectF = new RectF();
   private final Path path = new Path();
   @Nullable
   private List<PathContent> pathContents;
@@ -99,6 +104,26 @@ public class ContentGroup
     return null;
   }
   
+  private boolean hasTwoOrMoreDrawableContent()
+  {
+    int j = 0;
+    int i;
+    for (int k = 0; j < this.contents.size(); k = i)
+    {
+      i = k;
+      if ((this.contents.get(j) instanceof DrawingContent))
+      {
+        k += 1;
+        i = k;
+        if (k >= 2) {
+          return true;
+        }
+      }
+      j += 1;
+    }
+    return false;
+  }
+  
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
     TransformKeyframeAnimation localTransformKeyframeAnimation = this.transformAnimation;
@@ -125,14 +150,32 @@ public class ContentGroup
       }
       i = (int)(i / 100.0F * paramInt / 255.0F * 255.0F);
     }
-    paramInt = this.contents.size() - 1;
-    while (paramInt >= 0)
+    if ((this.lottieDrawable.isApplyingOpacityToLayersEnabled()) && (hasTwoOrMoreDrawableContent()) && (i != 255)) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    if (paramInt != 0)
     {
-      paramMatrix = this.contents.get(paramInt);
+      this.offScreenRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+      getBounds(this.offScreenRectF, this.matrix, true);
+      this.offScreenPaint.setAlpha(i);
+      Utils.saveLayerCompat(paramCanvas, this.offScreenRectF, this.offScreenPaint);
+    }
+    if (paramInt != 0) {
+      i = 255;
+    }
+    int j = this.contents.size() - 1;
+    while (j >= 0)
+    {
+      paramMatrix = this.contents.get(j);
       if ((paramMatrix instanceof DrawingContent)) {
         ((DrawingContent)paramMatrix).draw(paramCanvas, this.matrix, i);
       }
-      paramInt -= 1;
+      j -= 1;
+    }
+    if (paramInt != 0) {
+      paramCanvas.restore();
     }
   }
   
@@ -220,7 +263,7 @@ public class ContentGroup
   
   public void resolveKeyPath(KeyPath paramKeyPath1, int paramInt, List<KeyPath> paramList, KeyPath paramKeyPath2)
   {
-    if (!paramKeyPath1.matches(getName(), paramInt)) {
+    if ((!paramKeyPath1.matches(getName(), paramInt)) && (!"__container".equals(getName()))) {
       return;
     }
     KeyPath localKeyPath = paramKeyPath2;
@@ -265,7 +308,7 @@ public class ContentGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.ContentGroup
  * JD-Core Version:    0.7.0.1
  */

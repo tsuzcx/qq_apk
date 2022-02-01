@@ -12,7 +12,9 @@ public abstract interface IRIJADExposureService
 {
   public abstract void checkADScrollAction(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity, boolean paramBoolean, double paramDouble);
   
-  public abstract boolean checkAndReportAdExposure(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity);
+  public abstract boolean checkAndReportAdExposure(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, Activity paramActivity, boolean paramBoolean);
+  
+  public abstract void clearAdExposureTime();
   
   public abstract void reportAllInvalidADExposure(Activity paramActivity);
   
@@ -20,7 +22,7 @@ public abstract interface IRIJADExposureService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.IRIJADExposureService
  * JD-Core Version:    0.7.0.1
  */

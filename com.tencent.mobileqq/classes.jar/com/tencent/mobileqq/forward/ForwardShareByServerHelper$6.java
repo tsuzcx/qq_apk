@@ -15,18 +15,18 @@ class ForwardShareByServerHelper$6
   {
     if (paramInt == 1)
     {
-      ForwardSdkBaseOption.a(ForwardShareByServerHelper.a(this.a), false, "shareToQQ", ForwardShareByServerHelper.a(this.a));
-      Util.a(ForwardShareByServerHelper.a(this.a), 0, "", "");
-      if (ForwardShareByServerHelper.a(this.a) != null) {
-        ForwardShareByServerHelper.a(this.a).b(1);
+      ForwardSdkBaseOption.a(ForwardShareByServerHelper.d(this.a), false, "shareToQQ", ForwardShareByServerHelper.g(this.a));
+      Util.a(ForwardShareByServerHelper.d(this.a), 0, "", "");
+      if (ForwardShareByServerHelper.h(this.a) != null) {
+        ForwardShareByServerHelper.h(this.a).f(1);
       }
-      ForwardShareByServerHelper.a(this.a).moveTaskToBack(true);
+      ForwardShareByServerHelper.d(this.a).moveTaskToBack(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.6
  * JD-Core Version:    0.7.0.1
  */

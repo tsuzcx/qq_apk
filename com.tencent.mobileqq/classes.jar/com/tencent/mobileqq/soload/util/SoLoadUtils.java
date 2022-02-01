@@ -21,25 +21,13 @@ import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import java.io.File;
 import java.lang.reflect.Field;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class SoLoadUtils
 {
   private static final ISoLoaderBaseCommonetService a = (ISoLoaderBaseCommonetService)QRoute.api(ISoLoaderBaseCommonetService.class);
-  
-  public static int a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramFileChannel, paramByteBuffer, 2, paramLong);
-    return paramByteBuffer.getShort() & 0xFFFF;
-  }
-  
-  public static long a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramFileChannel, paramByteBuffer, 8, paramLong);
-    return paramByteBuffer.getLong();
-  }
   
   public static SoLoadInfo a(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
   {
@@ -73,57 +61,51 @@ public class SoLoadUtils
   
   public static SoLocalInfo a(LoadParam.LoadItem paramLoadItem, @NonNull SoDetailInfo paramSoDetailInfo)
   {
-    SoLocalInfo localSoLocalInfo = b(paramLoadItem, paramSoDetailInfo);
-    Object localObject = localSoLocalInfo.mSoPath;
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!new File((String)localObject).exists()))
-    {
-      ISoLoaderBaseCommonetService localISoLoaderBaseCommonetService = a;
-      if (localISoLoaderBaseCommonetService != null) {
-        localObject = localISoLoaderBaseCommonetService.getResPathSync(paramLoadItem.soFileName, paramSoDetailInfo.url, paramSoDetailInfo.md5);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalxxConfig] try get so from sync method");
-      }
-      localSoLocalInfo.mSoPath = ((String)localObject);
-      localSoLocalInfo.mSoCRC = -1L;
-    }
-    if (paramSoDetailInfo.relatedFileInfo != null)
-    {
-      paramLoadItem = localSoLocalInfo.mRFileFolder;
-      if ((TextUtils.isEmpty(paramLoadItem)) || (!new File(paramLoadItem).exists()))
-      {
-        localObject = a;
-        if (localObject != null) {
-          paramLoadItem = ((ISoLoaderBaseCommonetService)localObject).getResFolderPathSync(paramSoDetailInfo.relatedFileInfo.url, paramSoDetailInfo.relatedFileInfo.md5);
-        }
-        if (QLog.isColorLevel())
-        {
-          paramSoDetailInfo = new StringBuilder();
-          paramSoDetailInfo.append("[getLocalxxConfig] try get rPath from sync method, rFileFolder: ");
-          paramSoDetailInfo.append(paramLoadItem);
-          QLog.i("SoLoadWidget.SoDataUtil", 2, paramSoDetailInfo.toString());
-        }
-        localSoLocalInfo.mRFileFolder = paramLoadItem;
-      }
-    }
+    paramLoadItem = c(paramLoadItem, paramSoDetailInfo);
+    paramLoadItem.mRFileFolder = a(paramLoadItem, paramSoDetailInfo);
     if (QLog.isColorLevel()) {
       QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalInfoFromCacheOrConfig] return info from cache");
     }
-    return localSoLocalInfo;
-  }
-  
-  public static SoCrashInfo a(String paramString)
-  {
-    return SoCrashInfo.a(SoDataUtil.a("so_crash").getString(b(paramString), ""));
+    return paramLoadItem;
   }
   
   public static SoCrashInfo a(String paramString1, String paramString2)
   {
-    paramString1 = a(paramString1);
-    if ((paramString1 != null) && (paramString1.jdField_a_of_type_JavaLangString.equals(paramString2))) {
+    paramString1 = d(paramString1);
+    if ((paramString1 != null) && (paramString1.a.equals(paramString2))) {
       return paramString1;
     }
     return null;
+  }
+  
+  private static String a(SoLocalInfo paramSoLocalInfo, SoDetailInfo paramSoDetailInfo)
+  {
+    paramSoLocalInfo = paramSoLocalInfo.mRFileFolder;
+    Object localObject = paramSoLocalInfo;
+    if (paramSoDetailInfo.relatedFileInfo != null) {
+      if (!TextUtils.isEmpty(paramSoLocalInfo))
+      {
+        localObject = paramSoLocalInfo;
+        if (new File(paramSoLocalInfo).exists()) {}
+      }
+      else
+      {
+        localObject = a;
+        if (localObject != null) {
+          paramSoLocalInfo = ((ISoLoaderBaseCommonetService)localObject).getResFolderPathSync(paramSoDetailInfo.relatedFileInfo.url, paramSoDetailInfo.relatedFileInfo.md5);
+        }
+        localObject = paramSoLocalInfo;
+        if (QLog.isColorLevel())
+        {
+          paramSoDetailInfo = new StringBuilder();
+          paramSoDetailInfo.append("[getLocalxxConfig] try get rPath from sync method, rFileFolder: ");
+          paramSoDetailInfo.append(paramSoLocalInfo);
+          QLog.i("SoLoadWidget.SoDataUtil", 2, paramSoDetailInfo.toString());
+          localObject = paramSoLocalInfo;
+        }
+      }
+    }
+    return localObject;
   }
   
   public static String a(String paramString)
@@ -131,27 +113,12 @@ public class SoLoadUtils
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_local_info_");
     localStringBuilder.append(paramString);
-    if (SoDataUtil.a()) {
+    if (SoDataUtil.c()) {
       paramString = "_64";
     } else {
       paramString = "_32";
     }
     localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, long paramLong)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
-    {
-      int i = a(paramFileChannel, paramByteBuffer, paramLong);
-      if (i == 0) {
-        break;
-      }
-      localStringBuilder.append((char)i);
-      paramLong = 1L + paramLong;
-    }
     return localStringBuilder.toString();
   }
   
@@ -210,12 +177,6 @@ public class SoLoadUtils
     return localList;
   }
   
-  public static short a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramFileChannel, paramByteBuffer, 1, paramLong);
-    return (short)(paramByteBuffer.get() & 0xFF);
-  }
-  
   public static void a(LoadParam.LoadItem paramLoadItem, @NonNull SoLoadInfo paramSoLoadInfo)
   {
     Object localObject;
@@ -230,8 +191,6 @@ public class SoLoadUtils
     {
       try
       {
-        localSharedPreferences = SoDataUtil.a("dynamic_so_load");
-        str1 = a(paramLoadItem.name);
         SoLocalInfo localSoLocalInfo = b(paramLoadItem, paramSoLoadInfo.soDetailInfo);
         localObject = paramSoLoadInfo.soDetailInfo.relatedFileInfo;
         boolean bool1 = a(localSoLocalInfo, paramSoLoadInfo);
@@ -242,9 +201,9 @@ public class SoLoadUtils
         if (QLog.isColorLevel()) {
           QLog.i("SoLoadWidget.SoDataUtil", 2, "[saveLocalInfo] need cal crc or save!");
         }
-        str2 = paramSoLoadInfo.soDetailInfo.url;
+        str = paramSoLoadInfo.soDetailInfo.url;
         if (localObject == null) {
-          break label238;
+          break label228;
         }
         localObject = ((RelatedFileInfo)localObject).url;
         if (bool1) {
@@ -255,17 +214,15 @@ public class SoLoadUtils
       }
       catch (Throwable paramLoadItem)
       {
-        SharedPreferences localSharedPreferences;
-        String str1;
-        String str2;
+        String str;
         long l;
         paramLoadItem.printStackTrace();
         return;
       }
-      paramLoadItem = new SoLocalInfo(paramSoLoadInfo.getVer(), paramLoadItem.name, paramSoLoadInfo.soPathToLoad, l, str2, (String)localObject, paramSoLoadInfo.rFileFolder);
-      localSharedPreferences.edit().putString(str1, paramLoadItem.encode()).apply();
+      paramSoLoadInfo = new SoLocalInfo(paramSoLoadInfo.getVer(), paramLoadItem.name, paramSoLoadInfo.soPathToLoad, l, str, (String)localObject, paramSoLoadInfo.rFileFolder);
+      SoDataUtil.a("dynamic_so_load").edit().putString(a(paramLoadItem.name), paramSoLoadInfo.encode()).apply();
       return;
-      label238:
+      label228:
       localObject = null;
     }
   }
@@ -291,13 +248,6 @@ public class SoLoadUtils
     localSharedPreferences.edit().putString(paramString, paramSoCrashInfo.a()).apply();
   }
   
-  public static void a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = SoDataUtil.a("dynamic_so_load");
-    paramString = a(paramString);
-    localSharedPreferences.edit().remove(paramString).apply();
-  }
-  
   public static void a(String paramString1, String paramString2, boolean paramBoolean, OnSoGetPathListener paramOnSoGetPathListener)
   {
     ISoLoaderBaseCommonetService localISoLoaderBaseCommonetService = a;
@@ -306,42 +256,10 @@ public class SoLoadUtils
     }
   }
   
-  public static void a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, int paramInt, long paramLong)
-  {
-    paramByteBuffer.position(0);
-    paramByteBuffer.limit(paramInt);
-    while (paramByteBuffer.remaining() > 0)
-    {
-      paramInt = paramFileChannel.read(paramByteBuffer, paramLong);
-      if (paramInt == -1) {
-        break;
-      }
-      paramLong += paramInt;
-    }
-    if (paramByteBuffer.remaining() <= 0)
-    {
-      paramByteBuffer.position(0);
-      return;
-    }
-    paramFileChannel = new RuntimeException("ELF file truncated");
-    for (;;)
-    {
-      throw paramFileChannel;
-    }
-  }
-  
   public static boolean a()
   {
     ISoLoaderBaseCommonetService localISoLoaderBaseCommonetService = a;
     return (localISoLoaderBaseCommonetService != null) && (localISoLoaderBaseCommonetService.isQQProcess());
-  }
-  
-  private static boolean a(@NonNull SoLocalInfo paramSoLocalInfo, @NonNull SoDetailInfo paramSoDetailInfo)
-  {
-    if (!TextUtils.equals(paramSoDetailInfo.url, paramSoLocalInfo.mUrl)) {
-      return false;
-    }
-    return (paramSoDetailInfo.relatedFileInfo == null) || (TextUtils.equals(paramSoDetailInfo.relatedFileInfo.url, paramSoLocalInfo.mRFileUrl));
   }
   
   private static boolean a(@NonNull SoLocalInfo paramSoLocalInfo, @NonNull SoLoadInfo paramSoLoadInfo)
@@ -354,10 +272,9 @@ public class SoLoadUtils
     return (paramRelatedFileInfo == null) || (TextUtils.equals(paramSoLocalInfo.mRFileFolder, paramSoLoadInfo.rFileFolder));
   }
   
-  public static long b(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, long paramLong)
+  public static long b()
   {
-    a(paramFileChannel, paramByteBuffer, 4, paramLong);
-    return paramByteBuffer.getInt() & 0xFFFFFFFF;
+    return MobileQQ.sMobileQQ.peekAppRuntime().getLongAccountUin();
   }
   
   public static SoLocalInfo b(LoadParam.LoadItem paramLoadItem, @NonNull SoDetailInfo paramSoDetailInfo)
@@ -365,7 +282,7 @@ public class SoLoadUtils
     try
     {
       paramLoadItem = SoLocalInfo.createSoLocalInfo(SoDataUtil.a("dynamic_so_load").getString(a(paramLoadItem.name), ""));
-      boolean bool = a(paramLoadItem, paramSoDetailInfo);
+      boolean bool = b(paramLoadItem, paramSoDetailInfo);
       if (bool) {
         return paramLoadItem;
       }
@@ -385,7 +302,7 @@ public class SoLoadUtils
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_crash_info_");
     localStringBuilder.append(paramString);
-    if (SoDataUtil.a()) {
+    if (SoDataUtil.c()) {
       paramString = "_64";
     } else {
       paramString = "_32";
@@ -394,30 +311,69 @@ public class SoLoadUtils
     return localStringBuilder.toString();
   }
   
-  public static void b(String paramString)
+  private static boolean b(@NonNull SoLocalInfo paramSoLocalInfo, @NonNull SoDetailInfo paramSoDetailInfo)
   {
-    SoCrashInfo localSoCrashInfo = a(paramString);
-    if (localSoCrashInfo != null)
-    {
-      localSoCrashInfo.jdField_a_of_type_Int = 0;
-      localSoCrashInfo.jdField_a_of_type_Long = 0L;
-      a(localSoCrashInfo, paramString);
+    if (!TextUtils.equals(paramSoDetailInfo.url, paramSoLocalInfo.mUrl)) {
+      return false;
     }
+    return (paramSoDetailInfo.relatedFileInfo == null) || (TextUtils.equals(paramSoDetailInfo.relatedFileInfo.url, paramSoLocalInfo.mRFileUrl));
+  }
+  
+  private static SoLocalInfo c(LoadParam.LoadItem paramLoadItem, @NonNull SoDetailInfo paramSoDetailInfo)
+  {
+    SoLocalInfo localSoLocalInfo = b(paramLoadItem, paramSoDetailInfo);
+    String str = localSoLocalInfo.mSoPath;
+    if ((TextUtils.isEmpty(str)) || (!new File(str).exists()))
+    {
+      ISoLoaderBaseCommonetService localISoLoaderBaseCommonetService = a;
+      if (localISoLoaderBaseCommonetService != null) {
+        str = localISoLoaderBaseCommonetService.getResPathSync(paramLoadItem.soFileName, paramSoDetailInfo.url, paramSoDetailInfo.md5);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalConfig] try get so from sync method");
+      }
+      localSoLocalInfo.mSoPath = str;
+      localSoLocalInfo.mSoCRC = -1L;
+    }
+    return localSoLocalInfo;
   }
   
   public static void c(String paramString)
   {
-    SoCrashInfo localSoCrashInfo = a(paramString);
-    if ((localSoCrashInfo != null) && (!localSoCrashInfo.b()))
+    SharedPreferences localSharedPreferences = SoDataUtil.a("dynamic_so_load");
+    paramString = a(paramString);
+    localSharedPreferences.edit().remove(paramString).apply();
+  }
+  
+  public static SoCrashInfo d(String paramString)
+  {
+    return SoCrashInfo.a(SoDataUtil.a("so_crash").getString(b(paramString), ""));
+  }
+  
+  public static void e(String paramString)
+  {
+    SoCrashInfo localSoCrashInfo = d(paramString);
+    if (localSoCrashInfo != null)
     {
-      localSoCrashInfo.b = 0L;
+      localSoCrashInfo.b = 0;
+      localSoCrashInfo.c = 0L;
+      a(localSoCrashInfo, paramString);
+    }
+  }
+  
+  public static void f(String paramString)
+  {
+    SoCrashInfo localSoCrashInfo = d(paramString);
+    if ((localSoCrashInfo != null) && (!localSoCrashInfo.c()))
+    {
+      localSoCrashInfo.e = 0L;
       a(localSoCrashInfo, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.util.SoLoadUtils
  * JD-Core Version:    0.7.0.1
  */

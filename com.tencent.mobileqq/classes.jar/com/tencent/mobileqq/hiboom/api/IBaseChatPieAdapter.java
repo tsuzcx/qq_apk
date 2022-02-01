@@ -7,23 +7,23 @@ import com.tencent.widget.XEditText;
 
 public abstract interface IBaseChatPieAdapter
 {
-  public abstract int a();
-  
-  public abstract Context a();
-  
-  public abstract AppInterface a();
-  
-  public abstract BaseSessionInfo a();
-  
-  public abstract XEditText a();
-  
   public abstract Object a();
   
-  public abstract void a();
+  public abstract Context c();
+  
+  public abstract XEditText d();
+  
+  public abstract BaseSessionInfo e();
+  
+  public abstract void f();
+  
+  public abstract int g();
+  
+  public abstract AppInterface h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.api.IBaseChatPieAdapter
  * JD-Core Version:    0.7.0.1
  */

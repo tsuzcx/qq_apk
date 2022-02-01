@@ -16,16 +16,16 @@ class ReadInJoyFooterPresenter$2
   public void onClick(View paramView)
   {
     paramView = new StringBuilder();
-    paramView.append(ReadInJoyConstants.g);
-    paramView.append(Base64Util.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2));
+    paramView.append(ReadInJoyConstants.h);
+    paramView.append(Base64Util.encodeToString(String.valueOf(this.a).getBytes(), 2));
     paramView = paramView.toString();
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsPresenterReadInJoyFooterPresenter), paramView);
-    ReadInJoyFooterPresenter.a(1, RIJFeedsType.c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
+    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.c), paramView);
+    ReadInJoyFooterPresenter.a(1, RIJFeedsType.k(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.presenter.ReadInJoyFooterPresenter.2
  * JD-Core Version:    0.7.0.1
  */

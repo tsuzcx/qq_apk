@@ -12,7 +12,7 @@ class ArkAppDownloadModule$1$1
   
   public void run()
   {
-    Object localObject2 = ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$1.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule, this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$1.jdField_a_of_type_Long);
+    Object localObject2 = ArkAppDownloadModule.a(this.b.b, this.b.a);
     if (localObject2 == null)
     {
       QLog.i("ark.download.module", 1, "ark.dctrl.onQueryPackageState Callback is null");
@@ -21,7 +21,7 @@ class ArkAppDownloadModule$1$1
     ark.VariantWrapper localVariantWrapper1 = ((ark.VariantWrapper)localObject2).Create();
     localVariantWrapper1.SetNull();
     ark.VariantWrapper localVariantWrapper2 = ((ark.VariantWrapper)localObject2).Create();
-    Object localObject1 = ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$1.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule, this.jdField_a_of_type_JavaUtilArrayList, "QueryPackageState");
+    Object localObject1 = ArkAppDownloadModule.a(this.b.b, this.a, "QueryPackageState");
     if (localObject1 != null) {
       localObject1 = ((JSONArray)localObject1).toString();
     } else {
@@ -40,7 +40,7 @@ class ArkAppDownloadModule$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.1.1
  * JD-Core Version:    0.7.0.1
  */

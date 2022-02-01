@@ -16,12 +16,12 @@ public class TemplatePhotoWall
   
   protected int getLayout()
   {
-    return 2131562023;
+    return 2131628449;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.TemplatePhotoWall
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class WSDramaMiddlePart$4
   
   public void run()
   {
-    ((WSCenterLayoutManager)WSDramaMiddlePart.a(this.this$0).getLayoutManager()).scrollToPositionWithOffset(this.a, WSDramaMiddlePart.a);
+    ((WSCenterLayoutManager)WSDramaMiddlePart.d(this.this$0).getLayoutManager()).scrollToPositionWithOffset(this.a, WSDramaMiddlePart.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaMiddlePart.4
  * JD-Core Version:    0.7.0.1
  */

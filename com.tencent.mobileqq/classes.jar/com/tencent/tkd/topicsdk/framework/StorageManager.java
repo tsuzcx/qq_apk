@@ -16,35 +16,18 @@ public final class StorageManager
 {
   @NotNull
   public static Context a;
-  public static final StorageManager a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkStorageManager = new StorageManager();
-  }
-  
-  @Nullable
-  public final String a(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "key");
-    Intrinsics.checkParameterIsNotNull(paramString2, "defaultValue");
-    Context localContext = jdField_a_of_type_AndroidContentContext;
-    if (localContext == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("mContext");
-    }
-    return localContext.getSharedPreferences("com_tencent_tkd_topicsdk_sp", 0).getString(paramString1, paramString2);
-  }
+  public static final StorageManager b = new StorageManager();
   
   public final void a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    jdField_a_of_type_AndroidContentContext = paramContext;
+    a = paramContext;
   }
   
   public final void a(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    Context localContext = jdField_a_of_type_AndroidContentContext;
+    Context localContext = a;
     if (localContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mContext");
     }
@@ -55,7 +38,7 @@ public final class StorageManager
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "key");
     Intrinsics.checkParameterIsNotNull(paramString2, "value");
-    Context localContext = jdField_a_of_type_AndroidContentContext;
+    Context localContext = a;
     if (localContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mContext");
     }
@@ -65,7 +48,7 @@ public final class StorageManager
   public final void a(@NotNull String paramString, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    Context localContext = jdField_a_of_type_AndroidContentContext;
+    Context localContext = a;
     if (localContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mContext");
     }
@@ -85,26 +68,38 @@ public final class StorageManager
     a(paramString, paramArrayOfByte);
   }
   
-  public final boolean a(@NotNull String paramString, boolean paramBoolean)
+  @Nullable
+  public final byte[] a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    Context localContext = jdField_a_of_type_AndroidContentContext;
+    return Base64.decode(b(paramString, ""), 0);
+  }
+  
+  @Nullable
+  public final String b(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "key");
+    Intrinsics.checkParameterIsNotNull(paramString2, "defaultValue");
+    Context localContext = a;
+    if (localContext == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mContext");
+    }
+    return localContext.getSharedPreferences("com_tencent_tkd_topicsdk_sp", 0).getString(paramString1, paramString2);
+  }
+  
+  public final boolean b(@NotNull String paramString, boolean paramBoolean)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    Context localContext = a;
     if (localContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mContext");
     }
     return localContext.getSharedPreferences("com_tencent_tkd_topicsdk_sp", 0).getBoolean(paramString, paramBoolean);
   }
-  
-  @Nullable
-  public final byte[] a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "key");
-    return Base64.decode(a(paramString, ""), 0);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.StorageManager
  * JD-Core Version:    0.7.0.1
  */

@@ -31,36 +31,36 @@ import java.util.List;
 public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>>
 {
   @NonNull
-  static final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new BaseTransientBottomBar.1());
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final boolean jdField_a_of_type_Boolean;
-  private static final int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
+  static final Handler a = new Handler(Looper.getMainLooper(), new BaseTransientBottomBar.1());
+  private static final boolean d;
+  private static final int[] e;
+  private static final String f;
+  @NonNull
+  protected final BaseTransientBottomBar.SnackbarBaseLayout b;
+  @NonNull
+  SnackbarManager.Callback c;
+  @NonNull
+  private final ViewGroup g;
+  private final Context h;
+  @NonNull
+  private final ContentViewCallback i;
+  private boolean j;
   @Nullable
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  @NonNull
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  @Nullable
-  private final AccessibilityManager jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
-  private BaseTransientBottomBar.Behavior jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$Behavior;
-  @NonNull
-  protected final BaseTransientBottomBar.SnackbarBaseLayout a;
-  @NonNull
-  private final ContentViewCallback jdField_a_of_type_ComGoogleAndroidMaterialSnackbarContentViewCallback;
-  @NonNull
-  SnackbarManager.Callback jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$Callback;
+  private View k;
+  private boolean l;
   @RequiresApi(29)
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
-  private List<BaseTransientBottomBar.BaseCallback<B>> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int d;
-  private int e;
+  private final Runnable m;
+  @Nullable
+  private Rect n;
+  private int o;
+  private int p;
+  private int q;
+  private int r;
+  private int s;
+  private List<BaseTransientBottomBar.BaseCallback<B>> t;
+  private BaseTransientBottomBar.Behavior u;
+  @Nullable
+  private final AccessibilityManager v;
   
   static
   {
@@ -70,16 +70,9 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
-    jdField_a_of_type_ArrayOfInt = new int[] { R.attr.J };
-    jdField_a_of_type_JavaLangString = BaseTransientBottomBar.class.getSimpleName();
-  }
-  
-  private int a()
-  {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getLocationOnScreen(arrayOfInt);
-    return arrayOfInt[1] + this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getHeight();
+    d = bool;
+    e = new int[] { R.attr.R };
+    f = BaseTransientBottomBar.class.getSimpleName();
   }
   
   private ValueAnimator a(float... paramVarArgs)
@@ -92,28 +85,19 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
   
   private void a(CoordinatorLayout.LayoutParams paramLayoutParams)
   {
-    BaseTransientBottomBar.Behavior localBehavior = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$Behavior;
+    BaseTransientBottomBar.Behavior localBehavior = this.u;
     Object localObject = localBehavior;
     if (localBehavior == null) {
-      localObject = a();
+      localObject = c();
     }
     if ((localObject instanceof BaseTransientBottomBar.Behavior)) {
       BaseTransientBottomBar.Behavior.a((BaseTransientBottomBar.Behavior)localObject, this);
     }
     ((SwipeDismissBehavior)localObject).a(new BaseTransientBottomBar.9(this));
     paramLayoutParams.setBehavior((CoordinatorLayout.Behavior)localObject);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.k == null) {
       paramLayoutParams.insetEdge = 80;
     }
-  }
-  
-  @RequiresApi(17)
-  private int b()
-  {
-    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    localWindowManager.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-    return localDisplayMetrics.heightPixels;
   }
   
   private ValueAnimator b(float... paramVarArgs)
@@ -124,70 +108,14 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     return paramVarArgs;
   }
   
-  private int c()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject == null) {
-      return 0;
-    }
-    int[] arrayOfInt = new int[2];
-    ((View)localObject).getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[1];
-    localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewViewGroup.getLocationOnScreen((int[])localObject);
-    return localObject[1] + this.jdField_a_of_type_AndroidViewViewGroup.getHeight() - i;
-  }
-  
-  private int d()
-  {
-    int j = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getHeight();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getLayoutParams();
-    int i = j;
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      i = j + ((ViewGroup.MarginLayoutParams)localLayoutParams).bottomMargin;
-    }
-    return i;
-  }
-  
   private void d(int paramInt)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.a() == 1)
+    if (this.b.getAnimationMode() == 1)
     {
       e(paramInt);
       return;
     }
     f(paramInt);
-  }
-  
-  private boolean d()
-  {
-    return (this.d > 0) && (!this.jdField_b_of_type_Boolean) && (e());
-  }
-  
-  private void e()
-  {
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getLayoutParams();
-    if (((localObject instanceof ViewGroup.MarginLayoutParams)) && (this.jdField_a_of_type_AndroidGraphicsRect != null))
-    {
-      int i;
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        i = this.e;
-      } else {
-        i = this.jdField_a_of_type_Int;
-      }
-      localObject = (ViewGroup.MarginLayoutParams)localObject;
-      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (this.jdField_a_of_type_AndroidGraphicsRect.bottom + i);
-      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = (this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_b_of_type_Int);
-      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = (this.jdField_a_of_type_AndroidGraphicsRect.right + this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.requestLayout();
-      if ((Build.VERSION.SDK_INT >= 29) && (d()))
-      {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.post(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    Log.w(jdField_a_of_type_JavaLangString, "Unable to update margins because layout params are not MarginLayoutParams");
   }
   
   private void e(int paramInt)
@@ -198,29 +126,10 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     localValueAnimator.start();
   }
   
-  private boolean e()
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getLayoutParams();
-    return ((localLayoutParams instanceof CoordinatorLayout.LayoutParams)) && ((((CoordinatorLayout.LayoutParams)localLayoutParams).getBehavior() instanceof SwipeDismissBehavior));
-  }
-  
-  private void f()
-  {
-    if (b())
-    {
-      c();
-      return;
-    }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getParent() != null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.setVisibility(0);
-    }
-    d();
-  }
-  
   private void f(int paramInt)
   {
     ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setIntValues(new int[] { 0, d() });
+    localValueAnimator.setIntValues(new int[] { 0, s() });
     localValueAnimator.setInterpolator(AnimationUtils.b);
     localValueAnimator.setDuration(250L);
     localValueAnimator.addListener(new BaseTransientBottomBar.17(this, paramInt));
@@ -228,7 +137,87 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     localValueAnimator.start();
   }
   
-  private void g()
+  private void j()
+  {
+    Object localObject = this.b.getLayoutParams();
+    if (((localObject instanceof ViewGroup.MarginLayoutParams)) && (this.n != null))
+    {
+      int i1;
+      if (this.k != null) {
+        i1 = this.s;
+      } else {
+        i1 = this.o;
+      }
+      localObject = (ViewGroup.MarginLayoutParams)localObject;
+      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (this.n.bottom + i1);
+      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = (this.n.left + this.p);
+      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = (this.n.right + this.q);
+      this.b.requestLayout();
+      if ((Build.VERSION.SDK_INT >= 29) && (k()))
+      {
+        this.b.removeCallbacks(this.m);
+        this.b.post(this.m);
+      }
+      return;
+    }
+    Log.w(f, "Unable to update margins because layout params are not MarginLayoutParams");
+  }
+  
+  private boolean k()
+  {
+    return (this.r > 0) && (!this.j) && (l());
+  }
+  
+  private boolean l()
+  {
+    ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
+    return ((localLayoutParams instanceof CoordinatorLayout.LayoutParams)) && ((((CoordinatorLayout.LayoutParams)localLayoutParams).getBehavior() instanceof SwipeDismissBehavior));
+  }
+  
+  private void m()
+  {
+    if (g())
+    {
+      e();
+      return;
+    }
+    if (this.b.getParent() != null) {
+      this.b.setVisibility(0);
+    }
+    f();
+  }
+  
+  private int n()
+  {
+    int[] arrayOfInt = new int[2];
+    this.b.getLocationOnScreen(arrayOfInt);
+    return arrayOfInt[1] + this.b.getHeight();
+  }
+  
+  @RequiresApi(17)
+  private int o()
+  {
+    WindowManager localWindowManager = (WindowManager)this.h.getSystemService("window");
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    localWindowManager.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+    return localDisplayMetrics.heightPixels;
+  }
+  
+  private int p()
+  {
+    Object localObject = this.k;
+    if (localObject == null) {
+      return 0;
+    }
+    int[] arrayOfInt = new int[2];
+    ((View)localObject).getLocationOnScreen(arrayOfInt);
+    int i1 = arrayOfInt[1];
+    localObject = new int[2];
+    this.g.getLocationOnScreen((int[])localObject);
+    return localObject[1] + this.g.getHeight() - i1;
+  }
+  
+  private void q()
   {
     ValueAnimator localValueAnimator1 = a(new float[] { 0.0F, 1.0F });
     ValueAnimator localValueAnimator2 = b(new float[] { 0.8F, 1.0F });
@@ -239,27 +228,32 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     localAnimatorSet.start();
   }
   
-  private void h()
+  private void r()
   {
-    int i = d();
-    if (jdField_a_of_type_Boolean) {
-      ViewCompat.offsetTopAndBottom(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout, i);
+    int i1 = s();
+    if (d) {
+      ViewCompat.offsetTopAndBottom(this.b, i1);
     } else {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.setTranslationY(i);
+      this.b.setTranslationY(i1);
     }
     ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setIntValues(new int[] { i, 0 });
+    localValueAnimator.setIntValues(new int[] { i1, 0 });
     localValueAnimator.setInterpolator(AnimationUtils.b);
     localValueAnimator.setDuration(250L);
     localValueAnimator.addListener(new BaseTransientBottomBar.15(this));
-    localValueAnimator.addUpdateListener(new BaseTransientBottomBar.16(this, i));
+    localValueAnimator.addUpdateListener(new BaseTransientBottomBar.16(this, i1));
     localValueAnimator.start();
   }
   
-  @NonNull
-  protected SwipeDismissBehavior<? extends View> a()
+  private int s()
   {
-    return new BaseTransientBottomBar.Behavior();
+    int i2 = this.b.getHeight();
+    ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
+    int i1 = i2;
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      i1 = i2 + ((ViewGroup.MarginLayoutParams)localLayoutParams).bottomMargin;
+    }
+    return i1;
   }
   
   public void a()
@@ -269,39 +263,12 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
   
   protected void a(int paramInt)
   {
-    SnackbarManager.a().a(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$Callback, paramInt);
-  }
-  
-  public boolean a()
-  {
-    return SnackbarManager.a().a(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$Callback);
-  }
-  
-  final void b()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.a(new BaseTransientBottomBar.7(this));
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getParent() == null)
-    {
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getLayoutParams();
-      if ((localLayoutParams instanceof CoordinatorLayout.LayoutParams)) {
-        a((CoordinatorLayout.LayoutParams)localLayoutParams);
-      }
-      this.e = c();
-      e();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout);
-    }
-    if (ViewCompat.isLaidOut(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout))
-    {
-      f();
-      return;
-    }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.a(new BaseTransientBottomBar.8(this));
+    SnackbarManager.a().a(this.c, paramInt);
   }
   
   final void b(int paramInt)
   {
-    if ((b()) && (this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getVisibility() == 0))
+    if ((g()) && (this.b.getVisibility() == 0))
     {
       d(paramInt);
       return;
@@ -309,58 +276,91 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     c(paramInt);
   }
   
-  boolean b()
+  public boolean b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
+    return SnackbarManager.a().e(this.c);
+  }
+  
+  @NonNull
+  protected SwipeDismissBehavior<? extends View> c()
+  {
+    return new BaseTransientBottomBar.Behavior();
+  }
+  
+  void c(int paramInt)
+  {
+    SnackbarManager.a().a(this.c);
+    Object localObject = this.t;
+    if (localObject != null)
+    {
+      int i1 = ((List)localObject).size() - 1;
+      while (i1 >= 0)
+      {
+        ((BaseTransientBottomBar.BaseCallback)this.t.get(i1)).a(this, paramInt);
+        i1 -= 1;
+      }
+    }
+    localObject = this.b.getParent();
+    if ((localObject instanceof ViewGroup)) {
+      ((ViewGroup)localObject).removeView(this.b);
+    }
+  }
+  
+  final void d()
+  {
+    this.b.setOnAttachStateChangeListener(new BaseTransientBottomBar.7(this));
+    if (this.b.getParent() == null)
+    {
+      ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
+      if ((localLayoutParams instanceof CoordinatorLayout.LayoutParams)) {
+        a((CoordinatorLayout.LayoutParams)localLayoutParams);
+      }
+      this.s = p();
+      j();
+      this.b.setVisibility(4);
+      this.g.addView(this.b);
+    }
+    if (ViewCompat.isLaidOut(this.b))
+    {
+      m();
+      return;
+    }
+    this.b.setOnLayoutChangeListener(new BaseTransientBottomBar.8(this));
+  }
+  
+  void e()
+  {
+    this.b.post(new BaseTransientBottomBar.10(this));
+  }
+  
+  void f()
+  {
+    SnackbarManager.a().b(this.c);
+    List localList = this.t;
+    if (localList != null)
+    {
+      int i1 = localList.size() - 1;
+      while (i1 >= 0)
+      {
+        ((BaseTransientBottomBar.BaseCallback)this.t.get(i1)).a(this);
+        i1 -= 1;
+      }
+    }
+  }
+  
+  boolean g()
+  {
+    Object localObject = this.v;
     if (localObject == null) {
       return true;
     }
     localObject = ((AccessibilityManager)localObject).getEnabledAccessibilityServiceList(1);
     return (localObject != null) && (((List)localObject).isEmpty());
   }
-  
-  void c()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.post(new BaseTransientBottomBar.10(this));
-  }
-  
-  void c(int paramInt)
-  {
-    SnackbarManager.a().a(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$Callback);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null)
-    {
-      int i = ((List)localObject).size() - 1;
-      while (i >= 0)
-      {
-        ((BaseTransientBottomBar.BaseCallback)this.jdField_a_of_type_JavaUtilList.get(i)).a(this, paramInt);
-        i -= 1;
-      }
-    }
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getParent();
-    if ((localObject instanceof ViewGroup)) {
-      ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout);
-    }
-  }
-  
-  void d()
-  {
-    SnackbarManager.a().b(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$Callback);
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null)
-    {
-      int i = localList.size() - 1;
-      while (i >= 0)
-      {
-        ((BaseTransientBottomBar.BaseCallback)this.jdField_a_of_type_JavaUtilList.get(i)).a(this);
-        i -= 1;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.aelight.camera.aeeditor.module.clip.video;
 
-import com.tencent.tavcut.timeline.TimelineView.SpeedChangeCallback;
+import com.tencent.qcircle.tavcut.timeline.TimelineView.SpeedChangeCallback;
 
 class AEEditorMvClipMenu$3
   implements TimelineView.SpeedChangeCallback
@@ -9,17 +9,17 @@ class AEEditorMvClipMenu$3
   
   public void onChangeFailed(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView$SpeedChangeCallback.onChangeFailed(paramInt);
+    this.a.onChangeFailed(paramInt);
   }
   
   public void onChangeSucc(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView$SpeedChangeCallback.onChangeSucc(paramFloat);
+    this.a.onChangeSucc(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.clip.video.AEEditorMvClipMenu.3
  * JD-Core Version:    0.7.0.1
  */

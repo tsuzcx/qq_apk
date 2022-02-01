@@ -15,15 +15,15 @@ class TroopChatPie$11
   
   public void run()
   {
-    SelfGagInfo localSelfGagInfo = ((TroopGagMgr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a);
-    Message localMessage = this.this$0.b.obtainMessage(2);
+    SelfGagInfo localSelfGagInfo = ((TroopGagMgr)this.this$0.d.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.this$0.ah.b, this.a);
+    Message localMessage = this.this$0.bX.obtainMessage(2);
     localMessage.obj = localSelfGagInfo;
-    this.this$0.b.sendMessage(localMessage);
+    this.this$0.bX.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.11
  * JD-Core Version:    0.7.0.1
  */

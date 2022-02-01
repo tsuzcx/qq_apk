@@ -45,13 +45,13 @@ public class PtloginPlugin
       if (paramString2 == null) {
         return false;
       }
-      paramString2 = paramString2.a("ptlogin2");
+      paramString2 = paramString2.m("ptlogin2");
       if (paramString2 != null)
       {
         if (paramString2.isEmpty()) {
           return false;
         }
-        Object localObject2 = this.mRuntime.a();
+        Object localObject2 = this.mRuntime.b();
         paramString2 = paramString2.iterator();
         while (paramString2.hasNext())
         {
@@ -172,7 +172,7 @@ public class PtloginPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PtloginPlugin
  * JD-Core Version:    0.7.0.1
  */

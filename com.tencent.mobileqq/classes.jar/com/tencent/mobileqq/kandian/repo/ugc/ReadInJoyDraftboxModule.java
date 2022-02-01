@@ -27,7 +27,7 @@ public class ReadInJoyDraftboxModule
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
   }
   
-  private List<ReadInJoyDraftboxItem> a()
+  private List<ReadInJoyDraftboxItem> b()
   {
     List localList = this.mEntityManager.query(ReadInJoyDraftboxItem.class);
     if ((localList != null) && (localList.size() > 0))
@@ -64,8 +64,8 @@ public class ReadInJoyDraftboxModule
     ((ReadInJoyDraftboxItem)localObject).digest = str;
     ((ReadInJoyDraftboxItem)localObject).title = paramReadInJoyDraftboxContent.answerTitle;
     if (TextUtils.isEmpty(((ReadInJoyDraftboxItem)localObject).title)) {
-      if ((str != null) && (str.length() == 0) && (paramReadInJoyDraftboxContent != null) && (paramReadInJoyDraftboxContent.adapterList != null) && (paramReadInJoyDraftboxContent.adapterList.size() > 0) && (((ReadInJoyDraftboxItem.PicData)paramReadInJoyDraftboxContent.adapterList.get(0)).a != -1) && (paramReadInJoyDraftboxContent.articleType != 3)) {
-        ((ReadInJoyDraftboxItem)localObject).title = HardCodeUtil.a(2131712695);
+      if ((str != null) && (str.length() == 0) && (paramReadInJoyDraftboxContent != null) && (paramReadInJoyDraftboxContent.adapterList != null) && (paramReadInJoyDraftboxContent.adapterList.size() > 0) && (((ReadInJoyDraftboxItem.PicData)paramReadInJoyDraftboxContent.adapterList.get(0)).c != -1) && (paramReadInJoyDraftboxContent.articleType != 3)) {
+        ((ReadInJoyDraftboxItem)localObject).title = HardCodeUtil.a(2131910272);
       } else {
         ((ReadInJoyDraftboxItem)localObject).title = "";
       }
@@ -114,32 +114,6 @@ public class ReadInJoyDraftboxModule
     return -1L;
   }
   
-  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(long paramLong)
-  {
-    Object localObject = a(paramLong);
-    if ((localObject != null) && (((ReadInJoyDraftboxItem)localObject).content != null) && (((ReadInJoyDraftboxItem)localObject).content.length > 0))
-    {
-      ReadInJoyDraftboxItem.ReadInJoyDraftboxContent localReadInJoyDraftboxContent = (ReadInJoyDraftboxItem.ReadInJoyDraftboxContent)ParcelableUtil.a(((ReadInJoyDraftboxItem)localObject).content, ReadInJoyDraftboxItem.ReadInJoyDraftboxContent.CREATOR);
-      localObject = localReadInJoyDraftboxContent;
-      if (QLog.isColorLevel())
-      {
-        localObject = a;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getReadInJoyContentById: ");
-        localStringBuilder.append(paramLong);
-        localStringBuilder.append(" ");
-        localStringBuilder.append(localReadInJoyDraftboxContent.toString());
-        QLog.d((String)localObject, 2, localStringBuilder.toString());
-        return localReadInJoyDraftboxContent;
-      }
-    }
-    else
-    {
-      localObject = null;
-    }
-    return localObject;
-  }
-  
   public ReadInJoyDraftboxItem a(long paramLong)
   {
     ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.mEntityManager.find(ReadInJoyDraftboxItem.class, paramLong);
@@ -167,7 +141,7 @@ public class ReadInJoyDraftboxModule
   
   public void a(ReadInJoyDraftboxModule.LoadDraftCallback paramLoadDraftCallback)
   {
-    List localList = a();
+    List localList = b();
     if (QLog.isColorLevel())
     {
       QLog.d(a, 2, "loadAllDraftsFromDb:\n");
@@ -199,7 +173,33 @@ public class ReadInJoyDraftboxModule
     return bool;
   }
   
-  public boolean a(long paramLong)
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent b(long paramLong)
+  {
+    Object localObject = a(paramLong);
+    if ((localObject != null) && (((ReadInJoyDraftboxItem)localObject).content != null) && (((ReadInJoyDraftboxItem)localObject).content.length > 0))
+    {
+      ReadInJoyDraftboxItem.ReadInJoyDraftboxContent localReadInJoyDraftboxContent = (ReadInJoyDraftboxItem.ReadInJoyDraftboxContent)ParcelableUtil.a(((ReadInJoyDraftboxItem)localObject).content, ReadInJoyDraftboxItem.ReadInJoyDraftboxContent.CREATOR);
+      localObject = localReadInJoyDraftboxContent;
+      if (QLog.isColorLevel())
+      {
+        localObject = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getReadInJoyContentById: ");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localReadInJoyDraftboxContent.toString());
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+        return localReadInJoyDraftboxContent;
+      }
+    }
+    else
+    {
+      localObject = null;
+    }
+    return localObject;
+  }
+  
+  public boolean c(long paramLong)
   {
     Object localObject = a(paramLong);
     localObject = Boolean.valueOf(this.mEntityManager.remove((Entity)localObject));
@@ -222,7 +222,7 @@ public class ReadInJoyDraftboxModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxModule
  * JD-Core Version:    0.7.0.1
  */

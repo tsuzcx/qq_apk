@@ -1,32 +1,13 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.VideoController;
-import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
-
 class AVActivity$16
   implements Runnable
 {
-  AVActivity$16(AVActivity paramAVActivity, int paramInt) {}
+  AVActivity$16(AVActivity paramAVActivity) {}
   
   public void run()
   {
-    if (!VideoController.a().p()) {
-      return;
-    }
-    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-    if (localWatchTogetherMediaPlayCtrl == null) {
-      return;
-    }
-    if (!localWatchTogetherMediaPlayCtrl.h()) {
-      return;
-    }
-    if (this.a != 3) {
-      localWatchTogetherMediaPlayCtrl.a("AVActivity.onResume", null);
-    }
-    localWatchTogetherMediaPlayCtrl.d();
-    if (!localWatchTogetherMediaPlayCtrl.i()) {
-      localWatchTogetherMediaPlayCtrl.e();
-    }
+    this.this$0.X.a("self", String.valueOf(1));
   }
 }
 

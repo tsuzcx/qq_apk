@@ -17,17 +17,17 @@ final class IMCoreProxyRegister$9
     return 0;
   }
   
-  public TroopAssistantData a(BaseQQAppInterface paramBaseQQAppInterface)
+  public TroopAssistantData b(BaseQQAppInterface paramBaseQQAppInterface)
   {
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
-      return TroopAssistantManager.a().a((QQAppInterface)paramBaseQQAppInterface);
+      return TroopAssistantManager.a().d((QQAppInterface)paramBaseQQAppInterface);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.IMCoreProxyRegister.9
  * JD-Core Version:    0.7.0.1
  */

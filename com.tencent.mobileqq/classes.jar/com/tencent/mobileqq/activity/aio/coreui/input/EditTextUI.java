@@ -30,150 +30,94 @@ import java.util.List;
 public class EditTextUI
   implements TextWatcher, View.OnClickListener
 {
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  XEditTextEx.OnPrivateIMECommandListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener;
-  private final XEditTextEx jdField_a_of_type_ComTencentWidgetXEditTextEx;
-  private boolean jdField_a_of_type_Boolean = false;
+  XEditTextEx.OnPrivateIMECommandListener a;
+  private final AIOContext b;
+  private final XEditTextEx c;
+  private boolean d = false;
   
   public EditTextUI(AIOContext paramAIOContext, XEditTextEx paramXEditTextEx)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = paramXEditTextEx;
+    this.b = paramAIOContext;
+    this.c = paramXEditTextEx;
   }
   
-  private void h() {}
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTextSize();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getPaddingRight();
-  }
-  
-  public Typeface a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTypeface();
-  }
+  private void y() {}
   
   public Bundle a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getInputExtras(paramBoolean);
+    return this.c.getInputExtras(paramBoolean);
   }
   
   public Editable a()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText();
-  }
-  
-  public TextPaint a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getPaint();
-  }
-  
-  public final MovementMethod a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMovementMethod();
-  }
-  
-  @Deprecated
-  public final XEditTextEx a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.a;
-  }
-  
-  public Object a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(paramInt);
-  }
-  
-  public final void a()
-  {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnClickListener(this);
+    return this.c.getText();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(paramInt);
+    this.c.setVisibility(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.c.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void a(int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(paramInt, paramObject);
+    this.c.setTag(paramInt, paramObject);
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() == 1)
+    if (this.b.k() == 1)
     {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getSystemService("input_method");
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.b.b().getSystemService("input_method");
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("current panel:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+        localStringBuilder.append(this.b.k());
         localStringBuilder.append(", imm active input :");
-        localStringBuilder.append(localInputMethodManager.isActive(this.jdField_a_of_type_ComTencentWidgetXEditTextEx));
+        localStringBuilder.append(localInputMethodManager.isActive(this.c));
         QLog.d("EditTextUI", 2, localStringBuilder.toString());
       }
-      if ((!localInputMethodManager.isActive(this.jdField_a_of_type_ComTencentWidgetXEditTextEx)) && (NetConnInfoCenter.getServerTime() - paramLong < 2L) && (!this.jdField_a_of_type_Boolean))
+      if ((!localInputMethodManager.isActive(this.c)) && (NetConnInfoCenter.getServerTime() - paramLong < 2L) && (!this.d))
       {
         QLog.d("EditTextUI", 1, "input requestFocus");
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
+        this.d = true;
+        this.c.requestFocus();
       }
     }
   }
   
   public void a(@Nullable Drawable paramDrawable1, @Nullable Drawable paramDrawable2, @Nullable Drawable paramDrawable3, @Nullable Drawable paramDrawable4)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4);
+    this.c.setCompoundDrawables(paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4);
   }
   
   public final void a(Editable.Factory paramFactory)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setEditableFactory(paramFactory);
+    this.c.setEditableFactory(paramFactory);
   }
   
   public final void a(MovementMethod paramMovementMethod)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMovementMethod(paramMovementMethod);
+    this.c.setMovementMethod(paramMovementMethod);
   }
   
   public final void a(CharSequence paramCharSequence)
   {
-    h();
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setEnabled(paramBoolean);
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
+    y();
+    this.c.setText(paramCharSequence);
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().i().iterator();
-    while ((localIterator.hasNext()) && (!((IEditTextChangeCallback)localIterator.next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramEditable))) {}
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a(paramEditable);
+    Iterator localIterator = this.b.p().c().j().iterator();
+    while ((localIterator.hasNext()) && (!((IEditTextChangeCallback)localIterator.next()).a(this.b, paramEditable))) {}
+    this.b.p().b().a(paramEditable);
     if (QLog.isColorLevel())
     {
       paramEditable = new StringBuilder();
@@ -183,39 +127,34 @@ public class EditTextUI
     }
   }
   
-  public int b()
+  @Deprecated
+  public final XEditTextEx b()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getPaddingLeft();
-  }
-  
-  public Editable b()
-  {
-    h();
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText();
-  }
-  
-  public final void b()
-  {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnClickListener(null);
+    return this.c;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawablePadding(paramInt);
+    this.c.setCompoundDrawablePadding(paramInt);
   }
   
   public final void b(CharSequence paramCharSequence)
   {
-    h();
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.append(paramCharSequence);
+    y();
+    this.c.append(paramCharSequence);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c.setEnabled(paramBoolean);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().i().iterator();
+    Iterator localIterator = this.b.p().c().j().iterator();
     while (localIterator.hasNext()) {
-      ((IEditTextChangeCallback)localIterator.next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramCharSequence, paramInt1, paramInt2, paramInt3);
+      ((IEditTextChangeCallback)localIterator.next()).a(this.b, paramCharSequence, paramInt1, paramInt2, paramInt3);
     }
     if (QLog.isColorLevel())
     {
@@ -226,67 +165,80 @@ public class EditTextUI
     }
   }
   
-  public int c()
+  public Editable c()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getPaddingTop();
+    y();
+    return this.c.getEditableText();
   }
   
-  public void c()
+  public Object c(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener == null) {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener = new IMECommandListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnPrivateIMECommandListener(this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(paramInt);
+    return this.c.getTag(paramInt);
   }
   
   public int d()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getPaddingBottom();
+    return this.c.getPaddingRight();
   }
   
-  public void d()
+  public void d(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnPrivateIMECommandListener(null);
+    this.c.setSelection(paramInt);
   }
   
   public int e()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this);
+    return this.c.getPaddingLeft();
   }
   
   public int f()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
+    return this.c.getPaddingTop();
   }
   
-  public void f()
+  public int g()
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
+    return this.c.getPaddingBottom();
   }
   
-  public final int g()
+  public int h()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getWidth();
+    return this.c.getLineCount();
   }
   
-  public void g()
+  public Object i()
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.a();
+    return this.c.a;
   }
   
-  public final int h()
+  public int j()
   {
-    return this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredWidth();
+    return this.c.getSelectionStart();
+  }
+  
+  public final int k()
+  {
+    return this.c.getWidth();
+  }
+  
+  public TextPaint l()
+  {
+    return this.c.getPaint();
+  }
+  
+  public final MovementMethod m()
+  {
+    return this.c.getMovementMethod();
+  }
+  
+  public final boolean n()
+  {
+    return this.c.requestFocus();
+  }
+  
+  public Typeface o()
+  {
+    return this.c.getTypeface();
   }
   
   public void onClick(View paramView)
@@ -294,16 +246,16 @@ public class EditTextUI
     if (QLog.isColorLevel()) {
       QLog.d("EditTextUI", 2, "onClick case R.id.input");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
+    this.b.q().a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().i().iterator();
+    Iterator localIterator = this.b.p().c().j().iterator();
     while (localIterator.hasNext()) {
-      ((IEditTextChangeCallback)localIterator.next()).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramCharSequence, paramInt1, paramInt2, paramInt3);
+      ((IEditTextChangeCallback)localIterator.next()).b(this.b, paramCharSequence, paramInt1, paramInt2, paramInt3);
     }
     if (QLog.isColorLevel())
     {
@@ -313,10 +265,58 @@ public class EditTextUI
       QLog.d("EditTextUI", 2, paramCharSequence.toString());
     }
   }
+  
+  public float p()
+  {
+    return this.c.getTextSize();
+  }
+  
+  public final int q()
+  {
+    return this.c.getMeasuredWidth();
+  }
+  
+  public final void r()
+  {
+    this.c.setOnClickListener(this);
+  }
+  
+  public final void s()
+  {
+    this.c.setOnClickListener(null);
+  }
+  
+  public void t()
+  {
+    if (this.a == null) {
+      this.a = new IMECommandListener(this.b);
+    }
+    this.c.setOnPrivateIMECommandListener(this.a);
+  }
+  
+  public void u()
+  {
+    this.c.setOnPrivateIMECommandListener(null);
+  }
+  
+  public void v()
+  {
+    this.c.addTextChangedListener(this);
+  }
+  
+  public void w()
+  {
+    this.c.removeTextChangedListener(this);
+  }
+  
+  public void x()
+  {
+    this.c.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.input.EditTextUI
  * JD-Core Version:    0.7.0.1
  */

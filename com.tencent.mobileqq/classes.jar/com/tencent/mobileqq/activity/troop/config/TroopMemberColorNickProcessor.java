@@ -40,15 +40,15 @@ public class TroopMemberColorNickProcessor
     }
     if (!paramstTroopMemberInfo.equals(paramTroopMemberInfo.troopnick))
     {
-      paramTroopMemberInfo.pyFirst_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 2);
-      paramTroopMemberInfo.pyAll_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 1);
+      paramTroopMemberInfo.pyFirst_troopnick = ChnToSpell.b(paramstTroopMemberInfo, 2);
+      paramTroopMemberInfo.pyAll_troopnick = ChnToSpell.b(paramstTroopMemberInfo, 1);
       return;
     }
     if (TextUtils.isEmpty(paramTroopMemberInfo.pyFirst_troopnick)) {
-      paramTroopMemberInfo.pyFirst_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 2);
+      paramTroopMemberInfo.pyFirst_troopnick = ChnToSpell.b(paramstTroopMemberInfo, 2);
     }
     if (TextUtils.isEmpty(paramTroopMemberInfo.pyAll_troopnick)) {
-      paramTroopMemberInfo.pyAll_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 1);
+      paramTroopMemberInfo.pyAll_troopnick = ChnToSpell.b(paramstTroopMemberInfo, 1);
     }
   }
   
@@ -60,20 +60,20 @@ public class TroopMemberColorNickProcessor
       paramTroopMemberInfo.troopnick = ColorNickManager.b(paramTroopMemberInfo.troopColorNick);
       return;
     }
-    ColorNickManager.ColorNickNameData localColorNickNameData = ColorNickManager.a(paramstTroopMemberInfo.vecName);
-    if (localColorNickNameData.jdField_a_of_type_JavaLangString == null) {
+    ColorNickManager.ColorNickNameData localColorNickNameData = ColorNickManager.d(paramstTroopMemberInfo.vecName);
+    if (localColorNickNameData.a == null) {
       paramstTroopMemberInfo = "";
     } else {
-      paramstTroopMemberInfo = localColorNickNameData.jdField_a_of_type_JavaLangString;
+      paramstTroopMemberInfo = localColorNickNameData.a;
     }
     paramTroopMemberInfo.troopColorNick = paramstTroopMemberInfo;
-    paramTroopMemberInfo.troopColorNickId = localColorNickNameData.jdField_a_of_type_Int;
+    paramTroopMemberInfo.troopColorNickId = localColorNickNameData.b;
     paramTroopMemberInfo.troopnick = ColorNickManager.b(paramTroopMemberInfo.troopColorNick);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMemberColorNickProcessor
  * JD-Core Version:    0.7.0.1
  */

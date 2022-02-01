@@ -48,7 +48,7 @@ public class MiniAppSendSmsCodeServlet
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramArrayOfByte = new NewIntent(BaseApplicationImpl.getApplication(), LoginVerifyServlet.class);
     paramArrayOfByte.setObserver(paramBusinessObserver);
     paramArrayOfByte.putExtra("cmd", paramString);
@@ -120,7 +120,7 @@ public class MiniAppSendSmsCodeServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeServlet
  * JD-Core Version:    0.7.0.1
  */

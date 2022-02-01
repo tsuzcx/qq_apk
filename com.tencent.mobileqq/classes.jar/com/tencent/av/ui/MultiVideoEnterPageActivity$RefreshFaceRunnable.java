@@ -10,9 +10,9 @@ class MultiVideoEnterPageActivity$RefreshFaceRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null)
+    if (this.this$0.c != null)
     {
-      MultiVideoEnterPageMembersControlUI[] arrayOfMultiVideoEnterPageMembersControlUI = this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI;
+      MultiVideoEnterPageMembersControlUI[] arrayOfMultiVideoEnterPageMembersControlUI = this.this$0.c;
       int j = arrayOfMultiVideoEnterPageMembersControlUI.length;
       int i = 0;
       while (i < j)
@@ -21,10 +21,10 @@ class MultiVideoEnterPageActivity$RefreshFaceRunnable
         i += 1;
       }
     }
-    if (this.this$0.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a();
+    if (this.this$0.f != null) {
+      this.this$0.f.a();
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
+    this.this$0.t.a().postDelayed(this, 2000L);
   }
 }
 

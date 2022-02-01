@@ -33,7 +33,7 @@ final class HippyBuffer$Builder
     this.mReferenceStack = new ArrayList(16);
   }
   
-  private final byte[] build(Object paramObject)
+  private byte[] build(Object paramObject)
   {
     writeObject(paramObject);
     int i = this.mPosition;
@@ -42,7 +42,7 @@ final class HippyBuffer$Builder
     return paramObject;
   }
   
-  private final void ensureBufferSize(int paramInt)
+  private void ensureBufferSize(int paramInt)
   {
     int i = paramInt + this.mPosition;
     byte[] arrayOfByte = this.mBuffer;
@@ -60,7 +60,7 @@ final class HippyBuffer$Builder
     }
   }
   
-  private final void release()
+  private void release()
   {
     byte[] arrayOfByte = this.mBuffer;
     if (arrayOfByte.length <= 16384) {
@@ -76,7 +76,7 @@ final class HippyBuffer$Builder
     this.mPosition = 0;
   }
   
-  private final void writeDataType(byte paramByte)
+  private void writeDataType(byte paramByte)
   {
     byte[] arrayOfByte = this.mBuffer;
     int i = this.mPosition;
@@ -84,12 +84,12 @@ final class HippyBuffer$Builder
     this.mPosition = (i + 1);
   }
   
-  private final void writeDouble(double paramDouble)
+  private void writeDouble(double paramDouble)
   {
     writeLong(Double.doubleToLongBits(paramDouble));
   }
   
-  private final void writeFloat(float paramFloat)
+  private void writeFloat(float paramFloat)
   {
     int i = Float.floatToIntBits(paramFloat);
     byte[] arrayOfByte = this.mBuffer;
@@ -101,12 +101,12 @@ final class HippyBuffer$Builder
     this.mPosition = (j + 4);
   }
   
-  private final void writeInteger(int paramInt)
+  private void writeInteger(int paramInt)
   {
     writeUnsignedInt(paramInt >> 31 ^ paramInt << 1);
   }
   
-  private final void writeLong(long paramLong)
+  private void writeLong(long paramLong)
   {
     byte[] arrayOfByte = this.mBuffer;
     int i = this.mPosition;
@@ -121,7 +121,7 @@ final class HippyBuffer$Builder
     this.mPosition = (i + 8);
   }
   
-  private final void writeMap(HippyMap paramHippyMap)
+  private void writeMap(HippyMap paramHippyMap)
   {
     ensureBufferSize(8);
     writeDataType((byte)7);
@@ -135,7 +135,7 @@ final class HippyBuffer$Builder
     }
   }
   
-  private final void writeNumber(Number paramNumber)
+  private void writeNumber(Number paramNumber)
   {
     ensureBufferSize(12);
     if ((!(paramNumber instanceof Integer)) && (!(paramNumber instanceof Short)) && (!(paramNumber instanceof Byte)))
@@ -153,7 +153,7 @@ final class HippyBuffer$Builder
     }
   }
   
-  private final void writeObject(Object paramObject)
+  private void writeObject(Object paramObject)
   {
     if ((paramObject instanceof String))
     {
@@ -220,7 +220,7 @@ final class HippyBuffer$Builder
     }
   }
   
-  private final void writeProperty(String paramString)
+  private void writeProperty(String paramString)
   {
     ensureBufferSize(2);
     byte[] arrayOfByte = this.mBuffer;
@@ -231,7 +231,7 @@ final class HippyBuffer$Builder
     writeString(paramString);
   }
   
-  private final void writeString(String paramString)
+  private void writeString(String paramString)
   {
     paramString = paramString.getBytes();
     int i;
@@ -249,7 +249,7 @@ final class HippyBuffer$Builder
     }
   }
   
-  private final void writeUnsignedInt(int paramInt)
+  private void writeUnsignedInt(int paramInt)
   {
     while ((paramInt & 0xFFFFFF80) != 0)
     {
@@ -267,7 +267,7 @@ final class HippyBuffer$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.HippyBuffer.Builder
  * JD-Core Version:    0.7.0.1
  */

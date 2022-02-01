@@ -8,49 +8,49 @@ public class WeiYunFileInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new WeiYunFileInfo.1();
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
   public String c;
-  public String d;
-  public String e;
-  public String f;
+  public long d;
+  public long e;
+  public int f;
   public String g;
-  public String h;
+  public int h;
   public String i;
   public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public boolean o;
   
   public WeiYunFileInfo()
   {
-    this.jdField_a_of_type_Int = 0;
+    this.f = 0;
   }
   
   public WeiYunFileInfo(Parcel paramParcel)
   {
     boolean bool = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.f = 0;
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.d = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.e = paramParcel.readString();
-    this.f = paramParcel.readString();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readLong();
+    this.f = paramParcel.readInt();
     this.g = paramParcel.readString();
-    this.h = paramParcel.readString();
+    this.h = paramParcel.readInt();
     this.i = paramParcel.readString();
     this.j = paramParcel.readString();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.o = bool;
   }
   
   public int describeContents()
@@ -60,26 +60,26 @@ public class WeiYunFileInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.e);
-    paramParcel.writeString(this.f);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeInt(this.f);
     paramParcel.writeString(this.g);
-    paramParcel.writeString(this.h);
+    paramParcel.writeInt(this.h);
     paramParcel.writeString(this.i);
     paramParcel.writeString(this.j);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeByte((byte)this.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo
  * JD-Core Version:    0.7.0.1
  */

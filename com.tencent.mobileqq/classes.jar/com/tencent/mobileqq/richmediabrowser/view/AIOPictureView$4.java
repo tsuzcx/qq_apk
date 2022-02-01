@@ -10,30 +10,30 @@ class AIOPictureView$4
 {
   AIOPictureView$4(AIOPictureView paramAIOPictureView, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+    paramView = this.a.getContent(paramInt);
     if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
     if (TextUtils.isEmpty(paramView))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -18,33 +18,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class NewFlowCameraReporter
 {
   public static long a = 0L;
-  public static String a = "";
-  public static Map<String, GapDataCollector> a;
-  public static boolean a;
-  public static long b;
-  public static String b;
-  public static boolean b;
-  public static long c;
-  public static String c;
-  private static long d;
-  private static long e;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    jdField_b_of_type_JavaLangString = ".photo";
-    jdField_c_of_type_JavaLangString = ".openCamera";
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    d = 0L;
-    e = 0L;
-    jdField_c_of_type_Long = 0L;
-  }
-  
-  public static long a(Intent paramIntent)
-  {
-    return paramIntent.getLongExtra("start_intent_time", 0L);
-  }
+  public static long b = 0L;
+  public static String c = "";
+  public static Map<String, GapDataCollector> d = new ConcurrentHashMap();
+  public static String e = ".photo";
+  public static String f = ".openCamera";
+  public static boolean g = true;
+  public static boolean h = true;
+  public static long i = 0L;
+  private static long j = 0L;
+  private static long k = 0L;
   
   public static void a()
   {
@@ -53,12 +36,12 @@ public class NewFlowCameraReporter
   
   public static void a(Intent paramIntent)
   {
-    paramIntent.putExtra("start_intent_time", jdField_a_of_type_Long);
+    paramIntent.putExtra("start_intent_time", a);
   }
   
   public static void a(String paramString)
   {
-    a(paramString, jdField_a_of_type_Long);
+    a(paramString, a);
   }
   
   public static void a(String paramString, long paramLong)
@@ -66,13 +49,13 @@ public class NewFlowCameraReporter
     if (QLog.isColorLevel())
     {
       long l = System.currentTimeMillis();
-      String str = jdField_b_of_type_JavaLangString;
+      String str = e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append(";");
       localStringBuilder.append(l - paramLong);
       QLog.d(str, 2, localStringBuilder.toString());
-      jdField_a_of_type_Long = l;
+      a = l;
     }
   }
   
@@ -87,7 +70,7 @@ public class NewFlowCameraReporter
     }
     paramString1.put("MANUFACTURER", Build.MANUFACTURER);
     paramString1.put("MODEL", Build.MODEL);
-    paramString1.put("DEVICE_TYPE_NAME", DeviceInstance.a().a());
+    paramString1.put("DEVICE_TYPE_NAME", DeviceInstance.a().b());
     a(paramString1, "open_custom_camera", paramString2);
     StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, paramString2, true, 0L, 0L, paramString1, null);
   }
@@ -123,6 +106,11 @@ public class NewFlowCameraReporter
     }
   }
   
+  public static long b(Intent paramIntent)
+  {
+    return paramIntent.getLongExtra("start_intent_time", 0L);
+  }
+  
   public static void b()
   {
     a("capture photo send", "sv_capture_photo_send", null);
@@ -145,7 +133,7 @@ public class NewFlowCameraReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.NewFlowCameraReporter
  * JD-Core Version:    0.7.0.1
  */

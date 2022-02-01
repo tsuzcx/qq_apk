@@ -8,8 +8,10 @@ import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
+import com.tencent.mobileqq.qroute.annotation.QRouteFactory;
 
 @QAPI(process={"all"})
+@QRouteFactory(singleton=false)
 public abstract interface IPublicAccountDetailTopGestureLayoutProxy
   extends QRouteApi
 {
@@ -31,7 +33,7 @@ public abstract interface IPublicAccountDetailTopGestureLayoutProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.IPublicAccountDetailTopGestureLayoutProxy
  * JD-Core Version:    0.7.0.1
  */

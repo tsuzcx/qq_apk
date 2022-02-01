@@ -14,9 +14,9 @@ public class QQMusicDownloader
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       paramString1 = new DownloadTask(paramString1, new File(paramString2));
-      paramString1.n = true;
-      paramString1.b = 2;
-      paramString1.a = paramString2;
+      paramString1.J = true;
+      paramString1.e = 2;
+      paramString1.b = paramString2;
       paramString1.b(512);
       paramString1.a(paramMusicDownloadListener);
       return paramString1;
@@ -36,7 +36,7 @@ public class QQMusicDownloader
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("cancel task ");
-      localStringBuilder.append(paramDownloadTask.a);
+      localStringBuilder.append(paramDownloadTask.b);
       QLog.i("QQMusicDownloader", 2, localStringBuilder.toString());
     }
     paramDownloadTask.a(true);
@@ -49,7 +49,7 @@ public class QQMusicDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QQMusicDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,22 +15,22 @@ class DialogBaseActivity$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
       paramDialogInterface.putExtra("main_tab_id", 1);
       paramDialogInterface.setFlags(603979776);
       BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
+      this.b.finish();
+      ReportController.b(this.b.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DialogBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

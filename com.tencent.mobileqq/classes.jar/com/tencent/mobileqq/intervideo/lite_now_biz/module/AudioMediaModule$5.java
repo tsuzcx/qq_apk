@@ -12,13 +12,13 @@ class AudioMediaModule$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UITools.a((Activity)AudioMediaModule.a(this.a));
+    UITools.a((Activity)AudioMediaModule.g(this.a));
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.module.AudioMediaModule.5
  * JD-Core Version:    0.7.0.1
  */

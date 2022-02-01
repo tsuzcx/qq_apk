@@ -18,15 +18,15 @@ class StructMsgItemLive$2
   public void onClick(View paramView)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    boolean bool = TextUtils.isEmpty(this.a.a.mMsgActionData);
+    boolean bool = TextUtils.isEmpty(this.a.as.mMsgActionData);
     int i = 1;
-    if ((!bool) && (this.a.a.mMsgActionData.startsWith("story:")))
+    if ((!bool) && (this.a.as.mMsgActionData.startsWith("story:")))
     {
-      localObject1 = this.a.a.mMsgActionData.substring(6, this.a.a.mMsgActionData.length() - 1);
+      localObject1 = this.a.as.mMsgActionData.substring(6, this.a.as.mMsgActionData.length() - 1);
     }
     else
     {
-      String[] arrayOfString1 = this.a.ae.substring(this.a.ae.indexOf("?") + 1).split("&");
+      String[] arrayOfString1 = this.a.aw.substring(this.a.aw.indexOf("?") + 1).split("&");
       localObject2 = "-1";
       localObject1 = "0";
       i = 0;
@@ -81,7 +81,7 @@ class StructMsgItemLive$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemLive.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,15 +24,15 @@ public class TeamWorkShareActionSheetBuilder
   extends ShareActionSheetBuilder
   implements ShareActionSheet.IShareActionSheetV2BottomBar
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private QQBrowserActivity jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity;
-  private SharePolicyInfo jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo;
-  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
+  private TextView A;
+  private ImageView B;
+  private WebView C;
+  private SharePolicyInfo D;
+  private QQBrowserActivity E;
+  private RelativeLayout F;
+  private TeamWorkFileImportInfo G;
+  private TextView y;
+  private TextView z;
   
   public TeamWorkShareActionSheetBuilder(Context paramContext)
   {
@@ -41,8 +41,8 @@ public class TeamWorkShareActionSheetBuilder
     if ((paramContext instanceof QQBrowserActivity))
     {
       paramContext = (QQBrowserActivity)paramContext;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramContext;
-      this.jdField_a_of_type_ComTencentSmttSdkWebView = paramContext.getHostWebView();
+      this.E = paramContext;
+      this.C = paramContext.getHostWebView();
     }
     paramContext = new Intent();
     paramContext.putExtra("forward_type", -3);
@@ -51,61 +51,61 @@ public class TeamWorkShareActionSheetBuilder
     setRowVisibility(0, 0, 0);
   }
   
-  private View c()
+  private View e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity;
+    Object localObject = this.E;
     if ((localObject != null) && (((QQBrowserActivity)localObject).getCurrentWebViewFragment() != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo = ((Share)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getCurrentWebViewFragment().getShare()).a();
-      localObject = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).inflate(2131562923, null);
-      SharePolicyInfo localSharePolicyInfo = this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo;
-      if ((localSharePolicyInfo != null) && (localSharePolicyInfo.jdField_a_of_type_Boolean))
+      this.D = ((Share)this.E.getCurrentWebViewFragment().getShare()).a();
+      localObject = (RelativeLayout)LayoutInflater.from(this.E).inflate(2131629383, null);
+      SharePolicyInfo localSharePolicyInfo = this.D;
+      if ((localSharePolicyInfo != null) && (localSharePolicyInfo.d))
       {
         ((RelativeLayout)localObject).setVisibility(0);
-        this.c = ((TextView)((RelativeLayout)localObject).findViewById(2131379533));
-        this.c.setOnClickListener(new TeamWorkShareActionSheetBuilder.2(this));
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.c == 1) {
-          this.c.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getText(2131690219));
-        } else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.c == 2) {
-          this.c.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getText(2131689706));
+        this.y = ((TextView)((RelativeLayout)localObject).findViewById(2131448284));
+        this.y.setOnClickListener(new TeamWorkShareActionSheetBuilder.2(this));
+        if (this.D.h == 1) {
+          this.y.setText(this.E.getText(2131887119));
+        } else if (this.D.h == 2) {
+          this.y.setText(this.E.getText(2131886318));
         }
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((RelativeLayout)localObject).findViewById(2131376876));
-        this.c = ((TextView)((RelativeLayout)localObject).findViewById(2131379533));
-        this.d = ((TextView)((RelativeLayout)localObject).findViewById(2131379531));
-        this.d.setTextColor(Color.parseColor("#777777"));
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.c == 2) {
-          this.d.setTextColor(Color.parseColor("#fe6c6c"));
+        this.F = ((RelativeLayout)((RelativeLayout)localObject).findViewById(2131445216));
+        this.y = ((TextView)((RelativeLayout)localObject).findViewById(2131448284));
+        this.z = ((TextView)((RelativeLayout)localObject).findViewById(2131448282));
+        this.z.setTextColor(Color.parseColor("#777777"));
+        if (this.D.h == 2) {
+          this.z.setTextColor(Color.parseColor("#fe6c6c"));
         }
-        this.d.setText(this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.jdField_a_of_type_JavaLangString);
-        this.e = ((TextView)((RelativeLayout)localObject).findViewById(2131379532));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)localObject).findViewById(2131369285));
-        if (2 == this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.c)
+        this.z.setText(this.D.a);
+        this.A = ((TextView)((RelativeLayout)localObject).findViewById(2131448283));
+        this.B = ((ImageView)((RelativeLayout)localObject).findViewById(2131436270));
+        if (2 == this.D.h)
         {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.b))
+          if (TextUtils.isEmpty(this.D.b))
           {
-            this.e.setVisibility(8);
+            this.A.setVisibility(8);
           }
           else
           {
-            this.e.setVisibility(0);
-            this.e.setText(this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.b);
+            this.A.setVisibility(0);
+            this.A.setText(this.D.b);
           }
         }
-        else if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.f))
+        else if (TextUtils.isEmpty(this.D.k))
         {
-          this.e.setVisibility(8);
+          this.A.setVisibility(8);
         }
         else
         {
-          this.e.setVisibility(0);
-          a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.f, this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.d);
+          this.A.setVisibility(0);
+          a(this.D.k, this.D.j);
         }
       }
       else
       {
         ((RelativeLayout)localObject).setVisibility(8);
       }
-      ((RelativeLayout)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 70.0F)));
+      ((RelativeLayout)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, UIUtils.a(this.E, 70.0F)));
       return localObject;
     }
     return null;
@@ -113,33 +113,33 @@ public class TeamWorkShareActionSheetBuilder
   
   public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    this.G = paramTeamWorkFileImportInfo;
   }
   
   public void a(String paramString, int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo.g;
+    String str = this.D.l;
     if (paramInt == 0)
     {
-      this.e.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getString(2131719514));
+      this.A.setText(this.E.getString(2131917077));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.post(new TeamWorkShareActionSheetBuilder.1(this, paramString, str));
+    this.F.post(new TeamWorkShareActionSheetBuilder.1(this, paramString, str));
   }
   
   public View b()
   {
-    return c();
+    return e();
   }
   
   public void setItemClickListenerV2(ShareActionSheet.OnItemClickListener paramOnItemClickListener)
   {
-    super.setItemClickListenerV2(new TeamWorkShareActionSheetBuilder.InnerShareReportListener(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, paramOnItemClickListener));
+    super.setItemClickListenerV2(new TeamWorkShareActionSheetBuilder.InnerShareReportListener(this.E, this.C, this.G, paramOnItemClickListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder
  * JD-Core Version:    0.7.0.1
  */

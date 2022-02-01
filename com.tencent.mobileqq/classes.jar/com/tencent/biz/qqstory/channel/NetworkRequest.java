@@ -8,20 +8,14 @@ import java.util.List;
 
 public abstract class NetworkRequest<Respond extends BaseResponse>
 {
-  public int a;
-  public long a;
   public NetworkRequest.IProtocolListener<Respond> a;
-  public int b = 0;
-  private int c;
-  
-  public NetworkRequest()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 2;
-  }
+  public long b = -1L;
+  public int c = 2;
+  public int d = 0;
+  private int e;
   
   @NonNull
-  public static List<ByteStringMicro> a(List<String> paramList)
+  public static List<ByteStringMicro> b(List<String> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
@@ -29,13 +23,6 @@ public abstract class NetworkRequest<Respond extends BaseResponse>
       localArrayList.add(ByteStringMicro.copyFromUtf8((String)paramList.next()));
     }
     return localArrayList;
-  }
-  
-  public abstract BaseResponse a(byte[] paramArrayOfByte);
-  
-  public NetworkRequest.IProtocolListener<Respond> a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest$IProtocolListener;
   }
   
   public abstract String a();
@@ -47,14 +34,21 @@ public abstract class NetworkRequest<Respond extends BaseResponse>
   
   public void a(NetworkRequest.IProtocolListener<Respond> paramIProtocolListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest$IProtocolListener = paramIProtocolListener;
+    this.a = paramIProtocolListener;
   }
   
-  protected abstract byte[] a();
+  public abstract BaseResponse b(byte[] paramArrayOfByte);
   
-  public int b()
+  protected abstract byte[] c();
+  
+  public NetworkRequest.IProtocolListener<Respond> d()
   {
-    int i = this.c;
+    return this.a;
+  }
+  
+  public int e()
+  {
+    int i = this.e;
     String str = a();
     int j = i;
     if (i == 0)
@@ -68,7 +62,7 @@ public abstract class NetworkRequest<Respond extends BaseResponse>
           i = i * 31 + str.charAt(j);
           j += 1;
         }
-        this.c = i;
+        this.e = i;
         j = i;
       }
     }
@@ -77,7 +71,7 @@ public abstract class NetworkRequest<Respond extends BaseResponse>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.NetworkRequest
  * JD-Core Version:    0.7.0.1
  */

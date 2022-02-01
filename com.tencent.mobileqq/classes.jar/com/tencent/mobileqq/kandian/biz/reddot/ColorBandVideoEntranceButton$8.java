@@ -11,24 +11,24 @@ class ColorBandVideoEntranceButton$8
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    ColorBandVideoEntranceButton.a(this.a).setVisibility(8);
+    ColorBandVideoEntranceButton.d(this.a).setVisibility(8);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    ColorBandVideoEntranceButton.a(this.a).setVisibility(8);
+    ColorBandVideoEntranceButton.d(this.a).setVisibility(8);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    ColorBandVideoEntranceButton.a(this.a).setVisibility(8);
+    ColorBandVideoEntranceButton.d(this.a).setVisibility(8);
   }
   
   public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reddot.ColorBandVideoEntranceButton.8
  * JD-Core Version:    0.7.0.1
  */

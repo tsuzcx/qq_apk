@@ -12,8 +12,8 @@ class LoginView$AccountAdapter$1
   protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
     paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
+    paramCharSequence.values = this.a.b.v;
+    paramCharSequence.count = this.a.b.v.size();
     return paramCharSequence;
   }
   
@@ -29,7 +29,7 @@ class LoginView$AccountAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.AccountAdapter.1
  * JD-Core Version:    0.7.0.1
  */

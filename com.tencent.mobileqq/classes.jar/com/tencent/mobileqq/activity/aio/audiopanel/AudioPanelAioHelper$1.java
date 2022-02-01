@@ -24,7 +24,7 @@ class AudioPanelAioHelper$1
     int i = this.a;
     if (i == 1)
     {
-      if (!this.this$0.b())
+      if (!this.this$0.g())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("volueme state err");
@@ -33,24 +33,24 @@ class AudioPanelAioHelper$1
         QLog.i("AudioPanelAioHelper", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      if ((this.this$0.a == null) || (!this.this$0.a.isShowing()))
+      if ((this.this$0.g == null) || (!this.this$0.g.isShowing()))
       {
         localObject = this.this$0;
-        ((AudioPanelAioHelper)localObject).a = new ToastStyleDialog(AudioPanelAioHelper.a((AudioPanelAioHelper)localObject).a);
-        this.this$0.a.a(AudioPanelAioHelper.a(this.this$0).a.getString(2131698589));
-        this.this$0.a.show();
+        ((AudioPanelAioHelper)localObject).g = new ToastStyleDialog(AudioPanelAioHelper.a((AudioPanelAioHelper)localObject).e);
+        this.this$0.g.a(AudioPanelAioHelper.a(this.this$0).e.getString(2131896536));
+        this.this$0.g.show();
       }
     }
-    else if (((i == 2) || (i == 0)) && (this.this$0.a != null) && (this.this$0.a.isShowing()) && (this.this$0.a.getWindow() != null))
+    else if (((i == 2) || (i == 0)) && (this.this$0.g != null) && (this.this$0.g.isShowing()) && (this.this$0.g.getWindow() != null))
     {
-      this.this$0.a.dismiss();
-      this.this$0.a = null;
+      this.this$0.g.dismiss();
+      this.this$0.g = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAioHelper.1
  * JD-Core Version:    0.7.0.1
  */

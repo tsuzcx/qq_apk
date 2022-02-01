@@ -23,12 +23,12 @@ public class DoodlePanelHelperImpl
   
   public void destroyCache()
   {
-    DoodleResHelper.a().a();
+    DoodleResHelper.a().b();
   }
   
   public BaseDoodlePanel getDoodlePanel(Context paramContext)
   {
-    return (BaseDoodlePanel)View.inflate(paramContext, 2131558532, null);
+    return (BaseDoodlePanel)View.inflate(paramContext, 2131624085, null);
   }
   
   public long getMsgID(ChatMessage paramChatMessage)
@@ -73,7 +73,7 @@ public class DoodlePanelHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doodle.impl.DoodlePanelHelperImpl
  * JD-Core Version:    0.7.0.1
  */

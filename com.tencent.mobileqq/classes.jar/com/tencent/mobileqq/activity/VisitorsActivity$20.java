@@ -11,13 +11,13 @@ class VisitorsActivity$20
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    this.a.J.setVisibility(0);
+    this.a.T = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.20
  * JD-Core Version:    0.7.0.1
  */

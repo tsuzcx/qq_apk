@@ -9,7 +9,7 @@ class RelativeFeedsAdapter$RelativeFeedVH$2$1
   
   public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    this.a.c.a.a(this.a.b);
   }
 }
 

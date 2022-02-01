@@ -21,12 +21,12 @@ class PhotoListPanelProvider$1
   
   public void a(Intent paramIntent)
   {
-    PhotoListPanelProvider.a(this.a).a(PhotoListPanelProvider.a(this.a).hashCode(), paramIntent);
+    PhotoListPanelProvider.b(this.a).a(PhotoListPanelProvider.a(this.a).hashCode(), paramIntent);
   }
   
   public boolean a(int paramInt)
   {
-    Object localObject = PhotoListPanelProvider.a(this.a).a(PhotoListPanelProvider.a(this.a).hashCode());
+    Object localObject = PhotoListPanelProvider.b(this.a).a(PhotoListPanelProvider.a(this.a).hashCode());
     int i = paramInt;
     if (localObject != null)
     {
@@ -40,21 +40,21 @@ class PhotoListPanelProvider$1
         }
       }
     }
-    if ((PhotoListPanelProvider.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!((ReceiptHelper)PhotoListPanelProvider.a(this.a).a(118)).a))
+    if ((PhotoListPanelProvider.a(this.a).W != null) && (!((ReceiptHelper)PhotoListPanelProvider.a(this.a).q(118)).a))
     {
-      boolean bool = AnonymousChatHelper.a().a(PhotoListPanelProvider.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      PhotoListPanelProvider.a(this.a).c();
-      PanelIconLinearLayout localPanelIconLinearLayout = PhotoListPanelProvider.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      QQAppInterface localQQAppInterface = PhotoListPanelProvider.a(this.a);
-      SessionInfo localSessionInfo = PhotoListPanelProvider.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      boolean bool = AnonymousChatHelper.a().a(PhotoListPanelProvider.a(this.a).ah.b);
+      PhotoListPanelProvider.a(this.a).aR();
+      PanelIconLinearLayout localPanelIconLinearLayout = PhotoListPanelProvider.a(this.a).W;
+      QQAppInterface localQQAppInterface = PhotoListPanelProvider.c(this.a);
+      SessionInfo localSessionInfo = PhotoListPanelProvider.a(this.a).ah;
       if (bool) {
-        localObject = AIOPanelUtiles.m;
+        localObject = AIOPanelUtiles.n;
       } else {
-        localObject = AIOPanelUtiles.l;
+        localObject = AIOPanelUtiles.m;
       }
       localPanelIconLinearLayout.a(localQQAppInterface, localSessionInfo, (int[])localObject, i);
-      if ((i > 0) && (!PhotoListPanelProvider.a(this.a).p())) {
-        PhotoListPanelProvider.a(this.a).b().a().a().a().b(true);
+      if ((i > 0) && (!PhotoListPanelProvider.a(this.a).bn())) {
+        PhotoListPanelProvider.a(this.a).bv().p().d().d().c(true);
       }
     }
     return false;
@@ -62,7 +62,7 @@ class PhotoListPanelProvider$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PhotoListPanelProvider.1
  * JD-Core Version:    0.7.0.1
  */

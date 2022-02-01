@@ -42,7 +42,7 @@ public class TroopAnonymousHandler
       }
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopAnonymousObserver.a, false, null);
+        notifyUI(TroopAnonymousObserver.b, false, null);
         return;
       }
       paramFromServiceMsg = new cmd0x3bb.AnonyMsg();
@@ -53,12 +53,12 @@ public class TroopAnonymousHandler
       paramFromServiceMsg = (cmd0x3bb.RspBody)paramFromServiceMsg.msg_anony_rsp.get();
       if (paramFromServiceMsg == null)
       {
-        notifyUI(TroopAnonymousObserver.a, false, null);
+        notifyUI(TroopAnonymousObserver.b, false, null);
         return;
       }
       if (paramFromServiceMsg.int32_ret.get() != 0)
       {
-        notifyUI(TroopAnonymousObserver.a, false, null);
+        notifyUI(TroopAnonymousObserver.b, false, null);
         return;
       }
       paramObject = paramToServiceMsg.extraData.getString("troopUin");
@@ -87,14 +87,9 @@ public class TroopAnonymousHandler
       }
     }
     paramFromServiceMsg = paramFromServiceMsg.color.get();
-    notifyUI(TroopAnonymousObserver.a, true, new Object[] { paramObject, str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), paramToServiceMsg, paramFromServiceMsg });
+    notifyUI(TroopAnonymousObserver.b, true, new Object[] { paramObject, str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), paramToServiceMsg, paramFromServiceMsg });
     return;
-    notifyUI(TroopAnonymousObserver.a, false, null);
-  }
-  
-  protected String a()
-  {
-    return "TroopAnonymousHandler";
+    notifyUI(TroopAnonymousObserver.b, false, null);
   }
   
   public void a(int paramInt, String paramString1, String paramString2)
@@ -140,6 +135,11 @@ public class TroopAnonymousHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopAnonymousHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -183,7 +183,7 @@ public class TroopAnonymousHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopanonymous.TroopAnonymousHandler
  * JD-Core Version:    0.7.0.1
  */

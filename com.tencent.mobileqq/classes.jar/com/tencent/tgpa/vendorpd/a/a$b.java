@@ -11,24 +11,24 @@ import java.util.Iterator;
 
 class a$b
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<a.c> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<a.c> a;
+  private final String b;
   
   public a$b(String paramString, ArrayList<a.c> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.b = paramString;
+    this.a = paramArrayList;
   }
   
   private boolean a(a.c paramc)
   {
     try
     {
-      RandomAccessFile localRandomAccessFile = new RandomAccessFile(new File(this.jdField_a_of_type_JavaLangString), "rw");
+      RandomAccessFile localRandomAccessFile = new RandomAccessFile(new File(this.b), "rw");
       long l1 = localRandomAccessFile.length();
-      long l2 = paramc.jdField_a_of_type_Long;
-      int i = paramc.jdField_b_of_type_Int;
-      paramc = c.a(paramc.jdField_b_of_type_JavaLangString);
+      long l2 = paramc.c;
+      int i = paramc.d;
+      paramc = c.b(paramc.e);
       if (paramc.length != i)
       {
         Log.e("TGPA", "cloud operation's content size is not matched, ple check it.");
@@ -61,20 +61,20 @@ class a$b
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
+    if (this.b == null) {
       return false;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((ArrayList)localObject).size() <= 0) {
         return false;
       }
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         a.c localc = (a.c)((Iterator)localObject).next();
-        String str = localc.jdField_a_of_type_JavaLangString;
+        String str = localc.b;
         int i = -1;
         int j = str.hashCode();
         if (j != -1335458389)
@@ -115,7 +115,7 @@ class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.a.a.b
  * JD-Core Version:    0.7.0.1
  */

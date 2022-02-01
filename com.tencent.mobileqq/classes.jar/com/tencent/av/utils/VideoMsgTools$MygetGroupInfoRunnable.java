@@ -7,26 +7,26 @@ import java.lang.ref.WeakReference;
 class VideoMsgTools$MygetGroupInfoRunnable
   implements Runnable
 {
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
+  long a = 0L;
+  WeakReference<QQAppInterface> b = null;
+  String c = null;
   
   public VideoMsgTools$MygetGroupInfoRunnable(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramLong;
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = paramString;
   }
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
     if (localQQAppInterface != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addGroupMember_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      QAVGroupConfig.a(localStringBuilder.toString(), localQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
+      QAVGroupConfig.b(localStringBuilder.toString(), localQQAppInterface, this.c);
     }
   }
 }

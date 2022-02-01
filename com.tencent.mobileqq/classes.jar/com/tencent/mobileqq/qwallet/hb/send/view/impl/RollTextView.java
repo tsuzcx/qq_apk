@@ -11,51 +11,48 @@ import com.tencent.mobileqq.qqpay.ui.R.anim;
 public class RollTextView
   extends TextSwitcher
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private RollTextView.OnRollTextChangeListener jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollTextView$OnRollTextChangeListener = null;
-  private RollTextView.RollViewHandler jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollTextView$RollViewHandler = new RollTextView.RollViewHandler(this);
-  protected boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int c = 0;
-  private int d = 200;
-  private int e = 200;
-  private int f = 50;
-  private int g;
+  protected boolean a = true;
+  private RollTextView.RollViewHandler b = new RollTextView.RollViewHandler(this);
+  private Context c = null;
+  private RollTextView.OnRollTextChangeListener d = null;
+  private int e;
+  private int f;
+  private int g = 0;
+  private int h = 200;
+  private int i = 200;
+  private int j = 50;
+  private int k;
+  private boolean l = true;
   
   public RollTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
     a(paramContext, true);
   }
   
   public RollTextView(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
-    this.f = paramInt1;
-    this.g = paramInt2;
+    this.j = paramInt1;
+    this.k = paramInt2;
     a(paramContext, paramBoolean);
   }
   
   public RollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
     a(paramContext, true);
   }
   
-  private void a(boolean paramBoolean)
+  private void setIsRool(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
     if (paramBoolean)
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, R.anim.jdField_b_of_type_Int);
+      Animation localAnimation = AnimationUtils.loadAnimation(this.c, R.anim.b);
       localAnimation.setFillAfter(true);
       setInAnimation(localAnimation);
-      localAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, R.anim.c);
+      localAnimation = AnimationUtils.loadAnimation(this.c, R.anim.c);
       localAnimation.setFillAfter(true);
       setOutAnimation(localAnimation);
       return;
@@ -66,7 +63,7 @@ public class RollTextView
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public void a(Context paramContext, boolean paramBoolean)
@@ -74,8 +71,8 @@ public class RollTextView
     if (paramContext == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramBoolean);
+    this.c = paramContext;
+    setIsRool(paramBoolean);
     setFactory(new RollTextView.1(this, paramBoolean));
   }
   
@@ -86,37 +83,37 @@ public class RollTextView
   
   public void setContext(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
   
   public void setFactor(int paramInt)
   {
     if (paramInt >= 0) {
-      this.c = paramInt;
+      this.g = paramInt;
     }
   }
   
   public void setListener(RollTextView.OnRollTextChangeListener paramOnRollTextChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollTextView$OnRollTextChangeListener = paramOnRollTextChangeListener;
+    this.d = paramOnRollTextChangeListener;
   }
   
   public void setScope(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.l)
     {
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_Int = paramInt2;
+      this.f = paramInt2;
+      this.e = paramInt2;
       return;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.view.impl.RollTextView
  * JD-Core Version:    0.7.0.1
  */

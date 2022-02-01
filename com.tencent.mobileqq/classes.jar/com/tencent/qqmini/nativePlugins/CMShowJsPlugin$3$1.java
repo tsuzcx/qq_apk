@@ -18,7 +18,7 @@ class CMShowJsPlugin$3$1
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
     QLog.i("CMShowJsPlugin", 1, "get res from local failed.");
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin$3.a.fail();
+    this.b.b.fail();
     CMShowJsPlugin.a(false);
   }
   
@@ -29,27 +29,27 @@ class CMShowJsPlugin$3$1
     try
     {
       QLog.i("CMShowJsPlugin", 1, "get res from local succeed.");
-      if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (this.jdField_a_of_type_OrgJsonJSONObject.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").get("local_face_data") != null) && (this.jdField_a_of_type_OrgJsonJSONObject.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").getJSONArray("local_dress_res") != null) && (this.jdField_a_of_type_OrgJsonJSONObject.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").getJSONArray("local_dress_res").length() != 0))
+      if ((this.a != null) && (this.a.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").get("local_face_data") != null) && (this.a.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").getJSONArray("local_dress_res") != null) && (this.a.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").getJSONArray("local_dress_res").length() != 0))
       {
-        this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin$3.a.ok(this.jdField_a_of_type_OrgJsonJSONObject);
+        this.b.b.ok(this.a);
       }
       else
       {
         QLog.e("CMShowJsPlugin", 1, "invalid callback resultData!");
-        this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin$3.a.fail();
+        this.b.b.fail();
       }
     }
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
-      this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin$3.a.fail();
+      this.b.b.fail();
     }
     CMShowJsPlugin.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.CMShowJsPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,17 @@ class BaseListenTogetherPanel$3
   
   public void a(boolean paramBoolean)
   {
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a).a(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString, paramBoolean);
-    String str1 = this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.jdField_a_of_type_JavaLangString;
-    String str2 = this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.b;
+    ListenTogetherManager.a(this.a.a.d).a(this.a.e.a, this.a.e.b, paramBoolean);
+    String str1 = this.a.m.a;
+    String str2 = this.a.m.c;
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a.m.b);
     ((StringBuilder)localObject).append("");
     ReportController.b(null, "dc00899", str1, "", "music_tab", "clk_quit", 0, 0, str2, "", ((StringBuilder)localObject).toString(), "");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.c))
+    if (this.a.b.app.getCurrentAccountUin().equalsIgnoreCase(this.a.e.m))
     {
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.jdField_a_of_type_JavaLangString;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.b;
+      str2 = this.a.m.a;
+      localObject = this.a.m.c;
       if (paramBoolean) {
         str1 = "1";
       } else {
@@ -38,7 +38,7 @@ class BaseListenTogetherPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.3
  * JD-Core Version:    0.7.0.1
  */

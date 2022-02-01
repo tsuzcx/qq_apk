@@ -6,36 +6,36 @@ import android.graphics.Rect;
 
 class LayerImageView$ChildBitmap
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private int b;
+  private Bitmap a;
+  private Rect b;
   private int c;
+  private int d;
+  private int e;
+  private Bitmap.Config f;
   
   private LayerImageView$ChildBitmap(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    this.a = paramBitmap;
+    this.b = new Rect(0, 0, 0, 0);
     if (paramBitmap != null)
     {
-      this.b = paramBitmap.getScaledWidth(paramInt);
-      this.c = paramBitmap.getScaledHeight(paramInt);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
+      this.d = paramBitmap.getScaledWidth(paramInt);
+      this.e = paramBitmap.getScaledHeight(paramInt);
+      this.c = 0;
+      this.f = paramBitmap.getConfig();
       return;
     }
-    this.jdField_a_of_type_Int = 4;
+    this.c = 4;
   }
   
   private void a(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    this.b.set(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.LayerImageView.ChildBitmap
  * JD-Core Version:    0.7.0.1
  */

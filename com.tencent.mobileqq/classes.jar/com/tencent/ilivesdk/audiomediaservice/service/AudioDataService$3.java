@@ -18,7 +18,7 @@ final class AudioDataService$3
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+    LogInterface localLogInterface = this.a.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestCmd onError:isTimeout");
     localStringBuilder.append(paramBoolean);
@@ -27,7 +27,7 @@ final class AudioDataService$3
     localStringBuilder.append(";msg=");
     localStringBuilder.append(paramString);
     localLogInterface.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestMediaChannelCallback.a(paramInt);
+    this.c.a(paramInt);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -37,19 +37,19 @@ final class AudioDataService$3
       Object localObject = new ILiveChannel.RelayCmdRsp();
       ((ILiveChannel.RelayCmdRsp)localObject).mergeFrom(paramArrayOfByte);
       int i = ((ILiveChannel.RelayCmdRsp)localObject).result.get();
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+      paramArrayOfByte = this.a.c();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestCmd , cmd=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(" errCode=");
       localStringBuilder.append(i);
       paramArrayOfByte.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
       paramArrayOfByte = new ILiveChannel.AppCmdRspBody();
       paramArrayOfByte.mergeFrom(((ILiveChannel.RelayCmdRsp)localObject).response.get().toByteArray());
-      localObject = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+      localObject = this.a.c();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestCmd , cmd=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(" internal errCode=");
       localStringBuilder.append(paramArrayOfByte.msg_cmd_error_code.code.get());
       localStringBuilder.append(" msg:");
@@ -57,10 +57,10 @@ final class AudioDataService$3
       ((LogInterface)localObject).i("AudioDataService", localStringBuilder.toString(), new Object[0]);
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestMediaChannelCallback.a(i, paramArrayOfByte.rspbody.get().toByteArray());
+        this.c.a(i, paramArrayOfByte.rspbody.get().toByteArray());
         return;
       }
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestMediaChannelCallback.a(i);
+      this.c.a(i);
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -68,12 +68,12 @@ final class AudioDataService$3
       label252:
       break label252;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestMediaChannelCallback.a(-1);
+    this.c.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.service.AudioDataService.3
  * JD-Core Version:    0.7.0.1
  */

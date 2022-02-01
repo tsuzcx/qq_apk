@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.kandian.biz.fastweb.util;
 
 import android.os.Parcel;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 
 final class ReportUtil$1
   implements Runnable
@@ -15,12 +14,13 @@ final class ReportUtil$1
   
   public void run()
   {
+    VideoInfo localVideoInfo;
     try
     {
       Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+      localParcel.unmarshall(this.a, 0, this.a.length);
       localParcel.setDataPosition(0);
-      localObject = new VideoInfo(localParcel);
+      localVideoInfo = new VideoInfo(localParcel);
       try
       {
         localParcel.recycle();
@@ -30,20 +30,19 @@ final class ReportUtil$1
     }
     catch (Exception localException2)
     {
-      localObject = null;
+      localVideoInfo = null;
     }
-    if (localObject == null) {
+    if (localVideoInfo == null) {
       return;
     }
     long l1 = NetConnInfoCenter.getServerTime();
-    long l2 = this.jdField_a_of_type_Long;
-    Object localObject = new VideoR5.Builder((VideoInfo)localObject).j(((VideoInfo)localObject).g).n(3).o(((VideoInfo)localObject).u).i(l1 - l2).a().a();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", (String)localObject, false);
+    long l2 = this.b;
+    PublicAccountReportUtils.a(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", new VideoR5.Builder(localVideoInfo).k(localVideoInfo.l).n(3).o(localVideoInfo.av).i(l1 - l2).b().a(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.ReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

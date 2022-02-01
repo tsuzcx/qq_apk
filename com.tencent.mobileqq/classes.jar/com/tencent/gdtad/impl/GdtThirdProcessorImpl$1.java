@@ -10,13 +10,13 @@ class GdtThirdProcessorImpl$1
 {
   public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentGdtadParamsGetUserInfoCallback.a(paramBundle);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+    this.a.a(paramBundle);
+    this.b.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.impl.GdtThirdProcessorImpl.1
  * JD-Core Version:    0.7.0.1
  */

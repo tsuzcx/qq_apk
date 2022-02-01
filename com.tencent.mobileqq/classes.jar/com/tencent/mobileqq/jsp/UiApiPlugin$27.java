@@ -15,22 +15,22 @@ class UiApiPlugin$27
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    Activity localActivity = this.b.mRuntime.d();
     if (localActivity != null)
     {
       if (localActivity.isFinishing()) {
         return;
       }
-      if (paramDownloadTask.a == 0)
+      if (paramDownloadTask.c == 0)
       {
-        paramDownloadTask = new File(AbsDownloader.getFilePath(this.jdField_a_of_type_JavaLangString));
+        paramDownloadTask = new File(AbsDownloader.getFilePath(this.a));
         if (paramDownloadTask.exists())
         {
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("shareImageToAIO->downloadFile success: ");
-            localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(this.a);
             QLog.d("UiApiPlugin", 2, localStringBuilder.toString());
           }
           localActivity.runOnUiThread(new UiApiPlugin.27.1(this, paramDownloadTask));
@@ -41,7 +41,7 @@ class UiApiPlugin$27
       {
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("shareImageToAIO->downloadFile failed: ");
-        paramDownloadTask.append(this.jdField_a_of_type_JavaLangString);
+        paramDownloadTask.append(this.a);
         QLog.d("UiApiPlugin", 2, paramDownloadTask.toString());
       }
       localActivity.runOnUiThread(new UiApiPlugin.27.2(this));
@@ -50,7 +50,7 @@ class UiApiPlugin$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.27
  * JD-Core Version:    0.7.0.1
  */

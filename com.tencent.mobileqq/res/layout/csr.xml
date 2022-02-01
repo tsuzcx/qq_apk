@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="44.0dip"
+<RelativeLayout android:background="@color/ab3" android:paddingLeft="@dimen/mw" android:paddingTop="@dimen/n2" android:paddingRight="@dimen/mw" android:paddingBottom="@dimen/n2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cgb" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/oie" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxEms="15" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff4899df" android:id="@id/oif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:maxLength="4" />
-    <ImageView android:id="@id/nd9" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/cip" android:contentDescription="@string/close" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:id="@id/qkk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:gravity="center" android:id="@id/qkj" android:paddingLeft="@dimen/n3" android:paddingTop="@dimen/nh" android:paddingRight="@dimen/n3" android:paddingBottom="@dimen/nh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

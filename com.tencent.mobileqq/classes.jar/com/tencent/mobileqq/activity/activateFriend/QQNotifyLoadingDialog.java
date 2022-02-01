@@ -19,8 +19,8 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QQNotifyLoadingDialog
   extends ReportDialog
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  Animatable a = null;
+  Context b = null;
   
   public QQNotifyLoadingDialog(Context paramContext)
   {
@@ -31,8 +31,8 @@ public class QQNotifyLoadingDialog
   protected void a(Context paramContext)
   {
     super.requestWindowFeature(1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setContentView(LayoutInflater.from(paramContext).inflate(2131560915, null));
+    this.b = paramContext;
+    setContentView(LayoutInflater.from(paramContext).inflate(2131627256, null));
     paramContext = getWindow();
     if (paramContext != null)
     {
@@ -43,7 +43,7 @@ public class QQNotifyLoadingDialog
       }
     }
     setCanceledOnTouchOutside(false);
-    paramContext = (ImageView)super.findViewById(2131373723);
+    paramContext = (ImageView)super.findViewById(2131441397);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
     localTranslateAnimation.setDuration(800L);
@@ -55,7 +55,7 @@ public class QQNotifyLoadingDialog
   public void dismiss()
   {
     super.dismiss();
-    Animatable localAnimatable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+    Animatable localAnimatable = this.a;
     if (localAnimatable != null) {
       localAnimatable.stop();
     }
@@ -68,8 +68,8 @@ public class QQNotifyLoadingDialog
       try
       {
         dismiss();
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+        if ((this.b instanceof Activity)) {
+          ((Activity)this.b).finish();
         }
       }
       catch (Exception paramKeyEvent)
@@ -86,11 +86,11 @@ public class QQNotifyLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)((Context)localObject).getResources().getDrawable(2130839406));
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+      this.a = ((Animatable)((Context)localObject).getResources().getDrawable(2130839590));
+      localObject = this.a;
       if (localObject != null) {
         ((Animatable)localObject).start();
       }
@@ -99,7 +99,7 @@ public class QQNotifyLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

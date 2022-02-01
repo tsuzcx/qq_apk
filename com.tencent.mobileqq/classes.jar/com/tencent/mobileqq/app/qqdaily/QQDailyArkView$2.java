@@ -14,14 +14,14 @@ class QQDailyArkView$2
   
   public void a()
   {
-    if (QQDailyArkView.a(this.a) == null) {
+    if (QQDailyArkView.b(this.a) == null) {
       return;
     }
-    QQDailyArkView.b(this.a);
-    QQDailyArkView.a(this.a).setVisibility(0);
-    View localView = QQDailyArkView.a(this.a).findViewById(2131370360);
+    QQDailyArkView.c(this.a);
+    QQDailyArkView.b(this.a).setVisibility(0);
+    View localView = QQDailyArkView.b(this.a).findViewById(2131437622);
     QQDailyArkView localQQDailyArkView = this.a;
-    QQDailyArkView.a(localQQDailyArkView, QQDailyArkView.a(localQQDailyArkView), 0);
+    QQDailyArkView.a(localQQDailyArkView, QQDailyArkView.b(localQQDailyArkView), 0);
     this.a.requestLayout();
     if (localView != null) {
       localView.setVisibility(0);
@@ -30,7 +30,7 @@ class QQDailyArkView$2
   
   public void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel)
   {
-    if (QQDailyArkView.a(this.a) == null) {
+    if (QQDailyArkView.b(this.a) == null) {
       return;
     }
     if ((paramArkViewModel != null) && (paramArkViewModel.GetAppScriptType() == 2) && (!((IArkEnvironment)QRoute.api(IArkEnvironment.class)).isJSCLibExist()))
@@ -39,15 +39,15 @@ class QQDailyArkView$2
       a();
       return;
     }
-    paramString = QQDailyArkView.a(this.a);
+    paramString = QQDailyArkView.b(this.a);
     if (paramBoolean) {
       paramString.setOnClickListener(new QQDailyArkView.2.1(this, paramArkViewModel));
     } else {
       paramString.setOnClickListener(null);
     }
-    QQDailyArkView.b(this.a);
+    QQDailyArkView.c(this.a);
     paramString.setVisibility(0);
-    paramArkViewModel = paramString.findViewById(2131370360);
+    paramArkViewModel = paramString.findViewById(2131437622);
     QQDailyArkView.a(this.a, paramString, 0);
     this.a.requestLayout();
     if (paramArkViewModel != null) {
@@ -57,17 +57,17 @@ class QQDailyArkView$2
   
   public void b()
   {
-    if (QQDailyArkView.a(this.a) == null) {
+    if (QQDailyArkView.b(this.a) == null) {
       return;
     }
-    QQDailyArkView.a(this.a).setVisibility(8);
+    QQDailyArkView.b(this.a).setVisibility(8);
     QQDailyArkView localQQDailyArkView = this.a;
-    QQDailyArkView.a(localQQDailyArkView, QQDailyArkView.a(localQQDailyArkView), 8);
+    QQDailyArkView.a(localQQDailyArkView, QQDailyArkView.b(localQQDailyArkView), 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyArkView.2
  * JD-Core Version:    0.7.0.1
  */

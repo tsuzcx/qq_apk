@@ -13,17 +13,19 @@ public class MiniAppLocalSearchEntity
   public String appName;
   public String desc;
   public String iconUrl;
+  public int miniAppType;
   public int showMask;
   
   public MiniAppLocalSearchEntity() {}
   
-  public MiniAppLocalSearchEntity(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  public MiniAppLocalSearchEntity(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
     this.appId = paramString1;
     this.appName = paramString2;
     this.iconUrl = paramString3;
     this.desc = paramString4;
-    this.showMask = paramInt;
+    this.showMask = paramInt1;
+    this.miniAppType = paramInt2;
   }
   
   public String toString()
@@ -37,12 +39,14 @@ public class MiniAppLocalSearchEntity
     localStringBuilder.append(this.iconUrl);
     localStringBuilder.append(", showMask: ");
     localStringBuilder.append(this.showMask);
+    localStringBuilder.append(", miniAppType: ");
+    localStringBuilder.append(this.miniAppType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity
  * JD-Core Version:    0.7.0.1
  */

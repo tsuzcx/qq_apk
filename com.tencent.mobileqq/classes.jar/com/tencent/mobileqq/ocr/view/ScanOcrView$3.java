@@ -11,13 +11,13 @@ class ScanOcrView$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.e = i;
+    this.a.z.h = i;
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.ScanOcrView.3
  * JD-Core Version:    0.7.0.1
  */

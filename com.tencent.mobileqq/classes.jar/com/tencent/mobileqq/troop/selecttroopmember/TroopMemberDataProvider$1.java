@@ -22,47 +22,47 @@ class TroopMemberDataProvider$1
           if (i != 4) {
             return;
           }
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack != null) && ((paramMessage.obj instanceof HashMap))) {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack.a((HashMap)paramMessage.obj);
+          if ((this.a.d != null) && ((paramMessage.obj instanceof HashMap))) {
+            this.a.d.a((HashMap)paramMessage.obj);
           }
         }
         else
         {
           paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberDataProvider.jdField_b_of_type_Double;
-          if ((this.a.jdField_a_of_type_Double < 90.0D) && (this.a.jdField_b_of_type_Int > 0))
+          paramMessage.g += TroopMemberDataProvider.h;
+          if ((this.a.g < 90.0D) && (this.a.j > 0))
           {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack != null)
+            if (this.a.d != null)
             {
-              paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack;
-              i = (int)this.a.jdField_a_of_type_Double;
-              String str = HardCodeUtil.a(2131715392);
-              double d1 = this.a.jdField_b_of_type_Int;
-              double d2 = this.a.jdField_a_of_type_Double;
+              paramMessage = this.a.d;
+              i = (int)this.a.g;
+              String str = HardCodeUtil.a(2131912871);
+              double d1 = this.a.j;
+              double d2 = this.a.g;
               Double.isNaN(d1);
-              paramMessage.a(i, String.format(str, new Object[] { Integer.valueOf(Math.min((int)(d1 * d2 / 100.0D), this.a.jdField_b_of_type_Int)), Integer.valueOf(this.a.jdField_b_of_type_Int) }));
+              paramMessage.a(i, String.format(str, new Object[] { Integer.valueOf(Math.min((int)(d1 * d2 / 100.0D), this.a.j)), Integer.valueOf(this.a.j) }));
             }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3), 800L);
+            this.a.k.sendMessageDelayed(this.a.k.obtainMessage(3), 800L);
           }
         }
       }
       else
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack.d();
+        this.a.k.removeMessages(3);
+        if (this.a.d != null) {
+          this.a.d.e();
         }
         TroopMemberDataProvider.a(this.a);
       }
     }
-    else if (this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack.c();
+    else if (this.a.d != null) {
+      this.a.d.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.TroopMemberDataProvider.1
  * JD-Core Version:    0.7.0.1
  */

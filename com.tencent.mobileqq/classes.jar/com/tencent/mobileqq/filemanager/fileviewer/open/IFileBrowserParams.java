@@ -7,18 +7,11 @@ import com.tencent.mobileqq.data.ChatMessage;
 
 public abstract class IFileBrowserParams
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
-  
-  public abstract Intent a();
-  
-  public SessionInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
+  ChatMessage a = null;
+  SessionInfo b = null;
+  boolean c = false;
+  boolean d = false;
+  boolean e = true;
   
   public ChatMessage a()
   {
@@ -31,48 +24,55 @@ public abstract class IFileBrowserParams
   
   public void a(boolean paramBoolean) {}
   
-  public boolean a()
+  public SessionInfo b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public void b(Bundle paramBundle) {}
   
   public void b(boolean paramBoolean) {}
   
-  public boolean b()
+  public void c(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public boolean d()
   {
     return true;
   }
   
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
+  public abstract Intent i();
   
-  boolean c()
+  boolean j()
   {
     return false;
   }
   
-  boolean d()
+  boolean k()
   {
     return false;
   }
   
-  public boolean e()
+  public boolean l()
   {
-    return this.b;
+    return this.d;
   }
   
-  public boolean f()
+  public boolean m()
   {
-    return this.c;
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.open.IFileBrowserParams
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class QQNavigatorModule
     {
       paramHippyMap.finish();
       if (bool) {
-        paramHippyMap.overridePendingTransition(0, 2130772025);
+        paramHippyMap.overridePendingTransition(0, 2130772030);
       }
       localHippyMap.pushInt("retCode", 0);
     }
@@ -67,7 +67,7 @@ public class QQNavigatorModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQNavigatorModule
  * JD-Core Version:    0.7.0.1
  */

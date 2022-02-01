@@ -15,7 +15,7 @@ class ChirpSoHandler$2
     {
       Iterator localIterator = ChirpSoHandler.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((IChirpSoDownload.Callback)localIterator.next()).m();
+        ((IChirpSoDownload.Callback)localIterator.next()).o();
       }
       return;
     }
@@ -27,7 +27,7 @@ class ChirpSoHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.ChirpSoHandler.2
  * JD-Core Version:    0.7.0.1
  */

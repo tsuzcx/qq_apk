@@ -11,7 +11,7 @@ public final class enum_album_share_scence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     photo_share.enum_album_share_scence
  * JD-Core Version:    0.7.0.1
  */

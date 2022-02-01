@@ -21,9 +21,9 @@ import org.w3c.dom.NodeList;
 public class PaSubscribeRedDotBean
   implements IQStorageSafable<String>
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 0;
+  private int a = 0;
+  private String b = "";
+  private int c = 0;
   
   public static PaSubscribeRedDotBean a(int paramInt, String paramString, boolean paramBoolean)
   {
@@ -53,7 +53,7 @@ public class PaSubscribeRedDotBean
     int i = 0;
     while (i < paramArrayOfQConfItem.length)
     {
-      localPaSubscribeRedDotBean = a(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+      localPaSubscribeRedDotBean = a(paramArrayOfQConfItem[i].b);
       i += 1;
     }
     return localPaSubscribeRedDotBean;
@@ -66,7 +66,7 @@ public class PaSubscribeRedDotBean
     {
       localObject = (QQAppInterface)localObject;
       int i = SubscriptRecommendController.a((QQAppInterface)localObject);
-      int j = this.jdField_a_of_type_Int;
+      int j = this.a;
       if (j == i)
       {
         if (QLog.isColorLevel()) {
@@ -75,7 +75,7 @@ public class PaSubscribeRedDotBean
         return;
       }
       SubscriptRecommendController.a((QQAppInterface)localObject, j);
-      SubscriptRecommendController.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
+      SubscriptRecommendController.a((QQAppInterface)localObject, this.c, this.b);
       localObject = (IWebProcessManagerService)((QQAppInterface)localObject).getRuntimeService(IWebProcessManagerService.class, "");
       if (localObject != null) {
         ((IWebProcessManagerService)localObject).startWebProcess(-1, null);
@@ -83,7 +83,7 @@ public class PaSubscribeRedDotBean
     }
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
     Object localObject1;
     if (QLog.isColorLevel())
@@ -104,13 +104,13 @@ public class PaSubscribeRedDotBean
         if ((localObject2 instanceof QQAppInterface))
         {
           localObject2 = (QQAppInterface)localObject2;
-          this.jdField_a_of_type_Int = Integer.parseInt(((NodeList)localObject1).item(0).getFirstChild().getNodeValue());
+          this.a = Integer.parseInt(((NodeList)localObject1).item(0).getFirstChild().getNodeValue());
           paramString = paramString.getElementsByTagName("public-account-folder");
           if (paramString.getLength() > 0)
           {
             paramString = (Element)paramString.item(0);
-            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
+            this.c = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
+            this.b = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
           }
         }
       }
@@ -131,7 +131,7 @@ public class PaSubscribeRedDotBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PaSubscribeRedDotBean
  * JD-Core Version:    0.7.0.1
  */

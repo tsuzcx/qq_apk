@@ -22,7 +22,7 @@ class p$4
       } else if (TbsShareManager.isThirdPartyApp(this.b))
       {
         if ((TbsShareManager.c(this.b) != null) && (TbsShareManager.c(this.b).contains("decouple"))) {
-          localObject1 = this.c.p(this.a);
+          localObject1 = this.c.q(this.a);
         } else {
           localObject1 = this.c;
         }
@@ -30,12 +30,12 @@ class p$4
       else {
         for (localObject2 = this.a;; localObject2 = this.a)
         {
-          localObject1 = ((p)localObject1).q((Context)localObject2);
+          localObject1 = ((p)localObject1).r((Context)localObject2);
           break;
           localObject1 = this.c;
         }
       }
-      Object localObject2 = this.c.q(this.b);
+      Object localObject2 = this.c.r(this.b);
       int i = Build.VERSION.SDK_INT;
       if ((i != 19) && (i < 21)) {
         FileUtil.a((File)localObject1, (File)localObject2, new p.4.1(this));
@@ -52,7 +52,7 @@ class p$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.p.4
  * JD-Core Version:    0.7.0.1
  */

@@ -27,44 +27,44 @@ class QQIdentiferLegacy$7
       {
         if (i != 15)
         {
-          QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+          QQIdentiferLegacy.e(this.c).set(false);
         }
         else
         {
-          QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-          QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
+          QQIdentiferLegacy.e(this.c).set(false);
+          QQIdentiferLegacy.a(this.c, true);
         }
       }
       else
       {
-        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+        QQIdentiferLegacy.e(this.c).set(false);
         if (paramEIPCResult.data != null)
         {
           paramEIPCResult = (AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
-          QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).setAppConf(paramEIPCResult);
-          QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
+          QQIdentiferLegacy.c(this.c).setAppConf(paramEIPCResult);
+          QQIdentiferLegacy.g(this.c);
         }
-        QLog.d("QQIdentiferLegacy", 1, new Object[] { "callServer ACTION_APP_CONF success conf :", QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).getAppConf() });
+        QLog.d("QQIdentiferLegacy", 1, new Object[] { "callServer ACTION_APP_CONF success conf :", QQIdentiferLegacy.c(this.c).getAppConf() });
       }
     }
     else {
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      QQIdentiferLegacy.e(this.c).set(false);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      QQIdentiferLegacy.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
+      QQIdentiferLegacy.h(this.c);
     }
-    else if ("identify".equals(this.jdField_a_of_type_JavaLangString))
+    else if ("identify".equals(this.b))
     {
-      QQIdentiferUtil.a(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).getAppConf(), "0X800B2BE");
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeCallbacks(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
+      QQIdentiferUtil.a(QQIdentiferLegacy.c(this.c).getAppConf(), "0X800B2BE");
+      this.c.d.removeCallbacks(QQIdentiferLegacy.i(this.c));
     }
-    QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
+    QQIdentiferLegacy.b(this.c, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.7
  * JD-Core Version:    0.7.0.1
  */

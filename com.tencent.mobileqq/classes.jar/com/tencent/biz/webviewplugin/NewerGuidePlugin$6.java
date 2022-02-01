@@ -13,33 +13,33 @@ class NewerGuidePlugin$6
   public void onConfirmBtClicked()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
+      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.d(this.b)) }));
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    Object localObject = this.a;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
     }
     localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("result", 1);
-      ((JSONObject)localObject).put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+      ((JSONObject)localObject).put("index", NewerGuidePlugin.d(this.b));
     }
     catch (Exception localException)
     {
       QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { ((JSONObject)localObject).toString() });
+    this.b.callJs("respSelector", new String[] { ((JSONObject)localObject).toString() });
   }
   
   public void onItemSelected(int paramInt1, int paramInt2)
   {
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    NewerGuidePlugin.a(this.b, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.6
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.view.widget;
 public abstract class LoadingMoreHelper$OnLoadMoreSimpleListener
   implements LoadingMoreHelper.OnLoadMoreListener
 {
-  public void a() {}
+  public void bx_() {}
 }
 
 

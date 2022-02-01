@@ -10,10 +10,10 @@ public class HScrollView
   extends HorizontalScrollView
   implements Runnable
 {
-  private int jdField_a_of_type_Int = -9999999;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private HScrollView.ScrollViewListener jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener;
-  private int b = 1;
+  private Handler a = new Handler();
+  private HScrollView.ScrollViewListener b;
+  private int c = -9999999;
+  private int d = 1;
   
   public HScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,46 +27,46 @@ public class HScrollView
     {
       if (i == 2)
       {
-        this.b = 2;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener.a(this.b);
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
+        this.d = 2;
+        this.b.a(this.d);
+        this.a.removeCallbacks(this);
       }
     }
     else {
-      this.jdField_a_of_type_AndroidOsHandler.post(this);
+      this.a.post(this);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void run()
   {
-    if (getScrollX() == this.jdField_a_of_type_Int)
+    if (getScrollX() == this.c)
     {
-      this.b = 1;
-      localScrollViewListener = this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener;
+      this.d = 1;
+      localScrollViewListener = this.b;
       if (localScrollViewListener != null) {
-        localScrollViewListener.a(this.b);
+        localScrollViewListener.a(this.d);
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
+      this.a.removeCallbacks(this);
       return;
     }
-    this.b = 3;
-    HScrollView.ScrollViewListener localScrollViewListener = this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener;
+    this.d = 3;
+    HScrollView.ScrollViewListener localScrollViewListener = this.b;
     if (localScrollViewListener != null) {
-      localScrollViewListener.a(this.b);
+      localScrollViewListener.a(this.d);
     }
-    this.jdField_a_of_type_Int = getScrollX();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    this.c = getScrollX();
+    this.a.postDelayed(this, 50L);
   }
   
   public void setOnScrollListener(HScrollView.ScrollViewListener paramScrollViewListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView$ScrollViewListener = paramScrollViewListener;
+    this.b = paramScrollViewListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.HScrollView
  * JD-Core Version:    0.7.0.1
  */

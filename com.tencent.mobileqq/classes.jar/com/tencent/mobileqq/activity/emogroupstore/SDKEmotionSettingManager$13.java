@@ -13,20 +13,20 @@ class SDKEmotionSettingManager$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, true);
-    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).a(1);
-    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
+    SDKEmotionSettingManager.a(this.c, true);
+    SDKEmotionSettingManager.k(this.c).a(1);
+    SDKEmotionSettingManager.a(this.c, this.a.size(), 0.0F);
     if (NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).b(paramInt);
+      paramInt = (int)(90.0F / this.b);
+      SDKEmotionSettingManager.k(this.c).b(paramInt);
     }
-    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, this.jdField_a_of_type_JavaUtilArrayList);
+    SDKEmotionSettingManager.a(this.c, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.13
  * JD-Core Version:    0.7.0.1
  */

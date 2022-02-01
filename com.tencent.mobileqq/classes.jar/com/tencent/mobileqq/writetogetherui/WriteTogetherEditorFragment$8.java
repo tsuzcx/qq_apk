@@ -9,17 +9,17 @@ class WriteTogetherEditorFragment$8
   
   public void a(String paramString)
   {
-    if ((paramString != null) && (paramString.length() != 0) && (WriteTogetherEditorFragment.a(this.a)) && (!WriteTogetherEditorFragment.b(this.a)))
+    if ((paramString != null) && (paramString.length() != 0) && (WriteTogetherEditorFragment.i(this.a)) && (!WriteTogetherEditorFragment.j(this.a)))
     {
-      this.a.i_(true);
+      this.a.n_(true);
       return;
     }
-    this.a.i_(false);
+    this.a.n_(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.8
  * JD-Core Version:    0.7.0.1
  */

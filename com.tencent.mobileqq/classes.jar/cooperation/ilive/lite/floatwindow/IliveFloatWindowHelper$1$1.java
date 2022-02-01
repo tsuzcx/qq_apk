@@ -14,14 +14,14 @@ class IliveFloatWindowHelper$1$1
     localStringBuilder.append("permissionFinish isAuth = ");
     localStringBuilder.append(paramBoolean);
     QLog.e("IliveFloatWindowHelper", 1, localStringBuilder.toString());
-    if (this.a.a != null) {
-      this.a.a.onFinish(paramBoolean);
+    if (this.a.b != null) {
+      this.a.b.onFinish(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.floatwindow.IliveFloatWindowHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

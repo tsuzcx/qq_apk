@@ -73,7 +73,23 @@ public class BaseAIOUtils
     return paramActivityURIRequest;
   }
   
-  public static void a(View paramView)
+  public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (paramView == null) {
+      return;
+    }
+    ((View)paramView.getParent()).post(new BaseAIOUtils.1(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
+  }
+  
+  public static final int b(float paramFloat, Resources paramResources)
+  {
+    if (paramFloat == 0.0F) {
+      return 0;
+    }
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
+  }
+  
+  public static void c(View paramView)
   {
     if (paramView == null)
     {
@@ -158,26 +174,10 @@ public class BaseAIOUtils
       QLog.d("Q.aio.XPanelContainer", 2, paramView.toString());
     }
   }
-  
-  public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (paramView == null) {
-      return;
-    }
-    ((View)paramView.getParent()).post(new BaseAIOUtils.1(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
-  }
-  
-  public static final int b(float paramFloat, Resources paramResources)
-  {
-    if (paramFloat == 0.0F) {
-      return 0;
-    }
-    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseAIOUtils
  * JD-Core Version:    0.7.0.1
  */

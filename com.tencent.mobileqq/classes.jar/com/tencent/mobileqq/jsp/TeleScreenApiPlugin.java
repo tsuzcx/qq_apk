@@ -26,9 +26,9 @@ public class TeleScreenApiPlugin
   extends WebViewPlugin
   implements IPreCreatePluginChecker
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Activity a;
   @Nullable
-  private ArraySet<Integer> jdField_a_of_type_AndroidSupportV4UtilArraySet;
+  private ArraySet<Integer> b;
   
   public TeleScreenApiPlugin()
   {
@@ -37,7 +37,7 @@ public class TeleScreenApiPlugin
   
   private Activity a()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
@@ -54,10 +54,10 @@ public class TeleScreenApiPlugin
       {
         TeleScreenApiPlugin.1 local1 = new TeleScreenApiPlugin.1(this, (String)localObject);
         i = TeleScreen.a().a(local1);
-        if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {
-          this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
+        if (this.b == null) {
+          this.b = new ArraySet();
         }
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Integer.valueOf(i));
+        this.b.add(Integer.valueOf(i));
       }
       else
       {
@@ -71,18 +71,18 @@ public class TeleScreenApiPlugin
       String str2;
       int i;
       label172:
-      QLog.e(this.TAG, 1, paramString, new Object[0]);
+      QLog.e(this.mTAG, 1, paramString, new Object[0]);
     }
     try
     {
       if (!TextUtils.isEmpty(str1))
       {
-        Utils.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
+        Utils.a(this.a, str1, paramString, i);
         return;
       }
       if (!TextUtils.isEmpty(str2))
       {
-        PackageUtil.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
+        PackageUtil.a(this.a, str2, null, paramString, i);
         return;
       }
       if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -113,16 +113,16 @@ public class TeleScreenApiPlugin
     if ((paramLong == 8L) && (paramString != null)) {
       try
       {
-        if (((TeleScreenConfig.Config)QConfigManager.a().a(416)).a(paramString))
+        if (((TeleScreenConfig.Config)QConfigManager.b().b(416)).a(paramString))
         {
-          QLog.d(this.TAG, 1, "doInterceptRequest");
+          QLog.d(this.mTAG, 1, "doInterceptRequest");
           WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
           return localWebResourceResponse;
         }
       }
       catch (Throwable localThrowable)
       {
-        QLog.e(this.TAG, 1, localThrowable, new Object[0]);
+        QLog.e(this.mTAG, 1, localThrowable, new Object[0]);
         return super.handleEvent(paramString, paramLong);
       }
     }
@@ -150,12 +150,12 @@ public class TeleScreenApiPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = a();
+    this.a = a();
   }
   
   protected void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilArraySet;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((ArraySet)localObject).iterator();
@@ -164,14 +164,14 @@ public class TeleScreenApiPlugin
         int i = ((Integer)((Iterator)localObject).next()).intValue();
         TeleScreen.a().a(i);
       }
-      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+      this.b.clear();
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TeleScreenApiPlugin
  * JD-Core Version:    0.7.0.1
  */

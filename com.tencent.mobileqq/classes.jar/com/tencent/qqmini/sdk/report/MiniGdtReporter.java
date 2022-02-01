@@ -109,7 +109,7 @@ public class MiniGdtReporter
       localObject2 = ((String)localObject2).replace("__PAGE_ACTION_ID__", Integer.toString(52)).replace("__LANDING_ERROR_CODE__", Integer.toString(paramInt));
       label390:
       paramMiniAppInfo = (MiniAppInfo)localObject2;
-      localObject2 = ((String)localObject2).replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.15.0", "utf-8"));
+      localObject2 = ((String)localObject2).replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.19.0", "utf-8"));
       paramInt = i;
       paramMiniAppInfo = (MiniAppInfo)localObject2;
     }
@@ -137,7 +137,7 @@ public class MiniGdtReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniGdtReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,24 +13,24 @@ class QQStoryCommentItemBuilder$OnCommentTouchListener$1
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.a()) {
+    if (this.a.d.c()) {
       return false;
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (BaseActivity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext);
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    ChatActivityUtils.a(this.a.d.d, this.a.b, (BaseActivity)this.a.d.e);
     return true;
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    if (this.a.a != null) {
+      this.a.a.onLongClick(this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder.OnCommentTouchListener.1
  * JD-Core Version:    0.7.0.1
  */

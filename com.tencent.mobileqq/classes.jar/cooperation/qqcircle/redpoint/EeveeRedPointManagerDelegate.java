@@ -3,7 +3,6 @@ package cooperation.qqcircle.redpoint;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -16,18 +15,18 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcircle.api.data.ReportExtraInfo;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleRedPointEvent;
 import com.tencent.mobileqq.qcircle.api.utils.EeveeRedpointUtil;
+import com.tencent.mobileqq.qcircle.api.utils.QCircleHostUtil;
 import com.tencent.mobileqq.qcircle.tempapi.interfaces.OnGetQQCircleNumRedMsgListener;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.eevee.QCircleEeveeMananger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import qqcircle.QQCircleCounter.AllPushPointInfo;
 import qqcircle.QQCircleCounter.OutLayerPointInfo;
-import qqcircle.QQCircleCounter.PymkRedPointInfo;
-import qqcircle.QQCircleCounter.RedDisplayInfo;
 import qqcircle.QQCircleCounter.RedPointInfo;
+import qqcircle.QQCircleCounter.RedPointJumpInfo;
 
 public class EeveeRedPointManagerDelegate
   implements SimpleEventReceiver, BaseRedPoinManagerDelegate
@@ -65,14 +64,13 @@ public class EeveeRedPointManagerDelegate
       try
       {
         ??? = QCircleEeveeMananger.getInstance().getBizUndealMsgBuffer(102);
-        int i = RFLog.USR;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("loadLocalNumRedPointInfoFromDataBase ");
         if (??? != null)
         {
           bool = true;
           ((StringBuilder)localObject2).append(bool);
-          RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)localObject2).toString());
+          QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject2).toString());
           if (??? == null) {
             return;
           }
@@ -88,7 +86,7 @@ public class EeveeRedPointManagerDelegate
       }
       catch (Throwable localThrowable)
       {
-        RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, new Object[] { "loadLocalNumRedPointInfoFromDataBase error! ", localThrowable });
+        QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "loadLocalNumRedPointInfoFromDataBase error! ", localThrowable);
         return;
       }
     }
@@ -101,14 +99,13 @@ public class EeveeRedPointManagerDelegate
       try
       {
         ??? = QCircleEeveeMananger.getInstance().getBizUndealMsgBuffer(106);
-        int i = RFLog.USR;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("loadLocalNumRedPointInfoFromDataBase ");
         if (??? != null)
         {
           bool = true;
           ((StringBuilder)localObject2).append(bool);
-          RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)localObject2).toString());
+          QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject2).toString());
           if (??? == null) {
             return;
           }
@@ -124,7 +121,7 @@ public class EeveeRedPointManagerDelegate
       }
       catch (Throwable localThrowable)
       {
-        RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, new Object[] { "loadLocalNumRedPointInfoFromDataBase error! ", localThrowable });
+        QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "loadLocalNumRedPointInfoFromDataBase error! ", localThrowable);
         return;
       }
     }
@@ -133,7 +130,6 @@ public class EeveeRedPointManagerDelegate
   private void loadLocalSmallRedPointFromDataBase()
   {
     ??? = QCircleEeveeMananger.getInstance().getBizUndealMsgBuffer(101);
-    int i = RFLog.USR;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("loadLocalSmallRedPointFromDataBase ");
     boolean bool;
@@ -143,7 +139,7 @@ public class EeveeRedPointManagerDelegate
       bool = false;
     }
     ((StringBuilder)localObject2).append(bool);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)localObject2).toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject2).toString());
     if (??? == null) {
       return;
     }
@@ -160,17 +156,16 @@ public class EeveeRedPointManagerDelegate
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, new Object[] { "loadLocalSmallRedPointFromDataBase error! ", localInvalidProtocolBufferMicroException });
+      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "loadLocalSmallRedPointFromDataBase error! ", localInvalidProtocolBufferMicroException);
     }
   }
   
   private void saveRedPointToDataBase(int paramInt, QQCircleCounter.RedPointInfo paramRedPointInfo)
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("saveRedPointToDataBase redPointMainMsgType: ");
     localStringBuilder.append(paramInt);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, localStringBuilder.toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, localStringBuilder.toString());
     if (paramRedPointInfo != null) {
       try
       {
@@ -179,7 +174,7 @@ public class EeveeRedPointManagerDelegate
       }
       catch (Throwable paramRedPointInfo)
       {
-        RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, new Object[] { "saveRedPointToDataBase error! ", paramRedPointInfo });
+        QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "saveRedPointToDataBase error! ", paramRedPointInfo);
       }
     }
   }
@@ -189,38 +184,40 @@ public class EeveeRedPointManagerDelegate
     if (paramOnGetQQCircleNumRedMsgListener == null) {
       return;
     }
-    Object localObject = getNumRedPointInfotByAppid(paramString);
+    Object localObject3 = getNumRedPointInfotByAppid(paramString);
     int i = 0;
-    paramBoolean = EeveeRedpointUtil.isValidRedPointInfo(paramString, (QQCircleCounter.RedPointInfo)localObject);
-    Iterator localIterator = null;
-    if (!paramBoolean)
+    Object localObject2 = new ArrayList();
+    Object localObject1 = localObject3;
+    if (!EeveeRedpointUtil.isValidRedPointInfo(paramString, (QQCircleCounter.RedPointInfo)localObject3))
     {
-      RFLog.d("QCircleEeveeRedPointManagerDelegate", RFLog.USR, "asyncGetNumRedPointInfoByAppid invalid red point info! ignore it.");
-      localObject = null;
+      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "asyncGetNumRedPointInfoByAppid invalid red point info! ignore it.");
+      localObject1 = null;
     }
-    paramString = localIterator;
-    if (localObject != null)
+    paramString = "";
+    if (localObject1 != null)
     {
-      int j = ((QQCircleCounter.RedPointInfo)localObject).redTotalNum.get();
-      List localList = ((QQCircleCounter.RedPointInfo)localObject).rptRedInfo.get();
-      i = j;
-      paramString = localIterator;
-      if (localList != null)
-      {
-        localObject = new ArrayList();
-        localIterator = localList.iterator();
-        for (;;)
-        {
-          i = j;
-          paramString = (String)localObject;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          ((List)localObject).add(((QQCircleCounter.RedDisplayInfo)localIterator.next()).headImg.get());
-        }
-      }
+      i = ((QQCircleCounter.RedPointInfo)localObject1).redTotalNum.get();
+      localObject2 = ((QQCircleCounter.RedPointInfo)localObject1).wording.get();
+      paramString = ((QQCircleCounter.RedPointInfo)localObject1).redJumpInfo.jumpLink.get();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("redTotalNum=");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append("word=");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append("&jumpLink=");
+      ((StringBuilder)localObject3).append(paramString);
+      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject3).toString());
+      localObject3 = QCircleHostUtil.convertRedDisplayInfoToString(((QQCircleCounter.RedPointInfo)localObject1).rptRedInfo.get());
+      localObject1 = localObject2;
+      localObject2 = localObject3;
     }
-    paramOnGetQQCircleNumRedMsgListener.onGet(paramString, i);
+    else
+    {
+      localObject3 = "";
+      localObject1 = paramString;
+      paramString = (String)localObject3;
+    }
+    paramOnGetQQCircleNumRedMsgListener.onGet((List)localObject2, i, (String)localObject1, paramString);
   }
   
   public void clearPedPoint()
@@ -228,8 +225,8 @@ public class EeveeRedPointManagerDelegate
     this.mCacheNumRedPointInfo = new QQCircleCounter.RedPointInfo();
     this.mCacheSmallRedPointInfo = new QQCircleCounter.RedPointInfo();
     this.mCacheOuterEntranceRedPointInfo = new QQCircleCounter.RedPointInfo();
-    if (QCircleHandler.a() != null) {
-      QCircleHandler.a().b();
+    if (QCircleHandler.d() != null) {
+      QCircleHandler.d().b();
     }
   }
   
@@ -325,22 +322,20 @@ public class EeveeRedPointManagerDelegate
   
   public void onNumRedPointClick(String paramString, ReportExtraInfo paramReportExtraInfo)
   {
-    int i = RFLog.USR;
     paramReportExtraInfo = new StringBuilder();
     paramReportExtraInfo.append("onNumRedPointClick appid: ");
     paramReportExtraInfo.append(paramString);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, paramReportExtraInfo.toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, paramReportExtraInfo.toString());
   }
   
   public void onNumRedPointExposure(String paramString, ReportExtraInfo paramReportExtraInfo) {}
   
   public void onOuterEntranceRedPointClick(String paramString, ReportExtraInfo paramReportExtraInfo)
   {
-    int i = RFLog.USR;
     paramReportExtraInfo = new StringBuilder();
     paramReportExtraInfo.append("setOuterEntranceRedPointReaded appid: ");
     paramReportExtraInfo.append(paramString);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, paramReportExtraInfo.toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, paramReportExtraInfo.toString());
   }
   
   public void onOuterEntranceRedPointExposure(String paramString, ReportExtraInfo paramReportExtraInfo) {}
@@ -355,13 +350,13 @@ public class EeveeRedPointManagerDelegate
       if (??? == null) {
         paramSimpleBaseEvent = new QQCircleCounter.RedPointInfo();
       }
-      int i = RFLog.USR;
       ??? = new StringBuilder();
       ((StringBuilder)???).append("on receive repoint. redPointMainMsgType: ");
       ((StringBuilder)???).append(localQCircleRedPointEvent.mRedPointMainMsgType);
-      RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)???).toString());
+      ??? = ((StringBuilder)???).toString();
+      int i = 1;
+      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, (String)???);
       int j = localQCircleRedPointEvent.mRedPointMainMsgType;
-      i = 1;
       if (j != 101)
       {
         if (j != 102)
@@ -385,9 +380,9 @@ public class EeveeRedPointManagerDelegate
       {
         this.mCacheSmallRedPointInfo = paramSimpleBaseEvent;
         label180:
-        if ((i != 0) && (QCircleHandler.a() != null))
+        if ((i != 0) && (QCircleHandler.d() != null))
         {
-          QCircleHandler.a().b();
+          QCircleHandler.d().b();
           return;
         }
       }
@@ -396,29 +391,27 @@ public class EeveeRedPointManagerDelegate
   
   public void onSmallRedPointClick(String paramString, ReportExtraInfo paramReportExtraInfo)
   {
-    int i = RFLog.USR;
     paramReportExtraInfo = new StringBuilder();
     paramReportExtraInfo.append("onSmallRedPointClick appid: ");
     paramReportExtraInfo.append(paramString);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, paramReportExtraInfo.toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, paramReportExtraInfo.toString());
   }
   
   public void onSmallRedPointExposure(String paramString, ReportExtraInfo paramReportExtraInfo) {}
   
   public void setNumRedPointReaded(String arg1)
   {
-    int i = RFLog.USR;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("setNumRedPointReaded appid: ");
     ((StringBuilder)localObject1).append(???);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)localObject1).toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject1).toString());
     if (TextUtils.isEmpty(???)) {
       return;
     }
     localObject1 = getLocalNumRedPointInfo();
     if (localObject1 == null)
     {
-      RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, "setNumRedPointReaded return. redPointInfo is null");
+      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "setNumRedPointReaded return. redPointInfo is null");
       return;
     }
     EeveeRedpointUtil.saveLastReadedNumRedPointTimestamp(((QQCircleCounter.RedPointInfo)localObject1).lastVisitTime.get());
@@ -432,11 +425,10 @@ public class EeveeRedPointManagerDelegate
   
   public void setOuterEntranceRedPointReaded(String arg1, List<Integer> paramList)
   {
-    int i = RFLog.USR;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setOuterEntranceRedPointReaded appid: ");
     ((StringBuilder)localObject).append(???);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)localObject).toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject).toString());
     if (TextUtils.isEmpty(???)) {
       return;
     }
@@ -445,7 +437,7 @@ public class EeveeRedPointManagerDelegate
       localObject = getLocalOuterEntranceRedPointInfo();
       if (localObject == null)
       {
-        RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, "setOuterEntranceRedPointReaded return. redPointInfo is null");
+        QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "setOuterEntranceRedPointReaded return. redPointInfo is null");
         return;
       }
       long l = ((QQCircleCounter.RedPointInfo)localObject).outLayerInfo.combineRedTypes.get();
@@ -456,56 +448,52 @@ public class EeveeRedPointManagerDelegate
         {
           Integer localInteger = (Integer)paramList.next();
           l &= (1 << localInteger.intValue() ^ 0xFFFFFFFF);
-          i = localInteger.intValue();
+          int i = localInteger.intValue();
           if (i != 1)
           {
             if (i != 2)
             {
-              if (i != 3)
-              {
-                if (i == 6) {
-                  ((QQCircleCounter.RedPointInfo)localObject).pymkRedInfo.wording.clear();
-                }
-              }
-              else {
-                ((QQCircleCounter.RedPointInfo)localObject).allPushInfo.wording.clear();
+              if ((i == 3) || (i == 6)) {
+                ((QQCircleCounter.RedPointInfo)localObject).wording.clear();
               }
             }
-            else {
+            else
+            {
               ((QQCircleCounter.RedPointInfo)localObject).redTotalNum.clear();
+              ((QQCircleCounter.RedPointInfo)localObject).wording.clear();
             }
           }
-          else {
+          else
+          {
             ((QQCircleCounter.RedPointInfo)localObject).rptRedInfo.clear();
+            ((QQCircleCounter.RedPointInfo)localObject).wording.clear();
           }
         }
         ((QQCircleCounter.RedPointInfo)localObject).outLayerInfo.combineRedTypes.set(l);
-        i = RFLog.USR;
         paramList = new StringBuilder();
         paramList.append("[setOuterEntranceRedPointReaded] combineRedTypes: ");
         paramList.append(l);
-        RFLog.d("QCircleEeveeRedPointManagerDelegate", i, paramList.toString());
+        QLog.d("QCircleEeveeRedPointManagerDelegate", 1, paramList.toString());
         asyncSaveRedPointInfoToDataBase(106, (QQCircleCounter.RedPointInfo)localObject);
         return;
       }
     }
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", RFLog.USR, "[setOuterEntranceRedPointReaded] clearRedTypeList is empty!");
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "[setOuterEntranceRedPointReaded] clearRedTypeList is empty!");
   }
   
   public void setSmallRedPointReaded(String arg1)
   {
-    int i = RFLog.USR;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("setSmallRedPointReaded appid: ");
     ((StringBuilder)localObject1).append(???);
-    RFLog.d("QCircleEeveeRedPointManagerDelegate", i, ((StringBuilder)localObject1).toString());
+    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, ((StringBuilder)localObject1).toString());
     if (TextUtils.isEmpty(???)) {
       return;
     }
     localObject1 = getLocalSmallRedPointInfo();
     if (localObject1 == null)
     {
-      RFLog.e("QCircleEeveeRedPointManagerDelegate", RFLog.USR, "setSmallRedPointReaded return. redPointInfo is null");
+      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "setSmallRedPointReaded return. redPointInfo is null");
       return;
     }
     EeveeRedpointUtil.saveLastReadedSmallRedPointTimestamp(((QQCircleCounter.RedPointInfo)localObject1).lastVisitTime.get());
@@ -519,7 +507,7 @@ public class EeveeRedPointManagerDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.redpoint.EeveeRedPointManagerDelegate
  * JD-Core Version:    0.7.0.1
  */

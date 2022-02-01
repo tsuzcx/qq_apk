@@ -19,7 +19,7 @@ class TeamWorkFileImportHandlerImpl$2
   {
     if (TeamWorkFileImportHandlerImpl.access$000(this.this$0) != null)
     {
-      if (TextUtils.isEmpty(this.a.c)) {
+      if (TextUtils.isEmpty(this.a.d)) {
         return;
       }
       Object localObject = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).uploadFile(this.a, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin());
@@ -36,7 +36,7 @@ class TeamWorkFileImportHandlerImpl$2
       }
       else
       {
-        TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "local file dataLine parse no result string", this.a.k);
+        TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "local file dataLine parse no result string", this.a.A);
       }
       if ((i == 0) && (TeamWorkFileImportHandlerImpl.access$100(this.this$0) != null))
       {
@@ -49,7 +49,7 @@ class TeamWorkFileImportHandlerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.2
  * JD-Core Version:    0.7.0.1
  */

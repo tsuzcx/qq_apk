@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.comment.danmaku.view;
 
+import com.tencent.common.danmaku.data.ViewDanmaku;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.danmaku.data.ViewDanmaku;
 import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,7 +17,7 @@ class CommentDanmakuRender$2
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadCanceled : ");
-      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable.append(this.c);
       QLog.d("CommentDanmakuRender", 2, paramURLDrawable.toString());
     }
   }
@@ -28,7 +28,7 @@ class CommentDanmakuRender$2
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadFailed : ");
-      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable.append(this.c);
       QLog.d("CommentDanmakuRender", 2, paramURLDrawable.toString());
     }
   }
@@ -39,14 +39,14 @@ class CommentDanmakuRender$2
   {
     if (paramURLDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuDataViewDanmaku.c(true);
+      this.a.setImageDrawable(paramURLDrawable);
+      this.b.c(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.view.CommentDanmakuRender.2
  * JD-Core Version:    0.7.0.1
  */

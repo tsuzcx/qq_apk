@@ -149,19 +149,19 @@ public class OCRServiceImpl
     OCRTextSearchInfo.SearchResult localSearchResult = new OCRTextSearchInfo.SearchResult();
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      localSearchResult.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localSearchResult.a = new ArrayList();
       OCRTextSearchInfo.Group localGroup = new OCRTextSearchInfo.Group();
-      localGroup.jdField_a_of_type_Int = 2049;
-      localGroup.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131707818);
+      localGroup.b = 2049;
+      localGroup.a = HardCodeUtil.a(2131905632);
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = (OCRTextSearchInfo.SougouSearchInfo)paramList.next();
         OCRTextSearchInfo.ResultItem localResultItem = new OCRTextSearchInfo.ResultItem();
         localResultItem.a = localSougouSearchInfo;
-        localGroup.jdField_a_of_type_JavaUtilList.add(localResultItem);
+        localGroup.e.add(localResultItem);
       }
-      localSearchResult.jdField_a_of_type_JavaUtilList.add(localGroup);
+      localSearchResult.a.add(localGroup);
     }
     return localSearchResult;
   }
@@ -174,7 +174,7 @@ public class OCRServiceImpl
       if (paramString2 == null) {
         return;
       }
-      ((OCRHandler)paramString2.getBusinessHandler(OCRHandler.jdField_a_of_type_JavaLangString)).notifyUI(3, false, new Object[] { Integer.valueOf(-2), paramString1, null });
+      ((OCRHandler)paramString2.getBusinessHandler(OCRHandler.a)).notifyUI(3, false, new Object[] { Integer.valueOf(-2), paramString1, null });
       return;
     }
     if (!TextUtils.isEmpty(paramString2))
@@ -188,7 +188,7 @@ public class OCRServiceImpl
       }
       paramString2 = this.mApp;
       if (paramString2 != null) {
-        ((OCRHandler)paramString2.getBusinessHandler(OCRHandler.jdField_a_of_type_JavaLangString)).a(paramString1, str, paramLong);
+        ((OCRHandler)paramString2.getBusinessHandler(OCRHandler.a)).a(paramString1, str, paramLong);
       }
     }
   }
@@ -305,7 +305,7 @@ public class OCRServiceImpl
       bool1 = false;
     }
     boolean bool2;
-    if (OcrDpc.a().jdField_a_of_type_Int == 1) {
+    if (OcrDpc.b().c == 1) {
       bool2 = true;
     } else {
       bool2 = false;
@@ -322,7 +322,7 @@ public class OCRServiceImpl
       ((StringBuilder)localObject).append(",dpcSwitch:");
       ((StringBuilder)localObject).append(bool2);
       ((StringBuilder)localObject).append(",sdcard:");
-      ((StringBuilder)localObject).append(OcrImageUtil.a);
+      ((StringBuilder)localObject).append(OcrImageUtil.d);
       QLog.d("Q.ocr", 2, ((StringBuilder)localObject).toString());
     }
     boolean bool3 = bool4;
@@ -332,7 +332,7 @@ public class OCRServiceImpl
       if (bool2)
       {
         bool3 = bool4;
-        if (OcrImageUtil.a) {
+        if (OcrImageUtil.d) {
           bool3 = true;
         }
       }
@@ -428,7 +428,7 @@ public class OCRServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.OCRServiceImpl
  * JD-Core Version:    0.7.0.1
  */

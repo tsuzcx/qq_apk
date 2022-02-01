@@ -12,9 +12,9 @@ class ARCloudControl$9
   {
     paramArrayOfString = new ARCloudLBSLocationCheckResult();
     paramArrayOfString.a = 2;
-    ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramArrayOfString);
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).a(0, ARCloudControl.a(this.a));
+    ARCloudRecogResult.a(this.a.n.recognitions, ARCloudControl.h(this.a), paramArrayOfString);
+    if (ARCloudControl.b(this.a) != null) {
+      ARCloudControl.b(this.a).a(0, ARCloudControl.h(this.a));
     }
     ARCloudControl.a(this.a, null);
   }
@@ -26,7 +26,7 @@ class ARCloudControl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.9
  * JD-Core Version:    0.7.0.1
  */

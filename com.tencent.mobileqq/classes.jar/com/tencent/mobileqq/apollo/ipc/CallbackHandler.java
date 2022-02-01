@@ -15,24 +15,24 @@ import org.jetbrains.annotations.Nullable;
 public final class CallbackHandler<T>
   implements InvocationHandler
 {
-  private final int jdField_a_of_type_Int;
-  private final TypeToken jdField_a_of_type_ComTencentMobileqqApolloIpcTypeToken;
-  private final EIPCModule jdField_a_of_type_EipcEIPCModule;
-  private final Class<T> jdField_a_of_type_JavaLangClass;
+  private final TypeToken a;
+  private final Class<T> b;
+  private final EIPCModule c;
+  private final int d;
   
   public CallbackHandler(@NotNull Class<T> paramClass, @NotNull EIPCModule paramEIPCModule, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_EipcEIPCModule = paramEIPCModule;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqApolloIpcTypeToken = TypeToken.a.a(this.jdField_a_of_type_JavaLangClass);
+    this.b = paramClass;
+    this.c = paramEIPCModule;
+    this.d = paramInt;
+    this.a = TypeToken.a.a(this.b);
   }
   
   private final void a(Bundle paramBundle)
   {
     EIPCResult localEIPCResult = new EIPCResult();
     localEIPCResult.data = paramBundle;
-    this.jdField_a_of_type_EipcEIPCModule.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    this.c.callbackResult(this.d, localEIPCResult);
   }
   
   @Nullable
@@ -41,14 +41,14 @@ public final class CallbackHandler<T>
     Intrinsics.checkParameterIsNotNull(paramObject, "proxy");
     Intrinsics.checkParameterIsNotNull(paramMethod, "method");
     Intrinsics.checkParameterIsNotNull(paramArrayOfObject, "args");
-    paramObject = (MethodToken)this.jdField_a_of_type_ComTencentMobileqqApolloIpcTypeToken.a().get(paramMethod);
+    paramObject = (MethodToken)this.a.b().get(paramMethod);
     if (paramObject != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(paramObject, "token.methods[method] ?: return null");
       paramMethod = new StringBuilder();
-      paramMethod.append(this.jdField_a_of_type_ComTencentMobileqqApolloIpcTypeToken.a());
+      paramMethod.append(this.a.a());
       paramMethod.append(';');
-      paramMethod.append(paramObject.b());
+      paramMethod.append(paramObject.c());
       paramMethod = paramMethod.toString();
       paramObject = ParamSerializer.a.a(paramObject, paramArrayOfObject);
       paramObject.putString("ipc_callback_", paramMethod);
@@ -59,7 +59,7 @@ public final class CallbackHandler<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.CallbackHandler
  * JD-Core Version:    0.7.0.1
  */

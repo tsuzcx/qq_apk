@@ -18,14 +18,14 @@ final class ReplyTextItemBuilder$11
   
   public void a(int paramInt, ShortVideoResult paramShortVideoResult)
   {
-    if (paramShortVideoResult.jdField_a_of_type_Int == 0)
+    if (paramShortVideoResult.a == 0)
     {
-      paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath = paramShortVideoResult.b;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
-      ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView);
+      paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.d;
+      this.a.mThumbFilePath = paramShortVideoResult.e;
+      this.b.setSourceMessageRecord(this.a);
+      this.b.serial();
+      this.c.getMessageFacade().a(this.a.frienduin, this.a.istroop, this.a.uniseq, this.a.msgData);
+      ReplyTextItemBuilder.a(this.a.thumbWidth, this.a.thumbHeight, this.a.mThumbFilePath, this.d);
       return;
     }
     QLog.d("ReplyTextItemBuilder", 2, "reply render get thumbPath Fail");
@@ -33,7 +33,7 @@ final class ReplyTextItemBuilder$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.11
  * JD-Core Version:    0.7.0.1
  */

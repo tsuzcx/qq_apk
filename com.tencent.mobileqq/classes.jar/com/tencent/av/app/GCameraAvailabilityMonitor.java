@@ -14,21 +14,21 @@ import mqq.app.MobileQQ;
 
 public class GCameraAvailabilityMonitor
 {
-  private GCameraAvailabilityMonitor.CameraAvailabilityReceiver jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver = null;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = null;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = null;
+  private VideoAppInterface a;
+  private Map<String, Integer> b = null;
+  private GCameraAvailabilityMonitor.CameraAvailabilityReceiver c = null;
+  private Object d = null;
   
   public GCameraAvailabilityMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
   }
   
   public Map<String, Integer> a()
   {
     try
     {
-      Map localMap = this.jdField_a_of_type_JavaUtilMap;
+      Map localMap = this.b;
       return localMap;
     }
     finally
@@ -38,44 +38,11 @@ public class GCameraAvailabilityMonitor
     }
   }
   
-  public void a()
-  {
-    if (Build.VERSION.SDK_INT < 21) {
-      return;
-    }
-    DexClassLoader localDexClassLoader = ClassLoaderUtil.a();
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    }
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change receiver");
-      }
-      this.jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver = new GCameraAvailabilityMonitor.CameraAvailabilityReceiver(this);
-      localObject = new IntentFilter();
-      ((IntentFilter)localObject).addAction("com.tencent.mobileqq.qav.camera.availability");
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver, (IntentFilter)localObject);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change callback");
-    }
-    if ((!Build.VERSION.RELEASE.equalsIgnoreCase("7.1.2")) && (!Build.MODEL.equalsIgnoreCase("vivo x9")))
-    {
-      this.jdField_a_of_type_JavaLangObject = ClassLoaderUtil.a(localDexClassLoader, "com.tencent.av.camera2.CameraManagerWrapper");
-      localObject = this.jdField_a_of_type_JavaLangObject;
-      Context localContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext();
-      String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName();
-      ClassLoaderUtil.a(localDexClassLoader, localObject, "registerAvailabilityCb", new Class[] { Context.class, String.class, Handler.class }, new Object[] { localContext, str, null });
-    }
-  }
-  
   public void a(String paramString, int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(paramInt));
+      this.b.put(paramString, Integer.valueOf(paramInt));
       return;
     }
     finally
@@ -90,14 +57,47 @@ public class GCameraAvailabilityMonitor
     if (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver != null)
+    DexClassLoader localDexClassLoader = ClassLoaderUtil.a();
+    if (this.b == null) {
+      this.b = new HashMap();
+    }
+    Object localObject;
+    if (this.c == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change receiver");
+      }
+      this.c = new GCameraAvailabilityMonitor.CameraAvailabilityReceiver(this);
+      localObject = new IntentFilter();
+      ((IntentFilter)localObject).addAction("com.tencent.mobileqq.qav.camera.availability");
+      this.a.getApplication().registerReceiver(this.c, (IntentFilter)localObject);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change callback");
+    }
+    if ((!Build.VERSION.RELEASE.equalsIgnoreCase("7.1.2")) && (!Build.MODEL.equalsIgnoreCase("vivo x9")))
+    {
+      this.d = ClassLoaderUtil.a(localDexClassLoader, "com.tencent.av.camera2.CameraManagerWrapper");
+      localObject = this.d;
+      Context localContext = this.a.getApplication().getApplicationContext();
+      String str = this.a.getApplication().getPackageName();
+      ClassLoaderUtil.a(localDexClassLoader, localObject, "registerAvailabilityCb", new Class[] { Context.class, String.class, Handler.class }, new Object[] { localContext, str, null });
+    }
+  }
+  
+  public void c()
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return;
+    }
+    if (this.c != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change receiver");
       }
       try
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver);
+        this.a.getApplication().unregisterReceiver(this.c);
       }
       catch (Exception localException)
       {
@@ -109,13 +109,13 @@ public class GCameraAvailabilityMonitor
           QLog.e("GCameraAvailabilityMonitor", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_ComTencentAvAppGCameraAvailabilityMonitor$CameraAvailabilityReceiver = null;
+      this.c = null;
     }
     if (QLog.isColorLevel()) {
       QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change callback");
     }
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      ClassLoaderUtil.a(ClassLoaderUtil.a(), this.jdField_a_of_type_JavaLangObject, "unRegisterAvailabilityCb", null, null);
+    if (this.d != null) {
+      ClassLoaderUtil.a(ClassLoaderUtil.a(), this.d, "unRegisterAvailabilityCb", null, null);
     }
   }
 }

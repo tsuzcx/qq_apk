@@ -12,29 +12,29 @@ public abstract class SingleViewBlock
   extends MultiViewBlock
 {
   private BaseWidgetView a;
-  private boolean c = true;
+  private boolean b = true;
   
   public SingleViewBlock(Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  public int a()
-  {
-    return 3;
-  }
-  
   protected abstract BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock);
   
-  public void a(ArrayList paramArrayList)
+  public void b(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.j.clear();
     notifyDataSetChanged();
     if (paramArrayList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    this.j.addAll(paramArrayList);
     notifyDataSetChanged();
+  }
+  
+  public int c()
+  {
+    return 3;
   }
   
   public int getItemCount()
@@ -51,10 +51,10 @@ public abstract class SingleViewBlock
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView == null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
+    if (this.a == null) {
+      this.a = a(paramViewGroup, this);
     }
-    return new BaseListViewAdapter.BaseVH(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
+    return new BaseListViewAdapter.BaseVH(this, this.a);
   }
   
   public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)

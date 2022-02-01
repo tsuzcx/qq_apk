@@ -1,30 +1,13 @@
 package com.tencent.av.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
-import com.tencent.av.utils.AudioHelper;
-
 class QavPanel$9
-  implements QavMenuActionListener
+  implements QavPanel.OnDismissAnimationEndListener
 {
-  QavPanel$9(QavPanel paramQavPanel) {}
+  QavPanel$9(QavPanel paramQavPanel, Runnable paramRunnable) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    paramView = this.a.a(paramInt);
-    if ((paramView instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramView).d();
-    }
-    long l = AudioHelper.b();
-    this.a.a(l, paramInt, true);
-  }
-  
-  public void a(View paramView1, View paramView2)
-  {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView2);
-    }
+    this.a.run();
   }
 }
 

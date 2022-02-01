@@ -13,13 +13,13 @@ class PublicAccountJavascriptInterfaceImpl$6
   @QQPermissionDenied(1)
   public void denied()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.c.callJs(this.a, new String[] { "-3", "{}" });
   }
   
   @QQPermissionGrant(1)
   public void grant()
   {
-    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new PublicAccountJavascriptInterfaceImpl.TimedOnLocationListener(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new PublicAccountJavascriptInterfaceImpl.TimedOnLocationListener(this.c, 0, this.a, this.b));
     if (QLog.isColorLevel()) {
       QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
     }
@@ -27,7 +27,7 @@ class PublicAccountJavascriptInterfaceImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.6
  * JD-Core Version:    0.7.0.1
  */

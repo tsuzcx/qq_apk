@@ -1,32 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.theme.DarkModeManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GeneralSettingActivity$6
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   GeneralSettingActivity$6(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(localIntent);
-    if (SettingsConfigHelper.a(this.a.app)) {
-      ReportController.a(this.a.app, "0X800B86F");
-    } else {
-      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    DarkModeManager.a(paramBoolean);
+    if (paramBoolean) {
+      DarkModeManager.a(null);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.6
  * JD-Core Version:    0.7.0.1
  */

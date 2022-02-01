@@ -9,19 +9,19 @@ class TroopRobotShortcutBarService$2
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (TroopRobotShortcutBarService.a(this.a).equals(paramString)))
+    if ((paramBoolean) && (TroopRobotShortcutBarService.b(this.a).equals(paramString)))
     {
       TroopRobotShortcutBarService.a(this.a, true);
-      this.a.a(true);
+      this.a.b(true);
       return;
     }
     TroopRobotShortcutBarService.a(this.a, false);
-    this.a.a(false);
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotShortcutBarService.2
  * JD-Core Version:    0.7.0.1
  */

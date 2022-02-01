@@ -26,44 +26,38 @@ public class LocalVideoSelectActivity
   implements View.OnClickListener, ScrollFrameSelectBar.OnRangeValueChangeListener
 {
   public int a;
-  public long a;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TrimTextureVideoView jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView;
-  private ScrollFrameSelectBar jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar;
-  private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
   public int b;
-  public long b;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
   public int c;
-  private boolean c;
   public int d;
-  private boolean d;
-  private int e;
-  private int f;
-  private int g = 0;
-  private int h = -1;
-  private int i = -1;
-  
-  public LocalVideoSelectActivity()
-  {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
+  public String e;
+  public long f;
+  public long g;
+  private TrimTextureVideoView h;
+  private ScrollFrameSelectBar i;
+  private String j;
+  private Button k;
+  private TextView l;
+  private LinearLayout m;
+  private LocalMediaInfo n;
+  private int o;
+  private int p;
+  private ImageView q;
+  private boolean r;
+  private boolean s;
+  private int t = 0;
+  private int u = -1;
+  private int v = -1;
+  private boolean w = false;
+  private RelativeLayout x;
+  private LinearLayout y;
+  private boolean z = false;
   
   private void a()
   {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363668));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363666));
-    this.jdField_d_of_type_Boolean = LiuHaiUtils.a(this.jdField_b_of_type_AndroidWidgetLinearLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0);
+    this.z = false;
+    this.y = ((LinearLayout)findViewById(2131429581));
+    this.x = ((RelativeLayout)findViewById(2131429579));
+    this.z = LiuHaiUtils.a(this.y, this.x, 0);
   }
   
   private void b()
@@ -74,10 +68,10 @@ public class LocalVideoSelectActivity
   public void a(int paramInt1, int paramInt2)
   {
     c(paramInt1, paramInt2);
-    if ((this.h < 0) || (this.i < 0))
+    if ((this.u < 0) || (this.v < 0))
     {
-      this.h = paramInt1;
-      this.i = paramInt2;
+      this.u = paramInt1;
+      this.v = paramInt2;
     }
   }
   
@@ -91,12 +85,12 @@ public class LocalVideoSelectActivity
     paramInt1 = (int)Math.floor((paramInt2 - paramInt1) / 1000.0F);
     paramInt2 = (int)Math.ceil(paramInt1 / 10.0F);
     String str;
-    if (this.jdField_c_of_type_Boolean) {
-      str = String.format(HardCodeUtil.a(2131706376), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.w) {
+      str = String.format(HardCodeUtil.a(2131904235), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     } else {
-      str = String.format(HardCodeUtil.a(2131706377), new Object[] { Integer.valueOf(paramInt1) });
+      str = String.format(HardCodeUtil.a(2131904236), new Object[] { Integer.valueOf(paramInt1) });
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    this.l.setText(str);
   }
   
   @Override
@@ -119,399 +113,399 @@ public class LocalVideoSelectActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 162	com/tencent/util/LiuHaiUtils:a	(Landroid/app/Activity;)V
+    //   1: invokestatic 179	com/tencent/util/LiuHaiUtils:f	(Landroid/app/Activity;)V
     //   4: aload_0
-    //   5: invokevirtual 166	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getWindow	()Landroid/view/Window;
+    //   5: invokevirtual 183	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getWindow	()Landroid/view/Window;
     //   8: sipush 1024
-    //   11: invokevirtual 172	android/view/Window:addFlags	(I)V
-    //   14: invokestatic 175	com/tencent/util/LiuHaiUtils:c	()Z
+    //   11: invokevirtual 189	android/view/Window:addFlags	(I)V
+    //   14: invokestatic 192	com/tencent/util/LiuHaiUtils:c	()Z
     //   17: ifeq +7 -> 24
     //   20: aload_0
-    //   21: invokestatic 177	com/tencent/util/LiuHaiUtils:b	(Landroid/app/Activity;)V
+    //   21: invokestatic 194	com/tencent/util/LiuHaiUtils:g	(Landroid/app/Activity;)V
     //   24: aload_0
     //   25: iconst_0
-    //   26: putfield 180	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:mNeedStatusTrans	Z
+    //   26: putfield 197	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:mNeedStatusTrans	Z
     //   29: aload_0
     //   30: iconst_0
-    //   31: putfield 183	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:mActNeedImmersive	Z
+    //   31: putfield 200	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:mActNeedImmersive	Z
     //   34: aload_0
     //   35: iconst_0
-    //   36: putfield 186	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:isClearCoverLayer	Z
+    //   36: putfield 203	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:isClearCoverLayer	Z
     //   39: aload_0
     //   40: aload_1
-    //   41: invokespecial 188	com/tencent/biz/qqstory/storyHome/QQStoryBaseActivity:doOnCreate	(Landroid/os/Bundle;)Z
+    //   41: invokespecial 205	com/tencent/biz/qqstory/storyHome/QQStoryBaseActivity:doOnCreate	(Landroid/os/Bundle;)Z
     //   44: pop
     //   45: aload_0
     //   46: aload_0
-    //   47: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   50: ldc 194
+    //   47: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   50: ldc 211
     //   52: iconst_0
-    //   53: invokevirtual 200	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   56: putfield 202	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_b_of_type_Boolean	Z
+    //   53: invokevirtual 217	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   56: putfield 219	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:s	Z
     //   59: aload_0
     //   60: aload_0
-    //   61: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   64: ldc 204
+    //   61: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   64: ldc 221
     //   66: iconst_0
-    //   67: invokevirtual 208	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   70: putfield 35	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:g	I
+    //   67: invokevirtual 225	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   70: putfield 52	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:t	I
     //   73: aload_0
     //   74: aload_0
-    //   75: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   78: ldc 210
+    //   75: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   78: ldc 227
     //   80: iconst_0
-    //   81: invokevirtual 208	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   84: putfield 212	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_b_of_type_Int	I
+    //   81: invokevirtual 225	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   84: putfield 229	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:b	I
     //   87: aload_0
     //   88: aload_0
-    //   89: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   92: ldc 214
+    //   89: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   92: ldc 231
     //   94: iconst_0
-    //   95: invokevirtual 208	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   98: putfield 216	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_c_of_type_Int	I
+    //   95: invokevirtual 225	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   98: putfield 233	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:c	I
     //   101: aload_0
     //   102: aload_0
-    //   103: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   106: ldc 218
+    //   103: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   106: ldc 235
     //   108: iconst_0
-    //   109: invokevirtual 208	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   112: putfield 220	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_Int	I
+    //   109: invokevirtual 225	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   112: putfield 237	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:a	I
     //   115: aload_0
     //   116: aload_0
-    //   117: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   120: ldc 222
+    //   117: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   120: ldc 239
     //   122: iconst_0
-    //   123: invokevirtual 208	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   126: putfield 224	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_d_of_type_Int	I
+    //   123: invokevirtual 225	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   126: putfield 241	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:d	I
     //   129: aload_0
     //   130: aload_0
-    //   131: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   134: ldc 226
-    //   136: invokevirtual 230	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   139: putfield 232	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   131: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   134: ldc 243
+    //   136: invokevirtual 247	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   139: putfield 249	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:e	Ljava/lang/String;
     //   142: aload_0
     //   143: aload_0
-    //   144: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   147: ldc 234
+    //   144: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   147: ldc 251
     //   149: lconst_0
-    //   150: invokevirtual 238	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   153: putfield 240	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_Long	J
+    //   150: invokevirtual 255	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   153: putfield 257	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:f	J
     //   156: aload_0
     //   157: aload_0
-    //   158: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   161: ldc 242
-    //   163: lconst_0
-    //   164: invokevirtual 238	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   167: putfield 244	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_b_of_type_Long	J
-    //   170: aload_0
-    //   171: ldc 245
-    //   173: invokevirtual 248	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:setContentViewC	(I)V
-    //   176: ldc 250
-    //   178: ldc 252
-    //   180: invokestatic 257	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   183: aload_0
-    //   184: invokespecial 259	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:a	()V
+    //   158: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   161: ldc_w 259
+    //   164: lconst_0
+    //   165: invokevirtual 255	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   168: putfield 261	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:g	J
+    //   171: aload_0
+    //   172: ldc_w 262
+    //   175: invokevirtual 265	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:setContentViewC	(I)V
+    //   178: ldc_w 267
+    //   181: ldc_w 269
+    //   184: invokestatic 274	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   187: aload_0
-    //   188: aload_0
-    //   189: ldc_w 260
-    //   192: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   195: checkcast 262	android/widget/ImageView
-    //   198: putfield 50	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   201: aload_0
-    //   202: aload_0
-    //   203: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   206: ldc_w 264
-    //   209: invokevirtual 268	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   212: checkcast 270	com/tencent/mobileqq/activity/photo/LocalMediaInfo
-    //   215: putfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   218: aload_0
-    //   219: aload_0
-    //   220: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   223: getfield 273	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   226: putfield 62	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   229: new 275	android/media/MediaMetadataRetriever
-    //   232: dup
-    //   233: invokespecial 276	android/media/MediaMetadataRetriever:<init>	()V
-    //   236: astore_1
-    //   237: aload_1
-    //   238: aload_0
-    //   239: getfield 62	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   242: invokevirtual 280	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   245: aload_0
-    //   246: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   249: aload_1
-    //   250: bipush 19
-    //   252: invokevirtual 283	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   255: invokestatic 287	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   258: putfield 290	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   261: aload_0
-    //   262: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   265: aload_1
-    //   266: bipush 18
-    //   268: invokevirtual 283	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   271: invokestatic 287	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   274: putfield 293	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   277: aload_0
-    //   278: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   281: aload_1
-    //   282: bipush 24
-    //   284: invokevirtual 283	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   287: invokestatic 287	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   290: putfield 296	com/tencent/mobileqq/activity/photo/LocalMediaInfo:rotation	I
-    //   293: goto +18 -> 311
-    //   296: astore_2
-    //   297: goto +467 -> 764
+    //   188: invokespecial 276	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:a	()V
+    //   191: aload_0
+    //   192: aload_0
+    //   193: ldc_w 277
+    //   196: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   199: checkcast 279	android/widget/ImageView
+    //   202: putfield 103	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:q	Landroid/widget/ImageView;
+    //   205: aload_0
+    //   206: aload_0
+    //   207: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   210: ldc_w 281
+    //   213: invokevirtual 285	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   216: checkcast 287	com/tencent/mobileqq/activity/photo/LocalMediaInfo
+    //   219: putfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   222: aload_0
+    //   223: aload_0
+    //   224: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   227: getfield 290	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   230: putfield 64	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:j	Ljava/lang/String;
+    //   233: new 292	android/media/MediaMetadataRetriever
+    //   236: dup
+    //   237: invokespecial 293	android/media/MediaMetadataRetriever:<init>	()V
+    //   240: astore_1
+    //   241: aload_1
+    //   242: aload_0
+    //   243: getfield 64	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:j	Ljava/lang/String;
+    //   246: invokevirtual 297	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   249: aload_0
+    //   250: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   253: aload_1
+    //   254: bipush 19
+    //   256: invokevirtual 300	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   259: invokestatic 304	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   262: putfield 307	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   265: aload_0
+    //   266: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   269: aload_1
+    //   270: bipush 18
+    //   272: invokevirtual 300	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   275: invokestatic 304	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   278: putfield 310	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   281: aload_0
+    //   282: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   285: aload_1
+    //   286: bipush 24
+    //   288: invokevirtual 300	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   291: invokestatic 304	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   294: putfield 313	com/tencent/mobileqq/activity/photo/LocalMediaInfo:rotation	I
+    //   297: goto +18 -> 315
     //   300: astore_2
-    //   301: invokestatic 301	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   304: ifeq +7 -> 311
-    //   307: aload_2
-    //   308: invokevirtual 304	java/lang/Exception:printStackTrace	()V
-    //   311: aload_1
-    //   312: invokevirtual 307	android/media/MediaMetadataRetriever:release	()V
-    //   315: aload_0
-    //   316: aload_0
-    //   317: ldc_w 308
-    //   320: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   323: checkcast 69	android/widget/LinearLayout
-    //   326: putfield 310	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   329: aload_0
-    //   330: aload_0
-    //   331: ldc_w 311
-    //   334: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   337: checkcast 313	android/widget/Button
-    //   340: putfield 315	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   343: aload_0
-    //   344: aload_0
-    //   345: ldc_w 316
-    //   348: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   351: checkcast 128	android/widget/TextView
-    //   354: putfield 126	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   357: aload_0
-    //   358: aload_0
-    //   359: ldc_w 317
-    //   362: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   365: checkcast 319	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar
-    //   368: putfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
-    //   371: aload_0
-    //   372: getfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
-    //   375: sipush 2000
-    //   378: invokevirtual 322	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setMinDuration	(I)V
-    //   381: aload_0
-    //   382: getfield 43	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_d_of_type_Boolean	Z
-    //   385: ifeq +27 -> 412
-    //   388: aload_0
-    //   389: getfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
-    //   392: invokevirtual 326	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   395: checkcast 328	android/widget/LinearLayout$LayoutParams
-    //   398: astore_1
-    //   399: aload_1
-    //   400: iconst_0
-    //   401: putfield 331	android/widget/LinearLayout$LayoutParams:bottomMargin	I
-    //   404: aload_0
-    //   405: getfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
-    //   408: aload_1
-    //   409: invokevirtual 335	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   412: aload_0
-    //   413: aload_0
-    //   414: ldc_w 336
-    //   417: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   420: checkcast 338	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView
-    //   423: putfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
-    //   426: aload_0
-    //   427: getfield 315	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
+    //   301: goto +467 -> 768
+    //   304: astore_2
+    //   305: invokestatic 318	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   308: ifeq +7 -> 315
+    //   311: aload_2
+    //   312: invokevirtual 321	java/lang/Exception:printStackTrace	()V
+    //   315: aload_1
+    //   316: invokevirtual 324	android/media/MediaMetadataRetriever:release	()V
+    //   319: aload_0
+    //   320: aload_0
+    //   321: ldc_w 325
+    //   324: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   327: checkcast 71	android/widget/LinearLayout
+    //   330: putfield 327	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:m	Landroid/widget/LinearLayout;
+    //   333: aload_0
+    //   334: aload_0
+    //   335: ldc_w 328
+    //   338: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   341: checkcast 330	android/widget/Button
+    //   344: putfield 332	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:k	Landroid/widget/Button;
+    //   347: aload_0
+    //   348: aload_0
+    //   349: ldc_w 333
+    //   352: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   355: checkcast 145	android/widget/TextView
+    //   358: putfield 143	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:l	Landroid/widget/TextView;
+    //   361: aload_0
+    //   362: aload_0
+    //   363: ldc_w 334
+    //   366: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   369: checkcast 336	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar
+    //   372: putfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   375: aload_0
+    //   376: getfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   379: sipush 2000
+    //   382: invokevirtual 339	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setMinDuration	(I)V
+    //   385: aload_0
+    //   386: getfield 60	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:z	Z
+    //   389: ifeq +27 -> 416
+    //   392: aload_0
+    //   393: getfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   396: invokevirtual 343	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   399: checkcast 345	android/widget/LinearLayout$LayoutParams
+    //   402: astore_1
+    //   403: aload_1
+    //   404: iconst_0
+    //   405: putfield 348	android/widget/LinearLayout$LayoutParams:bottomMargin	I
+    //   408: aload_0
+    //   409: getfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   412: aload_1
+    //   413: invokevirtual 352	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   416: aload_0
+    //   417: aload_0
+    //   418: ldc_w 353
+    //   421: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   424: checkcast 355	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView
+    //   427: putfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
     //   430: aload_0
-    //   431: invokevirtual 342	android/widget/Button:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   431: getfield 332	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:k	Landroid/widget/Button;
     //   434: aload_0
-    //   435: getfield 310	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   435: invokevirtual 359	android/widget/Button:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   438: aload_0
-    //   439: invokevirtual 343	android/widget/LinearLayout:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   439: getfield 327	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:m	Landroid/widget/LinearLayout;
     //   442: aload_0
-    //   443: getfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   443: invokevirtual 360	android/widget/LinearLayout:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   446: aload_0
-    //   447: invokevirtual 347	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setOnRangeValueChangeListener	(Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar$OnRangeValueChangeListener;)V
+    //   447: getfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
     //   450: aload_0
-    //   451: getfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
-    //   454: new 349	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$1
-    //   457: dup
-    //   458: aload_0
-    //   459: invokespecial 352	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$1:<init>	(Lcom/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity;)V
-    //   462: invokevirtual 356	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:post	(Ljava/lang/Runnable;)Z
-    //   465: pop
-    //   466: aload_0
-    //   467: getfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   451: invokevirtual 364	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setOnRangeValueChangeListener	(Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar$OnRangeValueChangeListener;)V
+    //   454: aload_0
+    //   455: getfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   458: new 366	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$1
+    //   461: dup
+    //   462: aload_0
+    //   463: invokespecial 369	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$1:<init>	(Lcom/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity;)V
+    //   466: invokevirtual 373	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:post	(Ljava/lang/Runnable;)Z
+    //   469: pop
     //   470: aload_0
-    //   471: getfield 62	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   474: invokevirtual 359	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setVideoPath	(Ljava/lang/String;)V
-    //   477: aload_0
-    //   478: getfield 43	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_d_of_type_Boolean	Z
-    //   481: ifeq +99 -> 580
-    //   484: aload_0
-    //   485: ldc_w 360
-    //   488: invokevirtual 67	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
-    //   491: checkcast 74	android/widget/RelativeLayout
-    //   494: astore_1
-    //   495: aload_1
-    //   496: invokevirtual 364	android/widget/RelativeLayout:getParent	()Landroid/view/ViewParent;
-    //   499: checkcast 366	android/view/ViewGroup
-    //   502: aload_1
-    //   503: invokevirtual 370	android/view/ViewGroup:removeView	(Landroid/view/View;)V
+    //   471: getfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   474: aload_0
+    //   475: getfield 64	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:j	Ljava/lang/String;
+    //   478: invokevirtual 376	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setVideoPath	(Ljava/lang/String;)V
+    //   481: aload_0
+    //   482: getfield 60	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:z	Z
+    //   485: ifeq +99 -> 584
+    //   488: aload_0
+    //   489: ldc_w 377
+    //   492: invokevirtual 69	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:findViewById	(I)Landroid/view/View;
+    //   495: checkcast 76	android/widget/RelativeLayout
+    //   498: astore_1
+    //   499: aload_1
+    //   500: invokevirtual 381	android/widget/RelativeLayout:getParent	()Landroid/view/ViewParent;
+    //   503: checkcast 383	android/view/ViewGroup
     //   506: aload_1
-    //   507: invokevirtual 371	android/widget/RelativeLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   510: astore_2
-    //   511: new 373	android/widget/RelativeLayout$LayoutParams
-    //   514: dup
-    //   515: aload_2
-    //   516: getfield 378	android/view/ViewGroup$LayoutParams:width	I
+    //   507: invokevirtual 387	android/view/ViewGroup:removeView	(Landroid/view/View;)V
+    //   510: aload_1
+    //   511: invokevirtual 388	android/widget/RelativeLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   514: astore_2
+    //   515: new 390	android/widget/RelativeLayout$LayoutParams
+    //   518: dup
     //   519: aload_2
-    //   520: getfield 381	android/view/ViewGroup$LayoutParams:height	I
-    //   523: invokespecial 383	android/widget/RelativeLayout$LayoutParams:<init>	(II)V
-    //   526: astore_2
-    //   527: aload_2
-    //   528: ldc_w 384
-    //   531: invokestatic 389	com/tencent/mobileqq/utils/ViewUtils:a	(F)I
-    //   534: putfield 392	android/widget/RelativeLayout$LayoutParams:topMargin	I
-    //   537: aload_2
-    //   538: ldc_w 393
-    //   541: invokestatic 389	com/tencent/mobileqq/utils/ViewUtils:a	(F)I
-    //   544: putfield 396	android/widget/RelativeLayout$LayoutParams:leftMargin	I
-    //   547: aload_2
-    //   548: ldc_w 393
-    //   551: invokestatic 389	com/tencent/mobileqq/utils/ViewUtils:a	(F)I
-    //   554: putfield 399	android/widget/RelativeLayout$LayoutParams:rightMargin	I
-    //   557: aload_2
-    //   558: bipush 10
-    //   560: iconst_m1
-    //   561: invokevirtual 402	android/widget/RelativeLayout$LayoutParams:addRule	(II)V
-    //   564: aload_2
-    //   565: bipush 12
-    //   567: iconst_0
-    //   568: invokevirtual 402	android/widget/RelativeLayout$LayoutParams:addRule	(II)V
-    //   571: aload_0
-    //   572: getfield 76	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   575: aload_1
-    //   576: aload_2
-    //   577: invokevirtual 406	android/widget/RelativeLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-    //   580: aload_0
-    //   581: invokevirtual 192	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
-    //   584: ldc_w 408
-    //   587: invokevirtual 230	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   590: astore_1
-    //   591: ldc_w 410
-    //   594: aload_1
-    //   595: invokevirtual 414	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   598: ifne +48 -> 646
-    //   601: ldc_w 416
-    //   604: aload_1
-    //   605: invokevirtual 414	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   608: ifne +38 -> 646
-    //   611: aload_0
-    //   612: aload_0
-    //   613: getfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   520: getfield 395	android/view/ViewGroup$LayoutParams:width	I
+    //   523: aload_2
+    //   524: getfield 398	android/view/ViewGroup$LayoutParams:height	I
+    //   527: invokespecial 400	android/widget/RelativeLayout$LayoutParams:<init>	(II)V
+    //   530: astore_2
+    //   531: aload_2
+    //   532: ldc_w 401
+    //   535: invokestatic 407	com/tencent/mobileqq/utils/ViewUtils:dip2px	(F)I
+    //   538: putfield 410	android/widget/RelativeLayout$LayoutParams:topMargin	I
+    //   541: aload_2
+    //   542: ldc_w 411
+    //   545: invokestatic 407	com/tencent/mobileqq/utils/ViewUtils:dip2px	(F)I
+    //   548: putfield 414	android/widget/RelativeLayout$LayoutParams:leftMargin	I
+    //   551: aload_2
+    //   552: ldc_w 411
+    //   555: invokestatic 407	com/tencent/mobileqq/utils/ViewUtils:dip2px	(F)I
+    //   558: putfield 417	android/widget/RelativeLayout$LayoutParams:rightMargin	I
+    //   561: aload_2
+    //   562: bipush 10
+    //   564: iconst_m1
+    //   565: invokevirtual 420	android/widget/RelativeLayout$LayoutParams:addRule	(II)V
+    //   568: aload_2
+    //   569: bipush 12
+    //   571: iconst_0
+    //   572: invokevirtual 420	android/widget/RelativeLayout$LayoutParams:addRule	(II)V
+    //   575: aload_0
+    //   576: getfield 78	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:x	Landroid/widget/RelativeLayout;
+    //   579: aload_1
+    //   580: aload_2
+    //   581: invokevirtual 424	android/widget/RelativeLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   584: aload_0
+    //   585: invokevirtual 209	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:getIntent	()Landroid/content/Intent;
+    //   588: ldc_w 426
+    //   591: invokevirtual 247	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   594: astore_1
+    //   595: ldc_w 428
+    //   598: aload_1
+    //   599: invokevirtual 432	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   602: ifne +48 -> 650
+    //   605: ldc_w 434
+    //   608: aload_1
+    //   609: invokevirtual 432	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   612: ifne +38 -> 650
+    //   615: aload_0
     //   616: aload_0
-    //   617: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   620: getfield 296	com/tencent/mobileqq/activity/photo/LocalMediaInfo:rotation	I
-    //   623: aload_0
-    //   624: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   627: getfield 293	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   630: aload_0
-    //   631: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   634: getfield 290	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   637: invokevirtual 419	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:a	(III)Z
-    //   640: putfield 84	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_Boolean	Z
-    //   643: goto +11 -> 654
-    //   646: aload_0
-    //   647: getfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
-    //   650: iconst_1
-    //   651: invokevirtual 423	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setCenterInside	(Z)V
-    //   654: aload_0
-    //   655: getfield 50	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   658: getstatic 429	android/widget/ImageView$ScaleType:FIT_CENTER	Landroid/widget/ImageView$ScaleType;
-    //   661: invokevirtual 433	android/widget/ImageView:setScaleType	(Landroid/widget/ImageView$ScaleType;)V
-    //   664: aload_0
-    //   665: aload_0
-    //   666: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   669: getfield 290	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   672: aload_0
-    //   673: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   676: getfield 293	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   679: invokestatic 437	java/lang/Math:min	(II)I
-    //   682: putfield 47	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:e	I
-    //   685: aload_0
-    //   686: aload_0
-    //   687: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   690: getfield 290	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   693: aload_0
-    //   694: getfield 59	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   697: getfield 293	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   700: invokestatic 440	java/lang/Math:max	(II)I
-    //   703: putfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:f	I
-    //   706: aload_0
-    //   707: getfield 56	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   617: getfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   620: aload_0
+    //   621: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   624: getfield 313	com/tencent/mobileqq/activity/photo/LocalMediaInfo:rotation	I
+    //   627: aload_0
+    //   628: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   631: getfield 310	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   634: aload_0
+    //   635: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   638: getfield 307	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   641: invokevirtual 437	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:a	(III)Z
+    //   644: putfield 97	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:r	Z
+    //   647: goto +11 -> 658
+    //   650: aload_0
+    //   651: getfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   654: iconst_1
+    //   655: invokevirtual 441	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setCenterInside	(Z)V
+    //   658: aload_0
+    //   659: getfield 103	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:q	Landroid/widget/ImageView;
+    //   662: getstatic 447	android/widget/ImageView$ScaleType:FIT_CENTER	Landroid/widget/ImageView$ScaleType;
+    //   665: invokevirtual 451	android/widget/ImageView:setScaleType	(Landroid/widget/ImageView$ScaleType;)V
+    //   668: aload_0
+    //   669: aload_0
+    //   670: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   673: getfield 307	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   676: aload_0
+    //   677: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   680: getfield 310	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   683: invokestatic 455	java/lang/Math:min	(II)I
+    //   686: putfield 92	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:o	I
+    //   689: aload_0
+    //   690: aload_0
+    //   691: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   694: getfield 307	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   697: aload_0
+    //   698: getfield 86	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:n	Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   701: getfield 310	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   704: invokestatic 458	java/lang/Math:max	(II)I
+    //   707: putfield 94	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:p	I
     //   710: aload_0
-    //   711: getfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
-    //   714: invokevirtual 444	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setLocalVideoView	(Lcom/tencent/biz/qqstory/playvideo/player/TrimTextureVideoView;)V
-    //   717: aload_0
-    //   718: getfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
-    //   721: new 446	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$2
-    //   724: dup
-    //   725: aload_0
-    //   726: invokespecial 447	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$2:<init>	(Lcom/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity;)V
-    //   729: invokevirtual 451	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setOnPreparedListener	(Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnPreparedListener;)V
-    //   732: aload_0
-    //   733: getfield 53	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
-    //   736: new 453	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$3
-    //   739: dup
-    //   740: aload_0
-    //   741: invokespecial 454	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$3:<init>	(Lcom/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity;)V
-    //   744: invokevirtual 458	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setOnErrorListener	(Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnErrorListener;)V
-    //   747: ldc_w 460
-    //   750: ldc_w 462
-    //   753: iconst_0
-    //   754: iconst_0
-    //   755: iconst_0
-    //   756: anewarray 119	java/lang/String
-    //   759: invokestatic 467	com/tencent/biz/qqstory/support/report/StoryReportor:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   762: iconst_0
-    //   763: ireturn
-    //   764: aload_1
-    //   765: invokevirtual 307	android/media/MediaMetadataRetriever:release	()V
-    //   768: aload_2
-    //   769: athrow
+    //   711: getfield 100	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:i	Lcom/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar;
+    //   714: aload_0
+    //   715: getfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   718: invokevirtual 462	com/tencent/biz/qqstory/takevideo/view/widget/frameSelectBar/ScrollFrameSelectBar:setLocalVideoView	(Lcom/tencent/biz/qqstory/playvideo/player/TrimTextureVideoView;)V
+    //   721: aload_0
+    //   722: getfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   725: new 464	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$2
+    //   728: dup
+    //   729: aload_0
+    //   730: invokespecial 465	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$2:<init>	(Lcom/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity;)V
+    //   733: invokevirtual 469	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setOnPreparedListener	(Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnPreparedListener;)V
+    //   736: aload_0
+    //   737: getfield 106	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity:h	Lcom/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView;
+    //   740: new 471	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$3
+    //   743: dup
+    //   744: aload_0
+    //   745: invokespecial 472	com/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity$3:<init>	(Lcom/tencent/biz/qqstory/takevideo/LocalVideoSelectActivity;)V
+    //   748: invokevirtual 476	com/tencent/biz/qqstory/boundaries/extension/widgets/TrimTextureVideoView:setOnErrorListener	(Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnErrorListener;)V
+    //   751: ldc_w 478
+    //   754: ldc_w 480
+    //   757: iconst_0
+    //   758: iconst_0
+    //   759: iconst_0
+    //   760: anewarray 136	java/lang/String
+    //   763: invokestatic 485	com/tencent/biz/qqstory/support/report/StoryReportor:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   766: iconst_0
+    //   767: ireturn
+    //   768: aload_1
+    //   769: invokevirtual 324	android/media/MediaMetadataRetriever:release	()V
+    //   772: aload_2
+    //   773: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	770	0	this	LocalVideoSelectActivity
-    //   0	770	1	paramBundle	android.os.Bundle
-    //   296	1	2	localObject1	Object
-    //   300	8	2	localException	java.lang.Exception
-    //   510	259	2	localObject2	Object
+    //   0	774	0	this	LocalVideoSelectActivity
+    //   0	774	1	paramBundle	android.os.Bundle
+    //   300	1	2	localObject1	Object
+    //   304	8	2	localException	java.lang.Exception
+    //   514	259	2	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   237	293	296	finally
-    //   301	311	296	finally
-    //   237	293	300	java/lang/Exception
+    //   241	297	300	finally
+    //   305	315	300	finally
+    //   241	297	304	java/lang/Exception
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.e();
+    this.i.e();
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    TrimTextureVideoView localTrimTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView;
+    TrimTextureVideoView localTrimTextureVideoView = this.h;
     if ((localTrimTextureVideoView != null) && (!localTrimTextureVideoView.isPlaying())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(false);
+      this.h.a(false);
     }
   }
   
   protected void doOnStop()
   {
     super.doOnStop();
-    TrimTextureVideoView localTrimTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView;
+    TrimTextureVideoView localTrimTextureVideoView = this.h;
     if (localTrimTextureVideoView != null) {
-      localTrimTextureVideoView.b();
+      localTrimTextureVideoView.c();
     }
   }
   
@@ -535,35 +529,35 @@ public class LocalVideoSelectActivity
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.k)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.s)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a();
-        int j = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b();
-        int k = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
-        int m = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.c();
-        int n = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.a();
-        int i1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.b();
+        this.h.b();
+        int i1 = this.h.getStartTime();
+        int i2 = this.h.getEndTime();
+        int i3 = this.i.getRangeScrollX();
+        int i4 = this.i.getStartIndex();
+        int i5 = this.i.getEndIndex();
         Object localObject = new Intent();
-        ((Intent)localObject).putExtra("start_time", j);
-        ((Intent)localObject).putExtra("end_time", k);
-        ((Intent)localObject).putExtra("video_index", this.g);
-        ((Intent)localObject).putExtra("start_index", n);
-        ((Intent)localObject).putExtra("end_index", i1);
-        ((Intent)localObject).putExtra("scroll_x", m);
+        ((Intent)localObject).putExtra("start_time", i1);
+        ((Intent)localObject).putExtra("end_time", i2);
+        ((Intent)localObject).putExtra("video_index", this.t);
+        ((Intent)localObject).putExtra("start_index", i4);
+        ((Intent)localObject).putExtra("end_index", i5);
+        ((Intent)localObject).putExtra("scroll_x", i3);
         setResult(-1, (Intent)localObject);
-        m = this.jdField_d_of_type_Int;
-        localObject = this.jdField_a_of_type_JavaLangString;
+        i3 = this.d;
+        localObject = this.e;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(j);
+        localStringBuilder.append(i1);
         localStringBuilder.append("-");
-        localStringBuilder.append(k);
-        StoryReportor.a("pic_choose", "done_cutVideo", m, 0, new String[] { localObject, localStringBuilder.toString() });
+        localStringBuilder.append(i2);
+        StoryReportor.a("pic_choose", "done_cutVideo", i3, 0, new String[] { localObject, localStringBuilder.toString() });
         finish();
       }
     }
-    else if (paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) {
+    else if (paramView == this.m) {
       b();
     }
     EventCollector.getInstance().onViewClicked(paramView);

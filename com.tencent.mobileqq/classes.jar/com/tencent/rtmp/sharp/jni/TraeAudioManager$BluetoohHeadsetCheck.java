@@ -36,121 +36,117 @@ class TraeAudioManager$BluetoohHeadsetCheck
       localStringBuilder.append(" ");
       localStringBuilder.append(interfaceDesc());
       localStringBuilder.append(" _addAction");
-      QLog.w("TRAE", 2, localStringBuilder.toString());
+      QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
     }
     paramIntentFilter.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
-    paramIntentFilter.addAction("android.media.ACTION_SCO_AUDIO_STATE_UPDATED");
-    paramIntentFilter.addAction("android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED");
   }
   
-  void _onReceive(Context paramContext, Intent paramIntent)
+  void _onReceive(Context arg1, Intent paramIntent)
   {
     int i;
-    int j;
-    if ("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction()))
+    if ("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", 10);
+      if (i == 12)
+      {
+        if (TraeAudioManager.access$000(this.this$0) == 6)
+        {
+          QLog.w("TraeAudioManager", 2, "bluetoothHeadsetSwitchThread ACTION_AUDIO_STATE_CHANGED +++ Bluetooth audio SCO is now connected, SCO_CONNECTED");
+          TraeAudioManager.access$002(this.this$0, 7);
+          synchronized (this.this$0._bluetooth_sco_connect)
+          {
+            this.this$0._bluetooth_sco_connect[0] = true;
+            this.this$0._bluetooth_sco_connect.notifyAll();
+            return;
+          }
+        }
+      }
+      else if (i == 10) {
+        this.this$0.checkAutoDeviceListUpdate(true);
+      }
+    }
+    else if ("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1);
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2) {
+            return;
+          }
+          TraeAudioManager.access$002(this.this$0, 4);
+          this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
+          QLog.w("TraeAudioManager", 2, "BluetoothHeadset ACTION_CONNECTION_STATE_CHANGED BluetoothProfile.STATE_CONNECTED");
+          this.this$0.checkAutoDeviceListUpdate(false);
+        }
+      }
+      else
+      {
+        TraeAudioManager.access$002(this.this$0, 3);
+        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
+        QLog.w("TraeAudioManager", 2, "BluetoothHeadset ACTION_CONNECTION_STATE_CHANGED BluetoothProfile.STATE_DISCONNECTED");
+      }
+    }
+    else if ("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction()))
     {
       i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.CONNECTION_STATE", -1);
-      j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_CONNECTION_STATE", -1);
+      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_CONNECTION_STATE", -1);
       paramIntent = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
       if (QLog.isColorLevel())
       {
-        paramContext = new StringBuilder();
-        paramContext.append("BT ACTION_CONNECTION_STATE_CHANGED|   EXTRA_CONNECTION_STATE ");
-        paramContext.append(getBTAdapterConnectionState(i));
-        QLog.w("TRAE", 2, paramContext.toString());
+        ??? = new StringBuilder();
+        ???.append("BT ACTION_CONNECTION_STATE_CHANGED|   EXTRA_CONNECTION_STATE ");
+        ???.append(getBTAdapterConnectionState(i));
+        QLog.w("TraeAudioManager", 2, ???.toString());
       }
       if (QLog.isColorLevel())
       {
-        paramContext = new StringBuilder();
-        paramContext.append("    EXTRA_PREVIOUS_CONNECTION_STATE ");
-        paramContext.append(getBTAdapterConnectionState(j));
-        QLog.w("TRAE", 2, paramContext.toString());
+        ??? = new StringBuilder();
+        ???.append("    EXTRA_PREVIOUS_CONNECTION_STATE ");
+        ???.append(getBTAdapterConnectionState(j));
+        QLog.w("TraeAudioManager", 2, ???.toString());
       }
-      Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("    EXTRA_DEVICE ");
-        ((StringBuilder)localObject).append(paramIntent);
-        paramContext = " ";
-        ((StringBuilder)localObject).append(" ");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("    EXTRA_DEVICE ");
+        localStringBuilder.append(paramIntent);
+        localStringBuilder.append(" ");
         if (paramIntent != null) {
-          paramContext = paramIntent.getName();
+          ??? = paramIntent.getName();
+        } else {
+          ??? = " ";
         }
-        ((StringBuilder)localObject).append(paramContext);
-        QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
+        localStringBuilder.append(???);
+        QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
       }
       if (i == 2)
       {
         if (QLog.isColorLevel())
         {
-          paramContext = new StringBuilder();
-          paramContext.append("   dev:");
-          paramContext.append(paramIntent.getName());
-          paramContext.append(" connected,start sco...");
-          QLog.w("TRAE", 2, paramContext.toString());
+          ??? = new StringBuilder();
+          ???.append("   dev:");
+          ???.append(paramIntent.getName());
+          ???.append(" connected");
+          QLog.w("TraeAudioManager", 2, ???.toString());
         }
-        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
-        localObject = this._devCfg;
         if (paramIntent != null) {
-          paramContext = paramIntent.getName();
+          ??? = paramIntent.getName();
         } else {
-          paramContext = "unkown";
+          ??? = "unkown";
         }
-        ((TraeAudioManager.DeviceConfigManager)localObject).setBluetoothName(paramContext);
+        if (!???.contains("FreeBuds")) {
+          this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
+        }
+        this._devCfg.setBluetoothName(???);
         return;
       }
       if (i == 0) {
         this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
       }
-    }
-    else if ("android.media.ACTION_SCO_AUDIO_STATE_UPDATED".equals(paramIntent.getAction()))
-    {
-      i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
-      j = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_PREVIOUS_STATE", -1);
-      paramContext = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
-      if (QLog.isColorLevel())
-      {
-        paramIntent = new StringBuilder();
-        paramIntent.append("BT ACTION_SCO_AUDIO_STATE_UPDATED|   EXTRA_CONNECTION_STATE  dev:");
-        paramIntent.append(paramContext);
-        QLog.w("TRAE", 2, paramIntent.toString());
-      }
-      if (QLog.isColorLevel())
-      {
-        paramContext = new StringBuilder();
-        paramContext.append("   EXTRA_SCO_AUDIO_STATE ");
-        paramContext.append(getSCOAudioStateExtraString(i));
-        QLog.w("TRAE", 2, paramContext.toString());
-      }
-      if (QLog.isColorLevel())
-      {
-        paramContext = new StringBuilder();
-        paramContext.append("   EXTRA_SCO_AUDIO_PREVIOUS_STATE ");
-        paramContext.append(getSCOAudioStateExtraString(j));
-        QLog.w("TRAE", 2, paramContext.toString());
-      }
-    }
-    else if ("android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction()))
-    {
-      paramContext = BluetoothAdapter.getDefaultAdapter();
-      i = paramContext.getProfileConnectionState(2);
-      if (i != 0)
-      {
-        if (i != 2)
-        {
-          paramIntent = new StringBuilder();
-          paramIntent.append("BluetoothA2dp");
-          paramIntent.append(paramContext.getProfileConnectionState(2));
-          QLog.w("TRAE", 2, paramIntent.toString());
-          return;
-        }
-        QLog.w("TRAE", 2, "BluetoothA2dp STATE_CONNECTED");
-        this.this$0.IsBluetoothA2dpExisted = true;
-        return;
-      }
-      QLog.w("TRAE", 2, "BluetoothA2dp STATE_DISCONNECTED");
-      this.this$0.IsBluetoothA2dpExisted = false;
     }
   }
   
@@ -166,7 +162,7 @@ class TraeAudioManager$BluetoohHeadsetCheck
       if (this._adapter == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TRAE", 2, " err getDefaultAdapter fail!");
+          QLog.e("TraeAudioManager", 2, " err getDefaultAdapter fail!");
         }
         return false;
       }
@@ -176,7 +172,7 @@ class TraeAudioManager$BluetoohHeadsetCheck
         if ((this._adapter.isEnabled()) && (this._profile == null) && (!this._adapter.getProfileProxy(this._ctx, this, 1)))
         {
           if (QLog.isColorLevel()) {
-            QLog.e("TRAE", 2, "BluetoohHeadsetCheck: getProfileProxy HEADSET fail!");
+            QLog.e("TraeAudioManager", 2, "BluetoohHeadsetCheck: getProfileProxy HEADSET fail!");
           }
           return false;
         }
@@ -190,7 +186,7 @@ class TraeAudioManager$BluetoohHeadsetCheck
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, " err ctx==null||_devCfg==null");
+      QLog.e("TraeAudioManager", 2, " err ctx==null||_devCfg==null");
     }
     return false;
   }
@@ -257,49 +253,49 @@ class TraeAudioManager$BluetoohHeadsetCheck
             ((StringBuilder)localObject).append(paramBluetoothProfile);
             ((StringBuilder)localObject).append(" _profile:");
             ((StringBuilder)localObject).append(this._profile);
-            QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
+            QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
           }
           this._adapter.closeProfileProxy(1, this._profile);
           this._profile = null;
         }
         this._profile = paramBluetoothProfile;
         if (this._profile == null) {
-          break label593;
+          break label596;
         }
         paramBluetoothProfile = this._profile.getConnectedDevices();
         if ((paramBluetoothProfile != null) && (this._profile != null))
         {
           if (!QLog.isColorLevel()) {
-            break label598;
+            break label601;
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("TRAEBluetoohProxy: HEADSET Connected devs:");
           ((StringBuilder)localObject).append(paramBluetoothProfile.size());
           ((StringBuilder)localObject).append(" _profile:");
           ((StringBuilder)localObject).append(this._profile);
-          QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
-          break label598;
+          QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
+          break label601;
           if (paramInt < paramBluetoothProfile.size())
           {
             localObject = (BluetoothDevice)paramBluetoothProfile.get(paramInt);
             try
             {
               if (this._profile == null) {
-                break label603;
+                break label606;
               }
               i = this._profile.getConnectionState((BluetoothDevice)localObject);
             }
             catch (Exception localException)
             {
               if (!QLog.isColorLevel()) {
-                break label603;
+                break label606;
               }
             }
             StringBuilder localStringBuilder3 = new StringBuilder();
             localStringBuilder3.append("get bluetooth connection state failed.");
             localStringBuilder3.append(localException.getMessage());
-            QLog.e("TRAE", 2, localStringBuilder3.toString());
-            break label603;
+            QLog.e("TraeAudioManager", 2, localStringBuilder3.toString());
+            break label606;
             if (i == 2) {
               this._devCfg.setBluetoothName(((BluetoothDevice)localObject).getName());
             }
@@ -312,7 +308,7 @@ class TraeAudioManager$BluetoohHeadsetCheck
               localStringBuilder2.append(((BluetoothDevice)localObject).getName());
               localStringBuilder2.append(" ConnectionState:");
               localStringBuilder2.append(i);
-              QLog.w("TRAE", 2, localStringBuilder2.toString());
+              QLog.w("TraeAudioManager", 2, localStringBuilder2.toString());
             }
             paramInt += 1;
             continue;
@@ -346,13 +342,13 @@ class TraeAudioManager$BluetoohHeadsetCheck
       }
       AudioDeviceInterface.LogTraceExit();
       return;
-      label593:
+      label596:
       paramBluetoothProfile = null;
       continue;
-      label598:
+      label601:
       paramInt = 0;
       continue;
-      label603:
+      label606:
       int i = 0;
     }
   }
@@ -369,7 +365,7 @@ class TraeAudioManager$BluetoohHeadsetCheck
     if (paramInt == 1)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "TRAEBluetoohProxy: HEADSET Disconnected");
+        QLog.w("TraeAudioManager", 2, "TRAEBluetoohProxy: HEADSET Disconnected");
       }
       if (isConnected()) {
         this.this$0.checkDevicePlug("DEVICE_BLUETOOTHHEADSET", false);
@@ -400,20 +396,20 @@ class TraeAudioManager$BluetoohHeadsetCheck
     //   4: invokespecial 54	java/lang/StringBuilder:<init>	()V
     //   7: astore_1
     //   8: aload_1
-    //   9: ldc 243
+    //   9: ldc 248
     //   11: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: pop
     //   15: aload_1
     //   16: aload_0
     //   17: getfield 35	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_profile	Landroid/bluetooth/BluetoothProfile;
-    //   20: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload_1
     //   25: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 196	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:LogTraceEntry	(Ljava/lang/String;)V
+    //   28: invokestatic 195	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:LogTraceEntry	(Ljava/lang/String;)V
     //   31: aload_0
     //   32: getfield 42	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_profileLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   35: invokevirtual 204	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   35: invokevirtual 209	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   38: aload_0
     //   39: getfield 33	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_adapter	Landroid/bluetooth/BluetoothAdapter;
     //   42: ifnull +27 -> 69
@@ -425,13 +421,13 @@ class TraeAudioManager$BluetoohHeadsetCheck
     //   56: iconst_1
     //   57: aload_0
     //   58: getfield 35	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_profile	Landroid/bluetooth/BluetoothProfile;
-    //   61: invokevirtual 254	android/bluetooth/BluetoothAdapter:closeProfileProxy	(ILandroid/bluetooth/BluetoothProfile;)V
+    //   61: invokevirtual 262	android/bluetooth/BluetoothAdapter:closeProfileProxy	(ILandroid/bluetooth/BluetoothProfile;)V
     //   64: aload_0
     //   65: aconst_null
     //   66: putfield 35	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_profile	Landroid/bluetooth/BluetoothProfile;
     //   69: aload_0
     //   70: getfield 42	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_profileLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   73: invokevirtual 216	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   73: invokevirtual 221	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   76: goto +52 -> 128
     //   79: astore_1
     //   80: goto +52 -> 132
@@ -443,12 +439,12 @@ class TraeAudioManager$BluetoohHeadsetCheck
     //   94: invokespecial 54	java/lang/StringBuilder:<init>	()V
     //   97: astore_2
     //   98: aload_2
-    //   99: ldc_w 298
+    //   99: ldc_w 305
     //   102: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   105: pop
     //   106: aload_2
     //   107: aload_1
-    //   108: invokevirtual 269	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   108: invokevirtual 277	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   111: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: ldc 68
@@ -457,11 +453,11 @@ class TraeAudioManager$BluetoohHeadsetCheck
     //   119: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   122: invokestatic 75	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   125: goto -56 -> 69
-    //   128: invokestatic 219	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:LogTraceExit	()V
+    //   128: invokestatic 224	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:LogTraceExit	()V
     //   131: return
     //   132: aload_0
     //   133: getfield 42	com/tencent/rtmp/sharp/jni/TraeAudioManager$BluetoohHeadsetCheck:_profileLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   136: invokevirtual 216	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   136: invokevirtual 221	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   139: goto +5 -> 144
     //   142: aload_1
     //   143: athrow
@@ -484,7 +480,7 @@ class TraeAudioManager$BluetoohHeadsetCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.BluetoohHeadsetCheck
  * JD-Core Version:    0.7.0.1
  */

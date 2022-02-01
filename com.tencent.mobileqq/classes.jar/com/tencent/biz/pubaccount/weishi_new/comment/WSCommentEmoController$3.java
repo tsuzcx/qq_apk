@@ -11,12 +11,12 @@ class WSCommentEmoController$3
   
   public void onClick(View paramView)
   {
-    WSCommentEmoController.a(this.a).deleteEmoticonClick();
+    WSCommentEmoController.b(this.a).deleteEmoticonClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WSCommentEmoController.3
  * JD-Core Version:    0.7.0.1
  */

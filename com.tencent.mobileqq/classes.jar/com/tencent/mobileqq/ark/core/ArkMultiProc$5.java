@@ -11,15 +11,15 @@ final class ArkMultiProc$5
     if (!super.a(paramString)) {
       return false;
     }
-    if (ArkEnvironment.a != null) {
-      return ArkEnvironment.a.shouldCheckURLDomain();
+    if (ArkEnvironment.c != null) {
+      return ArkEnvironment.c.shouldCheckURLDomain();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkMultiProc.5
  * JD-Core Version:    0.7.0.1
  */

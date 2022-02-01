@@ -13,9 +13,9 @@ class ChatRoomAdapter$1
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatMessage.a() != null)
+    if (this.a.a() != null)
     {
-      paramView = TextUtils.emoticonToTextForTalkBack(this.jdField_a_of_type_ComTencentAvUiChatroomVideoChatMessage.a().toString());
+      paramView = TextUtils.emoticonToTextForTalkBack(this.a.a().toString());
       paramAccessibilityNodeInfoCompat.setText(paramView);
       paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
     }

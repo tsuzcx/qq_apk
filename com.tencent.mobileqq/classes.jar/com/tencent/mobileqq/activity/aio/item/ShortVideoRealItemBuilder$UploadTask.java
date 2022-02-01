@@ -22,26 +22,26 @@ import java.lang.ref.WeakReference;
 public class ShortVideoRealItemBuilder$UploadTask
   implements Runnable
 {
-  long jdField_a_of_type_Long = 0L;
-  MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  long jdField_b_of_type_Long = 0L;
-  WeakReference<QQAppInterface> jdField_b_of_type_JavaLangRefWeakReference;
-  WeakReference<ShortVideoRealItemBuilder> c;
+  WeakReference<Context> a;
+  WeakReference<QQAppInterface> b;
+  MessageForShortVideo c;
+  String d;
+  long e = 0L;
+  long f = 0L;
+  WeakReference<ShortVideoRealItemBuilder> g;
   
   public ShortVideoRealItemBuilder$UploadTask(QQAppInterface paramQQAppInterface, Context paramContext, MessageForShortVideo paramMessageForShortVideo, String paramString, ShortVideoRealItemBuilder paramShortVideoRealItemBuilder)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.c = new WeakReference(paramShortVideoRealItemBuilder);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramContext);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.g = new WeakReference(paramShortVideoRealItemBuilder);
+    this.c = paramMessageForShortVideo;
+    this.d = paramString;
   }
   
   private void a(long paramLong)
   {
-    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = (ShortVideoRealItemBuilder)this.c.get();
+    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = (ShortVideoRealItemBuilder)this.g.get();
     if (localShortVideoRealItemBuilder != null) {
       ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, paramLong);
     }
@@ -49,13 +49,13 @@ public class ShortVideoRealItemBuilder$UploadTask
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+    if (this.c == null) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    this.e = System.currentTimeMillis();
+    MessageForShortVideo localMessageForShortVideo = this.c;
     Object localObject1 = localMessageForShortVideo.videoFileName;
-    Object localObject2 = (ShortVideoRealItemBuilder)this.c.get();
+    Object localObject2 = (ShortVideoRealItemBuilder)this.g.get();
     if (FileUtils.fileExistsAndNotEmpty((String)localObject1))
     {
       if (QLog.isColorLevel()) {
@@ -64,7 +64,7 @@ public class ShortVideoRealItemBuilder$UploadTask
       a(localMessageForShortVideo.uniseq);
       return;
     }
-    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.d))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file is null!");
@@ -72,11 +72,11 @@ public class ShortVideoRealItemBuilder$UploadTask
       a(localMessageForShortVideo.uniseq);
       return;
     }
-    localObject1 = (QQAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    localObject1 = (QQAppInterface)this.b.get();
     if (localObject1 != null) {
       ((QQAppInterface)localObject1).getHwEngine().preConnect();
     }
-    long l = new File(this.jdField_a_of_type_JavaLangString).length();
+    long l = new File(this.d).length();
     if (l == 0L)
     {
       if (QLog.isColorLevel()) {
@@ -117,9 +117,9 @@ public class ShortVideoRealItemBuilder$UploadTask
     if (localObject1 != null)
     {
       localObject2 = SVUtils.a(localMessageForShortVideo, "mp4");
-      if (!this.jdField_a_of_type_JavaLangString.equals(localObject2))
+      if (!this.d.equals(localObject2))
       {
-        FileUtils.rename(this.jdField_a_of_type_JavaLangString, (String)localObject2);
+        FileUtils.rename(this.d, (String)localObject2);
         if (QLog.isColorLevel())
         {
           localObject3 = new StringBuilder();
@@ -139,10 +139,10 @@ public class ShortVideoRealItemBuilder$UploadTask
       ((QQAppInterface)localObject1).getMessageFacade().a(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
       localObject2 = SVBusiUtil.a(0, i);
       Object localObject3 = ShortVideoBusiManager.a(localMessageForShortVideo, (ShortVideoReq)localObject2);
-      ((ShortVideoUploadInfo)localObject3).b = false;
+      ((ShortVideoUploadInfo)localObject3).w = false;
       ((ShortVideoReq)localObject2).a((ShortVideoUploadInfo)localObject3);
       ShortVideoBusiManager.a((ShortVideoReq)localObject2, (QQAppInterface)localObject1);
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.f = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -151,13 +151,13 @@ public class ShortVideoRealItemBuilder$UploadTask
         ((StringBuilder)localObject2).append("]mMessageForShortVideo = ");
         ((StringBuilder)localObject2).append(localMessageForShortVideo);
         ((StringBuilder)localObject2).append("\n |- upload cost:");
-        double d = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-        Double.isNaN(d);
-        ((StringBuilder)localObject2).append(d / 1000.0D);
+        double d1 = this.f - this.e;
+        Double.isNaN(d1);
+        ((StringBuilder)localObject2).append(d1 / 1000.0D);
         QLog.i("ShortVideoRealItemBuilder", 2, ((StringBuilder)localObject2).toString());
       }
       localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.m(), "");
       a(localMessageForShortVideo.uniseq);
       return;
     }
@@ -168,7 +168,7 @@ public class ShortVideoRealItemBuilder$UploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask
  * JD-Core Version:    0.7.0.1
  */

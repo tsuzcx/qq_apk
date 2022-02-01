@@ -2,17 +2,17 @@ package com.tencent.mobileqq.profile.PersonalityLabel.tagCloud;
 
 class TagCloudView$FillTag
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  int b;
+  int a;
+  float b;
   int c;
+  int d;
   
   public TagCloudView$FillTag(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.a = paramInt1;
+    this.b = paramFloat;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
   public String toString()
@@ -22,7 +22,7 @@ class TagCloudView$FillTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView.FillTag
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ class PreloadServiceImpl$3
           localStringBuilder.append(paramBundle.vecResInfo);
           QLog.d("PreloadService", 2, localStringBuilder.toString());
         }
-        PreloadServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl).update(paramBundle.vecResInfo);
+        PreloadServiceImpl.access$000(this.d).update(paramBundle.vecResInfo);
         ThreadManager.post(new PreloadServiceImpl.3.1(this), 5, null, true);
         return;
       }
@@ -60,7 +60,7 @@ class PreloadServiceImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

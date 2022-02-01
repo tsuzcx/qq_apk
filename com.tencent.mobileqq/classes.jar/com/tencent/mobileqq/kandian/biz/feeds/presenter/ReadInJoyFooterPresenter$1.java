@@ -13,13 +13,13 @@ class ReadInJoyFooterPresenter$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsPresenterReadInJoyFooterPresenter), this.jdField_a_of_type_JavaLangString);
-    ReadInJoyFooterPresenter.a(1, RIJFeedsType.c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
+    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.c), this.a);
+    ReadInJoyFooterPresenter.a(1, RIJFeedsType.k(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.presenter.ReadInJoyFooterPresenter.1
  * JD-Core Version:    0.7.0.1
  */

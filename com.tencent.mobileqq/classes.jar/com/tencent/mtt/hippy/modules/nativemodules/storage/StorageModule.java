@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class StorageModule
   extends HippyNativeModuleBase
 {
-  private HippyStorageAdapter a;
+  private final HippyStorageAdapter a;
   
   public StorageModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -128,7 +128,7 @@ public class StorageModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.storage.StorageModule
  * JD-Core Version:    0.7.0.1
  */

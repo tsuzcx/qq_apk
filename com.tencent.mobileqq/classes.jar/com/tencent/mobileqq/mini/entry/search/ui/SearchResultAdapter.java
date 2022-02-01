@@ -82,11 +82,11 @@ public class SearchResultAdapter
     }
     localObject3 = new LinearLayout(paramView.getContext());
     ((LinearLayout)localObject3).setOrientation(0);
-    Object localObject4 = new LinearLayout.LayoutParams(-2, ViewUtils.b(33.0F));
-    ((LinearLayout.LayoutParams)localObject4).rightMargin = ViewUtils.b(20.0F);
+    Object localObject4 = new LinearLayout.LayoutParams(-2, ViewUtils.dpToPx(33.0F));
+    ((LinearLayout.LayoutParams)localObject4).rightMargin = ViewUtils.dpToPx(20.0F);
     ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
     TextView localTextView = new TextView(paramView.getContext());
-    localObject4 = new LinearLayout.LayoutParams(ViewUtils.b(39.0F), -1);
+    localObject4 = new LinearLayout.LayoutParams(ViewUtils.dpToPx(39.0F), -1);
     ((LinearLayout.LayoutParams)localObject4).gravity = 17;
     localTextView.setText(localObject2);
     localTextView.setTextColor(-1);
@@ -99,7 +99,7 @@ public class SearchResultAdapter
     paramView = new TextView(paramView.getContext());
     localObject5 = new LinearLayout.LayoutParams(-2, -1);
     ((LinearLayout.LayoutParams)localObject4).gravity = 17;
-    int i = ViewUtils.b(7.0F);
+    int i = ViewUtils.dpToPx(7.0F);
     paramView.setPadding(i, 0, i, 0);
     localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append(paramCouponInfo);
@@ -112,7 +112,7 @@ public class SearchResultAdapter
     paramView.setGravity(17);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject5);
     ((LinearLayout)localObject3).addView(paramView);
-    ((LinearLayout)localObject3).setBackgroundResource(2130841053);
+    ((LinearLayout)localObject3).setBackgroundResource(2130841844);
     return localObject3;
   }
   
@@ -148,16 +148,16 @@ public class SearchResultAdapter
   
   public static Drawable getAvatarDrawable(Context paramContext, String paramString)
   {
-    paramContext = paramContext.getResources().getDrawable(2130840321);
+    paramContext = paramContext.getResources().getDrawable(2130841060);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = paramContext;
     localURLDrawableOptions.mFailedDrawable = paramContext;
-    int i = ViewUtils.a(12.0F);
+    int i = ViewUtils.dip2px(12.0F);
     localURLDrawableOptions.mRequestHeight = i;
     localURLDrawableOptions.mRequestWidth = i;
     paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramContext.setTag(URLDrawableDecodeHandler.a(ViewUtils.a(12.0F), ViewUtils.a(12.0F)));
-    paramContext.setDecodeHandler(URLDrawableDecodeHandler.n);
+    paramContext.setTag(URLDrawableDecodeHandler.a(ViewUtils.dip2px(12.0F), ViewUtils.dip2px(12.0F)));
+    paramContext.setDecodeHandler(URLDrawableDecodeHandler.o);
     return paramContext;
   }
   
@@ -193,24 +193,24 @@ public class SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559393, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131625359, paramViewGroup, false);
       paramViewGroup = new SearchResultAdapter.SearchResultViewHolder();
-      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371227));
-      paramViewGroup.name = ((TextView)paramView.findViewById(2131371228));
-      paramViewGroup.category = ((TextView)paramView.findViewById(2131371229));
-      paramViewGroup.desc = ((TextView)paramView.findViewById(2131371226));
-      paramViewGroup.userNumDesc = ((TextView)paramView.findViewById(2131371238));
-      paramViewGroup.divider = paramView.findViewById(2131371232);
-      paramViewGroup.avatarContainer = ((LinearLayout)paramView.findViewById(2131371230));
-      paramViewGroup.payingFriendsDesc = ((TextView)paramView.findViewById(2131371234));
-      paramViewGroup.couponTitle = ((TextView)paramView.findViewById(2131371207));
-      paramViewGroup.pkRankingContainer = ((RelativeLayout)paramView.findViewById(2131371219));
-      paramViewGroup.couponScrollView = ((ViewGroup)paramView.findViewById(2131371206));
-      paramViewGroup.couponContainer = ((LinearLayout)paramView.findViewById(2131371205));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371105)));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371106)));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371107)));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371108)));
+      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131438569));
+      paramViewGroup.name = ((TextView)paramView.findViewById(2131438570));
+      paramViewGroup.category = ((TextView)paramView.findViewById(2131438571));
+      paramViewGroup.desc = ((TextView)paramView.findViewById(2131438568));
+      paramViewGroup.userNumDesc = ((TextView)paramView.findViewById(2131438580));
+      paramViewGroup.divider = paramView.findViewById(2131438574);
+      paramViewGroup.avatarContainer = ((LinearLayout)paramView.findViewById(2131438572));
+      paramViewGroup.payingFriendsDesc = ((TextView)paramView.findViewById(2131438576));
+      paramViewGroup.couponTitle = ((TextView)paramView.findViewById(2131438549));
+      paramViewGroup.pkRankingContainer = ((RelativeLayout)paramView.findViewById(2131438561));
+      paramViewGroup.couponScrollView = ((ViewGroup)paramView.findViewById(2131438548));
+      paramViewGroup.couponContainer = ((LinearLayout)paramView.findViewById(2131438547));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131438446)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131438447)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131438448)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131438449)));
       ((SearchResultAdapter.Item)paramViewGroup.mRanking.get(0)).mCrown.setVisibility(0);
       ((SearchResultAdapter.Item)paramViewGroup.mRanking.get(3)).setOutOfRankStyle();
       paramView.setTag(paramViewGroup);
@@ -263,7 +263,7 @@ public class SearchResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

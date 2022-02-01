@@ -10,28 +10,28 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class RecyclerFooterWrapperAdapter
   extends RecyclerView.Adapter
 {
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new RecyclerFooterWrapperAdapter.1(this);
-  HotPicFooterInterface jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface;
+  HotPicFooterInterface a;
+  private RecyclerView.Adapter b;
+  private RecyclerView.AdapterDataObserver c = new RecyclerFooterWrapperAdapter.1(this);
   
   public RecyclerFooterWrapperAdapter(@NonNull RecyclerView.Adapter paramAdapter, HotPicFooterInterface paramHotPicFooterInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface = paramHotPicFooterInterface;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
+    this.a = paramHotPicFooterInterface;
+    this.b = paramAdapter;
+    this.b.registerAdapterDataObserver(this.c);
   }
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface == null) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+    if (this.a == null) {
+      return this.b.getItemCount();
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + 1;
+    return this.b.getItemCount() + 1;
   }
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface != null) && (paramInt == getItemCount() - 1)) {
+    if ((this.a != null) && (paramInt == getItemCount() - 1)) {
       return 2147483647;
     }
     return super.getItemViewType(paramInt);
@@ -39,26 +39,26 @@ public class RecyclerFooterWrapperAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface != null) && (paramInt == getItemCount() - 1)) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface.a(paramViewHolder, paramInt);
+    if ((this.a != null) && (paramInt == getItemCount() - 1)) {
+      this.a.a(paramViewHolder, paramInt);
     } else {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
+      this.b.onBindViewHolder(paramViewHolder, paramInt);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    HotPicFooterInterface localHotPicFooterInterface = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface;
+    HotPicFooterInterface localHotPicFooterInterface = this.a;
     if ((localHotPicFooterInterface != null) && (2147483647 == paramInt)) {
       return localHotPicFooterInterface.a(paramViewGroup, paramInt);
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    return this.b.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter
  * JD-Core Version:    0.7.0.1
  */

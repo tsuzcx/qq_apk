@@ -14,8 +14,8 @@ public class TroopLocationPushDecoder
 {
   public static void a(TroopLbsSharePushInfo paramTroopLbsSharePushInfo)
   {
-    long l = paramTroopLbsSharePushInfo.jdField_a_of_type_Long;
-    LocationShareRoomManager.a().a.a(1, String.valueOf(l));
+    long l = paramTroopLbsSharePushInfo.b;
+    LocationShareRoomManager.a().c.a(1, String.valueOf(l));
     if (QLog.isColorLevel()) {
       QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onPushRoomMemberChanged: invoked. ", " troopUin: ", Long.valueOf(l) });
     }
@@ -23,10 +23,10 @@ public class TroopLocationPushDecoder
   
   public static void a(TroopLbsSharePushInfo paramTroopLbsSharePushInfo, int paramInt)
   {
-    long l1 = paramTroopLbsSharePushInfo.jdField_a_of_type_Long;
-    long l2 = paramTroopLbsSharePushInfo.b;
+    long l1 = paramTroopLbsSharePushInfo.b;
+    long l2 = paramTroopLbsSharePushInfo.c;
     paramTroopLbsSharePushInfo = new LocationRoom.RoomKey(1, String.valueOf(l1));
-    LocationShareRoomManager.a().a.a(1, String.valueOf(l1));
+    LocationShareRoomManager.a().c.a(1, String.valueOf(l1));
     switch (paramInt)
     {
     default: 
@@ -54,8 +54,8 @@ public class TroopLocationPushDecoder
   
   public static void a(AppRuntime paramAppRuntime, TroopLbsSharePushInfo paramTroopLbsSharePushInfo)
   {
-    long l1 = paramTroopLbsSharePushInfo.jdField_a_of_type_Long;
-    int j = paramTroopLbsSharePushInfo.jdField_a_of_type_Int;
+    long l1 = paramTroopLbsSharePushInfo.b;
+    int j = paramTroopLbsSharePushInfo.a;
     int i = 4;
     Integer localInteger = Integer.valueOf(1);
     if (j == 4)
@@ -70,7 +70,7 @@ public class TroopLocationPushDecoder
       {
         try
         {
-          byte[] arrayOfByte = paramTroopLbsSharePushInfo.jdField_a_of_type_ArrayOfByte;
+          byte[] arrayOfByte = paramTroopLbsSharePushInfo.d;
           qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
           localPushExtInfo.mergeFrom(arrayOfByte);
           j = localPushExtInfo.client_type.get();
@@ -85,7 +85,7 @@ public class TroopLocationPushDecoder
       }
       else if (j == 3)
       {
-        long l2 = paramTroopLbsSharePushInfo.b;
+        long l2 = paramTroopLbsSharePushInfo.c;
         if (QLog.isColorLevel()) {
           QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onDecodeTroopLbsUserQuitRoom: invoked. ", " operateUin: ", Long.valueOf(l2), " sessionUin: ", Long.valueOf(l1) });
         }
@@ -103,7 +103,7 @@ public class TroopLocationPushDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.TroopLocationPushDecoder
  * JD-Core Version:    0.7.0.1
  */

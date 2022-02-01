@@ -10,6 +10,8 @@ public abstract interface RichMediaConstants
   public static final String CMD_LONGCONN_GROUPPIC_UP = "ImgStore.GroupPicUp";
   public static final String CMD_LONGCONN_GROUPPTT_DOWN = "PttStore.GroupPttDown";
   public static final String CMD_LONGCONN_GROUPPTT_UP = "PttStore.GroupPttUp";
+  public static final String CMD_LONGCONN_GUILDPIC_DOWN = "ImgStore.QQMeetPicDown";
+  public static final String CMD_LONGCONN_GUILDPIC_UP = "ImgStore.QQMeetPicUp";
   public static final String CMD_LONGCONN_LONG_STRUCT_MESSAGE_DOWN = "PubAccountSvc.pull_long_msg_url";
   public static final String CMD_LONGCONN_MULTIMSG_DOWN = "MultiMsg.ApplyDown";
   public static final String CMD_LONGCONN_MULTIMSG_UP = "MultiMsg.ApplyUp";
@@ -30,7 +32,7 @@ public abstract interface RichMediaConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.RichMediaConstants
  * JD-Core Version:    0.7.0.1
  */

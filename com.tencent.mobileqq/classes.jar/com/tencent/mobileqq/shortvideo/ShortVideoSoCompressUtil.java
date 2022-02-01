@@ -9,31 +9,16 @@ import java.io.File;
 
 public class ShortVideoSoCompressUtil
 {
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "backup", "trim_process_pic", "trim_process_pie" };
+  private static final String[] a = { "backup", "trim_process_pic", "trim_process_pie" };
+  private static final Object b = new Object();
+  private static final String c;
   
   static
   {
-    jdField_a_of_type_JavaLangObject = new Object();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("backup");
     localStringBuilder.append(File.separatorChar);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  private static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("lib");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".so");
-    return localStringBuilder.toString();
-  }
-  
-  private static void a()
-  {
-    ThreadManager.excute(new ShortVideoSoCompressUtil.1(), 64, null, false);
+    c = localStringBuilder.toString();
   }
   
   public static void a(String paramString)
@@ -63,14 +48,14 @@ public class ShortVideoSoCompressUtil
     a(((StringBuilder)localObject).toString());
     if (bool2)
     {
-      localObject = ShortVideoSoManager.a(str2);
+      localObject = ShortVideoSoManager.b(str2);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("copySoToFilesDir:[destFile exists] srcMd5=");
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" srcPath=");
       localStringBuilder.append(str2);
       a(localStringBuilder.toString());
-      str2 = ShortVideoSoManager.a(str1);
+      str2 = ShortVideoSoManager.b(str1);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("copySoToFilesDir:[destFile exists] dstMd5=");
       localStringBuilder.append(str2);
@@ -102,20 +87,20 @@ public class ShortVideoSoCompressUtil
     String str1 = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.getContext());
     ??? = new StringBuilder();
     ((StringBuilder)???).append(str1);
-    ((StringBuilder)???).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)???).append(c);
     String str2 = ((StringBuilder)???).toString();
     ??? = new StringBuilder();
     ((StringBuilder)???).append("VideoEnvironment:[uncompressZipSo]destDir=");
     ((StringBuilder)???).append(str2);
     a(((StringBuilder)???).toString());
-    label1103:
-    label1110:
+    label1102:
+    label1109:
     for (;;)
     {
       boolean bool2;
       try
       {
-        synchronized (jdField_a_of_type_JavaLangObject)
+        synchronized (b)
         {
           Object localObject2 = new File(str2);
           bool1 = ((File)localObject2).exists();
@@ -137,7 +122,7 @@ public class ShortVideoSoCompressUtil
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(str2);
-          ((StringBuilder)localObject2).append(a("AVCodec"));
+          ((StringBuilder)localObject2).append(d("AVCodec"));
           localObject2 = ((StringBuilder)localObject2).toString();
           File localFile = new File((String)localObject2);
           Object localObject3;
@@ -163,11 +148,11 @@ public class ShortVideoSoCompressUtil
             paramString = new File(paramString.toString());
             if (paramString.exists())
             {
-              localObject3 = ShortVideoSoManager.a(ShortVideoSoManager.a(paramString));
-              paramInt = ((ShortVideoSoManager.CfgParser)localObject3).a();
+              localObject3 = ShortVideoSoManager.d(ShortVideoSoManager.a(paramString));
+              paramInt = ((ShortVideoSoManager.CfgParser)localObject3).e();
               if (paramInt == 0)
               {
-                str2 = ShortVideoSoManager.a((String)localObject2);
+                str2 = ShortVideoSoManager.b((String)localObject2);
                 paramString = ((ShortVideoSoManager.CfgParser)localObject3).a();
                 Object localObject4 = new StringBuilder();
                 ((StringBuilder)localObject4).append("VideoEnvironment:[uncompressZipSo][Md5] md5Cfg=");
@@ -192,10 +177,10 @@ public class ShortVideoSoCompressUtil
                   str1 = ((StringBuilder)localObject3).toString();
                   localObject3 = new File(str1);
                   if (!((File)localObject3).exists()) {
-                    break label1103;
+                    break label1102;
                   }
                   long l2 = ((File)localObject3).length();
-                  localObject4 = ShortVideoSoManager.a(str1);
+                  localObject4 = ShortVideoSoManager.b(str1);
                   if (!paramString.equalsIgnoreCase((String)localObject4))
                   {
                     bool1 = true;
@@ -210,7 +195,7 @@ public class ShortVideoSoCompressUtil
                     if (bool1)
                     {
                       ((File)localObject3).delete();
-                      break label1103;
+                      break label1102;
                     }
                     localStringBuilder = new StringBuilder();
                     localStringBuilder.append("VideoEnvironment:[uncompressZipSo] Restore SP md5NoEqualsAlready=");
@@ -225,7 +210,7 @@ public class ShortVideoSoCompressUtil
                     bool1 = a("VideoEnvironment:[uncompressZipSo Restore SP ]storeSoNewVersion", str2);
                     paramInt = 0;
                     if (paramInt == 0) {
-                      break label1110;
+                      break label1109;
                     }
                     if (localFile.renameTo((File)localObject3))
                     {
@@ -259,8 +244,8 @@ public class ShortVideoSoCompressUtil
                       paramString.append(str1);
                       throw new RuntimeException(paramString.toString());
                     }
+                    c();
                     b();
-                    a();
                     return bool1;
                   }
                 }
@@ -344,10 +329,60 @@ public class ShortVideoSoCompressUtil
   
   private static void b()
   {
+    ThreadManager.excute(new ShortVideoSoCompressUtil.1(), 64, null, false);
+  }
+  
+  private static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  private static boolean b(String paramString, int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("config_version");
+    paramString = new File(((StringBuilder)localObject).toString());
+    if (!paramString.exists()) {
+      return false;
+    }
+    paramString = ShortVideoSoManager.a(paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    paramString = paramString.trim();
+    localObject = VideoEnvironment.getShortVideoSoLibName();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return false;
+    }
+    if (((String)localObject).equalsIgnoreCase(paramString))
+    {
+      paramString = ShortVideoSoManager.d((String)localObject);
+      if (paramString.e() != 0) {
+        return false;
+      }
+      paramString = paramString.b().trim();
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramInt);
+      if (paramString.equalsIgnoreCase(((StringBuilder)localObject).toString())) {
+        return VideoEnvironment.checkAndLoadAVCodec();
+      }
+    }
+    return false;
+  }
+  
+  private static void c()
+  {
     Object localObject1 = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.getContext());
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(c);
     localObject2 = ((StringBuilder)localObject2).toString();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append((String)localObject2);
@@ -383,19 +418,12 @@ public class ShortVideoSoCompressUtil
     }
   }
   
-  private static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  private static boolean b(String paramString)
+  private static boolean c(String paramString)
   {
     int i = 0;
     for (;;)
     {
-      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = a;
       if (i >= arrayOfString.length) {
         break;
       }
@@ -407,47 +435,18 @@ public class ShortVideoSoCompressUtil
     return false;
   }
   
-  private static boolean b(String paramString, int paramInt)
+  private static String d(String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("config_version");
-    paramString = new File(((StringBuilder)localObject).toString());
-    if (!paramString.exists()) {
-      return false;
-    }
-    paramString = ShortVideoSoManager.a(paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    paramString = paramString.trim();
-    localObject = VideoEnvironment.getShortVideoSoLibName();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return false;
-    }
-    if (((String)localObject).equalsIgnoreCase(paramString))
-    {
-      paramString = ShortVideoSoManager.a((String)localObject);
-      if (paramString.a() != 0) {
-        return false;
-      }
-      paramString = paramString.b().trim();
-      if (TextUtils.isEmpty(paramString)) {
-        return false;
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramInt);
-      if (paramString.equalsIgnoreCase(((StringBuilder)localObject).toString())) {
-        return VideoEnvironment.checkAndLoadAVCodec();
-      }
-    }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lib");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".so");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoSoCompressUtil
  * JD-Core Version:    0.7.0.1
  */

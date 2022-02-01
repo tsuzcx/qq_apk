@@ -9,7 +9,7 @@ class ComponentHeaderTopicRecommend$3
 {
   ComponentHeaderTopicRecommend$3(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
       ComponentHeaderTopicRecommend.a(this.a, false);
@@ -19,7 +19,7 @@ class ComponentHeaderTopicRecommend$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderTopicRecommend.3
  * JD-Core Version:    0.7.0.1
  */

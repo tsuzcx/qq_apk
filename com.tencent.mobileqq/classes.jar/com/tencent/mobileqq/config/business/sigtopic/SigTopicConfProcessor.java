@@ -15,7 +15,7 @@ public class SigTopicConfProcessor
 {
   public static SigTopicConfBean a()
   {
-    SigTopicConfBean localSigTopicConfBean = (SigTopicConfBean)QConfigManager.a().a(529);
+    SigTopicConfBean localSigTopicConfBean = (SigTopicConfBean)QConfigManager.b().b(529);
     if (localSigTopicConfBean != null) {
       return localSigTopicConfBean;
     }
@@ -34,7 +34,7 @@ public class SigTopicConfProcessor
     Object localObject = null;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      String str = paramArrayOfQConfItem[0].a;
+      String str = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(str))
       {
         if (QLog.isColorLevel())
@@ -92,7 +92,7 @@ public class SigTopicConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.sigtopic.SigTopicConfProcessor
  * JD-Core Version:    0.7.0.1
  */

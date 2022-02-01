@@ -1,8 +1,8 @@
 package com.tencent.aelight.camera.ae.biz.circle;
 
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qcircle.tavcut.exporter.MovieExporter.VideoCompressListener;
 import com.tencent.tav.core.AssetExportSession;
-import com.tencent.tavcut.exporter.MovieExporter.VideoCompressListener;
 
 class AECirclePhotoListLogic$16
   implements MovieExporter.VideoCompressListener
@@ -11,34 +11,34 @@ class AECirclePhotoListLogic$16
   
   public void onCompressCanceled()
   {
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressCanceled();
+    FileUtils.deleteFile(this.b);
+    this.a.onCompressCanceled();
   }
   
   public void onCompressError(AssetExportSession paramAssetExportSession)
   {
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressError(paramAssetExportSession);
+    FileUtils.deleteFile(this.b);
+    this.a.onCompressError(paramAssetExportSession);
   }
   
   public void onCompressFinish(String paramString)
   {
-    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressFinish(paramString);
+    this.a.onCompressFinish(paramString);
   }
   
   public void onCompressStart()
   {
-    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressStart();
+    this.a.onCompressStart();
   }
   
   public void onCompressing(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressing(paramFloat);
+    this.a.onCompressing(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.16
  * JD-Core Version:    0.7.0.1
  */

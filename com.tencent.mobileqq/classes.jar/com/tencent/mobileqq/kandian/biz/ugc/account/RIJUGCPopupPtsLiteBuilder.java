@@ -3,10 +3,9 @@ package com.tencent.mobileqq.kandian.biz.ugc.account;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteItemViewHandler;
 import com.tencent.mobileqq.kandian.repo.pts.PTSStyleManager;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.pts.core.itemview.PTSItemData.Builder;
 import com.tencent.qphone.base.util.QLog;
@@ -15,18 +14,32 @@ import org.json.JSONObject;
 
 public class RIJUGCPopupPtsLiteBuilder
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private PTSLiteItemViewHandler jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewHandler;
+  private PTSLiteItemViewHandler a;
+  private Context b;
   
   public RIJUGCPopupPtsLiteBuilder(Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewHandler = new PTSLiteItemViewHandler(paramContext);
-    b();
+    this.b = paramContext;
+    this.a = new PTSLiteItemViewHandler(paramContext);
+    c();
     a(paramViewGroup);
   }
   
-  private String a()
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {
+      return;
+    }
+    Object localObject = PTSStyleManager.a().a("default_feeds", "ugc_account_popup");
+    String str = b();
+    localObject = new PTSItemData.Builder().withItemID("RIJUGCPopupPtsLiteBuilder").withPageName("ugc_account_popup").withFrameTreeJson((String)localObject).withJsonData(str).build();
+    localObject = this.a.a(null, (PTSItemData)localObject);
+    if (localObject != null) {
+      paramViewGroup.addView((View)localObject);
+    }
+  }
+  
+  private String b()
   {
     JSONObject localJSONObject = new JSONObject();
     try
@@ -38,7 +51,7 @@ public class RIJUGCPopupPtsLiteBuilder
       localJSONObject.put("tips", localStringBuilder1.toString());
       localJSONObject.put("edit_profile_text", RIJUGCAddAccountAladdinUtils.c());
       localJSONObject.put("use_origin_account_text", RIJUGCAddAccountAladdinUtils.b());
-      localJSONObject.put("accountUin", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      localJSONObject.put("accountUin", RIJQQAppInterfaceUtil.c());
     }
     catch (JSONException localJSONException)
     {
@@ -50,33 +63,19 @@ public class RIJUGCPopupPtsLiteBuilder
     return localJSONObject.toString();
   }
   
-  private void a(ViewGroup paramViewGroup)
+  private void c()
   {
-    if (paramViewGroup == null) {
-      return;
-    }
-    Object localObject = PTSStyleManager.a().a("default_feeds", "ugc_account_popup");
-    String str = a();
-    localObject = new PTSItemData.Builder().withItemID("RIJUGCPopupPtsLiteBuilder").withPageName("ugc_account_popup").withFrameTreeJson((String)localObject).withJsonData(str).build();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewHandler.a(null, (PTSItemData)localObject);
-    if (localObject != null) {
-      paramViewGroup.addView((View)localObject);
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewHandler.a(new RIJUGCPopupPtsLiteBuilder.1(this));
+    this.a.a(new RIJUGCPopupPtsLiteBuilder.1(this));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewHandler.a();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.account.RIJUGCPopupPtsLiteBuilder
  * JD-Core Version:    0.7.0.1
  */

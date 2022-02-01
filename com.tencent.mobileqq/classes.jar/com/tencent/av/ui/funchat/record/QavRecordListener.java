@@ -2,19 +2,19 @@ package com.tencent.av.ui.funchat.record;
 
 public abstract interface QavRecordListener
 {
+  public abstract void F();
+  
   public abstract void a(int paramInt, Throwable paramThrowable);
   
   public abstract void a(String paramString);
   
-  public abstract void g();
+  public abstract void q();
   
-  public abstract void h();
+  public abstract void r();
   
-  public abstract void i();
+  public abstract void s();
   
-  public abstract void j();
-  
-  public abstract void o();
+  public abstract void t();
 }
 
 

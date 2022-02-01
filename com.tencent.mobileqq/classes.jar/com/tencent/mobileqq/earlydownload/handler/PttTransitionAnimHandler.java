@@ -17,19 +17,9 @@ public class PttTransitionAnimHandler
     super("ptt.transition.anim.res.zip", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10094;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return PttTransitonAnimData.class;
-  }
-  
-  public String a()
-  {
-    return "PttTransitionAnimZip";
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -100,14 +90,9 @@ public class PttTransitionAnimHandler
     super.a(paramString);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
-    return null;
+    return "PttTransitionAnimZip";
   }
   
   public void b(XmlData paramXmlData)
@@ -118,12 +103,27 @@ public class PttTransitionAnimHandler
     super.b(paramXmlData);
   }
   
-  public boolean h()
+  public int c()
+  {
+    return 10094;
+  }
+  
+  public String d()
+  {
+    return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public boolean v()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EarlyDown", 2, "PttTransitionAnimHandler isUserNeedDownload");
     }
-    if ((PttTransitonAnimData)a() == null) {
+    if ((PttTransitonAnimData)h() == null) {
       return true;
     }
     if (QLog.isColorLevel())
@@ -138,7 +138,7 @@ public class PttTransitionAnimHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PttTransitionAnimHandler
  * JD-Core Version:    0.7.0.1
  */

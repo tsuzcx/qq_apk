@@ -8,48 +8,48 @@ import friendlist.RenameGroupResp;
 public class GroupActionResp
 {
   public int a;
-  public AddGroupResp a;
-  public DelGroupResp a;
-  public ReSortGroupResp a;
-  public RenameGroupResp a;
-  public String a;
   public int b;
+  public String c;
+  public AddGroupResp d;
+  public RenameGroupResp e;
+  public DelGroupResp f;
+  public ReSortGroupResp g;
   
   public GroupActionResp(int paramInt, String paramString, AddGroupResp paramAddGroupResp)
   {
-    this.jdField_a_of_type_Int = 1;
+    this.a = 1;
     this.b = paramInt;
-    this.jdField_a_of_type_FriendlistAddGroupResp = paramAddGroupResp;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramAddGroupResp;
+    this.c = paramString;
   }
   
   public GroupActionResp(int paramInt, String paramString, DelGroupResp paramDelGroupResp)
   {
-    this.jdField_a_of_type_Int = 3;
+    this.a = 3;
     this.b = paramInt;
-    this.jdField_a_of_type_FriendlistDelGroupResp = paramDelGroupResp;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramDelGroupResp;
+    this.c = paramString;
   }
   
   public GroupActionResp(int paramInt, String paramString, ReSortGroupResp paramReSortGroupResp)
   {
-    this.jdField_a_of_type_Int = 4;
+    this.a = 4;
     this.b = paramInt;
-    this.jdField_a_of_type_FriendlistReSortGroupResp = paramReSortGroupResp;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramReSortGroupResp;
+    this.c = paramString;
   }
   
   public GroupActionResp(int paramInt, String paramString, RenameGroupResp paramRenameGroupResp)
   {
-    this.jdField_a_of_type_Int = 2;
+    this.a = 2;
     this.b = paramInt;
-    this.jdField_a_of_type_FriendlistRenameGroupResp = paramRenameGroupResp;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramRenameGroupResp;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.GroupActionResp
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ public class BaseConfig
   public static String device_info;
   public static boolean isAccessibilityEnable = false;
   private static boolean isAppFeedReport = true;
-  public static final boolean isPrintPicLog = false;
-  public static final boolean isUserDebug = false;
+  public static boolean isPrintPicLog = false;
+  public static boolean isUserDebug = false;
   private static int mAppFeedTime = 1000;
   public static float mDensity;
   public static int screenHeight;
@@ -58,7 +58,7 @@ public class BaseConfig
   
   public static int getScreenWidth()
   {
-    return ViewUtils.a();
+    return ViewUtils.getScreenWidth();
   }
   
   public static boolean isAccessibilityEnable()
@@ -93,7 +93,7 @@ public class BaseConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.utils.BaseConfig
  * JD-Core Version:    0.7.0.1
  */

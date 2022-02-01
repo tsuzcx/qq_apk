@@ -30,41 +30,32 @@ import java.util.jar.JarFile;
 public class m
   implements INetTransportProvider.INetTransportEventListener
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  private MSFNetTransportProvider jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider = null;
-  final String jdField_a_of_type_JavaLangString = a(new byte[] { 126, 92, 81, 90, 95, 86, 98, 98 });
+  private static boolean i = false;
+  final String a = a(new byte[] { 126, 92, 81, 90, 95, 86, 98, 98 });
   final String b = a(new byte[] { 96, 86, 80, 97, 86, 64, 118, 93, 71, 65, 74 });
   final String c = a(new byte[] { 96, 86, 80, 96, 71, 82, 94, 67, 118, 93, 71, 65, 74 });
   final String d = a(new byte[] { 96, 86, 80, 126, 87, 6, 118, 93, 71, 65, 74 });
   final String e = a(new byte[] { 96, 86, 80, 96, 90, 84 });
   final String f = a(new byte[] { 96, 86, 80, 112, 82, 80, 91, 86, 103, 90, 94, 86 });
   final String g = a(new byte[] { 64, 90, 84, 108, 80, 91, 86, 80, 88 });
+  private QQAppInterface h = null;
+  private MSFNetTransportProvider j = null;
   
   public m(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider = ((MSFNetTransportProvider)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER));
-    this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider.setNetTransportEventListener(this.g, this);
-  }
-  
-  private String a(Context paramContext)
-  {
-    paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramContext.getApplicationContext().getApplicationInfo().sourceDir, 1);
-    if (paramContext == null) {
-      return "";
-    }
-    return paramContext.versionName;
+    this.h = paramQQAppInterface;
+    this.j = ((MSFNetTransportProvider)this.h.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER));
+    this.j.setNetTransportEventListener(this.g, this);
   }
   
   private static String a(byte[] paramArrayOfByte)
   {
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
+    int m = paramArrayOfByte.length;
+    int k = 0;
+    while (k < m)
     {
-      paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] ^ 0x33));
-      i += 1;
+      paramArrayOfByte[k] = ((byte)(paramArrayOfByte[k] ^ 0x33));
+      k += 1;
     }
     return new String(paramArrayOfByte);
   }
@@ -73,8 +64,8 @@ public class m
   {
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(this.e, 0);
     SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int i = localSharedPreferences.getInt(this.b, -1);
-    if ((i == -1) || ((i ^ 0x12) != paramInt1))
+    int k = localSharedPreferences.getInt(this.b, -1);
+    if ((k == -1) || ((k ^ 0x12) != paramInt1))
     {
       localEditor.putInt(this.b, paramInt1 ^ 0x12);
       localEditor.putLong(this.c, System.currentTimeMillis() ^ 0x12);
@@ -136,6 +127,15 @@ public class m
     }
   }
   
+  private String b(Context paramContext)
+  {
+    paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramContext.getApplicationContext().getApplicationInfo().sourceDir, 1);
+    if (paramContext == null) {
+      return "";
+    }
+    return paramContext.versionName;
+  }
+  
   private void b()
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
@@ -143,17 +143,17 @@ public class m
   
   public void a()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (i) {
       return;
     }
-    jdField_a_of_type_Boolean = true;
+    i = true;
     new m.1(this).start();
-    jdField_a_of_type_Boolean = false;
+    i = false;
   }
   
   public void a(Object paramObject1, Object paramObject2)
   {
-    paramObject1 = this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider;
+    paramObject1 = this.j;
     if (paramObject1 == null) {
       return;
     }
@@ -174,10 +174,10 @@ public class m
     {
       paramObject1.printStackTrace();
     }
-    int i = -1;
-    int j = 604800;
+    int k = -1;
+    int m = 604800;
     if (localSignatureResult.u32_check_result.has()) {
-      i = localSignatureResult.u32_check_result.get();
+      k = localSignatureResult.u32_check_result.get();
     }
     boolean bool = localSignatureResult.str_title.has();
     String str3 = "";
@@ -207,29 +207,29 @@ public class m
       str3 = localSignatureResult.str_url.get();
     }
     if (localSignatureResult.u32_cache_time.has()) {
-      j = localSignatureResult.u32_cache_time.get();
+      m = localSignatureResult.u32_cache_time.get();
     }
-    int k = 1;
-    if ((i != 0) && (i != 1)) {
-      if (i != 2)
+    int n = 1;
+    if ((k != 0) && (k != 1)) {
+      if (k != 2)
       {
-        if (i == 3) {}
+        if (k == 3) {}
       }
       else {
         a(paramObject1, paramObject2, str1, str2, str3);
       }
     }
-    if (i == 0) {
-      i = k;
+    if (k == 0) {
+      k = n;
     } else {
-      i = 0;
+      k = 0;
     }
-    a(i, j);
+    a(k, m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ctsz.m
  * JD-Core Version:    0.7.0.1
  */

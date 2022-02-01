@@ -12,9 +12,9 @@ class SignalStrengthReport$QavPhoneStateListener
   {
     super.onSignalStrengthsChanged(paramSignalStrength);
     SignalStrengthReport localSignalStrengthReport = this.a;
-    localSignalStrengthReport.c = localSignalStrengthReport.a(paramSignalStrength);
+    localSignalStrengthReport.j = localSignalStrengthReport.a(paramSignalStrength);
     localSignalStrengthReport = this.a;
-    localSignalStrengthReport.d = localSignalStrengthReport.b(paramSignalStrength);
+    localSignalStrengthReport.k = localSignalStrengthReport.b(paramSignalStrength);
   }
 }
 

@@ -8,18 +8,18 @@ import android.widget.OverScroller;
 class PhotoViewAttacher$FlingRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private final OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
+  private final OverScroller a;
   private int b;
+  private int c;
   
   public PhotoViewAttacher$FlingRunnable(PhotoViewAttacher paramPhotoViewAttacher, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(paramContext);
+    this.a = new OverScroller(paramContext);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetOverScroller.forceFinished(true);
+    this.a.forceFinished(true);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -55,33 +55,33 @@ class PhotoViewAttacher$FlingRunnable
       paramInt1 = m;
       paramInt2 = paramInt1;
     }
-    this.jdField_a_of_type_Int = k;
-    this.b = m;
+    this.b = k;
+    this.c = m;
     if ((k != j) || (m != paramInt2)) {
-      this.jdField_a_of_type_AndroidWidgetOverScroller.fling(k, m, paramInt3, paramInt4, i, j, paramInt1, paramInt2, 0, 0);
+      this.a.fling(k, m, paramInt3, paramInt4, i, j, paramInt1, paramInt2, 0, 0);
     }
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidWidgetOverScroller.isFinished()) {
+    if (this.a.isFinished()) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetOverScroller.computeScrollOffset())
+    if (this.a.computeScrollOffset())
     {
-      int i = this.jdField_a_of_type_AndroidWidgetOverScroller.getCurrX();
-      int j = this.jdField_a_of_type_AndroidWidgetOverScroller.getCurrY();
-      PhotoViewAttacher.a(this.this$0).postTranslate(this.jdField_a_of_type_Int - i, this.b - j);
-      PhotoViewAttacher.a(this.this$0);
-      this.jdField_a_of_type_Int = i;
-      this.b = j;
-      Compat.a(PhotoViewAttacher.a(this.this$0), this);
+      int i = this.a.getCurrX();
+      int j = this.a.getCurrY();
+      PhotoViewAttacher.b(this.this$0).postTranslate(this.b - i, this.c - j);
+      PhotoViewAttacher.c(this.this$0);
+      this.b = i;
+      this.c = j;
+      Compat.a(PhotoViewAttacher.h(this.this$0), this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.PhotoViewAttacher.FlingRunnable
  * JD-Core Version:    0.7.0.1
  */

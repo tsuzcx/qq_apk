@@ -14,23 +14,23 @@ import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegat
 public class StickerRightIconTouchListener
   implements IOnRightIconTouchListener
 {
-  private StickerBubbleTouchDelegate jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private StickerBubbleTouchDelegate b;
   
   private StickerBubbleTouchDelegate a(AIOContext paramAIOContext, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate == null)
+    if (this.b == null)
     {
-      StickerBubbleTouchDelegateCallbackForAIO localStickerBubbleTouchDelegateCallbackForAIO = new StickerBubbleTouchDelegateCallbackForAIO(paramAIOContext.a(), paramAIOContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate = new StickerBubbleTouchDelegate(localStickerBubbleTouchDelegateCallbackForAIO, paramView, PokeItemHelper.b(paramAIOContext.a()), false);
-      localStickerBubbleTouchDelegateCallbackForAIO.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate);
+      StickerBubbleTouchDelegateCallbackForAIO localStickerBubbleTouchDelegateCallbackForAIO = new StickerBubbleTouchDelegateCallbackForAIO(paramAIOContext.b(), paramAIOContext);
+      this.b = new StickerBubbleTouchDelegate(localStickerBubbleTouchDelegateCallbackForAIO, paramView, PokeItemHelper.e(paramAIOContext.a()), false);
+      localStickerBubbleTouchDelegateCallbackForAIO.a(this.b);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate;
+    return this.b;
   }
   
   public boolean a(AIOContext paramAIOContext, View paramView, MotionEvent paramMotionEvent)
   {
-    EditTextUI localEditTextUI = paramAIOContext.a().a().a();
+    EditTextUI localEditTextUI = paramAIOContext.p().d().f();
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
@@ -43,24 +43,24 @@ public class StickerRightIconTouchListener
         }
         else
         {
-          if (!this.jdField_a_of_type_Boolean) {
+          if (!this.a) {
             break label132;
           }
           a(paramAIOContext, paramView).a(paramMotionEvent);
           return false;
         }
       }
-      if ((localEditTextUI.a().toString().isEmpty()) || (this.jdField_a_of_type_Boolean))
+      if ((localEditTextUI.a().toString().isEmpty()) || (this.a))
       {
         a(paramAIOContext, paramView).a(paramMotionEvent);
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
         return true;
       }
     }
     else if (localEditTextUI.a().toString().isEmpty())
     {
       a(paramAIOContext, paramView).a(paramMotionEvent);
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
     label132:
     return false;
@@ -68,7 +68,7 @@ public class StickerRightIconTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.righticon.StickerRightIconTouchListener
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class ArkQQAPIIPCModule$LoginHandler
   
   private void a(long paramLong1, long paramLong2, ArkQQAPIIPCModule.LoginHandler.OnLoginEventHandler paramOnLoginEventHandler)
   {
-    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.a();
+    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.d();
     if (localQQAppInterface == null)
     {
       paramOnLoginEventHandler.a(null, 0L, null, null);
@@ -35,7 +35,7 @@ public class ArkQQAPIIPCModule$LoginHandler
   
   public void a(Bundle paramBundle, IPCMethodCallback paramIPCMethodCallback)
   {
-    if (ArkQQAPIIPCModule.a() == null)
+    if (ArkQQAPIIPCModule.d() == null)
     {
       QLog.e("ArkApp.LoginHandler", 1, "LoginHandler.onCall, qq app is null");
       paramIPCMethodCallback.a(EIPCResult.createResult(-102, new Bundle()));
@@ -53,7 +53,7 @@ public class ArkQQAPIIPCModule$LoginHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.LoginHandler
  * JD-Core Version:    0.7.0.1
  */

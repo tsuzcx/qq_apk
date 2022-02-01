@@ -17,29 +17,29 @@ class PersonalityLabelGalleryActivity$10
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity).personalityLabelInfos.iterator();
+    paramAnimator = PersonalityLabelGalleryActivity.b(this.b).personalityLabelInfos.iterator();
     while (paramAnimator.hasNext())
     {
       PersonalityLabelInfo localPersonalityLabelInfo = (PersonalityLabelInfo)paramAnimator.next();
-      if (this.jdField_a_of_type_Long == localPersonalityLabelInfo.id)
+      if (this.a == localPersonalityLabelInfo.id)
       {
-        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity).personalityLabelInfos.remove(localPersonalityLabelInfo);
-        paramAnimator = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity);
+        PersonalityLabelGalleryActivity.b(this.b).personalityLabelInfos.remove(localPersonalityLabelInfo);
+        paramAnimator = PersonalityLabelGalleryActivity.b(this.b);
         paramAnimator.remainCount += 1;
-        paramAnimator = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity;
-        paramAnimator.a(PersonalityLabelGalleryActivity.a(paramAnimator), false);
-        PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity, true);
-        if ((!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a()) && (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b)) {
-          PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity, false);
+        paramAnimator = this.b;
+        paramAnimator.a(PersonalityLabelGalleryActivity.b(paramAnimator), false);
+        PersonalityLabelGalleryActivity.b(this.b, true);
+        if ((!this.b.c()) && (this.b.i)) {
+          PersonalityLabelGalleryActivity.c(this.b, false);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.hasMessages(0)) {
-          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.removeMessages(0);
+        if (this.b.g.hasMessages(0)) {
+          this.b.g.removeMessages(0);
         }
-        paramAnimator = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.obtainMessage(0, PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.sendMessageDelayed(paramAnimator, 500L);
+        paramAnimator = this.b.g.obtainMessage(0, PersonalityLabelGalleryActivity.b(this.b));
+        this.b.g.sendMessageDelayed(paramAnimator, 500L);
       }
     }
-    ((PersonalityLabelHandler)this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.app.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.jdField_a_of_type_Long);
+    ((PersonalityLabelHandler)this.b.app.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -48,7 +48,7 @@ class PersonalityLabelGalleryActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.10
  * JD-Core Version:    0.7.0.1
  */

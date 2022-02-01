@@ -17,18 +17,18 @@ class MergeForwardOrder
   {
     try
     {
+      if (this.c == null) {
+        this.c = new HashSet();
+      } else {
+        this.c.clear();
+      }
+      this.c.add(Long.valueOf(paramLong1));
       if (this.b == null) {
         this.b = new HashSet();
       } else {
         this.b.clear();
       }
       this.b.add(Long.valueOf(paramLong1));
-      if (this.jdField_a_of_type_JavaUtilSet == null) {
-        this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      } else {
-        this.jdField_a_of_type_JavaUtilSet.clear();
-      }
-      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong1));
       return;
     }
     finally {}
@@ -36,12 +36,12 @@ class MergeForwardOrder
   
   void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if ((this.b != null) && (this.b.size() > 0) && (a(this.jdField_a_of_type_JavaUtilSet) == paramMessageRecord.uniseq) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((this.c != null) && (this.c.size() > 0) && (a(this.b) == paramMessageRecord.uniseq) && (!TextUtils.isEmpty(this.d)) && (this.e != null))
     {
-      paramQQAppInterface = ChatActivityFacade.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaLangString = "";
+      paramQQAppInterface = ChatActivityFacade.c(paramQQAppInterface, this.e, this.d);
+      this.d = "";
       if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-        this.jdField_a_of_type_Long = paramQQAppInterface[0];
+        this.g = paramQQAppInterface[0];
       }
     }
   }
@@ -51,9 +51,9 @@ class MergeForwardOrder
     if (paramBoolean) {}
     try
     {
-      Object localObject1 = this.b;
+      Object localObject1 = this.c;
       break label21;
-      localObject1 = this.jdField_a_of_type_JavaUtilSet;
+      localObject1 = this.b;
       label21:
       if ((localObject1 != null) && (((Set)localObject1).size() > 0))
       {
@@ -77,13 +77,13 @@ class MergeForwardOrder
   
   boolean a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (a(this.jdField_a_of_type_JavaUtilSet) == paramLong) && (a(this.jdField_a_of_type_JavaUtilSet) == paramLong) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Long > 0L))
+    if ((this.b != null) && (this.b.size() > 0) && (a(this.b) == paramLong) && (a(this.b) == paramLong) && (this.e != null) && (this.g > 0L))
     {
-      MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().b(this.e.b, this.e.a, this.g);
       if (localMessageRecord != null) {
         paramQQAppInterface.getMessageFacade().b(localMessageRecord, null, false);
       }
-      this.jdField_a_of_type_Long = 0L;
+      this.g = 0L;
       a();
       return true;
     }
@@ -92,7 +92,7 @@ class MergeForwardOrder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.forward.MergeForwardOrder
  * JD-Core Version:    0.7.0.1
  */

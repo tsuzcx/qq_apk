@@ -19,15 +19,15 @@ class BottomVideoInfoWidget$1
     int j = paramView.getId();
     int i = 0;
     boolean bool;
-    if (j != 2131364910)
+    if (j != 2131431033)
     {
-      if ((j != 2131371472) && (j != 2131377360)) {
+      if ((j != 2131438844) && (j != 2131445753)) {
         return true;
       }
       paramView = (StoryConfigManager)SuperManager.a(10);
-      bool = ((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue() ^ true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      bool = ((Boolean)paramView.c("player_show_debug_panel", Boolean.valueOf(false))).booleanValue() ^ true;
+      paramView.d("player_show_debug_panel", Boolean.valueOf(bool));
+      paramView = ((StoryPlayerGroupHolder)this.a.d()).h();
       if (paramView != null)
       {
         paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
@@ -44,13 +44,13 @@ class BottomVideoInfoWidget$1
     else
     {
       paramView = (StoryConfigManager)SuperManager.a(10);
-      bool = ((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue() ^ true;
-      paramView.b("player_use_tvk", Boolean.valueOf(bool));
-      paramView = this.a.b();
+      bool = ((Boolean)paramView.c("player_use_tvk", Boolean.valueOf(false))).booleanValue() ^ true;
+      paramView.d("player_use_tvk", Boolean.valueOf(bool));
+      paramView = this.a.y();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("UserTVK: ");
       localStringBuilder.append(bool);
-      QQToast.a(paramView, localStringBuilder.toString(), 0).a();
+      QQToast.makeText(paramView, localStringBuilder.toString(), 0).show();
     }
     return true;
   }

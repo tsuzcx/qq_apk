@@ -14,47 +14,41 @@ import java.util.ArrayList;
 public class ScanSpaceManager
   implements Handler.Callback
 {
-  public static final ArrayList<String> a;
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IScanSpaceListener jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  public static final ArrayList<String> d = new ArrayList(2);
+  public long a = 0L;
   public long b = 0L;
   public long c = 0L;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-  }
+  private volatile boolean e = false;
+  private IScanSpaceListener f;
+  private Handler g;
   
   public ScanSpaceManager()
   {
-    this.jdField_a_of_type_Long = 0L;
-    c();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    g();
+    this.e = false;
+    this.g = new Handler(Looper.getMainLooper(), this);
   }
   
   private void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage(1);
       ((Message)localObject).arg1 = paramInt;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.g.sendMessage((Message)localObject);
     }
   }
   
-  private void c()
+  private void g()
   {
     String str1 = FMSettings.a().getDefaultRecvPath();
     String str2 = FMSettings.a().getOtherRecvPath();
-    jdField_a_of_type_JavaUtilArrayList.clear();
+    d.clear();
     StringBuilder localStringBuilder;
     if (!TextUtils.isEmpty(str1))
     {
-      jdField_a_of_type_JavaUtilArrayList.add(str1);
+      d.add(str1);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(" need scan file path1 = ");
       localStringBuilder.append(str1);
@@ -62,7 +56,7 @@ public class ScanSpaceManager
     }
     if (!TextUtils.isEmpty(str2))
     {
-      jdField_a_of_type_JavaUtilArrayList.add(str2);
+      d.add(str2);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(" need scan file path2 = ");
       localStringBuilder.append(str2);
@@ -79,76 +73,76 @@ public class ScanSpaceManager
     }
   }
   
-  private void d()
+  private void h()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, 200L);
+      this.g.sendMessageDelayed((Message)localObject, 200L);
     }
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_Long - this.b - this.c;
-    }
-    return 0L;
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      IScanSpaceListener localIScanSpaceListener = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener;
+      IScanSpaceListener localIScanSpaceListener = this.f;
       if (localIScanSpaceListener != null)
       {
         localIScanSpaceListener.b();
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener.a(0);
+        this.f.a(0);
       }
-      StorageReport.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      StorageReport.c().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
   public void a(IScanSpaceListener paramIScanSpaceListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener = paramIScanSpaceListener;
+    this.f = paramIScanSpaceListener;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
-  public long b()
+  public long c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
+      return this.a - this.b - this.c;
+    }
+    return 0L;
+  }
+  
+  public long d()
+  {
+    if (this.e) {
       return this.c;
     }
     return 0L;
   }
   
-  public void b()
+  public long e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    StorageReport.a();
-    jdField_a_of_type_JavaUtilArrayList.clear();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (this.e) {
+      return this.a;
+    }
+    return 0L;
+  }
+  
+  public void f()
+  {
+    this.e = false;
+    StorageReport.d();
+    d.clear();
+    Handler localHandler = this.g;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.g = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener = null;
-  }
-  
-  public long c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_Long;
-    }
-    return 0L;
+    this.f = null;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -158,11 +152,11 @@ public class ScanSpaceManager
     {
       if (i == 2)
       {
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener;
+        paramMessage = this.f;
         if (paramMessage != null)
         {
           long l1 = this.b;
-          long l2 = this.jdField_a_of_type_Long;
+          long l2 = this.a;
           long l3 = this.c;
           paramMessage.a(l1, l2 - l1 - l3, l3, l2);
         }
@@ -170,7 +164,7 @@ public class ScanSpaceManager
     }
     else
     {
-      IScanSpaceListener localIScanSpaceListener = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener;
+      IScanSpaceListener localIScanSpaceListener = this.f;
       if (localIScanSpaceListener != null) {
         localIScanSpaceListener.a(paramMessage.arg1);
       }
@@ -180,7 +174,7 @@ public class ScanSpaceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager
  * JD-Core Version:    0.7.0.1
  */

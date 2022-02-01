@@ -36,11 +36,11 @@ class InterestSwitchEditActivity$1
         paramCard = InterestSwitchEditActivity.a(paramString);
       }
       InterestSwitchEditActivity.a(paramString, paramCard);
-      ProfileSettingUtils.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a));
-      InterestSwitchEditActivity.a(this.a);
+      ProfileSettingUtils.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.b(this.a), InterestSwitchEditActivity.c(this.a));
+      InterestSwitchEditActivity.d(this.a);
       return;
     }
-    QQToast.a(this.a, HardCodeUtil.a(2131705875), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, HardCodeUtil.a(2131903759), 0).show(this.a.getTitleBarHeight());
   }
   
   public void onSetCardDisplaySetting(boolean paramBoolean, String paramString, Card paramCard, ArrayList<ReqSetSettingItem> paramArrayList)
@@ -59,23 +59,23 @@ class InterestSwitchEditActivity$1
     }
     if (!paramBoolean)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131719418, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(BaseApplicationImpl.sApplication, 2131916977, 0).show(this.a.getTitleBarHeight());
       if (paramArrayList != null)
       {
         paramString = paramArrayList.iterator();
         while (paramString.hasNext())
         {
           paramCard = (ReqSetSettingItem)paramString.next();
-          ProfileSettingUtils.a.a(paramCard.a(), InterestSwitchEditActivity.a(this.a)).c(paramCard.b());
+          ProfileSettingUtils.a.a(paramCard.a(), InterestSwitchEditActivity.c(this.a)).c(paramCard.b());
         }
       }
     }
-    InterestSwitchEditActivity.a(this.a);
+    InterestSwitchEditActivity.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity.1
  * JD-Core Version:    0.7.0.1
  */

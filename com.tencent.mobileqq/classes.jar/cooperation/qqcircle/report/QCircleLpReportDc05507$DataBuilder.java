@@ -70,7 +70,7 @@ public class QCircleLpReportDc05507$DataBuilder
     setPlayScene(paramDataBuilder.playScene);
     setPageId(paramDataBuilder.pageId);
     setfpageid(paramDataBuilder.fPageId);
-    setffPageId(paramDataBuilder.ffPageId);
+    setFfPageId(paramDataBuilder.ffPageId);
     setRuleId(paramDataBuilder.ruleId);
     setRequestId(paramDataBuilder.requestId);
     setFeedUrl(paramDataBuilder.feedUrl);
@@ -487,6 +487,12 @@ public class QCircleLpReportDc05507$DataBuilder
     return this;
   }
   
+  public DataBuilder setFfPageId(int paramInt)
+  {
+    this.ffPageId = paramInt;
+    return this;
+  }
+  
   public DataBuilder setHeight(int paramInt)
   {
     this.height = paramInt;
@@ -619,12 +625,6 @@ public class QCircleLpReportDc05507$DataBuilder
     return this;
   }
   
-  public DataBuilder setffPageId(int paramInt)
-  {
-    this.ffPageId = paramInt;
-    return this;
-  }
-  
   public DataBuilder setfpageid(int paramInt)
   {
     this.fPageId = paramInt;
@@ -633,7 +633,7 @@ public class QCircleLpReportDc05507$DataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05507.DataBuilder
  * JD-Core Version:    0.7.0.1
  */

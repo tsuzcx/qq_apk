@@ -21,11 +21,11 @@ class AioPaiYiPaiHelper$1
     localStringBuilder.append("onPaiYiPaiRevokeNotice isSuccess=");
     localStringBuilder.append(paramBoolean);
     QLog.d("AioPaiYiPaiHelper", 1, localStringBuilder.toString());
-    AioPaiYiPaiHelper.a(this.a).a().removeMessages(267387140);
+    AioPaiYiPaiHelper.a(this.a).j().removeMessages(267387140);
     if (paramBoolean) {
-      AioPaiYiPaiHelper.a(this.a).a().sendEmptyMessage(267387139);
+      AioPaiYiPaiHelper.a(this.a).j().sendEmptyMessage(267387139);
     } else {
-      AioPaiYiPaiHelper.a(this.a).a().sendEmptyMessage(267387140);
+      AioPaiYiPaiHelper.a(this.a).j().sendEmptyMessage(267387140);
     }
     AioPaiYiPaiHelper.a(this.a).a(false, false);
   }
@@ -41,14 +41,14 @@ class AioPaiYiPaiHelper$1
     localStringBuilder.append("]");
     QLog.d("AioPaiYiPaiHelper", 1, localStringBuilder.toString());
     if (paramInt == 1008) {
-      DialogUtil.a(AioPaiYiPaiHelper.a(this.a), 230).setMessage(AioPaiYiPaiHelper.a(this.a).getString(2131694687)).setPositiveButton(17039370, new AioPaiYiPaiHelper.1.1(this)).show();
+      DialogUtil.a(AioPaiYiPaiHelper.b(this.a), 230).setMessage(AioPaiYiPaiHelper.b(this.a).getString(2131892379)).setPositiveButton(17039370, new AioPaiYiPaiHelper.1.1(this)).show();
     }
     a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AioPaiYiPaiHelper.1
  * JD-Core Version:    0.7.0.1
  */

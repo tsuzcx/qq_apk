@@ -18,13 +18,13 @@ public class PlusPanelUtil
   
   static
   {
-    a.put(101, AIOPanelUtiles.jdField_a_of_type_ArrayOfInt);
-    a.put(105, AIOPanelUtiles.e);
-    a.put(102, AIOPanelUtiles.l);
-    a.put(103, AIOPanelUtiles.s);
-    a.put(106, AIOPanelUtiles.w);
-    a.put(104, AIOPanelUtiles.B);
-    a.put(107, AIOPanelUtiles.Y);
+    a.put(101, AIOPanelUtiles.b);
+    a.put(105, AIOPanelUtiles.f);
+    a.put(102, AIOPanelUtiles.m);
+    a.put(103, AIOPanelUtiles.t);
+    a.put(106, AIOPanelUtiles.x);
+    a.put(104, AIOPanelUtiles.C);
+    a.put(107, AIOPanelUtiles.Z);
   }
   
   private static int a(List<AIOPanelIconItem> paramList)
@@ -33,21 +33,16 @@ public class PlusPanelUtil
     while (i < paramList.size())
     {
       j = i;
-      if (((AIOPanelIconItem)paramList.get(i)).jdField_d_of_type_Int == 5) {
+      if (((AIOPanelIconItem)paramList.get(i)).g == 5) {
         return j;
       }
-      if (((AIOPanelIconItem)paramList.get(i)).jdField_d_of_type_Int == 6) {
+      if (((AIOPanelIconItem)paramList.get(i)).g == 6) {
         return i;
       }
       i += 1;
     }
     int j = -1;
     return j;
-  }
-  
-  public static AIOPanelIconItem a(int paramInt)
-  {
-    return a(paramInt, false);
   }
   
   public static AIOPanelIconItem a(int paramInt, boolean paramBoolean)
@@ -57,7 +52,7 @@ public class PlusPanelUtil
     }
     try
     {
-      Object localObject = (AIOPanelIconConfigProcessor.Config)QConfigManager.a().a(496);
+      Object localObject = (AIOPanelIconConfigProcessor.Config)QConfigManager.b().b(496);
       if (localObject != null)
       {
         localObject = ((AIOPanelIconConfigProcessor.Config)localObject).a;
@@ -67,7 +62,7 @@ public class PlusPanelUtil
           while (i < ((List)localObject).size())
           {
             AIOPanelIconItem localAIOPanelIconItem = (AIOPanelIconItem)((List)localObject).get(i);
-            int[] arrayOfInt = (int[])a.get(localAIOPanelIconItem.jdField_a_of_type_Int);
+            int[] arrayOfInt = (int[])a.get(localAIOPanelIconItem.a);
             if (arrayOfInt != null)
             {
               int j = arrayOfInt[0];
@@ -94,7 +89,7 @@ public class PlusPanelUtil
       int[] arrayOfInt;
       try
       {
-        Object localObject = (AIOPanelIconConfigProcessor.Config)QConfigManager.a().a(496);
+        Object localObject = (AIOPanelIconConfigProcessor.Config)QConfigManager.b().b(496);
         if (localObject != null)
         {
           localObject = ((AIOPanelIconConfigProcessor.Config)localObject).a;
@@ -105,30 +100,30 @@ public class PlusPanelUtil
             if (i < ((List)localObject).size())
             {
               AIOPanelIconItem localAIOPanelIconItem = (AIOPanelIconItem)((List)localObject).get(i);
-              arrayOfInt = (int[])a.get(localAIOPanelIconItem.jdField_a_of_type_Int);
+              arrayOfInt = (int[])a.get(localAIOPanelIconItem.a);
               if (arrayOfInt != null) {
                 break label222;
               }
-              b.put(localAIOPanelIconItem.jdField_a_of_type_Int, localAIOPanelIconItem);
+              b.put(localAIOPanelIconItem.a, localAIOPanelIconItem);
               j = 1;
               if (j == 0) {
                 break label227;
               }
-              k = localAIOPanelIconItem.jdField_a_of_type_Int;
-              localAIOPanelIconItem.jdField_d_of_type_Int = k;
-              localAIOPanelIconItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localAIOPanelIconItem.a();
-              localAIOPanelIconItem.b = localAIOPanelIconItem.b();
+              k = localAIOPanelIconItem.a;
+              localAIOPanelIconItem.g = k;
+              localAIOPanelIconItem.m = localAIOPanelIconItem.a();
+              localAIOPanelIconItem.n = localAIOPanelIconItem.b();
               if (j == 0) {
                 break label235;
               }
               j = 0;
-              localAIOPanelIconItem.e = j;
-              localAIOPanelIconItem.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+              localAIOPanelIconItem.o = j;
+              localAIOPanelIconItem.p = arrayOfInt;
               localArrayList.add(localAIOPanelIconItem);
               i += 1;
               continue;
             }
-            a(localArrayList);
+            b(localArrayList);
             a(localArrayList, paramContext);
             return localArrayList;
           }
@@ -150,11 +145,6 @@ public class PlusPanelUtil
     }
   }
   
-  private static void a(List<AIOPanelIconItem> paramList)
-  {
-    Collections.sort(paramList);
-  }
-  
   private static void a(List<AIOPanelIconItem> paramList, Context paramContext)
   {
     int i = a(paramList);
@@ -165,20 +155,20 @@ public class PlusPanelUtil
       }
       return;
     }
-    int[] arrayOfInt = AIOPanelUtiles.v;
+    int[] arrayOfInt = AIOPanelUtiles.w;
     AIOPanelIconItem localAIOPanelIconItem = new AIOPanelIconItem((AIOPanelIconItem)paramList.get(i));
-    localAIOPanelIconItem.jdField_d_of_type_Int = 6;
-    localAIOPanelIconItem.jdField_d_of_type_JavaLangString = paramContext.getResources().getString(arrayOfInt[1]);
-    localAIOPanelIconItem.e = arrayOfInt[3];
-    localAIOPanelIconItem.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    localAIOPanelIconItem.g = 6;
+    localAIOPanelIconItem.h = paramContext.getResources().getString(arrayOfInt[1]);
+    localAIOPanelIconItem.o = arrayOfInt[3];
+    localAIOPanelIconItem.p = arrayOfInt;
     if (ShortVideoUtils.needTwoEntrance())
     {
-      localAIOPanelIconItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(arrayOfInt[2]);
+      localAIOPanelIconItem.m = paramContext.getResources().getDrawable(arrayOfInt[2]);
       paramList.add(i, localAIOPanelIconItem);
       return;
     }
-    a.put(103, AIOPanelUtiles.v);
-    localAIOPanelIconItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(AIOPanelUtiles.s[2]);
+    a.put(103, AIOPanelUtiles.w);
+    localAIOPanelIconItem.m = paramContext.getResources().getDrawable(AIOPanelUtiles.t[2]);
     paramList.set(i, localAIOPanelIconItem);
   }
   
@@ -190,10 +180,20 @@ public class PlusPanelUtil
     }
     return null;
   }
+  
+  public static AIOPanelIconItem b(int paramInt)
+  {
+    return a(paramInt, false);
+  }
+  
+  private static void b(List<AIOPanelIconItem> paramList)
+  {
+    Collections.sort(paramList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.PlusPanelUtil
  * JD-Core Version:    0.7.0.1
  */

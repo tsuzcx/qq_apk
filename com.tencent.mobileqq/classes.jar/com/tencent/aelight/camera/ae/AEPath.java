@@ -23,11 +23,11 @@ public class AEPath
     f = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
-    localStringBuilder.append(HardCodeUtil.a(2131700831));
+    localStringBuilder.append(HardCodeUtil.a(2131898855));
     g = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
-    localStringBuilder.append(HardCodeUtil.a(2131700832));
+    localStringBuilder.append(HardCodeUtil.a(2131898856));
     h = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
@@ -78,7 +78,7 @@ public class AEPath
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPath
  * JD-Core Version:    0.7.0.1
  */

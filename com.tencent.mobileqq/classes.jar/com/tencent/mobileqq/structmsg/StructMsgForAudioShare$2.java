@@ -26,7 +26,7 @@ import mqq.app.AppRuntime;
 class StructMsgForAudioShare$2
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long b = 0L;
   
   StructMsgForAudioShare$2(StructMsgForAudioShare paramStructMsgForAudioShare) {}
   
@@ -34,9 +34,9 @@ class StructMsgForAudioShare$2
   {
     Resources localResources = paramView.getContext().getResources();
     long l = SystemClock.uptimeMillis();
-    if (l - this.jdField_a_of_type_Long >= 500L)
+    if (l - this.b >= 500L)
     {
-      this.jdField_a_of_type_Long = l;
+      this.b = l;
       if ((paramView.getTag() instanceof AbsShareMsg))
       {
         AbsShareMsg localAbsShareMsg = (AbsShareMsg)paramView.getTag();
@@ -62,10 +62,10 @@ class StructMsgForAudioShare$2
         if ((localAbsShareMsg != null) && (localAbsShareMsg.mMsgServiceID == 2))
         {
           localObject2 = (StructMsgForAudioShare)localAbsShareMsg;
-          if (QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare))
+          if (QQPlayerService.d(this.a))
           {
-            QQPlayerService.c(localContext);
-            paramView.setContentDescription(localResources.getString(2131690212));
+            QQPlayerService.e(localContext);
+            paramView.setContentDescription(localResources.getString(2131887112));
           }
           else if ((localObject1 != null) && (((QQAppInterface)localObject1).isVideoChatting()))
           {
@@ -80,11 +80,11 @@ class StructMsgForAudioShare$2
               ((IOnlineMusicStatusManager)localObject1).a(1);
             }
             SongInfo localSongInfo = new SongInfo();
-            localSongInfo.jdField_b_of_type_JavaLangString = ((StructMsgForAudioShare)localObject2).mContentSrc;
-            localSongInfo.c = ((StructMsgForAudioShare)localObject2).mContentTitle;
-            localSongInfo.d = ((StructMsgForAudioShare)localObject2).mContentSummary;
-            localSongInfo.e = ((StructMsgForAudioShare)localObject2).mContentCover;
-            localSongInfo.f = ((StructMsgForAudioShare)localObject2).mMsgUrl;
+            localSongInfo.d = ((StructMsgForAudioShare)localObject2).mContentSrc;
+            localSongInfo.e = ((StructMsgForAudioShare)localObject2).mContentTitle;
+            localSongInfo.f = ((StructMsgForAudioShare)localObject2).mContentSummary;
+            localSongInfo.g = ((StructMsgForAudioShare)localObject2).mContentCover;
+            localSongInfo.h = ((StructMsgForAudioShare)localObject2).mMsgUrl;
             boolean bool = "com.tencent.radio".equals(localAbsShareMsg.mSource_A_ActionData);
             int j = 0;
             int i;
@@ -96,13 +96,13 @@ class StructMsgForAudioShare$2
               }
               else
               {
-                localSongInfo.jdField_b_of_type_Int = 4;
+                localSongInfo.m = 4;
                 i = 1;
               }
             }
             else
             {
-              localSongInfo.jdField_b_of_type_Int = 6;
+              localSongInfo.m = 6;
               i = 0;
               j = 1;
             }
@@ -122,22 +122,22 @@ class StructMsgForAudioShare$2
               localIntent.putExtra("url", (String)localObject1);
               localIntent.putExtra("param_force_internal_browser", true);
               localIntent.putExtra("isAppShare", true);
-              localIntent.putExtra("appShareID", AppShareIDUtil.a(localAbsShareMsg.mSourceAppid));
+              localIntent.putExtra("appShareID", AppShareIDUtil.c(localAbsShareMsg.mSourceAppid));
               localIntent.putExtra("fromAio", true);
               ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(localIntent, localAbsShareMsg.mMsgUrl);
             }
             QQPlayerService.a(localIntent);
-            localObject2 = QQPlayerService.a();
+            localObject2 = QQPlayerService.n();
             localObject1 = localObject2;
             if (localObject2 == null)
             {
               localObject1 = new Bundle();
               QQPlayerService.a((Bundle)localObject1);
             }
-            ((Bundle)localObject1).putString("KEY_SOURCE_NAME", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getSourceName());
-            QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare);
-            QQPlayerService.a(localContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getToken(), localSongInfo);
-            paramView.setContentDescription(localResources.getString(2131690210));
+            ((Bundle)localObject1).putString("KEY_SOURCE_NAME", this.a.getSourceName());
+            QQPlayerService.a(this.a);
+            QQPlayerService.a(localContext, this.a.getToken(), localSongInfo);
+            paramView.setContentDescription(localResources.getString(2131887110));
           }
         }
         else if (QLog.isColorLevel())
@@ -151,7 +151,7 @@ class StructMsgForAudioShare$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare.2
  * JD-Core Version:    0.7.0.1
  */

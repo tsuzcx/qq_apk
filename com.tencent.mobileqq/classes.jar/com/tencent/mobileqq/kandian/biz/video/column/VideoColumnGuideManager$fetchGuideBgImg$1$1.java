@@ -18,17 +18,17 @@ public final class VideoColumnGuideManager$fetchGuideBgImg$1$1
   {
     VideoColumnGuideManager localVideoColumnGuideManager = this.a.this$0;
     if (paramICloseableBitmap != null) {
-      paramImageRequest = paramICloseableBitmap.a();
+      paramImageRequest = paramICloseableBitmap.b();
     } else {
       paramImageRequest = null;
     }
     VideoColumnGuideManager.a(localVideoColumnGuideManager, paramImageRequest);
     VideoColumnGuideManager.a(this.a.this$0, true);
-    paramImageRequest = VideoColumnGuideManager.a(this.a.this$0);
+    paramImageRequest = VideoColumnGuideManager.b(this.a.this$0);
     if (paramImageRequest != null) {
-      paramImageRequest.setImageBitmap(VideoColumnGuideManager.a(this.a.this$0));
+      paramImageRequest.setImageBitmap(VideoColumnGuideManager.c(this.a.this$0));
     }
-    VideoColumnGuideManager.b(this.a.this$0);
+    VideoColumnGuideManager.d(this.a.this$0);
   }
   
   public void a(@Nullable ImageRequest paramImageRequest, @Nullable Throwable paramThrowable)
@@ -46,7 +46,7 @@ public final class VideoColumnGuideManager$fetchGuideBgImg$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnGuideManager.fetchGuideBgImg.1.1
  * JD-Core Version:    0.7.0.1
  */

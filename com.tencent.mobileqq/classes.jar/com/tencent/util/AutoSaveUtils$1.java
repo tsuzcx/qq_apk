@@ -16,7 +16,7 @@ final class AutoSaveUtils$1
   
   public void run()
   {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    File localFile = new File(this.a);
     Object localObject3 = localFile.getAbsolutePath();
     String str = AppConstants.SDCARD_IMG_CAMERA;
     new File(str).mkdirs();
@@ -24,7 +24,7 @@ final class AutoSaveUtils$1
     Object localObject1 = localObject2;
     if (!((String)localObject2).contains("."))
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         localObject1 = com.tencent.mobileqq.utils.FileUtils.estimateFileType((String)localObject3);
       } else {
         localObject1 = com.tencent.mobileqq.utils.FileUtils.estimateVideoType((String)localObject3);
@@ -38,7 +38,7 @@ final class AutoSaveUtils$1
     localObject1 = new File(str, (String)localObject1);
     if ((!((File)localObject1).exists()) && (FileUtil.a(localFile, (File)localObject1)))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         ImageUtil.a(BaseApplicationImpl.getApplication(), (File)localObject1);
         FileProvider7Helper.savePhotoToSysAlbum(BaseApplicationImpl.getApplication(), (File)localObject1);
@@ -59,7 +59,7 @@ final class AutoSaveUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.AutoSaveUtils.1
  * JD-Core Version:    0.7.0.1
  */

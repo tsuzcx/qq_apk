@@ -31,18 +31,6 @@ public class EndianUtil
     return j;
   }
   
-  public static short a(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    short s = 0;
-    while (i < 2)
-    {
-      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
-      i += 1;
-    }
-    return s;
-  }
-  
   public static byte[] a(int paramInt)
   {
     byte[] arrayOfByte = new byte[4];
@@ -63,6 +51,18 @@ public class EndianUtil
     return new byte[] { (byte)(paramShort >>> 8), (byte)paramShort };
   }
   
+  public static short b(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    short s = 0;
+    while (i < 2)
+    {
+      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
+      i += 1;
+    }
+    return s;
+  }
+  
   public static byte[] b(int paramInt)
   {
     int i = (byte)(paramInt & 0xFF);
@@ -73,7 +73,7 @@ public class EndianUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.EndianUtil
  * JD-Core Version:    0.7.0.1
  */

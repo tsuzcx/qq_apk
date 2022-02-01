@@ -11,40 +11,50 @@ import com.tencent.widget.ActionSheetHelper;
 public class TeamWorkCreateActionSheetBuilder
   implements View.OnClickListener
 {
-  protected Context a;
-  protected View a;
-  protected TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener a;
   protected final ActionSheet a;
+  protected View b;
+  protected Context c;
+  protected TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener d;
   
   public TeamWorkCreateActionSheetBuilder(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(paramContext, null));
+    this.c = paramContext;
+    this.a = ((ActionSheet)ActionSheetHelper.b(paramContext, null));
   }
   
-  protected View a()
+  public void a(TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener paramOnCreateItemClickListener)
   {
-    View localView1 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560824, null);
-    View localView2 = localView1.findViewById(2131365328);
-    View localView3 = localView1.findViewById(2131365317);
-    View localView4 = localView1.findViewById(2131365315);
+    this.d = paramOnCreateItemClickListener;
+  }
+  
+  public boolean a()
+  {
+    return this.a.isShowing();
+  }
+  
+  protected View b()
+  {
+    View localView1 = View.inflate(this.c, 2131627082, null);
+    View localView2 = localView1.findViewById(2131431512);
+    View localView3 = localView1.findViewById(2131431500);
+    View localView4 = localView1.findViewById(2131431498);
     localView2.setOnClickListener(this);
     localView3.setOnClickListener(this);
     localView4.setOnClickListener(this);
     return localView1;
   }
   
-  public void a()
+  public void c()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = a();
+    if (this.b == null) {
+      this.b = b();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(this.jdField_a_of_type_AndroidViewView, null);
+    this.a.setActionContentView(this.b, null);
     try
     {
       if (!a())
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+        this.a.show();
         return;
       }
     }
@@ -60,23 +70,13 @@ public class TeamWorkCreateActionSheetBuilder
     }
   }
   
-  public void a(TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener paramOnCreateItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsTeamWorkCreateActionSheetBuilder$OnCreateItemClickListener = paramOnCreateItemClickListener;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing();
-  }
-  
-  public void b()
+  public void d()
   {
     if (a()) {
       try
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_AndroidViewView = null;
+        this.a.dismiss();
+        this.b = null;
         return;
       }
       catch (RuntimeException localRuntimeException)
@@ -90,16 +90,16 @@ public class TeamWorkCreateActionSheetBuilder
   {
     int j = paramView.getId();
     int i = 1;
-    if (j != 2131365315)
+    if (j != 2131431498)
     {
-      if (j == 2131365317) {
+      if (j == 2131431500) {
         i = 2;
       }
     }
     else {
       i = 3;
     }
-    TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener localOnCreateItemClickListener = this.jdField_a_of_type_ComTencentMobileqqUtilsTeamWorkCreateActionSheetBuilder$OnCreateItemClickListener;
+    TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener localOnCreateItemClickListener = this.d;
     if (localOnCreateItemClickListener != null) {
       localOnCreateItemClickListener.a(i);
     }
@@ -108,7 +108,7 @@ public class TeamWorkCreateActionSheetBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TeamWorkCreateActionSheetBuilder
  * JD-Core Version:    0.7.0.1
  */

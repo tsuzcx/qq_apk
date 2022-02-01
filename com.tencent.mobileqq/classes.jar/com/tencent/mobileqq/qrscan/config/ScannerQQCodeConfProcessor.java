@@ -14,7 +14,7 @@ public class ScannerQQCodeConfProcessor
   
   public static ScannerQQCodeConfBean a()
   {
-    ScannerQQCodeConfBean localScannerQQCodeConfBean2 = (ScannerQQCodeConfBean)QConfigManager.a().a(436);
+    ScannerQQCodeConfBean localScannerQQCodeConfBean2 = (ScannerQQCodeConfBean)QConfigManager.b().b(436);
     ScannerQQCodeConfBean localScannerQQCodeConfBean1 = localScannerQQCodeConfBean2;
     if (localScannerQQCodeConfBean2 == null) {
       localScannerQQCodeConfBean1 = ScannerQQCodeConfBean.a();
@@ -41,7 +41,7 @@ public class ScannerQQCodeConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = ScannerQQCodeConfBean.a(paramArrayOfQConfItem[0].a);
+      paramArrayOfQConfItem = ScannerQQCodeConfBean.a(paramArrayOfQConfItem[0].b);
       a = null;
       return paramArrayOfQConfItem;
     }
@@ -97,7 +97,7 @@ public class ScannerQQCodeConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.config.ScannerQQCodeConfProcessor
  * JD-Core Version:    0.7.0.1
  */

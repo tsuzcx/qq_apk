@@ -11,12 +11,12 @@ class AnimationBuilder$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryAnimatorAnimationListener$Update.a(this.jdField_a_of_type_AndroidViewView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.a(this.b, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.AnimationBuilder.1
  * JD-Core Version:    0.7.0.1
  */

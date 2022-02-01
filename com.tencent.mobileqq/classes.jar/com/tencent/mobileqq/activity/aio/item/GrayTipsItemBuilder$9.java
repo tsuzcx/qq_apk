@@ -14,12 +14,12 @@ class GrayTipsItemBuilder$9
   
   public void onClick(View paramView)
   {
-    FileManagerUtil.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    FileManagerUtil.b((Activity)this.a.c, this.a.a.getCurrentAccountUin(), this.a.d.b, this.a.d.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.9
  * JD-Core Version:    0.7.0.1
  */

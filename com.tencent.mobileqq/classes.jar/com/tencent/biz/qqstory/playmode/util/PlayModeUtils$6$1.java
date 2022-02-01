@@ -10,9 +10,9 @@ class PlayModeUtils$6$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetCollectionVideoListResponse != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()))
+    if ((this.a != null) && (this.b.isSuccess()))
     {
-      this.this$0.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetCollectionVideoListResponse.b);
+      this.this$0.a.a(this.a.f);
       return;
     }
     this.this$0.a.a(-1);
@@ -20,7 +20,7 @@ class PlayModeUtils$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1
  * JD-Core Version:    0.7.0.1
  */

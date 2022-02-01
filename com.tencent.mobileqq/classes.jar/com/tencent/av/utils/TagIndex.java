@@ -19,7 +19,24 @@ public class TagIndex
     return 2147483647;
   }
   
-  public static String a(View paramView, int paramInt)
+  static void a(String paramString, int paramInt, Object paramObject)
+  {
+    if (!AudioHelper.a()) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(HardCodeUtil.a(2131912033));
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], object[");
+    localStringBuilder.append(paramObject.getClass().getSimpleName());
+    localStringBuilder.append("]");
+    paramString = localStringBuilder.toString();
+    QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+    throw new ClassCastException(paramString);
+  }
+  
+  public static String b(View paramView, int paramInt)
   {
     paramView = paramView.getTag(paramInt);
     if (paramView == null) {
@@ -30,23 +47,6 @@ public class TagIndex
     }
     a("getStr", paramInt, paramView);
     return null;
-  }
-  
-  static void a(String paramString, int paramInt, Object paramObject)
-  {
-    if (!AudioHelper.a()) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(HardCodeUtil.a(2131714524));
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("], object[");
-    localStringBuilder.append(paramObject.getClass().getSimpleName());
-    localStringBuilder.append("]");
-    paramString = localStringBuilder.toString();
-    QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
-    throw new ClassCastException(paramString);
   }
 }
 

@@ -29,24 +29,68 @@ import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.ReqBody;
 public class UserInfoModule
   extends DoraemonAPIModule
 {
-  public static final String a;
-  protected UserInfoModule.LoginInfo a;
-  protected UserLoginLogic a;
+  public static final String b;
+  protected UserInfoModule.LoginInfo c;
+  protected UserLoginLogic d;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DoraemonOpenAPI.");
     localStringBuilder.append(UserInfoModule.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
   }
   
-  public static Bundle a()
+  private void a(JSONObject paramJSONObject, APICallback paramAPICallback)
   {
-    Object localObject1 = PlayModeUtils.a();
+    if (DoraemonUtil.a())
+    {
+      paramJSONObject = c();
+      if (paramJSONObject != null)
+      {
+        DoraemonUtil.a(paramAPICallback, APIParam.a(paramJSONObject));
+        return;
+      }
+      DoraemonUtil.a(paramAPICallback, 1, "get user info error, try again");
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append(b);
+      paramJSONObject.append(".requestUserInfo");
+      QLog.i(paramJSONObject.toString(), 2, "not main process, send to main process");
+    }
+    DoraemonBridge.a(1, null, new UserInfoModule.1(this, paramAPICallback));
+  }
+  
+  private void b(JSONObject paramJSONObject, APICallback paramAPICallback)
+  {
+    if (QLog.isColorLevel())
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(b);
+      ((StringBuilder)localObject).append(".requestAppFriends");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url params = ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
+    }
+    paramJSONObject = new Oidb_0xb6e.ReqBody();
+    paramJSONObject.appid.set(Integer.valueOf(this.a.b).intValue());
+    paramJSONObject.openid.set(this.c.a);
+    paramJSONObject.openkey.set(this.c.b);
+    paramJSONObject.platform.set("openmobile_android");
+    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new UserInfoModule.2(this, paramAPICallback), paramJSONObject.toByteArray(), "OidbSvc.0xb6e", 2926, 1, null, 0L);
+  }
+  
+  public static Bundle c()
+  {
+    Object localObject1 = PlayModeUtils.b();
     Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject4 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-    Object localObject3 = ((FriendsManager)localObject2).a((String)localObject4);
+    Object localObject3 = ((FriendsManager)localObject2).f((String)localObject4);
     if (localObject3 != null)
     {
       localObject2 = ((Card)localObject3).strNick;
@@ -72,7 +116,7 @@ public class UserInfoModule
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(b);
           ((StringBuilder)localObject1).append(".getUserInfoDirectly");
           QLog.i(((StringBuilder)localObject1).toString(), 2, "getUserInfo QQHeadSetting is empty");
         }
@@ -88,7 +132,7 @@ public class UserInfoModule
       if (QLog.isDevelopLevel())
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(b);
         ((StringBuilder)localObject1).append(".getUserInfoDirectly");
         QLog.i(((StringBuilder)localObject1).toString(), 2, ((Bundle)localObject4).toString());
       }
@@ -97,64 +141,9 @@ public class UserInfoModule
     return null;
   }
   
-  private void a(JSONObject paramJSONObject, APICallback paramAPICallback)
-  {
-    if (DoraemonUtil.a())
-    {
-      paramJSONObject = a();
-      if (paramJSONObject != null)
-      {
-        DoraemonUtil.a(paramAPICallback, APIParam.a(paramJSONObject));
-        return;
-      }
-      DoraemonUtil.a(paramAPICallback, 1, "get user info error, try again");
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramJSONObject = new StringBuilder();
-      paramJSONObject.append(jdField_a_of_type_JavaLangString);
-      paramJSONObject.append(".requestUserInfo");
-      QLog.i(paramJSONObject.toString(), 2, "not main process, send to main process");
-    }
-    DoraemonBridge.a(1, null, new UserInfoModule.1(this, paramAPICallback));
-  }
-  
-  private void b(JSONObject paramJSONObject, APICallback paramAPICallback)
-  {
-    if (QLog.isColorLevel())
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(".requestAppFriends");
-      localObject = ((StringBuilder)localObject).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("url params = ");
-      localStringBuilder.append(paramJSONObject);
-      QLog.i((String)localObject, 2, localStringBuilder.toString());
-    }
-    paramJSONObject = new Oidb_0xb6e.ReqBody();
-    paramJSONObject.appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
-    paramJSONObject.openid.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.jdField_a_of_type_JavaLangString);
-    paramJSONObject.openkey.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b);
-    paramJSONObject.platform.set("openmobile_android");
-    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new UserInfoModule.2(this, paramAPICallback), paramJSONObject.toByteArray(), "OidbSvc.0xb6e", 2926, 1, null, 0L);
-  }
-  
-  public UserInfoModule.LoginInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo;
-  }
-  
   protected void a(UserInfoModule.LoginInfo paramLoginInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo = paramLoginInfo;
-  }
-  
-  public boolean a()
-  {
-    UserInfoModule.LoginInfo localLoginInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo;
-    return (localLoginInfo != null) && (!TextUtils.isEmpty(localLoginInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b));
+    this.c = paramLoginInfo;
   }
   
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
@@ -168,53 +157,53 @@ public class UserInfoModule
           if (paramInt != 18) {
             return false;
           }
-          if (a())
+          if (d())
           {
-            DoraemonUtil.a(paramAPICallback, this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.a());
+            DoraemonUtil.a(paramAPICallback, this.c.a());
             if (QLog.isColorLevel())
             {
               paramJSONObject = new StringBuilder();
-              paramJSONObject.append(jdField_a_of_type_JavaLangString);
+              paramJSONObject.append(b);
               paramJSONObject.append(".");
               paramJSONObject.append(paramString);
               paramString = paramJSONObject.toString();
               paramJSONObject = new StringBuilder();
               paramJSONObject.append("has login, use cache: ");
-              paramJSONObject.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.toString());
+              paramJSONObject.append(this.c.toString());
               QLog.i(paramString, 2, paramJSONObject.toString());
             }
             return true;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic == null) {
-            this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic = new UserLoginLogic(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this);
+          if (this.d == null) {
+            this.d = new UserLoginLogic(this.a, this);
           }
-          this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.a(paramJSONObject, paramAPICallback, true);
+          this.d.a(paramJSONObject, paramAPICallback, true);
           return true;
         }
-        if ((a()) && (!SdkAuthDialog.a))
+        if ((d()) && (!SdkAuthDialog.a))
         {
-          DoraemonUtil.a(paramAPICallback, this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.a());
+          DoraemonUtil.a(paramAPICallback, this.c.a());
           if (QLog.isColorLevel())
           {
             paramJSONObject = new StringBuilder();
-            paramJSONObject.append(jdField_a_of_type_JavaLangString);
+            paramJSONObject.append(b);
             paramJSONObject.append(".");
             paramJSONObject.append(paramString);
             paramString = paramJSONObject.toString();
             paramJSONObject = new StringBuilder();
             paramJSONObject.append("has login, use cache: ");
-            paramJSONObject.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.toString());
+            paramJSONObject.append(this.c.toString());
             QLog.i(paramString, 2, paramJSONObject.toString());
           }
           return true;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic == null) {
-          this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic = new UserLoginLogic(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this);
+        if (this.d == null) {
+          this.d = new UserLoginLogic(this.a, this);
         }
-        this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.a(paramJSONObject, paramAPICallback, false);
+        this.d.a(paramJSONObject, paramAPICallback, false);
         return true;
       }
-      if (!a())
+      if (!d())
       {
         DoraemonUtil.a(paramAPICallback, 5);
         return true;
@@ -222,7 +211,7 @@ public class UserInfoModule
       a(paramJSONObject, paramAPICallback);
       return true;
     }
-    if (!a())
+    if (!d())
     {
       DoraemonUtil.a(paramAPICallback, 5);
       return true;
@@ -233,12 +222,23 @@ public class UserInfoModule
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo = null;
+    this.c = null;
+  }
+  
+  public boolean d()
+  {
+    UserInfoModule.LoginInfo localLoginInfo = this.c;
+    return (localLoginInfo != null) && (!TextUtils.isEmpty(localLoginInfo.a)) && (!TextUtils.isEmpty(this.c.b));
+  }
+  
+  public UserInfoModule.LoginInfo e()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule
  * JD-Core Version:    0.7.0.1
  */

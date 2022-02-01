@@ -14,8 +14,8 @@ class ViolaBaseView$21
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (this.a) {
+      ViolaBaseView.a(this.c).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.b));
     }
     if (QLog.isColorLevel()) {
       ThreadManager.post(new ViolaBaseView.21.1(this, paramString), 8, null, true);
@@ -24,7 +24,7 @@ class ViolaBaseView$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.21
  * JD-Core Version:    0.7.0.1
  */

@@ -18,23 +18,23 @@ class ChatHistory$19
   {
     if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.h();
+      this.a.m.setEnabled(false);
+      this.a.j();
       ReportController.b(this.a.app, "CliOper", "", "", "AIO", "AIO_chatlog_lately", 0, 0, "", "", "", "");
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.m.setEnabled(true);
+    this.a.ab.dismiss();
+    if (this.a.w != null) {
+      this.a.w.dismiss();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqBannerTipsBar.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131692183));
+    this.a.Y.setVisibility(0);
+    this.a.C.setText(this.a.getString(2131889169));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.19
  * JD-Core Version:    0.7.0.1
  */

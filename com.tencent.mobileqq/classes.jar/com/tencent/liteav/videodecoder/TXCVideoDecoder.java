@@ -14,6 +14,7 @@ import com.tencent.liteav.basic.module.TXCStatus;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.liteav.basic.util.h;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.Iterator;
 import org.json.JSONArray;
 
 public class TXCVideoDecoder
-  implements com.tencent.liteav.basic.b.b, g
+  implements com.tencent.liteav.basic.c.b, g
 {
   private static final boolean NEW_DECODER = true;
   private static final String TAG = "TXCVideoDecoder";
@@ -33,12 +34,12 @@ public class TXCVideoDecoder
   private boolean mEnableDecoderChange = false;
   private boolean mEnableLimitDecCache = false;
   private boolean mEnableRestartDecoder = false;
+  boolean mH265 = false;
   boolean mHWDec = true;
-  boolean mHevc = false;
   private ArrayList<TXSNALPacket> mNALList = new ArrayList();
   private long mNativeContext;
   boolean mNeedSortFrame = true;
-  private WeakReference<com.tencent.liteav.basic.b.b> mNotifyListener;
+  private WeakReference<com.tencent.liteav.basic.c.b> mNotifyListener;
   private ByteBuffer mPps;
   boolean mRecvFirstFrame = false;
   private boolean mRestarting = false;
@@ -52,7 +53,7 @@ public class TXCVideoDecoder
   
   static
   {
-    com.tencent.liteav.basic.util.f.f();
+    h.f();
   }
   
   public TXCVideoDecoder()
@@ -122,7 +123,7 @@ public class TXCVideoDecoder
         if ((!this.mRestarting) && (paramTXSNALPacket.codecId == 1) && (!this.mHWDec))
         {
           TXCLog.w("TXCVideoDecoder", "play:decode: hevc decode error  ");
-          com.tencent.liteav.basic.util.f.a(this.mNotifyListener, -2304, "h265 Decoding failed");
+          h.a(this.mNotifyListener, -2304, "h265 Decoding failed");
           this.mRestarting = true;
         }
         if (this.mDecoderHandler != null)
@@ -174,9 +175,9 @@ public class TXCVideoDecoder
       if ((this.mNativeContext != 0L) && (this.mVideoDecoder == null))
       {
         if (paramInt2 == 1) {
-          this.mHevc = true;
+          this.mH265 = true;
         } else {
-          this.mHevc = false;
+          this.mH265 = false;
         }
         paramArrayOfByte = new f();
         paramArrayOfByte.a(paramInt3, paramInt4);
@@ -185,8 +186,8 @@ public class TXCVideoDecoder
         paramArrayOfByte.a(this.mDecFormat);
         paramArrayOfByte.config(this.mSurface);
         paramArrayOfByte.enableLimitDecCache(this.mEnableLimitDecCache);
-        paramArrayOfByte.start(this.mSps, this.mPps, this.mNeedSortFrame, this.mHevc);
-        notifyDecoderStartEvent(true, this.mHevc);
+        paramArrayOfByte.start(this.mSps, this.mPps, this.mNeedSortFrame, this.mH265);
+        notifyDecoderStartEvent(true, this.mH265);
         this.mVideoDecoder = paramArrayOfByte;
       }
       if (this.mVideoDecoder != null) {
@@ -253,8 +254,8 @@ public class TXCVideoDecoder
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[FirstFramePath][Video][Decoder] TXCVideoDecoder: decode first frame success. instance:");
       ((StringBuilder)localObject).append(hashCode());
-      ((StringBuilder)localObject).append(" isHWAcc:false isHEVC:");
-      ((StringBuilder)localObject).append(this.mHevc);
+      ((StringBuilder)localObject).append(" isHWAcc:false isH265:");
+      ((StringBuilder)localObject).append(this.mH265);
       ((StringBuilder)localObject).append(" userId:");
       ((StringBuilder)localObject).append(this.mUserId);
       ((StringBuilder)localObject).append(" type:");
@@ -262,7 +263,7 @@ public class TXCVideoDecoder
       TXCLog.i("TXCVideoDecoder", ((StringBuilder)localObject).toString());
       TXCStatus.a(this.mUserId, 5005, this.mStreamType, Long.valueOf(mDecodeFirstFrameTS));
       int i;
-      if (this.mHevc) {
+      if (this.mH265) {
         i = 2;
       } else {
         i = 0;
@@ -289,8 +290,9 @@ public class TXCVideoDecoder
   
   private void onStartDecoder(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.mHevc = paramBoolean2;
-    notifyDecoderStartEvent(paramBoolean1, this.mHevc);
+    this.mH265 = paramBoolean2;
+    this.mHWDec = paramBoolean1;
+    notifyDecoderStartEvent(paramBoolean1, this.mH265);
   }
   
   private void reportDecoderEvent(boolean paramBoolean1, boolean paramBoolean2)
@@ -298,9 +300,10 @@ public class TXCVideoDecoder
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("EVT_ID", 2008);
     ((Bundle)localObject).putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+    ((Bundle)localObject).putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
     StringBuilder localStringBuilder = new StringBuilder("Enables ");
     if (paramBoolean2) {
-      localStringBuilder.append("HEVC ");
+      localStringBuilder.append("H265 ");
     } else {
       localStringBuilder.append("H264 ");
     }
@@ -318,7 +321,7 @@ public class TXCVideoDecoder
       i = 2;
     }
     ((Bundle)localObject).putInt("EVT_PARAM1", i);
-    com.tencent.liteav.basic.util.f.a(this.mNotifyListener, this.mUserId, 2008, (Bundle)localObject);
+    h.a(this.mNotifyListener, this.mUserId, 2008, (Bundle)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("start video decoder:");
     ((StringBuilder)localObject).append(localStringBuilder.toString());
@@ -353,7 +356,7 @@ public class TXCVideoDecoder
         ((HandlerThread)localObject1).setName(((StringBuilder)localObject3).toString());
       }
       localObject1 = new TXCVideoDecoder.a(((HandlerThread)localObject1).getLooper());
-      ((TXCVideoDecoder.a)localObject1).a(this.mHevc, this.mHWDec, this.mSurface, this.mSps, this.mPps, this, this);
+      ((TXCVideoDecoder.a)localObject1).a(this.mH265, this.mHWDec, this.mSurface, this.mSps, this.mPps, this, this);
       TXCLog.w("TXCVideoDecoder", "play:decode: start decode thread");
       Object localObject3 = Message.obtain();
       ((Message)localObject3).what = 100;
@@ -443,19 +446,19 @@ public class TXCVideoDecoder
     return this.mDecoderCacheNum + this.mNALList.size();
   }
   
+  public boolean isH265()
+  {
+    return this.mH265;
+  }
+  
   public boolean isHardwareDecode()
   {
     return this.mVideoDecoder != null;
   }
   
-  public boolean isHevc()
-  {
-    return this.mHevc;
-  }
-  
   public void onDecodeFailed(int paramInt)
   {
-    TXCStatus.a(this.mUserId, 9007, this.mStreamType, Integer.valueOf(paramInt));
+    TXCStatus.a(this.mUserId, 5006, this.mStreamType, Integer.valueOf(paramInt));
     g localg = this.mDecoderListener;
     if (localg != null) {
       localg.onDecodeFailed(paramInt);
@@ -476,8 +479,8 @@ public class TXCVideoDecoder
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[FirstFramePath][Video][Decoder] TXCVideoDecoder: decode first frame success. instance:");
       ((StringBuilder)localObject).append(hashCode());
-      ((StringBuilder)localObject).append(" isHWAcc:true isHEVC:");
-      ((StringBuilder)localObject).append(this.mHevc);
+      ((StringBuilder)localObject).append(" isHWAcc:true isH265:");
+      ((StringBuilder)localObject).append(this.mH265);
       ((StringBuilder)localObject).append(" userId:");
       ((StringBuilder)localObject).append(this.mUserId);
       ((StringBuilder)localObject).append(" type:");
@@ -485,7 +488,7 @@ public class TXCVideoDecoder
       TXCLog.i("TXCVideoDecoder", ((StringBuilder)localObject).toString());
       TXCStatus.a(this.mUserId, 5005, this.mStreamType, Long.valueOf(mDecodeFirstFrameTS));
       int i;
-      if (this.mHevc) {
+      if (this.mH265) {
         i = 3;
       } else {
         i = 1;
@@ -518,11 +521,12 @@ public class TXCVideoDecoder
   
   public void onDecoderChange(String paramString, boolean paramBoolean)
   {
-    this.mHevc = paramBoolean;
+    this.mH265 = paramBoolean;
+    this.mHWDec = true;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onDecoderChange ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" , isHevc = ");
+    localStringBuilder.append(" , isH265 = ");
     localStringBuilder.append(paramBoolean);
     TXCLog.i("TXCVideoDecoder", localStringBuilder.toString());
     reportDecoderEvent(this.mHWDec, paramBoolean);
@@ -530,10 +534,10 @@ public class TXCVideoDecoder
   
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
   {
-    if (paramInt == -2304) {
+    if ((paramInt == 2106) || (paramInt == -2304)) {
       nativeNotifyHWDecoderError(this.mNativeContext);
     }
-    com.tencent.liteav.basic.util.f.a(this.mNotifyListener, this.mUserId, paramInt, paramBundle);
+    h.a(this.mNotifyListener, this.mUserId, paramInt, paramBundle);
   }
   
   public void onVideoSizeChange(int paramInt1, int paramInt2)
@@ -568,7 +572,7 @@ public class TXCVideoDecoder
     this.mDecoderListener = paramg;
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.b.b paramb)
+  public void setNotifyListener(com.tencent.liteav.basic.c.b paramb)
   {
     this.mNotifyListener = new WeakReference(paramb);
   }
@@ -680,7 +684,7 @@ public class TXCVideoDecoder
     //   15: invokespecial 336	java/lang/StringBuilder:<init>	()V
     //   18: astore_1
     //   19: aload_1
-    //   20: ldc_w 580
+    //   20: ldc_w 585
     //   23: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: pop
     //   27: aload_1
@@ -689,7 +693,7 @@ public class TXCVideoDecoder
     //   32: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_1
-    //   37: ldc_w 561
+    //   37: ldc_w 566
     //   40: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: aload_1
@@ -709,7 +713,7 @@ public class TXCVideoDecoder
     //   69: invokespecial 336	java/lang/StringBuilder:<init>	()V
     //   72: astore_1
     //   73: aload_1
-    //   74: ldc_w 582
+    //   74: ldc_w 587
     //   77: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: pop
     //   81: aload_1
@@ -718,7 +722,7 @@ public class TXCVideoDecoder
     //   86: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: pop
     //   90: aload_1
-    //   91: ldc_w 561
+    //   91: ldc_w 566
     //   94: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: pop
     //   98: aload_1
@@ -727,7 +731,7 @@ public class TXCVideoDecoder
     //   103: invokevirtual 348	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   106: pop
     //   107: aload_1
-    //   108: ldc_w 584
+    //   108: ldc_w 589
     //   111: invokevirtual 342	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload_1
@@ -742,7 +746,7 @@ public class TXCVideoDecoder
     //   133: aload_0
     //   134: aload_0
     //   135: getfield 170	com/tencent/liteav/videodecoder/TXCVideoDecoder:mNativeContext	J
-    //   138: invokespecial 586	com/tencent/liteav/videodecoder/TXCVideoDecoder:nativeDestroyContext	(J)V
+    //   138: invokespecial 591	com/tencent/liteav/videodecoder/TXCVideoDecoder:nativeDestroyContext	(J)V
     //   141: aload_0
     //   142: lconst_0
     //   143: putfield 170	com/tencent/liteav/videodecoder/TXCVideoDecoder:mNativeContext	J
@@ -764,15 +768,15 @@ public class TXCVideoDecoder
     //   173: ifnull +37 -> 210
     //   176: aload_0
     //   177: getfield 238	com/tencent/liteav/videodecoder/TXCVideoDecoder:mVideoDecoder	Lcom/tencent/liteav/videodecoder/b;
-    //   180: invokeinterface 494 1 0
+    //   180: invokeinterface 499 1 0
     //   185: aload_0
     //   186: getfield 238	com/tencent/liteav/videodecoder/TXCVideoDecoder:mVideoDecoder	Lcom/tencent/liteav/videodecoder/b;
     //   189: aconst_null
-    //   190: invokeinterface 495 2 0
+    //   190: invokeinterface 500 2 0
     //   195: aload_0
     //   196: getfield 238	com/tencent/liteav/videodecoder/TXCVideoDecoder:mVideoDecoder	Lcom/tencent/liteav/videodecoder/b;
     //   199: aconst_null
-    //   200: invokeinterface 496 2 0
+    //   200: invokeinterface 501 2 0
     //   205: aload_0
     //   206: aconst_null
     //   207: putfield 238	com/tencent/liteav/videodecoder/TXCVideoDecoder:mVideoDecoder	Lcom/tencent/liteav/videodecoder/b;
@@ -781,7 +785,7 @@ public class TXCVideoDecoder
     //   214: ifnull +15 -> 229
     //   217: aload_0
     //   218: getfield 262	com/tencent/liteav/videodecoder/TXCVideoDecoder:mSurface	Landroid/view/Surface;
-    //   221: invokevirtual 551	android/view/Surface:release	()V
+    //   221: invokevirtual 556	android/view/Surface:release	()V
     //   224: aload_0
     //   225: aconst_null
     //   226: putfield 262	com/tencent/liteav/videodecoder/TXCVideoDecoder:mSurface	Landroid/view/Surface;
@@ -819,7 +823,7 @@ public class TXCVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.TXCVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

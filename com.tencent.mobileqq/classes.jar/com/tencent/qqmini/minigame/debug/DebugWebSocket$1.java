@@ -15,7 +15,7 @@ class DebugWebSocket$1
     if (this.this$0.mOutListener != null) {
       this.this$0.mOutListener.onSocketClose(this.this$0, paramInt2);
     }
-    String str = this.this$0.TAG;
+    String str = DebugWebSocket.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("---onClose---code: ");
     localStringBuilder.append(paramInt2);
@@ -26,7 +26,7 @@ class DebugWebSocket$1
   
   public void onError(int paramInt1, int paramInt2, String paramString)
   {
-    String str = this.this$0.TAG;
+    String str = DebugWebSocket.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onFailure ");
     localStringBuilder.append(paramString);
@@ -54,7 +54,7 @@ class DebugWebSocket$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.DebugWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class ConfigServlet$4
   
   public void run()
   {
-    Config.a.b(this.a);
+    Config.c.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.4
  * JD-Core Version:    0.7.0.1
  */

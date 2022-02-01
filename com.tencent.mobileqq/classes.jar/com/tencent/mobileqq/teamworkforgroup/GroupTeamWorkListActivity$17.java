@@ -10,7 +10,7 @@ class GroupTeamWorkListActivity$17
   
   public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    GroupTeamWorkListActivity.e(this.a);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -22,7 +22,7 @@ class GroupTeamWorkListActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.17
  * JD-Core Version:    0.7.0.1
  */

@@ -30,79 +30,79 @@ public class QQLiteStatusMgr
 {
   public static Object a(QQLiteBridgeParam paramQQLiteBridgeParam)
   {
-    int i = paramQQLiteBridgeParam.jdField_a_of_type_Int;
+    int i = paramQQLiteBridgeParam.a;
     boolean bool = true;
     switch (i)
     {
     default: 
       return null;
     case 13: 
-      b(paramQQLiteBridgeParam);
-      return null;
-    case 12: 
-      return ProfileCardUtils.enterSnapshot(paramQQLiteBridgeParam.jdField_a_of_type_AndroidAppActivity, 257);
-    case 11: 
       c(paramQQLiteBridgeParam);
       return null;
+    case 12: 
+      return ProfileCardUtils.enterSnapshot(paramQQLiteBridgeParam.b, 257);
+    case 11: 
+      e(paramQQLiteBridgeParam);
+      return null;
     case 10: 
-      a(paramQQLiteBridgeParam);
+      b(paramQQLiteBridgeParam);
       return null;
     case 9: 
-      return paramQQLiteBridgeParam.jdField_a_of_type_AndroidContentIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+      return paramQQLiteBridgeParam.f.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     case 8: 
-      return b(paramQQLiteBridgeParam);
+      return d(paramQQLiteBridgeParam);
     case 7: 
       String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!GesturePWDUtils.getJumpLock(paramQQLiteBridgeParam.jdField_a_of_type_AndroidContentContext, str)) || (GesturePWDUtils.getAppForground(paramQQLiteBridgeParam.jdField_a_of_type_AndroidContentContext))) {
+      if ((!GesturePWDUtils.getJumpLock(paramQQLiteBridgeParam.c, str)) || (GesturePWDUtils.getAppForground(paramQQLiteBridgeParam.c))) {
         bool = false;
       }
       return Boolean.valueOf(bool);
     case 6: 
-      QrAgentLoginManager.a().a(paramQQLiteBridgeParam.jdField_a_of_type_AndroidOsBundle, true);
+      QrAgentLoginManager.a().a(paramQQLiteBridgeParam.d, true);
       return null;
     case 5: 
-      return Boolean.valueOf(ForwardUtils.b());
+      return Boolean.valueOf(ForwardUtils.c());
     case 4: 
       return Boolean.valueOf(OpenEnvConfig.a());
     case 3: 
-      return URLDrawableDecodeHandler.a;
+      return URLDrawableDecodeHandler.b;
     case 2: 
-      return LastModifySupportDownloader.getCacheFilePath(paramQQLiteBridgeParam.jdField_b_of_type_JavaLangString);
+      return LastModifySupportDownloader.getCacheFilePath(paramQQLiteBridgeParam.k);
     }
-    return new EmptyDrawable(0, paramQQLiteBridgeParam.c, 100);
+    return new EmptyDrawable(0, paramQQLiteBridgeParam.j, 100);
   }
   
-  private static void a(QQLiteBridgeParam paramQQLiteBridgeParam)
+  private static void b(QQLiteBridgeParam paramQQLiteBridgeParam)
   {
     String[] arrayOfString = MobileQQ.sMobileQQ.getResources().getStringArray(2130968636);
-    paramQQLiteBridgeParam = paramQQLiteBridgeParam.jdField_a_of_type_ComTencentWidgetActionSheet;
+    paramQQLiteBridgeParam = paramQQLiteBridgeParam.g;
     paramQQLiteBridgeParam.addButton(arrayOfString[24]);
     paramQQLiteBridgeParam.addButton(arrayOfString[13]);
     paramQQLiteBridgeParam.addCancelButton(arrayOfString[16]);
   }
   
-  private static Object b(QQLiteBridgeParam paramQQLiteBridgeParam)
+  private static void c(QQLiteBridgeParam paramQQLiteBridgeParam)
   {
-    paramQQLiteBridgeParam = new CompressInfo(paramQQLiteBridgeParam.jdField_a_of_type_JavaLangString, 0);
-    paramQQLiteBridgeParam.f = 0;
-    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramQQLiteBridgeParam);
-    SSOLog.a("QQLiteStatusMgr", new Object[] { "uploadAvatar compressInfo:", paramQQLiteBridgeParam });
-    return paramQQLiteBridgeParam.e;
-  }
-  
-  private static void b(QQLiteBridgeParam paramQQLiteBridgeParam)
-  {
-    if (paramQQLiteBridgeParam.jdField_b_of_type_Int != 257) {
+    if (paramQQLiteBridgeParam.i != 257) {
       return;
     }
-    String str = BaseImageUtil.b(paramQQLiteBridgeParam.jdField_a_of_type_AndroidAppActivity, paramQQLiteBridgeParam.jdField_a_of_type_AndroidNetUri);
+    String str = BaseImageUtil.b(paramQQLiteBridgeParam.b, paramQQLiteBridgeParam.h);
     if (TextUtils.isEmpty(str)) {
       return;
     }
-    ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).startPhotoEdit(paramQQLiteBridgeParam.jdField_a_of_type_AndroidAppActivity, str, 103);
+    ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).startPhotoEdit(paramQQLiteBridgeParam.b, str, 103);
   }
   
-  private static void c(QQLiteBridgeParam paramQQLiteBridgeParam)
+  private static Object d(QQLiteBridgeParam paramQQLiteBridgeParam)
+  {
+    paramQQLiteBridgeParam = new CompressInfo(paramQQLiteBridgeParam.e, 0);
+    paramQQLiteBridgeParam.o = 0;
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramQQLiteBridgeParam);
+    SSOLog.a("QQLiteStatusMgr", new Object[] { "uploadAvatar compressInfo:", paramQQLiteBridgeParam });
+    return paramQQLiteBridgeParam.l;
+  }
+  
+  private static void e(QQLiteBridgeParam paramQQLiteBridgeParam)
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
@@ -110,14 +110,14 @@ public class QQLiteStatusMgr
     localIntent.putExtra("BUSINESS_ORIGIN_NEW", 103);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
     localIntent.putExtra("fromWhereClick", "FROM_PHOTO_LIST");
-    paramQQLiteBridgeParam = paramQQLiteBridgeParam.jdField_a_of_type_AndroidAppActivity;
+    paramQQLiteBridgeParam = paramQQLiteBridgeParam.b;
     int i = ProfileCardUtil.b(paramQQLiteBridgeParam);
     PhotoUtils.startPhotoListEdit(localIntent, paramQQLiteBridgeParam, PublicFragmentActivityForOpenSDK.class.getName(), i, i, 1080, 1080, FaceUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.QQLiteStatusMgr
  * JD-Core Version:    0.7.0.1
  */

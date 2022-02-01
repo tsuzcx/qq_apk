@@ -39,7 +39,7 @@ public class AdBigVideoProteusItem
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
     ViewBase localViewBase = paramContainer.getVirtualView();
-    if ((paramIReadInJoyModel != null) && ((paramIReadInJoyModel.a() instanceof AdvertisementInfo)) && (((AdvertisementInfo)paramIReadInJoyModel.a()).isHideForAnimate)) {
+    if ((paramIReadInJoyModel != null) && ((paramIReadInJoyModel.k() instanceof AdvertisementInfo)) && (((AdvertisementInfo)paramIReadInJoyModel.k()).isHideForAnimate)) {
       return;
     }
     boolean bool = NetworkState.isWifiConn();
@@ -70,17 +70,17 @@ public class AdBigVideoProteusItem
       NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
       if (localNativeText != null)
       {
-        localObject3 = HardCodeUtil.a(2131700038);
+        localObject3 = HardCodeUtil.a(2131898085);
         if (CUKingCardUtils.a() == 1)
         {
-          localObject1 = HardCodeUtil.a(2131700037);
+          localObject1 = HardCodeUtil.a(2131898084);
         }
         else
         {
           localObject1 = localObject3;
           if (paramIReadInJoyModel != null)
           {
-            AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+            AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
             localObject1 = localObject3;
             if ((localAbsBaseArticleInfo instanceof AdvertisementInfo))
             {
@@ -90,7 +90,7 @@ public class AdBigVideoProteusItem
               {
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).fileSizeToString(l));
-                ((StringBuilder)localObject1).append(HardCodeUtil.a(2131700039));
+                ((StringBuilder)localObject1).append(HardCodeUtil.a(2131898086));
                 localObject1 = ((StringBuilder)localObject1).toString();
               }
             }
@@ -101,13 +101,13 @@ public class AdBigVideoProteusItem
       Object localObject3 = (IRIJComponentConfigImage)QRoute.api(IRIJComponentConfigImage.class);
       localObject1 = localObject2;
       if (paramIReadInJoyModel != null) {
-        localObject1 = paramIReadInJoyModel.a();
+        localObject1 = paramIReadInJoyModel.k();
       }
       ((IRIJComponentConfigImage)localObject3).tryToShowFreeNetFlowHint(localViewBase, (AbsBaseArticleInfo)localObject1);
     }
-    if ((paramIReadInJoyModel != null) && ((paramIReadInJoyModel.a() instanceof AdvertisementInfo)) && (((AdvertisementInfo)paramIReadInJoyModel.a()).isShowingGuide))
+    if ((paramIReadInJoyModel != null) && ((paramIReadInJoyModel.k() instanceof AdvertisementInfo)) && (((AdvertisementInfo)paramIReadInJoyModel.k()).isShowingGuide))
     {
-      localObject1 = (AdvertisementInfo)paramIReadInJoyModel.a();
+      localObject1 = (AdvertisementInfo)paramIReadInJoyModel.k();
       localObject2 = localViewBase.findViewBaseByName("id_large_video_icon");
       if (localObject2 != null) {
         ((ViewBase)localObject2).setVisibility(8);
@@ -120,7 +120,7 @@ public class AdBigVideoProteusItem
       if ((localObject2 != null) && (((ViewBase)localObject2).getNativeView() != null)) {
         ((ViewBase)localObject2).getNativeView().setVisibility(8);
       }
-      paramContainer = ((View)paramContainer.getParent()).findViewById(2131362119);
+      paramContainer = ((View)paramContainer.getParent()).findViewById(2131427698);
       if (!(paramContainer instanceof ReadInJoyAdVideoGuide)) {
         break label592;
       }
@@ -138,7 +138,7 @@ public class AdBigVideoProteusItem
       break label539;
     }
     break label592;
-    paramContainer = ((View)paramContainer.getParent()).findViewById(2131362119);
+    paramContainer = ((View)paramContainer.getParent()).findViewById(2131427698);
     if (paramContainer != null) {
       paramContainer.setVisibility(8);
     }
@@ -146,12 +146,12 @@ public class AdBigVideoProteusItem
     if ((paramContainer != null) && (paramContainer.getNativeView() != null)) {
       paramContainer.getNativeView().setVisibility(0);
     }
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.a())))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.k())))
     {
       paramContainer = localViewBase.findViewBaseByName("id_view_Ad_CompleteGudie");
       if ((paramContainer instanceof ReadInJoyAdVideoCompleteGuide))
       {
-        localObject1 = (AdvertisementInfo)paramIReadInJoyModel.a();
+        localObject1 = (AdvertisementInfo)paramIReadInJoyModel.k();
         paramContainer.setTag(localObject1);
         if (((AdvertisementInfo)localObject1).mChannelID == 0L) {
           paramContainer.setVisibility(0);
@@ -162,7 +162,7 @@ public class AdBigVideoProteusItem
         }
       }
     }
-    if ((paramIReadInJoyModel != null) && ((paramIReadInJoyModel.a() instanceof AdvertisementInfo)) && (bool))
+    if ((paramIReadInJoyModel != null) && ((paramIReadInJoyModel.k() instanceof AdvertisementInfo)) && (bool))
     {
       paramContainer = localViewBase.findViewBaseByName("id_article_bubble_view");
       if ((paramContainer instanceof ReadInJoyAdBubbleView)) {
@@ -178,7 +178,7 @@ public class AdBigVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdBigVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

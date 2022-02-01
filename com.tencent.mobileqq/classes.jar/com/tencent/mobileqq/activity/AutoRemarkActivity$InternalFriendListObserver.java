@@ -16,54 +16,54 @@ class AutoRemarkActivity$InternalFriendListObserver
   
   protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if ((this.a.jdField_a_of_type_Int == 1) && (TextUtils.equals(paramString1, this.a.jdField_a_of_type_JavaLangString)))
+    if ((this.a.a == 1) && (TextUtils.equals(paramString1, this.a.b)))
     {
       this.a.getIntent().getLongExtra("k_msg_key", 0L);
       if ((paramBoolean) && (NetworkUtil.isNetSupport(this.a)))
       {
         paramString2 = this.a;
-        paramString2.d = 0;
-        paramString2.jdField_a_of_type_JavaLangString = paramString1;
-        paramString2.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.moveFriendToGroup(this.a.jdField_a_of_type_JavaLangString, (byte)this.a.c, (byte)0);
+        paramString2.f = 0;
+        paramString2.b = paramString1;
+        paramString2.j.moveFriendToGroup(this.a.b, (byte)this.a.d, (byte)0);
         return;
       }
-      if ((this.a.d != 2) && (NetworkUtil.isNetSupport(this.a)))
+      if ((this.a.f != 2) && (NetworkUtil.isNetSupport(this.a)))
       {
         paramString2 = this.a;
-        paramString2.d += 1;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.setFriendComment(paramString1, this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+        paramString2.f += 1;
+        this.a.j.setFriendComment(paramString1, this.a.g.getText().toString(), false);
         return;
       }
-      AutoRemarkActivity.f(this.a);
+      AutoRemarkActivity.g(this.a);
       paramString1 = this.a;
-      AutoRemarkActivity.a(paramString1, paramString1.getString(2131718220));
+      AutoRemarkActivity.a(paramString1, paramString1.getString(2131915702));
     }
   }
   
   protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if (this.a.jdField_a_of_type_Int == 1)
+    if (this.a.a == 1)
     {
       if (paramString == null)
       {
-        AutoRemarkActivity.g(this.a);
+        AutoRemarkActivity.h(this.a);
         paramString = this.a;
-        AutoRemarkActivity.a(paramString, paramString.getString(2131718220));
+        AutoRemarkActivity.a(paramString, paramString.getString(2131915702));
         return;
       }
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
+      if (paramString.equals(this.a.b))
       {
         ((INewFriendApi)QRoute.api(INewFriendApi.class)).openProfileCardNeedTrackBack(this.a, paramString);
         this.a.setResult(-1);
         this.a.finish();
-        this.a.overridePendingTransition(2130772004, 2130772344);
+        this.a.overridePendingTransition(2130772007, 2130772436);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoRemarkActivity.InternalFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

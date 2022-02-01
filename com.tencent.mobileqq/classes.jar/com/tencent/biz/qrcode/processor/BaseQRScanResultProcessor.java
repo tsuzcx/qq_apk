@@ -19,20 +19,13 @@ import mqq.app.AppRuntime;
 public abstract class BaseQRScanResultProcessor
   implements IQRScanResultProcessor
 {
-  protected OnQRHandleResultCallback a;
   protected AppRuntime a;
+  protected OnQRHandleResultCallback b;
   
   public BaseQRScanResultProcessor(AppRuntime paramAppRuntime, OnQRHandleResultCallback paramOnQRHandleResultCallback)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback = paramOnQRHandleResultCallback;
-  }
-  
-  public void a() {}
-  
-  public boolean a()
-  {
-    return b();
+    this.a = paramAppRuntime;
+    this.b = paramOnQRHandleResultCallback;
   }
   
   protected boolean a(int paramInt)
@@ -55,32 +48,9 @@ public abstract class BaseQRScanResultProcessor
     return false;
   }
   
-  public void b()
+  public boolean b()
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
-    if (!(localObject instanceof QQAppInterface)) {
-      return;
-    }
-    localObject = (QQAppInterface)localObject;
-    if ((!((QQAppInterface)localObject).isRingerVibrate()) && (!((QQAppInterface)localObject).isRingerSilent()) && (!((QQAppInterface)localObject).isRingEqualsZero())) {
-      AudioUtil.b(2131230765, false);
-    }
-  }
-  
-  protected boolean b()
-  {
-    Object localObject = (Activity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
-    if (!HttpUtil.isConnect((Context)localObject))
-    {
-      localObject = DialogUtil.a((Context)localObject, 230);
-      ((QQCustomDialog)localObject).setMessage(2131718419);
-      BaseQRScanResultProcessor.1 local1 = new BaseQRScanResultProcessor.1(this);
-      ((QQCustomDialog)localObject).setPositiveButton(2131694583, local1);
-      ((QQCustomDialog)localObject).setOnCancelListener(local1);
-      ((QQCustomDialog)localObject).show();
-      return false;
-    }
-    return true;
+    return e();
   }
   
   protected boolean b(int paramInt)
@@ -96,19 +66,49 @@ public abstract class BaseQRScanResultProcessor
   
   public final boolean b(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    boolean bool = a();
+    boolean bool = b();
     QLog.d("IQRScanConst_BaseQRScanResultProcessor", 1, String.format("handleQRResult result=%s qBarType=%s checkNetWork=%b scannerParams=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool), paramScannerParams }));
     if (bool)
     {
-      b();
+      d();
       return a(paramString1, paramString2, paramScannerParams);
     }
     return false;
   }
   
+  public void c() {}
+  
   protected boolean c(int paramInt1, int paramInt2, Intent paramIntent)
   {
     return false;
+  }
+  
+  public void d()
+  {
+    Object localObject = this.a;
+    if (!(localObject instanceof QQAppInterface)) {
+      return;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ((!((QQAppInterface)localObject).isRingerVibrate()) && (!((QQAppInterface)localObject).isRingerSilent()) && (!((QQAppInterface)localObject).isRingEqualsZero())) {
+      AudioUtil.b(2131230835, false);
+    }
+  }
+  
+  protected boolean e()
+  {
+    Object localObject = (Activity)this.b.d();
+    if (!HttpUtil.isConnect((Context)localObject))
+    {
+      localObject = DialogUtil.a((Context)localObject, 230);
+      ((QQCustomDialog)localObject).setMessage(2131915918);
+      BaseQRScanResultProcessor.1 local1 = new BaseQRScanResultProcessor.1(this);
+      ((QQCustomDialog)localObject).setPositiveButton(2131892267, local1);
+      ((QQCustomDialog)localObject).setOnCancelListener(local1);
+      ((QQCustomDialog)localObject).show();
+      return false;
+    }
+    return true;
   }
 }
 

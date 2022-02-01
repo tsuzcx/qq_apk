@@ -20,66 +20,83 @@ final class DisplayItem$copyCoverToBaseDir$1
   public final void invoke()
   {
     // Byte code:
-    //   0: new 49	java/io/FileInputStream
-    //   3: dup
+    //   0: aload_0
+    //   1: getfield 29	com/tencent/tkd/topicsdk/bean/DisplayItem$copyCoverToBaseDir$1:this$0	Lcom/tencent/tkd/topicsdk/bean/DisplayItem;
     //   4: aload_0
     //   5: getfield 31	com/tencent/tkd/topicsdk/bean/DisplayItem$copyCoverToBaseDir$1:$cover	Ljava/io/File;
-    //   8: invokespecial 52	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   8: invokestatic 53	com/tencent/tkd/topicsdk/bean/DisplayItem:access$getBackUpCoverInputStream	(Lcom/tencent/tkd/topicsdk/bean/DisplayItem;Ljava/io/File;)Ljava/io/FileInputStream;
     //   11: astore_1
-    //   12: new 54	java/io/FileOutputStream
-    //   15: dup
-    //   16: new 56	java/io/File
-    //   19: dup
-    //   20: aload_0
-    //   21: getfield 29	com/tencent/tkd/topicsdk/bean/DisplayItem$copyCoverToBaseDir$1:this$0	Lcom/tencent/tkd/topicsdk/bean/DisplayItem;
-    //   24: invokevirtual 62	com/tencent/tkd/topicsdk/bean/DisplayItem:getBackupCoverPath	()Ljava/lang/String;
-    //   27: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
-    //   30: invokespecial 66	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   33: astore_2
-    //   34: getstatic 72	com/tencent/tkd/topicsdk/common/IoUtils:a	Lcom/tencent/tkd/topicsdk/common/IoUtils;
-    //   37: aload_1
-    //   38: checkcast 74	java/io/InputStream
-    //   41: aload_2
-    //   42: checkcast 76	java/io/OutputStream
-    //   45: invokevirtual 79	com/tencent/tkd/topicsdk/common/IoUtils:a	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
-    //   48: aload_1
-    //   49: invokevirtual 82	java/io/FileInputStream:close	()V
-    //   52: aload_2
-    //   53: invokevirtual 83	java/io/FileOutputStream:close	()V
-    //   56: return
-    //   57: astore_3
-    //   58: goto +16 -> 74
-    //   61: astore_3
-    //   62: ldc 85
-    //   64: aload_3
-    //   65: checkcast 87	java/lang/Throwable
-    //   68: invokestatic 92	com/tencent/tkd/topicsdk/framework/TLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   71: goto -23 -> 48
-    //   74: aload_1
-    //   75: invokevirtual 82	java/io/FileInputStream:close	()V
-    //   78: aload_2
-    //   79: invokevirtual 83	java/io/FileOutputStream:close	()V
-    //   82: goto +5 -> 87
-    //   85: aload_3
-    //   86: athrow
-    //   87: goto -2 -> 85
+    //   12: aload_0
+    //   13: getfield 29	com/tencent/tkd/topicsdk/bean/DisplayItem$copyCoverToBaseDir$1:this$0	Lcom/tencent/tkd/topicsdk/bean/DisplayItem;
+    //   16: invokestatic 57	com/tencent/tkd/topicsdk/bean/DisplayItem:access$getBackUpCoverOutputStream	(Lcom/tencent/tkd/topicsdk/bean/DisplayItem;)Ljava/io/FileOutputStream;
+    //   19: astore_2
+    //   20: aload_1
+    //   21: ifnull +81 -> 102
+    //   24: aload_2
+    //   25: ifnonnull +6 -> 31
+    //   28: goto +74 -> 102
+    //   31: getstatic 63	com/tencent/tkd/topicsdk/common/IoUtils:a	Lcom/tencent/tkd/topicsdk/common/IoUtils;
+    //   34: aload_1
+    //   35: checkcast 65	java/io/InputStream
+    //   38: aload_2
+    //   39: checkcast 67	java/io/OutputStream
+    //   42: invokevirtual 70	com/tencent/tkd/topicsdk/common/IoUtils:a	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    //   45: aload_1
+    //   46: invokevirtual 75	java/io/FileInputStream:close	()V
+    //   49: aload_2
+    //   50: invokevirtual 78	java/io/FileOutputStream:close	()V
+    //   53: return
+    //   54: astore_3
+    //   55: goto +29 -> 84
+    //   58: astore_3
+    //   59: ldc 80
+    //   61: aload_3
+    //   62: checkcast 82	java/lang/Throwable
+    //   65: invokestatic 87	com/tencent/tkd/topicsdk/framework/TLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   68: aload_1
+    //   69: ifnull +7 -> 76
+    //   72: aload_1
+    //   73: invokevirtual 75	java/io/FileInputStream:close	()V
+    //   76: aload_2
+    //   77: ifnull +6 -> 83
+    //   80: goto -31 -> 49
+    //   83: return
+    //   84: aload_1
+    //   85: ifnull +7 -> 92
+    //   88: aload_1
+    //   89: invokevirtual 75	java/io/FileInputStream:close	()V
+    //   92: aload_2
+    //   93: ifnull +7 -> 100
+    //   96: aload_2
+    //   97: invokevirtual 78	java/io/FileOutputStream:close	()V
+    //   100: aload_3
+    //   101: athrow
+    //   102: aload_1
+    //   103: ifnull +7 -> 110
+    //   106: aload_1
+    //   107: invokevirtual 75	java/io/FileInputStream:close	()V
+    //   110: aload_2
+    //   111: ifnull +7 -> 118
+    //   114: aload_2
+    //   115: invokevirtual 78	java/io/FileOutputStream:close	()V
+    //   118: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	90	0	this	1
-    //   11	64	1	localFileInputStream	java.io.FileInputStream
-    //   33	46	2	localFileOutputStream	java.io.FileOutputStream
-    //   57	1	3	localObject	java.lang.Object
-    //   61	25	3	localIOException	java.io.IOException
+    //   0	119	0	this	1
+    //   11	96	1	localFileInputStream	java.io.FileInputStream
+    //   19	96	2	localFileOutputStream	java.io.FileOutputStream
+    //   54	1	3	localObject	java.lang.Object
+    //   58	43	3	localIOException	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   34	48	57	finally
-    //   62	71	57	finally
-    //   34	48	61	java/io/IOException
+    //   31	45	54	finally
+    //   59	68	54	finally
+    //   31	45	58	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.DisplayItem.copyCoverToBaseDir.1
  * JD-Core Version:    0.7.0.1
  */

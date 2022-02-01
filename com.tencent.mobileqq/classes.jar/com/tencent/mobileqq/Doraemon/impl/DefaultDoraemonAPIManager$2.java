@@ -16,19 +16,19 @@ class DefaultDoraemonAPIManager$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager.d();
+    this.e.g();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("accept ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission.a);
+    localStringBuilder.append(this.a.a);
     QLog.i("DoraemonOpenAPI.apiMgr", 1, localStringBuilder.toString());
-    DefaultDoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission, 2);
-    DefaultDoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, 0, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIConfig, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback);
+    DefaultDoraemonAPIManager.a(this.e, this.a, 2);
+    DefaultDoraemonAPIManager.a(this.e, 0, this.b, this.c, this.d);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager.2
  * JD-Core Version:    0.7.0.1
  */

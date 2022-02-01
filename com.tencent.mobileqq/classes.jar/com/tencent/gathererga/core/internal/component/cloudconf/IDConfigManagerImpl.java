@@ -7,29 +7,30 @@ import java.util.Map;
 public class IDConfigManagerImpl
   implements IDConfigManager
 {
-  public static final IDConfigManager a;
-  private GathererConfigInternal jdField_a_of_type_ComTencentGatherergaCoreInternalGathererConfigInternal;
-  private Map<Integer, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCloudconfIDConfigManager = new IDConfigManagerImpl();
-  }
+  public static final IDConfigManager a = new IDConfigManagerImpl();
+  private Map<Integer, Boolean> b = new HashMap();
+  private GathererConfigInternal c;
   
   public static IDConfigManager a()
   {
-    return jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCloudconfIDConfigManager;
+    return a;
   }
   
   public void a(GathererConfigInternal paramGathererConfigInternal)
   {
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalGathererConfigInternal = paramGathererConfigInternal;
-    this.jdField_a_of_type_JavaUtilMap.putAll(this.jdField_a_of_type_ComTencentGatherergaCoreInternalGathererConfigInternal.a());
+    this.c = paramGathererConfigInternal;
+    this.b.putAll(this.c.c());
+  }
+  
+  public void a(Map<Integer, Boolean> paramMap)
+  {
+    this.c.a(paramMap);
+    this.b.putAll(paramMap);
   }
   
   public boolean a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.b;
     if (localObject == null) {
       return true;
     }
@@ -42,7 +43,7 @@ public class IDConfigManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.component.cloudconf.IDConfigManagerImpl
  * JD-Core Version:    0.7.0.1
  */

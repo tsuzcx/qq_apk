@@ -13,9 +13,9 @@ import org.json.JSONArray;
 public class AddVideoMiddleCode
   extends BaseTransitionCode
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private int c;
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -23,7 +23,7 @@ public class AddVideoMiddleCode
     {
       SLog.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
       a(paramInt2, paramIntent);
-      e();
+      f();
       return;
     }
     if (paramInt2 == -1)
@@ -43,7 +43,7 @@ public class AddVideoMiddleCode
         SLog.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localObject.size()), new JSONArray(localObject).toString() });
         ArrayList localArrayList = new ArrayList();
         localArrayList.addAll(localObject);
-        StoryVideoUploadManager.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
+        StoryVideoUploadManager.a(this.a, localArrayList, this.c);
         paramIntent.putExtra("totalPublishVideoCount", localObject.size());
         paramIntent.putExtra("isAddFromExist", true);
       }
@@ -58,14 +58,14 @@ public class AddVideoMiddleCode
       SLog.d("AddVideoMiddleCode", "add video to group cancel by user");
     }
     a(paramInt2, paramIntent);
-    e();
+    f();
   }
   
   public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    this.jdField_a_of_type_Int = 0;
-    SLog.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
-    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
+    this.c = 0;
+    SLog.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.a, this.b, Integer.valueOf(this.c));
+    StoryPickerFragment.a(e(), null, this.b, 1000, 2);
   }
 }
 

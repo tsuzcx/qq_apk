@@ -17,27 +17,27 @@ final class VasShieldFont$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("loadDefaultFont: type=");
-      ((StringBuilder)localObject).append(VasShieldFont.a);
+      ((StringBuilder)localObject).append(VasShieldFont.b);
       QLog.d("VasShieldFont", 2, ((StringBuilder)localObject).toString());
     }
-    if (!VasShieldFont.a().get())
+    if (!VasShieldFont.g().get())
     {
-      if (VasShieldFont.b() == null) {
-        if (VasShieldFont.a())
+      if (VasShieldFont.h() == null) {
+        if (VasShieldFont.i())
         {
-          VasShieldFont.c();
-          VasShieldFont.b();
+          VasShieldFont.j();
+          VasShieldFont.d();
         }
         else
         {
-          VasShieldFont.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          VasShieldFont.c(this.a);
         }
       }
-      localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+      localObject = this.b;
       if (localObject != null)
       {
         ((MqqHandler)localObject).removeMessages(87);
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(87);
+        this.b.sendEmptyMessage(87);
       }
     }
     if (QLog.isColorLevel())
@@ -45,7 +45,7 @@ final class VasShieldFont$1
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("loadDefaultFont: typeface=");
       boolean bool;
-      if (VasShieldFont.b() != null) {
+      if (VasShieldFont.h() != null) {
         bool = true;
       } else {
         bool = false;
@@ -53,7 +53,7 @@ final class VasShieldFont$1
       ((StringBuilder)localObject).append(bool);
       QLog.d("VasShieldFont", 2, ((StringBuilder)localObject).toString());
     }
-    VasShieldFont.b().set(false);
+    VasShieldFont.k().set(false);
   }
 }
 

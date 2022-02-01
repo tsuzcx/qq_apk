@@ -3,31 +3,31 @@ package com.tencent.qav.observer;
 public class ObserverDispatcher
   extends FilterableObservable
 {
-  private static ObserverDispatcher jdField_a_of_type_ComTencentQavObserverObserverDispatcher;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object a = new Object();
+  private static ObserverDispatcher b;
   
-  public static ObserverDispatcher a()
+  public static ObserverDispatcher b()
   {
-    if (jdField_a_of_type_ComTencentQavObserverObserverDispatcher == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (b == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_ComTencentQavObserverObserverDispatcher == null) {
-          jdField_a_of_type_ComTencentQavObserverObserverDispatcher = new ObserverDispatcher();
+        if (b == null) {
+          b = new ObserverDispatcher();
         }
       }
     }
-    return jdField_a_of_type_ComTencentQavObserverObserverDispatcher;
+    return b;
   }
   
   public void a()
   {
     super.a();
-    jdField_a_of_type_ComTencentQavObserverObserverDispatcher = null;
+    b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.observer.ObserverDispatcher
  * JD-Core Version:    0.7.0.1
  */

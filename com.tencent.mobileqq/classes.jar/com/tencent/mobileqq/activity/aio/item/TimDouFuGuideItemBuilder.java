@@ -36,23 +36,23 @@ public class TimDouFuGuideItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.a).inflate(2131558863, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131378784));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131365169));
+      paramViewHolder = LayoutInflater.from(this.c).inflate(2131624483, null);
+      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131447463));
+      paramLinearLayout.e = ((TextView)paramViewHolder.findViewById(2131431322));
     }
     if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
     {
       paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
       if (paramMessageRecord != null)
       {
-        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
+        paramLinearLayout.d.setText(paramMessageRecord.tipsHighLight);
         paramView = new StringBuilder();
         paramView.append(paramMessageRecord.tipsMsg);
-        paramView.append(HardCodeUtil.a(2131714740));
+        paramView.append(HardCodeUtil.a(2131912244));
         paramView = new SpannableString(paramView.toString());
         int i = paramView.length();
-        paramView.setSpan(new ForegroundColorSpan(paramViewHolder.getResources().getColor(2131167068)), i - 4, i, 33);
-        paramLinearLayout.c.setText(paramView);
+        paramView.setSpan(new ForegroundColorSpan(paramViewHolder.getResources().getColor(2131168008)), i - 4, i, 33);
+        paramLinearLayout.e.setText(paramView);
         paramViewHolder.setOnClickListener(new TimDouFuGuideItemBuilder.1(this, paramMessageRecord));
       }
     }
@@ -68,12 +68,12 @@ public class TimDouFuGuideItemBuilder
   
   public QQCustomMenuItem[] a(View paramView)
   {
-    return new QQCustomMenu().a();
+    return new QQCustomMenu().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TimDouFuGuideItemBuilder
  * JD-Core Version:    0.7.0.1
  */

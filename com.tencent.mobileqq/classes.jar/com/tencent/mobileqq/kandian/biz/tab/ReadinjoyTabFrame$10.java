@@ -14,16 +14,16 @@ class ReadinjoyTabFrame$10
   
   public void onClick(View paramView)
   {
-    EventCollector.getInstance().onViewClicked(ReadinjoyTabFrame.a(this.a));
-    ReadinjoyTabFrame.a(this.a).postDelayed(new ReadinjoyTabFrame.10.1(this, paramView), 300L);
-    if ((!RecommendFeedsDiandianEntranceManager.getInstance().isVideoFeedsType()) && (!ReadInJoyHelper.v())) {
-      RecommendFeedsDiandianEntranceManager.getInstance().reportEntryIconClick(0, this.a.a());
+    EventCollector.getInstance().onViewClicked(ReadinjoyTabFrame.f(this.a));
+    ReadinjoyTabFrame.f(this.a).postDelayed(new ReadinjoyTabFrame.10.1(this, paramView), 300L);
+    if ((!RecommendFeedsDiandianEntranceManager.getInstance().isVideoFeedsType()) && (!ReadInJoyHelper.L())) {
+      RecommendFeedsDiandianEntranceManager.getInstance().reportEntryIconClick(0, this.a.g());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.10
  * JD-Core Version:    0.7.0.1
  */

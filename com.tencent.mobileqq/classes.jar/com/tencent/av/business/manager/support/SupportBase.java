@@ -8,32 +8,32 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public abstract class SupportBase
 {
-  protected int a;
-  protected long a;
-  protected VideoAppInterface a;
   protected String a;
   protected int b;
-  protected long b;
+  protected long c;
+  protected int d;
+  protected long e;
+  protected VideoAppInterface f;
   
   public SupportBase(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.f = paramVideoAppInterface;
   }
-  
-  public abstract int a(String paramString);
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = Build.MODEL.toLowerCase();
-    this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-    this.jdField_a_of_type_Long = VcSystemInfo.getMaxCpuFreq();
-    this.jdField_b_of_type_Int = VcSystemInfo.getNumCores();
-    this.jdField_b_of_type_Long = DeviceInfoUtil.a();
+    this.a = Build.MODEL.toLowerCase();
+    this.b = Build.VERSION.SDK_INT;
+    this.c = VcSystemInfo.getMaxCpuFreq();
+    this.d = VcSystemInfo.getNumCores();
+    this.e = DeviceInfoUtil.a();
   }
   
   public abstract boolean a(int paramInt, String paramString);
   
   public abstract boolean a(String paramString);
+  
+  public abstract int b(String paramString);
   
   public abstract void b();
   

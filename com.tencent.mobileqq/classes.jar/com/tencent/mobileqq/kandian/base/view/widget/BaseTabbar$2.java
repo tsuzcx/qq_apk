@@ -13,7 +13,7 @@ class BaseTabbar$2
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
     boolean bool;
-    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {
+    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.c(this.a)) {
       bool = true;
     } else {
       bool = false;
@@ -28,7 +28,7 @@ class BaseTabbar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BaseTabbar.2
  * JD-Core Version:    0.7.0.1
  */

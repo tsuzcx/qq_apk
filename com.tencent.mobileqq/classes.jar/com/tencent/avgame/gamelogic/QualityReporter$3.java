@@ -11,7 +11,7 @@ final class QualityReporter$3
   
   public void run()
   {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actAVGameHeartBeat", true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actAVGameHeartBeat", true, this.a, 0L, this.b, "");
   }
 }
 

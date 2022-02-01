@@ -10,9 +10,9 @@ class ArkAiDictUpdateMgr$8$1
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$IDownloadDictFileCallback.a(paramArrayOfByte);
-    ArkPredownloader.Task localTask = this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkPredownloader$Task;
-    String str = this.a.jdField_a_of_type_JavaLangString;
+    this.a.b.a(paramArrayOfByte);
+    ArkPredownloader.Task localTask = this.a.c;
+    String str = this.a.a;
     long l;
     if (paramArrayOfByte != null) {
       l = paramArrayOfByte.length;
@@ -24,7 +24,7 @@ class ArkAiDictUpdateMgr$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr.8.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,32 @@ import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public class SubscribeAdDeviceInfoHelper
 {
-  private static SubscribeAdDeviceInfoHelper jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeAdDeviceInfoHelper;
-  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+  private static SubscribeAdDeviceInfoHelper a;
+  private qq_ad_get.QQAdGet.DeviceInfo b;
   
   public static SubscribeAdDeviceInfoHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeAdDeviceInfoHelper == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeAdDeviceInfoHelper == null) {
-          jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeAdDeviceInfoHelper = new SubscribeAdDeviceInfoHelper();
+        if (a == null) {
+          a = new SubscribeAdDeviceInfoHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeAdDeviceInfoHelper;
+    return a;
   }
   
-  public qq_ad_get.QQAdGet.DeviceInfo a()
-  {
-    a();
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
-  }
-  
-  public void a()
+  public void b()
   {
     ThreadManager.getFileThreadHandler().post(new SubscribeAdDeviceInfoHelper.1(this));
+  }
+  
+  public qq_ad_get.QQAdGet.DeviceInfo c()
+  {
+    b();
+    return this.b;
   }
 }
 

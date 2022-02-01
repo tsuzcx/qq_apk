@@ -16,9 +16,9 @@ final class SwiftBrowserCookieMonster$8
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pt4_token response received for ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", cost=");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.b);
       if (paramTicket != null) {
         paramTicket = "";
       } else {
@@ -35,11 +35,11 @@ final class SwiftBrowserCookieMonster$8
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Get pt4_token failed for ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" because ");
       localStringBuilder.append(paramErrMsg);
       localStringBuilder.append(", cost=");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.b);
       QLog.w("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
     }
   }
@@ -50,18 +50,18 @@ final class SwiftBrowserCookieMonster$8
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Get pt4_token timeout for ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" because ");
       localStringBuilder.append(paramErrMsg);
       localStringBuilder.append(", cost=");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.b);
       QLog.w("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.8
  * JD-Core Version:    0.7.0.1
  */

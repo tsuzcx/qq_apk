@@ -14,12 +14,12 @@ class HWAudioEncoder$AudioEncodeHandler
   public HWAudioEncoder$AudioEncodeHandler(HWAudioEncoder paramHWAudioEncoder1, Looper paramLooper, HWAudioEncoder paramHWAudioEncoder2)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHWAudioEncoder2);
+    this.a = new WeakReference(paramHWAudioEncoder2);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    HWAudioEncoder localHWAudioEncoder = (HWAudioEncoder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    HWAudioEncoder localHWAudioEncoder = (HWAudioEncoder)this.a.get();
     if (localHWAudioEncoder == null)
     {
       if (QLog.isColorLevel()) {
@@ -36,7 +36,7 @@ class HWAudioEncoder$AudioEncodeHandler
         {
           if (i == 4)
           {
-            this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioEncoder.b();
+            this.b.b();
             return;
           }
           paramMessage = new StringBuilder();
@@ -47,17 +47,17 @@ class HWAudioEncoder$AudioEncodeHandler
         paramMessage = (String)paramMessage.obj;
         try
         {
-          HWAudioEncoder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioEncoder, paramMessage);
+          HWAudioEncoder.a(this.b, paramMessage);
           return;
         }
         catch (Exception paramMessage)
         {
           QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
-          HWAudioEncoder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioEncoder);
+          HWAudioEncoder.a(this.b);
           return;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioEncoder.a();
+      this.b.a();
       return;
     }
     paramMessage = (Object[])paramMessage.obj;
@@ -69,13 +69,13 @@ class HWAudioEncoder$AudioEncodeHandler
     catch (Exception paramMessage)
     {
       QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-      HWAudioEncoder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioEncoder);
+      HWAudioEncoder.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.recorder.HWAudioEncoder.AudioEncodeHandler
  * JD-Core Version:    0.7.0.1
  */

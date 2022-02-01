@@ -56,7 +56,7 @@ public class QQStoryUserInfo
     this.nick = paramString;
     if (paramString != null)
     {
-      this.mPinying = ChnToSpell.a(paramString, 1);
+      this.mPinying = ChnToSpell.b(paramString, 1);
       return;
     }
     this.mPinying = "";

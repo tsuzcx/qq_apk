@@ -24,36 +24,36 @@ import org.jetbrains.annotations.Nullable;
 public final class KDCommunityAdapter
   extends BaseAdapter
 {
+  private final List<CommunityInfo> a;
   @NotNull
-  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Context b;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<CommunityInfo> jdField_a_of_type_JavaUtilList;
+  private final String c;
   
   public KDCommunityAdapter(@NotNull Context paramContext, @NotNull String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
+    this.b = paramContext;
+    this.c = paramString;
+    this.a = ((List)new ArrayList());
   }
   
   public final void a(@NotNull List<CommunityInfo> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "list");
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll((Collection)paramList);
+    this.a.clear();
+    this.a.addAll((Collection)paramList);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   @NotNull
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -67,12 +67,12 @@ public final class KDCommunityAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(R.layout.K, paramViewGroup, false);
+      localView = LayoutInflater.from(this.b).inflate(R.layout.G, paramViewGroup, false);
       Intrinsics.checkExpressionValueIsNotNull(localView, "LayoutInflater.from(cont…nity_item, parent, false)");
-      paramView = localView.findViewById(R.id.aM);
+      paramView = localView.findViewById(R.id.ao);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.titleView)");
       paramView = (TextView)paramView;
-      paramViewGroup = localView.findViewById(R.id.s);
+      paramViewGroup = localView.findViewById(R.id.k);
       Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "view.findViewById(R.id.descriptionView)");
       localView.setTag(new KDCommunityAdapter.CommunityHolder(null, paramView, (TextView)paramViewGroup, 1, null));
     }
@@ -80,10 +80,10 @@ public final class KDCommunityAdapter
     if (paramView != null)
     {
       paramViewGroup = (KDCommunityAdapter.CommunityHolder)paramView;
-      paramView = (CommunityInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView = (CommunityInfo)this.a.get(paramInt);
       paramViewGroup.a(paramView);
-      paramViewGroup.a().setText((CharSequence)paramView.getTitle());
-      paramViewGroup.b().setText((CharSequence)paramView.getIntro());
+      paramViewGroup.b().setText((CharSequence)paramView.getTitle());
+      paramViewGroup.c().setText((CharSequence)paramView.getIntro());
       if ((localView instanceof RoundBackgroundLinearLayout))
       {
         paramView = paramViewGroup.a();
@@ -92,16 +92,16 @@ public final class KDCommunityAdapter
         } else {
           paramView = null;
         }
-        if (Intrinsics.areEqual(paramView, this.jdField_a_of_type_JavaLangString))
+        if (Intrinsics.areEqual(paramView, this.c))
         {
           ((RoundBackgroundLinearLayout)localView).setRoundBackgroundColor(Color.parseColor("#FF00CAFC"));
-          paramViewGroup.a().setTextColor(Color.parseColor("#FFFFFFFF"));
           paramViewGroup.b().setTextColor(Color.parseColor("#FFFFFFFF"));
+          paramViewGroup.c().setTextColor(Color.parseColor("#FFFFFFFF"));
           return localView;
         }
         ((RoundBackgroundLinearLayout)localView).setRoundBackgroundColor(Color.parseColor("#FFFFFFFF"));
-        paramViewGroup.a().setTextColor(Color.parseColor("#FF03081A"));
-        paramViewGroup.b().setTextColor(Color.parseColor("#FF878B99"));
+        paramViewGroup.b().setTextColor(Color.parseColor("#FF03081A"));
+        paramViewGroup.c().setTextColor(Color.parseColor("#FF878B99"));
       }
       return localView;
     }
@@ -110,7 +110,7 @@ public final class KDCommunityAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.kdcommunity.KDCommunityAdapter
  * JD-Core Version:    0.7.0.1
  */

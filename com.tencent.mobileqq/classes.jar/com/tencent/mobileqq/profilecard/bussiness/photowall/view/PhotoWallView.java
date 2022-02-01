@@ -171,27 +171,27 @@ public class PhotoWallView
     this.mHandler = new Handler(Looper.getMainLooper(), this);
     this.mPhotoWallHandler = ((PhotoWallHandler)this.mApp.getBusinessHandler(PhotoWallHandler.class.getName()));
     this.mInflater.inflate(getLayout(), this, true);
-    this.mContentView = findViewById(2131372662);
-    this.mPhotoWallView = ((ProfileCardNewPhotoWallView)this.mContentView.findViewById(2131372671));
-    this.mLoadTipsLayout = this.mContentView.findViewById(2131372673);
-    this.mMoreLayout = this.mContentView.findViewById(2131372674);
-    this.mMoreText = ((TextView)this.mContentView.findViewById(2131372675));
-    this.mEmptyView = findViewById(2131372663);
-    this.mEmptyBgView = findViewById(2131372664);
-    this.mEmptyBgCell0 = ((ImageView)findViewById(2131372665));
-    this.mEmptyBgCell1 = ((ImageView)findViewById(2131372666));
-    this.mEmptyBgCell2 = ((ImageView)findViewById(2131372667));
-    this.mEmptyTitle = ((TextView)findViewById(2131372669));
-    this.mEmptyInfo = ((TextView)findViewById(2131372668));
-    this.mEmptyUploadBtn = ((Button)this.mEmptyView.findViewById(2131372670));
+    this.mContentView = findViewById(2131440208);
+    this.mPhotoWallView = ((ProfileCardNewPhotoWallView)this.mContentView.findViewById(2131440217));
+    this.mLoadTipsLayout = this.mContentView.findViewById(2131440219);
+    this.mMoreLayout = this.mContentView.findViewById(2131440220);
+    this.mMoreText = ((TextView)this.mContentView.findViewById(2131440221));
+    this.mEmptyView = findViewById(2131440209);
+    this.mEmptyBgView = findViewById(2131440210);
+    this.mEmptyBgCell0 = ((ImageView)findViewById(2131440211));
+    this.mEmptyBgCell1 = ((ImageView)findViewById(2131440212));
+    this.mEmptyBgCell2 = ((ImageView)findViewById(2131440213));
+    this.mEmptyTitle = ((TextView)findViewById(2131440215));
+    this.mEmptyInfo = ((TextView)findViewById(2131440214));
+    this.mEmptyUploadBtn = ((Button)this.mEmptyView.findViewById(2131440216));
     this.mPhotoWallView.preparePhotoWall(this.mUin, this.mActivity, this.mApp);
     this.mMoreText.setOnClickListener(this);
     this.mEmptyBgView.setAlpha(0.15F);
     this.mEmptyUploadBtn.setOnClickListener(this);
     if (this.mApp.getCurrentAccountUin().equals(this.mUin)) {
-      this.mMoreText.setText(2131695083);
+      this.mMoreText.setText(2131892811);
     } else {
-      this.mMoreText.setText(2131695082);
+      this.mMoreText.setText(2131892810);
     }
     this.mMoreLayout.setVisibility(8);
     ThreadManager.post(new PhotoWallView.1(this), 5, null, true);
@@ -224,7 +224,7 @@ public class PhotoWallView
   
   protected int getLayout()
   {
-    return 2131561359;
+    return 2131627715;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -342,7 +342,7 @@ public class PhotoWallView
   {
     boolean bool = this.mApp.getCurrentAccountUin().equals(this.mUin);
     int i = paramView.getId();
-    if (i == 2131372675)
+    if (i == 2131440221)
     {
       peformClickMoreText();
       if (bool) {
@@ -351,7 +351,7 @@ public class PhotoWallView
         ReportController.b(this.mApp, "dc00898", "", "", "0X8007EBF", "0X8007EBF", 0, 0, "", "", "", "");
       }
     }
-    else if (i == 2131372670)
+    else if (i == 2131440216)
     {
       ReportController.b(this.mApp, "dc00898", "", "", "0X8007EC0", "0X8007EC0", 0, 0, "", "", "", "");
       jumpToPhotoWall(this.mActivity, this.mUin, bool);
@@ -384,7 +384,7 @@ public class PhotoWallView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     float f = localDisplayMetrics.density;
-    paramInt3 = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) - getResources().getDimensionPixelSize(2131297593) * 2;
+    paramInt3 = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) - getResources().getDimensionPixelSize(2131298257) * 2;
     paramInt1 = (int)(f * 2.0F + 0.5F);
     paramInt2 = paramInt3 - paramInt1;
     paramInt4 = paramInt2 * 2 / 3 + 0;
@@ -445,7 +445,7 @@ public class PhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.photowall.view.PhotoWallView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class TroopNickNameManager$4
   public void run()
   {
     long l = System.currentTimeMillis();
-    Object localObject = this.this$0.a.entrySet().iterator();
+    Object localObject = this.this$0.b.entrySet().iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext()) {
       if (l - ((Long)((Map.Entry)((Iterator)localObject).next()).getValue()).longValue() >= 30000L)
@@ -34,7 +34,7 @@ class TroopNickNameManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.4
  * JD-Core Version:    0.7.0.1
  */

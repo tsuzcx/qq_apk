@@ -46,52 +46,33 @@ import java.net.URL;
 public class AIOPhotoListAdapter
   extends AbstractImageAdapter
 {
-  static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AIOImageListModel jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel;
-  IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
-  WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), null);
-  private GridView jdField_a_of_type_ComTencentWidgetGridView;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int d = -1;
-  private int e = -1;
+  static final Object a = new Object();
+  IAIOImageProvider b;
+  public boolean c = false;
+  WeakReferenceHandler d = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), null);
+  Drawable e;
+  private int f;
+  private LayoutInflater g;
+  private Context i;
+  private AIOImageListModel j;
+  private GridView k;
+  private int l;
+  private boolean m = false;
+  private int n = 0;
+  private boolean o = false;
+  private int p = -1;
+  private int q = -1;
   
   public AIOPhotoListAdapter(Activity paramActivity, int paramInt, AIOImageListModel paramAIOImageListModel, IAIOImageProvider paramIAIOImageProvider, GridView paramGridView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramActivity.getLayoutInflater();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel = paramAIOImageListModel;
-    paramAIOImageListModel.d(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = paramIAIOImageProvider;
-    this.jdField_a_of_type_ComTencentWidgetGridView = paramGridView;
-    this.jdField_b_of_type_Int = AIOUtils.b(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-  }
-  
-  public static int a(int paramInt)
-  {
-    int i = -1;
-    if (paramInt != -1)
-    {
-      paramInt = Integer.valueOf(ChatActivityUtils.b(paramInt)).intValue();
-      if (paramInt != 0)
-      {
-        if (paramInt != 3) {
-          return -1;
-        }
-        return 2;
-      }
-      i = 1;
-    }
-    return i;
+    this.i = paramActivity;
+    this.g = paramActivity.getLayoutInflater();
+    this.f = paramInt;
+    this.j = paramAIOImageListModel;
+    paramAIOImageListModel.f(4);
+    this.b = paramIAIOImageProvider;
+    this.k = paramGridView;
+    this.l = AIOUtils.b(40.0F, this.i.getResources());
   }
   
   private void a(int paramInt1, int paramInt2, View paramView, Object paramObject)
@@ -106,28 +87,28 @@ public class AIOPhotoListAdapter
       }
       paramObject = (AIOPhotoListAdapter.HeaderHolder)paramObject;
       String str = (String)getItem(paramInt2);
-      paramObject.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      paramObject.a.setText(str);
       Object localObject;
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramInt1 = paramInt2 / 4;
-        localObject = paramObject.jdField_a_of_type_AndroidWidgetTextView;
+        localObject = paramObject.a;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131700331));
+        localStringBuilder.append(HardCodeUtil.a(2131898371));
         localStringBuilder.append(paramInt1 + 1);
-        localStringBuilder.append(HardCodeUtil.a(2131700334));
+        localStringBuilder.append(HardCodeUtil.a(2131898374));
         localStringBuilder.append(str);
         ((TextView)localObject).setContentDescription(localStringBuilder.toString());
       }
       if (a())
       {
-        localObject = (ViewGroup)paramObject.jdField_a_of_type_AndroidWidgetCheckBox.getParent();
+        localObject = (ViewGroup)paramObject.b.getParent();
         if (localObject != null) {
-          ((ViewGroup)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839388));
+          ((ViewGroup)localObject).setBackgroundDrawable(this.i.getResources().getDrawable(2130839572));
         }
-        paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-        paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(str));
-        paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
+        paramObject.b.setVisibility(0);
+        paramObject.b.setChecked(this.j.t.a(str));
+        paramObject.b.setClickable(false);
         paramView.setOnClickListener(new AIOPhotoListAdapter.5(this, str));
       }
     }
@@ -141,27 +122,27 @@ public class AIOPhotoListAdapter
   {
     paramView.setVisibility(0);
     paramView = (AIOShortVideoData)paramAIORichMediaInfo.a;
-    if (paramView.jdField_b_of_type_Int == 0)
+    if (paramView.d == 0)
     {
-      paramImageView.setImageResource(2130839476);
-      paramTextView.setText(ShortVideoUtils.stringForTime(paramView.jdField_a_of_type_Int * 1000));
+      paramImageView.setImageResource(2130839666);
+      paramTextView.setText(ShortVideoUtils.stringForTime(paramView.c * 1000));
       paramTextView.setVisibility(0);
     }
     else
     {
-      paramImageView.setImageResource(2130839329);
-      paramContentHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      paramImageView.setImageResource(2130839509);
+      paramContentHolder.e.setVisibility(4);
     }
     paramImageView.setVisibility(0);
-    if (paramView.a(0) != null)
+    if (paramView.c(0) != null)
     {
-      paramView = paramView.a(0);
+      paramView = paramView.b(0);
       paramAIORichMediaInfo = URLDrawable.URLDrawableOptions.obtain();
       paramImageView = paramURLImageView.getDrawable();
-      int i = this.jdField_a_of_type_Int;
-      paramAIORichMediaInfo.mRequestWidth = i;
-      paramAIORichMediaInfo.mRequestHeight = i;
-      paramAIORichMediaInfo.mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      int i1 = this.f;
+      paramAIORichMediaInfo.mRequestWidth = i1;
+      paramAIORichMediaInfo.mRequestHeight = i1;
+      paramAIORichMediaInfo.mLoadingDrawable = URLDrawableHelperConstants.a;
       if ((paramImageView instanceof URLDrawable))
       {
         paramImageView = ((URLDrawable)paramImageView).getURL().toString();
@@ -176,11 +157,11 @@ public class AIOPhotoListAdapter
     }
     else
     {
-      if (paramView.jdField_a_of_type_Boolean) {
+      if (paramView.e) {
         return;
       }
       paramURLImageView.setImageDrawable(URLDrawableHelper.TRANSLUCENT);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new AIOPhotoListAdapter.2(this, paramView));
+      this.d.post(new AIOPhotoListAdapter.2(this, paramView));
     }
   }
   
@@ -189,25 +170,25 @@ public class AIOPhotoListAdapter
     paramImageView.setVisibility(4);
     paramTextView.setVisibility(4);
     paramAIORichMediaInfo = (AIOFilePicData)paramAIORichMediaInfo.a;
-    paramTextView = paramAIORichMediaInfo.a(18);
-    paramImageView = paramAIORichMediaInfo.a(18);
+    paramTextView = paramAIORichMediaInfo.c(18);
+    paramImageView = paramAIORichMediaInfo.b(18);
     if (paramTextView == null)
     {
-      paramTextView = paramAIORichMediaInfo.a(16);
-      paramImageView = paramAIORichMediaInfo.a(16);
+      paramTextView = paramAIORichMediaInfo.c(16);
+      paramImageView = paramAIORichMediaInfo.b(16);
       if (paramTextView == null)
       {
-        paramTextView = paramAIORichMediaInfo.a(20);
-        paramImageView = paramAIORichMediaInfo.a(20);
+        paramTextView = paramAIORichMediaInfo.c(20);
+        paramImageView = paramAIORichMediaInfo.b(20);
       }
     }
     if (paramTextView != null)
     {
       paramTextView = paramURLImageView.getDrawable();
       paramAIORichMediaInfo = URLDrawable.URLDrawableOptions.obtain();
-      int i = this.jdField_a_of_type_Int;
-      paramAIORichMediaInfo.mRequestWidth = i;
-      paramAIORichMediaInfo.mRequestHeight = i;
+      int i1 = this.f;
+      paramAIORichMediaInfo.mRequestWidth = i1;
+      paramAIORichMediaInfo.mRequestHeight = i1;
       paramAIORichMediaInfo.mLoadingDrawable = URLDrawableHelper.TRANSLUCENT;
       if ((paramTextView instanceof URLDrawable))
       {
@@ -221,17 +202,17 @@ public class AIOPhotoListAdapter
     }
     else
     {
-      if (paramAIORichMediaInfo.jdField_c_of_type_Boolean)
+      if (paramAIORichMediaInfo.i)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838024);
+        if (this.e == null) {
+          this.e = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838066);
         }
-        paramURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramURLImageView.setImageDrawable(this.e);
         return;
       }
       paramURLImageView.setImageDrawable(URLDrawableHelper.TRANSLUCENT);
-      if ((((IFMConfig)QRoute.api(IFMConfig.class)).preDownloadThumb()) || (this.jdField_c_of_type_Int != 2)) {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new AIOPhotoListAdapter.3(this, paramAIORichMediaInfo));
+      if ((((IFMConfig)QRoute.api(IFMConfig.class)).preDownloadThumb()) || (this.n != 2)) {
+        this.d.post(new AIOPhotoListAdapter.3(this, paramAIORichMediaInfo));
       }
     }
   }
@@ -239,22 +220,22 @@ public class AIOPhotoListAdapter
   private void a(AIOFileVideoData paramAIOFileVideoData, ImageView paramImageView, TextView paramTextView1, View paramView, TextView paramTextView2, URLImageView paramURLImageView)
   {
     paramView.setVisibility(0);
-    paramImageView.setImageResource(2130839476);
+    paramImageView.setImageResource(2130839666);
     paramImageView.setVisibility(0);
-    paramTextView1.setText(ShortVideoUtils.stringForFileSize(this.jdField_a_of_type_AndroidContentContext, paramAIOFileVideoData.h));
+    paramTextView1.setText(ShortVideoUtils.stringForFileSize(this.i, paramAIOFileVideoData.O));
     paramTextView1.setVisibility(0);
-    float f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    float f2 = this.jdField_a_of_type_Int * 2;
+    float f1 = this.i.getResources().getDisplayMetrics().density;
+    float f2 = this.f * 2;
     paramTextView2.setText((String)TextUtils.ellipsize(paramAIOFileVideoData.a, paramTextView2.getPaint(), f2 - f1 * 4.0F * 8.0F, TextUtils.TruncateAt.END));
     paramTextView2.setVisibility(0);
-    if (paramAIOFileVideoData.a(0) != null)
+    if (paramAIOFileVideoData.c(0) != null)
     {
-      paramAIOFileVideoData = paramAIOFileVideoData.a(16);
+      paramAIOFileVideoData = paramAIOFileVideoData.b(16);
       paramImageView = paramURLImageView.getDrawable();
       paramTextView1 = URLDrawable.URLDrawableOptions.obtain();
-      int i = this.jdField_a_of_type_Int;
-      paramTextView1.mRequestWidth = i;
-      paramTextView1.mRequestHeight = i;
+      int i1 = this.f;
+      paramTextView1.mRequestWidth = i1;
+      paramTextView1.mRequestHeight = i1;
       paramTextView1.mLoadingDrawable = URLDrawableHelper.TRANSLUCENT;
       if ((paramImageView instanceof URLDrawable))
       {
@@ -275,18 +256,18 @@ public class AIOPhotoListAdapter
   
   private void a(AIOLightVideoData paramAIOLightVideoData, ImageView paramImageView, TextView paramTextView, URLImageView paramURLImageView)
   {
-    paramImageView.setImageResource(2130839329);
-    paramTextView.setText(ShortVideoUtils.stringForTime(paramAIOLightVideoData.jdField_a_of_type_Int * 1000));
+    paramImageView.setImageResource(2130839509);
+    paramTextView.setText(ShortVideoUtils.stringForTime(paramAIOLightVideoData.c * 1000));
     paramTextView.setVisibility(0);
     paramImageView.setVisibility(0);
-    if (paramAIOLightVideoData.a(0) != null)
+    if (paramAIOLightVideoData.c(0) != null)
     {
-      paramAIOLightVideoData = paramAIOLightVideoData.a(0);
+      paramAIOLightVideoData = paramAIOLightVideoData.b(0);
       paramImageView = URLDrawable.URLDrawableOptions.obtain();
       paramTextView = paramURLImageView.getDrawable();
-      int i = this.jdField_a_of_type_Int;
-      paramImageView.mRequestWidth = i;
-      paramImageView.mRequestHeight = i;
+      int i1 = this.f;
+      paramImageView.mRequestWidth = i1;
+      paramImageView.mRequestHeight = i1;
       paramImageView.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       if ((paramTextView instanceof URLDrawable))
       {
@@ -303,18 +284,18 @@ public class AIOPhotoListAdapter
     else
     {
       paramURLImageView.setImageDrawable(URLDrawableHelper.TRANSLUCENT);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new AIOPhotoListAdapter.4(this, paramAIOLightVideoData));
+      this.d.post(new AIOPhotoListAdapter.4(this, paramAIOLightVideoData));
     }
   }
   
   private void a(AIORichMediaInfo paramAIORichMediaInfo, ImageView paramImageView1, ImageView paramImageView2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      int i = paramAIORichMediaInfo.getSelected();
-      if (i != 1)
+      int i1 = paramAIORichMediaInfo.getSelected();
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
           if (paramImageView1 != null) {
             paramImageView1.setVisibility(4);
@@ -330,7 +311,7 @@ public class AIOPhotoListAdapter
           }
           if (paramImageView2 != null)
           {
-            paramImageView2.setImageResource(2130845863);
+            paramImageView2.setImageResource(2130847333);
             paramImageView2.setVisibility(0);
           }
         }
@@ -342,7 +323,7 @@ public class AIOPhotoListAdapter
         }
         if (paramImageView2 != null)
         {
-          paramImageView2.setImageResource(2130845866);
+          paramImageView2.setImageResource(2130841341);
           paramImageView2.setVisibility(0);
         }
       }
@@ -363,15 +344,15 @@ public class AIOPhotoListAdapter
     paramImageView.setVisibility(4);
     paramTextView.setVisibility(4);
     paramAIORichMediaInfo = (AIOImageData)paramAIORichMediaInfo.a;
-    paramImageView = paramAIORichMediaInfo.a(1);
+    paramImageView = paramAIORichMediaInfo.c(1);
     String str;
     if (paramImageView != null)
     {
       paramAIORichMediaInfo = paramURLImageView.getDrawable();
       paramTextView = URLDrawable.URLDrawableOptions.obtain();
-      int i = this.jdField_a_of_type_Int;
-      paramTextView.mRequestWidth = i;
-      paramTextView.mRequestHeight = i;
+      int i1 = this.f;
+      paramTextView.mRequestWidth = i1;
+      paramTextView.mRequestHeight = i1;
       paramTextView.mLoadingDrawable = URLDrawableHelper.TRANSLUCENT;
       if ((paramAIORichMediaInfo instanceof URLDrawable)) {
         str = ((URLDrawable)paramAIORichMediaInfo).getURL().toString();
@@ -393,39 +374,46 @@ public class AIOPhotoListAdapter
       return;
       paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramImageView, paramTextView));
       return;
-      if (paramAIORichMediaInfo.jdField_a_of_type_Boolean)
+      if (paramAIORichMediaInfo.e)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838024);
+        if (this.e == null) {
+          this.e = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838066);
         }
-        paramURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramURLImageView.setImageDrawable(this.e);
         return;
       }
       paramURLImageView.setImageDrawable(URLDrawableHelper.TRANSLUCENT);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new AIOPhotoListAdapter.1(this, paramAIORichMediaInfo));
+      this.d.post(new AIOPhotoListAdapter.1(this, paramAIORichMediaInfo));
     }
   }
   
-  public void a()
+  public static int c(int paramInt)
   {
-    AIOImageListModel localAIOImageListModel = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel;
-    if (localAIOImageListModel == null) {
-      return;
+    int i1 = -1;
+    if (paramInt != -1)
+    {
+      paramInt = Integer.valueOf(ChatActivityUtils.c(paramInt)).intValue();
+      if (paramInt != 0)
+      {
+        if (paramInt != 3) {
+          return -1;
+        }
+        return 2;
+      }
+      i1 = 1;
     }
-    if (localAIOImageListModel.a()) {
-      notifyDataSetChanged();
-    }
+    return i1;
   }
   
   public void a(int paramInt)
   {
-    this.d = paramInt;
-    this.e = a(this.d);
+    this.p = paramInt;
+    this.q = c(this.p);
   }
   
   public void a(int paramInt, View paramView)
   {
-    long l = SystemClock.uptimeMillis();
+    long l1 = SystemClock.uptimeMillis();
     Object localObject1 = getItem(paramInt);
     Object localObject2 = paramView.getTag();
     if (!AIORichMediaInfo.class.isInstance(localObject1))
@@ -446,13 +434,13 @@ public class AIOPhotoListAdapter
     }
     AIOPhotoListAdapter.ContentHolder localContentHolder = (AIOPhotoListAdapter.ContentHolder)localObject2;
     AIORichMediaInfo localAIORichMediaInfo = (AIORichMediaInfo)localObject1;
-    URLImageView localURLImageView = localContentHolder.jdField_a_of_type_ComTencentImageURLImageView;
-    ImageView localImageView1 = localContentHolder.jdField_a_of_type_AndroidWidgetImageView;
-    ImageView localImageView2 = localContentHolder.jdField_b_of_type_AndroidWidgetImageView;
-    ImageView localImageView3 = localContentHolder.c;
-    TextView localTextView1 = localContentHolder.jdField_a_of_type_AndroidWidgetTextView;
-    TextView localTextView2 = localContentHolder.jdField_b_of_type_AndroidWidgetTextView;
-    View localView = localContentHolder.jdField_a_of_type_AndroidViewView;
+    URLImageView localURLImageView = localContentHolder.a;
+    ImageView localImageView1 = localContentHolder.b;
+    ImageView localImageView2 = localContentHolder.c;
+    ImageView localImageView3 = localContentHolder.d;
+    TextView localTextView1 = localContentHolder.e;
+    TextView localTextView2 = localContentHolder.f;
+    View localView = localContentHolder.g;
     localView.setVisibility(8);
     localTextView2.setVisibility(8);
     localURLImageView.setBackgroundColor(0);
@@ -461,32 +449,32 @@ public class AIOPhotoListAdapter
     if (AIOImageData.class.isInstance(localAIORichMediaInfo.a))
     {
       a(localAIORichMediaInfo, localImageView3, localTextView1, localURLImageView);
-      if (AppSetting.d) {
-        localObject1 = HardCodeUtil.a(2131700335);
+      if (AppSetting.e) {
+        localObject1 = HardCodeUtil.a(2131898375);
       }
     }
     else if (AIOShortVideoData.class.isInstance(localAIORichMediaInfo.a))
     {
       a(localView, localAIORichMediaInfo, localImageView3, localTextView1, localURLImageView, localContentHolder);
       localObject1 = localObject2;
-      if (AppSetting.d) {
-        localObject1 = HardCodeUtil.a(2131700333);
+      if (AppSetting.e) {
+        localObject1 = HardCodeUtil.a(2131898373);
       }
     }
     else if (AIOFilePicData.class.isInstance(localAIORichMediaInfo.a))
     {
       a(localImageView3, localTextView1, localAIORichMediaInfo, localURLImageView);
       localObject1 = localObject2;
-      if (AppSetting.d) {
-        localObject1 = HardCodeUtil.a(2131700329);
+      if (AppSetting.e) {
+        localObject1 = HardCodeUtil.a(2131898369);
       }
     }
     else if (AIOFileVideoData.class.isInstance(localAIORichMediaInfo.a))
     {
       a((AIOFileVideoData)localAIORichMediaInfo.a, localImageView3, localTextView1, localView, localTextView2, localURLImageView);
       localObject1 = localObject2;
-      if (AppSetting.d) {
-        localObject1 = HardCodeUtil.a(2131700332);
+      if (AppSetting.e) {
+        localObject1 = HardCodeUtil.a(2131898372);
       }
     }
     else
@@ -497,18 +485,18 @@ public class AIOPhotoListAdapter
         localView.setVisibility(0);
         a((AIOLightVideoData)localAIORichMediaInfo.a, localImageView3, localTextView1, localURLImageView);
         localObject1 = localObject2;
-        if (AppSetting.d) {
-          localObject1 = HardCodeUtil.a(2131700330);
+        if (AppSetting.e) {
+          localObject1 = HardCodeUtil.a(2131898370);
         }
       }
     }
     if (localObject1 != null)
     {
-      int i = paramInt / 4;
+      int i1 = paramInt / 4;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131700336));
-      ((StringBuilder)localObject2).append(i + 1);
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131700337));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131898376));
+      ((StringBuilder)localObject2).append(i1 + 1);
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131898377));
       ((StringBuilder)localObject2).append(paramInt % 4 + 1);
       ((StringBuilder)localObject2).append((String)localObject1);
       paramView.setContentDescription(((StringBuilder)localObject2).toString());
@@ -518,7 +506,7 @@ public class AIOPhotoListAdapter
     {
       paramView = new StringBuilder();
       paramView.append("[updateView] cost: ");
-      paramView.append(SystemClock.uptimeMillis() - l);
+      paramView.append(SystemClock.uptimeMillis() - l1);
       paramView.append(" data");
       paramView.append(localAIORichMediaInfo.a);
       QLog.d("AIOPhotoListAdapter", 2, paramView.toString());
@@ -529,23 +517,12 @@ public class AIOPhotoListAdapter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
   }
   
   public boolean a()
   {
-    return (this.jdField_c_of_type_Boolean) && (this.e != -1);
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (paramBoolean != this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      notifyDataSetChanged();
-      return true;
-    }
-    return false;
+    return (this.o) && (this.q != -1);
   }
   
   public boolean areAllItemsEnabled()
@@ -553,39 +530,61 @@ public class AIOPhotoListAdapter
     return false;
   }
   
+  public void b()
+  {
+    AIOImageListModel localAIOImageListModel = this.j;
+    if (localAIOImageListModel == null) {
+      return;
+    }
+    if (localAIOImageListModel.g()) {
+      notifyDataSetChanged();
+    }
+  }
+  
   public void b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.n = paramInt;
+  }
+  
+  public boolean b(boolean paramBoolean)
+  {
+    if (paramBoolean != this.m)
+    {
+      this.m = paramBoolean;
+      notifyDataSetChanged();
+      return true;
+    }
+    return false;
   }
   
   public int getCount()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.g();
-    int j = i;
-    if (this.jdField_b_of_type_Boolean)
+    int i1 = this.j.m();
+    int i2 = i1;
+    if (this.m)
     {
-      int k = i % 4;
-      j = i;
-      if (k > 0) {
-        j = i + (4 - k);
+      int i3 = i1 % 4;
+      i2 = i1;
+      if (i3 > 0) {
+        i2 = i1 + (4 - i3);
       }
-      j += 1;
+      i2 += 1;
     }
-    return j;
+    return i2;
   }
   
   public Object getItem(int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(paramInt);
+    if (!this.m) {
+      return this.j.h(paramInt);
     }
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.g()) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(paramInt);
+    if (paramInt < this.j.m()) {
+      return this.j.h(paramInt);
     }
     if (paramInt == getCount() - 1) {
-      return jdField_a_of_type_JavaLangObject;
+      return a;
     }
-    return AIOImageListModel.b;
+    return AIOImageListModel.k;
   }
   
   public int getItemViewType(int paramInt)
@@ -596,16 +595,16 @@ public class AIOPhotoListAdapter
     if (bool) {
       return 0;
     }
-    if (AIOImageListModel.b.equals(localObject)) {
+    if (AIOImageListModel.k.equals(localObject)) {
       return 1;
     }
     if ((localObject instanceof String)) {
       return 2;
     }
-    if (AIOImageListModel.jdField_a_of_type_JavaLangObject.equals(localObject)) {
+    if (AIOImageListModel.j.equals(localObject)) {
       return 3;
     }
-    if (jdField_a_of_type_JavaLangObject.equals(localObject)) {
+    if (a.equals(localObject)) {
       paramInt = 4;
     }
     return paramInt;
@@ -613,7 +612,7 @@ public class AIOPhotoListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = getItemViewType(paramInt);
+    int i1 = getItemViewType(paramInt);
     Object localObject1;
     if (paramView == null) {
       localObject1 = null;
@@ -621,42 +620,42 @@ public class AIOPhotoListAdapter
       localObject1 = paramView.getTag();
     }
     Object localObject2;
-    int j;
-    if (i != 0)
+    int i2;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
         Object localObject3;
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i != 3)
+          if (i1 != 3)
           {
-            if ((i == 4) && (!jdField_a_of_type_JavaLangObject.equals(localObject1)))
+            if ((i1 == 4) && (!a.equals(localObject1)))
             {
-              paramView = new AIOPhotoListAdapter.FullWidthFixedViewLayout(this, this.jdField_a_of_type_AndroidContentContext);
-              localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561279, null);
+              paramView = new AIOPhotoListAdapter.FullWidthFixedViewLayout(this, this.i);
+              localObject2 = this.g.inflate(2131627635, null);
               localObject3 = new FrameLayout.LayoutParams(-2, -2);
               ((FrameLayout.LayoutParams)localObject3).gravity = 17;
               ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
               paramView.addView((View)localObject2);
-              paramView.setTag(jdField_a_of_type_JavaLangObject);
+              paramView.setTag(a);
             }
           }
-          else if (!AIOImageListModel.jdField_a_of_type_JavaLangObject.equals(localObject1))
+          else if (!AIOImageListModel.j.equals(localObject1))
           {
-            paramView = new View(this.jdField_a_of_type_AndroidContentContext);
-            paramView.setMinimumHeight(this.jdField_b_of_type_Int);
+            paramView = new View(this.i);
+            paramView.setMinimumHeight(this.l);
             paramView.setVisibility(4);
-            paramView.setTag(AIOImageListModel.jdField_a_of_type_JavaLangObject);
+            paramView.setTag(AIOImageListModel.j);
           }
         }
         else if (!AIOPhotoListAdapter.HeaderHolder.class.isInstance(localObject1))
         {
-          localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561280, null);
+          localObject2 = this.g.inflate(2131627636, null);
           localObject1 = new AIOPhotoListAdapter.HeaderHolder(this);
-          ((AIOPhotoListAdapter.HeaderHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131378615));
-          ((AIOPhotoListAdapter.HeaderHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)((View)localObject2).findViewById(2131369353));
-          paramView = new AIOPhotoListAdapter.FullWidthFixedViewLayout(this, this.jdField_a_of_type_AndroidContentContext);
+          ((AIOPhotoListAdapter.HeaderHolder)localObject1).a = ((TextView)((View)localObject2).findViewById(2131447246));
+          ((AIOPhotoListAdapter.HeaderHolder)localObject1).b = ((CheckBox)((View)localObject2).findViewById(2131436369));
+          paramView = new AIOPhotoListAdapter.FullWidthFixedViewLayout(this, this.i);
           localObject3 = ((View)localObject2).getLayoutParams();
           if (localObject3 != null)
           {
@@ -667,12 +666,12 @@ public class AIOPhotoListAdapter
           paramView.setTag(localObject1);
         }
       }
-      else if (!AIOImageListModel.b.equals(localObject1))
+      else if (!AIOImageListModel.k.equals(localObject1))
       {
-        paramView = new View(this.jdField_a_of_type_AndroidContentContext);
-        j = this.jdField_a_of_type_Int;
-        paramView.setLayoutParams(new AbsListView.LayoutParams(j, j));
-        paramView.setTag(AIOImageListModel.b);
+        paramView = new View(this.i);
+        i2 = this.f;
+        paramView.setLayoutParams(new AbsListView.LayoutParams(i2, i2));
+        paramView.setTag(AIOImageListModel.k);
       }
     }
     else if (!AIOPhotoListAdapter.ContentHolder.class.isInstance(localObject1))
@@ -685,21 +684,21 @@ public class AIOPhotoListAdapter
         ((StringBuilder)localObject2).append(paramView.viewType);
         QLog.d("AIOPhotoListAdapter", 2, ((StringBuilder)localObject2).toString());
       }
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561291, null);
-      j = this.jdField_a_of_type_Int;
-      paramView.setLayoutParams(new AbsListView.LayoutParams(j, j));
+      paramView = this.g.inflate(2131627647, null);
+      i2 = this.f;
+      paramView.setLayoutParams(new AbsListView.LayoutParams(i2, i2));
       localObject2 = new AIOPhotoListAdapter.ContentHolder(this);
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131372648));
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369102));
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372653));
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).c = ((ImageView)paramView.findViewById(2131372580));
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380662));
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366819));
-      ((AIOPhotoListAdapter.ContentHolder)localObject2).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363754);
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).a = ((URLImageView)paramView.findViewById(2131440193));
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).a.setAdjustViewBounds(false);
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).b = ((ImageView)paramView.findViewById(2131436068));
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).c = ((ImageView)paramView.findViewById(2131440198));
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).d = ((ImageView)paramView.findViewById(2131440118));
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).e = ((TextView)paramView.findViewById(2131449621));
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).f = ((TextView)paramView.findViewById(2131433141));
+      ((AIOPhotoListAdapter.ContentHolder)localObject2).g = paramView.findViewById(2131429678);
       paramView.setTag(localObject2);
     }
-    a(i, paramInt, paramView, localObject1);
+    a(i1, paramInt, paramView, localObject1);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
   }
@@ -716,7 +715,7 @@ public class AIOPhotoListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter
  * JD-Core Version:    0.7.0.1
  */

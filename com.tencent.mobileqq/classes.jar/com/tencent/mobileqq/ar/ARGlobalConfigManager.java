@@ -23,91 +23,36 @@ import mqq.manager.Manager;
 public class ARGlobalConfigManager
   implements Manager
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected volatile ARCommonConfigInfo a;
-  private final Vector<WeakReference<IArConfigListener>> jdField_a_of_type_JavaUtilVector = new Vector();
+  SharedPreferences a;
+  protected volatile ARCommonConfigInfo b;
+  private QQAppInterface c;
+  private final Vector<WeakReference<IArConfigListener>> d = new Vector();
   
   public ARGlobalConfigManager(QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARGlobalConfigManager", 2, "ARGlobalConfigManager constructor");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
     BaseApplication localBaseApplication = paramQQAppInterface.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ar_global_config");
     localStringBuilder.append(paramQQAppInterface.getAccount());
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+    this.a = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
     ThreadManager.post(new ARGlobalConfigManager.1(this), 8, null, true);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("ar_global_app_version", 0);
-  }
-  
-  public ARScanAR a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARGlobalConfigManager", 2, "getQQArEntryTypeInfo");
-    }
-    a();
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARGlobalConfigManager", 2, "config is null");
-      }
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.arControllers.iterator();
-    while (localIterator.hasNext())
-    {
-      ARScanAR localARScanAR = (ARScanAR)localIterator.next();
-      if (localARScanAR.jdField_a_of_type_Int == 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARGlobalConfigManager", 2, "config is found");
-        }
-        return localARScanAR;
-      }
-    }
-    return null;
-  }
-  
-  public ARCommonConfigInfo a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo == null) {
-        try
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-            return null;
-          }
-          QLog.d("AREngine_ARGlobalConfigManager", 2, "getArCommonConfigInfo load config from file.");
-          this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = ARCommonConfigInfo.loadConfigFromFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        }
-        finally {}
-      }
-      QLog.d("AREngine_ARGlobalConfigManager", 2, String.format("getArCommonConfigInfo mConfigInfo=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo }));
-      ARCommonConfigInfo localARCommonConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-      return localARCommonConfigInfo;
-    }
-    finally {}
   }
   
   public ARCommonConfigInfo a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    if (this.b != null) {
+      return this.b;
     }
     if (paramBoolean) {
-      a();
+      d();
     } else {
       ThreadManager.postImmediately(new ARGlobalConfigManager.2(this), null, false);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    return this.b;
   }
   
   public void a()
@@ -123,28 +68,117 @@ public class ARGlobalConfigManager
     {
       localNameNotFoundException.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("ar_global_app_version", i).commit();
+    this.a.edit().putInt("ar_global_app_version", i).commit();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("ar_global_key_config_version", paramInt).commit();
+    this.a.edit().putInt("ar_global_key_config_version", paramInt).commit();
   }
   
   public void a(IArConfigListener paramIArConfigListener)
   {
     if (paramIArConfigListener != null) {
-      this.jdField_a_of_type_JavaUtilVector.add(new WeakReference(paramIArConfigListener));
+      this.d.add(new WeakReference(paramIArConfigListener));
     }
   }
   
-  public boolean a()
+  public boolean a(String arg1)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("updateArConfigInfo | config = ");
+          ((StringBuilder)localObject1).append(???);
+          QLog.d("AREngine_ARGlobalConfigManager", 2, ((StringBuilder)localObject1).toString());
+        }
+        QQAppInterface localQQAppInterface = this.c;
+        i = 0;
+        if ((localQQAppInterface == null) || (!ARCommonConfigInfo.saveArConfigToFile(???, localQQAppInterface.getCurrentAccountUin()))) {
+          continue;
+        }
+        Object localObject4 = new ArrayList();
+        Object localObject3 = new ArrayList();
+        localObject1 = localObject4;
+        if (this.b != null)
+        {
+          localObject1 = localObject4;
+          if (this.b.nativeSoResList != null) {
+            localObject1 = this.b.nativeSoResList;
+          }
+        }
+        this.b = ARCommonConfigInfo.parseArConfig(???);
+        ??? = SharedPreferencesProxyManager.getInstance().getProxy("qrcode", 0).edit();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("ar_guide_b_showed_c");
+        ((StringBuilder)localObject4).append(localQQAppInterface.getCurrentAccountUin());
+        ???.putInt(((StringBuilder)localObject4).toString(), 0).commit();
+        if (this.b == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARGlobalConfigManager", 2, "parseArconfigxml fail");
+          }
+          e();
+          return false;
+        }
+        ??? = (String)localObject3;
+        if (this.b != null)
+        {
+          ??? = (String)localObject3;
+          if (this.b.nativeSoResList != null) {
+            ??? = this.b.nativeSoResList;
+          }
+        }
+        localObject3 = new ArNativeSoManager(localQQAppInterface);
+        ((ArNativeSoManager)localObject3).a((ArrayList)localObject1, ???, "arsdk2");
+        ((ArNativeSoManager)localObject3).a((ArrayList)localObject1, ???, "arcloud");
+      }
+      finally
+      {
+        Object localObject1;
+        int i;
+        continue;
+        throw ???;
+        continue;
+        i += 1;
+        continue;
+      }
+      synchronized (this.d)
+      {
+        if (i < this.d.size())
+        {
+          localObject1 = (WeakReference)this.d.get(i);
+          if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
+          {
+            ((IArConfigListener)((WeakReference)localObject1).get()).a(this.b);
+            continue;
+          }
+          this.d.remove(i);
+          i -= 1;
+          continue;
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.a.getInt("ar_global_app_version", 0);
+  }
+  
+  public boolean c()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     try
     {
       int i = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0).versionCode;
-      int j = a();
+      int j = b();
       if (j != 0)
       {
         if (i != j) {
@@ -168,125 +202,91 @@ public class ARGlobalConfigManager
     return true;
   }
   
-  public boolean a(String arg1)
+  public ARCommonConfigInfo d()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (QLog.isColorLevel())
+      if (this.b == null) {
+        try
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("updateArConfigInfo | config = ");
-          ((StringBuilder)localObject1).append(???);
-          QLog.d("AREngine_ARGlobalConfigManager", 2, ((StringBuilder)localObject1).toString());
-        }
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        i = 0;
-        if ((localQQAppInterface == null) || (!ARCommonConfigInfo.saveArConfigToFile(???, localQQAppInterface.getCurrentAccountUin()))) {
-          continue;
-        }
-        Object localObject4 = new ArrayList();
-        Object localObject3 = new ArrayList();
-        localObject1 = localObject4;
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null)
-        {
-          localObject1 = localObject4;
-          if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.nativeSoResList != null) {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.nativeSoResList;
+          if (this.c == null) {
+            return null;
           }
+          QLog.d("AREngine_ARGlobalConfigManager", 2, "getArCommonConfigInfo load config from file.");
+          this.b = ARCommonConfigInfo.loadConfigFromFile(this.c.getAccount());
         }
-        this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = ARCommonConfigInfo.parseArConfig(???);
-        ??? = SharedPreferencesProxyManager.getInstance().getProxy("qrcode", 0).edit();
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append("ar_guide_b_showed_c");
-        ((StringBuilder)localObject4).append(localQQAppInterface.getCurrentAccountUin());
-        ???.putInt(((StringBuilder)localObject4).toString(), 0).commit();
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AREngine_ARGlobalConfigManager", 2, "parseArconfigxml fail");
-          }
-          b();
-          return false;
-        }
-        ??? = (String)localObject3;
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null)
-        {
-          ??? = (String)localObject3;
-          if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.nativeSoResList != null) {
-            ??? = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.nativeSoResList;
-          }
-        }
-        localObject3 = new ArNativeSoManager(localQQAppInterface);
-        ((ArNativeSoManager)localObject3).a((ArrayList)localObject1, ???, "arsdk2");
-        ((ArNativeSoManager)localObject3).a((ArrayList)localObject1, ???, "arcloud");
+        finally {}
       }
-      finally
-      {
-        Object localObject1;
-        int i;
-        continue;
-        throw ???;
-        continue;
-        i += 1;
-        continue;
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilVector)
-      {
-        if (i < this.jdField_a_of_type_JavaUtilVector.size())
-        {
-          localObject1 = (WeakReference)this.jdField_a_of_type_JavaUtilVector.get(i);
-          if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
-          {
-            ((IArConfigListener)((WeakReference)localObject1).get()).a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo);
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilVector.remove(i);
-          i -= 1;
-          continue;
-        }
-        return true;
-      }
+      QLog.d("AREngine_ARGlobalConfigManager", 2, String.format("getArCommonConfigInfo mConfigInfo=%s", new Object[] { this.b }));
+      ARCommonConfigInfo localARCommonConfigInfo = this.b;
+      return localARCommonConfigInfo;
     }
-    return false;
+    finally {}
   }
   
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("ar_global_key_config_version", 0);
-  }
-  
-  public void b()
+  public void e()
   {
     try
     {
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARGlobalConfigManager", 2, "clearArConfigInfo");
       }
-      this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = null;
+      this.b = null;
       a(0);
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARGlobalConfigManager", 2, "after delete ARConfig, we should remove serverVersionCode");
       }
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.c;
       if (localQQAppInterface == null) {
         return;
       }
-      ARCommonConfigInfo.deleteConfigFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ARCommonConfigInfo.deleteConfigFile(this.c.getCurrentAccountUin());
       return;
     }
     finally {}
   }
   
-  public boolean b()
+  public int f()
   {
-    ARScanAR localARScanAR = a();
+    return this.a.getInt("ar_global_key_config_version", 0);
+  }
+  
+  public ARScanAR g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARGlobalConfigManager", 2, "getQQArEntryTypeInfo");
+    }
+    d();
+    if (this.b == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARGlobalConfigManager", 2, "config is null");
+      }
+      return null;
+    }
+    Iterator localIterator = this.b.arControllers.iterator();
+    while (localIterator.hasNext())
+    {
+      ARScanAR localARScanAR = (ARScanAR)localIterator.next();
+      if (localARScanAR.a == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARGlobalConfigManager", 2, "config is found");
+        }
+        return localARScanAR;
+      }
+    }
+    return null;
+  }
+  
+  public boolean h()
+  {
+    ARScanAR localARScanAR = g();
     long l = NetConnInfoCenter.getServerTimeMillis();
     if (localARScanAR == null) {
       return false;
     }
-    if ((localARScanAR.jdField_a_of_type_Long <= l) && (l <= localARScanAR.b)) {
+    if ((localARScanAR.b <= l) && (l <= localARScanAR.c)) {
       return true;
     }
     QLog.d("AREngine_ARGlobalConfigManager", 1, "isShowArPort | getQQArEntryTypeInfo out of date !");
@@ -295,12 +295,12 @@ public class ARGlobalConfigManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGlobalConfigManager
  * JD-Core Version:    0.7.0.1
  */

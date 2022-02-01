@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class LimitChatPie$27
   implements DialogInterface.OnClickListener
@@ -10,12 +11,12 @@ class LimitChatPie$27
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LimitChatPie.f(this.a);
+    this.a.aX().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.27
  * JD-Core Version:    0.7.0.1
  */

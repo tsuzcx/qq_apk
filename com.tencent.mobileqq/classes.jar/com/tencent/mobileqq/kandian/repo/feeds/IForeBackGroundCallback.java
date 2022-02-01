@@ -7,11 +7,11 @@ public abstract interface IForeBackGroundCallback
 {
   public abstract void a();
   
-  public abstract void ax_();
+  public abstract void cU_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.IForeBackGroundCallback
  * JD-Core Version:    0.7.0.1
  */

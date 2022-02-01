@@ -14,7 +14,7 @@ class ForwardFileOption$9
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      paramView = this.jdField_a_of_type_AndroidViewView;
+      paramView = this.a;
       if (paramView != null)
       {
         paramView.setBackgroundColor(Color.argb(25, 0, 0, 0));
@@ -23,7 +23,7 @@ class ForwardFileOption$9
     }
     else if (paramMotionEvent.getAction() == 1)
     {
-      paramView = this.jdField_a_of_type_AndroidViewView;
+      paramView = this.a;
       if (paramView != null) {
         paramView.setBackgroundColor(Color.argb(0, 0, 0, 0));
       }
@@ -33,7 +33,7 @@ class ForwardFileOption$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.9
  * JD-Core Version:    0.7.0.1
  */

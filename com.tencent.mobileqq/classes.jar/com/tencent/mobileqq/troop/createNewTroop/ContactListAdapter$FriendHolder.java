@@ -4,18 +4,18 @@ import com.tencent.mobileqq.data.Friends;
 
 class ContactListAdapter$FriendHolder
 {
-  public int a;
   public Friends a;
+  public int b;
   
   public ContactListAdapter$FriendHolder(Friends paramFriends, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramFriends;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.FriendHolder
  * JD-Core Version:    0.7.0.1
  */

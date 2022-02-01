@@ -14,12 +14,12 @@ public class QQPimTipsInfoHelper
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("QQPIM_TIPS_CLICK");
-    ((StringBuilder)localObject).append(paramQQPimTipsInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramQQPimTipsInfo.a);
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramQQPimTipsInfo.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(";");
     localStringBuilder.append(paramQQPimTipsInfo.b);
+    localStringBuilder.append(";");
+    localStringBuilder.append(paramQQPimTipsInfo.d);
     localStringBuilder.append(";");
     localStringBuilder.append(System.currentTimeMillis());
     QQPimSharedPrefrenceUtil.a(paramContext, (String)localObject, localStringBuilder.toString());
@@ -32,11 +32,11 @@ public class QQPimTipsInfoHelper
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QQPIM_TIPS_CLICK");
-    localStringBuilder.append(paramQQPimTipsInfo.jdField_a_of_type_Int);
-    if (TextUtils.isEmpty(QQPimSharedPrefrenceUtil.a(paramContext, localStringBuilder.toString()))) {
+    localStringBuilder.append(paramQQPimTipsInfo.a);
+    if (TextUtils.isEmpty(QQPimSharedPrefrenceUtil.b(paramContext, localStringBuilder.toString()))) {
       return;
     }
-    int i = paramQQPimTipsInfo.jdField_a_of_type_Int;
+    int i = paramQQPimTipsInfo.a;
     if (i != 1)
     {
       if (i != 2)
@@ -44,18 +44,18 @@ public class QQPimTipsInfoHelper
         if (i != 4) {
           return;
         }
-        paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+        paramQQPimTipsInfo.c = 0;
         return;
       }
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      paramQQPimTipsInfo.c = 0;
       return;
     }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+    paramQQPimTipsInfo.c = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimTipsInfoHelper
  * JD-Core Version:    0.7.0.1
  */

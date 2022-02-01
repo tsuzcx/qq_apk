@@ -10,18 +10,18 @@ class LineLayer$SaveTempFileJob$1
   
   public void run()
   {
-    if (LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer$SaveTempFileJob) != null)
+    if (LineLayer.SaveTempFileJob.a(this.b) != null)
     {
-      SaveTempFileJobListener localSaveTempFileJobListener = (SaveTempFileJobListener)LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer$SaveTempFileJob).get();
+      SaveTempFileJobListener localSaveTempFileJobListener = (SaveTempFileJobListener)LineLayer.SaveTempFileJob.a(this.b).get();
       if (localSaveTempFileJobListener != null) {
-        localSaveTempFileJobListener.a(TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString) ^ true, LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer$SaveTempFileJob), LineLayer.SaveTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer$SaveTempFileJob), this.jdField_a_of_type_JavaLangString);
+        localSaveTempFileJobListener.a(TextUtils.isEmpty(this.a) ^ true, LineLayer.SaveTempFileJob.b(this.b), LineLayer.SaveTempFileJob.c(this.b), this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.LineLayer.SaveTempFileJob.1
  * JD-Core Version:    0.7.0.1
  */

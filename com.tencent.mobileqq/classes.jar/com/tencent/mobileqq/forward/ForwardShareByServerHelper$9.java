@@ -36,20 +36,20 @@ class ForwardShareByServerHelper$9
       bool = false;
     }
     ForwardStatisticsReporter.a("KEY_STAGE_2_NORMAL_B77", bool);
-    QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "notifyServerSendMessage() onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper)), ", isFirstShow =", Boolean.valueOf(ForwardShareByServerHelper.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper)) });
-    if (!ForwardShareByServerHelper.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper))
+    QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "notifyServerSendMessage() onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(ForwardShareByServerHelper.b(this.b)), ", isFirstShow =", Boolean.valueOf(ForwardShareByServerHelper.c(this.b)) });
+    if (!ForwardShareByServerHelper.c(this.b))
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("notifyServerSendMessage return for isFirstShow =");
-      paramArrayOfByte.append(ForwardShareByServerHelper.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper));
+      paramArrayOfByte.append(ForwardShareByServerHelper.c(this.b));
       QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, paramArrayOfByte.toString());
       return;
     }
-    if (ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper))
+    if (ForwardShareByServerHelper.b(this.b))
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("notifyServerSendMessage return for isTimeOut =");
-      paramArrayOfByte.append(ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper));
+      paramArrayOfByte.append(ForwardShareByServerHelper.b(this.b));
       QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, paramArrayOfByte.toString());
       return;
     }
@@ -58,27 +58,27 @@ class ForwardShareByServerHelper$9
       long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
       paramBundle = new StringBuilder();
       paramBundle.append("notifyServerSendMessage currentRequestTime =");
-      paramBundle.append(ForwardShareByServerHelper.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper));
+      paramBundle.append(ForwardShareByServerHelper.j(this.b));
       paramBundle.append(", sendStamp = ");
       paramBundle.append(l);
       QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, paramBundle.toString());
-      if ((l == -1L) || (l != ForwardShareByServerHelper.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper)))
+      if ((l == -1L) || (l != ForwardShareByServerHelper.j(this.b)))
       {
         QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, "notifyServerSendMessage return for sendStamp");
         return;
       }
     }
-    ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper, true);
+    ForwardShareByServerHelper.a(this.b, true);
     paramBundle = ForwardUtils.a(paramArrayOfByte);
     int i = ((Integer)paramBundle[0]).intValue();
     String str1 = (String)paramBundle[1];
     String str2 = (String)paramBundle[2];
     String str3 = (String)paramBundle[3];
-    ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper).removeMessages(94);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper.c();
-    paramBundle = ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper);
-    String str4 = SdkShareReporter.a(ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper).getInt("req_type"));
-    String str5 = SdkShareReporter.b(ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper).getInt("uintype"));
+    ForwardShareByServerHelper.k(this.b).removeMessages(94);
+    this.b.c();
+    paramBundle = ForwardShareByServerHelper.l(this.b);
+    String str4 = SdkShareReporter.b(ForwardShareByServerHelper.a(this.b).getInt("req_type"));
+    String str5 = SdkShareReporter.c(ForwardShareByServerHelper.a(this.b).getInt("uintype"));
     if ((paramBundle instanceof AbsShareMsg)) {
       paramBundle = ((AbsShareMsg)paramBundle).mContentTitle;
     } else {
@@ -91,19 +91,19 @@ class ForwardShareByServerHelper$9
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
       if (i != 0) {
-        ForwardShareByServerHelper.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper, str1);
+        ForwardShareByServerHelper.b(this.b, str1);
       } else {
-        ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper);
+        ForwardShareByServerHelper.m(this.b);
       }
-      ForwardShareByServerHelper.c(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper, this.jdField_a_of_type_AndroidOsBundle.getString("share_comment_message_for_server"));
+      ForwardShareByServerHelper.b(this.b, this.a);
       return;
     }
-    ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardShareByServerHelper, paramInt, str2, str3);
+    ForwardShareByServerHelper.a(this.b, paramInt, str2, str3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.9
  * JD-Core Version:    0.7.0.1
  */

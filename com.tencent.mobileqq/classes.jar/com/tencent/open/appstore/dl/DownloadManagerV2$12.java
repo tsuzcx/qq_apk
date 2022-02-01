@@ -9,12 +9,12 @@ class DownloadManagerV2$12
   
   public void run()
   {
-    DownloadManagerV2.c(this.this$0, this.a);
+    DownloadManagerV2.d(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.12
  * JD-Core Version:    0.7.0.1
  */

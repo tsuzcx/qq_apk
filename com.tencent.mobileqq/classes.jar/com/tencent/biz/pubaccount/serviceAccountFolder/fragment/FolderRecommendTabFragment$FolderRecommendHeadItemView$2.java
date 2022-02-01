@@ -20,7 +20,7 @@ class FolderRecommendTabFragment$FolderRecommendHeadItemView$2
     if (localEntryBannerInfo != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localEntryBannerInfo.a.iAdId);
+      localStringBuilder.append(localEntryBannerInfo.d.iAdId);
       localStringBuilder.append("");
       FolderRecommendTabFragment.a("227", "227", localStringBuilder.toString(), 101, 1);
     }
@@ -28,7 +28,7 @@ class FolderRecommendTabFragment$FolderRecommendHeadItemView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class QQStoryMainController$3
   
   public void run()
   {
-    ((QQStoryHandler)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(2001, true, null);
+    ((QQStoryHandler)QQStoryContext.j().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(2001, true, null);
   }
 }
 

@@ -12,8 +12,8 @@ class DataReportViewer$1
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     DataReportViewer localDataReportViewer = this.a;
-    localDataReportViewer.a = paramBoolean;
-    if (localDataReportViewer.a) {
+    localDataReportViewer.n = paramBoolean;
+    if (localDataReportViewer.n) {
       this.a.a();
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -21,7 +21,7 @@ class DataReportViewer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.1
  * JD-Core Version:    0.7.0.1
  */

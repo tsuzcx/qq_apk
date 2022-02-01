@@ -12,7 +12,7 @@ class JumpConfirmFragment$3
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a), JumpConfirmFragment.c(this.a));
     if (this.a.getActivity() != null)
     {
       this.a.getActivity().finish();
@@ -22,7 +22,7 @@ class JumpConfirmFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.JumpConfirmFragment.3
  * JD-Core Version:    0.7.0.1
  */

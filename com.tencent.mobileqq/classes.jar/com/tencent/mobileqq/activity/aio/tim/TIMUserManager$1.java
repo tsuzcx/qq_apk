@@ -14,15 +14,15 @@ class TIMUserManager$1
   public void run()
   {
     Object localObject;
-    if (TIMUserManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0)
+    if (TIMUserManager.a(this.this$0, this.a, this.b) == 0)
     {
       if (TIMUserManager.a(this.this$0, this.b))
       {
         TIMUserManager.a(this.this$0);
         TIMUserManager.a(this.this$0, false);
         TIMUserManager.a(this.this$0, 2);
-        localObject = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-        ((SharedPreferences.Editor)localObject).putBoolean("tim_user_special_need_force_download", TIMUserManager.a(this.this$0));
+        localObject = PreferenceManager.getDefaultSharedPreferences(this.c.getApp()).edit();
+        ((SharedPreferences.Editor)localObject).putBoolean("tim_user_special_need_force_download", TIMUserManager.b(this.this$0));
         ((SharedPreferences.Editor)localObject).commit();
       }
       else
@@ -36,16 +36,16 @@ class TIMUserManager$1
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(" startDownLoadTimTheme TimIconsState ");
-      ((StringBuilder)localObject).append(TIMUserManager.a(this.this$0));
+      ((StringBuilder)localObject).append(TIMUserManager.c(this.this$0));
       QLog.i("TIMUserManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tim.TIMUserManager.1
  * JD-Core Version:    0.7.0.1
  */

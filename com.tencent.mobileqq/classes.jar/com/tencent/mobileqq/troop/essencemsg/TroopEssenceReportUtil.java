@@ -27,11 +27,11 @@ public class TroopEssenceReportUtil
     if (localGroupCatalogBean != null)
     {
       paramString = localGroupCatalogBean;
-      if (localGroupCatalogBean.jdField_a_of_type_Int > 2)
+      if (localGroupCatalogBean.a > 2)
       {
         paramString = localGroupCatalogBean;
-        if (localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean != null) {
-          paramString = a(localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.b);
+        if (localGroupCatalogBean.e != null) {
+          paramString = a(localGroupCatalogBean.e.c);
         }
       }
       return paramString;
@@ -135,7 +135,7 @@ public class TroopEssenceReportUtil
     }
     paramString2 = paramQQAppInterface.getCurrentUin();
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = paramQQAppInterface.b(paramString1);
+    TroopInfo localTroopInfo = paramQQAppInterface.f(paramString1);
     paramHashMap.put("group_id", paramString1);
     a(localTroopInfo, paramHashMap);
     paramQQAppInterface.a(paramString1, paramString2, new TroopEssenceReportUtil.1(localTroopInfo, paramHashMap));
@@ -170,15 +170,15 @@ public class TroopEssenceReportUtil
       }
       return;
     }
-    if (paramTroopInfo.jdField_a_of_type_Int == 1)
+    if (paramTroopInfo.a == 1)
     {
-      paramHashMap.put("group_type1", String.valueOf(paramTroopInfo.b));
+      paramHashMap.put("group_type1", String.valueOf(paramTroopInfo.c));
       return;
     }
-    if (paramTroopInfo.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean != null) {
-      paramHashMap.put("group_type1", String.valueOf(paramTroopInfo.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.b));
+    if (paramTroopInfo.e != null) {
+      paramHashMap.put("group_type1", String.valueOf(paramTroopInfo.e.c));
     }
-    paramHashMap.put("group_type2", String.valueOf(paramTroopInfo.b));
+    paramHashMap.put("group_type2", String.valueOf(paramTroopInfo.c));
   }
   
   private static int b(TroopInfo paramTroopInfo, TroopMemberInfo paramTroopMemberInfo)
@@ -350,7 +350,7 @@ public class TroopEssenceReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceReportUtil
  * JD-Core Version:    0.7.0.1
  */

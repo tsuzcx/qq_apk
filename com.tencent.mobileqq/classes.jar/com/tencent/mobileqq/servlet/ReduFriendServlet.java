@@ -137,7 +137,7 @@ public class ReduFriendServlet
           }
           if (paramFromServiceMsg != null)
           {
-            l = MessageCache.a();
+            l = MessageCache.c();
             localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
             localEditor.putString(FriendHotTipsBar.b(paramFromServiceMsg), String.valueOf(l));
             j = ((ArrayList)localObject2).size();
@@ -212,7 +212,7 @@ public class ReduFriendServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.ReduFriendServlet
  * JD-Core Version:    0.7.0.1
  */

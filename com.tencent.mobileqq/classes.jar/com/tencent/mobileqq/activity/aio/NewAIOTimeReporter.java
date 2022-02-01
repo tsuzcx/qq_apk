@@ -10,77 +10,77 @@ import java.util.Random;
 
 public class NewAIOTimeReporter
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static volatile NewAIOTimeReporter jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter;
-  private static String jdField_a_of_type_JavaLangString = "helper_id";
+  private static String a = "helper_id";
   private static String b = "helper_state";
   private static String c = "helper_cost";
   private static String d = "helper_tag";
   private static String e = "AIOCostBusiness";
-  private PriorityQueue<NewAIOTimeReporter.HelperReportData> jdField_a_of_type_JavaUtilPriorityQueue = new PriorityQueue(jdField_a_of_type_Int, new NewAIOTimeReporter.1(this));
+  private static volatile NewAIOTimeReporter f;
+  private static int g = 5;
+  private PriorityQueue<NewAIOTimeReporter.HelperReportData> h = new PriorityQueue(g, new NewAIOTimeReporter.1(this));
   
-  public static NewAIOTimeReporter a()
+  public static NewAIOTimeReporter b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter = new NewAIOTimeReporter();
+        if (f == null) {
+          f = new NewAIOTimeReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityAioNewAIOTimeReporter;
+    return f;
   }
   
-  private boolean a()
+  private boolean d()
   {
     if (new Random().nextInt(100) != 1) {
       return false;
     }
-    if (StartupTracker.a <= 0L) {
+    if (StartupTracker.b <= 0L) {
       return false;
     }
-    return StartupTracker.a >= 1000L;
+    return StartupTracker.b >= 1000L;
   }
   
-  private void b()
+  private void e()
   {
-    this.jdField_a_of_type_JavaUtilPriorityQueue.clear();
+    this.h.clear();
   }
   
   public PriorityQueue<NewAIOTimeReporter.HelperReportData> a()
   {
-    return this.jdField_a_of_type_JavaUtilPriorityQueue;
+    return this.h;
   }
   
-  public void a()
+  public void c()
   {
-    if (!a())
+    if (!d())
     {
-      b();
+      e();
       return;
     }
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilPriorityQueue.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext())
     {
       NewAIOTimeReporter.HelperReportData localHelperReportData = (NewAIOTimeReporter.HelperReportData)localIterator.next();
       if (localHelperReportData != null)
       {
-        localHashMap.put(jdField_a_of_type_JavaLangString, String.valueOf(NewAIOTimeReporter.HelperReportData.a(localHelperReportData)));
-        localHashMap.put(b, String.valueOf(NewAIOTimeReporter.HelperReportData.b(localHelperReportData)));
+        localHashMap.put(a, String.valueOf(NewAIOTimeReporter.HelperReportData.b(localHelperReportData)));
+        localHashMap.put(b, String.valueOf(NewAIOTimeReporter.HelperReportData.c(localHelperReportData)));
         localHashMap.put(c, String.valueOf(NewAIOTimeReporter.HelperReportData.a(localHelperReportData)));
-        localHashMap.put(d, String.valueOf(NewAIOTimeReporter.HelperReportData.a(localHelperReportData)));
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", e, true, StartupTracker.a, 0L, localHashMap, "");
+        localHashMap.put(d, String.valueOf(NewAIOTimeReporter.HelperReportData.d(localHelperReportData)));
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", e, true, StartupTracker.b, 0L, localHashMap, "");
       }
     }
-    b();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.NewAIOTimeReporter
  * JD-Core Version:    0.7.0.1
  */

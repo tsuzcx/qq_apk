@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 class TenDocMessageSearchDialog$3
   implements TextWatcher
 {
-  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
   
   TenDocMessageSearchDialog$3(TenDocMessageSearchDialog paramTenDocMessageSearchDialog) {}
   
@@ -21,27 +21,27 @@ class TenDocMessageSearchDialog$3
     paramEditable = paramEditable.toString().trim();
     if (TextUtils.isEmpty(paramEditable))
     {
-      this.jdField_a_of_type_JavaLangString = "";
-      TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).a();
-      TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(8);
-      TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(8);
-      TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(8);
+      this.b = "";
+      TenDocMessageSearchDialog.a(this.a).a();
+      TenDocMessageSearchDialog.c(this.a).setVisibility(8);
+      TenDocMessageSearchDialog.d(this.a).setVisibility(8);
+      TenDocMessageSearchDialog.e(this.a).setVisibility(8);
       return;
     }
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable))
+    if (!TextUtils.equals(this.b, paramEditable))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("afterTextChanged, mLastKeyword = ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(",lastKeyWord:");
         localStringBuilder.append(paramEditable);
         QLog.i("TenDocMessageSearchDialog", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaLangString = paramEditable;
-      TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog.a();
+      this.b = paramEditable;
+      TenDocMessageSearchDialog.c(this.a).setVisibility(0);
+      this.a.a();
     }
   }
   
@@ -51,7 +51,7 @@ class TenDocMessageSearchDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TenDocMessageSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

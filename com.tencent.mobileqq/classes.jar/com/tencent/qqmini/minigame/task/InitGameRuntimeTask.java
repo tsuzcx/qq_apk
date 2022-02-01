@@ -26,7 +26,7 @@ public class InitGameRuntimeTask
     GameRuntime localGameRuntime = null;
     if (localObject != null)
     {
-      localGameRuntime = ((GameRuntimeCreateTask)getRuntimeLoader().getTask(GameRuntimeCreateTask.class)).getGameRuntime();
+      localGameRuntime = (GameRuntime)getRuntimeLoader().getRuntime();
       localObject = ((TritonEngineInitTask)getRuntimeLoader().getTask(TritonEngineInitTask.class)).getTritonPlatform();
     }
     else
@@ -54,7 +54,7 @@ public class InitGameRuntimeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.InitGameRuntimeTask
  * JD-Core Version:    0.7.0.1
  */

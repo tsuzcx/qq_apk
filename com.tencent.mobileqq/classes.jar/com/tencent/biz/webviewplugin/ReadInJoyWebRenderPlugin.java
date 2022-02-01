@@ -37,66 +37,18 @@ public class ReadInJoyWebRenderPlugin
   extends WebViewPlugin
   implements IPreCreatePluginChecker
 {
-  private long jdField_a_of_type_Long;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  IVideoFeedsIPCClient jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient = null;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<WebView> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
+  IVideoFeedsIPCClient a = null;
+  private WeakReference<WebView> b;
+  private AppInterface c;
+  private String d;
+  private boolean e = false;
+  private String f;
+  private boolean g = false;
+  private long h;
   
   public ReadInJoyWebRenderPlugin()
   {
     this.mPluginNameSpace = "readInJoyWebRender";
-  }
-  
-  private Boolean a(String paramString)
-  {
-    boolean bool = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-    Boolean localBoolean = Boolean.valueOf(false);
-    if (bool)
-    {
-      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "shouldOfflineIntercept", 0, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      return localBoolean;
-    }
-    SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_b_of_type_JavaLangString);
-    if ((localOfflineData != null) && (!TextUtils.isEmpty(localOfflineData.jdField_b_of_type_JavaLangString)))
-    {
-      this.mRuntime.a().loadDataWithBaseURL(paramString, localOfflineData.jdField_b_of_type_JavaLangString, "text/html", "utf-8", paramString);
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("native_render  shouldOfflineIntercept offline data with cache transUrl = ");
-        paramString.append(this.jdField_b_of_type_JavaLangString);
-        QLog.d("ReadInJoyWebRenderPlugin", 2, paramString.toString());
-      }
-      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "shouldOfflineIntercept", 1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      return Boolean.valueOf(true);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("native_render  shouldOfflineIntercept offline data no cache transUrl = ");
-      paramString.append(this.jdField_b_of_type_JavaLangString);
-      QLog.e("ReadInJoyWebRenderPlugin", 2, paramString.toString());
-    }
-    return localBoolean;
-  }
-  
-  private String a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bundle_params_render_url", paramString);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient.callServer("CMD_GET_WEB_RENDER_DATA", localBundle);
-      if (paramString != null) {
-        return paramString.getString("VALUE_WEB_RENDER_DATA");
-      }
-    }
-    return "";
   }
   
   private void a(String paramString1, String paramString2, Map<String, Object> paramMap)
@@ -109,21 +61,69 @@ public class ReadInJoyWebRenderPlugin
     if (this.mRuntime == null) {
       return;
     }
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     if ((localObject instanceof QBaseActivity))
     {
       localObject = a((QBaseActivity)localObject);
       if ((localObject != null) && (((WebViewFragment)localObject).getUIStyleHandler() != null))
       {
-        if (((WebViewFragment)localObject).getUIStyleHandler().a != null)
+        if (((WebViewFragment)localObject).getUIStyleHandler().w != null)
         {
-          ((WebViewFragment)localObject).getUIStyleHandler().d = (paramBoolean ^ true);
-          ((WebViewFragment)localObject).getUIStyleHandler().a.a(paramBoolean);
+          ((WebViewFragment)localObject).getUIStyleHandler().C = (paramBoolean ^ true);
+          ((WebViewFragment)localObject).getUIStyleHandler().w.a(paramBoolean);
           return;
         }
-        ((WebViewFragment)localObject).getUIStyleHandler().d = (paramBoolean ^ true);
+        ((WebViewFragment)localObject).getUIStyleHandler().C = (paramBoolean ^ true);
       }
     }
+  }
+  
+  private String b(String paramString)
+  {
+    if (this.a != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("bundle_params_render_url", paramString);
+      paramString = this.a.callServer("CMD_GET_WEB_RENDER_DATA", localBundle);
+      if (paramString != null) {
+        return paramString.getString("VALUE_WEB_RENDER_DATA");
+      }
+    }
+    return "";
+  }
+  
+  private Boolean c(String paramString)
+  {
+    boolean bool = TextUtils.isEmpty(this.f);
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (bool)
+    {
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "shouldOfflineIntercept", 0, System.currentTimeMillis() - this.h);
+      return localBoolean;
+    }
+    SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.b(this.f);
+    if ((localOfflineData != null) && (!TextUtils.isEmpty(localOfflineData.b)))
+    {
+      this.mRuntime.a().loadDataWithBaseURL(paramString, localOfflineData.b, "text/html", "utf-8", paramString);
+      this.e = true;
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("native_render  shouldOfflineIntercept offline data with cache transUrl = ");
+        paramString.append(this.f);
+        QLog.d("ReadInJoyWebRenderPlugin", 2, paramString.toString());
+      }
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "shouldOfflineIntercept", 1, System.currentTimeMillis() - this.h);
+      return Boolean.valueOf(true);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("native_render  shouldOfflineIntercept offline data no cache transUrl = ");
+      paramString.append(this.f);
+      QLog.e("ReadInJoyWebRenderPlugin", 2, paramString.toString());
+    }
+    return localBoolean;
   }
   
   public WebViewFragment a(QBaseActivity paramQBaseActivity)
@@ -203,7 +203,7 @@ public class ReadInJoyWebRenderPlugin
       localStringBuilder.append("; timeStamp: ");
       localStringBuilder.append(System.currentTimeMillis());
       localStringBuilder.append("; isRender: ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.e);
       localStringBuilder.append("; url:");
       localStringBuilder.append(paramString);
       QLog.i("ReadInJoyWebRenderPlugin", 2, localStringBuilder.toString());
@@ -211,16 +211,16 @@ public class ReadInJoyWebRenderPlugin
     if (paramLong == 32L)
     {
       a(paramString, "KEY_EVENT_BEFORE_LOAD", paramMap);
-      if ((!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getCanLoadStartWebRenderModeConfig()) && (!this.jdField_a_of_type_Boolean)) {
-        return a(paramString).booleanValue();
+      if ((!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getCanLoadStartWebRenderModeConfig()) && (!this.e)) {
+        return c(paramString).booleanValue();
       }
-      return this.jdField_a_of_type_Boolean;
+      return this.e;
     }
     if ((paramLong == 8589934593L) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getCanLoadStartWebRenderModeConfig()))
     {
       a(paramString, "EVENT_LOAD_START", paramMap);
-      if (!this.jdField_a_of_type_Boolean) {
-        return a(paramString).booleanValue();
+      if (!this.e) {
+        return c(paramString).booleanValue();
       }
     }
     return false;
@@ -236,16 +236,16 @@ public class ReadInJoyWebRenderPlugin
     super.onCreate();
     if (this.mRuntime != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      this.jdField_b_of_type_Boolean = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getWebRenderConfig();
+      this.c = this.mRuntime.b();
+      this.d = this.c.getAccount();
+      this.g = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getWebRenderConfig();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient = ((IVideoFeedsIPCClient)QRoute.api(IVideoFeedsIPCClient.class));
+    if (this.a == null) {
+      this.a = ((IVideoFeedsIPCClient)QRoute.api(IVideoFeedsIPCClient.class));
     }
-    if ((this.mRuntime != null) && (this.jdField_b_of_type_Boolean))
+    if ((this.mRuntime != null) && (this.g))
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       if ((localActivity instanceof QBaseActivity))
       {
         Object localObject = a((QBaseActivity)localActivity);
@@ -258,20 +258,20 @@ public class ReadInJoyWebRenderPlugin
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("_bid=");
             localStringBuilder.append(str);
-            this.jdField_b_of_type_JavaLangString = HtmlOffline.a((String)localObject, localStringBuilder.toString());
+            this.f = HtmlOffline.a((String)localObject, localStringBuilder.toString());
             ThreadManager.post(new ReadInJoyWebRenderPlugin.1(this), 5, null, true);
           }
         }
       }
-      this.jdField_a_of_type_Long = localActivity.getIntent().getLongExtra("bundle_param_click_time", System.currentTimeMillis());
-      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "REPORT_EVENT_CREATE", 0, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      this.h = localActivity.getIntent().getLongExtra("bundle_param_click_time", System.currentTimeMillis());
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportWebRenderPluginEventCost(true, "REPORT_EVENT_CREATE", 0, System.currentTimeMillis() - this.h);
     }
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient = null;
+    if (this.a != null) {
+      this.a = null;
     }
     super.onDestroy();
   }
@@ -279,12 +279,12 @@ public class ReadInJoyWebRenderPlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.mRuntime.a());
+    this.b = new WeakReference(this.mRuntime.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ReadInJoyWebRenderPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -6,16 +6,16 @@ import com.tencent.util.ThrowablesUtils;
 public class SlideProgressNotifier$RefreshProgressThread
   extends Thread
 {
-  int jdField_a_of_type_Int;
-  RefreshUICallBack jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowRefreshUICallBack;
-  boolean jdField_a_of_type_Boolean = false;
+  int a;
   int b;
   int c;
   int d;
+  boolean e = false;
+  RefreshUICallBack f;
   
   public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, RefreshUICallBack paramRefreshUICallBack)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     paramInt2 -= paramInt3;
     if (paramInt2 > 0) {
@@ -24,7 +24,7 @@ public class SlideProgressNotifier$RefreshProgressThread
       this.c = 100;
     }
     this.d = paramInt3;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowRefreshUICallBack = paramRefreshUICallBack;
+    this.f = paramRefreshUICallBack;
   }
   
   public void a()
@@ -36,23 +36,23 @@ public class SlideProgressNotifier$RefreshProgressThread
       localStringBuilder.append(ThrowablesUtils.a(new RuntimeException()));
       QLog.d("QQProgressNotifier", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public void run()
   {
-    while (!this.jdField_a_of_type_Boolean)
+    while (!this.e)
     {
       int i = this.d;
       int j = this.b;
       if (i < j)
       {
-        RefreshUICallBack localRefreshUICallBack1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowRefreshUICallBack;
+        RefreshUICallBack localRefreshUICallBack1 = this.f;
         if (localRefreshUICallBack1 != null)
         {
           localRefreshUICallBack1.a(i);
@@ -70,11 +70,11 @@ public class SlideProgressNotifier$RefreshProgressThread
       else
       {
         this.d = j;
-        RefreshUICallBack localRefreshUICallBack2 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowRefreshUICallBack;
+        RefreshUICallBack localRefreshUICallBack2 = this.f;
         if (localRefreshUICallBack2 != null) {
           localRefreshUICallBack2.a(this.d);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
       }
     }
   }

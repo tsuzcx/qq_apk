@@ -6,26 +6,25 @@ import java.util.List;
 
 public class FDStatsTree$TreeNode
 {
-  public char a;
   public int a;
-  public List<TreeNode> a;
-  public int b;
+  public char b;
+  public int c;
+  public List<TreeNode> d = new ArrayList();
   
   public FDStatsTree$TreeNode(int paramInt, char paramChar)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Char = paramChar;
-    this.b = 1;
+    this.a = paramInt;
+    this.b = paramChar;
+    this.c = 1;
   }
   
   public TreeNode a(char paramChar)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext())
     {
       TreeNode localTreeNode = (TreeNode)localIterator.next();
-      if (localTreeNode.jdField_a_of_type_Char == paramChar) {
+      if (localTreeNode.b == paramChar) {
         return localTreeNode;
       }
     }
@@ -34,31 +33,31 @@ public class FDStatsTree$TreeNode
   
   public void a()
   {
-    this.b += 1;
+    this.c += 1;
   }
   
   public void a(TreeNode paramTreeNode)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramTreeNode);
+    this.d.add(paramTreeNode);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" ");
     localStringBuilder.append("char: ");
-    localStringBuilder.append(this.jdField_a_of_type_Char);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" ");
     localStringBuilder.append("cnt: ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsTree.TreeNode
  * JD-Core Version:    0.7.0.1
  */

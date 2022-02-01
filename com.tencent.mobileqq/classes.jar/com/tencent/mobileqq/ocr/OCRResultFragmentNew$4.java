@@ -21,14 +21,14 @@ class OCRResultFragmentNew$4
   public void onGlobalLayout()
   {
     Object localObject1 = new FrameLayout.LayoutParams(-1, -1);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).findViewById(2131367211).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    OCRResultFragmentNew.a(this.b).findViewById(2131433667).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.getWindowVisibleDisplayFrame((Rect)localObject1);
-    int i = this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.getRootView().getHeight();
+    this.b.g.getWindowVisibleDisplayFrame((Rect)localObject1);
+    int i = this.b.g.getRootView().getHeight();
     int j = i - ((Rect)localObject1).bottom;
-    if (j != OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew))
+    if (j != OCRResultFragmentNew.b(this.b))
     {
-      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, j);
+      OCRResultFragmentNew.a(this.b, j);
       double d1 = j;
       double d2 = i;
       Double.isNaN(d2);
@@ -37,10 +37,10 @@ class OCRResultFragmentNew$4
       Object localObject2;
       if (d1 > d2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c.setVisibility(8);
+        this.b.l.setVisibility(8);
         try
         {
-          localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getText();
+          localObject1 = this.a.getText();
           Object localObject3 = (ClickableSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), ClickableSpan.class);
           if ((localObject3 == null) || (localObject3.length <= 0)) {
             break label319;
@@ -52,23 +52,23 @@ class OCRResultFragmentNew$4
             ((Spannable)localObject1).removeSpan(localObject3[i]);
             i += 1;
           }
-          this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c.setVisibility(0);
+          this.b.l.setVisibility(0);
         }
         catch (Exception localException)
         {
-          localObject3 = this.jdField_a_of_type_AndroidWidgetEditText;
-          ((EditText)localObject3).setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, ((EditText)localObject3).getText(), true));
+          localObject3 = this.a;
+          ((EditText)localObject3).setText(OCRResultFragmentNew.a(this.b, ((EditText)localObject3).getText(), true));
           localException.printStackTrace();
         }
       }
       else
       {
-        UniformUtils.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c, false, 0);
-        if (this.jdField_a_of_type_AndroidWidgetEditText.hasSelection()) {
-          this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+        UniformUtils.a(OCRResultFragmentNew.a(this.b), this.b.l, false, 0);
+        if (this.a.hasSelection()) {
+          this.a.clearFocus();
         }
-        localObject2 = this.jdField_a_of_type_AndroidWidgetEditText;
-        ((EditText)localObject2).setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, ((EditText)localObject2).getText(), true));
+        localObject2 = this.a;
+        ((EditText)localObject2).setText(OCRResultFragmentNew.a(this.b, ((EditText)localObject2).getText(), true));
       }
       label319:
       if (QLog.isColorLevel())
@@ -86,7 +86,7 @@ class OCRResultFragmentNew$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.4
  * JD-Core Version:    0.7.0.1
  */

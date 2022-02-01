@@ -14,8 +14,6 @@ public class MySurfaceCallback
     super(paramAndroidCamera, paramCameraPreviewCallback);
   }
   
-  public void a() {}
-  
   public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
     if (paramSurfaceTexture != null) {
@@ -33,28 +31,30 @@ public class MySurfaceCallback
     }
   }
   
+  public void b() {}
+  
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
     CameraFrame.a(paramSurfaceTexture);
-    a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam);
-    int i = AndroidCamera.a;
-    int j = AndroidCamera.b;
-    this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.a, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int, AndroidCamera.d, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.c, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.d, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b, 0, i, j);
-    if (this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback != null)
+    a(this.d);
+    int i = AndroidCamera.b;
+    int j = AndroidCamera.c;
+    this.a.a(this.d.a, this.b.l, AndroidCamera.f, this.b.y, this.d.c, this.d.d, this.d.b, 0, i, j);
+    if (this.c != null)
     {
-      CameraFrame localCameraFrame = CameraFrame.a();
-      long l = this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.j;
-      int k = AndroidCamera.c;
-      int m = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.a;
-      int n = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b;
+      CameraFrame localCameraFrame = CameraFrame.f();
+      long l = this.a.k;
+      int k = AndroidCamera.d;
+      int m = this.d.a;
+      int n = this.d.b;
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 1) {
+      if (this.b.l == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      localCameraFrame.a(l, paramSurfaceTexture, i, j, k, m, n, bool, AndroidCamera.d, System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback.onPreviewData(localCameraFrame);
+      localCameraFrame.a(l, paramSurfaceTexture, i, j, k, m, n, bool, AndroidCamera.f, System.currentTimeMillis());
+      this.c.onPreviewData(localCameraFrame);
     }
   }
 }

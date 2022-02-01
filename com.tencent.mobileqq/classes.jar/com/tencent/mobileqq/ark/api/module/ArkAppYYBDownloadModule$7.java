@@ -17,16 +17,16 @@ class ArkAppYYBDownloadModule$7
     Object localObject = new ArkAppYYBDownloadModule.7.1(this);
     ArkAppYYBDownloadModule.7.2 local2 = new ArkAppYYBDownloadModule.7.2(this);
     QLog.i("ArkApp.downloadyyb.module", 1, "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131691310)).setPositiveButton(2131691308, local2).setNegativeButton(2131691309, (DialogInterface.OnClickListener)localObject).create();
+    localObject = new AlertDialog.Builder(this.b).setMessage(this.b.getString(2131888265)).setPositiveButton(2131888263, local2).setNegativeButton(2131888264, (DialogInterface.OnClickListener)localObject).create();
     ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (!this.b.isFinishing()) {
       ((Dialog)localObject).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppYYBDownloadModule.7
  * JD-Core Version:    0.7.0.1
  */

@@ -17,57 +17,50 @@ import mqq.util.WeakReference;
 
 public class TableQueryController
 {
-  private static TableQueryController jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryController;
   public static boolean a = false;
   public static boolean b = true;
   public static boolean c = false;
-  private static boolean e = false;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new TableQueryController.2(this);
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private TableQueryManager jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryManager = new TableQueryManager();
-  private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
-  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean d = false;
+  private static TableQueryController d;
+  private static boolean j = false;
+  private WindowManager e;
+  private WeakReference<QQAppInterface> f;
+  private TableQueryViewer g;
+  private TableQueryManager h = new TableQueryManager();
+  private boolean i = false;
+  private BroadcastReceiver k = new TableQueryController.2(this);
   
   public static TableQueryController a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryController == null) {
+      if (d == null) {
         try
         {
-          jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryController = new TableQueryController();
+          d = new TableQueryController();
         }
         finally {}
       }
-      return jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryController;
+      return d;
     }
     finally {}
   }
   
   public int a(QueryData paramQueryData)
   {
-    TableQueryViewer localTableQueryViewer = this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
+    TableQueryViewer localTableQueryViewer = this.g;
     if (localTableQueryViewer == null) {
       return 0;
     }
-    return localTableQueryViewer.a(paramQueryData);
-  }
-  
-  public void a()
-  {
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a();
-    }
+    return localTableQueryViewer.b(paramQueryData);
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      e = true;
+      j = true;
       if (!c) {
-        a().a();
+        a().b();
       }
     }
     else if (paramMotionEvent.getAction() == 1)
@@ -77,47 +70,54 @@ public class TableQueryController
     }
   }
   
-  public void a(QueryData paramQueryData)
+  public void b()
   {
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(paramQueryData);
+    if (a) {
+      this.g.a();
     }
   }
   
-  public void b()
+  public void b(QueryData paramQueryData)
+  {
+    if (a) {
+      this.g.a(paramQueryData);
+    }
+  }
+  
+  public void c()
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null)
+    if (this.g == null)
     {
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localBaseApplication.getSystemService("window"));
-      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer = new TableQueryViewer(localBaseApplication);
+      this.e = ((WindowManager)localBaseApplication.getSystemService("window"));
+      this.g = new TableQueryViewer(localBaseApplication);
     }
-    if (!this.d) {}
+    if (!this.i) {}
     try
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+      this.e.removeViewImmediate(this.g);
       label56:
-      int i;
+      int m;
       if (Build.VERSION.SDK_INT >= 26) {
-        i = 2038;
+        m = 2038;
       } else {
-        i = 2003;
+        m = 2003;
       }
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, m, 776, -2);
       localLayoutParams.gravity = 51;
       localLayoutParams.x = 0;
       localLayoutParams.y = DisplayUtil.a(localBaseApplication, 72.0F);
       try
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer, localLayoutParams);
+        this.e.addView(this.g, localLayoutParams);
       }
       catch (Exception localException2)
       {
         label130:
         break label130;
       }
-      QQToast.a(localBaseApplication, 1, localBaseApplication.getString(2131690647), 0).a();
-      this.d = true;
+      QQToast.makeText(localBaseApplication, 1, localBaseApplication.getString(2131887558), 0).show();
+      this.i = true;
       return;
     }
     catch (Exception localException1)
@@ -126,17 +126,17 @@ public class TableQueryController
     }
   }
   
-  public void c()
+  public void d()
   {
-    if (this.d) {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+    if (this.i) {
+      this.e.removeViewImmediate(this.g);
     }
-    this.d = false;
+    this.i = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryController
  * JD-Core Version:    0.7.0.1
  */

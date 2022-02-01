@@ -15,7 +15,7 @@ class TroopAppShortcutContainer$3
   
   protected void a(long paramLong)
   {
-    if (paramLong != TroopAppShortcutContainer.a(this.a)) {
+    if (paramLong != TroopAppShortcutContainer.d(this.a)) {
       return;
     }
     if (QLog.isColorLevel())
@@ -41,13 +41,13 @@ class TroopAppShortcutContainer$3
       ((StringBuilder)localObject).append(paramInt);
       QLog.e("TroopAppShortcutContainer", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new AppsAioShortCutViewBuilder(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, TroopAppShortcutContainer.a(this.a), TroopAppShortcutContainer.a(this.a));
+    Object localObject = new AppsAioShortCutViewBuilder(this.a.d, this.a.b, this.a.c, TroopAppShortcutContainer.b(this.a), TroopAppShortcutContainer.c(this.a));
     AppsAioShortCutViewBuilder.AioShortCutInfo localAioShortCutInfo = new AppsAioShortCutViewBuilder.AioShortCutInfo();
-    TroopShortcutBarInfo localTroopShortcutBarInfo = ((TroopShortcutBarManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(TroopAppShortcutContainer.a(this.a)));
+    TroopShortcutBarInfo localTroopShortcutBarInfo = ((TroopShortcutBarManager)this.a.b.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(TroopAppShortcutContainer.d(this.a)));
     if (localTroopShortcutBarInfo != null) {
-      localAioShortCutInfo.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarInfo = localTroopShortcutBarInfo;
+      localAioShortCutInfo.e = localTroopShortcutBarInfo;
     }
-    localAioShortCutInfo.b = TroopAppShortcutUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopAppShortcutContainer.a(this.a));
+    localAioShortCutInfo.b = TroopAppShortcutUtils.a(this.a.b, TroopAppShortcutContainer.d(this.a));
     boolean bool2 = true;
     boolean bool1 = true;
     if (!paramBoolean)
@@ -57,7 +57,7 @@ class TroopAppShortcutContainer$3
       } else {
         paramBoolean = false;
       }
-      localAioShortCutInfo.jdField_a_of_type_Boolean = paramBoolean;
+      localAioShortCutInfo.a = paramBoolean;
     }
     else
     {
@@ -66,16 +66,16 @@ class TroopAppShortcutContainer$3
       } else {
         paramBoolean = false;
       }
-      localAioShortCutInfo.jdField_a_of_type_Boolean = paramBoolean;
+      localAioShortCutInfo.a = paramBoolean;
     }
-    TroopAppShortcutUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localAioShortCutInfo, TroopAppShortcutContainer.a(this.a));
+    TroopAppShortcutUtils.a(this.a.b, localAioShortCutInfo, TroopAppShortcutContainer.d(this.a));
     ((AppsBaseBuilder)localObject).a_(localAioShortCutInfo);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$AppsListViewAdapter.a(0, (AppsBaseBuilder)localObject);
+    this.a.j.a(0, (AppsBaseBuilder)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.3
  * JD-Core Version:    0.7.0.1
  */

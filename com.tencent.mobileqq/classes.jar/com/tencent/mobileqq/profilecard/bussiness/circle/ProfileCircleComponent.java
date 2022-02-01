@@ -34,6 +34,7 @@ import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.text.QQTextBuilder;
@@ -41,6 +42,7 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.RoundRelativeLayout;
 import com.tencent.mobileqq.widget.UnderlineTextView;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import common.config.service.QzoneConfig;
@@ -143,24 +145,24 @@ public class ProfileCircleComponent
   {
     Object localObject1 = this;
     Object localObject2 = ((ProfileCircleComponent)localObject1).mActivity.getResources();
-    int m = ((Resources)localObject2).getDimensionPixelSize(2131298421);
-    int i = ((Resources)localObject2).getDimensionPixelSize(2131297596);
-    int j = ViewUtils.b(30.0F);
+    int m = ((Resources)localObject2).getDimensionPixelSize(2131299135);
+    int i = ((Resources)localObject2).getDimensionPixelSize(2131298260);
+    int j = ViewUtils.dpToPx(30.0F);
     int n = (int)(((ProfileCircleComponent)localObject1).mScreenWidth - i - j);
     int i1 = (int)((n - m * 4) * 1.0F) / 5;
-    int i2 = ViewUtils.b(75.0F);
+    int i2 = ViewUtils.dpToPx(75.0F);
     log(String.format(Locale.getDefault(), "doMakeOrRefreshQQCircle count:%s, photo:%s, margin:%s, max: %s", new Object[] { Integer.valueOf(((ProfileCircleComponent)localObject1).mQQCircleFeeds.size()), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(n) }));
     i = paramProfileCardInfo.allInOne.pa;
     paramProfileCardInfo = null;
     Object localObject3;
     if ((i == 0) && ((LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 1, paramQQAppInterface.getLongAccountUin()) & 0x4000) != 0))
     {
-      localObject2 = paramLayoutInflater.inflate(2131561363, null);
-      localObject3 = (RoundRelativeLayout)((View)localObject2).findViewById(2131376843);
-      ((RoundRelativeLayout)localObject3).a = ViewUtils.b(4.0F);
+      localObject2 = paramLayoutInflater.inflate(2131627719, null);
+      localObject3 = (RoundRelativeLayout)((View)localObject2).findViewById(2131445175);
+      ((RoundRelativeLayout)localObject3).b = ViewUtils.dpToPx(4.0F);
       ((RoundRelativeLayout)localObject3).setVisibility(0);
       if (ThemeUtil.isInNightMode(paramQQAppInterface)) {
-        ((View)localObject2).findViewById(2131363496).setBackgroundColor(Color.parseColor("#77F5F6FA"));
+        ((View)localObject2).findViewById(2131429397).setBackgroundColor(Color.parseColor("#77F5F6FA"));
       }
       paramViewGroup.addView((View)localObject2);
       localObject3 = ((View)localObject2).getLayoutParams();
@@ -177,7 +179,7 @@ public class ProfileCircleComponent
       i = j;
       if (((ProfileCircleComponent)localObject1).mQQCircleHostShouldReport)
       {
-        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", 3, 2, 1);
+        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setActionType(3).setSubActionType(2).setThrActionType(1));
         ((ProfileCircleComponent)localObject1).mQQCircleHostShouldReport = false;
         i = j;
       }
@@ -195,16 +197,16 @@ public class ProfileCircleComponent
       if (localObject1 != null)
       {
         localObject4 = ((FeedCloudMeta.StFeed)localObject1).cover.picUrl.get();
-        paramProfileCardInfo = paramLayoutInflater.inflate(2131561362, paramProfileCardInfo);
-        localObject2 = (RoundRelativeLayout)paramProfileCardInfo.findViewById(2131376843);
-        ((RoundRelativeLayout)localObject2).a = ViewUtils.b(4.0F);
+        paramProfileCardInfo = paramLayoutInflater.inflate(2131627718, paramProfileCardInfo);
+        localObject2 = (RoundRelativeLayout)paramProfileCardInfo.findViewById(2131445175);
+        ((RoundRelativeLayout)localObject2).b = ViewUtils.dpToPx(4.0F);
         ((RoundRelativeLayout)localObject2).setVisibility(0);
-        localObject3 = (ImageView)paramProfileCardInfo.findViewById(2131368811);
-        View localView = paramProfileCardInfo.findViewById(2131368813);
-        localObject2 = paramProfileCardInfo.findViewById(2131368810);
-        paramProfileCardInfo.findViewById(2131368812);
-        localTextView = (TextView)paramProfileCardInfo.findViewById(2131368807);
-        ((UnderlineTextView)paramProfileCardInfo.findViewById(2131368806)).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
+        localObject3 = (ImageView)paramProfileCardInfo.findViewById(2131435732);
+        View localView = paramProfileCardInfo.findViewById(2131435734);
+        localObject2 = paramProfileCardInfo.findViewById(2131435731);
+        paramProfileCardInfo.findViewById(2131435733);
+        localTextView = (TextView)paramProfileCardInfo.findViewById(2131435728);
+        ((UnderlineTextView)paramProfileCardInfo.findViewById(2131435727)).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
         boolean bool;
         if (((FeedCloudMeta.StFeed)localObject1).feedType.get() == 3) {
           bool = true;
@@ -233,7 +235,7 @@ public class ProfileCircleComponent
       }
       else
       {
-        break label807;
+        break label821;
       }
       paramViewGroup.addView(paramProfileCardInfo);
       Object localObject4 = paramProfileCardInfo.getLayoutParams();
@@ -264,7 +266,7 @@ public class ProfileCircleComponent
       ((View)localObject2).setVisibility(8);
       localTextView.setVisibility(8);
       paramProfileCardInfo = (ProfileCardInfo)localObject1;
-      label807:
+      label821:
       j += 1;
     }
   }
@@ -272,7 +274,7 @@ public class ProfileCircleComponent
   private void resetPicAndVideo(int paramInt1, int paramInt2, String paramString, ImageView paramImageView, View paramView, boolean paramBoolean)
   {
     if (this.mQQCircleDefaultPic == null) {
-      this.mQQCircleDefaultPic = new ColorDrawable(this.mActivity.getResources().getColor(2131165722));
+      this.mQQCircleDefaultPic = new ColorDrawable(this.mActivity.getResources().getColor(2131166314));
     }
     try
     {
@@ -347,7 +349,7 @@ public class ProfileCircleComponent
     {
       if (!TextUtils.isEmpty(this.mQcircleUpdateinfo))
       {
-        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(str, 3, 1, 3);
+        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setToUin(str).setActionType(3).setSubActionType(1).setThrActionType(3));
         this.mQQCircleShouldReport = false;
         return;
       }
@@ -355,7 +357,7 @@ public class ProfileCircleComponent
       {
         paramStPageRedPointInfo = new HashMap();
         paramStPageRedPointInfo.put("ext1", getCircleProfileInfoExt1());
-        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(str, 3, 1, 1, paramStPageRedPointInfo, null, null);
+        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setToUin(str).setActionType(3).setSubActionType(1).setThrActionType(1).setExtras(paramStPageRedPointInfo));
         this.mQQCircleShouldReport = false;
       }
     }
@@ -370,41 +372,41 @@ public class ProfileCircleComponent
     //   4: ifnonnull +4 -> 8
     //   7: return
     //   8: aload_1
-    //   9: getfield 553	feedcloud/FeedCloudRead$StGetMainPageRsp:fansCount	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   12: invokevirtual 413	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   9: getfield 572	feedcloud/FeedCloudRead$StGetMainPageRsp:fansCount	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   12: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   15: i2l
     //   16: lstore 7
     //   18: aload_1
-    //   19: getfield 556	feedcloud/FeedCloudRead$StGetMainPageRsp:fansValueStyle	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   22: invokevirtual 413	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   19: getfield 575	feedcloud/FeedCloudRead$StGetMainPageRsp:fansValueStyle	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   22: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   25: istore 4
-    //   27: new 558	qqcircle/QQCircleFeedBase$StMainPageBusiRspData
+    //   27: new 577	qqcircle/QQCircleFeedBase$StMainPageBusiRspData
     //   30: dup
-    //   31: invokespecial 559	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:<init>	()V
+    //   31: invokespecial 578	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:<init>	()V
     //   34: astore 9
     //   36: aload 9
     //   38: aload_1
-    //   39: getfield 563	feedcloud/FeedCloudRead$StGetMainPageRsp:busiRspData	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   42: invokevirtual 568	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   45: invokevirtual 574	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   48: invokevirtual 578	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   39: getfield 582	feedcloud/FeedCloudRead$StGetMainPageRsp:busiRspData	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   42: invokevirtual 587	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   45: invokevirtual 593	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   48: invokevirtual 597	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   51: pop
     //   52: aload 9
-    //   54: getfield 581	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:fuelValue	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   57: invokevirtual 413	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   54: getfield 600	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:fuelValue	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   57: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   60: istore_3
     //   61: iload_3
     //   62: i2l
     //   63: lstore 5
     //   65: aload 9
-    //   67: getfield 584	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:fuelValueStyle	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   70: invokevirtual 413	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   67: getfield 603	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:fuelValueStyle	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   70: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   73: istore_3
     //   74: aload 9
-    //   76: getfield 587	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:timeInterval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   79: invokevirtual 413	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   76: getfield 606	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:timeInterval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   79: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   82: i2l
-    //   83: putstatic 589	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mRequestTimeInterval	J
+    //   83: putstatic 608	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mRequestTimeInterval	J
     //   86: lload 7
     //   88: lconst_0
     //   89: lcmp
@@ -412,16 +414,16 @@ public class ProfileCircleComponent
     //   93: aload_0
     //   94: aload_0
     //   95: getfield 205	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mActivity	Lcom/tencent/mobileqq/app/QBaseActivity;
-    //   98: ldc_w 590
-    //   101: invokevirtual 594	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
+    //   98: ldc_w 609
+    //   101: invokevirtual 613	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
     //   104: iconst_1
     //   105: anewarray 239	java/lang/Object
     //   108: dup
     //   109: iconst_0
     //   110: lload 7
-    //   112: invokestatic 600	com/tencent/mobileqq/qcircle/api/utils/QCircleHostUtil:fansNumberFormatTranfer	(J)Ljava/lang/String;
+    //   112: invokestatic 619	com/tencent/mobileqq/qcircle/api/utils/QCircleHostUtil:fansNumberFormatTranfer	(J)Ljava/lang/String;
     //   115: aastore
-    //   116: invokestatic 603	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   116: invokestatic 622	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   119: putfield 60	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mFansText	Ljava/lang/String;
     //   122: lload 5
     //   124: lconst_0
@@ -430,16 +432,16 @@ public class ProfileCircleComponent
     //   129: aload_0
     //   130: aload_0
     //   131: getfield 205	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mActivity	Lcom/tencent/mobileqq/app/QBaseActivity;
-    //   134: ldc_w 604
-    //   137: invokevirtual 594	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
+    //   134: ldc_w 623
+    //   137: invokevirtual 613	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
     //   140: iconst_1
     //   141: anewarray 239	java/lang/Object
     //   144: dup
     //   145: iconst_0
     //   146: lload 5
-    //   148: invokestatic 600	com/tencent/mobileqq/qcircle/api/utils/QCircleHostUtil:fansNumberFormatTranfer	(J)Ljava/lang/String;
+    //   148: invokestatic 619	com/tencent/mobileqq/qcircle/api/utils/QCircleHostUtil:fansNumberFormatTranfer	(J)Ljava/lang/String;
     //   151: aastore
-    //   152: invokestatic 603	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   152: invokestatic 622	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   155: putfield 62	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mFuelText	Ljava/lang/String;
     //   158: aload_0
     //   159: iload 4
@@ -449,11 +451,11 @@ public class ProfileCircleComponent
     //   166: putfield 56	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:mFuelValueStyle	I
     //   169: aload_0
     //   170: aload 9
-    //   172: getfield 608	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:RedPointInfo	Lqqcircle/QQCircleFeedBase$StPageRedPointInfo;
-    //   175: invokevirtual 609	qqcircle/QQCircleFeedBase$StPageRedPointInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   178: checkcast 522	qqcircle/QQCircleFeedBase$StPageRedPointInfo
+    //   172: getfield 627	qqcircle/QQCircleFeedBase$StMainPageBusiRspData:RedPointInfo	Lqqcircle/QQCircleFeedBase$StPageRedPointInfo;
+    //   175: invokevirtual 628	qqcircle/QQCircleFeedBase$StPageRedPointInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   178: checkcast 538	qqcircle/QQCircleFeedBase$StPageRedPointInfo
     //   181: aload_2
-    //   182: invokespecial 611	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:setRedPoint	(Lqqcircle/QQCircleFeedBase$StPageRedPointInfo;Ljava/util/List;)V
+    //   182: invokespecial 630	com/tencent/mobileqq/profilecard/bussiness/circle/ProfileCircleComponent:setRedPoint	(Lqqcircle/QQCircleFeedBase$StPageRedPointInfo;Ljava/util/List;)V
     //   185: goto +21 -> 206
     //   188: astore_1
     //   189: goto +13 -> 202
@@ -465,18 +467,18 @@ public class ProfileCircleComponent
     //   200: iconst_0
     //   201: istore_3
     //   202: aload_1
-    //   203: invokevirtual 614	java/lang/Exception:printStackTrace	()V
-    //   206: new 616	java/lang/StringBuilder
+    //   203: invokevirtual 633	java/lang/Exception:printStackTrace	()V
+    //   206: new 635	java/lang/StringBuilder
     //   209: dup
-    //   210: invokespecial 617	java/lang/StringBuilder:<init>	()V
+    //   210: invokespecial 636	java/lang/StringBuilder:<init>	()V
     //   213: astore_1
     //   214: aload_1
     //   215: iload 4
-    //   217: invokevirtual 621	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 640	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   220: pop
     //   221: aload_1
-    //   222: ldc_w 623
-    //   225: invokevirtual 626	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: ldc_w 642
+    //   225: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   228: pop
     //   229: ldc 8
     //   231: iconst_1
@@ -484,37 +486,37 @@ public class ProfileCircleComponent
     //   234: anewarray 239	java/lang/Object
     //   237: dup
     //   238: iconst_0
-    //   239: ldc_w 628
+    //   239: ldc_w 647
     //   242: aastore
     //   243: dup
     //   244: iconst_1
     //   245: lload 7
-    //   247: invokestatic 633	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   247: invokestatic 652	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   250: aastore
     //   251: dup
     //   252: iconst_2
-    //   253: ldc_w 635
+    //   253: ldc_w 654
     //   256: aastore
     //   257: dup
     //   258: iconst_3
     //   259: lload 5
-    //   261: invokestatic 633	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   261: invokestatic 652	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   264: aastore
     //   265: dup
     //   266: iconst_4
-    //   267: ldc_w 637
+    //   267: ldc_w 656
     //   270: aastore
     //   271: dup
     //   272: iconst_5
     //   273: aload_1
-    //   274: invokevirtual 640	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokevirtual 659	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   277: aastore
     //   278: dup
     //   279: bipush 6
     //   281: iload_3
     //   282: invokestatic 245	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   285: aastore
-    //   286: invokestatic 643	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   286: invokestatic 662	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   289: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -551,7 +553,7 @@ public class ProfileCircleComponent
     if (this.mActivity == null) {
       return "他";
     }
-    String str = this.mActivity.getString(2131699580);
+    String str = this.mActivity.getString(2131897611);
     Object localObject = str;
     if (paramProfileCardInfo != null)
     {
@@ -559,9 +561,9 @@ public class ProfileCircleComponent
       if (paramProfileCardInfo.card != null)
       {
         if (paramProfileCardInfo.card.shGender == 1) {
-          paramProfileCardInfo = this.mActivity.getString(2131699579);
+          paramProfileCardInfo = this.mActivity.getString(2131897610);
         } else {
-          paramProfileCardInfo = this.mActivity.getString(2131699580);
+          paramProfileCardInfo = this.mActivity.getString(2131897611);
         }
         localObject = paramProfileCardInfo;
       }
@@ -607,47 +609,57 @@ public class ProfileCircleComponent
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = localLayoutInflater.inflate(2131561361, null);
+        localObject1 = localLayoutInflater.inflate(2131627717, null);
         this.mViewContainer = localObject1;
       }
-      View localView = ((View)localObject1).findViewById(2131365027);
-      ViewGroup localViewGroup1 = (ViewGroup)((View)localObject1).findViewById(2131368808);
-      ViewGroup localViewGroup2 = (ViewGroup)((View)localObject1).findViewById(2131368809);
+      View localView = ((View)localObject1).findViewById(2131431160);
+      ViewGroup localViewGroup1 = (ViewGroup)((View)localObject1).findViewById(2131435729);
+      ViewGroup localViewGroup2 = (ViewGroup)((View)localObject1).findViewById(2131435730);
       if ((this.mQQCircleFeeds != null) && (!this.mQQCircleFeeds.isEmpty()))
       {
-        TextView localTextView = (TextView)((View)localObject1).findViewById(2131378609);
-        ImageView localImageView1 = (ImageView)((View)localObject1).findViewById(2131368562);
-        ImageView localImageView2 = (ImageView)((View)localObject1).findViewById(2131368501);
-        this.mProfileCircleInfoView = ((ProfileCircleInfoView)((View)localObject1).findViewById(2131366917));
+        TextView localTextView = (TextView)((View)localObject1).findViewById(2131447238);
+        ImageView localImageView2 = (ImageView)((View)localObject1).findViewById(2131435469);
+        ImageView localImageView1 = (ImageView)((View)localObject1).findViewById(2131435403);
+        this.mProfileCircleInfoView = ((ProfileCircleInfoView)((View)localObject1).findViewById(2131433260));
         localTextView.setMaxWidth(2147483647);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.mActivity.getString(2131897609));
+        ((StringBuilder)localObject2).append(QCircleConfigHelper.bo());
+        localTextView.setText(((StringBuilder)localObject2).toString());
         if (localProfileCardInfo.allInOne.pa != 0)
         {
           Object localObject3 = getGenderName(localProfileCardInfo);
-          localObject2 = String.format(this.mActivity.getString(2131699581), new Object[] { localObject3 });
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(String.format(this.mActivity.getString(2131897612), new Object[] { localObject3 }));
+          ((StringBuilder)localObject2).append(QCircleConfigHelper.bo());
+          localObject2 = ((StringBuilder)localObject2).toString();
           if (!TextUtils.isEmpty(this.mQcircleUpdateinfo))
           {
-            if ((ViewUtils.a(localTextView.getPaint(), (CharSequence)localObject2) > ViewUtils.b(170.0F)) && (((String)localObject3).length() > 7))
+            if ((ViewUtils.getTextWidth(localTextView.getPaint(), (CharSequence)localObject2) > ViewUtils.dpToPx(170.0F)) && (((String)localObject3).length() > 7))
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append(((String)localObject3).substring(0, 7));
               ((StringBuilder)localObject2).append("...");
               localObject2 = ((StringBuilder)localObject2).toString();
-              localObject2 = String.format(this.mActivity.getString(2131699581), new Object[] { localObject2 });
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(String.format(this.mActivity.getString(2131897612), new Object[] { localObject2 }));
+              ((StringBuilder)localObject3).append(QCircleConfigHelper.bo());
+              localObject2 = ((StringBuilder)localObject3).toString();
             }
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append((String)localObject2);
             ((StringBuilder)localObject3).append(this.mQcircleUpdateinfo);
             localTextView.setText(((StringBuilder)localObject3).toString());
-            localImageView1.setVisibility(0);
+            localImageView2.setVisibility(0);
             this.mProfileCircleInfoView.setVisibility(8);
           }
           else
           {
-            localImageView1.setVisibility(8);
+            localImageView2.setVisibility(8);
             localTextView.setText((CharSequence)localObject2);
             if ((!TextUtils.isEmpty(this.mFansText)) || (!TextUtils.isEmpty(this.mFuelText)))
             {
-              localTextView.setMaxWidth(ViewUtils.a(140.0F));
+              localTextView.setMaxWidth(ViewUtils.dip2px(140.0F));
               this.mProfileCircleInfoView.updateCircleInfo(this.mFansValueStyle, this.mFuelValueStyle, this.mFansText, this.mFuelText);
               this.mProfileCircleInfoView.setVisibility(0);
             }
@@ -656,14 +668,14 @@ public class ProfileCircleComponent
         else
         {
           if ((!TextUtils.isEmpty(this.mFansText)) || (!TextUtils.isEmpty(this.mFuelText))) {
-            break label603;
+            break label705;
           }
         }
-        break label634;
-        label603:
+        break label736;
+        label705:
         this.mProfileCircleInfoView.updateCircleInfo(this.mFansValueStyle, this.mFuelValueStyle, this.mFansText, this.mFuelText);
         this.mProfileCircleInfoView.setVisibility(0);
-        label634:
+        label736:
         localViewGroup1.removeAllViews();
         localViewGroup1.setVisibility(0);
         if ((localViewGroup2 != null) && (localViewGroup2.getVisibility() != 8))
@@ -681,8 +693,11 @@ public class ProfileCircleComponent
           bool = false;
         }
         ((View)localObject1).setOnClickListener(new ProfileCircleComponent.1(this, localProfileCardInfo, paramCard, localQQAppInterface));
-        ((View)localObject1).setContentDescription(this.mActivity.getString(2131699578));
-        updateItemTheme((View)localObject1, localTextView, null, localImageView2);
+        paramCard = new StringBuilder();
+        paramCard.append(this.mActivity.getString(2131897609));
+        paramCard.append(QCircleConfigHelper.bo());
+        ((View)localObject1).setContentDescription(paramCard.toString());
+        updateItemTheme((View)localObject1, localTextView, null, localImageView1);
         localView.setVisibility(0);
         localViewGroup1.setVisibility(0);
         localViewGroup2.setVisibility(0);
@@ -770,7 +785,7 @@ public class ProfileCircleComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.circle.ProfileCircleComponent
  * JD-Core Version:    0.7.0.1
  */

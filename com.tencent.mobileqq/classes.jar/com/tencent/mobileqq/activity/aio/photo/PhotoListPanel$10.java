@@ -10,13 +10,13 @@ class PhotoListPanel$10
   public void a(int paramInt)
   {
     if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.a.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.10
  * JD-Core Version:    0.7.0.1
  */

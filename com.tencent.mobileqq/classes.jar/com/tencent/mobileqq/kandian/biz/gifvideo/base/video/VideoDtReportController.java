@@ -13,44 +13,44 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoDtReportController
   implements VideoPlayController.OnStateChangeListener
 {
-  @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   @Nullable
   private String b;
   @Nullable
   private String c;
+  @Nullable
+  private VideoPlayController d;
   
   public VideoDtReportController(@Nullable VideoPlayController paramVideoPlayController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
-    this.jdField_a_of_type_JavaLangString = "VideoDtReportController";
-    paramVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    this.d = paramVideoPlayController;
+    this.a = "VideoDtReportController";
+    paramVideoPlayController = this.d;
     if (paramVideoPlayController != null) {
       paramVideoPlayController.a((VideoPlayController.OnStateChangeListener)this);
     }
   }
   
-  private final void a()
+  private final void c()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject1 = this.d;
     AbsBaseArticleInfo localAbsBaseArticleInfo = null;
     if (localObject1 != null) {
-      localObject1 = ((VideoPlayController)localObject1).a();
+      localObject1 = ((VideoPlayController)localObject1).i();
     } else {
       localObject1 = null;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject2 = this.d;
     if (localObject2 != null) {
-      localObject2 = ((VideoPlayController)localObject2).a();
+      localObject2 = ((VideoPlayController)localObject2).j();
     } else {
       localObject2 = null;
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject3 = this.d;
     if (localObject3 != null)
     {
-      localObject3 = ((VideoPlayController)localObject3).a();
+      localObject3 = ((VideoPlayController)localObject3).j();
       if (localObject3 != null)
       {
         localObject3 = ((IVideoView)localObject3).a();
@@ -59,32 +59,32 @@ public final class VideoDtReportController
     }
     localObject3 = null;
     label71:
-    VideoPlayController localVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    VideoPlayController localVideoPlayController = this.d;
     if (localVideoPlayController != null) {
-      localAbsBaseArticleInfo = localVideoPlayController.a();
+      localAbsBaseArticleInfo = localVideoPlayController.k();
     }
     KotlinUtilKt.a(localObject1, localObject2, localObject3, localAbsBaseArticleInfo, (Function4)new VideoDtReportController.reportDtVideoStart.1(this));
   }
   
-  private final void b()
+  private final void d()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject1 = this.d;
     AbsBaseArticleInfo localAbsBaseArticleInfo = null;
     if (localObject1 != null) {
-      localObject1 = ((VideoPlayController)localObject1).a();
+      localObject1 = ((VideoPlayController)localObject1).i();
     } else {
       localObject1 = null;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject2 = this.d;
     if (localObject2 != null) {
-      localObject2 = ((VideoPlayController)localObject2).a();
+      localObject2 = ((VideoPlayController)localObject2).j();
     } else {
       localObject2 = null;
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject3 = this.d;
     if (localObject3 != null)
     {
-      localObject3 = ((VideoPlayController)localObject3).a();
+      localObject3 = ((VideoPlayController)localObject3).j();
       if (localObject3 != null)
       {
         localObject3 = ((IVideoView)localObject3).a();
@@ -93,9 +93,9 @@ public final class VideoDtReportController
     }
     localObject3 = null;
     label71:
-    VideoPlayController localVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    VideoPlayController localVideoPlayController = this.d;
     if (localVideoPlayController != null) {
-      localAbsBaseArticleInfo = localVideoPlayController.a();
+      localAbsBaseArticleInfo = localVideoPlayController.k();
     }
     KotlinUtilKt.a(localObject1, localObject2, localObject3, localAbsBaseArticleInfo, (Function4)new VideoDtReportController.reportDtVideoEnd.1(this));
   }
@@ -109,7 +109,7 @@ public final class VideoDtReportController
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   @Nullable
@@ -137,16 +137,16 @@ public final class VideoDtReportController
       }
       else
       {
-        a();
+        c();
         return;
       }
     }
-    b();
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoDtReportController
  * JD-Core Version:    0.7.0.1
  */

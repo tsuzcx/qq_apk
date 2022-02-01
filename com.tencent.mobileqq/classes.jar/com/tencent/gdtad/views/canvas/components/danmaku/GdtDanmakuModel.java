@@ -4,48 +4,48 @@ import java.util.Random;
 
 class GdtDanmakuModel
 {
-  private int jdField_a_of_type_Int = 0;
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private String[] a;
+  private Random b = new Random();
+  private int c = 0;
   
   public GdtDanmakuModel a(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.a = paramArrayOfString;
     return this;
   }
   
-  public final String a()
+  public boolean a()
   {
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = this.a;
+    return (arrayOfString == null) || (arrayOfString.length == 0);
+  }
+  
+  public final String b()
+  {
+    String[] arrayOfString = this.a;
     if ((arrayOfString != null) && (arrayOfString.length != 0))
     {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
+      int i = this.c;
+      this.c = (i + 1);
       String str = arrayOfString[i];
-      i = this.jdField_a_of_type_Int;
+      i = this.c;
       if (i == arrayOfString.length) {
-        this.jdField_a_of_type_Int = (i % arrayOfString.length);
+        this.c = (i % arrayOfString.length);
       }
       return str;
     }
     return "";
   }
   
-  public void a()
+  public void c()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-  }
-  
-  public boolean a()
-  {
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    return (arrayOfString == null) || (arrayOfString.length == 0);
+    this.c = 0;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.danmaku.GdtDanmakuModel
  * JD-Core Version:    0.7.0.1
  */

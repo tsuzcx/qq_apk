@@ -22,56 +22,57 @@ class WSVerticalForMiniAppPresenter$1
   
   public void a(WeishiTask paramWeishiTask)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l = System.currentTimeMillis() - this.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("小程序播放页请求耗时：");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append("毫秒");
     WSLog.a("weishi-beacon", ((StringBuilder)localObject).toString());
-    WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "fullscreen_videoplay", true);
-    if (!paramWeishiTask.a())
+    WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, "fullscreen_videoplay", true);
+    if (!paramWeishiTask.b())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("GetFeedDetailRequest onTaskResponse failed code:");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramWeishiTask.d);
       ((StringBuilder)localObject).append(", msg:");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramWeishiTask.c);
       WSLog.d("WSVerticalForMiniAppPresenter", ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      localObject = this.b;
       if (localObject != null) {
-        ((IFetchDataRspListener)localObject).a(paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString, true, false);
+        ((IFetchDataRspListener)localObject).a(paramWeishiTask.d, paramWeishiTask.c, true, false);
       }
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, paramWeishiTask.d, paramWeishiTask.c);
       return;
     }
-    if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedDetailRsp))
+    if ((paramWeishiTask.m instanceof stSimpleGetFeedDetailRsp))
     {
-      paramWeishiTask = ((stSimpleGetFeedDetailRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject).feed;
+      paramWeishiTask = ((stSimpleGetFeedDetailRsp)paramWeishiTask.m).feed;
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramWeishiTask);
-      paramWeishiTask = WSVerticalDataUtil.a((List)localObject);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoPresenterWSVerticalForMiniAppPresenter.a();
-      if ((localObject != null) && (((WSVerticalPageContract.View)localObject).a() != null) && (((WSVerticalPageContract.View)localObject).a().a() != null))
+      localObject = WSVerticalDataUtil.a((List)localObject);
+      WSVerticalPageContract.View localView = this.c.z();
+      if ((localView != null) && (localView.b() != null) && (localView.b().b() != null))
       {
-        localObject = ((WSVerticalPageContract.View)localObject).a().a().a;
-        if ((localObject instanceof AbsWSVideoItemView)) {
-          ((AbsWSVideoItemView)localObject).b((WSVerticalItemData)paramWeishiTask.get(0));
+        this.c.a((WSVerticalItemData)localView.b().getItem(0), paramWeishiTask);
+        paramWeishiTask = localView.b().b().c;
+        if ((paramWeishiTask instanceof AbsWSVideoItemView)) {
+          ((AbsWSVideoItemView)paramWeishiTask).b((WSVerticalItemData)((List)localObject).get(0));
         }
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      localObject = this.b;
       if (localObject != null) {
-        ((IFetchDataRspListener)localObject).a(paramWeishiTask.b, paramWeishiTask.jdField_a_of_type_JavaLangString, true, false);
+        ((IFetchDataRspListener)localObject).a(paramWeishiTask.e, paramWeishiTask.c, true, false);
       }
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, -1, "数据无法解析或为空");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForMiniAppPresenter.1
  * JD-Core Version:    0.7.0.1
  */

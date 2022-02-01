@@ -32,7 +32,7 @@ public class CommonC2CPlusPanelAppLoader
     c(paramBaseChatPie, paramQQAppInterface);
     c(paramBaseChatPie);
     d(paramBaseChatPie, paramQQAppInterface);
-    QLog.d("CommonC2CPlusPanelAppLoader", 1, new Object[] { "fillDefaultAppInfo appInfo size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+    QLog.d("CommonC2CPlusPanelAppLoader", 1, new Object[] { "fillDefaultAppInfo appInfo size: ", Integer.valueOf(b()) });
   }
   
   private void a(BaseChatPie paramBaseChatPie, List<PlusPanelAppInfo> paramList)
@@ -45,14 +45,14 @@ public class CommonC2CPlusPanelAppLoader
         PlusPanelAppInfo localPlusPanelAppInfo = (PlusPanelAppInfo)paramList.next();
         if (localPlusPanelAppInfo.getAppID() == 215)
         {
-          IApolloManagerService localIApolloManagerService = (IApolloManagerService)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-          if ((localIApolloManagerService.isApolloSupport(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Boolean.valueOf(false))) && (localIApolloManagerService.queryStatusInConfig("aio", null) > 0)) {
-            a(localPlusPanelAppInfo);
+          IApolloManagerService localIApolloManagerService = (IApolloManagerService)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all");
+          if ((localIApolloManagerService.isApolloSupport(paramBaseChatPie.f, Boolean.valueOf(false))) && (localIApolloManagerService.queryStatusInConfig("aio", null) > 0)) {
+            b(localPlusPanelAppInfo);
           }
         }
         else
         {
-          a(localPlusPanelAppInfo);
+          b(localPlusPanelAppInfo);
         }
       }
     }
@@ -60,57 +60,57 @@ public class CommonC2CPlusPanelAppLoader
   
   private void b(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface)
   {
-    c(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 201);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 202);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 203);
-    if (HotPicManager.a(paramQQAppInterface).b()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 204);
+    d(paramBaseChatPie.ah.a);
+    a(paramBaseChatPie.ah.a, 201);
+    a(paramBaseChatPie.ah.a, 202);
+    a(paramBaseChatPie.ah.a, 203);
+    if (HotPicManager.a(paramQQAppInterface).j()) {
+      a(paramBaseChatPie.ah.a, 204);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 219);
-    if ((AioPanelMiniAppManager.a(paramQQAppInterface).a()) && (SimpleUIUtil.a())) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 209);
+    a(paramBaseChatPie.ah.a, 219);
+    if ((AioPanelMiniAppManager.a(paramQQAppInterface).b()) && (SimpleUIUtil.e())) {
+      a(paramBaseChatPie.ah.a, 209);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 205);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 206);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 207);
-    if ((AioPanelMiniAppManager.a(paramQQAppInterface).a()) && (!SimpleUIUtil.a())) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 209);
+    a(paramBaseChatPie.ah.a, 205);
+    a(paramBaseChatPie.ah.a, 206);
+    a(paramBaseChatPie.ah.a, 207);
+    if ((AioPanelMiniAppManager.a(paramQQAppInterface).b()) && (!SimpleUIUtil.e())) {
+      a(paramBaseChatPie.ah.a, 209);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 208);
+    a(paramBaseChatPie.ah.a, 208);
   }
   
   private void c(BaseChatPie paramBaseChatPie)
   {
     ArkMsgAIDisableConfBean localArkMsgAIDisableConfBean = (ArkMsgAIDisableConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkMsgAIDisableConfBean.class);
-    if ((localArkMsgAIDisableConfBean != null) && (localArkMsgAIDisableConfBean.a() != null) && (!localArkMsgAIDisableConfBean.a().jdField_a_of_type_Boolean)) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1000000001);
+    if ((localArkMsgAIDisableConfBean != null) && (localArkMsgAIDisableConfBean.b() != null) && (!localArkMsgAIDisableConfBean.b().a)) {
+      a(paramBaseChatPie.ah.a, 1000000001);
     }
   }
   
   private void c(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ScribbleResMgrShowConfig.a(paramBaseChatPie.a(), paramQQAppInterface.getCurrentAccountUin())) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 210);
+    if (this.e.a(paramBaseChatPie.aX(), paramQQAppInterface.getCurrentAccountUin())) {
+      a(paramBaseChatPie.ah.a, 210);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1000000006);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 211);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 212);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 213);
+    a(paramBaseChatPie.ah.a, 1000000006);
+    a(paramBaseChatPie.ah.a, 211);
+    a(paramBaseChatPie.ah.a, 212);
+    a(paramBaseChatPie.ah.a, 213);
     if (ReceiptUtil.a()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 216);
+      a(paramBaseChatPie.ah.a, 216);
     }
     if (((TeamWorkManager)paramQQAppInterface.getManager(QQManagerFactory.TEAMWORK_MANAGER)).a().booleanValue())
     {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 214);
-      AIOPanelUtiles.a(paramQQAppInterface, "0X80093F3", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      a(paramBaseChatPie.ah.a, 214);
+      AIOPanelUtiles.a(paramQQAppInterface, "0X80093F3", paramBaseChatPie.ah.a);
     }
     try
     {
       paramQQAppInterface = (IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      if ((paramQQAppInterface.isApolloSupport(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false))) && (paramQQAppInterface.queryStatusInConfig("aio", null) > 0))
+      if ((paramQQAppInterface.isApolloSupport(paramBaseChatPie.e, Boolean.valueOf(false))) && (paramQQAppInterface.queryStatusInConfig("aio", null) > 0))
       {
-        a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 215);
+        a(paramBaseChatPie.ah.a, 215);
         return;
       }
     }
@@ -122,21 +122,21 @@ public class CommonC2CPlusPanelAppLoader
   
   private void d(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface)
   {
-    if ((paramQQAppInterface.getAccount() != null) && (paramQQAppInterface.getAccount().equals(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    if ((paramQQAppInterface.getAccount() != null) && (paramQQAppInterface.getAccount().equals(paramBaseChatPie.ah.b)))
     {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 211);
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 203);
+      a(paramBaseChatPie.ah.a, 211);
+      a(paramBaseChatPie.ah.a, 203);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       PlusPanelAppInfo localPlusPanelAppInfo = C2CPlusPanelAppConfigHelper.INSTANCE.getAppInfoByAppID(paramInt2);
       if (localPlusPanelAppInfo != null)
       {
-        this.jdField_a_of_type_JavaUtilList.add(localPlusPanelAppInfo);
+        b(localPlusPanelAppInfo);
         return;
       }
     }
@@ -145,15 +145,15 @@ public class CommonC2CPlusPanelAppLoader
   
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOshow", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Boolean = false;
+    this.f = false;
     List localList = C2CPlusPanelAppConfigHelper.INSTANCE.getC2CAppInfo();
     if (!localList.isEmpty())
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.f = true;
       a(paramBaseChatPie, localList);
-      QLog.d("CommonC2CPlusPanelAppLoader", 1, new Object[] { "fillAppList appear manage config, appInfoList size: ", Integer.valueOf(localList.size()), ", after adapt size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+      QLog.d("CommonC2CPlusPanelAppLoader", 1, new Object[] { "fillAppList appear manage config, appInfoList size: ", Integer.valueOf(localList.size()), ", after adapt size: ", Integer.valueOf(b()) });
       return;
     }
     a(paramBaseChatPie, localQQAppInterface);
@@ -161,7 +161,7 @@ public class CommonC2CPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.CommonC2CPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

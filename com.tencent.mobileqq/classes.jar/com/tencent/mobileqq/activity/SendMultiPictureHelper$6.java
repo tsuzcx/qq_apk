@@ -15,7 +15,7 @@ class SendMultiPictureHelper$6
   {
     if (!paramBoolean)
     {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694432), 1).show();
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131892112), 1).show();
       SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
       new Handler().postDelayed(local1, 3000L);
     }
@@ -23,7 +23,7 @@ class SendMultiPictureHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.6
  * JD-Core Version:    0.7.0.1
  */

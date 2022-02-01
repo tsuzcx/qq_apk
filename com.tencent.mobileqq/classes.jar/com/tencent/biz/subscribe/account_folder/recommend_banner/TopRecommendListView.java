@@ -11,11 +11,11 @@ import com.tencent.widget.SwipListView;
 public class TopRecommendListView
   extends SwipListView
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  private int a;
   private int b;
   private int c;
   private int d;
+  private View e;
   
   public TopRecommendListView(Context paramContext)
   {
@@ -37,7 +37,7 @@ public class TopRecommendListView
   
   private void a()
   {
-    this.jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.a = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -48,7 +48,7 @@ public class TopRecommendListView
       if (i != 2) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
-      if ((this.jdField_a_of_type_AndroidViewView instanceof TopPanelView))
+      if ((this.e instanceof TopPanelView))
       {
         if (this.b < 0) {
           return false;
@@ -57,10 +57,10 @@ public class TopRecommendListView
         i = (int)(paramMotionEvent.getY() + 0.5F);
         j -= this.c;
         i = (int)((i - this.d) * 0.6F);
-        if ((Math.abs(j) > this.jdField_a_of_type_Int) && (Math.abs(j) >= Math.abs(i))) {
+        if ((Math.abs(j) > this.a) && (Math.abs(j) >= Math.abs(i))) {
           return false;
         }
-        if ((Math.abs(j) > this.jdField_a_of_type_Int) && (Math.abs(i) > Math.abs(j))) {
+        if ((Math.abs(j) > this.a) && (Math.abs(i) > Math.abs(j))) {
           return super.onInterceptTouchEvent(paramMotionEvent);
         }
       }
@@ -74,7 +74,7 @@ public class TopRecommendListView
       this.c = ((int)(paramMotionEvent.getX() + 0.5F));
       this.d = ((int)(paramMotionEvent.getY() + 0.5F));
       this.b = pointToPosition(this.c, this.d);
-      this.jdField_a_of_type_AndroidViewView = getChildAt(this.b - getFirstVisiblePosition());
+      this.e = getChildAt(this.b - getFirstVisiblePosition());
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }

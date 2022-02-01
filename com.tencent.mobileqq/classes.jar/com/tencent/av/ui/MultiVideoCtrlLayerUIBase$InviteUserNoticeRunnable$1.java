@@ -11,20 +11,20 @@ class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable$1
   public void run()
   {
     String str1;
-    if (this.a.jdField_a_of_type_Int == 1)
+    if (this.a.a == 1)
     {
-      str1 = String.format(BaseApplication.getContext().getString(2131695495), new Object[] { this.a.jdField_a_of_type_JavaLangString });
+      str1 = String.format(BaseApplication.getContext().getString(2131893254), new Object[] { this.a.b });
     }
     else
     {
-      str1 = BaseApplication.getContext().getString(2131695496);
-      String str2 = this.a.jdField_a_of_type_JavaLangString;
+      str1 = BaseApplication.getContext().getString(2131893255);
+      String str2 = this.a.b;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a.a);
       localStringBuilder.append("");
       str1 = String.format(str1, new Object[] { str2, localStringBuilder.toString() });
     }
-    TipsUtil.a(this.a.this$0.a, 3010, str1);
+    TipsUtil.a(this.a.this$0.al, 3010, str1);
   }
 }
 

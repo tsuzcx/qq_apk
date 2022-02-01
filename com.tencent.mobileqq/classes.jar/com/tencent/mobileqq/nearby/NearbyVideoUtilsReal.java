@@ -268,11 +268,6 @@ public class NearbyVideoUtilsReal
     //   325	329	332	java/io/IOException
   }
   
-  public static String a(String paramString)
-  {
-    return a(ShortVideoUtils.getVideoThumbnail(null, paramString));
-  }
-  
   public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt) {}
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
@@ -285,15 +280,6 @@ public class NearbyVideoUtilsReal
     localIntent.putExtra("uin", paramString4);
     localIntent.putExtra("is_authentic", paramBoolean);
     PublicFragmentActivity.a(paramActivity, localIntent, NearbyAuthVideoPlayerFragment.class, 11000);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a);
-    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    paramQQAppInterface = localStringBuilder.toString();
-    PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putBoolean(paramQQAppInterface, false).commit();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -363,8 +349,8 @@ public class NearbyVideoUtilsReal
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localImageView.setImageDrawable(URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170807/f2f569d65bc74317bb9a6bfe482dcd2c.png?_t=1502087876532"));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.b(150.0F, paramActivity.getResources()));
-    new NearbyCustomDialog(paramActivity).a(localImageView, localLayoutParams).b(HardCodeUtil.a(2131707430)).a(new BlueButtonInfo(HardCodeUtil.a(2131707432), new NearbyVideoUtilsReal.1(paramActivity, paramQQAppInterface))).show();
-    a(paramQQAppInterface);
+    new NearbyCustomDialog(paramActivity).a(localImageView, localLayoutParams).b(HardCodeUtil.a(2131905248)).a(new BlueButtonInfo(HardCodeUtil.a(2131905250), new NearbyVideoUtilsReal.1(paramActivity, paramQQAppInterface))).show();
+    b(paramQQAppInterface);
     return true;
   }
   
@@ -376,10 +362,24 @@ public class NearbyVideoUtilsReal
     paramQQAppInterface = localStringBuilder.toString();
     return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(paramQQAppInterface, true);
   }
+  
+  public static String b(String paramString)
+  {
+    return a(ShortVideoUtils.getVideoThumbnail(null, paramString));
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    paramQQAppInterface = localStringBuilder.toString();
+    PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putBoolean(paramQQAppInterface, false).commit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyVideoUtilsReal
  * JD-Core Version:    0.7.0.1
  */

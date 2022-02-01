@@ -10,8 +10,8 @@ class VideoLayerUI$3
   
   public void run()
   {
-    TipsUtil.a(this.this$0.a, 1055);
-    UITools.a(2);
+    TipsUtil.a(this.this$0.Y, 1055);
+    UITools.f(2);
   }
 }
 

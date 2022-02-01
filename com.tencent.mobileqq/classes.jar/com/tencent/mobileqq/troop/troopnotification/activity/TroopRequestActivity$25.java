@@ -12,7 +12,7 @@ class TroopRequestActivity$25
   
   public void onClick(View paramView)
   {
-    TroopRequestActivity.a(this.a).setVisibility(8);
+    TroopRequestActivity.e(this.a).setVisibility(8);
     if (QLog.isColorLevel()) {
       QLog.d("Q.security_verify", 2, "close warning tips");
     }
@@ -21,7 +21,7 @@ class TroopRequestActivity$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.25
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.qqlive.module.videoreport.page;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContextWrapper;
+import android.support.annotation.NonNull;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,12 +27,12 @@ public class DialogListUtil
     }
   }
   
-  static List<WeakReference<Dialog>> getDialogList(Activity paramActivity)
+  public static List<WeakReference<Dialog>> getDialogList(Activity paramActivity)
   {
     return (List)mActivityDialogMap.get(paramActivity);
   }
   
-  public static void onDialogResume(Dialog paramDialog)
+  public static void onDialogResume(@NonNull Dialog paramDialog)
   {
     Activity localActivity = getDialogActivity(paramDialog);
     if (localActivity != null)
@@ -59,14 +60,19 @@ public class DialogListUtil
     }
   }
   
-  private static void removeDialog(Dialog paramDialog, List<WeakReference<Dialog>> paramList)
+  private static void removeDialog(@NonNull Dialog paramDialog, @NonNull List<WeakReference<Dialog>> paramList)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      WeakReference localWeakReference = (WeakReference)paramList.next();
-      if ((localWeakReference == null) || (localWeakReference.get() == null) || (localWeakReference.get() == paramDialog)) {
-        paramList.remove();
+      paramList = (WeakReference)localIterator.next();
+      if (paramList == null) {
+        paramList = null;
+      } else {
+        paramList = (Dialog)paramList.get();
+      }
+      if ((paramList == null) || (paramList == paramDialog)) {
+        localIterator.remove();
       }
     }
   }
@@ -79,7 +85,7 @@ public class DialogListUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.DialogListUtil
  * JD-Core Version:    0.7.0.1
  */

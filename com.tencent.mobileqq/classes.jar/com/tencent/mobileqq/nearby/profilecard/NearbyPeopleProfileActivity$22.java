@@ -10,29 +10,29 @@ class NearbyPeopleProfileActivity$22
 {
   NearbyPeopleProfileActivity$22(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.selectPhotoFromQZone();
-        NearbyPeopleProfileActivity.access$1100(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+        this.b.selectPhotoFromQZone();
+        NearbyPeopleProfileActivity.access$1000(this.b);
       }
     }
     else
     {
-      if (NearbyPeopleProfileActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
-        NearbyPeopleProfileActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mPicInfo.size());
+      if (NearbyPeopleProfileActivity.access$300(this.b) != null) {
+        NearbyPeopleProfileActivity.access$300(this.b).a(this.b.mPicInfo.size());
       }
-      NearbyPeopleProfileActivity.access$1100(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+      NearbyPeopleProfileActivity.access$1000(this.b);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.a.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.22
  * JD-Core Version:    0.7.0.1
  */

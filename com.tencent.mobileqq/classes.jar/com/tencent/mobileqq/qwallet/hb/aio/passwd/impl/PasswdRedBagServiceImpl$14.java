@@ -7,12 +7,12 @@ class PasswdRedBagServiceImpl$14
   
   public void run()
   {
-    PasswdRedBagServiceImpl.access$100(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    PasswdRedBagServiceImpl.access$400(this.this$0).a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.14
  * JD-Core Version:    0.7.0.1
  */

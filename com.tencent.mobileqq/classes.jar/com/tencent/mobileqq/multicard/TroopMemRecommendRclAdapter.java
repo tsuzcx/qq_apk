@@ -35,22 +35,17 @@ import java.util.Set;
 public class TroopMemRecommendRclAdapter
   extends RecyclerView.Adapter
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MultiCardRecommendFragment jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment;
   public Map<Integer, List<RecommendPerson>> a;
-  private boolean jdField_a_of_type_Boolean;
+  private QQAppInterface b;
+  private MultiCardRecommendFragment c;
+  private boolean d;
   
   public TroopMemRecommendRclAdapter(MultiCardRecommendFragment paramMultiCardRecommendFragment, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment = paramMultiCardRecommendFragment;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap(16, 0.75F, false);
-    this.jdField_a_of_type_Boolean = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-  }
-  
-  private int a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap.size();
+    this.c = paramMultiCardRecommendFragment;
+    this.b = paramQQAppInterface;
+    this.a = new LinkedHashMap(16, 0.75F, false);
+    this.d = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
   }
   
   private void a(TextView paramTextView, String paramString1, String paramString2, int paramInt)
@@ -85,21 +80,26 @@ public class TroopMemRecommendRclAdapter
     paramTextView.setText(paramString2);
   }
   
+  private int b()
+  {
+    return this.a.size();
+  }
+  
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilMap.size() + 1;
+    return this.a.size() + 1;
   }
   
   public int getItemViewType(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.a;
     int j = 0;
     int i = j;
     if (localObject != null)
@@ -107,10 +107,10 @@ public class TroopMemRecommendRclAdapter
       if (((Map)localObject).size() == 0) {
         return 0;
       }
-      if (paramInt >= a()) {
+      if (paramInt >= b()) {
         return 1;
       }
-      localObject = this.jdField_a_of_type_JavaUtilMap.keySet().toArray();
+      localObject = this.a.keySet().toArray();
       i = j;
       if (localObject[paramInt] != null)
       {
@@ -140,9 +140,9 @@ public class TroopMemRecommendRclAdapter
       {
         localObject = (TroopMemRecommendRclAdapter.ActiveViewHolder)paramViewHolder;
         i = j;
-        if (((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.size() > 0)
+        if (((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.size() > 0)
         {
-          ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(0)).cardMainTitle);
+          ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).c.setText(((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(0)).cardMainTitle);
           i = j;
         }
         while (i < ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).b.size())
@@ -150,22 +150,22 @@ public class TroopMemRecommendRclAdapter
           try
           {
             TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView localActiveSubItemView = (TroopMemRecommendRclAdapter.ActiveViewHolder.ActiveSubItemView)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).b.get(i);
-            str1 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).uin;
-            str2 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).troopUin;
-            str2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str1);
-            str3 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).recommendReason;
-            str4 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).recommendKeyword;
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.a(str1));
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-            a(localActiveSubItemView.b, str4, str3, localActiveSubItemView.jdField_a_of_type_AndroidWidgetTextView.getCurrentTextColor());
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131376767, localObject);
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131364098, ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i));
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(UITools.a);
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener((View.OnClickListener)localObject);
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton.setTag(2131376767, localObject);
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton.setTag(2131364098, ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i));
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(UITools.a);
-            localActiveSubItemView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener((View.OnClickListener)localObject);
+            str1 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(i)).uin;
+            str2 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(i)).troopUin;
+            str2 = ContactUtils.b(this.b, str2, str1);
+            str3 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(i)).recommendReason;
+            str4 = ((RecommendPerson)((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(i)).recommendKeyword;
+            localActiveSubItemView.b.setImageBitmap(this.c.a(str1));
+            localActiveSubItemView.c.setText(str2);
+            a(localActiveSubItemView.d, str4, str3, localActiveSubItemView.c.getCurrentTextColor());
+            localActiveSubItemView.a.setTag(2131445060, localObject);
+            localActiveSubItemView.a.setTag(2131430064, ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(i));
+            localActiveSubItemView.a.setOnTouchListener(UITools.a);
+            localActiveSubItemView.a.setOnClickListener((View.OnClickListener)localObject);
+            localActiveSubItemView.e.setTag(2131445060, localObject);
+            localActiveSubItemView.e.setTag(2131430064, ((TroopMemRecommendRclAdapter.ActiveViewHolder)localObject).a.get(i));
+            localActiveSubItemView.e.setOnTouchListener(UITools.a);
+            localActiveSubItemView.e.setOnClickListener((View.OnClickListener)localObject);
           }
           catch (NumberFormatException localNumberFormatException1)
           {
@@ -178,9 +178,9 @@ public class TroopMemRecommendRclAdapter
       {
         localObject = (TroopMemRecommendRclAdapter.CommonViewHolder)paramViewHolder;
         i = k;
-        if (((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.size() > 0)
+        if (((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.size() > 0)
         {
-          ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(0)).cardMainTitle);
+          ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).c.setText(((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(0)).cardMainTitle);
           i = k;
         }
         while (i < ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).b.size())
@@ -188,22 +188,22 @@ public class TroopMemRecommendRclAdapter
           try
           {
             TroopMemRecommendRclAdapter.CommonViewHolder.CommonSubItemView localCommonSubItemView = (TroopMemRecommendRclAdapter.CommonViewHolder.CommonSubItemView)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).b.get(i);
-            str1 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).uin;
-            str2 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).troopUin;
-            str2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str1);
-            str3 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).recommendReason;
-            str4 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i)).recommendKeyword;
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.a(str1));
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-            a(localCommonSubItemView.b, str4, str3, localCommonSubItemView.jdField_a_of_type_AndroidWidgetTextView.getCurrentTextColor());
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131376767, localObject);
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131364098, ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i));
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(UITools.a);
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener((View.OnClickListener)localObject);
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetButton.setTag(2131376767, localObject);
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetButton.setTag(2131364098, ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).jdField_a_of_type_JavaUtilList.get(i));
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(UITools.a);
-            localCommonSubItemView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener((View.OnClickListener)localObject);
+            str1 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(i)).uin;
+            str2 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(i)).troopUin;
+            str2 = ContactUtils.b(this.b, str2, str1);
+            str3 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(i)).recommendReason;
+            str4 = ((RecommendPerson)((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(i)).recommendKeyword;
+            localCommonSubItemView.b.setImageBitmap(this.c.a(str1));
+            localCommonSubItemView.c.setText(str2);
+            a(localCommonSubItemView.d, str4, str3, localCommonSubItemView.c.getCurrentTextColor());
+            localCommonSubItemView.a.setTag(2131445060, localObject);
+            localCommonSubItemView.a.setTag(2131430064, ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(i));
+            localCommonSubItemView.a.setOnTouchListener(UITools.a);
+            localCommonSubItemView.a.setOnClickListener((View.OnClickListener)localObject);
+            localCommonSubItemView.e.setTag(2131445060, localObject);
+            localCommonSubItemView.e.setTag(2131430064, ((TroopMemRecommendRclAdapter.CommonViewHolder)localObject).a.get(i));
+            localCommonSubItemView.e.setOnTouchListener(UITools.a);
+            localCommonSubItemView.e.setOnClickListener((View.OnClickListener)localObject);
           }
           catch (NumberFormatException localNumberFormatException2)
           {
@@ -215,9 +215,9 @@ public class TroopMemRecommendRclAdapter
       if ((paramViewHolder instanceof TroopMemRecommendRclAdapter.BottomViewHolder))
       {
         localObject = (TroopMemRecommendRclAdapter.BottomViewHolder)paramViewHolder;
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment != null) && (TroopMemberRecommendManager.a(localQQAppInterface).a != null)) {
-          ((TroopMemRecommendRclAdapter.BottomViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources().getString(2131719951, new Object[] { Integer.valueOf(TroopMemberRecommendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a.b) }));
+        QQAppInterface localQQAppInterface = this.b;
+        if ((localQQAppInterface != null) && (this.c != null) && (TroopMemberRecommendManager.a(localQQAppInterface).a != null)) {
+          ((TroopMemRecommendRclAdapter.BottomViewHolder)localObject).a.setText(this.c.getResources().getString(2131917556, new Object[] { Integer.valueOf(TroopMemberRecommendManager.a(this.b).a.b) }));
         }
       }
     }
@@ -230,27 +230,27 @@ public class TroopMemRecommendRclAdapter
     Object localObject;
     if (paramInt == 0)
     {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562987, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629595, paramViewGroup, false);
       localObject = new TroopMemRecommendRclAdapter.EmptyViewHolder(this, paramViewGroup);
     }
     else if (paramInt == 1)
     {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562984, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629592, paramViewGroup, false);
       localObject = new TroopMemRecommendRclAdapter.BottomViewHolder(this, paramViewGroup);
     }
     else if (paramInt == 101)
     {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562982, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629590, paramViewGroup, false);
       localObject = new TroopMemRecommendRclAdapter.ActiveViewHolder(this, paramViewGroup, paramInt);
     }
     else
     {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562985, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629593, paramViewGroup, false);
       localObject = new TroopMemRecommendRclAdapter.CommonViewHolder(this, paramViewGroup, paramInt);
     }
     if ((paramViewGroup != null) && (paramViewGroup.getBackground() != null))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
         paramViewGroup.getBackground().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP);
         return localObject;
@@ -262,7 +262,7 @@ public class TroopMemRecommendRclAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.TroopMemRecommendRclAdapter
  * JD-Core Version:    0.7.0.1
  */

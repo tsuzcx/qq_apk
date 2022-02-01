@@ -10,8 +10,8 @@ class TroopStoryMemoriesListAdapter$3
   
   public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    if (this.b.c != null) {
+      return this.b.c.a(paramView, this.a);
     }
     return true;
   }

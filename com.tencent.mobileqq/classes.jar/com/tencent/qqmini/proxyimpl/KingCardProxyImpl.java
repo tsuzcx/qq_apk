@@ -33,19 +33,10 @@ import mqq.app.AppRuntime;
 public class KingCardProxyImpl
   implements KingCardProxy
 {
-  private DIYLottieLoader jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader;
-  private final String jdField_a_of_type_JavaLangString = "KingCardProxyImpl";
+  private final String a = "KingCardProxyImpl";
   private String b = "mini_app_kingcard_guide_";
   private String c;
-  
-  private void a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.b);
-    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    localObject = ((StringBuilder)localObject).toString();
-    StorageUtil.getPreference().edit().putBoolean((String)localObject, true).apply();
-  }
+  private DIYLottieLoader d;
   
   private boolean a()
   {
@@ -89,20 +80,29 @@ public class KingCardProxyImpl
     return bool1;
   }
   
+  private void b()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localObject = ((StringBuilder)localObject).toString();
+    StorageUtil.getPreference().edit().putBoolean((String)localObject, true).apply();
+  }
+  
   public ImageView getCapsuleButtonMoreView(Context paramContext)
   {
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {
       localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;
     } else {
-      localObject = paramContext.getResources().getString(2131694133);
+      localObject = paramContext.getResources().getString(2131891761);
     }
     this.c = ((String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader = new DIYLottieLoader(paramContext);
-    int i = (int)(MemoryManager.a() / 2L);
-    this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader.setMemoryCacheSize(i);
+    this.d = new DIYLottieLoader(paramContext);
+    int i = (int)(MemoryManager.d() / 2L);
+    this.d.setMemoryCacheSize(i);
     Object localObject = new DiniFlyAnimationView(paramContext);
     ((DiniFlyAnimationView)localObject).setVisibility(0);
-    ((DiniFlyAnimationView)localObject).setContentDescription(HardCodeUtil.a(2131701566));
+    ((DiniFlyAnimationView)localObject).setContentDescription(HardCodeUtil.a(2131899588));
     paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
     paramContext.addRule(9, -1);
     ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -123,7 +123,7 @@ public class KingCardProxyImpl
       if (localMiniAppInfo == null) {
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader == null)
+      if (this.d == null)
       {
         QMLog.w("KingCardProxyImpl", "lottie loader is null");
         return false;
@@ -145,7 +145,7 @@ public class KingCardProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.KingCardProxyImpl
  * JD-Core Version:    0.7.0.1
  */

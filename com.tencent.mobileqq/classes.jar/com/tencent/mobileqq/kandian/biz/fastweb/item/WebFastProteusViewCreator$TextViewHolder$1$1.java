@@ -14,13 +14,13 @@ class WebFastProteusViewCreator$TextViewHolder$1$1
   public void onClick(ViewBase paramViewBase)
   {
     WebFastProteusViewCreator.a(true);
-    ReportUtil.a(this.a.a.a, "0X800974B");
+    ReportUtil.a(this.a.a.g, "0X800974B");
     ReadInJoyUtils.a(WebFastProteusViewCreator.TextViewHolder.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastProteusViewCreator.TextViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

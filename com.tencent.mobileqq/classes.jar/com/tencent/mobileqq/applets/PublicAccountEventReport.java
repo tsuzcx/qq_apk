@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.util.api.IPAReportUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.Message;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
@@ -16,6 +17,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.minigame.publicaccount.api.IMiniGamePublicAccountApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,7 +53,7 @@ public class PublicAccountEventReport
     }
     try
     {
-      Bundle localBundle = b(new JSONObject(paramString).optString("oac_triggle"));
+      Bundle localBundle = c(new JSONObject(paramString).optString("oac_triggle"));
       return localBundle;
     }
     catch (JSONException localJSONException)
@@ -63,29 +66,20 @@ public class PublicAccountEventReport
     return null;
   }
   
-  public static String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = b(new JSONObject(paramString).optString("oac_triggle")).getString("ad_id");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      label31:
-      break label31;
-    }
-    QLog.e("PublicAccountEventReport", 2, "parseException error ");
-    return "";
-  }
-  
   public static String a(String paramString1, String paramString2, String paramString3)
   {
+    return a(null, paramString1, paramString2, paramString3);
+  }
+  
+  private static String a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("red_cnt", paramString1);
-    localHashMap.put("msg_seq", paramString2);
-    localHashMap.put("msg_rand", paramString3);
+    localHashMap.put("red_cnt", paramString2);
+    localHashMap.put("msg_seq", paramString3);
+    localHashMap.put("msg_rand", paramString4);
+    if ("1983141935".equals(paramString1)) {
+      localHashMap.put("is_hippy", String.valueOf(((IMiniGamePublicAccountApi)QRoute.api(IMiniGamePublicAccountApi.class)).isUseHippy()));
+    }
     return new JSONObject(localHashMap).toString();
   }
   
@@ -113,7 +107,7 @@ public class PublicAccountEventReport
     {
       a(paramChatMessage.frienduin, paramChatMessage.uniseq);
       if ((paramChatMessage instanceof MessageForArkApp)) {
-        a(QQVipHelper.a(), 103, paramChatMessage);
+        a(103, paramChatMessage, paramInt2, null);
       }
     }
     Object localObject = paramChatMessage.mExJsonObject;
@@ -121,7 +115,7 @@ public class PublicAccountEventReport
     if (localObject != null)
     {
       paramChatMessage = paramChatMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
-      localObject = a(paramChatMessage);
+      localObject = b(paramChatMessage);
     }
     else
     {
@@ -134,43 +128,14 @@ public class PublicAccountEventReport
     a(paramInt1, paramInt2, (String)localObject, paramChatMessage);
   }
   
+  public static void a(int paramInt1, MessageRecord paramMessageRecord, int paramInt2, ArrayList<QQVipMsgInfo> paramArrayList)
+  {
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.14(paramInt1, paramMessageRecord, paramInt2, paramArrayList));
+  }
+  
   public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     a(205, paramInt1, paramString1, paramString2, paramInt2);
-  }
-  
-  public static void a(AppInterface paramAppInterface, int paramInt, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForArkApp))
-    {
-      if (paramAppInterface == null) {
-        return;
-      }
-      paramAppInterface = (MessageForArkApp)paramMessageRecord;
-      if (paramAppInterface.ark_app_message == null) {
-        return;
-      }
-      paramMessageRecord = new QQVipMsgInfo();
-      QQVipMsgInfo.parseArkAdvInfo(paramAppInterface, paramMessageRecord);
-      if (!paramMessageRecord.mIsAmsAdv) {
-        return;
-      }
-      switch (paramInt)
-      {
-      default: 
-        paramAppInterface = "";
-        break;
-      case 103: 
-        paramAppInterface = paramMessageRecord.mAmsMessageExposeUrl;
-        break;
-      case 102: 
-        paramAppInterface = paramMessageRecord.mAmsRPClickUrl;
-        break;
-      case 101: 
-        paramAppInterface = paramMessageRecord.mAmsRPExposeUrl;
-      }
-      ReportAmsAdvHelper.a(paramInt, paramAppInterface);
-    }
   }
   
   public static void a(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
@@ -194,7 +159,7 @@ public class PublicAccountEventReport
         ReportController.b(paramAppInterface, "CliOper", "", "", "0X80090E1", "0X80090E1", 0, 0, "", "", "", "");
         ((IQzoneRuntimeService)paramAppInterface.getRuntimeService(IQzoneRuntimeService.class, "")).preloadContentBox();
       }
-      a(paramAppInterface, 101, paramMessageRecord);
+      a(101, paramMessageRecord, -1, null);
     }
   }
   
@@ -222,10 +187,9 @@ public class PublicAccountEventReport
       int i = paramRecentBaseData.mUnreadNum;
       boolean bool = paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData;
       Object localObject3 = "";
-      Object localObject1;
       if (bool)
       {
-        localObject2 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).a();
+        localObject2 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).c();
         if (localObject2 != null)
         {
           localObject1 = new StringBuilder();
@@ -239,10 +203,10 @@ public class PublicAccountEventReport
         }
         if (localObject2 != null)
         {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append(((Message)localObject2).msgBackupMsgRandom);
-          localStringBuilder.append("");
-          localObject2 = localStringBuilder.toString();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(((Message)localObject2).msgBackupMsgRandom);
+          ((StringBuilder)localObject4).append("");
+          localObject2 = ((StringBuilder)localObject4).toString();
         }
         else
         {
@@ -254,10 +218,11 @@ public class PublicAccountEventReport
         localObject2 = "";
         localObject1 = localObject2;
       }
+      Object localObject4 = paramRecentBaseData.getRecentUserUin();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(i);
       localStringBuilder.append("");
-      Object localObject2 = a(localStringBuilder.toString(), (String)localObject1, (String)localObject2);
+      Object localObject2 = a((String)localObject4, localStringBuilder.toString(), (String)localObject1, (String)localObject2);
       i = paramRecentBaseData.getRecentUserType();
       if (i != 1008) {
         if (i != 1038)
@@ -298,22 +263,20 @@ public class PublicAccountEventReport
           return;
         }
       }
-      if (bool)
+      if (bool) {}
+      for (Object localObject1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;; localObject1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend)
       {
-        localObject1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
-      }
-      else
-      {
+        break;
         localObject1 = localObject3;
-        if ((paramRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
-          localObject1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+        if (!(paramRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
+          break;
         }
       }
       localObject3 = paramRecentBaseData.getRecentUserUin();
       int j = paramRecentBaseData.getUnreadNum();
       i = paramRecentBaseData.mUnreadFlag;
       if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA((String)localObject3)) {
-        ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeatherMessageClick(paramQQAppInterface);
+        d(paramQQAppInterface, paramRecentBaseData);
       } else if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isHealthUin((String)localObject3)) {
         ((IQQHealthService)paramQQAppInterface.getRuntimeService(IQQHealthService.class)).reportToBeaconIfNeed("qqsport_click_messagetab", null);
       }
@@ -326,7 +289,23 @@ public class PublicAccountEventReport
         i = 1;
       }
       ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.6((String)localObject3, (String)localObject1, i, j, (String)localObject2, paramRecentBaseData, paramQQAppInterface, paramRecentBaseData.mLastMsg.toString()));
+      if (j > 0) {
+        a(102, paramQQAppInterface.getMessageFacade().r(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType()), paramRecentBaseData.mPosition, null);
+      }
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from ACCOUNT_FOLDER, UIN=", paramString1, " unReadFlag=", Integer.valueOf(paramInt1), " unreadSum=", Integer.valueOf(paramInt2), " message=", paramString2 });
+    }
+    if (paramInt2 == 0) {
+      paramInt1 = 0;
+    } else if (paramInt1 != 2) {
+      paramInt1 = 1;
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.5(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2, paramMessageRecord));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, AbsListView paramAbsListView, int paramInt)
@@ -365,7 +344,7 @@ public class PublicAccountEventReport
               boolean bool = localRecentBaseData instanceof RecentItemPublicAccountChatMsgData;
               if (bool)
               {
-                localObject1 = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).a();
+                localObject1 = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).c();
                 if (localObject1 != null)
                 {
                   paramAbsListView = new StringBuilder();
@@ -397,14 +376,14 @@ public class PublicAccountEventReport
               Object localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append(m);
               ((StringBuilder)localObject2).append("");
-              localObject2 = a(((StringBuilder)localObject2).toString(), paramAbsListView, (String)localObject1);
+              localObject2 = a(str, ((StringBuilder)localObject2).toString(), paramAbsListView, (String)localObject1);
               if (!a.containsKey(str))
               {
                 paramAbsListView = (IWeatherCommApi)QRoute.api(IWeatherCommApi.class);
                 if (paramAbsListView.isWeatherPA(str)) {
-                  ThreadManager.excute(new PublicAccountEventReport.1(paramQQAppInterface), 16, null, true);
+                  ThreadManager.excute(new PublicAccountEventReport.1(paramQQAppInterface, localRecentBaseData), 16, null, true);
                 } else if ((localRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
-                  ThreadManager.excute(new PublicAccountEventReport.2(paramAbsListView, paramQQAppInterface), 16, null, true);
+                  ThreadManager.excute(new PublicAccountEventReport.2(paramAbsListView, paramQQAppInterface, localRecentBaseData), 16, null, true);
                 } else if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isHealthUin(str)) {
                   ((IQQHealthService)paramQQAppInterface.getRuntimeService(IQQHealthService.class)).reportToBeaconIfNeed("qqsport_exposure_messagetab", null);
                 }
@@ -418,10 +397,10 @@ public class PublicAccountEventReport
                     if ((j != 3001) && (j != 7120) && (j != 7200) && (j != 7210) && (j != 7220) && (j != 7230))
                     {
                       if (!QLog.isColorLevel()) {
-                        break label946;
+                        break label952;
                       }
                       QLog.d("PublicAccountEventReport", 2, new Object[] { "uin=", str, " uinTYPE=", Integer.valueOf(j) });
-                      break label946;
+                      break label952;
                     }
                   }
                   else
@@ -453,7 +432,7 @@ public class PublicAccountEventReport
                       }
                     }
                     ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportByQQ("message", "message_list", "expo", String.valueOf(paramInt), String.valueOf(m), "", "");
-                    break label946;
+                    break label952;
                   }
                 }
                 if (bool) {
@@ -484,7 +463,7 @@ public class PublicAccountEventReport
                 }
               }
             }
-            label946:
+            label952:
             i += 1;
           }
           a.clear();
@@ -518,25 +497,121 @@ public class PublicAccountEventReport
     ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.10(paramQQAppInterface, paramString1, paramInt1, paramInt2, paramLong, paramString2));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static void a(String paramString, long paramLong)
+  {
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.12(paramString, paramLong));
+  }
+  
+  public static String b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = c(new JSONObject(paramString).optString("oac_triggle")).getString("ad_id");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      label32:
+      break label32;
+    }
+    QLog.e("PublicAccountEventReport", 2, "parseException error ");
+    return "";
+  }
+  
+  public static void b(int paramInt1, MessageRecord paramMessageRecord, int paramInt2, ArrayList<QQVipMsgInfo> paramArrayList)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    ArrayList<QQVipMsgInfo> localArrayList;
+    if (103 == paramInt1)
+    {
+      paramMessageRecord = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if ((paramMessageRecord instanceof QQAppInterface)) {
+        paramArrayList = QQVipHelper.a((QQAppInterface)paramMessageRecord, -1);
+      }
+      localObject1 = localObject2;
+      localArrayList = paramArrayList;
+      if (paramArrayList != null)
+      {
+        localObject1 = localObject2;
+        localArrayList = paramArrayList;
+        if (paramInt2 >= 0)
+        {
+          localObject1 = localObject2;
+          localArrayList = paramArrayList;
+          if (paramInt2 < paramArrayList.size())
+          {
+            localObject1 = (QQVipMsgInfo)paramArrayList.get(paramInt2);
+            localArrayList = paramArrayList;
+          }
+        }
+      }
+    }
+    else
+    {
+      localObject1 = localObject2;
+      localArrayList = paramArrayList;
+      if ((paramMessageRecord instanceof MessageForArkApp))
+      {
+        paramMessageRecord = (MessageForArkApp)paramMessageRecord;
+        if (paramMessageRecord.ark_app_message == null) {
+          return;
+        }
+        localObject1 = new QQVipMsgInfo();
+        QQVipMsgInfo.parseArkAdvInfo(paramMessageRecord, (QQVipMsgInfo)localObject1);
+        localArrayList = paramArrayList;
+      }
+    }
+    QLog.d("PublicAccountEventReport", 4, new Object[] { "reportForAmsArk reportType:", Integer.valueOf(paramInt1), " msgInfo:", localObject1, " position:", Integer.valueOf(paramInt2) });
+    if ((localObject1 != null) && (((QQVipMsgInfo)localObject1).mIsAmsAdv))
+    {
+      if (((QQVipMsgInfo)localObject1).mAmsAdvMsgReported) {
+        return;
+      }
+      switch (paramInt1)
+      {
+      default: 
+        paramMessageRecord = "";
+        break;
+      case 103: 
+        paramMessageRecord = ((QQVipMsgInfo)localObject1).mAmsMessageExposeUrl;
+        ((QQVipMsgInfo)localObject1).mAmsAdvMsgReported = true;
+        localArrayList.set(paramInt2, localObject1);
+        break;
+      case 102: 
+        paramMessageRecord = ((QQVipMsgInfo)localObject1).mAmsRPClickUrl;
+        break;
+      case 101: 
+        paramMessageRecord = ((QQVipMsgInfo)localObject1).mAmsRPExposeUrl;
+      }
+      QLog.d("PublicAccountEventReport", 4, new Object[] { "reportForAmsArk do reportType:", Integer.valueOf(paramInt1), " url", paramMessageRecord });
+      ReportAmsAdvHelper.a(paramInt1, paramMessageRecord);
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from ACCOUNT_FOLDER, UIN=", paramString1, " unReadFlag=", Integer.valueOf(paramInt1), " unreadSum=", Integer.valueOf(paramInt2), " message=", paramString2 });
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "Report Click from ACCOUNT_FOLDER, UIN=", paramString1, " unReadFlag=", Integer.valueOf(paramInt1), " unreadSum=", Integer.valueOf(paramInt2), " message=", paramString2 });
     }
     if (paramInt2 == 0) {
       paramInt1 = 0;
     } else if (paramInt1 != 2) {
       paramInt1 = 1;
     }
-    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.5(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2));
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.7(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2, paramMessageRecord));
   }
   
-  public static void a(String paramString, long paramLong)
+  private static void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, String paramString3, String paramString4)
   {
-    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.12(paramString, paramLong));
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.4(paramString2, paramString1, paramInt, paramBoolean, paramString3, paramString4));
   }
   
-  private static Bundle b(String paramString)
+  private static Bundle c(String paramString)
   {
     Bundle localBundle = new Bundle();
     paramString = paramString.split("&");
@@ -562,30 +637,41 @@ public class PublicAccountEventReport
     return localBundle;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
+  private static void c(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountEventReport", 2, new Object[] { "Report Click from ACCOUNT_FOLDER, UIN=", paramString1, " unReadFlag=", Integer.valueOf(paramInt1), " unreadSum=", Integer.valueOf(paramInt2), " message=", paramString2 });
+    if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
+    {
+      paramRecentBaseData = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).c();
+      if (paramRecentBaseData != null)
+      {
+        paramRecentBaseData = paramRecentBaseData.lastMsg;
+        break label29;
+      }
     }
-    if (paramInt2 == 0) {
-      paramInt1 = 0;
-    } else if (paramInt1 != 2) {
-      paramInt1 = 1;
-    }
-    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.7(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2));
+    paramRecentBaseData = null;
+    label29:
+    ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeatherMessageExpose(paramQQAppInterface, paramRecentBaseData);
   }
   
-  private static void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, String paramString3, String paramString4)
+  private static void d(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
+    if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
+    {
+      paramRecentBaseData = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).c();
+      if (paramRecentBaseData != null)
+      {
+        paramRecentBaseData = paramRecentBaseData.lastMsg;
+        break label29;
+      }
     }
-    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.4(paramString2, paramString1, paramInt, paramBoolean, paramString3, paramString4));
+    paramRecentBaseData = null;
+    label29:
+    ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeatherMessageClick(paramQQAppInterface, paramRecentBaseData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport
  * JD-Core Version:    0.7.0.1
  */

@@ -46,6 +46,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewConfigurationCompat;
 import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.core.widget.EdgeEffectCompat;
+import androidx.recyclerview.R.attr;
+import androidx.recyclerview.R.dimen;
 import androidx.recyclerview.R.styleable;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
@@ -219,7 +221,7 @@ public class RecyclerView
   
   public RecyclerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035076);
+    this(paramContext, paramAttributeSet, R.attr.recyclerViewStyle);
   }
   
   public RecyclerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
@@ -2820,7 +2822,7 @@ public class RecyclerView
     if ((paramStateListDrawable1 != null) && (paramDrawable1 != null) && (paramStateListDrawable2 != null) && (paramDrawable2 != null))
     {
       Resources localResources = getContext().getResources();
-      new FastScroller(this, paramStateListDrawable1, paramDrawable1, paramStateListDrawable2, paramDrawable2, localResources.getDimensionPixelSize(2131297007), localResources.getDimensionPixelSize(2131297009), localResources.getDimensionPixelOffset(2131297008));
+      new FastScroller(this, paramStateListDrawable1, paramDrawable1, paramStateListDrawable2, paramDrawable2, localResources.getDimensionPixelSize(R.dimen.fastscroll_default_thickness), localResources.getDimensionPixelSize(R.dimen.fastscroll_minimum_range), localResources.getDimensionPixelOffset(R.dimen.fastscroll_margin));
       return;
     }
     paramStateListDrawable1 = new StringBuilder();

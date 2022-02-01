@@ -28,17 +28,17 @@ class AssetExportThread$AudioWriterProgressListener
     if (paramLong == -1L)
     {
       paramAssetWriterInput = this.this$0;
-      AssetExportThread.access$2502(paramAssetWriterInput, AssetExportThread.access$1200(paramAssetWriterInput).timeRange.getDuration().getTimeUs());
+      AssetExportThread.access$2602(paramAssetWriterInput, AssetExportThread.access$1200(paramAssetWriterInput).timeRange.getDuration().getTimeUs());
       AssetExportThread.access$902(this.this$0, true);
       AssetExportThread.access$2000(this.this$0).sendEmptyMessage(2);
       return;
     }
-    AssetExportThread.access$2502(this.this$0, paramLong);
+    AssetExportThread.access$2602(this.this$0, paramLong);
     AssetExportThread.access$2100(this.this$0);
-    if (((AssetExportThread.access$2500(this.this$0) > AssetExportThread.access$1900(this.this$0)) && (AssetExportThread.access$800(this.this$0))) || (AssetExportThread.access$2500(this.this$0) >= AssetExportThread.access$1200(this.this$0).timeRange.getEnd().getTimeUs()))
+    if (((AssetExportThread.access$2600(this.this$0) > AssetExportThread.access$1900(this.this$0)) && (AssetExportThread.access$800(this.this$0))) || (AssetExportThread.access$2600(this.this$0) >= AssetExportThread.access$1200(this.this$0).timeRange.getEnd().getTimeUs()))
     {
       paramAssetWriterInput = this.this$0;
-      AssetExportThread.access$2502(paramAssetWriterInput, AssetExportThread.access$1200(paramAssetWriterInput).timeRange.getDuration().getTimeUs());
+      AssetExportThread.access$2602(paramAssetWriterInput, AssetExportThread.access$1200(paramAssetWriterInput).timeRange.getDuration().getTimeUs());
       AssetExportThread.access$902(this.this$0, true);
       AssetExportThread.access$2000(this.this$0).sendEmptyMessage(2);
     }
@@ -46,7 +46,7 @@ class AssetExportThread$AudioWriterProgressListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportThread.AudioWriterProgressListener
  * JD-Core Version:    0.7.0.1
  */

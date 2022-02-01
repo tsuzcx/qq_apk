@@ -12,7 +12,7 @@ class AuthDevVerifyCodeActivity$1
   {
     if (AuthDevVerifyCodeActivity.mSecond <= 1)
     {
-      AuthDevVerifyCodeActivity.access$000(this.this$0).setText(2131716626);
+      AuthDevVerifyCodeActivity.access$000(this.this$0).setText(2131914089);
       AuthDevVerifyCodeActivity.access$000(this.this$0).setTextColor(-11692801);
       AuthDevVerifyCodeActivity.access$000(this.this$0).setEnabled(true);
       AuthDevVerifyCodeActivity.access$000(this.this$0).setClickable(true);
@@ -21,7 +21,7 @@ class AuthDevVerifyCodeActivity$1
     AuthDevVerifyCodeActivity.mSecond -= 1;
     TextView localTextView = AuthDevVerifyCodeActivity.access$000(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.this$0.getString(2131716626));
+    localStringBuilder.append(this.this$0.getString(2131914089));
     localStringBuilder.append(" (");
     localStringBuilder.append(AuthDevVerifyCodeActivity.mSecond);
     localStringBuilder.append("s)");
@@ -32,7 +32,7 @@ class AuthDevVerifyCodeActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity.1
  * JD-Core Version:    0.7.0.1
  */

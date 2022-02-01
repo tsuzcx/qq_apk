@@ -29,7 +29,7 @@ public class FunCallUtil
     }
     if (i != 0)
     {
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("getFunVideoId, 已经有默认配置, fcId[");
@@ -49,7 +49,7 @@ public class FunCallUtil
     if (paramAppRuntime != null) {
       i = paramAppRuntime.getActivityFCId();
     }
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       paramAppRuntime = new StringBuilder();
       paramAppRuntime.append("getFunVideoId, fcId[");

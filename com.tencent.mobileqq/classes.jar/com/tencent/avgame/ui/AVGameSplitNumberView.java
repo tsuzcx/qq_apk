@@ -17,9 +17,9 @@ import java.util.List;
 public class AVGameSplitNumberView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private List<Bitmap> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<Bitmap> a = new ArrayList();
   private int b = 0;
+  private int c = 0;
   
   public AVGameSplitNumberView(Context paramContext)
   {
@@ -36,10 +36,10 @@ public class AVGameSplitNumberView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private ImageView a(int paramInt)
+  private ImageView b(int paramInt)
   {
     ImageView localImageView = new ImageView(getContext());
-    localImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    localImageView.setImageBitmap((Bitmap)this.a.get(paramInt));
     localImageView.setClickable(false);
     localImageView.setId(IdUtils.a());
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -52,7 +52,7 @@ public class AVGameSplitNumberView
     int i = 0;
     while (i < 10)
     {
-      localArrayList.add(AVGameUtil.a(String.format(paramString, new Object[] { Integer.valueOf(i) })));
+      localArrayList.add(AVGameUtil.c(String.format(paramString, new Object[] { Integer.valueOf(i) })));
       i += 1;
     }
     return localArrayList;
@@ -60,8 +60,8 @@ public class AVGameSplitNumberView
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() != 0) && (paramInt >= 0) && (this.b > 0) && (this.jdField_a_of_type_Int > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((List)localObject).size() != 0) && (paramInt >= 0) && (this.c > 0) && (this.b > 0))
     {
       for (int i = 1;; i = j)
       {
@@ -74,8 +74,8 @@ public class AVGameSplitNumberView
       int j = 0;
       while (i != 0)
       {
-        localObject = a(paramInt / i);
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
+        localObject = b(paramInt / i);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.c, this.b);
         if (j != 0) {
           localLayoutParams.addRule(1, j);
         }
@@ -91,14 +91,14 @@ public class AVGameSplitNumberView
   
   public void setDimension(int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.c = paramInt1;
+    this.b = paramInt2;
   }
   
   public void setNumDrawable(List<Bitmap> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
   }
 }
 

@@ -14,12 +14,12 @@ public class ArkConfigImpl
 {
   public Map<String, List<ApiFrequencyConfig>> getAPIFrequencyConfig()
   {
-    return ArkAiAppCenter.a;
+    return ArkAiAppCenter.d;
   }
   
   public boolean isPANonShow()
   {
-    return ArkAppCenter.a();
+    return ArkAppCenter.i();
   }
   
   public <T extends ArkConfBean> T loadConfig(Class<T> paramClass)
@@ -34,7 +34,7 @@ public class ArkConfigImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.impl.ArkConfigImpl
  * JD-Core Version:    0.7.0.1
  */

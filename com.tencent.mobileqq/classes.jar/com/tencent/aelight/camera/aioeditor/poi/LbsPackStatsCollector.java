@@ -35,31 +35,6 @@ public class LbsPackStatsCollector
     b.put("actLbsCaiShenResourceFailure", localInteger2);
   }
   
-  public static void a(String paramString)
-  {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("uploadSuccess ");
-          localStringBuilder.append(paramString);
-          QLog.d("LbsPack", 2, localStringBuilder.toString());
-        }
-        StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str, paramString, false, 0L, 0L, localHashMap, null);
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
   public static void a(String paramString, int paramInt)
   {
     try
@@ -111,10 +86,35 @@ public class LbsPackStatsCollector
     Double.isNaN(d2);
     return (int)(d1 * d2) == 1;
   }
+  
+  public static void c(String paramString)
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("uploadSuccess ");
+          localStringBuilder.append(paramString);
+          QLog.d("LbsPack", 2, localStringBuilder.toString());
+        }
+        StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str, paramString, false, 0L, 0L, localHashMap, null);
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.poi.LbsPackStatsCollector
  * JD-Core Version:    0.7.0.1
  */

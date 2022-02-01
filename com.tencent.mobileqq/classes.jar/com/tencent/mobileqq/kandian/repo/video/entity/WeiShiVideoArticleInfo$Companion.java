@@ -42,13 +42,13 @@ public final class WeiShiVideoArticleInfo$Companion
         SimpleChannelInfo localSimpleChannelInfo = VideoProtoHelper.a(paramArticleSummary.msg_channel_info);
         int j;
         if (localSimpleChannelInfo != null) {
-          j = (int)localSimpleChannelInfo.b;
+          j = (int)localSimpleChannelInfo.c;
         } else {
           j = 0;
         }
         int k;
         if (localSimpleChannelInfo != null) {
-          k = (int)localSimpleChannelInfo.jdField_a_of_type_Long;
+          k = (int)localSimpleChannelInfo.b;
         } else {
           k = 0;
         }
@@ -68,17 +68,17 @@ public final class WeiShiVideoArticleInfo$Companion
       Readinjoy.VideoData localVideoData = paramArticleSummary.msg_video_data;
       paramArticleSummary = new VideoData();
       paramWeiShiVideoArticleInfo.videoData = paramArticleSummary;
-      paramArticleSummary.jdField_a_of_type_Int = localVideoData.uint32_busi_type.get();
-      paramArticleSummary.jdField_b_of_type_Int = localVideoData.uint32_duration.get();
+      paramArticleSummary.a = localVideoData.uint32_busi_type.get();
+      paramArticleSummary.b = localVideoData.uint32_duration.get();
       paramArticleSummary.c = localVideoData.uint32_width.get();
       paramArticleSummary.d = localVideoData.uint32_height.get();
       paramWeiShiVideoArticleInfo = localVideoData.bytes_vid;
       Intrinsics.checkExpressionValueIsNotNull(paramWeiShiVideoArticleInfo, "serverVideoData.bytes_vid");
-      paramArticleSummary.jdField_a_of_type_JavaLangString = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
-      paramArticleSummary.e = localVideoData.uint32_file_size.get();
+      paramArticleSummary.e = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
+      paramArticleSummary.f = localVideoData.uint32_file_size.get();
       paramWeiShiVideoArticleInfo = localVideoData.bytes_video_url;
       Intrinsics.checkExpressionValueIsNotNull(paramWeiShiVideoArticleInfo, "serverVideoData.bytes_video_url");
-      paramArticleSummary.jdField_b_of_type_JavaLangString = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
+      paramArticleSummary.g = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
     }
   }
   
@@ -137,17 +137,17 @@ public final class WeiShiVideoArticleInfo$Companion
       oidb_cmd0xbed.VideoData localVideoData = paramArticleSummary.msg_video_data;
       paramArticleSummary = new VideoData();
       paramWeiShiVideoArticleInfo.videoData = paramArticleSummary;
-      paramArticleSummary.jdField_a_of_type_Int = localVideoData.uint32_busi_type.get();
-      paramArticleSummary.jdField_b_of_type_Int = localVideoData.uint32_duration.get();
+      paramArticleSummary.a = localVideoData.uint32_busi_type.get();
+      paramArticleSummary.b = localVideoData.uint32_duration.get();
       paramArticleSummary.c = localVideoData.uint32_width.get();
       paramArticleSummary.d = localVideoData.uint32_height.get();
       paramWeiShiVideoArticleInfo = localVideoData.bytes_vid;
       Intrinsics.checkExpressionValueIsNotNull(paramWeiShiVideoArticleInfo, "serverVideoData.bytes_vid");
-      paramArticleSummary.jdField_a_of_type_JavaLangString = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
-      paramArticleSummary.e = localVideoData.uint32_file_size.get();
+      paramArticleSummary.e = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
+      paramArticleSummary.f = localVideoData.uint32_file_size.get();
       paramWeiShiVideoArticleInfo = localVideoData.bytes_video_url;
       Intrinsics.checkExpressionValueIsNotNull(paramWeiShiVideoArticleInfo, "serverVideoData.bytes_video_url");
-      paramArticleSummary.jdField_b_of_type_JavaLangString = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
+      paramArticleSummary.g = PBFieldUtils.a(paramWeiShiVideoArticleInfo);
     }
   }
   
@@ -158,13 +158,13 @@ public final class WeiShiVideoArticleInfo$Companion
     if ((paramChannelInfo != null) && (paramChannelInfo.has()))
     {
       if (paramChannelInfo.bytes_channel_name.has()) {
-        localSimpleChannelInfo.jdField_a_of_type_JavaLangString = paramChannelInfo.bytes_channel_name.get().toStringUtf8();
+        localSimpleChannelInfo.a = paramChannelInfo.bytes_channel_name.get().toStringUtf8();
       }
       if (paramChannelInfo.uint32_channel_type.has()) {
-        localSimpleChannelInfo.jdField_a_of_type_Long = paramChannelInfo.uint32_channel_type.get();
+        localSimpleChannelInfo.b = paramChannelInfo.uint32_channel_type.get();
       }
       if (paramChannelInfo.uint32_channel_id.has()) {
-        localSimpleChannelInfo.b = paramChannelInfo.uint32_channel_id.get();
+        localSimpleChannelInfo.c = paramChannelInfo.uint32_channel_id.get();
       }
     }
     return localSimpleChannelInfo;
@@ -239,7 +239,7 @@ public final class WeiShiVideoArticleInfo$Companion
         localWeiShiVideoArticleInfo.articleStyle = paramArticleSummary.uint32_article_style.get();
         localObject = paramArticleSummary.bytes_business_info;
         Intrinsics.checkExpressionValueIsNotNull(localObject, "summary.bytes_business_info");
-        localWeiShiVideoArticleInfo.businessInfo = PBFieldUtils.a((PBBytesField)localObject);
+        localWeiShiVideoArticleInfo.businessInfo = PBFieldUtils.b((PBBytesField)localObject);
         localObject = paramArticleSummary.bytes_video_subscript_txt;
         Intrinsics.checkExpressionValueIsNotNull(localObject, "summary.bytes_video_subscript_txt");
         localWeiShiVideoArticleInfo.videoSubscriptTxt = PBFieldUtils.a((PBBytesField)localObject);
@@ -338,7 +338,7 @@ public final class WeiShiVideoArticleInfo$Companion
           ((WeiShiVideoArticleInfo)localObject).articleStyle = paramArticleSummary.uint32_article_style.get();
           localPBBytesField = paramArticleSummary.bytes_business_info;
           Intrinsics.checkExpressionValueIsNotNull(localPBBytesField, "summary.bytes_business_info");
-          ((WeiShiVideoArticleInfo)localObject).businessInfo = PBFieldUtils.a(localPBBytesField);
+          ((WeiShiVideoArticleInfo)localObject).businessInfo = PBFieldUtils.b(localPBBytesField);
           localPBBytesField = paramArticleSummary.bytes_video_subscript_txt;
           Intrinsics.checkExpressionValueIsNotNull(localPBBytesField, "summary.bytes_video_subscript_txt");
           ((WeiShiVideoArticleInfo)localObject).videoSubscriptTxt = PBFieldUtils.a(localPBBytesField);
@@ -369,7 +369,7 @@ public final class WeiShiVideoArticleInfo$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.entity.WeiShiVideoArticleInfo.Companion
  * JD-Core Version:    0.7.0.1
  */

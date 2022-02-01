@@ -7,9 +7,10 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.campuscircle.CampusCircleIpcClient;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.settings.util.PrivacySettingUtil;
+import com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -20,20 +21,12 @@ import org.json.JSONObject;
 public class MedalApiPlugin
   extends WebViewPlugin
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
+  private Context a;
+  private String b;
   
   public MedalApiPlugin()
   {
     this.mPluginNameSpace = "medalwall";
-  }
-  
-  private void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MedalWallMng", 4, "clearRedPoint from web!");
-    }
-    CampusCircleIpcClient.a().a();
   }
   
   private void a(String paramString)
@@ -43,8 +36,8 @@ public class MedalApiPlugin
     }
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-      c(this.jdField_a_of_type_JavaLangString);
+      this.b = new JSONObject(paramString).optString("callback");
+      c(this.b);
       return;
     }
     catch (JSONException paramString)
@@ -59,10 +52,12 @@ public class MedalApiPlugin
     }
   }
   
-  private Context b()
+  private void b()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, "clearRedPoint from web!");
+    }
+    CampusCircleIpcClient.a().c();
   }
   
   private void b(String paramString)
@@ -72,9 +67,9 @@ public class MedalApiPlugin
     }
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-      paramString = PrivacySettingUtil.a();
-      PrivacySettingUtil.a((AppInterface)this.mRuntime.a(), this, paramString, (byte)100);
+      this.b = new JSONObject(paramString).optString("callback");
+      paramString = new Intent();
+      PublicFragmentActivity.a(a(), paramString, PermissionPrivacyFragment.class);
       return;
     }
     catch (JSONException paramString)
@@ -89,9 +84,15 @@ public class MedalApiPlugin
     }
   }
   
+  private Context c()
+  {
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
   private void c(String paramString)
   {
-    String str = this.mRuntime.a().getCurrentAccountUin();
+    String str = this.mRuntime.b().getCurrentAccountUin();
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("medal_wall_");
@@ -110,7 +111,7 @@ public class MedalApiPlugin
   
   public Context a()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    return this.a;
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -118,7 +119,7 @@ public class MedalApiPlugin
     if ("medalwall".equals(paramString2))
     {
       if (paramJsBridgeListener != null) {
-        boolean bool = paramJsBridgeListener.a;
+        boolean bool = paramJsBridgeListener.c;
       }
       addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
       if ("getMedalSwitch".equals(paramString3)) {
@@ -126,7 +127,7 @@ public class MedalApiPlugin
       } else if ("jumpToMedalSettings".equals(paramString3)) {
         b(paramVarArgs[0]);
       } else if ("clearRedPoint".equals(paramString3)) {
-        a();
+        b();
       }
       return true;
     }
@@ -137,19 +138,19 @@ public class MedalApiPlugin
   {
     super.onActivityResult(paramIntent, paramByte, paramInt);
     if (paramByte == 100) {
-      c(this.jdField_a_of_type_JavaLangString);
+      c(this.b);
     }
   }
   
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = b();
+    this.a = c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MedalApiPlugin
  * JD-Core Version:    0.7.0.1
  */

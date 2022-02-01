@@ -23,21 +23,21 @@ public class TextInputLayout$AccessibilityDelegate
   public void onInitializeAccessibilityNodeInfo(@NonNull View paramView, @NonNull AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    EditText localEditText = this.a.a();
+    EditText localEditText = this.a.getEditText();
     Editable localEditable;
     if (localEditText != null) {
       localEditable = localEditText.getText();
     } else {
       localEditable = null;
     }
-    paramView = this.a.a();
-    CharSequence localCharSequence1 = this.a.e();
-    Object localObject = this.a.b();
-    int j = this.a.c();
-    CharSequence localCharSequence2 = this.a.d();
+    paramView = this.a.getHint();
+    CharSequence localCharSequence1 = this.a.getError();
+    Object localObject = this.a.getPlaceholderText();
+    int j = this.a.getCounterMaxLength();
+    CharSequence localCharSequence2 = this.a.getCounterOverflowDescription();
     boolean bool2 = TextUtils.isEmpty(localEditable) ^ true;
     boolean bool4 = TextUtils.isEmpty(paramView);
-    boolean bool5 = this.a.e();
+    boolean bool5 = this.a.j();
     boolean bool1 = TextUtils.isEmpty(localCharSequence1) ^ true;
     boolean bool3 = false;
     int i;
@@ -115,7 +115,7 @@ public class TextInputLayout$AccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.TextInputLayout.AccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

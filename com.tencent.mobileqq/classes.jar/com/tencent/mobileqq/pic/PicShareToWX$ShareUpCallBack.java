@@ -16,11 +16,11 @@ import tencent.im.msg.im_msg_body.RichText;
 public class PicShareToWX$ShareUpCallBack
   implements UpCallBack
 {
-  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
   PicShareToWX$ShareUpCallBack(PicShareToWX paramPicShareToWX, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
@@ -40,42 +40,42 @@ public class PicShareToWX$ShareUpCallBack
       ((StringBuilder)localObject).append(paramSendResult.a);
       QLog.d("PicShareToWX", 1, ((StringBuilder)localObject).toString());
     }
-    if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
-      ThreadManager.getUIHandler().removeCallbacks(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
+    if (PicShareToWX.a(this.a) != null) {
+      ThreadManager.getUIHandler().removeCallbacks(PicShareToWX.a(this.a));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a.dismiss();
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
     if (paramSendResult.a != 0)
     {
-      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
-        PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createResult(-102, null));
+      if (this.a.f != null) {
+        this.a.f.callbackResult(this.a.g, EIPCResult.createResult(-102, null));
       }
-      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
-        QQToast.a(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), 2131719010, 0).a();
+      if (this.a.d != null) {
+        QQToast.makeText(this.a.d, 2131916545, 0).show();
       }
-      PicShareToWX.a(PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), false);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramSendResult.a, 0);
+      PicShareToWX.a(this.a.e, false);
+      PicShareToWX.a(this.a, false, paramSendResult.a, 0);
     }
-    else if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null)
+    else if (this.a.f != null)
     {
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createSuccessResult(null));
+      this.a.f.callbackResult(this.a.g, EIPCResult.createSuccessResult(null));
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a();
-    if ((paramSendResult.a == 0) && (!PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX)))
+    this.a.a();
+    if ((paramSendResult.a == 0) && (!PicShareToWX.b(this.a)))
     {
-      paramSendResult = paramSendResult.e;
+      paramSendResult = paramSendResult.m;
       localObject = new BitmapFactory.Options();
-      ImageUtil.a((BitmapFactory.Options)localObject, this.jdField_a_of_type_JavaLangString, 400);
-      localObject = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-      PicShareToWX localPicShareToWX = this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX;
-      localPicShareToWX.a(paramSendResult, (Bitmap)localObject, PicShareToWX.b(localPicShareToWX));
+      ImageUtil.a((BitmapFactory.Options)localObject, this.b, 400);
+      localObject = SafeBitmapFactory.decodeFile(this.b, (BitmapFactory.Options)localObject);
+      PicShareToWX localPicShareToWX = this.a;
+      localPicShareToWX.a(paramSendResult, (Bitmap)localObject, localPicShareToWX.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX.ShareUpCallBack
  * JD-Core Version:    0.7.0.1
  */

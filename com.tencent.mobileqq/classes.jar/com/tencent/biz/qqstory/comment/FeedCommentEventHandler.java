@@ -31,63 +31,62 @@ public class FeedCommentEventHandler
   extends LegoEvenHandler
   implements View.OnClickListener, InnerListView.OnItemClickListener, InnerListView.OnItemLongClickListener
 {
-  protected Handler a;
-  private FeedCommentEventHandler.FeedCommentClickEvent a;
   protected FeedCommentLego a;
-  public CommentLikeFeedItem a;
-  public String a;
+  protected Handler b = new Handler();
+  public String c;
+  public CommentLikeFeedItem d;
+  private FeedCommentEventHandler.FeedCommentClickEvent e;
   
   public FeedCommentEventHandler(FeedCommentLego paramFeedCommentLego)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego = paramFeedCommentLego;
-    this.jdField_a_of_type_JavaLangString = QQStoryContext.a().a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$FeedCommentClickEvent = new FeedCommentEventHandler.FeedCommentClickEvent(this);
+    this.a = paramFeedCommentLego;
+    this.c = QQStoryContext.a().g();
+    this.d = this.a.g;
+    this.e = new FeedCommentEventHandler.FeedCommentClickEvent(this);
   }
   
   private void b(CommentEntry paramCommentEntry, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$KeyBoardUpCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$KeyBoardUpCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$FeedCommentClickEvent.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$FeedCommentClickEvent.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$FeedCommentClickEvent.jdField_a_of_type_Int, paramCommentEntry);
+    if (this.a.l != null) {
+      this.a.l.a(this.a, this.e.a, this.e.b, this.e.c, paramCommentEntry);
     }
-    FeedCommentLikeLego localFeedCommentLikeLego = (FeedCommentLikeLego)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a();
-    paramInt = StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+    FeedCommentLikeLego localFeedCommentLikeLego = (FeedCommentLikeLego)this.a.m();
+    paramInt = StoryReportor.a(this.d);
+    if (this.d.getOwner().isMe()) {
       paramCommentEntry = "1";
     } else {
       paramCommentEntry = "2";
     }
-    StoryReportor.a("home_page", "clk_content", paramInt, 0, new String[] { paramCommentEntry, StoryReportor.a(localFeedCommentLikeLego.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+    StoryReportor.a("home_page", "clk_content", paramInt, 0, new String[] { paramCommentEntry, StoryReportor.b(localFeedCommentLikeLego.e), "", this.d.feedId });
   }
   
   protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
   {
-    paramView = QQStoryContext.a().b();
-    ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidAppActivity);
+    paramView = QQStoryContext.a().i();
+    ActionSheet localActionSheet = ActionSheet.create(this.a.c);
     if (paramCommentEntry.authorUnionId.equals(paramView))
     {
       if (paramCommentEntry.status == 2) {
-        localActionSheet.addButton(HardCodeUtil.a(2131704541));
+        localActionSheet.addButton(HardCodeUtil.a(2131902451));
       } else {
-        localActionSheet.addButton(HardCodeUtil.a(2131704529));
+        localActionSheet.addButton(HardCodeUtil.a(2131902439));
       }
-      localActionSheet.addButton(HardCodeUtil.a(2131704509), 3);
+      localActionSheet.addButton(HardCodeUtil.a(2131902421), 3);
     }
-    else if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe())
+    else if (this.d.getOwner().isMe())
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isVip()) {
-        localActionSheet.addButton(HardCodeUtil.a(2131704539), 3);
+      if (this.d.getOwner().isVip()) {
+        localActionSheet.addButton(HardCodeUtil.a(2131902449), 3);
       }
-      localActionSheet.addButton(HardCodeUtil.a(2131704538));
-      localActionSheet.addButton(HardCodeUtil.a(2131704536));
+      localActionSheet.addButton(HardCodeUtil.a(2131902448));
+      localActionSheet.addButton(HardCodeUtil.a(2131902446));
     }
     else
     {
-      localActionSheet.addButton(HardCodeUtil.a(2131704510));
-      localActionSheet.addButton(HardCodeUtil.a(2131704528));
+      localActionSheet.addButton(HardCodeUtil.a(2131902422));
+      localActionSheet.addButton(HardCodeUtil.a(2131902438));
     }
-    localActionSheet.addCancelButton(HardCodeUtil.a(2131704514));
+    localActionSheet.addCancelButton(HardCodeUtil.a(2131898212));
     localActionSheet.setOnButtonClickListener(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, localActionSheet, paramCommentEntry, paramInt));
     localActionSheet.show();
   }
@@ -97,7 +96,7 @@ public class FeedCommentEventHandler
     if (paramCommentEntry.commentType == 5)
     {
       paramCommentEntry = new OpenPlayerBuilder(new VidListPlayInfo(paramCommentEntry.togetherFeedId, paramCommentEntry.togetherVid), 126);
-      StoryPlayerLauncher.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidAppActivity, paramCommentEntry.a(), null);
+      StoryPlayerLauncher.a(this.a.c, paramCommentEntry.f(), null);
       StoryReportor.a("play_video", "multishoot_icon", 0, 0, new String[0]);
       return;
     }
@@ -107,74 +106,74 @@ public class FeedCommentEventHandler
       localObject = paramCommentEntry.getExtraJson().optString("vid");
       paramCommentEntry = paramCommentEntry.getExtraJson().optString("feedid");
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramCommentEntry))) {
-        StoryPlayerLauncher.b(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidContentContext, (String)localObject, paramCommentEntry, 74);
+        StoryPlayerLauncher.b(this.a.p, (String)localObject, paramCommentEntry, 74);
       }
     }
     else
     {
-      if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
+      if (QQStoryContext.a().b(paramCommentEntry.authorUnionId))
       {
-        localObject = ActionSheet.create(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidAppActivity);
+        localObject = ActionSheet.create(this.a.c);
         if (paramCommentEntry.status == 2) {
-          ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131704543));
+          ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131902453));
         } else {
-          ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131704530));
+          ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131902440));
         }
-        ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131704546), 3);
-        ((ActionSheet)localObject).addCancelButton(HardCodeUtil.a(2131704524));
+        ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131902456), 3);
+        ((ActionSheet)localObject).addCancelButton(HardCodeUtil.a(2131898212));
         ((ActionSheet)localObject).setOnButtonClickListener(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, (ActionSheet)localObject, paramCommentEntry, paramInt));
         ((ActionSheet)localObject).show();
         return;
       }
       b(paramCommentEntry, paramInt);
-      paramInt = StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+      paramInt = StoryReportor.a(this.d);
+      if (this.d.getOwner().isMe()) {
         paramCommentEntry = "1";
       } else {
         paramCommentEntry = "2";
       }
-      StoryReportor.a("home_page", "clk_content", paramInt, 0, new String[] { paramCommentEntry, StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      StoryReportor.a("home_page", "clk_content", paramInt, 0, new String[] { paramCommentEntry, StoryReportor.b(this.a.h), "", this.d.feedId });
     }
   }
   
   public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.d = paramCommentLikeFeedItem;
   }
   
   public void a(InnerListView paramInnerListView, View paramView, int paramInt)
   {
-    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_JavaUtilList.get(paramInt);
-    FeedCommentEventHandler.FeedCommentClickEvent localFeedCommentClickEvent = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$FeedCommentClickEvent;
-    localFeedCommentClickEvent.jdField_a_of_type_AndroidViewViewGroup = paramInnerListView;
-    localFeedCommentClickEvent.jdField_a_of_type_AndroidViewView = paramView;
-    localFeedCommentClickEvent.jdField_a_of_type_Int = paramInt;
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidContentContext))
+    CommentEntry localCommentEntry = (CommentEntry)this.a.d.get(paramInt);
+    FeedCommentEventHandler.FeedCommentClickEvent localFeedCommentClickEvent = this.e;
+    localFeedCommentClickEvent.a = paramInnerListView;
+    localFeedCommentClickEvent.b = paramView;
+    localFeedCommentClickEvent.c = paramInt;
+    if (!NetworkUtil.isNetSupport(this.a.p))
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131704518), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131902429), 0).show();
       return;
     }
     a(localCommentEntry, paramInt);
   }
   
-  public boolean a(InnerListView paramInnerListView, View paramView, int paramInt)
+  public boolean b(InnerListView paramInnerListView, View paramView, int paramInt)
   {
-    a(paramView, (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-    FeedCommentEventHandler.FeedCommentClickEvent localFeedCommentClickEvent = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$FeedCommentClickEvent;
-    localFeedCommentClickEvent.jdField_a_of_type_AndroidViewViewGroup = paramInnerListView;
-    localFeedCommentClickEvent.jdField_a_of_type_AndroidViewView = paramView;
-    localFeedCommentClickEvent.jdField_a_of_type_Int = paramInt;
+    a(paramView, (CommentEntry)this.a.d.get(paramInt), paramInt);
+    FeedCommentEventHandler.FeedCommentClickEvent localFeedCommentClickEvent = this.e;
+    localFeedCommentClickEvent.a = paramInnerListView;
+    localFeedCommentClickEvent.b = paramView;
+    localFeedCommentClickEvent.c = paramInt;
     return false;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131364953)
+    if (i != 2131431079)
     {
-      if ((i != 2131366317) && (i == 2131376496))
+      if ((i != 2131432617) && (i == 2131444737))
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a().a();
+        this.a.b().a();
         if (QLog.isColorLevel()) {
           QLog.d("FeedCommentEventHandler", 2, "onClick retry_btn");
         }
@@ -183,11 +182,11 @@ public class FeedCommentEventHandler
     else
     {
       i = ((Integer)paramView.getTag()).intValue();
-      CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_JavaUtilList.get(i);
-      ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidAppActivity);
-      localActionSheet.addButton(HardCodeUtil.a(2131704521));
-      localActionSheet.addButton(HardCodeUtil.a(2131704507), 3);
-      localActionSheet.addCancelButton(2131690728);
+      CommentEntry localCommentEntry = (CommentEntry)this.a.d.get(i);
+      ActionSheet localActionSheet = ActionSheet.create(this.a.c);
+      localActionSheet.addButton(HardCodeUtil.a(2131902432));
+      localActionSheet.addButton(HardCodeUtil.a(2131902419), 3);
+      localActionSheet.addCancelButton(2131887648);
       localActionSheet.setOnButtonClickListener(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, localActionSheet, localCommentEntry, i));
       localActionSheet.show();
     }
@@ -196,7 +195,7 @@ public class FeedCommentEventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentEventHandler
  * JD-Core Version:    0.7.0.1
  */

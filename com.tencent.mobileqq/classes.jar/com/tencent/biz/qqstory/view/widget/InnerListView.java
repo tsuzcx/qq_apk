@@ -13,12 +13,12 @@ import java.util.List;
 public class InnerListView
   extends LinearLayout
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private InnerListView.OnItemClickListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemClickListener;
-  private InnerListView.OnItemLongClickListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemLongClickListener;
-  private InnerListViewAdapter jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter;
-  private List<BaseViewHolder> jdField_a_of_type_JavaUtilList;
-  private List<View> b;
+  private LayoutInflater a;
+  private List<BaseViewHolder> b;
+  private InnerListView.OnItemClickListener c;
+  private InnerListView.OnItemLongClickListener d;
+  private InnerListViewAdapter e;
+  private List<View> f;
   
   public InnerListView(Context paramContext)
   {
@@ -38,56 +38,47 @@ public class InnerListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    List localList = this.b;
-    if (localList != null) {
-      return localList.size();
-    }
-    return 0;
+    this.a = LayoutInflater.from(paramContext);
+    this.b = new ArrayList();
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter;
+    Object localObject = this.e;
     if (localObject != null)
     {
-      if ((((InnerListViewAdapter)localObject).a() != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().isEmpty()))
+      if ((((InnerListViewAdapter)localObject).b() != null) && (!this.e.b().isEmpty()))
       {
-        int j = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().size();
-        if (j < getChildCount() - a()) {
-          removeViews(j, getChildCount() - j - a());
+        int j = this.e.b().size();
+        if (j < getChildCount() - getFooterCount()) {
+          removeViews(j, getChildCount() - j - getFooterCount());
         }
         int i = 0;
         while (i < j)
         {
-          if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i)
+          if (this.b.size() - 1 >= i)
           {
-            localObject = (BaseViewHolder)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject = (BaseViewHolder)this.b.get(i);
           }
           else
           {
-            localObject = new BaseViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(), this, false));
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            localObject = new BaseViewHolder(this.a.inflate(this.e.a(), this, false));
+            this.b.add(localObject);
           }
-          this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(i, (BaseViewHolder)localObject);
+          this.e.a(i, (BaseViewHolder)localObject);
           localObject = ((BaseViewHolder)localObject).a();
           if (((View)localObject).getParent() == null) {
-            addView((View)localObject, getChildCount() - a());
+            addView((View)localObject, getChildCount() - getFooterCount());
           }
           ((View)localObject).setOnClickListener(new InnerListView.1(this, i));
           ((View)localObject).setOnLongClickListener(new InnerListView.2(this, i));
           i += 1;
         }
       }
-      removeViews(0, getChildCount() - a());
+      removeViews(0, getChildCount() - getFooterCount());
       return;
     }
-    removeViews(0, getChildCount() - a());
+    removeViews(0, getChildCount() - getFooterCount());
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -96,8 +87,8 @@ public class InnerListView
     int i = 0;
     while (i < paramInt2)
     {
-      BaseViewHolder localBaseViewHolder = new BaseViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
-      this.jdField_a_of_type_JavaUtilList.add(localBaseViewHolder);
+      BaseViewHolder localBaseViewHolder = new BaseViewHolder(this.a.inflate(paramInt1, this, false));
+      this.b.add(localBaseViewHolder);
       i += 1;
     }
     SLog.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
@@ -105,26 +96,35 @@ public class InnerListView
   
   public void a(View paramView)
   {
-    if (this.b == null) {
-      this.b = new ArrayList();
+    if (this.f == null) {
+      this.f = new ArrayList();
     }
-    this.b.add(paramView);
+    this.f.add(paramView);
     addView(paramView);
+  }
+  
+  public int getFooterCount()
+  {
+    List localList = this.f;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
   }
   
   public void setAdapter(InnerListViewAdapter paramInnerListViewAdapter)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter = paramInnerListViewAdapter;
+    this.e = paramInnerListViewAdapter;
     a();
   }
   
   public void setFooterView(int paramInt, View paramView)
   {
-    List localList = this.b;
+    List localList = this.f;
     if ((localList != null) && (localList.size() > paramInt))
     {
-      this.b.set(paramInt, paramView);
-      paramInt = getChildCount() - a() + paramInt;
+      this.f.set(paramInt, paramView);
+      paramInt = getChildCount() - getFooterCount() + paramInt;
       removeViewAt(paramInt);
       addView(paramView, paramInt);
       return;
@@ -134,12 +134,12 @@ public class InnerListView
   
   public void setOnItemClickListener(InnerListView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemClickListener = paramOnItemClickListener;
+    this.c = paramOnItemClickListener;
   }
   
   public void setOnItemLongClickListener(InnerListView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemLongClickListener = paramOnItemLongClickListener;
+    this.d = paramOnItemLongClickListener;
   }
 }
 

@@ -7,15 +7,14 @@ import java.util.List;
 public class MemoryDataPuller$GetMemoryCollectionKeyEvent
   extends BaseEvent
 {
-  public String a;
-  public ArrayList<String> a;
-  public List<String> a;
-  public boolean a;
+  public List<String> a = new ArrayList();
+  public ArrayList<String> b;
+  public boolean c;
+  public String d;
   
   public MemoryDataPuller$GetMemoryCollectionKeyEvent(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
 }
 

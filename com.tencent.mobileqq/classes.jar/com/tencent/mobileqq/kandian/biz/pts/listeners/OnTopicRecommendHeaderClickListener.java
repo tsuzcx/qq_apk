@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJFrameworkReportManager;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJBaseItemViewType;
@@ -23,18 +23,18 @@ import java.util.ArrayList;
 public class OnTopicRecommendHeaderClickListener
   implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private AbsBaseArticleInfo a;
+  private Context b;
   
   public OnTopicRecommendHeaderClickListener(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramContext;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
+    if (this.a == null) {
       return;
     }
     Object localObject1;
@@ -42,51 +42,51 @@ public class OnTopicRecommendHeaderClickListener
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("business url is ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.businessUrl);
+      ((StringBuilder)localObject1).append(this.a.businessUrl);
       QLog.d("OnTopicRecommendHeaderClickListener", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0)) {
-      localObject1 = (TopicRecommendFeedsInfo.TopicRecommendInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
+    if ((this.a.mTopicRecommendFeedsInfo != null) && (this.a.mTopicRecommendFeedsInfo.g != null) && (this.a.mTopicRecommendFeedsInfo.g.size() > 0)) {
+      localObject1 = (TopicRecommendFeedsInfo.TopicRecommendInfo)this.a.mTopicRecommendFeedsInfo.g.get(0);
     } else {
       localObject1 = null;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    Object localObject2 = this.a;
     if ((localObject2 != null) && (localObject1 != null))
     {
       localObject2 = ((AbsBaseArticleInfo)localObject2).businessUrl;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return;
       }
-      Object localObject3 = new ActivityURIRequest(this.jdField_a_of_type_AndroidContentContext, "/pubaccount/browser");
+      Object localObject3 = new ActivityURIRequest(this.b, "/pubaccount/browser");
       ((ActivityURIRequest)localObject3).extra().putString("url", (String)localObject2);
       QRoute.startUri((URIRequest)localObject3, null);
-      localObject2 = RIJFeedsType.c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID;
+      localObject2 = RIJFeedsType.k(this.a);
+      localObject3 = this.a.innerUniqueID;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).a);
       localStringBuilder.append("");
-      localObject1 = RIJTransMergeKanDianReport.a((String)localObject3, localStringBuilder.toString(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, (String)localObject2, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mStrategyId), (String)localObject1, false);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      localObject1 = RIJTransMergeKanDianReport.a((String)localObject3, localStringBuilder.toString(), this.a);
+      PublicAccountReportUtils.a(null, (String)localObject2, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.a.mFeedId), Long.toString(this.a.mArticleID), Long.toString(this.a.mStrategyId), (String)localObject1, false);
+      localObject1 = this.a;
       RIJFrameworkReportManager.b((AbsBaseArticleInfo)localObject1, (int)((AbsBaseArticleInfo)localObject1).mChannelID);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      localObject1 = this.a;
       RIJFrameworkReportManager.c((AbsBaseArticleInfo)localObject1, (int)((AbsBaseArticleInfo)localObject1).mChannelID);
       return;
     }
-    QLog.d("OnTopicRecommendHeaderClickListener", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, " topicRecommendInfo: ", localObject1 });
+    QLog.d("OnTopicRecommendHeaderClickListener", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.a, " topicRecommendInfo: ", localObject1 });
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    int i = RIJBaseItemViewType.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (i != 79)) {
+    int i = RIJBaseItemViewType.c(this.a);
+    if (((this.b instanceof Activity)) && (i != 79)) {
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnTopicRecommendHeaderClickListener
  * JD-Core Version:    0.7.0.1
  */

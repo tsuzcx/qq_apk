@@ -5,7 +5,7 @@ import android.os.Looper;
 
 class MediaFocusManager$FocusEventHandlerDelegate
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final Handler b;
   
   MediaFocusManager$FocusEventHandlerDelegate(MediaFocusManager paramMediaFocusManager)
   {
@@ -16,20 +16,20 @@ class MediaFocusManager$FocusEventHandlerDelegate
     }
     if (localLooper1 != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler = new MediaFocusManager.FocusEventHandlerDelegate.1(this, localLooper1, paramMediaFocusManager);
+      this.b = new MediaFocusManager.FocusEventHandlerDelegate.1(this, localLooper1, paramMediaFocusManager);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.b = null;
   }
   
   Handler a()
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusManager.FocusEventHandlerDelegate
  * JD-Core Version:    0.7.0.1
  */

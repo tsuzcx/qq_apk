@@ -16,10 +16,10 @@ class QQSettingMeSuperMemberProcessor$9
   
   public void run()
   {
-    boolean bool = QQSettingMeSuperMemberProcessor.a(this.this$0);
-    String str1 = this.this$0.a.getCurrentAccountUin();
-    String str2 = ((TicketManager)this.this$0.a.getManager(2)).getSkey(str1);
-    long l1 = QVipConfigManager.a(this.this$0.a, "setting_me_get_vip_info_sequence", 1562146740L);
+    boolean bool = QQSettingMeSuperMemberProcessor.b(this.this$0);
+    String str1 = this.this$0.c.getCurrentAccountUin();
+    String str2 = ((TicketManager)this.this$0.c.getManager(2)).getSkey(str1);
+    long l1 = QVipConfigManager.a(this.this$0.c, "setting_me_get_vip_info_sequence", 1562146740L);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -27,8 +27,8 @@ class QQSettingMeSuperMemberProcessor$9
       localStringBuilder.append(l1);
       QLog.d("QVipSettingMe.", 2, localStringBuilder.toString());
     }
-    long l2 = QVipConfigManager.a(this.this$0.a, "key_long_setting_me_vip_medal_list_record", 0L);
-    int i = QZoneVipInfoManager.a().a();
+    long l2 = QVipConfigManager.a(this.this$0.c, "key_long_setting_me_vip_medal_list_record", 0L);
+    int i = QZoneVipInfoManager.a().b();
     int j = 0;
     if (i > 0) {
       i = 1;
@@ -47,12 +47,12 @@ class QQSettingMeSuperMemberProcessor$9
     if (!bool) {
       return;
     }
-    ((VipInfoHandler)((QQAppInterface)this.this$0.a).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str2, str1, l1, "vip_drawer");
+    ((VipInfoHandler)((QQAppInterface)this.this$0.c).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str2, str1, l1, "vip_drawer");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSuperMemberProcessor.9
  * JD-Core Version:    0.7.0.1
  */

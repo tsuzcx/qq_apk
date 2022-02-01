@@ -9,12 +9,12 @@ class FriendClueManager$2$1
   
   public void run()
   {
-    QQToast.a(FriendClueManager.a(this.a.a), 1, 2131693432, 1).a();
+    QQToast.makeText(FriendClueManager.a(this.a.a), 1, 2131890981, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueManager.2.1
  * JD-Core Version:    0.7.0.1
  */

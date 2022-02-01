@@ -16,27 +16,45 @@ import java.lang.reflect.Modifier;
 class QQToast$ProtectedToast
   extends Toast
 {
-  private static WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private static Class jdField_a_of_type_JavaLangClass;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Field jdField_b_of_type_JavaLangReflectField;
-  private static Method jdField_b_of_type_JavaLangReflectMethod;
-  public Runnable a;
-  boolean jdField_a_of_type_Boolean = false;
+  private static final int LONG_DELAY = 3500;
+  private static final int SHORT_DELAY = 2000;
+  private static Class TNClass;
+  private static Method hideMethod;
+  private static Field mNextViewField;
+  private static Field mTNField;
+  private static WindowManager.LayoutParams params;
+  private static Method showMethod;
+  public Runnable cancelRunnable = new QQToast.ProtectedToast.1(this);
+  boolean isHooked = false;
   
   public QQToast$ProtectedToast(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new QQToast.ProtectedToast.1(this);
   }
   
-  private static Object a(Object paramObject, String paramString)
+  private static Field getDeclaredField(Object paramObject, String paramString)
   {
-    return a(paramObject, a(paramObject, paramString));
+    for (paramObject = paramObject.getClass(); (paramObject != Object.class) && (paramObject != null); paramObject = paramObject.getSuperclass()) {
+      try
+      {
+        Field localField = paramObject.getDeclaredField(paramString);
+        return localField;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        label23:
+        break label23;
+      }
+    }
+    return null;
   }
   
-  private static Object a(Object paramObject, Field paramField)
+  private static Object getFieldValue(Object paramObject, String paramString)
+  {
+    return getFieldValue(paramObject, getDeclaredField(paramObject, paramString));
+  }
+  
+  private static Object getFieldValue(Object paramObject, Field paramField)
   {
     if (paramField != null) {
       try
@@ -55,26 +73,9 @@ class QQToast$ProtectedToast
     return null;
   }
   
-  private static Field a(Object paramObject, String paramString)
+  private static boolean setFieldValue(Object paramObject1, String paramString, Object paramObject2)
   {
-    for (paramObject = paramObject.getClass(); (paramObject != Object.class) && (paramObject != null); paramObject = paramObject.getSuperclass()) {
-      try
-      {
-        Field localField = paramObject.getDeclaredField(paramString);
-        return localField;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        label23:
-        break label23;
-      }
-    }
-    return null;
-  }
-  
-  private static boolean a(Object paramObject1, String paramString, Object paramObject2)
-  {
-    paramString = a(paramObject1, paramString);
+    paramString = getDeclaredField(paramObject1, paramString);
     if (paramString != null) {
       try
       {
@@ -105,19 +106,19 @@ class QQToast$ProtectedToast
       if (QLog.isColorLevel()) {
         QLog.d("QQToast", 2, new Object[] { "", "cancel!" });
       }
-      getView().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (!QQToast.a())
+      getView().removeCallbacks(this.cancelRunnable);
+      if (!QQToast.canUseCustomToast())
       {
         super.cancel();
         return;
       }
-      Object localObject = jdField_a_of_type_JavaLangReflectField.get(this);
-      if (jdField_b_of_type_JavaLangReflectMethod == null)
+      Object localObject = mTNField.get(this);
+      if (hideMethod == null)
       {
-        jdField_b_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("hide", new Class[0]);
-        jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+        hideMethod = TNClass.getDeclaredMethod("hide", new Class[0]);
+        hideMethod.setAccessible(true);
       }
-      jdField_b_of_type_JavaLangReflectMethod.invoke(localObject, new Object[0]);
+      hideMethod.invoke(localObject, new Object[0]);
       return;
     }
     catch (Throwable localThrowable)
@@ -139,43 +140,43 @@ class QQToast$ProtectedToast
       {
         if (getView() != null)
         {
-          if (jdField_a_of_type_JavaLangReflectField == null)
+          if (mTNField == null)
           {
-            jdField_a_of_type_JavaLangReflectField = Toast.class.getDeclaredField("mTN");
-            jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+            mTNField = Toast.class.getDeclaredField("mTN");
+            mTNField.setAccessible(true);
             if (Build.VERSION.SDK_INT == 25)
             {
-              localObject1 = a(jdField_a_of_type_JavaLangReflectField, "mShow");
+              localObject1 = getFieldValue(mTNField, "mShow");
               if ((localObject1 instanceof Runnable)) {
-                this.jdField_a_of_type_Boolean = a(jdField_a_of_type_JavaLangReflectField, "mShow", new QQToast.ProtectedToast.InternalRunnable(this, (Runnable)localObject1));
+                this.isHooked = setFieldValue(mTNField, "mShow", new QQToast.ProtectedToast.InternalRunnable(this, (Runnable)localObject1));
               }
-              if (!this.jdField_a_of_type_Boolean)
+              if (!this.isHooked)
               {
-                localObject1 = a(jdField_a_of_type_JavaLangReflectField, "mHandler");
+                localObject1 = getFieldValue(mTNField, "mHandler");
                 if ((localObject1 instanceof Handler)) {
-                  this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new QQToast.ProtectedToast.InternalHandlerCallback(this, (Handler)localObject1));
+                  this.isHooked = setFieldValue(localObject1, "mCallback", new QQToast.ProtectedToast.InternalHandlerCallback(this, (Handler)localObject1));
                 }
               }
-              if ((!this.jdField_a_of_type_Boolean) && (QLog.isColorLevel())) {
+              if ((!this.isHooked) && (QLog.isColorLevel())) {
                 QLog.d("QQToast", 2, "tryToHook error.");
               }
             }
           }
-          Object localObject1 = jdField_a_of_type_JavaLangReflectField.get(this);
-          if (QQToast.b())
+          Object localObject1 = mTNField.get(this);
+          if (QQToast.useIOSLikeUI())
           {
             Object localObject2 = localObject1.getClass().getDeclaredField("mParams");
             ((Field)localObject2).setAccessible(true);
-            jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
-            jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-            jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755914;
+            params = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
+            params.flags = 40;
+            params.windowAnimations = 2131953034;
             try
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("");
               ((StringBuilder)localObject2).append(Build.MANUFACTURER);
               if (((StringBuilder)localObject2).toString().equalsIgnoreCase("SAMSUNG")) {
-                jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
+                params.getClass().getField("layoutInDisplayCutoutMode").setInt(params, 1);
               }
             }
             catch (Exception localException)
@@ -185,35 +186,35 @@ class QQToast$ProtectedToast
               }
             }
           }
-          TextView localTextView = (TextView)getView().findViewById(2131378963);
+          TextView localTextView = (TextView)getView().findViewById(2131447672);
           if ((localTextView != null) && (localTextView.getText().length() < 6))
           {
             l = 900L;
-            getView().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
+            getView().postDelayed(this.cancelRunnable, l);
             boolean bool = QLog.isColorLevel();
             if (bool) {
               QLog.d("QQToast", 2, "show");
             }
-            if (!QQToast.a())
+            if (!QQToast.canUseCustomToast())
             {
               super.show();
               return;
             }
-            if (jdField_a_of_type_JavaLangClass == null) {
-              jdField_a_of_type_JavaLangClass = Class.forName("android.widget.Toast$TN");
+            if (TNClass == null) {
+              TNClass = Class.forName("android.widget.Toast$TN");
             }
-            if (jdField_b_of_type_JavaLangReflectField == null)
+            if (mNextViewField == null)
             {
-              jdField_b_of_type_JavaLangReflectField = jdField_a_of_type_JavaLangClass.getDeclaredField("mNextView");
-              jdField_b_of_type_JavaLangReflectField.setAccessible(true);
+              mNextViewField = TNClass.getDeclaredField("mNextView");
+              mNextViewField.setAccessible(true);
             }
-            jdField_b_of_type_JavaLangReflectField.set(localObject1, getView());
-            if (jdField_a_of_type_JavaLangReflectMethod == null)
+            mNextViewField.set(localObject1, getView());
+            if (showMethod == null)
             {
-              jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("show", new Class[0]);
-              jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+              showMethod = TNClass.getDeclaredMethod("show", new Class[0]);
+              showMethod.setAccessible(true);
             }
-            jdField_a_of_type_JavaLangReflectMethod.invoke(localObject1, new Object[0]);
+            showMethod.invoke(localObject1, new Object[0]);
           }
         }
         else
@@ -237,7 +238,7 @@ class QQToast$ProtectedToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.ProtectedToast
  * JD-Core Version:    0.7.0.1
  */

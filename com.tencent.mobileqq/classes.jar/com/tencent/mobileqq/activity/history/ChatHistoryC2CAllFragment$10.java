@@ -18,34 +18,34 @@ class ChatHistoryC2CAllFragment$10
 {
   ChatHistoryC2CAllFragment$10(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.c.A == null) {
+        this.c.A = new ArrayList();
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPtt))
+      if ((this.a instanceof MessageForPtt))
       {
-        paramView = MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-        if ((paramView == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord) || (((paramView instanceof MessageForPtt)) && (paramView.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq))) {
-          MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(false);
+        paramView = MediaPlayerManager.a(this.c.a).f();
+        if ((paramView == this.a) || (((paramView instanceof MessageForPtt)) && (paramView.uniseq == this.a.uniseq))) {
+          MediaPlayerManager.a(this.c.a).c(false);
         }
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment;
-      paramView.e = true;
-      paramView.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new ChatHistoryC2CAllFragment.10.1(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
+      paramView = this.c;
+      paramView.z = true;
+      paramView.A.add(this.a);
+      paramView = this.c.R.obtainMessage(1);
+      this.c.R.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new ChatHistoryC2CAllFragment.10.1(this), new MessageRecord[] { this.a });
+      VipUtils.a(this.c.a, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.10
  * JD-Core Version:    0.7.0.1
  */

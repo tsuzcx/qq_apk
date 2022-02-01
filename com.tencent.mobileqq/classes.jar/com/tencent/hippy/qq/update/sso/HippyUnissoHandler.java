@@ -12,12 +12,12 @@ import com.tencent.gamecenter.wadl.biz.entity.WebSSOAgent.UniSsoServerReq;
 import com.tencent.gamecenter.wadl.biz.entity.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.gamecenter.wadl.biz.listener.WadlTrpcListener;
 import com.tencent.hippy.qq.api.IHippySetting;
-import com.tencent.hippy.qq.api.IHippyUtils;
 import com.tencent.hippy.qq.api.TabFile;
 import com.tencent.hippy.qq.preload.TabPreloadManager;
+import com.tencent.hippy.qq.update.HippyPredownloadManager;
 import com.tencent.hippy.qq.update.HippyQQUpdateManager;
-import com.tencent.hippy.qq.update.HippyUpdateManager;
 import com.tencent.hippy.qq.update.UpdateSetting;
+import com.tencent.hippy.qq.utils.HippyUtils;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -118,7 +118,7 @@ public class HippyUnissoHandler
     CommonReq localCommonReq = new CommonReq();
     try
     {
-      localCommonReq.cpuCoreCount.set(DeviceInfoUtil.b());
+      localCommonReq.cpuCoreCount.set(DeviceInfoUtil.h());
       localCommonReq.manufacturer.set(Build.BRAND);
       localCommonReq.model.set(Build.MODEL);
       localCommonReq.osVersionCode.set(Build.VERSION.SDK_INT);
@@ -293,7 +293,7 @@ public class HippyUnissoHandler
   
   public static HippyUnissoHandler getInstance()
   {
-    AppInterface localAppInterface = ((IHippyUtils)QRoute.api(IHippyUtils.class)).getAppInterface();
+    AppInterface localAppInterface = HippyUtils.getAppInterface();
     if (localAppInterface != null) {
       return (HippyUnissoHandler)localAppInterface.getBusinessHandler(HippyUnissoHandler.class.getName());
     }
@@ -346,7 +346,7 @@ public class HippyUnissoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0.5295");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17.5770");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -388,7 +388,7 @@ public class HippyUnissoHandler
     boolean bool;
     try
     {
-      localObject3 = HippyUpdateManager.getInstance().getTabFilesConfig();
+      localObject3 = HippyPredownloadManager.getInstance().getTabFilesConfig();
       localObject1 = localObject2;
       if (localObject3 != null)
       {
@@ -487,7 +487,7 @@ public class HippyUnissoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.update.sso.HippyUnissoHandler
  * JD-Core Version:    0.7.0.1
  */

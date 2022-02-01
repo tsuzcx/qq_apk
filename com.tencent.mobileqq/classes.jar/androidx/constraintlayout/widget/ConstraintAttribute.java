@@ -355,9 +355,9 @@ public class ConstraintAttribute
       return this.mFloatValue;
     case 6: 
       if (this.mBooleanValue) {
-        return 0.0F;
+        return 1.0F;
       }
-      return 1.0F;
+      return 0.0F;
     case 5: 
       throw new RuntimeException("Cannot interpolate String");
     case 4: 
@@ -379,9 +379,9 @@ public class ConstraintAttribute
       return;
     case 6: 
       if (this.mBooleanValue) {
-        f1 = 0.0F;
-      } else {
         f1 = 1.0F;
+      } else {
+        f1 = 0.0F;
       }
       paramArrayOfFloat[0] = f1;
       return;
@@ -577,7 +577,7 @@ public class ConstraintAttribute
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.widget.ConstraintAttribute
  * JD-Core Version:    0.7.0.1
  */

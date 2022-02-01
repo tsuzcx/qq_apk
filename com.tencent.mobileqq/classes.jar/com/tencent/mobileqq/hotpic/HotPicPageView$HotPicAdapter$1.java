@@ -10,14 +10,14 @@ class HotPicPageView$HotPicAdapter$1
   
   public void a(HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult)
   {
-    if (paramHotVideoGetUrlResult.jdField_a_of_type_Boolean)
+    if (paramHotVideoGetUrlResult.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramHotVideoGetUrlResult.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
+      this.a.url = paramHotVideoGetUrlResult.a();
+      if (this.b.a() == this.a)
       {
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+        this.b.a(this.c);
+        this.c.setAutoDownload(true);
+        this.c.restartDownload();
       }
     }
     else
@@ -26,20 +26,20 @@ class HotPicPageView$HotPicAdapter$1
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onFileDownloadFailed:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+        localStringBuilder.append(this.a.picIndex);
         localStringBuilder.append(" GetUrlFailed msg:");
-        localStringBuilder.append(paramHotVideoGetUrlResult.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramHotVideoGetUrlResult.b);
         QLog.d("HotPicManagerHotPicPageView", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData) {
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-10);
+      if (this.b.a() == this.a) {
+        this.b.a(-10);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.HotPicAdapter.1
  * JD-Core Version:    0.7.0.1
  */

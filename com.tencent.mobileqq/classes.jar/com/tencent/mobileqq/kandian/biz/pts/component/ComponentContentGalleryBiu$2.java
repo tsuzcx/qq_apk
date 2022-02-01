@@ -14,19 +14,19 @@ class ComponentContentGalleryBiu$2
   
   public void onClick(View paramView)
   {
-    if (ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGalleryBiu) == null) {
+    if (ComponentContentGalleryBiu.a(this.e) == null) {
       return;
     }
-    int i = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGalleryBiu));
-    paramView = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGalleryBiu).a().a();
+    int i = ComponentContentGalleryBiu.a(this.a, ComponentContentGalleryBiu.a(this.e));
+    paramView = ComponentContentGalleryBiu.a(this.e).y().d();
     if (paramView != null) {
-      paramView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGalleryBiu.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, (int)this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, i, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGalleryBiu), this.jdField_a_of_type_Int);
+      paramView.a(this.e.getContext(), this.a, (int)this.b, this.c, i, ComponentContentGalleryBiu.b(this.e), this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentGalleryBiu.2
  * JD-Core Version:    0.7.0.1
  */

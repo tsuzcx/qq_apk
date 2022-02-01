@@ -11,33 +11,33 @@ class TroopFileTransferMgr$2
   
   public void run()
   {
-    switch (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Status)
+    switch (this.a.Status)
     {
     default: 
       return;
     case 11: 
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) {
-        new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
+      if (this.a.LocalFile != null) {
+        new VFSFile(this.a.LocalFile).delete();
       }
       break;
     case 9: 
     case 10: 
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
-        new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
+      if (this.a.TmpFile != null) {
+        new VFSFile(this.a.TmpFile).delete();
       }
       break;
     }
-    this.this$0.a(this.jdField_a_of_type_JavaUtilUUID, true);
-    TroopFileTransferManager.Item localItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
+    this.this$0.a(this.b, true);
+    TroopFileTransferManager.Item localItem = this.a;
     localItem.StatusUpdateTimeMs = 0L;
     localItem.ErrorCode = 0;
     localItem.LocalFile = null;
-    this.this$0.a(localItem, 7);
+    this.this$0.b(localItem, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.2
  * JD-Core Version:    0.7.0.1
  */

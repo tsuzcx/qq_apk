@@ -17,7 +17,7 @@ class MagicFaceDataEntity$MyHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MagicFaceDataEntity handleMessage A: ");
-    localStringBuilder.append(this.a.a);
+    localStringBuilder.append(this.a.f);
     localStringBuilder.append("|");
     localStringBuilder.append(paramMessage.what);
     AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
@@ -31,27 +31,27 @@ class MagicFaceDataEntity$MyHandler
           if (i != 4) {
             return;
           }
-          if (this.a.a == 1)
+          if (this.a.f == 1)
           {
             paramMessage = (Integer)paramMessage.obj;
-            this.a.a(paramMessage.intValue());
+            this.a.b(paramMessage.intValue());
           }
         }
-        else if (this.a.a == 1)
+        else if (this.a.f == 1)
         {
           paramMessage = this.a;
-          paramMessage.a = 0;
-          paramMessage.d();
+          paramMessage.f = 0;
+          paramMessage.f();
         }
       }
-      else if (this.a.a == 0)
+      else if (this.a.f == 0)
       {
         paramMessage = this.a;
-        paramMessage.a = 1;
-        paramMessage.c();
+        paramMessage.f = 1;
+        paramMessage.e();
       }
     }
-    else if (this.a.a == 1) {
+    else if (this.a.f == 1) {
       MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
     }
   }

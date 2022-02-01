@@ -9,16 +9,16 @@ class WriteTogetherItemBuilder$1$1
   
   public void run()
   {
-    if (!WriteTogetherItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemWriteTogetherItemBuilder$1.a)) {
-      WriteTogetherItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemWriteTogetherItemBuilder$1.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText, 4);
+    if (!WriteTogetherItemBuilder.b(this.b.a)) {
+      WriteTogetherItemBuilder.a(this.b.a, this.a, 4);
     }
-    WriteTogetherItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemWriteTogetherItemBuilder$1.a, false);
-    WriteTogetherItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemWriteTogetherItemBuilder$1.a, false);
+    WriteTogetherItemBuilder.b(this.b.a, false);
+    WriteTogetherItemBuilder.a(this.b.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,40 +24,40 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 public class GameVideoRecordPresenterWrapper
   implements IGameVideoRecordPresenterWrapper
 {
-  private int jdField_a_of_type_Int;
-  private IStagePresenter jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
-  private AVGameBusinessVideoLayer jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer;
-  private GuessPictureGameRecordCtrl jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl;
-  private GuessSongGameRecordCtrl jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
-  private GuessVideoGameRecordCtrl jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
-  private ShowAndGuessGameVideoRecordCtrl jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int jdField_b_of_type_Int;
-  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private ShowAndGuessGameVideoRecordCtrl a;
+  private GuessPictureGameRecordCtrl b;
+  private GuessVideoGameRecordCtrl c;
+  private GuessSongGameRecordCtrl d;
+  private TextureRender e;
+  private RenderBuffer f;
+  private RenderBuffer g;
+  private boolean h = false;
+  private int i;
+  private int j;
+  private float[] k = new float[16];
+  private float[] l = new float[16];
+  private AVGameBusinessVideoLayer m;
+  private IStagePresenter n;
   
   public GameVideoRecordPresenterWrapper(Context paramContext, AVGameBusinessVideoLayer paramAVGameBusinessVideoLayer)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer = paramAVGameBusinessVideoLayer;
-    int i = AvGameMachineLevelUtils.a();
+    this.m = paramAVGameBusinessVideoLayer;
+    int i1 = AvGameMachineLevelUtils.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("machineLevel ");
-    localStringBuilder.append(i);
+    localStringBuilder.append(i1);
     AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
-    if ((i != 1) && (i != 0))
+    if ((i1 != 1) && (i1 != 0))
     {
-      if (GameEngine.a().f())
+      if (GameEngine.a().A())
       {
         AVLog.d("GameVideoRecordPresenterWrapper", "survival not record");
         return;
       }
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl = new ShowAndGuessGameVideoRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl = new GuessPictureGameRecordCtrl(paramContext);
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl = new GuessVideoGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl = new GuessSongGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
+      this.a = new ShowAndGuessGameVideoRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
+      this.b = new GuessPictureGameRecordCtrl(paramContext);
+      this.c = new GuessVideoGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
+      this.d = new GuessSongGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
       return;
     }
     AVLog.d("GameVideoRecordPresenterWrapper", "machineLevel low, don't init ctrl");
@@ -72,40 +72,17 @@ public class GameVideoRecordPresenterWrapper
     paramFloat1 = (f3 - f4) * (paramFloat2 / paramFloat1);
     paramFloat2 = (f1 - f2) / paramFloat1;
     paramFloat1 = paramRectF.top / paramFloat1;
-    this.jdField_b_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 1.0F - paramFloat2 - paramFloat1, 0.0F);
-    Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, paramFloat2, 1.0F);
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-  }
-  
-  protected IStageRecordPresenter a()
-  {
-    int i = GameEngine.a().a().c();
-    if (i == 1) {
-      return this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
-    }
-    if (i == 2) {
-      return this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl;
-    }
-    if (i == 3) {
-      return this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
-    }
-    if (i == 4) {
-      return this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
-    }
-    return null;
-  }
-  
-  public IGuessPictureGameRecordCtrl a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl;
+    this.l = new float[16];
+    Matrix.setIdentityM(this.l, 0);
+    Matrix.translateM(this.l, 0, 0.0F, 1.0F - paramFloat2 - paramFloat1, 0.0F);
+    Matrix.scaleM(this.l, 0, 1.0F, paramFloat2, 1.0F);
+    this.k = new float[16];
+    Matrix.setIdentityM(this.k, 0);
   }
   
   public void a()
   {
-    IStageRecordPresenter localIStageRecordPresenter = a();
+    IStageRecordPresenter localIStageRecordPresenter = h();
     if (localIStageRecordPresenter != null) {
       localIStageRecordPresenter.a();
     }
@@ -113,7 +90,7 @@ public class GameVideoRecordPresenterWrapper
   
   public void a(View paramView)
   {
-    IStageRecordPresenter localIStageRecordPresenter = a();
+    IStageRecordPresenter localIStageRecordPresenter = h();
     if (localIStageRecordPresenter != null) {
       localIStageRecordPresenter.a(paramView);
     }
@@ -121,7 +98,7 @@ public class GameVideoRecordPresenterWrapper
   
   public void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    IStageRecordPresenter localIStageRecordPresenter = a();
+    IStageRecordPresenter localIStageRecordPresenter = h();
     if (localIStageRecordPresenter != null) {
       localIStageRecordPresenter.a(paramView, paramInt, paramBoolean);
     }
@@ -129,30 +106,30 @@ public class GameVideoRecordPresenterWrapper
   
   public void a(GLCanvas paramGLCanvas)
   {
-    int i = GameEngine.a().a().c();
-    if (i == 1)
+    int i1 = GameEngine.a().s().o();
+    if (i1 == 1)
     {
       c(paramGLCanvas);
       return;
     }
-    if (i == 3)
+    if (i1 == 3)
     {
       d(paramGLCanvas);
       return;
     }
-    if (i == 4) {
+    if (i1 == 4) {
       b(paramGLCanvas);
     }
   }
   
   public void a(IStagePresenter paramIStagePresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = paramIStagePresenter;
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
+    this.n = paramIStagePresenter;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ShowAndGuessGameVideoRecordCtrl)localObject).a(paramIStagePresenter);
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
+    localObject = this.c;
     if (localObject != null) {
       ((GuessVideoGameRecordCtrl)localObject).a(paramIStagePresenter);
     }
@@ -160,27 +137,226 @@ public class GameVideoRecordPresenterWrapper
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl != null) && (GameEngine.a().a().c() == 3)) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.b(paramString);
+    if ((this.c != null) && (GameEngine.a().s().o() == 3)) {
+      this.c.b(paramString);
     }
   }
   
-  public boolean a()
+  public void b()
   {
-    int i = GameEngine.a().a().c();
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.b();
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.b(paramView);
+    }
+  }
+  
+  protected void b(GLCanvas paramGLCanvas)
+  {
+    GLES20.glViewport(0, 0, paramGLCanvas.b(), paramGLCanvas.c());
+    this.m.g(paramGLCanvas);
+    this.d.B();
+  }
+  
+  public void b(String paramString)
+  {
+    if ((this.c != null) && (GameEngine.a().s().o() == 3)) {
+      this.c.c(paramString);
+    }
+  }
+  
+  public void c()
+  {
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.c();
+    }
+  }
+  
+  public void c(View paramView)
+  {
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.c(paramView);
+    }
+  }
+  
+  protected void c(GLCanvas paramGLCanvas)
+  {
+    if (!this.h)
+    {
+      Object localObject = this.n;
+      if (localObject != null)
+      {
+        localObject = ((IStagePresenter)localObject).b();
+        if (localObject == null)
+        {
+          AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessShow init fail. no stage rect");
+          return;
+        }
+        this.h = true;
+        int i1 = (int)(((RectF)localObject).right - ((RectF)localObject).left);
+        int i2 = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dealWithRecordFBORenderForGuessShow init:");
+        localStringBuilder.append(paramGLCanvas.b());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramGLCanvas.c());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localObject);
+        AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
+        this.f = new RenderBuffer(paramGLCanvas.b(), paramGLCanvas.c(), 33984);
+        this.g = new RenderBuffer(i1, i2, 33985);
+        this.e = new TextureRender();
+        a((RectF)localObject, paramGLCanvas.b(), paramGLCanvas.c());
+        localObject = this.a.a(i1, i2);
+        this.i = localObject[0];
+        this.j = localObject[1];
+      }
+    }
+    if (this.h)
+    {
+      this.f.bind();
+      this.m.g(paramGLCanvas);
+      this.f.unbind();
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glViewport(0, 0, this.f.getWidth(), this.f.getHeight());
+      this.e.drawTexture(3553, this.f.getTexId(), null, null);
+      this.g.bind();
+      GLES20.glViewport(0, 0, this.g.getWidth(), this.g.getHeight());
+      this.e.drawTexture(3553, this.f.getTexId(), this.l, this.k);
+      this.a.w();
+      this.a.v();
+      this.g.unbind();
+      this.a.a(3553, this.g.getTexId(), null, null, SystemClock.elapsedRealtimeNanos());
+      return;
+    }
+    this.m.g(paramGLCanvas);
+  }
+  
+  public void d()
+  {
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.d();
+    }
+  }
+  
+  protected void d(GLCanvas paramGLCanvas)
+  {
+    if (!this.h)
+    {
+      Object localObject = this.n;
+      if (localObject != null)
+      {
+        localObject = ((IStagePresenter)localObject).b();
+        if (localObject == null)
+        {
+          AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessVideo init fail. no stage rect");
+          return;
+        }
+        this.h = true;
+        int i1 = (int)(((RectF)localObject).right - ((RectF)localObject).left);
+        int i2 = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dealWithRecordFBORenderForGuessVideo init:");
+        localStringBuilder.append(paramGLCanvas.b());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramGLCanvas.c());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localObject);
+        AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
+        this.f = new RenderBuffer(paramGLCanvas.b(), paramGLCanvas.c(), 33984);
+        this.g = new RenderBuffer(i1, i2, 33985);
+        this.e = new TextureRender();
+        a((RectF)localObject, paramGLCanvas.b(), paramGLCanvas.c());
+        localObject = this.c.a(i1, i2);
+        this.i = localObject[0];
+        this.j = localObject[1];
+      }
+    }
+    if (this.h)
+    {
+      this.f.bind();
+      this.m.g(paramGLCanvas);
+      this.f.unbind();
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glViewport(0, 0, this.f.getWidth(), this.f.getHeight());
+      this.e.drawTexture(3553, this.f.getTexId(), null, null);
+      this.g.bind();
+      GLES20.glViewport(0, 0, this.g.getWidth(), this.g.getHeight());
+      this.e.drawTexture(3553, this.f.getTexId(), this.l, this.k);
+      this.c.v();
+      this.c.u();
+      this.g.unbind();
+      this.c.a(3553, this.g.getTexId(), null, null, SystemClock.elapsedRealtimeNanos());
+      return;
+    }
+    this.m.g(paramGLCanvas);
+  }
+  
+  public void e()
+  {
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.e();
+    }
+  }
+  
+  public void f()
+  {
+    IStageRecordPresenter localIStageRecordPresenter = h();
+    if (localIStageRecordPresenter != null) {
+      localIStageRecordPresenter.f();
+    }
+  }
+  
+  public IGuessPictureGameRecordCtrl g()
+  {
+    return this.b;
+  }
+  
+  protected IStageRecordPresenter h()
+  {
+    int i1 = GameEngine.a().s().o();
+    if (i1 == 1) {
+      return this.a;
+    }
+    if (i1 == 2) {
+      return this.b;
+    }
+    if (i1 == 3) {
+      return this.c;
+    }
+    if (i1 == 4) {
+      return this.d;
+    }
+    return null;
+  }
+  
+  public boolean i()
+  {
+    int i1 = GameEngine.a().s().o();
     boolean bool3 = false;
     boolean bool4 = false;
     boolean bool2 = false;
     Object localObject;
-    if (i == 1)
+    if (i1 == 1)
     {
-      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
+      localObject = this.a;
       bool1 = bool2;
       if (localObject != null) {
-        if (!((ShowAndGuessGameVideoRecordCtrl)localObject).d())
+        if (!((ShowAndGuessGameVideoRecordCtrl)localObject).k())
         {
           bool1 = bool2;
-          if (!this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.g()) {}
+          if (!this.a.x()) {}
         }
         else
         {
@@ -189,15 +365,15 @@ public class GameVideoRecordPresenterWrapper
       }
       return bool1;
     }
-    if (i == 3)
+    if (i1 == 3)
     {
-      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
+      localObject = this.c;
       bool1 = bool3;
       if (localObject != null) {
-        if (!((GuessVideoGameRecordCtrl)localObject).d())
+        if (!((GuessVideoGameRecordCtrl)localObject).k())
         {
           bool1 = bool3;
-          if (!this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.f()) {}
+          if (!this.c.w()) {}
         }
         else
         {
@@ -207,14 +383,14 @@ public class GameVideoRecordPresenterWrapper
       return bool1;
     }
     boolean bool1 = bool4;
-    if (i == 4)
+    if (i1 == 4)
     {
-      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
+      localObject = this.d;
       bool1 = bool4;
       if (localObject != null)
       {
         bool1 = bool4;
-        if (((GuessSongGameRecordCtrl)localObject).d()) {
+        if (((GuessSongGameRecordCtrl)localObject).k()) {
           bool1 = true;
         }
       }
@@ -222,228 +398,52 @@ public class GameVideoRecordPresenterWrapper
     return bool1;
   }
   
-  public void b()
+  public void j()
   {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.b();
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.b(paramView);
-    }
-  }
-  
-  protected void b(GLCanvas paramGLCanvas)
-  {
-    GLES20.glViewport(0, 0, paramGLCanvas.a(), paramGLCanvas.b());
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.g(paramGLCanvas);
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl.p();
-  }
-  
-  public void b(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl != null) && (GameEngine.a().a().c() == 3)) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.c(paramString);
-    }
-  }
-  
-  public void c()
-  {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.c();
-    }
-  }
-  
-  public void c(View paramView)
-  {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.c(paramView);
-    }
-  }
-  
-  protected void c(GLCanvas paramGLCanvas)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
-      if (localObject != null)
-      {
-        localObject = ((IStagePresenter)localObject).a();
-        if (localObject == null)
-        {
-          AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessShow init fail. no stage rect");
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        int i = (int)(((RectF)localObject).right - ((RectF)localObject).left);
-        int j = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("dealWithRecordFBORenderForGuessShow init:");
-        localStringBuilder.append(paramGLCanvas.a());
-        localStringBuilder.append(" ");
-        localStringBuilder.append(paramGLCanvas.b());
-        localStringBuilder.append(" ");
-        localStringBuilder.append(localObject);
-        AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(i, j, 33985);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-        a((RectF)localObject, paramGLCanvas.a(), paramGLCanvas.b());
-        localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.a(i, j);
-        this.jdField_a_of_type_Int = localObject[0];
-        this.jdField_b_of_type_Int = localObject[1];
+      this.h = false;
+      this.f.destroy();
+      this.f = null;
+      this.g.destroy();
+      this.g = null;
+      this.e.release();
+      this.e = null;
+      this.i = 0;
+      this.j = 0;
+      int i1 = GameEngine.a().s().o();
+      if (i1 == 1) {
+        this.a.C();
+      } else if (i1 == 3) {
+        this.c.B();
       }
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (GameEngine.a().s().o() == 4)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.g(paramGLCanvas);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth(), this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight());
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), null, null);
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      GLES20.glViewport(0, 0, this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth(), this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight());
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.n();
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.m();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.a(3553, this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), null, null, SystemClock.elapsedRealtimeNanos());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.g(paramGLCanvas);
-  }
-  
-  public void d()
-  {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.d();
-    }
-  }
-  
-  protected void d(GLCanvas paramGLCanvas)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
-      if (localObject != null)
-      {
-        localObject = ((IStagePresenter)localObject).a();
-        if (localObject == null)
-        {
-          AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessVideo init fail. no stage rect");
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        int i = (int)(((RectF)localObject).right - ((RectF)localObject).left);
-        int j = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("dealWithRecordFBORenderForGuessVideo init:");
-        localStringBuilder.append(paramGLCanvas.a());
-        localStringBuilder.append(" ");
-        localStringBuilder.append(paramGLCanvas.b());
-        localStringBuilder.append(" ");
-        localStringBuilder.append(localObject);
-        AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(i, j, 33985);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-        a((RectF)localObject, paramGLCanvas.a(), paramGLCanvas.b());
-        localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.a(i, j);
-        this.jdField_a_of_type_Int = localObject[0];
-        this.jdField_b_of_type_Int = localObject[1];
-      }
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.g(paramGLCanvas);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth(), this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight());
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), null, null);
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      GLES20.glViewport(0, 0, this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth(), this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight());
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.n();
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.m();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.a(3553, this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), null, null, SystemClock.elapsedRealtimeNanos());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.g(paramGLCanvas);
-  }
-  
-  public void e()
-  {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.e();
-    }
-  }
-  
-  public void f()
-  {
-    IStageRecordPresenter localIStageRecordPresenter = a();
-    if (localIStageRecordPresenter != null) {
-      localIStageRecordPresenter.f();
-    }
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      int i = GameEngine.a().a().c();
-      if (i == 1) {
-        this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.p();
-      } else if (i == 3) {
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.p();
-      }
-    }
-    if (GameEngine.a().a().c() == 4)
-    {
-      GuessSongGameRecordCtrl localGuessSongGameRecordCtrl = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
+      GuessSongGameRecordCtrl localGuessSongGameRecordCtrl = this.d;
       if (localGuessSongGameRecordCtrl != null) {
-        localGuessSongGameRecordCtrl.q();
+        localGuessSongGameRecordCtrl.C();
       }
     }
   }
   
-  public void h()
+  public void k()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((ShowAndGuessGameVideoRecordCtrl)localObject).l();
+      ((ShowAndGuessGameVideoRecordCtrl)localObject).n();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl;
+    localObject = this.b;
     if (localObject != null) {
-      ((GuessPictureGameRecordCtrl)localObject).l();
+      ((GuessPictureGameRecordCtrl)localObject).n();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
+    localObject = this.c;
     if (localObject != null) {
-      ((GuessVideoGameRecordCtrl)localObject).l();
+      ((GuessVideoGameRecordCtrl)localObject).n();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
+    localObject = this.d;
     if (localObject != null) {
-      ((GuessSongGameRecordCtrl)localObject).l();
+      ((GuessSongGameRecordCtrl)localObject).n();
     }
   }
 }

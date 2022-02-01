@@ -16,7 +16,6 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.ecshop.conf.EcshopConfBean.MenuConfBean;
-import com.tencent.mobileqq.ecshop.conf.EcshopConfBean.TabConfBean;
 import com.tencent.mobileqq.ecshop.report.ReportUtil;
 import com.tencent.mobileqq.ecshop.utils.AppUtils;
 import com.tencent.mobileqq.ecshop.view.EcshopMenuDialog;
@@ -38,99 +37,96 @@ import kotlin.jvm.internal.Intrinsics;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/controller/TitleLayoutController;", "", "titleLayout", "Landroid/widget/LinearLayout;", "activity", "Landroid/app/Activity;", "reportData", "", "", "(Landroid/widget/LinearLayout;Landroid/app/Activity;Ljava/util/Map;)V", "getActivity", "()Landroid/app/Activity;", "mBackImg", "Landroid/widget/ImageView;", "mFaceImg", "mFaceLayout", "Landroid/view/View;", "mRightImg", "mTitleText", "Landroid/widget/TextView;", "getTitleLayout", "()Landroid/widget/LinearLayout;", "goToMenuPage", "", "tabConfBean", "Lcom/tencent/mobileqq/ecshop/conf/EcshopConfBean$TabConfBean;", "initBackView", "color", "", "initFaceView", "menuConfs", "", "Lcom/tencent/mobileqq/ecshop/conf/EcshopConfBean$MenuConfBean;", "initRightView", "initTitleView", "showMenuDialog", "updateTitlelayout", "params", "Lcom/tencent/mtt/hippy/common/HippyMap;", "Companion", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/controller/TitleLayoutController;", "", "titleLayout", "Landroid/widget/LinearLayout;", "activity", "Landroid/app/Activity;", "reportData", "", "", "(Landroid/widget/LinearLayout;Landroid/app/Activity;Ljava/util/Map;)V", "getActivity", "()Landroid/app/Activity;", "bubbleController", "Lcom/tencent/mobileqq/ecshop/view/controller/BubbleController;", "mBackImg", "Landroid/widget/ImageView;", "mFaceImg", "mFaceLayout", "Landroid/view/View;", "mMenuRedPoint", "mRightImg", "mTitleText", "Landroid/widget/TextView;", "getTitleLayout", "()Landroid/widget/LinearLayout;", "goToMenuPage", "", "menuConfBean", "Lcom/tencent/mobileqq/ecshop/conf/EcshopConfBean$MenuConfBean;", "initBackView", "color", "", "initFaceView", "menuConfs", "", "needShowRedPoint", "", "needShowBubble", "initRightView", "initTitleView", "onDestroy", "showMenuDialog", "updateTitlelayout", "params", "Lcom/tencent/mtt/hippy/common/HippyMap;", "Companion", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class TitleLayoutController
 {
-  public static final TitleLayoutController.Companion a;
-  @NotNull
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  @NotNull
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap;
+  public static final TitleLayoutController.Companion a = new TitleLayoutController.Companion(null);
   private ImageView b;
-  private ImageView c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController$Companion = new TitleLayoutController.Companion(null);
-  }
+  private View c;
+  private View d;
+  private ImageView e;
+  private ImageView f;
+  private TextView g;
+  private BubbleController h;
+  @NotNull
+  private final LinearLayout i;
+  @NotNull
+  private final Activity j;
+  private final Map<String, String> k;
   
   public TitleLayoutController(@NotNull LinearLayout paramLinearLayout, @NotNull Activity paramActivity, @NotNull Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    paramLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374333);
+    this.i = paramLinearLayout;
+    this.j = paramActivity;
+    this.k = paramMap;
+    paramLinearLayout = this.i.findViewById(2131442496);
     Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_menu_img)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout);
-    paramLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374334);
-    Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_menu_layout)");
-    this.jdField_a_of_type_AndroidViewView = paramLinearLayout;
-    paramLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374332);
-    Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_back_img)");
     this.b = ((ImageView)paramLinearLayout);
-    paramLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374339);
+    paramLinearLayout = this.i.findViewById(2131442497);
+    Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_menu_layout)");
+    this.c = paramLinearLayout;
+    paramLinearLayout = this.i.findViewById(2131442498);
+    Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById…id.qq_shop_menu_redpoint)");
+    this.d = paramLinearLayout;
+    paramLinearLayout = this.i.findViewById(2131442495);
+    Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_back_img)");
+    this.e = ((ImageView)paramLinearLayout);
+    paramLinearLayout = this.i.findViewById(2131442502);
     Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_right_img)");
-    this.c = ((ImageView)paramLinearLayout);
-    paramLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374341);
+    this.f = ((ImageView)paramLinearLayout);
+    paramLinearLayout = this.i.findViewById(2131442503);
     Intrinsics.checkExpressionValueIsNotNull(paramLinearLayout, "titleLayout.findViewById(R.id.qq_shop_title_text)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener((View.OnClickListener)TitleLayoutController.1.a);
-    this.b.setOnClickListener((View.OnClickListener)new TitleLayoutController.2(this));
-    this.c.setOnClickListener((View.OnClickListener)new TitleLayoutController.3(this));
+    this.g = ((TextView)paramLinearLayout);
+    this.i.setOnClickListener((View.OnClickListener)TitleLayoutController.1.a);
+    this.e.setOnClickListener((View.OnClickListener)new TitleLayoutController.2(this));
+    this.f.setOnClickListener((View.OnClickListener)new TitleLayoutController.3(this));
     a(-1);
     b(-1);
     c(-1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(0);
-    FlymeOSStatusBarFontUtils.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    this.i.setBackgroundColor(0);
+    FlymeOSStatusBarFontUtils.a(this.j, false);
   }
   
-  private final void a(EcshopConfBean.TabConfBean paramTabConfBean)
+  private final void a(EcshopConfBean.MenuConfBean paramMenuConfBean)
   {
-    int i = paramTabConfBean.jdField_b_of_type_Int;
-    if (i != 0)
+    int m = paramMenuConfBean.i;
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2) {
+        if (m != 2) {
           return;
         }
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp((Context)this.jdField_a_of_type_AndroidAppActivity, ReportUtil.a(paramTabConfBean.jdField_b_of_type_JavaLangString, "tab"), 1035, (MiniAppLaunchListener)TitleLayoutController.goToMenuPage.1.a);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp((Context)this.j, ReportUtil.a(paramMenuConfBean.d, "tab"), 1035, (MiniAppLaunchListener)TitleLayoutController.goToMenuPage.1.a);
         return;
       }
-      JumpUtil.b((Context)this.jdField_a_of_type_AndroidAppActivity);
+      JumpUtil.b((Context)this.j);
+      this.d.setVisibility(8);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("url", ReportUtil.a(paramTabConfBean.jdField_b_of_type_JavaLangString, "tab"));
-    RouteUtils.a((Context)this.jdField_a_of_type_AndroidAppActivity, localIntent, "/base/browser");
+    localIntent.putExtra("url", ReportUtil.a(paramMenuConfBean.d, "tab"));
+    RouteUtils.a((Context)this.j, localIntent, "/base/browser");
   }
   
-  private final void b(List<? extends EcshopConfBean.MenuConfBean> paramList)
+  private final void a(List<? extends EcshopConfBean.MenuConfBean> paramList)
   {
-    paramList = EcshopMenuDialog.a(this.jdField_a_of_type_AndroidAppActivity, paramList, null, (EcshopMenuDialog.OnClickActionListener)new TitleLayoutController.showMenuDialog.menuDialog.1(this));
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    paramList.showAsDropDown((View)localImageView, localImageView.getWidth() / 2 - ViewUtils.a(152.0F) / 2 - ViewUtils.a(11.0F), ViewUtils.a(10.0F));
+    paramList = EcshopMenuDialog.a(this.j, paramList, null, (EcshopMenuDialog.OnClickActionListener)new TitleLayoutController.showMenuDialog.menuDialog.1(this));
+    ImageView localImageView = this.b;
+    paramList.showAsDropDown((View)localImageView, localImageView.getWidth() / 2 - ViewUtils.dip2px(152.0F) / 2 - ViewUtils.dip2px(11.0F), ViewUtils.dip2px(10.0F));
   }
   
-  @NotNull
-  public final Activity a()
+  public final void a()
   {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  @NotNull
-  public final LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    BubbleController localBubbleController = this.h;
+    if (localBubbleController != null) {
+      localBubbleController.b();
+    }
   }
   
   public final void a(int paramInt)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840447);
+    Drawable localDrawable = this.j.getResources().getDrawable(2130841209);
     Intrinsics.checkExpressionValueIsNotNull(localDrawable, "activity.resources.getDr…awable.ie_arrow_left_nor)");
     if ((localDrawable instanceof SkinnableBitmapDrawable))
     {
@@ -143,21 +139,21 @@ public final class TitleLayoutController
       Intrinsics.checkExpressionValueIsNotNull(localDrawable, "drawable.mutate()");
     }
     localDrawable.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.b.setImageDrawable(localDrawable);
+    this.e.setImageDrawable(localDrawable);
   }
   
   public final void a(@NotNull HippyMap paramHippyMap)
   {
     Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.post((Runnable)new TitleLayoutController.updateTitlelayout.1(this, paramHippyMap));
+    this.i.post((Runnable)new TitleLayoutController.updateTitlelayout.1(this, paramHippyMap));
   }
   
-  public final void a(@NotNull List<? extends EcshopConfBean.MenuConfBean> paramList)
+  public final void a(@NotNull List<? extends EcshopConfBean.MenuConfBean> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "menuConfs");
     if ((((Collection)paramList).isEmpty() ^ true))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.c.setVisibility(0);
       Object localObject = AppUtils.a();
       String str = ((AppRuntime)localObject).getAccount();
       if (TextUtils.isEmpty((CharSequence)((AppRuntime)localObject).getAccount())) {
@@ -167,23 +163,35 @@ public final class TitleLayoutController
       if (localObject != null)
       {
         localObject = FaceDrawable.getFaceDrawable((AppInterface)localObject, 1, str, 3, localDrawable, localDrawable);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener((View.OnClickListener)new TitleLayoutController.initFaceView.1(this, paramList));
-        this.jdField_a_of_type_AndroidWidgetImageView.post((Runnable)new TitleLayoutController.initFaceView.2(this));
+        this.b.setImageDrawable((Drawable)localObject);
+        this.b.setOnClickListener((View.OnClickListener)new TitleLayoutController.initFaceView.1(this, paramList));
+        this.b.post((Runnable)new TitleLayoutController.initFaceView.2(this, paramBoolean1, paramBoolean2, paramList));
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.common.app.AppInterface");
     }
   }
   
+  @NotNull
+  public final LinearLayout b()
+  {
+    return this.i;
+  }
+  
   public final void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+    this.g.setTextColor(paramInt);
+  }
+  
+  @NotNull
+  public final Activity c()
+  {
+    return this.j;
   }
   
   public final void c(int paramInt)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130848560);
+    Drawable localDrawable = this.j.getResources().getDrawable(2130850223);
     Intrinsics.checkExpressionValueIsNotNull(localDrawable, "activity.resources.getDr…ne_icon_title_more_black)");
     if ((localDrawable instanceof SkinnableBitmapDrawable))
     {
@@ -196,12 +204,12 @@ public final class TitleLayoutController
       Intrinsics.checkExpressionValueIsNotNull(localDrawable, "drawable.mutate()");
     }
     localDrawable.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.c.setImageDrawable(localDrawable);
+    this.f.setImageDrawable(localDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TitleLayoutController
  * JD-Core Version:    0.7.0.1
  */

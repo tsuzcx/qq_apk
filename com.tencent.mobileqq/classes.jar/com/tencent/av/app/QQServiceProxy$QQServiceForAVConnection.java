@@ -23,15 +23,15 @@ class QQServiceProxy$QQServiceForAVConnection
     localStringBuilder.append("]");
     QLog.w("QQServiceProxy", 1, localStringBuilder.toString());
     paramComponentName = this.a;
-    paramComponentName.jdField_a_of_type_Boolean = false;
-    paramComponentName.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = IQQServiceForAV.Stub.a(paramIBinder);
+    paramComponentName.b = false;
+    paramComponentName.c = IQQServiceForAV.Stub.a(paramIBinder);
     try
     {
-      this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a(this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub, "video_process_cookie");
-      if (this.a.b) {
-        this.a.e();
+      this.a.c.a(this.a.e, "video_process_cookie");
+      if (this.a.f) {
+        this.a.k();
       }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10) });
+      this.a.a.a(new Object[] { Integer.valueOf(10) });
     }
     catch (RemoteException paramComponentName)
     {
@@ -42,7 +42,7 @@ class QQServiceProxy$QQServiceForAVConnection
     }
     try
     {
-      this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.asBinder().linkToDeath(new QQServiceProxy.QQServiceForAVConnection.1(this), 0);
+      this.a.c.asBinder().linkToDeath(new QQServiceProxy.QQServiceForAVConnection.1(this), 0);
     }
     catch (Exception paramComponentName)
     {
@@ -51,8 +51,8 @@ class QQServiceProxy$QQServiceForAVConnection
       paramIBinder.append(paramComponentName.getMessage());
       AVLog.printErrorLog("QQServiceProxy", paramIBinder.toString());
     }
-    if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a != null)) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().E();
+    if ((this.a.a != null) && (this.a.a.c != null)) {
+      this.a.a.b().ax();
     }
   }
   
@@ -63,17 +63,17 @@ class QQServiceProxy$QQServiceForAVConnection
     }
     try
     {
-      if (this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null) {
-        this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a(this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub);
+      if (this.a.c != null) {
+        this.a.c.a(this.a.e);
       }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(11) });
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().deleteObservers();
+      this.a.a.a(new Object[] { Integer.valueOf(11) });
+      this.a.a.e().deleteObservers();
     }
     catch (RemoteException paramComponentName)
     {
       QLog.e("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected RemoteException", paramComponentName);
     }
-    this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
+    this.a.c = null;
   }
 }
 

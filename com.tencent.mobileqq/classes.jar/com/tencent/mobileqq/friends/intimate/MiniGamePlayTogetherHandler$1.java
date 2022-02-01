@@ -16,14 +16,14 @@ final class MiniGamePlayTogetherHandler$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    Activity localActivity = (Activity)this.a;
     if (paramJSONObject != null)
     {
       int i = paramJSONObject.optInt("retCode");
       String str = paramJSONObject.optString("errMsg");
       if (i == 0)
       {
-        localActivity.startActivity(AIOUtils.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 }).putExtra("uin", this.jdField_a_of_type_JavaLangString).putExtra("uintype", 0));
+        localActivity.startActivity(AIOUtils.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 }).putExtra("uin", this.b).putExtra("uintype", 0));
         return;
       }
       localActivity.runOnUiThread(new MiniGamePlayTogetherHandler.1.1(this, localActivity, str));
@@ -36,7 +36,7 @@ final class MiniGamePlayTogetherHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler.1
  * JD-Core Version:    0.7.0.1
  */

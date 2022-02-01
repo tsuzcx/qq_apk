@@ -17,7 +17,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qrscan.activity.QRCardActivity;
 import com.tencent.mobileqq.qrscan.activity.QRJumpActivity;
 import com.tencent.mobileqq.qrscan.activity.ScannerActivity;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.JumpAction;
@@ -31,7 +31,7 @@ public class QRResultHandler
 {
   public static int a(AppRuntime paramAppRuntime, Activity paramActivity, QRActionEntity paramQRActionEntity, String paramString, Bundle paramBundle)
   {
-    if ((paramQRActionEntity != null) && (paramQRActionEntity.a() != 0)) {}
+    if ((paramQRActionEntity != null) && (paramQRActionEntity.c() != 0)) {}
     try
     {
       int i = paramQRActionEntity.c;
@@ -49,14 +49,14 @@ public class QRResultHandler
               a(paramAppRuntime, paramActivity, paramString);
               return 0;
             }
-            a(paramAppRuntime, paramActivity, ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).getUin(paramQRActionEntity.a().a()), paramBundle);
+            a(paramAppRuntime, paramActivity, ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).getUin(paramQRActionEntity.b().b()), paramBundle);
             return 10;
           }
           a(paramActivity, paramQRActionEntity);
           return paramQRActionEntity.c;
         }
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramQRActionEntity.a().a());
+        ((StringBuilder)localObject1).append(paramQRActionEntity.b().c());
         ((StringBuilder)localObject1).append("");
         a(paramAppRuntime, paramActivity, ((StringBuilder)localObject1).toString(), paramBundle);
         return 3;
@@ -92,13 +92,13 @@ public class QRResultHandler
       }
     }
     localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(paramQRActionEntity.a().a());
+    ((StringBuilder)localObject3).append(paramQRActionEntity.b().c());
     ((StringBuilder)localObject3).append("");
     a(paramAppRuntime, paramActivity, ((StringBuilder)localObject3).toString(), (String)localObject1, (String)localObject2, paramBundle.getString("authKey"), str);
     return 2;
     label278:
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(paramQRActionEntity.a().a());
+    ((StringBuilder)localObject1).append(paramQRActionEntity.b().c());
     ((StringBuilder)localObject1).append("");
     a(paramAppRuntime, paramActivity, ((StringBuilder)localObject1).toString(), paramBundle.getBoolean("issupportwpa", false));
     return 1;
@@ -133,7 +133,7 @@ public class QRResultHandler
   private static void a(Context paramContext, QRActionEntity paramQRActionEntity)
   {
     AppRuntime localAppRuntime = MobileQQ.getMobileQQ().waitAppRuntime(null);
-    long l = paramQRActionEntity.a().a();
+    long l = paramQRActionEntity.b().c();
     ((ICrmApi)localAppRuntime.getRuntimeService(ICrmApi.class, "")).gotoCrmMainProfile(paramContext, null, String.valueOf(l), false, 1, true, -1);
   }
   
@@ -143,12 +143,12 @@ public class QRResultHandler
     StringBuilder localStringBuilder = new StringBuilder(1024);
     localStringBuilder.append("https://qm.qq.com/cgi-bin/result");
     localStringBuilder.append("?p=a&v=");
-    localStringBuilder.append(DeviceInfoUtil.c());
+    localStringBuilder.append(DeviceInfoUtil.e());
     localStringBuilder.append("&r=");
     localStringBuilder.append(URLEncoder.encode(paramString).replaceAll("\\+", "%20"));
     localStringBuilder.append("&_wv=1027");
     paramString = localStringBuilder.toString();
-    paramAppRuntime.putExtra("title", paramActivity.getString(2131716718));
+    paramAppRuntime.putExtra("title", paramActivity.getString(2131914190));
     paramAppRuntime.putExtra("url", paramString);
     paramAppRuntime.putExtra("key_isReadModeEnabled", true);
     if (paramActivity.getIntent().getBooleanExtra("fromPicQRDecode", false) == true)
@@ -199,16 +199,16 @@ public class QRResultHandler
     localBundle.putString("authKey", paramString4);
     localBundle.putString("authSig", paramString5);
     localBundle.putString("from", "qrcode");
-    if (!TextUtils.isEmpty(JumpAction.l)) {
-      localBundle.putString("appid", JumpAction.l);
+    if (!TextUtils.isEmpty(JumpAction.y)) {
+      localBundle.putString("appid", JumpAction.y);
     }
-    if (!TextUtils.isEmpty(JumpAction.m)) {
-      localBundle.putString("openid", a(JumpAction.m));
+    if (!TextUtils.isEmpty(JumpAction.z)) {
+      localBundle.putString("openid", a(JumpAction.z));
     }
-    JumpAction.l = null;
-    JumpAction.m = null;
+    JumpAction.y = null;
+    JumpAction.z = null;
     paramString1 = paramString2;
-    if (StringUtil.a(paramString2))
+    if (StringUtil.isEmpty(paramString2))
     {
       if ((paramActivity instanceof ScannerActivity)) {}
       do
@@ -222,7 +222,7 @@ public class QRResultHandler
       } while (paramActivity.getIntent().getBooleanExtra("fromQrcode", false));
       paramString1 = "QRJumpActivity";
     }
-    if (!StringUtil.a(paramString3)) {
+    if (!StringUtil.isEmpty(paramString3)) {
       localBundle.putString("source_id", paramString3);
     }
     localBundle.putString("jump_from", paramString1);
@@ -258,14 +258,14 @@ public class QRResultHandler
     paramAppRuntime = JumpParser.a((BaseQQAppInterface)paramAppRuntime, paramActivity, paramString.toString());
     if (paramAppRuntime != null)
     {
-      paramAppRuntime.e();
+      paramAppRuntime.j();
       paramAppRuntime.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.QRResultHandler
  * JD-Core Version:    0.7.0.1
  */

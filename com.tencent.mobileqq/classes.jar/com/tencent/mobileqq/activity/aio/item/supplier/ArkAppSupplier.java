@@ -15,9 +15,9 @@ import com.tencent.mobileqq.data.MessageForArkApp;
 public class ArkAppSupplier
   extends ItemBuilderSupplier
 {
-  private ArkAppItemBubbleBuilder jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder;
-  private ArkAppItemBuilder jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBuilder;
-  private ArkAppPublicAccountItemBuilder jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppPublicAccountItemBuilder;
+  private ArkAppItemBuilder f;
+  private ArkAppPublicAccountItemBuilder g;
+  private ArkAppItemBubbleBuilder h;
   
   protected ChatItemBuilder a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
@@ -37,24 +37,24 @@ public class ArkAppSupplier
     }
     int i = 1;
     label67:
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1038))
+    if ((this.c.a != 1008) && (this.c.a != 1038))
     {
-      if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 9501))
+      if ((i != 0) && (this.c.a != 9501))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder = new ArkAppItemBubbleBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+        if (this.h == null) {
+          this.h = new ArkAppItemBubbleBuilder(this.b, paramBaseAdapter, this.a, this.c, this.e);
         }
-        return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder;
+        return this.h;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBuilder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBuilder = new ArkAppItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      if (this.f == null) {
+        this.f = new ArkAppItemBuilder(this.b, paramBaseAdapter, this.a, this.c, this.e);
       }
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBuilder;
+      return this.f;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppPublicAccountItemBuilder == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppPublicAccountItemBuilder = new ArkAppPublicAccountItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (this.g == null) {
+      this.g = new ArkAppPublicAccountItemBuilder(this.b, paramBaseAdapter, this.a, this.c, this.e);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppPublicAccountItemBuilder;
+    return this.g;
   }
   
   protected ChatItemBuilder b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
@@ -64,7 +64,7 @@ public class ArkAppSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.supplier.ArkAppSupplier
  * JD-Core Version:    0.7.0.1
  */

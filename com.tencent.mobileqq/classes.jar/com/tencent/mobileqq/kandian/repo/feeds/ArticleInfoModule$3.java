@@ -14,17 +14,17 @@ class ArticleInfoModule$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+      Object localObject1 = this.b;
       if ((localObject1 != null) && (((List)localObject1).size() == 1))
       {
-        localObject1 = this.jdField_b_of_type_JavaUtilList;
+        localObject1 = this.c;
         if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
         {
-          long l2 = ((Long)this.jdField_a_of_type_JavaUtilList.get(0)).longValue();
+          long l2 = ((Long)this.b.get(0)).longValue();
           StringBuilder localStringBuilder1 = new StringBuilder("\n");
-          localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
+          localObject1 = this.c.iterator();
           int i = 0;
           Object localObject3;
           while (((Iterator)localObject1).hasNext())
@@ -70,21 +70,21 @@ class ArticleInfoModule$3
           }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("###onGetVideoRealtimeReplaceList success=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+          ((StringBuilder)localObject1).append(this.a);
           ((StringBuilder)localObject1).append(" channelId=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(this.d);
           ((StringBuilder)localObject1).append(", reqArticleID: ");
           ((StringBuilder)localObject1).append(l2);
           ((StringBuilder)localObject1).append(localStringBuilder1.toString());
           QLog.i("ArticleInfoModule", 1, ((StringBuilder)localObject1).toString());
-          localObject1 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int));
+          localObject1 = ArticleInfoModule.a(this.this$0).b(Integer.valueOf(this.d));
           if (localObject1 == null)
           {
             if (QLog.isColorLevel())
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("###onGetVideoRealtimeReplaceList fail, for currentSeqList is null, channelId=");
-              ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+              ((StringBuilder)localObject1).append(this.d);
               QLog.i("ArticleInfoModule", 1, ((StringBuilder)localObject1).toString());
             }
             return;
@@ -94,7 +94,7 @@ class ArticleInfoModule$3
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (Long)((Iterator)localObject2).next();
-            AbsBaseArticleInfo localAbsBaseArticleInfo = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)localObject3);
+            AbsBaseArticleInfo localAbsBaseArticleInfo = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.d), (Long)localObject3);
             if (l2 == localAbsBaseArticleInfo.mArticleID)
             {
               l1 = ((Long)localObject3).longValue();
@@ -119,7 +119,7 @@ class ArticleInfoModule$3
             i = 0;
             while (i < ((List)localObject1).size())
             {
-              localObject2 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
+              localObject2 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.d), (Long)((List)localObject1).get(i));
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("article [");
               ((StringBuilder)localObject3).append(i);
@@ -135,22 +135,22 @@ class ArticleInfoModule$3
             }
             QLog.d("ArticleInfoModule", 2, localStringBuilder1.toString());
           }
-          localObject2 = ArticleInfoModule.a(this.this$0).c(this.jdField_a_of_type_Int);
+          localObject2 = ArticleInfoModule.a(this.this$0).d(this.d);
           if (localObject2 == null) {
             return;
           }
           i = ((List)localObject1).size();
-          int k = this.jdField_b_of_type_JavaUtilList.size();
+          int k = this.c.size();
           int j = 0;
           while (j < i)
           {
             long l3 = ((Long)((List)localObject1).get(j)).longValue();
             if (((l1 & 0xFFFFFF00) == (l3 & 0xFFFFFF00)) && (l3 >= l1))
             {
-              localObject3 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l3));
+              localObject3 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.d), Long.valueOf(l3));
               ((AbsBaseArticleInfo)localObject3).mRecommendSeq = (l3 + k);
               ((ConcurrentMap)localObject2).remove(Long.valueOf(l3));
-              ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), (AbsBaseArticleInfo)localObject3, true);
+              ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.d), (AbsBaseArticleInfo)localObject3, true);
             }
             j += 1;
           }
@@ -158,12 +158,12 @@ class ArticleInfoModule$3
           i = k;
           while (j >= 0)
           {
-            localObject1 = (AbsBaseArticleInfo)this.jdField_b_of_type_JavaUtilList.get(j);
+            localObject1 = (AbsBaseArticleInfo)this.c.get(j);
             ((AbsBaseArticleInfo)localObject1).mRecommendSeq = (l1 + i - 1L - j);
-            ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), (AbsBaseArticleInfo)localObject1, true);
+            ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.d), (AbsBaseArticleInfo)localObject1, true);
             j -= 1;
           }
-          localObject1 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int));
+          localObject1 = ArticleInfoModule.a(this.this$0).b(Integer.valueOf(this.d));
           if (QLog.isColorLevel())
           {
             i = 0;
@@ -172,7 +172,7 @@ class ArticleInfoModule$3
             localStringBuilder1.append("\n");
             while (i < ((List)localObject1).size())
             {
-              localObject2 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
+              localObject2 = ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.d), (Long)((List)localObject1).get(i));
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("article [");
               ((StringBuilder)localObject3).append(i);
@@ -188,10 +188,10 @@ class ArticleInfoModule$3
             }
             QLog.d("ArticleInfoModule", 2, localStringBuilder1.toString());
           }
-          if (!this.jdField_b_of_type_Boolean) {
+          if (!this.e) {
             return;
           }
-          ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, l2, (List)localObject1, this.jdField_b_of_type_JavaUtilList);
+          ReadInJoyLogicEngineEventDispatcher.a().a(this.a, this.d, l2, (List)localObject1, this.c);
           return;
         }
       }
@@ -207,7 +207,7 @@ class ArticleInfoModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

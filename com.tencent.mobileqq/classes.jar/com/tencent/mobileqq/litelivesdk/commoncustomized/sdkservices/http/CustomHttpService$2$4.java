@@ -10,14 +10,14 @@ class CustomHttpService$2$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService$2.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService$2.a.onSuccess(this.jdField_a_of_type_JavaIoFile);
+    if (this.b.a != null) {
+      this.b.a.onSuccess(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.2.4
  * JD-Core Version:    0.7.0.1
  */

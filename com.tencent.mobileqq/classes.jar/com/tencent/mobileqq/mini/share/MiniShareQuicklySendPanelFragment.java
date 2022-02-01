@@ -48,7 +48,7 @@ public class MiniShareQuicklySendPanelFragment
   private void dealSendViewAnimation()
   {
     View localView = this.footerView;
-    if ((localView != null) && (localView.getVisibility() == 8) && (this.slidePanel.b())) {
+    if ((localView != null) && (localView.getVisibility() == 8) && (this.slidePanel.h())) {
       showSendView(0, 1, 0);
     }
   }
@@ -57,7 +57,7 @@ public class MiniShareQuicklySendPanelFragment
   {
     View localView = new View(getBaseActivity());
     localView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(130.0F, getResources())));
-    localView.setBackgroundResource(2130850703);
+    localView.setBackgroundResource(2130852507);
     return localView;
   }
   
@@ -138,7 +138,7 @@ public class MiniShareQuicklySendPanelFragment
   {
     ImageView localImageView = this.arrowView;
     if (localImageView != null) {
-      localImageView.setBackgroundResource(2130850002);
+      localImageView.setBackgroundResource(2130851763);
     }
   }
   
@@ -169,7 +169,7 @@ public class MiniShareQuicklySendPanelFragment
   {
     ImageView localImageView = this.arrowView;
     if (localImageView != null) {
-      localImageView.setBackgroundResource(2130850001);
+      localImageView.setBackgroundResource(2130851762);
     }
   }
   
@@ -206,7 +206,7 @@ public class MiniShareQuicklySendPanelFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131377187) {
+    if (paramView.getId() != 2131445568) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -228,16 +228,16 @@ public class MiniShareQuicklySendPanelFragment
       return null;
     }
     this.mainHandler = new Handler(Looper.getMainLooper());
-    this.mRootView = paramLayoutInflater.inflate(2131562840, paramViewGroup, false);
-    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131377660));
-    this.contentView = this.mRootView.findViewById(2131365203);
-    this.listView = ((XListView)this.mRootView.findViewById(2131370110));
-    this.footerView = this.mRootView.findViewById(2131377234);
-    this.backgroundView = this.mRootView.findViewById(2131363349);
-    this.arrowView = ((ImageView)this.mRootView.findViewById(2131379075));
+    this.mRootView = paramLayoutInflater.inflate(2131629285, paramViewGroup, false);
+    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131446082));
+    this.contentView = this.mRootView.findViewById(2131431368);
+    this.listView = ((XListView)this.mRootView.findViewById(2131437272));
+    this.footerView = this.mRootView.findViewById(2131445620);
+    this.backgroundView = this.mRootView.findViewById(2131429234);
+    this.arrowView = ((ImageView)this.mRootView.findViewById(2131447802));
     this.listView.addFooterView(getBottomView());
     this.slidePanel.setSlidePanelListener(this);
-    this.footerView.findViewById(2131377187).setOnClickListener(this);
+    this.footerView.findViewById(2131445568).setOnClickListener(this);
     initData();
     return this.mRootView;
   }
@@ -273,7 +273,7 @@ public class MiniShareQuicklySendPanelFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniShareQuicklySendPanelFragment
  * JD-Core Version:    0.7.0.1
  */

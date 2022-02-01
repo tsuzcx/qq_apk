@@ -9,8 +9,8 @@ class Checker$1
   
   public void run()
   {
-    if (FileUtils.fileExists(this.jdField_a_of_type_ComTencentAvBusinessManagerChecker$ItemRecord.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvBusinessManagerChecker$ItemRecord);
+    if (FileUtils.fileExists(this.a.c)) {
+      this.this$0.a(this.b, this.a);
     }
     Checker.a(this.this$0);
   }

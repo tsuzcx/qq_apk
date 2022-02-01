@@ -2,6 +2,7 @@ package com.tencent.mobileqq.search.rich;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -11,44 +12,58 @@ public class ArkRichNode
   extends RichNodeBase
   implements IArkNodeViewEvent
 {
-  private static ArkAppCallBackHandler jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler = new ArkAppCallBackHandler();
-  private int jdField_a_of_type_Int = 0;
-  private ArkNodeConfig jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig;
-  private ArkNodeContainer jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+  private static ArkAppCallBackHandler e = new ArkAppCallBackHandler();
+  private ArkNodeConfig c;
+  private ArkNodeContainer d;
+  private int f = 0;
   
   public ArkRichNode(ArkNodeConfig paramArkNodeConfig)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig = paramArkNodeConfig;
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig != null) && (QLog.isColorLevel()))
+    this.c = paramArkNodeConfig;
+    if ((this.c != null) && (QLog.isColorLevel()))
     {
       paramArkNodeConfig = new StringBuilder();
       paramArkNodeConfig.append("id:");
-      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a());
+      paramArkNodeConfig.append(this.c.b());
       paramArkNodeConfig.append(" appname:");
-      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b());
+      paramArkNodeConfig.append(this.c.c());
       paramArkNodeConfig.append(" viewname:");
-      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.d());
+      paramArkNodeConfig.append(this.c.e());
       paramArkNodeConfig.append(" miniversion:");
-      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.c());
+      paramArkNodeConfig.append(this.c.d());
       paramArkNodeConfig.append(" path：");
-      paramArkNodeConfig.append(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a());
+      paramArkNodeConfig.append(this.c.a());
       QLog.d("ArkRichNode", 2, paramArkNodeConfig.toString());
     }
   }
   
-  public int a()
+  private boolean l()
   {
-    return this.jdField_a_of_type_Int;
+    int i = Build.VERSION.SDK_INT;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i >= 23)
+    {
+      bool1 = bool2;
+      if ("com.tencent.weather".equals(this.c.b))
+      {
+        bool1 = bool2;
+        if (this.b.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
-  public ArkNodeContainer a()
+  public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    return this.f;
   }
   
   public IRichNodeView a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig == null)
+    if (this.c == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArkRichNode", 2, "onCreate config = null");
@@ -56,44 +71,30 @@ public class ArkRichNode
       return null;
     }
     ArkNodeView localArkNodeView = new ArkNodeView(this, paramContext);
-    localArkNodeView.a(this);
-    localArkNodeView.a(paramContext);
-    jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer = new ArkNodeContainer(jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler);
-    String str = a();
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.a(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig, str, paramContext.getResources().getDisplayMetrics().scaledDensity);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.setFixSize(-1, -1);
-    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.setMaxSize(i, -1);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.setMinSize(i, -1);
-    localArkNodeView.a(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.activateView(true);
-    return localArkNodeView;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkRichNode", 2, "onDestroy");
-    }
-    Object localObject = jdField_a_of_type_ComTencentMobileqqSearchRichArkAppCallBackHandler;
-    if (localObject != null) {
-      ((ArkAppCallBackHandler)localObject).b(this);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
-    if (localObject != null)
+    if (l())
     {
-      ((ArkNodeContainer)localObject).doOnEvent(2);
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer = null;
+      localArkNodeView.k().setVisibility(8);
+      return localArkNodeView;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig = null;
+    localArkNodeView.a(this);
+    localArkNodeView.b(paramContext);
+    e.a(this);
+    this.d = new ArkNodeContainer(e);
+    String str = j();
+    this.d.a(this.c, str, paramContext.getResources().getDisplayMetrics().scaledDensity);
+    this.d.setFixSize(-1, -1);
+    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
+    this.d.setMaxSize(i, -1);
+    this.d.setMinSize(i, -1);
+    localArkNodeView.a(this.d);
+    this.d.activateView(true);
+    return localArkNodeView;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    e();
+    this.f = paramInt;
+    k();
   }
   
   public void a(String paramString)
@@ -108,19 +109,19 @@ public class ArkRichNode
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    IRichNodeView localIRichNodeView = a();
+    IRichNodeView localIRichNodeView = h();
     if (localIRichNodeView == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
-    paramString = localIRichNodeView.a();
+    paramString = localIRichNodeView.h();
     if (paramString != null) {
       paramString.setContentDescription(localStringBuilder);
     }
     if ((localIRichNodeView instanceof ArkNodeView))
     {
-      paramString = ((ArkNodeView)localIRichNodeView).b();
+      paramString = ((ArkNodeView)localIRichNodeView).k();
       if ((paramString instanceof ArkAppView)) {
         ((ArkAppView)paramString).setContentDescription(localStringBuilder);
       }
@@ -144,38 +145,62 @@ public class ArkRichNode
   public void a(String paramString1, String paramString2, String paramString3)
   {
     super.a(paramString1, paramString2, paramString3);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    paramString1 = this.d;
     if (paramString1 != null) {
-      paramString1.updateMetaData(a());
+      paramString1.updateMetaData(j());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    ArkNodeContainer localArkNodeContainer = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    ArkNodeContainer localArkNodeContainer = this.d;
     if (localArkNodeContainer != null) {
       localArkNodeContainer.activateView(paramBoolean);
     }
   }
   
-  public int b()
+  public ArkNodeContainer b()
+  {
+    return this.d;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkRichNode", 2, "onDestroy");
+    }
+    Object localObject = e;
+    if (localObject != null) {
+      ((ArkAppCallBackHandler)localObject).b(this);
+    }
+    localObject = this.d;
+    if (localObject != null)
+    {
+      ((ArkNodeContainer)localObject).doOnEvent(2);
+      this.d.a();
+      this.d = null;
+    }
+    this.c = null;
+  }
+  
+  public int d()
   {
     return 2;
   }
   
-  public void b()
+  public void e()
   {
-    super.b();
-    ArkNodeContainer localArkNodeContainer = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    super.e();
+    ArkNodeContainer localArkNodeContainer = this.d;
     if (localArkNodeContainer != null) {
       localArkNodeContainer.doOnEvent(0);
     }
   }
   
-  public void c()
+  public void f()
   {
-    super.c();
-    ArkNodeContainer localArkNodeContainer = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeContainer;
+    super.f();
+    ArkNodeContainer localArkNodeContainer = this.d;
     if (localArkNodeContainer != null) {
       localArkNodeContainer.doOnEvent(1);
     }
@@ -183,7 +208,7 @@ public class ArkRichNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkRichNode
  * JD-Core Version:    0.7.0.1
  */

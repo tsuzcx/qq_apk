@@ -13,9 +13,9 @@ public class WadlParser
     if (paramString.startsWith("mqqapi://gamecenter/install"))
     {
       paramBaseQQAppInterface = new WadlAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-      paramBaseQQAppInterface.a = paramString;
-      paramBaseQQAppInterface.b = "gamecenter";
-      paramBaseQQAppInterface.c = "install";
+      paramBaseQQAppInterface.c = paramString;
+      paramBaseQQAppInterface.d = "gamecenter";
+      paramBaseQQAppInterface.e = "install";
       return paramBaseQQAppInterface;
     }
     return null;
@@ -23,7 +23,7 @@ public class WadlParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WadlParser
  * JD-Core Version:    0.7.0.1
  */

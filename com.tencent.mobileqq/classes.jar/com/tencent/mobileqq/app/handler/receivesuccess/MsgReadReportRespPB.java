@@ -20,7 +20,7 @@ public class MsgReadReportRespPB
     if ("PbMessageSvc.PbMsgReadedReport".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
     {
       l = paramToServiceMsg.extraData.getLong("msgSeq");
-      if (paramMessageHandler.a(l) == null) {
+      if (paramMessageHandler.b(l) == null) {
         return;
       }
       paramToServiceMsg = new msg_svc.PbMsgReadedReportResp();
@@ -58,7 +58,7 @@ public class MsgReadReportRespPB
           QLog.d("Q.msg.MessageHandler", 2, paramFromServiceMsg.toString());
         }
       }
-      paramMessageHandler.a(l);
+      paramMessageHandler.c(l);
       return;
     }
     catch (Exception paramMessageHandler)
@@ -77,7 +77,7 @@ public class MsgReadReportRespPB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MsgReadReportRespPB
  * JD-Core Version:    0.7.0.1
  */

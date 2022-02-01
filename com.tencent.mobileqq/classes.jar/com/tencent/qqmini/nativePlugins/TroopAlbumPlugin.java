@@ -43,13 +43,13 @@ public class TroopAlbumPlugin
   extends BaseJsPlugin
 {
   public static String a = "famous";
-  private long jdField_a_of_type_Long = 0L;
-  Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new TroopAlbumPlugin.1(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
-  private String b = null;
+  Dialog b;
+  private QQCustomDialog c;
+  private Handler d = new Handler();
+  private String e = null;
+  private RequestEvent f;
+  private long g = 0L;
+  private BroadcastReceiver h = new TroopAlbumPlugin.1(this);
   
   private void a()
   {
@@ -59,9 +59,9 @@ public class TroopAlbumPlugin
   
   private void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    Object localObject = this.b;
     if ((localObject != null) && (((Dialog)localObject).isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.b.dismiss();
     }
     if (paramBoolean) {
       return;
@@ -71,13 +71,13 @@ public class TroopAlbumPlugin
       if (paramInt1 > 0)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131717563), new Object[] { Integer.valueOf(paramInt1) }));
+        ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131915038), new Object[] { Integer.valueOf(paramInt1) }));
         ((StringBuilder)localObject).append("，");
         localObject = ((StringBuilder)localObject).toString();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(paramString);
-        localStringBuilder.append(HardCodeUtil.a(2131714960));
+        localStringBuilder.append(HardCodeUtil.a(2131912456));
         paramString = localStringBuilder.toString();
       }
       else
@@ -86,16 +86,16 @@ public class TroopAlbumPlugin
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131717556), new Object[] { Integer.valueOf(paramInt2) }));
+      ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131915031), new Object[] { Integer.valueOf(paramInt2) }));
       paramString = ((StringBuilder)localObject).toString();
-      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717561, new TroopAlbumPlugin.5(this)).show();
+      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131915036, new TroopAlbumPlugin.5(this)).show();
       return;
     }
     localObject = ToastUtil.a();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramActivity.getString(2131717564));
+    localStringBuilder.append(paramActivity.getString(2131915039));
     localStringBuilder.append(paramString);
-    localStringBuilder.append(HardCodeUtil.a(2131714959));
+    localStringBuilder.append(HardCodeUtil.a(2131912455));
     ((ToastUtil)localObject).a(localStringBuilder.toString());
   }
   
@@ -144,25 +144,20 @@ public class TroopAlbumPlugin
       localUserInfo.qzone_uin = BaseApplicationImpl.sApplication.getRuntime().getAccount();
       paramJSONObject.putBoolean("key_need_change_to_jpg", true);
       QZoneHelper.forwardToPersonalAlbumSelect(this.mMiniAppContext.getAttachedActivity(), localUserInfo, paramJSONObject, 100);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
+      this.f = paramRequestEvent;
       paramJSONObject = new IntentFilter();
       paramJSONObject.addAction("troop_select");
-      this.mMiniAppContext.getAttachedActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramJSONObject);
+      this.mMiniAppContext.getAttachedActivity().registerReceiver(this.h, paramJSONObject);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      label109:
-      break label109;
+      label110:
+      break label110;
     }
     if (QLog.isColorLevel()) {
       QLog.w("TroopAlbumPlugin", 2, "handleQunPickQzoneAlbum,decode param error");
     }
-  }
-  
-  private boolean a()
-  {
-    return SDCardMountMonitorReceiver.getInstance().isSDCardCanWrite();
   }
   
   private void b(JSONObject paramJSONObject)
@@ -189,10 +184,15 @@ public class TroopAlbumPlugin
       i = 1;
     }
     QZoneHelper.forwardMiniToTroopUploadPhoto(this.mMiniAppContext.getAttachedActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
+    this.f = paramRequestEvent;
     paramJSONObject = new IntentFilter();
     paramJSONObject.addAction("troop_upload");
-    this.mMiniAppContext.getAttachedActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramJSONObject);
+    this.mMiniAppContext.getAttachedActivity().registerReceiver(this.h, paramJSONObject);
+  }
+  
+  private boolean b()
+  {
+    return SDCardMountMonitorReceiver.getInstance().isSDCardCanWrite();
   }
   
   private void c(JSONObject paramJSONObject)
@@ -203,7 +203,7 @@ public class TroopAlbumPlugin
     paramJSONObject = new Intent();
     QzonePluginProxyActivity.setActivityNameToIntent(paramJSONObject, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
     paramJSONObject.putExtra("qqid", l);
-    paramJSONObject.putExtra("refer", jdField_a_of_type_JavaLangString);
+    paramJSONObject.putExtra("refer", a);
     paramJSONObject.setFlags(67108864);
     paramJSONObject.putExtra("autoShowTimeLine", false);
     QzonePluginProxyActivity.launchPluingActivityForResult(this.mMiniAppContext.getAttachedActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), paramJSONObject, 0);
@@ -211,11 +211,11 @@ public class TroopAlbumPlugin
   
   private void c(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 2000L)
+    if (System.currentTimeMillis() - this.g < 2000L)
     {
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("handleShowPhotoList too many return ");
-      paramJSONObject.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      paramJSONObject.append(System.currentTimeMillis() - this.g);
       QLog.d("TroopAlbumPlugin", 4, paramJSONObject.toString());
       return;
     }
@@ -266,7 +266,7 @@ public class TroopAlbumPlugin
     ((Bundle)localObject3).putInt("mode", 13);
     ((Bundle)localObject3).putBoolean("need_clear_cache", true);
     QZoneHelper.forwardToPictureViewer(this.mMiniAppContext.getAttachedActivity(), (QZoneHelper.UserInfo)localObject1, (Bundle)localObject3, 6);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.g = System.currentTimeMillis();
   }
   
   private void d(JSONObject paramJSONObject)
@@ -284,20 +284,20 @@ public class TroopAlbumPlugin
     paramJSONObject = paramJSONObject.getJSONObject("data").toString();
     ((Intent)localObject).putExtra("photos", paramJSONObject);
     RemoteHandleManager.getInstance().addWebEventListener(new TroopAlbumPlugin.2(this, paramJSONObject));
-    if (!a())
+    if (!b())
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131714955));
+      ToastUtil.a().a(HardCodeUtil.a(2131912452));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131714954));
+      ToastUtil.a().a(HardCodeUtil.a(2131912451));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       localObject = this.mMiniAppContext.getAttachedActivity();
-      DialogUtil.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131717560)).setMessage(((Context)localObject).getString(2131717562)).setPositiveButton(((Context)localObject).getString(2131717559), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(((Context)localObject).getString(2131717558), new TroopAlbumPlugin.3(this)).show();
+      DialogUtil.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131915035)).setMessage(((Context)localObject).getString(2131915037)).setPositiveButton(((Context)localObject).getString(2131915034), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(((Context)localObject).getString(2131915033), new TroopAlbumPlugin.3(this)).show();
       return;
     }
     RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);
@@ -449,7 +449,7 @@ public class TroopAlbumPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TroopAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

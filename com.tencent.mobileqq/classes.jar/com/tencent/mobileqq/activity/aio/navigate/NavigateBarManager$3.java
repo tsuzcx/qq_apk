@@ -15,12 +15,12 @@ class NavigateBarManager$3
     if (NavigateBarManager.a(this.a) != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(NavigateBarManager.a(this.a).a) }));
+        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(NavigateBarManager.a(this.a).e) }));
       }
       NavigateBar localNavigateBar = NavigateBarManager.a(this.a);
-      NavigateBarManager.a(this.a);
+      NavigateBarManager.c(this.a);
       if (localNavigateBar != null) {
-        localNavigateBar.a();
+        localNavigateBar.b();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -28,7 +28,7 @@ class NavigateBarManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.NavigateBarManager.3
  * JD-Core Version:    0.7.0.1
  */

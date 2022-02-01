@@ -15,8 +15,8 @@ class TicketUtils$1
   
   public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
   
@@ -25,8 +25,8 @@ class TicketUtils$1
     if (paramInt1 == 0)
     {
       paramBundle = new WloginSimpleInfo();
-      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
-        this.a.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(paramString, paramBundle);
+      if (this.a.b != null) {
+        this.a.b.getBasicUserInfo(paramString, paramBundle);
       }
       paramString = new StringBuilder();
       paramString.append("");
@@ -38,32 +38,32 @@ class TicketUtils$1
         paramBundle.append("outA1 buff: ");
         paramBundle.append(util.buf_to_string(paramArrayOfByte));
         util.LOGD(paramBundle.toString());
-        paramArrayOfByte = new RSACrypt(CommonDataAdapter.a().a()).EncryptData(this.a.a(CommonDataAdapter.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
+        paramArrayOfByte = new RSACrypt(CommonDataAdapter.a().b()).EncryptData(this.a.a(CommonDataAdapter.a().b(), this.a.c, 1L), paramArrayOfByte);
         paramBundle = new StringBuilder();
         paramBundle.append("encrypt buff:");
         paramBundle.append(util.buf_to_string(paramArrayOfByte));
         util.LOGD(paramBundle.toString());
-        if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
-          this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a(paramString, paramArrayOfByte);
+        if (this.a.a != null) {
+          this.a.a.a(paramString, paramArrayOfByte);
         }
       }
     }
-    else if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null)
+    else if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
+      this.a.a.a();
     }
   }
   
   public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.TicketUtils.1
  * JD-Core Version:    0.7.0.1
  */

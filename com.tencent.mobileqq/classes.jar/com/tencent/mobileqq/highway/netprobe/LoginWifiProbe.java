@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class LoginWifiProbe
   extends ProbeItem
@@ -19,7 +20,7 @@ public class LoginWifiProbe
   
   private String getWifiSSID()
   {
-    WifiInfo localWifiInfo = ((WifiManager)WeakNetLearner.mContext.getSystemService("wifi")).getConnectionInfo();
+    WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)WeakNetLearner.mContext.getSystemService("wifi"));
     if (localWifiInfo != null) {
       return localWifiInfo.getSSID();
     }
@@ -110,7 +111,7 @@ public class LoginWifiProbe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.LoginWifiProbe
  * JD-Core Version:    0.7.0.1
  */

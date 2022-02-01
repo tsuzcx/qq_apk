@@ -6,6 +6,8 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import androidx.constraintlayout.solver.widgets.ConstraintWidget;
 import androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour;
+import androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+import androidx.constraintlayout.solver.widgets.Optimizer;
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure.Measure;
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure.Measurer;
 import java.util.ArrayList;
@@ -24,6 +26,18 @@ class ConstraintLayout$Measurer
   public ConstraintLayout$Measurer(ConstraintLayout paramConstraintLayout1, ConstraintLayout paramConstraintLayout2)
   {
     this.layout = paramConstraintLayout2;
+  }
+  
+  private boolean isSimilarSpec(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 == paramInt2) {
+      return true;
+    }
+    int i = View.MeasureSpec.getMode(paramInt1);
+    View.MeasureSpec.getSize(paramInt1);
+    paramInt1 = View.MeasureSpec.getMode(paramInt2);
+    paramInt2 = View.MeasureSpec.getSize(paramInt2);
+    return (paramInt1 == 1073741824) && ((i == -2147483648) || (i == 0)) && (paramInt3 == paramInt2);
   }
   
   public void captureLayoutInfos(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -49,13 +63,13 @@ class ConstraintLayout$Measurer
       }
       i += 1;
     }
-    k = ConstraintLayout.access$000(this.layout).size();
+    k = ConstraintLayout.access$100(this.layout).size();
     if (k > 0)
     {
       i = j;
       while (i < k)
       {
-        ((ConstraintHelper)ConstraintLayout.access$000(this.layout).get(i)).updatePostMeasure(this.layout);
+        ((ConstraintHelper)ConstraintLayout.access$100(this.layout).get(i)).updatePostMeasure(this.layout);
         i += 1;
       }
     }
@@ -74,128 +88,151 @@ class ConstraintLayout$Measurer
       paramMeasure.measuredBaseline = 0;
       return;
     }
+    if (paramConstraintWidget.getParent() == null) {
+      return;
+    }
     Object localObject1 = paramMeasure.horizontalBehavior;
     Object localObject2 = paramMeasure.verticalBehavior;
-    int j = paramMeasure.horizontalDimension;
-    int n = paramMeasure.verticalDimension;
-    int i1 = this.paddingTop + this.paddingBottom;
-    int i = this.paddingWidth;
+    int i = paramMeasure.horizontalDimension;
+    int m = paramMeasure.verticalDimension;
+    int n = this.paddingTop + this.paddingBottom;
+    int j = this.paddingWidth;
     View localView = (View)paramConstraintWidget.getCompanionWidget();
     int k = ConstraintLayout.1.$SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintWidget$DimensionBehaviour[localObject1.ordinal()];
-    if (k != 1) {
-      if (k != 2) {
-        if (k != 3) {
-          if (k != 4) {
+    if (k != 1)
+    {
+      if (k != 2)
+      {
+        if (k != 3)
+        {
+          if (k != 4)
+          {
             i = 0;
           }
-        }
-      }
-    }
-    int m;
-    for (;;)
-    {
-      m = 0;
-      j = i;
-      break;
-      m = ViewGroup.getChildMeasureSpec(this.layoutWidthSpec, i, -2);
-      if (paramConstraintWidget.mMatchConstraintDefaultWidth == 1) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      paramConstraintWidget.wrapMeasure[2] = 0;
-      j = m;
-      if (paramMeasure.useCurrentDimensions)
-      {
-        if (((i != 0) && (paramConstraintWidget.wrapMeasure[3] != 0) && (paramConstraintWidget.wrapMeasure[0] != paramConstraintWidget.getWidth())) || ((localView instanceof Placeholder))) {
-          k = 1;
-        } else {
-          k = 0;
-        }
-        if (i != 0)
-        {
-          j = m;
-          if (k == 0) {}
-        }
-        else
-        {
-          i = View.MeasureSpec.makeMeasureSpec(paramConstraintWidget.getWidth(), 1073741824);
-          continue;
-          i = ViewGroup.getChildMeasureSpec(this.layoutWidthSpec, i + paramConstraintWidget.getHorizontalMargin(), -1);
-          paramConstraintWidget.wrapMeasure[2] = -1;
-          continue;
-          j = ViewGroup.getChildMeasureSpec(this.layoutWidthSpec, i, -2);
-          paramConstraintWidget.wrapMeasure[2] = -2;
-        }
-      }
-      m = 1;
-      break;
-      i = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
-      paramConstraintWidget.wrapMeasure[2] = j;
-    }
-    i = ConstraintLayout.1.$SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintWidget$DimensionBehaviour[localObject2.ordinal()];
-    if (i != 1) {
-      if (i != 2) {
-        if (i != 3) {
-          if (i != 4) {
-            i = 0;
+          else
+          {
+            k = ViewGroup.getChildMeasureSpec(this.layoutWidthSpec, j, -2);
+            if (paramConstraintWidget.mMatchConstraintDefaultWidth == 1) {
+              j = 1;
+            } else {
+              j = 0;
+            }
+            if (paramMeasure.measureStrategy != BasicMeasure.Measure.TRY_GIVEN_DIMENSIONS)
+            {
+              i = k;
+              if (paramMeasure.measureStrategy != BasicMeasure.Measure.USE_GIVEN_DIMENSIONS) {}
+            }
+            else
+            {
+              if (localView.getMeasuredHeight() == paramConstraintWidget.getHeight()) {
+                i = 1;
+              } else {
+                i = 0;
+              }
+              if ((paramMeasure.measureStrategy != BasicMeasure.Measure.USE_GIVEN_DIMENSIONS) && (j != 0) && ((j == 0) || (i == 0)) && (!(localView instanceof Placeholder)) && (!paramConstraintWidget.isResolvedHorizontally())) {
+                j = 0;
+              } else {
+                j = 1;
+              }
+              i = k;
+              if (j != 0) {
+                i = View.MeasureSpec.makeMeasureSpec(paramConstraintWidget.getWidth(), 1073741824);
+              }
+            }
           }
         }
+        else {
+          i = ViewGroup.getChildMeasureSpec(this.layoutWidthSpec, j + paramConstraintWidget.getHorizontalMargin(), -1);
+        }
+      }
+      else {
+        i = ViewGroup.getChildMeasureSpec(this.layoutWidthSpec, j, -2);
       }
     }
-    for (;;)
+    else {
+      i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
+    }
+    j = ConstraintLayout.1.$SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintWidget$DimensionBehaviour[localObject2.ordinal()];
+    if (j != 1)
     {
-      n = 0;
-      k = i;
-      i = n;
-      break;
-      i1 = ViewGroup.getChildMeasureSpec(this.layoutHeightSpec, i1, -2);
-      if (paramConstraintWidget.mMatchConstraintDefaultHeight == 1) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      paramConstraintWidget.wrapMeasure[3] = 0;
-      k = i1;
-      if (paramMeasure.useCurrentDimensions)
+      if (j != 2)
       {
-        if (((i != 0) && (paramConstraintWidget.wrapMeasure[2] != 0) && (paramConstraintWidget.wrapMeasure[1] != paramConstraintWidget.getHeight())) || ((localView instanceof Placeholder))) {
-          n = 1;
-        } else {
-          n = 0;
-        }
-        if (i != 0)
+        if (j != 3)
         {
-          k = i1;
-          if (n == 0) {}
+          if (j != 4)
+          {
+            j = 0;
+          }
+          else
+          {
+            m = ViewGroup.getChildMeasureSpec(this.layoutHeightSpec, n, -2);
+            if (paramConstraintWidget.mMatchConstraintDefaultHeight == 1) {
+              k = 1;
+            } else {
+              k = 0;
+            }
+            if (paramMeasure.measureStrategy != BasicMeasure.Measure.TRY_GIVEN_DIMENSIONS)
+            {
+              j = m;
+              if (paramMeasure.measureStrategy != BasicMeasure.Measure.USE_GIVEN_DIMENSIONS) {}
+            }
+            else
+            {
+              if (localView.getMeasuredWidth() == paramConstraintWidget.getWidth()) {
+                j = 1;
+              } else {
+                j = 0;
+              }
+              if ((paramMeasure.measureStrategy != BasicMeasure.Measure.USE_GIVEN_DIMENSIONS) && (k != 0) && ((k == 0) || (j == 0)) && (!(localView instanceof Placeholder)) && (!paramConstraintWidget.isResolvedVertically())) {
+                k = 0;
+              } else {
+                k = 1;
+              }
+              j = m;
+              if (k != 0) {
+                j = View.MeasureSpec.makeMeasureSpec(paramConstraintWidget.getHeight(), 1073741824);
+              }
+            }
+          }
         }
-        else
-        {
-          i = View.MeasureSpec.makeMeasureSpec(paramConstraintWidget.getHeight(), 1073741824);
-          continue;
-          i = ViewGroup.getChildMeasureSpec(this.layoutHeightSpec, i1 + paramConstraintWidget.getVerticalMargin(), -1);
-          paramConstraintWidget.wrapMeasure[3] = -1;
-          continue;
-          k = ViewGroup.getChildMeasureSpec(this.layoutHeightSpec, i1, -2);
-          paramConstraintWidget.wrapMeasure[3] = -2;
+        else {
+          j = ViewGroup.getChildMeasureSpec(this.layoutHeightSpec, n + paramConstraintWidget.getVerticalMargin(), -1);
         }
       }
-      i = 1;
-      break;
-      i = View.MeasureSpec.makeMeasureSpec(n, 1073741824);
-      paramConstraintWidget.wrapMeasure[3] = n;
+      else {
+        j = ViewGroup.getChildMeasureSpec(this.layoutHeightSpec, n, -2);
+      }
+    }
+    else {
+      j = View.MeasureSpec.makeMeasureSpec(m, 1073741824);
+    }
+    ConstraintWidgetContainer localConstraintWidgetContainer = (ConstraintWidgetContainer)paramConstraintWidget.getParent();
+    if ((localConstraintWidgetContainer != null) && (Optimizer.enabled(ConstraintLayout.access$000(this.this$0), 256)) && (localView.getMeasuredWidth() == paramConstraintWidget.getWidth()) && (localView.getMeasuredWidth() < localConstraintWidgetContainer.getWidth()) && (localView.getMeasuredHeight() == paramConstraintWidget.getHeight()) && (localView.getMeasuredHeight() < localConstraintWidgetContainer.getHeight()) && (localView.getBaseline() == paramConstraintWidget.getBaselineDistance()) && (!paramConstraintWidget.isMeasureRequested()))
+    {
+      if ((isSimilarSpec(paramConstraintWidget.getLastHorizontalMeasureSpec(), i, paramConstraintWidget.getWidth())) && (isSimilarSpec(paramConstraintWidget.getLastVerticalMeasureSpec(), j, paramConstraintWidget.getHeight()))) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      if (k != 0)
+      {
+        paramMeasure.measuredWidth = paramConstraintWidget.getWidth();
+        paramMeasure.measuredHeight = paramConstraintWidget.getHeight();
+        paramMeasure.measuredBaseline = paramConstraintWidget.getBaselineDistance();
+        return;
+      }
     }
     if (localObject1 == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
-      n = 1;
+      k = 1;
     } else {
-      n = 0;
+      k = 0;
     }
-    int i5;
     if (localObject2 == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
-      i5 = 1;
+      m = 1;
     } else {
-      i5 = 0;
+      m = 0;
     }
+    int i1;
     if ((localObject2 != ConstraintWidget.DimensionBehaviour.MATCH_PARENT) && (localObject2 != ConstraintWidget.DimensionBehaviour.FIXED)) {
       i1 = 0;
     } else {
@@ -208,121 +245,115 @@ class ConstraintLayout$Measurer
       i2 = 1;
     }
     int i3;
-    if ((n != 0) && (paramConstraintWidget.mDimensionRatio > 0.0F)) {
+    if ((k != 0) && (paramConstraintWidget.mDimensionRatio > 0.0F)) {
       i3 = 1;
     } else {
       i3 = 0;
     }
     int i4;
-    if ((i5 != 0) && (paramConstraintWidget.mDimensionRatio > 0.0F)) {
+    if ((m != 0) && (paramConstraintWidget.mDimensionRatio > 0.0F)) {
       i4 = 1;
     } else {
       i4 = 0;
     }
+    if (localView == null) {
+      return;
+    }
     localObject1 = (ConstraintLayout.LayoutParams)localView.getLayoutParams();
-    if ((!paramMeasure.useCurrentDimensions) && (n != 0) && (paramConstraintWidget.mMatchConstraintDefaultWidth == 0) && (i5 != 0) && (paramConstraintWidget.mMatchConstraintDefaultHeight == 0))
+    if ((paramMeasure.measureStrategy != BasicMeasure.Measure.TRY_GIVEN_DIMENSIONS) && (paramMeasure.measureStrategy != BasicMeasure.Measure.USE_GIVEN_DIMENSIONS) && (k != 0) && (paramConstraintWidget.mMatchConstraintDefaultWidth == 0) && (m != 0) && (paramConstraintWidget.mMatchConstraintDefaultHeight == 0))
     {
-      j = 0;
       m = 0;
-      i = 0;
+      i1 = 0;
+      i2 = 0;
     }
     else
     {
       if (((localView instanceof VirtualLayout)) && ((paramConstraintWidget instanceof androidx.constraintlayout.solver.widgets.VirtualLayout)))
       {
         localObject2 = (androidx.constraintlayout.solver.widgets.VirtualLayout)paramConstraintWidget;
-        ((VirtualLayout)localView).onMeasure((androidx.constraintlayout.solver.widgets.VirtualLayout)localObject2, j, k);
+        ((VirtualLayout)localView).onMeasure((androidx.constraintlayout.solver.widgets.VirtualLayout)localObject2, i, j);
       }
       else
       {
-        localView.measure(j, k);
+        localView.measure(i, j);
       }
-      int i7 = localView.getMeasuredWidth();
-      i5 = localView.getMeasuredHeight();
-      int i6 = localView.getBaseline();
-      if (m != 0)
-      {
-        paramConstraintWidget.wrapMeasure[0] = i7;
-        paramConstraintWidget.wrapMeasure[2] = i5;
-      }
-      else
-      {
-        paramConstraintWidget.wrapMeasure[0] = 0;
-        paramConstraintWidget.wrapMeasure[2] = 0;
-      }
-      if (i != 0)
-      {
-        paramConstraintWidget.wrapMeasure[1] = i5;
-        paramConstraintWidget.wrapMeasure[3] = i7;
-      }
-      else
-      {
-        paramConstraintWidget.wrapMeasure[1] = 0;
-        paramConstraintWidget.wrapMeasure[3] = 0;
-      }
+      paramConstraintWidget.setLastMeasureSpec(i, j);
+      int i6 = localView.getMeasuredWidth();
+      int i5 = localView.getMeasuredHeight();
+      int i7 = localView.getBaseline();
       if (paramConstraintWidget.mMatchConstraintMinWidth > 0) {
-        i = Math.max(paramConstraintWidget.mMatchConstraintMinWidth, i7);
+        k = Math.max(paramConstraintWidget.mMatchConstraintMinWidth, i6);
       } else {
-        i = i7;
+        k = i6;
       }
-      m = i;
+      m = k;
       if (paramConstraintWidget.mMatchConstraintMaxWidth > 0) {
-        m = Math.min(paramConstraintWidget.mMatchConstraintMaxWidth, i);
+        m = Math.min(paramConstraintWidget.mMatchConstraintMaxWidth, k);
       }
       if (paramConstraintWidget.mMatchConstraintMinHeight > 0) {
         n = Math.max(paramConstraintWidget.mMatchConstraintMinHeight, i5);
       } else {
         n = i5;
       }
-      i = n;
+      k = n;
       if (paramConstraintWidget.mMatchConstraintMaxHeight > 0) {
-        i = Math.min(paramConstraintWidget.mMatchConstraintMaxHeight, n);
+        k = Math.min(paramConstraintWidget.mMatchConstraintMaxHeight, n);
       }
-      float f;
-      if ((i3 != 0) && (i1 != 0))
+      n = k;
+      if (!Optimizer.enabled(ConstraintLayout.access$000(this.this$0), 1))
       {
-        f = paramConstraintWidget.mDimensionRatio;
-        m = (int)(i * f + 0.5F);
-      }
-      else
-      {
-        n = i;
+        float f;
+        if ((i3 != 0) && (i1 != 0))
+        {
+          f = paramConstraintWidget.mDimensionRatio;
+          n = (int)(k * f + 0.5F);
+          break label1211;
+        }
+        n = k;
         if (i4 != 0)
         {
-          n = i;
+          n = k;
           if (i2 != 0)
           {
             f = paramConstraintWidget.mDimensionRatio;
             n = (int)(m / f + 0.5F);
           }
         }
-        i = n;
       }
-      if ((i7 == m) && (i5 == i)) {
-        j = i;
+      k = n;
+      n = m;
+      label1211:
+      if (i6 == n)
+      {
+        m = n;
+        i1 = i7;
+        i2 = k;
+        if (i5 != k) {}
       }
-      for (i = i6;; i = localView.getBaseline())
+      for (;;)
       {
         break;
-        if (i7 != m) {
-          j = View.MeasureSpec.makeMeasureSpec(m, 1073741824);
+        if (i6 != n) {
+          i = View.MeasureSpec.makeMeasureSpec(n, 1073741824);
         }
-        if (i5 != i) {
-          k = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
+        if (i5 != k) {
+          j = View.MeasureSpec.makeMeasureSpec(k, 1073741824);
         }
-        localView.measure(j, k);
+        localView.measure(i, j);
+        paramConstraintWidget.setLastMeasureSpec(i, j);
         m = localView.getMeasuredWidth();
-        j = localView.getMeasuredHeight();
+        i2 = localView.getMeasuredHeight();
+        i1 = localView.getBaseline();
       }
     }
     boolean bool1;
-    if (i != -1) {
+    if (i1 != -1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
     boolean bool2;
-    if ((m == paramMeasure.horizontalDimension) && (j == paramMeasure.verticalDimension)) {
+    if ((m == paramMeasure.horizontalDimension) && (i2 == paramMeasure.verticalDimension)) {
       bool2 = false;
     } else {
       bool2 = true;
@@ -331,18 +362,18 @@ class ConstraintLayout$Measurer
     if (((ConstraintLayout.LayoutParams)localObject1).needsBaseline) {
       bool1 = true;
     }
-    if ((bool1) && (i != -1) && (paramConstraintWidget.getBaselineDistance() != i)) {
+    if ((bool1) && (i1 != -1) && (paramConstraintWidget.getBaselineDistance() != i1)) {
       paramMeasure.measuredNeedsSolverPass = true;
     }
     paramMeasure.measuredWidth = m;
-    paramMeasure.measuredHeight = j;
+    paramMeasure.measuredHeight = i2;
     paramMeasure.measuredHasBaseline = bool1;
-    paramMeasure.measuredBaseline = i;
+    paramMeasure.measuredBaseline = i1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.widget.ConstraintLayout.Measurer
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ public class NowQQLiveRecommendAnchorHandler
     if ((paramViewHolder instanceof NoDataViewHolder))
     {
       paramViewHolder = (NoDataViewHolder)paramViewHolder;
-      if (paramViewHolder.jdField_a_of_type_AndroidWidgetTextView != null)
+      if (paramViewHolder.a != null)
       {
         if (paramInt == 3)
         {
@@ -53,22 +53,22 @@ public class NowQQLiveRecommendAnchorHandler
         return;
       }
       paramViewHolder = (VideoCardHolder)paramViewHolder;
-      paramViewHolder.jdField_a_of_type_Int = paramInt;
-      if (paramViewHolder.jdField_a_of_type_AndroidViewView != null) {
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setOnClickListener(new NowQQLiveRecommendAnchorHandler.1(paramBaseActivity, paramRecommendAnchorInfo, paramInt));
+      paramViewHolder.j = paramInt;
+      if (paramViewHolder.a != null) {
+        paramViewHolder.a.setOnClickListener(new NowQQLiveRecommendAnchorHandler.1(paramBaseActivity, paramRecommendAnchorInfo, paramInt));
       }
-      if (paramViewHolder.jdField_a_of_type_AndroidWidgetTextView != null) {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramRecommendAnchorInfo.jdField_c_of_type_JavaLangString);
+      if (paramViewHolder.d != null) {
+        paramViewHolder.d.setText(paramRecommendAnchorInfo.e);
       }
       Object localObject;
-      if (paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView != null)
+      if (paramViewHolder.b != null)
       {
-        paramInt = paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView.getWidth() / 2;
-        int i = paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView.getHeight() / 2;
+        paramInt = paramViewHolder.b.getWidth() / 2;
+        int i = paramViewHolder.b.getHeight() / 2;
         localObject = (IImageLoader)QRoute.api(IImageLoader.class);
-        RoundedRectImageView localRoundedRectImageView = paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView;
-        String str = paramRecommendAnchorInfo.b;
-        Drawable localDrawable = paramBaseActivity.getResources().getDrawable(2130841500);
+        RoundedRectImageView localRoundedRectImageView = paramViewHolder.b;
+        String str = paramRecommendAnchorInfo.d;
+        Drawable localDrawable = paramBaseActivity.getResources().getDrawable(2130842342);
         ColorDrawable localColorDrawable = new ColorDrawable(13553358);
         if (paramInt == 0) {
           paramInt = 300;
@@ -78,43 +78,43 @@ public class NowQQLiveRecommendAnchorHandler
         }
         ((IImageLoader)localObject).displayImage(localRoundedRectImageView, str, localDrawable, localColorDrawable, paramInt, i, null, false);
       }
-      if (paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView != null) {
-        ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView, paramRecommendAnchorInfo.j, paramBaseActivity.getResources().getDrawable(2130841492), new ColorDrawable(13553358), 30, 30, null, true);
+      if (paramViewHolder.c != null) {
+        ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramViewHolder.c, paramRecommendAnchorInfo.q, paramBaseActivity.getResources().getDrawable(2130842334), new ColorDrawable(13553358), 30, 30, null, true);
       }
-      if (paramViewHolder.b != null)
+      if (paramViewHolder.h != null)
       {
-        paramBaseActivity = paramViewHolder.b;
+        paramBaseActivity = paramViewHolder.h;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(paramRecommendAnchorInfo.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(paramRecommendAnchorInfo.i);
         paramBaseActivity.setText(((StringBuilder)localObject).toString());
       }
-      if (paramViewHolder.c != null)
+      if (paramViewHolder.i != null)
       {
         paramBaseActivity = paramRecommendAnchorInfo.b();
         if ((paramBaseActivity != null) && (paramBaseActivity.length() > 0))
         {
-          paramViewHolder.c.setText(paramBaseActivity);
-          paramViewHolder.c.setVisibility(0);
+          paramViewHolder.i.setText(paramBaseActivity);
+          paramViewHolder.i.setVisibility(0);
         }
         else
         {
-          paramViewHolder.c.setVisibility(8);
+          paramViewHolder.i.setVisibility(8);
         }
       }
-      if (paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView != null)
+      if (paramViewHolder.g != null)
       {
-        paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView.setAnimationRes(2130841495);
-        paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView.a();
+        paramViewHolder.g.setAnimationRes(2130842337);
+        paramViewHolder.g.a();
       }
-      NowQQLiveDataReport.c(paramRecommendAnchorInfo.f);
+      NowQQLiveDataReport.c(paramRecommendAnchorInfo.h);
     }
   }
   
   private static void b(BaseActivity paramBaseActivity, NoDataViewHolder paramNoDataViewHolder)
   {
     if (paramBaseActivity != null) {
-      localObject = paramBaseActivity.getResources().getString(2131718144);
+      localObject = paramBaseActivity.getResources().getString(2131915622);
     } else {
       localObject = "暂无数据，请刷新页面";
     }
@@ -124,7 +124,7 @@ public class NowQQLiveRecommendAnchorHandler
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#00CAFC")), 6, 8, 33);
     try
     {
-      paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#878B99"));
+      paramNoDataViewHolder.a.setTextColor(Color.parseColor("#878B99"));
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
@@ -134,41 +134,41 @@ public class NowQQLiveRecommendAnchorHandler
       localStringBuilder.append(localIllegalArgumentException.toString());
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (paramNoDataViewHolder.b != null) {
-      paramNoDataViewHolder.b.setVisibility(0);
+    if (paramNoDataViewHolder.c != null) {
+      paramNoDataViewHolder.c.setVisibility(0);
     }
-    if (paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (paramNoDataViewHolder.b != null)
     {
-      paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-      paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramNoDataViewHolder.b.clearAnimation();
+      paramNoDataViewHolder.b.setVisibility(8);
     }
-    paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new NowQQLiveRecommendAnchorHandler.2(paramBaseActivity, paramNoDataViewHolder));
+    paramNoDataViewHolder.a.setText((CharSequence)localObject);
+    paramNoDataViewHolder.a.setOnClickListener(new NowQQLiveRecommendAnchorHandler.2(paramBaseActivity, paramNoDataViewHolder));
   }
   
   private static void c(BaseActivity paramBaseActivity, NoDataViewHolder paramNoDataViewHolder)
   {
-    if (paramNoDataViewHolder.b != null) {
-      paramNoDataViewHolder.b.setVisibility(4);
+    if (paramNoDataViewHolder.c != null) {
+      paramNoDataViewHolder.c.setVisibility(4);
     }
     Object localObject;
-    if (paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (paramNoDataViewHolder.b != null)
     {
-      localObject = AnimationUtils.loadAnimation(paramBaseActivity, 2130772150);
+      localObject = AnimationUtils.loadAnimation(paramBaseActivity, 2130772199);
       ((Animation)localObject).setInterpolator(new LinearInterpolator());
-      paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
-      paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramNoDataViewHolder.b.startAnimation((Animation)localObject);
+      paramNoDataViewHolder.b.setVisibility(0);
     }
     if (paramBaseActivity != null) {
-      paramBaseActivity = paramBaseActivity.getResources().getString(2131718143);
+      paramBaseActivity = paramBaseActivity.getResources().getString(2131915621);
     } else {
       paramBaseActivity = "加载中";
     }
-    paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseActivity);
-    paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
+    paramNoDataViewHolder.a.setText(paramBaseActivity);
+    paramNoDataViewHolder.a.setOnClickListener(null);
     try
     {
-      paramNoDataViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00CAFC"));
+      paramNoDataViewHolder.a.setTextColor(Color.parseColor("#00CAFC"));
       return;
     }
     catch (IllegalArgumentException paramBaseActivity)
@@ -183,7 +183,7 @@ public class NowQQLiveRecommendAnchorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.NowQQLiveRecommendAnchorHandler
  * JD-Core Version:    0.7.0.1
  */

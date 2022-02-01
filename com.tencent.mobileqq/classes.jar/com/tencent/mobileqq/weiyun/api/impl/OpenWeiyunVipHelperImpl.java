@@ -83,17 +83,17 @@ public class OpenWeiyunVipHelperImpl
       if (((paramActivity == null) || (!paramActivity.isShowing())) && (isNeedShowOutOfInterval()))
       {
         if (isNonVipSpaceOverErrorCode(paramInt)) {
-          paramActivity = MobileQQ.sMobileQQ.getString(2131692610);
+          paramActivity = MobileQQ.sMobileQQ.getString(2131889633);
         } else {
-          paramActivity = MobileQQ.sMobileQQ.getString(2131692611);
+          paramActivity = MobileQQ.sMobileQQ.getString(2131889634);
         }
         String str;
         if (isNonVipSpaceOverErrorCode(paramInt)) {
-          str = MobileQQ.sMobileQQ.getString(2131692603);
+          str = MobileQQ.sMobileQQ.getString(2131889626);
         } else {
-          str = MobileQQ.sMobileQQ.getString(2131692606);
+          str = MobileQQ.sMobileQQ.getString(2131889629);
         }
-        sQQCustomDialog = DialogUtil.a((Context)localObject, 230, paramActivity, str, 2131692608, 2131692609, new OpenWeiyunVipHelperImpl.1(this, paramInt, (Activity)localObject), new OpenWeiyunVipHelperImpl.2(this));
+        sQQCustomDialog = DialogUtil.a((Context)localObject, 230, paramActivity, str, 2131889631, 2131889632, new OpenWeiyunVipHelperImpl.1(this, paramInt, (Activity)localObject), new OpenWeiyunVipHelperImpl.2(this));
         sQQCustomDialog.setOnDismissListener(new OpenWeiyunVipHelperImpl.3(this));
         sQQCustomDialog.show();
       }
@@ -118,11 +118,11 @@ public class OpenWeiyunVipHelperImpl
         return;
       }
       if (isNonVipSpaceOverErrorCode(paramInt)) {
-        paramActivity = MobileQQ.sMobileQQ.getString(2131692604);
+        paramActivity = MobileQQ.sMobileQQ.getString(2131889627);
       } else {
-        paramActivity = MobileQQ.sMobileQQ.getString(2131692607);
+        paramActivity = MobileQQ.sMobileQQ.getString(2131889630);
       }
-      QQToast.a((Context)localObject, 0, paramActivity, 1).a();
+      QQToast.makeText((Context)localObject, 0, paramActivity, 1).show();
     }
   }
   
@@ -195,7 +195,7 @@ public class OpenWeiyunVipHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.OpenWeiyunVipHelperImpl
  * JD-Core Version:    0.7.0.1
  */

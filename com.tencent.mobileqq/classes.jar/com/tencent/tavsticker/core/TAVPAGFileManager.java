@@ -60,7 +60,7 @@ public class TAVPAGFileManager
       localStringBuilder.append(paramString);
       localObject = (PAGFile)((LruCache)localObject).get(localStringBuilder.toString());
       if (localObject != null) {
-        return localObject;
+        return ((PAGFile)localObject).copyOriginal();
       }
       localObject = PAGFile.Load(paramContext.getAssets(), paramString);
       paramContext = (Context)localObject;
@@ -98,7 +98,7 @@ public class TAVPAGFileManager
     {
       localObject = (PAGFile)this.mapPagFile.get(paramString);
       if (localObject != null) {
-        return localObject;
+        return ((PAGFile)localObject).copyOriginal();
       }
       if (new File(paramString).exists())
       {
@@ -120,7 +120,7 @@ public class TAVPAGFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVPAGFileManager
  * JD-Core Version:    0.7.0.1
  */

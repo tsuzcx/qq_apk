@@ -14,23 +14,23 @@ class GroupSearchFragment$2
   public void run()
   {
     SearchCostStat.a("InitSearchEngine");
-    this.this$0.g();
+    this.this$0.o();
     SearchCostStat.b("InitSearchEngine");
-    if (!GroupSearchFragment.a(this.this$0))
+    if (!GroupSearchFragment.l(this.this$0))
     {
-      MostUsedSearchResultManager localMostUsedSearchResultManager = (MostUsedSearchResultManager)GroupSearchFragment.a(this.this$0).getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER);
+      MostUsedSearchResultManager localMostUsedSearchResultManager = (MostUsedSearchResultManager)GroupSearchFragment.m(this.this$0).getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER);
       if (localMostUsedSearchResultManager != null) {
         localMostUsedSearchResultManager.a();
       }
-      GroupSearchFragment.a(this.this$0, true);
+      GroupSearchFragment.c(this.this$0, true);
     }
-    this.this$0.b.removeMessages(100);
-    this.this$0.b.sendEmptyMessage(100);
+    this.this$0.Q.removeMessages(100);
+    this.this$0.Q.sendEmptyMessage(100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.GroupSearchFragment.2
  * JD-Core Version:    0.7.0.1
  */

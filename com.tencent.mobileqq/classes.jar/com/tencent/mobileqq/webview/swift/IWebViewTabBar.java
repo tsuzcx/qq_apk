@@ -7,13 +7,13 @@ import java.util.List;
 
 public abstract interface IWebViewTabBar
 {
-  public abstract View a();
-  
   public abstract void a(Intent paramIntent, List<WebViewTabBarData> paramList, TabBarView.OnTabChangeListener paramOnTabChangeListener);
+  
+  public abstract View getTabBarView();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.IWebViewTabBar
  * JD-Core Version:    0.7.0.1
  */

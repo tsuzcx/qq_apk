@@ -14,22 +14,22 @@ class GdtAdBoxDialog$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    GdtAdBoxDialog.a(this.a).a();
-    this.a.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter.d();
-    this.a.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBox.c();
-    paramDialogInterface = GdtAdBoxDialog.a(this.a).iterator();
+    GdtAdBoxDialog.a(this.a).b();
+    this.a.c.d();
+    this.a.b.d();
+    paramDialogInterface = GdtAdBoxDialog.b(this.a).iterator();
     while (paramDialogInterface.hasNext())
     {
       AdExposureChecker localAdExposureChecker = (AdExposureChecker)paramDialogInterface.next();
       localAdExposureChecker.onActivityDestroy();
       localAdExposureChecker.setCallback(null);
     }
-    GdtAdBoxDialog.a(this.a).clear();
+    GdtAdBoxDialog.b(this.a).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.adbox.GdtAdBoxDialog.1
  * JD-Core Version:    0.7.0.1
  */

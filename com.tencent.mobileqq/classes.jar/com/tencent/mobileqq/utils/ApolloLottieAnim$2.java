@@ -13,28 +13,28 @@ class ApolloLottieAnim$2
   {
     super.onDone(paramDownloadTask);
     Object localObject;
-    if (3 == paramDownloadTask.a())
+    if (3 == paramDownloadTask.e())
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      this.d.a(true, this.a, this.b, this.c);
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim;
+      localObject = this.d;
       ((ApolloLottieAnim)localObject).a = 2;
-      ((ApolloLottieAnim)localObject).a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      ((ApolloLottieAnim)localObject).a(false, this.a, this.b, this.c);
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("downloadZip onDone task.getStatus()->");
-      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      ((StringBuilder)localObject).append(paramDownloadTask.e());
       QLog.d("ApolloLottieAnim", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim.2
  * JD-Core Version:    0.7.0.1
  */

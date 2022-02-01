@@ -4,46 +4,46 @@ import UserGrowth.stDrama;
 
 public class WSDramaEpisodeInfo
 {
-  private int jdField_a_of_type_Int;
-  private stDrama jdField_a_of_type_UserGrowthStDrama;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private int c;
+  private stDrama d;
   
   public WSDramaEpisodeInfo(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public stDrama a()
-  {
-    return this.jdField_a_of_type_UserGrowthStDrama;
+    this.c = paramInt;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(stDrama paramstDrama)
   {
-    this.jdField_a_of_type_UserGrowthStDrama = paramstDrama;
+    this.d = paramstDrama;
   }
   
   public String b()
   {
     return this.b;
   }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public stDrama d()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSDramaEpisodeInfo
  * JD-Core Version:    0.7.0.1
  */

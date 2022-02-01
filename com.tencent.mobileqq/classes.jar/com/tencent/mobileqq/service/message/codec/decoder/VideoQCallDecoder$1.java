@@ -14,13 +14,13 @@ class VideoQCallDecoder$1
   
   public void a(QavWrapper paramQavWrapper)
   {
-    Object localObject1 = paramQavWrapper.a(this.jdField_a_of_type_ArrayOfByte);
+    Object localObject1 = paramQavWrapper.c(this.a);
     if (localObject1 != null)
     {
       Object localObject2;
       if (QLog.isColorLevel())
       {
-        localObject2 = this.jdField_a_of_type_JavaLangString;
+        localObject2 = this.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("ret, bindId:");
         localStringBuilder.append(((AVPbInfo)localObject1).bindId);
@@ -33,17 +33,17 @@ class VideoQCallDecoder$1
       if (!VcSystemInfo.isSupportSharpAudio())
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Discard video message cause device not support");
+          QLog.d(this.b, 2, "Discard video message cause device not support");
         }
       }
-      else if (this.jdField_a_of_type_Long >= 60L)
+      else if (this.c >= 60L)
       {
         if (QLog.isColorLevel())
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("Discard video message because of time out ");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject2).append(this.c);
           ((StringBuilder)localObject2).append(" s");
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
@@ -51,21 +51,21 @@ class VideoQCallDecoder$1
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "===========handleSharpVideoMessageResp 1234========");
+          QLog.d(this.b, 2, "===========handleSharpVideoMessageResp 1234========");
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.c, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        this.d.a(this.e, this.a, this.f, this.g, this.h);
       }
     }
     else if (QLog.isColorLevel())
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "ret, decode failed!");
+      QLog.d(this.b, 2, "ret, decode failed!");
     }
     paramQavWrapper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.VideoQCallDecoder.1
  * JD-Core Version:    0.7.0.1
  */

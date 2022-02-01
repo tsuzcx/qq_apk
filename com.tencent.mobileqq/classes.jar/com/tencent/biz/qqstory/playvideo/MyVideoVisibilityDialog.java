@@ -28,97 +28,97 @@ public class MyVideoVisibilityDialog
   extends ReportDialog
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  VideoSpreadGroupList jdField_a_of_type_ComTencentBizQqstoryModelItemVideoSpreadGroupList;
-  MyVideoVisiblePersonPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView;
-  MyVideoVisibleTroopPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView;
-  LeftTabBarView jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  LeftTabBarView a;
+  ViewPager b;
+  Context c;
+  QQAppInterface d;
+  VideoSpreadGroupList e;
+  String f;
+  int g;
+  MyVideoVisiblePersonPageView h;
+  MyVideoVisibleTroopPageView i;
+  TroopManager j;
+  boolean k;
   
   public MyVideoVisibilityDialog(@NonNull Context paramContext, String paramString, int paramInt, VideoSpreadGroupList paramVideoSpreadGroupList, boolean paramBoolean)
   {
     super(paramContext, 16973841);
     super.requestWindowFeature(1);
-    super.setContentView(LayoutInflater.from(paramContext).inflate(2131561830, null));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = PlayModeUtils.a();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoSpreadGroupList = paramVideoSpreadGroupList;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)PlayModeUtils.a().getManager(QQManagerFactory.TROOP_MANAGER));
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super.setContentView(LayoutInflater.from(paramContext).inflate(2131628209, null));
+    this.c = paramContext;
+    this.d = PlayModeUtils.b();
+    this.f = paramString;
+    this.g = paramInt;
+    this.e = paramVideoSpreadGroupList;
+    this.j = ((TroopManager)PlayModeUtils.b().getManager(QQManagerFactory.TROOP_MANAGER));
+    this.k = paramBoolean;
   }
   
   void a()
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = ((ViewPager)findViewById(2131380851));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView = ((LeftTabBarView)findViewById(2131378215));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setUnselectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setBackgroundDrawable(null);
+    this.b = ((ViewPager)findViewById(2131449829));
+    this.a = ((LeftTabBarView)findViewById(2131446733));
+    this.a.setUnselectColor(-1);
+    this.a.setSelectColor(-1);
+    this.a.setBackgroundDrawable(null);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoSpreadGroupList;
-    if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
+    Object localObject1 = this.e;
+    if ((localObject1 != null) && (this.k))
     {
-      if ((((VideoSpreadGroupList)localObject1).a != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoSpreadGroupList.a.isEmpty()))
+      if ((((VideoSpreadGroupList)localObject1).b != null) && (!this.e.b.isEmpty()))
       {
-        localObject1 = new ArrayList(this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoSpreadGroupList.a.size());
-        Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoSpreadGroupList.a.iterator();
+        localObject1 = new ArrayList(this.e.b.size());
+        Iterator localIterator = this.e.b.iterator();
         while (localIterator.hasNext())
         {
           Object localObject2 = (String)localIterator.next();
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((String)localObject2);
+          localObject2 = this.j.f((String)localObject2);
           if (localObject2 != null) {
             ((List)localObject1).add(localObject2);
           }
         }
         Collections.sort((List)localObject1, ContactSorter.a);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView = new MyVideoVisibleTroopPageView(this, this.jdField_a_of_type_AndroidContentContext, (List)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppTroopManager);
+        this.i = new MyVideoVisibleTroopPageView(this, this.c, (List)localObject1, this.j);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.h = new MyVideoVisiblePersonPageView(this, this.c, this.f, this.g);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.h = new MyVideoVisiblePersonPageView(this, this.c, this.f, this.g);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView;
+    localObject1 = this.h;
     if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(((MyVideoVisiblePersonPageView)localObject1).a());
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView);
+      this.a.a(((MyVideoVisiblePersonPageView)localObject1).getTabTitle());
+      localArrayList.add(this.h);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView;
+    localObject1 = this.i;
     if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(((MyVideoVisibleTroopPageView)localObject1).a());
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView);
+      this.a.a(((MyVideoVisibleTroopPageView)localObject1).getTabTitle());
+      localArrayList.add(this.i);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(0, false);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setOnTabChangeListener(new MyVideoVisibilityDialog.1(this));
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setAdapter(new MyVideoVisibilityDialog.MyPagerAdapter(this, localArrayList));
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(new MyVideoVisibilityDialog.2(this));
-    int i = this.jdField_a_of_type_Int;
-    if (i == 2) {
-      i = 1;
-    } else if (i == 3) {
-      i = 2;
-    } else if (i == 1) {
-      i = 3;
+    this.a.setSelectedTab(0, false);
+    this.a.setOnTabChangeListener(new MyVideoVisibilityDialog.1(this));
+    this.b.setAdapter(new MyVideoVisibilityDialog.MyPagerAdapter(this, localArrayList));
+    this.b.setOnPageChangeListener(new MyVideoVisibilityDialog.2(this));
+    int m = this.g;
+    if (m == 2) {
+      m = 1;
+    } else if (m == 3) {
+      m = 2;
+    } else if (m == 1) {
+      m = 3;
     } else {
-      i = 0;
+      m = 0;
     }
-    StoryReportor.a("pub_control", "exp_list", 0, 0, new String[] { String.valueOf(i), "", "", this.jdField_a_of_type_JavaLangString });
+    StoryReportor.a("pub_control", "exp_list", 0, 0, new String[] { String.valueOf(m), "", "", this.f });
   }
   
   public void dismiss()
   {
     super.dismiss();
-    MyVideoVisiblePersonPageView localMyVideoVisiblePersonPageView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView;
+    MyVideoVisiblePersonPageView localMyVideoVisiblePersonPageView = this.h;
     if (localMyVideoVisiblePersonPageView != null) {
       localMyVideoVisiblePersonPageView.b();
     }
@@ -126,7 +126,7 @@ public class MyVideoVisibilityDialog
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364719) {
+    if (paramView.getId() == 2131430825) {
       dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -137,13 +137,13 @@ public class MyVideoVisibilityDialog
     super.onCreate(paramBundle);
     paramBundle = super.getWindow();
     paramBundle.setGravity(80);
-    paramBundle.setWindowAnimations(2131755334);
+    paramBundle.setWindowAnimations(2131952028);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog
  * JD-Core Version:    0.7.0.1
  */

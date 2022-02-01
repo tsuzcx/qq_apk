@@ -11,29 +11,9 @@ public class QZConfigProviderUtil
 {
   public static boolean a = false;
   
-  public static long a()
-  {
-    return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).getLastCheckTime();
-  }
-  
-  public static String a()
-  {
-    return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).getConfigCookie();
-  }
-  
   public static String a(String paramString1, String paramString2, String paramString3)
   {
     return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).getHighPriorityConfig(paramString1, paramString2, paramString3);
-  }
-  
-  public static Map<String, String> a()
-  {
-    return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).loadIspConfigs();
-  }
-  
-  public static void a()
-  {
-    ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).cleanAll();
   }
   
   public static void a(long paramLong)
@@ -61,14 +41,34 @@ public class QZConfigProviderUtil
     return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).isQQCircleUseEeveeRedPoint();
   }
   
-  public static boolean a(String paramString, ArrayList<entrance_cfg> paramArrayList)
+  public static Map<String, String> b()
+  {
+    return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).loadIspConfigs();
+  }
+  
+  public static boolean b(String paramString, ArrayList<entrance_cfg> paramArrayList)
   {
     return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).getNavigatorConfigs(paramString, paramArrayList);
+  }
+  
+  public static String c()
+  {
+    return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).getConfigCookie();
+  }
+  
+  public static long d()
+  {
+    return ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).getLastCheckTime();
+  }
+  
+  public static void e()
+  {
+    ((IQZConfigProviderUtilProxy)QRoute.api(IQZConfigProviderUtilProxy.class)).cleanAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.config.provider.QZConfigProviderUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -24,29 +24,29 @@ import mqq.app.MobileQQ;
 public class EssenceMsgProcessor
   extends IShortcutBarProcessor
 {
-  private final long jdField_a_of_type_Long = 86400L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopEssenceMsgObserver jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver;
-  private IShortcutBarDataProvider jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
-  private TroopShortcutBarObserver jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver;
-  private long b;
+  private final long a = 86400L;
+  private QQAppInterface b;
+  private AIOShortcutBarContext c;
+  private IShortcutBarDataProvider d;
+  private long e;
+  private TroopEssenceMsgObserver f;
+  private TroopShortcutBarObserver g;
+  private Context h;
+  private SessionInfo i;
   
   public EssenceMsgProcessor(AIOShortcutBarContext paramAIOShortcutBarContext, IShortcutBarDataProvider paramIShortcutBarDataProvider)
   {
     if (paramAIOShortcutBarContext == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAIOShortcutBarContext.a());
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider = paramIShortcutBarDataProvider;
-    this.jdField_a_of_type_AndroidContentContext = paramAIOShortcutBarContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramAIOShortcutBarContext.a();
+    this.c = paramAIOShortcutBarContext;
+    this.b = ((QQAppInterface)paramAIOShortcutBarContext.c());
+    this.d = paramIShortcutBarDataProvider;
+    this.h = paramAIOShortcutBarContext.e();
+    this.i = paramAIOShortcutBarContext.d();
     try
     {
-      this.b = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).longValue();
+      this.e = Long.valueOf(this.i.b).longValue();
     }
     catch (Exception paramAIOShortcutBarContext)
     {
@@ -54,13 +54,13 @@ public class EssenceMsgProcessor
         QLog.i("EssenceMsgProcessor", 0, "mTroopUin init error: ", paramAIOShortcutBarContext);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver = new EssenceMsgProcessor.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = new EssenceMsgProcessor.2(this);
+    this.f = new EssenceMsgProcessor.1(this);
+    this.g = new EssenceMsgProcessor.2(this);
   }
   
   private void a(ArrayList<ShortcutBarInfo> paramArrayList)
   {
-    IShortcutBarDataProvider localIShortcutBarDataProvider = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
+    IShortcutBarDataProvider localIShortcutBarDataProvider = this.d;
     if (localIShortcutBarDataProvider != null) {
       localIShortcutBarDataProvider.a(5, paramArrayList);
     }
@@ -74,20 +74,25 @@ public class EssenceMsgProcessor
       return;
     }
     EssenceMsgProcessor.EssenceMsgShortcurBarInfo localEssenceMsgShortcurBarInfo = new EssenceMsgProcessor.EssenceMsgShortcurBarInfo();
-    localEssenceMsgShortcurBarInfo.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131719848));
-    localEssenceMsgShortcurBarInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131719849));
+    localEssenceMsgShortcurBarInfo.b(this.b.getApplication().getResources().getString(2131917453));
+    localEssenceMsgShortcurBarInfo.a(this.b.getApplication().getResources().getString(2131917454));
     localEssenceMsgShortcurBarInfo.a(0);
     localEssenceMsgShortcurBarInfo.a(false);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localEssenceMsgShortcurBarInfo);
     a(localArrayList);
-    TroopEssenceReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, false);
-    TroopEssenceReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, false);
+    TroopEssenceReportUtil.c(this.b, this.e, false);
+    TroopEssenceReportUtil.d(this.b, this.e, false);
   }
   
-  private boolean a(long paramLong)
+  private void c(long paramLong)
   {
-    TroopShortcutBarInfo localTroopShortcutBarInfo = ((TroopShortcutBarManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(this.b));
+    a(d(paramLong));
+  }
+  
+  private boolean d(long paramLong)
+  {
+    TroopShortcutBarInfo localTroopShortcutBarInfo = ((TroopShortcutBarManager)this.b.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(this.e));
     boolean bool2 = false;
     if (localTroopShortcutBarInfo == null) {
       return false;
@@ -95,7 +100,7 @@ public class EssenceMsgProcessor
     if ((localTroopShortcutBarInfo.a() != 1) && (localTroopShortcutBarInfo.b() != 1)) {
       return false;
     }
-    long l = ((TroopEssenceMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(this.b);
+    long l = ((TroopEssenceMsgManager)this.b.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(this.e);
     boolean bool1 = bool2;
     if (paramLong != 0L)
     {
@@ -110,15 +115,10 @@ public class EssenceMsgProcessor
     return bool1;
   }
   
-  private void c(long paramLong)
-  {
-    a(a(paramLong));
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver);
+    this.b.removeObserver(this.f);
+    this.b.removeObserver(this.g);
   }
   
   public void a(long paramLong)
@@ -126,7 +126,7 @@ public class EssenceMsgProcessor
     if (paramLong == 0L) {
       return;
     }
-    ((TroopEssenceMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(paramLong, new EssenceMsgProcessor.3(this));
+    ((TroopEssenceMsgManager)this.b.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(paramLong, new EssenceMsgProcessor.3(this));
   }
   
   public void a(Object paramObject)
@@ -136,18 +136,18 @@ public class EssenceMsgProcessor
       if (QLog.isColorLevel()) {
         QLog.i("EssenceMsgProcessor", 0, "onClick");
       }
-      paramObject = (TroopEssenceMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER);
+      paramObject = (TroopEssenceMsgManager)this.b.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER);
       long l = NetConnInfoCenter.getServerTime();
-      paramObject.a(this.b, l);
-      TroopEssenceUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.b), 0L, 0, this.jdField_a_of_type_AndroidContentContext, 2);
+      paramObject.a(this.e, l);
+      TroopEssenceUtil.a(this.b, String.valueOf(this.e), 0L, 0, this.h, 2);
       a(false);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver);
+    this.b.addObserver(this.f);
+    this.b.addObserver(this.g);
   }
   
   public void b(long paramLong)
@@ -155,7 +155,7 @@ public class EssenceMsgProcessor
     if (paramLong == 0L) {
       return;
     }
-    c(((TroopEssenceMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).b(paramLong));
+    c(((TroopEssenceMsgManager)this.b.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).b(paramLong));
   }
   
   public void b(Object paramObject) {}
@@ -164,12 +164,12 @@ public class EssenceMsgProcessor
   
   public void d()
   {
-    a(this.b);
+    a(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.essencemsg.EssenceMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

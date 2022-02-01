@@ -11,29 +11,29 @@ public final class VideoMaskController$seekBarChangeListener$1
 {
   public void onProgressChanged(@Nullable SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a.f();
+    this.a.l();
     VideoMaskController.d(this.a, paramInt);
   }
   
   public void onStartTrackingTouch(@Nullable SeekBar paramSeekBar)
   {
-    VideoMaskController.f(this.a);
-    VideoMaskController.e(this.a);
-    this.a.j();
+    VideoMaskController.m(this.a);
+    VideoMaskController.h(this.a);
+    this.a.q();
   }
   
   public void onStopTrackingTouch(@Nullable SeekBar paramSeekBar)
   {
-    VideoMaskController.a(this.a).setManualPause(false);
-    VideoMaskController.g(this.a);
-    VideoMaskController.h(this.a);
+    VideoMaskController.b(this.a).setManualPause(false);
+    VideoMaskController.n(this.a);
+    VideoMaskController.o(this.a);
     paramSeekBar = this.a;
-    VideoMaskController.a(paramSeekBar, VideoMaskController.a(paramSeekBar));
+    VideoMaskController.a(paramSeekBar, VideoMaskController.p(paramSeekBar));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoMaskController.seekBarChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

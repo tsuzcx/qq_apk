@@ -15,12 +15,12 @@ class HotChatPostItemView$1$1
   
   public void run()
   {
-    if (((this.this$0.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String)) && (!((String)this.this$0.jdField_a_of_type_AndroidWidgetImageView.getTag()).endsWith(this.this$0.jdField_a_of_type_JavaLangString))) {
+    if (((this.this$0.a.getTag() instanceof String)) && (!((String)this.this$0.a.getTag()).endsWith(this.this$0.e))) {
       return;
     }
     try
     {
-      localPair = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+      localPair = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.f), 1);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -28,15 +28,15 @@ class HotChatPostItemView$1$1
       label65:
       break label65;
     }
-    HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
-    HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-    localPair = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+    HotChatPostItemView.o.clear();
+    HotChatPostItemView.n.clear();
+    localPair = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.f), 1);
     ThreadManager.getUIHandler().post(new HotChatPostItemView.1.1.1(this, localPair));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView.1.1
  * JD-Core Version:    0.7.0.1
  */

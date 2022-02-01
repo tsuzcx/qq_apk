@@ -7,8 +7,8 @@ class FakerFeedsAdapter$3
   
   public void run()
   {
-    this.this$0.a(this.a);
-    this.this$0.b();
+    this.this$0.b(this.a);
+    this.this$0.d();
   }
 }
 

@@ -16,25 +16,25 @@ class TroopSettingActivity$50$1
   
   public void run()
   {
-    if (this.a.this$0.jdField_a_of_type_ArrayOfAndroidViewView != null)
+    if (this.a.this$0.h != null)
     {
-      QFormSimpleItem localQFormSimpleItem = (QFormSimpleItem)this.a.this$0.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      QFormSimpleItem localQFormSimpleItem = (QFormSimpleItem)this.a.this$0.h[6];
       if (localQFormSimpleItem != null)
       {
-        if (!TextUtils.equals(localQFormSimpleItem.a().getText(), this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopColorNick)) {
-          if (TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopColorNick))
+        if (!TextUtils.equals(localQFormSimpleItem.getRightTextView().getText(), this.a.this$0.i.troopColorNick)) {
+          if (TextUtils.isEmpty(this.a.this$0.i.troopColorNick))
           {
-            localQFormSimpleItem.setRightText(this.a.this$0.getString(2131697580));
+            localQFormSimpleItem.setRightText(this.a.this$0.getString(2131895353));
           }
           else
           {
-            SpannableString localSpannableString = ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).getSpannableStringFromColorNickText(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopColorNick, 16);
+            SpannableString localSpannableString = ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).getSpannableStringFromColorNickText(this.a.this$0.i.troopColorNick, 16);
             localQFormSimpleItem.setRightText(localSpannableString);
-            ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).setColorText(TroopSettingActivity.a(this.a.this$0), localQFormSimpleItem.a(), localSpannableString);
+            ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).setColorText(TroopSettingActivity.a(this.a.this$0), localQFormSimpleItem.getRightTextView(), localSpannableString);
           }
         }
-        if (localQFormSimpleItem.a() != null) {
-          localQFormSimpleItem.a().setCompoundDrawablePadding(ViewUtils.b(9.0F));
+        if (localQFormSimpleItem.getRightTextView() != null) {
+          localQFormSimpleItem.getRightTextView().setCompoundDrawablePadding(ViewUtils.dpToPx(9.0F));
         }
       }
     }
@@ -42,7 +42,7 @@ class TroopSettingActivity$50$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.50.1
  * JD-Core Version:    0.7.0.1
  */

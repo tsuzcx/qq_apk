@@ -80,6 +80,7 @@ public class VRecyclerList
   private RecycleViewItemDecoration mRecycleViewItemDecoration;
   private int mSnapOffset = 0;
   private boolean mSnapOffsetUsable = true;
+  private boolean mUpdateCheckEnable = false;
   private VRecyclerList.RVUpdateOps updateOps = new VRecyclerList.RVUpdateOps(this);
   
   public VRecyclerList(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
@@ -820,6 +821,11 @@ public class VRecyclerList
     return ViolaUtils.getBoolean(getDomObject().getAttributes().get("reverse"));
   }
   
+  public boolean isUpdateCheckEnable()
+  {
+    return this.mUpdateCheckEnable;
+  }
+  
   public boolean isVertical()
   {
     return this.mOrientation == 1;
@@ -950,20 +956,30 @@ public class VRecyclerList
       if (paramVH.mVCell.getDomObject() == null) {
         return;
       }
-      DomObject localDomObject = paramVH.mVCell.getDomObject();
-      this.mCellAppearSet.remove(localDomObject.getRef());
-      if (localDomObject.getEvents().contains("disappear"))
+      Object localObject = paramVH.mVCell.getDomObject();
+      this.mCellAppearSet.remove(((DomObject)localObject).getRef());
+      if (((DomObject)localObject).getEvents().contains("disappear"))
       {
-        customFireEvent("disappear", localDomObject.getRef());
+        customFireEvent("disappear", ((DomObject)localObject).getRef());
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("disAppear position: ");
         localStringBuilder.append(paramVH.position);
         localStringBuilder.append(", ref: ");
-        localStringBuilder.append(localDomObject.getRef());
+        localStringBuilder.append(((DomObject)localObject).getRef());
         ViolaLogUtils.d("VRecyclerList", localStringBuilder.toString());
       }
-      if ((getInstance() != null) && (getHostView() != null)) {
-        ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId(), ((VRecyclerView)getHostView()).isScrollDown());
+      if ((getInstance() != null) && (getHostView() != null))
+      {
+        paramVH = (DomObjectCell)localObject;
+        localObject = getInstance().getInstanceId();
+        boolean bool2 = ((VRecyclerView)getHostView()).isScrollDown();
+        boolean bool1;
+        if ((((VRecyclerView)getHostView()).isFlying()) && (((VRecyclerView)getHostView()).isListScroll())) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        paramVH.resetComponentState((String)localObject, bool2, bool1);
       }
     }
   }
@@ -1389,6 +1405,12 @@ public class VRecyclerList
     ((VRecyclerView)getHostView()).setScrollMinOffset(i);
   }
   
+  @VComponentProp(name="setUpdateCheckEnable ")
+  public void setUpdateCheckEnable(Boolean paramBoolean)
+  {
+    this.mUpdateCheckEnable = paramBoolean.booleanValue();
+  }
+  
   @JSMethod(uiThread=true)
   public void snapToTargetPosition(int paramInt)
   {
@@ -1424,7 +1446,7 @@ public class VRecyclerList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRecyclerList
  * JD-Core Version:    0.7.0.1
  */

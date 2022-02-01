@@ -17,14 +17,14 @@ final class LoginFailedHelper$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.d("LoginFailedHelper", 1, "handleAccountFrozen: goto LoginView.");
-    paramDialogInterface = new ActivityURIRequest(this.jdField_a_of_type_AndroidContentContext, "/base/login");
+    paramDialogInterface = new ActivityURIRequest(this.a, "/base/login");
     Bundle localBundle = paramDialogInterface.extra();
     localBundle.putBoolean("is_change_account", true);
-    localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("befault_uin", this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+    localBundle.putString("uin", this.b);
+    localBundle.putString("befault_uin", this.c.getCurrentAccountUin());
     localBundle.putBoolean("is_show_not_login_uin", true);
     QRoute.startUri(paramDialogInterface, null);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppLoginFailedHelper$FrozenDialogCallback;
+    paramDialogInterface = this.d;
     if (paramDialogInterface != null) {
       paramDialogInterface.a(true);
     }
@@ -32,7 +32,7 @@ final class LoginFailedHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.LoginFailedHelper.4
  * JD-Core Version:    0.7.0.1
  */

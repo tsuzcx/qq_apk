@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.viola.adapter.VComponentAdapter;
@@ -66,7 +67,7 @@ public class VImage2
     if (localView == null) {
       return;
     }
-    localView.post(new VImage2.1(this, localView, paramBoolean, paramString));
+    localView.getViewTreeObserver().addOnPreDrawListener(new VImage2.1(this, localView, paramBoolean, paramString));
   }
   
   private static void ensureImageCacheManager()
@@ -79,6 +80,43 @@ public class VImage2
   private void finishLoadBase64(Bitmap paramBitmap, String paramString, Bundle paramBundle)
   {
     ViolaSDKManager.getInstance().postOnUiThread(new VImage2.3(this, paramBitmap, paramString, paramBundle));
+  }
+  
+  public static ImageView.ScaleType getResizeMode(String paramString)
+  {
+    ImageView.ScaleType localScaleType = ImageView.ScaleType.FIT_XY;
+    if (TextUtils.isEmpty(paramString)) {
+      return localScaleType;
+    }
+    int i = -1;
+    int j = paramString.hashCode();
+    if (j != -1881872635)
+    {
+      if (j != 94852023)
+      {
+        if ((j == 951526612) && (paramString.equals("contain"))) {
+          i = 1;
+        }
+      }
+      else if (paramString.equals("cover")) {
+        i = 0;
+      }
+    }
+    else if (paramString.equals("stretch")) {
+      i = 2;
+    }
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return localScaleType;
+        }
+        return ImageView.ScaleType.FIT_XY;
+      }
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
   }
   
   private boolean isAutoSize()
@@ -101,7 +139,7 @@ public class VImage2
     return false;
   }
   
-  private boolean isBase64(String paramString)
+  public static boolean isBase64(String paramString)
   {
     return (paramString.startsWith("data:image/jpg;base64,")) || (paramString.startsWith("data:image/png;base64,")) || (paramString.startsWith("data:image/jpeg;base64,"));
   }
@@ -182,7 +220,7 @@ public class VImage2
       if (!paramBoolean) {
         localVImageView2.setImageStartTs(System.currentTimeMillis());
       }
-      localVComponentAdapter.requestImage(paramString, paramInt1, paramInt2, bool, this, isGif());
+      localVComponentAdapter.requestImage(paramString, paramInt1, paramInt2, bool, this, isGif(), localVImageView2.getScaleType());
     }
   }
   
@@ -499,43 +537,6 @@ public class VImage2
     double d = (int)FlexConvertUtils.converPxByViewportToRealPx(this.mDomObj.getAttributes().get("blurRadius"), 750);
     Double.isNaN(d);
     return (int)(d * 2.3D);
-  }
-  
-  public ImageView.ScaleType getResizeMode(String paramString)
-  {
-    ImageView.ScaleType localScaleType = ImageView.ScaleType.FIT_XY;
-    if (TextUtils.isEmpty(paramString)) {
-      return localScaleType;
-    }
-    int i = -1;
-    int j = paramString.hashCode();
-    if (j != -1881872635)
-    {
-      if (j != 94852023)
-      {
-        if ((j == 951526612) && (paramString.equals("contain"))) {
-          i = 1;
-        }
-      }
-      else if (paramString.equals("cover")) {
-        i = 0;
-      }
-    }
-    else if (paramString.equals("stretch")) {
-      i = 2;
-    }
-    if (i != 0)
-    {
-      if (i != 1)
-      {
-        if (i != 2) {
-          return localScaleType;
-        }
-        return ImageView.ScaleType.FIT_XY;
-      }
-      return ImageView.ScaleType.FIT_CENTER;
-    }
-    return ImageView.ScaleType.CENTER_CROP;
   }
   
   public int getScaleRadioForBlur()
@@ -925,7 +926,7 @@ public class VImage2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.image.VImage2
  * JD-Core Version:    0.7.0.1
  */

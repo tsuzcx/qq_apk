@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.transfile.quic.QuicNetResMgr;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQShortVideoQuicNetProcessor
@@ -13,7 +12,7 @@ public class QQShortVideoQuicNetProcessor
 {
   public static QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean a()
   {
-    return (QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean)QConfigManager.a().a(685);
+    return (QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean)QConfigManager.b().b(685);
   }
   
   @NonNull
@@ -36,7 +35,6 @@ public class QQShortVideoQuicNetProcessor
     if (QLog.isColorLevel()) {
       QLog.d("QQShortVideoQuicNetProcessor", 2, "QQShortVideoQuicNetProcessor onUpdate");
     }
-    QuicNetResMgr.getInstance().downloadQuicRes(paramShortVideoQuicNetConfBean);
   }
   
   public Class<QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean> clazz()
@@ -73,7 +71,7 @@ public class QQShortVideoQuicNetProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQShortVideoQuicNetProcessor
  * JD-Core Version:    0.7.0.1
  */

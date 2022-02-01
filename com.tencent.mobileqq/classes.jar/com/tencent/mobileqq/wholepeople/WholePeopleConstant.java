@@ -79,7 +79,7 @@ public class WholePeopleConstant
       paramBundle.code = -1;
       return paramBundle;
     }
-    ((LocalRedTouchManager)paramString.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).a(10014);
+    ((LocalRedTouchManager)paramString.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).b(10014);
     paramBundle.code = 0;
     return paramBundle;
   }
@@ -141,7 +141,7 @@ public class WholePeopleConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeopleConstant
  * JD-Core Version:    0.7.0.1
  */

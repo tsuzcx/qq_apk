@@ -3,19 +3,27 @@ package com.tencent.biz.subscribe.comment;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class CommentInputPopupWindow$5
   implements TextView.OnEditorActionListener
 {
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt != 4) && (paramInt != 6)) {
-      return false;
+    boolean bool;
+    if ((paramInt != 4) && (paramInt != 6))
+    {
+      bool = false;
     }
-    if (CommentInputPopupWindow.a(this.a) != null) {
-      CommentInputPopupWindow.a(this.a).a();
+    else
+    {
+      if (CommentInputPopupWindow.g(this.a) != null) {
+        CommentInputPopupWindow.g(this.a).a();
+      }
+      bool = true;
     }
-    return true;
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool;
   }
 }
 

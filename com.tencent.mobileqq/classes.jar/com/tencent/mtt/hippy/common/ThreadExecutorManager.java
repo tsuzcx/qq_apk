@@ -9,8 +9,8 @@ public class ThreadExecutorManager
   implements ThreadExecutor.UncaughtExceptionHandler
 {
   private static ThreadExecutorManager sInstance;
-  private HashMap<Integer, ArrayList<Integer>> mEngineMap = new HashMap();
-  private HashMap<Integer, ThreadExecutor> mThreadExecutorMap = new HashMap();
+  private final HashMap<Integer, ArrayList<Integer>> mEngineMap = new HashMap();
+  private final HashMap<Integer, ThreadExecutor> mThreadExecutorMap = new HashMap();
   
   private void destroyThreadExecutor(Integer paramInteger)
   {
@@ -47,9 +47,7 @@ public class ThreadExecutorManager
         return;
       }
       destroyThreadExecutor(paramInteger);
-      if (this.mEngineMap.containsKey(paramInteger)) {
-        this.mEngineMap.remove(paramInteger);
-      }
+      this.mEngineMap.remove(paramInteger);
       return;
     }
     finally {}
@@ -137,10 +135,7 @@ public class ThreadExecutorManager
           destroyThreadExecutor((Integer)localObject);
           return;
         }
-        paramHippyEngine = Integer.valueOf(paramHippyEngine.getId());
-        if (localArrayList.contains(paramHippyEngine)) {
-          localArrayList.remove(paramHippyEngine);
-        }
+        localArrayList.remove(Integer.valueOf(paramHippyEngine.getId()));
         if (localArrayList.size() <= 0)
         {
           this.mEngineMap.remove(localObject);
@@ -161,7 +156,7 @@ public class ThreadExecutorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.common.ThreadExecutorManager
  * JD-Core Version:    0.7.0.1
  */

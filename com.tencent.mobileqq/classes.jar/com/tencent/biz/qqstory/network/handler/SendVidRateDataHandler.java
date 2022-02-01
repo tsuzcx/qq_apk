@@ -27,15 +27,10 @@ import com.tribe.async.dispatch.Dispatcher;
 public class SendVidRateDataHandler
   implements CmdTaskManger.CommandCallback<CommonRequest<qqstory_service.ReqStorySubmitRateData>, CommonResponse>
 {
-  public static final String a;
-  public final int a;
+  public static final String a = StoryApi.a("StorySvc.submit_rate_data");
   public final String b;
   public final String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.submit_rate_data");
-  }
+  public final int d;
   
   public void a(@NonNull CommonRequest<qqstory_service.ReqStorySubmitRateData> paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
   {
@@ -63,16 +58,16 @@ public class SendVidRateDataHandler
       paramErrorMessage = new qqstory_service.RspStorySubmitRateData();
       try
       {
-        paramErrorMessage.mergeFrom(paramCommonResponse.a);
-        localSendVidRateDataResultEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramErrorMessage.result.error_code.get(), paramErrorMessage.result.error_desc.get().toStringUtf8());
-        localSendVidRateDataResultEvent.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-        localSendVidRateDataResultEvent.jdField_b_of_type_JavaLangString = this.c;
-        localSendVidRateDataResultEvent.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localSendVidRateDataResultEvent.jdField_b_of_type_Int = paramErrorMessage.total_rate_count.get();
-        localSendVidRateDataResultEvent.jdField_a_of_type_Long = paramErrorMessage.total_rate_score.get();
-        localSendVidRateDataResultEvent.c = paramErrorMessage.comment_id.get();
-        localSendVidRateDataResultEvent.jdField_b_of_type_Long = paramErrorMessage.fake_id.get();
-        SLog.b("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond() feed=%s, vid=%s, rate=%s, rateCount=%s, rateScore=%s, commentId=%s, commentFakeId=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(localSendVidRateDataResultEvent.jdField_a_of_type_Int), Integer.valueOf(localSendVidRateDataResultEvent.jdField_b_of_type_Int), Long.valueOf(localSendVidRateDataResultEvent.jdField_a_of_type_Long), Integer.valueOf(localSendVidRateDataResultEvent.c), Long.valueOf(localSendVidRateDataResultEvent.jdField_b_of_type_Long) });
+        paramErrorMessage.mergeFrom(paramCommonResponse.b);
+        localSendVidRateDataResultEvent.g = new ErrorMessage(paramErrorMessage.result.error_code.get(), paramErrorMessage.result.error_desc.get().toStringUtf8());
+        localSendVidRateDataResultEvent.a = this.b;
+        localSendVidRateDataResultEvent.b = this.c;
+        localSendVidRateDataResultEvent.c = this.d;
+        localSendVidRateDataResultEvent.d = paramErrorMessage.total_rate_count.get();
+        localSendVidRateDataResultEvent.e = paramErrorMessage.total_rate_score.get();
+        localSendVidRateDataResultEvent.f = paramErrorMessage.comment_id.get();
+        localSendVidRateDataResultEvent.h = paramErrorMessage.fake_id.get();
+        SLog.b("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond() feed=%s, vid=%s, rate=%s, rateCount=%s, rateScore=%s, commentId=%s, commentFakeId=%s", new Object[] { this.b, this.c, Integer.valueOf(localSendVidRateDataResultEvent.c), Integer.valueOf(localSendVidRateDataResultEvent.d), Long.valueOf(localSendVidRateDataResultEvent.e), Integer.valueOf(localSendVidRateDataResultEvent.f), Long.valueOf(localSendVidRateDataResultEvent.h) });
       }
       catch (InvalidProtocolBufferMicroException paramCommonRequest)
       {
@@ -84,27 +79,27 @@ public class SendVidRateDataHandler
     else
     {
       SLog.e("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond Request Error:%s", new Object[] { paramErrorMessage.toString() });
-      localSendVidRateDataResultEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      localSendVidRateDataResultEvent.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localSendVidRateDataResultEvent.jdField_b_of_type_JavaLangString = this.c;
-      localSendVidRateDataResultEvent.jdField_a_of_type_Int = i;
-      localSendVidRateDataResultEvent.jdField_b_of_type_Int = j;
-      localSendVidRateDataResultEvent.jdField_a_of_type_Long = l;
+      localSendVidRateDataResultEvent.g = paramErrorMessage;
+      localSendVidRateDataResultEvent.a = this.b;
+      localSendVidRateDataResultEvent.b = this.c;
+      localSendVidRateDataResultEvent.c = i;
+      localSendVidRateDataResultEvent.d = j;
+      localSendVidRateDataResultEvent.e = l;
     }
     if (localStoryVideoItem != null)
     {
-      localStoryVideoItem.mRateResult = localSendVidRateDataResultEvent.jdField_a_of_type_Int;
-      localStoryVideoItem.mTotalRateCount = localSendVidRateDataResultEvent.jdField_b_of_type_Int;
-      localStoryVideoItem.mTotalScore = localSendVidRateDataResultEvent.jdField_a_of_type_Long;
+      localStoryVideoItem.mRateResult = localSendVidRateDataResultEvent.c;
+      localStoryVideoItem.mTotalRateCount = localSendVidRateDataResultEvent.d;
+      localStoryVideoItem.mTotalScore = localSendVidRateDataResultEvent.e;
       paramCommonRequest.a(localStoryVideoItem);
     }
     StoryDispatcher.a().dispatch(localSendVidRateDataResultEvent);
-    StoryAIOUtils.a(QQStoryContext.a());
+    StoryAIOUtils.a(QQStoryContext.j());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.SendVidRateDataHandler
  * JD-Core Version:    0.7.0.1
  */

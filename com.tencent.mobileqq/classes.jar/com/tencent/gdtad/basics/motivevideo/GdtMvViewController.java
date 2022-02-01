@@ -10,6 +10,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ad.tangram.toast.AdToast;
 import com.tencent.ad.tangram.util.AdExposureChecker;
 import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.gdtad.IGdtAdAPI;
@@ -34,17 +36,17 @@ import com.tencent.gdtad.basics.motivevideo.title.GdtMvTitleHelper.MvTitleListen
 import com.tencent.gdtad.basics.motivevideo.web.bottomcrad.GdtMVWebBottomCardController;
 import com.tencent.gdtad.basics.motivevideo.web.endcrad.GdtMVEndcardWebController;
 import com.tencent.gdtad.inject.GdtThirdProcessorProxy;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.statistics.GdtImpressionPolicy;
 import com.tencent.gdtad.statistics.GdtImpressionReporter.GdtVideoReportInfo;
 import com.tencent.gdtad.statistics.GdtOriginalExposureReporter;
+import com.tencent.gdtad.statistics.GdtReporter;
 import com.tencent.gdtad.util.GdtUtil;
 import com.tencent.gdtad.views.GdtUIUtils;
 import com.tencent.gdtad.views.video.GdtVideoData;
 import com.tencent.gdtad.views.video.GdtVideoReportListenerImp;
 import com.tencent.gdtad.volume.VolumeChangeObserver;
 import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
-import com.tencent.mobileqq.apollo.game.process.video.ICmGameVideoCallback;
-import com.tencent.mobileqq.apollo.game.process.video.api.ICmGameVideoPlayer;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -62,122 +64,269 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo;
 
 public class GdtMvViewController
-  implements Handler.Callback, View.OnClickListener, GdtMvTitleHelper.MvTitleListener, ICmGameVideoCallback
+  implements Handler.Callback, View.OnClickListener, ICmGameVideoCallback, GdtMvTitleHelper.MvTitleListener
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AdExposureChecker.ExposureCallback jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback;
-  private AdExposureChecker jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker;
-  private GdtMvViewController.SilentModeReceiver jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController$SilentModeReceiver;
-  private IMotiveVideoView jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView;
-  private GdtMotiveVideoModel jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
-  private GdtMvElementsController jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
-  public final GdtMvMiniAppReportHelper a;
-  public final GdtMvTitleHelper a;
-  private GdtMVWebBottomCardController jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
-  private GdtMVEndcardWebController jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
-  public GdtThirdProcessorProxy a;
-  private final GdtImpressionReporter.GdtVideoReportInfo jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo;
-  private GdtVideoReportListenerImp jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp;
-  private VolumeChangeObserver jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver;
-  private ICmGameVideoPlayer jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  private boolean g;
-  private boolean h;
+  private GdtMotiveVideoModel A;
+  private AudioManager B;
+  private boolean C;
+  private GdtMvViewController.SilentModeReceiver D;
+  private VolumeChangeObserver E;
+  private boolean F;
+  private boolean G;
+  private GdtMVEndcardWebController H;
+  private GdtMVWebBottomCardController I;
+  private AdExposureChecker J;
+  private AdExposureChecker.ExposureCallback K;
+  private int L;
+  private boolean M;
+  private int N;
+  private WeakReference<GdtMvViewController.Listener> O;
+  private final GdtImpressionReporter.GdtVideoReportInfo P;
+  private boolean Q;
+  private long R;
+  private boolean S;
+  private boolean T;
+  boolean a;
+  public int b;
+  public final GdtMvTitleHelper c;
+  public final GdtMvMiniAppReportHelper d;
+  public GdtThirdProcessorProxy e;
+  private IMotiveVideoView f;
+  private View g;
+  private ImageView h;
   private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l;
+  private ICmGameVideoPlayer j;
+  private WeakReferenceHandler k = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private long l;
   private boolean m;
   private boolean n;
-  private boolean o;
+  private RelativeLayout o;
+  private boolean p;
+  private boolean q;
+  private long r;
+  private String s;
+  private boolean t;
+  private GdtMvElementsController u;
+  private QQCustomDialog v;
+  private GdtVideoReportListenerImp w;
+  private boolean x;
+  private Context y;
+  private boolean z;
   
   public GdtMvViewController(IMotiveVideoView paramIMotiveVideoView, GdtMotiveVideoModel paramGdtMotiveVideoModel, boolean paramBoolean)
   {
     boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 15L;
-    this.g = false;
-    this.jdField_a_of_type_Int = 0;
-    this.h = false;
-    this.i = false;
-    this.j = false;
-    this.k = true;
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper = new GdtMvTitleHelper();
-    this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper = new GdtMvMiniAppReportHelper();
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo = new GdtImpressionReporter.GdtVideoReportInfo();
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy = new GdtThirdProcessorProxy();
-    this.m = true;
-    this.jdField_c_of_type_Long = 0L;
-    this.n = true;
-    this.o = false;
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView = paramIMotiveVideoView;
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel = paramGdtMotiveVideoModel;
-    this.l = paramBoolean;
-    paramIMotiveVideoView = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
+    this.a = false;
+    this.r = 15L;
+    this.t = false;
+    this.b = 0;
+    this.x = false;
+    this.z = false;
+    this.C = false;
+    this.F = true;
+    this.c = new GdtMvTitleHelper();
+    this.K = null;
+    this.d = new GdtMvMiniAppReportHelper();
+    this.L = 0;
+    this.M = false;
+    this.N = 0;
+    this.P = new GdtImpressionReporter.GdtVideoReportInfo();
+    this.e = new GdtThirdProcessorProxy();
+    this.Q = true;
+    this.R = 0L;
+    this.S = true;
+    this.T = false;
+    this.f = paramIMotiveVideoView;
+    this.A = paramGdtMotiveVideoModel;
+    this.G = paramBoolean;
+    paramIMotiveVideoView = this.A.a();
     paramIMotiveVideoView.style = 0;
     paramBoolean = bool;
     if (paramIMotiveVideoView.screenOrientation == 1) {
       paramBoolean = true;
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Long = GdtUtil.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel);
-    this.jdField_a_of_type_JavaLangString = paramIMotiveVideoView.getRewardText();
-    paramBoolean = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().exp_info.video_countdown_style.has();
+    this.i = paramBoolean;
+    this.r = GdtUtil.a(this.A);
+    this.s = paramIMotiveVideoView.getRewardText();
+    paramBoolean = this.A.b().exp_info.video_countdown_style.has();
     paramIMotiveVideoView = new StringBuilder();
     paramIMotiveVideoView.append("GdtMvViewController: video_countdown = ");
-    paramIMotiveVideoView.append(this.jdField_b_of_type_Long);
+    paramIMotiveVideoView.append(this.r);
     paramIMotiveVideoView.append(", video_countdown_style has = ");
     paramIMotiveVideoView.append(paramBoolean);
     paramIMotiveVideoView.append(", rewardText = ");
-    paramIMotiveVideoView.append(this.jdField_a_of_type_JavaLangString);
+    paramIMotiveVideoView.append(this.s);
     QLog.i("GdtMvViewController", 1, paramIMotiveVideoView.toString());
   }
   
   private void A()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer != null)
+    if (this.C)
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      QLog.i("GdtMvViewController", 1, "refreshVoiceIconDrawable isSilentMode is true");
+      this.a = true;
+    }
+    B();
+  }
+  
+  private void B()
+  {
+    this.c.a(this.g.getContext(), this.a);
+  }
+  
+  private boolean C()
+  {
+    if (GdtADFlyingStreamingReportHelper.a().b() != 1) {
+      return false;
+    }
+    GdtMotiveVideoModel localGdtMotiveVideoModel = this.A;
+    if (localGdtMotiveVideoModel != null)
+    {
+      if (localGdtMotiveVideoModel.d() == null) {
+        return false;
+      }
+      if (this.A.d().isJumpToEndCardDirectlyExperiment())
+      {
+        GdtLog.b("GdtMvViewController", "jump to end card directly");
+        this.j.stopPlay();
+        I();
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void D()
+  {
+    Object localObject = this.A.a();
+    localObject = this.e.b(this.y, ((GdtMotiveVideoPageData)localObject).previewImgUrl);
+    ImageView localImageView = this.h;
+    if ((localImageView != null) && (localObject != null)) {
+      localImageView.setImageDrawable((Drawable)localObject);
+    }
+  }
+  
+  private void E()
+  {
+    QLog.i("VideoGdtGdtMvViewController", 1, "initVideoView");
+    Object localObject = this.A.a();
+    this.P.a(11);
+    this.j = new CmGameGdtVideoPlayer();
+    this.j.initVideoPlayer(this.g.getContext(), ((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface());
+    this.j.addPlayerCallback(this, 100L);
+    View localView = this.j.getVideoContainer();
+    if ((localView != null) && (this.o != null))
+    {
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      this.o.addView(localView, localLayoutParams);
+      this.j.startPlay(((GdtMotiveVideoPageData)localObject).url, "sd", 0);
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[setViewStatus], videoView is null.");
+    ((StringBuilder)localObject).append(this.o);
+    QLog.i("VideoGdtGdtMvViewController", 1, ((StringBuilder)localObject).toString());
+  }
+  
+  private void F()
+  {
+    if (QQVideoPlaySDKManager.isSDKReady())
+    {
+      E();
+      return;
+    }
+    G();
+  }
+  
+  private void G()
+  {
+    try
+    {
+      QLog.i("VideoGdtGdtMvViewController", 1, "installSDK");
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplication.getContext(), new GdtMvViewController.7(this));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("VideoGdtGdtMvViewController", 1, "installSDK", localThrowable);
+    }
+  }
+  
+  private void H()
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[doPauseAction] mIsVideoPlayCompleted:");
+    ((StringBuilder)localObject1).append(this.q);
+    QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = this.A.c();
+    f(false);
+    Object localObject2;
+    if (!this.q)
+    {
+      localObject2 = this.j;
+      if (localObject2 != null)
+      {
+        this.x = false;
+        if (((ICmGameVideoPlayer)localObject2).isPlaying())
+        {
+          localObject2 = this.w;
+          if ((localObject2 != null) && (localObject1 != null)) {
+            ((GdtVideoReportListenerImp)localObject2).b((GdtVideoData)localObject1, this.j.getCurrentPosition(), this.P);
+          }
+        }
+        this.j.pause();
+      }
+    }
+    localObject1 = this.H;
+    if (localObject1 != null) {
+      ((GdtMVEndcardWebController)localObject1).d();
+    }
+    localObject1 = this.I;
+    if (localObject1 != null)
+    {
+      localObject2 = this.j;
+      if (localObject2 != null) {
+        ((GdtMVWebBottomCardController)localObject1).a(((ICmGameVideoPlayer)localObject2).getMuteValue(), this.j.getVideoDuration(), this.j.getCurrentPosition(), this.r, this.I.a(this.j));
+      }
+    }
+  }
+  
+  private void I()
+  {
+    a(0L, 0L, 0L);
+    a(0L, true);
+    f(false);
+    o();
+  }
+  
+  private void J()
+  {
+    if (this.j != null)
+    {
+      if (this.o == null) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      int i3 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoWidth();
-      int i4 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoHeight();
+      Object localObject = this.A.a();
+      this.o.setVisibility(0);
+      a(this.o);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.o.getLayoutParams();
+      int i3 = this.j.getVideoWidth();
+      int i4 = this.j.getVideoHeight();
       int i1;
-      if (this.jdField_b_of_type_Boolean) {
-        i1 = GdtUIUtils.e(this.jdField_a_of_type_AndroidContentContext);
+      if (this.i) {
+        i1 = GdtUIUtils.e(this.y);
       } else {
-        i1 = GdtUIUtils.d(this.jdField_a_of_type_AndroidContentContext);
+        i1 = GdtUIUtils.d(this.y);
       }
       int i2;
-      if (this.jdField_b_of_type_Boolean) {
-        i2 = GdtUIUtils.d(this.jdField_a_of_type_AndroidContentContext);
+      if (this.i) {
+        i2 = GdtUIUtils.d(this.y);
       } else {
-        i2 = GdtUIUtils.e(this.jdField_a_of_type_AndroidContentContext);
+        i2 = GdtUIUtils.e(this.y);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[VIDEO_PREPARED] mVideoSize ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.i);
       localStringBuilder.append(" vW-");
       localStringBuilder.append(i3);
       localStringBuilder.append(" vH-");
@@ -187,71 +336,70 @@ public class GdtMvViewController
       localStringBuilder.append(" sH-");
       localStringBuilder.append(i2);
       QLog.i("GdtMvViewController", 1, localStringBuilder.toString());
-      if ((this.jdField_b_of_type_Boolean) && (((GdtMotiveVideoPageData)localObject).vSize != 585))
+      if ((this.i) && (((GdtMotiveVideoPageData)localObject).vSize != 585))
       {
-        i3 = (int)(i1 * 1.0F * i4 / i3);
-        i2 = (int)(i2 * 150.0F / 1334.0F);
-        localLayoutParams.height = i3;
+        int i5 = (int)(i1 * 1.0F * i4 / i3);
+        int i6 = (int)(i2 * 150.0F / 1334.0F);
+        localLayoutParams.height = i5;
         localLayoutParams.width = i1;
-        localLayoutParams.topMargin = i2;
+        localLayoutParams.topMargin = i6;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[VIDEO_PREPARED] newHeight ");
+        localStringBuilder.append(i5);
+        localStringBuilder.append(" newWidth-");
+        localStringBuilder.append(i1);
+        localStringBuilder.append(" newTop-");
+        localStringBuilder.append(i6);
+        QLog.i("GdtMvViewController", 1, localStringBuilder.toString());
+      }
+      if ((((GdtMotiveVideoPageData)localObject).vSize == 585) && (!this.i) && (this.A.d().isHitNew585Style()))
+      {
+        localLayoutParams.height = i2;
+        localLayoutParams.width = ((int)(i2 * 1.0F * i3 / i4));
+        localLayoutParams.leftMargin = ((int)(i1 * 168.0F / 1334.0F));
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[VIDEO_PREPARED] newHeight ");
-        ((StringBuilder)localObject).append(i3);
+        ((StringBuilder)localObject).append("[VIDEO_PREPARED] newHeight-");
+        ((StringBuilder)localObject).append(localLayoutParams.height);
         ((StringBuilder)localObject).append(" newWidth-");
-        ((StringBuilder)localObject).append(i1);
-        ((StringBuilder)localObject).append(" newTop-");
-        ((StringBuilder)localObject).append(i2);
+        ((StringBuilder)localObject).append(localLayoutParams.width);
         QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
-      a(1020034L);
+      this.o.requestLayout();
+      b(1020034L);
     }
   }
   
-  private void B()
+  private void K()
   {
-    if (this.l)
+    if (this.G)
     {
-      f();
-      h();
+      k();
+      m();
     }
   }
   
-  private void C()
+  private void L()
   {
-    GdtMvElementsController localGdtMvElementsController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
+    GdtMvElementsController localGdtMvElementsController = this.u;
     if (localGdtMvElementsController != null) {
-      localGdtMvElementsController.c();
+      localGdtMvElementsController.d();
     }
   }
   
-  private void D()
+  private void M()
   {
-    WeakReferenceHandler localWeakReferenceHandler = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    WeakReferenceHandler localWeakReferenceHandler = this.k;
     if (localWeakReferenceHandler != null) {
-      localWeakReferenceHandler.post(new GdtMvViewController.10(this));
+      localWeakReferenceHandler.post(new GdtMvViewController.11(this));
     }
   }
   
-  private void E()
+  private void N()
   {
-    if (!this.o)
+    if (!this.T)
     {
-      a(1020012L);
-      this.o = true;
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    if (SystemClock.uptimeMillis() - this.jdField_c_of_type_Long < 800L) {
-      return;
-    }
-    if ((paramInt != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController != null))
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController.a(paramInt);
+      b(1020012L);
+      this.T = true;
     }
   }
   
@@ -261,46 +409,41 @@ public class GdtMvViewController
     localStringBuilder.append("setVoiceIconState volume =");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" mVideoPlayer ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(" isFromVolumeChanged = ");
     localStringBuilder.append(paramBoolean2);
     localStringBuilder.append(", mIsMute = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", viewResumed = ");
     localStringBuilder.append(paramBoolean1);
     localStringBuilder.append(", mIsVideoPlayCompleted = ");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.q);
     QLog.i("GdtMvViewController", 1, localStringBuilder.toString());
     if (paramBoolean1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer == null) {
+      if (this.j == null) {
         return;
       }
-      u();
-      if (!this.f) {
-        d(this.jdField_a_of_type_Boolean ^ true);
+      B();
+      if (!this.q) {
+        f(this.a ^ true);
       }
     }
   }
   
-  private void a(long paramLong)
-  {
-    GdtADFlyingStreamingReportHelper.a().a(paramLong);
-  }
-  
   private void a(View paramView)
   {
-    QLog.d("GdtMvViewController", 1, new Object[] { "initExpoReport isFirst=", Boolean.valueOf(this.n) });
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-    if ((this.n) && (paramView != null))
+    QLog.d("GdtMvViewController", 1, new Object[] { "initExpoReport isFirst=", Boolean.valueOf(this.S) });
+    this.A.c();
+    if ((this.S) && (paramView != null))
     {
-      this.n = false;
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker = new AdExposureChecker(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a(), new WeakReference(paramView));
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtMvViewController.9(this);
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker.setCallback(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker.startCheck();
-      paramView = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper;
-      ICmGameVideoPlayer localICmGameVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
+      this.S = false;
+      this.J = new AdExposureChecker(this.A.d(), new WeakReference(paramView));
+      this.K = new GdtMvViewController.10(this);
+      this.J.setCallback(new WeakReference(this.K));
+      this.J.startCheck();
+      paramView = this.d;
+      ICmGameVideoPlayer localICmGameVideoPlayer = this.j;
       long l1;
       if (localICmGameVideoPlayer != null) {
         l1 = localICmGameVideoPlayer.getCurrentPosition();
@@ -311,34 +454,37 @@ public class GdtMvViewController
     }
   }
   
+  @Nullable
   private View b(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
     try
     {
-      GdtMotiveVideoPageData localGdtMotiveVideoPageData = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-      if (this.jdField_b_of_type_Boolean)
+      GdtMotiveVideoPageData localGdtMotiveVideoPageData = this.A.a();
+      if (this.i)
       {
         if (localGdtMotiveVideoPageData.vSize == 585) {
-          this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559189, paramViewGroup, false);
+          this.g = paramLayoutInflater.inflate(2131624945, paramViewGroup, false);
         } else {
-          this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559188, paramViewGroup, false);
+          this.g = paramLayoutInflater.inflate(2131624943, paramViewGroup, false);
         }
       }
-      else {
-        this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559187, paramViewGroup, false);
+      else if ((localGdtMotiveVideoPageData.vSize == 585) && (this.A.d().isHitNew585Style())) {
+        this.g = paramLayoutInflater.inflate(2131624944, paramViewGroup, false);
+      } else {
+        this.g = paramLayoutInflater.inflate(2131624942, paramViewGroup, false);
       }
-      if (this.jdField_a_of_type_AndroidViewView == null) {
+      if (this.g == null) {
         return null;
       }
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController = new GdtMvElementsController(this, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy);
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper);
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController.a(this.jdField_b_of_type_Boolean);
-      GdtUIUtils.a(this.jdField_a_of_type_AndroidViewView.findViewById(2131371886));
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController.a();
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362157));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380646));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      return this.jdField_a_of_type_AndroidViewView;
+      this.u = new GdtMvElementsController(this, this.g, this.A, this.e);
+      this.u.a(this.d);
+      this.u.a(this.i);
+      GdtUIUtils.b(this.g.findViewById(2131439329));
+      this.u.a();
+      this.h = ((ImageView)this.g.findViewById(2131427736));
+      this.o = ((RelativeLayout)this.g.findViewById(2131449605));
+      this.o.setOnClickListener(this);
+      return this.g;
     }
     catch (Exception paramLayoutInflater)
     {
@@ -347,54 +493,72 @@ public class GdtMvViewController
     return null;
   }
   
-  private void c(boolean paramBoolean)
+  private void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(0);
-    GdtMVWebBottomCardController localGdtMVWebBottomCardController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
+    if (SystemClock.uptimeMillis() - this.R < 800L) {
+      return;
+    }
+    if ((paramInt != this.b) && (this.u != null))
+    {
+      this.b = paramInt;
+      this.R = SystemClock.uptimeMillis();
+      this.u.a(paramInt);
+    }
+  }
+  
+  private void b(long paramLong)
+  {
+    GdtADFlyingStreamingReportHelper.a().a(paramLong);
+  }
+  
+  private void e(boolean paramBoolean)
+  {
+    this.c.a(0);
+    GdtMVWebBottomCardController localGdtMVWebBottomCardController = this.I;
     if (localGdtMVWebBottomCardController != null) {
       localGdtMVWebBottomCardController.a(paramBoolean);
     }
     GdtADFlyingStreamingReportHelper.a().a(1);
   }
   
-  private void d(boolean paramBoolean)
+  private void f(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager != null)
+    if (this.B != null)
     {
       if (paramBoolean)
       {
         QLog.i("GdtMvViewController", 1, "[requestSystemAudioFocus] gain is called!");
-        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(null, 3, 2);
+        this.B.requestAudioFocus(null, 3, 2);
         return;
       }
       QLog.i("GdtMvViewController", 1, "[requestSystemAudioFocus] release is called!");
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(null);
+      this.B.abandonAudioFocus(null);
     }
   }
   
-  private void e(boolean paramBoolean)
+  private void g(boolean paramBoolean)
   {
-    GdtMvElementsController localGdtMvElementsController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
+    GdtMvElementsController localGdtMvElementsController = this.u;
     if ((localGdtMvElementsController != null) && (paramBoolean)) {
-      localGdtMvElementsController.d();
+      localGdtMvElementsController.e();
     }
   }
   
-  private void l()
+  private void s()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
-    if ((localObject != null) && (((GdtMotiveVideoModel)localObject).a() != null) && (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().isValid()))
+    Object localObject = this.A;
+    if ((localObject != null) && (((GdtMotiveVideoModel)localObject).d() != null) && (this.A.d().isValid()))
     {
-      localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-      ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).preLoadAfterAdLoaded(this.jdField_a_of_type_AndroidContentContext, (GdtAd)localObject);
+      localObject = this.A.d();
+      ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).preLoadAfterAdLoaded(this.y, (GdtAd)localObject);
       return;
     }
     QLog.e("GdtMvViewController", 1, "doAdPreload error");
   }
   
-  private void m()
+  private void t()
   {
-    Object localObject = this.jdField_a_of_type_AndroidMediaAudioManager;
+    Object localObject = this.B;
     if (localObject != null)
     {
       boolean bool;
@@ -403,74 +567,74 @@ public class GdtMvViewController
       } else {
         bool = false;
       }
-      this.j = bool;
+      this.C = bool;
     }
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController$SilentModeReceiver = new GdtMvViewController.SilentModeReceiver(this, null);
+    this.D = new GdtMvViewController.SilentModeReceiver(this, null);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("android.media.RINGER_MODE_CHANGED");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController$SilentModeReceiver, (IntentFilter)localObject);
-    this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver = new VolumeChangeObserver(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver.a();
-    this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver.a(new GdtMvViewController.1(this));
+    this.y.registerReceiver(this.D, (IntentFilter)localObject);
+    this.E = new VolumeChangeObserver(this.y);
+    this.E.a();
+    this.E.a(new GdtMvViewController.1(this));
   }
   
-  private void n()
+  private void u()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController != null)
+    if (this.u != null)
     {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp = new GdtVideoReportListenerImp(11);
+      this.w = new GdtVideoReportListenerImp(11);
       return;
     }
     QLog.i("GdtMvViewController", 1, " initReports error");
   }
   
-  private void o()
+  private void v()
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController = new GdtMVEndcardWebController(this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy);
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a(), this.jdField_b_of_type_Boolean);
+    this.H = new GdtMVEndcardWebController(this.e);
+    this.H.a(this.A, this.g, this.f.b(), this.i);
   }
   
-  private void p()
+  private void w()
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController = new GdtMVWebBottomCardController(new GdtMvViewController.2(this), this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler);
-    boolean bool = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a(), this.jdField_b_of_type_Boolean);
+    this.I = new GdtMVWebBottomCardController(new GdtMvViewController.2(this), this.k);
+    boolean bool = this.I.a(this.A, this.g, this.f.b(), this.i);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("web bottom card result:");
     localStringBuilder.append(bool);
     QLog.i("GdtMvViewController", 1, localStringBuilder.toString());
     if (bool)
     {
-      q();
+      x();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController.e();
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController = null;
-      c(false);
+      this.I.e();
+      this.I = null;
+      e(false);
     }
     GdtADFlyingStreamingReportHelper.a().a(1020030L);
   }
   
-  private void q()
+  private void x()
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(4);
-    GdtMVWebBottomCardController localGdtMVWebBottomCardController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
+    this.c.a(4);
+    GdtMVWebBottomCardController localGdtMVWebBottomCardController = this.I;
     if (localGdtMVWebBottomCardController != null)
     {
       localGdtMVWebBottomCardController.a();
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController.f();
+      this.I.f();
     }
   }
   
-  private void r()
+  private void y()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidViewView.getContext(), 0, null, "", HardCodeUtil.a(2131705312), HardCodeUtil.a(2131705309), new GdtMvViewController.3(this), new GdtMvViewController.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new GdtMvViewController.5(this));
+    this.v = DialogUtil.a(this.g.getContext(), 0, null, "", HardCodeUtil.a(2131903195), HardCodeUtil.a(2131903192), new GdtMvViewController.3(this), new GdtMvViewController.4(this));
+    this.v.setOnKeyListener(new GdtMvViewController.5(this));
   }
   
-  private void s()
+  private void z()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
+    Object localObject = this.A.b();
     boolean bool2 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).exp_info.video_volume.has();
     int i1 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).exp_info.video_volume.get();
     localObject = new StringBuilder();
@@ -484,190 +648,80 @@ public class GdtMvViewController
     if ((!bool2) || (i1 != 0)) {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-  }
-  
-  private void t()
-  {
-    if (this.j)
-    {
-      QLog.i("GdtMvViewController", 1, "refreshVoiceIconDrawable isSilentMode is true");
-      this.jdField_a_of_type_Boolean = true;
-    }
-    u();
-  }
-  
-  private void u()
-  {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_Boolean);
-  }
-  
-  private void v()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-    localObject = this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.b(this.jdField_a_of_type_AndroidContentContext, ((GdtMotiveVideoPageData)localObject).previewImgUrl);
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if ((localImageView != null) && (localObject != null)) {
-      localImageView.setImageDrawable((Drawable)localObject);
-    }
-  }
-  
-  private void w()
-  {
-    QLog.i("VideoGdtGdtMvViewController", 1, "initVideoView");
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo.a(11);
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer = ((ICmGameVideoPlayer)QRoute.api(ICmGameVideoPlayer.class));
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.initVideoPlayer(this.jdField_a_of_type_AndroidViewView.getContext(), ((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface());
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.addPlayerCallback(this, 100L);
-    View localView = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoContainer();
-    if ((localView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
-    {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localView, localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.startPlay(((GdtMotiveVideoPageData)localObject).url, "sd", 0);
-      return;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[setViewStatus], videoView is null.");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    QLog.i("VideoGdtGdtMvViewController", 1, ((StringBuilder)localObject).toString());
-  }
-  
-  private void x()
-  {
-    if (QQVideoPlaySDKManager.a())
-    {
-      w();
-      return;
-    }
-    y();
-  }
-  
-  private void y()
-  {
-    try
-    {
-      QLog.i("VideoGdtGdtMvViewController", 1, "installSDK");
-      QQVideoPlaySDKManager.a(BaseApplication.getContext(), new GdtMvViewController.6(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoGdtGdtMvViewController", 1, "installSDK", localThrowable);
-    }
-  }
-  
-  private void z()
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[doPauseAction] mIsVideoPlayCompleted:");
-    ((StringBuilder)localObject1).append(this.f);
-    QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-    d(false);
-    Object localObject2;
-    if (!this.f)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-      if (localObject2 != null)
-      {
-        this.h = false;
-        if (((ICmGameVideoPlayer)localObject2).isPlaying())
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp;
-          if ((localObject2 != null) && (localObject1 != null)) {
-            ((GdtVideoReportListenerImp)localObject2).b((GdtVideoData)localObject1, this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition(), this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo);
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.pause();
-      }
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
-    if (localObject1 != null) {
-      ((GdtMVEndcardWebController)localObject1).c();
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
-    if (localObject1 != null)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-      if (localObject2 != null) {
-        ((GdtMVWebBottomCardController)localObject1).a(((ICmGameVideoPlayer)localObject2).getMuteValue(), this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoDuration(), this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition(), this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer));
-      }
-    }
-  }
-  
-  public long a()
-  {
-    ICmGameVideoPlayer localICmGameVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-    if (localICmGameVideoPlayer != null)
-    {
-      if (this.f) {
-        return this.jdField_a_of_type_Long;
-      }
-      return localICmGameVideoPlayer.getCurrentPosition();
-    }
-    return 0L;
+    this.a = bool1;
   }
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    s();
+    z();
     paramLayoutInflater = b(paramLayoutInflater, paramViewGroup);
     if (paramLayoutInflater == null)
     {
       QLog.i("GdtMvViewController", 1, "GdtMvViewController init:rootView==null error");
       return null;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramLayoutInflater.getContext();
+    this.y = paramLayoutInflater.getContext();
     paramViewGroup = new StringBuilder();
     paramViewGroup.append("GdtMvViewController: init = ");
-    paramViewGroup.append(this.l);
+    paramViewGroup.append(this.G);
     paramViewGroup.append(", mContext = ");
-    paramViewGroup.append(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.append(this.y);
     QLog.i("GdtMvViewController", 1, paramViewGroup.toString());
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("audio"));
-    paramViewGroup = this.jdField_a_of_type_AndroidContentContext;
-    if (((paramViewGroup instanceof Activity)) && (!this.l)) {
+    this.B = ((AudioManager)this.y.getSystemService("audio"));
+    paramViewGroup = this.y;
+    if (((paramViewGroup instanceof Activity)) && (!this.G)) {
       ((Activity)paramViewGroup).setVolumeControlStream(3);
     }
-    l();
-    GdtADFlyingStreamingReportHelper.a().a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel);
-    m();
+    s();
+    GdtADFlyingStreamingReportHelper.a().a(this.A);
     t();
+    A();
     a();
+    D();
+    F();
+    L();
+    y();
+    u();
     v();
-    x();
-    C();
-    r();
-    n();
-    o();
-    p();
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel);
-    a(1020033L);
-    a(1020006L);
-    if (this.m)
+    w();
+    this.d.a(this.A);
+    b(1020033L);
+    b(1020006L);
+    if (this.Q)
     {
-      GdtOriginalExposureReporter.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a(), this.jdField_a_of_type_AndroidContentContext);
-      this.m = false;
+      GdtOriginalExposureReporter.a(this.A.d(), this.y, this.L);
+      this.Q = false;
     }
     return paramLayoutInflater;
   }
   
-  public IMotiveVideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView;
-  }
-  
-  public GdtImpressionReporter.GdtVideoReportInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(this.jdField_a_of_type_AndroidViewView, this, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper);
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a(), this.jdField_b_of_type_Boolean);
+    Object localObject = this.A;
+    if (localObject == null) {
+      return;
+    }
+    this.c.a(this.g, this, (GdtMotiveVideoModel)localObject, this.d);
+    this.c.a(this.f.b(), this.i);
+    if (this.A.d() == null) {
+      return;
+    }
+    localObject = this.A.d().getExperimentParam(110814);
+    try
+    {
+      this.N = Integer.parseInt((String)localObject);
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e("GdtMvViewController", 1, "[initTitle] NumberFormatException, ", localNumberFormatException);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.L = paramInt;
+    this.c.b(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
@@ -682,180 +736,214 @@ public class GdtMvViewController
     localStringBuilder.append(",msg:");
     localStringBuilder.append(paramString);
     QLog.i("GdtMvViewController", 1, localStringBuilder.toString());
-    paramString = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp != null) && (paramString != null))
+    paramString = this.A.c();
+    if ((this.w != null) && (paramString != null))
     {
-      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo.a(paramInt2, paramInt3);
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp.a(paramString, this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition(), this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo);
+      this.P.a(paramInt2, paramInt3);
+      this.w.a(paramString, this.j.getCurrentPosition(), this.P);
     }
-    a(1020009L);
-    a(1020007L);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+    b(1020009L);
+    b(1020007L);
+    GdtReporter.reportPlayFail(this.A, paramInt2, paramInt3);
+    this.k.sendEmptyMessage(4);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.r = paramLong;
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
+    Object localObject1 = this.A.c();
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new GdtMvViewController.8(this, paramLong1, paramLong2));
+      this.k.post(new GdtMvViewController.9(this, paramLong1, paramLong2));
       return;
     }
-    if (this.f) {
+    if (this.q) {
       return;
     }
     boolean bool;
-    if (paramLong2 < this.jdField_b_of_type_Long * 1000L) {
+    if (paramLong2 < this.r * 1000L) {
       bool = true;
     } else {
       bool = false;
     }
-    this.g = bool;
-    long l4 = paramLong2 - paramLong1;
+    this.t = bool;
+    long l2 = paramLong2 - paramLong1;
     long l1;
-    if (this.g) {
+    if (this.t) {
       l1 = paramLong1;
     } else {
-      l1 = this.jdField_b_of_type_Long * 1000L - l4;
+      l1 = this.r * 1000L - l2;
     }
-    long l2 = l1 / 1000L + 1L;
-    long l3 = this.jdField_b_of_type_Long;
-    if (l2 > l3) {
-      l2 = l3;
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper;
-    if (localObject2 != null) {
-      ((GdtMvTitleHelper)localObject2).a(paramLong2, this.jdField_b_of_type_Long * 1000L);
-    }
-    a(l1, l2, l4);
-    paramLong2 = l4 / 1000L;
-    a(paramLong2, this.f);
+    long l3 = Math.min(l1 / 1000L + 1L, this.r);
+    this.c.a(paramLong2, this.r * 1000L);
+    a(l1, l3, l2);
+    paramLong2 = l2 / 1000L;
+    a(paramLong2, this.q);
     if (l1 <= 0L)
     {
-      this.jdField_c_of_type_Boolean = true;
-      E();
+      this.m = true;
+      N();
     }
     if (paramLong2 == 2L) {
-      e(true);
+      g(true);
     }
     if (paramLong1 / 1000L == 3L) {
-      e(false);
+      g(false);
     }
-    if (!this.h)
+    if (paramLong2 == this.N) {
+      this.c.b();
+    }
+    Object localObject2;
+    if (!this.x)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp;
-      if (localObject2 != null)
+      localObject2 = this.w;
+      if ((localObject2 != null) && (this.j != null) && (localObject1 != null))
       {
-        ICmGameVideoPlayer localICmGameVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-        if ((localICmGameVideoPlayer != null) && (localObject1 != null))
-        {
-          this.h = true;
-          ((GdtVideoReportListenerImp)localObject2).a((GdtVideoData)localObject1, localICmGameVideoPlayer.getCurrentPosition());
-        }
+        this.x = true;
+        ((GdtVideoReportListenerImp)localObject2).a((GdtVideoData)localObject1, 0L);
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
+    localObject1 = this.H;
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
+      localObject2 = this.j;
       if (localObject2 != null) {
-        ((GdtMVEndcardWebController)localObject1).a(((ICmGameVideoPlayer)localObject2).getVideoDuration() - this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition());
+        ((GdtMVEndcardWebController)localObject1).a(((ICmGameVideoPlayer)localObject2).getVideoDuration() - this.j.getCurrentPosition());
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
+    localObject1 = this.I;
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
+      localObject2 = this.j;
       if (localObject2 != null) {
-        ((GdtMVWebBottomCardController)localObject1).a(((ICmGameVideoPlayer)localObject2).getMuteValue(), this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoDuration(), this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition(), this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer));
+        ((GdtMVWebBottomCardController)localObject1).a(((ICmGameVideoPlayer)localObject2).getMuteValue(), this.j.getVideoDuration(), this.j.getCurrentPosition(), this.r, this.I.a(this.j));
       }
     }
   }
   
   protected void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(paramLong1, paramLong2, paramLong3);
+    this.c.a(paramLong1, paramLong2, paramLong3);
   }
   
   protected void a(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a(paramLong, paramBoolean);
+    this.c.a(paramLong, paramBoolean);
   }
   
   public void a(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
+    Object localObject1 = this.A.a();
     QLog.i("GdtMvViewController", 1, "GDT beforeFinish call stack:", new Throwable());
     Intent localIntent = new Intent();
-    localIntent.putExtra("duration_time", this.jdField_a_of_type_Long);
-    localIntent.putExtra("elapsed_time", this.jdField_a_of_type_Long);
-    localIntent.putExtra("profitable_flag", this.jdField_c_of_type_Boolean);
-    localIntent.putExtra("is_end", this.f);
-    boolean bool = this.f;
+    localIntent.putExtra("duration_time", this.l);
+    localIntent.putExtra("elapsed_time", this.l);
+    localIntent.putExtra("profitable_flag", this.m);
+    localIntent.putExtra("is_end", this.q);
+    boolean bool = this.q;
     Object localObject2;
     if (bool)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy;
-      long l1 = this.jdField_a_of_type_Long;
+      localObject2 = this.e;
+      long l1 = this.l;
       ((GdtThirdProcessorProxy)localObject2).a((GdtMotiveVideoPageData)localObject1, l1, l1, bool);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("true[beforeFinish] ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.l);
       ((StringBuilder)localObject1).append(" /");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.l);
       QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject1).toString());
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
+      localObject2 = this.j;
       if (localObject2 != null)
       {
         localIntent.putExtra("elapsed_time", ((ICmGameVideoPlayer)localObject2).getCurrentPosition());
-        this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a((GdtMotiveVideoPageData)localObject1, this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition(), this.jdField_a_of_type_Long, this.f);
+        this.e.a((GdtMotiveVideoPageData)localObject1, this.j.getCurrentPosition(), this.l, this.q);
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Boolean);
+        ((StringBuilder)localObject1).append(this.m);
         ((StringBuilder)localObject1).append("[beforeFinish] ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition());
+        ((StringBuilder)localObject1).append(this.j.getCurrentPosition());
         ((StringBuilder)localObject1).append(" /");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append(this.l);
         QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject1).toString());
       }
     }
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a(localIntent, paramString);
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a(-1, localIntent);
-    B();
+    this.e.a(localIntent, paramString);
+    this.f.a(-1, localIntent);
+    K();
+  }
+  
+  public void a(WeakReference<GdtMvViewController.Listener> paramWeakReference)
+  {
+    this.O = paramWeakReference;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer == null) {
+    if (this.j == null) {
       return;
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper.a(7, a());
+      this.d.a(7, c());
     }
-    paramBoolean = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getMuteValue();
-    this.jdField_a_of_type_Boolean = (paramBoolean ^ true);
+    paramBoolean = this.j.getMuteValue();
+    this.a = (paramBoolean ^ true);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("audioSwitch click is called isSilentMode = ");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.C);
     localStringBuilder.append(", isMute = ");
     localStringBuilder.append(paramBoolean);
     QLog.i("GdtMvViewController", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.setMute(this.jdField_a_of_type_Boolean);
-    a(this.jdField_a_of_type_Boolean ^ true, true, false);
+    this.j.setMute(this.a);
+    a(this.a ^ true, true, false);
   }
   
-  public boolean a()
+  public void b(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoTitleGdtMvTitleHelper.a();
+    QLog.i("GdtMvViewController", 1, " onClick close_ads");
+    if (GdtADFlyingStreamingReportHelper.a().b() == 2) {
+      GdtADFlyingStreamingReportHelper.a().a(1020016L);
+    } else {
+      GdtADFlyingStreamingReportHelper.a().a(1020028L);
+    }
+    if (!c(true))
+    {
+      if (paramBoolean) {
+        this.d.a(4, c());
+      }
+      this.f.a();
+    }
   }
   
-  public boolean a(boolean paramBoolean)
+  public boolean b()
+  {
+    return this.c.a();
+  }
+  
+  public long c()
+  {
+    ICmGameVideoPlayer localICmGameVideoPlayer = this.j;
+    if (localICmGameVideoPlayer != null)
+    {
+      if (this.q) {
+        return this.l;
+      }
+      return localICmGameVideoPlayer.getCurrentPosition();
+    }
+    return 0L;
+  }
+  
+  public boolean c(boolean paramBoolean)
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[onBackEvent] mHasWatchAds ");
-    ((StringBuilder)localObject1).append(this.jdField_c_of_type_Boolean);
+    ((StringBuilder)localObject1).append(this.m);
     QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject1).toString());
     if (!paramBoolean) {}
     for (;;)
@@ -863,42 +951,46 @@ public class GdtMvViewController
       return true;
       try
       {
-        if (this.jdField_c_of_type_Boolean) {
-          return false;
-        }
-        b();
-        if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
+        if (this.m)
         {
+          if (!C()) {}
+        }
+        else
+        {
+          g();
+          if ((this.v == null) || (this.v.isShowing())) {
+            continue;
+          }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("showDialog mVideoDuration ");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
-          ((StringBuilder)localObject1).append(" mShotSeconds ");
-          ((StringBuilder)localObject1).append(this.jdField_b_of_type_Long);
+          ((StringBuilder)localObject1).append(this.l);
+          ((StringBuilder)localObject1).append(" mRewardTime ");
+          ((StringBuilder)localObject1).append(this.r);
           ((StringBuilder)localObject1).append(" mRewardText ");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.s);
           QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject1).toString());
-          localObject1 = new StringBuffer(HardCodeUtil.a(2131692865));
-          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            ((StringBuffer)localObject1).append(HardCodeUtil.a(2131692857));
+          localObject1 = new StringBuffer(HardCodeUtil.a(2131889976));
+          if (TextUtils.isEmpty(this.s)) {
+            ((StringBuffer)localObject1).append(HardCodeUtil.a(2131889966));
           } else {
-            ((StringBuffer)localObject1).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuffer)localObject1).append(this.s);
           }
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-          if (this.jdField_a_of_type_Long > this.jdField_b_of_type_Long * 1000L)
+          localObject2 = this.v;
+          if (this.l > this.r * 1000L)
           {
             StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(HardCodeUtil.a(2131705307));
-            localStringBuilder.append(this.jdField_b_of_type_Long);
+            localStringBuilder.append(HardCodeUtil.a(2131903190));
+            localStringBuilder.append(this.r);
             localStringBuilder.append(((StringBuffer)localObject1).toString());
             localObject1 = localStringBuilder.toString();
           }
           else
           {
-            localObject1 = HardCodeUtil.a(2131705308);
+            localObject1 = HardCodeUtil.a(2131903191);
           }
           ((QQCustomDialog)localObject2).setMessage((CharSequence)localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow();
+          this.v.show();
+          localObject1 = this.v.getWindow();
           if (localObject1 != null) {
             ((Window)localObject1).getDecorView().setSystemUiVisibility(7942);
           }
@@ -916,205 +1008,93 @@ public class GdtMvViewController
     return false;
   }
   
-  protected void b()
+  public void d(boolean paramBoolean)
   {
-    ICmGameVideoPlayer localICmGameVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-    if ((localICmGameVideoPlayer != null) && (!localICmGameVideoPlayer.isPaused()))
-    {
-      this.d = true;
-      z();
-    }
-    a(1020010L);
+    this.M = paramBoolean;
+    this.c.a(paramBoolean);
   }
   
-  public void b(boolean paramBoolean)
+  public boolean d()
   {
-    QLog.i("GdtMvViewController", 1, " onClick close_ads");
-    if (GdtADFlyingStreamingReportHelper.a().a() == 2) {
-      GdtADFlyingStreamingReportHelper.a().a(1020016L);
-    } else {
-      GdtADFlyingStreamingReportHelper.a().a(1020028L);
-    }
-    if (!a(true))
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMvMiniAppReportHelper.a(4, a());
-      }
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a();
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.f;
-  }
-  
-  public void c()
-  {
-    QLog.i("GdtMvViewController", 1, "[onVideoPrepared]");
-    if (!this.e)
-    {
-      this.e = true;
-      if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null)
-      {
-        QLog.i("GdtMvViewController", 1, "[onVideoPrepared] send PREPARED msg");
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1).sendToTarget();
-      }
-    }
-    else if (!this.d)
-    {
-      ICmGameVideoPlayer localICmGameVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-      if ((localICmGameVideoPlayer != null) && (!localICmGameVideoPlayer.isPlaying()))
-      {
-        QLog.i("GdtMvViewController", 1, "[onVideoPrepared] resume VideoPlayer again");
-        d();
-      }
-    }
-  }
-  
-  public boolean c()
-  {
-    GdtMVEndcardWebController localGdtMVEndcardWebController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
-    if ((localGdtMVEndcardWebController != null) && (localGdtMVEndcardWebController.a())) {
-      return true;
-    }
-    return a(false);
-  }
-  
-  public void d()
-  {
-    if (this.i)
-    {
-      ICmGameVideoPlayer localICmGameVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-      if (localICmGameVideoPlayer != null)
-      {
-        localICmGameVideoPlayer.resume();
-        d(this.jdField_a_of_type_Boolean ^ true);
-        u();
-      }
-    }
+    return this.q;
   }
   
   public void e()
   {
-    QLog.i("GdtMvViewController", 1, "[onVideoCompletion]");
-    Object localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a();
-    this.e = false;
-    this.f = true;
-    this.jdField_c_of_type_Boolean = true;
-    Object localObject2 = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-    if (localObject2 != null) {
-      ((WeakReferenceHandler)localObject2).obtainMessage(2).sendToTarget();
-    }
-    localObject2 = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp;
-    if ((localObject2 != null) && (localObject1 != null)) {
-      ((GdtVideoReportListenerImp)localObject2).a((GdtVideoData)localObject1, this.jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionReporter$GdtVideoReportInfo);
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
-    if (localObject1 != null)
+    int i1 = 1;
+    QLog.i("GdtMvViewController", 1, "[onClickFeedback]");
+    Object localObject = this.A;
+    if ((localObject != null) && (((GdtMotiveVideoModel)localObject).d() != null))
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-      if (localObject2 != null) {
-        ((GdtMVWebBottomCardController)localObject1).a(((ICmGameVideoPlayer)localObject2).getMuteValue(), this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoDuration(), this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getCurrentPosition(), this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer));
+      localObject = this.A.d().getUrlForFeedBack();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).replace("__ACT_TYPE__", "2001");
+        ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).doCgiReport((String)localObject);
+        QLog.i("GdtMvViewController", 1, "[onClickFeedback] report feedback");
+        AdToast.show(this.y, 2, "反馈成功，后续将减少此品类广告", 0);
       }
-      ThreadManager.getUIHandler().post(new GdtMvViewController.7(this));
+      if ((!this.M) || (!"2".equals(this.A.d().getExperimentParam(109756))) || (this.L != 1)) {
+        i1 = 0;
+      }
+      if (i1 != 0)
+      {
+        localObject = this.A.c();
+        if (this.j.isPlaying())
+        {
+          GdtVideoReportListenerImp localGdtVideoReportListenerImp = this.w;
+          if ((localGdtVideoReportListenerImp != null) && (localObject != null)) {
+            localGdtVideoReportListenerImp.b((GdtVideoData)localObject, this.j.getCurrentPosition(), this.P);
+          }
+        }
+        ThreadManager.getUIHandler().post(new GdtMvViewController.6(this));
+      }
+      return;
     }
+    QLog.i("GdtMvViewController", 1, "[onClickFeedback] gdtAd is null");
   }
   
-  public void f()
+  public boolean f()
   {
-    this.i = false;
-    z();
-    Object localObject = this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker;
-    if (localObject != null) {
-      ((AdExposureChecker)localObject).onActivityPause();
+    GdtMVEndcardWebController localGdtMVEndcardWebController = this.H;
+    if ((localGdtMVEndcardWebController != null) && (localGdtMVEndcardWebController.b())) {
+      return true;
     }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
-    if (localObject != null) {
-      ((GdtMvElementsController)localObject).h();
-    }
+    return c(false);
   }
   
-  public void g()
+  protected void g()
   {
-    this.i = true;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[onResume]");
-    ((StringBuilder)localObject).append(this.d);
-    ((StringBuilder)localObject).append(" mIsVideoPlayCompleted ");
-    ((StringBuilder)localObject).append(this.f);
-    QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject).toString());
-    if ((!this.d) && (!this.f) && (this.e)) {
-      d();
+    ICmGameVideoPlayer localICmGameVideoPlayer = this.j;
+    if ((localICmGameVideoPlayer != null) && (!localICmGameVideoPlayer.isPaused()))
+    {
+      this.n = true;
+      H();
     }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
-    if (localObject != null) {
-      ((GdtMvElementsController)localObject).g();
-    }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
-    if (localObject != null) {
-      ((GdtMVEndcardWebController)localObject).b();
-    }
-    GdtMvWebJsActionHelper.a(new GdtMvViewController.MvWebJsCallAction(this, null));
-    localObject = this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker;
-    if (localObject != null) {
-      ((AdExposureChecker)localObject).onActivityResume();
-    }
+    b(1020010L);
   }
   
   public void h()
   {
-    QLog.i("GdtMvViewController", 1, "[onDestroy]");
-    Object localObject = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-    if (localObject != null) {
-      ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
-    }
-    localObject = this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver;
-    if (localObject != null) {
-      ((VolumeChangeObserver)localObject).b();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
-    if (localObject != null)
+    QLog.i("GdtMvViewController", 1, "[onVideoPrepared]");
+    if (!this.p)
     {
-      ((ICmGameVideoPlayer)localObject).removePlayerCallback(this);
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.release();
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
-    if (localObject != null)
-    {
-      ((GdtMvElementsController)localObject).f();
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
-    if (localObject != null) {
-      ((GdtMVEndcardWebController)localObject).b(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a(), this.l);
-    }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradGdtMVWebBottomCardController;
-    if (localObject != null) {
-      ((GdtMVWebBottomCardController)localObject).e();
-    }
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoReportListenerImp = null;
-    }
-    localObject = this.jdField_a_of_type_AndroidContentContext;
-    if (localObject != null)
-    {
-      GdtMvViewController.SilentModeReceiver localSilentModeReceiver = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController$SilentModeReceiver;
-      if (localSilentModeReceiver != null) {
-        ((Context)localObject).unregisterReceiver(localSilentModeReceiver);
+      this.p = true;
+      if (this.k != null)
+      {
+        QLog.i("GdtMvViewController", 1, "[onVideoPrepared] send PREPARED msg");
+        this.k.obtainMessage(1).sendToTarget();
       }
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    GdtImpressionPolicy.a().a();
-    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplication.getContext(), true, 55);
-    localObject = this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker;
-    if (localObject != null)
+    else if (!this.n)
     {
-      ((AdExposureChecker)localObject).onActivityDestroy();
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker.setCallback(null);
+      ICmGameVideoPlayer localICmGameVideoPlayer = this.j;
+      if ((localICmGameVideoPlayer != null) && (!localICmGameVideoPlayer.isPlaying()))
+      {
+        QLog.i("GdtMvViewController", 1, "[onVideoPrepared] resume VideoPlayer again");
+        i();
+      }
     }
-    GdtMvWebJsActionHelper.a();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1134,81 +1114,230 @@ public class GdtMvViewController
           return false;
         }
         QLog.i("GdtMvViewController", 1, "[VIDEO_SDK_INSTALLED] initVideoView");
-        w();
+        E();
         return false;
       }
       QLog.i("GdtMvViewController", 1, "[onVideoCompletion]");
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
+      paramMessage = this.j;
       if (paramMessage != null) {
         paramMessage.removePlayerCallback(this);
       }
-      a(0L, 0L, 0L);
-      a(0L, true);
-      d(false);
-      a(1020013L);
-      j();
+      I();
+      b(1020013L);
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer == null) {
+    if (this.j == null) {
       return false;
     }
-    A();
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer;
+    J();
+    paramMessage = this.j;
     if (paramMessage != null)
     {
       boolean bool;
-      if ((!this.jdField_a_of_type_Boolean) && (!this.j)) {
+      if ((!this.a) && (!this.C)) {
         bool = false;
       } else {
         bool = true;
       }
       paramMessage.setMute(bool);
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessVideoApiICmGameVideoPlayer.getVideoDuration();
+      this.l = this.j.getVideoDuration();
       paramMessage = new StringBuilder();
       paramMessage.append("[mDuration]");
-      paramMessage.append(this.jdField_a_of_type_Long);
+      paramMessage.append(this.l);
       paramMessage.append(", mIsMute = ");
-      paramMessage.append(this.jdField_a_of_type_Boolean);
+      paramMessage.append(this.a);
       paramMessage.append(", isSilentMode = ");
-      paramMessage.append(this.j);
+      paramMessage.append(this.C);
       QLog.i("GdtMvViewController", 1, paramMessage.toString());
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().setDurationMillis(this.jdField_a_of_type_Long);
-      d();
+      this.A.c().setDurationMillis(this.l);
+      i();
     }
     return false;
   }
   
   public void i()
   {
+    if (this.z)
+    {
+      ICmGameVideoPlayer localICmGameVideoPlayer = this.j;
+      if (localICmGameVideoPlayer != null)
+      {
+        localICmGameVideoPlayer.resume();
+        f(this.a ^ true);
+        B();
+      }
+    }
+  }
+  
+  public void j()
+  {
+    QLog.i("GdtMvViewController", 1, "[onVideoCompletion]");
+    Object localObject1 = this.A.c();
+    this.p = false;
+    this.q = true;
+    this.m = true;
+    Object localObject2 = this.k;
+    if (localObject2 != null) {
+      ((WeakReferenceHandler)localObject2).obtainMessage(2).sendToTarget();
+    }
+    localObject2 = this.w;
+    if ((localObject2 != null) && (localObject1 != null)) {
+      ((GdtVideoReportListenerImp)localObject2).a((GdtVideoData)localObject1, this.P);
+    }
+    localObject1 = this.I;
+    if (localObject1 != null)
+    {
+      localObject2 = this.j;
+      if (localObject2 != null) {
+        ((GdtMVWebBottomCardController)localObject1).a(((ICmGameVideoPlayer)localObject2).getMuteValue(), this.j.getVideoDuration(), this.j.getCurrentPosition(), this.r, this.I.a(this.j));
+      }
+      ThreadManager.getUIHandler().post(new GdtMvViewController.8(this));
+    }
+  }
+  
+  public void k()
+  {
+    this.z = false;
+    H();
+    Object localObject = this.J;
+    if (localObject != null) {
+      ((AdExposureChecker)localObject).onActivityPause();
+    }
+    localObject = this.u;
+    if (localObject != null) {
+      ((GdtMvElementsController)localObject).j();
+    }
+  }
+  
+  public void l()
+  {
+    this.z = true;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onResume]");
+    ((StringBuilder)localObject).append(this.n);
+    ((StringBuilder)localObject).append(" mIsVideoPlayCompleted ");
+    ((StringBuilder)localObject).append(this.q);
+    QLog.i("GdtMvViewController", 1, ((StringBuilder)localObject).toString());
+    if ((!this.n) && (!this.q) && (this.p)) {
+      i();
+    }
+    localObject = this.u;
+    if (localObject != null) {
+      ((GdtMvElementsController)localObject).i();
+    }
+    localObject = this.H;
+    if (localObject != null) {
+      ((GdtMVEndcardWebController)localObject).c();
+    }
+    GdtMvWebJsActionHelper.a(new GdtMvViewController.MvWebJsCallAction(this, null));
+    localObject = this.J;
+    if (localObject != null) {
+      ((AdExposureChecker)localObject).onActivityResume();
+    }
+  }
+  
+  public void m()
+  {
+    QLog.i("GdtMvViewController", 1, "[onDestroy]");
+    Object localObject = this.k;
+    if (localObject != null) {
+      ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
+    }
+    localObject = this.E;
+    if (localObject != null) {
+      ((VolumeChangeObserver)localObject).b();
+    }
+    localObject = this.j;
+    if (localObject != null)
+    {
+      ((ICmGameVideoPlayer)localObject).removePlayerCallback(this);
+      this.j.release();
+      this.j = null;
+    }
+    localObject = this.u;
+    if (localObject != null)
+    {
+      ((GdtMvElementsController)localObject).h();
+      this.u = null;
+    }
+    localObject = this.H;
+    if (localObject != null) {
+      ((GdtMVEndcardWebController)localObject).b(this.f.b(), this.G);
+    }
+    localObject = this.I;
+    if (localObject != null) {
+      ((GdtMVWebBottomCardController)localObject).e();
+    }
+    if (this.w != null) {
+      this.w = null;
+    }
+    localObject = this.y;
+    if (localObject != null)
+    {
+      GdtMvViewController.SilentModeReceiver localSilentModeReceiver = this.D;
+      if (localSilentModeReceiver != null) {
+        ((Context)localObject).unregisterReceiver(localSilentModeReceiver);
+      }
+    }
+    this.y = null;
+    GdtImpressionPolicy.a().b();
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplication.getContext(), true, 55);
+    localObject = this.J;
+    if (localObject != null)
+    {
+      ((AdExposureChecker)localObject).onActivityDestroy();
+      this.J.setCallback(null);
+    }
+    GdtMvWebJsActionHelper.a();
+  }
+  
+  public void n()
+  {
     QLog.i("GdtMvViewController", 1, "[onCreate]");
     ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplication.getContext(), false, 55);
   }
   
-  protected void j()
+  protected void o()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsController;
-    if (localObject != null) {
+    Object localObject = this.u;
+    if (localObject != null)
+    {
       ((GdtMvElementsController)localObject).b();
+      this.u.c();
     }
-    a(1);
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebEndcradGdtMVEndcardWebController;
+    b(1);
+    localObject = this.H;
     if (localObject != null) {
-      ((GdtMVEndcardWebController)localObject).a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoIMotiveVideoView.a(), this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, this.jdField_b_of_type_Boolean);
+      ((GdtMVEndcardWebController)localObject).a(this.f.b(), this.A, this.i);
+    }
+    localObject = this.A;
+    if (localObject != null) {
+      this.c.a(((GdtMotiveVideoModel)localObject).d());
     }
     GdtADFlyingStreamingReportHelper.a().a(1020035L);
     GdtADFlyingStreamingReportHelper.a().a(2);
   }
   
-  public void k()
+  public void onClick(View paramView) {}
+  
+  public void p()
   {
     a("");
   }
   
-  public void onClick(View paramView) {}
+  public IMotiveVideoView q()
+  {
+    return this.f;
+  }
+  
+  public GdtImpressionReporter.GdtVideoReportInfo r()
+  {
+    return this.P;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMvViewController
  * JD-Core Version:    0.7.0.1
  */

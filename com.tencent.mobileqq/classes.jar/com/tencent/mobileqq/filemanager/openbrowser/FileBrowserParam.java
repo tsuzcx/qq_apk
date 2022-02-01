@@ -5,34 +5,34 @@ import com.tencent.mobileqq.filebrowser.IFileBrowserParam;
 public class FileBrowserParam
   implements IFileBrowserParam
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = null;
+  private int a = 0;
+  private String b = null;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public FileBrowserParam a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public FileBrowserParam a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
-  public String a()
+  public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.FileBrowserParam
  * JD-Core Version:    0.7.0.1
  */

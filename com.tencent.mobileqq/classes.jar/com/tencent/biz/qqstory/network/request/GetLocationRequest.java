@@ -14,19 +14,24 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetLocationRequest
   extends NetworkRequest<GetLocationResponse>
 {
-  private static final String a = StoryApi.a("StorySvc.get_location");
-  public final int c;
-  public final int d;
+  private static final String h = StoryApi.a("StorySvc.get_location");
   public final int e;
+  public final int f;
+  public final int g;
   
   public GetLocationRequest(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return h;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
     try
@@ -41,17 +46,12 @@ public class GetLocationRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
-    localReqGetLocation.coordinate.set(this.c);
-    localReqGetLocation.gps.lng.set(this.d);
-    localReqGetLocation.gps.lat.set(this.e);
+    localReqGetLocation.coordinate.set(this.e);
+    localReqGetLocation.gps.lng.set(this.f);
+    localReqGetLocation.gps.lat.set(this.g);
     localReqGetLocation.gps.setHasFlag(true);
     return localReqGetLocation.toByteArray();
   }
@@ -60,18 +60,18 @@ public class GetLocationRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetLocationRequest{mCoordinate=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", mLng=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(", mLat=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", mLng=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", mLat=");
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetLocationRequest
  * JD-Core Version:    0.7.0.1
  */

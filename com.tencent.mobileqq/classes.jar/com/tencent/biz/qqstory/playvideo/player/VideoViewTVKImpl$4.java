@@ -23,13 +23,13 @@ class VideoViewTVKImpl$4
         {
           if (paramInt != 31)
           {
-            SLog.d(this.a.a, "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, "UNKNOWN"), paramObject });
+            SLog.d(this.a.a, "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a.get(paramInt, "UNKNOWN"), paramObject });
           }
           else
           {
             i = ((Integer)paramObject).intValue();
-            if ((i >= 0) && (i <= StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.b.length)) {
-              SLog.d(this.a.a, "onInfo. playerType %s", new Object[] { StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.b[i] });
+            if ((i >= 0) && (i <= StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.c.length)) {
+              SLog.d(this.a.a, "onInfo. playerType %s", new Object[] { StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.c[i] });
             } else {
               SLog.d(this.a.a, "onInfo. playerType %d", new Object[] { Integer.valueOf(i) });
             }
@@ -38,10 +38,10 @@ class VideoViewTVKImpl$4
         else
         {
           i = ((Integer)paramObject).intValue();
-          if ((i >= 0) && (i < StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.jdField_a_of_type_ArrayOfJavaLangString.length))
+          if ((i >= 0) && (i < StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.b.length))
           {
-            SLog.d(this.a.a, "onInfo. set decoder. %s", new Object[] { StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.jdField_a_of_type_ArrayOfJavaLangString[i] });
-            VideoViewTVKImpl.a(this.a).d = StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.jdField_a_of_type_ArrayOfJavaLangString[i];
+            SLog.d(this.a.a, "onInfo. set decoder. %s", new Object[] { StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.b[i] });
+            VideoViewTVKImpl.a(this.a).m = StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.b[i];
           }
           else
           {
@@ -50,7 +50,7 @@ class VideoViewTVKImpl$4
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("Unknown ");
             localStringBuilder.append(i);
-            paramTVK_IMediaPlayer.d = localStringBuilder.toString();
+            paramTVK_IMediaPlayer.m = localStringBuilder.toString();
           }
         }
       }
@@ -68,7 +68,7 @@ class VideoViewTVKImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,6 @@ public abstract interface ISub
   
   public abstract int a(int paramInt1, int paramInt2);
   
-  public abstract int a(String paramString);
-  
   public abstract int a(String paramString, int paramInt);
   
   public abstract int a(String paramString, int paramInt, long paramLong);
@@ -23,25 +21,11 @@ public abstract interface ISub
   
   public abstract SubscriptionInfo a(String paramString1, String paramString2);
   
-  public abstract String a(int paramInt, String paramString1, String paramString2);
-  
   public abstract List<SubscriptionInfo> a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
   
   public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract int[] a();
-  
-  public abstract int[] a(int paramInt);
-  
   public abstract int b();
-  
-  public abstract int b(int paramInt);
   
   public abstract int b(int paramInt1, int paramInt2);
   
@@ -51,9 +35,9 @@ public abstract interface ISub
   
   public abstract SubscriptionInfo b(int paramInt, String paramString);
   
-  public abstract List<SubscriptionInfo> b(String paramString);
+  public abstract String b(int paramInt, String paramString1, String paramString2);
   
-  public abstract void b(int paramInt);
+  public abstract int[] b(int paramInt);
   
   public abstract int c();
   
@@ -61,13 +45,29 @@ public abstract interface ISub
   
   public abstract int c(String paramString, int paramInt);
   
-  public abstract void c(int paramInt);
+  public abstract List<SubscriptionInfo> c(String paramString);
   
   public abstract int d();
   
+  public abstract int d(String paramString);
+  
+  public abstract void d(int paramInt);
+  
   public abstract int e();
   
+  public abstract void e(int paramInt);
+  
   public abstract int f();
+  
+  public abstract void f(int paramInt);
+  
+  public abstract int g(int paramInt);
+  
+  public abstract void g();
+  
+  public abstract boolean h(int paramInt);
+  
+  public abstract int[] h();
 }
 
 

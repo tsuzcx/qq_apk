@@ -46,12 +46,13 @@ import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.commonsdk.util.notification.SdkInfoUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.c.d;
-import com.tencent.mobileqq.msf.core.c.e.a;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.d.d;
+import com.tencent.mobileqq.msf.core.d.e.a;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.o;
+import com.tencent.mobileqq.msf.core.v;
 import com.tencent.mobileqq.msf.sdk.CommandCallbackerInfo;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
@@ -61,6 +62,7 @@ import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.msf.service.MsfService;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -486,7 +488,7 @@ public class g
       ((HashMap)localObject1).put("retryIndex", String.valueOf(paramInt));
       ((HashMap)localObject1).put("reason", "mainProcessReady");
       if (this.c.getStatReporter() != null) {
-        this.c.getStatReporter().a("dim.Msf.PCActiveQQResult", true, 0L, 0L, (Map)localObject1, false, false);
+        this.c.getStatReporter().a("dim_Msf_PCActiveQQResult", true, 0L, 0L, (Map)localObject1, false, false);
       }
       this.aF.set(false);
       return;
@@ -510,7 +512,7 @@ public class g
       ((HashMap)localObject2).put("retryIndex", String.valueOf(paramInt));
       ((HashMap)localObject2).put("reason", "tryTooMuch");
       if (this.c.getStatReporter() != null) {
-        this.c.getStatReporter().a("dim.Msf.PCActiveQQResult", false, 0L, 0L, (Map)localObject2, false, false);
+        this.c.getStatReporter().a("dim_Msf_PCActiveQQResult", false, 0L, 0L, (Map)localObject2, false, false);
       }
       this.aF.set(false);
       return;
@@ -2132,7 +2134,7 @@ public class g
   {
     try
     {
-      String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
+      String str = u.b(paramToServiceMsg);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -2146,7 +2148,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = u.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -2159,7 +2161,7 @@ public class g
   {
     try
     {
-      String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
+      String str = u.b(paramToServiceMsg);
       if (a(str, BaseApplication.getContext().getPackageName()))
       {
         if (QLog.isColorLevel())
@@ -2217,7 +2219,7 @@ public class g
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("recv proxyRegister sendProcess=");
-      ((StringBuilder)localObject).append(com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg));
+      ((StringBuilder)localObject).append(u.b(paramToServiceMsg));
       ((StringBuilder)localObject).append(" registerProcess");
       ((StringBuilder)localObject).append(paramz.b);
       ((StringBuilder)localObject).append(" callbacker=");
@@ -2446,7 +2448,7 @@ public class g
           }
           label227:
           if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-            com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 3);
+            com.tencent.mobileqq.msf.core.d.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 3);
           }
           if (QLog.isColorLevel())
           {
@@ -2474,7 +2476,7 @@ public class g
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
+    String str = u.b(paramToServiceMsg);
     a locala = (a)this.i.get(str);
     if (locala != null)
     {
@@ -2502,7 +2504,7 @@ public class g
       }
       this.az.removeMessages(1);
     }
-    String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
+    String str = u.b(paramToServiceMsg);
     if (a(str, BaseApplication.getContext().getPackageName()))
     {
       if (!this.i.containsKey(str)) {
@@ -2532,7 +2534,7 @@ public class g
           paramRegPushReason.append(localPushRegisterInfo.extStatus);
           QLog.e("MSF.C.PushManager", 2, paramRegPushReason.toString());
         }
-        paramRegPushReason = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
+        paramRegPushReason = u.a(paramToServiceMsg);
         paramRegPushReason.setMsgSuccess();
         this.c.addRespToQuque(paramToServiceMsg, paramRegPushReason);
       }
@@ -2593,7 +2595,7 @@ public class g
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("recv processName:");
-      ((StringBuilder)localObject).append(com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg));
+      ((StringBuilder)localObject).append(u.b(paramToServiceMsg));
       ((StringBuilder)localObject).append(" recv proxyUnRegister ");
       ((StringBuilder)localObject).append(paramString);
       QLog.d("MSF.C.PushManager", 1, ((StringBuilder)localObject).toString());
@@ -2982,7 +2984,7 @@ public class g
   {
     try
     {
-      String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
+      String str = u.b(paramToServiceMsg);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -2995,7 +2997,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = u.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -3500,7 +3502,7 @@ public class g
       ((HashMap)localObject).put("retryIndex", String.valueOf(this.aH));
       ((HashMap)localObject).put("reason", "regpush");
       if (this.c.getStatReporter() != null) {
-        this.c.getStatReporter().a("dim.Msf.PCActiveQQResult", true, 0L, 0L, (Map)localObject, false, false);
+        this.c.getStatReporter().a("dim_Msf_PCActiveQQResult", true, 0L, 0L, (Map)localObject, false, false);
       }
       localObject = this.aI;
       if (localObject != null)
@@ -3615,7 +3617,7 @@ public class g
     {
       this.z.notify();
       if (this.aA) {
-        com.tencent.mobileqq.msf.core.u.a().e();
+        v.a().e();
       }
       if (QLog.isColorLevel()) {
         this.c.netFlowStore.a(paramContext, paramIntent);
@@ -3655,7 +3657,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.g
  * JD-Core Version:    0.7.0.1
  */

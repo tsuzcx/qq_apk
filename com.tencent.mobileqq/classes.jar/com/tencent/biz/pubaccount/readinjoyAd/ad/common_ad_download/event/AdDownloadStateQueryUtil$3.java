@@ -22,13 +22,13 @@ final class AdDownloadStateQueryUtil$3
     {
       try
       {
-        Object localObject1 = (SoftReference)AdDownloadStateQueryUtil.a().get(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.getTicket());
+        Object localObject1 = (SoftReference)AdDownloadStateQueryUtil.a().get(this.a.getTicket());
         if (localObject1 != null)
         {
           localObject1 = (ADVideoAppDownloadData)((SoftReference)localObject1).get();
           Object localObject3 = localObject1;
           if (localObject1 == null) {
-            localObject3 = ADVideoAppDownloadData.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, false);
+            localObject3 = ADVideoAppDownloadData.a(this.a, false);
           }
           if ((localObject3 != null) && (!TextUtils.isEmpty(((ADVideoAppDownloadData)localObject3).d)))
           {
@@ -37,10 +37,10 @@ final class AdDownloadStateQueryUtil$3
             }
             if (TextUtils.isEmpty(((ADVideoAppDownloadData)localObject3).c))
             {
-              this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(0));
+              this.b.onReceiveValue(Integer.valueOf(0));
               return;
             }
-            AdDownloadStateQueryUtil.a().put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.getTicket(), new SoftReference(localObject3));
+            AdDownloadStateQueryUtil.a().put(this.a.getTicket(), new SoftReference(localObject3));
             DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(((ADVideoAppDownloadData)localObject3).c);
             if (localDownloadInfo != null)
             {
@@ -53,7 +53,7 @@ final class AdDownloadStateQueryUtil$3
             }
             if (localObject1 == null)
             {
-              this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(0));
+              this.b.onReceiveValue(Integer.valueOf(0));
               return;
             }
             AdDownloadStateQueryUtil.a((DownloadInfo)localObject1);
@@ -80,17 +80,17 @@ final class AdDownloadStateQueryUtil$3
               break label323;
             }
             break label318;
-            this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(i));
+            this.b.onReceiveValue(Integer.valueOf(i));
             return;
           }
-          this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(0));
+          this.b.onReceiveValue(Integer.valueOf(0));
           return;
         }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("AdDownloadStateQueryUtil", 1, localThrowable, new Object[0]);
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(0));
+        this.b.onReceiveValue(Integer.valueOf(0));
         return;
       }
       Object localObject2 = null;
@@ -120,7 +120,7 @@ final class AdDownloadStateQueryUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateQueryUtil.3
  * JD-Core Version:    0.7.0.1
  */

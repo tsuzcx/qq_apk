@@ -13,11 +13,11 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class GdtVideoCeilingTitleBar
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GdtVideoCeilingTitleBar.OnBtnClickListener jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar$OnBtnClickListener;
-  private String jdField_a_of_type_JavaLangString;
+  private TextView a;
   private TextView b;
+  private GdtVideoCeilingTitleBar.OnBtnClickListener c;
+  private String d;
+  private int e;
   
   public GdtVideoCeilingTitleBar(Context paramContext)
   {
@@ -38,17 +38,17 @@ public class GdtVideoCeilingTitleBar
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateBar Style ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.e);
     GdtLog.b("GdtVideoCeilingView", ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int != 1)
+    if (this.e != 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.setVisibility(8);
       this.b.setVisibility(0);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705323));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131903206));
+      ((StringBuilder)localObject).append(this.d);
       localObject = ((StringBuilder)localObject).toString();
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (((String)localObject).length() <= 7))
+      if ((!TextUtils.isEmpty(this.d)) && (((String)localObject).length() <= 7))
       {
         this.b.setText((CharSequence)localObject);
         return;
@@ -56,16 +56,16 @@ public class GdtVideoCeilingTitleBar
       this.b.setText("在APP中打开");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
-    this.b = ((TextView)findViewById(2131372123));
+    this.a = ((TextView)findViewById(2131447463));
+    this.b = ((TextView)findViewById(2131439593));
     this.b.setOnClickListener(new GdtVideoCeilingTitleBar.1(this));
-    View localView = findViewById(2131363334);
+    View localView = findViewById(2131429208);
     int i = AIOUtils.b(5.0F, getResources());
     AIOUtils.a(localView, i, i, 0, i);
     localView.setOnClickListener(new GdtVideoCeilingTitleBar.2(this));
@@ -73,29 +73,29 @@ public class GdtVideoCeilingTitleBar
   
   public void setAppName(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void setOnBtnClickListener(GdtVideoCeilingTitleBar.OnBtnClickListener paramOnBtnClickListener)
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingTitleBar$OnBtnClickListener = paramOnBtnClickListener;
+    this.c = paramOnBtnClickListener;
   }
   
   public void setStyle(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void setWebBarTitle(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if ((this.a != null) && (!TextUtils.isEmpty(paramString))) {
+      this.a.setText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar
  * JD-Core Version:    0.7.0.1
  */

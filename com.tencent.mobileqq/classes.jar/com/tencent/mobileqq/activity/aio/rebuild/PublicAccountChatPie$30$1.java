@@ -12,13 +12,13 @@ class PublicAccountChatPie$30$1
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("isNeedFinish", true);
-    this.a.this$0.a.setResult(-1, localIntent);
-    this.a.this$0.q();
+    this.a.this$0.f.setResult(-1, localIntent);
+    this.a.this$0.L();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30.1
  * JD-Core Version:    0.7.0.1
  */

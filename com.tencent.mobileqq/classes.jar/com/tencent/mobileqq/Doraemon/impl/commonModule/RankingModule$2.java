@@ -18,31 +18,31 @@ class RankingModule$2
   {
     if (QLog.isColorLevel())
     {
-      paramBundle = RankingModule.a;
+      paramBundle = RankingModule.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResult appid=");
-      localStringBuilder.append(RankingModule.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleRankingModule).a);
+      localStringBuilder.append(RankingModule.b(this.d).b);
       localStringBuilder.append(", openid=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.a);
+      localStringBuilder.append(this.a.a);
       localStringBuilder.append(", openkey=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b);
+      localStringBuilder.append(this.a.b);
       localStringBuilder.append(", code=");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", req param=");
-      localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject);
+      localStringBuilder.append(this.b);
       QLog.i(paramBundle, 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, APIParam.jdField_a_of_type_OrgJsonJSONObject);
+      DoraemonUtil.a(this.c, APIParam.a);
       return;
     }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "reportScore result error, try again");
+    DoraemonUtil.a(this.c, paramInt, "reportScore result error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.RankingModule.2
  * JD-Core Version:    0.7.0.1
  */

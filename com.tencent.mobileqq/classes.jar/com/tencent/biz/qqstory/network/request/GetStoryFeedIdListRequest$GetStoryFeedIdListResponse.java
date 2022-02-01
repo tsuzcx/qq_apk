@@ -13,8 +13,8 @@ import java.util.List;
 public class GetStoryFeedIdListRequest$GetStoryFeedIdListResponse
   extends BasePageResponse
 {
-  public List<FeedIdListSeqInfo> a = new ArrayList();
-  public boolean b;
+  public List<FeedIdListSeqInfo> e = new ArrayList();
+  public boolean f;
   
   public GetStoryFeedIdListRequest$GetStoryFeedIdListResponse(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
   {
@@ -24,18 +24,18 @@ public class GetStoryFeedIdListRequest$GetStoryFeedIdListResponse
     if (i != 1) {
       bool = false;
     }
-    this.b = bool;
+    this.f = bool;
     paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
     while (paramRspStoryFeedIdList.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = new FeedIdListSeqInfo((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
-      this.a.add(localFeedIdListSeqInfo);
+      this.e.add(localFeedIdListSeqInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryFeedIdListRequest.GetStoryFeedIdListResponse
  * JD-Core Version:    0.7.0.1
  */

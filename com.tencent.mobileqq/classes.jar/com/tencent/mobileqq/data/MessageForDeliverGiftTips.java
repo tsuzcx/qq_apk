@@ -6,7 +6,7 @@ import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.IAnimationMessage;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.IAnimationMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForDeliverGiftTips
@@ -132,7 +132,7 @@ public class MessageForDeliverGiftTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeliverGiftTips
  * JD-Core Version:    0.7.0.1
  */

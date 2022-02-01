@@ -9,12 +9,12 @@ class TextPreviewActivity$6
   
   public void run()
   {
-    this.a.loadHiBoomConfig(this.this$0.g, true, false, true);
+    this.a.loadHiBoomConfig(this.this$0.O, true, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

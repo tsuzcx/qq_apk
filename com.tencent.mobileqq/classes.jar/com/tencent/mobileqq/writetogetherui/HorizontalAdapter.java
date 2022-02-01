@@ -18,51 +18,46 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class HorizontalAdapter
   extends RecyclerView.Adapter<HorizontalAdapter.HorizontalViewHolder>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IEditorView jdField_a_of_type_ComTencentMobileqqWritetogetheruiIEditorView;
-  private boolean jdField_a_of_type_Boolean;
-  private WriteTogetherTemplateConfBean.Template[] jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template;
+  private Context a;
+  private WriteTogetherTemplateConfBean.Template[] b;
+  private IEditorView c;
+  private boolean d;
+  private long e;
+  private int f;
   
   public HorizontalAdapter(Context paramContext, IEditorView paramIEditorView, long paramLong)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiIEditorView = paramIEditorView;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[this.jdField_a_of_type_Int].jdField_a_of_type_Int;
+    this.a = paramContext;
+    this.c = paramIEditorView;
+    this.e = paramLong;
   }
   
   @NonNull
   public HorizontalAdapter.HorizontalViewHolder a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new HorizontalAdapter.HorizontalViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560955, paramViewGroup, false));
+    return new HorizontalAdapter.HorizontalViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131627296, paramViewGroup, false));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(View paramView, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B358", "0X800B358", 0, 0, "", "", "", "");
-    paramView = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(2131720457).setPositiveButton(2131720418, new HorizontalAdapter.3(this, paramInt)).setNegativeButton(2131720417, new HorizontalAdapter.2(this));
+    paramView = DialogUtil.a(this.a, 230).setMessage(2131918133).setPositiveButton(2131918094, new HorizontalAdapter.3(this, paramInt)).setNegativeButton(2131918093, new HorizontalAdapter.2(this));
     paramView.show();
-    ((TextView)paramView.findViewById(2131365644)).setGravity(17);
+    ((TextView)paramView.findViewById(2131431876)).setGravity(17);
   }
   
   public void a(@NonNull HorizontalAdapter.HorizontalViewHolder paramHorizontalViewHolder, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject.length != 0))
     {
-      if (this.jdField_a_of_type_Int == paramInt)
+      if (this.f == paramInt)
       {
         paramHorizontalViewHolder.a.setSelected(true);
         paramHorizontalViewHolder.a.setTypeface(Typeface.defaultFromStyle(1));
@@ -72,7 +67,7 @@ public class HorizontalAdapter
         paramHorizontalViewHolder.a.setSelected(false);
         paramHorizontalViewHolder.a.setTypeface(Typeface.defaultFromStyle(0));
       }
-      paramHorizontalViewHolder.a.setText(this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[paramInt].jdField_a_of_type_JavaLangString);
+      paramHorizontalViewHolder.a.setText(this.b[paramInt].b);
       paramHorizontalViewHolder.a.setOnClickListener(new HorizontalAdapter.1(this, paramHorizontalViewHolder));
       if (QLog.isColorLevel())
       {
@@ -82,7 +77,7 @@ public class HorizontalAdapter
         ((StringBuilder)localObject).append("], holder.templateTitle = [");
         ((StringBuilder)localObject).append(paramHorizontalViewHolder.a);
         ((StringBuilder)localObject).append("], mTemplates[position].title = [");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[paramInt].jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b[paramInt].b);
         ((StringBuilder)localObject).append("]");
         QLog.d("HorizontalAdapter", 2, ((StringBuilder)localObject).toString());
       }
@@ -92,23 +87,28 @@ public class HorizontalAdapter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void a(WriteTogetherTemplateConfBean.Template[] paramArrayOfTemplate)
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template = paramArrayOfTemplate;
+    this.b = paramArrayOfTemplate;
     notifyDataSetChanged();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.b[this.f].a;
   }
   
   public int getItemCount()
   {
-    WriteTogetherTemplateConfBean.Template[] arrayOfTemplate = this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template;
+    WriteTogetherTemplateConfBean.Template[] arrayOfTemplate = this.b;
     if (arrayOfTemplate == null) {
       return 0;
     }
@@ -117,7 +117,7 @@ public class HorizontalAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.HorizontalAdapter
  * JD-Core Version:    0.7.0.1
  */

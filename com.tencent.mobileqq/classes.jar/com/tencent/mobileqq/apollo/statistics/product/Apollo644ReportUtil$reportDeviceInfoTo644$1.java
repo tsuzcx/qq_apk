@@ -18,10 +18,10 @@ final class Apollo644ReportUtil$reportDeviceInfoTo644$1
   {
     try
     {
-      localObject2 = DeviceInfoUtil.i();
-      Object localObject3 = DeviceInfoUtil.e();
-      int i = DeviceInfoUtil.b();
-      long l1 = DeviceInfoUtil.b();
+      localObject2 = DeviceInfoUtil.u();
+      Object localObject3 = DeviceInfoUtil.g();
+      int i = DeviceInfoUtil.h();
+      long l1 = DeviceInfoUtil.k();
       long l2 = DeviceInfoUtil.a();
       double d1 = l2;
       double d2 = 1073741824;
@@ -29,9 +29,9 @@ final class Apollo644ReportUtil$reportDeviceInfoTo644$1
       Double.isNaN(d2);
       d1 /= d2;
       l2 = Math.ceil(d1);
-      long l3 = DeviceInfoUtil.k();
-      long l4 = DeviceInfoUtil.l();
-      float f = DeviceInfoUtil.a();
+      long l3 = DeviceInfoUtil.F();
+      long l4 = DeviceInfoUtil.G();
+      float f = DeviceInfoUtil.A();
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("mo", localObject2);
       ((JSONObject)localObject1).put("os", localObject3);
@@ -42,14 +42,14 @@ final class Apollo644ReportUtil$reportDeviceInfoTo644$1
       ((JSONObject)localObject1).put("h", String.valueOf(l4));
       ((JSONObject)localObject1).put("d", String.valueOf(f));
       localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("vd", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject2).put("vd", this.a);
       ((JSONObject)localObject2).put("vs", this.b);
       ((JSONObject)localObject2).put("rd", this.c);
       localObject1 = ((JSONObject)localObject1).toString();
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "cpuJSON.toString()");
       localObject2 = ((JSONObject)localObject2).toString();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "gpuJSON.toString()");
-      VipUtils.a(null, "cmshow", "Apollo", "device_info", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Int), localObject1, localObject2 });
+      VipUtils.a(null, "cmshow", "Apollo", "device_info", 0, 0, new String[] { String.valueOf(this.d), localObject1, localObject2 });
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(" onSurfaceCreated report 644 data: ");
       ((StringBuilder)localObject3).append((String)localObject1);
@@ -69,7 +69,7 @@ final class Apollo644ReportUtil$reportDeviceInfoTo644$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.Apollo644ReportUtil.reportDeviceInfoTo644.1
  * JD-Core Version:    0.7.0.1
  */

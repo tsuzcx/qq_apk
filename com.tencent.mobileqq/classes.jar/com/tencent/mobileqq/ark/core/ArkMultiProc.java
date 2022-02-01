@@ -17,32 +17,25 @@ import mqq.app.MobileQQ;
 
 public class ArkMultiProc
 {
-  protected static final ark.ApplicationCallback a;
-  static final IArkDelegateNet jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNet;
-  static final IArkDelegateSSO jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateSSO;
-  static final IArkDelegateSetup jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateSetup = new ArkMultiProc.2();
-  static boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNet = new ArkMultiProc.3();
-    jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateSSO = new ArkMultiProc.4();
-    jdField_a_of_type_ComTencentArkArk$ApplicationCallback = new ArkMultiProc.5();
-  }
+  static boolean a = false;
+  static final IArkDelegateSetup b = new ArkMultiProc.2();
+  static final IArkDelegateNet c = new ArkMultiProc.3();
+  static final IArkDelegateSSO d = new ArkMultiProc.4();
+  protected static final ark.ApplicationCallback e = new ArkMultiProc.5();
   
   public static void a(IArkEnvDelegate paramIArkEnvDelegate)
   {
     try
     {
-      if (jdField_a_of_type_Boolean)
+      if (a)
       {
         QLog.i("ArkApp.MultiProc", 1, "initArkEnv, ignore");
         return;
       }
-      jdField_a_of_type_Boolean = true;
+      a = true;
       QLog.i("ArkApp.MultiProc", 1, "initArkEnv, begin");
       long l = System.currentTimeMillis();
-      ArkEnvironment.a = paramIArkEnvDelegate;
+      ArkEnvironment.c = paramIArkEnvDelegate;
       IArkEnvironment localIArkEnvironment = (IArkEnvironment)QRoute.api(IArkEnvironment.class);
       ArkEnvironment.a(true);
       SoLoadManager.getInstance().download("jsc", new ArkMultiProc.1());
@@ -75,13 +68,13 @@ public class ArkMultiProc
       localObject3 = new ArkDelegateManager.Config();
       ((ArkDelegateManager.Config)localObject3).rootDir = ((String)localObject2);
       ((ArkDelegateManager.Config)localObject3).processName = paramIArkEnvDelegate;
-      ((ArkDelegateManager.Config)localObject3).qqVersion = "8.7.0";
+      ((ArkDelegateManager.Config)localObject3).qqVersion = "8.8.17";
       ((ArkDelegateManager.Config)localObject3).context = ((AppRuntime)localObject1).getApplicationContext();
-      ((ArkDelegateManager.Config)localObject3).setupDelegate = jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateSetup;
-      ((ArkDelegateManager.Config)localObject3).netDelegate = jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNet;
-      ((ArkDelegateManager.Config)localObject3).ssoDelegate = jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateSSO;
+      ((ArkDelegateManager.Config)localObject3).setupDelegate = b;
+      ((ArkDelegateManager.Config)localObject3).netDelegate = c;
+      ((ArkDelegateManager.Config)localObject3).ssoDelegate = d;
       ((ArkDelegateManager.Config)localObject3).inputCallback = new ArkMultiProc.ArkViewInputCallback(null);
-      ((ArkDelegateManager.Config)localObject3).applicationCallback = jdField_a_of_type_ComTencentArkArk$ApplicationCallback;
+      ((ArkDelegateManager.Config)localObject3).applicationCallback = e;
       ArkEnvironmentManager.getInstance().setCurrentUin(((AppRuntime)localObject1).getAccount());
       boolean bool = localIArkEnvironment.isTestEnv();
       ArkEnvironmentManager.getInstance().setEnv(bool);
@@ -97,7 +90,7 @@ public class ArkMultiProc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkMultiProc
  * JD-Core Version:    0.7.0.1
  */

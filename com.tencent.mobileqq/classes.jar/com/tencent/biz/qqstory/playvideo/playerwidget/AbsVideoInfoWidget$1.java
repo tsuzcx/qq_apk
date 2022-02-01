@@ -14,14 +14,14 @@ class AbsVideoInfoWidget$1
   public void a(int paramInt)
   {
     super.a(paramInt);
-    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
-    if ((paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) && (paramInt >= 0))
+    paramInt = this.a.l;
+    if ((paramInt < this.b.f.size()) && (paramInt >= 0))
     {
-      StoryPlayerVideoData localStoryPlayerVideoData = (StoryPlayerVideoData)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
-      AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localStoryPlayerVideoData);
+      StoryPlayerVideoData localStoryPlayerVideoData = (StoryPlayerVideoData)this.b.f.get(paramInt);
+      AbsVideoInfoWidget.a(this.b, localStoryPlayerVideoData);
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
+    SLog.d(this.b.i, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.b.f.size()) });
   }
 }
 

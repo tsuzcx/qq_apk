@@ -49,33 +49,33 @@ class ChatHistoryFileActivity$1
     else {
       localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 0);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase != null)
+    if (this.a.d != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.c();
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a());
+      this.a.d.e();
+      this.a.e.removeView(this.a.d.a());
     }
     if (localChatHistoryViewBase != null)
     {
       localChatHistoryViewBase.a(ChatHistoryFileActivity.a(this.a));
-      localChatHistoryViewBase.b();
+      localChatHistoryViewBase.d();
       ChatHistoryFileActivity localChatHistoryFileActivity = this.a;
-      localChatHistoryFileActivity.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase = localChatHistoryViewBase;
-      localChatHistoryViewBase = localChatHistoryFileActivity.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase;
+      localChatHistoryFileActivity.d = localChatHistoryViewBase;
+      localChatHistoryViewBase = localChatHistoryFileActivity.d;
       localChatHistoryFileActivity = this.a;
-      localChatHistoryViewBase.a = localChatHistoryFileActivity;
-      localChatHistoryFileActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a(), 0, new ViewGroup.LayoutParams(-1, -1));
-      if (this.a.jdField_a_of_type_Boolean)
+      localChatHistoryViewBase.D = localChatHistoryFileActivity;
+      localChatHistoryFileActivity.e.addView(this.a.d.a(), 0, new ViewGroup.LayoutParams(-1, -1));
+      if (this.a.c)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.e();
+        this.a.d.g();
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.f();
+      this.a.d.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.1
  * JD-Core Version:    0.7.0.1
  */

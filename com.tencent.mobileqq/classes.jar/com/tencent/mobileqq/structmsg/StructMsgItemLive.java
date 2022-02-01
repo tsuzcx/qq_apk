@@ -20,21 +20,20 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemLive
   extends AbsStructMsgElement
 {
-  public View.OnClickListener a;
-  public String ac = null;
-  public String ad = null;
-  public String ae = null;
-  public String af = null;
-  public String ag = null;
-  public String ah = null;
-  public int o = 0;
-  public int p = 0;
-  public int q = 1;
+  public int aA = 0;
+  public int aB = 1;
+  public String aC = null;
+  public View.OnClickListener aD = new StructMsgItemLive.2(this);
+  public String au = null;
+  public String av = null;
+  public String aw = null;
+  public String ax = null;
+  public String ay = null;
+  public int az = 0;
   
   public StructMsgItemLive()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new StructMsgItemLive.2(this);
-    this.jdField_a_of_type_JavaLangString = "live";
+    this.b = "live";
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -65,8 +64,8 @@ public class StructMsgItemLive
       localLinearLayout.setLayoutParams(paramView);
       paramView = new NowVideoLayout(paramContext);
       Object localObject = new LinearLayout.LayoutParams(-2, -2);
-      paramView.setId(2131377987);
-      paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramView;
+      paramView.setId(2131446474);
+      paramBundle.a = paramView;
       localLinearLayout.addView(paramView, (ViewGroup.LayoutParams)localObject);
       paramView = new LinearLayout(paramContext);
       paramView.setOrientation(1);
@@ -74,92 +73,87 @@ public class StructMsgItemLive
       ((LinearLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
       paramView.setPadding(AIOUtils.b(7.0F, localResources), AIOUtils.b(8.0F, localResources), AIOUtils.b(7.0F, localResources), AIOUtils.b(8.0F, localResources));
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramView.setBackgroundResource(2130843845);
+      paramView.setBackgroundResource(2130844799);
       localLinearLayout.addView(paramView);
       localObject = new TextView(paramContext);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      ((TextView)localObject).setBackgroundColor(localResources.getColor(2131167333));
+      ((TextView)localObject).setBackgroundColor(localResources.getColor(2131168376));
       ((TextView)localObject).setPadding(0, 0, 0, 0);
       ((TextView)localObject).setTextColor(-16777216);
       ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
       ((TextView)localObject).setTextSize(0, AIOUtils.b(12.0F, localResources));
       ((TextView)localObject).setSingleLine();
       localLayoutParams.setMargins(0, 0, 0, 0);
-      paramBundle.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
-      ((TextView)localObject).setId(2131379926);
+      paramBundle.b = ((TextView)localObject);
+      ((TextView)localObject).setId(2131448810);
       paramView.addView((View)localObject, localLayoutParams);
       paramContext = new TextView(paramContext);
       localObject = new LinearLayout.LayoutParams(-1, -2);
-      paramContext.setBackgroundColor(localResources.getColor(2131167333));
+      paramContext.setBackgroundColor(localResources.getColor(2131168376));
       paramContext.setPadding(0, AIOUtils.b(3.0F, localResources), 0, 0);
       paramContext.setTextColor(-16777216);
       paramContext.setEllipsize(TextUtils.TruncateAt.END);
       paramContext.setTextSize(0, AIOUtils.b(12.0F, localResources));
       paramContext.setSingleLine();
       ((LinearLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
-      paramBundle.b = paramContext;
-      paramContext.setId(2131379930);
+      paramBundle.c = paramContext;
+      paramContext.setId(2131448814);
       paramView.addView(paramContext, (ViewGroup.LayoutParams)localObject);
     }
     if (localLinearLayout != null) {
       localLinearLayout.setTag(paramBundle);
     }
-    paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnLongClickListener(new StructMsgItemLive.1(this));
+    paramBundle.a.setOnClickListener(this.aD);
+    paramBundle.a.setOnLongClickListener(new StructMsgItemLive.1(this));
     return localLinearLayout;
-  }
-  
-  public String a()
-  {
-    return "live";
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.ad = paramObjectInput.readUTF();
-    this.ae = paramObjectInput.readUTF();
-    this.af = paramObjectInput.readUTF();
-    this.o = paramObjectInput.readInt();
-    this.p = paramObjectInput.readInt();
-    this.q = paramObjectInput.readInt();
-    this.ag = paramObjectInput.readUTF();
-    this.ac = paramObjectInput.readUTF();
-    this.ah = paramObjectInput.readUTF();
+    this.av = paramObjectInput.readUTF();
+    this.aw = paramObjectInput.readUTF();
+    this.ax = paramObjectInput.readUTF();
+    this.az = paramObjectInput.readInt();
+    this.aA = paramObjectInput.readInt();
+    this.aB = paramObjectInput.readInt();
+    this.ay = paramObjectInput.readUTF();
+    this.au = paramObjectInput.readUTF();
+    this.aC = paramObjectInput.readUTF();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    String str = this.ad;
+    String str = this.av;
     if (str == null) {
       str = "";
     }
     paramObjectOutput.writeUTF(str);
-    str = this.ae;
+    str = this.aw;
     if (str == null) {
       str = "";
     }
     paramObjectOutput.writeUTF(str);
-    str = this.af;
+    str = this.ax;
     if (str == null) {
       str = "";
     }
     paramObjectOutput.writeUTF(str);
-    paramObjectOutput.writeInt(this.o);
-    paramObjectOutput.writeInt(this.p);
-    paramObjectOutput.writeInt(this.q);
-    str = this.ag;
+    paramObjectOutput.writeInt(this.az);
+    paramObjectOutput.writeInt(this.aA);
+    paramObjectOutput.writeInt(this.aB);
+    str = this.ay;
     if (str == null) {
       str = "";
     }
     paramObjectOutput.writeUTF(str);
-    str = this.ac;
+    str = this.au;
     if (str == null) {
       str = "";
     }
     paramObjectOutput.writeUTF(str);
-    str = this.ah;
+    str = this.aC;
     if (str == null) {
       str = "";
     }
@@ -169,15 +163,15 @@ public class StructMsgItemLive
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "live");
-    paramXmlSerializer.attribute(null, "cover", this.ad);
-    paramXmlSerializer.attribute(null, "src", this.ae);
-    paramXmlSerializer.attribute(null, "video_info", this.af);
-    paramXmlSerializer.attribute(null, "preWidth", String.valueOf(this.o));
-    paramXmlSerializer.attribute(null, "preHeight", String.valueOf(this.p));
-    paramXmlSerializer.attribute(null, "busiType", String.valueOf(this.q));
-    paramXmlSerializer.attribute(null, "recordID", String.valueOf(this.ag));
-    paramXmlSerializer.attribute(null, "roomID", String.valueOf(this.ac));
-    paramXmlSerializer.attribute(null, "title", String.valueOf(this.ah));
+    paramXmlSerializer.attribute(null, "cover", this.av);
+    paramXmlSerializer.attribute(null, "src", this.aw);
+    paramXmlSerializer.attribute(null, "video_info", this.ax);
+    paramXmlSerializer.attribute(null, "preWidth", String.valueOf(this.az));
+    paramXmlSerializer.attribute(null, "preHeight", String.valueOf(this.aA));
+    paramXmlSerializer.attribute(null, "busiType", String.valueOf(this.aB));
+    paramXmlSerializer.attribute(null, "recordID", String.valueOf(this.ay));
+    paramXmlSerializer.attribute(null, "roomID", String.valueOf(this.au));
+    paramXmlSerializer.attribute(null, "title", String.valueOf(this.aC));
     paramXmlSerializer.endTag(null, "live");
   }
   
@@ -186,12 +180,12 @@ public class StructMsgItemLive
     if (paramStructMsgNode == null) {
       return true;
     }
-    this.ad = paramStructMsgNode.a("cover");
-    this.ae = paramStructMsgNode.a("src");
-    this.af = paramStructMsgNode.a("video_info");
-    this.ag = paramStructMsgNode.a("recordID");
-    this.ac = paramStructMsgNode.a("roomID");
-    this.ah = paramStructMsgNode.a("title");
+    this.av = paramStructMsgNode.a("cover");
+    this.aw = paramStructMsgNode.a("src");
+    this.ax = paramStructMsgNode.a("video_info");
+    this.ay = paramStructMsgNode.a("recordID");
+    this.au = paramStructMsgNode.a("roomID");
+    this.aC = paramStructMsgNode.a("title");
     int j = 0;
     int i;
     try
@@ -202,7 +196,7 @@ public class StructMsgItemLive
       } else {
         i = Integer.valueOf(str1).intValue();
       }
-      this.o = i;
+      this.az = i;
     }
     catch (NumberFormatException localNumberFormatException1)
     {
@@ -218,7 +212,7 @@ public class StructMsgItemLive
       } else {
         i = Integer.valueOf(str2).intValue();
       }
-      this.p = i;
+      this.aA = i;
     }
     catch (NumberFormatException localNumberFormatException2)
     {
@@ -234,7 +228,7 @@ public class StructMsgItemLive
       } else {
         i = Integer.valueOf(paramStructMsgNode).intValue();
       }
-      this.q = i;
+      this.aB = i;
       return true;
     }
     catch (NumberFormatException paramStructMsgNode)
@@ -245,10 +239,15 @@ public class StructMsgItemLive
     }
     return true;
   }
+  
+  public String b()
+  {
+    return "live";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemLive
  * JD-Core Version:    0.7.0.1
  */

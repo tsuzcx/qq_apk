@@ -21,8 +21,8 @@ public class PhotoSimilar
         if (paramBitmap1.getHeight() != paramBitmap2.getHeight()) {
           return 0.0D;
         }
-        int i = a(a(paramBitmap1));
-        int j = a(a(paramBitmap2));
+        int i = a(b(paramBitmap1));
+        int j = a(b(paramBitmap2));
         return a(a(paramBitmap1, i), a(paramBitmap2, j), paramBitmap1.getWidth(), paramBitmap1.getHeight());
       }
     }
@@ -133,19 +133,12 @@ public class PhotoSimilar
     {
       localBitmap = a(paramBitmap, 50, 50);
     }
-    return b(localBitmap);
+    return c(localBitmap);
   }
   
   private static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     return Bitmap.createScaledBitmap(paramBitmap, paramInt1, paramInt2, false);
-  }
-  
-  private static byte[] a(Bitmap paramBitmap)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramBitmap.getByteCount());
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
   }
   
   private static int[][] a(Bitmap paramBitmap, int paramInt)
@@ -169,7 +162,14 @@ public class PhotoSimilar
     return arrayOfInt;
   }
   
-  private static Bitmap b(Bitmap paramBitmap)
+  private static byte[] b(Bitmap paramBitmap)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramBitmap.getByteCount());
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  private static Bitmap c(Bitmap paramBitmap)
   {
     int k = paramBitmap.getWidth();
     int m = paramBitmap.getHeight();
@@ -202,7 +202,7 @@ public class PhotoSimilar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.PhotoSimilar
  * JD-Core Version:    0.7.0.1
  */

@@ -54,7 +54,7 @@ public class VideoFileElemDecoder
         localBabyQCookie = (babyq_cookie.BabyQCookie)localBabyQCookie.mergeFrom(paramVideoFile);
         if ((localBabyQCookie.uint32_need_not_report.has()) && (localBabyQCookie.uint32_need_not_report.get() == 0))
         {
-          String str = Utils.a(paramVideoFile);
+          String str = Utils.b(paramVideoFile);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -261,7 +261,7 @@ public class VideoFileElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.VideoFileElemDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -17,77 +17,77 @@ import org.jetbrains.annotations.Nullable;
 public final class SquareProgressView
   extends TextView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -16777216;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private int c = 100;
-  private int d;
+  private float a;
+  private int b = -16777216;
+  private int c;
+  private float d;
+  private int e = 100;
+  private final Paint f = new Paint();
+  private Path g = new Path();
+  private RectF h;
+  private RectF i;
+  private int j;
+  private boolean k;
   
   public SquareProgressView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.m);
-    this.jdField_a_of_type_Float = paramContext.getDimension(R.styleable.K, 0.0F);
-    this.jdField_a_of_type_Int = paramContext.getColor(R.styleable.O, -16777216);
-    this.jdField_b_of_type_Int = paramContext.getColor(R.styleable.N, 0);
-    this.jdField_b_of_type_Float = paramContext.getDimension(R.styleable.P, 4.0F);
-    setCurrentProgress(paramContext.getInteger(R.styleable.L, 0));
-    this.c = paramContext.getInteger(R.styleable.M, 100);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.W);
+    this.a = paramContext.getDimension(R.styleable.X, 0.0F);
+    this.b = paramContext.getColor(R.styleable.ab, -16777216);
+    this.c = paramContext.getColor(R.styleable.aa, 0);
+    this.d = paramContext.getDimension(R.styleable.ac, 4.0F);
+    setCurrentProgress(paramContext.getInteger(R.styleable.Y, 0));
+    this.e = paramContext.getInteger(R.styleable.Z, 100);
     paramContext.recycle();
   }
   
   private final void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRectF == null)
+    if (this.h == null)
     {
       float f1 = paramInt1;
-      float f4 = this.jdField_b_of_type_Float;
+      float f4 = this.d;
       float f5 = 2;
       float f2 = f1 - f4 / f5;
       float f3 = paramInt2;
       f4 = f3 - f4 / f5;
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f1 - f2, f3 - f4, f1 + f2, f3 + f4);
+      this.h = new RectF(f1 - f2, f3 - f4, f1 + f2, f3 + f4);
     }
   }
   
   private final void a(int paramInt1, int paramInt2, Canvas paramCanvas)
   {
-    int i = this.d;
-    int j = this.c;
-    if (i < j)
+    int m = this.j;
+    int n = this.e;
+    if (m < n)
     {
-      float f = i * 360.0F / j;
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      float f1 = m * 360.0F / n;
+      Path localPath = this.g;
       localPath.moveTo(paramInt1, paramInt2);
-      localPath.arcTo(this.jdField_b_of_type_AndroidGraphicsRectF, -90.0F, f);
+      localPath.arcTo(this.i, -90.0F, f1);
       localPath.close();
       if (paramCanvas != null) {
-        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+        paramCanvas.clipPath(this.g);
       }
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.g.reset();
     }
   }
   
   private final void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    this.f.setColor(this.c);
+    RectF localRectF = this.h;
     if ((localRectF != null) && (localRectF != null) && (paramCanvas != null))
     {
-      float f = this.jdField_a_of_type_Float;
-      paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      float f1 = this.a;
+      paramCanvas.drawRoundRect(localRectF, f1, f1, this.f);
     }
   }
   
   private final void b(int paramInt1, int paramInt2)
   {
-    if (this.jdField_b_of_type_AndroidGraphicsRectF == null)
+    if (this.i == null)
     {
       double d2 = getWidth();
       double d1 = 2;
@@ -100,27 +100,42 @@ public final class SquareProgressView
       float f1 = (float)Math.sqrt(d2 + Math.pow(d3 / d1, 2.0D));
       float f2 = paramInt1;
       float f3 = paramInt2;
-      this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(f2 - f1, f3 - f1, f2 + f1, f3 + f1);
+      this.i = new RectF(f2 - f1, f3 - f1, f2 + f1, f3 + f1);
     }
   }
   
   private final void b(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    this.f.setColor(this.b);
+    RectF localRectF = this.h;
     if ((localRectF != null) && (localRectF != null) && (paramCanvas != null))
     {
-      float f = this.jdField_a_of_type_Float;
-      paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      float f1 = this.a;
+      paramCanvas.drawRoundRect(localRectF, f1, f1, this.f);
     }
+  }
+  
+  public final int getCurrentProgress()
+  {
+    return this.j;
+  }
+  
+  public final boolean getNeedNumProgress()
+  {
+    return this.k;
+  }
+  
+  public final int getProgressColor()
+  {
+    return this.b;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    localPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-    localPaint.setColor(this.jdField_a_of_type_Int);
+    Paint localPaint = this.f;
+    localPaint.setStrokeWidth(this.d);
+    localPaint.setColor(this.b);
     localPaint.setStyle(Paint.Style.STROKE);
     localPaint.setAntiAlias(true);
   }
@@ -128,22 +143,22 @@ public final class SquareProgressView
   protected void onDraw(@Nullable Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getWidth() / 2;
-    int j = getHeight() / 2;
-    a(i, j);
+    int m = getWidth() / 2;
+    int n = getHeight() / 2;
+    a(m, n);
     a(paramCanvas);
-    b(i, j);
-    a(i, j, paramCanvas);
+    b(m, n);
+    a(m, n, paramCanvas);
     b(paramCanvas);
   }
   
   public final void setCurrentProgress(int paramInt)
   {
-    this.d = paramInt;
+    this.j = paramInt;
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.k)
     {
-      paramInt = this.d * 100 / this.c;
+      paramInt = this.j * 100 / this.e;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append('%');
@@ -158,12 +173,12 @@ public final class SquareProgressView
   
   public final void setNeedNumProgress(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.k)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(this.j);
       ((StringBuilder)localObject).append('%');
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -176,12 +191,12 @@ public final class SquareProgressView
   
   public final void setProgressColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.SquareProgressView
  * JD-Core Version:    0.7.0.1
  */

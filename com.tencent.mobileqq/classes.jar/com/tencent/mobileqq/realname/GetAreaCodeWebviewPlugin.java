@@ -21,12 +21,11 @@ import org.json.JSONObject;
 public class GetAreaCodeWebviewPlugin
   extends VasWebviewJsPlugin
 {
-  public byte a;
-  private String a;
+  public byte a = 1;
+  private String b;
   
   public GetAreaCodeWebviewPlugin()
   {
-    this.jdField_a_of_type_Byte = 1;
     this.mPluginNameSpace = "RealName";
   }
   
@@ -58,12 +57,12 @@ public class GetAreaCodeWebviewPlugin
         paramJsBridgeListener = paramVarArgs[0];
         try
         {
-          this.jdField_a_of_type_JavaLangString = new JSONObject(paramJsBridgeListener).getString("callbackId");
-          paramJsBridgeListener = (QBaseActivity)this.mRuntime.a();
+          this.b = new JSONObject(paramJsBridgeListener).getString("callbackId");
+          paramJsBridgeListener = (QBaseActivity)this.mRuntime.d();
           if (paramJsBridgeListener == null) {
             return false;
           }
-          startActivityForResult(new Intent(paramJsBridgeListener, CountryActivity.class), this.jdField_a_of_type_Byte);
+          startActivityForResult(new Intent(paramJsBridgeListener, CountryActivity.class), this.a);
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -102,13 +101,13 @@ public class GetAreaCodeWebviewPlugin
         try
         {
           paramJsBridgeListener = new JSONObject(paramJsBridgeListener).getString("callbackId");
-          paramString1 = this.mRuntime.a();
+          paramString1 = this.mRuntime.b();
           paramString1 = ((TicketManager)paramString1.getManager(2)).getA2(paramString1.getAccount());
           paramString2 = new String(NetConnInfoCenter.GUID);
           paramString3 = new JSONObject();
           try
           {
-            paramString3.put("appid", String.valueOf(AppSetting.a()));
+            paramString3.put("appid", String.valueOf(AppSetting.d()));
             paramString3.put("imei", QQDeviceInfo.getIMEI("ef0716"));
             paramString3.put("guid", paramString2);
             paramString3.put("A2", paramString1);
@@ -141,7 +140,7 @@ public class GetAreaCodeWebviewPlugin
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
     JSONObject localJSONObject = new JSONObject();
-    byte b2 = this.jdField_a_of_type_Byte;
+    byte b2 = this.a;
     String str2 = "";
     byte b1 = -1;
     if ((paramByte == b2) && (paramInt == -1))
@@ -177,7 +176,7 @@ public class GetAreaCodeWebviewPlugin
       localJSONObject.put("retCode", paramByte);
       localJSONObject.put("country", paramIntent);
       localJSONObject.put("value", str1);
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      callJs(this.b, new String[] { localJSONObject.toString() });
       return;
     }
     catch (JSONException paramIntent)
@@ -190,7 +189,7 @@ public class GetAreaCodeWebviewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.realname.GetAreaCodeWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

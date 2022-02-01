@@ -15,7 +15,7 @@ public final class FastModuleImpl
 {
   public int getArticleContent(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, int paramInt, @Nullable IFastModule.FastWebContentCallback paramFastWebContentCallback)
   {
-    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().a();
+    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().d();
     if (localFastWebModule != null) {
       return localFastWebModule.a(paramString1, paramString2, paramString3, paramInt, (FastWebModule.FastWebContentGetCallback)new FastModuleImpl.getArticleContent.1(paramFastWebContentCallback));
     }
@@ -25,16 +25,16 @@ public final class FastModuleImpl
   @Nullable
   public FastWebArticleInfo getFastWebArticleInfo(@Nullable String paramString)
   {
-    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().a();
+    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().d();
     if (localFastWebModule != null) {
-      return localFastWebModule.a(paramString);
+      return localFastWebModule.b(paramString);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.api.impl.FastModuleImpl
  * JD-Core Version:    0.7.0.1
  */

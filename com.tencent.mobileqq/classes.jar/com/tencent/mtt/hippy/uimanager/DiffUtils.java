@@ -12,20 +12,20 @@ import java.util.Set;
 
 public class DiffUtils
 {
-  public static void createView(ControllerManager paramControllerManager, List<DiffUtils.PatchType> paramList)
+  public static void createView(List<DiffUtils.PatchType> paramList)
   {
     int i = 0;
     while (i < paramList.size())
     {
-      paramControllerManager = (DiffUtils.PatchType)paramList.get(i);
-      if (paramControllerManager.mType == 5)
+      Object localObject = (DiffUtils.PatchType)paramList.get(i);
+      if (((DiffUtils.PatchType)localObject).mType == 5)
       {
-        paramControllerManager = (DiffUtils.CreatePatch)paramControllerManager.mPatch;
-        paramControllerManager.renderNode.createViewRecursive();
-        if (paramControllerManager.renderNode.mParent != null) {
-          paramControllerManager.renderNode.mParent.update();
+        localObject = (DiffUtils.CreatePatch)((DiffUtils.PatchType)localObject).mPatch;
+        ((DiffUtils.CreatePatch)localObject).renderNode.createViewRecursive();
+        if (((DiffUtils.CreatePatch)localObject).renderNode.mParent != null) {
+          ((DiffUtils.CreatePatch)localObject).renderNode.mParent.update();
         }
-        paramControllerManager.renderNode.updateViewRecursive();
+        ((DiffUtils.CreatePatch)localObject).renderNode.updateViewRecursive();
       }
       i += 1;
     }
@@ -190,8 +190,7 @@ public class DiffUtils
     }
     HippyMap localHippyMap = new HippyMap();
     Iterator localIterator = paramHippyMap1.keySet().iterator();
-    label178:
-    label190:
+    label117:
     Object localObject2;
     while (localIterator.hasNext())
     {
@@ -204,78 +203,79 @@ public class DiffUtils
         if ((localObject1 instanceof Boolean))
         {
           bool = ((Boolean)localObject1).booleanValue();
-          if ((localObject3 == null) || (bool != ((Boolean)localObject3).booleanValue())) {}
+          if ((localObject3 != null) && (bool == ((Boolean)localObject3).booleanValue())) {}
         }
         else
         {
-          if (!(localObject1 instanceof Number)) {
-            break label190;
-          }
-          double d = ((Number)localObject1).doubleValue();
-          bool = localObject3 instanceof Number;
-          int j = 0;
-          int i = j;
-          if (bool)
+          for (;;)
           {
-            i = j;
-            if (d == ((Number)localObject3).doubleValue()) {
-              i = 1;
-            }
-          }
-          if (i != 0) {
-            continue;
-          }
-        }
-        for (;;)
-        {
-          localHippyMap.pushObject(str, localObject3);
-          break;
-          if ((localObject1 instanceof String))
-          {
-            if ((localObject3 == null) || (!TextUtils.equals(localObject1.toString(), localObject3.toString()))) {
+            localHippyMap.pushObject(str, localObject3);
+            break;
+            if ((localObject1 instanceof Number))
+            {
+              double d = ((Number)localObject1).doubleValue();
+              bool = localObject3 instanceof Number;
+              int j = 0;
+              int i = j;
+              if (bool)
+              {
+                i = j;
+                if (d == ((Number)localObject3).doubleValue()) {
+                  i = 1;
+                }
+              }
+              if (i != 0) {
+                break;
+              }
               continue;
             }
-            break;
-          }
-          if (!(localObject1 instanceof HippyArray)) {
-            break label314;
-          }
-          if ((localObject3 == null) || (!(localObject3 instanceof HippyArray))) {
-            break label303;
-          }
-          localObject1 = (HippyArray)localObject1;
-          localObject2 = (HippyArray)localObject3;
-          localObject1 = diffArray((HippyArray)localObject1, (HippyArray)localObject2, paramInt + 1);
-          if ((str.equals("tintColors")) || (str.equals("tintColor"))) {
-            localObject1 = localObject2;
-          }
-          if (localObject1 == null) {
-            break;
-          }
-        }
-        label303:
-        label314:
-        do
-        {
-          localHippyMap.pushObject(str, null);
-          break;
-          if (!(localObject1 instanceof HippyMap)) {
-            break;
-          }
-          if ((localObject3 != null) && ((localObject3 instanceof HippyMap)))
-          {
-            localObject1 = diffProps((HippyMap)localObject1, (HippyMap)localObject3, paramInt + 1);
-            if ((localObject1 == null) || (((HippyMap)localObject1).size() <= 0)) {
+            if ((localObject1 instanceof String))
+            {
+              if ((localObject3 == null) || (!TextUtils.equals(localObject1.toString(), localObject3.toString()))) {
+                continue;
+              }
               break;
             }
-            if ((paramInt != 0) || (!str.equals("style"))) {
-              break label178;
+            if (!(localObject1 instanceof HippyArray)) {
+              break label312;
             }
-            localHippyMap.pushObject(str, localObject1);
-            break;
+            if (!(localObject3 instanceof HippyArray)) {
+              break label301;
+            }
+            localObject1 = (HippyArray)localObject1;
+            localObject2 = (HippyArray)localObject3;
+            localObject1 = diffArray((HippyArray)localObject1, (HippyArray)localObject2, paramInt + 1);
+            if ((str.equals("tintColors")) || (str.equals("tintColor"))) {
+              localObject1 = localObject2;
+            }
+            if (localObject1 == null) {
+              break;
+            }
           }
-        } while ((paramInt != 0) || (!str.equals("style")));
-        localHippyMap.pushMap(str, diffProps((HippyMap)localObject1, new HippyMap(), paramInt + 1));
+          label301:
+          label312:
+          do
+          {
+            localHippyMap.pushObject(str, null);
+            break;
+            if (!(localObject1 instanceof HippyMap)) {
+              break;
+            }
+            if ((localObject3 instanceof HippyMap))
+            {
+              localObject1 = diffProps((HippyMap)localObject1, (HippyMap)localObject3, paramInt + 1);
+              if ((localObject1 == null) || (((HippyMap)localObject1).size() <= 0)) {
+                break;
+              }
+              if ((paramInt != 0) || (!str.equals("style"))) {
+                break label117;
+              }
+              localHippyMap.pushObject(str, localObject1);
+              break;
+            }
+          } while ((paramInt != 0) || (!str.equals("style")));
+          localHippyMap.pushMap(str, diffProps((HippyMap)localObject1, new HippyMap(), paramInt + 1));
+        }
       }
     }
     Object localObject1 = paramHippyMap2.keySet().iterator();
@@ -375,7 +375,7 @@ public class DiffUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils
  * JD-Core Version:    0.7.0.1
  */

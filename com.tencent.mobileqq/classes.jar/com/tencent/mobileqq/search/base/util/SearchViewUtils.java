@@ -23,19 +23,19 @@ public class SearchViewUtils
   
   public static void a(int paramInt1, int paramInt2, View paramView, boolean paramBoolean1, int paramInt3, boolean paramBoolean2)
   {
-    int i = ((Integer)paramView.getTag(2131380885)).intValue();
+    int i = ((Integer)paramView.getTag(2131449868)).intValue();
     if ((paramView instanceof LinearLayout))
     {
       paramView = (LinearLayout)paramView;
-      paramView.removeView(paramView.findViewById(2131374369));
-      paramView.removeView(paramView.findViewById(2131374370));
+      paramView.removeView(paramView.findViewById(2131442531));
+      paramView.removeView(paramView.findViewById(2131442532));
       if (paramView.getChildCount() == 1)
       {
         Object localObject = paramView.getContext();
         View localView = paramView.getChildAt(0);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-        int j = ((Context)localObject).getResources().getDimensionPixelSize(2131298551);
-        int k = ((Context)localObject).getResources().getDimensionPixelSize(2131298552);
+        int j = ((Context)localObject).getResources().getDimensionPixelSize(2131299265);
+        int k = ((Context)localObject).getResources().getDimensionPixelSize(2131299266);
         if (paramInt2 != 0)
         {
           if (paramInt2 != 1)
@@ -67,15 +67,15 @@ public class SearchViewUtils
         }
         if (NetSearchTemplateDividerItem.a(paramInt3))
         {
-          localObject = new NetSearchTemplateDividerView((Context)localObject, paramInt3).a();
-          ((View)localObject).setId(2131374370);
+          localObject = new NetSearchTemplateDividerView((Context)localObject, paramInt3).h();
+          ((View)localObject).setId(2131442532);
           paramView.addView((View)localObject, 0);
         }
         if (((paramInt2 == 0) || (paramInt1 == 1)) && (paramBoolean1) && (i != 1))
         {
           localObject = new View(paramView.getContext());
-          ((View)localObject).setId(2131374369);
-          ((View)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, paramView.getContext().getResources().getDimensionPixelSize(2131298545)));
+          ((View)localObject).setId(2131442531);
+          ((View)localObject).setLayoutParams(new LinearLayout.LayoutParams(-1, paramView.getContext().getResources().getDimensionPixelSize(2131299259)));
           paramView.addView((View)localObject, 0);
           if (ThemeUtil.isInNightMode(MobileQQ.sMobileQQ.peekAppRuntime()))
           {
@@ -115,7 +115,7 @@ public class SearchViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.util.SearchViewUtils
  * JD-Core Version:    0.7.0.1
  */

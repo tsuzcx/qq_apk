@@ -59,7 +59,7 @@ class LiteActivity$SendPhotoAsyncTask
       if ((j > 3) && (j < 50))
       {
         localArrayList = new ArrayList();
-        int k = localDataLineHandler.a();
+        int k = localDataLineHandler.g();
         i = 0;
         while (i < j)
         {
@@ -71,7 +71,7 @@ class LiteActivity$SendPhotoAsyncTask
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      j = localDataLineHandler.a();
+      j = localDataLineHandler.g();
       int i = 0;
       while (i < 50)
       {

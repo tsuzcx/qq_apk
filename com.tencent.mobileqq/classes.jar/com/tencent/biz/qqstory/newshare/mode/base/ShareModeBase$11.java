@@ -12,18 +12,18 @@ class ShareModeBase$11
     super(paramString1, paramString2, paramBoolean);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    this.a.a = ((String)b("EncryptUrlJob_encryptedUrl"));
     HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
+    localHashMap.put(this.a.a, this.a.a);
     a("ShortenUrlJob_shortenedUrls", localHashMap);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.11
  * JD-Core Version:    0.7.0.1
  */

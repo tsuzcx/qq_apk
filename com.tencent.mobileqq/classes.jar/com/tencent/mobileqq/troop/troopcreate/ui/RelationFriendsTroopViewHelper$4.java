@@ -12,14 +12,14 @@ class RelationFriendsTroopViewHelper$4
   
   public void a(ArrayList<ITroopSearchService.SearchResult> paramArrayList)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
+    if (this.a.c != null) {
+      this.a.c.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.RelationFriendsTroopViewHelper.4
  * JD-Core Version:    0.7.0.1
  */

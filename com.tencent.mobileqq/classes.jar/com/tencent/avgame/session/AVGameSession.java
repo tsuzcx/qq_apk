@@ -10,45 +10,29 @@ import java.util.List;
 
 public class AVGameSession
 {
-  public int a;
-  public long a;
-  public String a;
-  public final ArrayList<VideoViewInfo> a;
-  private final List<AVGameUserInfo> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
+  public int a = 0;
+  public String b = null;
   public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  private int f;
-  public boolean f;
+  public int d = 0;
+  public long e = 0L;
+  public boolean f = false;
   public boolean g = false;
+  public boolean h = true;
+  public boolean i = false;
+  public int j = 0;
+  public boolean k = false;
+  public long l = 0L;
+  public int m = 0;
+  public int n = 0;
+  public boolean o = false;
+  public final ArrayList<VideoViewInfo> p = new ArrayList(8);
+  private int q = 0;
+  private final List<AVGameUserInfo> r = new ArrayList(8);
   
   public AVGameSession(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(8);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public static String a(int paramInt, long paramLong)
@@ -56,30 +40,25 @@ public class AVGameSession
     return String.format("%s-%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
   }
   
-  public int a()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
   public AVGameUserInfo a()
   {
-    return a(this.jdField_b_of_type_Long);
+    return a(this.l);
   }
   
   public AVGameUserInfo a(long paramLong)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = 0;
+    List localList = this.r;
+    int i1 = 0;
     for (;;)
     {
       try
       {
-        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        if (i1 >= this.r.size()) {
           break label90;
         }
-        if (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mUin == paramLong)
+        if (((AVGameUserInfo)this.r.get(i1)).mUin == paramLong)
         {
-          AVGameUserInfo localAVGameUserInfo = (AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+          AVGameUserInfo localAVGameUserInfo = (AVGameUserInfo)this.r.get(i1);
           return localAVGameUserInfo;
         }
       }
@@ -88,7 +67,7 @@ public class AVGameSession
         continue;
         throw localObject1;
         continue;
-        i += 1;
+        i1 += 1;
       }
       continue;
       label90:
@@ -107,43 +86,11 @@ public class AVGameSession
       QavDef.MultiUserInfo.copyTo(paramMultiUserInfo, (QavDef.MultiUserInfo)???);
       return ???;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.r)
     {
-      paramMultiUserInfo = new AVGameUserInfo(paramMultiUserInfo, this.jdField_b_of_type_Long);
-      this.jdField_a_of_type_JavaUtilList.add(paramMultiUserInfo);
+      paramMultiUserInfo = new AVGameUserInfo(paramMultiUserInfo, this.l);
+      this.r.add(paramMultiUserInfo);
       return paramMultiUserInfo;
-    }
-  }
-  
-  public void a()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if ((((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).hasVideo()) && (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mBigVideo)) {
-            ((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mBigVideo = false;
-          }
-        }
-        else
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("AVGameSession", 4, "clearUserBigVideoFlag");
-          }
-          return;
-        }
-      }
-      finally
-      {
-        continue;
-        throw localObject;
-        continue;
-        i += 1;
-      }
     }
   }
   
@@ -151,22 +98,22 @@ public class AVGameSession
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setSessionStatus. old status = ");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(", new status = ");
     localStringBuilder.append(paramInt);
     AVLog.d("AVGameSession", localStringBuilder.toString());
-    this.jdField_f_of_type_Int = paramInt;
+    this.q = paramInt;
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    int i = this.jdField_c_of_type_Int;
+    int i1 = this.j;
     if (paramBoolean) {
-      this.jdField_c_of_type_Int = ((paramInt ^ 0xFFFFFFFF) & i);
+      this.j = ((paramInt ^ 0xFFFFFFFF) & i1);
     } else {
-      this.jdField_c_of_type_Int = (i | paramInt);
+      this.j = (i1 | paramInt);
     }
-    if (i != this.jdField_c_of_type_Int)
+    if (i1 != this.j)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setLocalVideoFlag, mask[");
@@ -174,23 +121,11 @@ public class AVGameSession
       localStringBuilder.append("], clear[");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("], [");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append("->");
-      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append(this.j);
       localStringBuilder.append("]");
       AVLog.d("AVGameSession", localStringBuilder.toString());
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    if (localAVGameUserInfo != null) {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(localAVGameUserInfo);
-        return;
-      }
     }
   }
   
@@ -199,35 +134,35 @@ public class AVGameSession
     ArrayList localArrayList;
     if (paramList != null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      if (this.r.size() == 0) {
         return;
       }
-      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+      localArrayList = new ArrayList(this.r.size());
+      localArrayList.addAll(this.r);
     }
     for (;;)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      int i1;
+      synchronized (this.r)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.r.clear();
         Iterator localIterator = paramList.iterator();
         if (localIterator.hasNext())
         {
           Long localLong = (Long)localIterator.next();
           Object localObject = null;
-          i = 0;
+          i1 = 0;
           paramList = localObject;
-          if (i < localArrayList.size())
+          if (i1 < localArrayList.size())
           {
-            if (((AVGameUserInfo)localArrayList.get(i)).mUin != localLong.longValue()) {
+            if (((AVGameUserInfo)localArrayList.get(i1)).mUin != localLong.longValue()) {
               break label294;
             }
-            paramList = (AVGameUserInfo)localArrayList.get(i);
+            paramList = (AVGameUserInfo)localArrayList.get(i1);
           }
           if (paramList != null)
           {
-            this.jdField_a_of_type_JavaUtilList.add(paramList);
+            this.r.add(paramList);
             localArrayList.remove(paramList);
             continue;
           }
@@ -245,25 +180,14 @@ public class AVGameSession
           paramList.append(localArrayList.size());
           paramList.append("] not in list.");
           AVLog.d("AVGameSession", paramList.toString());
-          this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+          this.r.addAll(localArrayList);
         }
         return;
       }
       return;
       label294:
-      i += 1;
+      i1 += 1;
     }
-  }
-  
-  public boolean a()
-  {
-    int i = this.jdField_f_of_type_Int;
-    return (i == 0) || (i == 4);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (this.jdField_c_of_type_Int & paramInt) == paramInt;
   }
   
   public boolean a(long paramLong, boolean paramBoolean)
@@ -323,18 +247,62 @@ public class AVGameSession
     return bool;
   }
   
+  public void b()
+  {
+    List localList = this.r;
+    int i1 = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i1 < this.r.size())
+        {
+          if ((((AVGameUserInfo)this.r.get(i1)).hasVideo()) && (((AVGameUserInfo)this.r.get(i1)).mBigVideo)) {
+            ((AVGameUserInfo)this.r.get(i1)).mBigVideo = false;
+          }
+        }
+        else
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("AVGameSession", 4, "clearUserBigVideoFlag");
+          }
+          return;
+        }
+      }
+      finally
+      {
+        continue;
+        throw localObject;
+        continue;
+        i1 += 1;
+      }
+    }
+  }
+  
   public void b(int paramInt)
   {
-    if (this.jdField_d_of_type_Int != paramInt)
+    if (this.m != paramInt)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateStageStatus, [");
-      localStringBuilder.append(this.jdField_d_of_type_Int);
+      localStringBuilder.append(this.m);
       localStringBuilder.append("->");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("]");
       AVLog.d("AVGameSession", localStringBuilder.toString());
-      this.jdField_d_of_type_Int = paramInt;
+      this.m = paramInt;
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    AVGameUserInfo localAVGameUserInfo = a(paramLong);
+    if (localAVGameUserInfo != null) {
+      synchronized (this.r)
+      {
+        this.r.remove(localAVGameUserInfo);
+        return;
+      }
     }
   }
   
@@ -344,9 +312,9 @@ public class AVGameSession
       return;
     }
     paramList.clear();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.r)
     {
-      paramList.addAll(this.jdField_a_of_type_JavaUtilList);
+      paramList.addAll(this.r);
       return;
     }
   }
@@ -380,22 +348,27 @@ public class AVGameSession
     return bool;
   }
   
+  public int c()
+  {
+    return this.q;
+  }
+  
   public void c(List<AVGameUserInfo> paramList)
   {
     if (paramList == null) {
       return;
     }
     paramList.clear();
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = 0;
+    List localList = this.r;
+    int i1 = 0;
     for (;;)
     {
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
+        if (i1 < this.r.size())
         {
-          if (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).hasVideo()) {
-            paramList.add(this.jdField_a_of_type_JavaUtilList.get(i));
+          if (((AVGameUserInfo)this.r.get(i1)).hasVideo()) {
+            paramList.add(this.r.get(i1));
           }
         }
         else {
@@ -407,30 +380,41 @@ public class AVGameSession
         continue;
         throw paramList;
         continue;
-        i += 1;
+        i1 += 1;
       }
     }
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return (this.j & paramInt) == paramInt;
+  }
+  
+  public boolean d()
+  {
+    int i1 = this.q;
+    return (i1 == 0) || (i1 == 4);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
     localStringBuilder.append("[sessionId: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", relationType: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", relationId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", localSpeakerOn: ");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", localMute: ");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", localVideoFlag: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", isAutoGoOnStage: ");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", stageStatus: ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

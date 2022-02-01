@@ -14,45 +14,45 @@ import java.util.List;
 
 public class MiniCodeRecog
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = 0L;
-  private MiniParam jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final String jdField_a_of_type_JavaLangString = "MiniRecog.recog";
-  private boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private final String a = "MiniRecog.recog";
+  private int b = -1;
+  private TextureRender c;
+  private long d = 0L;
+  private boolean e = false;
+  private RenderBuffer f;
+  private MiniParam g;
+  private float h;
+  private float[] i;
+  private final Object j = new Object();
   
   public MiniCodeRecog(MiniParam paramMiniParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam = paramMiniParam;
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_a_of_type_Int = GlUtil.a(paramMiniParam.jdField_c_of_type_Int, paramMiniParam.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramMiniParam.jdField_c_of_type_Int, paramMiniParam.jdField_b_of_type_Int);
+    this.g = paramMiniParam;
+    this.i = new float[16];
+    this.c = new TextureRender();
+    this.b = GlUtil.a(paramMiniParam.c, paramMiniParam.b);
+    this.f = new RenderBuffer(paramMiniParam.c, paramMiniParam.b);
     MiniCodeUtil.b(false);
-    this.jdField_a_of_type_Long = RecogProxy.QCodeInit(this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniParam.d, 0.35F);
-    QLog.i("MiniRecog.recog", 1, String.format("RecogProxy.QCodeInit native_handler=0x%x", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
-    if (this.jdField_a_of_type_Long != 0L) {
+    this.d = RecogProxy.QCodeInit(this.g.a, this.g.b, this.g.c, this.g.d, this.g.e, this.g.f, this.g.g, 0.35F);
+    QLog.i("MiniRecog.recog", 1, String.format("RecogProxy.QCodeInit native_handler=0x%x", new Object[] { Long.valueOf(this.d) }));
+    if (this.d != 0L) {
       MiniCodeUtil.c(false);
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
   }
   
   private Rect a(int paramInt1, int paramInt2, float[] paramArrayOfFloat)
   {
     if (paramInt1 > paramInt2) {
-      i = 0;
+      k = 0;
     } else {
-      i = 1;
+      k = 1;
     }
-    float f1 = paramArrayOfFloat[i];
-    float f2 = this.jdField_a_of_type_Float;
-    paramArrayOfFloat[i] = ((f1 - 0.5F) / f2 + 0.5F);
-    i += 2;
-    paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - 0.5F) / f2 + 0.5F);
+    float f1 = paramArrayOfFloat[k];
+    float f2 = this.h;
+    paramArrayOfFloat[k] = ((f1 - 0.5F) / f2 + 0.5F);
+    k += 2;
+    paramArrayOfFloat[k] = ((paramArrayOfFloat[k] - 0.5F) / f2 + 0.5F);
     f1 = paramArrayOfFloat[0];
     f2 = paramArrayOfFloat[1];
     float f3 = paramArrayOfFloat[2];
@@ -61,86 +61,86 @@ public class MiniCodeRecog
     paramArrayOfFloat[1] = ((f2 - 0.02F) * 2.0F - 1.0F);
     paramArrayOfFloat[2] = (1.0F - (f3 + 0.02F) * 2.0F);
     paramArrayOfFloat[3] = ((f4 + 0.02F) * 2.0F - 1.0F);
-    int i = 0;
-    while (i < 4)
+    int k = 0;
+    while (k < 4)
     {
-      if (paramArrayOfFloat[i] > 1.0F) {
-        paramArrayOfFloat[i] = 1.0F;
-      } else if (paramArrayOfFloat[i] < -1.0F) {
-        paramArrayOfFloat[i] = -1.0F;
+      if (paramArrayOfFloat[k] > 1.0F) {
+        paramArrayOfFloat[k] = 1.0F;
+      } else if (paramArrayOfFloat[k] < -1.0F) {
+        paramArrayOfFloat[k] = -1.0F;
       }
-      i += 1;
+      k += 1;
     }
     f2 = paramArrayOfFloat[0];
     f1 = paramInt2;
     paramInt2 = (int)(f2 * 0.5F * f1);
-    i = (int)(paramArrayOfFloat[2] * 0.5F * f1);
+    k = (int)(paramArrayOfFloat[2] * 0.5F * f1);
     f2 = paramArrayOfFloat[1];
     f3 = paramInt1;
-    int j = (int)(f2 * 0.5F * f3);
-    int k = (int)(paramArrayOfFloat[3] * 0.5F * f3);
-    int m = Math.abs(k - j);
-    int n = Math.abs(i - paramInt2);
-    paramInt1 = k;
-    if (j < k) {
-      paramInt1 = j;
+    int m = (int)(f2 * 0.5F * f3);
+    int n = (int)(paramArrayOfFloat[3] * 0.5F * f3);
+    int i1 = Math.abs(n - m);
+    int i2 = Math.abs(k - paramInt2);
+    paramInt1 = n;
+    if (m < n) {
+      paramInt1 = m;
     }
-    if (paramInt2 <= i) {
-      paramInt2 = i;
+    if (paramInt2 <= k) {
+      paramInt2 = k;
     }
     paramInt1 = (int)(paramInt1 + f3 * 0.5F);
     paramInt2 = (int)(f1 * 0.5F - paramInt2);
     paramArrayOfFloat = new Rect();
     paramArrayOfFloat.left = paramInt1;
     paramArrayOfFloat.top = paramInt2;
-    paramArrayOfFloat.right = (paramInt1 + m);
-    paramArrayOfFloat.bottom = (paramInt2 + n);
+    paramArrayOfFloat.right = (paramInt1 + i1);
+    paramArrayOfFloat.bottom = (paramInt2 + i2);
     return paramArrayOfFloat;
   }
   
   public List<AIRect> a(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return null;
     }
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    Matrix.setIdentityM(this.i, 0);
     if (paramInt2 > paramInt3)
     {
-      this.jdField_a_of_type_Float = (paramInt3 / paramInt2);
-      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Float, 1.0F, 1.0F);
+      this.h = (paramInt3 / paramInt2);
+      Matrix.scaleM(this.i, 0, this.h, 1.0F, 1.0F);
     }
     else
     {
-      this.jdField_a_of_type_Float = (paramInt2 / paramInt3);
-      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, this.jdField_a_of_type_Float, 1.0F);
+      this.h = (paramInt2 / paramInt3);
+      Matrix.scaleM(this.i, 0, 1.0F, this.h, 1.0F);
     }
-    Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 180.0F, 1.0F, 0.0F, 0.0F);
-    Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -90.0F, 0.0F, 0.0F, 1.0F);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.setUserTextureId(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    Matrix.rotateM(this.i, 0, 180.0F, 1.0F, 0.0F, 0.0F);
+    Matrix.rotateM(this.i, 0, -90.0F, 0.0F, 0.0F, 1.0F);
+    this.f.setUserTextureId(this.b);
+    this.f.bind();
     GLES31.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES31.glClear(16384);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    this.c.drawTexture(3553, paramInt1, null, this.i);
+    this.f.unbind();
     GLES20.glFlush();
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
       Object localObject2;
       Object localObject3;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.j)
       {
-        if (this.jdField_a_of_type_Long != 0L)
+        if (this.d != 0L)
         {
-          RecogProxy.QCodeProcess(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 0);
-          j = RecogProxy.getBoxCnt(this.jdField_a_of_type_Long);
-          int i = j;
-          if (j < 2) {
+          RecogProxy.QCodeProcess(this.d, this.b, 0);
+          m = RecogProxy.getBoxCnt(this.d);
+          int k = m;
+          if (m < 4) {
             break label695;
           }
-          i = 2;
+          k = 4;
           break label695;
-          if (j < i)
+          if (m < k)
           {
             localObject2 = new float[5];
             localObject2[0] = 0.0F;
@@ -148,82 +148,82 @@ public class MiniCodeRecog
             localObject2[2] = 0.0F;
             localObject2[3] = 0.0F;
             localObject2[4] = 0.0F;
-            int k = RecogProxy.getBox(this.jdField_a_of_type_Long, j, (float[])localObject2);
-            int m = RecogProxy.getBoxType(this.jdField_a_of_type_Long, j);
-            if ((k < 0) || (m < 0)) {
+            int n = RecogProxy.getBox(this.d, m, (float[])localObject2);
+            int i1 = RecogProxy.getBoxType(this.d, m);
+            if ((n < 0) || (i1 < 0)) {
               break label701;
             }
             if (QLog.isDevelopLevel()) {
-              QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_point=[%f,%f,%f,%f,%f,%d]", new Object[] { Float.valueOf(localObject2[0]), Float.valueOf(localObject2[1]), Float.valueOf(localObject2[2]), Float.valueOf(localObject2[3]), Float.valueOf(localObject2[4]), Integer.valueOf(m) }));
+              QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_point=[%f,%f,%f,%f,%f,%d]", new Object[] { Float.valueOf(localObject2[0]), Float.valueOf(localObject2[1]), Float.valueOf(localObject2[2]), Float.valueOf(localObject2[3]), Float.valueOf(localObject2[4]), Integer.valueOf(i1) }));
             }
             localObject3 = a(paramInt2, paramInt3, (float[])localObject2);
             AIRect localAIRect = new AIRect();
-            localAIRect.jdField_a_of_type_AndroidGraphicsRect.set((Rect)localObject3);
-            localAIRect.jdField_a_of_type_Int = m;
-            localAIRect.jdField_a_of_type_Float = localObject2[4];
+            localAIRect.b.set((Rect)localObject3);
+            localAIRect.a = i1;
+            localAIRect.c = localObject2[4];
             localArrayList.add(localAIRect);
             break label701;
           }
         }
         if (paramBoolean)
         {
-          Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+          Matrix.setIdentityM(this.i, 0);
           if (paramInt2 > paramInt3) {
-            Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Float, 1.0F, 1.0F);
+            Matrix.scaleM(this.i, 0, this.h, 1.0F, 1.0F);
           } else {
-            Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, this.jdField_a_of_type_Float, 1.0F);
+            Matrix.scaleM(this.i, 0, 1.0F, this.h, 1.0F);
           }
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.setUserTextureId(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+          this.f.setUserTextureId(this.b);
+          this.f.bind();
           GLES31.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
           GLES31.glClear(16384);
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, this.jdField_a_of_type_ArrayOfFloat);
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+          this.c.drawTexture(3553, paramInt1, null, this.i);
+          this.f.unbind();
           GLES20.glFlush();
         }
       }
       label695:
-      int j = 0;
+      int m = 0;
       continue;
       label701:
-      j += 1;
-    }
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-    if (localObject != null) {
-      ((TextureRender)localObject).release();
-    }
-    int i = this.jdField_a_of_type_Int;
-    if (i >= 0)
-    {
-      GlUtils.a(i);
-      this.jdField_a_of_type_Int = -1;
-    }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-    if (localObject != null) {
-      ((RenderBuffer)localObject).destroy();
-    }
-    if (this.jdField_a_of_type_Long != 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.recog", 2, String.format("RecogProxy.QCodeDestroy native_handler=0x%x", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
-      }
-      RecogProxy.QCodeDestroy(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = 0L;
+      m += 1;
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Long != 0L;
+    return this.d != 0L;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((TextureRender)localObject).release();
+    }
+    int k = this.b;
+    if (k >= 0)
+    {
+      GlUtils.a(k);
+      this.b = -1;
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
+    }
+    if (this.d != 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.recog", 2, String.format("RecogProxy.QCodeDestroy native_handler=0x%x", new Object[] { Long.valueOf(this.d) }));
+      }
+      RecogProxy.QCodeDestroy(this.d);
+      this.d = 0L;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniCodeRecog
  * JD-Core Version:    0.7.0.1
  */

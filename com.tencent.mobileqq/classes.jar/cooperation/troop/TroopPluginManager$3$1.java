@@ -25,21 +25,21 @@ class TroopPluginManager$3$1
     if (paramInt == 0)
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("troopUin", this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("memberUin", this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("fromFlag", this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_Int);
-      localIntent.putExtra("troopCode", this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.c);
-      localIntent.putExtra("troopName", this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.d);
-      Object localObject1 = (TroopManager)this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      localObject1 = ((IBizTroopMemberInfoService)this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberCard(this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_b_of_type_JavaLangString);
-      Object localObject2 = (TroopMemberCard)this.jdField_a_of_type_ArrayOfJavaLangObject[2];
+      localIntent.putExtra("troopUin", this.b.a);
+      localIntent.putExtra("memberUin", this.b.c);
+      localIntent.putExtra("fromFlag", this.b.d);
+      localIntent.putExtra("troopCode", this.b.e);
+      localIntent.putExtra("troopName", this.b.f);
+      Object localObject1 = (TroopManager)this.b.b.getManager(QQManagerFactory.TROOP_MANAGER);
+      localObject1 = ((IBizTroopMemberInfoService)this.b.b.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberCard(this.b.a, this.b.c);
+      Object localObject2 = (TroopMemberCard)this.a[2];
       if (localObject2 != null) {
         localObject1 = localObject2;
       }
       if (localObject1 != null)
       {
         localIntent.putExtra("troopMemberCard", (Serializable)localObject1);
-        localIntent.putExtra("hwCard", ((IBizTroopMemberInfoService)this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IBizTroopMemberInfoService.class, "")).getHWTroopMemberCard(this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_b_of_type_JavaLangString));
+        localIntent.putExtra("hwCard", ((IBizTroopMemberInfoService)this.b.b.getRuntimeService(IBizTroopMemberInfoService.class, "")).getHWTroopMemberCard(this.b.a, this.b.c));
         localIntent.putExtra("isOrgMgr", false);
         localIntent.putExtra("isHisMgr", true);
         localIntent.putExtra("hasOrgs", true);
@@ -47,24 +47,24 @@ class TroopPluginManager$3$1
         paramInt = i;
         while (paramInt < ((TroopMemberCard)localObject1).mOrgIds.size())
         {
-          ((ArrayList)localObject2).add(((String)((TroopMemberCard)localObject1).mOrgIds.get(paramInt)).substring(this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_JavaLangString.length()));
+          ((ArrayList)localObject2).add(((String)((TroopMemberCard)localObject1).mOrgIds.get(paramInt)).substring(this.b.a.length()));
           paramInt += 1;
         }
         localIntent.putExtra("orgIds", (Serializable)localObject2);
-        TroopMemberCardProxyActivity.a(this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_member_card_plugin.apk", HardCodeUtil.a(2131715494), TroopMemberCardProxyActivity.class, this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_AndroidAppActivity, localIntent, this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_AndroidAppDialog, "com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_b_of_type_Int);
+        TroopMemberCardProxyActivity.a(this.b.b, "troop_member_card_plugin.apk", HardCodeUtil.a(2131912968), TroopMemberCardProxyActivity.class, this.b.h, localIntent, this.b.g, "com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", this.b.b.getCurrentAccountUin(), this.b.i);
         return;
       }
-      this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_AndroidAppDialog.dismiss();
-      QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715495), 0).a();
+      this.b.g.dismiss();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131912969), 0).show();
       return;
     }
-    this.jdField_a_of_type_CooperationTroopTroopPluginManager$3.jdField_a_of_type_AndroidAppDialog.dismiss();
-    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715496), 0).a();
+    this.b.g.dismiss();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131912970), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.3.1
  * JD-Core Version:    0.7.0.1
  */

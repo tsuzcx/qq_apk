@@ -11,25 +11,25 @@ class QQAvatarManagerServiceImpl$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.a;
     if ((localObject instanceof FaceDrawableImpl.FaceObserver))
     {
-      QQAvatarManagerServiceImpl.access$300(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.FaceObserver)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      QQAvatarManagerServiceImpl.access$300(this.this$0, this.b, (FaceDrawableImpl.FaceObserver)localObject, this.c, this.d);
       return;
     }
     if ((localObject instanceof FaceDrawableImpl.DisFaceObserver))
     {
-      QQAvatarManagerServiceImpl.access$400(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.DisFaceObserver)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      QQAvatarManagerServiceImpl.access$400(this.this$0, this.b, (FaceDrawableImpl.DisFaceObserver)localObject, this.c, this.d);
       return;
     }
     if ((localObject instanceof FaceDrawableImpl.NewTroopFaceObserver)) {
-      QQAvatarManagerServiceImpl.access$500(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.NewTroopFaceObserver)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      QQAvatarManagerServiceImpl.access$500(this.this$0, this.b, (FaceDrawableImpl.NewTroopFaceObserver)localObject, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarManagerServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

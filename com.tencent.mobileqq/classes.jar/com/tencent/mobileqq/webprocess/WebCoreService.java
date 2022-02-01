@@ -13,14 +13,9 @@ import com.tencent.qphone.base.util.QLog;
 public class WebCoreService
   extends Service
 {
-  private static final int jdField_a_of_type_Int = ;
-  private static WebCoreService jdField_a_of_type_ComTencentMobileqqWebprocessWebCoreService = null;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  public static boolean a = false;
+  private static final int b = ;
+  private static WebCoreService c = null;
   
   public static void a()
   {
@@ -31,7 +26,7 @@ public class WebCoreService
       try
       {
         localBaseApplication.startService(localIntent);
-        jdField_a_of_type_Boolean = true;
+        a = true;
       }
       catch (Throwable localThrowable)
       {
@@ -52,7 +47,7 @@ public class WebCoreService
       try
       {
         BaseApplication.getContext().stopService(localIntent);
-        jdField_a_of_type_Boolean = false;
+        a = false;
       }
       catch (Throwable localThrowable)
       {
@@ -110,7 +105,7 @@ public class WebCoreService
   
   public void onCreate()
   {
-    jdField_a_of_type_ComTencentMobileqqWebprocessWebCoreService = this;
+    c = this;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -122,7 +117,7 @@ public class WebCoreService
     d();
     if (Build.VERSION.SDK_INT < 18)
     {
-      super.startForeground(jdField_a_of_type_Int, new Notification());
+      super.startForeground(b, new Notification());
       return;
     }
     if (Build.VERSION.SDK_INT < 25) {
@@ -141,12 +136,12 @@ public class WebCoreService
       d();
     }
     super.onDestroy();
-    jdField_a_of_type_ComTencentMobileqqWebprocessWebCoreService = null;
+    c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebCoreService
  * JD-Core Version:    0.7.0.1
  */

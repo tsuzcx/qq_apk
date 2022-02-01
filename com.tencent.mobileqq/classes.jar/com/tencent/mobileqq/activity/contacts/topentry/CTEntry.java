@@ -5,47 +5,47 @@ import android.text.TextUtils;
 public class CTEntry
 {
   public int a;
-  public Object a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
   public String c;
-  public boolean c;
   public String d;
-  public boolean d;
   public String e;
-  public boolean e;
+  public String f;
+  public boolean g;
+  public int h;
+  public boolean i;
+  public short j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public Object n;
   
   public boolean a()
   {
-    boolean bool1 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    boolean bool1 = TextUtils.isEmpty(this.b);
     boolean bool2 = true;
     boolean bool3 = bool1 ^ true;
     bool1 = bool3;
     if (bool3) {
-      bool1 = this.c;
+      bool1 = this.k;
     }
     if (bool1)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i1 = this.a;
       bool1 = bool2;
-      if (i != 1)
+      if (i1 != 1)
       {
         bool1 = bool2;
-        if (i != 2)
+        if (i1 != 2)
         {
           bool1 = bool2;
-          if (i != 3)
+          if (i1 != 3)
           {
             bool1 = bool2;
-            if (i != 4)
+            if (i1 != 4)
             {
               bool1 = bool2;
-              if (i != 5) {
-                return this.jdField_a_of_type_Short != 0;
+              if (i1 != 5) {
+                return this.j != 0;
               }
             }
           }
@@ -57,7 +57,7 @@ public class CTEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntry
  * JD-Core Version:    0.7.0.1
  */

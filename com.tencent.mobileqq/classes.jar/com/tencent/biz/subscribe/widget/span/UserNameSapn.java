@@ -9,43 +9,43 @@ import android.view.View;
 public class UserNameSapn
   extends ClickableSpan
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private UserNameSapn.OnUserNameClickListener jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private int b;
+  private ColorStateList c;
+  private UserNameSapn.OnUserNameClickListener d;
   
   public UserNameSapn(String paramString, int paramInt, UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = paramOnUserNameClickListener;
+    this.a = paramString;
+    this.b = paramInt;
+    this.d = paramOnUserNameClickListener;
   }
   
   public UserNameSapn(String paramString, ColorStateList paramColorStateList, UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = paramOnUserNameClickListener;
+    this.a = paramString;
+    this.c = paramColorStateList;
+    this.d = paramOnUserNameClickListener;
   }
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      paramView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener;
+      paramView = this.d;
       if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_JavaLangString);
+        paramView.a(this.a);
       }
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i > 0) {
       paramTextPaint.setColor(i);
     }
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.c;
     if (localColorStateList != null) {
       paramTextPaint.setColor(localColorStateList.getColorForState(paramTextPaint.drawableState, 0));
     }
@@ -54,7 +54,7 @@ public class UserNameSapn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.span.UserNameSapn
  * JD-Core Version:    0.7.0.1
  */

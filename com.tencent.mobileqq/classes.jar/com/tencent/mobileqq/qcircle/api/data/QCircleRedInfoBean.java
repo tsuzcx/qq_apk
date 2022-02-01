@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.qcircle.api.data;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qcircle.api.event.QCircleFrameEvent;
 import com.tencent.mobileqq.qcircle.api.helper.QCircleRedDotDataHelper;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
-import qqcircle.QQCircleCounter.AllPushPointInfo;
-import qqcircle.QQCircleCounter.PymkRedPointInfo;
 import qqcircle.QQCircleCounter.RedPointInfo;
 import qqcircle.QQCircleCounter.RedPointJumpInfo;
 
@@ -134,11 +133,11 @@ public class QCircleRedInfoBean
   
   public void refreshRedDotInfo()
   {
-    RFLog.d("QCircleRedInfoBean", RFLog.USR, "refreshRedDotInfo");
+    QLog.d("QCircleRedInfoBean", 1, "refreshRedDotInfo");
     QQCircleCounter.RedPointInfo localRedPointInfo = QCircleRedDotDataHelper.getRedPointInfo();
     if (localRedPointInfo == null)
     {
-      RFLog.d("QCircleRedInfoBean", RFLog.USR, "refreshRedDotInfo: redInfo is null");
+      QLog.d("QCircleRedInfoBean", 1, "refreshRedDotInfo: redInfo is null");
       return;
     }
     int i = QCircleRedDotDataHelper.getAllRedNum(localRedPointInfo);
@@ -148,13 +147,13 @@ public class QCircleRedInfoBean
     setIsNeedReportFlag(localRedPointInfo, i, bool1, bool2, bool3);
     Object localObject1;
     if (bool2) {
-      localObject1 = localRedPointInfo.pymkRedInfo.wording.get();
+      localObject1 = localRedPointInfo.wording.get();
     } else {
       localObject1 = null;
     }
     if (bool3)
     {
-      localObject2 = localRedPointInfo.allPushInfo.wording.get();
+      localObject2 = localRedPointInfo.wording.get();
       localObject1 = localObject2;
       if (localRedPointInfo.redJumpInfo.has())
       {
@@ -171,14 +170,14 @@ public class QCircleRedInfoBean
               localObject3 = localRedPointInfo.redJumpInfo.jumpLink.get();
               localObject1 = localObject2;
               localObject2 = localObject3;
-              break label208;
+              break label198;
             }
           }
         }
       }
     }
     Object localObject2 = null;
-    label208:
+    label198:
     this.mRedNum = i;
     this.mIsShowActiveRedDot = bool1;
     this.mIsShowPymkRedDot = bool2;
@@ -203,8 +202,8 @@ public class QCircleRedInfoBean
       HashMap localHashMap = new HashMap();
       localHashMap.put("ext1", "1");
       localHashMap.put("ext5", this.mRedDotReportExt);
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", this.mActionEntry, 2, i, localHashMap, null, null);
-      RFLog.d("QCircleRedInfoBean", RFLog.USR, "reportQQCircleClick");
+      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setActionType(this.mActionEntry).setSubActionType(2).setThrActionType(i).setExtras(localHashMap));
+      QLog.d("QCircleRedInfoBean", 1, "reportQQCircleClick");
     }
   }
   
@@ -222,15 +221,15 @@ public class QCircleRedInfoBean
       HashMap localHashMap = new HashMap();
       localHashMap.put("ext1", "1");
       localHashMap.put("ext5", this.mRedDotReportExt);
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", this.mActionEntry, 1, i, localHashMap, null, null);
+      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setActionType(this.mActionEntry).setSubActionType(1).setThrActionType(i).setExtras(localHashMap));
       this.mShouldReportRed = false;
-      RFLog.d("QCircleRedInfoBean", RFLog.USR, "reportRedDotWhenValueChange");
+      QLog.d("QCircleRedInfoBean", 1, "reportRedDotWhenValueChange");
     }
   }
   
   public void reset()
   {
-    RFLog.d("QCircleRedInfoBean", RFLog.USR, "reset");
+    QLog.d("QCircleRedInfoBean", 1, "reset");
     this.mRedNum = 0;
     this.mIsShowActiveRedDot = false;
     this.mIsShowPymkRedDot = false;
@@ -247,7 +246,7 @@ public class QCircleRedInfoBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.data.QCircleRedInfoBean
  * JD-Core Version:    0.7.0.1
  */

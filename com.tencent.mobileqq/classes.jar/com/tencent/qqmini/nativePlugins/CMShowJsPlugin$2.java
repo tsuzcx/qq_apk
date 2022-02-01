@@ -20,22 +20,22 @@ class CMShowJsPlugin$2
     localStringBuilder.append(", ");
     localStringBuilder.append(paramJSONObject);
     localStringBuilder.append(", ");
-    localStringBuilder.append(CMShowJsPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin).appId);
+    localStringBuilder.append(CMShowJsPlugin.a(this.e).appId);
     QLog.i("CMShowJsPlugin", 2, localStringBuilder.toString());
     if (paramBoolean)
     {
-      CMShowJsPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentQqminiSdkAuthAuthState.setAuthState(this.b, true);
-      CMShowJsPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent);
+      CMShowJsPlugin.a(this.e, this.a);
+      this.b.setAuthState(this.c, true);
+      CMShowJsPlugin.a(this.e, this.d);
       return;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkAuthAuthState.setAuthState(this.b, false);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    this.b.setAuthState(this.c, false);
+    this.d.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.CMShowJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,22 +16,22 @@ class ExpandCampusNewFragment$6
     if (this.this$0.a == null)
     {
       localObject = this.this$0;
-      ((ExpandCampusNewFragment)localObject).a = DialogUtil.a(ExpandCampusNewFragment.a((ExpandCampusNewFragment)localObject), 230);
+      ((ExpandCampusNewFragment)localObject).a = DialogUtil.a(ExpandCampusNewFragment.c((ExpandCampusNewFragment)localObject), 230);
     }
-    Object localObject = ((IExpandForbiddenUtils)QRoute.api(IExpandForbiddenUtils.class)).getForbidDialogMessage(ExpandCampusNewFragment.a(this.this$0), ExpandCampusNewFragment.a(this.this$0), false, ExpandCampusNewFragment.a(this.this$0), ExpandCampusNewFragment.a(this.this$0));
+    Object localObject = ((IExpandForbiddenUtils)QRoute.api(IExpandForbiddenUtils.class)).getForbidDialogMessage(ExpandCampusNewFragment.c(this.this$0), ExpandCampusNewFragment.d(this.this$0), false, ExpandCampusNewFragment.e(this.this$0), ExpandCampusNewFragment.f(this.this$0));
     int i;
-    if (ExpandCampusNewFragment.a(this.this$0)) {
-      i = 2131698821;
+    if (ExpandCampusNewFragment.f(this.this$0)) {
+      i = 2131896789;
     } else {
-      i = 2131698793;
+      i = 2131896756;
     }
-    this.this$0.a.setTitle(ExpandCampusNewFragment.a(this.this$0).getString(i)).setMessage((CharSequence)localObject).setPositiveButton(ExpandCampusNewFragment.a(this.this$0).getString(2131698818), new ExpandCampusNewFragment.6.2(this)).setOnKeyListener(new ExpandCampusNewFragment.6.1(this));
+    this.this$0.a.setTitle(ExpandCampusNewFragment.c(this.this$0).getString(i)).setMessage((CharSequence)localObject).setPositiveButton(ExpandCampusNewFragment.c(this.this$0).getString(2131896785), new ExpandCampusNewFragment.6.2(this)).setOnKeyListener(new ExpandCampusNewFragment.6.1(this));
     this.this$0.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandCampusNewFragment.6
  * JD-Core Version:    0.7.0.1
  */

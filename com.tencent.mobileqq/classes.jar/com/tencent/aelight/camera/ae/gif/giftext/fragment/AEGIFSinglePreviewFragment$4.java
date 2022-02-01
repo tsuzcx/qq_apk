@@ -19,7 +19,7 @@ class AEGIFSinglePreviewFragment$4
   public void a()
   {
     QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateFail");
-    AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment);
+    AEGIFSinglePreviewFragment.f(this.b);
     UiThreadUtil.a(new AEGIFSinglePreviewFragment.4.2(this));
   }
   
@@ -29,10 +29,10 @@ class AEGIFSinglePreviewFragment$4
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
-    Object localObject1 = AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment);
+    Object localObject1 = AEGIFSinglePreviewFragment.b(this.b);
     Object localObject2 = "";
     if (localObject1 != null) {
-      localObject1 = AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment).a();
+      localObject1 = AEGIFSinglePreviewFragment.b(this.b).g();
     } else {
       localObject1 = "";
     }
@@ -40,38 +40,38 @@ class AEGIFSinglePreviewFragment$4
     localArrayList2.add(localObject1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gif^");
-    if (AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment) != null) {
-      localObject2 = AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment);
+    if (AEGIFSinglePreviewFragment.c(this.b) != null) {
+      localObject2 = AEGIFSinglePreviewFragment.c(this.b);
     }
     localStringBuilder.append((String)localObject2);
     localArrayList3.add(localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment, localArrayList1, localArrayList2, localArrayList3);
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment.getActivity().setResult(201);
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment.getActivity().finish();
-      paramString = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment.getActivity().getApplicationContext();
+      AEGIFSinglePreviewFragment.a(this.b, localArrayList1, localArrayList2, localArrayList3);
+      this.b.getActivity().setResult(201);
+      this.b.getActivity().finish();
+      paramString = this.b.getActivity().getApplicationContext();
       ThreadManager.getUIHandler().post(new AEGIFSinglePreviewFragment.4.1(this, paramString));
     }
     else
     {
-      AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment, localArrayList1, localArrayList2, localArrayList3);
-      if ((AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment)) && (AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment) != null))
+      AEGIFSinglePreviewFragment.a(this.b, localArrayList1, localArrayList2, localArrayList3);
+      if ((AEGIFSinglePreviewFragment.d(this.b)) && (AEGIFSinglePreviewFragment.e(this.b) != null))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment;
-        AEGIFSinglePreviewFragment.a((AEGIFSinglePreviewFragment)localObject2, paramString, AEGIFSinglePreviewFragment.a((AEGIFSinglePreviewFragment)localObject2), (String)localObject1, AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment));
+        localObject2 = this.b;
+        AEGIFSinglePreviewFragment.a((AEGIFSinglePreviewFragment)localObject2, paramString, AEGIFSinglePreviewFragment.e((AEGIFSinglePreviewFragment)localObject2), (String)localObject1, AEGIFSinglePreviewFragment.c(this.b));
       }
       else
       {
-        ShortVideoForwardManager.a(AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment), paramString, AECameraEntryManager.b(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment.getActivity()), true, (String)localObject1, AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment), 1);
+        ShortVideoForwardManager.a(AEGIFSinglePreviewFragment.a(this.b), paramString, AECameraEntryManager.c(this.b.getActivity()), true, (String)localObject1, AEGIFSinglePreviewFragment.c(this.b), 1);
       }
     }
-    AEGIFSinglePreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFSinglePreviewFragment);
+    AEGIFSinglePreviewFragment.f(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.4
  * JD-Core Version:    0.7.0.1
  */

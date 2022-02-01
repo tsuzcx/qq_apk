@@ -13,9 +13,9 @@ public class CleanVideoPlayerView
     setCleanMode(true);
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
+    super.h();
   }
 }
 

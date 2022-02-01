@@ -51,14 +51,6 @@ public final class QQSharpPUtil
     return localObject;
   }
   
-  public static String a(File paramFile)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramFile.getAbsolutePath());
-    localStringBuilder.append(".shp");
-    return localStringBuilder.toString();
-  }
-  
   public static boolean a()
   {
     Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.vip_individuation.name());
@@ -97,6 +89,14 @@ public final class QQSharpPUtil
     return null;
   }
   
+  public static String b(File paramFile)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFile.getAbsolutePath());
+    localStringBuilder.append(".shp");
+    return localStringBuilder.toString();
+  }
+  
   public static boolean b()
   {
     Object localObject = new StringBuilder();
@@ -117,7 +117,7 @@ public final class QQSharpPUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqsharpP.QQSharpPUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -51,7 +51,7 @@ public class QConfigAPMProcessor
   public APMConfRoot onParsed(QConfItem[] paramArrayOfQConfItem)
   {
     if (paramArrayOfQConfItem.length > 0) {
-      paramArrayOfQConfItem = (APMConfRoot)new Gson().fromJson(paramArrayOfQConfItem[0].a, APMConfRoot.class);
+      paramArrayOfQConfItem = (APMConfRoot)new Gson().fromJson(paramArrayOfQConfItem[0].b, APMConfRoot.class);
     } else {
       paramArrayOfQConfItem = null;
     }
@@ -73,7 +73,7 @@ public class QConfigAPMProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.config.QConfigAPMProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -19,16 +19,16 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class AddressDataProvider
   extends DataProvider<AddressDataProvider.AddressInfo>
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private LbsManager.LbsUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new AddressDataProvider.1(this);
   protected boolean a;
+  private SharedPreferences e;
+  private LbsManager.LbsUpdateListener f = new AddressDataProvider.1(this);
   
   public AddressDataProvider()
   {
-    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
+    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().c();
     if (localBaseApplicationImpl != null)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
+      this.e = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
       return;
     }
     throw new IllegalArgumentException("Context should not be null");
@@ -43,49 +43,49 @@ public class AddressDataProvider
   protected void a(BasicLocation paramBasicLocation)
   {
     SLog.b("AddressDataProvider", "requestAddress.");
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       SLog.d("AddressDataProvider", "is request address ing....");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
     LbsManager localLbsManager = (LbsManager)SuperManager.a(9);
     BasicLocation localBasicLocation = paramBasicLocation;
     if (paramBasicLocation == null) {
-      localBasicLocation = localLbsManager.b();
+      localBasicLocation = localLbsManager.d();
     }
     if (localBasicLocation != null)
     {
       a(localBasicLocation.b, localBasicLocation.a);
       return;
     }
-    localLbsManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener);
-    localLbsManager.c();
+    localLbsManager.a(this.f);
+    localLbsManager.e();
   }
   
   protected void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, paramInt).apply();
+    this.e.edit().putInt(paramString, paramInt).apply();
   }
   
   protected void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, paramLong).apply();
+    this.e.edit().putLong(paramString, paramLong).apply();
   }
   
   protected void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString1, paramString2).apply();
+    this.e.edit().putString(paramString1, paramString2).apply();
   }
   
   public boolean a(AddressDataProvider.AddressInfo paramAddressInfo)
   {
-    return (paramAddressInfo != null) && (!TextUtils.isEmpty(paramAddressInfo.a)) && (!HardCodeUtil.a(2131700099).equals(paramAddressInfo.a));
+    return (paramAddressInfo != null) && (!TextUtils.isEmpty(paramAddressInfo.a)) && (!HardCodeUtil.a(2131898144).equals(paramAddressInfo.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.AddressDataProvider
  * JD-Core Version:    0.7.0.1
  */

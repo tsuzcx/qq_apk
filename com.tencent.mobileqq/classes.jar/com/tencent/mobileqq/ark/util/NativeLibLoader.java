@@ -13,31 +13,6 @@ import java.util.Locale;
 
 public class NativeLibLoader
 {
-  private static int a(String paramString)
-  {
-    if (paramString.equals("ark")) {
-      return ark.arkGetPlatformBuildNumber();
-    }
-    if (paramString.equals("WordSegment")) {
-      return WordSegment.getPlatformBuildNumber();
-    }
-    return 0;
-  }
-  
-  private static long a(String paramString)
-  {
-    if (paramString.equals("ark")) {
-      return ark.arkGetARMv7LibCRC32();
-    }
-    if (paramString.equals("WordSegment")) {
-      return WordSegment.getARMv7LibCRC32();
-    }
-    if (paramString.equals("png-armeabi-v7a")) {
-      return ark.arkGetPngARMv7LibCRC32();
-    }
-    return -1L;
-  }
-  
   public static String a()
   {
     return "png-armeabi-v7a";
@@ -121,8 +96,8 @@ public class NativeLibLoader
       ((StringBuilder)localObject1).append(a(paramContext));
       ((StringBuilder)localObject1).append(a(paramString));
       localObject1 = ((StringBuilder)localObject1).toString();
-      int i = b(paramString);
-      long l1 = a(paramString);
+      int i = c(paramString);
+      long l1 = d(paramString);
       File localFile = new File((String)localObject1);
       if ((localFile.exists()) && ((i == -1) || (i == localFile.length()))) {
         if (l1 != -1L)
@@ -201,12 +176,12 @@ public class NativeLibLoader
   {
     try
     {
-      j = a(paramString);
+      j = b(paramString);
       if (j == 0) {
-        break label591;
+        break label588;
       }
       if (!paramBoolean) {
-        break label586;
+        break label583;
       }
     }
     finally
@@ -224,26 +199,26 @@ public class NativeLibLoader
         {
           throw paramContext;
         }
-        label586:
+        label583:
         int i = 0;
         continue;
-        label591:
+        label588:
         i = 1;
         continue;
         paramString = null;
-        label598:
+        label595:
         paramBoolean = false;
         continue;
-        label603:
+        label600:
         int j = 0;
         continue;
-        label609:
+        label606:
         int k = 0;
         continue;
-        label615:
+        label612:
         if ((i == 0) && (j == 0))
         {
-          label624:
+          label621:
           paramContext = null;
           paramBoolean = true;
           paramString = (String)localObject1;
@@ -265,8 +240,8 @@ public class NativeLibLoader
       }
       else
       {
-        m = b(paramString);
-        l2 = a(paramString);
+        m = c(paramString);
+        l2 = d(paramString);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(str);
         ((StringBuilder)localObject1).append(a(paramString, j));
@@ -274,19 +249,19 @@ public class NativeLibLoader
         if (((File)localObject1).exists())
         {
           if ((m == -1) || (m == ((File)localObject1).length())) {
-            break label603;
+            break label600;
           }
           j = 1;
           if ((l2 == -1L) || (l2 == IOUtil.getCRC32Value((File)localObject1))) {
-            break label609;
+            break label606;
           }
           k = 1;
           j |= k;
           if ((j == 0) || (!QLog.isColorLevel())) {
-            break label615;
+            break label612;
           }
           QLog.d("ArkApp.ArkEngineExtract", 2, new Object[] { "arkso.corrupt.", ((File)localObject1).getName() });
-          break label615;
+          break label612;
           ((File)localObject1).delete();
         }
         localObject2 = new StringBuilder();
@@ -302,13 +277,13 @@ public class NativeLibLoader
             ((File)localObject2).delete();
             paramContext = "arkso.extract.fail!!";
             paramString = (String)localObject1;
-            break label598;
+            break label595;
           }
           if (!((File)localObject2).exists())
           {
             paramContext = "arkso.file.not.exist!!";
             paramString = (String)localObject1;
-            break label598;
+            break label595;
           }
           l3 = ((File)localObject2).length();
           if ((m != -1) && (m != l3))
@@ -316,7 +291,7 @@ public class NativeLibLoader
             ((File)localObject2).delete();
             paramContext = "arkso.size.mismatch!!";
             paramString = (String)localObject1;
-            break label598;
+            break label595;
           }
           l3 = IOUtil.getCRC32Value((File)localObject2);
           if ((l2 != -1L) && (l2 != l3))
@@ -324,10 +299,10 @@ public class NativeLibLoader
             ((File)localObject2).delete();
             paramContext = "arkso.crc32.mismatch!!";
             paramString = (String)localObject1;
-            break label598;
+            break label595;
           }
           ((File)localObject2).renameTo((File)localObject1);
-          break label624;
+          break label621;
         }
         if (((File)localObject2).exists()) {
           paramContext = ((File)localObject2).getName();
@@ -336,7 +311,7 @@ public class NativeLibLoader
         }
         paramContext = String.format("arkso.delete.%s.fail!!", new Object[] { paramContext });
         paramString = (String)localObject1;
-        break label598;
+        break label595;
         l2 = SystemClock.uptimeMillis();
         if (QLog.isColorLevel()) {
           if (paramBoolean) {
@@ -356,15 +331,12 @@ public class NativeLibLoader
   private static int b(String paramString)
   {
     if (paramString.equals("ark")) {
-      return ark.arkGetARMv7LibSize();
+      return ark.arkGetPlatformBuildNumber();
     }
     if (paramString.equals("WordSegment")) {
-      return WordSegment.getARMv7LibSize();
+      return WordSegment.getPlatformBuildNumber();
     }
-    if (paramString.equals("png-armeabi-v7a")) {
-      return ark.arkGetPngARMv7LibSize();
-    }
-    return -1;
+    return 0;
   }
   
   public static boolean b(Context paramContext, String paramString)
@@ -376,16 +348,16 @@ public class NativeLibLoader
       if (TextUtils.isEmpty(str))
       {
         paramContext = "arkso.old.getTxlibPath.return.null";
-        break label411;
+        break label409;
       }
       localObject = new File(str);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdir()))
       {
         paramContext = "arkso.old.mkdir.fail";
-        break label411;
+        break label409;
       }
-      k = b(paramString);
-      l2 = a(paramString);
+      k = c(paramString);
+      l2 = d(paramString);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(str);
       ((StringBuilder)localObject).append(a(paramString));
@@ -394,7 +366,7 @@ public class NativeLibLoader
         break label172;
       }
       if ((k == -1) || (k == ((File)localObject).length())) {
-        break label419;
+        break label417;
       }
       i = 1;
     }
@@ -412,23 +384,23 @@ public class NativeLibLoader
           label172:
           throw paramContext;
         }
-        label411:
+        label409:
         boolean bool = false;
         paramString = null;
         continue;
-        label419:
+        label417:
         int i = 0;
         continue;
         int j = 0;
-        label426:
+        label424:
         if ((i | j) == 0)
         {
-          label432:
+          label430:
           bool = true;
           paramContext = null;
           paramString = (String)localObject;
           continue;
-          label443:
+          label441:
           bool = false;
           paramString = (String)localObject;
         }
@@ -437,36 +409,36 @@ public class NativeLibLoader
     if ((l2 != -1L) && (l2 != IOUtil.getCRC32Value((File)localObject)))
     {
       j = 1;
-      break label426;
+      break label424;
       ((File)localObject).delete();
       if (((File)localObject).exists())
       {
         paramContext = String.format("arkso.old.delete.%s.fail!!", new Object[] { ((File)localObject).getName() });
-        break label443;
+        break label441;
       }
       if (SoLoadUtil.a(paramContext, str, "txlib", a(paramString)) != 0)
       {
         ((File)localObject).delete();
         paramContext = "arkso.old.extract.fail!!";
-        break label443;
+        break label441;
       }
       if (!((File)localObject).exists())
       {
         paramContext = "arkso.old.file.not.exist!!";
-        break label443;
+        break label441;
       }
       if ((k != -1) && (k != ((File)localObject).length()))
       {
         ((File)localObject).delete();
         paramContext = "arkso.old.size.mismatch!!";
-        break label443;
+        break label441;
       }
       if ((l2 == -1L) || (l2 == IOUtil.getCRC32Value((File)localObject))) {
-        break label432;
+        break label430;
       }
       ((File)localObject).delete();
       paramContext = "arkso.old.crc32.mismatch!!";
-      break label443;
+      break label441;
       l2 = SystemClock.uptimeMillis();
       if (QLog.isColorLevel()) {
         if (bool) {
@@ -482,6 +454,20 @@ public class NativeLibLoader
     }
   }
   
+  private static int c(String paramString)
+  {
+    if (paramString.equals("ark")) {
+      return ark.arkGetARMv7LibSize();
+    }
+    if (paramString.equals("WordSegment")) {
+      return WordSegment.getARMv7LibSize();
+    }
+    if (paramString.equals("png-armeabi-v7a")) {
+      return ark.arkGetPngARMv7LibSize();
+    }
+    return -1;
+  }
+  
   public static boolean c(Context paramContext, String paramString)
   {
     for (;;)
@@ -490,7 +476,7 @@ public class NativeLibLoader
       long l3;
       try
       {
-        String str = a(paramString, a(paramString));
+        String str = a(paramString, b(paramString));
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(a(paramContext));
         ((StringBuilder)localObject1).append(str);
@@ -502,8 +488,8 @@ public class NativeLibLoader
           ((StringBuilder)localObject2).append(str);
           QLog.i("ArkApp.ArkEngineExtract", 2, ((StringBuilder)localObject2).toString());
         }
-        int i = b(paramString);
-        l1 = a(paramString);
+        int i = c(paramString);
+        l1 = d(paramString);
         Object localObject2 = new File((String)localObject1);
         if (((File)localObject2).exists())
         {
@@ -587,10 +573,24 @@ public class NativeLibLoader
       }
     }
   }
+  
+  private static long d(String paramString)
+  {
+    if (paramString.equals("ark")) {
+      return ark.arkGetARMv7LibCRC32();
+    }
+    if (paramString.equals("WordSegment")) {
+      return WordSegment.getARMv7LibCRC32();
+    }
+    if (paramString.equals("png-armeabi-v7a")) {
+      return ark.arkGetPngARMv7LibCRC32();
+    }
+    return -1L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.util.NativeLibLoader
  * JD-Core Version:    0.7.0.1
  */

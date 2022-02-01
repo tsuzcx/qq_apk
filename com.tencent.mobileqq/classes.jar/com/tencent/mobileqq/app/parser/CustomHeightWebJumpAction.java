@@ -22,13 +22,13 @@ public class CustomHeightWebJumpAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private void a()
+  private void c()
   {
-    Object localObject = Uri.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
+    Object localObject = Uri.decode((String)this.f.get("url"));
     int i;
     try
     {
-      i = Integer.valueOf((String)this.jdField_a_of_type_JavaUtilHashMap.get("customheight")).intValue();
+      i = Integer.valueOf((String)this.f.get("customheight")).intValue();
     }
     catch (Exception localException)
     {
@@ -38,30 +38,30 @@ public class CustomHeightWebJumpAction
       QLog.e("CustomHeightWebJumpAction", 1, localStringBuilder.toString());
       i = 0;
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQTranslucentBrowserActivity.class);
+    Intent localIntent = new Intent(this.b, QQTranslucentBrowserActivity.class);
     localIntent.putExtra("finish_animation_up_down", true);
     localIntent.putExtra("url", (String)localObject);
     localIntent.putExtra("isTransparentTitle", true);
     localIntent.putExtra("fragmentClass", CustomHeightFragment.class);
     localIntent.putExtra("customheight", i);
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+    if (!(this.b instanceof Activity)) {
       localIntent.addFlags(268435456);
     }
     if (Build.VERSION.SDK_INT > 16)
     {
-      localObject = ActivityOptions.makeCustomAnimation(this.jdField_a_of_type_AndroidContentContext, 2130771993, 2130771994).toBundle();
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent, (Bundle)localObject);
+      localObject = ActivityOptions.makeCustomAnimation(this.b, 2130771996, 2130771997).toBundle();
+      this.b.startActivity(localIntent, (Bundle)localObject);
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    this.b.startActivity(localIntent);
   }
   
   public boolean a()
   {
     try
     {
-      if ("jump".equals(this.c)) {
-        a();
+      if ("jump".equals(this.e)) {
+        c();
       }
       return true;
     }
@@ -71,14 +71,14 @@ public class CustomHeightWebJumpAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("CustomHeightWebJumpAction", 1, localStringBuilder.toString());
-      b_("CustomHeightWebJumpAction");
+      h_("CustomHeightWebJumpAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.CustomHeightWebJumpAction
  * JD-Core Version:    0.7.0.1
  */

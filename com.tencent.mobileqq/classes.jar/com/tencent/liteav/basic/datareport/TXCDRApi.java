@@ -14,7 +14,7 @@ import android.telephony.TelephonyManager;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -41,7 +41,7 @@ public class TXCDRApi
   
   static
   {
-    f.f();
+    h.f();
     nativeInitDataReport();
   }
   
@@ -197,7 +197,7 @@ public class TXCDRApi
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(localFile.getAbsolutePath());
-      ((StringBuilder)localObject1).append("/txrtmp/spuid");
+      ((StringBuilder)localObject1).append("/liteav/spuid");
       localObject1 = new File(((StringBuilder)localObject1).toString());
       if (((File)localObject1).exists())
       {
@@ -261,7 +261,7 @@ public class TXCDRApi
     {
       long l1 = System.currentTimeMillis();
       long l2 = TXCTimeUtil.getTimeTick();
-      localObject2 = f.c(paramContext);
+      localObject2 = h.c(paramContext);
       i = 5;
       paramContext = str2;
       while (i >= 0)
@@ -299,14 +299,14 @@ public class TXCDRApi
       {
         paramContext = new StringBuilder();
         paramContext.append(localFile.getAbsolutePath());
-        paramContext.append("/txrtmp");
+        paramContext.append("/liteav");
         paramContext = new File(paramContext.toString());
         if (!paramContext.exists()) {
           paramContext.mkdir();
         }
         paramContext = new StringBuilder();
         paramContext.append(localFile.getAbsolutePath());
-        paramContext.append("/txrtmp/spuid");
+        paramContext.append("/liteav/spuid");
         paramContext = new File(paramContext.toString());
         if (!paramContext.exists()) {
           paramContext.createNewFile();
@@ -501,7 +501,7 @@ public class TXCDRApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.datareport.TXCDRApi
  * JD-Core Version:    0.7.0.1
  */

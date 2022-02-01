@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AEOldResUtil
 {
-  public static final String a = HardCodeUtil.a(2131708717);
+  public static final String a = HardCodeUtil.a(2131906498);
   
   public static int a(int paramInt)
   {
@@ -29,7 +29,7 @@ public class AEOldResUtil
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_ae_res_");
     localStringBuilder.append(paramInt);
-    return localAECameraPrefsUtil.a(localStringBuilder.toString(), 0, 4);
+    return localAECameraPrefsUtil.b(localStringBuilder.toString(), 0, 4);
   }
   
   public static int a(String paramString1, String paramString2, String paramString3)
@@ -113,10 +113,10 @@ public class AEOldResUtil
           break;
         }
         localSVConfigItem = (AEOldShortVideoResManager.SVConfigItem)paramList.next();
-      } while ((!localSVConfigItem.name.startsWith(AEOldResInfo.jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.jdField_b_of_type_JavaLangString)) || (localSVConfigItem.versionCode != AEOldResInfo.jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.c));
+      } while ((!localSVConfigItem.name.startsWith(AEOldResInfo.b.g)) || (localSVConfigItem.versionCode != AEOldResInfo.b.i));
       try
       {
-        i = Integer.valueOf(localSVConfigItem.name.substring(AEOldResInfo.jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.jdField_b_of_type_JavaLangString.length())).intValue();
+        i = Integer.valueOf(localSVConfigItem.name.substring(AEOldResInfo.b.g.length())).intValue();
       }
       catch (Exception localException)
       {
@@ -129,7 +129,7 @@ public class AEOldResUtil
       localStringBuilder.append(localSVConfigItem.name);
       AEQLog.d("AEOldResUtil", localStringBuilder.toString());
       i = 0;
-    } while (i < AEOldResInfo.jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.jdField_b_of_type_Int);
+    } while (i < AEOldResInfo.b.h);
     i = j;
     break label147;
     i = -103;
@@ -153,10 +153,10 @@ public class AEOldResUtil
   @NonNull
   public static String a(@NonNull AEOldResInfo paramAEOldResInfo)
   {
-    if (!paramAEOldResInfo.a) {
+    if (!paramAEOldResInfo.j) {
       return "";
     }
-    if (AEOldResInfo.jdField_b_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.jdField_b_of_type_JavaLangString.equals(paramAEOldResInfo.jdField_b_of_type_JavaLangString)) {
+    if (AEOldResInfo.b.g.equals(paramAEOldResInfo.g)) {
       return b();
     }
     return "";
@@ -179,43 +179,26 @@ public class AEOldResUtil
   public static void a(AEOldResInfo paramAEOldResInfo, String paramString)
   {
     Intent localIntent = new Intent();
-    localIntent.setAction(paramAEOldResInfo.jdField_b_of_type_JavaLangString);
+    localIntent.setAction(paramAEOldResInfo.g);
     localIntent.setPackage(BaseApplicationImpl.getContext().getPackageName());
     localIntent.putExtra("ae_camera_res_downloadfinish_path", paramString);
     BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-  }
-  
-  public static boolean a(@NonNull String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEOldPath.CAMERA.INTERNAL_FILES.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(File.separator);
-    paramString = localStringBuilder.toString();
-    AECameraPrefsUtil.a().a("aeres_copy_old_final_path_key", paramString, 4);
-    if (AECameraPrefsUtil.a().a("aeres_copy_old_final_path_key", AEOldPath.CAMERA.INTERNAL_FILES.jdField_b_of_type_JavaLangString, 4).equals(paramString))
-    {
-      AEQLog.a("AEOldResUtil", "[saveAEResUnzipFinalPath] success");
-      return true;
-    }
-    AEQLog.d("AEOldResUtil", "[saveAEResUnzipFinalPath] error");
-    return false;
   }
   
   public static boolean a(@NonNull String paramString, @NonNull AEOldResInfo paramAEOldResInfo)
   {
     AECameraPrefsUtil localAECameraPrefsUtil = AECameraPrefsUtil.a();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramAEOldResInfo.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(paramAEOldResInfo.c);
+    localStringBuilder.append(paramAEOldResInfo.g);
+    localStringBuilder.append(paramAEOldResInfo.i);
     localStringBuilder.append("aeres_unzip_old_path_key");
     localAECameraPrefsUtil.a(localStringBuilder.toString(), paramString, 4);
     localAECameraPrefsUtil = AECameraPrefsUtil.a();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramAEOldResInfo.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(paramAEOldResInfo.c);
+    localStringBuilder.append(paramAEOldResInfo.g);
+    localStringBuilder.append(paramAEOldResInfo.i);
     localStringBuilder.append("aeres_unzip_old_path_key");
-    if (paramString.equals(localAECameraPrefsUtil.a(localStringBuilder.toString(), "", 4)))
+    if (paramString.equals(localAECameraPrefsUtil.b(localStringBuilder.toString(), "", 4)))
     {
       AEQLog.a("AEOldResUtil", "[saveAEResUnzipPath] success");
       return true;
@@ -233,7 +216,7 @@ public class AEOldResUtil
         return false;
       }
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(AEOldPath.CAMERA.INTERNAL_FILES.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(AEOldPath.CAMERA.INTERNAL_FILES.b);
       ((StringBuilder)localObject).append(paramString1);
       ((StringBuilder)localObject).append(File.separator);
       int i = FileUtils.copyDirectory(paramString2, ((StringBuilder)localObject).toString(), false, true, true);
@@ -256,10 +239,27 @@ public class AEOldResUtil
   @NonNull
   public static String b(@NonNull AEOldResInfo paramAEOldResInfo)
   {
-    if (!paramAEOldResInfo.a) {
+    if (!paramAEOldResInfo.j) {
       return "";
     }
     return b();
+  }
+  
+  public static boolean b(@NonNull String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEOldPath.CAMERA.INTERNAL_FILES.b);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    paramString = localStringBuilder.toString();
+    AECameraPrefsUtil.a().a("aeres_copy_old_final_path_key", paramString, 4);
+    if (AECameraPrefsUtil.a().b("aeres_copy_old_final_path_key", AEOldPath.CAMERA.INTERNAL_FILES.b, 4).equals(paramString))
+    {
+      AEQLog.a("AEOldResUtil", "[saveAEResUnzipFinalPath] success");
+      return true;
+    }
+    AEQLog.d("AEOldResUtil", "[saveAEResUnzipFinalPath] error");
+    return false;
   }
   
   public static String c()
@@ -278,7 +278,7 @@ public class AEOldResUtil
       AEQLog.d("AEOldResUtil", "[getAEResPath] pathVersion null");
       return null;
     }
-    if (!AEOldPendantVersionManager.a(str, paramAEOldResInfo.jdField_b_of_type_Int))
+    if (!AEOldPendantVersionManager.a(str, paramAEOldResInfo.h))
     {
       AEQLog.d("AEOldResUtil", "[getAEResPath] pathVersion is not > limitVersion");
       return null;
@@ -292,22 +292,22 @@ public class AEOldResUtil
   
   private static String d()
   {
-    return AECameraPrefsUtil.a().a("aeres_copy_old_final_path_key", AEOldPath.CAMERA.INTERNAL_FILES.jdField_b_of_type_JavaLangString, 4);
+    return AECameraPrefsUtil.a().b("aeres_copy_old_final_path_key", AEOldPath.CAMERA.INTERNAL_FILES.b, 4);
   }
   
   private static String d(@NonNull AEOldResInfo paramAEOldResInfo)
   {
     AECameraPrefsUtil localAECameraPrefsUtil = AECameraPrefsUtil.a();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramAEOldResInfo.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(paramAEOldResInfo.c);
+    localStringBuilder.append(paramAEOldResInfo.g);
+    localStringBuilder.append(paramAEOldResInfo.i);
     localStringBuilder.append("aeres_unzip_old_path_key");
-    return localAECameraPrefsUtil.a(localStringBuilder.toString(), "", 4);
+    return localAECameraPrefsUtil.b(localStringBuilder.toString(), "", 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldResUtil
  * JD-Core Version:    0.7.0.1
  */

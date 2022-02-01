@@ -7,20 +7,20 @@ import com.tencent.image.URLImageView;
 
 public class ChatHistoryC2CLinkAdapter$HistoryStructItemHolder
 {
-  public CheckBox a;
   public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
-  public TextView c;
+  public CheckBox b;
+  public URLImageView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public Object g;
+  public String h;
   
   public ChatHistoryC2CLinkAdapter$HistoryStructItemHolder(ChatHistoryC2CLinkAdapter paramChatHistoryC2CLinkAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkAdapter.HistoryStructItemHolder
  * JD-Core Version:    0.7.0.1
  */

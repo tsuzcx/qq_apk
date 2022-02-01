@@ -9,159 +9,139 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GestureHelper
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = 0;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private GestureHelper.ZoomItem jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int = 1;
-  private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float;
-  private final int jdField_c_of_type_Int = 2;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private final int jdField_d_of_type_Int = 3;
-  private float jdField_e_of_type_Float;
-  private final int jdField_e_of_type_Int = 4;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int = 0;
-  private float jdField_g_of_type_Float;
-  private int jdField_g_of_type_Int = -1;
+  private boolean A;
+  private final int a = 0;
+  private final int b = 1;
+  private final int c = 2;
+  private final int d = 3;
+  private final int e = 4;
+  private int f = 0;
+  private float g;
   private float h;
   private float i;
   private float j;
   private float k;
   private float l;
-  private float m = 2.147484E+009F;
-  private float n = 0.0F;
+  private float m;
+  private float n;
+  private float o;
+  private float p;
+  private float q;
+  private float r;
+  private int s = -1;
+  private boolean t = false;
+  private boolean u = false;
+  private float v = 2.147484E+009F;
+  private float w = 0.0F;
+  private Matrix x = new Matrix();
+  private Matrix y = new Matrix();
+  private GestureHelper.ZoomItem z;
   
   private void a(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-    paramMotionEvent.g = false;
-    paramMotionEvent.h = false;
-    this.jdField_f_of_type_Int = 0;
+    paramMotionEvent = this.z;
+    paramMotionEvent.S = false;
+    paramMotionEvent.T = false;
+    this.f = 0;
     a();
   }
   
   private void b(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_f_of_type_Int = 1;
+    this.u = true;
+    this.f = 1;
     float f2 = paramMotionEvent.getX(0);
     float f1 = paramMotionEvent.getY(0);
-    this.jdField_a_of_type_Float = f2;
-    this.jdField_b_of_type_Float = f1;
-    this.i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.l;
-    this.j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.m;
-    paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-    paramMotionEvent.g = false;
-    paramMotionEvent.h = false;
+    this.g = f2;
+    this.h = f1;
+    this.o = this.z.D;
+    this.p = this.z.E;
+    paramMotionEvent = this.z;
+    paramMotionEvent.S = false;
+    paramMotionEvent.T = false;
     if ((b(paramMotionEvent, f2, f1)) && (paramBoolean))
     {
-      this.jdField_f_of_type_Int = 3;
-      this.k = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j;
-      this.l = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.k;
-      f2 = (f2 - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.l) / this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.a();
-      f1 = (f1 - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.m) / this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.a();
-      this.jdField_c_of_type_Float = GestureUtil.a(f2, f1);
-      this.jdField_d_of_type_Float = GestureUtil.b(f2, f1);
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_AndroidGraphicsPointF.x;
-      this.jdField_f_of_type_Float = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_AndroidGraphicsPointF.y;
+      this.f = 3;
+      this.q = this.z.B;
+      this.r = this.z.C;
+      f2 = (f2 - this.z.A.x - this.z.D) / this.z.d();
+      f1 = (f1 - this.z.A.y - this.z.E) / this.z.d();
+      this.i = GestureUtil.a(f2, f1);
+      this.j = GestureUtil.b(f2, f1);
+      this.k = this.z.A.x;
+      this.l = this.z.A.y;
     }
   }
   
   private void c(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.u)
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.u = true;
       b(paramMotionEvent, paramBoolean);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.g = true;
+    this.z.S = true;
     paramMotionEvent.getPointerCount();
-    int i1 = this.jdField_f_of_type_Int;
+    int i1 = this.f;
     float f1;
     float f2;
     float f3;
     if (i1 == 1)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.t)
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Float = paramMotionEvent.getX(0);
-        this.jdField_b_of_type_Float = paramMotionEvent.getY(0);
-        this.i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.l;
-        this.j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.m;
+        this.t = false;
+        this.g = paramMotionEvent.getX(0);
+        this.h = paramMotionEvent.getY(0);
+        this.o = this.z.D;
+        this.p = this.z.E;
         return;
       }
       f1 = paramMotionEvent.getX(0);
-      f2 = this.jdField_a_of_type_Float;
+      f2 = this.g;
       f3 = paramMotionEvent.getY(0);
-      float f4 = this.jdField_b_of_type_Float;
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-      paramMotionEvent.l = (this.i + (f1 - f2) / paramMotionEvent.a());
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-      paramMotionEvent.m = (this.j + (f3 - f4) / paramMotionEvent.a());
+      float f4 = this.h;
+      paramMotionEvent = this.z;
+      paramMotionEvent.D = (this.o + (f1 - f2) / paramMotionEvent.d());
+      paramMotionEvent = this.z;
+      paramMotionEvent.E = (this.p + (f3 - f4) / paramMotionEvent.d());
       return;
     }
     if ((i1 == 3) && (paramBoolean))
     {
-      f2 = (paramMotionEvent.getX() - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.l) / this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.a();
-      f3 = (paramMotionEvent.getY() - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.m) / this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.a();
+      f2 = (paramMotionEvent.getX() - this.z.A.x - this.z.D) / this.z.d();
+      f3 = (paramMotionEvent.getY() - this.z.A.y - this.z.E) / this.z.d();
       f1 = GestureUtil.a(f2, f3);
       f2 = GestureUtil.b(f2, f3);
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-      paramMotionEvent.j = (this.k * (f1 / this.jdField_c_of_type_Float));
-      paramMotionEvent.k = ((this.l + (f2 - this.jdField_d_of_type_Float)) % 360.0F);
-      if (paramMotionEvent.d)
+      paramMotionEvent = this.z;
+      paramMotionEvent.B = (this.q * (f1 / this.i));
+      paramMotionEvent.C = ((this.r + (f2 - this.j)) % 360.0F);
+      if (paramMotionEvent.I)
       {
-        f1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j;
-        f2 = this.m;
+        f1 = this.z.B;
+        f2 = this.v;
         if (f1 > f2) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j = f2;
+          this.z.B = f2;
         }
-        f1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j;
-        f2 = this.n;
+        f1 = this.z.B;
+        f2 = this.w;
         if (f1 < f2) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j = f2;
+          this.z.B = f2;
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.k < 0.0F)
+        if (this.z.C < 0.0F)
         {
-          paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-          paramMotionEvent.k += 360.0F;
+          paramMotionEvent = this.z;
+          paramMotionEvent.C += 360.0F;
         }
       }
       else
       {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
-        paramMotionEvent.j = this.k;
-        paramMotionEvent.k = this.l;
+        paramMotionEvent = this.z;
+        paramMotionEvent.B = this.q;
+        paramMotionEvent.C = this.r;
       }
     }
-  }
-  
-  public float a(GestureHelper.ZoomItem paramZoomItem)
-  {
-    return a(paramZoomItem, true);
-  }
-  
-  public float a(GestureHelper.ZoomItem paramZoomItem, boolean paramBoolean)
-  {
-    float f1;
-    if (paramZoomItem != null) {
-      f1 = paramZoomItem.j * paramZoomItem.p;
-    } else {
-      f1 = 1.0F;
-    }
-    float f2 = f1;
-    if (paramBoolean) {
-      f2 = f1 * paramZoomItem.a();
-    }
-    return f2;
   }
   
   public int a(TextLayer.TextItem paramTextItem, float paramFloat1, float paramFloat2)
@@ -172,88 +152,83 @@ public class GestureHelper
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
-    c(paramTextItem).mapPoints(arrayOfFloat);
-    float f1 = paramTextItem.n;
-    float f3 = paramTextItem.o;
+    e(paramTextItem).mapPoints(arrayOfFloat);
+    float f1 = paramTextItem.G;
+    float f3 = paramTextItem.H;
     float f2 = f3;
     paramFloat2 = f1;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.A)
     {
       paramFloat1 = f1;
-      if (paramTextItem.j * f1 < 200.0F) {
-        paramFloat1 = 200.0F / paramTextItem.j;
+      if (paramTextItem.B * f1 < 200.0F) {
+        paramFloat1 = 200.0F / paramTextItem.B;
       }
       f2 = f3;
       paramFloat2 = paramFloat1;
-      if (paramTextItem.j * f3 < 200.0F)
+      if (paramTextItem.B * f3 < 200.0F)
       {
-        f2 = 200.0F / paramTextItem.j;
+        f2 = 200.0F / paramTextItem.B;
         paramFloat2 = paramFloat1;
       }
     }
-    return paramTextItem.a.a(paramFloat2, f2, arrayOfFloat[0], arrayOfFloat[1]);
-  }
-  
-  public Matrix a(GestureHelper.ZoomItem paramZoomItem)
-  {
-    return a(paramZoomItem, true);
+    return paramTextItem.c.a(paramFloat2, f2, arrayOfFloat[0], arrayOfFloat[1]);
   }
   
   public Matrix a(GestureHelper.ZoomItem paramZoomItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+    this.x.reset();
     if (paramZoomItem == null) {
-      return this.jdField_a_of_type_AndroidGraphicsMatrix;
+      return this.x;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(paramZoomItem.k);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(a(paramZoomItem, false), a(paramZoomItem, false));
-    if (paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF != null) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF.x, paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF.y);
+    this.x.postRotate(paramZoomItem.C);
+    this.x.postScale(c(paramZoomItem, false), c(paramZoomItem, false));
+    if (paramZoomItem.A != null) {
+      this.x.postTranslate(paramZoomItem.A.x, paramZoomItem.A.y);
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramZoomItem.l, paramZoomItem.m);
+    this.x.postTranslate(paramZoomItem.D, paramZoomItem.E);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postConcat(paramZoomItem.jdField_a_of_type_AndroidGraphicsMatrix);
+      this.x.postConcat(paramZoomItem.F);
     }
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    return this.x;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem = null;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_e_of_type_Float = 0.0F;
-    this.jdField_f_of_type_Float = 0.0F;
+    this.z = null;
+    this.g = 0.0F;
+    this.h = 0.0F;
     this.i = 0.0F;
     this.j = 0.0F;
     this.k = 0.0F;
     this.l = 0.0F;
-    this.jdField_g_of_type_Float = 0.0F;
-    this.h = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
+    this.o = 0.0F;
+    this.p = 0.0F;
+    this.q = 0.0F;
+    this.r = 0.0F;
+    this.m = 0.0F;
+    this.n = 0.0F;
+    this.t = false;
+    this.u = false;
+    this.x.reset();
+    this.y.reset();
   }
   
   public void a(float paramFloat)
   {
     if (paramFloat >= 0.0F) {
-      this.m = paramFloat;
+      this.v = paramFloat;
     }
   }
   
   public void a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem == null) {
+    if (this.z == null) {
       return;
     }
     if (paramMotionEvent.getActionMasked() == 0) {
-      this.jdField_g_of_type_Int = paramMotionEvent.getPointerId(0);
+      this.s = paramMotionEvent.getPointerId(0);
     }
-    if (this.jdField_g_of_type_Int != paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex())) {
+    if (this.s != paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex())) {
       return;
     }
     int i1 = paramMotionEvent.getAction() & 0xFF;
@@ -279,12 +254,12 @@ public class GestureHelper
   public void a(GestureHelper.ZoomItem paramZoomItem)
   {
     a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem = paramZoomItem;
+    this.z = paramZoomItem;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.A = paramBoolean;
   }
   
   public boolean a(GestureHelper.ZoomItem paramZoomItem, float paramFloat1, float paramFloat2)
@@ -295,12 +270,12 @@ public class GestureHelper
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
-    c(paramZoomItem).mapPoints(arrayOfFloat);
-    paramFloat1 = a(paramZoomItem);
-    paramFloat2 = paramZoomItem.n;
-    float f3 = paramZoomItem.i / paramFloat1;
-    float f1 = paramZoomItem.o;
-    float f2 = paramZoomItem.i / paramFloat1;
+    e(paramZoomItem).mapPoints(arrayOfFloat);
+    paramFloat1 = d(paramZoomItem);
+    paramFloat2 = paramZoomItem.G;
+    float f3 = paramZoomItem.N / paramFloat1;
+    float f1 = paramZoomItem.H;
+    float f2 = paramZoomItem.N / paramFloat1;
     paramFloat2 = (paramFloat2 + f3 * 2.0F) / 2.0F;
     f1 = (f1 + f2 * 2.0F) / 2.0F;
     paramFloat1 = DisplayUtil.a() / paramFloat1 / 2.0F;
@@ -325,30 +300,30 @@ public class GestureHelper
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
-    c(paramZoomItem).mapPoints(arrayOfFloat);
-    float f3 = a(paramZoomItem);
-    float f2 = paramZoomItem.n;
-    float f1 = paramZoomItem.o;
+    e(paramZoomItem).mapPoints(arrayOfFloat);
+    float f3 = d(paramZoomItem);
+    float f2 = paramZoomItem.G;
+    float f1 = paramZoomItem.H;
     paramFloat1 = f2;
     paramFloat2 = f1;
     if (paramBoolean)
     {
-      paramFloat1 = f2 + paramZoomItem.i / f3 * 2.0F;
-      paramFloat2 = f1 + paramZoomItem.i / f3 * 2.0F;
+      paramFloat1 = f2 + paramZoomItem.N / f3 * 2.0F;
+      paramFloat2 = f1 + paramZoomItem.N / f3 * 2.0F;
     }
     f3 = paramFloat1;
     f2 = paramFloat2;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.A)
     {
       f1 = paramFloat1;
-      if (paramZoomItem.j * paramFloat1 < 200.0F) {
-        f1 = 200.0F / paramZoomItem.j;
+      if (paramZoomItem.B * paramFloat1 < 200.0F) {
+        f1 = 200.0F / paramZoomItem.B;
       }
       f3 = f1;
       f2 = paramFloat2;
-      if (paramZoomItem.j * paramFloat2 < 200.0F)
+      if (paramZoomItem.B * paramFloat2 < 200.0F)
       {
-        f2 = 200.0F / paramZoomItem.j;
+        f2 = 200.0F / paramZoomItem.B;
         f3 = f1;
       }
     }
@@ -356,7 +331,7 @@ public class GestureHelper
     paramFloat2 = f2 / 2.0F;
     float f4 = -paramFloat1;
     f1 = -paramFloat2;
-    f2 = DisplayUtil.a() / a(paramZoomItem) / 2.0F;
+    f2 = DisplayUtil.a() / d(paramZoomItem) / 2.0F;
     if ((arrayOfFloat[0] >= f4) && (arrayOfFloat[0] <= paramFloat1) && (arrayOfFloat[1] >= f1) && (arrayOfFloat[1] <= paramFloat2)) {
       return true;
     }
@@ -382,8 +357,8 @@ public class GestureHelper
     if (paramZoomItem == null) {
       return false;
     }
-    float f2 = paramZoomItem.n;
-    float f1 = paramZoomItem.o / 2.0F;
+    float f2 = paramZoomItem.G;
+    float f1 = paramZoomItem.H / 2.0F;
     f2 /= 2.0F;
     float[] arrayOfFloat1 = new float[2];
     float f3 = -f2;
@@ -399,8 +374,8 @@ public class GestureHelper
     float[] arrayOfFloat4 = new float[2];
     arrayOfFloat4[0] = f2;
     arrayOfFloat4[1] = f1;
-    paramZoomItem = a(paramZoomItem);
-    this.jdField_a_of_type_AndroidGraphicsMatrix = paramZoomItem;
+    paramZoomItem = b(paramZoomItem);
+    this.x = paramZoomItem;
     paramZoomItem.mapPoints(arrayOfFloat1);
     paramZoomItem.mapPoints(arrayOfFloat2);
     paramZoomItem.mapPoints(arrayOfFloat3);
@@ -444,41 +419,41 @@ public class GestureHelper
     else
     {
       if ((arrayOfFloat1[0] >= paramFloat) || (arrayOfFloat2[0] >= paramFloat) || (arrayOfFloat3[0] >= paramFloat)) {
-        break label448;
+        break label450;
       }
       if (arrayOfFloat4[0] >= paramFloat) {
         return true;
       }
     }
     return false;
-    label448:
+    label450:
     return true;
   }
   
   public Matrix b(GestureHelper.ZoomItem paramZoomItem)
   {
-    return b(paramZoomItem, true);
+    return a(paramZoomItem, true);
   }
   
   public Matrix b(GestureHelper.ZoomItem paramZoomItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+    this.x.reset();
     if (paramZoomItem == null) {
-      return this.jdField_a_of_type_AndroidGraphicsMatrix;
+      return this.x;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(paramZoomItem.k);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF.x, paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF.y);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramZoomItem.l, paramZoomItem.m);
+    this.x.postRotate(paramZoomItem.C);
+    this.x.postTranslate(paramZoomItem.A.x, paramZoomItem.A.y);
+    this.x.postTranslate(paramZoomItem.D, paramZoomItem.E);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postConcat(paramZoomItem.jdField_a_of_type_AndroidGraphicsMatrix);
+      this.x.postConcat(paramZoomItem.F);
     }
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    return this.x;
   }
   
   public void b(float paramFloat)
   {
     if (paramFloat >= 0.0F) {
-      this.n = paramFloat;
+      this.w = paramFloat;
     }
   }
   
@@ -490,12 +465,12 @@ public class GestureHelper
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
-    c(paramZoomItem).mapPoints(arrayOfFloat);
-    paramFloat1 = a(paramZoomItem);
-    float f2 = paramZoomItem.n;
-    float f3 = paramZoomItem.i / paramFloat1;
-    paramFloat2 = paramZoomItem.o;
-    float f1 = paramZoomItem.i / paramFloat1;
+    e(paramZoomItem).mapPoints(arrayOfFloat);
+    paramFloat1 = d(paramZoomItem);
+    float f2 = paramZoomItem.G;
+    float f3 = paramZoomItem.N / paramFloat1;
+    paramFloat2 = paramZoomItem.H;
+    float f1 = paramZoomItem.N / paramFloat1;
     f2 = (f2 + f3 * 2.0F) / 2.0F;
     paramFloat2 = (paramFloat2 + f1 * 2.0F) / 2.0F;
     paramFloat1 = DisplayUtil.a() / paramFloat1 / 2.0F;
@@ -507,8 +482,8 @@ public class GestureHelper
     if (paramZoomItem == null) {
       return false;
     }
-    float f2 = paramZoomItem.n;
-    float f1 = paramZoomItem.o / 2.0F;
+    float f2 = paramZoomItem.G;
+    float f1 = paramZoomItem.H / 2.0F;
     f2 /= 2.0F;
     float[] arrayOfFloat1 = new float[2];
     float f3 = -f2;
@@ -524,8 +499,8 @@ public class GestureHelper
     float[] arrayOfFloat4 = new float[2];
     arrayOfFloat4[0] = f2;
     arrayOfFloat4[1] = f1;
-    paramZoomItem = a(paramZoomItem);
-    this.jdField_a_of_type_AndroidGraphicsMatrix = paramZoomItem;
+    paramZoomItem = b(paramZoomItem);
+    this.x = paramZoomItem;
     paramZoomItem.mapPoints(arrayOfFloat1);
     paramZoomItem.mapPoints(arrayOfFloat2);
     paramZoomItem.mapPoints(arrayOfFloat3);
@@ -580,15 +555,24 @@ public class GestureHelper
     return true;
   }
   
+  public float c(GestureHelper.ZoomItem paramZoomItem, boolean paramBoolean)
+  {
+    float f1;
+    if (paramZoomItem != null) {
+      f1 = paramZoomItem.B * paramZoomItem.K;
+    } else {
+      f1 = 1.0F;
+    }
+    float f2 = f1;
+    if (paramBoolean) {
+      f2 = f1 * paramZoomItem.d();
+    }
+    return f2;
+  }
+  
   public Matrix c(GestureHelper.ZoomItem paramZoomItem)
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-    if (paramZoomItem == null) {
-      return this.jdField_b_of_type_AndroidGraphicsMatrix;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = a(paramZoomItem);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.invert(this.jdField_b_of_type_AndroidGraphicsMatrix);
-    return this.jdField_b_of_type_AndroidGraphicsMatrix;
+    return b(paramZoomItem, true);
   }
   
   public boolean c(GestureHelper.ZoomItem paramZoomItem, float paramFloat1, float paramFloat2)
@@ -599,12 +583,12 @@ public class GestureHelper
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
-    c(paramZoomItem).mapPoints(arrayOfFloat);
-    paramFloat1 = a(paramZoomItem);
-    float f2 = paramZoomItem.n;
-    float f3 = paramZoomItem.i / paramFloat1;
-    paramFloat2 = paramZoomItem.o;
-    float f1 = paramZoomItem.i / paramFloat1;
+    e(paramZoomItem).mapPoints(arrayOfFloat);
+    paramFloat1 = d(paramZoomItem);
+    float f2 = paramZoomItem.G;
+    float f3 = paramZoomItem.N / paramFloat1;
+    paramFloat2 = paramZoomItem.H;
+    float f1 = paramZoomItem.N / paramFloat1;
     f2 = (f2 + f3 * 2.0F) / 2.0F;
     paramFloat2 = (paramFloat2 + f1 * 2.0F) / 2.0F;
     paramFloat1 = DisplayUtil.a() / paramFloat1 / 2.0F;
@@ -618,10 +602,26 @@ public class GestureHelper
     }
     return false;
   }
+  
+  public float d(GestureHelper.ZoomItem paramZoomItem)
+  {
+    return c(paramZoomItem, true);
+  }
+  
+  public Matrix e(GestureHelper.ZoomItem paramZoomItem)
+  {
+    this.y.reset();
+    if (paramZoomItem == null) {
+      return this.y;
+    }
+    this.x = b(paramZoomItem);
+    this.x.invert(this.y);
+    return this.y;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.GestureHelper
  * JD-Core Version:    0.7.0.1
  */

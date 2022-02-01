@@ -7,7 +7,7 @@ class AVGameNetWorkQualityManager$UpdateNetWorkStatusRunnable
   
   public void run()
   {
-    AVGameNetWorkQualityManager.b(this.this$0);
+    AVGameNetWorkQualityManager.e(this.this$0);
   }
 }
 

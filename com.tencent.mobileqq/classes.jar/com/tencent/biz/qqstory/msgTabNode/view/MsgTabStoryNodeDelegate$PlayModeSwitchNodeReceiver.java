@@ -15,8 +15,8 @@ public class MsgTabStoryNodeDelegate$PlayModeSwitchNodeReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull PlayVideoChangeEvent paramPlayVideoChangeEvent)
   {
-    if ((paramMsgTabStoryNodeDelegate.a.a().equals(paramPlayVideoChangeEvent.jdField_a_of_type_JavaLangString)) && ((paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId))) {
-      paramMsgTabStoryNodeDelegate.a(((MsgTabPlayPageLoader.MsgTabGroupId)paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a(), paramPlayVideoChangeEvent.b);
+    if ((paramMsgTabStoryNodeDelegate.b.n().equals(paramPlayVideoChangeEvent.a)) && ((paramPlayVideoChangeEvent.b instanceof MsgTabPlayPageLoader.MsgTabGroupId))) {
+      paramMsgTabStoryNodeDelegate.a(((MsgTabPlayPageLoader.MsgTabGroupId)paramPlayVideoChangeEvent.b).a(), paramPlayVideoChangeEvent.c);
     }
   }
   
@@ -27,7 +27,7 @@ public class MsgTabStoryNodeDelegate$PlayModeSwitchNodeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.PlayModeSwitchNodeReceiver
  * JD-Core Version:    0.7.0.1
  */

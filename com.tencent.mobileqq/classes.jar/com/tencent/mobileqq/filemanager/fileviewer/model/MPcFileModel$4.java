@@ -14,7 +14,7 @@ class MPcFileModel$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    this.a.d();
     this.a.a.removeObserver(MPcFileModel.a(this.a));
     Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
     localIntent.addFlags(67108864);
@@ -24,7 +24,7 @@ class MPcFileModel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel.4
  * JD-Core Version:    0.7.0.1
  */

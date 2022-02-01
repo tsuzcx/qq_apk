@@ -16,14 +16,14 @@ public final class RIJTransMergeKanDianReportImpl
   @NotNull
   public String bigTR5()
   {
-    String str = RIJTransMergeKanDianReport.a().addString("ad_mengceng", String.valueOf(1)).build();
+    String str = RIJTransMergeKanDianReport.g().addString("ad_mengceng", String.valueOf(1)).build();
     Intrinsics.checkExpressionValueIsNotNull(str, "RIJTransMergeKanDianRepo…CH, 1.toString()).build()");
     return str;
   }
   
   public int getKandianTabSource()
   {
-    return RIJTransMergeKanDianReport.a();
+    return RIJTransMergeKanDianReport.b();
   }
   
   @Nullable
@@ -59,7 +59,7 @@ public final class RIJTransMergeKanDianReportImpl
   @Nullable
   public String transMergeKandianReportR5WithTime(@Nullable String paramString)
   {
-    return RIJTransMergeKanDianReport.a(paramString);
+    return RIJTransMergeKanDianReport.b(paramString);
   }
   
   @Nullable
@@ -82,7 +82,7 @@ public final class RIJTransMergeKanDianReportImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.RIJTransMergeKanDianReportImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -24,17 +24,17 @@ public class TroopConfigProcessor
   {
     if (((paramAppInterface instanceof QQAppInterface)) && (paramGroupMsgConfig != null) && (paramGroupMsgConfig.has()) && (paramGroupMsgConfig.bool_uin_enable.has()) && (paramGroupMsgConfig.uint32_max_aio_msg.has()) && (paramGroupMsgConfig.uint32_enable_helper.has()) && (paramGroupMsgConfig.uint32_group_max_number.has()))
     {
-      paramAppInterface = ((QQAppInterface)paramAppInterface).getMessageFacade().a();
-      paramAppInterface.jdField_a_of_type_Boolean = paramGroupMsgConfig.bool_uin_enable.get();
-      paramAppInterface.jdField_a_of_type_Int = paramGroupMsgConfig.uint32_max_aio_msg.get();
-      paramAppInterface.c = paramGroupMsgConfig.uint32_group_max_number.get();
-      paramAppInterface.d = paramGroupMsgConfig.uint32_enable_helper.get();
+      paramAppInterface = ((QQAppInterface)paramAppInterface).getMessageFacade().p();
+      paramAppInterface.h = paramGroupMsgConfig.bool_uin_enable.get();
+      paramAppInterface.i = paramGroupMsgConfig.uint32_max_aio_msg.get();
+      paramAppInterface.k = paramGroupMsgConfig.uint32_group_max_number.get();
+      paramAppInterface.l = paramGroupMsgConfig.uint32_enable_helper.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

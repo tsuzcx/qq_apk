@@ -22,7 +22,7 @@ class HomeFeedAllInfoPullSegment$3
   
   public void a(@NonNull BatchGetFeedLikeRequest paramBatchGetFeedLikeRequest, @Nullable BatchGetFeedLikeRequest.BatchGetFeedLikeResp arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
       return;
@@ -37,7 +37,7 @@ class HomeFeedAllInfoPullSegment$3
         SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
       }
       LikeManager localLikeManager = (LikeManager)SuperManager.a(15);
-      Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = ???.a.iterator();
       for (;;)
       {
         paramErrorMessage = ???;
@@ -45,14 +45,14 @@ class HomeFeedAllInfoPullSegment$3
           break;
         }
         paramErrorMessage = (BatchGetFeedLikeRequest.FeedLikeInfo)localIterator.next();
-        localLikeManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+        localLikeManager.a(paramErrorMessage.d, paramErrorMessage.a, false, true);
       }
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    synchronized (this.c)
     {
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedLikeRequest);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
+      HomeFeedAllInfoPullSegment.a(this.c, paramErrorMessage);
+      HomeFeedAllInfoPullSegment.a(this.c).remove(paramBatchGetFeedLikeRequest);
+      HomeFeedAllInfoPullSegment.a(this.c, this.b);
       return;
     }
     for (;;)

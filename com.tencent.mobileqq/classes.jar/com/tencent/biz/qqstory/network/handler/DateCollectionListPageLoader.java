@@ -23,69 +23,68 @@ public class DateCollectionListPageLoader
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback<GetDateCollectionListRequest, GetDateCollectionListResponse>
 {
-  protected DateCollectionListPageLoader.CacheContext a;
-  protected String b;
-  protected long c;
-  protected String c;
-  protected String d;
-  protected final String e;
+  protected DateCollectionListPageLoader.CacheContext g;
+  protected String h = "";
+  protected long i;
+  protected String j;
+  protected String k;
+  protected final String l;
   
   public DateCollectionListPageLoader(String paramString1, String paramString2)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = paramString1;
-    this.d = paramString2;
-    this.e = a(this.jdField_c_of_type_JavaLangString);
+    this.j = paramString1;
+    this.k = paramString2;
+    this.l = b(this.j);
   }
   
-  public static String a(String paramString)
+  public static String b(String paramString)
   {
     return paramString;
   }
   
   private void d()
   {
-    int i = UIUtils.a();
-    int j = this.a.jdField_a_of_type_Int;
+    int m = UIUtils.b();
+    int n = this.g.c;
     boolean bool = false;
-    long l = 0L;
-    if (j != i)
+    long l1 = 0L;
+    if (n != m)
     {
-      SLog.d("Q.qqstory.net:DateCollectionListPageLoader", "timezone has changed. old=%d, new=%d", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(i) });
+      SLog.d("Q.qqstory.net:DateCollectionListPageLoader", "timezone has changed. old=%d, new=%d", new Object[] { Integer.valueOf(this.g.c), Integer.valueOf(m) });
       localObject = (MemoryManager)SuperManager.a(19);
-      localMemoryInfoEntry = ((MemoryManager)localObject).a(this.e);
+      localMemoryInfoEntry = ((MemoryManager)localObject).c(this.l);
       if (localMemoryInfoEntry == null)
       {
-        localObject = new MemoryInfoEntry(this.e);
+        localObject = new MemoryInfoEntry(this.l);
         ((MemoryInfoEntry)localObject).seq = 0L;
-        ((MemoryInfoEntry)localObject).timeZone = i;
+        ((MemoryInfoEntry)localObject).timeZone = m;
       }
       else
       {
         localMemoryInfoEntry.seq = 0L;
-        localMemoryInfoEntry.timeZone = i;
+        localMemoryInfoEntry.timeZone = m;
         localObject = ((MemoryManager)localObject).a(localMemoryInfoEntry);
       }
-      this.a.a((MemoryInfoEntry)localObject);
+      this.g.a((MemoryInfoEntry)localObject);
     }
-    if (a(this.jdField_b_of_type_JavaLangString)) {
-      l = this.a.jdField_a_of_type_Long;
+    if (c(this.h)) {
+      l1 = this.g.a;
     }
-    this.jdField_c_of_type_Long = l;
+    this.i = l1;
     Object localObject = new GetDateCollectionListRequest();
-    ((GetDateCollectionListRequest)localObject).c = 10;
-    ((GetDateCollectionListRequest)localObject).d = 10;
-    ((GetDateCollectionListRequest)localObject).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    ((GetDateCollectionListRequest)localObject).jdField_b_of_type_Long = l;
-    ((GetDateCollectionListRequest)localObject).e = this.a.jdField_a_of_type_Int;
-    ((GetDateCollectionListRequest)localObject).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)SuperManager.a(19)).a(this.e);
+    ((GetDateCollectionListRequest)localObject).f = 10;
+    ((GetDateCollectionListRequest)localObject).g = 10;
+    ((GetDateCollectionListRequest)localObject).e = this.h;
+    ((GetDateCollectionListRequest)localObject).h = l1;
+    ((GetDateCollectionListRequest)localObject).i = this.g.c;
+    ((GetDateCollectionListRequest)localObject).j = this.j;
+    MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)SuperManager.a(19)).c(this.l);
     if (localMemoryInfoEntry != null)
     {
       if (localMemoryInfoEntry.isFriend == 1) {
         bool = true;
       }
-      ((GetDateCollectionListRequest)localObject).jdField_a_of_type_Boolean = bool;
+      ((GetDateCollectionListRequest)localObject).k = bool;
     }
     CmdTaskManger.a().a((NetworkRequest)localObject, this);
   }
@@ -101,20 +100,20 @@ public class DateCollectionListPageLoader
     Bosses.get().postJob(new DateCollectionListPageLoader.1(this, "Q.qqstory.net:DateCollectionListPageLoader"));
   }
   
-  protected boolean a(String paramString)
-  {
-    return (TextUtils.isEmpty(paramString)) || (paramString.equals("0"));
-  }
-  
   public void c()
   {
     super.c();
     Bosses.get().postJob(new DateCollectionListPageLoader.2(this, "Q.qqstory.net:DateCollectionListPageLoader"));
   }
+  
+  protected boolean c(String paramString)
+  {
+    return (TextUtils.isEmpty(paramString)) || (paramString.equals("0"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package cooperation.qqcircle.report.outbox;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.mobileqq.qcircle.api.db.util.NeedParcel;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleBaseRequest;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import cooperation.qqcircle.utils.QCircleHostStubUtil;
@@ -97,11 +97,10 @@ public class QCircleReportOutboxTask
       this.mRequest = new QCircleReportOutboxRequest(this.mCmdName, this.mRequestByteData);
     }
     VSNetworkHelper.getInstance().sendRequest(this.mRequest, new QCircleReportOutboxTask.1(this));
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("doResend id:");
     localStringBuilder.append(getTaskId());
-    RFLog.i("QCircleReportOutboxTask", i, localStringBuilder.toString());
+    QLog.i("QCircleReportOutboxTask", 1, localStringBuilder.toString());
   }
   
   public String getCacheKey()
@@ -177,7 +176,6 @@ public class QCircleReportOutboxTask
       localStringBuilder.append(paramString1);
       localStringBuilder.append("_QCircleSenderTask");
       paramString1 = localStringBuilder.toString();
-      i = RFLog.USR;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString2);
       localStringBuilder.append(" id:");
@@ -186,14 +184,13 @@ public class QCircleReportOutboxTask
       localStringBuilder.append(this.mState);
       localStringBuilder.append(" ,cmd:");
       localStringBuilder.append(this.mCmdName);
-      RFLog.e(paramString1, i, localStringBuilder.toString());
+      QLog.e(paramString1, 1, localStringBuilder.toString());
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append("_QCircleSenderTask");
     paramString1 = localStringBuilder.toString();
-    int i = RFLog.CLR;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString2);
     localStringBuilder.append(" id:");
@@ -202,14 +199,14 @@ public class QCircleReportOutboxTask
     localStringBuilder.append(this.mState);
     localStringBuilder.append(" ,cmd:");
     localStringBuilder.append(this.mCmdName);
-    RFLog.d(paramString1, i, localStringBuilder.toString());
+    QLog.d(paramString1, 2, localStringBuilder.toString());
   }
   
   public void resend()
   {
     if (4 == this.mState)
     {
-      RFLog.i("QCircleReportOutboxTask", RFLog.USR, "QCircleQueueTask.run is already removed");
+      QLog.i("QCircleReportOutboxTask", 1, "QCircleQueueTask.run is already removed");
       return;
     }
     doResend();
@@ -238,7 +235,7 @@ public class QCircleReportOutboxTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTask
  * JD-Core Version:    0.7.0.1
  */

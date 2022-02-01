@@ -62,17 +62,17 @@ public class ReadInJoyMotiveAdModule
       if (paramGdtAd.getGdtAdLoader().a() == null) {
         return null;
       }
-      if (paramGdtAd.getGdtAdLoader().a().a.pos_ads_info != null)
+      if (paramGdtAd.getGdtAdLoader().a().b.pos_ads_info != null)
       {
-        if (paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0) == null) {
+        if (paramGdtAd.getGdtAdLoader().a().b.pos_ads_info.get(0) == null) {
           return null;
         }
-        if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info != null)
+        if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().b.pos_ads_info.get(0)).ads_info != null)
         {
-          if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0) == null) {
+          if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().b.pos_ads_info.get(0)).ads_info.get(0) == null) {
             return null;
           }
-          return GdtJsonPbUtil.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0));
+          return GdtJsonPbUtil.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().b.pos_ads_info.get(0)).ads_info.get(0));
         }
       }
     }
@@ -82,9 +82,9 @@ public class ReadInJoyMotiveAdModule
   public GdtHandler.Params a(boolean paramBoolean, Activity paramActivity)
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 1;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localParams.jdField_a_of_type_Boolean = paramBoolean;
+    localParams.q = 1;
+    localParams.r = new WeakReference(paramActivity);
+    localParams.b = paramBoolean;
     return localParams;
   }
   
@@ -165,10 +165,10 @@ public class ReadInJoyMotiveAdModule
     try
     {
       Object localObject = new GdtMotiveVideoParams();
-      ((GdtMotiveVideoParams)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface().getCurrentAccountUin()), paramString, paramLong1, paramLong2, paramInt1, paramInt2);
+      ((GdtMotiveVideoParams)localObject).a = a(Long.parseLong(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface().getCurrentAccountUin()), paramString, paramLong1, paramLong2, paramInt1, paramInt2);
       try
       {
-        ((GdtMotiveVideoParams)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, paramActivity);
+        ((GdtMotiveVideoParams)localObject).b = a(true, paramActivity);
         localObject = new GdtMotiveVideoAd((GdtMotiveVideoParams)localObject);
         ((GdtMotiveVideoAd)localObject).setListener(new WeakReference(paramGdtAdListener));
         ((GdtMotiveVideoAd)localObject).load(paramActivity);
@@ -196,7 +196,7 @@ public class ReadInJoyMotiveAdModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyMotiveAdModule
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class RIJVideoHandleClick$6
       return;
     }
     localObject = (VideoFeedsViewHolder)paramView.getTag();
-    localObject = RIJVideoHandleClick.a(this.a).a(((VideoFeedsViewHolder)localObject).a);
+    localObject = RIJVideoHandleClick.b(this.a).c(((VideoFeedsViewHolder)localObject).P);
     if (localObject == null) {
       return;
     }
@@ -31,7 +31,7 @@ class RIJVideoHandleClick$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.6
  * JD-Core Version:    0.7.0.1
  */

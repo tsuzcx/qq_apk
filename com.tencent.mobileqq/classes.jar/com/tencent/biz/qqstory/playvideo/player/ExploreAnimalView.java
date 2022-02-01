@@ -16,12 +16,12 @@ import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 public class ExploreAnimalView
   extends RelativeLayout
 {
-  protected AnimatorSet a;
-  protected AlphaAnimation a;
-  protected TranslateAnimation a;
   protected LinearLayout a;
-  protected EllipsizingTextView a;
-  protected TranslateAnimation b;
+  protected EllipsizingTextView b;
+  protected TranslateAnimation c;
+  protected TranslateAnimation d;
+  protected AnimatorSet e;
+  protected AlphaAnimation f;
   
   public ExploreAnimalView(Context paramContext)
   {
@@ -36,30 +36,30 @@ public class ExploreAnimalView
   public ExploreAnimalView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    RelativeLayout.inflate(getContext(), 2131561827, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374584));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131380761));
+    RelativeLayout.inflate(getContext(), 2131628206, this);
+    this.a = ((LinearLayout)super.findViewById(2131442754));
+    this.b = ((EllipsizingTextView)super.findViewById(2131449730));
   }
   
   public void a()
   {
-    TranslateAnimation localTranslateAnimation = this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+    TranslateAnimation localTranslateAnimation = this.c;
     if (localTranslateAnimation != null) {
       localTranslateAnimation.cancel();
     }
-    localTranslateAnimation = this.b;
+    localTranslateAnimation = this.d;
     if (localTranslateAnimation != null) {
       localTranslateAnimation.cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, -0.2F);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.b = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
-    this.b.setDuration(300L);
-    this.b.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new ExploreAnimalView.1(this));
-    this.b.setAnimationListener(new ExploreAnimalView.2(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.c = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, -0.2F);
+    this.c.setDuration(200L);
+    this.c.setFillAfter(true);
+    this.d = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
+    this.d.setDuration(300L);
+    this.d.setFillAfter(true);
+    this.c.setAnimationListener(new ExploreAnimalView.1(this));
+    this.d.setAnimationListener(new ExploreAnimalView.2(this));
+    this.a.startAnimation(this.c);
   }
   
   @TargetApi(11)
@@ -73,10 +73,10 @@ public class ExploreAnimalView
       paramView.setDuration(1200L);
       paramView.setRepeatCount(-1);
       paramView.setRepeatMode(-1);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(paramView);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setStartDelay(paramLong);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+      this.e = new AnimatorSet();
+      this.e.play(paramView);
+      this.e.setStartDelay(paramLong);
+      this.e.start();
       return;
     }
     paramView.setVisibility(0);
@@ -85,38 +85,38 @@ public class ExploreAnimalView
   @TargetApi(11)
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((TranslateAnimation)localObject).cancel();
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = null;
+      this.c = null;
     }
-    localObject = this.b;
+    localObject = this.d;
     if (localObject != null)
     {
       ((TranslateAnimation)localObject).cancel();
-      this.b = null;
+      this.d = null;
     }
-    localObject = this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
+    localObject = this.f;
     if (localObject != null)
     {
       ((AlphaAnimation)localObject).cancel();
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = null;
+      this.f = null;
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+      localObject = this.e;
       if (localObject != null)
       {
         ((AnimatorSet)localObject).end();
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+        this.e.cancel();
       }
     }
   }
   
   public void setText(String paramString)
   {
-    EllipsizingTextView localEllipsizingTextView = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+    EllipsizingTextView localEllipsizingTextView = this.b;
     if (localEllipsizingTextView != null) {
       localEllipsizingTextView.setText(paramString);
     }
@@ -137,7 +137,7 @@ public class ExploreAnimalView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView
  * JD-Core Version:    0.7.0.1
  */

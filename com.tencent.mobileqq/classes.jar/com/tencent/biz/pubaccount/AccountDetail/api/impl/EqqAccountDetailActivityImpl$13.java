@@ -13,9 +13,9 @@ class EqqAccountDetailActivityImpl$13
 {
   EqqAccountDetailActivityImpl$13(EqqAccountDetailActivityImpl paramEqqAccountDetailActivityImpl, ActionSheet paramActionSheet, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt != 0)
     {
       if (paramInt != 1) {
@@ -23,22 +23,22 @@ class EqqAccountDetailActivityImpl$13
       }
       paramView = new StringBuilder();
       paramView.append("tel:");
-      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView.append(this.b);
       paramView = new Intent("android.intent.action.DIAL", Uri.parse(paramView.toString()));
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.startActivity(paramView);
+      this.c.startActivity(paramView);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.eqqDetail != null)
+    if (this.c.eqqDetail != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.app;
-      EqqAccountDetailActivityImpl localEqqAccountDetailActivityImpl = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl;
-      CrmUtils.a(paramView, localEqqAccountDetailActivityImpl, localEqqAccountDetailActivityImpl.eqqDetail.name, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.uin, "IvrEnterpriseDetailEngineFalse");
+      paramView = this.c.app;
+      EqqAccountDetailActivityImpl localEqqAccountDetailActivityImpl = this.c;
+      CrmUtils.a(paramView, localEqqAccountDetailActivityImpl, localEqqAccountDetailActivityImpl.eqqDetail.name, this.c.uin, "IvrEnterpriseDetailEngineFalse");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.EqqAccountDetailActivityImpl.13
  * JD-Core Version:    0.7.0.1
  */

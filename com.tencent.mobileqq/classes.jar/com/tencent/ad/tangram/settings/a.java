@@ -16,7 +16,8 @@ public final class a
   private static final String DIRECTORY_NAME = "settings";
   private static final String FILENAME_NAME = "settings";
   private static final String TAG = "AdSettingsManagerAdapterForQQ";
-  private static final String URL = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-7-0.json";
+  private static final String URL = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-8-17.json";
+  private static final String URL_NEW = "https://public.gdtimg.com/ams-web/public/tangram-report/settings-android-qq-8-8-17.json";
   private volatile WeakReference<Context> appContext;
   private volatile gdt_settings.Settings currentSettings;
   private volatile Object currentSettingsLock = new Object();

@@ -11,66 +11,24 @@ import java.util.List;
 public class WSDramaItemData
   implements Checkable
 {
-  private final stDrama jdField_a_of_type_UserGrowthStDrama;
-  private stDramaFeed jdField_a_of_type_UserGrowthStDramaFeed;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private final stDrama a;
+  private stDramaFeed b;
+  private List<String> c;
+  private boolean d;
   
   public WSDramaItemData(stDrama paramstDrama)
   {
-    this.jdField_a_of_type_UserGrowthStDrama = paramstDrama;
-  }
-  
-  public int a()
-  {
-    stDramaFeed localstDramaFeed = this.jdField_a_of_type_UserGrowthStDramaFeed;
-    if (localstDramaFeed != null) {
-      return localstDramaFeed.num;
-    }
-    return 0;
-  }
-  
-  public stDrama a()
-  {
-    return this.jdField_a_of_type_UserGrowthStDrama;
-  }
-  
-  public stDramaFeed a()
-  {
-    return this.jdField_a_of_type_UserGrowthStDramaFeed;
-  }
-  
-  public stSimpleMetaFeed a()
-  {
-    stDramaFeed localstDramaFeed = this.jdField_a_of_type_UserGrowthStDramaFeed;
-    if (localstDramaFeed != null) {
-      return localstDramaFeed.feed;
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    stDrama localstDrama = this.jdField_a_of_type_UserGrowthStDrama;
-    if ((localstDrama != null) && (localstDrama.dramaInfo != null)) {
-      return this.jdField_a_of_type_UserGrowthStDrama.dramaInfo.id;
-    }
-    return "";
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.a = paramstDrama;
   }
   
   public void a(stDramaFeed paramstDramaFeed)
   {
-    this.jdField_a_of_type_UserGrowthStDramaFeed = paramstDramaFeed;
+    this.b = paramstDramaFeed;
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    stDramaFeed localstDramaFeed = this.jdField_a_of_type_UserGrowthStDramaFeed;
+    stDramaFeed localstDramaFeed = this.b;
     if (localstDramaFeed != null) {
       localstDramaFeed.feed = paramstSimpleMetaFeed;
     }
@@ -78,40 +36,82 @@ public class WSDramaItemData
   
   public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramList;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    stDrama localstDrama = this.jdField_a_of_type_UserGrowthStDrama;
-    if ((localstDrama != null) && (localstDrama.dramaInfo != null) && (this.jdField_a_of_type_UserGrowthStDramaFeed != null)) {
-      return this.jdField_a_of_type_UserGrowthStDrama.dramaInfo.curPublishedFeedNum;
-    }
-    return 0;
+    return this.d;
   }
   
   public String b()
   {
-    stDramaFeed localstDramaFeed = this.jdField_a_of_type_UserGrowthStDramaFeed;
-    if ((localstDramaFeed != null) && (localstDramaFeed.feed != null)) {
-      return this.jdField_a_of_type_UserGrowthStDramaFeed.feed.id;
+    stDrama localstDrama = this.a;
+    if ((localstDrama != null) && (localstDrama.dramaInfo != null)) {
+      return this.a.dramaInfo.id;
     }
     return "";
   }
   
-  public boolean b()
+  public int c()
   {
-    stDrama localstDrama = this.jdField_a_of_type_UserGrowthStDrama;
+    stDramaFeed localstDramaFeed = this.b;
+    if (localstDramaFeed != null) {
+      return localstDramaFeed.num;
+    }
+    return 0;
+  }
+  
+  public String d()
+  {
+    stDramaFeed localstDramaFeed = this.b;
+    if ((localstDramaFeed != null) && (localstDramaFeed.feed != null)) {
+      return this.b.feed.id;
+    }
+    return "";
+  }
+  
+  public String e()
+  {
+    stDramaFeed localstDramaFeed = this.b;
+    if ((localstDramaFeed != null) && (localstDramaFeed.feed != null) && (this.b.feed.poster != null)) {
+      return this.b.feed.poster.id;
+    }
+    return "";
+  }
+  
+  public stDrama f()
+  {
+    return this.a;
+  }
+  
+  public stDramaFeed g()
+  {
+    return this.b;
+  }
+  
+  public List<String> h()
+  {
+    return this.c;
+  }
+  
+  public stSimpleMetaFeed i()
+  {
+    stDramaFeed localstDramaFeed = this.b;
+    if (localstDramaFeed != null) {
+      return localstDramaFeed.feed;
+    }
+    return null;
+  }
+  
+  public boolean j()
+  {
+    stDrama localstDrama = this.a;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localstDrama != null)
@@ -120,10 +120,10 @@ public class WSDramaItemData
       if (localstDrama.dramaInfo != null)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_UserGrowthStDramaFeed != null)
+        if (this.b != null)
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_UserGrowthStDrama.dramaInfo.curPublishedFeedNum == this.jdField_a_of_type_UserGrowthStDramaFeed.num) {
+          if (this.a.dramaInfo.curPublishedFeedNum == this.b.num) {
             bool1 = true;
           }
         }
@@ -132,27 +132,27 @@ public class WSDramaItemData
     return bool1;
   }
   
-  public int c()
+  public int k()
   {
-    stDrama localstDrama = this.jdField_a_of_type_UserGrowthStDrama;
-    if ((localstDrama != null) && (localstDrama.dramaInfo != null) && (this.jdField_a_of_type_UserGrowthStDramaFeed != null)) {
-      return this.jdField_a_of_type_UserGrowthStDrama.dramaInfo.curWatchedFeedNum;
+    stDrama localstDrama = this.a;
+    if ((localstDrama != null) && (localstDrama.dramaInfo != null) && (this.b != null)) {
+      return this.a.dramaInfo.curPublishedFeedNum;
     }
     return 0;
   }
   
-  public String c()
+  public int l()
   {
-    stDramaFeed localstDramaFeed = this.jdField_a_of_type_UserGrowthStDramaFeed;
-    if ((localstDramaFeed != null) && (localstDramaFeed.feed != null) && (this.jdField_a_of_type_UserGrowthStDramaFeed.feed.poster != null)) {
-      return this.jdField_a_of_type_UserGrowthStDramaFeed.feed.poster.id;
+    stDrama localstDrama = this.a;
+    if ((localstDrama != null) && (localstDrama.dramaInfo != null) && (this.b != null)) {
+      return this.a.dramaInfo.curWatchedFeedNum;
     }
-    return "";
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.data.WSDramaItemData
  * JD-Core Version:    0.7.0.1
  */

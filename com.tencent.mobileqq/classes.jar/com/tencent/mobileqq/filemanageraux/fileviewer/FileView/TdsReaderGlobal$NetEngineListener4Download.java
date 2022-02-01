@@ -8,13 +8,13 @@ import com.tencent.mobileqq.transfile.NetResp;
 final class TdsReaderGlobal$NetEngineListener4Download
   implements INetEngineListener
 {
-  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
+  private final IHostInterface.IDownloadListener b;
   
   private TdsReaderGlobal$NetEngineListener4Download(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
+    this.a = paramString;
+    this.b = paramIDownloadListener;
   }
   
   public void onResp(NetResp paramNetResp)
@@ -33,13 +33,13 @@ final class TdsReaderGlobal$NetEngineListener4Download
     if (!bool) {
       i = paramNetResp.mErrCode;
     }
-    IHostInterface.IDownloadListener localIDownloadListener = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+    IHostInterface.IDownloadListener localIDownloadListener = this.b;
     if (localIDownloadListener != null)
     {
       if (bool) {
-        localIDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramNetResp.mTotalFileLen, 1.0F);
+        localIDownloadListener.onDownloadProgress(this.a, paramNetResp.mTotalFileLen, 1.0F);
       }
-      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+      this.b.onDownloadFinished(this.a, bool, i);
     }
   }
   
@@ -48,16 +48,16 @@ final class TdsReaderGlobal$NetEngineListener4Download
     if (paramLong2 != 0L)
     {
       float f = (float)paramLong1 / (float)paramLong2;
-      paramNetReq = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+      paramNetReq = this.b;
       if (paramNetReq != null) {
-        paramNetReq.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+        paramNetReq.onDownloadProgress(this.a, paramLong2, f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.NetEngineListener4Download
  * JD-Core Version:    0.7.0.1
  */

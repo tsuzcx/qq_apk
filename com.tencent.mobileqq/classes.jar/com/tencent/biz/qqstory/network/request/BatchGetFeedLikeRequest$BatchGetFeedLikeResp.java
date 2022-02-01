@@ -17,41 +17,39 @@ import java.util.List;
 public class BatchGetFeedLikeRequest$BatchGetFeedLikeResp
   extends BaseResponse
 {
-  public List<BatchGetFeedLikeRequest.FeedLikeInfo> a;
+  public List<BatchGetFeedLikeRequest.FeedLikeInfo> a = new ArrayList();
   
   public BatchGetFeedLikeRequest$BatchGetFeedLikeResp(ErrorMessage paramErrorMessage)
   {
     super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public BatchGetFeedLikeRequest$BatchGetFeedLikeResp(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
   {
     super(paramRspBatchFeedLike.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
     while (paramRspBatchFeedLike.hasNext())
     {
       Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
       BatchGetFeedLikeRequest.FeedLikeInfo localFeedLikeInfo = new BatchGetFeedLikeRequest.FeedLikeInfo();
-      localFeedLikeInfo.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
-      localFeedLikeInfo.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
-      localFeedLikeInfo.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
-      localFeedLikeInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localFeedLikeInfo.a = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localFeedLikeInfo.c = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localFeedLikeInfo.b = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localFeedLikeInfo.d = new ArrayList();
       localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
       while (((Iterator)localObject).hasNext())
       {
         LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
-        localLikeEntry.feedId = localFeedLikeInfo.jdField_a_of_type_JavaLangString;
-        localFeedLikeInfo.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
+        localLikeEntry.feedId = localFeedLikeInfo.a;
+        localFeedLikeInfo.d.add(localLikeEntry);
       }
-      this.jdField_a_of_type_JavaUtilList.add(localFeedLikeInfo);
+      this.a.add(localFeedLikeInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedLikeRequest.BatchGetFeedLikeResp
  * JD-Core Version:    0.7.0.1
  */

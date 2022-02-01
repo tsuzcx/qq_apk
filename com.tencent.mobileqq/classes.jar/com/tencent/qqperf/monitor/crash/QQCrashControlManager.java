@@ -9,7 +9,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.statistics.natmem.NatMemAPI;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
@@ -20,40 +19,29 @@ import org.json.JSONObject;
 
 public class QQCrashControlManager
 {
-  private static QQCrashControlManager jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashControlManager;
-  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
-  int jdField_a_of_type_Int = 1;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 86400;
-  boolean jdField_b_of_type_Boolean = true;
-  int c = 5;
+  static SimpleDateFormat a = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
+  private static QQCrashControlManager g;
+  boolean b = false;
+  boolean c = true;
+  int d = 1;
+  int e = 86400;
+  int f = 5;
   
-  public static QQCrashControlManager a()
+  public static QQCrashControlManager b()
   {
-    if (jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashControlManager == null) {
+    if (g == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashControlManager == null) {
-          jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashControlManager = new QQCrashControlManager();
+        if (g == null) {
+          g = new QQCrashControlManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashControlManager;
+    return g;
   }
   
-  private boolean b()
-  {
-    int i;
-    if (Build.VERSION.SDK_INT == 27) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    return (i != 0) && (Build.MODEL.contains("OPPO R11"));
-  }
-  
-  public static void d()
+  public static void f()
   {
     if (MobileQQ.processName.equals("com.tencent.mobileqq")) {
       try
@@ -74,12 +62,15 @@ public class QQCrashControlManager
     }
   }
   
-  public void a()
+  private boolean g()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 86400;
-    this.c = 5;
+    int i;
+    if (Build.VERSION.SDK_INT == 27) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    return (i != 0) && (Build.MODEL.contains("OPPO R11"));
   }
   
   public void a(String paramString)
@@ -172,49 +163,12 @@ public class QQCrashControlManager
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  void b()
-  {
-    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.crash_control.name(), null);
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      localObject = new JSONObject(str);
-      this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("control_switch");
-      this.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("control_level");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("control_window");
-      this.c = ((JSONObject)localObject).getInt("control_freq");
-    }
-    catch (Throwable localThrowable)
-    {
-      Object localObject;
-      label84:
-      break label84;
-    }
-    a();
-    QLog.d("QQCrashControlManager", 1, "initCrashControl parse json throws an exception, so reset.");
-    QQCrashReportManager.a();
-    localObject = QQCrashReportManager.jdField_a_of_type_JavaLangStringBuilder;
-    ((StringBuilder)localObject).append("initCrashControl");
-    ((StringBuilder)localObject).append(",controlJson=");
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append(",switch=");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-    ((StringBuilder)localObject).append(",level=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    ((StringBuilder)localObject).append(",window=");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
-    ((StringBuilder)localObject).append(",Freq=");
-    ((StringBuilder)localObject).append(this.c);
-    QQCrashReportManager.a();
-    QQCrashReportManager.jdField_a_of_type_JavaLangStringBuilder.append("\n");
+    return this.b;
   }
   
   void b(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.c)
     {
       QLog.d("QQCrashControlManager", 1, "updatePreloadCrashData crash control is off..");
       return;
@@ -231,21 +185,21 @@ public class QQCrashControlManager
       boolean bool = ((SharedPreferences)localObject).getBoolean("allowpreload", true);
       long l2 = System.currentTimeMillis();
       QQCrashReportManager.a();
-      localStringBuilder = QQCrashReportManager.jdField_a_of_type_JavaLangStringBuilder;
+      localStringBuilder = QQCrashReportManager.m;
       localStringBuilder.append("updatePreloadCrashData process=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",startTime=");
-      localStringBuilder.append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1)));
+      localStringBuilder.append(a.format(new Date(l1)));
       localStringBuilder.append(",currenttime=");
-      localStringBuilder.append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l2)));
+      localStringBuilder.append(a.format(new Date(l2)));
       localStringBuilder.append(",crashCount=");
       localStringBuilder.append(i);
       localStringBuilder.append(",allowPreload=");
       localStringBuilder.append(bool);
       localStringBuilder.append(",mCurUin=");
-      localStringBuilder.append(QQCrashReportManager.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(QQCrashReportManager.a);
       localStringBuilder.append("\n");
-      if ((l1 > 0L) && (l2 > l1) && (i >= 0) && (l2 - l1 <= this.jdField_b_of_type_Int * 1000))
+      if ((l1 > 0L) && (l2 > l1) && (i >= 0) && (l2 - l1 <= this.e * 1000))
       {
         i += 1;
       }
@@ -255,27 +209,72 @@ public class QQCrashControlManager
         l1 = l2;
       }
       bool = true;
-      if (i > this.c) {
+      if (i > this.f) {
         bool = false;
       }
       QQCrashReportManager.a();
-      paramString = QQCrashReportManager.jdField_a_of_type_JavaLangStringBuilder;
+      paramString = QQCrashReportManager.m;
       paramString.append("updatePreloadCrashData update allowPreload=");
       paramString.append(bool);
       paramString.append("\n");
-      ((SharedPreferences)localObject).edit().putLong("starttime", l1).putInt("crashcount", i).putBoolean("allowpreload", bool).putInt("controlwindow", this.jdField_b_of_type_Int).commit();
+      ((SharedPreferences)localObject).edit().putLong("starttime", l1).putInt("crashcount", i).putBoolean("allowpreload", bool).putInt("controlwindow", this.e).commit();
     }
   }
   
-  void c()
+  public void c()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    this.c = true;
+    this.d = 1;
+    this.e = 86400;
+    this.f = 5;
+  }
+  
+  void d()
+  {
+    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.crash_control.name(), null);
+    if (!TextUtils.isEmpty(str)) {}
+    try
+    {
+      localObject = new JSONObject(str);
+      this.c = ((JSONObject)localObject).getBoolean("control_switch");
+      this.d = ((JSONObject)localObject).getInt("control_level");
+      this.e = ((JSONObject)localObject).getInt("control_window");
+      this.f = ((JSONObject)localObject).getInt("control_freq");
+    }
+    catch (Throwable localThrowable)
+    {
+      Object localObject;
+      label85:
+      break label85;
+    }
+    c();
+    QLog.d("QQCrashControlManager", 1, "initCrashControl parse json throws an exception, so reset.");
+    QQCrashReportManager.a();
+    localObject = QQCrashReportManager.m;
+    ((StringBuilder)localObject).append("initCrashControl");
+    ((StringBuilder)localObject).append(",controlJson=");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(",switch=");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(",level=");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(",window=");
+    ((StringBuilder)localObject).append(this.e);
+    ((StringBuilder)localObject).append(",Freq=");
+    ((StringBuilder)localObject).append(this.f);
+    QQCrashReportManager.a();
+    QQCrashReportManager.m.append("\n");
+  }
+  
+  void e()
+  {
+    if (!this.c)
     {
       QLog.d("QQCrashControlManager", 1, "updateLocalCrashData crash control is off..");
       return;
     }
     Object localObject = MobileQQ.sMobileQQ.startComponentInfo;
-    if ((this.jdField_a_of_type_Int == 2) && ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("QQBroadcastReceiver"))))
+    if ((this.d == 2) && ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("QQBroadcastReceiver"))))
     {
       QLog.d("QQCrashControlManager", 1, "updateLocalCrashData controllevel is 2 but not QQBroadcastReceiver start QQ.");
       return;
@@ -288,24 +287,24 @@ public class QQCrashControlManager
       int j = ((SharedPreferences)localObject).getInt("natmem_crashcount", 0);
       long l2 = System.currentTimeMillis();
       QQCrashReportManager.a();
-      StringBuilder localStringBuilder = QQCrashReportManager.jdField_a_of_type_JavaLangStringBuilder;
+      StringBuilder localStringBuilder = QQCrashReportManager.m;
       localStringBuilder.append("updateLocalCrashData startTime=");
-      localStringBuilder.append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1)));
+      localStringBuilder.append(a.format(new Date(l1)));
       localStringBuilder.append(",currenttime=");
-      localStringBuilder.append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l2)));
+      localStringBuilder.append(a.format(new Date(l2)));
       localStringBuilder.append(",crashCount=");
       localStringBuilder.append(i);
       localStringBuilder.append(",mCurUin=");
-      localStringBuilder.append(QQCrashReportManager.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(QQCrashReportManager.a);
       localStringBuilder.append("\n");
-      if ((l1 > 0L) && (l2 > l1) && (i >= 0) && (l2 - l1 <= this.jdField_b_of_type_Int * 1000))
+      if ((l1 > 0L) && (l2 > l1) && (i >= 0) && (l2 - l1 <= this.e * 1000))
       {
         int k = i + 1;
         i = j;
-        if (QQCrashReportManager.d != null)
+        if (QQCrashReportManager.k != null)
         {
           i = j;
-          if (QQCrashReportManager.d.contains("natmem")) {
+          if (QQCrashReportManager.k.contains("natmem")) {
             i = j + 1;
           }
         }
@@ -314,40 +313,35 @@ public class QQCrashControlManager
       else
       {
         i = j;
-        if (QQCrashReportManager.d != null)
+        if (QQCrashReportManager.k != null)
         {
           i = j;
-          if (QQCrashReportManager.d.contains("natmem")) {
+          if (QQCrashReportManager.k.contains("natmem")) {
             i = 1;
           }
         }
         j = 1;
         l1 = l2;
       }
-      if (j > this.c)
+      if (j > this.f)
       {
-        this.jdField_a_of_type_Boolean = true;
-        if (b()) {
+        this.b = true;
+        if (g()) {
           ((SharedPreferences)localObject).edit().putBoolean("crashFrequentLast", true).commit();
         }
       }
-      if (i > this.c)
-      {
-        NatMemAPI.b();
-        QLog.d("QQCrashControlManager", 1, "disable natmemmonitor in QQ");
-      }
       QQCrashReportManager.a();
-      localStringBuilder = QQCrashReportManager.jdField_a_of_type_JavaLangStringBuilder;
+      localStringBuilder = QQCrashReportManager.m;
       localStringBuilder.append("updateLocalCrashData shouldStopMsf=");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("\n");
-      ((SharedPreferences)localObject).edit().putLong("starttime", l1).putInt("crashcount", j).putInt("natmem_crashcount", i).putBoolean("shouldStopMsf", this.jdField_a_of_type_Boolean).commit();
+      ((SharedPreferences)localObject).edit().putLong("starttime", l1).putInt("crashcount", j).putInt("natmem_crashcount", i).putBoolean("shouldStopMsf", this.b).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.QQCrashControlManager
  * JD-Core Version:    0.7.0.1
  */

@@ -16,16 +16,16 @@ class AIOPushDialogHelper$2
   
   public void onClick(View paramView)
   {
-    new HttpMqqJumper(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).a).a(this.jdField_a_of_type_JavaLangString).a();
-    AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper);
-    ReportController.b(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).a(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
+    new HttpMqqJumper(AIOPushDialogHelper.a(this.d).e).a(this.a).a();
+    AIOPushDialogHelper.b(this.d);
+    ReportController.b(AIOPushDialogHelper.a(this.d).i(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setTextSize(DisplayUtil.a(AIOPushDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper).a, 14.0F));
+    paramTextPaint.setTextSize(DisplayUtil.a(AIOPushDialogHelper.a(this.d).e, 14.0F));
     paramTextPaint.setColor(Color.parseColor("#4D94FF"));
     if (!TextUtils.isEmpty(this.b)) {
       paramTextPaint.setColor(Color.parseColor(this.b));
@@ -37,7 +37,7 @@ class AIOPushDialogHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class ApolloPanel$10
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onOpen cmshow apolloStatus ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" succ ");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(" retCode ");
@@ -25,7 +25,7 @@ class ApolloPanel$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.10
  * JD-Core Version:    0.7.0.1
  */

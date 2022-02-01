@@ -11,7 +11,7 @@ class FileManagerProxy$3
   {
     try
     {
-      this.this$0.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
+      this.this$0.a(FileManagerEntity.tableName(), this.a, "nSessionId=?", new String[] { String.valueOf(this.b) }, null);
       return;
     }
     catch (Exception localException)
@@ -22,7 +22,7 @@ class FileManagerProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.3
  * JD-Core Version:    0.7.0.1
  */

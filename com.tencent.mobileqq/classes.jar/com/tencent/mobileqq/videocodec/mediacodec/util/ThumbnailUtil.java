@@ -39,16 +39,16 @@ public class ThumbnailUtil
     {
       GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
     }
-    Object localObject2 = paramEncodeConfig.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecUtilThumbnailUtil$ThumbConfig;
+    Object localObject2 = paramEncodeConfig.v;
     if (localObject2 != null)
     {
-      paramEncodeConfig = ((ThumbnailUtil.ThumbConfig)localObject2).jdField_a_of_type_JavaLangString;
-      localObject1 = ((ThumbnailUtil.ThumbConfig)localObject2).jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat;
-      paramInt1 = ((ThumbnailUtil.ThumbConfig)localObject2).jdField_a_of_type_Int;
+      paramEncodeConfig = ((ThumbnailUtil.ThumbConfig)localObject2).c;
+      localObject1 = ((ThumbnailUtil.ThumbConfig)localObject2).a;
+      paramInt1 = ((ThumbnailUtil.ThumbConfig)localObject2).b;
     }
     else
     {
-      paramEncodeConfig = a(paramEncodeConfig.jdField_a_of_type_JavaLangString);
+      paramEncodeConfig = a(paramEncodeConfig.b);
       localObject1 = Bitmap.CompressFormat.PNG;
       paramInt1 = 100;
     }
@@ -57,7 +57,7 @@ public class ThumbnailUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.util.ThumbnailUtil
  * JD-Core Version:    0.7.0.1
  */

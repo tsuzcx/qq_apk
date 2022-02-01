@@ -59,14 +59,6 @@ public class GameComponentReport
     return "0";
   }
   
-  private static String a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ("RIJAdRefreshSceneNativeArticle".equals(paramAdvertisementInfo.scene)) {
-      return paramAdvertisementInfo.getExtraParam("game_adtag");
-    }
-    return "";
-  }
-  
   public static String a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (paramInt != 3)
@@ -131,7 +123,7 @@ public class GameComponentReport
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("page_id", Long.valueOf(a(paramAdvertisementInfo)));
-    localHashMap.put("oper_module", Long.valueOf(b(paramAdvertisementInfo)));
+    localHashMap.put("oper_module", Long.valueOf(c(paramAdvertisementInfo)));
     localHashMap.put("oper_id", Long.valueOf(paramLong1));
     localHashMap.put("oper_type", Long.valueOf(paramLong2));
     StringBuilder localStringBuilder = new StringBuilder();
@@ -148,13 +140,13 @@ public class GameComponentReport
     ((StringBuilder)localObject).append(i);
     localHashMap.put("loc_id", ((StringBuilder)localObject).toString());
     if (paramAdvertisementInfo.gameAdComData != null) {
-      localObject = paramAdvertisementInfo.gameAdComData.g;
+      localObject = paramAdvertisementInfo.gameAdComData.h;
     } else {
       localObject = "";
     }
     localHashMap.put("app_id", localObject);
     if (paramAdvertisementInfo.gameAdComData != null) {
-      localObject = paramAdvertisementInfo.gameAdComData.d;
+      localObject = paramAdvertisementInfo.gameAdComData.e;
     } else {
       localObject = "";
     }
@@ -162,16 +154,16 @@ public class GameComponentReport
     localHashMap.put("ex1", paramString1);
     paramString1 = paramString2;
     if (paramString2 == null) {
-      paramString1 = a(paramAdvertisementInfo);
+      paramString1 = b(paramAdvertisementInfo);
     }
     localHashMap.put("ex2", paramString1);
     localHashMap.put("ex3", paramAdvertisementInfo.mRowKey);
     if ((FastWeqAdUtils.e(paramAdvertisementInfo)) && (paramAdvertisementInfo.gameAdComData != null))
     {
-      if (TextUtils.isEmpty(paramAdvertisementInfo.gameAdComData.q)) {
-        paramString1 = paramAdvertisementInfo.gameAdComData.p;
-      } else {
+      if (TextUtils.isEmpty(paramAdvertisementInfo.gameAdComData.r)) {
         paramString1 = paramAdvertisementInfo.gameAdComData.q;
+      } else {
+        paramString1 = paramAdvertisementInfo.gameAdComData.r;
       }
     }
     else {
@@ -181,11 +173,11 @@ public class GameComponentReport
     localHashMap.put("ex5", paramString3);
     paramString1 = str;
     if (paramAdvertisementInfo.gameAdComData != null) {
-      paramString1 = paramAdvertisementInfo.gameAdComData.B;
+      paramString1 = paramAdvertisementInfo.gameAdComData.C;
     }
     localHashMap.put("ex7", paramString1);
-    localHashMap.put("browser_version", DeviceInfoUtil.c());
-    if (((paramAdvertisementInfo.gameAdComData != null) && (paramAdvertisementInfo.gameAdComData.D.equals("2"))) || (paramAdvertisementInfo.isKolGame)) {
+    localHashMap.put("browser_version", DeviceInfoUtil.e());
+    if (((paramAdvertisementInfo.gameAdComData != null) && (paramAdvertisementInfo.gameAdComData.E.equals("2"))) || (paramAdvertisementInfo.isKolGame)) {
       localHashMap.put("obj_type", "2");
     } else {
       localHashMap.put("obj_type", "1");
@@ -220,11 +212,11 @@ public class GameComponentReport
   
   public static JSONObject a(AdData paramAdData, long paramLong1, long paramLong2, String paramString1, String paramString2)
   {
-    if ((paramAdData != null) && (paramAdData.a != null))
+    if ((paramAdData != null) && (paramAdData.j != null))
     {
-      AdvertisementInfo localAdvertisementInfo = paramAdData.a;
+      AdvertisementInfo localAdvertisementInfo = paramAdData.j;
       if (localAdvertisementInfo.mRowKey == null) {
-        localAdvertisementInfo.mRowKey = paramAdData.N;
+        localAdvertisementInfo.mRowKey = paramAdData.aj;
       }
       return a(localAdvertisementInfo, paramLong1, paramLong2, paramString1, paramString2);
     }
@@ -290,7 +282,21 @@ public class GameComponentReport
     a(paramAdvertisementInfo, paramJSONObject1, paramJSONObject2, ReportAction.CLICK, ActionEntity.Default, paramInteger);
   }
   
-  private static long b(AdvertisementInfo paramAdvertisementInfo)
+  private static String b(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ("RIJAdRefreshSceneNativeArticle".equals(paramAdvertisementInfo.scene)) {
+      return paramAdvertisementInfo.getExtraParam("game_adtag");
+    }
+    return "";
+  }
+  
+  public static void b(Integer paramInteger, AdvertisementInfo paramAdvertisementInfo, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    paramAdvertisementInfo.adClickPos = AdClickPos.SoftAdClose;
+    a(paramAdvertisementInfo, paramJSONObject1, paramJSONObject2, ReportAction.CLOSE, ActionEntity.Default, paramInteger);
+  }
+  
+  private static long c(AdvertisementInfo paramAdvertisementInfo)
   {
     if ("RIJAdRefreshSceneNativeArticle".equals(paramAdvertisementInfo.scene))
     {
@@ -330,16 +336,10 @@ public class GameComponentReport
     }
     return 0L;
   }
-  
-  public static void b(Integer paramInteger, AdvertisementInfo paramAdvertisementInfo, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    paramAdvertisementInfo.adClickPos = AdClickPos.SoftAdClose;
-    a(paramAdvertisementInfo, paramJSONObject1, paramJSONObject2, ReportAction.CLOSE, ActionEntity.Default, paramInteger);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.GameComponentReport
  * JD-Core Version:    0.7.0.1
  */

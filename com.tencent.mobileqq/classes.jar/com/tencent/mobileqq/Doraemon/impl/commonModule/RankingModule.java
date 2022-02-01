@@ -23,15 +23,15 @@ import tencent.im.oidb.ranklist_comm.ranklist_comm.ReportItem;
 public class RankingModule
   extends DoraemonAPIModule
 {
-  public static final String a;
-  private final String b = "OidbSvc.0xb85";
+  public static final String b;
+  private final String c = "OidbSvc.0xb85";
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DoraemonOpenAPI.");
     localStringBuilder.append(RankingModule.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
   }
   
   private void a(JSONObject paramJSONObject, APICallback paramAPICallback)
@@ -39,7 +39,7 @@ public class RankingModule
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(b);
       ((StringBuilder)localObject1).append(".getRankingList");
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
@@ -57,17 +57,17 @@ public class RankingModule
       DoraemonUtil.a(paramAPICallback, -100, "rankingID must be bigger than 0");
       return;
     }
-    Object localObject3 = (UserInfoModule)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a(UserInfoModule.class, false);
+    Object localObject3 = (UserInfoModule)this.a.a(UserInfoModule.class, false);
     if (localObject3 == null)
     {
       DoraemonUtil.a(paramAPICallback, -10, "internal error, try again.");
       return;
     }
     Object localObject2 = new Oidb_0xb85.ReqBody();
-    localObject3 = ((UserInfoModule)localObject3).a();
-    ((Oidb_0xb85.ReqBody)localObject2).appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
-    ((Oidb_0xb85.ReqBody)localObject2).service_id.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
-    ((Oidb_0xb85.ReqBody)localObject2).openid.set(((UserInfoModule.LoginInfo)localObject3).jdField_a_of_type_JavaLangString);
+    localObject3 = ((UserInfoModule)localObject3).e();
+    ((Oidb_0xb85.ReqBody)localObject2).appid.set(Integer.valueOf(this.a.b).intValue());
+    ((Oidb_0xb85.ReqBody)localObject2).service_id.set(this.a.a);
+    ((Oidb_0xb85.ReqBody)localObject2).openid.set(((UserInfoModule.LoginInfo)localObject3).a);
     ((Oidb_0xb85.ReqBody)localObject2).openkey.set(((UserInfoModule.LoginInfo)localObject3).b);
     Oidb_0xb85.GetRankListReqBody localGetRankListReqBody = new Oidb_0xb85.GetRankListReqBody();
     localGetRankListReqBody.ranklist_id.set(i);
@@ -86,7 +86,7 @@ public class RankingModule
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(b);
       ((StringBuilder)localObject1).append(".reportScore");
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
@@ -101,17 +101,17 @@ public class RankingModule
       DoraemonUtil.a(paramAPICallback, -100, "rankingID 没有传或者值小于等于0");
       return;
     }
-    Object localObject3 = (UserInfoModule)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a(UserInfoModule.class, false);
+    Object localObject3 = (UserInfoModule)this.a.a(UserInfoModule.class, false);
     if (localObject3 == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "reportScore, getAPIModule UserInfoModule return null");
+      QLog.e(b, 1, "reportScore, getAPIModule UserInfoModule return null");
       return;
     }
     Object localObject2 = new Oidb_0xb85.ReqBody();
-    localObject3 = ((UserInfoModule)localObject3).a();
-    ((Oidb_0xb85.ReqBody)localObject2).appid.set(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString).intValue());
-    ((Oidb_0xb85.ReqBody)localObject2).service_id.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
-    ((Oidb_0xb85.ReqBody)localObject2).openid.set(((UserInfoModule.LoginInfo)localObject3).jdField_a_of_type_JavaLangString);
+    localObject3 = ((UserInfoModule)localObject3).e();
+    ((Oidb_0xb85.ReqBody)localObject2).appid.set(Integer.valueOf(this.a.b).intValue());
+    ((Oidb_0xb85.ReqBody)localObject2).service_id.set(this.a.a);
+    ((Oidb_0xb85.ReqBody)localObject2).openid.set(((UserInfoModule.LoginInfo)localObject3).a);
     ((Oidb_0xb85.ReqBody)localObject2).openkey.set(((UserInfoModule.LoginInfo)localObject3).b);
     Oidb_0xb85.ReportScoreReqBody localReportScoreReqBody = new Oidb_0xb85.ReportScoreReqBody();
     localReportScoreReqBody.ranklist_id.set(i);
@@ -181,7 +181,7 @@ public class RankingModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.RankingModule
  * JD-Core Version:    0.7.0.1
  */

@@ -24,15 +24,15 @@ final class ItemLoader$LoadItemFutureTask<Params, Result>
     if ((localItemRequest.b == null) && (paramLoadItemFutureTask.b != null)) {
       return 1;
     }
-    if (!localItemRequest.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
-      return localItemRequest.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
+    if (!localItemRequest.i.equals(paramLoadItemFutureTask.i)) {
+      return localItemRequest.i.compareTo(paramLoadItemFutureTask.i);
     }
-    return localItemRequest.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
+    return localItemRequest.e.compareTo(paramLoadItemFutureTask.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.LoadItemFutureTask
  * JD-Core Version:    0.7.0.1
  */

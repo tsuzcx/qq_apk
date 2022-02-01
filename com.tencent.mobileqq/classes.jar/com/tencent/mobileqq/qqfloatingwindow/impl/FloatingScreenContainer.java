@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
@@ -29,35 +30,36 @@ import mqq.app.AppRuntime;
 public class FloatingScreenContainer
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private FloatingScreenParams jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
-  private FloatingScreenContainer.OnScaleAnimListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer$OnScaleAnimListener;
-  private IContainerBackPressListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIContainerBackPressListener;
-  private IDragListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIDragListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private FloatingScreenParams jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float = -1.0F;
-  private int jdField_c_of_type_Int = 20;
-  private boolean jdField_c_of_type_Boolean = true;
-  private float jdField_d_of_type_Float = 1.0F;
-  private int jdField_d_of_type_Int = 0;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int e = 0;
-  private int f = -1;
-  private int g = -1;
+  private WindowManager.LayoutParams A;
+  private int B = 2130847941;
+  private IContainerBackPressListener C;
+  private IDragListener D;
+  private int a = 0;
+  private int b;
+  private int c = 20;
+  private FloatingScreenParams d;
+  private FloatingScreenParams e;
+  private Context f;
+  private WindowManager g;
   private int h = 0;
   private int i = 0;
-  private int j = 0;
-  private int k = 0;
+  private ValueAnimator j = null;
+  private ObjectAnimator k = null;
+  private boolean l = false;
+  private boolean m = false;
+  private float n;
+  private float o;
+  private FloatingScreenContainer.OnScaleAnimListener p;
+  private int q = -1;
+  private int r = -1;
+  private float s = -1.0F;
+  private float t = 1.0F;
+  private boolean u = true;
+  private int v = 0;
+  private int w = 0;
+  private int x = 0;
+  private int y = 0;
+  private boolean z = false;
   
   public FloatingScreenContainer(Context paramContext)
   {
@@ -73,20 +75,20 @@ public class FloatingScreenContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     a(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    paramContext = this.jdField_a_of_type_AndroidViewWindowManager;
+    this.f = paramContext;
+    this.g = ((WindowManager)paramContext.getSystemService("window"));
+    paramContext = this.g;
     if (paramContext != null)
     {
-      this.e = paramContext.getDefaultDisplay().getHeight();
-      this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
+      this.i = paramContext.getDefaultDisplay().getHeight();
+      this.h = this.g.getDefaultDisplay().getWidth();
     }
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.jdField_b_of_type_Int = 2038;
+      this.b = 2038;
       return;
     }
-    this.jdField_b_of_type_Int = 2002;
+    this.b = 2002;
   }
   
   private float a(MotionEvent paramMotionEvent)
@@ -100,160 +102,187 @@ public class FloatingScreenContainer
     return 0.0F;
   }
   
-  private void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getCanMove())
-    {
-      this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setShapeType(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getShapeType());
-      this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setFloatingCenterX(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterX() + paramInt1);
-      this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setFloatingCenterY(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterY() + paramInt2);
-      a(a(this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams, false));
-    }
-  }
-  
   private void a(Context paramContext)
   {
     if (paramContext != null) {
-      this.jdField_c_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+      this.c = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     }
   }
   
   private void a(FrameLayout.LayoutParams paramLayoutParams, float paramFloat)
   {
-    int m = this.jdField_d_of_type_Int;
-    if (m != 0)
+    int i1 = this.h;
+    if (i1 != 0)
     {
-      int n = this.e;
-      if (n != 0)
+      int i2 = this.i;
+      if (i2 != 0)
       {
-        if (paramFloat >= m / n) {
-          n = (int)(m / paramFloat);
+        if (paramFloat >= i1 / i2) {
+          i2 = (int)(i1 / paramFloat);
         } else {
-          m = (int)(n * paramFloat);
+          i1 = (int)(i2 * paramFloat);
         }
-        paramLayoutParams.width = m;
-        paramLayoutParams.height = n;
+        paramLayoutParams.width = i1;
+        paramLayoutParams.height = i2;
       }
     }
   }
   
   private void a(FrameLayout.LayoutParams paramLayoutParams, float paramFloat, boolean paramBoolean)
   {
-    int m = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getShapeType();
+    int i1 = this.d.getShapeType();
     float f1 = 1.0F;
-    if (m == 1) {
-      f1 = 1.0F / this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getScreenRatio();
-    } else if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getShapeType() == 2) {
-      f1 = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getScreenRatio();
+    if (i1 == 1) {
+      f1 = 1.0F / this.d.getScreenRatio();
+    } else if (this.d.getShapeType() == 2) {
+      f1 = this.d.getScreenRatio();
     }
     double d1 = Math.abs(paramFloat - f1);
-    int n = -1;
+    int i2 = -1;
     if (d1 < 0.1D)
     {
-      m = n;
+      i1 = i2;
       if (paramBoolean)
       {
-        this.f = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInitialWidth();
-        this.g = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInitialHeight();
-        m = n;
+        this.q = this.d.getInitialWidth();
+        this.r = this.d.getInitialHeight();
+        i1 = i2;
       }
     }
-    int i1;
+    int i3;
     for (;;)
     {
-      i1 = -1;
+      i3 = -1;
       break;
       if (paramFloat > f1)
       {
-        int i2 = (int)Math.ceil(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getWidth() / paramFloat);
-        m = n;
+        int i4 = (int)Math.ceil(this.d.getWidth() / paramFloat);
         i1 = i2;
+        i3 = i4;
         if (!paramBoolean) {
           break;
         }
-        this.f = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInitialWidth();
-        this.g = ((int)Math.ceil(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInitialWidth() / paramFloat));
-        m = n;
+        this.q = this.d.getInitialWidth();
+        this.r = ((int)Math.ceil(this.d.getInitialWidth() / paramFloat));
         i1 = i2;
+        i3 = i4;
         break;
       }
-      m = (int)Math.ceil(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getHeight() * paramFloat);
+      i1 = (int)Math.ceil(this.d.getHeight() * paramFloat);
       if (paramBoolean)
       {
-        this.g = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInitialHeight();
-        this.f = ((int)Math.ceil(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInitialHeight() * paramFloat));
+        this.r = this.d.getInitialHeight();
+        this.q = ((int)Math.ceil(this.d.getInitialHeight() * paramFloat));
       }
     }
-    paramLayoutParams.width = m;
-    paramLayoutParams.height = i1;
+    paramLayoutParams.width = i1;
+    paramLayoutParams.height = i3;
   }
   
-  private void b(int paramInt)
+  private void b(float paramFloat)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
+    if ((this.u) && (!this.z))
+    {
+      n();
+      o();
+      p();
+      x();
+      this.u = false;
     }
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-    localLayoutParams.gravity = 17;
-    localLayoutParams.width = paramInt1;
-    localLayoutParams.height = paramInt2;
-    localLayoutParams.x = (this.h + (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth() - this.j) / 2);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = (this.i + (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight() - this.k) / 2);
-    a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    setVideoAndContainerScaled(paramFloat);
+    b(false);
   }
   
   private void b(WindowManager.LayoutParams paramLayoutParams)
   {
-    this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.clone();
+    this.e = this.d.clone();
     PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofFloat("alpha", new float[] { 0.0F, 1.0F });
-    ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+    ObjectAnimator localObjectAnimator = this.k;
     if (localObjectAnimator != null)
     {
       if (localObjectAnimator.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        this.k.cancel();
       }
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      this.k = null;
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewWindowManager, new PropertyValuesHolder[] { localPropertyValuesHolder });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new FloatingScreenContainer.3(this, paramLayoutParams));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new FloatingScreenContainer.4(this));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.k = ObjectAnimator.ofPropertyValuesHolder(this.g, new PropertyValuesHolder[] { localPropertyValuesHolder });
+    this.k.addUpdateListener(new FloatingScreenContainer.3(this, paramLayoutParams));
+    this.k.addListener(new FloatingScreenContainer.4(this));
+    this.k.start();
   }
   
   private void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.clone();
-    if (paramBoolean) {
-      l();
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      if (paramBoolean)
+      {
+        setElevation(15.0F);
+        setBackground(getResources().getDrawable(getOutCornerBackgroundDrawable()));
+        return;
+      }
+      setElevation(0.0F);
+      setBackgroundResource(0);
     }
-    int n = 28;
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    int m = n;
+  }
+  
+  private void c(int paramInt1, int paramInt2)
+  {
+    if (this.d.getCanMove())
+    {
+      this.e.setShapeType(this.d.getShapeType());
+      this.e.setFloatingCenterX(this.d.getFloatingCenterX() + paramInt1);
+      this.e.setFloatingCenterY(this.d.getFloatingCenterY() + paramInt2);
+      a(a(this.e, false));
+    }
+  }
+  
+  private void c(WindowManager.LayoutParams paramLayoutParams)
+  {
+    PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofFloat("alpha", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator = this.k;
+    if (localObjectAnimator != null)
+    {
+      if (localObjectAnimator.isRunning()) {
+        this.k.cancel();
+      }
+      this.k = null;
+    }
+    this.k = ObjectAnimator.ofPropertyValuesHolder(this.g, new PropertyValuesHolder[] { localPropertyValuesHolder });
+    this.k.addUpdateListener(new FloatingScreenContainer.5(this, paramLayoutParams));
+    this.k.addListener(new FloatingScreenContainer.6(this));
+    this.k.start();
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    this.d = this.e.clone();
+    if (paramBoolean) {
+      r();
+    }
+    int i2 = 28;
+    Context localContext = this.f;
+    int i1 = i2;
     if (localContext != null)
     {
-      m = n;
+      i1 = i2;
       if (localContext.getResources() != null) {
-        m = FloatingScreenUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i1 = FloatingScreenUtils.a(14.0F, this.f.getResources());
       }
     }
-    int i1 = 0;
-    n = i1;
+    int i3 = 0;
+    i2 = i3;
     try
     {
-      if (this.jdField_a_of_type_AndroidContentContext != null)
+      if (this.f != null)
       {
-        n = i1;
-        if (this.jdField_a_of_type_AndroidContentContext.getResources() != null)
+        i2 = i3;
+        if (this.f.getResources() != null)
         {
-          i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-          n = i1;
-          if (i2 > 0) {
-            n = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(i2);
+          i4 = this.f.getResources().getIdentifier("status_bar_height", "dimen", "android");
+          i2 = i3;
+          if (i4 > 0) {
+            i2 = this.f.getResources().getDimensionPixelSize(i4);
           }
         }
       }
@@ -261,174 +290,182 @@ public class FloatingScreenContainer
     catch (Exception localException)
     {
       localException.printStackTrace();
-      n = i1;
+      i2 = i3;
     }
-    i1 = this.jdField_d_of_type_Int / 2 - m - this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth() / 2;
-    int i4 = this.e / 2 - m - this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight() / 2;
-    int i3 = -i4 + n;
-    m = -this.jdField_d_of_type_Int;
-    n = -this.e;
+    i3 = this.h / 2 - i1 - this.d.getOuterWidth() / 2;
+    int i6 = this.i / 2 - i1 - this.d.getOuterHeight() / 2;
+    int i5 = -i6 + i2;
+    i1 = -this.h;
+    i2 = -this.i;
     Object localObject = (WindowManager.LayoutParams)getLayoutParams();
     ((WindowManager.LayoutParams)localObject).gravity = 17;
-    int i5 = ((WindowManager.LayoutParams)localObject).x;
-    int i2 = -i1;
-    if (i5 < i2) {
-      m = i2;
+    int i7 = ((WindowManager.LayoutParams)localObject).x;
+    int i4 = -i3;
+    if (i7 < i4) {
+      i1 = i4;
     }
-    if (((WindowManager.LayoutParams)localObject).x > i1) {
-      m = i1;
+    if (((WindowManager.LayoutParams)localObject).x > i3) {
+      i1 = i3;
     }
-    if (((WindowManager.LayoutParams)localObject).y < i3) {
-      n = i3;
+    if (((WindowManager.LayoutParams)localObject).y < i5) {
+      i2 = i5;
     }
-    if (((WindowManager.LayoutParams)localObject).y > i4) {
-      n = i4;
+    if (((WindowManager.LayoutParams)localObject).y > i6) {
+      i2 = i6;
     }
-    if ((((WindowManager.LayoutParams)localObject).x > i2) && (((WindowManager.LayoutParams)localObject).x < i1)) {
+    if ((((WindowManager.LayoutParams)localObject).x > i4) && (((WindowManager.LayoutParams)localObject).x < i3)) {
       if (((WindowManager.LayoutParams)localObject).x < 0) {
-        m = i2;
+        i1 = i4;
       } else {
-        m = i1;
+        i1 = i3;
       }
     }
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.j;
     if (localValueAnimator != null)
     {
       if (localValueAnimator.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        this.j.cancel();
       }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.j = null;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(this);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-    i2 = ((WindowManager.LayoutParams)localObject).x;
-    i4 = ((WindowManager.LayoutParams)localObject).y;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new FloatingScreenContainer.1(this, m, i1, (WindowManager.LayoutParams)localObject, i2, n, i3, i4));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new FloatingScreenContainer.2(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIDragListener;
+    this.j = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.j.setTarget(this);
+    this.j.setDuration(200L);
+    i4 = ((WindowManager.LayoutParams)localObject).x;
+    i6 = ((WindowManager.LayoutParams)localObject).y;
+    this.j.addUpdateListener(new FloatingScreenContainer.1(this, i1, i3, (WindowManager.LayoutParams)localObject, i4, i2, i5, i6));
+    this.j.addListener(new FloatingScreenContainer.2(this));
+    this.j.start();
+    localObject = this.D;
     if (localObject != null) {
       ((IDragListener)localObject).b();
     }
   }
   
-  private void c(float paramFloat)
+  private void d(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
-    {
-      h();
-      i();
-      j();
-      r();
-      this.jdField_c_of_type_Boolean = false;
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
     }
-    a(paramFloat);
-  }
-  
-  private void c(WindowManager.LayoutParams paramLayoutParams)
-  {
-    PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofFloat("alpha", new float[] { 0.0F, 1.0F });
-    ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
-    if (localObjectAnimator != null)
-    {
-      if (localObjectAnimator.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-      }
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewWindowManager, new PropertyValuesHolder[] { localPropertyValuesHolder });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new FloatingScreenContainer.5(this, paramLayoutParams));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new FloatingScreenContainer.6(this));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
-    }
-    this.h = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x;
-    this.i = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y;
-    this.j = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth();
-    this.k = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight();
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
-    }
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    WindowManager.LayoutParams localLayoutParams = this.A;
     localLayoutParams.gravity = 17;
-    localLayoutParams.width = (this.jdField_d_of_type_Int / 2 - this.h + this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth() / 2);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = (this.e / 2 - this.i + this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight() / 2);
-    localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-    localLayoutParams.x = (this.jdField_d_of_type_Int / 2 - localLayoutParams.width / 2);
-    localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-    localLayoutParams.y = (this.e / 2 - localLayoutParams.height / 2);
-    this.jdField_d_of_type_Boolean = true;
-    a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    localLayoutParams.x = (this.v + (this.d.getOuterWidth() - this.x) / 2);
+    this.A.y = (this.w + (this.d.getOuterHeight() - this.y) / 2);
+    a(this.A);
   }
   
-  private void j()
+  private void n()
   {
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131374416);
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
+    }
+    this.v = this.A.x;
+    this.w = this.A.y;
+    this.x = this.d.getOuterWidth();
+    this.y = this.d.getOuterHeight();
+  }
+  
+  private void o()
+  {
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
+    }
+    WindowManager.LayoutParams localLayoutParams = this.A;
+    localLayoutParams.gravity = 17;
+    localLayoutParams.width = (this.h / 2 - this.v + this.d.getOuterWidth() / 2);
+    this.A.height = (this.i / 2 - this.w + this.d.getOuterHeight() / 2);
+    localLayoutParams = this.A;
+    localLayoutParams.x = (this.h / 2 - localLayoutParams.width / 2);
+    localLayoutParams = this.A;
+    localLayoutParams.y = (this.i / 2 - localLayoutParams.height / 2);
+    this.z = true;
+    a(this.A);
+  }
+  
+  private void p()
+  {
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131442583);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localFrameLayout.getLayoutParams();
     localLayoutParams.gravity = 51;
+    Object localObject = this.d;
+    if (localObject != null)
+    {
+      int i1 = (((FloatingScreenParams)localObject).getOuterWidth() - this.d.getWidth()) / 2;
+      localLayoutParams.leftMargin = i1;
+      localLayoutParams.topMargin = i1;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateWrapperGravity() margin = ");
+        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append(" OuterWidth = ");
+        ((StringBuilder)localObject).append(this.d.getOuterWidth());
+        ((StringBuilder)localObject).append(" Width = ");
+        ((StringBuilder)localObject).append(this.d.getWidth());
+        QLog.d("FloatingScreenContainer", 2, ((StringBuilder)localObject).toString());
+      }
+    }
     updateViewLayout(localFrameLayout, localLayoutParams);
   }
   
-  private void k()
+  private void q()
   {
-    this.jdField_c_of_type_Float = -1.0F;
+    this.s = -1.0F;
   }
   
-  private void l()
+  private void r()
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.z)
     {
-      m();
-      n();
-      this.jdField_d_of_type_Boolean = false;
+      s();
+      t();
+      this.z = false;
     }
   }
   
-  private void m()
+  private void s()
   {
-    int m = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getReboundSize();
-    if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getWidth() <= 0)
+    int i1 = this.d.getReboundSize();
+    if (this.d.getWidth() <= 0)
     {
-      this.jdField_d_of_type_Float = 1.0F;
-      a(this.jdField_d_of_type_Float);
+      this.t = 1.0F;
+      setVideoAndContainerScaled(this.t);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onDragEndAnimation mFloatParams.getWidth() Wrong ！！！！ mFloatParams.getWidth() = ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getWidth());
+        localStringBuilder.append(this.d.getWidth());
         QLog.d("FloatingScreenContainer", 2, localStringBuilder.toString());
       }
     }
     else
     {
-      float f1 = m / this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getWidth();
+      float f1 = i1 / this.d.getWidth();
       if (f1 != 1.0F)
       {
-        this.jdField_d_of_type_Float *= f1;
-        a(this.jdField_d_of_type_Float);
+        this.t *= f1;
+        setVideoAndContainerScaled(this.t);
       }
     }
   }
   
-  private void n()
+  private void setFloatingMode(int paramInt)
   {
-    b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth(), this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight());
-    o();
+    this.a = paramInt;
   }
   
-  private void o()
+  private void t()
   {
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131374416);
+    d(this.d.getOuterWidth(), this.d.getOuterHeight());
+    u();
+    b(true);
+  }
+  
+  private void u()
+  {
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131442583);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localFrameLayout.getLayoutParams();
     localLayoutParams.gravity = 17;
     localLayoutParams.leftMargin = 0;
@@ -438,9 +475,9 @@ public class FloatingScreenContainer
     updateViewLayout(localFrameLayout, localLayoutParams);
   }
   
-  private void p()
+  private void v()
   {
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131374416);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131442583);
     if (localFrameLayout != null)
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localFrameLayout.getLayoutParams();
@@ -450,17 +487,17 @@ public class FloatingScreenContainer
     }
   }
   
-  private void q()
+  private void w()
   {
     try
     {
       if (Build.VERSION.SDK_INT >= 28)
       {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.layoutInDisplayCutoutMode = 2;
-        if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+        this.A = ((WindowManager.LayoutParams)getLayoutParams());
+        this.A.layoutInDisplayCutoutMode = 2;
+        if (this.g != null)
         {
-          this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+          this.g.updateViewLayout(this, this.A);
           return;
         }
       }
@@ -471,7 +508,7 @@ public class FloatingScreenContainer
     }
   }
   
-  private void r()
+  private void x()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("action", "1");
@@ -481,174 +518,103 @@ public class FloatingScreenContainer
     } else {
       localObject = "";
     }
-    StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance((String)localObject, "VideoFloatScale", true, 0L, 0L, localHashMap, "");
-  }
-  
-  public int a()
-  {
-    FloatingScreenParams localFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
-    if (localFloatingScreenParams != null) {
-      return localFloatingScreenParams.getFloatingCenterX();
-    }
-    return 0;
-  }
-  
-  WindowManager.LayoutParams a()
-  {
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
-    }
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-    localLayoutParams.type = this.jdField_b_of_type_Int;
-    localLayoutParams.format = 1;
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localLayoutParams.x = 0;
-    localLayoutParams.y = 0;
-    if (Build.VERSION.SDK_INT >= 28) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.layoutInDisplayCutoutMode = 1;
-    }
-    if (!FloatingScreenUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 256;
-    }
-    return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  }
-  
-  WindowManager.LayoutParams a(FloatingScreenParams paramFloatingScreenParams)
-  {
-    int m = (this.jdField_d_of_type_Int - paramFloatingScreenParams.getOuterWidth()) / 2;
-    int n = (this.e - paramFloatingScreenParams.getOuterHeight()) / 2;
-    if (Math.abs(paramFloatingScreenParams.getFloatingCenterX()) > m)
-    {
-      if (paramFloatingScreenParams.getFloatingCenterX() <= 0) {
-        m = -m;
-      }
-      paramFloatingScreenParams.setFloatingCenterX(m);
-    }
-    if (Math.abs(paramFloatingScreenParams.getFloatingCenterY()) > n)
-    {
-      if (paramFloatingScreenParams.getFloatingCenterY() > 0) {
-        m = n;
-      } else {
-        m = -n;
-      }
-      paramFloatingScreenParams.setFloatingCenterY(m);
-    }
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-    }
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-    localLayoutParams.type = this.jdField_b_of_type_Int;
-    localLayoutParams.format = 1;
-    localLayoutParams.flags = 16777256;
-    localLayoutParams.width = paramFloatingScreenParams.getOuterWidth();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = paramFloatingScreenParams.getOuterHeight();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramFloatingScreenParams.getFloatingCenterX();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramFloatingScreenParams.getFloatingCenterY();
-    if (Build.VERSION.SDK_INT >= 28) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.layoutInDisplayCutoutMode = 2;
-    }
-    if (!FloatingScreenUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.systemUiVisibility = 5892;
-    }
-    return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    StatisticCollector.getInstance(this.f).collectPerformance((String)localObject, "VideoFloatScale", true, 0L, 0L, localHashMap, "");
   }
   
   WindowManager.LayoutParams a(FloatingScreenParams paramFloatingScreenParams, boolean paramBoolean)
   {
-    int m = (this.jdField_d_of_type_Int - paramFloatingScreenParams.getOuterWidth()) / 2;
-    int n = (this.e - paramFloatingScreenParams.getOuterHeight()) / 2;
-    if (Math.abs(paramFloatingScreenParams.getFloatingCenterX()) > m)
+    int i1 = (this.h - paramFloatingScreenParams.getOuterWidth()) / 2;
+    int i2 = (this.i - paramFloatingScreenParams.getOuterHeight()) / 2;
+    if (Math.abs(paramFloatingScreenParams.getFloatingCenterX()) > i1)
     {
       if (paramFloatingScreenParams.getFloatingCenterX() <= 0) {
-        m = -m;
+        i1 = -i1;
       }
-      paramFloatingScreenParams.setFloatingCenterX(m);
+      paramFloatingScreenParams.setFloatingCenterX(i1);
     }
-    if (Math.abs(paramFloatingScreenParams.getFloatingCenterY()) > n)
+    if (Math.abs(paramFloatingScreenParams.getFloatingCenterY()) > i2)
     {
       if (paramFloatingScreenParams.getFloatingCenterY() > 0) {
-        m = n;
+        i1 = i2;
       } else {
-        m = -n;
+        i1 = -i2;
       }
-      paramFloatingScreenParams.setFloatingCenterY(m);
+      paramFloatingScreenParams.setFloatingCenterY(i1);
     }
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = paramFloatingScreenParams.getOuterWidth();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = paramFloatingScreenParams.getOuterHeight();
+      this.A.width = paramFloatingScreenParams.getOuterWidth();
+      this.A.height = paramFloatingScreenParams.getOuterHeight();
     }
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramFloatingScreenParams.getFloatingCenterX();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramFloatingScreenParams.getFloatingCenterY();
-    return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    this.A.x = paramFloatingScreenParams.getFloatingCenterX();
+    this.A.y = paramFloatingScreenParams.getFloatingCenterY();
+    return this.A;
   }
   
   void a()
   {
-    b(0);
+    setFloatingMode(0);
   }
   
-  void a(float paramFloat)
+  public void a(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.updateZoomRatio(paramFloat);
-    this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.clone();
-    int n = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getWidth();
-    int m = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getHeight();
-    int i1 = this.g;
-    if (i1 != -1) {
-      m = (int)Math.ceil(i1 * paramFloat);
-    }
-    i1 = this.f;
-    if (i1 != -1) {
-      n = (int)Math.ceil(i1 * paramFloat);
-    }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131374416);
-    if (localFrameLayout != null)
+    if (paramFloat != this.d.getScreenRatio())
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localFrameLayout.getLayoutParams();
-      localLayoutParams.width = n;
-      localLayoutParams.height = m;
-      localFrameLayout.setLayoutParams(localLayoutParams);
+      this.d.setScreenRatio(paramFloat);
+      this.e = this.d.clone();
+      a(a(this.e, true));
     }
   }
   
   public void a(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getShapeType())
+    if (paramInt != this.d.getShapeType())
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setShapeType(paramInt);
-      this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.clone();
-      a(a(this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams, true));
+      this.d.setShapeType(paramInt);
+      this.e = this.d.clone();
+      a(a(this.e, true));
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i1 = this.d.getFloatingCenterX();
+    int i2 = this.d.getFloatingCenterY();
+    if ((i1 != paramInt1) || (i2 != paramInt2))
+    {
+      this.d.setFloatingCenterX(paramInt1);
+      this.d.setFloatingCenterY(paramInt2);
+      this.e = this.d.clone();
+      a(a(this.e, false));
     }
   }
   
   public void a(View paramView, FloatingScreenParams paramFloatingScreenParams)
   {
-    if (a()) {
-      d();
+    if (getIsFloating()) {
+      i();
     }
     b();
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = paramFloatingScreenParams;
-    this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = paramFloatingScreenParams.clone();
+    this.d = paramFloatingScreenParams;
+    this.e = paramFloatingScreenParams.clone();
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 17;
     removeAllViews();
     addView(paramView, localLayoutParams);
     a(paramFloatingScreenParams);
-    b(false);
+    c(false);
   }
   
   public void a(WindowManager.LayoutParams paramLayoutParams)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+      if (this.g != null)
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, paramLayoutParams);
+        this.g.updateViewLayout(this, paramLayoutParams);
         return;
       }
     }
@@ -662,10 +628,10 @@ public class FloatingScreenContainer
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+      if (this.g != null)
       {
-        paramFloatingScreenParams = a(paramFloatingScreenParams);
-        this.jdField_a_of_type_AndroidViewWindowManager.addView(this, paramFloatingScreenParams);
+        paramFloatingScreenParams = b(paramFloatingScreenParams);
+        this.g.addView(this, paramFloatingScreenParams);
         return;
       }
     }
@@ -677,71 +643,71 @@ public class FloatingScreenContainer
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
+    Object localObject = this.d;
     if (paramBoolean) {
-      m = 1;
+      i1 = 1;
     } else {
-      m = 2;
+      i1 = 2;
     }
-    ((FloatingScreenParams)localObject).setShapeType(m);
-    int i5 = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterX();
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterY();
-    int i3 = 28;
-    int i2 = 0;
-    localObject = this.jdField_a_of_type_AndroidContentContext;
-    int m = i3;
-    int n = i2;
+    ((FloatingScreenParams)localObject).setShapeType(i1);
+    int i7 = this.d.getFloatingCenterX();
+    int i3 = this.d.getFloatingCenterY();
+    int i5 = 28;
+    int i4 = 0;
+    localObject = this.f;
+    int i1 = i5;
+    int i2 = i4;
     if (localObject != null)
     {
-      m = i3;
-      n = i2;
+      i1 = i5;
+      i2 = i4;
       if (((Context)localObject).getResources() != null)
       {
-        i3 = FloatingScreenUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i5 = FloatingScreenUtils.a(14.0F, this.f.getResources());
         try
         {
-          i4 = this.jdField_a_of_type_AndroidContentContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-          m = i3;
-          n = i2;
-          if (i4 > 0)
+          i6 = this.f.getResources().getIdentifier("status_bar_height", "dimen", "android");
+          i1 = i5;
+          i2 = i4;
+          if (i6 > 0)
           {
-            n = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(i4);
-            m = i3;
+            i2 = this.f.getResources().getDimensionPixelSize(i6);
+            i1 = i5;
           }
         }
         catch (Exception localException)
         {
           localException.printStackTrace();
-          n = i2;
-          m = i3;
+          i2 = i4;
+          i1 = i5;
         }
       }
     }
-    i3 = this.jdField_d_of_type_Int / 2 - m - this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth() / 2;
-    i2 = this.e / 2 - m - this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight() / 2;
-    int i4 = -i2 + n;
-    n = i3;
-    if (i5 < 0) {
-      n = -i3;
+    i5 = this.h / 2 - i1 - this.d.getOuterWidth() / 2;
+    i4 = this.i / 2 - i1 - this.d.getOuterHeight() / 2;
+    int i6 = -i4 + i2;
+    i2 = i5;
+    if (i7 < 0) {
+      i2 = -i5;
     }
-    m = i1;
-    if (i1 < i4) {
-      m = i4;
+    i1 = i3;
+    if (i3 < i6) {
+      i1 = i6;
     }
-    i1 = m;
-    if (m > i2) {
-      i1 = i2;
+    i3 = i1;
+    if (i1 > i4) {
+      i3 = i4;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setFloatingCenterX(n);
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setFloatingCenterY(i1);
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
+    this.d.setFloatingCenterX(i2);
+    this.d.setFloatingCenterY(i3);
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
     }
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterWidth();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterX();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterY();
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    this.A.width = this.d.getOuterWidth();
+    this.A.height = this.d.getOuterHeight();
+    this.A.x = this.d.getFloatingCenterX();
+    this.A.y = this.d.getFloatingCenterY();
+    WindowManager.LayoutParams localLayoutParams = this.A;
     localLayoutParams.gravity = 17;
     a(localLayoutParams);
   }
@@ -761,7 +727,7 @@ public class FloatingScreenContainer
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.d("FloatingScreenContainer", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (FrameLayout)findViewById(2131374415);
+    Object localObject = (FrameLayout)findViewById(2131442582);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 17;
     if (localObject != null)
@@ -772,15 +738,20 @@ public class FloatingScreenContainer
         if (paramBoolean1)
         {
           a(localLayoutParams, f1);
-          p();
-          setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846467));
+          v();
+          if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(this.f.getResources().getDrawable(2130847940));
+          }
+          if (Build.VERSION.SDK_INT >= 21) {
+            ((FrameLayout)localObject).setClipToOutline(false);
+          }
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams == null)
+          if (this.d == null)
           {
-            this.f = -1;
-            this.g = -1;
+            this.q = -1;
+            this.r = -1;
             if (QLog.isColorLevel()) {
               QLog.d("FloatingScreenContainer", 2, " mFloatParams is null!");
             }
@@ -789,7 +760,12 @@ public class FloatingScreenContainer
           {
             a(localLayoutParams, f1, paramBoolean2);
           }
-          setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2131167333));
+          if (Build.VERSION.SDK_INT >= 16) {
+            setBackground(this.f.getResources().getDrawable(2131168376));
+          }
+          if (Build.VERSION.SDK_INT >= 21) {
+            ((FrameLayout)localObject).setClipToOutline(true);
+          }
         }
         ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
         return;
@@ -798,88 +774,76 @@ public class FloatingScreenContainer
     }
   }
   
-  public boolean a()
+  WindowManager.LayoutParams b(FloatingScreenParams paramFloatingScreenParams)
   {
-    return this.jdField_a_of_type_Int != 0;
-  }
-  
-  public int b()
-  {
-    FloatingScreenParams localFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
-    if (localFloatingScreenParams != null) {
-      return localFloatingScreenParams.getFloatingCenterY();
+    int i1 = (this.h - paramFloatingScreenParams.getOuterWidth()) / 2;
+    int i2 = (this.i - paramFloatingScreenParams.getOuterHeight()) / 2;
+    if (Math.abs(paramFloatingScreenParams.getFloatingCenterX()) > i1)
+    {
+      if (paramFloatingScreenParams.getFloatingCenterX() <= 0) {
+        i1 = -i1;
+      }
+      paramFloatingScreenParams.setFloatingCenterX(i1);
     }
-    return 0;
-  }
-  
-  WindowManager.LayoutParams b()
-  {
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = ((WindowManager.LayoutParams)getLayoutParams());
+    if (Math.abs(paramFloatingScreenParams.getFloatingCenterY()) > i2)
+    {
+      if (paramFloatingScreenParams.getFloatingCenterY() > 0) {
+        i1 = i2;
+      } else {
+        i1 = -i2;
+      }
+      paramFloatingScreenParams.setFloatingCenterY(i1);
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-    ((WindowManager.LayoutParams)localObject).type = this.jdField_b_of_type_Int;
-    ((WindowManager.LayoutParams)localObject).format = 1;
-    ((WindowManager.LayoutParams)localObject).flags = 40;
+    if (this.A == null) {
+      this.A = new WindowManager.LayoutParams();
+    }
+    WindowManager.LayoutParams localLayoutParams = this.A;
+    localLayoutParams.type = this.b;
+    localLayoutParams.format = 1;
+    localLayoutParams.flags = 16777256;
+    localLayoutParams.width = paramFloatingScreenParams.getOuterWidth();
+    this.A.height = paramFloatingScreenParams.getOuterHeight();
+    this.A.x = paramFloatingScreenParams.getFloatingCenterX();
+    this.A.y = paramFloatingScreenParams.getFloatingCenterY();
     if (Build.VERSION.SDK_INT >= 28) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.layoutInDisplayCutoutMode = 2;
+      this.A.layoutInDisplayCutoutMode = 2;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
-    if (localObject != null)
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = ((FloatingScreenParams)localObject).getOuterWidth();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterHeight();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterX();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getFloatingCenterY();
+    if (!FloatingScreenUtils.a(this.f)) {
+      this.A.systemUiVisibility = 5892;
     }
-    else
-    {
-      localObject = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-      ((WindowManager.LayoutParams)localObject).width = 500;
-      ((WindowManager.LayoutParams)localObject).height = 281;
-      ((WindowManager.LayoutParams)localObject).x = 200;
-      ((WindowManager.LayoutParams)localObject).y = 0;
-    }
-    return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    return this.A;
   }
   
   void b()
   {
-    b(1);
+    setFloatingMode(1);
   }
   
-  public void b(float paramFloat)
+  public void b(int paramInt1, int paramInt2)
   {
-    if (paramFloat != this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getScreenRatio())
+    int i1 = this.d.getWidth();
+    int i2 = this.d.getHeight();
+    if ((i1 != paramInt1) || (i2 != paramInt2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.setScreenRatio(paramFloat);
-      this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.clone();
-      a(a(this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams, true));
+      this.d.setWidth(paramInt1);
+      this.d.setHeight(paramInt2);
+      this.e = this.d.clone();
+      a(a(this.e, true));
     }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
   }
   
   void c()
   {
-    b(2);
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 2;
+    setFloatingMode(2);
   }
   
   public void d()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+      if (this.g != null)
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
+        this.g.removeView(this);
         return;
       }
     }
@@ -889,30 +853,13 @@ public class FloatingScreenContainer
     }
   }
   
-  public boolean d()
-  {
-    if (!a()) {
-      return false;
-    }
-    a();
-    setVisibility(8);
-    q();
-    d();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = null;
-    e();
-    removeAllViews();
-    this.jdField_b_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams = null;
-    this.jdField_d_of_type_Float = 1.0F;
-    return true;
-  }
-  
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (c()))
+    if ((paramKeyEvent.getKeyCode() == 4) && (getIsFullScreenFloating()))
     {
-      IContainerBackPressListener localIContainerBackPressListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIContainerBackPressListener;
+      IContainerBackPressListener localIContainerBackPressListener = this.C;
       if (localIContainerBackPressListener != null) {
-        localIContainerBackPressListener.a();
+        localIContainerBackPressListener.c();
       }
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -920,54 +867,208 @@ public class FloatingScreenContainer
   
   public void e()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.j;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.j.cancel();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams != null) {
-      b();
+    if (this.d != null) {
+      getIsSmallFloating();
     }
-    FloatingScreenParams localFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
+    FloatingScreenParams localFloatingScreenParams = this.d;
     if (localFloatingScreenParams != null) {
       localFloatingScreenParams.setShowPadding(false);
     }
-    b(a());
+    b(l());
     c();
   }
   
   public void g()
   {
-    FloatingScreenParams localFloatingScreenParams = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams;
+    FloatingScreenParams localFloatingScreenParams = this.d;
     if (localFloatingScreenParams != null) {
       localFloatingScreenParams.setShowPadding(true);
     }
-    c(b());
+    c(m());
     b();
+  }
+  
+  public int getFloatingCenterX()
+  {
+    FloatingScreenParams localFloatingScreenParams = this.d;
+    if (localFloatingScreenParams != null) {
+      return localFloatingScreenParams.getFloatingCenterX();
+    }
+    return 0;
+  }
+  
+  public int getFloatingCenterY()
+  {
+    FloatingScreenParams localFloatingScreenParams = this.d;
+    if (localFloatingScreenParams != null) {
+      return localFloatingScreenParams.getFloatingCenterY();
+    }
+    return 0;
+  }
+  
+  public boolean getIsFloating()
+  {
+    return this.a != 0;
+  }
+  
+  public boolean getIsFullScreenFloating()
+  {
+    return this.a == 2;
+  }
+  
+  public boolean getIsSmallFloating()
+  {
+    return this.a == 1;
+  }
+  
+  public int getOutCornerBackgroundDrawable()
+  {
+    return this.B;
+  }
+  
+  public int getShapeType()
+  {
+    return this.d.getShapeType();
+  }
+  
+  public void h()
+  {
+    WindowManager localWindowManager = this.g;
+    if (localWindowManager != null)
+    {
+      this.i = localWindowManager.getDefaultDisplay().getHeight();
+      this.h = this.g.getDefaultDisplay().getWidth();
+    }
+  }
+  
+  public boolean i()
+  {
+    if (!getIsFloating()) {
+      return false;
+    }
+    a();
+    setVisibility(8);
+    w();
+    d();
+    this.A = null;
+    e();
+    removeAllViews();
+    this.e = null;
+    this.t = 1.0F;
+    return true;
+  }
+  
+  public void j()
+  {
+    if (!getIsFloating()) {
+      return;
+    }
+    this.d.resetParams();
+    this.t = 1.0F;
+    setVideoAndContainerScaled(this.t);
+    this.d.resetParams();
+    t();
+    this.v = 0;
+    this.w = 0;
+    this.x = 0;
+    this.y = 0;
+  }
+  
+  public boolean k()
+  {
+    return this.d.isHasZoomed();
+  }
+  
+  WindowManager.LayoutParams l()
+  {
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
+    }
+    WindowManager.LayoutParams localLayoutParams = this.A;
+    localLayoutParams.type = this.b;
+    localLayoutParams.format = 1;
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -1;
+    localLayoutParams.x = 0;
+    localLayoutParams.y = 0;
+    if (Build.VERSION.SDK_INT >= 28) {
+      this.A.layoutInDisplayCutoutMode = 1;
+    }
+    if (!FloatingScreenUtils.a(this.f)) {
+      this.A.flags = 256;
+    }
+    return this.A;
+  }
+  
+  WindowManager.LayoutParams m()
+  {
+    if (this.A == null) {
+      this.A = ((WindowManager.LayoutParams)getLayoutParams());
+    }
+    Object localObject = this.A;
+    ((WindowManager.LayoutParams)localObject).type = this.b;
+    ((WindowManager.LayoutParams)localObject).format = 1;
+    ((WindowManager.LayoutParams)localObject).flags = 40;
+    if (Build.VERSION.SDK_INT >= 28) {
+      this.A.layoutInDisplayCutoutMode = 2;
+    }
+    localObject = this.d;
+    if (localObject != null)
+    {
+      this.A.width = ((FloatingScreenParams)localObject).getOuterWidth();
+      this.A.height = this.d.getOuterHeight();
+      this.A.x = this.d.getFloatingCenterX();
+      this.A.y = this.d.getFloatingCenterY();
+    }
+    else
+    {
+      localObject = this.A;
+      ((WindowManager.LayoutParams)localObject).width = 500;
+      ((WindowManager.LayoutParams)localObject).height = 281;
+      ((WindowManager.LayoutParams)localObject).x = 200;
+      ((WindowManager.LayoutParams)localObject).y = 0;
+    }
+    return this.A;
+  }
+  
+  protected void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    WindowManager localWindowManager = this.g;
+    if (localWindowManager != null)
+    {
+      this.i = localWindowManager.getDefaultDisplay().getHeight();
+      this.h = this.g.getDefaultDisplay().getWidth();
+    }
+    super.onConfigurationChanged(paramConfiguration);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = c();
+    boolean bool2 = getIsFullScreenFloating();
     boolean bool1 = false;
     if (bool2)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.l = false;
       return false;
     }
     if (paramMotionEvent.getPointerCount() > 2) {
       return true;
     }
-    int m = paramMotionEvent.getAction();
-    if (m != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (m != 1) {
-        if (m != 2)
+      if (i1 != 1) {
+        if (i1 != 2)
         {
-          if (m != 3) {
+          if (i1 != 3) {
             break label173;
           }
         }
@@ -975,70 +1076,70 @@ public class FloatingScreenContainer
         {
           float f1 = paramMotionEvent.getY();
           float f2 = paramMotionEvent.getX();
-          if ((Math.abs(this.jdField_a_of_type_Float - f1) > this.jdField_c_of_type_Int) || (Math.abs(this.jdField_b_of_type_Float - f2) > this.jdField_c_of_type_Int)) {
+          if ((Math.abs(this.n - f1) > this.c) || (Math.abs(this.o - f2) > this.c)) {
             bool1 = true;
           }
-          this.jdField_a_of_type_Boolean = bool1;
-          if (!this.jdField_a_of_type_Boolean) {
+          this.l = bool1;
+          if (!this.l) {
             break label173;
           }
-          this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
-          this.jdField_b_of_type_Float = paramMotionEvent.getRawX();
+          this.n = paramMotionEvent.getRawY();
+          this.o = paramMotionEvent.getRawX();
           break label173;
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.l = false;
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
-      this.jdField_a_of_type_Boolean = false;
+      this.n = paramMotionEvent.getY();
+      this.o = paramMotionEvent.getX();
+      this.l = false;
     }
     label173:
-    return this.jdField_a_of_type_Boolean;
+    return this.l;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.l) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.m)
     {
       Log.d("FloatingScreenContainer", "could not dragging while scaling!");
       return super.onTouchEvent(paramMotionEvent);
     }
-    int m = paramMotionEvent.getPointerCount();
-    int n = paramMotionEvent.getAction();
-    if (n != 0)
+    int i1 = paramMotionEvent.getPointerCount();
+    int i2 = paramMotionEvent.getAction();
+    if (i2 != 0)
     {
-      if (n != 1) {
-        if (n != 2)
+      if (i2 != 1) {
+        if (i2 != 2)
         {
-          if (n != 3)
+          if (i2 != 3)
           {
-            if (n == 5) {
+            if (i2 == 5) {
               break label233;
             }
-            k();
-            this.jdField_c_of_type_Boolean = true;
+            q();
+            this.u = true;
             return true;
           }
         }
         else
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getCanZoom()) && (m == 2))
+          if ((this.d.getCanZoom()) && (i1 == 2))
           {
             f1 = a(paramMotionEvent);
-            float f2 = this.jdField_c_of_type_Float;
+            float f2 = this.s;
             if (f2 != -1.0F)
             {
               if (Math.abs(f1 - f2) > 2.0F)
               {
-                this.jdField_d_of_type_Float = (this.jdField_d_of_type_Float * f1 / this.jdField_c_of_type_Float);
-                c(this.jdField_d_of_type_Float);
-                this.jdField_c_of_type_Float = f1;
+                this.t = (this.t * f1 / this.s);
+                b(this.t);
+                this.s = f1;
               }
               else
               {
@@ -1047,26 +1148,26 @@ public class FloatingScreenContainer
             }
             else
             {
-              this.jdField_c_of_type_Float = f1;
-              this.jdField_c_of_type_Boolean = true;
+              this.s = f1;
+              this.u = true;
             }
           }
-          if ((m != 1) || (this.jdField_d_of_type_Boolean)) {
+          if ((i1 != 1) || (this.z)) {
             break label248;
           }
           float f1 = paramMotionEvent.getRawY();
-          a((int)(paramMotionEvent.getRawX() - this.jdField_b_of_type_Float), (int)(f1 - this.jdField_a_of_type_Float));
+          c((int)(paramMotionEvent.getRawX() - this.o), (int)(f1 - this.n));
           return true;
         }
       }
-      b(true);
-      k();
-      this.jdField_c_of_type_Boolean = true;
+      c(true);
+      q();
+      this.u = true;
       return true;
     }
     label233:
-    if (m == 2) {
-      this.jdField_c_of_type_Float = a(paramMotionEvent);
+    if (i1 == 2) {
+      this.s = a(paramMotionEvent);
     }
     label248:
     return true;
@@ -1074,22 +1175,56 @@ public class FloatingScreenContainer
   
   public void setOnBackPressListener(IContainerBackPressListener paramIContainerBackPressListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIContainerBackPressListener = paramIContainerBackPressListener;
+    this.C = paramIContainerBackPressListener;
   }
   
   public void setOnDragListener(IDragListener paramIDragListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIDragListener = paramIDragListener;
+    this.D = paramIDragListener;
   }
   
   public void setOnScaleAnimListener(FloatingScreenContainer.OnScaleAnimListener paramOnScaleAnimListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer$OnScaleAnimListener = paramOnScaleAnimListener;
+    this.p = paramOnScaleAnimListener;
+  }
+  
+  public void setOutCornerBackgroundDrawable(int paramInt)
+  {
+    this.B = paramInt;
+  }
+  
+  void setVideoAndContainerScaled(float paramFloat)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setVideoAndContainerScaled: scale[");
+    ((StringBuilder)localObject).append(paramFloat);
+    ((StringBuilder)localObject).append("");
+    QLog.d("FloatingScreenContainer", 2, ((StringBuilder)localObject).toString());
+    this.d.updateZoomRatio(paramFloat);
+    this.e = this.d.clone();
+    int i2 = this.d.getWidth();
+    int i1 = this.d.getHeight();
+    int i3 = this.r;
+    if (i3 != -1) {
+      i1 = (int)Math.ceil(i3 * paramFloat);
+    }
+    i3 = this.q;
+    if (i3 != -1) {
+      i2 = (int)Math.ceil(i3 * paramFloat);
+    }
+    localObject = (FrameLayout)findViewById(2131442583);
+    if (localObject != null)
+    {
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)((FrameLayout)localObject).getLayoutParams();
+      localLayoutParams.width = i2;
+      localLayoutParams.height = i1;
+      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer
  * JD-Core Version:    0.7.0.1
  */

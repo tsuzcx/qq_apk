@@ -1,18 +1,25 @@
 package com.tencent.mobileqq.studymode;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+
 class KidModeAdvanceSettingFragment$4
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   KidModeAdvanceSettingFragment$4(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    KidModeAdvanceSettingFragment.c(this.this$0);
+    paramDialogInterface.dismiss();
+    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
+    paramDialogInterface = this.a;
+    KidModeAdvanceSettingFragment.a(paramDialogInterface, KidModeAdvanceSettingFragment.a(paramDialogInterface), false, KidModeAdvanceSettingFragment.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

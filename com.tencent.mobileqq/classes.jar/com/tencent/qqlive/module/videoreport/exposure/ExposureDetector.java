@@ -89,39 +89,31 @@ public class ExposureDetector
       return false;
     }
     AncestorInfo localAncestorInfo = (AncestorInfo)paramT.ancestorsInfo.get(paramInt - 1);
-    int i = localAncestorInfo.actualRect.left + paramView.getLeft() - localAncestorInfo.scrollX;
-    int j = localAncestorInfo.actualRect.top + paramView.getTop() - localAncestorInfo.scrollY;
-    int k = paramView.getWidth();
-    int m = paramView.getHeight();
+    int i = localAncestorInfo.actualRect.left;
+    int j = paramView.getLeft();
+    int k = localAncestorInfo.scrollX;
+    int m = localAncestorInfo.actualRect.top;
+    int n = paramView.getTop();
+    int i1 = localAncestorInfo.scrollY;
     Object localObject2 = paramT.helperRectF;
-    ((RectF)localObject2).set(i, j, k + i, m + j);
+    ((RectF)localObject2).set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
     Object localObject1 = paramView.getMatrix();
     if (!((Matrix)localObject1).isIdentity()) {
       ((Matrix)localObject1).mapRect((RectF)localObject2);
     }
+    ((RectF)localObject2).offset(i + j - k, m + n - i1);
     localObject1 = (AncestorInfo)paramT.ancestorsInfo.get(paramInt);
     Rect localRect = ((AncestorInfo)localObject1).visibleRect;
     localRect.set((int)((RectF)localObject2).left, (int)((RectF)localObject2).top, (int)((RectF)localObject2).right, (int)((RectF)localObject2).bottom);
     ((AncestorInfo)localObject1).actualRect.set(localRect);
-    if ((localRect.intersect(localAncestorInfo.restrictedRect)) && (!localRect.isEmpty()))
+    if (localRect.intersect(localAncestorInfo.restrictedRect))
     {
+      if (localRect.isEmpty()) {
+        return false;
+      }
       localObject2 = paramT.helperRectForExclusion;
       ((Rect)localObject2).set(localRect);
-      if ((paramRect != null) && (((Rect)localObject2).intersect(paramRect))) {
-        l1 = ((Rect)localObject2).width() * ((Rect)localObject2).height();
-      } else {
-        l1 = 0L;
-      }
-      long l1 = localRect.width() * localRect.height() - l1;
-      if (l1 != 0L)
-      {
-        long l2 = paramView.getWidth() * paramView.getHeight();
-        paramRect = new AreaInfo(l2, l1, (float)l1 * 1.0F / (float)l2);
-        paramT.mAreaInfo.set(paramInt, paramRect);
-        if (paramBoolean) {
-          paramIExposureDetectCallback.onExposed(paramView, paramT, paramRect);
-        }
-      }
+      processExclusion(paramView, paramInt, paramT, paramIExposureDetectCallback, paramRect, paramBoolean, localRect, (Rect)localObject2);
       if (!(paramView instanceof ViewGroup)) {
         return false;
       }
@@ -136,10 +128,29 @@ public class ExposureDetector
     }
     return false;
   }
+  
+  private static <T extends DetectionData> void processExclusion(View paramView, int paramInt, T paramT, IExposureDetectCallback<T> paramIExposureDetectCallback, Rect paramRect1, boolean paramBoolean, Rect paramRect2, Rect paramRect3)
+  {
+    if ((paramRect1 != null) && (paramRect3.intersect(paramRect1))) {
+      l1 = paramRect3.width() * paramRect3.height();
+    } else {
+      l1 = 0L;
+    }
+    long l1 = paramRect2.width() * paramRect2.height() - l1;
+    if (l1 != 0L)
+    {
+      long l2 = paramView.getWidth() * paramView.getHeight();
+      paramRect1 = new AreaInfo(l2, l1, (float)l1 * 1.0F / (float)l2);
+      paramT.mAreaInfo.set(paramInt, paramRect1);
+      if (paramBoolean) {
+        paramIExposureDetectCallback.onExposed(paramView, paramT, paramRect1);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.exposure.ExposureDetector
  * JD-Core Version:    0.7.0.1
  */

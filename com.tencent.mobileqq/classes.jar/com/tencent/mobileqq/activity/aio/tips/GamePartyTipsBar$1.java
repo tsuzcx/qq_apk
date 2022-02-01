@@ -19,15 +19,15 @@ class GamePartyTipsBar$1
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(GamePartyTipsBar.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { GamePartyTipsBar.a(this.a).getAccount(), GamePartyTipsBar.a(this.a), Integer.valueOf(GamePartyManager.a(GamePartyTipsBar.a(this.a).jdField_a_of_type_Int)), GamePartyTipsBar.a(this.a).jdField_a_of_type_JavaLangString }));
+    localIntent.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { GamePartyTipsBar.b(this.a).getAccount(), GamePartyTipsBar.c(this.a), Integer.valueOf(GamePartyManager.a(GamePartyTipsBar.d(this.a).a)), GamePartyTipsBar.d(this.a).b }));
     GamePartyTipsBar.a(this.a).startActivity(localIntent);
-    ReportCenter.a().a(GamePartyTipsBar.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
+    ReportCenter.a().a(GamePartyTipsBar.b(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

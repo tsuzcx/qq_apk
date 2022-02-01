@@ -11,14 +11,14 @@ class AfterSyncMsg$4
   
   public void run()
   {
-    if (this.this$0.mAutomator.a.getApplication() != null) {
-      ZhituManager.a(this.this$0.mAutomator.a).a(this.this$0.mAutomator.a);
+    if (this.this$0.mAutomator.k.getApplication() != null) {
+      ZhituManager.a(this.this$0.mAutomator.k).a(this.this$0.mAutomator.k);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.AfterSyncMsg.4
  * JD-Core Version:    0.7.0.1
  */

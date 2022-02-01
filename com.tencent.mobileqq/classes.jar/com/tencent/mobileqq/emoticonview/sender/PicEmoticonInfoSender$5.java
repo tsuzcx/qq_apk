@@ -20,7 +20,7 @@ final class PicEmoticonInfoSender$5
   
   public void postQuery(EmoticonPackage paramEmoticonPackage)
   {
-    int i = PngFrameUtil.a(this.val$emoticon.magicValue);
+    int i = PngFrameUtil.b(this.val$emoticon.magicValue);
     if ((-1 != i) && (paramEmoticonPackage != null))
     {
       paramEmoticonPackage.rscType = i;
@@ -41,7 +41,7 @@ final class PicEmoticonInfoSender$5
       QLog.d("PicEmoticonInfoSender", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = ((IEmosmService)QRoute.api(IEmosmService.class)).hasAction(this.val$emoticon, 0);
-    if ((localObject != null) && (!((ActionGlobalData)localObject).c))
+    if ((localObject != null) && (!((ActionGlobalData)localObject).e))
     {
       ((IEmosmService)QRoute.api(IEmosmService.class)).sendEmosmMsg(this.val$app, this.val$context, this.val$sessionInfo, this.val$emoticon);
       return;
@@ -51,7 +51,7 @@ final class PicEmoticonInfoSender$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.PicEmoticonInfoSender.5
  * JD-Core Version:    0.7.0.1
  */

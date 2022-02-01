@@ -17,22 +17,22 @@ class ArkPlugin$1
   
   public void onClick(View paramView)
   {
-    if ((ArkPlugin.a(this.a) == 0) && (!TextUtils.isEmpty(ArkPlugin.a(this.a))))
+    if ((ArkPlugin.a(this.a) == 0) && (!TextUtils.isEmpty(ArkPlugin.b(this.a))))
     {
-      ArkPlugin.a(this.a).put(ArkPlugin.b(this.a), Integer.valueOf(1));
-      WebViewProvider localWebViewProvider = this.a.mRuntime.a();
+      ArkPlugin.d(this.a).put(ArkPlugin.c(this.a), Integer.valueOf(1));
+      WebViewProvider localWebViewProvider = this.a.mRuntime.f();
       if (localWebViewProvider != null) {
-        localWebViewProvider.getWebView().loadUrl(ArkPlugin.a(this.a));
+        localWebViewProvider.getWebView().loadUrl(ArkPlugin.b(this.a));
       }
       ArkPlugin.a(this.a, null);
     }
-    ArkPlugin.a(this.a).dismiss();
+    ArkPlugin.e(this.a).dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkPlugin.1
  * JD-Core Version:    0.7.0.1
  */

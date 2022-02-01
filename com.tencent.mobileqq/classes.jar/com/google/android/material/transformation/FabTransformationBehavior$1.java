@@ -11,27 +11,27 @@ class FabTransformationBehavior$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.b.setAlpha(1.0F);
-      this.b.setVisibility(0);
+      this.b.setVisibility(4);
+      this.c.setAlpha(1.0F);
+      this.c.setVisibility(0);
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b.setAlpha(0.0F);
-      this.b.setVisibility(4);
+      this.b.setVisibility(0);
+      this.c.setAlpha(0.0F);
+      this.c.setVisibility(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationBehavior.1
  * JD-Core Version:    0.7.0.1
  */

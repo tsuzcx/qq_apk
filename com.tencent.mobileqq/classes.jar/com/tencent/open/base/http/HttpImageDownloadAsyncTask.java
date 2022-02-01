@@ -18,20 +18,17 @@ import org.apache.http.params.BasicHttpParams;
 public class HttpImageDownloadAsyncTask
   extends HttpAsyncTask<Void, Void, Bitmap>
 {
-  protected Bundle a;
-  protected HttpImageDownloadAsyncTask.TaskCompleteCallback a;
-  ThreadSafeClientConnManager a;
-  protected String c = null;
+  protected String a = null;
+  protected HttpImageDownloadAsyncTask.TaskCompleteCallback b = null;
+  protected Bundle c = null;
+  ThreadSafeClientConnManager d = null;
   
   public HttpImageDownloadAsyncTask(String paramString1, String paramString2, Bundle paramBundle, String paramString3, HttpImageDownloadAsyncTask.TaskCompleteCallback paramTaskCompleteCallback)
   {
     super(paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback = null;
-    this.jdField_a_of_type_AndroidOsBundle = null;
-    this.jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = null;
-    this.c = paramString1;
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback = paramTaskCompleteCallback;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = paramString1;
+    this.b = paramTaskCompleteCallback;
+    this.c = paramBundle;
     paramString1 = new SchemeRegistry();
     paramString1.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
     try
@@ -52,19 +49,19 @@ public class HttpImageDownloadAsyncTask
     {
       QLog.e("HttpImageDownloadAsyncTask", 1, "createHttpClient():Can't support https on this devices.", paramString2);
     }
-    this.jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = new ThreadSafeClientConnManager(new BasicHttpParams(), paramString1);
+    this.d = new ThreadSafeClientConnManager(new BasicHttpParams(), paramString1);
   }
   
   /* Error */
   protected Bitmap a(Void... paramVarArgs)
   {
     // Byte code:
-    //   0: ldc 88
+    //   0: ldc 90
     //   2: iconst_1
-    //   3: ldc 112
-    //   5: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3: ldc 114
+    //   5: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   8: aload_0
-    //   9: getfield 26	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager	Lorg/apache/http/impl/conn/tsccm/ThreadSafeClientConnManager;
+    //   9: getfield 28	com/tencent/open/base/http/HttpImageDownloadAsyncTask:d	Lorg/apache/http/impl/conn/tsccm/ThreadSafeClientConnManager;
     //   12: astore_1
     //   13: aconst_null
     //   14: astore 7
@@ -78,76 +75,76 @@ public class HttpImageDownloadAsyncTask
     //   26: astore 8
     //   28: aconst_null
     //   29: astore 6
-    //   31: new 118	org/apache/http/impl/client/DefaultHttpClient
+    //   31: new 119	org/apache/http/impl/client/DefaultHttpClient
     //   34: dup
     //   35: aload_1
     //   36: aconst_null
-    //   37: invokespecial 121	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/conn/ClientConnectionManager;Lorg/apache/http/params/HttpParams;)V
+    //   37: invokespecial 122	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/conn/ClientConnectionManager;Lorg/apache/http/params/HttpParams;)V
     //   40: astore 10
     //   42: aload 9
     //   44: astore_1
-    //   45: new 123	org/apache/http/client/methods/HttpGet
+    //   45: new 124	org/apache/http/client/methods/HttpGet
     //   48: dup
     //   49: aload_0
-    //   50: getfield 125	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   53: invokespecial 126	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
+    //   50: getfield 126	com/tencent/open/base/http/HttpImageDownloadAsyncTask:e	Ljava/lang/String;
+    //   53: invokespecial 127	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
     //   56: astore 11
     //   58: aload 9
     //   60: astore_1
     //   61: aload_0
-    //   62: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   62: getfield 26	com/tencent/open/base/http/HttpImageDownloadAsyncTask:c	Landroid/os/Bundle;
     //   65: ifnull +91 -> 156
     //   68: aload 9
     //   70: astore_1
     //   71: aload_0
-    //   72: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   75: invokevirtual 132	android/os/Bundle:keySet	()Ljava/util/Set;
-    //   78: invokeinterface 138 1 0
+    //   72: getfield 26	com/tencent/open/base/http/HttpImageDownloadAsyncTask:c	Landroid/os/Bundle;
+    //   75: invokevirtual 133	android/os/Bundle:keySet	()Ljava/util/Set;
+    //   78: invokeinterface 139 1 0
     //   83: astore 12
     //   85: aload 9
     //   87: astore_1
     //   88: aload 12
-    //   90: invokeinterface 143 1 0
+    //   90: invokeinterface 144 1 0
     //   95: ifeq +61 -> 156
     //   98: aload 9
     //   100: astore_1
     //   101: aload 12
-    //   103: invokeinterface 147 1 0
-    //   108: checkcast 149	java/lang/String
+    //   103: invokeinterface 148 1 0
+    //   108: checkcast 150	java/lang/String
     //   111: astore 13
     //   113: aload 9
     //   115: astore_1
     //   116: aload_0
-    //   117: getfield 24	com/tencent/open/base/http/HttpImageDownloadAsyncTask:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   117: getfield 26	com/tencent/open/base/http/HttpImageDownloadAsyncTask:c	Landroid/os/Bundle;
     //   120: aload 13
-    //   122: invokevirtual 153	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   122: invokevirtual 154	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   125: astore 14
     //   127: aload 9
     //   129: astore_1
     //   130: aload 14
-    //   132: instanceof 149
+    //   132: instanceof 150
     //   135: ifeq -50 -> 85
     //   138: aload 9
     //   140: astore_1
     //   141: aload 11
     //   143: aload 13
     //   145: aload 14
-    //   147: checkcast 149	java/lang/String
-    //   150: invokevirtual 156	org/apache/http/client/methods/HttpGet:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   147: checkcast 150	java/lang/String
+    //   150: invokevirtual 157	org/apache/http/client/methods/HttpGet:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   153: goto -68 -> 85
     //   156: aload 9
     //   158: astore_1
     //   159: aload 10
     //   161: aload 11
-    //   163: invokeinterface 162 2 0
-    //   168: invokeinterface 168 1 0
+    //   163: invokeinterface 163 2 0
+    //   168: invokeinterface 169 1 0
     //   173: astore 10
     //   175: aload 10
     //   177: ifnull +127 -> 304
     //   180: aload 9
     //   182: astore_1
     //   183: aload 10
-    //   185: invokeinterface 174 1 0
+    //   185: invokeinterface 175 1 0
     //   190: astore 4
     //   192: aload 6
     //   194: astore_1
@@ -155,7 +152,7 @@ public class HttpImageDownloadAsyncTask
     //   197: astore 5
     //   199: aload_0
     //   200: aload 4
-    //   202: invokevirtual 177	com/tencent/open/base/http/HttpImageDownloadAsyncTask:a	(Ljava/io/InputStream;)[B
+    //   202: invokevirtual 178	com/tencent/open/base/http/HttpImageDownloadAsyncTask:a	(Ljava/io/InputStream;)[B
     //   205: astore 8
     //   207: aload 6
     //   209: astore_1
@@ -173,7 +170,7 @@ public class HttpImageDownloadAsyncTask
     //   227: aload 8
     //   229: iconst_0
     //   230: iload_2
-    //   231: invokestatic 183	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   231: invokestatic 184	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   234: astore 6
     //   236: aload 6
     //   238: ifnonnull +5 -> 243
@@ -183,20 +180,20 @@ public class HttpImageDownloadAsyncTask
     //   245: astore_1
     //   246: aload 6
     //   248: astore 5
-    //   250: ldc 88
+    //   250: ldc 90
     //   252: iconst_1
     //   253: iconst_2
-    //   254: anewarray 185	java/lang/Object
+    //   254: anewarray 186	java/lang/Object
     //   257: dup
     //   258: iconst_0
-    //   259: ldc 187
+    //   259: ldc 188
     //   261: aastore
     //   262: dup
     //   263: iconst_1
     //   264: iload_3
-    //   265: invokestatic 193	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   265: invokestatic 194	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   268: aastore
-    //   269: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   269: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   272: goto +41 -> 313
     //   275: astore 5
     //   277: aload 4
@@ -221,7 +218,7 @@ public class HttpImageDownloadAsyncTask
     //   313: aload 4
     //   315: ifnull +8 -> 323
     //   318: aload 4
-    //   320: invokevirtual 201	java/io/InputStream:close	()V
+    //   320: invokevirtual 202	java/io/InputStream:close	()V
     //   323: aload 6
     //   325: areturn
     //   326: astore 4
@@ -231,11 +228,11 @@ public class HttpImageDownloadAsyncTask
     //   334: astore 4
     //   336: aload 5
     //   338: astore_1
-    //   339: ldc 88
+    //   339: ldc 90
     //   341: iconst_1
-    //   342: ldc 203
+    //   342: ldc 204
     //   344: aload 6
-    //   346: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   346: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   349: aload 4
     //   351: astore_1
     //   352: aload 5
@@ -245,7 +242,7 @@ public class HttpImageDownloadAsyncTask
     //   360: aload 4
     //   362: astore 5
     //   364: aload_1
-    //   365: invokevirtual 201	java/io/InputStream:close	()V
+    //   365: invokevirtual 202	java/io/InputStream:close	()V
     //   368: aload 5
     //   370: areturn
     //   371: astore 6
@@ -255,11 +252,11 @@ public class HttpImageDownloadAsyncTask
     //   378: astore 4
     //   380: aload 4
     //   382: astore_1
-    //   383: ldc 88
+    //   383: ldc 90
     //   385: iconst_1
-    //   386: ldc 205
+    //   386: ldc 206
     //   388: aload 6
-    //   390: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   390: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   393: aload 5
     //   395: astore_1
     //   396: aload 4
@@ -272,7 +269,7 @@ public class HttpImageDownloadAsyncTask
     //   409: aload_1
     //   410: ifnull +7 -> 417
     //   413: aload_1
-    //   414: invokevirtual 201	java/io/InputStream:close	()V
+    //   414: invokevirtual 202	java/io/InputStream:close	()V
     //   417: goto +6 -> 423
     //   420: aload 4
     //   422: athrow
@@ -363,9 +360,9 @@ public class HttpImageDownloadAsyncTask
   
   protected void a(Bitmap paramBitmap)
   {
-    HttpImageDownloadAsyncTask.TaskCompleteCallback localTaskCompleteCallback = this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback;
+    HttpImageDownloadAsyncTask.TaskCompleteCallback localTaskCompleteCallback = this.b;
     if (localTaskCompleteCallback != null) {
-      localTaskCompleteCallback.a(this.c, paramBitmap);
+      localTaskCompleteCallback.a(this.a, paramBitmap);
     }
   }
   
@@ -387,7 +384,7 @@ public class HttpImageDownloadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.HttpImageDownloadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

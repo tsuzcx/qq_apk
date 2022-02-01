@@ -37,14 +37,14 @@ public class PlayerCommentSegment$ClickNickCallback
         } else {
           paramString = "2";
         }
-        StoryReportor.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, StoryReportor.a(4444), "", localPlayerCommentSegment.a.a.feedId });
+        StoryReportor.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, StoryReportor.b(4444), "", localPlayerCommentSegment.a.a.feedId });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentSegment.ClickNickCallback
  * JD-Core Version:    0.7.0.1
  */

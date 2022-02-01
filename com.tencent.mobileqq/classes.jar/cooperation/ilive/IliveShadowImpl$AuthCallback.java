@@ -14,20 +14,20 @@ import cooperation.ilive.util.ElapseStat;
 class IliveShadowImpl$AuthCallback
   implements IliveAuthManager.Callback
 {
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  EnterCallback jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback;
-  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
-  private boolean jdField_a_of_type_Boolean = false;
+  long a;
+  Context b;
+  Bundle c;
+  EnterCallback d;
+  private PluginManager f;
+  private boolean g = false;
   
   public IliveShadowImpl$AuthCallback(IliveShadowImpl paramIliveShadowImpl, PluginManager paramPluginManager, long paramLong, Context paramContext, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = paramPluginManager;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback = paramEnterCallback;
+    this.f = paramPluginManager;
+    this.a = paramLong;
+    this.b = paramContext;
+    this.c = paramBundle;
+    this.d = paramEnterCallback;
   }
   
   public void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth)
@@ -35,10 +35,10 @@ class IliveShadowImpl$AuthCallback
     ElapseStat.b("stAuth");
     if (paramBoolean)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.g)
       {
-        this.jdField_a_of_type_Boolean = true;
-        IliveShadowImpl.a(this.jdField_a_of_type_CooperationIliveIliveShadowImpl, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager, this.jdField_a_of_type_AndroidOsBundle, paramstAuth, this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback);
+        this.g = true;
+        IliveShadowImpl.a(this.e, this.b, this.a, this.f, this.c, paramstAuth, this.d);
       }
     }
     else
@@ -52,7 +52,7 @@ class IliveShadowImpl$AuthCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveShadowImpl.AuthCallback
  * JD-Core Version:    0.7.0.1
  */

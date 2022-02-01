@@ -25,30 +25,30 @@ import java.util.concurrent.Future;
 public class StoryBoss
   implements Boss, MonitorThreadPoolExecutor.ThreadPoolMonitorListener
 {
-  private static final int jdField_a_of_type_Int = Runtime.getRuntime().availableProcessors();
-  private static final int jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();
-  private static final int jdField_c_of_type_Int = Runtime.getRuntime().availableProcessors();
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final JobController jdField_a_of_type_ComTribeAsyncAsyncJobController;
-  private final LightWeightExecutor jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
-  private final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new StoryBoss.StoryQueueExecutor("StoryBoss.NetworkExecutor", 128, jdField_c_of_type_Int, null);
-  private final Executor[] jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor = new Executor[3];
-  private long jdField_b_of_type_Long = 0L;
-  private final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new StoryBoss.StoryQueueExecutor("StoryBoss.CpuExecutor", 16, jdField_a_of_type_Int, null);
-  private final Executor jdField_c_of_type_JavaUtilConcurrentExecutor = new StoryBoss.StoryQueueExecutor("StoryBoss.FileExecutor", 64, jdField_b_of_type_Int, null);
+  private static final int j = Runtime.getRuntime().availableProcessors();
+  private static final int k = Runtime.getRuntime().availableProcessors();
+  private static final int l = Runtime.getRuntime().availableProcessors();
+  private final Executor a = new StoryBoss.StoryQueueExecutor("StoryBoss.NetworkExecutor", 128, l, null);
+  private final Executor b = new StoryBoss.StoryQueueExecutor("StoryBoss.CpuExecutor", 16, j, null);
+  private final Executor c = new StoryBoss.StoryQueueExecutor("StoryBoss.FileExecutor", 64, k, null);
+  private final Executor[] d = new Executor[3];
+  private final JobController e;
+  private final LightWeightExecutor f;
+  private Handler g;
+  private long h = 0L;
+  private long i = 0L;
   
   public StoryBoss(Context paramContext)
   {
-    paramContext = this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor;
-    paramContext[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
-    paramContext[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
-    paramContext[2] = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
-    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor = new LightWeightExecutor(StoryDispatcher.a().getDefaultLooper(), 100);
-    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.setMonitorListener(this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(StoryDispatcher.a().getDefaultLooper());
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobController = new JobController(this);
-    StoryDispatcher.a().registerSubscriber("root_group", this.jdField_a_of_type_ComTribeAsyncAsyncJobController);
+    paramContext = this.d;
+    paramContext[0] = this.a;
+    paramContext[1] = this.b;
+    paramContext[2] = this.c;
+    this.f = new LightWeightExecutor(StoryDispatcher.a().getDefaultLooper(), 100);
+    this.f.setMonitorListener(this);
+    this.g = new Handler(StoryDispatcher.a().getDefaultLooper());
+    this.e = new JobController(this);
+    StoryDispatcher.a().registerSubscriber("root_group", this.e);
   }
   
   @NonNull
@@ -68,7 +68,7 @@ public class StoryBoss
   public <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
     paramJob = prepareWorker(paramJob, paramJob.getJobType(), paramFutureListener, paramParams);
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobController.getDefaultHandler().handleExecute(this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor, paramJob);
+    this.e.getDefaultHandler().handleExecute(this.d, paramJob);
     if (paramJob != null)
     {
       paramFutureListener = new StringBuilder();
@@ -90,7 +90,7 @@ public class StoryBoss
   @NonNull
   public Executor getExecutor(int paramInt)
   {
-    Executor localExecutor2 = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    Executor localExecutor2 = this.b;
     Executor localExecutor1 = localExecutor2;
     if (paramInt != 2)
     {
@@ -101,11 +101,11 @@ public class StoryBoss
           if (paramInt != 16) {
             return localExecutor2;
           }
-          return this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+          return this.a;
         }
-        return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+        return this.c;
       }
-      localExecutor1 = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+      localExecutor1 = this.c;
     }
     return localExecutor1;
   }
@@ -113,19 +113,19 @@ public class StoryBoss
   @NonNull
   public Executor[] getExecutors()
   {
-    return this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor;
+    return this.d;
   }
   
   @NonNull
   public JobController getJobController()
   {
-    return this.jdField_a_of_type_ComTribeAsyncAsyncJobController;
+    return this.e;
   }
   
   @NonNull
   public Executor getLightWeightExecutor()
   {
-    return this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+    return this.f;
   }
   
   public void onQueueExceedLimit(String paramString, int paramInt)
@@ -135,8 +135,8 @@ public class StoryBoss
     localStringBuilder.append(" onQueueExceedLimit, size = ");
     localStringBuilder.append(paramInt);
     SLog.e("StoryBoss", localStringBuilder.toString());
-    if (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long > 7200000L) {
-      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    if (SystemClock.uptimeMillis() - this.i > 7200000L) {
+      this.i = SystemClock.uptimeMillis();
     }
   }
   
@@ -155,8 +155,8 @@ public class StoryBoss
       ((StringBuilder)localObject).append(" onWorkerExceedTime, runnable = ");
       ((StringBuilder)localObject).append(paramList);
       SLog.e("StoryBoss", ((StringBuilder)localObject).toString());
-      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > 7200000L) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      if (SystemClock.uptimeMillis() - this.h > 7200000L) {
+        this.h = SystemClock.uptimeMillis();
       }
     }
   }
@@ -183,10 +183,10 @@ public class StoryBoss
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.execute(paramRunnable);
+      this.f.execute(paramRunnable);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramInt);
+    this.g.postDelayed(paramRunnable, paramInt);
   }
   
   @NonNull
@@ -243,7 +243,7 @@ public class StoryBoss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryBoss
  * JD-Core Version:    0.7.0.1
  */

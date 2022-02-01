@@ -17,21 +17,21 @@ class PromotionGuide$1$1
   {
     paramLottieImageAsset = paramLottieImageAsset.getFileName();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a.a);
     ((StringBuilder)localObject).append("guide_images");
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append(paramLottieImageAsset);
     paramLottieImageAsset = ((StringBuilder)localObject).toString();
     try
     {
-      localObject = VideoUtils.a(paramLottieImageAsset, this.a.jdField_a_of_type_Int, this.a.b);
+      localObject = VideoUtils.a(paramLottieImageAsset, this.a.b, this.a.c);
       return localObject;
     }
     catch (Exception localException)
     {
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
-        String str = PromotionGuide.jdField_a_of_type_JavaLangString;
+        String str = PromotionGuide.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("PromotionGuide Exception, imagePath[");
         localStringBuilder.append(paramLottieImageAsset);
@@ -44,7 +44,7 @@ class PromotionGuide$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionGuide.1.1
  * JD-Core Version:    0.7.0.1
  */

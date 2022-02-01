@@ -5,17 +5,17 @@ import com.tencent.mobileqq.activity.aio.core.AIOContext;
 public class DeviceMsgAIOContext
   extends AIOContext
 {
-  public boolean k()
+  public boolean P()
   {
-    if ((this.a instanceof DeviceMsgChatPie)) {
-      return ((DeviceMsgChatPie)this.a).G;
+    if ((this.c instanceof DeviceMsgChatPie)) {
+      return ((DeviceMsgChatPie)this.c).bq;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgAIOContext
  * JD-Core Version:    0.7.0.1
  */

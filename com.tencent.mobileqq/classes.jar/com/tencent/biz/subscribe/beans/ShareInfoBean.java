@@ -13,39 +13,39 @@ import com.tencent.qphone.base.util.QLog;
 public class ShareInfoBean
 {
   public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StShare a;
-  public ExtraTypeInfo a;
-  public String a;
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
+  public CertifiedAccountMeta.StFeed b;
+  public String c;
+  public CertifiedAccountMeta.StShare d;
+  public ExtraTypeInfo e;
+  public boolean f;
+  public boolean g;
+  public boolean h = true;
   
   public CertifiedAccountMeta.StFeed a()
   {
-    return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    return this.b;
   }
   
-  public String a()
+  public String b()
   {
-    CertifiedAccountMeta.StShare localStShare = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
+    CertifiedAccountMeta.StShare localStShare = this.d;
     if (localStShare != null) {
       return localStShare.author.id.get();
     }
     return "";
   }
   
-  public String b()
+  public String c()
   {
-    Object localObject1 = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localObject1 != null) && (!StringUtil.a(((CertifiedAccountMeta.StShare)localObject1).url.get())))
+    Object localObject1 = this.d;
+    if ((localObject1 != null) && (!StringUtil.isEmpty(((CertifiedAccountMeta.StShare)localObject1).url.get())))
     {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get();
+      QLog.e("ShareInfoBean", 1, this.d.url.get());
+      return this.d.url.get();
     }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
+    if (this.b != null)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      localObject1 = this.e;
       if (localObject1 != null)
       {
         int i = ((ExtraTypeInfo)localObject1).pageType;
@@ -53,7 +53,7 @@ public class ShareInfoBean
           switch (i)
           {
           default: 
-            localObject2 = this.jdField_a_of_type_JavaLangString;
+            localObject2 = this.c;
             localObject1 = localObject2;
             if (localObject2 != null) {
               break;
@@ -61,17 +61,17 @@ public class ShareInfoBean
             localObject1 = "";
             break;
           case 7002: 
-            localObject1 = SubscribeShareHelper.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+            localObject1 = SubscribeShareHelper.b(this.b);
             break;
           case 7001: 
-            localObject1 = SubscribeShareHelper.d(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+            localObject1 = SubscribeShareHelper.d(this.b);
             break;
           case 7000: 
-            localObject1 = SubscribeShareHelper.e(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+            localObject1 = SubscribeShareHelper.e(this.b);
             break;
           }
         } else {
-          localObject1 = SubscribeShareHelper.c(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+          localObject1 = SubscribeShareHelper.c(this.b);
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("share url is:");
@@ -80,7 +80,7 @@ public class ShareInfoBean
         return localObject1;
       }
     }
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = this.c;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
@@ -88,94 +88,94 @@ public class ShareInfoBean
     return localObject1;
   }
   
-  public String c()
-  {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localObject != null) && (!StringUtil.a(((CertifiedAccountMeta.StShare)localObject).title.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-      if ((localObject != null) && (((ExtraTypeInfo)localObject).pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get();
-      }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get();
-    }
-    return "";
-  }
-  
   public String d()
   {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localObject != null) && (!StringUtil.a(((CertifiedAccountMeta.StShare)localObject).desc.get())))
+    Object localObject = this.d;
+    if ((localObject != null) && (!StringUtil.isEmpty(((CertifiedAccountMeta.StShare)localObject).title.get())))
     {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get();
+      QLog.e("ShareInfoBean", 1, this.d.title.get());
+      return this.d.title.get();
     }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
+    if (this.b != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      localObject = this.e;
       if ((localObject != null) && (((ExtraTypeInfo)localObject).pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.desc.get();
+        return this.b.poster.nick.get();
       }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.subtitle.get();
+      return this.b.title.get();
     }
     return "";
   }
   
   public String e()
   {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localObject != null) && (!StringUtil.a(((CertifiedAccountMeta.StShare)localObject).cover.url.get())))
+    Object localObject = this.d;
+    if ((localObject != null) && (!StringUtil.isEmpty(((CertifiedAccountMeta.StShare)localObject).desc.get())))
     {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get();
+      QLog.e("ShareInfoBean", 1, this.d.desc.get());
+      return this.d.desc.get();
     }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
+    if (this.b != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      localObject = this.e;
       if ((localObject != null) && (((ExtraTypeInfo)localObject).pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get();
+        return this.b.poster.desc.get();
       }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get();
+      return this.b.subtitle.get();
     }
     return "";
   }
   
   public String f()
   {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localObject != null) && (!StringUtil.a(((CertifiedAccountMeta.StShare)localObject).author.nick.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.nick.get();
+    Object localObject = this.d;
+    if ((localObject != null) && (!StringUtil.isEmpty(((CertifiedAccountMeta.StShare)localObject).cover.url.get())))
+    {
+      QLog.e("ShareInfoBean", 1, this.d.cover.url.get());
+      return this.d.cover.url.get();
     }
-    localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    if (localObject != null) {
-      return ((CertifiedAccountMeta.StFeed)localObject).poster.nick.get();
+    if (this.b != null)
+    {
+      localObject = this.e;
+      if ((localObject != null) && (((ExtraTypeInfo)localObject).pageType == 7002)) {
+        return this.b.poster.icon.get();
+      }
+      return this.b.cover.url.get();
     }
     return "";
   }
   
   public String g()
   {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localObject != null) && (!StringUtil.a(((CertifiedAccountMeta.StShare)localObject).author.desc.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.desc.get();
+    Object localObject = this.d;
+    if ((localObject != null) && (!StringUtil.isEmpty(((CertifiedAccountMeta.StShare)localObject).author.nick.get()))) {
+      return this.d.author.nick.get();
     }
-    localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    localObject = this.b;
     if (localObject != null) {
-      return ((CertifiedAccountMeta.StFeed)localObject).poster.desc.get();
+      return ((CertifiedAccountMeta.StFeed)localObject).poster.nick.get();
     }
     return "";
   }
   
   public String h()
   {
-    CertifiedAccountMeta.StShare localStShare = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    if ((localStShare != null) && (!StringUtil.a(localStShare.shorturl.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.shorturl.get();
+    Object localObject = this.d;
+    if ((localObject != null) && (!StringUtil.isEmpty(((CertifiedAccountMeta.StShare)localObject).author.desc.get()))) {
+      return this.d.author.desc.get();
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      return ((CertifiedAccountMeta.StFeed)localObject).poster.desc.get();
+    }
+    return "";
+  }
+  
+  public String i()
+  {
+    CertifiedAccountMeta.StShare localStShare = this.d;
+    if ((localStShare != null) && (!StringUtil.isEmpty(localStShare.shorturl.get()))) {
+      return this.d.shorturl.get();
     }
     return "";
   }

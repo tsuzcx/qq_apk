@@ -51,10 +51,10 @@ public class PreProcessSegment
         localObject = (String)paramHashMap.getKey();
         paramHashMap = (AddressItem)paramHashMap.getValue();
         localObject = (GeoHashPhotoGroup)this.a.get(localObject);
-        ((GeoHashPhotoGroup)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
-        localObject = ((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        ((GeoHashPhotoGroup)localObject).c = paramHashMap;
+        localObject = ((GeoHashPhotoGroup)localObject).b.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((StoryAlbum.PicInfo)((Iterator)localObject).next()).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
+          ((StoryAlbum.PicInfo)((Iterator)localObject).next()).o = paramHashMap;
         }
       }
     }
@@ -66,12 +66,12 @@ public class PreProcessSegment
       while (paramHashMap.hasNext())
       {
         localObject = (GeoHashPhotoGroup)((Map.Entry)paramHashMap.next()).getValue();
-        paramErrorMessage.addAll(((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList);
-        if (((StoryAlbum.PicInfo)((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null)
+        paramErrorMessage.addAll(((GeoHashPhotoGroup)localObject).b);
+        if (((StoryAlbum.PicInfo)((GeoHashPhotoGroup)localObject).b.get(0)).o == null)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("后台返回的POI数据里缺少了 ：");
-          localStringBuilder.append(((GeoHashPhotoGroup)localObject).jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps);
+          localStringBuilder.append(((GeoHashPhotoGroup)localObject).d);
           SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", localStringBuilder.toString());
         }
       }
@@ -133,32 +133,32 @@ public class PreProcessSegment
       notifyResult(paramList);
       return;
     }
-    int i = ((StoryScanManager)SuperManager.a(30)).a().b();
+    int i = ((StoryScanManager)SuperManager.a(30)).g().h();
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "PreProcessSegment geohashlevel=%d", new Object[] { Integer.valueOf(i) });
     this.a = new HashMap();
     paramJobContext = paramList.iterator();
     while (paramJobContext.hasNext())
     {
       paramList = (StoryAlbum.PicInfo)paramJobContext.next();
-      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {
-        paramList.c = "EMPTY";
+      if ((paramList.j == 0.0D) && (paramList.k == 0.0D)) {
+        paramList.l = "EMPTY";
       } else {
-        paramList.c = GeoHashUtils.a(paramList.jdField_a_of_type_Double, paramList.b, i);
+        paramList.l = GeoHashUtils.a(paramList.j, paramList.k, i);
       }
-      if (this.a.containsKey(paramList.c))
+      if (this.a.containsKey(paramList.l))
       {
-        ((GeoHashPhotoGroup)this.a.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
+        ((GeoHashPhotoGroup)this.a.get(paramList.l)).b.add(paramList);
       }
       else
       {
-        GeoHashPhotoGroup localGeoHashPhotoGroup = new GeoHashPhotoGroup(paramList.c);
+        GeoHashPhotoGroup localGeoHashPhotoGroup = new GeoHashPhotoGroup(paramList.l);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(paramList);
-        localGeoHashPhotoGroup.jdField_a_of_type_JavaUtilList = localArrayList;
-        if ((!TextUtils.isEmpty(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString, "EMPTY"))) {
-          localGeoHashPhotoGroup.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps = GeoHashUtils.a(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString);
+        localGeoHashPhotoGroup.b = localArrayList;
+        if ((!TextUtils.isEmpty(localGeoHashPhotoGroup.a)) && (!TextUtils.equals(localGeoHashPhotoGroup.a, "EMPTY"))) {
+          localGeoHashPhotoGroup.d = GeoHashUtils.a(localGeoHashPhotoGroup.a);
         }
-        this.a.put(paramList.c, localGeoHashPhotoGroup);
+        this.a.put(paramList.l, localGeoHashPhotoGroup);
       }
     }
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.a.size()) });
@@ -175,7 +175,7 @@ public class PreProcessSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.segment.PreProcessSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,13 @@ class ListenChangeVoicePanel$4
   {
     if (ListenChangeVoicePanel.a(this.this$0).get() != null)
     {
-      if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      if (this.this$0.d.get() == null) {
         return;
       }
       Object localObject = (FriendsManager)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if (!((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).h())
+      if (!((BaseChatPie)this.this$0.d.get()).aJ())
       {
-        localObject = ((FriendsManager)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_Int, true);
+        localObject = ((FriendsManager)localObject).b(((BaseChatPie)this.this$0.d.get()).ah.b, ((BaseChatPie)this.this$0.d.get()).ah.a, true);
         if (localObject != null)
         {
           i = ((NoC2CExtensionInfo)localObject).pttChangeVoiceType;
@@ -36,7 +36,7 @@ class ListenChangeVoicePanel$4
       }
       else
       {
-        localObject = ((FriendsManager)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, true);
+        localObject = ((FriendsManager)localObject).d(((BaseChatPie)this.this$0.d.get()).ah.b, true);
         if (localObject != null)
         {
           i = ((ExtensionInfo)localObject).pttChangeVoiceType;
@@ -45,20 +45,20 @@ class ListenChangeVoicePanel$4
       }
       int i = -1;
       label164:
-      if ((i != -1) && (i >= 0) && (ListenChangeVoicePanel.a(this.this$0).length > i))
+      if ((i != -1) && (i >= 0) && (ListenChangeVoicePanel.i(this.this$0).length > i))
       {
         ListenChangeVoicePanel.a(this.this$0, i);
-        ListenChangeVoicePanel.a(this.this$0)[i] = 1;
+        ListenChangeVoicePanel.i(this.this$0)[i] = 1;
       }
-      if (ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttIPttVoiceChangePreSender == null) {
-        ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttIPttVoiceChangePreSender = ((IPttUtils)QRoute.api(IPttUtils.class)).createPttVoiceChangePreSender((AppRuntime)ListenChangeVoicePanel.a(this.this$0).get());
+      if (ListenChangeVoicePanel.l == null) {
+        ListenChangeVoicePanel.l = ((IPttUtils)QRoute.api(IPttUtils.class)).createPttVoiceChangePreSender((AppRuntime)ListenChangeVoicePanel.a(this.this$0).get());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel.4
  * JD-Core Version:    0.7.0.1
  */

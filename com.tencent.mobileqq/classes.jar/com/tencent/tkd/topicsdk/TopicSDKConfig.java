@@ -32,205 +32,110 @@ import org.jetbrains.annotations.Nullable;
 public final class TopicSDKConfig
 {
   @NotNull
-  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Context a;
   @NotNull
-  private final BaseUploader jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader;
+  private final IBizConfig b;
   @NotNull
-  private final IAccount jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIAccount;
+  private final IPageOpener c;
   @NotNull
-  private final IBizConfig jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIBizConfig;
+  private final ILogger d;
   @NotNull
-  private final IDataReporter jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataReporter;
+  private final IAccount e;
   @NotNull
-  private final IDataTransfer jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer;
+  private final IDataReporter f;
   @NotNull
-  private final IEmoJiEmotion jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIEmoJiEmotion;
+  private final IDataTransfer g;
   @NotNull
-  private final IFloatViewManager jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager;
+  private final IUserActionHandler h;
   @NotNull
-  private final IImageLoader jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader;
+  private final IThreadManager i;
   @NotNull
-  private final ILogger jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+  private final ITheme j;
   @NotNull
-  private final IPageOpener jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPageOpener;
+  private final IToast k;
   @NotNull
-  private final IPermission jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission;
+  private final IPermission l;
   @NotNull
-  private final IPkgManager jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPkgManager;
+  private final IWebViewOpener m;
   @NotNull
-  private final IPublishManager jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager;
+  private final IImageLoader n;
   @NotNull
-  private final IStorageConfig jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIStorageConfig;
+  private final BaseUploader o;
   @NotNull
-  private final ITheme jdField_a_of_type_ComTencentTkdTopicsdkInterfacesITheme;
+  private final IViewPager p;
   @NotNull
-  private final IThreadManager jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager;
+  private final IFloatViewManager q;
   @NotNull
-  private final IToast jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIToast;
+  private final IStorageConfig r;
   @NotNull
-  private final IUserActionHandler jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler;
+  private final IEmoJiEmotion s;
+  private final boolean t;
   @NotNull
-  private final IVideoCompressor jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor;
+  private final IVideoCompressor u;
   @NotNull
-  private final IViewPager jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager;
+  private final IPkgManager v;
   @NotNull
-  private final IWebViewOpener jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIWebViewOpener;
+  private final Class<? extends IDialogBuilder> w;
   @NotNull
-  private final Class<? extends IDialogBuilder> jdField_a_of_type_JavaLangClass;
-  private final boolean jdField_a_of_type_Boolean;
+  private final IPublishManager x;
   
   public TopicSDKConfig(@NotNull Context paramContext, @NotNull IBizConfig paramIBizConfig, @NotNull IPageOpener paramIPageOpener, @NotNull ILogger paramILogger, @NotNull IAccount paramIAccount, @NotNull IDataReporter paramIDataReporter, @NotNull IDataTransfer paramIDataTransfer, @NotNull IUserActionHandler paramIUserActionHandler, @NotNull IThreadManager paramIThreadManager, @NotNull ITheme paramITheme, @NotNull IToast paramIToast, @NotNull IPermission paramIPermission, @NotNull IWebViewOpener paramIWebViewOpener, @NotNull IImageLoader paramIImageLoader, @NotNull BaseUploader paramBaseUploader, @NotNull IViewPager paramIViewPager, @NotNull IFloatViewManager paramIFloatViewManager, @NotNull IStorageConfig paramIStorageConfig, @NotNull IEmoJiEmotion paramIEmoJiEmotion, boolean paramBoolean, @NotNull IVideoCompressor paramIVideoCompressor, @NotNull IPkgManager paramIPkgManager, @NotNull Class<? extends IDialogBuilder> paramClass, @NotNull IPublishManager paramIPublishManager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIBizConfig = paramIBizConfig;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPageOpener = paramIPageOpener;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger = paramILogger;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIAccount = paramIAccount;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataReporter = paramIDataReporter;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer = paramIDataTransfer;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler = paramIUserActionHandler;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager = paramIThreadManager;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesITheme = paramITheme;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIToast = paramIToast;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission = paramIPermission;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIWebViewOpener = paramIWebViewOpener;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader = paramIImageLoader;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader = paramBaseUploader;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager = paramIViewPager;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager = paramIFloatViewManager;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIStorageConfig = paramIStorageConfig;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIEmoJiEmotion = paramIEmoJiEmotion;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor = paramIVideoCompressor;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPkgManager = paramIPkgManager;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager = paramIPublishManager;
-  }
-  
-  @NotNull
-  public final Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  @NotNull
-  public final BaseUploader a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader;
-  }
-  
-  @NotNull
-  public final IAccount a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIAccount;
-  }
-  
-  @NotNull
-  public final IBizConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIBizConfig;
-  }
-  
-  @NotNull
-  public final IDataTransfer a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer;
-  }
-  
-  @NotNull
-  public final IEmoJiEmotion a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIEmoJiEmotion;
-  }
-  
-  @NotNull
-  public final IImageLoader a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader;
-  }
-  
-  @NotNull
-  public final ILogger a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
-  }
-  
-  @NotNull
-  public final IPageOpener a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPageOpener;
-  }
-  
-  @NotNull
-  public final IPermission a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission;
-  }
-  
-  @NotNull
-  public final IPublishManager a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager;
-  }
-  
-  @NotNull
-  public final IStorageConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIStorageConfig;
-  }
-  
-  @NotNull
-  public final ITheme a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesITheme;
-  }
-  
-  @NotNull
-  public final IThreadManager a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager;
-  }
-  
-  @NotNull
-  public final IToast a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIToast;
-  }
-  
-  @NotNull
-  public final IUserActionHandler a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler;
-  }
-  
-  @NotNull
-  public final IVideoCompressor a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor;
-  }
-  
-  @NotNull
-  public final IViewPager a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager;
-  }
-  
-  @NotNull
-  public final IWebViewOpener a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIWebViewOpener;
+    this.a = paramContext;
+    this.b = paramIBizConfig;
+    this.c = paramIPageOpener;
+    this.d = paramILogger;
+    this.e = paramIAccount;
+    this.f = paramIDataReporter;
+    this.g = paramIDataTransfer;
+    this.h = paramIUserActionHandler;
+    this.i = paramIThreadManager;
+    this.j = paramITheme;
+    this.k = paramIToast;
+    this.l = paramIPermission;
+    this.m = paramIWebViewOpener;
+    this.n = paramIImageLoader;
+    this.o = paramBaseUploader;
+    this.p = paramIViewPager;
+    this.q = paramIFloatViewManager;
+    this.r = paramIStorageConfig;
+    this.s = paramIEmoJiEmotion;
+    this.t = paramBoolean;
+    this.u = paramIVideoCompressor;
+    this.v = paramIPkgManager;
+    this.w = paramClass;
+    this.x = paramIPublishManager;
   }
   
   public final void a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler.a();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer.a();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager.a();
+    this.h.a();
+    this.g.a();
+    this.p.a();
   }
   
-  public final boolean a()
+  @NotNull
+  public final Context b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  @NotNull
+  public final IBizConfig c()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final IPageOpener d()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final ILogger e()
+  {
+    return this.d;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -239,7 +144,7 @@ public final class TopicSDKConfig
       if ((paramObject instanceof TopicSDKConfig))
       {
         paramObject = (TopicSDKConfig)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_AndroidContentContext, paramObject.jdField_a_of_type_AndroidContentContext)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIBizConfig, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIBizConfig)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPageOpener, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPageOpener)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIAccount, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIAccount)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataReporter, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataReporter)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesITheme, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesITheme)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIToast, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIToast)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIWebViewOpener, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIWebViewOpener)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIStorageConfig, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIStorageConfig)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIEmoJiEmotion, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIEmoJiEmotion)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPkgManager, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPkgManager)) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangClass, paramObject.jdField_a_of_type_JavaLangClass)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (Intrinsics.areEqual(this.f, paramObject.f)) && (Intrinsics.areEqual(this.g, paramObject.g)) && (Intrinsics.areEqual(this.h, paramObject.h)) && (Intrinsics.areEqual(this.i, paramObject.i)) && (Intrinsics.areEqual(this.j, paramObject.j)) && (Intrinsics.areEqual(this.k, paramObject.k)) && (Intrinsics.areEqual(this.l, paramObject.l)) && (Intrinsics.areEqual(this.m, paramObject.m)) && (Intrinsics.areEqual(this.n, paramObject.n)) && (Intrinsics.areEqual(this.o, paramObject.o)) && (Intrinsics.areEqual(this.p, paramObject.p)) && (Intrinsics.areEqual(this.q, paramObject.q)) && (Intrinsics.areEqual(this.r, paramObject.r)) && (Intrinsics.areEqual(this.s, paramObject.s)) && (this.t == paramObject.t) && (Intrinsics.areEqual(this.u, paramObject.u)) && (Intrinsics.areEqual(this.v, paramObject.v)) && (Intrinsics.areEqual(this.w, paramObject.w)) && (Intrinsics.areEqual(this.x, paramObject.x))) {}
       }
       else
       {
@@ -249,9 +154,98 @@ public final class TopicSDKConfig
     return true;
   }
   
+  @NotNull
+  public final IAccount f()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final IDataTransfer g()
+  {
+    return this.g;
+  }
+  
+  @NotNull
+  public final IUserActionHandler h()
+  {
+    return this.h;
+  }
+  
   public int hashCode()
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  @NotNull
+  public final IThreadManager i()
+  {
+    return this.i;
+  }
+  
+  @NotNull
+  public final ITheme j()
+  {
+    return this.j;
+  }
+  
+  @NotNull
+  public final IToast k()
+  {
+    return this.k;
+  }
+  
+  @NotNull
+  public final IPermission l()
+  {
+    return this.l;
+  }
+  
+  @NotNull
+  public final IWebViewOpener m()
+  {
+    return this.m;
+  }
+  
+  @NotNull
+  public final IImageLoader n()
+  {
+    return this.n;
+  }
+  
+  @NotNull
+  public final BaseUploader o()
+  {
+    return this.o;
+  }
+  
+  @NotNull
+  public final IViewPager p()
+  {
+    return this.p;
+  }
+  
+  @NotNull
+  public final IStorageConfig q()
+  {
+    return this.r;
+  }
+  
+  @NotNull
+  public final IEmoJiEmotion r()
+  {
+    return this.s;
+  }
+  
+  public final boolean s()
+  {
+    return this.t;
+  }
+  
+  @NotNull
+  public final IVideoCompressor t()
+  {
+    return this.u;
   }
   
   @NotNull
@@ -259,60 +253,66 @@ public final class TopicSDKConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TopicSDKConfig(context=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", bizConfig=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIBizConfig);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", pageOpener=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPageOpener);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", logger=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", account=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIAccount);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", dataReporter=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataReporter);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", dataTransfer=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIDataTransfer);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", userActionHandler=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIUserActionHandler);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", threadManager=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", theme=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesITheme);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", toast=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIToast);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", permission=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", webViewOpener=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIWebViewOpener);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(", imageLoader=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader);
+    localStringBuilder.append(this.n);
     localStringBuilder.append(", uploader=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", viewPage=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIViewPager);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(", floatViewManager=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(", storageConfig=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIStorageConfig);
+    localStringBuilder.append(this.r);
     localStringBuilder.append(", emoJiEmotion=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIEmoJiEmotion);
+    localStringBuilder.append(this.s);
     localStringBuilder.append(", isDebug=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(", videoCompressor=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(", pkgManager=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPkgManager);
+    localStringBuilder.append(this.v);
     localStringBuilder.append(", dialogBuilder=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangClass);
+    localStringBuilder.append(this.w);
     localStringBuilder.append(", publishManager=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager);
+    localStringBuilder.append(this.x);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
+  }
+  
+  @NotNull
+  public final IPublishManager u()
+  {
+    return this.x;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.TopicSDKConfig
  * JD-Core Version:    0.7.0.1
  */

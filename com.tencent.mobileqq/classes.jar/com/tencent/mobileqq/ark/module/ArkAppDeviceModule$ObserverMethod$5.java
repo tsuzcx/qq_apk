@@ -10,17 +10,17 @@ class ArkAppDeviceModule$ObserverMethod$5
   
   public void a()
   {
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ObserverMethod.a.b, new ArkAppDeviceModule.ObserverMethod.5.1(this));
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.b.a.f, new ArkAppDeviceModule.ObserverMethod.5.1(this));
   }
   
   public void b()
   {
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ObserverMethod.a.b, new ArkAppDeviceModule.ObserverMethod.5.2(this));
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.b.a.f, new ArkAppDeviceModule.ObserverMethod.5.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.ObserverMethod.5
  * JD-Core Version:    0.7.0.1
  */

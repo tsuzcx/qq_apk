@@ -19,16 +19,11 @@ import org.json.JSONObject;
 
 public class RemindHelper
 {
-  private static IosTimepicker.FormatDataListener a;
   public static String a = "1";
-  public static boolean a = true;
   public static String b = "0";
-  private static String c = "remind";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener = new RemindHelper.1();
-  }
+  public static boolean c = true;
+  private static String d = "remind";
+  private static IosTimepicker.FormatDataListener e = new RemindHelper.1();
   
   public static int a(Context paramContext, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, int[] paramArrayOfInt)
   {
@@ -48,7 +43,7 @@ public class RemindHelper
       l1 = l2;
       if (QLog.isColorLevel())
       {
-        String str = c;
+        String str = d;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getLong error: ");
         localStringBuilder.append(paramString.getMessage());
@@ -71,7 +66,7 @@ public class RemindHelper
     {
       if (QLog.isColorLevel())
       {
-        paramString2 = c;
+        paramString2 = d;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getString from json error:");
         localStringBuilder.append(paramString1.getMessage());
@@ -84,20 +79,20 @@ public class RemindHelper
   public static void a(Context paramContext, long paramLong, IosTimepicker.OnTimePickerSelectListener paramOnTimePickerSelectListener, JsBridgeListener paramJsBridgeListener)
   {
     Object localObject = LayoutInflater.from(paramContext);
-    if (jdField_a_of_type_Boolean)
+    if (c)
     {
-      jdField_a_of_type_Boolean = false;
+      c = false;
       ActionSheet localActionSheet = ActionSheet.createMenuSheet(paramContext);
-      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131361999)).jdField_a_of_type_Boolean = true;
-      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2131563056, null);
+      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131427560)).a = true;
+      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2131629672, null);
       ((IosTimepicker)localObject).setMaxDays(25568);
       DayAdapter localDayAdapter = new DayAdapter(paramContext, 25);
-      NumberAdapter localNumberAdapter1 = new NumberAdapter(paramContext, TimeHelper.a, 25);
-      NumberAdapter localNumberAdapter2 = new NumberAdapter(paramContext, TimeHelper.b, 25);
-      int i = (int)TimeHelper.a(paramLong);
+      NumberAdapter localNumberAdapter1 = new NumberAdapter(paramContext, TimeHelper.b, 25);
+      NumberAdapter localNumberAdapter2 = new NumberAdapter(paramContext, TimeHelper.c, 25);
+      int i = (int)TimeHelper.c(paramLong);
       int j = TimeHelper.a(paramLong);
       int k = TimeHelper.b(paramLong);
-      IosTimepicker.FormatDataListener localFormatDataListener = jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener;
+      IosTimepicker.FormatDataListener localFormatDataListener = e;
       ((IosTimepicker)localObject).a(paramContext, localActionSheet, paramOnTimePickerSelectListener, null, new BaseAdapter[] { localDayAdapter, localNumberAdapter1, localNumberAdapter2 }, new int[] { i, j, k }, localFormatDataListener);
       if (Build.VERSION.SDK_INT >= 11) {
         localActionSheet.getWindow().setFlags(16777216, 16777216);
@@ -112,20 +107,20 @@ public class RemindHelper
       catch (Throwable paramContext)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(c, 2, paramContext.getMessage());
+          QLog.d(d, 2, paramContext.getMessage());
         }
       }
     }
   }
   
-  public static boolean a(String paramString)
+  public static boolean b(String paramString)
   {
-    return paramString.equalsIgnoreCase(jdField_a_of_type_JavaLangString);
+    return paramString.equalsIgnoreCase(a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindHelper
  * JD-Core Version:    0.7.0.1
  */

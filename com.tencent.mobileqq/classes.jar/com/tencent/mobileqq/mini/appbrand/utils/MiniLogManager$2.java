@@ -12,7 +12,7 @@ final class MiniLogManager$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (StringUtil.a(paramContext)) {
+    if (StringUtil.isEmpty(paramContext)) {
       return;
     }
     if (paramContext.equals("android.intent.action.SCREEN_OFF"))
@@ -28,7 +28,7 @@ final class MiniLogManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager.2
  * JD-Core Version:    0.7.0.1
  */

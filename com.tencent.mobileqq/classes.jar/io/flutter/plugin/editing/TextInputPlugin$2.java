@@ -3,8 +3,6 @@ package io.flutter.plugin.editing;
 class TextInputPlugin$2
   implements TextInputPlugin.MinMax
 {
-  TextInputPlugin$2(TextInputPlugin paramTextInputPlugin, boolean paramBoolean, double[] paramArrayOfDouble1, double[] paramArrayOfDouble2) {}
-  
   public void inspect(double paramDouble1, double paramDouble2)
   {
     boolean bool = this.val$isAffine;
@@ -36,7 +34,7 @@ class TextInputPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.editing.TextInputPlugin.2
  * JD-Core Version:    0.7.0.1
  */

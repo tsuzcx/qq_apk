@@ -3,6 +3,9 @@ package com.tencent.mobileqq.profilecard.bussiness.presentwall;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.DisplayMetrics;
@@ -26,18 +29,23 @@ import com.tencent.mobileqq.profilecard.template.IDiyMoreInfoManager;
 import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
 import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.CustomHandler;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.mobilereport.MobileReportManager;
 import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import mqq.os.MqqHandler;
 
 public class ProfilePresentWallComponent
   extends AbsQQProfileContentComponent
+  implements Handler.Callback
 {
   private static final String TAG = "ProfilePresentWallComponent";
   View.OnClickListener mOnClickListener = new ProfilePresentWallComponent.1(this);
+  MqqHandler mReportHandler = new CustomHandler(Looper.getMainLooper(), this);
   
   public ProfilePresentWallComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
@@ -67,15 +75,18 @@ public class ProfilePresentWallComponent
     QZLog.d("cardInfo.allinone.pa", 2, new Object[] { Integer.valueOf(((ProfileCardInfo)this.mData).allInOne.pa) });
     if ((paramCard.presentSwitch) && (!ProfilePAUtils.isNotShowPresent(((ProfileCardInfo)this.mData).allInOne)))
     {
-      View localView = LayoutInflater.from(this.mActivity).inflate(2131561358, null);
+      if ((((ProfileCardInfo)this.mData).allInOne.pa == 20) || (((ProfileCardInfo)this.mData).allInOne.pa == 21)) {
+        troopMemberGiftWallReport(101);
+      }
+      View localView = LayoutInflater.from(this.mActivity).inflate(2131627714, null);
       this.mViewContainer = localView;
-      Object localObject1 = (ViewGroup)localView.findViewById(2131368801);
-      TextView localTextView = (TextView)localView.findViewById(2131378609);
-      ImageView localImageView1 = (ImageView)localView.findViewById(2131368501);
-      Object localObject3 = (ImageView)localView.findViewById(2131368802);
-      Object localObject4 = (ImageView)localView.findViewById(2131368803);
-      Object localObject5 = (ImageView)localView.findViewById(2131368804);
-      ImageView localImageView2 = (ImageView)localView.findViewById(2131368805);
+      Object localObject1 = (ViewGroup)localView.findViewById(2131435722);
+      TextView localTextView = (TextView)localView.findViewById(2131447238);
+      ImageView localImageView1 = (ImageView)localView.findViewById(2131435403);
+      Object localObject3 = (ImageView)localView.findViewById(2131435723);
+      Object localObject4 = (ImageView)localView.findViewById(2131435724);
+      Object localObject5 = (ImageView)localView.findViewById(2131435725);
+      ImageView localImageView2 = (ImageView)localView.findViewById(2131435726);
       Object localObject2 = new ArrayList();
       ((List)localObject2).add(localObject3);
       ((List)localObject2).add(localObject4);
@@ -88,9 +99,9 @@ public class ProfilePresentWallComponent
         ((ViewGroup)localObject1).setVisibility(0);
         localObject3 = paramCard.presentUrl;
         localObject1 = this.mActivity.getResources();
-        int j = ((Resources)localObject1).getDimensionPixelSize(2131298421);
-        int i = ((Resources)localObject1).getDimensionPixelSize(2131297596);
-        int k = ((Resources)localObject1).getDimensionPixelSize(2131297593);
+        int j = ((Resources)localObject1).getDimensionPixelSize(2131299135);
+        int i = ((Resources)localObject1).getDimensionPixelSize(2131298260);
+        int k = ((Resources)localObject1).getDimensionPixelSize(2131298257);
         localObject1 = ((Resources)localObject1).getDisplayMetrics();
         int m = (int)(Math.min(((DisplayMetrics)localObject1).widthPixels, ((DisplayMetrics)localObject1).heightPixels) - i - k);
         k = (int)((m - j * 3 * 1.0F) / 3.0F);
@@ -115,7 +126,7 @@ public class ProfilePresentWallComponent
                 ((ImageView)((List)localObject2).get(j)).setColorFilter(1996488704);
               }
               if (localObject1 == null) {
-                localObject1 = new ColorDrawable(this.mActivity.getResources().getColor(2131165722));
+                localObject1 = new ColorDrawable(this.mActivity.getResources().getColor(2131166314));
               }
               try
               {
@@ -139,7 +150,7 @@ public class ProfilePresentWallComponent
         }
       }
       if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
-        localObject1 = HardCodeUtil.a(2131708455);
+        localObject1 = HardCodeUtil.a(2131906241);
       } else {
         localObject1 = ((ProfileCardInfo)this.mData).nameArray[0];
       }
@@ -156,12 +167,12 @@ public class ProfilePresentWallComponent
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708462));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906248));
       ((StringBuilder)localObject2).append(paramCard);
       localTextView.setText(((StringBuilder)localObject2).toString());
       localView.setTag(new DataTag(94, null));
       localView.setOnClickListener(this.mOnClickListener);
-      localView.setContentDescription(this.mActivity.getString(2131691176));
+      localView.setContentDescription(this.mActivity.getString(2131888122));
       updateItemTheme(localView, localTextView, null, localImageView1);
       return true;
     }
@@ -171,6 +182,14 @@ public class ProfilePresentWallComponent
     }
     this.mViewContainer = null;
     return paramBoolean;
+  }
+  
+  private void troopMemberGiftWallReport(int paramInt)
+  {
+    this.mReportHandler.removeMessages(paramInt);
+    Message localMessage = Message.obtain();
+    localMessage.what = paramInt;
+    this.mReportHandler.sendMessageDelayed(localMessage, 600L);
   }
   
   public String getComponentName()
@@ -188,6 +207,12 @@ public class ProfilePresentWallComponent
     return "map_key_present";
   }
   
+  public boolean handleMessage(Message paramMessage)
+  {
+    MobileReportManager.getInstance().reportAction("giftwall", "4", "group_gift", "9", "", paramMessage.what, 1, System.currentTimeMillis());
+    return false;
+  }
+  
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
     return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshPresent(((ProfileCardInfo)this.mData).card, ((ProfileCardInfo)this.mData).isNetRet);
@@ -195,7 +220,7 @@ public class ProfilePresentWallComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.presentwall.ProfilePresentWallComponent
  * JD-Core Version:    0.7.0.1
  */

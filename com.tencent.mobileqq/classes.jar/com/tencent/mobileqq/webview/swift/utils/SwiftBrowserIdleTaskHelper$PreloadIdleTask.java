@@ -25,20 +25,20 @@ public class SwiftBrowserIdleTaskHelper$PreloadIdleTask
     }
     if (SwiftReuseTouchWebView.c == 0)
     {
-      SwiftReuseTouchWebView.a(BaseApplication.getContext()).a(true);
+      SwiftReuseTouchWebView.b(BaseApplication.getContext()).a(true);
       if (QLog.isColorLevel()) {
         QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
       }
       return 2;
     }
     StringBuilder localStringBuilder;
-    if (SwiftBrowserIdleTaskHelper.a() < 5)
+    if (SwiftBrowserIdleTaskHelper.d() < 5)
     {
       long l = System.currentTimeMillis();
-      if (System.currentTimeMillis() > SwiftBrowserIdleTaskHelper.a() + 10000L)
+      if (System.currentTimeMillis() > SwiftBrowserIdleTaskHelper.e() + 10000L)
       {
-        SwiftBrowserIdleTaskHelper.a();
         SwiftBrowserIdleTaskHelper.b();
+        SwiftBrowserIdleTaskHelper.f();
         SwiftBrowserIdleTaskHelper.a(l);
         if (QLog.isColorLevel())
         {
@@ -52,7 +52,7 @@ public class SwiftBrowserIdleTaskHelper$PreloadIdleTask
         localStringBuilder.append("not need check because time limit:");
         localStringBuilder.append(l);
         localStringBuilder.append(" - ");
-        localStringBuilder.append(SwiftBrowserIdleTaskHelper.a());
+        localStringBuilder.append(SwiftBrowserIdleTaskHelper.e());
         localStringBuilder.append(" < 10s.");
         QLog.d("SwiftBrowserIdleTaskHelper", 2, localStringBuilder.toString());
         return 1;
@@ -62,7 +62,7 @@ public class SwiftBrowserIdleTaskHelper$PreloadIdleTask
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("not need check because count limit:");
-      localStringBuilder.append(SwiftBrowserIdleTaskHelper.a());
+      localStringBuilder.append(SwiftBrowserIdleTaskHelper.d());
       localStringBuilder.append(">=");
       localStringBuilder.append(5);
       localStringBuilder.append(".");
@@ -73,7 +73,7 @@ public class SwiftBrowserIdleTaskHelper$PreloadIdleTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.PreloadIdleTask
  * JD-Core Version:    0.7.0.1
  */

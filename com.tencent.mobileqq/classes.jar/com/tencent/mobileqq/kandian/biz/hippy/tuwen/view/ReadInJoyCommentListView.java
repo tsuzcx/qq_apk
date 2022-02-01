@@ -141,7 +141,7 @@ public class ReadInJoyCommentListView
   {
     this.mFooterView.setVisibility(0);
     this.mFooterProgressBar.setVisibility(0);
-    this.mFooterTextView.setText(2131689532);
+    this.mFooterTextView.setText(2131886140);
     this.mFooterTextView.setOnClickListener(null);
     this.mFooterTextView.setVisibility(0);
   }
@@ -155,7 +155,7 @@ public class ReadInJoyCommentListView
       localObject = this.mFooterTextView;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramLong);
-      localStringBuilder.append(HardCodeUtil.a(2131712864));
+      localStringBuilder.append(HardCodeUtil.a(2131910435));
       ((TextView)localObject).setText(localStringBuilder.toString());
       this.mFooterTextView.setVisibility(0);
       this.mFooterProgressBar.setVisibility(8);
@@ -192,9 +192,9 @@ public class ReadInJoyCommentListView
   
   public void initFooterView()
   {
-    this.mFooterView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559979, this, false));
-    this.mFooterProgressBar = ((ProgressBar)this.mFooterView.findViewById(2131373273));
-    this.mFooterTextView = ((TextView)this.mFooterView.findViewById(2131373274));
+    this.mFooterView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131626022, this, false));
+    this.mFooterProgressBar = ((ProgressBar)this.mFooterView.findViewById(2131440882));
+    this.mFooterTextView = ((TextView)this.mFooterView.findViewById(2131440883));
     this.mFooterTextView.setTextColor(Color.parseColor("#A6A6A6"));
     this.mFooterTextView.setTextSize(2, 14.0F);
     this.mFooterProgressBar.setVisibility(8);
@@ -210,7 +210,7 @@ public class ReadInJoyCommentListView
         QLog.d("ReadInJoyCommentListView", 2, "loadMoreFail");
       }
       this.mFooterView.setVisibility(0);
-      this.mFooterTextView.setText(HardCodeUtil.a(2131712716));
+      this.mFooterTextView.setText(HardCodeUtil.a(2131910292));
       this.mFooterTextView.setVisibility(0);
       this.mFooterTextView.setOnClickListener(new ReadInJoyCommentListView.2(this));
       this.mFooterProgressBar.setVisibility(8);
@@ -252,7 +252,7 @@ public class ReadInJoyCommentListView
     {
       RIJPerformanceReporter.a().a(0);
       VideoReport.traverseExposure();
-      DropFrameMonitor.a().a("list_comment_kandian", false);
+      DropFrameMonitor.b().a("list_comment_kandian", false);
       if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.mHasMoreData))
       {
         if (QLog.isColorLevel()) {
@@ -284,8 +284,8 @@ public class ReadInJoyCommentListView
     }
     else
     {
-      RIJPerformanceReporter.a().a();
-      DropFrameMonitor.a().a("list_comment_kandian");
+      RIJPerformanceReporter.a().b();
+      DropFrameMonitor.b().a("list_comment_kandian");
     }
   }
   
@@ -354,7 +354,7 @@ public class ReadInJoyCommentListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.ReadInJoyCommentListView
  * JD-Core Version:    0.7.0.1
  */

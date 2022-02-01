@@ -4,90 +4,136 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.mojitox.mxflutter.framework.callback.ExecuteScriptCallback;
+import com.mojitox.mxflutter.framework.callback.InvokeJSValueCallback;
 import com.mojitox.mxflutter.framework.constants.JsObjectType;
 import com.mojitox.mxflutter.framework.executor.JobExecutor;
 import com.mojitox.mxflutter.framework.executor.JsTask;
+import com.mojitox.mxflutter.framework.executor.UiThread;
 import com.mojitox.mxflutter.framework.js.BaseJsExecutor;
 import com.mojitox.mxflutter.framework.js.JsEngineLoader;
 import com.mojitox.mxflutter.framework.utils.MxLog;
 import com.tencent.smtt.sdk.JsContext;
 import com.tencent.smtt.sdk.JsValue;
 import com.tencent.smtt.sdk.JsVirtualMachine;
-import com.tencent.smtt.sdk.QbSdk.PreInitCallback;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebAccelerator;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.json.JSONObject;
 
 public class X5Executor
   extends BaseJsExecutor<JsContext, JsValue>
-  implements QbSdk.PreInitCallback
 {
+  private static final Pattern a = Pattern.compile("\\\\\"");
+  private static final Pattern b = Pattern.compile("(require\\(\"(.*?)\"\\))");
+  private volatile boolean c;
+  private JsContext d;
   @Nullable
-  private IMxJsFlutterApp jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5IMxJsFlutterApp;
-  private IX5Interface jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5IX5Interface;
-  private JsContext jdField_a_of_type_ComTencentSmttSdkJsContext;
-  private JsVirtualMachine jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine;
-  private final ArrayList<JsTask> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private volatile boolean jdField_a_of_type_Boolean;
+  private IMxJsFlutterApp e;
+  private final List<JsTask> f = new ArrayList(5);
+  private JsVirtualMachine g;
+  private IX5Interface h;
   
   public X5Executor()
   {
-    b();
+    g();
+  }
+  
+  private static Object a(Object paramObject)
+  {
+    Object localObject = paramObject;
+    if ((paramObject instanceof String))
+    {
+      String str = (String)paramObject;
+      localObject = paramObject;
+      if (str.contains("\\\""))
+      {
+        localObject = paramObject;
+        if (str.contains("flutterCallNavigatorPushWithName")) {
+          localObject = a.matcher((CharSequence)paramObject).replaceAll("\\\\\\\\\"");
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  private Object a(String paramString)
+  {
+    Object localObject2 = b.matcher(paramString);
+    Object localObject1 = new LinkedList();
+    while (((Matcher)localObject2).find())
+    {
+      ((Collection)localObject1).add(((Matcher)localObject2).group(2));
+      paramString = paramString.replace(((Matcher)localObject2).group(), "");
+    }
+    paramString = this.d.evaluateScript(paramString);
+    if (!((Collection)localObject1).isEmpty())
+    {
+      localObject1 = ((Collection)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        f().a((String)localObject2);
+      }
+    }
+    return paramString;
   }
   
   @Nullable
-  private String a(@Nullable String paramString, @Nullable Object paramObject)
+  private String d(@Nullable String paramString, @Nullable Object paramObject)
   {
     Object localObject = X5EvaluateUtil.a(paramObject);
-    String str = null;
-    if (localObject == null) {
-      return null;
-    }
     if (TextUtils.equals(paramString, "nativeCall"))
     {
-      paramString = this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5IMxJsFlutterApp;
+      paramString = this.e;
       if (paramString != null)
       {
         paramString.a(localObject);
-        return null;
       }
-      if ((a().a()) && (TextUtils.equals(X5EvaluateUtil.a(paramObject), "flutterCallNavigatorPushWithName"))) {
-        a().a(X5EvaluateUtil.b(paramObject));
+      else
+      {
+        paramString = a(localObject);
+        if ((f().a()) && (TextUtils.equals(X5EvaluateUtil.b(paramObject), "flutterCallNavigatorPushWithName"))) {
+          f().a(X5EvaluateUtil.c(paramObject));
+        }
+        return String.format("%s.%s('%s')", new Object[] { "MXJSAPI", "invokeNativeCall", paramString });
       }
-      str = String.format("%s.%s('%s')", new Object[] { "MXJSAPI", "invokeNativeCall", localObject });
     }
-    return str;
+    return null;
   }
   
-  private void c()
+  private void i()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      a((JsTask)localIterator.next());
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  @NonNull
-  public IX5Interface a()
-  {
-    if (this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5IX5Interface == null)
+    try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine;
-      if ((localObject != null) && (((JsVirtualMachine)localObject).isFallback())) {
-        localObject = new X5InterfaceFallback(this);
-      } else {
-        localObject = new X5Interface(this);
+      Iterator localIterator = this.f.iterator();
+      while (localIterator.hasNext()) {
+        ((JsTask)localIterator.next()).run();
       }
-      this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5IX5Interface = ((IX5Interface)localObject);
+      this.f.clear();
+      return;
     }
-    return this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5IX5Interface;
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
-  public JsContext a()
+  private void j()
   {
-    return this.jdField_a_of_type_ComTencentSmttSdkJsContext;
+    if (!QbSdk.isTbsCoreInited())
+    {
+      MxLog.a("X5Executor", "#initX5Actual: start init isTbsCore init");
+      WebAccelerator.initTbsEnvironment(JsEngineLoader.a().c(), 2);
+    }
+    UiThread.c(new X5Executor.1(this));
   }
   
   protected Object a(@NonNull JsValue paramJsValue, Object paramObject, boolean paramBoolean)
@@ -110,32 +156,30 @@ public class X5Executor
       if (paramObject == null) {
         paramString = String.format("javascript:%s()", new Object[] { paramString });
       } else {
-        paramString = String.format("javascript:%s(%s)", new Object[] { paramString, paramObject.toString() });
+        paramString = String.format("javascript:%s(%s)", new Object[] { paramString, paramObject });
       }
       paramObject = new StringBuilder();
       paramObject.append("invokeJsFunctionInner:");
       paramObject.append(paramString);
-      MxLog.b("X5Executor", paramObject.toString());
-      return a().evaluateScript(paramString);
+      MxLog.a("X5Executor", paramObject.toString());
+      return this.d.evaluateScript(paramString);
     }
     return null;
   }
   
   protected Object a(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentSmttSdkJsContext.evaluateScript(paramString1);
+    return this.d.evaluateScript(paramString1);
   }
-  
-  public void a() {}
   
   public void a(JsTask paramJsTask)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       super.a(paramJsTask);
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramJsTask);
+    this.f.add(paramJsTask);
   }
   
   public void a(boolean paramBoolean, ExecuteScriptCallback paramExecuteScriptCallback)
@@ -145,7 +189,7 @@ public class X5Executor
   
   public boolean a(@NonNull JsObjectType paramJsObjectType)
   {
-    return this.jdField_a_of_type_ComTencentSmttSdkJsContext != null;
+    return this.d != null;
   }
   
   protected Object b(@NonNull JsObjectType paramJsObjectType, String paramString, Object paramObject)
@@ -159,10 +203,10 @@ public class X5Executor
         if (i != 3)
         {
           paramJsObjectType = null;
-          break label157;
+          break label160;
         }
-        paramJsObjectType = a(paramString, paramObject);
-        break label157;
+        paramJsObjectType = d(paramString, paramObject);
+        break label160;
       }
       paramJsObjectType = new StringBuilder();
       paramJsObjectType.append("MXJSAPI.");
@@ -170,7 +214,7 @@ public class X5Executor
       if (paramObject == null)
       {
         paramString = str;
-        break label146;
+        break label149;
       }
       paramString = new StringBuilder();
     }
@@ -181,7 +225,7 @@ public class X5Executor
       if (paramObject == null)
       {
         paramString = str;
-        break label146;
+        break label149;
       }
       paramString = new StringBuilder();
     }
@@ -189,35 +233,61 @@ public class X5Executor
     paramString.append(paramObject);
     paramString.append("')");
     paramString = paramString.toString();
-    label146:
+    label149:
     paramJsObjectType.append(paramString);
     paramJsObjectType = paramJsObjectType.toString();
-    label157:
+    label160:
     if (TextUtils.isEmpty(paramJsObjectType)) {
       return null;
     }
     paramString = new StringBuilder();
     paramString.append("invokeJsValueInner:");
     paramString.append(paramJsObjectType);
-    MxLog.b("X5Executor", paramString.toString());
-    return a().evaluateScript(paramJsObjectType);
+    MxLog.a("X5Executor", paramString.toString());
+    return this.d.evaluateScript(paramJsObjectType);
   }
   
   protected Object b(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentSmttSdkJsContext.evaluateScript(paramString1);
+    if (("/main.js".equals(paramString2)) && (paramString1.contains("require"))) {
+      return a(paramString1);
+    }
+    return this.d.evaluateScript(paramString1);
   }
   
-  void b()
+  @NonNull
+  public String b()
   {
-    a().execute(new X5Executor.1(this).a("initRuntime#"));
+    return "X5Executor";
   }
   
-  protected void b(String paramString, @Nullable Object paramObject)
+  protected void b(@NonNull JsObjectType paramJsObjectType, String paramString, InvokeJSValueCallback paramInvokeJSValueCallback, Object... paramVarArgs)
+  {
+    IX5Interface localIX5Interface = f();
+    if ((localIX5Interface instanceof X5CallbackInterface)) {
+      ((X5CallbackInterface)localIX5Interface).a(paramJsObjectType, paramString, paramInvokeJSValueCallback, paramVarArgs);
+    }
+  }
+  
+  public void b(JsTask paramJsTask)
+  {
+    try
+    {
+      if (this.c) {
+        paramJsTask.run();
+      } else {
+        this.f.add(paramJsTask);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  protected void c(String paramString, @Nullable Object paramObject)
   {
     if (paramObject == null)
     {
-      paramObject = this.jdField_a_of_type_ComTencentSmttSdkJsContext;
+      paramObject = this.d;
       paramString = String.format("%s.%s = {}", new Object[] { "MXJSAPI", paramString });
     }
     for (;;)
@@ -227,8 +297,8 @@ public class X5Executor
       if ((paramObject instanceof Map)) {
         try
         {
-          paramString = String.format("globalThis.%s.%s = %s", new Object[] { "MXJSAPI", paramString, new JSONObject((Map)paramObject).toString() });
-          this.jdField_a_of_type_ComTencentSmttSdkJsContext.evaluateScript(paramString);
+          paramString = String.format("globalThis.%s.%s = %s", new Object[] { "MXJSAPI", paramString, new JSONObject((Map)paramObject) });
+          this.d.evaluateScript(paramString);
           return;
         }
         catch (ClassCastException paramString)
@@ -240,33 +310,54 @@ public class X5Executor
           return;
         }
       }
-      paramString = String.format("globalThis.%s.%s = %s", new Object[] { "MXJSAPI", paramString, paramObject.toString() });
-      paramObject = this.jdField_a_of_type_ComTencentSmttSdkJsContext;
+      paramString = String.format("globalThis.%s.%s = %s", new Object[] { "MXJSAPI", paramString, paramObject });
+      paramObject = this.d;
     }
   }
   
-  public void onCoreInitFinished()
+  public void d() {}
+  
+  public JsContext e()
   {
-    MxLog.b("X5Executor", "onViewInitFinished onCoreInitFinished:");
+    return this.d;
   }
   
-  public void onViewInitFinished(boolean paramBoolean)
+  @NonNull
+  public IX5Interface f()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onViewInitFinished:");
-    localStringBuilder.append(paramBoolean);
-    MxLog.b("X5Executor", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine = new JsVirtualMachine(JsEngineLoader.a().a());
-    a().a(this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine.isFallback());
-    this.jdField_a_of_type_ComTencentSmttSdkJsContext = new JsContext(this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine);
-    this.jdField_a_of_type_ComTencentSmttSdkJsContext.setExceptionHandler(new X5Executor.2(this));
-    this.jdField_a_of_type_Boolean = true;
-    c();
+    if (this.h == null)
+    {
+      Object localObject = this.g;
+      if ((localObject != null) && (((JsVirtualMachine)localObject).isFallback())) {
+        localObject = new X5InterfaceFallback(this);
+      } else {
+        localObject = new X5Interface(this);
+      }
+      this.h = ((IX5Interface)localObject);
+    }
+    return this.h;
+  }
+  
+  void g()
+  {
+    MxLog.a("X5Executor", "#initX5: begin");
+    j();
+  }
+  
+  public void h()
+  {
+    MxLog.a("X5Executor", "#onViewInitFinished: begin");
+    this.g = new JsVirtualMachine(JsEngineLoader.a().c());
+    a().a(this.g.isFallback());
+    this.d = new JsContext(this.g);
+    this.d.setExceptionHandler(new X5Executor.2(this));
+    this.c = true;
+    i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5Executor
  * JD-Core Version:    0.7.0.1
  */

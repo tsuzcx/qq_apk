@@ -26,15 +26,15 @@ import mqq.app.AppRuntime;
 public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
   extends RecyclerView.Adapter<ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder>
 {
-  private final float jdField_a_of_type_Float = ViewUtils.a(6.0F);
-  private List<ApolloBattleGameInfo> jdField_a_of_type_JavaUtilList;
-  private final float[] jdField_a_of_type_ArrayOfFloat;
-  private final float b = ViewUtils.a(5.0F);
+  private List<ApolloBattleGameInfo> b;
+  private final float c = ViewUtils.dip2px(6.0F);
+  private final float d = ViewUtils.dip2px(5.0F);
+  private final float[] e;
   
   public ApolloBattleGameViewBinder$ApolloBattleGameListAdapter(ApolloBattleGameViewBinder paramApolloBattleGameViewBinder)
   {
-    float f = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, 0.0F, 0.0F };
+    float f = this.c;
+    this.e = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, 0.0F, 0.0F };
   }
   
   private void a(ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder paramViewHoder, ApolloBattleGameInfo paramApolloBattleGameInfo)
@@ -42,39 +42,39 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
     String str = paramApolloBattleGameInfo.background;
     if (!TextUtils.isEmpty(str))
     {
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setRadius(this.jdField_a_of_type_Float);
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setImageURL(str);
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setVisibility(0);
+      paramViewHoder.a.setRadius(this.c);
+      paramViewHoder.a.setImageURL(str);
+      paramViewHoder.a.setVisibility(0);
     }
     else
     {
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setVisibility(8);
+      paramViewHoder.a.setVisibility(8);
     }
     str = paramApolloBattleGameInfo.avatar;
     if (!TextUtils.isEmpty(str))
     {
-      paramViewHoder.jdField_b_of_type_ComTencentWidgetRoundRectURLImageView.setRadius(this.b);
-      paramViewHoder.jdField_b_of_type_ComTencentWidgetRoundRectURLImageView.setImageURL(str);
-      paramViewHoder.jdField_b_of_type_ComTencentWidgetRoundRectURLImageView.setVisibility(0);
+      paramViewHoder.b.setRadius(this.d);
+      paramViewHoder.b.setImageURL(str);
+      paramViewHoder.b.setVisibility(0);
     }
     else
     {
-      paramViewHoder.jdField_b_of_type_ComTencentWidgetRoundRectURLImageView.setVisibility(8);
+      paramViewHoder.b.setVisibility(8);
     }
-    paramViewHoder.jdField_a_of_type_AndroidWidgetTextView.setText(paramApolloBattleGameInfo.name);
-    paramViewHoder.jdField_b_of_type_AndroidWidgetTextView.setText(paramApolloBattleGameInfo.gamerRange);
+    paramViewHoder.c.setText(paramApolloBattleGameInfo.name);
+    paramViewHoder.d.setText(paramApolloBattleGameInfo.gamerRange);
     str = paramApolloBattleGameInfo.footerIcon;
     if (!TextUtils.isEmpty(str))
     {
-      paramViewHoder.c.setRadius(this.jdField_a_of_type_ArrayOfFloat);
-      paramViewHoder.c.setImageURL(str);
-      paramViewHoder.c.setVisibility(0);
+      paramViewHoder.f.setRadius(this.e);
+      paramViewHoder.f.setImageURL(str);
+      paramViewHoder.f.setVisibility(0);
     }
     else
     {
-      paramViewHoder.c.setVisibility(8);
+      paramViewHoder.f.setVisibility(8);
     }
-    paramViewHoder.jdField_a_of_type_AndroidViewView.setOnClickListener(new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.1(this, paramApolloBattleGameInfo));
+    paramViewHoder.e.setOnClickListener(new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.1(this, paramApolloBattleGameInfo));
     a(paramApolloBattleGameInfo, "game_expo");
     a(paramApolloBattleGameInfo, 101);
   }
@@ -94,17 +94,17 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
     TianShuReportData localTianShuReportData = new TianShuReportData();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().a()));
+    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().c()));
     localStringBuilder.append('_');
     localStringBuilder.append(i);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.g = String.valueOf(paramApolloBattleGameInfo.adId);
-    localTianShuReportData.jdField_a_of_type_Long = i;
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localTianShuReportData.i = "";
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.h = String.valueOf(paramApolloBattleGameInfo.adId);
+    localTianShuReportData.o = i;
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = "tianshu.81";
+    localTianShuReportData.j = "";
     TianShuManager.getInstance().report(localTianShuReportData);
   }
   
@@ -115,7 +115,7 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
       QLog.e("[cmshow]ApolloBattleGameViewBinder", 1, "[onItemDCReport] itemData is null");
       return;
     }
-    switch (ApolloBattleGameViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder))
+    switch (ApolloBattleGameViewBinder.a(this.a))
     {
     case 4020: 
     default: 
@@ -149,12 +149,12 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
   
   private void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder.jdField_a_of_type_AndroidContentContext == null)
+    if (this.a.i == null)
     {
       QLog.e("[cmshow]ApolloBattleGameViewBinder", 1, "[onHallButtonClick] mContext is null");
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    String str = this.a.m.b;
     if ((!paramBoolean) || (!TextUtils.equals(str, BaseApplicationImpl.getApplication().getRuntime().getAccount())))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -167,10 +167,10 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
     }
     if (paramBoolean)
     {
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder.jdField_a_of_type_AndroidContentContext, paramString, 4018, null);
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.a.i, paramString, 4018, null);
       return;
     }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder.jdField_a_of_type_AndroidContentContext, paramString, 4019, null);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.a.i, paramString, 4019, null);
   }
   
   private void a(boolean paramBoolean, String paramString1, String paramString2)
@@ -197,7 +197,7 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
   private void b(ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder paramViewHoder, ApolloBattleGameInfo paramApolloBattleGameInfo)
   {
     boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
+    if (this.a.m.a == 0) {
       bool = true;
     } else {
       bool = false;
@@ -205,14 +205,14 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
     String str = paramApolloBattleGameInfo.background;
     if (!TextUtils.isEmpty(str))
     {
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setRadius(this.jdField_a_of_type_Float);
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setImageURL(str);
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setVisibility(0);
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setOnClickListener(new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.2(this, bool, paramApolloBattleGameInfo));
+      paramViewHoder.a.setRadius(this.c);
+      paramViewHoder.a.setImageURL(str);
+      paramViewHoder.a.setVisibility(0);
+      paramViewHoder.a.setOnClickListener(new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.2(this, bool, paramApolloBattleGameInfo));
     }
     else
     {
-      paramViewHoder.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView.setVisibility(8);
+      paramViewHoder.a.setVisibility(8);
     }
     a(bool, paramApolloBattleGameInfo.appid, "store_expo");
   }
@@ -220,16 +220,16 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
   public ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder a(ViewGroup paramViewGroup, int paramInt)
   {
     if (paramInt == 1) {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558626, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624191, paramViewGroup, false);
     } else {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558627, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624192, paramViewGroup, false);
     }
     return new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder(this, paramViewGroup);
   }
   
   public void a(ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder paramViewHoder, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if ((localObject != null) && (((List)localObject).size() > paramInt))
     {
       localObject = (ApolloBattleGameInfo)((List)localObject).get(paramInt);
@@ -249,12 +249,12 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
   
   public void a(List<ApolloBattleGameInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
@@ -263,7 +263,7 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
   
   public int getItemViewType(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (localList.size() > paramInt) && (((ApolloBattleGameInfo)localList.get(paramInt)).boxType == 1)) {
       return 1;
     }
@@ -272,7 +272,7 @@ public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloBattleGameViewBinder.ApolloBattleGameListAdapter
  * JD-Core Version:    0.7.0.1
  */

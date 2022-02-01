@@ -18,8 +18,9 @@ import com.tencent.smtt.sdk.TbsPVConfig;
 import com.tencent.smtt.sdk.TbsShareManager;
 import com.tencent.smtt.utils.FileUtil;
 import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.j;
-import com.tencent.smtt.utils.m;
+import com.tencent.smtt.utils.k;
+import com.tencent.smtt.utils.n;
+import com.tencent.smtt.utils.q;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -45,53 +46,43 @@ public class b
   
   private static String a(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
+      localJSONObject = new JSONObject();
+    }
+    catch (Throwable paramContext)
+    {
+      label96:
+      label98:
+      break label96;
+    }
+    try
+    {
+      if ((!TbsShareManager.isThirdPartyApp(paramContext)) && (q.b(paramContext)))
       {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray();
-        if (paramContext != null)
-        {
-          Object localObject = MessageDigest.getInstance("SHA-1");
-          ((MessageDigest)localObject).update(paramContext);
-          paramContext = ((MessageDigest)localObject).digest();
-          if (paramContext != null)
-          {
-            localObject = new StringBuilder("");
-            if (paramContext != null)
-            {
-              if (paramContext.length > 0) {
-                break label141;
-              }
-              return null;
-              if (i < paramContext.length)
-              {
-                String str = Integer.toHexString(paramContext[i] & 0xFF).toUpperCase();
-                if (i > 0) {
-                  ((StringBuilder)localObject).append(":");
-                }
-                if (str.length() < 2) {
-                  ((StringBuilder)localObject).append(0);
-                }
-                ((StringBuilder)localObject).append(str);
-                i += 1;
-                continue;
-              }
-              paramContext = ((StringBuilder)localObject).toString();
-              return paramContext;
-            }
-            return null;
-          }
+        localJSONObject.put("stableCore32", TbsShareManager.getTbsStableCoreVersion(paramContext, 32));
+        localJSONObject.put("stableCore64", TbsShareManager.getTbsStableCoreVersion(paramContext, 64));
+      }
+      if ((TbsShareManager.isThirdPartyApp(paramContext)) && (q.c(paramContext)))
+      {
+        paramContext = q.b().replace(",", "-");
+        if (!TextUtils.isEmpty(paramContext)) {
+          localJSONObject.put("coreUpdate", paramContext);
         }
       }
-      catch (Exception paramContext)
-      {
-        TbsLog.i(paramContext);
-      }
-      return null;
-      label141:
-      int i = 0;
+      q.c();
+      paramContext = localJSONObject;
     }
+    catch (Throwable paramContext)
+    {
+      paramContext = localJSONObject;
+      break label98;
+    }
+    paramContext = null;
+    if (paramContext == null) {
+      return "";
+    }
+    return paramContext.toString();
   }
   
   public static void a(ThirdAppInfoNew paramThirdAppInfoNew, Context paramContext)
@@ -185,11 +176,11 @@ public class b
         label170:
         ThirdAppInfoNew localThirdAppInfoNew = new ThirdAppInfoNew();
         localThirdAppInfoNew.sAppName = paramContext.getApplicationContext().getApplicationInfo().packageName;
-        m.a(paramContext);
+        n.a(paramContext);
         Object localObject3 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         ((SimpleDateFormat)localObject3).setTimeZone(TimeZone.getTimeZone("GMT+08"));
         localThirdAppInfoNew.sTime = ((SimpleDateFormat)localObject3).format(Calendar.getInstance().getTime());
-        localThirdAppInfoNew.sVersionCode = com.tencent.smtt.utils.b.d(paramContext);
+        localThirdAppInfoNew.sVersionCode = com.tencent.smtt.utils.b.e(paramContext);
         localObject3 = com.tencent.smtt.utils.b.a(paramContext, "com.tencent.mm.BuildInfo.CLIENT_VERSION");
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           localThirdAppInfoNew.sMetaData = ((String)localObject3);
@@ -202,13 +193,19 @@ public class b
         }
         else
         {
-          localThirdAppInfoNew.sQua2 = j.a(paramContext);
+          localThirdAppInfoNew.sQua2 = k.a(paramContext);
         }
         localThirdAppInfoNew.sLc = paramString3;
-        paramString1 = com.tencent.smtt.utils.b.h(paramContext);
-        paramString2 = com.tencent.smtt.utils.b.f(paramContext);
-        paramString3 = com.tencent.smtt.utils.b.g(paramContext);
-        localObject3 = com.tencent.smtt.utils.b.i(paramContext);
+        paramString1 = com.tencent.smtt.utils.b.j(paramContext);
+        paramString2 = com.tencent.smtt.utils.b.h(paramContext);
+        paramString3 = new StringBuilder();
+        paramString3.append("HttpUtils.doReport(): getImeiEnable = ");
+        paramString3.append(com.tencent.smtt.utils.b.g(paramContext));
+        paramString3.append(" imei is ");
+        paramString3.append(paramString2);
+        TbsLog.i("sdkreport", paramString3.toString());
+        paramString3 = com.tencent.smtt.utils.b.i(paramContext);
+        localObject3 = com.tencent.smtt.utils.b.k(paramContext);
         if ((paramString2 != null) && (!"".equals(paramString2))) {
           localThirdAppInfoNew.sImei = paramString2;
         }
@@ -225,17 +222,17 @@ public class b
         boolean bool = TbsShareManager.isThirdPartyApp(paramContext);
         paramInt = 1;
         if (!bool) {
-          break label556;
+          break label604;
         }
         if (paramBoolean1)
         {
           if (TbsShareManager.getCoreFormOwn())
           {
             localThirdAppInfoNew.iCoreType = 2;
-            break label548;
+            break label596;
           }
           localThirdAppInfoNew.iCoreType = 1;
-          break label548;
+          break label596;
           localThirdAppInfoNew.iCoreType = 3;
         }
         else
@@ -248,7 +245,7 @@ public class b
           }
         }
         localThirdAppInfoNew.sAppVersionName = ((String)localObject1);
-        localThirdAppInfoNew.sAppSignature = a(paramContext);
+        localThirdAppInfoNew.sAppSignature = b(paramContext);
         if (!paramBoolean1)
         {
           localThirdAppInfoNew.sWifiConnectedTime = paramLong;
@@ -262,15 +259,66 @@ public class b
         TbsLog.i(paramContext);
         return;
       }
-      label548:
+      label596:
       if (paramBoolean2)
       {
         continue;
-        label556:
+        label604:
         if (!paramBoolean1) {
           paramInt = 0;
         }
       }
+    }
+  }
+  
+  private static String b(Context paramContext)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray();
+        if (paramContext != null)
+        {
+          Object localObject = MessageDigest.getInstance("SHA-1");
+          ((MessageDigest)localObject).update(paramContext);
+          paramContext = ((MessageDigest)localObject).digest();
+          if (paramContext != null)
+          {
+            localObject = new StringBuilder("");
+            if (paramContext != null)
+            {
+              if (paramContext.length > 0) {
+                break label143;
+              }
+              return null;
+              if (i < paramContext.length)
+              {
+                String str = Integer.toHexString(paramContext[i] & 0xFF).toUpperCase();
+                if (i > 0) {
+                  ((StringBuilder)localObject).append(":");
+                }
+                if (str.length() < 2) {
+                  ((StringBuilder)localObject).append(0);
+                }
+                ((StringBuilder)localObject).append(str);
+                i += 1;
+                continue;
+              }
+              paramContext = ((StringBuilder)localObject).toString();
+              return paramContext;
+            }
+            return null;
+          }
+        }
+      }
+      catch (Exception paramContext)
+      {
+        TbsLog.i(paramContext);
+      }
+      return null;
+      label143:
+      int i = 0;
     }
   }
   
@@ -285,37 +333,37 @@ public class b
     //   6: aconst_null
     //   7: astore 7
     //   9: aload_0
-    //   10: invokevirtual 397	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   10: invokevirtual 448	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   13: astore 6
     //   15: aload_0
-    //   16: invokevirtual 400	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
+    //   16: invokevirtual 451	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
     //   19: astore_0
     //   20: aload_0
     //   21: ifnull +26 -> 47
     //   24: aload_0
-    //   25: ldc_w 402
-    //   28: invokevirtual 405	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   25: ldc_w 453
+    //   28: invokevirtual 456	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   31: ifeq +16 -> 47
-    //   34: new 407	java/util/zip/GZIPInputStream
+    //   34: new 458	java/util/zip/GZIPInputStream
     //   37: dup
     //   38: aload 6
-    //   40: invokespecial 410	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   40: invokespecial 461	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   43: astore_0
     //   44: goto +41 -> 85
     //   47: aload_0
     //   48: ifnull +34 -> 82
     //   51: aload_0
-    //   52: ldc_w 412
-    //   55: invokevirtual 405	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   52: ldc_w 463
+    //   55: invokevirtual 456	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   58: ifeq +24 -> 82
-    //   61: new 414	java/util/zip/InflaterInputStream
+    //   61: new 465	java/util/zip/InflaterInputStream
     //   64: dup
     //   65: aload 6
-    //   67: new 416	java/util/zip/Inflater
+    //   67: new 467	java/util/zip/Inflater
     //   70: dup
     //   71: iconst_1
-    //   72: invokespecial 419	java/util/zip/Inflater:<init>	(Z)V
-    //   75: invokespecial 422	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Inflater;)V
+    //   72: invokespecial 470	java/util/zip/Inflater:<init>	(Z)V
+    //   75: invokespecial 473	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Inflater;)V
     //   78: astore_0
     //   79: goto +6 -> 85
     //   82: aload 6
@@ -324,16 +372,16 @@ public class b
     //   87: astore 4
     //   89: aload_0
     //   90: astore 5
-    //   92: new 424	java/io/ByteArrayOutputStream
+    //   92: new 475	java/io/ByteArrayOutputStream
     //   95: dup
-    //   96: invokespecial 425	java/io/ByteArrayOutputStream:<init>	()V
+    //   96: invokespecial 476	java/io/ByteArrayOutputStream:<init>	()V
     //   99: astore 6
     //   101: sipush 128
     //   104: newarray byte
     //   106: astore 4
     //   108: aload_0
     //   109: aload 4
-    //   111: invokevirtual 431	java/io/InputStream:read	([B)I
+    //   111: invokevirtual 482	java/io/InputStream:read	([B)I
     //   114: istore_3
     //   115: iload_3
     //   116: iconst_m1
@@ -342,45 +390,45 @@ public class b
     //   122: aload 4
     //   124: iconst_0
     //   125: iload_3
-    //   126: invokevirtual 435	java/io/ByteArrayOutputStream:write	([BII)V
+    //   126: invokevirtual 486	java/io/ByteArrayOutputStream:write	([BII)V
     //   129: goto -21 -> 108
     //   132: iload_2
     //   133: ifeq +25 -> 158
     //   136: new 16	java/lang/String
     //   139: dup
-    //   140: invokestatic 440	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
+    //   140: invokestatic 491	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
     //   143: aload 6
-    //   145: invokevirtual 441	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   148: invokevirtual 445	com/tencent/smtt/utils/g:c	([B)[B
-    //   151: invokespecial 447	java/lang/String:<init>	([B)V
+    //   145: invokevirtual 492	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   148: invokevirtual 495	com/tencent/smtt/utils/g:c	([B)[B
+    //   151: invokespecial 497	java/lang/String:<init>	([B)V
     //   154: astore_1
     //   155: goto +20 -> 175
     //   158: new 16	java/lang/String
     //   161: dup
     //   162: aload 6
-    //   164: invokevirtual 441	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   164: invokevirtual 492	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   167: aload_1
-    //   168: invokestatic 450	com/tencent/smtt/utils/g:b	([BLjava/lang/String;)[B
-    //   171: invokespecial 447	java/lang/String:<init>	([B)V
+    //   168: invokestatic 500	com/tencent/smtt/utils/g:b	([BLjava/lang/String;)[B
+    //   171: invokespecial 497	java/lang/String:<init>	([B)V
     //   174: astore_1
     //   175: aload 6
-    //   177: invokevirtual 453	java/io/ByteArrayOutputStream:close	()V
+    //   177: invokevirtual 503	java/io/ByteArrayOutputStream:close	()V
     //   180: goto +10 -> 190
     //   183: astore 4
     //   185: aload 4
-    //   187: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   187: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   190: aload_1
     //   191: astore 4
     //   193: aload_0
     //   194: ifnull +112 -> 306
     //   197: aload_0
-    //   198: invokevirtual 454	java/io/InputStream:close	()V
+    //   198: invokevirtual 504	java/io/InputStream:close	()V
     //   201: aload_1
     //   202: astore 4
     //   204: goto +102 -> 306
     //   207: astore_0
     //   208: aload_0
-    //   209: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   209: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   212: aload_1
     //   213: astore 4
     //   215: goto +91 -> 306
@@ -412,49 +460,49 @@ public class b
     //   262: aload_0
     //   263: astore 5
     //   265: aload 6
-    //   267: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   267: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   270: aload_1
     //   271: ifnull +15 -> 286
     //   274: aload_1
-    //   275: invokevirtual 453	java/io/ByteArrayOutputStream:close	()V
+    //   275: invokevirtual 503	java/io/ByteArrayOutputStream:close	()V
     //   278: goto +8 -> 286
     //   281: astore_1
     //   282: aload_1
-    //   283: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   283: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   286: aload_0
     //   287: ifnull +15 -> 302
     //   290: aload_0
-    //   291: invokevirtual 454	java/io/InputStream:close	()V
+    //   291: invokevirtual 504	java/io/InputStream:close	()V
     //   294: goto +8 -> 302
     //   297: astore_0
     //   298: aload_0
-    //   299: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
-    //   302: ldc 73
+    //   299: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   302: ldc 83
     //   304: astore 4
-    //   306: new 71	java/lang/StringBuilder
+    //   306: new 150	java/lang/StringBuilder
     //   309: dup
-    //   310: invokespecial 167	java/lang/StringBuilder:<init>	()V
+    //   310: invokespecial 151	java/lang/StringBuilder:<init>	()V
     //   313: astore_0
     //   314: aload_0
-    //   315: ldc_w 456
-    //   318: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: ldc_w 506
+    //   318: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: pop
     //   322: aload_0
     //   323: aload 4
-    //   325: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   328: pop
     //   329: aload_0
-    //   330: ldc_w 458
-    //   333: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: ldc_w 508
+    //   333: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   336: pop
     //   337: aload_0
     //   338: iload_2
-    //   339: invokevirtual 461	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 346	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   342: pop
-    //   343: ldc 117
+    //   343: ldc 94
     //   345: aload_0
-    //   346: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   349: invokestatic 172	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   346: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   349: invokestatic 164	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   352: aload 4
     //   354: areturn
     //   355: astore_1
@@ -463,19 +511,19 @@ public class b
     //   359: aload 4
     //   361: ifnull +18 -> 379
     //   364: aload 4
-    //   366: invokevirtual 453	java/io/ByteArrayOutputStream:close	()V
+    //   366: invokevirtual 503	java/io/ByteArrayOutputStream:close	()V
     //   369: goto +10 -> 379
     //   372: astore 4
     //   374: aload 4
-    //   376: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   376: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   379: aload_0
     //   380: ifnull +15 -> 395
     //   383: aload_0
-    //   384: invokevirtual 454	java/io/InputStream:close	()V
+    //   384: invokevirtual 504	java/io/InputStream:close	()V
     //   387: goto +8 -> 395
     //   390: astore_0
     //   391: aload_0
-    //   392: invokestatic 108	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
+    //   392: invokestatic 185	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   395: goto +5 -> 400
     //   398: aload_1
     //   399: athrow
@@ -594,7 +642,6 @@ public class b
       localJSONObject.put("VERSION_CODE", paramThirdAppInfoNew.sVersionCode);
       localJSONObject.put("CPU", paramThirdAppInfoNew.sCpu);
       bool = "com.tencent.mm".equals(paramThirdAppInfoNew.sAppName);
-      Object localObject;
       if ((!bool) && (!"com.tencent.mobileqq".equals(paramThirdAppInfoNew.sAppName)) && (!"com.tencent.tbs".equals(paramThirdAppInfoNew.sAppName))) {
         if (paramThirdAppInfoNew.sAppSignature == null) {
           localObject = "0";
@@ -623,12 +670,22 @@ public class b
         ((StringBuilder)localObject).append(m);
         localObject = ((StringBuilder)localObject).toString();
       }
+      Object localObject = a(paramContext);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addInfo is ");
+      localStringBuilder.append((String)localObject);
+      TbsLog.i("sdkreport", localStringBuilder.toString());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localJSONObject.put("EXT_INFO", localObject);
+      }
       localJSONObject.put("PROTOCOL_VERSION", 3);
       localJSONObject.put("ANDROID_ID", paramThirdAppInfoNew.sAndroidID);
       bool = TbsShareManager.isThirdPartyApp(paramContext);
       if (bool)
       {
-        localJSONObject.put("HOST_COREVERSION", TbsShareManager.getHostCoreVersions(paramContext));
+        if (!"com.xunmeng.pinduoduo".equals(paramContext.getApplicationContext().getApplicationInfo().packageName)) {
+          localJSONObject.put("HOST_COREVERSION", TbsShareManager.getHostCoreVersions(paramContext));
+        }
       }
       else
       {
@@ -652,8 +709,8 @@ public class b
     catch (Exception paramThirdAppInfoNew)
     {
       boolean bool;
-      label631:
-      break label631;
+      label714:
+      break label714;
     }
     try
     {
@@ -681,7 +738,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.b
  * JD-Core Version:    0.7.0.1
  */

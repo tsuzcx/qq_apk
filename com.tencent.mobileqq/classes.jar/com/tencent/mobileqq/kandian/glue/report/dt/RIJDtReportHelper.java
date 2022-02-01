@@ -29,7 +29,7 @@ public final class RIJDtReportHelper
     }
     VideoReport.addToDetectionWhitelist(paramActivity);
     VideoReport.setPageId(paramActivity, paramString);
-    VideoReport.setPageParams(paramActivity, new RIJDtParamBuilder().a());
+    VideoReport.setPageParams(paramActivity, new RIJDtParamBuilder().b());
   }
   
   public final void a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -59,12 +59,12 @@ public final class RIJDtReportHelper
     } else {
       i = 5;
     }
-    VideoReport.reportEvent("clck", ((RIJDtParamBuilder)localObject1).b((Number)Integer.valueOf(i)).a());
+    VideoReport.reportEvent("clck", ((RIJDtParamBuilder)localObject1).b((Number)Integer.valueOf(i)).c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.dt.RIJDtReportHelper
  * JD-Core Version:    0.7.0.1
  */

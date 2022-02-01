@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import com.tencent.hippy.qq.fragment.HippyActivityLifecycleDispatcher;
-import com.tencent.hippy.qq.fragment.HippyActivityLifecycleOwner;
-import com.tencent.hippy.qq.utils.HippyCommonUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.kandian.biz.comment.HippyCommentPageListener;
 import com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager;
@@ -19,6 +17,9 @@ import com.tencent.mobileqq.kandian.biz.hippy.interfaces.receiver.ITKDHippyEvent
 import com.tencent.mobileqq.kandian.biz.hippy.interfaces.receiver.common.ITKDHippy2NativeEventReceiver;
 import com.tencent.mobileqq.kandian.biz.hippy.interfaces.receiver.tuwen.ITKDHippy2TuWenEventReceiver;
 import com.tencent.mobileqq.kandian.biz.hippy.tuwen.app.TKDTuWenHippyEngine;
+import com.tencent.mobileqq.kandian.biz.hippy.tuwen.util.TKDTuWenCommentUtil;
+import com.tencent.mobileqq.kandian.biz.hippy.tuwen.util.TKDTuWenHippyEngineManager;
+import com.tencent.mobileqq.kandian.biz.hippy.tuwen.util.TKDTuWenHippyEngineManager.StatusChangeListener;
 import com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.HippyRootLayout;
 import com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.NSHippyListView;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
@@ -30,12 +31,10 @@ import com.tencent.mtt.supportui.views.recyclerview.RecyclerView.OnListScrollLis
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.ListView;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
 public class TKDTuWenHippyCommentAdapter
   extends BaseAdapter
-  implements HippyActivityLifecycleOwner
+  implements TKDTuWenHippyEngineManager.StatusChangeListener
 {
   private static final String TAG = "TKDTuWenHippyCommentAdapter";
   private int adTag;
@@ -45,7 +44,7 @@ public class TKDTuWenHippyCommentAdapter
   int contentSrc;
   private final QBaseActivity context;
   private TKDTuWenHippyCommentAdapter.MyDataChangeListener dataChangeListener;
-  private final HippyActivityLifecycleDispatcher hippyActivityLifecycleDispatcher = new HippyActivityLifecycleDispatcher();
+  private TKDTuWenHippyEngineManager engineManager;
   private final ITKDHippyEventReceiver hippyCommentEventReceiver = new TKDTuWenHippyCommentAdapter.HippyCommentEventReceiver(this, null);
   private HippyCommentPageListener hippyCommentPageListener;
   private TKDTuWenHippyEngine hippyEngine;
@@ -68,19 +67,29 @@ public class TKDTuWenHippyCommentAdapter
   
   private void addHippyViewToHippyLayout()
   {
+    QLog.d("TKDTuWenHippyCommentAdapter", 1, "#addHippyViewToHippyLayout: begin");
     if (this.vContainer == null) {
       return;
     }
-    Object localObject = this.vHippyRoot;
-    if (localObject != null)
+    if (this.vHippyRoot != null)
     {
-      if (((HippyRootView)localObject).getParent() == null)
+      QLog.d("TKDTuWenHippyCommentAdapter", 1, "#addHippyViewToHippyLayout: vHippyRoot is not null");
+      if (this.vHippyRoot.getParent() == null)
       {
         this.vContainer.addView(this.vHippyRoot);
-        int i = this.vList.getMeasuredHeight();
-        if (i > 0) {
-          this.vContainer.setMaxHeight(i);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("#addHippyViewToHippyLayout: vHippyRoot setup parent, vContainer=");
+        ((StringBuilder)localObject).append(this.vContainer);
+        QLog.d("TKDTuWenHippyCommentAdapter", 1, ((StringBuilder)localObject).toString());
+      }
+      int i = this.vList.getMeasuredHeight();
+      if (i > 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("#addHippyViewToHippyLayout: vContainer setMaxHeight=");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("TKDTuWenHippyCommentAdapter", 1, ((StringBuilder)localObject).toString());
+        this.vContainer.setMaxHeight(i);
       }
       this.vProgress.setVisibility(8);
     }
@@ -88,14 +97,9 @@ public class TKDTuWenHippyCommentAdapter
     {
       this.vProgress.setVisibility(0);
     }
-    localObject = (AbsListView.LayoutParams)this.vContainer.getLayoutParams();
+    Object localObject = (AbsListView.LayoutParams)this.vContainer.getLayoutParams();
     ((AbsListView.LayoutParams)localObject).height = this.vContainer.getDesiredHeight();
     this.vContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-  }
-  
-  private boolean commentModuleInWhiteList()
-  {
-    return HippyCommonUtils.getModuleOnlineConfig(this.hippyEngine.getModuleName()) == 1;
   }
   
   private HippyMap getPropMap()
@@ -105,18 +109,26 @@ public class TKDTuWenHippyCommentAdapter
   
   private boolean initHippyEngine()
   {
-    this.hippyEngine = new TKDTuWenHippyEngine(this.context);
+    this.engineManager = new TKDTuWenHippyEngineManager(this.context);
+    this.hippyEngine = this.engineManager.getEngine();
     this.hippyEngine.getTKDHippyEventDispatcher().register(this.hippyCommentEventReceiver);
-    if (!commentModuleInWhiteList())
+    int i = this.engineManager.getStatus();
+    boolean bool = true;
+    if (i != 1)
     {
-      QLog.d("TKDTuWenHippyCommentAdapter", 1, "Hippy: module not in whitelist");
-      notifyHippyLoadFinish(false);
-      return false;
+      if (i != 3) {
+        bool = false;
+      } else {
+        onEngineLoadSuccess();
+      }
     }
-    this.hippyEngine.setPropsMap(getPropMap());
-    this.hippyEngine.setHippyActivityLifecycleOwner(this);
-    this.hippyEngine.initHippyInContainer(null, new JSONObject(), false, new TKDTuWenHippyCommentAdapter.MyEngineListener(this, null));
-    return true;
+    else {
+      this.engineManager.setStatusChangeListener(this);
+    }
+    if (!bool) {
+      notifyHippyLoadFinish(false);
+    }
+    return bool;
   }
   
   private void initView()
@@ -124,8 +136,8 @@ public class TKDTuWenHippyCommentAdapter
     if (this.vContainer != null) {
       return;
     }
-    this.vContainer = ((HippyRootLayout)LayoutInflater.from(this.context).inflate(2131559967, this.vList, false));
-    this.vProgress = ((WebViewProgressBar)this.vContainer.findViewById(2131373132));
+    this.vContainer = ((HippyRootLayout)LayoutInflater.from(this.context).inflate(2131626010, this.vList, false));
+    this.vProgress = ((WebViewProgressBar)this.vContainer.findViewById(2131440737));
     WebViewProgressBarController localWebViewProgressBarController = new WebViewProgressBarController();
     localWebViewProgressBarController.a(this.vProgress);
     this.vProgress.setController(localWebViewProgressBarController);
@@ -175,15 +187,44 @@ public class TKDTuWenHippyCommentAdapter
   
   private void onEngineLoadSuccess()
   {
-    if (this.hippyEngine == null) {
+    QLog.d("TKDTuWenHippyCommentAdapter", 1, "#onEngineLoadSuccess: begin");
+    TKDTuWenHippyEngine localTKDTuWenHippyEngine = this.hippyEngine;
+    if (localTKDTuWenHippyEngine == null)
+    {
+      QLog.d("TKDTuWenHippyCommentAdapter", 1, "#onEngineLoadSuccess: hippyEngine is null");
       return;
     }
+    localTKDTuWenHippyEngine.getTKDHippyEventDispatcher().refreshNewAndHotData(getPropMap());
     initDelay();
     initView();
     this.vHippyRoot = this.hippyEngine.getHippyRootView();
     addHippyViewToHippyLayout();
     notifyHippyLoadFinish(true);
     notifyDataSetChanged();
+    scrollToTop();
+  }
+  
+  private void removeHippyScrollListener()
+  {
+    RecyclerView.OnListScrollListener localOnListScrollListener = this.hippyScrollListener;
+    if (localOnListScrollListener != null)
+    {
+      NSHippyListView localNSHippyListView = this.vHippyList;
+      if (localNSHippyListView != null) {
+        localNSHippyListView.removeOnListScrollListener(localOnListScrollListener);
+      }
+    }
+  }
+  
+  private void scrollToTop()
+  {
+    if (this.vHippyList == null) {
+      this.vHippyList = ((NSHippyListView)TKDTuWenCommentUtil.rFindView(this.vContainer, NSHippyListView.class, true));
+    }
+    NSHippyListView localNSHippyListView = this.vHippyList;
+    if (localNSHippyListView != null) {
+      localNSHippyListView.scrollToTopRightAway();
+    }
   }
   
   private void wrapperIntentForEditComment(Intent paramIntent)
@@ -200,24 +241,23 @@ public class TKDTuWenHippyCommentAdapter
   
   public void destroy()
   {
-    Object localObject = this.hippyEngine;
+    removeHippyScrollListener();
+    Object localObject = this.engineManager;
+    if (localObject != null) {
+      ((TKDTuWenHippyEngineManager)localObject).destroy();
+    }
+    localObject = this.hippyEngine;
     if (localObject != null)
     {
-      ((TKDTuWenHippyEngine)localObject).onDestroy();
+      ((TKDTuWenHippyEngine)localObject).getTKDHippyEventDispatcher().unregister(this.hippyCommentEventReceiver);
       this.hippyEngine = null;
     }
     this.hippyCommentPageListener = null;
     localObject = this.commentDataManager;
     if (localObject != null) {
-      ((ReadInJoyCommentDataManager)localObject).a(this.dataChangeListener);
+      ((ReadInJoyCommentDataManager)localObject).b(this.dataChangeListener);
     }
     this.context.unregisterActivityLifecycleCallbacks(this.lifecycleCallbacks);
-  }
-  
-  @NotNull
-  public HippyActivityLifecycleDispatcher getActivityLifecycleDispatcher()
-  {
-    return this.hippyActivityLifecycleDispatcher;
   }
   
   public int getCount()
@@ -264,7 +304,7 @@ public class TKDTuWenHippyCommentAdapter
     this.commentDataManager = ReadInJoyCommentDataManager.a(this.mArticleInfo, this.contentSrc);
     this.dataChangeListener = new TKDTuWenHippyCommentAdapter.MyDataChangeListener(this, null);
     this.commentDataManager.a(this.dataChangeListener);
-    this.commentDataManager.d_(true);
+    this.commentDataManager.i_(true);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -272,7 +312,10 @@ public class TKDTuWenHippyCommentAdapter
     if (paramInt1 == 117) {
       wrapperIntentForEditComment(paramIntent);
     }
-    this.hippyActivityLifecycleDispatcher.onActivityResult(this.context, paramInt1, paramInt2, paramIntent);
+    TKDTuWenHippyEngine localTKDTuWenHippyEngine = this.hippyEngine;
+    if (localTKDTuWenHippyEngine != null) {
+      localTKDTuWenHippyEngine.getActivityLifecycleDispatcher().onActivityResult(this.context, paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void onOpenCommentEdit()
@@ -281,6 +324,20 @@ public class TKDTuWenHippyCommentAdapter
     if (localTKDTuWenHippyEngine != null) {
       localTKDTuWenHippyEngine.getTKDHippyEventDispatcher().onOpenCommentPublisher();
     }
+  }
+  
+  public void onStatusChange(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("#onStatusChange: status=");
+    localStringBuilder.append(paramInt);
+    QLog.d("TKDTuWenHippyCommentAdapter", 1, localStringBuilder.toString());
+    if (paramInt != 3)
+    {
+      notifyHippyLoadFinish(false);
+      return;
+    }
+    onEngineLoadSuccess();
   }
   
   public void sendCommentReadTime(long paramLong)
@@ -310,17 +367,17 @@ public class TKDTuWenHippyCommentAdapter
     this.tuWenHippyCallback = paramITKDHippy2TuWenEventReceiver;
   }
   
-  public void updateFollowUI()
+  public void updateFollowUI(long paramLong, int paramInt)
   {
     TKDTuWenHippyEngine localTKDTuWenHippyEngine = this.hippyEngine;
     if (localTKDTuWenHippyEngine != null) {
-      localTKDTuWenHippyEngine.getTKDHippyEventDispatcher().updateFollowUI();
+      localTKDTuWenHippyEngine.getTKDHippyEventDispatcher().updateFollowUI(paramLong, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.adapter.TKDTuWenHippyCommentAdapter
  * JD-Core Version:    0.7.0.1
  */

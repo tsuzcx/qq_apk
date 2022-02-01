@@ -28,21 +28,21 @@ import org.json.JSONObject;
 class ApolloWebDataHandlerImpl$WebSSOTask
   implements BusinessObserver
 {
-  private long jdField_a_of_type_Long;
-  private ApolloWebStatistics jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<ApolloWebDataHandlerImpl.WebDataCallBack> jdField_a_of_type_JavaUtilList;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private final String a;
+  private final String b;
+  private long c;
+  private JSONObject d;
+  private boolean e;
+  private final List<ApolloWebDataHandlerImpl.WebDataCallBack> f;
+  private boolean g;
+  private ApolloWebStatistics h;
   
   public ApolloWebDataHandlerImpl$WebSSOTask(ApolloWebStatistics paramApolloWebStatistics, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics = paramApolloWebStatistics;
+    this.a = paramString2;
+    this.b = paramString1;
+    this.f = new ArrayList();
+    this.h = paramApolloWebStatistics;
   }
   
   public JSONObject a(boolean paramBoolean, Bundle paramBundle)
@@ -112,7 +112,7 @@ class ApolloWebDataHandlerImpl$WebSSOTask
           }
           else
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.e = false;
             if (QLog.isColorLevel()) {
               QLog.w("[cmshow]apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, ret success but no data");
             }
@@ -137,15 +137,15 @@ class ApolloWebDataHandlerImpl$WebSSOTask
           }
           localJSONObject.put("ssoRet", 201);
           localJSONObject.put("businessRet", 0);
-          localJSONObject.put("msg", HardCodeUtil.a(2131700805));
+          localJSONObject.put("msg", HardCodeUtil.a(2131898831));
           return localJSONObject;
           localJSONObject.put("ssoRet", 255);
           localJSONObject.put("businessRet", 0);
-          localJSONObject.put("msg", HardCodeUtil.a(2131700806));
+          localJSONObject.put("msg", HardCodeUtil.a(2131898832));
           return localJSONObject;
           localJSONObject.put("ssoRet", 202);
           localJSONObject.put("businessRet", 0);
-          localJSONObject.put("msg", HardCodeUtil.a(2131700802));
+          localJSONObject.put("msg", HardCodeUtil.a(2131898828));
         }
         return localJSONObject;
       }
@@ -164,19 +164,19 @@ class ApolloWebDataHandlerImpl$WebSSOTask
   public void a()
   {
     Object localObject;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.f.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((ApolloWebDataHandlerImpl.WebDataCallBack)((Iterator)localObject).next()).a(this, this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics);
+        ((ApolloWebDataHandlerImpl.WebDataCallBack)((Iterator)localObject).next()).a(this, this.h);
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.f.clear();
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("notifySSORsp, mReceivedSSO:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.g);
       QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -196,7 +196,7 @@ class ApolloWebDataHandlerImpl$WebSSOTask
       }
       if ((paramJSONObject.optInt("needCookie") == 1) && (!TextUtils.isEmpty(paramString)))
       {
-        localObject = SwiftBrowserCookieMonster.c(paramString);
+        localObject = SwiftBrowserCookieMonster.d(paramString);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           if (((String)localObject).indexOf(',') != -1) {
@@ -217,7 +217,7 @@ class ApolloWebDataHandlerImpl$WebSSOTask
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
       paramString = new WebSSOAgent.UniSsoServerReq();
       paramString.comm.set((MessageMicro)localObject);
       paramJSONObject.remove("callback");
@@ -238,7 +238,7 @@ class ApolloWebDataHandlerImpl$WebSSOTask
       paramJSONObject.put("option", localObject);
       paramString.reqdata.set(paramJSONObject.toString());
       paramContext = new NewIntent(paramContext, WebSSOAgentServlet.class);
-      paramContext.putExtra("extra_cmd", this.jdField_a_of_type_JavaLangString);
+      paramContext.putExtra("extra_cmd", this.a);
       paramContext.putExtra("extra_data", paramString.toByteArray());
       paramContext.putExtra("extra_timeout", -1L);
       paramContext.setObserver(this);
@@ -246,13 +246,13 @@ class ApolloWebDataHandlerImpl$WebSSOTask
         QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "uniAgent, req, send request to msf");
       }
       paramAppInterface.startServlet(paramContext);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics == null) {
+      if (this.h == null) {
         return;
       }
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics;
+      paramContext = this.h;
       long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Long = l;
-      paramContext.jdField_a_of_type_Long = l;
+      this.c = l;
+      paramContext.a = l;
       return;
     }
     catch (Exception paramContext)
@@ -276,35 +276,35 @@ class ApolloWebDataHandlerImpl$WebSSOTask
   public void a(ApolloWebDataHandlerImpl.WebDataCallBack paramWebDataCallBack)
   {
     if (paramWebDataCallBack != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramWebDataCallBack);
+      this.f.add(paramWebDataCallBack);
     }
   }
   
   public boolean a(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 10000L) && (this.jdField_a_of_type_Boolean) && (((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) || (!this.jdField_b_of_type_Boolean));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.a)) && (System.currentTimeMillis() - this.c < 10000L) && (this.e) && (((this.g) && (this.d != null)) || (!this.g));
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_OrgJsonJSONObject = a(paramBoolean, paramBundle);
-      this.jdField_b_of_type_Boolean = true;
+      this.e = paramBoolean;
+      this.d = a(paramBoolean, paramBundle);
+      this.g = true;
       if (QLog.isColorLevel())
       {
         paramBundle = new StringBuilder();
         paramBundle.append("WebSSOTask, onReceive, isSuccess: ");
         paramBundle.append(paramBoolean);
         paramBundle.append(" mResultJson:");
-        paramBundle.append(this.jdField_a_of_type_OrgJsonJSONObject);
+        paramBundle.append(this.d);
         QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, paramBundle.toString());
       }
       a();
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics != null)
+      if (this.h != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.b = System.currentTimeMillis();
+        this.h.b = System.currentTimeMillis();
         return;
       }
     }
@@ -324,21 +324,21 @@ class ApolloWebDataHandlerImpl$WebSSOTask
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mSSOCmd:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mPreloadTS:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" mIsSuccess:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" mReceivedSSO:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" mResultJson:");
-    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.api.impl.ApolloWebDataHandlerImpl.WebSSOTask
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ class PermissionPrivacyFragment$6
     if ((paramBoolean1) && (!this.a.getBaseActivity().isFinishing()))
     {
       if (!paramBoolean2) {
-        this.a.j.setRightText(HardCodeUtil.a(2131699255));
+        this.a.m.setRightText(HardCodeUtil.a(2131897271));
       } else {
-        this.a.j.setRightText(HardCodeUtil.a(2131699256));
+        this.a.m.setRightText(HardCodeUtil.a(2131897272));
       }
       if (QLog.isColorLevel())
       {
-        Card localCard = ((FriendsManager)PermissionPrivacyFragment.a(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(PermissionPrivacyFragment.a(this.a).getCurrentAccountUin());
+        Card localCard = ((FriendsManager)PermissionPrivacyFragment.b(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).g(PermissionPrivacyFragment.b(this.a).getCurrentAccountUin());
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("PermissionPrivacyFragment onGetCalReactiveDays isAllow= ");
         localStringBuilder.append(paramBoolean2);
@@ -42,13 +42,13 @@ class PermissionPrivacyFragment$6
     if ((paramBoolean1) && (!this.a.getBaseActivity().isFinishing()))
     {
       if (paramBoolean2) {
-        PermissionPrivacyFragment.a(this.a).setRightText(HardCodeUtil.a(2131699255));
+        PermissionPrivacyFragment.e(this.a).setRightText(HardCodeUtil.a(2131897271));
       } else {
-        PermissionPrivacyFragment.a(this.a).setRightText(HardCodeUtil.a(2131699256));
+        PermissionPrivacyFragment.e(this.a).setRightText(HardCodeUtil.a(2131897272));
       }
       if (QLog.isColorLevel())
       {
-        Card localCard = ((FriendsManager)PermissionPrivacyFragment.a(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(PermissionPrivacyFragment.a(this.a).getCurrentAccountUin());
+        Card localCard = ((FriendsManager)PermissionPrivacyFragment.b(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).g(PermissionPrivacyFragment.b(this.a).getCurrentAccountUin());
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("PermissionPrivacyFragment onGetTroopHonorSwitch isAllow= ");
         localStringBuilder.append(paramBoolean2);
@@ -63,11 +63,11 @@ class PermissionPrivacyFragment$6
   {
     if ((paramBoolean) && (!this.a.getBaseActivity().isFinishing()))
     {
-      Card localCard = ((FriendsManager)PermissionPrivacyFragment.a(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(PermissionPrivacyFragment.a(this.a).getCurrentAccountUin());
+      Card localCard = ((FriendsManager)PermissionPrivacyFragment.b(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).g(PermissionPrivacyFragment.b(this.a).getCurrentAccountUin());
       if (!localCard.allowCalInteractive) {
-        this.a.j.setRightText(HardCodeUtil.a(2131699255));
+        this.a.m.setRightText(HardCodeUtil.a(2131897271));
       } else {
-        this.a.j.setRightText(HardCodeUtil.a(2131699256));
+        this.a.m.setRightText(HardCodeUtil.a(2131897272));
       }
       if (QLog.isColorLevel())
       {
@@ -81,7 +81,7 @@ class PermissionPrivacyFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.6
  * JD-Core Version:    0.7.0.1
  */

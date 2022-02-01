@@ -16,10 +16,10 @@ import android.widget.FrameLayout.LayoutParams;
 public class ExtendFriendVoiceAnimView
   extends FrameLayout
 {
-  private long jdField_a_of_type_Long = 800L;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private View jdField_a_of_type_AndroidViewView;
+  private long a = 800L;
   private View b;
+  private View c;
+  private AnimatorSet d;
   
   public ExtendFriendVoiceAnimView(@NonNull Context paramContext)
   {
@@ -41,39 +41,39 @@ public class ExtendFriendVoiceAnimView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = new View(paramContext);
     this.b = new View(paramContext);
-    paramContext = new FrameLayout.LayoutParams(-1, -1, 17);
-    addView(this.jdField_a_of_type_AndroidViewView, paramContext);
+    this.c = new View(paramContext);
     paramContext = new FrameLayout.LayoutParams(-1, -1, 17);
     addView(this.b, paramContext);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    paramContext = new FrameLayout.LayoutParams(-1, -1, 17);
+    addView(this.c, paramContext);
     this.b.setAlpha(0.0F);
+    this.c.setAlpha(0.0F);
   }
   
   public void a(long paramLong)
   {
-    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    AnimatorSet localAnimatorSet = this.d;
     if ((localAnimatorSet != null) && (localAnimatorSet.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.d.cancel();
     }
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
     this.b.setAlpha(0.0F);
+    this.c.setAlpha(0.0F);
     localAnimatorSet = new AnimatorSet();
-    Object localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "alpha", new float[] { 0.4F, 0.0F });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.0F, 1.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.0F, 1.0F });
-    localAnimatorSet.setDuration(this.jdField_a_of_type_Long);
+    Object localObject = ObjectAnimator.ofFloat(this.b, "alpha", new float[] { 0.4F, 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.b, "scaleX", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.b, "scaleY", new float[] { 0.0F, 1.0F });
+    localAnimatorSet.setDuration(this.a);
     localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
     localObject = localAnimatorSet.clone();
-    ((AnimatorSet)localObject).setTarget(this.b);
-    ((AnimatorSet)localObject).setStartDelay(this.jdField_a_of_type_Long / 2L);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localAnimatorSet, localObject });
+    ((AnimatorSet)localObject).setTarget(this.c);
+    ((AnimatorSet)localObject).setStartDelay(this.a / 2L);
+    this.d = new AnimatorSet();
+    this.d.playTogether(new Animator[] { localAnimatorSet, localObject });
     if (paramLong > 0L) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setStartDelay(paramLong);
+      this.d.setStartDelay(paramLong);
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    this.d.start();
   }
   
   public void setCircleParams(int paramInt1, int paramInt2)
@@ -81,19 +81,19 @@ public class ExtendFriendVoiceAnimView
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setShape(1);
     localGradientDrawable.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localGradientDrawable);
+    this.b.setBackgroundDrawable(localGradientDrawable);
     localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setShape(1);
     localGradientDrawable.setColor(paramInt1);
-    this.b.setBackgroundDrawable(localGradientDrawable);
+    this.c.setBackgroundDrawable(localGradientDrawable);
     if (paramInt2 > 0) {
-      this.jdField_a_of_type_Long = paramInt2;
+      this.a = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendVoiceAnimView
  * JD-Core Version:    0.7.0.1
  */

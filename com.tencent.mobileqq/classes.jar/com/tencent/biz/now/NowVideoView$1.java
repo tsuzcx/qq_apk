@@ -15,15 +15,15 @@ class NowVideoView$1
     {
     default: 
     case 1003: 
-      if ((this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!this.a.jdField_a_of_type_Boolean) && (this.a.d == 2))
+      if ((this.a.f != null) && (this.a.k != null) && (!this.a.l) && (this.a.p == 2))
       {
-        this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+        this.a.f.a(this.a.k.frienduin, this.a.c, this.a.d, this.a.k.msgseq, false);
         return;
       }
       break;
     case 1002: 
-      if ((this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)) {
-        this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+      if ((this.a.f != null) && (this.a.k != null)) {
+        this.a.f.a(this.a.k.frienduin, this.a.c, this.a.d, this.a.k.msgseq, true);
       }
       break;
     }
@@ -31,7 +31,7 @@ class NowVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoView.1
  * JD-Core Version:    0.7.0.1
  */

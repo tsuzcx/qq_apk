@@ -9,7 +9,7 @@ class StoryPublishLauncher$1
   
   public void run()
   {
-    boolean bool = StoryPublishLauncher.b();
+    boolean bool = StoryPublishLauncher.d();
     SLog.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
   }
 }

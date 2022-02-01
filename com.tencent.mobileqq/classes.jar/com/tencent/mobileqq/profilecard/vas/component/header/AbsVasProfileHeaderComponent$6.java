@@ -16,7 +16,7 @@ class AbsVasProfileHeaderComponent$6
   
   public void run()
   {
-    Object localObject = ((FriendsManager)AbsVasProfileHeaderComponent.access$3500(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(AbsVasProfileHeaderComponent.access$3600(this.this$0).getCurrentAccountUin());
+    Object localObject = ((FriendsManager)AbsVasProfileHeaderComponent.access$3500(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).f(AbsVasProfileHeaderComponent.access$3600(this.this$0).getCurrentAccountUin());
     if (localObject == null)
     {
       AbsVasProfileHeaderComponent.access$3702(this.this$0, "-1");
@@ -33,7 +33,7 @@ class AbsVasProfileHeaderComponent$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.6
  * JD-Core Version:    0.7.0.1
  */

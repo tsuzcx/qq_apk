@@ -1,32 +1,22 @@
 package com.tencent.mobileqq.kandian.biz.pts.component;
 
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.glue.video.VideoPlayManager;
-import com.tencent.widget.KandianNegativeWindowForAd;
+import com.tencent.mobileqq.kandian.ad.api.IRIJDiversionService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.widget.KandianNegativeWindowForAd.OnDiversionListener;
 
 class FeedItemCell$4
-  implements PopupWindow.OnDismissListener
+  implements KandianNegativeWindowForAd.OnDiversionListener
 {
-  FeedItemCell$4(FeedItemCell paramFeedItemCell, KandianNegativeWindowForAd paramKandianNegativeWindowForAd) {}
+  FeedItemCell$4(FeedItemCell paramFeedItemCell) {}
   
-  public void onDismiss()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd.a(1.0F);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell.a.c())
-    {
-      VideoPlayManager localVideoPlayManager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell.a.a();
-      if (localVideoPlayManager != null)
-      {
-        localVideoPlayManager.c();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell.a.b(false);
-      }
-    }
+    ((IRIJDiversionService)QRoute.api(IRIJDiversionService.class)).jump(this.a.e, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCell.4
  * JD-Core Version:    0.7.0.1
  */

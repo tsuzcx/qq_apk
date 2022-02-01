@@ -20,7 +20,7 @@ class qfileJumpActivity$1
     } else {
       localBundle = new Bundle();
     }
-    localBundle.putString("leftBackText", HardCodeUtil.a(2131709642));
+    localBundle.putString("leftBackText", HardCodeUtil.a(2131907368));
     localBundle.putBoolean("isBack2Root", true);
     localIntent1.addFlags(268435456);
     localIntent1.addFlags(67108864);
@@ -39,7 +39,7 @@ class qfileJumpActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qfileJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

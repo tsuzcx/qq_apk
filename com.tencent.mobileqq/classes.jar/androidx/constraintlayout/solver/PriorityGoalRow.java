@@ -147,6 +147,11 @@ public class PriorityGoalRow
     return this.arrayGoals[j];
   }
   
+  public boolean isEmpty()
+  {
+    return this.numGoals == 0;
+  }
+  
   public String toString()
   {
     Object localObject1 = new StringBuilder();
@@ -170,10 +175,10 @@ public class PriorityGoalRow
     return localObject1;
   }
   
-  public void updateFromRow(ArrayRow paramArrayRow, boolean paramBoolean)
+  public void updateFromRow(LinearSystem paramLinearSystem, ArrayRow paramArrayRow, boolean paramBoolean)
   {
-    SolverVariable localSolverVariable1 = paramArrayRow.variable;
-    if (localSolverVariable1 == null) {
+    paramLinearSystem = paramArrayRow.variable;
+    if (paramLinearSystem == null) {
       return;
     }
     ArrayRow.ArrayRowVariables localArrayRowVariables = paramArrayRow.variables;
@@ -181,21 +186,21 @@ public class PriorityGoalRow
     int i = 0;
     while (i < j)
     {
-      SolverVariable localSolverVariable2 = localArrayRowVariables.getVariable(i);
+      SolverVariable localSolverVariable = localArrayRowVariables.getVariable(i);
       float f = localArrayRowVariables.getVariableValue(i);
-      this.accessor.init(localSolverVariable2);
-      if (this.accessor.addToGoal(localSolverVariable1, f)) {
-        addToGoal(localSolverVariable2);
+      this.accessor.init(localSolverVariable);
+      if (this.accessor.addToGoal(paramLinearSystem, f)) {
+        addToGoal(localSolverVariable);
       }
       this.constantValue += paramArrayRow.constantValue * f;
       i += 1;
     }
-    removeGoal(localSolverVariable1);
+    removeGoal(paramLinearSystem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.PriorityGoalRow
  * JD-Core Version:    0.7.0.1
  */

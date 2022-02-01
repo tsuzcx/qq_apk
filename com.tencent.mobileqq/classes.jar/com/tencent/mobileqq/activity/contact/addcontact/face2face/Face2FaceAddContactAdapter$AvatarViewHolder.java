@@ -15,27 +15,27 @@ class Face2FaceAddContactAdapter$AvatarViewHolder
   extends RecyclerView.ViewHolder
   implements Animator.AnimatorListener, View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  ImageView b;
+  TextView c;
+  DiniFlyAnimationView d;
   
   public Face2FaceAddContactAdapter$AvatarViewHolder(Face2FaceAddContactAdapter paramFace2FaceAddContactAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376844));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
+    this.d = ((DiniFlyAnimationView)paramView.findViewById(2131445176));
+    this.b = ((ImageView)paramView.findViewById(2131435219));
+    this.c = ((TextView)paramView.findViewById(2131439121));
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    Face2FaceAddContactAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFace2faceFace2FaceAddContactAdapter).add(this.jdField_a_of_type_JavaLangString);
+    this.d.setVisibility(4);
+    this.d.cancelAnimation();
+    this.b.setAlpha(1.0F);
+    Face2FaceAddContactAdapter.a(this.e).add(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
@@ -54,15 +54,15 @@ class Face2FaceAddContactAdapter$AvatarViewHolder
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368343) {
-      Face2FaceAddContactAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFace2faceFace2FaceAddContactAdapter, this.jdField_a_of_type_JavaLangString);
+    if (paramView.getId() == 2131435219) {
+      Face2FaceAddContactAdapter.a(this.e, this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactAdapter.AvatarViewHolder
  * JD-Core Version:    0.7.0.1
  */

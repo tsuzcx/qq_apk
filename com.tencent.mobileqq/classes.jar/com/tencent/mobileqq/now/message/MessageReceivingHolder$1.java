@@ -6,7 +6,7 @@ import com.tencent.mobileqq.now.widget.DecoratorViewPager;
 class MessageReceivingHolder$1
   implements ViewPager.OnPageChangeListener
 {
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   MessageReceivingHolder$1(MessageReceivingHolder paramMessageReceivingHolder) {}
   
@@ -16,28 +16,28 @@ class MessageReceivingHolder$1
   {
     if ((paramInt1 == 2) && (paramFloat > 0.4F))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        this.jdField_a_of_type_Boolean = false;
-        MessageReceivingHolder.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder);
+        this.b = false;
+        MessageReceivingHolder.a(this.a);
       }
-      MessageReceivingHolder.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder).setCurrentItem(2);
+      MessageReceivingHolder.b(this.a).setCurrentItem(2);
     }
     if (paramFloat == 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
   }
   
   public void onPageSelected(int paramInt)
   {
-    MessageReceivingHolder.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder, paramInt);
-    MessageReceivingHolder localMessageReceivingHolder = this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingHolder;
-    MessageReceivingHolder.a(localMessageReceivingHolder, MessageReceivingHolder.a(localMessageReceivingHolder).a(paramInt));
+    MessageReceivingHolder.a(this.a, paramInt);
+    MessageReceivingHolder localMessageReceivingHolder = this.a;
+    MessageReceivingHolder.a(localMessageReceivingHolder, MessageReceivingHolder.c(localMessageReceivingHolder).a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,73 +4,58 @@ import java.util.ArrayList;
 
 public class QzoneLinkShareInfo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private String a;
+  private String b;
+  private ArrayList<String> c;
   private String d;
-  private String e;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  private int e;
+  private String f;
+  private String g;
+  private int h;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    this.c = paramArrayList;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
-  public String c()
+  public ArrayList<String> c()
   {
     return this.c;
   }
   
   public void c(String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
   }
   
   public String d()
@@ -80,22 +65,37 @@ public class QzoneLinkShareInfo
   
   public void d(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
   }
   
-  public String e()
+  public int e()
   {
     return this.e;
   }
   
   public void e(String paramString)
   {
-    this.e = paramString;
+    this.g = paramString;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public String g()
+  {
+    return this.g;
+  }
+  
+  public int h()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.QzoneLinkShareInfo
  * JD-Core Version:    0.7.0.1
  */

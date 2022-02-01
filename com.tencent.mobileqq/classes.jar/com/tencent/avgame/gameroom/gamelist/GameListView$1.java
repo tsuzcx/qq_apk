@@ -25,12 +25,12 @@ class GameListView$1
     if (AVGameUtil.b() == 2) {
       return;
     }
-    if (IGameEngine.k()) {
+    if (IGameEngine.J()) {
       return;
     }
-    if ((IGameEngine.a().a().a() == 0) && (IGameEngine.a().e()))
+    if ((IGameEngine.I().s().j() == 0) && (IGameEngine.I().v()))
     {
-      int i = IGameEngine.a().a();
+      int i = IGameEngine.I().e();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -42,16 +42,16 @@ class GameListView$1
       }
       if (i == 1)
       {
-        this.this$0.a.d();
-        DialogUtil.a(this.this$0.getContext(), 230, null, this.this$0.getResources().getString(2131690397), this.this$0.getResources().getString(2131690401), this.this$0.getResources().getString(2131690396), new GameListView.1.1(this), new GameListView.1.2(this)).show();
+        this.this$0.b.g();
+        DialogUtil.a(this.this$0.getContext(), 230, null, this.this$0.getResources().getString(2131887308), this.this$0.getResources().getString(2131887312), this.this$0.getResources().getString(2131887307), new GameListView.1.1(this), new GameListView.1.2(this)).show();
         ReportController.b(null, "dc00898", "", "", "0X800B499", "0X800B499", 0, 0, "", "", "", "");
         return;
       }
       if (i <= GameListView.a(this.this$0))
       {
-        this.this$0.a.d();
-        DialogUtil.a(this.this$0.getContext(), 230, null, this.this$0.getResources().getString(2131690398), this.this$0.getResources().getString(2131690499), null, null, new GameListView.1.3(this)).show();
-        ReportController.b(null, "dc00898", "", "", "0X800B49C", "0X800B49C", IGameEngine.a().a().a().players.size(), 0, "", "", "", "");
+        this.this$0.b.g();
+        DialogUtil.a(this.this$0.getContext(), 230, null, this.this$0.getResources().getString(2131887309), this.this$0.getResources().getString(2131887410), null, null, new GameListView.1.3(this)).show();
+        ReportController.b(null, "dc00898", "", "", "0X800B49C", "0X800B49C", IGameEngine.I().s().e().players.size(), 0, "", "", "", "");
       }
     }
   }

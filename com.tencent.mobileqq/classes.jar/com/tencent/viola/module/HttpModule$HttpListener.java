@@ -41,7 +41,7 @@ class HttpModule$HttpListener
           } else {
             paramMap = (String)localEntry.getKey();
           }
-          localHashMap.put(paramMap, ((List)localEntry.getValue()).get(0));
+          localHashMap.put(paramMap, (String)((List)localEntry.getValue()).get(0));
         }
       }
     }
@@ -78,7 +78,7 @@ class HttpModule$HttpListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.HttpModule.HttpListener
  * JD-Core Version:    0.7.0.1
  */

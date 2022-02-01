@@ -10,12 +10,12 @@ class FileBrowserModelBase$3
   
   public void run()
   {
-    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).init(this.this$0.a, hashCode(), "MiniCode_FileBrowser");
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).init(this.this$0.i, hashCode(), "MiniCode_FileBrowser");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.3
  * JD-Core Version:    0.7.0.1
  */

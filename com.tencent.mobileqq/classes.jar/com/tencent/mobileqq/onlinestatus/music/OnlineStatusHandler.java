@@ -2,6 +2,7 @@ package com.tencent.mobileqq.onlinestatus.music;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
@@ -22,10 +23,13 @@ import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
 import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.onlinestatus.manager.IOnlineMusicStatusManager;
 import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusDataManager;
+import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusOlympicManager;
 import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusPermissionManager;
 import com.tencent.mobileqq.onlinestatus.manager.OnlineMusicStatusManager;
 import com.tencent.mobileqq.onlinestatus.manager.OnlineStatusDataManager;
+import com.tencent.mobileqq.onlinestatus.manager.OnlineStatusOlympicManager;
 import com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager;
+import com.tencent.mobileqq.onlinestatus.olympic.model.OlympicMedalEventInfo;
 import com.tencent.mobileqq.onlinestatus.utils.MessagePBElemDecoder;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -63,19 +67,25 @@ import tencent.im.statsvc.business.info.businessinfo.ReqBody;
 import tencent.im.statsvc.business.info.businessinfo.RspBody;
 import tencent.im.statsvc.song.StatSvcStatSong.ReqBody;
 import tencent.im.statsvc.song.StatSvcStatSong.RspBody;
+import trpc.qq_onlinestatus.olympic_medal.OlympicMedalEvent.MedalEventInfo;
+import trpc.qq_onlinestatus.olympic_medal.OlympicMedalEvent.MedalEventRequest;
+import trpc.qq_onlinestatus.olympic_medal.OlympicMedalEvent.MedalEventResponse;
 
 @KeepClassConstructor
 public class OnlineStatusHandler
   extends BusinessHandler
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Friends jdField_a_of_type_ComTencentMobileqqDataFriends;
+  private Friends a;
+  private AppInterface b;
+  private long c = -1L;
+  private long d = -1L;
+  private Handler e;
+  private Handler f = new OnlineStatusHandler.4(this, ThreadManagerV2.getSubThreadLooper());
   
   public OnlineStatusHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.b = paramAppInterface;
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -101,12 +111,12 @@ public class OnlineStatusHandler
         }
         paramFromServiceMsg = (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)paramToServiceMsg.getAttribute("online_status_permission_item");
         if (paramFromServiceMsg != null) {
-          ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).a(new OnlineStatusFriendsPermissionItem(paramFromServiceMsg.isAllHasPermission(), paramFromServiceMsg.getPermissionUins()));
+          ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).a(new OnlineStatusFriendsPermissionItem(paramFromServiceMsg.isAllHasPermission(), paramFromServiceMsg.getPermissionUins()));
         }
         int k = paramToServiceMsg.extraData.getInt("StatusId");
         if (((Boolean)paramToServiceMsg.getAttribute("from_need_update_delay_time", Boolean.valueOf(false))).booleanValue())
         {
-          paramFromServiceMsg = (OnlineStatusDataManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class);
+          paramFromServiceMsg = (OnlineStatusDataManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class);
           paramFromServiceMsg.a(k, j);
           paramFromServiceMsg.a(k, NetConnInfoCenter.getServerTime());
         }
@@ -115,7 +125,7 @@ public class OnlineStatusHandler
         if ((bool2) || (bool3)) {
           break label333;
         }
-        ((IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(AppRuntime.Status.online, k);
+        ((IOnlineStatusService)this.b.getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(AppRuntime.Status.online, k);
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
@@ -174,7 +184,7 @@ public class OnlineStatusHandler
         if (i != 0) {
           break label227;
         }
-        paramToServiceMsg = (OnlineStatusDataManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class);
+        paramToServiceMsg = (OnlineStatusDataManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class);
         if (l > 40000L)
         {
           paramToServiceMsg.b(40000, j);
@@ -234,10 +244,10 @@ public class OnlineStatusHandler
         {
           paramFromServiceMsg = (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)paramToServiceMsg.getAttribute("online_status_permission_item");
           if (paramFromServiceMsg != null) {
-            ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).a(new OnlineStatusFriendsPermissionItem(paramFromServiceMsg.isAllHasPermission(), paramFromServiceMsg.getPermissionUins()));
+            ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).a(new OnlineStatusFriendsPermissionItem(paramFromServiceMsg.isAllHasPermission(), paramFromServiceMsg.getPermissionUins()));
           }
-          paramFromServiceMsg = (IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "");
-          paramObject = (IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "");
+          paramFromServiceMsg = (IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "");
+          paramObject = (IOnlineStatusService)this.b.getRuntimeService(IOnlineStatusService.class, "");
           ((OnlineStatusDataManager)paramFromServiceMsg.getManager(IOnlineStatusDataManager.class)).b(-1, j);
           if (!((Boolean)paramToServiceMsg.getAttribute("from_register", Boolean.valueOf(false))).booleanValue()) {
             paramObject.updateOnlineStatus(AppRuntime.Status.online, -1L);
@@ -245,7 +255,7 @@ public class OnlineStatusHandler
         }
         else
         {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(new OnlineStatusHandler.2(this));
+          this.b.runOnUiThread(new OnlineStatusHandler.2(this));
         }
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
@@ -268,22 +278,22 @@ public class OnlineStatusHandler
     {
       paramObject = (SvcRespRegister)paramObject;
       long l1 = paramObject.timeStamp;
-      byte b = paramObject.cReplyCode;
+      byte b1 = paramObject.cReplyCode;
       long l2 = paramObject.iStatus;
       long l3 = paramObject.uExtOnlineStatus;
       long l4 = paramObject.uClientAutoStatusInterval;
       if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusHandler", 2, new Object[] { "[status][autoMgr] handleRecvSetOnlineStatus timeStamp:", Long.valueOf(l1), " cCode:", Byte.valueOf(b), " iStatus:", Long.valueOf(l2), " extOnlineStatus:", Long.valueOf(l3), " autoStatusInterval: ", Long.valueOf(l4) });
+        QLog.d("OnlineStatusHandler", 2, new Object[] { "[status][autoMgr] handleRecvSetOnlineStatus timeStamp:", Long.valueOf(l1), " cCode:", Byte.valueOf(b1), " iStatus:", Long.valueOf(l2), " extOnlineStatus:", Long.valueOf(l3), " autoStatusInterval: ", Long.valueOf(l4) });
       }
-      if (b == 0)
+      if (b1 == 0)
       {
         localBundle.putLong("onlineStatus", l2);
         localBundle.putLong("extStatus", l3);
         localBundle.putLong("autoStatusInterval", l4);
-        paramFromServiceMsg = (IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "");
+        paramFromServiceMsg = (IOnlineStatusService)this.b.getRuntimeService(IOnlineStatusService.class, "");
         paramFromServiceMsg.setOnlineStatus(AppRuntime.Status.build((int)l2));
         paramFromServiceMsg.setExtOnlineStatus(l3);
-        ((OnlineStatusDataManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).c();
+        ((OnlineStatusDataManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).a();
         notifyUI(1, true, localBundle);
         return;
       }
@@ -294,12 +304,57 @@ public class OnlineStatusHandler
     notifyUI(1, false, localBundle);
   }
   
-  public Handler a()
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper());
+    int j = 0;
+    int i;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    paramToServiceMsg = new OlympicMedalEvent.MedalEventResponse();
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusHandler", 2, "handleOnlineInfoOlympicMedalEvent. ");
+    }
+    if (i != 0)
+    {
+      try
+      {
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("handleOnlineInfoOlympicMedalEvent.  InvalidProtocolBufferMicroException result：");
+        paramObject.append(paramFromServiceMsg.toString());
+        QLog.e("OnlineStatusHandler", 1, paramObject.toString());
+        i = j;
+      }
+    }
+    else if (paramFromServiceMsg != null)
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("ERRCODE:");
+      paramObject.append(paramFromServiceMsg.getResultCode());
+      QLog.e("OnlineStatusHandler", 1, paramObject.toString());
+    }
+    if (i != 0)
+    {
+      paramFromServiceMsg = new OlympicMedalEventInfo();
+      if (paramToServiceMsg.event_valid.has()) {
+        paramFromServiceMsg.a(paramToServiceMsg.event_valid.get());
+      } else {
+        paramFromServiceMsg.a(true);
+      }
+      if (paramToServiceMsg.pull_interval_seconds.has()) {
+        paramFromServiceMsg.a(paramToServiceMsg.pull_interval_seconds.get());
+      }
+      if (paramToServiceMsg.event.has()) {
+        paramFromServiceMsg.a((OlympicMedalEvent.MedalEventInfo)paramToServiceMsg.event.get());
+      }
+      ((OnlineStatusOlympicManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusOlympicManager.class)).a(paramFromServiceMsg);
+    }
   }
   
   public Lyric a(String paramString)
@@ -319,7 +374,7 @@ public class OnlineStatusHandler
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "StatSvc.SyncBusinessInfo");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "StatSvc.SyncBusinessInfo");
     businessinfo.ReqBody localReqBody = new businessinfo.ReqBody();
     int i = paramBundle.getInt("StatusId", 0);
     if (paramInt != 1)
@@ -371,7 +426,7 @@ public class OnlineStatusHandler
   
   public void a(int paramInt, Bundle paramBundle, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
   {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "StatSvc.SetBusinessInfo");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "StatSvc.SetBusinessInfo");
     businessinfo.ReqBody localReqBody = new businessinfo.ReqBody();
     int i;
     if (paramInt != 1)
@@ -457,14 +512,14 @@ public class OnlineStatusHandler
     if (QLog.isColorLevel()) {
       QLog.e("OnlineStatusHandler", 2, new Object[] { "getMusicLyric, id:", str });
     }
-    Object localObject = (OnlineMusicStatusManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
-    if (((OnlineMusicStatusManager)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+    Object localObject = (OnlineMusicStatusManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
+    if (((OnlineMusicStatusManager)localObject).b.containsKey(str))
     {
       QLog.e("OnlineStatusHandler", 1, "getMusicLyric return, getting status");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    ((OnlineMusicStatusManager)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new Lyric(0, 0, null));
+    this.a = paramFriends;
+    ((OnlineMusicStatusManager)localObject).b.put(str, new Lyric(0, 0, null));
     localObject = new cmd0xe59.ReqBody();
     ((cmd0xe59.ReqBody)localObject).song_id.set(ByteStringMicro.copyFromUtf8(str));
     ((cmd0xe59.ReqBody)localObject).zip_compress_flag.set(true);
@@ -481,7 +536,7 @@ public class OnlineStatusHandler
   
   public void a(OnlineMusicStatus paramOnlineMusicStatus)
   {
-    long l = a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    long l = a().a(this.b);
     if (QLog.isColorLevel()) {
       QLog.d("OnlineStatusHandler", 2, new Object[] { "pushMusicStatus curExtStatus:", Long.valueOf(l), ", ", paramOnlineMusicStatus });
     }
@@ -492,16 +547,16 @@ public class OnlineStatusHandler
     if (l == 1028L)
     {
       paramOnlineMusicStatus = new StatSvcStatSong.ReqBody();
-      paramOnlineMusicStatus.bool_need_convert.set(((OnlineMusicStatus)localObject).jdField_a_of_type_Boolean);
-      paramOnlineMusicStatus.uint32_song_type.set(((OnlineMusicStatus)localObject).jdField_a_of_type_Int);
-      paramOnlineMusicStatus.uint32_remaining_time.set(((OnlineMusicStatus)localObject).jdField_b_of_type_Int);
-      paramOnlineMusicStatus.uint32_source_type.set(((OnlineMusicStatus)localObject).jdField_c_of_type_Int);
-      paramOnlineMusicStatus.bytes_song_id.set(ByteStringMicro.copyFromUtf8(((OnlineMusicStatus)localObject).jdField_a_of_type_JavaLangString));
-      paramOnlineMusicStatus.bytes_song_name.set(ByteStringMicro.copyFromUtf8(((OnlineMusicStatus)localObject).jdField_b_of_type_JavaLangString));
-      paramOnlineMusicStatus.bytes_singer_name.set(ByteStringMicro.copyFromUtf8(((OnlineMusicStatus)localObject).jdField_c_of_type_JavaLangString));
-      paramOnlineMusicStatus.bool_pause_flag.set(((OnlineMusicStatus)localObject).jdField_b_of_type_Boolean);
-      paramOnlineMusicStatus.uint32_song_play_time.set(((OnlineMusicStatus)localObject).d);
-      localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "StatSvc.SetSong");
+      paramOnlineMusicStatus.bool_need_convert.set(((OnlineMusicStatus)localObject).a);
+      paramOnlineMusicStatus.uint32_song_type.set(((OnlineMusicStatus)localObject).d);
+      paramOnlineMusicStatus.uint32_remaining_time.set(((OnlineMusicStatus)localObject).f);
+      paramOnlineMusicStatus.uint32_source_type.set(((OnlineMusicStatus)localObject).g);
+      paramOnlineMusicStatus.bytes_song_id.set(ByteStringMicro.copyFromUtf8(((OnlineMusicStatus)localObject).b));
+      paramOnlineMusicStatus.bytes_song_name.set(ByteStringMicro.copyFromUtf8(((OnlineMusicStatus)localObject).c));
+      paramOnlineMusicStatus.bytes_singer_name.set(ByteStringMicro.copyFromUtf8(((OnlineMusicStatus)localObject).e));
+      paramOnlineMusicStatus.bool_pause_flag.set(((OnlineMusicStatus)localObject).h);
+      paramOnlineMusicStatus.uint32_song_play_time.set(((OnlineMusicStatus)localObject).i);
+      localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "StatSvc.SetSong");
       ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
       ((ToServiceMsg)localObject).putWupBuffer(paramOnlineMusicStatus.toByteArray());
       sendPbReq((ToServiceMsg)localObject);
@@ -537,7 +592,7 @@ public class OnlineStatusHandler
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = (String)paramToServiceMsg.getAttribute("songId", "");
-    OnlineMusicStatusManager localOnlineMusicStatusManager = (OnlineMusicStatusManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
+    OnlineMusicStatusManager localOnlineMusicStatusManager = (OnlineMusicStatusManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
     if (paramFromServiceMsg != null) {}
     try
     {
@@ -569,18 +624,18 @@ public class OnlineStatusHandler
             }
           }
           if (paramToServiceMsg != null) {
-            localOnlineMusicStatusManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramToServiceMsg);
+            localOnlineMusicStatusManager.b.put(str, paramToServiceMsg);
           }
         }
         else
         {
-          localOnlineMusicStatusManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-          if ((bool1) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends != null) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.songId)))
+          localOnlineMusicStatusManager.b.remove(str);
+          if ((bool1) && (this.a != null) && (str.equals(this.a.songId)))
           {
-            this.jdField_a_of_type_ComTencentMobileqqDataFriends.songName = "";
-            this.jdField_a_of_type_ComTencentMobileqqDataFriends.singerName = "";
-            localOnlineMusicStatusManager.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataFriends.songId);
-            ((IFriendHandlerTempService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IFriendHandlerTempService.class, "")).getOnlineInfo(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, false);
+            this.a.songName = "";
+            this.a.singerName = "";
+            localOnlineMusicStatusManager.c.add(this.a.songId);
+            ((IFriendHandlerTempService)this.b.getRuntimeService(IFriendHandlerTempService.class, "")).getOnlineInfo(this.a.uin, false);
           }
         }
         if (QLog.isColorLevel()) {
@@ -589,14 +644,14 @@ public class OnlineStatusHandler
       }
       else
       {
-        localOnlineMusicStatusManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+        localOnlineMusicStatusManager.b.remove(str);
         return;
       }
     }
     catch (Exception paramToServiceMsg)
     {
       QLog.e("OnlineStatusHandler", 1, "handleGetMusicLyric", paramToServiceMsg);
-      localOnlineMusicStatusManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+      localOnlineMusicStatusManager.b.remove(str);
     }
   }
   
@@ -605,7 +660,7 @@ public class OnlineStatusHandler
     if (QLog.isColorLevel()) {
       QLog.d("OnlineStatusHandler", 2, new Object[] { "HPush_requestSetPushToken token:", paramString1 });
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "PushService.SetToken");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "PushService.SetToken");
     Bundle localBundle = localToServiceMsg.extraData;
     localBundle.putString("push_token", paramString1);
     localBundle.putString("push_profileid", paramString2);
@@ -632,7 +687,7 @@ public class OnlineStatusHandler
       try
       {
         if (paramAppRuntime.getExtOnlineStatus() != 1000L) {
-          paramAppRuntime.setPowerConnect(OnLineStatusHelper.c());
+          paramAppRuntime.setPowerConnect(OnLineStatusHelper.i());
         }
       }
       catch (Throwable paramStatus)
@@ -643,7 +698,7 @@ public class OnlineStatusHandler
       localBundle.putInt("powerConnect", paramAppRuntime.getPowerConnect());
     }
     localBundle.putBoolean("isAutoSet", paramBoolean);
-    int i = OnlineStatusUtil.a();
+    int i = OnlineStatusUtil.b();
     localBundle.putInt("vendor_push_type", i);
     if (QLog.isColorLevel())
     {
@@ -653,6 +708,56 @@ public class OnlineStatusHandler
       QLog.d("OnlineStatusHandler", 2, paramAppRuntime.toString());
     }
     send((ToServiceMsg)localObject);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    a(paramBoolean, false);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getOlympicMedalEventReq ");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    QLog.d("OnlineStatusHandler", 1, ((StringBuilder)localObject).toString(), new Throwable("打印堆栈"));
+    if ((!paramBoolean2) && (!c(paramBoolean1)))
+    {
+      long l1;
+      long l2;
+      if (paramBoolean1)
+      {
+        l1 = this.c + 5000L;
+        l2 = System.currentTimeMillis();
+      }
+      else
+      {
+        l1 = this.d + 300000L;
+        l2 = System.currentTimeMillis();
+      }
+      l1 -= l2;
+      localObject = this.f.obtainMessage();
+      ((Message)localObject).obj = Boolean.valueOf(paramBoolean1);
+      ((Message)localObject).what = 0;
+      this.f.removeMessages(0);
+      this.f.sendMessageDelayed((Message)localObject, l1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendOlympicMedalEventReq after ");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append("ms");
+      QLog.d("OnlineStatusHandler", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    b(paramBoolean1);
+    QLog.d("OnlineStatusHandler", 1, "sendOlympicMedalEventReq.");
+  }
+  
+  public Handler b()
+  {
+    if (this.e == null) {
+      this.e = new Handler(ThreadManagerV2.getSubThreadLooper());
+    }
+    return this.e;
   }
   
   public void b(FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -672,14 +777,14 @@ public class OnlineStatusHandler
         if (j != 1) {
           break label232;
         }
-        paramFromServiceMsg = ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).getCurrChatUin();
+        paramFromServiceMsg = ((IMessageFacade)this.b.getRuntimeService(IMessageFacade.class, "")).getCurrChatUin();
         if (paramObject == null) {
           break label238;
         }
         if (paramObject.equals(paramFromServiceMsg)) {
           break label233;
         }
-        if (!paramObject.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) {
+        if (!paramObject.equals(this.b.getCurrentAccountUin())) {
           break label238;
         }
       }
@@ -691,9 +796,9 @@ public class OnlineStatusHandler
       }
       bool = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).isContactShown();
       if ((i != 0) || (bool)) {
-        a().postDelayed(new OnlineStatusHandler.3(this, paramObject), 500L);
+        b().postDelayed(new OnlineStatusHandler.3(this, paramObject), 500L);
       }
-      QLog.d("OnlineStatusHandler", 1, new Object[] { "handleRecvMusicStatusPush, uin:", StringUtil.e(paramObject), " currentChatUin:", StringUtil.e(paramFromServiceMsg), " needRefresh:", Integer.valueOf(j), " isContactShown:", Boolean.valueOf(bool) });
+      QLog.d("OnlineStatusHandler", 1, new Object[] { "handleRecvMusicStatusPush, uin:", StringUtil.getSimpleUinForPrint(paramObject), " currentChatUin:", StringUtil.getSimpleUinForPrint(paramFromServiceMsg), " needRefresh:", Integer.valueOf(j), " isContactShown:", Boolean.valueOf(bool) });
       return;
       label232:
       return;
@@ -703,6 +808,35 @@ public class OnlineStatusHandler
       label238:
       i = 0;
     }
+  }
+  
+  void b(boolean paramBoolean)
+  {
+    OlympicMedalEvent.MedalEventRequest localMedalEventRequest = new OlympicMedalEvent.MedalEventRequest();
+    localMedalEventRequest.from_aio.set(paramBoolean);
+    ToServiceMsg localToServiceMsg = createToServiceMsg("trpc.qq_status_rank.olympic_notice_sync.MedalEvent.Get");
+    localToServiceMsg.putWupBuffer(localMedalEventRequest.toByteArray());
+    sendPbReq(localToServiceMsg);
+    if (paramBoolean)
+    {
+      this.c = System.currentTimeMillis();
+      return;
+    }
+    this.d = System.currentTimeMillis();
+  }
+  
+  public boolean c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.c + 5000L < System.currentTimeMillis()) {
+        return true;
+      }
+    }
+    else if (this.d + 300000L < System.currentTimeMillis()) {
+      return true;
+    }
+    return false;
   }
   
   public Set<String> getCommandList()
@@ -716,6 +850,7 @@ public class OnlineStatusHandler
       this.allowCmdSet.add("StatSvc.SetSong");
       this.allowCmdSet.add("ImStatus.ReqPushStatus");
       this.allowCmdSet.add("OidbSvc.0xe59");
+      this.allowCmdSet.add("trpc.qq_status_rank.olympic_notice_sync.MedalEvent.Get");
       this.allowCmdSet.add("PushService.SetToken");
     }
     return this.allowCmdSet;
@@ -790,8 +925,13 @@ public class OnlineStatusHandler
           b(paramFromServiceMsg, paramObject);
           return;
         }
-        if ("OidbSvc.0xe59".equals(str)) {
+        if ("OidbSvc.0xe59".equals(str))
+        {
           a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+        if ("trpc.qq_status_rank.olympic_notice_sync.MedalEvent.Get".equals(str)) {
+          e(paramToServiceMsg, paramFromServiceMsg, paramObject);
         }
       }
     }
@@ -799,7 +939,7 @@ public class OnlineStatusHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.music.OnlineStatusHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -113,7 +113,7 @@ public class SwipePostTableLayoutImpl
   {
     if (this.allowedSliding)
     {
-      if (!ColorNoteUtils.a(paramColorNote)) {
+      if (!ColorNoteUtils.b(paramColorNote)) {
         return;
       }
       if (!this.mTouchStateDetector.a(paramMotionEvent, getContext()))
@@ -141,7 +141,7 @@ public class SwipePostTableLayoutImpl
                 this.mPostTable.setVisibility(0);
                 this.mPostTableVisible = true;
               }
-              if (this.mColorNoteCurd.a())
+              if (this.mColorNoteCurd.b())
               {
                 if (this.mTouchStateDetector.a(paramMotionEvent, getContext())) {
                   this.mPostTable.b();
@@ -175,9 +175,9 @@ public class SwipePostTableLayoutImpl
     this.mFirstShow = true;
     this.mFirstVib = true;
     boolean bool;
-    if ((this.mEnablePostTable) && (this.allowedSliding) && (this.mTouchStateDetector.a(paramMotionEvent, getContext())) && (!paramBoolean) && (paramColorNote != null) && (ColorNoteUtils.a(paramColorNote)))
+    if ((this.mEnablePostTable) && (this.allowedSliding) && (this.mTouchStateDetector.a(paramMotionEvent, getContext())) && (!paramBoolean) && (paramColorNote != null) && (ColorNoteUtils.b(paramColorNote)))
     {
-      if (this.mColorNoteCurd.a())
+      if (this.mColorNoteCurd.b())
       {
         bool = insertColorNote(paramColorNote);
       }
@@ -294,11 +294,11 @@ public class SwipePostTableLayoutImpl
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.mColorNoteCurd.b()) {
+    if (!this.mColorNoteCurd.c()) {
       disablePostTable();
     }
     double d = this.mTouchStateDetector.a(paramMotionEvent);
-    this.mColorNoteCurd.a();
+    this.mColorNoteCurd.b();
     Object localObject = this.mServiceInfo;
     if (localObject == null) {
       return super.onTouchEvent(paramMotionEvent);
@@ -377,7 +377,7 @@ public class SwipePostTableLayoutImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.swipeback.impl.SwipePostTableLayoutImpl
  * JD-Core Version:    0.7.0.1
  */

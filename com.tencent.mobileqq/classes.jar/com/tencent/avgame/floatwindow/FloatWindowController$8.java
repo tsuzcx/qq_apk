@@ -56,7 +56,7 @@ class FloatWindowController$8
       }
       paramContext = this.a;
       paramContext.a = true;
-      FloatWindowController.a(paramContext).a = true;
+      FloatWindowController.d(paramContext).a = true;
       FloatWindowController.a(this.a, false);
     }
   }

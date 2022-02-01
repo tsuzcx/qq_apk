@@ -50,22 +50,22 @@ import mqq.app.AppRuntime;
 public class ProfileMusicBox
   implements View.OnClickListener, ProfileMusicBoxController.PlayChange
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private SongInfo jdField_a_of_type_ComTencentMobileqqMusicSongInfo = new SongInfo();
-  private ProfileMusicBoxController jdField_a_of_type_ComTencentMobileqqProfileMusicboxProfileMusicBoxController;
-  private AlphaClickableImageView jdField_a_of_type_ComTencentWidgetAlphaClickableImageView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
-  private boolean d = false;
-  private boolean e = true;
+  private String a = "";
+  private AlphaClickableImageView b;
+  private View c;
+  private SongInfo d = new SongInfo();
+  private int e;
+  private ProfileMusicBoxController f;
+  private boolean g;
+  private String h = "";
+  private boolean i = false;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l = true;
   
   public ProfileMusicBox(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public static void a(VaProfileGate.CommTaskInfo paramCommTaskInfo, Card paramCard)
@@ -78,14 +78,14 @@ public class ProfileMusicBox
         localGetProfileMusicBoxInfoRsp.mergeFrom(paramCommTaskInfo.bytes_task_data.get().toByteArray());
         paramCard.coverUrl = localGetProfileMusicBoxInfoRsp.music.pic.get();
         paramCommTaskInfo = new StringBuilder();
-        i = 0;
-        if (i < localGetProfileMusicBoxInfoRsp.music.singer_list.size())
+        m = 0;
+        if (m < localGetProfileMusicBoxInfoRsp.music.singer_list.size())
         {
-          if (i != 0) {
+          if (m != 0) {
             paramCommTaskInfo.append("/");
           }
-          paramCommTaskInfo.append(((VipMusicBox.ProfileSingerInfo)localGetProfileMusicBoxInfoRsp.music.singer_list.get(i)).singer_name.get());
-          i += 1;
+          paramCommTaskInfo.append(((VipMusicBox.ProfileSingerInfo)localGetProfileMusicBoxInfoRsp.music.singer_list.get(m)).singer_name.get());
+          m += 1;
           continue;
         }
         paramCard.singer = paramCommTaskInfo.toString();
@@ -112,16 +112,16 @@ public class ProfileMusicBox
             if (!TextUtils.isEmpty(paramCard.songId)) {
               break label331;
             }
-            i = 2;
-            ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A7D6", i, 0, "", "", "", "");
+            m = 2;
+            ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A7D6", m, 0, "", "", "", "");
             return;
           }
           paramCommTaskInfo = paramCard.uin;
           if (!a()) {
             break label341;
           }
-          i = 1;
-          ReportController.b(null, "dc00898", "", paramCommTaskInfo, "qq_vip", "0X800A7DC", i, 0, "", "", "", "");
+          m = 1;
+          ReportController.b(null, "dc00898", "", paramCommTaskInfo, "qq_vip", "0X800A7DC", m, 0, "", "", "", "");
           return;
         }
       }
@@ -131,20 +131,20 @@ public class ProfileMusicBox
       }
       return;
       label331:
-      int i = 1;
+      int m = 1;
       continue;
       label336:
-      i = 3;
+      m = 3;
       continue;
       label341:
-      i = 2;
+      m = 2;
     }
   }
   
   public static boolean a()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return (VasUtil.a(localAppRuntime).getVipStatus().isSVip()) || (VasUtil.a(localAppRuntime).getVipStatus().isBigClub());
+    return (VasUtil.b(localAppRuntime).getVipStatus().isSVip()) || (VasUtil.b(localAppRuntime).getVipStatus().isBigClub());
   }
   
   public static boolean a(ProfileCardInfo paramProfileCardInfo)
@@ -156,13 +156,13 @@ public class ProfileMusicBox
     }
     if (paramProfileCardInfo.allInOne.pa == 0)
     {
-      int i;
+      int m;
       if (paramProfileCardInfo.card.switchMusicBox == 0) {
-        i = 1;
+        m = 1;
       } else {
-        i = 2;
+        m = 2;
       }
-      ReportController.b(null, "dc00898", "", "", "0X800A7DB", "qq_vip", i, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A7DB", "qq_vip", m, 0, "", "", "", "");
       if (paramProfileCardInfo.card.switchMusicBox == 0) {
         bool1 = true;
       }
@@ -173,10 +173,10 @@ public class ProfileMusicBox
     return (paramProfileCardInfo.card.switchMusicBox == 0) && (!TextUtils.isEmpty(paramProfileCardInfo.card.songId)) && ((bool1) || (bool2));
   }
   
-  public static void b(Context paramContext, String paramString)
+  public static void c(Context paramContext, String paramString)
   {
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    paramString = URLUtil.a(QVipProfileMusicBoxProcessor.a().jdField_b_of_type_JavaLangString, "uin", paramString);
+    paramString = URLUtil.a(QVipProfileMusicBoxProcessor.a().b, "uin", paramString);
     localIntent.setFlags(268435456);
     localIntent.putExtra("url", paramString);
     paramContext.startActivity(localIntent);
@@ -184,191 +184,116 @@ public class ProfileMusicBox
   
   public View a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131562024, null);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    if (this.c)
+    this.a = paramString;
+    this.c = LayoutInflater.from(paramContext).inflate(2131628450, null);
+    this.c.setOnClickListener(this);
+    if (this.j)
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368794).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131377856).setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView = ((AlphaClickableImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377856));
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131377706).setVisibility(8);
+      this.c.findViewById(2131435715).setOnClickListener(this);
+      this.c.findViewById(2131446333).setOnClickListener(this);
+      this.b = ((AlphaClickableImageView)this.c.findViewById(2131446333));
+      this.c.findViewById(2131446162).setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131377706).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368794).setVisibility(8);
+      this.c.findViewById(2131446162).setOnClickListener(this);
+      this.c.findViewById(2131435715).setVisibility(8);
     }
     a(2);
-    this.jdField_a_of_type_Int = AIOUtils.b(35.0F, paramContext.getResources());
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileMusicboxProfileMusicBoxController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileMusicboxProfileMusicBoxController = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    this.e = AIOUtils.b(35.0F, paramContext.getResources());
+    if (this.f == null) {
+      this.f = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).l();
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileMusicboxProfileMusicBoxController.a(this);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    if ((this.d) && (!this.c)) {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131377706).setVisibility(8);
-    }
+    this.f.a(this);
+    return this.c;
   }
   
   @SuppressLint({"NewApi"})
   public void a(int paramInt)
   {
-    if (this.c)
+    if (this.j)
     {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setImageResource(2130844797);
-        this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setContentDescription("暂停音乐");
+        this.b.setImageResource(2130846231);
+        this.b.setContentDescription("暂停音乐");
         return;
       }
-      this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setImageResource(2130844798);
-      this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setContentDescription("播放音乐");
+      this.b.setImageResource(2130846232);
+      this.b.setContentDescription("播放音乐");
       return;
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377706);
-    localTextView.setCompoundDrawablePadding(ViewUtils.b(4.0F));
+    TextView localTextView = (TextView)this.c.findViewById(2131446162);
+    localTextView.setCompoundDrawablePadding(ViewUtils.dpToPx(4.0F));
     if (paramInt == 1)
     {
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130850619, 0, 0, 0);
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130852417, 0, 0, 0);
       return;
     }
-    localTextView.setCompoundDrawablesWithIntrinsicBounds(2130850620, 0, 0, 0);
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", URLUtil.a(QVipProfileMusicBoxProcessor.a().jdField_a_of_type_JavaLangString, "uin", paramString));
-    paramContext.startActivity(localIntent);
-    int i;
-    if (a())
-    {
-      if (this.d) {
-        i = 2;
-      } else {
-        i = 1;
-      }
-    }
-    else {
-      i = 3;
-    }
-    ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A7D7", i, 0, "", "", "", "");
+    localTextView.setCompoundDrawablesWithIntrinsicBounds(2130852418, 0, 0, 0);
   }
   
   public void a(SongInfo paramSongInfo, boolean paramBoolean)
   {
     boolean bool = QLog.isColorLevel();
-    int i = 2;
+    int m = 2;
     if (bool)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("update :");
-      ((StringBuilder)localObject).append(paramSongInfo.c);
+      ((StringBuilder)localObject).append(paramSongInfo.e);
       QLog.e("ProfileMusicBox", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramSongInfo.jdField_b_of_type_Long != Long.parseLong(this.jdField_a_of_type_JavaLangString)) {
+    if (paramSongInfo.c != Long.parseLong(this.a)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = paramSongInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.c)
+    this.d = paramSongInfo;
+    this.g = paramBoolean;
+    if (this.j)
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377705)).setText(paramSongInfo.c);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377704)).setText(paramSongInfo.h);
-      a(paramSongInfo.e);
+      ((TextView)this.c.findViewById(2131446161)).setText(paramSongInfo.e);
+      ((TextView)this.c.findViewById(2131446160)).setText(paramSongInfo.j);
+      a(paramSongInfo.g);
       return;
     }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377706);
+    Object localObject = (TextView)this.c.findViewById(2131446162);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramSongInfo.c);
+    localStringBuilder.append(paramSongInfo.e);
     localStringBuilder.append("-");
-    localStringBuilder.append(paramSongInfo.h);
+    localStringBuilder.append(paramSongInfo.j);
     ((TextView)localObject).setText(localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
-      i = 1;
+    if (this.g) {
+      m = 1;
     }
-    a(i);
-  }
-  
-  public void a(ProfileCardInfo paramProfileCardInfo)
-  {
-    Object localObject1 = paramProfileCardInfo.card;
-    boolean bool1 = ((Card)localObject1).isVipOpen(EVIPSPEC.E_SP_SUPERVIP);
-    boolean bool2 = ((Card)localObject1).isVipOpen(EVIPSPEC.E_SP_BIGCLUB);
-    if ((!bool1) && (!bool2)) {
-      bool1 = false;
-    } else {
-      bool1 = true;
-    }
-    this.jdField_b_of_type_Boolean = bool1;
-    Object localObject2;
-    if (TextUtils.isEmpty(((Card)localObject1).songId))
-    {
-      a(true);
-    }
-    else
-    {
-      a(false);
-      localObject2 = QQPlayerService.b();
-      if ((localObject2 != null) && (((SongInfo)localObject2).jdField_b_of_type_Long == Long.parseLong(this.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = ((SongInfo)localObject2);
-        a(QQPlayerService.a());
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo.c = ((Card)localObject1).songName;
-        this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo.e = ((Card)localObject1).coverUrl;
-        this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo.h = ((Card)localObject1).singer;
-        this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo.g = ((Card)localObject1).songId;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo;
-        ((SongInfo)localObject1).jdField_b_of_type_Int = 10;
-        ((SongInfo)localObject1).jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      }
-      a(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo, ProfileMusicBoxController.a(Long.parseLong(this.jdField_a_of_type_JavaLangString)));
-    }
-    localObject1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378609);
-    if (paramProfileCardInfo.allInOne.pa != 0)
-    {
-      this.e = false;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(ProfileNameUtils.getCurCardName(paramProfileCardInfo));
-      ((StringBuilder)localObject2).append(((TextView)localObject1).getContext().getResources().getString(2131695143));
-      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
-    }
+    a(m);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_b_of_type_JavaLangString.equals(paramString)) {
+    if (this.h.equals(paramString)) {
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2130844796);
-    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2130844796);
+    localURLDrawableOptions.mLoadingDrawable = this.c.getContext().getResources().getDrawable(2130846230);
+    localURLDrawableOptions.mFailedDrawable = this.c.getContext().getResources().getDrawable(2130846230);
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    int i = 1;
-    paramString.setTag(new int[] { this.jdField_a_of_type_Int / 2 });
-    paramString.setDecodeHandler(URLDrawableDecodeHandler.y);
+    int m = 1;
+    paramString.setTag(new int[] { this.e / 2 });
+    paramString.setDecodeHandler(URLDrawableDecodeHandler.z);
     paramString.startDownload();
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131377856).setBackgroundDrawable(paramString);
-    if (!this.jdField_a_of_type_Boolean) {
-      i = 2;
+    this.c.findViewById(2131446333).setBackgroundDrawable(paramString);
+    if (!this.g) {
+      m = 2;
     }
-    a(i);
+    a(m);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
-    if (!this.c)
+    this.k = paramBoolean;
+    if (!this.j)
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377706);
+      TextView localTextView = (TextView)this.c.findViewById(2131446162);
       if (paramBoolean)
       {
         localTextView.setVisibility(8);
@@ -379,66 +304,141 @@ public class ProfileMusicBox
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131366232).setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131377856).setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131371621).setVisibility(8);
+      this.c.findViewById(2131432523).setVisibility(0);
+      this.c.findViewById(2131446333).setVisibility(8);
+      this.c.findViewById(2131439040).setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366232).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131377856).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131371621).setVisibility(0);
+    this.c.findViewById(2131432523).setVisibility(8);
+    this.c.findViewById(2131446333).setVisibility(0);
+    this.c.findViewById(2131439040).setVisibility(0);
+  }
+  
+  public void b()
+  {
+    if ((this.k) && (!this.j)) {
+      this.c.findViewById(2131446162).setVisibility(8);
+    }
+  }
+  
+  public void b(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", URLUtil.a(QVipProfileMusicBoxProcessor.a().a, "uin", paramString));
+    paramContext.startActivity(localIntent);
+    int m;
+    if (a())
+    {
+      if (this.k) {
+        m = 2;
+      } else {
+        m = 1;
+      }
+    }
+    else {
+      m = 3;
+    }
+    ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A7D7", m, 0, "", "", "", "");
+  }
+  
+  public void b(ProfileCardInfo paramProfileCardInfo)
+  {
+    Object localObject1 = paramProfileCardInfo.card;
+    boolean bool1 = ((Card)localObject1).isVipOpen(EVIPSPEC.E_SP_SUPERVIP);
+    boolean bool2 = ((Card)localObject1).isVipOpen(EVIPSPEC.E_SP_BIGCLUB);
+    if ((!bool1) && (!bool2)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    this.i = bool1;
+    Object localObject2;
+    if (TextUtils.isEmpty(((Card)localObject1).songId))
+    {
+      a(true);
+    }
+    else
+    {
+      a(false);
+      localObject2 = QQPlayerService.g();
+      if ((localObject2 != null) && (((SongInfo)localObject2).c == Long.parseLong(this.a)))
+      {
+        this.d = ((SongInfo)localObject2);
+        a(QQPlayerService.c());
+      }
+      else
+      {
+        this.d.e = ((Card)localObject1).songName;
+        this.d.g = ((Card)localObject1).coverUrl;
+        this.d.j = ((Card)localObject1).singer;
+        this.d.i = ((Card)localObject1).songId;
+        localObject1 = this.d;
+        ((SongInfo)localObject1).m = 10;
+        ((SongInfo)localObject1).c = Long.parseLong(this.a);
+      }
+      a(this.d, ProfileMusicBoxController.b(Long.parseLong(this.a)));
+    }
+    localObject1 = (TextView)this.c.findViewById(2131447238);
+    if (paramProfileCardInfo.allInOne.pa != 0)
+    {
+      this.l = false;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(ProfileNameUtils.getCurCardName(paramProfileCardInfo));
+      ((StringBuilder)localObject2).append(((TextView)localObject1).getContext().getResources().getString(2131892871));
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
+    }
   }
   
   public void onClick(View paramView)
   {
-    a();
-    if (this.d) {
-      a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    b();
+    if (this.k) {
+      b(paramView.getContext(), this.a);
     } else {
       switch (paramView.getId())
       {
       default: 
         break;
-      case 2131377706: 
-      case 2131377856: 
-        if (this.e)
+      case 2131446162: 
+      case 2131446333: 
+        if (this.l)
         {
           ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A7D8", 0, 0, "", "", "", "");
         }
         else
         {
-          String str = this.jdField_a_of_type_JavaLangString;
-          int i;
+          String str = this.a;
+          int m;
           if (a()) {
-            i = 1;
+            m = 1;
           } else {
-            i = 2;
+            m = 2;
           }
-          ReportController.b(null, "dc00898", "", str, "qq_vip", "0X800A7DD", i, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", str, "qq_vip", "0X800A7DD", m, 0, "", "", "", "");
         }
-        if ((!this.jdField_b_of_type_Boolean) && (this.e))
+        if ((!this.i) && (this.l))
         {
-          a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+          b(paramView.getContext(), this.a);
         }
-        else if (ProfileMusicBoxController.a(Long.parseLong(this.jdField_a_of_type_JavaLangString)))
+        else if (ProfileMusicBoxController.b(Long.parseLong(this.a)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqProfileMusicboxProfileMusicBoxController.n();
+          this.f.q();
           a(2);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqProfileMusicboxProfileMusicBoxController.a(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+          this.f.a(Long.parseLong(this.a), this.d);
         }
         break;
-      case 2131368794: 
-        b(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+      case 2131435715: 
+        c(paramView.getContext(), this.a);
         break;
-      case 2131365027: 
-      case 2131373111: 
-        if (this.e) {
-          a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+      case 2131431160: 
+      case 2131440714: 
+        if (this.l) {
+          b(paramView.getContext(), this.a);
         } else {
-          b(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+          c(paramView.getContext(), this.a);
         }
         break;
       }
@@ -448,7 +448,7 @@ public class ProfileMusicBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.musicbox.ProfileMusicBox
  * JD-Core Version:    0.7.0.1
  */

@@ -28,8 +28,6 @@ public class ActionMenuItem
   private static final int ENABLED = 16;
   private static final int EXCLUSIVE = 4;
   private static final int HIDDEN = 8;
-  private static final int NO_ICON = 0;
-  private final int mCategoryOrder;
   private MenuItem.OnMenuItemClickListener mClickListener;
   private CharSequence mContentDescription;
   private Context mContext;
@@ -38,7 +36,6 @@ public class ActionMenuItem
   private boolean mHasIconTint = false;
   private boolean mHasIconTintMode = false;
   private Drawable mIconDrawable;
-  private int mIconResId = 0;
   private ColorStateList mIconTintList = null;
   private PorterDuff.Mode mIconTintMode = null;
   private final int mId;
@@ -57,7 +54,6 @@ public class ActionMenuItem
     this.mContext = paramContext;
     this.mId = paramInt2;
     this.mGroup = paramInt1;
-    this.mCategoryOrder = paramInt3;
     this.mOrdering = paramInt4;
     this.mTitle = paramCharSequence;
   }
@@ -327,7 +323,6 @@ public class ActionMenuItem
   
   public MenuItem setIcon(int paramInt)
   {
-    this.mIconResId = paramInt;
     this.mIconDrawable = ContextCompat.getDrawable(this.mContext, paramInt);
     applyIconTint();
     return this;
@@ -336,7 +331,6 @@ public class ActionMenuItem
   public MenuItem setIcon(Drawable paramDrawable)
   {
     this.mIconDrawable = paramDrawable;
-    this.mIconResId = 0;
     applyIconTint();
     return this;
   }

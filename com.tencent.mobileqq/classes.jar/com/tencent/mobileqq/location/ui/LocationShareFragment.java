@@ -43,57 +43,57 @@ import mqq.os.MqqHandler;
 public class LocationShareFragment
   extends QPublicBaseFragment
 {
-  private static long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
-  private HeadSetView jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
-  private LocationShareController jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController;
-  private MapWidget jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+  private static long d;
+  private MapWidget a;
+  private View b;
+  private LocationShareController c;
+  private LocationRoom.RoomKey e;
+  private HeadSetView f;
   
   private void a()
   {
     Object localObject1 = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
     Object localObject2 = getActivity().getIntent();
     int i = ((Intent)localObject2).getIntExtra("FROM_KEY", -1);
-    LocationHandler.a().a(i);
+    LocationHandler.a().b(i);
     String str = ((Intent)localObject2).getStringExtra("uin");
     int j = ((Intent)localObject2).getIntExtra("uintype", -1);
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = new LocationRoom.RoomKey(j, str);
+    this.e = new LocationRoom.RoomKey(j, str);
     localObject2 = ((ILifeCycleFragmentInjectApi)QRoute.api(ILifeCycleFragmentInjectApi.class)).checkAndAddLifeCycleFragment(getActivity());
-    Object localObject3 = (LocationShareViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject2, LocationShareViewModel.a).get(LocationShareViewModel.class);
-    ((LocationShareViewModel)localObject3).a((AppInterface)localObject1, getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController = new LocationShareController((LocationShareViewModel)localObject3, (LifeCycleAndViewModelStoreOwner)localObject2);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController;
-    localObject3 = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
+    Object localObject3 = (LocationShareViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject2, LocationShareViewModel.d).get(LocationShareViewModel.class);
+    ((LocationShareViewModel)localObject3).a((AppInterface)localObject1, getQBaseActivity(), this.e);
+    this.c = new LocationShareController((LocationShareViewModel)localObject3, (LifeCycleAndViewModelStoreOwner)localObject2);
+    localObject1 = this.f;
+    localObject2 = this.c;
+    localObject3 = this.e;
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
     ((HeadSetView)localObject1).setLocationController((LocationShareController)localObject2, (LocationRoom.RoomKey)localObject3, bool);
-    localObject1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370443);
+    localObject1 = (TextView)this.b.findViewById(2131437711);
     ((TextView)localObject1).setOnClickListener(new LocationShareFragment.1(this, j, str));
-    if (QQUIDelegate.b())
+    if (QQUIDelegate.c())
     {
-      ((TextView)localObject1).setBackgroundResource(2130840652);
+      ((TextView)localObject1).setBackgroundResource(2130841425);
       return;
     }
-    ((TextView)localObject1).setBackgroundResource(2130840655);
+    ((TextView)localObject1).setBackgroundResource(2130841428);
   }
   
   public static void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long < 1000L)
+    if (System.currentTimeMillis() - d < 1000L)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationShareFragment", 2, new Object[] { "launch: invoked. ", " sLastLaunchTime: ", Long.valueOf(jdField_a_of_type_Long) });
+        QLog.d("LocationShareFragment", 2, new Object[] { "launch: invoked. ", " sLastLaunchTime: ", Long.valueOf(d) });
       }
       return;
     }
-    jdField_a_of_type_Long = System.currentTimeMillis();
+    d = System.currentTimeMillis();
     if (MapUtils.a(paramActivity) <= 0)
     {
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131694461), 1).a();
+      QQToast.makeText(paramActivity, 1, paramActivity.getString(2131892141), 1).show();
       return;
     }
     ReportLocationHandler localReportLocationHandler = LocationShareLocationManager.a().a;
@@ -101,7 +101,7 @@ public class LocationShareFragment
     if (QLog.isColorLevel()) {
       QLog.d("LocationShareFragment", 2, new Object[] { "[location_fragment]launch: invoked. ", " notSameSession: ", Boolean.valueOf(bool) });
     }
-    if (!localReportLocationHandler.a())
+    if (!localReportLocationHandler.c())
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationShareFragment", 2, new Object[] { "launch: invoked. not reporting ", " from: ", Integer.valueOf(paramInt2) });
@@ -140,13 +140,13 @@ public class LocationShareFragment
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = ((MapWidget)this.jdField_a_of_type_AndroidViewView.findViewById(2131370428));
-    MapUtils.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, "地图 你正在共享位置");
-    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370435);
+    this.a = ((MapWidget)this.b.findViewById(2131437696));
+    MapUtils.a(this.a, "地图 你正在共享位置");
+    Object localObject = (ImageView)this.b.findViewById(2131437703);
     MapUtils.a((View)localObject, "在地图区回到我的位置");
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController.a(getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a, (ImageView)localObject, this.jdField_a_of_type_AndroidViewView.findViewById(2131370442), this.jdField_a_of_type_AndroidViewView.findViewById(2131370443), this.jdField_a_of_type_AndroidViewView.findViewById(2131363733));
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365378);
-    if (QQUIDelegate.b()) {
+    this.c.a(getQBaseActivity(), this.e, this.a, this.f.a, (ImageView)localObject, this.b.findViewById(2131437710), this.b.findViewById(2131437711), this.b.findViewById(2131429656));
+    localObject = this.b.findViewById(2131431578);
+    if (QQUIDelegate.c()) {
       ((View)localObject).setVisibility(0);
     } else {
       ((View)localObject).setVisibility(8);
@@ -175,7 +175,7 @@ public class LocationShareFragment
   {
     if (paramInt1 == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.c();
+      this.a.c();
       if (paramInt2 == -1)
       {
         paramIntent = (LocationRoom.Venue)paramIntent.getParcelableExtra("key_picked_location");
@@ -188,10 +188,10 @@ public class LocationShareFragment
         }
         if (paramIntent != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController.a(paramIntent);
+          this.c.a(paramIntent);
           return;
         }
-        QQToast.a(getActivity(), 1, 2131693816, 1).a();
+        QQToast.makeText(getActivity(), 1, 2131891392, 1).show();
         return;
       }
       if (paramInt2 == 1) {
@@ -202,9 +202,9 @@ public class LocationShareFragment
   
   public boolean onBackEvent()
   {
-    getActivity().overridePendingTransition(0, 2130772067);
+    getActivity().overridePendingTransition(0, 2130772092);
     QBaseActivity localQBaseActivity = getQBaseActivity();
-    if (((IFloatMapService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFloatMapService.class, "")).enterFloat(localQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey)) {
+    if (((IFloatMapService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFloatMapService.class, "")).enterFloat(localQBaseActivity, this.e)) {
       return super.onBackEvent();
     }
     return true;
@@ -222,11 +222,11 @@ public class LocationShareFragment
       paramViewGroup.append(getActivity());
       QLog.d("LocationShareFragment", 2, paramViewGroup.toString());
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559131, null);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView = ((HeadSetView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368080));
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a();
-    getActivity().overridePendingTransition(2130772065, 17432577);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.b = paramLayoutInflater.inflate(2131624875, null);
+    this.f = ((HeadSetView)this.b.findViewById(2131434932));
+    this.f.a();
+    getActivity().overridePendingTransition(2130772090, 17432577);
+    paramLayoutInflater = this.b;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -259,7 +259,7 @@ public class LocationShareFragment
     super.onFinish();
     Object localObject = getActivity();
     if (localObject != null) {
-      ((Activity)localObject).overridePendingTransition(0, 2130772067);
+      ((Activity)localObject).overridePendingTransition(0, 2130772092);
     }
   }
   
@@ -277,11 +277,11 @@ public class LocationShareFragment
       QLog.d("LocationShareFragment", 2, ((StringBuilder)localObject).toString());
     }
     super.onPause();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((MapWidget)localObject).b(false);
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.onPause();
+      this.a.onPause();
     }
     if (getActivity().isFinishing())
     {
@@ -302,15 +302,15 @@ public class LocationShareFragment
       QLog.d("LocationShareFragment", 2, ((StringBuilder)localObject).toString());
     }
     super.onResume();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((MapWidget)localObject).b(true);
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.onResume();
+      this.a.onResume();
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.b();
-    if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey != null) && (LocationShareLocationManager.a().a.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey))) {
-      LocationHandler.a().a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+    this.f.c();
+    if ((this.e != null) && (LocationShareLocationManager.a().a.a(this.e))) {
+      LocationHandler.a().a(this.e.a(), this.e.b());
     }
   }
   
@@ -326,7 +326,7 @@ public class LocationShareFragment
       QLog.d("LocationShareFragment", 2, ((StringBuilder)localObject).toString());
     }
     super.onStart();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+    Object localObject = this.a;
     if (localObject != null) {
       ((MapWidget)localObject).onStart();
     }
@@ -345,7 +345,7 @@ public class LocationShareFragment
       QLog.d("LocationShareFragment", 2, ((StringBuilder)localObject).toString());
     }
     super.onStop();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+    Object localObject = this.a;
     if (localObject != null) {
       ((MapWidget)localObject).onStop();
     }
@@ -384,14 +384,14 @@ public class LocationShareFragment
     boolean bool = super.overrideFinish();
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity != null) {
-      localFragmentActivity.overridePendingTransition(0, 2130772067);
+      localFragmentActivity.overridePendingTransition(0, 2130772092);
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationShareFragment
  * JD-Core Version:    0.7.0.1
  */

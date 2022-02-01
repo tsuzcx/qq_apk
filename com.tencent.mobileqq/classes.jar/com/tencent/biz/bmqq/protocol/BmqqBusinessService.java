@@ -18,14 +18,9 @@ import mqq.app.MobileQQ;
 public class BmqqBusinessService
   extends BaseProtocolCoder
 {
-  public static int a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "hrtxformqq" };
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
+  public static int a = 0;
+  private static final String[] c = { "hrtxformqq" };
+  private QQAppInterface b = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
   
   public static int a(byte[] paramArrayOfByte)
   {
@@ -116,7 +111,7 @@ public class BmqqBusinessService
   private byte[] a(ToServiceMsg paramToServiceMsg)
   {
     long l1 = ((Long)paramToServiceMsg.getAttributes().get("uin")).longValue();
-    long l2 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue();
+    long l2 = Long.valueOf(this.b.getCurrentAccountUin()).longValue();
     Object localObject = new mobileqq_bmqq.HRTXHead();
     ((mobileqq_bmqq.HRTXHead)localObject).uint64_qquin.set(l1);
     paramToServiceMsg = new mobileqq_bmqq.CorpcardReqHead();
@@ -130,8 +125,8 @@ public class BmqqBusinessService
     byte[] arrayOfByte = new byte[m];
     arrayOfByte[0] = 91;
     System.arraycopy(a(1001), 0, arrayOfByte, 1, 4);
-    int n = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = n + 1;
+    int n = a;
+    a = n + 1;
     System.arraycopy(a(n), 0, arrayOfByte, 5, 4);
     System.arraycopy(a(i), 0, arrayOfByte, 9, 4);
     System.arraycopy(a(j), 0, arrayOfByte, 13, 4);
@@ -143,7 +138,7 @@ public class BmqqBusinessService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return c;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)

@@ -20,29 +20,29 @@ class NowVideoView$2
   public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
   {
     paramString = this.a;
-    paramString.c = paramString.d;
+    paramString.o = paramString.p;
     paramString = this.a;
-    paramString.d = paramInt;
-    paramString = paramString.jdField_a_of_type_AndroidWidgetImageView;
-    boolean bool = NowVideoController.a().b;
+    paramString.p = paramInt;
+    paramString = paramString.t;
+    boolean bool = NowVideoController.a().c;
     if (paramInt == 3)
     {
-      if (this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation == null)
+      if (this.a.x == null)
       {
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(500L);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatCount(-1);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatMode(1);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setStartTime(-1L);
+        this.a.x = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+        this.a.x.setDuration(500L);
+        this.a.x.setRepeatCount(-1);
+        this.a.x.setRepeatMode(1);
+        this.a.x.setStartTime(-1L);
         paramQQLiveDrawableParams = new LinearInterpolator();
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(paramQQLiveDrawableParams);
+        this.a.x.setInterpolator(paramQQLiveDrawableParams);
       }
       if (paramString != null)
       {
         paramString.setVisibility(0);
-        paramString.setImageResource(2130843371);
+        paramString.setImageResource(2130844325);
         paramString.clearAnimation();
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new NowVideoView.2.1(this, paramString));
+        this.a.m.post(new NowVideoView.2.1(this, paramString));
       }
     }
     else if (paramInt == 0)
@@ -50,7 +50,7 @@ class NowVideoView$2
       if (paramString != null)
       {
         paramString.clearAnimation();
-        paramString.setImageResource(2130843373);
+        paramString.setImageResource(2130844327);
         paramString.setVisibility(0);
       }
     }
@@ -59,7 +59,7 @@ class NowVideoView$2
       if ((paramString != null) && (!bool))
       {
         paramString.clearAnimation();
-        paramString.setImageResource(2130843373);
+        paramString.setImageResource(2130844327);
         paramString.setVisibility(0);
       }
     }
@@ -71,8 +71,8 @@ class NowVideoView$2
         paramString.setVisibility(8);
       }
       paramString = this.a;
-      paramString.e = 0;
-      paramString.f = 0;
+      paramString.q = 0;
+      paramString.r = 0;
       paramString.a(1);
     }
     else if (paramInt == 5)
@@ -81,19 +81,19 @@ class NowVideoView$2
       {
         paramString.clearAnimation();
         paramString.setVisibility(0);
-        paramString.setImageResource(2130843369);
+        paramString.setImageResource(2130844323);
       }
       if (!NetworkUtil.isNetworkAvailable(this.a.getContext()))
       {
-        QQToast.a(this.a.getContext(), 1, 2131694425, 0).b(NowVideoView.g);
+        QQToast.makeText(this.a.getContext(), 1, 2131892105, 0).show(NowVideoView.s);
         return;
       }
-      if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.a.i.size() > 0)
       {
-        this.a.jdField_a_of_type_JavaUtilList.remove(this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1));
-        this.a.jdField_a_of_type_ComTencentBizNowNowVideoView$ThirdDataSourceAdapter.a();
+        this.a.i.remove(this.a.i.get(this.a.i.size() - 1));
+        this.a.w.a();
       }
-      if ((this.a.jdField_a_of_type_JavaUtilList.size() == 0) && ((paramObject instanceof QQLiveDrawable.ErrorInfo)))
+      if ((this.a.i.size() == 0) && ((paramObject instanceof QQLiveDrawable.ErrorInfo)))
       {
         paramString = (QQLiveDrawable.ErrorInfo)paramObject;
         paramQQLiveDrawableParams = new StringBuilder();
@@ -103,12 +103,12 @@ class NowVideoView$2
       }
     }
     paramString = this.a;
-    paramString.a(paramString.c, this.a.d);
+    paramString.a(paramString.o, this.a.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoView.2
  * JD-Core Version:    0.7.0.1
  */

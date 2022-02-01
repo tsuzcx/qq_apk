@@ -18,10 +18,10 @@ class SignTextEditFragment$8
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (!SignTextEditFragment.a(this.a).get()) {
+    if (!SignTextEditFragment.e(this.a).get()) {
       return;
     }
-    SignTextEditFragment.a(this.a).set(false);
+    SignTextEditFragment.e(this.a).set(false);
     if ((paramObject instanceof Integer))
     {
       int i = ((Integer)paramObject).intValue();
@@ -32,7 +32,7 @@ class SignTextEditFragment$8
         }
         paramObservable = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
         paramObject = new StringBuilder();
-        paramObject.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramObject.append(this.a.r.getCurrentAccountUin());
         paramObject.append("new_signature_version_826");
         if (paramObservable.getBoolean(paramObject.toString(), true))
         {
@@ -41,17 +41,17 @@ class SignTextEditFragment$8
         else
         {
           paramObservable = this.a;
-          paramObservable.a(100, SignTextEditFragment.a(paramObservable));
+          paramObservable.a(100, SignTextEditFragment.b(paramObservable));
         }
-        SignatureManagerForTool.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
+        SignatureManagerForTool.a().deleteObserver(this.a.z);
         return;
       }
-      paramObservable = SignatureManagerForTool.a().a(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-      if ((paramObservable != null) && (!TextUtils.isEmpty(paramObservable.a)) && (Integer.parseInt(paramObservable.a) > 0) && (paramObservable.f < 2))
+      paramObservable = SignatureManagerForTool.a().a(this.a.p.tplId);
+      if ((paramObservable != null) && (!TextUtils.isEmpty(paramObservable.b)) && (Integer.parseInt(paramObservable.b) > 0) && (paramObservable.B < 2))
       {
         paramObservable = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
         paramObject = new StringBuilder();
-        paramObject.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramObject.append(this.a.r.getCurrentAccountUin());
         paramObject.append("new_signature_version_826");
         if (paramObservable.getBoolean(paramObject.toString(), true)) {
           SignatureEditManager.a(this.a.getBaseActivity(), this.a.getBaseActivity().app, 0, "signature_chouti");
@@ -60,15 +60,15 @@ class SignTextEditFragment$8
       else
       {
         paramObservable = this.a;
-        paramObservable.a(100, SignTextEditFragment.a(paramObservable));
+        paramObservable.a(100, SignTextEditFragment.b(paramObservable));
       }
-      SignatureManagerForTool.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
+      SignatureManagerForTool.a().deleteObserver(this.a.z);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.8
  * JD-Core Version:    0.7.0.1
  */

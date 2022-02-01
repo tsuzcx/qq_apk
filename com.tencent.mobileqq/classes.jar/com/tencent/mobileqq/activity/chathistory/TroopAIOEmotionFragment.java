@@ -40,37 +40,35 @@ public class TroopAIOEmotionFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener, MsgRevokeListener, ChatHistoryEmotionView.OperateCallBack
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private ChatHistoryEmotionView jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView;
-  private SeparateForward jdField_a_of_type_ComTencentMobileqqActivityChathistorySeparateForward;
-  private List<EmotionPreviewData> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
+  private RelativeLayout a;
   private ImageView b;
+  private ImageView c;
+  private View d;
+  private ChatHistoryEmotionView e;
+  private boolean f = false;
+  private List<EmotionPreviewData> g;
+  private SeparateForward h;
   
-  private void c()
+  private void d()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    setRightButton(2131689937, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.f();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    this.f = false;
+    this.d.setVisibility(8);
+    setRightButton(2131886578, this);
+    this.e.h();
+    Object localObject = this.g;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.g.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((EmotionPreviewData)((Iterator)localObject).next()).jdField_a_of_type_Boolean = false;
+        ((EmotionPreviewData)((Iterator)localObject).next()).b = false;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.g.clear();
     }
   }
   
-  public void a() {}
-  
   public void a(long paramLong)
   {
-    ChatHistoryEmotionView localChatHistoryEmotionView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView;
+    ChatHistoryEmotionView localChatHistoryEmotionView = this.e;
     if (localChatHistoryEmotionView != null) {
       localChatHistoryEmotionView.a(paramLong);
     }
@@ -78,20 +76,20 @@ public class TroopAIOEmotionFragment
   
   public void a(EmotionPreviewData paramEmotionPreviewData)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.g == null) {
+      this.g = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramEmotionPreviewData);
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+    this.g.add(paramEmotionPreviewData);
+    if (this.g.size() == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
       this.b.setEnabled(true);
+      this.c.setEnabled(true);
     }
   }
   
   public boolean a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.g;
     boolean bool = false;
     int i;
     if (localList != null) {
@@ -107,57 +105,59 @@ public class TroopAIOEmotionFragment
       if (QLog.isColorLevel()) {
         QLog.d("IphoneTitleBarFragment", 2, "isOverLimit");
       }
-      FMToastUtil.a(2131692438);
+      FMToastUtil.a(2131889426);
     }
     return bool;
   }
   
-  public void b()
-  {
-    ThreadManager.excute(new TroopAIOEmotionFragment.2(this), 32, null, true);
-  }
+  public void b() {}
   
   public void b(EmotionPreviewData paramEmotionPreviewData)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.g;
     if (localList == null) {
       return;
     }
     localList.remove(paramEmotionPreviewData);
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (this.g.isEmpty())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839366);
-      this.b.setImageResource(2130839337);
+      this.b.setImageResource(2130839548);
+      this.c.setImageResource(2130839519);
     }
+  }
+  
+  public void c()
+  {
+    ThreadManager.excute(new TroopAIOEmotionFragment.2(this), 32, null, true);
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(this.mContentView.getContext().getResources().getString(2131691944));
-    setRightButton(2131689937, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131370627));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131367183));
-    this.b = ((ImageView)this.mContentView.findViewById(2131365474));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368198);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    setTitle(this.mContentView.getContext().getResources().getString(2131888911));
+    setRightButton(2131886578, this);
+    this.a = ((RelativeLayout)this.mContentView.findViewById(2131437901));
+    this.b = ((ImageView)this.mContentView.findViewById(2131433639));
+    this.c = ((ImageView)this.mContentView.findViewById(2131431689));
+    this.d = this.mContentView.findViewById(2131435063);
     this.b.setOnClickListener(this);
+    this.c.setOnClickListener(this);
     paramLayoutInflater = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView = new ChatHistoryEmotionView();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.a(getBaseActivity().getIntent(), paramLayoutInflater, getBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.a = this;
+    this.e = new ChatHistoryEmotionView();
+    this.e.a(getBaseActivity().getIntent(), paramLayoutInflater, getBaseActivity());
+    this.e.b = this;
     paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.a(), 0, paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySeparateForward = new SeparateForward(getBaseActivity(), 1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySeparateForward.a();
+    this.a.addView(this.e.a(), 0, paramLayoutInflater);
+    this.h = new SeparateForward(getBaseActivity(), 1);
+    this.h.a();
     AIOGalleryMsgRevokeMgr.a().a(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (this.jdField_a_of_type_Boolean))
+    if ((paramInt == 4) && (this.f))
     {
-      c();
+      d();
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
@@ -165,7 +165,7 @@ public class TroopAIOEmotionFragment
   
   protected int getContentLayoutId()
   {
-    return 2131558790;
+    return 2131624410;
   }
   
   public boolean isWrapContent()
@@ -177,7 +177,7 @@ public class TroopAIOEmotionFragment
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySeparateForward.a(paramIntent);
+      this.h.a(paramIntent);
     }
   }
   
@@ -185,66 +185,66 @@ public class TroopAIOEmotionFragment
   {
     int i = paramView.getId();
     Object localObject;
-    if (i != 2131365474)
+    if (i != 2131431689)
     {
-      if (i != 2131367183)
+      if (i != 2131433639)
       {
-        if (i == 2131369233) {
-          if (!this.jdField_a_of_type_Boolean)
+        if (i == 2131436211) {
+          if (!this.f)
           {
-            this.jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+            this.f = true;
             this.b.setEnabled(false);
-            this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-            setRightButton(2131690728, this);
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.e();
+            this.c.setEnabled(false);
+            this.d.setVisibility(0);
+            setRightButton(2131887648, this);
+            this.e.g();
           }
           else
           {
-            c();
+            d();
           }
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_JavaUtilList;
+        localObject = this.g;
         if ((localObject != null) && (!((List)localObject).isEmpty()))
         {
           if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
           {
-            QQToast.a(getBaseActivity(), 2131694475, 1).b(getResources().getDimensionPixelSize(2131299168));
+            QQToast.makeText(getBaseActivity(), 2131892157, 1).show(getResources().getDimensionPixelSize(2131299920));
           }
           else
           {
             localObject = new ArrayList();
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+            Iterator localIterator = this.g.iterator();
             while (localIterator.hasNext()) {
-              ((List)localObject).add((ChatMessage)((EmotionPreviewData)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+              ((List)localObject).add((ChatMessage)((EmotionPreviewData)localIterator.next()).a);
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySeparateForward.a((List)localObject);
-            c();
+            this.h.a((List)localObject);
+            d();
           }
         }
         else {
-          FMToastUtil.c(2131692435);
+          FMToastUtil.c(2131889423);
         }
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.g;
       if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
-        localObject = (ActionSheet)ActionSheetHelper.a(getBaseActivity(), null);
-        ((ActionSheet)localObject).setMainTitle(2131696093);
-        ((ActionSheet)localObject).addButton(getBaseActivity().getString(2131692273), 3);
-        ((ActionSheet)localObject).addCancelButton(2131690728);
+        localObject = (ActionSheet)ActionSheetHelper.b(getBaseActivity(), null);
+        ((ActionSheet)localObject).setMainTitle(2131893858);
+        ((ActionSheet)localObject).addButton(getBaseActivity().getString(2131889261), 3);
+        ((ActionSheet)localObject).addCancelButton(2131887648);
         ((ActionSheet)localObject).setOnButtonClickListener(new TroopAIOEmotionFragment.1(this, (ActionSheet)localObject));
         ((ActionSheet)localObject).show();
       }
       else
       {
-        FMToastUtil.c(2131692435);
+        FMToastUtil.c(2131889423);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -253,26 +253,26 @@ public class TroopAIOEmotionFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySeparateForward.b();
+    this.e.f();
+    this.h.b();
     AIOGalleryMsgRevokeMgr.a().b(this);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.c();
+    this.e.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView.b();
+    this.e.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment
  * JD-Core Version:    0.7.0.1
  */

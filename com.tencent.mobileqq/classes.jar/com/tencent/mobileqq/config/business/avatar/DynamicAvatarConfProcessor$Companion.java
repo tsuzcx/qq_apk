@@ -10,7 +10,7 @@ public final class DynamicAvatarConfProcessor$Companion
   @NotNull
   public final DynamicAvatarConfBean a()
   {
-    DynamicAvatarConfBean localDynamicAvatarConfBean = (DynamicAvatarConfBean)QConfigManager.a().a(726);
+    DynamicAvatarConfBean localDynamicAvatarConfBean = (DynamicAvatarConfBean)QConfigManager.b().b(726);
     if (localDynamicAvatarConfBean != null) {
       return localDynamicAvatarConfBean;
     }
@@ -19,7 +19,7 @@ public final class DynamicAvatarConfProcessor$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.avatar.DynamicAvatarConfProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

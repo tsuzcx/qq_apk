@@ -56,7 +56,7 @@ public class TroopRobotConfProcessor
       QLog.d("TroopRobotConfProcessor", 2, localStringBuilder.toString());
     }
     if (paramTroopRobotConfBean != null) {
-      ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).updateTroopRobotConfig(paramTroopRobotConfBean.a(), paramTroopRobotConfBean.a());
+      ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).updateTroopRobotConfig(paramTroopRobotConfBean.a(), paramTroopRobotConfBean.b());
     }
   }
   
@@ -98,7 +98,7 @@ public class TroopRobotConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.TroopRobotConfProcessor
  * JD-Core Version:    0.7.0.1
  */

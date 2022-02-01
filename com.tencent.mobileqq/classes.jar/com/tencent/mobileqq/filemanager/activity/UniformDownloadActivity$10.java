@@ -16,9 +16,9 @@ class UniformDownloadActivity$10
   {
     if ("1101070898".equals(paramString1))
     {
-      paramString1 = UniformDownloadActivity.a(this.a);
+      paramString1 = UniformDownloadActivity.e(this.a);
       UniformDownloadActivity.a(this.a, paramString1);
-      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
+      paramString1 = UniformDownloadActivity.b(this.a, paramString1);
       if (QLog.isColorLevel())
       {
         paramString2 = UniformDownloadActivity.a;
@@ -127,7 +127,7 @@ class UniformDownloadActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10
  * JD-Core Version:    0.7.0.1
  */

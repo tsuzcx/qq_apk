@@ -13,26 +13,26 @@ import mqq.app.AppService;
 public class ConnectNearbyProcService
   extends AppService
 {
-  private static NearbyProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private INearbyProxy jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyProxy;
-  private MainProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = new ConnectNearbyProcService.1(this);
+  private static NearbyProcessInterface b;
+  private static Object c = new Object();
+  private INearbyProxy a;
+  private MainProcessInterface d = new ConnectNearbyProcService.1(this);
   
   public static Message a(Message paramMessage)
   {
-    if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface != null)
+    if (b != null)
     {
       if (paramMessage == null) {
         return null;
       }
       try
       {
-        synchronized (jdField_a_of_type_JavaLangObject)
+        synchronized (c)
         {
-          if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) {
+          if (b == null) {
             return null;
           }
-          paramMessage = jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface.a(paramMessage);
+          paramMessage = b.a(paramMessage);
           return paramMessage;
         }
         return null;
@@ -44,23 +44,13 @@ public class ConnectNearbyProcService
     }
   }
   
-  private void a()
-  {
-    if ((this.app != null) && ((this.app instanceof QQAppInterface)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyProxy = NearbyManagerHelper.a((QQAppInterface)this.app);
-      return;
-    }
-    throw new IllegalArgumentException("not QQAppInterface. wrong.");
-  }
-  
   public static boolean a()
   {
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface != null)
+        if (b != null)
         {
           bool = true;
           return bool;
@@ -77,21 +67,21 @@ public class ConnectNearbyProcService
   
   public static Object[] a(int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) {
+    if (b == null) {
       return null;
     }
     try
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) {
+        if (b == null) {
           return null;
         }
-        paramVarArgs = jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
+        paramVarArgs = b.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
         if (paramVarArgs == null) {
           return null;
         }
-        paramVarArgs = paramVarArgs.a;
+        paramVarArgs = paramVarArgs.b;
         return paramVarArgs;
       }
       return null;
@@ -104,16 +94,26 @@ public class ConnectNearbyProcService
   
   private Message b(Message paramMessage)
   {
-    INearbyProxy localINearbyProxy = this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyProxy;
+    INearbyProxy localINearbyProxy = this.a;
     if (localINearbyProxy != null) {
       return localINearbyProxy.a(this, paramMessage);
     }
     return null;
   }
   
+  private void b()
+  {
+    if ((this.app != null) && ((this.app instanceof QQAppInterface)))
+    {
+      this.a = NearbyManagerHelper.a((QQAppInterface)this.app);
+      return;
+    }
+    throw new IllegalArgumentException("not QQAppInterface. wrong.");
+  }
+  
   private Object[] b(int paramInt, Object... paramVarArgs)
   {
-    INearbyProxy localINearbyProxy = this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyProxy;
+    INearbyProxy localINearbyProxy = this.a;
     if (localINearbyProxy != null) {
       return localINearbyProxy.a(this, paramInt, paramVarArgs);
     }
@@ -122,8 +122,8 @@ public class ConnectNearbyProcService
   
   public IBinder onBind(Intent paramIntent)
   {
-    a();
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface.asBinder();
+    b();
+    return this.d.asBinder();
   }
   
   public void onCreate()
@@ -133,20 +133,20 @@ public class ConnectNearbyProcService
   
   public boolean onUnbind(Intent paramIntent)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface = null;
+      b = null;
       if (QLog.isColorLevel()) {
         QLog.i("nearby_ipc_log_tag", 2, "ConnectNearbyProcService onUnbind.");
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyProxy = null;
+      this.a = null;
       return super.onUnbind(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService
  * JD-Core Version:    0.7.0.1
  */

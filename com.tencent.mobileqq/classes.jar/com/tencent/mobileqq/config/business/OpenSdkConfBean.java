@@ -7,9 +7,9 @@ import org.json.JSONObject;
 
 public class OpenSdkConfBean
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private boolean b = false;
+  private long c;
   
   public static OpenSdkConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -24,7 +24,7 @@ public class OpenSdkConfBean
         boolean bool2 = true;
         if (i < j)
         {
-          String str = paramArrayOfQConfItem[i].a;
+          String str = paramArrayOfQConfItem[i].b;
           if (TextUtils.isEmpty(str))
           {
             SSOLog.a("OpenSdkConfProcessor", new Object[] { "parse, content empty" });
@@ -36,13 +36,13 @@ public class OpenSdkConfBean
             if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) == 1)
             {
               bool1 = true;
-              localOpenSdkConfBean.jdField_a_of_type_Boolean = bool1;
+              localOpenSdkConfBean.a = bool1;
             }
           }
           else
           {
             if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
-              localOpenSdkConfBean.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
+              localOpenSdkConfBean.c = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
             }
             if (localJSONObject.has("sdk_login_use_third_transform_pkg_name"))
             {
@@ -84,15 +84,15 @@ public class OpenSdkConfBean
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public boolean b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
   {
     return this.b;
   }
@@ -101,9 +101,9 @@ public class OpenSdkConfBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("serverShareImageEnable:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("timeout_duration:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("useThirdTransformPkgName:");
     localStringBuilder.append(this.b);
     return super.toString();
@@ -111,7 +111,7 @@ public class OpenSdkConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkConfBean
  * JD-Core Version:    0.7.0.1
  */

@@ -22,6 +22,11 @@ public class b
     setFilterStrength(0.5F);
   }
   
+  private int a(float paramFloat, int paramInt)
+  {
+    return Math.round(paramFloat * paramInt);
+  }
+  
   private void a()
   {
     TXCLog.d("TXBeautyManager", "applyBeautyParams");
@@ -32,9 +37,9 @@ public class b
       this.b.g(this.d.e);
       this.b.h(this.d.f);
       this.b.i(this.d.g);
-      this.b.k(this.d.h);
-      this.b.j(this.d.i);
-      this.b.l(this.d.j);
+      this.b.j(this.d.h);
+      this.b.l(this.d.i);
+      this.b.k(this.d.j);
       this.b.m(this.d.k);
       this.b.n(this.d.l);
       this.b.o(this.d.m);
@@ -48,12 +53,13 @@ public class b
       this.b.w(this.d.u);
       this.b.x(this.d.v);
       this.b.y(this.d.w);
-      this.b.a(this.d.B, true);
+      this.b.z(this.d.x);
+      this.b.a(this.d.C, true);
     }
-    this.b.a(this.d.z);
     this.b.a(this.d.A);
-    this.b.a(this.d.x);
-    this.b.c(this.d.y);
+    this.b.a(this.d.B);
+    this.b.a(this.d.y);
+    this.b.c(this.d.z);
   }
   
   private void b(boolean paramBoolean)
@@ -93,16 +99,17 @@ public class b
     }
   }
   
-  public void setBeautyLevel(int paramInt)
+  public void setBeautyLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setBeautyLevel beautyLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.a = paramInt;
-    localObject = this.b;
-    if ((localObject != null) && (this.e)) {
-      ((d)localObject).c(paramInt);
+    localObject = this.d;
+    ((b.a)localObject).a = ((int)paramFloat);
+    d locald = this.b;
+    if ((locald != null) && (this.e)) {
+      locald.c(((b.a)localObject).a);
     }
   }
   
@@ -119,165 +126,183 @@ public class b
     }
   }
   
-  public void setChinLevel(int paramInt)
+  public void setChinLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setChinLevel chinLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.h = paramInt;
+    this.d.i = a(paramFloat, 15);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).k(paramInt);
+      ((d)localObject).l(this.d.i);
     }
   }
   
-  public void setEyeAngleLevel(int paramInt)
+  public void setEyeAngleLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setEyeAngleLevel eyeAngleLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.r = paramInt;
+    this.d.s = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).t(paramInt);
+      ((d)localObject).u(this.d.s);
     }
   }
   
-  public void setEyeDistanceLevel(int paramInt)
+  public void setEyeDistanceLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setEyeDistanceLevel eyeDistanceLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.q = paramInt;
+    this.d.r = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).s(paramInt);
+      ((d)localObject).t(this.d.r);
     }
   }
   
-  public void setEyeLightenLevel(int paramInt)
+  public void setEyeLightenLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setEyeLightenLevel eyeLightenLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.k = paramInt;
+    this.d.l = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).m(paramInt);
+      ((d)localObject).n(this.d.l);
     }
   }
   
-  public void setEyeScaleLevel(int paramInt)
+  public void setEyeScaleLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setEyeScaleLevel eyeScaleLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.e = paramInt;
+    this.d.e = a(paramFloat, 15);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).g(paramInt);
+      ((d)localObject).g(this.d.e);
     }
   }
   
-  public void setFaceBeautyLevel(int paramInt)
+  public void setFaceBeautyLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setFaceBeautyLevel faceBeautyLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.w = paramInt;
+    this.d.x = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).y(paramInt);
+      ((d)localObject).z(this.d.x);
     }
   }
   
-  public void setFaceShortLevel(int paramInt)
+  public void setFaceNarrowLevel(float paramFloat)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setFaceNarrowLevel faceNarrowLevel:");
+    ((StringBuilder)localObject).append(paramFloat);
+    TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
+    if (!this.a.a())
+    {
+      TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
+      return;
+    }
+    this.d.g = a(paramFloat, 15);
+    localObject = this.b;
+    if (localObject != null) {
+      ((d)localObject).i(this.d.g);
+    }
+  }
+  
+  public void setFaceShortLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setFaceShortLevel faceShortLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.i = paramInt;
+    this.d.j = a(paramFloat, 15);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).j(paramInt);
+      ((d)localObject).k(this.d.j);
     }
   }
   
-  public void setFaceSlimLevel(int paramInt)
+  public void setFaceSlimLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setFaceSlimLevel faceSlimLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.f = paramInt;
+    this.d.f = a(paramFloat, 15);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).h(paramInt);
+      ((d)localObject).h(this.d.f);
     }
   }
   
-  public void setFaceVLevel(int paramInt)
+  public void setFaceVLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setFaceVLevel faceVLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.g = paramInt;
+    this.d.h = a(paramFloat, 15);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).i(paramInt);
+      ((d)localObject).j(this.d.h);
     }
   }
   
@@ -287,7 +312,7 @@ public class b
     ((StringBuilder)localObject).append("setFilter image:");
     ((StringBuilder)localObject).append(paramBitmap);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.z = paramBitmap;
+    this.d.A = paramBitmap;
     localObject = this.b;
     if (localObject != null) {
       ((d)localObject).a(paramBitmap);
@@ -300,28 +325,28 @@ public class b
     ((StringBuilder)localObject).append("setFilterStrength strength:");
     ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.A = paramFloat;
+    this.d.B = paramFloat;
     localObject = this.b;
     if (localObject != null) {
       ((d)localObject).a(paramFloat);
     }
   }
   
-  public void setForeheadLevel(int paramInt)
+  public void setForeheadLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setForeheadLevel foreheadLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.p = paramInt;
+    this.d.q = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).r(paramInt);
+      ((d)localObject).s(this.d.q);
     }
   }
   
@@ -331,7 +356,7 @@ public class b
     ((StringBuilder)localObject).append("setGreenScreenFile path:");
     ((StringBuilder)localObject).append(paramString);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.B = paramString;
+    this.d.C = paramString;
     if (Build.VERSION.SDK_INT < 18)
     {
       TXCLog.e("TXBeautyManager", "setGreenScreenFile system version below 18");
@@ -348,21 +373,21 @@ public class b
     }
   }
   
-  public void setLipsThicknessLevel(int paramInt)
+  public void setLipsThicknessLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setLipsThicknessLevel lipsThicknessLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.v = paramInt;
+    this.d.w = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).x(paramInt);
+      ((d)localObject).y(this.d.w);
     }
   }
   
@@ -372,7 +397,7 @@ public class b
     ((StringBuilder)localObject).append("setMotionMute motionMute:");
     ((StringBuilder)localObject).append(paramBoolean);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.y = paramBoolean;
+    this.d.z = paramBoolean;
     localObject = this.b;
     if (localObject != null) {
       ((d)localObject).c(paramBoolean);
@@ -385,100 +410,100 @@ public class b
     ((StringBuilder)localObject).append("setMotionTmpl tmplPath:");
     ((StringBuilder)localObject).append(paramString);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.x = paramString;
+    this.d.y = paramString;
     localObject = this.b;
     if (localObject != null) {
       ((d)localObject).a(paramString);
     }
   }
   
-  public void setMouthShapeLevel(int paramInt)
+  public void setMouthShapeLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setMouthShapeLevel mouthShapeLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.s = paramInt;
+    this.d.t = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).u(paramInt);
+      ((d)localObject).v(this.d.t);
     }
   }
   
-  public void setNosePositionLevel(int paramInt)
+  public void setNosePositionLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setNosePositionLevel nosePositionLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.u = paramInt;
+    this.d.v = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).w(paramInt);
+      ((d)localObject).x(this.d.v);
     }
   }
   
-  public void setNoseSlimLevel(int paramInt)
+  public void setNoseSlimLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setNoseSlimLevel noseSlimLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.j = paramInt;
+    this.d.k = a(paramFloat, 15);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).l(paramInt);
+      ((d)localObject).m(this.d.k);
     }
   }
   
-  public void setNoseWingLevel(int paramInt)
+  public void setNoseWingLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setNoseWingLevel noseWingLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.t = paramInt;
+    this.d.u = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).v(paramInt);
+      ((d)localObject).w(this.d.u);
     }
   }
   
-  public void setPounchRemoveLevel(int paramInt)
+  public void setPounchRemoveLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setPounchRemoveLevel pounchRemoveLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.n = paramInt;
+    this.d.o = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).p(paramInt);
+      ((d)localObject).q(this.d.o);
     }
   }
   
@@ -490,89 +515,91 @@ public class b
     }
   }
   
-  public void setRuddyLevel(int paramInt)
+  public void setRuddyLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setRuddyLevel ruddyLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.c = paramInt;
-    localObject = this.b;
-    if ((localObject != null) && (this.e)) {
-      ((d)localObject).e(paramInt);
+    localObject = this.d;
+    ((b.a)localObject).c = ((int)paramFloat);
+    d locald = this.b;
+    if ((locald != null) && (this.e)) {
+      locald.e(((b.a)localObject).c);
     }
   }
   
-  public void setSmileLinesRemoveLevel(int paramInt)
+  public void setSmileLinesRemoveLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setSmileLinesRemoveLevel smileLinesRemoveLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.o = paramInt;
+    this.d.p = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).q(paramInt);
+      ((d)localObject).r(this.d.p);
     }
   }
   
-  public void setToothWhitenLevel(int paramInt)
+  public void setToothWhitenLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setToothWhitenLevel toothWhitenLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.l = paramInt;
+    this.d.m = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).n(paramInt);
+      ((d)localObject).o(this.d.m);
     }
   }
   
-  public void setWhitenessLevel(int paramInt)
+  public void setWhitenessLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setWhitenessLevel whitenessLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
-    this.d.b = paramInt;
-    localObject = this.b;
-    if ((localObject != null) && (this.e)) {
-      ((d)localObject).d(paramInt);
+    localObject = this.d;
+    ((b.a)localObject).b = ((int)paramFloat);
+    d locald = this.b;
+    if ((locald != null) && (this.e)) {
+      locald.d(((b.a)localObject).b);
     }
   }
   
-  public void setWrinkleRemoveLevel(int paramInt)
+  public void setWrinkleRemoveLevel(float paramFloat)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setWrinkleRemoveLevel wrinkleRemoveLevel:");
-    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramFloat);
     TXCLog.d("TXBeautyManager", ((StringBuilder)localObject).toString());
     if (!this.a.a())
     {
       TXCLog.i("TXBeautyManager", "support EnterPrise above!!!");
       return;
     }
-    this.d.m = paramInt;
+    this.d.n = a(paramFloat, 10);
     localObject = this.b;
     if (localObject != null) {
-      ((d)localObject).o(paramInt);
+      ((d)localObject).p(this.d.n);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b
  * JD-Core Version:    0.7.0.1
  */

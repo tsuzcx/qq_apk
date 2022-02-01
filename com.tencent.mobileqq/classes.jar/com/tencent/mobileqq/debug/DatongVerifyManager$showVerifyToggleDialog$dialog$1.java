@@ -13,16 +13,16 @@ final class DatongVerifyManager$showVerifyToggleDialog$dialog$1
 {
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    String str = this.a.getText().toString();
     DatongVerifyManager.a.a(str);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("ACTION_TOGGLE_DATONG_VERIFY", str).apply();
+    this.b.edit().putString("ACTION_TOGGLE_DATONG_VERIFY", str).apply();
     paramDialogInterface.dismiss();
     DatongVerifyManager.a(DatongVerifyManager.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.DatongVerifyManager.showVerifyToggleDialog.dialog.1
  * JD-Core Version:    0.7.0.1
  */

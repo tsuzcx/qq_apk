@@ -13,12 +13,12 @@ class LSRecordPanel$5
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
     }
-    this.a.b = null;
+    this.a.f = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.5
  * JD-Core Version:    0.7.0.1
  */

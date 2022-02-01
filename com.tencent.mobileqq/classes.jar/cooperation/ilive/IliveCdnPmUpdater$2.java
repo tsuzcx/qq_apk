@@ -11,7 +11,7 @@ class IliveCdnPmUpdater$2
   public Boolean a()
   {
     boolean bool;
-    if ((IliveCdnPmUpdater.a(this.jdField_a_of_type_CooperationIliveIliveCdnPmUpdater).exists()) && (this.jdField_a_of_type_JavaIoFile == IliveCdnPmUpdater.a(this.jdField_a_of_type_CooperationIliveIliveCdnPmUpdater))) {
+    if ((IliveCdnPmUpdater.a(this.b).exists()) && (this.a == IliveCdnPmUpdater.a(this.b))) {
       bool = true;
     } else {
       bool = false;
@@ -21,7 +21,7 @@ class IliveCdnPmUpdater$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveCdnPmUpdater.2
  * JD-Core Version:    0.7.0.1
  */

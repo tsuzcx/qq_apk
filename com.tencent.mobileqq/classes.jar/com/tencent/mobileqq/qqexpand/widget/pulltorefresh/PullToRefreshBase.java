@@ -23,76 +23,60 @@ public abstract class PullToRefreshBase<T extends View>
   extends LinearLayout
   implements IPullToRefresh<T>
 {
-  private float jdField_a_of_type_Float;
-  public int a;
-  protected T a;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  protected LoadingLayoutBase a;
-  private PullToRefreshBase.AnimationStyle jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$AnimationStyle = PullToRefreshBase.AnimationStyle.getDefault();
-  private PullToRefreshBase.Mode jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = PullToRefreshBase.Mode.getDefault();
-  private PullToRefreshBase.OnPullEventListener<T> jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnPullEventListener;
-  private PullToRefreshBase.OnRefreshListener2<T> jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2;
-  private PullToRefreshBase.OnRefreshListener<T> jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener;
-  private PullToRefreshBase<T>.SmoothScrollRunnable jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$SmoothScrollRunnable;
-  private PullToRefreshBase.State jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State = PullToRefreshBase.State.RESET;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  public int b;
-  protected LoadingLayoutBase b;
-  private PullToRefreshBase.Mode jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode;
-  private boolean jdField_b_of_type_Boolean = true;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean = true;
-  private boolean e = true;
-  private boolean f = true;
-  private boolean g = true;
-  private boolean h = true;
+  private PullToRefreshBase.OnPullEventListener<T> A;
+  private PullToRefreshBase<T>.SmoothScrollRunnable B;
+  private int a;
+  private float b;
+  public int c = 0;
+  public int d = 0;
+  protected T e;
+  protected LoadingLayoutBase f;
+  protected LoadingLayoutBase g;
+  private float h;
+  private float i;
+  private float j;
+  private boolean k = false;
+  private PullToRefreshBase.State l = PullToRefreshBase.State.RESET;
+  private PullToRefreshBase.Mode m = PullToRefreshBase.Mode.getDefault();
+  private PullToRefreshBase.Mode n;
+  private FrameLayout o;
+  private boolean p = true;
+  private boolean q = false;
+  private boolean r = true;
+  private boolean s = true;
+  private boolean t = true;
+  private boolean u = true;
+  private boolean v = true;
+  private Interpolator w;
+  private PullToRefreshBase.AnimationStyle x = PullToRefreshBase.AnimationStyle.getDefault();
+  private PullToRefreshBase.OnRefreshListener<T> y;
+  private PullToRefreshBase.OnRefreshListener2<T> z;
   
   public PullToRefreshBase(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
     a(paramContext, null);
   }
   
   public PullToRefreshBase(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
     a(paramContext, paramAttributeSet);
   }
   
   public PullToRefreshBase(Context paramContext, PullToRefreshBase.Mode paramMode)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = paramMode;
+    this.m = paramMode;
     a(paramContext, null);
   }
   
   public PullToRefreshBase(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.AnimationStyle paramAnimationStyle)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = paramMode;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$AnimationStyle = paramAnimationStyle;
+    this.m = paramMode;
+    this.x = paramAnimationStyle;
     a(paramContext, null);
-  }
-  
-  private LinearLayout.LayoutParams a()
-  {
-    if (PullToRefreshBase.5.a[a().ordinal()] != 1) {
-      return new LinearLayout.LayoutParams(-1, -2);
-    }
-    return new LinearLayout.LayoutParams(-2, -1);
   }
   
   private final void a(int paramInt, long paramLong)
@@ -102,107 +86,136 @@ public abstract class PullToRefreshBase<T extends View>
   
   private final void a(int paramInt, long paramLong1, long paramLong2, PullToRefreshBase.OnSmoothScrollFinishedListener paramOnSmoothScrollFinishedListener)
   {
-    PullToRefreshBase.SmoothScrollRunnable localSmoothScrollRunnable = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$SmoothScrollRunnable;
+    PullToRefreshBase.SmoothScrollRunnable localSmoothScrollRunnable = this.B;
     if (localSmoothScrollRunnable != null) {
       localSmoothScrollRunnable.a();
     }
-    if (PullToRefreshBase.5.a[a().ordinal()] != 1) {}
-    for (int i = getScrollY();; i = getScrollX()) {
+    if (PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()] != 1) {}
+    for (int i1 = getScrollY();; i1 = getScrollX()) {
       break;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("PullToRefreshBase", 2, String.format("oldScroll:%d newScroll:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
+      QLog.i("PullToRefreshBase", 2, String.format("oldScroll:%d newScroll:%d", new Object[] { Integer.valueOf(i1), Integer.valueOf(paramInt) }));
     }
-    if (i != paramInt)
+    if (i1 != paramInt)
     {
-      if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {
-        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+      if (this.w == null) {
+        this.w = new DecelerateInterpolator();
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$SmoothScrollRunnable = new PullToRefreshBase.SmoothScrollRunnable(this, i, paramInt, paramLong1, paramOnSmoothScrollFinishedListener);
+      this.B = new PullToRefreshBase.SmoothScrollRunnable(this, i1, paramInt, paramLong1, paramOnSmoothScrollFinishedListener);
       if (paramLong2 > 0L)
       {
-        postDelayed(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$SmoothScrollRunnable, paramLong2);
+        postDelayed(this.B, paramLong2);
         return;
       }
-      post(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$SmoothScrollRunnable);
+      post(this.B);
     }
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (PullToRefreshBase.5.a[a().ordinal()] != 1) {
+    if (PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()] != 1) {
       setOrientation(1);
     } else {
       setOrientation(0);
     }
     setGravity(17);
-    this.jdField_c_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aO);
-    if (localTypedArray.hasValue(R.styleable.o)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = PullToRefreshBase.Mode.mapIntToValue(localTypedArray.getInteger(R.styleable.o, 0));
+    this.a = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aR);
+    if (localTypedArray.hasValue(R.styleable.bf)) {
+      this.m = PullToRefreshBase.Mode.mapIntToValue(localTypedArray.getInteger(R.styleable.bf, 0));
     }
-    if (localTypedArray.hasValue(R.styleable.jdField_c_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$AnimationStyle = PullToRefreshBase.AnimationStyle.mapIntToValue(localTypedArray.getInteger(R.styleable.jdField_c_of_type_Int, 0));
+    if (localTypedArray.hasValue(R.styleable.aT)) {
+      this.x = PullToRefreshBase.AnimationStyle.mapIntToValue(localTypedArray.getInteger(R.styleable.aT, 0));
     }
-    if (localTypedArray.hasValue(R.styleable.k)) {
-      this.jdField_a_of_type_Int = ((int)localTypedArray.getDimension(R.styleable.k, 0.0F));
+    if (localTypedArray.hasValue(R.styleable.bb)) {
+      this.c = ((int)localTypedArray.getDimension(R.styleable.bb, 0.0F));
     }
-    if (localTypedArray.hasValue(R.styleable.j)) {
-      this.jdField_b_of_type_Int = ((int)localTypedArray.getDimension(R.styleable.j, 0.0F));
+    if (localTypedArray.hasValue(R.styleable.ba)) {
+      this.d = ((int)localTypedArray.getDimension(R.styleable.ba, 0.0F));
     }
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramAttributeSet);
-    a(paramContext, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase = a(paramContext, PullToRefreshBase.Mode.PULL_FROM_START, localTypedArray);
-    this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase = a(paramContext, PullToRefreshBase.Mode.PULL_FROM_END, localTypedArray);
-    if (localTypedArray.hasValue(R.styleable.q))
+    this.e = b(paramContext, paramAttributeSet);
+    a(paramContext, this.e);
+    this.f = a(paramContext, PullToRefreshBase.Mode.PULL_FROM_START, localTypedArray);
+    this.g = a(paramContext, PullToRefreshBase.Mode.PULL_FROM_END, localTypedArray);
+    if (localTypedArray.hasValue(R.styleable.bh))
     {
-      paramContext = localTypedArray.getDrawable(R.styleable.q);
+      paramContext = localTypedArray.getDrawable(R.styleable.bh);
       if (paramContext != null) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramContext);
+        this.e.setBackgroundDrawable(paramContext);
       }
     }
-    else if (localTypedArray.hasValue(R.styleable.jdField_b_of_type_Int))
+    else if (localTypedArray.hasValue(R.styleable.aS))
     {
-      paramContext = localTypedArray.getDrawable(R.styleable.jdField_b_of_type_Int);
+      paramContext = localTypedArray.getDrawable(R.styleable.aS);
       if (paramContext != null) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramContext);
+        this.e.setBackgroundDrawable(paramContext);
       }
     }
-    if (localTypedArray.hasValue(R.styleable.p)) {
-      this.e = localTypedArray.getBoolean(R.styleable.p, true);
+    if (localTypedArray.hasValue(R.styleable.bg)) {
+      this.s = localTypedArray.getBoolean(R.styleable.bg, true);
     }
-    if (localTypedArray.hasValue(R.styleable.s)) {
-      this.jdField_c_of_type_Boolean = localTypedArray.getBoolean(R.styleable.s, false);
+    if (localTypedArray.hasValue(R.styleable.bj)) {
+      this.q = localTypedArray.getBoolean(R.styleable.bj, false);
     }
     a(localTypedArray);
     localTypedArray.recycle();
-    g();
+    k();
   }
   
   private void a(Context paramContext, T paramT)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramT, -1, -1);
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, new LinearLayout.LayoutParams(-1, -1));
+    this.o = new FrameLayout(paramContext);
+    this.o.addView(paramT, -1, -1);
+    a(this.o, new LinearLayout.LayoutParams(-1, -1));
   }
   
-  private int d()
+  private LinearLayout.LayoutParams getLoadingLayoutLayoutParams()
   {
-    if (PullToRefreshBase.5.a[a().ordinal()] != 1) {
+    if (PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()] != 1) {
+      return new LinearLayout.LayoutParams(-1, -2);
+    }
+    return new LinearLayout.LayoutParams(-2, -1);
+  }
+  
+  private int getMaximumPullScroll()
+  {
+    if (PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()] != 1) {
       return Math.round(getHeight() / 2.0F);
     }
     return Math.round(getWidth() / 2.0F);
   }
   
-  private boolean e()
+  private void l()
   {
-    int i = PullToRefreshBase.5.c[this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.ordinal()];
-    boolean bool = true;
-    if (i != 1)
+    PullToRefreshBase.OnRefreshListener localOnRefreshListener = this.y;
+    if (localOnRefreshListener != null)
     {
-      if (i != 2)
+      localOnRefreshListener.a(this);
+      return;
+    }
+    if (this.z != null) {
+      if ((this.n != PullToRefreshBase.Mode.PULL_FROM_START) && (this.n != PullToRefreshBase.Mode.MANUAL_REFRESH_ONLY))
       {
-        if (i != 4) {
+        if (this.n == PullToRefreshBase.Mode.PULL_FROM_END) {
+          this.z.b(this);
+        }
+      }
+      else {
+        this.z.a(this);
+      }
+    }
+  }
+  
+  private boolean m()
+  {
+    int i1 = PullToRefreshBase.5.c[this.m.ordinal()];
+    boolean bool = true;
+    if (i1 != 1)
+    {
+      if (i1 != 2)
+      {
+        if (i1 != 4) {
           return false;
         }
         if (!b())
@@ -219,197 +232,102 @@ public abstract class PullToRefreshBase<T extends View>
     return b();
   }
   
-  private void h()
-  {
-    PullToRefreshBase.OnRefreshListener localOnRefreshListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener;
-    if (localOnRefreshListener != null)
-    {
-      localOnRefreshListener.a(this);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2 != null) {
-      if ((this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode != PullToRefreshBase.Mode.PULL_FROM_START) && (this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode != PullToRefreshBase.Mode.MANUAL_REFRESH_ONLY))
-      {
-        if (this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode == PullToRefreshBase.Mode.PULL_FROM_END) {
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2.b(this);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2.a(this);
-      }
-    }
-  }
-  
-  private void i()
+  private void n()
   {
     float f1;
     float f2;
-    if (PullToRefreshBase.5.a[a().ordinal()] != 1)
+    if (PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()] != 1)
     {
-      f1 = this.jdField_d_of_type_Float;
-      f2 = this.jdField_b_of_type_Float;
+      f1 = this.j;
+      f2 = this.h;
     }
     else
     {
-      f1 = this.jdField_c_of_type_Float;
-      f2 = this.jdField_a_of_type_Float;
+      f1 = this.i;
+      f2 = this.b;
     }
-    int i;
-    int j;
-    if (PullToRefreshBase.5.c[this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.ordinal()] != 1)
+    int i1;
+    int i2;
+    if (PullToRefreshBase.5.c[this.n.ordinal()] != 1)
     {
-      if (this.g) {
-        i = Math.round(Math.min(f1 - f2, 0.0F) / 2.0F);
+      if (this.u) {
+        i1 = Math.round(Math.min(f1 - f2, 0.0F) / 2.0F);
       } else {
-        i = Math.round(Math.min(f1 - f2, 0.0F));
+        i1 = Math.round(Math.min(f1 - f2, 0.0F));
       }
-      j = b();
+      i2 = getHeaderSize();
     }
     else
     {
-      if (this.h) {
-        i = Math.round(Math.max(f1 - f2, 0.0F) / 2.0F);
+      if (this.v) {
+        i1 = Math.round(Math.max(f1 - f2, 0.0F) / 2.0F);
       } else {
-        i = Math.round(Math.max(f1 - f2, 0.0F));
+        i1 = Math.round(Math.max(f1 - f2, 0.0F));
       }
-      j = a();
+      i2 = getFooterSize();
     }
-    a(i);
-    if ((i != 0) && (!d()))
+    setHeaderScroll(i1);
+    if ((i1 != 0) && (!d()))
     {
-      f1 = Math.abs(i) / j;
-      if (PullToRefreshBase.5.c[this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.ordinal()] != 1) {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.a(f1);
+      f1 = Math.abs(i1) / i2;
+      if (PullToRefreshBase.5.c[this.n.ordinal()] != 1) {
+        this.f.a(f1);
       } else {
-        this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.a(f1);
+        this.g.a(f1);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State != PullToRefreshBase.State.PULL_TO_REFRESH) && (j >= Math.abs(i)))
+      if ((this.l != PullToRefreshBase.State.PULL_TO_REFRESH) && (i2 >= Math.abs(i1)))
       {
         a(PullToRefreshBase.State.PULL_TO_REFRESH, new boolean[0]);
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State == PullToRefreshBase.State.PULL_TO_REFRESH) && (j < Math.abs(i))) {
+      if ((this.l == PullToRefreshBase.State.PULL_TO_REFRESH) && (i2 < Math.abs(i1))) {
         a(PullToRefreshBase.State.RELEASE_TO_REFRESH, new boolean[0]);
       }
     }
   }
   
-  protected final int a()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.a();
-  }
-  
-  public final T a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  protected abstract T a(Context paramContext, AttributeSet paramAttributeSet);
-  
-  public final ILoadingLayout a()
-  {
-    return a(true, true);
-  }
-  
   public final ILoadingLayout a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return a(paramBoolean1, paramBoolean2);
-  }
-  
-  public final LoadingLayoutBase a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase;
+    return b(paramBoolean1, paramBoolean2);
   }
   
   protected LoadingLayoutBase a(Context paramContext, PullToRefreshBase.Mode paramMode, TypedArray paramTypedArray)
   {
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$AnimationStyle.createLoadingLayout(paramContext, paramMode, a(), paramTypedArray);
+    paramContext = this.x.createLoadingLayout(paramContext, paramMode, getPullToRefreshScrollDirection(), paramTypedArray);
     paramContext.setVisibility(4);
     return paramContext;
   }
   
-  protected LoadingLayoutProxy a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    LoadingLayoutProxy localLoadingLayoutProxy = new LoadingLayoutProxy();
-    if ((paramBoolean1) && (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showHeaderLoadingLayout())) {
-      localLoadingLayoutProxy.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase);
-    }
-    if ((paramBoolean2) && (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showFooterLoadingLayout())) {
-      localLoadingLayoutProxy.a(this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase);
-    }
-    return localLoadingLayoutProxy;
-  }
-  
-  public abstract PullToRefreshBase.Orientation a();
-  
-  public final PullToRefreshBase.State a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State;
-  }
-  
-  public final void a()
-  {
-    if (d()) {
-      a(PullToRefreshBase.State.RESET, new boolean[0]);
-    }
-  }
-  
   protected final void a(int paramInt)
   {
-    int i = d();
-    paramInt = Math.min(i, Math.max(-i, paramInt));
-    if (this.f) {
-      if (paramInt < 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setVisibility(0);
-      }
-      else if (paramInt > 0)
-      {
-        this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setVisibility(0);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setVisibility(4);
-        this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setVisibility(4);
-      }
-    }
-    i = PullToRefreshBase.5.a[a().ordinal()];
-    if (i != 1)
-    {
-      if (i != 2) {
-        return;
-      }
-      scrollTo(0, paramInt);
-      return;
-    }
-    scrollTo(paramInt, 0);
+    a(paramInt, getPullToRefreshScrollDuration());
   }
   
   protected final void a(int paramInt1, int paramInt2)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    int i = PullToRefreshBase.5.a[a().ordinal()];
-    if (i != 1)
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.o.getLayoutParams();
+    int i1 = PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()];
+    if (i1 != 1)
     {
-      if (i != 2) {
+      if (i1 != 2) {
         return;
       }
       if (localLayoutParams.height != paramInt2)
       {
         localLayoutParams.height = paramInt2;
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+        this.o.requestLayout();
       }
     }
     else if (localLayoutParams.width != paramInt1)
     {
       localLayoutParams.width = paramInt1;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+      this.o.requestLayout();
     }
   }
   
   protected final void a(int paramInt, PullToRefreshBase.OnSmoothScrollFinishedListener paramOnSmoothScrollFinishedListener)
   {
-    a(paramInt, c(), 0L, paramOnSmoothScrollFinishedListener);
+    a(paramInt, getPullToRefreshScrollDuration(), 0L, paramOnSmoothScrollFinishedListener);
   }
   
   protected void a(TypedArray paramTypedArray) {}
@@ -428,8 +346,8 @@ public abstract class PullToRefreshBase<T extends View>
   
   final void a(PullToRefreshBase.State paramState, boolean... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State = paramState;
-    switch (PullToRefreshBase.5.b[this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State.ordinal()])
+    this.l = paramState;
+    switch (PullToRefreshBase.5.b[this.l.ordinal()])
     {
     default: 
       break;
@@ -438,52 +356,52 @@ public abstract class PullToRefreshBase<T extends View>
       a(paramVarArgs[0]);
       break;
     case 3: 
-      d();
+      h();
       break;
     case 2: 
-      c();
+      g();
       break;
     case 1: 
-      e();
+      i();
     }
-    paramState = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnPullEventListener;
+    paramState = this.A;
     if (paramState != null) {
-      paramState.a(this, this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State, this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode);
+      paramState.a(this, this.l, this.n);
     }
   }
   
   protected void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showHeaderLoadingLayout()) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.f();
+    if (this.m.showHeaderLoadingLayout()) {
+      this.f.f();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showFooterLoadingLayout()) {
-      this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.f();
+    if (this.m.showFooterLoadingLayout()) {
+      this.g.f();
     }
     if (paramBoolean)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.p)
       {
         PullToRefreshBase.2 local2 = new PullToRefreshBase.2(this);
-        if (PullToRefreshBase.5.c[this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.ordinal()] != 1)
+        if (PullToRefreshBase.5.c[this.n.ordinal()] != 1)
         {
-          a(-b(), local2);
+          a(-getHeaderSize(), local2);
           return;
         }
-        a(a(), local2);
+        a(getFooterSize(), local2);
         return;
       }
-      b(0);
+      a(0);
       return;
     }
-    h();
+    l();
   }
   
   protected abstract boolean a();
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    View localView = a();
+    View localView = getRefreshableView();
     if ((localView instanceof ViewGroup))
     {
       ((ViewGroup)localView).addView(paramView, paramInt, paramLayoutParams);
@@ -492,162 +410,240 @@ public abstract class PullToRefreshBase<T extends View>
     throw new UnsupportedOperationException("Refreshable View is not a ViewGroup so can't addView");
   }
   
-  protected final int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.a();
-  }
+  protected abstract T b(Context paramContext, AttributeSet paramAttributeSet);
   
-  public final void b()
+  protected LoadingLayoutProxy b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.h();
-    this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.h();
-    postDelayed(new PullToRefreshBase.1(this), 1000L);
-  }
-  
-  protected final void b(int paramInt)
-  {
-    a(paramInt, c());
+    LoadingLayoutProxy localLoadingLayoutProxy = new LoadingLayoutProxy();
+    if ((paramBoolean1) && (this.m.showHeaderLoadingLayout())) {
+      localLoadingLayoutProxy.a(this.f);
+    }
+    if ((paramBoolean2) && (this.m.showFooterLoadingLayout())) {
+      localLoadingLayoutProxy.a(this.g);
+    }
+    return localLoadingLayoutProxy;
   }
   
   protected void b(Bundle paramBundle) {}
   
   protected abstract boolean b();
   
-  protected int c()
-  {
-    return 200;
-  }
-  
-  protected void c()
-  {
-    int i = PullToRefreshBase.5.c[this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.ordinal()];
-    if (i != 1)
-    {
-      if (i != 2) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.d();
-      return;
-    }
-    this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.d();
-  }
-  
   public final boolean c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.permitsPullToRefresh();
-  }
-  
-  protected void d()
-  {
-    int i = PullToRefreshBase.5.c[this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.ordinal()];
-    if (i != 1)
-    {
-      if (i != 2) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.e();
-      return;
-    }
-    this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.e();
+    return this.m.permitsPullToRefresh();
   }
   
   public final boolean d()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State == PullToRefreshBase.State.REFRESHING) || (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State == PullToRefreshBase.State.MANUAL_REFRESHING);
+    return (this.l == PullToRefreshBase.State.REFRESHING) || (this.l == PullToRefreshBase.State.MANUAL_REFRESHING);
   }
   
-  protected void e()
+  public final void e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.f = true;
-    b(0);
+    if (d()) {
+      a(PullToRefreshBase.State.RESET, new boolean[0]);
+    }
   }
   
-  protected final void f()
+  public final void f()
   {
-    int i1 = (int)(d() * 1.2F);
-    int m = getPaddingLeft();
-    int n = getPaddingTop();
-    int j = getPaddingRight();
-    int k = getPaddingBottom();
-    int i = PullToRefreshBase.5.a[a().ordinal()];
-    if (i != 1)
+    this.f.h();
+    this.g.h();
+    postDelayed(new PullToRefreshBase.1(this), 1000L);
+  }
+  
+  protected void g()
+  {
+    int i1 = PullToRefreshBase.5.c[this.n.ordinal()];
+    if (i1 != 1)
     {
-      if (i == 2)
+      if (i1 != 2) {
+        return;
+      }
+      this.f.d();
+      return;
+    }
+    this.g.d();
+  }
+  
+  public final PullToRefreshBase.Mode getCurrentMode()
+  {
+    return this.n;
+  }
+  
+  public final boolean getFilterTouchEvents()
+  {
+    return this.r;
+  }
+  
+  protected final LoadingLayoutBase getFooterLayout()
+  {
+    return this.g;
+  }
+  
+  protected final int getFooterSize()
+  {
+    return this.g.getContentSize();
+  }
+  
+  public final LoadingLayoutBase getHeaderLayout()
+  {
+    return this.f;
+  }
+  
+  protected final int getHeaderSize()
+  {
+    return this.f.getContentSize();
+  }
+  
+  public final ILoadingLayout getLoadingLayoutProxy()
+  {
+    return a(true, true);
+  }
+  
+  public final PullToRefreshBase.Mode getMode()
+  {
+    return this.m;
+  }
+  
+  public abstract PullToRefreshBase.Orientation getPullToRefreshScrollDirection();
+  
+  protected int getPullToRefreshScrollDuration()
+  {
+    return 200;
+  }
+  
+  protected int getPullToRefreshScrollDurationLonger()
+  {
+    return 325;
+  }
+  
+  public final T getRefreshableView()
+  {
+    return this.e;
+  }
+  
+  protected FrameLayout getRefreshableViewWrapper()
+  {
+    return this.o;
+  }
+  
+  public final boolean getShowViewWhileRefreshing()
+  {
+    return this.p;
+  }
+  
+  public final PullToRefreshBase.State getState()
+  {
+    return this.l;
+  }
+  
+  protected void h()
+  {
+    int i1 = PullToRefreshBase.5.c[this.n.ordinal()];
+    if (i1 != 1)
+    {
+      if (i1 != 2) {
+        return;
+      }
+      this.f.e();
+      return;
+    }
+    this.g.e();
+  }
+  
+  protected void i()
+  {
+    this.k = false;
+    this.t = true;
+    a(0);
+  }
+  
+  protected final void j()
+  {
+    int i6 = (int)(getMaximumPullScroll() * 1.2F);
+    int i4 = getPaddingLeft();
+    int i5 = getPaddingTop();
+    int i2 = getPaddingRight();
+    int i3 = getPaddingBottom();
+    int i1 = PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()];
+    if (i1 != 1)
+    {
+      if (i1 == 2)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showHeaderLoadingLayout())
+        if (this.m.showHeaderLoadingLayout())
         {
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setHeight(i1);
-          i = -i1;
+          this.f.setHeight(i6);
+          i1 = -i6;
         }
         else
         {
-          i = 0;
+          i1 = 0;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showFooterLoadingLayout())
+        if (this.m.showFooterLoadingLayout())
         {
-          this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setHeight(i1);
-          k = -i1;
-          n = i;
+          this.g.setHeight(i6);
+          i3 = -i6;
+          i5 = i1;
         }
         else
         {
-          k = 0;
-          n = i;
+          i3 = 0;
+          i5 = i1;
         }
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showHeaderLoadingLayout())
+      if (this.m.showHeaderLoadingLayout())
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setWidth(i1);
-        i = -i1;
+        this.f.setWidth(i6);
+        i1 = -i6;
       }
       else
       {
-        i = 0;
+        i1 = 0;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showFooterLoadingLayout())
+      if (this.m.showFooterLoadingLayout())
       {
-        this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.setWidth(i1);
-        j = -i1;
-        m = i;
+        this.g.setWidth(i6);
+        i2 = -i6;
+        i4 = i1;
       }
       else
       {
-        j = 0;
-        m = i;
+        i2 = 0;
+        i4 = i1;
       }
     }
-    setPadding(m, n, j, k);
+    setPadding(i4, i5, i2, i3);
   }
   
-  protected void g()
+  protected void k()
   {
-    Object localObject = a();
-    if (this == this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.getParent()) {
-      removeView(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase);
+    Object localObject = getLoadingLayoutLayoutParams();
+    if (this == this.f.getParent()) {
+      removeView(this.f);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showHeaderLoadingLayout())
+    if (this.m.showHeaderLoadingLayout())
     {
-      ((LinearLayout.LayoutParams)localObject).topMargin += this.jdField_a_of_type_Int;
-      ((LinearLayout.LayoutParams)localObject).bottomMargin += this.jdField_b_of_type_Int;
-      a(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase, 0, (ViewGroup.LayoutParams)localObject);
+      ((LinearLayout.LayoutParams)localObject).topMargin += this.c;
+      ((LinearLayout.LayoutParams)localObject).bottomMargin += this.d;
+      a(this.f, 0, (ViewGroup.LayoutParams)localObject);
     }
-    if (this == this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase.getParent()) {
-      removeView(this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase);
+    if (this == this.g.getParent()) {
+      removeView(this.g);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showFooterLoadingLayout()) {
-      a(this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase, (ViewGroup.LayoutParams)localObject);
+    if (this.m.showFooterLoadingLayout()) {
+      a(this.g, (ViewGroup.LayoutParams)localObject);
     }
-    f();
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode != PullToRefreshBase.Mode.BOTH) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode;
+    j();
+    if (this.m != PullToRefreshBase.Mode.BOTH) {
+      localObject = this.m;
     } else {
       localObject = PullToRefreshBase.Mode.PULL_FROM_START;
     }
-    this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = ((PullToRefreshBase.Mode)localObject);
+    this.n = ((PullToRefreshBase.Mode)localObject);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -655,72 +651,72 @@ public abstract class PullToRefreshBase<T extends View>
     if (!c()) {
       return false;
     }
-    int i = paramMotionEvent.getAction();
-    if ((i != 3) && (i != 1))
+    int i1 = paramMotionEvent.getAction();
+    if ((i1 != 3) && (i1 != 1))
     {
-      if ((i != 0) && (this.jdField_a_of_type_Boolean)) {
+      if ((i1 != 0) && (this.k)) {
         return true;
       }
       float f1;
-      if (i != 0)
+      if (i1 != 0)
       {
-        if (i == 2)
+        if (i1 == 2)
         {
-          if ((!this.jdField_c_of_type_Boolean) && (d())) {
+          if ((!this.q) && (d())) {
             return true;
           }
-          if (e())
+          if (m())
           {
             float f3 = paramMotionEvent.getY();
             float f4 = paramMotionEvent.getX();
             float f2;
-            if (PullToRefreshBase.5.a[a().ordinal()] != 1)
+            if (PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()] != 1)
             {
-              f1 = f3 - this.jdField_b_of_type_Float;
-              f2 = f4 - this.jdField_a_of_type_Float;
+              f1 = f3 - this.h;
+              f2 = f4 - this.b;
             }
             else
             {
-              f1 = f4 - this.jdField_a_of_type_Float;
-              f2 = f3 - this.jdField_b_of_type_Float;
+              f1 = f4 - this.b;
+              f2 = f3 - this.h;
             }
             float f5 = Math.abs(f1);
-            if ((f5 > this.jdField_c_of_type_Int) && ((!this.jdField_d_of_type_Boolean) || (f5 > Math.abs(f2)))) {
-              if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showHeaderLoadingLayout()) && (f1 >= 1.0F) && (a()))
+            if ((f5 > this.a) && ((!this.r) || (f5 > Math.abs(f2)))) {
+              if ((this.m.showHeaderLoadingLayout()) && (f1 >= 1.0F) && (a()))
               {
-                this.jdField_b_of_type_Float = f3;
-                this.jdField_a_of_type_Float = f4;
-                this.jdField_a_of_type_Boolean = true;
-                if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode == PullToRefreshBase.Mode.BOTH) {
-                  this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = PullToRefreshBase.Mode.PULL_FROM_START;
+                this.h = f3;
+                this.b = f4;
+                this.k = true;
+                if (this.m == PullToRefreshBase.Mode.BOTH) {
+                  this.n = PullToRefreshBase.Mode.PULL_FROM_START;
                 }
               }
-              else if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.showFooterLoadingLayout()) && (f1 <= -1.0F) && (b()))
+              else if ((this.m.showFooterLoadingLayout()) && (f1 <= -1.0F) && (b()))
               {
-                this.jdField_b_of_type_Float = f3;
-                this.jdField_a_of_type_Float = f4;
-                this.jdField_a_of_type_Boolean = true;
-                if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode == PullToRefreshBase.Mode.BOTH) {
-                  this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = PullToRefreshBase.Mode.PULL_FROM_END;
+                this.h = f3;
+                this.b = f4;
+                this.k = true;
+                if (this.m == PullToRefreshBase.Mode.BOTH) {
+                  this.n = PullToRefreshBase.Mode.PULL_FROM_END;
                 }
               }
             }
           }
         }
       }
-      else if (e())
+      else if (m())
       {
         f1 = paramMotionEvent.getY();
-        this.jdField_d_of_type_Float = f1;
-        this.jdField_b_of_type_Float = f1;
+        this.j = f1;
+        this.h = f1;
         f1 = paramMotionEvent.getX();
-        this.jdField_c_of_type_Float = f1;
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_a_of_type_Boolean = false;
+        this.i = f1;
+        this.b = f1;
+        this.k = false;
       }
-      return this.jdField_a_of_type_Boolean;
+      return this.k;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.k = false;
     return false;
   }
   
@@ -730,9 +726,9 @@ public abstract class PullToRefreshBase<T extends View>
     {
       paramParcelable = (Bundle)paramParcelable;
       setMode(PullToRefreshBase.Mode.mapIntToValue(paramParcelable.getInt("ptr_mode", 0)));
-      this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = PullToRefreshBase.Mode.mapIntToValue(paramParcelable.getInt("ptr_current_mode", 0));
-      this.jdField_c_of_type_Boolean = paramParcelable.getBoolean("ptr_disable_scrolling", false);
-      this.jdField_b_of_type_Boolean = paramParcelable.getBoolean("ptr_show_refreshing_view", true);
+      this.n = PullToRefreshBase.Mode.mapIntToValue(paramParcelable.getInt("ptr_current_mode", 0));
+      this.q = paramParcelable.getBoolean("ptr_disable_scrolling", false);
+      this.p = paramParcelable.getBoolean("ptr_show_refreshing_view", true);
       super.onRestoreInstanceState(paramParcelable.getParcelable("ptr_super"));
       PullToRefreshBase.State localState = PullToRefreshBase.State.mapIntToValue(paramParcelable.getInt("ptr_state", 0));
       if ((localState == PullToRefreshBase.State.REFRESHING) || (localState == PullToRefreshBase.State.MANUAL_REFRESHING)) {
@@ -756,11 +752,11 @@ public abstract class PullToRefreshBase<T extends View>
   {
     Bundle localBundle = new Bundle();
     b(localBundle);
-    localBundle.putInt("ptr_state", this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State.getIntValue());
-    localBundle.putInt("ptr_mode", this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.getIntValue());
-    localBundle.putInt("ptr_current_mode", this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode.getIntValue());
-    localBundle.putBoolean("ptr_disable_scrolling", this.jdField_c_of_type_Boolean);
-    localBundle.putBoolean("ptr_show_refreshing_view", this.jdField_b_of_type_Boolean);
+    localBundle.putInt("ptr_state", this.l.getIntValue());
+    localBundle.putInt("ptr_mode", this.m.getIntValue());
+    localBundle.putInt("ptr_current_mode", this.n.getIntValue());
+    localBundle.putBoolean("ptr_disable_scrolling", this.q);
+    localBundle.putBoolean("ptr_show_refreshing_view", this.p);
     localBundle.putParcelable("ptr_super", super.onSaveInstanceState());
     return localBundle;
   }
@@ -768,7 +764,7 @@ public abstract class PullToRefreshBase<T extends View>
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    f();
+    j();
     a(paramInt1, paramInt2);
     post(new PullToRefreshBase.3(this));
   }
@@ -778,58 +774,58 @@ public abstract class PullToRefreshBase<T extends View>
     if (!c()) {
       return false;
     }
-    if ((!this.jdField_c_of_type_Boolean) && (d())) {
+    if ((!this.q) && (d())) {
       return true;
     }
     if ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getEdgeFlags() != 0)) {
       return false;
     }
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (i != 1) {
-        if (i != 2)
+      if (i1 != 1) {
+        if (i1 != 2)
         {
-          if (i != 3) {
+          if (i1 != 3) {
             return false;
           }
         }
         else
         {
-          if (!this.jdField_a_of_type_Boolean) {
+          if (!this.k) {
             break label213;
           }
-          this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          i();
+          this.h = paramMotionEvent.getY();
+          this.b = paramMotionEvent.getX();
+          n();
           return true;
         }
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.k)
       {
-        this.jdField_a_of_type_Boolean = false;
-        if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$State == PullToRefreshBase.State.RELEASE_TO_REFRESH) && ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener != null) || (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2 != null)))
+        this.k = false;
+        if ((this.l == PullToRefreshBase.State.RELEASE_TO_REFRESH) && ((this.y != null) || (this.z != null)))
         {
           a(PullToRefreshBase.State.REFRESHING, new boolean[] { true });
           return true;
         }
         if (d())
         {
-          b(0);
+          a(0);
           return true;
         }
         a(PullToRefreshBase.State.RESET, new boolean[0]);
         return true;
       }
     }
-    else if (e())
+    else if (m())
     {
       float f1 = paramMotionEvent.getY();
-      this.jdField_d_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f1;
+      this.j = f1;
+      this.h = f1;
       f1 = paramMotionEvent.getX();
-      this.jdField_c_of_type_Float = f1;
-      this.jdField_a_of_type_Float = f1;
+      this.i = f1;
+      this.b = f1;
       return true;
     }
     label213:
@@ -843,39 +839,70 @@ public abstract class PullToRefreshBase<T extends View>
   
   public final void setFilterTouchEvents(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.r = paramBoolean;
   }
   
   public void setFooterLayout(LoadingLayoutBase paramLoadingLayoutBase)
   {
-    this.jdField_b_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase = paramLoadingLayoutBase;
-    g();
+    this.g = paramLoadingLayoutBase;
+    k();
   }
   
   public void setHasPullDownFriction(boolean paramBoolean)
   {
-    this.g = paramBoolean;
+    this.u = paramBoolean;
   }
   
   public void setHasPullUpFriction(boolean paramBoolean)
   {
-    this.h = paramBoolean;
+    this.v = paramBoolean;
   }
   
   public void setHeaderLayout(LoadingLayoutBase paramLoadingLayoutBase)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshLoadingLayoutBase = paramLoadingLayoutBase;
-    g();
+    this.f = paramLoadingLayoutBase;
+    k();
+  }
+  
+  protected final void setHeaderScroll(int paramInt)
+  {
+    int i1 = getMaximumPullScroll();
+    paramInt = Math.min(i1, Math.max(-i1, paramInt));
+    if (this.t) {
+      if (paramInt < 0)
+      {
+        this.f.setVisibility(0);
+      }
+      else if (paramInt > 0)
+      {
+        this.g.setVisibility(0);
+      }
+      else
+      {
+        this.f.setVisibility(4);
+        this.g.setVisibility(4);
+      }
+    }
+    i1 = PullToRefreshBase.5.a[getPullToRefreshScrollDirection().ordinal()];
+    if (i1 != 1)
+    {
+      if (i1 != 2) {
+        return;
+      }
+      scrollTo(0, paramInt);
+      return;
+    }
+    scrollTo(paramInt, 0);
   }
   
   public void setLastUpdatedLabel(CharSequence paramCharSequence)
   {
-    a().setLastUpdatedLabel(paramCharSequence);
+    getLoadingLayoutProxy().setLastUpdatedLabel(paramCharSequence);
   }
   
   public void setLoadingDrawable(Drawable paramDrawable)
   {
-    a().setLoadingDrawable(paramDrawable);
+    getLoadingLayoutProxy().setLoadingDrawable(paramDrawable);
   }
   
   public void setLoadingDrawable(Drawable paramDrawable, PullToRefreshBase.Mode paramMode)
@@ -885,38 +912,38 @@ public abstract class PullToRefreshBase<T extends View>
   
   public void setLongClickable(boolean paramBoolean)
   {
-    a().setLongClickable(paramBoolean);
+    getRefreshableView().setLongClickable(paramBoolean);
   }
   
   public final void setMode(PullToRefreshBase.Mode paramMode)
   {
-    if (paramMode != this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode)
+    if (paramMode != this.m)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = paramMode;
-      g();
+      this.m = paramMode;
+      k();
     }
   }
   
   public void setOnPullEventListener(PullToRefreshBase.OnPullEventListener<T> paramOnPullEventListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnPullEventListener = paramOnPullEventListener;
+    this.A = paramOnPullEventListener;
   }
   
   public final void setOnRefreshListener(PullToRefreshBase.OnRefreshListener2<T> paramOnRefreshListener2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2 = paramOnRefreshListener2;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener = null;
+    this.z = paramOnRefreshListener2;
+    this.y = null;
   }
   
   public final void setOnRefreshListener(PullToRefreshBase.OnRefreshListener<T> paramOnRefreshListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener = paramOnRefreshListener;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$OnRefreshListener2 = null;
+    this.y = paramOnRefreshListener;
+    this.z = null;
   }
   
   public void setPullLabel(CharSequence paramCharSequence)
   {
-    a().setPullLabel(paramCharSequence);
+    getLoadingLayoutProxy().setPullLabel(paramCharSequence);
   }
   
   public void setPullLabel(CharSequence paramCharSequence, PullToRefreshBase.Mode paramMode)
@@ -937,7 +964,7 @@ public abstract class PullToRefreshBase<T extends View>
   
   public final void setPullToRefreshOverScrollEnabled(boolean paramBoolean)
   {
-    this.e = paramBoolean;
+    this.s = paramBoolean;
   }
   
   public final void setRefreshing()
@@ -954,7 +981,7 @@ public abstract class PullToRefreshBase<T extends View>
   
   public void setRefreshingLabel(CharSequence paramCharSequence)
   {
-    a().setRefreshingLabel(paramCharSequence);
+    getLoadingLayoutProxy().setRefreshingLabel(paramCharSequence);
   }
   
   public void setRefreshingLabel(CharSequence paramCharSequence, PullToRefreshBase.Mode paramMode)
@@ -974,24 +1001,24 @@ public abstract class PullToRefreshBase<T extends View>
   
   public void setScrollAnimationInterpolator(Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.w = paramInterpolator;
   }
   
   public final void setScrollingWhileRefreshingEnabled(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.q = paramBoolean;
   }
   
   public void setSecondFooterLayout(View paramView) {}
   
   public final void setShowViewWhileRefreshing(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.pulltorefresh.PullToRefreshBase
  * JD-Core Version:    0.7.0.1
  */

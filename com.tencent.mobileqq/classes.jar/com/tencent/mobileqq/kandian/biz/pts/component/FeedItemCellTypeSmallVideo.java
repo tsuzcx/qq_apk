@@ -12,15 +12,15 @@ public class FeedItemCellTypeSmallVideo
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    this.l = new ComponentContentSmallVideo(this.e);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeSmallVideo
  * JD-Core Version:    0.7.0.1
  */

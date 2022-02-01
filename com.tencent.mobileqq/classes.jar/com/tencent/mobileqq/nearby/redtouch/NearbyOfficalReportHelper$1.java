@@ -15,10 +15,10 @@ class NearbyOfficalReportHelper$1
   
   public void run()
   {
-    Object localObject = ((TroopRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a();
+    Object localObject = ((TroopRedTouchManager)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).n();
     if (((NearbyRedNum)localObject).b > 0)
     {
-      String str3 = String.valueOf(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+      String str3 = String.valueOf(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
       String str1;
       if (((NearbyRedNum)localObject).d > 0) {
         str1 = "1";
@@ -36,10 +36,10 @@ class NearbyOfficalReportHelper$1
       } else {
         localObject = "0";
       }
-      ReportController.b(null, "dc00899", "grp_lbs", "", this.jdField_a_of_type_JavaLangString, this.b, 0, 0, str3, str1, str2, "");
+      ReportController.b(null, "dc00899", "grp_lbs", "", this.b, this.c, 0, 0, str3, str1, str2, "");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportLebaRedDotEvent op_name = ");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(" d1 = ");
       localStringBuilder.append(str3);
       localStringBuilder.append(" d2 = ");
@@ -54,7 +54,7 @@ class NearbyOfficalReportHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyOfficalReportHelper.1
  * JD-Core Version:    0.7.0.1
  */

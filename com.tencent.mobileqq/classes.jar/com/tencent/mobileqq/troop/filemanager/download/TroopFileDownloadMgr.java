@@ -49,40 +49,23 @@ public class TroopFileDownloadMgr
   extends Observable
   implements INetInfoHandler, TroopFileDownloadWorker.ITroopFileDownloadWorkerListener
 {
-  private static TroopFileDownloadMgr jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr;
-  private LinkedList<UUID> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<UUID, TroopFileDownloadWorker> jdField_a_of_type_JavaUtilMap = new HashMap();
-  protected boolean a;
-  private LinkedList<TroopFileDownloadWorker> b = new LinkedList();
-  
-  private TroopFileDownloadMgr()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private static TroopFileDownloadMgr b;
+  protected boolean a = false;
+  private Map<UUID, TroopFileDownloadWorker> c = new HashMap();
+  private LinkedList<UUID> d = new LinkedList();
+  private LinkedList<TroopFileDownloadWorker> e = new LinkedList();
   
   public static TroopFileDownloadMgr a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr == null) {
-        jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr = new TroopFileDownloadMgr();
+      if (b == null) {
+        b = new TroopFileDownloadMgr();
       }
-      TroopFileDownloadMgr localTroopFileDownloadMgr = jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr;
+      TroopFileDownloadMgr localTroopFileDownloadMgr = b;
       return localTroopFileDownloadMgr;
     }
     finally {}
-  }
-  
-  private String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" WS:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append(" QS:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilLinkedList.size());
-    localStringBuilder.append(" RS:");
-    localStringBuilder.append(this.b.size());
-    return localStringBuilder.toString();
   }
   
   private final void a(int paramInt, Object[] paramArrayOfObject)
@@ -105,9 +88,9 @@ public class TroopFileDownloadMgr
       return;
     }
     paramFileInfo = TroopFileTransferUtil.a();
-    if ((paramFileInfo != null) && (FileManagerUtil.a(paramItem.FileName) == 2) && (QFileUtils.a(paramFileInfo)))
+    if ((paramFileInfo != null) && (FileManagerUtil.c(paramItem.FileName) == 2) && (QFileUtils.a(paramFileInfo)))
     {
-      FileVideoDownloadManager.a(new VideoForTroop(paramFileInfo, paramItem.getInfo(paramLong))).a();
+      FileVideoDownloadManager.b(new VideoForTroop(paramFileInfo, paramItem.getInfo(paramLong))).c();
       return;
     }
     TroopFileTransferMgr.a(new TroopFileDownloadMgr.5(this, paramLong, paramItem, paramBundle), false);
@@ -133,7 +116,7 @@ public class TroopFileDownloadMgr
       paramFileInfo.append(str2);
       paramFileInfo.append("]");
       QLog.i("TroopFileDownloadMgr", 1, paramFileInfo.toString());
-      Object localObject2 = localQQAppInterface.getFileManagerDataCenter().a(paramItem.FileName, paramItem.ProgressTotal).iterator();
+      Object localObject2 = localQQAppInterface.getFileManagerDataCenter().c(paramItem.FileName, paramItem.ProgressTotal).iterator();
       paramFileInfo = (group_file_common.FileInfo)localObject1;
       while (((Iterator)localObject2).hasNext())
       {
@@ -168,8 +151,8 @@ public class TroopFileDownloadMgr
             }
             TroopFileDataCenter.a(paramLong, paramItem, 11);
             a(paramItem.getInfo(paramLong), str1, str2, paramItem.Sha3);
-            if (5 == FileManagerUtil.a(paramItem.FileName)) {
-              localQQAppInterface.getFileManagerEngine().a().a(paramLong, paramItem);
+            if (5 == FileManagerUtil.c(paramItem.FileName)) {
+              localQQAppInterface.getFileManagerEngine().i().a(paramLong, paramItem);
             }
             return true;
           }
@@ -183,11 +166,11 @@ public class TroopFileDownloadMgr
   
   private int b(UUID paramUUID, Bundle paramBundle)
   {
-    paramBundle = this.b.iterator();
+    paramBundle = this.e.iterator();
     while (paramBundle.hasNext())
     {
       TroopFileDownloadWorker localTroopFileDownloadWorker = (TroopFileDownloadWorker)paramBundle.next();
-      if (paramUUID.equals(localTroopFileDownloadWorker.a()))
+      if (paramUUID.equals(localTroopFileDownloadWorker.h()))
       {
         localTroopFileDownloadWorker.a(0);
         paramBundle.remove();
@@ -201,34 +184,34 @@ public class TroopFileDownloadMgr
     boolean bool;
     if (i == 0)
     {
-      paramBundle = (TroopFileDownloadWorker)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
+      paramBundle = (TroopFileDownloadWorker)this.c.remove(paramUUID);
       j = i;
       if (paramBundle != null)
       {
         paramBundle.a(0);
         j = i | 0x1;
       }
-      j |= this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID);
+      j |= this.d.remove(paramUUID);
     }
     if (bool)
     {
-      i = TroopFileTransferUtil.Log.a;
+      i = TroopFileTransferUtil.Log.b;
       paramBundle = new StringBuilder();
       paramBundle.append("[");
       paramBundle.append(paramUUID.toString());
       paramBundle.append("] stopDownload.");
-      paramBundle.append(a());
+      paramBundle.append(e());
       TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", i, paramBundle.toString());
     }
-    c();
+    d();
     return 0;
   }
   
-  private int c(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
+  private int d(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
   {
     if (a(paramItem.Id))
     {
-      i = TroopFileTransferUtil.Log.a;
+      i = TroopFileTransferUtil.Log.b;
       paramBundle = new StringBuilder();
       paramBundle.append("[");
       paramBundle.append(paramItem.Id.toString());
@@ -245,46 +228,46 @@ public class TroopFileDownloadMgr
     if (paramBundle == null) {
       return -3;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramItem.Id, paramBundle);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramItem.Id);
-    paramBundle.e();
-    int i = TroopFileTransferUtil.Log.a;
+    this.c.put(paramItem.Id, paramBundle);
+    this.d.add(paramItem.Id);
+    paramBundle.j();
+    int i = TroopFileTransferUtil.Log.b;
     paramBundle = new StringBuilder();
     paramBundle.append("[");
     paramBundle.append(paramItem.Id.toString());
     paramBundle.append("] startDownload filePath. ");
     paramBundle.append(paramItem.FilePath);
-    paramBundle.append(a());
+    paramBundle.append(e());
     TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", i, paramBundle.toString());
-    c();
+    d();
     return 0;
   }
   
-  private void c()
+  private void d()
   {
-    if (this.b.size() >= 2) {
+    if (this.e.size() >= 2) {
       return;
     }
-    while (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    while (this.d.size() > 0)
     {
-      Object localObject = (UUID)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-      localObject = (TroopFileDownloadWorker)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
+      Object localObject = (UUID)this.d.remove(0);
+      localObject = (TroopFileDownloadWorker)this.c.remove(localObject);
       if (localObject != null)
       {
-        this.b.add(localObject);
+        this.e.add(localObject);
         if (((TroopFileDownloadWorker)localObject).a()) {
           break;
         }
-        this.b.remove(localObject);
+        this.e.remove(localObject);
       }
     }
   }
   
-  private int d(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
+  private int e(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
   {
     if (a(paramItem.Id))
     {
-      i = TroopFileTransferUtil.Log.a;
+      i = TroopFileTransferUtil.Log.b;
       paramBundle = new StringBuilder();
       paramBundle.append("[");
       paramBundle.append(paramItem.Id.toString());
@@ -296,19 +279,31 @@ public class TroopFileDownloadMgr
     if (paramBundle == null) {
       return -3;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramItem.Id, paramBundle);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramItem.Id);
-    paramBundle.e();
-    int i = TroopFileTransferUtil.Log.a;
+    this.c.put(paramItem.Id, paramBundle);
+    this.d.add(paramItem.Id);
+    paramBundle.j();
+    int i = TroopFileTransferUtil.Log.b;
     paramBundle = new StringBuilder();
     paramBundle.append("[");
     paramBundle.append(paramItem.Id.toString());
     paramBundle.append("] startDownloadZipInnerFile filePath. ");
     paramBundle.append(paramItem.FilePath);
-    paramBundle.append(a());
+    paramBundle.append(e());
     TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", i, paramBundle.toString());
-    c();
+    d();
     return 0;
+  }
+  
+  private String e()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" WS:");
+    localStringBuilder.append(this.c.size());
+    localStringBuilder.append(" QS:");
+    localStringBuilder.append(this.d.size());
+    localStringBuilder.append(" RS:");
+    localStringBuilder.append(this.e.size());
+    return localStringBuilder.toString();
   }
   
   public int a(long paramLong, TroopFileTransferManager.Item paramItem)
@@ -322,7 +317,7 @@ public class TroopFileDownloadMgr
       if (paramItem == null) {
         return -3;
       }
-      if (!paramItem.a()) {
+      if (!paramItem.b()) {
         return -5;
       }
       return 0;
@@ -330,42 +325,20 @@ public class TroopFileDownloadMgr
     return -1;
   }
   
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
-  {
-    if ((paramLong != 0L) && (paramItem != null))
-    {
-      if (paramItem.Id == null)
-      {
-        TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "startDownload item.id null.");
-        return -2;
-      }
-      a(paramLong, paramItem, paramBundle);
-      return 0;
-    }
-    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "startDownload key param invaild.");
-    return -1;
-  }
-  
   public int a(UUID paramUUID, Bundle paramBundle)
   {
     if (paramUUID == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "stopUpload item.id null.");
+      TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "stopUpload item.id null.");
       return -2;
     }
     TroopFileTransferMgr.a(new TroopFileDownloadMgr.7(this, paramUUID, paramBundle), false);
     return 0;
   }
   
-  public void a()
-  {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "init");
-    ThreadManager.getSubThreadHandler().post(new TroopFileDownloadMgr.1(this));
-  }
-  
   protected void a(int paramInt)
   {
-    int i = TroopFileTransferUtil.Log.a;
+    int i = TroopFileTransferUtil.Log.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("failAll. reason:");
     localStringBuilder.append(paramInt);
@@ -375,29 +348,29 @@ public class TroopFileDownloadMgr
   
   protected void a(int paramInt, Set<Long> paramSet)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.e.iterator();
     TroopFileDownloadWorker localTroopFileDownloadWorker;
     while (localIterator.hasNext())
     {
       localTroopFileDownloadWorker = (TroopFileDownloadWorker)localIterator.next();
       localTroopFileDownloadWorker.a(paramInt);
       if (paramSet != null) {
-        paramSet.add(Long.valueOf(localTroopFileDownloadWorker.a()));
+        paramSet.add(Long.valueOf(localTroopFileDownloadWorker.i()));
       }
     }
-    this.b.clear();
-    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    this.e.clear();
+    localIterator = this.c.values().iterator();
     while (localIterator.hasNext())
     {
       localTroopFileDownloadWorker = (TroopFileDownloadWorker)localIterator.next();
       localTroopFileDownloadWorker.a(paramInt);
       if (paramSet != null) {
-        paramSet.add(Long.valueOf(localTroopFileDownloadWorker.a()));
+        paramSet.add(Long.valueOf(localTroopFileDownloadWorker.i()));
       }
     }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "stopAllInter");
+    this.c.clear();
+    this.d.clear();
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "stopAllInter");
   }
   
   protected void a(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
@@ -416,40 +389,40 @@ public class TroopFileDownloadMgr
     QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface == null)
     {
-      int i = TroopFileTransferUtil.Log.a;
+      int i = TroopFileTransferUtil.Log.b;
       paramString1 = new StringBuilder();
       paramString1.append("[");
-      paramString1.append(paramTroopFileStatusInfo.b);
+      paramString1.append(paramTroopFileStatusInfo.d);
       paramString1.append("] addFMEntity fail app=null ");
       TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", i, paramString1.toString());
       return;
     }
     FileManagerEntity localFileManagerEntity = FileManagerUtil.a(paramTroopFileStatusInfo);
     localFileManagerEntity.isReaded = true;
-    localFileManagerEntity.peerUin = String.valueOf(paramTroopFileStatusInfo.b);
-    localFileManagerEntity.peerNick = ContactUtils.h(localQQAppInterface, localFileManagerEntity.peerUin);
-    localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
+    localFileManagerEntity.peerUin = String.valueOf(paramTroopFileStatusInfo.d);
+    localFileManagerEntity.peerNick = ContactUtils.i(localQQAppInterface, localFileManagerEntity.peerUin);
+    localFileManagerEntity.srvTime = (MessageCache.c() * 1000L);
     localFileManagerEntity.setCloudType(3);
     localFileManagerEntity.bSend = false;
     localFileManagerEntity.status = 1;
     localFileManagerEntity.fProgress = 1.0F;
-    localFileManagerEntity.TroopUin = paramTroopFileStatusInfo.b;
+    localFileManagerEntity.TroopUin = paramTroopFileStatusInfo.d;
     localFileManagerEntity.strFileMd5 = paramString1;
     localFileManagerEntity.strFileSHA = paramString2;
     localFileManagerEntity.strFileSha3 = paramString3;
     if ((localFileManagerEntity.nFileType == 0) || (localFileManagerEntity.nFileType == 2))
     {
       if (TextUtils.isEmpty(localFileManagerEntity.strFileSha3)) {
-        localFileManagerEntity.strFileSha3 = FileHttpUtils.a(FileManagerUtil.b(paramTroopFileStatusInfo.a));
+        localFileManagerEntity.strFileSha3 = FileHttpUtils.a(FileManagerUtil.e(paramTroopFileStatusInfo.k));
       }
       if ((localFileManagerEntity.fileSize < 104857600L) && (TextUtils.isEmpty(localFileManagerEntity.strFileSHA))) {
-        localFileManagerEntity.strFileSHA = FileHttpUtils.a(FileManagerUtil.a(paramTroopFileStatusInfo.a));
+        localFileManagerEntity.strFileSHA = FileHttpUtils.a(FileManagerUtil.d(paramTroopFileStatusInfo.k));
       }
     }
-    localFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(FileManagerUtil.d(paramTroopFileStatusInfo.a));
+    localFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(FileManagerUtil.g(paramTroopFileStatusInfo.k));
     try
     {
-      localFileManagerEntity.localModifyTime = new VFSFile(paramTroopFileStatusInfo.a).lastModified();
+      localFileManagerEntity.localModifyTime = new VFSFile(paramTroopFileStatusInfo.k).lastModified();
       label277:
       localQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
       localFileManagerEntity.status = 1;
@@ -469,13 +442,13 @@ public class TroopFileDownloadMgr
   
   protected boolean a(UUID paramUUID)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext()) {
-      if (paramUUID.equals(((TroopFileDownloadWorker)localIterator.next()).a())) {
+      if (paramUUID.equals(((TroopFileDownloadWorker)localIterator.next()).h())) {
         return true;
       }
     }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramUUID);
+    return this.c.containsKey(paramUUID);
   }
   
   public int b(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
@@ -484,19 +457,57 @@ public class TroopFileDownloadMgr
     {
       if (paramItem.Id == null)
       {
-        TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "startDownloadZipInnerFile item.id null.");
+        TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "startDownload item.id null.");
         return -2;
       }
-      TroopFileTransferMgr.a(new TroopFileDownloadMgr.6(this, paramLong, paramItem, paramBundle), false);
+      a(paramLong, paramItem, paramBundle);
       return 0;
     }
-    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "startDownloadZipInnerFile key param invaild.");
+    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "startDownload key param invaild.");
     return -1;
   }
   
   public void b()
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "release");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "init");
+    ThreadManager.getSubThreadHandler().post(new TroopFileDownloadMgr.1(this));
+  }
+  
+  protected void b(UUID paramUUID, boolean paramBoolean, int paramInt, TroopFileDownloadWorker paramTroopFileDownloadWorker)
+  {
+    this.e.remove(paramTroopFileDownloadWorker);
+    int i = TroopFileTransferUtil.Log.b;
+    paramTroopFileDownloadWorker = new StringBuilder();
+    paramTroopFileDownloadWorker.append("[");
+    paramTroopFileDownloadWorker.append(paramUUID.toString());
+    paramTroopFileDownloadWorker.append("] onWorkDoneInter. bSuc:");
+    paramTroopFileDownloadWorker.append(paramBoolean);
+    paramTroopFileDownloadWorker.append(" errCode:");
+    paramTroopFileDownloadWorker.append(paramInt);
+    paramTroopFileDownloadWorker.append(e());
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", i, paramTroopFileDownloadWorker.toString());
+    d();
+  }
+  
+  public int c(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
+  {
+    if ((paramLong != 0L) && (paramItem != null))
+    {
+      if (paramItem.Id == null)
+      {
+        TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "startDownloadZipInnerFile item.id null.");
+        return -2;
+      }
+      TroopFileTransferMgr.a(new TroopFileDownloadMgr.6(this, paramLong, paramItem, paramBundle), false);
+      return 0;
+    }
+    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "startDownloadZipInnerFile key param invaild.");
+    return -1;
+  }
+  
+  public void c()
+  {
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "release");
     ThreadManager.getSubThreadHandler().post(new TroopFileDownloadMgr.2(this));
     if (Build.VERSION.SDK_INT == 19)
     {
@@ -506,42 +517,26 @@ public class TroopFileDownloadMgr
     TroopFileTransferMgr.a(new TroopFileDownloadMgr.3(this), true);
   }
   
-  protected void b(UUID paramUUID, boolean paramBoolean, int paramInt, TroopFileDownloadWorker paramTroopFileDownloadWorker)
-  {
-    this.b.remove(paramTroopFileDownloadWorker);
-    int i = TroopFileTransferUtil.Log.a;
-    paramTroopFileDownloadWorker = new StringBuilder();
-    paramTroopFileDownloadWorker.append("[");
-    paramTroopFileDownloadWorker.append(paramUUID.toString());
-    paramTroopFileDownloadWorker.append("] onWorkDoneInter. bSuc:");
-    paramTroopFileDownloadWorker.append(paramBoolean);
-    paramTroopFileDownloadWorker.append(" errCode:");
-    paramTroopFileDownloadWorker.append(paramInt);
-    paramTroopFileDownloadWorker.append(a());
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", i, paramTroopFileDownloadWorker.toString());
-    c();
-  }
-  
   public void onNetMobile2None()
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "onNetMobile2None");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "onNetMobile2None");
     a(3);
   }
   
   public void onNetMobile2Wifi(String paramString)
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "onNetMobile2Wifi");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "onNetMobile2Wifi");
   }
   
   public void onNetNone2Mobile(String paramString)
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "onNetNone2Mobile");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "onNetNone2Mobile");
     TroopFileTransferMgr.a(new TroopFileDownloadMgr.10(this), false);
   }
   
   public void onNetNone2Wifi(String paramString)
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "onNetNone2Wifi");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "onNetNone2Wifi");
   }
   
   public void onNetWifi2Mobile(String paramString)
@@ -551,13 +546,13 @@ public class TroopFileDownloadMgr
   
   public void onNetWifi2None()
   {
-    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "onNetWifi2None");
+    TroopFileTransferUtil.Log.c("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "onNetWifi2None");
     a(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,15 @@ import org.json.JSONObject;
 public class PobingDecoder
   implements QuickUpdateListener, Runnable
 {
-  int jdField_a_of_type_Int;
-  WeakReference<PobingDecoder.DecodeCallBack> jdField_a_of_type_JavaLangRefWeakReference;
-  HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
+  int a;
+  WeakReference<PobingDecoder.DecodeCallBack> b;
+  HashMap<Integer, String> c;
   
   public PobingDecoder(int paramInt, HashMap<Integer, String> paramHashMap, PobingDecoder.DecodeCallBack paramDecodeCallBack)
   {
-    this.jdField_a_of_type_Int = ((Integer)PobingManager.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).intValue();
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDecodeCallBack);
+    this.a = ((Integer)PobingManager.b.get(Integer.valueOf(paramInt))).intValue();
+    this.c = paramHashMap;
+    this.b = new WeakReference(paramDecodeCallBack);
     ThreadManagerV2.excute(this, 64, null, false);
   }
   
@@ -45,51 +45,51 @@ public class PobingDecoder
   
   public static PobingDecoder.BitmapsCache a(PobingDecoder.DecodeData paramDecodeData, boolean paramBoolean)
   {
-    if ((paramDecodeData != null) && (paramDecodeData.jdField_a_of_type_JavaUtilHashMap != null))
+    if ((paramDecodeData != null) && (paramDecodeData.c != null))
     {
-      if (paramDecodeData.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+      if (paramDecodeData.c.isEmpty()) {
         return null;
       }
       String str;
       if (paramBoolean) {
-        str = PobingManager.b(paramDecodeData.jdField_a_of_type_Int);
+        str = PobingManager.b(paramDecodeData.a);
       } else {
-        str = PobingManager.a(paramDecodeData.jdField_a_of_type_Int);
+        str = PobingManager.a(paramDecodeData.a);
       }
       PobingDecoder.BitmapsCache localBitmapsCache = a(str);
       if (localBitmapsCache != null) {
         return localBitmapsCache;
       }
       localBitmapsCache = new PobingDecoder.BitmapsCache();
-      Iterator localIterator = paramDecodeData.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      Iterator localIterator = paramDecodeData.c.keySet().iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        if (paramDecodeData.jdField_a_of_type_Int != 2004)
+        if (paramDecodeData.a != 2004)
         {
-          Object localObject = (String)paramDecodeData.jdField_a_of_type_JavaUtilHashMap.get(localInteger);
+          Object localObject = (String)paramDecodeData.c.get(localInteger);
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
             localObject = PobingUpdateCallback.sInstance.decodeBitmap((String)localObject);
             if (localObject == null)
             {
-              if (paramDecodeData.jdField_a_of_type_Int != 2000) {
+              if (paramDecodeData.a != 2000) {
                 return null;
               }
             }
             else {
-              localBitmapsCache.jdField_a_of_type_JavaUtilHashMap.put(localInteger, localObject);
+              localBitmapsCache.c.put(localInteger, localObject);
             }
           }
         }
       }
-      localBitmapsCache.jdField_a_of_type_Int = ((Integer)PobingManager.c.get(Integer.valueOf(paramDecodeData.jdField_a_of_type_Int))).intValue();
-      localBitmapsCache.jdField_b_of_type_Int = paramDecodeData.jdField_b_of_type_Int;
-      localBitmapsCache.jdField_b_of_type_JavaUtilHashMap = paramDecodeData.jdField_a_of_type_JavaUtilHashMap;
+      localBitmapsCache.a = ((Integer)PobingManager.c.get(Integer.valueOf(paramDecodeData.a))).intValue();
+      localBitmapsCache.b = paramDecodeData.b;
+      localBitmapsCache.d = paramDecodeData.c;
       GlobalImageCache.a.put(str, localBitmapsCache);
       paramDecodeData = new StringBuilder();
       paramDecodeData.append("troop_pobing,cache_add,");
-      paramDecodeData.append(localBitmapsCache.jdField_a_of_type_Int);
+      paramDecodeData.append(localBitmapsCache.a);
       QLog.d("PobingDecoder", 2, paramDecodeData.toString());
       return localBitmapsCache;
     }
@@ -100,7 +100,7 @@ public class PobingDecoder
   {
     paramString = (PobingDecoder.BitmapsCache)GlobalImageCache.a.get(paramString);
     if (paramString != null) {
-      paramString.jdField_a_of_type_Int = ((Integer)PobingManager.c.get(Integer.valueOf(paramString.jdField_a_of_type_Int))).intValue();
+      paramString.a = ((Integer)PobingManager.c.get(Integer.valueOf(paramString.a))).intValue();
     }
     return paramString;
   }
@@ -110,47 +110,47 @@ public class PobingDecoder
     Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject1 = new PobingDecoder.DecodeData();
     PobingUpdateCallback localPobingUpdateCallback = PobingUpdateCallback.sInstance;
-    if (!localPobingUpdateCallback.isCardExists(((QQAppInterface)localObject2).getApp(), this.jdField_a_of_type_Int))
+    if (!localPobingUpdateCallback.isCardExists(((QQAppInterface)localObject2).getApp(), this.a))
     {
       if (!paramBoolean)
       {
-        localPobingUpdateCallback.download(this.jdField_a_of_type_Int, this, false);
+        localPobingUpdateCallback.download(this.a, this, false);
         return;
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("troop_pobing,bitmaps still missing after download: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.e("PobingDecoder", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    Object localObject3 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Object localObject3 = this.c.entrySet().iterator();
     while (((Iterator)localObject3).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
-      String str = localPobingUpdateCallback.getFilePathById(((QQAppInterface)localObject2).getApp(), this.jdField_a_of_type_Int, (String)localEntry.getValue());
-      ((PobingDecoder.DecodeData)localObject1).jdField_a_of_type_JavaUtilHashMap.put(localEntry.getKey(), str);
+      String str = localPobingUpdateCallback.getFilePathById(((QQAppInterface)localObject2).getApp(), this.a, (String)localEntry.getValue());
+      ((PobingDecoder.DecodeData)localObject1).c.put(localEntry.getKey(), str);
     }
-    localObject2 = FileUtils.readFileContent(new File(localPobingUpdateCallback.getDir(((QQAppInterface)localObject2).getApp(), localPobingUpdateCallback.getScid(this.jdField_a_of_type_Int)), "config.json"));
+    localObject2 = FileUtils.readFileContent(new File(localPobingUpdateCallback.getDir(((QQAppInterface)localObject2).getApp(), localPobingUpdateCallback.getScid(this.a)), "config.json"));
     try
     {
-      ((PobingDecoder.DecodeData)localObject1).jdField_b_of_type_Int = Color.parseColor(new JSONObject((String)localObject2).getString("textColor"));
+      ((PobingDecoder.DecodeData)localObject1).b = Color.parseColor(new JSONObject((String)localObject2).getString("textColor"));
     }
     catch (Exception localException)
     {
-      ((PobingDecoder.DecodeData)localObject1).jdField_b_of_type_Int = a(this.jdField_a_of_type_Int);
+      ((PobingDecoder.DecodeData)localObject1).b = a(this.a);
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("content:");
       ((StringBuilder)localObject3).append((String)localObject2);
       QLog.e("PobingDecoder", 1, ((StringBuilder)localObject3).toString(), localException);
     }
-    ((PobingDecoder.DecodeData)localObject1).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localObject2 = (PobingDecoder.DecodeCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ((PobingDecoder.DecodeData)localObject1).a = this.a;
+    localObject2 = (PobingDecoder.DecodeCallBack)this.b.get();
     if (localObject2 != null) {
       ((PobingDecoder.DecodeCallBack)localObject2).a((PobingDecoder.DecodeData)localObject1);
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("troop_pobing,decode_callback,");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(this.a);
     QLog.d("PobingDecoder", 2, ((StringBuilder)localObject1).toString());
   }
   
@@ -180,7 +180,7 @@ public class PobingDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.trooppobing.PobingDecoder
  * JD-Core Version:    0.7.0.1
  */

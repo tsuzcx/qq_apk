@@ -179,14 +179,14 @@ public class EqqAccountDetailActivityImpl
     int j = (int)(this.density * 10.0F);
     int k = (int)(this.density * 15.0F);
     Object localObject2;
-    if (paramPaConfigInfo.jdField_a_of_type_Int == 3)
+    if (paramPaConfigInfo.a == 3)
     {
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 3)
+      if (paramPaConfigInfo.e == 3)
       {
         this.sendMsgBtn.setVisibility(0);
         return false;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 10)
+      if (paramPaConfigInfo.e == 10)
       {
         localObject1 = buildMsgSettingItem(paramPaConfigInfo);
         if (localObject1 == null) {
@@ -195,10 +195,10 @@ public class EqqAccountDetailActivityImpl
       }
       else
       {
-        if (paramPaConfigInfo.jdField_c_of_type_Int == 7)
+        if (paramPaConfigInfo.e == 7)
         {
-          paramPaConfigInfo.g = this.eqqDetail.latitude;
-          paramPaConfigInfo.f = this.eqqDetail.longitude;
+          paramPaConfigInfo.m = this.eqqDetail.latitude;
+          paramPaConfigInfo.l = this.eqqDetail.longitude;
           localObject1 = buildMapItemForEqq(paramPaConfigInfo);
           if (localObject1 != null) {
             break label440;
@@ -207,13 +207,13 @@ public class EqqAccountDetailActivityImpl
         do
         {
           return false;
-          if (paramPaConfigInfo.jdField_c_of_type_Int != 8) {
+          if (paramPaConfigInfo.e != 8) {
             break;
           }
           localObject1 = buildPhoneItemForEqq(paramPaConfigInfo);
         } while (localObject1 != null);
         return false;
-        if (paramPaConfigInfo.jdField_c_of_type_Int == 9)
+        if (paramPaConfigInfo.e == 9)
         {
           localObject1 = buildHistoryItemForEqq(paramPaConfigInfo);
           if (localObject1 == null) {
@@ -227,24 +227,24 @@ public class EqqAccountDetailActivityImpl
             paramViewGroup = this.TAG;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("unhandled event_id: ");
-            ((StringBuilder)localObject1).append(paramPaConfigInfo.jdField_c_of_type_Int);
+            ((StringBuilder)localObject1).append(paramPaConfigInfo.e);
             QLog.d(paramViewGroup, 2, ((StringBuilder)localObject1).toString());
           }
           return false;
         }
       }
     }
-    else if (paramPaConfigInfo.jdField_a_of_type_Int == 1)
+    else if (paramPaConfigInfo.a == 1)
     {
-      localObject1 = ((LayoutInflater)localObject1).inflate(2131558718, null);
-      ((ImageView)((View)localObject1).findViewById(2131369083)).setImageResource(2130838770);
-      ((ImageView)((View)localObject1).findViewById(2131362975)).setVisibility(0);
-      localObject2 = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
+      localObject1 = ((LayoutInflater)localObject1).inflate(2131624335, null);
+      ((ImageView)((View)localObject1).findViewById(2131436047)).setImageResource(2130838992);
+      ((ImageView)((View)localObject1).findViewById(2131428774)).setVisibility(0);
+      localObject2 = paramPaConfigInfo.h;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return false;
       }
-      ((TextView)((View)localObject1).findViewById(2131365169)).setText((CharSequence)localObject2);
-      if (paramPaConfigInfo.jdField_a_of_type_JavaLangString.contains(HardCodeUtil.a(2131704302))) {
+      ((TextView)((View)localObject1).findViewById(2131431322)).setText((CharSequence)localObject2);
+      if (paramPaConfigInfo.b.contains(HardCodeUtil.a(2131902216))) {
         ReportController.b(this.app, "P_CliOper", "Pb_account_lifeservice", this.uin, "0X8004E45", "0X8004E45", 0, 0, "", "", "", "");
       }
       ((View)localObject1).setOnClickListener(new EqqAccountDetailActivityImpl.1(this, (String)localObject2, paramPaConfigInfo));
@@ -254,7 +254,7 @@ public class EqqAccountDetailActivityImpl
     {
       i = 0;
       break;
-      if (paramPaConfigInfo.jdField_a_of_type_Int == 2)
+      if (paramPaConfigInfo.a == 2)
       {
         localObject2 = buildStateChangeItem(paramPaConfigInfo);
         localObject1 = localObject2;
@@ -264,7 +264,7 @@ public class EqqAccountDetailActivityImpl
         i = 1;
         break;
       }
-      if (paramPaConfigInfo.jdField_a_of_type_Int == 4)
+      if (paramPaConfigInfo.a == 4)
       {
         localObject1 = buildRichTextItemForEqq(paramPaConfigInfo);
         if (localObject1 == null) {
@@ -274,10 +274,10 @@ public class EqqAccountDetailActivityImpl
       }
       else
       {
-        if (paramPaConfigInfo.jdField_a_of_type_Int == 5) {
+        if (paramPaConfigInfo.a == 5) {
           return false;
         }
-        localObject1 = ((LayoutInflater)localObject1).inflate(2131558718, null);
+        localObject1 = ((LayoutInflater)localObject1).inflate(2131624335, null);
       }
     }
     if (i != 0)
@@ -292,32 +292,32 @@ public class EqqAccountDetailActivityImpl
             {
               if (paramInt != 4) {
                 if (paramInt != 5) {
-                  ((View)localObject1).setBackgroundResource(2130837609);
+                  ((View)localObject1).setBackgroundResource(2130837615);
                 } else {
-                  ((View)localObject1).setBackgroundResource(2130837611);
+                  ((View)localObject1).setBackgroundResource(2130837617);
                 }
               }
             }
             else {
-              ((View)localObject1).setBackgroundResource(2130837611);
+              ((View)localObject1).setBackgroundResource(2130837617);
             }
           }
           else {
-            ((View)localObject1).setBackgroundResource(2130837611);
+            ((View)localObject1).setBackgroundResource(2130837617);
           }
         }
         else {
-          ((View)localObject1).setBackgroundResource(2130837612);
+          ((View)localObject1).setBackgroundResource(2130837618);
         }
       }
       else {
-        ((View)localObject1).setBackgroundResource(2130837609);
+        ((View)localObject1).setBackgroundResource(2130837615);
       }
-      if (paramPaConfigInfo.jdField_a_of_type_Int == 4) {
+      if (paramPaConfigInfo.a == 4) {
         ((View)localObject1).setPadding(k, k, k, k);
-      } else if (paramPaConfigInfo.jdField_a_of_type_Int == 2)
+      } else if (paramPaConfigInfo.a == 2)
       {
-        if (paramPaConfigInfo.e == 5) {
+        if (paramPaConfigInfo.g == 5) {
           ((View)localObject1).setPadding(k, j, k, k);
         } else {
           ((View)localObject1).setPadding(k, 0, k, 0);
@@ -330,7 +330,7 @@ public class EqqAccountDetailActivityImpl
     }
     else
     {
-      paramPaConfigInfo = ((View)localObject1).findViewById(2131365188);
+      paramPaConfigInfo = ((View)localObject1).findViewById(2131431350);
       if (paramInt != 0) {
         if (paramInt != 1) {
           if (paramInt != 2) {
@@ -340,7 +340,7 @@ public class EqqAccountDetailActivityImpl
                 if (paramInt == 5) {
                   break label694;
                 }
-                paramPaConfigInfo.setBackgroundResource(2130837609);
+                paramPaConfigInfo.setBackgroundResource(2130837615);
               }
             }
           }
@@ -350,15 +350,15 @@ public class EqqAccountDetailActivityImpl
       {
         break;
         label694:
-        paramPaConfigInfo.setBackgroundResource(2130837611);
+        paramPaConfigInfo.setBackgroundResource(2130837617);
         continue;
-        paramPaConfigInfo.setBackgroundResource(2130837611);
+        paramPaConfigInfo.setBackgroundResource(2130837617);
         continue;
-        paramPaConfigInfo.setBackgroundResource(2130837610);
+        paramPaConfigInfo.setBackgroundResource(2130837616);
         continue;
-        paramPaConfigInfo.setBackgroundResource(2130837612);
+        paramPaConfigInfo.setBackgroundResource(2130837618);
         continue;
-        paramPaConfigInfo.setBackgroundResource(2130837609);
+        paramPaConfigInfo.setBackgroundResource(2130837615);
       }
       paramPaConfigInfo.setPadding(0, k, k, k);
     }
@@ -384,7 +384,7 @@ public class EqqAccountDetailActivityImpl
     paramIPublicAccountConfigAttr = resetConfigInfoListForUnfollow(paramIPublicAccountConfigAttr.getConfigs(), paramBoolean1);
     Object localObject = paramIPublicAccountConfigAttr.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (((IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject).next()).e == 5) {
+      if (((IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject).next()).g == 5) {
         ((Iterator)localObject).remove();
       }
     }
@@ -467,7 +467,7 @@ public class EqqAccountDetailActivityImpl
       localObject = new TextView(getActivity().getBaseContext());
       ((TextView)localObject).setText(this.eqqDetail.realSummary);
       ((TextView)localObject).setTextSize(14.0F);
-      ((TextView)localObject).setTextColor(getActivity().getBaseContext().getResources().getColor(2131165327));
+      ((TextView)localObject).setTextColor(getActivity().getBaseContext().getResources().getColor(2131165564));
       double d = this.density;
       Double.isNaN(d);
       int i = (int)(d * 16.5D);
@@ -543,30 +543,30 @@ public class EqqAccountDetailActivityImpl
   
   protected View buildHistoryItemForEqq(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = super.getLayoutInflater().inflate(2131562857, null);
-    TextView localTextView = (TextView)localView.findViewById(2131378784);
-    String str2 = paramPaConfigInfo.jdField_a_of_type_JavaLangString;
+    View localView = super.getLayoutInflater().inflate(2131629308, null);
+    TextView localTextView = (TextView)localView.findViewById(2131447463);
+    String str2 = paramPaConfigInfo.b;
     String str1 = str2;
     if (str2 != null)
     {
       str1 = str2;
-      if (str2.startsWith(HardCodeUtil.a(2131704301))) {
-        str1 = str2.replaceFirst(HardCodeUtil.a(2131704300), "");
+      if (str2.startsWith(HardCodeUtil.a(2131902215))) {
+        str1 = str2.replaceFirst(HardCodeUtil.a(2131902214), "");
       }
     }
     localTextView.setText(str1);
-    ((TextView)localView.findViewById(2131377850)).setText(paramPaConfigInfo.b);
+    ((TextView)localView.findViewById(2131446326)).setText(paramPaConfigInfo.c);
     localView.setOnClickListener(new EqqAccountDetailActivityImpl.10(this));
     return localView;
   }
   
   protected View buildMapItemForEqq(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = super.getLayoutInflater().inflate(2131558718, null);
-    ((ImageView)localView.findViewById(2131369083)).setImageResource(2130838769);
-    ((ImageView)localView.findViewById(2131362975)).setVisibility(0);
-    TextView localTextView = (TextView)localView.findViewById(2131365169);
-    String str = paramPaConfigInfo.b;
+    View localView = super.getLayoutInflater().inflate(2131624335, null);
+    ((ImageView)localView.findViewById(2131436047)).setImageResource(2130838991);
+    ((ImageView)localView.findViewById(2131428774)).setVisibility(0);
+    TextView localTextView = (TextView)localView.findViewById(2131431322);
+    String str = paramPaConfigInfo.c;
     if (!TextUtils.isEmpty(str))
     {
       localTextView.setText(str);
@@ -578,31 +578,31 @@ public class EqqAccountDetailActivityImpl
   
   View buildMsgSettingItem(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    if (paramPaConfigInfo.e != 6)
+    if (paramPaConfigInfo.g != 6)
     {
       if (QLog.isColorLevel())
       {
         localObject = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("Unhandled ConfigInfo(");
-        localStringBuilder.append(paramPaConfigInfo.jdField_a_of_type_Int);
-        localStringBuilder.append(", ");
-        localStringBuilder.append(paramPaConfigInfo.jdField_c_of_type_Int);
+        localStringBuilder.append(paramPaConfigInfo.a);
         localStringBuilder.append(", ");
         localStringBuilder.append(paramPaConfigInfo.e);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(paramPaConfigInfo.g);
         localStringBuilder.append(")");
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
       return null;
     }
-    Object localObject = super.getLayoutInflater().inflate(2131562857, null);
-    this.statusTextView = ((TextView)((View)localObject).findViewById(2131377850));
-    if ((paramPaConfigInfo.d != 1) && (paramPaConfigInfo.d != 2)) {
-      this.statusTextView.setText(2131693622);
+    Object localObject = super.getLayoutInflater().inflate(2131629308, null);
+    this.statusTextView = ((TextView)((View)localObject).findViewById(2131446326));
+    if ((paramPaConfigInfo.f != 1) && (paramPaConfigInfo.f != 2)) {
+      this.statusTextView.setText(2131891197);
     } else {
-      this.statusTextView.setText(2131693621);
+      this.statusTextView.setText(2131891196);
     }
-    ((TextView)((View)localObject).findViewById(2131378784)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)((View)localObject).findViewById(2131447463)).setText(paramPaConfigInfo.b);
     ((View)localObject).setOnClickListener(new EqqAccountDetailActivityImpl.14(this, paramPaConfigInfo));
     return localObject;
   }
@@ -612,10 +612,10 @@ public class EqqAccountDetailActivityImpl
     if (this.eqqDetail == null) {
       return null;
     }
-    View localView = super.getLayoutInflater().inflate(2131558718, null);
-    ((ImageView)localView.findViewById(2131369083)).setImageResource(2130838772);
-    ((ImageView)localView.findViewById(2131362975)).setVisibility(0);
-    String str = paramPaConfigInfo.b;
+    View localView = super.getLayoutInflater().inflate(2131624335, null);
+    ((ImageView)localView.findViewById(2131436047)).setImageResource(2130838994);
+    ((ImageView)localView.findViewById(2131428774)).setVisibility(0);
+    String str = paramPaConfigInfo.c;
     if (str != null)
     {
       str = str.trim();
@@ -623,14 +623,14 @@ public class EqqAccountDetailActivityImpl
       boolean bool2 = Pattern.compile("[\\d-]+?").matcher(str).matches();
       if (bool2)
       {
-        ((TextView)localView.findViewById(2131365169)).setText(str);
+        ((TextView)localView.findViewById(2131431322)).setText(str);
       }
       else
       {
         if (!bool1) {
           break label187;
         }
-        ((TextView)localView.findViewById(2131365169)).setText(2131719732);
+        ((TextView)localView.findViewById(2131431322)).setText(2131917335);
       }
       localView.setOnClickListener(new EqqAccountDetailActivityImpl.9(this, bool2, str, bool1, paramPaConfigInfo));
       ReportController.b(this.app, "CliOper", "", "", "Biz_card", "Biz_card_call", 0, 0, this.uin, "", "", "");
@@ -645,17 +645,17 @@ public class EqqAccountDetailActivityImpl
   
   protected View buildRichTextItemForEqq(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    Object localObject = paramPaConfigInfo.jdField_a_of_type_JavaLangString;
-    if ((localObject != null) && (((String)localObject).equals(HardCodeUtil.a(2131704296)))) {
+    Object localObject = paramPaConfigInfo.b;
+    if ((localObject != null) && (((String)localObject).equals(HardCodeUtil.a(2131902212)))) {
       return null;
     }
-    localObject = super.getLayoutInflater().inflate(2131558718, null);
-    ((ImageView)((View)localObject).findViewById(2131369083)).setImageResource(2130838771);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131365169);
+    localObject = super.getLayoutInflater().inflate(2131624335, null);
+    ((ImageView)((View)localObject).findViewById(2131436047)).setImageResource(2130838993);
+    TextView localTextView = (TextView)((View)localObject).findViewById(2131431322);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
     localStringBuilder.append(paramPaConfigInfo.b);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramPaConfigInfo.c);
     localTextView.setText(localStringBuilder.toString());
     return localObject;
   }
@@ -667,7 +667,7 @@ public class EqqAccountDetailActivityImpl
   
   void changeMsgState(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
-    int i = paramPaConfigInfo.e;
+    int i = paramPaConfigInfo.g;
     if (paramInt == 1)
     {
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.app, "P_CliOper", "Pb_account_lifeservice", this.uin, "0X8005A2B", "0X8005A2B", 0, 0, "", "", "", "", false);
@@ -678,7 +678,7 @@ public class EqqAccountDetailActivityImpl
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.app, "P_CliOper", "Pb_account_lifeservice", this.uin, "0X8005A2A", "0X8005A2A", 0, 0, "", "", "", "", false);
       i = 3;
     }
-    delayShowLoading(2131695275);
+    delayShowLoading(2131893010);
     this.app.removeObserver(this.newStatusObserver);
     this.newStatusObserver = new NewPublicAccountObserver(new EqqAccountDetailActivityImpl.17(this, paramPaConfigInfo, i, paramInt));
     this.app.addObserver(this.newStatusObserver);
@@ -722,7 +722,7 @@ public class EqqAccountDetailActivityImpl
   {
     super.doOnCreate(paramBundle);
     this.qidianManager = ((QidianManager)this.app.getManager(QQManagerFactory.QIDIAN_MANAGER));
-    if ((this.uin != null) && (this.qidianManager.c(this.uin, false)))
+    if ((this.uin != null) && (this.qidianManager.d(this.uin, false)))
     {
       paramBundle = new Intent(this, QidianProfileCardActivity.class);
       paramBundle.putExtra("uin", this.uin);
@@ -745,7 +745,7 @@ public class EqqAccountDetailActivityImpl
     }
     this.needUpdateView = true;
     this.followBtn.postDelayed(new EqqAccountDetailActivityImpl.11(this), 3000L);
-    delayShowLoading(2131695190);
+    delayShowLoading(2131892923);
     ((FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(this.uin);
     this.followIntent = new NewIntent(super.getApplicationContext(), PublicAccountServletImpl.class);
     this.followIntent.putExtra("cmd", "follow");
@@ -1060,14 +1060,14 @@ public class EqqAccountDetailActivityImpl
   
   void setStatusText(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    int i = paramPaConfigInfo.d;
+    int i = paramPaConfigInfo.f;
     this.fromUser = false;
     if ((i != 1) && (i != 2))
     {
-      this.statusTextView.setText(2131693622);
+      this.statusTextView.setText(2131891197);
       return;
     }
-    this.statusTextView.setText(2131693621);
+    this.statusTextView.setText(2131891196);
   }
   
   protected void share()
@@ -1111,9 +1111,9 @@ public class EqqAccountDetailActivityImpl
   
   void showMessageSettingActionSheet(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
-    localActionSheet.addRadioButton(2131693621, 5, false);
-    localActionSheet.addRadioButton(2131693622, 5, false);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.c(this, null);
+    localActionSheet.addRadioButton(2131891196, 5, false);
+    localActionSheet.addRadioButton(2131891197, 5, false);
     int i = 1;
     if ((paramInt != 1) && (paramInt != 2)) {
       localActionSheet.setRadioButtonChecked(1);
@@ -1123,7 +1123,7 @@ public class EqqAccountDetailActivityImpl
     if ((paramInt == 1) || (paramInt == 2)) {
       i = 0;
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnDismissListener(new EqqAccountDetailActivityImpl.15(this));
     localActionSheet.setOnButtonClickListener(new EqqAccountDetailActivityImpl.16(this, paramPaConfigInfo, localActionSheet, i));
     if (!localActionSheet.isShowing())
@@ -1135,13 +1135,13 @@ public class EqqAccountDetailActivityImpl
   
   void showPhoneActionSheet(String paramString)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
-    localActionSheet.addButton(2131719732);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.c(this, null);
+    localActionSheet.addButton(2131917335);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getString(2131691600));
+    localStringBuilder.append(getString(2131888562));
     localStringBuilder.append(paramString);
     localActionSheet.addButton(localStringBuilder.toString());
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new EqqAccountDetailActivityImpl.13(this, localActionSheet, paramString));
     localActionSheet.show();
   }
@@ -1193,7 +1193,7 @@ public class EqqAccountDetailActivityImpl
   
   void updateListView()
   {
-    if ((this.mAccountDetailAdapter != null) && (this.mAccountDetailListView.getAdapter() != null) && ((this.eqqDetail == null) || (this.mAccountDetailAdapter.a() != null)))
+    if ((this.mAccountDetailAdapter != null) && (this.mAccountDetailListView.getAdapter() != null) && ((this.eqqDetail == null) || (this.mAccountDetailAdapter.c() != null)))
     {
       if (this.eqqDetail != null) {
         this.mAccountDetailAdapter.a(this.eqqDetail);
@@ -1206,7 +1206,7 @@ public class EqqAccountDetailActivityImpl
     }
     if (this.mAccountDetailListView.getAdapter() != null)
     {
-      ((AccountDetailBaseAdapter)this.mAccountDetailListView.getAdapter()).a();
+      ((AccountDetailBaseAdapter)this.mAccountDetailListView.getAdapter()).d();
       this.mAccountDetailListView.setAdapter(null);
     }
     this.mAccountDetailAdapter = new AccountDetailBaseAdapter(this.app, this, this.uin, this.mAccountDetailListView, this.iconTop, this.iconCicleTop, this.titleViewLayout, this.iconCertifiedTop, this.mTopGestureLayout);
@@ -1237,7 +1237,7 @@ public class EqqAccountDetailActivityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.EqqAccountDetailActivityImpl
  * JD-Core Version:    0.7.0.1
  */

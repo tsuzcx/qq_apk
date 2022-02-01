@@ -68,7 +68,7 @@ public class ProfileCardFavorShowView
     if (i > 0) {
       return i;
     }
-    return 2131559500;
+    return 2131625522;
   }
   
   public View getViewInContainer(int paramInt)
@@ -79,14 +79,14 @@ public class ProfileCardFavorShowView
   protected void init()
   {
     LayoutInflater.from(this.mContext).inflate(getLayout(), this, true);
-    this.mRoot = ((LinearLayout)findViewById(2131376818));
-    this.mTitleBar = ((ViewGroup)findViewById(2131365027));
-    this.mTitleText = ((TextView)findViewById(2131378609));
-    this.mArrowImage = ((ImageView)findViewById(2131368501));
-    this.mContentContainer = ((LinearLayout)findViewById(2131373110));
-    this.mGuideTipsContainer = ((RelativeLayout)findViewById(2131367927));
-    this.mTitleText.setTextColor(getResources().getColorStateList(2131167056));
-    this.mArrowImage.setImageResource(2130839270);
+    this.mRoot = ((LinearLayout)findViewById(2131445148));
+    this.mTitleBar = ((ViewGroup)findViewById(2131431160));
+    this.mTitleText = ((TextView)findViewById(2131447238));
+    this.mArrowImage = ((ImageView)findViewById(2131435403));
+    this.mContentContainer = ((LinearLayout)findViewById(2131440713));
+    this.mGuideTipsContainer = ((RelativeLayout)findViewById(2131434515));
+    this.mTitleText.setTextColor(getResources().getColorStateList(2131167993));
+    this.mArrowImage.setImageResource(2130839446);
   }
   
   public void removeAllViews()
@@ -107,7 +107,7 @@ public class ProfileCardFavorShowView
     {
       int i = 0;
       if (paramBoolean) {
-        i = getResources().getDimensionPixelSize(2131297592);
+        i = getResources().getDimensionPixelSize(2131298256);
       }
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mRoot.getLayoutParams();
       if (localLayoutParams != null)
@@ -164,7 +164,7 @@ public class ProfileCardFavorShowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.photowall.view.ProfileCardFavorShowView
  * JD-Core Version:    0.7.0.1
  */

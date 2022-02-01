@@ -58,20 +58,20 @@ public class ProfileCardFavorItemDetailView
   
   private void init()
   {
-    this.mContentView = LayoutInflater.from(this.ctx).inflate(2131559498, this, true);
-    this.mFavorIcon = ((ImageView)this.mContentView.findViewById(2131366492));
+    this.mContentView = LayoutInflater.from(this.ctx).inflate(2131625520, this, true);
+    this.mFavorIcon = ((ImageView)this.mContentView.findViewById(2131432811));
     if (ThemeUtil.isInNightMode(MobileQQ.sMobileQQ.peekAppRuntime())) {
       this.mFavorIcon.setColorFilter(1996488704);
     }
-    this.row1Left = ((LinearLayout)this.mContentView.findViewById(2131365134));
-    this.row1Right = ((LinearLayout)this.mContentView.findViewById(2131365135));
-    this.row2Left = ((LinearLayout)this.mContentView.findViewById(2131365137));
-    this.row2Right = ((LinearLayout)this.mContentView.findViewById(2131365138));
-    this.row3Left = ((LinearLayout)this.mContentView.findViewById(2131365140));
-    this.row3Right = ((LinearLayout)this.mContentView.findViewById(2131365141));
-    this.row1Content = ((TextView)this.mContentView.findViewById(2131381182));
-    this.row2Content = ((TextView)this.mContentView.findViewById(2131381183));
-    this.row3Content = ((TextView)this.mContentView.findViewById(2131381184));
+    this.row1Left = ((LinearLayout)this.mContentView.findViewById(2131431282));
+    this.row1Right = ((LinearLayout)this.mContentView.findViewById(2131431283));
+    this.row2Left = ((LinearLayout)this.mContentView.findViewById(2131431285));
+    this.row2Right = ((LinearLayout)this.mContentView.findViewById(2131431286));
+    this.row3Left = ((LinearLayout)this.mContentView.findViewById(2131431288));
+    this.row3Right = ((LinearLayout)this.mContentView.findViewById(2131431289));
+    this.row1Content = ((TextView)this.mContentView.findViewById(2131450231));
+    this.row2Content = ((TextView)this.mContentView.findViewById(2131450232));
+    this.row3Content = ((TextView)this.mContentView.findViewById(2131450233));
   }
   
   public void addLabel(Drawable paramDrawable, String paramString, int paramInt1, int paramInt2)
@@ -183,7 +183,7 @@ public class ProfileCardFavorItemDetailView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.favor.view.ProfileCardFavorItemDetailView
  * JD-Core Version:    0.7.0.1
  */

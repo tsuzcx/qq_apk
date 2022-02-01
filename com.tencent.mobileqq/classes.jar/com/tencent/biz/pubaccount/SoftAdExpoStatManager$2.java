@@ -13,7 +13,7 @@ class SoftAdExpoStatManager$2
   public void run()
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Object localObject = this.jdField_a_of_type_JavaUtilVector.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localStringBuilder1.append(((Long)((Iterator)localObject).next()).longValue());
@@ -21,15 +21,15 @@ class SoftAdExpoStatManager$2
     }
     localObject = SoftAdExpoStatManager.a(this.this$0);
     StringBuilder localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append(SoftAdExpoStatManager.a(this.this$0));
+    localStringBuilder2.append(SoftAdExpoStatManager.b(this.this$0));
     localStringBuilder2.append("expo_stat_key_");
-    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder2.append(this.b);
     SharePreferenceUtils.a((Context)localObject, localStringBuilder2.toString(), localStringBuilder1.delete(localStringBuilder1.length() - 2, localStringBuilder1.length()).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SoftAdExpoStatManager.2
  * JD-Core Version:    0.7.0.1
  */

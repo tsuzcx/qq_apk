@@ -13,69 +13,69 @@ import com.tencent.mobileqq.troop.utils.TroopUtils;
 public class GroupNetSearchModelTroopItem
   extends ISearchResultPositionModel
 {
-  private AccountSearchPb.record jdField_a_of_type_AddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
+  private AccountSearchPb.record a;
+  private String b;
+  private CharSequence c;
   
   public GroupNetSearchModelTroopItem(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public int a()
-  {
-    return 4;
+    this.a = paramrecord;
+    this.b = paramString;
+    this.c = paramCharSequence;
   }
   
   public CharSequence a()
   {
-    return HardCodeUtil.a(2131705441);
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.code.get());
+    return HardCodeUtil.a(2131903329);
   }
   
   public void a(View paramView)
   {
-    Bundle localBundle = TroopInfoUIUtil.a(String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.code.get()), 2);
+    Bundle localBundle = TroopInfoUIUtil.a(String.valueOf(this.a.code.get()), 2);
     localBundle.putInt("exposureSource", 3);
     TroopUtils.a((Activity)paramView.getContext(), localBundle, 2);
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 80, paramView, false);
+    SearchUtils.a(this.b, 80, 0, paramView);
+    SearchUtils.a(this.b, 80, paramView, false);
   }
   
-  public boolean a()
+  public int b()
   {
-    return false;
+    return 4;
   }
   
-  public CharSequence b()
+  public String c()
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CharSequence c()
-  {
-    return null;
+    return String.valueOf(this.a.code.get());
   }
   
   public CharSequence d()
   {
+    return this.c;
+  }
+  
+  public CharSequence e()
+  {
     return null;
+  }
+  
+  public CharSequence f()
+  {
+    return null;
+  }
+  
+  public String g()
+  {
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelTroopItem
  * JD-Core Version:    0.7.0.1
  */

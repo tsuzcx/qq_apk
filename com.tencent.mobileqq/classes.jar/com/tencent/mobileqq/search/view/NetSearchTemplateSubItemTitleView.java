@@ -9,8 +9,8 @@ import com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBaseView;
 public class NetSearchTemplateSubItemTitleView
   extends NetSearchTemplateBaseView
 {
-  public LinearLayout a;
   public TextView a;
+  public LinearLayout b;
   
   public NetSearchTemplateSubItemTitleView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -19,13 +19,13 @@ public class NetSearchTemplateSubItemTitleView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131379930));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131362984));
+    this.a = ((TextView)this.e.findViewById(2131448814));
+    this.b = ((LinearLayout)this.e.findViewById(2131428785));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateSubItemTitleView
  * JD-Core Version:    0.7.0.1
  */

@@ -39,65 +39,31 @@ import mqq.os.MqqHandler;
 
 public class MagnifierSDK
 {
-  public static long a = 0L;
-  public static SharedPreferences.Editor a;
-  public static SharedPreferences a;
-  private static MagnifierSDK jdField_a_of_type_ComTencentQqperfMagnifierSDK;
-  public static DBHandler a;
-  public static Object a;
   public static String a = "";
-  public static MqqHandler a;
-  private APMConfRoot jdField_a_of_type_ComTencentQqperfConfigAPMConfRoot = null;
-  private APMConfig jdField_a_of_type_ComTencentQqperfConfigAPMConfig = null;
-  public Config a;
-  private AbstractMagnifierItem jdField_a_of_type_ComTencentQqperfMonitorBaseAbstractMagnifierItem = new QAPMCellingValueWrapper();
-  private IAPMDropFrame jdField_a_of_type_ComTencentQqperfMonitorBaseIAPMDropFrame = new QAPMDropFrameWrapper();
-  private IAPMModuleCelling jdField_a_of_type_ComTencentQqperfMonitorBaseIAPMModuleCelling = new QAPMCellingHprofWrapper();
-  private IAPMModuleLeak jdField_a_of_type_ComTencentQqperfMonitorBaseIAPMModuleLeak = new QAPMLeakWrapper();
-  private QAPMBatteryWrapper jdField_a_of_type_ComTencentQqperfMonitorBatteryQAPMBatteryWrapper = new QAPMBatteryWrapper();
-  private QAPMBigBitmapWrapper jdField_a_of_type_ComTencentQqperfMonitorBigbitmapQAPMBigBitmapWrapper = new QAPMBigBitmapWrapper();
-  private QAPMResourceWrapper jdField_a_of_type_ComTencentQqperfMonitorResourceQAPMResourceWrapper = new QAPMResourceWrapper();
-  MemoryConfigs jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryConfigs = null;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AbstractMagnifierItem b = new QAPMLooperWrapper();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  private MagnifierSDK()
-  {
-    this.jdField_a_of_type_ComTencentQqperfConfigConfig = new Config();
-  }
+  public static long b;
+  public static SharedPreferences c;
+  public static SharedPreferences.Editor d;
+  public static DBHandler e;
+  public static MqqHandler f;
+  public static Object g = new Object();
+  private static MagnifierSDK j;
+  public Config h = new Config();
+  MemoryConfigs i = null;
+  private APMConfig k = null;
+  private APMConfRoot l = null;
+  private IAPMModuleLeak m = new QAPMLeakWrapper();
+  private IAPMModuleCelling n = new QAPMCellingHprofWrapper();
+  private AbstractMagnifierItem o = new QAPMCellingValueWrapper();
+  private IAPMDropFrame p = new QAPMDropFrameWrapper();
+  private AbstractMagnifierItem q = new QAPMLooperWrapper();
+  private QAPMResourceWrapper r = new QAPMResourceWrapper();
+  private QAPMBatteryWrapper s = new QAPMBatteryWrapper();
+  private QAPMBigBitmapWrapper t = new QAPMBigBitmapWrapper();
+  private AtomicBoolean u = new AtomicBoolean(false);
   
   public static SharedPreferences a(Application paramApplication)
   {
     return paramApplication.getSharedPreferences("MagnifierSDK.QAPM", 4);
-  }
-  
-  public static MagnifierSDK a()
-  {
-    if (jdField_a_of_type_ComTencentQqperfMagnifierSDK == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentQqperfMagnifierSDK == null) {
-          jdField_a_of_type_ComTencentQqperfMagnifierSDK = new MagnifierSDK();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentQqperfMagnifierSDK;
-  }
-  
-  public static String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("V 8.7.0.");
-    localStringBuilder.append(ApkUtils.a(MobileQQ.getContext()));
-    localStringBuilder.append(".r");
-    localStringBuilder.append(AppSetting.g());
-    return localStringBuilder.toString();
   }
   
   public static void a(long paramLong)
@@ -106,18 +72,18 @@ public class MagnifierSDK
     localStringBuilder.append("lifeCycle setUin ");
     localStringBuilder.append(paramLong);
     QLog.i("MagnifierSDK.QAPM", 1, localStringBuilder.toString());
-    jdField_a_of_type_Long = paramLong;
+    b = paramLong;
     QAPM.setProperty(102, String.valueOf(paramLong));
   }
   
   private void a(ArrayList<IAPMBase> paramArrayList)
   {
     Iterator localIterator = paramArrayList.iterator();
-    int i = 0;
+    int i1 = 0;
     while (localIterator.hasNext())
     {
       IAPMBase localIAPMBase = (IAPMBase)localIterator.next();
-      boolean bool = localIAPMBase.d();
+      boolean bool = localIAPMBase.i();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("lifecycle ");
       ((StringBuilder)localObject).append(localIAPMBase.a());
@@ -127,27 +93,51 @@ public class MagnifierSDK
       if (bool)
       {
         QAPMIniter.a();
-        localObject = localIAPMBase.a();
-        localIAPMBase.b();
-        APMModuleConfig localAPMModuleConfig = localIAPMBase.b();
+        localObject = localIAPMBase.g();
+        localIAPMBase.j();
+        APMModuleConfig localAPMModuleConfig = localIAPMBase.f();
         ((DefaultPluginConfig)localObject).eventSampleRatio = localAPMModuleConfig.evenRatio;
         ((DefaultPluginConfig)localObject).threshold = localAPMModuleConfig.threshold;
         ((DefaultPluginConfig)localObject).maxReportNum = localAPMModuleConfig.maxReport;
         ((DefaultPluginConfig)localObject).stackDepth = localAPMModuleConfig.stackDepth;
-        i |= ((DefaultPluginConfig)localObject).mode;
-        localIAPMBase.c();
+        i1 |= ((DefaultPluginConfig)localObject).mode;
+        localIAPMBase.h();
       }
     }
-    if (i != 0) {
-      QAPM.beginScene("SCENE_ALL", i);
+    if (i1 != 0) {
+      QAPM.beginScene("SCENE_ALL", i1);
     }
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      ((IAPMBase)paramArrayList.next()).a();
+      ((IAPMBase)paramArrayList.next()).d();
     }
   }
   
-  public static String b()
+  public static MagnifierSDK b()
+  {
+    if (j == null) {
+      try
+      {
+        if (j == null) {
+          j = new MagnifierSDK();
+        }
+      }
+      finally {}
+    }
+    return j;
+  }
+  
+  public static String k()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V 8.8.17.");
+    localStringBuilder.append(ApkUtils.a(MobileQQ.getContext()));
+    localStringBuilder.append(".r");
+    localStringBuilder.append(AppSetting.i());
+    return localStringBuilder.toString();
+  }
+  
+  public static String m()
   {
     if ((2 != MobileQQ.sProcessId) && (8 != MobileQQ.sProcessId)) {
       return "1";
@@ -157,90 +147,28 @@ public class MagnifierSDK
   
   public APMConfig a()
   {
-    if (this.jdField_a_of_type_ComTencentQqperfConfigAPMConfig == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (this.k == null) {
+      synchronized (g)
       {
-        if (this.jdField_a_of_type_ComTencentQqperfConfigAPMConfig == null)
+        if (this.k == null)
         {
-          this.jdField_a_of_type_ComTencentQqperfConfigAPMConfRoot = ((APMConfRoot)QConfigManager.a().a(255));
-          if (this.jdField_a_of_type_ComTencentQqperfConfigAPMConfRoot != null) {
-            this.jdField_a_of_type_ComTencentQqperfConfigAPMConfig = this.jdField_a_of_type_ComTencentQqperfConfigAPMConfRoot.pub;
+          this.l = ((APMConfRoot)QConfigManager.b().b(255));
+          if (this.l != null) {
+            this.k = this.l.pub;
           }
-          if (this.jdField_a_of_type_ComTencentQqperfConfigAPMConfig == null) {
-            this.jdField_a_of_type_ComTencentQqperfConfigAPMConfig = new APMConfig();
+          if (this.k == null) {
+            this.k = new APMConfig();
           }
         }
       }
     }
-    return this.jdField_a_of_type_ComTencentQqperfConfigAPMConfig;
-  }
-  
-  public AbstractMagnifierItem a()
-  {
-    return this.jdField_a_of_type_ComTencentQqperfMonitorBaseAbstractMagnifierItem;
-  }
-  
-  public IAPMBase a()
-  {
-    return this.b;
-  }
-  
-  public IAPMDropFrame a()
-  {
-    return this.jdField_a_of_type_ComTencentQqperfMonitorBaseIAPMDropFrame;
-  }
-  
-  public IAPMModuleBattery a()
-  {
-    return this.jdField_a_of_type_ComTencentQqperfMonitorBatteryQAPMBatteryWrapper;
-  }
-  
-  public IAPMModuleCelling a()
-  {
-    return this.jdField_a_of_type_ComTencentQqperfMonitorBaseIAPMModuleCelling;
-  }
-  
-  public IAPMModuleLeak a()
-  {
-    return this.jdField_a_of_type_ComTencentQqperfMonitorBaseIAPMModuleLeak;
-  }
-  
-  public MemoryConfigs a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryConfigs == null) {
-        this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryConfigs = new MemoryConfigs();
-      }
-      MemoryConfigs localMemoryConfigs = this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryConfigs;
-      return localMemoryConfigs;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
-      jdField_a_of_type_JavaLangString = a();
-      Object localObject = new MagnifierSDK.RunSDKRunnable(this, MobileQQ.getContext());
-      jdField_a_of_type_MqqOsMqqHandler.post((Runnable)localObject);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("startVersion = ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(" gray=");
-      ((StringBuilder)localObject).append(false);
-      ((StringBuilder)localObject).append(" pub=");
-      ((StringBuilder)localObject).append(true);
-      QLog.i("MagnifierSDK.QAPM", 1, ((StringBuilder)localObject).toString());
-    }
+    return this.k;
   }
   
   public void a(ILooperListener paramILooperListener)
   {
-    if ((a() instanceof QAPMLooperWrapper)) {
-      ((QAPMLooperWrapper)a()).a(paramILooperListener);
+    if ((g() instanceof QAPMLooperWrapper)) {
+      ((QAPMLooperWrapper)g()).a(paramILooperListener);
     }
   }
   
@@ -253,12 +181,7 @@ public class MagnifierSDK
       localStringBuilder.append(paramString);
       QLog.i("MagnifierSDK.QAPM", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentQqperfMonitorResourceQAPMResourceWrapper.a(paramString);
-  }
-  
-  public IAPMBase b()
-  {
-    return this.jdField_a_of_type_ComTencentQqperfMonitorResourceQAPMResourceWrapper;
+    this.r.a(paramString);
   }
   
   public void b(String paramString)
@@ -270,12 +193,79 @@ public class MagnifierSDK
       localStringBuilder.append(paramString);
       QLog.i("MagnifierSDK.QAPM", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentQqperfMonitorResourceQAPMResourceWrapper.b(paramString);
+    this.r.b(paramString);
+  }
+  
+  public IAPMModuleLeak c()
+  {
+    return this.m;
+  }
+  
+  public IAPMModuleCelling d()
+  {
+    return this.n;
+  }
+  
+  public AbstractMagnifierItem e()
+  {
+    return this.o;
+  }
+  
+  public IAPMDropFrame f()
+  {
+    return this.p;
+  }
+  
+  public IAPMBase g()
+  {
+    return this.q;
+  }
+  
+  public IAPMBase h()
+  {
+    return this.r;
+  }
+  
+  public IAPMModuleBattery i()
+  {
+    return this.s;
+  }
+  
+  public MemoryConfigs j()
+  {
+    try
+    {
+      if (this.i == null) {
+        this.i = new MemoryConfigs();
+      }
+      MemoryConfigs localMemoryConfigs = this.i;
+      return localMemoryConfigs;
+    }
+    finally {}
+  }
+  
+  public void l()
+  {
+    if (this.u.compareAndSet(false, true))
+    {
+      f = ThreadManager.getSubThreadHandler();
+      a = k();
+      Object localObject = new MagnifierSDK.RunSDKRunnable(this, MobileQQ.getContext());
+      f.post((Runnable)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startVersion = ");
+      ((StringBuilder)localObject).append(a);
+      ((StringBuilder)localObject).append(" gray=");
+      ((StringBuilder)localObject).append(false);
+      ((StringBuilder)localObject).append(" pub=");
+      ((StringBuilder)localObject).append(true);
+      QLog.i("MagnifierSDK.QAPM", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.MagnifierSDK
  * JD-Core Version:    0.7.0.1
  */

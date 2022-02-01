@@ -62,61 +62,58 @@ public class AlphabetFriendAdapter
   extends AlphabetFriendPreloadAdapter
   implements View.OnLongClickListener, BuddyListItem.BuddyListCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View jdField_a_of_type_AndroidViewView;
-  private AlphabetFriendAdapter.ItemLongClickListener jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetAlphabetFriendAdapter$ItemLongClickListener;
-  private IndexBar jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar;
-  private final FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
-  private Comparator<AlphabetFriendAdapter.AlphabetFriend> jdField_a_of_type_JavaUtilComparator = new AlphabetFriendAdapter.5(this);
-  public LinkedHashMap<String, List<AlphabetFriendAdapter.AlphabetFriend>> a;
-  private boolean jdField_a_of_type_Boolean = true;
-  public int[] a;
-  public String[] a;
-  private final int jdField_b_of_type_Int;
-  private Context jdField_b_of_type_AndroidContentContext;
-  private int c = 0;
+  public LinkedHashMap<String, List<AlphabetFriendAdapter.AlphabetFriend>> a = new LinkedHashMap();
+  public int[] b = new int[0];
+  public String[] c = new String[0];
+  private QQAppInterface g;
+  private Context h;
+  private final StatusManager i;
+  private final FriendsManager j;
+  private int k = 0;
+  private final View.OnClickListener l;
+  private final int m;
+  private IndexBar n;
+  private View o;
+  private AlphabetFriendAdapter.ItemLongClickListener p;
+  private boolean q = true;
+  private int r = 0;
+  private Comparator<AlphabetFriendAdapter.AlphabetFriend> s = new AlphabetFriendAdapter.5(this);
   
   public AlphabetFriendAdapter(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, IndexBar paramIndexBar, View.OnClickListener paramOnClickListener)
   {
     super(paramContext, paramQQAppInterface, paramXListView, true);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = paramIndexBar;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)paramQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
-    this.jdField_b_of_type_Int = ((int)DisplayUtils.a(this.jdField_b_of_type_AndroidContentContext, 12.0F));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetAlphabetFriendAdapter$ItemLongClickListener = new AlphabetFriendAdapter.ItemLongClickListener(this);
+    this.g = paramQQAppInterface;
+    this.h = paramContext;
+    this.l = paramOnClickListener;
+    this.n = paramIndexBar;
+    this.i = ((StatusManager)paramQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
+    this.j = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
+    this.m = ((int)DisplayUtils.a(this.h, 12.0F));
+    this.p = new AlphabetFriendAdapter.ItemLongClickListener(this);
   }
   
   private String a(Friends paramFriends, BuddyListFriends.BuddyChildTag paramBuddyChildTag)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager != null)
+    if (this.i != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
+      Object localObject = this.j;
       if (localObject != null)
       {
-        if (this.jdField_b_of_type_AndroidContentContext == null) {
+        if (this.h == null) {
           return null;
         }
-        ExtensionInfo localExtensionInfo = ((FriendsManager)localObject).a(paramFriends.uin);
-        int m = 0;
-        int i;
+        ExtensionInfo localExtensionInfo = ((FriendsManager)localObject).x(paramFriends.uin);
+        int i4 = 0;
+        int i1;
         if ((localExtensionInfo != null) && (!TextUtils.isEmpty(localExtensionInfo.feedContent))) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
         if (localExtensionInfo != null)
         {
           boolean bool;
-          if (this.jdField_a_of_type_Int != 0) {
+          if (this.k != 0) {
             bool = true;
           } else {
             bool = false;
@@ -127,165 +124,91 @@ public class AlphabetFriendAdapter
         {
           localObject = null;
         }
-        int j;
+        int i2;
         if ((localObject != null) && (localObject != RichStatus.getEmptyStatus()) && (!((RichStatus)localObject).isEmpty())) {
-          j = 1;
+          i2 = 1;
         } else {
-          j = 0;
+          i2 = 0;
         }
-        int k;
-        if ((j != 0) && (!TextUtils.isEmpty(((RichStatus)localObject).actionText))) {
-          k = 1;
+        int i3;
+        if ((i2 != 0) && (!TextUtils.isEmpty(((RichStatus)localObject).actionText))) {
+          i3 = 1;
         } else {
-          k = 0;
+          i3 = 0;
         }
-        if ((i != 0) && ((localExtensionInfo.feedTime > localExtensionInfo.richTime) || (j == 0)))
+        if ((i1 != 0) && ((localExtensionInfo.feedTime > localExtensionInfo.richTime) || (i2 == 0)))
         {
           paramFriends = new String(localExtensionInfo.feedContent);
-          paramBuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+          paramBuddyChildTag.b.setCompoundDrawables(null, null);
           if (localExtensionInfo.feedType == 2)
           {
-            paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            paramBuddyChildTag.e.setVisibility(0);
             if (!TextUtils.isEmpty(localExtensionInfo.feedPhotoUrl)) {
-              QQStoryCoverImageViewHelper.a(paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView, localExtensionInfo.feedPhotoUrl, this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130850613));
+              QQStoryCoverImageViewHelper.a(paramBuddyChildTag.e, localExtensionInfo.feedPhotoUrl, this.h.getResources().getDrawable(2130852411));
             } else {
-              paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850613));
+              paramBuddyChildTag.e.setImageDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130852411));
             }
-            paramBuddyChildTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            paramBuddyChildTag.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+            paramBuddyChildTag.f.setVisibility(8);
+            paramBuddyChildTag.g.setVisibility(8);
           }
           else
           {
-            paramBuddyChildTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            localObject = paramBuddyChildTag.jdField_b_of_type_AndroidWidgetImageView;
+            paramBuddyChildTag.f.setVisibility(0);
+            localObject = paramBuddyChildTag.f;
             if (localExtensionInfo.feedType == 1) {
-              i = 2130849885;
+              i1 = 2130851613;
             } else {
-              i = 2130849883;
+              i1 = 2130851611;
             }
-            ((ImageView)localObject).setBackgroundResource(i);
-            localObject = paramBuddyChildTag.jdField_a_of_type_ComTencentImageURLImageView;
+            ((ImageView)localObject).setBackgroundResource(i1);
+            localObject = paramBuddyChildTag.g;
             if (localExtensionInfo.feedHasPhoto) {
-              i = m;
+              i1 = i4;
             } else {
-              i = 8;
+              i1 = 8;
             }
-            ((URLImageView)localObject).setVisibility(i);
-            paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+            ((URLImageView)localObject).setVisibility(i1);
+            paramBuddyChildTag.e.setVisibility(8);
+            paramBuddyChildTag.e.setImageDrawable(null);
           }
           localObject = null;
         }
         else
         {
-          if (k != 0)
+          if (i3 != 0)
           {
             ((RichStatus)localObject).enableSummaryCached = paramFriends.isFriend();
-            paramFriends = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(((RichStatus)localObject).actionId, 200);
-            paramFriends = new BitmapDrawable(this.jdField_b_of_type_AndroidContentContext.getResources(), paramFriends);
-            i = this.jdField_b_of_type_Int;
-            paramFriends.setBounds(0, 0, Math.round(paramFriends.getIntrinsicWidth() * 1.0F / paramFriends.getIntrinsicHeight() * i), i);
-            paramBuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(paramFriends, null);
+            paramFriends = this.i.a(((RichStatus)localObject).actionId, 200);
+            paramFriends = new BitmapDrawable(this.h.getResources(), paramFriends);
+            i1 = this.m;
+            paramFriends.setBounds(0, 0, Math.round(paramFriends.getIntrinsicWidth() * 1.0F / paramFriends.getIntrinsicHeight() * i1), i1);
+            paramBuddyChildTag.b.setCompoundDrawables(paramFriends, null);
           }
-          else if (j == 0)
+          else if (i2 == 0)
           {
             localObject = RichStatus.getEmptyStatus();
-            paramBuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+            paramBuddyChildTag.b.setCompoundDrawables(null, null);
           }
           paramFriends = ((RichStatus)localObject).getActionAndData();
           String str = ((RichStatus)localObject).getPlainText();
-          paramBuddyChildTag.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-          paramBuddyChildTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          paramBuddyChildTag.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+          paramBuddyChildTag.g.setVisibility(8);
+          paramBuddyChildTag.f.setVisibility(8);
+          paramBuddyChildTag.e.setVisibility(8);
+          paramBuddyChildTag.e.setImageDrawable(null);
           localObject = paramFriends;
           paramFriends = str;
         }
         if (localExtensionInfo == null)
         {
-          paramBuddyChildTag.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-          paramBuddyChildTag.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramBuddyChildTag.g.setVisibility(8);
+          paramBuddyChildTag.f.setVisibility(8);
         }
-        paramBuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText((String)localObject, 1);
-        paramBuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramFriends);
+        paramBuddyChildTag.b.setExtendText((String)localObject, 1);
+        paramBuddyChildTag.b.setText(paramFriends);
         return paramFriends;
       }
     }
     return null;
-  }
-  
-  private List<AlphabetFriendAdapter.AlphabetFriend> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      Object localObject1 = this.jdField_b_of_type_AndroidContentContext;
-      if (localObject1 == null) {
-        return localArrayList;
-      }
-      if (((localObject1 instanceof Activity)) && (((Activity)localObject1).isFinishing()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AlphabetFriendAdapter", 2, "getAlphabetFriend Activity is finishing ");
-        }
-        return localArrayList;
-      }
-      localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if (localObject1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AlphabetFriendAdapter", 2, "FriendManager is null");
-        }
-        return localArrayList;
-      }
-      localObject1 = ((FriendsManager)localObject1).c();
-      if (localObject1 == null) {
-        return localArrayList;
-      }
-      Iterator localIterator = ((List)localObject1).iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (Entity)localIterator.next();
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.e("AlphabetFriendAdapter", 2, "getAlphabetFriend mApp is null ");
-          return localArrayList;
-        }
-        localObject1 = this.jdField_b_of_type_AndroidContentContext;
-        if (((localObject1 instanceof Activity)) && (((Activity)localObject1).isFinishing()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.e("AlphabetFriendAdapter", 2, "getAlphabetFriend Activity is finishing ");
-          return localArrayList;
-        }
-        localObject1 = null;
-        BuddyListItem localBuddyListItem = BuddyItemBuilder.a(0, (Entity)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext);
-        if (localBuddyListItem != null)
-        {
-          localBuddyListItem.a(this);
-          localObject2 = a((BuddyListFriends)localBuddyListItem);
-          localObject1 = localObject2;
-          if (localObject2 != null)
-          {
-            localObject1 = localObject2;
-            if ((localBuddyListItem.c() & 0x1) == 1)
-            {
-              ((AlphabetFriendAdapter.AlphabetFriend)localObject2).jdField_a_of_type_Boolean = true;
-              localObject1 = localObject2;
-            }
-          }
-        }
-        if (localObject1 != null) {
-          localArrayList.add(localObject1);
-        }
-      }
-    }
-    return localArrayList;
   }
   
   private void a(AlphabetFriendAdapter.AlphabetFriend paramAlphabetFriend, LinkedHashMap<String, List<AlphabetFriendAdapter.AlphabetFriend>> paramLinkedHashMap)
@@ -297,15 +220,15 @@ public class AlphabetFriendAdapter
     } else {
       str1 = "#";
     }
-    int i = str1.charAt(0);
+    int i1 = str1.charAt(0);
     String str2;
-    if ((65 > i) || (i > 90))
+    if ((65 > i1) || (i1 > 90))
     {
       str2 = str3;
-      if (97 <= i)
+      if (97 <= i1)
       {
         str2 = str3;
-        if (i > 122) {}
+        if (i1 > 122) {}
       }
     }
     else
@@ -316,7 +239,7 @@ public class AlphabetFriendAdapter
       paramLinkedHashMap.put(str2, new ArrayList());
     }
     ((List)paramLinkedHashMap.get(str2)).add(paramAlphabetFriend);
-    if (paramAlphabetFriend.jdField_a_of_type_Boolean)
+    if (paramAlphabetFriend.g)
     {
       if (paramLinkedHashMap.get("★") == null) {
         paramLinkedHashMap.put("★", new ArrayList());
@@ -408,61 +331,135 @@ public class AlphabetFriendAdapter
         return null;
       }
       paramComparator[0] = 0;
-      int i = 1;
-      while (i < paramComparator.length)
+      int i1 = 1;
+      while (i1 < paramComparator.length)
       {
-        paramComparator[i] += paramComparator[(i - 1)] + ((List)paramList.get(((Iterator)localObject2).next())).size() + 1;
-        i += 1;
+        paramComparator[i1] += paramComparator[(i1 - 1)] + ((List)paramList.get(((Iterator)localObject2).next())).size() + 1;
+        i1 += 1;
       }
       localObject2 = paramList.keySet().iterator();
-      i = 0;
+      i1 = 0;
       while (((Iterator)localObject2).hasNext())
       {
-        localObject1[i] = ((String)((Iterator)localObject2).next());
-        i += 1;
+        localObject1[i1] = ((String)((Iterator)localObject2).next());
+        i1 += 1;
       }
       return new Object[] { paramList, paramComparator, localObject1 };
     }
     return null;
   }
   
-  private void f()
+  private void i()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar != null)
+    if (this.n != null)
     {
-      if (b() >= 5)
+      if (d() >= 5)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setLetters(this.jdField_a_of_type_ArrayOfJavaLangString);
+        this.n.setLetters(this.c);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setLetters(null);
+      this.n.setLetters(null);
     }
   }
   
-  private void g()
+  private void j()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
+    if (this.d == null) {
       return;
     }
-    int j = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = this.d.getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
+      Object localObject = this.d.getChildAt(i1).getTag();
       if ((localObject != null) && ((localObject instanceof BuddyListFriends.BuddyChildTag)))
       {
         localObject = (BuddyListFriends.BuddyChildTag)localObject;
-        if ((TextUtils.isEmpty(((BuddyListFriends.BuddyChildTag)localObject).jdField_b_of_type_ComTencentWidgetSingleLineTextView.getText().toString())) && ((((BuddyListFriends.BuddyChildTag)localObject).jdField_a_of_type_JavaLangObject instanceof Friends))) {
-          a((Friends)((BuddyListFriends.BuddyChildTag)localObject).jdField_a_of_type_JavaLangObject, (BuddyListFriends.BuddyChildTag)localObject);
+        if ((TextUtils.isEmpty(((BuddyListFriends.BuddyChildTag)localObject).b.getText().toString())) && ((((BuddyListFriends.BuddyChildTag)localObject).c instanceof Friends))) {
+          a((Friends)((BuddyListFriends.BuddyChildTag)localObject).c, (BuddyListFriends.BuddyChildTag)localObject);
         }
       }
-      i += 1;
+      i1 += 1;
     }
+  }
+  
+  private List<AlphabetFriendAdapter.AlphabetFriend> k()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.g != null)
+    {
+      Object localObject1 = this.h;
+      if (localObject1 == null) {
+        return localArrayList;
+      }
+      if (((localObject1 instanceof Activity)) && (((Activity)localObject1).isFinishing()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AlphabetFriendAdapter", 2, "getAlphabetFriend Activity is finishing ");
+        }
+        return localArrayList;
+      }
+      localObject1 = (FriendsManager)this.g.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localObject1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AlphabetFriendAdapter", 2, "FriendManager is null");
+        }
+        return localArrayList;
+      }
+      localObject1 = ((FriendsManager)localObject1).j();
+      if (localObject1 == null) {
+        return localArrayList;
+      }
+      Iterator localIterator = ((List)localObject1).iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (Entity)localIterator.next();
+        if (this.g == null)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("AlphabetFriendAdapter", 2, "getAlphabetFriend mApp is null ");
+          return localArrayList;
+        }
+        localObject1 = this.h;
+        if (((localObject1 instanceof Activity)) && (((Activity)localObject1).isFinishing()))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("AlphabetFriendAdapter", 2, "getAlphabetFriend Activity is finishing ");
+          return localArrayList;
+        }
+        localObject1 = null;
+        BuddyListItem localBuddyListItem = BuddyItemBuilder.a(0, (Entity)localObject2, this.g, this.h);
+        if (localBuddyListItem != null)
+        {
+          localBuddyListItem.a(this);
+          localObject2 = a((BuddyListFriends)localBuddyListItem);
+          localObject1 = localObject2;
+          if (localObject2 != null)
+          {
+            localObject1 = localObject2;
+            if ((localBuddyListItem.f() & 0x1) == 1)
+            {
+              ((AlphabetFriendAdapter.AlphabetFriend)localObject2).g = true;
+              localObject1 = localObject2;
+            }
+          }
+        }
+        if (localObject1 != null) {
+          localArrayList.add(localObject1);
+        }
+      }
+    }
+    return localArrayList;
   }
   
   public int a()
   {
-    return 2131559309;
+    return 2131625258;
   }
   
   public int a(String paramString)
@@ -470,27 +467,27 @@ public class AlphabetFriendAdapter
     if (paramString == null) {
       return -1;
     }
-    int j = paramString.charAt(0);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    int i2 = paramString.charAt(0);
+    if (this.c != null)
     {
-      int i = 0;
+      int i1 = 0;
       for (;;)
       {
-        paramString = this.jdField_a_of_type_ArrayOfJavaLangString;
-        if (i >= paramString.length) {
+        paramString = this.c;
+        if (i1 >= paramString.length) {
           break;
         }
-        int k = paramString[i].charAt(0);
-        if (k != "★".charAt(0)) {
-          if (j == 35) {
-            i = this.jdField_a_of_type_ArrayOfJavaLangString.length - 1;
-          } else if (j <= k) {}
+        int i3 = paramString[i1].charAt(0);
+        if (i3 != "★".charAt(0)) {
+          if (i2 == 35) {
+            i1 = this.c.length - 1;
+          } else if (i2 <= i3) {}
         }
-        i += 1;
+        i1 += 1;
       }
-      i = -1;
-      if (i >= 0) {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+      i1 = -1;
+      if (i1 >= 0) {
+        return this.b[i1];
       }
     }
     return -1;
@@ -498,42 +495,32 @@ public class AlphabetFriendAdapter
   
   public AlphabetFriendAdapter.AlphabetFriend a(BuddyListFriends paramBuddyListFriends)
   {
-    if ((paramBuddyListFriends != null) && (paramBuddyListFriends.a != null))
+    if ((paramBuddyListFriends != null) && (paramBuddyListFriends.f != null))
     {
       AlphabetFriendAdapter.AlphabetFriend localAlphabetFriend = new AlphabetFriendAdapter.AlphabetFriend(paramBuddyListFriends);
-      paramBuddyListFriends = (Friends)paramBuddyListFriends.a;
+      paramBuddyListFriends = (Friends)paramBuddyListFriends.f;
       String str = paramBuddyListFriends.getFriendNickWithAlias();
-      localAlphabetFriend.jdField_a_of_type_JavaLangString = paramBuddyListFriends.uin;
+      localAlphabetFriend.a = paramBuddyListFriends.uin;
       localAlphabetFriend.b = str;
-      localAlphabetFriend.c = ChnToSpell.a(str, 2);
+      localAlphabetFriend.c = ChnToSpell.b(str, 2);
       return localAlphabetFriend;
     }
     return null;
   }
   
-  public void a()
-  {
-    ThreadManagerV2.excute(new AlphabetFriendAdapter.1(this), 16, null, true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.o = paramView;
   }
   
   public void a(View paramView, int paramInt)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
+    int i1 = Arrays.binarySearch(this.b, paramInt);
+    paramInt = i1;
+    if (i1 < 0) {
+      paramInt = -(i1 + 1) - 1;
     }
-    if (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+    if (paramInt < this.c.length)
     {
       if (paramInt < 0) {
         return;
@@ -542,18 +529,18 @@ public class AlphabetFriendAdapter
       {
         TextView localTextView = (TextView)paramView;
         localTextView.setPadding(localTextView.getPaddingLeft(), 0, 0, 0);
-        paramView = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+        paramView = this.c[paramInt];
         if (paramView.equals("★")) {
-          localTextView.setText(HardCodeUtil.a(2131700449));
+          localTextView.setText(HardCodeUtil.a(2131898483));
         } else {
           localTextView.setText(paramView);
         }
-        paramView = this.jdField_b_of_type_AndroidContentContext.getResources().getColorStateList(2131165574);
-        if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-          paramView = this.jdField_b_of_type_AndroidContentContext.getResources().getColorStateList(2131166971);
+        paramView = this.h.getResources().getColorStateList(2131168149);
+        if (ThemeUtil.isNowThemeIsNight(this.g, false, null)) {
+          paramView = this.h.getResources().getColorStateList(2131167905);
         }
         localTextView.setTextColor(paramView);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar;
+        paramView = this.n;
         if (paramView != null) {
           paramView.setChooseIndex(paramInt);
         }
@@ -564,30 +551,35 @@ public class AlphabetFriendAdapter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.q = paramBoolean;
   }
   
   public boolean a(int paramInt)
   {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  public boolean a(View paramView, int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length <= 0;
-  }
-  
-  public int b()
-  {
-    return this.c;
+    return Arrays.binarySearch(this.b, paramInt) >= 0;
   }
   
   public void b()
   {
+    ThreadManagerV2.excute(new AlphabetFriendAdapter.1(this), 16, null, true);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.r = paramInt;
+  }
+  
+  public boolean b(View paramView, int paramInt)
+  {
+    return this.c.length <= 0;
+  }
+  
+  public void c()
+  {
     ArrayList localArrayList = new ArrayList();
     try
     {
-      localArrayList.addAll(a());
+      localArrayList.addAll(k());
     }
     catch (Exception localException)
     {
@@ -599,7 +591,7 @@ public class AlphabetFriendAdapter
         QLog.e("AlphabetFriendAdapter", 2, localStringBuilder.toString());
       }
     }
-    Object[] arrayOfObject = a(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    Object[] arrayOfObject = a(localArrayList, this.s);
     ThreadManager.getUIHandler().post(new AlphabetFriendAdapter.2(this, localArrayList));
     if ((arrayOfObject != null) && (arrayOfObject.length >= 3))
     {
@@ -616,85 +608,83 @@ public class AlphabetFriendAdapter
     }
   }
   
-  public int c()
+  public int d()
   {
-    return this.jdField_a_of_type_Int;
+    return this.r;
   }
   
-  public void c()
+  public void e()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null)
+    if (this.d != null)
     {
-      if (this.jdField_b_of_type_AndroidContentContext == null) {
+      if (this.h == null) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() <= 0) {
+      if (this.d.getFooterViewsCount() <= 0) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_AndroidViewView;
+      Object localObject = this.o;
       if (localObject == null) {
         return;
       }
-      localObject = (TextView)((View)localObject).findViewById(2131362665);
-      if (b() > 0)
+      localObject = (TextView)((View)localObject).findViewById(2131428288);
+      if (d() > 0)
       {
-        int i = b();
-        ((TextView)localObject).setText(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131691104, new Object[] { Integer.valueOf(i) }));
+        int i1 = d();
+        ((TextView)localObject).setText(this.h.getResources().getString(2131888050, new Object[] { Integer.valueOf(i1) }));
         return;
       }
       ((TextView)localObject).setText("");
     }
   }
   
-  public void d()
+  public void f()
   {
-    a(0);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    b(0);
+    this.a.clear();
+    this.b = new int[0];
+    this.c = new String[0];
   }
   
-  public void e()
+  public int g()
   {
-    super.e();
-    this.jdField_b_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return this.k;
   }
   
   public int getCount()
   {
-    int k = this.jdField_a_of_type_ArrayOfInt.length;
-    int j = 0;
-    int i = j;
-    if (k != 0)
+    int i3 = this.b.length;
+    int i2 = 0;
+    int i1 = i2;
+    if (i3 != 0)
     {
-      i = j;
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() != 0)
+      i1 = i2;
+      if (this.a.size() != 0)
       {
-        Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+        Object localObject = this.c;
         if (localObject.length == 0) {
           return 0;
         }
-        localObject = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject[(localObject.length - 1)]);
-        i = j;
+        localObject = (List)this.a.get(localObject[(localObject.length - 1)]);
+        i1 = i2;
         if (localObject != null)
         {
-          int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-          i = arrayOfInt[(arrayOfInt.length - 1)] + ((List)localObject).size() + 1;
+          int[] arrayOfInt = this.b;
+          i1 = arrayOfInt[(arrayOfInt.length - 1)] + ((List)localObject).size() + 1;
         }
       }
     }
-    return i;
+    return i1;
   }
   
   public Object getItem(int paramInt)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (i >= 0) {
+    int i1 = Arrays.binarySearch(this.b, paramInt);
+    if (i1 >= 0) {
       return null;
     }
-    i = -(i + 1) - 1;
-    return (AlphabetFriendAdapter.AlphabetFriend)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+    i1 = -(i1 + 1) - 1;
+    return (AlphabetFriendAdapter.AlphabetFriend)((List)this.a.get(this.c[i1])).get(paramInt - this.b[i1] - 1);
   }
   
   public long getItemId(int paramInt)
@@ -704,7 +694,7 @@ public class AlphabetFriendAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) < 0) {
+    if (Arrays.binarySearch(this.b, paramInt) < 0) {
       return 1;
     }
     return 0;
@@ -712,21 +702,21 @@ public class AlphabetFriendAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i1 = Arrays.binarySearch(this.b, paramInt);
     Object localObject2;
     Object localObject1;
     if (getItemViewType(paramInt) == 1)
     {
-      i = -(i + 1) - 1;
-      localObject2 = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      i = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
+      i1 = -(i1 + 1) - 1;
+      localObject2 = (List)this.a.get(this.c[i1]);
+      i1 = paramInt - this.b[i1] - 1;
       localObject1 = paramView;
       if (localObject2 != null)
       {
         localObject1 = paramView;
-        if (i < ((List)localObject2).size())
+        if (i1 < ((List)localObject2).size())
         {
-          localObject1 = ((AlphabetFriendAdapter.AlphabetFriend)((List)localObject2).get(i)).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListFriends;
+          localObject1 = ((AlphabetFriendAdapter.AlphabetFriend)((List)localObject2).get(i1)).h;
           boolean bool = localObject1 instanceof BuddyListFriends;
           if (bool) {
             ((BuddyListFriends)localObject1).a(1);
@@ -734,7 +724,7 @@ public class AlphabetFriendAdapter
           if (localObject1 == null) {
             localObject2 = null;
           } else {
-            localObject2 = ((BuddyListItem)localObject1).a(0, paramInt, paramView, paramViewGroup, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+            localObject2 = ((BuddyListItem)localObject1).a(0, paramInt, paramView, paramViewGroup, this.l);
           }
           localObject1 = paramView;
           if (localObject2 != null)
@@ -743,11 +733,11 @@ public class AlphabetFriendAdapter
             if (bool)
             {
               a((BuddyListFriends.BuddyChildTag)((View)localObject2).getTag(), null);
-              paramView = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+              paramView = this.l;
               if (paramView != null) {
                 ((View)localObject2).setOnClickListener(paramView);
               }
-              ((View)localObject2).setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetAlphabetFriendAdapter$ItemLongClickListener);
+              ((View)localObject2).setOnLongClickListener(this.p);
               localObject1 = localObject2;
             }
           }
@@ -759,28 +749,28 @@ public class AlphabetFriendAdapter
       localObject1 = paramView;
       if (paramView == null)
       {
-        localObject1 = LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131558922, paramViewGroup, false);
+        localObject1 = LayoutInflater.from(this.h).inflate(2131624552, paramViewGroup, false);
         ((View)localObject1).setTag(new AlphabetFriendAdapter.FriendViewHolder((View)localObject1));
       }
       paramView = (View)localObject1;
       if (!(((View)localObject1).getTag() instanceof AlphabetFriendAdapter.FriendViewHolder))
       {
-        paramView = LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131558922, paramViewGroup, false);
+        paramView = LayoutInflater.from(this.h).inflate(2131624552, paramViewGroup, false);
         paramView.setTag(new AlphabetFriendAdapter.FriendViewHolder(paramView));
       }
       localObject2 = (AlphabetFriendAdapter.FriendViewHolder)paramView.getTag();
-      String str = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+      String str = String.valueOf(this.c[i1]);
       if (!TextUtils.isEmpty(str)) {
         if (str.equals("★")) {
-          ((AlphabetFriendAdapter.FriendViewHolder)localObject2).a.setText(HardCodeUtil.a(2131700449));
+          ((AlphabetFriendAdapter.FriendViewHolder)localObject2).b.setText(HardCodeUtil.a(2131898483));
         } else {
-          ((AlphabetFriendAdapter.FriendViewHolder)localObject2).a.setText(str);
+          ((AlphabetFriendAdapter.FriendViewHolder)localObject2).b.setText(str);
         }
       }
       localObject1 = paramView;
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
-        ((AlphabetFriendAdapter.FriendViewHolder)localObject2).a.setContentDescription(String.format(this.jdField_b_of_type_AndroidContentContext.getString(2131691806), new Object[] { str.toLowerCase() }));
+        ((AlphabetFriendAdapter.FriendViewHolder)localObject2).b.setContentDescription(String.format(this.h.getString(2131888769), new Object[] { str.toLowerCase() }));
         localObject1 = paramView;
       }
     }
@@ -793,9 +783,16 @@ public class AlphabetFriendAdapter
     return 2;
   }
   
+  public void h()
+  {
+    super.h();
+    this.h = null;
+    this.g = null;
+  }
+  
   public boolean onLongClick(View paramView)
   {
-    boolean bool1 = this.jdField_a_of_type_Boolean;
+    boolean bool1 = this.q;
     boolean bool2 = false;
     if (!bool1) {
       return false;
@@ -806,14 +803,14 @@ public class AlphabetFriendAdapter
     }
     if ((paramView instanceof BuddyListItem.ViewTag))
     {
-      Object localObject2 = ((BuddyListItem.ViewTag)paramView).jdField_a_of_type_JavaLangObject;
+      Object localObject2 = ((BuddyListItem.ViewTag)paramView).c;
       if ((localObject2 != null) && ((localObject2 instanceof Friends)))
       {
-        paramView = (ActionSheet)ActionSheetHelper.a(this.jdField_b_of_type_AndroidContentContext, null);
-        Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        paramView = (ActionSheet)ActionSheetHelper.b(this.h, null);
+        Object localObject1 = (FriendsManager)this.g.getManager(QQManagerFactory.FRIENDS_MANAGER);
         localObject2 = (Friends)localObject2;
-        localObject1 = ((FriendsManager)localObject1).a(((Friends)localObject2).uin);
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(((Friends)localObject2).uin)) {
+        localObject1 = ((FriendsManager)localObject1).y(((Friends)localObject2).uin);
+        if (this.g.getCurrentUin().equals(((Friends)localObject2).uin)) {
           return false;
         }
         bool1 = bool2;
@@ -824,14 +821,14 @@ public class AlphabetFriendAdapter
             bool1 = true;
           }
         }
-        int i;
+        int i1;
         if (bool1) {
-          i = 2131691089;
+          i1 = 2131888035;
         } else {
-          i = 2131691090;
+          i1 = 2131888036;
         }
-        paramView.addButton(i);
-        paramView.addCancelButton(2131690728);
+        paramView.addButton(i1);
+        paramView.addCancelButton(2131887648);
         paramView.setOnButtonClickListener(new AlphabetFriendAdapter.6(this, bool1, (Friends)localObject2, paramView));
       }
     }
@@ -846,10 +843,10 @@ public class AlphabetFriendAdapter
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.k = paramInt;
     super.onScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 0) {
-      g();
+      j();
     }
     if (paramInt != 0) {
       ApngImage.pauseByTag(3);
@@ -861,7 +858,7 @@ public class AlphabetFriendAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendAdapter
  * JD-Core Version:    0.7.0.1
  */

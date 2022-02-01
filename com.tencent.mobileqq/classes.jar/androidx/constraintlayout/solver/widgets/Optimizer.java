@@ -8,16 +8,18 @@ public class Optimizer
   static final int FLAG_RECOMPUTE_BOUNDS = 2;
   static final int FLAG_USE_OPTIMIZE = 0;
   public static final int OPTIMIZATION_BARRIER = 2;
+  public static final int OPTIMIZATION_CACHE_MEASURES = 256;
   public static final int OPTIMIZATION_CHAIN = 4;
+  public static final int OPTIMIZATION_DEPENDENCY_ORDERING = 512;
   public static final int OPTIMIZATION_DIMENSIONS = 8;
   public static final int OPTIMIZATION_DIRECT = 1;
-  public static final int OPTIMIZATION_ENGINE = 256;
   public static final int OPTIMIZATION_GRAPH = 64;
   public static final int OPTIMIZATION_GRAPH_WRAP = 128;
+  public static final int OPTIMIZATION_GROUPING = 1024;
   public static final int OPTIMIZATION_GROUPS = 32;
   public static final int OPTIMIZATION_NONE = 0;
   public static final int OPTIMIZATION_RATIO = 16;
-  public static final int OPTIMIZATION_STANDARD = 263;
+  public static final int OPTIMIZATION_STANDARD = 257;
   static boolean[] flags = new boolean[3];
   
   static void checkMatchParent(ConstraintWidgetContainer paramConstraintWidgetContainer, LinearSystem paramLinearSystem, ConstraintWidget paramConstraintWidget)
@@ -62,7 +64,7 @@ public class Optimizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.Optimizer
  * JD-Core Version:    0.7.0.1
  */

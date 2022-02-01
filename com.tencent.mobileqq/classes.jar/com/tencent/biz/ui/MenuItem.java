@@ -8,51 +8,36 @@ import java.util.List;
 
 public class MenuItem
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  String jdField_a_of_type_JavaLangString;
-  private List<MenuItem> jdField_a_of_type_JavaUtilList = null;
+  String a;
   String b;
   String c;
   String d;
-  private String e;
+  private Drawable e;
   private String f;
+  private String g;
+  private int h;
+  private List<MenuItem> i = null;
   
   public MenuItem(String paramString1, String paramString2, Drawable paramDrawable, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.e = paramString2;
-    this.f = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramDrawable;
+    this.f = paramString2;
+    this.g = paramString1;
+    this.h = paramInt;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.h;
   }
   
   public MenuItem a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.i;
     if (localList == null) {
       return null;
     }
     return (MenuItem)localList.get(paramInt);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<MenuItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(MenuItem paramMenuItem)
@@ -60,16 +45,16 @@ public class MenuItem
     if (paramMenuItem == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.i == null) {
+      this.i = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramMenuItem);
+    this.i.add(paramMenuItem);
   }
   
   public void a(mobileqq_mp.ButtonInfo paramButtonInfo)
   {
     if (paramButtonInfo.logo_url.has()) {
-      this.jdField_a_of_type_JavaLangString = paramButtonInfo.logo_url.get();
+      this.a = paramButtonInfo.logo_url.get();
     }
     if (paramButtonInfo.texture_url.has()) {
       this.d = paramButtonInfo.texture_url.get();
@@ -86,33 +71,48 @@ public class MenuItem
     }
   }
   
-  public boolean a()
+  public String b()
   {
-    return this.jdField_a_of_type_JavaUtilList != null;
+    return this.a;
   }
   
-  public int b()
+  public Drawable c()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    return this.e;
+  }
+  
+  public String d()
+  {
+    return this.f;
+  }
+  
+  public String e()
+  {
+    return this.g;
+  }
+  
+  public boolean f()
+  {
+    return this.i != null;
+  }
+  
+  public int g()
+  {
+    List localList = this.i;
     if (localList == null) {
       return 0;
     }
     return localList.size();
   }
   
-  public String b()
+  public List<MenuItem> h()
   {
-    return this.e;
-  }
-  
-  public String c()
-  {
-    return this.f;
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.MenuItem
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class KandianCompetitiveAdPandentView$1
     if (i != 1)
     {
       if (i == 2) {
-        KandianCompetitiveAdPandentView.b(this.a);
+        KandianCompetitiveAdPandentView.f(this.a);
       }
     }
     else
@@ -24,19 +24,19 @@ class KandianCompetitiveAdPandentView$1
       KandianCompetitiveAdPandentView.a(this.a);
       if (KandianCompetitiveAdPandentView.b(this.a) <= 0)
       {
-        KandianCompetitiveAdPandentView.a(this.a);
+        KandianCompetitiveAdPandentView.c(this.a);
       }
       else
       {
-        paramMessage = KandianCompetitiveAdPandentView.a(this.a);
+        paramMessage = KandianCompetitiveAdPandentView.d(this.a);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(KandianCompetitiveAdPandentView.b(this.a));
         localStringBuilder.append("s后消失");
         paramMessage.setText(localStringBuilder.toString());
-        if (KandianCompetitiveAdPandentView.a(this.a) != null) {
-          KandianCompetitiveAdPandentView.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+        if (KandianCompetitiveAdPandentView.e(this.a) != null) {
+          KandianCompetitiveAdPandentView.e(this.a).sendEmptyMessageDelayed(1, 1000L);
         } else {
-          KandianCompetitiveAdPandentView.b(this.a);
+          KandianCompetitiveAdPandentView.f(this.a);
         }
       }
     }
@@ -45,7 +45,7 @@ class KandianCompetitiveAdPandentView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianCompetitiveAdPandentView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -76,7 +76,7 @@ public class WSWidgetDataManager
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        stFeedOpInfo localstFeedOpInfo = ((WSVerticalItemData)paramList.next()).a().opInfo;
+        stFeedOpInfo localstFeedOpInfo = ((WSVerticalItemData)paramList.next()).b().opInfo;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[getOpInfoList]");
         localStringBuilder.append(localstFeedOpInfo.toString());
@@ -99,7 +99,7 @@ public class WSWidgetDataManager
   
   private boolean a(WSVerticalItemData paramWSVerticalItemData)
   {
-    Object localObject = paramWSVerticalItemData.a();
+    Object localObject = paramWSVerticalItemData.b();
     boolean bool = false;
     if (localObject != null)
     {
@@ -108,7 +108,7 @@ public class WSWidgetDataManager
         return false;
       }
     }
-    if (paramWSVerticalItemData.a() == null) {
+    if (paramWSVerticalItemData.f() == null) {
       bool = true;
     }
     return bool;
@@ -128,7 +128,7 @@ public class WSWidgetDataManager
       }
       Object localObject2 = a(paramList, Math.max(paramInt - 10, 0), Math.max(paramInt, 0));
       Object localObject3 = a(paramList, Math.min(paramInt + 1, paramList.size() - 1), Math.min(paramInt + 10, paramList.size() - 1));
-      paramList = ((WSVerticalItemData)localObject1).a().opInfo;
+      paramList = ((WSVerticalItemData)localObject1).b().opInfo;
       paramList.isRequesting = 1;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getRichOpInfo current");
@@ -148,7 +148,7 @@ public class WSWidgetDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.WSWidgetDataManager
  * JD-Core Version:    0.7.0.1
  */

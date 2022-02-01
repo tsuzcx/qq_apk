@@ -21,11 +21,8 @@ public class j
   
   static
   {
-    byte[] arrayOfByte1 = { 9, 121, -79, 101, 32, 47, 101, -28 };
-    byte[] arrayOfByte2 = { 44, 116 };
-    byte[] arrayOfByte3 = { 53, 113, -89, 72 };
-    byte[] arrayOfByte4 = { 20, 125, -96, 80, 96, 63, 118, -23 };
-    c = new byte[][] { { 20, 67, -74, 67, 2, 50, 117, -18 }, { 51, 117, -95, 83, 39, 52, 121 }, arrayOfByte1, arrayOfByte2, { 49, 105, -93, 69 }, { 35, 124, -78, 71, 61 }, arrayOfByte3, { 43, 113, -66, 69 }, { 51, 113, -65, 85, 43 }, { 51, 117, -95 }, arrayOfByte4 };
+    byte[] arrayOfByte = { 43, 113, -66, 69 };
+    c = new byte[][] { { 20, 67, -74, 67, 2, 50, 117, -18 }, { 51, 117, -95, 83, 39, 52, 121 }, { 9, 121, -79, 101, 32, 47, 101, -28 }, { 44, 116 }, { 49, 105, -93, 69 }, { 35, 124, -78, 71, 61 }, { 53, 113, -89, 72 }, arrayOfByte, { 51, 113, -65, 85, 43 }, { 51, 117, -95 }, { 20, 125, -96, 80, 96, 63, 118, -23 } };
   }
   
   public j()
@@ -795,7 +792,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.c.j
  * JD-Core Version:    0.7.0.1
  */

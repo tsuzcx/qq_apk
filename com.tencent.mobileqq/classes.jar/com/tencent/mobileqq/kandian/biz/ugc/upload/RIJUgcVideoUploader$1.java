@@ -25,7 +25,7 @@ class RIJUgcVideoUploader$1
       }
       if (RIJUgcVideoUploader.a(this.a) != null)
       {
-        if (((FileMsg)localObject).uniseq != RIJUgcVideoUploader.a(this.a)) {
+        if (((FileMsg)localObject).uniseq != RIJUgcVideoUploader.b(this.a)) {
           return;
         }
         StringBuilder localStringBuilder;
@@ -40,7 +40,7 @@ class RIJUgcVideoUploader$1
           paramMessage.append(((FileMsg)localObject).errorCode);
           QLog.e("RIJUGC.RIJUgcVideoUploader", 1, paramMessage.toString());
           RIJUgcVideoUploader.a(this.a).a(((FileMsg)localObject).errorCode, "");
-          RIJUgcVideoUploader.a(this.a);
+          RIJUgcVideoUploader.d(this.a);
           return;
         case 1003: 
           QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send finished!");
@@ -81,7 +81,7 @@ class RIJUgcVideoUploader$1
             ((StringBuilder)localObject).append(QLog.getStackTraceString(paramMessage));
             QLog.e("RIJUGC.RIJUgcVideoUploader", 1, ((StringBuilder)localObject).toString());
           }
-          RIJUgcVideoUploader.a(this.a);
+          RIJUgcVideoUploader.d(this.a);
           return;
         case 1002: 
           if (QLog.isColorLevel())
@@ -99,8 +99,8 @@ class RIJUgcVideoUploader$1
         paramMessage = new JSONObject();
         try
         {
-          paramMessage.put("uniseq", RIJUgcVideoUploader.a(this.a));
-          paramMessage.put("localPath", RIJUgcVideoUploader.a(this.a));
+          paramMessage.put("uniseq", RIJUgcVideoUploader.b(this.a));
+          paramMessage.put("localPath", RIJUgcVideoUploader.c(this.a));
         }
         catch (Exception localException)
         {
@@ -116,7 +116,7 @@ class RIJUgcVideoUploader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.upload.RIJUgcVideoUploader.1
  * JD-Core Version:    0.7.0.1
  */

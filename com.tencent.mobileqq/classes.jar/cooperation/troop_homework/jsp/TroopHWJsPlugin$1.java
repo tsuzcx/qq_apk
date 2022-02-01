@@ -92,7 +92,7 @@ class TroopHWJsPlugin$1
     //   146: astore 4
     //   148: aload 4
     //   150: aload 4
-    //   152: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
+    //   152: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:d	Ljava/lang/String;
     //   155: iconst_1
     //   156: anewarray 76	java/lang/String
     //   159: dup
@@ -141,7 +141,7 @@ class TroopHWJsPlugin$1
     //   237: astore 4
     //   239: aload 4
     //   241: aload 4
-    //   243: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
+    //   243: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:d	Ljava/lang/String;
     //   246: iconst_1
     //   247: anewarray 76	java/lang/String
     //   250: dup
@@ -180,7 +180,7 @@ class TroopHWJsPlugin$1
     //   310: astore 4
     //   312: aload 4
     //   314: aload 4
-    //   316: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
+    //   316: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:d	Ljava/lang/String;
     //   319: iconst_1
     //   320: anewarray 76	java/lang/String
     //   323: dup
@@ -213,7 +213,7 @@ class TroopHWJsPlugin$1
     //   375: astore 5
     //   377: aload 5
     //   379: aload 5
-    //   381: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
+    //   381: getfield 74	cooperation/troop_homework/jsp/TroopHWJsPlugin:d	Ljava/lang/String;
     //   384: iconst_1
     //   385: anewarray 76	java/lang/String
     //   388: dup
@@ -304,7 +304,7 @@ class TroopHWJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

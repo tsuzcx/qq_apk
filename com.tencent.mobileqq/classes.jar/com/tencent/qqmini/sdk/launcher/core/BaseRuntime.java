@@ -69,7 +69,7 @@ public abstract class BaseRuntime
     if ((localMiniAppInfo != null) && (localMiniAppInfo.launchParam != null))
     {
       localAdReportData.scene = localMiniAppInfo.launchParam.scene;
-      localAdReportData.scene_sn = getSceneSn(localMiniAppInfo);
+      localAdReportData.sceneSn = getSceneSn(localMiniAppInfo);
     }
     return localAdReportData;
   }
@@ -177,7 +177,7 @@ public abstract class BaseRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.BaseRuntime
  * JD-Core Version:    0.7.0.1
  */

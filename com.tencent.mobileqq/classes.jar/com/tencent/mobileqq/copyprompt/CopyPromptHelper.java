@@ -27,47 +27,43 @@ import com.tencent.widget.XEditTextEx;
 public class CopyPromptHelper
   implements View.OnClickListener, ILifeCycleHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new CopyPromptHelper.1(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private SoftKeyboardObserver jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CopyPromptHelper.4(this);
+  private BaseChatPie a;
+  private View b;
+  private Handler c = new Handler(Looper.getMainLooper());
+  private SoftKeyboardObserver d;
+  private long e;
+  private TextWatcher f = new CopyPromptHelper.1(this);
+  private Runnable g = new CopyPromptHelper.4(this);
   
   public CopyPromptHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  private View a(String paramString)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559581, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c, false);
-    ((TextView)localView.findViewById(2131373167)).setText(new QQText(paramString, 3, 16));
-    paramString = new RelativeLayout.LayoutParams(-2, -2);
-    paramString.addRule(9);
-    paramString.addRule(2, 2131368875);
-    paramString.leftMargin = AIOUtils.b(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
-    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364485)).addView(localView, paramString);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "dc00898", "", "", "0X800B22B", "0X800B22B", 0, 0, "", "", "", "");
-    return localView;
+    this.a = paramBaseChatPie;
   }
   
   private void a(String paramString)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.b;
     if (localView != null) {
       localView.setOnClickListener(new CopyPromptHelper.3(this, paramString));
     }
   }
   
-  private boolean a()
+  private View b(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364582).getVisibility() == 0;
+    View localView = LayoutInflater.from(this.a.e).inflate(2131625610, this.a.aZ, false);
+    ((TextView)localView.findViewById(2131440777)).setText(new QQText(paramString, 3, 16));
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(9);
+    paramString.addRule(2, 2131435809);
+    paramString.leftMargin = AIOUtils.b(14.0F, this.a.e.getResources());
+    ((RelativeLayout)this.a.aZ.findViewById(2131430542)).addView(localView, paramString);
+    ReportController.b(this.a.i(), "dc00898", "", "", "0X800B22B", "0X800B22B", 0, 0, "", "", "", "");
+    return localView;
   }
   
   private void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.COPY_PROMPT_MANAGER);
+    Object localObject = this.a.d.getManager(QQManagerFactory.COPY_PROMPT_MANAGER);
     if ((localObject instanceof CopyPromptManager))
     {
       localObject = ((CopyPromptManager)localObject).a();
@@ -81,8 +77,8 @@ public class CopyPromptHelper
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         a();
-        this.jdField_a_of_type_AndroidViewView = a((String)localObject);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+        this.b = b((String)localObject);
+        this.c.postDelayed(this.g, 5000L);
         c();
         a((String)localObject);
       }
@@ -91,15 +87,20 @@ public class CopyPromptHelper
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver == null) {
-      this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = new SoftKeyboardObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c, new CopyPromptHelper.2(this));
+    if (this.d == null) {
+      this.d = new SoftKeyboardObserver(this.a.aZ, new CopyPromptHelper.2(this));
     }
+  }
+  
+  private boolean d()
+  {
+    return this.a.aZ.findViewById(2131430644).getVisibility() == 0;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.c.removeCallbacks(this.g);
+    this.g.run();
   }
   
   public String getTag()
@@ -114,8 +115,13 @@ public class CopyPromptHelper
   
   public void onClick(View paramView)
   {
-    if (!a()) {
-      b();
+    long l = System.currentTimeMillis();
+    if (this.e + 2000L <= System.currentTimeMillis())
+    {
+      this.e = l;
+      if (!d()) {
+        b();
+      }
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -127,28 +133,28 @@ public class CopyPromptHelper
       if (paramInt != 15) {
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      SoftKeyboardObserver localSoftKeyboardObserver = this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
+      this.c.removeCallbacks(this.g);
+      this.g.run();
+      SoftKeyboardObserver localSoftKeyboardObserver = this.d;
       if (localSoftKeyboardObserver != null)
       {
         localSoftKeyboardObserver.a();
-        this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = null;
+        this.d = null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      if (this.a.Y != null) {
+        this.a.Y.removeTextChangedListener(this.f);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      this.a.Y.a(this);
+      this.a.Y.addTextChangedListener(this.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptHelper
  * JD-Core Version:    0.7.0.1
  */

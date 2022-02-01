@@ -13,29 +13,29 @@ class AEEditorColorAdapter$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Int == AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter)) {
+    if (this.a == AEEditorColorAdapter.a(this.c)) {
       return;
     }
-    AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter).a(AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter), ((Integer)AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter).get(this.jdField_a_of_type_Int)).intValue(), this.jdField_a_of_type_Int, AEEditorColorAdapter.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter));
-    AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter, this.jdField_a_of_type_Int);
-    AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter$VH, this.jdField_a_of_type_Int);
-    if ("adapter_extract".equals(AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter)))
+    AEEditorColorAdapter.e(this.c).a(AEEditorColorAdapter.b(this.c), ((Integer)AEEditorColorAdapter.c(this.c).get(this.a)).intValue(), this.a, AEEditorColorAdapter.d(this.c));
+    AEEditorColorAdapter.a(this.c, this.a);
+    AEEditorColorAdapter.a(this.c, this.b, this.a);
+    if ("adapter_extract".equals(AEEditorColorAdapter.b(this.c)))
     {
-      AEBaseReportParam.a().a().jdField_h_of_type_JavaLangString = "ai_color";
-      AEBaseReportParam.a().a().jdField_h_of_type_Int = -1;
+      AEBaseReportParam.a().n().B = "ai_color";
+      AEBaseReportParam.a().n().D = -1;
     }
-    else if ("adapter_fix".equals(AEEditorColorAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter)))
+    else if ("adapter_fix".equals(AEEditorColorAdapter.b(this.c)))
     {
-      AEBaseReportParam.a().a().jdField_h_of_type_JavaLangString = "common_color";
-      AEBaseReportParam.a().a().jdField_h_of_type_Int = (this.jdField_a_of_type_Int + 1);
+      AEBaseReportParam.a().n().B = "common_color";
+      AEBaseReportParam.a().n().D = (this.a + 1);
     }
-    AEBaseReportParam.a().a().i = AEEditorColorAdapter.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter);
-    AEBaseDataReporter.a().z();
+    AEBaseReportParam.a().n().C = AEEditorColorAdapter.d(this.c);
+    AEBaseDataReporter.a().A();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorColorAdapter.1
  * JD-Core Version:    0.7.0.1
  */

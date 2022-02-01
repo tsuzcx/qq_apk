@@ -13,25 +13,25 @@ class EditLocalVideoActivity$13
   
   public void onClick(View paramView)
   {
-    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    if (EditLocalVideoActivity.q(this.a).isPlaying())
     {
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).pause();
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+      EditLocalVideoActivity.d(this.a, false);
+      EditLocalVideoActivity.q(this.a).pause();
+      EditLocalVideoActivity.r(this.a).setVisibility(0);
     }
     else
     {
-      EditLocalVideoActivity.b(this.a, true);
-      EditLocalVideoActivity.b(this.a).setVisibility(8);
-      EditLocalVideoActivity.a(this.a).start();
-      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      EditLocalVideoActivity.d(this.a, true);
+      EditLocalVideoActivity.s(this.a).setVisibility(8);
+      EditLocalVideoActivity.q(this.a).start();
+      EditLocalVideoActivity.r(this.a).setVisibility(4);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,6 @@ public class SupportDefault
     super(paramVideoAppInterface);
   }
   
-  public int a(String paramString)
-  {
-    return 1;
-  }
-  
   public boolean a(int paramInt, String paramString)
   {
     return false;
@@ -23,6 +18,11 @@ public class SupportDefault
   public boolean a(String paramString)
   {
     return true;
+  }
+  
+  public int b(String paramString)
+  {
+    return 1;
   }
   
   public void b() {}

@@ -17,7 +17,7 @@ final class PreviewReportSession$Bean
   
   public PreviewReportSession$Bean()
   {
-    super("TAVFoundation", "android_avfoundation_preview", "1.1.-");
+    super("TAVFoundation", "android_avfoundation_preview", "2.2.2.5");
   }
   
   public String toString()
@@ -37,7 +37,7 @@ final class PreviewReportSession$Bean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.report.PreviewReportSession.Bean
  * JD-Core Version:    0.7.0.1
  */

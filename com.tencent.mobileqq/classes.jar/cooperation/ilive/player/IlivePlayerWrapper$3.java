@@ -20,14 +20,14 @@ class IlivePlayerWrapper$3
       localStringBuilder.append(paramInt);
       QLog.i("CachePlayer", 2, localStringBuilder.toString());
     }
-    if (IlivePlayerWrapper.a(this.a) != null) {
-      IlivePlayerWrapper.a(this.a).onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2, paramObject);
+    if (IlivePlayerWrapper.d(this.a) != null) {
+      IlivePlayerWrapper.d(this.a).onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.IlivePlayerWrapper.3
  * JD-Core Version:    0.7.0.1
  */

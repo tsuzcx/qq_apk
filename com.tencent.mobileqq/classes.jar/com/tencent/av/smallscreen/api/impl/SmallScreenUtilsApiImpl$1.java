@@ -11,9 +11,9 @@ class SmallScreenUtilsApiImpl$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    paramAnimation = this.a;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       i = 0;
     } else {
       i = 8;
@@ -25,12 +25,12 @@ class SmallScreenUtilsApiImpl$1
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.api.impl.SmallScreenUtilsApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

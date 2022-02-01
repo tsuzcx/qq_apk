@@ -18,14 +18,14 @@ final class TroopEntranceBar$StaticFriendListObserver
   protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
     TroopEntranceBar localTroopEntranceBar = (TroopEntranceBar)this.a.get();
-    if ((localTroopEntranceBar != null) && (paramBoolean) && (paramString != null) && (localTroopEntranceBar.a != null) && (localTroopEntranceBar.a.size() > 0) && (paramString.equals(((TroopInfo)localTroopEntranceBar.a.get(0)).troopuin))) {
+    if ((localTroopEntranceBar != null) && (paramBoolean) && (paramString != null) && (localTroopEntranceBar.q != null) && (localTroopEntranceBar.q.size() > 0) && (paramString.equals(((TroopInfo)localTroopEntranceBar.q.get(0)).troopuin))) {
       localTroopEntranceBar.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar.StaticFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

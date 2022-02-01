@@ -25,9 +25,9 @@ class MiniAIOPresenter$1
       MiniAIOPresenter.a(this.a, 0);
       return;
     }
-    if ((paramInt > MiniAIOPresenter.a(this.a)) && (MiniAIOPresenter.a(this.a) != null))
+    if ((paramInt > MiniAIOPresenter.b(this.a)) && (MiniAIOPresenter.a(this.a) != null))
     {
-      if (MiniAIOPresenter.a(this.a)) {
+      if (MiniAIOPresenter.c(this.a)) {
         MiniAIOPresenter.a(this.a).setVisibility(0);
       }
       MiniAIOPresenter.a(this.a, paramInt);
@@ -36,7 +36,7 @@ class MiniAIOPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniaio.MiniAIOPresenter.1
  * JD-Core Version:    0.7.0.1
  */

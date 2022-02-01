@@ -10,9 +10,9 @@ class MayknowRecommendManager$4
   
   public void a(int paramInt)
   {
-    boolean bool1 = MayknowRecommendManager.b(this.a);
+    boolean bool1 = MayknowRecommendManager.l(this.a);
     MayknowRecommendManager.a(this.a, false);
-    boolean bool2 = this.a.a();
+    boolean bool2 = this.a.m();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -23,7 +23,7 @@ class MayknowRecommendManager$4
       QLog.i("MayknowRecommendManager", 2, localStringBuilder.toString());
     }
     if (bool1 != bool2) {
-      ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(90, true, null);
+      ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(90, true, null);
     }
   }
   
@@ -37,7 +37,7 @@ class MayknowRecommendManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.4
  * JD-Core Version:    0.7.0.1
  */

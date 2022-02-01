@@ -6,10 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class a
   implements ThreadFactory
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger b = new AtomicInteger(1);
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private final ThreadGroup b;
+  private final AtomicInteger c = new AtomicInteger(1);
+  private final String d;
   
   public a(String paramString)
   {
@@ -19,21 +19,21 @@ public final class a
     } else {
       localObject = Thread.currentThread().getThreadGroup();
     }
-    this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+    this.b = ((ThreadGroup)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    ((StringBuilder)localObject).append(a.getAndIncrement());
     ((StringBuilder)localObject).append("_thread_");
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    this.d = ((StringBuilder)localObject).toString();
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    ThreadGroup localThreadGroup = this.jdField_a_of_type_JavaLangThreadGroup;
+    ThreadGroup localThreadGroup = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(this.b.getAndIncrement());
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.c.getAndIncrement());
     paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
@@ -52,7 +52,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.a.a
  * JD-Core Version:    0.7.0.1
  */

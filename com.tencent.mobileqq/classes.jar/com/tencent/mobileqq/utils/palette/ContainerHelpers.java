@@ -2,9 +2,9 @@ package com.tencent.mobileqq.utils.palette;
 
 class ContainerHelpers
 {
-  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
-  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
+  static final int[] a = new int[0];
+  static final long[] b = new long[0];
+  static final Object[] c = new Object[0];
   
   static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
@@ -27,7 +27,7 @@ class ContainerHelpers
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ContainerHelpers
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,12 @@ public class IntimateAnniversaryDataHandler
     return 8;
   }
   
-  public String a(TofuItem paramTofuItem)
+  public byte[] b(TofuItem paramTofuItem)
+  {
+    return null;
+  }
+  
+  public String c(TofuItem paramTofuItem)
   {
     if ((paramTofuItem.bytesFromServer != null) && (paramTofuItem.bytesFromServer.length > 0)) {}
     for (;;)
@@ -146,15 +151,10 @@ public class IntimateAnniversaryDataHandler
       i = -1;
     }
   }
-  
-  public byte[] a(TofuItem paramTofuItem)
-  {
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.handlers.IntimateAnniversaryDataHandler
  * JD-Core Version:    0.7.0.1
  */

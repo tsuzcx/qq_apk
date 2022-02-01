@@ -72,7 +72,7 @@ public class StoryBasicShareUtils
     if ((paramShareData instanceof ShareWeChatData))
     {
       paramContext = (ShareWeChatData)paramShareData;
-      a(paramContext, paramContext.a, paramStoryShareCallback);
+      a(paramContext, paramContext.j, paramStoryShareCallback);
       return;
     }
     if ((paramShareData instanceof ShareSinaData))
@@ -85,7 +85,7 @@ public class StoryBasicShareUtils
   
   private static void a(Context paramContext, ShareQQData paramShareQQData, StoryShareCallback paramStoryShareCallback)
   {
-    int i = paramShareQQData.b;
+    int i = paramShareQQData.a;
     if (i != 0)
     {
       if (i != 1)
@@ -93,10 +93,10 @@ public class StoryBasicShareUtils
         if (i != 2) {
           return;
         }
-        ShareMsgHelper.a(paramContext, 1001, 1, "web_share", "", paramShareQQData.a, paramShareQQData.k, paramShareQQData.l, paramShareQQData.jdField_d_of_type_JavaLangString, paramShareQQData.h, "web", null, null, null, "plugin", paramShareQQData.g, null, null, null, paramShareQQData.f, null, null, 29782, null, -1L);
+        ShareMsgHelper.a(paramContext, 1001, 1, "web_share", "", paramShareQQData.f, paramShareQQData.r, paramShareQQData.s, paramShareQQData.h, paramShareQQData.m, "web", null, null, null, "plugin", paramShareQQData.l, null, null, null, paramShareQQData.k, null, null, 29782, null, -1L);
         return;
       }
-      if (ShareMsgHelper.a(paramContext, 29, paramShareQQData.jdField_d_of_type_Int, "web_share", paramShareQQData.n, paramShareQQData.a, paramShareQQData.k, paramShareQQData.l, paramShareQQData.jdField_d_of_type_JavaLangString, paramShareQQData.a, "plugin", null, paramShareQQData.h, paramShareQQData.h, "plugin", null, paramShareQQData.g, paramShareQQData.g, null, paramShareQQData.f, null, paramShareQQData.m, true))
+      if (ShareMsgHelper.a(paramContext, 29, paramShareQQData.p, "web_share", paramShareQQData.u, paramShareQQData.f, paramShareQQData.r, paramShareQQData.s, paramShareQQData.h, paramShareQQData.f, "plugin", null, paramShareQQData.m, paramShareQQData.m, "plugin", null, paramShareQQData.l, paramShareQQData.l, null, paramShareQQData.k, null, paramShareQQData.t, true))
       {
         paramStoryShareCallback.a(paramShareQQData);
         return;
@@ -105,18 +105,18 @@ public class StoryBasicShareUtils
       return;
     }
     paramStoryShareCallback = new MessageForQQStory();
-    paramStoryShareCallback.authorName = paramShareQQData.i;
-    paramStoryShareCallback.brief = paramShareQQData.jdField_d_of_type_JavaLangString;
-    paramStoryShareCallback.briefBgColor = paramShareQQData.jdField_c_of_type_Int;
-    paramStoryShareCallback.coverImgUrl = paramShareQQData.a;
-    paramStoryShareCallback.logoImgUrl = paramShareQQData.jdField_c_of_type_JavaLangString;
-    paramStoryShareCallback.msgAction = paramShareQQData.h;
-    paramStoryShareCallback.srcAction = paramShareQQData.g;
-    paramStoryShareCallback.srcName = paramShareQQData.f;
-    paramStoryShareCallback.type = paramShareQQData.jdField_e_of_type_Int;
-    paramStoryShareCallback.mVid = paramShareQQData.jdField_e_of_type_JavaLangString;
-    paramStoryShareCallback.storyTitle = paramShareQQData.o;
-    paramStoryShareCallback.storyBrief = paramShareQQData.p;
+    paramStoryShareCallback.authorName = paramShareQQData.n;
+    paramStoryShareCallback.brief = paramShareQQData.h;
+    paramStoryShareCallback.briefBgColor = paramShareQQData.i;
+    paramStoryShareCallback.coverImgUrl = paramShareQQData.f;
+    paramStoryShareCallback.logoImgUrl = paramShareQQData.g;
+    paramStoryShareCallback.msgAction = paramShareQQData.m;
+    paramStoryShareCallback.srcAction = paramShareQQData.l;
+    paramStoryShareCallback.srcName = paramShareQQData.k;
+    paramStoryShareCallback.type = paramShareQQData.q;
+    paramStoryShareCallback.mVid = paramShareQQData.j;
+    paramStoryShareCallback.storyTitle = paramShareQQData.v;
+    paramStoryShareCallback.storyBrief = paramShareQQData.w;
     TroopShareUtility.a((Activity)paramContext, paramStoryShareCallback, 29782);
   }
   
@@ -124,19 +124,19 @@ public class StoryBasicShareUtils
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty(paramShareQZoneData.jdField_c_of_type_JavaLangString)) {
-      localObject = paramShareQZoneData.jdField_e_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramShareQZoneData.f)) {
+      localObject = paramShareQZoneData.h;
     } else {
-      localObject = paramShareQZoneData.jdField_c_of_type_JavaLangString;
+      localObject = paramShareQZoneData.f;
     }
     localBundle.putString("title", (String)localObject);
-    if (TextUtils.isEmpty(paramShareQZoneData.jdField_d_of_type_JavaLangString)) {
-      localObject = paramShareQZoneData.jdField_e_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramShareQZoneData.g)) {
+      localObject = paramShareQZoneData.h;
     } else {
-      localObject = paramShareQZoneData.jdField_d_of_type_JavaLangString;
+      localObject = paramShareQZoneData.g;
     }
     localBundle.putString("desc", (String)localObject);
-    localBundle.putString("detail_url", paramShareQZoneData.jdField_e_of_type_JavaLangString);
+    localBundle.putString("detail_url", paramShareQZoneData.h);
     Object localObject = new ArrayList(1);
     ((ArrayList)localObject).add(paramShareQZoneData.a);
     localBundle.putStringArrayList("image_url", (ArrayList)localObject);
@@ -177,16 +177,16 @@ public class StoryBasicShareUtils
         ((StringBuilder)localObject2).append("mTitle=");
         ((StringBuilder)localObject2).append((String)localObject1);
         localObject1 = ((StringBuilder)localObject2).toString();
-        localObject2 = URLEncoder.encode(paramShareSinaData.jdField_c_of_type_JavaLangString, "UTF-8");
+        localObject2 = URLEncoder.encode(paramShareSinaData.f, "UTF-8");
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append("&url=");
         localStringBuilder.append((String)localObject2);
         localObject2 = localStringBuilder.toString();
         localObject1 = localObject2;
-        if (!TextUtils.isEmpty(paramShareSinaData.jdField_e_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramShareSinaData.h))
         {
-          localObject1 = URLEncoder.encode(paramShareSinaData.jdField_e_of_type_JavaLangString, "UTF-8");
+          localObject1 = URLEncoder.encode(paramShareSinaData.h, "UTF-8");
           localStringBuilder = new StringBuilder();
           localStringBuilder.append((String)localObject2);
           localStringBuilder.append("&pic=");
@@ -223,7 +223,7 @@ public class StoryBasicShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils
  * JD-Core Version:    0.7.0.1
  */

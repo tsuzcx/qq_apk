@@ -85,7 +85,7 @@ public abstract class LiveTemplateActivity
     getIntent().putExtra("screen_orientation_landscape", this.isNeedLandscape);
     this.currentFragment = createFragment(this.isNeedLandscape);
     localObject = getSupportFragmentManager().beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131367213, this.currentFragment);
+    ((FragmentTransaction)localObject).replace(2131433669, this.currentFragment);
     ((FragmentTransaction)localObject).commitAllowingStateLoss();
     label136:
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
@@ -99,15 +99,15 @@ public abstract class LiveTemplateActivity
     {
       setRequestedOrientation(0);
       super.onCreate(paramBundle);
-      setContentView(2131559225);
+      setContentView(2131625145);
       return;
     }
     super.onCreate(paramBundle);
-    setContentView(2131559225);
-    this.mRootLayout = ((FrameLayout)findViewById(2131365132));
+    setContentView(2131625145);
+    this.mRootLayout = ((FrameLayout)findViewById(2131431280));
     this.currentFragment = createFragment(this.isNeedLandscape);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131367213, this.currentFragment);
+    paramBundle.replace(2131433669, this.currentFragment);
     paramBundle.commitAllowingStateLoss();
   }
   
@@ -127,7 +127,7 @@ public abstract class LiveTemplateActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.base.page.activity.LiveTemplateActivity
  * JD-Core Version:    0.7.0.1
  */

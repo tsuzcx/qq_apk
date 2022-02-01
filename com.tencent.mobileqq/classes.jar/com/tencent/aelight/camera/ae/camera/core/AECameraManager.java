@@ -1,7 +1,6 @@
 package com.tencent.aelight.camera.ae.camera.core;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -20,17 +19,20 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import androidx.annotation.RequiresApi;
 import com.tencent.aelight.camera.ae.camera.AECaptureParam;
+import com.tencent.aelight.camera.ae.camera.testpkg.CameraProxyImp;
+import com.tencent.aelight.camera.ae.camera.testpkg.IProxyForTestCap;
+import com.tencent.aelight.camera.ae.camera.testpkg.VideoCameraProxy;
+import com.tencent.aelight.camera.ae.debug.AECameraDebug;
 import com.tencent.aelight.camera.ae.perf.AELaunchRecorder;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.richmedia.Size;
 import com.tencent.mobileqq.camera.utils.CameraUtils;
+import com.tencent.mobileqq.richmedia.capture.util.CameraHelper;
 import com.tencent.mobileqq.richmedia.capture.util.DarkModeChecker;
 import com.tencent.mobileqq.richmedia.capture.util.DarkModeChecker.DarkModeListener;
 import com.tencent.mobileqq.videocodec.audio.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqcamerakit.capture.CameraPreviewCallBack;
-import com.tencent.qqcamerakit.capture.CameraProxy;
 import com.tencent.qqcamerakit.capture.CameraProxy.PictureCallback;
 import com.tencent.qqcamerakit.capture.CameraSize;
 import com.tencent.qqcamerakit.capture.cameraextend.FocusOperator;
@@ -45,19 +47,21 @@ public class AECameraManager
   extends CameraPreviewCallBack
   implements Observer
 {
+  private static final int MAX_RETRY_TIMES = 3;
   private static final int STATE_CLOSED = 0;
   private static final int STATE_OPENED = 2;
   private static final int STATE_OPEN_REQUESTING = 1;
   private static final int STATE_PREVIEWING = 4;
   private static final int STATE_PREVIEW_REQUESTING = 3;
   private static final String TAG = "AECameraManager";
+  private String SPECIAL_DEVICE_FOR_GREEN_SCREEN;
   private int activityOrientation;
   private AECaptureParam aeCaptureParam;
   private AudioCapture audioCapture;
   private final Handler cameraManagerHandler;
   private int cameraPreviewHeight;
   private int cameraPreviewWidth;
-  private final CameraProxy cameraProxy;
+  private final IProxyForTestCap cameraProxy;
   private final AtomicInteger cameraState;
   private DarkModeChecker darkModeChecker;
   private boolean darkModeEnable;
@@ -75,18 +79,20 @@ public class AECameraManager
   private Matrix mScreenToCameraMatrix;
   private boolean manualFocused;
   private boolean restoreBright;
+  private int retryCount;
   private int selectedCamera;
   
   public AECameraManager()
   {
-    Object localObject = BaseApplicationImpl.getContext();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Build.MANUFACTURER);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(Build.MODEL);
-    this.cameraProxy = new CameraProxy((Context)localObject, null, "Google Pixel 4 XL".equals(localStringBuilder.toString()) ^ true);
+    if (AECameraDebug.a()) {
+      localObject = new VideoCameraProxy(AECameraDebug.b());
+    } else {
+      localObject = new CameraProxyImp();
+    }
+    this.cameraProxy = ((IProxyForTestCap)localObject);
     this.mScreenToCameraMatrix = new Matrix();
     this.activityOrientation = 0;
+    this.SPECIAL_DEVICE_FOR_GREEN_SCREEN = "Xiaomi;Redmi Note 8 Pro";
     this.isDynamicResolutionMode = false;
     this.manualFocused = false;
     this.flashSwitcher = false;
@@ -94,10 +100,11 @@ public class AECameraManager
     this.selectedCamera = 1;
     this.cameraState = new AtomicInteger(0);
     this.gotFirstPreviewData = false;
+    this.retryCount = 0;
     if (!CameraUtils.d()) {
       this.selectedCamera = 2;
     }
-    localObject = new HandlerThread("AECameraManagerHandlerThread");
+    Object localObject = new HandlerThread("AECameraManagerHandlerThread");
     ((HandlerThread)localObject).start();
     this.cameraManagerHandler = new Handler(((HandlerThread)localObject).getLooper());
   }
@@ -110,6 +117,16 @@ public class AECameraManager
   private boolean isCameraPreviewing()
   {
     return this.cameraState.get() >= 3;
+  }
+  
+  private boolean isSpecialDeviceForGreenScreen()
+  {
+    String str = this.SPECIAL_DEVICE_FOR_GREEN_SCREEN;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append(";");
+    localStringBuilder.append(Build.MODEL);
+    return str.equals(localStringBuilder.toString());
   }
   
   private void onCameraSizeSelected(CameraSize paramCameraSize)
@@ -140,10 +157,10 @@ public class AECameraManager
       this.cameraState.set(2);
       AEQLog.b("AECameraManager", "openCameraInternal---cameraCreated normally");
       if (this.audioCapture != null) {
-        this.audioCapture.h();
+        this.audioCapture.i();
       }
-      com.tencent.mobileqq.activity.richmedia.FlowCameraConstant.a = this.selectedCamera;
-      AELaunchRecorder.a().a("openCamera-end");
+      com.tencent.mobileqq.activity.richmedia.FlowCameraConstant.b = this.selectedCamera;
+      AELaunchRecorder.d().a("openCamera-end");
       return;
     }
     finally
@@ -163,9 +180,10 @@ public class AECameraManager
     localStringBuilder.append(paramSize);
     AEQLog.b("AECameraManager", localStringBuilder.toString());
     this.cameraState.set(3);
+    boolean bool = isSpecialDeviceForGreenScreen();
     this.aeCaptureParam.i(paramSize.a);
     this.aeCaptureParam.j(paramSize.b);
-    this.cameraProxy.a(new CameraSize(paramSize.a, paramSize.b), new CameraSize(paramSize.a, paramSize.b), new CameraSize(paramSize.a, paramSize.b), 30);
+    this.cameraProxy.a(new CameraSize(paramSize.a, paramSize.b), new CameraSize(paramSize.a, paramSize.b), new CameraSize(paramSize.a, paramSize.b), 30, "continuous-video", 3, bool ^ true);
     this.cameraProxy.a(paramSurfaceTexture, this);
     this.cameraState.set(4);
     paramSurfaceTexture = this.mListener;
@@ -173,7 +191,7 @@ public class AECameraManager
       paramSurfaceTexture.onCameraPreviewStarted();
     }
     AEQLog.b("AECameraManager", "realStartPreview---EXIT");
-    AELaunchRecorder.a().a("startCameraPreview-end");
+    AELaunchRecorder.d().a("startCameraPreview-end");
   }
   
   private void setAeCaptureParam(AECaptureParam paramAECaptureParam)
@@ -199,7 +217,7 @@ public class AECameraManager
     this.cameraState.set(0);
     localObject = this.audioCapture;
     if (localObject != null) {
-      ((AudioCapture)localObject).i();
+      ((AudioCapture)localObject).j();
     }
     this.cameraProxy.b(this);
     AEQLog.b("AECameraManager", "stopCameraInternal---EXIT, normally");
@@ -297,9 +315,10 @@ public class AECameraManager
   
   public float getHorizontalViewAngle()
   {
-    Object localObject1 = this.cameraProxy.a();
+    Object localObject1 = this.cameraProxy.b();
     if ((Build.VERSION.SDK_INT >= 21) && ((localObject1 instanceof CameraCharacteristics)))
     {
+      QLog.i("AECameraManager", 4, "[CAMERA TYPE]:camera2");
       Object localObject2 = (CameraCharacteristics)localObject1;
       localObject1 = (SizeF)((CameraCharacteristics)localObject2).get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE);
       localObject2 = (float[])((CameraCharacteristics)localObject2).get(CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS);
@@ -309,6 +328,7 @@ public class AECameraManager
     }
     else if ((localObject1 instanceof Camera.Parameters))
     {
+      QLog.i("AECameraManager", 4, "[CAMERA TYPE]:camera1");
       return ((Camera.Parameters)localObject1).getHorizontalViewAngle();
     }
     return -1.0F;
@@ -323,7 +343,7 @@ public class AECameraManager
   {
     this.darkModeChecker = new DarkModeChecker();
     setAeCaptureParam(paramAECaptureParam);
-    this.selectedCamera = paramAECaptureParam.g();
+    this.selectedCamera = paramAECaptureParam.h();
     if ((this.selectedCamera == 1) && (!CameraUtils.d())) {
       this.selectedCamera = 2;
     }
@@ -346,7 +366,7 @@ public class AECameraManager
   
   public void notify(int paramInt1, int paramInt2, String paramString, Object... paramVarArgs)
   {
-    AELaunchRecorder localAELaunchRecorder = AELaunchRecorder.a();
+    AELaunchRecorder localAELaunchRecorder = AELaunchRecorder.d();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("【CameraProxy notify】eventId=");
     localStringBuilder.append(paramInt1);
@@ -419,24 +439,36 @@ public class AECameraManager
         }
       }
     }
-    else
+    else if ((paramVarArgs != null) && (paramVarArgs.length <= 0))
     {
-      if ((paramVarArgs != null) && (paramVarArgs.length <= 0))
-      {
-        AEQLog.d("AECameraManager", "【Camera Open Error】EVENT_CREATE_CAMERA:");
-        return;
-      }
-      if ((paramVarArgs[0] instanceof String))
+      paramString = new StringBuilder();
+      paramString.append("[Performance2]【Camera Open Error】EVENT_CREATE_CAMERA:");
+      paramString.append(paramInt2);
+      AEQLog.d("AECameraManager", paramString.toString());
+      if (paramInt2 != 0)
       {
         paramString = this.mListener;
         if (paramString != null)
         {
-          paramString.onCameraStarted(false, (String)paramVarArgs[0]);
-          paramString = new StringBuilder();
-          paramString.append("【Camera Open Error】EVENT_CREATE_CAMERA:");
-          paramString.append(paramVarArgs[0]);
-          AEQLog.d("AECameraManager", paramString.toString());
+          paramInt1 = this.retryCount;
+          if (paramInt1 < 3)
+          {
+            this.retryCount = (paramInt1 + 1);
+            paramString.onRetryOpenCamera();
+          }
         }
+      }
+    }
+    else if ((paramVarArgs[0] instanceof String))
+    {
+      paramString = this.mListener;
+      if (paramString != null)
+      {
+        paramString.onCameraStarted(false, (String)paramVarArgs[0]);
+        paramString = new StringBuilder();
+        paramString.append("【Camera Open Error】EVENT_CREATE_CAMERA:");
+        paramString.append(paramVarArgs[0]);
+        AEQLog.d("AECameraManager", paramString.toString());
       }
     }
   }
@@ -448,7 +480,7 @@ public class AECameraManager
     if (!this.gotFirstPreviewData)
     {
       this.gotFirstPreviewData = true;
-      AELaunchRecorder.a().a("onCameraPreviewFrameData");
+      AELaunchRecorder.d().a("onCameraPreviewFrameData");
     }
     paramImage = paramImage.getPlanes()[0].getBuffer();
     byte[] arrayOfByte = new byte[paramImage.remaining()];
@@ -480,7 +512,7 @@ public class AECameraManager
     if (!this.gotFirstPreviewData)
     {
       this.gotFirstPreviewData = true;
-      AELaunchRecorder.a().a("onCameraPreviewFrameData");
+      AELaunchRecorder.d().a("onCameraPreviewFrameData");
     }
     if (this.darkModeEnable)
     {
@@ -506,7 +538,7 @@ public class AECameraManager
   
   public void openCamera(AECameraManager.CameraOpenCallback paramCameraOpenCallback)
   {
-    AELaunchRecorder.a().a("openCamera-begin");
+    AELaunchRecorder.d().a("openCamera-begin");
     this.cameraManagerHandler.post(new AECameraManager.1(this, paramCameraOpenCallback));
   }
   
@@ -609,7 +641,7 @@ public class AECameraManager
       if (Math.min(paramSize.a, paramSize.b) <= 0) {
         return;
       }
-      AELaunchRecorder.a().a("startCameraPreview-begin");
+      AELaunchRecorder.d().a("startCameraPreview-begin");
       this.cameraManagerHandler.post(new AECameraManager.5(this, paramSurfaceTexture, paramSize));
     }
   }
@@ -627,6 +659,7 @@ public class AECameraManager
   public void switchFlash(boolean paramBoolean)
   {
     this.flashSwitcher = paramBoolean;
+    CameraHelper.a(this.flashSwitcher);
   }
   
   public void toggleCamera(AECameraManager.CameraOpenCallback paramCameraOpenCallback)
@@ -658,7 +691,7 @@ public class AECameraManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraManager
  * JD-Core Version:    0.7.0.1
  */

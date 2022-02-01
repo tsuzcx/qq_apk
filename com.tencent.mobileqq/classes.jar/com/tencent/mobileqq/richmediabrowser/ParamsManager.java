@@ -6,60 +6,31 @@ import android.text.TextUtils;
 
 public class ParamsManager
 {
-  protected int a;
-  private long jdField_a_of_type_Long = 0L;
-  public Rect a;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
+  protected int a = -1;
+  boolean b = true;
   public boolean c;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = false;
+  public boolean d = true;
+  public Rect e;
   private boolean f = false;
-  private boolean g;
-  private boolean h = false;
-  private boolean i = false;
-  private boolean j;
-  
-  private ParamsManager()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
-  }
+  private boolean g = false;
+  private String h;
+  private String i;
+  private boolean j = false;
+  private long k = 0L;
+  private int l;
+  private String m;
+  private String n;
+  private boolean o;
+  private boolean p = false;
+  private boolean q = false;
+  private int r;
+  private boolean s;
+  private int t;
+  private int u;
   
   public static ParamsManager a()
   {
     return ParamsManager.SingletonHolder.a();
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a(Intent paramIntent)
@@ -69,87 +40,110 @@ public class ParamsManager
   
   public void a(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-  }
-  
-  public boolean a()
-  {
-    return this.i;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.e = paramRect;
   }
   
   public boolean b()
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.q;
   }
   
   public boolean c()
   {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.f;
   }
   
   public boolean d()
   {
-    return this.f;
+    return this.g;
   }
   
-  public int e()
+  public String e()
   {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public boolean e()
-  {
+    if (TextUtils.isEmpty(this.h)) {
+      this.h = this.m;
+    }
     return this.h;
   }
   
-  public boolean f()
+  public String f()
   {
-    return this.j;
+    return this.i;
   }
   
   public boolean g()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1);
+    return this.j;
   }
   
-  public boolean h()
+  public long h()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.k;
+  }
+  
+  public int i()
+  {
+    return this.l;
+  }
+  
+  public String j()
+  {
+    return this.m;
+  }
+  
+  public String k()
+  {
+    return this.n;
+  }
+  
+  public boolean l()
+  {
+    return this.p;
+  }
+  
+  public int m()
+  {
+    return this.r;
+  }
+  
+  public boolean n()
+  {
+    return this.s;
+  }
+  
+  public int o()
+  {
+    return this.a;
+  }
+  
+  public int p()
+  {
+    return this.t;
+  }
+  
+  public int q()
+  {
+    return this.u;
+  }
+  
+  public boolean r()
+  {
+    return (this.b) && (this.l != -1);
+  }
+  
+  public boolean s()
+  {
+    return this.b;
+  }
+  
+  public Rect t()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ParamsManager
  * JD-Core Version:    0.7.0.1
  */

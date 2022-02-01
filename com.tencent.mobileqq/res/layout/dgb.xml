@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="start|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/l91" android:background="@drawable/jfd" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="13.0dip" android:button="@null" />
+    <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:id="@id/l8z" android:clickable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="13.0dip" android:layout_centerVertical="true" />
+    <com.tencent.timi.game.userinfo.api.view.AvatarTextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/l9u" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+</LinearLayout>

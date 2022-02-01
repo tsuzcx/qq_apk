@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 class FMActivity$FMTroopBusinessObserver
   extends TroopPhotoObserver
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   FMActivity$FMTroopBusinessObserver(FMActivity paramFMActivity) {}
   
@@ -26,13 +26,13 @@ class FMActivity$FMTroopBusinessObserver
       QLog.i("FMActivity<FileAssistant>", 2, paramString.toString());
     }
     if ((paramBoolean1) && (!paramBoolean4)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FMActivity.FMTroopBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

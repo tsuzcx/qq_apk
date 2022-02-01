@@ -20,27 +20,27 @@ class AECMShowResourceManager$1$1
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[downloadEssentialResource], resId=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", download succeeded");
       AEQLog.a("AECMShowResourceManager", localStringBuilder.toString());
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowResourceManager$1.this$0.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorDataAEEditorDownloadResBean));
+      this.b.put(this.a, this.f.this$0.a(this.c));
     }
     else
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[downloadEssentialResource], resId=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", download failed");
       AEQLog.a("AECMShowResourceManager", localStringBuilder.toString());
-      this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, null);
+      this.d[0] = false;
+      this.b.put(this.a, null);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.e.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowResourceManager.1.1
  * JD-Core Version:    0.7.0.1
  */

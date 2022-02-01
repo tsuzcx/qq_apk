@@ -13,13 +13,13 @@ class EmoticonGroupStoreFragment$3
   {
     this.a.a(true);
     EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.e(this.a));
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.f(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.3
  * JD-Core Version:    0.7.0.1
  */

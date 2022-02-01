@@ -13,13 +13,13 @@ class QzoneSlideShowPreparingFragment$6
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     LpReportInfo_pf00064.allReport(680, 1, 2);
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    QzoneSlideShowPreparingFragment.g(this.a).dismiss();
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.6
  * JD-Core Version:    0.7.0.1
  */

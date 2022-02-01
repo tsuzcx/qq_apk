@@ -7,24 +7,35 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 
 public class BitmapDrawableWithMargin
   extends BitmapDrawable
 {
-  private float jdField_a_of_type_Float = 1920.0F;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int a;
   private int b;
   private int c = 0;
+  private final Paint d = new Paint();
+  private float e = URLDrawableHelper.getRoundCorner() * 160.0F;
   
   public BitmapDrawableWithMargin(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramResources, paramBitmap);
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
-    this.jdField_a_of_type_Float = (paramResources.getDisplayMetrics().densityDpi / 160.0F * 12.0F);
+    this.e = (URLDrawableHelper.getRoundCorner() * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
     super.setGravity(17);
+  }
+  
+  public BitmapDrawableWithMargin(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
+  {
+    super(paramResources, paramBitmap);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.e = (paramFloat * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    setGravity(17);
   }
   
   public void draw(Canvas paramCanvas)
@@ -32,10 +43,10 @@ public class BitmapDrawableWithMargin
     int i = this.c;
     if (i >>> 24 != 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
+      this.d.setColor(i);
       RectF localRectF = new RectF(getBounds());
-      float f = this.jdField_a_of_type_Float;
-      paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      float f = this.e;
+      paramCanvas.drawRoundRect(localRectF, f, f, this.d);
     }
     super.draw(paramCanvas);
   }
@@ -51,7 +62,7 @@ public class BitmapDrawableWithMargin
   
   public int getIntrinsicWidth()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i > 0) {
       return i;
     }
@@ -60,21 +71,21 @@ public class BitmapDrawableWithMargin
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    if (paramInt != this.d.getAlpha()) {
+      this.d.setAlpha(paramInt);
     }
     super.setAlpha(paramInt);
   }
   
   public void setTargetDensity(int paramInt)
   {
-    this.jdField_a_of_type_Float = (paramInt / 160.0F * 12.0F);
+    this.e = (URLDrawableHelper.getRoundCorner() * (paramInt / 160.0F));
     super.setTargetDensity(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.drawable.BitmapDrawableWithMargin
  * JD-Core Version:    0.7.0.1
  */

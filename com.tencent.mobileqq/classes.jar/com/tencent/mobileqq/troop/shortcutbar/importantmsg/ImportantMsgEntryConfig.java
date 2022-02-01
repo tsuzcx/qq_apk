@@ -28,7 +28,7 @@ public class ImportantMsgEntryConfig
     int i = 0;
     while (i < paramArrayOfQConfItem.length)
     {
-      Object localObject = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
+      Object localObject = paramArrayOfQConfItem[i].b;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
@@ -45,10 +45,10 @@ public class ImportantMsgEntryConfig
               if (localJSONObject != null)
               {
                 k = localJSONObject.optInt("t");
-                localEntryConfig.jdField_a_of_type_JavaLangString = localJSONObject.optString("url");
-                localEntryConfig.jdField_a_of_type_Long = localJSONObject.optLong("id");
-                localEntryConfig.jdField_a_of_type_Int = localJSONObject.optInt("titletype");
-                localEntryConfig.b = localJSONObject.optString("deftitle");
+                localEntryConfig.a = localJSONObject.optString("url");
+                localEntryConfig.b = localJSONObject.optLong("id");
+                localEntryConfig.c = localJSONObject.optInt("titletype");
+                localEntryConfig.d = localJSONObject.optString("deftitle");
               }
               localHashMap.put(Integer.valueOf(k), localEntryConfig);
               j += 1;
@@ -90,7 +90,7 @@ public class ImportantMsgEntryConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgEntryConfig
  * JD-Core Version:    0.7.0.1
  */

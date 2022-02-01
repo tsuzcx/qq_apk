@@ -23,7 +23,7 @@ final class b$1
     //   11: invokestatic 43	com/tencent/smtt/utils/b:b	(Landroid/content/Context;Ljava/lang/String;)V
     //   14: aload_0
     //   15: getfield 14	com/tencent/smtt/sdk/stat/b$1:b	LMTT/ThirdAppInfoNew;
-    //   18: invokestatic 46	com/tencent/smtt/utils/b:b	()Ljava/lang/String;
+    //   18: invokestatic 46	com/tencent/smtt/utils/b:a	()Ljava/lang/String;
     //   21: putfield 49	MTT/ThirdAppInfoNew:sCpu	Ljava/lang/String;
     //   24: getstatic 55	android/os/Build$VERSION:SDK_INT	I
     //   27: bipush 8
@@ -104,7 +104,7 @@ final class b$1
     //   183: goto +5 -> 188
     //   186: iconst_1
     //   187: istore_1
-    //   188: invokestatic 127	com/tencent/smtt/utils/m:a	()Lcom/tencent/smtt/utils/m;
+    //   188: invokestatic 127	com/tencent/smtt/utils/n:a	()Lcom/tencent/smtt/utils/n;
     //   191: astore 5
     //   193: iload_1
     //   194: ifeq +40 -> 234
@@ -114,16 +114,16 @@ final class b$1
     //   204: astore_3
     //   205: aload_3
     //   206: aload 5
-    //   208: invokevirtual 132	com/tencent/smtt/utils/m:b	()Ljava/lang/String;
-    //   211: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 133	com/tencent/smtt/utils/n:b	()Ljava/lang/String;
+    //   211: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   214: pop
     //   215: aload_3
-    //   216: invokestatic 141	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
-    //   219: invokevirtual 142	com/tencent/smtt/utils/g:b	()Ljava/lang/String;
-    //   222: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: invokestatic 142	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
+    //   219: invokevirtual 143	com/tencent/smtt/utils/g:b	()Ljava/lang/String;
+    //   222: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: pop
     //   226: aload_3
-    //   227: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   227: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   230: astore_3
     //   231: goto +36 -> 267
     //   234: new 129	java/lang/StringBuilder
@@ -132,50 +132,50 @@ final class b$1
     //   241: astore 6
     //   243: aload 6
     //   245: aload 5
-    //   247: invokevirtual 148	com/tencent/smtt/utils/m:f	()Ljava/lang/String;
-    //   250: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 149	com/tencent/smtt/utils/n:i	()Ljava/lang/String;
+    //   250: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   253: pop
     //   254: aload 6
     //   256: aload_3
-    //   257: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   260: pop
     //   261: aload 6
-    //   263: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   263: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   266: astore_3
-    //   267: new 150	java/net/URL
+    //   267: new 151	java/net/URL
     //   270: dup
     //   271: aload_3
-    //   272: invokespecial 151	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   275: invokevirtual 155	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   278: checkcast 157	java/net/HttpURLConnection
+    //   272: invokespecial 152	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   275: invokevirtual 156	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   278: checkcast 158	java/net/HttpURLConnection
     //   281: astore 5
     //   283: aload 5
-    //   285: ldc 159
-    //   287: invokevirtual 162	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   285: ldc 160
+    //   287: invokevirtual 163	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   290: aload 5
     //   292: iconst_1
-    //   293: invokevirtual 166	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   293: invokevirtual 167	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   296: aload 5
     //   298: iconst_1
-    //   299: invokevirtual 169	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   299: invokevirtual 170	java/net/HttpURLConnection:setDoInput	(Z)V
     //   302: aload 5
     //   304: iconst_0
-    //   305: invokevirtual 172	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   305: invokevirtual 173	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   308: aload 5
     //   310: sipush 20000
-    //   313: invokevirtual 176	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   313: invokevirtual 177	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   316: getstatic 55	android/os/Build$VERSION:SDK_INT	I
     //   319: bipush 13
     //   321: if_icmple +12 -> 333
     //   324: aload 5
-    //   326: ldc 178
-    //   328: ldc 180
-    //   330: invokevirtual 183	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   326: ldc 179
+    //   328: ldc 181
+    //   330: invokevirtual 184	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   333: aload_0
     //   334: getfield 14	com/tencent/smtt/sdk/stat/b$1:b	LMTT/ThirdAppInfoNew;
     //   337: aload_0
     //   338: getfield 12	com/tencent/smtt/sdk/stat/b$1:a	Landroid/content/Context;
-    //   341: invokestatic 186	com/tencent/smtt/sdk/stat/b:b	(LMTT/ThirdAppInfoNew;Landroid/content/Context;)Lorg/json/JSONObject;
+    //   341: invokestatic 187	com/tencent/smtt/sdk/stat/b:b	(LMTT/ThirdAppInfoNew;Landroid/content/Context;)Lorg/json/JSONObject;
     //   344: astore_3
     //   345: goto +11 -> 356
     //   348: astore_3
@@ -196,7 +196,7 @@ final class b$1
     //   377: astore 4
     //   379: iload_1
     //   380: ifeq +16 -> 396
-    //   383: invokestatic 141	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
+    //   383: invokestatic 142	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
     //   386: aload 4
     //   388: invokevirtual 198	com/tencent/smtt/utils/g:a	([B)[B
     //   391: astore 4
@@ -208,13 +208,13 @@ final class b$1
     //   404: aload 5
     //   406: ldc 203
     //   408: ldc 205
-    //   410: invokevirtual 183	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   410: invokevirtual 184	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   413: aload 5
     //   415: ldc 207
     //   417: aload 4
     //   419: arraylength
     //   420: invokestatic 211	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   423: invokevirtual 183	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   423: invokevirtual 184	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   426: aload 5
     //   428: invokevirtual 215	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   431: astore 6
@@ -236,17 +236,17 @@ final class b$1
     //   470: astore 4
     //   472: aload 4
     //   474: ldc 233
-    //   476: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   476: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   479: pop
     //   480: aload 4
     //   482: aload_3
     //   483: ldc 235
     //   485: invokevirtual 238	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   488: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   488: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   491: pop
     //   492: ldc 72
     //   494: aload 4
-    //   496: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   496: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   499: invokestatic 231	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   502: aload 5
     //   504: aload_2
@@ -270,7 +270,7 @@ final class b$1
     //   540: astore_2
     //   541: aload_2
     //   542: ldc 253
-    //   544: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   544: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   547: pop
     //   548: aload_2
     //   549: aload 5
@@ -279,7 +279,7 @@ final class b$1
     //   557: pop
     //   558: ldc 72
     //   560: aload_2
-    //   561: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   561: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   564: invokestatic 80	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   567: aload_0
     //   568: getfield 12	com/tencent/smtt/sdk/stat/b$1:a	Landroid/content/Context;
@@ -295,7 +295,7 @@ final class b$1
     //   591: astore_3
     //   592: aload_3
     //   593: ldc 96
-    //   595: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   595: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   598: pop
     //   599: aload_3
     //   600: aload 5
@@ -304,7 +304,7 @@ final class b$1
     //   608: pop
     //   609: aload_2
     //   610: aload_3
-    //   611: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   611: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   614: invokevirtual 273	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/String;)V
     //   617: aload_0
     //   618: getfield 12	com/tencent/smtt/sdk/stat/b$1:a	Landroid/content/Context;
@@ -320,16 +320,16 @@ final class b$1
     //   640: astore_3
     //   641: aload_3
     //   642: ldc_w 285
-    //   645: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   645: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   648: pop
     //   649: aload_3
     //   650: aload_2
     //   651: invokevirtual 288	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   654: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   654: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   657: pop
     //   658: ldc 72
     //   660: aload_3
-    //   661: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   661: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   664: invokestatic 80	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   667: aload_0
     //   668: getfield 12	com/tencent/smtt/sdk/stat/b$1:a	Landroid/content/Context;
@@ -356,7 +356,7 @@ final class b$1
     //   712: astore_3
     //   713: aload_3
     //   714: ldc_w 292
-    //   717: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   717: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   720: pop
     //   721: aload_3
     //   722: aload_2
@@ -364,7 +364,7 @@ final class b$1
     //   726: pop
     //   727: ldc 72
     //   729: aload_3
-    //   730: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   730: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   733: invokestatic 80	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   736: return
     //   737: astore_2
@@ -374,7 +374,7 @@ final class b$1
     //   745: astore_3
     //   746: aload_3
     //   747: ldc_w 297
-    //   750: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   750: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   753: pop
     //   754: aload_3
     //   755: aload_2
@@ -382,7 +382,7 @@ final class b$1
     //   759: pop
     //   760: ldc 72
     //   762: aload_3
-    //   763: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   763: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   766: invokestatic 80	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   769: return
     //   770: astore_2
@@ -392,7 +392,7 @@ final class b$1
     //   778: astore_3
     //   779: aload_3
     //   780: ldc_w 299
-    //   783: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   783: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   786: pop
     //   787: aload_3
     //   788: aload_2
@@ -400,7 +400,7 @@ final class b$1
     //   792: pop
     //   793: ldc 72
     //   795: aload_3
-    //   796: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   796: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   799: invokestatic 80	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   802: return
     //   803: astore_2
@@ -449,7 +449,7 @@ final class b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.b.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ScreenLayoutSliderWindow
   extends ScreenLayout
 {
-  private int b = 0;
+  private int e = 0;
   
   public ScreenLayoutSliderWindow(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
     super(paramContext, paramVideoAppInterface);
-    this.b = ((int)DisplayUtils.a(paramContext, 100.0F));
-  }
-  
-  public int a()
-  {
-    return 4;
+    this.e = ((int)DisplayUtils.a(paramContext, 100.0F));
   }
   
   public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, VideoMemberInfo> paramConcurrentHashMap)
@@ -32,21 +27,21 @@ public class ScreenLayoutSliderWindow
   
   public void a(SessionInfo paramSessionInfo, GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
+    if (this.a == null) {}
   }
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.a == null) {
       return;
     }
     if (paramArrayOfGLVideoView == null) {
       return;
     }
-    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299269);
-    int n = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
-    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
+    int i1 = this.a.getResources().getDimensionPixelSize(2131300025);
+    int n = this.a.getResources().getDimensionPixelSize(2131300022);
+    int j = this.a.getResources().getDimensionPixelSize(2131300023);
+    int k = this.a.getResources().getDimensionPixelSize(2131300024);
     if (paramInt5 == 0) {
       k = j;
     }
@@ -91,7 +86,7 @@ public class ScreenLayoutSliderWindow
     k = j;
     j = n;
     label207:
-    paramArrayOfGLVideoView[1].b(k, i, m, j);
+    paramArrayOfGLVideoView[1].c(k, i, m, j);
     if (QLog.isColorLevel())
     {
       paramArrayOfGLVideoView = new StringBuilder();
@@ -114,7 +109,7 @@ public class ScreenLayoutSliderWindow
       paramArrayOfGLVideoView.append("], bottomOffset[");
       paramArrayOfGLVideoView.append(paramInt5);
       paramArrayOfGLVideoView.append("], mGlSmallViewTopOffset[");
-      paramArrayOfGLVideoView.append(this.b);
+      paramArrayOfGLVideoView.append(this.e);
       paramArrayOfGLVideoView.append("]");
       QLog.w("ScreenLayoutSliderWindow", 1, paramArrayOfGLVideoView.toString());
     }
@@ -123,31 +118,36 @@ public class ScreenLayoutSliderWindow
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
     paramArrayOfGLVideoView[0].a(0, 0, 0, 0);
-    paramArrayOfGLVideoView[0].b(0, 0, paramInt1, paramInt2);
-    paramArrayOfGLVideoView[0].d(-15197410);
+    paramArrayOfGLVideoView[0].c(0, 0, paramInt1, paramInt2);
+    paramArrayOfGLVideoView[0].e(-15197410);
     paramArrayOfGLVideoView[1].a(3, 3, 3, 3);
-    paramArrayOfGLVideoView[1].d(-15197410);
+    paramArrayOfGLVideoView[1].e(-15197410);
     a(paramArrayOfGLVideoView, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
   }
   
-  public boolean b()
+  public int b()
+  {
+    return 4;
+  }
+  
+  public boolean d()
   {
     ControlUIObserver.CPreEventInfo localCPreEventInfo = new ControlUIObserver.CPreEventInfo(null);
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    if (this.b != null)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8004), localCPreEventInfo });
+      this.b.a(new Object[] { Integer.valueOf(8004), localCPreEventInfo });
       if (QLog.isDevelopLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("canSwitchView, mBlock[");
-        localStringBuilder.append(localCPreEventInfo.a);
+        localStringBuilder.append(localCPreEventInfo.d);
         localStringBuilder.append("], mBlockName[");
-        localStringBuilder.append(localCPreEventInfo.b);
+        localStringBuilder.append(localCPreEventInfo.e);
         localStringBuilder.append("]");
         QLog.w("ScreenLayoutSliderWindow", 1, localStringBuilder.toString());
       }
     }
-    return localCPreEventInfo.a ^ true;
+    return localCPreEventInfo.d ^ true;
   }
 }
 

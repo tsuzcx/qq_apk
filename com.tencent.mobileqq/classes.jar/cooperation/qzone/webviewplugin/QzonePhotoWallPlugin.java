@@ -203,7 +203,7 @@ public class QzonePhotoWallPlugin
   
   private void gotoSelectMobilePhoto()
   {
-    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.parentPlugin.mRuntime.a(), "/base/album/photolist");
+    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.parentPlugin.mRuntime.d(), "/base/album/photolist");
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("PhotoConst.MAXUM_SELECTED_NUM", this.maxPickCount);
     ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", QQBrowserActivity.class.getName());
@@ -218,11 +218,11 @@ public class QzonePhotoWallPlugin
     ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_DERECTBACK_MODE", this.clipFlag);
     localActivityURIRequest.extra().putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
     ((Bundle)localObject).putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    ((Bundle)localObject).putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+    ((Bundle)localObject).putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
     ((Bundle)localObject).putInt("uintype", 0);
     localActivityURIRequest.extra().putAll((Bundle)localObject);
     QZoneHelper.addSource(localActivityURIRequest);
-    localObject = this.parentPlugin.mRuntime.a();
+    localObject = this.parentPlugin.mRuntime.d();
     if (localObject != null)
     {
       gotoSelectPicture((Activity)localObject, this.parentPlugin, localActivityURIRequest, this.REQUEST_PICK_PHOTO);
@@ -243,7 +243,7 @@ public class QzonePhotoWallPlugin
   {
     if ("MobileAlbum".equals(paramString))
     {
-      if (!QZonePermission.requestStoragePermission(this.parentPlugin.mRuntime.a(), new QzonePhotoWallPlugin.1(this), 1)) {
+      if (!QZonePermission.requestStoragePermission(this.parentPlugin.mRuntime.d(), new QzonePhotoWallPlugin.1(this), 1)) {
         return;
       }
       gotoSelectMobilePhoto();
@@ -256,10 +256,10 @@ public class QzonePhotoWallPlugin
       paramString.putInt("_input_max", this.maxPickCount);
       paramString.putBoolean("key_multiple_model_need_download_img", true);
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-      localUserInfo.qzone_uin = this.parentPlugin.mRuntime.a().getAccount();
+      localUserInfo.qzone_uin = this.parentPlugin.mRuntime.b().getAccount();
       paramString.putString("keyAction", "actionSelectPicture");
       paramString.putBoolean("key_need_change_to_jpg", false);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), localUserInfo, paramString, this.REQUEST_PICK_PHOTO);
+      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.d(), localUserInfo, paramString, this.REQUEST_PICK_PHOTO);
     }
   }
   
@@ -334,7 +334,7 @@ public class QzonePhotoWallPlugin
           long l1 = System.currentTimeMillis();
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            String str = checkSharpP((String)localObject1, this.parentPlugin.mRuntime.a().getApplicationContext());
+            String str = checkSharpP((String)localObject1, this.parentPlugin.mRuntime.d().getApplicationContext());
             identifierset.add(str);
             localObject1 = QzoneDynamicAlbumPlugin.getBitmapSize(str);
             if (localObject1 != null)
@@ -349,7 +349,7 @@ public class QzonePhotoWallPlugin
               QLog.i("QzonePhotoWallPlugin", 2, ((StringBuilder)localObject2).toString());
               if (this.compressType != 3)
               {
-                double d1 = getRatio(this.parentPlugin.mRuntime.a(), this.compressType, (Size)localObject1);
+                double d1 = getRatio(this.parentPlugin.mRuntime.d(), this.compressType, (Size)localObject1);
                 if (d1 > 0.0D)
                 {
                   j = ((Size)localObject1).width;
@@ -439,7 +439,7 @@ public class QzonePhotoWallPlugin
                   ((StringBuilder)localObject3).append(",");
                   ((StringBuilder)localObject3).append(localOutOfMemoryError);
                   QLog.e("QzonePhotoWallPlugin", 2, ((StringBuilder)localObject3).toString());
-                  ToastUtil.a().a(HardCodeUtil.a(2131712092), 1);
+                  ToastUtil.a().a(HardCodeUtil.a(2131909714), 1);
                 }
               }
             }
@@ -586,7 +586,7 @@ public class QzonePhotoWallPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePhotoWallPlugin
  * JD-Core Version:    0.7.0.1
  */

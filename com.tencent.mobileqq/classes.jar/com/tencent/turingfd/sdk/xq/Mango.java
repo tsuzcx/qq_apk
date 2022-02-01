@@ -1,30 +1,50 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
-public final class Mango
-  implements Ara
+public class Mango
 {
-  public Mango(IteApkInfoRespCallback paramIteApkInfoRespCallback) {}
+  public int a = -1;
+  public int b = -1;
+  public long c = -1L;
+  public String d = "";
+  public int e = -1;
   
-  public void a(long paramLong, Map<Integer, protected> paramMap)
+  public Mango(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
   {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      localHashMap.put(localInteger, new Mangosteen((protected)paramMap.get(localInteger)));
-    }
-    this.a.onResult(paramLong, localHashMap);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramLong;
+    this.d = paramString;
+    this.e = paramInt3;
+  }
+  
+  public static Mango a(int paramInt)
+  {
+    return new Mango(paramInt, 100, -1L, "", -1);
+  }
+  
+  public static Mango b(int paramInt)
+  {
+    return new Mango(paramInt, 200, -1L, "", -1);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Mango
  * JD-Core Version:    0.7.0.1
  */

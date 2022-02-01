@@ -6,24 +6,24 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DrawView2$FaceData
 {
-  public float a;
-  public int a;
-  public Rect a;
-  public RectF a;
-  public String a;
-  public boolean a;
   public float[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
+  public Rect b;
+  public RectF c;
   public String d;
-  public boolean d;
   public String e;
-  public boolean e;
-  public String f;
+  public int f;
   public String g;
-  public String h;
+  public boolean h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public boolean m;
+  public boolean n;
+  public float o;
+  public String p;
+  public boolean q;
+  public boolean r;
   
   public static RectF a(Rect paramRect, float[] paramArrayOfFloat)
   {
@@ -46,19 +46,19 @@ public class DrawView2$FaceData
       float f3 = Math.max(paramRect.right, arrayOfFloat4[0]);
       float f4 = Math.min(paramRect.top, arrayOfFloat4[1]);
       float f5 = Math.max(paramRect.bottom, arrayOfFloat4[1]);
-      float f1 = DrawView2.c / DrawView2.d;
-      float f6 = Math.max(DrawView2.a, DrawView2.b);
-      float f7 = Math.min(DrawView2.a, DrawView2.b);
+      float f1 = DrawView2.e / DrawView2.f;
+      float f6 = Math.max(DrawView2.c, DrawView2.d);
+      float f7 = Math.min(DrawView2.c, DrawView2.d);
       if (f1 > f7 / f6) {
-        f1 = DrawView2.c / f7;
+        f1 = DrawView2.e / f7;
       } else {
-        f1 = DrawView2.d / f6;
+        f1 = DrawView2.f / f6;
       }
       float f8 = f7 * f1;
-      f7 = (f8 - DrawView2.c) / 2.0F;
-      f8 = (f8 - DrawView2.c) / 2.0F;
+      f7 = (f8 - DrawView2.e) / 2.0F;
+      f8 = (f8 - DrawView2.e) / 2.0F;
       f6 *= f1;
-      paramRect = new RectF(f2 * f1 - f7, f4 * f1 - (f6 - DrawView2.d) / 2.0F, f3 * f1 - f8, f5 * f1 - (f6 - DrawView2.d) / 2.0F);
+      paramRect = new RectF(f2 * f1 - f7, f4 * f1 - (f6 - DrawView2.f) / 2.0F, f3 * f1 - f8, f5 * f1 - (f6 - DrawView2.f) / 2.0F);
       if (QLog.isColorLevel())
       {
         paramArrayOfFloat = new StringBuilder();
@@ -85,7 +85,7 @@ public class DrawView2$FaceData
       QLog.d("DrawView", 2, localStringBuilder.toString());
     }
     if ((paramRectF.left == 0.0F) && (paramRectF.top == 0.0F) && (paramRectF.right == 0.0F)) {
-      return new RectF(DrawView2.c / 2 - 210, DrawView2.d / 2 - 210, DrawView2.c / 2 + 210, DrawView2.d / 2 + 210);
+      return new RectF(DrawView2.e / 2 - 210, DrawView2.f / 2 - 210, DrawView2.e / 2 + 210, DrawView2.f / 2 + 210);
     }
     float f3 = paramRectF.left;
     float f4 = paramRectF.right;
@@ -93,8 +93,8 @@ public class DrawView2$FaceData
     float f2 = paramRectF.bottom;
     f3 = (f3 + f4) / 2.0F;
     f2 = (f1 + f2) / 2.0F;
-    f1 = f3 * (DrawView2.c / 480);
-    f2 *= DrawView2.d / 856;
+    f1 = f3 * (DrawView2.e / 480);
+    f2 *= DrawView2.f / 856;
     f4 = f1 - 210.0F;
     float f6 = f2 - 210.0F;
     float f7 = f1 + 210.0F;
@@ -127,17 +127,17 @@ public class DrawView2$FaceData
     }
     f4 = f2;
     f3 = f1;
-    if (f2 > DrawView2.c - 40)
+    if (f2 > DrawView2.e - 40)
     {
-      f3 = DrawView2.c - 40 - (f2 - f1);
-      f4 = DrawView2.c - 40;
+      f3 = DrawView2.e - 40 - (f2 - f1);
+      f4 = DrawView2.e - 40;
     }
     f2 = f5;
     f1 = f6;
-    if (f5 > DrawView2.d - 40)
+    if (f5 > DrawView2.f - 40)
     {
-      f1 = DrawView2.d - 40 - (f5 - f6);
-      f2 = DrawView2.d - 40;
+      f1 = DrawView2.f - 40 - (f5 - f6);
+      f2 = DrawView2.f - 40;
     }
     if (QLog.isColorLevel())
     {
@@ -154,31 +154,31 @@ public class DrawView2$FaceData
     }
     f6 = f4;
     f5 = f3;
-    if ((f3 + f4) / 2.0F < DrawView2.c / 2 - 125)
+    if ((f3 + f4) / 2.0F < DrawView2.e / 2 - 125)
     {
-      f5 = DrawView2.c / 2 - 125 - 210;
-      f6 = DrawView2.c / 2 - 125 + 210;
+      f5 = DrawView2.e / 2 - 125 - 210;
+      f6 = DrawView2.e / 2 - 125 + 210;
     }
     float f8 = f6;
     f7 = f5;
-    if ((f5 + f6) / 2.0F > DrawView2.c / 2 + 125)
+    if ((f5 + f6) / 2.0F > DrawView2.e / 2 + 125)
     {
-      f7 = DrawView2.c / 2 + 125 - 210;
-      f8 = DrawView2.c / 2 + 125 + 210;
+      f7 = DrawView2.e / 2 + 125 - 210;
+      f8 = DrawView2.e / 2 + 125 + 210;
     }
     f4 = f2;
     f3 = f1;
-    if ((f1 + f2) / 2.0F < DrawView2.d / 2 - 417)
+    if ((f1 + f2) / 2.0F < DrawView2.f / 2 - 417)
     {
-      f3 = DrawView2.d / 2 - 417 - 210;
-      f4 = DrawView2.d / 2 - 417 + 210;
+      f3 = DrawView2.f / 2 - 417 - 210;
+      f4 = DrawView2.f / 2 - 417 + 210;
     }
     f2 = f4;
     f1 = f3;
-    if ((f3 + f4) / 2.0F > DrawView2.d / 2 + 417)
+    if ((f3 + f4) / 2.0F > DrawView2.f / 2 + 417)
     {
-      f1 = DrawView2.d / 2 + 417 - 210;
-      f2 = DrawView2.d / 2 + 417 + 210;
+      f1 = DrawView2.f / 2 + 417 - 210;
+      f2 = DrawView2.f / 2 + 417 + 210;
     }
     paramRectF = new RectF(f7, f1, f8, f2);
     if (QLog.isColorLevel())
@@ -193,12 +193,12 @@ public class DrawView2$FaceData
   
   public RectF a()
   {
-    return this.a;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.DrawView2.FaceData
  * JD-Core Version:    0.7.0.1
  */

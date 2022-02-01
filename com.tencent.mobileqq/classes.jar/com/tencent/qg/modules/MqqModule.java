@@ -20,7 +20,7 @@ public class MqqModule
       paramString = new JSONObject();
       try
       {
-        paramString.putOpt("version", "8.7.0");
+        paramString.putOpt("version", "8.8.17");
       }
       catch (JSONException paramJSONObject)
       {
@@ -34,7 +34,7 @@ public class MqqModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.modules.MqqModule
  * JD-Core Version:    0.7.0.1
  */

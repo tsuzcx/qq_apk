@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="200.0dip" android:layout_height="123.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/k_2" android:paddingLeft="10.0dip" android:paddingTop="8.0dip" android:paddingRight="10.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/k9q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="12.0dip">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/k__" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/k9p" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentTop="true" android:layout_alignParentEnd="true">
+            <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="4.0dip" android:src="@drawable/jnf" android:layout_alignParentTop="true" android:layout_marginEnd="4.0dip" android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <ProgressBar android:id="@id/k_k" android:layout_width="14.0dip" android:layout_height="14.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/2j" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/kaa" android:background="@drawable/2k" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_alignParentBottom="true">
+            <View android:id="@id/kad" android:background="#b2ffffff" android:layout_width="115.0dip" android:layout_height="1.0dip" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

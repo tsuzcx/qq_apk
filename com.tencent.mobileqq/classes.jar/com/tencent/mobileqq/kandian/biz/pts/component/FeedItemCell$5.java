@@ -1,31 +1,35 @@
 package com.tencent.mobileqq.kandian.biz.pts.component;
 
-import android.view.View;
-import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
-import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
-import com.tencent.widget.KandianNegativeWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.kandian.ad.api.IRIJSurpriseVideoService;
+import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
+import com.tencent.mobileqq.kandian.glue.video.VideoPlayManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.widget.KandianNegativeWindowForAd;
 
 class FeedItemCell$5
-  implements KandianNegativeWindow.OnUninterestConfirmListener
+  implements PopupWindow.OnDismissListener
 {
-  FeedItemCell$5(FeedItemCell paramFeedItemCell) {}
+  FeedItemCell$5(FeedItemCell paramFeedItemCell, KandianNegativeWindowForAd paramKandianNegativeWindowForAd) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onDismiss()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsReadInJoyModelImpl != null)
+    ((IRIJSurpriseVideoService)QRoute.api(IRIJSurpriseVideoService.class)).handleDislikeWindowDissMiss();
+    this.a.a(1.0F);
+    if (this.b.g.A())
     {
-      paramView = this.a;
-      FeedItemCell.a(paramView, paramView.jdField_a_of_type_ComTencentMobileqqKandianBizPtsReadInJoyModelImpl, paramInt, paramArrayList, paramObject);
-      return;
+      VideoPlayManager localVideoPlayManager = this.b.g.R();
+      if (localVideoPlayManager != null)
+      {
+        localVideoPlayManager.v();
+        this.b.g.b(false);
+      }
     }
-    paramView = this.a;
-    FeedItemCell.a(paramView, (IReadInJoyModel)paramView.jdField_a_of_type_JavaLangObject, paramInt, paramArrayList, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCell.5
  * JD-Core Version:    0.7.0.1
  */

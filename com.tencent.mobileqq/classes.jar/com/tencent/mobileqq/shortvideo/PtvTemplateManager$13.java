@@ -12,10 +12,10 @@ class PtvTemplateManager$13
   
   public void run()
   {
-    if (PtvTemplateManager.b == null) {
+    if (PtvTemplateManager.f == null) {
       return;
     }
-    File[] arrayOfFile = PtvTemplateManager.b.listFiles();
+    File[] arrayOfFile = PtvTemplateManager.f.listFiles();
     if (arrayOfFile != null)
     {
       if (arrayOfFile.length == 0) {
@@ -31,7 +31,7 @@ class PtvTemplateManager$13
           Object localObject = localFile.getName();
           if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
           {
-            localObject = this.this$0.a.doodleInfos.iterator();
+            localObject = this.this$0.l.doodleInfos.iterator();
             while (((Iterator)localObject).hasNext())
             {
               PtvTemplateManager.DoodleInfo localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
@@ -47,7 +47,7 @@ class PtvTemplateManager$13
             {
               localFile.deleteOnExit();
               localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(PtvTemplateManager.c);
+              ((StringBuilder)localObject).append(PtvTemplateManager.d);
               ((StringBuilder)localObject).append(localFile.getName());
               new File(((StringBuilder)localObject).toString()).deleteOnExit();
             }
@@ -60,7 +60,7 @@ class PtvTemplateManager$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.13
  * JD-Core Version:    0.7.0.1
  */

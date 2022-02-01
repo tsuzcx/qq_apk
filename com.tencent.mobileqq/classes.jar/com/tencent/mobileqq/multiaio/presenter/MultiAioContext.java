@@ -27,25 +27,25 @@ import java.util.List;
 
 public class MultiAioContext
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MultiAIOManager jdField_a_of_type_ComTencentMobileqqMultiaioModelMultiAIOManager;
-  private MultiAioCaller jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioCaller;
-  private MultiAioContainer jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioContainer;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<MiniPie> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private volatile Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private volatile List<RecentBaseData> jdField_b_of_type_JavaUtilList;
-  private int jdField_c_of_type_Int;
-  private volatile Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  private MultiAioCaller a;
+  private MultiAioContainer b;
+  private int c;
+  private boolean d;
+  private long e;
+  private int f;
+  private List<MiniPie> g = new ArrayList();
+  private ArrayList<View> h = new ArrayList();
+  private Bitmap i;
+  private int j;
+  private volatile Bitmap k;
+  private volatile Bitmap l;
+  private MultiAIOManager m;
+  private volatile List<RecentBaseData> n;
+  private Handler o;
   
   public MultiAioContext(MultiAIOManager paramMultiAIOManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioModelMultiAIOManager = paramMultiAIOManager;
+    this.m = paramMultiAIOManager;
   }
   
   public static MultiAioContext a(AppInterface paramAppInterface)
@@ -60,7 +60,7 @@ public class MultiAioContext
     }
     paramAppInterface = (MultiAIOManager)paramAppInterface.getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER);
     Object localObject = new MultiAioContext(paramAppInterface);
-    ((MultiAioContext)localObject).c(paramAppInterface.a((MultiAioContext)localObject));
+    ((MultiAioContext)localObject).d(paramAppInterface.a((MultiAioContext)localObject));
     return localObject;
   }
   
@@ -74,31 +74,21 @@ public class MultiAioContext
       localStringBuilder.append("]");
       QLog.d("MultiAioContext", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.n = paramList;
   }
   
-  private void c(int paramInt)
+  private void d(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.c = paramInt;
   }
   
   public View a(int paramInt)
   {
     View localView1;
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.h.isEmpty()) {
       localView1 = null;
     } else {
-      localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      localView1 = (View)this.h.remove(0);
     }
     Object localObject;
     if (localView1 != null)
@@ -116,7 +106,7 @@ public class MultiAioContext
       ((StringBuilder)localObject).append("], v = ");
       ((StringBuilder)localObject).append(localView1);
       QLog.d("MultiAioContext", 2, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.h.iterator();
       while (((Iterator)localObject).hasNext())
       {
         View localView2 = (View)((Iterator)localObject).next();
@@ -132,10 +122,10 @@ public class MultiAioContext
   
   public MiniPie a(MultiAIOItemFragment paramMultiAIOItemFragment)
   {
-    int i = paramMultiAIOItemFragment.a();
+    int i1 = paramMultiAIOItemFragment.b();
     MiniPie localMiniPie1;
-    if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilList.size())) {
-      localMiniPie1 = (MiniPie)this.jdField_a_of_type_JavaUtilList.get(i);
+    if ((i1 >= 0) && (i1 < this.g.size())) {
+      localMiniPie1 = (MiniPie)this.g.get(i1);
     } else {
       localMiniPie1 = null;
     }
@@ -143,17 +133,107 @@ public class MultiAioContext
     if (localMiniPie1 == null)
     {
       localMiniPie2 = MiniPieFactory.a(paramMultiAIOItemFragment.getBaseActivity(), paramMultiAIOItemFragment.a(), paramMultiAIOItemFragment.getBaseActivity().app);
-      a(i, localMiniPie2);
+      a(i1, localMiniPie2);
     }
     return localMiniPie2;
   }
   
   public MultiAioContainer a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioContainer;
+    return this.b;
   }
   
-  public List<RecentBaseData> a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, int paramInt, String paramString2, String paramString3)
+  public void a(int paramInt, MiniPie paramMiniPie)
+  {
+    while (this.g.size() <= paramInt) {
+      this.g.add(null);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMiniPie() called with: position = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], miniPie = [");
+      localStringBuilder.append(paramMiniPie);
+      localStringBuilder.append("]");
+      QLog.d("MultiAioContext", 2, localStringBuilder.toString());
+    }
+    this.g.set(paramInt, paramMiniPie);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    MultiAioCaller localMultiAioCaller = this.a;
+    if (localMultiAioCaller != null) {
+      localMultiAioCaller.a(paramIntent);
+    }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setDecorViewBitmap() called with: decorViewBitmap = [");
+      localStringBuilder.append(paramBitmap);
+      localStringBuilder.append("]");
+      QLog.d("MultiAioContext", 2, localStringBuilder.toString());
+    }
+    this.i = paramBitmap;
+  }
+  
+  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, int paramInt)
+  {
+    while (paramInt > 0)
+    {
+      a(paramLayoutInflater.inflate(2131624459, paramViewGroup, false));
+      paramInt -= 1;
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.h.add(paramView);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("putCacheView() called size = ");
+      localStringBuilder.append(this.h.size());
+      localStringBuilder.append(" with: v = [");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append("]");
+      QLog.d("MultiAioContext", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (this.o == null) {
+      this.o = new Handler(ThreadManager.getRecentThreadLooper());
+    }
+    this.o.removeCallbacksAndMessages(this);
+    this.o.postAtTime(new MultiAioContext.1(this, paramBaseActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3), this, 0L);
+  }
+  
+  public void a(MultiAioCaller paramMultiAioCaller)
+  {
+    this.a = paramMultiAioCaller;
+  }
+  
+  public void a(MultiAioContainer paramMultiAioContainer)
+  {
+    this.b = paramMultiAioContainer;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+    if (paramBoolean) {
+      this.e = SystemClock.uptimeMillis();
+    }
+  }
+  
+  public List<RecentBaseData> b(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, int paramInt, String paramString2, String paramString3)
   {
     if (QLog.isColorLevel())
     {
@@ -171,10 +251,10 @@ public class MultiAioContext
       ((StringBuilder)localObject).append("], enterNickName = [");
       ((StringBuilder)localObject).append(paramString3);
       ((StringBuilder)localObject).append("], mRecentUserList = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilList);
+      ((StringBuilder)localObject).append(this.n);
       QLog.d("MultiAioContext", 2, ((StringBuilder)localObject).toString());
     }
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.n;
     Object localObject = localList;
     if (localList == null)
     {
@@ -184,173 +264,93 @@ public class MultiAioContext
     return localObject;
   }
   
-  public void a()
+  public void b()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MultiAioContext", 2, "destroy() called");
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.o;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(this);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_b_of_type_JavaUtilList != null) {
-      this.jdField_b_of_type_JavaUtilList = null;
+    this.g.clear();
+    this.h.clear();
+    if (this.n != null) {
+      this.n = null;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, MiniPie paramMiniPie)
-  {
-    while (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
-      this.jdField_a_of_type_JavaUtilList.add(null);
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setMiniPie() called with: position = [");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append("], miniPie = [");
-      localStringBuilder.append(paramMiniPie);
-      localStringBuilder.append("]");
-      QLog.d("MultiAioContext", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_JavaUtilList.set(paramInt, paramMiniPie);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    MultiAioCaller localMultiAioCaller = this.jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioCaller;
-    if (localMultiAioCaller != null) {
-      localMultiAioCaller.a(paramIntent);
-    }
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setDecorViewBitmap() called with: decorViewBitmap = [");
-      localStringBuilder.append(paramBitmap);
-      localStringBuilder.append("]");
-      QLog.d("MultiAioContext", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, int paramInt)
-  {
-    while (paramInt > 0)
-    {
-      a(paramLayoutInflater.inflate(2131558839, paramViewGroup, false));
-      paramInt -= 1;
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("putCacheView() called size = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
-      localStringBuilder.append(" with: v = [");
-      localStringBuilder.append(paramView);
-      localStringBuilder.append("]");
-      QLog.d("MultiAioContext", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getRecentThreadLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
-    this.jdField_a_of_type_AndroidOsHandler.postAtTime(new MultiAioContext.1(this, paramBaseActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3), this, 0L);
-  }
-  
-  public void a(MultiAioCaller paramMultiAioCaller)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioCaller = paramMultiAioCaller;
-  }
-  
-  public void a(MultiAioContainer paramMultiAioContainer)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioContainer = paramMultiAioContainer;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public Bitmap b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void b()
-  {
-    MultiAioContainer localMultiAioContainer = this.jdField_a_of_type_ComTencentMobileqqMultiaioViewMultiAioContainer;
-    if (localMultiAioContainer != null) {
-      localMultiAioContainer.a();
-    }
+    this.d = false;
+    this.i = null;
+    this.j = 0;
+    this.k = null;
+    this.l = null;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   public void b(Bitmap paramBitmap)
   {
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.k = paramBitmap;
   }
   
   public int c()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
-  public Bitmap c()
+  public void c(int paramInt)
   {
-    return this.jdField_c_of_type_AndroidGraphicsBitmap;
+    this.f = paramInt;
   }
   
   public void c(Bitmap paramBitmap)
   {
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.l = paramBitmap;
+  }
+  
+  public Bitmap d()
+  {
+    return this.i;
+  }
+  
+  public int e()
+  {
+    return this.j;
+  }
+  
+  public Bitmap f()
+  {
+    return this.k;
+  }
+  
+  public Bitmap g()
+  {
+    return this.l;
+  }
+  
+  public void h()
+  {
+    MultiAioContainer localMultiAioContainer = this.b;
+    if (localMultiAioContainer != null) {
+      localMultiAioContainer.e();
+    }
+  }
+  
+  public boolean i()
+  {
+    return this.d;
+  }
+  
+  public int j()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.presenter.MultiAioContext
  * JD-Core Version:    0.7.0.1
  */

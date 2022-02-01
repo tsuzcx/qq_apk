@@ -35,18 +35,18 @@ class SignatureHistoryFragment$MyStatusObserver
     {
       paramList = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit();
       paramList1 = new StringBuilder();
-      paramList1.append(SignatureHistoryFragment.b(this.a));
+      paramList1.append(SignatureHistoryFragment.h(this.a));
       paramList1.append("_has_history_sig_del_key");
       paramList.putBoolean(paramList1.toString(), true).apply();
-      if (this.a.a != null) {
-        this.a.a.a(Long.parseLong(SignatureHistoryFragment.a(this.a)));
+      if (this.a.d != null) {
+        this.a.d.a(Long.parseLong(SignatureHistoryFragment.c(this.a)));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.MyStatusObserver
  * JD-Core Version:    0.7.0.1
  */

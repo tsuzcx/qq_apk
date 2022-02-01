@@ -10,12 +10,12 @@ class QQSettingMeDocumentProcessor$2
   
   public void run()
   {
-    TencentDocUtils.a((QQAppInterface)this.this$0.a);
+    TencentDocUtils.a((QQAppInterface)this.this$0.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeDocumentProcessor.2
  * JD-Core Version:    0.7.0.1
  */

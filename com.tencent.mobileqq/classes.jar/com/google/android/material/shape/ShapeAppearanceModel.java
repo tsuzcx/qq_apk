@@ -15,55 +15,50 @@ import com.google.android.material.R.styleable;
 
 public class ShapeAppearanceModel
 {
-  public static final CornerSize a;
-  CornerTreatment jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  EdgeTreatment jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  CornerSize jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-  CornerTreatment jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  EdgeTreatment jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  CornerSize jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-  CornerTreatment jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  EdgeTreatment jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  CornerSize jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-  CornerTreatment jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  EdgeTreatment jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  CornerSize e;
-  
-  static
-  {
-    jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize = new RelativeCornerSize(0.5F);
-  }
+  public static final CornerSize a = new RelativeCornerSize(0.5F);
+  CornerTreatment b;
+  CornerTreatment c;
+  CornerTreatment d;
+  CornerTreatment e;
+  CornerSize f;
+  CornerSize g;
+  CornerSize h;
+  CornerSize i;
+  EdgeTreatment j;
+  EdgeTreatment k;
+  EdgeTreatment l;
+  EdgeTreatment m;
   
   public ShapeAppearanceModel()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
-    this.e = new AbsoluteCornerSize(0.0F);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
+    this.b = MaterialShapeUtils.a();
+    this.c = MaterialShapeUtils.a();
+    this.d = MaterialShapeUtils.a();
+    this.e = MaterialShapeUtils.a();
+    this.f = new AbsoluteCornerSize(0.0F);
+    this.g = new AbsoluteCornerSize(0.0F);
+    this.h = new AbsoluteCornerSize(0.0F);
+    this.i = new AbsoluteCornerSize(0.0F);
+    this.j = MaterialShapeUtils.b();
+    this.k = MaterialShapeUtils.b();
+    this.l = MaterialShapeUtils.b();
+    this.m = MaterialShapeUtils.b();
   }
   
   private ShapeAppearanceModel(@NonNull ShapeAppearanceModel.Builder paramBuilder)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = ShapeAppearanceModel.Builder.a(paramBuilder);
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = ShapeAppearanceModel.Builder.b(paramBuilder);
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = ShapeAppearanceModel.Builder.c(paramBuilder);
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = ShapeAppearanceModel.Builder.d(paramBuilder);
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize = ShapeAppearanceModel.Builder.a(paramBuilder);
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize = ShapeAppearanceModel.Builder.b(paramBuilder);
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize = ShapeAppearanceModel.Builder.c(paramBuilder);
+    this.b = ShapeAppearanceModel.Builder.a(paramBuilder);
+    this.c = ShapeAppearanceModel.Builder.b(paramBuilder);
+    this.d = ShapeAppearanceModel.Builder.c(paramBuilder);
     this.e = ShapeAppearanceModel.Builder.d(paramBuilder);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = ShapeAppearanceModel.Builder.a(paramBuilder);
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = ShapeAppearanceModel.Builder.b(paramBuilder);
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = ShapeAppearanceModel.Builder.c(paramBuilder);
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = ShapeAppearanceModel.Builder.d(paramBuilder);
+    this.f = ShapeAppearanceModel.Builder.e(paramBuilder);
+    this.g = ShapeAppearanceModel.Builder.f(paramBuilder);
+    this.h = ShapeAppearanceModel.Builder.g(paramBuilder);
+    this.i = ShapeAppearanceModel.Builder.h(paramBuilder);
+    this.j = ShapeAppearanceModel.Builder.i(paramBuilder);
+    this.k = ShapeAppearanceModel.Builder.j(paramBuilder);
+    this.l = ShapeAppearanceModel.Builder.k(paramBuilder);
+    this.m = ShapeAppearanceModel.Builder.l(paramBuilder);
   }
   
   @NonNull
@@ -104,26 +99,26 @@ public class ShapeAppearanceModel
   private static ShapeAppearanceModel.Builder a(Context paramContext, @StyleRes int paramInt1, @StyleRes int paramInt2, @NonNull CornerSize paramCornerSize)
   {
     Object localObject = paramContext;
-    int i = paramInt1;
+    int n = paramInt1;
     if (paramInt2 != 0)
     {
       localObject = new ContextThemeWrapper(paramContext, paramInt1);
-      i = paramInt2;
+      n = paramInt2;
     }
-    paramContext = ((Context)localObject).obtainStyledAttributes(i, R.styleable.ap);
+    paramContext = ((Context)localObject).obtainStyledAttributes(n, R.styleable.fX);
     try
     {
-      int j = paramContext.getInt(R.styleable.dT, 0);
-      paramInt1 = paramContext.getInt(R.styleable.dW, j);
-      paramInt2 = paramContext.getInt(R.styleable.dX, j);
-      i = paramContext.getInt(R.styleable.dV, j);
-      j = paramContext.getInt(R.styleable.dU, j);
-      CornerSize localCornerSize2 = a(paramContext, R.styleable.dY, paramCornerSize);
-      paramCornerSize = a(paramContext, R.styleable.eb, localCornerSize2);
-      localObject = a(paramContext, R.styleable.ec, localCornerSize2);
-      CornerSize localCornerSize1 = a(paramContext, R.styleable.ea, localCornerSize2);
-      localCornerSize2 = a(paramContext, R.styleable.dZ, localCornerSize2);
-      paramCornerSize = new ShapeAppearanceModel.Builder().a(paramInt1, paramCornerSize).b(paramInt2, (CornerSize)localObject).c(i, localCornerSize1).d(j, localCornerSize2);
+      int i1 = paramContext.getInt(R.styleable.fY, 0);
+      paramInt1 = paramContext.getInt(R.styleable.gb, i1);
+      paramInt2 = paramContext.getInt(R.styleable.gc, i1);
+      n = paramContext.getInt(R.styleable.ga, i1);
+      i1 = paramContext.getInt(R.styleable.fZ, i1);
+      CornerSize localCornerSize2 = a(paramContext, R.styleable.gd, paramCornerSize);
+      paramCornerSize = a(paramContext, R.styleable.gg, localCornerSize2);
+      localObject = a(paramContext, R.styleable.gh, localCornerSize2);
+      CornerSize localCornerSize1 = a(paramContext, R.styleable.gf, localCornerSize2);
+      localCornerSize2 = a(paramContext, R.styleable.ge, localCornerSize2);
+      paramCornerSize = new ShapeAppearanceModel.Builder().a(paramInt1, paramCornerSize).b(paramInt2, (CornerSize)localObject).c(n, localCornerSize1).d(i1, localCornerSize2);
       return paramCornerSize;
     }
     finally
@@ -147,138 +142,138 @@ public class ShapeAppearanceModel
   @NonNull
   public static ShapeAppearanceModel.Builder a(@NonNull Context paramContext, AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2, @NonNull CornerSize paramCornerSize)
   {
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.W, paramInt1, paramInt2);
-    paramInt1 = paramAttributeSet.getResourceId(R.styleable.di, 0);
-    paramInt2 = paramAttributeSet.getResourceId(R.styleable.dj, 0);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.eL, paramInt1, paramInt2);
+    paramInt1 = paramAttributeSet.getResourceId(R.styleable.eM, 0);
+    paramInt2 = paramAttributeSet.getResourceId(R.styleable.eN, 0);
     paramAttributeSet.recycle();
     return a(paramContext, paramInt1, paramInt2, paramCornerSize);
   }
   
   @NonNull
-  public CornerSize a()
-  {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-  }
-  
-  @NonNull
-  public CornerTreatment a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  }
-  
-  @NonNull
-  public EdgeTreatment a()
-  {
-    return this.jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  }
-  
-  @NonNull
   public ShapeAppearanceModel a(float paramFloat)
   {
-    return b().a(paramFloat).a();
+    return n().a(paramFloat).a();
   }
   
   @NonNull
   public ShapeAppearanceModel a(@NonNull CornerSize paramCornerSize)
   {
-    return b().a(paramCornerSize).a();
+    return n().a(paramCornerSize).a();
   }
   
   @NonNull
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ShapeAppearanceModel a(@NonNull ShapeAppearanceModel.CornerSizeUnaryOperator paramCornerSizeUnaryOperator)
   {
-    return b().b(paramCornerSizeUnaryOperator.a(a())).c(paramCornerSizeUnaryOperator.a(b())).e(paramCornerSizeUnaryOperator.a(d())).d(paramCornerSizeUnaryOperator.a(c())).a();
+    return n().b(paramCornerSizeUnaryOperator.a(f())).c(paramCornerSizeUnaryOperator.a(g())).e(paramCornerSizeUnaryOperator.a(i())).d(paramCornerSizeUnaryOperator.a(h())).a();
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean a(@NonNull RectF paramRectF)
   {
-    int i;
-    if ((this.jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment.getClass().equals(EdgeTreatment.class)) && (this.jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment.getClass().equals(EdgeTreatment.class)) && (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment.getClass().equals(EdgeTreatment.class)) && (this.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment.getClass().equals(EdgeTreatment.class))) {
-      i = 1;
+    int n;
+    if ((this.m.getClass().equals(EdgeTreatment.class)) && (this.k.getClass().equals(EdgeTreatment.class)) && (this.j.getClass().equals(EdgeTreatment.class)) && (this.l.getClass().equals(EdgeTreatment.class))) {
+      n = 1;
     } else {
-      i = 0;
+      n = 0;
     }
-    float f = this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize.a(paramRectF);
-    int j;
-    if ((this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize.a(paramRectF) == f) && (this.e.a(paramRectF) == f) && (this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize.a(paramRectF) == f)) {
-      j = 1;
+    float f1 = this.f.a(paramRectF);
+    int i1;
+    if ((this.g.a(paramRectF) == f1) && (this.i.a(paramRectF) == f1) && (this.h.a(paramRectF) == f1)) {
+      i1 = 1;
     } else {
-      j = 0;
+      i1 = 0;
     }
-    int k;
-    if (((this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment instanceof RoundedCornerTreatment)) && ((this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment instanceof RoundedCornerTreatment)) && ((this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment instanceof RoundedCornerTreatment)) && ((this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment instanceof RoundedCornerTreatment))) {
-      k = 1;
+    int i2;
+    if (((this.c instanceof RoundedCornerTreatment)) && ((this.b instanceof RoundedCornerTreatment)) && ((this.d instanceof RoundedCornerTreatment)) && ((this.e instanceof RoundedCornerTreatment))) {
+      i2 = 1;
     } else {
-      k = 0;
+      i2 = 0;
     }
-    return (i != 0) && (j != 0) && (k != 0);
-  }
-  
-  @NonNull
-  public CornerSize b()
-  {
-    return this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize;
+    return (n != 0) && (i1 != 0) && (i2 != 0);
   }
   
   @NonNull
   public CornerTreatment b()
   {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  }
-  
-  @NonNull
-  public EdgeTreatment b()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  }
-  
-  @NonNull
-  public ShapeAppearanceModel.Builder b()
-  {
-    return new ShapeAppearanceModel.Builder(this);
-  }
-  
-  @NonNull
-  public CornerSize c()
-  {
-    return this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize;
+    return this.b;
   }
   
   @NonNull
   public CornerTreatment c()
   {
-    return this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-  }
-  
-  @NonNull
-  public EdgeTreatment c()
-  {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-  }
-  
-  @NonNull
-  public CornerSize d()
-  {
-    return this.e;
+    return this.c;
   }
   
   @NonNull
   public CornerTreatment d()
   {
-    return this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
+    return this.d;
   }
   
   @NonNull
-  public EdgeTreatment d()
+  public CornerTreatment e()
   {
-    return this.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
+    return this.e;
+  }
+  
+  @NonNull
+  public CornerSize f()
+  {
+    return this.f;
+  }
+  
+  @NonNull
+  public CornerSize g()
+  {
+    return this.g;
+  }
+  
+  @NonNull
+  public CornerSize h()
+  {
+    return this.h;
+  }
+  
+  @NonNull
+  public CornerSize i()
+  {
+    return this.i;
+  }
+  
+  @NonNull
+  public EdgeTreatment j()
+  {
+    return this.m;
+  }
+  
+  @NonNull
+  public EdgeTreatment k()
+  {
+    return this.j;
+  }
+  
+  @NonNull
+  public EdgeTreatment l()
+  {
+    return this.k;
+  }
+  
+  @NonNull
+  public EdgeTreatment m()
+  {
+    return this.l;
+  }
+  
+  @NonNull
+  public ShapeAppearanceModel.Builder n()
+  {
+    return new ShapeAppearanceModel.Builder(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapeAppearanceModel
  * JD-Core Version:    0.7.0.1
  */

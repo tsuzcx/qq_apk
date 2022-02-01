@@ -3,13 +3,13 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k6t" android:layout_width="68.0dip" android:layout_height="wrap_content" android:text="@string/pve" />
     <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oh9" android:layout_width="68.0dip" android:layout_height="wrap_content" android:text="@string/yf6" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/qne" android:layout_width="68.0dip" android:layout_height="wrap_content" android:text="@string/z_j" />
     <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
     <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ka7" android:layout_width="56.0dip" android:layout_height="fill_parent" android:text="" />
     <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
     <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/kao" android:layout_width="68.0dip" android:layout_height="wrap_content" android:text="@string/q11" />
     <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/of9" android:visibility="gone" android:layout_width="67.0dip" android:layout_height="wrap_content" android:text="删除" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/qj_" android:visibility="gone" android:layout_width="67.0dip" android:layout_height="wrap_content" android:text="删除" />
     <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/ncy" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cbk" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/o8r" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cbk" />
 </LinearLayout>

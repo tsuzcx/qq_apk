@@ -13,24 +13,24 @@ import java.util.List;
 public class IPublicAccountBrowser$ActionSheetItemAdapter
   extends ArrayAdapter<IPublicAccountBrowser.ActionSheetItem>
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<IPublicAccountBrowser.ActionSheetItem> jdField_a_of_type_JavaUtilList;
+  private List<IPublicAccountBrowser.ActionSheetItem> a;
+  private LayoutInflater b;
   
   public IPublicAccountBrowser$ActionSheetItemAdapter(Context paramContext, int paramInt, List<IPublicAccountBrowser.ActionSheetItem> paramList)
   {
     super(paramContext, paramInt, paramList);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.a = paramList;
+    this.b = LayoutInflater.from(paramContext);
   }
   
   public IPublicAccountBrowser.ActionSheetItem a(int paramInt)
   {
-    return (IPublicAccountBrowser.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (IPublicAccountBrowser.ActionSheetItem)this.a.get(paramInt);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -38,10 +38,10 @@ public class IPublicAccountBrowser$ActionSheetItemAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559100, null);
+      localView = this.b.inflate(2131624761, null);
       paramView = new IPublicAccountBrowser.ActionSheetItemViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373198));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373199));
+      paramView.b = ((ImageView)localView.findViewById(2131440807));
+      paramView.a = ((TextView)localView.findViewById(2131440808));
       localView.setTag(paramView);
     }
     else
@@ -51,16 +51,16 @@ public class IPublicAccountBrowser$ActionSheetItemAdapter
       paramView = (View)localObject;
     }
     Object localObject = a(paramInt);
-    paramView.jdField_a_of_type_ComTencentMobileqqTeamworkIPublicAccountBrowser$ActionSheetItem = ((IPublicAccountBrowser.ActionSheetItem)localObject);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString);
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int);
+    paramView.c = ((IPublicAccountBrowser.ActionSheetItem)localObject);
+    paramView.a.setText(((IPublicAccountBrowser.ActionSheetItem)localObject).c);
+    paramView.b.setBackgroundResource(((IPublicAccountBrowser.ActionSheetItem)localObject).a);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.IPublicAccountBrowser.ActionSheetItemAdapter
  * JD-Core Version:    0.7.0.1
  */

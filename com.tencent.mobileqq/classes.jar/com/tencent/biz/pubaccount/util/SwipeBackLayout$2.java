@@ -13,17 +13,17 @@ class SwipeBackLayout$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isFling:");
-      localStringBuilder.append(this.this$0.c);
+      localStringBuilder.append(this.this$0.k);
       QLog.d("WebLog_SwipeBackLayout", 2, localStringBuilder.toString());
     }
-    if (!this.this$0.c) {
+    if (!this.this$0.k) {
       this.this$0.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SwipeBackLayout.2
  * JD-Core Version:    0.7.0.1
  */

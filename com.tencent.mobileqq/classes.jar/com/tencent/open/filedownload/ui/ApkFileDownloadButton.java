@@ -34,18 +34,18 @@ public class ApkFileDownloadButton
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   protected RelativeLayout a;
-  protected TextView a;
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new ApkFileDownloadButton.1(this);
-  protected TaskInfo a;
-  private ApkFileDownloadButton.EventCallback jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
-  private String jdField_a_of_type_JavaLangString = "";
-  private TextView b;
-  private TextView c;
+  protected TextView b;
+  protected TaskInfo c;
+  private TextView d;
+  private ProgressBar e;
+  private Button f;
+  private TextView g;
+  private int h = 1;
+  private Context i;
+  private String j = "";
+  private DownloadListener k = new ApkFileDownloadButton.1(this);
+  private ApkFileDownloadButton.EventCallback l;
   
   public ApkFileDownloadButton(Context paramContext)
   {
@@ -63,30 +63,12 @@ public class ApkFileDownloadButton
     a(paramContext);
   }
   
-  private void a(float paramFloat)
-  {
-    float f = paramFloat;
-    if (paramFloat < 0.0F) {
-      f = 0.0F;
-    }
-    paramFloat = f;
-    if (f > 1.0F) {
-      paramFloat = 1.0F;
-    }
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(paramFloat * 100.0F));
-  }
-  
-  private void a(int paramInt)
-  {
-    a(paramInt * 1.0F / 100.0F);
-  }
-  
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131559651, this);
+    this.i = paramContext;
+    LayoutInflater.from(paramContext).inflate(2131625680, this);
     j();
-    DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
+    DownloadManagerV2.a().a(this.k);
   }
   
   private void b(DownloadInfo paramDownloadInfo)
@@ -95,8 +77,8 @@ public class ApkFileDownloadButton
     {
       ApkFileDownloadButton.4 local4 = new ApkFileDownloadButton.4(this);
       paramDownloadInfo = new ApkFileDownloadButton.5(this, paramDownloadInfo);
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, HardCodeUtil.a(2131700496), HardCodeUtil.a(2131700494), 2131690728, 2131691606, paramDownloadInfo, local4).show();
-      AppCenterReporter.a(AppExposureDataBuilder.a().k(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString).j("5").l("0").m(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+      DialogUtil.a(this.i, 230, HardCodeUtil.a(2131898528), HardCodeUtil.a(2131898526), 2131887648, 2131888568, paramDownloadInfo, local4).show();
+      AppCenterReporter.a(AppExposureDataBuilder.a().l(this.c.a).k("5").m("0").n(this.c.d).b(this.c.i).c(this.c.f).h(this.c.e));
       return;
     }
     h();
@@ -109,41 +91,41 @@ public class ApkFileDownloadButton
     if (paramDownloadInfo == null)
     {
       localObject = new DownloadInfo();
-      ((DownloadInfo)localObject).t = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString;
-      ((DownloadInfo)localObject).u = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_JavaLangString;
-      ((DownloadInfo)localObject).v = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.c;
-      ((DownloadInfo)localObject).h = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.d;
-      ((DownloadInfo)localObject).d = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e;
-      ((DownloadInfo)localObject).e = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f;
-      ((DownloadInfo)localObject).f = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+      ((DownloadInfo)localObject).M = this.c.a;
+      ((DownloadInfo)localObject).N = this.c.b;
+      ((DownloadInfo)localObject).O = this.c.c;
+      ((DownloadInfo)localObject).h = this.c.d;
+      ((DownloadInfo)localObject).d = this.c.e;
+      ((DownloadInfo)localObject).e = this.c.f;
+      ((DownloadInfo)localObject).f = this.c.i;
       paramDownloadInfo = new StringBuilder();
       paramDownloadInfo.append("_");
-      paramDownloadInfo.append(GlobalUtil.calcMD5AsString(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+      paramDownloadInfo.append(GlobalUtil.calcMD5AsString(this.c.e));
       ((DownloadInfo)localObject).g = paramDownloadInfo.toString();
-      ((DownloadInfo)localObject).b = true;
-      ((DownloadInfo)localObject).m = this.jdField_a_of_type_JavaLangString;
-      ((DownloadInfo)localObject).a();
+      ((DownloadInfo)localObject).x = true;
+      ((DownloadInfo)localObject).r = this.j;
+      ((DownloadInfo)localObject).b();
     }
     else
     {
-      paramDownloadInfo.e = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f;
-      paramDownloadInfo.b = true;
-      if ((paramDownloadInfo.a() == 4) && (new File(paramDownloadInfo.l).exists()))
+      paramDownloadInfo.e = this.c.f;
+      paramDownloadInfo.x = true;
+      if ((paramDownloadInfo.a() == 4) && (new File(paramDownloadInfo.q).exists()))
       {
-        localObject = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo;
-        ((TaskInfo)localObject).jdField_b_of_type_Int = 4;
-        ((TaskInfo)localObject).jdField_a_of_type_Int = 100;
+        localObject = this.c;
+        ((TaskInfo)localObject).k = 4;
+        ((TaskInfo)localObject).j = 100;
         g();
       }
       localObject = paramDownloadInfo;
-      if (TextUtils.isEmpty(paramDownloadInfo.m))
+      if (TextUtils.isEmpty(paramDownloadInfo.r))
       {
-        paramDownloadInfo.m = this.jdField_a_of_type_JavaLangString;
+        paramDownloadInfo.r = this.j;
         localObject = paramDownloadInfo;
       }
     }
     DownloadManagerV2.a().b((DownloadInfo)localObject);
-    paramDownloadInfo = this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
+    paramDownloadInfo = this.l;
     if (paramDownloadInfo != null) {
       paramDownloadInfo.b();
     }
@@ -152,20 +134,33 @@ public class ApkFileDownloadButton
   private void j()
   {
     setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376722));
-    this.b = ((TextView)findViewById(2131380078));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373132));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363996));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380069));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(b(1));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131380070));
+    this.a = ((RelativeLayout)findViewById(2131445004));
+    this.d = ((TextView)findViewById(2131448991));
+    this.e = ((ProgressBar)findViewById(2131440737));
+    this.f = ((Button)findViewById(2131429953));
+    this.f.setOnClickListener(this);
+    this.b = ((TextView)findViewById(2131448982));
+    this.b.setText(b(1));
+    this.b.setOnClickListener(this);
+    this.g = ((TextView)findViewById(2131448983));
   }
   
-  protected String a()
+  private void setProgress(float paramFloat)
   {
-    return HardCodeUtil.a(2131700497);
+    float f1 = paramFloat;
+    if (paramFloat < 0.0F) {
+      f1 = 0.0F;
+    }
+    paramFloat = f1;
+    if (f1 > 1.0F) {
+      paramFloat = 1.0F;
+    }
+    this.e.setProgress((int)(paramFloat * 100.0F));
+  }
+  
+  private void setProgress(int paramInt)
+  {
+    setProgress(paramInt * 1.0F / 100.0F);
   }
   
   protected String a(int paramInt)
@@ -175,14 +170,14 @@ public class ApkFileDownloadButton
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int != 4) {
-      DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e);
+    if (this.c.k != 4) {
+      DownloadManagerV2.a().e(this.c.e);
     }
   }
   
   protected void a(DownloadInfo paramDownloadInfo)
   {
-    DownloadManagerV2.a().a(paramDownloadInfo);
+    DownloadManagerV2.a().d(paramDownloadInfo);
   }
   
   protected void a(String paramString) {}
@@ -194,7 +189,7 @@ public class ApkFileDownloadButton
     b();
     i();
     if (paramBoolean) {
-      AppCenterReporter.b(ClickDataBuilder.a().a("202").k(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString).j(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_JavaLangString).l(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+      AppCenterReporter.b(ClickDataBuilder.a().a("202").l(this.c.a).k(this.c.b).m(this.c.c).n(this.c.d).b(this.c.i).c(this.c.f).h(this.c.e));
     }
   }
   
@@ -202,7 +197,7 @@ public class ApkFileDownloadButton
   {
     if (paramBoolean2)
     {
-      ApkFileDownloadButton.EventCallback localEventCallback = this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
+      ApkFileDownloadButton.EventCallback localEventCallback = this.l;
       if (localEventCallback != null) {
         localEventCallback.d();
       }
@@ -218,69 +213,43 @@ public class ApkFileDownloadButton
     return false;
   }
   
-  protected String b()
-  {
-    if ((this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int != 4) && (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Int != 100))
-    {
-      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long == 0L) {
-        return a();
-      }
-      String str1 = NewUpgradeDialog.a((float)(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long * this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Int / 100L), true, 2);
-      String str2 = NewUpgradeDialog.a((float)this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long, true, 2);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a());
-      localStringBuilder.append("(");
-      localStringBuilder.append(str1);
-      localStringBuilder.append("/");
-      localStringBuilder.append(str2);
-      localStringBuilder.append(")");
-      return localStringBuilder.toString();
-    }
-    return b(4);
-  }
-  
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return HardCodeUtil.a(2131700500);
+      return HardCodeUtil.a(2131898531);
     }
-    return HardCodeUtil.a(2131700502);
+    return HardCodeUtil.a(2131898533);
   }
   
   public void b()
   {
     a();
-    DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-  }
-  
-  protected void b(String paramString)
-  {
-    this.b.setText(paramString);
+    DownloadManagerV2.a().b(this.k);
   }
   
   protected void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo == null)
+    if (this.c == null)
     {
       LogUtility.b("ApkFileDownloadButton_", "[onClick] mApkInfo == null!");
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[onClick] state=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.c.k);
     LogUtility.b("ApkFileDownloadButton_", ((StringBuilder)localObject).toString());
-    DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e);
+    DownloadManagerV2.a().a(this.k);
+    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.c.e);
     if (localDownloadInfo != null)
     {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int = localDownloadInfo.a();
-      if (TextUtils.isEmpty(localDownloadInfo.m)) {
-        localDownloadInfo.m = this.jdField_a_of_type_JavaLangString;
+      this.c.k = localDownloadInfo.a();
+      if (TextUtils.isEmpty(localDownloadInfo.r)) {
+        localDownloadInfo.r = this.j;
       }
     }
-    int i = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int;
+    int m = this.c.k;
     String str = "400";
-    if (i != 4)
+    if (m != 4)
     {
       if (localDownloadInfo != null)
       {
@@ -288,7 +257,7 @@ public class ApkFileDownloadButton
         if (localDownloadInfo.a() == 4)
         {
           localObject = str;
-          if (new File(localDownloadInfo.l).exists()) {}
+          if (new File(localDownloadInfo.q).exists()) {}
         }
       }
       else
@@ -297,9 +266,9 @@ public class ApkFileDownloadButton
       }
       b(localDownloadInfo);
     }
-    else if ((localDownloadInfo != null) && (localDownloadInfo.a() == 4) && (new File(localDownloadInfo.l).exists()))
+    else if ((localDownloadInfo != null) && (localDownloadInfo.a() == 4) && (new File(localDownloadInfo.q).exists()))
     {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int = 4;
+      this.c.k = 4;
       g();
       i();
       a(localDownloadInfo);
@@ -313,7 +282,7 @@ public class ApkFileDownloadButton
         if (localDownloadInfo.a() == 4)
         {
           localObject = str;
-          if (new File(localDownloadInfo.l).exists()) {}
+          if (new File(localDownloadInfo.q).exists()) {}
         }
       }
       else
@@ -323,7 +292,7 @@ public class ApkFileDownloadButton
       b(localDownloadInfo);
     }
     if (paramBoolean) {
-      AppCenterReporter.b(ClickDataBuilder.a().a((String)localObject).k(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString).j(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_JavaLangString).l(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+      AppCenterReporter.b(ClickDataBuilder.a().a((String)localObject).l(this.c.a).k(this.c.b).m(this.c.c).n(this.c.d).b(this.c.i).c(this.c.f).h(this.c.e));
     }
     a((String)localObject, paramBoolean);
   }
@@ -332,7 +301,7 @@ public class ApkFileDownloadButton
   {
     if (paramBoolean2)
     {
-      ApkFileDownloadButton.EventCallback localEventCallback = this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
+      ApkFileDownloadButton.EventCallback localEventCallback = this.l;
       if (localEventCallback != null) {
         localEventCallback.a();
       }
@@ -342,13 +311,13 @@ public class ApkFileDownloadButton
   
   public void c()
   {
-    DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = null;
+    DownloadManagerV2.a().b(this.k);
+    this.k = null;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int = 1;
+    this.c.k = 1;
     g();
     i();
   }
@@ -356,7 +325,7 @@ public class ApkFileDownloadButton
   protected void e()
   {
     i();
-    ApkFileDownloadButton.EventCallback localEventCallback = this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
+    ApkFileDownloadButton.EventCallback localEventCallback = this.l;
     if (localEventCallback != null) {
       localEventCallback.c();
     }
@@ -364,25 +333,51 @@ public class ApkFileDownloadButton
   
   protected void f()
   {
-    this.c.setVisibility(8);
+    this.g.setVisibility(8);
   }
   
   protected void g()
   {
-    b(b());
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int == 4) {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Int = 100;
+    setProgressHintText(getProgressHintTextRes());
+    if (this.c.k == 4) {
+      this.c.j = 100;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int));
-    a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Int);
-    int i = 1;
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int == 4) {
-      i = 3;
+    this.b.setText(b(this.c.k));
+    setProgress(this.c.j);
+    int m = 1;
+    if (this.c.k == 4) {
+      m = 3;
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) {
-      i = 2;
+    if (this.a.getVisibility() == 0) {
+      m = 2;
     }
-    this.c.setText(a(i));
+    this.g.setText(a(m));
+  }
+  
+  protected String getProgressHintText()
+  {
+    return HardCodeUtil.a(2131898529);
+  }
+  
+  protected String getProgressHintTextRes()
+  {
+    if ((this.c.k != 4) && (this.c.j != 100))
+    {
+      if (this.c.h == 0L) {
+        return getProgressHintText();
+      }
+      String str1 = NewUpgradeDialog.a((float)(this.c.h * this.c.j / 100L), true, 2);
+      String str2 = NewUpgradeDialog.a((float)this.c.h, true, 2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getProgressHintText());
+      localStringBuilder.append("(");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("/");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(")");
+      return localStringBuilder.toString();
+    }
+    return b(4);
   }
   
   protected void h()
@@ -398,17 +393,17 @@ public class ApkFileDownloadButton
   public final void onClick(View paramView)
   {
     ApkFileDownloadButton.EventCallback localEventCallback;
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.f)
     {
-      localEventCallback = this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
+      localEventCallback = this.l;
       if (localEventCallback != null) {
         localEventCallback.a();
       }
       a(true);
     }
-    else if (paramView == this.jdField_a_of_type_AndroidWidgetTextView)
+    else if (paramView == this.b)
     {
-      localEventCallback = this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback;
+      localEventCallback = this.l;
       if (localEventCallback != null) {
         localEventCallback.d();
       }
@@ -419,23 +414,28 @@ public class ApkFileDownloadButton
   
   public void setApkInfo(TaskInfo paramTaskInfo)
   {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo = TaskInfo.a(paramTaskInfo);
+    this.c = TaskInfo.a(paramTaskInfo);
     g();
   }
   
   public void setEventCallback(ApkFileDownloadButton.EventCallback paramEventCallback)
   {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton$EventCallback = paramEventCallback;
+    this.l = paramEventCallback;
+  }
+  
+  protected void setProgressHintText(String paramString)
+  {
+    this.d.setText(paramString);
   }
   
   public void setSource(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.j = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.ApkFileDownloadButton
  * JD-Core Version:    0.7.0.1
  */

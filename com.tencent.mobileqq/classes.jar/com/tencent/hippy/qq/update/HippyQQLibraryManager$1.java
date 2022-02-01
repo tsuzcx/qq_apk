@@ -14,7 +14,7 @@ class HippyQQLibraryManager$1
     if ((QLog.isColorLevel()) || (paramInt != 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Hippy: SoLoadManager download resCode=");
+      localStringBuilder.append("SoLoadManager download resCode=");
       localStringBuilder.append(paramInt);
       QLog.d("Hippy", 1, localStringBuilder.toString());
     }
@@ -25,7 +25,7 @@ class HippyQQLibraryManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQLibraryManager.1
  * JD-Core Version:    0.7.0.1
  */

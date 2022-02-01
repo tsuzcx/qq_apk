@@ -33,25 +33,20 @@ public class SingleDateSelector
   @Nullable
   private Long a;
   
-  private void a()
+  private void f()
   {
     this.a = null;
-  }
-  
-  public int a(Context paramContext)
-  {
-    return MaterialAttributes.a(paramContext, R.attr.z, MaterialDatePicker.class.getCanonicalName());
   }
   
   public View a(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle, CalendarConstraints paramCalendarConstraints, @NonNull OnSelectionChangedListener<Long> paramOnSelectionChangedListener)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(R.layout.B, paramViewGroup, false);
     paramViewGroup = (TextInputLayout)paramLayoutInflater.findViewById(R.id.U);
-    paramBundle = paramViewGroup.a();
+    paramBundle = paramViewGroup.getEditText();
     if (ManufacturerUtils.d()) {
       paramBundle.setInputType(17);
     }
-    SimpleDateFormat localSimpleDateFormat = UtcDates.a();
+    SimpleDateFormat localSimpleDateFormat = UtcDates.d();
     String str = UtcDates.a(paramLayoutInflater.getResources(), localSimpleDateFormat);
     paramViewGroup.setPlaceholderText(str);
     Long localLong = this.a;
@@ -59,14 +54,8 @@ public class SingleDateSelector
       paramBundle.setText(localSimpleDateFormat.format(localLong));
     }
     paramBundle.addTextChangedListener(new SingleDateSelector.1(this, str, localSimpleDateFormat, paramViewGroup, paramCalendarConstraints, paramOnSelectionChangedListener));
-    ViewUtils.a(paramBundle);
+    ViewUtils.b(paramBundle);
     return paramLayoutInflater;
-  }
-  
-  @Nullable
-  public Long a()
-  {
-    return this.a;
   }
   
   @NonNull
@@ -81,8 +70,23 @@ public class SingleDateSelector
     return paramContext.getString(R.string.x, new Object[] { localObject });
   }
   
+  public void a(long paramLong)
+  {
+    this.a = Long.valueOf(paramLong);
+  }
+  
+  public int b(Context paramContext)
+  {
+    return MaterialAttributes.a(paramContext, R.attr.G, MaterialDatePicker.class.getCanonicalName());
+  }
+  
+  public boolean b()
+  {
+    return this.a != null;
+  }
+  
   @NonNull
-  public Collection<Long> a()
+  public Collection<Long> c()
   {
     ArrayList localArrayList = new ArrayList();
     Long localLong = this.a;
@@ -92,18 +96,8 @@ public class SingleDateSelector
     return localArrayList;
   }
   
-  public void a(long paramLong)
-  {
-    this.a = Long.valueOf(paramLong);
-  }
-  
-  public boolean a()
-  {
-    return this.a != null;
-  }
-  
   @NonNull
-  public Collection<Pair<Long, Long>> b()
+  public Collection<Pair<Long, Long>> d()
   {
     return new ArrayList();
   }
@@ -113,6 +107,12 @@ public class SingleDateSelector
     return 0;
   }
   
+  @Nullable
+  public Long e()
+  {
+    return this.a;
+  }
+  
   public void writeToParcel(@NonNull Parcel paramParcel, int paramInt)
   {
     paramParcel.writeValue(this.a);
@@ -120,7 +120,7 @@ public class SingleDateSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.SingleDateSelector
  * JD-Core Version:    0.7.0.1
  */

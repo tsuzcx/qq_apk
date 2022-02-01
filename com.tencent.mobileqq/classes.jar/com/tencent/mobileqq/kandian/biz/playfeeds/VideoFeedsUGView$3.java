@@ -13,23 +13,23 @@ class VideoFeedsUGView$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f.equals(this.a.d)))
+    if ((this.this$0.a != null) && (!TextUtils.isEmpty(this.this$0.a.f)) && (this.this$0.a.f.equals(this.a.d)))
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.this$0.b.setVisibility(8);
-      TextView localTextView = this.this$0.jdField_a_of_type_AndroidWidgetTextView;
+      this.this$0.g.setVisibility(0);
+      this.this$0.e.setVisibility(8);
+      TextView localTextView = this.this$0.g;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.k);
-      localStringBuilder.append(this.a.f);
+      localStringBuilder.append(this.this$0.a.k);
+      localStringBuilder.append(this.a.t);
       localStringBuilder.append("%");
       localTextView.setText(localStringBuilder.toString());
-      this.this$0.jdField_a_of_type_Int = this.a.f;
+      this.this$0.c = this.a.t;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsUGView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,55 +15,50 @@ import java.util.List;
 
 public class GridOptPopBar
 {
-  public static PopupMenuDialog.MenuItem a;
-  public static PopupMenuDialog.MenuItem b = new PopupMenuDialog.MenuItem(2131364741, BaseApplicationImpl.getContext().getString(2131719511), BaseApplicationImpl.getContext().getString(2131719511), 2130844375);
-  public static PopupMenuDialog.MenuItem c = new PopupMenuDialog.MenuItem(2131364738, BaseApplicationImpl.getContext().getString(2131719509), BaseApplicationImpl.getContext().getString(2131719509), 2130844374);
+  public static PopupMenuDialog.MenuItem c = new PopupMenuDialog.MenuItem(2131430848, BaseApplicationImpl.getContext().getString(2131917073), BaseApplicationImpl.getContext().getString(2131917073), 2130845693);
+  public static PopupMenuDialog.MenuItem d = new PopupMenuDialog.MenuItem(2131430849, BaseApplicationImpl.getContext().getString(2131917074), BaseApplicationImpl.getContext().getString(2131917074), 2130845692);
+  public static PopupMenuDialog.MenuItem e = new PopupMenuDialog.MenuItem(2131430846, BaseApplicationImpl.getContext().getString(2131917072), BaseApplicationImpl.getContext().getString(2131917072), 2130845691);
   public Activity a;
-  RedTouch jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = null;
-  private PopupMenuDialog.OnClickActionListener jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener;
-  private PopupMenuDialog.OnDismissListener jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnDismissListener;
-  private PopupMenuDialog jdField_a_of_type_ComTencentWidgetPopupMenuDialog;
-  private List<PopupMenuDialog.MenuItem> jdField_a_of_type_JavaUtilList;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentWidgetPopupMenuDialog$MenuItem = new PopupMenuDialog.MenuItem(2131364740, BaseApplicationImpl.getContext().getString(2131719510), BaseApplicationImpl.getContext().getString(2131719510), 2130844376);
-  }
+  RedTouch b = null;
+  private List<PopupMenuDialog.MenuItem> f;
+  private PopupMenuDialog.OnDismissListener g;
+  private PopupMenuDialog.OnClickActionListener h;
+  private PopupMenuDialog i;
   
   public GridOptPopBar(Activity paramActivity, List<PopupMenuDialog.MenuItem> paramList, PopupMenuDialog.OnClickActionListener paramOnClickActionListener)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener = paramOnClickActionListener;
-  }
-  
-  @NonNull
-  private boolean a()
-  {
-    PopupMenuDialog localPopupMenuDialog = this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog;
-    return (localPopupMenuDialog != null) && (localPopupMenuDialog.isShowing());
+    this.a = paramActivity;
+    this.f = paramList;
+    this.h = paramOnClickActionListener;
   }
   
   private void b()
   {
     ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.f;
     if ((localList != null) && (localList.size() > 0))
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      int j = 0;
+      while (j < this.f.size())
       {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(i));
-        i += 1;
+        localArrayList.add(this.f.get(j));
+        j += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.build(this.jdField_a_of_type_AndroidAppActivity, localArrayList, this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener, this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnDismissListener);
+    this.i = PopupMenuDialog.build(this.a, localArrayList, this.h, this.g);
+  }
+  
+  @NonNull
+  private boolean c()
+  {
+    PopupMenuDialog localPopupMenuDialog = this.i;
+    return (localPopupMenuDialog != null) && (localPopupMenuDialog.isShowing());
   }
   
   public void a()
   {
-    if (a()) {
-      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.dismiss();
+    if (c()) {
+      this.i.dismiss();
     }
   }
   
@@ -74,15 +69,15 @@ public class GridOptPopBar
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog == null) {
+    if (this.i == null) {
       b();
     }
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAsDropDown(paramView, paramInt1, paramInt2);
+    this.i.showAsDropDown(paramView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.GridOptPopBar
  * JD-Core Version:    0.7.0.1
  */

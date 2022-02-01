@@ -18,24 +18,24 @@ public final class RoundBackgroundImageView
     super(paramContext, paramAttributeSet);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.g);
-      int i = paramContext.getColor(R.styleable.m, 0);
-      int j = paramContext.getColor(R.styleable.o, 0);
-      int k = paramContext.getInt(R.styleable.p, -1);
-      float f = paramContext.getDimension(R.styleable.n, 0.0F);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.r);
+      int i = paramContext.getColor(R.styleable.t, 0);
+      int j = paramContext.getColor(R.styleable.v, 0);
+      int k = paramContext.getInt(R.styleable.w, -1);
+      float f = paramContext.getDimension(R.styleable.u, 0.0F);
       paramAttributeSet = new GradientDrawable();
       paramAttributeSet.setColor(i);
       paramAttributeSet.setCornerRadius(f);
       paramAttributeSet.setStroke(k, j);
       setBackground((Drawable)paramAttributeSet);
-      setEnablePressEffect(paramContext.getBoolean(R.styleable.l, false));
+      setEnablePressEffect(paramContext.getBoolean(R.styleable.s, false));
       paramContext.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RoundBackgroundImageView
  * JD-Core Version:    0.7.0.1
  */

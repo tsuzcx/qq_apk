@@ -10,12 +10,12 @@ class JoinTroopUtil$3
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    JoinTroopUtil.a(this.a);
+    JoinTroopUtil.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.JoinTroopUtil.3
  * JD-Core Version:    0.7.0.1
  */

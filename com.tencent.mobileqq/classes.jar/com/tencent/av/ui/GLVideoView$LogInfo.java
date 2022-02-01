@@ -4,55 +4,55 @@ import com.tencent.qphone.base.util.QLog;
 
 class GLVideoView$LogInfo
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int = 0;
-  boolean jdField_d_of_type_Boolean = false;
+  boolean a = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
   int e = 0;
   int f = 0;
   int g = 0;
   int h = 0;
   int i = 0;
   int j = 0;
-  int k;
-  int l;
+  int k = 0;
+  int l = 0;
   int m = 0;
   int n = 0;
-  int o = 0;
+  int o;
+  int p;
+  int q = 0;
+  int r = 0;
+  int s = 0;
   
   void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, float paramFloat1, float paramFloat2, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15)
   {
     if (!QLog.isColorLevel()) {
       return;
     }
-    if ((this.jdField_c_of_type_Boolean == paramBoolean3) && (this.jdField_d_of_type_Boolean == paramBoolean4) && (this.jdField_a_of_type_Boolean == paramBoolean1) && (this.jdField_b_of_type_Boolean == paramBoolean2) && (this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2) && (this.jdField_c_of_type_Int == paramInt3) && (this.jdField_d_of_type_Int == paramInt4) && (this.e == paramInt5) && (this.f == paramInt6) && (this.g == paramInt7) && (this.h == paramInt8) && (this.i == paramInt9) && (this.j == paramInt10) && (this.k == paramInt11) && (this.l == paramInt12) && (this.m == paramInt13)) {
-      if (this.n == paramInt14) {
+    if ((this.c == paramBoolean3) && (this.d == paramBoolean4) && (this.a == paramBoolean1) && (this.b == paramBoolean2) && (this.e == paramInt1) && (this.f == paramInt2) && (this.g == paramInt3) && (this.h == paramInt4) && (this.i == paramInt5) && (this.j == paramInt6) && (this.k == paramInt7) && (this.l == paramInt8) && (this.m == paramInt9) && (this.n == paramInt10) && (this.o == paramInt11) && (this.p == paramInt12) && (this.q == paramInt13)) {
+      if (this.r == paramInt14) {
         return;
       }
     }
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_Boolean = paramBoolean4;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-    this.g = paramInt7;
-    this.h = paramInt8;
-    this.i = paramInt9;
-    this.j = paramInt10;
-    this.k = paramInt11;
-    this.l = paramInt12;
-    this.m = paramInt13;
-    this.n = paramInt14;
-    this.o = paramInt15;
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramInt4;
+    this.i = paramInt5;
+    this.j = paramInt6;
+    this.k = paramInt7;
+    this.l = paramInt8;
+    this.m = paramInt9;
+    this.n = paramInt10;
+    this.o = paramInt11;
+    this.p = paramInt12;
+    this.q = paramInt13;
+    this.r = paramInt14;
+    this.s = paramInt15;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("rendView, self[");
     localStringBuilder.append(paramBoolean1);

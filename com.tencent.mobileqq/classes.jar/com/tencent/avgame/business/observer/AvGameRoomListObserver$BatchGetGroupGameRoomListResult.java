@@ -5,11 +5,11 @@ import java.util.List;
 
 public class AvGameRoomListObserver$BatchGetGroupGameRoomListResult
 {
-  public int a;
   public String a;
-  public List<RoomInfo> a;
-  public int b;
+  public List<RoomInfo> b;
   public int c;
+  public int d;
+  public int e;
   
   public AvGameRoomListObserver$BatchGetGroupGameRoomListResult(AvGameRoomListObserver paramAvGameRoomListObserver) {}
 }

@@ -10,28 +10,28 @@ public class QIMFollowMessage
   
   public QIMFollowMessage(QIMFollwerAdd paramQIMFollwerAdd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
-    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
+    this.a = paramQIMFollwerAdd;
+    this.d = paramQIMFollwerAdd.upTime;
   }
   
   public String a()
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
+    return String.valueOf(this.a.uin);
   }
   
-  public String a(AppRuntime paramAppRuntime)
+  public String b(AppRuntime paramAppRuntime)
   {
     return "getMessage";
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
+    return this.a.isRead;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.QIMFollowMessage
  * JD-Core Version:    0.7.0.1
  */

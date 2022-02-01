@@ -48,35 +48,110 @@ public class EmojiFragment
   extends BaseHbFragment
   implements View.OnClickListener
 {
-  public long a;
-  protected TextWatcher a;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   public View a;
-  public Button a;
-  public EditText a;
-  public ImageView a;
-  public EmojiRedpacketUserGuideDialog a;
-  public EmoticonTemplateRecyclerView a;
-  public EmojiFragment.TemplateBundleInfo a;
-  private EmojiFragment.TemplateInfo jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateInfo;
-  public String a;
-  private List<EmojiFragment.TemplateInfo> jdField_a_of_type_JavaUtilList;
-  public int b;
-  private SparseArray<ImageView> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  public EditText b;
-  private String jdField_b_of_type_JavaLangString;
-  public int c;
-  int d = 0;
+  public Button b;
+  public EditText c;
+  public EditText d;
+  public EmojiFragment.TemplateBundleInfo l = new EmojiFragment.TemplateBundleInfo();
+  public EmoticonTemplateRecyclerView m;
+  public long n = 0L;
+  protected TextWatcher o = new EmojiFragment.1(this);
+  public ImageView p;
+  public int q = -1;
+  public String r;
+  public int s;
+  int t = 0;
+  public EmojiRedpacketUserGuideDialog u;
+  private List<EmojiFragment.TemplateInfo> v;
+  private String w;
+  private EmojiFragment.TemplateInfo x;
+  private SparseArray<URLDrawable> y = new SparseArray();
+  private SparseArray<ImageView> z = new SparseArray();
   
-  public EmojiFragment()
+  private void a(View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo = new EmojiFragment.TemplateBundleInfo();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidTextTextWatcher = new EmojiFragment.1(this);
-    this.jdField_b_of_type_Int = -1;
+    try
+    {
+      HbInfo.a(paramBundle, this.l);
+      paramView.findViewById(R.id.aJ).setOnClickListener(this);
+      this.m = ((EmoticonTemplateRecyclerView)paramView.findViewById(R.id.cs));
+      paramBundle = new EmojiFragment.TemplateListAdapter(this, this.f);
+      this.v = b(this.l.heartList, this.l.prefix);
+      paramBundle.a(this.v);
+      this.m.setAdapter(paramBundle);
+      this.m.setLayoutManager(new GridLayoutManager(this.f, 4, 1, false));
+      paramBundle = new EmojiFragment.TempGridItemLayoutDecoration(this, this.f, 4);
+      this.m.addItemDecoration(paramBundle);
+      this.d = ((EditText)paramView.findViewById(R.id.b));
+      this.d.addTextChangedListener(new MoneyWatcher(this.d));
+      this.d.addTextChangedListener(this.o);
+      this.c = ((EditText)paramView.findViewById(R.id.bb));
+      if (HbInfo.b.contains(this.l.recv_type))
+      {
+        this.c.setText("1");
+        paramView.findViewById(R.id.cD).setVisibility(8);
+      }
+      else
+      {
+        if (!TextUtils.isEmpty(this.l.people_num))
+        {
+          paramBundle = this.c;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(HardCodeUtil.a(R.string.aH));
+          localStringBuilder.append(this.l.people_num);
+          localStringBuilder.append(HardCodeUtil.a(R.string.aI));
+          paramBundle.setHint(localStringBuilder.toString());
+        }
+        this.c.addTextChangedListener(this.o);
+      }
+      if ((this.v != null) && (this.v.size() > 0)) {
+        a((EmojiFragment.TemplateInfo)this.v.get(0));
+      }
+      paramBundle = this.l.biz_params;
+      if (!StringUtil.isEmpty(paramBundle)) {
+        this.w = new JSONObject(paramBundle).optString("temp_id");
+      }
+      if (!StringUtil.isEmpty(this.w)) {
+        c(this.w);
+      }
+      this.b = ((Button)paramView.findViewById(R.id.z));
+      this.b.setOnClickListener(this);
+      d();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
   
-  private List<EmojiFragment.TemplateInfo> a(String paramString1, String paramString2)
+  private void a(EmojiFragment.TemplateInfo paramTemplateInfo)
+  {
+    if (this.v != null)
+    {
+      int i = 0;
+      while (i < this.v.size())
+      {
+        localTemplateInfo = (EmojiFragment.TemplateInfo)this.v.get(i);
+        if (localTemplateInfo.b == paramTemplateInfo.b) {
+          localTemplateInfo.g = true;
+        } else {
+          localTemplateInfo.g = false;
+        }
+        i += 1;
+      }
+    }
+    EmojiFragment.TemplateInfo localTemplateInfo = this.x;
+    if (localTemplateInfo != null) {
+      a((URLDrawable)this.y.get(localTemplateInfo.b), false, this.x.b, (ImageView)this.z.get(this.x.b));
+    }
+    if (paramTemplateInfo != null) {
+      a((URLDrawable)this.y.get(paramTemplateInfo.b), true, paramTemplateInfo.b, (ImageView)this.z.get(paramTemplateInfo.b));
+    }
+    this.x = paramTemplateInfo;
+  }
+  
+  private List<EmojiFragment.TemplateInfo> b(String paramString1, String paramString2)
   {
     ArrayList localArrayList = new ArrayList();
     for (;;)
@@ -84,11 +159,11 @@ public class EmojiFragment
       try
       {
         Object localObject1;
-        if (StringUtil.a(paramString1))
+        if (StringUtil.isEmpty(paramString1))
         {
           localObject1 = RedPacketManagerImpl.getHbPannelConfig(8);
           if (localObject1 == null) {
-            break label247;
+            break label255;
           }
           paramString1 = ((JSONObject)localObject1).optJSONArray("heartList");
           paramString2 = ((JSONObject)localObject1).optString("prefix");
@@ -100,24 +175,24 @@ public class EmojiFragment
         if (paramString1 != null)
         {
           if (paramString1.length() != 0) {
-            break label252;
+            break label260;
           }
           return localArrayList;
           if (i < paramString1.length())
           {
             localObject1 = new EmojiFragment.TemplateInfo();
-            ((EmojiFragment.TemplateInfo)localObject1).jdField_a_of_type_Int = i;
+            ((EmojiFragment.TemplateInfo)localObject1).a = i;
             Object localObject2 = paramString1.optJSONObject(i);
             if (localObject2 != null)
             {
-              ((EmojiFragment.TemplateInfo)localObject1).jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("rId");
+              ((EmojiFragment.TemplateInfo)localObject1).b = ((JSONObject)localObject2).optInt("rId");
               ((EmojiFragment.TemplateInfo)localObject1).c = ((JSONObject)localObject2).optInt("skinId");
-              ((EmojiFragment.TemplateInfo)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("text");
+              ((EmojiFragment.TemplateInfo)localObject1).d = ((JSONObject)localObject2).optString("text");
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append(paramString2);
-              ((StringBuilder)localObject2).append(((EmojiFragment.TemplateInfo)localObject1).jdField_b_of_type_Int);
+              ((StringBuilder)localObject2).append(((EmojiFragment.TemplateInfo)localObject1).b);
               ((StringBuilder)localObject2).append(".png");
-              ((EmojiFragment.TemplateInfo)localObject1).jdField_b_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+              ((EmojiFragment.TemplateInfo)localObject1).e = ((StringBuilder)localObject2).toString();
               localArrayList.add(localObject1);
             }
             i += 1;
@@ -140,117 +215,34 @@ public class EmojiFragment
         }
       }
       return localArrayList;
-      label247:
+      label255:
       paramString1 = null;
       continue;
-      label252:
+      label260:
       int i = 0;
     }
   }
   
-  private void a(View paramView, Bundle paramBundle)
-  {
-    try
-    {
-      HbInfo.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo);
-      paramView.findViewById(R.id.aB).setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmoticonTemplateRecyclerView = ((EmoticonTemplateRecyclerView)paramView.findViewById(R.id.ce));
-      paramBundle = new EmojiFragment.TemplateListAdapter(this, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity);
-      this.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.heartList, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.prefix);
-      paramBundle.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmoticonTemplateRecyclerView.setAdapter(paramBundle);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmoticonTemplateRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity, 4, 1, false));
-      paramBundle = new EmojiFragment.TempGridItemLayoutDecoration(this, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity, 4);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmoticonTemplateRecyclerView.addItemDecoration(paramBundle);
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(R.id.jdField_b_of_type_Int));
-      this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(new MoneyWatcher(this.jdField_b_of_type_AndroidWidgetEditText));
-      this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(R.id.aT));
-      if (HbInfo.b.contains(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.recv_type))
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
-        paramView.findViewById(R.id.cp).setVisibility(8);
-      }
-      else
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.people_num))
-        {
-          paramBundle = this.jdField_a_of_type_AndroidWidgetEditText;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(R.string.aC));
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.people_num);
-          localStringBuilder.append(HardCodeUtil.a(R.string.aD));
-          paramBundle.setHint(localStringBuilder.toString());
-        }
-        this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      }
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        a((EmojiFragment.TemplateInfo)this.jdField_a_of_type_JavaUtilList.get(0));
-      }
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.biz_params;
-      if (!StringUtil.a(paramBundle)) {
-        this.jdField_b_of_type_JavaLangString = new JSONObject(paramBundle).optString("temp_id");
-      }
-      if (!StringUtil.a(this.jdField_b_of_type_JavaLangString)) {
-        b(this.jdField_b_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(R.id.u));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      c();
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  private void a(EmojiFragment.TemplateInfo paramTemplateInfo)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localTemplateInfo = (EmojiFragment.TemplateInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localTemplateInfo.jdField_b_of_type_Int == paramTemplateInfo.jdField_b_of_type_Int) {
-          localTemplateInfo.jdField_a_of_type_Boolean = true;
-        } else {
-          localTemplateInfo.jdField_a_of_type_Boolean = false;
-        }
-        i += 1;
-      }
-    }
-    EmojiFragment.TemplateInfo localTemplateInfo = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateInfo;
-    if (localTemplateInfo != null) {
-      a((URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(localTemplateInfo.jdField_b_of_type_Int), false, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateInfo.jdField_b_of_type_Int, (ImageView)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateInfo.jdField_b_of_type_Int));
-    }
-    if (paramTemplateInfo != null) {
-      a((URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramTemplateInfo.jdField_b_of_type_Int), true, paramTemplateInfo.jdField_b_of_type_Int, (ImageView)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramTemplateInfo.jdField_b_of_type_Int));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateInfo = paramTemplateInfo;
-  }
-  
-  private void b(String paramString)
+  private void c(String paramString)
   {
     for (;;)
     {
       try
       {
         i = Integer.parseInt(paramString);
-        paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+        paramString = this.v.iterator();
         if (!paramString.hasNext()) {
-          break label121;
+          break label122;
         }
         localObject = (EmojiFragment.TemplateInfo)paramString.next();
-        if (i != ((EmojiFragment.TemplateInfo)localObject).jdField_b_of_type_Int) {
+        if (i != ((EmojiFragment.TemplateInfo)localObject).b) {
           continue;
         }
         a((EmojiFragment.TemplateInfo)localObject);
         i = 1;
         if (i == 0)
         {
-          QQToast.a(getActivity(), R.string.C, 0).a();
+          QQToast.makeText(getActivity(), R.string.C, 0).show();
           return;
         }
       }
@@ -260,10 +252,10 @@ public class EmojiFragment
         ((StringBuilder)localObject).append("processDefaultTmpSelected occur an exception: ");
         ((StringBuilder)localObject).append(paramString);
         QLog.e("EmojiFragment", 1, ((StringBuilder)localObject).toString());
-        QQToast.a(getActivity(), R.string.C, 0).a();
+        QQToast.makeText(getActivity(), R.string.C, 0).show();
       }
       return;
-      label121:
+      label122:
       int i = 0;
     }
   }
@@ -292,7 +284,7 @@ public class EmojiFragment
     }
     localObject = QWalletPicHelper.getNetDrawableForQWallet(paramURLDrawable, URLDrawableHelperConstants.a, URLDrawableHelperConstants.a, localBundle);
     paramImageView.setImageDrawable((Drawable)localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    this.y.put(paramInt, localObject);
     if (paramBoolean)
     {
       paramImageView = new Bundle();
@@ -303,60 +295,60 @@ public class EmojiFragment
   
   public void a(EmojiFragment.TemplateInfo paramTemplateInfo, ImageView paramImageView)
   {
-    this.jdField_b_of_type_Int = paramTemplateInfo.jdField_b_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramTemplateInfo.jdField_a_of_type_JavaLangString;
-    this.c = paramTemplateInfo.c;
-    c();
-    if (this.jdField_a_of_type_AndroidWidgetImageView == paramImageView) {
+    this.q = paramTemplateInfo.b;
+    this.r = paramTemplateInfo.d;
+    this.s = paramTemplateInfo.c;
+    d();
+    if (this.p == paramImageView) {
       return;
     }
     paramImageView.setBackgroundResource(R.drawable.h);
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.p;
     if (localImageView != null) {
       localImageView.setBackgroundDrawable(null);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.p = paramImageView;
     a(paramTemplateInfo);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("phiz.wrappacket.wrap");
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Long + 1000L > l) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str = this.jdField_b_of_type_AndroidWidgetEditText.getText().toString();
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getMapPacketExtra();
-    localMap.put("type", String.valueOf(1));
-    localMap.put("wishing", this.jdField_a_of_type_JavaLangString);
-    localMap.put("feedsid", String.valueOf(this.jdField_b_of_type_Int));
-    localMap.put("bus_type", "2");
-    localMap.put("total_num", localObject);
-    localMap.put("total_amount", QwUtils.a(str));
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    ((StringBuilder)localObject).append("");
-    localMap.put("channel", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.c);
-    ((StringBuilder)localObject).append("");
-    localMap.put("skin_id", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplSendHbLogic.a(localMap);
-    ReportUtils.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "redpack.paybtn.click", null, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateBundleInfo.panel_name);
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetButton == null) {
+    this.f.addHbUploadData("phiz.wrappacket.wrap");
+    long l1 = System.currentTimeMillis();
+    if (this.n + 1000L > l1) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str = this.jdField_b_of_type_AndroidWidgetEditText.getText().toString();
+    this.n = l1;
+    Object localObject = this.c.getText().toString();
+    String str = this.d.getText().toString();
+    Map localMap = this.f.getMapPacketExtra();
+    localMap.put("type", String.valueOf(1));
+    localMap.put("wishing", this.r);
+    localMap.put("feedsid", String.valueOf(this.q));
+    localMap.put("bus_type", "2");
+    localMap.put("total_num", localObject);
+    localMap.put("total_amount", QwUtils.b(str));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.i);
+    ((StringBuilder)localObject).append("");
+    localMap.put("channel", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.s);
+    ((StringBuilder)localObject).append("");
+    localMap.put("skin_id", ((StringBuilder)localObject).toString());
+    this.h.a(localMap);
+    ReportUtils.a(this.g, "redpack.paybtn.click", null, this.l.panel_name);
+  }
+  
+  public void d()
+  {
+    if (this.b == null) {
+      return;
+    }
+    Object localObject = this.c.getText().toString();
+    String str = this.d.getText().toString();
     int i;
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)) && (this.jdField_b_of_type_Int != -1)) {
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)) && (this.q != -1)) {
       i = 0;
     } else {
       i = 1;
@@ -364,8 +356,8 @@ public class EmojiFragment
     if (i != 0)
     {
       QLog.i("EmojiFragment", 2, "info is not complete...");
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(R.string.I));
+      this.b.setEnabled(false);
+      this.b.setText(getString(R.string.I));
       return;
     }
     if ((QwUtils.a((String)localObject) > 0.0F) && (QwUtils.a(str) > 0.0F))
@@ -374,55 +366,55 @@ public class EmojiFragment
       ((StringBuffer)localObject).append(getString(R.string.I));
       ((StringBuffer)localObject).append(str);
       ((StringBuffer)localObject).append("元");
-      this.jdField_a_of_type_AndroidWidgetButton.setText(((StringBuffer)localObject).toString());
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.b.setText(((StringBuffer)localObject).toString());
+      this.b.setEnabled(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(getString(R.string.I));
+    this.b.setEnabled(false);
+    this.b.setText(getString(R.string.I));
   }
   
-  public void d()
+  public void e()
   {
-    EmojiRedpacketUserGuideDialog localEmojiRedpacketUserGuideDialog = this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiRedpacketUserGuideDialog;
+    EmojiRedpacketUserGuideDialog localEmojiRedpacketUserGuideDialog = this.u;
     if (localEmojiRedpacketUserGuideDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiRedpacketUserGuideDialog = new EmojiRedpacketUserGuideDialog(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity);
+      this.u = new EmojiRedpacketUserGuideDialog(this.f);
     } else if (localEmojiRedpacketUserGuideDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiRedpacketUserGuideDialog.dismiss();
+      this.u.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiRedpacketUserGuideDialog.show();
+    this.u.show();
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == R.id.u)
+    if (i == R.id.z)
     {
-      b();
+      c();
       return;
     }
-    if (i == R.id.aB) {
-      d();
+    if (i == R.id.aJ) {
+      e();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getWindow().setSoftInputMode(32);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(R.layout.h, null);
-    a(this.jdField_a_of_type_AndroidViewView, getArguments());
-    return this.jdField_a_of_type_AndroidViewView;
+    this.f.getWindow().setSoftInputMode(32);
+    this.a = paramLayoutInflater.inflate(R.layout.h, null);
+    a(this.a, getArguments());
+    return this.a;
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray = this.y;
     if (localSparseArray != null) {
       localSparseArray.clear();
     }
-    localSparseArray = this.jdField_b_of_type_AndroidUtilSparseArray;
+    localSparseArray = this.z;
     if (localSparseArray != null) {
       localSparseArray.clear();
     }
@@ -440,15 +432,15 @@ public class EmojiFragment
     if (paramBoolean)
     {
       QLog.i("EmojiFragment", 2, "phiz redpacket enter...");
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("phiz.wrappacket.show");
+      if (this.f != null) {
+        this.f.addHbUploadData("phiz.wrappacket.show");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.EmojiFragment
  * JD-Core Version:    0.7.0.1
  */

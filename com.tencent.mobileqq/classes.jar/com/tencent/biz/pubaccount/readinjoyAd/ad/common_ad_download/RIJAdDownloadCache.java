@@ -27,22 +27,15 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/RIJAdDownloadCache;", "", "()V", "downloadCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "reportPercent_1", "Ljava/util/concurrent/CopyOnWriteArraySet;", "reportPercent_10", "reportPercent_25", "reportPercent_50", "reportPercent_75", "reportPercent_90", "viewCache", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "addDownloadCache", "", "data", "addReportCache", "packageName", "percent", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/DownloadPercent;", "addViewCache", "view", "getDownloadCache", "hasReportCache", "", "onDestroy", "removeReportCache", "removeViewCache", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJAdDownloadCache
 {
-  public static final RIJAdDownloadCache a;
-  private static final ConcurrentHashMap<String, ADVideoAppDownloadData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static final CopyOnWriteArraySet<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  private static final ConcurrentHashMap<Integer, WeakReference<RIJDownloadView>> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static final CopyOnWriteArraySet<String> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  private static final CopyOnWriteArraySet<String> c = new CopyOnWriteArraySet();
+  public static final RIJAdDownloadCache a = new RIJAdDownloadCache();
+  private static final ConcurrentHashMap<String, ADVideoAppDownloadData> b = new ConcurrentHashMap();
+  private static final ConcurrentHashMap<Integer, WeakReference<RIJDownloadView>> c = new ConcurrentHashMap();
   private static final CopyOnWriteArraySet<String> d = new CopyOnWriteArraySet();
   private static final CopyOnWriteArraySet<String> e = new CopyOnWriteArraySet();
   private static final CopyOnWriteArraySet<String> f = new CopyOnWriteArraySet();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadRIJAdDownloadCache = new RIJAdDownloadCache();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  private static final CopyOnWriteArraySet<String> g = new CopyOnWriteArraySet();
+  private static final CopyOnWriteArraySet<String> h = new CopyOnWriteArraySet();
+  private static final CopyOnWriteArraySet<String> i = new CopyOnWriteArraySet();
   
   @Nullable
   public final ADVideoAppDownloadData a(@Nullable String paramString)
@@ -50,12 +43,12 @@ public final class RIJAdDownloadCache
     if (TextUtils.isEmpty((CharSequence)paramString)) {
       return null;
     }
-    return (ADVideoAppDownloadData)((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).get(paramString);
+    return (ADVideoAppDownloadData)((Map)b).get(paramString);
   }
   
   public final void a()
   {
-    Iterator localIterator = ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+    Iterator localIterator = ((Map)b).entrySet().iterator();
     Object localObject1;
     while (localIterator.hasNext())
     {
@@ -69,8 +62,8 @@ public final class RIJAdDownloadCache
         }
       }
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    localIterator = ((Map)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+    b.clear();
+    localIterator = ((Map)c).entrySet().iterator();
     while (localIterator.hasNext())
     {
       localObject1 = (WeakReference)((Map.Entry)localIterator.next()).getValue();
@@ -89,7 +82,7 @@ public final class RIJAdDownloadCache
   public final void a(@Nullable RIJDownloadView paramRIJDownloadView)
   {
     if (paramRIJDownloadView != null) {
-      paramRIJDownloadView = (WeakReference)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramRIJDownloadView.hashCode()), new WeakReference(paramRIJDownloadView));
+      paramRIJDownloadView = (WeakReference)c.put(Integer.valueOf(paramRIJDownloadView.hashCode()), new WeakReference(paramRIJDownloadView));
     }
   }
   
@@ -97,26 +90,10 @@ public final class RIJAdDownloadCache
   {
     if (paramADVideoAppDownloadData != null)
     {
-      Map localMap = (Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      Map localMap = (Map)b;
       String str = paramADVideoAppDownloadData.d;
       Intrinsics.checkExpressionValueIsNotNull(str, "data.mPackageName");
       localMap.put(str, paramADVideoAppDownloadData);
-    }
-  }
-  
-  public final void a(@Nullable String paramString)
-  {
-    if (paramString != null)
-    {
-      if (TextUtils.isEmpty((CharSequence)paramString)) {
-        return;
-      }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
-      jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
-      c.remove(paramString);
-      d.remove(paramString);
-      e.remove(paramString);
-      f.remove(paramString);
     }
   }
   
@@ -128,64 +105,80 @@ public final class RIJAdDownloadCache
       if (TextUtils.isEmpty((CharSequence)paramString)) {
         return;
       }
-      switch (RIJAdDownloadCache.WhenMappings.a[paramDownloadPercent.ordinal()])
+      switch (RIJAdDownloadCache.WhenMappings.$EnumSwitchMapping$0[paramDownloadPercent.ordinal()])
       {
       default: 
         return;
       case 6: 
-        f.add(paramString);
+        i.add(paramString);
         return;
       case 5: 
-        e.add(paramString);
+        h.add(paramString);
         return;
       case 4: 
-        d.add(paramString);
+        g.add(paramString);
         return;
       case 3: 
-        c.add(paramString);
+        f.add(paramString);
         return;
       case 2: 
-        jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+        e.add(paramString);
         return;
       }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      d.add(paramString);
     }
-  }
-  
-  public final boolean a(@Nullable String paramString, @NotNull DownloadPercent paramDownloadPercent)
-  {
-    Intrinsics.checkParameterIsNotNull(paramDownloadPercent, "percent");
-    if (TextUtils.isEmpty((CharSequence)paramString)) {
-      return false;
-    }
-    switch (RIJAdDownloadCache.WhenMappings.b[paramDownloadPercent.ordinal()])
-    {
-    default: 
-      throw new NoWhenBranchMatchedException();
-    case 6: 
-      return f.contains(paramString);
-    case 5: 
-      return e.contains(paramString);
-    case 4: 
-      return d.contains(paramString);
-    case 3: 
-      return c.contains(paramString);
-    case 2: 
-      return jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
-    }
-    return jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
   }
   
   public final void b(@Nullable RIJDownloadView paramRIJDownloadView)
   {
     if (paramRIJDownloadView != null) {
-      paramRIJDownloadView = (WeakReference)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramRIJDownloadView.hashCode()));
+      paramRIJDownloadView = (WeakReference)c.remove(Integer.valueOf(paramRIJDownloadView.hashCode()));
     }
+  }
+  
+  public final void b(@Nullable String paramString)
+  {
+    if (paramString != null)
+    {
+      if (TextUtils.isEmpty((CharSequence)paramString)) {
+        return;
+      }
+      d.remove(paramString);
+      e.remove(paramString);
+      f.remove(paramString);
+      g.remove(paramString);
+      h.remove(paramString);
+      i.remove(paramString);
+    }
+  }
+  
+  public final boolean b(@Nullable String paramString, @NotNull DownloadPercent paramDownloadPercent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramDownloadPercent, "percent");
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return false;
+    }
+    switch (RIJAdDownloadCache.WhenMappings.$EnumSwitchMapping$1[paramDownloadPercent.ordinal()])
+    {
+    default: 
+      throw new NoWhenBranchMatchedException();
+    case 6: 
+      return i.contains(paramString);
+    case 5: 
+      return h.contains(paramString);
+    case 4: 
+      return g.contains(paramString);
+    case 3: 
+      return f.contains(paramString);
+    case 2: 
+      return e.contains(paramString);
+    }
+    return d.contains(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.RIJAdDownloadCache
  * JD-Core Version:    0.7.0.1
  */

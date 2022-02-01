@@ -23,7 +23,7 @@ final class VideoMsgTools$7
     paramBundle = paramBundle.getParcelableArrayList("result_set");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("selectMemberToStartGAudioChat onReceiveResult, bVideo[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], resultCode[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], chooserList[");
@@ -41,7 +41,7 @@ final class VideoMsgTools$7
     } else {
       i = 0;
     }
-    QAVGroupConfig.Report.a(i, this.jdField_a_of_type_Boolean);
+    QAVGroupConfig.Report.a(i, this.a);
     if (paramBundle == null) {
       return;
     }

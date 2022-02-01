@@ -21,10 +21,10 @@ class ApolloPanel$FrameCallback$1
       while (localIterator.hasNext())
       {
         ApolloViewBinder localApolloViewBinder = (ApolloViewBinder)localIterator.next();
-        if ((localApolloViewBinder != null) && ((localApolloViewBinder.d == 9) || (localApolloViewBinder.d == 8)) && (localApolloViewBinder.a() != null))
+        if ((localApolloViewBinder != null) && ((localApolloViewBinder.n == 9) || (localApolloViewBinder.n == 8)) && (localApolloViewBinder.k() != null))
         {
           QLog.d("[cmshow]ApolloPanel", 1, "ApolloPanel handleCMSPlayerGetFrame notifyDataSetChanged");
-          localApolloViewBinder.a().notifyDataSetChanged();
+          localApolloViewBinder.k().notifyDataSetChanged();
         }
       }
     }
@@ -32,7 +32,7 @@ class ApolloPanel$FrameCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.FrameCallback.1
  * JD-Core Version:    0.7.0.1
  */

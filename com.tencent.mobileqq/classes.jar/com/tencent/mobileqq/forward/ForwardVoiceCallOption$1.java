@@ -10,21 +10,21 @@ class ForwardVoiceCallOption$1
   
   public void a()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.a.s.setResult(-1);
+    this.a.s.finish();
   }
   
   public void b() {}
   
   public void c()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.a.s.setResult(-1);
+    this.a.s.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardVoiceCallOption.1
  * JD-Core Version:    0.7.0.1
  */

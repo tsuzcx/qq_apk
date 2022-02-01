@@ -40,7 +40,7 @@ public final class RIJProteusDtImpl
   {
     VideoReport.setElementId(paramView, paramString);
     if (paramMap != null) {
-      VideoReport.setElementParams(paramView, new RIJDtParamBuilder().a(paramMap).a());
+      VideoReport.setElementParams(paramView, new RIJDtParamBuilder().a(paramMap).c());
     }
     if (QLog.isColorLevel())
     {
@@ -55,7 +55,7 @@ public final class RIJProteusDtImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.dt.RIJProteusDtImpl
  * JD-Core Version:    0.7.0.1
  */

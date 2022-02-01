@@ -14,12 +14,12 @@ import mqq.app.MobileQQ;
 
 public class GMemoryMonitor
 {
-  ComponentCallbacks jdField_a_of_type_AndroidContentComponentCallbacks;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  VideoAppInterface a;
+  ComponentCallbacks b;
   
   public GMemoryMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
   }
   
   public void a()
@@ -27,10 +27,10 @@ public class GMemoryMonitor
     if (Build.VERSION.SDK_INT >= 14) {
       try
       {
-        if (this.jdField_a_of_type_AndroidContentComponentCallbacks != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
-          this.jdField_a_of_type_AndroidContentComponentCallbacks = null;
+          this.a.getApplication().unregisterComponentCallbacks(this.b);
+          this.b = null;
           return;
         }
       }
@@ -63,15 +63,15 @@ public class GMemoryMonitor
       StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "av_qua_low_memory", true, 0L, 0L, (HashMap)localObject1, "", true);
       localObject1 = Build.MODEL;
       Object localObject2 = String.valueOf(Build.VERSION.SDK_INT);
-      String str1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      String str1 = this.a.getCurrentAccountUin();
       StringBuilder localStringBuilder1 = new StringBuilder();
-      Object localObject3 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+      Object localObject3 = this.a.b().k();
       if (localObject3 != null)
       {
-        String str2 = ((SessionInfo)localObject3).c;
-        localObject3 = ((SessionInfo)localObject3).b;
+        String str2 = ((SessionInfo)localObject3).s;
+        localObject3 = ((SessionInfo)localObject3).f;
         Object localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(str2));
+        ((StringBuilder)localObject4).append(this.a.b().p(str2));
         ((StringBuilder)localObject4).append("");
         localObject4 = ((StringBuilder)localObject4).toString();
         if (QLog.isColorLevel())
@@ -121,10 +121,10 @@ public class GMemoryMonitor
     if (Build.VERSION.SDK_INT >= 14) {
       try
       {
-        if (this.jdField_a_of_type_AndroidContentComponentCallbacks == null)
+        if (this.b == null)
         {
-          this.jdField_a_of_type_AndroidContentComponentCallbacks = new GMemoryMonitor.1(this);
-          BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
+          this.b = new GMemoryMonitor.1(this);
+          BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.b);
           return;
         }
       }

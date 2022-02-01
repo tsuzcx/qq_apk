@@ -46,12 +46,12 @@ import tencent.im.c2s.imax.IMaxService.ReqBody;
 public class ImaxAdPresenter
   implements Handler.Callback
 {
-  private static final ImaxAdPresenter jdField_a_of_type_ComTencentMobileqqImaxadImaxAdPresenter = new ImaxAdPresenter();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private static final ImaxAdPresenter a = new ImaxAdPresenter();
+  private Handler b = new Handler(ThreadManager.getSubThreadLooper(), this);
   
   public static ImaxAdPresenter a()
   {
-    return jdField_a_of_type_ComTencentMobileqqImaxadImaxAdPresenter;
+    return a;
   }
   
   /* Error */
@@ -60,10 +60,10 @@ public class ImaxAdPresenter
     // Byte code:
     //   0: aload_2
     //   1: astore 7
-    //   3: ldc 37
+    //   3: ldc 38
     //   5: astore 8
     //   7: aload_2
-    //   8: invokestatic 43	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   11: ifeq +4 -> 15
     //   14: return
     //   15: aload 7
@@ -74,101 +74,101 @@ public class ImaxAdPresenter
     //   23: aload 7
     //   25: astore_2
     //   26: aload 7
-    //   28: ldc 45
-    //   30: invokevirtual 50	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   28: ldc 46
+    //   30: invokevirtual 51	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   33: ifeq +13 -> 46
     //   36: aload 7
-    //   38: ldc 45
-    //   40: ldc 52
-    //   42: invokevirtual 56	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   38: ldc 46
+    //   40: ldc 53
+    //   42: invokevirtual 57	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   45: astore_2
     //   46: aload_2
     //   47: astore 7
     //   49: aload_2
-    //   50: ldc 58
-    //   52: invokevirtual 50	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   50: ldc 59
+    //   52: invokevirtual 51	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   55: ifeq +40 -> 95
-    //   58: invokestatic 63	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()Ljava/lang/String;
+    //   58: invokestatic 64	com/tencent/mobileqq/utils/DeviceInfoUtil:b	()Ljava/lang/String;
     //   61: astore 7
     //   63: aload 7
-    //   65: invokestatic 43	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   65: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   68: ifne +13 -> 81
     //   71: aload 7
-    //   73: invokestatic 69	com/tencent/open/base/MD5Utils:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   73: invokestatic 70	com/tencent/open/base/MD5Utils:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
     //   76: astore 7
     //   78: goto +7 -> 85
-    //   81: ldc 71
+    //   81: ldc 72
     //   83: astore 7
     //   85: aload_2
-    //   86: ldc 58
+    //   86: ldc 59
     //   88: aload 7
-    //   90: invokevirtual 56	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   90: invokevirtual 57	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   93: astore 7
     //   95: aload 7
     //   97: astore_2
     //   98: aload 7
-    //   100: ldc 73
-    //   102: invokevirtual 50	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   100: ldc 74
+    //   102: invokevirtual 51	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   105: ifeq +16 -> 121
     //   108: aload 7
-    //   110: ldc 73
-    //   112: ldc 75
-    //   114: invokestatic 69	com/tencent/open/base/MD5Utils:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   117: invokevirtual 56	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   110: ldc 74
+    //   112: ldc 76
+    //   114: invokestatic 70	com/tencent/open/base/MD5Utils:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   117: invokevirtual 57	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   120: astore_2
-    //   121: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   121: invokestatic 82	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   124: ifeq +56 -> 180
-    //   127: new 83	java/lang/StringBuilder
+    //   127: new 84	java/lang/StringBuilder
     //   130: dup
-    //   131: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   131: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   134: astore 7
     //   136: aload 7
-    //   138: ldc 86
-    //   140: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc 87
+    //   140: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: pop
     //   144: aload 7
     //   146: iload_1
-    //   147: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   150: pop
     //   151: aload 7
-    //   153: ldc 95
-    //   155: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: ldc 96
+    //   155: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: pop
     //   159: aload 7
     //   161: aload_2
-    //   162: invokevirtual 98	java/lang/String:toString	()Ljava/lang/String;
-    //   165: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 99	java/lang/String:toString	()Ljava/lang/String;
+    //   165: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: pop
-    //   169: ldc 100
+    //   169: ldc 101
     //   171: iconst_2
     //   172: aload 7
-    //   174: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   174: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   180: iconst_m1
     //   181: istore_3
-    //   182: new 107	java/net/URL
+    //   182: new 108	java/net/URL
     //   185: dup
     //   186: aload_2
-    //   187: invokespecial 110	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   190: invokevirtual 114	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   193: checkcast 116	java/net/HttpURLConnection
+    //   187: invokespecial 111	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   190: invokevirtual 115	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   193: checkcast 117	java/net/HttpURLConnection
     //   196: astore 7
     //   198: aload 7
-    //   200: ldc 118
-    //   202: invokevirtual 121	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   200: ldc 119
+    //   202: invokevirtual 122	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   205: aload 7
     //   207: sipush 30000
-    //   210: invokevirtual 125	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   210: invokevirtual 126	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   213: aload 7
     //   215: sipush 30000
-    //   218: invokevirtual 128	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   218: invokevirtual 129	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   221: aload 7
     //   223: iconst_0
-    //   224: invokevirtual 132	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   224: invokevirtual 133	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   227: aload 7
-    //   229: invokevirtual 135	java/net/HttpURLConnection:connect	()V
+    //   229: invokevirtual 136	java/net/HttpURLConnection:connect	()V
     //   232: aload 7
-    //   234: invokevirtual 139	java/net/HttpURLConnection:getResponseCode	()I
+    //   234: invokevirtual 140	java/net/HttpURLConnection:getResponseCode	()I
     //   237: istore 4
     //   239: iload 4
     //   241: sipush 200
@@ -182,71 +182,71 @@ public class ImaxAdPresenter
     //   257: istore_3
     //   258: iconst_0
     //   259: istore 5
-    //   261: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   261: invokestatic 82	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   264: istore 6
     //   266: iload 6
     //   268: ifeq +66 -> 334
-    //   271: new 83	java/lang/StringBuilder
+    //   271: new 84	java/lang/StringBuilder
     //   274: dup
-    //   275: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   275: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   278: astore 7
     //   280: aload 7
-    //   282: ldc 141
-    //   284: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: ldc 142
+    //   284: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: pop
     //   288: aload 7
     //   290: iload_3
-    //   291: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   291: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   294: pop
     //   295: aload 7
-    //   297: ldc 143
-    //   299: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: ldc 144
+    //   299: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   302: pop
     //   303: aload 7
     //   305: iload 5
-    //   307: invokevirtual 146	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   307: invokevirtual 147	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   310: pop
-    //   311: ldc 100
+    //   311: ldc 101
     //   313: iconst_1
     //   314: aload 7
-    //   316: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   319: invokestatic 149	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   316: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   319: invokestatic 150	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   322: goto +12 -> 334
     //   325: astore 7
-    //   327: ldc 71
+    //   327: ldc 72
     //   329: astore 8
     //   331: goto +255 -> 586
-    //   334: new 151	java/util/HashMap
+    //   334: new 152	java/util/HashMap
     //   337: dup
-    //   338: invokespecial 152	java/util/HashMap:<init>	()V
+    //   338: invokespecial 153	java/util/HashMap:<init>	()V
     //   341: astore 7
-    //   343: new 83	java/lang/StringBuilder
+    //   343: new 84	java/lang/StringBuilder
     //   346: dup
-    //   347: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   347: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   350: astore 9
     //   352: aload 9
     //   354: iload_3
-    //   355: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   355: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   358: pop
     //   359: aload 9
-    //   361: ldc 71
-    //   363: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: ldc 72
+    //   363: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   366: pop
     //   367: aload 7
-    //   369: ldc 154
+    //   369: ldc 155
     //   371: aload 9
-    //   373: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   373: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   376: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   379: pop
     //   380: aload 7
-    //   382: ldc 160
-    //   384: ldc 71
-    //   386: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   382: ldc 161
+    //   384: ldc 72
+    //   386: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   389: pop
     //   390: aload 7
-    //   392: ldc 162
+    //   392: ldc 163
     //   394: aload_2
-    //   395: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   395: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   398: pop
     //   399: iload_1
     //   400: iconst_1
@@ -254,10 +254,10 @@ public class ImaxAdPresenter
     //   404: aload 8
     //   406: astore_2
     //   407: goto +6 -> 413
-    //   410: ldc 164
+    //   410: ldc 165
     //   412: astore_2
-    //   413: invokestatic 170	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   416: invokestatic 176	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   413: invokestatic 171	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   416: invokestatic 177	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   419: astore 8
     //   421: goto +138 -> 559
     //   424: astore 7
@@ -265,7 +265,7 @@ public class ImaxAdPresenter
     //   429: astore 7
     //   431: goto +20 -> 451
     //   434: astore 7
-    //   436: ldc 71
+    //   436: ldc 72
     //   438: astore 8
     //   440: iconst_0
     //   441: istore 5
@@ -274,56 +274,56 @@ public class ImaxAdPresenter
     //   448: iconst_0
     //   449: istore 5
     //   451: aload 7
-    //   453: invokevirtual 177	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   453: invokevirtual 178	java/lang/Throwable:toString	()Ljava/lang/String;
     //   456: astore 8
-    //   458: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   458: invokestatic 82	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   461: ifeq +11 -> 472
-    //   464: ldc 100
+    //   464: ldc 101
     //   466: iconst_2
     //   467: aload 8
-    //   469: invokestatic 180	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   472: new 151	java/util/HashMap
+    //   469: invokestatic 181	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   472: new 152	java/util/HashMap
     //   475: dup
-    //   476: invokespecial 152	java/util/HashMap:<init>	()V
+    //   476: invokespecial 153	java/util/HashMap:<init>	()V
     //   479: astore 7
-    //   481: new 83	java/lang/StringBuilder
+    //   481: new 84	java/lang/StringBuilder
     //   484: dup
-    //   485: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   485: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   488: astore 9
     //   490: aload 9
     //   492: iload_3
-    //   493: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   493: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   496: pop
     //   497: aload 9
-    //   499: ldc 71
-    //   501: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: ldc 72
+    //   501: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   504: pop
     //   505: aload 7
-    //   507: ldc 154
+    //   507: ldc 155
     //   509: aload 9
-    //   511: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   514: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   511: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   514: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   517: pop
     //   518: aload 7
-    //   520: ldc 160
+    //   520: ldc 161
     //   522: aload 8
-    //   524: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   524: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   527: pop
     //   528: aload 7
-    //   530: ldc 162
+    //   530: ldc 163
     //   532: aload_2
-    //   533: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   533: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   536: pop
     //   537: iload_1
     //   538: iconst_1
     //   539: if_icmpne +9 -> 548
-    //   542: ldc 37
+    //   542: ldc 38
     //   544: astore_2
     //   545: goto +6 -> 551
-    //   548: ldc 164
+    //   548: ldc 165
     //   550: astore_2
-    //   551: invokestatic 170	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   554: invokestatic 176	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   551: invokestatic 171	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   554: invokestatic 177	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   557: astore 8
     //   559: aload 8
     //   561: aconst_null
@@ -332,64 +332,64 @@ public class ImaxAdPresenter
     //   565: lconst_0
     //   566: lconst_0
     //   567: aload 7
-    //   569: ldc 71
-    //   571: invokevirtual 184	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   569: ldc 72
+    //   571: invokevirtual 185	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   574: return
     //   575: astore 7
     //   577: goto +9 -> 586
     //   580: astore 7
-    //   582: ldc 71
+    //   582: ldc 72
     //   584: astore 8
-    //   586: new 151	java/util/HashMap
+    //   586: new 152	java/util/HashMap
     //   589: dup
-    //   590: invokespecial 152	java/util/HashMap:<init>	()V
+    //   590: invokespecial 153	java/util/HashMap:<init>	()V
     //   593: astore 9
-    //   595: new 83	java/lang/StringBuilder
+    //   595: new 84	java/lang/StringBuilder
     //   598: dup
-    //   599: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   599: invokespecial 85	java/lang/StringBuilder:<init>	()V
     //   602: astore 10
     //   604: aload 10
     //   606: iload_3
-    //   607: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   607: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   610: pop
     //   611: aload 10
-    //   613: ldc 71
-    //   615: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   613: ldc 72
+    //   615: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   618: pop
     //   619: aload 9
-    //   621: ldc 154
+    //   621: ldc 155
     //   623: aload 10
-    //   625: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   628: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   625: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   628: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   631: pop
     //   632: aload 9
-    //   634: ldc 160
+    //   634: ldc 161
     //   636: aload 8
-    //   638: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   638: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   641: pop
     //   642: aload 9
-    //   644: ldc 162
+    //   644: ldc 163
     //   646: aload_2
-    //   647: invokevirtual 158	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   647: invokevirtual 159	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   650: pop
     //   651: iload_1
     //   652: iconst_1
     //   653: if_icmpne +9 -> 662
-    //   656: ldc 37
+    //   656: ldc 38
     //   658: astore_2
     //   659: goto +6 -> 665
-    //   662: ldc 164
+    //   662: ldc 165
     //   664: astore_2
-    //   665: invokestatic 170	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   668: invokestatic 176	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   665: invokestatic 171	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   668: invokestatic 177	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   671: aconst_null
     //   672: aload_2
     //   673: iload 5
     //   675: lconst_0
     //   676: lconst_0
     //   677: aload 9
-    //   679: ldc 71
-    //   681: invokevirtual 184	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   679: ldc 72
+    //   681: invokevirtual 185	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   684: aload 7
     //   686: athrow
     // Local variable table:
@@ -428,21 +428,21 @@ public class ImaxAdPresenter
   
   public void a(Message paramMessage)
   {
-    paramMessage.setTarget(this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 1000L);
+    paramMessage.setTarget(this.b);
+    this.b.sendMessageDelayed(paramMessage, 1000L);
   }
   
   public void a(AdvertisementItem paramAdvertisementItem)
   {
     if (paramAdvertisementItem != null)
     {
-      if (paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem == null) {
+      if (paramAdvertisementItem.g == null) {
         return;
       }
       Message localMessage = Message.obtain();
       localMessage.what = 3;
-      localMessage.obj = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.e;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      localMessage.obj = paramAdvertisementItem.g.e;
+      this.b.sendMessage(localMessage);
     }
   }
   
@@ -453,7 +453,7 @@ public class ImaxAdPresenter
     int i = 1;
     if ((paramActivity != null) && (paramAdvertisementItem != null))
     {
-      int j = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.d;
+      int j = paramAdvertisementItem.g.n;
       if (j != 3) {
         if (j != 4) {
           if (j == 5) {
@@ -464,9 +464,9 @@ public class ImaxAdPresenter
       for (;;)
       {
         break;
-        ReportController.b(null, "dc00898", "", paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8009101", "0X8009101", 0, 0, paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+        ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X8009101", "0X8009101", 0, 0, paramAdvertisementItem.g.c, "", PublicAccountAdUtil.c(), paramAdvertisementItem.g.b);
         label90:
-        ReportController.b(null, "dc00898", "", paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8009100", "0X8009100", 0, 0, paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+        ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X8009100", "0X8009100", 0, 0, paramAdvertisementItem.g.c, "", PublicAccountAdUtil.c(), paramAdvertisementItem.g.b);
         if (paramAppInterface == null)
         {
           if (QLog.isColorLevel())
@@ -482,18 +482,18 @@ public class ImaxAdPresenter
           return;
         }
         b(paramAdvertisementItem, paramActivity, paramAppInterface);
-        break label253;
+        break label254;
         if ((paramActivity instanceof BaseActivity))
         {
-          ReportController.b(null, "dc00898", "", paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X80090FE", "0X80090FE", 0, 0, paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+          ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X80090FE", "0X80090FE", 0, 0, paramAdvertisementItem.g.c, "", PublicAccountAdUtil.c(), paramAdvertisementItem.g.b);
           a((BaseActivity)paramActivity);
-          break label253;
+          break label254;
         }
       }
       i = 0;
-      label253:
+      label254:
       if ((i != 0) && ((paramActivity instanceof PublicAccountAdvertisementActivity))) {
-        ((PublicAccountAdvertisementActivity)paramActivity).c();
+        ((PublicAccountAdvertisementActivity)paramActivity).d();
       }
       return;
     }
@@ -519,14 +519,14 @@ public class ImaxAdPresenter
   
   public void a(AdvertisementItem paramAdvertisementItem, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    if ((paramAdvertisementItem != null) && (paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
+    if ((paramAdvertisementItem != null) && (paramAdvertisementItem.g != null))
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if (localAppRuntime == null) {
         return;
       }
       IMaxService.ReqBody localReqBody = new IMaxService.ReqBody();
-      Object localObject = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c;
+      Object localObject = paramAdvertisementItem.g.c;
       long l = Long.parseLong(localAppRuntime.getAccount());
       if (paramInt2 == 2)
       {
@@ -579,7 +579,7 @@ public class ImaxAdPresenter
   {
     if (paramAdvertisementItem != null)
     {
-      ReportController.a(paramQQAppInterface, "dc00898", "", paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8009102", "0X8009102", 0, 0, paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+      ReportController.a(paramQQAppInterface, "dc00898", "", paramAdvertisementItem.g.a, "0X8009102", "0X8009102", 0, 0, paramAdvertisementItem.g.c, "", PublicAccountAdUtil.c(), paramAdvertisementItem.g.b);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -616,13 +616,13 @@ public class ImaxAdPresenter
   void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, View paramView, String paramString2)
   {
     AdvertisementRecentUserManager localAdvertisementRecentUserManager = AdvertisementRecentUserManager.a();
-    AdvertisementItem localAdvertisementItem = localAdvertisementRecentUserManager.a(paramString1);
-    if ((localAdvertisementItem != null) && (ImaxAdUtil.a(paramView)) && (paramString2.equals(localAdvertisementItem.c)))
+    AdvertisementItem localAdvertisementItem = localAdvertisementRecentUserManager.b(paramString1);
+    if ((localAdvertisementItem != null) && (ImaxAdUtil.a(paramView)) && (paramString2.equals(localAdvertisementItem.d)))
     {
       paramString2 = paramQQAppInterface.getMessageFacade();
       if (paramString2 != null)
       {
-        paramString1 = paramString2.a(paramString1, paramInt);
+        paramString1 = paramString2.h(paramString1, paramInt);
         if ((paramString1 != null) && (paramString1.size() > 0))
         {
           paramString1 = (MessageRecord)paramString1.get(paramString1.size() - 1);
@@ -630,24 +630,24 @@ public class ImaxAdPresenter
           {
             paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
             ThreadManager.post(new ImaxAdPresenter.1(this, paramQQAppInterface, paramString1), 5, null, false);
-            if ((localAdvertisementItem != null) && (localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
+            if ((localAdvertisementItem != null) && (localAdvertisementItem.g != null))
             {
-              ReportController.a(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
-              ReportController.a(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+              ReportController.a(paramQQAppInterface, "dc00898", "", localAdvertisementItem.g.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem.g.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.c(), localAdvertisementItem.g.b);
+              ReportController.a(paramQQAppInterface, "dc00898", "", localAdvertisementItem.g.a, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.g.c, "", PublicAccountAdUtil.c(), localAdvertisementItem.g.b);
             }
           }
         }
       }
-      if ((localAdvertisementItem != null) && (!localAdvertisementItem.jdField_a_of_type_Boolean))
+      if ((localAdvertisementItem != null) && (!localAdvertisementItem.f))
       {
-        localAdvertisementItem.jdField_a_of_type_Boolean = true;
+        localAdvertisementItem.f = true;
         if (QLog.isColorLevel()) {
           QLog.d("AdvertisementRecentUserManager", 2, "do exposure Report");
         }
         a(localAdvertisementItem);
         localAdvertisementRecentUserManager.a(paramQQAppInterface, 1, localAdvertisementItem);
-        if ((localAdvertisementItem != null) && (localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null)) {
-          ReportController.a(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5F", "0X8008F5F", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+        if ((localAdvertisementItem != null) && (localAdvertisementItem.g != null)) {
+          ReportController.a(paramQQAppInterface, "dc00898", "", localAdvertisementItem.g.a, "0X8008F5F", "0X8008F5F", 0, 0, localAdvertisementItem.g.c, "", "", localAdvertisementItem.g.b);
         }
       }
     }
@@ -657,24 +657,24 @@ public class ImaxAdPresenter
   {
     if (paramAdvertisementItem != null)
     {
-      if (paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem == null) {
+      if (paramAdvertisementItem.g == null) {
         return;
       }
       Message localMessage = Message.obtain();
       localMessage.what = 4;
-      localMessage.obj = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.r;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      localMessage.obj = paramAdvertisementItem.g.G;
+      this.b.sendMessage(localMessage);
     }
   }
   
   public void b(AdvertisementItem paramAdvertisementItem, Activity paramActivity, AppInterface paramAppInterface)
   {
-    if ((!TextUtils.isEmpty(paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.q)) && (paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.f != -1))
+    if ((!TextUtils.isEmpty(paramAdvertisementItem.g.z)) && (paramAdvertisementItem.g.y != -1))
     {
       paramAppInterface = (IShortVideoGuideUtil)QRoute.api(IShortVideoGuideUtil.class);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.f);
+      localStringBuilder.append(paramAdvertisementItem.g.y);
       paramAppInterface.startPTVActivity(paramActivity, "1", "1", "1", "1", "1", "1", localStringBuilder.toString(), "1", 108);
     }
   }
@@ -719,7 +719,7 @@ public class ImaxAdPresenter
         ((StringBuilder)localObject).append(paramString1);
         QLog.d("ImaxAdNetPresenter", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = AdvertisementItem.a(ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), paramString1));
+      localObject = AdvertisementItem.a(ImaxAdUtil.d(paramQQAppInterface.getCurrentUin(), paramString1));
       if (localObject == null)
       {
         if (QLog.isColorLevel())
@@ -733,12 +733,12 @@ public class ImaxAdPresenter
       }
       ImaxAdRecentUserManager.a().a((AdvertisementItem)localObject);
     }
-    if ((localObject != null) && (ImaxAdUtil.a(paramView)) && (paramString2.equals(((AdvertisementItem)localObject).c)))
+    if ((localObject != null) && (ImaxAdUtil.a(paramView)) && (paramString2.equals(((AdvertisementItem)localObject).d)))
     {
       paramString2 = paramQQAppInterface.getMessageFacade();
       if (paramString2 != null)
       {
-        paramString1 = paramString2.a(paramString1, paramInt);
+        paramString1 = paramString2.h(paramString1, paramInt);
         if ((paramString1 != null) && (paramString1.size() > 0))
         {
           paramString1 = (MessageRecord)paramString1.get(paramString1.size() - 1);
@@ -746,20 +746,20 @@ public class ImaxAdPresenter
           {
             paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
             ThreadManager.post(new ImaxAdPresenter.2(this, paramQQAppInterface, paramString1), 5, null, false);
-            if ((localObject != null) && (((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null)) {
-              ReportController.a(paramQQAppInterface, "dc00898", "", ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5D", "0X8008F5D", 0, 0, ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+            if ((localObject != null) && (((AdvertisementItem)localObject).g != null)) {
+              ReportController.a(paramQQAppInterface, "dc00898", "", ((AdvertisementItem)localObject).g.a, "0X8008F5D", "0X8008F5D", 0, 0, ((AdvertisementItem)localObject).g.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.c(), ((AdvertisementItem)localObject).g.b);
             }
           }
         }
       }
-      if ((localObject != null) && (!((AdvertisementItem)localObject).jdField_a_of_type_Boolean) && (((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
+      if ((localObject != null) && (!((AdvertisementItem)localObject).f) && (((AdvertisementItem)localObject).g != null))
       {
         if (((AdvertisementItem)localObject).a())
         {
           a((AdvertisementItem)localObject, paramQQAppInterface, -1, 1);
-          ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), ((AdvertisementItem)localObject).jdField_a_of_type_JavaLangString, ((AdvertisementItem)localObject).a());
+          ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), ((AdvertisementItem)localObject).a, ((AdvertisementItem)localObject).c());
         }
-        ReportController.a(paramQQAppInterface, "dc00898", "", ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5F", "0X8008F5F", 0, 0, ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", "", ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+        ReportController.a(paramQQAppInterface, "dc00898", "", ((AdvertisementItem)localObject).g.a, "0X8008F5F", "0X8008F5F", 0, 0, ((AdvertisementItem)localObject).g.c, "", "", ((AdvertisementItem)localObject).g.b);
       }
     }
   }
@@ -821,7 +821,7 @@ public class ImaxAdPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ class CommentPresenter$7
   
   public void onShow(DialogInterface paramDialogInterface)
   {
-    if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null) {
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(paramDialogInterface);
+    if (CommentPresenter.N(this.c) != null) {
+      CommentPresenter.N(this.c).a(paramDialogInterface);
     }
-    paramDialogInterface = SubscribeCommentHelper.a().a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(paramDialogInterface);
+    paramDialogInterface = SubscribeCommentHelper.a().a(CommentPresenter.k(this.c), this.a, this.b);
+    CommentPresenter.B(this.c).a(paramDialogInterface);
     SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(true));
   }
 }

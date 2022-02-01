@@ -16,7 +16,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QWalletPayProgressDialog
   extends ReportDialog
 {
-  private String mMessage = HardCodeUtil.a(2131706792);
+  private String mMessage = HardCodeUtil.a(2131904642);
   private TextView mTextView = null;
   
   public QWalletPayProgressDialog(Context paramContext)
@@ -33,14 +33,14 @@ public class QWalletPayProgressDialog
   {
     try
     {
-      super.setContentView(2131559366);
+      super.setContentView(2131625332);
       paramBundle = getWindow();
       paramBundle.setLayout(-1, -1);
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131370925));
+      this.mTextView = ((TextView)super.findViewById(2131438263));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);
@@ -83,7 +83,7 @@ public class QWalletPayProgressDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayProgressDialog
  * JD-Core Version:    0.7.0.1
  */

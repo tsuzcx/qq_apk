@@ -12,25 +12,25 @@ class UpdateManager$1
   {
     try
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      File localFile = new File(this.a);
       if (localFile.exists())
       {
         long l = localFile.length();
-        DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+        DownloadManager.b().a(this.b, l);
         return;
       }
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report file not exists");
+      LogUtility.c(UpdateManager.b, "patchNewApk report file not exists");
       return;
     }
     catch (Exception localException)
     {
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report>>>", localException);
+      LogUtility.c(UpdateManager.b, "patchNewApk report>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.UpdateManager.1
  * JD-Core Version:    0.7.0.1
  */

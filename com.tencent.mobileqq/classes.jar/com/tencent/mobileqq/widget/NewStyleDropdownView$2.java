@@ -12,12 +12,12 @@ class NewStyleDropdownView$2
     if (QLog.isColorLevel()) {
       QLog.d("NewStyleDropdownView", 2, "onDismiss arrow postDelayed 500 run and set isLastDropDown false");
     }
-    this.this$0.a = false;
+    this.this$0.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NewStyleDropdownView.2
  * JD-Core Version:    0.7.0.1
  */

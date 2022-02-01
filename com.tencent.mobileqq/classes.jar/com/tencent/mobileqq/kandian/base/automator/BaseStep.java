@@ -6,69 +6,52 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class BaseStep
 {
-  private long jdField_a_of_type_Long;
+  private long a;
+  @Nullable
+  private StepGroup b;
   @NotNull
-  private final Automator jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorAutomator;
+  private final Automator c;
+  private final boolean d;
   @Nullable
-  private StepGroup jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorStepGroup;
-  @Nullable
-  private String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
+  private String e;
   
   public BaseStep(@NotNull Automator paramAutomator, boolean paramBoolean, @Nullable String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorAutomator = paramAutomator;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    this.c = paramAutomator;
+    this.d = paramBoolean;
+    this.e = paramString;
+    if (this.e == null) {
+      this.e = getClass().getSimpleName();
     }
-  }
-  
-  @NotNull
-  public final Automator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorAutomator;
-  }
-  
-  @Nullable
-  public final StepGroup a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorStepGroup;
-  }
-  
-  public void a()
-  {
-    a("onStop");
   }
   
   public final void a(@Nullable StepGroup paramStepGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorStepGroup = paramStepGroup;
+    this.b = paramStepGroup;
   }
   
   protected final void a(@NotNull String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorAutomator.a();
+    Object localObject = this.c.a();
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Step(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.e);
       localStringBuilder.append(')');
       ((ILog)localObject).a(localStringBuilder.toString(), paramString);
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Step(");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.e);
     ((StringBuilder)localObject).append(')');
     Log.d(((StringBuilder)localObject).toString(), paramString);
   }
   
   public boolean a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = System.currentTimeMillis();
     a("onStart");
     return true;
   }
@@ -77,25 +60,42 @@ public abstract class BaseStep
   
   public void c()
   {
+    a("onStop");
+  }
+  
+  @Nullable
+  public final StepGroup e()
+  {
+    return this.b;
+  }
+  
+  public void f()
+  {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onEnd, time = ");
-    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    localStringBuilder.append(System.currentTimeMillis() - this.a);
     a(localStringBuilder.toString());
   }
   
-  public final boolean c()
+  public void g()
   {
-    return this.jdField_a_of_type_Boolean;
+    this.c.a(this);
   }
   
-  public void d()
+  @NotNull
+  public final Automator h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorAutomator.a(this);
+    return this.c;
+  }
+  
+  public final boolean i()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.BaseStep
  * JD-Core Version:    0.7.0.1
  */

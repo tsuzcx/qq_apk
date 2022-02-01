@@ -1,34 +1,29 @@
 package com.tencent.mobileqq.qqgamepub.api.impl;
 
+import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
 
 class QQGameHelperImpl$1$1
-  extends WebChromeClient
+  implements AsyncBack
 {
   QQGameHelperImpl$1$1(QQGameHelperImpl.1 param1) {}
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQGamePub_QQGameHelper", 2, paramConsoleMessage.message());
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("load 4235 html web resource finish code:");
+      paramString.append(paramInt);
+      QLog.d("QQGamePub_QQGameHelper", 2, paramString.toString());
     }
-    return true;
   }
   
-  @Override
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    super.onProgressChanged(paramWebView, paramInt);
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameHelperImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

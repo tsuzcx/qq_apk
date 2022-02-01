@@ -11,20 +11,20 @@ public abstract class AtlasModelRecommend$State
     this.a = paramList;
   }
   
-  public List<AtlasModelImageList> a()
-  {
-    return this.a;
-  }
-  
   public abstract boolean a();
   
   public abstract boolean b();
   
   public abstract boolean c();
+  
+  public List<AtlasModelImageList> d()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.atlas.AtlasModelRecommend.State
  * JD-Core Version:    0.7.0.1
  */

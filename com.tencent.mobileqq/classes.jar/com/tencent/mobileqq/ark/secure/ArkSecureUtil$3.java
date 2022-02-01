@@ -11,20 +11,20 @@ final class ArkSecureUtil$3
   
   public void run()
   {
-    ArkAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = this.jdField_a_of_type_ComTencentMobileqqArkSecureArkSecureUtil$GetAppPathTask.a();
+    ArkAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = this.a.a();
     if (localIGetAppPathByNameCallback != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getAppPathByNameTimeout timeout, app=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       QLog.i("ArkApp.ArkSecureUtil", 1, localStringBuilder.toString());
-      localIGetAppPathByNameCallback.onGetAppPathByName(-7, HardCodeUtil.a(2131693800), null);
+      localIGetAppPathByNameCallback.onGetAppPathByName(-7, HardCodeUtil.a(2131891375), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.secure.ArkSecureUtil.3
  * JD-Core Version:    0.7.0.1
  */

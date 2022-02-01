@@ -17,21 +17,21 @@ public final class PTSRIJAvatarView
   @NotNull
   public static final String TAG = "PTSRIJAvatarView";
   
-  public PTSRIJAvatarView(@NotNull Context paramContext)
+  public PTSRIJAvatarView(@Nullable Context paramContext)
   {
     super(paramContext);
   }
   
   public PTSRIJAvatarView(@NotNull PTSNodeRIJAvatar paramPTSNodeRIJAvatar)
   {
-    this(paramPTSNodeRIJAvatar);
+    this(paramPTSNodeRIJAvatar.getContext());
   }
   
   public void onBindNodeInfo(@Nullable PTSNodeInfo paramPTSNodeInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSRIJAvatarView
  * JD-Core Version:    0.7.0.1
  */

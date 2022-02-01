@@ -12,27 +12,27 @@ import com.tencent.mobileqq.data.ChatMessage;
 public abstract class ItemBuilderSupplier<T extends ChatItemBuilder>
 {
   protected Context a;
-  private T a;
-  protected SessionInfo a;
-  protected AIOAnimationConatiner a;
-  protected BaseChatPie a;
-  protected QQAppInterface a;
+  protected QQAppInterface b;
+  protected SessionInfo c;
+  protected BaseChatPie d;
+  protected AIOAnimationConatiner e;
+  private T f;
   
   protected T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder = b(paramChatMessage, paramBaseAdapter);
+    if (this.f == null) {
+      this.f = b(paramChatMessage, paramBaseAdapter);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder;
+    return this.f;
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
+    this.c = paramSessionInfo;
+    this.d = paramBaseChatPie;
+    this.e = paramAIOAnimationConatiner;
   }
   
   protected boolean a()
@@ -44,7 +44,7 @@ public abstract class ItemBuilderSupplier<T extends ChatItemBuilder>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.msglist.item.ItemBuilderSupplier
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.av.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.av.ui.effect.toolbar.BaseToolbar;
 import com.tencent.av.ui.guide.GuideHelper;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
@@ -13,13 +14,13 @@ class EffectSettingUi$3
   
   public void onClick(View paramView)
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
-    this.a.b(-1007L, true);
+    BaseToolbar.keepInToolbar(this.a.h, -1007L);
+    this.a.c(-1007L);
     AVEffectReport.b();
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (EffectSettingUi.b(this.a) != null)
     {
-      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
+      AVActivity localAVActivity = (AVActivity)EffectSettingUi.c(this.a).get();
+      localAVActivity.ab.a(-1007L, localAVActivity, 99, 0);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

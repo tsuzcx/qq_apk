@@ -12,14 +12,13 @@ import org.json.JSONObject;
 public class QFileDownloadConfigBean
   implements IQStorageSafable<String>
 {
-  public String a;
-  public HashMap<String, DownloadFileConfig> a;
+  public HashMap<String, DownloadFileConfig> a = new HashMap();
+  public String b;
   
   public QFileDownloadConfigBean()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("*", new DownloadFileConfig());
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a.put("*", new DownloadFileConfig());
+    this.b = "";
   }
   
   public void a(String paramString)
@@ -30,7 +29,7 @@ public class QFileDownloadConfigBean
       if (localJSONObject.length() == 0) {
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = paramString;
       paramString = localJSONObject.names();
       int i = 0;
       while (i < paramString.length())
@@ -45,7 +44,7 @@ public class QFileDownloadConfigBean
           localDownloadFileConfig.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
           if (!((String)localObject1).contains(","))
           {
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localDownloadFileConfig);
+            this.a.put(localObject1, localDownloadFileConfig);
           }
           else
           {
@@ -55,7 +54,7 @@ public class QFileDownloadConfigBean
             {
               localObject2 = localObject1[j].trim().toLowerCase();
               if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-                this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localDownloadFileConfig);
+                this.a.put(localObject2, localDownloadFileConfig);
               }
               j += 1;
             }
@@ -73,7 +72,7 @@ public class QFileDownloadConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileDownloadConfigBean
  * JD-Core Version:    0.7.0.1
  */

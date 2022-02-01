@@ -20,7 +20,7 @@ class C2CAppShortcutBarHelper$2
       QLog.d("C2CShortcutBarObserver", 2, "onRecieveNewC2CShortcutAppListPush");
     }
     if (paramBoolean) {
-      C2CAppShortcutBarHelper.a(this.a);
+      C2CAppShortcutBarHelper.d(this.a);
     }
   }
   
@@ -34,28 +34,28 @@ class C2CAppShortcutBarHelper$2
     }
     if (paramBoolean)
     {
-      paramList = C2CShortcutBarManager.a((QQAppInterface)C2CAppShortcutBarHelper.a(this.a)).a(Long.valueOf(paramLong));
-      C2CAppShortcutBarHelper.a(this.a).a(paramList);
-      this.a.g();
+      paramList = C2CShortcutBarManager.a((QQAppInterface)C2CAppShortcutBarHelper.b(this.a)).c(Long.valueOf(paramLong));
+      C2CAppShortcutBarHelper.c(this.a).a(paramList);
+      this.a.m();
     }
   }
   
   public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (C2CAppShortcutBarHelper.a(this.a) != null)
+    if (C2CAppShortcutBarHelper.e(this.a) != null)
     {
-      if (TextUtils.isEmpty(C2CAppShortcutBarHelper.b(this.a).a)) {
+      if (TextUtils.isEmpty(C2CAppShortcutBarHelper.f(this.a).b)) {
         return;
       }
-      if ((paramBoolean1) && (C2CAppShortcutBarHelper.c(this.a).a.equals(paramString)))
+      if ((paramBoolean1) && (C2CAppShortcutBarHelper.g(this.a).b.equals(paramString)))
       {
         if (paramBoolean2)
         {
-          this.a.g();
-          C2CAppShortcutBarHelper.a(this.a);
+          this.a.m();
+          C2CAppShortcutBarHelper.d(this.a);
           return;
         }
-        this.a.h();
+        this.a.o();
       }
     }
   }
@@ -72,13 +72,13 @@ class C2CAppShortcutBarHelper$2
       QLog.d("C2CShortcutBarObserver", 2, localStringBuilder.toString());
     }
     if ((paramBoolean1) && (!paramBoolean2)) {
-      this.a.h();
+      this.a.o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CAppShortcutBarHelper.2
  * JD-Core Version:    0.7.0.1
  */

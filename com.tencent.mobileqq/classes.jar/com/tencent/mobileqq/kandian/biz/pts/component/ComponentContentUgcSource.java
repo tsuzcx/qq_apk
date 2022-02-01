@@ -17,7 +17,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.api.IPublicAccountBrowser;
 import com.tencent.biz.pubaccount.api.IPublicAccountProxy;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJFrameworkReportManager;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
@@ -31,21 +31,21 @@ public class ComponentContentUgcSource
   extends LinearLayout
   implements View.OnClickListener, ComponentInheritView
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-  private String jdField_a_of_type_JavaLangString;
+  CmpCtxt a;
+  TextView b;
+  private String c;
+  private LinearLayout d;
   
   public ComponentContentUgcSource(Context paramContext)
   {
     super(paramContext);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentContentUgcSource(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b(paramContext);
+    c(paramContext);
   }
   
   private void b()
@@ -54,55 +54,50 @@ public class ComponentContentUgcSource
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("business url is ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c);
       QLog.d("ComponentContentUgcSource", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.c)) {
       return;
     }
     Object localObject = new Intent(getContext(), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountBrowser.class));
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("url", this.c);
     getContext().startActivity((Intent)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a();
+    localObject = this.a.a.k();
     if (localObject == null) {
       return;
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportLabelsClick((Entity)localObject);
-    RIJFrameworkReportManager.b((AbsBaseArticleInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.c());
+    PublicAccountReportUtils.a((Entity)localObject);
+    RIJFrameworkReportManager.b((AbsBaseArticleInfo)localObject, this.a.a.m());
   }
   
-  private void b(Context paramContext)
+  private void c(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
+    this.a = new CmpCtxt();
     a(paramContext);
     a();
   }
   
-  public View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560299, this, true);
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.d.setOnClickListener(this);
   }
   
   public void a(Context paramContext)
   {
-    a(a(paramContext));
+    a(b(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380120));
-    this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380121));
+    this.b = ((TextView)paramView.findViewById(2131449034));
+    this.b.getPaint().setFakeBoldText(true);
+    this.d = ((LinearLayout)paramView.findViewById(2131449035));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramCellListener);
+    this.a.a(paramCellListener);
   }
   
   public void a(Object paramObject)
@@ -110,8 +105,8 @@ public class ComponentContentUgcSource
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramObject);
-      paramObject = paramObject.a();
+      this.a.a(paramObject);
+      paramObject = paramObject.k();
       if (paramObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -119,11 +114,11 @@ public class ComponentContentUgcSource
         }
         return;
       }
-      if ((RIJItemViewTypeUtils.m(paramObject)) || ((RIJItemViewTypeUtils.l(paramObject)) && (!RIJItemViewTypeUtils.r(paramObject))) || (RIJFeedsType.o(paramObject)) || ((RIJFeedsType.p(paramObject)) && (!RIJItemViewTypeUtils.q(paramObject))) || (RIJItemViewTypeUtils.c(paramObject)))
+      if ((RIJItemViewTypeUtils.m(paramObject)) || ((RIJItemViewTypeUtils.l(paramObject)) && (!RIJItemViewTypeUtils.r(paramObject))) || (RIJFeedsType.u(paramObject)) || ((RIJFeedsType.v(paramObject)) && (!RIJItemViewTypeUtils.q(paramObject))) || (RIJItemViewTypeUtils.c(paramObject)))
       {
-        localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+        localObject = (LinearLayout.LayoutParams)this.d.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).topMargin = 0;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       Object localObject = paramObject.businessName;
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
@@ -134,22 +129,27 @@ public class ComponentContentUgcSource
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.b.setText("");
         setVisibility(8);
       }
       else
       {
         localSpannableStringBuilder.append((CharSequence)localObject);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+        this.b.setText(localSpannableStringBuilder);
         setVisibility(0);
       }
-      this.jdField_a_of_type_JavaLangString = paramObject.businessUrl;
+      this.c = paramObject.businessUrl;
     }
+  }
+  
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626345, this, true);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131380121) {
+    if (paramView.getId() != 2131449035) {
       return;
     }
     b();
@@ -157,7 +157,7 @@ public class ComponentContentUgcSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentUgcSource
  * JD-Core Version:    0.7.0.1
  */

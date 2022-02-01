@@ -39,24 +39,24 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment
     }
     try
     {
-      int i = Integer.parseInt(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
+      int i = Integer.parseInt(paramMiniAppInfo.a);
       oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
       localReqBody.get_privilege_req.setHasFlag(true);
       localReqBody.get_privilege_req.appid.set(i);
-      localReqBody.get_privilege_req.app_type.set(paramMiniAppInfo.jdField_a_of_type_Int);
+      localReqBody.get_privilege_req.app_type.set(paramMiniAppInfo.b);
       Object localObject;
-      if (paramMiniAppInfo.jdField_a_of_type_Int == 1)
+      if (paramMiniAppInfo.b == 1)
       {
         localObject = new oidb_0xb60.ClientInfo();
         ((oidb_0xb60.ClientInfo)localObject).platform.set(1);
-        if (!TextUtils.isEmpty(paramMiniAppInfo.k)) {
-          ((oidb_0xb60.ClientInfo)localObject).sdk_version.set(paramMiniAppInfo.k);
+        if (!TextUtils.isEmpty(paramMiniAppInfo.t)) {
+          ((oidb_0xb60.ClientInfo)localObject).sdk_version.set(paramMiniAppInfo.t);
         }
-        if (!TextUtils.isEmpty(paramMiniAppInfo.i)) {
-          ((oidb_0xb60.ClientInfo)localObject).android_package_name.set(paramMiniAppInfo.i);
+        if (!TextUtils.isEmpty(paramMiniAppInfo.r)) {
+          ((oidb_0xb60.ClientInfo)localObject).android_package_name.set(paramMiniAppInfo.r);
         }
-        if (!TextUtils.isEmpty(paramMiniAppInfo.j)) {
-          ((oidb_0xb60.ClientInfo)localObject).android_signature.set(paramMiniAppInfo.j);
+        if (!TextUtils.isEmpty(paramMiniAppInfo.s)) {
+          ((oidb_0xb60.ClientInfo)localObject).android_signature.set(paramMiniAppInfo.s);
         }
         localReqBody.client_info.set((MessageMicro)localObject);
       }
@@ -64,9 +64,9 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("send type=");
-        ((StringBuilder)localObject).append(paramMiniAppInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramMiniAppInfo.b);
         ((StringBuilder)localObject).append(", appid=");
-        ((StringBuilder)localObject).append(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramMiniAppInfo.a);
         QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, ((StringBuilder)localObject).toString());
       }
       ProtoUtils.a(paramJobContext, new DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.1(this, paramMiniAppInfo), localReqBody.toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
@@ -85,7 +85,7 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment
  * JD-Core Version:    0.7.0.1
  */

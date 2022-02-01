@@ -4,12 +4,12 @@ import com.tencent.maxvideo.common.AVIOStruct;
 
 public class PreviewContext$VFrameData
 {
-  public AVIOStruct a;
   public byte[] a;
+  public AVIOStruct b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.VFrameData
  * JD-Core Version:    0.7.0.1
  */

@@ -10,97 +10,97 @@ import java.lang.ref.WeakReference;
 
 public class CallStatusClient
 {
-  private static volatile CallStatusClient jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient;
-  private static final String jdField_a_of_type_JavaLangString = "CallStatusClient";
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
-  private IQQServiceForAV jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
+  private static final String b = "CallStatusClient";
+  private static volatile CallStatusClient f;
+  boolean a = false;
+  private WeakReference<Context> c;
+  private ServiceConnection d = null;
+  private IQQServiceForAV e = null;
   
   public static CallStatusClient a()
   {
-    if (jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient == null) {
-          jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient = new CallStatusClient();
+        if (f == null) {
+          f = new CallStatusClient();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvWtogetherUtilCallStatusClient;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    return f;
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.c = new WeakReference(paramContext);
   }
   
-  public boolean a()
+  public void b()
+  {
+    this.c = null;
+  }
+  
+  public boolean c()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
+      if (this.e != null)
       {
-        boolean bool = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.e();
+        boolean bool = this.e.n();
         return bool;
       }
     }
     catch (Exception localException)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "isVideoChatting fail.", localException);
+      QLog.e(b, 1, "isVideoChatting fail.", localException);
     }
     return false;
   }
   
-  public void b()
+  public void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.c;
       if (localObject != null)
       {
         localObject = (Context)((WeakReference)localObject).get();
         if (localObject != null)
         {
           if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "bindQQServiceForAV");
+            QLog.i(b, 2, "bindQQServiceForAV");
           }
-          if (this.jdField_a_of_type_AndroidContentServiceConnection == null) {
-            this.jdField_a_of_type_AndroidContentServiceConnection = new CallStatusClient.1(this);
+          if (this.d == null) {
+            this.d = new CallStatusClient.1(this);
           }
-          ((Context)localObject).bindService(new Intent((Context)localObject, QQServiceForAV.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-          this.jdField_a_of_type_Boolean = true;
+          ((Context)localObject).bindService(new Intent((Context)localObject, QQServiceForAV.class), this.d, 1);
+          this.a = true;
         }
       }
     }
   }
   
-  public void c()
+  public void e()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.c;
       if (localObject != null)
       {
         localObject = (Context)((WeakReference)localObject).get();
         if (localObject != null)
         {
           if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "unbindQQServiceForAV");
+            QLog.i(b, 2, "unbindQQServiceForAV");
           }
-          ServiceConnection localServiceConnection = this.jdField_a_of_type_AndroidContentServiceConnection;
+          ServiceConnection localServiceConnection = this.d;
           if (localServiceConnection != null)
           {
             ((Context)localObject).unbindService(localServiceConnection);
-            this.jdField_a_of_type_AndroidContentServiceConnection = null;
+            this.d = null;
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.a = false;
         }
       }
     }

@@ -27,7 +27,7 @@ public class RecentItemMayKnowFriendVerticalListData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    paramQQAppInterface = a();
+    paramQQAppInterface = e();
     if (paramQQAppInterface.uin.equals("sp_uin_for_title")) {
       this.mMenuFlag = 0;
     } else {
@@ -44,7 +44,7 @@ public class RecentItemMayKnowFriendVerticalListData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ class DoubleVideoCtrlUI$11
   
   public void run()
   {
-    if (this.this$0.h()) {
+    if (this.this$0.V()) {
       return;
     }
-    this.this$0.a.a(new Object[] { Integer.valueOf(102) });
+    this.this$0.al.a(new Object[] { Integer.valueOf(102) });
   }
 }
 

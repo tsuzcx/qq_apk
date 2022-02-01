@@ -19,7 +19,7 @@ class FolderFollowTabFragment$10
       while (((Iterator)localObject).hasNext())
       {
         ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)((Iterator)localObject).next();
-        if (localServiceAccountFolderFeed.b > 0) {
+        if (localServiceAccountFolderFeed.d > 0) {
           ServiceAccountFolderManager.a().b(FolderFollowTabFragment.a(this.this$0), localServiceAccountFolderFeed, false);
         }
       }
@@ -28,7 +28,7 @@ class FolderFollowTabFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.10
  * JD-Core Version:    0.7.0.1
  */

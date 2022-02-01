@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.widget.TextView;
 import com.qwallet.temp.IQWalletMsgHolder;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.mobileqq.qwallet.hb.aio.QQWalletBaseMsgElem;
@@ -14,30 +15,18 @@ import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 public class GoldRedPkgViewHolder
   extends BaseViewHolder
 {
-  IPasswdRedBagService a;
+  IPasswdRedBagService y;
   
-  public GoldRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
+  public GoldRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
   {
-    super(paramBaseQQAppInterface, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class, ""));
-    if (a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.getPasswdRedBagInfoById(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
+    super(paramBaseQQAppInterface, paramBaseSessionInfo, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
+    this.y = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class, ""));
+    if (a(this.y.getPasswdRedBagInfoById(this.b.mQQWalletRedPacketMsg.redPacketId)))
     {
-      this.i = 0;
+      this.o = 0;
       return;
     }
-    this.i = paramQQWalletBaseMsgElem.j;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = super.a();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(-8947849);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText("黄金红包");
-    return true;
+    this.o = paramQQWalletBaseMsgElem.w;
   }
   
   public void e()
@@ -45,8 +34,8 @@ public class GoldRedPkgViewHolder
     super.e();
     try
     {
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setTextColor(Color.parseColor("#604121"));
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setText(QWalletTools.a(this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().getContext(), this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioQQWalletBaseMsgElem.a, 330, this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().getPaint()));
+      this.a.h().setTextColor(Color.parseColor("#604121"));
+      this.a.h().setText(QWalletTools.a(this.a.h().getContext(), this.d.c, 330, this.a.h().getPaint()));
       return;
     }
     catch (Throwable localThrowable)
@@ -54,10 +43,21 @@ public class GoldRedPkgViewHolder
       localThrowable.printStackTrace();
     }
   }
+  
+  public boolean g()
+  {
+    boolean bool = super.g();
+    if (bool) {
+      return bool;
+    }
+    this.a.c().setVisibility(0);
+    this.a.c().setText("黄金红包");
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.impl.GoldRedPkgViewHolder
  * JD-Core Version:    0.7.0.1
  */

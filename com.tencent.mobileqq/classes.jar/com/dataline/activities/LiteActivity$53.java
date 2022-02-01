@@ -2,7 +2,7 @@ package com.dataline.activities;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.widget.XEditTextEx;
 
 class LiteActivity$53
   implements ValueAnimator.AnimatorUpdateListener
@@ -11,8 +11,8 @@ class LiteActivity$53
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    LiteActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    LiteActivity.a(this.a).requestLayout();
+    this.a.q.getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.q.requestLayout();
   }
 }
 

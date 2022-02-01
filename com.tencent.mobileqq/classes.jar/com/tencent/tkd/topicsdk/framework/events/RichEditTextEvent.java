@@ -13,73 +13,68 @@ import org.json.JSONObject;
 public final class RichEditTextEvent
   extends BaseReportEvent
 {
-  public static final RichEditTextEvent.Companion a;
-  private int jdField_a_of_type_Int = -1;
+  public static final RichEditTextEvent.Companion a = new RichEditTextEvent.Companion(null);
+  private int b = -1;
   @NotNull
-  private EditObject.EditObjectType jdField_a_of_type_ComTencentTkdWeiboBeanEditObject$EditObjectType = EditObject.EditObjectType.TYPE_NORMAL;
+  private String c = "";
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
+  private EditObject.EditObjectType d = EditObject.EditObjectType.TYPE_NORMAL;
   @Nullable
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventsRichEditTextEvent$Companion = new RichEditTextEvent.Companion(null);
-  }
+  private JSONObject e;
   
   public RichEditTextEvent()
   {
     a(ReportEventElement.WIDGET_RICH_EDIT_TEXT);
   }
   
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final EditObject.EditObjectType a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdWeiboBeanEditObject$EditObjectType;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @Nullable
-  public final JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public final void a(@NotNull EditObject.EditObjectType paramEditObjectType)
   {
     Intrinsics.checkParameterIsNotNull(paramEditObjectType, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdWeiboBeanEditObject$EditObjectType = paramEditObjectType;
+    this.d = paramEditObjectType;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public final void a(@Nullable JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.e = paramJSONObject;
+  }
+  
+  public final int d()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final String e()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final EditObject.EditObjectType f()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public final JSONObject g()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.RichEditTextEvent
  * JD-Core Version:    0.7.0.1
  */

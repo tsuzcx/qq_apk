@@ -91,7 +91,7 @@ public class MiniLog
   {
     if (sPool != null)
     {
-      if (StringUtil.a(???)) {
+      if (StringUtil.isEmpty(???)) {
         return;
       }
       MiniLog.QLogItem localQLogItem = (MiniLog.QLogItem)sPool.obtain(MiniLog.QLogItem.class);
@@ -440,7 +440,7 @@ public class MiniLog
   {
     if ((sPool == null) && (BaseApplicationImpl.getApplication() != null))
     {
-      sBuildNumber = AppSetting.a();
+      sBuildNumber = AppSetting.b();
       processName = BaseApplicationImpl.getApplication().getQQProcessName();
       packageName = BaseApplicationImpl.getApplication().getPackageName();
       sPool = new RecyclablePool(MiniLog.QLogItem.class, 512);
@@ -601,7 +601,7 @@ public class MiniLog
     //   23: ifnull -20 -> 3
     //   26: aload_2
     //   27: getfield 160	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$MiniItem:filePath	Ljava/lang/String;
-    //   30: invokestatic 188	com/tencent/mobileqq/utils/StringUtil:a	(Ljava/lang/String;)Z
+    //   30: invokestatic 188	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
     //   33: ifeq +6 -> 39
     //   36: goto -33 -> 3
     //   39: aload_2
@@ -618,7 +618,7 @@ public class MiniLog
     //   62: aload_3
     //   63: invokestatic 382	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   66: pop
-    //   67: new 495	java/io/BufferedWriter
+    //   67: new 496	java/io/BufferedWriter
     //   70: dup
     //   71: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
     //   74: dup
@@ -632,13 +632,13 @@ public class MiniLog
     //   91: getstatic 115	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniFlushMap	Ljava/util/Map;
     //   94: aload_3
     //   95: invokeinterface 540 2 0
-    //   100: checkcast 495	java/io/BufferedWriter
+    //   100: checkcast 496	java/io/BufferedWriter
     //   103: astore_1
     //   104: aload_1
     //   105: astore_0
     //   106: aload_1
     //   107: ifnonnull +24 -> 131
-    //   110: new 495	java/io/BufferedWriter
+    //   110: new 496	java/io/BufferedWriter
     //   113: dup
     //   114: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
     //   117: dup
@@ -823,7 +823,7 @@ public class MiniLog
     //   204: aload 6
     //   206: invokestatic 382	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   209: pop
-    //   210: new 495	java/io/BufferedWriter
+    //   210: new 496	java/io/BufferedWriter
     //   213: dup
     //   214: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
     //   217: dup
@@ -869,13 +869,13 @@ public class MiniLog
     //   306: getstatic 100	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushMap	Ljava/util/Map;
     //   309: aload 6
     //   311: invokeinterface 540 2 0
-    //   316: checkcast 495	java/io/BufferedWriter
+    //   316: checkcast 496	java/io/BufferedWriter
     //   319: astore 4
     //   321: aload 4
     //   323: astore_2
     //   324: aload 4
     //   326: ifnonnull +24 -> 350
-    //   329: new 495	java/io/BufferedWriter
+    //   329: new 496	java/io/BufferedWriter
     //   332: dup
     //   333: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
     //   336: dup
@@ -1072,7 +1072,7 @@ public class MiniLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLog
  * JD-Core Version:    0.7.0.1
  */

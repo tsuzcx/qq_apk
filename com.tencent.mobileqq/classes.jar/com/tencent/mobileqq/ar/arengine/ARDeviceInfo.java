@@ -11,50 +11,50 @@ import java.io.IOException;
 
 public class ARDeviceInfo
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static long jdField_a_of_type_Long = -1L;
-  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new ARDeviceInfo.1();
+  private static int a = -1;
   private static int b = -1;
-  private static int c = -1;
+  private static long c = -1L;
+  private static int d = -1;
+  private static final FileFilter e = new ARDeviceInfo.1();
   
   public static int a()
   {
-    int i = c;
+    int i = d;
     if (i != -1) {
       return i;
     }
-    jdField_a_of_type_Int = b();
+    a = b();
     b = c();
-    jdField_a_of_type_Long = a(BaseApplicationImpl.getApplication().getApplicationContext());
-    i = jdField_a_of_type_Int;
-    if ((i < 8) && ((i < 4) || (b <= 2355.1999999999998D) || (jdField_a_of_type_Long <= 2048L)))
+    c = a(BaseApplicationImpl.getApplication().getApplicationContext());
+    i = a;
+    if ((i < 8) && ((i < 4) || (b <= 2355.1999999999998D) || (c <= 2048L)))
     {
-      if ((jdField_a_of_type_Int > 2) && (b >= 1331.2D) && (jdField_a_of_type_Long > 1024L)) {
-        c = 1;
+      if ((a > 2) && (b >= 1331.2D) && (c > 1024L)) {
+        d = 1;
       } else {
-        c = 2;
+        d = 2;
       }
     }
     else
     {
-      c = 0;
+      d = 0;
       if ((Build.MODEL.equalsIgnoreCase("MI NOTE LTE")) || (Build.MODEL.equalsIgnoreCase("vivo Y37A")) || (Build.MODEL.equalsIgnoreCase("Nexus 6")) || (Build.MODEL.equalsIgnoreCase("ATH-AL00"))) {
-        c = 1;
+        d = 1;
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDeviceCapability. Build.MODEL = ");
     localStringBuilder.append(Build.MODEL);
     localStringBuilder.append(", deviceCapability = ");
-    localStringBuilder.append(c);
+    localStringBuilder.append(d);
     localStringBuilder.append(", numberOfCPUCores = ");
-    localStringBuilder.append(jdField_a_of_type_Int);
+    localStringBuilder.append(a);
     localStringBuilder.append(", cpuMaxFreqMHz = ");
     localStringBuilder.append(b);
     localStringBuilder.append(", totalMemoryMB = ");
-    localStringBuilder.append(jdField_a_of_type_Long);
+    localStringBuilder.append(c);
     QLog.i("AREngine_ARDeviceInfo", 1, localStringBuilder.toString());
-    return c;
+    return d;
   }
   
   static int a(String paramString)
@@ -141,46 +141,46 @@ public class ARDeviceInfo
   public static long a(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 50	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:jdField_a_of_type_Long	J
+    //   0: getstatic 52	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:c	J
     //   3: lstore_2
-    //   4: ldc2_w 9
+    //   4: ldc2_w 11
     //   7: lstore 4
     //   9: lload_2
-    //   10: ldc2_w 9
+    //   10: ldc2_w 11
     //   13: lcmp
     //   14: ifeq +5 -> 19
     //   17: lload_2
     //   18: lreturn
-    //   19: getstatic 173	android/os/Build$VERSION:SDK_INT	I
+    //   19: getstatic 175	android/os/Build$VERSION:SDK_INT	I
     //   22: bipush 16
     //   24: if_icmplt +42 -> 66
-    //   27: new 175	android/app/ActivityManager$MemoryInfo
+    //   27: new 177	android/app/ActivityManager$MemoryInfo
     //   30: dup
-    //   31: invokespecial 176	android/app/ActivityManager$MemoryInfo:<init>	()V
+    //   31: invokespecial 178	android/app/ActivityManager$MemoryInfo:<init>	()V
     //   34: astore 6
     //   36: aload_0
-    //   37: ldc 178
-    //   39: invokevirtual 184	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   42: checkcast 186	android/app/ActivityManager
+    //   37: ldc 180
+    //   39: invokevirtual 186	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   42: checkcast 188	android/app/ActivityManager
     //   45: aload 6
-    //   47: invokevirtual 190	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
+    //   47: invokevirtual 192	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
     //   50: aload 6
-    //   52: getfield 193	android/app/ActivityManager$MemoryInfo:totalMem	J
-    //   55: ldc2_w 194
+    //   52: getfield 195	android/app/ActivityManager$MemoryInfo:totalMem	J
+    //   55: ldc2_w 196
     //   58: ldiv
-    //   59: putstatic 50	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:jdField_a_of_type_Long	J
-    //   62: getstatic 50	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:jdField_a_of_type_Long	J
+    //   59: putstatic 52	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:c	J
+    //   62: getstatic 52	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:c	J
     //   65: lreturn
     //   66: lload 4
     //   68: lstore_2
-    //   69: new 139	java/io/FileInputStream
+    //   69: new 141	java/io/FileInputStream
     //   72: dup
-    //   73: ldc 197
-    //   75: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   73: ldc 199
+    //   75: invokespecial 202	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   78: astore_0
-    //   79: ldc 202
+    //   79: ldc 204
     //   81: aload_0
-    //   82: invokestatic 204	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:a	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   82: invokestatic 206	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:a	(Ljava/lang/String;Ljava/io/FileInputStream;)I
     //   85: istore_1
     //   86: iload_1
     //   87: i2l
@@ -188,7 +188,7 @@ public class ARDeviceInfo
     //   90: lload 4
     //   92: lstore_2
     //   93: aload_0
-    //   94: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   94: invokevirtual 209	java/io/FileInputStream:close	()V
     //   97: lload 4
     //   99: lstore_2
     //   100: goto +18 -> 118
@@ -196,16 +196,16 @@ public class ARDeviceInfo
     //   105: lload 4
     //   107: lstore_2
     //   108: aload_0
-    //   109: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   109: invokevirtual 209	java/io/FileInputStream:close	()V
     //   112: lload 4
     //   114: lstore_2
     //   115: aload 6
     //   117: athrow
     //   118: lload_2
-    //   119: ldc2_w 57
+    //   119: ldc2_w 59
     //   122: ldiv
-    //   123: putstatic 50	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:jdField_a_of_type_Long	J
-    //   126: getstatic 50	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:jdField_a_of_type_Long	J
+    //   123: putstatic 52	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:c	J
+    //   126: getstatic 52	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:c	J
     //   129: lreturn
     //   130: astore_0
     //   131: goto -13 -> 118
@@ -228,15 +228,15 @@ public class ARDeviceInfo
   
   public static int b()
   {
-    int i = jdField_a_of_type_Int;
+    int i = a;
     k = -1;
     if (i != -1) {
       return i;
     }
     if (Build.VERSION.SDK_INT <= 10)
     {
-      jdField_a_of_type_Int = 1;
-      return jdField_a_of_type_Int;
+      a = 1;
+      return a;
     }
     try
     {
@@ -257,7 +257,7 @@ public class ARDeviceInfo
         int j = k;
       }
     }
-    jdField_a_of_type_Int = j;
+    a = j;
     return j;
   }
   
@@ -265,29 +265,29 @@ public class ARDeviceInfo
   private static int b(String paramString)
   {
     // Byte code:
-    //   0: new 139	java/io/FileInputStream
+    //   0: new 141	java/io/FileInputStream
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 202	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_0
-    //   9: new 223	java/io/BufferedReader
+    //   9: new 224	java/io/BufferedReader
     //   12: dup
-    //   13: new 225	java/io/InputStreamReader
+    //   13: new 226	java/io/InputStreamReader
     //   16: dup
     //   17: aload_0
-    //   18: invokespecial 228	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   21: invokespecial 231	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   18: invokespecial 229	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   21: invokespecial 232	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   24: astore_2
     //   25: aload_2
-    //   26: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   26: invokevirtual 235	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   29: astore_3
     //   30: aload_2
-    //   31: invokevirtual 235	java/io/BufferedReader:close	()V
+    //   31: invokevirtual 236	java/io/BufferedReader:close	()V
     //   34: aload_3
-    //   35: invokestatic 237	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:a	(Ljava/lang/String;)I
+    //   35: invokestatic 238	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:a	(Ljava/lang/String;)I
     //   38: istore_1
     //   39: aload_0
-    //   40: invokevirtual 240	java/io/InputStream:close	()V
+    //   40: invokevirtual 241	java/io/InputStream:close	()V
     //   43: iload_1
     //   44: ireturn
     //   45: astore_3
@@ -303,7 +303,7 @@ public class ARDeviceInfo
     //   59: aload_2
     //   60: ifnull +7 -> 67
     //   63: aload_2
-    //   64: invokevirtual 240	java/io/InputStream:close	()V
+    //   64: invokevirtual 241	java/io/InputStream:close	()V
     //   67: aload_0
     //   68: athrow
     //   69: aconst_null
@@ -311,7 +311,7 @@ public class ARDeviceInfo
     //   71: aload_0
     //   72: ifnull +7 -> 79
     //   75: aload_0
-    //   76: invokevirtual 240	java/io/InputStream:close	()V
+    //   76: invokevirtual 241	java/io/InputStream:close	()V
     //   79: iconst_m1
     //   80: ireturn
     //   81: astore_0
@@ -350,20 +350,20 @@ public class ARDeviceInfo
   public static int c()
   {
     // Byte code:
-    //   0: getstatic 35	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
+    //   0: getstatic 37	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
     //   3: istore_0
     //   4: iload_0
     //   5: iconst_m1
     //   6: if_icmpeq +5 -> 11
     //   9: iload_0
     //   10: ireturn
-    //   11: getstatic 64	android/os/Build:MODEL	Ljava/lang/String;
-    //   14: ldc 244
-    //   16: invokevirtual 72	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   11: getstatic 66	android/os/Build:MODEL	Ljava/lang/String;
+    //   14: ldc 245
+    //   16: invokevirtual 74	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   19: ifeq +13 -> 32
     //   22: sipush 1824
-    //   25: putstatic 35	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
-    //   28: getstatic 35	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
+    //   25: putstatic 37	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
+    //   28: getstatic 37	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
     //   31: ireturn
     //   32: iconst_0
     //   33: istore 4
@@ -371,60 +371,60 @@ public class ARDeviceInfo
     //   36: istore_2
     //   37: iconst_m1
     //   38: istore_0
-    //   39: invokestatic 29	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	()I
+    //   39: invokestatic 31	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	()I
     //   42: istore_1
     //   43: iconst_1
     //   44: istore 5
     //   46: iload 4
     //   48: iload_1
     //   49: if_icmpge +382 -> 431
-    //   52: new 80	java/lang/StringBuilder
+    //   52: new 82	java/lang/StringBuilder
     //   55: dup
-    //   56: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   56: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   59: astore 6
     //   61: aload 6
-    //   63: ldc 246
-    //   65: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: ldc 247
+    //   65: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload 6
     //   71: iload 4
-    //   73: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   76: pop
     //   77: aload 6
-    //   79: ldc 248
-    //   81: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: ldc 249
+    //   81: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: pop
     //   85: aload 6
-    //   87: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   90: astore 6
-    //   92: new 80	java/lang/StringBuilder
+    //   92: new 82	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   96: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   99: astore 7
     //   101: aload 7
-    //   103: ldc 250
-    //   105: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc 251
+    //   105: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aload 7
     //   111: aload 6
-    //   113: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: pop
-    //   117: ldc 103
+    //   117: ldc 105
     //   119: iconst_1
     //   120: aload 7
-    //   122: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   122: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: iload_0
     //   129: istore_3
-    //   130: new 252	java/io/File
+    //   130: new 253	java/io/File
     //   133: dup
     //   134: aload 6
-    //   136: invokespecial 253	java/io/File:<init>	(Ljava/lang/String;)V
+    //   136: invokespecial 254	java/io/File:<init>	(Ljava/lang/String;)V
     //   139: astore 6
     //   141: iload_0
     //   142: istore_3
     //   143: aload 6
-    //   145: invokevirtual 257	java/io/File:exists	()Z
+    //   145: invokevirtual 258	java/io/File:exists	()Z
     //   148: ifeq +209 -> 357
     //   151: iload_0
     //   152: istore_3
@@ -433,21 +433,21 @@ public class ARDeviceInfo
     //   158: astore 7
     //   160: iload_0
     //   161: istore_3
-    //   162: new 139	java/io/FileInputStream
+    //   162: new 141	java/io/FileInputStream
     //   165: dup
     //   166: aload 6
-    //   168: invokespecial 260	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   168: invokespecial 261	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   171: astore 6
     //   173: aload 6
     //   175: aload 7
-    //   177: invokevirtual 143	java/io/FileInputStream:read	([B)I
+    //   177: invokevirtual 145	java/io/FileInputStream:read	([B)I
     //   180: pop
     //   181: iconst_0
     //   182: istore_1
     //   183: aload 7
     //   185: iload_1
     //   186: baload
-    //   187: invokestatic 159	java/lang/Character:isDigit	(I)Z
+    //   187: invokestatic 161	java/lang/Character:isDigit	(I)Z
     //   190: ifeq +17 -> 207
     //   193: iload_1
     //   194: aload 7
@@ -458,33 +458,33 @@ public class ARDeviceInfo
     //   202: iadd
     //   203: istore_1
     //   204: goto -21 -> 183
-    //   207: new 68	java/lang/String
+    //   207: new 70	java/lang/String
     //   210: dup
     //   211: aload 7
     //   213: iconst_0
     //   214: iload_1
-    //   215: invokespecial 263	java/lang/String:<init>	([BII)V
-    //   218: invokestatic 165	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   215: invokespecial 264	java/lang/String:<init>	([BII)V
+    //   218: invokestatic 167	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   221: sipush 1000
     //   224: idiv
     //   225: istore_3
-    //   226: new 80	java/lang/StringBuilder
+    //   226: new 82	java/lang/StringBuilder
     //   229: dup
-    //   230: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   230: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   233: astore 7
     //   235: aload 7
-    //   237: ldc_w 265
-    //   240: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: ldc_w 266
+    //   240: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   243: pop
     //   244: aload 7
     //   246: iload_3
-    //   247: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   250: pop
-    //   251: ldc 103
+    //   251: ldc 105
     //   253: iconst_1
     //   254: aload 7
-    //   256: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   259: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   256: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   259: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   262: iload_0
     //   263: istore_1
     //   264: iload_3
@@ -495,7 +495,7 @@ public class ARDeviceInfo
     //   271: iload_1
     //   272: istore_3
     //   273: aload 6
-    //   275: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   275: invokevirtual 209	java/io/FileInputStream:close	()V
     //   278: iload_1
     //   279: istore_0
     //   280: iload_2
@@ -504,69 +504,69 @@ public class ARDeviceInfo
     //   285: astore 7
     //   287: goto +58 -> 345
     //   290: astore 7
-    //   292: new 80	java/lang/StringBuilder
+    //   292: new 82	java/lang/StringBuilder
     //   295: dup
-    //   296: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   296: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   299: astore 8
     //   301: aload 8
-    //   303: ldc_w 267
-    //   306: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: ldc_w 268
+    //   306: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
     //   310: aload 8
     //   312: aload 7
-    //   314: invokevirtual 268	java/lang/Exception:toString	()Ljava/lang/String;
-    //   317: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: invokevirtual 269	java/lang/Exception:toString	()Ljava/lang/String;
+    //   317: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   320: pop
-    //   321: ldc 103
+    //   321: ldc 105
     //   323: iconst_1
     //   324: aload 8
-    //   326: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   329: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   326: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   329: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   332: iload_0
     //   333: istore_3
     //   334: aload 6
-    //   336: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   336: invokevirtual 209	java/io/FileInputStream:close	()V
     //   339: iload 5
     //   341: istore_1
     //   342: goto +29 -> 371
     //   345: iload_0
     //   346: istore_3
     //   347: aload 6
-    //   349: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   349: invokevirtual 209	java/io/FileInputStream:close	()V
     //   352: iload_0
     //   353: istore_3
     //   354: aload 7
     //   356: athrow
     //   357: iload_0
     //   358: istore_3
-    //   359: ldc 103
+    //   359: ldc 105
     //   361: iconst_1
-    //   362: ldc_w 270
-    //   365: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   362: ldc_w 271
+    //   365: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   368: iload 5
     //   370: istore_1
     //   371: iload_1
     //   372: istore_2
     //   373: goto +49 -> 422
     //   376: astore 6
-    //   378: new 80	java/lang/StringBuilder
+    //   378: new 82	java/lang/StringBuilder
     //   381: dup
-    //   382: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   382: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   385: astore 7
     //   387: aload 7
-    //   389: ldc_w 272
-    //   392: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: ldc_w 273
+    //   392: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   395: pop
     //   396: aload 7
     //   398: aload 6
-    //   400: invokevirtual 268	java/lang/Exception:toString	()Ljava/lang/String;
-    //   403: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: invokevirtual 269	java/lang/Exception:toString	()Ljava/lang/String;
+    //   403: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
-    //   407: ldc 103
+    //   407: ldc 105
     //   409: iconst_1
     //   410: aload 7
-    //   412: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   415: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   412: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   415: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   418: iconst_1
     //   419: istore_2
     //   420: iload_3
@@ -582,23 +582,23 @@ public class ARDeviceInfo
     //   434: ifeq +297 -> 731
     //   437: invokestatic 275	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:e	()I
     //   440: istore_2
-    //   441: new 80	java/lang/StringBuilder
+    //   441: new 82	java/lang/StringBuilder
     //   444: dup
-    //   445: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   445: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   448: astore 6
     //   450: aload 6
     //   452: ldc_w 277
-    //   455: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   455: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: pop
     //   459: aload 6
     //   461: iload_2
-    //   462: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   462: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   465: pop
-    //   466: ldc 103
+    //   466: ldc 105
     //   468: iconst_1
     //   469: aload 6
-    //   471: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   474: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   471: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   474: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   477: iload_2
     //   478: istore_1
     //   479: iload_0
@@ -610,24 +610,24 @@ public class ARDeviceInfo
     //   487: istore_1
     //   488: iload_0
     //   489: istore 4
-    //   491: new 139	java/io/FileInputStream
+    //   491: new 141	java/io/FileInputStream
     //   494: dup
     //   495: ldc_w 279
-    //   498: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   498: invokespecial 202	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   501: astore 6
     //   503: iload_2
     //   504: istore_3
     //   505: ldc_w 281
     //   508: aload 6
-    //   510: invokestatic 204	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:a	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   510: invokestatic 206	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:a	(Ljava/lang/String;Ljava/io/FileInputStream;)I
     //   513: istore_1
     //   514: iload_1
     //   515: istore_3
     //   516: iload_1
     //   517: istore_2
-    //   518: new 80	java/lang/StringBuilder
+    //   518: new 82	java/lang/StringBuilder
     //   521: dup
-    //   522: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   522: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   525: astore 7
     //   527: iload_1
     //   528: istore_3
@@ -635,7 +635,7 @@ public class ARDeviceInfo
     //   530: istore_2
     //   531: aload 7
     //   533: ldc_w 283
-    //   536: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   536: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   539: pop
     //   540: iload_1
     //   541: istore_3
@@ -643,17 +643,17 @@ public class ARDeviceInfo
     //   543: istore_2
     //   544: aload 7
     //   546: iload_1
-    //   547: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   547: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   550: pop
     //   551: iload_1
     //   552: istore_3
     //   553: iload_1
     //   554: istore_2
-    //   555: ldc 103
+    //   555: ldc 105
     //   557: iconst_1
     //   558: aload 7
-    //   560: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   563: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   560: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   563: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   566: iload_1
     //   567: istore_3
     //   568: iload_0
@@ -670,7 +670,7 @@ public class ARDeviceInfo
     //   581: iload_2
     //   582: istore 4
     //   584: aload 6
-    //   586: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   586: invokevirtual 209	java/io/FileInputStream:close	()V
     //   589: iload_3
     //   590: istore_1
     //   591: iload_2
@@ -681,30 +681,30 @@ public class ARDeviceInfo
     //   601: astore 7
     //   603: iload_2
     //   604: istore_3
-    //   605: new 80	java/lang/StringBuilder
+    //   605: new 82	java/lang/StringBuilder
     //   608: dup
-    //   609: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   609: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   612: astore 8
     //   614: iload_2
     //   615: istore_3
     //   616: aload 8
     //   618: ldc_w 285
-    //   621: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   624: pop
     //   625: iload_2
     //   626: istore_3
     //   627: aload 8
     //   629: aload 7
-    //   631: invokevirtual 268	java/lang/Exception:toString	()Ljava/lang/String;
-    //   634: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   631: invokevirtual 269	java/lang/Exception:toString	()Ljava/lang/String;
+    //   634: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   637: pop
     //   638: iload_2
     //   639: istore_3
-    //   640: ldc 103
+    //   640: ldc 105
     //   642: iconst_1
     //   643: aload 8
-    //   645: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   648: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   645: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   648: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   651: iload_2
     //   652: istore_3
     //   653: iload_0
@@ -715,7 +715,7 @@ public class ARDeviceInfo
     //   660: iload_0
     //   661: istore 4
     //   663: aload 6
-    //   665: invokevirtual 207	java/io/FileInputStream:close	()V
+    //   665: invokevirtual 209	java/io/FileInputStream:close	()V
     //   668: iload_3
     //   669: istore_1
     //   670: iload_0
@@ -723,24 +723,24 @@ public class ARDeviceInfo
     //   673: aload 7
     //   675: athrow
     //   676: astore 6
-    //   678: new 80	java/lang/StringBuilder
+    //   678: new 82	java/lang/StringBuilder
     //   681: dup
-    //   682: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   682: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   685: astore 7
     //   687: aload 7
     //   689: ldc_w 287
-    //   692: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   692: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   695: pop
     //   696: aload 7
     //   698: aload 6
-    //   700: invokevirtual 268	java/lang/Exception:toString	()Ljava/lang/String;
-    //   703: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   700: invokevirtual 269	java/lang/Exception:toString	()Ljava/lang/String;
+    //   703: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   706: pop
-    //   707: ldc 103
+    //   707: ldc 105
     //   709: iconst_1
     //   710: aload 7
-    //   712: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   715: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   712: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   715: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   718: iload 4
     //   720: istore_3
     //   721: iload_1
@@ -750,7 +750,7 @@ public class ARDeviceInfo
     //   729: iload_3
     //   730: istore_1
     //   731: iload_1
-    //   732: putstatic 35	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
+    //   732: putstatic 37	com/tencent/mobileqq/ar/arengine/ARDeviceInfo:b	I
     //   735: iload_1
     //   736: ireturn
     // Local variable table:
@@ -813,7 +813,7 @@ public class ARDeviceInfo
   
   private static int d()
   {
-    return new File("/sys/devices/system/cpu/").listFiles(jdField_a_of_type_JavaIoFileFilter).length;
+    return new File("/sys/devices/system/cpu/").listFiles(e).length;
   }
   
   /* Error */
@@ -824,18 +824,18 @@ public class ARDeviceInfo
     //   1: astore 4
     //   3: iconst_m1
     //   4: istore_1
-    //   5: new 223	java/io/BufferedReader
+    //   5: new 224	java/io/BufferedReader
     //   8: dup
     //   9: new 295	java/io/FileReader
     //   12: dup
     //   13: ldc_w 297
     //   16: invokespecial 298	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   19: invokespecial 231	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   19: invokespecial 232	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   22: astore 5
     //   24: aload 5
     //   26: astore_3
     //   27: aload 5
-    //   29: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   29: invokevirtual 235	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   32: astore 6
     //   34: aload 6
     //   36: astore_3
@@ -847,33 +847,33 @@ public class ARDeviceInfo
     //   46: ifnull +376 -> 422
     //   49: aload 5
     //   51: astore_3
-    //   52: new 80	java/lang/StringBuilder
+    //   52: new 82	java/lang/StringBuilder
     //   55: dup
-    //   56: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   56: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   59: astore 6
     //   61: aload 5
     //   63: astore_3
     //   64: aload 6
     //   66: ldc_w 300
-    //   69: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload 5
     //   75: astore_3
     //   76: aload 6
     //   78: aload 4
-    //   80: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: pop
     //   84: aload 5
     //   86: astore_3
-    //   87: ldc 103
+    //   87: ldc 105
     //   89: iconst_1
     //   90: aload 6
-    //   92: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   92: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   98: aload 5
     //   100: astore_3
     //   101: aload 5
-    //   103: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   103: invokevirtual 235	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   106: astore 6
     //   108: aload 6
     //   110: astore_3
@@ -903,40 +903,40 @@ public class ARDeviceInfo
     //   151: aload 5
     //   153: astore_3
     //   154: aload 4
-    //   156: invokevirtual 150	java/lang/String:length	()I
+    //   156: invokevirtual 152	java/lang/String:length	()I
     //   159: ifle +126 -> 285
     //   162: aload 5
     //   164: astore_3
     //   165: aload 4
-    //   167: invokestatic 165	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   167: invokestatic 167	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   170: sipush 1000
     //   173: idiv
     //   174: istore_2
     //   175: aload 5
     //   177: astore_3
-    //   178: new 80	java/lang/StringBuilder
+    //   178: new 82	java/lang/StringBuilder
     //   181: dup
-    //   182: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   182: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   185: astore 4
     //   187: aload 5
     //   189: astore_3
     //   190: aload 4
     //   192: ldc_w 309
-    //   195: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: pop
     //   199: aload 5
     //   201: astore_3
     //   202: aload 4
     //   204: iload_2
-    //   205: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   205: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   208: pop
     //   209: aload 5
     //   211: astore_3
-    //   212: ldc 103
+    //   212: ldc 105
     //   214: iconst_1
     //   215: aload 4
-    //   217: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   217: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   223: iload_1
     //   224: istore_0
     //   225: iload_2
@@ -947,35 +947,35 @@ public class ARDeviceInfo
     //   232: goto +53 -> 285
     //   235: aload 5
     //   237: astore_3
-    //   238: new 80	java/lang/StringBuilder
+    //   238: new 82	java/lang/StringBuilder
     //   241: dup
-    //   242: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   242: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   245: astore 4
     //   247: aload 5
     //   249: astore_3
     //   250: aload 4
     //   252: ldc_w 311
-    //   255: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: pop
     //   259: aload 5
     //   261: astore_3
     //   262: aload 4
     //   264: iload_0
-    //   265: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   265: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   268: pop
     //   269: aload 5
     //   271: astore_3
-    //   272: ldc 103
+    //   272: ldc 105
     //   274: iconst_1
     //   275: aload 4
-    //   277: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   280: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   277: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   280: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   283: iload_1
     //   284: istore_0
     //   285: iload_0
     //   286: istore_1
     //   287: aload 5
-    //   289: invokevirtual 235	java/io/BufferedReader:close	()V
+    //   289: invokevirtual 236	java/io/BufferedReader:close	()V
     //   292: iload_0
     //   293: ireturn
     //   294: astore_3
@@ -996,34 +996,34 @@ public class ARDeviceInfo
     //   320: astore 4
     //   322: aload 4
     //   324: astore_3
-    //   325: new 80	java/lang/StringBuilder
+    //   325: new 82	java/lang/StringBuilder
     //   328: dup
-    //   329: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   329: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   332: astore 5
     //   334: aload 4
     //   336: astore_3
     //   337: aload 5
     //   339: ldc_w 316
-    //   342: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: pop
     //   346: aload 4
     //   348: astore_3
     //   349: aload 5
     //   351: aload 6
-    //   353: invokevirtual 268	java/lang/Exception:toString	()Ljava/lang/String;
-    //   356: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: invokevirtual 269	java/lang/Exception:toString	()Ljava/lang/String;
+    //   356: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: pop
     //   360: aload 4
     //   362: astore_3
-    //   363: ldc 103
+    //   363: ldc 105
     //   365: iconst_1
     //   366: aload 5
-    //   368: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   371: invokestatic 113	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   368: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   371: invokestatic 115	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   374: aload 4
     //   376: ifnull +8 -> 384
     //   379: aload 4
-    //   381: invokevirtual 235	java/io/BufferedReader:close	()V
+    //   381: invokevirtual 236	java/io/BufferedReader:close	()V
     //   384: iconst_m1
     //   385: ireturn
     //   386: astore 5
@@ -1034,7 +1034,7 @@ public class ARDeviceInfo
     //   394: aload 4
     //   396: ifnull +18 -> 414
     //   399: aload 4
-    //   401: invokevirtual 235	java/io/BufferedReader:close	()V
+    //   401: invokevirtual 236	java/io/BufferedReader:close	()V
     //   404: goto +10 -> 414
     //   407: astore 4
     //   409: aload 4
@@ -1115,7 +1115,7 @@ public class ARDeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

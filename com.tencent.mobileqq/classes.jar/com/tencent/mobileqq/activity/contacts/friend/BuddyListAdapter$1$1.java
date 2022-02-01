@@ -16,21 +16,21 @@ class BuddyListAdapter$1$1
     if (QLog.isColorLevel()) {
       QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged out ThreadManager");
     }
-    BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0, this.jdField_a_of_type_JavaUtilArrayList);
-    BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0, this.jdField_a_of_type_AndroidUtilSparseArray);
-    BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0, this.jdField_a_of_type_AndroidUtilSparseIntArray);
-    ((FPSPinnedHeaderExpandableListView)BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0)).hideCurShowingRightView();
-    BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0);
-    if (BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0))
+    BuddyListAdapter.a(this.d.this$0, this.a);
+    BuddyListAdapter.a(this.d.this$0, this.b);
+    BuddyListAdapter.a(this.d.this$0, this.c);
+    ((FPSPinnedHeaderExpandableListView)BuddyListAdapter.a(this.d.this$0)).hideCurShowingRightView();
+    BuddyListAdapter.b(this.d.this$0);
+    if (BuddyListAdapter.c(this.d.this$0))
     {
-      BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0, false);
-      BuddyListAdapter.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter$1.this$0);
+      BuddyListAdapter.a(this.d.this$0, false);
+      BuddyListAdapter.d(this.d.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

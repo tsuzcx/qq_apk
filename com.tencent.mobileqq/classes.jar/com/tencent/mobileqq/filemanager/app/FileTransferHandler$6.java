@@ -13,16 +13,16 @@ class FileTransferHandler$6
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OLfilesession[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]  handle recv onlinefile resp. sucess =");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-    this.this$0.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    this.this$0.a.getOnlineFileSessionCenter().a(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.6
  * JD-Core Version:    0.7.0.1
  */

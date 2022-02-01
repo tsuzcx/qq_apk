@@ -17,15 +17,15 @@ class WTEntranceHelper$2
   {
     if (paramInt == 1)
     {
-      if (this.jdField_a_of_type_Int == 3) {
-        ChooseFileAssistant.a().a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a().jdField_a_of_type_Int, WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+      if (this.a == 3) {
+        ChooseFileAssistant.a().a(WTEntranceHelper.a(this.e).aE().a, WTEntranceHelper.a(this.e).aE().b, this.b);
       } else {
-        ChooseFileAssistant.a().a(this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+        ChooseFileAssistant.a().a(this.c, this.d, this.b);
       }
-      PlusPanelUtils.a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), true, "AIOQAVWatchTogether", null);
+      PlusPanelUtils.a(WTEntranceHelper.a(this.e).i(), WTEntranceHelper.a(this.e).aX(), WTEntranceHelper.a(this.e).aE(), true, "AIOQAVWatchTogether", null);
       return;
     }
-    QLog.e(WTEntranceHelper.jdField_a_of_type_JavaLangString, 1, "deny permission");
+    QLog.e(WTEntranceHelper.a, 1, "deny permission");
   }
 }
 

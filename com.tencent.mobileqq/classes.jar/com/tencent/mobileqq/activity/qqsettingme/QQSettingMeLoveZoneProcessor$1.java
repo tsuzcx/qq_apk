@@ -10,12 +10,12 @@ class QQSettingMeLoveZoneProcessor$1
   
   public void a(Object paramObject)
   {
-    this.a.a.runOnUiThread(new QQSettingMeLoveZoneProcessor.1.1(this));
+    this.a.d.runOnUiThread(new QQSettingMeLoveZoneProcessor.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeLoveZoneProcessor.1
  * JD-Core Version:    0.7.0.1
  */

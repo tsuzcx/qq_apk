@@ -19,7 +19,7 @@ class CountrySelectActivity$CountryAdapter
   
   public int a()
   {
-    return 2131559545;
+    return 2131625567;
   }
   
   public void a(View paramView, int paramInt)
@@ -28,7 +28,7 @@ class CountrySelectActivity$CountryAdapter
     Object localObject = getItem(paramInt);
     if ((localObject instanceof CountrySelectActivity.DividerItem))
     {
-      paramView.setText(((CountrySelectActivity.DividerItem)localObject).jdField_a_of_type_JavaLangString);
+      paramView.setText(((CountrySelectActivity.DividerItem)localObject).a);
       return;
     }
     if ((localObject instanceof BaseAddress)) {
@@ -43,12 +43,12 @@ class CountrySelectActivity$CountryAdapter
   
   public int getCount()
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    return this.a.e.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.e.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -58,7 +58,7 @@ class CountrySelectActivity$CountryAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList.get(paramInt) instanceof CountrySelectActivity.DividerItem)) {
+    if ((this.a.e.get(paramInt) instanceof CountrySelectActivity.DividerItem)) {
       return 0;
     }
     return 1;
@@ -73,7 +73,7 @@ class CountrySelectActivity$CountryAdapter
       if (paramView == null) {
         localView = this.a.getLayoutInflater().inflate(a(), null);
       }
-      ((TextView)localView).setText(((CountrySelectActivity.DividerItem)getItem(paramInt)).jdField_a_of_type_JavaLangString);
+      ((TextView)localView).setText(((CountrySelectActivity.DividerItem)getItem(paramInt)).a);
       paramView = localView;
     }
     else
@@ -81,30 +81,30 @@ class CountrySelectActivity$CountryAdapter
       localView = paramView;
       if (paramView == null)
       {
-        localView = this.a.getLayoutInflater().inflate(2131559546, null);
+        localView = this.a.getLayoutInflater().inflate(2131625568, null);
         paramView = new CountrySelectActivity.ViewHolder(null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365275));
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364607));
-        localView.findViewById(2131365274).setVisibility(8);
+        paramView.a = ((TextView)localView.findViewById(2131431449));
+        paramView.b = ((ImageView)localView.findViewById(2131430679));
+        localView.findViewById(2131431448).setVisibility(8);
         localView.setTag(paramView);
         localView.setOnClickListener(this.a);
       }
       CountrySelectActivity.ViewHolder localViewHolder = (CountrySelectActivity.ViewHolder)localView.getTag();
       BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
-        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localViewHolder.a.setText(localBaseAddress.name);
+      if ((!TextUtils.isEmpty(this.a.g)) && (this.a.g.equals(localBaseAddress.code))) {
+        localViewHolder.b.setVisibility(0);
       } else {
-        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localViewHolder.b.setVisibility(8);
       }
-      localViewHolder.jdField_a_of_type_JavaLangString = localBaseAddress.code;
+      localViewHolder.c = localBaseAddress.code;
       paramView = localView;
-      if (CountrySelectActivity.jdField_a_of_type_Boolean) {
-        if (localViewHolder.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)
+      if (CountrySelectActivity.a) {
+        if (localViewHolder.b.getVisibility() == 0)
         {
           paramView = new StringBuilder();
           paramView.append(localBaseAddress.name);
-          paramView.append(HardCodeUtil.a(2131702781));
+          paramView.append(HardCodeUtil.a(2131900771));
           localView.setContentDescription(paramView.toString());
           paramView = localView;
         }
@@ -126,7 +126,7 @@ class CountrySelectActivity$CountryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.CountrySelectActivity.CountryAdapter
  * JD-Core Version:    0.7.0.1
  */

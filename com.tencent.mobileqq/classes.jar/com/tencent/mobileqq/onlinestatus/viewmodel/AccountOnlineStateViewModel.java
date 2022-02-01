@@ -39,16 +39,16 @@ public class AccountOnlineStateViewModel
   extends BaseViewModel<AccountOnlineStateRepository>
   implements OnlineStatusPermissionManager.ReceiveDataListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = ThreadManagerV2.getUIHandlerV2();
-  private MutableLiveData<OnlineStatusData> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private OnlineStatusPermissionChecker.OnlineStatusPermissionItem jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
-  private boolean jdField_a_of_type_Boolean = false;
-  private MutableLiveData<OnlineStatusData> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private boolean jdField_b_of_type_Boolean = false;
+  private MutableLiveData<OnlineStatusData> a = new MutableLiveData();
+  private MutableLiveData<OnlineStatusData> b = new MutableLiveData();
   private MutableLiveData<List<AutoReplyText>> c = new MutableLiveData();
   private MutableLiveData<Integer> d = new MutableLiveData();
   private MutableLiveData<OnlineStatusResult> e = new MutableLiveData();
   private MutableLiveData<OnlineStatusPermissionChecker.OnlineStatusPermissionItem> f = new MutableLiveData();
+  private OnlineStatusPermissionChecker.OnlineStatusPermissionItem g;
+  private boolean h = false;
+  private boolean i = false;
+  private Handler j = ThreadManagerV2.getUIHandlerV2();
   
   public AccountOnlineStateViewModel(AccountOnlineStateRepository paramAccountOnlineStateRepository)
   {
@@ -57,20 +57,7 @@ public class AccountOnlineStateViewModel
   
   public MutableLiveData<OnlineStatusData> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public OnlineStatusPermissionChecker.OnlineStatusPermissionItem a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return null;
-    }
-    return (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue();
-  }
-  
-  public void a()
-  {
-    ((AccountOnlineStateRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    return this.a;
   }
   
   public void a(AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
@@ -83,23 +70,23 @@ public class AccountOnlineStateViewModel
         paramAppInterface = ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)paramAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).a(40001L, false, this);
         if (paramAppInterface != null)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.h = false;
           this.f.setValue(OnlineStatusPermissionChecker.OnlineStatusPermissionItem.create(40001L, paramAppInterface.allHasPermission, paramAppInterface.permissionUins));
         }
         else
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.h = true;
           this.f.setValue(OnlineStatusPermissionChecker.OnlineStatusPermissionItem.create(40001L, true, null));
         }
       }
       else
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.h = false;
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
     }
     if (this.f.getValue() != null) {
       ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue()).filterNotFriend();
@@ -108,7 +95,7 @@ public class AccountOnlineStateViewModel
   
   public void a(OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem, List<Integer> paramList)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       this.f.setValue(OnlineStatusPermissionChecker.OnlineStatusPermissionItem.create(40001L, paramOnlineStatusFriendsPermissionItem.allHasPermission, paramOnlineStatusFriendsPermissionItem.permissionUins));
     }
   }
@@ -116,11 +103,11 @@ public class AccountOnlineStateViewModel
   public void a(OnlineStatusItem paramOnlineStatusItem)
   {
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    AppRuntime.Status localStatus = OnLineStatusHelper.a().a(paramOnlineStatusItem);
+    AppRuntime.Status localStatus = OnLineStatusHelper.a().b(paramOnlineStatusItem);
     if ((localStatus != null) && (!a(paramOnlineStatusItem, localStatus)))
     {
       a(true);
-      ((IOnlineStatusService)localAppRuntime.getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(localStatus, paramOnlineStatusItem.jdField_a_of_type_Long);
+      ((IOnlineStatusService)localAppRuntime.getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(localStatus, paramOnlineStatusItem.b);
       return;
     }
     this.e.setValue(new OnlineStatusResult(true, 0));
@@ -136,18 +123,18 @@ public class AccountOnlineStateViewModel
       if (QLog.isColorLevel()) {
         QLog.d("AccountOnlineStateViewModel", 2, "account_online_status_show_all! mOnlinePermission is part");
       }
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue());
+      this.g = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue());
     }
     this.f.setValue(paramOnlineStatusPermissionItem);
   }
   
   public void a(OnlineStatusData paramOnlineStatusData, AppInterface paramAppInterface, AutoReplyText paramAutoReplyText)
   {
-    OnlineStatusDataReporter.a(paramAppInterface, paramOnlineStatusData.jdField_a_of_type_MqqAppAppRuntime$Status, paramOnlineStatusData.jdField_a_of_type_Long);
-    OnlineStatusDataReporter.a(paramAppInterface, paramOnlineStatusData.jdField_a_of_type_MqqAppAppRuntime$Status, paramOnlineStatusData.jdField_a_of_type_Long, paramAutoReplyText);
-    int i = AutoReplyUtils.a(paramOnlineStatusData.jdField_a_of_type_MqqAppAppRuntime$Status);
-    if (i > 0) {
-      ReportHelperKt.a("0X800B23A", i);
+    OnlineStatusDataReporter.a(paramAppInterface, paramOnlineStatusData.a, paramOnlineStatusData.b);
+    OnlineStatusDataReporter.a(paramAppInterface, paramOnlineStatusData.a, paramOnlineStatusData.b, paramAutoReplyText);
+    int k = AutoReplyUtils.a(paramOnlineStatusData.a);
+    if (k > 0) {
+      ReportHelperKt.a("0X800B23A", k);
     }
   }
   
@@ -160,7 +147,7 @@ public class AccountOnlineStateViewModel
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void a(boolean paramBoolean, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
@@ -172,14 +159,14 @@ public class AccountOnlineStateViewModel
     {
       if (QLog.isColorLevel())
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem == null) {
+        if (this.g == null) {
           localObject = "null";
         } else {
           localObject = " not null";
         }
         QLog.d("AccountOnlineStateViewModel", 2, new Object[] { "account_online_status_show_part! mLastPartPermission:", localObject });
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
+      Object localObject = this.g;
       if (localObject == null) {
         OnlineStatusPermissionChecker.a(paramAppInterface, paramQBaseActivity, (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue(), false);
       } else {
@@ -195,20 +182,15 @@ public class AccountOnlineStateViewModel
   
   public void a(boolean paramBoolean, List<AutoReplyText> paramList)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.j;
     if (localHandler != null) {
       localHandler.post(new AccountOnlineStateViewModel.2(this, paramBoolean, paramList));
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
   public boolean a(OnlineStatusItem paramOnlineStatusItem, BaseOnlineStatusDisplayInfo paramBaseOnlineStatusDisplayInfo, AppInterface paramAppInterface)
   {
-    AppRuntime.Status localStatus = OnLineStatusHelper.a().a(paramOnlineStatusItem);
+    AppRuntime.Status localStatus = OnLineStatusHelper.a().b(paramOnlineStatusItem);
     paramAppInterface = (IOnlineStatusService)paramAppInterface.getRuntimeService(IOnlineStatusService.class, "");
     if ((localStatus != null) && (!a(paramOnlineStatusItem, localStatus)))
     {
@@ -218,7 +200,7 @@ public class AccountOnlineStateViewModel
         paramBaseOnlineStatusDisplayInfo.a(false, (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue());
         return false;
       }
-      paramAppInterface.updateOnlineStatus(localStatus, paramOnlineStatusItem.jdField_a_of_type_Long);
+      paramAppInterface.updateOnlineStatus(localStatus, paramOnlineStatusItem.b);
       a(true);
       return false;
     }
@@ -237,19 +219,12 @@ public class AccountOnlineStateViewModel
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     AppRuntime.Status localStatus = ((IOnlineStatusService)localAppRuntime.getRuntimeService(IOnlineStatusService.class, "")).getOnlineStatus();
     long l = OnLineStatusHelper.a().a(localAppRuntime);
-    return (paramStatus == localStatus) && ((l == paramOnlineStatusItem.jdField_a_of_type_Long) || ((l > 40000L) && (paramOnlineStatusItem.jdField_a_of_type_Long > 40000L)));
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime)
-  {
-    AppRuntime.Status localStatus = ((IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "")).getOnlineStatus();
-    long l = OnLineStatusHelper.a().a(paramAppRuntime);
-    return (((OnlineStatusData)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()).jdField_a_of_type_MqqAppAppRuntime$Status == localStatus) && ((l == ((OnlineStatusData)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()).jdField_a_of_type_Long) || ((l > 40000L) && (((OnlineStatusData)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()).jdField_a_of_type_Long > 40000L)));
+    return (paramStatus == localStatus) && ((l == paramOnlineStatusItem.b) || ((l > 40000L) && (paramOnlineStatusItem.b > 40000L)));
   }
   
   public MutableLiveData<OnlineStatusData> b()
   {
-    return this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    return this.b;
   }
   
   public void b(OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
@@ -259,6 +234,13 @@ public class AccountOnlineStateViewModel
       a(paramOnlineStatusPermissionItem);
       ReportHelperKt.a("0X800AF4A", 2);
     }
+  }
+  
+  public boolean b(AppRuntime paramAppRuntime)
+  {
+    AppRuntime.Status localStatus = ((IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "")).getOnlineStatus();
+    long l = OnLineStatusHelper.a().a(paramAppRuntime);
+    return (((OnlineStatusData)this.a.getValue()).a == localStatus) && ((l == ((OnlineStatusData)this.a.getValue()).b) || ((l > 40000L) && (((OnlineStatusData)this.a.getValue()).b > 40000L)));
   }
   
   public MutableLiveData<List<AutoReplyText>> c()
@@ -280,10 +262,28 @@ public class AccountOnlineStateViewModel
   {
     return this.f;
   }
+  
+  public boolean g()
+  {
+    return this.i;
+  }
+  
+  public void h()
+  {
+    ((AccountOnlineStateRepository)this.z).a();
+  }
+  
+  public OnlineStatusPermissionChecker.OnlineStatusPermissionItem i()
+  {
+    if (this.h) {
+      return null;
+    }
+    return (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)this.f.getValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.viewmodel.AccountOnlineStateViewModel
  * JD-Core Version:    0.7.0.1
  */

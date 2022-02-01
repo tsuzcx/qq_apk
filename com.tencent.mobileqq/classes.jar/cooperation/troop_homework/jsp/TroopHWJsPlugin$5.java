@@ -22,21 +22,21 @@ class TroopHWJsPlugin$5
           if (i != 4) {
             return;
           }
-          QQToast.a(MobileQQ.getContext(), 2131697445, 0).a();
+          QQToast.makeText(MobileQQ.getContext(), 2131895218, 0).show();
           return;
         }
-        QQToast.a(MobileQQ.getContext(), 2131697444, 0).a();
+        QQToast.makeText(MobileQQ.getContext(), 2131895217, 0).show();
         return;
       }
-      QQToast.a(MobileQQ.getContext(), 2131697458, 0).a();
+      QQToast.makeText(MobileQQ.getContext(), 2131895231, 0).show();
       return;
     }
-    QQToast.a(MobileQQ.getContext(), 2131697446, 0).a();
+    QQToast.makeText(MobileQQ.getContext(), 2131895219, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

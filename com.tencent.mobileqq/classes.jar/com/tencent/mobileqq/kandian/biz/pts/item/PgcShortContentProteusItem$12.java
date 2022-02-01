@@ -16,19 +16,19 @@ class PgcShortContentProteusItem$12
   {
     if (PgcShortContentProteusItem.a(this.a) != null)
     {
-      PgcShortContentProteusItem.a(this.a).b();
+      PgcShortContentProteusItem.a(this.a).c();
       PgcShortContentProteusItem.a(this.a, null);
     }
-    if (PgcShortContentProteusItem.a(this.a) != null)
+    if (PgcShortContentProteusItem.b(this.a) != null)
     {
-      PgcShortContentProteusItem.a(this.a).a();
+      PgcShortContentProteusItem.b(this.a).a();
       PgcShortContentProteusItem.a(this.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.12
  * JD-Core Version:    0.7.0.1
  */

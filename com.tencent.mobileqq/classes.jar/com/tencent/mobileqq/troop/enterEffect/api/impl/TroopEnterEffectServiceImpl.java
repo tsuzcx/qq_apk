@@ -90,16 +90,16 @@ public class TroopEnterEffectServiceImpl
   
   public void addTroopEnterEffectData(TroopEnterEffectData paramTroopEnterEffectData)
   {
-    if ((paramTroopEnterEffectData != null) && (!TextUtils.isEmpty(paramTroopEnterEffectData.b)))
+    if ((paramTroopEnterEffectData != null) && (!TextUtils.isEmpty(paramTroopEnterEffectData.c)))
     {
-      List localList2 = (List)this.mTroopEnterEffectDatas.get(paramTroopEnterEffectData.b);
+      List localList2 = (List)this.mTroopEnterEffectDatas.get(paramTroopEnterEffectData.c);
       List localList1 = localList2;
       if (localList2 == null)
       {
         localList1 = Collections.synchronizedList(new LinkedList());
-        this.mTroopEnterEffectDatas.put(paramTroopEnterEffectData.b, localList1);
+        this.mTroopEnterEffectDatas.put(paramTroopEnterEffectData.c, localList1);
       }
-      if (paramTroopEnterEffectData.jdField_a_of_type_JavaLangString.equals(this.mApp.getCurrentAccountUin()))
+      if (paramTroopEnterEffectData.b.equals(this.mApp.getCurrentAccountUin()))
       {
         localList1.add(0, paramTroopEnterEffectData);
         return;
@@ -110,7 +110,7 @@ public class TroopEnterEffectServiceImpl
   
   public TroopEnterEffectConfig.EffectInfo getAllEffectInfo()
   {
-    return this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo;
+    return this.mEffectConfig.b;
   }
   
   public int getEffectId()
@@ -120,11 +120,11 @@ public class TroopEnterEffectServiceImpl
   
   public int getEffectId(String paramString)
   {
-    if (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo != null)
+    if (this.mEffectConfig.b != null)
     {
-      paramString = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.b.d.get(paramString);
       if (paramString != null) {
-        return paramString.jdField_a_of_type_Int;
+        return paramString.b;
       }
     }
     return 0;
@@ -132,8 +132,8 @@ public class TroopEnterEffectServiceImpl
   
   public TroopEnterEffectConfig.EffectInfoData getEffectInfo(String paramString)
   {
-    if (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo != null) {
-      return (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (this.mEffectConfig.b != null) {
+      return (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.b.d.get(paramString);
     }
     return null;
   }
@@ -199,19 +199,19 @@ public class TroopEnterEffectServiceImpl
   
   public boolean hasSetEffect(String paramString)
   {
-    TroopEnterEffectConfig.EffectInfo localEffectInfo = this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo;
+    TroopEnterEffectConfig.EffectInfo localEffectInfo = this.mEffectConfig.b;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localEffectInfo != null)
     {
-      paramString = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.b <= 0)
+      paramString = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.b.d.get(paramString);
+      if (this.mEffectConfig.b.b <= 0)
       {
         bool1 = bool2;
         if (paramString != null)
         {
           bool1 = bool2;
-          if (paramString.jdField_a_of_type_Int <= 0) {}
+          if (paramString.b <= 0) {}
         }
       }
       else
@@ -242,7 +242,7 @@ public class TroopEnterEffectServiceImpl
   
   public boolean isAllTroopShowEnterance()
   {
-    return getTroopEnterEffectConfig().jdField_a_of_type_Boolean;
+    return getTroopEnterEffectConfig().a;
   }
   
   public boolean isEffectOn(String paramString)
@@ -252,9 +252,9 @@ public class TroopEnterEffectServiceImpl
     if (!bool2)
     {
       Object localObject;
-      if ((this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo != null) && (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
+      if ((this.mEffectConfig.b != null) && (this.mEffectConfig.b.d != null))
       {
-        localObject = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.b.d.get(paramString);
         if (localObject == null)
         {
           if (QLog.isColorLevel())
@@ -263,10 +263,10 @@ public class TroopEnterEffectServiceImpl
             ((StringBuilder)localObject).append("isEffectOn troopUin = ");
             ((StringBuilder)localObject).append(paramString);
             ((StringBuilder)localObject).append(" globalEffectId = ");
-            ((StringBuilder)localObject).append(this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.b);
+            ((StringBuilder)localObject).append(this.mEffectConfig.b.b);
             QLog.d("TroopEnterEffect", 2, ((StringBuilder)localObject).toString());
           }
-          if (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.b > 0) {
+          if (this.mEffectConfig.b.b > 0) {
             bool1 = true;
           }
           return bool1;
@@ -277,10 +277,10 @@ public class TroopEnterEffectServiceImpl
           localStringBuilder.append("isEffectOn troopUin = ");
           localStringBuilder.append(paramString);
           localStringBuilder.append(" isOn = ");
-          localStringBuilder.append(((TroopEnterEffectConfig.EffectInfoData)localObject).jdField_a_of_type_Boolean);
+          localStringBuilder.append(((TroopEnterEffectConfig.EffectInfoData)localObject).d);
           QLog.d("TroopEnterEffect", 2, localStringBuilder.toString());
         }
-        return ((TroopEnterEffectConfig.EffectInfoData)localObject).jdField_a_of_type_Boolean;
+        return ((TroopEnterEffectConfig.EffectInfoData)localObject).d;
       }
       if (QLog.isColorLevel())
       {
@@ -308,7 +308,7 @@ public class TroopEnterEffectServiceImpl
       ThreadManager.post(new TroopEnterEffectServiceImpl.1(this, paramString), 8, null, true);
       return;
     }
-    if (!this.mEffectConfig.jdField_a_of_type_Boolean)
+    if (!this.mEffectConfig.a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect", 2, "notifyEnterTroop function not enable");
@@ -385,7 +385,7 @@ public class TroopEnterEffectServiceImpl
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect", 2, "readEffectConfigData success");
       }
-      this.mEffectConfig.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.mEffectConfig.c.set(true);
     }
     updateEffectInfo(readEffectInfo());
     this.hasConfigInited.set(true);
@@ -404,9 +404,9 @@ public class TroopEnterEffectServiceImpl
   
   public void removeEnterEffectData(TroopEnterEffectData paramTroopEnterEffectData)
   {
-    if ((paramTroopEnterEffectData != null) && (!TextUtils.isEmpty(paramTroopEnterEffectData.b)))
+    if ((paramTroopEnterEffectData != null) && (!TextUtils.isEmpty(paramTroopEnterEffectData.c)))
     {
-      List localList = (List)this.mTroopEnterEffectDatas.get(paramTroopEnterEffectData.b);
+      List localList = (List)this.mTroopEnterEffectDatas.get(paramTroopEnterEffectData.c);
       if (localList != null) {
         localList.remove(paramTroopEnterEffectData);
       }
@@ -500,30 +500,30 @@ public class TroopEnterEffectServiceImpl
     this.svipType = paramInt3;
     this.effectId = paramInt1;
     Object localObject = this.mEffectConfig;
-    if ((localObject != null) && (((TroopEnterEffectConfig)localObject).jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo != null) && (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
+    if ((localObject != null) && (((TroopEnterEffectConfig)localObject).b != null) && (this.mEffectConfig.b.d != null))
     {
-      if ((TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong)) == null)
+      if ((TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.b.d.get(String.valueOf(paramLong)) == null)
       {
-        this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(paramLong), new TroopEnterEffectConfig.EffectInfoData(paramLong, paramInt1, paramString));
+        this.mEffectConfig.b.d.put(String.valueOf(paramLong), new TroopEnterEffectConfig.EffectInfoData(paramLong, paramInt1, paramString));
       }
       else
       {
-        localObject = this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+        localObject = this.mEffectConfig.b.d.entrySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
           TroopEnterEffectConfig.EffectInfoData localEffectInfoData = (TroopEnterEffectConfig.EffectInfoData)((Map.Entry)((Iterator)localObject).next()).getValue();
-          localEffectInfoData.jdField_a_of_type_Int = paramInt1;
-          localEffectInfoData.jdField_a_of_type_JavaLangString = paramString;
-          localEffectInfoData.jdField_a_of_type_Long = paramLong;
+          localEffectInfoData.b = paramInt1;
+          localEffectInfoData.c = paramString;
+          localEffectInfoData.a = paramLong;
         }
       }
-      saveEffectConfigData(this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.a());
+      saveEffectConfigData(this.mEffectConfig.b.a());
     }
   }
   
   public void updateEffectInfo(TroopEnterEffectConfig.EffectInfo paramEffectInfo)
   {
-    this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo = paramEffectInfo;
+    this.mEffectConfig.b = paramEffectInfo;
   }
   
   public void updateEffectStatus(ArrayList<String> paramArrayList)
@@ -536,7 +536,7 @@ public class TroopEnterEffectServiceImpl
       QLog.d("TroopEnterEffect", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = this.mEffectConfig;
-    if ((localObject1 != null) && (((TroopEnterEffectConfig)localObject1).jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo != null))
+    if ((localObject1 != null) && (((TroopEnterEffectConfig)localObject1).b != null))
     {
       Iterator localIterator = paramArrayList.iterator();
       while (localIterator.hasNext())
@@ -546,15 +546,15 @@ public class TroopEnterEffectServiceImpl
         {
           Object localObject2 = paramArrayList[0];
           Object localObject3 = paramArrayList[1];
-          localObject1 = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+          localObject1 = (TroopEnterEffectConfig.EffectInfoData)this.mEffectConfig.b.d.get(localObject2);
           paramArrayList = (ArrayList<String>)localObject1;
           if (localObject1 == null) {
             paramArrayList = new TroopEnterEffectConfig.EffectInfoData();
           }
           if (localObject3.equals("1"))
           {
-            paramArrayList.jdField_a_of_type_Boolean = false;
-            this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, paramArrayList);
+            paramArrayList.d = false;
+            this.mEffectConfig.b.d.put(localObject2, paramArrayList);
             if (QLog.isColorLevel())
             {
               paramArrayList = new StringBuilder();
@@ -565,9 +565,9 @@ public class TroopEnterEffectServiceImpl
           }
           else if (localObject3.equals("0"))
           {
-            if (this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.b > 0)
+            if (this.mEffectConfig.b.b > 0)
             {
-              this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject2);
+              this.mEffectConfig.b.d.remove(localObject2);
               if (QLog.isColorLevel())
               {
                 paramArrayList = new StringBuilder();
@@ -579,8 +579,8 @@ public class TroopEnterEffectServiceImpl
             }
             else
             {
-              paramArrayList.jdField_a_of_type_Boolean = true;
-              this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, paramArrayList);
+              paramArrayList.d = true;
+              this.mEffectConfig.b.d.put(localObject2, paramArrayList);
               if (QLog.isColorLevel())
               {
                 paramArrayList = new StringBuilder();
@@ -593,7 +593,7 @@ public class TroopEnterEffectServiceImpl
           }
         }
       }
-      saveEffectConfigData(this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.a());
+      saveEffectConfigData(this.mEffectConfig.b.a());
     }
   }
   
@@ -617,11 +617,11 @@ public class TroopEnterEffectServiceImpl
     this.svipType = paramInt3;
     this.effectId = paramInt1;
     Object localObject = this.mEffectConfig;
-    if ((localObject != null) && (((TroopEnterEffectConfig)localObject).jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo != null))
+    if ((localObject != null) && (((TroopEnterEffectConfig)localObject).b != null))
     {
-      this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.b = paramInt1;
-      this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaLangString = paramString;
-      saveEffectConfigData(this.mEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectConfig$EffectInfo.a());
+      this.mEffectConfig.b.b = paramInt1;
+      this.mEffectConfig.b.c = paramString;
+      saveEffectConfigData(this.mEffectConfig.b.a());
     }
   }
   
@@ -636,7 +636,7 @@ public class TroopEnterEffectServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
- * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.api.impl.TroopEnterEffectServiceImpl
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.mobileqq.troop.entereffect.api.impl.TroopEnterEffectServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -36,12 +36,12 @@ public class SearchActivityJumpFetcherImpl
   
   public void jumpToContactSearchActivity(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    ContactSearchActivity.a(paramContext, paramString, paramInt1, 197437, paramInt2);
+    ContactSearchActivity.a(paramContext, paramString, paramInt1, 33751869, paramInt2);
   }
   
   public void jumpToContactSearchActivity(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    ContactSearchActivity.a(paramContext, paramString, paramInt, 197437, paramBoolean);
+    ContactSearchActivity.a(paramContext, paramString, paramInt, 33751869, paramBoolean);
   }
   
   public void jumpToFavoriteSearchActivity(Context paramContext, String paramString)
@@ -66,7 +66,7 @@ public class SearchActivityJumpFetcherImpl
   
   public void jumpToProfileCardActivity(Activity paramActivity, SearchResultItem paramSearchResultItem, AppInterface paramAppInterface, boolean paramBoolean, int paramInt)
   {
-    AddFriendActivity.a(paramActivity, paramSearchResultItem, (QQAppInterface)paramAppInterface, paramBoolean, paramInt);
+    AddFriendActivity.startProfileCardActivity(paramActivity, paramSearchResultItem, (QQAppInterface)paramAppInterface, paramBoolean, paramInt);
   }
   
   public void jumpToPublicAcntSearchActivity(Context paramContext, String paramString, int paramInt)
@@ -107,7 +107,7 @@ public class SearchActivityJumpFetcherImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.api.impl.SearchActivityJumpFetcherImpl
  * JD-Core Version:    0.7.0.1
  */

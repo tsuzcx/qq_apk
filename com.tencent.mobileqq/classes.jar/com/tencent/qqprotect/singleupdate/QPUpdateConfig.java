@@ -16,17 +16,17 @@ import org.json.JSONObject;
 
 public class QPUpdateConfig
 {
-  private long jdField_a_of_type_Long = 0L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<SFU.UpdateSection> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private long a = 0L;
+  private boolean b;
+  private List<SFU.UpdateSection> c;
+  private QQAppInterface d;
+  private SharedPreferences e = null;
   
   public QPUpdateConfig(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("qp_sfu_config", 0);
+    this.d = paramQQAppInterface;
+    this.c = new ArrayList();
+    this.e = this.d.getApp().getSharedPreferences("qp_sfu_config", 0);
   }
   
   private int a(String paramString1, String paramString2)
@@ -55,28 +55,18 @@ public class QPUpdateConfig
     return 0;
   }
   
-  private String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getDir("qqprotect", 0).toString());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("SFU/");
-    localStringBuilder.append("qp_sfu_config.dat");
-    return localStringBuilder.toString();
-  }
-  
   private String a(String paramString1, String paramString2, String paramString3)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals("1")))
     {
       if (paramString1.equals("2")) {
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getExternalFilesDir(null).getParent();
+        paramString1 = this.d.getApp().getExternalFilesDir(null).getParent();
       } else {
         paramString1 = "";
       }
     }
     else {
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getFilesDir().getParent();
+      paramString1 = this.d.getApp().getFilesDir().getParent();
     }
     Object localObject = paramString1;
     if (!paramString1.endsWith(File.separator))
@@ -138,7 +128,85 @@ public class QPUpdateConfig
     return false;
   }
   
-  private boolean a(String paramString1, String paramString2)
+  private String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d.getApp().getDir("qqprotect", 0).toString());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("SFU/");
+    localStringBuilder.append("qp_sfu_config.dat");
+    return localStringBuilder.toString();
+  }
+  
+  private boolean b(String paramString)
+  {
+    try
+    {
+      Object localObject1 = new ArrayList();
+      paramString = new JSONObject(paramString);
+      this.a = paramString.getLong("version");
+      this.b = paramString.getBoolean("forceupdate");
+      JSONArray localJSONArray = paramString.getJSONArray("sections");
+      int i = 0;
+      paramString = (String)localObject1;
+      while (i < localJSONArray.length())
+      {
+        localObject1 = new SFU.UpdateSection();
+        Object localObject2 = localJSONArray.getJSONObject(i);
+        ((SFU.UpdateSection)localObject1).a = ((JSONObject)localObject2).getLong("sid");
+        ((SFU.UpdateSection)localObject1).b = ((JSONObject)localObject2).getLong("bid");
+        ((SFU.UpdateSection)localObject1).c = ((JSONObject)localObject2).getLong("size");
+        ((SFU.UpdateSection)localObject1).d = ((JSONObject)localObject2).getString("name");
+        ((SFU.UpdateSection)localObject1).e = ((JSONObject)localObject2).getString("md5");
+        ((SFU.UpdateSection)localObject1).f = ((JSONObject)localObject2).getString("url");
+        ((SFU.UpdateSection)localObject1).g = ((JSONObject)localObject2).getLong("osminver");
+        ((SFU.UpdateSection)localObject1).h = ((JSONObject)localObject2).getLong("osmaxver");
+        ((SFU.UpdateSection)localObject1).k = ((JSONObject)localObject2).getString("cpuabi");
+        ((SFU.UpdateSection)localObject1).i = ((JSONObject)localObject2).getString("qqminver");
+        ((SFU.UpdateSection)localObject1).j = ((JSONObject)localObject2).getString("qqmaxver");
+        ((SFU.UpdateSection)localObject1).l = ((JSONObject)localObject2).getString("os");
+        ((SFU.UpdateSection)localObject1).n = a(((SFU.UpdateSection)localObject1).l, ((SFU.UpdateSection)localObject1).g, ((SFU.UpdateSection)localObject1).h);
+        ((SFU.UpdateSection)localObject1).o = c(((SFU.UpdateSection)localObject1).k);
+        ((SFU.UpdateSection)localObject1).m = b(((SFU.UpdateSection)localObject1).i, ((SFU.UpdateSection)localObject1).j);
+        if (((JSONObject)localObject2).has("flag")) {
+          ((SFU.UpdateSection)localObject1).v = ((JSONObject)localObject2).getInt("flag");
+        }
+        localObject2 = ((JSONObject)localObject2).getJSONArray("files");
+        int j = 0;
+        while (j < ((JSONArray)localObject2).length())
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(j);
+          SFU.FileInfo localFileInfo = new SFU.FileInfo();
+          localFileInfo.i = localJSONObject.getLong("size");
+          localFileInfo.d = localJSONObject.getString("root");
+          localFileInfo.e = localJSONObject.getString("path");
+          localFileInfo.a = localJSONObject.getString("name");
+          localFileInfo.f = a(localFileInfo.d, localFileInfo.e, localFileInfo.a);
+          localFileInfo.b = localJSONObject.getString("md5");
+          localFileInfo.j = localJSONObject.getLong("rptid");
+          if (localJSONObject.has("extra")) {
+            localFileInfo.k = localJSONObject.getString("extra");
+          }
+          ((SFU.UpdateSection)localObject1).p.add(localFileInfo);
+          j += 1;
+        }
+        paramString.add(localObject1);
+        i += 1;
+      }
+      this.c = paramString;
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, "[SFU] parsing config error");
+      }
+    }
+    return false;
+  }
+  
+  private boolean b(String paramString1, String paramString2)
   {
     boolean bool2 = false;
     boolean bool1;
@@ -156,7 +224,7 @@ public class QPUpdateConfig
       if ((bool1) && (bool3)) {
         return true;
       }
-      str = DeviceInfoUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      str = DeviceInfoUtil.a(this.d.getApp());
       if (TextUtils.isEmpty(str)) {
         return false;
       }
@@ -165,16 +233,16 @@ public class QPUpdateConfig
     try
     {
       if (a(str, paramString2) > 0) {
-        break label177;
+        break label181;
       }
       return true;
     }
     catch (Exception paramString1)
     {
       int i;
-      label171:
-      label177:
-      break label171;
+      label175:
+      label181:
+      break label175;
     }
     if ((!bool1) && (bool3))
     {
@@ -200,74 +268,6 @@ public class QPUpdateConfig
       }
       return false;
       return false;
-    }
-    return false;
-  }
-  
-  private boolean b(String paramString)
-  {
-    try
-    {
-      Object localObject1 = new ArrayList();
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Long = paramString.getLong("version");
-      this.jdField_a_of_type_Boolean = paramString.getBoolean("forceupdate");
-      JSONArray localJSONArray = paramString.getJSONArray("sections");
-      int i = 0;
-      paramString = (String)localObject1;
-      while (i < localJSONArray.length())
-      {
-        localObject1 = new SFU.UpdateSection();
-        Object localObject2 = localJSONArray.getJSONObject(i);
-        ((SFU.UpdateSection)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("sid");
-        ((SFU.UpdateSection)localObject1).jdField_b_of_type_Long = ((JSONObject)localObject2).getLong("bid");
-        ((SFU.UpdateSection)localObject1).jdField_c_of_type_Long = ((JSONObject)localObject2).getLong("size");
-        ((SFU.UpdateSection)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("name");
-        ((SFU.UpdateSection)localObject1).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("md5");
-        ((SFU.UpdateSection)localObject1).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("url");
-        ((SFU.UpdateSection)localObject1).jdField_d_of_type_Long = ((JSONObject)localObject2).getLong("osminver");
-        ((SFU.UpdateSection)localObject1).jdField_e_of_type_Long = ((JSONObject)localObject2).getLong("osmaxver");
-        ((SFU.UpdateSection)localObject1).f = ((JSONObject)localObject2).getString("cpuabi");
-        ((SFU.UpdateSection)localObject1).jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).getString("qqminver");
-        ((SFU.UpdateSection)localObject1).jdField_e_of_type_JavaLangString = ((JSONObject)localObject2).getString("qqmaxver");
-        ((SFU.UpdateSection)localObject1).g = ((JSONObject)localObject2).getString("os");
-        ((SFU.UpdateSection)localObject1).jdField_b_of_type_Boolean = a(((SFU.UpdateSection)localObject1).g, ((SFU.UpdateSection)localObject1).jdField_d_of_type_Long, ((SFU.UpdateSection)localObject1).jdField_e_of_type_Long);
-        ((SFU.UpdateSection)localObject1).jdField_c_of_type_Boolean = c(((SFU.UpdateSection)localObject1).f);
-        ((SFU.UpdateSection)localObject1).jdField_a_of_type_Boolean = a(((SFU.UpdateSection)localObject1).jdField_d_of_type_JavaLangString, ((SFU.UpdateSection)localObject1).jdField_e_of_type_JavaLangString);
-        if (((JSONObject)localObject2).has("flag")) {
-          ((SFU.UpdateSection)localObject1).jdField_b_of_type_Int = ((JSONObject)localObject2).getInt("flag");
-        }
-        localObject2 = ((JSONObject)localObject2).getJSONArray("files");
-        int j = 0;
-        while (j < ((JSONArray)localObject2).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(j);
-          SFU.FileInfo localFileInfo = new SFU.FileInfo();
-          localFileInfo.jdField_a_of_type_Long = localJSONObject.getLong("size");
-          localFileInfo.jdField_d_of_type_JavaLangString = localJSONObject.getString("root");
-          localFileInfo.jdField_e_of_type_JavaLangString = localJSONObject.getString("path");
-          localFileInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-          localFileInfo.f = a(localFileInfo.jdField_d_of_type_JavaLangString, localFileInfo.jdField_e_of_type_JavaLangString, localFileInfo.jdField_a_of_type_JavaLangString);
-          localFileInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("md5");
-          localFileInfo.jdField_b_of_type_Long = localJSONObject.getLong("rptid");
-          if (localJSONObject.has("extra")) {
-            localFileInfo.i = localJSONObject.getString("extra");
-          }
-          ((SFU.UpdateSection)localObject1).jdField_a_of_type_JavaUtilList.add(localFileInfo);
-          j += 1;
-        }
-        paramString.add(localObject1);
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaUtilList = paramString;
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, "[SFU] parsing config error");
-      }
     }
     return false;
   }
@@ -300,43 +300,43 @@ public class QPUpdateConfig
   
   public List<SFU.UpdateSection> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.c;
   }
   
   public List<SFU.UpdateSection> a(long paramLong)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("last_update_bids", "");
-    String str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("last_update_sections", "");
-    if ((((String)localObject).indexOf(String.format("#%d#", new Object[] { Long.valueOf(paramLong) })) != -1) && (a(a())) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    Object localObject = this.e.getString("last_update_bids", "");
+    String str = this.e.getString("last_update_sections", "");
+    if ((((String)localObject).indexOf(String.format("#%d#", new Object[] { Long.valueOf(paramLong) })) != -1) && (a(b())) && (!this.c.isEmpty()))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.c.size())
       {
-        localObject = (SFU.UpdateSection)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (((SFU.UpdateSection)localObject).jdField_b_of_type_Long == paramLong) {
-          if (str.indexOf(String.format("#%d#", new Object[] { Long.valueOf(((SFU.UpdateSection)localObject).jdField_a_of_type_Long) })) != -1)
+        localObject = (SFU.UpdateSection)this.c.get(i);
+        if (((SFU.UpdateSection)localObject).b == paramLong) {
+          if (str.indexOf(String.format("#%d#", new Object[] { Long.valueOf(((SFU.UpdateSection)localObject).a) })) != -1)
           {
             int j = 0;
             SFU.FileInfo localFileInfo;
-            while (j < ((SFU.UpdateSection)localObject).jdField_a_of_type_JavaUtilList.size())
+            while (j < ((SFU.UpdateSection)localObject).p.size())
             {
-              localFileInfo = (SFU.FileInfo)((SFU.UpdateSection)localObject).jdField_a_of_type_JavaUtilList.get(j);
-              localFileInfo.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(localFileInfo.f, "");
+              localFileInfo = (SFU.FileInfo)((SFU.UpdateSection)localObject).p.get(j);
+              localFileInfo.g = this.e.getString(localFileInfo.f, "");
               j += 1;
             }
             j = 0;
-            while (j < ((SFU.UpdateSection)localObject).jdField_c_of_type_JavaUtilList.size())
+            while (j < ((SFU.UpdateSection)localObject).r.size())
             {
-              localFileInfo = (SFU.FileInfo)((SFU.UpdateSection)localObject).jdField_c_of_type_JavaUtilList.get(j);
-              localFileInfo.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(localFileInfo.f, "");
+              localFileInfo = (SFU.FileInfo)((SFU.UpdateSection)localObject).r.get(j);
+              localFileInfo.g = this.e.getString(localFileInfo.f, "");
               j += 1;
             }
             j = 0;
-            while (j < ((SFU.UpdateSection)localObject).jdField_b_of_type_JavaUtilList.size())
+            while (j < ((SFU.UpdateSection)localObject).q.size())
             {
-              localFileInfo = (SFU.FileInfo)((SFU.UpdateSection)localObject).jdField_b_of_type_JavaUtilList.get(j);
-              localFileInfo.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(localFileInfo.f, "");
+              localFileInfo = (SFU.FileInfo)((SFU.UpdateSection)localObject).q.get(j);
+              localFileInfo.g = this.e.getString(localFileInfo.f, "");
               j += 1;
             }
             localArrayList.add(localObject);
@@ -350,7 +350,7 @@ public class QPUpdateConfig
   
   public boolean a(String paramString)
   {
-    byte[] arrayOfByte = VerifyFileUtil.a(new File(paramString), null);
+    byte[] arrayOfByte = VerifyFileUtil.b(new File(paramString), null);
     if (arrayOfByte != null) {
       return b(new String(arrayOfByte));
     }
@@ -362,7 +362,7 @@ public class QPUpdateConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPUpdateConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -18,42 +18,42 @@ public class NormalNodeView
   
   public NormalNodeView(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramViewGroup, 2131561714);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramViewGroup, 2131628093);
+    this.a = paramInt;
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 3)
     {
       if (i != 4)
       {
-        AssertUtils.fail(HardCodeUtil.a(2131707612), new Object[0]);
+        AssertUtils.fail(HardCodeUtil.a(2131905427), new Object[0]);
         return;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(HardCodeUtil.a(2131707611), false);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846863);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.b(false);
+      this.c.setNodeName(HardCodeUtil.a(2131905426), false);
+      this.c.a.setImageResource(2130848415);
+      this.c.a.b(false);
       return;
     }
     this.itemView.setTag(Integer.valueOf(3));
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramMsgTabNodeInfo.c, false);
-    String str = ThumbnailUrlHelper.b(paramMsgTabNodeInfo.g);
+    this.c.setNodeName(paramMsgTabNodeInfo.l, false);
+    String str = ThumbnailUrlHelper.b(paramMsgTabNodeInfo.p);
     if (!TextUtils.isEmpty(str)) {
       b(str);
     } else {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846866);
+      this.c.a.setImageResource(2130848418);
     }
-    if ((paramMsgTabNodeInfo.a == null) || (paramMsgTabNodeInfo.a.isEmpty())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(1, 1 - paramMsgTabNodeInfo.b);
+    if ((paramMsgTabNodeInfo.e == null) || (paramMsgTabNodeInfo.e.isEmpty())) {
+      this.c.a(1, 1 - paramMsgTabNodeInfo.i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.NormalNodeView
  * JD-Core Version:    0.7.0.1
  */

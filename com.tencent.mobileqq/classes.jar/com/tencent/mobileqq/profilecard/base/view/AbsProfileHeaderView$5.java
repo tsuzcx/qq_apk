@@ -37,14 +37,14 @@ class AbsProfileHeaderView$5
         return;
       }
       UiUtils.Companion.showProfileSignGuideAsDropDown(this.val$signView, -i, 0);
-      SigTopicManager.a().a(this.this$0.mApp);
+      SigTopicManager.a().b(this.this$0.mApp);
       ReportController.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.5
  * JD-Core Version:    0.7.0.1
  */

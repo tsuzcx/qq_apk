@@ -25,7 +25,7 @@ class NavBarQQGamePub$1
       NavBarQQGamePub.a(this.a).setVisibility(4);
     }
     HashMap localHashMap = new HashMap();
-    int j = NavBarQQGamePub.a(this.a);
+    int j = NavBarQQGamePub.b(this.a);
     int i = 1;
     if (j == 1)
     {
@@ -33,25 +33,25 @@ class NavBarQQGamePub$1
       localObject = "";
       i = 2;
     }
-    else if (NavBarQQGamePub.a(this.a) == 2)
+    else if (NavBarQQGamePub.b(this.a) == 2)
     {
-      if ((!TextUtils.isEmpty(NavBarQQGamePub.a(this.a))) && ((NavBarQQGamePub.a(this.a).startsWith("http")) || (NavBarQQGamePub.a(this.a).startsWith("https"))))
+      if ((!TextUtils.isEmpty(NavBarQQGamePub.c(this.a))) && ((NavBarQQGamePub.c(this.a).startsWith("http")) || (NavBarQQGamePub.c(this.a).startsWith("https"))))
       {
         localObject = this.a;
-        NavBarQQGamePub.a((NavBarQQGamePub)localObject, NavBarQQGamePub.a((NavBarQQGamePub)localObject));
+        NavBarQQGamePub.a((NavBarQQGamePub)localObject, NavBarQQGamePub.c((NavBarQQGamePub)localObject));
       }
-      localObject = NavBarQQGamePub.b(this.a);
+      localObject = NavBarQQGamePub.d(this.a);
       this.a.a();
       i = 3;
     }
-    else if (NavBarQQGamePub.a(this.a) == 3)
+    else if (NavBarQQGamePub.b(this.a) == 3)
     {
-      if ((!TextUtils.isEmpty(NavBarQQGamePub.a(this.a))) && ((NavBarQQGamePub.a(this.a).startsWith("http")) || (NavBarQQGamePub.a(this.a).startsWith("https"))))
+      if ((!TextUtils.isEmpty(NavBarQQGamePub.c(this.a))) && ((NavBarQQGamePub.c(this.a).startsWith("http")) || (NavBarQQGamePub.c(this.a).startsWith("https"))))
       {
         localObject = this.a;
-        NavBarQQGamePub.a((NavBarQQGamePub)localObject, NavBarQQGamePub.a((NavBarQQGamePub)localObject));
+        NavBarQQGamePub.a((NavBarQQGamePub)localObject, NavBarQQGamePub.c((NavBarQQGamePub)localObject));
       }
-      localObject = NavBarQQGamePub.b(this.a);
+      localObject = NavBarQQGamePub.d(this.a);
       this.a.a();
     }
     else
@@ -67,15 +67,17 @@ class NavBarQQGamePub$1
     ((StringBuilder)localObject).append("");
     localHashMap.put(Integer.valueOf(3), ((StringBuilder)localObject).toString());
     localHashMap.put(Integer.valueOf(4), "20");
-    localHashMap.put(Integer.valueOf(24), NavBarQQGamePub.c(this.a));
+    localHashMap.put(Integer.valueOf(24), NavBarQQGamePub.e(this.a));
     GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "770", "207023", "", "77002", "1", "160", localHashMap);
-    GamePubAccountHelper.a();
+    GamePubAccountHelper.d();
+    GamePubAccountHelper.c();
+    GamePubAccountHelper.j(NavBarQQGamePub.d(this.a));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.NavBarQQGamePub.1
  * JD-Core Version:    0.7.0.1
  */

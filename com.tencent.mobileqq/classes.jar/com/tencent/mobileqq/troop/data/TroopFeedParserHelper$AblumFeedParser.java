@@ -20,9 +20,9 @@ public class TroopFeedParserHelper$AblumFeedParser
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramJSONObject.getString("album_name"));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715088));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912576));
       ((StringBuilder)localObject).append(paramJSONObject.getString("photo_num"));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715090));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912578));
       localTroopFeedItem.title = ((StringBuilder)localObject).toString();
       localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
       localObject = paramJSONObject.getJSONArray("content");
@@ -51,7 +51,7 @@ public class TroopFeedParserHelper$AblumFeedParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.AblumFeedParser
  * JD-Core Version:    0.7.0.1
  */

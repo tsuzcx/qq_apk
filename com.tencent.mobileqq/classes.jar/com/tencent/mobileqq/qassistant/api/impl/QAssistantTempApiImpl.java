@@ -53,7 +53,7 @@ public class QAssistantTempApiImpl
         {
           int i = SharedPreUtils.a(paramContext.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
           paramContext = (IExpandManager)paramContext.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-          return (i == 1) && (paramContext.d());
+          return (i == 1) && (paramContext.x());
         }
         bool1 = bool2;
         if (paramString.equalsIgnoreCase("confessmsg"))
@@ -70,13 +70,13 @@ public class QAssistantTempApiImpl
   
   public void configWebItemCloseDrawer()
   {
-    if (FrameHelperActivity.b())
+    if (FrameHelperActivity.G())
     {
       if (QLog.isColorLevel()) {
         QLog.d("WakeManager", 2, "QAssistantConfigMainItem isDrawerFrameOpenOrMoving");
       }
-      FrameHelperActivity.b(true);
-      FrameHelperActivity.w();
+      FrameHelperActivity.c(true);
+      FrameHelperActivity.H();
     }
   }
   
@@ -93,15 +93,15 @@ public class QAssistantTempApiImpl
       }
       if (paramString.equalsIgnoreCase("confessmsg"))
       {
-        paramString = ((ConfessManager)localQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
-        if ((paramString != null) && (!TextUtils.isEmpty(paramString.l))) {
-          return paramString.l;
+        paramString = ((ConfessManager)localQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).d();
+        if ((paramString != null) && (!TextUtils.isEmpty(paramString.s))) {
+          return paramString.s;
         }
         return "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
       }
       if (paramString.equalsIgnoreCase("qinterest"))
       {
-        paramString = SharedPreUtils.c(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
+        paramString = SharedPreUtils.af(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
         if (!TextUtils.isEmpty(paramString)) {
           return paramString.trim();
         }
@@ -143,7 +143,7 @@ public class QAssistantTempApiImpl
   
   public int getChatFragmentCurrentType()
   {
-    return ChatFragment.a().a.a.a;
+    return ChatFragment.a().c.ah.a;
   }
   
   public String getIpcConstants_ACTION_VOICE_RECORD_OFF()
@@ -163,7 +163,7 @@ public class QAssistantTempApiImpl
   
   public int getMainFragmentCurrentTab()
   {
-    return MainFragment.a().a();
+    return MainFragment.a().w();
   }
   
   public boolean isSpecialCareFriend(String paramString)
@@ -172,13 +172,13 @@ public class QAssistantTempApiImpl
     if (localQQAppInterface == null) {
       return false;
     }
-    paramString = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString);
+    paramString = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).y(paramString);
     return (paramString != null) && (paramString.globalSwitch == 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.api.impl.QAssistantTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

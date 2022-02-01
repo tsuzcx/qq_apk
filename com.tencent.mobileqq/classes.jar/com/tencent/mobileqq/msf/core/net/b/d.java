@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.o;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -308,13 +308,13 @@ public class d
         }
         if (this.m.statReporter != null)
         {
-          this.m.statReporter.a("dim.Msf.ConnRequestAllFailDetect3", bool1, 0L, 0L, (Map)localObject1, false, false);
+          this.m.statReporter.a("dim_Msf_ConnRequestAllFailDetect3", bool1, 0L, 0L, (Map)localObject1, false, false);
           if (i2 != 0) {
-            this.m.statReporter.a("dim.Msf.ConnRequestAllFailDetect_Special", bool1, 0L, 0L, (Map)localObject1, false, false);
+            this.m.statReporter.a("dim_Msf_ConnRequestAllFailDetect_Special", bool1, 0L, 0L, (Map)localObject1, false, false);
           }
           if (i1 != 0)
           {
-            this.m.statReporter.a("dim.Msf.ConnRequestAllFailDetect_Special1", bool1, 0L, 0L, (Map)localObject1, false, false);
+            this.m.statReporter.a("dim_Msf_ConnRequestAllFailDetect_Special1", bool1, 0L, 0L, (Map)localObject1, false, false);
             return;
           }
         }
@@ -335,7 +335,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.d
  * JD-Core Version:    0.7.0.1
  */

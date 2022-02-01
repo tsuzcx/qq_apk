@@ -2,26 +2,26 @@ package com.tencent.avgame.qav;
 
 public class AVGameMediaFileInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public long b;
-  public String b;
+  public int b;
+  public long c;
+  public long d;
+  public String e;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AVGameMediaFileInfo{mMediaFileUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mMediaFormat=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mMediaFileDuration=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mMediaFileSize=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mMediaFileMd5='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

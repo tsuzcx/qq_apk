@@ -16,13 +16,13 @@ import java.util.List;
 public class SearchFileFlowLayout
   extends ViewGroup
 {
-  private int jdField_a_of_type_Int;
-  private List<List<View>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private List<Integer> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private List<Integer> c = new ArrayList();
+  private int a;
+  private int b;
+  private List<List<View>> c = new ArrayList();
   private List<Integer> d = new ArrayList();
-  private List<View> e = new ArrayList();
+  private List<Integer> e = new ArrayList();
+  private List<Integer> f = new ArrayList();
+  private List<View> g = new ArrayList();
   
   public SearchFileFlowLayout(Context paramContext)
   {
@@ -38,10 +38,10 @@ public class SearchFileFlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SearchFileFlowLayout);
-    this.jdField_a_of_type_Int = paramContext.getInt(0, 0);
-    this.jdField_b_of_type_Int = paramContext.getInteger(1, -1);
-    if (this.jdField_b_of_type_Int <= 0) {
-      this.jdField_b_of_type_Int = -1;
+    this.a = paramContext.getInt(0, 0);
+    this.b = paramContext.getInteger(1, -1);
+    if (this.b <= 0) {
+      this.b = -1;
     }
     paramContext.recycle();
   }
@@ -53,11 +53,11 @@ public class SearchFileFlowLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
     this.c.clear();
-    this.e.clear();
     this.d.clear();
+    this.e.clear();
+    this.g.clear();
+    this.f.clear();
     int m = getWidth();
     int n = getChildCount();
     if (n == 0) {
@@ -78,7 +78,7 @@ public class SearchFileFlowLayout
       int i1 = ((View)localObject1).getMeasuredHeight();
       if (i2 + paramInt1 + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin <= m - getPaddingLeft() - getPaddingRight())
       {
-        int i3 = this.jdField_b_of_type_Int;
+        int i3 = this.b;
         j = paramInt1;
         k = paramInt2;
         i = paramInt3;
@@ -92,26 +92,26 @@ public class SearchFileFlowLayout
       }
       else
       {
-        this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(paramInt3));
-        this.c.add(Integer.valueOf(paramInt1));
-        this.jdField_a_of_type_JavaUtilList.add(this.e);
+        this.d.add(Integer.valueOf(paramInt3));
+        this.e.add(Integer.valueOf(paramInt1));
+        this.c.add(this.g);
         i = ((ViewGroup.MarginLayoutParams)localObject2).topMargin + i1 + ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin;
-        this.e = new ArrayList();
+        this.g = new ArrayList();
         j = 0;
         k = 0;
       }
       paramInt2 = k + 1;
       paramInt1 = j + (i2 + ((ViewGroup.MarginLayoutParams)localObject2).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin);
       paramInt3 = Math.max(i, i1 + ((ViewGroup.MarginLayoutParams)localObject2).topMargin + ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin);
-      this.e.add(localObject1);
+      this.g.add(localObject1);
       paramInt4 += 1;
     }
-    this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(paramInt3));
-    this.c.add(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilList.add(this.e);
+    this.d.add(Integer.valueOf(paramInt3));
+    this.e.add(Integer.valueOf(paramInt1));
+    this.c.add(this.g);
     paramInt4 = getPaddingLeft();
     paramInt3 = getPaddingTop();
-    int i = this.jdField_a_of_type_JavaUtilList.size();
+    int i = this.c.size();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("一共有 ");
     ((StringBuilder)localObject1).append(i);
@@ -122,21 +122,21 @@ public class SearchFileFlowLayout
     while (paramInt1 < i)
     {
       localObject1 = (ViewGroup.MarginLayoutParams)getChildAt(paramInt2).getLayoutParams();
-      localObject2 = getChildAt(((List)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).size() + paramInt2 - 1);
-      paramInt2 += ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).size();
+      localObject2 = getChildAt(((List)this.c.get(paramInt1)).size() + paramInt2 - 1);
+      paramInt2 += ((List)this.c.get(paramInt1)).size();
       localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject2).getLayoutParams();
-      this.d.add(Integer.valueOf((getMeasuredWidth() - ((Integer)this.c.get(paramInt1)).intValue() + ((ViewGroup.MarginLayoutParams)localObject1).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin) / 2));
+      this.f.add(Integer.valueOf((getMeasuredWidth() - ((Integer)this.e.get(paramInt1)).intValue() + ((ViewGroup.MarginLayoutParams)localObject1).leftMargin + ((ViewGroup.MarginLayoutParams)localObject2).rightMargin) / 2));
       paramInt1 += 1;
     }
     paramInt1 = paramInt4;
     paramInt4 = 0;
     while (paramInt4 < i)
     {
-      this.e = ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt4));
-      j = ((Integer)this.jdField_b_of_type_JavaUtilList.get(paramInt4)).intValue();
-      k = this.jdField_a_of_type_Int;
+      this.g = ((List)this.c.get(paramInt4));
+      j = ((Integer)this.d.get(paramInt4)).intValue();
+      k = this.a;
       if (k == 2) {}
-      for (paramInt2 = ((Integer)this.d.get(paramInt4)).intValue() * 2;; paramInt2 = ((Integer)this.d.get(paramInt4)).intValue())
+      for (paramInt2 = ((Integer)this.f.get(paramInt4)).intValue() * 2;; paramInt2 = ((Integer)this.f.get(paramInt4)).intValue())
       {
         paramInt2 = paramInt1 + paramInt2;
         break;
@@ -146,9 +146,9 @@ public class SearchFileFlowLayout
         }
       }
       paramInt1 = 0;
-      while (paramInt1 < this.e.size())
+      while (paramInt1 < this.g.size())
       {
-        localObject1 = (View)this.e.get(paramInt1);
+        localObject1 = (View)this.g.get(paramInt1);
         if (((View)localObject1).getVisibility() != 8)
         {
           localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
@@ -188,7 +188,7 @@ public class SearchFileFlowLayout
       int i5 = i2 + i3;
       if (i5 <= j - getPaddingLeft() - getPaddingRight())
       {
-        int i10 = this.jdField_b_of_type_Int;
+        int i10 = this.b;
         if ((i1 < i10) || (i10 == -1))
         {
           n = Math.max(n, i6);
@@ -237,30 +237,30 @@ public class SearchFileFlowLayout
   public void setAlignMode(int paramInt)
   {
     if ((paramInt < 0) || (paramInt > 2)) {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     invalidate();
   }
   
   public void setMaxNumInLine(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
     invalidate();
   }
   
   public void setMaxNumInLineAndAlignMode(int paramInt1, int paramInt2)
   {
     if ((paramInt1 < 0) || (paramInt1 > 2)) {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SearchFileFlowLayout
  * JD-Core Version:    0.7.0.1
  */

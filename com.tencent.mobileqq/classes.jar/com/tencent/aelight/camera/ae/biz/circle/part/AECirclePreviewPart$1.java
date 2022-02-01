@@ -26,7 +26,7 @@ class AECirclePreviewPart$1
       QLog.d("AECirclePreviewPart", 4, paramRecyclerView.toString());
       if (Math.abs(f - AECirclePreviewPart.a(this.a)) > 600.0F)
       {
-        AECirclePreviewPart.a(this.a);
+        AECirclePreviewPart.b(this.a);
         return true;
       }
     }
@@ -39,7 +39,7 @@ class AECirclePreviewPart$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECirclePreviewPart.1
  * JD-Core Version:    0.7.0.1
  */

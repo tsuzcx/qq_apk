@@ -13,8 +13,8 @@ class RedPacketManagerImpl$4
   
   public void a(int paramInt, RedPacketInfo paramRedPacketInfo)
   {
-    paramRedPacketInfo.isCache = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase.isCache;
-    IRedPacket.OnGetSkinListener localOnGetSkinListener = (IRedPacket.OnGetSkinListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramRedPacketInfo.isCache = this.a.isCache;
+    IRedPacket.OnGetSkinListener localOnGetSkinListener = (IRedPacket.OnGetSkinListener)this.b.get();
     if (localOnGetSkinListener != null) {
       localOnGetSkinListener.onGetSkin(paramRedPacketInfo);
     }
@@ -22,7 +22,7 @@ class RedPacketManagerImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketManagerImpl.4
  * JD-Core Version:    0.7.0.1
  */

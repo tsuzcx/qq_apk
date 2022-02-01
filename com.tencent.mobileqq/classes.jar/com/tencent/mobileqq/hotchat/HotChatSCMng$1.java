@@ -14,10 +14,10 @@ class HotChatSCMng$1
       if (paramHotChatNote2 == null) {
         return 0;
       }
-      if (paramHotChatNote1.a > paramHotChatNote2.a) {
+      if (paramHotChatNote1.e > paramHotChatNote2.e) {
         return 1;
       }
-      if (paramHotChatNote1.a < paramHotChatNote2.a) {
+      if (paramHotChatNote1.e < paramHotChatNote2.e) {
         return -1;
       }
     }
@@ -26,7 +26,7 @@ class HotChatSCMng$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.HotChatSCMng.1
  * JD-Core Version:    0.7.0.1
  */

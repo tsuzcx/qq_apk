@@ -21,22 +21,12 @@ public class MsgProxyDummyCallback
     return null;
   }
   
-  public SQLiteDatabase a(AppRuntime paramAppRuntime)
-  {
-    return null;
-  }
-  
   public MessageRecord a(String paramString, int paramInt, long paramLong, MsgProxy paramMsgProxy, AppRuntime paramAppRuntime)
   {
     return null;
   }
   
   public EntityManager a(AppRuntime paramAppRuntime)
-  {
-    return null;
-  }
-  
-  public Object a(AppRuntime paramAppRuntime)
   {
     return null;
   }
@@ -78,8 +68,6 @@ public class MsgProxyDummyCallback
   
   public void a(List<MessageRecord> paramList, MessageRecord paramMessageRecord, boolean paramBoolean) {}
   
-  public void a(AppRuntime paramAppRuntime) {}
-  
   public void a(AppRuntime paramAppRuntime, EntityManager paramEntityManager, QueryHistoryParam paramQueryHistoryParam) {}
   
   public void a(AppRuntime paramAppRuntime, String paramString, int paramInt) {}
@@ -91,7 +79,7 @@ public class MsgProxyDummyCallback
   
   public boolean a(String paramString1, int paramInt, String paramString2, MsgProxy paramMsgProxy)
   {
-    return paramMsgProxy.a().containsKey(paramString2) ^ true;
+    return paramMsgProxy.j().containsKey(paramString2) ^ true;
   }
   
   public boolean a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
@@ -99,7 +87,7 @@ public class MsgProxyDummyCallback
     return false;
   }
   
-  public SQLiteDatabase b(AppRuntime paramAppRuntime)
+  public Object b(AppRuntime paramAppRuntime)
   {
     return null;
   }
@@ -110,10 +98,24 @@ public class MsgProxyDummyCallback
   }
   
   public void b(String paramString, int paramInt, List<MessageRecord> paramList) {}
+  
+  public void b(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, AppRuntime paramAppRuntime) {}
+  
+  public SQLiteDatabase c(AppRuntime paramAppRuntime)
+  {
+    return null;
+  }
+  
+  public SQLiteDatabase d(AppRuntime paramAppRuntime)
+  {
+    return null;
+  }
+  
+  public void e(AppRuntime paramAppRuntime) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyDummyCallback
  * JD-Core Version:    0.7.0.1
  */

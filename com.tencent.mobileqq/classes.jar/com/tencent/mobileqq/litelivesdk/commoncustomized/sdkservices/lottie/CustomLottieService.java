@@ -21,7 +21,7 @@ public class CustomLottieService
     return null;
   }
   
-  public LottieViewInterface a(Context paramContext)
+  public LottieViewInterface b(Context paramContext)
   {
     if (this.a == null) {
       this.a = new CustomLottieView(paramContext);
@@ -37,7 +37,7 @@ public class CustomLottieService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.lottie.CustomLottieService
  * JD-Core Version:    0.7.0.1
  */

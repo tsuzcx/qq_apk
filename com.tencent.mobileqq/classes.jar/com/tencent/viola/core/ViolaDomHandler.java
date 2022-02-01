@@ -6,7 +6,7 @@ import com.tencent.viola.ui.action.DOMAction;
 import com.tencent.viola.ui.action.MethodAddElement;
 import com.tencent.viola.ui.action.MethodCreateBody;
 import com.tencent.viola.ui.context.DOMActionContext;
-import com.tencent.viola.vinstance.VInstanceManager;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.List;
 
 public class ViolaDomHandler
@@ -42,14 +42,17 @@ public class ViolaDomHandler
     if (isNeedLayoutImmediately(paramViolaDomTask))
     {
       this.mDomManager.getDomContext(paramViolaDomTask.instanceId).markDirty();
-      if (((paramViolaDomTask.args.get(0) instanceof MethodCreateBody)) && (((MethodCreateBody)paramViolaDomTask.args.get(0)).isCreateFromNativeVue())) {
+      if (((paramViolaDomTask.args.get(0) instanceof MethodCreateBody)) && (((MethodCreateBody)paramViolaDomTask.args.get(0)).isCreateFromNativeVue()))
+      {
+        if (ViolaUtils.isLayoutOpmOpen())
+        {
+          this.mDomManager.forceNvBatch(paramViolaDomTask.instanceId);
+          return;
+        }
         this.mDomManager.forceNvBatch();
-      } else {
-        this.mDomManager.batch();
+        return;
       }
-      if ((paramViolaDomTask.args.get(0) instanceof MethodAddElement)) {
-        VInstanceManager.getInstance().addVInstance(((MethodAddElement)paramViolaDomTask.args.get(0)).getRef(), paramViolaDomTask.instanceId);
-      }
+      this.mDomManager.batch();
     }
   }
   
@@ -59,29 +62,32 @@ public class ViolaDomHandler
       return false;
     }
     int i = paramMessage.what;
-    Object localObject = paramMessage.obj;
-    ViolaDomManager localViolaDomManager = null;
-    paramMessage = localViolaDomManager;
-    if (localObject != null)
+    Object localObject2 = paramMessage.obj;
+    Message localMessage = null;
+    Object localObject1 = localMessage;
+    if (localObject2 != null)
     {
-      paramMessage = localViolaDomManager;
-      if ((localObject instanceof ViolaDomTask)) {
-        paramMessage = (ViolaDomTask)localObject;
+      localObject1 = localMessage;
+      if ((localObject2 instanceof ViolaDomTask)) {
+        localObject1 = (ViolaDomTask)localObject2;
       }
     }
-    if ((i != 2) && (!isNeedLayoutImmediately(paramMessage)))
+    if ((i != 2) && (!isNeedLayoutImmediately((ViolaDomTask)localObject1)))
     {
       if (this.mDomManager.hasMessages(2)) {
         this.mDomManager.removeMessages(2);
       }
-      localViolaDomManager = this.mDomManager;
+      localMessage = Message.obtain();
+      localMessage.obj = ((ViolaDomTask)localObject1).instanceId;
+      localMessage.what = 2;
+      localObject2 = this.mDomManager;
       long l;
       if (i == 4) {
         l = 5L;
       } else {
         l = 16L;
       }
-      localViolaDomManager.sendEmptyMessageDelayed(2, l);
+      ((ViolaDomManager)localObject2).sendMessageDelayed(localMessage, l);
     }
     if (i != 1)
     {
@@ -92,22 +98,27 @@ public class ViolaDomHandler
           if (i != 4) {
             return true;
           }
-          this.mDomManager.executeAction(paramMessage.instanceId, (DOMAction)paramMessage.args.get(0), ((Boolean)paramMessage.args.get(1)).booleanValue());
+          this.mDomManager.executeAction(((ViolaDomTask)localObject1).instanceId, (DOMAction)((ViolaDomTask)localObject1).args.get(0), ((Boolean)((ViolaDomTask)localObject1).args.get(1)).booleanValue());
           return true;
         }
-        this.mDomManager.consumeRenderTask(paramMessage.instanceId);
+        this.mDomManager.consumeRenderTask(((ViolaDomTask)localObject1).instanceId);
+        return true;
+      }
+      if (ViolaUtils.isLayoutOpmOpen())
+      {
+        this.mDomManager.batch((String)paramMessage.obj);
         return true;
       }
       this.mDomManager.batch();
       return true;
     }
-    performExecuteAction(paramMessage);
+    performExecuteAction((ViolaDomTask)localObject1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaDomHandler
  * JD-Core Version:    0.7.0.1
  */

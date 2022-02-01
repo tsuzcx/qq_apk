@@ -12,8 +12,8 @@ import com.tencent.mobileqq.uftransfer.depend.UFTLog;
 public class UFTFtnDownloader
   extends UFTHttpCommunicator
 {
-  private IUFTFtnDownloaderCallback jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadIUFTFtnDownloaderCallback;
-  private final UFTFtnDownloader.DlderProp jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp;
+  private final UFTFtnDownloader.DlderProp a;
+  private IUFTFtnDownloaderCallback b;
   
   public void a()
   {
@@ -24,39 +24,39 @@ public class UFTFtnDownloader
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("id[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("] onError errCode:");
     ((StringBuilder)localObject).append(paramUFTHttpErr.a());
     ((StringBuilder)localObject).append(" errMsg:");
-    ((StringBuilder)localObject).append(paramUFTHttpErr.a());
+    ((StringBuilder)localObject).append(paramUFTHttpErr.b());
     UFTLog.d("[UFTTransfer] UFTFtnDownloader", 1, ((StringBuilder)localObject).toString());
     localObject = new Bundle();
-    if (TextUtils.isEmpty(paramUFTHttpErr.c())) {
-      ((Bundle)localObject).putString("User-ReturnCode", paramUFTHttpErr.c());
+    if (TextUtils.isEmpty(paramUFTHttpErr.d())) {
+      ((Bundle)localObject).putString("User-ReturnCode", paramUFTHttpErr.d());
     }
-    IUFTFtnDownloaderCallback localIUFTFtnDownloaderCallback = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadIUFTFtnDownloaderCallback;
+    IUFTFtnDownloaderCallback localIUFTFtnDownloaderCallback = this.b;
     if (localIUFTFtnDownloaderCallback != null) {
-      localIUFTFtnDownloaderCallback.a(paramUFTHttpErr.a(), paramUFTHttpErr.a(), paramUFTHttpErr.b(), (Bundle)localObject);
+      localIUFTFtnDownloaderCallback.a(paramUFTHttpErr.a(), paramUFTHttpErr.b(), paramUFTHttpErr.c(), (Bundle)localObject);
     }
   }
   
   protected void a(UFTHttpCommunicator.UFTHttpRsp paramUFTHttpRsp)
   {
-    long l = paramUFTHttpRsp.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_a_of_type_Long = l;
+    long l = paramUFTHttpRsp.d();
+    if (this.a.c == 0L) {
+      this.a.c = l;
     }
-    IUFTFtnDownloaderCallback localIUFTFtnDownloaderCallback = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadIUFTFtnDownloaderCallback;
+    IUFTFtnDownloaderCallback localIUFTFtnDownloaderCallback = this.b;
     if (localIUFTFtnDownloaderCallback != null) {
-      localIUFTFtnDownloaderCallback.a(paramUFTHttpRsp.a(), paramUFTHttpRsp.b(), paramUFTHttpRsp.a());
+      localIUFTFtnDownloaderCallback.a(paramUFTHttpRsp.b(), paramUFTHttpRsp.d(), paramUFTHttpRsp.c());
     }
   }
   
   protected void a(String paramString)
   {
-    IUFTFtnDownloaderCallback localIUFTFtnDownloaderCallback = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadIUFTFtnDownloaderCallback;
+    IUFTFtnDownloaderCallback localIUFTFtnDownloaderCallback = this.b;
     if (localIUFTFtnDownloaderCallback != null) {
-      localIUFTFtnDownloaderCallback.f_(paramString);
+      localIUFTFtnDownloaderCallback.q_(paramString);
     }
   }
   
@@ -64,7 +64,7 @@ public class UFTFtnDownloader
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("] ftn downloadData url:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" pos:");
@@ -75,10 +75,10 @@ public class UFTFtnDownloader
     }
     UFTHttpCommunicator.UFTHttpReq localUFTHttpReq = new UFTHttpCommunicator.UFTHttpReq(paramString, null, true);
     localUFTHttpReq.a(5);
-    localUFTHttpReq.b(this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_b_of_type_Int);
-    localUFTHttpReq.c(this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_a_of_type_Int);
-    localUFTHttpReq.e(this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_a_of_type_JavaLangString);
-    localUFTHttpReq.d(this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_b_of_type_JavaLangString);
+    localUFTHttpReq.b(this.a.b);
+    localUFTHttpReq.c(this.a.a);
+    localUFTHttpReq.e(this.a.d);
+    localUFTHttpReq.d(this.a.e);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("bytes=");
     ((StringBuilder)localObject).append(paramLong);
@@ -91,18 +91,18 @@ public class UFTFtnDownloader
     } else {
       localObject = "";
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.jdField_a_of_type_Boolean) && (((String)localObject).startsWith("https")))
+    if ((this.a.f) && (((String)localObject).startsWith("https")))
     {
       localUFTHttpReq.a(true);
       localUFTHttpReq.b(UFTHttpUrlProcessor.a(paramString));
-      localUFTHttpReq.b(this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader$DlderProp.c);
+      localUFTHttpReq.b(this.a.g);
     }
     return a(localUFTHttpReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.download.UFTFtnDownloader
  * JD-Core Version:    0.7.0.1
  */

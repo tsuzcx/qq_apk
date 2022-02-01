@@ -7,17 +7,17 @@ import org.apache.http.conn.ClientConnectionManager;
 public class HttpDownloadUtil$IdleConnectionMonitorThread
   extends Thread
 {
-  private final ClientConnectionManager jdField_a_of_type_OrgApacheHttpConnClientConnectionManager;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private final ClientConnectionManager a;
+  private volatile boolean b;
   
   public HttpDownloadUtil$IdleConnectionMonitorThread(ClientConnectionManager paramClientConnectionManager)
   {
-    this.jdField_a_of_type_OrgApacheHttpConnClientConnectionManager = paramClientConnectionManager;
+    this.a = paramClientConnectionManager;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     try
     {
       notifyAll();
@@ -28,7 +28,7 @@ public class HttpDownloadUtil$IdleConnectionMonitorThread
   
   public void run()
   {
-    while (!this.jdField_a_of_type_Boolean)
+    while (!this.b)
     {
       try
       {
@@ -49,8 +49,8 @@ public class HttpDownloadUtil$IdleConnectionMonitorThread
       }
       try
       {
-        this.jdField_a_of_type_OrgApacheHttpConnClientConnectionManager.closeExpiredConnections();
-        this.jdField_a_of_type_OrgApacheHttpConnClientConnectionManager.closeIdleConnections(60L, TimeUnit.SECONDS);
+        this.a.closeExpiredConnections();
+        this.a.closeIdleConnections(60L, TimeUnit.SECONDS);
       }
       catch (Throwable localThrowable)
       {
@@ -67,7 +67,7 @@ public class HttpDownloadUtil$IdleConnectionMonitorThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.HttpDownloadUtil.IdleConnectionMonitorThread
  * JD-Core Version:    0.7.0.1
  */

@@ -26,27 +26,12 @@ public class DatalineFileBubblePauseHandler
     super(paramQQAppInterface, paramContext);
   }
   
-  private DataLineMsgRecord a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {
-      return null;
-    }
-    paramChatMessage = (MessageForDLFile)paramChatMessage;
-    int i = paramChatMessage.deviceType;
-    long l = paramChatMessage.associatedId;
-    paramChatMessage = this.a.getMessageFacade().a(i);
-    if (paramChatMessage == null) {
-      return null;
-    }
-    return paramChatMessage.a(l);
-  }
-  
   private void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     paramDataLineMsgRecord.bIsResendOrRecvFile = true;
     long l = paramDataLineMsgRecord.sessionid;
-    int i = FileManagerUtil.a(paramDataLineMsgRecord.filename);
+    int i = FileManagerUtil.c(paramDataLineMsgRecord.filename);
     if (i == 0)
     {
       localDataLineHandler.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 1, l, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
@@ -63,10 +48,25 @@ public class DatalineFileBubblePauseHandler
     }
     if (paramDataLineMsgRecord.nOpType == 35)
     {
-      localDataLineHandler.b(paramDataLineMsgRecord);
+      localDataLineHandler.c(paramDataLineMsgRecord);
       return;
     }
-    localDataLineHandler.a().a(paramDataLineMsgRecord, i, 2);
+    localDataLineHandler.n().a(paramDataLineMsgRecord, i, 2);
+  }
+  
+  private DataLineMsgRecord c(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {
+      return null;
+    }
+    paramChatMessage = (MessageForDLFile)paramChatMessage;
+    int i = paramChatMessage.deviceType;
+    long l = paramChatMessage.associatedId;
+    paramChatMessage = this.b.getMessageFacade().d(i);
+    if (paramChatMessage == null) {
+      return null;
+    }
+    return paramChatMessage.a(l);
   }
   
   protected ImageView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
@@ -75,7 +75,7 @@ public class DatalineFileBubblePauseHandler
       return null;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).u;
     }
     return null;
   }
@@ -92,11 +92,11 @@ public class DatalineFileBubblePauseHandler
       paramView.append(paramInt);
       paramView.append("]");
       QLog.i("QFileBubblePauseHandler", 1, paramView.toString());
-      paramView = a(paramChatMessage);
+      paramView = c(paramChatMessage);
       if (paramView == null) {
         return;
       }
-      paramViewHolder = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      paramViewHolder = (DataLineHandler)this.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       if (paramInt == 0)
       {
         paramViewHolder.a(paramView.groupId, paramView.sessionid, false);
@@ -114,7 +114,7 @@ public class DatalineFileBubblePauseHandler
       return;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).u = paramImageView;
     }
   }
   
@@ -142,7 +142,7 @@ public class DatalineFileBubblePauseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.DatalineFileBubblePauseHandler
  * JD-Core Version:    0.7.0.1
  */

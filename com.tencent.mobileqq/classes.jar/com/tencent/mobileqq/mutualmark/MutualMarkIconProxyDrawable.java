@@ -38,44 +38,44 @@ public class MutualMarkIconProxyDrawable
   extends Drawable
   implements Handler.Callback, URLDrawable.URLDrawableListener
 {
-  int jdField_a_of_type_Int = 42;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<MutualMarkIconProxyDrawable.LoadSuccessCallback> jdField_a_of_type_MqqUtilWeakReference;
-  int jdField_b_of_type_Int = 255;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  int c = 0;
-  int d = 0;
-  int e = 102;
+  Drawable a;
+  URLDrawable b;
+  Drawable c;
+  int d = 42;
+  Handler e;
+  int f = 255;
+  int g = 0;
+  int h = 0;
+  String i = "";
+  int j = 102;
+  WeakReference<MutualMarkIconProxyDrawable.LoadSuccessCallback> k;
   
   public MutualMarkIconProxyDrawable(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt);
+    this.a = paramContext.getResources().getDrawable(paramInt);
   }
   
   public MutualMarkIconProxyDrawable(Context paramContext, String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(0);
-    localColorDrawable.setBounds(0, 0, 0, this.jdField_a_of_type_Int);
+    localColorDrawable.setBounds(0, 0, 0, this.d);
     localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
     localURLDrawableOptions.mFailedDrawable = localColorDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    int i = paramContext.getResources().getDisplayMetrics().densityDpi / 2;
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setTargetDensity(i);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-    if (1 != this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus())
+    this.b = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    int m = paramContext.getResources().getDisplayMetrics().densityDpi / 2;
+    this.b.setTargetDensity(m);
+    this.b.setURLDrawableListener(this);
+    if (1 != this.b.getStatus())
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-      this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
+      this.b.setAutoDownload(true);
+      this.b.startDownload(true);
     }
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("MutualMarkIconProxyDrawable density : ");
-      paramContext.append(i);
+      paramContext.append(m);
       QLog.i("MutualMarkIconProxyDrawable", 2, paramContext.toString());
     }
   }
@@ -83,77 +83,61 @@ public class MutualMarkIconProxyDrawable
   public MutualMarkIconProxyDrawable(Context paramContext, String paramString, View paramView)
   {
     ColorDrawable localColorDrawable = new ColorDrawable(0);
-    localColorDrawable.setBounds(0, 0, 0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentImageURLDrawable = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, localColorDrawable, null, this);
-    int i = paramContext.getResources().getDisplayMetrics().densityDpi / 2;
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setTargetDensity(i);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback(paramView);
+    localColorDrawable.setBounds(0, 0, 0, this.d);
+    this.b = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, localColorDrawable, null, this);
+    int m = paramContext.getResources().getDisplayMetrics().densityDpi / 2;
+    this.b.setTargetDensity(m);
+    this.b.setCallback(paramView);
     setCallback(paramView);
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("MutualMarkIconProxyDrawable density : ");
-      paramContext.append(i);
+      paramContext.append(m);
       QLog.i("MutualMarkIconProxyDrawable", 2, paramContext.toString());
     }
   }
   
-  private Drawable a()
+  private Drawable e()
   {
-    Object localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = this.c;
     if (localObject != null) {
       return localObject;
     }
-    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    localObject = this.b;
     if (localObject != null) {
       return localObject;
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localObject = this.a;
     if (localObject != null) {
       return localObject;
     }
     return null;
   }
   
-  public URLDrawable a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLDrawable;
-  }
-  
-  public void a()
-  {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null)
-    {
-      localHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-    setAlpha(this.e);
-  }
-  
   public void a(String paramString)
   {
     if (Build.VERSION.SDK_INT < 16)
     {
-      a();
+      b();
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.e == null) {
+      this.e = new Handler(Looper.getMainLooper(), this);
     }
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      b();
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.i)) && (!paramString.equals(this.i))) {
+      c();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramString = this.jdField_a_of_type_AndroidOsHandler;
+    this.i = paramString;
+    paramString = this.e;
     if ((paramString != null) && (!paramString.hasMessages(0))) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      this.e.sendEmptyMessage(0);
     }
   }
   
   public boolean a()
   {
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.b;
     boolean bool = true;
     if (localURLDrawable != null)
     {
@@ -167,55 +151,71 @@ public class MutualMarkIconProxyDrawable
   
   public void applyTheme(@NonNull Resources.Theme paramTheme)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().applyTheme(paramTheme);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().applyTheme(paramTheme);
     }
     super.applyTheme(paramTheme);
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Int = 255;
-    this.c = 0;
-    this.d = 0;
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.e;
     if (localHandler != null)
     {
       localHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.e.removeMessages(1);
     }
-    setAlpha(this.jdField_b_of_type_Int);
+    setAlpha(this.j);
+  }
+  
+  public void c()
+  {
+    this.f = 255;
+    this.g = 0;
+    this.h = 0;
+    Handler localHandler = this.e;
+    if (localHandler != null)
+    {
+      localHandler.removeMessages(0);
+      this.e.removeMessages(1);
+    }
+    setAlpha(this.f);
   }
   
   public boolean canApplyTheme()
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      return a().canApplyTheme();
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      return e().canApplyTheme();
     }
     return super.canApplyTheme();
   }
   
   public void clearColorFilter()
   {
-    if (a() != null) {
-      a().clearColorFilter();
+    if (e() != null) {
+      e().clearColorFilter();
     }
     super.clearColorFilter();
   }
   
+  public URLDrawable d()
+  {
+    return this.b;
+  }
+  
   public void draw(@NonNull Canvas paramCanvas)
   {
-    if (a() != null)
+    if (e() != null)
     {
-      Rect localRect = a().getBounds();
+      Rect localRect = e().getBounds();
       if ((localRect.width() > 0) && (localRect.height() > 0))
       {
         if (Build.VERSION.SDK_INT >= 21) {
-          paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_b_of_type_Int);
+          paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.f);
         } else {
-          paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_b_of_type_Int, 31);
+          paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.right, localRect.bottom, this.f, 31);
         }
-        a().draw(paramCanvas);
+        e().draw(paramCanvas);
         paramCanvas.restore();
       }
     }
@@ -223,15 +223,15 @@ public class MutualMarkIconProxyDrawable
   
   public int getAlpha()
   {
-    return this.jdField_b_of_type_Int;
+    return this.f;
   }
   
   @Nullable
   public Drawable.Callback getCallback()
   {
-    if (a() != null)
+    if (e() != null)
     {
-      Drawable.Callback localCallback = a().getCallback();
+      Drawable.Callback localCallback = e().getCallback();
       if (localCallback != null) {
         return localCallback;
       }
@@ -241,8 +241,8 @@ public class MutualMarkIconProxyDrawable
   
   public int getChangingConfigurations()
   {
-    if (a() != null) {
-      return a().getChangingConfigurations();
+    if (e() != null) {
+      return e().getChangingConfigurations();
     }
     return super.getChangingConfigurations();
   }
@@ -250,8 +250,8 @@ public class MutualMarkIconProxyDrawable
   @Nullable
   public ColorFilter getColorFilter()
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      return a().getColorFilter();
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      return e().getColorFilter();
     }
     return super.getColorFilter();
   }
@@ -259,8 +259,8 @@ public class MutualMarkIconProxyDrawable
   @Nullable
   public Drawable.ConstantState getConstantState()
   {
-    if (a() != null) {
-      return a().getConstantState();
+    if (e() != null) {
+      return e().getConstantState();
     }
     return super.getConstantState();
   }
@@ -268,8 +268,8 @@ public class MutualMarkIconProxyDrawable
   @NonNull
   public Drawable getCurrent()
   {
-    if (a() != null) {
-      return a().getCurrent();
+    if (e() != null) {
+      return e().getCurrent();
     }
     return super.getCurrent();
   }
@@ -277,17 +277,17 @@ public class MutualMarkIconProxyDrawable
   @NonNull
   public Rect getDirtyBounds()
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      return a().getDirtyBounds();
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      return e().getDirtyBounds();
     }
     return super.getDirtyBounds();
   }
   
   public void getHotspotBounds(@NonNull Rect paramRect)
   {
-    if ((Build.VERSION.SDK_INT >= 23) && (a() != null))
+    if ((Build.VERSION.SDK_INT >= 23) && (e() != null))
     {
-      a().getHotspotBounds(paramRect);
+      e().getHotspotBounds(paramRect);
       return;
     }
     super.getHotspotBounds(paramRect);
@@ -295,87 +295,87 @@ public class MutualMarkIconProxyDrawable
   
   public int getIntrinsicHeight()
   {
-    if (a() != null)
+    if (e() != null)
     {
-      int i = a().getIntrinsicHeight();
+      int m = e().getIntrinsicHeight();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getIntrinsicHeight height : ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         localStringBuilder.append(" limitHeight=");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.d);
         QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
-      return this.jdField_a_of_type_Int;
+      return this.d;
     }
     return super.getIntrinsicHeight();
   }
   
   public int getIntrinsicWidth()
   {
-    if (a() != null)
+    if (e() != null)
     {
-      int j = a().getIntrinsicWidth();
-      int k = a().getIntrinsicHeight();
-      int i = j;
-      if (k > 0)
+      int n = e().getIntrinsicWidth();
+      int i1 = e().getIntrinsicHeight();
+      int m = n;
+      if (i1 > 0)
       {
-        i = j;
-        if (j > 0) {
-          i = j * this.jdField_a_of_type_Int / k;
+        m = n;
+        if (n > 0) {
+          m = n * this.d / i1;
         }
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getIntrinsicWidth width : ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
-      return i;
+      return m;
     }
     return super.getIntrinsicWidth();
   }
   
   public int getLayoutDirection()
   {
-    if ((Build.VERSION.SDK_INT >= 23) && (a() != null)) {
-      return a().getLayoutDirection();
+    if ((Build.VERSION.SDK_INT >= 23) && (e() != null)) {
+      return e().getLayoutDirection();
     }
     return super.getLayoutDirection();
   }
   
   public int getMinimumHeight()
   {
-    if (a() != null)
+    if (e() != null)
     {
-      int i = a().getMinimumHeight();
+      int m = e().getMinimumHeight();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getMinimumHeight height : ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
-      return i;
+      return m;
     }
     return super.getMinimumHeight();
   }
   
   public int getMinimumWidth()
   {
-    if (a() != null)
+    if (e() != null)
     {
-      int i = a().getMinimumWidth();
+      int m = e().getMinimumWidth();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getMinimumWidth width : ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
       }
-      return i;
+      return m;
     }
     return super.getMinimumWidth();
   }
@@ -387,9 +387,9 @@ public class MutualMarkIconProxyDrawable
   
   public void getOutline(@NonNull Outline paramOutline)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null))
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null))
     {
-      a().getOutline(paramOutline);
+      e().getOutline(paramOutline);
       return;
     }
     super.getOutline(paramOutline);
@@ -397,8 +397,8 @@ public class MutualMarkIconProxyDrawable
   
   public boolean getPadding(@NonNull Rect paramRect)
   {
-    if (a() != null) {
-      return a().getPadding(paramRect);
+    if (e() != null) {
+      return e().getPadding(paramRect);
     }
     return super.getPadding(paramRect);
   }
@@ -406,8 +406,8 @@ public class MutualMarkIconProxyDrawable
   @NonNull
   public int[] getState()
   {
-    if (a() != null) {
-      return a().getState();
+    if (e() != null) {
+      return e().getState();
     }
     return super.getState();
   }
@@ -415,117 +415,117 @@ public class MutualMarkIconProxyDrawable
   @Nullable
   public Region getTransparentRegion()
   {
-    if (a() != null) {
-      return a().getTransparentRegion();
+    if (e() != null) {
+      return e().getTransparentRegion();
     }
     return super.getTransparentRegion();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    if (this.e == null) {
       return false;
     }
-    int i = paramMessage.what;
-    if (i != 0)
+    int m = paramMessage.what;
+    if (m != 0)
     {
-      if (i != 1) {
+      if (m != 1) {
         return true;
       }
       setAlpha(102);
       invalidateSelf();
       return true;
     }
-    i = this.jdField_b_of_type_Int;
-    if (i <= 0) {
-      this.c = 0;
-    } else if (i >= 255) {
-      this.c = 1;
+    m = this.f;
+    if (m <= 0) {
+      this.g = 0;
+    } else if (m >= 255) {
+      this.g = 1;
     }
-    if (this.c == 0)
+    if (this.g == 0)
     {
-      this.jdField_b_of_type_Int += 5;
-      if (this.jdField_b_of_type_Int >= 255) {
-        this.jdField_b_of_type_Int = 255;
+      this.f += 5;
+      if (this.f >= 255) {
+        this.f = 255;
       }
     }
     else
     {
-      this.jdField_b_of_type_Int -= 5;
-      if (this.jdField_b_of_type_Int <= 0) {
-        this.jdField_b_of_type_Int = 0;
+      this.f -= 5;
+      if (this.f <= 0) {
+        this.f = 0;
       }
     }
-    setAlpha(this.jdField_b_of_type_Int);
+    setAlpha(this.f);
     invalidateSelf();
-    if (this.jdField_b_of_type_Int == 0) {
-      this.d += 1;
+    if (this.f == 0) {
+      this.h += 1;
     }
-    if ((this.d >= 3) && (this.jdField_b_of_type_Int >= this.e))
+    if ((this.h >= 3) && (this.f >= this.j))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.e.removeMessages(0);
+      this.e.sendEmptyMessage(1);
       return true;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    if (this.e.hasMessages(0)) {
+      this.e.removeMessages(0);
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 20);
+    this.e.sendEmptyMessageDelayed(0, 20);
     return true;
   }
   
   public void inflate(@NonNull Resources paramResources, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet)
   {
-    if (a() != null) {
-      a().inflate(paramResources, paramXmlPullParser, paramAttributeSet);
+    if (e() != null) {
+      e().inflate(paramResources, paramXmlPullParser, paramAttributeSet);
     }
     super.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
   }
   
   public void inflate(@NonNull Resources paramResources, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet, @Nullable Resources.Theme paramTheme)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
     }
     super.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
   }
   
   public void invalidateSelf()
   {
-    if (a() != null) {
-      a().invalidateSelf();
+    if (e() != null) {
+      e().invalidateSelf();
     }
     super.invalidateSelf();
   }
   
   public boolean isAutoMirrored()
   {
-    if ((Build.VERSION.SDK_INT >= 19) && (a() != null)) {
-      return a().isAutoMirrored();
+    if ((Build.VERSION.SDK_INT >= 19) && (e() != null)) {
+      return e().isAutoMirrored();
     }
     return super.isAutoMirrored();
   }
   
   public boolean isFilterBitmap()
   {
-    if ((Build.VERSION.SDK_INT >= 23) && (a() != null)) {
-      return a().isFilterBitmap();
+    if ((Build.VERSION.SDK_INT >= 23) && (e() != null)) {
+      return e().isFilterBitmap();
     }
     return super.isFilterBitmap();
   }
   
   public boolean isStateful()
   {
-    if (a() != null) {
-      return a().isStateful();
+    if (e() != null) {
+      return e().isStateful();
     }
     return super.isStateful();
   }
   
   public void jumpToCurrentState()
   {
-    if (a() != null) {
-      a().jumpToCurrentState();
+    if (e() != null) {
+      e().jumpToCurrentState();
     }
     super.jumpToCurrentState();
   }
@@ -533,16 +533,16 @@ public class MutualMarkIconProxyDrawable
   @NonNull
   public Drawable mutate()
   {
-    Drawable localDrawable = a();
+    Drawable localDrawable = e();
     if (localDrawable != null)
     {
       if ((localDrawable instanceof SkinnableBitmapDrawable))
       {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((SkinnableBitmapDrawable)a()).mutate2();
+        this.c = ((SkinnableBitmapDrawable)e()).mutate2();
         return this;
       }
       if ((localDrawable instanceof URLDrawable)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localDrawable.mutate();
+        this.c = localDrawable.mutate();
       }
       return this;
     }
@@ -551,8 +551,8 @@ public class MutualMarkIconProxyDrawable
   
   public boolean onLayoutDirectionChanged(int paramInt)
   {
-    if ((Build.VERSION.SDK_INT >= 23) && (a() != null)) {
-      return a().onLayoutDirectionChanged(paramInt);
+    if ((Build.VERSION.SDK_INT >= 23) && (e() != null)) {
+      return e().onLayoutDirectionChanged(paramInt);
     }
     return super.onLayoutDirectionChanged(paramInt);
   }
@@ -565,39 +565,39 @@ public class MutualMarkIconProxyDrawable
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int k = paramURLDrawable.getIntrinsicWidth();
-    int m = paramURLDrawable.getIntrinsicHeight();
-    int j = k;
-    int i = m;
-    if (m > 0)
+    int i1 = paramURLDrawable.getIntrinsicWidth();
+    int i2 = paramURLDrawable.getIntrinsicHeight();
+    int n = i1;
+    int m = i2;
+    if (i2 > 0)
     {
-      j = k;
-      i = m;
-      if (k > 0)
+      n = i1;
+      m = i2;
+      if (i1 > 0)
       {
-        i = this.jdField_a_of_type_Int;
-        j = k * i / m;
+        m = this.d;
+        n = i1 * m / i2;
       }
     }
     if (QLog.isColorLevel())
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadSuccessed width : ");
-      paramURLDrawable.append(j);
+      paramURLDrawable.append(n);
       paramURLDrawable.append(" height:");
-      paramURLDrawable.append(i);
+      paramURLDrawable.append(m);
       QLog.i("MutualMarkIconProxyDrawable", 2, paramURLDrawable.toString());
     }
-    if ((j > 0) && (i > 0))
+    if ((n > 0) && (m > 0))
     {
-      setBounds(0, 0, j, i);
+      setBounds(0, 0, n, m);
       invalidateSelf();
       if ((getCallback() != null) && ((getCallback() instanceof View)))
       {
         ((View)getCallback()).invalidate();
         ((View)getCallback()).requestLayout();
       }
-      paramURLDrawable = this.jdField_a_of_type_MqqUtilWeakReference;
+      paramURLDrawable = this.k;
       if (paramURLDrawable != null)
       {
         paramURLDrawable = (MutualMarkIconProxyDrawable.LoadSuccessCallback)paramURLDrawable.get();
@@ -610,21 +610,21 @@ public class MutualMarkIconProxyDrawable
   
   public void scheduleSelf(@NonNull Runnable paramRunnable, long paramLong)
   {
-    if (a() != null) {
-      a().scheduleSelf(paramRunnable, paramLong);
+    if (e() != null) {
+      e().scheduleSelf(paramRunnable, paramLong);
     }
     super.scheduleSelf(paramRunnable, paramLong);
   }
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setAutoMirrored(boolean paramBoolean)
   {
-    if ((Build.VERSION.SDK_INT >= 19) && (a() != null)) {
-      a().setAutoMirrored(paramBoolean);
+    if ((Build.VERSION.SDK_INT >= 19) && (e() != null)) {
+      e().setAutoMirrored(paramBoolean);
     }
     super.setAutoMirrored(paramBoolean);
   }
@@ -638,8 +638,8 @@ public class MutualMarkIconProxyDrawable
       localStringBuilder.append(new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
       QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
     }
-    if (a() != null) {
-      a().setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (e() != null) {
+      e().setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -653,118 +653,118 @@ public class MutualMarkIconProxyDrawable
       localStringBuilder.append(paramRect);
       QLog.i("MutualMarkIconProxyDrawable", 2, localStringBuilder.toString());
     }
-    if (a() != null) {
-      a().setBounds(paramRect);
+    if (e() != null) {
+      e().setBounds(paramRect);
     }
     super.setBounds(paramRect);
   }
   
   public void setChangingConfigurations(int paramInt)
   {
-    if (a() != null) {
-      a().setChangingConfigurations(paramInt);
+    if (e() != null) {
+      e().setChangingConfigurations(paramInt);
     }
     super.setChangingConfigurations(paramInt);
   }
   
   public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
   {
-    if (a() != null) {
-      a().setColorFilter(paramInt, paramMode);
+    if (e() != null) {
+      e().setColorFilter(paramInt, paramMode);
     }
     super.setColorFilter(paramInt, paramMode);
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    if (a() != null) {
-      a().setColorFilter(paramColorFilter);
+    if (e() != null) {
+      e().setColorFilter(paramColorFilter);
     }
   }
   
   public void setDither(boolean paramBoolean)
   {
-    if (a() != null) {
-      a().setDither(paramBoolean);
+    if (e() != null) {
+      e().setDither(paramBoolean);
     }
     super.setDither(paramBoolean);
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    if (a() != null) {
-      a().setFilterBitmap(paramBoolean);
+    if (e() != null) {
+      e().setFilterBitmap(paramBoolean);
     }
     super.setFilterBitmap(paramBoolean);
   }
   
   public void setHotspot(float paramFloat1, float paramFloat2)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().setHotspot(paramFloat1, paramFloat2);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().setHotspot(paramFloat1, paramFloat2);
     }
     super.setHotspot(paramFloat1, paramFloat2);
   }
   
   public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     super.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public boolean setState(@NonNull int[] paramArrayOfInt)
   {
-    if (a() != null) {
-      return a().setState(paramArrayOfInt);
+    if (e() != null) {
+      return e().setState(paramArrayOfInt);
     }
     return super.setState(paramArrayOfInt);
   }
   
   public void setTint(int paramInt)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().setTint(paramInt);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().setTint(paramInt);
     }
     super.setTint(paramInt);
   }
   
   public void setTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().setTintList(paramColorStateList);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().setTintList(paramColorStateList);
     }
     super.setTintList(paramColorStateList);
   }
   
   public void setTintMode(@NonNull PorterDuff.Mode paramMode)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
-      a().setTintMode(paramMode);
+    if ((Build.VERSION.SDK_INT >= 21) && (e() != null)) {
+      e().setTintMode(paramMode);
     }
     super.setTintMode(paramMode);
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (a() != null) {
-      return a().setVisible(paramBoolean1, paramBoolean2);
+    if (e() != null) {
+      return e().setVisible(paramBoolean1, paramBoolean2);
     }
     return super.setVisible(paramBoolean1, paramBoolean2);
   }
   
   public void unscheduleSelf(@NonNull Runnable paramRunnable)
   {
-    if (a() != null) {
-      a().unscheduleSelf(paramRunnable);
+    if (e() != null) {
+      e().unscheduleSelf(paramRunnable);
     }
     super.unscheduleSelf(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkIconProxyDrawable
  * JD-Core Version:    0.7.0.1
  */

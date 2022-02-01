@@ -27,26 +27,32 @@ public class QimMusicPlayer
   extends IQIMManager
   implements QQSpecialAVFilter.MusicWaveformSupporter
 {
-  private int jdField_a_of_type_Int = QQFilterRenderManagerHolder.jdField_a_of_type_Int;
-  private MusicMuteListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener;
-  private MusicPlayerScene jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene;
-  private MusicWaveformManager jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager = new MusicWaveformManager();
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private HashMap<Integer, MusicPlayerScene> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<MusicPlayerSceneListener> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public ConcurrentHashMap<String, MusicItemInfo> a;
-  private boolean jdField_a_of_type_Boolean;
-  private volatile int jdField_b_of_type_Int = 0;
-  private MusicItemInfo jdField_b_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private ConcurrentHashMap<String, DownloadTask> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_b_of_type_Boolean;
+  public ConcurrentHashMap<String, MusicItemInfo> a = new ConcurrentHashMap();
+  private MusicItemInfo b;
+  private MusicItemInfo c;
+  private MusicMuteListener d;
+  private HashMap<Integer, MusicPlayerScene> e = new HashMap();
+  private List<MusicPlayerSceneListener> f = new ArrayList();
+  private MusicPlayerScene g;
+  private ConcurrentHashMap<String, DownloadTask> h = new ConcurrentHashMap();
+  private MusicWaveformManager i = new MusicWaveformManager();
+  private int j = QQFilterRenderManagerHolder.a;
+  private volatile int k = 0;
+  private boolean l;
+  private boolean m;
   
-  public QimMusicPlayer()
+  private void e(MusicItemInfo paramMusicItemInfo)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if ((this.d != null) && (!this.l))
+    {
+      MusicItemInfo localMusicItemInfo = this.b;
+      if ((localMusicItemInfo == null) || (localMusicItemInfo.isMute() != paramMusicItemInfo.isMute())) {
+        this.d.a(paramMusicItemInfo.isMute());
+      }
+    }
   }
   
-  private MusicPlayerScene a(MusicItemInfo paramMusicItemInfo)
+  private MusicPlayerScene f(MusicItemInfo paramMusicItemInfo)
   {
     Object localObject = null;
     try
@@ -54,25 +60,25 @@ public class QimMusicPlayer
       MusicPlayerScene localMusicPlayerScene;
       if (paramMusicItemInfo.mType == 1)
       {
-        localMusicPlayerScene = (MusicPlayerScene)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(1));
+        localMusicPlayerScene = (MusicPlayerScene)this.e.get(Integer.valueOf(1));
         localObject = localMusicPlayerScene;
         if (localMusicPlayerScene == null)
         {
           localObject = new MusicPlayerScene();
-          ((MusicPlayerScene)localObject).a(this.jdField_a_of_type_JavaUtilList);
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), localObject);
+          ((MusicPlayerScene)localObject).a(this.f);
+          this.e.put(Integer.valueOf(1), localObject);
         }
         ((MusicPlayerScene)localObject).a(paramMusicItemInfo);
       }
       else if (paramMusicItemInfo.mType == 5)
       {
-        localMusicPlayerScene = (MusicPlayerScene)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2));
+        localMusicPlayerScene = (MusicPlayerScene)this.e.get(Integer.valueOf(2));
         localObject = localMusicPlayerScene;
         if (localMusicPlayerScene == null)
         {
           localObject = new QQMusicPlayerScene();
-          ((MusicPlayerScene)localObject).a(this.jdField_a_of_type_JavaUtilList);
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), localObject);
+          ((MusicPlayerScene)localObject).a(this.f);
+          this.e.put(Integer.valueOf(2), localObject);
         }
         ((MusicPlayerScene)localObject).a(paramMusicItemInfo);
       }
@@ -81,51 +87,38 @@ public class QimMusicPlayer
     finally {}
   }
   
-  private void b(MusicItemInfo paramMusicItemInfo)
+  private void m()
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener != null) && (!this.jdField_a_of_type_Boolean))
+    if (this.g != null)
     {
-      MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-      if ((localMusicItemInfo == null) || (localMusicItemInfo.isMute() != paramMusicItemInfo.isMute())) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener.a(paramMusicItemInfo.isMute());
+      k();
+      this.g.a();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.g != null)
+    {
+      if (this.b != null)
+      {
+        Object localObject = this.f;
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((MusicPlayerSceneListener)((Iterator)localObject).next()).a(this.b);
+          }
+        }
       }
+      this.g.b();
+      k();
     }
   }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene != null)
-    {
-      f();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene.a();
-    }
-  }
-  
-  public int a()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene.a();
-    }
-    return -1;
-  }
-  
-  public MusicItemInfo a()
-  {
-    MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-    if (localMusicItemInfo == null) {
-      return null;
-    }
-    if ((localMusicItemInfo.mType != 5) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mType != 1)) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  }
-  
-  public void a() {}
   
   public void a(int paramInt)
   {
-    MusicMuteListener localMusicMuteListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener;
+    MusicMuteListener localMusicMuteListener = this.d;
     if (localMusicMuteListener != null) {
       localMusicMuteListener.a(true);
     }
@@ -134,13 +127,13 @@ public class QimMusicPlayer
   
   public void a(MusicMuteListener paramMusicMuteListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener = paramMusicMuteListener;
-    if (!this.jdField_a_of_type_Boolean)
+    this.d = paramMusicMuteListener;
+    if (!this.l)
     {
-      paramMusicMuteListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+      paramMusicMuteListener = this.b;
       if (paramMusicMuteListener != null)
       {
-        MusicMuteListener localMusicMuteListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener;
+        MusicMuteListener localMusicMuteListener = this.d;
         if (localMusicMuteListener != null) {
           localMusicMuteListener.a(paramMusicMuteListener.isMute());
         }
@@ -152,7 +145,7 @@ public class QimMusicPlayer
   {
     if (paramMusicPlayerSceneListener != null)
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.f;
       if (localList != null)
       {
         if (localList.contains(paramMusicPlayerSceneListener))
@@ -162,7 +155,7 @@ public class QimMusicPlayer
           }
           return;
         }
-        this.jdField_a_of_type_JavaUtilList.add(paramMusicPlayerSceneListener);
+        this.f.add(paramMusicPlayerSceneListener);
         return;
       }
     }
@@ -171,34 +164,9 @@ public class QimMusicPlayer
     }
   }
   
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if (localObject != null)
-    {
-      localObject = (DownloadTask)((ConcurrentHashMap)localObject).get(paramMusicItemInfo.getLocalPath());
-      if (localObject != null) {
-        QQMusicDownloader.a((DownloadTask)localObject);
-      }
-    }
-    localObject = paramMusicItemInfo.getLocalPath();
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.contains(localObject))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
-    }
-    paramMusicItemInfo.mProgress = -1;
-    QIMCommonLoadingProgress.a(paramMusicItemInfo).c();
-  }
-  
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    MusicPlayerScene localMusicPlayerScene = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene;
-    return (localMusicPlayerScene != null) && (localMusicPlayerScene.a());
+    this.l = paramBoolean;
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
@@ -219,7 +187,7 @@ public class QimMusicPlayer
     if (!b(paramMusicItemInfo)) {
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == paramMusicItemInfo) && (a()))
+    if ((this.b == paramMusicItemInfo) && (f()))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("have playing");
@@ -227,8 +195,8 @@ public class QimMusicPlayer
       QLog.i("QimMusicPlayer", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    b(paramMusicItemInfo);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    e(paramMusicItemInfo);
+    Object localObject = this.f;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -237,9 +205,9 @@ public class QimMusicPlayer
       }
     }
     e();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene = a(paramMusicItemInfo);
+    this.b = paramMusicItemInfo;
+    this.c = paramMusicItemInfo;
+    this.g = f(paramMusicItemInfo);
     return true;
   }
   
@@ -256,16 +224,16 @@ public class QimMusicPlayer
       if (TextUtils.isEmpty(str)) {
         return false;
       }
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+      if (!this.a.containsKey(str))
       {
         paramMusicItemInfo.mProgress = 0;
-        paramMusicDownloadListener = new QQMusicDownloadListener(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap, paramMusicDownloadListener);
+        paramMusicDownloadListener = new QQMusicDownloadListener(this.a, this.h, paramMusicDownloadListener);
         DownloadTask localDownloadTask = QQMusicDownloader.a(paramMusicItemInfo.mUrl, str, paramMusicDownloadListener);
         if (localDownloadTask != null)
         {
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localDownloadTask);
+          this.h.put(str, localDownloadTask);
           QQMusicDownloader.a(localDownloadTask, paramMusicDownloadListener);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramMusicItemInfo);
+          this.a.put(str, paramMusicItemInfo);
         }
       }
       return true;
@@ -281,17 +249,17 @@ public class QimMusicPlayer
       ((StringBuilder)localObject).append("requestPlay ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.k);
       QLog.d("QimMusicPlayer", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.k = paramInt;
     if (!b(paramMusicItemInfo)) {
       return false;
     }
-    if (c(paramMusicItemInfo)) {
+    if (d(paramMusicItemInfo)) {
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == paramMusicItemInfo) && (a()) && (!paramBoolean))
+    if ((this.b == paramMusicItemInfo) && (f()) && (!paramBoolean))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("have playing");
@@ -299,8 +267,8 @@ public class QimMusicPlayer
       QLog.i("QimMusicPlayer", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    b(paramMusicItemInfo);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    e(paramMusicItemInfo);
+    Object localObject = this.f;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -309,36 +277,19 @@ public class QimMusicPlayer
       }
     }
     e();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene = a(paramMusicItemInfo);
-    g();
+    this.b = paramMusicItemInfo;
+    this.c = paramMusicItemInfo;
+    this.g = f(paramMusicItemInfo);
+    m();
     return true;
-  }
-  
-  public MusicItemInfo b()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicMuteListener = null;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene = null;
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((MusicPlayerScene)localIterator.next()).f();
+    MusicPlayerScene localMusicPlayerScene = this.g;
+    if (localMusicPlayerScene != null) {
+      localMusicPlayerScene.c();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager = null;
   }
   
   public void b(int paramInt)
@@ -349,13 +300,13 @@ public class QimMusicPlayer
       ((StringBuilder)localObject).append("pauseMusicCheckScene ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.k);
       QLog.d("QimMusicPlayer", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt != this.jdField_b_of_type_Int) {
+    if (paramInt != this.k) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene;
+    Object localObject = this.g;
     if (localObject != null) {
       ((MusicPlayerScene)localObject).c();
     }
@@ -363,21 +314,10 @@ public class QimMusicPlayer
   
   public void b(MusicPlayerSceneListener paramMusicPlayerSceneListener)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.f;
     if ((localList != null) && (localList.contains(paramMusicPlayerSceneListener))) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramMusicPlayerSceneListener);
+      this.f.remove(paramMusicPlayerSceneListener);
     }
-  }
-  
-  public boolean b()
-  {
-    Object localObject = QQFilterRenderManagerHolder.a(this.jdField_a_of_type_Int);
-    if (localObject != null) {
-      localObject = ((QQFilterRenderManager)localObject).getBusinessOperation().getCurrentAVFilterIdByType(2);
-    } else {
-      localObject = null;
-    }
-    return (localObject != null) && (QQAVImageFilterConstants.isMusicSpecialFilter(((FilterDesc)localObject).id));
   }
   
   public boolean b(MusicItemInfo paramMusicItemInfo)
@@ -388,45 +328,58 @@ public class QimMusicPlayer
     return ((paramMusicItemInfo.mType != 5) && (paramMusicItemInfo.mType != 1)) || (FileUtils.fileExistsAndNotEmpty(paramMusicItemInfo.getLocalPath()));
   }
   
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
-      {
-        Object localObject = this.jdField_a_of_type_JavaUtilList;
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            ((MusicPlayerSceneListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          }
-        }
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene.b();
-      f();
-    }
-  }
+  public void c() {}
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
-  public boolean c(MusicItemInfo paramMusicItemInfo)
+  public void c(MusicItemInfo paramMusicItemInfo)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return false;
+    Object localObject = this.h;
+    if (localObject != null)
+    {
+      localObject = (DownloadTask)((ConcurrentHashMap)localObject).get(paramMusicItemInfo.getLocalPath());
+      if (localObject != null) {
+        QQMusicDownloader.a((DownloadTask)localObject);
+      }
     }
-    return (a() != -1) && (paramMusicItemInfo.mSongMid.equals(a().mSongMid)) && (a() < paramMusicItemInfo.musicDuration);
+    localObject = paramMusicItemInfo.getLocalPath();
+    ConcurrentHashMap localConcurrentHashMap = this.a;
+    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.contains(localObject))) {
+      this.a.remove(localObject);
+    }
+    paramMusicItemInfo.mProgress = -1;
+    QIMCommonLoadingProgress.a(paramMusicItemInfo).d();
   }
   
   public void d()
   {
-    MusicPlayerScene localMusicPlayerScene = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene;
-    if (localMusicPlayerScene != null) {
-      localMusicPlayerScene.c();
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.f.clear();
+    this.f = null;
+    this.g = null;
+    this.h.clear();
+    this.a.clear();
+    Iterator localIterator = this.e.values().iterator();
+    while (localIterator.hasNext()) {
+      ((MusicPlayerScene)localIterator.next()).f();
     }
+    this.e.clear();
+    this.e = null;
+    this.i.b();
+    this.i = null;
+  }
+  
+  public boolean d(MusicItemInfo paramMusicItemInfo)
+  {
+    if (!this.m) {
+      return false;
+    }
+    return (h() != -1) && (paramMusicItemInfo.mSongMid.equals(i().mSongMid)) && (h() < paramMusicItemInfo.musicDuration);
   }
   
   public void e()
@@ -434,58 +387,32 @@ public class QimMusicPlayer
     if (QLog.isColorLevel()) {
       QLog.d("QimMusicPlayer", 2, "clearMusic ");
     }
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-    MusicPlayerScene localMusicPlayerScene = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicMusicPlayerScene;
+    this.c = null;
+    this.b = null;
+    MusicPlayerScene localMusicPlayerScene = this.g;
     if (localMusicPlayerScene != null) {
       localMusicPlayerScene.e();
     }
   }
   
-  public void f()
+  public boolean f()
   {
-    MusicItemInfo localMusicItemInfo = a();
-    if (localMusicItemInfo == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager != null)
-    {
-      QQFilterRenderManager localQQFilterRenderManager = QQFilterRenderManagerHolder.a(this.jdField_a_of_type_Int);
-      if ((localMusicItemInfo.needPlay()) && (b()))
-      {
-        int i;
-        if (a()) {
-          i = a() - localMusicItemInfo.musicStart;
-        } else {
-          i = 0;
-        }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager.a(localMusicItemInfo, i);
-        if (localQQFilterRenderManager != null) {
-          localQQFilterRenderManager.getBusinessOperation().setMusicWaveformSupporter(this);
-        }
-      }
-      else if ((localMusicItemInfo.needPlay()) || (b()))
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager.a();
-        if (localQQFilterRenderManager != null) {
-          localQQFilterRenderManager.getBusinessOperation().setMusicWaveformSupporter(null);
-        }
-      }
-    }
+    MusicPlayerScene localMusicPlayerScene = this.g;
+    return (localMusicPlayerScene != null) && (localMusicPlayerScene.g());
   }
   
   public float getCurrentMusicGain()
   {
-    MusicItemInfo localMusicItemInfo = a();
+    MusicItemInfo localMusicItemInfo = i();
     if (localMusicItemInfo == null) {
       return -1.0F;
     }
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager != null) && (localMusicItemInfo.needPlay()) && (a()))
+      if ((this.i != null) && (localMusicItemInfo.needPlay()) && (f()))
       {
-        float f = this.jdField_a_of_type_ComTencentAelightCameraAioeditorMusicwavesupportMusicWaveformManager.a(a() - localMusicItemInfo.musicStart);
-        return f;
+        float f1 = this.i.a(h() - localMusicItemInfo.musicStart);
+        return f1;
       }
       return -1.0F;
     }
@@ -504,16 +431,84 @@ public class QimMusicPlayer
   
   public MusicItemInfo getMusicItemInfo()
   {
-    MusicItemInfo localMusicItemInfo = a();
+    MusicItemInfo localMusicItemInfo = i();
     if ((localMusicItemInfo != null) && (localMusicItemInfo.needPlay())) {
       return localMusicItemInfo.copy();
     }
     return null;
   }
+  
+  public int h()
+  {
+    if (f()) {
+      return this.g.h();
+    }
+    return -1;
+  }
+  
+  public MusicItemInfo i()
+  {
+    MusicItemInfo localMusicItemInfo = this.b;
+    if (localMusicItemInfo == null) {
+      return null;
+    }
+    if ((localMusicItemInfo.mType != 5) && (this.b.mType != 1)) {
+      return null;
+    }
+    return this.b;
+  }
+  
+  public MusicItemInfo j()
+  {
+    return this.c;
+  }
+  
+  public void k()
+  {
+    MusicItemInfo localMusicItemInfo = i();
+    if (localMusicItemInfo == null) {
+      return;
+    }
+    if (this.i != null)
+    {
+      QQFilterRenderManager localQQFilterRenderManager = QQFilterRenderManagerHolder.a(this.j);
+      if ((localMusicItemInfo.needPlay()) && (l()))
+      {
+        int n;
+        if (f()) {
+          n = h() - localMusicItemInfo.musicStart;
+        } else {
+          n = 0;
+        }
+        this.i.a(localMusicItemInfo, n);
+        if (localQQFilterRenderManager != null) {
+          localQQFilterRenderManager.getBusinessOperation().setMusicWaveformSupporter(this);
+        }
+      }
+      else if ((localMusicItemInfo.needPlay()) || (l()))
+      {
+        this.i.b();
+        if (localQQFilterRenderManager != null) {
+          localQQFilterRenderManager.getBusinessOperation().setMusicWaveformSupporter(null);
+        }
+      }
+    }
+  }
+  
+  public boolean l()
+  {
+    Object localObject = QQFilterRenderManagerHolder.a(this.j);
+    if (localObject != null) {
+      localObject = ((QQFilterRenderManager)localObject).getBusinessOperation().getCurrentAVFilterIdByType(2);
+    } else {
+      localObject = null;
+    }
+    return (localObject != null) && (QQAVImageFilterConstants.isMusicSpecialFilter(((FilterDesc)localObject).id));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QimMusicPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ final class PhoneNumQuickLoginManager$1
   
   public void a(int paramInt, Exception paramException)
   {
-    this.jdField_a_of_type_MqqObserverWtloginObserver.onException(paramException.getMessage(), paramInt);
+    this.d.onException(paramException.getMessage(), paramInt);
   }
   
   public void a(GetLocalPhone.EncryptPhoneData paramEncryptPhoneData)
@@ -27,12 +27,12 @@ final class PhoneNumQuickLoginManager$1
       a(-2001, new Exception("phoneData is null"));
       return;
     }
-    PhoneNumQuickLoginManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_MqqAppAppRuntime, paramEncryptPhoneData.str_encypt_phone.get(), this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    PhoneNumQuickLoginManager.a(this.a, this.b, paramEncryptPhoneData.str_encypt_phone.get(), this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.1
  * JD-Core Version:    0.7.0.1
  */

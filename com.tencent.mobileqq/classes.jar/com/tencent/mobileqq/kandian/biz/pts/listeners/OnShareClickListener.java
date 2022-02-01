@@ -11,7 +11,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebShareUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
@@ -24,7 +24,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsInsertAction;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.share.ShareReport;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -36,20 +35,20 @@ import org.json.JSONObject;
 public class OnShareClickListener
   implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FastWebShareUtils jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilFastWebShareUtils;
-  private ReadInJoyShareHelperV2 jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
-  private QShareUtils jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesQShareUtils;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = null;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString;
+  private AbsBaseArticleInfo a = null;
+  private Context b;
+  private ReadInJoyShareHelperV2 c;
+  private QShareUtils d;
+  private FastWebShareUtils e;
+  private String f;
+  private int g;
+  private String h;
+  private int i = -1;
   
   public OnShareClickListener(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramContext;
   }
   
   public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -59,7 +58,7 @@ public class OnShareClickListener
       JSONObject localJSONObject = new JSONObject();
       RIJTransMergeKanDianReport.a(localJSONObject, paramAbsBaseArticleInfo);
       localJSONObject.put("feed_type", 1043);
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("version", VideoReporter.a);
       localJSONObject.put("os", "1");
       if (paramAbsBaseArticleInfo != null)
       {
@@ -95,88 +94,87 @@ public class OnShareClickListener
   private void a(ViewBase paramViewBase)
   {
     Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2 = new ReadInJoyShareHelperV2((Activity)paramViewBase.getNativeView().getContext(), (AppInterface)localObject1, new OnShareClickListener.ItemSheetClickProcessor(this, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, new WeakReference((Activity)paramViewBase.getNativeView().getContext())));
+    this.c = new ReadInJoyShareHelperV2((Activity)paramViewBase.getNativeView().getContext(), (AppInterface)localObject1, new OnShareClickListener.ItemSheetClickProcessor(this, this.a, new WeakReference((Activity)paramViewBase.getNativeView().getContext())));
     paramViewBase.getNativeView().addOnAttachStateChangeListener(new OnShareClickListener.1(this));
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().getIntent();
+    paramViewBase = this.c.f().getIntent();
     if ((paramViewBase != null) && (TextUtils.isEmpty(paramViewBase.getStringExtra("big_brother_source_key")))) {
       paramViewBase.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().setActionSheetTitle(HardCodeUtil.a(2131713504));
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleContentUrl;
-    boolean bool = RIJItemViewTypeUtils.l(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    this.c.a().setActionSheetTitle(HardCodeUtil.a(2131911054));
+    paramViewBase = this.a.mArticleContentUrl;
+    boolean bool = RIJItemViewTypeUtils.l(this.a);
     localObject1 = "";
-    int i;
+    int j;
     if (bool)
     {
-      i = 15;
+      j = 15;
     }
-    else if (RIJItemViewTypeUtils.d(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+    else if (RIJItemViewTypeUtils.d(this.a))
     {
-      i = 16;
+      j = 16;
     }
-    else if (RIJItemViewTypeUtils.h(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+    else if (RIJItemViewTypeUtils.h(this.a))
     {
-      i = 12;
+      j = 12;
     }
-    else if (RIJItemViewTypeUtils.B(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+    else if (RIJItemViewTypeUtils.E(this.a))
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      paramViewBase = this.a;
       if (paramViewBase != null) {
         paramViewBase = paramViewBase.mOriginalUrl;
       } else {
         paramViewBase = "";
       }
-      i = 28;
+      j = 28;
     }
     else
     {
-      i = 0;
+      j = 0;
     }
     if (paramViewBase != null)
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramViewBase);
       ((StringBuilder)localObject2).append("&rowkey=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID);
+      ((StringBuilder)localObject2).append(this.a.innerUniqueID);
       ((StringBuilder)localObject2).toString();
     }
-    ShareReport.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
+    ShareReport.a.a(this.a);
+    Object localObject2 = this.c;
     List localList = a();
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a;
     paramViewBase = (ViewBase)localObject1;
     if (localAbsBaseArticleInfo != null) {
       paramViewBase = localAbsBaseArticleInfo.innerUniqueID;
     }
-    ((ReadInJoyShareHelperV2)localObject2).a(new List[] { localList }, i, paramViewBase);
+    ((ReadInJoyShareHelperV2)localObject2).a(new List[] { localList }, j, paramViewBase);
   }
   
-  private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     String str1 = a(paramAbsBaseArticleInfo);
     Object localObject = paramAbsBaseArticleInfo.mSocialFeedInfo;
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     String str2 = paramAbsBaseArticleInfo.mSubscribeID;
     long l1 = ((SocializeFeedsInfo)localObject).a;
     long l2 = paramAbsBaseArticleInfo.mArticleID;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
     ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mStrategyId);
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str2, "0X800AB52", "0X800AB52", 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject).toString(), str1, false);
+    PublicAccountReportUtils.a(null, str2, "0X800AB52", "0X800AB52", 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject).toString(), str1, false);
   }
   
   public void onClick(ViewBase paramViewBase)
   {
     a(paramViewBase);
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramViewBase;
-    a(paramViewBase);
-    RIJFeedsDynamicInsertController.INSTANCE.requestDynamicInsertInTL(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, new RIJFeedsInsertAction(ActionType.ACTION_SHARE, 0, 0, 0));
+    paramViewBase = this.a;
+    com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = paramViewBase;
+    b(paramViewBase);
+    RIJFeedsDynamicInsertController.INSTANCE.requestDynamicInsertInTL(this.a, new RIJFeedsInsertAction(ActionType.ACTION_SHARE, 0, 0, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnShareClickListener
  * JD-Core Version:    0.7.0.1
  */

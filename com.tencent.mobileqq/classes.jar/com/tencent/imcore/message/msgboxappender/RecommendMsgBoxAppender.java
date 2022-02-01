@@ -21,8 +21,8 @@ public class RecommendMsgBoxAppender
   private Object[] a(IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, String paramString, int paramInt, long paramLong)
   {
     C2CMessageManager localC2CMessageManager = (C2CMessageManager)paramIMessageManager;
-    Message localMessage = localC2CMessageManager.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    INewFriendService localINewFriendService = (INewFriendService)localC2CMessageManager.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(INewFriendService.class, "");
+    Message localMessage = localC2CMessageManager.b.getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    INewFriendService localINewFriendService = (INewFriendService)localC2CMessageManager.a.getRuntimeService(INewFriendService.class, "");
     localMessage.istroop = paramMessageRecord.istroop;
     localINewFriendService.loadNewFriendMsg(false);
     int j = localINewFriendService.getAllUnreadMessageCount();
@@ -38,7 +38,7 @@ public class RecommendMsgBoxAppender
       {
         MessageRecord.copyMessageRecordBaseField(localMessage, paramMessageRecord);
         localMessage.msgData = paramMessageRecord.msgData;
-        localC2CMessageManager.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setIncomingMsg(localMessage);
+        localC2CMessageManager.b.setIncomingMsg(localMessage);
         try
         {
           ((C2CMessageManager)paramIMessageManager).a(localMessage);
@@ -49,12 +49,12 @@ public class RecommendMsgBoxAppender
             QLog.d("Q.msg.BaseMessageManager", 2, "addMessageRecord ERROR", paramIMessageManager);
           }
         }
-        localC2CMessageManager.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getIncomingMsg().unReadNum = j;
+        localC2CMessageManager.b.getIncomingMsg().unReadNum = j;
       }
     }
     else
     {
-      localC2CMessageManager.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setIncomingMsg(null);
+      localC2CMessageManager.b.setIncomingMsg(null);
     }
     return new Object[] { Boolean.valueOf(true), paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) };
   }
@@ -69,7 +69,7 @@ public class RecommendMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.RecommendMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

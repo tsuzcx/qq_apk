@@ -4,22 +4,16 @@ import com.tencent.mobileqq.transfile.HttpNetReq;
 
 public class ScoreManager$DownloadInfo
 {
-  public HttpNetReq a;
-  public String a;
+  public String a = "";
   public String b = "";
   public String c = "";
-  
-  public ScoreManager$DownloadInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-  }
+  public HttpNetReq d = null;
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
     localStringBuffer.append(", url='");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append('\'');
     localStringBuffer.append(", md5='");
     localStringBuffer.append(this.b);

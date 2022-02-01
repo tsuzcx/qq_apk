@@ -42,130 +42,125 @@ public class MsgBackupSelectionFragment
   extends QIphoneTitleBarFragment
   implements Handler.Callback, View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private MsgBackupManager jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager;
-  private MsgBackupListAdapter.OnItemCheckedChangeListener jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener = new MsgBackupSelectionFragment.3(this);
-  private MsgBackupListAdapter jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter;
-  private String jdField_a_of_type_JavaLangString;
-  protected List<RecentBaseData> a;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = -1000;
-  private long jdField_b_of_type_Long = 0L;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_b_of_type_JavaLangString;
-  private final int jdField_c_of_type_Int = 10000;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private View d;
+  private LinearLayoutManager A;
+  private long B = 0L;
+  private long C = 0L;
+  private int D = -1000;
+  private String E;
+  private String F;
+  private String G;
+  private MqqHandler H;
+  private final int I = 10000;
+  private View J;
+  private View K;
+  private boolean L = false;
+  private MsgBackupListAdapter.OnItemCheckedChangeListener M = new MsgBackupSelectionFragment.3(this);
+  protected List<RecentBaseData> a = new ArrayList();
+  private RecyclerView b;
+  private MsgBackupListAdapter c;
+  private TextView d;
+  private RelativeLayout e;
+  private TextView f;
   private TextView g;
-  private TextView h;
-  private TextView i;
-  
-  public MsgBackupSelectionFragment()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private void a()
-  {
-    Object localObject = getArguments();
-    this.jdField_a_of_type_Int = ((Bundle)localObject).getInt("backup_select_from", 0);
-    this.jdField_c_of_type_JavaLangString = ((Bundle)localObject).getString("0x11bpush_extra");
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("handlerArg, mFrom = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, ((StringBuilder)localObject).toString());
-    }
-  }
+  private Button w;
+  private MsgBackupManager x;
+  private boolean y = false;
+  private int z;
   
   private void a(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
-      localStringBuilder.append(getString(2131690557, new Object[] { Integer.valueOf(paramInt) }));
+      localStringBuilder.append(getString(2131887468, new Object[] { Integer.valueOf(paramInt) }));
     }
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
+    if ((this.B != 0L) && (this.C != 0L))
     {
       if (paramInt > 0) {
         localStringBuilder.append("\n");
       }
-      localStringBuilder.append(getString(2131690547, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      localStringBuilder.append(getString(2131887458, new Object[] { this.E, this.F }));
     }
-    if (this.jdField_b_of_type_Int == 2)
+    if (this.D == 2)
     {
       localStringBuilder.append("\n");
-      localStringBuilder.append(getString(2131690537));
+      localStringBuilder.append(getString(2131887448));
     }
     if (localStringBuilder.length() > 0)
     {
-      this.g.setVisibility(0);
-      this.g.setText(localStringBuilder.toString());
+      this.d.setVisibility(0);
+      this.d.setText(localStringBuilder.toString());
     }
     else
     {
-      this.g.setVisibility(8);
+      this.d.setVisibility(8);
     }
     if (paramInt > 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size())
+      this.w.setEnabled(true);
+      if (paramInt == this.a.size())
       {
-        this.jdField_a_of_type_Boolean = true;
-        b(this.h, 2131690583);
+        this.y = true;
+        b(this.f, 2131887494);
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
-      b(this.h, 2131690565);
+      this.y = false;
+      b(this.f, 2131887476);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_Boolean = false;
-    b(this.h, 2131690565);
+    this.w.setEnabled(false);
+    this.y = false;
+    b(this.f, 2131887476);
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
-      localStringBuilder.append(getString(2131690557, new Object[] { Integer.valueOf(paramInt) }));
+      localStringBuilder.append(getString(2131887468, new Object[] { Integer.valueOf(paramInt) }));
     }
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
+    if ((this.B != 0L) && (this.C != 0L))
     {
       if (paramInt > 0) {
         localStringBuilder.append("\n");
       }
-      localStringBuilder.append(getString(2131690547, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      localStringBuilder.append(getString(2131887458, new Object[] { this.E, this.F }));
     }
-    if (this.jdField_b_of_type_Int == 2)
+    if (this.D == 2)
     {
       localStringBuilder.append("\n");
-      localStringBuilder.append(getString(2131690537));
+      localStringBuilder.append(getString(2131887448));
     }
     if (localStringBuilder.length() > 0)
     {
-      this.g.setVisibility(0);
-      this.g.setText(localStringBuilder.toString());
+      this.d.setVisibility(0);
+      this.d.setText(localStringBuilder.toString());
     }
     else
     {
-      this.g.setVisibility(8);
+      this.d.setVisibility(8);
     }
     if (paramBoolean)
     {
-      b(this.h, 2131690583);
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      b(this.f, 2131887494);
+      this.w.setEnabled(true);
       return;
     }
-    b(this.h, 2131690565);
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    b(this.f, 2131887476);
+    this.w.setEnabled(false);
+  }
+  
+  private void b()
+  {
+    Object localObject = getArguments();
+    this.z = ((Bundle)localObject).getInt("backup_select_from", 0);
+    this.G = ((Bundle)localObject).getString("0x11bpush_extra");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handlerArg, mFrom = ");
+      ((StringBuilder)localObject).append(this.z);
+      QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void b(TextView paramTextView, int paramInt)
@@ -173,7 +168,7 @@ public class MsgBackupSelectionFragment
     if (paramTextView != null)
     {
       paramTextView.setText(paramInt);
-      if (AppSetting.d) {
+      if (AppSetting.e) {
         paramTextView.setContentDescription(getString(paramInt));
       }
     }
@@ -181,74 +176,74 @@ public class MsgBackupSelectionFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager = MsgBackupManager.a();
+    this.x = MsgBackupManager.a();
   }
   
   private void d()
   {
-    MsgBackupManager.a().a.clear();
+    MsgBackupManager.a().h.clear();
     MsgBackupManager.a().a(new MsgBackupSelectionFragment.1(this));
-    MsgBackupManager.a().n();
+    MsgBackupManager.a().t();
   }
   
   private void e()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363700));
-    this.h = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377135));
-    b(this.jdField_a_of_type_AndroidWidgetButton, 2131690565);
-    this.i = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365415));
-    b(this.i, 2131690566);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131377157));
-    b(this.jdField_a_of_type_AndroidWidgetButton, 2131690556);
-    this.h.setOnClickListener(this);
-    this.i.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.g = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371031));
-    this.g.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371027));
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(1);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter = new MsgBackupListAdapter(getActivity(), (BaseQQAppInterface)getQBaseActivity().getAppRuntime(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener);
-    this.d = this.jdField_b_of_type_AndroidViewView.findViewById(2131366237);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370350);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(new MsgBackupSelectionFragment.2(this));
+    this.e = ((RelativeLayout)this.t.findViewById(2131429617));
+    this.f = ((TextView)this.t.findViewById(2131445510));
+    b(this.w, 2131887476);
+    this.g = ((TextView)this.t.findViewById(2131431619));
+    b(this.g, 2131887477);
+    this.w = ((Button)this.t.findViewById(2131445535));
+    b(this.w, 2131887467);
+    this.f.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    this.w.setOnClickListener(this);
+    this.w.setEnabled(false);
+    this.d = ((TextView)this.t.findViewById(2131438370));
+    this.d.setVisibility(8);
+    this.b = ((RecyclerView)this.t.findViewById(2131438366));
+    this.A = new LinearLayoutManager(getActivity());
+    this.A.setOrientation(1);
+    this.b.setLayoutManager(this.A);
+    this.c = new MsgBackupListAdapter(getActivity(), (BaseQQAppInterface)getQBaseActivity().getAppRuntime(), this.b);
+    this.b.setAdapter(this.c);
+    this.c.a(this.M);
+    this.K = this.t.findViewById(2131432529);
+    this.J = this.t.findViewById(2131437612);
+    this.J.setVisibility(0);
+    this.p.setOnItemSelectListener(new MsgBackupSelectionFragment.2(this));
   }
   
   private void f()
   {
-    ViewUtils.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
-    ViewUtils.b(this.d, 8);
-    ViewUtils.b(this.jdField_c_of_type_AndroidViewView, 8);
+    ViewUtils.setVisible(this.b, 0);
+    ViewUtils.setVisible(this.K, 8);
+    ViewUtils.setVisible(this.J, 8);
   }
   
   private void g()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.y)
     {
-      i();
-      if (this.jdField_a_of_type_Int == 0)
+      p();
+      if (this.z == 0)
       {
         MsgBackupReporter.a("0X800A233", 2);
         return;
       }
-      if (MsgBackupManager.jdField_c_of_type_Boolean) {
+      if (MsgBackupManager.s) {
         MsgBackupReporter.a("0X800A258", 2);
       }
     }
     else
     {
       h();
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.z == 0)
       {
         MsgBackupReporter.a("0X800A233", 1);
         return;
       }
-      if (MsgBackupManager.jdField_c_of_type_Boolean) {
+      if (MsgBackupManager.s) {
         MsgBackupReporter.a("0X800A258", 1);
       }
     }
@@ -256,109 +251,102 @@ public class MsgBackupSelectionFragment
   
   private void h()
   {
-    this.jdField_a_of_type_Boolean ^= true;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      a(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Boolean);
+    this.y ^= true;
+    if (this.a.size() > 0) {
+      a(this.a.size(), this.y);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-      MsgBackupManager.a().a.add(localRecentBaseData);
+      MsgBackupManager.a().h.add(localRecentBaseData);
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.b();
+    this.c.b();
   }
   
-  private void i()
+  private void p()
   {
-    this.jdField_a_of_type_Boolean ^= true;
-    a(0, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.c();
-    MsgBackupManager.a().c();
+    this.y ^= true;
+    a(0, this.y);
+    this.c.c();
+    MsgBackupManager.a().f();
   }
   
-  private void j()
+  private void q()
   {
-    Object localObject = MsgBackupManager.a().a.iterator();
-    int j = 0;
-    int n;
+    Object localObject = MsgBackupManager.a().h.iterator();
+    int i = 0;
     int m;
     int k;
+    int j;
     for (;;)
     {
       boolean bool = ((Iterator)localObject).hasNext();
-      n = 3;
-      m = 2;
-      k = j;
+      m = 3;
+      k = 2;
+      j = i;
       if (!bool) {
         break;
       }
       if (UinTypeUtil.b(((RecentBaseData)((Iterator)localObject).next()).getRecentUserType()))
       {
-        if (j == 2)
+        if (i == 2)
         {
-          k = 3;
+          j = 3;
           break;
         }
-        j = 1;
+        i = 1;
       }
-      else if (j == 1)
+      else if (i == 1)
       {
-        j = 3;
+        i = 3;
       }
       else
       {
-        j = 2;
+        i = 2;
       }
     }
-    j = n;
-    if (this.jdField_a_of_type_Long != 0L)
+    i = m;
+    if (this.B != 0L)
     {
-      j = n;
-      if (this.jdField_b_of_type_Long != 0L) {
-        j = 1;
+      i = m;
+      if (this.C != 0L) {
+        i = 1;
       }
     }
-    if (this.jdField_b_of_type_Int == 2) {
-      if (j == 1) {
-        j = m;
+    if (this.D == 2) {
+      if (i == 1) {
+        i = k;
       } else {
-        j = 4;
+        i = 4;
       }
     }
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.z == 0) {
       localObject = "0X800A238";
-    } else if (MsgBackupManager.jdField_c_of_type_Boolean) {
+    } else if (MsgBackupManager.s) {
       localObject = "0X800A25D";
     } else {
       localObject = "";
     }
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      MsgBackupReporter.a((String)localObject, k, j);
+      MsgBackupReporter.a((String)localObject, j, i);
     }
   }
   
   protected int a()
   {
-    return 2131561438;
+    return 2131627794;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
-    a();
+    this.H = new MqqHandler(Looper.getMainLooper(), this);
+    b();
     c();
     e();
     d();
-    MsgBackupManager.a().c();
-  }
-  
-  protected View d()
-  {
-    View localView = super.d();
-    a(getActivity().getString(2131690567));
-    return localView;
+    MsgBackupManager.a().f();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -367,24 +355,31 @@ public class MsgBackupSelectionFragment
       return false;
     }
     f();
-    paramMessage = this.jdField_a_of_type_JavaUtilList;
+    paramMessage = this.a;
     if ((paramMessage != null) && (paramMessage.size() > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.a();
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.notifyDataSetChanged();
+      this.c.a(this.a);
+      this.c.a();
+      this.c.notifyDataSetChanged();
       return false;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
-    this.i.setEnabled(false);
-    this.h.setEnabled(false);
-    this.d.setVisibility(0);
+    this.b.setVisibility(4);
+    this.g.setEnabled(false);
+    this.f.setEnabled(false);
+    this.K.setVisibility(0);
     return false;
   }
   
   public boolean isWrapContent()
   {
     return false;
+  }
+  
+  protected View n()
+  {
+    View localView = super.n();
+    a(getActivity().getString(2131887478));
+    return localView;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -394,27 +389,27 @@ public class MsgBackupSelectionFragment
     {
       if (paramIntent != null)
       {
-        this.jdField_a_of_type_Long = paramIntent.getLongExtra("session_start_time", 0L);
-        this.jdField_b_of_type_Long = paramIntent.getLongExtra("session_end_time", 0L);
-        this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("session_start_time_str");
-        this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("session_end_time_str");
-        this.jdField_b_of_type_Int = paramIntent.getIntExtra("session_content_type", 1);
+        this.B = paramIntent.getLongExtra("session_start_time", 0L);
+        this.C = paramIntent.getLongExtra("session_end_time", 0L);
+        this.E = paramIntent.getStringExtra("session_start_time_str");
+        this.F = paramIntent.getStringExtra("session_end_time_str");
+        this.D = paramIntent.getIntExtra("session_content_type", 1);
         if (QLog.isColorLevel())
         {
           paramIntent = new StringBuilder();
           paramIntent.append("onActivityResult startTime = ");
-          paramIntent.append(this.jdField_a_of_type_Long);
+          paramIntent.append(this.B);
           paramIntent.append(", endTime = ");
-          paramIntent.append(this.jdField_b_of_type_Long);
+          paramIntent.append(this.C);
           paramIntent.append(", mCurContentType = ");
-          paramIntent.append(this.jdField_b_of_type_Int);
+          paramIntent.append(this.D);
           paramIntent.append(", startTimeShow = ");
-          paramIntent.append(this.jdField_a_of_type_JavaLangString);
+          paramIntent.append(this.E);
           paramIntent.append(", endTimeShow = ");
-          paramIntent.append(this.jdField_b_of_type_JavaLangString);
+          paramIntent.append(this.F);
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, paramIntent.toString());
         }
-        a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupManager.a.size());
+        a(this.x.h.size());
       }
     }
     else if ((1000 == paramInt1) && (paramInt2 == 1001))
@@ -428,58 +423,58 @@ public class MsgBackupSelectionFragment
   
   public void onClick(View paramView)
   {
-    int j = paramView.getId();
-    if (j == 2131377135)
+    int i = paramView.getId();
+    if (i == 2131445510)
     {
       g();
     }
     else
     {
       Object localObject;
-      if (j == 2131365415)
+      if (i == 2131431619)
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("date_select startTime = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject).append(this.B);
           ((StringBuilder)localObject).append(", endTime = ");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+          ((StringBuilder)localObject).append(this.C);
           ((StringBuilder)localObject).append(", mCurContentType = ");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.D);
           ((StringBuilder)localObject).append(", startTimeShow = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.E);
           ((StringBuilder)localObject).append(", endTimeShow = ");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.F);
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new Intent();
-        ((Intent)localObject).putExtra("session_start_time", this.jdField_a_of_type_Long);
-        ((Intent)localObject).putExtra("session_end_time", this.jdField_b_of_type_Long);
-        ((Intent)localObject).putExtra("session_start_time_str", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("session_end_time_str", this.jdField_b_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("session_content_type", this.jdField_b_of_type_Int);
-        ((Intent)localObject).putExtra("backup_select_from", this.jdField_a_of_type_Int);
+        ((Intent)localObject).putExtra("session_start_time", this.B);
+        ((Intent)localObject).putExtra("session_end_time", this.C);
+        ((Intent)localObject).putExtra("session_start_time_str", this.E);
+        ((Intent)localObject).putExtra("session_end_time_str", this.F);
+        ((Intent)localObject).putExtra("session_content_type", this.D);
+        ((Intent)localObject).putExtra("backup_select_from", this.z);
         QPublicFragmentActivity.startForResult(getActivity(), (Intent)localObject, MsgBackupDateFragment.class, 1000);
       }
-      else if (j == 2131377157)
+      else if (i == 2131445535)
       {
-        MsgBackupManager.jdField_b_of_type_Int = MsgBackupManager.a().a.size();
+        MsgBackupManager.i = MsgBackupManager.a().h.size();
         MsgBackupReporter.a();
-        MsgBackupReporter.a.jdField_b_of_type_Long = MsgBackupManager.jdField_b_of_type_Int;
+        MsgBackupReporter.a.g = MsgBackupManager.i;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("select session detail, sessionCount = ");
-          ((StringBuilder)localObject).append(MsgBackupManager.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(MsgBackupManager.i);
           QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new Intent();
-        ((Intent)localObject).putExtra("session_start_time", this.jdField_a_of_type_Long);
-        ((Intent)localObject).putExtra("session_end_time", this.jdField_b_of_type_Long);
-        ((Intent)localObject).putExtra("session_content_type", this.jdField_b_of_type_Int);
-        j = this.jdField_a_of_type_Int;
-        if (j == 0)
+        ((Intent)localObject).putExtra("session_start_time", this.B);
+        ((Intent)localObject).putExtra("session_end_time", this.C);
+        ((Intent)localObject).putExtra("session_content_type", this.D);
+        i = this.z;
+        if (i == 0)
         {
           boolean bool = NetworkUtil.isWifiEnabled(BaseApplication.getContext());
           ((Intent)localObject).putExtra("session_net_status", bool);
@@ -504,16 +499,16 @@ public class MsgBackupSelectionFragment
           }
           QPublicFragmentActivity.startForResult(getActivity(), (Intent)localObject, MsgBackupQRFragment.class, 1000);
         }
-        else if (j == 1)
+        else if (i == 1)
         {
           if (QLog.isColorLevel()) {
             QLog.d("MsgBackup.MsgBackupSelectionFragment", 2, "onClick!!! TYPE_TO_PC");
           }
-          ((Intent)localObject).putExtra("0x11bpush_extra", this.jdField_c_of_type_JavaLangString);
+          ((Intent)localObject).putExtra("0x11bpush_extra", this.G);
           ((Intent)localObject).putExtra("param_start", 2);
           QPublicFragmentActivity.startForResult(getActivity(), (Intent)localObject, MsgBackupPCTransportFragment.class, 1000);
         }
-        j();
+        q();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -528,12 +523,12 @@ public class MsgBackupSelectionFragment
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter.notifyDataSetChanged();
+    this.c.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment
  * JD-Core Version:    0.7.0.1
  */

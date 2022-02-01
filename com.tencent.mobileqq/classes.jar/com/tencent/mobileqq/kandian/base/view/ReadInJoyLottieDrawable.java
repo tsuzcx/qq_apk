@@ -24,44 +24,32 @@ import mqq.util.WeakReference;
 public class ReadInJoyLottieDrawable
   extends LottieDrawable
 {
-  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
-  private static final String jdField_a_of_type_JavaLangString;
-  private static LruCache<String, LottieComposition> jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(1048576);
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean jdField_b_of_type_Boolean = true;
+  private static final String a;
+  private static LruCache<String, Bitmap> b = new LruCache(5242880);
+  private static LruCache<String, LottieComposition> c = new LruCache(1048576);
+  private boolean d = true;
+  private boolean e = true;
+  private Handler f = new Handler(Looper.getMainLooper());
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append(".readInjoy/resource/lottie_background_res");
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
-  }
-  
-  private static long a(String paramString)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < paramString.length())
-    {
-      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
-      i += 1;
-    }
-    return l;
+    a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static ReadInJoyLottieDrawable a(String paramString)
   {
     ReadInJoyLottieDrawable localReadInJoyLottieDrawable = new ReadInJoyLottieDrawable();
-    long l = a(paramString);
+    long l = b(paramString);
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(a);
     ((StringBuilder)localObject1).append(File.separator);
     ((StringBuilder)localObject1).append(l);
     String str = ((StringBuilder)localObject1).toString();
     localObject1 = new File(str);
-    if (a((File)localObject1))
+    if (b((File)localObject1))
     {
       localReadInJoyLottieDrawable.a((File)localObject1);
       return localReadInJoyLottieDrawable;
@@ -69,7 +57,7 @@ public class ReadInJoyLottieDrawable
     Object localObject2 = (DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY);
     boolean bool = true;
     localObject2 = ((DownloaderFactory)localObject2).a(1);
-    Object localObject3 = new File(jdField_a_of_type_JavaLangString);
+    Object localObject3 = new File(a);
     if (!((File)localObject3).exists()) {
       bool = ((File)localObject3).mkdirs();
     }
@@ -81,8 +69,8 @@ public class ReadInJoyLottieDrawable
       str = ((StringBuilder)localObject3).toString();
       localObject3 = new File(str);
       paramString = new DownloadTask(paramString, (File)localObject3);
-      paramString.b = 3;
-      paramString.d = 60L;
+      paramString.e = 3;
+      paramString.u = 60L;
       Bundle localBundle = new Bundle();
       localBundle.putLong("bgLottieResId", l);
       localBundle.putString("bgLottieResPath", str);
@@ -126,7 +114,7 @@ public class ReadInJoyLottieDrawable
       localObject2 = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject2);
       if (localObject1.length > 0)
       {
-        if ((LottieComposition)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramFile.getAbsolutePath()) == null)
+        if ((LottieComposition)c.get(paramFile.getAbsolutePath()) == null)
         {
           ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, (File[])localObject1, paramFile, (Runnable)localObject2), 64, null, true);
           return;
@@ -136,7 +124,19 @@ public class ReadInJoyLottieDrawable
     }
   }
   
-  private static boolean a(File paramFile)
+  private static long b(String paramString)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramString.length())
+    {
+      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
+      i += 1;
+    }
+    return l;
+  }
+  
+  private static boolean b(File paramFile)
   {
     boolean bool3 = paramFile.exists();
     boolean bool2 = false;
@@ -158,12 +158,12 @@ public class ReadInJoyLottieDrawable
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void playAnimation()
@@ -176,7 +176,7 @@ public class ReadInJoyLottieDrawable
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!paramBoolean1) && (this.jdField_a_of_type_Boolean)) {
+    if ((!paramBoolean1) && (this.d)) {
       cancelAnimation();
     }
     return super.setVisible(paramBoolean1, paramBoolean2);
@@ -192,7 +192,7 @@ public class ReadInJoyLottieDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable
  * JD-Core Version:    0.7.0.1
  */

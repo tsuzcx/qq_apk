@@ -5,7 +5,6 @@ import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
 import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
 import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
 import com.tencent.gamecenter.wadl.util.GameCenterUtil;
-import com.tencent.gamecenter.wadl.util.WLog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ThirdAppProxy.AppDownloadListener;
@@ -24,10 +23,10 @@ class ThirdAppProxyImpl$1
   
   public void a(WadlResult paramWadlResult)
   {
-    if ((paramWadlResult != null) && (paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null))
+    if ((paramWadlResult != null) && (paramWadlResult.a != null))
     {
-      String str = paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.a;
-      int i = GameCenterUtil.a(paramWadlResult.jdField_b_of_type_Int);
+      String str = paramWadlResult.a.e;
+      int i = GameCenterUtil.a(paramWadlResult.d);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onWadlTaskStatusChanged:");
       localStringBuilder.append(paramWadlResult);
@@ -64,10 +63,10 @@ class ThirdAppProxyImpl$1
               if (ThirdAppProxyImpl.a(this.a).containsKey(str)) {
                 i = ((Integer)ThirdAppProxyImpl.a(this.a).get(str)).intValue();
               }
-              int j = (int)(paramWadlResult.jdField_b_of_type_Long * 100L / paramWadlResult.jdField_a_of_type_Long);
+              int j = (int)(paramWadlResult.f * 100L / paramWadlResult.e);
               if (j - i >= 1)
               {
-                ((ThirdAppProxy.AppDownloadListener)ThirdAppProxyImpl.b(this.a).get(str)).onDownloadProgress(paramWadlResult.jdField_b_of_type_Long, paramWadlResult.jdField_a_of_type_Long, j);
+                ((ThirdAppProxy.AppDownloadListener)ThirdAppProxyImpl.b(this.a).get(str)).onDownloadProgress(paramWadlResult.f, paramWadlResult.e, j);
                 ThirdAppProxyImpl.a(this.a).put(str, Integer.valueOf(j));
               }
             }
@@ -83,8 +82,8 @@ class ThirdAppProxyImpl$1
       }
       else
       {
-        i = GameCenterUtil.b(paramWadlResult.c);
-        GameCenterUtil.a(i);
+        i = GameCenterUtil.b(paramWadlResult.j);
+        GameCenterUtil.c(i);
         ThirdAppProxyImpl.a(this.a).remove(str);
         if ((ThirdAppProxyImpl.b(this.a) != null) && (ThirdAppProxyImpl.b(this.a).containsKey(str)) && (ThirdAppProxyImpl.b(this.a).get(str) != null)) {
           ((ThirdAppProxy.AppDownloadListener)ThirdAppProxyImpl.b(this.a).get(str)).onDownloadFailed(i, i, "failed");
@@ -93,7 +92,7 @@ class ThirdAppProxyImpl$1
       }
       return;
     }
-    WLog.a("ThirdAppProxyImpl", "onWadlTaskStatusChanged error wadlResult is null");
+    QLog.e("ThirdAppProxyImpl", 1, "onWadlTaskStatusChanged error wadlResult is null");
   }
   
   public void a(ArrayList<WadlResult> paramArrayList)
@@ -104,9 +103,9 @@ class ThirdAppProxyImpl$1
       while (localIterator.hasNext())
       {
         WadlResult localWadlResult = (WadlResult)localIterator.next();
-        Object localObject = localWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams;
+        Object localObject = localWadlResult.a;
         if (localObject != null) {
-          paramArrayList = ((WadlParams)localObject).a;
+          paramArrayList = ((WadlParams)localObject).e;
         } else {
           paramArrayList = null;
         }
@@ -122,16 +121,16 @@ class ThirdAppProxyImpl$1
         {
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("appid", paramArrayList);
-          localJSONObject.put("status", localWadlResult.jdField_b_of_type_Int);
-          localJSONObject.put("downloadSize", localWadlResult.jdField_b_of_type_Long);
-          localJSONObject.put("totalSize", localWadlResult.jdField_a_of_type_Long);
-          localJSONObject.put("progress", localWadlResult.jdField_b_of_type_Long * 100L / localWadlResult.jdField_a_of_type_Long);
-          if (localWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null) {
-            localJSONObject.put("versionCode", localWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.e);
+          localJSONObject.put("status", localWadlResult.d);
+          localJSONObject.put("downloadSize", localWadlResult.f);
+          localJSONObject.put("totalSize", localWadlResult.e);
+          localJSONObject.put("progress", localWadlResult.f * 100L / localWadlResult.e);
+          if (localWadlResult.a != null) {
+            localJSONObject.put("versionCode", localWadlResult.a.l);
           }
-          if (localWadlResult.jdField_b_of_type_Int == 6)
+          if (localWadlResult.d == 6)
           {
-            paramArrayList = localWadlResult.jdField_b_of_type_JavaLangString;
+            paramArrayList = localWadlResult.g;
             if ((TextUtils.isEmpty(paramArrayList)) || (!new File(paramArrayList).exists()))
             {
               localJSONObject.put("status", 0);
@@ -169,7 +168,7 @@ class ThirdAppProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

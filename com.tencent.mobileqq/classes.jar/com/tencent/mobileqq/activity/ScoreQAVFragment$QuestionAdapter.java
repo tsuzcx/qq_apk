@@ -12,24 +12,24 @@ import mqq.app.MobileQQ;
 class ScoreQAVFragment$QuestionAdapter
   extends RecyclerView.Adapter<ScoreQAVFragment.QuestionAdapter.MyViewHolder>
 {
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+  ScoreQAVFragment.OnItemClickListener a;
   
   ScoreQAVFragment$QuestionAdapter(ScoreQAVFragment paramScoreQAVFragment) {}
   
   public ScoreQAVFragment.QuestionAdapter.MyViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ScoreQAVFragment.QuestionAdapter.MyViewHolder(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559759, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
+    return new ScoreQAVFragment.QuestionAdapter.MyViewHolder(this, LayoutInflater.from(this.b.q.getApplication().getApplicationContext()).inflate(2131625801, paramViewGroup, false), this.a);
   }
   
   public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
+    this.a = paramOnItemClickListener;
   }
   
   public void a(ScoreQAVFragment.QuestionAdapter.MyViewHolder paramMyViewHolder, int paramInt)
   {
-    paramMyViewHolder.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt)) {
+    paramMyViewHolder.a.setText((CharSequence)this.b.a.get(paramInt));
+    if (this.b.b(paramInt)) {
       paramMyViewHolder.a.setSelected(true);
     } else {
       paramMyViewHolder.a.setSelected(false);
@@ -39,12 +39,12 @@ class ScoreQAVFragment$QuestionAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    return this.b.a.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.QuestionAdapter
  * JD-Core Version:    0.7.0.1
  */

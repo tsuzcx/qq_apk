@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.playfeeds;
 
-import com.tencent.mobileqq.kandian.biz.push.api.IRIJPushNotifyManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.push.RIJPushNotifyManager;
 
 class VideoColumnSubscribeHandler$2
   implements Runnable
@@ -10,19 +9,19 @@ class VideoColumnSubscribeHandler$2
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean))
+    if ((this.a != 0) && (this.b))
     {
-      ((IRIJPushNotifyManager)QRoute.api(IRIJPushNotifyManager.class)).showPushNotifyDialog(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, String.valueOf(this.b), 1);
+      RIJPushNotifyManager.getInstance().showPushNotifyDialog(this.a, this.c, String.valueOf(this.d), 1);
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      ((IRIJPushNotifyManager)QRoute.api(IRIJPushNotifyManager.class)).dismiss(true, "MATCH_ALL_UIN");
+    if (!this.b) {
+      RIJPushNotifyManager.getInstance().dismiss(true, "MATCH_ALL_UIN");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoColumnSubscribeHandler.2
  * JD-Core Version:    0.7.0.1
  */

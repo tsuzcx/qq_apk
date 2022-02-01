@@ -15,18 +15,18 @@ class PublicAccountListActivity$7
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.d.setTag("");
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity;
-    paramDialogInterface.jdField_a_of_type_Boolean = false;
-    paramDialogInterface.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    this.d.m.setTag("");
+    paramDialogInterface = this.d;
+    paramDialogInterface.s = false;
+    paramDialogInterface.b.offsetTopAndBottom(-this.a);
+    this.d.c.setVisibility(0);
+    this.d.b.startAnimation(this.b);
+    this.c.hideSoftInputFromWindow(this.d.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.7
  * JD-Core Version:    0.7.0.1
  */

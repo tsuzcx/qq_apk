@@ -24,9 +24,9 @@ public class AEFilterContentView
   extends FrameLayout
   implements CaptureComboManager.CaptureComboListener
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private CaptureComboManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
-  private AEFilterListAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter;
+  private RecyclerView a;
+  private AEFilterListAdapter b;
+  private CaptureComboManager c;
   
   public AEFilterContentView(Context paramContext)
   {
@@ -41,27 +41,27 @@ public class AEFilterContentView
   public AEFilterContentView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    addView(LayoutInflater.from(paramContext).inflate(2131558517, this, false));
+    addView(LayoutInflater.from(paramContext).inflate(2131624070, this, false));
     a(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager = ((CaptureComboManager)QIMManager.a(5));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager.a(this);
+    this.c = ((CaptureComboManager)QIMManager.a(5));
+    this.c.a(this);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376869));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter = new AEFilterListAdapter();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter);
+    this.a = ((RecyclerView)findViewById(2131445203));
+    this.b = new AEFilterListAdapter();
+    this.a.setAdapter(this.b);
     paramContext = new LinearLayoutManager(paramContext, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
+    this.a.setLayoutManager(paramContext);
   }
   
   private void a(FilterSet paramFilterSet)
   {
-    if ((paramFilterSet != null) && ((paramFilterSet.a instanceof QIMFilterCategoryItem)))
+    if ((paramFilterSet != null) && ((paramFilterSet.e instanceof QIMFilterCategoryItem)))
     {
-      paramFilterSet = ((QIMFilterCategoryItem)paramFilterSet.a).a;
-      List localList = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter.a();
+      paramFilterSet = ((QIMFilterCategoryItem)paramFilterSet.e).a;
+      List localList = this.b.a();
       if ((paramFilterSet != null) && (localList != null))
       {
         int i = 0;
@@ -69,7 +69,7 @@ public class AEFilterContentView
         {
           if (paramFilterSet.equals(((QIMFilterCategoryItem)localList.get(i)).a))
           {
-            this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(i);
+            this.a.scrollToPosition(i);
             return;
           }
           i += 1;
@@ -82,14 +82,14 @@ public class AEFilterContentView
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter.a(paramInt);
+    this.b.a(paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("QCombo", 2, "FilterProviderView onCreate");
     }
     Object localObject = null;
-    CaptureComboManager localCaptureComboManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    CaptureComboManager localCaptureComboManager = this.c;
     if (localCaptureComboManager != null) {
-      localObject = localCaptureComboManager.a;
+      localObject = localCaptureComboManager.l;
     }
     if (localObject == null)
     {
@@ -102,20 +102,11 @@ public class AEFilterContentView
       localObject = ((VideoFilterTools.ComboFilterData)localObject).a(paramInt);
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter.a(getContext(), VideoFilterTools.ComboFilterData.a(((VideoFilterTools.DataSet)localObject).c));
+        this.b.a(getContext(), VideoFilterTools.ComboFilterData.a(((VideoFilterTools.DataSet)localObject).c));
         return;
       }
       AEQLog.d("AEFilterContainerView", "dataSet is null");
     }
-  }
-  
-  public int a()
-  {
-    AEFilterListAdapter localAEFilterListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter;
-    if (localAEFilterListAdapter != null) {
-      return localAEFilterListAdapter.getItemCount();
-    }
-    return 0;
   }
   
   public void a(int paramInt)
@@ -131,14 +122,23 @@ public class AEFilterContentView
   
   public void a(FilterSet paramFilterSet, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
     a(paramFilterSet);
+  }
+  
+  public int getFilterCount()
+  {
+    AEFilterListAdapter localAEFilterListAdapter = this.b;
+    if (localAEFilterListAdapter != null) {
+      return localAEFilterListAdapter.getItemCount();
+    }
+    return 0;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    CaptureComboManager localCaptureComboManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    CaptureComboManager localCaptureComboManager = this.c;
     if (localCaptureComboManager != null) {
       localCaptureComboManager.a(this);
     }
@@ -147,7 +147,7 @@ public class AEFilterContentView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    CaptureComboManager localCaptureComboManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    CaptureComboManager localCaptureComboManager = this.c;
     if (localCaptureComboManager != null) {
       localCaptureComboManager.b(this);
     }
@@ -155,7 +155,7 @@ public class AEFilterContentView
   
   public void setProviderViewListener(ProviderView.ProviderViewListener paramProviderViewListener)
   {
-    AEFilterListAdapter localAEFilterListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter;
+    AEFilterListAdapter localAEFilterListAdapter = this.b;
     if (localAEFilterListAdapter != null) {
       localAEFilterListAdapter.a(paramProviderViewListener);
     }
@@ -163,7 +163,7 @@ public class AEFilterContentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.AEFilterContentView
  * JD-Core Version:    0.7.0.1
  */

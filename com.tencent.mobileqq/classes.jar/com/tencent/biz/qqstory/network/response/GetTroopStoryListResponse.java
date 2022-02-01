@@ -19,24 +19,23 @@ import java.util.List;
 public class GetTroopStoryListResponse
   extends BaseResponse
 {
-  public ArrayList<TroopStoryItemInfo> a;
   public boolean a;
   public int b;
-  public int c;
+  public int e;
+  public ArrayList<TroopStoryItemInfo> f = new ArrayList();
   
   public GetTroopStoryListResponse(qqstory_group.RspGetGroupVideoList paramRspGetGroupVideoList)
   {
     super(paramRspGetGroupVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     boolean bool;
     if (paramRspGetGroupVideoList.is_end.get() == 1) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.a = bool;
     this.b = paramRspGetGroupVideoList.next.get();
-    this.c = paramRspGetGroupVideoList.seq.get();
+    this.e = paramRspGetGroupVideoList.seq.get();
     long l = paramRspGetGroupVideoList.group_id.get();
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     paramRspGetGroupVideoList = paramRspGetGroupVideoList.node_list.get().iterator();
@@ -62,7 +61,7 @@ public class GetTroopStoryListResponse
       if (localTroopStoryItemInfo.itemType == 1) {
         localTroopStoryItemInfo.feedId = localGroupStoryItem.feed_id.get().toStringUtf8();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(localTroopStoryItemInfo);
+      this.f.add(localTroopStoryItemInfo);
     }
   }
   
@@ -70,21 +69,21 @@ public class GetTroopStoryListResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetTroopStoryListResponse{isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", nextCookie='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", seq=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", troopStoryItemInfoList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetTroopStoryListResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -24,28 +24,28 @@ class VideoViewTVKImpl$6
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return null;
     }
-    if (this.jdField_a_of_type_JavaLangString.contains("qqstocdnd"))
+    if (this.a.contains("qqstocdnd"))
     {
-      paramJobContext = ((VideoServerInfoManager)SuperManager.a(4)).a();
+      paramJobContext = ((VideoServerInfoManager)SuperManager.a(4)).e();
       SLog.a("VideoViewTVKImpl", "get url key:%s", paramJobContext);
       if (!TextUtils.isEmpty(paramJobContext)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.c = URLUtil.a(this.jdField_a_of_type_JavaLangString, "authkey", paramJobContext);
+        this.c.f = URLUtil.a(this.a, "authkey", paramJobContext);
       } else {
         ThreadManager.getUIHandler().post(new VideoViewTVKImpl.6.1(this));
       }
     }
-    paramJobContext = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl;
-    paramJobContext.c = InnerDns.replaceDomainWithIp(paramJobContext.c.replace("https://", "http://"), 1012);
+    paramJobContext = this.c;
+    paramJobContext.f = InnerDns.replaceDomainWithIp(paramJobContext.f.replace("https://", "http://"), 1012);
     ThreadManager.getUIHandler().post(new VideoViewTVKImpl.6.2(this));
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTVKImpl.6
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.kandian.base.bandwidth.VideoBufferRangeController;
 import com.tencent.mobileqq.kandian.base.video.player.api.IVideoPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 class LitePlayer$MediaPlayListenerAdapterImpl
   extends MediaPlayListenerAdapter
@@ -14,32 +14,31 @@ class LitePlayer$MediaPlayListenerAdapterImpl
   private void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(LitePlayer.a(this.a), 2, "onPreloadFinished()");
+      QLog.d(LitePlayer.f(this.a), 2, "onPreloadFinished()");
     }
-    this.a.a.j();
   }
   
   public void a(IVideoPlayerWrapper paramIVideoPlayerWrapper)
   {
     if (QLog.isColorLevel())
     {
-      String str = LitePlayer.a(this.a);
+      String str = LitePlayer.f(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("播放状态回调 onCompletion() vid=");
-      if (LitePlayer.a(this.a) != null) {
-        paramIVideoPlayerWrapper = LitePlayer.a(this.a).a;
+      if (LitePlayer.g(this.a) != null) {
+        paramIVideoPlayerWrapper = LitePlayer.g(this.a).a;
       } else {
         paramIVideoPlayerWrapper = "param null";
       }
       localStringBuilder.append(paramIVideoPlayerWrapper);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.a.a.a(null);
-    paramIVideoPlayerWrapper = LitePlayer.a(this.a).iterator();
+    this.a.b.a(null);
+    paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
     while (paramIVideoPlayerWrapper.hasNext()) {
       ((PlayerStatusListener)paramIVideoPlayerWrapper.next()).onCompletion();
     }
-    paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
+    paramIVideoPlayerWrapper = LitePlayer.i(this.a).iterator();
     while (paramIVideoPlayerWrapper.hasNext()) {
       ((IPlayerReporter)paramIVideoPlayerWrapper.next()).a();
     }
@@ -48,25 +47,25 @@ class LitePlayer$MediaPlayListenerAdapterImpl
   public void a(IVideoPlayerWrapper paramIVideoPlayerWrapper, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(LitePlayer.a(this.a), 2, "onVideoPrepared(VideoPlayerWrapper player, Object tag) ");
+      QLog.d(LitePlayer.f(this.a), 2, "onVideoPrepared(VideoPlayerWrapper player, Object tag) ");
     }
     if (QLog.isColorLevel())
     {
-      if (LitePlayer.a(this.a) != null) {
-        paramIVideoPlayerWrapper = LitePlayer.a(this.a).a;
+      if (LitePlayer.g(this.a) != null) {
+        paramIVideoPlayerWrapper = LitePlayer.g(this.a).a;
       } else {
         paramIVideoPlayerWrapper = null;
       }
-      paramObject = LitePlayer.a(this.a);
+      paramObject = LitePlayer.f(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("播放状态回调 onVideoPrepared() vid=");
       localStringBuilder.append(paramIVideoPlayerWrapper);
       localStringBuilder.append(", mIsOpenedVideo = ");
-      localStringBuilder.append(LitePlayer.b(this.a));
+      localStringBuilder.append(LitePlayer.j(this.a));
       localStringBuilder.append(", preload=");
       localStringBuilder.append(LitePlayer.a(this.a));
       localStringBuilder.append(", mActivityOnResume=");
-      localStringBuilder.append(LitePlayer.c(this.a));
+      localStringBuilder.append(LitePlayer.k(this.a));
       QLog.d(paramObject, 2, localStringBuilder.toString());
     }
     if (LitePlayer.a(this.a))
@@ -74,30 +73,30 @@ class LitePlayer$MediaPlayListenerAdapterImpl
       a();
       return;
     }
-    if ((LitePlayer.b(this.a)) && (!LitePlayer.d(this.a)))
+    if ((LitePlayer.j(this.a)) && (!LitePlayer.l(this.a)) && (LitePlayer.m(this.a)))
     {
       LitePlayer.b(this.a, false);
-      LitePlayer.a(this.a).removeMessages(0);
-      LitePlayer.a(this.a).sendEmptyMessage(0);
-      paramIVideoPlayerWrapper = LitePlayer.a(this.a).iterator();
+      LitePlayer.e(this.a).removeMessages(0);
+      LitePlayer.e(this.a).sendEmptyMessage(0);
+      paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
       while (paramIVideoPlayerWrapper.hasNext()) {
         ((PlayerStatusListener)paramIVideoPlayerWrapper.next()).onVideoPrepared();
       }
-      paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
+      paramIVideoPlayerWrapper = LitePlayer.i(this.a).iterator();
       while (paramIVideoPlayerWrapper.hasNext()) {
-        ((IPlayerReporter)paramIVideoPlayerWrapper.next()).b(this.a.a);
+        ((IPlayerReporter)paramIVideoPlayerWrapper.next()).b(this.a.b);
       }
-      LitePlayer.b(this.a);
+      LitePlayer.h(this.a);
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramIVideoPlayerWrapper = LitePlayer.a(this.a);
+      paramIVideoPlayerWrapper = LitePlayer.f(this.a);
       paramObject = new StringBuilder();
       paramObject.append("onVideoPrepared  return mIsOpenedVideo=");
-      paramObject.append(LitePlayer.b(this.a));
+      paramObject.append(LitePlayer.j(this.a));
       paramObject.append(", mHasDestory=");
-      paramObject.append(LitePlayer.d(this.a));
+      paramObject.append(LitePlayer.l(this.a));
       QLog.d(paramIVideoPlayerWrapper, 2, paramObject.toString());
     }
   }
@@ -106,17 +105,18 @@ class LitePlayer$MediaPlayListenerAdapterImpl
   {
     if (QLog.isColorLevel())
     {
-      String str = LitePlayer.a(this.a);
+      localObject = LitePlayer.f(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onConnectQualityCallback json= ");
       localStringBuilder.append(paramString);
-      QLog.d(str, 2, localStringBuilder.toString());
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     paramIVideoPlayerWrapper = (VideoPlayerWrapper)paramIVideoPlayerWrapper;
-    if (LitePlayer.a(this.a) != null) {
-      VideoBufferRangeController.a().a(paramIVideoPlayerWrapper, LitePlayer.a(this.a).b, paramIVideoPlayerWrapper.d());
+    Object localObject = LitePlayer.g(this.a);
+    if (localObject != null) {
+      VideoBufferRangeController.a().a(paramIVideoPlayerWrapper, ((LitePlayer.PlayParams)localObject).e, paramIVideoPlayerWrapper.M());
     }
-    paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
+    paramIVideoPlayerWrapper = LitePlayer.i(this.a).iterator();
     while (paramIVideoPlayerWrapper.hasNext()) {
       ((IPlayerReporter)paramIVideoPlayerWrapper.next()).a(paramString);
     }
@@ -143,13 +143,13 @@ class LitePlayer$MediaPlayListenerAdapterImpl
     paramIVideoPlayerWrapper = localStringBuilder.toString();
     if (QLog.isColorLevel())
     {
-      paramString = LitePlayer.a(this.a);
+      paramString = LitePlayer.f(this.a);
       paramObject = new StringBuilder();
       paramObject.append("播放状态回调 onError() ");
       paramObject.append(paramIVideoPlayerWrapper);
       paramObject.append(", vid=");
-      if (LitePlayer.a(this.a) != null) {
-        paramIVideoPlayerWrapper = LitePlayer.a(this.a).a;
+      if (LitePlayer.g(this.a) != null) {
+        paramIVideoPlayerWrapper = LitePlayer.g(this.a).a;
       } else {
         paramIVideoPlayerWrapper = null;
       }
@@ -159,15 +159,15 @@ class LitePlayer$MediaPlayListenerAdapterImpl
     if (LitePlayer.a(this.a))
     {
       paramIVideoPlayerWrapper = this.a;
-      LitePlayer.a(paramIVideoPlayerWrapper, paramIVideoPlayerWrapper.a);
+      LitePlayer.a(paramIVideoPlayerWrapper, paramIVideoPlayerWrapper.b);
       LitePlayer.a(this.a, false);
     }
     paramIVideoPlayerWrapper = ErrorCode.a(paramInt1, paramInt2, paramInt3);
-    paramString = LitePlayer.a(this.a).iterator();
+    paramString = LitePlayer.b(this.a).iterator();
     while (paramString.hasNext()) {
       ((PlayerStatusListener)paramString.next()).onVideoError(paramInt1, paramInt2, paramIVideoPlayerWrapper);
     }
-    paramString = LitePlayer.b(this.a).iterator();
+    paramString = LitePlayer.i(this.a).iterator();
     while (paramString.hasNext()) {
       ((IPlayerReporter)paramString.next()).a(paramInt1, paramInt2, paramIVideoPlayerWrapper);
     }
@@ -183,9 +183,9 @@ class LitePlayer$MediaPlayListenerAdapterImpl
         if (paramInt == 113)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(LitePlayer.a(this.a), 2, "播放状态回调 onInfo() PLAYER_INFO_ENDOF_BUFFERING");
+            QLog.d(LitePlayer.f(this.a), 2, "播放状态回调 onInfo() PLAYER_INFO_ENDOF_BUFFERING");
           }
-          paramIVideoPlayerWrapper = LitePlayer.a(this.a).iterator();
+          paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
           while (paramIVideoPlayerWrapper.hasNext()) {
             ((PlayerStatusListener)paramIVideoPlayerWrapper.next()).onBufferEnd();
           }
@@ -194,9 +194,9 @@ class LitePlayer$MediaPlayListenerAdapterImpl
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.d(LitePlayer.a(this.a), 2, "播放状态回调 onInfo() PLAYER_INFO_START_BUFFERING");
+          QLog.d(LitePlayer.f(this.a), 2, "播放状态回调 onInfo() PLAYER_INFO_START_BUFFERING");
         }
-        paramIVideoPlayerWrapper = LitePlayer.a(this.a).iterator();
+        paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
         while (paramIVideoPlayerWrapper.hasNext()) {
           ((PlayerStatusListener)paramIVideoPlayerWrapper.next()).onBufferStart();
         }
@@ -205,14 +205,14 @@ class LitePlayer$MediaPlayListenerAdapterImpl
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d(LitePlayer.a(this.a), 2, "onInfo: PLAYER_INFO_FIRST_VIDEO_FRAME_REDNERED");
+        QLog.d(LitePlayer.f(this.a), 2, "onInfo: PLAYER_INFO_FIRST_VIDEO_FRAME_REDNERED");
       }
-      paramIVideoPlayerWrapper = LitePlayer.a(this.a).iterator();
+      paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
       while (paramIVideoPlayerWrapper.hasNext()) {
         ((PlayerStatusListener)paramIVideoPlayerWrapper.next()).onFirstFrameRendered();
       }
     }
-    paramIVideoPlayerWrapper = LitePlayer.b(this.a).iterator();
+    paramIVideoPlayerWrapper = LitePlayer.i(this.a).iterator();
     while (paramIVideoPlayerWrapper.hasNext()) {
       ((IPlayerReporter)paramIVideoPlayerWrapper.next()).a(paramInt, paramObject);
     }
@@ -221,7 +221,7 @@ class LitePlayer$MediaPlayListenerAdapterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.LitePlayer.MediaPlayListenerAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

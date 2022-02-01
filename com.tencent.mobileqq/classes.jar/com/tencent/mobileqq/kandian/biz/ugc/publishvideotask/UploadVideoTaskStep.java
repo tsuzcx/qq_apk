@@ -14,29 +14,29 @@ import org.jetbrains.annotations.Nullable;
 public class UploadVideoTaskStep
   extends BaseStep
 {
+  @NotNull
+  private PublishTaskAutomator a;
   @Nullable
-  private IPublishTaskCallback jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback;
+  private IPublishTaskCallback b;
+  private volatile boolean c = false;
   @NotNull
-  private PublishTaskAutomator jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator;
+  private RIJUgcVideoPublishManager d;
   @NotNull
-  private RIJUgcVideoPublishManager jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager;
-  @NotNull
-  private IVideoUploader jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIVideoUploader;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private IVideoUploader e;
   
   public UploadVideoTaskStep(QQAppInterface paramQQAppInterface, @NotNull PublishTaskAutomator paramPublishTaskAutomator, @Nullable IPublishTaskCallback paramIPublishTaskCallback, @NotNull IVideoUploader paramIVideoUploader)
   {
     super(paramPublishTaskAutomator, true, "UploadVideoTaskStep");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager = ((RIJUgcVideoPublishManager)paramQQAppInterface.getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator = paramPublishTaskAutomator;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback = paramIPublishTaskCallback;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIVideoUploader = paramIVideoUploader;
+    this.d = ((RIJUgcVideoPublishManager)paramQQAppInterface.getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER));
+    this.a = paramPublishTaskAutomator;
+    this.b = paramIPublishTaskCallback;
+    this.e = paramIVideoUploader;
   }
   
-  private void b()
+  private void d()
   {
-    this.jdField_a_of_type_Boolean = false;
-    UgcVideo localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a();
+    this.c = false;
+    UgcVideo localUgcVideo = this.a.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("pauseUpload, ugcVideo.status=");
     localStringBuilder.append(localUgcVideo.status);
@@ -45,23 +45,16 @@ public class UploadVideoTaskStep
     {
       if (!TextUtils.isEmpty(localUgcVideo.videoUploadKey))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIVideoUploader.a();
+        this.e.a();
         return;
       }
       QLog.e("RIJUGC.UploadVideoTaskStep", 1, "videoUploadKey is Empty");
     }
   }
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a().lastUploadSizeUpdateTime = 0L;
-    b();
-  }
-  
   public boolean a()
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a();
+    UgcVideo localUgcVideo = this.a.e();
     String str2 = localUgcVideo.compressPath;
     String str1 = str2;
     if (str2 == null) {
@@ -75,7 +68,7 @@ public class UploadVideoTaskStep
       i = 0;
     }
     if (i == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback.a(2, true, true, null);
+      this.b.a(2, true, true, null);
     }
     boolean bool1 = bool2;
     if (super.a())
@@ -90,12 +83,12 @@ public class UploadVideoTaskStep
   
   public boolean b()
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a();
+    UgcVideo localUgcVideo = this.a.e();
     String str = localUgcVideo.compressPath;
-    if ((!this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(str)))
+    if ((!this.c) && (!TextUtils.isEmpty(str)))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a().status = UgcVideo.STATUS_UPLOADING;
+      this.c = true;
+      this.a.e().status = UgcVideo.STATUS_UPLOADING;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onStep begin upload video, filePath=");
       ((StringBuilder)localObject).append(str);
@@ -104,24 +97,31 @@ public class UploadVideoTaskStep
       if (localUgcVideo.startUserWaitingTime > 0L) {
         localUgcVideo.startUserWaitingTime = System.currentTimeMillis();
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager.d(localUgcVideo);
+      this.d.d(localUgcVideo);
       localObject = localUgcVideo.videoUploadKey;
       localUgcVideo.lastUploadSizeUpdateTime = System.currentTimeMillis();
       UploadVideoTaskStep.1 local1 = new UploadVideoTaskStep.1(this, localUgcVideo);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIVideoUploader.a(local1);
+      this.e.a(local1);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIVideoUploader.a(str);
+        this.e.a(str);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIVideoUploader.b((String)localObject);
+        this.e.b((String)localObject);
       }
       localUgcVideo.uploadVideoStatus = UgcVideo.SUBSTATUS_UPLOADING_VIDEO;
     }
     return false;
   }
+  
+  public void c()
+  {
+    super.c();
+    this.a.e().lastUploadSizeUpdateTime = 0L;
+    d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.UploadVideoTaskStep
  * JD-Core Version:    0.7.0.1
  */

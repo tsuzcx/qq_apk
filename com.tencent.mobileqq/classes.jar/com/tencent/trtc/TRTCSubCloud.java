@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.SurfaceHolder;
 import com.tencent.liteav.audio.TXCAudioEngine;
-import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.liteav.trtc.impl.TRTCCloudImpl;
 import com.tencent.liteav.trtc.impl.TRTCRoomInfo;
@@ -22,9 +22,9 @@ public class TRTCSubCloud
   protected WeakReference<TRTCCloudImpl> mMainCloud = null;
   private TRTCSubCloud.a mVolumeLevelCalTask = null;
   
-  public TRTCSubCloud(Context paramContext, WeakReference<TRTCCloudImpl> paramWeakReference, Handler paramHandler)
+  public TRTCSubCloud(Context paramContext, WeakReference<TRTCCloudImpl> paramWeakReference, f paramf)
   {
-    super(paramContext, paramHandler);
+    super(paramContext, paramf);
     this.mRoomInfo.muteLocalAudio = true;
     this.mRoomInfo.muteLocalVideo = true;
     this.mMainCloud = paramWeakReference;
@@ -44,24 +44,64 @@ public class TRTCSubCloud
   {
     if (paramString != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("callExperimentalAPI  ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(", roomid = ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("callExperimentalAPI  ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", roomid = ");
       if (this.mRoomInfo.roomId != -1L) {
-        localObject = Long.valueOf(this.mRoomInfo.roomId);
+        localObject1 = Long.valueOf(this.mRoomInfo.roomId);
       } else {
-        localObject = this.mRoomInfo.strRoomId;
+        localObject1 = this.mRoomInfo.strRoomId;
       }
-      localStringBuilder.append(localObject);
-      apiLog(localStringBuilder.toString());
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(String.format("callExperimentalAPI:%s", new Object[] { paramString }));
-      ((StringBuilder)localObject).append(" self:");
-      ((StringBuilder)localObject).append(hashCode());
-      Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
+      ((StringBuilder)localObject2).append(localObject1);
+      apiOnlineLog(((StringBuilder)localObject2).toString());
     }
-    runOnSDKThread(new TRTCSubCloud.8(this, paramString));
+    Object localObject2 = "";
+    Object localObject3 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      Object localObject4 = new JSONObject(paramString);
+      localObject1 = localObject2;
+      if (!((JSONObject)localObject4).has("api"))
+      {
+        localObject1 = localObject2;
+        localObject4 = new StringBuilder();
+        localObject1 = localObject2;
+        ((StringBuilder)localObject4).append("callExperimentalAPI[lack api or illegal type]: ");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject4).append(paramString);
+        localObject1 = localObject2;
+        apiLog(((StringBuilder)localObject4).toString());
+        return;
+      }
+      localObject1 = localObject2;
+      localObject2 = ((JSONObject)localObject4).getString("api");
+      localObject1 = localObject2;
+      if (!((JSONObject)localObject4).has("params")) {
+        return;
+      }
+      localObject1 = localObject2;
+      localObject4 = ((JSONObject)localObject4).getJSONObject("params");
+      localObject1 = localObject2;
+      localObject2 = localObject4;
+    }
+    catch (Exception localException)
+    {
+      label204:
+      break label204;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("callExperimentalAPI[failed]: ");
+    ((StringBuilder)localObject2).append(paramString);
+    apiLog(((StringBuilder)localObject2).toString());
+    localObject2 = localObject3;
+    if (((String)localObject1).equals("setEncodedDataProcessingListener"))
+    {
+      setEncodedDataProcessingListener((JSONObject)localObject2);
+      return;
+    }
+    runOnSDKThread(new TRTCSubCloud.8(this, (String)localObject1, (JSONObject)localObject2, paramString));
   }
   
   protected void collectCustomCaptureFps() {}
@@ -107,60 +147,73 @@ public class TRTCSubCloud
     }
     TRTCCloudDef.TRTCParams localTRTCParams = new TRTCCloudDef.TRTCParams(paramTRTCParams);
     long l;
-    String str1;
     if ((localTRTCParams.sdkAppId != 0) && (!TextUtils.isEmpty(localTRTCParams.userId)) && (!TextUtils.isEmpty(localTRTCParams.userSig)))
     {
       l = 0xFFFFFFFF & localTRTCParams.roomId;
-      if (l == 0L)
+      localObject1 = localTRTCParams.businessInfo;
+      paramTRTCParams = "";
+      if ((l != 0L) && ((localTRTCParams.roomId != -1) || (TextUtils.isEmpty(localTRTCParams.businessInfo))))
       {
-        paramTRTCParams = new StringBuilder();
-        paramTRTCParams.append("enter room, room id ");
-        paramTRTCParams.append(l);
-        paramTRTCParams.append(" error");
-        apiLog(paramTRTCParams.toString());
-        onEnterRoom(-3318, "room id invalid.");
-        return;
+        localObject2 = localObject1;
       }
-      localObject = localTRTCParams.businessInfo;
-      int i = localTRTCParams.roomId;
-      str1 = "";
-      if ((i != -1) || (TextUtils.isEmpty(localTRTCParams.businessInfo))) {}
+      else
+      {
+        if (l == 0L) {
+          paramTRTCParams = localTRTCParams.strRoomId;
+        } else {
+          paramTRTCParams = "";
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+      }
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(localTRTCParams.businessInfo);
-      String str2 = localJSONObject.optString("strGroupId");
-      localJSONObject.remove("strGroupId");
-      localJSONObject.remove("Role");
-      paramTRTCParams = str2;
-      localObject = str1;
-      if (localJSONObject.length() == 0) {
-        break label280;
+      localObject2 = new JSONObject((String)localObject1);
+      localObject1 = new StringBuilder("");
+      ((StringBuilder)localObject1).append(((JSONObject)localObject2).optString("strGroupId").toString());
+      ((JSONObject)localObject2).remove("strGroupId");
+      ((JSONObject)localObject2).remove("Role");
+      if (localTRTCParams.roomId != -1) {
+        break label455;
       }
-      localObject = localJSONObject.toString();
-      paramTRTCParams = str2;
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     catch (Exception paramTRTCParams)
     {
-      label238:
-      break label238;
+      for (;;)
+      {
+        label306:
+        continue;
+        localObject1 = paramTRTCParams;
+      }
     }
-    paramTRTCParams = new StringBuilder();
-    paramTRTCParams.append("enter room, room id error, busInfo ");
-    paramTRTCParams.append(localTRTCParams.businessInfo);
-    apiLog(paramTRTCParams.toString());
-    paramTRTCParams = "";
-    Object localObject = str1;
-    label280:
-    if (TextUtils.isEmpty(paramTRTCParams))
+    if (((JSONObject)localObject2).length() != 0)
+    {
+      paramTRTCParams = ((JSONObject)localObject2).toString();
+    }
+    else
+    {
+      paramTRTCParams = "";
+      break label306;
+      paramTRTCParams = new StringBuilder();
+      paramTRTCParams.append("enter room, room id error, busInfo ");
+      paramTRTCParams.append(localTRTCParams.businessInfo);
+      apiLog(paramTRTCParams.toString());
+      localObject1 = "";
+      paramTRTCParams = (TRTCCloudDef.TRTCParams)localObject1;
+      break label306;
+      localObject2 = localObject1;
+      localObject1 = paramTRTCParams;
+      paramTRTCParams = (TRTCCloudDef.TRTCParams)localObject2;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       onEnterRoom(-3318, "room id invalid.");
       return;
     }
-    break label305;
-    paramTRTCParams = "";
-    label305:
-    runOnSDKThread(new TRTCSubCloud.2(this, paramTRTCParams, l, localTRTCParams, paramInt, (String)localObject, localTRTCParams.role, System.currentTimeMillis()));
+    Object localObject2 = paramTRTCParams;
+    paramTRTCParams = (TRTCCloudDef.TRTCParams)localObject1;
+    runOnSDKThread(new TRTCSubCloud.2(this, paramTRTCParams, l, localTRTCParams, paramInt, (String)localObject2, localTRTCParams.role, System.currentTimeMillis()));
     return;
     paramTRTCParams = new StringBuilder();
     paramTRTCParams.append("enterRoom param invalid:");
@@ -194,10 +247,12 @@ public class TRTCSubCloud
     apiLog(localStringBuilder.toString());
     if (this.mRoomState == 0)
     {
+      clearRemoteMuteStates();
       apiLog("exitRoom ignore when no in room");
       return;
     }
     this.mRoomState = 0;
+    this.mRoomType = 0;
     stopCollectStatus();
     this.mRoomInfo.forEachUser(new TRTCSubCloud.4(this));
     if (paramBoolean) {
@@ -349,7 +404,10 @@ public class TRTCSubCloud
   
   public void setAudioEffectVolume(int paramInt1, int paramInt2) {}
   
-  public void setAudioFrameListener(TRTCCloudListener.TRTCAudioFrameListener paramTRTCAudioFrameListener) {}
+  public void setAudioFrameListener(TRTCCloudListener.TRTCAudioFrameListener paramTRTCAudioFrameListener)
+  {
+    runOnSDKThread(new TRTCSubCloud.9(this, paramTRTCAudioFrameListener));
+  }
   
   public void setAudioPlayoutVolume(int paramInt) {}
   

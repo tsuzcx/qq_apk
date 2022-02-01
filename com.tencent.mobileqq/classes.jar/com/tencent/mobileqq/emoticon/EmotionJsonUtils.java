@@ -29,13 +29,13 @@ public class EmotionJsonUtils
     if ((paramAppInterface == null) && (paramDownloadTask == null)) {
       return null;
     }
-    Object localObject = paramDownloadTask.a();
+    Object localObject = paramDownloadTask.b();
     EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (localEmoticonPackage == null) {
       return null;
     }
     int i = ((Bundle)localObject).getInt("jsonType", EmojiManagerServiceConstant.JSON_EMOSM_MALL);
-    File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+    File localFile = (File)paramDownloadTask.g.get(paramDownloadTask.b);
     localObject = new ReqInfo();
     paramDownloadTask = localArrayList;
     if (localFile != null)
@@ -625,7 +625,7 @@ public class EmotionJsonUtils
   
   protected static void parseJsonToEp(EmoticonPackage paramEmoticonPackage, int paramInt1, IEmoticonManagerService paramIEmoticonManagerService, JSONObject paramJSONObject, String paramString, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramEmoticonPackage.copywritingType != CommercialDrainageManagerConstants.a)
+    if (paramEmoticonPackage.copywritingType != CommercialDrainageManagerConstants.b)
     {
       paramEmoticonPackage.extraFlags |= 0x4;
       if (QLog.isColorLevel())
@@ -850,7 +850,7 @@ public class EmotionJsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmotionJsonUtils
  * JD-Core Version:    0.7.0.1
  */

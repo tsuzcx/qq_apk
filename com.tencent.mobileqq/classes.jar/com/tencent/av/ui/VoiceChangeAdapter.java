@@ -11,31 +11,31 @@ public class VoiceChangeAdapter
   extends BaseAdapter
 {
   public static String a = "VoiceChangeAdapter";
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VoiceChangeAdapter.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter$ICallback;
-  VoiceChangeItemView1.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1$ICallback;
-  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
-  private VoiceChangeData.VoiceInfo[] jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo;
-  private int jdField_b_of_type_Int;
-  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-  private int c;
-  private int d;
+  VoiceChangeItemView1.ICallback b;
+  private VoiceChangeData.VoiceInfo[] c;
+  private Context d;
+  private VoiceChangeAdapter.ICallback e;
+  private int f;
+  private VoiceChangeItemView1 g;
+  private VoiceChangeItemView1 h;
+  private int i;
+  private int j;
+  private int k;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(VoiceChangeData.VoiceInfo[] paramArrayOfVoiceInfo)
   {
-    this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo = paramArrayOfVoiceInfo;
+    this.c = paramArrayOfVoiceInfo;
   }
   
   public int getCount()
   {
-    VoiceChangeData.VoiceInfo[] arrayOfVoiceInfo = this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo;
+    VoiceChangeData.VoiceInfo[] arrayOfVoiceInfo = this.c;
     if (arrayOfVoiceInfo == null) {
       return 0;
     }
@@ -44,7 +44,7 @@ public class VoiceChangeAdapter
   
   public Object getItem(int paramInt)
   {
-    VoiceChangeData.VoiceInfo[] arrayOfVoiceInfo = this.jdField_a_of_type_ArrayOfComTencentAvUiVoiceChangeData$VoiceInfo;
+    VoiceChangeData.VoiceInfo[] arrayOfVoiceInfo = this.c;
     if (arrayOfVoiceInfo == null) {
       return null;
     }
@@ -58,7 +58,7 @@ public class VoiceChangeAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("getView|position=");
     ((StringBuilder)localObject2).append(paramInt);
@@ -67,32 +67,32 @@ public class VoiceChangeAdapter
     AVLog.printDebugLog((String)localObject1, ((StringBuilder)localObject2).toString());
     localObject1 = paramView;
     if (paramView == null) {
-      localObject1 = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
+      localObject1 = new VoiceChangeItemView1(this.d);
     }
     paramView = (VoiceChangeData.VoiceInfo)getItem(paramInt);
     if (paramView != null)
     {
-      if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
-        this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+      if ((this.k == 0) && (paramInt == 1) && (this.i == 0)) {
+        this.g = this.h;
       }
       localObject2 = (VoiceChangeItemView1)localObject1;
       boolean bool;
-      if (this.c == paramView.jdField_a_of_type_Int) {
+      if (this.j == paramView.d) {
         bool = true;
       } else {
         bool = false;
       }
-      ((VoiceChangeItemView1)localObject2).a(paramInt, paramView, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1$ICallback);
-      if (this.c == paramView.jdField_a_of_type_Int)
+      ((VoiceChangeItemView1)localObject2).a(paramInt, paramView, bool, this.f, this.b);
+      if (this.j == paramView.d)
       {
         if (paramInt != 0) {
-          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)localObject2);
+          this.g = ((VoiceChangeItemView1)localObject2);
         }
-        this.d = paramInt;
+        this.k = paramInt;
       }
     }
-    this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)localObject1);
-    this.jdField_b_of_type_Int = paramInt;
+    this.h = ((VoiceChangeItemView1)localObject1);
+    this.i = paramInt;
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
     return localObject1;
   }

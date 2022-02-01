@@ -181,8 +181,8 @@ public class PendantVersionManager
     localStringBuilder.append("checkSignatureVersionIsOK signature=");
     localStringBuilder.append(paramString);
     VideoEnvironment.LogDownLoad("PendantVersionManager", localStringBuilder.toString(), null);
-    paramString = ShortVideoSoManager.a((String)localObject);
-    int i = paramString.a();
+    paramString = ShortVideoSoManager.d((String)localObject);
+    int i = paramString.e();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkSignatureVersionIsOK errCode=");
     localStringBuilder.append(i);
@@ -257,7 +257,7 @@ public class PendantVersionManager
           ((StringBuilder)localObject1).append("checkUnzipFileListSizeIsOK trimValue=");
           ((StringBuilder)localObject1).append((String)localObject2);
           VideoEnvironment.LogDownLoad("PendantVersionManager", ((StringBuilder)localObject1).toString(), null);
-          localObject1 = ShortVideoSoManager.a((String)localObject2);
+          localObject1 = ShortVideoSoManager.d((String)localObject2);
           j = ((ShortVideoSoManager.CfgParser)localObject1).a('|');
           if (j != 0) {
             break label484;
@@ -306,7 +306,7 @@ public class PendantVersionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PendantVersionManager
  * JD-Core Version:    0.7.0.1
  */

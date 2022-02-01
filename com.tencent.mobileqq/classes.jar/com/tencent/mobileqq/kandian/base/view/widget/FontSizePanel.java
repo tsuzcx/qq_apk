@@ -10,72 +10,72 @@ import java.util.List;
 public class FontSizePanel
   implements IFontSizePanel
 {
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private List<RangeButtonView.Title> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private List<Float> b = new ArrayList();
+  private PopupWindow a;
+  private List<RangeButtonView.Title> b;
+  private boolean c = false;
+  private List<Float> d = new ArrayList();
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((this.jdField_a_of_type_Boolean) && (this.b.isEmpty()))
+    this.c = paramBoolean;
+    if ((this.c) && (this.d.isEmpty()))
     {
-      this.b.add(Float.valueOf(0.941F));
-      this.b.add(Float.valueOf(1.0F));
-      this.b.add(Float.valueOf(1.118F));
-      this.b.add(Float.valueOf(1.235F));
-      this.b.add(Float.valueOf(1.353F));
+      this.d.add(Float.valueOf(0.941F));
+      this.d.add(Float.valueOf(1.0F));
+      this.d.add(Float.valueOf(1.118F));
+      this.d.add(Float.valueOf(1.235F));
+      this.d.add(Float.valueOf(1.353F));
     }
   }
   
   private float b(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.b.size())) {
-      return ((Float)this.b.get(paramInt)).floatValue();
+    if ((paramInt >= 0) && (paramInt < this.d.size())) {
+      return ((Float)this.d.get(paramInt)).floatValue();
     }
     return 1.0F;
   }
   
   public float a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return b(paramInt);
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (paramInt < localList.size())) {
-      return ((RangeButtonView.Title)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getTextSize();
+      return ((RangeButtonView.Title)this.b.get(paramInt)).getTextSize();
     }
     return 0.0F;
   }
   
-  public FontSizePanel a(View paramView)
+  public void a()
   {
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    PopupWindow localPopupWindow = this.a;
+    if (localPopupWindow != null)
+    {
+      localPopupWindow.dismiss();
+      this.a = null;
+    }
+  }
+  
+  public FontSizePanel b(View paramView)
+  {
+    PopupWindow localPopupWindow = this.a;
     if (localPopupWindow != null) {
       localPopupWindow.showAtLocation(paramView, 83, 0, 0);
     }
     return this;
   }
   
-  public void a()
+  public boolean b()
   {
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
-    if (localPopupWindow != null)
-    {
-      localPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    PopupWindow localPopupWindow = this.a;
     return (localPopupWindow != null) && (localPopupWindow.isShowing());
   }
   
-  public void b()
+  public void c()
   {
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    PopupWindow localPopupWindow = this.a;
     if (localPopupWindow != null) {
       localPopupWindow.dismiss();
     }
@@ -83,7 +83,7 @@ public class FontSizePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.FontSizePanel
  * JD-Core Version:    0.7.0.1
  */

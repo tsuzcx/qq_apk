@@ -12,7 +12,7 @@ class QzoneEditTopic$2
   {
     QzoneEditTopic.b(this.a);
     paramAudioPlayerBase = this.a;
-    QzoneEditTopic.a(paramAudioPlayerBase, QzoneEditTopic.a(paramAudioPlayerBase));
+    QzoneEditTopic.a(paramAudioPlayerBase, QzoneEditTopic.c(paramAudioPlayerBase));
   }
   
   public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
@@ -25,7 +25,7 @@ class QzoneEditTopic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditTopic.2
  * JD-Core Version:    0.7.0.1
  */

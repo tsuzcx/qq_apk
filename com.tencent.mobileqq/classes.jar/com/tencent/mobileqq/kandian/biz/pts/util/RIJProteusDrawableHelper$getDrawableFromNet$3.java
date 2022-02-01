@@ -11,24 +11,24 @@ import kotlin.Metadata;
 public final class RIJProteusDrawableHelper$getDrawableFromNet$3
   implements URLDrawable.DownloadListener
 {
-  private int jdField_a_of_type_Int;
+  private int d;
   
   RIJProteusDrawableHelper$getDrawableFromNet$3(String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
   
   public void onFileDownloadFailed(int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (paramInt + 1);
+    paramInt = this.d;
+    this.d = (paramInt + 1);
     if (paramInt < 3) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      this.c.restartDownload();
     } else {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
+      this.b.onCallBack(false, (Drawable)this.c);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDrawable: onFileDownloadFailed :");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("  reTry: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     QLog.i("Q.readinjoy.proteus", 1, localStringBuilder.toString());
   }
   
@@ -36,7 +36,7 @@ public final class RIJProteusDrawableHelper$getDrawableFromNet$3
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDrawable: onFileDownloadStarted :");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     QLog.i("Q.readinjoy.proteus", 1, localStringBuilder.toString());
   }
   
@@ -44,14 +44,14 @@ public final class RIJProteusDrawableHelper$getDrawableFromNet$3
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDrawable: onFileDownloadSucceed :");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     QLog.i("Q.readinjoy.proteus", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.b.onCallBack(true, (Drawable)this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.RIJProteusDrawableHelper.getDrawableFromNet.3
  * JD-Core Version:    0.7.0.1
  */

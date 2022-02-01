@@ -10,96 +10,67 @@ import com.tencent.qphone.base.util.QLog;
 public class FaceInfo
   implements Parcelable
 {
+  public static int A = z + 1;
+  public static int B = A + 1;
+  public static int C = B + 1;
   public static final Parcelable.Creator<FaceInfo> CREATOR = new FaceInfo.1();
-  public static int f = 0;
-  public static int g = 1;
-  public static int h = 2;
-  public static int i = 3;
-  public static int j = 0;
-  public static int k = j + 1;
-  public static int l = k + 1;
-  public static int m = l + 1;
-  public static int n = m + 1;
-  public static int o = n + 1;
-  public static int p = o + 1;
-  public static int q = p + 1;
-  public static int r = q + 1;
-  public static int s = r + 1;
-  public byte a;
-  public int a;
-  public long a;
-  public QQHeadInfo a;
-  public String a;
+  public static int D = C + 1;
+  public static int E = D + 1;
+  public static int r = 0;
+  public static int s = 1;
+  public static int t = 2;
+  public static int u = 3;
+  public static int v = 0;
+  public static int w = v + 1;
+  public static int x = w + 1;
+  public static int y = x + 1;
+  public static int z = y + 1;
+  private String F;
   public boolean a;
-  public long[] a;
-  public byte b;
   public int b;
-  public String b;
-  public boolean b;
-  public int c;
   public String c;
-  public boolean c;
   public int d;
-  public String d;
   public int e;
-  private String e;
+  public byte f;
+  public byte g;
+  public boolean h;
+  public boolean i;
+  public int j;
+  public String k;
+  public String l;
+  public String m;
+  public long n;
+  public long[] o = null;
+  public QQHeadInfo p;
+  public int q;
   
   public FaceInfo()
   {
-    this.jdField_a_of_type_ArrayOfLong = null;
     int i2 = 0;
-    this.jdField_e_of_type_Int = 0;
+    this.q = 0;
     int i1 = i2;
-    if (this.jdField_a_of_type_ArrayOfLong == null)
+    if (this.o == null)
     {
-      this.jdField_a_of_type_ArrayOfLong = new long[s];
+      this.o = new long[E];
       i1 = i2;
     }
-    while (i1 < s)
+    while (i1 < E)
     {
-      this.jdField_a_of_type_ArrayOfLong[i1] = 0L;
+      this.o[i1] = 0L;
       i1 += 1;
     }
   }
   
   public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ArrayOfLong = null;
-    this.jdField_e_of_type_Int = 0;
+    this.q = 0;
     a(paramInt1, paramString, paramBoolean1, paramByte, paramInt2, paramBoolean2, paramInt3, paramInt4, false, 100);
   }
   
   public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, boolean paramBoolean3, int paramInt4)
   {
-    this.jdField_a_of_type_ArrayOfLong = null;
-    this.jdField_e_of_type_Int = 0;
+    this.q = 0;
     a(paramInt1, paramString, paramBoolean1, paramByte, paramInt2, paramBoolean2, paramInt3, 0, paramBoolean3, paramInt4);
-  }
-  
-  private String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 8: 
-      return "TIME_REQ_END";
-    case 7: 
-      return "TIME_END_DECODE";
-    case 6: 
-      return "TIME_BEGIN_DECODE";
-    case 5: 
-      return "TIME_END_DOWNLOAD";
-    case 4: 
-      return "TIME_BEGIN_DOWNLOAD";
-    case 3: 
-      return "TIME_END_DOWNLOADINFO";
-    case 2: 
-      return "TIME_BEGIN_DOWNLOADINFO";
-    case 1: 
-      return "TIME_REQ_READY";
-    }
-    return "TIME_BEGINE";
   }
   
   public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3)
@@ -215,20 +186,38 @@ public class FaceInfo
     return "";
   }
   
-  public byte a()
+  private String b(int paramInt)
   {
-    if (this.jdField_a_of_type_Byte != 1) {
-      return 1;
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 8: 
+      return "TIME_REQ_END";
+    case 7: 
+      return "TIME_END_DECODE";
+    case 6: 
+      return "TIME_BEGIN_DECODE";
+    case 5: 
+      return "TIME_END_DOWNLOAD";
+    case 4: 
+      return "TIME_BEGIN_DOWNLOAD";
+    case 3: 
+      return "TIME_END_DOWNLOADINFO";
+    case 2: 
+      return "TIME_BEGIN_DOWNLOADINFO";
+    case 1: 
+      return "TIME_REQ_READY";
     }
-    return 0;
+    return "TIME_BEGINE";
   }
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_c_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    if (TextUtils.isEmpty(this.l)) {
+      this.l = a(this.b, this.c, this.d, this.e, this.j);
     }
-    return this.jdField_c_of_type_JavaLangString;
+    return this.l;
   }
   
   public void a(int paramInt)
@@ -238,11 +227,11 @@ public class FaceInfo
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfLong;
+    Object localObject = this.o;
     if (localObject == null) {
       return;
     }
-    if ((paramInt1 >= 0) && (paramInt1 < s))
+    if ((paramInt1 >= 0) && (paramInt1 < E))
     {
       localObject[paramInt1] = System.currentTimeMillis();
       if (QLog.isColorLevel())
@@ -251,25 +240,25 @@ public class FaceInfo
         ((StringBuilder)localObject).append("markTime tag= ");
         ((StringBuilder)localObject).append(paramInt1);
         ((StringBuilder)localObject).append("mTimes[tag] = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfLong[paramInt1]);
+        ((StringBuilder)localObject).append(this.o[paramInt1]);
         ((StringBuilder)localObject).append("this=");
         ((StringBuilder)localObject).append(this);
         QLog.i("FaceInfo", 2, ((StringBuilder)localObject).toString());
       }
-      if ((paramInt1 == r) && (QLog.isColorLevel()))
+      if ((paramInt1 == D) && (QLog.isColorLevel()))
       {
         localObject = new StringBuilder(260);
         ((StringBuilder)localObject).append("id=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(",");
         ((StringBuilder)localObject).append("idType=");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(this.d);
         ((StringBuilder)localObject).append(",");
         ((StringBuilder)localObject).append("headType=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(",");
         ((StringBuilder)localObject).append("shape=");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" ,Times={");
         paramInt1 = 0;
         long l2 = 0L;
@@ -277,16 +266,16 @@ public class FaceInfo
         long[] arrayOfLong;
         for (;;)
         {
-          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          arrayOfLong = this.o;
           if (paramInt1 >= arrayOfLong.length) {
             break;
           }
           ((StringBuilder)localObject).append("[");
-          ((StringBuilder)localObject).append(a(paramInt1));
+          ((StringBuilder)localObject).append(b(paramInt1));
           ((StringBuilder)localObject).append(",");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfLong[paramInt1]);
+          ((StringBuilder)localObject).append(this.o[paramInt1]);
           ((StringBuilder)localObject).append(",");
-          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          arrayOfLong = this.o;
           if (arrayOfLong[paramInt1] > 0L)
           {
             ((StringBuilder)localObject).append(Math.abs(l1 - arrayOfLong[paramInt1]));
@@ -297,17 +286,17 @@ public class FaceInfo
             ((StringBuilder)localObject).append("0");
             ((StringBuilder)localObject).append("]");
           }
-          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          arrayOfLong = this.o;
           if (arrayOfLong[paramInt1] > 0L) {
             l1 = arrayOfLong[paramInt1];
           }
           paramInt1 += 1;
         }
-        paramInt1 = r;
+        paramInt1 = D;
         l1 = l2;
         if (arrayOfLong[paramInt1] > 0L)
         {
-          int i1 = j;
+          int i1 = v;
           l1 = l2;
           if (arrayOfLong[i1] > 0L) {
             l1 = Math.abs(arrayOfLong[paramInt1] - arrayOfLong[i1]);
@@ -324,27 +313,27 @@ public class FaceInfo
   
   public void a(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, int paramInt4, boolean paramBoolean3, int paramInt5)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_d_of_type_Int = paramInt5;
-    if (this.jdField_a_of_type_ArrayOfLong == null) {
-      this.jdField_a_of_type_ArrayOfLong = new long[s];
+    this.a = paramBoolean3;
+    this.b = paramInt1;
+    this.c = paramString;
+    this.h = paramBoolean1;
+    this.f = paramByte;
+    this.e = paramInt2;
+    this.i = paramBoolean2;
+    this.d = paramInt3;
+    this.l = null;
+    this.k = null;
+    this.m = null;
+    this.n = 0L;
+    this.q = paramInt4;
+    this.j = paramInt5;
+    if (this.o == null) {
+      this.o = new long[E];
     }
     paramInt1 = 0;
-    while (paramInt1 < s)
+    while (paramInt1 < E)
     {
-      this.jdField_a_of_type_ArrayOfLong[paramInt1] = 0L;
+      this.o[paramInt1] = 0L;
       paramInt1 += 1;
     }
   }
@@ -354,31 +343,31 @@ public class FaceInfo
     if (paramQQHeadInfo == null) {
       return;
     }
-    this.jdField_a_of_type_AvatarInfoQQHeadInfo = paramQQHeadInfo;
+    this.p = paramQQHeadInfo;
   }
   
   public void a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Byte = paramParcel.readByte();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    this.j = paramParcel.readInt();
+    this.f = paramParcel.readByte();
     int i1 = paramParcel.readByte();
     boolean bool = true;
     if (i1 != 1) {
       bool = false;
     }
-    this.jdField_c_of_type_Boolean = bool;
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+    this.i = bool;
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readLong();
+    this.p = ((QQHeadInfo)paramParcel.readParcelable(getClass().getClassLoader()));
   }
   
   public boolean a(int paramInt, long paramLong)
   {
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.o;
     boolean bool2 = false;
     if (arrayOfLong == null) {
       return false;
@@ -387,7 +376,7 @@ public class FaceInfo
     if (paramInt >= 0)
     {
       bool1 = bool2;
-      if (paramInt < s) {
+      if (paramInt < E) {
         if (arrayOfLong[paramInt] == 0L)
         {
           bool1 = bool2;
@@ -400,7 +389,7 @@ public class FaceInfo
         else
         {
           bool1 = bool2;
-          if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) >= paramLong) {
+          if (Math.abs(System.currentTimeMillis() - this.o[paramInt]) >= paramLong) {
             bool1 = true;
           }
         }
@@ -411,18 +400,26 @@ public class FaceInfo
   
   public String b()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_d_of_type_Int);
+    if (TextUtils.isEmpty(this.k)) {
+      this.k = a(this.b, this.c, this.d, this.j);
     }
-    return this.jdField_b_of_type_JavaLangString;
+    return this.k;
   }
   
   public String c()
   {
-    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      this.jdField_e_of_type_JavaLangString = a(this.jdField_a_of_type_AvatarInfoQQHeadInfo, this.jdField_b_of_type_Int);
+    if (TextUtils.isEmpty(this.F)) {
+      this.F = a(this.p, this.d);
     }
-    return this.jdField_e_of_type_JavaLangString;
+    return this.F;
+  }
+  
+  public byte d()
+  {
+    if (this.f != 1) {
+      return 1;
+    }
+    return 0;
   }
   
   public int describeContents()
@@ -433,17 +430,17 @@ public class FaceInfo
   public boolean equals(Object paramObject)
   {
     paramObject = (FaceInfo)paramObject;
-    return (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int);
+    return (this.b == paramObject.b) && (TextUtils.equals(this.c, paramObject.c)) && (this.d == paramObject.d) && (this.e == paramObject.e);
   }
   
   public int hashCode()
   {
-    int i2 = this.jdField_a_of_type_Int;
+    int i2 = this.b;
     int i1;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.c)) {
       i1 = 0;
     } else {
-      i1 = this.jdField_a_of_type_JavaLangString.hashCode();
+      i1 = this.c.hashCode();
     }
     return i2 | i1;
   }
@@ -452,15 +449,15 @@ public class FaceInfo
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
@@ -472,7 +469,7 @@ public class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

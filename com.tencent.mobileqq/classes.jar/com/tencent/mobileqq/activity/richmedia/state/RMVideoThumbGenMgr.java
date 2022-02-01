@@ -6,50 +6,50 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class RMVideoThumbGenMgr
 {
-  RMVideoThumbGenMgr.ThumbGenItem jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<RMVideoThumbGenMgr.ThumbGenItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  RMVideoThumbGenMgr.ThumbGenItem a;
+  ArrayList<RMVideoThumbGenMgr.ThumbGenItem> b = new ArrayList();
+  private Object c = new Object();
   
   int a(RMVideoThumbGenMgr.ThumbGenItem paramThumbGenItem, boolean paramBoolean)
   {
     if (paramThumbGenItem == null) {
       return 1;
     }
-    paramThumbGenItem.jdField_a_of_type_Boolean = true;
-    int i = paramThumbGenItem.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
-    if ((i == 3) && (paramThumbGenItem.c != null) && (paramBoolean))
+    paramThumbGenItem.c = true;
+    int i = paramThumbGenItem.a.getAndSet(7);
+    if ((i == 3) && (paramThumbGenItem.h != null) && (paramBoolean))
     {
-      FileUtils.deleteFile(paramThumbGenItem.c);
-      paramThumbGenItem.c = null;
+      FileUtils.deleteFile(paramThumbGenItem.h);
+      paramThumbGenItem.h = null;
       return i;
     }
-    if ((i == 6) && (paramThumbGenItem.jdField_b_of_type_JavaLangString != null))
+    if ((i == 6) && (paramThumbGenItem.g != null))
     {
-      FileUtils.deleteFile(paramThumbGenItem.jdField_b_of_type_JavaLangString);
-      paramThumbGenItem.jdField_b_of_type_JavaLangString = null;
+      FileUtils.deleteFile(paramThumbGenItem.g);
+      paramThumbGenItem.g = null;
     }
     return i;
   }
   
   public RMVideoThumbGenMgr.ThumbGenItem a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem;
+    return this.a;
   }
   
-  void a()
+  void b()
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.c)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        if (this.b.size() > 0)
         {
-          RMVideoThumbGenMgr.ThumbGenItem localThumbGenItem = (RMVideoThumbGenMgr.ThumbGenItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-          this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-          if ((localThumbGenItem != null) && (a(localThumbGenItem, localThumbGenItem.jdField_b_of_type_Boolean) == 2)) {
-            synchronized (this.jdField_a_of_type_JavaLangObject)
+          RMVideoThumbGenMgr.ThumbGenItem localThumbGenItem = (RMVideoThumbGenMgr.ThumbGenItem)this.b.get(0);
+          this.b.remove(0);
+          if ((localThumbGenItem != null) && (a(localThumbGenItem, localThumbGenItem.j) == 2)) {
+            synchronized (this.c)
             {
-              this.jdField_a_of_type_JavaUtilArrayList.add(localThumbGenItem);
+              this.b.add(localThumbGenItem);
               return;
             }
           }
@@ -62,7 +62,7 @@ public class RMVideoThumbGenMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoThumbGenMgr
  * JD-Core Version:    0.7.0.1
  */

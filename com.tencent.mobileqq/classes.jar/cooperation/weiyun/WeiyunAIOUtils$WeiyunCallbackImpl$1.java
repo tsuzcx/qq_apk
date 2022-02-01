@@ -14,15 +14,15 @@ class WeiyunAIOUtils$WeiyunCallbackImpl$1
   {
     if (BaseActivity.sTopActivity != null)
     {
-      ((IWeiyunSaveTipsHelper)QRoute.api(IWeiyunSaveTipsHelper.class)).showTopTips(WeiyunAIOUtils.WeiyunCallbackImpl.a(this.this$0), BaseActivity.sTopActivity, WeiyunAIOUtils.WeiyunCallbackImpl.a(this.this$0));
+      ((IWeiyunSaveTipsHelper)QRoute.api(IWeiyunSaveTipsHelper.class)).showTopTips(WeiyunAIOUtils.WeiyunCallbackImpl.a(this.this$0), BaseActivity.sTopActivity, WeiyunAIOUtils.WeiyunCallbackImpl.b(this.this$0));
       return;
     }
-    QQToast.a(WeiyunAIOUtils.WeiyunCallbackImpl.a(this.this$0), 2, 2131697389, 1).b(WeiyunAIOUtils.WeiyunCallbackImpl.a(this.this$0));
+    QQToast.makeText(WeiyunAIOUtils.WeiyunCallbackImpl.c(this.this$0), 2, 2131895162, 1).show(WeiyunAIOUtils.WeiyunCallbackImpl.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1
  * JD-Core Version:    0.7.0.1
  */

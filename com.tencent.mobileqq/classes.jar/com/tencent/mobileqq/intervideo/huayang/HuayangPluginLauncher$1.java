@@ -50,7 +50,7 @@ class HuayangPluginLauncher$1
           HuayangPluginLauncher.access$200(this.a).sendBroadcast((Intent)localObject);
           if (MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a)) != null)
           {
-            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).f));
+            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).g));
             return false;
           }
         }
@@ -61,7 +61,7 @@ class HuayangPluginLauncher$1
           } else if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).isHyPkg(HuayangPluginLauncher.access$100(this.a).c)) {
             Monitor.a("2597726");
           } else if (MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a)) != null) {
-            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).e));
+            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).f));
           }
           ((IHuayangCrashReport)QRoute.api(IHuayangCrashReport.class)).report((Throwable)paramMessage.obj);
           ((Intent)localObject).putExtra("key_state", 7);
@@ -76,7 +76,7 @@ class HuayangPluginLauncher$1
         HuayangPluginLauncher.access$200(this.a).sendBroadcast(paramMessage);
         if (MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a)) != null)
         {
-          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).d));
+          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.access$300(this.a))).e));
           return false;
         }
       }
@@ -93,7 +93,7 @@ class HuayangPluginLauncher$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.1
  * JD-Core Version:    0.7.0.1
  */

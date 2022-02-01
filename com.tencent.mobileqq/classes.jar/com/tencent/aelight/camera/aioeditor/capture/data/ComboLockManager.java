@@ -29,70 +29,65 @@ import mqq.os.MqqHandler;
 public class ComboLockManager
   implements IEventReceiver
 {
-  public static final String a;
-  int jdField_a_of_type_Int = -1;
-  VideoFilterTools.ComboFilterData jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData;
-  ComboLockManager.StoryVideoPublishStatusReceiver jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver;
-  LockedCategory jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataLockedCategory;
-  public QIMFilterCategoryItem a;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = CaptureContext.a();
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ComboLockManager.3(this);
-  HashMap<String, LockedCategory> jdField_a_of_type_JavaUtilHashMap;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  boolean b;
-  public boolean c = false;
+  public static final String l;
+  volatile boolean a = false;
+  boolean b = true;
+  HashMap<String, LockedCategory> c;
+  VideoFilterTools.ComboFilterData d;
+  AppInterface e = CaptureContext.a();
+  ComboLockManager.StoryVideoPublishStatusReceiver f;
+  int g = -1;
+  LockedCategory h;
+  public QIMFilterCategoryItem i;
+  public boolean j = false;
+  CardObserver k = new ComboLockManager.3(this);
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PathUtils.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(PathUtils.a);
     localStringBuilder.append("/tencent/qim/share/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public ComboLockManager()
-  {
-    this.jdField_b_of_type_Boolean = true;
+    l = localStringBuilder.toString();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver = new ComboLockManager.StoryVideoPublishStatusReceiver(this);
+      this.f = new ComboLockManager.StoryVideoPublishStatusReceiver(this);
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "registerStoryReceiver");
       }
-      StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
+      StoryDispatcher.a().registerSubscriber(this.f);
     }
   }
   
   public LockedCategory a(String paramString)
   {
-    return (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return (LockedCategory)this.c.get(paramString);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver != null)
+    if (this.f != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver = new ComboLockManager.StoryVideoPublishStatusReceiver(this);
+      this.f = new ComboLockManager.StoryVideoPublishStatusReceiver(this);
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "unregisterStoryReceiver");
       }
-      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver = null;
+      StoryDispatcher.a().unRegisterSubscriber(this.f);
+      this.f = null;
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void a(VideoFilterTools.ComboFilterData paramComboFilterData)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData == paramComboFilterData)
+    if (this.d == paramComboFilterData)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "same data");
@@ -104,33 +99,33 @@ public class ComboLockManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateConfigData isfrist ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(" sendStory ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.a);
       QLog.i("ComboLockManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.b = false;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("updateConfigData first card.snedSrory ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.a);
         QLog.i("ComboLockManager", 2, ((StringBuilder)localObject).toString());
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap = paramComboFilterData.jdField_a_of_type_JavaUtilHashMap;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData = paramComboFilterData;
-    paramComboFilterData = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    this.c = paramComboFilterData.c;
+    this.d = paramComboFilterData;
+    paramComboFilterData = this.c.keySet().iterator();
     while (paramComboFilterData.hasNext())
     {
       localObject = (String)paramComboFilterData.next();
-      localObject = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      ((LockedCategory)localObject).jdField_a_of_type_Boolean = a(((LockedCategory)localObject).jdField_a_of_type_JavaLangString);
-      if ((((LockedCategory)localObject).jdField_a_of_type_Boolean) && (((LockedCategory)localObject).jdField_a_of_type_Int == 2))
+      localObject = (LockedCategory)this.c.get(localObject);
+      ((LockedCategory)localObject).a = c(((LockedCategory)localObject).b);
+      if ((((LockedCategory)localObject).a) && (((LockedCategory)localObject).e == 2))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataLockedCategory = ((LockedCategory)localObject);
+        this.h = ((LockedCategory)localObject);
         c();
       }
       if (QLog.isColorLevel())
@@ -139,108 +134,19 @@ public class ComboLockManager
         localStringBuilder.append("updateConfigData ");
         localStringBuilder.append(localObject);
         localStringBuilder.append(" lock ");
-        localStringBuilder.append(((LockedCategory)localObject).jdField_a_of_type_Boolean);
+        localStringBuilder.append(((LockedCategory)localObject).a);
         QLog.i("ComboLockManager", 2, localStringBuilder.toString());
       }
     }
   }
   
-  public void a(String paramString)
-  {
-    paramString = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString != null) {
-      paramString.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
-    boolean bool1 = false;
-    boolean bool2 = false;
-    int i = 1;
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject1 = null;
-      i = -1;
-    }
-    else
-    {
-      localObject1 = (LockedCategory)((HashMap)localObject1).get(paramString);
-      if (localObject1 == null) {
-        i = 0;
-      } else if (((LockedCategory)localObject1).jdField_a_of_type_Boolean) {
-        if (((LockedCategory)localObject1).a())
-        {
-          i = 2;
-        }
-        else
-        {
-          if (((LockedCategory)localObject1).jdField_a_of_type_Int == 2)
-          {
-            if (this.jdField_a_of_type_Boolean)
-            {
-              localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem;
-              bool1 = bool2;
-              if (localObject2 != null)
-              {
-                bool1 = bool2;
-                if (!((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) {}
-              }
-            }
-            else
-            {
-              bool1 = true;
-            }
-          }
-          else
-          {
-            bool1 = bool2;
-            if (((LockedCategory)localObject1).jdField_a_of_type_Int == 1)
-            {
-              if (!((LockedCategory)localObject1).jdField_b_of_type_Boolean)
-              {
-                ((LockedCategory)localObject1).jdField_a_of_type_Boolean = SharedPreUtils.t(BaseApplicationImpl.getApplication(), paramString);
-                ((LockedCategory)localObject1).jdField_b_of_type_Boolean = true;
-              }
-              bool1 = ((LockedCategory)localObject1).jdField_a_of_type_Boolean;
-            }
-          }
-          i = 3;
-        }
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("is locke ");
-      ((StringBuilder)localObject2).append(paramString);
-      ((StringBuilder)localObject2).append(" code");
-      ((StringBuilder)localObject2).append(i);
-      QLog.i("ComboLockManager", 2, ((StringBuilder)localObject2).toString());
-      if (i == 3)
-      {
-        paramString = new StringBuilder();
-        paramString.append("islock result");
-        paramString.append(bool1);
-        paramString.append(" type ");
-        paramString.append(((LockedCategory)localObject1).jdField_a_of_type_Int);
-        paramString.append(" mHaveSendStory ");
-        paramString.append(this.jdField_a_of_type_Boolean);
-        QLog.i("ComboLockManager", 2, paramString.toString());
-      }
-    }
-    return bool1;
-  }
-  
   public boolean a(String paramString, Context paramContext)
   {
-    boolean bool2 = a(paramString);
+    boolean bool2 = c(paramString);
     boolean bool1 = true;
     if (bool2)
     {
-      Object localObject2 = a(paramString).jdField_b_of_type_JavaLangString;
+      Object localObject2 = a(paramString).c;
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
@@ -275,11 +181,11 @@ public class ComboLockManager
     if (QLog.isColorLevel()) {
       QLog.i("ComboLockManager", 2, "handleSendStory");
     }
-    this.jdField_a_of_type_Boolean = true;
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
-    Object localObject = (CardHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataLockedCategory != null)
+    this.a = true;
+    StoryDispatcher.a().unRegisterSubscriber(this.f);
+    Object localObject = (CardHandler)this.e.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    this.e.addObserver(this.k, true);
+    if (this.h != null)
     {
       localObject = BaseApplicationImpl.getContext();
       ComboLockManager.1 local1 = new ComboLockManager.1(this, (Context)localObject);
@@ -289,7 +195,96 @@ public class ComboLockManager
   
   public void b(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData.a(this.jdField_a_of_type_Int).a;
+    paramString = (LockedCategory)this.c.get(paramString);
+    if (paramString != null) {
+      paramString.a = false;
+    }
+  }
+  
+  public boolean c(String paramString)
+  {
+    Object localObject1 = this.c;
+    boolean bool1 = false;
+    boolean bool2 = false;
+    int m = 1;
+    Object localObject2;
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      m = -1;
+    }
+    else
+    {
+      localObject1 = (LockedCategory)((HashMap)localObject1).get(paramString);
+      if (localObject1 == null) {
+        m = 0;
+      } else if (((LockedCategory)localObject1).a) {
+        if (((LockedCategory)localObject1).a())
+        {
+          m = 2;
+        }
+        else
+        {
+          if (((LockedCategory)localObject1).e == 2)
+          {
+            if (this.a)
+            {
+              localObject2 = this.i;
+              bool1 = bool2;
+              if (localObject2 != null)
+              {
+                bool1 = bool2;
+                if (!((QIMFilterCategoryItem)localObject2).a.equals(paramString)) {}
+              }
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+          else
+          {
+            bool1 = bool2;
+            if (((LockedCategory)localObject1).e == 1)
+            {
+              if (!((LockedCategory)localObject1).f)
+              {
+                ((LockedCategory)localObject1).a = SharedPreUtils.bL(BaseApplicationImpl.getApplication(), paramString);
+                ((LockedCategory)localObject1).f = true;
+              }
+              bool1 = ((LockedCategory)localObject1).a;
+            }
+          }
+          m = 3;
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("is locke ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" code");
+      ((StringBuilder)localObject2).append(m);
+      QLog.i("ComboLockManager", 2, ((StringBuilder)localObject2).toString());
+      if (m == 3)
+      {
+        paramString = new StringBuilder();
+        paramString.append("islock result");
+        paramString.append(bool1);
+        paramString.append(" type ");
+        paramString.append(((LockedCategory)localObject1).e);
+        paramString.append(" mHaveSendStory ");
+        paramString.append(this.a);
+        QLog.i("ComboLockManager", 2, paramString.toString());
+      }
+    }
+    return bool1;
+  }
+  
+  public void d(String paramString)
+  {
+    Object localObject1 = this.d.a(this.g).a;
     if (localObject1 != null)
     {
       localObject1 = ((ArrayList)localObject1).iterator();
@@ -299,16 +294,16 @@ public class ComboLockManager
           break label101;
         }
         Object localObject2 = (FilterCategory)((Iterator)localObject1).next();
-        if (((FilterCategory)localObject2).a != null)
+        if (((FilterCategory)localObject2).c != null)
         {
-          localObject2 = ((FilterCategory)localObject2).a.iterator();
+          localObject2 = ((FilterCategory)localObject2).c.iterator();
           if (((Iterator)localObject2).hasNext())
           {
             QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)((Iterator)localObject2).next();
-            if (!paramString.equals(localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString)) {
+            if (!paramString.equals(localQIMFilterCategoryItem.a)) {
               break;
             }
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem = localQIMFilterCategoryItem;
+            this.i = localQIMFilterCategoryItem;
           }
         }
       }
@@ -320,7 +315,7 @@ public class ComboLockManager
       ((StringBuilder)localObject1).append("setLockingItem ");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(" result ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem);
+      ((StringBuilder)localObject1).append(this.i);
       QLog.i("ComboLockManager", 2, ((StringBuilder)localObject1).toString());
     }
   }
@@ -332,7 +327,7 @@ public class ComboLockManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.ComboLockManager
  * JD-Core Version:    0.7.0.1
  */

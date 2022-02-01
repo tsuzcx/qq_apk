@@ -14,13 +14,13 @@ class ArkAppQQModule$17
   
   public void run()
   {
-    Activity localActivity = ArkAppQQModuleBase.a();
+    Activity localActivity = ArkAppQQModuleBase.f();
     if (localActivity != null)
     {
       Intent localIntent = new Intent(localActivity, TroopAvatarWallPreviewActivity.class);
       Bundle localBundle = new Bundle();
-      localBundle.putInt("index", this.jdField_a_of_type_Int);
-      localBundle.putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
+      localBundle.putInt("index", this.a);
+      localBundle.putStringArrayList("seqNum", this.b);
       localBundle.putBoolean("needBottomBar", false);
       localBundle.putBoolean("IS_EDIT", false);
       localBundle.putBoolean("is_use_path", true);
@@ -36,7 +36,7 @@ class ArkAppQQModule$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.17
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.kandian.base.image.api.impl.PublicAccountHttpDownloaderImpl;
 import com.tencent.mobileqq.kandian.biz.fastweb.OnItemClickListener;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.ImageData;
 import com.tencent.mobileqq.kandian.biz.fastweb.entity.BaseItemViewHolder;
@@ -22,7 +22,6 @@ import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqsharpP.QQSharpPUtil;
 import org.json.JSONObject;
@@ -31,16 +30,16 @@ class WebFastImageViewCreator$ImageViewHolder
   extends BaseItemViewHolder
   implements View.OnClickListener
 {
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int e;
-  private int f = 0;
+  private URLImageView a;
+  private int b;
+  private boolean c = true;
+  private int d = 0;
   
   public WebFastImageViewCreator$ImageViewHolder(View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369181));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
+    this.a = ((URLImageView)paramView.findViewById(2131436155));
+    this.a.setOnClickListener(this);
   }
   
   public static int a(Context paramContext)
@@ -58,21 +57,21 @@ class WebFastImageViewCreator$ImageViewHolder
   
   private void a(URLDrawable paramURLDrawable)
   {
-    int i = AIOUtils.b(this.d, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    int j = AIOUtils.b(this.c, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int i = AIOUtils.b(this.m, this.f.getContext().getResources());
+    int j = AIOUtils.b(this.l, this.f.getContext().getResources());
     if ((paramURLDrawable != null) && (paramURLDrawable.getStatus() == 1))
     {
       int k = paramURLDrawable.getCurrDrawable().getIntrinsicWidth();
       int m = paramURLDrawable.getCurrDrawable().getIntrinsicHeight();
       if ((k != 0) && (m != 0))
       {
-        int n = a(this.jdField_a_of_type_AndroidViewView.getContext(), k, i, i);
+        int n = a(this.f.getContext(), k, i, i);
         paramURLDrawable = new LinearLayout.LayoutParams(n, m * n / k);
         paramURLDrawable.leftMargin = i;
         paramURLDrawable.rightMargin = i;
         paramURLDrawable.topMargin = j;
         paramURLDrawable.bottomMargin = j;
-        this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(paramURLDrawable);
+        this.a.setLayoutParams(paramURLDrawable);
       }
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append(" refrshImageViewFromDrawable: ");
@@ -82,12 +81,12 @@ class WebFastImageViewCreator$ImageViewHolder
       QLog.d("Q.readinjoy.fast_web", 2, paramURLDrawable.toString());
       return;
     }
-    paramURLDrawable = new LinearLayout.LayoutParams(a(this.jdField_a_of_type_AndroidViewView.getContext()) - i - i, AIOUtils.b(190.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources()));
+    paramURLDrawable = new LinearLayout.LayoutParams(a(this.f.getContext()) - i - i, AIOUtils.b(190.0F, this.f.getContext().getResources()));
     paramURLDrawable.leftMargin = i;
     paramURLDrawable.rightMargin = i;
     paramURLDrawable.topMargin = j;
     paramURLDrawable.bottomMargin = j;
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(paramURLDrawable);
+    this.a.setLayoutParams(paramURLDrawable);
   }
   
   private static boolean a(int paramInt)
@@ -97,35 +96,35 @@ class WebFastImageViewCreator$ImageViewHolder
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    if (paramBaseData2.u != 3) {
+    if (paramBaseData2.aP != 3) {
       return;
     }
     paramBaseData2 = (ImageData)paramBaseData2;
     Object localObject = (ImageData)paramBaseData1;
-    int j = AIOUtils.b(this.d, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    int k = AIOUtils.b(this.c, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    int j = AIOUtils.b(this.m, this.f.getContext().getResources());
+    int k = AIOUtils.b(this.l, this.f.getContext().getResources());
     paramBaseData1 = URLDrawable.URLDrawableOptions.obtain();
-    int m = paramBaseData2.jdField_a_of_type_Int;
+    int m = paramBaseData2.b;
     int i = 0;
-    if ((m != 0) && (paramBaseData2.b != 0))
+    if ((m != 0) && (paramBaseData2.c != 0))
     {
-      m = a(this.jdField_a_of_type_AndroidViewView.getContext(), paramBaseData2.jdField_a_of_type_Int, j, j);
-      int n = paramBaseData2.b * m / paramBaseData2.jdField_a_of_type_Int;
-      if ((!((ImageData)localObject).jdField_a_of_type_JavaLangString.equals(paramBaseData2.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Boolean))
+      m = a(this.f.getContext(), paramBaseData2.b, j, j);
+      int n = paramBaseData2.c * m / paramBaseData2.b;
+      if ((!((ImageData)localObject).a.equals(paramBaseData2.a)) || (this.c))
       {
         localObject = new LinearLayout.LayoutParams(m, n);
         ((LinearLayout.LayoutParams)localObject).leftMargin = j;
         ((LinearLayout.LayoutParams)localObject).rightMargin = j;
         ((LinearLayout.LayoutParams)localObject).topMargin = k;
         ((LinearLayout.LayoutParams)localObject).bottomMargin = k;
-        this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_Boolean = false;
-        this.f = 0;
-        this.e = 0;
+        this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.c = false;
+        this.d = 0;
+        this.b = 0;
       }
-      if ((this.e > 0) && (paramBaseData2.b * paramBaseData2.jdField_a_of_type_Int > 2000000))
+      if ((this.b > 0) && (paramBaseData2.c * paramBaseData2.b > 2000000))
       {
-        j = this.f;
+        j = this.d;
         paramBaseData1.mRequestWidth = (m >> j);
         paramBaseData1.mRequestHeight = (n >> j);
       }
@@ -141,37 +140,37 @@ class WebFastImageViewCreator$ImageViewHolder
     }
     paramBaseData1.mLoadingDrawable = new ColorDrawable(-2565414);
     paramBaseData1.mPlayGifImage = true;
-    paramBaseData1.mUseSharpPImage = QQSharpPUtil.a(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramBaseData1.mUseSharpPImage = QQSharpPUtil.a(this.f.getContext());
     paramBaseData1.mMemoryCacheKeySuffix = "fast_web";
-    paramBaseData2 = WebFastImageViewCreator.a(paramBaseData2.jdField_a_of_type_JavaLangString, paramBaseData2);
-    paramBaseData1 = URLDrawable.getDrawable(((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramBaseData2, 4), paramBaseData1);
+    paramBaseData2 = WebFastImageViewCreator.a(paramBaseData2.a, paramBaseData2);
+    paramBaseData1 = URLDrawable.getDrawable(new PublicAccountHttpDownloaderImpl().makeURL(paramBaseData2, 4), paramBaseData1);
     if (i != 0) {
       a(paramBaseData1);
     }
     if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
       paramBaseData1.restartDownload();
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new WebFastImageViewCreator.ImageViewHolder.1(this));
+    this.a.setImageDrawable(paramBaseData1);
+    this.a.setURLDrawableDownListener(new WebFastImageViewCreator.ImageViewHolder.1(this));
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebOnItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData);
-    Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.b;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.a.a()) {
+    this.h.a(this.g);
+    Context localContext = this.f.getContext();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.g.aQ;
+    if (this.g.aR.a()) {
       paramView = "2";
     } else {
       paramView = "1";
     }
     paramView = RIJTransMergeKanDianReport.a(localContext, localAbsBaseArticleInfo, 0, paramView);
-    ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.b, "0X8008996", paramView.toString());
+    ReportUtil.a(this.g.aQ, "0X8008996", paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastImageViewCreator.ImageViewHolder
  * JD-Core Version:    0.7.0.1
  */

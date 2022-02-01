@@ -10,9 +10,9 @@ class QQStoryMainController$8
   public void run()
   {
     QQStoryMainController localQQStoryMainController = this.this$0;
-    localQQStoryMainController.a = localQQStoryMainController.a();
-    if (this.this$0.a != null) {
-      this.this$0.a.b();
+    localQQStoryMainController.f = localQQStoryMainController.h();
+    if (this.this$0.f != null) {
+      this.this$0.f.b();
     }
   }
 }

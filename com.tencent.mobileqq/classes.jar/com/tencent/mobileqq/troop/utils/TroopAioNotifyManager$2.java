@@ -17,14 +17,14 @@ final class TroopAioNotifyManager$2
     {
       try
       {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        int i = ((EntityManager)localObject1).delete(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIONotifyItem.getTableName(), "id=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIONotifyItem.id });
+        Object localObject1 = this.a.getEntityManagerFactory().createEntityManager();
+        int i = ((EntityManager)localObject1).delete(this.b.getTableName(), "id=?", new String[] { this.b.id });
         ((EntityManager)localObject1).close();
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("setNotifyItemReaded, id=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIONotifyItem.id);
+          ((StringBuilder)localObject1).append(this.b.id);
           ((StringBuilder)localObject1).append(", ret=");
           ((StringBuilder)localObject1).append(i);
           QLog.d(".troop.notify_feeds.data", 2, ((StringBuilder)localObject1).toString());
@@ -49,7 +49,7 @@ final class TroopAioNotifyManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAioNotifyManager.2
  * JD-Core Version:    0.7.0.1
  */

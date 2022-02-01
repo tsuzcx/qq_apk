@@ -132,8 +132,8 @@ public class BizTroopMemberInfoServiceImpl
   public Drawable getTroopMemberLevelDrawable(int paramInt, String paramString)
   {
     BizTroopMemberInfoServiceImpl.TroopMemberLevelValue localTroopMemberLevelValue = new BizTroopMemberInfoServiceImpl.TroopMemberLevelValue(this);
-    localTroopMemberLevelValue.jdField_a_of_type_Int = paramInt;
-    localTroopMemberLevelValue.jdField_a_of_type_JavaLangString = paramString;
+    localTroopMemberLevelValue.a = paramInt;
+    localTroopMemberLevelValue.b = paramString;
     return (Drawable)this.mMemberLevelColorCache.get(localTroopMemberLevelValue);
   }
   
@@ -415,8 +415,8 @@ public class BizTroopMemberInfoServiceImpl
   public void saveTroopMemberLevelDrawable(int paramInt, String paramString, Drawable paramDrawable)
   {
     BizTroopMemberInfoServiceImpl.TroopMemberLevelValue localTroopMemberLevelValue = new BizTroopMemberInfoServiceImpl.TroopMemberLevelValue(this);
-    localTroopMemberLevelValue.jdField_a_of_type_Int = paramInt;
-    localTroopMemberLevelValue.jdField_a_of_type_JavaLangString = paramString;
+    localTroopMemberLevelValue.a = paramInt;
+    localTroopMemberLevelValue.b = paramString;
     this.mMemberLevelColorCache.put(localTroopMemberLevelValue, paramDrawable);
   }
   
@@ -462,7 +462,7 @@ public class BizTroopMemberInfoServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.BizTroopMemberInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

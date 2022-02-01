@@ -33,9 +33,9 @@ class HotChatFragment$2
         if (paramContext == null) {
           return;
         }
-        float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+        float f = this.a.ag.getResources().getDisplayMetrics().density;
         int j = paramContext.length();
-        this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.a.e.clear();
         int i = 0;
         while (i < j)
         {
@@ -43,10 +43,10 @@ class HotChatFragment$2
           Rect localRect = new Rect();
           localRect.top = ((int)(paramIntent.getInt("top") * f));
           localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
-          this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+          this.a.e.add(localRect);
           i += 1;
         }
-        this.a.jdField_a_of_type_Boolean = true;
+        this.a.f = true;
         return;
       }
       catch (JSONException paramContext)
@@ -60,7 +60,7 @@ class HotChatFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.HotChatFragment.2
  * JD-Core Version:    0.7.0.1
  */

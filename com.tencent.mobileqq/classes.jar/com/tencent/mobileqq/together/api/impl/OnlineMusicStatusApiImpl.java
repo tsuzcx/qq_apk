@@ -28,7 +28,7 @@ public class OnlineMusicStatusApiImpl
   
   public OnlineMusicStatus buildFromMusicInfo(boolean paramBoolean)
   {
-    MusicInfo localMusicInfo = (MusicInfo)QQMusicPlayService.a();
+    MusicInfo localMusicInfo = (MusicInfo)QQMusicPlayService.f();
     int j = QQMusicPlayService.a();
     int k = QQMusicPlayService.b();
     if (localMusicInfo == null) {
@@ -41,9 +41,9 @@ public class OnlineMusicStatusApiImpl
     localObject1 = (QQAppInterface)localObject1;
     Object localObject2 = (ListenTogetherManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
     localObject1 = (IOnlineMusicStatusManager)((IOnlineStatusManagerService)((QQAppInterface)localObject1).getRuntimeService(IOnlineStatusManagerService.class)).getManager(IOnlineMusicStatusManager.class);
-    if (((ListenTogetherManager)localObject2).a() != null)
+    if (((ListenTogetherManager)localObject2).g() != null)
     {
-      if (((ListenTogetherManager)localObject2).a().f == 1) {
+      if (((ListenTogetherManager)localObject2).g().m == 1) {
         i = 3;
       } else {
         i = 2;
@@ -53,65 +53,65 @@ public class OnlineMusicStatusApiImpl
       }
     }
     localObject2 = new OnlineMusicStatus();
-    ((OnlineMusicStatus)localObject2).jdField_a_of_type_Boolean = true;
-    ((OnlineMusicStatus)localObject2).jdField_a_of_type_JavaLangString = localMusicInfo.jdField_a_of_type_JavaLangString;
-    ((OnlineMusicStatus)localObject2).jdField_b_of_type_JavaLangString = localMusicInfo.jdField_b_of_type_JavaLangString;
-    ((OnlineMusicStatus)localObject2).jdField_a_of_type_Int = 1;
-    List localList = localMusicInfo.jdField_a_of_type_JavaUtilList;
+    ((OnlineMusicStatus)localObject2).a = true;
+    ((OnlineMusicStatus)localObject2).b = localMusicInfo.a;
+    ((OnlineMusicStatus)localObject2).c = localMusicInfo.b;
+    ((OnlineMusicStatus)localObject2).d = 1;
+    List localList = localMusicInfo.d;
     int i = 0;
-    if ((localList != null) && (!localMusicInfo.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      ((OnlineMusicStatus)localObject2).jdField_c_of_type_JavaLangString = ((String)localMusicInfo.jdField_a_of_type_JavaUtilList.get(0));
+    if ((localList != null) && (!localMusicInfo.d.isEmpty())) {
+      ((OnlineMusicStatus)localObject2).e = ((String)localMusicInfo.d.get(0));
     }
-    ((OnlineMusicStatus)localObject2).jdField_b_of_type_Int = (j - k);
+    ((OnlineMusicStatus)localObject2).f = (j - k);
     if (localObject1 != null) {
       i = ((IOnlineMusicStatusManager)localObject1).a();
     }
-    ((OnlineMusicStatus)localObject2).jdField_c_of_type_Int = i;
-    ((OnlineMusicStatus)localObject2).jdField_b_of_type_Boolean = paramBoolean;
-    ((OnlineMusicStatus)localObject2).d = QQMusicPlayService.a();
+    ((OnlineMusicStatus)localObject2).g = i;
+    ((OnlineMusicStatus)localObject2).h = paramBoolean;
+    ((OnlineMusicStatus)localObject2).i = QQMusicPlayService.a();
     return localObject2;
   }
   
   public OnlineMusicStatus buildFromSongInfo(boolean paramBoolean)
   {
-    int j = QQPlayerService.d();
-    int k = QQPlayerService.f();
-    Object localObject = QQPlayerService.b();
+    int j = QQPlayerService.i();
+    int k = QQPlayerService.k();
+    Object localObject = QQPlayerService.g();
     if (localObject == null) {
       return null;
     }
     OnlineMusicStatus localOnlineMusicStatus = new OnlineMusicStatus();
     int i = 0;
-    localOnlineMusicStatus.jdField_a_of_type_Boolean = false;
-    localOnlineMusicStatus.jdField_a_of_type_JavaLangString = ((SongInfo)localObject).jdField_a_of_type_JavaLangString;
-    if ((TextUtils.isEmpty(((SongInfo)localObject).jdField_a_of_type_JavaLangString)) || (((SongInfo)localObject).jdField_a_of_type_JavaLangString.equals("0")))
+    localOnlineMusicStatus.a = false;
+    localOnlineMusicStatus.b = ((SongInfo)localObject).b;
+    if ((TextUtils.isEmpty(((SongInfo)localObject).b)) || (((SongInfo)localObject).b.equals("0")))
     {
-      localOnlineMusicStatus.jdField_a_of_type_JavaLangString = getSongMid(((SongInfo)localObject).f);
-      if (TextUtils.isEmpty(localOnlineMusicStatus.jdField_a_of_type_JavaLangString))
+      localOnlineMusicStatus.b = getSongMid(((SongInfo)localObject).h);
+      if (TextUtils.isEmpty(localOnlineMusicStatus.b))
       {
         QLog.d("OnlineMusicStatusApiImpl", 1, "pushMusicStatus, songMid is null");
         return null;
       }
     }
-    localOnlineMusicStatus.jdField_b_of_type_JavaLangString = ((SongInfo)localObject).jdField_c_of_type_JavaLangString;
-    localOnlineMusicStatus.jdField_a_of_type_Int = 1;
-    if (TextUtils.isEmpty(((SongInfo)localObject).h)) {
-      localObject = ((SongInfo)localObject).d;
+    localOnlineMusicStatus.c = ((SongInfo)localObject).e;
+    localOnlineMusicStatus.d = 1;
+    if (TextUtils.isEmpty(((SongInfo)localObject).j)) {
+      localObject = ((SongInfo)localObject).f;
     } else {
-      localObject = ((SongInfo)localObject).h;
+      localObject = ((SongInfo)localObject).j;
     }
-    localOnlineMusicStatus.jdField_c_of_type_JavaLangString = ((String)localObject);
-    if (localOnlineMusicStatus.jdField_c_of_type_JavaLangString == null) {
-      localOnlineMusicStatus.jdField_c_of_type_JavaLangString = "";
+    localOnlineMusicStatus.e = ((String)localObject);
+    if (localOnlineMusicStatus.e == null) {
+      localOnlineMusicStatus.e = "";
     }
-    localOnlineMusicStatus.jdField_b_of_type_Int = (j - k);
+    localOnlineMusicStatus.f = (j - k);
     localObject = (IOnlineMusicStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class);
     if (localObject != null) {
       i = ((IOnlineMusicStatusManager)localObject).a();
     }
-    localOnlineMusicStatus.jdField_c_of_type_Int = i;
-    localOnlineMusicStatus.jdField_b_of_type_Boolean = paramBoolean;
-    localOnlineMusicStatus.d = QQPlayerService.d();
+    localOnlineMusicStatus.g = i;
+    localOnlineMusicStatus.h = paramBoolean;
+    localOnlineMusicStatus.i = QQPlayerService.i();
     return localOnlineMusicStatus;
   }
   
@@ -150,7 +150,7 @@ public class OnlineMusicStatusApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.api.impl.OnlineMusicStatusApiImpl
  * JD-Core Version:    0.7.0.1
  */

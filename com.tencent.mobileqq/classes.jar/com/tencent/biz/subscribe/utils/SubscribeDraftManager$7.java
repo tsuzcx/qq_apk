@@ -10,16 +10,16 @@ class SubscribeDraftManager$7
 {
   SubscribeDraftManager$7(SubscribeDraftManager paramSubscribeDraftManager, String paramString1, String paramString2, SubscribeFollowUserUtil.ResultListener paramResultListener, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       if (FastClickUtils.a("subScribe_delete_draft")) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager.a(this.jdField_a_of_type_JavaLangString, this.b, new SubscribeDraftManager.7.1(this));
+      this.e.a(this.a, this.b, new SubscribeDraftManager.7.1(this));
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.d.dismiss();
   }
 }
 

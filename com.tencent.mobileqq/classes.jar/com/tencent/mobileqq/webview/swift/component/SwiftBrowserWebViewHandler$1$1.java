@@ -10,16 +10,16 @@ class SwiftBrowserWebViewHandler$1$1
   
   public void run()
   {
-    Iterator localIterator = this.a.this$0.a.iterator();
+    Iterator localIterator = this.a.this$0.b.iterator();
     while (localIterator.hasNext()) {
       ((SwiftBrowserWebViewHandler.AsyncInitWebViewCallback)localIterator.next()).a();
     }
-    this.a.this$0.a.clear();
+    this.a.this$0.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserWebViewHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

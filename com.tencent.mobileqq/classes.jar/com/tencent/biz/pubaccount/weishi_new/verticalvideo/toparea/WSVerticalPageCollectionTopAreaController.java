@@ -13,71 +13,71 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 public class WSVerticalPageCollectionTopAreaController
   extends AbsWsUIGroup<Object>
 {
-  private static final int d = (int)(WeishiUIUtil.c() - WeishiUIUtil.o * 1.5F);
-  private stCollection jdField_a_of_type_UserGrowthStCollection;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private static final int g = (int)(WeishiUIUtil.c() - WeishiUIUtil.q * 1.5F);
+  private TextView h;
+  private TextView i;
+  private final WSVerticalPageFragment j;
+  private stCollection k;
+  private View l;
   
   protected void a()
   {
-    if ((a() != null) && ((a() instanceof stCollection))) {
-      this.jdField_a_of_type_UserGrowthStCollection = ((stCollection)a());
+    if ((c() != null) && ((c() instanceof stCollection))) {
+      this.k = ((stCollection)c());
     }
-  }
-  
-  protected int b()
-  {
-    return 2131560009;
   }
   
   protected void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if ((localObject != null) && (this.jdField_a_of_type_UserGrowthStCollection != null))
+    Object localObject = this.h;
+    if ((localObject != null) && (this.k != null))
     {
-      ((TextView)localObject).setMaxWidth(d);
-      localObject = a().getString(2131720422);
+      ((TextView)localObject).setMaxWidth(g);
+      localObject = e().getString(2131918098);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
-      localStringBuilder.append(this.jdField_a_of_type_UserGrowthStCollection.name);
+      localStringBuilder.append(this.k.name);
       localObject = localStringBuilder.toString();
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.h.setText((CharSequence)localObject);
     }
   }
   
-  protected void c() {}
-  
-  public void c(int paramInt)
+  public void d(int paramInt)
   {
-    if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStCollection != null))
+    if ((this.i != null) && (this.k != null))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStCollection.feed_count);
+      ((StringBuilder)localObject).append(this.k.feed_count);
       localObject = ((StringBuilder)localObject).toString();
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.i.setText((CharSequence)localObject);
     }
   }
   
-  protected void e()
+  protected void f() {}
+  
+  protected int i()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
+    return 2131626052;
+  }
+  
+  protected void j()
+  {
+    if (this.j == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380469);
-    WSVerticalUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getBaseActivity(), localRelativeLayout);
-    this.jdField_b_of_type_AndroidViewView = a(2131380468);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new WSVerticalPageCollectionTopAreaController.1(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380461));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131379577));
+    RelativeLayout localRelativeLayout = (RelativeLayout)c(2131449422);
+    WSVerticalUtils.a(this.j.getBaseActivity(), localRelativeLayout);
+    this.l = c(2131449421);
+    this.l.setOnClickListener(new WSVerticalPageCollectionTopAreaController.1(this));
+    this.h = ((TextView)c(2131449414));
+    this.i = ((TextView)c(2131448333));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageCollectionTopAreaController
  * JD-Core Version:    0.7.0.1
  */

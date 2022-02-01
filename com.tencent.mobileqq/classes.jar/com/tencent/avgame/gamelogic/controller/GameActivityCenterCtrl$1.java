@@ -19,22 +19,22 @@ class GameActivityCenterCtrl$1
   public void a(boolean paramBoolean, String paramString)
   {
     Object localObject1;
-    if (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) == null) {
+    if (GameActivityCenterCtrl.a(this.b) == null) {
       localObject1 = null;
     } else {
-      localObject1 = (Context)GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).get();
+      localObject1 = (Context)GameActivityCenterCtrl.a(this.b).get();
     }
     Object localObject2 = localObject1;
     if (localObject1 == null) {
       localObject2 = BaseApplicationImpl.getContext();
     }
-    if ((localObject2 != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).a()))
+    if ((localObject2 != null) && (GameActivityCenterCtrl.b(this.b) != null) && (GameActivityCenterCtrl.b(this.b).a()))
     {
-      GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl, true);
+      GameActivityCenterCtrl.a(this.b, true);
       localObject1 = new Intent((Context)localObject2, QQBrowserActivity.class);
-      ((Intent)localObject1).putExtra("url", GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).b);
+      ((Intent)localObject1).putExtra("url", GameActivityCenterCtrl.b(this.b).c);
       ((Intent)localObject1).putExtra("avgame_share_link", paramString);
-      ((Intent)localObject1).putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject1).putExtra("avgame_share_name", this.a);
       ((Context)localObject2).startActivity((Intent)localObject1);
     }
     if (QLog.isColorLevel())
@@ -43,9 +43,9 @@ class GameActivityCenterCtrl$1
       ((StringBuilder)localObject1).append("getShareLinkCallback, ctx[");
       ((StringBuilder)localObject1).append(localObject2);
       ((StringBuilder)localObject1).append("], entry[");
-      ((StringBuilder)localObject1).append(GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl));
+      ((StringBuilder)localObject1).append(GameActivityCenterCtrl.b(this.b));
       ((StringBuilder)localObject1).append("], shareName[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append("], shareUrl[");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append("]");

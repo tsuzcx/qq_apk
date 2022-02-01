@@ -22,14 +22,9 @@ public class PcQQSearchTmpRoutingType
     return 1023;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
-    Object localObject = ((QQAppInterface)paramAppInterface).getMsgCache().c(paramMessageRecord.frienduin);
+    Object localObject = ((QQAppInterface)paramAppInterface).getMsgCache().h(paramMessageRecord.frienduin);
     paramAppInterface = new msg_svc.QQQueryBusinessTmp();
     paramAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
     if (localObject != null)
@@ -51,14 +46,19 @@ public class PcQQSearchTmpRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 8008;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.PcQQSearchTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

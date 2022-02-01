@@ -19,20 +19,20 @@ class QRDisplayActivity$26$1
       if ((i != 1) && (i != 3)) {
         return true;
       }
-      if (QRDisplayActivity.a(this.a.this$0) != null) {
-        QRDisplayActivity.a(this.a.this$0).cancel();
+      if (QRDisplayActivity.d(this.a.this$0) != null) {
+        QRDisplayActivity.d(this.a.this$0).cancel();
       }
-      if ((!QRDisplayActivity.a(this.a.this$0)) && (paramMotionEvent.getAction() == 1))
+      if ((!QRDisplayActivity.e(this.a.this$0)) && (paramMotionEvent.getAction() == 1))
       {
-        AccessibilityUtil.c(this.a.this$0.d);
-        this.a.this$0.onClick(this.a.this$0.d);
+        AccessibilityUtil.c(this.a.this$0.I);
+        this.a.this$0.onClick(this.a.this$0.I);
         return true;
       }
     }
-    else if (QRDisplayActivity.a(this.a.this$0) != null)
+    else if (QRDisplayActivity.d(this.a.this$0) != null)
     {
       QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
+      QRDisplayActivity.d(this.a.this$0).start();
     }
     return true;
   }

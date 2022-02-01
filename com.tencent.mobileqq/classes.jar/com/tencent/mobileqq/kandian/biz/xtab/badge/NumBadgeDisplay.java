@@ -36,7 +36,7 @@ public final class NumBadgeDisplay
     paramContext.setTextSize(11.0F);
     paramContext.setTextColor(-1);
     paramContext.setSingleLine(true);
-    paramContext.setBackgroundResource(2130843337);
+    paramContext.setBackgroundResource(2130844291);
     return paramContext;
   }
   
@@ -70,7 +70,7 @@ public final class NumBadgeDisplay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.badge.NumBadgeDisplay
  * JD-Core Version:    0.7.0.1
  */

@@ -175,19 +175,19 @@ public class PublicAccountImageCollectionMainActivityImpl
   @TargetApi(9)
   private View createViewFlipper(int paramInt)
   {
-    View localView = super.getLayoutInflater().inflate(2131559102, null);
-    this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131377008));
-    this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131377009));
+    View localView = super.getLayoutInflater().inflate(2131624763, null);
+    this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131445372));
+    this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131445373));
     if (paramInt == 1) {
       this.mScrollView2.setVisibility(8);
     }
-    GridView localGridView2 = (GridView)localView.findViewById(2131367811);
-    GridView localGridView1 = (GridView)localView.findViewById(2131367812);
-    Object localObject1 = (TextView)localView.findViewById(2131362003);
+    GridView localGridView2 = (GridView)localView.findViewById(2131434386);
+    GridView localGridView1 = (GridView)localView.findViewById(2131434387);
+    Object localObject1 = (TextView)localView.findViewById(2131427564);
     Object localObject2 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
     ((LinearLayout.LayoutParams)localObject2).topMargin = ((int)(this.mDensity * 13.0F));
     ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((TextView)localObject1).setText(2131690728);
+    ((TextView)localObject1).setText(2131887648);
     ((TextView)localObject1).setOnClickListener(new PublicAccountImageCollectionMainActivityImpl.11(this));
     if (Build.VERSION.SDK_INT >= 9)
     {
@@ -278,7 +278,7 @@ public class PublicAccountImageCollectionMainActivityImpl
     if (localPhotoCollectionInfo == null) {
       return;
     }
-    this.webUrl = localPhotoCollectionInfo.jdField_b_of_type_JavaLangString;
+    this.webUrl = localPhotoCollectionInfo.b;
     this.webName = this.photoCollectionInfo.e;
     this.webImg = this.photoCollectionInfo.d;
     this.puin = this.photoCollectionInfo.c;
@@ -307,59 +307,59 @@ public class PublicAccountImageCollectionMainActivityImpl
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131696399);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839067;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 2;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = super.getString(2131894171);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839221;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).b = true;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 2;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
     localArrayList.add(localObject);
     localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131696413);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839068;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 3;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = super.getString(2131894185);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839222;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).b = true;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 3;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
     localArrayList.add(localObject);
     localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131696420);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839071;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 9;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = super.getString(2131894192);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839225;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 9;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
     localArrayList.add(localObject);
     localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131696402);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839065;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 10;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = super.getString(2131894174);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839219;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 10;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
     localArrayList.add(localObject);
     localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = super.getString(2131696396);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130842737;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 4;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = super.getString(2131894168);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).b = true;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130843690;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 4;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
     localArrayList.add(localObject);
     localObject = new ArrayList();
     IPublicAccountBrowser.ActionSheetItem localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131696385);
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_a_of_type_Int = 2130844237;
-    localActionSheetItem.jdField_b_of_type_Int = 6;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
+    localActionSheetItem.c = super.getString(2131894157);
+    localActionSheetItem.b = true;
+    localActionSheetItem.a = 2130845554;
+    localActionSheetItem.d = 6;
+    localActionSheetItem.e = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131696391);
-    localActionSheetItem.jdField_a_of_type_Int = 2130839063;
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_b_of_type_Int = 1;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
+    localActionSheetItem.c = super.getString(2131894163);
+    localActionSheetItem.a = 2130839217;
+    localActionSheetItem.b = true;
+    localActionSheetItem.d = 1;
+    localActionSheetItem.e = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = super.getString(2131696397);
-    localActionSheetItem.jdField_a_of_type_Int = 2130842727;
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_b_of_type_Int = 11;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
+    localActionSheetItem.c = super.getString(2131894169);
+    localActionSheetItem.a = 2130843680;
+    localActionSheetItem.b = true;
+    localActionSheetItem.d = 11;
+    localActionSheetItem.e = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     return (List[])new ArrayList[] { localArrayList, localObject };
   }
@@ -460,26 +460,26 @@ public class PublicAccountImageCollectionMainActivityImpl
     this.mDensity = getResources().getDisplayMetrics().density;
     setFullScreen();
     this.mUIHandler = new Handler();
-    this.titleLeft = ((ImageView)super.findViewById(2131368525));
+    this.titleLeft = ((ImageView)super.findViewById(2131435429));
     this.titleLeft.setOnClickListener(this);
-    this.titleRight = ((ImageView)super.findViewById(2131368526));
+    this.titleRight = ((ImageView)super.findViewById(2131435430));
     this.titleRight.setOnClickListener(this);
-    this.relativeLayout = ((RelativeLayout)super.findViewById(2131376819));
-    this.mListView = ((PublicAccountImageCollectionListView)super.findViewById(2131368518));
+    this.relativeLayout = ((RelativeLayout)super.findViewById(2131445149));
+    this.mListView = ((PublicAccountImageCollectionListView)super.findViewById(2131435422));
     this.mListView.setVerticalScrollBarEnabled(false);
     this.mListView.setDividerHeight(0);
     this.viewGroup = ((ViewGroup)getWindow().getDecorView());
     this.mAdapter = new PublicAccountImageCollectionAdapter(this, this.mListView, (QQAppInterface)super.getAppInterface());
     this.mListView.setSmoothScrollbarEnabled(false);
     this.mListView.setOnTouchListener(new PublicAccountImageCollectionMainActivityImpl.1(this));
-    this.mUserGuide = ((LinearLayout)super.findViewById(2131380311));
-    this.writeCommentImage = ((ImageView)super.findViewById(2131368527));
-    this.commentImage = ((ImageView)super.findViewById(2131368510));
-    this.commentCountText = ((TextView)super.findViewById(2131368509));
-    this.zanImage = ((ImageView)super.findViewById(2131368529));
-    this.zanCountText = ((TextView)super.findViewById(2131368528));
-    this.shareImage = ((ImageView)super.findViewById(2131368523));
-    this.commentTextView = ((TextView)super.findViewById(2131368511));
+    this.mUserGuide = ((LinearLayout)super.findViewById(2131449241));
+    this.writeCommentImage = ((ImageView)super.findViewById(2131435431));
+    this.commentImage = ((ImageView)super.findViewById(2131435414));
+    this.commentCountText = ((TextView)super.findViewById(2131435413));
+    this.zanImage = ((ImageView)super.findViewById(2131435433));
+    this.zanCountText = ((TextView)super.findViewById(2131435432));
+    this.shareImage = ((ImageView)super.findViewById(2131435427));
+    this.commentTextView = ((TextView)super.findViewById(2131435415));
     this.writeCommentImage.setOnClickListener(this);
     this.commentImage.setOnClickListener(this);
     this.zanImage.setOnClickListener(this);
@@ -572,7 +572,7 @@ public class PublicAccountImageCollectionMainActivityImpl
     localObject1 = ((StringBuilder)localObject1).toString();
     localObject1 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(79).a("web", this.webUrl, (String)localObject1, "", "");
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708787));
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906563));
     ((StringBuilder)localObject2).append(this.webName);
     localObject1 = ((AbsShareMsg.Builder)localObject1).a(((StringBuilder)localObject2).toString()).a();
     localObject2 = this.webImg;
@@ -599,17 +599,17 @@ public class PublicAccountImageCollectionMainActivityImpl
   
   private void showCommentResult(boolean paramBoolean, int paramInt)
   {
-    Dialog localDialog = new Dialog(this, 2131755929);
+    Dialog localDialog = new Dialog(this, 2131953050);
     localDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    localDialog.setContentView(2131559607);
+    localDialog.setContentView(2131625636);
     if (!paramBoolean)
     {
       if (paramInt == 6) {
-        ((TextView)localDialog.findViewById(2131381175)).setText(2131695200);
+        ((TextView)localDialog.findViewById(2131450222)).setText(2131892933);
       } else if (paramInt == 10) {
-        ((TextView)localDialog.findViewById(2131381175)).setText(2131695199);
+        ((TextView)localDialog.findViewById(2131450222)).setText(2131892932);
       } else {
-        ((TextView)localDialog.findViewById(2131381175)).setText(2131695198);
+        ((TextView)localDialog.findViewById(2131450222)).setText(2131892931);
       }
     }
     else {
@@ -652,7 +652,7 @@ public class PublicAccountImageCollectionMainActivityImpl
         }
         if (paramInt2 == -1)
         {
-          setCommentText(getString(2131695196));
+          setCommentText(getString(2131892929));
           ThreadManager.executeOnSubThread(new PublicAccountImageCollectionMainActivityImpl.13(this));
         }
       }
@@ -679,7 +679,7 @@ public class PublicAccountImageCollectionMainActivityImpl
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559610);
+    super.setContentView(2131625639);
     initUI();
     initData();
     initHandlerAndObserver();
@@ -690,7 +690,7 @@ public class PublicAccountImageCollectionMainActivityImpl
       getWindow().setFlags(16777216, 16777216);
     }
     PublicAccountImageCollectionActivityManager.a().a(this);
-    PublicAccountImageCollectionActivityManager.a().a();
+    PublicAccountImageCollectionActivityManager.a().b();
     return true;
   }
   
@@ -722,7 +722,7 @@ public class PublicAccountImageCollectionMainActivityImpl
     }
     if (this.mPublicAccountArticleHandler != null)
     {
-      if (PublicAccountImageCollectionActivityManager.a().a() == 1) {
+      if (PublicAccountImageCollectionActivityManager.a().c() == 1) {
         this.mPublicAccountArticleHandler.removePublicAccountArticleObserver();
       }
       this.mPublicAccountArticleHandler = null;
@@ -764,7 +764,7 @@ public class PublicAccountImageCollectionMainActivityImpl
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131368523)
+    if (i != 2131435427)
     {
       switch (i)
       {
@@ -773,24 +773,24 @@ public class PublicAccountImageCollectionMainActivityImpl
         {
         default: 
           return;
-        case 2131368529: 
+        case 2131435433: 
           zan();
           return;
-        case 2131368528: 
+        case 2131435432: 
           zan();
           return;
-        case 2131368527: 
+        case 2131435431: 
           writeComment();
           return;
-        case 2131368525: 
+        case 2131435429: 
           doOnBackPressed();
         }
         showMoreView();
         return;
-      case 2131368511: 
+      case 2131435415: 
         writeComment();
         return;
-      case 2131368510: 
+      case 2131435414: 
         showComment();
         return;
       }
@@ -809,12 +809,12 @@ public class PublicAccountImageCollectionMainActivityImpl
     if (this.actionSheet.isShowing()) {
       this.actionSheet.dismiss();
     }
-    paramInt = ((PublicAccountImageCollectionMainActivityImpl.ActionSheetItemViewHolder)paramAdapterView).a.jdField_b_of_type_Int;
+    paramInt = ((PublicAccountImageCollectionMainActivityImpl.ActionSheetItemViewHolder)paramAdapterView).c.d;
     paramAdapterView = this.webUrl;
     if (paramInt == 1)
     {
       ((ClipboardManager)getSystemService("clipboard")).setText(paramAdapterView);
-      QRUtils.a(2, 2131691296);
+      QRUtils.a(2, 2131888247);
       reportItemEventRightTitle(1011);
       return;
     }
@@ -887,7 +887,7 @@ public class PublicAccountImageCollectionMainActivityImpl
       label396:
       break label396;
     }
-    QRUtils.a(1, 2131695222);
+    QRUtils.a(1, 2131892956);
     return;
     if (paramInt == 3)
     {
@@ -934,19 +934,19 @@ public class PublicAccountImageCollectionMainActivityImpl
       if (this.photoCollectionInfo != null)
       {
         int i = (int)(System.currentTimeMillis() - this.startTime);
-        this.mPublicAccountArticleHandler.reportReadPhotoCollection(this.articleID, this.puin, this.photoCollectionInfo.jdField_b_of_type_JavaLangString, paramInt1, paramInt2, paramString, i, this.recommendItemInfos);
+        this.mPublicAccountArticleHandler.reportReadPhotoCollection(this.articleID, this.puin, this.photoCollectionInfo.b, paramInt1, paramInt2, paramString, i, this.recommendItemInfos);
         paramInt2 = 0;
         paramInt1 = 0;
-        if (this.photoCollectionInfo.a != null)
+        if (this.photoCollectionInfo.i != null)
         {
-          paramString = this.photoCollectionInfo.a.iterator();
+          paramString = this.photoCollectionInfo.i.iterator();
           for (;;)
           {
             paramInt2 = paramInt1;
             if (!paramString.hasNext()) {
               break;
             }
-            if (((IPublicAccountImageCollectionUtils.PhotoItemInfo)paramString.next()).jdField_a_of_type_Boolean) {
+            if (((IPublicAccountImageCollectionUtils.PhotoItemInfo)paramString.next()).f) {
               paramInt1 += 1;
             }
           }
@@ -980,7 +980,7 @@ public class PublicAccountImageCollectionMainActivityImpl
     }
     if (this.mSystemBarComp != null)
     {
-      int i = getResources().getColor(2131167333);
+      int i = getResources().getColor(2131168376);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -1007,7 +1007,7 @@ public class PublicAccountImageCollectionMainActivityImpl
       View localView;
       if (this.actionSheet == null)
       {
-        this.actionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
+        this.actionSheet = ((ActionSheet)ActionSheetHelper.b(this, null));
         localView = createViewFlipper(paramInt);
         this.actionSheet.setActionContentView(localView, null);
       }
@@ -1039,10 +1039,10 @@ public class PublicAccountImageCollectionMainActivityImpl
   void showComment()
   {
     Object localObject = this.photoCollectionInfo;
-    if ((localObject != null) && (!TextUtils.isEmpty(((IPublicAccountImageCollectionUtils.PhotoCollectionInfo)localObject).jdField_b_of_type_JavaLangString)))
+    if ((localObject != null) && (!TextUtils.isEmpty(((IPublicAccountImageCollectionUtils.PhotoCollectionInfo)localObject).b)))
     {
       localObject = new Intent(this, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.photoCollectionInfo.f);
+      ((Intent)localObject).putExtra("url", this.photoCollectionInfo.g);
       ((Intent)localObject).putExtra("hide_more_button", true);
       startActivity((Intent)localObject);
     }
@@ -1097,13 +1097,13 @@ public class PublicAccountImageCollectionMainActivityImpl
     if (this.isLiked)
     {
       this.likeCount += 1;
-      this.zanImage.setImageResource(2130841682);
+      this.zanImage.setImageResource(2130842597);
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, this.puin, "0X8007B95", "0X8007B95", 0, 0, this.articleID, this.webUrl, "", "", false);
     }
     else
     {
       this.likeCount -= 1;
-      this.zanImage.setImageResource(2130841681);
+      this.zanImage.setImageResource(2130842596);
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, this.puin, "0X8007B96", "0X8007B96", 0, 0, this.articleID, this.webUrl, "", "", false);
     }
     TextView localTextView = this.zanCountText;
@@ -1116,7 +1116,7 @@ public class PublicAccountImageCollectionMainActivityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl
  * JD-Core Version:    0.7.0.1
  */

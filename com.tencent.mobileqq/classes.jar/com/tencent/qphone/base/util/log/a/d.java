@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.net.a.f;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.BaseConstants;
@@ -35,8 +35,8 @@ final class d
     if (paramContext.equals("android.intent.action.SCREEN_OFF"))
     {
       b.g = false;
-      ac.V = -1;
-      ac.W.set(false);
+      ad.V = -1;
+      ad.W.set(false);
       if (com.tencent.mobileqq.msf.core.a.a.r())
       {
         b.f().removeMessages(10000);
@@ -116,7 +116,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.d
  * JD-Core Version:    0.7.0.1
  */

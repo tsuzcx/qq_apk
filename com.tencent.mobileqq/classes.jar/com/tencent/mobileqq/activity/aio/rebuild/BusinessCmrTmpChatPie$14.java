@@ -11,12 +11,12 @@ class BusinessCmrTmpChatPie$14
   protected void onGetMsgFin(boolean paramBoolean)
   {
     super.onGetMsgFin(paramBoolean);
-    this.a.a.sendEmptyMessage(0);
+    this.a.bP.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.14
  * JD-Core Version:    0.7.0.1
  */

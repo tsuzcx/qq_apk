@@ -24,7 +24,7 @@ final class SearchUtil$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131380885);
+    Object localObject = (Integer)this.a.getTag(2131449868);
     int j = -1;
     int i;
     if (localObject != null) {
@@ -33,13 +33,13 @@ final class SearchUtil$1
       i = -1;
     }
     localHashMap.put("itemLinePosition", String.valueOf(i + 1));
-    localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.b()));
-    localHashMap.put("className", this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.getClass().getSimpleName());
-    localHashMap.put("keyword", this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.b());
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap);
+    localHashMap.put("matchDegree", String.valueOf(this.b.u()));
+    localHashMap.put("className", this.b.getClass().getSimpleName());
+    localHashMap.put("keyword", this.b.g());
+    if (this.b.v != null) {
+      localHashMap.putAll(this.b.v);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel;
+    localObject = this.b;
     if ((localObject instanceof ContactSearchModelGlobalTroopMember)) {
       localObject = ((ContactSearchModelGlobalTroopMember)localObject).a;
     } else if ((localObject instanceof ContactSearchModelGlobalTroop)) {
@@ -47,15 +47,15 @@ final class SearchUtil$1
     } else {
       localObject = "";
     }
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.b.m != null))
     {
-      int k = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface).getTroopMask((String)localObject);
-      localHashMap.put("troopMask", String.valueOf(((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface).getTroopMask((String)localObject)));
-      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      int k = ((QQAppInterface)this.b.m).getTroopMask((String)localObject);
+      localHashMap.put("troopMask", String.valueOf(((QQAppInterface)this.b.m).getTroopMask((String)localObject)));
+      TroopManager localTroopManager = (TroopManager)this.b.m.getManager(QQManagerFactory.TROOP_MANAGER);
       i = j;
       if (localTroopManager != null)
       {
-        localObject = localTroopManager.c((String)localObject);
+        localObject = localTroopManager.g((String)localObject);
         i = j;
         if (localObject != null) {
           i = ((TroopInfo)localObject).wMemberNum;
@@ -78,7 +78,7 @@ final class SearchUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchUtil.1
  * JD-Core Version:    0.7.0.1
  */

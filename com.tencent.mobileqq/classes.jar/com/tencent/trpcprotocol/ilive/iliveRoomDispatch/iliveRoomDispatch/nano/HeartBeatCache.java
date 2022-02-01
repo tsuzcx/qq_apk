@@ -12,14 +12,14 @@ import java.util.Map;
 public final class HeartBeatCache
   extends MessageNano
 {
-  public int a;
   public long a;
-  public Map<Long, MsgString> a;
   public long b;
   public long c;
-  public long d;
+  public Map<Long, MsgString> d;
   public long e;
   public long f;
+  public int g;
+  public long h;
   
   public HeartBeatCache()
   {
@@ -28,14 +28,14 @@ public final class HeartBeatCache
   
   public HeartBeatCache a()
   {
-    this.jdField_a_of_type_Long = 0L;
+    this.a = 0L;
     this.b = 0L;
     this.c = 0L;
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.d = 0L;
+    this.d = null;
     this.e = 0L;
-    this.jdField_a_of_type_Int = 0;
     this.f = 0L;
+    this.g = 0;
+    this.h = 0L;
     this.cachedSize = -1;
     return this;
   }
@@ -70,23 +70,23 @@ public final class HeartBeatCache
                       }
                     }
                     else {
-                      this.f = paramCodedInputByteBufferNano.readInt64();
+                      this.h = paramCodedInputByteBufferNano.readInt64();
                     }
                   }
                   else {
-                    this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+                    this.g = paramCodedInputByteBufferNano.readUInt32();
                   }
                 }
                 else {
-                  this.e = paramCodedInputByteBufferNano.readUInt64();
+                  this.f = paramCodedInputByteBufferNano.readUInt64();
                 }
               }
               else {
-                this.d = paramCodedInputByteBufferNano.readInt64();
+                this.e = paramCodedInputByteBufferNano.readInt64();
               }
             }
             else {
-              this.jdField_a_of_type_JavaUtilMap = InternalNano.mergeMapEntry(paramCodedInputByteBufferNano, this.jdField_a_of_type_JavaUtilMap, localMapFactory, 4, 11, new MsgString(), 8, 18);
+              this.d = InternalNano.mergeMapEntry(paramCodedInputByteBufferNano, this.d, localMapFactory, 4, 11, new MsgString(), 8, 18);
             }
           }
           else {
@@ -98,7 +98,7 @@ public final class HeartBeatCache
         }
       }
       else {
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readInt64();
+        this.a = paramCodedInputByteBufferNano.readInt64();
       }
     }
     return this;
@@ -107,7 +107,7 @@ public final class HeartBeatCache
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     int i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeInt64Size(1, l);
@@ -122,27 +122,27 @@ public final class HeartBeatCache
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.d;
     j = i;
     if (localMap != null) {
       j = i + InternalNano.computeMapFieldSize(localMap, 4, 4, 11);
     }
-    l = this.d;
+    l = this.e;
     int k = j;
     if (l != 0L) {
       k = j + CodedOutputByteBufferNano.computeInt64Size(5, l);
     }
-    l = this.e;
+    l = this.f;
     i = k;
     if (l != 0L) {
       i = k + CodedOutputByteBufferNano.computeUInt64Size(6, l);
     }
-    k = this.jdField_a_of_type_Int;
+    k = this.g;
     j = i;
     if (k != 0) {
       j = i + CodedOutputByteBufferNano.computeUInt32Size(7, k);
     }
-    l = this.f;
+    l = this.h;
     i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeInt64Size(8, l);
@@ -152,7 +152,7 @@ public final class HeartBeatCache
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeInt64(1, l);
     }
@@ -164,23 +164,23 @@ public final class HeartBeatCache
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.d;
     if (localMap != null) {
       InternalNano.serializeMapField(paramCodedOutputByteBufferNano, localMap, 4, 4, 11);
     }
-    l = this.d;
+    l = this.e;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeInt64(5, l);
     }
-    l = this.e;
+    l = this.f;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(6, l);
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.g;
     if (i != 0) {
       paramCodedOutputByteBufferNano.writeUInt32(7, i);
     }
-    l = this.f;
+    l = this.h;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeInt64(8, l);
     }
@@ -189,7 +189,7 @@ public final class HeartBeatCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.HeartBeatCache
  * JD-Core Version:    0.7.0.1
  */

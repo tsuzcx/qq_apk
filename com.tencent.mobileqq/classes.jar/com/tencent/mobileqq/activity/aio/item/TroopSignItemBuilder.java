@@ -42,40 +42,30 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public abstract class TroopSignItemBuilder
   extends BaseBubbleBuilder
 {
+  protected int A = 12303291;
+  protected int B = 0;
   protected int a;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h = 12303291;
-  protected int i = 0;
+  protected int w;
+  protected int x;
+  protected int y;
+  protected int z;
   
   public TroopSignItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_Int = DisplayUtil.a(paramContext, 151.5F);
-    this.d = DisplayUtil.a(paramContext, 125.5F);
-    this.e = DisplayUtil.a(paramContext, 152.0F);
-    this.f = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 14.0F);
-    this.g = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-    this.i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return ((MessageForTroopSign)paramChatMessage).getSummaryMsg();
+    this.a = DisplayUtil.a(paramContext, 151.5F);
+    this.w = DisplayUtil.a(paramContext, 125.5F);
+    this.x = DisplayUtil.a(paramContext, 152.0F);
+    this.y = DisplayUtil.a(this.e, 14.0F);
+    this.z = DisplayUtil.a(this.e, 10.0F);
+    this.B = DisplayUtil.a(this.e, 50.0F);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131365480)
+    if (paramInt != 2131431695)
     {
-      if (paramInt != 2131376417)
+      if (paramInt != 2131444634)
       {
         super.a(paramInt, paramContext, paramChatMessage);
         return;
@@ -83,16 +73,16 @@ public abstract class TroopSignItemBuilder
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
-    ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    ChatActivityFacade.b(this.e, this.d, paramChatMessage);
   }
   
   public void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    int j = this.f / 2;
+    int i = this.y / 2;
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
     if (paramInt == 7)
     {
-      localLayoutParams.topMargin = this.f;
+      localLayoutParams.topMargin = this.y;
       localLayoutParams.addRule(11, 0);
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(14, -1);
@@ -100,15 +90,15 @@ public abstract class TroopSignItemBuilder
     }
     else
     {
-      localLayoutParams.topMargin = j;
+      localLayoutParams.topMargin = i;
       localLayoutParams.addRule(11, -1);
       localLayoutParams.addRule(9, 0);
       localLayoutParams.addRule(14, 0);
       localLayoutParams.addRule(10, -1);
       if (paramBoolean) {
-        localLayoutParams.rightMargin = (j + this.g);
+        localLayoutParams.rightMargin = (i + this.z);
       } else {
-        localLayoutParams.rightMargin = j;
+        localLayoutParams.rightMargin = i;
       }
     }
     paramView.setLayoutParams(localLayoutParams);
@@ -118,41 +108,41 @@ public abstract class TroopSignItemBuilder
   {
     if (paramChatMessage.isSend())
     {
-      paramView.setPadding(BaseChatItemLayout.k, BaseChatItemLayout.h, 0, BaseChatItemLayout.i);
+      paramView.setPadding(BaseChatItemLayout.getBubblePaddingAlignError(), BaseChatItemLayout.k, 0, BaseChatItemLayout.l);
       return;
     }
-    paramView.setPadding(0, BaseChatItemLayout.h, BaseChatItemLayout.k, BaseChatItemLayout.i);
+    paramView.setPadding(0, BaseChatItemLayout.k, BaseChatItemLayout.getBubblePaddingAlignError(), BaseChatItemLayout.l);
   }
   
   public void a(TroopSignItemBuilder.SignItemHolder paramSignItemHolder, BaseChatItemLayout paramBaseChatItemLayout)
   {
-    MessageForTroopSign localMessageForTroopSign = (MessageForTroopSign)paramSignItemHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    MessageForTroopSign localMessageForTroopSign = (MessageForTroopSign)paramSignItemHolder.q;
     Resources localResources;
     Object localObject;
     TextView localTextView;
     boolean bool;
     Drawable localDrawable;
     ColorDrawable localColorDrawable;
-    if (paramSignItemHolder.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    if (paramSignItemHolder.t == null)
     {
-      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      paramSignItemHolder.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+      localResources = this.e.getResources();
+      paramSignItemHolder.t = new FrameLayout(this.e);
       localObject = new FrameLayout.LayoutParams(-2, -2);
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localTextView = new TextView(this.e);
       bool = true;
       localTextView.setSingleLine(true);
       localTextView.setGravity(16);
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setTextColor(-1);
       localTextView.setTextSize(2, 12.0F);
-      localTextView.setBackgroundResource(2130842702);
-      paramSignItemHolder.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
-      paramSignItemHolder.e = localTextView;
-      paramSignItemHolder.e.setText(localMessageForTroopSign.srcName);
+      localTextView.setBackgroundResource(2130843655);
+      paramSignItemHolder.t.addView(localTextView, (ViewGroup.LayoutParams)localObject);
+      paramSignItemHolder.u = localTextView;
+      paramSignItemHolder.u.setText(localMessageForTroopSign.srcName);
       if (!TextUtils.isEmpty(localMessageForTroopSign.srcIconUrl))
       {
         localObject = localMessageForTroopSign.srcIconUrl;
-        localDrawable = localResources.getDrawable(2130850833);
+        localDrawable = localResources.getDrawable(2130852668);
         localDrawable.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
         localColorDrawable = new ColorDrawable(15790320);
         localColorDrawable.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
@@ -163,8 +153,8 @@ public abstract class TroopSignItemBuilder
       try
       {
         localObject = URLDrawable.getDrawable((String)localObject, localDrawable, localColorDrawable);
-        if (URLDrawableHelper.isMobileNetAndAutodownDisabled(this.jdField_a_of_type_AndroidContentContext)) {
-          break label483;
+        if (URLDrawableHelper.isMobileNetAndAutodownDisabled(this.e)) {
+          break label484;
         }
         ((URLDrawable)localObject).setAutoDownload(bool);
       }
@@ -183,24 +173,24 @@ public abstract class TroopSignItemBuilder
       ((Drawable)localObject).setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
       localTextView.setCompoundDrawablePadding(AIOUtils.b(3.0F, localResources));
       localTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-      break label365;
+      break label366;
       localTextView.setCompoundDrawables(null, null, null, null);
-      label365:
+      label366:
       localTextView.setPadding(AIOUtils.b(5.0F, localResources), 0, AIOUtils.b(5.0F, localResources), 0);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364521);
-      ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131364521);
-      paramBaseChatItemLayout.addView(paramSignItemHolder.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject);
-      paramSignItemHolder.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-      paramBaseChatItemLayout = (FrameLayout.LayoutParams)paramSignItemHolder.e.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131430578);
+      ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131430578);
+      paramBaseChatItemLayout.addView(paramSignItemHolder.t, (ViewGroup.LayoutParams)localObject);
+      paramSignItemHolder.t.setOnClickListener(this);
+      paramBaseChatItemLayout = (FrameLayout.LayoutParams)paramSignItemHolder.u.getLayoutParams();
       if (localMessageForTroopSign.isSend()) {
-        paramBaseChatItemLayout.leftMargin = BaseChatItemLayout.k;
+        paramBaseChatItemLayout.leftMargin = BaseChatItemLayout.getBubblePaddingAlignError();
       } else {
-        paramBaseChatItemLayout.leftMargin = this.g;
+        paramBaseChatItemLayout.leftMargin = this.z;
       }
-      paramSignItemHolder.e.setLayoutParams(paramBaseChatItemLayout);
+      paramSignItemHolder.u.setLayoutParams(paramBaseChatItemLayout);
       return;
-      label483:
+      label484:
       bool = false;
     }
   }
@@ -210,7 +200,7 @@ public abstract class TroopSignItemBuilder
     boolean bool = paramMessageForTroopSign.isSend();
     if ((paramMessageForTroopSign.markType != 1) && (paramMessageForTroopSign.markType != 2))
     {
-      paramSignItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramSignItemHolder.c.setImageDrawable(null);
     }
     else if (!TextUtils.isEmpty(paramMessageForTroopSign.markIconUrl))
     {
@@ -218,15 +208,15 @@ public abstract class TroopSignItemBuilder
       {
         Object localObject = new ColorDrawable(0);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = this.i;
-        localURLDrawableOptions.mRequestHeight = this.i;
+        localURLDrawableOptions.mRequestWidth = this.B;
+        localURLDrawableOptions.mRequestHeight = this.B;
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
         localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
         localObject = URLDrawable.getDrawable(paramMessageForTroopSign.markIconUrl, localURLDrawableOptions);
         if (((URLDrawable)localObject).getStatus() == 2) {
           ((URLDrawable)localObject).restartDownload();
         }
-        paramSignItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        paramSignItemHolder.c.setImageDrawable((Drawable)localObject);
       }
       catch (Exception localException)
       {
@@ -238,60 +228,70 @@ public abstract class TroopSignItemBuilder
     }
     else
     {
-      paramSignItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramSignItemHolder.c.setImageDrawable(null);
     }
     label159:
     if (paramMessageForTroopSign.markType == 1)
     {
-      paramSignItemHolder.jdField_d_of_type_AndroidViewView.setVisibility(4);
-      paramSignItemHolder.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      paramSignItemHolder.b.setVisibility(4);
-      a(paramSignItemHolder.jdField_c_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
+      paramSignItemHolder.s.setVisibility(4);
+      paramSignItemHolder.e.setVisibility(0);
+      paramSignItemHolder.d.setVisibility(4);
+      a(paramSignItemHolder.e, paramMessageForTroopSign.positonType, bool);
       return;
     }
     if (paramMessageForTroopSign.markType == 2)
     {
-      paramSignItemHolder.jdField_d_of_type_AndroidViewView.setVisibility(4);
-      paramSignItemHolder.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      paramSignItemHolder.b.setVisibility(0);
-      paramSignItemHolder.b.setText(paramMessageForTroopSign.markDesc);
-      a(paramSignItemHolder.jdField_c_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
+      paramSignItemHolder.s.setVisibility(4);
+      paramSignItemHolder.e.setVisibility(0);
+      paramSignItemHolder.d.setVisibility(0);
+      paramSignItemHolder.d.setText(paramMessageForTroopSign.markDesc);
+      a(paramSignItemHolder.e, paramMessageForTroopSign.positonType, bool);
       return;
     }
     if (paramMessageForTroopSign.markType == 3)
     {
-      paramSignItemHolder.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      paramSignItemHolder.jdField_c_of_type_AndroidViewView.setVisibility(4);
-      paramSignItemHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageForTroopSign.markWord);
-      paramSignItemHolder.jdField_d_of_type_AndroidWidgetTextView.setText(paramMessageForTroopSign.markDesc);
-      a(paramSignItemHolder.jdField_d_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
+      paramSignItemHolder.s.setVisibility(0);
+      paramSignItemHolder.e.setVisibility(4);
+      paramSignItemHolder.f.setText(paramMessageForTroopSign.markWord);
+      paramSignItemHolder.g.setText(paramMessageForTroopSign.markDesc);
+      a(paramSignItemHolder.s, paramMessageForTroopSign.positonType, bool);
       return;
     }
-    paramSignItemHolder.jdField_d_of_type_AndroidViewView.setVisibility(4);
-    paramSignItemHolder.jdField_c_of_type_AndroidViewView.setVisibility(4);
+    paramSignItemHolder.s.setVisibility(4);
+    paramSignItemHolder.e.setVisibility(4);
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    paramView = (MessageForTroopSign)((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376417, paramView, null);
-    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376430, paramView, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return localQQCustomMenu.a();
+    paramView = (MessageForTroopSign)((ChatItemBuilder.BaseHolder)AIOUtils.b(paramView)).q;
+    super.a(localQQCustomMenu, this.e, 2131444634, paramView, null);
+    ChatActivityFacade.a(localQQCustomMenu, this.e, this.f.a);
+    a(localQQCustomMenu, this.e, 2131444651, paramView, null);
+    super.a(localQQCustomMenu, this.e, 2131428089, null, null);
+    return localQQCustomMenu.d();
+  }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return ((MessageForTroopSign)paramChatMessage).getSummaryMsg();
   }
   
   public void onClick(View paramView)
   {
-    if ((!a()) && (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.n))
+    if ((!c()) && (!(this.e instanceof MultiForwardActivity)) && (!this.f.G))
     {
-      Object localObject1 = (TroopSignItemBuilder.SignItemHolder)AIOUtils.a(paramView);
-      Object localObject2 = (MessageForTroopSign)((TroopSignItemBuilder.SignItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if (paramView == ((TroopSignItemBuilder.SignItemHolder)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout)
+      Object localObject1 = (TroopSignItemBuilder.SignItemHolder)AIOUtils.b(paramView);
+      Object localObject2 = (MessageForTroopSign)((TroopSignItemBuilder.SignItemHolder)localObject1).q;
+      if (paramView == ((TroopSignItemBuilder.SignItemHolder)localObject1).t)
       {
         localObject2 = ((MessageForTroopSign)localObject2).srcAction;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_checkin", "", "entry", "clk_obj_graybar", 0, 0, "", "", "", "");
+        ReportController.b(this.d, "dc00899", "Grp_checkin", "", "entry", "clk_obj_graybar", 0, 0, "", "", "", "");
         localObject1 = localObject2;
         if (QLog.isColorLevel())
         {
@@ -302,10 +302,10 @@ public abstract class TroopSignItemBuilder
           localObject1 = localObject2;
         }
       }
-      else if (paramView == ((TroopSignItemBuilder.SignItemHolder)localObject1).jdField_a_of_type_AndroidViewView)
+      else if (paramView == ((TroopSignItemBuilder.SignItemHolder)localObject1).h)
       {
         localObject2 = ((MessageForTroopSign)localObject2).msgAction;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_checkin", "", "entry", "clk_obj", 0, 0, "", "", "", "");
+        ReportController.b(this.d, "dc00899", "Grp_checkin", "", "entry", "clk_obj", 0, 0, "", "", "", "");
         localObject1 = localObject2;
         if (QLog.isColorLevel())
         {
@@ -324,10 +324,10 @@ public abstract class TroopSignItemBuilder
       {
         try
         {
-          localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          localObject2 = new Intent(this.e, QQBrowserActivity.class);
           ((Intent)localObject2).putExtra("url", (String)localObject1);
           ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded((Intent)localObject2, (String)localObject1);
-          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+          this.e.startActivity((Intent)localObject2);
         }
         catch (Exception localException)
         {
@@ -348,7 +348,7 @@ public abstract class TroopSignItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder
  * JD-Core Version:    0.7.0.1
  */

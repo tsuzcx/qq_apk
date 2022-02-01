@@ -58,13 +58,13 @@ public class AEPhotoAIManagerImpl
   
   public void downloadPhotoAIRes()
   {
-    AEEditorResourceManager.a().c();
+    AEEditorResourceManager.a().j();
   }
   
   public AEPhotoAIResult getPhotoAIResult(String paramString)
   {
     AEPhotoAIResult localAEPhotoAIResult = new AEPhotoAIResult();
-    PhotoAIFilter.setAIImageJsonPath(AEEditorResourceManager.a().a());
+    PhotoAIFilter.setAIImageJsonPath(AEEditorResourceManager.a().l());
     PhotoAIFilter.setLutImagePath("");
     paramString = PhotoAIFilter.parseAIImageParamsBySceneLabel(paramString);
     localAEPhotoAIResult.a(parseLutBylutPath(paramString.lutPath));
@@ -77,12 +77,12 @@ public class AEPhotoAIManagerImpl
   
   public boolean isPhotoAIResExist()
   {
-    return AEEditorResourceManager.a().a();
+    return AEEditorResourceManager.a().k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.api.impl.AEPhotoAIManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -5,27 +5,27 @@ import com.tencent.mobileqq.app.BaseActivity;
 public class ChatHistoryPicVideoViewController
   extends ChatHistoryCommonViewController
 {
-  public static final int[] a = { 2131690813 };
-  public static final int[] b = { 2131364509 };
+  public static final int[] e = { 2131887743 };
+  public static final int[] f = { 2131430566 };
   
   public ChatHistoryPicVideoViewController(BaseActivity paramBaseActivity)
   {
     super(paramBaseActivity);
   }
   
-  protected int[] a()
+  protected int[] k()
   {
-    return b;
+    return f;
   }
   
-  protected int[] b()
+  protected int[] l()
   {
-    return a;
+    return e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryPicVideoViewController
  * JD-Core Version:    0.7.0.1
  */

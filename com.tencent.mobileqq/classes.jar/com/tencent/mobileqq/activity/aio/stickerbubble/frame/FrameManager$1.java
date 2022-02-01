@@ -21,14 +21,14 @@ class FrameManager$1
       }
       FrameManager.a(this.this$0).put(this.a, Integer.valueOf(localIFrameDecode.a()));
       BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localIFrameDecode.b()];
-      localObject2 = FrameManager.a(this.this$0, localIFrameDecode.a(), 0.7D);
+      localObject2 = FrameManager.a(this.this$0, localIFrameDecode.d(), 0.7D);
       Object localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = localIFrameDecode.a();
+        localObject1 = localIFrameDecode.d();
       }
-      arrayOfBitmapDrawable[0] = new BitmapDrawable(FrameManager.a(this.this$0).getResources(), (Bitmap)localObject1);
+      arrayOfBitmapDrawable[0] = new BitmapDrawable(FrameManager.b(this.this$0).getResources(), (Bitmap)localObject1);
       FrameManager.a(this.this$0, localIFrameDecode, arrayOfBitmapDrawable, this.a, localIFrameDecode.a());
-      FrameManager.b(this.this$0).put(this.a, arrayOfBitmapDrawable);
+      FrameManager.c(this.this$0).put(this.a, arrayOfBitmapDrawable);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -49,7 +49,7 @@ class FrameManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.frame.FrameManager.1
  * JD-Core Version:    0.7.0.1
  */

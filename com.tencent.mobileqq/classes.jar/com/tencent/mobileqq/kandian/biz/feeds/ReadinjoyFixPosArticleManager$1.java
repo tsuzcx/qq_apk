@@ -16,7 +16,7 @@ class ReadinjoyFixPosArticleManager$1
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b().iterator();
+    Iterator localIterator = this.a.h().iterator();
     while (localIterator.hasNext())
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)localIterator.next();
@@ -24,12 +24,12 @@ class ReadinjoyFixPosArticleManager$1
         localArrayList.add(localAbsBaseArticleInfo);
       }
     }
-    RIJDataFetchManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_Int, localArrayList, localArrayList, 3, null, null);
+    RIJDataFetchManager.a(this.a, this.b, localArrayList, localArrayList, 3, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadinjoyFixPosArticleManager.1
  * JD-Core Version:    0.7.0.1
  */

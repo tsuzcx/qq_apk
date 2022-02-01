@@ -12,17 +12,17 @@ class VideoFeedsShareController$4
   public void onCancel(DialogInterface paramDialogInterface)
   {
     VideoFeedsShareController.a(this.a, "mShareActionSheet cancle button OnClick");
-    if (VideoFeedsShareController.a(this.a) != null) {
-      VideoFeedsShareController.a(this.a).c();
+    if (VideoFeedsShareController.b(this.a) != null) {
+      VideoFeedsShareController.b(this.a).h();
     }
-    paramDialogInterface = VideoFeedsShareController.a(this.a);
+    paramDialogInterface = VideoFeedsShareController.e(this.a);
     VideoFeedsShareController localVideoFeedsShareController = this.a;
-    localVideoFeedsShareController.a(paramDialogInterface, String.valueOf(localVideoFeedsShareController.a()), paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
+    localVideoFeedsShareController.a(paramDialogInterface, String.valueOf(localVideoFeedsShareController.b()), paramDialogInterface.l, paramDialogInterface.b, paramDialogInterface.ah, -1, -1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.4
  * JD-Core Version:    0.7.0.1
  */

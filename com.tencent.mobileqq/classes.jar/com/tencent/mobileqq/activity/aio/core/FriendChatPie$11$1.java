@@ -12,11 +12,11 @@ class FriendChatPie$11$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a.g != null)
+    if (this.a.a.bm != null)
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772273);
+      paramAnimation = AnimationUtils.loadAnimation(this.a.a.e, 2130772359);
       paramAnimation.setAnimationListener(this);
-      this.a.a.g.startAnimation(paramAnimation);
+      this.a.a.bm.startAnimation(paramAnimation);
     }
   }
   
@@ -26,7 +26,7 @@ class FriendChatPie$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.11.1
  * JD-Core Version:    0.7.0.1
  */

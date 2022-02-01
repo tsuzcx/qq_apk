@@ -16,7 +16,7 @@ final class QQFileManagerUtilImpl$11
   {
     if (paramBitmap == null)
     {
-      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult;
+      paramBitmap = this.a;
       if (paramBitmap != null) {
         paramBitmap.a(null);
       }
@@ -24,13 +24,13 @@ final class QQFileManagerUtilImpl$11
     }
     try
     {
-      FileUtil.a(paramBitmap, this.jdField_a_of_type_JavaLangString);
+      FileUtil.a(paramBitmap, this.b);
       paramBitmap.recycle();
-      int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getImageDegree(this.b);
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setImageDegree(this.jdField_a_of_type_JavaLangString, i);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult != null)
+      int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getImageDegree(this.c);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setImageDegree(this.b, i);
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult.a(this.jdField_a_of_type_JavaLangString);
+        this.a.a(this.b);
         return;
       }
     }
@@ -41,7 +41,7 @@ final class QQFileManagerUtilImpl$11
       localStringBuilder.append("createThumbnail OutOfMemoryError:");
       localStringBuilder.append(paramBitmap.getMessage());
       QLog.w("FileManagerUtil<FileAssistant>", 1, localStringBuilder.toString());
-      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult;
+      paramBitmap = this.a;
       if (paramBitmap != null)
       {
         paramBitmap.a(null);
@@ -55,7 +55,7 @@ final class QQFileManagerUtilImpl$11
       localStringBuilder.append("createThumbnail IOException:");
       localStringBuilder.append(paramBitmap.getMessage());
       QLog.w("FileManagerUtil<FileAssistant>", 1, localStringBuilder.toString());
-      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult;
+      paramBitmap = this.a;
       if (paramBitmap != null)
       {
         paramBitmap.a(null);
@@ -64,13 +64,13 @@ final class QQFileManagerUtilImpl$11
     }
     catch (FileNotFoundException paramBitmap)
     {
-      QQFileManagerUtilImpl.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult, paramBitmap, "createThumbnail FileNotFoundException:");
+      QQFileManagerUtilImpl.a(this.a, paramBitmap, "createThumbnail FileNotFoundException:");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.11
  * JD-Core Version:    0.7.0.1
  */

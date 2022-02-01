@@ -14,7 +14,7 @@ class QRScanEntryView$7
   
   public void run()
   {
-    Object localObject = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeBitmapFromYuv(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b);
+    Object localObject = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeBitmapFromYuv(this.a, this.b, this.c);
     ScannerResult localScannerResult;
     if (localObject != null) {
       localScannerResult = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromBmp((Bitmap)localObject, 3);
@@ -31,15 +31,15 @@ class QRScanEntryView$7
       QLog.d("AREngine_QRScanEntryView", 2, localStringBuilder.toString());
     }
     localObject = this.this$0;
-    if ((localScannerResult == null) || (!localScannerResult.b())) {
-      localScannerResult = this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult;
+    if ((localScannerResult == null) || (!localScannerResult.f())) {
+      localScannerResult = this.d;
     }
-    QRScanEntryView.a((QRScanEntryView)localObject, localScannerResult, this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$ImageData);
+    QRScanEntryView.a((QRScanEntryView)localObject, localScannerResult, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.7
  * JD-Core Version:    0.7.0.1
  */

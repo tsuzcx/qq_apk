@@ -6,7 +6,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/ScriptHelper;", "", "()V", "TAG", "", "buildBusinessScriptContent", "businessId", "", "businessContent", "verifyScript", "", "path", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/ScriptHelper;", "", "()V", "TAG", "", "buildBusinessScriptContent", "businessId", "", "businessContent", "verifyScript", "", "path", "toScript", "Lcom/tencent/mobileqq/cmshow/engine/script/Script;", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ScriptHelper
 {
   public static final ScriptHelper a = new ScriptHelper();
@@ -49,10 +49,17 @@ public final class ScriptHelper
     }
     return true;
   }
+  
+  @NotNull
+  public final Script b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "$this$toScript");
+    return new Script(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.ScriptHelper
  * JD-Core Version:    0.7.0.1
  */

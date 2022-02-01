@@ -12,13 +12,12 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayActivity;
 import com.tencent.mobileqq.kandian.biz.push.api.IPushNotifyDialogCallback;
 import com.tencent.mobileqq.kandian.biz.push.api.IRIJPushNotifyManager;
 import com.tencent.mobileqq.kandian.biz.push.mvp.RIJPushNotifyDialog;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -65,24 +64,30 @@ public final class RIJPushNotifyManager
     }
     this.shouldShowDialog = bool;
     this.dialogShowDuration = (Aladdin.getConfig(340).getIntegerFromString("show_duration", 10) * 1000L);
-    localObject = Aladdin.getConfig(340).getString("checkbox_text", ReadInJoyUtils.a(2131717843));
+    localObject = Aladdin.getConfig(340).getString("checkbox_text", ReadInJoyUtils.b(2131915317));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Aladdin.getConfig(QQAlad…efault_open_push_notify))");
     this.checkBoxText = ((String)localObject);
-    localObject = Aladdin.getConfig(340).getString("type1_header_text", ReadInJoyUtils.a(2131717938));
+    localObject = Aladdin.getConfig(340).getString("type1_header_text", ReadInJoyUtils.b(2131915412));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Aladdin.getConfig(QQAlad…_has_closed_push_notify))");
     this.type1HeaderText = ((String)localObject);
-    localObject = Aladdin.getConfig(340).getString("type1_button_text", ReadInJoyUtils.a(2131717981));
+    localObject = Aladdin.getConfig(340).getString("type1_button_text", ReadInJoyUtils.b(2131915461));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Aladdin.getConfig(QQAlad…injoy_open_it_right_now))");
     this.type1ButtonText = ((String)localObject);
-    localObject = Aladdin.getConfig(340).getString("type2_header_text", ReadInJoyUtils.a(2131717939));
+    localObject = Aladdin.getConfig(340).getString("type2_header_text", ReadInJoyUtils.b(2131915413));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Aladdin.getConfig(QQAlad…_has_opened_push_notify))");
     this.type2HeaderText = ((String)localObject);
-    localObject = Aladdin.getConfig(340).getString("type2_left_button_text", ReadInJoyUtils.a(2131690874));
+    localObject = Aladdin.getConfig(340).getString("type2_left_button_text", ReadInJoyUtils.b(2131887812));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Aladdin.getConfig(QQAlad…etString(R.string.close))");
     this.type2LeftButtonText = ((String)localObject);
-    localObject = Aladdin.getConfig(340).getString("type2_right_button_text", ReadInJoyUtils.a(2131717941));
+    localObject = Aladdin.getConfig(340).getString("type2_right_button_text", ReadInJoyUtils.b(2131915416));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Aladdin.getConfig(QQAlad…g.readinjoy_i_dont_need))");
     this.type2RightButtonText = ((String)localObject);
+  }
+  
+  @NotNull
+  public static final RIJPushNotifyManager getInstance()
+  {
+    return Companion.a();
   }
   
   private final RIJPushNotifyParam getParam(int paramInt, Activity paramActivity, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, Function3<? super Boolean, ? super Boolean, ? super Integer, Unit> paramFunction3)
@@ -93,7 +98,7 @@ public final class RIJPushNotifyManager
     } else {
       i = DisplayUtil.a((Context)paramActivity, 16.0F);
     }
-    if ((ThemeUtil.isNowThemeIsNight(ReadInJoyUtils.a(), false, null)) && (paramBoolean2)) {
+    if ((ThemeUtil.isNowThemeIsNight(ReadInJoyUtils.b(), false, null)) && (paramBoolean2)) {
       paramBoolean2 = true;
     } else {
       paramBoolean2 = false;
@@ -113,7 +118,6 @@ public final class RIJPushNotifyManager
   
   private final void reportDialogCloseIconClicked(int paramInt1, String paramString, int paramInt2)
   {
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     AppInterface localAppInterface = (AppInterface)RIJQQAppInterfaceUtil.a();
     String str;
     if (paramInt1 == 1) {
@@ -121,12 +125,11 @@ public final class RIJPushNotifyManager
     } else {
       str = "1";
     }
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(localAppInterface, "", "0X800AFFD", "0X800AFFD", 0, 0, str, paramString, String.valueOf(paramInt2), "", false);
+    PublicAccountReportUtils.a(localAppInterface, "", "0X800AFFD", "0X800AFFD", 0, 0, str, paramString, String.valueOf(paramInt2), "", false);
   }
   
   private final void reportDialogExposure(int paramInt1, String paramString, int paramInt2)
   {
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     AppInterface localAppInterface = (AppInterface)RIJQQAppInterfaceUtil.a();
     String str;
     if (paramInt1 == 1) {
@@ -134,21 +137,21 @@ public final class RIJPushNotifyManager
     } else {
       str = "1";
     }
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(localAppInterface, "", "0X800AFFC", "0X800AFFC", 0, 0, str, paramString, String.valueOf(paramInt2), "", false);
+    PublicAccountReportUtils.a(localAppInterface, "", "0X800AFFC", "0X800AFFC", 0, 0, str, paramString, String.valueOf(paramInt2), "", false);
   }
   
   private final void showToast(boolean paramBoolean1, boolean paramBoolean2, Activity paramActivity)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramBoolean1) {
-      localStringBuilder.append(ReadInJoyUtils.a(2131717982));
+      localStringBuilder.append(ReadInJoyUtils.b(2131915462));
     } else {
-      localStringBuilder.append(ReadInJoyUtils.a(2131717766));
+      localStringBuilder.append(ReadInJoyUtils.b(2131915241));
     }
     if (paramBoolean2) {
-      localStringBuilder.append(ReadInJoyUtils.a(2131717844));
+      localStringBuilder.append(ReadInJoyUtils.b(2131915318));
     }
-    QQToast.a((Context)paramActivity, 2, (CharSequence)localStringBuilder, 0).a();
+    QQToast.makeText((Context)paramActivity, 2, (CharSequence)localStringBuilder, 0).show();
   }
   
   public void dismiss(boolean paramBoolean, @NotNull String paramString)
@@ -301,7 +304,7 @@ public final class RIJPushNotifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.RIJPushNotifyManager
  * JD-Core Version:    0.7.0.1
  */

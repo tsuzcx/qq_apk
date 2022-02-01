@@ -28,7 +28,7 @@ class ScoreQAVFragment$1
       QLog.d("ScoreActivity", 2, paramObject.toString());
     }
     paramObject = this.a;
-    paramObject.e = paramInt;
+    paramObject.l = paramInt;
     Object localObject;
     StringBuilder localStringBuilder;
     if (paramInt <= 3)
@@ -37,7 +37,7 @@ class ScoreQAVFragment$1
       {
         if (ImageResUtil.a("qav_score_bad.jpg"))
         {
-          paramObject = this.a.jdField_a_of_type_AndroidWidgetImageView;
+          paramObject = this.a.g;
           localObject = this.a.getResources();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(ImageResUtil.a());
@@ -56,10 +56,10 @@ class ScoreQAVFragment$1
         }
       }
       ScoreQAVFragment.a(this.a).setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.a.b.setText(2131695845);
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+      this.a.d.setVisibility(0);
+      this.a.e.setText(2131893604);
+      if ((this.a.a != null) && (this.a.a.size() > 0)) {
+        ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.b(this.a));
       } else if (QLog.isColorLevel()) {
         QLog.d("ScoreActivity", 2, "mDatas is invalid!");
       }
@@ -71,7 +71,7 @@ class ScoreQAVFragment$1
       {
         if (ImageResUtil.a("qav_score_good.jpg"))
         {
-          paramObject = this.a.jdField_a_of_type_AndroidWidgetImageView;
+          paramObject = this.a.g;
           localObject = this.a.getResources();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(ImageResUtil.a());
@@ -89,25 +89,25 @@ class ScoreQAVFragment$1
           QLog.w("ScoreActivity", 2, ((StringBuilder)localObject).toString());
         }
       }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.a.b.setText(2131695845);
+      this.a.d.setVisibility(4);
+      this.a.e.setText(2131893604);
     }
     if (paramInt > 0)
     {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+      this.a.c.setEnabled(true);
+      this.a.c.setTextColor(Color.parseColor("#FFFFFF"));
     }
     else
     {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+      this.a.c.setEnabled(false);
+      this.a.c.setTextColor(Color.parseColor("#BBBBBB"));
     }
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.t.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.1
  * JD-Core Version:    0.7.0.1
  */

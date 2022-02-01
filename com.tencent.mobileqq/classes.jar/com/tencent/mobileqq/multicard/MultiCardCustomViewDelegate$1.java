@@ -11,9 +11,9 @@ class MultiCardCustomViewDelegate$1
   
   public boolean onLongClick(View paramView)
   {
-    if (this.a.a != null)
+    if (this.a.i != null)
     {
-      paramView = (MultiCardItemFragment)this.a.a.get();
+      paramView = (MultiCardItemFragment)this.a.i.get();
       if (paramView != null) {
         paramView.a(this.a);
       }
@@ -23,7 +23,7 @@ class MultiCardCustomViewDelegate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardCustomViewDelegate.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public class PluginPreloader
   
   public static void a(PluginPreloadStrategy paramPluginPreloadStrategy, long paramLong)
   {
-    String str = paramPluginPreloadStrategy.a.jdField_a_of_type_JavaLangString;
+    String str = paramPluginPreloadStrategy.a.a;
     if ((paramPluginPreloadStrategy != null) && (str != null))
     {
       a.postDelayed(new PluginPreloader.1(str, paramPluginPreloadStrategy), paramLong);
@@ -44,11 +44,11 @@ public class PluginPreloader
   
   static void a(AppRuntime paramAppRuntime, PluginPreloadStrategy paramPluginPreloadStrategy, int paramInt, IQQComicPluginUtil.ExtraResult paramExtraResult)
   {
-    paramPluginPreloadStrategy.a(paramExtraResult);
-    int i = paramPluginPreloadStrategy.a.jdField_b_of_type_Int;
-    int j = paramPluginPreloadStrategy.a.c;
-    Object localObject1 = paramPluginPreloadStrategy.a.jdField_b_of_type_JavaLangString;
-    String str = String.valueOf(paramPluginPreloadStrategy.a.d);
+    paramPluginPreloadStrategy.c(paramExtraResult);
+    int i = paramPluginPreloadStrategy.a.e;
+    int j = paramPluginPreloadStrategy.a.f;
+    Object localObject1 = paramPluginPreloadStrategy.a.d;
+    String str = String.valueOf(paramPluginPreloadStrategy.a.g);
     if (localObject1 != null)
     {
       Object localObject2 = QRoute.plugin("comic_plugin.apk");
@@ -88,11 +88,11 @@ public class PluginPreloader
           ((StringBuilder)localObject2).append(((QRoutePluginInfo)localObject1).getVersion());
           QLog.d("PluginPreloader", 2, ((StringBuilder)localObject2).toString());
         }
-        PluginPreloadReportUtils.a(paramAppRuntime, 0, i, j, paramExtraResult.jdField_a_of_type_Int, paramExtraResult.jdField_a_of_type_JavaLangString, paramInt, new String[] { str });
+        PluginPreloadReportUtils.a(paramAppRuntime, 0, i, j, paramExtraResult.a, paramExtraResult.b, paramInt, new String[] { str });
         paramPluginPreloadStrategy.a();
         return;
       }
-      if ((paramPluginPreloadStrategy.a.jdField_a_of_type_Boolean) && (NetworkUtil.isWifiConnected(AppHelper.a())))
+      if ((paramPluginPreloadStrategy.a.c) && (NetworkUtil.isWifiConnected(AppHelper.a())))
       {
         ((IQRoutePlugin)localObject2).install(new PluginPreloader.2(paramAppRuntime, i, j, paramExtraResult, paramInt, paramPluginPreloadStrategy));
         return;
@@ -111,13 +111,13 @@ public class PluginPreloader
     if (QLog.isColorLevel()) {
       QLog.d("PluginPreloader", 2, "do preload");
     }
-    PluginPreloadReportUtils.a(paramAppRuntime, 0, i, j, paramExtraResult.jdField_a_of_type_Int, paramExtraResult.jdField_a_of_type_JavaLangString, paramInt, new String[] { str });
+    PluginPreloadReportUtils.a(paramAppRuntime, 0, i, j, paramExtraResult.a, paramExtraResult.b, paramInt, new String[] { str });
     paramPluginPreloadStrategy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.PluginPreloader
  * JD-Core Version:    0.7.0.1
  */

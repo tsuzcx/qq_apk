@@ -15,12 +15,12 @@ public class TroopSpecialAttentionMsg
   extends AbstructRecentUserMsg
   implements Cloneable
 {
-  private String d;
+  private String i;
   
   public TroopSpecialAttentionMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131699558);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.c = HardCodeUtil.a(2131897589);
+    this.d = this.c;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -28,18 +28,18 @@ public class TroopSpecialAttentionMsg
     if ((paramObject instanceof TroopSpecialAttentionMsg))
     {
       paramObject = (TroopSpecialAttentionMsg)paramObject;
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h.b(paramMessageInfo.c);
       return paramObject;
     }
     paramObject = new TroopSpecialAttentionMsg(BaseApplication.getContext());
     paramObject.a(paramMessageRecord.senderuin);
-    paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    paramObject.h = new MessageNavInfo(paramMessageInfo.c);
     return paramObject;
   }
   
   public void a(String paramString)
   {
-    this.d = paramString;
+    this.i = paramString;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -49,14 +49,14 @@ public class TroopSpecialAttentionMsg
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      this.d = paramArrayOfByte.getString("senderUin");
-      if ((this.c != null) && (this.c.length() != 0))
+      this.c = paramArrayOfByte.getString("content");
+      this.e = paramArrayOfByte.getInt("time");
+      this.f = paramArrayOfByte.getInt("color");
+      this.g = paramArrayOfByte.getString("messageNavInfo");
+      this.i = paramArrayOfByte.getString("senderUin");
+      if ((this.g != null) && (this.g.length() != 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(this.c);
+        this.h.a(this.g);
         return;
       }
     }
@@ -66,24 +66,24 @@ public class TroopSpecialAttentionMsg
     }
   }
   
-  public byte[] a()
+  public byte[] b()
   {
-    return b();
+    return c();
   }
   
-  public byte[] b()
+  public byte[] c()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("senderUin", this.d);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
-        this.c = this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a();
+      localJSONObject.put("content", this.c);
+      localJSONObject.put("time", this.e);
+      localJSONObject.put("color", this.f);
+      localJSONObject.put("senderUin", this.i);
+      if (this.h != null) {
+        this.g = this.h.b();
       }
-      localJSONObject.put("messageNavInfo", this.c);
+      localJSONObject.put("messageNavInfo", this.g);
     }
     catch (JSONException localJSONException)
     {
@@ -94,7 +94,7 @@ public class TroopSpecialAttentionMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopSpecialAttentionMsg
  * JD-Core Version:    0.7.0.1
  */

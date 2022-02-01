@@ -15,14 +15,14 @@ class WebFastAdapter$10
   
   public void run()
   {
-    Iterator localIterator = this.this$0.a().iterator();
+    Iterator localIterator = this.this$0.f().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (BaseData)localIterator.next();
       if ((localObject instanceof ProteusItemData))
       {
-        localObject = ((ProteusItemData)localObject).c;
+        localObject = ((ProteusItemData)localObject).bb;
         if (localObject != null)
         {
           int j = i;
@@ -38,7 +38,7 @@ class WebFastAdapter$10
                 j = k;
                 JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("id_recommend_category_txt");
                 j = k;
-                localJSONObject.put("text", new FastWebRecommendUGInfo(((JSONObject)localObject).optString("kd_ug_rsp_info")).f);
+                localJSONObject.put("text", new FastWebRecommendUGInfo(((JSONObject)localObject).optString("kd_ug_rsp_info")).h);
                 j = k;
                 localJSONObject.put("label_ug_progress_progress", 0);
               }
@@ -59,7 +59,7 @@ class WebFastAdapter$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.WebFastAdapter.10
  * JD-Core Version:    0.7.0.1
  */

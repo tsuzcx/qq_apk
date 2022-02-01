@@ -5,7 +5,7 @@ final class CJPreloadMonitorReporter$1
 {
   public void run()
   {
-    CJPreloadMonitorReporter.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b, true);
+    CJPreloadMonitorReporter.a(this.a.a, this.a.b, this.a.c, true);
   }
 }
 

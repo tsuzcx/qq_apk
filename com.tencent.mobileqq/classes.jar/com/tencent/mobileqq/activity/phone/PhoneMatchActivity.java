@@ -32,8 +32,8 @@ public class PhoneMatchActivity
   extends DialogBaseActivity
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Button jdField_a_of_type_AndroidWidgetButton;
+  private Button a;
+  private int b;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -64,43 +64,43 @@ public class PhoneMatchActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559216);
-    PhoneContactUtils.a(this.app, getResources(), (ImageView)findViewById(2131365110));
-    paramBundle = findViewById(2131369736);
+    super.setContentView(2131624973);
+    PhoneContactUtils.a(this.app, getResources(), (ImageView)findViewById(2131431257));
+    paramBundle = findViewById(2131436854);
     if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId))) {
-      paramBundle.setBackgroundResource(2130839393);
+      paramBundle.setBackgroundResource(2130839577);
     } else if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2130838739);
+      paramBundle.setBackgroundResource(2130838958);
     }
-    this.centerView.setText(HardCodeUtil.a(2131708018));
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
+    this.centerView.setText(HardCodeUtil.a(2131905827));
+    this.b = getIntent().getIntExtra("kSrouce", -1);
     Object localObject = ((INewFriendApi)QRoute.api(INewFriendApi.class)).loadNewFriendContactGuideConfig();
     String str;
-    if (PermissionChecker.a().b())
+    if (PermissionChecker.a().d())
     {
-      paramBundle = ((NewFriendContactGuideConfBean)localObject).b.a;
-      str = ((NewFriendContactGuideConfBean)localObject).b.b;
-      localObject = ((NewFriendContactGuideConfBean)localObject).b.c;
+      paramBundle = ((NewFriendContactGuideConfBean)localObject).d.a;
+      str = ((NewFriendContactGuideConfBean)localObject).d.b;
+      localObject = ((NewFriendContactGuideConfBean)localObject).d.c;
     }
     else
     {
-      paramBundle = ((NewFriendContactGuideConfBean)localObject).a.a;
-      str = ((NewFriendContactGuideConfBean)localObject).a.b;
-      localObject = ((NewFriendContactGuideConfBean)localObject).a.c;
+      paramBundle = ((NewFriendContactGuideConfBean)localObject).c.a;
+      str = ((NewFriendContactGuideConfBean)localObject).c.b;
+      localObject = ((NewFriendContactGuideConfBean)localObject).c.c;
     }
-    ((TextView)findViewById(2131365112)).setText(paramBundle);
-    ((TextView)findViewById(2131365111)).setText(str);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365109));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
-    if (this.jdField_a_of_type_Int == 14)
+    ((TextView)findViewById(2131431259)).setText(paramBundle);
+    ((TextView)findViewById(2131431258)).setText(str);
+    this.a = ((Button)findViewById(2131431256));
+    this.a.setOnClickListener(this);
+    this.a.setText((CharSequence)localObject);
+    if (this.b == 14)
     {
-      setLeftViewName(2131690529);
+      setLeftViewName(2131887440);
     }
     else
     {
       setLeftButton("", null);
-      setRightButton(2131690874, this);
+      setRightButton(2131887812, this);
     }
     ReportController.b(this.app, "dc00898", "", "", "0X800689B", "0X800689B", 0, 0, "", "", "", "");
     ThreadManager.excute(new PhoneMatchActivity.1(this), 16, null, true);
@@ -115,19 +115,19 @@ public class PhoneMatchActivity
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_Int == 14) {
+    if (this.b == 14) {
       return;
     }
-    overridePendingTransition(0, 2130771992);
+    overridePendingTransition(0, 2130771995);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.a)
     {
       if (!NetworkUtil.isNetSupport(this))
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694475, 0).b(getTitleBarHeight());
+        QQToast.makeText(BaseApplicationImpl.getContext(), 1, 2131892157, 0).show(getTitleBarHeight());
       }
       else
       {
@@ -157,7 +157,7 @@ public class PhoneMatchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneMatchActivity
  * JD-Core Version:    0.7.0.1
  */

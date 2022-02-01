@@ -24,6 +24,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
 import com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager;
@@ -88,6 +89,8 @@ public abstract class BaseUIProxy
   protected abstract AppRuntimeEventCenter.RuntimeStateObserver getRuntimeStateObserver();
   
   protected abstract void hideLoading();
+  
+  protected abstract boolean isAbleToShowAd();
   
   public boolean isDestroyed()
   {
@@ -195,10 +198,16 @@ public abstract class BaseUIProxy
       return;
     }
     if (((MiniAppInfo)localObject).canDebug()) {
-      ((MiniAppInfo)localObject).forceReroad = 3;
+      ((MiniAppInfo)localObject).launchParam.forceReload = 3;
     }
     AppLoaderFactory.g().getAppBrandProxy().onAppStart((MiniAppInfo)localObject, null);
-    startMiniAppInfo((MiniAppInfo)localObject, paramIntent.getExtras());
+    if (!((MiniAppInfo)localObject).launchParam.skipHotReload) {
+      startMiniAppInfo((MiniAppInfo)localObject, paramIntent.getExtras());
+    }
+    paramIntent = new StringBuilder();
+    paramIntent.append("launch param skipHotReload: ");
+    paramIntent.append(((MiniAppInfo)localObject).launchParam.skipHotReload);
+    QMLog.d("minisdk-start_UIProxy", paramIntent.toString());
     MiniGdtReporter.prepareReport();
   }
   
@@ -449,7 +458,7 @@ public abstract class BaseUIProxy
     if (localObject2 != null)
     {
       localObject1 = localObject2;
-      if (paramMiniAppInfo.forceReroad != 0)
+      if (paramMiniAppInfo.launchParam.forceReload != 0)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("startMiniAppInfo. There is a existing runtime loader but need force Reroad. ");
@@ -486,7 +495,7 @@ public abstract class BaseUIProxy
         destroyLastRuntimeLoader(localBaseRuntimeLoader);
       }
       ((BaseRuntimeLoader)localObject1).addRuntimeStateObserver(getRuntimeStateObserver());
-      if (paramMiniAppInfo.forceReroad != 0)
+      if (paramMiniAppInfo.launchParam.forceReload != 0)
       {
         ((BaseRuntimeLoader)localObject1).resetAndStart(paramMiniAppInfo);
         this.mCurrRuntimeLoader = ((BaseRuntimeLoader)localObject1);
@@ -494,14 +503,11 @@ public abstract class BaseUIProxy
       else
       {
         this.mCurrRuntimeLoader = ((BaseRuntimeLoader)localObject1);
-        if (paramMiniAppInfo.isEngineTypeMiniApp())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("startMiniAppInfo. Create a new runtime loader = ");
-          ((StringBuilder)localObject2).append(localObject1);
-          QMLog.i("minisdk-start_UIProxy", ((StringBuilder)localObject2).toString());
-          ((BaseRuntimeLoader)localObject1).start();
-        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("startMiniAppInfo. Create a new runtime loader = ");
+        ((StringBuilder)localObject2).append(localObject1);
+        QMLog.i("minisdk-start_UIProxy", ((StringBuilder)localObject2).toString());
+        ((BaseRuntimeLoader)localObject1).start();
       }
       ((BaseRuntimeLoader)localObject1).notifyRuntimeEvent(20, new Object[0]);
     }
@@ -529,7 +535,7 @@ public abstract class BaseUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.BaseUIProxy
  * JD-Core Version:    0.7.0.1
  */

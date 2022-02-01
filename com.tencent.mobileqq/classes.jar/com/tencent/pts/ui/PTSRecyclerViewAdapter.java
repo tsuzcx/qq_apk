@@ -10,7 +10,6 @@ import com.tencent.pts.ui.vnode.PTSNodeView;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
 import com.tencent.pts.utils.PTSAnimationUtil.AnimationInfo;
 import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,12 +84,10 @@ public class PTSRecyclerViewAdapter
       if (paramList.isEmpty()) {
         return;
       }
-      PTSTimeCostUtil.start("[saveUniqueIDToNodeInfoMap]");
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         addIDToNodeInfoMap((PTSNodeInfo)paramList.next());
       }
-      PTSTimeCostUtil.end("[saveUniqueIDToNodeInfoMap]");
     }
   }
   
@@ -191,33 +188,21 @@ public class PTSRecyclerViewAdapter
   
   public void onBindViewHolder(@NonNull PTSRecyclerViewAdapter.PTSViewHolder paramPTSViewHolder, int paramInt)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[onBindViewHolder], position = ");
-    ((StringBuilder)localObject).append(paramInt);
-    PTSTimeCostUtil.start(((StringBuilder)localObject).toString());
-    localObject = (PTSNodeInfo)this.mData.get(paramInt);
-    bindNodeInfo(paramPTSViewHolder, (PTSNodeInfo)localObject, this.mAppInstance);
+    PTSNodeInfo localPTSNodeInfo = (PTSNodeInfo)this.mData.get(paramInt);
+    bindNodeInfo(paramPTSViewHolder, localPTSNodeInfo, this.mAppInstance);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onBindViewHolder] position = ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", nodeInfo = ");
-    localStringBuilder.append(localObject);
+    localStringBuilder.append(localPTSNodeInfo);
     PTSLog.d("PTSRecyclerViewAdapter", localStringBuilder.toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[onBindViewHolder], position = ");
-    ((StringBuilder)localObject).append(paramInt);
-    PTSTimeCostUtil.end(((StringBuilder)localObject).toString());
     EventCollector.getInstance().onRecyclerBindViewHolder(paramPTSViewHolder, paramInt, getItemId(paramInt));
   }
   
   @NonNull
   public PTSRecyclerViewAdapter.PTSViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[onCreateViewHolder], viewType = ");
-    ((StringBuilder)localObject1).append(paramInt);
-    PTSTimeCostUtil.start(((StringBuilder)localObject1).toString());
-    localObject1 = (PTSNodeInfo)this.mViewTypeToNodeInfoMap.get(paramInt);
+    Object localObject1 = (PTSNodeInfo)this.mViewTypeToNodeInfoMap.get(paramInt);
     if (localObject1 == null)
     {
       PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], no this viewType.");
@@ -237,10 +222,6 @@ public class PTSRecyclerViewAdapter
         throw new IllegalArgumentException("[onCreateViewHolder], create null parent node.");
       }
     }
-    localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append("[onCreateViewHolder], viewType = ");
-    ((StringBuilder)localObject4).append(paramInt);
-    PTSTimeCostUtil.end(((StringBuilder)localObject4).toString());
     localObject4 = null;
     Object localObject3;
     try
@@ -308,7 +289,7 @@ public class PTSRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.PTSRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -25,11 +25,6 @@ public final class TKDCommentFragment$Companion
     return paramBundle;
   }
   
-  public final int a()
-  {
-    return TKDCommentFragment.c();
-  }
-  
   @JvmStatic
   @NotNull
   public final TKDCommentFragment a(@Nullable String paramString, @Nullable SerializableMap paramSerializableMap, boolean paramBoolean)
@@ -47,17 +42,22 @@ public final class TKDCommentFragment$Companion
   @NotNull
   public final String a()
   {
-    return TKDCommentFragment.a();
+    return TKDCommentFragment.h();
   }
   
   public final int b()
   {
-    return TKDCommentFragment.d();
+    return TKDCommentFragment.i();
+  }
+  
+  public final int c()
+  {
+    return TKDCommentFragment.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.TKDCommentFragment.Companion
  * JD-Core Version:    0.7.0.1
  */

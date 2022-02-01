@@ -47,7 +47,7 @@ public class IntimateInfoFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.a.a();
+    this.a.b();
     a();
   }
   
@@ -75,7 +75,7 @@ public class IntimateInfoFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.a.i();
+    this.a.j();
   }
   
   public void onPause()
@@ -83,7 +83,7 @@ public class IntimateInfoFragment
     super.onPause();
     BaseIntimateView localBaseIntimateView = this.a;
     if ((localBaseIntimateView instanceof IntimateInfoView)) {
-      ((IntimateInfoView)localBaseIntimateView).g();
+      ((IntimateInfoView)localBaseIntimateView).h();
     }
   }
   
@@ -91,11 +91,11 @@ public class IntimateInfoFragment
   {
     super.onResume();
     this.a.b(true);
-    this.a.c();
-    this.a.l();
+    this.a.d();
+    this.a.q();
     BaseIntimateView localBaseIntimateView = this.a;
     if ((localBaseIntimateView instanceof IntimateInfoView)) {
-      ((IntimateInfoView)localBaseIntimateView).h();
+      ((IntimateInfoView)localBaseIntimateView).i();
     }
   }
   
@@ -103,13 +103,13 @@ public class IntimateInfoFragment
   {
     super.onStart();
     this.a.a(true);
-    this.a.b();
     this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoFragment
  * JD-Core Version:    0.7.0.1
  */

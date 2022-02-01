@@ -10,17 +10,17 @@ import com.tencent.qphone.base.util.QLog;
 public class CertifiedAccountModifyFeedRequest
   extends ProtoBufRequest
 {
-  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
+  private CertifiedAccountWrite.StModifyFeedReq b = new CertifiedAccountWrite.StModifyFeedReq();
   
   public CertifiedAccountModifyFeedRequest(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
     if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+      this.b.extInfo.set(paramStCommonExt);
     }
     if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
+      this.b.feed.set(paramStFeed);
     }
-    this.a.mBitmap.set(1L);
+    this.b.mBitmap.set(1L);
   }
   
   public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
@@ -46,7 +46,7 @@ public class CertifiedAccountModifyFeedRequest
   
   public byte[] a()
   {
-    return this.a.toByteArray();
+    return this.b.toByteArray();
   }
 }
 

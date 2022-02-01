@@ -10,7 +10,7 @@ public class RIJProteusOfflineBidSp
 {
   public static String a(String paramString)
   {
-    SharedPreferences localSharedPreferences = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
+    SharedPreferences localSharedPreferences = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, true);
     if (localSharedPreferences != null) {
       return localSharedPreferences.getString(paramString, "0");
     }
@@ -20,7 +20,7 @@ public class RIJProteusOfflineBidSp
   public static void a(String paramString1, String paramString2)
   {
     ProteusReportUtil.a(1, paramString2);
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
+    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -31,7 +31,7 @@ public class RIJProteusOfflineBidSp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJProteusOfflineBidSp
  * JD-Core Version:    0.7.0.1
  */

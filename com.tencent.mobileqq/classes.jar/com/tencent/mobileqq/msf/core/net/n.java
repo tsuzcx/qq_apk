@@ -7,7 +7,7 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.c.a;
-import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.d;
 import com.tencent.mobileqq.msf.core.net.b.k;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
@@ -521,7 +521,7 @@ public class n
           if ((k()) && (paramCopyOnWriteArrayList1 != null) && (paramCopyOnWriteArrayList1.size() > 0))
           {
             l1 = SystemClock.elapsedRealtime();
-            n = com.tencent.mobileqq.msf.core.c.j.a(false, K, l1);
+            n = com.tencent.mobileqq.msf.core.d.j.a(false, K, l1);
             i3 = a(paramCopyOnWriteArrayList1, paramArrayList, paramInt, true);
             if (i3 != 0) {
               break label557;
@@ -532,7 +532,7 @@ public class n
           if ((paramCopyOnWriteArrayList2 != null) && (paramCopyOnWriteArrayList2.size() > 0))
           {
             l1 = SystemClock.elapsedRealtime();
-            n = com.tencent.mobileqq.msf.core.c.j.a(false, K, l1);
+            n = com.tencent.mobileqq.msf.core.d.j.a(false, K, l1);
             if (r() != null)
             {
               localObject1 = new CopyOnWriteArrayList();
@@ -1619,7 +1619,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.n
  * JD-Core Version:    0.7.0.1
  */

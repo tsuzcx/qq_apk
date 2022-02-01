@@ -17,12 +17,12 @@ class ARMusicController$2
       {
         paramMediaPlayer = new StringBuilder();
         paramMediaPlayer.append("load bg music success. : ");
-        paramMediaPlayer.append(ARMusicController.b(this.a));
+        paramMediaPlayer.append(ARMusicController.c(this.a));
         QLog.d("ARMusicController", 2, paramMediaPlayer.toString());
       }
       this.a.a.seekTo(0);
       ARMusicController.b(this.a, true);
-      if (ARMusicController.b(this.a))
+      if (ARMusicController.d(this.a))
       {
         this.a.a.start();
         ARMusicController.c(this.a, false);
@@ -37,7 +37,7 @@ class ARMusicController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController.2
  * JD-Core Version:    0.7.0.1
  */

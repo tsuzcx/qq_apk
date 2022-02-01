@@ -21,15 +21,16 @@ import com.tencent.biz.widgets.ListViewForListview;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.common.baseui.IReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
+import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.common.constant.ReadInJoyConstants;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
@@ -57,31 +58,29 @@ public class ComponentContentRecommend
   extends FrameLayout
   implements ComponentInheritView
 {
-  private static int jdField_a_of_type_Int = -1;
   public static final String a = "ComponentContentRecommend";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ListViewForListview jdField_a_of_type_ComTencentBizWidgetsListViewForListview;
-  private CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-  protected ReadInJoyObserver a;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private ArrayList<RecommendFollowInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static int l = -1;
+  protected ReadInJoyObserver b = new ComponentContentRecommend.7(this);
+  private Context c;
+  private CmpCtxt d;
+  private LinearLayout e;
+  private TextView f;
+  private ImageView g;
+  private ListViewForListview h;
+  private BaseAdapter i;
+  private ArrayList<RecommendFollowInfo> j = new ArrayList();
+  private AbsBaseArticleInfo k;
   
   public ComponentContentRecommend(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ComponentContentRecommend.7(this);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentContentRecommend(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ComponentContentRecommend.7(this);
-    b(paramContext);
+    c(paramContext);
   }
   
   public static String a(int paramInt1, long paramLong1, AbsBaseArticleInfo paramAbsBaseArticleInfo, long paramLong2, int paramInt2, int paramInt3, int paramInt4, List<RecommendFollowInfo> paramList)
@@ -110,22 +109,27 @@ public class ComponentContentRecommend
           localStringBuilder.append(paramLong1);
           localStringBuilder.append("");
           ((JSONObject)localObject).put("feeds_source", localStringBuilder.toString());
-          ((JSONObject)localObject).put("imei", ReadInJoyUtils.b());
-          ((JSONObject)localObject).put("imsi", ReadInJoyUtils.c());
+          ((JSONObject)localObject).put("imei", ReadInJoyUtils.c());
+          ((JSONObject)localObject).put("imsi", ReadInJoyUtils.d());
           ((JSONObject)localObject).put("idfa", "");
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramAbsBaseArticleInfo.innerUniqueID);
           localStringBuilder.append("");
           ((JSONObject)localObject).put("rowkey", localStringBuilder.toString());
-          int i = 0;
+          int m = 0;
           ((JSONObject)localObject).put("comment", 0);
-          if (ReadInJoyHelper.x(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
-            break label487;
+          if (ReadInJoyHelper.ah(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+            break label507;
           }
           paramInt1 = 1;
           ((JSONObject)localObject).put("reddot_style", paramInt1);
           ((JSONObject)localObject).put("tab_source", paramInt4);
-          ((JSONObject)localObject).put("kandian_mode", RIJAppSetting.a());
+          ((JSONObject)localObject).put("kandian_mode", RIJAppSetting.b());
+          if (ReadinjoyReportUtils.e() <= 0) {
+            break label512;
+          }
+          paramInt1 = 0;
+          ((JSONObject)localObject).put("behavior_type", paramInt1);
           if (paramInt3 != 0) {
             ((JSONObject)localObject).put("select_num", paramInt3);
           }
@@ -133,15 +137,15 @@ public class ComponentContentRecommend
           if ((paramList != null) && (!paramList.isEmpty()))
           {
             paramAbsBaseArticleInfo = new StringBuilder();
-            paramInt1 = i;
+            paramInt1 = m;
             if (paramInt1 < paramList.size())
             {
               paramAbsBaseArticleInfo.append(((RecommendFollowInfo)paramList.get(paramInt1)).uin);
               if (paramInt1 >= paramList.size() - 1) {
-                break label492;
+                break label517;
               }
               paramAbsBaseArticleInfo.append("|");
-              break label492;
+              break label517;
             }
             ((JSONObject)localObject).put("feedssource_more", paramAbsBaseArticleInfo.toString());
           }
@@ -154,7 +158,7 @@ public class ComponentContentRecommend
         Object localObject;
         if (QLog.isColorLevel())
         {
-          paramList = jdField_a_of_type_JavaLangString;
+          paramList = a;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("report");
           ((StringBuilder)localObject).append(QLog.getStackTraceString(paramAbsBaseArticleInfo));
@@ -164,66 +168,40 @@ public class ComponentContentRecommend
       }
       paramInt1 = 1;
       continue;
-      label487:
+      label507:
       paramInt1 = 0;
       continue;
-      label492:
+      label512:
+      paramInt1 = 1;
+      continue;
+      label517:
       paramInt1 += 1;
     }
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, String paramString)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mRecommendFollowInfos != null) && (paramAbsBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilHashMap != null))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mRecommendFollowInfos != null) && (paramAbsBaseArticleInfo.mRecommendFollowInfos.h != null))
     {
-      if (paramAbsBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
+      if (paramAbsBaseArticleInfo.mRecommendFollowInfos.h.size() <= 0) {
         return;
       }
-      Iterator localIterator = paramAbsBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      Iterator localIterator = paramAbsBaseArticleInfo.mRecommendFollowInfos.h.values().iterator();
       while (localIterator.hasNext())
       {
         RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)localIterator.next();
         a("0X80094DB", paramInt, localRecommendFollowInfo.uin, paramAbsBaseArticleInfo, localRecommendFollowInfo.algorithmId, localRecommendFollowInfo.strategyId);
         a(paramString, paramInt, localRecommendFollowInfo.uin, paramAbsBaseArticleInfo, localRecommendFollowInfo.algorithmId, localRecommendFollowInfo.strategyId);
       }
-      paramAbsBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-  }
-  
-  private void a(IReadInJoyModel paramIReadInJoyModel)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramIReadInJoyModel.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
-      return;
-    }
-    jdField_a_of_type_Int = RIJTransMergeKanDianReport.a();
-    paramIReadInJoyModel = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos;
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.jdField_a_of_type_JavaUtilList != null) && (paramIReadInJoyModel.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      } else {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-      paramIReadInJoyModel = new ComponentContentRecommend.1(this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramIReadInJoyModel);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramIReadInJoyModel);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "setContent(): data is empty");
+      paramAbsBaseArticleInfo.mRecommendFollowInfos.h.clear();
     }
   }
   
   public static void a(String paramString, int paramInt1, long paramLong1, AbsBaseArticleInfo paramAbsBaseArticleInfo, long paramLong2, int paramInt2)
   {
-    String str = a(paramInt1, paramLong1, paramAbsBaseArticleInfo, paramLong2, 1, 0, jdField_a_of_type_Int, null);
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    String str = a(paramInt1, paramLong1, paramAbsBaseArticleInfo, paramLong2, 1, 0, l, null);
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+    ((StringBuilder)localObject1).append(RIJQQAppInterfaceUtil.c());
     ((StringBuilder)localObject1).append("");
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
@@ -237,66 +215,84 @@ public class ComponentContentRecommend
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt2);
     localStringBuilder.append("");
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, (String)localObject1, paramString, paramString, 0, 0, (String)localObject2, paramAbsBaseArticleInfo, localStringBuilder.toString(), str, false);
+    PublicAccountReportUtils.a(null, (String)localObject1, paramString, paramString, 0, 0, (String)localObject2, paramAbsBaseArticleInfo, localStringBuilder.toString(), str, false);
   }
   
   private void a(String paramString, RecommendFollowInfo paramRecommendFollowInfo)
   {
-    CmpCtxt localCmpCtxt = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-    int i;
-    if ((localCmpCtxt != null) && (localCmpCtxt.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a().a() != null)) {
-      i = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a().a().a();
+    CmpCtxt localCmpCtxt = this.d;
+    int m;
+    if ((localCmpCtxt != null) && (localCmpCtxt.a() != null) && (this.d.a().u() != null)) {
+      m = this.d.a().u().c();
     } else {
-      i = 0;
+      m = 0;
     }
-    a(paramString, i, paramRecommendFollowInfo.uin, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramRecommendFollowInfo.algorithmId, paramRecommendFollowInfo.strategyId);
+    a(paramString, m, paramRecommendFollowInfo.uin, this.k, paramRecommendFollowInfo.algorithmId, paramRecommendFollowInfo.strategyId);
   }
   
-  private void b()
+  private void c()
   {
-    CmpCtxt localCmpCtxt = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-    int i;
-    if ((localCmpCtxt != null) && (localCmpCtxt.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a().a() != null)) {
-      i = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a().a().a();
+    CmpCtxt localCmpCtxt = this.d;
+    int m;
+    if ((localCmpCtxt != null) && (localCmpCtxt.a() != null) && (this.d.a().u() != null)) {
+      m = this.d.a().u().c();
     } else {
-      i = 0;
+      m = 0;
     }
-    a("0X8009494", i, 0L, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 0L, 0);
+    a("0X8009494", m, 0L, this.k, 0L, 0);
   }
   
-  private void b(Context paramContext)
+  private void c(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.d = new CmpCtxt();
+    this.c = paramContext;
     a(paramContext);
     a();
   }
   
-  public View a(Context paramContext)
+  private void setContent(IReadInJoyModel paramIReadInJoyModel)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560130, this, true);
-  }
-  
-  protected BaseAdapter a()
-  {
-    return new ComponentContentRecommend.2(this);
+    this.k = paramIReadInJoyModel.k();
+    if (this.k == null) {
+      return;
+    }
+    l = RIJTransMergeKanDianReport.b();
+    paramIReadInJoyModel = this.k.mRecommendFollowInfos;
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.c != null) && (paramIReadInJoyModel.c.size() > 0))
+    {
+      if (this.k.mRecommendFollowInfos.a) {
+        this.e.setVisibility(0);
+      } else {
+        this.e.setVisibility(8);
+      }
+      this.j.clear();
+      this.j.addAll(this.k.mRecommendFollowInfos.c);
+      this.i.notifyDataSetChanged();
+      paramIReadInJoyModel = new ComponentContentRecommend.1(this);
+      this.f.setOnClickListener(paramIReadInJoyModel);
+      this.g.setOnClickListener(paramIReadInJoyModel);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(a, 2, "setContent(): data is empty");
+    }
   }
   
   public void a() {}
   
   public void a(Context paramContext)
   {
-    a(a(paramContext));
+    a(b(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369822));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369314));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379565));
-    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)paramView.findViewById(2131370512));
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = a();
-    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
+    this.e = ((LinearLayout)paramView.findViewById(2131436957));
+    this.g = ((ImageView)paramView.findViewById(2131436312));
+    this.f = ((TextView)paramView.findViewById(2131448321));
+    this.h = ((ListViewForListview)paramView.findViewById(2131437784));
+    this.i = b();
+    this.h.setAdapter(this.i);
   }
   
   public void a(ImageView paramImageView)
@@ -304,7 +300,7 @@ public class ComponentContentRecommend
     if (paramImageView == null) {
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(paramImageView.getContext(), 2130772240);
+    Animation localAnimation = AnimationUtils.loadAnimation(paramImageView.getContext(), 2130772306);
     if (localAnimation != null)
     {
       localAnimation.setInterpolator(new LinearInterpolator());
@@ -318,13 +314,13 @@ public class ComponentContentRecommend
   {
     if (!NetworkUtil.isNetworkAvailable(getContext()))
     {
-      QQToast.a(getContext(), 1, 2131717970, 0).a();
+      QQToast.makeText(getContext(), 1, 2131915450, 0).show();
       return;
     }
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("jumpToProfile, info = ");
       localStringBuilder.append(paramRecommendFollowInfo);
@@ -333,12 +329,12 @@ public class ComponentContentRecommend
     if (paramRecommendFollowInfo != null)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(ReadInJoyConstants.k);
+      ((StringBuilder)localObject).append(ReadInJoyConstants.l);
       ((StringBuilder)localObject).append(Base64Util.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2));
       paramRecommendFollowInfo = ((StringBuilder)localObject).toString();
-      if ((!TextUtils.isEmpty(paramRecommendFollowInfo)) && (ViolaAccessHelper.c(paramRecommendFollowInfo)))
+      if ((!TextUtils.isEmpty(paramRecommendFollowInfo)) && (ViolaAccessHelper.e(paramRecommendFollowInfo)))
       {
-        ViolaAccessHelper.a(getContext(), null, ViolaAccessHelper.c(paramRecommendFollowInfo), null);
+        ViolaAccessHelper.a(getContext(), null, ViolaAccessHelper.f(paramRecommendFollowInfo), null);
         return;
       }
       localObject = new Intent(getContext(), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountBrowser.class));
@@ -368,7 +364,7 @@ public class ComponentContentRecommend
       }
       else
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("followAccount, error type, info.type = ");
         localStringBuilder.append(paramRecommendFollowInfo.type);
@@ -376,10 +372,10 @@ public class ComponentContentRecommend
         localStringBuilder.append(paramBoolean);
         QLog.e(str, 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+      this.i.notifyDataSetChanged();
       return;
     }
-    QQToast.a(getContext(), 1, 2131717970, 0).a();
+    QQToast.makeText(getContext(), 1, 2131915450, 0).show();
   }
   
   public void a(Object paramObject)
@@ -387,22 +383,32 @@ public class ComponentContentRecommend
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramObject);
-      a(paramObject);
+      this.d.a(paramObject);
+      setContent(paramObject);
     }
+  }
+  
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626177, this, true);
+  }
+  
+  protected BaseAdapter b()
+  {
+    return new ComponentContentRecommend.2(this);
   }
   
   protected void b(RecommendFollowInfo paramRecommendFollowInfo)
   {
     ReadInJoyLogicEngineEventDispatcher.a().b(paramRecommendFollowInfo.uin, paramRecommendFollowInfo.isFollowed);
-    ReadInJoyLogicEngine.a().e(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    ReadInJoyLogicEngine.a().f(this.k);
     ThreadManager.post(new ComponentContentRecommend.6(this, paramRecommendFollowInfo), 5, null, true);
   }
   
   protected void b(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().a();
+    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().c();
     localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramRecommendFollowInfo.uin);
@@ -415,27 +421,27 @@ public class ComponentContentRecommend
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (paramBoolean)
     {
-      ReadInJoyLogicEngine.a().a().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, true, paramRecommendFollowInfo.headUrl, new ComponentContentRecommend.4(this, paramRecommendFollowInfo), 1);
+      ReadInJoyLogicEngine.a().c().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, true, paramRecommendFollowInfo.headUrl, new ComponentContentRecommend.4(this, paramRecommendFollowInfo), 1);
       return;
     }
-    ReadInJoyLogicEngine.a().a().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, false, paramRecommendFollowInfo.headUrl, new ComponentContentRecommend.5(this, paramRecommendFollowInfo), 1);
+    ReadInJoyLogicEngine.a().c().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, false, paramRecommendFollowInfo.headUrl, new ComponentContentRecommend.5(this, paramRecommendFollowInfo), 1);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.b);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommend
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class AnonymousChatAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843816;
+    return 2130844770;
   }
   
   public int getAppID()
@@ -33,37 +33,37 @@ public class AnonymousChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690007);
+    return BaseApplicationImpl.getContext().getString(2131886656);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
-    if (!AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+    if (!AnonymousChatHelper.a().a(paramSessionInfo.b))
     {
       AIOMusicSkin.a().d(true);
       paramPlusPanelViewModel.a("chat_tool_anonymous", localQQAppInterface.getCurrentAccountUin());
       if ((paramBaseChatPie instanceof TroopChatPie))
       {
         ((TroopChatPie)paramBaseChatPie).a(2, "");
-        ((ITroopAnonymousHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_ANONYMOUS_HANDLER)).a(1, localQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_JavaLangString);
-        ReportController.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_anon", 0, 0, String.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString), "", "", "");
-        AIOPanelUtiles.a(localQQAppInterface, "0X8005CB4", paramSessionInfo.jdField_a_of_type_Int);
+        ((ITroopAnonymousHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_ANONYMOUS_HANDLER)).a(1, localQQAppInterface.getCurrentAccountUin(), paramSessionInfo.b);
+        ReportController.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_anon", 0, 0, String.valueOf(paramSessionInfo.b), "", "", "");
+        AIOPanelUtiles.a(localQQAppInterface, "0X8005CB4", paramSessionInfo.a);
         return;
       }
       return;
     }
     if ((paramBaseChatPie instanceof TroopChatPie))
     {
-      ((TroopChatPie)paramBaseChatPie).o(false);
+      ((TroopChatPie)paramBaseChatPie).s(false);
       AIOMusicSkin.a().d(false);
-      ReportController.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString), "", "", "");
+      ReportController.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.b), "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AnonymousChatAppInfo
  * JD-Core Version:    0.7.0.1
  */

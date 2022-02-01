@@ -9,12 +9,12 @@ class LoginwelcomeHelper$1$1
   
   public void run()
   {
-    LoginwelcomeHelper.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginwelcomeHelper$1.a, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    LoginwelcomeHelper.a(this.b.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

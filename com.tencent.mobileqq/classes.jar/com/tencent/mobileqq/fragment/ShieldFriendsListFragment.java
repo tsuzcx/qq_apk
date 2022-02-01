@@ -30,11 +30,11 @@ public class ShieldFriendsListFragment
   extends IphoneTitleBarFragment
   implements DecodeTaskCompletionListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ShieldFriendsListFragment.2(this);
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private ShieldFriendsListFragment.ShieldFriendsAdapter jdField_a_of_type_ComTencentMobileqqFragmentShieldFriendsListFragment$ShieldFriendsAdapter;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  FriendListObserver a = new ShieldFriendsListFragment.2(this);
+  private TextView b;
+  private XListView c;
+  private IFaceDecoder d;
+  private ShieldFriendsListFragment.ShieldFriendsAdapter e;
   
   private void a()
   {
@@ -43,21 +43,21 @@ public class ShieldFriendsListFragment
   
   private boolean a(long paramLong, boolean paramBoolean)
   {
-    int j = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+    int j = this.c.getChildCount();
     int i = 0;
     while (i < j)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
+      Object localObject = this.c.getChildAt(i);
       if (localObject != null)
       {
         localObject = (ShieldFriendsListFragment.Holder)((View)localObject).getTag();
-        if ((localObject != null) && (paramLong == Long.valueOf(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_JavaLangString).longValue()))
+        if ((localObject != null) && (paramLong == Long.valueOf(((ShieldFriendsListFragment.Holder)localObject).d).longValue()))
         {
-          if (((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_ComTencentWidgetSwitch.isChecked() != paramBoolean)
+          if (((ShieldFriendsListFragment.Holder)localObject).c.isChecked() != paramBoolean)
           {
-            ((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-            ((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setChecked(paramBoolean);
-            ((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+            ((ShieldFriendsListFragment.Holder)localObject).c.setOnCheckedChangeListener(null);
+            ((ShieldFriendsListFragment.Holder)localObject).c.setChecked(paramBoolean);
+            ((ShieldFriendsListFragment.Holder)localObject).c.setOnCheckedChangeListener(((ShieldFriendsListFragment.Holder)localObject).e);
           }
           return true;
         }
@@ -69,47 +69,47 @@ public class ShieldFriendsListFragment
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentShieldFriendsListFragment$ShieldFriendsAdapter.getCount() <= 0)
+    if (this.e.getCount() <= 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(8);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.c.setVisibility(0);
+    this.b.setVisibility(8);
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    super.setTitle(getResources().getString(2131699272));
-    this.mContentView.setBackgroundResource(2130838739);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131370153));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366895));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699273);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167142));
+    super.setTitle(getResources().getString(2131897288));
+    this.mContentView.setBackgroundResource(2130838958);
+    this.c = ((XListView)this.mContentView.findViewById(2131437317));
+    this.b = ((TextView)this.mContentView.findViewById(2131433225));
+    this.b.setText(2131897289);
+    this.b.setBackgroundDrawable(null);
+    this.b.setTextSize(2, 17.0F);
+    this.b.setTextColor(getResources().getColor(2131168122));
     paramLayoutInflater = new RelativeLayout.LayoutParams(-2, -2);
     paramLayoutInflater.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)getBaseActivity().app.getRuntimeService(IQQAvatarService.class, "")).getInstance(getBaseActivity().app);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqFragmentShieldFriendsListFragment$ShieldFriendsAdapter = new ShieldFriendsListFragment.ShieldFriendsAdapter(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, getBaseActivity().app);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFragmentShieldFriendsListFragment$ShieldFriendsAdapter);
-    paramLayoutInflater = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetXListView.getLayoutParams();
+    this.b.setLayoutParams(paramLayoutInflater);
+    this.d = ((IQQAvatarService)getBaseActivity().app.getRuntimeService(IQQAvatarService.class, "")).getInstance(getBaseActivity().app);
+    this.d.setDecodeTaskCompletionListener(this);
+    this.e = new ShieldFriendsListFragment.ShieldFriendsAdapter(getBaseActivity(), this.d, getBaseActivity().app);
+    this.c.setAdapter(this.e);
+    paramLayoutInflater = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
     paramLayoutInflater.topMargin = ((int)DisplayUtils.a(getBaseActivity(), 12.0F));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(paramLayoutInflater);
+    this.c.setLayoutParams(paramLayoutInflater);
     a();
-    getBaseActivity().addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    if (AppSetting.d) {
-      this.leftView.setContentDescription(HardCodeUtil.a(2131713874));
+    getBaseActivity().addObserver(this.a);
+    if (AppSetting.e) {
+      this.leftView.setContentDescription(HardCodeUtil.a(2131901576));
     }
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561494;
+    return 2131627851;
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -129,17 +129,17 @@ public class ShieldFriendsListFragment
     if (paramBitmap == null) {
       return;
     }
-    paramInt2 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+    paramInt2 = this.c.getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1);
+      localObject = this.c.getChildAt(paramInt1);
       if (localObject != null)
       {
         localObject = (ShieldFriendsListFragment.Holder)((View)localObject).getTag();
-        if ((localObject != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_JavaLangString)))
+        if ((localObject != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(((ShieldFriendsListFragment.Holder)localObject).d)))
         {
-          ((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+          ((ShieldFriendsListFragment.Holder)localObject).a.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
           return;
         }
       }
@@ -150,16 +150,16 @@ public class ShieldFriendsListFragment
   public void onDestroy()
   {
     super.onDestroy();
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    IFaceDecoder localIFaceDecoder = this.d;
     if (localIFaceDecoder != null) {
       localIFaceDecoder.destory();
     }
-    getBaseActivity().app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    getBaseActivity().app.removeObserver(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.ShieldFriendsListFragment
  * JD-Core Version:    0.7.0.1
  */

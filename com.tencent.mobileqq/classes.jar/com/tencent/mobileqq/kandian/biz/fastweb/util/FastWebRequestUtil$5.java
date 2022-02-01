@@ -25,12 +25,12 @@ final class FastWebRequestUtil$5
     try
     {
       Object localObject2 = new Bundle();
-      Object localObject1 = (QQAppInterface)ReadInJoyUtils.a();
-      String str2 = RIJQQAppInterfaceUtil.a();
+      Object localObject1 = (QQAppInterface)ReadInJoyUtils.b();
+      String str2 = RIJQQAppInterfaceUtil.d();
       String str3 = ((TicketManager)((QQAppInterface)localObject1).getManager(2)).getSkey(str2);
-      ((Bundle)localObject2).putString("feeds_id", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedId));
-      ((Bundle)localObject2).putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.publishUin));
-      ((Bundle)localObject2).putString("feedsType", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedType));
+      ((Bundle)localObject2).putString("feeds_id", String.valueOf(this.a.mFeedId));
+      ((Bundle)localObject2).putString("uin", String.valueOf(this.a.publishUin));
+      ((Bundle)localObject2).putString("feedsType", String.valueOf(this.a.mFeedType));
       String str1 = "";
       if (str3 == null) {
         localObject1 = "";
@@ -39,7 +39,7 @@ final class FastWebRequestUtil$5
       }
       ((Bundle)localObject2).putString("g_tk", (String)localObject1);
       if (QLog.isColorLevel()) {
-        QLog.d("FastWebRequestUtil", 2, new Object[] { "params feeds_id = ", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedId), ", uin = ", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.publishUin), ", feedsType = ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedType) });
+        QLog.d("FastWebRequestUtil", 2, new Object[] { "params feeds_id = ", Long.valueOf(this.a.mFeedId), ", uin = ", Long.valueOf(this.a.publishUin), ", feedsType = ", Integer.valueOf(this.a.mFeedType) });
       }
       localObject1 = new Bundle();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -57,7 +57,7 @@ final class FastWebRequestUtil$5
       localObject1 = new JSONObject((String)localObject1).getJSONObject("result");
       int i = ((JSONObject)localObject1).getInt("retCode");
       localObject1 = ((JSONObject)localObject1).getString("retMsg");
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebFeedbackCallback != null)
+      if (this.b != null)
       {
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.5.1(this, i, (String)localObject1));
         return;
@@ -65,7 +65,7 @@ final class FastWebRequestUtil$5
     }
     catch (Throwable localThrowable)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebFeedbackCallback != null) {
+      if (this.b != null) {
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.5.2(this, localThrowable));
       }
       QLog.d("FastWebRequestUtil", 2, "deleteFeeds exception. ", localThrowable);
@@ -74,7 +74,7 @@ final class FastWebRequestUtil$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRequestUtil.5
  * JD-Core Version:    0.7.0.1
  */

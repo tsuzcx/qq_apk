@@ -10,7 +10,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class HorizontalBallLoadingView
   extends MetaballView
 {
-  private float a;
+  private float o;
   
   public HorizontalBallLoadingView(Context paramContext)
   {
@@ -29,26 +29,26 @@ public class HorizontalBallLoadingView
     a(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected int a()
-  {
-    return (int)(((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 6.0F) * this.a);
-  }
-  
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     paramContext = getContext().obtainStyledAttributes(paramAttributeSet, ((IResourceUtil)QRoute.api(IResourceUtil.class)).getBallLoadingView());
-    this.a = paramContext.getFloat(((IResourceUtil)QRoute.api(IResourceUtil.class)).getBallLoadingViewBallScale(), 1.0F);
+    this.o = paramContext.getFloat(((IResourceUtil)QRoute.api(IResourceUtil.class)).getBallLoadingViewBallScale(), 1.0F);
     paramContext.recycle();
   }
   
-  protected int b()
+  protected int getItemDivider()
   {
-    return (int)(((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 10.0F) * this.a);
+    return (int)(((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 10.0F) * this.o);
+  }
+  
+  protected int getRadius()
+  {
+    return (int)(((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(getContext(), 6.0F) * this.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView
  * JD-Core Version:    0.7.0.1
  */

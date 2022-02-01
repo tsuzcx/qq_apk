@@ -24,8 +24,8 @@ class ForwardPluginShareStructMsgOption$2
     if (!bool)
     {
       localObject2 = new DownloadTask((String)localObject2, (File)localObject1);
-      ((DownloadTask)localObject2).j = true;
-      if (DownloaderFactory.a((DownloadTask)localObject2, this.this$0.a) != 0) {
+      ((DownloadTask)localObject2).D = true;
+      if (DownloaderFactory.a((DownloadTask)localObject2, this.this$0.q) != 0) {
         return;
       }
     }
@@ -34,12 +34,12 @@ class ForwardPluginShareStructMsgOption$2
     ((EmoticonPackage)localObject2).jobType = 4;
     localObject1 = FileUtils.fileToBytes((File)localObject1);
     ArrayList localArrayList = new ArrayList();
-    EmotionJsonUtils.parseSmallJson(this.this$0.a, (EmoticonPackage)localObject2, EmojiManagerServiceConstant.JSON_EMOSM_MALL, (byte[])localObject1, localArrayList);
+    EmotionJsonUtils.parseSmallJson(this.this$0.q, (EmoticonPackage)localObject2, EmojiManagerServiceConstant.JSON_EMOSM_MALL, (byte[])localObject1, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption.2
  * JD-Core Version:    0.7.0.1
  */

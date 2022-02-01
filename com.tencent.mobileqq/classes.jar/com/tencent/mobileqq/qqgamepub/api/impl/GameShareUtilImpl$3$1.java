@@ -20,12 +20,12 @@ class GameShareUtilImpl$3$1
   
   public void run()
   {
-    Object localObject1 = (Context)this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplGameShareUtilImpl$3.jdField_a_of_type_MqqUtilWeakReference.get();
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplGameShareUtilImpl$3.jdField_b_of_type_MqqUtilWeakReference.get();
-    Object localObject2 = (AIOGallerySceneWithBusiness)this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplGameShareUtilImpl$3.c.get();
-    if (((localObject1 instanceof Activity)) && (!((Activity)localObject1).isFinishing()) && (localTextView != null) && (localObject2 != null) && (((AIOGallerySceneWithBusiness)localObject2).a() != null) && (((AIOGallerySceneWithBusiness)localObject2).a().a != null) && (((AIOGallerySceneWithBusiness)localObject2).a().a.jdField_f_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplGameShareUtilImpl$3.jdField_a_of_type_Long) && (((AIOGallerySceneWithBusiness)localObject2).a().a.jdField_f_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplGameShareUtilImpl$3.jdField_b_of_type_Long))
+    Object localObject1 = (Context)this.b.a.get();
+    TextView localTextView = (TextView)this.b.b.get();
+    Object localObject2 = (AIOGallerySceneWithBusiness)this.b.c.get();
+    if (((localObject1 instanceof Activity)) && (!((Activity)localObject1).isFinishing()) && (localTextView != null) && (localObject2 != null) && (((AIOGallerySceneWithBusiness)localObject2).S() != null) && (((AIOGallerySceneWithBusiness)localObject2).S().a != null) && (((AIOGallerySceneWithBusiness)localObject2).S().a.L == this.b.d) && (((AIOGallerySceneWithBusiness)localObject2).S().a.M == this.b.e))
     {
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject2 = this.a;
       localObject1 = ((Context)localObject1).getResources();
       localObject2 = new BitmapDrawable(StructMsgItemCover.a((Drawable)localObject2));
       localTextView.setCompoundDrawablePadding(AIOUtils.b(3.0F, (Resources)localObject1));
@@ -36,7 +36,7 @@ class GameShareUtilImpl$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.GameShareUtilImpl.3.1
  * JD-Core Version:    0.7.0.1
  */

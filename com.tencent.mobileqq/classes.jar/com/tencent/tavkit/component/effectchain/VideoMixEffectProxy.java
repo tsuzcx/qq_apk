@@ -14,7 +14,6 @@ public class VideoMixEffectProxy
   private boolean autoCheckEffectRemove = true;
   @NonNull
   private CopyOnWriteArrayList<TAVVideoMixEffect> effects = new CopyOnWriteArrayList();
-  @NonNull
   private final List<VideoMixEffectProxy.FilterProxy> filterProxies = new ArrayList();
   
   public TAVVideoMixEffect.Filter createFilter()
@@ -64,7 +63,7 @@ public class VideoMixEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoMixEffectProxy
  * JD-Core Version:    0.7.0.1
  */

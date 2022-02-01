@@ -12,54 +12,54 @@ class CommonRefreshLayout$2
   
   public void a()
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && ((CommonRefreshLayout.STATUS.a(CommonRefreshLayout.a(this.a))) || (CommonRefreshLayout.STATUS.h(CommonRefreshLayout.a(this.a)))))
+    if ((CommonRefreshLayout.c(this.a) != null) && ((CommonRefreshLayout.c(this.a) instanceof SwipeTrigger)) && ((CommonRefreshLayout.STATUS.a(CommonRefreshLayout.d(this.a))) || (CommonRefreshLayout.STATUS.h(CommonRefreshLayout.d(this.a)))))
     {
-      CommonRefreshLayout.a(this.a).setVisibility(0);
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).a();
+      CommonRefreshLayout.c(this.a).setVisibility(0);
+      ((SwipeTrigger)CommonRefreshLayout.c(this.a)).a();
     }
   }
   
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (CommonRefreshLayout.STATUS.c(CommonRefreshLayout.a(this.a))))
+    if ((CommonRefreshLayout.c(this.a) != null) && ((CommonRefreshLayout.c(this.a) instanceof SwipeTrigger)) && (CommonRefreshLayout.STATUS.c(CommonRefreshLayout.d(this.a))))
     {
-      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
-        CommonRefreshLayout.a(this.a).setVisibility(0);
+      if (CommonRefreshLayout.c(this.a).getVisibility() != 0) {
+        CommonRefreshLayout.c(this.a).setVisibility(0);
       }
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
+      ((SwipeTrigger)CommonRefreshLayout.c(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
     }
   }
   
   public void b()
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (CommonRefreshLayout.STATUS.e(CommonRefreshLayout.a(this.a)))) {
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).b();
+    if ((CommonRefreshLayout.c(this.a) != null) && ((CommonRefreshLayout.c(this.a) instanceof SwipeTrigger)) && (CommonRefreshLayout.STATUS.e(CommonRefreshLayout.d(this.a)))) {
+      ((SwipeTrigger)CommonRefreshLayout.c(this.a)).b();
     }
   }
   
   public void c()
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && (CommonRefreshLayout.STATUS.b(CommonRefreshLayout.a(this.a))))
+    if ((CommonRefreshLayout.c(this.a) != null) && (CommonRefreshLayout.STATUS.b(CommonRefreshLayout.d(this.a))))
     {
-      if ((CommonRefreshLayout.a(this.a) instanceof SwipeRefreshTrigger)) {
-        ((SwipeRefreshTrigger)CommonRefreshLayout.a(this.a)).c();
+      if ((CommonRefreshLayout.c(this.a) instanceof SwipeRefreshTrigger)) {
+        ((SwipeRefreshTrigger)CommonRefreshLayout.c(this.a)).c();
       }
-      if (CommonRefreshLayout.a(this.a) != null) {
-        CommonRefreshLayout.a(this.a).a();
+      if (CommonRefreshLayout.e(this.a) != null) {
+        CommonRefreshLayout.e(this.a).a();
       }
     }
   }
   
   public void d()
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && ((CommonRefreshLayout.STATUS.a(CommonRefreshLayout.a(this.a))) || (CommonRefreshLayout.STATUS.h(CommonRefreshLayout.a(this.a))))) {
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).d();
+    if ((CommonRefreshLayout.c(this.a) != null) && ((CommonRefreshLayout.c(this.a) instanceof SwipeTrigger)) && ((CommonRefreshLayout.STATUS.a(CommonRefreshLayout.d(this.a))) || (CommonRefreshLayout.STATUS.h(CommonRefreshLayout.d(this.a))))) {
+      ((SwipeTrigger)CommonRefreshLayout.c(this.a)).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout.2
  * JD-Core Version:    0.7.0.1
  */

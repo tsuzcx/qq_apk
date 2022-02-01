@@ -7,9 +7,9 @@ public class FrameInjectImpl
 {
   public void a(Frame paramFrame)
   {
-    paramFrame = FrameHelperActivity.a((BaseActivity)paramFrame.a());
+    paramFrame = FrameHelperActivity.a((BaseActivity)paramFrame.P());
     if (paramFrame != null) {
-      paramFrame.y();
+      paramFrame.J();
     }
   }
   
@@ -17,15 +17,15 @@ public class FrameInjectImpl
   {
     UEC localUEC = UEC.a;
     if (localUEC != null) {
-      localUEC.a(paramFrame.getClass().getSimpleName(), paramFrame.a(), paramBoolean, paramFrame);
+      localUEC.a(paramFrame.getClass().getSimpleName(), paramFrame.P(), paramBoolean, paramFrame);
     }
   }
   
   public boolean a()
   {
-    if (FrameHelperActivity.b())
+    if (FrameHelperActivity.G())
     {
-      FrameHelperActivity.w();
+      FrameHelperActivity.H();
       return true;
     }
     return false;
@@ -33,7 +33,7 @@ public class FrameInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameInjectImpl
  * JD-Core Version:    0.7.0.1
  */

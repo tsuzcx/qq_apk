@@ -17,35 +17,35 @@ class VideoControlUI$7
   
   public void onClick(DialogInterface arg1, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {
+    if (this.b.V()) {
       return;
     }
-    ??? = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
+    ??? = this.b.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showPermissionDialog.gotoSetting, seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(???, 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
-      ReportController.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
+    if ((this.b.bm) && (this.b.bl != null)) {
+      ReportController.b(null, "CliOper", "", "", this.b.bl, this.b.bl, 0, 0, "", "", this.b.bo, "");
     }
-    UITools.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z == 2) || (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z == 1))
+    UITools.a(this.b.U());
+    if ((this.b.bn == 2) || (this.b.bn == 1))
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
+      this.b.ao.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.a) });
+      long l = Long.valueOf(this.b.al.getCurrentAccountUin()).longValue();
+      paramInt = this.b.am.k().b(l, 1);
       if (paramInt == -1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
-      synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
+      this.b.am.k().bi.remove(paramInt);
+      synchronized (this.b.am.k().bk)
       {
-        paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
+        paramInt = this.b.am.k().c(l, 1);
         if (paramInt != -1)
         {
-          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
-          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a();
+          this.b.am.k().bk.remove(paramInt);
+          this.b.am.k().C();
         }
         return;
       }

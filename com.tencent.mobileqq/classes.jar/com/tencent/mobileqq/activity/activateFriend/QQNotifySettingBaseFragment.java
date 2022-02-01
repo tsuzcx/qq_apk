@@ -35,38 +35,38 @@ public abstract class QQNotifySettingBaseFragment
   extends PublicBaseFragment
   implements View.OnClickListener, INotifyMsg
 {
-  public static final int a;
-  private static final String jdField_b_of_type_JavaLangString = "QQNotifySettingBaseFragment";
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected View a;
-  protected Button a;
-  protected CheckBox a;
-  protected TextView a;
-  private QQNotifyLoadingDialog jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifyLoadingDialog;
-  private IQQReminderDataService jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService;
-  private CalendarEntity jdField_a_of_type_ComTencentMobileqqReminderBizEntityCalendarEntity;
-  private FakeUrl jdField_a_of_type_CooperationQwalletPluginFakeUrl;
-  protected String a;
-  protected boolean a;
-  protected int b;
-  protected TextView b;
-  boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
-  private String e;
+  public static final int a = WebViewUtil.a("qw_mix") << 8;
+  private static final String k = "QQNotifySettingBaseFragment";
+  protected View b;
+  protected TextView c;
+  protected TextView d;
+  protected Button e;
+  protected CheckBox f;
+  protected boolean g;
+  boolean h;
+  protected int i = 9;
+  protected String j = "user cancel";
+  private final Handler l = new Handler(Looper.getMainLooper());
+  private QQNotifyLoadingDialog m;
+  private IQQReminderDataService n;
+  private CalendarEntity o;
+  private String p;
+  private String q;
+  private String r;
+  private FakeUrl s;
   
-  static
+  private CalendarEntity b(AcsGetMsgRsp paramAcsGetMsgRsp)
   {
-    jdField_a_of_type_Int = WebViewUtil.a("qw_mix") << 8;
+    CalendarEntity localCalendarEntity = new CalendarEntity();
+    localCalendarEntity.content = "";
+    localCalendarEntity.msg_id = this.p;
+    localCalendarEntity.notice_time = paramAcsGetMsgRsp.notice_time;
+    localCalendarEntity.title = paramAcsGetMsgRsp.title;
+    localCalendarEntity.jump_url = paramAcsGetMsgRsp.jump_url;
+    return localCalendarEntity;
   }
   
-  public QQNotifySettingBaseFragment()
-  {
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_JavaLangString = "user cancel";
-  }
-  
-  private QQAppInterface a()
+  private QQAppInterface c()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
@@ -75,34 +75,23 @@ public abstract class QQNotifySettingBaseFragment
     return null;
   }
   
-  private CalendarEntity a(AcsGetMsgRsp paramAcsGetMsgRsp)
-  {
-    CalendarEntity localCalendarEntity = new CalendarEntity();
-    localCalendarEntity.content = "";
-    localCalendarEntity.msg_id = this.c;
-    localCalendarEntity.notice_time = paramAcsGetMsgRsp.notice_time;
-    localCalendarEntity.title = paramAcsGetMsgRsp.title;
-    localCalendarEntity.jump_url = paramAcsGetMsgRsp.jump_url;
-    return localCalendarEntity;
-  }
-  
-  private void b()
+  private void d()
   {
     IQQReminderService localIQQReminderService = (IQQReminderService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IQQReminderService.class, "");
     if (localIQQReminderService == null) {
       return;
     }
-    localIQQReminderService.sendGetMsgs(this.c, this.e, new QQNotifySettingBaseFragment.1(this));
+    localIQQReminderService.sendGetMsgs(this.p, this.r, new QQNotifySettingBaseFragment.1(this));
   }
   
-  private void c()
+  private void e()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     IQQReminderService localIQQReminderService = (IQQReminderService)localQQAppInterface.getRuntimeService(IQQReminderService.class, "");
     if (localIQQReminderService == null) {
       return;
     }
-    localIQQReminderService.sendSubscribeReminder(this.c, this.e, new QQNotifySettingBaseFragment.2(this, localQQAppInterface));
+    localIQQReminderService.sendSubscribeReminder(this.p, this.r, new QQNotifySettingBaseFragment.2(this, localQQAppInterface));
   }
   
   public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
@@ -121,31 +110,31 @@ public abstract class QQNotifySettingBaseFragment
     if (paramAcsGetMsgRsp != null) {
       if (paramAcsGetMsgRsp.ret_code == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAcsGetMsgRsp.content);
-        long l = paramAcsGetMsgRsp.notice_time;
-        if (l == 0L) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131710526));
+        this.c.setText(paramAcsGetMsgRsp.content);
+        long l1 = paramAcsGetMsgRsp.notice_time;
+        if (l1 == 0L) {
+          this.d.setText(HardCodeUtil.a(2131908214));
         } else {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtil.a(l * 1000L, "yyyy-MM-dd HH:mm:ss"));
+          this.d.setText(DateUtil.a(l1 * 1000L, "yyyy-MM-dd HH:mm:ss"));
         }
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-        int i;
+        this.e.setEnabled(true);
+        int i1;
         if (paramAcsGetMsgRsp.calendar == 1) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
-        paramAcsGetMsgRsp = this.jdField_a_of_type_AndroidWidgetCheckBox;
-        if ((paramAcsGetMsgRsp != null) && (i != 0) && (this.jdField_b_of_type_Boolean))
+        paramAcsGetMsgRsp = this.f;
+        if ((paramAcsGetMsgRsp != null) && (i1 != 0) && (this.h))
         {
           paramAcsGetMsgRsp.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+          this.f.setChecked(true);
         }
       }
       else
       {
-        a();
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        b();
+        this.e.setEnabled(false);
       }
     }
   }
@@ -154,7 +143,7 @@ public abstract class QQNotifySettingBaseFragment
   {
     if (paramInt == 4)
     {
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      a(this.i, this.j);
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
@@ -173,57 +162,57 @@ public abstract class QQNotifySettingBaseFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_b_of_type_Boolean = ((IQQReminderCalendarService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IQQReminderCalendarService.class, "")).isCalendarOpen(getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifyLoadingDialog = new QQNotifyLoadingDialog(getBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifyLoadingDialog.show();
-    this.jdField_a_of_type_CooperationQwalletPluginFakeUrl = new FakeUrl();
-    this.jdField_a_of_type_CooperationQwalletPluginFakeUrl.init(getBaseActivity());
-    b();
-    MobileReportManager.getInstance().reportActionOfNotice("qqremind", "1", "1", 100, this.c, "15", 1);
+    this.h = ((IQQReminderCalendarService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IQQReminderCalendarService.class, "")).isCalendarOpen(getActivity());
+    this.m = new QQNotifyLoadingDialog(getBaseActivity());
+    this.m.show();
+    this.s = new FakeUrl();
+    this.s.init(getBaseActivity());
+    d();
+    MobileReportManager.getInstance().reportActionOfNotice("qqremind", "1", "1", 100, this.p, "15", 1);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131363890)
+    int i1 = paramView.getId();
+    if (i1 != 2131429840)
     {
-      if (i == 2131364063)
+      if (i1 == 2131430021)
       {
         String str = (String)paramView.getTag();
         if ("0".equals(str))
         {
-          QQNotifyHelper.a(a(), "open_click", this.d, this.c, null, null);
-          c();
+          QQNotifyHelper.a(c(), "open_click", this.q, this.p, null, null);
+          e();
         }
         else if ("1".equals(str))
         {
-          a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          a(this.i, this.j);
         }
       }
     }
     else
     {
-      QQNotifyHelper.a(a(), "pending_click", this.d, this.c, null, null);
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      QQNotifyHelper.a(c(), "pending_click", this.q, this.p, null, null);
+      a(this.i, this.j);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramLayoutInflater, paramViewGroup);
-    new ImmersionBar(getBaseActivity(), 0, this.jdField_a_of_type_AndroidViewView.findViewById(2131377849));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379791));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379792));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364597));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364063));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.c = getArguments().getString("key_msgid");
-    this.d = getArguments().getString("key_busid");
-    this.e = getArguments().getString("key_domain");
-    this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService = ((IQQReminderDataService)a().getRuntimeService(IQQReminderDataService.class, ""));
-    QQNotifyHelper.a(a(), "authorizepage_exp", this.d, this.c, null, null);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.b = a(paramLayoutInflater, paramViewGroup);
+    new ImmersionBar(getBaseActivity(), 0, this.b.findViewById(2131446325));
+    this.c = ((TextView)this.b.findViewById(2131448617));
+    this.d = ((TextView)this.b.findViewById(2131448618));
+    this.f = ((CheckBox)this.b.findViewById(2131430666));
+    this.e = ((Button)this.b.findViewById(2131430021));
+    this.e.setOnClickListener(this);
+    this.p = getArguments().getString("key_msgid");
+    this.q = getArguments().getString("key_busid");
+    this.r = getArguments().getString("key_domain");
+    this.n = ((IQQReminderDataService)c().getRuntimeService(IQQReminderDataService.class, ""));
+    QQNotifyHelper.a(c(), "authorizepage_exp", this.q, this.p, null, null);
+    paramLayoutInflater = this.b;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -231,11 +220,11 @@ public abstract class QQNotifySettingBaseFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifyLoadingDialog;
+    Object localObject = this.m;
     if ((localObject != null) && (((QQNotifyLoadingDialog)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifyLoadingDialog.dismiss();
+      this.m.dismiss();
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    localObject = this.l;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacksAndMessages(null);
     }
@@ -243,7 +232,7 @@ public abstract class QQNotifySettingBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment
  * JD-Core Version:    0.7.0.1
  */

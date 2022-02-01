@@ -29,7 +29,7 @@ public class TroopLuckyCharacterConfigProcess
       QLog.d("TroopLuckyCharacterConfigProcess", 2, "onParsed");
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return TroopLuckyCharacterConfig.a(paramArrayOfQConfItem[0].a);
+      return TroopLuckyCharacterConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -80,7 +80,7 @@ public class TroopLuckyCharacterConfigProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.luckycharacter.config.TroopLuckyCharacterConfigProcess
  * JD-Core Version:    0.7.0.1
  */

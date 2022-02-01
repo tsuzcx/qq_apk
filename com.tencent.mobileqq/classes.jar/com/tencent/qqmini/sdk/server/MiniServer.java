@@ -109,7 +109,7 @@ public class MiniServer
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Init MiniServer. MiniSdkVersion:1.15.0_944_fdf6368 QUA:");
+      localStringBuilder.append("Init MiniServer. MiniSdkVersion:1.19.0_232_c8d4d7a QUA:");
       localStringBuilder.append(QUAUtil.getQUA());
       localStringBuilder.append(" PlatformQUA:");
       localStringBuilder.append(QUAUtil.getPlatformQUA());
@@ -125,6 +125,11 @@ public class MiniServer
   public void onHostAppBackground()
   {
     this.mLaunchManagerService.onHostAppBackground();
+  }
+  
+  public void preDownloadPkg(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
+  {
+    this.mLaunchManagerService.preDownloadPkg(paramMiniAppInfo, paramResultReceiver);
   }
   
   public void preloadMiniApp(Bundle paramBundle)
@@ -149,7 +154,7 @@ public class MiniServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniServer
  * JD-Core Version:    0.7.0.1
  */

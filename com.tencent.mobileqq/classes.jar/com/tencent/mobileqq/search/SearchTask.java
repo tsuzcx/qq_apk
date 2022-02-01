@@ -20,87 +20,87 @@ import java.util.concurrent.TimeUnit;
 public class SearchTask
   extends AsyncTask<Void, Void, Void>
 {
-  private static Comparator<ISearchable> jdField_a_of_type_JavaUtilComparator = new SearchTask.3();
-  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new SearchTask.1());
-  private static Comparator<ISearchable> jdField_b_of_type_JavaUtilComparator = new SearchTask.4();
-  private final int jdField_a_of_type_Int = 300;
-  private SearchTask.SearchTaskCallBack jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack;
-  private String jdField_a_of_type_JavaLangString;
-  private List<? extends ISearchable> jdField_a_of_type_JavaUtilList;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private List<Future<List<ISearchable>>> jdField_b_of_type_JavaUtilList;
-  private List<ISearchable> c;
+  private static final ThreadPoolExecutor b = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new SearchTask.1());
+  private static Comparator<ISearchable> k = new SearchTask.3();
+  private static Comparator<ISearchable> l = new SearchTask.4();
+  boolean a = false;
+  private final int c = 300;
+  private String d;
+  private String e;
+  private List<? extends ISearchable> f;
+  private List<Future<List<ISearchable>>> g;
+  private List<ISearchable> h;
+  private SearchTask.SearchTaskCallBack i;
+  private ExecutorService j;
   
   public SearchTask(String paramString1, String paramString2, List<? extends ISearchable> paramList, SearchTask.SearchTaskCallBack paramSearchTaskCallBack)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack = paramSearchTaskCallBack;
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(20);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramList;
+    this.i = paramSearchTaskCallBack;
+    this.j = Executors.newFixedThreadPool(20);
+    this.g = new ArrayList();
+    this.h = new ArrayList();
   }
   
   private void a(List<ISearchable> paramList, String paramString)
   {
-    int j = paramList.size();
-    int i = 20;
-    if (j <= 20) {
-      i = paramList.size();
+    int n = paramList.size();
+    int m = 20;
+    if (n <= 20) {
+      m = paramList.size();
     }
-    j = 0;
-    while (j < i)
+    n = 0;
+    while (n < m)
     {
-      paramString = (IContactSearchable)paramList.get(j);
+      paramString = (IContactSearchable)paramList.get(n);
       QLog.isColorLevel();
-      j += 1;
+      n += 1;
     }
   }
   
   protected Void a(Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.f != null)
     {
       if (QLog.isColorLevel())
       {
         paramVarArgs = new StringBuilder();
         paramVarArgs.append("Start doInBackground , keyword = ");
-        paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+        paramVarArgs.append(this.d);
         QLog.d("SearchTask", 2, paramVarArgs.toString());
       }
-      int k = this.jdField_a_of_type_JavaUtilList.size();
-      int n = k / 300;
-      int i = 0;
-      int j;
-      while (i < n + 1)
+      int i1 = this.f.size();
+      int i3 = i1 / 300;
+      int m = 0;
+      int n;
+      while (m < i3 + 1)
       {
-        int i1 = i * 300;
-        int m = i1 + 300;
-        j = m;
-        if (m > k) {
-          j = k;
+        int i4 = m * 300;
+        int i2 = i4 + 300;
+        n = i2;
+        if (i2 > i1) {
+          n = i1;
         }
-        if ((isCancelled()) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
+        if ((isCancelled()) || (this.j.isShutdown())) {
           break;
         }
-        paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new SearchTask.2(this, i1, j));
-        this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
-        i += 1;
+        paramVarArgs = this.j.submit(new SearchTask.2(this, i4, n));
+        this.g.add(paramVarArgs);
+        m += 1;
       }
       try
       {
-        this.c.clear();
+        this.h.clear();
         long l1 = System.currentTimeMillis();
-        i = 0;
-        while ((i < this.jdField_b_of_type_JavaUtilList.size()) && (!isCancelled()))
+        m = 0;
+        while ((m < this.g.size()) && (!isCancelled()))
         {
-          paramVarArgs = (List)((Future)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-          if (i == 0)
+          paramVarArgs = (List)((Future)this.g.get(m)).get();
+          if (m == 0)
           {
-            this.c.addAll(paramVarArgs);
+            this.h.addAll(paramVarArgs);
           }
           else
           {
@@ -111,22 +111,22 @@ public class SearchTask
               if (isCancelled()) {
                 break;
               }
-              j = this.c.indexOf(localISearchable);
-              if (-1 == j) {
-                this.c.add(localISearchable);
-              } else if (((ISearchable)this.c.get(j)).c() < localISearchable.c()) {
-                this.c.set(j, localISearchable);
+              n = this.h.indexOf(localISearchable);
+              if (-1 == n) {
+                this.h.add(localISearchable);
+              } else if (((ISearchable)this.h.get(n)).o() < localISearchable.o()) {
+                this.h.set(n, localISearchable);
               }
             }
           }
           paramVarArgs.clear();
-          i += 1;
+          m += 1;
         }
-        this.jdField_b_of_type_JavaUtilList.clear();
+        this.g.clear();
         if (isCancelled()) {
           return null;
         }
-        a(this.c);
+        a(this.h);
         long l2 = System.currentTimeMillis();
         if (QLog.isColorLevel())
         {
@@ -134,7 +134,7 @@ public class SearchTask
           paramVarArgs.append("SearchTask ======= doInBackground time = ");
           paramVarArgs.append(l2 - l1);
           paramVarArgs.append(" , keyword = ");
-          paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+          paramVarArgs.append(this.d);
           QLog.d("SearchTask", 2, paramVarArgs.toString());
         }
       }
@@ -145,7 +145,7 @@ public class SearchTask
         {
           paramVarArgs = new StringBuilder();
           paramVarArgs.append("InterruptedException happens, keyword = ");
-          paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+          paramVarArgs.append(this.d);
           paramVarArgs.append(" : ");
           QLog.d("SearchTask", 2, paramVarArgs.toString());
         }
@@ -157,15 +157,15 @@ public class SearchTask
         {
           paramVarArgs = new StringBuilder();
           paramVarArgs.append("InterruptedException happens, keyword = ");
-          paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+          paramVarArgs.append(this.d);
           paramVarArgs.append(" : ");
           QLog.d("SearchTask", 2, paramVarArgs.toString());
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       return null;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
     if (QLog.isColorLevel()) {
       QLog.d("SearchTask", 2, "doInBackground:: inputSet is null.");
     }
@@ -175,12 +175,12 @@ public class SearchTask
   @TargetApi(11)
   public void a()
   {
-    executeOnExecutor(jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, new Void[0]);
+    executeOnExecutor(b, new Void[0]);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Start execute , keyword = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       QLog.d("SearchTask", 2, localStringBuilder.toString());
     }
   }
@@ -189,53 +189,53 @@ public class SearchTask
   {
     if (isCancelled())
     {
-      this.c.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+      this.h.clear();
+      this.j.shutdown();
       if (QLog.isColorLevel()) {
         QLog.d("SearchTask", 2, "onPostExecute:: isCancelled.");
       }
       return;
     }
-    paramVoid = this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack;
+    paramVoid = this.i;
     if (paramVoid != null)
     {
-      paramVoid.a(this.jdField_a_of_type_Boolean ^ true, this.c);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+      paramVoid.a(this.a ^ true, this.h);
+      this.j.shutdown();
     }
   }
   
   protected void a(List<ISearchable> paramList)
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("start sortResultSet(), keyword = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("SearchTask", 2, ((StringBuilder)localObject).toString());
     }
-    Collections.sort(paramList, jdField_a_of_type_JavaUtilComparator);
-    int i = Math.min(paramList.size(), 30);
-    Object localObject = paramList.subList(0, i);
-    Collections.sort((List)localObject, jdField_b_of_type_JavaUtilComparator);
+    Collections.sort(paramList, k);
+    int m = Math.min(paramList.size(), 30);
+    Object localObject = paramList.subList(0, m);
+    Collections.sort((List)localObject, l);
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll((Collection)localObject);
-    localArrayList.addAll(paramList.subList(i, paramList.size()));
+    localArrayList.addAll(paramList.subList(m, paramList.size()));
     a(paramList, "after sort ");
     if (QLog.isColorLevel())
     {
       paramList = new StringBuilder();
       paramList.append("sortResultSet() time = ");
-      paramList.append(System.currentTimeMillis() - l);
+      paramList.append(System.currentTimeMillis() - l1);
       paramList.append(" , keyword = ");
-      paramList.append(this.jdField_a_of_type_JavaLangString);
+      paramList.append(this.d);
       QLog.d("SearchTask", 2, paramList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchTask
  * JD-Core Version:    0.7.0.1
  */

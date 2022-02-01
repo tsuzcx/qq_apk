@@ -20,21 +20,21 @@ import mqq.manager.PushManager;
 public class VoIPProxyImpl
   extends VoIPProxy
 {
-  private QavMultiObserver jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver = new VoIPProxyImpl.2(this);
-  private VoIPProxy.VoIPListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener;
+  private VoIPProxy.VoIPListener a;
+  private QavMultiObserver b = new VoIPProxyImpl.2(this);
   
   private void a()
   {
     QLog.i("VoIPProxyImpl", 1, "qavDeInitSDK");
-    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
+    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.d(), BaseApplicationImpl.getApplication().getQQProcessName());
     QavSDK localQavSDK = QavSDK.a();
-    localQavSDK.b(this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver);
-    localQavSDK.a();
+    localQavSDK.b(this.b);
+    localQavSDK.b();
   }
   
   public int enableLocalAudio(boolean paramBoolean)
   {
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null)
     {
       localIMultiOperator.a(paramBoolean);
@@ -45,7 +45,7 @@ public class VoIPProxyImpl
   
   public int enableRemoteAudio(boolean paramBoolean)
   {
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null)
     {
       localIMultiOperator.b(paramBoolean ^ true);
@@ -56,40 +56,40 @@ public class VoIPProxyImpl
   
   public void exitRoom()
   {
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null) {
-      localIMultiOperator.e();
+      localIMultiOperator.g();
     }
   }
   
   public void init(long paramLong, VoIPProxy.VoIPListener paramVoIPListener)
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
+    ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.d(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
     AVLog.a(new AVLogImpl());
-    VideoChannelImpl localVideoChannelImpl = VideoChannelImpl.a();
+    VideoChannelImpl localVideoChannelImpl = VideoChannelImpl.c();
     localVideoChannelImpl.a((AppRuntime)localObject);
     localVideoChannelImpl.a(new VoIPProxyImpl.1(this));
     localObject = QavSDK.a();
     ((QavSDK)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localVideoChannelImpl);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = paramVoIPListener;
-    ((QavSDK)localObject).a(this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver);
+    this.a = paramVoIPListener;
+    ((QavSDK)localObject).a(this.b);
   }
   
   public int joinRoom(long paramLong, int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null)
     {
       QavDef.MultiParams localMultiParams = new QavDef.MultiParams();
-      localMultiParams.jdField_a_of_type_Int = 11;
+      localMultiParams.a = 11;
       localMultiParams.b = 14;
       localMultiParams.c = 1;
       localMultiParams.d = paramInt;
-      localMultiParams.jdField_a_of_type_Long = paramLong;
-      localMultiParams.jdField_a_of_type_JavaLangString = paramString;
-      localMultiParams.e = 1;
-      localMultiParams.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      localMultiParams.e = paramLong;
+      localMultiParams.f = paramString;
+      localMultiParams.g = 1;
+      localMultiParams.h = paramArrayOfByte;
       return localIMultiOperator.a(localMultiParams);
     }
     return -4;
@@ -97,7 +97,7 @@ public class VoIPProxyImpl
   
   public void setAudioRoute(int paramInt)
   {
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null) {
       localIMultiOperator.b(paramInt);
     }
@@ -106,20 +106,20 @@ public class VoIPProxyImpl
   public void unInit()
   {
     a();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = null;
+    this.a = null;
   }
   
   public void updateRoomInfo()
   {
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null) {
-      localIMultiOperator.f();
+      localIMultiOperator.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VoIPProxyImpl
  * JD-Core Version:    0.7.0.1
  */

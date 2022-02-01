@@ -2,65 +2,52 @@ package com.tencent.av;
 
 public class VideoPackageUtils$VideoPacket
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e = 0;
-  
-  public VideoPackageUtils$VideoPacket()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Long = 0L;
-  }
+  public long c = 0L;
+  public int d = 0;
+  public long e = 0L;
+  public int f = 0;
+  public int g = 0;
+  public long h = 0L;
+  public int i = 0;
+  public boolean j = false;
+  public int k = 0;
+  public long l = 0L;
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 3;
+    return this.d == 3;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoPacket{roomId=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", bodyType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", uin=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", fromuin=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", subServiceType=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", seq=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", business_flag=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append(", terminal_switch_flag =");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", u32AccountType =");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", fromuin=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", subServiceType=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", seq=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", business_flag=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", terminal_switch_flag =");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", u32AccountType =");
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", uint64_group_uin =");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", str_from_nation =");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", str_from_mobile =");
     boolean bool;
-    if (this.jdField_a_of_type_JavaLangString != null) {
+    if (this.a != null) {
       bool = true;
     } else {
       bool = false;

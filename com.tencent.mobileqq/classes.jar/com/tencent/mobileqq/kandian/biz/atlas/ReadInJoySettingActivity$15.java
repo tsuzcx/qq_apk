@@ -12,13 +12,13 @@ class ReadInJoySettingActivity$15
   public void onDismiss()
   {
     ReadInJoySettingActivity.a(this.a, true);
-    ReadInJoySettingActivity.a(this.a).setChecked(true ^ ReadInJoySettingActivity.a(this.a));
-    ReadInJoySettingActivity.a(this.a).cancel();
+    ReadInJoySettingActivity.b(this.a).setChecked(true ^ ReadInJoySettingActivity.a(this.a));
+    ReadInJoySettingActivity.f(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoySettingActivity.15
  * JD-Core Version:    0.7.0.1
  */

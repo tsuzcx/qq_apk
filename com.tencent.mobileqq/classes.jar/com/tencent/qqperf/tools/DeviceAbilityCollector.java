@@ -82,8 +82,8 @@ public class DeviceAbilityCollector
     }
     int k = -1;
     label156:
-    int n = ProcessStats.a();
-    int i1 = (int)(DeviceInfoUtil.c() / 1024L);
+    int n = ProcessStats.b();
+    int i1 = (int)(DeviceInfoUtil.l() / 1024L);
     int i3 = (int)(DeviceInfoUtil.a() / 1024L / 1024L);
     Object localObject = new HashMap(16);
     ((HashMap)localObject).put("totalRom", String.valueOf(i2));
@@ -103,7 +103,7 @@ public class DeviceAbilityCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.DeviceAbilityCollector
  * JD-Core Version:    0.7.0.1
  */

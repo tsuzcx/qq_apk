@@ -19,14 +19,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ArticleReadInfoModule
   extends ReadInJoyEngineModule
 {
-  private IFindRemovedEntity<ArticleReadInfo> jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity = new ArticleReadInfoModule.1(this);
-  private HashMap<Long, ArticleReadInfo> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicBoolean a = new AtomicBoolean(false);
+  private HashMap<Long, ArticleReadInfo> b = new LinkedHashMap();
+  private IFindRemovedEntity<ArticleReadInfo> c = new ArticleReadInfoModule.1(this);
   
   public ArticleReadInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    registerEntityFinder(ArticleReadInfo.class, this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity);
+    registerEntityFinder(ArticleReadInfo.class, this.c);
   }
   
   private void a(List<ArticleReadInfo> paramList)
@@ -39,7 +39,7 @@ public class ArticleReadInfoModule
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.a.get())
     {
       QLog.d("ArticleReadInfoModule", 1, "article read info has loaded");
       return;
@@ -47,23 +47,9 @@ public class ArticleReadInfoModule
     this.mExecutorService.execute(new ArticleReadInfoModule.2(this));
   }
   
-  public void a(long paramLong)
-  {
-    Object localObject = (ArticleReadInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if (localObject != null)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-      this.mExecutorService.execute(new ArticleReadInfoModule.5(this, (ArticleReadInfo)localObject));
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("DeleteArticle ReadInfo , articleID : ");
-    ((StringBuilder)localObject).append(paramLong);
-    QLog.d("ArticleInfo", 2, ((StringBuilder)localObject).toString());
-  }
-  
   public void a(long paramLong1, long paramLong2)
   {
-    ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
+    ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)this.b.get(Long.valueOf(paramLong1));
     if (localArticleReadInfo == null)
     {
       localArticleReadInfo = new ArticleReadInfo();
@@ -82,24 +68,38 @@ public class ArticleReadInfoModule
   
   public void a(ArticleReadInfo paramArticleReadInfo)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramArticleReadInfo.mArticleID), paramArticleReadInfo);
+    this.b.put(Long.valueOf(paramArticleReadInfo.mArticleID), paramArticleReadInfo);
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) != null;
+    return this.b.get(Long.valueOf(paramLong)) != null;
+  }
+  
+  public void b(long paramLong)
+  {
+    Object localObject = (ArticleReadInfo)this.b.get(Long.valueOf(paramLong));
+    if (localObject != null)
+    {
+      this.b.remove(Long.valueOf(paramLong));
+      this.mExecutorService.execute(new ArticleReadInfoModule.5(this, (ArticleReadInfo)localObject));
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DeleteArticle ReadInfo , articleID : ");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.d("ArticleInfo", 2, ((StringBuilder)localObject).toString());
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleReadInfoModule
  * JD-Core Version:    0.7.0.1
  */

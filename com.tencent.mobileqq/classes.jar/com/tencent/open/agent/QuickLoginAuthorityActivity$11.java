@@ -32,7 +32,7 @@ class QuickLoginAuthorityActivity$11
       return;
     }
     localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_JavaLangString.equals(localObject))
+    if (!this.a.b.equals(localObject))
     {
       QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "getAppInfo onReceive return for account not equals");
       return;
@@ -58,7 +58,7 @@ class QuickLoginAuthorityActivity$11
                 localStringBuilder.append(paramBundle);
                 QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, localStringBuilder.toString());
                 QuickLoginAuthorityActivity.a(this.a, true);
-                this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(paramBundle, null);
+                this.a.q.a(paramBundle, null);
               }
               if ((((GetAppInfoProto.GetAppinfoResponse)localObject).iconsURL != null) && (((GetAppInfoProto.GetAppinfoResponse)localObject).iconsURL.has()))
               {
@@ -120,7 +120,7 @@ class QuickLoginAuthorityActivity$11
           localObject = Message.obtain();
           ((Message)localObject).what = 1001;
           ((Message)localObject).obj = paramBundle;
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+          this.a.s.sendMessage((Message)localObject);
           return;
         }
       }
@@ -130,7 +130,7 @@ class QuickLoginAuthorityActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.11
  * JD-Core Version:    0.7.0.1
  */

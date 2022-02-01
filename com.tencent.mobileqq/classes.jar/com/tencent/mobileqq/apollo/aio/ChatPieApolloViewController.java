@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper;
@@ -38,8 +37,6 @@ import com.tencent.mobileqq.apollo.statistics.CmShowStatUtil;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceMappingIml;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
-import com.tencent.mobileqq.apollo.view.ApolloBackgroundViewListener;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
 import com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,127 +53,121 @@ import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
 import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
 import com.tencent.mobileqq.cmshow.engine.render.ISurfaceStateListener;
 import com.tencent.mobileqq.cmshow.engine.render.ITouchListener;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.scene.Scene;
+import com.tencent.mobileqq.cmshow.engine.statistic.IScriptStatistic;
+import com.tencent.mobileqq.cmshow.engine.statistic.IStatisticService;
 import com.tencent.mobileqq.troop.troopgag.data.SelfGagInfo;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
+import java.util.Arrays;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class ChatPieApolloViewController
   implements AIOShortcutBarHelper.OnVisibilityChangedListener, IChatPieApolloViewController
 {
-  private int jdField_a_of_type_Int;
   public BarrageView a;
-  public InputGlobalLayoutListener a;
-  private ICMShowEngine jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
-  private ICMShowView jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
-  private int jdField_b_of_type_Int;
-  private ICMShowEngine jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
-  private ICMShowView jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
-  private int c;
-  
-  private ChatApolloViewListener a(BaseChatPie paramBaseChatPie)
-  {
-    Object localObject = null;
-    if (paramBaseChatPie == null) {
-      return null;
-    }
-    ApolloAIOHelperImpl localApolloAIOHelperImpl = (ApolloAIOHelperImpl)paramBaseChatPie.a(8);
-    paramBaseChatPie = localObject;
-    if (localApolloAIOHelperImpl != null) {
-      paramBaseChatPie = localApolloAIOHelperImpl.mApolloViewObserver;
-    }
-    return paramBaseChatPie;
-  }
+  public InputGlobalLayoutListener b;
+  private ICMShowEngine c;
+  private ICMShowView d;
+  private ICMShowEngine e;
+  private ICMShowView f;
+  private int g;
+  private int h;
+  private int i;
+  private IScriptStatistic j = new ChatPieApolloViewController.1(this);
   
   /* Error */
   @org.jetbrains.annotations.NotNull
   private void a(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: new 44	java/lang/StringBuilder
+    //   0: new 47	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   7: astore_3
     //   8: aload_3
-    //   9: getstatic 50	com/tencent/mobileqq/apollo/utils/ApolloConstant:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: getstatic 53	com/tencent/mobileqq/apollo/utils/ApolloConstant:a	Ljava/lang/String;
+    //   12: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: pop
     //   16: aload_3
     //   17: aload_1
-    //   18: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: pop
     //   22: aload_3
-    //   23: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   23: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   26: astore_3
-    //   27: new 60	java/io/File
+    //   27: new 63	java/io/File
     //   30: dup
     //   31: aload_3
-    //   32: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
-    //   35: invokevirtual 67	java/io/File:exists	()Z
+    //   32: invokespecial 66	java/io/File:<init>	(Ljava/lang/String;)V
+    //   35: invokevirtual 70	java/io/File:exists	()Z
     //   38: ifeq +4 -> 42
     //   41: return
-    //   42: getstatic 73	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   45: invokevirtual 77	mqq/app/MobileQQ:getResources	()Landroid/content/res/Resources;
+    //   42: getstatic 76	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   45: invokevirtual 80	mqq/app/MobileQQ:getResources	()Landroid/content/res/Resources;
     //   48: astore_1
     //   49: aload_1
     //   50: ifnonnull +12 -> 62
-    //   53: ldc 79
+    //   53: ldc 82
     //   55: iconst_1
-    //   56: ldc 81
-    //   58: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: ldc 84
+    //   58: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   61: return
     //   62: aload_1
     //   63: iload_2
-    //   64: invokestatic 93	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   64: invokestatic 95	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
     //   67: astore 4
     //   69: aload 4
     //   71: ifnonnull +12 -> 83
-    //   74: ldc 79
+    //   74: ldc 82
     //   76: iconst_1
-    //   77: ldc 95
-    //   79: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: ldc 97
+    //   79: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   82: return
     //   83: aconst_null
     //   84: astore 5
     //   86: aconst_null
     //   87: astore_1
-    //   88: new 97	java/io/FileOutputStream
+    //   88: new 99	java/io/FileOutputStream
     //   91: dup
     //   92: aload_3
-    //   93: invokespecial 98	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   93: invokespecial 100	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   96: astore_3
     //   97: aload 4
-    //   99: getstatic 104	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   99: getstatic 106	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   102: bipush 100
     //   104: aload_3
-    //   105: invokevirtual 110	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   105: invokevirtual 112	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   108: pop
     //   109: aload_3
-    //   110: invokevirtual 115	java/io/OutputStream:close	()V
+    //   110: invokevirtual 117	java/io/OutputStream:close	()V
     //   113: return
     //   114: astore_1
-    //   115: new 44	java/lang/StringBuilder
+    //   115: new 47	java/lang/StringBuilder
     //   118: dup
-    //   119: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   119: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   122: astore_3
     //   123: aload_3
-    //   124: ldc 117
-    //   126: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: ldc 119
+    //   126: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: pop
     //   130: aload_3
     //   131: aload_1
-    //   132: invokevirtual 120	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   135: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 122	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   135: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: pop
-    //   139: ldc 79
+    //   139: ldc 82
     //   141: iconst_1
     //   142: aload_3
-    //   143: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   143: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   149: return
     //   150: astore 4
     //   152: aload_3
@@ -193,66 +184,66 @@ public class ChatPieApolloViewController
     //   173: astore_3
     //   174: aload_3
     //   175: astore_1
-    //   176: new 44	java/lang/StringBuilder
+    //   176: new 47	java/lang/StringBuilder
     //   179: dup
-    //   180: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   180: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   183: astore 5
     //   185: aload_3
     //   186: astore_1
     //   187: aload 5
-    //   189: ldc 117
-    //   191: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: ldc 119
+    //   191: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   194: pop
     //   195: aload_3
     //   196: astore_1
     //   197: aload 5
     //   199: aload 4
-    //   201: invokevirtual 121	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   204: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 123	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   204: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: pop
     //   208: aload_3
     //   209: astore_1
-    //   210: ldc 79
+    //   210: ldc 82
     //   212: iconst_1
     //   213: aload 5
-    //   215: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   218: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   221: aload_3
     //   222: ifnull +20 -> 242
     //   225: aload_3
-    //   226: invokevirtual 115	java/io/OutputStream:close	()V
+    //   226: invokevirtual 117	java/io/OutputStream:close	()V
     //   229: return
     //   230: astore_1
-    //   231: new 44	java/lang/StringBuilder
+    //   231: new 47	java/lang/StringBuilder
     //   234: dup
-    //   235: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   235: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   238: astore_3
     //   239: goto -116 -> 123
     //   242: return
     //   243: aload_1
     //   244: ifnull +49 -> 293
     //   247: aload_1
-    //   248: invokevirtual 115	java/io/OutputStream:close	()V
+    //   248: invokevirtual 117	java/io/OutputStream:close	()V
     //   251: goto +42 -> 293
     //   254: astore_1
-    //   255: new 44	java/lang/StringBuilder
+    //   255: new 47	java/lang/StringBuilder
     //   258: dup
-    //   259: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   259: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   262: astore 4
     //   264: aload 4
-    //   266: ldc 117
-    //   268: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: ldc 119
+    //   268: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: pop
     //   272: aload 4
     //   274: aload_1
-    //   275: invokevirtual 120	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   278: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: invokevirtual 122	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   278: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   281: pop
-    //   282: ldc 79
+    //   282: ldc 82
     //   284: iconst_1
     //   285: aload 4
-    //   287: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   290: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   290: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   293: goto +5 -> 298
     //   296: aload_3
     //   297: athrow
@@ -286,26 +277,32 @@ public class ChatPieApolloViewController
     //   247	251	254	java/io/IOException
   }
   
-  private void d()
+  private void e()
   {
-    ThreadManagerV2.executeOnFileThread(new ChatPieApolloViewController.1(this));
+    ThreadManagerV2.executeOnFileThread(new ChatPieApolloViewController.2(this));
   }
   
-  private void g(BaseChatPie paramBaseChatPie)
+  private ChatApolloViewListener h(BaseChatPie paramBaseChatPie)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-    ApolloDaoManagerServiceImpl localApolloDaoManagerServiceImpl = (ApolloDaoManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
-    String str = localQQAppInterface.getCurrentAccountUin();
-    ThreadManager.getFileThreadHandler().post(new ChatPieApolloViewController.4(this, paramBaseChatPie, str, localApolloDaoManagerServiceImpl, localApolloManagerServiceImpl, localQQAppInterface));
-  }
-  
-  public void a()
-  {
-    ICMShowView localICMShowView = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
-    if (localICMShowView != null) {
-      localICMShowView.getView().setVisibility(this.jdField_a_of_type_Int);
+    Object localObject = null;
+    if (paramBaseChatPie == null) {
+      return null;
     }
+    ApolloAIOHelperImpl localApolloAIOHelperImpl = (ApolloAIOHelperImpl)paramBaseChatPie.q(8);
+    paramBaseChatPie = localObject;
+    if (localApolloAIOHelperImpl != null) {
+      paramBaseChatPie = localApolloAIOHelperImpl.mApolloViewObserver;
+    }
+    return paramBaseChatPie;
+  }
+  
+  private void i(BaseChatPie paramBaseChatPie)
+  {
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+    ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all");
+    ApolloDaoManagerServiceImpl localApolloDaoManagerServiceImpl = (ApolloDaoManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloDaoManagerService.class, "all");
+    String str = localQQAppInterface.getCurrentAccountUin();
+    ThreadManager.getFileThreadHandler().post(new ChatPieApolloViewController.5(this, paramBaseChatPie, str, localApolloDaoManagerServiceImpl, localApolloManagerServiceImpl, localQQAppInterface));
   }
   
   public void a(int paramInt)
@@ -317,98 +314,99 @@ public class ChatPieApolloViewController
       bool = false;
     }
     if (!bool) {
-      paramInt = this.jdField_b_of_type_Int;
+      paramInt = this.h;
     } else {
       paramInt = 0;
     }
-    QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, new Object[] { "onVisibilityChanged, isVisible:", Boolean.valueOf(bool), ", bottomMargin:", Integer.valueOf(paramInt) });
-    int i;
+    QLog.d("[cmshow]ChatPieApolloViewController", 1, new Object[] { "onVisibilityChanged, isVisible:", Boolean.valueOf(bool), ", bottomMargin:", Integer.valueOf(paramInt) });
+    int k;
     if (bool) {
-      i = 2131377004;
+      k = 2131445368;
     } else {
-      i = 2131368875;
+      k = 2131435809;
     }
-    b(i);
+    b(k);
     d(paramInt);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = ((ICMShowView)localObject).getView();
-      int i = ((View)localObject).getBottom();
-      int j = ((View)localObject).getTop();
-      if (((i > 0) && (i - j < paramInt)) || (paramBoolean))
+      int k = ((View)localObject).getBottom();
+      int m = ((View)localObject).getTop();
+      if (((k > 0) && (k - m < paramInt)) || (paramBoolean))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("checkApolloViewLayout invisible apolloBottom:");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(k);
         ((StringBuilder)localObject).append(",apolloTop:");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(m);
         ((StringBuilder)localObject).append(",titleHeight:");
         ((StringBuilder)localObject).append(paramInt);
-        QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, ((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().setVisibility(4);
+        QLog.i("[cmshow]ChatPieApolloViewController", 1, ((StringBuilder)localObject).toString());
+        this.d.getView().setVisibility(4);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().getVisibility() == 4) {
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().setVisibility(0);
+      if (this.d.getView().getVisibility() == 4) {
+        this.d.getView().setVisibility(0);
       }
     }
   }
   
   public void a(BaseChatPie paramBaseChatPie)
   {
-    CEEngineHelper.a.a(Scene.AIO, paramBaseChatPie.a());
+    Object localObject = Arrays.asList(new Scene[] { Scene.AIO, Scene.MEME_PLAYER });
+    CEEngineHelper.a.a((List)localObject, paramBaseChatPie.bl());
     long l = System.currentTimeMillis();
-    if ((paramBaseChatPie != null) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((paramBaseChatPie != null) && (paramBaseChatPie.d != null) && (paramBaseChatPie.ah != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView != null)
+      if (this.d != null)
       {
-        QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine CMShowView is already inited, return.");
+        QLog.i("[cmshow]ChatPieApolloViewController", 1, "checkNeedPreLoadEngine CMShowView is already inited, return.");
         return;
       }
-      if (paramBaseChatPie.d() >= 7)
+      if (paramBaseChatPie.bb() >= 7)
       {
-        QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine aio is finished, not init apollo.");
+        QLog.i("[cmshow]ChatPieApolloViewController", 1, "checkNeedPreLoadEngine aio is finished, not init apollo.");
         return;
       }
       if ((!TextUtils.isEmpty(ApolloManagerServiceImpl.sEngineScript)) && (!TextUtils.isEmpty(ApolloManagerServiceImpl.sBasicScript)))
       {
-        boolean bool = ApolloConfigUtils.d ^ true;
-        Object localObject = new StringBuilder();
+        boolean bool = ApolloConfigUtils.k ^ true;
+        localObject = new StringBuilder();
         ((StringBuilder)localObject).append("TraceReport CmShowStatUtil cm3dPreLoad:");
         ((StringBuilder)localObject).append(bool);
-        QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, ((StringBuilder)localObject).toString());
+        QLog.i("[cmshow]ChatPieApolloViewController", 1, ((StringBuilder)localObject).toString());
         if (!bool) {
           return;
         }
-        if (!SpriteUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        if (!SpriteUtil.a(paramBaseChatPie.d, paramBaseChatPie.ah.a, paramBaseChatPie.ah.b))
         {
-          QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine !SpriteUtil.isProperAIO");
+          QLog.i("[cmshow]ChatPieApolloViewController", 1, "checkNeedPreLoadEngine !SpriteUtil.isProperAIO");
           return;
         }
-        if (!((IApolloManagerService)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(BaseApplicationImpl.getContext()))
+        if (!((IApolloManagerService)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(BaseApplicationImpl.getContext()))
         {
-          QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, "Not in white list.");
+          QLog.d("[cmshow]ChatPieApolloViewController", 1, "Not in white list.");
           return;
         }
-        localObject = ((TroopGagMgr)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true);
-        if ((localObject != null) && (((SelfGagInfo)localObject).jdField_a_of_type_Boolean))
+        localObject = ((TroopGagMgr)paramBaseChatPie.d.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramBaseChatPie.ah.b, true);
+        if ((localObject != null) && (((SelfGagInfo)localObject).b))
         {
-          QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine isGag");
+          QLog.i("[cmshow]ChatPieApolloViewController", 1, "checkNeedPreLoadEngine isGag");
           return;
         }
-        if (SpriteUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        if (SpriteUtil.d(paramBaseChatPie.d))
         {
-          QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, "Apollo func is double-hidden.");
+          QLog.d("[cmshow]ChatPieApolloViewController", 1, "Apollo func is double-hidden.");
           return;
         }
-        if (!SpriteUtil.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        if (!SpriteUtil.b(paramBaseChatPie.d, paramBaseChatPie.ah.a, paramBaseChatPie.ah.b))
         {
-          QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine !canUseCmShow");
+          QLog.i("[cmshow]ChatPieApolloViewController", 1, "checkNeedPreLoadEngine !canUseCmShow");
           return;
         }
         if (QLog.isColorLevel())
@@ -416,33 +414,33 @@ public class ChatPieApolloViewController
           paramBaseChatPie = new StringBuilder();
           paramBaseChatPie.append("checkNeedPreLoadEngine use:");
           paramBaseChatPie.append(System.currentTimeMillis() - l);
-          QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, paramBaseChatPie.toString());
+          QLog.i("[cmshow]ChatPieApolloViewController", 1, paramBaseChatPie.toString());
         }
         return;
       }
-      QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "sava_native_log checkNeedPreLoadEngine script empty");
+      QLog.i("[cmshow]ChatPieApolloViewController", 1, "sava_native_log checkNeedPreLoadEngine script empty");
       return;
     }
-    QLog.e("[cmshow]sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine chatPie is null");
+    QLog.e("[cmshow]ChatPieApolloViewController", 1, "checkNeedPreLoadEngine chatPie is null");
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, new Object[] { "onDrawRectHeightChanged height:", Integer.valueOf(paramInt) });
+      QLog.d("[cmshow]ChatPieApolloViewController", 2, new Object[] { "onDrawRectHeightChanged height:", Integer.valueOf(paramInt) });
     }
-    paramQQAppInterface = SpriteUtil.a(paramQQAppInterface);
+    paramQQAppInterface = SpriteUtil.i(paramQQAppInterface);
     if (paramQQAppInterface != null)
     {
-      ICMShowView localICMShowView = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+      ICMShowView localICMShowView = this.d;
       if (localICMShowView != null)
       {
-        int j = localICMShowView.getRenderWidth();
-        int i = paramInt;
+        int m = localICMShowView.getRenderWidth();
+        int k = paramInt;
         if (paramInt == 0) {
-          i = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getRenderHeight();
+          k = this.d.getRenderHeight();
         }
-        paramQQAppInterface.a(j, i);
+        paramQQAppInterface.a(m, k);
       }
     }
   }
@@ -450,116 +448,38 @@ public class ChatPieApolloViewController
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, new Object[] { "showApolloView show:", Boolean.valueOf(paramBoolean) });
+      QLog.d("[cmshow]ChatPieApolloViewController", 2, new Object[] { "showApolloView show:", Boolean.valueOf(paramBoolean) });
     }
-    ICMShowView localICMShowView = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    ICMShowView localICMShowView = this.d;
     if (localICMShowView != null)
     {
-      this.jdField_a_of_type_Int = localICMShowView.getView().getVisibility();
+      this.g = localICMShowView.getView().getVisibility();
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_Int != 0) {
-          this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().setVisibility(0);
+        if (this.g != 0) {
+          this.d.getView().setVisibility(0);
         }
       }
-      else if (this.jdField_a_of_type_Int != 8) {
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().setVisibility(8);
+      else if (this.g != 8) {
+        this.d.getView().setVisibility(8);
       }
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView != null;
-  }
-  
-  public boolean a(BaseChatPie paramBaseChatPie)
-  {
-    QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, new Object[] { "ifApolloFunAvailThenInit, mCMShowView:", this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView });
-    if ((paramBaseChatPie != null) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView != null)
-      {
-        QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, "surfaceview is already inited, return.");
-        return false;
-      }
-      if (!SpriteUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-        return false;
-      }
-      Object localObject1 = (SpriteScriptManagerImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
-      ((SpriteScriptManagerImpl)localObject1).setPie(paramBaseChatPie);
-      boolean bool = ((SpriteScriptManagerImpl)localObject1).getSpriteContext().d();
-      if ((!((IApolloManagerService)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(BaseApplicationImpl.getContext())) && (!bool))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, "Not in white list.");
-        }
-        return false;
-      }
-      Object localObject2 = ((TroopGagMgr)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true);
-      if ((localObject2 != null) && (((SelfGagInfo)localObject2).jdField_a_of_type_Boolean)) {
-        return false;
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("TraceReport CmShowStatUtil start TraceReport_total isNoneApolloActionPlay:");
-      ((StringBuilder)localObject2).append(bool);
-      QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, ((StringBuilder)localObject2).toString());
-      if (QLog.isColorLevel())
-      {
-        CmShowStatUtil.a("exeBase");
-        CmShowStatUtil.a("exeCmshow0");
-        CmShowStatUtil.a("exeCommon");
-      }
-      CmShowStatUtil.b("aio_pre");
-      int i = TraceReportUtil.a(0);
-      TraceReportUtil.a(i, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      TraceReportUtil.a(i, 1);
-      TraceReportUtil.a(i, 10);
-      TraceReportUtil.a(i, null, new int[] { TraceMappingIml.a(i, false, 0, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false) });
-      if (SpriteUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, "Apollo func is double-hidden.");
-        }
-        TraceReportUtil.a(i, 10, 103, new Object[] { "double hidden" });
-        return false;
-      }
-      if (!SpriteUtil.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-        return false;
-      }
-      localObject1 = ((SpriteScriptManagerImpl)localObject1).getUIHandler();
-      if (localObject1 != null) {
-        ((ISpriteUIHandler)localObject1).a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
-      }
-      if ((((ApolloDaoManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).apolloAIOStatus != 1) && (!bool))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, "Apollo switch NOT open.");
-        }
-        paramBaseChatPie.a().obtainMessage(62).sendToTarget();
-        return true;
-      }
-      if (Looper.getMainLooper() == Looper.myLooper())
-      {
-        ((ApolloAIOHelperImpl)paramBaseChatPie.a(8)).initApolloSurfaceView();
-        return true;
-      }
-      paramBaseChatPie.a().obtainMessage(65).sendToTarget();
-      return true;
-    }
-    QLog.e("[cmshow]sava_ChatPieApolloViewController", 1, "chatPie is null");
-    return false;
+    return this.d != null;
   }
   
   public boolean a(AIOShortcutBarHelper paramAIOShortcutBarHelper)
   {
     boolean bool = true;
-    if ((paramAIOShortcutBarHelper != null) && (paramAIOShortcutBarHelper.c() == 0))
+    if ((paramAIOShortcutBarHelper != null) && (paramAIOShortcutBarHelper.v() == 0))
     {
-      if (paramAIOShortcutBarHelper.d() == 2) {
+      if (paramAIOShortcutBarHelper.x() == 2) {
         return bool;
       }
-      if (paramAIOShortcutBarHelper.d() == 1) {
+      if (paramAIOShortcutBarHelper.x() == 1) {
         return true;
       }
     }
@@ -569,92 +489,190 @@ public class ChatPieApolloViewController
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView != null)
-    {
-      ICMShowEngine localICMShowEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
-      if (localICMShowEngine != null) {
-        localICMShowEngine.b();
-      }
+    ICMShowView localICMShowView = this.d;
+    if (localICMShowView != null) {
+      localICMShowView.getView().setVisibility(this.g);
     }
   }
   
   public void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((ICMShowView)localObject).getView().getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(2, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().requestLayout();
+        this.d.getView().requestLayout();
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView;
+    localObject = this.a;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((BarrageView)localObject).getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(2, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.requestLayout();
+        this.a.requestLayout();
       }
     }
   }
   
+  public boolean b(BaseChatPie paramBaseChatPie)
+  {
+    QLog.d("[cmshow]ChatPieApolloViewController", 1, new Object[] { "validateCmShowFun, mCMShowView:", this.d });
+    if ((paramBaseChatPie != null) && (paramBaseChatPie.d != null) && (paramBaseChatPie.ah != null))
+    {
+      if (this.d != null)
+      {
+        QLog.i("[cmshow]ChatPieApolloViewController", 1, "surfaceview is already inited, return.");
+        return false;
+      }
+      if (!SpriteUtil.a(paramBaseChatPie.d, paramBaseChatPie.ah.a, paramBaseChatPie.ah.b)) {
+        return false;
+      }
+      Object localObject1 = (SpriteScriptManagerImpl)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all");
+      ((SpriteScriptManagerImpl)localObject1).setPie(paramBaseChatPie);
+      boolean bool = ((SpriteScriptManagerImpl)localObject1).getSpriteContext().d();
+      if ((!((IApolloManagerService)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(BaseApplicationImpl.getContext())) && (!bool))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ChatPieApolloViewController", 2, "Not in white list.");
+        }
+        return false;
+      }
+      Object localObject2 = ((TroopGagMgr)paramBaseChatPie.d.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramBaseChatPie.ah.b, true);
+      if ((localObject2 != null) && (((SelfGagInfo)localObject2).b)) {
+        return false;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("TraceReport CmShowStatUtil start TraceReport_total isNoneApolloActionPlay:");
+      ((StringBuilder)localObject2).append(bool);
+      QLog.i("[cmshow]ChatPieApolloViewController", 1, ((StringBuilder)localObject2).toString());
+      if (QLog.isColorLevel())
+      {
+        CmShowStatUtil.a("exeBase");
+        CmShowStatUtil.a("exeCmshow0");
+        CmShowStatUtil.a("exeCommon");
+      }
+      CmShowStatUtil.b("aio_pre");
+      int k = TraceReportUtil.c(0);
+      TraceReportUtil.a(k, paramBaseChatPie.ah.b);
+      TraceReportUtil.a(k, 1);
+      TraceReportUtil.a(k, 10);
+      TraceReportUtil.a(k, null, new int[] { TraceMappingIml.a(k, false, 0, paramBaseChatPie.ah.a, false) });
+      if (SpriteUtil.d(paramBaseChatPie.d))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ChatPieApolloViewController", 2, "Apollo func is double-hidden.");
+        }
+        TraceReportUtil.a(k, 10, 103, new Object[] { "double hidden" });
+        return false;
+      }
+      if (!SpriteUtil.b(paramBaseChatPie.d, paramBaseChatPie.ah.a, paramBaseChatPie.ah.b)) {
+        return false;
+      }
+      localObject1 = ((SpriteScriptManagerImpl)localObject1).getUIHandler();
+      if (localObject1 != null) {
+        ((ISpriteUIHandler)localObject1).a(paramBaseChatPie.U, paramBaseChatPie.V);
+      }
+      if ((((ApolloDaoManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(paramBaseChatPie.d.getCurrentAccountUin()).apolloAIOStatus != 1) && (!bool))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ChatPieApolloViewController", 2, "Apollo switch NOT open.");
+        }
+        paramBaseChatPie.j().obtainMessage(62).sendToTarget();
+        return true;
+      }
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        ((ApolloAIOHelperImpl)paramBaseChatPie.q(8)).initApolloSurfaceView();
+        return true;
+      }
+      paramBaseChatPie.j().obtainMessage(65).sendToTarget();
+      return true;
+    }
+    QLog.e("[cmshow]ChatPieApolloViewController", 1, "chatPie is null");
+    return false;
+  }
+  
+  public void c()
+  {
+    if (this.d != null)
+    {
+      ICMShowEngine localICMShowEngine = this.c;
+      if (localICMShowEngine != null) {
+        localICMShowEngine.l();
+      }
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.h = paramInt;
+  }
+  
   @TargetApi(14)
-  public void b(BaseChatPie paramBaseChatPie)
+  public void c(BaseChatPie paramBaseChatPie)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, "initApolloSurfaceView");
+      QLog.d("[cmshow]ChatPieApolloViewController", 2, "initApolloSurfaceView");
     }
     if (paramBaseChatPie == null) {
       return;
     }
-    int i = TraceReportUtil.a(0);
-    if (paramBaseChatPie.d() >= 7)
+    int k = TraceReportUtil.c(0);
+    if (paramBaseChatPie.bb() >= 7)
     {
-      TraceReportUtil.a(i, 10, 106, new Object[] { "aio is finished" });
+      TraceReportUtil.a(k, 10, 106, new Object[] { "aio is finished" });
       if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, "aio is finished, not init apollo.");
+        QLog.d("[cmshow]ChatPieApolloViewController", 2, "aio is finished, not init apollo.");
       }
       return;
     }
     Object localObject1;
-    if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (paramBaseChatPie.d != null)
     {
-      localObject1 = (IApolloPushManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloPushManager.class, "all");
-      ((IApolloPushManager)localObject1).setActionPushListener(new ChatPieApolloViewController.2(this, paramBaseChatPie, (IApolloPushManager)localObject1));
+      if (!ApolloResManagerFacade.a.a(Scene.AIO).a(paramBaseChatPie.d))
+      {
+        QLog.e("[cmshow]ChatPieApolloViewController", 1, "initApolloSurfaceView check role0 fail, download");
+        TraceReportUtil.a(k, 10, 110, new Object[] { "aio role0 not ready" });
+        return;
+      }
+      localObject1 = (IApolloPushManager)paramBaseChatPie.d.getRuntimeService(IApolloPushManager.class, "all");
+      ((IApolloPushManager)localObject1).setActionPushListener(new ChatPieApolloViewController.3(this, paramBaseChatPie, (IApolloPushManager)localObject1));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView != null)
+    if (this.d != null)
     {
-      QLog.e("[cmshow]sava_ChatPieApolloViewController", 1, "CMShowView is already created");
+      QLog.e("[cmshow]ChatPieApolloViewController", 1, "CMShowView is already created");
       return;
     }
-    if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      localObject1 = (SpriteScriptManagerImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
+    if (paramBaseChatPie.d != null) {
+      localObject1 = (SpriteScriptManagerImpl)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all");
     } else {
       localObject1 = null;
     }
-    TraceReportUtil.a(i, 10, 0, new Object[] { "cmshow switch done" });
-    TraceReportUtil.a(i, 100);
+    TraceReportUtil.a(k, 10, 0, new Object[] { "cmshow switch done" });
+    TraceReportUtil.a(k, 100);
     CmShowStatUtil.a("onSurfaceCreated");
     for (;;)
     {
       try
       {
-        localObject3 = a(paramBaseChatPie);
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = CMShowPlatform.a.a(BaseApplicationImpl.getApplication(), Scene.AIO);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine.a();
+        localObject3 = h(paramBaseChatPie);
+        this.c = CMShowPlatform.a.a(BaseApplicationImpl.getApplication(), Scene.AIO);
+        this.c.i().a(this.j);
+        localObject2 = this.c.c();
         ((IRenderService)localObject2).a((ISurfaceStateListener)localObject3);
         ((IRenderService)localObject2).a((ITouchListener)localObject3);
         localObject3 = new RenderConfig();
         localApolloManagerServiceImpl = (ApolloManagerServiceImpl)ApolloUtilImpl.getQQApp().getRuntimeService(IApolloManagerService.class, "all");
         if (Build.VERSION.SDK_INT >= 26) {
-          break label834;
+          break label963;
         }
         if (!localApolloManagerServiceImpl.isUseTextureViewConfig()) {
-          break label829;
+          break label958;
         }
       }
       catch (OutOfMemoryError paramBaseChatPie)
@@ -662,305 +680,326 @@ public class ChatPieApolloViewController
         Object localObject3;
         Object localObject2;
         ApolloManagerServiceImpl localApolloManagerServiceImpl;
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView = null;
-        QLog.e("[cmshow]sava_ChatPieApolloViewController", 1, "init CMSHowView exception", paramBaseChatPie);
+        this.d = null;
+        QLog.e("[cmshow]ChatPieApolloViewController", 1, "init CMSHowView exception", paramBaseChatPie);
         return;
       }
-      ((RenderConfig)localObject3).jdField_a_of_type_Boolean = bool;
-      ((RenderConfig)localObject3).jdField_a_of_type_Int = SpriteUtil.a();
-      ((RenderConfig)localObject3).c = localApolloManagerServiceImpl.isDisableCreateRenderThread();
-      ((RenderConfig)localObject3).b = true;
+      ((RenderConfig)localObject3).a = bool;
+      ((RenderConfig)localObject3).b = SpriteUtil.a();
+      ((RenderConfig)localObject3).d = localApolloManagerServiceImpl.isDisableCreateRenderThread();
+      ((RenderConfig)localObject3).c = true;
       ((IRenderService)localObject2).a((RenderConfig)localObject3);
-      this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView = ((IRenderService)localObject2).a();
+      this.d = ((IRenderService)localObject2).a();
       if (localObject1 != null) {
-        ((SpriteContext)((SpriteScriptManagerImpl)localObject1).getSpriteContext()).a(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine);
+        ((SpriteContext)((SpriteScriptManagerImpl)localObject1).getSpriteContext()).a(this.c);
       }
-      d();
+      e();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("init CMSHowView:");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView);
-      QLog.w("[cmshow]sava_ChatPieApolloViewController", 1, ((StringBuilder)localObject2).toString());
-      ThreadManager.excute(new ChatPieApolloViewController.3(this, paramBaseChatPie, (SpriteScriptManagerImpl)localObject1), 16, null, false);
+      ((StringBuilder)localObject2).append(this.d);
+      QLog.w("[cmshow]ChatPieApolloViewController", 1, ((StringBuilder)localObject2).toString());
+      ThreadManager.excute(new ChatPieApolloViewController.4(this, paramBaseChatPie, (SpriteScriptManagerImpl)localObject1), 16, null, false);
       localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isInMultiWindow()) {
+      if (paramBaseChatPie.f.isInMultiWindow()) {
         ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
       } else {
-        ((RelativeLayout.LayoutParams)localObject2).topMargin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getHeight();
+        ((RelativeLayout.LayoutParams)localObject2).topMargin = paramBaseChatPie.p.getHeight();
       }
-      localObject3 = (AIOShortcutBarHelper)paramBaseChatPie.a(52);
+      localObject3 = (AIOShortcutBarHelper)paramBaseChatPie.q(52);
       if (localObject3 != null)
       {
         ((AIOShortcutBarHelper)localObject3).a(2, this);
         ((AIOShortcutBarHelper)localObject3).a(1, this);
       }
       boolean bool = a((AIOShortcutBarHelper)localObject3);
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      if (paramBaseChatPie.Y != null) {
         if (Build.VERSION.SDK_INT >= 11)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener == null) {
-            this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener = new InputGlobalLayoutListener(paramBaseChatPie);
+          if (this.b == null) {
+            this.b = new InputGlobalLayoutListener(paramBaseChatPie);
           }
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener.jdField_a_of_type_Int = 0;
-          if ((paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getParent() instanceof ViewGroup)) {
-            ((ViewGroup)paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getParent()).addOnLayoutChangeListener(this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener);
+          this.b.a = 0;
+          if ((paramBaseChatPie.Y.getParent() instanceof ViewGroup)) {
+            ((ViewGroup)paramBaseChatPie.Y.getParent()).addOnLayoutChangeListener(this.b);
           }
         }
         else
         {
-          this.c = AIOUtils.b(5.0F, paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getResources());
+          this.i = ViewUtils.dip2px(5.0F);
           if (!bool) {
-            ((RelativeLayout.LayoutParams)localObject2).bottomMargin = (-this.c);
+            ((RelativeLayout.LayoutParams)localObject2).bottomMargin = (-this.i);
           }
         }
       }
-      ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131370119);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131437281);
       if (bool) {
-        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131377004);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131445368);
       } else {
-        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131368875);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131435809);
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView = new BarrageView(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, (SpriteContext)((SpriteScriptManagerImpl)localObject1).getSpriteContext());
-      localObject1 = new RelativeLayout.LayoutParams(-1, (int)((float)DeviceInfoUtil.j() * 0.171F));
+      this.a = new BarrageView(paramBaseChatPie.e, (SpriteContext)((SpriteScriptManagerImpl)localObject1).getSpriteContext());
+      localObject3 = new RelativeLayout.LayoutParams(-1, (int)((float)DeviceInfoUtil.E() * 0.171F));
       if (bool) {
-        ((RelativeLayout.LayoutParams)localObject1).addRule(2, 2131377004);
+        ((RelativeLayout.LayoutParams)localObject3).addRule(2, 2131445368);
       } else {
-        ((RelativeLayout.LayoutParams)localObject1).addRule(2, 2131368875);
+        ((RelativeLayout.LayoutParams)localObject3).addRule(2, 2131435809);
       }
-      paramBaseChatPie.a().addView(this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("add CMShowView:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView());
-      ((StringBuilder)localObject1).append(" to chatPie content view tree");
-      QLog.w("[cmshow]sava_ChatPieApolloViewController", 1, ((StringBuilder)localObject1).toString());
-      paramBaseChatPie.a().addView(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView(), (ViewGroup.LayoutParams)localObject2);
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        ((ApolloManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).doAfterOpenAIO(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject1 = paramBaseChatPie.bl();
+      ((RelativeLayout)localObject1).addView(this.a, (ViewGroup.LayoutParams)localObject3);
+      localObject3 = Arrays.asList(new Scene[] { Scene.AIO, Scene.MEME_PLAYER });
+      CEEngineHelper.a.a((List)localObject3, (ViewGroup)localObject1);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("add CMShowView:");
+      ((StringBuilder)localObject3).append(this.d.getView());
+      ((StringBuilder)localObject3).append(" to chatPie content view tree");
+      QLog.w("[cmshow]ChatPieApolloViewController", 1, ((StringBuilder)localObject3).toString());
+      ((RelativeLayout)localObject1).addView(this.d.getView(), (ViewGroup.LayoutParams)localObject2);
+      localObject1 = this.d;
+      if (localObject1 != null) {
+        ((ICMShowView)localObject1).resume();
+      }
+      localObject1 = this.c;
+      if (localObject1 != null) {
+        ((ICMShowEngine)localObject1).k();
+      }
+      if (paramBaseChatPie.d != null) {
+        ((ApolloManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all")).doAfterOpenAIO(paramBaseChatPie.ah, paramBaseChatPie.d);
       }
       return;
-      label829:
+      label958:
       bool = false;
       continue;
-      label834:
+      label963:
       bool = true;
     }
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView != null)
+    if (this.d != null)
     {
-      ICMShowEngine localICMShowEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
-      if ((localICMShowEngine != null) && (this.jdField_a_of_type_Int == 0)) {
-        localICMShowEngine.a();
+      ICMShowEngine localICMShowEngine = this.c;
+      if ((localICMShowEngine != null) && (this.g == 0)) {
+        localICMShowEngine.k();
       }
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void c(BaseChatPie paramBaseChatPie)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]sava_ChatPieApolloViewController", 2, "addApolloBackView");
-    }
-    if (paramBaseChatPie == null) {
-      return;
-    }
-    if (((ApolloManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).isApolloBackgroundActionSwitchOpen())
-    {
-      if (this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine != null) {
-        return;
-      }
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.topMargin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getHeight();
-      boolean bool = a((AIOShortcutBarHelper)paramBaseChatPie.a(52));
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-        if (Build.VERSION.SDK_INT >= 11)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener == null) {
-            this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener = new InputGlobalLayoutListener(paramBaseChatPie);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener.jdField_a_of_type_Int = 0;
-          if ((paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getParent() instanceof ViewGroup)) {
-            ((ViewGroup)paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getParent()).addOnLayoutChangeListener(this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener);
-          }
-        }
-        else
-        {
-          this.c = AIOUtils.b(5.0F, paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getResources());
-          if (!bool) {
-            localLayoutParams.bottomMargin = (-this.c);
-          }
-        }
-      }
-      localLayoutParams.addRule(6, 2131370119);
-      if (bool) {
-        localLayoutParams.addRule(2, 2131377004);
-      } else {
-        localLayoutParams.addRule(2, 2131368875);
-      }
-      this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = CMShowPlatform.a.a(BaseApplicationImpl.getApplication(), Scene.AIO_BACKGROUND);
-      Object localObject = this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine.a();
-      ApolloBackgroundViewListener localApolloBackgroundViewListener = new ApolloBackgroundViewListener(paramBaseChatPie, this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine);
-      ((IRenderService)localObject).a(localApolloBackgroundViewListener);
-      RenderConfig localRenderConfig = new RenderConfig();
-      localRenderConfig.jdField_a_of_type_Boolean = true;
-      localRenderConfig.e = false;
-      ((IRenderService)localObject).a(localRenderConfig);
-      this.jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView = ((IRenderService)localObject).a();
-      localObject = (SpriteScriptManagerImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
-      ((SpriteScriptManagerImpl)localObject).setBackgroundManager(this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine);
-      localObject = ((SpriteScriptManagerImpl)localObject).getSpriteBackgroundManager();
-      if (localObject != null) {
-        localApolloBackgroundViewListener.a((IRenderCallback)localObject);
-      }
-      paramBaseChatPie.a().addView(this.jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView(), 0, localLayoutParams);
     }
   }
   
   public void d(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((ICMShowView)localObject).getView().getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = (-paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView().requestLayout();
+        this.d.getView().requestLayout();
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView;
+    localObject = this.a;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((BarrageView)localObject).getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = (-paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.requestLayout();
+        this.a.requestLayout();
       }
     }
   }
   
   public void d(BaseChatPie paramBaseChatPie)
   {
-    QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, "onResume");
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]ChatPieApolloViewController", 2, "addApolloBackView");
+    }
     if (paramBaseChatPie == null) {
       return;
     }
-    if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (((ApolloManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all")).isApolloBackgroundActionSwitchOpen())
     {
-      ((ApolloManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).checkUserDress(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "C2C");
-      if (a()) {
-        ((SpriteScriptManagerImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all")).doOnResume(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (this.e != null) {
+        return;
       }
-      g(paramBaseChatPie);
-    }
-    paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
-    if (paramBaseChatPie != null) {
-      paramBaseChatPie.resume();
-    }
-    paramBaseChatPie = this.jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
-    if (paramBaseChatPie != null) {
-      paramBaseChatPie.resume();
-    }
-    paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
-    if (paramBaseChatPie != null) {
-      paramBaseChatPie.a();
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.topMargin = paramBaseChatPie.p.getHeight();
+      boolean bool = a((AIOShortcutBarHelper)paramBaseChatPie.q(52));
+      if (paramBaseChatPie.Y != null) {
+        if (Build.VERSION.SDK_INT >= 11)
+        {
+          if (this.b == null) {
+            this.b = new InputGlobalLayoutListener(paramBaseChatPie);
+          }
+          this.b.a = 0;
+          if ((paramBaseChatPie.Y.getParent() instanceof ViewGroup)) {
+            ((ViewGroup)paramBaseChatPie.Y.getParent()).addOnLayoutChangeListener(this.b);
+          }
+        }
+        else
+        {
+          this.i = ViewUtils.dip2px(5.0F);
+          if (!bool) {
+            localLayoutParams.bottomMargin = (-this.i);
+          }
+        }
+      }
+      localLayoutParams.addRule(6, 2131437281);
+      if (bool) {
+        localLayoutParams.addRule(2, 2131445368);
+      } else {
+        localLayoutParams.addRule(2, 2131435809);
+      }
+      this.e = CMShowPlatform.a.a(BaseApplicationImpl.getApplication(), Scene.AIO_BACKGROUND);
+      Object localObject = this.e.c();
+      ApolloBackgroundViewListener localApolloBackgroundViewListener = new ApolloBackgroundViewListener(paramBaseChatPie, this.e);
+      ((IRenderService)localObject).a(localApolloBackgroundViewListener);
+      RenderConfig localRenderConfig = new RenderConfig();
+      localRenderConfig.a = true;
+      ((IRenderService)localObject).a(localRenderConfig);
+      this.f = ((IRenderService)localObject).a();
+      localObject = (SpriteScriptManagerImpl)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all");
+      ((SpriteScriptManagerImpl)localObject).setBackgroundManager(this.e);
+      localObject = ((SpriteScriptManagerImpl)localObject).getSpriteBackgroundManager();
+      if (localObject != null) {
+        localApolloBackgroundViewListener.a((IRenderCallback)localObject);
+      }
+      paramBaseChatPie.bl().addView(this.f.getView(), 0, localLayoutParams);
+      paramBaseChatPie = this.e;
+      if (paramBaseChatPie != null) {
+        paramBaseChatPie.k();
+      }
+      paramBaseChatPie = this.f;
+      if (paramBaseChatPie != null) {
+        paramBaseChatPie.resume();
+      }
     }
   }
   
   public void e(BaseChatPie paramBaseChatPie)
   {
-    QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, "onPause");
+    QLog.d("[cmshow]ChatPieApolloViewController", 1, "onResume");
     if (paramBaseChatPie == null) {
       return;
     }
-    if ((paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (a())) {
-      ((SpriteScriptManagerImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all")).doOnPause(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if (paramBaseChatPie.d != null)
+    {
+      ApolloResManagerFacade.a.a(Scene.AIO).a(paramBaseChatPie.d, paramBaseChatPie.d.getCurrentUin(), "C2C");
+      if (a()) {
+        ((SpriteScriptManagerImpl)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all")).doOnResume(paramBaseChatPie.ah.a, paramBaseChatPie.ah.b);
+      }
+      i(paramBaseChatPie);
     }
-    paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    paramBaseChatPie = this.d;
     if (paramBaseChatPie != null) {
-      paramBaseChatPie.pause();
+      paramBaseChatPie.resume();
     }
-    paramBaseChatPie = this.jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+    paramBaseChatPie = this.f;
     if (paramBaseChatPie != null) {
-      paramBaseChatPie.pause();
+      paramBaseChatPie.resume();
     }
-    paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    paramBaseChatPie = this.c;
     if (paramBaseChatPie != null) {
-      paramBaseChatPie.b();
+      paramBaseChatPie.k();
+    }
+    paramBaseChatPie = this.e;
+    if (paramBaseChatPie != null) {
+      paramBaseChatPie.k();
     }
   }
   
   public void f(BaseChatPie paramBaseChatPie)
   {
-    QLog.d("[cmshow]sava_ChatPieApolloViewController", 1, "onDestroy");
-    if ((paramBaseChatPie != null) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    QLog.d("[cmshow]ChatPieApolloViewController", 1, "onPause");
+    if (paramBaseChatPie == null) {
+      return;
+    }
+    if ((paramBaseChatPie.d != null) && (a())) {
+      ((SpriteScriptManagerImpl)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all")).doOnPause(paramBaseChatPie.ah.a, paramBaseChatPie.ah.b);
+    }
+    paramBaseChatPie = this.d;
+    if (paramBaseChatPie != null) {
+      paramBaseChatPie.pause();
+    }
+    paramBaseChatPie = this.f;
+    if (paramBaseChatPie != null) {
+      paramBaseChatPie.pause();
+    }
+    paramBaseChatPie = this.e;
+    if (paramBaseChatPie != null) {
+      paramBaseChatPie.l();
+    }
+    paramBaseChatPie = this.c;
+    if (paramBaseChatPie != null) {
+      paramBaseChatPie.l();
+    }
+  }
+  
+  public void g(BaseChatPie paramBaseChatPie)
+  {
+    QLog.d("[cmshow]ChatPieApolloViewController", 1, "onDestroy");
+    if ((paramBaseChatPie != null) && (paramBaseChatPie.d != null))
     {
-      ((SpriteScriptManagerImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all")).reset();
+      ((SpriteScriptManagerImpl)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all")).reset();
       if (!a())
       {
-        QLog.e("[cmshow]sava_ChatPieApolloViewController", 1, new Object[] { "[onDestory] isViewAvailable:", Boolean.valueOf(a()) });
+        QLog.e("[cmshow]ChatPieApolloViewController", 1, new Object[] { "[onDestory] isViewAvailable:", Boolean.valueOf(a()) });
         return;
       }
-      ((IApolloPushManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloPushManager.class, "all")).setActionPushListener(null);
+      ((IApolloPushManager)paramBaseChatPie.d.getRuntimeService(IApolloPushManager.class, "all")).setActionPushListener(null);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDestroy mCMShowView:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView);
-      QLog.i("[cmshow]sava_ChatPieApolloViewController", 1, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+      ((StringBuilder)localObject).append(this.d);
+      QLog.i("[cmshow]ChatPieApolloViewController", 1, ((StringBuilder)localObject).toString());
+      localObject = this.d;
       if (localObject != null)
       {
         ((ICMShowView)localObject).getView().setVisibility(8);
-        paramBaseChatPie.a().removeView(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView.getView());
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView = null;
+        paramBaseChatPie.bl().removeView(this.d.getView());
+        this.d = null;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+      localObject = this.c;
       if (localObject != null)
       {
-        ((ICMShowEngine)localObject).c();
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = null;
+        ((ICMShowEngine)localObject).m();
+        this.c = null;
       }
-      localObject = this.jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView;
+      localObject = this.f;
       if (localObject != null)
       {
         BKUtils.a(((ICMShowView)localObject).getView());
-        this.jdField_b_of_type_ComTencentMobileqqCmshowEngineRenderICMShowView = null;
+        this.f = null;
       }
-      localObject = this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+      localObject = this.e;
       if (localObject != null)
       {
-        ((ICMShowEngine)localObject).c();
-        this.jdField_b_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = null;
+        ((ICMShowEngine)localObject).m();
+        this.e = null;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView;
+      localObject = this.a;
       if (localObject != null)
       {
         ((BarrageView)localObject).a();
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.setVisibility(8);
-        paramBaseChatPie.a().removeView(this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView);
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView = null;
+        this.a.setVisibility(8);
+        paramBaseChatPie.bl().removeView(this.a);
+        this.a = null;
       }
-      this.jdField_a_of_type_Int = 0;
-      localObject = (AIOShortcutBarHelper)paramBaseChatPie.a(52);
+      this.g = 0;
+      localObject = (AIOShortcutBarHelper)paramBaseChatPie.q(52);
       if (localObject != null) {
         ((AIOShortcutBarHelper)localObject).b(2, this);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener != null) {
-        paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeOnLayoutChangeListener(this.jdField_a_of_type_ComTencentMobileqqApolloViewInputGlobalLayoutListener);
+      if (this.b != null) {
+        paramBaseChatPie.Y.removeOnLayoutChangeListener(this.b);
       }
       return;
     }
-    QLog.e("[cmshow]sava_ChatPieApolloViewController", 1, new Object[] { "[onDestory] chatPie:", paramBaseChatPie });
+    QLog.e("[cmshow]ChatPieApolloViewController", 1, new Object[] { "[onDestory] chatPie:", paramBaseChatPie });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.ChatPieApolloViewController
  * JD-Core Version:    0.7.0.1
  */

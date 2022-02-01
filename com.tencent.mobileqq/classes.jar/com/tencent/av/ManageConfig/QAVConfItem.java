@@ -2,19 +2,13 @@ package com.tencent.av.ManageConfig;
 
 public class QAVConfItem
 {
-  public int a;
-  public String a;
-  
-  public QAVConfItem()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public int a = 0;
+  public String b = "";
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
 }
 

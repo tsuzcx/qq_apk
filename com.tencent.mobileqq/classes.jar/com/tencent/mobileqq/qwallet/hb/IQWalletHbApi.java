@@ -32,8 +32,6 @@ public abstract interface IQWalletHbApi
   
   public abstract int getPanelFrom();
   
-  public abstract String getQWalletHandlerClassName();
-  
   public abstract int getSpecifyHbAniMaxSize(BaseQQAppInterface paramBaseQQAppInterface);
   
   public abstract IQWalletHbApi.ITroopUnclaimedHbList getTroopUnclaimedHbList(BaseQQAppInterface paramBaseQQAppInterface, IBaseChatPieProxy paramIBaseChatPieProxy);
@@ -60,7 +58,7 @@ public abstract interface IQWalletHbApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.IQWalletHbApi
  * JD-Core Version:    0.7.0.1
  */

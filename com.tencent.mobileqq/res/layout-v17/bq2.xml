@@ -54,7 +54,7 @@
                 </RelativeLayout>
                 <RelativeLayout android:id="@id/iuc" android:background="#fff3f5f8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:layout_below="@id/iuf">
                     <RelativeLayout android:id="@id/iui" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.5dip" android:layout_alignParentTop="true">
-                        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/iuh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/caj" android:singleLine="true" />
+                        <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/iuh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/caj" android:singleLine="true" />
                         <ImageView android:id="@id/iud" android:background="@drawable/dfx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
                     </RelativeLayout>
                     <HorizontalScrollView android:id="@id/i1_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:layout_below="@id/iui">
@@ -110,8 +110,8 @@
                             <LinearLayout android:gravity="center" android:id="@id/dwc" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_toRightOf="@id/iv0" android:layout_centerVertical="true">
                                 <com.qzone.widget.QZoneCheckBox android:id="@id/dw9" android:focusable="false" android:layout_width="wrap_content" android:layout_height="24.0dip" android:contentDescription="@string/vxj" style="@style/g9" />
                             </LinearLayout>
-                            <LinearLayout android:gravity="center" android:id="@id/o8z" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="39.0dip" android:layout_height="39.0dip">
-                                <com.qzone.widget.QZoneCheckBox android:id="@id/o8y" android:focusable="false" android:layout_width="wrap_content" android:layout_height="24.0dip" android:contentDescription="@string/y8h" style="@style/a9j" />
+                            <LinearLayout android:gravity="center" android:id="@id/q3l" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="39.0dip" android:layout_height="39.0dip">
+                                <com.qzone.widget.QZoneCheckBox android:id="@id/q3k" android:focusable="false" android:layout_width="wrap_content" android:layout_height="24.0dip" android:contentDescription="@string/z2f" style="@style/ad0" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
@@ -139,7 +139,7 @@
     </RelativeLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/itx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="326.0dip" android:layout_alignParentBottom="true">
         <RelativeLayout android:id="@id/itz" android:background="@drawable/azh" android:layout_width="fill_parent" android:layout_height="46.0dip">
-            <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/s6f" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/s6f" android:layout_centerVertical="true" />
             <ImageView android:id="@id/iu0" android:layout_width="40.0dip" android:layout_height="46.0dip" android:src="@drawable/g_t" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         </RelativeLayout>
     </LinearLayout>

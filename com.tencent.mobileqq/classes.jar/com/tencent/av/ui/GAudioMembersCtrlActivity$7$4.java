@@ -22,25 +22,25 @@ class GAudioMembersCtrlActivity$7$4
   
   public void run()
   {
-    TextPaint localTextPaint = new TextView(GAudioMembersCtrlActivity.a(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a)).getPaint();
-    Object localObject1 = HardCodeUtil.a(2131705255);
-    float f2 = GAudioMembersCtrlActivity.a(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a).getDisplayMetrics().widthPixels;
+    TextPaint localTextPaint = new TextView(GAudioMembersCtrlActivity.b(this.b.b)).getPaint();
+    Object localObject1 = HardCodeUtil.a(2131903139);
+    float f2 = GAudioMembersCtrlActivity.c(this.b.b).getDisplayMetrics().widthPixels;
     float f6 = localTextPaint.measureText((String)localObject1);
     StringBuilder localStringBuilder = new StringBuilder();
-    int m = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int m = this.a.size();
     float f1;
     AVUserInfo localAVUserInfo;
     String str;
     Object localObject2;
     if (m == 1)
     {
-      f2 = f2 - DisplayUtil.a(GAudioMembersCtrlActivity.b(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a), 60.0F) - f6;
+      f2 = f2 - DisplayUtil.a(GAudioMembersCtrlActivity.d(this.b.b), 60.0F) - f6;
       f1 = f2;
       if (f2 <= 0.0F) {
-        f1 = GAudioMembersCtrlActivity.b(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a).getDimensionPixelSize(2131297172);
+        f1 = GAudioMembersCtrlActivity.e(this.b.b).getDimensionPixelSize(2131297557);
       }
-      localAVUserInfo = (AVUserInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      str = this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a.a.a(String.valueOf(localAVUserInfo.account), String.valueOf(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a.a.a().f), 1);
+      localAVUserInfo = (AVUserInfo)this.a.get(0);
+      str = this.b.b.b.a(String.valueOf(localAVUserInfo.account), String.valueOf(this.b.b.b.k().aN), 1);
       localObject2 = str;
       if (TextUtils.isEmpty(str)) {
         localObject2 = String.valueOf(String.valueOf(localAVUserInfo.account));
@@ -55,10 +55,10 @@ class GAudioMembersCtrlActivity$7$4
       ((StringBuilder)localObject2).append((String)localObject1);
       f1 = localTextPaint.measureText(((StringBuilder)localObject2).toString());
       float f7 = localTextPaint.measureText("...");
-      float f3 = f2 - DisplayUtil.a(GAudioMembersCtrlActivity.c(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a), 60.0F) - f1 - f7;
+      float f3 = f2 - DisplayUtil.a(GAudioMembersCtrlActivity.f(this.b.b), 60.0F) - f1 - f7;
       f1 = f3;
       if (f3 <= 0.0F) {
-        f1 = GAudioMembersCtrlActivity.c(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a).getDimensionPixelSize(2131297172);
+        f1 = GAudioMembersCtrlActivity.g(this.b.b).getDimensionPixelSize(2131297557);
       }
       float f4 = localTextPaint.measureText("、");
       int i = 0;
@@ -74,10 +74,10 @@ class GAudioMembersCtrlActivity$7$4
         int k = 0;
         while (k < m)
         {
-          localAVUserInfo = (AVUserInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-          localObject2 = this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a.a;
+          localAVUserInfo = (AVUserInfo)this.a.get(k);
+          localObject2 = this.b.b.b;
           f4 = f1;
-          str = ((VideoController)localObject2).a(String.valueOf(localAVUserInfo.account), String.valueOf(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a.a.a().f), 1);
+          str = ((VideoController)localObject2).a(String.valueOf(localAVUserInfo.account), String.valueOf(this.b.b.b.k().aN), 1);
           localObject2 = str;
           if (TextUtils.isEmpty(str)) {
             localObject2 = String.valueOf(String.valueOf(localAVUserInfo.account));
@@ -93,7 +93,7 @@ class GAudioMembersCtrlActivity$7$4
           else
           {
             if ((k == 0) && (f5 == f3) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-              EllipsisUtil.a(localStringBuilder, (String)localObject2, localTextPaint, GAudioMembersCtrlActivity.d(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a).getDimensionPixelSize(2131297172));
+              EllipsisUtil.a(localStringBuilder, (String)localObject2, localTextPaint, GAudioMembersCtrlActivity.h(this.b.b).getDimensionPixelSize(2131297557));
             }
             f3 = f5;
             if (f7 > f5)
@@ -109,7 +109,7 @@ class GAudioMembersCtrlActivity$7$4
           break;
         }
         localStringBuilder.delete(0, localStringBuilder.length());
-        f3 = f2 - DisplayUtil.a(GAudioMembersCtrlActivity.d(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a), 60.0F) - f6;
+        f3 = f2 - DisplayUtil.a(GAudioMembersCtrlActivity.i(this.b.b), 60.0F) - f6;
         i += 1;
         j = 1;
       }
@@ -119,7 +119,7 @@ class GAudioMembersCtrlActivity$7$4
     localObject1 = localObject2;
     label661:
     localStringBuilder.append((String)localObject1);
-    QQToast.a(this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a, localStringBuilder.toString(), 1).a();
+    QQToast.makeText(this.b.b, localStringBuilder.toString(), 1).show();
     if (QLog.isColorLevel()) {
       QLog.d("GAudioMembersCtrlActivity", 2, localStringBuilder.toString());
     }

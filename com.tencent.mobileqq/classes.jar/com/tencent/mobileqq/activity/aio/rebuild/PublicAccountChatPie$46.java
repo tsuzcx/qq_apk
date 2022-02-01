@@ -10,17 +10,17 @@ class PublicAccountChatPie$46
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a.f, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PublicAccountChatPie.i(this.a);
+    PublicAccountChatPie.A(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.46
  * JD-Core Version:    0.7.0.1
  */

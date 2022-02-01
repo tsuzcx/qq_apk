@@ -44,41 +44,41 @@ public class OverlayView
   extends RelativeLayout
   implements IOverlayView
 {
-  private int jdField_a_of_type_Int = -855638016;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected OverlayPresenterImp a;
-  private AVGameText jdField_a_of_type_ComTencentAvgameUiAVGameText;
-  private RoundCorneredRelativeLayout jdField_a_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout;
-  private BubbleLayout jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  Runnable jdField_a_of_type_JavaLangRunnable = new OverlayView.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private RoundCorneredRelativeLayout jdField_b_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout;
-  private BubbleLayout jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout;
-  private LottieDrawable jdField_b_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private boolean jdField_b_of_type_Boolean;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private LottieDrawable jdField_c_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private boolean jdField_c_of_type_Boolean;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_e_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private TextView f;
-  private TextView g;
+  private RelativeLayout.LayoutParams A;
+  private ImageView B;
+  private TextView C;
+  private TextView D;
+  private int E = -855638016;
+  private boolean F = false;
+  private boolean G;
+  private boolean H;
+  private boolean I;
+  protected OverlayPresenterImp a = new OverlayPresenterImp(this);
+  Runnable b = new OverlayView.1(this);
+  private View c;
+  private RelativeLayout d;
+  private RelativeLayout e;
+  private RelativeLayout f;
+  private RelativeLayout g;
+  private RoundCorneredRelativeLayout h;
+  private RoundCorneredRelativeLayout i;
+  private ImageView j;
+  private LottieDrawable k;
+  private LinearLayout l;
+  private ImageView m;
+  private TextView n;
+  private TextView o;
+  private AVGameText p;
+  private RelativeLayout q;
+  private ImageView r;
+  private LottieDrawable s;
+  private LottieDrawable t;
+  private TextView u;
+  private BubbleLayout v;
+  private TextView w;
+  private TextView x;
+  private ImageView y;
+  private BubbleLayout z;
   
   public OverlayView(Context paramContext)
   {
@@ -93,66 +93,48 @@ public class OverlayView
   public OverlayView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentAvgameGameroomOverlayOverlayPresenterImp = new OverlayPresenterImp(this);
-    LayoutInflater.from(getContext()).inflate(2131558655, this, true);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)findViewById(2131372859));
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.getLayoutParams());
-    this.g = ((TextView)findViewById(2131372858));
-    this.g.setSelected(true);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(8);
-    this.f = ((TextView)findViewById(2131362718));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367781);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364300));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362710));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368044));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362711));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362713));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370217));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362034));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362036));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362717));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131364891));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFC000", "#FFFFFF");
-    ((TextView)findViewById(2131365208)).setTypeface(AVGameText.a());
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362716));
-    this.jdField_a_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout = ((RoundCorneredRelativeLayout)findViewById(2131372848));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372847));
-    this.jdField_a_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout.setRadius(ViewUtils.a(12.0F));
-    this.jdField_b_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout = ((RoundCorneredRelativeLayout)findViewById(2131362035));
-    this.jdField_b_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout.setRadius(ViewUtils.a(12.0F));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376963));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372853));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372845));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)findViewById(2131365514));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365513));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372846));
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetImageView.setImageBitmap(AVGameUtil.a("avgame_pk_head_win@2x.png"));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+    LayoutInflater.from(getContext()).inflate(2131624272, this, true);
+    this.z = ((BubbleLayout)findViewById(2131440421));
+    this.z.setSelected(true);
+    this.A = ((RelativeLayout.LayoutParams)this.z.getLayoutParams());
+    this.D = ((TextView)findViewById(2131440420));
+    this.D.setSelected(true);
+    this.z.setVisibility(8);
+    this.C = ((TextView)findViewById(2131428404));
+    this.c = findViewById(2131434352);
+    this.d = ((RelativeLayout)findViewById(2131430323));
+    this.e = ((RelativeLayout)findViewById(2131428392));
+    this.f = ((RelativeLayout)findViewById(2131434894));
+    this.j = ((ImageView)findViewById(2131428393));
+    this.r = ((ImageView)findViewById(2131428395));
+    this.l = ((LinearLayout)findViewById(2131437402));
+    this.m = ((ImageView)findViewById(2131427612));
+    this.n = ((TextView)findViewById(2131427614));
+    this.n.setTypeface(AVGameText.getTypeface());
+    this.o = ((TextView)findViewById(2131428403));
+    this.o.setTypeface(AVGameText.getTypeface());
+    this.p = ((AVGameText)findViewById(2131431017));
+    this.p.setAttribute("#FFC000", "#FFFFFF");
+    ((TextView)findViewById(2131431374)).setTypeface(AVGameText.getTypeface());
+    this.q = ((RelativeLayout)findViewById(2131428402));
+    this.h = ((RoundCorneredRelativeLayout)findViewById(2131440404));
+    this.g = ((RelativeLayout)findViewById(2131440403));
+    this.h.setRadius(ViewUtils.dip2px(12.0F));
+    this.i = ((RoundCorneredRelativeLayout)findViewById(2131427613));
+    this.i.setRadius(ViewUtils.dip2px(12.0F));
+    this.x = ((TextView)findViewById(2131445327));
+    this.u = ((TextView)findViewById(2131440409));
+    this.B = ((ImageView)findViewById(2131440401));
+    this.v = ((BubbleLayout)findViewById(2131431729));
+    this.w = ((TextView)findViewById(2131431728));
+    this.v.setSelected(true);
+    this.y = ((ImageView)findViewById(2131440402));
+    this.y.setVisibility(8);
+    this.y.setImageBitmap(AVGameUtil.c("avgame_pk_head_win@2x.png"));
+    this.c.setVisibility(4);
+    this.d.setVisibility(4);
+    this.f.setVisibility(4);
     c();
-  }
-  
-  private Drawable a()
-  {
-    if (!IGameEngine.k()) {
-      localObject = IGameEngine.a().a().a();
-    } else {
-      localObject = null;
-    }
-    if (localObject == null) {
-      return AvGameResDownloadUtil.a("avgame_answer_bg_self@2x.png");
-    }
-    Object localObject = ((GameItem)localObject).g;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return AvGameResDownloadUtil.a("avgame_answer_bg_self@2x.png");
-    }
-    return URLDrawable.getDrawable((String)localObject);
   }
   
   private void a(String paramString, float paramFloat)
@@ -160,66 +142,66 @@ public class OverlayView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (IGameEngine.a().i())
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.e.getLayoutParams();
+    if (IGameEngine.I().D())
     {
-      localLayoutParams.width = ViewUtils.a(205.0F);
-      localLayoutParams.height = ViewUtils.a(205.0F);
+      localLayoutParams.width = ViewUtils.dip2px(205.0F);
+      localLayoutParams.height = ViewUtils.dip2px(205.0F);
       localLayoutParams.addRule(13, -1);
       localLayoutParams.addRule(12, 0);
       localLayoutParams.bottomMargin = 0;
     }
     else if (paramFloat != 0.0F)
     {
-      localLayoutParams.width = ViewUtils.a(199.0F);
-      localLayoutParams.height = ViewUtils.a(170.0F);
+      localLayoutParams.width = ViewUtils.dip2px(199.0F);
+      localLayoutParams.height = ViewUtils.dip2px(170.0F);
       localLayoutParams.addRule(13, 0);
       localLayoutParams.addRule(12, -1);
-      localLayoutParams.bottomMargin = ViewUtils.a(70.0F);
+      localLayoutParams.bottomMargin = ViewUtils.dip2px(70.0F);
     }
     else
     {
-      localLayoutParams.width = ViewUtils.a(198.0F);
-      localLayoutParams.height = ViewUtils.a(198.0F);
+      localLayoutParams.width = ViewUtils.dip2px(198.0F);
+      localLayoutParams.height = ViewUtils.dip2px(198.0F);
       localLayoutParams.addRule(13, -1);
       localLayoutParams.addRule(12, 0);
       localLayoutParams.bottomMargin = 0;
     }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-    localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
-    int i = paramString.length();
-    if (IGameEngine.a().i())
+    this.e.setLayoutParams(localLayoutParams);
+    localLayoutParams = (RelativeLayout.LayoutParams)this.C.getLayoutParams();
+    int i1 = paramString.length();
+    if (IGameEngine.I().D())
     {
-      if (i >= 6)
+      if (i1 >= 6)
       {
-        localLayoutParams.topMargin = ViewUtils.a(110.0F);
-        if (i == 6) {
-          localLayoutParams.topMargin = ViewUtils.a(129.0F);
+        localLayoutParams.topMargin = ViewUtils.dip2px(110.0F);
+        if (i1 == 6) {
+          localLayoutParams.topMargin = ViewUtils.dip2px(129.0F);
         }
-        localLayoutParams.width = ViewUtils.a(140.0F);
-        this.f.setTextSize(1, 22.0F);
+        localLayoutParams.width = ViewUtils.dip2px(140.0F);
+        this.C.setTextSize(1, 22.0F);
       }
       else
       {
-        localLayoutParams.topMargin = ViewUtils.a(122.0F);
-        localLayoutParams.width = ViewUtils.a(150.0F);
-        this.f.setTextSize(1, 28.0F);
+        localLayoutParams.topMargin = ViewUtils.dip2px(122.0F);
+        localLayoutParams.width = ViewUtils.dip2px(150.0F);
+        this.C.setTextSize(1, 28.0F);
       }
     }
-    else if (i >= 6)
+    else if (i1 >= 6)
     {
-      localLayoutParams.topMargin = ViewUtils.a(110.0F - paramFloat);
-      if (i == 6) {
-        localLayoutParams.topMargin = ViewUtils.a(129.0F - paramFloat);
+      localLayoutParams.topMargin = ViewUtils.dip2px(110.0F - paramFloat);
+      if (i1 == 6) {
+        localLayoutParams.topMargin = ViewUtils.dip2px(129.0F - paramFloat);
       }
-      localLayoutParams.width = ViewUtils.a(140.0F);
-      this.f.setTextSize(1, 22.0F);
+      localLayoutParams.width = ViewUtils.dip2px(140.0F);
+      this.C.setTextSize(1, 22.0F);
     }
     else
     {
-      localLayoutParams.topMargin = ViewUtils.a(124.0F - paramFloat);
-      localLayoutParams.width = ViewUtils.a(150.0F);
-      this.f.setTextSize(1, 28.0F);
+      localLayoutParams.topMargin = ViewUtils.dip2px(124.0F - paramFloat);
+      localLayoutParams.width = ViewUtils.dip2px(150.0F);
+      this.C.setTextSize(1, 28.0F);
     }
     if (QLog.isColorLevel())
     {
@@ -227,10 +209,10 @@ public class OverlayView
       localStringBuilder.append("updateAnswerTextLayout answer = ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",length = ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       QLog.d("OverlayView", 2, localStringBuilder.toString());
     }
-    this.f.setLayoutParams(localLayoutParams);
+    this.C.setLayoutParams(localLayoutParams);
   }
   
   private void c()
@@ -242,46 +224,46 @@ public class OverlayView
   
   private void c(RectF paramRectF)
   {
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setTriangleOffset(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = ((int)paramRectF.top - ViewUtils.b(42.0F));
-    int k = (int)(paramRectF.left + paramRectF.right) / 2;
-    int i = k - this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width / 2;
-    int m = ViewUtils.b(12.0F);
-    int j;
-    if (i < m)
+    this.z.setTriangleOffset(0);
+    this.A.topMargin = ((int)paramRectF.top - ViewUtils.dpToPx(42.0F));
+    int i3 = (int)(paramRectF.left + paramRectF.right) / 2;
+    int i1 = i3 - this.A.width / 2;
+    int i4 = ViewUtils.dpToPx(12.0F);
+    int i2;
+    if (i1 < i4)
     {
-      j = i - m;
-      i = m;
+      i2 = i1 - i4;
+      i1 = i4;
     }
     else
     {
-      j = -1;
+      i2 = -1;
     }
-    int n = ViewUtils.a() - (k + this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width / 2);
-    k = i;
-    if (n < m)
+    int i5 = ViewUtils.getScreenWidth() - (i3 + this.A.width / 2);
+    i3 = i1;
+    if (i5 < i4)
     {
-      j = m - n;
-      k = i - j;
+      i2 = i4 - i5;
+      i3 = i1 - i2;
     }
     if (QLog.isColorLevel())
     {
       paramRectF = new StringBuilder();
       paramRectF.append("updatePlayerTipsLocation offset:");
-      paramRectF.append(j);
+      paramRectF.append(i2);
       QLog.d("OverlayView", 2, paramRectF.toString());
     }
-    if (j != -1) {
-      this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setTriangleOffset(j);
+    if (i2 != -1) {
+      this.z.setTriangleOffset(i2);
     }
-    paramRectF = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    paramRectF.leftMargin = k;
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setLayoutParams(paramRectF);
+    paramRectF = this.A;
+    paramRectF.leftMargin = i3;
+    this.z.setLayoutParams(paramRectF);
   }
   
   private void d()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
     localLayoutParams.topMargin = GameRoomViewLayoutParamsDef.w;
     localLayoutParams.width = GameRoomViewLayoutParamsDef.z;
     localLayoutParams.height = GameRoomViewLayoutParamsDef.y;
@@ -296,31 +278,33 @@ public class OverlayView
       localStringBuilder.append(localLayoutParams.height);
       QLog.d("OverlayView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+    this.d.setLayoutParams(localLayoutParams);
   }
   
-  public int a()
+  private Drawable getSelfAnswerCardDrawable()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public IOverlayPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomOverlayOverlayPresenterImp;
+    if (!IGameEngine.J()) {
+      localObject = IGameEngine.I().s().f();
+    } else {
+      localObject = null;
+    }
+    if (localObject == null) {
+      return AvGameResDownloadUtil.a("avgame_answer_bg_self@2x.png");
+    }
+    Object localObject = ((GameItem)localObject).i;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return AvGameResDownloadUtil.a("avgame_answer_bg_self@2x.png");
+    }
+    return URLDrawable.getDrawable((String)localObject);
   }
   
   public void a()
   {
-    this.f.setText("");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.C.setText("");
+    this.l.setVisibility(8);
+    this.d.setVisibility(8);
+    this.f.setVisibility(8);
+    this.c.setVisibility(8);
   }
   
   public void a(RectF paramRectF)
@@ -335,18 +319,18 @@ public class OverlayView
     if (paramRectF == null) {
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(0);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.g.setText(2131690311);
-    this.g.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.b(76.0F);
+    this.z.setVisibility(0);
+    this.z.setSelected(true);
+    this.D.setText(2131887222);
+    this.D.setTextSize(1, 14.0F);
+    this.A.width = ViewUtils.dpToPx(76.0F);
     c(paramRectF);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.postDelayed(new OverlayView.6(this), 3000L);
+    this.z.postDelayed(new OverlayView.6(this), 3000L);
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomOverlayOverlayPresenterImp.a(paramIGameRoomPresenter);
+    this.a.a(paramIGameRoomPresenter);
   }
   
   void a(LottieDrawable paramLottieDrawable, long paramLong1, long paramLong2, boolean paramBoolean)
@@ -355,69 +339,69 @@ public class OverlayView
       QLog.d("OverlayView", 2, "playSuccessfulRaceAnim");
     }
     d();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((IGameEngine.a().i()) && (!paramBoolean))
+    this.d.setVisibility(0);
+    if ((IGameEngine.I().D()) && (!paramBoolean))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.j.setVisibility(4);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+      this.j.setVisibility(0);
+      this.j.setImageDrawable(this.k);
+      localObject1 = this.k;
       if (localObject1 != null)
       {
         ((LottieDrawable)localObject1).pauseAnimation();
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+        this.k.playAnimation();
       }
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.8F);
-    Object localObject1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { ViewUtils.a(-76.0F), ViewUtils.a(11.0F), 0.0F });
+    this.c.setVisibility(0);
+    this.c.setAlpha(0.8F);
+    Object localObject1 = ObjectAnimator.ofFloat(this.e, "translationY", new float[] { ViewUtils.dip2px(-76.0F), ViewUtils.dip2px(11.0F), 0.0F });
     ((ObjectAnimator)localObject1).setDuration(360L);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setAlpha(0.0F);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
+    this.e.setAlpha(0.0F);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.e, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator1.setDuration(360L);
     Object localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play((Animator)localObject1).after(0L);
     ((AnimatorSet)localObject2).play(localObjectAnimator1).after(0L);
     ((AnimatorSet)localObject2).setInterpolator(new DecelerateInterpolator());
     ((AnimatorSet)localObject2).start();
-    if ((IGameEngine.a().f()) && (!paramBoolean)) {
+    if ((IGameEngine.I().A()) && (!paramBoolean)) {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(paramLottieDrawable);
+    this.f.setVisibility(0);
+    this.r.setImageDrawable(paramLottieDrawable);
     if (paramLottieDrawable != null)
     {
       paramLottieDrawable.pauseAnimation();
       paramLottieDrawable.playAnimation();
     }
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setAlpha(0.0F);
-    this.jdField_c_of_type_AndroidWidgetTextView.setAlpha(0.0F);
-    paramLottieDrawable = ObjectAnimator.ofFloat(this.jdField_c_of_type_AndroidWidgetTextView, "alpha", new float[] { 0.0F, 1.0F });
+    this.g.setAlpha(0.0F);
+    this.u.setAlpha(0.0F);
+    paramLottieDrawable = ObjectAnimator.ofFloat(this.u, "alpha", new float[] { 0.0F, 1.0F });
     paramLottieDrawable.setDuration(170L);
-    localObject1 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
+    localObject1 = ObjectAnimator.ofFloat(this.g, "alpha", new float[] { 0.0F, 1.0F });
     ((ObjectAnimator)localObject1).setDuration(280L);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setPivotX(ViewUtils.b(100.0F) / 2);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setPivotY(ViewUtils.b(100.0F));
-    localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetRelativeLayout, "scaleX", new float[] { 0.74F, 1.1F, 1.0F });
+    this.g.setPivotX(ViewUtils.dpToPx(100.0F) / 2);
+    this.g.setPivotY(ViewUtils.dpToPx(100.0F));
+    localObjectAnimator1 = ObjectAnimator.ofFloat(this.g, "scaleX", new float[] { 0.74F, 1.1F, 1.0F });
     localObjectAnimator1.setDuration(440L);
-    localObject2 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetRelativeLayout, "scaleY", new float[] { 0.74F, 1.1F, 1.0F });
+    localObject2 = ObjectAnimator.ofFloat(this.g, "scaleY", new float[] { 0.74F, 1.1F, 1.0F });
     ((ObjectAnimator)localObject2).setDuration(440L);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setScaleX(0.74F);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setScaleY(0.74F);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetRelativeLayout, "rotation", new float[] { 0.0F, -21.6F, 18.0F, -10.8F, 10.8F, -3.6F, 0.0F });
+    this.g.setScaleX(0.74F);
+    this.g.setScaleY(0.74F);
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.g, "rotation", new float[] { 0.0F, -21.6F, 18.0F, -10.8F, 10.8F, -3.6F, 0.0F });
     localObjectAnimator2.setDuration(720L);
-    if (IGameEngine.a().i())
+    if (IGameEngine.I().D())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelectedColor("#FC5E31");
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
+      this.v.setSelectedColor("#FC5E31");
+      this.w.setTextColor(Color.parseColor("#FFFFFF"));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setAlpha(0.0F);
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout, "alpha", new float[] { 0.0F, 1.0F });
+    this.v.setAlpha(0.0F);
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.v, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator3.setDuration(240L);
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout, "translationY", new float[] { ViewUtils.a(8.5F), ViewUtils.a(-6.5F), 0.0F });
+    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.v, "translationY", new float[] { ViewUtils.dip2px(8.5F), ViewUtils.dip2px(-6.5F), 0.0F });
     localObjectAnimator4.setDuration(480L);
     localObjectAnimator4.setInterpolator(new AccelerateDecelerateInterpolator());
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -429,130 +413,130 @@ public class OverlayView
     localAnimatorSet.play(localObjectAnimator3).after(1320L);
     localAnimatorSet.play(localObjectAnimator4).after(1320L);
     localAnimatorSet.start();
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout.postDelayed(new OverlayView.5(this, paramLong1, paramLong2), 1800L);
+    this.x.setVisibility(4);
+    this.h.postDelayed(new OverlayView.5(this, paramLong1, paramLong2), 1800L);
   }
   
   public void a(String paramString)
   {
-    this.f.setText(paramString);
+    this.C.setText(paramString);
     a(paramString, 0.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(AvGameResDownloadUtil.a("avgame_answer_bg_timeout@2x.png"));
+    this.o.setVisibility(8);
+    this.l.setVisibility(8);
+    this.q.setVisibility(8);
+    this.e.setBackgroundDrawable(AvGameResDownloadUtil.a("avgame_answer_bg_timeout@2x.png"));
     b();
-    paramString = IGameEngine.a().a();
-    if (paramString.g())
+    paramString = IGameEngine.I().s();
+    if (paramString.N())
     {
-      int i;
-      if (paramString.h()) {
-        i = 1;
+      int i1;
+      if (paramString.O()) {
+        i1 = 1;
       } else {
-        i = 2;
+        i1 = 2;
       }
-      ReportController.b(null, "dc00898", "", "", "survival_result_wrong", "survival_result_wrong", i, 0, String.valueOf(paramString.a().a.jdField_a_of_type_Int), String.valueOf(paramString.p()), CJSurvivalReporterUtil.a().a(paramString), String.valueOf(paramString.k()));
+      ReportController.b(null, "dc00898", "", "", "survival_result_wrong", "survival_result_wrong", i1, 0, String.valueOf(paramString.h().f.a), String.valueOf(paramString.Y()), CJSurvivalReporterUtil.a().b(paramString), String.valueOf(paramString.Q()));
     }
   }
   
   public void a(String paramString1, Bitmap paramBitmap1, String paramString2, long paramLong1, long paramLong2, long paramLong3, Bitmap paramBitmap2, long paramLong4, boolean paramBoolean)
   {
-    this.f.setText(paramString1);
+    this.C.setText(paramString1);
     a(paramString1, 50.0F);
-    this.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap1);
-    paramString1 = this.jdField_d_of_type_AndroidWidgetTextView;
+    this.B.setImageBitmap(paramBitmap1);
+    paramString1 = this.w;
     paramBitmap1 = new StringBuilder();
     paramBitmap1.append("+");
     paramBitmap1.append(paramLong1);
     paramString1.setText(paramBitmap1.toString());
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
+    this.u.setText(paramString2);
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(a());
+      this.e.setBackgroundDrawable(getSelfAnswerCardDrawable());
       if (paramLong3 >= 2L)
       {
-        paramString1 = this.jdField_a_of_type_ComTencentAvgameUiAVGameText;
+        paramString1 = this.p;
         paramBitmap1 = new StringBuilder();
         paramBitmap1.append("x");
         paramBitmap1.append(paramLong3);
         paramString1.setText(paramBitmap1.toString());
-        this.jdField_e_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.q.setVisibility(0);
+        this.o.setVisibility(8);
       }
       else
       {
-        if (IGameEngine.a().i())
+        if (IGameEngine.I().D())
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.o.setText("");
+          this.o.setVisibility(8);
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_b_of_type_AndroidWidgetTextView.setText("抢答成功!");
+          this.o.setVisibility(0);
+          this.o.setText("抢答成功!");
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFDE2E"));
-        this.jdField_e_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        this.o.setTextColor(Color.parseColor("#FFDE2E"));
+        this.q.setVisibility(8);
       }
-      a(this.jdField_b_of_type_ComTencentMobileqqDiniflyLottieDrawable, paramLong2 - paramLong1, paramLong2, true);
-      if (this.jdField_b_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) {
-        this.jdField_c_of_type_Boolean = true;
+      a(this.s, paramLong2 - paramLong1, paramLong2, true);
+      if (this.s == null) {
+        this.H = true;
       }
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(AvGameResDownloadUtil.a("avgame_answer_bg_friend@2x.png"));
-      if (IGameEngine.a().i())
+      this.e.setBackgroundDrawable(AvGameResDownloadUtil.a("avgame_answer_bg_friend@2x.png"));
+      if (IGameEngine.I().D())
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+        this.o.setVisibility(8);
+        this.o.setText("");
       }
       else
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText("好友答对了");
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.o.setText("好友答对了");
+        this.o.setTextColor(Color.parseColor("#FFFFFF"));
+        this.o.setVisibility(0);
       }
-      this.jdField_e_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      a(this.jdField_c_of_type_ComTencentMobileqqDiniflyLottieDrawable, paramLong2 - paramLong1, paramLong2, false);
-      if (this.jdField_c_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) {
-        this.jdField_d_of_type_Boolean = true;
+      this.q.setVisibility(8);
+      a(this.t, paramLong2 - paramLong1, paramLong2, false);
+      if (this.t == null) {
+        this.I = true;
       }
     }
-    paramString1 = IGameEngine.a().a();
-    if (paramString1.g())
+    paramString1 = IGameEngine.I().s();
+    if (paramString1.N())
     {
-      int i;
-      if (paramString1.h()) {
-        i = 1;
+      int i1;
+      if (paramString1.O()) {
+        i1 = 1;
       } else {
-        i = 2;
+        i1 = 2;
       }
-      ReportController.b(null, "dc00898", "", "", "survival_result_right", "survival_result_right", i, 0, String.valueOf(paramString1.a().a.jdField_a_of_type_Int), String.valueOf(paramString1.p()), CJSurvivalReporterUtil.a().a(paramString1), String.valueOf(paramString1.k()));
+      ReportController.b(null, "dc00898", "", "", "survival_result_right", "survival_result_right", i1, 0, String.valueOf(paramString1.h().f.a), String.valueOf(paramString1.Y()), CJSurvivalReporterUtil.a().b(paramString1), String.valueOf(paramString1.Q()));
     }
     if (paramBitmap2 != null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap2);
-      paramString1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      this.m.setImageBitmap(paramBitmap2);
+      paramString1 = this.n;
       paramBitmap1 = new StringBuilder();
       paramBitmap1.append("表演成功 +");
       paramBitmap1.append(paramLong4);
       paramString1.setText(paramBitmap1.toString());
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.l.setVisibility(0);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.l.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) {
-      this.jdField_b_of_type_Boolean = true;
+    if (this.k == null) {
+      this.G = true;
     }
-    if (IGameEngine.a().i())
+    if (IGameEngine.I().D())
     {
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.y.setVisibility(0);
       return;
     }
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.y.setVisibility(8);
   }
   
   public void a(String paramString, RectF paramRectF, int paramInt)
@@ -569,14 +553,14 @@ public class OverlayView
     if (paramRectF == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(0);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.g.setText(paramString);
-    this.g.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.b(paramInt);
+    this.F = true;
+    this.z.setVisibility(0);
+    this.z.setSelected(true);
+    this.D.setText(paramString);
+    this.D.setTextSize(1, 14.0F);
+    this.A.width = ViewUtils.dpToPx(paramInt);
     c(paramRectF);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+    this.z.postDelayed(this.b, 3000L);
   }
   
   void b()
@@ -585,14 +569,14 @@ public class OverlayView
       QLog.d("OverlayView", 2, "playTimeoutShowAnswerAnim");
     }
     d();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.8F);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { ViewUtils.a(-76.0F), ViewUtils.a(11.0F), 0.0F });
+    this.d.setVisibility(0);
+    this.j.setVisibility(4);
+    this.c.setVisibility(0);
+    this.c.setAlpha(0.8F);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.e, "translationY", new float[] { ViewUtils.dip2px(-76.0F), ViewUtils.dip2px(11.0F), 0.0F });
     localObjectAnimator1.setDuration(360L);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setAlpha(0.0F);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
+    this.e.setAlpha(0.0F);
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.e, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator2.setDuration(360L);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play(localObjectAnimator1).after(0L);
@@ -613,13 +597,13 @@ public class OverlayView
     if (paramRectF == null) {
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(0);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.g.setText(2131690337);
-    this.g.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.b(244.0F);
+    this.z.setVisibility(0);
+    this.z.setSelected(true);
+    this.D.setText(2131887248);
+    this.D.setTextSize(1, 14.0F);
+    this.A.width = ViewUtils.dpToPx(244.0F);
     c(paramRectF);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.postDelayed(new OverlayView.7(this), 3000L);
+    this.z.postDelayed(new OverlayView.7(this), 3000L);
   }
   
   public void b(String paramString)
@@ -627,22 +611,37 @@ public class OverlayView
     if (QLog.isColorLevel()) {
       QLog.d("OverlayView", 2, "onHideNewGuideToast");
     }
-    String str = this.g.getText().toString();
+    String str = this.D.getText().toString();
     if ((str != null) && (str.equals(paramString)))
     {
-      this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(8);
+      this.z.removeCallbacks(this.b);
+      this.z.setVisibility(8);
     }
   }
   
   public void b(String paramString, RectF paramRectF, int paramInt)
   {
-    String str = this.g.getText().toString();
-    if ((this.jdField_a_of_type_Boolean) && (str != null) && (str.equals(paramString)))
+    String str = this.D.getText().toString();
+    if ((this.F) && (str != null) && (str.equals(paramString)))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.b(147.0F);
+      this.A.width = ViewUtils.dpToPx(147.0F);
       c(paramRectF);
     }
+  }
+  
+  public View getAnswerCardWrapperView()
+  {
+    return this.e;
+  }
+  
+  public int getAnswerCoverColor()
+  {
+    return this.E;
+  }
+  
+  public IOverlayPresenter getPresenter()
+  {
+    return this.a;
   }
 }
 

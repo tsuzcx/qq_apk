@@ -15,17 +15,17 @@ class FeedLikeLego$StoryCardClickableSpan
   extends ClickableSpan
 {
   public LikeEntry a;
-  public WeakReference<FeedLikeLego> a;
+  public WeakReference<FeedLikeLego> b;
   
   public void onClick(View paramView)
   {
-    paramView = (FeedLikeLego)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramView = (FeedLikeLego)this.b.get();
     if (paramView == null) {
       return;
     }
-    StoryApi.a(paramView.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry.unionId);
-    paramView = paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.ownerId;
-    if (QQStoryContext.a().a(paramView)) {
+    StoryApi.a(paramView.d, 12, this.a.unionId);
+    paramView = paramView.b.ownerId;
+    if (QQStoryContext.a().b(paramView)) {
       paramView = "2";
     } else {
       paramView = "1";
@@ -42,7 +42,7 @@ class FeedLikeLego$StoryCardClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.StoryCardClickableSpan
  * JD-Core Version:    0.7.0.1
  */

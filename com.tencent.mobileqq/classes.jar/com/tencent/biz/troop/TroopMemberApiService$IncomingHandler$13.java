@@ -1,63 +1,31 @@
 package com.tencent.biz.troop;
 
 import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.JudgeTopicVideoNumRsp;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.RspBody;
+import com.tencent.mobileqq.kandian.biz.common.api.ITweetTopicEntranceShouldShowActionUtil;
+import com.tencent.mobileqq.kandian.repo.account.IUserLevelCallBack;
+import com.tencent.mobileqq.kandian.repo.account.UserLevelInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class TroopMemberApiService$IncomingHandler$13
-  extends ProtoUtils.TroopProtocolObserver
+  implements IUserLevelCallBack
 {
-  TroopMemberApiService$IncomingHandler$13(TroopMemberApiService.IncomingHandler paramIncomingHandler, boolean paramBoolean, Bundle paramBundle)
-  {
-    super(paramBoolean);
-  }
+  TroopMemberApiService$IncomingHandler$13(TroopMemberApiService.IncomingHandler paramIncomingHandler, Bundle paramBundle) {}
   
-  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(UserLevelInfo paramUserLevelInfo)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if (paramUserLevelInfo.dailyTopicNum > 0L)
     {
-      paramBundle = new oidb_0xe2a.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.msg_judge_topic_video_num_rsp.has()) {
-          return;
-        }
-        if ((paramBundle.msg_judge_topic_video_num_rsp.uint32_is_overtimes.has()) && (paramBundle.msg_judge_topic_video_num_rsp.uint32_is_overtimes.get() > 0))
-        {
-          TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, 161, this.jdField_a_of_type_AndroidOsBundle, 1, HardCodeUtil.a(2131707867));
-          TroopMemberApiService.a(false);
-          return;
-        }
-        TroopMemberApiService.a(true);
-        TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.e("TroopMemberApiService", 1, paramArrayOfByte.getMessage());
-        return;
-      }
+      TroopMemberApiService.IncomingHandler.a(this.b, 160, this.a, 1, "success");
+      ((ITweetTopicEntranceShouldShowActionUtil)QRoute.api(ITweetTopicEntranceShouldShowActionUtil.class)).doShowEntranceReport();
+      return;
     }
-    else
-    {
-      TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, 161, this.jdField_a_of_type_AndroidOsBundle, 1, HardCodeUtil.a(2131710758));
-      TroopMemberApiService.a(false);
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("oidb_0xe2a request failed: errorCode = ");
-      paramArrayOfByte.append(paramInt);
-      QLog.e("TroopMemberApiService", 1, paramArrayOfByte.toString());
-    }
+    TroopMemberApiService.IncomingHandler.a(this.b, 160, this.a, 2, HardCodeUtil.a(2131905680));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.13
  * JD-Core Version:    0.7.0.1
  */

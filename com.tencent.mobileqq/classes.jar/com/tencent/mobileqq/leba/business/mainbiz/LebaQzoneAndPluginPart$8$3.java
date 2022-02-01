@@ -16,22 +16,22 @@ class LebaQzoneAndPluginPart$8$3
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.c != null)
+      if (this.c.this$0.d != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.c.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.c.setText(this.jdField_a_of_type_JavaLangString);
+        this.c.this$0.d.setVisibility(0);
+        this.c.this$0.d.setText(this.a);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (this.c.this$0.b != null) {
+        this.c.this$0.b.setVisibility(8);
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(this.b);
-      if ((this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidWidgetImageSwitcher != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.a(localArrayList);
+      if ((this.c.this$0.g != null) && (this.c.this$0.y != null)) {
+        this.c.this$0.y.a(localArrayList);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView != null)
+      if (this.c.this$0.w != null)
       {
-        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView, HardCodeUtil.a(2131706086));
+        AccessibilityUtil.a(this.c.this$0.w, HardCodeUtil.a(2131903958));
         return;
       }
     }
@@ -46,7 +46,7 @@ class LebaQzoneAndPluginPart$8$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8.3
  * JD-Core Version:    0.7.0.1
  */

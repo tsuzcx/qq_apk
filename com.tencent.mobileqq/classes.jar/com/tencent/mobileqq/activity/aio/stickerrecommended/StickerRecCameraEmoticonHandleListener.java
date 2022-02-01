@@ -16,12 +16,11 @@ import java.util.List;
 public class StickerRecCameraEmoticonHandleListener
   extends BaseLocalEmoticonHandleListener
 {
-  private Collection<String> a;
+  private Collection<String> b = null;
   
   public StickerRecCameraEmoticonHandleListener(BaseQQAppInterface paramBaseQQAppInterface)
   {
     super(paramBaseQQAppInterface);
-    this.jdField_a_of_type_JavaUtilCollection = null;
   }
   
   private List<StickerRecCameraData> a(String paramString)
@@ -33,8 +32,8 @@ public class StickerRecCameraEmoticonHandleListener
       QLog.d("StickerRecCameraEmoticonHandleListener", 2, "camera emoticon search start.");
     }
     Object localObject1 = new ArrayList();
-    Object localObject2 = (ICameraEmotionRoamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class);
-    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    Object localObject2 = (ICameraEmotionRoamingDBManagerService)this.a.getRuntimeService(ICameraEmotionRoamingDBManagerService.class);
+    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.a);
     localObject2 = ((ICameraEmotionRoamingDBManagerService)localObject2).getEmoticonDataList();
     if (localObject2 != null)
     {
@@ -43,7 +42,7 @@ public class StickerRecCameraEmoticonHandleListener
       {
         CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject2).next();
         if (("normal".equals(localCameraEmotionData.RomaingType)) && (paramString.equals(localStickerRecManagerImpl.preProcessUsrTextUseLocalSearch(localCameraEmotionData.strContext)))) {
-          ((List)localObject1).add(new StickerRecCameraData(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localCameraEmotionData));
+          ((List)localObject1).add(new StickerRecCameraData(this.a, localCameraEmotionData));
         }
       }
     }
@@ -68,24 +67,24 @@ public class StickerRecCameraEmoticonHandleListener
   
   public void a()
   {
-    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.a);
     if (localStickerRecManagerImpl != null) {
-      this.jdField_a_of_type_JavaUtilCollection = localStickerRecManagerImpl.loadKeywordForCameraEmotion();
+      this.b = localStickerRecManagerImpl.loadKeywordForCameraEmotion();
     }
   }
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
+    if (this.b == null) {
       a();
     }
-    paramBaseQQAppInterface = this.jdField_a_of_type_JavaUtilCollection;
+    paramBaseQQAppInterface = this.b;
     return (paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCameraEmoticonHandleListener
  * JD-Core Version:    0.7.0.1
  */

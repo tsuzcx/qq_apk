@@ -17,7 +17,7 @@ class PublicAccountChatPie$45
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.a.b;
+      localObject = this.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("success:");
       localStringBuilder.append(String.valueOf(paramBoolean));
@@ -26,7 +26,7 @@ class PublicAccountChatPie$45
     bool2 = true;
     if (!paramBoolean)
     {
-      this.a.m(2131695217);
+      this.a.t(2131892951);
       bool1 = bool2;
     }
     else
@@ -54,13 +54,13 @@ class PublicAccountChatPie$45
       }
     }
     if (bool1) {
-      this.a.ao();
+      this.a.bz();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.45
  * JD-Core Version:    0.7.0.1
  */

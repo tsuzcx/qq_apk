@@ -26,14 +26,14 @@ final class GdtBannerViewWithOnePicture
   extends RelativeLayout
   implements GdtBannerView
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GdtHandler.Params jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-  private GdtRoundRectURLImageView jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
+  private GdtHandler.Params a;
+  private ImageView b;
   private TextView c;
   private TextView d;
+  private TextView e;
+  private TextView f;
+  private URLImageView g;
+  private GdtRoundRectURLImageView h;
   
   public GdtBannerViewWithOnePicture(Context paramContext, GdtHandler.Params paramParams)
   {
@@ -43,117 +43,123 @@ final class GdtBannerViewWithOnePicture
       if (!paramParams.a()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
+      this.a = paramParams;
       paramParams = new RelativeLayout.LayoutParams(-2, -2);
-      this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL(a().getBasic_img());
-      this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131367547);
+      this.g = new URLImageView(paramContext);
+      this.g.setImageURL(b().getBasic_img());
+      this.g.setId(2131434089);
       paramParams.leftMargin = -5;
       paramParams.addRule(9);
-      addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramParams);
+      addView(this.g, paramParams);
       paramParams = new RelativeLayout.LayoutParams(-2, -2);
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840226);
-      addView(this.jdField_a_of_type_AndroidWidgetImageView, paramParams);
-      if (a().getCreativeSize() != 194)
+      this.b = new ImageView(paramContext);
+      this.b.setImageResource(2130840544);
+      addView(this.b, paramParams);
+      if (b().getCreativeSize() != 194)
       {
         paramParams = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView = new GdtRoundRectURLImageView(paramContext);
-        this.jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView.a(GdtUIUtils.a(7.0F, getResources()));
-        this.jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView.setImageURL(a().getAdvertiser_corporate_logo());
-        this.jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView.setId(2131367548);
-        paramParams.addRule(1, 2131367547);
-        addView(this.jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView, paramParams);
+        this.h = new GdtRoundRectURLImageView(paramContext);
+        this.h.a(GdtUIUtils.a(7.0F, getResources()));
+        this.h.setImageURL(b().getAdvertiser_corporate_logo());
+        this.h.setId(2131434090);
+        paramParams.addRule(1, 2131434089);
+        addView(this.h, paramParams);
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      this.b = new TextView(paramContext);
-      this.b.setMaxLines(1);
-      this.b.setEllipsize(TextUtils.TruncateAt.END);
-      TextView localTextView = this.b;
-      if (TextUtils.isEmpty(a().getText())) {
-        paramParams = a().getDescription();
+      this.d = new TextView(paramContext);
+      this.d.setMaxLines(1);
+      this.d.setEllipsize(TextUtils.TruncateAt.END);
+      TextView localTextView = this.d;
+      if (TextUtils.isEmpty(b().getText())) {
+        paramParams = b().getDescription();
       } else {
-        paramParams = a().getText();
+        paramParams = b().getText();
       }
       localTextView.setText(paramParams);
-      this.b.setTextColor(Color.parseColor("#333333"));
-      this.b.setId(2131367544);
-      if (a().getCreativeSize() == 194) {
-        localLayoutParams.addRule(1, 2131367547);
+      this.d.setTextColor(Color.parseColor("#333333"));
+      this.d.setId(2131434086);
+      if (b().getCreativeSize() == 194) {
+        localLayoutParams.addRule(1, 2131434089);
       } else {
-        localLayoutParams.addRule(1, 2131367548);
+        localLayoutParams.addRule(1, 2131434090);
       }
-      addView(this.b, localLayoutParams);
-      if (a().getCreativeSize() != 194)
+      addView(this.d, localLayoutParams);
+      if (b().getCreativeSize() != 194)
       {
         paramParams = new RelativeLayout.LayoutParams(-2, -2);
-        this.c = new TextView(paramContext);
-        this.c.setMaxLines(1);
-        this.c.setMaxEms(8);
-        this.c.setEllipsize(TextUtils.TruncateAt.END);
-        this.c.setText(a().getAdvertiser_corporate_image_name());
-        this.c.setTextColor(Color.parseColor("#A6A6A6"));
-        this.c.setId(2131367543);
-        paramParams.addRule(3, 2131367544);
-        paramParams.addRule(1, 2131367548);
-        addView(this.c, paramParams);
+        this.e = new TextView(paramContext);
+        this.e.setMaxLines(1);
+        this.e.setMaxEms(8);
+        this.e.setEllipsize(TextUtils.TruncateAt.END);
+        this.e.setText(b().getAdvertiser_corporate_image_name());
+        this.e.setTextColor(Color.parseColor("#A6A6A6"));
+        this.e.setId(2131434085);
+        paramParams.addRule(3, 2131434086);
+        paramParams.addRule(1, 2131434090);
+        addView(this.e, paramParams);
       }
-      if (((a().getCreativeSize() == 184) || (a().getCreativeSize() == 194)) && (a().getProductType() == 12) && (a().getAppDownloadNum() != 0L))
+      if (((b().getCreativeSize() == 184) || (b().getCreativeSize() == 194)) && (b().getProductType() == 12) && (b().getAppDownloadNum() != 0L))
       {
         paramParams = new RelativeLayout.LayoutParams(-2, -2);
-        this.d = new TextView(paramContext);
-        this.d.setId(2131367546);
-        this.d.setMaxLines(1);
-        this.d.setEllipsize(TextUtils.TruncateAt.END);
-        this.d.setText(GdtDownloadNumFormatter.a(a().getAppDownloadNum()));
-        this.d.setTextColor(Color.parseColor("#A6A6A6"));
-        if (a().getCreativeSize() == 194) {
-          paramParams.addRule(1, 2131367547);
+        this.f = new TextView(paramContext);
+        this.f.setId(2131434088);
+        this.f.setMaxLines(1);
+        this.f.setEllipsize(TextUtils.TruncateAt.END);
+        this.f.setText(GdtDownloadNumFormatter.a(b().getAppDownloadNum()));
+        this.f.setTextColor(Color.parseColor("#A6A6A6"));
+        if (b().getCreativeSize() == 194) {
+          paramParams.addRule(1, 2131434089);
         } else {
-          paramParams.addRule(1, 2131367543);
+          paramParams.addRule(1, 2131434085);
         }
-        paramParams.addRule(3, 2131367544);
-        addView(this.d, paramParams);
+        paramParams.addRule(3, 2131434086);
+        addView(this.f, paramParams);
       }
       paramParams = new GradientDrawable();
       paramParams.setShape(0);
       paramParams.setCornerRadius(GdtUIUtils.a(14.0F, getResources()));
       paramParams.setColor(Color.parseColor("#12B7F5"));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      a();
+      this.c = new TextView(paramContext);
+      this.c.setGravity(17);
+      this.c.setTextColor(-1);
+      c();
       if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackground(paramParams);
+        this.c.setBackground(paramParams);
       }
       localLayoutParams.addRule(12);
-      localLayoutParams.addRule(1, 2131367547);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+      localLayoutParams.addRule(1, 2131434089);
+      addView(this.c, localLayoutParams);
     }
   }
   
-  private GdtAd a()
+  private boolean a()
   {
-    GdtHandler.Params localParams = this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
+    GdtHandler.Params localParams = this.a;
+    return ((localParams != null) && (localParams.a()) && (b() != null) && (b().getImageData() != null) && (b().getImageData().a()) && ((b().getCreativeSize() == 65) || (b().getCreativeSize() == 184) || (b().getCreativeSize() == 194))) || (b().getCreativeSize() == 285);
+  }
+  
+  private GdtAd b()
+  {
+    GdtHandler.Params localParams = this.a;
     if ((localParams != null) && (localParams.a())) {
-      return this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a;
+      return this.a.a;
     }
     return null;
   }
   
-  private void a()
+  private void c()
   {
     if (!a()) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+    if (this.c == null) {
       return;
     }
     String str;
-    if (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.isAppProductType())
+    if (this.a.a.isAppProductType())
     {
-      if (AdAppUtil.isInstalled(getContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getAppPackageName())) {
+      if (AdAppUtil.isInstalled(getContext(), this.a.a.getAppPackageName())) {
         str = "打开";
       } else {
         str = "立即下载";
@@ -162,59 +168,53 @@ final class GdtBannerViewWithOnePicture
     else {
       str = "查看详情";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-  }
-  
-  private boolean a()
-  {
-    GdtHandler.Params localParams = this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-    return ((localParams != null) && (localParams.a()) && (a() != null) && (a().getImageData() != null) && (a().getImageData().a()) && ((a().getCreativeSize() == 65) || (a().getCreativeSize() == 184) || (a().getCreativeSize() == 194))) || (a().getCreativeSize() == 285);
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public AdAntiSpamForClick a()
-  {
-    return null;
+    this.c.setText(str);
   }
   
   public void a(Context paramContext) {}
   
-  public View b()
-  {
-    return null;
-  }
-  
   public void b(Context paramContext)
   {
-    a();
+    c();
   }
   
   public void c(Context paramContext) {}
   
+  public AdAntiSpamForClick getAntiSpamForClick()
+  {
+    return null;
+  }
+  
+  public View getCloseView()
+  {
+    return null;
+  }
+  
+  public View getView()
+  {
+    return this;
+  }
+  
   public void setSize(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 > 0) && (paramInt2 > 0) && (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null) && (this.jdField_a_of_type_ComTencentImageURLImageView != null))
+    if ((paramInt1 > 0) && (paramInt2 > 0) && (this.b != null) && (this.c != null) && (this.d != null) && (this.g != null))
     {
-      if (a().getCreativeSize() == 65) {
+      if (b().getCreativeSize() == 65) {
         i = Double.valueOf(paramInt1 * 303 / 684).intValue();
-      } else if (a().getCreativeSize() == 184) {
+      } else if (b().getCreativeSize() == 184) {
         i = Double.valueOf(paramInt1 * 222 / 684).intValue();
-      } else if (a().getCreativeSize() == 194) {
+      } else if (b().getCreativeSize() == 194) {
         i = Double.valueOf(paramInt1 * 168 / 684).intValue();
       } else {
         i = 0;
       }
-      if (this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams() != null)
+      if (this.g.getLayoutParams() != null)
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width = i;
-        this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height = paramInt2;
+        this.g.getLayoutParams().width = i;
+        this.g.getLayoutParams().height = paramInt2;
       }
       int i = Double.valueOf(paramInt1 * 72 / 684).intValue();
-      Object localObject = this.jdField_a_of_type_ComTencentGdtadApiBannerRectangleGdtRoundRectURLImageView;
+      Object localObject = this.h;
       if (localObject != null) {
         localObject = ((GdtRoundRectURLImageView)localObject).getLayoutParams();
       } else {
@@ -231,7 +231,7 @@ final class GdtBannerViewWithOnePicture
       }
       i = Double.valueOf(paramInt1 * 70 / 684).intValue();
       int j = Double.valueOf(i * 3 / 7).intValue();
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).width = i;
@@ -240,17 +240,17 @@ final class GdtBannerViewWithOnePicture
         ((RelativeLayout.LayoutParams)localObject).topMargin = GdtUIUtils.a(6.0F, getResources());
       }
       i = Double.valueOf(paramInt2 * 26 / 166).intValue();
-      if (a().getCreativeSize() == 65) {
+      if (b().getCreativeSize() == 65) {
         paramInt1 = Double.valueOf(paramInt1 * 345 / 684).intValue();
-      } else if (a().getCreativeSize() == 184) {
+      } else if (b().getCreativeSize() == 184) {
         paramInt1 = Double.valueOf(paramInt1 * 426 / 684).intValue();
-      } else if (a().getCreativeSize() == 194) {
+      } else if (b().getCreativeSize() == 194) {
         paramInt1 = Double.valueOf(paramInt1 * 480 / 684).intValue();
       } else {
         paramInt1 = 0;
       }
       j = Double.valueOf(paramInt2 * 50 / 166).intValue();
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).width = paramInt1;
@@ -260,36 +260,36 @@ final class GdtBannerViewWithOnePicture
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = GdtUIUtils.a(7.0F, getResources());
         ((RelativeLayout.LayoutParams)localObject).topMargin = GdtUIUtils.a(7.0F, getResources());
       }
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      float f = i;
-      ((TextView)localObject).setTextSize(0, f);
-      if ((a().getCreativeSize() == 194) && (this.d == null)) {
-        this.b.setMaxLines(2);
+      localObject = this.c;
+      float f1 = i;
+      ((TextView)localObject).setTextSize(0, f1);
+      if ((b().getCreativeSize() == 194) && (this.f == null)) {
+        this.d.setMaxLines(2);
       }
-      this.b.setTextSize(0, f);
-      localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+      this.d.setTextSize(0, f1);
+      localObject = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).topMargin = GdtUIUtils.a(8.0F, getResources());
         ((RelativeLayout.LayoutParams)localObject).rightMargin = GdtUIUtils.a(9.0F, getResources());
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = GdtUIUtils.a(5.0F, getResources());
-        if (a().getCreativeSize() == 194) {
+        if (b().getCreativeSize() == 194) {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = GdtUIUtils.a(9.0F, getResources());
         }
       }
       paramInt1 = Double.valueOf(paramInt2 * 22 / 166).intValue();
-      localObject = this.c;
+      localObject = this.e;
       if (localObject != null) {
         ((TextView)localObject).setTextSize(0, paramInt1);
       }
-      localObject = this.d;
+      localObject = this.f;
       if (localObject != null)
       {
         ((TextView)localObject).setTextSize(0, paramInt1);
-        localObject = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
+        localObject = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
         if (localObject != null)
         {
-          if (a().getCreativeSize() == 194)
+          if (b().getCreativeSize() == 194)
           {
             ((RelativeLayout.LayoutParams)localObject).leftMargin = GdtUIUtils.a(9.0F, getResources());
             return;
@@ -304,7 +304,7 @@ final class GdtBannerViewWithOnePicture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithOnePicture
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,11 @@ public class InnerFrameManager
   extends ViewFlipper
   implements ViewStub.OnInflateListener
 {
-  public Activity a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
-  private Set<InnerFrame> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
+  public Activity a = null;
+  private BaseQQAppInterface b = null;
+  private Set<InnerFrame> c = new HashSet();
+  private boolean d = false;
+  private Bundle e;
   
   public InnerFrameManager(Context paramContext)
   {
@@ -33,32 +33,26 @@ public class InnerFrameManager
   public InnerFrameManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidAppActivity = null;
     paramContext = new InnerFrame(paramContext);
     paramContext.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     addView(paramContext, 0);
   }
   
-  public int a()
-  {
-    return getDisplayedChild() - 1;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     ((InnerFrame)getChildAt(getDisplayedChild())).a();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle = null;
+    this.e = null;
     a(paramInt, true);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
     }
@@ -66,7 +60,7 @@ public class InnerFrameManager
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.e = paramBundle;
     a(paramInt, true);
   }
   
@@ -76,7 +70,7 @@ public class InnerFrameManager
     if (getDisplayedChild() == paramInt) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       ((InnerFrame)getChildAt(getDisplayedChild())).b();
     }
     ((InnerFrame)getChildAt(getDisplayedChild())).c();
@@ -86,31 +80,31 @@ public class InnerFrameManager
       if (getDisplayedChild() != 0) {
         if (getDisplayedChild() < paramInt)
         {
-          setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772078);
-          setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772079);
+          setInAnimation(this.a, 2130772108);
+          setOutAnimation(this.a, 2130772109);
         }
         else
         {
-          setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772072);
-          setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772073);
+          setInAnimation(this.a, 2130772102);
+          setOutAnimation(this.a, 2130772103);
         }
       }
     }
     else
     {
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772147);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772147);
+      setInAnimation(this.a, 2130772196);
+      setOutAnimation(this.a, 2130772196);
     }
     setDisplayedChild(paramInt);
-    ((InnerFrame)getChildAt(paramInt)).b(this.jdField_a_of_type_AndroidOsBundle);
-    if (this.jdField_a_of_type_Boolean) {
+    ((InnerFrame)getChildAt(paramInt)).b(this.e);
+    if (this.d) {
       ((InnerFrame)getChildAt(paramInt)).a();
     }
   }
   
   public void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
     int j = getChildCount();
     int i = 1;
     while (i < j)
@@ -122,13 +116,13 @@ public class InnerFrameManager
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     ((InnerFrame)getChildAt(getDisplayedChild())).b();
   }
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).c();
     }
@@ -136,26 +130,31 @@ public class InnerFrameManager
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).d();
     }
   }
   
+  public int getCurrentPage()
+  {
+    return getDisplayedChild() - 1;
+  }
+  
   public void onInflate(ViewStub paramViewStub, View paramView)
   {
     paramViewStub = (InnerFrame)paramView;
-    this.jdField_a_of_type_JavaUtilSet.add(paramViewStub);
-    paramViewStub.setActivity(this.jdField_a_of_type_AndroidAppActivity);
+    this.c.add(paramViewStub);
+    paramViewStub.setActivity(this.a);
     paramViewStub.setInnerFrameManager(this);
-    paramViewStub.setAppIntf(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-    paramViewStub.a(this.jdField_a_of_type_AndroidOsBundle);
+    paramViewStub.setAppIntf(this.b);
+    paramViewStub.a(this.e);
   }
   
   public void setAppIntf(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    this.b = paramBaseQQAppInterface;
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).setAppIntf(paramBaseQQAppInterface);
     }
@@ -163,7 +162,7 @@ public class InnerFrameManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.InnerFrameManager
  * JD-Core Version:    0.7.0.1
  */

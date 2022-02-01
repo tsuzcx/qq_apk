@@ -38,33 +38,33 @@ import java.util.List;
 class InformationFaceAdapter$InformationItemLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private BaseFaceListAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter;
+  private int a;
   private int b;
-  private int c;
+  private float c;
+  private int d;
+  private View.OnClickListener e;
+  private Context f;
+  private BaseFaceListAdapter g;
   
   public InformationFaceAdapter$InformationItemLayout(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener, BaseFaceListAdapter paramBaseFaceListAdapter)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.f = paramContext;
+    this.e = paramOnClickListener;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = paramBaseFaceListAdapter;
+    this.c = paramFloat;
+    this.g = paramBaseFaceListAdapter;
     paramInt1 = DisplayUtil.b(getContext(), 6.0F);
-    paramInt2 = this.jdField_a_of_type_Int;
+    paramInt2 = this.a;
     int i = this.b;
-    this.c = ((paramInt2 - (i - 1) * 2 * paramInt1) / i);
+    this.d = ((paramInt2 - (i - 1) * 2 * paramInt1) / i);
     a();
   }
   
   private URLDrawable a(InformationFacePackage.Item paramItem)
   {
-    Object localObject1 = InfoStickerSaveUtils.a();
+    Object localObject1 = InfoStickerSaveUtils.b();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramItem.b);
     ((StringBuilder)localObject2).append("_static.png");
@@ -87,7 +87,7 @@ class InformationFaceAdapter$InformationItemLayout
       ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
       QLog.d("InformationFaceAdapter", 2, ((StringBuilder)localObject2).toString());
     }
-    paramItem = new URL(paramItem.d);
+    paramItem = new URL(paramItem.e);
     localObject1 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject1).Recycle();
     ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelperConstants.a;
@@ -100,12 +100,12 @@ class InformationFaceAdapter$InformationItemLayout
     setOrientation(0);
     setGravity(17);
     int j = DisplayUtil.b(getContext(), 12.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
+    int k = (int)((this.d - j * 2) * this.c);
     int i = 0;
     while (i < this.b)
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131561689, null);
-      int m = this.c;
+      View localView = LayoutInflater.from(getContext()).inflate(2131628068, null);
+      int m = this.d;
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(m, m);
       if (i == 0)
       {
@@ -121,7 +121,7 @@ class InformationFaceAdapter$InformationItemLayout
         localLayoutParams.setMargins(m, j, m, 0);
       }
       localView.setLayoutParams(localLayoutParams);
-      ((ImageView)localView.findViewById(2131368855)).setPadding(k, k, k, k);
+      ((ImageView)localView.findViewById(2131435789)).setPadding(k, k, k, k);
       addView(localView);
       i += 1;
     }
@@ -153,7 +153,7 @@ class InformationFaceAdapter$InformationItemLayout
   
   private void a(InformationFacePackage.Item paramItem, URLImageView paramURLImageView, QIMCommonLoadingView paramQIMCommonLoadingView, ProgressBar paramProgressBar, InformationFaceAdapter.URLDrawableListener paramURLDrawableListener, boolean paramBoolean, BaseFaceListAdapter paramBaseFaceListAdapter)
   {
-    Object localObject1 = InfoStickerSaveUtils.a();
+    Object localObject1 = InfoStickerSaveUtils.b();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramItem.b);
     ((StringBuilder)localObject2).append("_dynamic.png");
@@ -239,7 +239,7 @@ class InformationFaceAdapter$InformationItemLayout
         paramQIMCommonLoadingView = new java.lang.ref.WeakReference(paramQIMCommonLoadingView);
         paramProgressBar = new mqq.util.WeakReference(paramProgressBar);
         new java.lang.ref.WeakReference(paramBaseFaceListAdapter);
-        paramBaseFaceListAdapter = paramItem.c;
+        paramBaseFaceListAdapter = paramItem.d;
         localHttpNetReq = new HttpNetReq();
         localHttpNetReq.mCallback = new InformationFaceAdapter.InformationItemLayout.1(this, (File)localObject2, paramQIMCommonLoadingView, paramURLImageView, str, paramBoolean, paramURLDrawableListener, paramProgressBar);
         localHttpNetReq.mReqUrl = paramBaseFaceListAdapter;
@@ -271,7 +271,7 @@ class InformationFaceAdapter$InformationItemLayout
     int j = this.b;
     int i = paramInt1 * j;
     if (paramInt1 == paramInt2 - 1) {
-      paramInt1 = paramInformationFacePackage.b();
+      paramInt1 = paramInformationFacePackage.d();
     } else {
       paramInt1 = i + j;
     }
@@ -280,11 +280,11 @@ class InformationFaceAdapter$InformationItemLayout
     while (paramInt2 < paramInt1)
     {
       Object localObject1 = getChildAt(paramInt2 - i);
-      Object localObject2 = ((View)localObject1).findViewById(2131368857);
-      URLImageView localURLImageView = (URLImageView)((View)localObject1).findViewById(2131368855);
-      ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131368856);
-      QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)((View)localObject1).findViewById(2131368854);
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity)) {
+      Object localObject2 = ((View)localObject1).findViewById(2131435791);
+      URLImageView localURLImageView = (URLImageView)((View)localObject1).findViewById(2131435789);
+      ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131435790);
+      QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)((View)localObject1).findViewById(2131435788);
+      if ((this.f instanceof EditPicActivity)) {
         localObject1 = paramInformationFacePackage.b(paramInt2);
       } else {
         localObject1 = paramInformationFacePackage.a(paramInt2);
@@ -295,8 +295,8 @@ class InformationFaceAdapter$InformationItemLayout
       }
       else
       {
-        ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localURLImageView.setTag(2131378301, Integer.valueOf(paramInt2));
+        ((View)localObject2).setOnClickListener(this.e);
+        localURLImageView.setTag(2131446820, Integer.valueOf(paramInt2));
         if (!paramBoolean)
         {
           localProgressBar.setVisibility(4);
@@ -304,14 +304,14 @@ class InformationFaceAdapter$InformationItemLayout
         }
         else
         {
-          localURLImageView.setTag(2131378314, localObject1);
-          localURLImageView.setTag(2131378280, Boolean.valueOf(false));
+          localURLImageView.setTag(2131446833, localObject1);
+          localURLImageView.setTag(2131446799, Boolean.valueOf(false));
           localProgressBar.setVisibility(0);
           localObject2 = new InformationFaceAdapter.URLDrawableListener((String)localObject1, localURLImageView, localProgressBar);
           localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-          if ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity))
+          if ((this.f instanceof EditPicActivity))
           {
-            localObject1 = a((InformationFacePackage.Item)paramInformationFacePackage.a.get(paramInt2));
+            localObject1 = a((InformationFacePackage.Item)paramInformationFacePackage.l.get(paramInt2));
             if (localObject1 != null)
             {
               if (((URLDrawable)localObject1).getStatus() != 1) {
@@ -328,7 +328,7 @@ class InformationFaceAdapter$InformationItemLayout
           }
           else
           {
-            a((InformationFacePackage.Item)paramInformationFacePackage.a.get(paramInt2), localURLImageView, localQIMCommonLoadingView, localProgressBar, (InformationFaceAdapter.URLDrawableListener)localObject2, paramBoolean, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter);
+            a((InformationFacePackage.Item)paramInformationFacePackage.l.get(paramInt2), localURLImageView, localQIMCommonLoadingView, localProgressBar, (InformationFaceAdapter.URLDrawableListener)localObject2, paramBoolean, this.g);
           }
         }
       }
@@ -338,7 +338,7 @@ class InformationFaceAdapter$InformationItemLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.InformationItemLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -76,7 +76,7 @@ public class PluginReporter
       return;
     }
     localHashMap.put("plugin_result", Boolean.toString(paramBoolean));
-    localHashMap.put("plugin_launch_type", String.valueOf(paramPluginParams.g));
+    localHashMap.put("plugin_launch_type", String.valueOf(paramPluginParams.v));
     paramPluginParams = new StringBuilder();
     paramPluginParams.append("report plugin launch event: ");
     paramPluginParams.append(localHashMap);
@@ -106,7 +106,7 @@ public class PluginReporter
     QLog.e("plugin_tag", 1, "getAccount failed ！！！");
     localObject = "";
     paramHashMap.put("qq_num", localObject);
-    localObject = paramPluginParams.a;
+    localObject = paramPluginParams.w;
     if (localObject == null)
     {
       QLog.e("plugin_tag", 1, "plugin info is null!");
@@ -121,7 +121,7 @@ public class PluginReporter
     paramHashMap.put("plugin_download_duration", String.valueOf(((PluginBaseInfo)localObject).downloadDuration));
     paramHashMap.put("plugin_start_network_type", String.valueOf(((PluginBaseInfo)localObject).startDownloadNetType));
     paramHashMap.put("plugin_network_type", String.valueOf(NetworkState.getNetworkType()));
-    paramHashMap.put("plugin_low_device", Boolean.toString(DeviceInfoUtils.b()));
+    paramHashMap.put("plugin_low_device", Boolean.toString(DeviceInfoUtils.isLowPerfDevice()));
     paramHashMap.put("plugin_is_foreground", Boolean.toString(Foreground.isCurrentProcessForeground()));
     paramHashMap.put("plugin_process", Arrays.toString(((PluginBaseInfo)localObject).mProcesses));
     paramHashMap.put("plugin_process_running", Boolean.toString(a(((PluginBaseInfo)localObject).mProcesses)));
@@ -167,7 +167,7 @@ public class PluginReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder$1$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder.a instanceof ProteusItemData))
+    if ((this.a.c.b instanceof ProteusItemData))
     {
       int i = -1;
       boolean bool = false;
@@ -81,21 +81,21 @@ class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder$1$1
         }
         bool = true;
         label188:
-        if (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (FastWeqAdUtils.h((AdData)this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData)))
+        if (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (FastWeqAdUtils.h((AdData)this.a.a)))
         {
-          FastWeqAdUtils.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData);
+          FastWeqAdUtils.b(this.a.b, (AdData)this.a.a);
           return;
         }
-        ((IRIJFastWebRecommendAdService)QRoute.api(IRIJFastWebRecommendAdService.class)).onAdJump(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder.a, bool, i);
+        ((IRIJFastWebRecommendAdService)QRoute.api(IRIJFastWebRecommendAdService.class)).onAdJump(this.a.b, (AdData)this.a.c.b, bool, i);
         return;
       }
-      JumpAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      JumpAdUtils.a(this.a.a, paramViewBase.getNativeView(), this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusViewAdBannerBigPicCreator.ProteusItemViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

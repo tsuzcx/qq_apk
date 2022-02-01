@@ -9,17 +9,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class ScreenLayout
 {
-  protected int a;
-  Context jdField_a_of_type_AndroidContentContext;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  protected boolean a;
+  Context a;
+  VideoAppInterface b;
+  protected int c = 0;
+  protected boolean d = false;
   
   protected ScreenLayout(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramContext;
+    this.b = paramVideoAppInterface;
     paramContext = new StringBuilder();
     paramContext.append("ScreenLayout. onCreate.");
     paramContext.append(this);
@@ -29,78 +27,70 @@ public abstract class ScreenLayout
   public static ScreenLayout a(Context paramContext, VideoAppInterface paramVideoAppInterface, int paramInt, boolean paramBoolean)
   {
     Object localObject = null;
-    if (paramInt != 1) {
-      if (paramInt != 2) {
-        if (paramInt != 3) {
-          if (paramInt != 4)
-          {
-            if (paramInt != 5)
-            {
-              paramContext = localObject;
-              break label187;
-            }
-            if (!paramBoolean) {}
-          }
-        }
+    switch (paramInt)
+    {
+    default: 
+      paramContext = localObject;
+      break;
+    case 6: 
+      if (!paramBoolean) {
+        break;
       }
     }
     try
     {
-      paramContext = new ScreenLayoutWatchTogetherDoubleUI(paramContext, paramVideoAppInterface);
+      paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
     }
-    finally
-    {
-      for (;;)
-      {
-        for (;;)
-        {
-          label187:
-          throw paramContext;
-        }
-      }
-    }
-    paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
-    break label204;
+    finally {}
+    paramContext = new ScreenLayoutDoubleVerticalScreen(paramContext, paramVideoAppInterface);
+    break label241;
     if (paramBoolean)
     {
-      paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
+      paramContext = new ScreenLayoutWatchTogetherDoubleUI(paramContext, paramVideoAppInterface);
     }
     else
     {
       paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
-      break label204;
+      break label241;
       if (paramBoolean)
       {
         paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
       }
       else
       {
-        paramContext = new ScreenLayoutMultipleGrid(paramContext, paramVideoAppInterface);
-        break label204;
+        paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
+        break label241;
         if (paramBoolean)
         {
-          paramContext = new ScreenLayoutSmallUIDouble(paramContext, paramVideoAppInterface);
+          paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
         }
         else
         {
-          paramContext = new ScreenLayoutDoubleScreen(paramContext, paramVideoAppInterface);
-          break label204;
+          paramContext = new ScreenLayoutMultipleGrid(paramContext, paramVideoAppInterface);
+          break label241;
           if (paramBoolean)
           {
-            paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
+            paramContext = new ScreenLayoutSmallUIDouble(paramContext, paramVideoAppInterface);
           }
           else
           {
-            paramContext = new ScreenLayoutOrigin(paramContext, paramVideoAppInterface);
-            break label204;
-            return paramContext;
+            paramContext = new ScreenLayoutDoubleScreen(paramContext, paramVideoAppInterface);
+            break label241;
+            if (paramBoolean) {
+              paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
+            } else {
+              paramContext = new ScreenLayoutOrigin(paramContext, paramVideoAppInterface);
+            }
           }
         }
       }
     }
+    label241:
+    for (;;)
+    {
+      return paramContext;
+    }
   }
-  
-  public abstract int a();
   
   public void a()
   {
@@ -108,12 +98,12 @@ public abstract class ScreenLayout
     localStringBuilder.append("ScreenLayout. onDestroy.");
     localStringBuilder.append(this);
     QLog.d("ScreenLayout", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.a = null;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, VideoMemberInfo> paramConcurrentHashMap) {}
@@ -122,23 +112,25 @@ public abstract class ScreenLayout
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int != 0;
-  }
-  
-  public abstract boolean b();
+  public abstract int b();
   
   public boolean c()
   {
-    return a() == 2;
+    return this.c != 0;
+  }
+  
+  public abstract boolean d();
+  
+  public boolean e()
+  {
+    return (b() == 2) || (b() == 6);
   }
 }
 

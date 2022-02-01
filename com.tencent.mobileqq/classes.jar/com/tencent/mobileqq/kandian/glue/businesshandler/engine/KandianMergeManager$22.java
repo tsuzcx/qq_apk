@@ -12,18 +12,18 @@ class KandianMergeManager$22
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.putLong("subscribe_push_msg_time", this.jdField_a_of_type_Long);
-    localEditor.putString("subscribe_push_msg_uin", this.jdField_a_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
-    localEditor.putString("subscribe_push_msg_xml", this.jdField_b_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_msgtype", this.jdField_b_of_type_Int);
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.c(this.this$0), 1).edit();
+    localEditor.putLong("subscribe_push_msg_time", this.a);
+    localEditor.putString("subscribe_push_msg_uin", this.b);
+    localEditor.putInt("subscribe_push_msg_status", this.c);
+    localEditor.putString("subscribe_push_msg_xml", this.d);
+    localEditor.putInt("subscribe_push_msg_msgtype", this.e);
     RIJSPUtils.a(localEditor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.22
  * JD-Core Version:    0.7.0.1
  */

@@ -9,59 +9,54 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SmallScreenActivityPlugin
 {
-  private static volatile SmallScreenActivityPlugin jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin;
-  BaseVideoAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface;
-  boolean jdField_a_of_type_Boolean = false;
+  private static volatile SmallScreenActivityPlugin d;
+  boolean a = false;
   boolean b = true;
+  BaseVideoAppInterface c;
   
   private SmallScreenActivityPlugin(BaseVideoAppInterface paramBaseVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface = paramBaseVideoAppInterface;
+    this.c = paramBaseVideoAppInterface;
   }
   
   public static SmallScreenActivityPlugin a(BaseVideoAppInterface paramBaseVideoAppInterface)
   {
-    if (jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null) {
-          jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin = new SmallScreenActivityPlugin(paramBaseVideoAppInterface);
+        if (d == null) {
+          d = new SmallScreenActivityPlugin(paramBaseVideoAppInterface);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin;
+    return d;
   }
   
   public void a()
   {
-    if (SmallScreenUtils.f()) {
-      this.jdField_a_of_type_Boolean = false;
+    if (SmallScreenUtils.g()) {
+      this.a = false;
     }
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    ((ISmallScreenActivityPluginHelperApi)QRoute.api(ISmallScreenActivityPluginHelperApi.class)).onPauseRender(paramLong, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface, this.b, paramBoolean);
+    ((ISmallScreenActivityPluginHelperApi)QRoute.api(ISmallScreenActivityPluginHelperApi.class)).onPauseRender(paramLong, this.c, this.b, paramBoolean);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (SmallScreenUtils.f())
+    if (SmallScreenUtils.g())
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       this.b = false;
     }
   }
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (!SmallScreenUtils.f());
-  }
-  
   public void b()
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -70,18 +65,23 @@ public class SmallScreenActivityPlugin
       localStringBuilder.append("]");
       QLog.w("SmallScreenActivityPlugin", 1, localStringBuilder.toString());
     }
-    if (SmallScreenUtils.f())
+    if (SmallScreenUtils.g())
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       this.b = true;
       ThreadManager.excute(new SmallScreenActivityPlugin.1(this, l), 16, null, false);
     }
-    SmallScreenUtils.a(l, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface, 0);
+    SmallScreenUtils.a(l, this.c, 0);
   }
   
-  public void c()
+  public boolean c()
   {
-    this.jdField_a_of_type_Boolean = false;
+    return (this.a) || (!SmallScreenUtils.g());
+  }
+  
+  public void d()
+  {
+    this.a = false;
   }
 }
 

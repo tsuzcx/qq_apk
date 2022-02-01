@@ -38,12 +38,12 @@ public final class ExpandFlutterContainerFragment$Companion
       QLog.d("QFlutterPageRouter", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("entry_point", paramPageRouter.jdField_a_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("page_name", paramPageRouter.jdField_b_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("unique_id", paramPageRouter.c);
-    ((Intent)localObject).putExtra("params", (Serializable)paramPageRouter.jdField_a_of_type_ComTencentMobileqqFlutterRouterSerializableMap);
-    ((Intent)localObject).putExtra("status_bar_transparent", paramPageRouter.jdField_a_of_type_Boolean);
-    ((Intent)localObject).putExtra("status_text_dark", paramPageRouter.jdField_b_of_type_Boolean);
+    ((Intent)localObject).putExtra("entry_point", paramPageRouter.a);
+    ((Intent)localObject).putExtra("page_name", paramPageRouter.b);
+    ((Intent)localObject).putExtra("unique_id", paramPageRouter.d);
+    ((Intent)localObject).putExtra("params", (Serializable)paramPageRouter.c);
+    ((Intent)localObject).putExtra("status_bar_transparent", paramPageRouter.e);
+    ((Intent)localObject).putExtra("status_text_dark", paramPageRouter.f);
     ((Intent)localObject).putExtra("preload_process", bool);
     ((Intent)localObject).putExtra("open_page_time", SystemClock.elapsedRealtime());
     ((Intent)localObject).putExtra("moduleId", "expand_flutter");
@@ -71,7 +71,7 @@ public final class ExpandFlutterContainerFragment$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterContainerFragment.Companion
  * JD-Core Version:    0.7.0.1
  */

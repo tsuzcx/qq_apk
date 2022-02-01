@@ -9,8 +9,8 @@ class VideoController$31
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setAudioNoiseCtrlParam(this.a, this.b, this.c);
+    if (this.this$0.U != null) {
+      this.this$0.U.setAudioNoiseCtrlParam(this.a, this.b, this.c);
     }
   }
 }

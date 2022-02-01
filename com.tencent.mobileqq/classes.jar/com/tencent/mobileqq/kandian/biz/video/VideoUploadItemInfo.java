@@ -2,25 +2,19 @@ package com.tencent.mobileqq.kandian.biz.video;
 
 public class VideoUploadItemInfo
 {
-  public int a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
-  public int c;
   public String c;
-  public boolean c;
   public int d;
-  public String d;
   public int e;
   public int f;
-  
-  public VideoUploadItemInfo()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-  }
+  public int g;
+  public String h;
+  public boolean i = true;
+  public boolean j;
+  public int k;
+  public int l;
+  public boolean m = false;
   
   public String a()
   {
@@ -28,37 +22,37 @@ public class VideoUploadItemInfo
     localStringBuilder.append("\nShortVideoUploadInfo");
     localStringBuilder.append("\n |-");
     localStringBuilder.append("localPath:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("md5:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("thumbPath:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("thumbWidth:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("thumbHeight:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("sendSizeSpec:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("fileTime:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("fileSource:");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("supportProgressive:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("fileWidth:");
     localStringBuilder.append(this.e);
     localStringBuilder.append("\n |-");
-    localStringBuilder.append("fileHeight:");
+    localStringBuilder.append("sendSizeSpec:");
     localStringBuilder.append(this.f);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileTime:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileSource:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("supportProgressive:");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileWidth:");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileHeight:");
+    localStringBuilder.append(this.l);
     return localStringBuilder.toString();
   }
   
@@ -72,7 +66,7 @@ public class VideoUploadItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoUploadItemInfo
  * JD-Core Version:    0.7.0.1
  */

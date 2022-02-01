@@ -20,19 +20,13 @@ import com.tribe.async.dispatch.Dispatcher;
 public class FollowNodeViewHolder
   extends MsgNodeViewHolder
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a(2131699904);
-  }
+  public static final String b = StoryApi.b(2131897957);
+  public QQUserUIItem a = null;
+  private boolean d;
   
   public FollowNodeViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561714);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = null;
+    super(paramViewGroup, 2131628093);
   }
   
   protected String a(QQUserUIItem paramQQUserUIItem)
@@ -51,30 +45,30 @@ public class FollowNodeViewHolder
   {
     super.a(paramMsgTabNodeInfo);
     SLog.a("FollowNodeViewHolder", "bindData %s", paramMsgTabNodeInfo);
-    this.itemView.setTag(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((UserManager)SuperManager.a(2)).a(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, false);
+    this.itemView.setTag(paramMsgTabNodeInfo.d);
+    this.a = ((UserManager)SuperManager.a(2)).c(paramMsgTabNodeInfo.d, false);
     boolean bool = true;
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     Object localObject1;
-    if (MsgTabStoryNodeListManager.h)
+    if (MsgTabStoryNodeListManager.B)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      localObject1 = this.a;
       if ((localObject1 == null) || (!((QQUserUIItem)localObject1).isVipButNoFriend())) {
         bool = false;
       }
-      this.jdField_a_of_type_Boolean = bool;
+      this.d = bool;
     }
-    Object localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-    if (this.jdField_a_of_type_Boolean)
+    Object localObject2 = a(this.a);
+    if (this.d)
     {
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = HardCodeUtil.a(2131704772);
+        localObject1 = HardCodeUtil.a(2131902674);
       }
     }
     else
     {
-      QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      QQUserUIItem localQQUserUIItem = this.a;
       localObject1 = localObject2;
       if (localQQUserUIItem != null)
       {
@@ -87,16 +81,16 @@ public class FollowNodeViewHolder
     localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-        localObject1 = paramMsgTabNodeInfo.c;
+      localObject1 = b;
+      if (!TextUtils.isEmpty(paramMsgTabNodeInfo.l)) {
+        localObject1 = paramMsgTabNodeInfo.l;
       }
-      SLog.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-      StoryDispatcher.a().dispatch(new RequireUserItemEvent(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString));
+      SLog.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramMsgTabNodeInfo.d);
+      StoryDispatcher.a().dispatch(new RequireUserItemEvent(paramMsgTabNodeInfo.d));
       localObject2 = localObject1;
     }
-    a((String)localObject2, this.jdField_a_of_type_Boolean, paramMsgTabNodeInfo);
-    a(paramMsgTabNodeInfo.g);
+    a((String)localObject2, this.d, paramMsgTabNodeInfo);
+    a(paramMsgTabNodeInfo.p);
   }
   
   protected void a(String paramString)
@@ -106,12 +100,12 @@ public class FollowNodeViewHolder
   
   protected void a(String paramString, boolean paramBoolean, MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
+    this.c.setNodeName(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.FollowNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

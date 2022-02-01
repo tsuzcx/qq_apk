@@ -21,23 +21,23 @@ class BottomAppBar$Behavior$1
     if ((localBottomAppBar != null) && ((paramView instanceof FloatingActionButton)))
     {
       FloatingActionButton localFloatingActionButton = (FloatingActionButton)paramView;
-      localFloatingActionButton.a(BottomAppBar.Behavior.a(this.a));
-      paramInt1 = BottomAppBar.Behavior.a(this.a).height();
-      localBottomAppBar.a(paramInt1);
+      localFloatingActionButton.b(BottomAppBar.Behavior.b(this.a));
+      paramInt1 = BottomAppBar.Behavior.b(this.a).height();
+      localBottomAppBar.b(paramInt1);
       paramView = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
-      if (BottomAppBar.Behavior.a(this.a) == 0)
+      if (BottomAppBar.Behavior.c(this.a) == 0)
       {
         paramInt1 = (localFloatingActionButton.getMeasuredHeight() - paramInt1) / 2;
         paramInt2 = localBottomAppBar.getResources().getDimensionPixelOffset(R.dimen.O);
-        paramView.bottomMargin = (BottomAppBar.e(localBottomAppBar) + (paramInt2 - paramInt1));
-        paramView.leftMargin = BottomAppBar.f(localBottomAppBar);
-        paramView.rightMargin = BottomAppBar.g(localBottomAppBar);
+        paramView.bottomMargin = (BottomAppBar.s(localBottomAppBar) + (paramInt2 - paramInt1));
+        paramView.leftMargin = BottomAppBar.t(localBottomAppBar);
+        paramView.rightMargin = BottomAppBar.u(localBottomAppBar);
         if (ViewUtils.a(localFloatingActionButton))
         {
-          paramView.leftMargin += BottomAppBar.h(localBottomAppBar);
+          paramView.leftMargin += BottomAppBar.v(localBottomAppBar);
           return;
         }
-        paramView.rightMargin += BottomAppBar.h(localBottomAppBar);
+        paramView.rightMargin += BottomAppBar.v(localBottomAppBar);
       }
       return;
     }
@@ -46,7 +46,7 @@ class BottomAppBar$Behavior$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.Behavior.1
  * JD-Core Version:    0.7.0.1
  */

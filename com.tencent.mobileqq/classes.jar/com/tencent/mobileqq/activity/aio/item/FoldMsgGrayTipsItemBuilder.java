@@ -34,18 +34,18 @@ public class FoldMsgGrayTipsItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramViewHolder = (FoldMsgGrayTipsItemBuilder.Holder)paramViewHolder;
-    paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558860, null);
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367798));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376326));
-    paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372142));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372224));
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    paramView = LayoutInflater.from(this.c).inflate(2131624480, null);
+    paramViewHolder.d = ((TextView)paramView.findViewById(2131434371));
+    paramViewHolder.e = ((ImageView)paramView.findViewById(2131444539));
+    paramViewHolder.f = ((ImageView)paramView.findViewById(2131439614));
+    paramViewHolder.g = ((LinearLayout)paramView.findViewById(2131439726));
+    paramViewHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
     if ((paramMessageRecord instanceof MessageForFoldMsgGrayTips))
     {
       paramMessageRecord = (MessageForFoldMsgGrayTips)paramMessageRecord;
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.getShowMsgContent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(0.0F, 1.0F);
-      paramLinearLayout = paramViewHolder.jdField_b_of_type_AndroidWidgetImageView;
+      paramViewHolder.d.setText(paramMessageRecord.getShowMsgContent(this.a, this.c));
+      paramViewHolder.d.setLineSpacing(0.0F, 1.0F);
+      paramLinearLayout = paramViewHolder.f;
       int i;
       if (paramMessageRecord.isOpen) {
         i = 8;
@@ -55,23 +55,23 @@ public class FoldMsgGrayTipsItemBuilder
       paramLinearLayout.setVisibility(i);
       if (paramMessageRecord.isOpen)
       {
-        paramMessageRecord = paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+        paramMessageRecord = paramViewHolder.d.getLayoutParams();
         if ((paramMessageRecord instanceof ViewGroup.MarginLayoutParams))
         {
           paramMessageRecord = (ViewGroup.MarginLayoutParams)paramMessageRecord;
-          if (paramMessageRecord.rightMargin != AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) {
-            paramMessageRecord.rightMargin = AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          if (paramMessageRecord.rightMargin != AIOUtils.b(10.0F, this.c.getResources())) {
+            paramMessageRecord.rightMargin = AIOUtils.b(10.0F, this.c.getResources());
           }
         }
       }
-      paramMessageRecord = ((IPasswdRedBagService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPasswdRedBagService.class)).getIconFromCacheByType("StatusIcon_HongBaoIcon", 2130847536);
+      paramMessageRecord = ((IPasswdRedBagService)this.a.getRuntimeService(IPasswdRedBagService.class)).getIconFromCacheByType("StatusIcon_HongBaoIcon", 2130849196);
       if (Build.VERSION.SDK_INT < 16) {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramMessageRecord));
+        paramViewHolder.e.setBackgroundDrawable(new BitmapDrawable(this.c.getResources(), paramMessageRecord));
       } else {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackground(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramMessageRecord));
+        paramViewHolder.e.setBackground(new BitmapDrawable(this.c.getResources(), paramMessageRecord));
       }
-      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new FoldMsgGrayTipsItemBuilder.1(this));
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BE", "0X80064BE", 0, 0, "", "", "", "");
+      paramViewHolder.g.setOnClickListener(new FoldMsgGrayTipsItemBuilder.1(this));
+      ReportController.b(this.a, "CliOper", "", "", "0X80064BE", "0X80064BE", 0, 0, "", "", "", "");
     }
     return paramView;
   }
@@ -83,7 +83,7 @@ public class FoldMsgGrayTipsItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder
  * JD-Core Version:    0.7.0.1
  */

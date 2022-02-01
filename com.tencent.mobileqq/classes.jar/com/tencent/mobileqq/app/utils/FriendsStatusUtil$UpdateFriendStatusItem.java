@@ -10,22 +10,18 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   implements Parcelable
 {
   public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new FriendsStatusUtil.UpdateFriendStatusItem.1();
-  public int a;
-  public long a;
-  public String a;
-  private byte[] a;
-  public int b = -1;
+  public String a = null;
+  public int b = 0;
+  public int c = -1;
+  public long d = -1L;
+  private byte[] e = null;
   
   protected FriendsStatusUtil$UpdateFriendStatusItem(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readInt();
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    this.c = paramParcel.readInt();
+    byte[] arrayOfByte = this.e;
     if (arrayOfByte != null) {
       paramParcel.readByteArray(arrayOfByte);
     }
@@ -33,30 +29,52 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   
   public FriendsStatusUtil$UpdateFriendStatusItem(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = paramString;
+    this.c = paramInt1;
+    this.b = paramInt2;
   }
   
   public FriendsStatusUtil$UpdateFriendStatusItem(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.c = paramInt1;
+    this.b = paramInt2;
+    this.d = paramLong;
   }
   
-  public long a()
+  public void a(long paramLong)
   {
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (paramLong > 0L)
+    {
+      this.e = new byte[4];
+      byte[] arrayOfByte = this.e;
+      arrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
+      arrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
+      arrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
+      arrayOfByte[3] = ((byte)(int)(paramLong & 0xFF));
+      return;
+    }
+    if (paramLong == 0L)
+    {
+      this.e = new byte[0];
+      return;
+    }
+    this.e = null;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    this.e = paramArrayOfByte;
+  }
+  
+  public byte[] a()
+  {
+    return this.e;
+  }
+  
+  public long b()
+  {
+    byte[] arrayOfByte = this.e;
     long l = -1L;
     if (arrayOfByte == null) {
       return -1L;
@@ -73,42 +91,12 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
     return l;
   }
   
-  public void a(long paramLong)
-  {
-    if (paramLong > 0L)
-    {
-      this.jdField_a_of_type_ArrayOfByte = new byte[4];
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      arrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
-      arrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
-      arrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
-      arrayOfByte[3] = ((byte)(int)(paramLong & 0xFF));
-      return;
-    }
-    if (paramLong == 0L)
-    {
-      this.jdField_a_of_type_ArrayOfByte = new byte[0];
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfByte = null;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[8];
+    this.e = new byte[8];
     if (paramLong > 0L)
     {
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      byte[] arrayOfByte = this.e;
       arrayOfByte[0] = ((byte)(int)(paramLong >> 24 & 0xFF));
       arrayOfByte[1] = ((byte)(int)(paramLong >> 16 & 0xFF));
       arrayOfByte[2] = ((byte)(int)(paramLong >> 8 & 0xFF));
@@ -123,9 +111,9 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   public void b(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      this.jdField_a_of_type_ArrayOfByte = new byte[8];
+      this.e = new byte[8];
     }
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.e = paramArrayOfByte;
   }
   
   public int describeContents()
@@ -136,13 +124,13 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("item:serType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" sns_type=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(" sns_type=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" uin=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" serviceTime=");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" identify=");
     localStringBuilder.append(super.toString());
     return localStringBuilder.toString();
@@ -150,10 +138,10 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.a);
     paramParcel.writeInt(this.b);
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramParcel.writeInt(this.c);
+    byte[] arrayOfByte = this.e;
     if (arrayOfByte != null) {
       paramParcel.writeByteArray(arrayOfByte);
     }
@@ -161,7 +149,7 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem
  * JD-Core Version:    0.7.0.1
  */

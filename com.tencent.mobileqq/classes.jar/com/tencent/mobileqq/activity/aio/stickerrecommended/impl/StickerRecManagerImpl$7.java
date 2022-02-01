@@ -32,9 +32,9 @@ class StickerRecManagerImpl$7
     }
     if (paramNetResp.mHttpCode == 200)
     {
-      paramNetResp = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl;
-      if (StickerRecManagerImpl.access$600(paramNetResp, StickerRecManagerImpl.access$400(paramNetResp), StickerRecManagerImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)) {
-        if (StickerRecManagerImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl).exists())
+      paramNetResp = this.d;
+      if (StickerRecManagerImpl.access$600(paramNetResp, StickerRecManagerImpl.access$400(paramNetResp), StickerRecManagerImpl.access$500(this.d), this.a, this.b)) {
+        if (StickerRecManagerImpl.access$500(this.d).exists())
         {
           if (QLog.isColorLevel()) {
             QLog.d("StickerRecManager", 2, "pull words success");
@@ -47,7 +47,7 @@ class StickerRecManagerImpl$7
     {
       l2 = SystemClock.elapsedRealtime();
       l1 = l2;
-      localObject = new JSONObject(FileUtils.readFileToString(StickerRecManagerImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl)));
+      localObject = new JSONObject(FileUtils.readFileToString(StickerRecManagerImpl.access$500(this.d)));
       l1 = l2;
       paramNetResp = ((JSONObject)localObject).optString("version", null);
       l1 = l2;
@@ -84,15 +84,15 @@ class StickerRecManagerImpl$7
     else
     {
       l1 = l2;
-      FileUtils.deleteFile(StickerRecManagerImpl.access$700(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl).getAbsolutePath());
+      FileUtils.deleteFile(StickerRecManagerImpl.access$700(this.d).getAbsolutePath());
       l1 = l2;
-      StickerRecManagerImpl.access$800(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl, StickerRecManagerImpl.access$700(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl).getAbsolutePath(), localBloomFilter);
+      StickerRecManagerImpl.access$800(this.d, StickerRecManagerImpl.access$700(this.d).getAbsolutePath(), localBloomFilter);
       l1 = l2;
-      FileUtils.deleteFile(StickerRecManagerImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl).getAbsolutePath());
+      FileUtils.deleteFile(StickerRecManagerImpl.access$500(this.d).getAbsolutePath());
       l1 = l2;
-      StickerRecManagerImpl.updateStickerRecVersion(StickerRecManagerImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl).getApp(), "words_version_key805_gray_one", StickerRecManagerImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl).getCurrentUin(), this.b);
+      StickerRecManagerImpl.updateStickerRecVersion(StickerRecManagerImpl.access$300(this.d).getApp(), "words_version_key805_gray_one", StickerRecManagerImpl.access$300(this.d).getCurrentUin(), this.c);
       l1 = l2;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl.unInit();
+      this.d.unInit();
       l1 = l2;
       if (QLog.isColorLevel())
       {
@@ -126,7 +126,7 @@ class StickerRecManagerImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.impl.StickerRecManagerImpl.7
  * JD-Core Version:    0.7.0.1
  */

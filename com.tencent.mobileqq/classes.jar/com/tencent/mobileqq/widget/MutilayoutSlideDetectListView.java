@@ -19,7 +19,7 @@ public class MutilayoutSlideDetectListView
     super(paramContext, paramAttributeSet);
   }
   
-  private View a(View paramView)
+  private View b(View paramView)
   {
     if ((paramView instanceof ShaderAnimLayout)) {
       return paramView;
@@ -33,7 +33,7 @@ public class MutilayoutSlideDetectListView
         int i = 0;
         while (i < j)
         {
-          View localView = a(paramView.getChildAt(i));
+          View localView = b(paramView.getChildAt(i));
           if ((localView instanceof ShaderAnimLayout)) {
             return localView;
           }
@@ -48,7 +48,7 @@ public class MutilayoutSlideDetectListView
   {
     paramView = (View)paramView.getParent();
     int i = paramView.getTop();
-    while (paramView != this.jdField_a_of_type_AndroidViewView)
+    while (paramView != this.d)
     {
       paramView = (View)paramView.getParent();
       i += paramView.getTop();
@@ -58,38 +58,38 @@ public class MutilayoutSlideDetectListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector == null)
+    if (this.m == null)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener, new Handler(Looper.getMainLooper()));
-      this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
+      this.m = new GestureDetector(getContext(), this.l, new Handler(Looper.getMainLooper()));
+      this.m.setIsLongpressEnabled(false);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.m.onTouchEvent(paramMotionEvent);
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
       if (i == 1) {
-        this.b = false;
+        this.c = false;
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-      this.jdField_e_of_type_Boolean = false;
-      i = a(this.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (a(i) == this.jdField_a_of_type_AndroidViewView))
+      this.a = ((int)paramMotionEvent.getY());
+      this.n = false;
+      i = a(this.a);
+      if ((this.d != null) && (b(i) == this.d))
       {
-        if (paramMotionEvent.getX() >= this.jdField_a_of_type_AndroidViewView.getWidth() - this.d)
+        if (paramMotionEvent.getX() >= this.d.getWidth() - this.g)
         {
-          if ((this.jdField_e_of_type_Int > 0) && (this.jdField_a_of_type_AndroidViewView.getHeight() > 0))
+          if ((this.h > 0) && (this.d.getHeight() > 0))
           {
-            Object localObject = a(this.jdField_a_of_type_AndroidViewView);
+            Object localObject = b(this.d);
             if (localObject != null)
             {
               View localView = (View)((View)localObject).getParent();
               i = a((View)localObject) + localView.getHeight() / 2;
-              int j = this.jdField_e_of_type_Int / 2;
-              int k = this.jdField_e_of_type_Int / 2;
-              if ((this.jdField_a_of_type_Int <= j + i) && (this.jdField_a_of_type_Int >= i - k)) {
+              int j = this.h / 2;
+              int k = this.h / 2;
+              if ((this.a <= j + i) && (this.a >= i - k)) {
                 break label319;
               }
               if (QLog.isColorLevel())
@@ -98,9 +98,9 @@ public class MutilayoutSlideDetectListView
                 ((StringBuilder)localObject).append("accurate in delete:ycenter:");
                 ((StringBuilder)localObject).append(i);
                 ((StringBuilder)localObject).append(",motionheight:");
-                ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewView.getHeight());
+                ((StringBuilder)localObject).append(this.d.getHeight());
                 ((StringBuilder)localObject).append("deleareaHeight:");
-                ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+                ((StringBuilder)localObject).append(this.h);
                 QLog.d("SlideDetectListView", 2, ((StringBuilder)localObject).toString());
               }
             }
@@ -112,24 +112,24 @@ public class MutilayoutSlideDetectListView
           label321:
           if (i != 0)
           {
-            this.jdField_e_of_type_Boolean = true;
+            this.n = true;
             return false;
           }
         }
       }
-      else if (this.jdField_a_of_type_Boolean == true) {
+      else if (this.b == true) {
         return true;
       }
     }
-    if (this.jdField_e_of_type_Boolean == true) {
+    if (this.n == true) {
       return false;
     }
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.a != 0)
     {
-      if (this.jdField_a_of_type_Boolean == true) {
+      if (this.b == true) {
         return true;
       }
-      if (this.b) {
+      if (this.c) {
         return false;
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
@@ -139,7 +139,7 @@ public class MutilayoutSlideDetectListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MutilayoutSlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

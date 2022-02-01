@@ -16,7 +16,7 @@ class VideoMerger$2
       QLog.d("VideoMerger", 2, "merge video failed");
     }
     StoryReportor.a("actAlbumResult", new String[] { "99" });
-    QQToast.a(this.a.a, HardCodeUtil.a(2131716061), 0).a();
+    QQToast.makeText(this.a.c, HardCodeUtil.a(2131913512), 0).show();
   }
 }
 

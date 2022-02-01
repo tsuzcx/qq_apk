@@ -12,6 +12,7 @@ public class CMTime
   public static final int DEFAULT_TIME_SCALE = 600;
   private static final long SECONDS_MS = 1000L;
   private static final long SECONDS_US = 1000000L;
+  private int flag = 0;
   private final float time;
   public final int timeScale;
   private final long timeUs;
@@ -88,7 +89,7 @@ public class CMTime
   
   public static CMTime convertTimeScale(@NonNull CMTime paramCMTime, int paramInt)
   {
-    Utils.a(paramCMTime);
+    Utils.checkNotNull(paramCMTime);
     CMTime localCMTime = CMTimeInvalid;
     if (paramCMTime == localCMTime) {
       return localCMTime;
@@ -240,6 +241,11 @@ public class CMTime
     return bool;
   }
   
+  public int getFlag()
+  {
+    return this.flag;
+  }
+  
   public int getTimeScale()
   {
     return this.timeScale;
@@ -262,7 +268,7 @@ public class CMTime
   
   public CMTime limitMax(@NonNull CMTime paramCMTime)
   {
-    Utils.a(paramCMTime);
+    Utils.checkNotNull(paramCMTime);
     if (bigThan(paramCMTime)) {
       return paramCMTime;
     }
@@ -271,7 +277,7 @@ public class CMTime
   
   public CMTime limitMin(@NonNull CMTime paramCMTime)
   {
-    Utils.a(paramCMTime);
+    Utils.checkNotNull(paramCMTime);
     if (smallThan(paramCMTime)) {
       return paramCMTime;
     }
@@ -300,6 +306,11 @@ public class CMTime
     return CMTimeZero;
   }
   
+  public void setFlag(int paramInt)
+  {
+    this.flag = paramInt;
+  }
+  
   public boolean smallThan(CMTime paramCMTime)
   {
     boolean bool = false;
@@ -326,13 +337,15 @@ public class CMTime
     localStringBuilder.append(this.timeScale);
     localStringBuilder.append(" timeUs = ");
     localStringBuilder.append(this.timeUs);
+    localStringBuilder.append(" flag = ");
+    localStringBuilder.append(this.flag);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMTime
  * JD-Core Version:    0.7.0.1
  */

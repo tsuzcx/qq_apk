@@ -11,17 +11,12 @@ import java.nio.FloatBuffer;
 public class HuaweiArCoreBridge
   implements IARCoreBridge
 {
-  public static final float[] a;
-  private int jdField_a_of_type_Int = 30;
-  private DisplayRotationHelper jdField_a_of_type_ComTencentMobileqqArArcoreDisplayRotationHelper;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private int b = -1;
-  private int c = 36197;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
-  }
+  public static final float[] a = { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
+  private DisplayRotationHelper b;
+  private int c = 30;
+  private int d = -1;
+  private int e = 36197;
+  private FloatBuffer f;
   
   public Size a()
   {
@@ -30,25 +25,15 @@ public class HuaweiArCoreBridge
   
   public FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    return this.jdField_a_of_type_JavaNioFloatBuffer;
-  }
-  
-  public void a()
-  {
-    QLog.d("HuaweiArCoreBridge", 2, "onDestory");
+    return this.f;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArcoreDisplayRotationHelper == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArcoreDisplayRotationHelper = new DisplayRotationHelper(BaseApplicationImpl.getContext());
+    if (this.b == null) {
+      this.b = new DisplayRotationHelper(BaseApplicationImpl.getContext());
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArcoreDisplayRotationHelper.a(paramInt1, paramInt2);
-  }
-  
-  public boolean a()
-  {
-    return false;
+    this.b.a(paramInt1, paramInt2);
   }
   
   public boolean a(Context paramContext)
@@ -56,19 +41,29 @@ public class HuaweiArCoreBridge
     return paramContext != null;
   }
   
-  public void b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    QLog.d("HuaweiArCoreBridge", 2, "onDestory");
+  }
+  
+  public void d()
   {
     QLog.d("HuaweiArCoreBridge", 2, "onPause");
   }
   
-  public void c()
+  public void e()
   {
     QLog.d("HuaweiArCoreBridge", 2, "onResume");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcore.huawei.HuaweiArCoreBridge
  * JD-Core Version:    0.7.0.1
  */

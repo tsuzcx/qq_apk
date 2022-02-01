@@ -9,8 +9,8 @@ class VideoFrameCheckHelper$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get() != null) {
-      ((VideoFrameCheckHelper.DarkFrameCheckListener)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
+    if (this.b.a.get() != null) {
+      ((VideoFrameCheckHelper.DarkFrameCheckListener)this.b.a.get()).a(this.a);
     }
   }
 }

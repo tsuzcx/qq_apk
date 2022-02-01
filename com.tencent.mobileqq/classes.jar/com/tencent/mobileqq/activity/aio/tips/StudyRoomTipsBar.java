@@ -21,16 +21,16 @@ import java.util.HashMap;
 public class StudyRoomTipsBar
   implements View.OnClickListener, TipsBarTask
 {
-  View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  View a;
+  private QQAppInterface b;
+  private BaseActivity c;
+  private String d;
+  private TextView e;
   
   public StudyRoomTipsBar(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.b = paramQQAppInterface;
+    this.c = paramBaseActivity;
   }
   
   public int a()
@@ -40,28 +40,45 @@ public class StudyRoomTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131560945, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378009));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      this.a = LayoutInflater.from(this.c).inflate(2131627286, null);
+      this.e = ((TextView)this.a.findViewById(2131446496));
+      this.a.setOnClickListener(this);
     }
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
+    d();
+    return this.a;
   }
   
-  public void a()
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
   {
-    int i = ((StudyRoomManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
+    this.d = paramString;
+  }
+  
+  public int b()
+  {
+    return 28;
+  }
+  
+  public int[] c()
+  {
+    return null;
+  }
+  
+  public void d()
+  {
+    int i = ((StudyRoomManager)this.b.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).b(this.d);
     Object localObject;
     if (i > 0)
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+      localObject = this.e;
+      Resources localResources = this.c.getResources();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(i);
       localStringBuilder.append("");
-      ((TextView)localObject).setText(localResources.getString(2131719278, new Object[] { localStringBuilder.toString() }));
+      ((TextView)localObject).setText(localResources.getString(2131916830, new Object[] { localStringBuilder.toString() }));
       return;
     }
     if (QLog.isColorLevel())
@@ -70,40 +87,23 @@ public class StudyRoomTipsBar
       ((StringBuilder)localObject).append("update. member count :");
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" with troopUin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.d);
       QLog.i("StudyRoomTipsBar", 4, ((StringBuilder)localObject).toString());
     }
   }
   
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 28;
-  }
-  
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
+    if (!NetworkUtil.isNetworkAvailable(this.c))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131697226, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      QQToast.makeText(this.c, 2131894999, 0).show(this.c.getTitleBarHeight());
     }
     else
     {
       Object localObject = new HashMap();
-      ((HashMap)localObject).put("groupId", this.jdField_a_of_type_JavaLangString);
-      ((StudyRoomManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "enter", (HashMap)localObject);
-      int i = ((StudyRoomManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
+      ((HashMap)localObject).put("groupId", this.d);
+      ((StudyRoomManager)this.b.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(this.c, "enter", (HashMap)localObject);
+      int i = ((StudyRoomManager)this.b.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).b(this.d);
       localObject = new Bundle();
       ((Bundle)localObject).putString("action", "click");
       ((Bundle)localObject).putString("page", "group_page");
@@ -120,7 +120,7 @@ public class StudyRoomTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.StudyRoomTipsBar
  * JD-Core Version:    0.7.0.1
  */

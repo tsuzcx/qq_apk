@@ -9,7 +9,7 @@ class ShareGroupIconDrawable$1
   
   public void a(@NonNull ShareGroupDrawableState paramShareGroupDrawableState)
   {
-    paramShareGroupDrawableState = paramShareGroupDrawableState.a();
+    paramShareGroupDrawableState = paramShareGroupDrawableState.e();
     if (paramShareGroupDrawableState != null) {
       ShareGroupIconDrawable.a(this.a, paramShareGroupDrawableState);
     }

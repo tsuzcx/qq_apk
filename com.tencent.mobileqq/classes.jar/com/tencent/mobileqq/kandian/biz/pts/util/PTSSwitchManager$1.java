@@ -29,7 +29,7 @@ class PTSSwitchManager$1
     QLog.i("PTSSwitchManager", 1, ((StringBuilder)localObject).toString());
     if (PTSSwitchManager.a(this.this$0))
     {
-      PTSJSCLoader.a().a();
+      PTSJSCLoader.a().c();
       localObject = Build.CPU_ABI;
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("armeabi"))) {
         bool1 = true;
@@ -73,7 +73,7 @@ class PTSSwitchManager$1
       ((StringBuilder)localObject).append(bool1);
       QLog.i("PTSSwitchManager", 1, ((StringBuilder)localObject).toString());
       if ((bool2) || (bool3)) {
-        PTSSwitchManager.a(this.this$0);
+        PTSSwitchManager.b(this.this$0);
       }
       PTSSwitchManager.b(this.this$0, bool2);
       PTSSwitchManager.c(this.this$0, bool3);
@@ -82,7 +82,7 @@ class PTSSwitchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSSwitchManager.1
  * JD-Core Version:    0.7.0.1
  */

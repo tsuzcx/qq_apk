@@ -24,10 +24,10 @@ class PopupMoreListDialog$3
   {
     paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
     paramContext = new ShortcutBarMoreListHolder(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131377469));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131377470));
-    paramContext.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131377473));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377474));
+    paramContext.a = ((LinearLayout)paramViewGroup.findViewById(2131445868));
+    paramContext.c = ((ImageView)paramViewGroup.findViewById(2131445869));
+    paramContext.b = ((URLImageView)paramViewGroup.findViewById(2131445872));
+    paramContext.d = ((TextView)paramViewGroup.findViewById(2131445873));
     return paramContext;
   }
   
@@ -38,7 +38,7 @@ class PopupMoreListDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.PopupMoreListDialog.3
  * JD-Core Version:    0.7.0.1
  */

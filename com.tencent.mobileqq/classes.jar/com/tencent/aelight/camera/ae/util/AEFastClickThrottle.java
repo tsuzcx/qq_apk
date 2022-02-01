@@ -10,9 +10,9 @@ public final class AEFastClickThrottle
   
   public static boolean a(View paramView)
   {
-    Object localObject = paramView.getTag(2064121924);
+    Object localObject = paramView.getTag(2063990858);
     long l = System.currentTimeMillis();
-    paramView.setTag(2064121924, Long.valueOf(l));
+    paramView.setTag(2063990858, Long.valueOf(l));
     return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
   }
   
@@ -35,7 +35,7 @@ public final class AEFastClickThrottle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.util.AEFastClickThrottle
  * JD-Core Version:    0.7.0.1
  */

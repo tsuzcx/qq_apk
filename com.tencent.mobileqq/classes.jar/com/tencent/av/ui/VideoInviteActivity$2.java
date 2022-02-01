@@ -12,24 +12,24 @@ class VideoInviteActivity$2
   public void onDismiss()
   {
     String str;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+      if (this.b.g) {
         str = "0X80043A4";
       } else {
         str = "0X80043B6";
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+    else if (this.b.g) {
       str = "0X80043AA";
     } else {
       str = "0X80043B0";
     }
-    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.b.i), Integer.toString(this.b.K), "", "");
+    if ((this.b.B != null) && (this.b.C != null))
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+      this.b.B.setEnabled(true);
+      this.b.C.setEnabled(true);
     }
   }
 }

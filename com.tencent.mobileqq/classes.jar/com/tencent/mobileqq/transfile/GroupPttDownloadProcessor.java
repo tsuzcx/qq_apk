@@ -309,7 +309,7 @@ public class GroupPttDownloadProcessor
             if (this.mUiRequest.mExtraObj != null)
             {
               localObject = (TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj;
-              ReportController.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollectorImpl.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.7.0");
+              ReportController.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollectorImpl.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.8.17");
             }
           }
         }
@@ -718,7 +718,7 @@ public class GroupPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

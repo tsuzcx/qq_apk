@@ -16,16 +16,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetStoryFeedIdListRequest
   extends NetworkRequest
 {
-  public static final String a;
-  public BasicLocation a;
-  public String b;
+  public static final String e = StoryApi.a("StorySvc.homepage_batch_feeds_720");
+  public String f;
+  public BasicLocation g;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.homepage_batch_feeds_720");
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
     try
@@ -39,21 +39,16 @@ public class GetStoryFeedIdListRequest
     return new GetStoryFeedIdListRequest.GetStoryFeedIdListResponse(localRspStoryFeedIdList);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
-    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation != null)
+    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.f));
+    if (this.g != null)
     {
-      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.c);
+      localReqStoryFeedIdList.coordinate.set(this.g.c);
       localReqStoryFeedIdList.gps.setHasFlag(true);
-      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.a);
-      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.b);
+      localReqStoryFeedIdList.gps.lat.set(this.g.a);
+      localReqStoryFeedIdList.gps.lng.set(this.g.b);
     }
     localReqStoryFeedIdList.client_version.set(6);
     return localReqStoryFeedIdList.toByteArray();
@@ -61,7 +56,7 @@ public class GetStoryFeedIdListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryFeedIdListRequest
  * JD-Core Version:    0.7.0.1
  */

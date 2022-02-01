@@ -18,11 +18,11 @@ class DrawClassifier$2
     }
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier;
-      DrawClassifier.a((DrawClassifier)localObject, DrawClassifier.a((DrawClassifier)localObject), this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnClassifierInitListener, DrawClassifier.b(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier));
+      localObject = this.b;
+      DrawClassifier.a((DrawClassifier)localObject, DrawClassifier.a((DrawClassifier)localObject), this.a, DrawClassifier.b(this.b));
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnClassifierInitListener;
+    Object localObject = this.a;
     if (localObject != null) {
       ((DrawClassifier.OnClassifierInitListener)localObject).a(false);
     }
@@ -30,7 +30,7 @@ class DrawClassifier$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawClassifier.2
  * JD-Core Version:    0.7.0.1
  */

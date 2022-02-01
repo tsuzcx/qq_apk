@@ -8,22 +8,22 @@ import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 
 public class RedPacketConfigManager
 {
-  private static volatile RedPacketConfigManager jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplRedPacketConfigManager;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(R.string.cv), HardCodeUtil.a(R.string.cm), HardCodeUtil.a(R.string.bY) };
-  private static final String[] b = { HardCodeUtil.a(R.string.cr), HardCodeUtil.a(R.string.cn), HardCodeUtil.a(R.string.cc) };
+  private static volatile RedPacketConfigManager a;
+  private static final String[] b = { HardCodeUtil.a(R.string.cy), HardCodeUtil.a(R.string.cp), HardCodeUtil.a(R.string.cb) };
+  private static final String[] c = { HardCodeUtil.a(R.string.cu), HardCodeUtil.a(R.string.cq), HardCodeUtil.a(R.string.cf) };
   
   public static RedPacketConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplRedPacketConfigManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplRedPacketConfigManager == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplRedPacketConfigManager = new RedPacketConfigManager();
+        if (a == null) {
+          a = new RedPacketConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplRedPacketConfigManager;
+    return a;
   }
   
   public int a(BaseQQAppInterface paramBaseQQAppInterface)
@@ -38,9 +38,9 @@ public class RedPacketConfigManager
     return 1;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    Object localObject = QWalletTools.a();
+    Object localObject = QWalletTools.b();
     boolean bool2 = true;
     boolean bool1 = bool2;
     if (localObject != null)
@@ -60,7 +60,7 @@ public class RedPacketConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.specify.impl.RedPacketConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,33 @@ import java.util.HashMap;
 
 public class AVBizModuleFactory
 {
-  private static final String jdField_a_of_type_JavaLangString = "AVBizModuleFactory";
-  private static final HashMap<String, IModule> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final String TAG = "AVBizModuleFactory";
+  private static final HashMap<String, IModule> sModuleMap = new HashMap();
   
-  public static IModule a(String paramString)
+  private static IModule createModuleByName(String paramString)
+  {
+    String str = AVBizUtils.getProcessName();
+    if ((!"默认".equals(paramString)) && (!"默认相机".equals(paramString)) && (!"默认音频".equals(paramString)))
+    {
+      if ("com.tencent.mobileqq".equals(str)) {
+        return new AVBizQQProcessModule(paramString);
+      }
+      paramString = new AVBizClientQIPCModule(paramString, str);
+      QIPCClientHelper.getInstance().getClient().registerModule(paramString);
+      return paramString;
+    }
+    return new DefaultModule(paramString, str);
+  }
+  
+  public static IModule getModuleByName(String paramString)
   {
     try
     {
       Object localObject;
       StringBuilder localStringBuilder;
-      if (!AVBizUtils.a(paramString))
+      if (!AVBizUtils.isValid(paramString))
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getModuleByName invalid business name[");
         localStringBuilder.append(paramString);
@@ -27,13 +42,13 @@ public class AVBizModuleFactory
         paramString = new FakeModule(paramString);
         return paramString;
       }
-      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+      if (!sModuleMap.containsKey(paramString))
       {
-        localObject = b(paramString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
+        localObject = createModuleByName(paramString);
+        sModuleMap.put(paramString, localObject);
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = TAG;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("create module[");
           localStringBuilder.append(paramString);
@@ -41,28 +56,28 @@ public class AVBizModuleFactory
           QLog.i((String)localObject, 2, localStringBuilder.toString());
         }
       }
-      paramString = (IModule)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      paramString = (IModule)sModuleMap.get(paramString);
       return paramString;
     }
     finally {}
   }
   
-  public static void a(String paramString)
+  public static void removeModuleByName(String paramString)
   {
     try
     {
       Object localObject;
       StringBuilder localStringBuilder;
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+      if (sModuleMap.containsKey(paramString))
       {
-        localObject = (IModule)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (!"com.tencent.mobileqq".equals(AVBizUtils.a())) {
+        localObject = (IModule)sModuleMap.get(paramString);
+        if (!"com.tencent.mobileqq".equals(AVBizUtils.getProcessName())) {
           QIPCClientHelper.getInstance().getClient().unRegisterModule((AVBizClientQIPCModule)localObject);
         }
-        jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        sModuleMap.remove(paramString);
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = TAG;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("unRegisterModule[");
           localStringBuilder.append(paramString);
@@ -72,7 +87,7 @@ public class AVBizModuleFactory
       }
       else if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("module not register[");
         localStringBuilder.append(paramString);
@@ -82,17 +97,6 @@ public class AVBizModuleFactory
       return;
     }
     finally {}
-  }
-  
-  private static IModule b(String paramString)
-  {
-    String str = AVBizUtils.a();
-    if ("com.tencent.mobileqq".equals(str)) {
-      return new AVBizQQProcessModule(paramString);
-    }
-    paramString = new AVBizClientQIPCModule(paramString, str);
-    QIPCClientHelper.getInstance().getClient().registerModule(paramString);
-    return paramString;
   }
 }
 

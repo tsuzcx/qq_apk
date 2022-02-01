@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class VideoSaveToAlbumHelper$SaveVideoTaskCallback
   implements FFmpegExecuteResponseCallback
 {
-  private VideoSaveToAlbumHelper.VideoSaveToAlbumTaskInfo jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper$VideoSaveToAlbumTaskInfo;
+  private VideoSaveToAlbumHelper.VideoSaveToAlbumTaskInfo b;
   
   public VideoSaveToAlbumHelper$SaveVideoTaskCallback(VideoSaveToAlbumHelper paramVideoSaveToAlbumHelper, VideoSaveToAlbumHelper.VideoSaveToAlbumTaskInfo paramVideoSaveToAlbumTaskInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper$VideoSaveToAlbumTaskInfo = paramVideoSaveToAlbumTaskInfo;
+    this.b = paramVideoSaveToAlbumTaskInfo;
   }
   
   public void onFailure(String paramString)
@@ -23,11 +23,11 @@ public class VideoSaveToAlbumHelper$SaveVideoTaskCallback
   
   public void onFinish(boolean paramBoolean)
   {
-    VideoSaveToAlbumHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper);
-    if (VideoSaveToAlbumHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper) == 0)
+    VideoSaveToAlbumHelper.a(this.a);
+    if (VideoSaveToAlbumHelper.b(this.a) == 0)
     {
       SLog.b(VideoSaveToAlbumHelper.a, "all ffmpeg commands have already finished. start clearing cache.");
-      VideoSaveToAlbumHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper);
+      VideoSaveToAlbumHelper.c(this.a);
     }
   }
   
@@ -40,7 +40,7 @@ public class VideoSaveToAlbumHelper$SaveVideoTaskCallback
   
   public void onSuccess(String paramString)
   {
-    if (FileUtils.a(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper$VideoSaveToAlbumTaskInfo.d, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper$VideoSaveToAlbumTaskInfo.e))
+    if (FileUtils.a(BaseApplication.getContext(), this.b.f, this.b.g))
     {
       SLog.b(VideoSaveToAlbumHelper.a, "save video to album success.");
       StoryReportor.a("video_edit", "video_save_local", 0, 0, new String[0]);
@@ -51,7 +51,7 @@ public class VideoSaveToAlbumHelper$SaveVideoTaskCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.SaveVideoTaskCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -25,22 +25,22 @@ public class NewFriendApiImpl
 {
   public void clearStructMsgMap()
   {
-    FriendSystemMsgController.a().b();
+    FriendSystemMsgController.a().e();
   }
   
   public void clearSystemMsgData()
   {
-    FriendSystemMsgController.a().a();
+    FriendSystemMsgController.a().b();
   }
   
   public long getCurrStructMsgKey()
   {
-    return FriendSystemMsgController.a().b();
+    return FriendSystemMsgController.a().d();
   }
   
   public long getCurrentUniseq()
   {
-    return FriendSystemMsgController.a().a();
+    return FriendSystemMsgController.a().c();
   }
   
   public Intent getNewFriendJumpIntent(Context paramContext)
@@ -55,7 +55,7 @@ public class NewFriendApiImpl
   
   public long getOldestSysMsgTime(AppInterface paramAppInterface)
   {
-    return FriendSystemMsgController.a().a(paramAppInterface);
+    return FriendSystemMsgController.a().d(paramAppInterface);
   }
   
   public Intent getStartNewFriendMoreSysMsgActivityIntent(Context paramContext, int paramInt)
@@ -72,7 +72,7 @@ public class NewFriendApiImpl
   
   public boolean getSysMsgOverValue(AppInterface paramAppInterface)
   {
-    return FriendSystemMsgController.a().b(paramAppInterface);
+    return FriendSystemMsgController.a().c(paramAppInterface);
   }
   
   public int getUiBuilderExposeCnt()
@@ -82,7 +82,7 @@ public class NewFriendApiImpl
   
   public int getUnReadFriendSystemMsgNum(AppInterface paramAppInterface)
   {
-    return FriendSystemMsgController.a().a(paramAppInterface);
+    return FriendSystemMsgController.a().b(paramAppInterface);
   }
   
   public boolean isHasNoMoreMsg(AppInterface paramAppInterface)
@@ -207,7 +207,7 @@ public class NewFriendApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.api.impl.NewFriendApiImpl
  * JD-Core Version:    0.7.0.1
  */

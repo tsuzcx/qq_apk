@@ -19,15 +19,15 @@ class MoveToGroupActivity$3
   
   public void onClick(View paramView)
   {
-    Object localObject = MoveToGroupActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityMoveToGroupActivity);
+    Object localObject = MoveToGroupActivity.c(this.b);
     int k = 0;
     int i;
     if (localObject == null) {
       i = 0;
     } else {
-      i = MoveToGroupActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityMoveToGroupActivity).size();
+      i = MoveToGroupActivity.c(this.b).size();
     }
-    int m = VasUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityMoveToGroupActivity.app).getVipStatus().getPrivilegeFlags(null);
+    int m = VasUtil.b(this.b.app).getVipStatus().getPrivilegeFlags(null);
     int j;
     if ((m & 0x2) != 0) {
       j = 1;
@@ -41,30 +41,30 @@ class MoveToGroupActivity$3
     {
       if (16 == i)
       {
-        localObject = new QQToast(this.jdField_a_of_type_ComTencentMobileqqActivityMoveToGroupActivity);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131719706);
-        ((QQToast)localObject).a();
+        localObject = new QQToast(this.b);
+        ((QQToast)localObject).setDuration(2000);
+        ((QQToast)localObject).setToastMsg(2131917309);
+        ((QQToast)localObject).show();
         break label212;
       }
     }
     else if (30 == i)
     {
-      localObject = new QQToast(this.jdField_a_of_type_ComTencentMobileqqActivityMoveToGroupActivity);
-      ((QQToast)localObject).d(2000);
-      ((QQToast)localObject).c(2131719707);
-      ((QQToast)localObject).a();
+      localObject = new QQToast(this.b);
+      ((QQToast)localObject).setDuration(2000);
+      ((QQToast)localObject).setToastMsg(2131917310);
+      ((QQToast)localObject).show();
       break label212;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMoveToGroupActivity;
-    MoveToGroupActivity.a((MoveToGroupActivity)localObject, DialogUtils.a((Context)localObject, 2131693087, 2131693093, null, this.jdField_a_of_type_ComTencentMobileqqUtilsGroupManagerInputTextWatcher, MoveToGroupActivity.a((MoveToGroupActivity)localObject), null));
+    localObject = this.b;
+    MoveToGroupActivity.a((MoveToGroupActivity)localObject, DialogUtils.a((Context)localObject, 2131890201, 2131890207, null, this.a, MoveToGroupActivity.d((MoveToGroupActivity)localObject), null));
     label212:
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MoveToGroupActivity.3
  * JD-Core Version:    0.7.0.1
  */

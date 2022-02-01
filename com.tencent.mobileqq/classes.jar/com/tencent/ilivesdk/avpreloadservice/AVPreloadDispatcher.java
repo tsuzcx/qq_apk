@@ -10,42 +10,42 @@ import java.util.Set;
 
 public class AVPreloadDispatcher
 {
-  private final HttpInterface jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
-  private String jdField_a_of_type_JavaLangString = "";
-  private final HashMap<String, AVPreloadDispatcher.Result> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String a = "";
+  private final HashMap<String, AVPreloadDispatcher.Result> b = new HashMap();
+  private final HttpInterface c;
   
   public AVPreloadDispatcher(HttpInterface paramHttpInterface)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface = paramHttpInterface;
+    this.c = paramHttpInterface;
   }
   
-  private String a(String paramString)
+  private String b(String paramString)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("dispatcher playUrl: ");
     ((StringBuilder)localObject).append(paramString);
     AVPreloadLog.b("StreamDispatcher", ((StringBuilder)localObject).toString(), new Object[0]);
     long l = System.currentTimeMillis();
-    localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    localObject = this.b.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       AVPreloadDispatcher.Result localResult = (AVPreloadDispatcher.Result)((Map.Entry)((Iterator)localObject).next()).getValue();
-      if (l - localResult.jdField_a_of_type_Long > localResult.jdField_a_of_type_Int * 1000) {
+      if (l - localResult.d > localResult.e * 1000) {
         ((Iterator)localObject).remove();
       }
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (this.b.containsKey(paramString))
     {
-      localObject = (AVPreloadDispatcher.Result)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if ((localObject != null) && (l - ((AVPreloadDispatcher.Result)localObject).jdField_a_of_type_Long < ((AVPreloadDispatcher.Result)localObject).jdField_a_of_type_Int * 1000) && (((AVPreloadDispatcher.Result)localObject).d != null) && (!((AVPreloadDispatcher.Result)localObject).d.isEmpty())) {
-        return ((AVPreloadDispatcher.Result)localObject).d;
+      localObject = (AVPreloadDispatcher.Result)this.b.get(paramString);
+      if ((localObject != null) && (l - ((AVPreloadDispatcher.Result)localObject).d < ((AVPreloadDispatcher.Result)localObject).e * 1000) && (((AVPreloadDispatcher.Result)localObject).f != null) && (!((AVPreloadDispatcher.Result)localObject).f.isEmpty())) {
+        return ((AVPreloadDispatcher.Result)localObject).f;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+      this.b.remove(paramString);
     }
     return null;
   }
   
-  private String b(String paramString)
+  private String c(String paramString)
   {
     Object localObject1 = URI.create(paramString).getPath();
     Object localObject2 = ((String)localObject1).substring(((String)localObject1).lastIndexOf('/') + 1);
@@ -60,7 +60,7 @@ public class AVPreloadDispatcher
     paramString = ((String)localObject2).replace(".flv", "");
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("https://");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.a);
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append("?");
     ((StringBuilder)localObject2).append("cmd=mult_stream_dispatch_return_json");
@@ -71,12 +71,12 @@ public class AVPreloadDispatcher
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(String paramString, AVPreloadDispatcher.Callback paramCallback)
   {
-    String str = a(paramString);
+    String str = b(paramString);
     if (str != null)
     {
       paramString = new StringBuilder();
@@ -88,7 +88,7 @@ public class AVPreloadDispatcher
       }
       return;
     }
-    str = b(paramString);
+    str = c(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("dispatcher reqUrl: ");
     localStringBuilder.append(str);
@@ -98,7 +98,7 @@ public class AVPreloadDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadDispatcher
  * JD-Core Version:    0.7.0.1
  */

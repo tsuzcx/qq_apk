@@ -14,37 +14,31 @@ class TraeAudioManager$earphoneSwitchThread
   
   public void _run()
   {
-    TraeAudioManager localTraeAudioManager;
-    if ((TraeAudioManager.IsUpdateSceneFlag) && (TraeAudioManager.enableDeviceSwitchFlag))
+    if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag) && (TraeAudioManager.enableDeviceSwitchFlag))
     {
-      localTraeAudioManager = this.this$0;
+      TraeAudioManager localTraeAudioManager = this.this$0;
       localTraeAudioManager.InternalSetSpeaker(localTraeAudioManager._context, false);
     }
     updateStatus();
-    if (!TraeAudioManager.IsUpdateSceneFlag)
+    int i;
+    if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "connect earphone: do nothing");
+      if (!TraeAudioManager.enableDeviceSwitchFlag)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("TraeAudioManager", 2, "connect earphone: disableDeviceSwitchFlag");
+        }
+        return;
       }
-      return;
+      i = 0;
     }
-    if (!TraeAudioManager.enableDeviceSwitchFlag)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "connect earphone: disableDeviceSwitchFlag");
-      }
-      return;
-    }
-    int i = 0;
     for (;;)
     {
-      long l;
-      if (this._running == true)
+      if (this._running == true) {}
+      try
       {
-        if (this.this$0._am.isSpeakerphoneOn())
-        {
-          localTraeAudioManager = this.this$0;
-          localTraeAudioManager.InternalSetSpeaker(localTraeAudioManager._context, false);
+        if (this.this$0._am.isSpeakerphoneOn()) {
+          this.this$0.InternalSetSpeaker(this.this$0._context, false);
         }
         if (i < 5) {
           l = 1000L;
@@ -52,17 +46,26 @@ class TraeAudioManager$earphoneSwitchThread
           l = 4000L;
         }
       }
-      try
+      catch (Exception localException)
       {
-        Thread.sleep(l);
-        label137:
-        i += 1;
-        continue;
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label137;
+        try
+        {
+          long l;
+          Thread.sleep(l);
+          label135:
+          i += 1;
+          continue;
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.w("TraeAudioManager", 2, "connect earphone: do nothing");
+          }
+          return;
+          localException = localException;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          break label135;
+        }
       }
     }
   }
@@ -74,7 +77,7 @@ class TraeAudioManager$earphoneSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.earphoneSwitchThread
  * JD-Core Version:    0.7.0.1
  */

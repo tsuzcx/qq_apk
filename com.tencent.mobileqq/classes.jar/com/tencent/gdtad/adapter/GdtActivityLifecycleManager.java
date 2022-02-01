@@ -21,7 +21,7 @@ public final class GdtActivityLifecycleManager
     return a;
   }
   
-  public void a()
+  public void b()
   {
     Foreground.addActivityLifeCallback(new GdtActivityLifecycleManager.GdtActivityLifecycleCallback());
     AdLifecycleManager.INSTANCE.setOnForeground(Foreground.isCurrentProcessForeground());
@@ -29,7 +29,7 @@ public final class GdtActivityLifecycleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtActivityLifecycleManager
  * JD-Core Version:    0.7.0.1
  */

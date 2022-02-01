@@ -176,7 +176,7 @@ public class EmotionPreviewFragment
     if (this.sendButton != null)
     {
       int i = getSelectItemCount();
-      StringBuffer localStringBuffer = new StringBuffer(getResources().getString(2131694887));
+      StringBuffer localStringBuffer = new StringBuffer(getResources().getString(2131892590));
       if (i < 1)
       {
         this.sendButton.setText(localStringBuffer.toString());
@@ -209,35 +209,35 @@ public class EmotionPreviewFragment
   
   public View generateRootView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131559090, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131624751, paramViewGroup, false);
   }
   
   protected void initTitleBar(View paramView)
   {
-    this.leftText = ((TextView)paramView.findViewById(2131369202));
-    this.titleText = ((TextView)paramView.findViewById(2131369249));
-    this.rightView = ((RelativeLayout)paramView.findViewById(2131377151));
-    this.numberCheckBox = ((NumberCheckBox)paramView.findViewById(2131377175));
+    this.leftText = ((TextView)paramView.findViewById(2131436180));
+    this.titleText = ((TextView)paramView.findViewById(2131436227));
+    this.rightView = ((RelativeLayout)paramView.findViewById(2131445529));
+    this.numberCheckBox = ((NumberCheckBox)paramView.findViewById(2131445553));
     this.leftText.setOnClickListener(this);
     this.rightView.setOnClickListener(this);
   }
   
   protected void initViewWithBusiness(View paramView)
   {
-    this.sendButton = ((Button)paramView.findViewById(2131377197));
+    this.sendButton = ((Button)paramView.findViewById(2131445580));
     this.sendButton.setOnClickListener(this);
-    this.topLineView = paramView.findViewById(2131367035);
-    this.titleBar = ((RelativeLayout)paramView.findViewById(2131378803));
+    this.topLineView = paramView.findViewById(2131433483);
+    this.titleBar = ((RelativeLayout)paramView.findViewById(2131447484));
     ((RelativeLayout.LayoutParams)this.titleBar.getLayoutParams()).topMargin = ImmersiveUtils.getStatusBarHeight(getBaseActivity());
-    this.mGallery = ((EmotionGallery)paramView.findViewById(2131367431));
+    this.mGallery = ((EmotionGallery)paramView.findViewById(2131433934));
     this.mAdapter = new EmotionPreviewAdapter(getBaseActivity());
     this.mGallery.setAdapter(this.mAdapter);
-    this.mGallery.setSpacing(getBaseActivity().getResources().getDimensionPixelSize(2131297150));
+    this.mGallery.setSpacing(getBaseActivity().getResources().getDimensionPixelSize(2131297535));
     this.mGallery.setOnItemSelectedListener(this);
     this.mGallery.setOnNoBlankListener(this.mAdapter);
     this.mGallery.enableDoubleTap(false);
     this.mGallery.enableScaleGesture(false);
-    this.selectedPhotoListView = ((HorizontalListView)paramView.findViewById(2131367036));
+    this.selectedPhotoListView = ((HorizontalListView)paramView.findViewById(2131433484));
     initData();
   }
   
@@ -260,13 +260,13 @@ public class EmotionPreviewFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131369202)
+    if (i != 2131436180)
     {
       Object localObject1;
       Object localObject2;
-      if (i != 2131377151)
+      if (i != 2131445529)
       {
-        if (i == 2131377197)
+        if (i == 2131445580)
         {
           localObject1 = new ArrayList();
           localObject2 = this.mThumbAdapter;
@@ -415,7 +415,7 @@ public class EmotionPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.sdk.b;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.mobileqq.msf.sdk.RdmReq;
@@ -118,7 +118,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.e
  * JD-Core Version:    0.7.0.1
  */

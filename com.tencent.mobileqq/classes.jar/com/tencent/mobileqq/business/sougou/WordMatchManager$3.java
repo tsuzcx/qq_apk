@@ -10,12 +10,12 @@ class WordMatchManager$3
   public void run()
   {
     this.this$0.a();
-    this.this$0.a.runOnUiThread(new WordMatchManager.3.1(this));
+    this.this$0.c.runOnUiThread(new WordMatchManager.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.3
  * JD-Core Version:    0.7.0.1
  */

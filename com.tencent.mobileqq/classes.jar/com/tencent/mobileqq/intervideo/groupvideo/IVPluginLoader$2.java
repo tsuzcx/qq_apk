@@ -17,12 +17,12 @@ class IVPluginLoader$2
   {
     paramContext = paramIntent.getAction();
     int j = paramIntent.getIntExtra("key_state", -1);
-    if (IVPluginLoader.a(this.a)) {
+    if (IVPluginLoader.b(this.a)) {
       IVPluginLoader.a(this.a, j);
     }
-    if (paramContext.equals(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(IVPluginLoader.a(this.a))))
+    if (paramContext.equals(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(IVPluginLoader.c(this.a))))
     {
-      paramContext = (PluginLoadListener)IVPluginLoader.a(this.a).get();
+      paramContext = (PluginLoadListener)IVPluginLoader.d(this.a).get();
       if (paramContext != null) {
         paramContext.a(j, paramIntent.getExtras());
       } else if (QLog.isColorLevel()) {
@@ -35,21 +35,21 @@ class IVPluginLoader$2
         paramContext.append(j);
         QLog.d("GroupVideoManager.IVPluginLoader", 2, paramContext.toString());
       }
-      paramContext = IVPluginLoader.jdField_a_of_type_ArrayOfInt;
+      paramContext = IVPluginLoader.a;
       int k = paramContext.length;
       int i = 0;
       while (i < k)
       {
-        if ((j == paramContext[i]) && (IVPluginLoader.b(this.a)))
+        if ((j == paramContext[i]) && (IVPluginLoader.e(this.a)))
         {
-          IVPluginLoader.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          IVPluginLoader.c().unregisterReceiver(this.a.b);
           IVPluginLoader.a(this.a, false);
         }
         i += 1;
       }
-      if ((IVPluginLoader.c(this.a)) && (j == 4))
+      if ((IVPluginLoader.f(this.a)) && (j == 4))
       {
-        IVPluginLoader.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        IVPluginLoader.c().unregisterReceiver(this.a.b);
         IVPluginLoader.a(this.a, false);
       }
     }
@@ -57,7 +57,7 @@ class IVPluginLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader.2
  * JD-Core Version:    0.7.0.1
  */

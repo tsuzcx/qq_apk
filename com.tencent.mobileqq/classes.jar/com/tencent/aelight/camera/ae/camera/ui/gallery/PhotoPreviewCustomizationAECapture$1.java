@@ -21,27 +21,27 @@ class PhotoPreviewCustomizationAECapture$1
     {
       QLog.d(PhotoPreviewCustomizationAECapture.b, 2, "need more pic.");
       paramView = this.a;
-      PhotoPreviewCustomizationAECapture.a(paramView, String.format(PhotoPreviewCustomizationAECapture.a(paramView).getString(2064515215), new Object[] { Integer.valueOf(this.a.a.maxSelectNum) }));
+      PhotoPreviewCustomizationAECapture.a(paramView, String.format(PhotoPreviewCustomizationAECapture.b(paramView).getString(2064187562), new Object[] { Integer.valueOf(this.a.f.maxSelectNum) }));
       return;
     }
-    if (!NetworkUtils.a(PhotoPreviewCustomizationAECapture.b(this.a)))
+    if (!NetworkUtils.a(PhotoPreviewCustomizationAECapture.c(this.a)))
     {
       paramView = this.a;
-      PhotoPreviewCustomizationAECapture.a(paramView, PhotoPreviewCustomizationAECapture.c(paramView).getString(2064515092));
+      PhotoPreviewCustomizationAECapture.a(paramView, PhotoPreviewCustomizationAECapture.d(paramView).getString(2064187422));
       return;
     }
-    paramView = (String)this.a.a.selectedPhotoList.get(0);
-    LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.a.a.allMediaInfoHashMap.get(paramView);
-    if ((PhotoPreviewCustomizationAECapture.a(this.a) > 0) && (PhotoPreviewCustomizationAECapture.b(this.a) > 0) && (localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth < PhotoPreviewCustomizationAECapture.a(this.a)) || (localLocalMediaInfo.mediaHeight < PhotoPreviewCustomizationAECapture.b(this.a))))
+    paramView = (String)this.a.f.selectedPhotoList.get(0);
+    LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.a.f.allMediaInfoHashMap.get(paramView);
+    if ((PhotoPreviewCustomizationAECapture.e(this.a) > 0) && (PhotoPreviewCustomizationAECapture.f(this.a) > 0) && (localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth < PhotoPreviewCustomizationAECapture.e(this.a)) || (localLocalMediaInfo.mediaHeight < PhotoPreviewCustomizationAECapture.f(this.a))))
     {
       paramView = this.a;
-      PhotoPreviewCustomizationAECapture.a(paramView, String.format(PhotoPreviewCustomizationAECapture.d(paramView).getString(2064515090), new Object[] { Integer.valueOf(PhotoPreviewCustomizationAECapture.a(this.a)), Integer.valueOf(PhotoPreviewCustomizationAECapture.b(this.a)) }));
+      PhotoPreviewCustomizationAECapture.a(paramView, String.format(PhotoPreviewCustomizationAECapture.g(paramView).getString(2064187420), new Object[] { Integer.valueOf(PhotoPreviewCustomizationAECapture.e(this.a)), Integer.valueOf(PhotoPreviewCustomizationAECapture.f(this.a)) }));
       return;
     }
     if (PhotoPreviewCustomizationAECapture.a(this.a, paramView, localLocalMediaInfo))
     {
       paramView = this.a;
-      PhotoPreviewCustomizationAECapture.a(paramView, PhotoPreviewCustomizationAECapture.e(paramView).getString(2064515091));
+      PhotoPreviewCustomizationAECapture.a(paramView, PhotoPreviewCustomizationAECapture.h(paramView).getString(2064187421));
       return;
     }
     PhotoPreviewCustomizationAECapture.b(this.a, paramView);
@@ -49,7 +49,7 @@ class PhotoPreviewCustomizationAECapture$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.gallery.PhotoPreviewCustomizationAECapture.1
  * JD-Core Version:    0.7.0.1
  */

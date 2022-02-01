@@ -9,14 +9,14 @@ class AEPhotoListLogicDefault$6
   
   public void a()
   {
-    this.a.i();
+    this.a.n();
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicDefault.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ final class GVideoUpdateUtil$1
 {
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.a.dismiss();
     if (paramInt != 2134) {
       return;
     }
@@ -25,20 +25,20 @@ final class GVideoUpdateUtil$1
         {
           paramBundle = ((JSONObject)localObject).getString("title");
           localObject = ((JSONObject)localObject).getString("tips");
-          GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, paramBundle, (String)localObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
+          GVideoUpdateUtil.a(this.b, paramBundle, (String)localObject, this.c, this.d);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+          this.d.a(this.b, this.c);
           paramBundle = null;
           localObject = paramBundle;
         }
-        GVideoUpdateUtil.Record localRecord = (GVideoUpdateUtil.Record)GVideoUpdateUtil.a.get(this.jdField_a_of_type_JavaLangString);
+        GVideoUpdateUtil.Record localRecord = (GVideoUpdateUtil.Record)GVideoUpdateUtil.a.get(this.c);
         if (localRecord == null)
         {
           localRecord = new GVideoUpdateUtil.Record();
           localRecord.a(System.currentTimeMillis(), paramBundle, (String)localObject, bool);
-          GVideoUpdateUtil.a.put(this.jdField_a_of_type_JavaLangString, localRecord);
+          GVideoUpdateUtil.a.put(this.c, localRecord);
           return;
         }
         localRecord.a(System.currentTimeMillis(), paramBundle, (String)localObject, bool);
@@ -48,11 +48,11 @@ final class GVideoUpdateUtil$1
       {
         paramBundle.printStackTrace();
         paramJSONObject.optInt("errCode");
-        GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
+        GVideoUpdateUtil.a(this.b, this.c, this.d);
         return;
       }
     }
-    GVideoUpdateUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUtilsGVideoUpdateUtil$OnGVideoUpdateListener);
+    GVideoUpdateUtil.a(this.b, this.c, this.d);
   }
 }
 

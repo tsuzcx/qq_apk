@@ -14,54 +14,39 @@ import java.util.List;
 public class MusicPlayerScene
   implements AudioPlayerBase.AudioPlayerListener
 {
-  protected int a;
-  private long a;
-  protected AudioPlayer a;
-  protected MusicItemInfo a;
-  protected List<MusicPlayerSceneListener> a;
-  
-  public MusicPlayerScene()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer = new AudioPlayer(BaseApplicationImpl.getApplication(), this);
-  }
-  
-  public int a()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.b();
-    }
-    return -1;
-  }
+  protected AudioPlayer a = new AudioPlayer(BaseApplicationImpl.getApplication(), this);
+  protected MusicItemInfo b;
+  protected int c = -1;
+  protected List<MusicPlayerSceneListener> d;
+  private long e = 0L;
   
   public void a()
   {
     int j = -1;
     try
     {
-      this.jdField_a_of_type_Int = -1;
+      this.c = -1;
       StringBuilder localStringBuilder = new StringBuilder("startMusic");
       String str2 = "";
       int i = j;
       String str1 = str2;
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null)
+      if (this.a != null)
       {
         i = j;
         str1 = str2;
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
+        if (this.b != null)
         {
-          str1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c(3);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart < 0)
+          str1 = this.b.mMusicName;
+          this.a.c(3);
+          if (this.b.musicStart < 0)
           {
             localStringBuilder.append(" musicStart=");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart = 0;
+            localStringBuilder.append(this.b.musicStart);
+            this.b.musicStart = 0;
           }
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-          a(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart + (int)this.jdField_a_of_type_Long);
+          i = this.b.musicStart;
+          a(i, this.b);
+          a(this.b.getLocalPath(), this.b.musicStart + (int)this.e);
         }
       }
       localStringBuilder.append(" musicName=");
@@ -78,19 +63,19 @@ public class MusicPlayerScene
   
   protected void a(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList;
+    paramMusicItemInfo = this.d;
     if (paramMusicItemInfo != null)
     {
       paramMusicItemInfo = paramMusicItemInfo.iterator();
       while (paramMusicItemInfo.hasNext()) {
-        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).a(paramInt, this.b);
       }
     }
   }
   
   public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    b(this.b);
     d();
     if (QLog.isColorLevel()) {
       QLog.d("MusicPlayerScene", 2, "MusicPlayerScene onCompletion");
@@ -103,8 +88,8 @@ public class MusicPlayerScene
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-      this.jdField_a_of_type_Int = paramMusicItemInfo.musicStart;
+      this.b = paramMusicItemInfo;
+      this.c = paramMusicItemInfo.musicStart;
       return;
     }
     finally
@@ -117,31 +102,12 @@ public class MusicPlayerScene
   protected void a(String paramString, int paramInt)
   {
     ThreadManager.postImmediately(new MusicPlayerScene.1(this, paramString, paramInt), null, true);
-    this.jdField_a_of_type_Long = 0L;
+    this.e = 0L;
   }
   
   public void a(List<MusicPlayerSceneListener> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null)
-      {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a();
-        if (bool) {
-          return true;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
+    this.d = paramList;
   }
   
   public void b()
@@ -150,7 +116,7 @@ public class MusicPlayerScene
     try
     {
       StringBuilder localStringBuilder = new StringBuilder("resumeMusic");
-      MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+      MusicItemInfo localMusicItemInfo = this.b;
       int j = -1;
       String str1 = str2;
       int i = j;
@@ -158,24 +124,24 @@ public class MusicPlayerScene
       {
         str1 = str2;
         i = j;
-        if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null)
+        if (this.a != null)
         {
           str1 = str2;
           i = j;
-          if (!this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a())
+          if (!this.a.m())
           {
             str1 = str2;
             i = j;
-            if (this.jdField_a_of_type_Int != -1)
+            if (this.c != -1)
             {
-              str1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-              a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Int);
-              i = this.jdField_a_of_type_Int;
+              str1 = this.b.mMusicName;
+              a(this.b.getLocalPath(), this.c);
+              i = this.c;
             }
           }
         }
       }
-      b(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      b(i, this.b);
       localStringBuilder.append(" musicName=");
       localStringBuilder.append(str1);
       localStringBuilder.append(" position=");
@@ -190,12 +156,12 @@ public class MusicPlayerScene
   
   protected void b(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList;
+    paramMusicItemInfo = this.d;
     if (paramMusicItemInfo != null)
     {
       paramMusicItemInfo = paramMusicItemInfo.iterator();
       while (paramMusicItemInfo.hasNext()) {
-        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).c(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).c(paramInt, this.b);
       }
     }
   }
@@ -204,12 +170,12 @@ public class MusicPlayerScene
   
   protected void b(MusicItemInfo paramMusicItemInfo)
   {
-    paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList;
+    paramMusicItemInfo = this.d;
     if (paramMusicItemInfo != null)
     {
       paramMusicItemInfo = paramMusicItemInfo.iterator();
       while (paramMusicItemInfo.hasNext()) {
-        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).b(this.b);
       }
     }
   }
@@ -220,13 +186,13 @@ public class MusicPlayerScene
     try
     {
       StringBuilder localStringBuilder = new StringBuilder("pauseMusic");
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a())
+      if (this.a.m())
       {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.b();
-        i = this.jdField_a_of_type_Int;
+        this.c = this.a.h();
+        i = this.c;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c();
-      c(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      this.a.d();
+      c(i, this.b);
       localStringBuilder.append(" musicName=");
       localStringBuilder.append("");
       localStringBuilder.append(" position=");
@@ -241,12 +207,12 @@ public class MusicPlayerScene
   
   protected void c(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList;
+    paramMusicItemInfo = this.d;
     if (paramMusicItemInfo != null)
     {
       paramMusicItemInfo = paramMusicItemInfo.iterator();
       while (paramMusicItemInfo.hasNext()) {
-        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).d(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).d(paramInt, this.b);
       }
     }
   }
@@ -258,31 +224,31 @@ public class MusicPlayerScene
     int j = -1;
     try
     {
-      this.jdField_a_of_type_Int = -1;
+      this.c = -1;
       StringBuilder localStringBuilder = new StringBuilder("startMusic");
       String str2 = "";
       int i = j;
       String str1 = str2;
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null)
+      if (this.a != null)
       {
         i = j;
         str1 = str2;
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
+        if (this.b != null)
         {
-          str1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c(3);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart < 0)
+          str1 = this.b.mMusicName;
+          this.a.c(3);
+          if (this.b.musicStart < 0)
           {
             localStringBuilder.append(" musicStart=");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart = 0;
+            localStringBuilder.append(this.b.musicStart);
+            this.b.musicStart = 0;
           }
-          if (a()) {
-            this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c();
+          if (g()) {
+            this.a.d();
           }
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-          d(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
+          i = this.b.musicStart;
+          d(i, this.b);
+          a(this.b.getLocalPath(), this.b.musicStart);
         }
       }
       localStringBuilder.append(" musicName=");
@@ -299,12 +265,12 @@ public class MusicPlayerScene
   
   protected void d(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList;
+    paramMusicItemInfo = this.d;
     if (paramMusicItemInfo != null)
     {
       paramMusicItemInfo = paramMusicItemInfo.iterator();
       while (paramMusicItemInfo.hasNext()) {
-        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).b(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+        ((MusicPlayerSceneListener)paramMusicItemInfo.next()).b(paramInt, this.b);
       }
     }
   }
@@ -318,17 +284,17 @@ public class MusicPlayerScene
   {
     try
     {
-      this.jdField_a_of_type_Int = -1;
+      this.c = -1;
       String str = "";
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c();
+      if (this.a != null) {
+        this.a.d();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
+      if (this.b != null)
       {
-        str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
+        str = this.b.mMusicName;
+        this.b = null;
       }
-      g();
+      i();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -345,13 +311,13 @@ public class MusicPlayerScene
   {
     try
     {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c();
+      this.c = -1;
+      this.b = null;
+      if (this.a != null) {
+        this.a.d();
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer = null;
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.a = null;
+      this.d = null;
       if (QLog.isColorLevel()) {
         QLog.d("MusicPlayerScene", 2, "MusicPlayerScene destroy");
       }
@@ -360,9 +326,36 @@ public class MusicPlayerScene
     finally {}
   }
   
-  protected void g()
+  public boolean g()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    try
+    {
+      if (this.a != null)
+      {
+        boolean bool = this.a.m();
+        if (bool) {
+          return true;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public int h()
+  {
+    if (g()) {
+      return this.a.h();
+    }
+    return -1;
+  }
+  
+  protected void i()
+  {
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -374,7 +367,7 @@ public class MusicPlayerScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.MusicPlayerScene
  * JD-Core Version:    0.7.0.1
  */

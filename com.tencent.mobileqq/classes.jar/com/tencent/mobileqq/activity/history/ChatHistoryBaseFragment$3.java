@@ -10,31 +10,31 @@ class ChatHistoryBaseFragment$3
   
   public void a()
   {
-    this.a.j();
+    this.a.o();
   }
   
   public void b()
   {
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryWidgetChatHistorySelectBottomBar.a();
+    if ((!(this.a.d instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.d).e)) {
+      this.a.h.a();
     }
     ChatHistoryBaseFragment localChatHistoryBaseFragment = this.a;
-    localChatHistoryBaseFragment.c = true;
+    localChatHistoryBaseFragment.i = true;
     localChatHistoryBaseFragment.b(true);
   }
   
   public void c()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryWidgetChatHistorySelectBottomBar.b();
+    this.a.h.b();
     ChatHistoryBaseFragment localChatHistoryBaseFragment = this.a;
-    localChatHistoryBaseFragment.c = false;
+    localChatHistoryBaseFragment.i = false;
     localChatHistoryBaseFragment.b(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a();
+    this.a.j.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment.3
  * JD-Core Version:    0.7.0.1
  */

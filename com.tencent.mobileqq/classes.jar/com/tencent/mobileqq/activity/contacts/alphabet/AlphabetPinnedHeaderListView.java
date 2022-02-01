@@ -27,7 +27,7 @@ public class AlphabetPinnedHeaderListView
   
   public void setChildViewCanAction(boolean paramBoolean)
   {
-    PinnedDividerListView.DividerAdapter localDividerAdapter = a();
+    PinnedDividerListView.DividerAdapter localDividerAdapter = getDividerAdapter();
     if ((localDividerAdapter instanceof AlphabetFriendAdapter)) {
       ((AlphabetFriendAdapter)localDividerAdapter).a(paramBoolean);
     }
@@ -36,7 +36,7 @@ public class AlphabetPinnedHeaderListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetPinnedHeaderListView
  * JD-Core Version:    0.7.0.1
  */

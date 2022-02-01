@@ -11,7 +11,22 @@ import java.util.List;
 
 class AVBizUtils
 {
-  public static String a()
+  public static List<Long> convertToList(long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    long l2 = 1L;
+    long l1 = paramLong;
+    for (paramLong = l2; l1 != 0L; paramLong <<= 1)
+    {
+      if ((l1 & 1L) != 0L) {
+        localArrayList.add(Long.valueOf(paramLong));
+      }
+      l1 >>= 1;
+    }
+    return localArrayList;
+  }
+  
+  public static String getProcessName()
   {
     Object localObject = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
     if (localObject == null) {
@@ -29,24 +44,9 @@ class AVBizUtils
     return null;
   }
   
-  public static List<Long> a(long paramLong)
+  public static boolean isValid(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    long l2 = 1L;
-    long l1 = paramLong;
-    for (paramLong = l2; l1 != 0L; paramLong <<= 1)
-    {
-      if ((l1 & 1L) != 0L) {
-        localArrayList.add(Long.valueOf(paramLong));
-      }
-      l1 >>= 1;
-    }
-    return localArrayList;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return Constants.Business.a.contains(paramString);
+    return Constants.Business.NAME.contains(paramString);
   }
 }
 

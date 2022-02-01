@@ -19,12 +19,12 @@ class TroopSettingActivity$21
     if (this.this$0.isFinishing()) {
       return;
     }
-    this.this$0.f();
+    this.this$0.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.21
  * JD-Core Version:    0.7.0.1
  */

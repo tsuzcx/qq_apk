@@ -12,11 +12,11 @@ class LeftAppShortcutBarPanel$2
   
   public void onClick(View paramView)
   {
-    if (LeftAppShortcutBarPanel.a(this.a) != null)
+    if (LeftAppShortcutBarPanel.b(this.a) != null)
     {
-      LeftAppShortcutBarPanel.a(this.a).a(paramView);
-      if (LeftAppShortcutBarPanel.a(this.a) != null) {
-        LeftAppShortcutBarPanel.a(this.a).b(paramView, 0);
+      LeftAppShortcutBarPanel.b(this.a).a(paramView);
+      if (LeftAppShortcutBarPanel.d(this.a) != null) {
+        LeftAppShortcutBarPanel.d(this.a).b(paramView, 0);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -24,7 +24,7 @@ class LeftAppShortcutBarPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.LeftAppShortcutBarPanel.2
  * JD-Core Version:    0.7.0.1
  */

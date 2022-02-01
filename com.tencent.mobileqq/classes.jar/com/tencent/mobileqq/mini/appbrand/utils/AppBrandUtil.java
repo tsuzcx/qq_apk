@@ -368,7 +368,7 @@ public class AppBrandUtil
         localStringBuilder.append(str2);
       }
     }
-    return URLUtil.a(localStringBuilder.toString());
+    return URLUtil.c(localStringBuilder.toString());
   }
   
   public static boolean needUpdate(MiniAppInfo paramMiniAppInfo1, MiniAppInfo paramMiniAppInfo2)
@@ -449,7 +449,7 @@ public class AppBrandUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil
  * JD-Core Version:    0.7.0.1
  */

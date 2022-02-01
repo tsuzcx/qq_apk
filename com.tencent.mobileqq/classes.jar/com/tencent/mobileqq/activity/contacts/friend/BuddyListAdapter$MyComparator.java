@@ -13,8 +13,8 @@ class BuddyListAdapter$MyComparator
 {
   public int a(BuddyListItem paramBuddyListItem1, BuddyListItem paramBuddyListItem2)
   {
-    paramBuddyListItem1 = (Friends)paramBuddyListItem1.a;
-    paramBuddyListItem2 = (Friends)paramBuddyListItem2.a;
+    paramBuddyListItem1 = (Friends)paramBuddyListItem1.f;
+    paramBuddyListItem2 = (Friends)paramBuddyListItem2.f;
     int i = a(paramBuddyListItem1);
     int j = a(paramBuddyListItem2);
     if (i == j) {
@@ -32,7 +32,7 @@ class BuddyListAdapter$MyComparator
     } else {
       j = 131072;
     }
-    boolean bool = SimpleUIUtil.a();
+    boolean bool = SimpleUIUtil.e();
     int i = 16384;
     if (!bool) {
       if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB)) {
@@ -70,7 +70,7 @@ class BuddyListAdapter$MyComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter.MyComparator
  * JD-Core Version:    0.7.0.1
  */

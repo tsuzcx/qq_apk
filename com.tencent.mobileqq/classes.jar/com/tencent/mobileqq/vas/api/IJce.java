@@ -3,14 +3,14 @@ package com.tencent.mobileqq.vas.api;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.io.Serializable;
 
 @QAPI(process={""})
 public abstract interface IJce
-  extends QRouteApi
+  extends IVasManager, Serializable
 {
   public static final int TYPE_REQ = 1;
   public static final int TYPE_STREQ = 2;
@@ -31,7 +31,7 @@ public abstract interface IJce
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.IJce
  * JD-Core Version:    0.7.0.1
  */

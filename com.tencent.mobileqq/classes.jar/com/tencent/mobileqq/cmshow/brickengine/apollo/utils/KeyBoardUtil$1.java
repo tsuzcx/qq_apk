@@ -21,35 +21,35 @@ final class KeyBoardUtil$1
   
   public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mShowEditWindow))
+    if ((this.a.mEditWindow != null) && (this.a.mShowEditWindow))
     {
       Object localObject = new Rect();
-      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
-      int i = (int)DeviceInfoUtil.l();
+      this.b.getWindowVisibleDisplayFrame((Rect)localObject);
+      int i = (int)DeviceInfoUtil.G();
       int j = ((Rect)localObject).bottom;
       int k = ((Rect)localObject).top;
-      ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+      ImmersiveUtils.getStatusBarHeight(this.b.getContext());
       if (i - (j - k) < 200)
       {
         if (KeyBoardUtil.b)
         {
-          this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.dismiss();
+          this.a.mEditWindow.dismiss();
           KeyBoardUtil.a = true;
         }
       }
       else
       {
-        i = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.getHeight();
+        i = ((Rect)localObject).bottom - this.a.mEditWindow.getHeight();
         localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
         j = ((SharedPreferences)localObject).getInt("sp_key_apollo_keyboard_height", 0);
-        if ((this.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity))
+        if ((this.b.getContext() instanceof Activity))
         {
-          if (((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).isFinishing())
+          if (((Activity)this.b.getContext()).isFinishing())
           {
             QLog.e("[cmshow]KeyBoardUtil", 1, "showKeyBorad activity is isFinishing");
             return;
           }
-          if ((Build.VERSION.SDK_INT >= 17) && (((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).isDestroyed()))
+          if ((Build.VERSION.SDK_INT >= 17) && (((Activity)this.b.getContext()).isDestroyed()))
           {
             QLog.e("[cmshow]KeyBoardUtil", 1, "showKeyBorad activity is destroy");
             return;
@@ -59,13 +59,13 @@ final class KeyBoardUtil$1
         try
         {
           ((SharedPreferences)localObject).edit().putInt("sp_key_apollo_keyboard_height", i).commit();
-          this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-          this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.getHeight());
+          this.a.mEditWindow.showAtLocation(this.b.getRootView(), 0, 0, i);
+          this.a.mEditWindow.update(0, i, this.a.mEditWindow.getWidth(), this.a.mEditWindow.getHeight());
           KeyBoardUtil.a = false;
           if (KeyBoardUtil.a)
           {
-            this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-            this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditWindow.getHeight());
+            this.a.mEditWindow.showAtLocation(this.b.getRootView(), 0, 0, i);
+            this.a.mEditWindow.update(0, i, this.a.mEditWindow.getWidth(), this.a.mEditWindow.getHeight());
             KeyBoardUtil.a = false;
           }
         }
@@ -82,7 +82,7 @@ final class KeyBoardUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.KeyBoardUtil.1
  * JD-Core Version:    0.7.0.1
  */

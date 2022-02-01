@@ -36,7 +36,7 @@ public class NowQwMixAndroidJs
   public void get_now_version(Map<String, String> paramMap)
   {
     paramMap = (String)paramMap.get("callback");
-    String str = AppSetting.f();
+    String str = AppSetting.h();
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -54,7 +54,7 @@ public class NowQwMixAndroidJs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowQwMixAndroidJs
  * JD-Core Version:    0.7.0.1
  */

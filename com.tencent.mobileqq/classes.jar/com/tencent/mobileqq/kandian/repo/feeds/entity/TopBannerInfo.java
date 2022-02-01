@@ -69,7 +69,7 @@ public class TopBannerInfo
           localIterator = ((oidb_cmd0xbc9.BannerRoundRspBody)localObject1).rpt_msg_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject2 = TopBannerInfo.BaseItem.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
+            localObject2 = TopBannerInfo.BaseItem.b((oidb_cmd0xbc9.BannerItem)localIterator.next());
             if (localObject2 != null) {
               this.items.add(localObject2);
             }
@@ -147,7 +147,7 @@ public class TopBannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TopBannerInfo
  * JD-Core Version:    0.7.0.1
  */

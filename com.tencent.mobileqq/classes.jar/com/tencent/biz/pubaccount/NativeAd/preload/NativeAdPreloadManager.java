@@ -21,11 +21,11 @@ import mqq.manager.Manager;
 public class NativeAdPreloadManager
   implements IBitmapCallback, Manager
 {
-  private int jdField_a_of_type_Int;
-  private ImageRequest jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int a;
   private int b;
+  private ImageRequest c;
+  private final Object d = new Object();
+  private ArrayList<String> e = new ArrayList();
   
   public NativeAdPreloadManager(QQAppInterface paramQQAppInterface)
   {
@@ -34,7 +34,7 @@ public class NativeAdPreloadManager
     {
       paramQQAppInterface = new DisplayMetrics();
       ((WindowManager)localObject).getDefaultDisplay().getMetrics(paramQQAppInterface);
-      this.jdField_a_of_type_Int = paramQQAppInterface.widthPixels;
+      this.a = paramQQAppInterface.widthPixels;
       this.b = paramQQAppInterface.heightPixels;
       if (QLog.isColorLevel())
       {
@@ -46,16 +46,16 @@ public class NativeAdPreloadManager
         QLog.d("NativeAdPreloadManager", 2, ((StringBuilder)localObject).toString());
       }
     }
-    DownloadManager.a();
+    DownloadManager.b();
   }
   
   private void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((this.c == null) && (this.e != null) && (this.e.size() > 0))
       {
-        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        String str = (String)this.e.remove(0);
         try
         {
           Object localObject3 = new URL(str);
@@ -73,15 +73,15 @@ public class NativeAdPreloadManager
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = new ImageRequest();
-            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.jdField_a_of_type_JavaNetURL = ((URL)localObject3);
-            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.b = this.b;
-            localObject3 = ((IImageManager)QRoute.api(IImageManager.class)).getBitmap(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest);
+            this.c = new ImageRequest();
+            this.c.a = ((URL)localObject3);
+            this.c.b = this.a;
+            this.c.c = this.b;
+            localObject3 = ((IImageManager)QRoute.api(IImageManager.class)).getBitmap(this.c);
             if (localObject3 != null)
             {
               ((ICloseableBitmap)localObject3).a();
-              this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
+              this.c = null;
               b();
               if (QLog.isColorLevel())
               {
@@ -94,7 +94,7 @@ public class NativeAdPreloadManager
             }
             else
             {
-              ((IImageManager)QRoute.api(IImageManager.class)).loadImage(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest, this);
+              ((IImageManager)QRoute.api(IImageManager.class)).loadImage(this.c, this);
               if (QLog.isColorLevel())
               {
                 localObject3 = new StringBuilder();
@@ -117,11 +117,11 @@ public class NativeAdPreloadManager
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      if (this.e != null)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.e.clear();
         if (QLog.isColorLevel()) {
           QLog.d("NativeAdPreloadManager", 2, "clearPreloadList");
         }
@@ -138,12 +138,12 @@ public class NativeAdPreloadManager
     {
       paramICloseableBitmap = new StringBuilder();
       paramICloseableBitmap.append("onSuccess url:");
-      paramICloseableBitmap.append(paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
+      paramICloseableBitmap.append(paramImageRequest.a.toString());
       QLog.d("NativeAdPreloadManager", 2, paramICloseableBitmap.toString());
     }
-    if (paramImageRequest.equals(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest))
+    if (paramImageRequest.equals(this.c))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
+      this.c = null;
       b();
     }
   }
@@ -154,24 +154,24 @@ public class NativeAdPreloadManager
     {
       paramThrowable = new StringBuilder();
       paramThrowable.append("onFail url:");
-      paramThrowable.append(paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
+      paramThrowable.append(paramImageRequest.a.toString());
       QLog.d("NativeAdPreloadManager", 2, paramThrowable.toString());
     }
-    if (paramImageRequest.equals(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest))
+    if (paramImageRequest.equals(this.c))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
+      this.c = null;
       b();
     }
   }
   
   public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
       StringBuilder localStringBuilder;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
+      if ((this.e != null) && (!TextUtils.isEmpty(paramString)) && (!this.e.contains(paramString)))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.e.add(paramString);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -195,18 +195,18 @@ public class NativeAdPreloadManager
   
   public void a(ArrayList<String> paramArrayList)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
+      if ((this.e != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
       {
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
           String str = (String)paramArrayList.next();
           StringBuilder localStringBuilder;
-          if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+          if ((!TextUtils.isEmpty(str)) && (!this.e.contains(str)))
           {
-            this.jdField_a_of_type_JavaUtilArrayList.add(str);
+            this.e.add(str);
             if (QLog.isColorLevel())
             {
               localStringBuilder = new StringBuilder();
@@ -236,10 +236,10 @@ public class NativeAdPreloadManager
   
   public void onDestroy()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest = null;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.c = null;
+      this.e.clear();
       if (QLog.isColorLevel()) {
         QLog.d("NativeAdPreloadManager", 2, "onDestroy");
       }
@@ -249,7 +249,7 @@ public class NativeAdPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.preload.NativeAdPreloadManager
  * JD-Core Version:    0.7.0.1
  */

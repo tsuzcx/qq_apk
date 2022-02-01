@@ -14,59 +14,59 @@ import mqq.os.MqqHandler;
 public class JobExecutor
   implements Job.JobExecutorCallback
 {
-  private JobExecutor.IOnJobExecuteResultCallback jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
-  private List<Job> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  Executor jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newSingleThreadExecutor();
-  public volatile boolean a;
+  Executor a = Executors.newSingleThreadExecutor();
+  public volatile boolean b;
+  private List<Job> c = Collections.synchronizedList(new ArrayList());
+  private JobExecutor.IOnJobExecuteResultCallback d;
   
   private void a(@NonNull Job paramJob, @NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
   {
-    paramJob.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
+    paramJob.h = paramConcurrentHashMap;
     paramJob.a(paramConcurrentHashMap);
-    if (!paramJob.a())
+    if (!paramJob.b())
     {
-      paramJob = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      paramJob = this.d;
       if (paramJob != null) {
         paramJob.b();
       }
       a();
       return;
     }
-    if (paramJob.jdField_a_of_type_Boolean)
+    if (paramJob.f)
     {
       paramJob.a();
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.2(this, paramJob));
+    this.a.execute(new JobExecutor.2(this, paramJob));
   }
   
   private void a(@NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+    if (this.c.isEmpty()) {
       return;
     }
-    a(new JobExecutor.1(this, (Job)this.jdField_a_of_type_JavaUtilList.get(0), paramConcurrentHashMap));
+    a(new JobExecutor.1(this, (Job)this.c.get(0), paramConcurrentHashMap));
   }
   
   public JobExecutor a(@NonNull Job paramJob)
   {
-    paramJob.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback = this;
-    this.jdField_a_of_type_JavaUtilList.add(paramJob);
+    paramJob.i = this;
+    this.c.add(paramJob);
     return this;
   }
   
   protected void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (!localList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.c.clear();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback = null;
+    this.d = null;
   }
   
   public void a(@NonNull JobExecutor.IOnJobExecuteResultCallback paramIOnJobExecuteResultCallback)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback = paramIOnJobExecuteResultCallback;
+    this.d = paramIOnJobExecuteResultCallback;
     a(new ConcurrentHashMap());
   }
   
@@ -82,32 +82,32 @@ public class JobExecutor
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      localObject = this.d;
       if (localObject != null) {
         ((JobExecutor.IOnJobExecuteResultCallback)localObject).c();
       }
       a();
       return;
     }
-    Object localObject = (Job)this.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject = (Job)this.c.get(0);
     if (paramBoolean)
     {
-      if (((Job)localObject).b)
+      if (((Job)localObject).g)
       {
         if (Looper.myLooper() == Looper.getMainLooper())
         {
-          ((Job)localObject).a(((Job)localObject).b());
+          ((Job)localObject).a(((Job)localObject).c());
           return;
         }
         ThreadManager.getUIHandler().post(new JobExecutor.3(this, (Job)localObject));
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.4(this, (Job)localObject));
+      this.a.execute(new JobExecutor.4(this, (Job)localObject));
       return;
     }
-    JobExecutor.IOnJobExecuteResultCallback localIOnJobExecuteResultCallback = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+    JobExecutor.IOnJobExecuteResultCallback localIOnJobExecuteResultCallback = this.d;
     if (localIOnJobExecuteResultCallback != null) {
       localIOnJobExecuteResultCallback.b();
     }
@@ -118,9 +118,9 @@ public class JobExecutor
   public void b(boolean paramBoolean)
   {
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      localObject = this.d;
       if (localObject != null) {
         ((JobExecutor.IOnJobExecuteResultCallback)localObject).c();
       }
@@ -129,14 +129,14 @@ public class JobExecutor
     }
     if (paramBoolean)
     {
-      localObject = (Job)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+      localObject = (Job)this.c.remove(0);
+      if (this.c.isEmpty())
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+        localObject = this.d;
         if (localObject != null) {
           ((JobExecutor.IOnJobExecuteResultCallback)localObject).a();
         }
-        if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        if (this.c.isEmpty()) {
           a();
         }
       }
@@ -147,7 +147,7 @@ public class JobExecutor
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      localObject = this.d;
       if (localObject != null) {
         ((JobExecutor.IOnJobExecuteResultCallback)localObject).b();
       }
@@ -157,7 +157,7 @@ public class JobExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor
  * JD-Core Version:    0.7.0.1
  */

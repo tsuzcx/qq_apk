@@ -371,6 +371,11 @@ public class AudioCompositionDecoderTrack
     }
   }
   
+  public CMSampleBuffer readCurrentSample()
+  {
+    return null;
+  }
+  
   public CMSampleBuffer readSample()
   {
     if (this.decoderTrackList.size() == 0) {
@@ -518,6 +523,8 @@ public class AudioCompositionDecoderTrack
     this.rate = paramFloat;
   }
   
+  public void setTrackIndex(int paramInt) {}
+  
   public void setTrackSegments(List<DecoderTrackSegment> paramList) {}
   
   public void setVolume(float paramFloat)
@@ -601,7 +608,7 @@ public class AudioCompositionDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositionDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

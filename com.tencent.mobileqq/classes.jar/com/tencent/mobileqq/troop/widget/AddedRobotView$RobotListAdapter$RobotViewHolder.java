@@ -8,26 +8,26 @@ import android.widget.TextView;
 class AddedRobotView$RobotListAdapter$RobotViewHolder
   extends RecyclerView.ViewHolder
 {
-  protected ImageView a;
   protected TextView a;
-  protected String a;
   protected ImageView b;
-  protected TextView b;
-  protected ImageView c;
+  protected TextView c;
+  protected String d;
+  protected ImageView e;
+  protected ImageView f;
   
   public AddedRobotView$RobotListAdapter$RobotViewHolder(AddedRobotView.RobotListAdapter paramRobotListAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365439));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368033));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368052));
-    this.c = ((ImageView)paramView.findViewById(2131376320));
+    this.c = ((TextView)paramView.findViewById(2131431644));
+    this.b = ((ImageView)paramView.findViewById(2131434878));
+    this.a = ((TextView)paramView.findViewById(2131439121));
+    this.e = ((ImageView)paramView.findViewById(2131434902));
+    this.f = ((ImageView)paramView.findViewById(2131444531));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView.RobotListAdapter.RobotViewHolder
  * JD-Core Version:    0.7.0.1
  */

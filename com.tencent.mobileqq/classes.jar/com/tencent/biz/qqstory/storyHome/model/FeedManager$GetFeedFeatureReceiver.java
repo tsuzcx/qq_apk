@@ -21,13 +21,13 @@ public final class FeedManager$GetFeedFeatureReceiver
   public void a(@NonNull FeedManager paramFeedManager, @NonNull GetFeedFeatureHandler.GetFeedFeatureEvent paramGetFeedFeatureEvent)
   {
     SLog.a(this.TAG, "receive feature event. %s.", paramGetFeedFeatureEvent.toString());
-    if ((paramGetFeedFeatureEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList != null))
+    if ((paramGetFeedFeatureEvent.g.isSuccess()) && (paramGetFeedFeatureEvent.a != null))
     {
-      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.a.iterator();
       while (paramGetFeedFeatureEvent.hasNext())
       {
         FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)paramGetFeedFeatureEvent.next();
-        FeedManager.a(paramFeedManager).put(localFeedFeatureItem.a, localFeedFeatureItem);
+        FeedManager.c(paramFeedManager).put(localFeedFeatureItem.a, localFeedFeatureItem);
       }
     }
   }

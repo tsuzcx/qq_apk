@@ -12,55 +12,55 @@ class AVGamePosterView$1$1
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 13	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1	Lcom/tencent/avgame/ui/AVGamePosterView$1;
-    //   4: getfield 31	com/tencent/avgame/ui/AVGamePosterView$1:a	Ljava/lang/String;
-    //   7: invokestatic 37	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: getfield 14	com/tencent/avgame/ui/AVGamePosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePosterView$1;
+    //   4: getfield 32	com/tencent/avgame/ui/AVGamePosterView$1:a	Ljava/lang/String;
+    //   7: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   10: ifeq +17 -> 27
     //   13: aload_0
-    //   14: getfield 13	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1	Lcom/tencent/avgame/ui/AVGamePosterView$1;
-    //   17: getfield 41	com/tencent/avgame/ui/AVGamePosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePosterView;
-    //   20: invokevirtual 46	com/tencent/avgame/ui/AVGamePosterView:a	()Ljava/lang/String;
+    //   14: getfield 14	com/tencent/avgame/ui/AVGamePosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePosterView$1;
+    //   17: getfield 42	com/tencent/avgame/ui/AVGamePosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePosterView;
+    //   20: invokevirtual 47	com/tencent/avgame/ui/AVGamePosterView:b	()Ljava/lang/String;
     //   23: astore_3
     //   24: goto +11 -> 35
     //   27: aload_0
-    //   28: getfield 13	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1	Lcom/tencent/avgame/ui/AVGamePosterView$1;
-    //   31: getfield 31	com/tencent/avgame/ui/AVGamePosterView$1:a	Ljava/lang/String;
+    //   28: getfield 14	com/tencent/avgame/ui/AVGamePosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePosterView$1;
+    //   31: getfield 32	com/tencent/avgame/ui/AVGamePosterView$1:a	Ljava/lang/String;
     //   34: astore_3
-    //   35: new 48	java/io/File
+    //   35: new 49	java/io/File
     //   38: dup
     //   39: aload_3
-    //   40: invokespecial 51	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
     //   43: astore_1
     //   44: aconst_null
     //   45: astore 4
     //   47: aconst_null
     //   48: astore_2
-    //   49: new 53	java/io/FileOutputStream
+    //   49: new 54	java/io/FileOutputStream
     //   52: dup
     //   53: aload_1
-    //   54: invokespecial 56	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   54: invokespecial 57	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   57: astore_1
     //   58: aload_0
-    //   59: getfield 15	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   62: getstatic 62	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   59: getfield 16	com/tencent/avgame/ui/AVGamePosterView$1$1:a	Landroid/graphics/Bitmap;
+    //   62: getstatic 63	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   65: bipush 90
     //   67: aload_1
-    //   68: invokevirtual 68	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   68: invokevirtual 69	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   71: pop
     //   72: aload_0
-    //   73: getfield 15	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   76: invokevirtual 71	android/graphics/Bitmap:recycle	()V
+    //   73: getfield 16	com/tencent/avgame/ui/AVGamePosterView$1$1:a	Landroid/graphics/Bitmap;
+    //   76: invokevirtual 72	android/graphics/Bitmap:recycle	()V
     //   79: aload_1
     //   80: astore_2
     //   81: aload_0
-    //   82: getfield 13	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1	Lcom/tencent/avgame/ui/AVGamePosterView$1;
-    //   85: getfield 41	com/tencent/avgame/ui/AVGamePosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePosterView;
-    //   88: invokestatic 74	com/tencent/avgame/ui/AVGamePosterView:a	(Lcom/tencent/avgame/ui/AVGamePosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
+    //   82: getfield 14	com/tencent/avgame/ui/AVGamePosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePosterView$1;
+    //   85: getfield 42	com/tencent/avgame/ui/AVGamePosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePosterView;
+    //   88: invokestatic 75	com/tencent/avgame/ui/AVGamePosterView:a	(Lcom/tencent/avgame/ui/AVGamePosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
     //   91: ifnull +21 -> 112
     //   94: aload_0
-    //   95: getfield 13	com/tencent/avgame/ui/AVGamePosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePosterView$1	Lcom/tencent/avgame/ui/AVGamePosterView$1;
-    //   98: getfield 41	com/tencent/avgame/ui/AVGamePosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePosterView;
-    //   101: invokestatic 74	com/tencent/avgame/ui/AVGamePosterView:a	(Lcom/tencent/avgame/ui/AVGamePosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
+    //   95: getfield 14	com/tencent/avgame/ui/AVGamePosterView$1$1:b	Lcom/tencent/avgame/ui/AVGamePosterView$1;
+    //   98: getfield 42	com/tencent/avgame/ui/AVGamePosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePosterView;
+    //   101: invokestatic 75	com/tencent/avgame/ui/AVGamePosterView:a	(Lcom/tencent/avgame/ui/AVGamePosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
     //   104: aload_3
     //   105: invokeinterface 79 2 0
     //   110: aload_1

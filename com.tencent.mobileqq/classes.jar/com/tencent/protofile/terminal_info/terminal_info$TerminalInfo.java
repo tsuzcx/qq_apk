@@ -36,7 +36,7 @@ public final class terminal_info$TerminalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.terminal_info.terminal_info.TerminalInfo
  * JD-Core Version:    0.7.0.1
  */

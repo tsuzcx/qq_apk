@@ -10,12 +10,12 @@ class GroupTeamWorkListActivity$15
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    GroupTeamWorkListActivity.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.15
  * JD-Core Version:    0.7.0.1
  */

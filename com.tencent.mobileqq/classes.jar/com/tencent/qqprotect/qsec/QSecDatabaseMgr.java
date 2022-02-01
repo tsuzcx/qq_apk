@@ -14,19 +14,19 @@ import org.w3c.dom.NodeList;
 
 public class QSecDatabaseMgr
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<QSecDatabaseMgr.LibEntry> jdField_a_of_type_JavaUtilList;
+  private List<QSecDatabaseMgr.LibEntry> a;
+  private int b = 1;
   
   public QSecDatabaseMgr()
   {
-    Pair localPair = a(a(), 1);
+    Pair localPair = a(c(), 1);
     if (localPair != null)
     {
-      this.jdField_a_of_type_Int = ((Integer)localPair.first).intValue();
-      this.jdField_a_of_type_JavaUtilList = ((List)localPair.second);
+      this.b = ((Integer)localPair.first).intValue();
+      this.a = ((List)localPair.second);
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    if (this.a == null) {
+      this.a = new LinkedList();
     }
   }
   
@@ -128,28 +128,28 @@ public class QSecDatabaseMgr
   private Pair<Integer, List<QSecDatabaseMgr.LibEntry>> a(byte[] paramArrayOfByte, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 132	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   0: invokestatic 134	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   3: astore 5
     //   5: aload 5
-    //   7: invokevirtual 136	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   7: invokevirtual 138	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
     //   10: astore 6
-    //   12: new 138	java/io/ByteArrayInputStream
+    //   12: new 140	java/io/ByteArrayInputStream
     //   15: dup
     //   16: aload_1
-    //   17: invokespecial 141	java/io/ByteArrayInputStream:<init>	([B)V
+    //   17: invokespecial 143	java/io/ByteArrayInputStream:<init>	([B)V
     //   20: astore 5
     //   22: aload 5
     //   24: astore_1
     //   25: aload 6
     //   27: aload 5
-    //   29: invokevirtual 147	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   32: invokeinterface 153 1 0
+    //   29: invokevirtual 149	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   32: invokeinterface 155 1 0
     //   37: astore 7
     //   39: aload 5
     //   41: astore_1
     //   42: aload_0
     //   43: aload 7
-    //   45: invokespecial 155	com/tencent/qqprotect/qsec/QSecDatabaseMgr:a	(Lorg/w3c/dom/Element;)I
+    //   45: invokespecial 157	com/tencent/qqprotect/qsec/QSecDatabaseMgr:a	(Lorg/w3c/dom/Element;)I
     //   48: istore_3
     //   49: iload_3
     //   50: ifeq +187 -> 237
@@ -159,19 +159,19 @@ public class QSecDatabaseMgr
     //   58: goto +179 -> 237
     //   61: aload 5
     //   63: astore_1
-    //   64: new 41	java/util/LinkedList
+    //   64: new 43	java/util/LinkedList
     //   67: dup
-    //   68: invokespecial 42	java/util/LinkedList:<init>	()V
+    //   68: invokespecial 44	java/util/LinkedList:<init>	()V
     //   71: astore 6
     //   73: aload 5
     //   75: astore_1
     //   76: aload 7
-    //   78: invokeinterface 156 1 0
+    //   78: invokeinterface 158 1 0
     //   83: astore 7
     //   85: aload 5
     //   87: astore_1
     //   88: aload 7
-    //   90: invokeinterface 95 1 0
+    //   90: invokeinterface 97 1 0
     //   95: istore 4
     //   97: iconst_0
     //   98: istore_2
@@ -182,34 +182,34 @@ public class QSecDatabaseMgr
     //   107: astore_1
     //   108: aload 7
     //   110: iload_2
-    //   111: invokeinterface 96 2 0
+    //   111: invokeinterface 98 2 0
     //   116: astore 8
     //   118: aload 5
     //   120: astore_1
     //   121: aload 8
-    //   123: invokeinterface 100 1 0
+    //   123: invokeinterface 102 1 0
     //   128: iconst_1
     //   129: if_icmpeq +6 -> 135
     //   132: goto +209 -> 341
     //   135: aload 5
     //   137: astore_1
     //   138: aload 8
-    //   140: invokeinterface 66 1 0
+    //   140: invokeinterface 68 1 0
     //   145: astore 9
     //   147: aload 9
     //   149: ifnull +192 -> 341
     //   152: aload 5
     //   154: astore_1
     //   155: aload 9
-    //   157: ldc 158
-    //   159: invokevirtual 74	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   157: ldc 160
+    //   159: invokevirtual 76	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   162: ifne +6 -> 168
     //   165: goto +176 -> 341
     //   168: aload 5
     //   170: astore_1
     //   171: aload_0
     //   172: aload 8
-    //   174: invokespecial 161	com/tencent/qqprotect/qsec/QSecDatabaseMgr:a	(Lorg/w3c/dom/Node;)Lcom/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry;
+    //   174: invokespecial 163	com/tencent/qqprotect/qsec/QSecDatabaseMgr:b	(Lorg/w3c/dom/Node;)Lcom/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry;
     //   177: astore 8
     //   179: aload 8
     //   181: ifnonnull +6 -> 187
@@ -218,43 +218,43 @@ public class QSecDatabaseMgr
     //   189: astore_1
     //   190: aload 6
     //   192: aload 8
-    //   194: invokeinterface 165 2 0
+    //   194: invokeinterface 167 2 0
     //   199: pop
     //   200: goto +141 -> 341
     //   203: aload 5
     //   205: astore_1
-    //   206: new 22	android/util/Pair
+    //   206: new 24	android/util/Pair
     //   209: dup
     //   210: iload_3
-    //   211: invokestatic 169	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   211: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   214: aload 6
-    //   216: invokespecial 172	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   216: invokespecial 174	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   219: astore 6
     //   221: aload 5
-    //   223: invokevirtual 175	java/io/ByteArrayInputStream:close	()V
+    //   223: invokevirtual 177	java/io/ByteArrayInputStream:close	()V
     //   226: aload 6
     //   228: areturn
     //   229: astore_1
     //   230: aload_1
-    //   231: invokevirtual 176	java/io/IOException:printStackTrace	()V
+    //   231: invokevirtual 178	java/io/IOException:printStackTrace	()V
     //   234: aload 6
     //   236: areturn
     //   237: aload 5
     //   239: astore_1
-    //   240: new 22	android/util/Pair
+    //   240: new 24	android/util/Pair
     //   243: dup
     //   244: iload_3
-    //   245: invokestatic 169	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   245: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   248: aconst_null
-    //   249: invokespecial 172	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   249: invokespecial 174	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   252: astore 6
     //   254: aload 5
-    //   256: invokevirtual 175	java/io/ByteArrayInputStream:close	()V
+    //   256: invokevirtual 177	java/io/ByteArrayInputStream:close	()V
     //   259: aload 6
     //   261: areturn
     //   262: astore_1
     //   263: aload_1
-    //   264: invokevirtual 176	java/io/IOException:printStackTrace	()V
+    //   264: invokevirtual 178	java/io/IOException:printStackTrace	()V
     //   267: aload 6
     //   269: areturn
     //   270: astore 6
@@ -269,27 +269,27 @@ public class QSecDatabaseMgr
     //   287: aload 5
     //   289: astore_1
     //   290: aload 6
-    //   292: invokevirtual 84	java/lang/Exception:printStackTrace	()V
+    //   292: invokevirtual 86	java/lang/Exception:printStackTrace	()V
     //   295: aload 5
     //   297: ifnull +15 -> 312
     //   300: aload 5
-    //   302: invokevirtual 175	java/io/ByteArrayInputStream:close	()V
+    //   302: invokevirtual 177	java/io/ByteArrayInputStream:close	()V
     //   305: aconst_null
     //   306: areturn
     //   307: astore_1
     //   308: aload_1
-    //   309: invokevirtual 176	java/io/IOException:printStackTrace	()V
+    //   309: invokevirtual 178	java/io/IOException:printStackTrace	()V
     //   312: aconst_null
     //   313: areturn
     //   314: astore 5
     //   316: aload_1
     //   317: ifnull +15 -> 332
     //   320: aload_1
-    //   321: invokevirtual 175	java/io/ByteArrayInputStream:close	()V
+    //   321: invokevirtual 177	java/io/ByteArrayInputStream:close	()V
     //   324: goto +8 -> 332
     //   327: astore_1
     //   328: aload_1
-    //   329: invokevirtual 176	java/io/IOException:printStackTrace	()V
+    //   329: invokevirtual 178	java/io/IOException:printStackTrace	()V
     //   332: goto +6 -> 338
     //   335: aload 5
     //   337: athrow
@@ -353,10 +353,274 @@ public class QSecDatabaseMgr
     //   320	324	327	java/io/IOException
   }
   
-  private QSecDatabaseMgr.LibEntry a(Node paramNode)
+  private boolean a(String paramString, int paramInt, List<QSecDatabaseMgr.LibEntry> paramList)
+  {
+    paramList = a(paramInt, paramList);
+    if (paramList == null) {
+      return false;
+    }
+    return new QSecStoreUtil().a(paramString, paramList, null, 1);
+  }
+  
+  /* Error */
+  private byte[] a(int paramInt, List<QSecDatabaseMgr.LibEntry> paramList)
+  {
+    // Byte code:
+    //   0: invokestatic 193	android/util/Xml:newSerializer	()Lorg/xmlpull/v1/XmlSerializer;
+    //   3: astore 5
+    //   5: new 195	java/io/ByteArrayOutputStream
+    //   8: dup
+    //   9: invokespecial 196	java/io/ByteArrayOutputStream:<init>	()V
+    //   12: astore 4
+    //   14: aload 4
+    //   16: astore_3
+    //   17: aload 5
+    //   19: aload 4
+    //   21: ldc 198
+    //   23: invokeinterface 204 3 0
+    //   28: aload 4
+    //   30: astore_3
+    //   31: aload 5
+    //   33: aconst_null
+    //   34: iconst_1
+    //   35: invokestatic 209	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   38: invokeinterface 213 3 0
+    //   43: aload 4
+    //   45: astore_3
+    //   46: aload 5
+    //   48: aconst_null
+    //   49: ldc 215
+    //   51: invokeinterface 219 3 0
+    //   56: pop
+    //   57: aload 4
+    //   59: astore_3
+    //   60: aload 5
+    //   62: aconst_null
+    //   63: ldc 70
+    //   65: iload_1
+    //   66: invokestatic 223	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   69: invokeinterface 227 4 0
+    //   74: pop
+    //   75: aload 4
+    //   77: astore_3
+    //   78: aload_2
+    //   79: invokeinterface 231 1 0
+    //   84: astore_2
+    //   85: aload 4
+    //   87: astore_3
+    //   88: aload_2
+    //   89: invokeinterface 237 1 0
+    //   94: ifeq +154 -> 248
+    //   97: aload 4
+    //   99: astore_3
+    //   100: aload_2
+    //   101: invokeinterface 241 1 0
+    //   106: checkcast 243	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry
+    //   109: astore 6
+    //   111: aload 4
+    //   113: astore_3
+    //   114: aload 5
+    //   116: aconst_null
+    //   117: ldc 160
+    //   119: invokeinterface 219 3 0
+    //   124: pop
+    //   125: aload 4
+    //   127: astore_3
+    //   128: aload 5
+    //   130: aconst_null
+    //   131: ldc 245
+    //   133: aload 6
+    //   135: getfield 247	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:a	I
+    //   138: invokestatic 223	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   141: invokeinterface 227 4 0
+    //   146: pop
+    //   147: aload 4
+    //   149: astore_3
+    //   150: aload 5
+    //   152: aconst_null
+    //   153: ldc 249
+    //   155: aload 6
+    //   157: getfield 250	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:b	I
+    //   160: invokestatic 223	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   163: invokeinterface 227 4 0
+    //   168: pop
+    //   169: aload 4
+    //   171: astore_3
+    //   172: aload 5
+    //   174: aconst_null
+    //   175: ldc 252
+    //   177: aload 6
+    //   179: getfield 254	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:c	I
+    //   182: invokestatic 223	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   185: invokeinterface 227 4 0
+    //   190: pop
+    //   191: aload 4
+    //   193: astore_3
+    //   194: aload 5
+    //   196: aconst_null
+    //   197: ldc_w 256
+    //   200: aload 6
+    //   202: getfield 260	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:d	Ljava/lang/String;
+    //   205: invokeinterface 227 4 0
+    //   210: pop
+    //   211: aload 4
+    //   213: astore_3
+    //   214: aload 5
+    //   216: aconst_null
+    //   217: ldc_w 262
+    //   220: aload 6
+    //   222: getfield 265	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:e	Ljava/lang/String;
+    //   225: invokeinterface 227 4 0
+    //   230: pop
+    //   231: aload 4
+    //   233: astore_3
+    //   234: aload 5
+    //   236: aconst_null
+    //   237: ldc 160
+    //   239: invokeinterface 268 3 0
+    //   244: pop
+    //   245: goto -160 -> 85
+    //   248: aload 4
+    //   250: astore_3
+    //   251: aload 5
+    //   253: aconst_null
+    //   254: ldc 215
+    //   256: invokeinterface 268 3 0
+    //   261: pop
+    //   262: aload 4
+    //   264: astore_3
+    //   265: aload 5
+    //   267: invokeinterface 271 1 0
+    //   272: aload 4
+    //   274: astore_3
+    //   275: aload 4
+    //   277: invokevirtual 275	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   280: astore_2
+    //   281: aload 4
+    //   283: invokevirtual 276	java/io/ByteArrayOutputStream:close	()V
+    //   286: aload_2
+    //   287: areturn
+    //   288: astore_3
+    //   289: aload_3
+    //   290: invokevirtual 178	java/io/IOException:printStackTrace	()V
+    //   293: aload_2
+    //   294: areturn
+    //   295: astore_3
+    //   296: aload 4
+    //   298: astore_2
+    //   299: aload_3
+    //   300: astore 4
+    //   302: goto +13 -> 315
+    //   305: astore_2
+    //   306: aconst_null
+    //   307: astore_3
+    //   308: goto +32 -> 340
+    //   311: astore 4
+    //   313: aconst_null
+    //   314: astore_2
+    //   315: aload_2
+    //   316: astore_3
+    //   317: aload 4
+    //   319: invokevirtual 86	java/lang/Exception:printStackTrace	()V
+    //   322: aload_2
+    //   323: ifnull +14 -> 337
+    //   326: aload_2
+    //   327: invokevirtual 276	java/io/ByteArrayOutputStream:close	()V
+    //   330: aconst_null
+    //   331: areturn
+    //   332: astore_2
+    //   333: aload_2
+    //   334: invokevirtual 178	java/io/IOException:printStackTrace	()V
+    //   337: aconst_null
+    //   338: areturn
+    //   339: astore_2
+    //   340: aload_3
+    //   341: ifnull +15 -> 356
+    //   344: aload_3
+    //   345: invokevirtual 276	java/io/ByteArrayOutputStream:close	()V
+    //   348: goto +8 -> 356
+    //   351: astore_3
+    //   352: aload_3
+    //   353: invokevirtual 178	java/io/IOException:printStackTrace	()V
+    //   356: goto +5 -> 361
+    //   359: aload_2
+    //   360: athrow
+    //   361: goto -2 -> 359
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	364	0	this	QSecDatabaseMgr
+    //   0	364	1	paramInt	int
+    //   0	364	2	paramList	List<QSecDatabaseMgr.LibEntry>
+    //   16	259	3	localObject1	Object
+    //   288	2	3	localIOException1	java.io.IOException
+    //   295	5	3	localException1	Exception
+    //   307	38	3	localList	List<QSecDatabaseMgr.LibEntry>
+    //   351	2	3	localIOException2	java.io.IOException
+    //   12	289	4	localObject2	Object
+    //   311	7	4	localException2	Exception
+    //   3	263	5	localXmlSerializer	org.xmlpull.v1.XmlSerializer
+    //   109	112	6	localLibEntry	QSecDatabaseMgr.LibEntry
+    // Exception table:
+    //   from	to	target	type
+    //   281	286	288	java/io/IOException
+    //   17	28	295	java/lang/Exception
+    //   31	43	295	java/lang/Exception
+    //   46	57	295	java/lang/Exception
+    //   60	75	295	java/lang/Exception
+    //   78	85	295	java/lang/Exception
+    //   88	97	295	java/lang/Exception
+    //   100	111	295	java/lang/Exception
+    //   114	125	295	java/lang/Exception
+    //   128	147	295	java/lang/Exception
+    //   150	169	295	java/lang/Exception
+    //   172	191	295	java/lang/Exception
+    //   194	211	295	java/lang/Exception
+    //   214	231	295	java/lang/Exception
+    //   234	245	295	java/lang/Exception
+    //   251	262	295	java/lang/Exception
+    //   265	272	295	java/lang/Exception
+    //   275	281	295	java/lang/Exception
+    //   0	14	305	finally
+    //   0	14	311	java/lang/Exception
+    //   326	330	332	java/io/IOException
+    //   17	28	339	finally
+    //   31	43	339	finally
+    //   46	57	339	finally
+    //   60	75	339	finally
+    //   78	85	339	finally
+    //   88	97	339	finally
+    //   100	111	339	finally
+    //   114	125	339	finally
+    //   128	147	339	finally
+    //   150	169	339	finally
+    //   172	191	339	finally
+    //   194	211	339	finally
+    //   214	231	339	finally
+    //   234	245	339	finally
+    //   251	262	339	finally
+    //   265	272	339	finally
+    //   275	281	339	finally
+    //   317	322	339	finally
+    //   344	348	351	java/io/IOException
+  }
+  
+  private QSecDatabaseMgr.LibEntry b(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      QSecDatabaseMgr.LibEntry localLibEntry = (QSecDatabaseMgr.LibEntry)localIterator.next();
+      if (localLibEntry.a == paramInt) {
+        return localLibEntry;
+      }
+    }
+    return null;
+  }
+  
+  private QSecDatabaseMgr.LibEntry b(Node paramNode)
   {
     int j;
-    label244:
+    label246:
     do
     {
       for (;;)
@@ -379,26 +643,26 @@ public class QSecDatabaseMgr
           if (((Node)localObject).getNodeType() != 2)
           {
             k = j;
-            break label244;
+            break label246;
           }
           String str = ((Node)localObject).getNodeName();
           localObject = ((Node)localObject).getNodeValue();
           k = j;
           if (str == null) {
-            break label244;
+            break label246;
           }
           if (localObject == null)
           {
             k = j;
-            break label244;
+            break label246;
           }
           if (str.equalsIgnoreCase("id"))
           {
-            localLibEntry.jdField_a_of_type_Int = Integer.parseInt((String)localObject);
+            localLibEntry.a = Integer.parseInt((String)localObject);
           }
           else if (str.equalsIgnoreCase("type"))
           {
-            localLibEntry.jdField_b_of_type_Int = Integer.parseInt((String)localObject);
+            localLibEntry.b = Integer.parseInt((String)localObject);
           }
           else if (str.equalsIgnoreCase("flags"))
           {
@@ -406,15 +670,15 @@ public class QSecDatabaseMgr
           }
           else if (str.equalsIgnoreCase("path"))
           {
-            localLibEntry.jdField_b_of_type_JavaLangString = ((String)localObject);
+            localLibEntry.e = ((String)localObject);
           }
           else
           {
             k = j;
             if (!str.equalsIgnoreCase("ver")) {
-              break label244;
+              break label246;
             }
-            localLibEntry.jdField_a_of_type_JavaLangString = ((String)localObject);
+            localLibEntry.d = ((String)localObject);
           }
         }
         catch (Exception paramNode)
@@ -423,7 +687,7 @@ public class QSecDatabaseMgr
           paramNode.printStackTrace();
           return null;
         }
-        localLibEntry.jdField_a_of_type_AndroidOsBundle = a(paramNode);
+        localLibEntry.f = a(paramNode);
         return localLibEntry;
         int k = j + 1;
         i += 1;
@@ -433,7 +697,7 @@ public class QSecDatabaseMgr
     return null;
   }
   
-  private String a()
+  private String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(QPDirUtils.a());
@@ -442,283 +706,14 @@ public class QSecDatabaseMgr
     return localStringBuilder.toString();
   }
   
-  private boolean a(int paramInt)
+  private boolean c(int paramInt)
   {
     return b(paramInt) != null;
-  }
-  
-  private boolean a(String paramString, int paramInt, List<QSecDatabaseMgr.LibEntry> paramList)
-  {
-    paramList = a(paramInt, paramList);
-    if (paramList == null) {
-      return false;
-    }
-    return new QSecStoreUtil().a(paramString, paramList, null, 1);
-  }
-  
-  /* Error */
-  private byte[] a(int paramInt, List<QSecDatabaseMgr.LibEntry> paramList)
-  {
-    // Byte code:
-    //   0: invokestatic 245	android/util/Xml:newSerializer	()Lorg/xmlpull/v1/XmlSerializer;
-    //   3: astore 5
-    //   5: new 247	java/io/ByteArrayOutputStream
-    //   8: dup
-    //   9: invokespecial 248	java/io/ByteArrayOutputStream:<init>	()V
-    //   12: astore 4
-    //   14: aload 4
-    //   16: astore_3
-    //   17: aload 5
-    //   19: aload 4
-    //   21: ldc 250
-    //   23: invokeinterface 256 3 0
-    //   28: aload 4
-    //   30: astore_3
-    //   31: aload 5
-    //   33: aconst_null
-    //   34: iconst_1
-    //   35: invokestatic 261	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   38: invokeinterface 265 3 0
-    //   43: aload 4
-    //   45: astore_3
-    //   46: aload 5
-    //   48: aconst_null
-    //   49: ldc_w 267
-    //   52: invokeinterface 271 3 0
-    //   57: pop
-    //   58: aload 4
-    //   60: astore_3
-    //   61: aload 5
-    //   63: aconst_null
-    //   64: ldc 68
-    //   66: iload_1
-    //   67: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   70: invokeinterface 278 4 0
-    //   75: pop
-    //   76: aload 4
-    //   78: astore_3
-    //   79: aload_2
-    //   80: invokeinterface 282 1 0
-    //   85: astore_2
-    //   86: aload 4
-    //   88: astore_3
-    //   89: aload_2
-    //   90: invokeinterface 288 1 0
-    //   95: ifeq +152 -> 247
-    //   98: aload 4
-    //   100: astore_3
-    //   101: aload_2
-    //   102: invokeinterface 292 1 0
-    //   107: checkcast 179	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry
-    //   110: astore 6
-    //   112: aload 4
-    //   114: astore_3
-    //   115: aload 5
-    //   117: aconst_null
-    //   118: ldc 158
-    //   120: invokeinterface 271 3 0
-    //   125: pop
-    //   126: aload 4
-    //   128: astore_3
-    //   129: aload 5
-    //   131: aconst_null
-    //   132: ldc 182
-    //   134: aload 6
-    //   136: getfield 183	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:jdField_a_of_type_Int	I
-    //   139: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   142: invokeinterface 278 4 0
-    //   147: pop
-    //   148: aload 4
-    //   150: astore_3
-    //   151: aload 5
-    //   153: aconst_null
-    //   154: ldc 185
-    //   156: aload 6
-    //   158: getfield 188	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:jdField_b_of_type_Int	I
-    //   161: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   164: invokeinterface 278 4 0
-    //   169: pop
-    //   170: aload 4
-    //   172: astore_3
-    //   173: aload 5
-    //   175: aconst_null
-    //   176: ldc 190
-    //   178: aload 6
-    //   180: getfield 193	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:c	I
-    //   183: invokestatic 274	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   186: invokeinterface 278 4 0
-    //   191: pop
-    //   192: aload 4
-    //   194: astore_3
-    //   195: aload 5
-    //   197: aconst_null
-    //   198: ldc 200
-    //   200: aload 6
-    //   202: getfield 202	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   205: invokeinterface 278 4 0
-    //   210: pop
-    //   211: aload 4
-    //   213: astore_3
-    //   214: aload 5
-    //   216: aconst_null
-    //   217: ldc 195
-    //   219: aload 6
-    //   221: getfield 198	com/tencent/qqprotect/qsec/QSecDatabaseMgr$LibEntry:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   224: invokeinterface 278 4 0
-    //   229: pop
-    //   230: aload 4
-    //   232: astore_3
-    //   233: aload 5
-    //   235: aconst_null
-    //   236: ldc 158
-    //   238: invokeinterface 295 3 0
-    //   243: pop
-    //   244: goto -158 -> 86
-    //   247: aload 4
-    //   249: astore_3
-    //   250: aload 5
-    //   252: aconst_null
-    //   253: ldc_w 267
-    //   256: invokeinterface 295 3 0
-    //   261: pop
-    //   262: aload 4
-    //   264: astore_3
-    //   265: aload 5
-    //   267: invokeinterface 298 1 0
-    //   272: aload 4
-    //   274: astore_3
-    //   275: aload 4
-    //   277: invokevirtual 302	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   280: astore_2
-    //   281: aload 4
-    //   283: invokevirtual 303	java/io/ByteArrayOutputStream:close	()V
-    //   286: aload_2
-    //   287: areturn
-    //   288: astore_3
-    //   289: aload_3
-    //   290: invokevirtual 176	java/io/IOException:printStackTrace	()V
-    //   293: aload_2
-    //   294: areturn
-    //   295: astore_3
-    //   296: aload 4
-    //   298: astore_2
-    //   299: aload_3
-    //   300: astore 4
-    //   302: goto +13 -> 315
-    //   305: astore_2
-    //   306: aconst_null
-    //   307: astore_3
-    //   308: goto +32 -> 340
-    //   311: astore 4
-    //   313: aconst_null
-    //   314: astore_2
-    //   315: aload_2
-    //   316: astore_3
-    //   317: aload 4
-    //   319: invokevirtual 84	java/lang/Exception:printStackTrace	()V
-    //   322: aload_2
-    //   323: ifnull +14 -> 337
-    //   326: aload_2
-    //   327: invokevirtual 303	java/io/ByteArrayOutputStream:close	()V
-    //   330: aconst_null
-    //   331: areturn
-    //   332: astore_2
-    //   333: aload_2
-    //   334: invokevirtual 176	java/io/IOException:printStackTrace	()V
-    //   337: aconst_null
-    //   338: areturn
-    //   339: astore_2
-    //   340: aload_3
-    //   341: ifnull +15 -> 356
-    //   344: aload_3
-    //   345: invokevirtual 303	java/io/ByteArrayOutputStream:close	()V
-    //   348: goto +8 -> 356
-    //   351: astore_3
-    //   352: aload_3
-    //   353: invokevirtual 176	java/io/IOException:printStackTrace	()V
-    //   356: goto +5 -> 361
-    //   359: aload_2
-    //   360: athrow
-    //   361: goto -2 -> 359
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	364	0	this	QSecDatabaseMgr
-    //   0	364	1	paramInt	int
-    //   0	364	2	paramList	List<QSecDatabaseMgr.LibEntry>
-    //   16	259	3	localObject1	Object
-    //   288	2	3	localIOException1	java.io.IOException
-    //   295	5	3	localException1	Exception
-    //   307	38	3	localList	List<QSecDatabaseMgr.LibEntry>
-    //   351	2	3	localIOException2	java.io.IOException
-    //   12	289	4	localObject2	Object
-    //   311	7	4	localException2	Exception
-    //   3	263	5	localXmlSerializer	org.xmlpull.v1.XmlSerializer
-    //   110	110	6	localLibEntry	QSecDatabaseMgr.LibEntry
-    // Exception table:
-    //   from	to	target	type
-    //   281	286	288	java/io/IOException
-    //   17	28	295	java/lang/Exception
-    //   31	43	295	java/lang/Exception
-    //   46	58	295	java/lang/Exception
-    //   61	76	295	java/lang/Exception
-    //   79	86	295	java/lang/Exception
-    //   89	98	295	java/lang/Exception
-    //   101	112	295	java/lang/Exception
-    //   115	126	295	java/lang/Exception
-    //   129	148	295	java/lang/Exception
-    //   151	170	295	java/lang/Exception
-    //   173	192	295	java/lang/Exception
-    //   195	211	295	java/lang/Exception
-    //   214	230	295	java/lang/Exception
-    //   233	244	295	java/lang/Exception
-    //   250	262	295	java/lang/Exception
-    //   265	272	295	java/lang/Exception
-    //   275	281	295	java/lang/Exception
-    //   0	14	305	finally
-    //   0	14	311	java/lang/Exception
-    //   326	330	332	java/io/IOException
-    //   17	28	339	finally
-    //   31	43	339	finally
-    //   46	58	339	finally
-    //   61	76	339	finally
-    //   79	86	339	finally
-    //   89	98	339	finally
-    //   101	112	339	finally
-    //   115	126	339	finally
-    //   129	148	339	finally
-    //   151	170	339	finally
-    //   173	192	339	finally
-    //   195	211	339	finally
-    //   214	230	339	finally
-    //   233	244	339	finally
-    //   250	262	339	finally
-    //   265	272	339	finally
-    //   275	281	339	finally
-    //   317	322	339	finally
-    //   344	348	351	java/io/IOException
-  }
-  
-  private QSecDatabaseMgr.LibEntry b(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      QSecDatabaseMgr.LibEntry localLibEntry = (QSecDatabaseMgr.LibEntry)localIterator.next();
-      if (localLibEntry.jdField_a_of_type_Int == paramInt) {
-        return localLibEntry;
-      }
-    }
-    return null;
   }
   
   public QSecDatabaseMgr.LibEntry a(int paramInt)
   {
     return b(paramInt);
-  }
-  
-  public List<QSecDatabaseMgr.LibEntry> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -727,32 +722,37 @@ public class QSecDatabaseMgr
     if (localLibEntry == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.remove(localLibEntry);
+    this.a.remove(localLibEntry);
     if (paramBoolean) {
-      a(a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+      a(c(), this.b, this.a);
     }
   }
   
   public boolean a()
   {
-    return a(a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    return a(c(), this.b, this.a);
   }
   
   public boolean a(QSecDatabaseMgr.LibEntry paramLibEntry, boolean paramBoolean)
   {
-    if (a(paramLibEntry.jdField_a_of_type_Int)) {
+    if (c(paramLibEntry.a)) {
       return false;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramLibEntry);
+    this.a.add(paramLibEntry);
     if (paramBoolean) {
       return a();
     }
     return true;
   }
+  
+  public List<QSecDatabaseMgr.LibEntry> b()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecDatabaseMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -10,39 +10,34 @@ public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
   public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new EditTakePhotoSource.1();
-  public final int a;
   @NonNull
   public final String a;
   public final int b;
+  public final int c;
   
   protected EditTakePhotoSource(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readInt();
+    this.c = paramParcel.readInt();
   }
   
   public EditTakePhotoSource(@NonNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramString;
     this.b = 0;
-    paramString = b();
+    this.c = 0;
+    paramString = d();
     if (paramString == null) {
       return;
     }
     throw new IllegalArgumentException(paramString);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   @NonNull
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public int b()
@@ -50,16 +45,21 @@ public class EditTakePhotoSource
     return this.b;
   }
   
-  public String b()
+  public int c()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    if (TextUtils.isEmpty(this.a)) {
       return "sourcePath is empty";
     }
-    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    if (!new File(this.a).exists())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Can not find file by sourcePath = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       return localStringBuilder.toString();
     }
     return null;
@@ -72,14 +72,14 @@ public class EditTakePhotoSource
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.a);
     paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.params.EditTakePhotoSource
  * JD-Core Version:    0.7.0.1
  */

@@ -15,25 +15,24 @@ import java.util.List;
 public class AIOAtSearchManager$AtSearchRunnable
   implements Runnable
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<TroopMemberInfo> jdField_a_of_type_JavaUtilList;
-  public volatile boolean a;
-  private boolean b;
-  private boolean c = false;
+  public volatile boolean a = false;
+  private final SessionInfo b;
+  private String c;
+  private boolean d;
+  private Handler e;
+  private List<TroopMemberInfo> f;
+  private WeakReference<QQAppInterface> g;
+  private boolean h = false;
   
   public AIOAtSearchManager$AtSearchRunnable(String paramString, List<TroopMemberInfo> paramList, Handler paramHandler, QQAppInterface paramQQAppInterface, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.c = paramBoolean1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.b = paramBoolean2;
+    this.c = paramString;
+    this.f = paramList;
+    this.e = paramHandler;
+    this.h = paramBoolean1;
+    this.g = new WeakReference(paramQQAppInterface);
+    this.b = paramSessionInfo;
+    this.d = paramBoolean2;
   }
   
   private ArrayList<ChatHistoryTroopMemberFragment.ATroopMember> a(List<TroopMemberInfo> paramList)
@@ -43,7 +42,7 @@ public class AIOAtSearchManager$AtSearchRunnable
     while (paramList.hasNext())
     {
       TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)paramList.next();
-      localArrayList.add(AtUtil.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localTroopMemberInfo));
+      localArrayList.add(AtUtil.a((QQAppInterface)this.g.get(), localTroopMemberInfo));
     }
     return localArrayList;
   }
@@ -57,20 +56,20 @@ public class AIOAtSearchManager$AtSearchRunnable
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.e("AIOAtSearchManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+    if (this.g.get() == null) {
       return;
     }
-    Object localObject = new SearchTask(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
-    if (this.jdField_a_of_type_Boolean) {
+    Object localObject = new SearchTask(a(this.f)).a((QQAppInterface)this.g.get(), this.c, this.h, this.b, this.d);
+    if (this.a) {
       return;
     }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    Message localMessage = this.e.obtainMessage();
     localMessage.what = 1;
     localMessage.obj = localObject;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.e.sendMessage(localMessage);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -82,7 +81,7 @@ public class AIOAtSearchManager$AtSearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager.AtSearchRunnable
  * JD-Core Version:    0.7.0.1
  */

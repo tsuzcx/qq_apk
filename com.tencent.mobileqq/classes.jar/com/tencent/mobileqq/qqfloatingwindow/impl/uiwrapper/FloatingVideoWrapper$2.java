@@ -10,12 +10,12 @@ class FloatingVideoWrapper$2
   public void run()
   {
     FloatingVideoWrapper localFloatingVideoWrapper = this.this$0;
-    localFloatingVideoWrapper.a(false, new View[] { FloatingVideoWrapper.d(localFloatingVideoWrapper) });
+    localFloatingVideoWrapper.a(false, new View[] { FloatingVideoWrapper.g(localFloatingVideoWrapper) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper.2
  * JD-Core Version:    0.7.0.1
  */

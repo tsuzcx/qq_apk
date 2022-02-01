@@ -11,7 +11,7 @@ class FontBubblePanelView$1
   
   public List<FontBubble> a(T paramT)
   {
-    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
+    paramT = FontBubblePanelView.b(this.a).a(FontBubblePanelView.a(this.a).d, paramT);
     FontBubble localFontBubble = new FontBubble();
     localFontBubble.viewType = 0;
     paramT.add(localFontBubble);
@@ -20,7 +20,7 @@ class FontBubblePanelView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.1
  * JD-Core Version:    0.7.0.1
  */

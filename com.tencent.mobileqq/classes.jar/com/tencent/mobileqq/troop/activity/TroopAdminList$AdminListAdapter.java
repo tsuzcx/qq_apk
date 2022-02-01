@@ -16,16 +16,16 @@ import java.util.Map;
 public class TroopAdminList$AdminListAdapter
   extends BaseAdapter
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private LayoutInflater b;
   
   public TroopAdminList$AdminListAdapter(TroopAdminList paramTroopAdminList, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.b = LayoutInflater.from(paramContext);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.size();
+    return this.a.f.size();
   }
   
   public Object getItem(int paramInt)
@@ -44,27 +44,27 @@ public class TroopAdminList$AdminListAdapter
     if (paramView == null)
     {
       localViewHolder = new TroopAdminList.ViewHolder();
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560605, null);
-      localViewHolder.c = ((ImageView)paramView.findViewById(2131369372));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
-      localViewHolder.b = ((TextView)paramView.findViewById(2131368773));
+      paramView = this.b.inflate(2131626650, null);
+      localViewHolder.A = ((ImageView)paramView.findViewById(2131436403));
+      localViewHolder.a = ((TextView)paramView.findViewById(2131439121));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131435692));
       paramView.setTag(localViewHolder);
-      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setOnClickListener(this.a.m);
     }
     else
     {
       localViewHolder = (TroopAdminList.ViewHolder)paramView.getTag();
     }
-    Map localMap = (Map)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Map localMap = (Map)this.a.f.get(paramInt);
     String str = localMap.get("uin").toString();
-    localViewHolder.jdField_a_of_type_JavaLangString = str;
-    localViewHolder.c.setBackgroundDrawable(ImageUtil.e());
-    FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.app, localMap.get("uin").toString(), (byte)3);
+    localViewHolder.y = str;
+    localViewHolder.A.setBackgroundDrawable(ImageUtil.j());
+    FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.a.app, localMap.get("uin").toString(), (byte)3);
     if (localFaceDrawable != null) {
-      localViewHolder.c.setBackgroundDrawable(localFaceDrawable);
+      localViewHolder.A.setBackgroundDrawable(localFaceDrawable);
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMap.get("nick").toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.b.equals(str)) {
+    localViewHolder.a.setText(localMap.get("nick").toString());
+    if (this.a.g.equals(str)) {
       localViewHolder.b.setVisibility(0);
     } else {
       localViewHolder.b.setVisibility(4);
@@ -75,7 +75,7 @@ public class TroopAdminList$AdminListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter
  * JD-Core Version:    0.7.0.1
  */

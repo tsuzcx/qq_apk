@@ -10,43 +10,43 @@ import com.tencent.mobileqq.ocr.view.gesture.state.State;
 
 public class GravityUtils
 {
-  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private static final Rect b = new Rect();
+  private static final Matrix a = new Matrix();
+  private static final RectF b = new RectF();
+  private static final Rect c = new Rect();
+  private static final Rect d = new Rect();
   
   public static void a(Matrix paramMatrix, Settings paramSettings, Rect paramRect)
   {
-    jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramSettings.e(), paramSettings.f());
-    paramMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
-    int i = Math.round(jdField_a_of_type_AndroidGraphicsRectF.width());
-    int j = Math.round(jdField_a_of_type_AndroidGraphicsRectF.height());
-    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
-    Gravity.apply(paramSettings.g(), i, j, jdField_a_of_type_AndroidGraphicsRect, paramRect);
+    b.set(0.0F, 0.0F, paramSettings.g(), paramSettings.h());
+    paramMatrix.mapRect(b);
+    int i = Math.round(b.width());
+    int j = Math.round(b.height());
+    c.set(0, 0, paramSettings.c(), paramSettings.d());
+    Gravity.apply(paramSettings.p(), i, j, c, paramRect);
   }
   
   public static void a(Settings paramSettings, Point paramPoint)
   {
-    a(paramSettings, b);
-    Gravity.apply(paramSettings.g(), 0, 0, b, jdField_a_of_type_AndroidGraphicsRect);
-    paramPoint.set(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+    a(paramSettings, d);
+    Gravity.apply(paramSettings.p(), 0, 0, d, c);
+    paramPoint.set(c.left, c.top);
   }
   
   public static void a(Settings paramSettings, Rect paramRect)
   {
-    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
-    Gravity.apply(paramSettings.g(), paramSettings.c(), paramSettings.d(), jdField_a_of_type_AndroidGraphicsRect, paramRect);
+    c.set(0, 0, paramSettings.c(), paramSettings.d());
+    Gravity.apply(paramSettings.p(), paramSettings.e(), paramSettings.f(), c, paramRect);
   }
   
   public static void a(State paramState, Settings paramSettings, Rect paramRect)
   {
-    paramState.a(jdField_a_of_type_AndroidGraphicsMatrix);
-    a(jdField_a_of_type_AndroidGraphicsMatrix, paramSettings, paramRect);
+    paramState.a(a);
+    a(a, paramSettings, paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.utils.GravityUtils
  * JD-Core Version:    0.7.0.1
  */

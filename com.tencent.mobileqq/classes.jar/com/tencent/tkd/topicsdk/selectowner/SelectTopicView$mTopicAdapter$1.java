@@ -33,25 +33,9 @@ public final class SelectTopicView$mTopicAdapter$1
   public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.r, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.m, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…      false\n            )");
     return paramContext;
-  }
-  
-  @NotNull
-  public SelectTopicView.MyTopicViewHolder a(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramContext = (TextView)paramView.findViewById(R.id.aN);
-    paramViewGroup = (TextView)paramView.findViewById(R.id.aO);
-    ImageView localImageView = (ImageView)paramView.findViewById(R.id.W);
-    paramView = (ImageView)paramView.findViewById(R.id.Z);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "titleText");
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "introView");
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "coverImageView");
-    Intrinsics.checkExpressionValueIsNotNull(localImageView, "checkView");
-    return new SelectTopicView.MyTopicViewHolder(paramContext, paramViewGroup, paramView, localImageView);
   }
   
   public void a(int paramInt, @NotNull TopicInfo paramTopicInfo, @NotNull SelectTopicView.MyTopicViewHolder paramMyTopicViewHolder, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
@@ -59,8 +43,8 @@ public final class SelectTopicView$mTopicAdapter$1
     Intrinsics.checkParameterIsNotNull(paramTopicInfo, "bean");
     Intrinsics.checkParameterIsNotNull(paramMyTopicViewHolder, "holder");
     Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramView = a().getResources().getDrawable(R.drawable.i);
-    paramView.setBounds(0, 0, DisplayUtils.a.a(a(), 15.0F), DisplayUtils.a.a(a(), 15.0F));
+    paramView = b().getResources().getDrawable(R.drawable.d);
+    paramView.setBounds(0, 0, DisplayUtils.a.a(b(), 15.0F), DisplayUtils.a.a(b(), 15.0F));
     paramViewGroup = paramMyTopicViewHolder.a();
     paramViewGroup.setText((CharSequence)paramTopicInfo.getTitle());
     DisplayUtils localDisplayUtils = DisplayUtils.a;
@@ -69,18 +53,34 @@ public final class SelectTopicView$mTopicAdapter$1
     paramViewGroup.setCompoundDrawablePadding(localDisplayUtils.a(localContext, 3.0F));
     paramViewGroup.setCompoundDrawables(paramView, null, null, null);
     paramMyTopicViewHolder.b().setText((CharSequence)paramTopicInfo.getIntro());
-    com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a.a(a()).a(paramMyTopicViewHolder.a()).a(paramTopicInfo.getCoverUrl());
-    if ((this.a.a() == ((TopicInfo)a().get(paramInt)).getTopicId()) && (this.a.a() != 0L))
+    com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a.a(b()).a(paramMyTopicViewHolder.c()).a(paramTopicInfo.getCoverUrl());
+    if ((this.a.getSelectedTopicId() == ((TopicInfo)a().get(paramInt)).getTopicId()) && (this.a.getSelectedTopicId() != 0L))
     {
-      paramMyTopicViewHolder.b().setVisibility(0);
+      paramMyTopicViewHolder.d().setVisibility(0);
       return;
     }
-    paramMyTopicViewHolder.b().setVisibility(4);
+    paramMyTopicViewHolder.d().setVisibility(4);
+  }
+  
+  @NotNull
+  public SelectTopicView.MyTopicViewHolder b(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
+    paramContext = (TextView)paramView.findViewById(R.id.ap);
+    paramViewGroup = (TextView)paramView.findViewById(R.id.aq);
+    ImageView localImageView = (ImageView)paramView.findViewById(R.id.C);
+    paramView = (ImageView)paramView.findViewById(R.id.E);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "titleText");
+    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "introView");
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "coverImageView");
+    Intrinsics.checkExpressionValueIsNotNull(localImageView, "checkView");
+    return new SelectTopicView.MyTopicViewHolder(paramContext, paramViewGroup, paramView, localImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.SelectTopicView.mTopicAdapter.1
  * JD-Core Version:    0.7.0.1
  */

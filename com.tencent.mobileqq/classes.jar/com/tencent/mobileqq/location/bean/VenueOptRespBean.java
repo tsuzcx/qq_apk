@@ -4,51 +4,36 @@ import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
 public class VenueOptRespBean
 {
-  private int jdField_a_of_type_Int;
-  private LocationRoom.Venue jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private int b;
   private int c;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public LocationRoom.Venue a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private int d;
+  private String e;
+  private LocationRoom.Venue f;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(LocationRoom.Venue paramVenue)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = paramVenue;
+    this.f = paramVenue;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public int b()
@@ -58,7 +43,7 @@ public class VenueOptRespBean
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public int c()
@@ -68,12 +53,27 @@ public class VenueOptRespBean
   
   public void c(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public LocationRoom.Venue f()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.bean.VenueOptRespBean
  * JD-Core Version:    0.7.0.1
  */

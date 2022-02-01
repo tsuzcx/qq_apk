@@ -10,15 +10,15 @@ class HeartCombolEffectView$3
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView$OneHeartTracker.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView$OneHeartTracker.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView$OneHeartTracker.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView$OneHeartTracker.jdField_b_of_type_Boolean = true;
+    this.a.j = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.a.o) && (this.a.j > 0.0F)) {
+      this.a.o = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView.3
  * JD-Core Version:    0.7.0.1
  */

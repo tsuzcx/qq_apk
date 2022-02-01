@@ -12,38 +12,35 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class RedTouchTextView
   extends TextView
 {
-  Paint a;
-  public boolean a;
+  public boolean a = false;
+  Paint b;
   
   public RedTouchTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
   public RedTouchTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
   public RedTouchTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      this.b = new Paint();
+      this.b.setStyle(Paint.Style.FILL);
+      this.b.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.b.setColor(-65536);
     }
   }
   
@@ -57,12 +54,12 @@ public class RedTouchTextView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    setMeasuredDimension(paramInt1 + ViewUtils.a(10.0F), paramInt2 + ViewUtils.a(10.0F));
+    setMeasuredDimension(paramInt1 + ViewUtils.dip2px(10.0F), paramInt2 + ViewUtils.dip2px(10.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.RedTouchTextView
  * JD-Core Version:    0.7.0.1
  */

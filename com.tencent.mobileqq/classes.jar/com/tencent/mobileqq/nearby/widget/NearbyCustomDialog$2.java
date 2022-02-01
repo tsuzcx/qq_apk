@@ -10,15 +10,15 @@ class NearbyCustomDialog$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyCustomDialog.dismiss();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.onClick(paramView);
+    this.b.dismiss();
+    if (this.a.d != null) {
+      this.a.d.onClick(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.2
  * JD-Core Version:    0.7.0.1
  */

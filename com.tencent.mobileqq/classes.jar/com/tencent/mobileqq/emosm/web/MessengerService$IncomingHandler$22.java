@@ -14,7 +14,7 @@ class MessengerService$IncomingHandler$22
   
   public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    MessengerService localMessengerService = (MessengerService)this.a.a.get();
+    MessengerService localMessengerService = (MessengerService)this.a.b.get();
     if (localMessengerService != null)
     {
       Bundle localBundle = new Bundle();
@@ -23,15 +23,15 @@ class MessengerService$IncomingHandler$22
       localBundle.putString("url", paramString);
       paramBundle.putBundle("response", localBundle);
       localMessengerService.a(paramBundle);
-      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
-        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER)).a(paramInt2, true, "from_praise_mall");
+      if ((paramInt1 == 0) && (MessengerService.g(localMessengerService) != null) && ((MessengerService.h(localMessengerService) instanceof QQAppInterface))) {
+        ((PraiseManager)((QQAppInterface)MessengerService.i(localMessengerService)).getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER)).a(paramInt2, true, "from_praise_mall");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.22
  * JD-Core Version:    0.7.0.1
  */

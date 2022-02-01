@@ -9,19 +9,19 @@ class ReportManager$2
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean)
+    if (this.this$0.e)
     {
       LogUtility.b("viareport", "isUploading ---return");
       return;
     }
-    if (this.this$0.a(this.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, null, true, this.jdField_a_of_type_Boolean);
+    if (this.this$0.a(this.a)) {
+      this.this$0.a(this.a, null, true, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportManager.2
  * JD-Core Version:    0.7.0.1
  */

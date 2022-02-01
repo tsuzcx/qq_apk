@@ -31,9 +31,9 @@ public class TakePictureTask
   public int a()
   {
     if (!CameraAPIStrategy.a) {
-      return CameraControl.a().b();
+      return CameraControl.a().r();
     }
-    return Camera2Control.a().a();
+    return Camera2Control.a().i();
   }
   
   public int a(int paramInt1, int paramInt2)
@@ -70,7 +70,7 @@ public class TakePictureTask
     double d6 = d1 * 1.0D / d2;
     d1 = paramCameraSize.b;
     Double.isNaN(d1);
-    d2 = paramCameraSize.jdField_a_of_type_Int;
+    d2 = paramCameraSize.a;
     Double.isNaN(d2);
     double d7 = d1 * 1.0D / d2;
     double d4 = k;
@@ -171,20 +171,20 @@ public class TakePictureTask
   
   protected String a(Void... paramVarArgs)
   {
-    byte[] arrayOfByte = this.a.jdField_a_of_type_ArrayOfByte;
-    paramVarArgs = new File(this.a.jdField_a_of_type_JavaLangString);
+    byte[] arrayOfByte = this.a.f;
+    paramVarArgs = new File(this.a.a);
     if (arrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        int i = this.a.b;
+        int i = this.a.e;
         bool = true;
         if (i != 1) {
           break label185;
         }
-        i = a(this.a.b, this.a.jdField_a_of_type_Int);
-        a(a(arrayOfByte, this.a.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraSize, bool, i), this.a.c, paramVarArgs);
+        i = a(this.a.e, this.a.d);
+        a(a(arrayOfByte, this.a.b, bool, i), this.a.g, paramVarArgs);
       }
       catch (IOException localIOException)
       {
@@ -194,7 +194,7 @@ public class TakePictureTask
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[onPictureTaken] createBitmap failed orientation:");
-        localStringBuilder.append(this.a.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a.d);
         localStringBuilder.append(", ");
         localStringBuilder.append(localOutOfMemoryError.getMessage());
         QLog.a("TakePictureTask", 2, localStringBuilder.toString(), localOutOfMemoryError);
@@ -210,9 +210,9 @@ public class TakePictureTask
   
   protected void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy$PictureCallback != null)
+    if (this.a.c != null)
     {
-      this.a.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy$PictureCallback.a(paramString);
+      this.a.c.a(paramString);
       if ((paramString == null) && (QLog.a())) {
         QLog.c("TakePictureTask", 2, new Object[] { "Picture bitmap data error or output file not exist" });
       }
@@ -223,52 +223,52 @@ public class TakePictureTask
   public boolean a(Bitmap paramBitmap, int paramInt, File paramFile)
   {
     // Byte code:
-    //   0: new 188	java/io/File
+    //   0: new 192	java/io/File
     //   3: dup
     //   4: aload_3
-    //   5: invokevirtual 237	java/io/File:getParent	()Ljava/lang/String;
-    //   8: invokespecial 194	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokevirtual 246	java/io/File:getParent	()Ljava/lang/String;
+    //   8: invokespecial 198	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore 4
     //   13: aload 4
-    //   15: invokevirtual 222	java/io/File:exists	()Z
+    //   15: invokevirtual 231	java/io/File:exists	()Z
     //   18: ifeq +11 -> 29
     //   21: aload 4
-    //   23: invokevirtual 240	java/io/File:isDirectory	()Z
+    //   23: invokevirtual 249	java/io/File:isDirectory	()Z
     //   26: ifne +9 -> 35
     //   29: aload 4
-    //   31: invokevirtual 243	java/io/File:mkdirs	()Z
+    //   31: invokevirtual 252	java/io/File:mkdirs	()Z
     //   34: pop
     //   35: aload_3
-    //   36: invokevirtual 222	java/io/File:exists	()Z
+    //   36: invokevirtual 231	java/io/File:exists	()Z
     //   39: ifeq +10 -> 49
     //   42: aload_3
-    //   43: invokevirtual 246	java/io/File:isFile	()Z
+    //   43: invokevirtual 255	java/io/File:isFile	()Z
     //   46: ifne +8 -> 54
     //   49: aload_3
-    //   50: invokevirtual 249	java/io/File:createNewFile	()Z
+    //   50: invokevirtual 258	java/io/File:createNewFile	()Z
     //   53: pop
     //   54: aconst_null
     //   55: astore 5
     //   57: aconst_null
     //   58: astore 4
-    //   60: new 251	java/io/BufferedOutputStream
+    //   60: new 260	java/io/BufferedOutputStream
     //   63: dup
-    //   64: new 253	java/io/FileOutputStream
+    //   64: new 262	java/io/FileOutputStream
     //   67: dup
     //   68: aload_3
-    //   69: invokespecial 256	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   72: invokespecial 259	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   69: invokespecial 265	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   72: invokespecial 268	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   75: astore_3
     //   76: aload_1
-    //   77: getstatic 265	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   77: getstatic 274	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   80: iload_2
     //   81: aload_3
-    //   82: invokevirtual 269	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   82: invokevirtual 278	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   85: pop
     //   86: aload_3
-    //   87: invokevirtual 272	java/io/BufferedOutputStream:flush	()V
+    //   87: invokevirtual 281	java/io/BufferedOutputStream:flush	()V
     //   90: aload_3
-    //   91: invokevirtual 275	java/io/BufferedOutputStream:close	()V
+    //   91: invokevirtual 284	java/io/BufferedOutputStream:close	()V
     //   94: iconst_1
     //   95: ireturn
     //   96: astore_1
@@ -289,7 +289,7 @@ public class TakePictureTask
     //   121: aload 4
     //   123: ifnull +8 -> 131
     //   126: aload 4
-    //   128: invokevirtual 275	java/io/BufferedOutputStream:close	()V
+    //   128: invokevirtual 284	java/io/BufferedOutputStream:close	()V
     //   131: aload_1
     //   132: athrow
     // Local variable table:
@@ -311,7 +311,7 @@ public class TakePictureTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.cameraextend.TakePictureTask
  * JD-Core Version:    0.7.0.1
  */

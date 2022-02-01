@@ -19,13 +19,13 @@ final class RIJAidlClientRedPacketModule$setRead$1
   {
     IRIJAidlInterfaceForRewardTask localIRIJAidlInterfaceForRewardTask = RIJAidlClientRedPacketModule.a(RIJAidlClientRedPacketModule.a);
     if (localIRIJAidlInterfaceForRewardTask != null) {
-      localIRIJAidlInterfaceForRewardTask.a(this.$rowKey);
+      localIRIJAidlInterfaceForRewardTask.b(this.$rowKey);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.aidl.RIJAidlClientRedPacketModule.setRead.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,21 +12,21 @@ class OpenJsBridge$OpenJsBridgeListener$1
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[onOpenComplete]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface.");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("',{guid:");
-    ((StringBuilder)localObject).append(this.this$0.b);
+    ((StringBuilder)localObject).append(this.this$0.e);
     ((StringBuilder)localObject).append(",'r':0,'data':");
     ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("});");
     LogUtility.b("OpenJsBridge", ((StringBuilder)localObject).toString());
     try
     {
-      localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      localObject = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback('interface.");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("',{guid:");
-      localStringBuilder.append(this.this$0.b);
+      localStringBuilder.append(this.this$0.e);
       localStringBuilder.append(",'r':0,'data':");
       localStringBuilder.append(this.b);
       localStringBuilder.append("});");
@@ -38,7 +38,7 @@ class OpenJsBridge$OpenJsBridgeListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1
  * JD-Core Version:    0.7.0.1
  */

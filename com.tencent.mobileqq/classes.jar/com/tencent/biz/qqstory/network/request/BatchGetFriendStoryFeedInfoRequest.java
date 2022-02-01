@@ -18,21 +18,16 @@ import java.util.List;
 public class BatchGetFriendStoryFeedInfoRequest
   extends NetworkRequest
 {
-  public static final String a;
-  public List<FeedIdListSeqInfo> a;
-  public List<String> b = new ArrayList();
+  public static final String e = StoryApi.a("StorySvc.homepage_batch_feeds_detail_720");
+  public List<FeedIdListSeqInfo> f = new ArrayList();
+  public List<String> g = new ArrayList();
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.homepage_batch_feeds_detail_720");
+    return e;
   }
   
-  public BatchGetFriendStoryFeedInfoRequest()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
     try
@@ -46,21 +41,16 @@ public class BatchGetFriendStoryFeedInfoRequest
     return new BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp(localRspStoryFeed);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     Object localObject = new qqstory_service.ReqStoryFeed();
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)localIterator.next();
       if (localFeedIdListSeqInfo != null) {
-        if (TextUtils.isEmpty(localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(localFeedIdListSeqInfo.a)) {
           SLog.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
         } else {
           localArrayList.add(localFeedIdListSeqInfo.a());
@@ -81,7 +71,7 @@ public class BatchGetFriendStoryFeedInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFriendStoryFeedInfoRequest
  * JD-Core Version:    0.7.0.1
  */

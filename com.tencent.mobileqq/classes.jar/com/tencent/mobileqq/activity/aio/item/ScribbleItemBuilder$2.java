@@ -14,28 +14,28 @@ class ScribbleItemBuilder$2
 {
   ScribbleItemBuilder$2(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       long l = SystemClock.uptimeMillis();
-      if (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L) {
+      if (l - this.d.a < 500L) {
         return;
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder;
-      paramView.c = l;
-      paramView = FileTransferManager.a(paramView.a);
+      paramView = this.d;
+      paramView.a = l;
+      paramView = FileTransferManager.a(paramView.d);
       if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
+        paramView.a(this.a, this.d);
       }
-      ((IScribbleMsgUtils)QRoute.api(IScribbleMsgUtils.class)).ReSendScribbleMsgRecord(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+      ((IScribbleMsgUtils)QRoute.api(IScribbleMsgUtils.class)).ReSendScribbleMsgRecord(this.d.d, this.b);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,51 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules;
 
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 final class BridgeModuleHelper$11
   implements Runnable
 {
-  BridgeModuleHelper$11(String paramString1, File paramFile, BridgeModule paramBridgeModule, String paramString2) {}
+  BridgeModuleHelper$11(BridgeModule paramBridgeModule, String paramString) {}
   
   public void run()
   {
-    int i = HttpDownloadUtil.downloadData((QQAppInterface)ReadInJoyUtils.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("saveImage imageUrl code=");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(",url= ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject).a = "ce2d9f";
+    localObject = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
+    if (localObject != null) {
+      localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
+    } else {
+      localObject = null;
     }
-    Object localObject = new JSONObject();
-    if (i == 0) {}
+    if (localObject != null) {}
     try
     {
-      ((JSONObject)localObject).put("retCode", 0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, localObject);
-      localObject = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("file://");
-      localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getPath());
-      ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
+      localJSONObject.put("aid_ticket", ((qq_ad_get.QQAdGet.DeviceInfo)localObject).aid_ticket.get());
+      localJSONObject.put("taid_ticket", ((qq_ad_get.QQAdGet.DeviceInfo)localObject).taid_ticket.get());
+      localJSONObject.put("md5_android_id", ((qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_android_id.get());
+      localJSONObject.put("md5_mac", ((qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_mac.get());
+      this.a.invokeCallJS(this.b, localJSONObject);
       return;
     }
-    catch (Exception localException)
+    catch (JSONException localJSONException)
     {
-      if (!QLog.isColorLevel()) {
-        break label238;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("saveImage imageUrl error=");
-      localStringBuilder.append(localException.getMessage());
-      localStringBuilder.append(",url= ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      QLog.e("BridgeModuleHelper", 2, localStringBuilder.toString());
-      label238:
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeErrorCallJS(this.b, "saveImage error");
+      localJSONException.printStackTrace();
     }
-    ((JSONObject)localObject).put("retCode", -1);
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, localObject);
+    this.a.invokeErrorCallJS(this.b, "GdtDeviceInfo is null");
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper.11
  * JD-Core Version:    0.7.0.1
  */

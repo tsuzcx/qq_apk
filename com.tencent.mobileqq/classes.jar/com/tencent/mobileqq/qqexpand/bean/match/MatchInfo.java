@@ -6,68 +6,59 @@ import com.tencent.mobileqq.util.Utils;
 
 public class MatchInfo
 {
-  public int a;
-  public long a;
-  public ChatFriendInfo a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
+  public String a = "";
+  public byte[] b;
   public String c = "";
   public String d = "";
-  public String e = "0";
-  public String f = "";
-  
-  public MatchInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  public MatchInfo a()
-  {
-    MatchInfo localMatchInfo = new MatchInfo();
-    localMatchInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localMatchInfo.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localMatchInfo.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localMatchInfo.c = this.c;
-    localMatchInfo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localMatchInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localMatchInfo.e = this.e;
-    return localMatchInfo;
-  }
+  public long e = -1L;
+  public int f = 30;
+  public String g = "";
+  public String h = "0";
+  public int i = 1;
+  public String j = "";
+  public ChatFriendInfo k;
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = Utils.a("");
-    this.jdField_b_of_type_JavaLangString = "";
+    this.a = "";
+    this.b = Utils.h("");
     this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
-    this.jdField_b_of_type_Int = 0;
-    this.f = "";
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo = null;
+    this.d = "";
+    this.e = -1L;
+    this.f = -1;
+    this.h = "0";
+    this.i = 0;
+    this.j = "";
+    this.k = null;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    String str = Utils.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
+    String str = Utils.b(this.b);
+    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(str));
+  }
+  
+  public MatchInfo c()
+  {
+    MatchInfo localMatchInfo = new MatchInfo();
+    localMatchInfo.a = this.a;
+    localMatchInfo.b = ((byte[])this.b.clone());
+    localMatchInfo.c = this.c;
+    localMatchInfo.d = this.d;
+    localMatchInfo.e = this.e;
+    localMatchInfo.f = this.f;
+    localMatchInfo.h = this.h;
+    return localMatchInfo;
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool3 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    boolean bool3 = TextUtils.isEmpty(this.a);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!bool3)
     {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.c)) {
         return false;
       }
       bool1 = bool2;
@@ -75,13 +66,13 @@ public class MatchInfo
       {
         paramObject = (MatchInfo)paramObject;
         bool1 = bool2;
-        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))
+        if (this.a.equals(paramObject.a))
         {
           bool1 = bool2;
-          if (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString))
+          if (this.c.equals(paramObject.c))
           {
             bool1 = bool2;
-            if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+            if (this.e == paramObject.e) {
               bool1 = true;
             }
           }
@@ -95,40 +86,40 @@ public class MatchInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{uin: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("}");
-    Object localObject = Utils.a(this.jdField_a_of_type_ArrayOfByte);
-    int i;
+    Object localObject = Utils.b(this.b);
+    int m;
     if (localObject != null) {
-      i = ((String)localObject).length();
+      m = ((String)localObject).length();
     } else {
-      i = 0;
+      m = 0;
     }
     localStringBuilder.append("{sig: ");
-    localStringBuilder.append(i);
+    localStringBuilder.append(m);
     localStringBuilder.append("}");
     localStringBuilder.append("{matchUin: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("}");
-    localStringBuilder.append("{tipsWording: ");
     localStringBuilder.append(this.c);
     localStringBuilder.append("}");
-    localStringBuilder.append("{timeStamp: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("}");
-    localStringBuilder.append("{nickName: ");
+    localStringBuilder.append("{tipsWording: ");
     localStringBuilder.append(this.d);
     localStringBuilder.append("}");
-    localStringBuilder.append("{algorithmID: ");
+    localStringBuilder.append("{timeStamp: ");
     localStringBuilder.append(this.e);
     localStringBuilder.append("}");
+    localStringBuilder.append("{nickName: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("}");
+    localStringBuilder.append("{algorithmID: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("}");
     localStringBuilder.append("{tagId: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("}");
     localStringBuilder.append("{tagName: ");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("}");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo;
+    localObject = this.k;
     if (localObject != null) {
       localStringBuilder.append(((ChatFriendInfo)localObject).toString());
     }
@@ -137,7 +128,7 @@ public class MatchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.match.MatchInfo
  * JD-Core Version:    0.7.0.1
  */

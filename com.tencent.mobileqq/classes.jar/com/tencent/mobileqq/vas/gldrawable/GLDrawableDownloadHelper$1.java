@@ -12,7 +12,7 @@ final class GLDrawableDownloadHelper$1
 {
   public void run()
   {
-    GLDrawableDownloadHelper.a(Utils.a("video/avc").isEmpty() ^ true);
+    GLDrawableDownloadHelper.b(Utils.a("video/avc").isEmpty() ^ true);
     if ((VasStatisticCollector.a()) && (Build.VERSION.SDK_INT >= 16))
     {
       Object localObject = Utils.a("video/avc");
@@ -27,13 +27,13 @@ final class GLDrawableDownloadHelper$1
       if (localArrayList.size() > 0) {
         str = ((MediaCodecInfo)localArrayList.get(0)).getName();
       }
-      VasStatisticCollector.a("gldrawable_video_codec", new Pair[] { new Pair("avc", localObject), new Pair("hevc", str), new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("level", String.valueOf(DeviceInfoUtils.a())) });
+      VasStatisticCollector.a("gldrawable_video_codec", new Pair[] { new Pair("avc", localObject), new Pair("hevc", str), new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("level", String.valueOf(DeviceInfoUtils.getPerfLevel())) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.gldrawable.GLDrawableDownloadHelper.1
  * JD-Core Version:    0.7.0.1
  */

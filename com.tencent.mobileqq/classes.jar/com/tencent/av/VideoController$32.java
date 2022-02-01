@@ -9,7 +9,7 @@ class VideoController$32
   
   public int a(VideoController.GAudioFriends paramGAudioFriends1, VideoController.GAudioFriends paramGAudioFriends2)
   {
-    return (int)(paramGAudioFriends1.e - paramGAudioFriends2.e);
+    return (int)(paramGAudioFriends1.x - paramGAudioFriends2.x);
   }
 }
 

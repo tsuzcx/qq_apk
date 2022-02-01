@@ -10,143 +10,143 @@ import java.util.Set;
 
 public abstract class LegoBase<T>
 {
-  private static int jdField_a_of_type_Int;
-  public Context a;
-  private LegoBase jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoBase;
-  protected LegoDataProvider a;
-  protected LegoEvenHandler a;
-  private HashMap<String, LegoBase> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<T> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  public View b;
+  private static int a;
+  private LegoBase b;
+  private HashMap<String, LegoBase> c = new HashMap();
+  private List<T> d;
+  private boolean e = false;
+  public Context p;
+  public View q;
+  protected LegoDataProvider r;
+  protected LegoEvenHandler s;
   
   public LegoBase(Context paramContext, int paramInt)
   {
-    this.b = LayoutInflater.from(paramContext).inflate(paramInt, null, true);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.q = LayoutInflater.from(paramContext).inflate(paramInt, null, true);
+    this.p = paramContext;
   }
   
   public LegoBase(Context paramContext, View paramView)
   {
-    this.b = paramView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.q = paramView;
+    this.p = paramContext;
   }
-  
-  public LegoBase a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoBase;
-  }
-  
-  public LegoBase a(String paramString)
-  {
-    return (LegoBase)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public abstract LegoDataProvider a();
   
   public abstract LegoEvenHandler a();
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      ((LegoBase)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a();
-    }
-  }
   
   public abstract void a(Context paramContext, View paramView);
   
   public void a(LegoEvenHandler paramLegoEvenHandler)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler = paramLegoEvenHandler;
+    this.s = paramLegoEvenHandler;
   }
   
   public void a(String paramString, LegoBase paramLegoBase)
   {
-    paramLegoBase.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoBase = this;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramLegoBase);
+    paramLegoBase.b = this;
+    this.c.put(paramString, paramLegoBase);
   }
   
   public abstract void a(List<T> paramList);
   
-  public boolean a()
+  public LegoBase b(String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    return (LegoBase)this.c.get(paramString);
   }
   
-  public abstract void b();
+  public abstract LegoDataProvider b();
   
   public void b(List<T> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.c.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ((LegoBase)this.c.get(str)).c();
+    }
   }
   
   public void c(List<T> paramList)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return;
     }
-    View localView = this.b;
+    View localView = this.q;
     if (localView != null) {
       localView.setVisibility(0);
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
     a(paramList);
   }
   
-  public void j()
+  public abstract void d();
+  
+  public void l()
   {
-    View localView = this.b;
+    View localView = this.q;
     if (localView != null) {
       localView.setVisibility(8);
     }
   }
   
-  public void k()
+  public LegoBase m()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    return this.b;
+  }
+  
+  public boolean n()
+  {
+    return this.e;
+  }
+  
+  public void o()
+  {
+    if (this.e) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.b;
+    this.e = true;
+    Object localObject = this.q;
     if (localObject != null) {
       ((View)localObject).setVisibility(0);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler = a();
+    if (this.s == null) {
+      this.s = a();
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoDataProvider == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoDataProvider = a();
+    if (this.r == null) {
+      this.r = b();
     }
-    a(this.jdField_a_of_type_AndroidContentContext, this.b);
-    b();
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    a(this.p, this.q);
+    d();
+    localObject = this.d;
     if (localObject != null)
     {
       a((List)localObject);
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoDataProvider;
+      localObject = this.r;
       if (localObject != null) {
         ((LegoDataProvider)localObject).a();
       } else {
         a(null);
       }
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    localObject = this.c.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      ((LegoBase)this.jdField_a_of_type_JavaUtilHashMap.get(str)).k();
+      ((LegoBase)this.c.get(str)).o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.lego.LegoBase
  * JD-Core Version:    0.7.0.1
  */

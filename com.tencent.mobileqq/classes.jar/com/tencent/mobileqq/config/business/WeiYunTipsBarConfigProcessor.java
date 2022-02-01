@@ -11,7 +11,7 @@ public class WeiYunTipsBarConfigProcessor
 {
   public static WeiyunTipsBarConfigBean a()
   {
-    return (WeiyunTipsBarConfigBean)QConfigManager.a().a(497);
+    return (WeiyunTipsBarConfigBean)QConfigManager.b().b(497);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class WeiYunTipsBarConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WeiYunTipsBarConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

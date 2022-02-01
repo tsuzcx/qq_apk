@@ -24,50 +24,50 @@ class AEGIFChunkPreviewFragment$6$1
     QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material download state");
     if (paramAEDownloadStateWrapper != null)
     {
-      if (AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$6.a) == null) {
+      if (AEGIFChunkPreviewFragment.a(this.b.a) == null) {
         return;
       }
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAeGifRecognizedEmotionBean.jdField_a_of_type_Int + 1;
-      while (i < AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$6.a).size())
+      int i = this.a.c + 1;
+      while (i < AEGIFChunkPreviewFragment.a(this.b.a).size())
       {
-        AEGIFPreviewWrapper localAEGIFPreviewWrapper = (AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$6.a).get(i);
-        if ((localAEGIFPreviewWrapper != null) && (localAEGIFPreviewWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && (localAEGIFPreviewWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id.equals(paramAEDownloadStateWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)))
+        AEGIFPreviewWrapper localAEGIFPreviewWrapper = (AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.b.a).get(i);
+        if ((localAEGIFPreviewWrapper != null) && (localAEGIFPreviewWrapper.c != null) && (localAEGIFPreviewWrapper.c.id.equals(paramAEDownloadStateWrapper.a.id)))
         {
-          if (localAEGIFPreviewWrapper.jdField_b_of_type_Int != paramAEDownloadStateWrapper.jdField_a_of_type_Int) {
-            localAEGIFPreviewWrapper.jdField_b_of_type_Int = paramAEDownloadStateWrapper.jdField_a_of_type_Int;
+          if (localAEGIFPreviewWrapper.b != paramAEDownloadStateWrapper.b) {
+            localAEGIFPreviewWrapper.b = paramAEDownloadStateWrapper.b;
           }
-          if (localAEGIFPreviewWrapper.jdField_b_of_type_Int != 2) {
+          if (localAEGIFPreviewWrapper.b != 2) {
             break;
           }
-          localAEGIFPreviewWrapper.jdField_b_of_type_JavaLangString = AEGifMaterialManager.a().a(localAEGIFPreviewWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+          localAEGIFPreviewWrapper.e = AEGifMaterialManager.a().a(localAEGIFPreviewWrapper.c);
           paramAEDownloadStateWrapper = new StringBuilder();
           paramAEDownloadStateWrapper.append("path===");
-          paramAEDownloadStateWrapper.append(localAEGIFPreviewWrapper.jdField_b_of_type_JavaLangString);
+          paramAEDownloadStateWrapper.append(localAEGIFPreviewWrapper.e);
           QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Downloaded material", paramAEDownloadStateWrapper.toString() });
           paramAEDownloadStateWrapper = new MaterialWrapper();
-          paramAEDownloadStateWrapper.jdField_a_of_type_Int = i;
-          paramAEDownloadStateWrapper.jdField_a_of_type_JavaLangString = localAEGIFPreviewWrapper.jdField_b_of_type_JavaLangString;
-          if ((localAEGIFPreviewWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && ((localAEGIFPreviewWrapper.jdField_a_of_type_JavaLangString == null) || (localAEGIFPreviewWrapper.jdField_a_of_type_JavaLangString.equals(""))))
+          paramAEDownloadStateWrapper.a = i;
+          paramAEDownloadStateWrapper.b = localAEGIFPreviewWrapper.e;
+          if ((localAEGIFPreviewWrapper.c != null) && ((localAEGIFPreviewWrapper.d == null) || (localAEGIFPreviewWrapper.d.equals(""))))
           {
-            if (localAEGIFPreviewWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename") != null)
+            if (localAEGIFPreviewWrapper.c.additionalFields.get("savename") != null)
             {
-              paramAEDownloadStateWrapper.jdField_b_of_type_JavaLangString = "";
-              paramAEDownloadStateWrapper.c = ((String)localAEGIFPreviewWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename"));
+              paramAEDownloadStateWrapper.c = "";
+              paramAEDownloadStateWrapper.d = ((String)localAEGIFPreviewWrapper.c.additionalFields.get("savename"));
             }
             else
             {
-              paramAEDownloadStateWrapper.jdField_b_of_type_JavaLangString = "";
               paramAEDownloadStateWrapper.c = "";
+              paramAEDownloadStateWrapper.d = "";
             }
           }
-          else if (localAEGIFPreviewWrapper.jdField_a_of_type_JavaLangString == null) {
-            paramAEDownloadStateWrapper.jdField_b_of_type_JavaLangString = "";
+          else if (localAEGIFPreviewWrapper.d == null) {
+            paramAEDownloadStateWrapper.c = "";
           } else {
-            paramAEDownloadStateWrapper.jdField_b_of_type_JavaLangString = localAEGIFPreviewWrapper.jdField_a_of_type_JavaLangString;
+            paramAEDownloadStateWrapper.c = localAEGIFPreviewWrapper.d;
           }
-          AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$6.a).a(paramAEDownloadStateWrapper);
-          localAEGIFPreviewWrapper.jdField_a_of_type_Int = 12;
-          AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$6.a).notifyItemChanged(i);
+          AEGIFChunkPreviewFragment.d(this.b.a).a(paramAEDownloadStateWrapper);
+          localAEGIFPreviewWrapper.a = 12;
+          AEGIFChunkPreviewFragment.b(this.b.a).notifyItemChanged(i);
           return;
         }
         i += 1;
@@ -77,7 +77,7 @@ class AEGIFChunkPreviewFragment$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

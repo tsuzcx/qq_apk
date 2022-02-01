@@ -27,32 +27,9 @@ import mqq.app.MobileQQ;
 
 public class AssistantUtils
 {
-  public static AppInterface a()
-  {
-    AppRuntime localAppRuntime = a();
-    if ((localAppRuntime instanceof AppInterface)) {
-      return (AppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
   public static IVoiceAssistantCore a()
   {
-    return (IVoiceAssistantCore)a().getRuntimeService(IVoiceAssistantCore.class, "");
-  }
-  
-  public static BaseApplication a()
-  {
-    return MobileQQ.sMobileQQ;
-  }
-  
-  public static String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(System.currentTimeMillis());
-    localStringBuilder.append("_");
-    localStringBuilder.append((int)(Math.random() * 900.0D) + 100);
-    return localStringBuilder.toString();
+    return (IVoiceAssistantCore)c().getRuntimeService(IVoiceAssistantCore.class, "");
   }
   
   public static String a(int paramInt)
@@ -60,39 +37,16 @@ public class AssistantUtils
     return MobileQQ.sMobileQQ.getString(paramInt);
   }
   
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    return paramString.substring(paramString.indexOf("_") + 1);
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramString2);
-    return localStringBuilder.toString();
-  }
-  
-  public static AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
   public static void a(Activity paramActivity, CommandInfo paramCommandInfo)
   {
-    if ((paramActivity != null) && (paramCommandInfo != null) && (paramCommandInfo.a != null))
+    if ((paramActivity != null) && (paramCommandInfo != null) && (paramCommandInfo.f != null))
     {
-      if (paramCommandInfo.a.jdField_a_of_type_Int == 115)
+      if (paramCommandInfo.f.a == 115)
       {
-        a(paramActivity, paramCommandInfo.a.jdField_a_of_type_JavaLangString, paramCommandInfo.a.jdField_b_of_type_JavaLangString, paramCommandInfo.a.jdField_b_of_type_Int);
+        a(paramActivity, paramCommandInfo.f.b, paramCommandInfo.f.c, paramCommandInfo.f.d);
         return;
       }
-      paramCommandInfo = QAssistantConfigItemFactory.a(paramCommandInfo.a.jdField_a_of_type_Int);
+      paramCommandInfo = QAssistantConfigItemFactory.a(paramCommandInfo.f.a);
       if (TextUtils.isEmpty(paramCommandInfo))
       {
         if (QLog.isColorLevel()) {
@@ -159,12 +113,12 @@ public class AssistantUtils
   public static void a(boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("echo_android_id", DeviceInfoUtil.f());
+    localHashMap.put("echo_android_id", DeviceInfoUtil.j());
     localHashMap.put("echo_manufacturer", Build.MANUFACTURER);
     localHashMap.put("echo_brand", Build.BRAND);
     localHashMap.put("echo_model", Build.MODEL);
     localHashMap.put("echo_fingerprint", Build.FINGERPRINT);
-    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "AcousticEchoCanceler", paramBoolean, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(d()).collectPerformance(c().getCurrentAccountUin(), "AcousticEchoCanceler", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static void a(boolean paramBoolean, int paramInt)
@@ -177,7 +131,7 @@ public class AssistantUtils
       localStringBuilder.append(paramInt);
       localHashMap.put("downloadError", localStringBuilder.toString());
     }
-    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "WakeDataDownloadMonitor", paramBoolean, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(d()).collectPerformance(c().getCurrentAccountUin(), "WakeDataDownloadMonitor", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -187,7 +141,7 @@ public class AssistantUtils
     localHashMap.put("stCode", String.valueOf(paramInt1));
     localHashMap.put("wxCode", String.valueOf(paramInt2));
     localHashMap.put("lpCode", String.valueOf(paramInt3));
-    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "VoiceRequestMonitor", paramBoolean, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(d()).collectPerformance(c().getCurrentAccountUin(), "VoiceRequestMonitor", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
   public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
@@ -205,27 +159,25 @@ public class AssistantUtils
     localHashMap.put("tailorLoc", String.valueOf(paramLong6));
     localHashMap.put("tailorNet", String.valueOf(paramLong7));
     localHashMap.put("contactCount", String.valueOf(paramInt2));
-    StatisticCollector.getInstance(a()).collectPerformance(a().getCurrentAccountUin(), "VoiceTimeMonitor", paramBoolean, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(d()).collectPerformance(c().getCurrentAccountUin(), "VoiceTimeMonitor", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
-  public static String b()
+  public static AppInterface b()
   {
-    String str = TransFileUtil.getTransferFilePath(a().getCurrentAccountUin(), null, 327697, null, false);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str.substring(0, str.lastIndexOf(File.separator)));
-    localStringBuilder.append("/");
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
+    AppRuntime localAppRuntime = c();
+    if ((localAppRuntime instanceof AppInterface)) {
+      return (AppInterface)localAppRuntime;
     }
+    return null;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a().getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString);
+    localStringBuilder.append(f());
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
     return localStringBuilder.toString();
   }
   
@@ -234,53 +186,92 @@ public class AssistantUtils
     a("AssistantUtils", paramString);
   }
   
-  /* Error */
   public static String c(String paramString)
   {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    return paramString.substring(paramString.indexOf("_") + 1);
+  }
+  
+  public static AppRuntime c()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public static BaseApplication d()
+  {
+    return MobileQQ.sMobileQQ;
+  }
+  
+  public static String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c().getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public static String e()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("_");
+    localStringBuilder.append((int)(Math.random() * 900.0D) + 100);
+    return localStringBuilder.toString();
+  }
+  
+  /* Error */
+  public static String e(String paramString)
+  {
     // Byte code:
-    //   0: new 37	java/lang/StringBuilder
+    //   0: new 87	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 88	java/lang/StringBuilder:<init>	()V
     //   7: astore 4
     //   9: aconst_null
     //   10: astore_3
     //   11: aconst_null
     //   12: astore_1
-    //   13: new 370	java/io/BufferedReader
+    //   13: new 352	java/io/BufferedReader
     //   16: dup
-    //   17: new 372	java/io/FileReader
+    //   17: new 354	java/io/FileReader
     //   20: dup
     //   21: aload_0
-    //   22: invokespecial 374	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   25: invokespecial 377	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   22: invokespecial 356	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 359	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   28: astore_0
     //   29: aload_0
-    //   30: invokevirtual 380	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   30: invokevirtual 362	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnull +37 -> 72
-    //   38: new 37	java/lang/StringBuilder
+    //   38: new 87	java/lang/StringBuilder
     //   41: dup
-    //   42: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   42: invokespecial 88	java/lang/StringBuilder:<init>	()V
     //   45: astore_2
     //   46: aload_2
     //   47: aload_1
-    //   48: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: pop
     //   52: aload_2
     //   53: bipush 10
-    //   55: invokevirtual 383	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 365	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   58: pop
     //   59: aload 4
     //   61: aload_2
-    //   62: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: goto -40 -> 29
     //   72: aload_0
-    //   73: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   73: invokevirtual 368	java/io/BufferedReader:close	()V
     //   76: aload_0
-    //   77: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   77: invokevirtual 368	java/io/BufferedReader:close	()V
     //   80: goto +44 -> 124
     //   83: astore_1
     //   84: goto +46 -> 130
@@ -298,26 +289,26 @@ public class AssistantUtils
     //   102: aload_0
     //   103: astore_1
     //   104: aload_2
-    //   105: invokevirtual 389	java/lang/Exception:printStackTrace	()V
+    //   105: invokevirtual 371	java/lang/Exception:printStackTrace	()V
     //   108: aload_0
     //   109: ifnull +15 -> 124
     //   112: aload_0
-    //   113: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   113: invokevirtual 368	java/io/BufferedReader:close	()V
     //   116: goto +8 -> 124
     //   119: astore_0
     //   120: aload_0
-    //   121: invokevirtual 390	java/io/IOException:printStackTrace	()V
+    //   121: invokevirtual 372	java/io/IOException:printStackTrace	()V
     //   124: aload 4
-    //   126: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   126: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   129: areturn
     //   130: aload_0
     //   131: ifnull +15 -> 146
     //   134: aload_0
-    //   135: invokevirtual 386	java/io/BufferedReader:close	()V
+    //   135: invokevirtual 368	java/io/BufferedReader:close	()V
     //   138: goto +8 -> 146
     //   141: astore_0
     //   142: aload_0
-    //   143: invokevirtual 390	java/io/IOException:printStackTrace	()V
+    //   143: invokevirtual 372	java/io/IOException:printStackTrace	()V
     //   146: goto +5 -> 151
     //   149: aload_1
     //   150: athrow
@@ -349,10 +340,19 @@ public class AssistantUtils
     //   112	116	119	java/io/IOException
     //   134	138	141	java/io/IOException
   }
+  
+  public static String f()
+  {
+    String str = TransFileUtil.getTransferFilePath(c().getCurrentAccountUin(), null, 327697, null, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str.substring(0, str.lastIndexOf(File.separator)));
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.AssistantUtils
  * JD-Core Version:    0.7.0.1
  */

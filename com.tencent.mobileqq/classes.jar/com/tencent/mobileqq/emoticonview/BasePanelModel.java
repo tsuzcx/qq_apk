@@ -204,7 +204,7 @@ public class BasePanelModel
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    EmotionPanelPayBackListenerManager.a().a();
+    EmotionPanelPayBackListenerManager.a().b();
     localObject = this.app;
     if (localObject != null)
     {
@@ -222,7 +222,7 @@ public class BasePanelModel
         ((EmoticonManagerServiceProxy)localObject).pushRecommendExposeInfoToSP();
       }
     }
-    this.mWebPreloadHitSession.d();
+    this.mWebPreloadHitSession.e();
     this.mEmotionPanelInjectionInfoManager = null;
   }
   
@@ -315,7 +315,7 @@ public class BasePanelModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BasePanelModel
  * JD-Core Version:    0.7.0.1
  */

@@ -30,8 +30,8 @@ public class FakeEmotionBuilder
   
   protected void a(MessageForPic paramMessageForPic, BasePicItemBuilder.Holder paramHolder, View paramView, boolean paramBoolean)
   {
-    if (paramHolder.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      paramHolder.jdField_a_of_type_ComTencentImageURLDrawable.setWatermarkVisibility(4);
+    if (paramHolder.c != null) {
+      paramHolder.c.setWatermarkVisibility(4);
     }
     Object localObject1 = new BasePicItemBuilder.DrawURL(paramMessageForPic);
     if (paramMessageForPic.path != null) {}
@@ -62,12 +62,12 @@ public class FakeEmotionBuilder
     }
     ((BasePicItemBuilder.DrawURL)localObject1).a = URLDrawableHelper.getURL(paramMessageForPic, 65537, null);
     localObject2 = ((BasePicItemBuilder.DrawURL)localObject1).a;
-    if ((paramHolder.jdField_a_of_type_ComTencentImageURLDrawable == null) || (!paramHolder.jdField_a_of_type_ComTencentImageURLDrawable.getURL().equals(localObject2)))
+    if ((paramHolder.c == null) || (!paramHolder.c.getURL().equals(localObject2)))
     {
-      localObject3 = a(this.a, paramMessageForPic, paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, null, (BasePicItemBuilder.DrawURL)localObject1);
-      paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject3);
-      paramHolder.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject3);
-      paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL = ((BasePicItemBuilder.DrawURL)localObject1);
+      localObject3 = a(this.e, paramMessageForPic, paramHolder.a, null, (BasePicItemBuilder.DrawURL)localObject1);
+      paramHolder.a.setImageDrawable((Drawable)localObject3);
+      paramHolder.c = ((URLDrawable)localObject3);
+      paramHolder.e = ((BasePicItemBuilder.DrawURL)localObject1);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -78,7 +78,7 @@ public class FakeEmotionBuilder
         QLog.d("PicItemBuilder", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    paramHolder.jdField_a_of_type_AndroidViewView = paramView;
+    paramHolder.h = paramView;
   }
   
   protected boolean a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
@@ -92,7 +92,7 @@ public class FakeEmotionBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FakeEmotionBuilder
  * JD-Core Version:    0.7.0.1
  */

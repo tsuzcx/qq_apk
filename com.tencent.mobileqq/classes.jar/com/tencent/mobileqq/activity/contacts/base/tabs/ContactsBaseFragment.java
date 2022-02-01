@@ -22,17 +22,17 @@ public abstract class ContactsBaseFragment
   extends BaseFragment
   implements HeaderScrollHelper.ScrollableContainer, AbsListView.OnScrollListener
 {
-  public static Rect a;
+  public static Rect p;
   private int a;
-  protected ContactsBaseFragment.FragmentLifeListener a;
-  protected ContactsBaseFragment.RefreshDataListener a;
-  protected BaseActivity a;
-  protected QQAppInterface a;
-  public boolean a;
   private int b;
-  protected View b;
-  public boolean b;
-  protected boolean c = false;
+  protected ContactsBaseFragment.RefreshDataListener q;
+  protected ContactsBaseFragment.FragmentLifeListener r;
+  protected QQAppInterface s;
+  protected View t;
+  public boolean u;
+  public boolean v;
+  protected BaseActivity w;
+  protected boolean x = false;
   
   private void a(View paramView, int paramInt)
   {
@@ -41,60 +41,45 @@ public abstract class ContactsBaseFragment
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_b_of_type_AndroidViewView;
-  }
-  
   protected abstract View a(LayoutInflater paramLayoutInflater, Bundle paramBundle);
   
   public abstract void a();
   
   public void a(ContactsBaseFragment.FragmentLifeListener paramFragmentLifeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener = paramFragmentLifeListener;
+    this.r = paramFragmentLifeListener;
   }
   
   public void a(ContactsBaseFragment.RefreshDataListener paramRefreshDataListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$RefreshDataListener = paramRefreshDataListener;
+    this.q = paramRefreshDataListener;
   }
   
   public void a(BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.w = paramBaseActivity;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.s;
     if ((localQQAppInterface != null) && (paramQQAppInterface != localQQAppInterface)) {
       e();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.s = paramQQAppInterface;
     d();
   }
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void ae_();
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
   public abstract void b(boolean paramBoolean);
   
   public void b(boolean paramBoolean, int paramInt)
   {
-    a(a(), paramInt);
+    a(getScrollableView(), paramInt);
   }
+  
+  public abstract void bU_();
   
   public abstract void c();
   
@@ -102,14 +87,14 @@ public abstract class ContactsBaseFragment
   
   public void d(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    this.v = paramBoolean;
+    this.u = paramBoolean;
+    if (this.t != null)
     {
       if (paramBoolean)
       {
@@ -124,16 +109,31 @@ public abstract class ContactsBaseFragment
   
   public void e(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void f() {}
   
   public void g()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+    if (this.s != null) {
       e();
     }
+  }
+  
+  public View getScrollableView()
+  {
+    return this.t;
+  }
+  
+  public int h()
+  {
+    return this.a;
+  }
+  
+  public int i()
+  {
+    return this.b;
   }
   
   public void onAttach(Activity paramActivity)
@@ -142,7 +142,7 @@ public abstract class ContactsBaseFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pos:");
-      localStringBuilder.append(b());
+      localStringBuilder.append(i());
       localStringBuilder.append(" onAttach");
       QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
@@ -155,7 +155,7 @@ public abstract class ContactsBaseFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pos:");
-      localStringBuilder.append(b());
+      localStringBuilder.append(i());
       localStringBuilder.append(" onCreate");
       QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
@@ -169,24 +169,24 @@ public abstract class ContactsBaseFragment
     {
       paramViewGroup = new StringBuilder();
       paramViewGroup.append("pos:");
-      paramViewGroup.append(b());
+      paramViewGroup.append(i());
       paramViewGroup.append(" onCreateView");
       QLog.d("Contacts.BaseFragment", 2, paramViewGroup.toString());
     }
-    this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
-    paramLayoutInflater = a();
+    this.t = a(paramLayoutInflater, paramBundle);
+    paramLayoutInflater = getScrollableView();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
       paramLayoutInflater.setAccessibilityDelegate(new ContactsBaseFragment.1(this));
     }
-    if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
+    if ((this.t != null) && (this.u))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Contacts.BaseFragment", 2, "onCreateView->doOnResume");
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.u = false;
       a(true);
     }
-    paramLayoutInflater = this.jdField_b_of_type_AndroidViewView;
+    paramLayoutInflater = this.t;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -197,19 +197,19 @@ public abstract class ContactsBaseFragment
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("pos:");
-      ((StringBuilder)localObject).append(b());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append(" onDestroy");
       QLog.d("Contacts.BaseFragment", 2, ((StringBuilder)localObject).toString());
     }
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+    if (this.s != null) {
       e();
     }
-    this.jdField_b_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener;
+    this.t = null;
+    this.u = false;
+    Object localObject = this.r;
     if (localObject != null) {
-      ((ContactsBaseFragment.FragmentLifeListener)localObject).a(this.jdField_a_of_type_Int);
+      ((ContactsBaseFragment.FragmentLifeListener)localObject).a(this.a);
     }
   }
   
@@ -219,7 +219,7 @@ public abstract class ContactsBaseFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pos:");
-      localStringBuilder.append(b());
+      localStringBuilder.append(i());
       localStringBuilder.append(" onDestroyView");
       QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
@@ -232,7 +232,7 @@ public abstract class ContactsBaseFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pos:");
-      localStringBuilder.append(b());
+      localStringBuilder.append(i());
       localStringBuilder.append(" onDetach");
       QLog.d("Contacts.BaseFragment", 2, localStringBuilder.toString());
     }
@@ -256,7 +256,7 @@ public abstract class ContactsBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment
  * JD-Core Version:    0.7.0.1
  */

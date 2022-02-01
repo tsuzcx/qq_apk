@@ -20,9 +20,9 @@ public class AlbumSplitSegment
   extends JobSegment<List<StoryAlbum.PicInfo>, List<StoryAlbum>>
   implements IAlbumFilter.IAlbumFilterListener
 {
-  private ScanInfo jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo;
-  private ArrayList<StoryAlbum> jdField_a_of_type_JavaUtilArrayList;
-  private List<BaseAlbumFilter> jdField_a_of_type_JavaUtilList;
+  private List<BaseAlbumFilter> a;
+  private ArrayList<StoryAlbum> b;
+  private ScanInfo c;
   
   private List<BaseAlbumFilter> a(long paramLong1, long paramLong2)
   {
@@ -32,24 +32,24 @@ public class AlbumSplitSegment
     if (localList != null) {
       localArrayList.addAll(localList);
     }
-    localArrayList.add(new RecommendAlbumFilter(i, this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo));
+    localArrayList.add(new RecommendAlbumFilter(i, this.c));
     return localArrayList;
   }
   
   private void a(List<StoryAlbum.PicInfo> paramList)
   {
-    if ((paramList != null) && (paramList.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((paramList != null) && (paramList.size() > 0) && (this.a.size() > 0))
     {
-      BaseAlbumFilter localBaseAlbumFilter = (BaseAlbumFilter)this.jdField_a_of_type_JavaUtilList.remove(0);
+      BaseAlbumFilter localBaseAlbumFilter = (BaseAlbumFilter)this.a.remove(0);
       localBaseAlbumFilter.a(paramList);
       localBaseAlbumFilter.a(this);
       return;
     }
-    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramList = this.b.iterator();
     while (paramList.hasNext()) {
       StoryScanManager.a((StoryAlbum)paramList.next(), 10);
     }
-    notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+    notifyResult(this.b);
   }
   
   protected void a(JobContext paramJobContext, List<StoryAlbum.PicInfo> paramList)
@@ -57,11 +57,11 @@ public class AlbumSplitSegment
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
     if (paramList.isEmpty())
     {
-      notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+      notifyResult(this.b);
       return;
     }
-    StoryScanManager.b(paramList);
-    this.jdField_a_of_type_JavaUtilList = a(((StoryAlbum.PicInfo)paramList.get(0)).b, ((StoryAlbum.PicInfo)paramList.get(paramList.size() - 1)).b);
+    StoryScanManager.c(paramList);
+    this.a = a(((StoryAlbum.PicInfo)paramList.get(0)).g, ((StoryAlbum.PicInfo)paramList.get(paramList.size() - 1)).g);
     a(paramList);
   }
   
@@ -78,14 +78,14 @@ public class AlbumSplitSegment
         localStringBuilder.append(localStoryAlbum.toString());
         SLog.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.b.addAll(paramList);
     }
     a(paramList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.segment.AlbumSplitSegment
  * JD-Core Version:    0.7.0.1
  */

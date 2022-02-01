@@ -107,7 +107,7 @@ public class AnonymousView
     {
       localException.printStackTrace();
     }
-    return BaseImageUtil.f();
+    return BaseImageUtil.k();
   }
   
   protected void init()
@@ -132,31 +132,31 @@ public class AnonymousView
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131378823)
+    if (i == 2131447506)
     {
       clearRedPoint();
       AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)this.mContext, this.uin, 1);
       ReportController.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
     }
-    else if (i == 2131374143)
+    else if (i == 2131442238)
     {
       clearRedPoint();
       AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)this.mContext, this.uin, 2);
       ReportController.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
     }
-    else if (i == 2131374145)
+    else if (i == 2131442240)
     {
       clearRedPoint();
       AnonymousViewHelper.jumpToReqFriendAskQuestion((Activity)this.mContext);
       ReportController.b(null, "dc00898", "", "", "0X800B46D", "0X800B46D", 0, 0, "", "", "", "");
     }
-    else if (i == 2131374144)
+    else if (i == 2131442239)
     {
       clearRedPoint();
       AnonymousViewHelper.jumpToQuestionListAndAnswer((Activity)this.mContext, this.uin, 3);
       ReportController.b(null, "dc00898", "", this.uin, "0X800B473", "0X800B473", 0, 0, "", "", "", "");
     }
-    else if ((i == 2131374169) || (i == 2131374168))
+    else if ((i == 2131442264) || (i == 2131442263))
     {
       clearRedPoint();
       AnonymousViewHelper.jumpToAskQuestion((Activity)this.mContext, this.uin, 6);
@@ -206,7 +206,7 @@ public class AnonymousView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView
  * JD-Core Version:    0.7.0.1
  */

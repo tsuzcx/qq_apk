@@ -21,7 +21,7 @@ final class VideoMsgTools$8
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("addGroupMember_");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.a);
     AudioHelper.a(((StringBuilder)localObject).toString(), paramBundle);
     ArrayList localArrayList2 = paramBundle.getParcelableArrayList("result_set");
     localObject = new StringBuilder();
@@ -62,7 +62,7 @@ final class VideoMsgTools$8
       }
       DataReport.d(bool2, bool3);
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = new VideoMsgTools.MygetGroupInfoRunnable(this.jdField_a_of_type_Long, (QQAppInterface)localObject, this.jdField_a_of_type_JavaLangString);
+      localObject = new VideoMsgTools.MygetGroupInfoRunnable(this.a, (QQAppInterface)localObject, this.b);
       new Handler(Looper.getMainLooper()).postDelayed((Runnable)localObject, 1000L);
       long l = paramBundle.getLong("roomId");
       VideoMsgTools.a(BaseApplicationImpl.getApplication(), bool1, l, localArrayList2);

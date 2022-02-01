@@ -10,12 +10,12 @@ class PlayerDataPreLoader$1
   public void run()
   {
     Object localObject = this.this$0;
-    localObject = PlayerDataPreLoader.a((PlayerDataPreLoader)localObject, PlayerDataPreLoader.a((PlayerDataPreLoader)localObject), PlayerDataPreLoader.a(this.this$0), PlayerDataPreLoader.a(this.this$0), 5, 5, 5, 20);
+    localObject = PlayerDataPreLoader.a((PlayerDataPreLoader)localObject, PlayerDataPreLoader.a((PlayerDataPreLoader)localObject), PlayerDataPreLoader.b(this.this$0), PlayerDataPreLoader.c(this.this$0), 5, 5, 5, 20);
     PlayerDataPreLoader.a(this.this$0, ((PlayerDataPreLoader.Result)localObject).a);
     PlayerDataPreLoader.b(this.this$0, ((PlayerDataPreLoader.Result)localObject).b);
     try
     {
-      PlayerDataPreLoader.a(this.this$0);
+      PlayerDataPreLoader.d(this.this$0);
       return;
     }
     catch (Exception localException)

@@ -23,19 +23,19 @@ class ThemeHandler$5
     QLog.e("Theme.ThemeHandler", 1, localStringBuilder.toString());
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
-      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.d());
-      ThemeHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppThemeHandler, this.jdField_a_of_type_AndroidOsBundle);
+      this.a.a(this.b, paramString1, paramString2);
+      this.c.putString("themePath", this.a.g());
+      ThemeHandler.a(this.d, this.c);
       return;
     }
-    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
-    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
-    ThemeHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppThemeHandler, this.jdField_a_of_type_AndroidOsBundle);
+    this.c.putString("themeId", "1000");
+    this.c.remove("themePath");
+    ThemeHandler.a(this.d, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThemeHandler.5
  * JD-Core Version:    0.7.0.1
  */

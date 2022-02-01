@@ -14,39 +14,39 @@ class DiscussionInfoCardActivity$6
 {
   DiscussionInfoCardActivity$6(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt != 1)
       {
         if (paramInt == 2) {
-          DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+          DiscussionInfoCardActivity.h(this.b);
         }
       }
       else
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
-        Bundle localBundle = NewReportPlugin.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-        DiscussionInfoCardActivity localDiscussionInfoCardActivity = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity;
-        NewReportPlugin.a(localDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(localDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
-        TroopReportor.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+        paramView = this.b.h.uin;
+        Bundle localBundle = NewReportPlugin.a(DiscussionInfoCardActivity.c(this.b), 3000);
+        DiscussionInfoCardActivity localDiscussionInfoCardActivity = this.b;
+        NewReportPlugin.a(localDiscussionInfoCardActivity, DiscussionInfoCardActivity.c(localDiscussionInfoCardActivity), "", "", paramView, this.b.app.getCurrentAccountUin(), 22001, null, localBundle);
+        TroopReportor.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.c(this.b), DiscussionInfoCardActivity.a(this.b.app, this.b.h) });
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
+      this.b.b();
     }
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet;
-    if ((paramView != null) && (paramView.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+    paramView = this.a;
+    if ((paramView != null) && (paramView.isShowing()) && (!this.b.isFinishing()))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      this.a.dismiss();
+      this.a.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,16 @@ import tencent.im.msg.im_msg_body.RichText;
 class VideoMultiMsgProcessor$1
   extends UiCallBack.MultiForwardUploadAdapter
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = null;
+  ArrayList<Integer> a = null;
   
   VideoMultiMsgProcessor$1(VideoMultiMsgProcessor paramVideoMultiMsgProcessor, ArrayList paramArrayList, HashMap paramHashMap, IMultiMsgRichUploadCallback paramIMultiMsgRichUploadCallback, MultiMsgRequest paramMultiMsgRequest) {}
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
+    this.a.add(Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt, ArrayList<ShortVideoResult> paramArrayList)
@@ -58,31 +58,31 @@ class VideoMultiMsgProcessor$1
           localObject1 = (ShortVideoResult)paramArrayList.get(k);
           int i = paramInt;
           if (localObject1 != null) {
-            if ((((ShortVideoResult)localObject1).jdField_a_of_type_Int == 0) && (((ShortVideoResult)localObject1).jdField_a_of_type_JavaLangObject != null) && ((((ShortVideoResult)localObject1).jdField_a_of_type_JavaLangObject instanceof im_msg_body.RichText)))
+            if ((((ShortVideoResult)localObject1).a == 0) && (((ShortVideoResult)localObject1).d != null) && ((((ShortVideoResult)localObject1).d instanceof im_msg_body.RichText)))
             {
-              ((MessageForShortVideo)localObject2).richText = ((im_msg_body.RichText)((ShortVideoResult)localObject1).jdField_a_of_type_JavaLangObject);
+              ((MessageForShortVideo)localObject2).richText = ((im_msg_body.RichText)((ShortVideoResult)localObject1).d);
               i = paramInt;
             }
             else
             {
               i = paramInt;
-              if (((ShortVideoResult)localObject1).jdField_a_of_type_Int == -1)
+              if (((ShortVideoResult)localObject1).a == -1)
               {
                 i = paramInt;
-                if (((ShortVideoResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null)
+                if (((ShortVideoResult)localObject1).b != null)
                 {
-                  if ("cancel".equals(((ShortVideoResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b)) {
+                  if ("cancel".equals(((ShortVideoResult)localObject1).b.b)) {
                     b(1);
                   }
                   do
                   {
                     i = 1;
                     break;
-                    b(((ShortVideoResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int);
-                  } while (this.jdField_a_of_type_ComTencentMobileqqMultimsgVideoMultiMsgProcessor.a(((ShortVideoResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int));
-                  localObject2 = this.jdField_a_of_type_ComTencentMobileqqMultimsgVideoMultiMsgProcessor.a.getMultiMessageProxy().a((MessageRecord)localObject2, VideoMultiMsgProcessor.a(), true);
-                  bool = this.jdField_a_of_type_ComTencentMobileqqMultimsgVideoMultiMsgProcessor.a.getMultiMessageProxy().a(this.jdField_a_of_type_JavaUtilHashMap, (MessageRecord)localObject2);
-                  QLog.e("VideoMultiMsgProcessor", 1, String.format("MultiForwardVideo errCode:%d, errStr:%s, update:%s, uniseq:%d", new Object[] { Integer.valueOf(((ShortVideoResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int), ((ShortVideoResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b, Boolean.valueOf(bool), Long.valueOf(((MessageRecord)localObject2).uniseq) }));
+                    b(((ShortVideoResult)localObject1).b.c);
+                  } while (this.f.a(((ShortVideoResult)localObject1).b.c));
+                  localObject2 = this.f.a.getMultiMessageProxy().a((MessageRecord)localObject2, VideoMultiMsgProcessor.a(), true);
+                  bool = this.f.a.getMultiMessageProxy().a(this.c, (MessageRecord)localObject2);
+                  QLog.e("VideoMultiMsgProcessor", 1, String.format("MultiForwardVideo errCode:%d, errStr:%s, update:%s, uniseq:%d", new Object[] { Integer.valueOf(((ShortVideoResult)localObject1).b.c), ((ShortVideoResult)localObject1).b.b, Boolean.valueOf(bool), Long.valueOf(((MessageRecord)localObject2).uniseq) }));
                   i = paramInt;
                 }
               }
@@ -95,12 +95,12 @@ class VideoMultiMsgProcessor$1
       }
       Object localObject1 = new HashMap();
       ((HashMap)localObject1).put("totalCount", String.valueOf(paramArrayList.size()));
-      Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+      Object localObject2 = this.a;
       if (localObject2 != null)
       {
         ((HashMap)localObject1).put("errCount", String.valueOf(((ArrayList)localObject2).size()));
-        ((HashMap)localObject1).put("errCodeStr", Arrays.asList(new ArrayList[] { this.jdField_a_of_type_JavaUtilArrayList }).toString());
-        ((HashMap)localObject1).put("errCode", String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(0)));
+        ((HashMap)localObject1).put("errCodeStr", Arrays.asList(new ArrayList[] { this.a }).toString());
+        ((HashMap)localObject1).put("errCode", String.valueOf(this.a.get(0)));
       }
       else
       {
@@ -108,7 +108,7 @@ class VideoMultiMsgProcessor$1
         ((HashMap)localObject1).put("errCode", "0");
       }
       localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      if (this.a == null) {
         bool = true;
       } else {
         bool = false;
@@ -131,15 +131,15 @@ class VideoMultiMsgProcessor$1
     }
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgIMultiMsgRichUploadCallback.a(1, 8, this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest);
+      this.d.a(1, 8, this.e);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgIMultiMsgRichUploadCallback.a(0, 8, this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest);
+    this.d.a(0, 8, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.VideoMultiMsgProcessor.1
  * JD-Core Version:    0.7.0.1
  */

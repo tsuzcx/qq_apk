@@ -19,7 +19,7 @@ public class TaskOfflineUtils
   public static TaskOfflineUtils.ConfigData a(String paramString, int paramInt)
   {
     TaskOfflineUtils.ConfigData localConfigData = new TaskOfflineUtils.ConfigData();
-    Object localObject = OfflineEnvHelper.a(paramString);
+    Object localObject = OfflineEnvHelper.b(paramString);
     if (localObject == null)
     {
       QLog.d(a, 2, "checkOffLineConfig: offline root dir is null");
@@ -49,8 +49,8 @@ public class TaskOfflineUtils
       paramString = new JSONObject(a(new FileInputStream((File)localObject)));
       int i = paramString.getInt("version_id");
       int j = paramString.getInt("support_min_version_id");
-      localConfigData.jdField_a_of_type_Int = i;
-      localConfigData.b = j;
+      localConfigData.b = i;
+      localConfigData.c = j;
       paramString = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("version_id : ");
@@ -60,12 +60,12 @@ public class TaskOfflineUtils
       QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
       if (i == paramInt)
       {
-        localConfigData.jdField_a_of_type_Boolean = true;
+        localConfigData.a = true;
         return localConfigData;
       }
       if ((i > paramInt) && (j <= paramInt))
       {
-        localConfigData.jdField_a_of_type_Boolean = true;
+        localConfigData.a = true;
         return localConfigData;
       }
     }
@@ -152,7 +152,7 @@ public class TaskOfflineUtils
     QLog.d(str, 2, localStringBuilder.toString());
     try
     {
-      HtmlOffline.a();
+      HtmlOffline.b();
     }
     catch (Throwable localThrowable)
     {
@@ -163,7 +163,7 @@ public class TaskOfflineUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskOfflineUtils
  * JD-Core Version:    0.7.0.1
  */

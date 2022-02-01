@@ -17,13 +17,13 @@ public final class TopicSDK$initEmotionSDK$emoJiEmotionImpl$1
   @Nullable
   public Drawable getEmoJiDrawable(int paramInt)
   {
-    return this.a.a().a(paramInt);
+    return this.a.r().a(paramInt);
   }
   
   @NotNull
   public int[] getEmoJiResourceArray()
   {
-    int[] arrayOfInt = this.a.a().a();
+    int[] arrayOfInt = this.a.r().b();
     Intrinsics.checkExpressionValueIsNotNull(arrayOfInt, "topicSDKConfig.emoJiEmotion.emoJiResourceArray");
     return arrayOfInt;
   }
@@ -31,14 +31,14 @@ public final class TopicSDK$initEmotionSDK$emoJiEmotionImpl$1
   @NotNull
   public String[] getEmoJiShowNameArray()
   {
-    String[] arrayOfString = this.a.a().a();
+    String[] arrayOfString = this.a.r().a();
     Intrinsics.checkExpressionValueIsNotNull(arrayOfString, "topicSDKConfig.emoJiEmotion.emoJiShowNameArray");
     return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.TopicSDK.initEmotionSDK.emoJiEmotionImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,75 +4,65 @@ import android.graphics.PointF;
 
 public class ARLocalGestureCircleRecogResult$ARCircleResult
 {
-  public int a;
-  public ARLocalGestureCircleRecogResult.ARCircle a;
-  public int[] a;
-  public PointF[] a;
-  public int b;
-  public PointF[] b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 80;
-  public int f = 8;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
-  public int j = 0;
-  
-  public ARLocalGestureCircleRecogResult$ARCircleResult()
-  {
-    this.jdField_a_of_type_Int = -2;
-    this.jdField_b_of_type_Int = -2;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle = new ARLocalGestureCircleRecogResult.ARCircle();
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
-    this.jdField_b_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
-    this.jdField_a_of_type_ArrayOfInt = new int[1000];
-  }
+  public int a = -2;
+  public int b = -2;
+  public ARLocalGestureCircleRecogResult.ARCircle c = new ARLocalGestureCircleRecogResult.ARCircle();
+  public PointF[] d = new PointF[1000];
+  public int e = 0;
+  public int f = 0;
+  public PointF[] g = new PointF[1000];
+  public int[] h = new int[1000];
+  public int i = 80;
+  public int j = 8;
+  public int k = 0;
+  public int l = 0;
+  public int m = 0;
+  public int n = 0;
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -2;
-    this.jdField_b_of_type_Int = -2;
-    ARLocalGestureCircleRecogResult.ARCircle localARCircle = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle;
+    this.a = -2;
+    this.b = -2;
+    ARLocalGestureCircleRecogResult.ARCircle localARCircle = this.c;
     localARCircle.b = 0.0F;
     localARCircle.c = 0.0F;
-    localARCircle.jdField_a_of_type_Float = 0.0F;
-    this.c = 0;
-    this.d = 0;
-    this.f = 10;
-    this.g = 0;
-    this.h = 0;
-    this.i = 0;
-    this.j = 0;
+    localARCircle.a = 0.0F;
+    this.e = 0;
+    this.f = 0;
+    this.j = 10;
+    this.k = 0;
+    this.l = 0;
+    this.m = 0;
+    this.n = 0;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARCircleResult{, state = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", lastState = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", pointCnt = ");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", lastPointCnt = ");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", genIdx = ");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", gesturePointCnt = ");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", stillPointCnt = ");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(", goodPointCnt = ");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.n);
     localStringBuilder.append(", circle(r,x,y,c) = (");
-    localStringBuilder.append((int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float);
+    localStringBuilder.append((int)this.c.a);
     localStringBuilder.append(",");
-    localStringBuilder.append((int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b);
+    localStringBuilder.append((int)this.c.b);
     localStringBuilder.append(",");
-    localStringBuilder.append((int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c);
+    localStringBuilder.append((int)this.c.c);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c.d);
     localStringBuilder.append(")");
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -80,7 +70,7 @@ public class ARLocalGestureCircleRecogResult$ARCircleResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult
  * JD-Core Version:    0.7.0.1
  */

@@ -45,7 +45,7 @@ class FeedSegment$3
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (UIUtils.b()) {
+    if (UIUtils.d()) {
       return;
     }
     int i = paramView.getId();
@@ -55,17 +55,17 @@ class FeedSegment$3
     {
     default: 
       return;
-    case 2131374516: 
+    case 2131442686: 
       FeedSegment.a(this.a, paramInt);
       return;
-    case 2131374504: 
-    case 2131374505: 
-      paramBaseViewHolder = ((StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a();
+    case 2131442674: 
+    case 2131442675: 
+      paramBaseViewHolder = ((StoryHomeFeed)this.a.b.i().get(paramInt)).g();
       localObject = paramBaseViewHolder.getOwner();
       paramInt = StoryReportor.a(paramBaseViewHolder);
       i = StoryReportor.b(paramBaseViewHolder);
       paramView = paramObject;
-      if (this.a.jdField_a_of_type_Int == 11) {
+      if (this.a.a == 11) {
         paramView = "3";
       }
       if ((localObject instanceof ShareGroupItem)) {
@@ -76,7 +76,7 @@ class FeedSegment$3
       StoryReportor.a("home_page", "clk_head_nick", paramInt, 0, new String[] { String.valueOf(i), paramView, paramBaseViewHolder.feedId, paramObject });
       if (((IFeedOwner)localObject).isMe())
       {
-        StoryApi.a(FeedSegment.a(this.a), 4, paramBaseViewHolder.getOwner().getUnionId());
+        StoryApi.a(FeedSegment.b(this.a), 4, paramBaseViewHolder.getOwner().getUnionId());
         return;
       }
       paramInt = ((IFeedOwner)localObject).getRelationType();
@@ -94,21 +94,21 @@ class FeedSegment$3
         if (!(localObject instanceof ShareGroupItem)) {
           return;
         }
-        if (this.a.jdField_a_of_type_Int != 10) {
-          break label1049;
+        if (this.a.a != 10) {
+          break label1050;
         }
         paramInt = 1;
-        if (this.a.jdField_a_of_type_Int != 10) {
-          break label1055;
+        if (this.a.a != 10) {
+          break label1056;
         }
         i = 88;
-        QQStoryShareGroupProfileActivity.a(FeedSegment.a(this.a), 1, ((IFeedOwner)localObject).getUnionId(), String.valueOf(((ShareGroupItem)localObject).groupUin), paramInt, i);
+        QQStoryShareGroupProfileActivity.a(FeedSegment.d(this.a), 1, ((IFeedOwner)localObject).getUnionId(), String.valueOf(((ShareGroupItem)localObject).groupUin), paramInt, i);
         return;
       }
       catch (NumberFormatException paramView)
       {
         if (!QLog.isColorLevel()) {
-          break label1048;
+          break label1049;
         }
       }
       QLog.w("Q.qqstory.home:FeedSegment", 2, "troopId error ", paramView);
@@ -128,19 +128,19 @@ class FeedSegment$3
           } else {
             paramInt = 2;
           }
-          QQStoryShareGroupProfileActivity.a(FeedSegment.a(this.a), 2, paramView, null, paramInt, 74);
+          QQStoryShareGroupProfileActivity.a(FeedSegment.b(this.a), 2, paramView, null, paramInt, 74);
         }
       }
       else
       {
-        StoryApi.a(FeedSegment.a(this.a), 4, ((IFeedOwner)localObject).getUnionId());
+        StoryApi.a(FeedSegment.b(this.a), 4, ((IFeedOwner)localObject).getUnionId());
         return;
-        if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a() != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size() > paramInt) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) != null))
+        if ((this.a.b.i() != null) && (this.a.b.i().size() > paramInt) && (this.a.b.i().get(paramInt) != null))
         {
-          if (!(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) instanceof VideoListHomeFeed)) {
+          if (!(this.a.b.i().get(paramInt) instanceof VideoListHomeFeed)) {
             return;
           }
-          paramView = (VideoListHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt);
+          paramView = (VideoListHomeFeed)this.a.b.i().get(paramInt);
           paramObject = new ArrayList();
           paramBaseViewHolder = paramView.a().iterator();
           paramInt = 0;
@@ -154,63 +154,63 @@ class FeedSegment$3
             }
           }
           if (paramObject.size() > 0) {
-            StoryVideoUploadManager.a(paramObject, FeedSegment.a(this.a));
+            StoryVideoUploadManager.a(paramObject, FeedSegment.b(this.a));
           }
-          if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size() > 0) {
-            StoryReportor.a("home_page", "clk_retry", StoryReportor.a(paramView.a()), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
+          if (this.a.b.i().size() > 0) {
+            StoryReportor.a("home_page", "clk_retry", StoryReportor.a(paramView.i()), 0, new String[] { "1", StoryReportor.b(this.a.a), String.valueOf(paramInt), paramView.i().feedId });
           }
         }
         else
         {
           SLog.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
           return;
-          if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) instanceof GeneralHomeFeed)) {
+          if ((this.a.b.i().get(paramInt) instanceof GeneralHomeFeed)) {
             StoryReportor.a("share_story", "clk_guide", 1, 0, new String[0]);
-          } else if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) instanceof ShareGroupHomeFeed)) {
+          } else if ((this.a.b.i().get(paramInt) instanceof ShareGroupHomeFeed)) {
             StoryReportor.a("share_story", "clk_guide", 2, 0, new String[0]);
           }
-          paramObject = (StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt);
-          if (paramObject == FeedSegment.a(this.a))
+          paramObject = (StoryHomeFeed)this.a.b.i().get(paramInt);
+          if (paramObject == FeedSegment.c(this.a))
           {
             FeedSegment.a(this.a, null);
             FeedSegment.a(this.a, false);
-            this.a.c(true);
+            this.a.e(true);
           }
           if ((paramObject instanceof GeneralHomeFeed))
           {
             paramView = (GeneralHomeFeed)paramObject;
-            paramView.a = false;
+            paramView.e = false;
             paramView.a();
             return;
           }
           if ((paramObject instanceof ShareGroupHomeFeed))
           {
-            paramView = ((ShareGroupFeedItem)((ShareGroupHomeFeed)paramObject).a()).getOwner();
+            paramView = ((ShareGroupFeedItem)((ShareGroupHomeFeed)paramObject).i()).getOwner();
             FeedSegment.a(this.a, paramObject, paramView);
             return;
           }
           if ((paramObject instanceof GeneralRecommendHomeFeed))
           {
-            if (!NetworkUtils.a(FeedSegment.a(this.a)))
+            if (!NetworkUtils.a(FeedSegment.b(this.a)))
             {
-              QQToast.a(FeedSegment.a(this.a), 1, HardCodeUtil.a(2131704577), 0).a();
+              QQToast.makeText(FeedSegment.b(this.a), 1, HardCodeUtil.a(2131902484), 0).show();
               return;
             }
             paramObject = (GeneralRecommendHomeFeed)paramObject;
-            localObject = paramObject.a().getOwner();
-            ((QQStoryHandler)PlayModeUtils.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a(1, ((QQUserUIItem)localObject).getUnionId(), 0, 10);
+            localObject = paramObject.h().getOwner();
+            ((QQStoryHandler)PlayModeUtils.b().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a(1, ((QQUserUIItem)localObject).getUnionId(), 0, 10);
             paramView.setVisibility(8);
-            ((RelativeLayout)paramBaseViewHolder.a(2131374517)).setVisibility(8);
-            StoryReportor.a("home_page", "follow_recom", 0, 0, new String[] { "1", "1", ((QQUserUIItem)localObject).getUnionId(), paramObject.a().feedId });
+            ((RelativeLayout)paramBaseViewHolder.a(2131442687)).setVisibility(8);
+            StoryReportor.a("home_page", "follow_recom", 0, 0, new String[] { "1", "1", ((QQUserUIItem)localObject).getUnionId(), paramObject.h().feedId });
           }
         }
       }
-      label1048:
-      return;
       label1049:
+      return;
+      label1050:
       paramInt = 9;
       continue;
-      label1055:
+      label1056:
       i = 76;
     }
   }

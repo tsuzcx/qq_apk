@@ -9,14 +9,14 @@ class TroopPobingEffectItemView$5
   
   public void run()
   {
-    if (this.a.a == TroopPobingEffectItemView.a(this.this$0)) {
+    if (this.a.a == TroopPobingEffectItemView.e(this.this$0)) {
       TroopPobingEffectItemView.a(this.this$0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingEffectItemView.5
  * JD-Core Version:    0.7.0.1
  */

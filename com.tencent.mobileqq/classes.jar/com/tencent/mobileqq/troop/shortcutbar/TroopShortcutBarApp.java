@@ -9,11 +9,11 @@ import tencent.im.oidb.cmd0xe82.cmd0xe82.App;
 public class TroopShortcutBarApp
   extends ShortcutBarInfo
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private String a;
+  private int b = 0;
+  private long c = 0L;
+  private boolean d = false;
+  private boolean e = false;
   
   public TroopShortcutBarApp(long paramLong, String paramString1, String paramString2, int paramInt)
   {
@@ -23,7 +23,7 @@ public class TroopShortcutBarApp
   public static TroopShortcutBarApp a(String paramString1, String paramString2)
   {
     paramString1 = new TroopShortcutBarApp(999L, paramString1, paramString2, 0);
-    paramString1.jdField_a_of_type_JavaLangString = "local";
+    paramString1.a = "local";
     return paramString1;
   }
   
@@ -32,9 +32,9 @@ public class TroopShortcutBarApp
     if (paramApp != null)
     {
       TroopShortcutBarApp localTroopShortcutBarApp = new TroopShortcutBarApp(paramApp.appid.get(), paramApp.name.get(), paramApp.icon.get(), paramApp.show_frame.get());
-      localTroopShortcutBarApp.jdField_a_of_type_JavaLangString = paramApp.url.get();
-      localTroopShortcutBarApp.jdField_a_of_type_Int = paramApp.redpoint.get();
-      localTroopShortcutBarApp.jdField_a_of_type_Long = paramApp.add_ts.get();
+      localTroopShortcutBarApp.a = paramApp.url.get();
+      localTroopShortcutBarApp.b = paramApp.redpoint.get();
+      localTroopShortcutBarApp.c = paramApp.add_ts.get();
       return localTroopShortcutBarApp;
     }
     return null;
@@ -42,47 +42,47 @@ public class TroopShortcutBarApp
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long c()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.d = paramBoolean;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public boolean c()
+  public String h()
+  {
+    return this.a;
+  }
+  
+  public int i()
   {
     return this.b;
+  }
+  
+  public long j()
+  {
+    return this.c;
+  }
+  
+  public boolean k()
+  {
+    return this.d;
+  }
+  
+  public boolean l()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarApp
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ final class StudyModeSwitchDialog$btnSwitchOn$2
   
   public final Button invoke()
   {
-    return (Button)this.this$0.findViewById(2131364080);
+    return (Button)this.this$0.findViewById(2131430043);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.btnSwitchOn.2
  * JD-Core Version:    0.7.0.1
  */

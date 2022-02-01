@@ -18,14 +18,14 @@ class GaInviteLockActivity$MainThreadRunnableTask
   
   public void run()
   {
-    if (this.this$0.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(this.b);
+    if (this.this$0.k != null) {
+      this.this$0.k.setText(this.b);
     }
-    if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.this$0.h != null)
     {
       Object localObject = this.this$0;
-      localObject = ((GaInviteLockActivity)localObject).a(((GaInviteLockActivity)localObject).jdField_b_of_type_Int, this.this$0.jdField_a_of_type_Long, this.a, true, false);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(GaInviteLockActivity.a(this.this$0, (String)localObject));
+      localObject = ((GaInviteLockActivity)localObject).a(((GaInviteLockActivity)localObject).d, this.this$0.b, this.a, true, false);
+      this.this$0.h.setText(GaInviteLockActivity.b(this.this$0, (String)localObject));
     }
   }
 }

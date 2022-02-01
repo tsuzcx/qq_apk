@@ -29,14 +29,14 @@ import mqq.manager.Manager;
 public class FileTransferManager
   implements Manager
 {
-  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new FileTransferManager.1(this, Looper.getMainLooper());
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private final ArrayList<FileTransferManager.CallbackPack> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private WeakReference<QQAppInterface> a;
+  private final TransProcessorHandler b = new FileTransferManager.1(this, Looper.getMainLooper());
+  private final ArrayList<FileTransferManager.CallbackPack> c = new ArrayList();
   
   public FileTransferManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BuddyTransfileProcessor.class, ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttDownloadProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttUpProcessorClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CUploadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGroupUploadProClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttDownloadProcessorClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CPicDownloadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGroupDownloadProClass(), ForwardImageProcessor.class, ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getShortVideoUploadProcessorClass(), ShortVideoDownloadProcessor.class, ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getShortVideoForwardProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getPAAudioDownloadProcessorClass(), ((IScribblePicDownloadProcessor)QRoute.api(IScribblePicDownloadProcessor.class)).getProcessorClazz(), ((IScribblePicUploadProcessor)QRoute.api(IScribblePicUploadProcessor.class)).getProcessorClazz(), ForwardSdkShareProcessor.class, ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttUpProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getSlicePttUpProcessorClass() });
-    a(paramQQAppInterface);
+    this.b.addFilter(new Class[] { BuddyTransfileProcessor.class, ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttDownloadProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttUpProcessorClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CUploadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGroupUploadProClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttDownloadProcessorClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGuildDownloadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGuildUploadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CPicDownloadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGroupDownloadProClass(), ForwardImageProcessor.class, ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getShortVideoUploadProcessorClass(), ShortVideoDownloadProcessor.class, ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getShortVideoForwardProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getPAAudioDownloadProcessorClass(), ((IScribblePicDownloadProcessor)QRoute.api(IScribblePicDownloadProcessor.class)).getProcessorClazz(), ((IScribblePicUploadProcessor)QRoute.api(IScribblePicUploadProcessor.class)).getProcessorClazz(), ForwardSdkShareProcessor.class, ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttUpProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getSlicePttUpProcessorClass() });
+    b(paramQQAppInterface);
   }
   
   public static FileTransferManager a(QQAppInterface paramQQAppInterface)
@@ -44,29 +44,29 @@ public class FileTransferManager
     return (FileTransferManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_FILE_TRANS);
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  private void b(QQAppInterface paramQQAppInterface)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() == paramQQAppInterface)) {
       return;
     }
-    localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       a();
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    this.a = new WeakReference(paramQQAppInterface);
+    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).addHandle(this.b);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.c.clear();
+    WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
-      ((ITransFileController)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(ITransFileController.class)).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-      ((IProtoReqManager)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(IProtoReqManager.class, "")).onDestroy();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      ((ITransFileController)((QQAppInterface)this.a.get()).getRuntimeService(ITransFileController.class)).removeHandle(this.b);
+      ((IProtoReqManager)((QQAppInterface)this.a.get()).getRuntimeService(IProtoReqManager.class, "")).onDestroy();
+      this.a = null;
     }
   }
   
@@ -103,14 +103,14 @@ public class FileTransferManager
         i = j + 1;
       }
     }
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (i < this.c.size())
     {
-      localObject2 = (FileTransferManager.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localObject2 = (FileTransferManager.CallbackPack)this.c.get(i);
       j = i;
       if (localObject2 != null)
       {
         localObject1 = ((FileTransferManager.CallbackPack)localObject2).a();
-        localObject2 = ((FileTransferManager.CallbackPack)localObject2).a();
+        localObject2 = ((FileTransferManager.CallbackPack)localObject2).b();
         if ((localObject1 != null) && (localObject2 != null))
         {
           ((Callback)localObject2).handleMessage((View)localObject1, (FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
@@ -118,7 +118,7 @@ public class FileTransferManager
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+          this.c.remove(i);
           j = i - 1;
         }
       }
@@ -134,7 +134,7 @@ public class FileTransferManager
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         FileTransferManager.CallbackPack localCallbackPack = (FileTransferManager.CallbackPack)localIterator.next();
@@ -144,7 +144,7 @@ public class FileTransferManager
           return;
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(new FileTransferManager.CallbackPack(this, paramView, paramCallback));
+      this.c.add(new FileTransferManager.CallbackPack(this, paramView, paramCallback));
       return;
     }
     finally {}
@@ -158,8 +158,8 @@ public class FileTransferManager
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      if (this.c != null) {
+        this.c.clear();
       }
       return;
     }
@@ -177,7 +177,7 @@ public class FileTransferManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.FileTransferManager
  * JD-Core Version:    0.7.0.1
  */

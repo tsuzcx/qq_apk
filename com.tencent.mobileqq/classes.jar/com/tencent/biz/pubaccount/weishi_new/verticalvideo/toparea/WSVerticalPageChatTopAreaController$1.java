@@ -15,14 +15,14 @@ class WSVerticalPageChatTopAreaController$1
   {
     if (WSVerticalPageChatTopAreaController.a(this.a).getBaseActivity() != null)
     {
-      WSVerticalBeaconReport.d(WSVerticalPageChatTopAreaController.a(this.a).a(), WSVerticalPageChatTopAreaController.a(this.a).b(), WSVerticalPageChatTopAreaController.a(this.a).a());
+      WSVerticalBeaconReport.d(WSVerticalPageChatTopAreaController.a(this.a).k(), WSVerticalPageChatTopAreaController.a(this.a).l(), WSVerticalPageChatTopAreaController.a(this.a).F());
       WSVerticalPageChatTopAreaController.a(this.a).getBaseActivity().doOnBackPressed();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageChatTopAreaController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ class VideoFeedsDebugDialog$2
 {
   public void onClick(View paramView)
   {
-    if (VideoFeedsDebugDialog.b(this.a).getVisibility() == 0)
+    if (VideoFeedsDebugDialog.c(this.a).getVisibility() == 0)
     {
-      VideoFeedsDebugDialog.a(this.a);
+      VideoFeedsDebugDialog.b(this.a);
       return;
     }
-    VideoFeedsDebugDialog.a(this.a);
-    VideoFeedsDebugDialog.b(this.a).setVisibility(0);
+    VideoFeedsDebugDialog.b(this.a);
+    VideoFeedsDebugDialog.c(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsDebugDialog.2
  * JD-Core Version:    0.7.0.1
  */

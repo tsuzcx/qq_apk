@@ -11,13 +11,13 @@ class BrandPageWebview$7
   public void run()
   {
     if (BrandPageWebview.access$000(this.this$0) != null) {
-      BrandPageWebview.access$000(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, AppBrandUtil.convertValueCallback(this.jdField_a_of_type_AndroidWebkitValueCallback));
+      BrandPageWebview.access$000(this.this$0).evaluateJavascript(this.a, AppBrandUtil.convertValueCallback(this.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.7
  * JD-Core Version:    0.7.0.1
  */

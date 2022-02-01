@@ -9,22 +9,22 @@ final class LightAppSettingInfo$1
   public LightAppSettingInfo a(Parcel paramParcel)
   {
     LightAppSettingInfo localLightAppSettingInfo = new LightAppSettingInfo();
-    localLightAppSettingInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(ClassLoader.getSystemClassLoader());
-    localLightAppSettingInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localLightAppSettingInfo.a = paramParcel.readInt();
+    localLightAppSettingInfo.b = paramParcel.readInt();
+    localLightAppSettingInfo.c = paramParcel.readInt();
+    localLightAppSettingInfo.d = paramParcel.readLong();
+    localLightAppSettingInfo.e = paramParcel.readArrayList(ClassLoader.getSystemClassLoader());
     localLightAppSettingInfo.f = paramParcel.readString();
     localLightAppSettingInfo.g = paramParcel.readString();
-    localLightAppSettingInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(ClassLoader.getSystemClassLoader());
-    localLightAppSettingInfo.h = paramParcel.readString();
+    localLightAppSettingInfo.h = paramParcel.readInt();
+    localLightAppSettingInfo.i = paramParcel.readString();
+    localLightAppSettingInfo.j = paramParcel.readString();
+    localLightAppSettingInfo.k = paramParcel.readString();
+    localLightAppSettingInfo.l = paramParcel.readString();
+    localLightAppSettingInfo.m = paramParcel.readString();
+    localLightAppSettingInfo.n = paramParcel.readInt();
+    localLightAppSettingInfo.o = paramParcel.readHashMap(ClassLoader.getSystemClassLoader());
+    localLightAppSettingInfo.p = paramParcel.readString();
     return localLightAppSettingInfo;
   }
   
@@ -35,7 +35,7 @@ final class LightAppSettingInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.LightAppSettingInfo.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.vas.update.entity.db;
 
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import com.tencent.vas.update.callback.ICommonManager;
-import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.factory.api.ICommonManager;
+import com.tencent.vas.update.factory.api.IVasLog;
 import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import org.json.JSONObject;
 
@@ -37,7 +37,7 @@ public class ItemUpdateVerPtr
     catch (Exception paramItemUpdateVerPtr)
     {
       paramItemUpdateVerPtr.printStackTrace();
-      VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramItemUpdateVerPtr);
+      VasUpdateWrapper.getLog().a("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramItemUpdateVerPtr);
     }
     return localJSONObject.toString();
   }
@@ -66,14 +66,14 @@ public class ItemUpdateVerPtr
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramString);
+      VasUpdateWrapper.getLog().a("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramString);
     }
     return null;
   }
   
   public boolean checkItemIsCurrentVersion()
   {
-    String str = VasUpdateWrapper.getCommonManager().getAppVersion();
+    String str = VasUpdateWrapper.getCommonManager().d();
     IVasLog localIVasLog = VasUpdateWrapper.getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkItemIsCurrentVersion itemId = ");
@@ -82,7 +82,7 @@ public class ItemUpdateVerPtr
     localStringBuilder.append(str);
     localStringBuilder.append(" itemVersion = ");
     localStringBuilder.append(this.mAppVersion);
-    localIVasLog.e("VasUpdate_ItemUpdateVerPtr", localStringBuilder.toString());
+    localIVasLog.c("VasUpdate_ItemUpdateVerPtr", localStringBuilder.toString());
     if (TextUtils.isEmpty(this.mAppVersion)) {
       return true;
     }
@@ -106,7 +106,7 @@ public class ItemUpdateVerPtr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.ItemUpdateVerPtr
  * JD-Core Version:    0.7.0.1
  */

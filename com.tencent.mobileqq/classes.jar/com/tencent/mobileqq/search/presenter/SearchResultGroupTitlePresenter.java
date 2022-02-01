@@ -31,12 +31,12 @@ public class SearchResultGroupTitlePresenter
       if (TextUtils.isEmpty(str)) {
         localObject = "";
       }
-      if (localGroupSearchModeTitle.b())
+      if (localGroupSearchModeTitle.j())
       {
-        str = localGroupSearchModeTitle.b();
+        str = localGroupSearchModeTitle.c();
         if (!TextUtils.isEmpty(str))
         {
-          str = SearchUtils.a(localSearchResultGroupTitleView.a(), SearchUtils.a(localSearchResultGroupTitleView.a(), HardCodeUtil.a(2131713572)) * 10.0F, 1, str, str, false, false, true).toString();
+          str = SearchUtils.a(localSearchResultGroupTitleView.a(), SearchUtils.a(localSearchResultGroupTitleView.a(), HardCodeUtil.a(2131911118)) * 10.0F, 1, str, str, false, false, true).toString();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append("-");
@@ -54,12 +54,12 @@ public class SearchResultGroupTitlePresenter
       {
         localSearchResultGroupTitleView.a().setText((CharSequence)localObject);
       }
-      if (localGroupSearchModeTitle.a())
+      if (localGroupSearchModeTitle.f())
       {
-        paramISearchResultGroupView.b().setText(localGroupSearchModeTitle.c());
+        paramISearchResultGroupView.b().setText(localGroupSearchModeTitle.g());
         paramISearchResultGroupView.b().setVisibility(0);
-        if (TextUtils.equals(localGroupSearchModeTitle.a(), HardCodeUtil.a(2131697851))) {
-          UniteSearchReportController.a(null, 0, UniteSearchActivity.d, "0X800BA24", 0, 0, null, null);
+        if (TextUtils.equals(localGroupSearchModeTitle.a(), HardCodeUtil.a(2131895628))) {
+          UniteSearchReportController.a(null, 0, UniteSearchActivity.f, "0X800BA24", 0, 0, null, null);
         }
       }
       else
@@ -69,13 +69,14 @@ public class SearchResultGroupTitlePresenter
     }
     Object localObject = paramISearchResultGroupView.b();
     int i = -1;
-    ((TextView)localObject).setTag(2131380885, Integer.valueOf(-1));
+    ((TextView)localObject).setTag(2131449868, Integer.valueOf(-1));
     if ((paramIModel instanceof ISearchResultGroupModel))
     {
       paramIModel = (ISearchResultGroupModel)paramIModel;
       paramISearchResultGroupView.b().setOnClickListener(new SearchResultGroupTitlePresenter.1(this, paramIModel));
+      paramIModel.dl_();
     }
-    paramIModel = paramISearchResultGroupView.a().getTag(2131380885);
+    paramIModel = paramISearchResultGroupView.h().getTag(2131449868);
     if ((paramIModel instanceof Integer)) {
       i = ((Integer)paramIModel).intValue();
     }
@@ -91,7 +92,7 @@ public class SearchResultGroupTitlePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchResultGroupTitlePresenter
  * JD-Core Version:    0.7.0.1
  */

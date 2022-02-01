@@ -22,24 +22,23 @@ import com.tencent.qphone.base.util.QLog;
 public class TogetherTipsBar
   implements TipsBarTask
 {
-  protected View.OnClickListener a;
-  protected ViewGroup a;
-  protected BaseChatPie a;
   private WatchPanelView a;
-  protected QQBlurView a;
-  protected boolean a;
+  protected BaseChatPie b;
+  protected QQBlurView c;
+  protected View.OnClickListener d;
+  protected ViewGroup e;
+  protected boolean f = false;
   
   public TogetherTipsBar(BaseChatPie paramBaseChatPie, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.b = paramBaseChatPie;
+    this.d = paramOnClickListener;
   }
   
   private void b(TogetherSession paramTogetherSession, QQAppInterface paramQQAppInterface)
   {
     paramTogetherSession = paramTogetherSession.b(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.a(0, paramTogetherSession);
+    this.a.a(0, paramTogetherSession);
   }
   
   public int a()
@@ -47,72 +46,29 @@ public class TogetherTipsBar
     return 1;
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView;
-  }
-  
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.e != null)
     {
-      a();
-      return this.jdField_a_of_type_AndroidViewViewGroup;
+      f();
+      return this.e;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a()).inflate(2131560949, null));
-    a();
-    paramVarArgs = new FrameLayout.LayoutParams(-1, AIOUtils.b(56.0F, this.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(c());
+    this.e = ((ViewGroup)LayoutInflater.from(this.b.aX()).inflate(2131627290, null));
+    f();
+    paramVarArgs = new FrameLayout.LayoutParams(-1, AIOUtils.b(56.0F, this.e.getResources()));
+    View localView = this.e.findViewById(d());
     if (localView != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(localView);
+      this.e.removeView(localView);
     }
     a(paramVarArgs);
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378970));
-    c();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("showBlurView() called mBlurBgView = ");
-      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-      QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372219);
-    if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false)))
-    {
-      ((View)localObject).setBackgroundColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131167028));
-      ((View)localObject).setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("showBlurView() gone called mBlurBgView = ");
-        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-        QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
-      return;
-    }
-    ((View)localObject).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("showBlurView() visibility called mBlurBgView = ");
-      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-      QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
-    }
+    return this.e;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 1000)
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      paramVarArgs = this.c;
       if (paramVarArgs != null)
       {
         paramVarArgs.a();
@@ -120,14 +76,14 @@ public class TogetherTipsBar
         {
           paramVarArgs = new StringBuilder();
           paramVarArgs.append("resumeBlurView called mBlurBgView = ");
-          paramVarArgs.append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+          paramVarArgs.append(Integer.toHexString(System.identityHashCode(this.c)));
           QLog.d("TogetherTipsBar", 2, paramVarArgs.toString());
         }
       }
     }
     else if (paramInt == 1003)
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      paramVarArgs = this.c;
       if (paramVarArgs != null)
       {
         paramVarArgs.b();
@@ -135,49 +91,44 @@ public class TogetherTipsBar
         {
           paramVarArgs = new StringBuilder();
           paramVarArgs.append("pauseBlurView called mBlurBgView = ");
-          paramVarArgs.append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+          paramVarArgs.append(Integer.toHexString(System.identityHashCode(this.c)));
           QLog.d("TogetherTipsBar", 2, paramVarArgs.toString());
         }
       }
     }
     else if (paramInt == 1004)
     {
-      b();
+      g();
     }
   }
   
   protected void a(FrameLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView = new WatchPanelView(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-    WatchPanelView localWatchPanelView = this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView;
-    localWatchPanelView.jdField_a_of_type_AndroidViewView$OnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    this.a = new WatchPanelView(this.b.aX());
+    WatchPanelView localWatchPanelView = this.a;
+    localWatchPanelView.h = this.d;
     localWatchPanelView.setLayoutParams(paramLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.setId(c());
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView);
+    this.a.setId(d());
+    this.a.setOnClickListener(this.d);
+    this.a.setVisibility(0);
+    this.e.addView(this.a);
   }
   
   public void a(TogetherSession paramTogetherSession, QQAppInterface paramQQAppInterface)
   {
-    WatchPanelView localWatchPanelView = this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView;
+    WatchPanelView localWatchPanelView = this.a;
     if (localWatchPanelView != null)
     {
       localWatchPanelView.c(0);
-      localWatchPanelView = this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView;
-      localWatchPanelView.b(localWatchPanelView.getResources().getString(paramTogetherSession.d()));
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.a(paramTogetherSession.a(paramQQAppInterface), 2131167036);
+      localWatchPanelView = this.a;
+      localWatchPanelView.b(localWatchPanelView.getResources().getString(paramTogetherSession.h()));
+      this.a.a(paramTogetherSession.a(paramQQAppInterface), 2131167972);
       b(paramTogetherSession, paramQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.a(paramTogetherSession.a());
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.b(paramTogetherSession.b());
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.a(paramTogetherSession.a());
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView.a(paramTogetherSession.f, paramQQAppInterface);
+      this.a.a(paramTogetherSession.b());
+      this.a.b(paramTogetherSession.c());
+      this.a.a(paramTogetherSession.a());
+      this.a.a(paramTogetherSession.r, paramQQAppInterface);
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
   }
   
   public int b()
@@ -185,18 +136,71 @@ public class TogetherTipsBar
     return 26;
   }
   
-  protected void b()
+  public int[] c()
+  {
+    return null;
+  }
+  
+  protected int d()
+  {
+    return 2131447678;
+  }
+  
+  public View e()
+  {
+    return this.a;
+  }
+  
+  protected void f()
+  {
+    this.c = ((QQBlurView)this.e.findViewById(2131447679));
+    h();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showBlurView() called mBlurBgView = ");
+      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
+      QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.e.findViewById(2131439721);
+    if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false)))
+    {
+      ((View)localObject).setBackgroundColor(this.e.getResources().getColor(2131167964));
+      ((View)localObject).setVisibility(0);
+      this.c.setVisibility(8);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showBlurView() gone called mBlurBgView = ");
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
+        QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
+      }
+      this.c = null;
+      return;
+    }
+    ((View)localObject).setVisibility(8);
+    this.c.setVisibility(0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showBlurView() visibility called mBlurBgView = ");
+      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
+      QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  protected void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("TogetherTipsBar", 2, "destroyUI()");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a().a().a(null);
-    if (this.jdField_a_of_type_Boolean)
+    this.b.bx().d().d().a(null);
+    if (this.f)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378970));
-      this.jdField_a_of_type_Boolean = false;
+      this.c = ((QQBlurView)this.e.findViewById(2131447679));
+      this.f = false;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((QQBlurView)localObject).c();
@@ -204,45 +208,40 @@ public class TogetherTipsBar
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("destroyBlurView called mBlurBgView = ");
-        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
         QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+      this.c = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherUiWatchPanelView;
+    localObject = this.a;
     if (localObject != null) {
       ((WatchPanelView)localObject).a();
     }
   }
   
-  protected int c()
-  {
-    return 2131378969;
-  }
-  
   @TargetApi(19)
-  protected void c()
+  protected void h()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      ((QQBlurView)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      ((QQBlurView)localObject).a(this.b.aZ);
+      localObject = this.c;
       ((QQBlurView)localObject).b((View)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(4);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
-      this.jdField_a_of_type_Boolean = true;
+      this.c.b(0);
+      this.c.a(8.0F);
+      this.c.a(4);
+      this.c.d();
+      this.c.a();
+      this.f = true;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("initBlurView called mBlurBgView = ");
-        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
         QLog.d("TogetherTipsBar", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -250,7 +249,7 @@ public class TogetherTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TogetherTipsBar
  * JD-Core Version:    0.7.0.1
  */

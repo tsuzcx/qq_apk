@@ -14,31 +14,30 @@ import java.io.File;
 public class QQWakeAIEngine
   implements Handler.Callback
 {
-  public static volatile long a = 0L;
   public static volatile boolean a = false;
-  public static boolean b = true;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private AIModelParam jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam;
-  private QQWakeUICallback jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreQQWakeUICallback;
-  WakeDataSaveHelper jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreWakeDataSaveHelper;
-  private EglHandlerThread jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Handler b;
-  private boolean c;
+  public static volatile long b = 0L;
+  public static boolean c = true;
+  WakeDataSaveHelper d;
+  private boolean e;
+  private EglHandlerThread f;
+  private Handler g = null;
+  private Handler h = null;
+  private final Object i = new Object();
+  private AIModelParam j;
+  private QQWakeUICallback k;
   
   public QQWakeAIEngine(AIModelParam paramAIModelParam)
   {
-    this.jdField_b_of_type_AndroidOsHandler = null;
     a();
-    this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam = paramAIModelParam;
-    int i = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_a_of_type_Int;
+    this.j = paramAIModelParam;
+    int m = this.j.a;
     boolean bool = true;
-    if (i != 1) {
+    if (m != 1) {
       bool = false;
     }
-    this.c = bool;
+    this.e = bool;
     if (QassistantConfig.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreWakeDataSaveHelper = new WakeDataSaveHelper();
+      this.d = new WakeDataSaveHelper();
     }
   }
   
@@ -46,7 +45,7 @@ public class QQWakeAIEngine
   {
     try
     {
-      if ((HelloQQHelper.a()) && (!jdField_a_of_type_Boolean))
+      if ((HelloQQHelper.c()) && (!a))
       {
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(LoadManager.a("wake", HelloQQHelper.a()));
@@ -60,7 +59,7 @@ public class QQWakeAIEngine
           localStringBuilder.append((String)localObject);
           AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
           System.load((String)localObject);
-          jdField_a_of_type_Boolean = true;
+          a = true;
           return;
         }
         localStringBuilder = new StringBuilder();
@@ -76,26 +75,26 @@ public class QQWakeAIEngine
       localStringBuilder.append("loadSo() error: ");
       localStringBuilder.append(localException.getMessage());
       AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
-      jdField_b_of_type_Boolean = false;
+      c = false;
     }
   }
   
   private void b(short[] paramArrayOfShort, int paramInt)
   {
     Float localFloat = Float.valueOf(0.0F);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.i)
     {
       AssistantUtils.a("HelloQQWake", "doProcess mLock");
-      if (jdField_a_of_type_Long != 0L) {
-        localFloat = Float.valueOf(HelloQQDetect(jdField_a_of_type_Long, paramArrayOfShort, paramInt));
+      if (b != 0L) {
+        localFloat = Float.valueOf(HelloQQDetect(b, paramArrayOfShort, paramInt));
       }
-      ??? = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(200, localFloat);
-      this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)???);
+      ??? = this.h.obtainMessage(200, localFloat);
+      this.h.sendMessage((Message)???);
       if (QassistantConfig.a())
       {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreWakeDataSaveHelper.a(paramArrayOfShort);
+        this.d.a(paramArrayOfShort);
         if (localFloat.floatValue() > 0.5D) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreWakeDataSaveHelper.a(localFloat.floatValue());
+          this.d.a(localFloat.floatValue());
         }
       }
       return;
@@ -106,19 +105,19 @@ public class QQWakeAIEngine
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.i)
       {
-        if (jdField_a_of_type_Long == 0L)
+        if (b == 0L)
         {
-          jdField_a_of_type_Long = HelloQQInit(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.d, this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreAIModelParam.e);
+          b = HelloQQInit(this.j.a, this.j.b, this.j.c, this.j.d, this.j.e, this.j.f, this.j.g, this.j.h);
           Object localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("QQWakeAIEngine mNativeObj  after：");
-          ((StringBuilder)localObject2).append(jdField_a_of_type_Long);
+          ((StringBuilder)localObject2).append(b);
           AssistantUtils.a("HelloQQWake", ((StringBuilder)localObject2).toString());
-          if (this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreQQWakeUICallback != null)
+          if (this.k != null)
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreQQWakeUICallback;
-            if (jdField_a_of_type_Long == 0L) {
+            localObject2 = this.k;
+            if (b == 0L) {
               break label150;
             }
             bool = true;
@@ -134,16 +133,16 @@ public class QQWakeAIEngine
   
   private void e()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.i)
     {
-      if (jdField_a_of_type_Long != 0L)
+      if (b != 0L)
       {
-        HelloQQDestroy(jdField_a_of_type_Long);
+        HelloQQDestroy(b);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("native doDestroy  done:");
-        localStringBuilder.append(jdField_a_of_type_Long);
+        localStringBuilder.append(b);
         AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
-        jdField_a_of_type_Long = 0L;
+        b = 0L;
       }
       return;
     }
@@ -151,14 +150,14 @@ public class QQWakeAIEngine
   
   private void f()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.i)
     {
-      if (jdField_a_of_type_Long != 0L)
+      if (b != 0L)
       {
-        HelloQQClear(jdField_a_of_type_Long);
+        HelloQQClear(b);
         AssistantUtils.a("HelloQQWake", "native  HelloQQClear done");
       }
-      ??? = this.jdField_a_of_type_AndroidOsHandler;
+      ??? = this.g;
       if (??? != null) {
         ((Handler)???).removeMessages(101);
       }
@@ -176,10 +175,10 @@ public class QQWakeAIEngine
   
   public void a(Looper paramLooper)
   {
-    if (this.jdField_b_of_type_AndroidOsHandler == null) {
+    if (this.h == null) {
       if (paramLooper != null)
       {
-        this.jdField_b_of_type_AndroidOsHandler = new Handler(paramLooper, this);
+        this.h = new Handler(paramLooper, this);
       }
       else
       {
@@ -187,20 +186,20 @@ public class QQWakeAIEngine
         return;
       }
     }
-    if (this.c)
+    if (this.e)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread == null)
+      if (this.f == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread = new EglHandlerThread("QQWAKE_EGL_THREAD", null);
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.start();
+        this.f = new EglHandlerThread("QQWAKE_EGL_THREAD", null);
+        this.f.start();
       }
-      paramLooper = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.getLooper();
+      paramLooper = this.f.getLooper();
       if (paramLooper != null)
       {
-        if (this.jdField_a_of_type_AndroidOsHandler == null) {
-          this.jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper, this);
+        if (this.g == null) {
+          this.g = new Handler(paramLooper, this);
         }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(100);
+        this.g.sendEmptyMessage(100);
         return;
       }
       AssistantUtils.a("HelloQQWake", "QQWakeAIEngine init eglHandler exception: looper=null");
@@ -211,17 +210,17 @@ public class QQWakeAIEngine
   
   public void a(QQWakeUICallback paramQQWakeUICallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreQQWakeUICallback = paramQQWakeUICallback;
+    this.k = paramQQWakeUICallback;
   }
   
   public void a(short[] paramArrayOfShort, int paramInt)
   {
-    if (!this.c)
+    if (!this.e)
     {
       b(paramArrayOfShort, paramInt);
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage(101);
@@ -234,12 +233,12 @@ public class QQWakeAIEngine
   public void b()
   {
     AssistantUtils.a("HelloQQWake", "destroy()");
-    if (!this.c)
+    if (!this.e)
     {
       e();
       return;
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.g;
     if (localHandler != null) {
       localHandler.sendEmptyMessage(102);
     }
@@ -247,12 +246,12 @@ public class QQWakeAIEngine
   
   public void c()
   {
-    if (!this.c)
+    if (!this.e)
     {
       f();
       return;
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.g;
     if (localHandler != null) {
       localHandler.sendEmptyMessage(103);
     }
@@ -262,10 +261,10 @@ public class QQWakeAIEngine
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 200)
+    int m = paramMessage.what;
+    if (m != 200)
     {
-      switch (i)
+      switch (m)
       {
       default: 
         break;
@@ -278,10 +277,10 @@ public class QQWakeAIEngine
         e();
         try
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.quitSafely();
-          this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread = null;
-          this.jdField_a_of_type_AndroidOsHandler = null;
+          this.g.removeCallbacksAndMessages(null);
+          this.f.quitSafely();
+          this.f = null;
+          this.g = null;
         }
         catch (Exception paramMessage)
         {
@@ -298,13 +297,13 @@ public class QQWakeAIEngine
     }
     else
     {
-      float f = 0.0F;
+      float f1 = 0.0F;
       if ((paramMessage.obj instanceof Float)) {
-        f = ((Float)paramMessage.obj).floatValue();
+        f1 = ((Float)paramMessage.obj).floatValue();
       }
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeAicoreQQWakeUICallback;
+      paramMessage = this.k;
       if (paramMessage != null) {
-        paramMessage.a(f);
+        paramMessage.a(f1);
       }
     }
     return false;
@@ -312,7 +311,7 @@ public class QQWakeAIEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.aicore.QQWakeAIEngine
  * JD-Core Version:    0.7.0.1
  */

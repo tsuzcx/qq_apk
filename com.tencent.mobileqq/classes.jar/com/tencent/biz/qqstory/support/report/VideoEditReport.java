@@ -4,24 +4,10 @@ import com.tencent.mobileqq.statistics.ReportController;
 
 public class VideoEditReport
 {
-  public static int a = 0;
   public static String a = "";
-  public static int b = 0;
   public static String b = "";
-  
-  private static int a()
-  {
-    if (jdField_a_of_type_JavaLangString.equals("grp_tribe")) {
-      return 4;
-    }
-    if (jdField_a_of_type_JavaLangString.equals("grp_qq")) {
-      return 1;
-    }
-    if (jdField_a_of_type_JavaLangString.equals("grp_readinjoy")) {
-      return 5;
-    }
-    return 2;
-  }
+  public static int c;
+  public static int d;
   
   public static String a(int paramInt)
   {
@@ -40,17 +26,12 @@ public class VideoEditReport
     return str;
   }
   
-  public static void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
   public static void a(String paramString)
   {
     if (!a()) {
       return;
     }
-    ReportController.b(null, "dc00898", "", "", paramString, paramString, a(), 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, c(), 0, "", "", "", "");
   }
   
   public static void a(String paramString, int paramInt)
@@ -58,13 +39,13 @@ public class VideoEditReport
     if (!a()) {
       return;
     }
-    ReportController.b(null, "dc00898", "", "", paramString, paramString, a(), 0, String.valueOf(paramInt), "", "", "");
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, c(), 0, String.valueOf(paramInt), "", "", "");
   }
   
   public static void a(String paramString1, String paramString2)
   {
     if (b()) {
-      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, b(), 0, "", "", paramString2, "");
+      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, d(), 0, "", "", paramString2, "");
     }
   }
   
@@ -73,28 +54,17 @@ public class VideoEditReport
     if (!a()) {
       return;
     }
-    ReportController.b(null, "dc00898", "", "", paramString1, paramString1, a(), 0, paramString2, paramString3, paramString4, paramString5);
+    ReportController.b(null, "dc00898", "", "", paramString1, paramString1, c(), 0, paramString2, paramString3, paramString4, paramString5);
   }
   
   private static boolean a()
   {
-    return (jdField_a_of_type_JavaLangString.equals("grp_qq")) || (jdField_a_of_type_JavaLangString.equals("grp_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_tribe")) || (jdField_a_of_type_JavaLangString.equals("grp_readinjoy"));
-  }
-  
-  private static int b()
-  {
-    if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_qzone")) {
-      return 2;
-    }
-    if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_kandian")) {
-      return 3;
-    }
-    return 1;
+    return (a.equals("grp_qq")) || (a.equals("grp_qzone")) || (a.equals("grp_tribe")) || (a.equals("grp_readinjoy"));
   }
   
   public static void b(int paramInt)
   {
-    b = paramInt;
+    c = paramInt;
   }
   
   public static void b(String paramString)
@@ -105,13 +75,43 @@ public class VideoEditReport
   public static void b(String paramString, int paramInt)
   {
     if (b()) {
-      ReportController.b(null, "dc00898", "", "", paramString, paramString, b(), 0, String.valueOf(paramInt), "", "", "");
+      ReportController.b(null, "dc00898", "", "", paramString, paramString, d(), 0, String.valueOf(paramInt), "", "", "");
     }
   }
   
   private static boolean b()
   {
-    return (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_base")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_kandian"));
+    return (a.equals("grp_qq_pic_base")) || (a.equals("grp_qq_pic_qzone")) || (a.equals("grp_qq_pic_kandian"));
+  }
+  
+  private static int c()
+  {
+    if (a.equals("grp_tribe")) {
+      return 4;
+    }
+    if (a.equals("grp_qq")) {
+      return 1;
+    }
+    if (a.equals("grp_readinjoy")) {
+      return 5;
+    }
+    return 2;
+  }
+  
+  public static void c(int paramInt)
+  {
+    d = paramInt;
+  }
+  
+  private static int d()
+  {
+    if (a.equalsIgnoreCase("grp_qq_pic_qzone")) {
+      return 2;
+    }
+    if (a.equalsIgnoreCase("grp_qq_pic_kandian")) {
+      return 3;
+    }
+    return 1;
   }
 }
 

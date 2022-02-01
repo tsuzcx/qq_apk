@@ -11,33 +11,33 @@ final class WSCollectionJumpUtil$1
   
   public void a()
   {
-    WSCollectionJumpUtil.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003, this.jdField_a_of_type_JavaUtilMap);
+    WSCollectionJumpUtil.a(this.a, this.b, this.c, 1000003, this.d);
   }
   
   public void b()
   {
-    WSCollectionJumpUtil.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000007, this.jdField_a_of_type_JavaUtilMap);
+    WSCollectionJumpUtil.a(this.a, this.b, this.c, 1000007, this.d);
   }
   
   public void c()
   {
-    WSCollectionJumpUtil.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004, this.jdField_a_of_type_JavaUtilMap);
+    WSCollectionJumpUtil.a(this.a, this.b, this.c, 1000004, this.d);
   }
   
   public void d()
   {
-    WSCollectionJumpUtil.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002, this.jdField_a_of_type_JavaUtilMap);
+    WSCollectionJumpUtil.a(this.a, this.b, this.c, 1000002, this.d);
   }
   
   public void e()
   {
     super.e();
-    WSCollectionJumpUtil.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000001, this.jdField_a_of_type_JavaUtilMap);
+    WSCollectionJumpUtil.a(this.a, this.b, this.c, 1000001, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSCollectionJumpUtil.1
  * JD-Core Version:    0.7.0.1
  */

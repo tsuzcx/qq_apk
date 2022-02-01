@@ -17,7 +17,7 @@ class HealthBusinessPlugin$6
     String str1;
     String str2;
     JSONObject localJSONObject;
-    synchronized (HealthBusinessPlugin.a)
+    synchronized (HealthBusinessPlugin.e)
     {
       Iterator localIterator = this.a.iterator();
       do
@@ -26,7 +26,7 @@ class HealthBusinessPlugin$6
           break;
         }
         str1 = (String)localIterator.next();
-      } while ((TextUtils.isEmpty(str1)) || (HealthBusinessPlugin.a.containsKey(str1)));
+      } while ((TextUtils.isEmpty(str1)) || (HealthBusinessPlugin.e.containsKey(str1)));
       str2 = HealthBusinessPlugin.a(str1, 0);
       localJSONObject = new JSONObject();
     }
@@ -34,7 +34,7 @@ class HealthBusinessPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.6
  * JD-Core Version:    0.7.0.1
  */

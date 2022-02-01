@@ -10,15 +10,15 @@ class IPluginManager$1$1
   
   public void a(boolean paramBoolean, QShadowLoadInfo paramQShadowLoadInfo)
   {
-    PluginReporter.a(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramQShadowLoadInfo, paramBoolean);
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$1.a != null) {
-      this.jdField_a_of_type_CooperationPluginIPluginManager$1.a.a(paramBoolean);
+    PluginReporter.a(this.a, paramQShadowLoadInfo, paramBoolean);
+    if (this.b.a != null) {
+      this.b.a.a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.1.1
  * JD-Core Version:    0.7.0.1
  */

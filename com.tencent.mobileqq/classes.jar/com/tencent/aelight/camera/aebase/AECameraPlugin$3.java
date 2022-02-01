@@ -24,18 +24,18 @@ class AECameraPlugin$3
     }
     if (i != 0)
     {
-      AECameraPlugin.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin, 2);
-      paramNetResp = AECameraPlugin.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading succeeded");
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin.callJs(this.b, new String[] { paramNetResp.toString() });
-      if (AECameraPlugin.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin.mRuntime.a())) {
+      AECameraPlugin.a(this.d, 2);
+      paramNetResp = AECameraPlugin.a(this.d, this.a, "downloading succeeded");
+      this.d.callJs(this.b, new String[] { paramNetResp.toString() });
+      if (AECameraPlugin.a(this.d.mRuntime.d())) {
         FileUtils.a(BaseApplicationImpl.getApplication(), new File(this.c));
       }
     }
     else
     {
-      AECameraPlugin.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin, 3);
-      paramNetResp = AECameraPlugin.b(this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading failed");
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseAECameraPlugin.callJs(this.b, new String[] { paramNetResp.toString() });
+      AECameraPlugin.a(this.d, 3);
+      paramNetResp = AECameraPlugin.b(this.d, this.a, "downloading failed");
+      this.d.callJs(this.b, new String[] { paramNetResp.toString() });
     }
   }
   
@@ -43,7 +43,7 @@ class AECameraPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.AECameraPlugin.3
  * JD-Core Version:    0.7.0.1
  */

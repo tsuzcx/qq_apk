@@ -9,23 +9,22 @@ import com.tencent.image.URLImageView;
 
 class NetSearchTemplateNewEntranceView$NetSearchSubView
 {
-  public View.OnClickListener a;
   public View a;
-  public TextView a;
-  public URLImageView a;
+  public URLImageView b;
+  public TextView c;
+  public View.OnClickListener d = new NetSearchTemplateNewEntranceView.NetSearchSubView.1(this);
   
   public NetSearchTemplateNewEntranceView$NetSearchSubView(NetSearchTemplateNewEntranceView paramNetSearchTemplateNewEntranceView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new NetSearchTemplateNewEntranceView.NetSearchSubView.1(this);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561423, paramNetSearchTemplateNewEntranceView.b, false);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365517));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a = LayoutInflater.from(paramContext).inflate(2131627779, paramNetSearchTemplateNewEntranceView.y, false);
+    this.b = ((URLImageView)this.a.findViewById(2131435357));
+    this.c = ((TextView)this.a.findViewById(2131431733));
+    this.a.setOnClickListener(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateNewEntranceView.NetSearchSubView
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ public class SoHelper
     localStringBuilder.append("https://dlied5sdk.myapp.com/weiyun/android/qq/");
     localStringBuilder.append(a);
     localStringBuilder.append("/weiyunLibrary");
-    localStringBuilder.append(1004);
+    localStringBuilder.append(1005);
     localStringBuilder.append(".zip");
     b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://dlied5sdk.myapp.com/weiyun/android/qq/");
     localStringBuilder.append(a);
     localStringBuilder.append("/librarySize");
-    localStringBuilder.append(1004);
+    localStringBuilder.append(1005);
     localStringBuilder.append(".txt");
     c = localStringBuilder.toString();
   }
@@ -341,26 +341,6 @@ public class SoHelper
     }
   }
   
-  public static boolean a(Context paramContext)
-  {
-    File localFile1 = a(paramContext);
-    File localFile2 = b(paramContext);
-    File localFile3 = new File(paramContext.getFilesDir(), "libWeiyunSDK.so");
-    paramContext = PreferenceUtils.a(paramContext, "0", "key_local_so_version");
-    if ((localFile1.exists()) && ((localFile2.exists()) || (localFile3.exists())))
-    {
-      if (!String.valueOf(1004).equals(paramContext))
-      {
-        localFile1.delete();
-        localFile2.delete();
-        localFile3.delete();
-        return false;
-      }
-      return true;
-    }
-    return false;
-  }
-  
   public static File b(Context paramContext)
   {
     return new File(paramContext.getFilesDir(), "libwlc_data_cmd_qq_v1.0.1.so");
@@ -381,10 +361,30 @@ public class SoHelper
     }
     return "armeabi";
   }
+  
+  public static boolean c(Context paramContext)
+  {
+    File localFile1 = a(paramContext);
+    File localFile2 = b(paramContext);
+    File localFile3 = new File(paramContext.getFilesDir(), "libWeiyunSDK.so");
+    paramContext = PreferenceUtils.a(paramContext, "0", "key_local_so_version");
+    if ((localFile1.exists()) && ((localFile2.exists()) || (localFile3.exists())))
+    {
+      if (!String.valueOf(1005).equals(paramContext))
+      {
+        localFile1.delete();
+        localFile2.delete();
+        localFile3.delete();
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.utils.SoHelper
  * JD-Core Version:    0.7.0.1
  */

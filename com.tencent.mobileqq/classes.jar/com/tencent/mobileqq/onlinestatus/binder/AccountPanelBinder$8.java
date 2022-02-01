@@ -12,12 +12,12 @@ class AccountPanelBinder$8
   
   public void a(SimpleAccount paramSimpleAccount)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountPanelViewModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramSimpleAccount);
+    this.a.a(this.b, paramSimpleAccount);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountPanelBinder.8
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,7 @@ import org.json.JSONObject;
 
 public class MonitorConfig
 {
-  public static Map<String, MonitorConfig> a;
-  public int a;
+  public static Map<String, MonitorConfig> a = new HashMap();
   public int b;
   public int c;
   public int d;
@@ -22,15 +21,11 @@ public class MonitorConfig
   public int f;
   public int g;
   public int h;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public int i;
   
   public static void a(Context paramContext, String paramString)
   {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
+    if (a.get(paramString) != null) {
       return;
     }
     paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4);
@@ -45,7 +40,7 @@ public class MonitorConfig
   
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString1) == null)
+    if (a.get(paramString1) == null)
     {
       if (TextUtils.isEmpty(paramString2)) {
         return;
@@ -65,15 +60,15 @@ public class MonitorConfig
     {
       Object localObject = new JSONObject(paramString2);
       paramString2 = new MonitorConfig();
-      paramString2.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("startupId");
-      paramString2.b = ((JSONObject)localObject).optInt("downloadSucId");
-      paramString2.c = ((JSONObject)localObject).optInt("downloadFailId");
-      paramString2.d = ((JSONObject)localObject).optInt("loadSucId");
-      paramString2.e = ((JSONObject)localObject).optInt("loadFailId");
-      paramString2.f = ((JSONObject)localObject).optInt("startSucId");
-      paramString2.g = ((JSONObject)localObject).optInt("firstUserId");
-      paramString2.h = ((JSONObject)localObject).optInt("exitId");
-      jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+      paramString2.b = ((JSONObject)localObject).optInt("startupId");
+      paramString2.c = ((JSONObject)localObject).optInt("downloadSucId");
+      paramString2.d = ((JSONObject)localObject).optInt("downloadFailId");
+      paramString2.e = ((JSONObject)localObject).optInt("loadSucId");
+      paramString2.f = ((JSONObject)localObject).optInt("loadFailId");
+      paramString2.g = ((JSONObject)localObject).optInt("startSucId");
+      paramString2.h = ((JSONObject)localObject).optInt("firstUserId");
+      paramString2.i = ((JSONObject)localObject).optInt("exitId");
+      a.put(paramString1, paramString2);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -97,9 +92,9 @@ public class MonitorConfig
   
   public static void b(Context paramContext, String paramString)
   {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
+    if (a.get(paramString) != null)
     {
-      Monitor.b(String.valueOf(((MonitorConfig)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
+      Monitor.b(String.valueOf(((MonitorConfig)a.get(paramString)).b));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -111,7 +106,7 @@ public class MonitorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.MonitorConfig
  * JD-Core Version:    0.7.0.1
  */

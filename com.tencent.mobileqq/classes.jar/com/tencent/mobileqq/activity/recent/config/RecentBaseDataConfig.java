@@ -10,34 +10,29 @@ import java.util.Iterator;
 
 public class RecentBaseDataConfig
 {
-  protected static RecentMenuFlagDispatch a;
   protected static RecentStatusIconDispatch a;
-  private static final Object a;
-  private static final Object b = new Object();
+  protected static RecentMenuFlagDispatch b;
+  private static final Object c = new Object();
+  private static final Object d = new Object();
   
-  static
+  public static RecentStatusIconDispatch a()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static RecentMenuFlagDispatch a()
-  {
-    synchronized (b)
+    synchronized (c)
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch == null)
+      if (a == null)
       {
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch = new RecentMenuFlagDispatch();
+        a = new RecentStatusIconDispatch();
         Iterator localIterator = RecentCustomizedProcessorRegister.b.iterator();
         while (localIterator.hasNext())
         {
           Class localClass = (Class)localIterator.next();
-          if ((localClass != null) && (AbsMenuFlag.class.isAssignableFrom(localClass))) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch.a(localClass);
+          if ((localClass != null) && (AbsRecentStatus.class.isAssignableFrom(localClass))) {
+            a.a(localClass);
           }
         }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch.b();
+        a.b();
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigMenuRecentMenuFlagDispatch;
+      return a;
     }
     for (;;)
     {
@@ -45,24 +40,24 @@ public class RecentBaseDataConfig
     }
   }
   
-  public static RecentStatusIconDispatch a()
+  public static RecentMenuFlagDispatch b()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch == null)
+      if (b == null)
       {
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch = new RecentStatusIconDispatch();
+        b = new RecentMenuFlagDispatch();
         Iterator localIterator = RecentCustomizedProcessorRegister.b.iterator();
         while (localIterator.hasNext())
         {
           Class localClass = (Class)localIterator.next();
-          if ((localClass != null) && (AbsRecentStatus.class.isAssignableFrom(localClass))) {
-            jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch.a(localClass);
+          if ((localClass != null) && (AbsMenuFlag.class.isAssignableFrom(localClass))) {
+            b.a(localClass);
           }
         }
-        jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch.b();
+        b.b();
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigStatusIconRecentStatusIconDispatch;
+      return b;
     }
     for (;;)
     {
@@ -72,7 +67,7 @@ public class RecentBaseDataConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.RecentBaseDataConfig
  * JD-Core Version:    0.7.0.1
  */

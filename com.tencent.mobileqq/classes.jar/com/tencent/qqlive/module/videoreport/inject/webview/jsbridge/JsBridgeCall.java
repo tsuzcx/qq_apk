@@ -21,65 +21,23 @@ class JsBridgeCall
     ((StringBuilder)localObject).append(" url:");
     ((StringBuilder)localObject).append(paramString2);
     Log.w("DT_JsBridge", ((StringBuilder)localObject).toString());
-    if (!TextUtils.isEmpty(paramString1)) {}
-    for (;;)
-    {
-      Class[] arrayOfClass;
-      Object[] arrayOfObject;
-      int i;
+    if (!TextUtils.isEmpty(paramString1)) {
       try
       {
-        paramString1 = new JSONObject(paramString1);
-        localObject = paramString1.getString("method");
-        JSONArray localJSONArray1 = paramString1.getJSONArray("types");
-        JSONArray localJSONArray2 = paramString1.getJSONArray("args");
-        int j = localJSONArray1.length();
-        arrayOfClass = new Class[j];
-        arrayOfObject = new Object[j];
-        i = 0;
-        if (i < j)
+        localObject = new JSONObject(paramString1);
+        paramString1 = ((JSONObject)localObject).getString("method");
+        paramString2 = ((JSONObject)localObject).getJSONArray("types");
+        localObject = ((JSONObject)localObject).getJSONArray("args");
+        int j = paramString2.length();
+        Class[] arrayOfClass = new Class[j];
+        Object[] arrayOfObject = new Object[j];
+        int i = 0;
+        while (i < j)
         {
-          String str = localJSONArray1.optString(i);
-          boolean bool = "string".equals(str);
-          paramString2 = null;
-          paramString1 = null;
-          if (bool)
-          {
-            arrayOfClass[i] = String.class;
-            if (localJSONArray2.isNull(i))
-            {
-              paramString1 = paramString2;
-              break label417;
-            }
-            paramString1 = localJSONArray2.getString(i);
-            break label417;
-          }
-          if ("number".equals(str))
-          {
-            arrayOfClass[i] = Integer.TYPE;
-            arrayOfObject[i] = Integer.valueOf(localJSONArray2.getInt(i));
-            break label431;
-          }
-          if ("boolean".equals(str))
-          {
-            arrayOfClass[i] = Boolean.TYPE;
-            arrayOfObject[i] = Boolean.valueOf(localJSONArray2.getBoolean(i));
-            break label431;
-          }
-          if (!"object".equals(str)) {
-            break label431;
-          }
-          if (!localJSONArray2.isNull(i)) {
-            paramString1 = localJSONArray2.getString(i);
-          }
-          arrayOfObject[i] = paramString1;
-          if (arrayOfObject[i] == null) {
-            break label425;
-          }
-          arrayOfObject[i] = new JSONObject((String)arrayOfObject[i]);
-          break label425;
+          parseArgsAndValue((JSONArray)localObject, arrayOfClass, arrayOfObject, paramString2.optString(i), i);
+          i += 1;
         }
-        paramObject = getResponse(200, paramObject.getClass().getMethod((String)localObject, arrayOfClass).invoke(paramObject, arrayOfObject));
+        paramObject = getResponse(200, paramObject.getClass().getMethod(paramString1, arrayOfClass).invoke(paramObject, arrayOfObject));
         return paramObject;
       }
       catch (Exception paramObject)
@@ -100,15 +58,8 @@ class JsBridgeCall
         }
         return getResponse(500, paramObject);
       }
-      return getResponse(500, "call data empty");
-      label417:
-      arrayOfObject[i] = paramString1;
-      break label431;
-      label425:
-      arrayOfClass[i] = JSONObject.class;
-      label431:
-      i += 1;
     }
+    return getResponse(500, "call data empty");
   }
   
   public static String getResponse(int paramInt, Object paramObject)
@@ -118,10 +69,53 @@ class JsBridgeCall
     localHashMap.put("result", paramObject);
     return new JSONObject(localHashMap).toString();
   }
+  
+  private static void parseArgsAndValue(JSONArray paramJSONArray, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject, String paramString, int paramInt)
+  {
+    boolean bool = "string".equals(paramString);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (bool)
+    {
+      paramArrayOfClass[paramInt] = String.class;
+      if (paramJSONArray.isNull(paramInt)) {
+        paramJSONArray = localObject1;
+      } else {
+        paramJSONArray = paramJSONArray.getString(paramInt);
+      }
+      paramArrayOfObject[paramInt] = paramJSONArray;
+      return;
+    }
+    if ("number".equals(paramString))
+    {
+      paramArrayOfClass[paramInt] = Integer.TYPE;
+      paramArrayOfObject[paramInt] = Integer.valueOf(paramJSONArray.getInt(paramInt));
+      return;
+    }
+    if ("boolean".equals(paramString))
+    {
+      paramArrayOfClass[paramInt] = Boolean.TYPE;
+      paramArrayOfObject[paramInt] = Boolean.valueOf(paramJSONArray.getBoolean(paramInt));
+      return;
+    }
+    if ("object".equals(paramString))
+    {
+      if (paramJSONArray.isNull(paramInt)) {
+        paramJSONArray = localObject2;
+      } else {
+        paramJSONArray = paramJSONArray.getString(paramInt);
+      }
+      paramArrayOfObject[paramInt] = paramJSONArray;
+      if (paramArrayOfObject[paramInt] != null) {
+        paramArrayOfObject[paramInt] = new JSONObject((String)paramArrayOfObject[paramInt]);
+      }
+      paramArrayOfClass[paramInt] = JSONObject.class;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeCall
  * JD-Core Version:    0.7.0.1
  */

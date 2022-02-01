@@ -18,12 +18,12 @@ public class PublicAccountDecoder
 {
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
   {
-    ((IPublicAccountHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).onReceivePushMessage(paramMsgType0x210.sub_msg_type.get(), paramMsgType0x210.msg_content.get().toByteArray());
+    ((IPublicAccountHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).onReceivePushMessage(paramMsgType0x210.sub_msg_type.get(), paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.PublicAccountDecoder
  * JD-Core Version:    0.7.0.1
  */

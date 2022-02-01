@@ -5,15 +5,15 @@ import com.tencent.avgame.gamelobby.data.IBaseData;
 public class BaseAdapter$BaseViewConfig
 {
   public int a;
-  public BaseViewHolder.OnClickListener a;
-  public BaseViewHolder.ViewHolderFactory<?> a;
-  public Class<? extends BaseViewHolder<? extends IBaseData>> a;
+  public BaseViewHolder.ViewHolderFactory<?> b;
+  public Class<? extends BaseViewHolder<? extends IBaseData>> c;
+  public BaseViewHolder.OnClickListener d;
   
   public BaseAdapter$BaseViewConfig(int paramInt, BaseViewHolder.ViewHolderFactory<?> paramViewHolderFactory, BaseViewHolder.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$ViewHolderFactory = paramViewHolderFactory;
+    this.d = paramOnClickListener;
+    this.a = paramInt;
+    this.b = paramViewHolderFactory;
   }
 }
 

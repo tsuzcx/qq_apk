@@ -11,16 +11,16 @@ class BaseProgressIndicator$4
   public void onAnimationEnd(Drawable paramDrawable)
   {
     super.onAnimationEnd(paramDrawable);
-    if (!BaseProgressIndicator.b(this.a))
+    if (!BaseProgressIndicator.e(this.a))
     {
       paramDrawable = this.a;
-      paramDrawable.setVisibility(BaseProgressIndicator.b(paramDrawable));
+      paramDrawable.setVisibility(BaseProgressIndicator.f(paramDrawable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.BaseProgressIndicator.4
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ class DataLineHandler$2
         {
           paramIntent = new StringBuilder();
           paramIntent.append("mqq.intent.action.EXIT_");
-          paramIntent.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName());
+          paramIntent.append(this.a.getApp().getPackageName());
           if ((!paramContext.equals(paramIntent.toString())) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {}
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a();
+          this.b.b();
         }
       }
     }
@@ -33,7 +33,7 @@ class DataLineHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.2
  * JD-Core Version:    0.7.0.1
  */

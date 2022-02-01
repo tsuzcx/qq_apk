@@ -15,7 +15,7 @@ public class MiniAppLoadingFragment
 {
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363890) {
+    if (paramView.getId() == 2131429840) {
       getBaseActivity().finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -23,15 +23,15 @@ public class MiniAppLoadingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558489, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131363890).setOnClickListener(this);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131624038, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131429840).setOnClickListener(this);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.ui.MiniAppLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

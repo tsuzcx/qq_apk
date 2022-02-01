@@ -23,7 +23,7 @@ class StoryVideoUploadManager$7
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramVarArgs = ((StoryManager)SuperManager.a(5)).a();
+    paramVarArgs = ((StoryManager)SuperManager.a(5)).d();
     paramJobContext = new ArrayList(paramVarArgs.size());
     paramVarArgs = paramVarArgs.iterator();
     while (paramVarArgs.hasNext()) {
@@ -39,7 +39,7 @@ class StoryVideoUploadManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.7
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemRemark
   extends AbsStructMsgTextElement
 {
-  String as;
+  String aM;
   
   public StructMsgItemRemark()
   {
@@ -23,21 +23,16 @@ public class StructMsgItemRemark
     super(paramString, "remark");
   }
   
-  public String a()
-  {
-    return "Remark";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.as = paramObjectInput.readUTF();
+    this.aM = paramObjectInput.readUTF();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    String str2 = this.as;
+    String str2 = this.aM;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -48,8 +43,8 @@ public class StructMsgItemRemark
   public void a(XmlSerializer paramXmlSerializer)
   {
     super.a(paramXmlSerializer);
-    if (!TextUtils.isEmpty(this.as)) {
-      paramXmlSerializer.attribute(null, "url", this.as);
+    if (!TextUtils.isEmpty(this.aM)) {
+      paramXmlSerializer.attribute(null, "url", this.aM);
     }
   }
   
@@ -58,38 +53,43 @@ public class StructMsgItemRemark
     if (paramStructMsgNode == null) {
       return true;
     }
-    this.as = paramStructMsgNode.a("bgColor");
+    this.aM = paramStructMsgNode.a("bgColor");
     return super.a(paramStructMsgNode);
   }
   
-  public int b()
+  public String b()
+  {
+    return "Remark";
+  }
+  
+  public int d()
   {
     return 1;
   }
   
-  public int c()
+  public int f()
   {
-    return 2131379847;
+    return 2131448702;
   }
   
-  public int e()
+  public int i()
   {
     return Color.rgb(128, 128, 128);
   }
   
-  public int f()
+  public int j()
   {
     return 24;
   }
   
-  public String g()
+  public String q()
   {
-    return this.as;
+    return this.aM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemRemark
  * JD-Core Version:    0.7.0.1
  */

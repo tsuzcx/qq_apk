@@ -14,36 +14,36 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 public class SurfacePreRender
   implements PreRender
 {
-  private int jdField_a_of_type_Int = 0;
   public final SurfaceTexture a;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final float[] jdField_a_of_type_ArrayOfFloat;
   private final float[] b;
+  private final float[] c;
+  private int d = 0;
+  private TextureRender e;
+  private boolean f = true;
   
   public SurfacePreRender(SurfaceTexture paramSurfaceTexture)
   {
     if (QLog.isColorLevel()) {
       QLog.i("SurfaceTag", 2, "SurfacePreRender");
     }
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    this.a = paramSurfaceTexture;
     CameraFrame.a("SurfaceMode");
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    this.jdField_a_of_type_Boolean = true;
     this.b = new float[16];
     Matrix.setIdentityM(this.b, 0);
-    Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
+    this.f = true;
+    this.c = new float[16];
+    Matrix.setIdentityM(this.c, 0);
+    Matrix.scaleM(this.c, 0, -1.0F, -1.0F, 1.0F);
   }
   
   public GLTexture a(FilterProcessRender paramFilterProcessRender, CameraFrame paramCameraFrame, GLTexture paramGLTexture)
   {
-    if (paramFilterProcessRender.a != null) {
-      paramFilterProcessRender.a.a("preRender");
+    if (paramFilterProcessRender.j != null) {
+      paramFilterProcessRender.j.a("preRender");
     }
     try
     {
-      paramCameraFrame.a(this.jdField_a_of_type_ArrayOfFloat);
+      paramCameraFrame.a(this.b);
     }
     catch (Throwable localThrowable)
     {
@@ -51,40 +51,40 @@ public class SurfacePreRender
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("render, surface[");
-        localStringBuilder.append(paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+        localStringBuilder.append(paramCameraFrame.n);
         localStringBuilder.append("]");
         QLog.i("SurfaceTag", 4, localStringBuilder.toString(), localThrowable);
       }
     }
-    if (paramCameraFrame.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
+    if (paramCameraFrame.g != this.f)
     {
-      this.jdField_a_of_type_Boolean = paramCameraFrame.jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_Boolean)
+      this.f = paramCameraFrame.g;
+      if (this.f)
       {
-        Matrix.setIdentityM(this.b, 0);
-        Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
+        Matrix.setIdentityM(this.c, 0);
+        Matrix.scaleM(this.c, 0, -1.0F, -1.0F, 1.0F);
       }
       else
       {
-        Matrix.setIdentityM(this.b, 0);
-        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
+        Matrix.setIdentityM(this.c, 0);
+        Matrix.scaleM(this.c, 0, 1.0F, -1.0F, 1.0F);
       }
     }
-    int i = paramCameraFrame.b;
-    int j = paramCameraFrame.jdField_a_of_type_Int;
-    GLES20.glBindFramebuffer(36160, paramGLTexture.jdField_a_of_type_Int);
+    int i = paramCameraFrame.c;
+    int j = paramCameraFrame.b;
+    GLES20.glBindFramebuffer(36160, paramGLTexture.a);
     GLES20.glViewport(0, 0, i, j);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glClear(16640);
-    TextureRender localTextureRender = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    TextureRender localTextureRender = this.e;
     if (localTextureRender != null) {
-      localTextureRender.drawTexture(36197, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.b);
+      localTextureRender.drawTexture(36197, this.d, this.b, this.c);
     }
     GLES20.glBindFramebuffer(36160, 0);
     try
     {
       if (Build.VERSION.SDK_INT >= 19) {
-        paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture.releaseTexImage();
+        paramCameraFrame.n.releaseTexImage();
       }
     }
     catch (Throwable paramCameraFrame)
@@ -93,17 +93,17 @@ public class SurfacePreRender
         QLog.i("SurfaceTag", 4, "render", paramCameraFrame);
       }
     }
-    if (paramFilterProcessRender.a != null) {
-      paramFilterProcessRender.a.b("preRender");
+    if (paramFilterProcessRender.j != null) {
+      paramFilterProcessRender.j.b("preRender");
     }
     return paramGLTexture;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
-    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    this.e = new TextureRender();
+    this.d = GlUtil.createTexture(36197);
+    SurfaceTexture localSurfaceTexture = this.a;
     if (localSurfaceTexture != null)
     {
       try
@@ -116,7 +116,7 @@ public class SurfacePreRender
       }
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(this.jdField_a_of_type_Int);
+        this.a.attachToGLContext(this.d);
       }
       catch (Throwable localThrowable2)
       {
@@ -132,14 +132,14 @@ public class SurfacePreRender
   
   public boolean a(CameraFrame paramCameraFrame)
   {
-    return (paramCameraFrame != null) && (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    return (paramCameraFrame != null) && (paramCameraFrame.n != null) && (paramCameraFrame.n == this.a);
   }
   
   public void b() {}
   
   public void c()
   {
-    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    SurfaceTexture localSurfaceTexture = this.a;
     if (localSurfaceTexture != null) {
       try
       {
@@ -151,7 +151,7 @@ public class SurfacePreRender
       }
     }
     int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[0] = this.d;
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     if (QLog.isColorLevel()) {
       QLog.i("SurfaceTag", 2, "delTexture");

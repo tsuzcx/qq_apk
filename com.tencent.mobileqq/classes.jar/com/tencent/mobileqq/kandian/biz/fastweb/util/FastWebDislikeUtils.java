@@ -5,8 +5,8 @@ import android.view.View;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.repo.aladdin.RIJArticleInteractBarAladdinConfig;
@@ -14,7 +14,6 @@ import com.tencent.mobileqq.kandian.repo.aladdin.RIJKanDianFastWebMutualShowType
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,25 +29,25 @@ public class FastWebDislikeUtils
   
   public static void a(View paramView, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    boolean bool = paramFastWebArticleInfo.jdField_a_of_type_Boolean;
+    boolean bool = paramFastWebArticleInfo.h;
     int i = 1;
     if (bool)
     {
-      paramFastWebArticleInfo.jdField_a_of_type_Boolean = false;
-      paramFastWebArticleInfo.jdField_a_of_type_Int -= 1;
+      paramFastWebArticleInfo.h = false;
+      paramFastWebArticleInfo.f -= 1;
       ReportUtil.b(paramAbsBaseArticleInfo, "0X8009765", "2");
     }
     else
     {
-      paramFastWebArticleInfo.jdField_a_of_type_Boolean = true;
-      paramFastWebArticleInfo.jdField_a_of_type_Int += 1;
+      paramFastWebArticleInfo.h = true;
+      paramFastWebArticleInfo.f += 1;
       ReportUtil.b(paramAbsBaseArticleInfo, "0X8009764", "2");
     }
     ReadInJoyLogicEngineEventDispatcher.a().e();
-    ReadInJoyLogicEngine.a().a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), paramFastWebArticleInfo.jdField_a_of_type_Boolean, paramFastWebArticleInfo);
+    ReadInJoyLogicEngine.a().a(RIJQQAppInterfaceUtil.c(), paramFastWebArticleInfo.h, paramFastWebArticleInfo);
     FastWebPTSUtils.a(paramView);
     paramView = RIJUniteReportUtils.a;
-    if (!paramFastWebArticleInfo.jdField_a_of_type_Boolean) {
+    if (!paramFastWebArticleInfo.h) {
       i = 3;
     }
     paramView.a(paramAbsBaseArticleInfo, 2, i);
@@ -142,7 +141,7 @@ public class FastWebDislikeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebDislikeUtils
  * JD-Core Version:    0.7.0.1
  */

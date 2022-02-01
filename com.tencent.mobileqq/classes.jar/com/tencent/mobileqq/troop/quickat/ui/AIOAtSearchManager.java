@@ -18,22 +18,22 @@ import java.util.concurrent.ConcurrentHashMap;
 public class AIOAtSearchManager
   implements Handler.Callback
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AIOAtSearchManager.RefreshUIListener jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener;
-  List<TroopMemberInfo> jdField_a_of_type_JavaUtilList = new ArrayList(0);
-  private ConcurrentHashMap<String, Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(1);
-  private Handler b;
+  List<TroopMemberInfo> a = new ArrayList(0);
+  private final SessionInfo b;
+  private ConcurrentHashMap<String, Runnable> c = new ConcurrentHashMap(1);
+  private AIOAtSearchManager.RefreshUIListener d;
+  private Handler e = new Handler(Looper.getMainLooper(), this);
+  private QQAppInterface f;
+  private HandlerThread g;
+  private Handler h;
   
   public AIOAtSearchManager(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("AIOAtSearchManager");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.b = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.f = paramQQAppInterface;
+    this.b = paramSessionInfo;
+    this.g = new HandlerThread("AIOAtSearchManager");
+    this.g.start();
+    this.h = new Handler(this.g.getLooper());
   }
   
   public List<TroopMemberInfo> a()
@@ -41,7 +41,7 @@ public class AIOAtSearchManager
     try
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+      localArrayList.addAll(this.a);
       return localArrayList;
     }
     finally
@@ -51,38 +51,21 @@ public class AIOAtSearchManager
     }
   }
   
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (AIOAtSearchManager.AtSearchRunnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      if (localObject != null)
-      {
-        ((AIOAtSearchManager.AtSearchRunnable)localObject).a = true;
-        this.b.removeCallbacks((Runnable)localObject);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-  }
-  
   public void a(AIOAtSearchManager.RefreshUIListener paramRefreshUIListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener = paramRefreshUIListener;
+    this.d = paramRefreshUIListener;
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    a();
+    c();
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    paramString = new AIOAtSearchManager.AtSearchRunnable(str, a(), this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBoolean2);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString);
-    this.b.post(paramString);
+    paramString = new AIOAtSearchManager.AtSearchRunnable(str, a(), this.e, this.f, paramBoolean1, this.b, paramBoolean2);
+    this.c.put(str, paramString);
+    this.h.post(paramString);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -99,7 +82,7 @@ public class AIOAtSearchManager
       {
         if (!paramList.isEmpty())
         {
-          this.jdField_a_of_type_JavaUtilList = paramList;
+          this.a = paramList;
           return;
         }
       }
@@ -107,13 +90,13 @@ public class AIOAtSearchManager
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.a != null)
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+        boolean bool = this.a.isEmpty();
         if (!bool) {
           return false;
         }
@@ -127,12 +110,29 @@ public class AIOAtSearchManager
     }
   }
   
-  public void b()
+  public void c()
   {
-    a();
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-    this.b.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Iterator localIterator = this.c.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (AIOAtSearchManager.AtSearchRunnable)this.c.get(localObject);
+      if (localObject != null)
+      {
+        ((AIOAtSearchManager.AtSearchRunnable)localObject).a = true;
+        this.h.removeCallbacks((Runnable)localObject);
+      }
+    }
+    this.c.clear();
+    this.e.removeMessages(1);
+  }
+  
+  public void d()
+  {
+    c();
+    this.g.quit();
+    this.h.removeCallbacksAndMessages(null);
+    this.e.removeCallbacksAndMessages(null);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -144,23 +144,23 @@ public class AIOAtSearchManager
       localStringBuilder.append(System.currentTimeMillis());
       QLog.e("AIOAtSearchManager", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener == null) {
+    if (this.d == null) {
       return true;
     }
     if (paramMessage.what != 1) {
       return true;
     }
     paramMessage = (SearchTask.SearchResult)paramMessage.obj;
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a)) {
+    if (!this.c.containsKey(paramMessage.a)) {
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener.a(paramMessage);
+    this.d.a(paramMessage);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager
  * JD-Core Version:    0.7.0.1
  */

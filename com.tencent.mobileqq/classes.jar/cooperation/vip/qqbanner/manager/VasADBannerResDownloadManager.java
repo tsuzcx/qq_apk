@@ -21,30 +21,30 @@ import java.util.Map;
 
 public class VasADBannerResDownloadManager
 {
-  private static VasADBannerResDownloadManager jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager;
-  private final Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
-  private final File jdField_a_of_type_JavaIoFile = new File(BaseApplicationImpl.getApplication().getCacheDir(), "vas_ad");
-  private final HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final Map<String, VasADBannerConfigInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static VasADBannerResDownloadManager d;
+  private final Map<String, VasADBannerConfigInfo> a = new HashMap();
+  private final File b = new File(BaseApplicationImpl.getApplication().getCacheDir(), "vas_ad");
+  private final Downloader c = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+  private volatile boolean e = false;
+  private final HashMap<String, Long> f = new HashMap();
   
   public static VasADBannerResDownloadManager a()
   {
-    if (jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager == null) {
-          jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager = new VasADBannerResDownloadManager();
+        if (d == null) {
+          d = new VasADBannerResDownloadManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager;
+    return d;
   }
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
     if (paramQQAppInterface == null) {
       return;
     }
@@ -73,7 +73,7 @@ public class VasADBannerResDownloadManager
   
   private void b(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
     if (paramQQAppInterface == null) {
       return;
     }
@@ -103,7 +103,7 @@ public class VasADBannerResDownloadManager
           ((StringBuilder)localObject).append(localResourceInfo.a);
           QLog.i("VasADBannerResDownloadManager", 2, ((StringBuilder)localObject).toString());
         }
-        if (FileUtil.b(localResourceInfo.c))
+        if (FileUtil.d(localResourceInfo.c))
         {
           localVasBannerDownloadListener.onDownloadSucceed(localResourceInfo.a, null);
           if (QLog.isColorLevel())
@@ -116,7 +116,7 @@ public class VasADBannerResDownloadManager
         }
         else
         {
-          localObject = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader;
+          localObject = this.c;
           if (localObject != null) {
             ((Downloader)localObject).download(localResourceInfo.a, localResourceInfo.c, false, localVasBannerDownloadListener);
           }
@@ -133,48 +133,13 @@ public class VasADBannerResDownloadManager
     }
   }
   
-  public VasADBannerConfigInfo a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("VasADBannerResDownloadManager", 1, "getVasADBannerConfig uin is empty. return.");
-      return null;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
-    {
-      ??? = VasSplashUtil.a(BaseApplicationImpl.getContext(), paramString);
-      String str = VasSplashUtil.a(paramString);
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("getCurrentUnionBannerInfoFromSp adId: ");
-      ((StringBuilder)localObject2).append(str);
-      QLog.i("VasADBannerResDownloadManager", 1, ((StringBuilder)localObject2).toString());
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("splash_union_banner_type_");
-        ((StringBuilder)localObject2).append(str);
-        localObject2 = VasADBannerConfigInfo.a(null, ((SharedPreferences)???).getString(((StringBuilder)localObject2).toString(), "-1"));
-        if (localObject2 != null)
-        {
-          ((VasADBannerConfigInfo)localObject2).a((SharedPreferences)???, str);
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject2);
-        }
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (VasADBannerConfigInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      return paramString;
-    }
-  }
-  
   public String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    localStringBuilder.append(this.b.getAbsolutePath());
     localStringBuilder.append(File.separator);
     localStringBuilder.append(Utils.Crc64String(paramString));
     localStringBuilder.append(paramString.substring(paramString.lastIndexOf(".")));
@@ -194,11 +159,11 @@ public class VasADBannerResDownloadManager
       QLog.i("VasADBannerResDownloadManager", 1, "saveVasADBannerConfigAndNotify uin is empty. return.");
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("saveVasADBannerConfigAndNotify mIsDownloading = ");
-      paramQQAppInterface.append(this.jdField_a_of_type_Boolean);
+      paramQQAppInterface.append(this.e);
       paramQQAppInterface.append(" multi banner show");
       QLog.i("VasADBannerResDownloadManager", 1, paramQQAppInterface.toString());
       return;
@@ -209,31 +174,17 @@ public class VasADBannerResDownloadManager
   
   public void a(VasADBannerConfigInfo paramVasADBannerConfigInfo, String paramString)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.a;
     if (paramVasADBannerConfigInfo == null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      this.a.remove(paramString);
       break label37;
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramVasADBannerConfigInfo);
+      this.a.put(paramString, paramVasADBannerConfigInfo);
       label37:
       return;
     }
     finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("VasADBannerResDownloadManager", 1, "removeVasADBannerConfig uin is empty. return.");
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      return;
-    }
   }
   
   public void b(QQAppInterface paramQQAppInterface, VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -247,15 +198,64 @@ public class VasADBannerResDownloadManager
       b(paramQQAppInterface);
       return;
     }
-    if ((paramVasADBannerConfigInfo.c()) && (!paramVasADBannerConfigInfo.b()))
+    if ((paramVasADBannerConfigInfo.e()) && (!paramVasADBannerConfigInfo.d()))
     {
       QLog.i("VasADBannerResDownloadManager", 1, "checkIsFileExist exist , notifyBannerShow ");
       a(paramQQAppInterface);
       return;
     }
     QLog.i("VasADBannerResDownloadManager", 1, "checkIsFileExist is not exist , start downloadFile ");
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     d(paramQQAppInterface, paramVasADBannerConfigInfo);
+  }
+  
+  public void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.i("VasADBannerResDownloadManager", 1, "removeVasADBannerConfig uin is empty. return.");
+      return;
+    }
+    synchronized (this.a)
+    {
+      this.a.remove(paramString);
+      return;
+    }
+  }
+  
+  public VasADBannerConfigInfo c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.i("VasADBannerResDownloadManager", 1, "getVasADBannerConfig uin is empty. return.");
+      return null;
+    }
+    if (this.a.isEmpty())
+    {
+      ??? = VasSplashUtil.a(BaseApplicationImpl.getContext(), paramString);
+      String str = VasSplashUtil.a(paramString);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getCurrentUnionBannerInfoFromSp adId: ");
+      ((StringBuilder)localObject2).append(str);
+      QLog.i("VasADBannerResDownloadManager", 1, ((StringBuilder)localObject2).toString());
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("splash_union_banner_type_");
+        ((StringBuilder)localObject2).append(str);
+        localObject2 = VasADBannerConfigInfo.a(null, ((SharedPreferences)???).getString(((StringBuilder)localObject2).toString(), "-1"));
+        if (localObject2 != null)
+        {
+          ((VasADBannerConfigInfo)localObject2).a((SharedPreferences)???, str);
+          this.a.put(paramString, localObject2);
+        }
+      }
+    }
+    synchronized (this.a)
+    {
+      paramString = (VasADBannerConfigInfo)this.a.get(paramString);
+      return paramString;
+    }
   }
   
   public void c(QQAppInterface paramQQAppInterface, VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -265,10 +265,10 @@ public class VasADBannerResDownloadManager
       if (paramVasADBannerConfigInfo.a() == null) {
         return;
       }
-      if (!paramVasADBannerConfigInfo.c())
+      if (!paramVasADBannerConfigInfo.e())
       {
         QLog.i("VasADBannerResDownloadManager", 1, "checkIsFileExist is not exist , start downloadFile ");
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
         d(paramQQAppInterface, paramVasADBannerConfigInfo);
       }
     }
@@ -276,7 +276,7 @@ public class VasADBannerResDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerResDownloadManager
  * JD-Core Version:    0.7.0.1
  */

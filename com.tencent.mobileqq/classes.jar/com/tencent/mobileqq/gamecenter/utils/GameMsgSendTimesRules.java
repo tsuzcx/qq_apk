@@ -11,28 +11,12 @@ import java.util.List;
 public class GameMsgSendTimesRules
   extends GameMsgSayHelloRules
 {
-  public static final String a;
-  private int d;
+  public static final String c = HardCodeUtil.a(2131889899);
+  private int k;
   
-  static
+  public GameMsgSendTimesRules(int paramInt1, AppInterface paramAppInterface, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, List<ChatMessage> paramList)
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131692796);
-  }
-  
-  public GameMsgSendTimesRules(AppInterface paramAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, List<ChatMessage> paramList)
-  {
-    super(paramAppInterface, paramString1, paramInt1, paramInt2, paramString2, paramString3, paramList);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int != 0) {
-      return true;
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    return this.d < this.b;
+    super(paramInt1, paramAppInterface, paramString1, paramInt2, paramInt3, paramString2, paramString3, paramList);
   }
   
   public boolean a(List<ChatMessage> paramList)
@@ -43,23 +27,23 @@ public class GameMsgSendTimesRules
         return false;
       }
       int i = paramList.size() - 1;
-      int k;
-      for (int j = 0; i >= 0; j = k)
+      int m;
+      for (int j = 0; i >= 0; j = m)
       {
         Object localObject = (ChatMessage)paramList.get(i);
         if ((localObject == null) || (!(localObject instanceof MessageForUniteGrayTip))) {
           break;
         }
         localObject = (MessageForUniteGrayTip)localObject;
-        k = j;
+        m = j;
         if (localObject != null)
         {
-          k = j;
+          m = j;
           if (((MessageForUniteGrayTip)localObject).tipParam != null)
           {
-            k = j;
-            if (jdField_a_of_type_JavaLangString.equals(((MessageForUniteGrayTip)localObject).tipParam.c)) {
-              k = j + 1;
+            m = j;
+            if (c.equals(((MessageForUniteGrayTip)localObject).tipParam.g)) {
+              m = j + 1;
             }
           }
         }
@@ -72,30 +56,41 @@ public class GameMsgSendTimesRules
     return false;
   }
   
-  public void b()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_Int != 0) {
+    if (this.b != 0) {
+      return true;
+    }
+    if (!this.d) {
+      return true;
+    }
+    return this.k < this.f;
+  }
+  
+  public void c()
+  {
+    if (this.b != 0) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("GameMsgRules.Stranger", 2, "sendTimes---[recordAction]");
     }
-    this.d += 1;
+    this.k += 1;
   }
   
-  protected void c()
+  protected void d()
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.b != 0)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       return;
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((this.a != null) && (this.a.size() != 0))
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      int i = this.a.size() - 1;
       while (i >= 0)
       {
-        localObject = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(i);
+        localObject = (ChatMessage)this.a.get(i);
         if ((localObject != null) && (!(localObject instanceof MessageForUniteGrayTip)))
         {
           if (!GameMsgUtil.a(((ChatMessage)localObject).time * 1000L)) {
@@ -103,13 +98,13 @@ public class GameMsgSendTimesRules
           }
           if (((ChatMessage)localObject).issend != 1)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.d = false;
             return;
           }
-          this.d += 1;
-          if (this.d > this.b)
+          this.k += 1;
+          if (this.k > this.f)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.d = false;
             return;
           }
         }
@@ -117,16 +112,16 @@ public class GameMsgSendTimesRules
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mCurSendMsgNum:");
-      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(this.k);
       QLog.i("GameMsgRules.Stranger", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.GameMsgSendTimesRules
  * JD-Core Version:    0.7.0.1
  */

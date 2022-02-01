@@ -10,12 +10,12 @@ class SpecifyRedPacketAnimMsg$3$1$1
   
   public void onClick(View paramView)
   {
-    this.a.a.a.a();
+    this.a.b.d.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.specify.impl.SpecifyRedPacketAnimMsg.3.1.1
  * JD-Core Version:    0.7.0.1
  */

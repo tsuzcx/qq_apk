@@ -16,33 +16,33 @@ class TroopRobotPickerActivity$WebIphonePickListener
   implements IphonePickerView.IphonePickListener
 {
   public TroopRobotPickerActivity.RobotPickerData a;
-  IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
-  ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  IphonePickerView b;
+  ActionSheet c;
   
   TroopRobotPickerActivity$WebIphonePickListener(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = paramIphonePickerView;
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
+    this.a = paramRobotPickerData;
+    this.b = paramIphonePickerView;
+    this.c = paramActionSheet;
   }
   
   public void onConfirmBtClicked()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 > this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 != 0))
+    if ((this.a.pickerType == 2) && (this.a.mCurAgeIndex1 > this.a.mCurAgeIndex2) && (this.a.mCurAgeIndex2 != 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity;
-      QQToast.a((Context)localObject, ((TroopRobotPickerActivity)localObject).getResources().getString(2131691044), 0).a();
+      localObject = this.d;
+      QQToast.makeText((Context)localObject, ((TroopRobotPickerActivity)localObject).getResources().getString(2131887990), 0).show();
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    Object localObject = this.c;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.c.dismiss();
     }
   }
   
   public void onItemSelected(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData == null) {
+    if (this.a == null) {
       return;
     }
     Object localObject1;
@@ -51,20 +51,20 @@ class TroopRobotPickerActivity$WebIphonePickListener
       localObject1 = TroopRobotPickerActivity.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onItemSelected|pickerType : ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType);
+      localStringBuilder.append(this.a.pickerType);
       localStringBuilder.append(", column : ");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(", row : ");
       localStringBuilder.append(paramInt2);
       QLog.d((String)localObject1, 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
+    if (this.a.pickerType == 2)
     {
       int i;
       if (paramInt2 >= 0)
       {
         i = paramInt2;
-        if (paramInt2 < ConditionSearchManager.b.length) {}
+        if (paramInt2 < ConditionSearchManager.j.length) {}
       }
       else
       {
@@ -73,34 +73,34 @@ class TroopRobotPickerActivity$WebIphonePickListener
       if (paramInt1 != 0)
       {
         if (paramInt1 == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 = i;
+          this.a.mCurAgeIndex2 = i;
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 = i;
+        this.a.mCurAgeIndex1 = i;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 <= this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 == 0))
+      if ((this.a.mCurAgeIndex1 <= this.a.mCurAgeIndex2) || (this.a.mCurAgeIndex2 == 0))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
+        localObject1 = this.a;
         ((TroopRobotPickerActivity.RobotPickerData)localObject1).mAgeSelectIndex1 = ((TroopRobotPickerActivity.RobotPickerData)localObject1).mCurAgeIndex1;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
+        localObject1 = this.a;
         ((TroopRobotPickerActivity.RobotPickerData)localObject1).mAgeSelectIndex2 = ((TroopRobotPickerActivity.RobotPickerData)localObject1).mCurAgeIndex2;
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
+      if (this.a.pickerType == 1)
       {
         if (paramInt2 >= 0)
         {
           paramInt1 = paramInt2;
-          if (paramInt2 < ConditionSearchManager.c.length) {}
+          if (paramInt2 < ConditionSearchManager.k.length) {}
         }
         else
         {
           paramInt1 = 0;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex = paramInt1;
+        this.a.mSexIndex = paramInt1;
         return;
       }
       Object localObject2;
@@ -111,47 +111,47 @@ class TroopRobotPickerActivity$WebIphonePickListener
           if (paramInt1 != 2) {
             return;
           }
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] != null) && (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).size() > 0))
+          if ((this.a.mLocationListArray[2] != null) && (((List)this.a.mLocationListArray[2]).size() > 0))
           {
             if (paramInt2 >= 0)
             {
               paramInt1 = paramInt2;
-              if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).size()) {}
+              if (paramInt2 < ((List)this.a.mLocationListArray[2]).size()) {}
             }
             else
             {
               paramInt1 = 0;
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = paramInt1;
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).get(paramInt1));
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2].code;
+            this.a.mLocationIndexArray[2] = paramInt1;
+            this.a.mLocationArray[2] = ((BaseAddress)((List)this.a.mLocationListArray[2]).get(paramInt1));
+            this.a.mLocationCodeArray[2] = this.a.mLocationArray[2].code;
           }
         }
-        else if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1] != null) && (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).size() > 0))
+        else if ((this.a.mLocationListArray[1] != null) && (((List)this.a.mLocationListArray[1]).size() > 0))
         {
           if (paramInt2 >= 0)
           {
             paramInt1 = paramInt2;
-            if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).size()) {}
+            if (paramInt2 < ((List)this.a.mLocationListArray[1]).size()) {}
           }
           else
           {
             paramInt1 = 0;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[1] = paramInt1;
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).get(paramInt1));
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[1] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1].code;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1].getDataList();
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 2)
+          this.a.mLocationIndexArray[1] = paramInt1;
+          this.a.mLocationArray[1] = ((BaseAddress)((List)this.a.mLocationListArray[1]).get(paramInt1));
+          this.a.mLocationCodeArray[1] = this.a.mLocationArray[1].code;
+          localObject1 = this.a.mLocationArray[1].getDataList();
+          if (this.a.mLocationColumCount > 2)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] = localObject1;
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = 0;
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = "0";
+            this.a.mLocationListArray[2] = localObject1;
+            this.a.mLocationIndexArray[2] = 0;
+            this.a.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
+            this.a.mLocationCodeArray[2] = "0";
             try
             {
-              this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-              this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
+              this.b.a(2);
+              this.b.setSelection(2, 0);
               return;
             }
             catch (Exception localException1)
@@ -159,63 +159,63 @@ class TroopRobotPickerActivity$WebIphonePickListener
               if (QLog.isColorLevel()) {
                 QLog.d(TroopRobotPickerActivity.a, 2, localException1, new Object[0]);
               }
-              localObject2 = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+              localObject2 = this.c;
               if (localObject2 == null) {
                 return;
               }
             }
             if (((ActionSheet)localObject2).isShowing()) {
-              this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+              this.c.dismiss();
             }
           }
         }
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0] != null) && (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).size() > 0))
+      else if ((this.a.mLocationListArray[0] != null) && (((List)this.a.mLocationListArray[0]).size() > 0))
       {
         if (paramInt2 >= 0)
         {
           paramInt1 = paramInt2;
-          if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).size()) {}
+          if (paramInt2 < ((List)this.a.mLocationListArray[0]).size()) {}
         }
         else
         {
           paramInt1 = 0;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[0] = paramInt1;
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).get(paramInt1));
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[0] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0].code;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0].getDataList();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 1)
+        this.a.mLocationIndexArray[0] = paramInt1;
+        this.a.mLocationArray[0] = ((BaseAddress)((List)this.a.mLocationListArray[0]).get(paramInt1));
+        this.a.mLocationCodeArray[0] = this.a.mLocationArray[0].code;
+        localObject2 = this.a.mLocationArray[0].getDataList();
+        if (this.a.mLocationColumCount > 1)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1] = localObject2;
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[1] = 0;
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1] = new AddressData.NO_LIMIT_ADDRESS(2);
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[1] = "0";
+          this.a.mLocationListArray[1] = localObject2;
+          this.a.mLocationIndexArray[1] = 0;
+          this.a.mLocationArray[1] = new AddressData.NO_LIMIT_ADDRESS(2);
+          this.a.mLocationCodeArray[1] = "0";
           try
           {
-            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
-            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, 0);
+            this.b.a(1);
+            this.b.setSelection(1, 0);
           }
           catch (Exception localException2)
           {
             if (QLog.isColorLevel()) {
               QLog.d(TroopRobotPickerActivity.a, 2, localException2, new Object[0]);
             }
-            ActionSheet localActionSheet1 = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+            ActionSheet localActionSheet1 = this.c;
             if ((localActionSheet1 != null) && (localActionSheet1.isShowing())) {
-              this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+              this.c.dismiss();
             }
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 2)
+          if (this.a.mLocationColumCount > 2)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] = null;
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = 0;
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = "0";
+            this.a.mLocationListArray[2] = null;
+            this.a.mLocationIndexArray[2] = 0;
+            this.a.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
+            this.a.mLocationCodeArray[2] = "0";
             try
             {
-              this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-              this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
+              this.b.a(2);
+              this.b.setSelection(2, 0);
               return;
             }
             catch (Exception localException3)
@@ -223,9 +223,9 @@ class TroopRobotPickerActivity$WebIphonePickListener
               if (QLog.isColorLevel()) {
                 QLog.d(TroopRobotPickerActivity.a, 2, localException3, new Object[0]);
               }
-              ActionSheet localActionSheet2 = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+              ActionSheet localActionSheet2 = this.c;
               if ((localActionSheet2 != null) && (localActionSheet2.isShowing())) {
-                this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+                this.c.dismiss();
               }
             }
           }
@@ -236,7 +236,7 @@ class TroopRobotPickerActivity$WebIphonePickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRobotPickerActivity.WebIphonePickListener
  * JD-Core Version:    0.7.0.1
  */

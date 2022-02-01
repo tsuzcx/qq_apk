@@ -685,7 +685,7 @@ public class HttpUtil
     //   7: putstatic 672	com/tencent/biz/common/util/HttpUtil:hasLookupQrDNS	Z
     //   10: aload_0
     //   11: getstatic 677	com/tencent/util/BaseQRUtil:f	Ljava/lang/String;
-    //   14: invokestatic 681	com/tencent/util/BaseQRUtil:a	(Landroid/content/Context;Ljava/lang/String;)V
+    //   14: invokestatic 681	com/tencent/util/BaseQRUtil:b	(Landroid/content/Context;Ljava/lang/String;)V
     //   17: aload_0
     //   18: ifnonnull +5 -> 23
     //   21: aconst_null
@@ -1269,7 +1269,7 @@ public class HttpUtil
     if (!hasLookupQrDNS)
     {
       hasLookupQrDNS = true;
-      BaseQRUtil.a(paramContext, BaseQRUtil.f);
+      BaseQRUtil.b(paramContext, BaseQRUtil.f);
     }
     if (paramContext != null)
     {
@@ -1395,7 +1395,7 @@ public class HttpUtil
     //   4: invokespecial 78	java/lang/StringBuilder:<init>	()V
     //   7: astore 6
     //   9: aload 6
-    //   11: ldc_w 858
+    //   11: ldc_w 859
     //   14: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: pop
     //   18: aload 6
@@ -1424,60 +1424,60 @@ public class HttpUtil
     //   64: ifeq +5 -> 69
     //   67: aconst_null
     //   68: areturn
-    //   69: new 860	java/net/URL
+    //   69: new 861	java/net/URL
     //   72: dup
     //   73: aload_0
-    //   74: invokespecial 861	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   77: invokevirtual 865	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   80: checkcast 867	javax/net/ssl/HttpsURLConnection
+    //   74: invokespecial 862	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   77: invokevirtual 866	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   80: checkcast 868	javax/net/ssl/HttpsURLConnection
     //   83: astore_0
     //   84: aload_0
     //   85: astore 6
-    //   87: new 869	com/tencent/biz/common/util/HttpUtil$2
+    //   87: new 870	com/tencent/biz/common/util/HttpUtil$2
     //   90: dup
-    //   91: invokespecial 870	com/tencent/biz/common/util/HttpUtil$2:<init>	()V
+    //   91: invokespecial 871	com/tencent/biz/common/util/HttpUtil$2:<init>	()V
     //   94: astore 9
     //   96: aload_0
     //   97: astore 6
     //   99: aload_0
-    //   100: new 872	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory
+    //   100: new 873	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory
     //   103: dup
     //   104: ldc 13
     //   106: aload 9
-    //   108: invokespecial 875	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory:<init>	(Ljava/lang/String;Ljavax/net/ssl/HostnameVerifier;)V
-    //   111: invokevirtual 879	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   108: invokespecial 876	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory:<init>	(Ljava/lang/String;Ljavax/net/ssl/HostnameVerifier;)V
+    //   111: invokevirtual 880	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   114: aload_0
     //   115: astore 6
     //   117: aload_0
     //   118: aload 9
-    //   120: invokevirtual 882	javax/net/ssl/HttpsURLConnection:setHostnameVerifier	(Ljavax/net/ssl/HostnameVerifier;)V
+    //   120: invokevirtual 883	javax/net/ssl/HttpsURLConnection:setHostnameVerifier	(Ljavax/net/ssl/HostnameVerifier;)V
     //   123: aload_0
     //   124: astore 6
     //   126: aload_0
     //   127: sipush 5000
-    //   130: invokevirtual 886	javax/net/ssl/HttpsURLConnection:setConnectTimeout	(I)V
+    //   130: invokevirtual 887	javax/net/ssl/HttpsURLConnection:setConnectTimeout	(I)V
     //   133: aload_0
     //   134: astore 6
     //   136: aload_0
     //   137: sipush 30000
-    //   140: invokevirtual 889	javax/net/ssl/HttpsURLConnection:setReadTimeout	(I)V
+    //   140: invokevirtual 890	javax/net/ssl/HttpsURLConnection:setReadTimeout	(I)V
     //   143: aload_0
     //   144: astore 6
     //   146: aload_0
     //   147: ldc 7
-    //   149: invokevirtual 892	javax/net/ssl/HttpsURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   149: invokevirtual 893	javax/net/ssl/HttpsURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   152: aload_0
     //   153: astore 6
     //   155: aload_0
     //   156: ldc_w 721
-    //   159: ldc_w 894
-    //   162: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   159: ldc_w 895
+    //   162: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   165: aload_0
     //   166: astore 6
     //   168: new 77	java/lang/StringBuilder
     //   171: dup
-    //   172: ldc_w 899
-    //   175: invokespecial 900	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   172: ldc_w 900
+    //   175: invokespecial 901	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   178: astore 9
     //   180: aload_0
     //   181: astore 6
@@ -1524,28 +1524,28 @@ public class HttpUtil
     //   264: aload_0
     //   265: astore 6
     //   267: aload 9
-    //   269: ldc_w 902
+    //   269: ldc_w 903
     //   272: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: pop
     //   276: aload_0
     //   277: astore 6
     //   279: aload_0
-    //   280: ldc_w 904
+    //   280: ldc_w 905
     //   283: aload 9
     //   285: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   288: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   288: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   291: aload_0
     //   292: astore 6
     //   294: aload_0
     //   295: ldc_w 336
-    //   298: ldc_w 906
-    //   301: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   298: ldc_w 907
+    //   301: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   304: aload_0
     //   305: astore 6
     //   307: aload_0
-    //   308: ldc_w 908
+    //   308: ldc_w 909
     //   311: ldc 13
-    //   313: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   313: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   316: aload_0
     //   317: astore 6
     //   319: invokestatic 59	com/tencent/biz/common/util/HttpUtil:getRunTime	()Lmqq/app/AppRuntime;
@@ -1596,10 +1596,10 @@ public class HttpUtil
     //   406: aload_0
     //   407: astore 6
     //   409: aload_0
-    //   410: ldc_w 910
+    //   410: ldc_w 911
     //   413: aload_2
     //   414: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   417: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   417: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   420: goto +72 -> 492
     //   423: aload_0
     //   424: astore 6
@@ -1634,14 +1634,14 @@ public class HttpUtil
     //   477: aload_0
     //   478: astore 6
     //   480: aload_0
-    //   481: ldc_w 910
+    //   481: ldc_w 911
     //   484: aload 9
     //   486: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   489: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   489: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   492: aload_0
     //   493: astore 6
     //   495: aload_0
-    //   496: invokevirtual 913	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
+    //   496: invokevirtual 914	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
     //   499: istore_3
     //   500: iload_3
     //   501: sipush 200
@@ -1655,14 +1655,14 @@ public class HttpUtil
     //   518: aload_0
     //   519: astore 6
     //   521: aload_1
-    //   522: ldc_w 915
+    //   522: ldc_w 916
     //   525: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: pop
     //   529: aload_0
     //   530: astore 6
     //   532: aload_1
     //   533: iload_3
-    //   534: invokevirtual 822	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   534: invokevirtual 823	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   537: pop
     //   538: aload_0
     //   539: astore 6
@@ -1673,17 +1673,17 @@ public class HttpUtil
     //   548: invokestatic 218	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   551: aload_0
     //   552: astore 6
-    //   554: new 917	com/tencent/util/Pair
+    //   554: new 918	com/tencent/util/Pair
     //   557: dup
     //   558: iload_3
-    //   559: invokestatic 920	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   559: invokestatic 921	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   562: ldc 239
-    //   564: invokespecial 923	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   564: invokespecial 924	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   567: astore_1
     //   568: aload_0
     //   569: ifnull +7 -> 576
     //   572: aload_0
-    //   573: invokevirtual 926	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   573: invokevirtual 927	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   576: aload_1
     //   577: areturn
     //   578: aload_0
@@ -1694,19 +1694,19 @@ public class HttpUtil
     //   588: astore_1
     //   589: aload_0
     //   590: astore 6
-    //   592: new 928	java/io/BufferedReader
+    //   592: new 929	java/io/BufferedReader
     //   595: dup
-    //   596: new 930	java/io/InputStreamReader
+    //   596: new 931	java/io/InputStreamReader
     //   599: dup
     //   600: aload_0
-    //   601: invokevirtual 934	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   604: invokespecial 937	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   607: invokespecial 940	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   601: invokevirtual 935	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   604: invokespecial 938	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   607: invokespecial 941	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   610: astore_2
     //   611: aload_0
     //   612: astore 6
     //   614: aload_2
-    //   615: invokevirtual 943	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   615: invokevirtual 944	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   618: astore 9
     //   620: aload 9
     //   622: ifnull +27 -> 649
@@ -1719,14 +1719,14 @@ public class HttpUtil
     //   635: aload_0
     //   636: astore 6
     //   638: aload_1
-    //   639: ldc_w 945
+    //   639: ldc_w 946
     //   642: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   645: pop
     //   646: goto -35 -> 611
     //   649: aload_0
     //   650: astore 6
     //   652: aload_2
-    //   653: invokevirtual 947	java/io/BufferedReader:close	()V
+    //   653: invokevirtual 948	java/io/BufferedReader:close	()V
     //   656: aload_0
     //   657: astore 6
     //   659: aload_1
@@ -1756,15 +1756,15 @@ public class HttpUtil
     //   701: astore 6
     //   703: aload_1
     //   704: ldc 174
-    //   706: invokevirtual 950	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   706: invokevirtual 951	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   709: ifeq +22 -> 731
     //   712: aload_0
     //   713: astore 6
     //   715: aload_1
     //   716: ldc 174
     //   718: invokevirtual 178	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   721: ldc_w 952
-    //   724: invokevirtual 953	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   721: ldc_w 953
+    //   724: invokevirtual 954	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   727: astore_1
     //   728: goto +62 -> 790
     //   731: aload_0
@@ -1776,14 +1776,14 @@ public class HttpUtil
     //   742: aload_0
     //   743: astore 6
     //   745: aload_1
-    //   746: ldc_w 955
+    //   746: ldc_w 956
     //   749: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   752: pop
     //   753: aload_0
     //   754: astore 6
     //   756: aload_1
     //   757: iload_3
-    //   758: invokevirtual 822	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   758: invokevirtual 823	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   761: pop
     //   762: aload_0
     //   763: astore 6
@@ -1808,7 +1808,7 @@ public class HttpUtil
     //   795: aload_0
     //   796: ifnull +89 -> 885
     //   799: aload_0
-    //   800: invokevirtual 926	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   800: invokevirtual 927	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   803: aload_1
     //   804: astore_2
     //   805: iload_3
@@ -1834,7 +1834,7 @@ public class HttpUtil
     //   838: aload_0
     //   839: astore 6
     //   841: aload_2
-    //   842: ldc_w 957
+    //   842: ldc_w 958
     //   845: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   848: pop
     //   849: aload_0
@@ -1853,23 +1853,23 @@ public class HttpUtil
     //   871: aload_0
     //   872: ifnull +7 -> 879
     //   875: aload_0
-    //   876: invokevirtual 926	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   876: invokevirtual 927	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   879: iload_3
     //   880: istore 4
     //   882: aload 7
     //   884: astore_2
-    //   885: new 917	com/tencent/util/Pair
+    //   885: new 918	com/tencent/util/Pair
     //   888: dup
     //   889: iload 4
-    //   891: invokestatic 920	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   891: invokestatic 921	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   894: aload_2
-    //   895: invokespecial 923	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   895: invokespecial 924	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   898: areturn
     //   899: astore_0
     //   900: aload 6
     //   902: ifnull +8 -> 910
     //   905: aload 6
-    //   907: invokevirtual 926	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   907: invokevirtual 927	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   910: aload_0
     //   911: athrow
     //   912: aconst_null
@@ -2016,7 +2016,7 @@ public class HttpUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokeinterface 963 1 0
+    //   1: invokeinterface 964 1 0
     //   6: astore 5
     //   8: aconst_null
     //   9: astore_3
@@ -2025,7 +2025,7 @@ public class HttpUtil
     //   13: aconst_null
     //   14: astore_2
     //   15: aload 5
-    //   17: invokeinterface 968 1 0
+    //   17: invokeinterface 969 1 0
     //   22: astore 5
     //   24: aload 5
     //   26: astore_2
@@ -2033,9 +2033,9 @@ public class HttpUtil
     //   29: astore_3
     //   30: aload 5
     //   32: astore 4
-    //   34: new 833	java/io/ByteArrayOutputStream
+    //   34: new 834	java/io/ByteArrayOutputStream
     //   37: dup
-    //   38: invokespecial 969	java/io/ByteArrayOutputStream:<init>	()V
+    //   38: invokespecial 970	java/io/ByteArrayOutputStream:<init>	()V
     //   41: astore 6
     //   43: aload 5
     //   45: astore_2
@@ -2044,8 +2044,8 @@ public class HttpUtil
     //   49: aload 5
     //   51: astore 4
     //   53: aload_0
-    //   54: ldc_w 971
-    //   57: invokeinterface 975 2 0
+    //   54: ldc_w 972
+    //   57: invokeinterface 976 2 0
     //   62: astore 7
     //   64: aload 5
     //   66: astore_0
@@ -2060,8 +2060,8 @@ public class HttpUtil
     //   81: aload 5
     //   83: astore 4
     //   85: aload 7
-    //   87: invokeinterface 980 1 0
-    //   92: invokevirtual 983	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   87: invokeinterface 981 1 0
+    //   92: invokevirtual 984	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   95: ldc_w 714
     //   98: invokevirtual 690	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   101: ifeq +23 -> 124
@@ -2071,10 +2071,10 @@ public class HttpUtil
     //   109: astore_3
     //   110: aload 5
     //   112: astore 4
-    //   114: new 985	java/util/zip/GZIPInputStream
+    //   114: new 986	java/util/zip/GZIPInputStream
     //   117: dup
     //   118: aload 5
-    //   120: invokespecial 986	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   120: invokespecial 987	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   123: astore_0
     //   124: aload_0
     //   125: astore_2
@@ -2093,7 +2093,7 @@ public class HttpUtil
     //   143: astore 4
     //   145: aload_0
     //   146: aload 5
-    //   148: invokevirtual 992	java/io/InputStream:read	([B)I
+    //   148: invokevirtual 993	java/io/InputStream:read	([B)I
     //   151: istore_1
     //   152: iload_1
     //   153: iconst_m1
@@ -2108,12 +2108,12 @@ public class HttpUtil
     //   166: aload 5
     //   168: iconst_0
     //   169: iload_1
-    //   170: invokevirtual 996	java/io/ByteArrayOutputStream:write	([BII)V
+    //   170: invokevirtual 997	java/io/ByteArrayOutputStream:write	([BII)V
     //   173: goto -35 -> 138
     //   176: aload_0
     //   177: ifnull +7 -> 184
     //   180: aload_0
-    //   181: invokevirtual 997	java/io/InputStream:close	()V
+    //   181: invokevirtual 998	java/io/InputStream:close	()V
     //   184: aload 6
     //   186: areturn
     //   187: astore_0
@@ -2122,7 +2122,7 @@ public class HttpUtil
     //   193: astore_2
     //   194: new 323	java/io/IOException
     //   197: dup
-    //   198: invokespecial 998	java/io/IOException:<init>	()V
+    //   198: invokespecial 999	java/io/IOException:<init>	()V
     //   201: athrow
     //   202: astore_0
     //   203: aload_3
@@ -2132,7 +2132,7 @@ public class HttpUtil
     //   207: aload_2
     //   208: ifnull +7 -> 215
     //   211: aload_2
-    //   212: invokevirtual 997	java/io/InputStream:close	()V
+    //   212: invokevirtual 998	java/io/InputStream:close	()V
     //   215: goto +5 -> 220
     //   218: aload_0
     //   219: athrow
@@ -2439,15 +2439,15 @@ public class HttpUtil
     //   18: ifeq +6 -> 24
     //   21: goto +124 -> 145
     //   24: aload_0
-    //   25: ldc_w 1127
+    //   25: ldc_w 1128
     //   28: invokevirtual 647	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   31: istore 6
-    //   33: new 860	java/net/URL
+    //   33: new 861	java/net/URL
     //   36: dup
     //   37: aload_0
-    //   38: invokespecial 861	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   41: invokevirtual 865	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   44: checkcast 1129	java/net/HttpURLConnection
+    //   38: invokespecial 862	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   41: invokevirtual 866	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   44: checkcast 1130	java/net/HttpURLConnection
     //   47: astore 7
     //   49: aload 7
     //   51: aload_0
@@ -2457,7 +2457,7 @@ public class HttpUtil
     //   55: aload 4
     //   57: aload 5
     //   59: iload 6
-    //   61: invokestatic 1132	com/tencent/biz/common/util/HttpUtil:uploadImage	(Ljava/net/HttpURLConnection;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
+    //   61: invokestatic 1133	com/tencent/biz/common/util/HttpUtil:uploadImage	(Ljava/net/HttpURLConnection;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
     //   64: astore_1
     //   65: aload_1
     //   66: areturn
@@ -2474,7 +2474,7 @@ public class HttpUtil
     //   84: anewarray 4	java/lang/Object
     //   87: dup
     //   88: iconst_0
-    //   89: ldc_w 1134
+    //   89: ldc_w 1135
     //   92: aastore
     //   93: dup
     //   94: iconst_1
@@ -2482,13 +2482,13 @@ public class HttpUtil
     //   96: aastore
     //   97: dup
     //   98: iconst_2
-    //   99: ldc_w 1136
+    //   99: ldc_w 1137
     //   102: aastore
     //   103: dup
     //   104: iconst_3
     //   105: aload_1
     //   106: aastore
-    //   107: invokestatic 1139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   107: invokestatic 1140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   110: aconst_null
     //   111: areturn
     //   112: astore_2
@@ -2498,7 +2498,7 @@ public class HttpUtil
     //   117: anewarray 4	java/lang/Object
     //   120: dup
     //   121: iconst_0
-    //   122: ldc_w 1134
+    //   122: ldc_w 1135
     //   125: aastore
     //   126: dup
     //   127: iconst_1
@@ -2506,18 +2506,18 @@ public class HttpUtil
     //   129: aastore
     //   130: dup
     //   131: iconst_2
-    //   132: ldc_w 1141
+    //   132: ldc_w 1142
     //   135: aastore
     //   136: dup
     //   137: iconst_3
     //   138: aload_1
     //   139: aastore
-    //   140: invokestatic 1139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   140: invokestatic 1140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   143: aconst_null
     //   144: areturn
     //   145: ldc 226
     //   147: iconst_1
-    //   148: ldc_w 1143
+    //   148: ldc_w 1144
     //   151: invokestatic 218	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   154: aconst_null
     //   155: areturn
@@ -2545,50 +2545,50 @@ public class HttpUtil
     // Byte code:
     //   0: aload_0
     //   1: astore 9
-    //   3: ldc_w 1146
+    //   3: ldc_w 1147
     //   6: astore 11
     //   8: aload 9
     //   10: astore 10
     //   12: aload 9
     //   14: sipush 5000
-    //   17: invokevirtual 1147	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   17: invokevirtual 1148	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   20: aload 9
     //   22: astore 10
     //   24: aload 9
     //   26: sipush 30000
-    //   29: invokevirtual 1148	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   29: invokevirtual 1149	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   32: aload 9
     //   34: astore 10
     //   36: aload 9
     //   38: iconst_1
-    //   39: invokevirtual 1152	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   39: invokevirtual 1153	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   42: aload 9
     //   44: astore 10
     //   46: aload 9
     //   48: iconst_1
-    //   49: invokevirtual 1155	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   49: invokevirtual 1156	java/net/HttpURLConnection:setDoInput	(Z)V
     //   52: aload 9
     //   54: astore 10
     //   56: aload 9
     //   58: iconst_0
-    //   59: invokevirtual 1158	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   59: invokevirtual 1159	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   62: aload 9
     //   64: astore 10
     //   66: aload 9
     //   68: ldc 21
-    //   70: invokevirtual 1159	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   70: invokevirtual 1160	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   73: aload 9
     //   75: astore 10
     //   77: aload 9
     //   79: ldc_w 721
-    //   82: ldc_w 894
-    //   85: invokevirtual 1160	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   82: ldc_w 895
+    //   85: invokevirtual 1161	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: aload 9
     //   90: astore 10
     //   92: new 77	java/lang/StringBuilder
     //   95: dup
-    //   96: ldc_w 899
-    //   99: invokespecial 900	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   96: ldc_w 900
+    //   99: invokespecial 901	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   102: astore 12
     //   104: aload 9
     //   106: astore 10
@@ -2635,16 +2635,16 @@ public class HttpUtil
     //   195: aload 9
     //   197: astore 10
     //   199: aload 12
-    //   201: ldc_w 902
+    //   201: ldc_w 903
     //   204: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: pop
     //   208: aload 9
     //   210: astore 10
     //   212: aload 9
-    //   214: ldc_w 904
+    //   214: ldc_w 905
     //   217: aload 12
     //   219: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: invokevirtual 1160	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   222: invokevirtual 1161	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   225: aload 9
     //   227: astore 10
     //   229: new 77	java/lang/StringBuilder
@@ -2654,13 +2654,13 @@ public class HttpUtil
     //   238: aload 9
     //   240: astore 10
     //   242: aload 12
-    //   244: ldc_w 1162
+    //   244: ldc_w 1163
     //   247: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   250: pop
     //   251: aload 9
     //   253: astore 10
     //   255: aload 12
-    //   257: ldc_w 1164
+    //   257: ldc_w 1165
     //   260: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   263: pop
     //   264: aload 9
@@ -2669,7 +2669,7 @@ public class HttpUtil
     //   270: ldc_w 732
     //   273: aload 12
     //   275: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokevirtual 1160	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   278: invokevirtual 1161	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   281: aload 6
     //   283: ifnonnull +25 -> 308
     //   286: aload 9
@@ -2733,16 +2733,16 @@ public class HttpUtil
     //   411: aload 9
     //   413: astore 10
     //   415: aload 6
-    //   417: ldc_w 910
+    //   417: ldc_w 911
     //   420: aload 13
     //   422: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   425: invokeinterface 1165 3 0
+    //   425: invokeinterface 1166 3 0
     //   430: pop
     //   431: aload 9
     //   433: astore 10
     //   435: aload 6
-    //   437: ldc_w 910
-    //   440: invokeinterface 1168 2 0
+    //   437: ldc_w 911
+    //   440: invokeinterface 1169 2 0
     //   445: istore 7
     //   447: iload 7
     //   449: ifne +82 -> 531
@@ -2779,15 +2779,15 @@ public class HttpUtil
     //   511: aload 9
     //   513: astore 10
     //   515: aload 6
-    //   517: ldc_w 910
+    //   517: ldc_w 911
     //   520: aload 12
     //   522: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   525: invokeinterface 1165 3 0
+    //   525: invokeinterface 1166 3 0
     //   530: pop
     //   531: aload 9
     //   533: astore 10
     //   535: aload 6
-    //   537: invokeinterface 1171 1 0
+    //   537: invokeinterface 1172 1 0
     //   542: invokeinterface 123 1 0
     //   547: astore_2
     //   548: aload 9
@@ -2801,39 +2801,39 @@ public class HttpUtil
     //   567: astore 10
     //   569: aload_2
     //   570: invokeinterface 133 1 0
-    //   575: checkcast 1173	java/util/Map$Entry
+    //   575: checkcast 1174	java/util/Map$Entry
     //   578: astore_3
     //   579: aload 9
     //   581: astore 10
     //   583: aload 9
     //   585: aload_3
-    //   586: invokeinterface 1176 1 0
+    //   586: invokeinterface 1177 1 0
     //   591: checkcast 135	java/lang/String
     //   594: aload_3
-    //   595: invokeinterface 1178 1 0
+    //   595: invokeinterface 1179 1 0
     //   600: checkcast 135	java/lang/String
-    //   603: invokevirtual 1160	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   603: invokevirtual 1161	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   606: goto -58 -> 548
     //   609: aload 9
     //   611: astore 10
-    //   613: new 1180	java/io/DataOutputStream
+    //   613: new 1181	java/io/DataOutputStream
     //   616: dup
     //   617: aload_0
-    //   618: invokevirtual 1184	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   621: invokespecial 1187	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   618: invokevirtual 1185	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   621: invokespecial 1188	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   624: astore 6
     //   626: aload 4
     //   628: ifnull +243 -> 871
     //   631: aload 9
     //   633: astore 10
-    //   635: new 1189	java/lang/StringBuffer
+    //   635: new 1190	java/lang/StringBuffer
     //   638: dup
-    //   639: invokespecial 1190	java/lang/StringBuffer:<init>	()V
+    //   639: invokespecial 1191	java/lang/StringBuffer:<init>	()V
     //   642: astore_2
     //   643: aload 9
     //   645: astore 10
     //   647: aload 4
-    //   649: invokeinterface 1171 1 0
+    //   649: invokeinterface 1172 1 0
     //   654: invokeinterface 123 1 0
     //   659: astore_3
     //   660: aload 9
@@ -2845,18 +2845,18 @@ public class HttpUtil
     //   675: astore 10
     //   677: aload_3
     //   678: invokeinterface 133 1 0
-    //   683: checkcast 1173	java/util/Map$Entry
+    //   683: checkcast 1174	java/util/Map$Entry
     //   686: astore 12
     //   688: aload 9
     //   690: astore 10
     //   692: aload 12
-    //   694: invokeinterface 1176 1 0
+    //   694: invokeinterface 1177 1 0
     //   699: checkcast 135	java/lang/String
     //   702: astore 4
     //   704: aload 9
     //   706: astore 10
     //   708: aload 12
-    //   710: invokeinterface 1178 1 0
+    //   710: invokeinterface 1179 1 0
     //   715: checkcast 135	java/lang/String
     //   718: astore 12
     //   720: aload 12
@@ -2865,26 +2865,26 @@ public class HttpUtil
     //   728: aload 9
     //   730: astore 10
     //   732: aload_2
-    //   733: ldc_w 1192
-    //   736: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   733: ldc_w 1193
+    //   736: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   739: pop
     //   740: aload 9
     //   742: astore 10
     //   744: aload_2
-    //   745: ldc_w 1197
-    //   748: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   745: ldc_w 1198
+    //   748: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   751: pop
     //   752: aload 9
     //   754: astore 10
     //   756: aload_2
-    //   757: ldc_w 1164
-    //   760: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   757: ldc_w 1165
+    //   760: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   763: pop
     //   764: aload 9
     //   766: astore 10
     //   768: aload_2
-    //   769: ldc_w 1192
-    //   772: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   769: ldc_w 1193
+    //   772: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   775: pop
     //   776: aload 9
     //   778: astore 10
@@ -2895,7 +2895,7 @@ public class HttpUtil
     //   789: aload 9
     //   791: astore 10
     //   793: aload 13
-    //   795: ldc_w 1199
+    //   795: ldc_w 1200
     //   798: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   801: pop
     //   802: aload 9
@@ -2907,7 +2907,7 @@ public class HttpUtil
     //   814: aload 9
     //   816: astore 10
     //   818: aload 13
-    //   820: ldc_w 1201
+    //   820: ldc_w 1202
     //   823: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   826: pop
     //   827: aload 9
@@ -2915,28 +2915,28 @@ public class HttpUtil
     //   831: aload_2
     //   832: aload 13
     //   834: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   837: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   837: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   840: pop
     //   841: aload 9
     //   843: astore 10
     //   845: aload_2
     //   846: aload 12
-    //   848: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   848: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   851: pop
     //   852: goto -192 -> 660
     //   855: aload 9
     //   857: astore 10
     //   859: aload 6
     //   861: aload_2
-    //   862: invokevirtual 1202	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   862: invokevirtual 1203	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   865: invokevirtual 761	java/lang/String:getBytes	()[B
-    //   868: invokevirtual 1206	java/io/OutputStream:write	([B)V
+    //   868: invokevirtual 1207	java/io/OutputStream:write	([B)V
     //   871: aload 5
     //   873: ifnull +563 -> 1436
     //   876: aload 9
     //   878: astore 10
     //   880: aload 5
-    //   882: invokeinterface 1171 1 0
+    //   882: invokeinterface 1172 1 0
     //   887: invokeinterface 123 1 0
     //   892: astore 4
     //   894: aload 11
@@ -2950,18 +2950,18 @@ public class HttpUtil
     //   913: astore 10
     //   915: aload 4
     //   917: invokeinterface 133 1 0
-    //   922: checkcast 1173	java/util/Map$Entry
+    //   922: checkcast 1174	java/util/Map$Entry
     //   925: astore_3
     //   926: aload 9
     //   928: astore 10
     //   930: aload_3
-    //   931: invokeinterface 1176 1 0
+    //   931: invokeinterface 1177 1 0
     //   936: checkcast 135	java/lang/String
     //   939: astore 11
     //   941: aload 9
     //   943: astore 10
     //   945: aload_3
-    //   946: invokeinterface 1178 1 0
+    //   946: invokeinterface 1179 1 0
     //   951: checkcast 135	java/lang/String
     //   954: astore_3
     //   955: aload_3
@@ -2969,21 +2969,21 @@ public class HttpUtil
     //   959: goto -62 -> 897
     //   962: aload 9
     //   964: astore 10
-    //   966: new 1208	java/io/File
+    //   966: new 1209	java/io/File
     //   969: dup
     //   970: aload_3
-    //   971: invokespecial 1209	java/io/File:<init>	(Ljava/lang/String;)V
+    //   971: invokespecial 1210	java/io/File:<init>	(Ljava/lang/String;)V
     //   974: astore 5
     //   976: aload 9
     //   978: astore 10
     //   980: aload 5
-    //   982: invokevirtual 1212	java/io/File:getName	()Ljava/lang/String;
+    //   982: invokevirtual 1213	java/io/File:getName	()Ljava/lang/String;
     //   985: astore 12
     //   987: aload 9
     //   989: astore 10
     //   991: aload 12
-    //   993: ldc_w 1214
-    //   996: invokevirtual 1217	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   993: ldc_w 1215
+    //   996: invokevirtual 1218	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   999: pop
     //   1000: aload 9
     //   1002: astore 10
@@ -2993,40 +2993,40 @@ public class HttpUtil
     //   1010: istore 7
     //   1012: iload 7
     //   1014: ifeq +10 -> 1024
-    //   1017: ldc_w 1219
+    //   1017: ldc_w 1220
     //   1020: astore_3
     //   1021: goto +5 -> 1026
     //   1024: aload_2
     //   1025: astore_3
     //   1026: aload 9
     //   1028: astore 10
-    //   1030: new 1189	java/lang/StringBuffer
+    //   1030: new 1190	java/lang/StringBuffer
     //   1033: dup
-    //   1034: invokespecial 1190	java/lang/StringBuffer:<init>	()V
+    //   1034: invokespecial 1191	java/lang/StringBuffer:<init>	()V
     //   1037: astore 13
     //   1039: aload 9
     //   1041: astore 10
     //   1043: aload 13
-    //   1045: ldc_w 1192
-    //   1048: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1045: ldc_w 1193
+    //   1048: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1051: pop
     //   1052: aload 9
     //   1054: astore 10
     //   1056: aload 13
-    //   1058: ldc_w 1197
-    //   1061: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1058: ldc_w 1198
+    //   1061: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1064: pop
     //   1065: aload 9
     //   1067: astore 10
     //   1069: aload 13
-    //   1071: ldc_w 1164
-    //   1074: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1071: ldc_w 1165
+    //   1074: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1077: pop
     //   1078: aload 9
     //   1080: astore 10
     //   1082: aload 13
-    //   1084: ldc_w 1192
-    //   1087: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1084: ldc_w 1193
+    //   1087: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1090: pop
     //   1091: aload 9
     //   1093: astore 10
@@ -3037,7 +3037,7 @@ public class HttpUtil
     //   1104: aload 9
     //   1106: astore 10
     //   1108: aload 14
-    //   1110: ldc_w 1199
+    //   1110: ldc_w 1200
     //   1113: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1116: pop
     //   1117: aload 9
@@ -3049,7 +3049,7 @@ public class HttpUtil
     //   1129: aload 9
     //   1131: astore 10
     //   1133: aload 14
-    //   1135: ldc_w 1221
+    //   1135: ldc_w 1222
     //   1138: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1141: pop
     //   1142: aload 9
@@ -3061,7 +3061,7 @@ public class HttpUtil
     //   1154: aload 9
     //   1156: astore 10
     //   1158: aload 14
-    //   1160: ldc_w 1223
+    //   1160: ldc_w 1224
     //   1163: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1166: pop
     //   1167: aload 9
@@ -3069,7 +3069,7 @@ public class HttpUtil
     //   1171: aload 13
     //   1173: aload 14
     //   1175: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1178: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1178: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1181: pop
     //   1182: aload 9
     //   1184: astore 10
@@ -3080,7 +3080,7 @@ public class HttpUtil
     //   1195: aload 9
     //   1197: astore 10
     //   1199: aload 11
-    //   1201: ldc_w 1225
+    //   1201: ldc_w 1226
     //   1204: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1207: pop
     //   1208: aload 9
@@ -3092,7 +3092,7 @@ public class HttpUtil
     //   1219: aload 9
     //   1221: astore 10
     //   1223: aload 11
-    //   1225: ldc_w 1227
+    //   1225: ldc_w 1228
     //   1228: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1231: pop
     //   1232: aload 9
@@ -3100,27 +3100,27 @@ public class HttpUtil
     //   1236: aload 13
     //   1238: aload 11
     //   1240: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1243: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1243: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1246: pop
     //   1247: aload 9
     //   1249: astore 10
     //   1251: aload 6
     //   1253: aload 13
-    //   1255: invokevirtual 1202	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   1255: invokevirtual 1203	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   1258: invokevirtual 761	java/lang/String:getBytes	()[B
-    //   1261: invokevirtual 1206	java/io/OutputStream:write	([B)V
+    //   1261: invokevirtual 1207	java/io/OutputStream:write	([B)V
     //   1264: aload 9
     //   1266: astore 10
-    //   1268: new 1229	java/io/BufferedInputStream
+    //   1268: new 1230	java/io/BufferedInputStream
     //   1271: dup
-    //   1272: new 1229	java/io/BufferedInputStream
+    //   1272: new 1230	java/io/BufferedInputStream
     //   1275: dup
-    //   1276: new 1231	java/io/FileInputStream
+    //   1276: new 1232	java/io/FileInputStream
     //   1279: dup
     //   1280: aload 5
-    //   1282: invokespecial 1234	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   1285: invokespecial 1235	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   1288: invokespecial 1235	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1282: invokespecial 1235	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   1285: invokespecial 1236	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1288: invokespecial 1236	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   1291: astore_3
     //   1292: aload 9
     //   1294: astore 10
@@ -3129,7 +3129,7 @@ public class HttpUtil
     //   1301: astore 11
     //   1303: aload_3
     //   1304: aload 11
-    //   1306: invokevirtual 1236	java/io/BufferedInputStream:read	([B)I
+    //   1306: invokevirtual 1237	java/io/BufferedInputStream:read	([B)I
     //   1309: istore 8
     //   1311: iload 8
     //   1313: iconst_m1
@@ -3138,12 +3138,12 @@ public class HttpUtil
     //   1319: aload 11
     //   1321: iconst_0
     //   1322: iload 8
-    //   1324: invokevirtual 1237	java/io/OutputStream:write	([BII)V
+    //   1324: invokevirtual 1238	java/io/OutputStream:write	([BII)V
     //   1327: goto -24 -> 1303
     //   1330: aload 9
     //   1332: astore 10
     //   1334: aload_3
-    //   1335: invokevirtual 1238	java/io/BufferedInputStream:close	()V
+    //   1335: invokevirtual 1239	java/io/BufferedInputStream:close	()V
     //   1338: goto -441 -> 897
     //   1341: astore_0
     //   1342: goto +80 -> 1422
@@ -3153,32 +3153,32 @@ public class HttpUtil
     //   1349: anewarray 4	java/lang/Object
     //   1352: dup
     //   1353: iconst_0
-    //   1354: ldc_w 1240
+    //   1354: ldc_w 1241
     //   1357: aastore
     //   1358: dup
     //   1359: iconst_1
     //   1360: aload 5
-    //   1362: invokevirtual 1243	java/io/File:length	()J
-    //   1365: invokestatic 1246	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1362: invokevirtual 1244	java/io/File:length	()J
+    //   1365: invokestatic 1247	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1368: aastore
     //   1369: dup
     //   1370: iconst_2
-    //   1371: ldc_w 1248
+    //   1371: ldc_w 1249
     //   1374: aastore
     //   1375: dup
     //   1376: iconst_3
     //   1377: aload 5
-    //   1379: invokevirtual 1251	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   1379: invokevirtual 1252	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   1382: aastore
-    //   1383: invokestatic 1139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   1383: invokestatic 1140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   1386: aload 6
-    //   1388: invokevirtual 1254	java/io/OutputStream:flush	()V
+    //   1388: invokevirtual 1255	java/io/OutputStream:flush	()V
     //   1391: aload 6
-    //   1393: invokevirtual 1255	java/io/OutputStream:close	()V
+    //   1393: invokevirtual 1256	java/io/OutputStream:close	()V
     //   1396: aload_0
-    //   1397: invokevirtual 1256	java/net/HttpURLConnection:disconnect	()V
+    //   1397: invokevirtual 1257	java/net/HttpURLConnection:disconnect	()V
     //   1400: aload_3
-    //   1401: invokevirtual 1238	java/io/BufferedInputStream:close	()V
+    //   1401: invokevirtual 1239	java/io/BufferedInputStream:close	()V
     //   1404: aconst_null
     //   1405: areturn
     //   1406: astore_0
@@ -3194,7 +3194,7 @@ public class HttpUtil
     //   1422: aload 9
     //   1424: astore 10
     //   1426: aload_3
-    //   1427: invokevirtual 1238	java/io/BufferedInputStream:close	()V
+    //   1427: invokevirtual 1239	java/io/BufferedInputStream:close	()V
     //   1430: aload 9
     //   1432: astore 10
     //   1434: aload_0
@@ -3208,19 +3208,19 @@ public class HttpUtil
     //   1448: aload 9
     //   1450: astore 10
     //   1452: aload_2
-    //   1453: ldc_w 1258
+    //   1453: ldc_w 1259
     //   1456: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1459: pop
     //   1460: aload 9
     //   1462: astore 10
     //   1464: aload_2
-    //   1465: ldc_w 1164
+    //   1465: ldc_w 1165
     //   1468: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1471: pop
     //   1472: aload 9
     //   1474: astore 10
     //   1476: aload_2
-    //   1477: ldc_w 1260
+    //   1477: ldc_w 1261
     //   1480: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1483: pop
     //   1484: aload 9
@@ -3229,36 +3229,36 @@ public class HttpUtil
     //   1490: aload_2
     //   1491: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1494: invokevirtual 761	java/lang/String:getBytes	()[B
-    //   1497: invokevirtual 1206	java/io/OutputStream:write	([B)V
+    //   1497: invokevirtual 1207	java/io/OutputStream:write	([B)V
     //   1500: aload 9
     //   1502: astore 10
     //   1504: aload 6
-    //   1506: invokevirtual 1254	java/io/OutputStream:flush	()V
+    //   1506: invokevirtual 1255	java/io/OutputStream:flush	()V
     //   1509: aload 9
     //   1511: astore 10
     //   1513: aload 6
-    //   1515: invokevirtual 1255	java/io/OutputStream:close	()V
+    //   1515: invokevirtual 1256	java/io/OutputStream:close	()V
     //   1518: aload 9
     //   1520: astore 10
-    //   1522: new 1189	java/lang/StringBuffer
+    //   1522: new 1190	java/lang/StringBuffer
     //   1525: dup
-    //   1526: invokespecial 1190	java/lang/StringBuffer:<init>	()V
+    //   1526: invokespecial 1191	java/lang/StringBuffer:<init>	()V
     //   1529: astore_3
     //   1530: aload 9
     //   1532: astore 10
-    //   1534: new 928	java/io/BufferedReader
+    //   1534: new 929	java/io/BufferedReader
     //   1537: dup
-    //   1538: new 930	java/io/InputStreamReader
+    //   1538: new 931	java/io/InputStreamReader
     //   1541: dup
     //   1542: aload_0
-    //   1543: invokevirtual 1261	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   1546: invokespecial 937	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   1549: invokespecial 940	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   1543: invokevirtual 1262	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1546: invokespecial 938	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   1549: invokespecial 941	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   1552: astore_2
     //   1553: aload 9
     //   1555: astore 10
     //   1557: aload_2
-    //   1558: invokevirtual 943	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   1558: invokevirtual 944	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   1561: astore 4
     //   1563: aload 4
     //   1565: ifnull +29 -> 1594
@@ -3266,30 +3266,30 @@ public class HttpUtil
     //   1570: astore 10
     //   1572: aload_3
     //   1573: aload 4
-    //   1575: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1575: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1578: pop
     //   1579: aload 9
     //   1581: astore 10
     //   1583: aload_3
-    //   1584: ldc_w 945
-    //   1587: invokevirtual 1195	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1584: ldc_w 946
+    //   1587: invokevirtual 1196	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1590: pop
     //   1591: goto -38 -> 1553
     //   1594: aload 9
     //   1596: astore 10
     //   1598: aload_3
-    //   1599: invokevirtual 1202	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   1599: invokevirtual 1203	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   1602: astore_3
     //   1603: aload 9
     //   1605: astore 10
     //   1607: aload_2
-    //   1608: invokevirtual 947	java/io/BufferedReader:close	()V
+    //   1608: invokevirtual 948	java/io/BufferedReader:close	()V
     //   1611: aload_3
     //   1612: astore_1
     //   1613: aload 9
     //   1615: ifnull +214 -> 1829
     //   1618: aload_0
-    //   1619: invokevirtual 1262	java/net/HttpURLConnection:getResponseCode	()I
+    //   1619: invokevirtual 1263	java/net/HttpURLConnection:getResponseCode	()I
     //   1622: istore 8
     //   1624: invokestatic 206	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1627: ifeq +50 -> 1677
@@ -3298,12 +3298,12 @@ public class HttpUtil
     //   1634: invokespecial 78	java/lang/StringBuilder:<init>	()V
     //   1637: astore_1
     //   1638: aload_1
-    //   1639: ldc_w 1264
+    //   1639: ldc_w 1265
     //   1642: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1645: pop
     //   1646: aload_1
     //   1647: iload 8
-    //   1649: invokevirtual 822	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1649: invokevirtual 823	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1652: pop
     //   1653: ldc 29
     //   1655: iconst_2
@@ -3314,11 +3314,11 @@ public class HttpUtil
     //   1666: astore_1
     //   1667: ldc 29
     //   1669: iconst_1
-    //   1670: ldc_w 1266
+    //   1670: ldc_w 1267
     //   1673: aload_1
-    //   1674: invokestatic 1268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1674: invokestatic 1269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1677: aload_0
-    //   1678: invokevirtual 1256	java/net/HttpURLConnection:disconnect	()V
+    //   1678: invokevirtual 1257	java/net/HttpURLConnection:disconnect	()V
     //   1681: aload_3
     //   1682: astore_1
     //   1683: goto +146 -> 1829
@@ -3344,7 +3344,7 @@ public class HttpUtil
     //   1718: aload 9
     //   1720: astore 10
     //   1722: aload_3
-    //   1723: ldc_w 1270
+    //   1723: ldc_w 1271
     //   1726: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1729: pop
     //   1730: aload 9
@@ -3360,13 +3360,13 @@ public class HttpUtil
     //   1747: aload_3
     //   1748: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1751: aload_2
-    //   1752: invokestatic 1268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1752: invokestatic 1269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1755: aload_0
     //   1756: astore_1
     //   1757: aload 9
     //   1759: ifnull +70 -> 1829
     //   1762: aload 9
-    //   1764: invokevirtual 1262	java/net/HttpURLConnection:getResponseCode	()I
+    //   1764: invokevirtual 1263	java/net/HttpURLConnection:getResponseCode	()I
     //   1767: istore 8
     //   1769: invokestatic 206	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1772: ifeq +50 -> 1822
@@ -3375,12 +3375,12 @@ public class HttpUtil
     //   1779: invokespecial 78	java/lang/StringBuilder:<init>	()V
     //   1782: astore_1
     //   1783: aload_1
-    //   1784: ldc_w 1264
+    //   1784: ldc_w 1265
     //   1787: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1790: pop
     //   1791: aload_1
     //   1792: iload 8
-    //   1794: invokevirtual 822	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1794: invokevirtual 823	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1797: pop
     //   1798: ldc 29
     //   1800: iconst_2
@@ -3391,11 +3391,11 @@ public class HttpUtil
     //   1811: astore_1
     //   1812: ldc 29
     //   1814: iconst_1
-    //   1815: ldc_w 1266
+    //   1815: ldc_w 1267
     //   1818: aload_1
-    //   1819: invokestatic 1268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1819: invokestatic 1269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1822: aload 9
-    //   1824: invokevirtual 1256	java/net/HttpURLConnection:disconnect	()V
+    //   1824: invokevirtual 1257	java/net/HttpURLConnection:disconnect	()V
     //   1827: aload_0
     //   1828: astore_1
     //   1829: invokestatic 206	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -3405,7 +3405,7 @@ public class HttpUtil
     //   1839: invokespecial 78	java/lang/StringBuilder:<init>	()V
     //   1842: astore_0
     //   1843: aload_0
-    //   1844: ldc_w 1272
+    //   1844: ldc_w 1273
     //   1847: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1850: pop
     //   1851: aload_0
@@ -3422,7 +3422,7 @@ public class HttpUtil
     //   1869: aload_1
     //   1870: ifnull +66 -> 1936
     //   1873: aload_1
-    //   1874: invokevirtual 1262	java/net/HttpURLConnection:getResponseCode	()I
+    //   1874: invokevirtual 1263	java/net/HttpURLConnection:getResponseCode	()I
     //   1877: istore 8
     //   1879: invokestatic 206	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1882: ifeq +50 -> 1932
@@ -3431,12 +3431,12 @@ public class HttpUtil
     //   1889: invokespecial 78	java/lang/StringBuilder:<init>	()V
     //   1892: astore_2
     //   1893: aload_2
-    //   1894: ldc_w 1264
+    //   1894: ldc_w 1265
     //   1897: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1900: pop
     //   1901: aload_2
     //   1902: iload 8
-    //   1904: invokevirtual 822	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1904: invokevirtual 823	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1907: pop
     //   1908: ldc 29
     //   1910: iconst_2
@@ -3447,11 +3447,11 @@ public class HttpUtil
     //   1921: astore_2
     //   1922: ldc 29
     //   1924: iconst_1
-    //   1925: ldc_w 1266
+    //   1925: ldc_w 1267
     //   1928: aload_2
-    //   1929: invokestatic 1268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1929: invokestatic 1269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1932: aload_1
-    //   1933: invokevirtual 1256	java/net/HttpURLConnection:disconnect	()V
+    //   1933: invokevirtual 1257	java/net/HttpURLConnection:disconnect	()V
     //   1936: goto +5 -> 1941
     //   1939: aload_0
     //   1940: athrow
@@ -3707,34 +3707,34 @@ public class HttpUtil
   public static String uploadImageWithHttps(String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap1, Map<String, String> paramMap2, Map<String, String> paramMap3, boolean paramBoolean)
   {
     // Byte code:
-    //   0: new 860	java/net/URL
+    //   0: new 861	java/net/URL
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 861	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   8: invokevirtual 865	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   11: checkcast 867	javax/net/ssl/HttpsURLConnection
+    //   5: invokespecial 862	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   8: invokevirtual 866	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   11: checkcast 868	javax/net/ssl/HttpsURLConnection
     //   14: astore 8
-    //   16: new 1277	com/tencent/biz/common/util/HttpUtil$3
+    //   16: new 1278	com/tencent/biz/common/util/HttpUtil$3
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 1278	com/tencent/biz/common/util/HttpUtil$3:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 1279	com/tencent/biz/common/util/HttpUtil$3:<init>	(Ljava/lang/String;)V
     //   24: astore 9
     //   26: iload 7
     //   28: ifne +18 -> 46
     //   31: aload 8
-    //   33: new 872	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory
+    //   33: new 873	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory
     //   36: dup
     //   37: aload_1
     //   38: aload 9
-    //   40: invokespecial 875	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory:<init>	(Ljava/lang/String;Ljavax/net/ssl/HostnameVerifier;)V
-    //   43: invokevirtual 879	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   40: invokespecial 876	com/tencent/mobileqq/utils/httputils/SniSSLSocketFactory:<init>	(Ljava/lang/String;Ljavax/net/ssl/HostnameVerifier;)V
+    //   43: invokevirtual 880	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   46: aload 8
     //   48: aload 9
-    //   50: invokevirtual 882	javax/net/ssl/HttpsURLConnection:setHostnameVerifier	(Ljavax/net/ssl/HostnameVerifier;)V
+    //   50: invokevirtual 883	javax/net/ssl/HttpsURLConnection:setHostnameVerifier	(Ljavax/net/ssl/HostnameVerifier;)V
     //   53: aload 8
-    //   55: ldc_w 908
+    //   55: ldc_w 909
     //   58: aload_1
-    //   59: invokevirtual 897	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   59: invokevirtual 898	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: aload 8
     //   64: aload_0
     //   65: aload_2
@@ -3743,7 +3743,7 @@ public class HttpUtil
     //   69: aload 5
     //   71: aload 6
     //   73: iload 7
-    //   75: invokestatic 1132	com/tencent/biz/common/util/HttpUtil:uploadImage	(Ljava/net/HttpURLConnection;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
+    //   75: invokestatic 1133	com/tencent/biz/common/util/HttpUtil:uploadImage	(Ljava/net/HttpURLConnection;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
     //   78: astore_1
     //   79: aload_1
     //   80: areturn
@@ -3760,7 +3760,7 @@ public class HttpUtil
     //   98: anewarray 4	java/lang/Object
     //   101: dup
     //   102: iconst_0
-    //   103: ldc_w 1134
+    //   103: ldc_w 1135
     //   106: aastore
     //   107: dup
     //   108: iconst_1
@@ -3768,13 +3768,13 @@ public class HttpUtil
     //   110: aastore
     //   111: dup
     //   112: iconst_2
-    //   113: ldc_w 1136
+    //   113: ldc_w 1137
     //   116: aastore
     //   117: dup
     //   118: iconst_3
     //   119: aload_1
     //   120: aastore
-    //   121: invokestatic 1139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   121: invokestatic 1140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   124: aconst_null
     //   125: areturn
     //   126: astore_1
@@ -3784,7 +3784,7 @@ public class HttpUtil
     //   131: anewarray 4	java/lang/Object
     //   134: dup
     //   135: iconst_0
-    //   136: ldc_w 1134
+    //   136: ldc_w 1135
     //   139: aastore
     //   140: dup
     //   141: iconst_1
@@ -3792,13 +3792,13 @@ public class HttpUtil
     //   143: aastore
     //   144: dup
     //   145: iconst_2
-    //   146: ldc_w 1141
+    //   146: ldc_w 1142
     //   149: aastore
     //   150: dup
     //   151: iconst_3
     //   152: aload_1
     //   153: aastore
-    //   154: invokestatic 1139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   154: invokestatic 1140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   157: aconst_null
     //   158: areturn
     // Local variable table:
@@ -3827,7 +3827,7 @@ public class HttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -36,8 +36,8 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xab.SubMsgType0xab.MsgBody;
 public class TroopRewardMgr
   implements Manager
 {
-  public static int a = 1080;
-  public static int b = 1920;
+  public static int b = 1080;
+  public static int c = 1920;
   QQAppInterface a;
   
   public TroopRewardMgr(QQAppInterface paramQQAppInterface)
@@ -57,7 +57,7 @@ public class TroopRewardMgr
     localMessageForTroopReward.isread = true;
     localMessageForTroopReward.issend = 1;
     localMessageForTroopReward.istroop = 1;
-    localMessageForTroopReward.time = MessageCache.a();
+    localMessageForTroopReward.time = MessageCache.c();
     localMessageForTroopReward.rewardCreateTime = ((int)(System.currentTimeMillis() / 1000L));
     localMessageForTroopReward.rewardMoney = paramInt2;
     localMessageForTroopReward.rewardContent = paramString2;
@@ -242,11 +242,6 @@ public class TroopRewardMgr
     return localObject1;
   }
   
-  protected String a(String paramString, int paramInt)
-  {
-    return UinTypeUtil.a(paramString, paramInt);
-  }
-  
   protected List<MessageRecord> a(String paramString, int paramInt)
   {
     MsgPool localMsgPool = this.a.getMessageProxy(0).a();
@@ -254,7 +249,7 @@ public class TroopRewardMgr
     localLock.lock();
     try
     {
-      paramString = (List)localMsgPool.b().get(a(paramString, paramInt));
+      paramString = (List)localMsgPool.b().get(b(paramString, paramInt));
       if (paramString != null)
       {
         paramString = (List)((ArrayList)paramString).clone();
@@ -290,11 +285,16 @@ public class TroopRewardMgr
     this.a.getMessageFacade().a(paramString1, this.a.getCurrentAccountUin());
   }
   
+  protected String b(String paramString, int paramInt)
+  {
+    return UinTypeUtil.a(paramString, paramInt);
+  }
+  
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRewardMgr
  * JD-Core Version:    0.7.0.1
  */

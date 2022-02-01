@@ -4,18 +4,18 @@ import java.io.InputStream;
 
 public class HtmlOffline$MyWebResourceResponse
 {
-  public InputStream a;
   public String a;
+  public InputStream b;
   
   public HtmlOffline$MyWebResourceResponse(String paramString, InputStream paramInputStream)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.a = paramString;
+    this.b = paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.MyWebResourceResponse
  * JD-Core Version:    0.7.0.1
  */

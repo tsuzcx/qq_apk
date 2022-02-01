@@ -12,17 +12,17 @@ class ResourceObserverApiImpl$1
   public void a(int paramInt1, int paramInt2)
   {
     QLog.d("ResourceObserverApiImpl", 1, new Object[] { "onConfigResult | result = ", Integer.valueOf(paramInt1), ",serverError = ", Integer.valueOf(paramInt2) });
-    if (ResourceObserverApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplResourceObserverApiImpl, paramInt1, paramInt2))
+    if (ResourceObserverApiImpl.access$000(this.b, paramInt1, paramInt2))
     {
-      ResourceObserverApiImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplResourceObserverApiImpl, this.jdField_a_of_type_ComTencentMobileqqIdentificationIResourceObserver, paramInt2);
+      ResourceObserverApiImpl.access$100(this.b, this.a, paramInt2);
       return;
     }
-    ResourceObserverApiImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplResourceObserverApiImpl, this.jdField_a_of_type_ComTencentMobileqqIdentificationIResourceObserver, paramInt2);
+    ResourceObserverApiImpl.access$200(this.b, this.a, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqconnectface.impl.ResourceObserverApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

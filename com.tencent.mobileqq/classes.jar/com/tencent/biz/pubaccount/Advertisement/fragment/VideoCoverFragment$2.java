@@ -14,10 +14,10 @@ class VideoCoverFragment$2
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      VideoCoverFragment.a(this.a).b();
+      VideoCoverFragment.b(this.a).b();
       if (!this.a.a())
       {
-        if (VideoCoverFragment.a(this.a))
+        if (VideoCoverFragment.c(this.a))
         {
           this.a.a(false);
           return false;
@@ -30,7 +30,7 @@ class VideoCoverFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.2
  * JD-Core Version:    0.7.0.1
  */

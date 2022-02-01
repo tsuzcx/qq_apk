@@ -35,7 +35,7 @@ public class TlvUtils
     {
       short s1 = paramTlv.a();
       short s2 = paramTlv.b();
-      paramTlv = paramTlv.a();
+      paramTlv = paramTlv.c();
       ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
       localByteBuffer.putShort(s1);
       localByteBuffer.putShort(s2);

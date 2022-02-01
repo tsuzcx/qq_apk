@@ -20,19 +20,19 @@ final class VasAdvDebugFragment$initView$1$3
   
   public final void onClick(View paramView)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetEditText;
+    Object localObject1 = this.b;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "etAdCode");
     localObject1 = ((EditText)localObject1).getText().toString();
-    Object localObject2 = this.b;
+    Object localObject2 = this.c;
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "etBusiness");
     localObject2 = ((EditText)localObject2).getText().toString();
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
     {
-      ((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).openWeatherWebPage(this.jdField_a_of_type_AndroidViewView.getContext(), (String)localObject1, (String)localObject2);
+      ((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).openWeatherWebPage(this.a.getContext(), (String)localObject1, (String)localObject2);
     }
     else
     {
-      Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
+      Context localContext = this.a.getContext();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Invalid adcode=");
       localStringBuilder.append((String)localObject1);
@@ -45,7 +45,7 @@ final class VasAdvDebugFragment$initView$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.VasAdvDebugFragment.initView.1.3
  * JD-Core Version:    0.7.0.1
  */

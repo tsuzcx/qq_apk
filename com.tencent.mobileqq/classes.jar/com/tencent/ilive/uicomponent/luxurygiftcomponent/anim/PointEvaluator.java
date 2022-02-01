@@ -51,17 +51,12 @@ public class PointEvaluator
   
   public void init(PointF paramPointF1, PointF paramPointF2)
   {
-    float[] arrayOfFloat = { paramPointF1.x, paramPointF1.y };
-    float f1 = paramPointF1.x;
-    float f2 = (paramPointF2.x - paramPointF1.x) / 2.0F;
-    float f3 = paramPointF2.y;
-    paramPointF1 = new float[] { paramPointF2.x, paramPointF2.y };
-    calculateABC(new float[][] { arrayOfFloat, { f1 + f2, f3 - 50.0F }, paramPointF1 });
+    calculateABC(new float[][] { { paramPointF1.x, paramPointF1.y }, { paramPointF1.x + (paramPointF2.x - paramPointF1.x) / 2.0F, paramPointF2.y - 50.0F }, { paramPointF2.x, paramPointF2.y } });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.anim.PointEvaluator
  * JD-Core Version:    0.7.0.1
  */

@@ -24,15 +24,15 @@ class KandianHostProxyBuilder$1$2
   
   public void onCreateRoom()
   {
-    DataReportMgr.a().a();
+    DataReportMgr.a().b();
   }
   
   public void onDestroyRoom()
   {
-    if (AudienceMultiRoomActivityLogic.a().a() == 0) {
-      WebViewPool.a.b();
+    if (AudienceMultiRoomActivityLogic.a().b() == 0) {
+      WebViewPool.a.c();
     }
-    DataReportMgr.a().b();
+    DataReportMgr.a().c();
   }
   
   public void onEnterRoom(long paramLong, int paramInt) {}
@@ -57,7 +57,7 @@ class KandianHostProxyBuilder$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.hostproxy.KandianHostProxyBuilder.1.2
  * JD-Core Version:    0.7.0.1
  */

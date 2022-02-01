@@ -1,25 +1,22 @@
 package com.tencent.biz.richframework.animation.drawable;
 
-import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 
 class QQAnimationDrawable$SerialExecutor
   implements Executor
 {
-  final QQAnimationDrawable.Task<Runnable> jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$Task = new QQAnimationDrawable.Task(30);
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  final QQAnimationDrawable.Task<Runnable> a = new QQAnimationDrawable.Task(30);
+  Runnable b;
   
   protected void a()
   {
     try
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$Task.a();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null)
-      {
-        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
-        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      Runnable localRunnable = (Runnable)this.a.b();
+      this.b = localRunnable;
+      if (localRunnable != null) {
+        QQAnimationDrawable.h.execute(this.b);
       }
       return;
     }
@@ -30,7 +27,7 @@ class QQAnimationDrawable$SerialExecutor
   {
     try
     {
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$Task.a();
+      this.a.a();
       return;
     }
     finally
@@ -44,11 +41,8 @@ class QQAnimationDrawable$SerialExecutor
   {
     try
     {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$Task.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null)
-      {
-        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
+      this.a.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
+      if (this.b == null) {
         a();
       }
       return;

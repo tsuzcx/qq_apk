@@ -9,15 +9,15 @@ class PushDialogHandler$1
   
   public void run()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate != null)) {
-      ((AIOPushDialogHelper)localBaseChatPie.a(42)).a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate, 102, 101);
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (this.b != null)) {
+      ((AIOPushDialogHelper)localBaseChatPie.q(42)).a(this.b, 102, 101);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogHandler.1
  * JD-Core Version:    0.7.0.1
  */

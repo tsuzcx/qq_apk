@@ -10,12 +10,12 @@ class StoryMsgNodeFrameLayout$2
   
   public void a(String paramString)
   {
-    this.a.a.setVisibility(4);
+    this.a.e.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout.2
  * JD-Core Version:    0.7.0.1
  */

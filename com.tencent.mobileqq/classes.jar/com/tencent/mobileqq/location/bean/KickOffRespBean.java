@@ -2,43 +2,43 @@ package com.tencent.mobileqq.location.bean;
 
 public class KickOffRespBean
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  private int a;
+  private String b;
+  private int c;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
-  public int b()
+  public String b()
   {
     return this.b;
   }
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.bean.KickOffRespBean
  * JD-Core Version:    0.7.0.1
  */

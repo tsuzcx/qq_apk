@@ -14,6 +14,20 @@ public class ResourceLoadUtil
     return success;
   }
   
+  public static boolean loadLibrary(String paramString)
+  {
+    try
+    {
+      System.loadLibrary(paramString);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      Logger.e(TAG, "loadFFmpegSo: ", paramString);
+    }
+    return false;
+  }
+  
   public static boolean loadSoSync(@NonNull String paramString)
   {
     boolean bool = success;
@@ -112,7 +126,7 @@ public class ResourceLoadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.ResourceLoadUtil
  * JD-Core Version:    0.7.0.1
  */

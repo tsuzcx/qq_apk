@@ -56,12 +56,12 @@ public class SecSpyFileDecoder
     int i = paramMsg.msg_head.msg_seq.get();
     int j = paramMsg.msg_head.msg_type.get();
     paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    a(i, j, paramMessageHandler.a, paramMsgType0x210);
+    a(i, j, paramMessageHandler.n, paramMsgType0x210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.SecSpyFileDecoder
  * JD-Core Version:    0.7.0.1
  */

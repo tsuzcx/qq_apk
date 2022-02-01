@@ -4,6 +4,7 @@ import com.tencent.mobileqq.apollo.model.ApolloBattleGameInfo;
 import com.tencent.mobileqq.apollo.model.CmAvatarFaceInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import trpc.cmshow.game.OpenGameBox.StOpenGameBoxRsp;
 
 public class ApolloExtensionObserver
   implements IApolloExtensionObserver
@@ -18,7 +19,7 @@ public class ApolloExtensionObserver
     a(paramBoolean, 0, "");
   }
   
-  protected void a(int paramInt, List<ApolloBattleGameInfo> paramList) {}
+  protected void a(int paramInt, List<Integer> paramList) {}
   
   protected void a(List<CmAvatarFaceInfo> paramList, String paramString1, String paramString2, int paramInt) {}
   
@@ -26,7 +27,9 @@ public class ApolloExtensionObserver
   
   protected void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void b(int paramInt, List<Integer> paramList) {}
+  protected void a(boolean paramBoolean, OpenGameBox.StOpenGameBoxRsp paramStOpenGameBoxRsp) {}
+  
+  protected void b(int paramInt, List<ApolloBattleGameInfo> paramList) {}
   
   protected void b(boolean paramBoolean, Object paramObject) {}
   
@@ -58,156 +61,165 @@ public class ApolloExtensionObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 4: 
-    case 11: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 19: 
-    case 20: 
-    case 24: 
-    case 30: 
-    case 32: 
-    case 33: 
-    case 34: 
-    case 35: 
-    case 36: 
-    default: 
-    case 39: 
-      if (paramObject != null) {
-        try
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
         {
-          paramObject = (Object[])paramObject;
-          if (paramObject.length > 1)
+          if (paramInt != 16)
           {
-            a((List)paramObject[0], (String)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue());
-            return;
+            if (paramInt != 17) {
+              switch (paramInt)
+              {
+              default: 
+                switch (paramInt)
+                {
+                default: 
+                  switch (paramInt)
+                  {
+                  default: 
+                    switch (paramInt)
+                    {
+                    default: 
+                      return;
+                    case 40: 
+                      try
+                      {
+                        if ((paramObject instanceof OpenGameBox.StOpenGameBoxRsp))
+                        {
+                          a(paramBoolean, (OpenGameBox.StOpenGameBoxRsp)paramObject);
+                          return;
+                        }
+                        a(false, null);
+                        return;
+                      }
+                      catch (Throwable paramObject)
+                      {
+                        QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_ACTION_USED_LIST. exception = ", paramObject);
+                        return;
+                      }
+                    case 39: 
+                      if (paramObject == null) {
+                        return;
+                      }
+                      try
+                      {
+                        paramObject = (Object[])paramObject;
+                        if (paramObject.length <= 1) {
+                          return;
+                        }
+                        a((List)paramObject[0], (String)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue());
+                        return;
+                      }
+                      catch (Throwable paramObject)
+                      {
+                        QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_BATTLE_GAME_LIST. exception = ", paramObject);
+                        return;
+                      }
+                    case 38: 
+                      if (paramObject == null) {
+                        return;
+                      }
+                      try
+                      {
+                        paramObject = (Object[])paramObject;
+                        if (paramObject.length <= 1) {
+                          return;
+                        }
+                        a(((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
+                        return;
+                      }
+                      catch (Throwable paramObject)
+                      {
+                        QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_ACTION_USED_LIST. exception = ", paramObject);
+                        return;
+                      }
+                    }
+                    if (paramObject == null) {
+                      break;
+                    }
+                    try
+                    {
+                      paramObject = (Object[])paramObject;
+                      if (paramObject.length <= 1) {
+                        break;
+                      }
+                      b(((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
+                      return;
+                    }
+                    catch (Throwable paramObject)
+                    {
+                      QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_BATTLE_GAME_LIST. exception = ", paramObject);
+                      return;
+                    }
+                  case 29: 
+                    p(paramBoolean, paramObject);
+                    return;
+                  case 28: 
+                    e(paramBoolean, paramObject);
+                    return;
+                  case 27: 
+                    a(paramBoolean, (Object[])paramObject);
+                    return;
+                  case 26: 
+                    o(paramBoolean, paramObject);
+                    return;
+                  }
+                  break;
+                case 23: 
+                  n(paramBoolean, paramObject);
+                  return;
+                case 22: 
+                  m(paramBoolean, paramObject);
+                  return;
+                case 21: 
+                  l(paramBoolean, paramObject);
+                  return;
+                }
+                break;
+              case 9: 
+                c(paramBoolean, paramObject);
+                return;
+              case 8: 
+                i(paramBoolean, paramObject);
+                return;
+              case 7: 
+                h(paramBoolean, paramObject);
+                return;
+              case 6: 
+                g(paramBoolean, paramObject);
+                return;
+              case 5: 
+                d(paramBoolean, paramObject);
+                return;
+              }
+            } else {
+              k(paramBoolean, paramObject);
+            }
+          }
+          else {
+            j(paramBoolean, paramObject);
           }
         }
-        catch (Throwable paramObject)
-        {
-          QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_BATTLE_GAME_LIST. exception = ", paramObject);
-          return;
+        else {
+          b(paramBoolean, paramObject);
         }
       }
-      break;
-    case 38: 
-      if (paramObject != null) {
-        try
-        {
-          paramObject = (Object[])paramObject;
-          if (paramObject.length > 1)
-          {
-            b(((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
-            return;
-          }
-        }
-        catch (Throwable paramObject)
-        {
-          QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_ACTION_USED_LIST. exception = ", paramObject);
-          return;
-        }
+      else {
+        a(paramBoolean, paramObject);
       }
-      break;
-    case 37: 
-      if (paramObject != null) {
-        try
-        {
-          paramObject = (Object[])paramObject;
-          if (paramObject.length > 1)
-          {
-            a(((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
-            return;
-          }
-        }
-        catch (Throwable paramObject)
-        {
-          QLog.e("[cmshow]VasExtensionObserver", 1, "[onUpdate] NOTIFY_TYPE_GET_APOLLO_BATTLE_GAME_LIST. exception = ", paramObject);
-          return;
-        }
-      }
-      break;
-    case 31: 
-      t(paramBoolean, paramObject);
-      return;
-    case 29: 
-      s(paramBoolean, paramObject);
-      return;
-    case 28: 
-      c(paramBoolean, paramObject);
-      return;
-    case 27: 
-      a(paramBoolean, (Object[])paramObject);
-      return;
-    case 26: 
-      r(paramBoolean, paramObject);
-      return;
-    case 25: 
-      q(paramBoolean, paramObject);
-      return;
-    case 23: 
-      p(paramBoolean, paramObject);
-      return;
-    case 22: 
-      o(paramBoolean, paramObject);
-      return;
-    case 21: 
-      n(paramBoolean, paramObject);
-      return;
-    case 18: 
-      m(paramBoolean, paramObject);
-      return;
-    case 17: 
-      k(paramBoolean, paramObject);
-      return;
-    case 16: 
-      j(paramBoolean, paramObject);
-      return;
-    case 10: 
-      l(paramBoolean, paramObject);
-      return;
-    case 9: 
-      i(paramBoolean, paramObject);
-      return;
-    case 8: 
-      h(paramBoolean, paramObject);
-      return;
-    case 7: 
-      g(paramBoolean, paramObject);
-      return;
-    case 6: 
+    }
+    else {
       f(paramBoolean, paramObject);
-      return;
-    case 5: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      e(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, paramObject);
-      return;
-    case 1: 
-      d(paramBoolean, paramObject);
     }
   }
   
   protected void p(boolean paramBoolean, Object paramObject) {}
-  
-  protected void q(boolean paramBoolean, Object paramObject) {}
-  
-  protected void r(boolean paramBoolean, Object paramObject) {}
-  
-  protected void s(boolean paramBoolean, Object paramObject) {}
-  
-  protected void t(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.ApolloExtensionObserver
  * JD-Core Version:    0.7.0.1
  */

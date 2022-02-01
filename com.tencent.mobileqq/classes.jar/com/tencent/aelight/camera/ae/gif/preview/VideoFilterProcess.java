@@ -5,22 +5,22 @@ import com.tencent.aelight.camera.ae.gif.filter.ComposeFilter;
 
 public class VideoFilterProcess
 {
-  private int jdField_a_of_type_Int = 0;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private ComposeFilter jdField_a_of_type_ComTencentAelightCameraAeGifFilterComposeFilter = new ComposeFilter();
-  private VideoFilterProcess.FrameRenderCallback jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess$FrameRenderCallback;
-  private boolean jdField_a_of_type_Boolean = true;
+  private int a = 0;
   private int b = 0;
+  private ComposeFilter c = new ComposeFilter();
+  private Frame d = new Frame();
+  private boolean e = true;
+  private VideoFilterProcess.FrameRenderCallback f;
   
   public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
   {
     Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterComposeFilter.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+      this.c.a(paramFrame, paramInt1, paramInt2, this.d);
+      localFrame = this.d;
     }
-    paramFrame = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess$FrameRenderCallback;
+    paramFrame = this.f;
     if (paramFrame != null) {
       paramFrame.a(localFrame);
     }
@@ -29,8 +29,8 @@ public class VideoFilterProcess
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterComposeFilter.apply();
-    VideoFilterProcess.FrameRenderCallback localFrameRenderCallback = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess$FrameRenderCallback;
+    this.c.apply();
+    VideoFilterProcess.FrameRenderCallback localFrameRenderCallback = this.f;
     if (localFrameRenderCallback != null) {
       localFrameRenderCallback.a();
     }
@@ -38,25 +38,25 @@ public class VideoFilterProcess
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
   }
   
   public void a(VideoFilterProcess.FrameRenderCallback paramFrameRenderCallback)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess$FrameRenderCallback = paramFrameRenderCallback;
+    this.f = paramFrameRenderCallback;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterComposeFilter.clearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    VideoFilterProcess.FrameRenderCallback localFrameRenderCallback = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess$FrameRenderCallback;
+    this.c.clearGLSL();
+    this.d.clear();
+    VideoFilterProcess.FrameRenderCallback localFrameRenderCallback = this.f;
     if (localFrameRenderCallback != null) {
       localFrameRenderCallback.b();
     }
@@ -64,7 +64,7 @@ public class VideoFilterProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.preview.VideoFilterProcess
  * JD-Core Version:    0.7.0.1
  */

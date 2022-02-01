@@ -12,12 +12,12 @@ class AppBarLayout$2
   
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.r(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.r(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout.2
  * JD-Core Version:    0.7.0.1
  */

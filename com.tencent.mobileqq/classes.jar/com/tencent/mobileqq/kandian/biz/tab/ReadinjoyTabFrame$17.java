@@ -30,20 +30,20 @@ class ReadinjoyTabFrame$17
         {
           paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
           paramMessage.red_type.set(0);
-          ReadinjoyTabFrame.a(this.a).a(paramMessage);
-          ReadinjoyTabFrame.a(this.a).invalidate();
+          ReadinjoyTabFrame.j(this.a).a(paramMessage);
+          ReadinjoyTabFrame.j(this.a).invalidate();
         }
         else
         {
-          ReadinjoyTabFrame.a(this.a).d();
-          ReadinjoyTabFrame.a(this.a).invalidate();
+          ReadinjoyTabFrame.j(this.a).g();
+          ReadinjoyTabFrame.j(this.a).invalidate();
         }
         QLog.d("Q.readinjoy.4tab", 2, "update self icon red point for coin campaign");
         return;
       }
       i = paramMessage.arg1;
       int j = paramMessage.arg2;
-      if ((i > 0) && ((j != 2131376141) || (!(this.a.a() instanceof ReadInJoyVideoChannelFragment))))
+      if ((i > 0) && ((j != 2131444343) || (!(this.a.p() instanceof ReadInJoyVideoChannelFragment))))
       {
         Object localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
         ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(0);
@@ -57,7 +57,7 @@ class ReadinjoyTabFrame$17
         QLog.d("Q.readinjoy.4tab", 2, ((StringBuilder)localObject).toString());
         return;
       }
-      ReadinjoyTabFrame.a(this.a).a(j);
+      ReadinjoyTabFrame.k(this.a).a(j);
       return;
     }
     i = paramMessage.arg1;
@@ -67,13 +67,13 @@ class ReadinjoyTabFrame$17
       paramMessage.red_content.set(String.valueOf(i));
       paramMessage.red_desc.set("{'cn':'#FF0000'}");
       paramMessage.red_type.set(5);
-      ReadinjoyTabFrame.a(this.a).a(paramMessage);
-      ReadinjoyTabFrame.a(this.a).invalidate();
+      ReadinjoyTabFrame.j(this.a).a(paramMessage);
+      ReadinjoyTabFrame.j(this.a).invalidate();
     }
     else
     {
-      ReadinjoyTabFrame.a(this.a).d();
-      ReadinjoyTabFrame.a(this.a).invalidate();
+      ReadinjoyTabFrame.j(this.a).g();
+      ReadinjoyTabFrame.j(this.a).invalidate();
     }
     paramMessage = new StringBuilder();
     paramMessage.append("update self icon red point, value : ");
@@ -83,7 +83,7 @@ class ReadinjoyTabFrame$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.17
  * JD-Core Version:    0.7.0.1
  */

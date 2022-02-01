@@ -10,10 +10,15 @@ public class ProxyManager
   {
     return ProxyServiceEngine.g().getProxyService(paramClass);
   }
+  
+  public static <T> T getNew(Class<T> paramClass)
+  {
+    return ProxyServiceEngine.g().newProxyService(paramClass);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.ProxyManager
  * JD-Core Version:    0.7.0.1
  */

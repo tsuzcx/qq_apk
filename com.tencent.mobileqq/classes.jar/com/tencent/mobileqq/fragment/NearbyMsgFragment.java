@@ -18,10 +18,10 @@ public class NearbyMsgFragment
 {
   public NearbyActivity a;
   
-  public void aR_()
+  public void dw_()
   {
-    super.aR_();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    super.dw_();
+    this.l.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.i("nearby.NearbyMsgFragment", 2, "onPageSelected， startMsgBoxListActivity");
     }
@@ -38,8 +38,8 @@ public class NearbyMsgFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) && ((paramActivity instanceof NearbyActivity))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity = ((NearbyActivity)paramActivity);
+    if ((this.a == null) && ((paramActivity instanceof NearbyActivity))) {
+      this.a = ((NearbyActivity)paramActivity);
     }
     if (QLog.isColorLevel()) {
       QLog.i("nearby.NearbyMsgFragment", 2, "onAttach");
@@ -61,21 +61,21 @@ public class NearbyMsgFragment
     {
       paramBundle = new StringBuilder();
       paramBundle.append("onCreateView: lastIdx=");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getmLastTabIndex());
+      paramBundle.append(this.k.getmLastTabIndex());
       QLog.i("nearby.NearbyMsgFragment", 2, paramBundle.toString());
     }
-    if (this.f == null)
+    if (this.am == null)
     {
-      this.f = paramLayoutInflater.inflate(2131561192, paramViewGroup, false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyHomeINearbyTabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getmLastTabIndex() == this.jdField_a_of_type_ComTencentMobileqqNearbyHomeINearbyTabInfo.getTabIndex()))
+      this.am = paramLayoutInflater.inflate(2131627544, paramViewGroup, false);
+      if ((this.q != null) && (this.k.getmLastTabIndex() == this.q.getTabIndex()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.startMsgBoxListActivity(false);
+        this.a.startMsgBoxListActivity(false);
         if (QLog.isColorLevel()) {
           QLog.i("nearby.NearbyMsgFragment", 2, "onCreateView, startMsgBoxListActivity");
         }
       }
     }
-    return this.f;
+    return this.am;
   }
   
   public void onDestroy()
@@ -124,7 +124,7 @@ public class NearbyMsgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyMsgFragment
  * JD-Core Version:    0.7.0.1
  */

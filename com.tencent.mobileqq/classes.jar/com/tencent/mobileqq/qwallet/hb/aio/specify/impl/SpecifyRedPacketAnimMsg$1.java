@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 class SpecifyRedPacketAnimMsg$1
   implements ISpriteVideoViewTemp.OnFrameEndListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   SpecifyRedPacketAnimMsg$1(SpecifyRedPacketAnimMsg paramSpecifyRedPacketAnimMsg, ISpecifyRedPacketAnimMsg.OnAnimEndListener paramOnAnimEndListener) {}
   
@@ -18,16 +18,16 @@ class SpecifyRedPacketAnimMsg$1
     if (QLog.isColorLevel()) {
       QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      if (SpecifyRedPacketAnimMsg.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyRedPacketAnimMsg)) {
+      if (SpecifyRedPacketAnimMsg.a(this.c)) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      if (SpecifyRedPacketAnimMsg.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyRedPacketAnimMsg) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(SpecifyRedPacketAnimMsg.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyRedPacketAnimMsg));
+      this.a = true;
+      if (SpecifyRedPacketAnimMsg.b(this.c) != null) {
+        ThreadManager.getUIHandler().removeCallbacks(SpecifyRedPacketAnimMsg.b(this.c));
       }
-      ISpecifyRedPacketAnimMsg.OnAnimEndListener localOnAnimEndListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyISpecifyRedPacketAnimMsg$OnAnimEndListener;
+      ISpecifyRedPacketAnimMsg.OnAnimEndListener localOnAnimEndListener = this.b;
       if (localOnAnimEndListener != null) {
         localOnAnimEndListener.a();
       }
@@ -36,7 +36,7 @@ class SpecifyRedPacketAnimMsg$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.specify.impl.SpecifyRedPacketAnimMsg.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class FriendShipWaveView$4$2
   public void a()
   {
     RotateAction localRotateAction = new RotateAction(3000, 360, 0);
-    localRotateAction.a = true;
-    this.a.a.e.a(new Action[] { localRotateAction });
+    localRotateAction.i = true;
+    this.a.a.i.a(new Action[] { localRotateAction });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView.4.2
  * JD-Core Version:    0.7.0.1
  */

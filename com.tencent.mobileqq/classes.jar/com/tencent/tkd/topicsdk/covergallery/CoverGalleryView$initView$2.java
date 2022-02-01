@@ -19,14 +19,14 @@ final class CoverGalleryView$initView$2
   
   public final void invoke(int paramInt)
   {
-    CoverGalleryView.b(this.this$0);
+    CoverGalleryView.e(this.this$0);
     CoverGalleryView localCoverGalleryView = this.this$0;
     CoverGalleryView.a(localCoverGalleryView, (Media)CoverGalleryView.a(localCoverGalleryView).get(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.initView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,111 +10,86 @@ public class RedAppInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<RedAppInfo> CREATOR = new RedAppInfo.1();
-  private int jdField_a_of_type_Int;
-  private RedDisplayInfo jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo;
-  private String jdField_a_of_type_JavaLangString;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
+  ArrayList<String> a;
+  private int b;
+  private int c;
   private int d;
-  private int e;
-  private int f;
+  private String e;
+  private String f;
   private int g;
   private int h;
   private int i;
-  private int j;
+  private String j;
   private int k;
+  private int l;
+  private int m;
+  private int n;
+  private int o;
+  private RedDisplayInfo p;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public RedDisplayInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.b;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(RedDisplayInfo paramRedDisplayInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo = paramRedDisplayInfo;
+    this.p = paramRedDisplayInfo;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramArrayList;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public int c()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.d;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void c(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.j = paramString;
   }
   
-  public int d()
+  public String d()
   {
-    return this.d;
+    return this.e;
   }
   
   public void d(int paramInt)
   {
-    this.d = paramInt;
+    this.g = paramInt;
   }
   
   public int describeContents()
@@ -122,34 +97,34 @@ public class RedAppInfo
     return 0;
   }
   
-  public int e()
-  {
-    return this.e;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.e = paramInt;
-  }
-  
-  public int f()
+  public String e()
   {
     return this.f;
   }
   
-  public void f(int paramInt)
+  public void e(int paramInt)
   {
-    this.f = paramInt;
+    this.h = paramInt;
   }
   
-  public int g()
+  public int f()
   {
     return this.g;
   }
   
+  public void f(int paramInt)
+  {
+    this.i = paramInt;
+  }
+  
+  public List<String> g()
+  {
+    return this.a;
+  }
+  
   public void g(int paramInt)
   {
-    this.g = paramInt;
+    this.k = paramInt;
   }
   
   public int h()
@@ -159,7 +134,7 @@ public class RedAppInfo
   
   public void h(int paramInt)
   {
-    this.h = paramInt;
+    this.l = paramInt;
   }
   
   public int i()
@@ -169,17 +144,17 @@ public class RedAppInfo
   
   public void i(int paramInt)
   {
-    this.i = paramInt;
+    this.m = paramInt;
   }
   
-  public int j()
+  public String j()
   {
     return this.j;
   }
   
   public void j(int paramInt)
   {
-    this.j = paramInt;
+    this.n = paramInt;
   }
   
   public int k()
@@ -189,32 +164,57 @@ public class RedAppInfo
   
   public void k(int paramInt)
   {
-    this.k = paramInt;
+    this.o = paramInt;
+  }
+  
+  public int l()
+  {
+    return this.l;
+  }
+  
+  public int m()
+  {
+    return this.m;
+  }
+  
+  public int n()
+  {
+    return this.n;
+  }
+  
+  public RedDisplayInfo o()
+  {
+    return this.p;
+  }
+  
+  public int p()
+  {
+    return this.o;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
     paramParcel.writeInt(this.d);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeInt(this.e);
-    paramParcel.writeInt(this.f);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.f);
     paramParcel.writeInt(this.g);
+    paramParcel.writeList(this.a);
     paramParcel.writeInt(this.h);
     paramParcel.writeInt(this.i);
-    paramParcel.writeInt(this.j);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo, paramInt);
+    paramParcel.writeString(this.j);
     paramParcel.writeInt(this.k);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeInt(this.n);
+    paramParcel.writeParcelable(this.p, paramInt);
+    paramParcel.writeInt(this.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedAppInfo
  * JD-Core Version:    0.7.0.1
  */

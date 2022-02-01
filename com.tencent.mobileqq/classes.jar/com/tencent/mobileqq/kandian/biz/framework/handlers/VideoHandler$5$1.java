@@ -19,22 +19,22 @@ class VideoHandler$5$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("scroll ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" to top");
       QLog.d("VideoHandler", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = VideoHandler.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler$5.this$0).getChildAt(this.jdField_a_of_type_Int - VideoHandler.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler$5.this$0).getFirstVisiblePosition());
+    Object localObject = VideoHandler.b(this.b.this$0).getChildAt(this.a - VideoHandler.b(this.b.this$0).getFirstVisiblePosition());
     if (localObject != null)
     {
-      VideoHandler.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler$5.this$0).removeMessages(1001);
-      VideoHandler.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler$5.this$0).smoothScrollBy(((View)localObject).getBottom() - AIOUtils.b(175.0F, VideoHandler.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler$5.this$0).getResources()), 800);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler$5.this$0.a().c(true);
+      VideoHandler.f(this.b.this$0).removeMessages(1001);
+      VideoHandler.b(this.b.this$0).smoothScrollBy(((View)localObject).getBottom() - AIOUtils.b(175.0F, VideoHandler.c(this.b.this$0).getResources()), 800);
+      this.b.this$0.g().c(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.5.1
  * JD-Core Version:    0.7.0.1
  */

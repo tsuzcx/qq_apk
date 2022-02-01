@@ -8,6 +8,7 @@ import com.tencent.aelight.camera.ae.control.AEQIMAsyncManager;
 import com.tencent.aelight.camera.ae.download.AEDownloadMaterialRunnable;
 import com.tencent.aelight.camera.ae.download.AEMaterialDownloader;
 import com.tencent.aelight.camera.ae.download.AEMaterialDownloader.MaterialDownloadListener;
+import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
 import com.tencent.aelight.camera.ae.util.AECameraPrefsUtil;
 import com.tencent.aelight.camera.aioeditor.capture.music.CaptureConfigUpdateObserver;
 import com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager;
@@ -47,122 +48,71 @@ import org.jetbrains.annotations.NotNull;
 public class AEMaterialManager
   extends AEQIMAsyncManager
 {
-  private static AEMaterialMetaData jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
   public static volatile boolean a = false;
-  private static AEMaterialMetaData jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
   public static volatile boolean b = false;
-  private AEMaterialCategory jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory = new AEMaterialCategory(d());
-  private Observable jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = "";
-  private final List<AEMaterialCategory> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AEMaterialCategory jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory;
-  private final Object jdField_b_of_type_JavaLangObject = new Object();
-  private final List<AEMaterialCategory> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private final Object jdField_c_of_type_JavaLangObject = new Object();
-  private final List<AEMaterialCategory> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private volatile boolean jdField_c_of_type_Boolean = false;
-  private final Object jdField_d_of_type_JavaLangObject = new Object();
-  private final List<AEMaterialMetaData> jdField_d_of_type_JavaUtilList = new ArrayList();
-  private final List<AEMaterialMetaData> e = new ArrayList();
+  private static AEMaterialMetaData s;
+  private static AEMaterialMetaData t;
+  private Observable c;
+  private AEMaterialCategory d = new AEMaterialCategory(r());
+  private AEMaterialCategory e;
+  private volatile boolean f = false;
+  private final List<AEMaterialCategory> g = new CopyOnWriteArrayList();
+  private final List<AEMaterialCategory> h = new CopyOnWriteArrayList();
+  private final List<AEMaterialCategory> i = new ArrayList();
+  private final List<AEMaterialCategory> j = new ArrayList();
+  private final List<AEMaterialMetaData> k = new ArrayList();
+  private final List<AEMaterialMetaData> l = new ArrayList();
+  private final Object m = new Object();
+  private final Object n = new Object();
+  private final Object o = new Object();
+  private final Object p = new Object();
+  private String q = "";
+  private final AtomicBoolean r = new AtomicBoolean(false);
   
   public AEMaterialManager()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList = new ArrayList(100);
-    this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory = new AEMaterialCategory(d());
-    this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList = new ArrayList(100);
+    this.d.a = new ArrayList(100);
+    this.e = new AEMaterialCategory(r());
+    this.e.a = new ArrayList(100);
   }
   
-  private int a(List<AEMaterialMetaData> paramList, String paramString)
+  private void A()
   {
-    if (paramList != null)
-    {
-      if (paramList.size() <= 0) {
-        return -1;
-      }
-      int i = 0;
-      while (i < paramList.size())
-      {
-        if (((AEMaterialMetaData)paramList.get(i)).k.equals(paramString)) {
-          return i;
-        }
-        i += 1;
-      }
+    if (getApp() != null) {
+      getApp().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
     }
-    return -1;
-  }
-  
-  public static AEMaterialMetaData a()
-  {
-    return jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-  }
-  
-  private AEMaterialMetaData a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject1 = null;
-    Object localObject2;
-    int i;
-    do
-    {
-      do
-      {
-        localObject2 = localObject1;
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        localObject2 = (AEMaterialCategory)localIterator1.next();
-      } while (((AEMaterialCategory)localObject2).jdField_a_of_type_JavaUtilList == null);
-      int j = 0;
-      Iterator localIterator2 = ((AEMaterialCategory)localObject2).jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        localObject2 = localObject1;
-        i = j;
-        if (!localIterator2.hasNext()) {
-          break;
-        }
-        localObject2 = (AEMaterialMetaData)localIterator2.next();
-      } while (!((AEMaterialMetaData)localObject2).equals(paramAEMaterialMetaData));
-      i = 1;
-      localObject1 = localObject2;
-    } while (i == 0);
-    return localObject2;
-  }
-  
-  private AEMaterialMetaData a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Object localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-      AEMaterialMetaData localAEMaterialMetaData;
-      do
-      {
-        Iterator localIterator;
-        while (!localIterator.hasNext())
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localIterator = ((AEMaterialCategory)((Iterator)localObject).next()).jdField_a_of_type_JavaUtilList.iterator();
-        }
-        localAEMaterialMetaData = (AEMaterialMetaData)localIterator.next();
-      } while (!localAEMaterialMetaData.k.equals(paramString));
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getNormalStickerMaterial---found id=");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject).toString());
-      }
-      return localAEMaterialMetaData;
-      return null;
+    Observable localObservable = this.c;
+    if (localObservable != null) {
+      localObservable.a(116, new Object[0]);
     }
-    for (;;)
-    {
-      throw paramString;
+  }
+  
+  private void B()
+  {
+    Observable localObservable = this.c;
+    if (localObservable != null) {
+      localObservable.a(111, new Object[] { this.d });
     }
+  }
+  
+  private void C()
+  {
+    Observable localObservable = this.c;
+    if (localObservable != null) {
+      localObservable.a(111, new Object[] { this.e });
+    }
+  }
+  
+  private boolean D()
+  {
+    AEMaterialCategory localAEMaterialCategory = this.d;
+    return (localAEMaterialCategory != null) && (localAEMaterialCategory.a.size() >= 100);
+  }
+  
+  private boolean E()
+  {
+    AEMaterialCategory localAEMaterialCategory = this.e;
+    return (localAEMaterialCategory != null) && (localAEMaterialCategory.a != null) && (this.e.a.size() >= 100);
   }
   
   @Nullable
@@ -172,62 +122,6 @@ public class AEMaterialManager
       return GsonUtils.obj2Json(paramArrayList);
     }
     return null;
-  }
-  
-  @Nullable
-  public static ArrayList<AEMaterialOnShow> a(@Nullable String paramString)
-  {
-    return (ArrayList)GsonUtils.json2Obj(paramString, new AEMaterialManager.2().getType());
-  }
-  
-  private HashMap<String, AEMaterialCategory> a(@Nullable AEMaterialCategory paramAEMaterialCategory)
-  {
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("getSpecificCategory: item.name = ");
-    if (paramAEMaterialCategory == null) {
-      localObject1 = "null";
-    } else {
-      localObject1 = paramAEMaterialCategory.jdField_b_of_type_JavaLangString;
-    }
-    ((StringBuilder)localObject2).append((String)localObject1);
-    AEQLog.a("AEMaterialManager", ((StringBuilder)localObject2).toString());
-    Object localObject1 = new HashMap();
-    localObject2 = new AEMaterialCategory();
-    AEMaterialCategory localAEMaterialCategory = new AEMaterialCategory();
-    if ((paramAEMaterialCategory != null) && (paramAEMaterialCategory.jdField_a_of_type_JavaUtilList != null))
-    {
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      Iterator localIterator = paramAEMaterialCategory.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)localIterator.next();
-        if ("circleCamera".equals(localAEMaterialMetaData.w)) {
-          localArrayList2.add(localAEMaterialMetaData);
-        } else {
-          localArrayList1.add(localAEMaterialMetaData);
-        }
-      }
-      ((AEMaterialCategory)localObject2).jdField_a_of_type_JavaUtilList = localArrayList1;
-      ((AEMaterialCategory)localObject2).jdField_a_of_type_Int = paramAEMaterialCategory.jdField_a_of_type_Int;
-      ((AEMaterialCategory)localObject2).jdField_b_of_type_JavaLangString = paramAEMaterialCategory.jdField_b_of_type_JavaLangString;
-      ((AEMaterialCategory)localObject2).jdField_a_of_type_JavaLangString = paramAEMaterialCategory.jdField_a_of_type_JavaLangString;
-      ((AEMaterialCategory)localObject2).jdField_a_of_type_Boolean = paramAEMaterialCategory.jdField_a_of_type_Boolean;
-      ((AEMaterialCategory)localObject2).jdField_b_of_type_Int = paramAEMaterialCategory.jdField_b_of_type_Int;
-      localAEMaterialCategory.jdField_a_of_type_JavaUtilList = localArrayList2;
-      localAEMaterialCategory.jdField_a_of_type_Int = paramAEMaterialCategory.jdField_a_of_type_Int;
-      localAEMaterialCategory.jdField_b_of_type_JavaLangString = paramAEMaterialCategory.jdField_b_of_type_JavaLangString;
-      localAEMaterialCategory.jdField_a_of_type_JavaLangString = paramAEMaterialCategory.jdField_a_of_type_JavaLangString;
-      localAEMaterialCategory.jdField_a_of_type_Boolean = paramAEMaterialCategory.jdField_a_of_type_Boolean;
-      localAEMaterialCategory.jdField_b_of_type_Int = paramAEMaterialCategory.jdField_b_of_type_Int;
-      ((HashMap)localObject1).put("normal_material", localObject2);
-      ((HashMap)localObject1).put("circle_material", localAEMaterialCategory);
-      return localObject1;
-    }
-    AEQLog.d("AEMaterialManager", "getSpecificCategory: item.materialList == null!");
-    ((HashMap)localObject1).put("normal_material", localObject2);
-    ((HashMap)localObject1).put("circle_material", localAEMaterialCategory);
-    return localObject1;
   }
   
   private List<AEMaterialCategory> a(File paramFile)
@@ -266,7 +160,7 @@ public class AEMaterialManager
         while (localIterator2.hasNext())
         {
           paramFile1 = (AEMaterialCategory)localIterator2.next();
-          if (paramFile1.jdField_b_of_type_JavaLangString.equals(paramFile2.jdField_b_of_type_JavaLangString)) {
+          if (paramFile1.d.equals(paramFile2.d)) {
             break label104;
           }
         }
@@ -274,30 +168,30 @@ public class AEMaterialManager
         label104:
         if (paramFile1 == null)
         {
-          paramFile1 = paramFile2.jdField_a_of_type_JavaUtilList.iterator();
+          paramFile1 = paramFile2.a.iterator();
           while (paramFile1.hasNext()) {
-            c((AEMaterialMetaData)paramFile1.next());
+            e((AEMaterialMetaData)paramFile1.next());
           }
         }
         else
         {
-          localIterator2 = paramFile2.jdField_a_of_type_JavaUtilList.iterator();
+          localIterator2 = paramFile2.a.iterator();
           while (localIterator2.hasNext())
           {
             AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)localIterator2.next();
-            Iterator localIterator3 = paramFile1.jdField_a_of_type_JavaUtilList.iterator();
+            Iterator localIterator3 = paramFile1.a.iterator();
             while (localIterator3.hasNext())
             {
               paramFile2 = (AEMaterialMetaData)localIterator3.next();
-              if (localAEMaterialMetaData.k.equals(paramFile2.k)) {
+              if (localAEMaterialMetaData.m.equals(paramFile2.m)) {
                 break label228;
               }
             }
             paramFile2 = null;
             if (paramFile2 == null) {
-              c(localAEMaterialMetaData);
-            } else if (!localAEMaterialMetaData.o.equals(paramFile2.o)) {
-              c(localAEMaterialMetaData);
+              e(localAEMaterialMetaData);
+            } else if (!localAEMaterialMetaData.s.equals(paramFile2.s)) {
+              e(localAEMaterialMetaData);
             }
           }
         }
@@ -311,17 +205,17 @@ public class AEMaterialManager
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
-    int i = 0;
+    int i1 = 0;
     while (paramList.hasNext())
     {
       AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)paramList.next();
-      if (((!localAEMaterialMetaData.k.contains("_3DFaceFila")) || (Ace3DEngineInitializer.supportAceEngine())) && ((!localAEMaterialMetaData.k.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor)))))
+      if (((!localAEMaterialMetaData.m.contains("_3DFaceFila")) || (Ace3DEngineInitializer.supportAceEngine())) && ((!localAEMaterialMetaData.m.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor)))))
       {
-        if (i >= 10) {
+        if (i1 >= 10) {
           break;
         }
         localArrayList.add(localAEMaterialMetaData);
-        i += 1;
+        i1 += 1;
       }
     }
     return localArrayList;
@@ -330,7 +224,7 @@ public class AEMaterialManager
   private List<AEMaterialMetaData> a(List<AEMaterialCategory> paramList, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_b_of_type_JavaLangObject;
+    Object localObject = this.n;
     if (paramList != null) {}
     try
     {
@@ -339,8 +233,8 @@ public class AEMaterialManager
         paramList = (AEMaterialCategory)paramList.get(paramInt);
         if (paramList != null)
         {
-          localArrayList.addAll(paramList.jdField_a_of_type_JavaUtilList);
-          if ((localArrayList.size() > 0) && (((AEMaterialMetaData)localArrayList.get(0)).equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData))) {
+          localArrayList.addAll(paramList.a);
+          if ((localArrayList.size() > 0) && (((AEMaterialMetaData)localArrayList.get(0)).equals(AEMaterialMetaData.l))) {
             localArrayList.remove(0);
           }
         }
@@ -353,16 +247,16 @@ public class AEMaterialManager
   private List<AEMaterialMetaData> a(List<AEMaterialCategory> paramList, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_c_of_type_JavaLangObject)
+    synchronized (this.o)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)paramList.next();
-        if (localAEMaterialCategory.jdField_b_of_type_JavaLangString.equals(paramString))
+        if (localAEMaterialCategory.d.equals(paramString))
         {
-          localArrayList.addAll(localAEMaterialCategory.jdField_a_of_type_JavaUtilList);
-          if ((localArrayList.size() > 0) && (((AEMaterialMetaData)localArrayList.get(0)).equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData))) {
+          localArrayList.addAll(localAEMaterialCategory.a);
+          if ((localArrayList.size() > 0) && (((AEMaterialMetaData)localArrayList.get(0)).equals(AEMaterialMetaData.l))) {
             localArrayList.remove(0);
           }
         }
@@ -375,10 +269,15 @@ public class AEMaterialManager
     }
   }
   
-  public static boolean a()
+  private boolean a(AEMaterialCategory paramAEMaterialCategory)
   {
-    AEMaterialMetaData localAEMaterialMetaData = a();
-    return (localAEMaterialMetaData != null) && (!localAEMaterialMetaData.equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)) && (localAEMaterialMetaData.g != 0);
+    if (paramAEMaterialCategory == null) {
+      return false;
+    }
+    if (paramAEMaterialCategory.b == 30000) {
+      return true;
+    }
+    return paramAEMaterialCategory.g ^ true;
   }
   
   public static boolean a(AEMaterialMetaData paramAEMaterialMetaData)
@@ -386,9 +285,9 @@ public class AEMaterialManager
     if (paramAEMaterialMetaData != null) {
       try
       {
-        if (!TextUtils.isEmpty(paramAEMaterialMetaData.p))
+        if (!TextUtils.isEmpty(paramAEMaterialMetaData.t))
         {
-          boolean bool = b(paramAEMaterialMetaData);
+          boolean bool = g(paramAEMaterialMetaData);
           return bool;
         }
       }
@@ -427,10 +326,22 @@ public class AEMaterialManager
                     bool1 = bool2;
                     if (!paramVideoMaterial.need3DMM())
                     {
-                      if (paramVideoMaterial.needHeadSegment()) {
-                        return true;
+                      bool1 = bool2;
+                      if (!paramVideoMaterial.needHeadSegment())
+                      {
+                        bool1 = bool2;
+                        if (!paramVideoMaterial.needBodyDetect())
+                        {
+                          bool1 = bool2;
+                          if (!paramVideoMaterial.needGazeDetect())
+                          {
+                            if (paramVideoMaterial.needBodySegment()) {
+                              return true;
+                            }
+                            bool1 = false;
+                          }
+                        }
                       }
-                      bool1 = false;
                     }
                   }
                 }
@@ -451,16 +362,100 @@ public class AEMaterialManager
     return false;
   }
   
-  public static AEMaterialMetaData b()
+  private int b(List<AEMaterialMetaData> paramList, String paramString)
   {
-    return jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return -1;
+      }
+      int i1 = 0;
+      while (i1 < paramList.size())
+      {
+        if (((AEMaterialMetaData)paramList.get(i1)).m.equals(paramString)) {
+          return i1;
+        }
+        i1 += 1;
+      }
+    }
+    return -1;
   }
   
-  private AEMaterialMetaData b(String paramString)
+  private HashMap<String, AEMaterialCategory> b(@Nullable AEMaterialCategory paramAEMaterialCategory)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getSpecificCategory: item.name = ");
+    if (paramAEMaterialCategory == null) {
+      localObject1 = "null";
+    } else {
+      localObject1 = paramAEMaterialCategory.d;
+    }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    AEQLog.a("AEMaterialManager", ((StringBuilder)localObject2).toString());
+    Object localObject1 = new HashMap();
+    localObject2 = new AEMaterialCategory();
+    AEMaterialCategory localAEMaterialCategory = new AEMaterialCategory();
+    if ((paramAEMaterialCategory != null) && (paramAEMaterialCategory.a != null))
     {
-      Object localObject = this.jdField_c_of_type_JavaUtilList.iterator();
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      Iterator localIterator = paramAEMaterialCategory.a.iterator();
+      while (localIterator.hasNext())
+      {
+        AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)localIterator.next();
+        if ("circleCamera".equals(localAEMaterialMetaData.O)) {
+          localArrayList2.add(localAEMaterialMetaData);
+        } else {
+          localArrayList1.add(localAEMaterialMetaData);
+        }
+      }
+      ((AEMaterialCategory)localObject2).a = localArrayList1;
+      ((AEMaterialCategory)localObject2).b = paramAEMaterialCategory.b;
+      ((AEMaterialCategory)localObject2).d = paramAEMaterialCategory.d;
+      ((AEMaterialCategory)localObject2).c = paramAEMaterialCategory.c;
+      ((AEMaterialCategory)localObject2).f = paramAEMaterialCategory.f;
+      ((AEMaterialCategory)localObject2).e = paramAEMaterialCategory.e;
+      localAEMaterialCategory.a = localArrayList2;
+      localAEMaterialCategory.b = paramAEMaterialCategory.b;
+      localAEMaterialCategory.d = paramAEMaterialCategory.d;
+      localAEMaterialCategory.c = paramAEMaterialCategory.c;
+      localAEMaterialCategory.f = paramAEMaterialCategory.f;
+      localAEMaterialCategory.e = paramAEMaterialCategory.e;
+      ((HashMap)localObject1).put("normal_material", localObject2);
+      ((HashMap)localObject1).put("circle_material", localAEMaterialCategory);
+      return localObject1;
+    }
+    AEQLog.d("AEMaterialManager", "getSpecificCategory: item.materialList == null!");
+    ((HashMap)localObject1).put("normal_material", localObject2);
+    ((HashMap)localObject1).put("circle_material", localAEMaterialCategory);
+    return localObject1;
+  }
+  
+  private void b(AppInterface paramAppInterface, String paramString, AEMaterialMetaData paramAEMaterialMetaData, AEMaterialDownloader.MaterialDownloadListener paramMaterialDownloadListener)
+  {
+    AEMaterialDownloader.a(paramAppInterface, paramAEMaterialMetaData, paramString, new AEMaterialManager.4(this, paramMaterialDownloadListener));
+    paramString = new StringBuilder();
+    paramString.append("【START】startDownloadMaterial :");
+    if (paramAEMaterialMetaData == null) {
+      paramAppInterface = "null";
+    } else {
+      paramAppInterface = paramAEMaterialMetaData.m;
+    }
+    paramString.append(paramAppInterface);
+    AEQLog.b("AEMaterialManager", paramString.toString());
+  }
+  
+  @Nullable
+  public static ArrayList<AEMaterialOnShow> c(@Nullable String paramString)
+  {
+    return (ArrayList)GsonUtils.json2Obj(paramString, new AEMaterialManager.2().getType());
+  }
+  
+  private AEMaterialMetaData d(String paramString)
+  {
+    synchronized (this.g)
+    {
+      Object localObject = this.h.iterator();
       AEMaterialMetaData localAEMaterialMetaData;
       do
       {
@@ -470,10 +465,44 @@ public class AEMaterialManager
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
-          localIterator = ((AEMaterialCategory)((Iterator)localObject).next()).jdField_a_of_type_JavaUtilList.iterator();
+          localIterator = ((AEMaterialCategory)((Iterator)localObject).next()).a.iterator();
         }
         localAEMaterialMetaData = (AEMaterialMetaData)localIterator.next();
-      } while (!localAEMaterialMetaData.k.equals(paramString));
+      } while (!localAEMaterialMetaData.m.equals(paramString));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getNormalStickerMaterial---found id=");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject).toString());
+      }
+      return localAEMaterialMetaData;
+      return null;
+    }
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  private AEMaterialMetaData e(String paramString)
+  {
+    synchronized (this.g)
+    {
+      Object localObject = this.i.iterator();
+      AEMaterialMetaData localAEMaterialMetaData;
+      do
+      {
+        Iterator localIterator;
+        while (!localIterator.hasNext())
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localIterator = ((AEMaterialCategory)((Iterator)localObject).next()).a.iterator();
+        }
+        localAEMaterialMetaData = (AEMaterialMetaData)localIterator.next();
+      } while (!localAEMaterialMetaData.m.equals(paramString));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -490,57 +519,177 @@ public class AEMaterialManager
     }
   }
   
-  public static String b()
+  private void e(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    File localFile = new File(AEPath.CAMERA.FILES.j);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteMaterialFolder: ");
+      ((StringBuilder)localObject).append(paramAEMaterialMetaData.m);
+      QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject).toString());
     }
-    return new File(localFile.getPath(), "camera_story_update_template.json").getPath();
+    Object localObject = new File(AEPath.CAMERA.FILES.i, paramAEMaterialMetaData.m);
+    if (((File)localObject).exists()) {
+      FileUtils.deleteDirectory(((File)localObject).getPath());
+    }
+    paramAEMaterialMetaData = new File(AEPath.CAMERA.FILES.h, paramAEMaterialMetaData.m);
+    if (paramAEMaterialMetaData.exists()) {
+      FileUtils.deleteDirectory(paramAEMaterialMetaData.getPath());
+    }
   }
   
-  private void b(AppInterface paramAppInterface, String paramString, AEMaterialMetaData paramAEMaterialMetaData, AEMaterialDownloader.MaterialDownloadListener paramMaterialDownloadListener)
+  @WorkerThread
+  private void e(boolean paramBoolean)
   {
-    AEMaterialDownloader.a(paramAppInterface, paramAEMaterialMetaData, paramString, new AEMaterialManager.4(this, paramMaterialDownloadListener));
-    paramString = new StringBuilder();
-    paramString.append("【START】startDownloadMaterial :");
-    if (paramAEMaterialMetaData == null) {
-      paramAppInterface = "null";
-    } else {
-      paramAppInterface = paramAEMaterialMetaData.k;
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("initMaterialList enter---forceRefresh=");
+      ((StringBuilder)???).append(paramBoolean);
+      QLog.d("AEMaterialManager", 2, ((StringBuilder)???).toString());
     }
-    paramString.append(paramAppInterface);
-    AEQLog.b("AEMaterialManager", paramString.toString());
-  }
-  
-  public static boolean b()
-  {
     try
     {
-      boolean bool = FeatureManager.Features.LIGHT_SDK.supportAceEngine();
-      return bool;
+      if ((this.f) && (!paramBoolean))
+      {
+        AEQLog.b("AEMaterialManager", "initMaterialList---has inited, fast return");
+        return;
+      }
+      this.f = true;
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("filament isSupport: ");
+      ((StringBuilder)???).append(m());
+      AEQLog.b("AEMaterialManager", ((StringBuilder)???).toString());
+      synchronized (this.p)
+      {
+        Object localObject3 = s();
+        if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
+          synchronized (this.o)
+          {
+            this.g.clear();
+            this.h.clear();
+            this.i.clear();
+            this.j.clear();
+            this.g.addAll((Collection)localObject3);
+            localObject3 = ((List)localObject3).iterator();
+            while (((Iterator)localObject3).hasNext())
+            {
+              AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)((Iterator)localObject3).next();
+              if ((localAEMaterialCategory != null) && (localAEMaterialCategory.a != null) && (!localAEMaterialCategory.a.isEmpty()))
+              {
+                Object localObject7 = localAEMaterialCategory.a.iterator();
+                Object localObject8;
+                while (((Iterator)localObject7).hasNext())
+                {
+                  localObject8 = (AEMaterialMetaData)((Iterator)localObject7).next();
+                  if (localObject8 != null) {
+                    ((AEMaterialMetaData)localObject8).A = a((AEMaterialMetaData)localObject8);
+                  }
+                }
+                if (a(localAEMaterialCategory))
+                {
+                  this.j.add(localAEMaterialCategory);
+                }
+                else
+                {
+                  localObject7 = b(localAEMaterialCategory);
+                  localAEMaterialCategory = (AEMaterialCategory)((HashMap)localObject7).get("normal_material");
+                  localObject7 = (AEMaterialCategory)((HashMap)localObject7).get("circle_material");
+                  if ((localObject7 != null) && (((AEMaterialCategory)localObject7).a != null) && (((AEMaterialCategory)localObject7).a.size() > 0))
+                  {
+                    localObject8 = new StringBuilder();
+                    ((StringBuilder)localObject8).append("initMaterialList: circleCategory = ");
+                    ((StringBuilder)localObject8).append(localObject7.toString());
+                    AEQLog.a("AEMaterialManager", ((StringBuilder)localObject8).toString());
+                    this.i.add(localObject7);
+                  }
+                  if ((localAEMaterialCategory != null) && (localAEMaterialCategory.a != null) && (localAEMaterialCategory.a.size() > 0)) {
+                    this.h.add(localAEMaterialCategory);
+                  }
+                }
+              }
+            }
+            x();
+            y();
+            synchronized (this.o)
+            {
+              if ((this.h.size() > 0) && (!r().equals(((AEMaterialCategory)this.h.get(0)).d))) {
+                this.h.add(0, this.d);
+              }
+              if ((this.i.size() > 0) && (!r().equals(((AEMaterialCategory)this.i.get(0)).d))) {
+                this.i.add(0, this.e);
+              }
+              w();
+              if (QLog.isColorLevel())
+              {
+                long l2 = System.currentTimeMillis();
+                ??? = new StringBuilder();
+                ((StringBuilder)???).append("initMaterialList exit, cost = ");
+                ((StringBuilder)???).append(l2 - l1);
+                ((StringBuilder)???).append("ms");
+                QLog.d("AEMaterialManager", 2, ((StringBuilder)???).toString());
+              }
+              A();
+              return;
+            }
+          }
+        }
+        AEQLog.d("AEMaterialManager", "initMaterialList: materials is empty !");
+        return;
+      }
+      throw localObject2;
     }
-    catch (Exception localException)
-    {
-      label9:
-      break label9;
-    }
-    return false;
+    finally {}
+    for (;;) {}
   }
   
-  private static boolean b(AEMaterialMetaData paramAEMaterialMetaData)
+  private AEMaterialMetaData f(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    Object localObject = paramAEMaterialMetaData.a();
+    Iterator localIterator1 = this.g.iterator();
+    Object localObject1 = null;
+    Object localObject2;
+    int i1;
+    do
+    {
+      do
+      {
+        localObject2 = localObject1;
+        if (!localIterator1.hasNext()) {
+          break;
+        }
+        localObject2 = (AEMaterialCategory)localIterator1.next();
+      } while (((AEMaterialCategory)localObject2).a == null);
+      int i2 = 0;
+      Iterator localIterator2 = ((AEMaterialCategory)localObject2).a.iterator();
+      do
+      {
+        localObject2 = localObject1;
+        i1 = i2;
+        if (!localIterator2.hasNext()) {
+          break;
+        }
+        localObject2 = (AEMaterialMetaData)localIterator2.next();
+      } while (!((AEMaterialMetaData)localObject2).equals(paramAEMaterialMetaData));
+      i1 = 1;
+      localObject1 = localObject2;
+    } while (i1 == 0);
+    return localObject2;
+  }
+  
+  private static boolean g(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    Object localObject = paramAEMaterialMetaData.e();
     File localFile1 = new File((String)localObject, "params.json");
     localObject = new File((String)localObject, "params.dat");
     if ((!localFile1.exists()) && (!((File)localObject).exists())) {
       try
       {
-        File localFile2 = new File(paramAEMaterialMetaData.c());
+        File localFile2 = new File(paramAEMaterialMetaData.g());
         if (!localFile2.exists()) {
           return false;
         }
-        ZipUtils.unZipFile(localFile2, paramAEMaterialMetaData.b());
+        ZipUtils.unZipFile(localFile2, paramAEMaterialMetaData.f());
         return true;
       }
       catch (Exception paramAEMaterialMetaData)
@@ -556,7 +705,47 @@ public class AEMaterialManager
     return true;
   }
   
-  public static String c()
+  public static boolean j()
+  {
+    AEMaterialMetaData localAEMaterialMetaData = n();
+    return (localAEMaterialMetaData != null) && (!localAEMaterialMetaData.equals(AEMaterialMetaData.l)) && (localAEMaterialMetaData.M != 0);
+  }
+  
+  public static boolean m()
+  {
+    try
+    {
+      boolean bool = FeatureManager.Features.LIGHT_SDK.supportAceEngine();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      label9:
+      break label9;
+    }
+    return false;
+  }
+  
+  public static AEMaterialMetaData n()
+  {
+    return s;
+  }
+  
+  public static AEMaterialMetaData o()
+  {
+    return t;
+  }
+  
+  public static String p()
+  {
+    File localFile = new File(AEPath.CAMERA.FILES.j);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return new File(localFile.getPath(), "camera_story_update_template.json").getPath();
+  }
+  
+  public static String q()
   {
     File localFile = new File(AEPath.CAMERA.FILES.h);
     if (!localFile.exists()) {
@@ -565,7 +754,12 @@ public class AEMaterialManager
     return localFile.getPath();
   }
   
-  private List<AEMaterialCategory> c()
+  private String r()
+  {
+    return HardCodeUtil.a(2131907501);
+  }
+  
+  private List<AEMaterialCategory> s()
   {
     File localFile = new File(AEPath.CAMERA.FILES.j, "camera_story_update_template.json");
     Object localObject = new File(AEPath.CAMERA.FILES.j, "camera_story_default_template.json");
@@ -575,9 +769,9 @@ public class AEMaterialManager
     {
       if (!((File)localObject).exists())
       {
-        localList1 = f();
+        localList1 = z();
         AEQLog.a("AEMaterialManager", "readAndParseConfigFile -> oldJson not exist, newJson not exist, use Json from assets ");
-        h();
+        t();
         return localList1;
       }
       try
@@ -589,12 +783,12 @@ public class AEMaterialManager
       catch (AEMaterialConfigParser.AEMaterialConfigParseException localAEMaterialConfigParseException3)
       {
         FileUtils.deleteFile(((File)localObject).getPath());
-        localList1 = f();
+        localList1 = z();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("readAndParseConfigFile -> oldJson exists, newJson not exist, exception:");
         ((StringBuilder)localObject).append(localAEMaterialConfigParseException3.toString());
         AEQLog.d("AEMaterialManager", ((StringBuilder)localObject).toString());
-        h();
+        t();
       }
     }
     else
@@ -613,12 +807,12 @@ public class AEMaterialManager
         catch (AEMaterialConfigParser.AEMaterialConfigParseException localAEMaterialConfigParseException1)
         {
           FileUtils.deleteFile(localAEMaterialConfigParseException3.getPath());
-          localObject = f();
+          localObject = z();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("readAndParseConfigFile -> oldJson not exists: exception:");
           localStringBuilder.append(localAEMaterialConfigParseException1.toString());
           AEQLog.d("AEMaterialManager", localStringBuilder.toString());
-          h();
+          t();
           return localObject;
         }
         try
@@ -630,165 +824,155 @@ public class AEMaterialManager
         }
         catch (AEMaterialConfigParser.AEMaterialConfigParseException localAEMaterialConfigParseException2)
         {
-          localList2 = f();
+          localList2 = z();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("loadMaterialListFromAssets  -> oldJson exists: exception:");
           localStringBuilder.append(localAEMaterialConfigParseException2.toString());
           AEQLog.d("AEMaterialManager", localStringBuilder.toString());
-          h();
+          t();
         }
       }
     }
     return localList2;
   }
   
-  private void c(AEMaterialMetaData paramAEMaterialMetaData)
+  private void t()
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("deleteMaterialFolder: ");
-      ((StringBuilder)localObject).append(paramAEMaterialMetaData.k);
-      QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new File(AEPath.CAMERA.FILES.i, paramAEMaterialMetaData.k);
-    if (((File)localObject).exists()) {
-      FileUtils.deleteDirectory(((File)localObject).getPath());
-    }
-    paramAEMaterialMetaData = new File(AEPath.CAMERA.FILES.h, paramAEMaterialMetaData.k);
-    if (paramAEMaterialMetaData.exists()) {
-      FileUtils.deleteDirectory(paramAEMaterialMetaData.getPath());
-    }
-  }
-  
-  @WorkerThread
-  private void c(boolean paramBoolean)
-  {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("initMaterialList enter---forceRefresh=");
-      ((StringBuilder)???).append(paramBoolean);
-      QLog.d("AEMaterialManager", 2, ((StringBuilder)???).toString());
-    }
+    AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqStoryCamera", 4);
     try
     {
-      if ((this.jdField_c_of_type_Boolean) && (!paramBoolean))
+      this.f = false;
+      return;
+    }
+    finally {}
+  }
+  
+  private List<AEMaterialMetaData> u()
+  {
+    return a(this.h, HardCodeUtil.a(2131898275));
+  }
+  
+  private List<AEMaterialMetaData> v()
+  {
+    return a(this.i, 1);
+  }
+  
+  private void w()
+  {
+    List localList1 = u();
+    List localList2 = v();
+    this.k.clear();
+    this.k.addAll(a(localList1));
+    this.l.clear();
+    this.l.addAll(a(localList2));
+  }
+  
+  private void x()
+  {
+    if (this.d == null) {
+      return;
+    }
+    ??? = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    Object localObject2 = AECameraPrefsUtil.a();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append("recent_template_list_new");
+    ((StringBuilder)localObject4).append((String)???);
+    ??? = ((AECameraPrefsUtil)localObject2).b(((StringBuilder)localObject4).toString(), null, 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadRecentMaterial list=");
+      ((StringBuilder)localObject2).append((String)???);
+      QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (??? == null) {
+      return;
+    }
+    localObject2 = ((String)???).split("\\$");
+    int i1;
+    synchronized (this.m)
+    {
+      this.d.a.clear();
+      i1 = 0;
+      if (i1 < localObject2.length)
       {
-        AEQLog.b("AEMaterialManager", "initMaterialList---has inited, fast return");
-        return;
-      }
-      this.jdField_c_of_type_Boolean = true;
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("filament isSupport: ");
-      ((StringBuilder)???).append(b());
-      AEQLog.b("AEMaterialManager", ((StringBuilder)???).toString());
-      synchronized (this.jdField_d_of_type_JavaLangObject)
-      {
-        Object localObject3 = c();
-        if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
-          synchronized (this.jdField_c_of_type_JavaLangObject)
+        localObject4 = localObject2[i1].split("\\|");
+        if ((localObject4 != null) && (localObject4.length == 2))
+        {
+          localObject4 = d(localObject4[0]);
+          if (localObject4 != null)
           {
-            this.jdField_a_of_type_JavaUtilList.clear();
-            this.jdField_b_of_type_JavaUtilList.clear();
-            this.jdField_c_of_type_JavaUtilList.clear();
-            this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject3);
-            localObject3 = ((List)localObject3).iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              Object localObject7 = (AEMaterialCategory)((Iterator)localObject3).next();
-              if (localObject7 != null)
-              {
-                Object localObject9 = a((AEMaterialCategory)localObject7);
-                Object localObject8 = (AEMaterialCategory)((HashMap)localObject9).get("normal_material");
-                localObject9 = (AEMaterialCategory)((HashMap)localObject9).get("circle_material");
-                if ((localObject9 != null) && (((AEMaterialCategory)localObject9).jdField_a_of_type_JavaUtilList != null) && (((AEMaterialCategory)localObject9).jdField_a_of_type_JavaUtilList.size() > 0))
-                {
-                  StringBuilder localStringBuilder = new StringBuilder();
-                  localStringBuilder.append("initMaterialList: circleCategory = ");
-                  localStringBuilder.append(localObject9.toString());
-                  AEQLog.a("AEMaterialManager", localStringBuilder.toString());
-                  this.jdField_c_of_type_JavaUtilList.add(localObject9);
-                }
-                if ((localObject8 != null) && (((AEMaterialCategory)localObject8).jdField_a_of_type_JavaUtilList != null) && (((AEMaterialCategory)localObject8).jdField_a_of_type_JavaUtilList.size() > 0)) {
-                  this.jdField_b_of_type_JavaUtilList.add(localObject8);
-                }
-                localObject7 = ((AEMaterialCategory)localObject7).jdField_a_of_type_JavaUtilList.iterator();
-                while (((Iterator)localObject7).hasNext())
-                {
-                  localObject8 = (AEMaterialMetaData)((Iterator)localObject7).next();
-                  if (localObject8 != null) {
-                    ((AEMaterialMetaData)localObject8).e = a((AEMaterialMetaData)localObject8);
-                  }
-                }
-              }
-            }
-            j();
-            k();
-            synchronized (this.jdField_c_of_type_JavaLangObject)
-            {
-              if ((this.jdField_b_of_type_JavaUtilList.size() > 0) && (!d().equals(((AEMaterialCategory)this.jdField_b_of_type_JavaUtilList.get(0)).jdField_b_of_type_JavaLangString))) {
-                this.jdField_b_of_type_JavaUtilList.add(0, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory);
-              }
-              if ((this.jdField_c_of_type_JavaUtilList.size() > 0) && (!d().equals(((AEMaterialCategory)this.jdField_c_of_type_JavaUtilList.get(0)).jdField_b_of_type_JavaLangString))) {
-                this.jdField_c_of_type_JavaUtilList.add(0, this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory);
-              }
-              i();
-              if (QLog.isColorLevel())
-              {
-                long l2 = System.currentTimeMillis();
-                ??? = new StringBuilder();
-                ((StringBuilder)???).append("initMaterialList exit, cost = ");
-                ((StringBuilder)???).append(l2 - l1);
-                ((StringBuilder)???).append("ms");
-                QLog.d("AEMaterialManager", 2, ((StringBuilder)???).toString());
-              }
-              l();
+            if (this.d.a.size() >= 100) {
               return;
+            }
+            if ((!this.d.a.contains(localObject4)) && (!((AEMaterialMetaData)localObject4).m.equals("0"))) {
+              this.d.a.add(localObject4);
             }
           }
         }
-        AEQLog.d("AEMaterialManager", "initMaterialList: materials is empty !");
+      }
+      else
+      {
         return;
       }
-      throw localObject2;
     }
-    finally {}
-    for (;;) {}
   }
   
-  private boolean c()
+  private void y()
   {
-    AEMaterialCategory localAEMaterialCategory = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory;
-    return (localAEMaterialCategory != null) && (localAEMaterialCategory.jdField_a_of_type_JavaUtilList.size() >= 100);
+    if (this.e == null) {
+      return;
+    }
+    ??? = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    Object localObject2 = AECameraPrefsUtil.a();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append("recent_circle_template_list_new");
+    ((StringBuilder)localObject4).append((String)???);
+    ??? = ((AECameraPrefsUtil)localObject2).b(((StringBuilder)localObject4).toString(), null, 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadCircleRecentMaterial list=");
+      ((StringBuilder)localObject2).append((String)???);
+      QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (??? == null) {
+      return;
+    }
+    localObject2 = ((String)???).split("\\$");
+    int i1;
+    synchronized (this.n)
+    {
+      this.e.a.clear();
+      i1 = 0;
+      if (i1 < localObject2.length)
+      {
+        localObject4 = localObject2[i1].split("\\|");
+        if ((localObject4 != null) && (localObject4.length == 2))
+        {
+          localObject4 = e(localObject4[0]);
+          if (localObject4 != null)
+          {
+            if (this.e.a.size() >= 100) {
+              return;
+            }
+            if ((!this.e.a.contains(localObject4)) && (!((AEMaterialMetaData)localObject4).m.equals("0"))) {
+              this.e.a.add(localObject4);
+            }
+          }
+        }
+      }
+      else
+      {
+        return;
+      }
+    }
   }
   
-  private String d()
-  {
-    return HardCodeUtil.a(2131709781);
-  }
-  
-  private List<AEMaterialMetaData> d()
-  {
-    return a(this.jdField_b_of_type_JavaUtilList, HardCodeUtil.a(2131700232));
-  }
-  
-  private boolean d()
-  {
-    AEMaterialCategory localAEMaterialCategory = this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory;
-    return (localAEMaterialCategory != null) && (localAEMaterialCategory.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.size() >= 100);
-  }
-  
-  private List<AEMaterialMetaData> e()
-  {
-    return a(this.jdField_c_of_type_JavaUtilList, 1);
-  }
-  
-  private List<AEMaterialCategory> f()
+  private List<AEMaterialCategory> z()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = CameraOperationHelper.b(getApp().getApp());
+    Object localObject = CameraOperationHelper.a(getApp().getApp());
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return localArrayList;
     }
@@ -814,181 +998,31 @@ public class AEMaterialManager
     return localArrayList;
   }
   
-  private void h()
-  {
-    AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqStoryCamera", 4);
-    try
-    {
-      this.jdField_c_of_type_Boolean = false;
-      return;
-    }
-    finally {}
-  }
-  
-  private void i()
-  {
-    List localList1 = d();
-    List localList2 = e();
-    this.jdField_d_of_type_JavaUtilList.clear();
-    this.jdField_d_of_type_JavaUtilList.addAll(a(localList1));
-    this.e.clear();
-    this.e.addAll(a(localList2));
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory == null) {
-      return;
-    }
-    ??? = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    Object localObject2 = AECameraPrefsUtil.a();
-    Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append("recent_template_list_new");
-    ((StringBuilder)localObject4).append((String)???);
-    ??? = ((AECameraPrefsUtil)localObject2).a(((StringBuilder)localObject4).toString(), null, 0);
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("loadRecentMaterial list=");
-      ((StringBuilder)localObject2).append((String)???);
-      QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject2).toString());
-    }
-    if (??? == null) {
-      return;
-    }
-    localObject2 = ((String)???).split("\\$");
-    int i;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.clear();
-      i = 0;
-      if (i < localObject2.length)
-      {
-        localObject4 = localObject2[i].split("\\|");
-        if ((localObject4 != null) && (localObject4.length == 2))
-        {
-          localObject4 = a(localObject4[0]);
-          if (localObject4 != null)
-          {
-            if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.size() >= 100) {
-              return;
-            }
-            if ((!this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.contains(localObject4)) && (!((AEMaterialMetaData)localObject4).k.equals("0"))) {
-              this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(localObject4);
-            }
-          }
-        }
-      }
-      else
-      {
-        return;
-      }
-    }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory == null) {
-      return;
-    }
-    ??? = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    Object localObject2 = AECameraPrefsUtil.a();
-    Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append("recent_circle_template_list_new");
-    ((StringBuilder)localObject4).append((String)???);
-    ??? = ((AECameraPrefsUtil)localObject2).a(((StringBuilder)localObject4).toString(), null, 0);
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("loadCircleRecentMaterial list=");
-      ((StringBuilder)localObject2).append((String)???);
-      QLog.d("AEMaterialManager", 2, ((StringBuilder)localObject2).toString());
-    }
-    if (??? == null) {
-      return;
-    }
-    localObject2 = ((String)???).split("\\$");
-    int i;
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.clear();
-      i = 0;
-      if (i < localObject2.length)
-      {
-        localObject4 = localObject2[i].split("\\|");
-        if ((localObject4 != null) && (localObject4.length == 2))
-        {
-          localObject4 = b(localObject4[0]);
-          if (localObject4 != null)
-          {
-            if (this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.size() >= 100) {
-              return;
-            }
-            if ((!this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.contains(localObject4)) && (!((AEMaterialMetaData)localObject4).k.equals("0"))) {
-              this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(localObject4);
-            }
-          }
-        }
-      }
-      else
-      {
-        return;
-      }
-    }
-  }
-  
-  private void l()
-  {
-    if (getApp() != null) {
-      getApp().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
-    }
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable;
-    if (localObservable != null) {
-      localObservable.a(116, null);
-    }
-  }
-  
-  private void m()
-  {
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable;
-    if (localObservable != null) {
-      localObservable.a(111, new Object[] { this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory });
-    }
-  }
-  
-  private void n()
-  {
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable;
-    if (localObservable != null) {
-      localObservable.a(111, new Object[] { this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory });
-    }
-  }
-  
   public AEMaterialMetaData a(int paramInt, String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {
-      localObject = this.jdField_c_of_type_JavaUtilList;
+      localObject = this.i;
     } else {
-      localObject = this.jdField_b_of_type_JavaUtilList;
+      localObject = this.h;
     }
     Iterator localIterator1 = ((List)localObject).iterator();
     Object localObject = "";
-    for (int i = 0; localIterator1.hasNext(); i = 1)
+    for (int i1 = 0; localIterator1.hasNext(); i1 = 1)
     {
       label35:
       AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)localIterator1.next();
-      if ((localAEMaterialCategory == null) || (localAEMaterialCategory.jdField_a_of_type_JavaUtilList == null) || (localAEMaterialCategory.jdField_a_of_type_Int != paramInt)) {
+      if ((localAEMaterialCategory == null) || (localAEMaterialCategory.a == null) || (localAEMaterialCategory.b != paramInt)) {
         break label35;
       }
-      localObject = localAEMaterialCategory.jdField_b_of_type_JavaLangString;
-      Iterator localIterator2 = localAEMaterialCategory.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
+      localObject = localAEMaterialCategory.d;
+      Iterator localIterator2 = localAEMaterialCategory.a.iterator();
+      i1 = 0;
       while (localIterator2.hasNext())
       {
         AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)localIterator2.next();
-        int j = i + 1;
-        i = j;
-        if (localAEMaterialMetaData.k.equals(paramString))
+        int i2 = i1 + 1;
+        i1 = i2;
+        if (localAEMaterialMetaData.m.equals(paramString))
         {
           if (QLog.isColorLevel())
           {
@@ -997,18 +1031,18 @@ public class AEMaterialManager
             paramString.append(localAEMaterialMetaData);
             QLog.d("QIMRedDotConfig_PTV", 2, paramString.toString());
           }
-          localAEMaterialMetaData.l = localAEMaterialCategory.jdField_b_of_type_JavaLangString;
-          localAEMaterialMetaData.c = j;
+          localAEMaterialMetaData.o = localAEMaterialCategory.d;
+          localAEMaterialMetaData.p = i2;
           return localAEMaterialMetaData;
         }
       }
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       paramString = new AEMaterialMetaData();
-      paramString.l = ((String)localObject);
-      paramString.jdField_b_of_type_Int = paramInt;
-      paramString.k = "";
+      paramString.o = ((String)localObject);
+      paramString.n = paramInt;
+      paramString.m = "";
       return paramString;
     }
     return null;
@@ -1018,13 +1052,13 @@ public class AEMaterialManager
   {
     Object localObject;
     if (paramBoolean) {
-      localObject = this.jdField_c_of_type_JavaUtilList;
+      localObject = this.i;
     } else {
-      localObject = this.jdField_b_of_type_JavaUtilList;
+      localObject = this.h;
     }
     Iterator localIterator1 = ((List)localObject).iterator();
     AEMaterialMetaData localAEMaterialMetaData;
-    int j;
+    int i2;
     do
     {
       Iterator localIterator2;
@@ -1036,14 +1070,14 @@ public class AEMaterialManager
             break;
           }
           localObject = (AEMaterialCategory)localIterator1.next();
-        } while ((localObject == null) || (((AEMaterialCategory)localObject).jdField_a_of_type_JavaUtilList == null));
-        i = 0;
-        localIterator2 = ((AEMaterialCategory)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        } while ((localObject == null) || (((AEMaterialCategory)localObject).a == null));
+        i1 = 0;
+        localIterator2 = ((AEMaterialCategory)localObject).a.iterator();
       }
       localAEMaterialMetaData = (AEMaterialMetaData)localIterator2.next();
-      j = i + 1;
-      int i = j;
-    } while (!localAEMaterialMetaData.k.equals(paramString));
+      i2 = i1 + 1;
+      int i1 = i2;
+    } while (!localAEMaterialMetaData.m.equals(paramString));
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -1051,25 +1085,10 @@ public class AEMaterialManager
       paramString.append(localAEMaterialMetaData);
       QLog.d("QIMRedDotConfig_PTV", 2, paramString.toString());
     }
-    localAEMaterialMetaData.l = ((AEMaterialCategory)localObject).jdField_b_of_type_JavaLangString;
-    localAEMaterialMetaData.c = j;
+    localAEMaterialMetaData.o = ((AEMaterialCategory)localObject).d;
+    localAEMaterialMetaData.p = i2;
     return localAEMaterialMetaData;
     return null;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<AEMaterialCategory> a()
-  {
-    return this.jdField_c_of_type_JavaUtilList;
-  }
-  
-  public List<AEMaterialCategory> a(boolean paramBoolean)
-  {
-    return this.jdField_b_of_type_JavaUtilList;
   }
   
   @WorkerThread
@@ -1081,16 +1100,16 @@ public class AEMaterialManager
     ((StringBuilder)???).append(paramBoolean1);
     AEQLog.b("AEMaterialManager", ((StringBuilder)???).toString());
     if (paramBoolean1) {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      synchronized (this.r)
       {
-        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        if (!this.r.get()) {
           if (NetworkUtil.isNetworkAvailable())
           {
             ThreadManager.getSubThreadHandler().post(new AEDownloadMaterialRunnable());
             try
             {
               AEQLog.b("AEMaterialManager", "loadDisplayHotList---issue the request and wait");
-              this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.wait(90000L);
+              this.r.wait(90000L);
               AEQLog.b("AEMaterialManager", "loadDisplayHotList---awake from waiting");
             }
             catch (InterruptedException localInterruptedException)
@@ -1105,26 +1124,26 @@ public class AEMaterialManager
         }
       }
     }
-    c(false);
+    e(false);
     if (paramBoolean2) {
-      ??? = this.e;
+      ??? = this.l;
     } else {
-      ??? = this.jdField_d_of_type_JavaUtilList;
+      ??? = this.k;
     }
     return new ArrayList((Collection)???);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.r.set(false);
   }
   
   public void a(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable != null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(paramInt);
+      if (this.c != null) {
+        this.c.a(paramInt);
       }
       return;
     }
@@ -1137,7 +1156,7 @@ public class AEMaterialManager
   
   public void a(int paramInt, Object paramObject)
   {
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable;
+    Observable localObservable = this.c;
     if (localObservable != null)
     {
       localObservable.a(paramInt, new Object[] { paramObject });
@@ -1151,59 +1170,6 @@ public class AEMaterialManager
     }
   }
   
-  public void a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    if (paramAEMaterialMetaData == null) {
-      return;
-    }
-    if (paramAEMaterialMetaData.c()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory == null)
-    {
-      j();
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      int i = a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList, paramAEMaterialMetaData.k);
-      if (i == -1)
-      {
-        if (!c())
-        {
-          this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(0, paramAEMaterialMetaData);
-          m();
-          if (QLog.isColorLevel()) {
-            QLog.d("AEMaterialManager", 2, "setCurrentTemplateInfoToRecent not full");
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AEMaterialManager", 2, "setCurrentTemplateInfoToRecent full");
-          }
-          this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.remove(99);
-          this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(0, paramAEMaterialMetaData);
-          m();
-        }
-      }
-      else if (i != 0)
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.remove(i);
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(0, paramAEMaterialMetaData);
-        m();
-      }
-      if (QLog.isColorLevel())
-      {
-        paramAEMaterialMetaData = new StringBuilder();
-        paramAEMaterialMetaData.append("setCurrentTemplateInfoToRecent index=");
-        paramAEMaterialMetaData.append(i);
-        QLog.d("AEMaterialManager", 2, paramAEMaterialMetaData.toString());
-      }
-      return;
-    }
-  }
-  
   public void a(AEMaterialMetaData paramAEMaterialMetaData, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1212,21 +1178,22 @@ public class AEMaterialManager
     if (paramAEMaterialMetaData == null) {
       str = "null";
     } else {
-      str = paramAEMaterialMetaData.k;
+      str = paramAEMaterialMetaData.m;
     }
     localStringBuilder.append(str);
     localStringBuilder.append(", addToRecent=");
     localStringBuilder.append(paramBoolean);
     AEQLog.b("AEMaterialManager", localStringBuilder.toString());
-    jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
-    jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
+    s = paramAEMaterialMetaData;
+    t = null;
     if (paramBoolean) {
-      if ((paramAEMaterialMetaData != null) && ("circleCamera".equals(paramAEMaterialMetaData.w))) {
-        b(paramAEMaterialMetaData);
+      if ((paramAEMaterialMetaData != null) && ("circleCamera".equals(paramAEMaterialMetaData.O))) {
+        c(paramAEMaterialMetaData);
       } else {
-        a(paramAEMaterialMetaData);
+        b(paramAEMaterialMetaData);
       }
     }
+    d(paramAEMaterialMetaData);
     a(113, null);
   }
   
@@ -1244,8 +1211,8 @@ public class AEMaterialManager
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable != null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(paramObserver);
+      if (this.c != null) {
+        this.c.a(paramObserver);
       }
       return;
     }
@@ -1260,10 +1227,10 @@ public class AEMaterialManager
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable == null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable = new Observable();
+      if (this.c == null) {
+        this.c = new Observable();
       }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(paramObserver, new int[] { paramInt });
+      this.c.a(paramObserver, new int[] { paramInt });
       return;
     }
     finally {}
@@ -1271,39 +1238,17 @@ public class AEMaterialManager
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.q = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    c(paramBoolean);
+    e(paramBoolean);
   }
   
-  public List<AEMaterialCategory> b()
+  public String b()
   {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public List<AEMaterialMetaData> b(boolean paramBoolean)
-  {
-    List localList;
-    if (paramBoolean) {
-      localList = this.e;
-    } else {
-      localList = this.jdField_d_of_type_JavaUtilList;
-    }
-    return new ArrayList(localList);
-  }
-  
-  public void b()
-  {
-    AEQLog.b("AEMaterialManager", "onConfigRequestDone---notify all wait thread");
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-      return;
-    }
+    return this.q;
   }
   
   public void b(AEMaterialMetaData paramAEMaterialMetaData)
@@ -1311,23 +1256,23 @@ public class AEMaterialManager
     if (paramAEMaterialMetaData == null) {
       return;
     }
-    if (paramAEMaterialMetaData.c()) {
+    if (paramAEMaterialMetaData.d()) {
       return;
     }
-    if (this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory == null)
+    if (this.d == null)
     {
-      k();
+      x();
       return;
     }
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.m)
     {
-      int i = a(this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList, paramAEMaterialMetaData.k);
-      if (i == -1)
+      int i1 = b(this.d.a, paramAEMaterialMetaData.m);
+      if (i1 == -1)
       {
-        if (!d())
+        if (!D())
         {
-          this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(0, paramAEMaterialMetaData);
-          n();
+          this.d.a.add(0, paramAEMaterialMetaData);
+          B();
           if (QLog.isColorLevel()) {
             QLog.d("AEMaterialManager", 2, "setCurrentTemplateInfoToRecent not full");
           }
@@ -1337,22 +1282,22 @@ public class AEMaterialManager
           if (QLog.isColorLevel()) {
             QLog.d("AEMaterialManager", 2, "setCurrentTemplateInfoToRecent full");
           }
-          this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.remove(99);
-          this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(0, paramAEMaterialMetaData);
-          n();
+          this.d.a.remove(99);
+          this.d.a.add(0, paramAEMaterialMetaData);
+          B();
         }
       }
-      else if (i != 0)
+      else if (i1 != 0)
       {
-        this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.remove(i);
-        this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(0, paramAEMaterialMetaData);
-        n();
+        this.d.a.remove(i1);
+        this.d.a.add(0, paramAEMaterialMetaData);
+        B();
       }
       if (QLog.isColorLevel())
       {
         paramAEMaterialMetaData = new StringBuilder();
         paramAEMaterialMetaData.append("setCurrentTemplateInfoToRecent index=");
-        paramAEMaterialMetaData.append(i);
+        paramAEMaterialMetaData.append(i1);
         QLog.d("AEMaterialManager", 2, paramAEMaterialMetaData.toString());
       }
       return;
@@ -1367,19 +1312,20 @@ public class AEMaterialManager
     if (paramAEMaterialMetaData == null) {
       str = "null";
     } else {
-      str = paramAEMaterialMetaData.k;
+      str = paramAEMaterialMetaData.m;
     }
     localStringBuilder.append(str);
     AEQLog.b("AEMaterialManager", localStringBuilder.toString());
-    jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
-    jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
-    int i;
+    t = paramAEMaterialMetaData;
+    s = null;
+    d(paramAEMaterialMetaData);
+    int i1;
     if (paramBoolean) {
-      i = 1024;
+      i1 = 1024;
     } else {
-      i = 1025;
+      i1 = 1025;
     }
-    a(i, null);
+    a(i1, null);
   }
   
   public void b(String paramString)
@@ -1388,17 +1334,17 @@ public class AEMaterialManager
     {
       paramString = a(new File(paramString));
       if ((paramString != null) && (paramString.size() != 0)) {
-        paramString = a(paramString, HardCodeUtil.a(2064515212));
+        paramString = a(paramString, HardCodeUtil.a(2064187558));
       } else {
-        paramString = a(f(), HardCodeUtil.a(2064515211));
+        paramString = a(z(), HardCodeUtil.a(2064187557));
       }
       ArrayList localArrayList = new ArrayList();
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
         AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)paramString.next();
-        if ((localArrayList.size() < 10) && (localAEMaterialMetaData != null) && (localAEMaterialMetaData.k != null) && (localAEMaterialMetaData.m != null)) {
-          localArrayList.add(new AEMaterialOnShow(localAEMaterialMetaData.k, localAEMaterialMetaData.m));
+        if ((localArrayList.size() < 10) && (localAEMaterialMetaData != null) && (localAEMaterialMetaData.m != null) && (localAEMaterialMetaData.q != null)) {
+          localArrayList.add(new AEMaterialOnShow(localAEMaterialMetaData.m, localAEMaterialMetaData.q));
         }
       }
       AECameraPrefsUtil.a().a("PhotoConst.ae_latest_material", a(localArrayList), 4);
@@ -1420,37 +1366,154 @@ public class AEMaterialManager
     ThreadManager.excute(new AEMaterialManager.1(this, paramBoolean), 64, null, false);
   }
   
-  public void c()
+  public List<AEMaterialCategory> c()
   {
-    AEQLog.b("AEMaterialManager", "onConfigRequestCancel---notify all wait thread");
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+    return this.i;
+  }
+  
+  public List<AEMaterialCategory> c(boolean paramBoolean)
+  {
+    return this.h;
+  }
+  
+  public void c(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    if (paramAEMaterialMetaData == null) {
+      return;
+    }
+    if (paramAEMaterialMetaData.d()) {
+      return;
+    }
+    if (this.e == null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+      y();
+      return;
+    }
+    synchronized (this.n)
+    {
+      int i1 = b(this.e.a, paramAEMaterialMetaData.m);
+      if (i1 == -1)
+      {
+        if (!E())
+        {
+          this.e.a.add(0, paramAEMaterialMetaData);
+          C();
+          if (QLog.isColorLevel()) {
+            QLog.d("AEMaterialManager", 2, "setCurrentTemplateInfoToRecent not full");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AEMaterialManager", 2, "setCurrentTemplateInfoToRecent full");
+          }
+          this.e.a.remove(99);
+          this.e.a.add(0, paramAEMaterialMetaData);
+          C();
+        }
+      }
+      else if (i1 != 0)
+      {
+        this.e.a.remove(i1);
+        this.e.a.add(0, paramAEMaterialMetaData);
+        C();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramAEMaterialMetaData = new StringBuilder();
+        paramAEMaterialMetaData.append("setCurrentTemplateInfoToRecent index=");
+        paramAEMaterialMetaData.append(i1);
+        QLog.d("AEMaterialManager", 2, paramAEMaterialMetaData.toString());
+      }
       return;
     }
   }
   
-  public void d()
+  public List<AEMaterialCategory> d()
   {
-    ??? = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory;
+    return this.j;
+  }
+  
+  public List<AEMaterialMetaData> d(boolean paramBoolean)
+  {
+    List localList;
+    if (paramBoolean) {
+      localList = this.l;
+    } else {
+      localList = this.k;
+    }
+    return new ArrayList(localList);
+  }
+  
+  public void d(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    AEBaseReportParam localAEBaseReportParam = AEBaseReportParam.a();
+    String str = "";
+    if (paramAEMaterialMetaData == null) {
+      localObject = "";
+    } else {
+      localObject = paramAEMaterialMetaData.aa;
+    }
+    localAEBaseReportParam.g((String)localObject);
+    Object localObject = AEBaseReportParam.a();
+    if (paramAEMaterialMetaData == null) {
+      paramAEMaterialMetaData = str;
+    } else {
+      paramAEMaterialMetaData = paramAEMaterialMetaData.ab;
+    }
+    ((AEBaseReportParam)localObject).h(paramAEMaterialMetaData);
+  }
+  
+  public List<AEMaterialCategory> e()
+  {
+    return this.h;
+  }
+  
+  public void f()
+  {
+    AEQLog.b("AEMaterialManager", "onConfigRequestDone---notify all wait thread");
+    synchronized (this.r)
+    {
+      this.r.set(true);
+      this.r.notifyAll();
+      return;
+    }
+  }
+  
+  @Deprecated
+  public void forceInit() {}
+  
+  public void g()
+  {
+    AEQLog.b("AEMaterialManager", "onConfigRequestCancel---notify all wait thread");
+    synchronized (this.r)
+    {
+      this.r.notifyAll();
+      return;
+    }
+  }
+  
+  public void h()
+  {
+    ??? = this.d;
     if (??? == null) {
       return;
     }
-    if ((((AEMaterialCategory)???).jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.isEmpty())) {
+    if ((((AEMaterialCategory)???).a != null) && (this.d.a.isEmpty())) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.m)
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
-      Object localObject3 = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject3 = this.d.a.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (AEMaterialMetaData)((Iterator)localObject3).next();
-        if ((!TextUtils.isEmpty(((AEMaterialMetaData)localObject4).k)) && (!((AEMaterialMetaData)localObject4).equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)))
+        if ((!TextUtils.isEmpty(((AEMaterialMetaData)localObject4).m)) && (!((AEMaterialMetaData)localObject4).equals(AEMaterialMetaData.l)))
         {
-          localStringBuilder1.append(((AEMaterialMetaData)localObject4).k);
+          localStringBuilder1.append(((AEMaterialMetaData)localObject4).m);
           localStringBuilder1.append("|");
-          localStringBuilder1.append(((AEMaterialMetaData)localObject4).jdField_b_of_type_Int);
+          localStringBuilder1.append(((AEMaterialMetaData)localObject4).n);
           localStringBuilder1.append("$");
         }
       }
@@ -1478,26 +1541,26 @@ public class AEMaterialManager
     }
   }
   
-  public void e()
+  public void i()
   {
-    ??? = this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory;
-    if ((??? != null) && (((AEMaterialCategory)???).jdField_a_of_type_JavaUtilList != null))
+    ??? = this.e;
+    if ((??? != null) && (((AEMaterialCategory)???).a != null))
     {
-      if (this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if (this.e.a.isEmpty()) {
         return;
       }
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      synchronized (this.n)
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
-        Object localObject3 = this.jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialCategory.jdField_a_of_type_JavaUtilList.iterator();
+        Object localObject3 = this.e.a.iterator();
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (AEMaterialMetaData)((Iterator)localObject3).next();
-          if ((!TextUtils.isEmpty(((AEMaterialMetaData)localObject4).k)) && (!((AEMaterialMetaData)localObject4).equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)))
+          if ((!TextUtils.isEmpty(((AEMaterialMetaData)localObject4).m)) && (!((AEMaterialMetaData)localObject4).equals(AEMaterialMetaData.l)))
           {
-            localStringBuilder1.append(((AEMaterialMetaData)localObject4).k);
+            localStringBuilder1.append(((AEMaterialMetaData)localObject4).m);
             localStringBuilder1.append("|");
-            localStringBuilder1.append(((AEMaterialMetaData)localObject4).jdField_b_of_type_Int);
+            localStringBuilder1.append(((AEMaterialMetaData)localObject4).n);
             localStringBuilder1.append("$");
           }
         }
@@ -1522,28 +1585,25 @@ public class AEMaterialManager
     }
   }
   
-  public void f()
-  {
-    jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
-  }
-  
-  @Deprecated
-  public void forceInit() {}
-  
-  public void g()
-  {
-    jdField_b_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
-  }
-  
   @Deprecated
   protected void initIndeed() {}
+  
+  public void k()
+  {
+    s = null;
+  }
+  
+  public void l()
+  {
+    t = null;
+  }
   
   @Deprecated
   public void onInit() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEMaterialManager
  * JD-Core Version:    0.7.0.1
  */

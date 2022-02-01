@@ -11,13 +11,13 @@ import java.util.List;
 
 public class b
 {
-  private int jdField_a_of_type_Int;
   public String a;
-  private URL jdField_a_of_type_JavaNetURL;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private int d;
+  private URL e;
+  private String f;
+  private int g;
   
   public b(URL paramURL, String paramString)
   {
@@ -27,25 +27,25 @@ public class b
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.b = bool1;
     boolean bool1 = bool2;
     if (i.a("direct_https_use_sche", 0, 1, 1) == 1) {
       bool1 = true;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    this.jdField_a_of_type_Int = i.a("direct_access_domain_try_times", 1, 8, 2);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaNetURL = paramURL;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = bool1;
+    this.d = i.a("direct_access_domain_try_times", 1, 8, 2);
+    this.a = "";
+    this.e = paramURL;
+    this.f = paramString;
   }
   
   public final String a(com.tencent.featuretoggle.hltxkg.common.a.a parama)
   {
     if (parama.e()) {
-      return this.jdField_b_of_type_JavaLangString;
+      return this.f;
     }
     int i;
-    if (!this.jdField_a_of_type_JavaNetURL.getProtocol().startsWith("https"))
+    if (!this.e.getProtocol().startsWith("https"))
     {
       localObject = new StringBuilder("http://");
       ((StringBuilder)localObject).append(parama.a());
@@ -58,12 +58,12 @@ public class b
     {
       localObject = parama.toString();
       break label148;
-      if (this.jdField_b_of_type_Int != 0)
+      if (this.g != 0)
       {
         localObject = new StringBuilder("https://");
         ((StringBuilder)localObject).append(parama.a());
         ((StringBuilder)localObject).append(":");
-        i = this.jdField_b_of_type_Int;
+        i = this.g;
         parama = (com.tencent.featuretoggle.hltxkg.common.a.a)localObject;
         break;
       }
@@ -73,7 +73,7 @@ public class b
       parama = (com.tencent.featuretoggle.hltxkg.common.a.a)localObject;
     }
     label148:
-    String str = this.jdField_a_of_type_JavaNetURL.getFile();
+    String str = this.e.getFile();
     parama = (com.tencent.featuretoggle.hltxkg.common.a.a)localObject;
     if (!TextUtils.isEmpty(str)) {
       if (str.startsWith("/"))
@@ -92,7 +92,7 @@ public class b
         parama = parama.toString();
       }
     }
-    str = this.jdField_a_of_type_JavaNetURL.getRef();
+    str = this.e.getRef();
     Object localObject = parama;
     if (!TextUtils.isEmpty(str))
     {
@@ -107,7 +107,7 @@ public class b
   
   public final List<com.tencent.featuretoggle.hltxkg.common.a.a> a(com.tencent.featuretoggle.hltxkg.common.b.a parama, boolean paramBoolean1, boolean paramBoolean2)
   {
-    parama = new com.tencent.featuretoggle.hltxkg.common.a.a(this.jdField_a_of_type_JavaNetURL.getHost(), -1);
+    parama = new com.tencent.featuretoggle.hltxkg.common.a.a(this.e.getHost(), -1);
     int k = 3;
     parama.a((byte)3);
     int j = 0;
@@ -119,28 +119,28 @@ public class b
         if (!paramBoolean1)
         {
           ((List)localObject).add(parama);
-          parama.jdField_a_of_type_Int = 1;
+          parama.a = 1;
           return localObject;
         }
-        if ((e.h()) || (!this.jdField_a_of_type_Boolean) || ((paramBoolean2) && (!this.jdField_b_of_type_Boolean))) {
+        if ((e.h()) || (!this.b) || ((paramBoolean2) && (!this.c))) {
           continue;
         }
         if ((paramBoolean2) && (Build.VERSION.SDK_INT <= 18))
         {
           i = 0;
-          if (i < this.jdField_a_of_type_Int)
+          if (i < this.d)
           {
             ((List)localObject).add(parama);
             i += 1;
             continue;
           }
-          parama.jdField_a_of_type_Int = 10;
+          parama.a = 10;
           return localObject;
         }
-        localObject = com.tencent.featuretoggle.hltxkg.common.b.a.a(this.jdField_a_of_type_JavaNetURL.getHost());
+        localObject = com.tencent.featuretoggle.hltxkg.common.b.a.a(this.e.getHost());
         List localList = ((c)localObject).c;
-        this.jdField_b_of_type_Int = ((c)localObject).d;
-        this.jdField_a_of_type_JavaLangString = ((c)localObject).jdField_b_of_type_JavaLangString;
+        this.g = ((c)localObject).d;
+        this.a = ((c)localObject).b;
         return localList;
       }
       catch (Exception localException)
@@ -152,7 +152,7 @@ public class b
         i = 4;
         continue;
       }
-      if (i >= this.jdField_a_of_type_Int) {
+      if (i >= this.d) {
         continue;
       }
       ((List)localObject).add(parama);
@@ -164,27 +164,27 @@ public class b
     }
     else
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         break label297;
       }
       i = k;
     }
-    parama.jdField_a_of_type_Int = i;
+    parama.a = i;
     return localObject;
     localObject = new ArrayList();
     i = j;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.d)
     {
       ((List)localObject).add(parama);
       i += 1;
     }
-    parama.jdField_a_of_type_Int = 8;
+    parama.a = 8;
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.b.a.b
  * JD-Core Version:    0.7.0.1
  */

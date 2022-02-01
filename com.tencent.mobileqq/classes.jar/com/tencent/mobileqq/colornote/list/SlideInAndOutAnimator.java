@@ -16,14 +16,14 @@ import java.util.List;
 public class SlideInAndOutAnimator
   extends SimpleItemAnimator
 {
-  private RecyclerView.ItemAnimator.ItemAnimatorFinishedListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator$ItemAnimatorFinishedListener;
-  private ArrayList<RecyclerView.ViewHolder> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
+  private ArrayList<RecyclerView.ViewHolder> a = new ArrayList();
   private ArrayList<SlideInAndOutAnimator.MoveInfo> b = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> c = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> d = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> e = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> f = new ArrayList();
+  private boolean g = true;
+  private RecyclerView.ItemAnimator.ItemAnimatorFinishedListener h;
   
   private void a()
   {
@@ -39,7 +39,7 @@ public class SlideInAndOutAnimator
     this.d.add(paramViewHolder);
     int j = localView.getMeasuredWidth();
     int i = j;
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       i = -j;
     }
     localViewPropertyAnimatorCompat.setDuration(getRemoveDuration()).alpha(0.0F).translationX(i).setListener(new SlideInAndOutAnimator.1(this, paramViewHolder, localViewPropertyAnimatorCompat)).start();
@@ -91,7 +91,7 @@ public class SlideInAndOutAnimator
     paramViewHolder.itemView.setAlpha(0.0F);
     View localView = paramViewHolder.itemView;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       i = paramViewHolder.itemView.getWidth();
     } else {
       i = -paramViewHolder.itemView.getWidth();
@@ -132,7 +132,7 @@ public class SlideInAndOutAnimator
   public boolean animateRemove(RecyclerView.ViewHolder paramViewHolder)
   {
     c(paramViewHolder);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramViewHolder);
+    this.a.add(paramViewHolder);
     return true;
   }
   
@@ -142,7 +142,7 @@ public class SlideInAndOutAnimator
     int i = this.b.size() - 1;
     while (i >= 0)
     {
-      if (((SlideInAndOutAnimator.MoveInfo)this.b.get(i)).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == paramViewHolder)
+      if (((SlideInAndOutAnimator.MoveInfo)this.b.get(i)).a == paramViewHolder)
       {
         localView.setTranslationY(0.0F);
         dispatchMoveFinished(paramViewHolder);
@@ -156,7 +156,7 @@ public class SlideInAndOutAnimator
       localView.setTranslationY(0.0F);
       dispatchAddFinished(paramViewHolder);
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.remove(paramViewHolder))
+    if (this.a.remove(paramViewHolder))
     {
       localView.setAlpha(0.0F);
       dispatchRemoveFinished(paramViewHolder);
@@ -171,16 +171,16 @@ public class SlideInAndOutAnimator
     while (i >= 0)
     {
       localObject = (SlideInAndOutAnimator.MoveInfo)this.b.get(i);
-      ((SlideInAndOutAnimator.MoveInfo)localObject).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.setTranslationY(0.0F);
-      dispatchMoveFinished(((SlideInAndOutAnimator.MoveInfo)localObject).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      ((SlideInAndOutAnimator.MoveInfo)localObject).a.itemView.setTranslationY(0.0F);
+      dispatchMoveFinished(((SlideInAndOutAnimator.MoveInfo)localObject).a);
       this.b.remove(i);
       i -= 1;
     }
-    i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+    i = this.a.size() - 1;
     while (i >= 0)
     {
-      dispatchRemoveFinished((RecyclerView.ViewHolder)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      dispatchRemoveFinished((RecyclerView.ViewHolder)this.a.get(i));
+      this.a.remove(i);
       i -= 1;
     }
     i = this.c.size() - 1;
@@ -204,13 +204,13 @@ public class SlideInAndOutAnimator
   
   public boolean isRunning()
   {
-    return (!this.c.isEmpty()) || (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (!this.d.isEmpty()) || (!this.b.isEmpty()) || (!this.e.isEmpty()) || (!this.f.isEmpty());
+    return (!this.c.isEmpty()) || (!this.a.isEmpty()) || (!this.d.isEmpty()) || (!this.b.isEmpty()) || (!this.e.isEmpty()) || (!this.f.isEmpty());
   }
   
   public void onAnimationFinished(RecyclerView.ViewHolder paramViewHolder)
   {
     super.onAnimationFinished(paramViewHolder);
-    paramViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator$ItemAnimatorFinishedListener;
+    paramViewHolder = this.h;
     if (paramViewHolder != null) {
       paramViewHolder.onAnimationsFinished();
     }
@@ -218,7 +218,7 @@ public class SlideInAndOutAnimator
   
   public void runPendingAnimations()
   {
-    boolean bool1 = this.jdField_a_of_type_JavaUtilArrayList.isEmpty() ^ true;
+    boolean bool1 = this.a.isEmpty() ^ true;
     boolean bool2 = this.b.isEmpty() ^ true;
     boolean bool3 = this.c.isEmpty() ^ true;
     if ((!bool1) && (!bool2) && (!bool3)) {
@@ -227,7 +227,7 @@ public class SlideInAndOutAnimator
     Object localObject;
     if (bool1)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext()) {
         a((RecyclerView.ViewHolder)((Iterator)localObject).next());
       }
@@ -241,7 +241,7 @@ public class SlideInAndOutAnimator
       while (localIterator.hasNext())
       {
         SlideInAndOutAnimator.MoveInfo localMoveInfo = (SlideInAndOutAnimator.MoveInfo)localIterator.next();
-        a(localMoveInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localMoveInfo.jdField_a_of_type_Int, localMoveInfo.b, localMoveInfo.c, localMoveInfo.d);
+        a(localMoveInfo.a, localMoveInfo.b, localMoveInfo.c, localMoveInfo.d, localMoveInfo.e);
       }
       ((ArrayList)localObject).clear();
     }
@@ -259,7 +259,7 @@ public class SlideInAndOutAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.SlideInAndOutAnimator
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ public class PoiMapActivity$SearchTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    paramEditable = this.a.z.getText().toString().trim();
     if (TextUtils.isEmpty(paramEditable))
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_ComTencentBizPoiMapActivity$SearchResultAdapter.notifyDataSetChanged();
+      this.a.A.setVisibility(8);
+      this.a.E.setVisibility(8);
+      this.a.K.clear();
+      this.a.L.notifyDataSetChanged();
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.a.A.setVisibility(0);
     this.a.a(paramEditable);
   }
   

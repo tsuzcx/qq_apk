@@ -22,27 +22,27 @@ class KSongView$KHandler
       paramMessage = (KSongView)this.a.get();
       if (paramMessage != null)
       {
-        if (1 != paramMessage.a()) {
+        if (1 != paramMessage.getState()) {
           return;
         }
         long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
-        KSHelper.Config localConfig = paramMessage.a();
+        KSHelper.Config localConfig = paramMessage.getConfig();
         paramMessage.a(l);
-        if (l >= localConfig.d) {
+        if (l >= localConfig.f) {
           KSongView.a(paramMessage, l);
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("real_duration = ");
         localStringBuilder.append(l);
         QLog.i("KSongView", 2, localStringBuilder.toString());
-        if (l < localConfig.e)
+        if (l < localConfig.g)
         {
           sendEmptyMessageDelayed(0, 50L);
           return;
         }
         KSongView.a(paramMessage, 3);
-        if (KSongView.a(paramMessage) != null) {
-          KSongView.a(paramMessage).a();
+        if (KSongView.b(paramMessage) != null) {
+          KSongView.b(paramMessage).a();
         }
       }
     }
@@ -50,7 +50,7 @@ class KSongView$KHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongView.KHandler
  * JD-Core Version:    0.7.0.1
  */

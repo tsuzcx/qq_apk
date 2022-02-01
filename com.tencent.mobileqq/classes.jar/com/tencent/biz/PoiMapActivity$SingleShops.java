@@ -4,9 +4,9 @@ public class PoiMapActivity$SingleShops
   extends PoiMapActivity.Shops
 {
   public String a;
-  public String b;
+  public int b;
   public String c;
-  public int d;
+  public String d;
   
   public PoiMapActivity$SingleShops(PoiMapActivity paramPoiMapActivity)
   {

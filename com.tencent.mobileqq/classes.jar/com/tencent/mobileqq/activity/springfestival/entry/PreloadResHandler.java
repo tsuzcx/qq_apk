@@ -37,52 +37,14 @@ import org.jetbrains.annotations.Nullable;
 public class PreloadResHandler
   implements IPreloadRes
 {
-  volatile OlympicDPC jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC;
-  List<WeakReference<IPreloadRes.OnDownloadCallback>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  CopyOnWriteArrayList<ZipRes> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  CopyOnWriteArrayList<ZipRes> a = new CopyOnWriteArrayList();
+  List<WeakReference<IPreloadRes.OnDownloadCallback>> b = new ArrayList();
+  volatile OlympicDPC c;
   
   public PreloadResHandler()
   {
     long l = SystemClock.uptimeMillis();
     ThreadManager.getSubThreadHandler().postAtTime(new PreloadResHandler.1(this), this, l + 1000L);
-  }
-  
-  private static int a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if ("hb_pendant_icon".equals(paramString)) {
-        return 2130844937;
-      }
-      if ("hb_busi_icon".equals(paramString)) {
-        return 2130845277;
-      }
-      if ("qq_hongbao_formal_bg".equals(paramString)) {
-        return 2130845289;
-      }
-      if ("qq_hongbao_cloud_ing_left".equals(paramString)) {
-        return 2130845283;
-      }
-      if ("qq_hongbao_cloud_ing_right".equals(paramString)) {
-        return 2130845284;
-      }
-      if ("qq_hongbao_progress_name".equals(paramString)) {
-        return 2130845415;
-      }
-      if ("qq_hongbao_fudai_business_logo".equals(paramString)) {
-        return 2130845404;
-      }
-      if ("default_miniapp_desktop_bg".equals(paramString)) {
-        return 2130840333;
-      }
-      if ("default_share_bg_fullscreen".equals(paramString)) {
-        return 2130845420;
-      }
-      if ("default_share_bg_window".equals(paramString)) {
-        return 2130845418;
-      }
-    }
-    return -1;
   }
   
   private static Bitmap a(String paramString, boolean paramBoolean, OlympicDPC paramOlympicDPC)
@@ -102,7 +64,7 @@ public class PreloadResHandler
       if (localObject != null) {
         return localObject;
       }
-      int i = a(paramString);
+      int i = f(paramString);
       if (i < 0) {
         return null;
       }
@@ -156,7 +118,7 @@ public class PreloadResHandler
       {
         ((BitmapFactory.Options)localObject4).inPurgeable = true;
         ((BitmapFactory.Options)localObject4).inInputShareable = true;
-        if (paramOlympicDPC.d)
+        if (paramOlympicDPC.e)
         {
           ((BitmapFactory.Options)localObject4).inPreferredConfig = Bitmap.Config.ARGB_8888;
         }
@@ -165,7 +127,7 @@ public class PreloadResHandler
           ((BitmapFactory.Options)localObject4).inPreferredConfig = Bitmap.Config.RGB_565;
           ((BitmapFactory.Options)localObject4).inDither = true;
         }
-        if (paramOlympicDPC.b) {
+        if (paramOlympicDPC.c) {
           ((BitmapFactory.Options)localObject4).inSampleSize = 2;
         } else {
           ((BitmapFactory.Options)localObject4).inSampleSize = 1;
@@ -254,9 +216,9 @@ public class PreloadResHandler
       ((StringBuilder)localObject4).append(paramInt1);
       ((StringBuilder)localObject4).append("");
       SpringHbMonitorReporter.a(108, localOutOfMemoryError2, new String[] { localObject3, paramString, ((StringBuilder)localObject4).toString() });
-      if ((paramOlympicDPC != null) && (!paramOlympicDPC.b))
+      if ((paramOlympicDPC != null) && (!paramOlympicDPC.c))
       {
-        paramOlympicDPC.b = true;
+        paramOlympicDPC.c = true;
         paramOlympicDPC = a(paramString, paramInt1, paramOlympicDPC, paramInt2);
         localObject1 = (Bitmap)paramOlympicDPC.second;
       }
@@ -304,9 +266,9 @@ public class PreloadResHandler
     }
     catch (Exception paramString)
     {
-      label689:
+      label688:
       long l;
-      break label689;
+      break label688;
     }
     paramString = new Pair(Integer.valueOf(paramInt1), localObject1);
     if (QLog.isColorLevel())
@@ -326,59 +288,15 @@ public class PreloadResHandler
     return paramString;
   }
   
-  private PreloadResHandler.ZipResRef a(String paramString)
-  {
-    try
-    {
-      Object localObject1 = Uri.parse(paramString);
-      String str2 = ((Uri)localObject1).getScheme();
-      String str1 = ((Uri)localObject1).getHost();
-      Object localObject2 = ((Uri)localObject1).getPath();
-      localObject1 = localObject2;
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if (((String)localObject2).startsWith("/")) {
-          localObject1 = ((String)localObject2).substring(1);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021_PreloadResHandler", 2, String.format("getZipResRef scheme=%s host=%s path=%s url=%s", new Object[] { str2, str1, localObject1, paramString }));
-      }
-      if ((str2.equalsIgnoreCase("ref")) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-      {
-        localObject2 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          paramString = (ZipRes)((Iterator)localObject2).next();
-          if (str1.equalsIgnoreCase(paramString.id))
-          {
-            localObject2 = new PreloadResHandler.ZipResRef(this, null);
-            ((PreloadResHandler.ZipResRef)localObject2).jdField_a_of_type_JavaLangString = paramString.id;
-            ((PreloadResHandler.ZipResRef)localObject2).c = paramString.url;
-            ((PreloadResHandler.ZipResRef)localObject2).b = ((String)localObject1);
-            return localObject2;
-          }
-        }
-      }
-    }
-    catch (Throwable paramString)
-    {
-      SpringHbMonitorReporter.a(103, paramString, new String[0]);
-      QLog.d("shua2021_PreloadResHandler", 1, paramString.getMessage(), paramString);
-    }
-    return null;
-  }
-  
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC == null)
+    if (this.c == null)
     {
       OlympicDPC localOlympicDPC = new OlympicDPC();
       int i = (int)(DeviceInfoUtil.a() / 1024L / 1024L);
-      int j = ViewUtils.a();
+      int j = ViewUtils.getScreenWidth();
       String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.olympic_act_config.name());
-      localOlympicDPC.jdField_a_of_type_JavaLangString = str;
+      localOlympicDPC.a = str;
       boolean bool;
       try
       {
@@ -388,12 +306,12 @@ public class PreloadResHandler
           if (arrayOfString.length >= 9)
           {
             if (i <= Integer.valueOf(arrayOfString[0]).intValue()) {
-              localOlympicDPC.b = true;
+              localOlympicDPC.c = true;
             } else if (j <= Integer.valueOf(arrayOfString[1]).intValue()) {
-              localOlympicDPC.b = true;
+              localOlympicDPC.c = true;
             }
             if (Integer.valueOf(arrayOfString[3]).intValue() == 1) {
-              localOlympicDPC.d = true;
+              localOlympicDPC.e = true;
             }
             bool = false;
           }
@@ -411,15 +329,15 @@ public class PreloadResHandler
         }
         bool = true;
       }
-      localOlympicDPC.jdField_a_of_type_Boolean = bool;
+      localOlympicDPC.b = bool;
       if (bool)
       {
         if (i <= 512) {
-          localOlympicDPC.b = true;
+          localOlympicDPC.c = true;
         } else if (j <= 480) {
-          localOlympicDPC.b = true;
+          localOlympicDPC.c = true;
         }
-        localOlympicDPC.d = false;
+        localOlympicDPC.e = false;
       }
       if (QLog.isColorLevel())
       {
@@ -436,26 +354,8 @@ public class PreloadResHandler
         localStringBuilder1.append(localOlympicDPC.toString());
         QLog.d("shua2021_PreloadResHandler", 2, localStringBuilder1.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC = localOlympicDPC;
+      this.c = localOlympicDPC;
     }
-  }
-  
-  private boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString != null)
-    {
-      bool1 = bool2;
-      if (paramString.length() >= 3)
-      {
-        bool1 = bool2;
-        if ("ref".equalsIgnoreCase(paramString.substring(0, 3))) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
   }
   
   private static Bitmap b(String paramString1, String paramString2, OlympicDPC paramOlympicDPC)
@@ -566,7 +466,7 @@ public class PreloadResHandler
       if (!TextUtils.isEmpty(str))
       {
         localObject = PreloadStaticApi.a(str, paramString, 0);
-        if (PreloadStaticApi.b((String)localObject)) {}
+        if (PreloadStaticApi.f((String)localObject)) {}
       }
       else
       {
@@ -588,6 +488,106 @@ public class PreloadResHandler
     return paramString;
   }
   
+  private PreloadResHandler.ZipResRef d(String paramString)
+  {
+    try
+    {
+      Object localObject1 = Uri.parse(paramString);
+      String str2 = ((Uri)localObject1).getScheme();
+      String str1 = ((Uri)localObject1).getHost();
+      Object localObject2 = ((Uri)localObject1).getPath();
+      localObject1 = localObject2;
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).startsWith("/")) {
+          localObject1 = ((String)localObject2).substring(1);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021_PreloadResHandler", 2, String.format("getZipResRef scheme=%s host=%s path=%s url=%s", new Object[] { str2, str1, localObject1, paramString }));
+      }
+      if ((str2.equalsIgnoreCase("ref")) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        localObject2 = this.a.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          paramString = (ZipRes)((Iterator)localObject2).next();
+          if (str1.equalsIgnoreCase(paramString.id))
+          {
+            localObject2 = new PreloadResHandler.ZipResRef(this, null);
+            ((PreloadResHandler.ZipResRef)localObject2).a = paramString.id;
+            ((PreloadResHandler.ZipResRef)localObject2).c = paramString.url;
+            ((PreloadResHandler.ZipResRef)localObject2).b = ((String)localObject1);
+            return localObject2;
+          }
+        }
+      }
+    }
+    catch (Throwable paramString)
+    {
+      SpringHbMonitorReporter.a(103, paramString, new String[0]);
+      QLog.d("shua2021_PreloadResHandler", 1, paramString.getMessage(), paramString);
+    }
+    return null;
+  }
+  
+  private boolean e(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null)
+    {
+      bool1 = bool2;
+      if (paramString.length() >= 3)
+      {
+        bool1 = bool2;
+        if ("ref".equalsIgnoreCase(paramString.substring(0, 3))) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private static int f(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if ("hb_pendant_icon".equals(paramString)) {
+        return 2130846373;
+      }
+      if ("hb_busi_icon".equals(paramString)) {
+        return 2130846733;
+      }
+      if ("qq_hongbao_formal_bg".equals(paramString)) {
+        return 2130846745;
+      }
+      if ("qq_hongbao_cloud_ing_left".equals(paramString)) {
+        return 2130846739;
+      }
+      if ("qq_hongbao_cloud_ing_right".equals(paramString)) {
+        return 2130846740;
+      }
+      if ("qq_hongbao_progress_name".equals(paramString)) {
+        return 2130846871;
+      }
+      if ("qq_hongbao_fudai_business_logo".equals(paramString)) {
+        return 2130846860;
+      }
+      if ("default_miniapp_desktop_bg".equals(paramString)) {
+        return 2130841073;
+      }
+      if ("default_share_bg_fullscreen".equals(paramString)) {
+        return 2130846876;
+      }
+      if ("default_share_bg_window".equals(paramString)) {
+        return 2130846874;
+      }
+    }
+    return -1;
+  }
+  
   @Nullable
   public Bitmap a(String paramString1, String paramString2)
   {
@@ -601,12 +601,12 @@ public class PreloadResHandler
       QLog.i("shua2021_PreloadResHandler", 2, String.format("getPreloadBitmap start defaultResName=[%s] url=%s", new Object[] { paramString2, paramString1 }));
     }
     if (TextUtils.isEmpty(paramString1)) {
-      return b("", paramString2, this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC);
+      return b("", paramString2, this.c);
     }
     Object localObject2;
-    if (a(paramString1))
+    if (e(paramString1))
     {
-      localObject2 = a(paramString1);
+      localObject2 = d(paramString1);
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
@@ -640,7 +640,7 @@ public class PreloadResHandler
     } else {
       paramString1 = "";
     }
-    return b(paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC);
+    return b(paramString1, paramString2, this.c);
   }
   
   @Nullable
@@ -685,9 +685,9 @@ public class PreloadResHandler
       if (i != 0) {
         paramString1 = (String)localObject1;
       }
-      return b(paramString1, paramString3, this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC);
+      return b(paramString1, paramString3, this.c);
     }
-    return b("", paramString3, this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC);
+    return b("", paramString3, this.c);
   }
   
   @Nullable
@@ -720,23 +720,23 @@ public class PreloadResHandler
   {
     int i;
     label122:
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.b.size() > 0)
       {
-        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+        i = this.b.size() - 1;
         if (i >= 0)
         {
-          WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+          WeakReference localWeakReference = (WeakReference)this.b.get(i);
           if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() != paramOnDownloadCallback)) {
             break label122;
           }
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.b.remove(i);
           break label122;
         }
       }
       if (paramOnDownloadCallback != null) {
-        this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnDownloadCallback));
+        this.b.add(new WeakReference(paramOnDownloadCallback));
       }
       return;
     }
@@ -773,9 +773,9 @@ public class PreloadResHandler
       return null;
     }
     Object localObject2;
-    if (a(paramString))
+    if (e(paramString))
     {
-      localObject2 = a(paramString);
+      localObject2 = d(paramString);
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
@@ -837,18 +837,18 @@ public class PreloadResHandler
   {
     int i;
     label100:
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.b.size() > 0)
       {
-        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+        i = this.b.size() - 1;
         if (i >= 0)
         {
-          WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+          WeakReference localWeakReference = (WeakReference)this.b.get(i);
           if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() != paramOnDownloadCallback)) {
             break label100;
           }
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.b.remove(i);
           break label100;
         }
       }
@@ -864,7 +864,7 @@ public class PreloadResHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.PreloadResHandler
  * JD-Core Version:    0.7.0.1
  */

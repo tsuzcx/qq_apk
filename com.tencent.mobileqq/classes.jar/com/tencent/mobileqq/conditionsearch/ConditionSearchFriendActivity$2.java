@@ -10,7 +10,7 @@ class ConditionSearchFriendActivity$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a = true;
+    this.a.k = true;
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -19,7 +19,7 @@ class ConditionSearchFriendActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity.2
  * JD-Core Version:    0.7.0.1
  */

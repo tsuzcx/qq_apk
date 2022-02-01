@@ -9,13 +9,13 @@ class TroopSettingActivity$ClearChatRecordTask$1
   {
     TroopSettingActivity localTroopSettingActivity = this.a;
     if (localTroopSettingActivity != null) {
-      TroopSettingActivity.g(localTroopSettingActivity);
+      TroopSettingActivity.j(localTroopSettingActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.ClearChatRecordTask.1
  * JD-Core Version:    0.7.0.1
  */

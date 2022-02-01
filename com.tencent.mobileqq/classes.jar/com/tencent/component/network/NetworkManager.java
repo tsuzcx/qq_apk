@@ -9,6 +9,7 @@ import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.component.network.module.base.Config;
 import com.tencent.component.network.module.base.QDLog;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,7 +42,7 @@ public class NetworkManager
     String str = null;
     try
     {
-      WifiInfo localWifiInfo = ((WifiManager)mContext.getSystemService("wifi")).getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)mContext.getSystemService("wifi"));
       if (localWifiInfo != null) {
         str = localWifiInfo.getBSSID();
       }
@@ -215,7 +216,7 @@ public class NetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.NetworkManager
  * JD-Core Version:    0.7.0.1
  */

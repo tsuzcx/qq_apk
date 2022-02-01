@@ -16,42 +16,42 @@ class NormalMenuView$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiNormalMenuView;
-    ((NormalMenuView)localObject).jdField_a_of_type_Boolean = false;
+    Object localObject = this.d;
+    ((NormalMenuView)localObject).e = false;
     int i;
-    if (((NormalMenuView)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (((NormalMenuView)localObject).c != null)
     {
-      i = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      if (!this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      } else if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent != null) {
-        this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      i = this.d.c.getVisibility();
+      if (!this.d.e) {
+        this.d.c.setVisibility(8);
+      } else if (this.d.b != null) {
+        this.d.b.b(this.b, this.d.c, false);
       }
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
+      this.d.c.setAlpha(1.0F);
+      this.d.c.setTranslationY(0.0F);
     }
     else
     {
       i = 4;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_JavaLangString;
+    localObject = this.d.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("HiddenMenuView, onAnimationEnd, isShow[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d.e);
     localStringBuilder.append("], visibility[");
     localStringBuilder.append(i);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], \nlastObjectAnimator[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidAnimationObjectAnimator);
+    localStringBuilder.append(this.d.f);
     localStringBuilder.append("], \nanimation[");
     localStringBuilder.append(paramAnimator);
     localStringBuilder.append("]");
     QLog.w((String)localObject, 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator)
+    if (this.d.f == paramAnimator)
     {
       ThreadManager.getUIHandler().post(new NormalMenuView.1.1(this));
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      this.d.f = null;
     }
   }
   
@@ -65,21 +65,21 @@ class NormalMenuView$1
   public void onAnimationStart(Animator paramAnimator)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      i = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+    if (this.d.c != null) {
+      i = this.d.c.getVisibility();
     } else {
       i = 4;
     }
-    paramAnimator = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_JavaLangString;
+    paramAnimator = this.d.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("HiddenMenuView, onAnimationStart, isShow[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d.e);
     localStringBuilder.append("], height[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], visibility[");
     localStringBuilder.append(i);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     QLog.w(paramAnimator, 1, localStringBuilder.toString());
   }

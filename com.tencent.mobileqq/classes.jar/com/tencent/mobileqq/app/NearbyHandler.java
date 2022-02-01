@@ -172,11 +172,11 @@ public class NearbyHandler
     {
       try
       {
-        localJSONObject.put("client_ver", "8.7.0");
+        localJSONObject.put("client_ver", "8.8.17");
         localJSONObject.put("from", paramString2);
         if ("1".equals(paramString2))
         {
-          byte[] arrayOfByte = paramQQAppInterface.getMsgCache().j(paramString1);
+          byte[] arrayOfByte = paramQQAppInterface.getMsgCache().o(paramString1);
           if (arrayOfByte != null) {
             localJSONObject.put("chat_sig", new String(Base64Util.encode(arrayOfByte, 0)));
           }
@@ -369,7 +369,7 @@ public class NearbyHandler
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.7.0");
+      paramReqBody.version.set("8.8.17");
       paramReqBody.version_code.set(ApkUtils.a(BaseApplicationImpl.sApplication));
       paramReqBody.original_id.set(this.a.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
@@ -717,19 +717,19 @@ public class NearbyHandler
   cmd0x77f.VisitProfRec a(ReportRecord paramReportRecord)
   {
     cmd0x77f.VisitProfRec localVisitProfRec = new cmd0x77f.VisitProfRec();
-    localVisitProfRec.uint64_tinyid.set(paramReportRecord.jdField_a_of_type_Long);
-    localVisitProfRec.uint32_seq.set(paramReportRecord.jdField_a_of_type_Int);
-    if (paramReportRecord.c > 0) {
-      localVisitProfRec.uint32_enter_count.set(paramReportRecord.c);
-    }
+    localVisitProfRec.uint64_tinyid.set(paramReportRecord.a);
+    localVisitProfRec.uint32_seq.set(paramReportRecord.b);
     if (paramReportRecord.d > 0) {
-      localVisitProfRec.uint32_visit_duration.set(paramReportRecord.d);
+      localVisitProfRec.uint32_enter_count.set(paramReportRecord.d);
     }
     if (paramReportRecord.e > 0) {
-      localVisitProfRec.uint32_visit_pic_count.set(paramReportRecord.e);
+      localVisitProfRec.uint32_visit_duration.set(paramReportRecord.e);
     }
     if (paramReportRecord.f > 0) {
-      localVisitProfRec.uint32_opflag.set(paramReportRecord.f);
+      localVisitProfRec.uint32_visit_pic_count.set(paramReportRecord.f);
+    }
+    if (paramReportRecord.g > 0) {
+      localVisitProfRec.uint32_opflag.set(paramReportRecord.g);
     }
     if (QLog.isColorLevel())
     {
@@ -857,7 +857,7 @@ public class NearbyHandler
     NearbyReportSvr.CommonData localCommonData = new NearbyReportSvr.CommonData();
     localCommonData.platform.set("android");
     localCommonData.client_ip.set(DBNetworkUtil.a(false));
-    localCommonData.version.set(DeviceInfoUtil.c());
+    localCommonData.version.set(DeviceInfoUtil.e());
     SosoLbsInfo localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("NearbyProtocolCoder.Encounter");
     NearbyReportSvr.Location localLocation = new NearbyReportSvr.Location();
     localLocation.coordinate.set(1);
@@ -956,7 +956,7 @@ public class NearbyHandler
         k = a(j);
         paramObject.uint32_gender.set(k);
         this.a.saveSelfRespEncounterInfo(paramObject);
-        ((NearbyDataManager)this.a.getManager(NearbyConstants.b)).a(this.a, paramObject);
+        ((NearbyDataManager)this.a.getManager(NearbyConstants.d)).a(this.a, paramObject);
         if (QLog.isColorLevel())
         {
           paramObject = new StringBuilder();
@@ -1117,7 +1117,7 @@ public class NearbyHandler
     }
     paramObject.put("param_FailCode", paramFromServiceMsg);
     paramObject.put("param_NetType", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
-    paramObject.put("param_DeviceType", String.valueOf(DeviceInfoUtil.f()));
+    paramObject.put("param_DeviceType", String.valueOf(DeviceInfoUtil.O()));
     long l = paramToServiceMsg.extraData.getLong("request_start_time");
     l = SystemClock.uptimeMillis() - l;
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(getCurrentAccountUin(), "actGetNearbyMyTab", bool, l, 0L, paramObject, "");
@@ -1375,7 +1375,7 @@ public class NearbyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class TRTCCloudImpl$83$1
     if (localTRTCCloudListener == null) {
       return;
     }
-    localTRTCCloudListener.onWarning(6001, "ignore send custom audio,for role audience", null);
+    localTRTCCloudListener.onWarning(6001, "ignore send custom video,for role audience", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.83.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import com.tencent.liteav.audio.TXAudioEffectManager;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.beauty.TXBeautyManager;
+import com.tencent.liteav.device.TXDeviceManager;
 import com.tencent.liteav.trtc.impl.TRTCCloudImpl;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.lang.ref.WeakReference;
@@ -85,15 +86,22 @@ public abstract class TRTCCloud
   
   public abstract void enableCustomAudioCapture(boolean paramBoolean);
   
+  public abstract void enableCustomVideoCapture(int paramInt, boolean paramBoolean);
+  
   public abstract void enableCustomVideoCapture(boolean paramBoolean);
   
   public abstract int enableEncSmallVideoStream(boolean paramBoolean, TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam);
   
+  public abstract void enableMixExternalAudioFrame(boolean paramBoolean1, boolean paramBoolean2);
+  
+  @Deprecated
   public abstract boolean enableTorch(boolean paramBoolean);
   
   public abstract void enterRoom(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt);
   
   public abstract void exitRoom();
+  
+  public abstract long generateCustomPTS();
   
   public abstract int getAudioCaptureVolume();
   
@@ -106,13 +114,21 @@ public abstract class TRTCCloud
   
   public abstract TXBeautyManager getBeautyManager();
   
+  public abstract TXDeviceManager getDeviceManager();
+  
+  @Deprecated
   public abstract boolean isCameraAutoFocusFaceModeSupported();
   
+  @Deprecated
   public abstract boolean isCameraFocusPositionInPreviewSupported();
   
+  @Deprecated
   public abstract boolean isCameraTorchSupported();
   
+  @Deprecated
   public abstract boolean isCameraZoomSupported();
+  
+  public abstract void mixExternalAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
   
   public abstract void muteAllRemoteAudio(boolean paramBoolean);
   
@@ -155,6 +171,8 @@ public abstract class TRTCCloud
   
   public abstract boolean sendCustomCmdMsg(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2);
   
+  public abstract void sendCustomVideoData(int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame);
+  
   public abstract void sendCustomVideoData(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame);
   
   public abstract boolean sendSEIMsg(byte[] paramArrayOfByte, int paramInt);
@@ -190,6 +208,8 @@ public abstract class TRTCCloud
   @Deprecated
   public abstract void setBeautyStyle(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
+  public abstract int setCapturedRawAudioFrameCallbackFormat(TRTCCloudDef.TRTCAudioFrameCallbackFormat paramTRTCAudioFrameCallbackFormat);
+  
   @Deprecated
   public abstract void setChinLevel(int paramInt);
   
@@ -215,6 +235,7 @@ public abstract class TRTCCloud
   @Deprecated
   public abstract void setFilterConcentration(float paramFloat);
   
+  @Deprecated
   public abstract void setFocusPosition(int paramInt1, int paramInt2);
   
   public abstract void setGSensorMode(int paramInt);
@@ -226,6 +247,12 @@ public abstract class TRTCCloud
   public abstract void setListener(TRTCCloudListener paramTRTCCloudListener);
   
   public abstract void setListenerHandler(Handler paramHandler);
+  
+  public abstract int setLocalProcessedAudioFrameCallbackFormat(TRTCCloudDef.TRTCAudioFrameCallbackFormat paramTRTCAudioFrameCallbackFormat);
+  
+  public abstract void setLocalRenderParams(TRTCCloudDef.TRTCRenderParams paramTRTCRenderParams);
+  
+  public abstract int setLocalVideoProcessListener(int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoFrameListener paramTRTCVideoFrameListener);
   
   public abstract int setLocalVideoRenderListener(int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener);
   
@@ -240,6 +267,8 @@ public abstract class TRTCCloud
   
   public abstract void setMixTranscodingConfig(TRTCCloudDef.TRTCTranscodingConfig paramTRTCTranscodingConfig);
   
+  public abstract int setMixedPlayAudioFrameCallbackFormat(TRTCCloudDef.TRTCAudioFrameCallbackFormat paramTRTCAudioFrameCallbackFormat);
+  
   @Deprecated
   public abstract void setMotionMute(boolean paramBoolean);
   
@@ -252,20 +281,28 @@ public abstract class TRTCCloud
   
   public abstract void setRemoteAudioVolume(String paramString, int paramInt);
   
+  public abstract void setRemoteRenderParams(String paramString, int paramInt, TRTCCloudDef.TRTCRenderParams paramTRTCRenderParams);
+  
+  @Deprecated
   public abstract void setRemoteSubStreamViewFillMode(String paramString, int paramInt);
   
+  @Deprecated
   public abstract void setRemoteSubStreamViewRotation(String paramString, int paramInt);
   
   public abstract int setRemoteVideoRenderListener(String paramString, int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener);
   
   public abstract int setRemoteVideoStreamType(String paramString, int paramInt);
   
+  @Deprecated
   public abstract void setRemoteViewFillMode(String paramString, int paramInt);
   
+  @Deprecated
   public abstract void setRemoteViewRotation(String paramString, int paramInt);
   
   @Deprecated
   public abstract void setReverbType(int paramInt);
+  
+  public abstract void setSubStreamEncoderParam(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam);
   
   public abstract void setSystemVolumeType(int paramInt);
   
@@ -282,6 +319,7 @@ public abstract class TRTCCloud
   
   public abstract void setWatermark(Bitmap paramBitmap, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   
+  @Deprecated
   public abstract void setZoom(int paramInt);
   
   public abstract void showDebugView(int paramInt);
@@ -290,16 +328,25 @@ public abstract class TRTCCloud
   
   public abstract int startAudioRecording(TRTCCloudDef.TRTCAudioRecordingParams paramTRTCAudioRecordingParams);
   
+  @Deprecated
   public abstract void startLocalAudio();
   
+  public abstract void startLocalAudio(int paramInt);
+  
   public abstract void startLocalPreview(boolean paramBoolean, TXCloudVideoView paramTXCloudVideoView);
+  
+  public abstract void startLocalRecording(TRTCCloudDef.TRTCLocalRecordingParams paramTRTCLocalRecordingParams);
   
   public abstract void startPublishCDNStream(TRTCCloudDef.TRTCPublishCDNParam paramTRTCPublishCDNParam);
   
   public abstract void startPublishing(String paramString, int paramInt);
   
+  @Deprecated
   public abstract void startRemoteSubStreamView(String paramString, TXCloudVideoView paramTXCloudVideoView);
   
+  public abstract void startRemoteView(String paramString, int paramInt, TXCloudVideoView paramTXCloudVideoView);
+  
+  @Deprecated
   public abstract void startRemoteView(String paramString, TXCloudVideoView paramTXCloudVideoView);
   
   public abstract void startScreenCapture(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam, TRTCCloudDef.TRTCScreenShareParams paramTRTCScreenShareParams);
@@ -323,21 +370,29 @@ public abstract class TRTCCloud
   
   public abstract void stopLocalPreview();
   
+  public abstract void stopLocalRecording();
+  
   public abstract void stopPublishCDNStream();
   
   public abstract void stopPublishing();
   
+  @Deprecated
   public abstract void stopRemoteSubStreamView(String paramString);
   
   public abstract void stopRemoteView(String paramString);
+  
+  public abstract void stopRemoteView(String paramString, int paramInt);
   
   public abstract void stopScreenCapture();
   
   public abstract void stopSpeedTest();
   
+  @Deprecated
   public abstract void switchCamera();
   
   public abstract void switchRole(int paramInt);
+  
+  public abstract void switchRoom(TRTCCloudDef.TRTCSwitchRoomConfig paramTRTCSwitchRoomConfig);
 }
 
 

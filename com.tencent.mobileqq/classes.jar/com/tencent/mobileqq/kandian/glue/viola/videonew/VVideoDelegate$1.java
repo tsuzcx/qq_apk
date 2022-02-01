@@ -1,20 +1,24 @@
 package com.tencent.mobileqq.kandian.glue.viola.videonew;
 
-import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.mobileqq.kandian.biz.video.ReadInJoyPlayerFactory;
+import com.tencent.mobileqq.kandian.biz.video.api.IReadInJoyPlayerFactory;
+import com.tencent.mobileqq.kandian.glue.video.player.ReadInJoyPlayer;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 class VVideoDelegate$1
-  implements Runnable
+  implements Function1<Unit, ReadInJoyPlayer>
 {
-  VVideoDelegate$1(VVideoDelegate paramVVideoDelegate) {}
+  VVideoDelegate$1(VVideoDelegate paramVVideoDelegate, int paramInt, String paramString, boolean paramBoolean) {}
   
-  public void run()
+  public ReadInJoyPlayer a(Unit paramUnit)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().m();
+    return (ReadInJoyPlayer)ReadInJoyPlayerFactory.get().createPlayer(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VVideoDelegate.1
  * JD-Core Version:    0.7.0.1
  */

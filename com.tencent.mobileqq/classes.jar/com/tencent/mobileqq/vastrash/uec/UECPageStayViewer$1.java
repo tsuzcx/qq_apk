@@ -25,18 +25,18 @@ class UECPageStayViewer$1
     }
     if (i == 2)
     {
-      if ((UECPageStayViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - UECPageStayViewer.a(this.a)) > DisplayUtil.a(paramView, 10.0F)))
+      if ((UECPageStayViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - UECPageStayViewer.b(this.a)) > DisplayUtil.a(paramView, 10.0F)))
       {
         UECPageStayViewer.a(this.a, true);
         paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
-        paramMotionEvent.y = (j - UECPageStayViewer.a(this.a) - DisplayUtil.a(paramView, 0.0F));
-        i = UECPageStayViewer.a(this.a).getDefaultDisplay().getHeight();
+        paramMotionEvent.y = (j - UECPageStayViewer.b(this.a) - DisplayUtil.a(paramView, 0.0F));
+        i = UECPageStayViewer.c(this.a).getDefaultDisplay().getHeight();
         if (paramMotionEvent.y < 0) {
           paramMotionEvent.y = 0;
         } else if (paramMotionEvent.y > i - this.a.getHeight()) {
           paramMotionEvent.y = (i - this.a.getHeight());
         }
-        UECPageStayViewer.a(this.a).updateViewLayout(UECPageStayViewer.a(this.a), paramMotionEvent);
+        UECPageStayViewer.c(this.a).updateViewLayout(UECPageStayViewer.d(this.a), paramMotionEvent);
       }
       return true;
     }
@@ -46,7 +46,7 @@ class UECPageStayViewer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayViewer.1
  * JD-Core Version:    0.7.0.1
  */

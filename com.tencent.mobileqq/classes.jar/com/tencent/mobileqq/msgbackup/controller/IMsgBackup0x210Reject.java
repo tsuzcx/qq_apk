@@ -6,7 +6,7 @@ public abstract interface IMsgBackup0x210Reject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.IMsgBackup0x210Reject
  * JD-Core Version:    0.7.0.1
  */

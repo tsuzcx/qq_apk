@@ -9,14 +9,14 @@ class MediaCodecThumbnailGenerator$CodecHandler$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.a != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailProgress);
+    if (this.a.k.i != null) {
+      this.a.k.i.a(Boolean.valueOf(true), this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.2
  * JD-Core Version:    0.7.0.1
  */

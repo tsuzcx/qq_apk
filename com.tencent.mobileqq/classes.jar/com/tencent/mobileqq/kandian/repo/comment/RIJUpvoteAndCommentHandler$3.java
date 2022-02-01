@@ -26,7 +26,7 @@ class RIJUpvoteAndCommentHandler$3
   {
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList1 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (oidb_cmd0x8c8.FeedsInfo)localIterator.next();
@@ -39,10 +39,10 @@ class RIJUpvoteAndCommentHandler$3
         ((StringBuilder)localObject).append("");
         ((StringBuilder)localObject).append(i);
         localObject = ((StringBuilder)localObject).toString();
-        localObject = (AbsBaseArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+        localObject = (AbsBaseArticleInfo)this.b.get(localObject);
         if (localObject != null)
         {
-          RIJUpvoteAndCommentHandler.b(this.this$0).removeEntityIfExistsInDB((Entity)localObject);
+          RIJUpvoteAndCommentHandler.f(this.this$0).removeEntityIfExistsInDB((Entity)localObject);
         }
         else
         {
@@ -53,9 +53,9 @@ class RIJUpvoteAndCommentHandler$3
           ((StringBuilder)localObject).append(i);
           QLog.d("RIJUpvoteAndCommentHandler", 1, ((StringBuilder)localObject).toString());
         }
-        localObject = RIJUpvoteAndCommentHandler.c(this.this$0).a().c(0);
+        localObject = RIJUpvoteAndCommentHandler.g(this.this$0).i().d(0);
         RIJUpvoteAndCommentHandler.a(this.this$0, (ConcurrentMap)localObject, l, i, localArrayList2);
-        localObject = RIJUpvoteAndCommentHandler.d(this.this$0).a().c(70);
+        localObject = RIJUpvoteAndCommentHandler.h(this.this$0).i().d(70);
         RIJUpvoteAndCommentHandler.b(this.this$0, (ConcurrentMap)localObject, l, i, localArrayList2);
       }
     }
@@ -66,7 +66,7 @@ class RIJUpvoteAndCommentHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.RIJUpvoteAndCommentHandler.3
  * JD-Core Version:    0.7.0.1
  */

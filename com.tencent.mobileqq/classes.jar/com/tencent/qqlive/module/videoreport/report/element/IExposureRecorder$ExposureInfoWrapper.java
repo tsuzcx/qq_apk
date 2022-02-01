@@ -24,7 +24,7 @@ public class IExposureRecorder$ExposureInfoWrapper
     this.exposureTime = paramLong;
     this.exposureView = new WeakReference(paramExposureElementInfo.getView());
     this.attachedPage = new WeakReference(paramExposureElementInfo.getPage());
-    this.canReportExposureEnd = ReportHelper.reportEndExposure(paramExposureElementInfo.getView());
+    this.canReportExposureEnd = ReportHelper.reportEndExposure(paramExposureElementInfo.getView(), false);
     this.finalData = DataBuilderFactory.obtain().build("imp_end", paramExposureElementInfo.getPathData());
   }
   
@@ -44,7 +44,7 @@ public class IExposureRecorder$ExposureInfoWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.IExposureRecorder.ExposureInfoWrapper
  * JD-Core Version:    0.7.0.1
  */

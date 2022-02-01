@@ -30,8 +30,8 @@ public class FloatingWatchTogetherWrapper
 {
   public static final String CLASS_NAME = "com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper";
   public static final int WAIT_ACTIVITY_ANIM_END_MILLIS = 500;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private IVideoInnerStatusListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
+  private ImageView a;
+  private IVideoInnerStatusListener b;
   
   public FloatingWatchTogetherWrapper(Context paramContext)
   {
@@ -39,9 +39,9 @@ public class FloatingWatchTogetherWrapper
     a(this);
   }
   
-  private void l()
+  private void d()
   {
-    View localView = a(2131374409);
+    View localView = d(2131442576);
     localView.setContentDescription("一起看悬浮窗");
     if (ThemeImageWrapper.isNightMode())
     {
@@ -55,7 +55,7 @@ public class FloatingWatchTogetherWrapper
   {
     FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
     if (paramFloatingScreenParams == null) {
-      if (a() != null) {
+      if (m() != null) {
         localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).setCanZoom(false).build();
       } else {
         return 2;
@@ -68,7 +68,7 @@ public class FloatingWatchTogetherWrapper
   
   public IVideoOuterStatusListener a(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener = paramIVideoInnerStatusListener;
+    this.b = paramIVideoInnerStatusListener;
     return this;
   }
   
@@ -77,18 +77,24 @@ public class FloatingWatchTogetherWrapper
     if (QLog.isColorLevel()) {
       QLog.d("FloatingWatchTogetherWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingWatchTogetherWrapper" });
     }
-    l();
+    d();
+  }
+  
+  public void a(int paramInt)
+  {
+    FloatingWatchTogetherWrapper.3 local3 = new FloatingWatchTogetherWrapper.3(this, paramInt);
+    ThreadManager.getUIHandlerV2().post(local3);
   }
   
   public void a(Context paramContext)
   {
     super.a(paramContext);
     a("关闭一起看悬浮窗");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131374406));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131704739));
-    a(this, new View[] { this.jdField_a_of_type_AndroidWidgetImageView });
-    a(false, new View[] { this.jdField_a_of_type_AndroidWidgetImageView });
-    l();
+    this.a = ((ImageView)d(2131442573));
+    this.a.setContentDescription(HardCodeUtil.a(2131902642));
+    a(this, new View[] { this.a });
+    a(false, new View[] { this.a });
+    d();
   }
   
   public void a(FloatingScreenParams paramFloatingScreenParams)
@@ -108,25 +114,14 @@ public class FloatingWatchTogetherWrapper
   
   public void b() {}
   
-  public void b(int paramInt)
-  {
-    FloatingWatchTogetherWrapper.3 local3 = new FloatingWatchTogetherWrapper.3(this, paramInt);
-    ThreadManager.getUIHandlerV2().post(local3);
-  }
-  
   public void c()
   {
-    a(2, new FloatingWatchTogetherWrapper.1(this));
-  }
-  
-  public void k()
-  {
-    if (!a())
+    if (!n())
     {
-      boolean bool = b();
+      boolean bool = o();
       SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
-      int i = b();
-      int j = c();
+      int i = q();
+      int j = r();
       localEditor.putInt("KEY_QQFS_WATCH_TOGETHER_CENTER_X", i);
       localEditor.putInt("KEY_QQFS_WATCH_TOGETHER_CENTER_Y", j);
       localEditor.apply();
@@ -136,11 +131,16 @@ public class FloatingWatchTogetherWrapper
     }
   }
   
+  public void j()
+  {
+    a(2, new FloatingWatchTogetherWrapper.1(this));
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131374406)
+    if (paramView.getId() == 2131442573)
     {
-      IVideoInnerStatusListener localIVideoInnerStatusListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
+      IVideoInnerStatusListener localIVideoInnerStatusListener = this.b;
       if (localIVideoInnerStatusListener != null) {
         localIVideoInnerStatusListener.notifyVideoStart();
       }
@@ -170,17 +170,17 @@ public class FloatingWatchTogetherWrapper
   
   public void onVideoStart(int paramInt)
   {
-    a(false, new View[] { this.jdField_a_of_type_AndroidWidgetImageView });
+    a(false, new View[] { this.a });
   }
   
   public void onVideoStop()
   {
-    a(true, new View[] { this.jdField_a_of_type_AndroidWidgetImageView });
+    a(true, new View[] { this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper
  * JD-Core Version:    0.7.0.1
  */

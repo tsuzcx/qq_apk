@@ -9,11 +9,11 @@ class CheckRegisterLiangHao$2
   
   public void run()
   {
-    CheckRegisterLiangHao.RequestCallBack localRequestCallBack = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetCheckRegisterLiangHao$RequestCallBack;
-    String str = CheckRegisterLiangHao.a(this.this$0);
-    LiangHaoStatusRsp localLiangHaoStatusRsp = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoStatusRsp;
+    CheckRegisterLiangHao.RequestCallBack localRequestCallBack = this.a;
+    String str = CheckRegisterLiangHao.b(this.this$0);
+    LiangHaoStatusRsp localLiangHaoStatusRsp = this.b;
     boolean bool;
-    if ((localLiangHaoStatusRsp != null) && (localLiangHaoStatusRsp.a)) {
+    if ((localLiangHaoStatusRsp != null) && (localLiangHaoStatusRsp.b)) {
       bool = true;
     } else {
       bool = false;
@@ -23,7 +23,7 @@ class CheckRegisterLiangHao$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.2
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class TroopFileMsgBackupHandler
     localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH);
     localStringBuilder.append(paramString2);
     paramString2 = localStringBuilder.toString();
-    if (a(paramString1, paramString2))
+    if (b(paramString1, paramString2))
     {
       if (QLog.isColorLevel())
       {
@@ -53,7 +53,7 @@ public class TroopFileMsgBackupHandler
     return "";
   }
   
-  private boolean a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  private boolean c(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
     if (paramMessageRecord == null)
     {
@@ -67,7 +67,7 @@ public class TroopFileMsgBackupHandler
     } else {
       localMessageForTroopFile = (MessageForTroopFile)paramMessageRecord;
     }
-    if (localIMsgBackupTempApi.isNeedHandleTroopFileRecord(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile))
+    if (localIMsgBackupTempApi.isNeedHandleTroopFileRecord(this.c, localMessageForTroopFile))
     {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
@@ -77,17 +77,17 @@ public class TroopFileMsgBackupHandler
         while (localIterator.hasNext())
         {
           MsgBackupResEntity localMsgBackupResEntity = (MsgBackupResEntity)localIterator.next();
-          if ((a(localMsgBackupResEntity)) && (b(paramMessageRecord, localMsgBackupResEntity)))
+          if ((b(localMsgBackupResEntity)) && (b(paramMessageRecord, localMsgBackupResEntity)))
           {
             Object localObject = a(localMsgBackupResEntity);
             if (!TextUtils.isEmpty((CharSequence)localObject)) {
               if (localMsgBackupResEntity.msgSubType == 12)
               {
-                if (!FileUtils.fileExistsAndNotEmpty(localIMsgBackupTempApi.getLargeThumbPath2(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile.frienduin, localMessageForTroopFile))) {
+                if (!FileUtils.fileExistsAndNotEmpty(localIMsgBackupTempApi.getLargeThumbPath2(this.c, localMessageForTroopFile.frienduin, localMessageForTroopFile))) {
                   try
                   {
                     long l = Long.parseLong(localMessageForTroopFile.frienduin);
-                    str = a(l, (String)localObject, localIMsgBackupTempApi.getTroopFileItemId(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile), 640);
+                    str = a(l, (String)localObject, localIMsgBackupTempApi.getTroopFileItemId(this.c, localMessageForTroopFile), 640);
                   }
                   catch (Exception localException)
                   {
@@ -98,17 +98,17 @@ public class TroopFileMsgBackupHandler
                   }
                 }
               }
-              else if ((localException.msgSubType == 11) && (!FileUtils.fileExistsAndNotEmpty(localIMsgBackupTempApi.getLocalFilePath2(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile.frienduin, localMessageForTroopFile)))) {
-                paramList = a((String)localObject, localIMsgBackupTempApi.getTroopFileItemFileName(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile));
+              else if ((localException.msgSubType == 11) && (!FileUtils.fileExistsAndNotEmpty(localIMsgBackupTempApi.getLocalFilePath2(this.c, localMessageForTroopFile.frienduin, localMessageForTroopFile)))) {
+                paramList = a((String)localObject, localIMsgBackupTempApi.getTroopFileItemFileName(this.c, localMessageForTroopFile));
               }
             }
           }
         }
         if (FileUtils.fileExistsAndNotEmpty(paramList)) {
-          localIMsgBackupTempApi.saveItemRawPath(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile, paramList);
+          localIMsgBackupTempApi.saveItemRawPath(this.c, localMessageForTroopFile, paramList);
         }
         if (FileUtils.fileExistsAndNotEmpty(str)) {
-          localIMsgBackupTempApi.saveItemLargeThrumbPath(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMessageForTroopFile, str);
+          localIMsgBackupTempApi.saveItemLargeThrumbPath(this.c, localMessageForTroopFile, str);
         }
       }
       return true;
@@ -116,7 +116,7 @@ public class TroopFileMsgBackupHandler
     return false;
   }
   
-  private void c(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  private void d(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
     if (paramMessageRecord == null)
     {
@@ -131,7 +131,7 @@ public class TroopFileMsgBackupHandler
       localMessageForTroopFile = (MessageForTroopFile)paramMessageRecord;
     }
     long l = Long.parseLong(localMessageForTroopFile.frienduin);
-    if ((localIMsgBackupTempApi.isNeedHandleCreateTroopFileInfo(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, l, localMessageForTroopFile)) && (paramList != null) && (!paramList.isEmpty()))
+    if ((localIMsgBackupTempApi.isNeedHandleCreateTroopFileInfo(this.c, l, localMessageForTroopFile)) && (paramList != null) && (!paramList.isEmpty()))
     {
       Iterator localIterator = paramList.iterator();
       String str1 = "";
@@ -139,19 +139,19 @@ public class TroopFileMsgBackupHandler
       while (localIterator.hasNext())
       {
         MsgBackupResEntity localMsgBackupResEntity = (MsgBackupResEntity)localIterator.next();
-        if ((a(localMsgBackupResEntity)) && (b(paramMessageRecord, localMsgBackupResEntity)))
+        if ((b(localMsgBackupResEntity)) && (b(paramMessageRecord, localMsgBackupResEntity)))
         {
           String str2 = a(localMsgBackupResEntity);
           if (!TextUtils.isEmpty(str2)) {
             if (localMsgBackupResEntity.msgSubType == 12) {
-              paramList = a(l, str2, UUID.nameUUIDFromBytes(localIMsgBackupTempApi.getFileIdByte(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, l, localMessageForTroopFile)).toString(), 640);
+              paramList = a(l, str2, UUID.nameUUIDFromBytes(localIMsgBackupTempApi.getFileIdByte(this.c, l, localMessageForTroopFile)).toString(), 640);
             } else if (localMsgBackupResEntity.msgSubType == 11) {
-              str1 = a(str2, localIMsgBackupTempApi.getCreateFileName(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, l, localMessageForTroopFile));
+              str1 = a(str2, localIMsgBackupTempApi.getCreateFileName(this.c, l, localMessageForTroopFile));
             }
           }
         }
       }
-      localIMsgBackupTempApi.saveTroopFileInfo(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, l, localMessageForTroopFile, str1, paramList);
+      localIMsgBackupTempApi.saveTroopFileInfo(this.c, l, localMessageForTroopFile, str1, paramList);
     }
   }
   
@@ -253,8 +253,8 @@ public class TroopFileMsgBackupHandler
         localJSONObject.put("uint32_img_height", i);
       }
       localObject2 = (IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class);
-      i = ((IMsgBackupTempApi)localObject2).getFileImageWidth(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (MessageForTroopFile)localObject1);
-      int j = ((IMsgBackupTempApi)localObject2).getFileImageHeight(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (MessageForTroopFile)localObject1);
+      i = ((IMsgBackupTempApi)localObject2).getFileImageWidth(this.c, (MessageForTroopFile)localObject1);
+      int j = ((IMsgBackupTempApi)localObject2).getFileImageHeight(this.c, (MessageForTroopFile)localObject1);
       if ((i > 0) && (j > 0))
       {
         localJSONObject.put("uint32_img_width", i);
@@ -300,7 +300,7 @@ public class TroopFileMsgBackupHandler
         localJSONObject.put("uint32_bus_id", i);
       }
       if (!paramMessageRecord.isMultiMsg) {
-        break label886;
+        break label887;
       }
     }
     catch (JSONException paramMessageRecord)
@@ -342,7 +342,7 @@ public class TroopFileMsgBackupHandler
         QLog.i("<QFile_Backup>", 1, localStringBuilder.toString());
       }
       localObject1 = ((IMsgBackupTempApi)localObject2).getTroopThumbnailFile(l, (String)localObject1);
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
     }
     else if (paramMsgBackupResEntity.msgSubType == 11)
     {
@@ -406,17 +406,17 @@ public class TroopFileMsgBackupHandler
       QLog.i("<QFile_Backup>", 1, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = (IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class);
-    if (!((IMsgBackupTempApi)localObject1).isNeedHandle(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord))
+    if (!((IMsgBackupTempApi)localObject1).isNeedHandle(this.c, paramMessageRecord))
     {
       QLog.e("TroopFileMsgBackupHandler<QFile>", 1, "handleExport: get TroopFileStatusInfo failed.");
       return;
     }
-    int i = ((IMsgBackupTempApi)localObject1).getFileType(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord);
+    int i = ((IMsgBackupTempApi)localObject1).getFileType(this.c, paramMessageRecord);
     Object localObject2;
     long l;
     if ((i == 0) || (i == 2))
     {
-      localObject2 = ((IMsgBackupTempApi)localObject1).getLargeThumbPath(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord);
+      localObject2 = ((IMsgBackupTempApi)localObject1).getLargeThumbPath(this.c, paramMessageRecord);
       if (FileUtils.fileExistsAndNotEmpty((String)localObject2))
       {
         localObject2 = a(paramMessageRecord, 12, (String)localObject2);
@@ -429,7 +429,7 @@ public class TroopFileMsgBackupHandler
         a("TroopFileMsgBackupHandler<QFile>", "handleExport", String.valueOf(l), localStringBuilder.toString());
       }
     }
-    localObject1 = ((IMsgBackupTempApi)localObject1).getLocalFilePath(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord);
+    localObject1 = ((IMsgBackupTempApi)localObject1).getLocalFilePath(this.c, paramMessageRecord);
     if (FileUtils.fileExistsAndNotEmpty((String)localObject1))
     {
       localObject1 = a(paramMessageRecord, 11, (String)localObject1);
@@ -487,10 +487,10 @@ public class TroopFileMsgBackupHandler
     localStringBuilder.append((String)localObject2);
     localStringBuilder.append("]");
     QLog.i("<QFile_Backup>", 1, localStringBuilder.toString());
-    localObject2 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    localObject2 = this.c;
     paramMessageRecord = (MessageForTroopFile)paramMessageRecord;
     localObject2 = localIMsgBackupTempApi.getLargeThumbPath2((BaseQQAppInterface)localObject2, (String)localObject1, paramMessageRecord);
-    paramMessageRecord = localIMsgBackupTempApi.getLocalFilePath2(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (String)localObject1, paramMessageRecord);
+    paramMessageRecord = localIMsgBackupTempApi.getLocalFilePath2(this.c, (String)localObject1, paramMessageRecord);
     boolean bool;
     if (paramMsgBackupResEntity.msgSubType == 12)
     {
@@ -551,13 +551,13 @@ public class TroopFileMsgBackupHandler
         }
       }
     }
-    if (a(paramMessageRecord, paramList))
+    if (c(paramMessageRecord, paramList))
     {
       a("TroopFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "update troop file record.");
     }
     else
     {
-      c(paramMessageRecord, paramList);
+      d(paramMessageRecord, paramList);
       a("TroopFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "create troop file record.");
     }
     a(paramMessageRecord);
@@ -565,7 +565,7 @@ public class TroopFileMsgBackupHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.msgbackup.TroopFileMsgBackupHandler
  * JD-Core Version:    0.7.0.1
  */

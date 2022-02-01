@@ -58,7 +58,7 @@ public class ProfileBaseInfoView
     }
     boolean bool1 = false;
     label58:
-    if (QQTheme.f()) {
+    if (QQTheme.isNowSimpleUI()) {
       bool1 = false;
     }
     boolean bool2 = bool1;
@@ -91,7 +91,7 @@ public class ProfileBaseInfoView
       ((LinearLayout.LayoutParams)localObject2).bottomMargin = ((int)(f * 6.0F));
       paramView = new View(getContext());
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      paramView.setBackgroundResource(2130850419);
+      paramView.setBackgroundResource(2130852210);
       this.mMoreInfoMap.put(localObject1, paramView);
       label280:
       addView(paramView);
@@ -103,7 +103,7 @@ public class ProfileBaseInfoView
   {
     paramContext = paramContext.getResources();
     this.mDensity = paramContext.getDisplayMetrics().density;
-    this.mLeftSpace = (paramContext.getDimensionPixelSize(2131297246) + paramContext.getDimensionPixelSize(2131297597) + paramContext.getDimensionPixelSize(2131297598));
+    this.mLeftSpace = (paramContext.getDimensionPixelSize(2131297677) + paramContext.getDimensionPixelSize(2131298261) + paramContext.getDimensionPixelSize(2131298262));
   }
   
   private boolean isDefaultProfile(ProfileCardInfo paramProfileCardInfo)
@@ -181,7 +181,7 @@ public class ProfileBaseInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.ProfileBaseInfoView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
+import android.view.View;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.kandian.biz.pts.util.PTSImageUtil;
@@ -15,13 +16,11 @@ import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.PTSNodeStyle;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
-import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class PTSNodeImage
-  extends PTSNodeVirtual<PTSImageView>
+  extends PTSNodeVirtual
 {
   public static final String TAG = "PTSNodeImage";
   private float blurRadius = 0.0F;
@@ -33,7 +32,7 @@ public class PTSNodeImage
   
   private PTSNodeImage(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "img", null);
   }
   
   private String addSmartCrop(String paramString)
@@ -89,11 +88,7 @@ public class PTSNodeImage
   
   private void setImageSrc(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("image-");
-    localStringBuilder.append(paramString);
-    PTSTimeCostUtil.start(localStringBuilder.toString());
-    ((PTSImageView)getView()).setImageDrawable(((PTSImageView)getView()).getResources().getDrawable(2130841770));
+    ((PTSImageView)getView()).setImageDrawable(getView().getResources().getDrawable(2130842687));
     if (!TextUtils.isEmpty(paramString))
     {
       if (PTSImageUtil.a(paramString)) {
@@ -107,14 +102,13 @@ public class PTSNodeImage
     else {
       QLog.i("PTSNodeImage", 1, "[setImageSrc] imageUrl is null.");
     }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[setImageSrc], imageUrl = ");
-    localStringBuilder.append(paramString);
-    QLog.i("PTSNodeImage", 1, localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("image-");
-    localStringBuilder.append(paramString);
-    PTSTimeCostUtil.end(localStringBuilder.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[setImageSrc], imageUrl = ");
+      localStringBuilder.append(paramString);
+      QLog.i("PTSNodeImage", 1, localStringBuilder.toString());
+    }
   }
   
   private void setNetWorkImage(String paramString)
@@ -125,11 +119,11 @@ public class PTSNodeImage
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(", blurRadius = ");
     ((StringBuilder)localObject).append(this.blurRadius);
-    PTSLog.i("PTSNodeImage", ((StringBuilder)localObject).toString());
+    QLog.i("PTSNodeImage", 1, ((StringBuilder)localObject).toString());
     if (this.blurRadius > 0.0F)
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = ((PTSImageView)getView()).getResources().getDrawable(2130841770);
+      Drawable localDrawable = getView().getResources().getDrawable(2130842687);
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
       paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
@@ -198,7 +192,7 @@ public class PTSNodeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSNodeImage
  * JD-Core Version:    0.7.0.1
  */

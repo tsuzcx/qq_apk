@@ -14,6 +14,8 @@ import com.tencent.mobileqq.activity.recent.data.RecentMsgBoxItem;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloBoxItem;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.GameMsgBoxItemBuilder;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.data.RecentGameMsgBoxItem;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.confess.ConfessItemBuilder;
 import com.tencent.mobileqq.matchchat.MatchEmptyItemBuilder;
@@ -22,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class RecentItemBuilderFactory
 {
-  protected static final int[] a;
+  protected static final int[] a = { 0 };
   protected static final int[] b = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   protected static final int[] c = { 0, 1, 2, 3 };
   protected static final int[] d = { 0, 1 };
@@ -32,114 +34,182 @@ public class RecentItemBuilderFactory
   protected static final int[] h = { 0, 1, 2 };
   protected static final int[] i = { 0, 1, 2 };
   protected static final int[] j = { 0, 1, 2 };
-  protected static final int[] k = { 0, 1, 2, 3 };
+  protected static final int[] k = { 0, 1, 2 };
   protected static final int[] l = { 0, 1, 2, 3 };
-  protected int a;
-  protected RecentAdapter a;
-  protected RecentItemBaseBuilder[] a;
-  protected int[] m;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0 };
-  }
+  protected static final int[] m = { 0, 1, 2, 3 };
+  protected static final int[] n = { 0, 1, 2 };
+  protected int o;
+  protected int[] p;
+  protected RecentAdapter q;
+  protected RecentItemBaseBuilder[] r;
   
   public RecentItemBuilderFactory(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramInt = this.jdField_a_of_type_Int;
+    this.o = paramInt;
+    paramInt = this.o;
     if (paramInt == 0) {
-      this.m = b;
+      this.p = b;
     } else if (paramInt == 1) {
-      this.m = e;
+      this.p = e;
     } else if (paramInt == 5) {
-      this.m = i;
+      this.p = j;
     } else if (paramInt == 6) {
-      this.m = c;
+      this.p = c;
     } else if (paramInt == 7) {
-      this.m = d;
+      this.p = d;
     } else if (paramInt == 9) {
-      this.m = j;
+      this.p = k;
     } else if (paramInt == 11) {
-      this.m = k;
+      this.p = l;
     } else if (paramInt == 12) {
-      this.m = h;
+      this.p = i;
     } else if (paramInt == 13) {
-      this.m = l;
+      this.p = m;
     } else if (paramInt == 14) {
-      this.m = f;
+      this.p = f;
     } else if (paramInt == 15) {
-      this.m = g;
+      this.p = g;
+    } else if (paramInt == 16) {
+      this.p = n;
+    } else if (paramInt == 17) {
+      this.p = h;
     } else {
-      this.m = jdField_a_of_type_ArrayOfInt;
+      this.p = a;
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder = new RecentItemBaseBuilder[this.m.length];
+    this.r = new RecentItemBaseBuilder[this.p.length];
   }
   
   private int a(Object paramObject, int paramInt)
   {
     if ((paramObject instanceof RecentBaseData)) {
-      return this.m[1];
+      return this.p[1];
     }
-    int n = paramInt;
+    int i1 = paramInt;
     if ((paramObject instanceof Integer))
     {
-      n = paramInt;
-      if (((Integer)paramObject).intValue() == 23) {
-        n = this.m[0];
+      i1 = paramInt;
+      if (((Integer)paramObject).intValue() == 24) {
+        i1 = this.p[0];
       }
     }
-    return n;
+    return i1;
   }
   
   private RecentItemBaseBuilder a(int paramInt)
   {
-    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
     if (paramInt == 1)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new RecentC2CItemBuilder();
+        arrayOfRecentItemBaseBuilder[1] = new RecentRIJPrivateChatItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
-    }
-    if (paramInt == 2)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[2] == null) {
-        arrayOfRecentItemBaseBuilder[2] = new RecentC2CItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
+      return this.r[1];
     }
     return null;
   }
   
   private int b(Object paramObject, int paramInt)
   {
+    if ((paramObject instanceof RecentBaseData)) {
+      return this.p[1];
+    }
+    int i1 = paramInt;
+    if ((paramObject instanceof Integer))
+    {
+      i1 = paramInt;
+      if (((Integer)paramObject).intValue() == 23) {
+        i1 = this.p[0];
+      }
+    }
+    return i1;
+  }
+  
+  private RecentItemBaseBuilder b(int paramInt)
+  {
+    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
+    if (paramInt == 1)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[1] == null) {
+        arrayOfRecentItemBaseBuilder[1] = new RecentC2CItemBuilder();
+      }
+      return this.r[1];
+    }
+    if (paramInt == 2)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[2] == null) {
+        arrayOfRecentItemBaseBuilder[2] = new RecentC2CItemBuilder();
+      }
+      return this.r[2];
+    }
+    return null;
+  }
+  
+  private int c(Object paramObject, int paramInt)
+  {
+    if ((paramObject instanceof RecentGameMsgBoxItem)) {
+      return this.p[2];
+    }
+    int i1 = paramInt;
+    if ((paramObject instanceof Integer))
+    {
+      i1 = paramInt;
+      if (((Integer)paramObject).intValue() == 0) {
+        i1 = this.p[1];
+      }
+    }
+    return i1;
+  }
+  
+  private RecentItemBaseBuilder c(int paramInt)
+  {
+    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
+    if (paramInt == 2)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[2] == null) {
+        arrayOfRecentItemBaseBuilder[2] = new GameMsgBoxItemBuilder();
+      }
+      return this.r[2];
+    }
+    if (paramInt == 1)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[1] == null) {
+        arrayOfRecentItemBaseBuilder[1] = new RecentEmptyItemBuilder();
+      }
+      return this.r[1];
+    }
+    return null;
+  }
+  
+  private int d(Object paramObject, int paramInt)
+  {
     if ((paramObject instanceof RecentMatchChatListItem)) {
-      return this.m[1];
+      return this.p[1];
     }
     boolean bool = paramObject instanceof Integer;
     if ((bool) && (((Integer)paramObject).intValue() == 20)) {
-      return this.m[2];
+      return this.p[2];
     }
-    int n = paramInt;
+    int i1 = paramInt;
     if (bool)
     {
-      n = paramInt;
+      i1 = paramInt;
       if (((Integer)paramObject).intValue() == 21) {
-        n = this.m[3];
+        i1 = this.p[3];
       }
     }
-    return n;
+    return i1;
   }
   
   @Nullable
-  private RecentItemBaseBuilder b(int paramInt)
+  private RecentItemBaseBuilder d(int paramInt)
   {
     if (paramInt > 0)
     {
-      Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      Object localObject1 = this.r;
       if (paramInt < localObject1.length)
       {
         localObject1 = localObject1[paramInt];
@@ -156,7 +226,7 @@ public class RecentItemBuilderFactory
         else {
           localObject1 = new RecentEfficientItemBuilder();
         }
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[paramInt] = localObject1;
+        this.r[paramInt] = localObject1;
         return localObject1;
       }
     }
@@ -164,32 +234,32 @@ public class RecentItemBuilderFactory
     return localObject2;
   }
   
-  private int c(Object paramObject, int paramInt)
+  private int e(Object paramObject, int paramInt)
   {
     if ((paramObject instanceof RecentItemConfessMsg)) {
-      return this.m[1];
+      return this.p[1];
     }
     boolean bool = paramObject instanceof Integer;
     if ((bool) && (((Integer)paramObject).intValue() == 16)) {
-      return this.m[2];
+      return this.p[2];
     }
-    int n = paramInt;
+    int i1 = paramInt;
     if (bool)
     {
-      n = paramInt;
+      i1 = paramInt;
       if (((Integer)paramObject).intValue() == 17) {
-        n = this.m[3];
+        i1 = this.p[3];
       }
     }
-    return n;
+    return i1;
   }
   
   @Nullable
-  private RecentItemBaseBuilder c(int paramInt)
+  private RecentItemBaseBuilder e(int paramInt)
   {
     if (paramInt > 0)
     {
-      Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      Object localObject1 = this.r;
       if (paramInt < localObject1.length)
       {
         localObject1 = localObject1[paramInt];
@@ -206,7 +276,7 @@ public class RecentItemBuilderFactory
         else {
           localObject1 = new RecentConfessItemBuilder();
         }
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[paramInt] = localObject1;
+        this.r[paramInt] = localObject1;
         return localObject1;
       }
     }
@@ -214,126 +284,43 @@ public class RecentItemBuilderFactory
     return localObject2;
   }
   
-  private int d(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof String)) {
-      return this.m[0];
-    }
-    if ((paramObject instanceof RecentSayHelloListItem)) {
-      paramInt = this.m[1];
-    }
-    return paramInt;
-  }
-  
-  private RecentItemBaseBuilder d(int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new SayHelloListItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
-    }
-    return null;
-  }
-  
-  private int e(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof String)) {
-      return this.m[0];
-    }
-    if ((paramObject instanceof RecentSayHelloBoxItem)) {
-      return this.m[2];
-    }
-    if ((paramObject instanceof RecentItemNearbyLiveTipData)) {
-      return this.m[3];
-    }
-    if ((paramObject instanceof RecentMsgBoxItem)) {
-      paramInt = this.m[1];
-    }
-    return paramInt;
-  }
-  
-  private RecentItemBaseBuilder e(int paramInt)
-  {
-    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
-    if (paramInt == 2)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[2] == null) {
-        arrayOfRecentItemBaseBuilder[2] = new SayHelloBoxItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
-    }
-    if (paramInt == 1)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new RecentDefaultItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
-    }
-    if (paramInt == 3)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[3] == null) {
-        arrayOfRecentItemBaseBuilder[3] = new RecentLiveTipItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[3];
-    }
-    return null;
-  }
-  
   private int f(Object paramObject, int paramInt)
   {
-    if ((paramObject instanceof Integer)) {
-      return this.m[1];
+    if ((paramObject instanceof String)) {
+      return this.p[0];
     }
-    if ((paramObject instanceof RecentBaseData)) {
-      paramInt = this.m[2];
+    if ((paramObject instanceof RecentSayHelloListItem)) {
+      paramInt = this.p[1];
     }
     return paramInt;
   }
   
   private RecentItemBaseBuilder f(int paramInt)
   {
-    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
     if (paramInt == 1)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new RecentBlankItemBuilder();
+        arrayOfRecentItemBaseBuilder[1] = new SayHelloListItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
-    }
-    if (paramInt == 2)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[2] == null) {
-        arrayOfRecentItemBaseBuilder[2] = new RecentDefaultItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
+      return this.r[1];
     }
     return null;
   }
   
   private int g(Object paramObject, int paramInt)
   {
-    if ((paramObject instanceof Integer))
-    {
-      paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 11) {}
-      for (paramInt = this.m[1];; paramInt = this.m[1])
-      {
-        return paramInt;
-        if (paramObject.intValue() != 12) {
-          break;
-        }
-      }
+    if ((paramObject instanceof String)) {
+      return this.p[0];
     }
-    if ((paramObject instanceof RecentBaseData)) {
-      paramInt = this.m[2];
+    if ((paramObject instanceof RecentSayHelloBoxItem)) {
+      return this.p[2];
+    }
+    if ((paramObject instanceof RecentItemNearbyLiveTipData)) {
+      return this.p[3];
+    }
+    if ((paramObject instanceof RecentMsgBoxItem)) {
+      paramInt = this.p[1];
     }
     return paramInt;
   }
@@ -341,41 +328,40 @@ public class RecentItemBuilderFactory
   private RecentItemBaseBuilder g(int paramInt)
   {
     RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
-    if (paramInt == 1)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new TroopAssistantEmptyItemBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
-    }
     if (paramInt == 2)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[2] == null) {
-        arrayOfRecentItemBaseBuilder[2] = new RecentDefaultItemBuilder();
+        arrayOfRecentItemBaseBuilder[2] = new SayHelloBoxItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
+      return this.r[2];
+    }
+    if (paramInt == 1)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[1] == null) {
+        arrayOfRecentItemBaseBuilder[1] = new RecentDefaultItemBuilder();
+      }
+      return this.r[1];
+    }
+    if (paramInt == 3)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[3] == null) {
+        arrayOfRecentItemBaseBuilder[3] = new RecentLiveTipItemBuilder();
+      }
+      return this.r[3];
     }
     return null;
   }
   
   private int h(Object paramObject, int paramInt)
   {
-    if ((paramObject instanceof Integer))
-    {
-      paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 18) {}
-      for (paramInt = this.m[1];; paramInt = this.m[1])
-      {
-        return paramInt;
-        if (paramObject.intValue() != 19) {
-          break;
-        }
-      }
+    if ((paramObject instanceof Integer)) {
+      return this.p[1];
     }
     if ((paramObject instanceof RecentBaseData)) {
-      paramInt = this.m[2];
+      paramInt = this.p[2];
     }
     return paramInt;
   }
@@ -385,19 +371,19 @@ public class RecentItemBuilderFactory
     RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
     if (paramInt == 1)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new TroopAssistantEmptyItemBuilder();
+        arrayOfRecentItemBaseBuilder[1] = new RecentBlankItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
+      return this.r[1];
     }
     if (paramInt == 2)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[2] == null) {
         arrayOfRecentItemBaseBuilder[2] = new RecentDefaultItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
+      return this.r[2];
     }
     return null;
   }
@@ -407,27 +393,17 @@ public class RecentItemBuilderFactory
     if ((paramObject instanceof Integer))
     {
       paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 3) {
-        paramInt = this.m[3];
-      }
-      for (;;)
+      if (paramObject.intValue() == 11) {}
+      for (paramInt = this.p[1];; paramInt = this.p[1])
       {
         return paramInt;
-        if (paramObject.intValue() == 4)
-        {
-          paramInt = this.m[1];
-        }
-        else
-        {
-          if (paramObject.intValue() != 5) {
-            break;
-          }
-          paramInt = this.m[1];
+        if (paramObject.intValue() != 12) {
+          break;
         }
       }
     }
     if ((paramObject instanceof RecentBaseData)) {
-      paramInt = this.m[2];
+      paramInt = this.p[2];
     }
     return paramInt;
   }
@@ -437,48 +413,61 @@ public class RecentItemBuilderFactory
     RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
     if (paramInt == 1)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[1] == null) {
         arrayOfRecentItemBaseBuilder[1] = new TroopAssistantEmptyItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
+      return this.r[1];
     }
     if (paramInt == 2)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[2] == null) {
         arrayOfRecentItemBaseBuilder[2] = new RecentDefaultItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
-    }
-    if (paramInt == 3)
-    {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (arrayOfRecentItemBaseBuilder[3] == null) {
-        arrayOfRecentItemBaseBuilder[3] = new TroopAssistantEducationBuilder();
-      }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[3];
+      return this.r[2];
     }
     return null;
   }
   
   private int j(Object paramObject, int paramInt)
   {
+    if ((paramObject instanceof Integer))
+    {
+      paramObject = (Integer)paramObject;
+      if (paramObject.intValue() == 18) {}
+      for (paramInt = this.p[1];; paramInt = this.p[1])
+      {
+        return paramInt;
+        if (paramObject.intValue() != 19) {
+          break;
+        }
+      }
+    }
     if ((paramObject instanceof RecentBaseData)) {
-      paramInt = this.m[1];
+      paramInt = this.p[2];
     }
     return paramInt;
   }
   
   private RecentItemBaseBuilder j(int paramInt)
   {
+    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
     if (paramInt == 1)
     {
-      RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new RecentC2CItemBuilder();
+        arrayOfRecentItemBaseBuilder[1] = new TroopAssistantEmptyItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
+      return this.r[1];
+    }
+    if (paramInt == 2)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[2] == null) {
+        arrayOfRecentItemBaseBuilder[2] = new RecentDefaultItemBuilder();
+      }
+      return this.r[2];
     }
     return null;
   }
@@ -487,43 +476,28 @@ public class RecentItemBuilderFactory
   {
     if ((paramObject instanceof Integer))
     {
-      if (((Integer)paramObject).intValue() == 0) {
-        return this.m[1];
+      paramObject = (Integer)paramObject;
+      if (paramObject.intValue() == 3) {
+        paramInt = this.p[3];
+      }
+      for (;;)
+      {
+        return paramInt;
+        if (paramObject.intValue() == 4)
+        {
+          paramInt = this.p[1];
+        }
+        else
+        {
+          if (paramObject.intValue() != 5) {
+            break;
+          }
+          paramInt = this.p[1];
+        }
       }
     }
-    else
-    {
-      if ((paramObject instanceof RecentUserBaseData))
-      {
-        if ((paramObject instanceof RecentItemPublicAccountADFolderData)) {
-          return this.m[3];
-        }
-        if ((paramObject instanceof RecentItemImaxADData)) {
-          return this.m[4];
-        }
-        if ((paramObject instanceof RecentItemChatMsgData)) {
-          return this.m[5];
-        }
-        if ((paramObject instanceof RecentItemMayKnowFriendData)) {
-          return this.m[6];
-        }
-        if ((paramObject instanceof RecentItemMayKnowFriendVerticalListData)) {
-          return this.m[7];
-        }
-        if ((paramObject instanceof RecentItemAppletsFolderData)) {
-          return this.m[8];
-        }
-        if ((paramObject instanceof RecentItemContactsGuideData)) {
-          return this.m[9];
-        }
-        if ((paramObject instanceof RecentItemRecommendTroopData)) {
-          return this.m[10];
-        }
-        return this.m[2];
-      }
-      if ((paramObject instanceof String)) {
-        paramInt = this.m[0];
-      }
+    if ((paramObject instanceof RecentBaseData)) {
+      paramInt = this.p[2];
     }
     return paramInt;
   }
@@ -533,247 +507,353 @@ public class RecentItemBuilderFactory
     RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
     if (paramInt == 1)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[1] == null) {
-        arrayOfRecentItemBaseBuilder[1] = new RecentEmptyItemBuilder();
+        arrayOfRecentItemBaseBuilder[1] = new TroopAssistantEmptyItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[1];
+      return this.r[1];
     }
     if (paramInt == 2)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[2] == null) {
-        arrayOfRecentItemBaseBuilder[2] = new RecentEfficientItemBuilder();
+        arrayOfRecentItemBaseBuilder[2] = new RecentDefaultItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[2];
+      return this.r[2];
     }
     if (paramInt == 3)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[3] == null) {
+        arrayOfRecentItemBaseBuilder[3] = new TroopAssistantEducationBuilder();
+      }
+      return this.r[3];
+    }
+    return null;
+  }
+  
+  private int l(Object paramObject, int paramInt)
+  {
+    if ((paramObject instanceof RecentBaseData)) {
+      paramInt = this.p[1];
+    }
+    return paramInt;
+  }
+  
+  private RecentItemBaseBuilder l(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[1] == null) {
+        arrayOfRecentItemBaseBuilder[1] = new RecentC2CItemBuilder();
+      }
+      return this.r[1];
+    }
+    return null;
+  }
+  
+  private int m(Object paramObject, int paramInt)
+  {
+    if ((paramObject instanceof Integer))
+    {
+      if (((Integer)paramObject).intValue() == 0) {
+        return this.p[1];
+      }
+    }
+    else
+    {
+      if ((paramObject instanceof RecentUserBaseData))
+      {
+        if ((paramObject instanceof RecentItemPublicAccountADFolderData)) {
+          return this.p[3];
+        }
+        if ((paramObject instanceof RecentItemImaxADData)) {
+          return this.p[4];
+        }
+        if ((paramObject instanceof RecentItemChatMsgData)) {
+          return this.p[5];
+        }
+        if ((paramObject instanceof RecentItemMayKnowFriendData)) {
+          return this.p[6];
+        }
+        if ((paramObject instanceof RecentItemMayKnowFriendVerticalListData)) {
+          return this.p[7];
+        }
+        if ((paramObject instanceof RecentItemAppletsFolderData)) {
+          return this.p[8];
+        }
+        if ((paramObject instanceof RecentItemContactsGuideData)) {
+          return this.p[9];
+        }
+        if ((paramObject instanceof RecentItemRecommendTroopData)) {
+          return this.p[10];
+        }
+        return this.p[2];
+      }
+      if ((paramObject instanceof String)) {
+        paramInt = this.p[0];
+      }
+    }
+    return paramInt;
+  }
+  
+  private RecentItemBaseBuilder m(int paramInt)
+  {
+    RecentItemBaseBuilder[] arrayOfRecentItemBaseBuilder;
+    if (paramInt == 1)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[1] == null) {
+        arrayOfRecentItemBaseBuilder[1] = new RecentEmptyItemBuilder();
+      }
+      return this.r[1];
+    }
+    if (paramInt == 2)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
+      if (arrayOfRecentItemBaseBuilder[2] == null) {
+        arrayOfRecentItemBaseBuilder[2] = new RecentEfficientItemBuilder();
+      }
+      return this.r[2];
+    }
+    if (paramInt == 3)
+    {
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[3] == null) {
         arrayOfRecentItemBaseBuilder[3] = new RecentPublicAccountAdItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[3];
+      return this.r[3];
     }
     if (paramInt == 4)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[4] == null) {
         arrayOfRecentItemBaseBuilder[4] = new RecentImaxAdItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[4];
+      return this.r[4];
     }
     if (paramInt == 5)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[5] == null) {
         arrayOfRecentItemBaseBuilder[5] = new RecentC2CItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[5];
+      return this.r[5];
     }
     if (paramInt == 6)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[6] == null) {
         arrayOfRecentItemBaseBuilder[6] = new RecentMayKnowFriendItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[6];
+      return this.r[6];
     }
     if (paramInt == 7)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[7] == null) {
         arrayOfRecentItemBaseBuilder[7] = new RecentMayKnowFriendVerticalListItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[7];
+      return this.r[7];
     }
     if (paramInt == 8)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[8] == null) {
         arrayOfRecentItemBaseBuilder[8] = new RecentAppletsItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[8];
+      return this.r[8];
     }
     if (paramInt == 9)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[9] == null) {
         arrayOfRecentItemBaseBuilder[9] = new RecentContactsGuideItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[9];
+      return this.r[9];
     }
     if (paramInt == 10)
     {
-      arrayOfRecentItemBaseBuilder = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      arrayOfRecentItemBaseBuilder = this.r;
       if (arrayOfRecentItemBaseBuilder[10] == null) {
         arrayOfRecentItemBaseBuilder[10] = new RecentRecommendTroopItemBuilder();
       }
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[10];
+      return this.r[10];
     }
     return null;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.o;
   }
   
   public int a(Object paramObject)
   {
-    int n = this.m[0];
-    int i1 = this.jdField_a_of_type_Int;
-    if (i1 != 0)
+    int i1 = this.p[0];
+    int i2 = this.o;
+    if (i2 != 0)
     {
-      if (i1 != 1)
+      if (i2 != 1)
       {
-        if (i1 != 5)
+        if (i2 != 5)
         {
-          if (i1 != 6)
+          if (i2 != 6)
           {
-            if (i1 != 7)
+            if (i2 != 7)
             {
-              if (i1 != 9)
+              if (i2 != 9)
               {
-                switch (i1)
+                switch (i2)
                 {
                 default: 
-                  return n;
+                  return i1;
+                case 17: 
+                  return c(paramObject, i1);
+                case 16: 
+                  return a(paramObject, i1);
                 case 15: 
-                  return a(paramObject, n);
+                  return b(paramObject, i1);
                 case 14: 
-                  return j(paramObject, n);
+                  return l(paramObject, i1);
                 case 13: 
-                  return b(paramObject, n);
+                  return d(paramObject, i1);
                 case 12: 
-                  return h(paramObject, n);
+                  return j(paramObject, i1);
                 }
-                return c(paramObject, n);
+                return e(paramObject, i1);
               }
-              return g(paramObject, n);
+              return i(paramObject, i1);
             }
-            return d(paramObject, n);
+            return f(paramObject, i1);
           }
-          return e(paramObject, n);
+          return g(paramObject, i1);
         }
-        return f(paramObject, n);
+        return h(paramObject, i1);
       }
-      return i(paramObject, n);
+      return k(paramObject, i1);
     }
-    return k(paramObject, n);
-  }
-  
-  public RecentItemBaseBuilder a(Object paramObject)
-  {
-    int n = a(paramObject);
-    int i1 = this.jdField_a_of_type_Int;
-    if (i1 != 0)
-    {
-      if (i1 != 1)
-      {
-        if (i1 != 5)
-        {
-          if (i1 != 6)
-          {
-            if (i1 != 7)
-            {
-              if (i1 != 9) {
-                switch (i1)
-                {
-                default: 
-                  paramObject = null;
-                  break;
-                case 15: 
-                  paramObject = a(n);
-                  break;
-                case 14: 
-                  paramObject = j(n);
-                  break;
-                case 13: 
-                  paramObject = b(n);
-                  break;
-                case 12: 
-                  paramObject = h(n);
-                  break;
-                case 11: 
-                  paramObject = c(n);
-                  break;
-                }
-              } else {
-                paramObject = g(n);
-              }
-            }
-            else {
-              paramObject = d(n);
-            }
-          }
-          else {
-            paramObject = e(n);
-          }
-        }
-        else {
-          paramObject = f(n);
-        }
-      }
-      else {
-        paramObject = i(n);
-      }
-    }
-    else {
-      paramObject = k(n);
-    }
-    Object localObject = paramObject;
-    if (paramObject == null)
-    {
-      paramObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
-      if (paramObject[0] == null) {
-        paramObject[0] = new RecentBlankItemBuilder();
-      }
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[0];
-    }
-    ((RecentItemBaseBuilder)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
-    return localObject;
+    return m(paramObject, i1);
   }
   
   public void a(RecentAdapter paramRecentAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = paramRecentAdapter;
+    this.q = paramRecentAdapter;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.o == 0)
     {
-      paramQQAppInterface = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      paramQQAppInterface = this.r;
       if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 6) && ((paramQQAppInterface[6] instanceof RecentMayKnowFriendItemBuilder)))
       {
-        ((RecentMayKnowFriendItemBuilder)paramQQAppInterface[6]).a();
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[6] = null;
+        ((RecentMayKnowFriendItemBuilder)paramQQAppInterface[6]).b();
+        this.r[6] = null;
       }
     }
   }
   
   public int b()
   {
-    return this.m.length;
+    return this.p.length;
+  }
+  
+  public RecentItemBaseBuilder b(Object paramObject)
+  {
+    int i1 = a(paramObject);
+    int i2 = this.o;
+    if (i2 != 0)
+    {
+      if (i2 != 1)
+      {
+        if (i2 != 5)
+        {
+          if (i2 != 6)
+          {
+            if (i2 != 7)
+            {
+              if (i2 != 9) {
+                switch (i2)
+                {
+                default: 
+                  paramObject = null;
+                  break;
+                case 17: 
+                  paramObject = c(i1);
+                  break;
+                case 16: 
+                  paramObject = a(i1);
+                  break;
+                case 15: 
+                  paramObject = b(i1);
+                  break;
+                case 14: 
+                  paramObject = l(i1);
+                  break;
+                case 13: 
+                  paramObject = d(i1);
+                  break;
+                case 12: 
+                  paramObject = j(i1);
+                  break;
+                case 11: 
+                  paramObject = e(i1);
+                  break;
+                }
+              } else {
+                paramObject = i(i1);
+              }
+            }
+            else {
+              paramObject = f(i1);
+            }
+          }
+          else {
+            paramObject = g(i1);
+          }
+        }
+        else {
+          paramObject = h(i1);
+        }
+      }
+      else {
+        paramObject = k(i1);
+      }
+    }
+    else {
+      paramObject = m(i1);
+    }
+    Object localObject = paramObject;
+    if (paramObject == null)
+    {
+      paramObject = this.r;
+      if (paramObject[0] == null) {
+        paramObject[0] = new RecentBlankItemBuilder();
+      }
+      localObject = this.r[0];
+    }
+    ((RecentItemBaseBuilder)localObject).a(this.q);
+    return localObject;
   }
   
   public void b(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.o == 0)
     {
-      paramQQAppInterface = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder;
+      paramQQAppInterface = this.r;
       if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 6) && ((paramQQAppInterface[6] instanceof RecentMayKnowFriendItemBuilder)))
       {
-        ((RecentMayKnowFriendItemBuilder)paramQQAppInterface[6]).a();
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentRecentItemBaseBuilder[6] = null;
+        ((RecentMayKnowFriendItemBuilder)paramQQAppInterface[6]).b();
+        this.r[6] = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentItemBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

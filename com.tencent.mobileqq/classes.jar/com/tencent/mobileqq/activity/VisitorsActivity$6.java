@@ -11,15 +11,15 @@ class VisitorsActivity$6
   
   public void onGlobalLayout()
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.aa.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.j = arrayOfInt[1];
+    this.a.aa.getLocationInWindow(arrayOfInt);
+    this.a.at = arrayOfInt[1];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.6
  * JD-Core Version:    0.7.0.1
  */

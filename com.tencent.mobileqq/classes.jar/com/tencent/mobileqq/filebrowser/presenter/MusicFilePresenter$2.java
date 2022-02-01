@@ -13,9 +13,9 @@ class MusicFilePresenter$2
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService != null))
+    if ((paramBoolean) && (this.a.a != null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a(paramInt);
+      this.a.a.a(paramInt);
       this.a.b(paramInt);
     }
   }
@@ -23,23 +23,23 @@ class MusicFilePresenter$2
   public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
     MusicFilePresenter.a(this.a, false);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.b(this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.b()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.d();
+    if ((this.a.a != null) && (!this.a.a.b(this.a.d.c()))) {
+      this.a.a.g();
     }
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
     MusicFilePresenter.a(this.a, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.e();
+    if (this.a.a != null) {
+      this.a.a.h();
     }
     EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.MusicFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

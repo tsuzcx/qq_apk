@@ -12,12 +12,12 @@ class TeamWorkForceShare$ImageRequestTask$2
   public void run()
   {
     TeamWorkForceShare.a(this.a.this$0).dismiss();
-    QQToast.a(TeamWorkForceShare.a(this.a.this$0), HardCodeUtil.a(2131714612), 0).a();
+    QQToast.makeText(TeamWorkForceShare.c(this.a.this$0), HardCodeUtil.a(2131912121), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask.2
  * JD-Core Version:    0.7.0.1
  */

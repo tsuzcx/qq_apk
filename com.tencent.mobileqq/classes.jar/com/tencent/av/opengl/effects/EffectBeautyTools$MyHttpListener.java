@@ -17,7 +17,7 @@ class EffectBeautyTools$MyHttpListener
     Object localObject = (EffectBeautyTools.SkinColorFilterDesc)paramNetResp.mReq.getUserData();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("download file call back. file = ");
-    localStringBuilder.append(((EffectBeautyTools.SkinColorFilterDesc)localObject).a);
+    localStringBuilder.append(((EffectBeautyTools.SkinColorFilterDesc)localObject).b);
     AVLog.printColorLog("EffectBeautyTools", localStringBuilder.toString());
     if (paramNetResp.mResult != 0)
     {
@@ -27,7 +27,7 @@ class EffectBeautyTools$MyHttpListener
       AVLog.printColorLog("EffectBeautyTools", ((StringBuilder)localObject).toString());
       return;
     }
-    if (!((EffectBeautyTools.SkinColorFilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
+    if (!((EffectBeautyTools.SkinColorFilterDesc)localObject).c.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
     {
       AVLog.printColorLog("EffectBeautyTools", "download file faild : md5 is not match.");
       FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
@@ -36,7 +36,7 @@ class EffectBeautyTools$MyHttpListener
     AVLog.printColorLog("EffectBeautyTools", "download file successed.");
     try
     {
-      localObject = AVPathUtil.l();
+      localObject = AVPathUtil.p();
       FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
       FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
       return;

@@ -21,21 +21,21 @@ class FolderFollowTabFragment$7
     boolean bool = VSNetworkHelper.isProtocolCache(paramString);
     if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowFeedsRsp != null))
     {
-      if ((FolderFollowTabFragment.a(this.a) != null) && (!bool) && (paramStGetFollowFeedsRsp.messStatus.get() != null))
+      if ((FolderFollowTabFragment.d(this.a) != null) && (!bool) && (paramStGetFollowFeedsRsp.messStatus.get() != null))
       {
-        FolderFollowTabFragment.a(this.a).a(paramStGetFollowFeedsRsp.messStatus.noticeCount.get());
-        FolderFollowTabFragment.a(this.a).setJumpWebMessageListUrl(paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
+        FolderFollowTabFragment.d(this.a).a(paramStGetFollowFeedsRsp.messStatus.noticeCount.get());
+        FolderFollowTabFragment.d(this.a).setJumpWebMessageListUrl(paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
       }
       return;
     }
     if (!TextUtils.isEmpty(paramString)) {
-      QQToast.a(FolderFollowTabFragment.a(this.a), 1, paramString, 0).a();
+      QQToast.makeText(FolderFollowTabFragment.c(this.a), 1, paramString, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/b2i" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/o9l" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="-1.0dip" android:src="@drawable/jb3" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/b2j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xxq" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RadioGroup android:id="@id/pu1" android:background="@drawable/gsg" android:paddingLeft="6.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </ScrollView>
+        <Button android:textSize="20.0sp" android:textColor="@color/b2j" android:layout_gravity="bottom|center" android:id="@id/pts" android:background="@color/b2h" android:paddingLeft="15.0dip" android:paddingTop="8.0dip" android:paddingRight="15.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="100.0dip" android:text="SSO环境改变\n点击重启手Q生效" />
+    </FrameLayout>
+</LinearLayout>

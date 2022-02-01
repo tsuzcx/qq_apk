@@ -12,7 +12,7 @@ class JsFlutterApp$1$1
   
   public void a(Error paramError)
   {
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.error(paramError.toString(), null, null);
+    this.b.error(paramError.toString(), null, null);
     JsLoadErrorMsg.a.a(paramError, "");
   }
   
@@ -28,7 +28,7 @@ class JsFlutterApp$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.JsFlutterApp.1.1
  * JD-Core Version:    0.7.0.1
  */

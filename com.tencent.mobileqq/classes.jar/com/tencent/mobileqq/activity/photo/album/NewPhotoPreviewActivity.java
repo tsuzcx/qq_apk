@@ -60,15 +60,15 @@ public class NewPhotoPreviewActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    LiuHaiUtils.a(this);
-    LiuHaiUtils.a(this);
+    LiuHaiUtils.f(this);
+    LiuHaiUtils.f(this);
     if (LiuHaiUtils.c()) {
-      LiuHaiUtils.b(this);
+      LiuHaiUtils.g(this);
     }
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     boolean bool = super.doOnCreate(paramBundle);
-    this.mPhotoPreviewCustomization.a().mRoot.setFitsSystemWindows(true);
+    this.mPhotoPreviewCustomization.s().mRoot.setFitsSystemWindows(true);
     return bool;
   }
   
@@ -119,7 +119,7 @@ public class NewPhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

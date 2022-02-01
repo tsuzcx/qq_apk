@@ -11,12 +11,12 @@ class TroopMemberHistoryFragment$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+    return (paramMotionEvent.getAction() == 2) && ((this.a.k == null) || (this.a.k.getCount() == 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.1
  * JD-Core Version:    0.7.0.1
  */

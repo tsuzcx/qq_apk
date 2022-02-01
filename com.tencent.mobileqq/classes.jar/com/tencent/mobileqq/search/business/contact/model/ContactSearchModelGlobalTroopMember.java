@@ -17,253 +17,253 @@ import com.tencent.qphone.base.util.QLog;
 public class ContactSearchModelGlobalTroopMember
   extends IContactSearchModel
 {
-  protected int a;
-  protected long a;
-  protected TroopInfo a;
   public String a;
-  protected long b;
   protected String b;
   protected String c;
   protected String d;
-  protected String e;
-  protected String f;
+  protected long e;
+  protected int f;
   protected String g;
+  protected String h;
+  protected String i;
+  protected TroopInfo j;
+  protected long k = IContactSearchable.Z;
   
   public ContactSearchModelGlobalTroopMember(AppInterface paramAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     super(paramAppInterface, paramInt, 0L);
-    this.jdField_b_of_type_Long = IContactSearchable.V;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a = paramString1;
+    this.b = paramString2;
     this.c = paramString3;
     this.d = paramString4;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = SearchUtils.a(paramAppInterface, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
-      this.jdField_b_of_type_Long = IContactSearchable.G;
+    this.j = SearchUtils.g(paramAppInterface, this.a);
+    if (this.j.isNewTroop()) {
+      this.k = IContactSearchable.K;
     }
+    f(6);
   }
   
-  private void a()
+  private void s()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0)
+    int m = this.f;
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          this.e = "";
-          this.f = null;
+          this.g = "";
+          this.h = null;
           return;
         }
-        this.e = this.c;
+        this.g = this.c;
         if (!TextUtils.isEmpty(this.d))
         {
-          this.f = this.d;
+          this.h = this.d;
           return;
         }
-        this.f = this.jdField_b_of_type_JavaLangString;
+        this.h = this.b;
         return;
       }
       if (!TextUtils.isEmpty(this.c))
       {
-        this.e = this.c;
-        this.f = this.d;
+        this.g = this.c;
+        this.h = this.d;
         return;
       }
-      this.e = this.d;
-      this.f = this.jdField_b_of_type_JavaLangString;
+      this.g = this.d;
+      this.h = this.b;
       return;
     }
     if (!TextUtils.isEmpty(this.c))
     {
-      this.e = this.c;
-      this.f = this.jdField_b_of_type_JavaLangString;
+      this.g = this.c;
+      this.h = this.b;
       return;
     }
     if (!TextUtils.isEmpty(this.d))
     {
-      this.e = this.d;
-      this.f = this.jdField_b_of_type_JavaLangString;
+      this.g = this.d;
+      this.h = this.b;
       return;
     }
-    this.e = this.jdField_b_of_type_JavaLangString;
-    this.f = null;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  protected long a(String paramString)
-  {
-    this.g = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop() ^ true;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
-      l = IContactSearchable.i;
-    } else {
-      l = IContactSearchable.q;
-    }
-    long l = SearchUtils.a(paramString, this.c, l, false, false, bool);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
-      l = IContactSearchable.h;
-    } else {
-      l = IContactSearchable.l;
-    }
-    l = SearchUtils.a(paramString, this.d, l, false, false, bool);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-    }
-    l = SearchUtils.a(paramString, this.jdField_b_of_type_JavaLangString, IContactSearchable.o, false, true, true);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
-    l = this.jdField_a_of_type_Long;
-    if (l != -9223372036854775808L)
-    {
-      this.jdField_a_of_type_Long = (l + this.jdField_b_of_type_Long);
-      a();
-    }
-    return this.jdField_a_of_type_Long;
+    this.g = this.b;
+    this.h = null;
   }
   
   public CharSequence a()
   {
-    String str = ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getTroopName(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, true);
+    String str = ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getTroopName(this.m, this.a, true);
     if (str != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131702695));
+      localStringBuilder.append(HardCodeUtil.a(2131900685));
       localStringBuilder.append(str);
       return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131702687);
-  }
-  
-  public Object a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return HardCodeUtil.a(2131900677);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    if (SearchUtils.a(this.jdField_b_of_type_Int))
+    if (SearchUtils.b(this.n))
     {
       ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).markEnterAioFromSearch();
-      String str2 = SearchUtils.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
-      Object localObject = SearchUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_JavaLangString);
-      if (!((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isRobotUin(this.jdField_b_of_type_JavaLangString))
+      String str2 = SearchUtils.f(this.m, this.a);
+      Object localObject = SearchUtils.d(this.m, this.b);
+      if (!((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isRobotUin(this.b))
       {
         if ((localObject != null) && (((Friends)localObject).isFriend()))
         {
-          ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).enterChatWin(paramView.getContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_JavaLangString, 0, SearchUtils.a((Friends)localObject), false);
-          SearchUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, SearchUtils.a((Friends)localObject), this.jdField_b_of_type_JavaLangString, "", 0);
+          ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).enterChatWin(paramView.getContext(), this.m, this.b, 0, SearchUtils.a((Friends)localObject), false);
+          SearchUtils.a(this.m, SearchUtils.a((Friends)localObject), this.b, "", 0);
         }
         else
         {
-          ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).enterTroopTmpChatWin(paramView.getContext(), this.jdField_b_of_type_JavaLangString, str2, 1000, b().toString(), false, null, null);
-          String str1 = b().toString();
+          ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).enterTroopTmpChatWin(paramView.getContext(), this.b, str2, 1000, d().toString(), false, null, null);
+          String str1 = d().toString();
           localObject = str1;
           if (TextUtils.isEmpty(str1))
           {
             if (QLog.isColorLevel()) {
-              QLog.d(h, 2, "saveSearchHistory title is null");
+              QLog.d(l, 2, "saveSearchHistory title is null");
             }
-            str1 = c();
+            str1 = m();
             localObject = str1;
             if (TextUtils.isEmpty(str1))
             {
               if (QLog.isColorLevel()) {
-                QLog.d(h, 2, "saveSearchHistory titlestr is null");
+                QLog.d(l, 2, "saveSearchHistory titlestr is null");
               }
-              localObject = d();
+              localObject = n();
             }
           }
-          SearchUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, this.jdField_b_of_type_JavaLangString, str2, 1000);
+          SearchUtils.a(this.m, (String)localObject, this.b, str2, 1000);
         }
       }
       else
       {
-        ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).openRobotProfileCard(paramView.getContext(), null, this.jdField_b_of_type_JavaLangString);
-        SearchUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, b().toString(), this.jdField_b_of_type_JavaLangString, str2, 1000);
+        ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).openRobotProfileCard(paramView.getContext(), null, this.b);
+        SearchUtils.a(this.m, d().toString(), this.b, str2, 1000);
       }
-      ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).saveCurrentSearchKeyword(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.g);
-      SearchUtils.a(this.g, 20, 1, paramView);
-      SearchUtils.a(this.g, 20, paramView, false);
+      ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).saveCurrentSearchKeyword(this.m, this.i);
+      SearchUtils.a(this.i, 20, 1, paramView);
+      SearchUtils.a(this.i, 20, paramView, false);
       SearchUtils.a(this, paramView);
       if (SearchConfigManager.needSeparate) {
-        SearchUtils.a("search", "contact", "contacts", 0, 0, new String[] { SearchUtils.a(this.jdField_b_of_type_Int) });
+        SearchUtils.a("search", "contact", "contacts", 0, 0, new String[] { SearchUtils.a(this.n) });
       }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        SearchUtils.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.g, this.i, (String)a(), e());
+      if (((i() instanceof String)) && (!this.r)) {
+        SearchUtils.b(this.m, this.i, this.p, (String)i(), o());
       }
       if (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isUniteSearchActivity(paramView.getContext()))
       {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i)))
+        if ((this.p != null) && (!TextUtils.isEmpty(this.p)))
         {
-          UniteSearchReportController.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
+          UniteSearchReportController.a(null, 0, this.n, "0X8009D31", 1, 0, null, null);
           return;
         }
-        UniteSearchReportController.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
+        UniteSearchReportController.a(null, 0, this.n, "0X8009D37", 0, 0, null, null);
       }
     }
   }
   
-  public boolean a()
+  public int b()
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.g;
+    return 1;
   }
   
   public String c()
   {
-    return this.e;
+    return this.b;
   }
   
-  public int d()
-  {
-    return 1000;
-  }
-  
-  public CharSequence d()
+  public CharSequence f()
   {
     return null;
   }
   
-  public String d()
+  public String g()
   {
-    return this.f;
+    return this.i;
   }
   
-  public int e()
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public Object i()
+  {
+    return this.b;
+  }
+  
+  public int j()
+  {
+    return 1000;
+  }
+  
+  public String m()
+  {
+    return this.g;
+  }
+  
+  public String n()
+  {
+    return this.h;
+  }
+  
+  protected long n_(String paramString)
+  {
+    this.i = paramString;
+    this.e = -9223372036854775808L;
+    boolean bool = this.j.isNewTroop() ^ true;
+    if (this.j.isNewTroop()) {
+      l = IContactSearchable.m;
+    } else {
+      l = IContactSearchable.u;
+    }
+    long l = SearchUtils.a(paramString, this.c, l, false, false, bool);
+    if (l > this.e)
+    {
+      this.e = l;
+      this.f = 2;
+    }
+    if (this.j.isNewTroop()) {
+      l = IContactSearchable.l;
+    } else {
+      l = IContactSearchable.p;
+    }
+    l = SearchUtils.a(paramString, this.d, l, false, false, bool);
+    if (l > this.e)
+    {
+      this.e = l;
+      this.f = 1;
+    }
+    l = SearchUtils.a(paramString, this.b, IContactSearchable.s, false, true, true);
+    if (l > this.e)
+    {
+      this.e = l;
+      this.f = 0;
+    }
+    l = this.e;
+    if (l != -9223372036854775808L)
+    {
+      this.e = (l + this.k);
+      s();
+    }
+    return this.e;
+  }
+  
+  public int o()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.model.ContactSearchModelGlobalTroopMember
  * JD-Core Version:    0.7.0.1
  */

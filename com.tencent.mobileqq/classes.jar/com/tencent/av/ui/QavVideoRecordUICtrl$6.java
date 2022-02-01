@@ -18,8 +18,8 @@ class QavVideoRecordUICtrl$6
       QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
     }
     this.a.b(3, false);
-    if (QavVideoRecordUICtrl.a(this.a) != null) {
-      QavVideoRecordUICtrl.a(this.a).requestLayout();
+    if (QavVideoRecordUICtrl.f(this.a) != null) {
+      QavVideoRecordUICtrl.f(this.a).requestLayout();
     }
     QavVideoRecordUICtrl.a(this.a, false);
   }
@@ -30,8 +30,8 @@ class QavVideoRecordUICtrl$6
       QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
     }
     this.a.c(3);
-    if (QavVideoRecordUICtrl.a(this.a) != null) {
-      QavVideoRecordUICtrl.a(this.a).requestLayout();
+    if (QavVideoRecordUICtrl.f(this.a) != null) {
+      QavVideoRecordUICtrl.f(this.a).requestLayout();
     }
     QavVideoRecordUICtrl.a(this.a, false);
   }
@@ -43,12 +43,12 @@ class QavVideoRecordUICtrl$6
     if (QLog.isColorLevel()) {
       QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
     }
-    QavVideoRecordUICtrl.a(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.a(this.a).setAlpha(0.0F);
-    QavVideoRecordUICtrl.a(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.a(this.a).setAlpha(0.0F);
-    QavVideoRecordUICtrl.a(this.a).height = -2;
-    QavVideoRecordUICtrl.a(this.a).width = -2;
+    QavVideoRecordUICtrl.d(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.d(this.a).setAlpha(0.0F);
+    QavVideoRecordUICtrl.e(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.e(this.a).setAlpha(0.0F);
+    QavVideoRecordUICtrl.g(this.a).height = -2;
+    QavVideoRecordUICtrl.g(this.a).width = -2;
   }
 }
 

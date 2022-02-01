@@ -19,21 +19,21 @@ class ConditionSearchFriendActivity$8
     }
     if (!paramBoolean1)
     {
-      QQToast.a(this.a, 2131691046, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2131887992, 0).show(this.a.getTitleBarHeight());
       return;
     }
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       ConditionSearchFriendActivity localConditionSearchFriendActivity = this.a;
-      SearchResultActivity.a(localConditionSearchFriendActivity, localConditionSearchFriendActivity.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(), this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c(), this.a.e, this.a.d, paramList, paramBoolean2);
+      SearchResultActivity.a(localConditionSearchFriendActivity, localConditionSearchFriendActivity.b, this.a.d, this.a.e, this.a.c, this.a.a.k(), this.a.a.l(), this.a.g, this.a.f, paramList, paramBoolean2);
       return;
     }
-    QQToast.a(this.a, 2131691049, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, 2131887995, 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity.8
  * JD-Core Version:    0.7.0.1
  */

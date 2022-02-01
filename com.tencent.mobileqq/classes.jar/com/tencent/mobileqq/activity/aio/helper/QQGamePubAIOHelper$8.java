@@ -17,14 +17,14 @@ class QQGamePubAIOHelper$8
       int i;
       try
       {
-        QQGamePubAIOHelper.a().clear();
+        QQGamePubAIOHelper.c().clear();
         i = 0;
         Object localObject;
         if (i < this.a.size())
         {
           localObject = (MessageRecord)this.a.get(i);
-          if (QQGamePubAIOHelper.a((MessageRecord)localObject)) {
-            QQGamePubAIOHelper.a().add((MessageForArkApp)localObject);
+          if (QQGamePubAIOHelper.c((MessageRecord)localObject)) {
+            QQGamePubAIOHelper.c().add((MessageForArkApp)localObject);
           }
         }
         else
@@ -33,11 +33,11 @@ class QQGamePubAIOHelper$8
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("updateMsgListFromDb... sTeamMsgList size- > ");
-            ((StringBuilder)localObject).append(QQGamePubAIOHelper.a().size());
+            ((StringBuilder)localObject).append(QQGamePubAIOHelper.c().size());
             QLog.i("QQGamePub_QQGamePubAIOHelper", 2, ((StringBuilder)localObject).toString());
           }
           QQGamePubAIOHelper.a(this.this$0, true);
-          if (!QQGamePubAIOHelper.a().isEmpty()) {
+          if (!QQGamePubAIOHelper.c().isEmpty()) {
             this.this$0.a(50L, 0);
           }
           return;
@@ -53,7 +53,7 @@ class QQGamePubAIOHelper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.8
  * JD-Core Version:    0.7.0.1
  */

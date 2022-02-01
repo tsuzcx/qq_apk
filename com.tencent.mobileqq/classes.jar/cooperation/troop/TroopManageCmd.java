@@ -51,7 +51,7 @@ public class TroopManageCmd
     if (paramInt == 5) {
       str = ContactUtils.b(this.a, paramBundle.getString("req_troop_uin"), paramBundle.getString("memUin"));
     } else if (paramInt == 6) {
-      str = ContactUtils.e(this.a, paramBundle.getString("memUin"));
+      str = ContactUtils.f(this.a, paramBundle.getString("memUin"));
     }
     localBundle.putString("param_rsp_nick", str);
     return localBundle;
@@ -63,7 +63,7 @@ public class TroopManageCmd
       return null;
     }
     paramBundle = new Bundle();
-    paramBundle.putInt("rep_unique_title_flag", ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).a());
+    paramBundle.putInt("rep_unique_title_flag", ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).b());
     return paramBundle;
   }
   
@@ -125,7 +125,7 @@ public class TroopManageCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopManageCmd
  * JD-Core Version:    0.7.0.1
  */

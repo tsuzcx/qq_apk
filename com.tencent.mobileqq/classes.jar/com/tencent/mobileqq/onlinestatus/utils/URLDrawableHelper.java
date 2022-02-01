@@ -6,15 +6,10 @@ import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class URLDrawableHelper
 {
-  public static final Drawable a;
-  public static final DownloadParams.DecodeHandler a;
-  public static final DownloadParams.DecodeHandler b = new URLDrawableHelper.2();
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
-    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new URLDrawableHelper.1();
-  }
+  public static final Drawable a = new ColorDrawable(0);
+  public static final DownloadParams.DecodeHandler b = new URLDrawableHelper.1();
+  public static final DownloadParams.DecodeHandler c = new URLDrawableHelper.2();
+  public static final DownloadParams.DecodeHandler d = new URLDrawableHelper.3();
   
   public static final int[] a(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -23,7 +18,7 @@ public class URLDrawableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.URLDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

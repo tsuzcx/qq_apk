@@ -27,7 +27,7 @@ public final class member_lbs$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.ReqBody
  * JD-Core Version:    0.7.0.1
  */

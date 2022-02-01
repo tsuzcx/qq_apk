@@ -1,50 +1,47 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.ArrayList;
 import java.util.List;
 
 class KeyframesParser
 {
-  static <T> List<Keyframe<T>> parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition, float paramFloat, ValueParser<T> paramValueParser)
+  static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "k" });
+  
+  static <T> List<Keyframe<T>> parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition, float paramFloat, ValueParser<T> paramValueParser, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramJsonReader.peek() == JsonToken.STRING)
+    if (paramJsonReader.peek() == JsonReader.Token.STRING)
     {
       paramLottieComposition.addWarning("Lottie doesn't support expressions.");
       return localArrayList;
     }
     paramJsonReader.beginObject();
-    while (paramJsonReader.hasNext())
-    {
-      String str = paramJsonReader.nextName();
-      int i = -1;
-      if ((str.hashCode() == 107) && (str.equals("k"))) {
-        i = 0;
-      }
-      if (i != 0)
+    while (paramJsonReader.hasNext()) {
+      if (paramJsonReader.selectName(NAMES) != 0)
       {
         paramJsonReader.skipValue();
       }
-      else if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY)
+      else if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY)
       {
         paramJsonReader.beginArray();
-        if (paramJsonReader.peek() == JsonToken.NUMBER) {
-          localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
+        if (paramJsonReader.peek() == JsonReader.Token.NUMBER) {
+          localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false, paramBoolean));
         } else {
           while (paramJsonReader.hasNext()) {
-            localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, true));
+            localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, true, paramBoolean));
           }
         }
         paramJsonReader.endArray();
       }
       else
       {
-        localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
+        localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false, paramBoolean));
       }
     }
     paramJsonReader.endObject();
@@ -91,7 +88,7 @@ class KeyframesParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.KeyframesParser
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ public class ReadInJoyPrivacyListView
   extends XListView
   implements AbsListView.OnScrollListener
 {
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInJoyPrivacyListView.LoadMoreCallback jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView$LoadMoreCallback;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = true;
+  private TextView a;
+  private RelativeLayout b;
+  private ProgressBar c;
+  private ReadInJoyPrivacyListView.LoadMoreCallback d;
+  private boolean e = false;
+  private boolean f = true;
   
   public ReadInJoyPrivacyListView(Context paramContext)
   {
@@ -47,7 +47,7 @@ public class ReadInJoyPrivacyListView
   
   private void b()
   {
-    setDivider(getResources().getDrawable(2130849715));
+    setDivider(getResources().getDrawable(2130851424));
     setDividerHeight(AIOUtils.b(0.5F, getResources()));
     setOnScrollListener(this);
     c();
@@ -55,23 +55,23 @@ public class ReadInJoyPrivacyListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559979, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373273));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373274));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A6A6A6"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, null, false);
+    this.b = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131626022, this, false));
+    this.c = ((ProgressBar)this.b.findViewById(2131440882));
+    this.a = ((TextView)this.b.findViewById(2131440883));
+    this.a.setTextColor(Color.parseColor("#A6A6A6"));
+    this.a.setTextSize(2, 14.0F);
+    this.c.setVisibility(8);
+    addFooterView(this.b, null, false);
     setFooterDividersEnabled(false);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     e();
-    if (this.b)
+    if (this.f)
     {
-      ReadInJoyPrivacyListView.LoadMoreCallback localLoadMoreCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView$LoadMoreCallback;
+      ReadInJoyPrivacyListView.LoadMoreCallback localLoadMoreCallback = this.d;
       if (localLoadMoreCallback != null) {
         localLoadMoreCallback.b();
       }
@@ -80,53 +80,53 @@ public class ReadInJoyPrivacyListView
   
   private void e()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    if ((localRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null))
+    RelativeLayout localRelativeLayout = this.b;
+    if ((localRelativeLayout != null) && (this.c != null))
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+      if (this.a == null) {
         return;
       }
       localRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717987);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(0);
+      this.a.setText(2131915467);
+      this.a.setOnClickListener(null);
+      this.a.setVisibility(0);
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (this.b != null)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
       QLog.d("ReadInJoyPrivacyListView", 2, "loadMoreFail");
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717986);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ReadInJoyPrivacyListView.1(this));
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.b.setVisibility(0);
+      this.a.setText(2131915466);
+      this.a.setVisibility(0);
+      this.a.setOnClickListener(new ReadInJoyPrivacyListView.1(this));
+      this.c.setVisibility(8);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+    if (this.b == null) {
       c();
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loading complete ");
     localStringBuilder.append(paramBoolean);
     QLog.d("ReadInJoyPrivacyListView", 2, localStringBuilder.toString());
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.setVisibility(8);
+      this.c.setVisibility(8);
     }
     else
     {
-      removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.b = false;
+      removeFooterView(this.b);
+      this.f = false;
     }
     ((BaseAdapter)((HeaderViewListAdapter)getAdapter()).getWrappedAdapter()).notifyDataSetChanged();
   }
@@ -135,19 +135,19 @@ public class ReadInJoyPrivacyListView
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.b) && (!this.jdField_a_of_type_Boolean)) {
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.f) && (!this.e)) {
       d();
     }
   }
   
   public void setLoadMoreCallback(ReadInJoyPrivacyListView.LoadMoreCallback paramLoadMoreCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView$LoadMoreCallback = paramLoadMoreCallback;
+    this.d = paramLoadMoreCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyPrivacyListView
  * JD-Core Version:    0.7.0.1
  */

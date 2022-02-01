@@ -10,13 +10,13 @@ class TroopPobingEffectItemView$3
   
   public void onPlayRepeat(int paramInt)
   {
-    TroopPobingEffectItemView.a(this.a);
-    PobingManager.a(TroopPobingEffectItemView.a(this.a));
+    TroopPobingEffectItemView.b(this.a);
+    PobingManager.b(TroopPobingEffectItemView.c(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingEffectItemView.3
  * JD-Core Version:    0.7.0.1
  */

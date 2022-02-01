@@ -173,7 +173,7 @@ public final class f
         if (localObject2 != null)
         {
           localObject1 = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-          if (!StringUtil.a((String)localObject1))
+          if (!StringUtil.isEmpty((String)localObject1))
           {
             int m;
             if (((BaseActivity)localObject2).checkSelfPermission((String)localObject1) == 0) {
@@ -509,7 +509,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a.a.f
  * JD-Core Version:    0.7.0.1
  */

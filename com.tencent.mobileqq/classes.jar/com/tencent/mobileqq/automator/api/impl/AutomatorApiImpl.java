@@ -12,7 +12,7 @@ public class AutomatorApiImpl
   public int getInActionLoginB()
   {
     if (MobileQQ.sProcessId == 1) {
-      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.a();
+      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.f();
     }
     return 0;
   }
@@ -30,7 +30,7 @@ public class AutomatorApiImpl
   public boolean isInRealActionLoginB()
   {
     if (MobileQQ.sProcessId == 1) {
-      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.b();
+      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.g();
     }
     return false;
   }
@@ -52,7 +52,7 @@ public class AutomatorApiImpl
   public boolean isSyncNormalMsgFinish()
   {
     if (MobileQQ.sProcessId == 1) {
-      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.d();
+      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.i();
     }
     return false;
   }
@@ -60,14 +60,14 @@ public class AutomatorApiImpl
   public boolean isSyncingMsg()
   {
     if (MobileQQ.sProcessId == 1) {
-      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.c() ^ true;
+      return ((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).mAutomator.h() ^ true;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.automator.api.impl.AutomatorApiImpl
  * JD-Core Version:    0.7.0.1
  */

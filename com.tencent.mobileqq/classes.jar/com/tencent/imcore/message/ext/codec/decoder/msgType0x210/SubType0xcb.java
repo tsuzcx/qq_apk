@@ -126,7 +126,7 @@ public class SubType0xcb
         }
         ((QQMessageFacade)localObject2).a(paramMsgInfo, str, bool1);
         ((QQAppInterface)localObject1).getMsgCache().a((int)paramArrayOfByte.time);
-        if (StudyModeManager.a()) {
+        if (StudyModeManager.h()) {
           return;
         }
         if (bool4) {
@@ -167,7 +167,7 @@ public class SubType0xcb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xcb
  * JD-Core Version:    0.7.0.1
  */

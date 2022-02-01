@@ -14,17 +14,17 @@ import org.json.JSONObject;
 class QQComicTabBarView$MyOnClickListener
   implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
-  final WeakReference<QQComicTabBarView> jdField_a_of_type_MqqUtilWeakReference;
-  final boolean jdField_a_of_type_Boolean;
+  final WeakReference<QQComicTabBarView> a;
+  final int b;
+  final boolean c;
+  final List<WebViewTabBarData> d;
   
   QQComicTabBarView$MyOnClickListener(QQComicTabBarView paramQQComicTabBarView, int paramInt, boolean paramBoolean, List<WebViewTabBarData> paramList)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQComicTabBarView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = new WeakReference(paramQQComicTabBarView);
+    this.b = paramInt;
+    this.c = paramBoolean;
+    this.d = paramList;
   }
   
   void a(QQComicTabBarView paramQQComicTabBarView)
@@ -34,7 +34,7 @@ class QQComicTabBarView$MyOnClickListener
       localObject = ((QQBrowserActivity)paramQQComicTabBarView.getContext()).getWebViewProvider();
       if ((localObject instanceof QQComicFragment))
       {
-        localObject = ((QQComicFragment)localObject).a();
+        localObject = ((QQComicFragment)localObject).c();
         if (localObject != null)
         {
           JSONObject localJSONObject = new JSONObject();
@@ -50,41 +50,41 @@ class QQComicTabBarView$MyOnClickListener
         }
       }
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.d;
     if (localObject != null)
     {
       int i = ((List)localObject).size();
-      int j = this.jdField_a_of_type_Int;
+      int j = this.b;
       if (i > j)
       {
-        localObject = ((WebViewTabBarData)this.jdField_a_of_type_JavaUtilList.get(j)).tag;
-        QQComicTabBarView.a(paramQQComicTabBarView.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, true);
+        localObject = ((WebViewTabBarData)this.d.get(j)).tag;
+        QQComicTabBarView.a(paramQQComicTabBarView.h, (String)localObject, true);
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQComicTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    paramView = (QQComicTabBarView)this.a.get();
     if (paramView == null) {
       return;
     }
-    if (this.jdField_a_of_type_Int == paramView.i)
+    if (this.b == paramView.x)
     {
       a(paramView);
       return;
     }
     long l = System.currentTimeMillis();
-    if (l - paramView.jdField_a_of_type_Long < 500L) {
+    if (l - paramView.t < 500L) {
       return;
     }
-    paramView.jdField_a_of_type_Long = l;
-    paramView.setSelectedTab(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    paramView.t = l;
+    paramView.setSelectedTab(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.MyOnClickListener
  * JD-Core Version:    0.7.0.1
  */

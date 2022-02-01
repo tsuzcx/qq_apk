@@ -11,8 +11,6 @@ public abstract interface IJumpControllerInterface
 {
   public abstract Boolean a(JumpActivity paramJumpActivity, Uri paramUri);
   
-  public abstract String a(Context paramContext);
-  
   public abstract void a(Context paramContext);
   
   public abstract void a(Intent paramIntent, JumpActivity paramJumpActivity);
@@ -37,8 +35,6 @@ public abstract interface IJumpControllerInterface
   
   public abstract void a(QBaseActivity paramQBaseActivity);
   
-  public abstract boolean a(JumpActivity paramJumpActivity, Intent paramIntent);
-  
   public abstract boolean a(JumpActivity paramJumpActivity, String paramString);
   
   public abstract void b(Context paramContext);
@@ -47,15 +43,19 @@ public abstract interface IJumpControllerInterface
   
   public abstract void b(JumpActivity paramJumpActivity, Intent paramIntent);
   
-  public abstract boolean b(JumpActivity paramJumpActivity, Intent paramIntent);
+  public abstract String c(Context paramContext);
   
-  public abstract void c(JumpActivity paramJumpActivity, Intent paramIntent);
+  public abstract boolean c(JumpActivity paramJumpActivity, Intent paramIntent);
   
   public abstract void d(JumpActivity paramJumpActivity, Intent paramIntent);
+  
+  public abstract void e(JumpActivity paramJumpActivity, Intent paramIntent);
+  
+  public abstract boolean f(JumpActivity paramJumpActivity, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.jumpcontroller.IJumpControllerInterface
  * JD-Core Version:    0.7.0.1
  */

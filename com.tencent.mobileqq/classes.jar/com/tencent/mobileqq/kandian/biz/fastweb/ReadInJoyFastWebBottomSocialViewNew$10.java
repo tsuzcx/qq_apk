@@ -10,12 +10,12 @@ class ReadInJoyFastWebBottomSocialViewNew$10
   
   public void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    paramReadInJoyObserver.a(ReadInJoyFastWebBottomSocialViewNew.a(this.a), ReadInJoyFastWebBottomSocialViewNew.a(this.a));
+    paramReadInJoyObserver.a(ReadInJoyFastWebBottomSocialViewNew.b(this.a), ReadInJoyFastWebBottomSocialViewNew.g(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialViewNew.10
  * JD-Core Version:    0.7.0.1
  */

@@ -20,53 +20,25 @@ import java.util.Map;
 public class ReadInJoyCGIDynamicChannelAdapter
   extends ReadInJoyDynamicChannelAbstractAdapter<String, DynamicChannelDataModel>
 {
-  private DynamicItemViewHelperCompatCGI a;
+  private DynamicItemViewHelperCompatCGI h = new DynamicItemViewHelperCompatCGI();
   
   public ReadInJoyCGIDynamicChannelAdapter(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
   {
     super(paramActivity, paramRecyclerViewWithHeaderFooter, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI = new DynamicItemViewHelperCompatCGI();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, 0);
-  }
-  
-  public long a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    long l1 = -1L;
-    long l2 = l1;
-    if (localObject != null)
-    {
-      l2 = l1;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-        for (;;)
-        {
-          l2 = l1;
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)((Iterator)localObject).next();
-          if (localDynamicChannelDataModel.recommendSeq > l1) {
-            l1 = localDynamicChannelDataModel.recommendSeq;
-          }
-        }
-      }
-    }
-    return l2;
+    this.h.a(this.b, 0);
   }
   
   public BaseViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI.a(paramInt);
+    boolean bool = this.h.a(paramInt);
     paramViewGroup = null;
     if (bool)
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      localObject = (String)this.e.get(Integer.valueOf(paramInt));
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        paramViewGroup = ProteusSupportUtilBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(), (String)localObject);
-        if ((paramInt == DynamicItemViewHelperCompatBase.b) && (paramViewGroup != null)) {
+        paramViewGroup = ProteusSupportUtilBase.a(this.b, b(), (String)localObject);
+        if ((paramInt == DynamicItemViewHelperCompatBase.c) && (paramViewGroup != null)) {
           paramViewGroup.setVisibility(8);
         }
         QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, viewType = ", Integer.valueOf(paramInt), ", styleID = ", localObject });
@@ -83,7 +55,7 @@ public class ReadInJoyCGIDynamicChannelAdapter
     Object localObject = paramViewGroup;
     if (paramViewGroup == null)
     {
-      localObject = new ProteusItemView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
+      localObject = new ProteusItemView(this.b.getContext());
       QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "proteusItemView is null");
     }
     return new ReadInJoyCGIDynamicChannelAdapter.CustomViewHolder(this, (View)localObject);
@@ -96,12 +68,12 @@ public class ReadInJoyCGIDynamicChannelAdapter
     paramBaseViewHolder = (ProteusItemView)paramBaseViewHolder.itemView;
     if (localDynamicChannelDataModel != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI.a(i))
+      if (this.h.a(i))
       {
-        if (i == DynamicItemViewHelperCompatBase.b) {
+        if (i == DynamicItemViewHelperCompatBase.c) {
           paramBaseViewHolder.setVisibility(8);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI.a(paramBaseViewHolder, i, localDynamicChannelDataModel, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
+          this.h.a(paramBaseViewHolder, i, localDynamicChannelDataModel, this.b, paramInt);
         }
       }
       else {
@@ -112,22 +84,49 @@ public class ReadInJoyCGIDynamicChannelAdapter
     QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, dataModel = ", localDynamicChannelDataModel, ", proteusItemView = ", paramBaseViewHolder, " , position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
   }
   
+  public long e()
+  {
+    Object localObject = this.a;
+    long l1 = -1L;
+    long l2 = l1;
+    if (localObject != null)
+    {
+      l2 = l1;
+      if (this.a.size() > 0)
+      {
+        localObject = this.a.iterator();
+        for (;;)
+        {
+          l2 = l1;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)((Iterator)localObject).next();
+          if (localDynamicChannelDataModel.recommendSeq > l1) {
+            l1 = localDynamicChannelDataModel.recommendSeq;
+          }
+        }
+      }
+    }
+    return l2;
+  }
+  
   public int getItemViewType(int paramInt)
   {
     Object localObject = (DynamicChannelDataModel)a(paramInt);
-    int i = DynamicItemViewHelperCompatBase.b;
+    int i = DynamicItemViewHelperCompatBase.c;
     paramInt = i;
     if (localObject != null)
     {
       paramInt = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI.a((DynamicChannelDataModel)localObject))
+      if (this.h.a((DynamicChannelDataModel)localObject))
       {
-        i = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiDynamicItemViewHelperCompatCGI.a((DynamicChannelDataModel)localObject);
+        i = this.h.b((DynamicChannelDataModel)localObject);
         localObject = ((DynamicChannelDataModel)localObject).styleID;
         paramInt = i;
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject);
+          this.e.put(Integer.valueOf(i), localObject);
           paramInt = i;
         }
       }
@@ -137,7 +136,7 @@ public class ReadInJoyCGIDynamicChannelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelAdapter
  * JD-Core Version:    0.7.0.1
  */

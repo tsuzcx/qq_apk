@@ -32,315 +32,320 @@ import mqq.os.MqqHandler;
 public class AIOContext
   extends BaseAIOContext
 {
-  @NonNull
-  protected BaseChatPie a;
-  protected BaseActivity a;
   protected QQAppInterface a;
+  protected BaseActivity b;
+  @NonNull
+  protected BaseChatPie c;
   
-  public int a()
+  public boolean A()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c();
+    return this.c.br();
   }
   
-  public <T extends View> T a(@IdRes int paramInt)
+  public boolean B()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_c_of_type_AndroidViewViewGroup.findViewById(paramInt);
+    return this.c.am;
   }
   
-  public ViewGroup a()
+  public PanelIconLinearLayout C()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d;
+    return this.c.W;
   }
   
-  public final AIOAnimationConatiner a()
+  public void D()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
+    this.c.aq();
   }
   
-  public BaseChatPie a()
+  public NavigateBarManager E()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
+    return new NavigateBarManager(localBaseChatPie, localBaseChatPie.d, this.c.e, this.c.ah, this.c.bl());
   }
   
-  public CoreHelperProvider a()
+  public int F()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider;
+    return this.c.aE;
   }
   
-  public AIOInput a()
+  public TroopAioTips G()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioCoreInputAIOInput;
+    return (TroopAioTips)this.c.au;
   }
   
-  public MsgList a()
+  public boolean H()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistMsgList;
+    return this.c instanceof TroopChatPie;
   }
   
-  public TipsController a()
+  public boolean I()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController;
+    return this.c.aL;
+  }
+  
+  public void J()
+  {
+    this.c.W.a(this.c);
+  }
+  
+  public NavBarAIO K()
+  {
+    return this.c.p;
+  }
+  
+  public void L()
+  {
+    this.c.aQ();
+  }
+  
+  public void M()
+  {
+    this.c.as();
+  }
+  
+  public int N()
+  {
+    return this.c.p.getBottom();
   }
   
   public <T extends IHelper> T a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(paramInt);
-  }
-  
-  public NavigateBarManager a()
-  {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    return new NavigateBarManager(localBaseChatPie, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-  }
-  
-  public PanelIconLinearLayout a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-  }
-  
-  public PanelManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager;
-  }
-  
-  public TipsManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-  }
-  
-  public BaseActivity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    return this.c.q(paramInt);
   }
   
   public QQAppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public TroopAioTips a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips;
-  }
-  
-  public NavBarAIO a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
-  }
-  
-  public Observer a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  }
-  
-  public final MqqHandler a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.e(paramInt);
+    return this.a;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseChatpieHelper.a(paramInt1, paramInt2, paramString);
+    this.c.h.a(paramInt1, paramInt2, paramString);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(paramInt, paramBoolean);
+    this.c.n.a(paramInt, paramBoolean);
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.removeView(paramView);
+    this.c.ba.removeView(paramView);
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.onTouch(paramView, paramMotionEvent);
+    this.c.onTouch(paramView, paramMotionEvent);
   }
   
   public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.addView(paramView, paramLayoutParams);
+    this.c.ba.addView(paramView, paramLayoutParams);
   }
   
   public void a(List<ChatMessage> paramList, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(paramList, paramMessageRecord);
+    this.c.a(paramList, paramMessageRecord);
   }
   
   public void a(List<ChatMessage> paramList, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(paramList, paramCharSequence);
+    this.c.a(paramList, paramCharSequence);
   }
   
   public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(paramList, paramCharSequence, paramInt);
+    this.c.a(paramList, paramCharSequence, paramInt);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.m = paramBoolean;
+    this.c.as = paramBoolean;
   }
   
-  public boolean a()
+  public BaseActivity b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.l();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(paramInt);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-  }
-  
-  public ViewGroup b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_c_of_type_AndroidViewViewGroup;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_c_of_type_AndroidViewViewGroup.invalidate();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setVisibility(paramInt);
+    return this.b;
   }
   
   public void b(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.removeViewInLayout(paramView);
+    this.c.ba.removeViewInLayout(paramView);
   }
   
   public void b(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().addView(paramView, paramLayoutParams);
+    this.c.bl().addView(paramView, paramLayoutParams);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    this.c.W.a(paramBoolean, this.c);
   }
   
-  public boolean b()
+  public boolean b(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.z;
+    return this.c.f(paramInt);
   }
   
-  public int c()
+  public TipsManager c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b;
+    return this.c.J();
   }
   
-  public void c()
+  public void c(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.l();
+    this.c.j(paramInt);
   }
   
   public void c(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeViewInLayout(paramView);
+    this.c.bl().removeViewInLayout(paramView);
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(paramBoolean);
+    this.c.b(paramBoolean);
   }
   
-  public boolean c()
+  public <T extends View> T d(@IdRes int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.r;
+    return this.c.aZ.findViewById(paramInt);
   }
   
-  public int d()
+  public CoreHelperProvider d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_c_of_type_Int;
+    return this.c.g;
   }
   
-  public void d()
+  public MsgList e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.L();
+    return this.c.j;
   }
   
-  public boolean d()
+  public void e(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.n();
+    this.c.p.setVisibility(paramInt);
   }
   
-  public int e()
+  public Observer f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getBottom();
+    return this.c;
   }
   
-  public void e()
+  public final MqqHandler g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    return this.c.j();
   }
   
-  public boolean e()
+  public final AIOAnimationConatiner h()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.k;
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.N();
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.m;
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.q();
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.h;
+    return this.c.aU;
   }
   
   public int hashCode()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode();
+    return this.c.hashCode();
   }
   
-  public boolean i()
+  public void i()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie;
+    this.c.a(this.a);
   }
   
   public boolean j()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.x;
+    return this.c.aY();
+  }
+  
+  public int k()
+  {
+    return this.c.aR();
+  }
+  
+  public boolean l()
+  {
+    return this.c.aO;
+  }
+  
+  public boolean m()
+  {
+    return this.c.aD;
+  }
+  
+  public BaseChatPie n()
+  {
+    return this.c;
+  }
+  
+  public boolean o()
+  {
+    return this.c.ba();
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.onClick(paramView);
+    this.c.onClick(paramView);
+  }
+  
+  public AIOInput p()
+  {
+    return this.c.l;
+  }
+  
+  public PanelManager q()
+  {
+    return this.c.ae;
+  }
+  
+  public ViewGroup r()
+  {
+    return this.c.ba;
+  }
+  
+  public ViewGroup s()
+  {
+    return this.c.aZ;
+  }
+  
+  public boolean t()
+  {
+    return this.c.aq;
+  }
+  
+  public void u()
+  {
+    this.c.aZ.invalidate();
+  }
+  
+  public int v()
+  {
+    return this.c.A();
+  }
+  
+  public boolean w()
+  {
+    return this.c.as;
+  }
+  
+  public int x()
+  {
+    return this.c.az;
+  }
+  
+  public void y()
+  {
+    this.c.C();
+  }
+  
+  public TipsController z()
+  {
+    return this.c.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.AIOContext
  * JD-Core Version:    0.7.0.1
  */

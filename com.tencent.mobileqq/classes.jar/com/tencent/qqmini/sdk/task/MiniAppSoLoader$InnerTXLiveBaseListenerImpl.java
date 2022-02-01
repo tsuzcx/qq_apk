@@ -29,14 +29,14 @@ public class MiniAppSoLoader$InnerTXLiveBaseListenerImpl
     }
     else if ("OnLog".equals(paramMethod.getName()))
     {
-      MiniAppSoLoader.access$000(this.a, paramArrayOfObject);
+      MiniAppSoLoader.access$100(this.a, paramArrayOfObject);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppSoLoader.InnerTXLiveBaseListenerImpl
  * JD-Core Version:    0.7.0.1
  */

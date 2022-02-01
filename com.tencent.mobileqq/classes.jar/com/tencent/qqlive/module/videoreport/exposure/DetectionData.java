@@ -5,7 +5,6 @@ import android.graphics.RectF;
 
 public class DetectionData
 {
-  static final double NO_EXPOSURE = -1.0D;
   final SafeList<AncestorInfo> ancestorsInfo = new DetectionData.1(this, 20);
   final RectF helperRectF = new RectF();
   final Rect helperRectForExclusion = new Rect();
@@ -14,7 +13,7 @@ public class DetectionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.exposure.DetectionData
  * JD-Core Version:    0.7.0.1
  */

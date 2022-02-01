@@ -1,34 +1,26 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.h.a;
-import com.tencent.liteav.basic.structs.TXSVideoFrame;
-import com.tencent.liteav.basic.util.TXCTimeUtil;
-import java.lang.ref.WeakReference;
+import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
 
 class d$18
-  implements h.a
+  implements Runnable
 {
-  d$18(d paramd, WeakReference paramWeakReference) {}
+  d$18(d paramd, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    h localh = d.r(this.b);
-    o localo = (o)this.a.get();
-    if ((localh != null) && (localo != null))
-    {
-      TXSVideoFrame localTXSVideoFrame = new TXSVideoFrame();
-      localTXSVideoFrame.width = localh.n();
-      localTXSVideoFrame.height = localh.o();
-      localTXSVideoFrame.pts = TXCTimeUtil.generatePtsMS();
-      localo.onRenderVideoFrame(this.b.getID(), d.s(this.b), localTXSVideoFrame);
-      d.a(this.b, localTXSVideoFrame.data);
+    if (d.c(this.b).encoderMode == this.a) {
+      return;
     }
+    d.c(this.b).encoderMode = this.a;
+    d.h(this.b).encoderMode = this.a;
+    d.g(this.b);
+    d.i(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.d.18
  * JD-Core Version:    0.7.0.1
  */

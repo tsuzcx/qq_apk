@@ -13,13 +13,13 @@ final class KanDianMergeManagerImpl$readInJoyTabObserver$1$updateIndepentTabStat
   {
     RIJTabObserverCallBack localRIJTabObserverCallBack = this.this$0.a.getRijTabObserverCallBack();
     if (localRIJTabObserverCallBack != null) {
-      localRIJTabObserverCallBack.a(39, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
+      localRIJTabObserverCallBack.a(39, this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.api.impl.KanDianMergeManagerImpl.readInJoyTabObserver.1.updateIndepentTabState.1
  * JD-Core Version:    0.7.0.1
  */

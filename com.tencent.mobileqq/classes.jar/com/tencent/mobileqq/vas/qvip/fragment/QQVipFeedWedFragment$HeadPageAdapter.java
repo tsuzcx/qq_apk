@@ -23,15 +23,15 @@ public class QQVipFeedWedFragment$HeadPageAdapter
   
   public int getCount()
   {
-    return QQVipFeedWedFragment.a(this.a).size() + 1;
+    return QQVipFeedWedFragment.g(this.a).size() + 1;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((QQVipFeedWedFragment.a(this.a) != null) && (QQVipFeedWedFragment.a(this.a).size() != 0))
+    if ((QQVipFeedWedFragment.g(this.a) != null) && (QQVipFeedWedFragment.g(this.a).size() != 0))
     {
-      if (paramInt < QQVipFeedWedFragment.a(this.a).size()) {
-        localObject = (QQVipMsgInfo)QQVipFeedWedFragment.a(this.a).get(paramInt);
+      if (paramInt < QQVipFeedWedFragment.g(this.a).size()) {
+        localObject = (QQVipMsgInfo)QQVipFeedWedFragment.g(this.a).get(paramInt);
       } else {
         localObject = null;
       }
@@ -39,7 +39,7 @@ public class QQVipFeedWedFragment$HeadPageAdapter
       if (localIHeaderView == null) {
         return null;
       }
-      this.a.a.add(localIHeaderView);
+      this.a.b.add(localIHeaderView);
       RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
       View localView = (View)localIHeaderView;
       if (localView.getParent() != null) {
@@ -50,7 +50,7 @@ public class QQVipFeedWedFragment$HeadPageAdapter
       QQVipFeedWedFragment.a(this.a, paramViewGroup, paramInt, localIHeaderView, (QQVipMsgInfo)localObject, localRelativeLayout, localLayoutParams);
       return localRelativeLayout;
     }
-    Object localObject = this.a.a();
+    Object localObject = this.a.b();
     paramViewGroup.addView((View)localObject);
     return localObject;
   }
@@ -62,7 +62,7 @@ public class QQVipFeedWedFragment$HeadPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.HeadPageAdapter
  * JD-Core Version:    0.7.0.1
  */

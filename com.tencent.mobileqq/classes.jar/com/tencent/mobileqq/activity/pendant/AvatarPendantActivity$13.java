@@ -16,16 +16,16 @@ class AvatarPendantActivity$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a()) {
-      ((IApolloExtensionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopSeriesInfo.a, -1);
+    if (!this.a.i()) {
+      ((IApolloExtensionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.a.N, this.a.T.a, -1);
     }
     VasWebviewUtil.a(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.N), "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.13
  * JD-Core Version:    0.7.0.1
  */

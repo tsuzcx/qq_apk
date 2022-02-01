@@ -12,12 +12,12 @@ class QZoneSharePictureJsPlugin$5
   
   public void run()
   {
-    QQToast.a(this.val$runtime.a().getContext(), HardCodeUtil.a(2131712293), 0).a();
+    QQToast.makeText(this.val$runtime.a().getContext(), HardCodeUtil.a(2131909893), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

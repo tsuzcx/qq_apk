@@ -12,12 +12,12 @@ class ConfigHandler$4
   
   public void run()
   {
-    ((IFMConfig)QRoute.api(IFMConfig.class)).updatePreviewList(this.this$0.a, MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
+    ((IFMConfig)QRoute.api(IFMConfig.class)).updatePreviewList(this.this$0.c, MsfSdkUtils.insertMtype("ConfigCheck", this.a), this.b.uiNewVer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.4
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,11 @@ public abstract interface IPhotoLogicFactory
   public static final int FROM_DATALINE_PHOTO_LIST_PANEL = 40;
   public static final int FROM_DEFAULT = 0;
   public static final int FROM_EMOTION_FAVORITE = 2;
+  public static final int FROM_EXTEND_FRIEND_AVATAR = 55;
+  public static final int FROM_EXTEND_FRIEND_PHOTO_WALL = 54;
   public static final int FROM_FAVOUTITE = 43;
   public static final int FROM_FILEASSISTANT_LIST_PANEL = 51;
+  public static final int FROM_GUILD_CHANNEL_HOMEPAGE_PUBLISH = 56;
   public static final int FROM_HEALTH_ENTRY = 46;
   public static final int FROM_NEARBY = 30;
   public static final int FROM_NEWER_CROP = 50;
@@ -65,7 +68,7 @@ public abstract interface IPhotoLogicFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqalbum.IPhotoLogicFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -45,28 +45,22 @@ import org.json.JSONObject;
 public class StructMsgItemLayoutPromotion
   extends AbsStructMsgItem
 {
-  private String ac = null;
-  private String ad = null;
-  private String ae = null;
-  private String af = null;
-  private String ag = null;
-  private String ah = null;
-  private String ai = null;
-  private String aj = null;
-  private String ak = null;
-  private String al = null;
-  private int s;
-  private int t;
-  
-  public StructMsgItemLayoutPromotion()
-  {
-    this.jdField_s_of_type_Int = -1;
-    this.jdField_t_of_type_Int = 0;
-  }
+  private String aA = null;
+  private String aB = null;
+  private String aC = null;
+  private int aD = -1;
+  private int aE = 0;
+  private String aF = null;
+  private String aG = null;
+  private String aM = null;
+  private String aN = null;
+  private String aO = null;
+  private String aP = null;
+  private String az = null;
   
   private View a(Context paramContext, RelativeLayout paramRelativeLayout, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.ax.iterator();
     do
     {
       boolean bool = localIterator.hasNext();
@@ -77,8 +71,8 @@ public class StructMsgItemLayoutPromotion
       localObject = (AbsStructMsgElement)localIterator.next();
     } while (!(localObject instanceof StructMsgItemCover));
     Object localObject = ((AbsStructMsgElement)localObject).a(paramContext, null, paramBundle);
-    ((View)localObject).setId(2131377961);
-    paramContext = ((View)localObject).findViewById(2131368633);
+    ((View)localObject).setId(2131446448);
+    paramContext = ((View)localObject).findViewById(2131435545);
     if ((paramContext instanceof FixRatioPAHighLightImageView))
     {
       ((FixRatioPAHighLightImageView)paramContext).setRatio(1.8F);
@@ -98,46 +92,14 @@ public class StructMsgItemLayoutPromotion
     return localObject;
   }
   
-  private ImageView a(Context paramContext)
-  {
-    ImageView localImageView = new ImageView(paramContext);
-    paramContext = paramContext.getResources().getDrawable(2130847331);
-    if ((paramContext instanceof SkinnableBitmapDrawable)) {
-      paramContext = ((SkinnableBitmapDrawable)paramContext).mutate2();
-    } else {
-      paramContext = paramContext.mutate();
-    }
-    if (this.jdField_s_of_type_Int == 1) {
-      paramContext.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-    } else {
-      paramContext.setColorFilter(-49602, PorterDuff.Mode.SRC_ATOP);
-    }
-    localImageView.setImageDrawable(paramContext);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    localImageView.setId(2131377962);
-    return localImageView;
-  }
-  
-  private LinearLayout a(Context paramContext)
-  {
-    paramContext = new LinearLayout(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    paramContext.setOrientation(1);
-    paramContext.setLayoutParams(localLayoutParams);
-    if (QLog.isColorLevel()) {
-      QLog.i("StructMsgItemLayoutPromotion", 2, "getItemRootView");
-    }
-    return paramContext;
-  }
-  
   private TextView a(Context paramContext)
   {
     paramContext = new TextView(paramContext);
-    paramContext.setText(this.af);
+    paramContext.setText(this.aC);
     paramContext.setTypeface(Typeface.DEFAULT_BOLD);
     paramContext.setTextSize(17.0F);
-    paramContext.setId(2131377963);
-    if (this.jdField_s_of_type_Int == 1)
+    paramContext.setId(2131446450);
+    if (this.aD == 1)
     {
       paramContext.setTextColor(-1);
       return paramContext;
@@ -146,30 +108,11 @@ public class StructMsgItemLayoutPromotion
     return paramContext;
   }
   
-  private TextView a(Context paramContext, LinearLayout paramLinearLayout)
-  {
-    TextView localTextView = new TextView(paramContext);
-    localTextView.setText(this.ac);
-    localTextView.setTextSize(18.0F);
-    localTextView.setTypeface(Typeface.DEFAULT_BOLD);
-    if (this.jdField_s_of_type_Int == 1) {
-      localTextView.setTextColor(-16777216);
-    } else {
-      localTextView.setTextColor(-1);
-    }
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.gravity = 16;
-    localLayoutParams.topMargin = AIOUtils.b(10.0F, paramContext.getResources());
-    localLayoutParams.bottomMargin = AIOUtils.b(10.0F, paramContext.getResources());
-    paramLinearLayout.addView(localTextView, localLayoutParams);
-    return localTextView;
-  }
-  
   private void a(Context paramContext, LinearLayout paramLinearLayout)
   {
     View localView = new View(paramContext);
     GradientDrawable localGradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { -26554, -48849 });
-    localView.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.ag, localGradientDrawable));
+    localView.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aF, localGradientDrawable));
     paramLinearLayout.addView(localView, new LinearLayout.LayoutParams(-2, AIOUtils.b(40.0F, paramContext.getResources())));
   }
   
@@ -182,13 +125,13 @@ public class StructMsgItemLayoutPromotion
     a(paramContext, localRelativeLayout, paramBundle);
     paramLinearLayout = new LinearLayout(paramContext);
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
-    paramBundle.addRule(3, 2131377961);
-    paramLinearLayout.setId(2131377960);
+    paramBundle.addRule(3, 2131446448);
+    paramLinearLayout.setId(2131446447);
     paramLinearLayout.setOrientation(1);
     localRelativeLayout.addView(paramLinearLayout, paramBundle);
     b(paramContext, paramLinearLayout);
-    c(paramContext, paramLinearLayout);
     d(paramContext, paramLinearLayout);
+    e(paramContext, paramLinearLayout);
   }
   
   private void a(Context paramContext, LinearLayout paramLinearLayout, TextView paramTextView)
@@ -196,19 +139,19 @@ public class StructMsgItemLayoutPromotion
     int i = AIOUtils.b(5.0F, paramContext.getResources());
     int j = AIOUtils.b(4.0F, paramContext.getResources());
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(this.ae);
+    localTextView.setText(this.aB);
     localTextView.setTextSize(14.0F);
     localTextView.setTextColor(-1);
     localTextView.setGravity(17);
     a(localTextView, 6);
-    float f1 = localTextView.getPaint().measureText(this.ae);
+    float f1 = localTextView.getPaint().measureText(this.aB);
     float f2 = j;
     f1 = f1 + f2 + f2;
     paramContext = new LinearLayout.LayoutParams((int)f1, AIOUtils.b(20.0F, paramContext.getResources()));
     paramContext.leftMargin = i;
     paramContext.gravity = 16;
-    localTextView.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aj, URLDrawableHelperConstants.a));
-    j = this.jdField_t_of_type_Int;
+    localTextView.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aN, URLDrawableHelperConstants.a));
+    j = this.aE;
     if (j == 1)
     {
       paramLinearLayout.addView(localTextView, paramContext);
@@ -222,15 +165,15 @@ public class StructMsgItemLayoutPromotion
   private void a(Context paramContext, RelativeLayout paramRelativeLayout)
   {
     ImageView localImageView = new ImageView(paramContext);
-    if (this.jdField_s_of_type_Int == 1) {
+    if (this.aD == 1) {
       paramContext = URLDrawableHelperConstants.a;
     } else {
       paramContext = new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] { -26554, -48849 });
     }
-    localImageView.setImageDrawable(QWalletPicHelper.getNetDrawableForAIO(this.ah, paramContext));
+    localImageView.setImageDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aG, paramContext));
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
-    paramContext.addRule(6, 2131377960);
-    paramContext.addRule(8, 2131377960);
+    paramContext.addRule(6, 2131446447);
+    paramContext.addRule(8, 2131446447);
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     paramRelativeLayout.addView(localImageView, paramContext);
   }
@@ -244,6 +187,26 @@ public class StructMsgItemLayoutPromotion
     }
   }
   
+  private ImageView b(Context paramContext)
+  {
+    ImageView localImageView = new ImageView(paramContext);
+    paramContext = paramContext.getResources().getDrawable(2130848982);
+    if ((paramContext instanceof SkinnableBitmapDrawable)) {
+      paramContext = ((SkinnableBitmapDrawable)paramContext).mutate2();
+    } else {
+      paramContext = paramContext.mutate();
+    }
+    if (this.aD == 1) {
+      paramContext.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+    } else {
+      paramContext.setColorFilter(-49602, PorterDuff.Mode.SRC_ATOP);
+    }
+    localImageView.setImageDrawable(paramContext);
+    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    localImageView.setId(2131446449);
+    return localImageView;
+  }
+  
   private void b(Context paramContext, LinearLayout paramLinearLayout)
   {
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
@@ -253,8 +216,8 @@ public class StructMsgItemLayoutPromotion
     localLayoutParams.topMargin = AIOUtils.b(6.0F, paramContext.getResources());
     localLinearLayout.setOrientation(0);
     paramLinearLayout.addView(localLinearLayout, localLayoutParams);
-    paramLinearLayout = a(paramContext, localLinearLayout);
-    if (!TextUtils.isEmpty(this.ae)) {
+    paramLinearLayout = c(paramContext, localLinearLayout);
+    if (!TextUtils.isEmpty(this.aB)) {
       a(paramContext, localLinearLayout, paramLinearLayout);
     }
   }
@@ -262,23 +225,63 @@ public class StructMsgItemLayoutPromotion
   private void b(Context paramContext, RelativeLayout paramRelativeLayout)
   {
     paramContext = new ImageView(paramContext);
-    paramContext.setImageDrawable(QWalletPicHelper.getNetDrawableForAIO(this.ai, URLDrawableHelperConstants.a));
+    paramContext.setImageDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aM, URLDrawableHelperConstants.a));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(6, 2131377961);
-    localLayoutParams.addRule(8, 2131377960);
+    localLayoutParams.addRule(6, 2131446448);
+    localLayoutParams.addRule(8, 2131446447);
     paramContext.setScaleType(ImageView.ScaleType.FIT_END);
     paramRelativeLayout.addView(paramContext, localLayoutParams);
   }
   
-  private void c(Context paramContext, LinearLayout paramLinearLayout)
+  private LinearLayout c(Context paramContext)
   {
-    if (TextUtils.isEmpty(this.ad)) {
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    paramContext.setOrientation(1);
+    paramContext.setLayoutParams(localLayoutParams);
+    if (QLog.isColorLevel()) {
+      QLog.i("StructMsgItemLayoutPromotion", 2, "getItemRootView");
+    }
+    return paramContext;
+  }
+  
+  private TextView c(Context paramContext, LinearLayout paramLinearLayout)
+  {
+    TextView localTextView = new TextView(paramContext);
+    localTextView.setText(this.az);
+    localTextView.setTextSize(18.0F);
+    localTextView.setTypeface(Typeface.DEFAULT_BOLD);
+    if (this.aD == 1) {
+      localTextView.setTextColor(-16777216);
+    } else {
+      localTextView.setTextColor(-1);
+    }
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 16;
+    localLayoutParams.topMargin = AIOUtils.b(10.0F, paramContext.getResources());
+    localLayoutParams.bottomMargin = AIOUtils.b(10.0F, paramContext.getResources());
+    paramLinearLayout.addView(localTextView, localLayoutParams);
+    return localTextView;
+  }
+  
+  private void c(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    ImageView localImageView = new ImageView(paramContext);
+    localImageView.setImageDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aP, URLDrawableHelperConstants.a));
+    paramContext = new RelativeLayout.LayoutParams(-1, AIOUtils.b(60.0F, paramContext.getResources()));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_START);
+    paramRelativeLayout.addView(localImageView, paramContext);
+  }
+  
+  private void d(Context paramContext, LinearLayout paramLinearLayout)
+  {
+    if (TextUtils.isEmpty(this.aA)) {
       return;
     }
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(this.ad);
+    localTextView.setText(this.aA);
     localTextView.setTextSize(14.0F);
-    if (this.jdField_s_of_type_Int == 1) {
+    if (this.aD == 1) {
       localTextView.setTextColor(-16777216);
     } else {
       localTextView.setTextColor(-1);
@@ -290,54 +293,35 @@ public class StructMsgItemLayoutPromotion
     paramLinearLayout.addView(localTextView, localLayoutParams);
   }
   
-  private void c(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    ImageView localImageView = new ImageView(paramContext);
-    localImageView.setImageDrawable(QWalletPicHelper.getNetDrawableForAIO(this.al, URLDrawableHelperConstants.a));
-    paramContext = new RelativeLayout.LayoutParams(-1, AIOUtils.b(60.0F, paramContext.getResources()));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_START);
-    paramRelativeLayout.addView(localImageView, paramContext);
-  }
-  
-  private void d(Context paramContext, LinearLayout paramLinearLayout)
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
-    paramLinearLayout.addView(localRelativeLayout, new LinearLayout.LayoutParams(-1, -2));
-    d(paramContext, localRelativeLayout);
-    if (this.jdField_s_of_type_Int == 1) {
-      c(paramContext, localRelativeLayout);
-    }
-  }
-  
   private void d(Context paramContext, RelativeLayout paramRelativeLayout)
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
     Object localObject = new RelativeLayout.LayoutParams(-1, AIOUtils.b(45.0F, paramContext.getResources()));
-    if (this.jdField_s_of_type_Int == 1)
+    if (this.aD == 1)
     {
       ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.b(15.0F, paramContext.getResources());
-      localRelativeLayout.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.ak, new ColorDrawable(-43724)));
+      localRelativeLayout.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aO, new ColorDrawable(-43724)));
     }
     else
     {
       ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(12.0F, paramContext.getResources());
       ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(12.0F, paramContext.getResources());
       ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(12.0F, paramContext.getResources());
-      localRelativeLayout.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.ak, new ColorDrawable(-1)));
+      localRelativeLayout.setBackgroundDrawable(QWalletPicHelper.getNetDrawableForAIO(this.aO, new ColorDrawable(-1)));
       a(localRelativeLayout, 8);
     }
     paramRelativeLayout.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject);
     localObject = a(paramContext);
-    paramRelativeLayout = a(paramContext);
+    paramRelativeLayout = b(paramContext);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
     int i = AIOUtils.b(17.0F, paramContext.getResources());
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams2.addRule(15);
     localLayoutParams2.leftMargin = AIOUtils.b(5.0F, paramContext.getResources());
     localLayoutParams2.rightMargin = AIOUtils.b(12.0F, paramContext.getResources());
-    if (this.jdField_s_of_type_Int == 1)
+    if (this.aD == 1)
     {
-      localLayoutParams1.addRule(0, 2131377962);
+      localLayoutParams1.addRule(0, 2131446449);
       localLayoutParams1.addRule(15);
       localLayoutParams2.addRule(11);
       localRelativeLayout.addView((View)localObject, localLayoutParams1);
@@ -345,49 +329,41 @@ public class StructMsgItemLayoutPromotion
       return;
     }
     paramContext = new RelativeLayout(paramContext);
-    localLayoutParams2.addRule(1, 2131377963);
+    localLayoutParams2.addRule(1, 2131446450);
     paramContext.addView((View)localObject, localLayoutParams1);
     paramContext.addView(paramRelativeLayout, localLayoutParams2);
     localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     localRelativeLayout.addView(paramContext, (ViewGroup.LayoutParams)localObject);
-    a(paramRelativeLayout);
+    e(paramRelativeLayout);
   }
   
-  public long a(View paramView)
+  private void e(Context paramContext, LinearLayout paramLinearLayout)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "translationX", new float[] { 0.0F, 20.0F, 0.0F });
-    localObjectAnimator.setDuration(800L);
-    localObjectAnimator.setRepeatCount(-1);
-    localObjectAnimator.setRepeatMode(1);
-    localObjectAnimator.start();
-    paramView.addOnAttachStateChangeListener(new StructMsgItemLayoutPromotion.3(this, localObjectAnimator));
-    return localObjectAnimator.getDuration() * localObjectAnimator.getRepeatCount();
-  }
-  
-  public void a()
-  {
-    if ((TextUtils.isEmpty(this.ag)) && (TextUtils.isEmpty(this.ah)) && (TextUtils.isEmpty(this.ai)) && (TextUtils.isEmpty(this.aj)) && (TextUtils.isEmpty(this.ak)) && (TextUtils.isEmpty(this.al))) {
-      a(((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopConfBean().a);
+    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
+    paramLinearLayout.addView(localRelativeLayout, new LinearLayout.LayoutParams(-1, -2));
+    d(paramContext, localRelativeLayout);
+    if (this.aD == 1) {
+      c(paramContext, localRelativeLayout);
     }
   }
   
   public boolean a(EcshopConfBean.PromotionConfBean paramPromotionConfBean)
   {
-    if (this.jdField_s_of_type_Int == 1) {
-      paramPromotionConfBean = paramPromotionConfBean.a;
+    if (this.aD == 1) {
+      paramPromotionConfBean = paramPromotionConfBean.f;
     } else {
-      paramPromotionConfBean = paramPromotionConfBean.b;
+      paramPromotionConfBean = paramPromotionConfBean.g;
     }
     if (paramPromotionConfBean.isEmpty()) {
       return false;
     }
-    this.ag = ((String)paramPromotionConfBean.get("top_bg_url"));
-    this.ah = ((String)paramPromotionConfBean.get("bottom_bg_url"));
-    this.ai = ((String)paramPromotionConfBean.get("bottom_ani_url"));
-    this.aj = ((String)paramPromotionConfBean.get("discount_bg_url"));
-    this.ak = ((String)paramPromotionConfBean.get("detail_bg_url"));
-    this.al = ((String)paramPromotionConfBean.get("detail_logo_url"));
+    this.aF = ((String)paramPromotionConfBean.get("top_bg_url"));
+    this.aG = ((String)paramPromotionConfBean.get("bottom_bg_url"));
+    this.aM = ((String)paramPromotionConfBean.get("bottom_ani_url"));
+    this.aN = ((String)paramPromotionConfBean.get("discount_bg_url"));
+    this.aO = ((String)paramPromotionConfBean.get("detail_bg_url"));
+    this.aP = ((String)paramPromotionConfBean.get("detail_logo_url"));
     return true;
   }
   
@@ -399,36 +375,31 @@ public class StructMsgItemLayoutPromotion
       return false;
     }
     paramAbsStructMsgElement = (AbsStructMsgItem)paramAbsStructMsgElement;
-    this.jdField_a_of_type_JavaUtilArrayList = paramAbsStructMsgElement.jdField_a_of_type_JavaUtilArrayList;
-    this.b = paramAbsStructMsgElement.b;
-    this.jdField_c_of_type_JavaLangString = paramAbsStructMsgElement.jdField_c_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = paramAbsStructMsgElement.jdField_d_of_type_JavaLangString;
-    this.jdField_e_of_type_JavaLangString = paramAbsStructMsgElement.jdField_e_of_type_JavaLangString;
-    this.jdField_f_of_type_JavaLangString = paramAbsStructMsgElement.jdField_f_of_type_JavaLangString;
-    this.jdField_g_of_type_JavaLangString = paramAbsStructMsgElement.jdField_g_of_type_JavaLangString;
-    this.jdField_h_of_type_JavaLangString = paramAbsStructMsgElement.jdField_h_of_type_JavaLangString;
-    this.jdField_i_of_type_JavaLangString = paramAbsStructMsgElement.jdField_i_of_type_JavaLangString;
-    this.jdField_j_of_type_JavaLangString = paramAbsStructMsgElement.jdField_j_of_type_JavaLangString;
-    this.jdField_k_of_type_JavaLangString = paramAbsStructMsgElement.jdField_k_of_type_JavaLangString;
-    this.jdField_l_of_type_JavaLangString = paramAbsStructMsgElement.jdField_l_of_type_JavaLangString;
-    this.jdField_m_of_type_JavaLangString = paramAbsStructMsgElement.jdField_m_of_type_JavaLangString;
-    this.jdField_n_of_type_JavaLangString = paramAbsStructMsgElement.jdField_n_of_type_JavaLangString;
+    this.ax = paramAbsStructMsgElement.ax;
+    this.d = paramAbsStructMsgElement.d;
+    this.e = paramAbsStructMsgElement.e;
+    this.f = paramAbsStructMsgElement.f;
+    this.g = paramAbsStructMsgElement.g;
+    this.h = paramAbsStructMsgElement.h;
+    this.i = paramAbsStructMsgElement.i;
+    this.j = paramAbsStructMsgElement.j;
+    this.k = paramAbsStructMsgElement.k;
+    this.l = paramAbsStructMsgElement.l;
+    this.m = paramAbsStructMsgElement.m;
+    this.n = paramAbsStructMsgElement.n;
     this.o = paramAbsStructMsgElement.o;
     this.p = paramAbsStructMsgElement.p;
     this.q = paramAbsStructMsgElement.q;
-    this.jdField_c_of_type_Int = paramAbsStructMsgElement.jdField_c_of_type_Int;
     this.r = paramAbsStructMsgElement.r;
-    this.jdField_s_of_type_JavaLangString = paramAbsStructMsgElement.jdField_s_of_type_JavaLangString;
-    this.jdField_t_of_type_JavaLangString = paramAbsStructMsgElement.jdField_t_of_type_JavaLangString;
+    this.s = paramAbsStructMsgElement.s;
+    this.t = paramAbsStructMsgElement.t;
     this.u = paramAbsStructMsgElement.u;
     this.v = paramAbsStructMsgElement.v;
-    this.jdField_d_of_type_Int = paramAbsStructMsgElement.jdField_d_of_type_Int;
     this.w = paramAbsStructMsgElement.w;
     this.x = paramAbsStructMsgElement.x;
     this.y = paramAbsStructMsgElement.y;
     this.z = paramAbsStructMsgElement.z;
     this.A = paramAbsStructMsgElement.A;
-    this.jdField_e_of_type_Int = paramAbsStructMsgElement.jdField_e_of_type_Int;
     this.B = paramAbsStructMsgElement.B;
     this.C = paramAbsStructMsgElement.C;
     this.D = paramAbsStructMsgElement.D;
@@ -438,21 +409,14 @@ public class StructMsgItemLayoutPromotion
     this.H = paramAbsStructMsgElement.H;
     this.I = paramAbsStructMsgElement.I;
     this.J = paramAbsStructMsgElement.J;
-    this.jdField_f_of_type_Int = paramAbsStructMsgElement.jdField_f_of_type_Int;
     this.K = paramAbsStructMsgElement.K;
     this.L = paramAbsStructMsgElement.L;
     this.M = paramAbsStructMsgElement.M;
     this.N = paramAbsStructMsgElement.N;
     this.O = paramAbsStructMsgElement.O;
-    this.jdField_g_of_type_Int = paramAbsStructMsgElement.jdField_g_of_type_Int;
-    this.jdField_h_of_type_Int = paramAbsStructMsgElement.jdField_h_of_type_Int;
     this.P = paramAbsStructMsgElement.P;
     this.Q = paramAbsStructMsgElement.Q;
     this.R = paramAbsStructMsgElement.R;
-    this.jdField_i_of_type_Int = paramAbsStructMsgElement.jdField_i_of_type_Int;
-    this.jdField_j_of_type_Int = paramAbsStructMsgElement.jdField_j_of_type_Int;
-    this.jdField_k_of_type_Int = paramAbsStructMsgElement.jdField_k_of_type_Int;
-    this.jdField_l_of_type_Int = paramAbsStructMsgElement.jdField_l_of_type_Int;
     this.S = paramAbsStructMsgElement.S;
     this.T = paramAbsStructMsgElement.T;
     this.U = paramAbsStructMsgElement.U;
@@ -460,16 +424,28 @@ public class StructMsgItemLayoutPromotion
     this.W = paramAbsStructMsgElement.W;
     this.X = paramAbsStructMsgElement.X;
     this.Y = paramAbsStructMsgElement.Y;
-    this.jdField_m_of_type_Int = paramAbsStructMsgElement.jdField_m_of_type_Int;
     this.Z = paramAbsStructMsgElement.Z;
     this.aa = paramAbsStructMsgElement.aa;
-    this.jdField_a_of_type_Long = paramAbsStructMsgElement.jdField_a_of_type_Long;
     this.ab = paramAbsStructMsgElement.ab;
-    this.jdField_n_of_type_Int = paramAbsStructMsgElement.jdField_n_of_type_Int;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramAbsStructMsgElement.jdField_a_of_type_JavaLangRefWeakReference;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = paramAbsStructMsgElement.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    this.ac = paramAbsStructMsgElement.ac;
+    this.ad = paramAbsStructMsgElement.ad;
+    this.ae = paramAbsStructMsgElement.ae;
+    this.af = paramAbsStructMsgElement.af;
+    this.ag = paramAbsStructMsgElement.ag;
+    this.ah = paramAbsStructMsgElement.ah;
+    this.ai = paramAbsStructMsgElement.ai;
+    this.aj = paramAbsStructMsgElement.aj;
+    this.ak = paramAbsStructMsgElement.ak;
+    this.al = paramAbsStructMsgElement.al;
+    this.am = paramAbsStructMsgElement.am;
+    this.an = paramAbsStructMsgElement.an;
+    this.ao = paramAbsStructMsgElement.ao;
+    this.ap = paramAbsStructMsgElement.ap;
+    this.aq = paramAbsStructMsgElement.aq;
+    this.ar = paramAbsStructMsgElement.ar;
+    this.as = paramAbsStructMsgElement.as;
     bool1 = bool2;
-    if (b())
+    if (f())
     {
       bool1 = bool2;
       if (a(paramPromotionConfBean)) {
@@ -477,11 +453,6 @@ public class StructMsgItemLayoutPromotion
       }
     }
     return bool1;
-  }
-  
-  protected int b()
-  {
-    return 102632;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
@@ -493,11 +464,11 @@ public class StructMsgItemLayoutPromotion
     }
     else
     {
-      paramView = a(paramContext);
+      paramView = c(paramContext);
     }
-    b();
-    a();
-    if (this.jdField_s_of_type_Int == 2) {
+    f();
+    g();
+    if (this.aD == 2) {
       a(paramContext, paramView);
     }
     a(paramContext, paramView, paramBundle);
@@ -505,25 +476,41 @@ public class StructMsgItemLayoutPromotion
     return paramView;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 102632;
+  }
+  
+  public long e(View paramView)
+  {
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "translationX", new float[] { 0.0F, 20.0F, 0.0F });
+    localObjectAnimator.setDuration(800L);
+    localObjectAnimator.setRepeatCount(-1);
+    localObjectAnimator.setRepeatMode(1);
+    localObjectAnimator.start();
+    paramView.addOnAttachStateChangeListener(new StructMsgItemLayoutPromotion.3(this, localObjectAnimator));
+    return localObjectAnimator.getDuration() * localObjectAnimator.getRepeatCount();
+  }
+  
+  public String e()
   {
     return "LayoutPromotion";
   }
   
-  public boolean b()
+  public boolean f()
   {
     for (;;)
     {
       int i;
       try
       {
-        if (TextUtils.isEmpty(this.X)) {
+        if (TextUtils.isEmpty(this.aj)) {
           return false;
         }
-        Object localObject = new JSONObject(this.X).optJSONObject("display_info");
+        Object localObject = new JSONObject(this.aj).optJSONObject("display_info");
         JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("basic_info");
-        this.ac = localJSONObject.optString("txt");
-        this.ad = localJSONObject.optString("desc");
+        this.az = localJSONObject.optString("txt");
+        this.aA = localJSONObject.optString("desc");
         localObject = ((JSONObject)localObject).optJSONArray("button_info");
         if (localObject != null)
         {
@@ -532,27 +519,27 @@ public class StructMsgItemLayoutPromotion
           {
             localJSONObject = ((JSONArray)localObject).optJSONObject(i);
             if (localJSONObject == null) {
-              break label214;
+              break label215;
             }
             int j = localJSONObject.optInt("pos");
             if (j == 1)
             {
-              this.ae = localJSONObject.optString("txt");
-              break label214;
+              this.aB = localJSONObject.optString("txt");
+              break label215;
             }
             if (j != 2) {
-              break label214;
+              break label215;
             }
-            this.af = localJSONObject.optString("txt");
-            if (!TextUtils.isEmpty(this.af)) {
-              break label214;
+            this.aC = localJSONObject.optString("txt");
+            if (!TextUtils.isEmpty(this.aC)) {
+              break label215;
             }
-            this.af = "查看详情";
-            break label214;
+            this.aC = "查看详情";
+            break label215;
           }
         }
-        this.jdField_s_of_type_Int = ((IEcshopRainViewApi)QRoute.api(IEcshopRainViewApi.class)).getMsgPromotion(this.X);
-        i = this.jdField_s_of_type_Int;
+        this.aD = ((IEcshopRainViewApi)QRoute.api(IEcshopRainViewApi.class)).getMsgPromotion(this.aj);
+        i = this.aD;
         if (i != -1) {
           return true;
         }
@@ -562,14 +549,21 @@ public class StructMsgItemLayoutPromotion
         QLog.e("StructMsgItemLayoutPromotion", 1, localException, new Object[0]);
       }
       return false;
-      label214:
+      label215:
       i += 1;
+    }
+  }
+  
+  public void g()
+  {
+    if ((TextUtils.isEmpty(this.aF)) && (TextUtils.isEmpty(this.aG)) && (TextUtils.isEmpty(this.aM)) && (TextUtils.isEmpty(this.aN)) && (TextUtils.isEmpty(this.aO)) && (TextUtils.isEmpty(this.aP))) {
+      a(((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopConfBean().m);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutPromotion
  * JD-Core Version:    0.7.0.1
  */

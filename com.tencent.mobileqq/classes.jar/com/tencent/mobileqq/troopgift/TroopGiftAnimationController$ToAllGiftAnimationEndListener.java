@@ -7,21 +7,17 @@ import com.tencent.qphone.base.util.QLog;
 class TroopGiftAnimationController$ToAllGiftAnimationEndListener
   implements FrameSprite.OnFrameEndListener
 {
-  public int a;
-  public long a;
+  public int a = 0;
   public long b = 0L;
   public long c = 0L;
+  public long d = 0L;
   
-  TroopGiftAnimationController$ToAllGiftAnimationEndListener(TroopGiftAnimationController paramTroopGiftAnimationController)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
+  TroopGiftAnimationController$ToAllGiftAnimationEndListener(TroopGiftAnimationController paramTroopGiftAnimationController) {}
   
   public void a()
   {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    int i = this.jdField_a_of_type_Int;
+    this.d = NetConnInfoCenter.getServerTimeMillis();
+    int i = this.a;
     if (i != 0)
     {
       if (i != 1)
@@ -29,38 +25,38 @@ class TroopGiftAnimationController$ToAllGiftAnimationEndListener
         if (i != 2)
         {
           if (i == 3) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
+            this.e.a(3000L);
           }
         }
         else
         {
-          long l = this.c - this.b;
+          long l = this.d - this.c;
           if (l >= 2000L) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+            this.e.a(0L);
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(2000L - l);
+            this.e.a(2000L - l);
           }
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
+        this.e.a(3000L);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+      this.e.a(0L);
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("animation frame end. requestState:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.i(".troop.send_giftTroopGiftAnimationController", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.ToAllGiftAnimationEndListener
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,32 @@ class BuddyListAdapter$2
 {
   BuddyListAdapter$2(BuddyListAdapter paramBuddyListAdapter, boolean paramBoolean, Friends paramFriends, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.a))
+    if (!NetworkUtil.isNetworkAvailable(this.d.a))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.a, 1, 2131692183, 0).a();
+      QQToast.makeText(this.d.a, 1, 2131889169, 0).show();
     }
     else
     {
-      paramView = (FriendListHandler)BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-      if (this.jdField_a_of_type_Boolean)
+      paramView = (FriendListHandler)BuddyListAdapter.e(this.d).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (this.a)
       {
-        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-        ReportController.b(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
+        paramView.setSpecialCareSwitch(1, new String[] { this.b.uin }, new boolean[] { false });
+        ReportController.b(BuddyListAdapter.e(this.d), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
       }
       else
       {
-        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-        ReportController.b(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
+        paramView.setSpecialCareSwitch(1, new String[] { this.b.uin }, new boolean[] { true });
+        ReportController.b(BuddyListAdapter.e(this.d), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.c.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

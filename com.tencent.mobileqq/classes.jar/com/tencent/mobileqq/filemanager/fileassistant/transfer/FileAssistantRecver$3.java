@@ -11,12 +11,12 @@ class FileAssistantRecver$3
   
   public void run()
   {
-    FileAssistantRecver.a(this.this$0).getFileManagerNotifyCenter().a(FileAssistantRecver.a(this.this$0).uniseq, FileAssistantRecver.a(this.this$0).nSessionId, FileAssistantRecver.a(this.this$0).peerUin, FileAssistantRecver.a(this.this$0).peerType, 12, null, 6, "");
+    FileAssistantRecver.c(this.this$0).getFileManagerNotifyCenter().a(FileAssistantRecver.a(this.this$0).uniseq, FileAssistantRecver.a(this.this$0).nSessionId, FileAssistantRecver.a(this.this$0).peerUin, FileAssistantRecver.a(this.this$0).peerType, 12, null, 6, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.FileAssistantRecver.3
  * JD-Core Version:    0.7.0.1
  */

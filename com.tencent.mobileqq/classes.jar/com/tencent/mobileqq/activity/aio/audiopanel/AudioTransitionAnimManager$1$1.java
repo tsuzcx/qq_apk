@@ -10,12 +10,12 @@ class AudioTransitionAnimManager$1$1
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    AudioTransitionAnimManager.a(this.a.this$0, paramLottieComposition, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext);
+    AudioTransitionAnimManager.a(this.a.this$0, paramLottieComposition, this.a.c, this.a.a, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1.1
  * JD-Core Version:    0.7.0.1
  */

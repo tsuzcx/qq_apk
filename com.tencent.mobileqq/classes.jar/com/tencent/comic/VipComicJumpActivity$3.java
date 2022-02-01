@@ -17,12 +17,12 @@ final class VipComicJumpActivity$3
     localStringBuilder.append(" msg:");
     localStringBuilder.append(paramString);
     QLog.i("VipComicJumpActivity", 1, localStringBuilder.toString());
-    VipComicJumpActivity.access$100(paramInt, this.jdField_a_of_type_ComTencentComicVipComicJumpActivity$LoadingCondition, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentComicVipComicJumpActivity$ComicParam);
+    VipComicJumpActivity.access$100(paramInt, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicJumpActivity.3
  * JD-Core Version:    0.7.0.1
  */

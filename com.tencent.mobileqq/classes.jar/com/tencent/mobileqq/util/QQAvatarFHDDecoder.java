@@ -33,34 +33,27 @@ import mqq.util.WeakReference;
 public class QQAvatarFHDDecoder
   implements Handler.Callback, HttpDownloadUtil.HttpDownloadListener
 {
-  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new QQAvatarFHDDecoder.1(this);
-  private volatile String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile WeakReference<QQAvatarFHDDecoder.OnQQAvatarFHDListener> jdField_b_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_b_of_type_Boolean = false;
+  private WeakReference<QQAppInterface> a;
+  private MqqHandler b;
+  private volatile String c;
+  private volatile boolean d = false;
+  private volatile boolean e = false;
+  private FriendListHandler f;
+  private volatile WeakReference<QQAvatarFHDDecoder.OnQQAvatarFHDListener> g;
+  private AvatarObserver h = new QQAvatarFHDDecoder.1(this);
   
   public QQAvatarFHDDecoder(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
-    a();
+    this.a = new WeakReference(paramQQAppInterface);
+    b();
   }
   
   private QQAppInterface a()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      return (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (this.a.get() != null) {
+      return (QQAppInterface)this.a.get();
     }
     return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  private void a()
-  {
-    a().addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   private void a(String paramString)
@@ -81,9 +74,16 @@ public class QQAvatarFHDDecoder
       }
       paramString = null;
     }
-    Object localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1);
+    Object localObject = this.b.obtainMessage(1);
     ((Message)localObject).obj = paramString;
     ((Message)localObject).sendToTarget();
+  }
+  
+  private void b()
+  {
+    a().addObserver(this.h);
+    this.f = ((FriendListHandler)a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.b = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   private void b(String paramString)
@@ -106,8 +106,8 @@ public class QQAvatarFHDDecoder
     Object localObject1;
     if ((paramSetting != null) && (!TextUtils.isEmpty(paramSetting.uin)) && (!TextUtils.isEmpty(paramSetting.url)))
     {
-      localObject1 = FaceUtil.b(paramSetting.uin);
-      if (FileUtil.b((String)localObject1))
+      localObject1 = FaceUtil.c(paramSetting.uin);
+      if (FileUtil.d((String)localObject1))
       {
         if (QLog.isColorLevel())
         {
@@ -163,7 +163,7 @@ public class QQAvatarFHDDecoder
         }
       }
       if (!bool2) {
-        b(this.jdField_a_of_type_JavaLangString);
+        b(this.c);
       }
       return;
     }
@@ -204,14 +204,14 @@ public class QQAvatarFHDDecoder
       localStringBuilder.append("getFHDAvatar ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" mIsGettingHead：");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(" mCurrentUin：");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(" forceUpdate：");
       localStringBuilder.append(paramBoolean);
       QLog.i("QQAvatarFHDDecoder", 2, localStringBuilder.toString());
     }
-    if ((!this.jdField_b_of_type_Boolean) && (!TextUtils.isEmpty(paramString)))
+    if ((!this.e) && (!TextUtils.isEmpty(paramString)))
     {
       if (!Friends.isValidUin(paramString)) {
         return false;
@@ -223,11 +223,11 @@ public class QQAvatarFHDDecoder
         }
         return false;
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.d) {
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramOnQQAvatarFHDListener);
+      this.c = paramString;
+      this.g = new WeakReference(paramOnQQAvatarFHDListener);
       ThreadManagerV2.excute(new QQAvatarFHDDecoder.2(this, paramString, paramBoolean), 128, null, true);
       return true;
     }
@@ -257,12 +257,12 @@ public class QQAvatarFHDDecoder
     } else {
       paramMessage = null;
     }
-    if (this.jdField_b_of_type_MqqUtilWeakReference != null)
+    if (this.g != null)
     {
-      QQAvatarFHDDecoder.OnQQAvatarFHDListener localOnQQAvatarFHDListener = (QQAvatarFHDDecoder.OnQQAvatarFHDListener)this.jdField_b_of_type_MqqUtilWeakReference.get();
+      QQAvatarFHDDecoder.OnQQAvatarFHDListener localOnQQAvatarFHDListener = (QQAvatarFHDDecoder.OnQQAvatarFHDListener)this.g.get();
       if (localOnQQAvatarFHDListener != null)
       {
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.c;
         boolean bool;
         if (paramMessage != null) {
           bool = true;
@@ -271,16 +271,16 @@ public class QQAvatarFHDDecoder
         }
         localOnQQAvatarFHDListener.a(str, bool, paramMessage);
       }
-      this.jdField_b_of_type_MqqUtilWeakReference = null;
+      this.g = null;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
+    this.d = false;
+    this.c = null;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder
  * JD-Core Version:    0.7.0.1
  */

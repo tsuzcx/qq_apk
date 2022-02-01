@@ -21,26 +21,6 @@ public class MutualMarkBusinessLogicHelper
 {
   private static boolean a;
   
-  @NonNull
-  private static String a(List<MessageRecord> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
-      localStringBuilder.append("[");
-      localStringBuilder.append(i);
-      localStringBuilder.append("] ");
-      localStringBuilder.append(localMessageRecord.toString());
-      localStringBuilder.append("\n");
-      localStringBuilder.append(localMessageRecord.getExtInfoFromExtStr("SendMessageError"));
-      localStringBuilder.append("\n");
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
   private static List<MessageRecord> a(List<MessageRecord> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -54,8 +34,6 @@ public class MutualMarkBusinessLogicHelper
     }
     return localArrayList;
   }
-  
-  public static void a(QQAppInterface paramQQAppInterface) {}
   
   public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
   {
@@ -120,10 +98,10 @@ public class MutualMarkBusinessLogicHelper
     if (a) {
       return;
     }
-    paramQQAppInterface = a(paramQQAppInterface.getMessageFacade().a(paramString, paramInt));
+    paramQQAppInterface = a(paramQQAppInterface.getMessageFacade().h(paramString, paramInt));
     if (!paramQQAppInterface.isEmpty())
     {
-      paramQQAppInterface = a(paramQQAppInterface);
+      paramQQAppInterface = b(paramQQAppInterface);
       paramString = new RuntimeException(paramQQAppInterface);
       CaughtExceptionReport.a(paramString, paramQQAppInterface);
       QLog.e("MutualMarkBusinessLogicHelper", 1, paramString, new Object[] { paramQQAppInterface });
@@ -139,13 +117,13 @@ public class MutualMarkBusinessLogicHelper
       int i = (int)(paramMutualMarkForDisplayInfo.a * 10L + paramMutualMarkForDisplayInfo.b);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(paramMutualMarkForDisplayInfo.h);
+      localStringBuilder.append(paramMutualMarkForDisplayInfo.i);
       ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", (String)localObject, i, 0, localStringBuilder.toString(), "", "", "");
       if ((int)paramMutualMarkForDisplayInfo.a == 17)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(paramMutualMarkForDisplayInfo.h);
+        ((StringBuilder)localObject).append(paramMutualMarkForDisplayInfo.i);
         ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
       }
     }
@@ -164,7 +142,7 @@ public class MutualMarkBusinessLogicHelper
       i = (int)(paramMutualMarkForDisplayInfo1.a * 10L + paramMutualMarkForDisplayInfo1.b);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(paramMutualMarkForDisplayInfo1.h);
+      localStringBuilder.append(paramMutualMarkForDisplayInfo1.i);
       ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", (String)localObject, i, 0, localStringBuilder.toString(), "", "", "");
     }
     if (paramMutualMarkForDisplayInfo2 != null)
@@ -173,7 +151,7 @@ public class MutualMarkBusinessLogicHelper
       i = (int)(paramMutualMarkForDisplayInfo2.a * 10L + paramMutualMarkForDisplayInfo2.b);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramMutualMarkForDisplayInfo2.h);
+      ((StringBuilder)localObject).append(paramMutualMarkForDisplayInfo2.i);
       ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", paramMutualMarkForDisplayInfo1, i, 0, ((StringBuilder)localObject).toString(), "", "", "");
     }
     ReportController.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
@@ -195,6 +173,28 @@ public class MutualMarkBusinessLogicHelper
     localDate.setTime(NetConnInfoCenter.getServerTimeMillis());
     return localDate.getDate() - i == 1;
   }
+  
+  @NonNull
+  private static String b(List<MessageRecord> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
+      localStringBuilder.append("[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("] ");
+      localStringBuilder.append(localMessageRecord.toString());
+      localStringBuilder.append("\n");
+      localStringBuilder.append(localMessageRecord.getExtInfoFromExtStr("SendMessageError"));
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface) {}
   
   public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
   {
@@ -235,7 +235,7 @@ public class MutualMarkBusinessLogicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkBusinessLogicHelper
  * JD-Core Version:    0.7.0.1
  */

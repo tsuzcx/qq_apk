@@ -65,7 +65,7 @@ public class InsertBlackList
       int m = paramToServiceMsg.extraData.getInt("fromType");
       if ((i != 0) && (l1 > 0L))
       {
-        paramMessageHandler.a(Long.toString(l1));
+        paramMessageHandler.b(Long.toString(l1));
         long l2 = paramToServiceMsg.extraData.getLong("insertTinnyid");
         if (QLog.isColorLevel())
         {
@@ -92,7 +92,7 @@ public class InsertBlackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.InsertBlackList
  * JD-Core Version:    0.7.0.1
  */

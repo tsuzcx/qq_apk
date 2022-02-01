@@ -17,7 +17,7 @@ class ReadInJoyUploadAvatarFragment$1$1
     paramDialogInterface = this.a.a.getIntent();
     Bundle localBundle = new Bundle();
     localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", HardCodeUtil.a(2131713024));
+    localBundle.putString("msg", HardCodeUtil.a(2131910586));
     paramDialogInterface.putExtra("Bundle", localBundle);
     this.a.a.setResult(-1, paramDialogInterface);
     this.a.a.finish();
@@ -25,7 +25,7 @@ class ReadInJoyUploadAvatarFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

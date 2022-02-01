@@ -2,7 +2,6 @@ package com.tencent.beacon.core.info;
 
 import android.content.Context;
 import android.os.Build;
-import android.text.TextUtils;
 import com.tencent.beacon.a.c.b;
 import com.tencent.beacon.a.c.c;
 import com.tencent.beacon.a.c.f;
@@ -113,8 +112,8 @@ public class BeaconPubParams
     this.fingerprint = localf.C();
     this.qimei = QimeiSDK.getInstance().getQimeiInternal();
     this.mac = localf.s();
-    this.wifiMac = localf.J();
-    this.wifiSsid = localf.K();
+    this.wifiMac = localf.I();
+    this.wifiSsid = localf.J();
     this.allSsid = localf.d();
     this.cid = localf.v();
   }
@@ -124,21 +123,15 @@ public class BeaconPubParams
     f localf = f.p();
     this.networkType = localf.w();
     this.modelApn = d.c();
-    if (TextUtils.isEmpty(this.imei)) {
-      this.imei = localf.m();
-    }
-    if (TextUtils.isEmpty(this.dtImei2)) {
-      this.dtImei2 = localf.n();
-    }
-    if (TextUtils.isEmpty(this.dtMeid)) {
-      this.dtMeid = localf.u();
-    }
-    if (TextUtils.isEmpty(this.imsi)) {
-      this.imsi = localf.o();
-    }
-    if (TextUtils.isEmpty(this.androidId)) {
-      this.androidId = localf.e();
-    }
+    this.imei = localf.m();
+    this.dtImei2 = localf.n();
+    this.dtMeid = localf.u();
+    this.imsi = localf.o();
+    this.androidId = localf.e();
+    this.mac = localf.s();
+    this.wifiMac = localf.I();
+    this.wifiSsid = localf.J();
+    this.allSsid = localf.d();
   }
   
   public String getAllSsid()

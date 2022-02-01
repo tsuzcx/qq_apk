@@ -21,9 +21,9 @@ class StoryPickerFragment$CheckedVideosEventReceiver
   
   public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull SelectVideoPlayerStrategy.SelectedVideosEvent paramSelectedVideosEvent)
   {
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList);
-    List localList = paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
+    paramStoryPickerFragment.f.clear();
+    paramStoryPickerFragment.f.addAll(paramSelectedVideosEvent.b);
+    List localList = paramStoryPickerFragment.b.a();
     int i = 0;
     while (i < localList.size())
     {
@@ -31,16 +31,16 @@ class StoryPickerFragment$CheckedVideosEventReceiver
       while (localIterator.hasNext())
       {
         VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
-        if (paramSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString)) {
-          localFakeVideoUIItem.jdField_a_of_type_Boolean = true;
+        if (paramSelectedVideosEvent.b.contains(localFakeVideoUIItem.a)) {
+          localFakeVideoUIItem.c = true;
         } else {
-          localFakeVideoUIItem.jdField_a_of_type_Boolean = false;
+          localFakeVideoUIItem.c = false;
         }
       }
       i += 1;
     }
     paramStoryPickerFragment.c();
-    if (paramSelectedVideosEvent.jdField_a_of_type_Boolean) {
+    if (paramSelectedVideosEvent.a) {
       paramStoryPickerFragment.rightViewText.performClick();
     }
   }

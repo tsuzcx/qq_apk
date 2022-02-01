@@ -21,10 +21,10 @@ class ArkAppItemBubbleBuilder$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_AndroidContentContext)) {
+    if (ForwardSDKB77AIOHelper.a(this.a, this.b.e)) {
       return;
     }
-    paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.a);
     if (paramDialogInterface.msgData == null)
     {
       if (paramDialogInterface.ark_app_message == null)
@@ -34,10 +34,10 @@ class ArkAppItemBubbleBuilder$2
       }
       paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    if (this.b.f != null)
     {
       paramInt = paramDialogInterface.getProcessState();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+      this.b.d.getMessageFacade().h(this.b.f.b, this.b.f.a, this.a.uniseq);
       if ((paramInt != 1002) && (paramInt != 0))
       {
         Object localObject = BaseApplicationImpl.getApplication().getRuntime();
@@ -55,14 +55,14 @@ class ArkAppItemBubbleBuilder$2
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialogInterface, null, true);
+        this.b.d.getMessageFacade().a(paramDialogInterface, null, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class QQFileEngineImpl
   
   public void clearNewDownload()
   {
-    this.mApp.getFileManagerEngine().c();
+    this.mApp.getFileManagerEngine().r();
   }
   
   public void delAllSelectedFiles(boolean paramBoolean)
@@ -48,7 +48,7 @@ public class QQFileEngineImpl
   
   public boolean delete(long paramLong)
   {
-    return this.mApp.getFileManagerEngine().b(paramLong);
+    return this.mApp.getFileManagerEngine().c(paramLong);
   }
   
   public void deleteOfflineFile(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
@@ -73,47 +73,47 @@ public class QQFileEngineImpl
   
   public String downloadOfflineVideoThumb(FileManagerEntity paramFileManagerEntity)
   {
-    return this.mApp.getFileManagerEngine().a(paramFileManagerEntity);
+    return this.mApp.getFileManagerEngine().b(paramFileManagerEntity);
   }
   
   public void exitQlinkLocalFileBrowser()
   {
-    this.mApp.getQQProxyForQlink().f();
+    this.mApp.getQQProxyForQlink().g();
   }
   
   public void favProxyAddListener(IQQFavProxy.QQFavProxyListener paramQQFavProxyListener)
   {
-    this.mApp.getFileManagerEngine().a().addListener(paramQQFavProxyListener);
+    this.mApp.getFileManagerEngine().h().addListener(paramQQFavProxyListener);
   }
   
   public void favProxyCancelGetFileList(long paramLong)
   {
-    this.mApp.getFileManagerEngine().a().cancelGetFileList(paramLong);
+    this.mApp.getFileManagerEngine().h().cancelGetFileList(paramLong);
   }
   
   public void favProxyDeleteListener(IQQFavProxy.QQFavProxyListener paramQQFavProxyListener)
   {
-    this.mApp.getFileManagerEngine().a().deleteListener(paramQQFavProxyListener);
+    this.mApp.getFileManagerEngine().h().deleteListener(paramQQFavProxyListener);
   }
   
   public void favProxyGetFileList(long paramLong, boolean paramBoolean, Bundle paramBundle, IQQFavProxy.GetFileListResult paramGetFileListResult)
   {
-    this.mApp.getFileManagerEngine().a().getFileList(paramLong, paramBoolean, paramBundle, paramGetFileListResult);
+    this.mApp.getFileManagerEngine().h().getFileList(paramLong, paramBoolean, paramBundle, paramGetFileListResult);
   }
   
   public long favProxyGetGettedPartList(long paramLong, List<FavFileInfo> paramList)
   {
-    return this.mApp.getFileManagerEngine().a().getGettedPartList(paramLong, paramList);
+    return this.mApp.getFileManagerEngine().h().getGettedPartList(paramLong, paramList);
   }
   
   public void favProxyRefreshList(Bundle paramBundle)
   {
-    this.mApp.getFileManagerEngine().a().refreshList(paramBundle);
+    this.mApp.getFileManagerEngine().h().refreshList(paramBundle);
   }
   
   public void favProxydownloadThumb(FavFileInfo paramFavFileInfo, int paramInt)
   {
-    this.mApp.getFileManagerEngine().a().downloadThumb(paramFavFileInfo, paramInt);
+    this.mApp.getFileManagerEngine().h().downloadThumb(paramFavFileInfo, paramInt);
   }
   
   public int getBigDataHostList(boolean paramBoolean, int paramInt, List<QQFileHostInfo> paramList)
@@ -128,7 +128,7 @@ public class QQFileEngineImpl
     {
       QLog.i("QQFileEngineImpl", 1, "[IPv6-File] exciting offlinefile upload. is config enable IPv6.");
       localObject2 = ((IExcitingTransferAdapter)localObject1).getBigDataHostList(false);
-      List localList = FileIPv6StrateyController.a().getIPV6listForExcitingUpload(this.mApp, paramInt);
+      List localList = FileIPv6StrateyController.b().getIPV6listForExcitingUpload(this.mApp, paramInt);
       localObject1 = localObject2;
       paramInt = i;
       if (localList != null)
@@ -178,27 +178,27 @@ public class QQFileEngineImpl
       return -1;
     }
     paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt1);
-    paramString = FileIPv6StrateyController.a().getIPlistForV6Domain(this.mApp, paramString, paramInt2);
+    paramString = FileIPv6StrateyController.b().getIPlistForV6Domain(this.mApp, paramString, paramInt2);
     if ((paramString != null) && (!paramString.a()))
     {
-      Iterator localIterator = paramString.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = paramString.b.iterator();
       while (localIterator.hasNext())
       {
         FileIPv6StrateyController.IPInfo localIPInfo = (FileIPv6StrateyController.IPInfo)localIterator.next();
         if (paramInt1 == 0)
         {
-          paramList.add(localIPInfo.jdField_a_of_type_JavaLangString);
+          paramList.add(localIPInfo.a);
         }
         else
         {
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(localIPInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localIPInfo.a);
           localStringBuilder.append(":");
-          localStringBuilder.append(localIPInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(localIPInfo.b);
           paramList.add(localStringBuilder.toString());
         }
       }
-      return paramString.jdField_a_of_type_Int;
+      return paramString.a;
     }
     return -1;
   }
@@ -210,7 +210,7 @@ public class QQFileEngineImpl
   
   public void getWeiYunPreview(String paramString1, String paramString2)
   {
-    this.mApp.getFileManagerEngine().c(paramString1, paramString2);
+    this.mApp.getFileManagerEngine().d(paramString1, paramString2);
   }
   
   public String getWeiYunVideoThumb(String paramString1, String paramString2, int paramInt, WeiYunFileInfo paramWeiYunFileInfo)
@@ -220,17 +220,17 @@ public class QQFileEngineImpl
   
   public boolean hasQueriedVerifyPassword()
   {
-    return this.mApp.getFileManagerEngine().a();
+    return this.mApp.getFileManagerEngine().o();
   }
   
   public void initAppStoreSDK()
   {
-    this.mApp.getFileManagerEngine().a().a();
+    this.mApp.getFileManagerEngine().f().a();
   }
   
   public boolean isFileInUploaderQueue(String paramString)
   {
-    return this.mApp.getFileManagerRSCenter().a(paramString);
+    return this.mApp.getFileManagerRSCenter().b(paramString);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -249,7 +249,7 @@ public class QQFileEngineImpl
   
   public void pauseOnlineTrans(long paramLong)
   {
-    this.mApp.getOnlineFileSessionCenter().a(paramLong);
+    this.mApp.getOnlineFileSessionCenter().c(paramLong);
   }
   
   public FileManagerEntity queryFileEntityByFileId(String paramString)
@@ -259,7 +259,7 @@ public class QQFileEngineImpl
   
   public void queryNeedVerifyPwd()
   {
-    this.mApp.getFileManagerEngine().a();
+    this.mApp.getFileManagerEngine().n();
   }
   
   public void queryWeiyunFileList(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
@@ -269,12 +269,12 @@ public class QQFileEngineImpl
   
   public void reciveFile(FileManagerEntity paramFileManagerEntity)
   {
-    this.mApp.getFileManagerEngine().c(paramFileManagerEntity);
+    this.mApp.getFileManagerEngine().h(paramFileManagerEntity);
   }
   
   public void recvOnLineFile(long paramLong)
   {
-    this.mApp.getOnlineFileSessionCenter().a(paramLong);
+    this.mApp.getOnlineFileSessionCenter().b(paramLong);
   }
   
   public void requestSendQlinkFile(Activity paramActivity, ArrayList<String> paramArrayList, String paramString)
@@ -284,22 +284,22 @@ public class QQFileEngineImpl
   
   public void resume(long paramLong)
   {
-    this.mApp.getFileManagerEngine().a(paramLong);
+    this.mApp.getFileManagerEngine().b(paramLong);
   }
   
   public void resumeOnlineTrans(long paramLong)
   {
-    this.mApp.getOnlineFileSessionCenter().b(paramLong);
+    this.mApp.getOnlineFileSessionCenter().d(paramLong);
   }
   
   public void reviceFile(FileManagerEntity paramFileManagerEntity)
   {
-    this.mApp.getFileManagerEngine().c(paramFileManagerEntity);
+    this.mApp.getFileManagerEngine().h(paramFileManagerEntity);
   }
   
   public ArrayList<FileManagerEntity> saveAllSelectFileToWeiYun()
   {
-    return this.mApp.getFileManagerEngine().a();
+    return this.mApp.getFileManagerEngine().q();
   }
   
   public void sendAllSelectedFiles(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
@@ -314,7 +314,7 @@ public class QQFileEngineImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileEngineImpl
  * JD-Core Version:    0.7.0.1
  */

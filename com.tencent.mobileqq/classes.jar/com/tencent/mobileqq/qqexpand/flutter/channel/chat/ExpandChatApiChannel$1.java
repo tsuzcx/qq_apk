@@ -12,28 +12,28 @@ class ExpandChatApiChannel$1
   public void a()
   {
     HashMap localHashMap = new HashMap();
-    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.a[1], localHashMap);
+    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.e[1], localHashMap);
   }
   
   public void a(String paramString)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("infos", paramString);
-    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.a[2], localHashMap);
+    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.e[2], localHashMap);
   }
   
   public void a(String paramString, int paramInt)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("info", paramString);
-    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.a[3], localHashMap);
+    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.e[3], localHashMap);
   }
   
   public void b(String paramString)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("conversations", paramString);
-    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.a[0], localHashMap);
+    ExpandChatApiChannel.a(this.a, ExpandChatApiChannel.e[0], localHashMap);
   }
   
   public void b(String paramString, int paramInt)
@@ -43,7 +43,7 @@ class ExpandChatApiChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatApiChannel.1
  * JD-Core Version:    0.7.0.1
  */

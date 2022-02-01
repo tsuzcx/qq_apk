@@ -9,17 +9,17 @@ class BaseAuthorityAccountView$DelAccountRunnable$2
   
   public void run()
   {
-    this.a.this$0.f();
-    if (this.a.this$0.a != null)
+    this.a.this$0.i();
+    if (this.a.this$0.h != null)
     {
-      this.a.this$0.a.dismiss();
-      this.a.this$0.a = null;
+      this.a.this$0.h.dismiss();
+      this.a.this$0.h = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseAuthorityAccountView.DelAccountRunnable.2
  * JD-Core Version:    0.7.0.1
  */

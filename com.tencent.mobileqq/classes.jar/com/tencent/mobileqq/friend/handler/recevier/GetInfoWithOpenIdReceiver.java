@@ -96,12 +96,12 @@ public class GetInfoWithOpenIdReceiver
         }
       }
     }
-    ((FriendHandler)a()).notifyUI(73, bool1, paramToServiceMsg);
+    ((FriendHandler)c()).notifyUI(73, bool1, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.GetInfoWithOpenIdReceiver
  * JD-Core Version:    0.7.0.1
  */

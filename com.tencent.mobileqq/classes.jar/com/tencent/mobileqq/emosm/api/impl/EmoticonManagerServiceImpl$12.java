@@ -11,12 +11,12 @@ class EmoticonManagerServiceImpl$12
   
   public PicEmoticonInfo a(MarkFaceMessage paramMarkFaceMessage)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplEmoticonManagerServiceImpl.syncGetEmoticonInfo(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
+    return this.b.syncGetEmoticonInfo(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl.12
  * JD-Core Version:    0.7.0.1
  */

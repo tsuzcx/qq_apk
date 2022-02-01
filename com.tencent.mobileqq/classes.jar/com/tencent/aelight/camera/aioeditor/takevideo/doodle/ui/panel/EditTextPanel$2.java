@@ -21,19 +21,19 @@ class EditTextPanel$2
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
-      if (this.a.a.a == null) {
+      if (this.a.b.e == null) {
         return;
       }
-      int j = this.a.a.a.getChildCount();
+      int j = this.a.b.e.getChildCount();
       DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)QIMManager.a(7);
       int i = 0;
       while (i < j)
       {
-        Object localObject = this.a.a.a.getChildAt(i);
-        localObject = (EditTextEffectView.EditTextHolder)this.a.a.getChildViewHolder((View)localObject);
-        if (((EditTextEffectView.EditTextHolder)localObject).a.isContainsResUrl(paramString)) {
+        Object localObject = this.a.b.e.getChildAt(i);
+        localObject = (EditTextEffectView.EditTextHolder)this.a.b.getChildViewHolder((View)localObject);
+        if (((EditTextEffectView.EditTextHolder)localObject).b.isContainsResUrl(paramString)) {
           ThreadManager.getUIHandler().post(new EditTextPanel.2.2(this, paramBoolean, (EditTextEffectView.EditTextHolder)localObject, localDynamicTextConfigManager));
         }
         i += 1;
@@ -43,7 +43,7 @@ class EditTextPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextPanel.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class ProfileCardManager$1
   
   public void run()
   {
-    Object localObject1 = FileUtils.readFileToStringEx(this.jdField_a_of_type_JavaIoFile, -1);
+    Object localObject1 = FileUtils.readFileToStringEx(this.a, -1);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
       try
       {
@@ -24,39 +24,39 @@ class ProfileCardManager$1
         if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
         {
           JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(0);
-          localObject1 = new ProfileCardManager.DefaultCardItem(this.this$0, this.jdField_a_of_type_Int);
-          ((ProfileCardManager.DefaultCardItem)localObject1).jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
+          localObject1 = new ProfileCardManager.DefaultCardItem(this.this$0, this.b);
+          ((ProfileCardManager.DefaultCardItem)localObject1).b = localJSONObject.optString("name");
           Object localObject2 = localJSONObject.optJSONObject("previewImage");
           StringBuilder localStringBuilder;
           if (localObject2 != null)
           {
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(ProfileCardManager.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(ProfileCardManager.c);
             localStringBuilder.append(((JSONObject)localObject2).optString("src"));
-            ((ProfileCardManager.DefaultCardItem)localObject1).b = localStringBuilder.toString();
+            ((ProfileCardManager.DefaultCardItem)localObject1).c = localStringBuilder.toString();
           }
           localObject2 = localJSONObject.optJSONObject("coverImg");
           if (localObject2 != null)
           {
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(ProfileCardManager.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(ProfileCardManager.c);
             localStringBuilder.append(((JSONObject)localObject2).optString("src"));
-            ((ProfileCardManager.DefaultCardItem)localObject1).c = localStringBuilder.toString();
+            ((ProfileCardManager.DefaultCardItem)localObject1).d = localStringBuilder.toString();
           }
           localJSONObject = localJSONObject.optJSONObject("detailImage");
           if (localJSONObject != null)
           {
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(ProfileCardManager.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(ProfileCardManager.c);
             ((StringBuilder)localObject2).append(localJSONObject.optString("src"));
-            ((ProfileCardManager.DefaultCardItem)localObject1).d = ((StringBuilder)localObject2).toString();
+            ((ProfileCardManager.DefaultCardItem)localObject1).e = ((StringBuilder)localObject2).toString();
           }
-          ((ProfileCardManager.DefaultCardItem)localObject1).jdField_a_of_type_Boolean = true;
-          ProfileCardManager.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject1);
-          if (this.this$0.jdField_a_of_type_AndroidOsHandler != null)
+          ((ProfileCardManager.DefaultCardItem)localObject1).f = true;
+          ProfileCardManager.a(this.this$0).put(Integer.valueOf(this.b), localObject1);
+          if (this.this$0.h != null)
           {
-            this.this$0.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-            this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 100L);
+            this.this$0.h.removeMessages(101);
+            this.this$0.h.sendEmptyMessageDelayed(101, 100L);
             return;
           }
         }
@@ -70,7 +70,7 @@ class ProfileCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardManager.1
  * JD-Core Version:    0.7.0.1
  */

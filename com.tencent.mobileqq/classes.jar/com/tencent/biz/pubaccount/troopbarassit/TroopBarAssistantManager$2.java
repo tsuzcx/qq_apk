@@ -22,15 +22,15 @@ class TroopBarAssistantManager$2
   public void run()
   {
     Object localObject1 = new JSONArray();
-    Object localObject2 = this.this$0.a.keySet().iterator();
+    Object localObject2 = this.this$0.j.keySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       JSONObject localJSONObject = new JSONObject();
       String str = (String)((Iterator)localObject2).next();
-      if ((str != null) && (this.this$0.a.get(str) != null)) {
+      if ((str != null) && (this.this$0.j.get(str) != null)) {
         try
         {
-          localJSONObject.put(str, this.this$0.a.get(str));
+          localJSONObject.put(str, this.this$0.j.get(str));
           ((JSONArray)localObject1).put(localJSONObject);
         }
         catch (JSONException localJSONException)
@@ -54,7 +54,7 @@ class TroopBarAssistantManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.2
  * JD-Core Version:    0.7.0.1
  */

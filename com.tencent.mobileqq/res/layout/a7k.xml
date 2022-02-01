@@ -6,7 +6,7 @@
             <com.tencent.widget.FadeIconImageView android:layout_gravity="center_vertical" android:id="@id/du6" android:background="@drawable/dr0" android:layout_width="12.0dip" android:layout_height="21.0dip" android:scaleType="fitXY" />
         </LinearLayout>
         <RelativeLayout android:id="@id/mao" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="18.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/kbx" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/gso" android:singleLine="true" android:layout_centerInParent="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/black" android:ellipsize="end" android:gravity="center" android:id="@id/kbx" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/gso" android:singleLine="true" android:layout_centerInParent="true" />
             <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/loi" android:background="@drawable/hsv" android:layout_width="87.5dip" android:layout_height="29.5dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
         </RelativeLayout>
         <LinearLayout android:orientation="horizontal" android:id="@id/eis" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="0.0">

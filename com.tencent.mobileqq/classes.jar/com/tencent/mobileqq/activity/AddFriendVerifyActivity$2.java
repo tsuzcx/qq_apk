@@ -27,34 +27,34 @@ class AddFriendVerifyActivity$2
   {
     if (AddFriendVerifyActivity.a(this.a))
     {
-      if (this.a.b != 0) {
+      if (this.a.B != 0) {
         ReportController.b(null, "dc00898", "", "", "0X800B5B3", "0X800B5B3", 0, 0, "", "", "", "");
       }
-      if (this.a.a != null)
+      if (this.a.s != null)
       {
         this.a.getWindow().setSoftInputMode(2);
-        this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-        AddFriendVerifyActivity.a(this.a).clearFocus();
+        this.a.s.hideSoftInputFromWindow(AddFriendVerifyActivity.b(this.a).getWindowToken(), 0);
+        AddFriendVerifyActivity.b(this.a).clearFocus();
       }
       Object localObject;
-      if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
+      if (AddFriendVerifyActivity.b(this.a).getText().toString().length() > 90)
       {
-        localObject = new ReportDialog(this.a, 2131756189);
-        ((Dialog)localObject).setContentView(2131562765);
-        ((TextView)((Dialog)localObject).findViewById(2131365644)).setText(this.a.getString(2131691105));
-        ((ProgressBar)((Dialog)localObject).findViewById(2131367113)).setVisibility(8);
-        ((ImageView)((Dialog)localObject).findViewById(2131380236)).setImageResource(2130839590);
+        localObject = new ReportDialog(this.a, 2131953338);
+        ((Dialog)localObject).setContentView(2131629210);
+        ((TextView)((Dialog)localObject).findViewById(2131431876)).setText(this.a.getString(2131888051));
+        ((ProgressBar)((Dialog)localObject).findViewById(2131433567)).setVisibility(8);
+        ((ImageView)((Dialog)localObject).findViewById(2131449154)).setImageResource(2130840055);
         ((Dialog)localObject).show();
       }
       else
       {
         localObject = this.a;
-        ((AddFriendVerifyActivity)localObject).a(AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject).getText().toString(), true);
+        ((AddFriendVerifyActivity)localObject).a(AddFriendVerifyActivity.b((AddFriendVerifyActivity)localObject).getText().toString(), true);
         if (NetworkUtil.isNetSupport(this.a))
         {
           int i;
-          if (AddFriendVerifyActivity.a(this.a) != null) {
-            i = AddFriendVerifyActivity.a(this.a).a();
+          if (AddFriendVerifyActivity.c(this.a) != null) {
+            i = AddFriendVerifyActivity.c(this.a).a();
           } else {
             i = 2000;
           }
@@ -63,15 +63,15 @@ class AddFriendVerifyActivity$2
           ((StringBuilder)localObject).append(i);
           QLog.e("AddFriendVerifyActivity", 1, ((StringBuilder)localObject).toString());
           localObject = this.a;
-          AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject, AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
+          AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject, AddFriendVerifyActivity.d((AddFriendVerifyActivity)localObject), AddFriendVerifyActivity.b(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
           ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A62B", PobingTemplateAdapter.a(i), 0, "", "", "", "");
           if ("d2g".equals(this.a.getIntent().getStringExtra("jump_from"))) {
-            ReportController.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
+            ReportController.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.d(this.a), "", "", "");
           }
         }
         else
         {
-          QQToast.a(this.a, 1, 2131694424, 0).b(this.a.getTitleBarHeight());
+          QQToast.makeText(this.a, 1, 2131892104, 0).show(this.a.getTitleBarHeight());
         }
       }
     }
@@ -80,7 +80,7 @@ class AddFriendVerifyActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,14 @@ public class FrameMaterialContentAdapter
   
   protected MaterialContentAdapter.ContentItemVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new FrameMaterialContentAdapter.FrameContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318608, paramViewGroup, false));
+    return new FrameMaterialContentAdapter.FrameContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056486, paramViewGroup, false));
   }
   
   public void a(MaterialContentAdapter.ContentItemVH paramContentItemVH, int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
     super.a(paramContentItemVH, paramInt, paramMetaMaterial);
     if (!TextUtils.isEmpty(paramMetaMaterial.id)) {
-      AEReportUtils.j(paramMetaMaterial.id);
+      AEReportUtils.i(paramMetaMaterial.id);
     }
     if ((paramContentItemVH instanceof FrameMaterialContentAdapter.FrameContentItemVH))
     {
@@ -41,15 +41,15 @@ public class FrameMaterialContentAdapter
       {
         if (!TextUtils.isEmpty(FrameMetaMaterialKt.a(paramMetaMaterial)))
         {
-          paramContentItemVH.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(Color.parseColor(FrameMetaMaterialKt.a(paramMetaMaterial)));
-          paramContentItemVH = paramContentItemVH.jdField_a_of_type_ComTencentMobileqqArmapMapRoundCorneredFrameLayout.getLayoutParams();
-          paramContentItemVH.height = ViewUtils.a(42.0F);
-          paramContentItemVH.width = ViewUtils.a(42.0F);
+          paramContentItemVH.b.setBackgroundColor(Color.parseColor(FrameMetaMaterialKt.a(paramMetaMaterial)));
+          paramContentItemVH = paramContentItemVH.a.getLayoutParams();
+          paramContentItemVH.height = ViewUtils.dip2px(42.0F);
+          paramContentItemVH.width = ViewUtils.dip2px(42.0F);
         }
       }
       else
       {
-        paramContentItemVH = paramContentItemVH.jdField_a_of_type_ComTencentMobileqqArmapMapRoundCorneredFrameLayout.getLayoutParams();
+        paramContentItemVH = paramContentItemVH.a.getLayoutParams();
         paramContentItemVH.height = -1;
         paramContentItemVH.width = -1;
       }
@@ -58,7 +58,7 @@ public class FrameMaterialContentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.frame.FrameMaterialContentAdapter
  * JD-Core Version:    0.7.0.1
  */

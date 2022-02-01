@@ -16,10 +16,10 @@ public class FileForwardManager
   {
     IProtocolManager localIProtocolManager = (IProtocolManager)this.a.getRuntimeService(IProtocolManager.class);
     ProtocolFileInfo localProtocolFileInfo = new ProtocolFileInfo();
-    localProtocolFileInfo.jdField_a_of_type_JavaLangString = paramString4;
-    localProtocolFileInfo.jdField_a_of_type_Long = paramLong;
-    localProtocolFileInfo.c = paramString5;
-    localProtocolFileInfo.b = paramString3;
+    localProtocolFileInfo.a = paramString4;
+    localProtocolFileInfo.b = paramLong;
+    localProtocolFileInfo.d = paramString5;
+    localProtocolFileInfo.c = paramString3;
     if (paramInt1 != 3000)
     {
       localIProtocolManager.forwardDiscToOther(paramString1, paramInt1, paramString2, paramInt2, localProtocolFileInfo, 5000, 5, new FileForwardManager.3(this, paramForwarResult));
@@ -32,8 +32,8 @@ public class FileForwardManager
   {
     IProtocolManager localIProtocolManager = (IProtocolManager)this.a.getRuntimeService(IProtocolManager.class);
     ProtocolFileInfo localProtocolFileInfo = new ProtocolFileInfo();
-    localProtocolFileInfo.jdField_a_of_type_JavaLangString = paramString4;
-    localProtocolFileInfo.jdField_a_of_type_Long = paramLong;
+    localProtocolFileInfo.a = paramString4;
+    localProtocolFileInfo.b = paramLong;
     if ((paramInt1 != 3000) && (paramInt1 != 1))
     {
       localIProtocolManager.forwardOfflineFileToBuddy(paramString1, paramInt1, paramString2, paramString3, 5000, 3, new FileForwardManager.2(this, paramForwarResult));
@@ -44,7 +44,7 @@ public class FileForwardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileForwardManager
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ class NavigationView$2
     } else {
       bool1 = false;
     }
-    NavigationView.a(this.a).b(bool1);
+    NavigationView.b(this.a).b(bool1);
     this.a.setDrawTopInsetForeground(bool1);
     localObject = ContextUtils.a(this.a.getContext());
     if ((localObject != null) && (Build.VERSION.SDK_INT >= 21))
@@ -55,7 +55,7 @@ class NavigationView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.navigation.NavigationView.2
  * JD-Core Version:    0.7.0.1
  */

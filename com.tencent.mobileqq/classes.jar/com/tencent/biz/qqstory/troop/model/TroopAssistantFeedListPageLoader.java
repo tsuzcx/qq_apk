@@ -21,25 +21,9 @@ public class TroopAssistantFeedListPageLoader
     super(paramOnFeedItemPageLoadListener);
   }
   
-  protected HomeFeedData a()
-  {
-    FeedManager localFeedManager = (FeedManager)SuperManager.a(11);
-    List localList = localFeedManager.b();
-    HomeFeedData localHomeFeedData = new HomeFeedData(new ErrorMessage());
-    localHomeFeedData.jdField_b_of_type_JavaUtilList = localFeedManager.b(localList);
-    localHomeFeedData.jdField_b_of_type_Boolean = true;
-    localHomeFeedData.a = localHomeFeedData.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localHomeFeedData;
-  }
-  
   protected HomeFeedData a(ErrorMessage paramErrorMessage)
   {
     return new HomeFeedData(paramErrorMessage);
-  }
-  
-  protected JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, HomeFeedData> a()
-  {
-    return new HomeFeedAllInfoPullSegment();
   }
   
   protected JobSegment<Integer, FeedListPageLoaderBase.GetFeedIdListResult> a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
@@ -50,6 +34,22 @@ public class TroopAssistantFeedListPageLoader
   protected void a(List<String> paramList, boolean paramBoolean)
   {
     ((FeedManager)SuperManager.a(11)).b(paramList, paramBoolean);
+  }
+  
+  protected HomeFeedData d()
+  {
+    FeedManager localFeedManager = (FeedManager)SuperManager.a(11);
+    List localList = localFeedManager.d();
+    HomeFeedData localHomeFeedData = new HomeFeedData(new ErrorMessage());
+    localHomeFeedData.f = localFeedManager.b(localList);
+    localHomeFeedData.b = true;
+    localHomeFeedData.a = localHomeFeedData.f.isEmpty();
+    return localHomeFeedData;
+  }
+  
+  protected JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, HomeFeedData> e()
+  {
+    return new HomeFeedAllInfoPullSegment();
   }
 }
 

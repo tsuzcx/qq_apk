@@ -46,13 +46,13 @@ public class AdVideoButtonUIUtils
   
   public static void a(Context paramContext, ADVideoItemHolder paramADVideoItemHolder)
   {
-    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null))
+    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.az != null) && (paramADVideoItemHolder.az.c != null))
     {
-      VideoInfo localVideoInfo = paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a;
+      VideoInfo localVideoInfo = paramADVideoItemHolder.az.c;
       if (ReadInJoyAdUtils.a(localVideoInfo)) {
-        paramADVideoItemHolder.m.setText(ReadInJoyAdUtils.a(paramContext, localVideoInfo, 1));
+        paramADVideoItemHolder.N.setText(ReadInJoyAdUtils.a(paramContext, localVideoInfo, 1));
       }
-      paramADVideoItemHolder.m.setTag(paramADVideoItemHolder);
+      paramADVideoItemHolder.N.setTag(paramADVideoItemHolder);
     }
   }
   
@@ -106,25 +106,25 @@ public class AdVideoButtonUIUtils
   
   public static void a(ADVideoItemHolder paramADVideoItemHolder, String paramString)
   {
-    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.n != null))
+    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.R != null))
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      paramADVideoItemHolder.n.setText(paramString);
-      a(paramADVideoItemHolder.n);
+      paramADVideoItemHolder.R.setText(paramString);
+      a(paramADVideoItemHolder.R);
       ThreadManager.getUIHandler().postDelayed(new AdVideoButtonUIUtils.1(paramADVideoItemHolder), 1000L);
     }
   }
   
   public static void a(boolean paramBoolean, ADVideoItemHolder paramADVideoItemHolder)
   {
-    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null))
+    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.az != null) && (paramADVideoItemHolder.az.c != null))
     {
-      if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.a == null) {
+      if (paramADVideoItemHolder.az.c.as == null) {
         return;
       }
-      int i = a(paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.a);
+      int i = a(paramADVideoItemHolder.az.c.as);
       if (!paramBoolean)
       {
         a(paramADVideoItemHolder, i);
@@ -157,62 +157,62 @@ public class AdVideoButtonUIUtils
   {
     if (paramADVideoItemHolder != null)
     {
-      if (paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView == null) {
+      if (paramADVideoItemHolder.U == null) {
         return;
       }
-      Context localContext = paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getContext();
+      Context localContext = paramADVideoItemHolder.U.getContext();
       if (localContext == null) {
         return;
       }
-      if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null)
+      if (paramADVideoItemHolder.az != null)
       {
-        if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a == null) {
+        if (paramADVideoItemHolder.az.c == null) {
           return;
         }
-        Object localObject = paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a;
+        Object localObject = paramADVideoItemHolder.az.c;
         int i = localContext.getResources().getDisplayMetrics().widthPixels - AIOUtils.b(77.0F, localContext.getResources());
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.k.getLayoutParams();
-        a(paramADVideoItemHolder.k, localLayoutParams, i);
-        localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-        a(paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout, localLayoutParams, i);
-        localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.aI.getLayoutParams();
+        a(paramADVideoItemHolder.aI, localLayoutParams, i);
+        localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.K.getLayoutParams();
+        a(paramADVideoItemHolder.K, localLayoutParams, i);
+        localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.f.getLayoutParams();
         if (ReadInJoyAdUtils.a((VideoInfo)localObject)) {
           localLayoutParams.bottomMargin = AIOUtils.b(124.0F, localContext.getResources());
         } else {
           localLayoutParams.bottomMargin = AIOUtils.b(114.0F, localContext.getResources());
         }
-        a(paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetTextView, localLayoutParams, i);
-        paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetTextView.setLineSpacing(AIOUtils.b(4.0F, localContext.getResources()), 1.0F);
-        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_l_of_type_AndroidViewView.getLayoutParams();
+        a(paramADVideoItemHolder.f, localLayoutParams, i);
+        paramADVideoItemHolder.f.setLineSpacing(AIOUtils.b(4.0F, localContext.getResources()), 1.0F);
+        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.y.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(65.0F, localContext.getResources());
         if (a()) {
           ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(62.0F, localContext.getResources());
         } else {
           ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(120.0F, localContext.getResources());
         }
-        paramADVideoItemHolder.jdField_l_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getLayoutParams();
+        paramADVideoItemHolder.y.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.U.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(65.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+        paramADVideoItemHolder.U.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.z.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).width = AIOUtils.b(60.0F, localContext.getResources());
         ((LinearLayout.LayoutParams)localObject).height = AIOUtils.b(60.0F, localContext.getResources());
         ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(10.0F, localContext.getResources());
         ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.b(12.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.jdField_b_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+        paramADVideoItemHolder.z.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.E.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(10.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        paramADVideoItemHolder.h.setTypeface(Typeface.DEFAULT);
-        paramADVideoItemHolder.h.setTextSize(12.0F);
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getLayoutParams();
+        paramADVideoItemHolder.E.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramADVideoItemHolder.C.setTypeface(Typeface.DEFAULT);
+        paramADVideoItemHolder.C.setTextSize(12.0F);
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.V.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).height = AIOUtils.b(38.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar.getLayoutParams();
+        paramADVideoItemHolder.V.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.aj.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(50.0F, localContext.getResources());
         ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
         ((RelativeLayout.LayoutParams)localObject).rightMargin = 0;
-        paramADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramADVideoItemHolder.aj.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
   }
@@ -225,10 +225,10 @@ public class AdVideoButtonUIUtils
   
   private static void b(boolean paramBoolean, ADVideoItemHolder paramADVideoItemHolder, int paramInt)
   {
-    if (paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView == null) {
+    if (paramADVideoItemHolder.U == null) {
       return;
     }
-    Context localContext = paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getContext();
+    Context localContext = paramADVideoItemHolder.U.getContext();
     if (localContext == null) {
       return;
     }
@@ -277,20 +277,20 @@ public class AdVideoButtonUIUtils
     localStringBuilder.append(" height = ");
     localStringBuilder.append(i1);
     ((IRIJAdLogService)localObject).d("AdVideoButtonUIUtils", localStringBuilder.toString());
-    localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getLayoutParams();
-    a(paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, (RelativeLayout.LayoutParams)localObject, localContext, i, j, k, m, n, i1);
+    localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.U.getLayoutParams();
+    a(paramADVideoItemHolder.U, (RelativeLayout.LayoutParams)localObject, localContext, i, j, k, m, n, i1);
     if (paramInt == 3)
     {
       b(paramADVideoItemHolder);
       AdVideoDpaTagUtils.a(paramADVideoItemHolder);
-      a(paramADVideoItemHolder.p);
-      a(paramADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup);
+      a(paramADVideoItemHolder.aM);
+      a(paramADVideoItemHolder.aN);
       return;
     }
     c(paramADVideoItemHolder, paramInt);
     AdVideoDpaTagUtils.b(paramADVideoItemHolder);
-    b(paramADVideoItemHolder.p);
-    b(paramADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup);
+    b(paramADVideoItemHolder.aM);
+    b(paramADVideoItemHolder.aN);
   }
   
   public static boolean b()
@@ -314,53 +314,53 @@ public class AdVideoButtonUIUtils
   {
     if (paramADVideoItemHolder != null)
     {
-      if (paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView == null) {
+      if (paramADVideoItemHolder.U == null) {
         return;
       }
-      Context localContext = paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getContext();
+      Context localContext = paramADVideoItemHolder.U.getContext();
       if (localContext == null) {
         return;
       }
-      if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null)
+      if (paramADVideoItemHolder.az != null)
       {
-        if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a == null) {
+        if (paramADVideoItemHolder.az.c == null) {
           return;
         }
-        Object localObject = paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a;
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        Object localObject = paramADVideoItemHolder.az.c;
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramADVideoItemHolder.f.getLayoutParams();
         if (ReadInJoyAdUtils.a((VideoInfo)localObject)) {
           localLayoutParams.bottomMargin = AIOUtils.b(51.0F, localContext.getResources());
         } else {
           localLayoutParams.bottomMargin = AIOUtils.b(55.0F, localContext.getResources());
         }
-        paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getLayoutParams();
+        paramADVideoItemHolder.f.setLayoutParams(localLayoutParams);
+        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.U.getLayoutParams();
         if (paramInt == 2) {
           ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(5.0F, localContext.getResources());
         } else {
           ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(0.0F, localContext.getResources());
         }
-        paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+        paramADVideoItemHolder.U.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.z.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).width = AIOUtils.b(75.0F, localContext.getResources());
         ((LinearLayout.LayoutParams)localObject).height = AIOUtils.b(75.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        paramADVideoItemHolder.h.setTypeface(Typeface.DEFAULT);
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getLayoutParams();
+        paramADVideoItemHolder.z.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramADVideoItemHolder.C.setTypeface(Typeface.DEFAULT);
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.V.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).height = AIOUtils.b(31.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar.getLayoutParams();
+        paramADVideoItemHolder.V.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (RelativeLayout.LayoutParams)paramADVideoItemHolder.aj.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(41.5F, localContext.getResources());
         ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(15.0F, localContext.getResources());
         ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(15.0F, localContext.getResources());
-        paramADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramADVideoItemHolder.aj.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdVideoButtonUIUtils
  * JD-Core Version:    0.7.0.1
  */

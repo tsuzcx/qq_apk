@@ -11,7 +11,7 @@ public class GetSubAccount
 {
   protected int doStep()
   {
-    ISubAccountProtocService localISubAccountProtocService = (ISubAccountProtocService)this.mAutomator.a.getRuntimeService(ISubAccountProtocService.class, "");
+    ISubAccountProtocService localISubAccountProtocService = (ISubAccountProtocService)this.mAutomator.k.getRuntimeService(ISubAccountProtocService.class, "");
     if (localISubAccountProtocService != null) {
       localISubAccountProtocService.getBindAccount();
     }
@@ -23,7 +23,7 @@ public class GetSubAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSubAccount
  * JD-Core Version:    0.7.0.1
  */

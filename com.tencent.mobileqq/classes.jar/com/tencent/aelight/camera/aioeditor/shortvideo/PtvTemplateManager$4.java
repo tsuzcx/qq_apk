@@ -17,30 +17,30 @@ class PtvTemplateManager$4
   
   public void run()
   {
-    if (this.this$0.a(this.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo, true))
+    if (this.this$0.a(this.a, true))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.a = true;
+      this.a.e = true;
       return;
     }
     Object localObject = new HttpNetReq();
     ((HttpNetReq)localObject).mCallback = new PtvTemplateManager.4.1(this);
-    ((HttpNetReq)localObject).mReqUrl = this.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.c;
+    ((HttpNetReq)localObject).mReqUrl = this.a.c;
     ((HttpNetReq)localObject).mHttpMethod = 0;
-    ((HttpNetReq)localObject).mOutPath = new File(PtvTemplateManager.a(), this.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.b).getPath();
+    ((HttpNetReq)localObject).mOutPath = new File(PtvTemplateManager.f(), this.a.b).getPath();
     ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
-    ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+    ((IHttpEngineService)this.b.getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("startDownloadTemplate, url: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.c);
+      ((StringBuilder)localObject).append(this.a.c);
       QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.PtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

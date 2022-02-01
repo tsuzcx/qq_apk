@@ -9,14 +9,14 @@ class ListenTogetherPlayFragment$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherPlayFragment$1.a.a.d())) {
-      ListenTogetherPlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherPlayFragment$1.a, this.jdField_a_of_type_Int, this.b, false);
+    if (this.a.equals(this.d.a.x.f())) {
+      ListenTogetherPlayFragment.a(this.d.a, this.b, this.c, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

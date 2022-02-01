@@ -9,117 +9,117 @@ public class MediaCodecDPCImpl
 {
   public int getBadCaseReportNumber()
   {
-    return MediaCodecDPC.c();
+    return MediaCodecDPC.n();
   }
   
   public float getBeatyRate()
   {
-    return MediaCodecDPC.a();
+    return MediaCodecDPC.e();
   }
   
   public int getCamera2ForceOpenSdkVersion()
   {
-    return MediaCodecDPC.e();
+    return MediaCodecDPC.w();
   }
   
   public int getCamera2SwitchValue()
   {
-    return MediaCodecDPC.f();
+    return MediaCodecDPC.x();
   }
   
   public int getCqMaxBitrate()
   {
-    return MediaCodecDPC.b();
+    return MediaCodecDPC.k();
   }
   
   public int getFollowCaptureGopSize()
   {
-    return MediaCodecDPC.d();
+    return MediaCodecDPC.v();
   }
   
   public int getQmcfDPCFrameType()
   {
-    return MediaCodecDPC.a();
+    return MediaCodecDPC.i();
   }
   
   public boolean isARParticleSwtichOpen()
   {
-    return MediaCodecDPC.k();
+    return MediaCodecDPC.q();
   }
   
   public boolean isBadCaseReport()
   {
-    return MediaCodecDPC.h();
+    return MediaCodecDPC.m();
   }
   
   public boolean isBeautySwitchOpen()
   {
-    return MediaCodecDPC.b();
+    return MediaCodecDPC.d();
   }
   
   public boolean isCqBitrateModeSwitchOpen()
   {
-    return MediaCodecDPC.f();
+    return MediaCodecDPC.j();
   }
   
   public boolean isDanceRankingSwitchOpen()
   {
-    return MediaCodecDPC.j();
+    return MediaCodecDPC.p();
   }
   
   public boolean isDeNoiseSwitchOpen()
   {
-    return MediaCodecDPC.e();
+    return MediaCodecDPC.h();
   }
   
   public boolean isFaceDanceSwitchOpen()
   {
-    return MediaCodecDPC.g();
+    return MediaCodecDPC.l();
   }
   
   public boolean isFollowCaptureSwitchOpen()
   {
-    return MediaCodecDPC.o();
+    return MediaCodecDPC.u();
   }
   
   public boolean isGestureSwitchOpen()
   {
-    return MediaCodecDPC.d();
+    return MediaCodecDPC.g();
   }
   
   public boolean isPortraitSwitchOpen()
   {
-    return MediaCodecDPC.i();
+    return MediaCodecDPC.o();
   }
   
   public boolean isSamSungCameraOpen()
   {
-    return DovSVParamManager.a().b();
+    return DovSVParamManager.a().d();
   }
   
   public boolean isSegmentMediaCodecEncodeSwtichOpen()
   {
-    return MediaCodecDPC.l();
+    return MediaCodecDPC.r();
   }
   
   public boolean isSvafSwitchOpen()
   {
-    return MediaCodecDPC.c();
+    return MediaCodecDPC.f();
   }
   
   public boolean isSwitchOpen()
   {
-    return MediaCodecDPC.a();
+    return MediaCodecDPC.c();
   }
   
   public boolean isTransitionSwtichOpen()
   {
-    return MediaCodecDPC.n();
+    return MediaCodecDPC.t();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.util.api.impl.MediaCodecDPCImpl
  * JD-Core Version:    0.7.0.1
  */

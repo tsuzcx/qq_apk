@@ -15,7 +15,7 @@ final class ExpandFlutterContainerFragment$updateLoadingProgress$1
   public final void run()
   {
     int j = this.a;
-    ProgressBar localProgressBar = ExpandFlutterContainerFragment.a(this.this$0);
+    ProgressBar localProgressBar = ExpandFlutterContainerFragment.e(this.this$0);
     if (localProgressBar != null) {
       i = localProgressBar.getProgress();
     } else {
@@ -24,7 +24,7 @@ final class ExpandFlutterContainerFragment$updateLoadingProgress$1
     int i = j + i;
     if (i < 100)
     {
-      localProgressBar = ExpandFlutterContainerFragment.a(this.this$0);
+      localProgressBar = ExpandFlutterContainerFragment.e(this.this$0);
       if (localProgressBar != null) {
         localProgressBar.setProgress(i);
       }
@@ -35,7 +35,7 @@ final class ExpandFlutterContainerFragment$updateLoadingProgress$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterContainerFragment.updateLoadingProgress.1
  * JD-Core Version:    0.7.0.1
  */

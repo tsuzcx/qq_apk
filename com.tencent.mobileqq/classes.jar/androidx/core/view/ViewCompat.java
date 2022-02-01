@@ -36,6 +36,7 @@ import androidx.annotation.Px;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
 import androidx.collection.SimpleArrayMap;
+import androidx.core.R.id;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat;
 import androidx.core.view.accessibility.AccessibilityNodeProviderCompat;
@@ -52,7 +53,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ViewCompat
 {
-  private static final int[] ACCESSIBILITY_ACTIONS_RESOURCE_IDS = { 2131361830, 2131361831, 2131361842, 2131361853, 2131361856, 2131361857, 2131361858, 2131361859, 2131361860, 2131361861, 2131361832, 2131361833, 2131361834, 2131361835, 2131361836, 2131361837, 2131361838, 2131361839, 2131361840, 2131361841, 2131361843, 2131361844, 2131361845, 2131361846, 2131361847, 2131361848, 2131361849, 2131361850, 2131361851, 2131361852, 2131361854, 2131361855 };
+  private static final int[] ACCESSIBILITY_ACTIONS_RESOURCE_IDS = { R.id.accessibility_custom_action_0, R.id.accessibility_custom_action_1, R.id.accessibility_custom_action_2, R.id.accessibility_custom_action_3, R.id.accessibility_custom_action_4, R.id.accessibility_custom_action_5, R.id.accessibility_custom_action_6, R.id.accessibility_custom_action_7, R.id.accessibility_custom_action_8, R.id.accessibility_custom_action_9, R.id.accessibility_custom_action_10, R.id.accessibility_custom_action_11, R.id.accessibility_custom_action_12, R.id.accessibility_custom_action_13, R.id.accessibility_custom_action_14, R.id.accessibility_custom_action_15, R.id.accessibility_custom_action_16, R.id.accessibility_custom_action_17, R.id.accessibility_custom_action_18, R.id.accessibility_custom_action_19, R.id.accessibility_custom_action_20, R.id.accessibility_custom_action_21, R.id.accessibility_custom_action_22, R.id.accessibility_custom_action_23, R.id.accessibility_custom_action_24, R.id.accessibility_custom_action_25, R.id.accessibility_custom_action_26, R.id.accessibility_custom_action_27, R.id.accessibility_custom_action_28, R.id.accessibility_custom_action_29, R.id.accessibility_custom_action_30, R.id.accessibility_custom_action_31 };
   public static final int ACCESSIBILITY_LIVE_REGION_ASSERTIVE = 2;
   public static final int ACCESSIBILITY_LIVE_REGION_NONE = 0;
   public static final int ACCESSIBILITY_LIVE_REGION_POLITE = 1;
@@ -119,7 +120,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> accessibilityHeadingProperty()
   {
-    return new ViewCompat.5(2131378269, Boolean.class, 28);
+    return new ViewCompat.5(R.id.tag_accessibility_heading, Boolean.class, 28);
   }
   
   public static int addAccessibilityAction(@NonNull View paramView, @NonNull CharSequence paramCharSequence, @NonNull AccessibilityViewCommand paramAccessibilityViewCommand)
@@ -153,24 +154,24 @@ public class ViewCompat
   {
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject2 = (SimpleArrayMap)paramView.getTag(2131378313);
+      localObject2 = (SimpleArrayMap)paramView.getTag(R.id.tag_unhandled_key_listeners);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new SimpleArrayMap();
-        paramView.setTag(2131378313, localObject1);
+        paramView.setTag(R.id.tag_unhandled_key_listeners, localObject1);
       }
       localObject2 = new ViewCompat.2(paramOnUnhandledKeyEventListenerCompat);
       ((SimpleArrayMap)localObject1).put(paramOnUnhandledKeyEventListenerCompat, localObject2);
       paramView.addOnUnhandledKeyEventListener((View.OnUnhandledKeyEventListener)localObject2);
       return;
     }
-    Object localObject2 = (ArrayList)paramView.getTag(2131378313);
+    Object localObject2 = (ArrayList)paramView.getTag(R.id.tag_unhandled_key_listeners);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ArrayList();
-      paramView.setTag(2131378313, localObject1);
+      paramView.setTag(R.id.tag_unhandled_key_listeners, localObject1);
     }
     ((ArrayList)localObject1).add(paramOnUnhandledKeyEventListenerCompat);
     if (((ArrayList)localObject1).size() == 1) {
@@ -489,8 +490,8 @@ public class ViewCompat
     }
     catch (Throwable paramView)
     {
-      label35:
-      break label35;
+      label36:
+      break label36;
     }
     sAccessibilityDelegateCheckFailed = true;
     return null;
@@ -506,8 +507,8 @@ public class ViewCompat
     }
     catch (Throwable paramView)
     {
-      label65:
-      break label65;
+      label66:
+      break label66;
     }
     sAccessibilityDelegateCheckFailed = true;
     return null;
@@ -541,12 +542,12 @@ public class ViewCompat
   
   private static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378267);
+    ArrayList localArrayList2 = (ArrayList)paramView.getTag(R.id.tag_accessibility_actions);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      paramView.setTag(2131378267, localArrayList1);
+      paramView.setTag(R.id.tag_accessibility_actions, localArrayList1);
     }
     return localArrayList1;
   }
@@ -739,7 +740,7 @@ public class ViewCompat
     {
       sMinHeightField = View.class.getDeclaredField("mMinHeight");
       sMinHeightField.setAccessible(true);
-      label37:
+      label38:
       sMinHeightFieldFetched = true;
       Field localField = sMinHeightField;
       if (localField != null) {}
@@ -750,14 +751,14 @@ public class ViewCompat
       }
       catch (Exception paramView)
       {
-        label63:
-        break label63;
+        label64:
+        break label64;
       }
       return 0;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      break label37;
+      break label38;
     }
   }
   
@@ -771,7 +772,7 @@ public class ViewCompat
     {
       sMinWidthField = View.class.getDeclaredField("mMinWidth");
       sMinWidthField.setAccessible(true);
-      label37:
+      label38:
       sMinWidthFieldFetched = true;
       Field localField = sMinWidthField;
       if (localField != null) {}
@@ -782,14 +783,14 @@ public class ViewCompat
       }
       catch (Exception paramView)
       {
-        label63:
-        break label63;
+        label64:
+        break label64;
       }
       return 0;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      break label37;
+      break label38;
     }
   }
   
@@ -1290,7 +1291,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<CharSequence> paneTitleProperty()
   {
-    return new ViewCompat.4(2131378270, CharSequence.class, 8, 28);
+    return new ViewCompat.4(R.id.tag_accessibility_pane_title, CharSequence.class, 8, 28);
   }
   
   public static boolean performAccessibilityAction(@NonNull View paramView, int paramInt, Bundle paramBundle)
@@ -1369,7 +1370,7 @@ public class ViewCompat
   {
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject = (SimpleArrayMap)paramView.getTag(2131378313);
+      localObject = (SimpleArrayMap)paramView.getTag(R.id.tag_unhandled_key_listeners);
       if (localObject == null) {
         return;
       }
@@ -1379,7 +1380,7 @@ public class ViewCompat
       }
       return;
     }
-    Object localObject = (ArrayList)paramView.getTag(2131378313);
+    Object localObject = (ArrayList)paramView.getTag(R.id.tag_unhandled_key_listeners);
     if (localObject != null)
     {
       ((ArrayList)localObject).remove(paramOnUnhandledKeyEventListenerCompat);
@@ -1447,7 +1448,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> screenReaderFocusableProperty()
   {
-    return new ViewCompat.3(2131378303, Boolean.class, 28);
+    return new ViewCompat.3(R.id.tag_screen_reader_focusable, Boolean.class, 28);
   }
   
   public static void setAccessibilityDelegate(@NonNull View paramView, AccessibilityDelegateCompat paramAccessibilityDelegateCompat)

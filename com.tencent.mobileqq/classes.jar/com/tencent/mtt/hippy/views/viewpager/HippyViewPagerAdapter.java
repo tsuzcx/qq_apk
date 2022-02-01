@@ -13,14 +13,12 @@ public class HippyViewPagerAdapter
 {
   private static final String TAG = "HippyViewPagerAdapter";
   private int mChildSize = 0;
-  private HippyInstanceContext mEngineContext;
   private int mInitPageIndex = 0;
-  protected HippyViewPager mViewPager;
-  protected List<View> mViews = new ArrayList();
+  protected final HippyViewPager mViewPager;
+  protected final List<View> mViews = new ArrayList();
   
   public HippyViewPagerAdapter(HippyInstanceContext paramHippyInstanceContext, HippyViewPager paramHippyViewPager)
   {
-    this.mEngineContext = paramHippyInstanceContext;
     this.mViewPager = paramHippyViewPager;
   }
   
@@ -154,7 +152,7 @@ public class HippyViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

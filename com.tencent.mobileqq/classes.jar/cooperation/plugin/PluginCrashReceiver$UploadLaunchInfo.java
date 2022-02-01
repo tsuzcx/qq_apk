@@ -9,13 +9,13 @@ class PluginCrashReceiver$UploadLaunchInfo
   extends AsyncTask<String, String, String>
 {
   public Intent a;
-  private IStatisticsUploader a;
+  private IStatisticsUploader b;
   
   protected String a(String... paramVarArgs)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupSpeedInfo(MobileQQ.getContext(), this.jdField_a_of_type_AndroidContentIntent);
+      this.b.uploadStartupSpeedInfo(MobileQQ.getContext(), this.a);
       label16:
       return null;
     }
@@ -27,7 +27,7 @@ class PluginCrashReceiver$UploadLaunchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver.UploadLaunchInfo
  * JD-Core Version:    0.7.0.1
  */

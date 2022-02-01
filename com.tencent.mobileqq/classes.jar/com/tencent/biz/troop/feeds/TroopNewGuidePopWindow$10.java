@@ -18,22 +18,22 @@ class TroopNewGuidePopWindow$10
     {
       paramMessage = new StringBuilder();
       paramMessage.append("MSG_SHOW_WINDOW mTroopNotify = ");
-      paramMessage.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify);
+      paramMessage.append(this.a.B);
       paramMessage.append(", mTroopNotifyAd = ");
-      paramMessage.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd);
+      paramMessage.append(this.a.C);
       QLog.d("TroopTipsPopWindow", 2, paramMessage.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd != null)
+    if (this.a.C != null)
     {
       paramMessage = this.a;
-      paramMessage.a(paramMessage.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd);
+      paramMessage.a(paramMessage.C);
     }
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.10
  * JD-Core Version:    0.7.0.1
  */

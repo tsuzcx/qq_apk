@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/eq8" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/qu6" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/skin_black_item" android:id="@id/nt_" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.5dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="5.0dip" />
-    <TextView android:textSize="14.0sp" android:layout_gravity="center_vertical" android:id="@id/nta" android:background="@drawable/ihd" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="12.0dip" android:singleLine="true" android:contentDescription="@string/yk7" />
-</LinearLayout>
+    <ImageView android:id="@id/qu5" android:paddingLeft="21.0dip" android:paddingRight="21.0dip" android:layout_width="58.0dip" android:layout_height="28.0dip" android:src="@drawable/j9r" android:scaleType="center" />
+    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/qty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:singleLine="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="@dimen/ayo" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/qju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/qty" android:layout_alignRight="@id/qty" />
+</RelativeLayout>

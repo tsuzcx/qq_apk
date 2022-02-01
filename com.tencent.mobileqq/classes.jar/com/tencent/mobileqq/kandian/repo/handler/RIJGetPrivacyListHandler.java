@@ -44,7 +44,7 @@ public class RIJGetPrivacyListHandler
     localGetVisibleListReqBody.uint32_want_num.set(paramInt2);
     ((oidb_cmd0xc32.ReqBody)localObject).msg_get_req_body.set(localGetVisibleListReqBody);
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xc32", 3122, 2, ((oidb_cmd0xc32.ReqBody)localObject).toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq((ToServiceMsg)localObject);
+    this.a.sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -106,12 +106,12 @@ public class RIJGetPrivacyListHandler
       j = 0;
       bool = false;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJGetPrivacyListHandler.1(this, m, l, paramToServiceMsg, i, j, bool));
+    this.b.post(new RIJGetPrivacyListHandler.1(this, m, l, paramToServiceMsg, i, j, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJGetPrivacyListHandler
  * JD-Core Version:    0.7.0.1
  */

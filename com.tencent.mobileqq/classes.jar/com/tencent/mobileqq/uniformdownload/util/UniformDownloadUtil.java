@@ -34,40 +34,6 @@ import mqq.os.MqqHandler;
 
 public class UniformDownloadUtil
 {
-  public static int a(String paramString)
-  {
-    return a(paramString, null);
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      return -1;
-    }
-    try
-    {
-      if (!new File(paramString1).exists())
-      {
-        paramString2 = new StringBuilder();
-        paramString2.append("[UniformDL] openApk. file is not exsited. PH:");
-        paramString2.append(paramString1);
-        QLog.e("UniformDownloadUtil", 1, paramString2.toString());
-        return -2;
-      }
-      TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).hookAM4Install();
-      paramString1 = FileProvider7Helper.openApkIntent(BaseApplication.getContext(), paramString1);
-      paramString1.putExtra("big_brother_source_key", paramString2);
-      BaseApplication.getContext().startActivity(paramString1);
-      return 0;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("UniformDownloadUtil", 1, "[UniformDL] openApk. Exception 2");
-      paramString1.printStackTrace();
-    }
-    return -3;
-  }
-  
   public static long a()
   {
     return (int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt());
@@ -116,560 +82,6 @@ public class UniformDownloadUtil
     return null;
   }
   
-  /* Error */
-  public static UniformDownloadUtil.FileInfo a(String paramString)
-  {
-    // Byte code:
-    //   0: ldc 228
-    //   2: astore 14
-    //   4: lconst_0
-    //   5: lstore_1
-    //   6: aload_0
-    //   7: ifnull +741 -> 748
-    //   10: aload_0
-    //   11: invokevirtual 231	java/lang/String:length	()I
-    //   14: iconst_1
-    //   15: if_icmpge +6 -> 21
-    //   18: goto +730 -> 748
-    //   21: new 233	java/net/URL
-    //   24: dup
-    //   25: aload_0
-    //   26: invokespecial 234	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   29: invokevirtual 238	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   32: checkcast 240	java/net/HttpURLConnection
-    //   35: astore 13
-    //   37: lload_1
-    //   38: lstore_3
-    //   39: lload_1
-    //   40: lstore 5
-    //   42: lload_1
-    //   43: lstore 7
-    //   45: aload 13
-    //   47: astore 12
-    //   49: aload 13
-    //   51: ldc 242
-    //   53: ldc 244
-    //   55: invokevirtual 248	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   58: lload_1
-    //   59: lstore_3
-    //   60: lload_1
-    //   61: lstore 5
-    //   63: lload_1
-    //   64: lstore 7
-    //   66: aload 13
-    //   68: astore 12
-    //   70: aload 13
-    //   72: ldc 250
-    //   74: ldc 244
-    //   76: invokevirtual 248	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: lload_1
-    //   80: lstore_3
-    //   81: lload_1
-    //   82: lstore 5
-    //   84: lload_1
-    //   85: lstore 7
-    //   87: aload 13
-    //   89: astore 12
-    //   91: aload 13
-    //   93: ldc 242
-    //   95: ldc 244
-    //   97: invokevirtual 248	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   100: lload_1
-    //   101: lstore_3
-    //   102: lload_1
-    //   103: lstore 5
-    //   105: lload_1
-    //   106: lstore 7
-    //   108: aload 13
-    //   110: astore 12
-    //   112: aload 13
-    //   114: ldc 250
-    //   116: ldc 244
-    //   118: invokevirtual 248	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   121: lload_1
-    //   122: lstore_3
-    //   123: lload_1
-    //   124: lstore 5
-    //   126: lload_1
-    //   127: lstore 7
-    //   129: aload 13
-    //   131: astore 12
-    //   133: aload 13
-    //   135: invokevirtual 253	java/net/HttpURLConnection:connect	()V
-    //   138: lload_1
-    //   139: lstore_3
-    //   140: lload_1
-    //   141: lstore 5
-    //   143: lload_1
-    //   144: lstore 7
-    //   146: aload 13
-    //   148: astore 12
-    //   150: aload 13
-    //   152: invokevirtual 256	java/net/HttpURLConnection:getResponseCode	()I
-    //   155: pop
-    //   156: lload_1
-    //   157: lstore_3
-    //   158: lload_1
-    //   159: lstore 5
-    //   161: lload_1
-    //   162: lstore 7
-    //   164: aload 13
-    //   166: astore 12
-    //   168: aload 13
-    //   170: invokevirtual 260	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
-    //   173: astore 10
-    //   175: lload_1
-    //   176: lstore_3
-    //   177: lload_1
-    //   178: lstore 5
-    //   180: lload_1
-    //   181: lstore 7
-    //   183: aload 13
-    //   185: astore 12
-    //   187: new 27	java/lang/StringBuilder
-    //   190: dup
-    //   191: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   194: astore 11
-    //   196: lload_1
-    //   197: lstore_3
-    //   198: lload_1
-    //   199: lstore 5
-    //   201: lload_1
-    //   202: lstore 7
-    //   204: aload 13
-    //   206: astore 12
-    //   208: aload 11
-    //   210: ldc_w 262
-    //   213: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: pop
-    //   217: lload_1
-    //   218: lstore_3
-    //   219: lload_1
-    //   220: lstore 5
-    //   222: lload_1
-    //   223: lstore 7
-    //   225: aload 13
-    //   227: astore 12
-    //   229: aload 11
-    //   231: aload 10
-    //   233: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   236: pop
-    //   237: lload_1
-    //   238: lstore_3
-    //   239: lload_1
-    //   240: lstore 5
-    //   242: lload_1
-    //   243: lstore 7
-    //   245: aload 13
-    //   247: astore 12
-    //   249: ldc_w 267
-    //   252: iconst_1
-    //   253: aload 11
-    //   255: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   258: invokestatic 46	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   261: lload_1
-    //   262: lstore_3
-    //   263: lload_1
-    //   264: lstore 5
-    //   266: lload_1
-    //   267: lstore 7
-    //   269: aload 13
-    //   271: astore 12
-    //   273: aload 13
-    //   275: invokevirtual 270	java/net/HttpURLConnection:getContentLength	()I
-    //   278: i2l
-    //   279: lstore_1
-    //   280: lload_1
-    //   281: lstore_3
-    //   282: lload_1
-    //   283: lstore 5
-    //   285: lload_1
-    //   286: lstore 7
-    //   288: aload 13
-    //   290: astore 12
-    //   292: aload 13
-    //   294: invokestatic 273	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
-    //   297: astore 11
-    //   299: aload 13
-    //   301: astore 12
-    //   303: aload 11
-    //   305: invokestatic 279	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   308: ifeq +22 -> 330
-    //   311: aload 10
-    //   313: ifnull +17 -> 330
-    //   316: aload 13
-    //   318: astore 12
-    //   320: aload 10
-    //   322: invokevirtual 282	java/net/URL:getFile	()Ljava/lang/String;
-    //   325: astore 10
-    //   327: goto +7 -> 334
-    //   330: aload 11
-    //   332: astore 10
-    //   334: aload 10
-    //   336: astore 11
-    //   338: aload 10
-    //   340: ifnull +92 -> 432
-    //   343: aload 13
-    //   345: astore 12
-    //   347: aload 10
-    //   349: ldc_w 284
-    //   352: invokevirtual 287	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   355: ifne +26 -> 381
-    //   358: aload 13
-    //   360: astore 12
-    //   362: aload 10
-    //   364: ldc_w 289
-    //   367: invokevirtual 287	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   370: istore 9
-    //   372: aload 10
-    //   374: astore 11
-    //   376: iload 9
-    //   378: ifeq +54 -> 432
-    //   381: aconst_null
-    //   382: astore 11
-    //   384: goto +48 -> 432
-    //   387: astore 12
-    //   389: aload 10
-    //   391: astore 11
-    //   393: aload 12
-    //   395: astore 10
-    //   397: lload_1
-    //   398: lstore_3
-    //   399: goto +122 -> 521
-    //   402: astore 12
-    //   404: aload 10
-    //   406: astore 11
-    //   408: aload 12
-    //   410: astore 10
-    //   412: lload_1
-    //   413: lstore_3
-    //   414: goto +152 -> 566
-    //   417: astore 12
-    //   419: aload 10
-    //   421: astore 11
-    //   423: aload 12
-    //   425: astore 10
-    //   427: lload_1
-    //   428: lstore_3
-    //   429: goto +166 -> 595
-    //   432: aload 13
-    //   434: ifnull +8 -> 442
-    //   437: aload 13
-    //   439: invokevirtual 292	java/net/HttpURLConnection:disconnect	()V
-    //   442: aload 11
-    //   444: astore 10
-    //   446: goto +178 -> 624
-    //   449: astore 10
-    //   451: lload_1
-    //   452: lstore_3
-    //   453: goto +68 -> 521
-    //   456: astore 10
-    //   458: lload_1
-    //   459: lstore_3
-    //   460: goto +106 -> 566
-    //   463: astore 10
-    //   465: lload_1
-    //   466: lstore_3
-    //   467: goto +128 -> 595
-    //   470: astore 10
-    //   472: ldc 228
-    //   474: astore 11
-    //   476: goto +45 -> 521
-    //   479: astore 10
-    //   481: ldc 228
-    //   483: astore 11
-    //   485: lload 5
-    //   487: lstore_3
-    //   488: goto +78 -> 566
-    //   491: astore 10
-    //   493: ldc 228
-    //   495: astore 11
-    //   497: lload 7
-    //   499: lstore_3
-    //   500: goto +95 -> 595
-    //   503: astore_0
-    //   504: aconst_null
-    //   505: astore 12
-    //   507: goto +229 -> 736
-    //   510: astore 10
-    //   512: ldc 228
-    //   514: astore 11
-    //   516: aconst_null
-    //   517: astore 13
-    //   519: lload_1
-    //   520: lstore_3
-    //   521: aload 13
-    //   523: astore 12
-    //   525: aload 10
-    //   527: invokevirtual 84	java/lang/Exception:printStackTrace	()V
-    //   530: aload 11
-    //   532: astore 10
-    //   534: lload_3
-    //   535: lstore_1
-    //   536: aload 13
-    //   538: ifnull +86 -> 624
-    //   541: lload_3
-    //   542: lstore_1
-    //   543: aload 11
-    //   545: astore 10
-    //   547: aload 13
-    //   549: invokevirtual 292	java/net/HttpURLConnection:disconnect	()V
-    //   552: goto +72 -> 624
-    //   555: astore 10
-    //   557: ldc 228
-    //   559: astore 11
-    //   561: aconst_null
-    //   562: astore 13
-    //   564: lload_1
-    //   565: lstore_3
-    //   566: aload 13
-    //   568: astore 12
-    //   570: aload 10
-    //   572: invokevirtual 293	java/io/IOException:printStackTrace	()V
-    //   575: aload 11
-    //   577: astore 10
-    //   579: lload_3
-    //   580: lstore_1
-    //   581: aload 13
-    //   583: ifnull +41 -> 624
-    //   586: aload 11
-    //   588: astore 10
-    //   590: lload_3
-    //   591: lstore_1
-    //   592: goto -45 -> 547
-    //   595: aload 13
-    //   597: astore 12
-    //   599: aload 10
-    //   601: invokevirtual 294	java/net/MalformedURLException:printStackTrace	()V
-    //   604: aload 11
-    //   606: astore 10
-    //   608: lload_3
-    //   609: lstore_1
-    //   610: aload 13
-    //   612: ifnull +12 -> 624
-    //   615: aload 11
-    //   617: astore 10
-    //   619: lload_3
-    //   620: lstore_1
-    //   621: goto -74 -> 547
-    //   624: aload 14
-    //   626: astore 11
-    //   628: aload_0
-    //   629: invokestatic 300	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   632: astore 12
-    //   634: aload 14
-    //   636: astore_0
-    //   637: aload 12
-    //   639: ifnull +72 -> 711
-    //   642: aload 14
-    //   644: astore 11
-    //   646: aload 12
-    //   648: invokevirtual 303	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
-    //   651: astore 12
-    //   653: aload 12
-    //   655: astore_0
-    //   656: aload 12
-    //   658: ifnull +53 -> 711
-    //   661: aload 12
-    //   663: astore 11
-    //   665: aload 12
-    //   667: ldc_w 284
-    //   670: invokevirtual 287	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   673: ifne +25 -> 698
-    //   676: aload 12
-    //   678: astore 11
-    //   680: aload 12
-    //   682: ldc_w 289
-    //   685: invokevirtual 287	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   688: istore 9
-    //   690: aload 12
-    //   692: astore_0
-    //   693: iload 9
-    //   695: ifeq +16 -> 711
-    //   698: aconst_null
-    //   699: astore_0
-    //   700: goto +11 -> 711
-    //   703: astore_0
-    //   704: aload_0
-    //   705: invokevirtual 84	java/lang/Exception:printStackTrace	()V
-    //   708: aload 11
-    //   710: astore_0
-    //   711: aload 10
-    //   713: invokestatic 279	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   716: ifne +9 -> 725
-    //   719: aload 10
-    //   721: astore_0
-    //   722: goto +3 -> 725
-    //   725: new 305	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo
-    //   728: dup
-    //   729: aload_0
-    //   730: lload_1
-    //   731: invokespecial 308	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo:<init>	(Ljava/lang/String;J)V
-    //   734: areturn
-    //   735: astore_0
-    //   736: aload 12
-    //   738: ifnull +8 -> 746
-    //   741: aload 12
-    //   743: invokevirtual 292	java/net/HttpURLConnection:disconnect	()V
-    //   746: aload_0
-    //   747: athrow
-    //   748: new 305	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo
-    //   751: dup
-    //   752: aconst_null
-    //   753: lconst_0
-    //   754: invokespecial 308	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo:<init>	(Ljava/lang/String;J)V
-    //   757: areturn
-    //   758: astore 10
-    //   760: ldc 228
-    //   762: astore 11
-    //   764: aconst_null
-    //   765: astore 13
-    //   767: lload_1
-    //   768: lstore_3
-    //   769: goto -174 -> 595
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	772	0	paramString	String
-    //   5	763	1	l1	long
-    //   38	731	3	l2	long
-    //   40	446	5	l3	long
-    //   43	455	7	l4	long
-    //   370	324	9	bool	boolean
-    //   173	272	10	localObject1	Object
-    //   449	1	10	localException1	Exception
-    //   456	1	10	localIOException1	java.io.IOException
-    //   463	1	10	localMalformedURLException1	java.net.MalformedURLException
-    //   470	1	10	localException2	Exception
-    //   479	1	10	localIOException2	java.io.IOException
-    //   491	1	10	localMalformedURLException2	java.net.MalformedURLException
-    //   510	16	10	localException3	Exception
-    //   532	14	10	localObject2	Object
-    //   555	16	10	localIOException3	java.io.IOException
-    //   577	143	10	localObject3	Object
-    //   758	1	10	localMalformedURLException3	java.net.MalformedURLException
-    //   194	569	11	localObject4	Object
-    //   47	314	12	localHttpURLConnection1	HttpURLConnection
-    //   387	7	12	localException4	Exception
-    //   402	7	12	localIOException4	java.io.IOException
-    //   417	7	12	localMalformedURLException4	java.net.MalformedURLException
-    //   505	237	12	localObject5	Object
-    //   35	731	13	localHttpURLConnection2	HttpURLConnection
-    //   2	641	14	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   347	358	387	java/lang/Exception
-    //   362	372	387	java/lang/Exception
-    //   347	358	402	java/io/IOException
-    //   362	372	402	java/io/IOException
-    //   347	358	417	java/net/MalformedURLException
-    //   362	372	417	java/net/MalformedURLException
-    //   303	311	449	java/lang/Exception
-    //   320	327	449	java/lang/Exception
-    //   303	311	456	java/io/IOException
-    //   320	327	456	java/io/IOException
-    //   303	311	463	java/net/MalformedURLException
-    //   320	327	463	java/net/MalformedURLException
-    //   49	58	470	java/lang/Exception
-    //   70	79	470	java/lang/Exception
-    //   91	100	470	java/lang/Exception
-    //   112	121	470	java/lang/Exception
-    //   133	138	470	java/lang/Exception
-    //   150	156	470	java/lang/Exception
-    //   168	175	470	java/lang/Exception
-    //   187	196	470	java/lang/Exception
-    //   208	217	470	java/lang/Exception
-    //   229	237	470	java/lang/Exception
-    //   249	261	470	java/lang/Exception
-    //   273	280	470	java/lang/Exception
-    //   292	299	470	java/lang/Exception
-    //   49	58	479	java/io/IOException
-    //   70	79	479	java/io/IOException
-    //   91	100	479	java/io/IOException
-    //   112	121	479	java/io/IOException
-    //   133	138	479	java/io/IOException
-    //   150	156	479	java/io/IOException
-    //   168	175	479	java/io/IOException
-    //   187	196	479	java/io/IOException
-    //   208	217	479	java/io/IOException
-    //   229	237	479	java/io/IOException
-    //   249	261	479	java/io/IOException
-    //   273	280	479	java/io/IOException
-    //   292	299	479	java/io/IOException
-    //   49	58	491	java/net/MalformedURLException
-    //   70	79	491	java/net/MalformedURLException
-    //   91	100	491	java/net/MalformedURLException
-    //   112	121	491	java/net/MalformedURLException
-    //   133	138	491	java/net/MalformedURLException
-    //   150	156	491	java/net/MalformedURLException
-    //   168	175	491	java/net/MalformedURLException
-    //   187	196	491	java/net/MalformedURLException
-    //   208	217	491	java/net/MalformedURLException
-    //   229	237	491	java/net/MalformedURLException
-    //   249	261	491	java/net/MalformedURLException
-    //   273	280	491	java/net/MalformedURLException
-    //   292	299	491	java/net/MalformedURLException
-    //   21	37	503	finally
-    //   21	37	510	java/lang/Exception
-    //   21	37	555	java/io/IOException
-    //   628	634	703	java/lang/Exception
-    //   646	653	703	java/lang/Exception
-    //   665	676	703	java/lang/Exception
-    //   680	690	703	java/lang/Exception
-    //   49	58	735	finally
-    //   70	79	735	finally
-    //   91	100	735	finally
-    //   112	121	735	finally
-    //   133	138	735	finally
-    //   150	156	735	finally
-    //   168	175	735	finally
-    //   187	196	735	finally
-    //   208	217	735	finally
-    //   229	237	735	finally
-    //   249	261	735	finally
-    //   273	280	735	finally
-    //   292	299	735	finally
-    //   303	311	735	finally
-    //   320	327	735	finally
-    //   347	358	735	finally
-    //   362	372	735	finally
-    //   525	530	735	finally
-    //   570	575	735	finally
-    //   599	604	735	finally
-    //   21	37	758	java/net/MalformedURLException
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null)
-    {
-      QLog.e("UniformDownloadUtil", 1, "[UniformDL] isApk. path = null");
-      return null;
-    }
-    try
-    {
-      Object localObject = BaseApplication.getContext().getPackageManager().getPackageArchiveInfo(paramString, 1);
-      if (localObject != null) {
-        localObject = ((PackageInfo)localObject).applicationInfo.packageName;
-      } else {
-        localObject = null;
-      }
-      if (localObject != null) {
-        return localObject;
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[UniformDL] isApk. get package failed.  PH:");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.e("UniformDownloadUtil", 1, ((StringBuilder)localObject).toString());
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("UniformDownloadUtil", 1, "[UniformDL] isApk. Exception 1");
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
   private static String a(HttpURLConnection paramHttpURLConnection)
   {
     Object localObject4 = null;
@@ -709,7 +121,7 @@ public class UniformDownloadUtil
                 localObject1 = localObject4;
                 i = ((String)localObject2).indexOf(";");
                 if (-1 == i) {
-                  break label271;
+                  break label263;
                 }
                 localObject1 = localObject4;
                 paramHttpURLConnection = ((String)localObject2).substring(0, i - 1);
@@ -747,14 +159,9 @@ public class UniformDownloadUtil
         localObject2 = localObject1;
       }
       return localObject2;
-      label271:
+      label263:
       paramHttpURLConnection = (HttpURLConnection)localObject2;
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    a(paramString, null);
   }
   
   public static void a(String paramString, IGetFileInfoCallBack paramIGetFileInfoCallBack)
@@ -772,17 +179,600 @@ public class UniformDownloadUtil
     a(paramString1, new UniformDownloadUtil.3(paramString1, paramString2));
   }
   
-  public static boolean a(String paramString)
+  public static int b(String paramString1, String paramString2)
   {
-    return (paramString != null) && (FileUtil.a(paramString).equalsIgnoreCase(".apk"));
+    if (paramString1 == null) {
+      return -1;
+    }
+    try
+    {
+      if (!new File(paramString1).exists())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("[UniformDL] openApk. file is not exsited. PH:");
+        paramString2.append(paramString1);
+        QLog.e("UniformDownloadUtil", 1, paramString2.toString());
+        return -2;
+      }
+      TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).hookAM4Install();
+      paramString1 = FileProvider7Helper.openApkIntent(BaseApplication.getContext(), paramString1);
+      paramString1.putExtra("big_brother_source_key", paramString2);
+      BaseApplication.getContext().startActivity(paramString1);
+      return 0;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("UniformDownloadUtil", 1, "[UniformDL] openApk. Exception 2");
+      paramString1.printStackTrace();
+    }
+    return -3;
   }
   
-  public static void b(String paramString1, String paramString2)
+  /* Error */
+  public static UniformDownloadUtil.FileInfo b(String paramString)
+  {
+    // Byte code:
+    //   0: ldc_w 326
+    //   3: astore 14
+    //   5: lconst_0
+    //   6: lstore_1
+    //   7: aload_0
+    //   8: ifnull +750 -> 758
+    //   11: aload_0
+    //   12: invokevirtual 207	java/lang/String:length	()I
+    //   15: iconst_1
+    //   16: if_icmpge +6 -> 22
+    //   19: goto +739 -> 758
+    //   22: new 328	java/net/URL
+    //   25: dup
+    //   26: aload_0
+    //   27: invokespecial 329	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   30: invokevirtual 333	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   33: checkcast 175	java/net/HttpURLConnection
+    //   36: astore 13
+    //   38: lload_1
+    //   39: lstore_3
+    //   40: lload_1
+    //   41: lstore 5
+    //   43: lload_1
+    //   44: lstore 7
+    //   46: aload 13
+    //   48: astore 12
+    //   50: aload 13
+    //   52: ldc_w 335
+    //   55: ldc 187
+    //   57: invokevirtual 338	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   60: lload_1
+    //   61: lstore_3
+    //   62: lload_1
+    //   63: lstore 5
+    //   65: lload_1
+    //   66: lstore 7
+    //   68: aload 13
+    //   70: astore 12
+    //   72: aload 13
+    //   74: ldc_w 340
+    //   77: ldc 187
+    //   79: invokevirtual 338	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   82: lload_1
+    //   83: lstore_3
+    //   84: lload_1
+    //   85: lstore 5
+    //   87: lload_1
+    //   88: lstore 7
+    //   90: aload 13
+    //   92: astore 12
+    //   94: aload 13
+    //   96: ldc_w 335
+    //   99: ldc 187
+    //   101: invokevirtual 338	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   104: lload_1
+    //   105: lstore_3
+    //   106: lload_1
+    //   107: lstore 5
+    //   109: lload_1
+    //   110: lstore 7
+    //   112: aload 13
+    //   114: astore 12
+    //   116: aload 13
+    //   118: ldc_w 340
+    //   121: ldc 187
+    //   123: invokevirtual 338	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: lload_1
+    //   127: lstore_3
+    //   128: lload_1
+    //   129: lstore 5
+    //   131: lload_1
+    //   132: lstore 7
+    //   134: aload 13
+    //   136: astore 12
+    //   138: aload 13
+    //   140: invokevirtual 343	java/net/HttpURLConnection:connect	()V
+    //   143: lload_1
+    //   144: lstore_3
+    //   145: lload_1
+    //   146: lstore 5
+    //   148: lload_1
+    //   149: lstore 7
+    //   151: aload 13
+    //   153: astore 12
+    //   155: aload 13
+    //   157: invokevirtual 346	java/net/HttpURLConnection:getResponseCode	()I
+    //   160: pop
+    //   161: lload_1
+    //   162: lstore_3
+    //   163: lload_1
+    //   164: lstore 5
+    //   166: lload_1
+    //   167: lstore 7
+    //   169: aload 13
+    //   171: astore 12
+    //   173: aload 13
+    //   175: invokevirtual 350	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   178: astore 10
+    //   180: lload_1
+    //   181: lstore_3
+    //   182: lload_1
+    //   183: lstore 5
+    //   185: lload_1
+    //   186: lstore 7
+    //   188: aload 13
+    //   190: astore 12
+    //   192: new 276	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   199: astore 11
+    //   201: lload_1
+    //   202: lstore_3
+    //   203: lload_1
+    //   204: lstore 5
+    //   206: lload_1
+    //   207: lstore 7
+    //   209: aload 13
+    //   211: astore 12
+    //   213: aload 11
+    //   215: ldc_w 352
+    //   218: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: lload_1
+    //   223: lstore_3
+    //   224: lload_1
+    //   225: lstore 5
+    //   227: lload_1
+    //   228: lstore 7
+    //   230: aload 13
+    //   232: astore 12
+    //   234: aload 11
+    //   236: aload 10
+    //   238: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   241: pop
+    //   242: lload_1
+    //   243: lstore_3
+    //   244: lload_1
+    //   245: lstore 5
+    //   247: lload_1
+    //   248: lstore 7
+    //   250: aload 13
+    //   252: astore 12
+    //   254: ldc_w 357
+    //   257: iconst_1
+    //   258: aload 11
+    //   260: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   263: invokestatic 290	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   266: lload_1
+    //   267: lstore_3
+    //   268: lload_1
+    //   269: lstore 5
+    //   271: lload_1
+    //   272: lstore 7
+    //   274: aload 13
+    //   276: astore 12
+    //   278: aload 13
+    //   280: invokevirtual 360	java/net/HttpURLConnection:getContentLength	()I
+    //   283: i2l
+    //   284: lstore_1
+    //   285: lload_1
+    //   286: lstore_3
+    //   287: lload_1
+    //   288: lstore 5
+    //   290: lload_1
+    //   291: lstore 7
+    //   293: aload 13
+    //   295: astore 12
+    //   297: aload 13
+    //   299: invokestatic 362	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   302: astore 11
+    //   304: aload 13
+    //   306: astore 12
+    //   308: aload 11
+    //   310: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   313: ifeq +22 -> 335
+    //   316: aload 10
+    //   318: ifnull +17 -> 335
+    //   321: aload 13
+    //   323: astore 12
+    //   325: aload 10
+    //   327: invokevirtual 365	java/net/URL:getFile	()Ljava/lang/String;
+    //   330: astore 10
+    //   332: goto +7 -> 339
+    //   335: aload 11
+    //   337: astore 10
+    //   339: aload 10
+    //   341: astore 11
+    //   343: aload 10
+    //   345: ifnull +92 -> 437
+    //   348: aload 13
+    //   350: astore 12
+    //   352: aload 10
+    //   354: ldc_w 367
+    //   357: invokevirtual 370	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   360: ifne +26 -> 386
+    //   363: aload 13
+    //   365: astore 12
+    //   367: aload 10
+    //   369: ldc_w 372
+    //   372: invokevirtual 370	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   375: istore 9
+    //   377: aload 10
+    //   379: astore 11
+    //   381: iload 9
+    //   383: ifeq +54 -> 437
+    //   386: aconst_null
+    //   387: astore 11
+    //   389: goto +48 -> 437
+    //   392: astore 12
+    //   394: aload 10
+    //   396: astore 11
+    //   398: aload 12
+    //   400: astore 10
+    //   402: lload_1
+    //   403: lstore_3
+    //   404: goto +126 -> 530
+    //   407: astore 12
+    //   409: aload 10
+    //   411: astore 11
+    //   413: aload 12
+    //   415: astore 10
+    //   417: lload_1
+    //   418: lstore_3
+    //   419: goto +157 -> 576
+    //   422: astore 12
+    //   424: aload 10
+    //   426: astore 11
+    //   428: aload 12
+    //   430: astore 10
+    //   432: lload_1
+    //   433: lstore_3
+    //   434: goto +171 -> 605
+    //   437: aload 13
+    //   439: ifnull +8 -> 447
+    //   442: aload 13
+    //   444: invokevirtual 375	java/net/HttpURLConnection:disconnect	()V
+    //   447: aload 11
+    //   449: astore 10
+    //   451: goto +183 -> 634
+    //   454: astore 10
+    //   456: lload_1
+    //   457: lstore_3
+    //   458: goto +72 -> 530
+    //   461: astore 10
+    //   463: lload_1
+    //   464: lstore_3
+    //   465: goto +111 -> 576
+    //   468: astore 10
+    //   470: lload_1
+    //   471: lstore_3
+    //   472: goto +133 -> 605
+    //   475: astore 10
+    //   477: ldc_w 326
+    //   480: astore 11
+    //   482: goto +48 -> 530
+    //   485: astore 10
+    //   487: ldc_w 326
+    //   490: astore 11
+    //   492: lload 5
+    //   494: lstore_3
+    //   495: goto +81 -> 576
+    //   498: astore 10
+    //   500: ldc_w 326
+    //   503: astore 11
+    //   505: lload 7
+    //   507: lstore_3
+    //   508: goto +97 -> 605
+    //   511: astore_0
+    //   512: aconst_null
+    //   513: astore 12
+    //   515: goto +231 -> 746
+    //   518: astore 10
+    //   520: ldc_w 326
+    //   523: astore 11
+    //   525: aconst_null
+    //   526: astore 13
+    //   528: lload_1
+    //   529: lstore_3
+    //   530: aload 13
+    //   532: astore 12
+    //   534: aload 10
+    //   536: invokevirtual 167	java/lang/Exception:printStackTrace	()V
+    //   539: aload 11
+    //   541: astore 10
+    //   543: lload_3
+    //   544: lstore_1
+    //   545: aload 13
+    //   547: ifnull +87 -> 634
+    //   550: lload_3
+    //   551: lstore_1
+    //   552: aload 11
+    //   554: astore 10
+    //   556: aload 13
+    //   558: invokevirtual 375	java/net/HttpURLConnection:disconnect	()V
+    //   561: goto +73 -> 634
+    //   564: astore 10
+    //   566: ldc_w 326
+    //   569: astore 11
+    //   571: aconst_null
+    //   572: astore 13
+    //   574: lload_1
+    //   575: lstore_3
+    //   576: aload 13
+    //   578: astore 12
+    //   580: aload 10
+    //   582: invokevirtual 376	java/io/IOException:printStackTrace	()V
+    //   585: aload 11
+    //   587: astore 10
+    //   589: lload_3
+    //   590: lstore_1
+    //   591: aload 13
+    //   593: ifnull +41 -> 634
+    //   596: aload 11
+    //   598: astore 10
+    //   600: lload_3
+    //   601: lstore_1
+    //   602: goto -46 -> 556
+    //   605: aload 13
+    //   607: astore 12
+    //   609: aload 10
+    //   611: invokevirtual 377	java/net/MalformedURLException:printStackTrace	()V
+    //   614: aload 11
+    //   616: astore 10
+    //   618: lload_3
+    //   619: lstore_1
+    //   620: aload 13
+    //   622: ifnull +12 -> 634
+    //   625: aload 11
+    //   627: astore 10
+    //   629: lload_3
+    //   630: lstore_1
+    //   631: goto -75 -> 556
+    //   634: aload 14
+    //   636: astore 11
+    //   638: aload_0
+    //   639: invokestatic 383	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   642: astore 12
+    //   644: aload 14
+    //   646: astore_0
+    //   647: aload 12
+    //   649: ifnull +72 -> 721
+    //   652: aload 14
+    //   654: astore 11
+    //   656: aload 12
+    //   658: invokevirtual 386	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
+    //   661: astore 12
+    //   663: aload 12
+    //   665: astore_0
+    //   666: aload 12
+    //   668: ifnull +53 -> 721
+    //   671: aload 12
+    //   673: astore 11
+    //   675: aload 12
+    //   677: ldc_w 367
+    //   680: invokevirtual 370	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   683: ifne +25 -> 708
+    //   686: aload 12
+    //   688: astore 11
+    //   690: aload 12
+    //   692: ldc_w 372
+    //   695: invokevirtual 370	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   698: istore 9
+    //   700: aload 12
+    //   702: astore_0
+    //   703: iload 9
+    //   705: ifeq +16 -> 721
+    //   708: aconst_null
+    //   709: astore_0
+    //   710: goto +11 -> 721
+    //   713: astore_0
+    //   714: aload_0
+    //   715: invokevirtual 167	java/lang/Exception:printStackTrace	()V
+    //   718: aload 11
+    //   720: astore_0
+    //   721: aload 10
+    //   723: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   726: ifne +9 -> 735
+    //   729: aload 10
+    //   731: astore_0
+    //   732: goto +3 -> 735
+    //   735: new 388	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo
+    //   738: dup
+    //   739: aload_0
+    //   740: lload_1
+    //   741: invokespecial 391	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo:<init>	(Ljava/lang/String;J)V
+    //   744: areturn
+    //   745: astore_0
+    //   746: aload 12
+    //   748: ifnull +8 -> 756
+    //   751: aload 12
+    //   753: invokevirtual 375	java/net/HttpURLConnection:disconnect	()V
+    //   756: aload_0
+    //   757: athrow
+    //   758: new 388	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo
+    //   761: dup
+    //   762: aconst_null
+    //   763: lconst_0
+    //   764: invokespecial 391	com/tencent/mobileqq/uniformdownload/util/UniformDownloadUtil$FileInfo:<init>	(Ljava/lang/String;J)V
+    //   767: areturn
+    //   768: astore 10
+    //   770: ldc_w 326
+    //   773: astore 11
+    //   775: aconst_null
+    //   776: astore 13
+    //   778: lload_1
+    //   779: lstore_3
+    //   780: goto -175 -> 605
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	783	0	paramString	String
+    //   6	773	1	l1	long
+    //   39	741	3	l2	long
+    //   41	452	5	l3	long
+    //   44	462	7	l4	long
+    //   375	329	9	bool	boolean
+    //   178	272	10	localObject1	Object
+    //   454	1	10	localException1	Exception
+    //   461	1	10	localIOException1	java.io.IOException
+    //   468	1	10	localMalformedURLException1	java.net.MalformedURLException
+    //   475	1	10	localException2	Exception
+    //   485	1	10	localIOException2	java.io.IOException
+    //   498	1	10	localMalformedURLException2	java.net.MalformedURLException
+    //   518	17	10	localException3	Exception
+    //   541	14	10	localObject2	Object
+    //   564	17	10	localIOException3	java.io.IOException
+    //   587	143	10	localObject3	Object
+    //   768	1	10	localMalformedURLException3	java.net.MalformedURLException
+    //   199	575	11	localObject4	Object
+    //   48	318	12	localHttpURLConnection1	HttpURLConnection
+    //   392	7	12	localException4	Exception
+    //   407	7	12	localIOException4	java.io.IOException
+    //   422	7	12	localMalformedURLException4	java.net.MalformedURLException
+    //   513	239	12	localObject5	Object
+    //   36	741	13	localHttpURLConnection2	HttpURLConnection
+    //   3	650	14	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   352	363	392	java/lang/Exception
+    //   367	377	392	java/lang/Exception
+    //   352	363	407	java/io/IOException
+    //   367	377	407	java/io/IOException
+    //   352	363	422	java/net/MalformedURLException
+    //   367	377	422	java/net/MalformedURLException
+    //   308	316	454	java/lang/Exception
+    //   325	332	454	java/lang/Exception
+    //   308	316	461	java/io/IOException
+    //   325	332	461	java/io/IOException
+    //   308	316	468	java/net/MalformedURLException
+    //   325	332	468	java/net/MalformedURLException
+    //   50	60	475	java/lang/Exception
+    //   72	82	475	java/lang/Exception
+    //   94	104	475	java/lang/Exception
+    //   116	126	475	java/lang/Exception
+    //   138	143	475	java/lang/Exception
+    //   155	161	475	java/lang/Exception
+    //   173	180	475	java/lang/Exception
+    //   192	201	475	java/lang/Exception
+    //   213	222	475	java/lang/Exception
+    //   234	242	475	java/lang/Exception
+    //   254	266	475	java/lang/Exception
+    //   278	285	475	java/lang/Exception
+    //   297	304	475	java/lang/Exception
+    //   50	60	485	java/io/IOException
+    //   72	82	485	java/io/IOException
+    //   94	104	485	java/io/IOException
+    //   116	126	485	java/io/IOException
+    //   138	143	485	java/io/IOException
+    //   155	161	485	java/io/IOException
+    //   173	180	485	java/io/IOException
+    //   192	201	485	java/io/IOException
+    //   213	222	485	java/io/IOException
+    //   234	242	485	java/io/IOException
+    //   254	266	485	java/io/IOException
+    //   278	285	485	java/io/IOException
+    //   297	304	485	java/io/IOException
+    //   50	60	498	java/net/MalformedURLException
+    //   72	82	498	java/net/MalformedURLException
+    //   94	104	498	java/net/MalformedURLException
+    //   116	126	498	java/net/MalformedURLException
+    //   138	143	498	java/net/MalformedURLException
+    //   155	161	498	java/net/MalformedURLException
+    //   173	180	498	java/net/MalformedURLException
+    //   192	201	498	java/net/MalformedURLException
+    //   213	222	498	java/net/MalformedURLException
+    //   234	242	498	java/net/MalformedURLException
+    //   254	266	498	java/net/MalformedURLException
+    //   278	285	498	java/net/MalformedURLException
+    //   297	304	498	java/net/MalformedURLException
+    //   22	38	511	finally
+    //   22	38	518	java/lang/Exception
+    //   22	38	564	java/io/IOException
+    //   638	644	713	java/lang/Exception
+    //   656	663	713	java/lang/Exception
+    //   675	686	713	java/lang/Exception
+    //   690	700	713	java/lang/Exception
+    //   50	60	745	finally
+    //   72	82	745	finally
+    //   94	104	745	finally
+    //   116	126	745	finally
+    //   138	143	745	finally
+    //   155	161	745	finally
+    //   173	180	745	finally
+    //   192	201	745	finally
+    //   213	222	745	finally
+    //   234	242	745	finally
+    //   254	266	745	finally
+    //   278	285	745	finally
+    //   297	304	745	finally
+    //   308	316	745	finally
+    //   325	332	745	finally
+    //   352	363	745	finally
+    //   367	377	745	finally
+    //   534	539	745	finally
+    //   580	585	745	finally
+    //   609	614	745	finally
+    //   22	38	768	java/net/MalformedURLException
+  }
+  
+  public static String c(String paramString)
+  {
+    if (paramString == null)
+    {
+      QLog.e("UniformDownloadUtil", 1, "[UniformDL] isApk. path = null");
+      return null;
+    }
+    try
+    {
+      Object localObject = BaseApplication.getContext().getPackageManager().getPackageArchiveInfo(paramString, 1);
+      if (localObject != null) {
+        localObject = ((PackageInfo)localObject).applicationInfo.packageName;
+      } else {
+        localObject = null;
+      }
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL] isApk. get package failed.  PH:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("UniformDownloadUtil", 1, ((StringBuilder)localObject).toString());
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("UniformDownloadUtil", 1, "[UniformDL] isApk. Exception 1");
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static void c(String paramString1, String paramString2)
   {
     a(paramString1, new UniformDownloadUtil.4(paramString1, paramString2));
   }
   
-  public static void c(String paramString1, String paramString2)
+  public static void d(String paramString)
+  {
+    a(paramString, null);
+  }
+  
+  public static void d(String paramString1, String paramString2)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[UniformDL] >>>openFileWithOtherApp. localPath:");
@@ -790,11 +780,11 @@ public class UniformDownloadUtil
     QLog.i("UniformDownloadUtil", 1, ((StringBuilder)localObject).toString());
     BaseApplication localBaseApplication;
     Intent localIntent;
-    if ((paramString1 != null) && (FileUtil.b(paramString1)))
+    if ((paramString1 != null) && (FileUtil.d(paramString1)))
     {
       localBaseApplication = BaseApplication.getContext();
       if (paramString1.endsWith(".apk")) {
-        localObject = AppSetting.h();
+        localObject = AppSetting.o();
       } else {
         localObject = "";
       }
@@ -811,8 +801,8 @@ public class UniformDownloadUtil
     }
     catch (ActivityNotFoundException paramString2)
     {
-      label131:
-      break label131;
+      label133:
+      break label133;
     }
     paramString2 = new StringBuilder();
     paramString2.append("[UniformDL] openFileWithOtherApp. no useful app. localPath:");
@@ -824,10 +814,20 @@ public class UniformDownloadUtil
     paramString2.append(paramString1);
     QLog.e("UniformDownloadUtil", 1, paramString2.toString());
   }
+  
+  public static int e(String paramString)
+  {
+    return b(paramString, null);
+  }
+  
+  public static boolean f(String paramString)
+  {
+    return (paramString != null) && (FileUtil.a(paramString).equalsIgnoreCase(".apk"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.util.UniformDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

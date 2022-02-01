@@ -7,13 +7,13 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 final class FeedbackSheetHelper$4
   implements ActionSheet.OnButtonClickListener
 {
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ResultListener;
+    paramView = this.a;
     if (paramView != null) {
       paramView.a(true);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 

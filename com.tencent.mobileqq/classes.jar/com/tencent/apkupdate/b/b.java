@@ -17,6 +17,7 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.apkupdate.logic.protocol.jce.Terminal;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class b
 {
@@ -143,7 +144,7 @@ public class b
     String str = "";
     try
     {
-      WifiInfo localWifiInfo = ((WifiManager)this.b.getSystemService("wifi")).getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)this.b.getSystemService("wifi"));
       if (localWifiInfo != null) {
         str = localWifiInfo.getMacAddress();
       }

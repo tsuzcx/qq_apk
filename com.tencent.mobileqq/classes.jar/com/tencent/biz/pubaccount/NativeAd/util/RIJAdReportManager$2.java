@@ -29,15 +29,15 @@ final class RIJAdReportManager$2
         return;
       }
       paramBundle = "";
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
-        paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mTitle;
+      if (this.a != null) {
+        paramBundle = this.a.mTitle;
       }
       localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("new report success : title = ");
       localStringBuilder.append(paramBundle);
       localStringBuilder.append(" type = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
+      localStringBuilder.append(this.b.c());
       ((IRIJAdLogService)localObject).d("REPORT_LINK", localStringBuilder.toString());
       return;
     }
@@ -49,16 +49,16 @@ final class RIJAdReportManager$2
     paramBundle = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("new report fail : ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(" type = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
+    ((StringBuilder)localObject).append(this.b.c());
     paramBundle.d("REPORT_LINK", ((StringBuilder)localObject).toString());
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.RIJAdReportManager.2
  * JD-Core Version:    0.7.0.1
  */

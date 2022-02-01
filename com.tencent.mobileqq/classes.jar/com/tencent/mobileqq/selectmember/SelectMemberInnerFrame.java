@@ -13,10 +13,10 @@ import mqq.app.MobileQQ;
 public abstract class SelectMemberInnerFrame
   extends InnerFrame
 {
-  protected LayoutInflater a;
-  protected AppInterface a;
-  protected InnerFrameManager a;
-  protected SelectMemberActivity a;
+  protected SelectMemberActivity f;
+  protected InnerFrameManager g;
+  protected AppInterface h;
+  protected LayoutInflater i;
   
   public SelectMemberInnerFrame(Context paramContext)
   {
@@ -33,36 +33,36 @@ public abstract class SelectMemberInnerFrame
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract ContactSearchFragment a();
-  
-  public abstract String a();
-  
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity = ((SelectMemberActivity)a());
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = a();
-    if ((a() instanceof AppInterface))
+    this.f = ((SelectMemberActivity)getActivity());
+    this.g = getInnerFrameManager();
+    if ((getAppIntf() instanceof AppInterface))
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = a();
+      this.h = getAppIntf();
     }
     else
     {
       paramBundle = MobileQQ.sMobileQQ.waitAppRuntime(null);
       if ((paramBundle instanceof AppInterface)) {
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)paramBundle);
+        this.h = ((AppInterface)paramBundle);
       }
     }
-    this.jdField_a_of_type_AndroidViewLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getLayoutInflater();
+    this.i = this.f.getLayoutInflater();
   }
   
   public void a(ResultRecord paramResultRecord, int paramInt) {}
   
   public abstract void f();
+  
+  public abstract ContactSearchFragment getContactSearchFragment();
+  
+  public abstract String getGroupUin();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberInnerFrame
  * JD-Core Version:    0.7.0.1
  */

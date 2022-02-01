@@ -13,64 +13,64 @@ import java.util.ArrayList;
 
 class EllipsizingTextView$EllipsizingHelper
 {
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int;
-  private ArrayList<CharSequence> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int d;
-  private int e;
+  private ArrayList<String> b = new ArrayList();
+  private ArrayList<Integer> c = new ArrayList();
+  private ArrayList<CharSequence> d = new ArrayList();
+  private String e;
   private int f;
   private int g;
   private int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private TextPaint n;
+  private boolean o;
+  private CharSequence p;
   
   EllipsizingTextView$EllipsizingHelper(EllipsizingTextView paramEllipsizingTextView) {}
   
   private float a(int paramInt, TextUtils.TruncateAt paramTruncateAt)
   {
-    int i = b() - (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("...");
+    int i1 = c() - (int)this.n.measureText("...");
     if (paramTruncateAt == TextUtils.TruncateAt.MIDDLE)
     {
-      int j = this.h;
-      if (j <= 0) {
-        return i / 2;
+      int i2 = this.m;
+      if (i2 <= 0) {
+        return i1 / 2;
       }
       if (paramInt == 1)
       {
-        if (i < j) {
-          return i;
+        if (i1 < i2) {
+          return i1;
         }
-        return j;
+        return i2;
       }
-      if (i < j) {
+      if (i1 < i2) {
         return 0.0F;
       }
-      return i - j;
+      return i1 - i2;
     }
     if (paramTruncateAt == TextUtils.TruncateAt.END)
     {
-      paramInt = this.h;
+      paramInt = this.m;
       if (paramInt <= 0) {
-        return i;
+        return i1;
       }
-      if (i < paramInt) {
-        paramInt = i;
+      if (i1 < paramInt) {
+        paramInt = i1;
       } else {
-        paramInt = i - paramInt;
+        paramInt = i1 - paramInt;
       }
       return paramInt;
     }
-    return i;
+    return i1;
   }
   
   private int a(String paramString)
   {
-    return (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramString, 0, paramString.length());
+    return (int)this.n.measureText(paramString, 0, paramString.length());
   }
   
   private int a(String paramString, int paramInt)
@@ -82,214 +82,214 @@ class EllipsizingTextView$EllipsizingHelper
       }
       char c1 = paramString.charAt(paramInt);
       paramString = new float[1];
-      this.jdField_a_of_type_AndroidTextTextPaint.getTextWidths(String.valueOf(c1), paramString);
+      this.n.getTextWidths(String.valueOf(c1), paramString);
       return (int)Math.ceil(paramString[0]);
     }
     return 0;
   }
   
-  private String a(int paramInt)
+  private String b(int paramInt)
   {
-    int k = (int)a(0, TextUtils.TruncateAt.MIDDLE);
-    int m = this.jdField_a_of_type_JavaLangString.length();
-    int i = paramInt;
-    int j = 0;
-    while (i < m)
+    int i3 = (int)a(0, TextUtils.TruncateAt.MIDDLE);
+    int i4 = this.e.length();
+    int i1 = paramInt;
+    int i2 = 0;
+    while (i1 < i4)
     {
-      j += a(this.jdField_a_of_type_JavaLangString, i);
-      if (j > k) {
+      i2 += a(this.e, i1);
+      if (i2 > i3) {
         break;
       }
-      i += 1;
+      i1 += 1;
     }
-    return this.jdField_a_of_type_JavaLangString.substring(paramInt, i);
+    return this.e.substring(paramInt, i1);
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_c_of_type_JavaUtilArrayList.clear();
-    int n = b();
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    int i5 = c();
     Object localObject1;
-    if (n <= 0)
+    if (i5 <= 0)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("lineWidth=");
-        ((StringBuilder)localObject1).append(n);
+        ((StringBuilder)localObject1).append(i5);
         QLog.i("EllipsizingTextView", 2, ((StringBuilder)localObject1).toString());
       }
       return;
     }
-    int i = 0;
-    int k = 0;
-    int j = 0;
-    while (i < this.jdField_a_of_type_JavaLangString.length())
+    int i1 = 0;
+    int i3 = 0;
+    int i2 = 0;
+    while (i1 < this.e.length())
     {
-      if (this.jdField_a_of_type_JavaLangString.charAt(i) == '\n')
+      if (this.e.charAt(i1) == '\n')
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, i));
-        if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
-          this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i));
+        this.b.add(this.e.substring(i3, i1));
+        if (EllipsizingTextView.b(this.a)) {
+          this.d.add(this.p.subSequence(i3, i1));
         }
-        this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-        k = i + 1;
-        j = 0;
+        this.c.add(Integer.valueOf(i2));
+        i3 = i1 + 1;
+        i2 = 0;
       }
       else
       {
-        int m = a(this.jdField_a_of_type_JavaLangString.substring(k, i + 1));
-        if (m > n)
+        int i4 = a(this.e.substring(i3, i1 + 1));
+        if (i4 > i5)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(k, i));
-          if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
-            this.jdField_c_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i));
+          this.b.add(this.e.substring(i3, i1));
+          if (EllipsizingTextView.b(this.a)) {
+            this.d.add(this.p.subSequence(i3, i1));
           }
-          this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_JavaLangString.length()) {
+          this.c.add(Integer.valueOf(i2));
+          if (this.b.size() >= this.e.length()) {
             return;
           }
-          j = 0;
-          k = i;
-          i -= 1;
+          i2 = 0;
+          i3 = i1;
+          i1 -= 1;
         }
-        else if (i == this.jdField_a_of_type_JavaLangString.length() - 1)
+        else if (i1 == this.e.length() - 1)
         {
-          localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
-          Object localObject2 = this.jdField_a_of_type_JavaLangString;
-          ((ArrayList)localObject1).add(((String)localObject2).substring(k, ((String)localObject2).length()));
-          if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView))
+          localObject1 = this.b;
+          Object localObject2 = this.e;
+          ((ArrayList)localObject1).add(((String)localObject2).substring(i3, ((String)localObject2).length()));
+          if (EllipsizingTextView.b(this.a))
           {
-            localObject1 = this.jdField_c_of_type_JavaUtilArrayList;
-            localObject2 = this.jdField_a_of_type_JavaLangCharSequence;
-            ((ArrayList)localObject1).add(((CharSequence)localObject2).subSequence(k, ((CharSequence)localObject2).length()));
+            localObject1 = this.d;
+            localObject2 = this.p;
+            ((ArrayList)localObject1).add(((CharSequence)localObject2).subSequence(i3, ((CharSequence)localObject2).length()));
           }
-          this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(m));
+          this.c.add(Integer.valueOf(i4));
         }
         else
         {
-          j = m;
+          i2 = i4;
         }
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
-  private int b()
+  private int c()
   {
-    return this.jdField_a_of_type_Int - this.f - this.d;
-  }
-  
-  private String b(int paramInt)
-  {
-    int k = (int)a(1, TextUtils.TruncateAt.MIDDLE);
-    int i = paramInt;
-    int j = 0;
-    while (i > 0)
-    {
-      j += a(this.jdField_a_of_type_JavaLangString, i);
-      if (j > k) {
-        break;
-      }
-      i -= 1;
-    }
-    return this.jdField_a_of_type_JavaLangString.substring(i + 1, paramInt + 1);
+    return this.f - this.k - this.i;
   }
   
   private String c(int paramInt)
   {
-    int k = this.jdField_a_of_type_JavaLangString.length();
-    int m = (int)a(1, TextUtils.TruncateAt.END);
-    int i = paramInt;
-    int j = 0;
-    while ((i < k) && (j <= m))
+    int i3 = (int)a(1, TextUtils.TruncateAt.MIDDLE);
+    int i1 = paramInt;
+    int i2 = 0;
+    while (i1 > 0)
     {
-      j += a(this.jdField_a_of_type_JavaLangString, i);
-      i += 1;
+      i2 += a(this.e, i1);
+      if (i2 > i3) {
+        break;
+      }
+      i1 -= 1;
     }
-    i -= 1;
-    if (i < paramInt) {
+    return this.e.substring(i1 + 1, paramInt + 1);
+  }
+  
+  private String d(int paramInt)
+  {
+    int i3 = this.e.length();
+    int i4 = (int)a(1, TextUtils.TruncateAt.END);
+    int i1 = paramInt;
+    int i2 = 0;
+    while ((i1 < i3) && (i2 <= i4))
+    {
+      i2 += a(this.e, i1);
+      i1 += 1;
+    }
+    i1 -= 1;
+    if (i1 < paramInt) {
       return "";
     }
-    if (i > k) {
-      return this.jdField_a_of_type_JavaLangString.substring(paramInt, k);
+    if (i1 > i3) {
+      return this.e.substring(paramInt, i3);
     }
-    return this.jdField_a_of_type_JavaLangString.substring(paramInt, i);
+    return this.e.substring(paramInt, i1);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public int a(int paramInt)
   {
-    int i = 0;
-    int j = 0;
-    while (i <= paramInt)
+    int i1 = 0;
+    int i2 = 0;
+    while (i1 <= paramInt)
     {
-      j += ((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).length();
-      i += 1;
+      i2 += ((String)this.b.get(i1)).length();
+      i1 += 1;
     }
-    if (j <= 0) {
+    if (i2 <= 0) {
       return 0;
     }
-    return j - 1;
+    return i2 - 1;
   }
   
   public void a(Canvas paramCanvas, TextUtils.TruncateAt paramTruncateAt)
   {
-    int i = this.jdField_c_of_type_Int;
-    int j;
-    if ((i > 0) && (i <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      j = this.jdField_c_of_type_Int;
+    int i1 = this.h;
+    int i2;
+    if ((i1 > 0) && (i1 <= this.b.size())) {
+      i2 = this.h;
     } else {
-      j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      i2 = this.b.size();
     }
-    int m = b();
+    int i4 = c();
     Object localObject1 = null;
-    int k = 0;
-    while (k < j)
+    int i3 = 0;
+    while (i3 < i2)
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+      String str = (String)this.b.get(i3);
       Object localObject2 = localObject1;
-      if (EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView))
+      if (EllipsizingTextView.b(this.a))
       {
         localObject2 = localObject1;
-        if (this.jdField_c_of_type_JavaUtilArrayList.size() > k) {
-          localObject2 = (CharSequence)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+        if (this.d.size() > i3) {
+          localObject2 = (CharSequence)this.d.get(i3);
         }
       }
-      i = ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(k)).intValue();
+      i1 = ((Integer)this.c.get(i3)).intValue();
       if (paramTruncateAt == TextUtils.TruncateAt.END)
       {
-        if ((j >= 2) && (k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+        if ((i2 >= 2) && (i3 == i2 - 1) && (i3 < this.b.size() - 1))
         {
-          i = a(j - 2);
+          i1 = a(i2 - 2);
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(c(i + 1));
+          ((StringBuilder)localObject1).append(d(i1 + 1));
           ((StringBuilder)localObject1).append("...");
           str = ((StringBuilder)localObject1).toString();
           localObject1 = str;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.o)
           {
-            i = (m - a(str)) / 2;
+            i1 = (i4 - a(str)) / 2;
             localObject1 = str;
             break label625;
           }
         }
-        else if ((k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+        else if ((i3 == i2 - 1) && (i3 < this.b.size() - 1))
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(c(0));
+          ((StringBuilder)localObject1).append(d(0));
           ((StringBuilder)localObject1).append("...");
           str = ((StringBuilder)localObject1).toString();
           localObject1 = str;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.o)
           {
-            i = (m - a(str)) / 2;
+            i1 = (i4 - a(str)) / 2;
             localObject1 = str;
             break label625;
           }
@@ -297,9 +297,9 @@ class EllipsizingTextView$EllipsizingHelper
         else
         {
           localObject1 = str;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.o)
           {
-            i = (m - i) / 2;
+            i1 = (i4 - i1) / 2;
             localObject1 = str;
             break label625;
           }
@@ -309,33 +309,33 @@ class EllipsizingTextView$EllipsizingHelper
       {
         localObject1 = str;
         if (paramTruncateAt == TextUtils.TruncateAt.MIDDLE) {
-          if ((j >= 2) && (k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+          if ((i2 >= 2) && (i3 == i2 - 1) && (i3 < this.b.size() - 1))
           {
-            i = a(j - 2);
+            i1 = a(i2 - 2);
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(a(i + 1));
+            ((StringBuilder)localObject1).append(b(i1 + 1));
             ((StringBuilder)localObject1).append("...");
-            ((StringBuilder)localObject1).append(b(this.jdField_a_of_type_JavaLangString.length() - 1));
+            ((StringBuilder)localObject1).append(c(this.e.length() - 1));
             str = ((StringBuilder)localObject1).toString();
             localObject1 = str;
-            if (this.jdField_a_of_type_Boolean)
+            if (this.o)
             {
-              i = (m - a(str)) / 2;
+              i1 = (i4 - a(str)) / 2;
               localObject1 = str;
               break label625;
             }
           }
-          else if ((k == j - 1) && (k < this.jdField_a_of_type_JavaUtilArrayList.size() - 1))
+          else if ((i3 == i2 - 1) && (i3 < this.b.size() - 1))
           {
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(a(0));
+            ((StringBuilder)localObject1).append(b(0));
             ((StringBuilder)localObject1).append("...");
-            ((StringBuilder)localObject1).append(b(this.jdField_a_of_type_JavaLangString.length() - 1));
+            ((StringBuilder)localObject1).append(c(this.e.length() - 1));
             str = ((StringBuilder)localObject1).toString();
             localObject1 = str;
-            if (this.jdField_a_of_type_Boolean)
+            if (this.o)
             {
-              i = (m - a(str)) / 2;
+              i1 = (i4 - a(str)) / 2;
               localObject1 = str;
               break label625;
             }
@@ -343,18 +343,18 @@ class EllipsizingTextView$EllipsizingHelper
           else
           {
             localObject1 = str;
-            if (this.jdField_a_of_type_Boolean)
+            if (this.o)
             {
-              i = (m - i) / 2;
+              i1 = (i4 - i1) / 2;
               localObject1 = str;
               break label625;
             }
           }
         }
       }
-      i = 0;
+      i1 = 0;
       label625:
-      if ((EllipsizingTextView.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) && (localObject2 != null))
+      if ((EllipsizingTextView.b(this.a)) && (localObject2 != null))
       {
         if (QLog.isColorLevel())
         {
@@ -362,23 +362,23 @@ class EllipsizingTextView$EllipsizingHelper
           ((StringBuilder)localObject1).append("text is ");
           ((StringBuilder)localObject1).append(((CharSequence)localObject2).toString());
           ((StringBuilder)localObject1).append("and i is");
-          ((StringBuilder)localObject1).append(k);
+          ((StringBuilder)localObject1).append(i3);
           ((StringBuilder)localObject1).append(" offset: ");
-          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append(i1);
           QLog.d("EllipsizingTextView", 2, ((StringBuilder)localObject1).toString());
         }
-        if (k == 0) {
-          paramCanvas.translate(this.d + i, 0.0F);
+        if (i3 == 0) {
+          paramCanvas.translate(this.i + i1, 0.0F);
         } else {
-          paramCanvas.translate(0.0F, this.jdField_b_of_type_Int);
+          paramCanvas.translate(0.0F, this.g);
         }
-        new StaticLayout((CharSequence)localObject2, this.jdField_a_of_type_AndroidTextTextPaint, paramCanvas.getWidth(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).draw(paramCanvas);
+        new StaticLayout((CharSequence)localObject2, this.n, paramCanvas.getWidth(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).draw(paramCanvas);
       }
       else
       {
-        paramCanvas.drawText((String)localObject1, this.d + i, this.jdField_a_of_type_AndroidTextTextPaint.getTextSize() + this.jdField_b_of_type_Int * k + this.e, this.jdField_a_of_type_AndroidTextTextPaint);
+        paramCanvas.drawText((String)localObject1, this.i + i1, this.n.getTextSize() + this.g * i3 + this.j, this.n);
       }
-      k += 1;
+      i3 += 1;
       localObject1 = localObject2;
     }
   }
@@ -390,32 +390,32 @@ class EllipsizingTextView$EllipsizingHelper
       if (paramTextView == null) {
         return;
       }
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-      if (EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView)) {
+      this.p = paramCharSequence;
+      if (EllipsizingTextView.a(this.a)) {
         if ((paramCharSequence instanceof SpannableString)) {
-          EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, true);
+          EllipsizingTextView.a(this.a, true);
         } else if ((paramCharSequence instanceof SpannedString)) {
-          EllipsizingTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView, true);
+          EllipsizingTextView.a(this.a, true);
         }
       }
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-      this.jdField_a_of_type_AndroidTextTextPaint = paramTextView.getPaint();
-      this.jdField_a_of_type_Int = paramTextView.getMeasuredWidth();
-      this.jdField_b_of_type_Int = paramTextView.getLineHeight();
-      this.d = paramTextView.getPaddingLeft();
-      this.e = paramTextView.getPaddingTop();
-      this.f = paramTextView.getPaddingRight();
-      this.g = paramTextView.getPaddingBottom();
-      this.jdField_c_of_type_Int = paramInt1;
-      this.h = paramInt2;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      a();
+      this.e = paramCharSequence.toString();
+      this.n = paramTextView.getPaint();
+      this.f = paramTextView.getMeasuredWidth();
+      this.g = paramTextView.getLineHeight();
+      this.i = paramTextView.getPaddingLeft();
+      this.j = paramTextView.getPaddingTop();
+      this.k = paramTextView.getPaddingRight();
+      this.l = paramTextView.getPaddingBottom();
+      this.h = paramInt1;
+      this.m = paramInt2;
+      this.o = paramBoolean;
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.EllipsizingTextView.EllipsizingHelper
  * JD-Core Version:    0.7.0.1
  */

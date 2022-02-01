@@ -31,11 +31,11 @@ class PushBannerProcessor$1
     ((StringBuilder)localObject2).append(PushBannerProcessor.b(this.a).getAppRuntime().getAccount());
     ((SharedPreferences.Editor)localObject1).putBoolean(((StringBuilder)localObject2).toString(), false).commit();
     localObject1 = BannerManager.a().a(PushBannerProcessor.a);
-    if ((localObject1 != null) && (((Banner)localObject1).a != null))
+    if ((localObject1 != null) && (((Banner)localObject1).c != null))
     {
-      localObject2 = (ADView)((Banner)localObject1).a.findViewById(2131362283);
+      localObject2 = (ADView)((Banner)localObject1).c.findViewById(2131427870);
       if (localObject2 != null) {
-        localObject1 = ((ADView)localObject2).a(0);
+        localObject1 = ((ADView)localObject2).e(0);
       } else {
         localObject1 = null;
       }
@@ -54,7 +54,7 @@ class PushBannerProcessor$1
         }
         ThreadManager.getFileThreadHandler().post(new PushBannerProcessor.1.1(this, j, localLinkedList));
         if (localObject2 != null) {
-          ((ADView)localObject2).h();
+          ((ADView)localObject2).i();
         }
       }
     }
@@ -67,7 +67,7 @@ class PushBannerProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

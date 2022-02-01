@@ -17,6 +17,9 @@ class BaseMultiProcessSingleton$MultiProcessBroadcastReceiver
     if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_multi_process_singleton")))
     {
       paramContext = paramIntent.getBundleExtra("key_process_data_update_");
+      if (paramContext == null) {
+        return;
+      }
       BaseMultiProcessSingleton.access$100(this.this$0, paramContext);
       BaseMultiProcessSingleton.access$200(this.this$0, paramContext);
       paramIntent = new StringBuilder();
@@ -28,7 +31,7 @@ class BaseMultiProcessSingleton$MultiProcessBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.BaseMultiProcessSingleton.MultiProcessBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

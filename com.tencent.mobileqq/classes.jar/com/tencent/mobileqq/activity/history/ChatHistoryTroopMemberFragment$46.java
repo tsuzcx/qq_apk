@@ -14,21 +14,21 @@ class ChatHistoryTroopMemberFragment$46
   
   protected void a(boolean paramBoolean, String paramString, List<String> paramList)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.c)) && (this.a.m == 1) && (paramList != null)) {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.w)) && (this.a.bj == 1) && (paramList != null)) {
       ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.46.1(this, paramList));
     }
   }
   
   protected void c(boolean paramBoolean, String paramString, List<oidb_0xa2a.UserInfo> paramList)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.c)) && (this.a.m == 8) && (paramList != null)) {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.w)) && (this.a.bj == 8) && (paramList != null)) {
       ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.46.2(this, paramList));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.46
  * JD-Core Version:    0.7.0.1
  */

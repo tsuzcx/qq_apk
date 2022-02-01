@@ -11,69 +11,69 @@ import com.tencent.mobileqq.widget.BounceScrollView;
 public class LebaSearchBounceScrollView
   extends BounceScrollView
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = true;
+  float a;
+  int b;
+  int c;
+  boolean d = false;
+  boolean e = true;
   
   public LebaSearchBounceScrollView(Context paramContext)
   {
     super(paramContext);
     AccessibilityUtil.a(this, false);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 320.0F));
-    this.jdField_b_of_type_Int = 0;
+    this.a = paramContext.getResources().getDisplayMetrics().density;
+    this.b = ((int)(this.a * 320.0F));
+    this.c = 0;
   }
   
   public LebaSearchBounceScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 320.0F));
-    this.jdField_b_of_type_Int = 0;
+    this.a = paramContext.getResources().getDisplayMetrics().density;
+    this.b = ((int)(this.a * 320.0F));
+    this.c = 0;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
   
   public void fling(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     super.fling(paramInt);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean) {
-      return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, this.jdField_b_of_type_Int, paramInt7, this.jdField_a_of_type_Int, paramBoolean);
+    if (this.e) {
+      return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, this.c, paramInt7, this.b, paramBoolean);
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, 0, paramBoolean);
   }
   
   public void setMaxOverScrollY(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setUseBounce(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.widget.LebaSearchBounceScrollView
  * JD-Core Version:    0.7.0.1
  */

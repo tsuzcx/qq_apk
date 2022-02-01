@@ -16,41 +16,41 @@ class ProfileLabelEditorActivity$4
   {
     if (paramBoolean.booleanValue())
     {
-      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList))
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.l))
       {
         paramBoolean = this.a;
-        if (!paramBoolean.a(paramBoolean.jdField_a_of_type_JavaUtilList))
+        if (!paramBoolean.a(paramBoolean.l))
         {
           ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
-          this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+          this.a.l.add(paramProfileLabelInfo);
           break label156;
         }
       }
       paramProfileLabelInfo = this.a;
-      if (paramProfileLabelInfo.a(paramProfileLabelInfo.jdField_a_of_type_JavaUtilList)) {
-        this.a.b(2131693377);
+      if (paramProfileLabelInfo.a(paramProfileLabelInfo.l)) {
+        this.a.b(2131890926);
       }
     }
     else
     {
-      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.l)) {
         return;
       }
       paramBoolean = this.a;
-      paramBoolean.a(paramProfileLabelInfo, paramBoolean.jdField_a_of_type_JavaUtilList);
+      paramBoolean.a(paramProfileLabelInfo, paramBoolean.l);
     }
     label156:
-    this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(paramProfileLabelInfo, paramToggleButton);
+    this.a.k.c(paramProfileLabelInfo, paramToggleButton);
     paramProfileLabelInfo = this.a;
-    paramProfileLabelInfo.a(paramProfileLabelInfo.jdField_a_of_type_JavaUtilList.size());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity$MyLabelGridViewAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity$MyLabelGridViewAdapter.notifyDataSetChanged();
+    paramProfileLabelInfo.a(paramProfileLabelInfo.l.size());
+    if (this.a.e != null) {
+      this.a.e.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity.4
  * JD-Core Version:    0.7.0.1
  */

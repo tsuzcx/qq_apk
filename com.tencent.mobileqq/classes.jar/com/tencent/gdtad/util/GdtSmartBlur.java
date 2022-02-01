@@ -10,7 +10,7 @@ public class GdtSmartBlur
   
   private GdtSmartBlur()
   {
-    a();
+    b();
   }
   
   public static GdtSmartBlur a()
@@ -18,7 +18,7 @@ public class GdtSmartBlur
     return GdtSmartBlur.GdtSmartBlurHolder.a;
   }
   
-  private void a()
+  private void b()
   {
     try
     {
@@ -47,7 +47,7 @@ public class GdtSmartBlur
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtSmartBlur
  * JD-Core Version:    0.7.0.1
  */

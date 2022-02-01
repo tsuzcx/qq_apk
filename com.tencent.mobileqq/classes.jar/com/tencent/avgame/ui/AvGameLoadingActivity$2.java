@@ -26,7 +26,7 @@ class AvGameLoadingActivity$2
     {
       AvGameLoadingActivity.a(this.a, false);
       AvGameLoadingActivity.a(this.a, -1);
-      this.a.a.removeMessages(9);
+      this.a.b.removeMessages(9);
       if (paramBoolean)
       {
         ReportController.b(null, "dc00898", "", "", "0X800B495", "0X800B495", 0, 0, "", "", "", "");
@@ -34,7 +34,7 @@ class AvGameLoadingActivity$2
         if (paramInt == 1)
         {
           localAvGameLoadingActivity = this.a;
-          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.a(localAvGameLoadingActivity), null);
+          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.d(localAvGameLoadingActivity), null);
           return;
         }
         if (paramInt == 2)
@@ -42,7 +42,7 @@ class AvGameLoadingActivity$2
           localAvGameLoadingActivity = this.a;
           AvGameLoadingActivity.b(localAvGameLoadingActivity, AvGameLoadingActivity.c(localAvGameLoadingActivity, 6));
           localAvGameLoadingActivity = this.a;
-          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.a(localAvGameLoadingActivity), String.valueOf(paramLong), null);
+          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.d(localAvGameLoadingActivity), String.valueOf(paramLong), null);
         }
       }
     }
@@ -67,10 +67,10 @@ class AvGameLoadingActivity$2
       }
       paramString = (String)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString = this.a.getString(2131690465);
+        paramString = this.a.getString(2131887376);
       }
       localObject = this.a;
-      AvGameLoadingActivity.a((AvGameLoadingActivity)localObject, null, paramString, ((AvGameLoadingActivity)localObject).getString(2131690499), new AvGameLoadingActivity.2.1(this), null, null);
+      AvGameLoadingActivity.a((AvGameLoadingActivity)localObject, null, paramString, ((AvGameLoadingActivity)localObject).getString(2131887410), new AvGameLoadingActivity.2.1(this), null, null);
       ReportController.b(null, "dc00898", "", "", "0X800B496", "0X800B496", paramInt2, 0, "", "", "", "");
     }
   }
@@ -87,12 +87,12 @@ class AvGameLoadingActivity$2
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 2, String.format("onStrangerMatchV2Start isSuc:%b uin:%d gameType:%d extra:%s errCode:%d errMsg:%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt1), paramArrayOfByte, Integer.valueOf(paramInt2), paramString }));
     }
-    if ((AvGameLoadingActivity.d(this.a)) && (!AvGameLoadingActivity.e(this.a))) {
+    if ((AvGameLoadingActivity.e(this.a)) && (!AvGameLoadingActivity.f(this.a))) {
       if (paramBoolean)
       {
         AvGameLoadingActivity.b(this.a, true);
         AvGameLoadingActivity.a(this.a, paramArrayOfByte);
-        if (AvGameLoadingActivity.b(this.a) == 0) {
+        if (AvGameLoadingActivity.g(this.a) == 0) {
           AvGameLoadingActivity.d(this.a, paramInt1);
         }
       }
@@ -104,10 +104,10 @@ class AvGameLoadingActivity$2
         }
         paramString = paramArrayOfByte;
         if (TextUtils.isEmpty(paramArrayOfByte)) {
-          paramString = this.a.getString(2131690465);
+          paramString = this.a.getString(2131887376);
         }
         paramArrayOfByte = this.a;
-        AvGameLoadingActivity.a(paramArrayOfByte, null, paramString, paramArrayOfByte.getString(2131690499), new AvGameLoadingActivity.2.2(this), null, null);
+        AvGameLoadingActivity.a(paramArrayOfByte, null, paramString, paramArrayOfByte.getString(2131887410), new AvGameLoadingActivity.2.2(this), null, null);
       }
     }
   }
@@ -122,7 +122,7 @@ class AvGameLoadingActivity$2
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 2, String.format("onStrangerMatchV2Notify isSuc:%b type:%d roomId:%d mWaitingStrangerMatchPush:%b", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(AvGameLoadingActivity.c(this.a)) }));
     }
-    if (AvGameLoadingActivity.e(this.a))
+    if (AvGameLoadingActivity.f(this.a))
     {
       AvGameLoadingActivity.b(this.a, false);
       AvGameLoadingActivity.a(this.a, null);
@@ -132,12 +132,12 @@ class AvGameLoadingActivity$2
         if (paramInt == 1)
         {
           localAvGameLoadingActivity = this.a;
-          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.a(localAvGameLoadingActivity), null);
+          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.d(localAvGameLoadingActivity), null);
           return;
         }
         if (paramInt == 2)
         {
-          if (AvGameLoadingActivity.a(this.a) == 13)
+          if (AvGameLoadingActivity.d(this.a) == 13)
           {
             localAvGameLoadingActivity = this.a;
             AvGameLoadingActivity.b(localAvGameLoadingActivity, AvGameLoadingActivity.c(localAvGameLoadingActivity, 1000));
@@ -148,7 +148,7 @@ class AvGameLoadingActivity$2
             AvGameLoadingActivity.b(localAvGameLoadingActivity, AvGameLoadingActivity.c(localAvGameLoadingActivity, 8));
           }
           localAvGameLoadingActivity = this.a;
-          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.a(localAvGameLoadingActivity), String.valueOf(paramLong), null);
+          AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.d(localAvGameLoadingActivity), String.valueOf(paramLong), null);
         }
       }
     }

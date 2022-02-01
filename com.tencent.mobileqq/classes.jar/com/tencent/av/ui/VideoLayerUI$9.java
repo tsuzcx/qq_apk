@@ -8,7 +8,7 @@ class VideoLayerUI$9
   public void run()
   {
     int i;
-    if ((VideoLayerUI.a(this.this$0)) && (this.a == VideoLayerUI.a(this.this$0)) && (this.b == VideoLayerUI.b(this.this$0))) {
+    if ((VideoLayerUI.b(this.this$0)) && (this.a == VideoLayerUI.c(this.this$0)) && (this.b == VideoLayerUI.d(this.this$0))) {
       i = 1;
     } else {
       i = 0;

@@ -14,92 +14,22 @@ import com.google.android.material.animation.MotionSpec;
 class ExtendedFloatingActionButton$ChangeSizeStrategy
   extends BaseMotionStrategy
 {
-  private final ExtendedFloatingActionButton.Size jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size;
-  private final boolean jdField_a_of_type_Boolean;
+  private final ExtendedFloatingActionButton.Size b;
+  private final boolean c;
   
   ExtendedFloatingActionButton$ChangeSizeStrategy(ExtendedFloatingActionButton paramExtendedFloatingActionButton, AnimatorTracker paramAnimatorTracker, ExtendedFloatingActionButton.Size paramSize, boolean paramBoolean)
   {
     super(paramExtendedFloatingActionButton, paramAnimatorTracker);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size = paramSize;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return R.animator.h;
-    }
-    return R.animator.g;
-  }
-  
-  @NonNull
-  public AnimatorSet a()
-  {
-    MotionSpec localMotionSpec = a();
-    PropertyValuesHolder[] arrayOfPropertyValuesHolder;
-    if (localMotionSpec.b("width"))
-    {
-      arrayOfPropertyValuesHolder = localMotionSpec.a("width");
-      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getWidth(), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.a() });
-      localMotionSpec.a("width", arrayOfPropertyValuesHolder);
-    }
-    if (localMotionSpec.b("height"))
-    {
-      arrayOfPropertyValuesHolder = localMotionSpec.a("height");
-      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getHeight(), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.b() });
-      localMotionSpec.a("height", arrayOfPropertyValuesHolder);
-    }
-    if (localMotionSpec.b("paddingStart"))
-    {
-      arrayOfPropertyValuesHolder = localMotionSpec.a("paddingStart");
-      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { ViewCompat.getPaddingStart(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.c() });
-      localMotionSpec.a("paddingStart", arrayOfPropertyValuesHolder);
-    }
-    if (localMotionSpec.b("paddingEnd"))
-    {
-      arrayOfPropertyValuesHolder = localMotionSpec.a("paddingEnd");
-      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { ViewCompat.getPaddingEnd(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.d() });
-      localMotionSpec.a("paddingEnd", arrayOfPropertyValuesHolder);
-    }
-    if (localMotionSpec.b("labelOpacity"))
-    {
-      arrayOfPropertyValuesHolder = localMotionSpec.a("labelOpacity");
-      boolean bool = this.jdField_a_of_type_Boolean;
-      float f2 = 0.0F;
-      float f1;
-      if (bool) {
-        f1 = 0.0F;
-      } else {
-        f1 = 1.0F;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        f2 = 1.0F;
-      }
-      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { f1, f2 });
-      localMotionSpec.a("labelOpacity", arrayOfPropertyValuesHolder);
-    }
-    return super.a(localMotionSpec);
-  }
-  
-  public void a()
-  {
-    super.a();
-    ExtendedFloatingActionButton.b(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, false);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.setHorizontallyScrolling(false);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getLayoutParams();
-    if (localLayoutParams == null) {
-      return;
-    }
-    localLayoutParams.width = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.a().width;
-    localLayoutParams.height = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.a().height;
+    this.b = paramSize;
+    this.c = paramBoolean;
   }
   
   public void a(Animator paramAnimator)
   {
     super.a(paramAnimator);
-    ExtendedFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, this.jdField_a_of_type_Boolean);
-    ExtendedFloatingActionButton.b(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, true);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.setHorizontallyScrolling(true);
+    ExtendedFloatingActionButton.a(this.a, this.c);
+    ExtendedFloatingActionButton.b(this.a, true);
+    this.a.setHorizontallyScrolling(true);
   }
   
   public void a(@Nullable ExtendedFloatingActionButton.OnChangedCallback paramOnChangedCallback)
@@ -107,35 +37,105 @@ class ExtendedFloatingActionButton$ChangeSizeStrategy
     if (paramOnChangedCallback == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      paramOnChangedCallback.c(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton);
+      paramOnChangedCallback.c(this.a);
       return;
     }
-    paramOnChangedCallback.d(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton);
+    paramOnChangedCallback.d(this.a);
   }
   
-  public boolean a()
+  public void d()
   {
-    return (this.jdField_a_of_type_Boolean == ExtendedFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton)) || (this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.a() == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getText()));
-  }
-  
-  public void c()
-  {
-    ExtendedFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, this.jdField_a_of_type_Boolean);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getLayoutParams();
+    super.d();
+    ExtendedFloatingActionButton.b(this.a, false);
+    this.a.setHorizontallyScrolling(false);
+    ViewGroup.LayoutParams localLayoutParams = this.a.getLayoutParams();
     if (localLayoutParams == null) {
       return;
     }
-    localLayoutParams.width = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.a().width;
-    localLayoutParams.height = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.a().height;
-    ViewCompat.setPaddingRelative(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.c(), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getPaddingTop(), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$Size.d(), this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.getPaddingBottom());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.requestLayout();
+    localLayoutParams.width = this.b.e().width;
+    localLayoutParams.height = this.b.e().height;
+  }
+  
+  @NonNull
+  public AnimatorSet f()
+  {
+    MotionSpec localMotionSpec = a();
+    PropertyValuesHolder[] arrayOfPropertyValuesHolder;
+    if (localMotionSpec.c("width"))
+    {
+      arrayOfPropertyValuesHolder = localMotionSpec.d("width");
+      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { this.a.getWidth(), this.b.a() });
+      localMotionSpec.a("width", arrayOfPropertyValuesHolder);
+    }
+    if (localMotionSpec.c("height"))
+    {
+      arrayOfPropertyValuesHolder = localMotionSpec.d("height");
+      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { this.a.getHeight(), this.b.b() });
+      localMotionSpec.a("height", arrayOfPropertyValuesHolder);
+    }
+    if (localMotionSpec.c("paddingStart"))
+    {
+      arrayOfPropertyValuesHolder = localMotionSpec.d("paddingStart");
+      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { ViewCompat.getPaddingStart(this.a), this.b.c() });
+      localMotionSpec.a("paddingStart", arrayOfPropertyValuesHolder);
+    }
+    if (localMotionSpec.c("paddingEnd"))
+    {
+      arrayOfPropertyValuesHolder = localMotionSpec.d("paddingEnd");
+      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { ViewCompat.getPaddingEnd(this.a), this.b.d() });
+      localMotionSpec.a("paddingEnd", arrayOfPropertyValuesHolder);
+    }
+    if (localMotionSpec.c("labelOpacity"))
+    {
+      arrayOfPropertyValuesHolder = localMotionSpec.d("labelOpacity");
+      boolean bool = this.c;
+      float f2 = 0.0F;
+      float f1;
+      if (bool) {
+        f1 = 0.0F;
+      } else {
+        f1 = 1.0F;
+      }
+      if (this.c) {
+        f2 = 1.0F;
+      }
+      arrayOfPropertyValuesHolder[0].setFloatValues(new float[] { f1, f2 });
+      localMotionSpec.a("labelOpacity", arrayOfPropertyValuesHolder);
+    }
+    return super.b(localMotionSpec);
+  }
+  
+  public void g()
+  {
+    ExtendedFloatingActionButton.a(this.a, this.c);
+    ViewGroup.LayoutParams localLayoutParams = this.a.getLayoutParams();
+    if (localLayoutParams == null) {
+      return;
+    }
+    localLayoutParams.width = this.b.e().width;
+    localLayoutParams.height = this.b.e().height;
+    ViewCompat.setPaddingRelative(this.a, this.b.c(), this.a.getPaddingTop(), this.b.d(), this.a.getPaddingBottom());
+    this.a.requestLayout();
+  }
+  
+  public int h()
+  {
+    if (this.c) {
+      return R.animator.h;
+    }
+    return R.animator.g;
+  }
+  
+  public boolean i()
+  {
+    return (this.c == ExtendedFloatingActionButton.g(this.a)) || (this.a.getIcon() == null) || (TextUtils.isEmpty(this.a.getText()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton.ChangeSizeStrategy
  * JD-Core Version:    0.7.0.1
  */

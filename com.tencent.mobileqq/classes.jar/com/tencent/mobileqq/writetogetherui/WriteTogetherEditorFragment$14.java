@@ -14,17 +14,17 @@ class WriteTogetherEditorFragment$14
   
   public void onClick(View paramView)
   {
-    if (WriteTogetherEditorFragment.a(this.a).a() == CreatingState.TEMPLATE_SHOW_ENTRANCE)
+    if (WriteTogetherEditorFragment.q(this.a).a() == CreatingState.TEMPLATE_SHOW_ENTRANCE)
     {
       ReportController.b(null, "dc00898", "", "", "0X800B357", "0X800B357", 0, 0, "", "", "", "");
-      WriteTogetherEditorFragment.a(this.a).a(CreatingState.TEMPLATE_SHOW_LAYER);
+      WriteTogetherEditorFragment.q(this.a).a(CreatingState.TEMPLATE_SHOW_LAYER);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.14
  * JD-Core Version:    0.7.0.1
  */

@@ -38,6 +38,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -819,9 +820,9 @@ public class LightDeviceUtils
   {
     try
     {
-      if (NetworkInterface.getNetworkInterfaces() != null)
+      if (NetworkMonitor.getNetworkInterfaces() != null)
       {
-        Enumeration localEnumeration = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration = NetworkMonitor.getNetworkInterfaces();
         while (localEnumeration.hasMoreElements())
         {
           Object localObject1 = (NetworkInterface)localEnumeration.nextElement();
@@ -865,7 +866,7 @@ public class LightDeviceUtils
     //   3: astore 6
     //   5: aconst_null
     //   6: astore_2
-    //   7: invokestatic 486	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
+    //   7: invokestatic 486	com/tencent/mobileqq/qmethodmonitor/monitor/NetworkMonitor:getNetworkInterfaces	()Ljava/util/Enumeration;
     //   10: astore 8
     //   12: iconst_0
     //   13: istore_0
@@ -890,8 +891,8 @@ public class LightDeviceUtils
     //   50: astore 6
     //   52: aload 8
     //   54: invokeinterface 494 1 0
-    //   59: checkcast 482	java/net/NetworkInterface
-    //   62: invokevirtual 497	java/net/NetworkInterface:getInetAddresses	()Ljava/util/Enumeration;
+    //   59: checkcast 496	java/net/NetworkInterface
+    //   62: invokevirtual 499	java/net/NetworkInterface:getInetAddresses	()Ljava/util/Enumeration;
     //   65: astore 9
     //   67: aload_2
     //   68: astore_3
@@ -912,14 +913,14 @@ public class LightDeviceUtils
     //   95: astore 6
     //   97: aload 9
     //   99: invokeinterface 494 1 0
-    //   104: checkcast 499	java/net/InetAddress
+    //   104: checkcast 501	java/net/InetAddress
     //   107: astore_2
     //   108: aload_3
     //   109: astore 5
     //   111: aload_3
     //   112: astore 6
     //   114: aload_2
-    //   115: invokevirtual 522	java/net/InetAddress:isSiteLocalAddress	()Z
+    //   115: invokevirtual 524	java/net/InetAddress:isSiteLocalAddress	()Z
     //   118: istore_1
     //   119: iload_1
     //   120: ifne +55 -> 175
@@ -928,16 +929,16 @@ public class LightDeviceUtils
     //   126: aload_3
     //   127: astore 6
     //   129: aload_2
-    //   130: invokevirtual 502	java/net/InetAddress:isLoopbackAddress	()Z
+    //   130: invokevirtual 504	java/net/InetAddress:isLoopbackAddress	()Z
     //   133: ifne +42 -> 175
     //   136: aload_3
     //   137: astore 5
     //   139: aload_3
     //   140: astore 6
     //   142: aload_2
-    //   143: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   146: ldc_w 524
-    //   149: invokevirtual 527	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   143: invokevirtual 509	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   146: ldc_w 526
+    //   149: invokevirtual 529	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   152: iconst_m1
     //   153: if_icmpne +22 -> 175
     //   156: aload_3
@@ -945,7 +946,7 @@ public class LightDeviceUtils
     //   159: aload_3
     //   160: astore 6
     //   162: aload_2
-    //   163: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   163: invokevirtual 509	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   166: astore 7
     //   168: iconst_1
     //   169: istore_0
@@ -957,23 +958,23 @@ public class LightDeviceUtils
     //   178: aload_3
     //   179: astore 6
     //   181: aload_2
-    //   182: invokevirtual 522	java/net/InetAddress:isSiteLocalAddress	()Z
+    //   182: invokevirtual 524	java/net/InetAddress:isSiteLocalAddress	()Z
     //   185: ifeq -116 -> 69
     //   188: aload_3
     //   189: astore 5
     //   191: aload_3
     //   192: astore 6
     //   194: aload_2
-    //   195: invokevirtual 502	java/net/InetAddress:isLoopbackAddress	()Z
+    //   195: invokevirtual 504	java/net/InetAddress:isLoopbackAddress	()Z
     //   198: ifne -129 -> 69
     //   201: aload_3
     //   202: astore 5
     //   204: aload_3
     //   205: astore 6
     //   207: aload_2
-    //   208: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   211: ldc_w 524
-    //   214: invokevirtual 527	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   208: invokevirtual 509	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   211: ldc_w 526
+    //   214: invokevirtual 529	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   217: iconst_m1
     //   218: if_icmpne -149 -> 69
     //   221: aload_3
@@ -981,7 +982,7 @@ public class LightDeviceUtils
     //   224: aload_3
     //   225: astore 6
     //   227: aload_2
-    //   228: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   228: invokevirtual 509	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   231: astore_3
     //   232: goto -163 -> 69
     //   235: goto +89 -> 324
@@ -998,7 +999,7 @@ public class LightDeviceUtils
     //   258: ifne +6 -> 264
     //   261: aload 4
     //   263: areturn
-    //   264: invokestatic 529	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   264: invokestatic 531	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
     //   267: astore_3
     //   268: aload_3
     //   269: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1014,13 +1015,13 @@ public class LightDeviceUtils
     //   287: aconst_null
     //   288: astore_2
     //   289: aload 4
-    //   291: invokevirtual 530	java/net/SocketException:printStackTrace	()V
+    //   291: invokevirtual 532	java/net/SocketException:printStackTrace	()V
     //   294: aload_3
     //   295: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   298: ifne +5 -> 303
     //   301: aload_3
     //   302: areturn
-    //   303: invokestatic 529	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   303: invokestatic 531	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
     //   306: astore_3
     //   307: aload_3
     //   308: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1038,7 +1039,7 @@ public class LightDeviceUtils
     //   329: ifne +6 -> 335
     //   332: aload 4
     //   334: areturn
-    //   335: invokestatic 529	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   335: invokestatic 531	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
     //   338: astore_2
     //   339: aload_2
     //   340: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1112,7 +1113,7 @@ public class LightDeviceUtils
   public static long getMaxCpuFreq()
   {
     // Byte code:
-    //   0: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   0: getstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   3: lstore_2
     //   4: lload_2
     //   5: lconst_0
@@ -1123,14 +1124,14 @@ public class LightDeviceUtils
     //   12: iconst_0
     //   13: istore_0
     //   14: iload_0
-    //   15: invokestatic 548	org/light/device/LightDeviceUtils:getNumCores	()I
+    //   15: invokestatic 550	org/light/device/LightDeviceUtils:getNumCores	()I
     //   18: if_icmpge +178 -> 196
     //   21: new 113	java/lang/StringBuilder
     //   24: dup
     //   25: invokespecial 114	java/lang/StringBuilder:<init>	()V
     //   28: astore 4
     //   30: aload 4
-    //   32: ldc_w 550
+    //   32: ldc_w 552
     //   35: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: aload 4
@@ -1138,7 +1139,7 @@ public class LightDeviceUtils
     //   42: invokevirtual 454	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload 4
-    //   48: ldc_w 552
+    //   48: ldc_w 554
     //   51: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: new 94	java/io/File
@@ -1153,14 +1154,14 @@ public class LightDeviceUtils
     //   77: sipush 128
     //   80: newarray byte
     //   82: astore 5
-    //   84: new 554	java/io/FileInputStream
+    //   84: new 556	java/io/FileInputStream
     //   87: dup
     //   88: aload 4
-    //   90: invokespecial 557	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   90: invokespecial 559	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   93: astore 4
     //   95: aload 4
     //   97: aload 5
-    //   99: invokevirtual 560	java/io/FileInputStream:read	([B)I
+    //   99: invokevirtual 562	java/io/FileInputStream:read	([B)I
     //   102: pop
     //   103: iconst_0
     //   104: istore_1
@@ -1188,77 +1189,77 @@ public class LightDeviceUtils
     //   141: aload 5
     //   143: iconst_0
     //   144: iload_1
-    //   145: invokespecial 563	java/lang/String:<init>	([BII)V
+    //   145: invokespecial 565	java/lang/String:<init>	([BII)V
     //   148: invokestatic 156	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   151: invokestatic 567	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   151: invokestatic 569	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   154: astore 5
     //   156: aload 5
-    //   158: invokevirtual 570	java/lang/Integer:intValue	()I
+    //   158: invokevirtual 572	java/lang/Integer:intValue	()I
     //   161: i2l
-    //   162: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   162: getstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   165: lcmp
     //   166: ifle +12 -> 178
     //   169: aload 5
-    //   171: invokevirtual 570	java/lang/Integer:intValue	()I
+    //   171: invokevirtual 572	java/lang/Integer:intValue	()I
     //   174: i2l
-    //   175: putstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   175: putstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   178: aload 4
-    //   180: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   180: invokevirtual 573	java/io/FileInputStream:close	()V
     //   183: goto +137 -> 320
     //   186: astore 5
     //   188: aload 4
-    //   190: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   190: invokevirtual 573	java/io/FileInputStream:close	()V
     //   193: aload 5
     //   195: athrow
-    //   196: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   199: ldc2_w 572
+    //   196: getstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   199: ldc2_w 574
     //   202: lcmp
     //   203: ifne +65 -> 268
-    //   206: new 554	java/io/FileInputStream
+    //   206: new 556	java/io/FileInputStream
     //   209: dup
     //   210: ldc_w 286
-    //   213: invokespecial 574	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   213: invokespecial 576	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   216: astore 4
-    //   218: ldc_w 576
+    //   218: ldc_w 578
     //   221: aload 4
-    //   223: invokestatic 580	org/light/device/LightDeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   223: invokestatic 582	org/light/device/LightDeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
     //   226: sipush 1000
     //   229: imul
     //   230: i2l
     //   231: lstore_2
     //   232: lload_2
-    //   233: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   233: getstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   236: lcmp
     //   237: ifle +7 -> 244
     //   240: lload_2
-    //   241: putstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   241: putstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   244: aload 4
-    //   246: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   246: invokevirtual 573	java/io/FileInputStream:close	()V
     //   249: goto +19 -> 268
     //   252: astore 5
     //   254: aload 4
-    //   256: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   256: invokevirtual 573	java/io/FileInputStream:close	()V
     //   259: aload 5
     //   261: athrow
-    //   262: ldc2_w 572
-    //   265: putstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   262: ldc2_w 574
+    //   265: putstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   268: new 113	java/lang/StringBuilder
     //   271: dup
     //   272: invokespecial 114	java/lang/StringBuilder:<init>	()V
     //   275: astore 4
     //   277: aload 4
-    //   279: ldc_w 582
+    //   279: ldc_w 584
     //   282: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   285: pop
     //   286: aload 4
-    //   288: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   288: getstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   291: invokevirtual 438	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   294: pop
-    //   295: ldc_w 584
+    //   295: ldc_w 586
     //   298: aload 4
     //   300: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   303: invokestatic 443	org/light/utils/LightLogUtil:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   306: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   306: getstatic 547	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
     //   309: lreturn
     //   310: astore 4
     //   312: goto -50 -> 262
@@ -2049,7 +2050,7 @@ public class LightDeviceUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.device.LightDeviceUtils
  * JD-Core Version:    0.7.0.1
  */

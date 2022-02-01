@@ -9,12 +9,12 @@ class RIJCommentInLikeFeedUgcDeliverHandler$1
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.a, this.b, this.c, this.d, this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedUgcDeliverHandler.1
  * JD-Core Version:    0.7.0.1
  */

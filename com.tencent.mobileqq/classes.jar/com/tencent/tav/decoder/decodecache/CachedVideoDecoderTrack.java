@@ -533,6 +533,11 @@ public class CachedVideoDecoderTrack
     return this.segmentDecoder.decoderTrack.getTrackId();
   }
   
+  public CMSampleBuffer readCurrentSample()
+  {
+    return null;
+  }
+  
   public CMSampleBuffer readSample()
   {
     if (this.lastSampleState.isInvalid()) {
@@ -699,6 +704,8 @@ public class CachedVideoDecoderTrack
     this.revert = paramBoolean;
   }
   
+  public void setTrackIndex(int paramInt) {}
+  
   public void setTrackSegments(List<DecoderTrackSegment> paramList)
   {
     this.segmentDecoder.decoderTrack.setTrackSegments(paramList);
@@ -728,7 +735,7 @@ public class CachedVideoDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.CachedVideoDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,6 @@ import com.tencent.qphone.base.util.QLog;
 
 public class MessageFoldable
 {
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    paramMessageRecord.isFolded = false;
-  }
-  
   public static boolean a(MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord.isSendFromLocal()) {
@@ -44,10 +39,15 @@ public class MessageFoldable
     }
     return false;
   }
+  
+  public static void b(MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord.isFolded = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MessageFoldable
  * JD-Core Version:    0.7.0.1
  */

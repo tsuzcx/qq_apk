@@ -14,13 +14,13 @@ class BusinessCmrTmpChatPie$10
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    this.a.i.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
-    Object localObject = this.a.a(paramInt1);
-    EnterpriseQQManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.b(), (StructMsg.ButtonInfo)localObject);
-    paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localObject = this.a.b();
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    this.a.bO.setVisibility(0);
+    this.a.bP.sendEmptyMessageDelayed(0, 10000L);
+    Object localObject = this.a.u(paramInt1);
+    EnterpriseQQManager.a(this.a.d).a(paramString, this.a.aX(), this.a.d, this.a.ae(), (StructMsg.ButtonInfo)localObject);
+    paramString = this.a.d;
+    localObject = this.a.ae();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("");
@@ -29,7 +29,7 @@ class BusinessCmrTmpChatPie$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.10
  * JD-Core Version:    0.7.0.1
  */

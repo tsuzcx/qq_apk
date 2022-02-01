@@ -23,9 +23,9 @@ class FontManager$1
       ((IVasQuickUpdateService)FontManager.a(this.this$0).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
       return;
     }
-    FastColorFontHelper.a().b.set(true);
+    FastColorFontHelper.a().c.set(true);
     VasUtils.a(FontManager.a(this.this$0));
-    FontManager.a(this.this$0);
+    FontManager.b(this.this$0);
   }
 }
 

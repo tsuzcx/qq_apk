@@ -34,13 +34,12 @@ public abstract class UPCEANReader
     END_PATTERN = new int[] { 1, 1, 1, 1, 1, 1 };
     int i = 10;
     int[] arrayOfInt1 = { 3, 2, 1, 1 };
-    int[] arrayOfInt2 = { 2, 1, 2, 2 };
-    int[] arrayOfInt3 = { 1, 1, 3, 2 };
+    int[] arrayOfInt2 = { 2, 2, 2, 1 };
+    int[] arrayOfInt3 = { 2, 1, 2, 2 };
     int[] arrayOfInt4 = { 1, 2, 3, 1 };
-    int[] arrayOfInt5 = { 1, 1, 1, 4 };
+    int[] arrayOfInt5 = { 1, 3, 1, 2 };
     int[] arrayOfInt6 = { 1, 2, 1, 3 };
-    int[] arrayOfInt7 = { 3, 1, 1, 2 };
-    L_PATTERNS = new int[][] { arrayOfInt1, { 2, 2, 2, 1 }, arrayOfInt2, { 1, 4, 1, 1 }, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 1, 3, 1, 2 }, arrayOfInt6, arrayOfInt7 };
+    L_PATTERNS = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, arrayOfInt4, { 1, 1, 1, 4 }, arrayOfInt5, arrayOfInt6, { 3, 1, 1, 2 } };
     L_AND_G_PATTERNS = new int[20][];
     System.arraycopy(L_PATTERNS, 0, L_AND_G_PATTERNS, 0, 10);
     while (i < 20)
@@ -341,7 +340,7 @@ public abstract class UPCEANReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.UPCEANReader
  * JD-Core Version:    0.7.0.1
  */

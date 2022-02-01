@@ -10,20 +10,20 @@ class InformationFaceAdapter$DownloadProgressCallback$1
   
   public void run()
   {
-    InformationFaceAdapter.DownloadProgressCallback.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$DownloadProgressCallback).setVisibility(0);
-    InformationFaceAdapter.DownloadProgressCallback.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$DownloadProgressCallback).setProgress(this.jdField_a_of_type_Int);
+    InformationFaceAdapter.DownloadProgressCallback.a(this.b).setVisibility(0);
+    InformationFaceAdapter.DownloadProgressCallback.a(this.b).setProgress(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("progress:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.d("InformationFaceAdapter", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1
  * JD-Core Version:    0.7.0.1
  */

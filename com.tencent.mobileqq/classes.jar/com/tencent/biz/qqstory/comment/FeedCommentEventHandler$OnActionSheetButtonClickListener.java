@@ -21,20 +21,20 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 public class FeedCommentEventHandler$OnActionSheetButtonClickListener
   implements ActionSheet.OnButtonClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  private final ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  private final CommentEntry b;
+  private final ActionSheet c;
+  private final int d;
   
   public FeedCommentEventHandler$OnActionSheetButtonClickListener(FeedCommentEventHandler paramFeedCommentEventHandler, ActionSheet paramActionSheet, CommentEntry paramCommentEntry, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramActionSheet;
+    this.b = paramCommentEntry;
+    this.d = paramInt;
   }
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+    paramView = this.c.getContent(paramInt);
     Object localObject;
     if (QLog.isDevelopLevel())
     {
@@ -45,49 +45,49 @@ public class FeedCommentEventHandler$OnActionSheetButtonClickListener
       ((StringBuilder)localObject).append(paramView);
       QLog.d("FeedCommentEventHandler", 2, ((StringBuilder)localObject).toString());
     }
-    if (HardCodeUtil.a(2131704544).equals(paramView))
+    if (HardCodeUtil.a(2131902454).equals(paramView))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(this.jdField_a_of_type_Int);
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+      this.a.a.b(this.d);
+      paramView = this.a.d.getOwner();
       if ((paramView != null) && (paramView.isVip())) {
         paramInt = 1;
       } else {
         paramInt = 2;
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUin.equals(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_JavaLangString)) {
+      if (this.b.authorUin.equals(this.a.c)) {
         paramView = "2";
       } else {
         paramView = "1";
       }
-      StoryReportor.a("play_video", "del_reply", paramInt, 0, new String[] { paramView, "", "", this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      StoryReportor.a("play_video", "del_reply", paramInt, 0, new String[] { paramView, "", "", this.a.d.feedId });
     }
-    else if (HardCodeUtil.a(2131704533).equals(paramView))
+    else if (HardCodeUtil.a(2131902443).equals(paramView))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_AndroidOsHandler.postDelayed(new FeedCommentEventHandler.OnActionSheetButtonClickListener.1(this), 500L);
+      this.a.b.postDelayed(new FeedCommentEventHandler.OnActionSheetButtonClickListener.1(this), 500L);
     }
-    else if (HardCodeUtil.a(2131704525).equals(paramView))
+    else if (HardCodeUtil.a(2131902435).equals(paramView))
     {
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      StoryReportor.a("play_video", "report_reply", StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { "", StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      PlayModeUtils.a(this.a.a.c, this.b);
+      StoryReportor.a("play_video", "report_reply", StoryReportor.a(this.a.d), 0, new String[] { "", StoryReportor.b(this.a.a.h), "", this.a.d.feedId });
     }
-    else if (HardCodeUtil.a(2131704548).equals(paramView))
+    else if (HardCodeUtil.a(2131902458).equals(paramView))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 1;
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.pbType = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getCommentLikeType();
-      StoryQQTextCacher.a().jdField_a_of_type_JavaLangString = "";
-      FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, false, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int, new FeedCommentEventHandler.OnActionSheetButtonClickListener.2(this));
+      this.b.status = 1;
+      this.a.a.g();
+      this.b.pbType = this.a.a.g.getCommentLikeType();
+      StoryQQTextCacher.a().a = "";
+      FeedCommentLego.a(this.a.d, this.b, false, this.a.a.h, new FeedCommentEventHandler.OnActionSheetButtonClickListener.2(this));
     }
-    else if (HardCodeUtil.a(2131704520).equals(paramView))
+    else if (HardCodeUtil.a(2131902431).equals(paramView))
     {
       try
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content;
+        localObject = this.b.content;
         paramView = (View)localObject;
         if (TextUtils.hasSysEmotion((String)localObject)) {
-          paramView = EmotionCodecUtils.b((String)localObject);
+          paramView = EmotionCodecUtils.c((String)localObject);
         }
-        localObject = (ClipboardManager)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
+        localObject = (ClipboardManager)this.a.a.p.getSystemService("clipboard");
         paramView = ClipData.newPlainText("comment content", paramView);
         ClipboardMonitor.setPrimaryClip((ClipboardManager)localObject, paramView);
         ((ClipboardManager)localObject).setPrimaryClip(paramView);
@@ -100,12 +100,12 @@ public class FeedCommentEventHandler$OnActionSheetButtonClickListener
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

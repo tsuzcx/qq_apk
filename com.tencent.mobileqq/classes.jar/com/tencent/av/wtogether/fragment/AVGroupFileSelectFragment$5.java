@@ -14,16 +14,16 @@ class AVGroupFileSelectFragment$5
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).setVisibility(0);
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment, null);
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).c();
+    AVGroupFileSelectFragment.e(this.c).offsetTopAndBottom(-this.a);
+    AVGroupFileSelectFragment.f(this.c).setVisibility(0);
+    AVGroupFileSelectFragment.e(this.c).startAnimation(this.b);
+    AVGroupFileSelectFragment.a(this.c, null);
+    AVGroupFileSelectFragment.g(this.c).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment.5
  * JD-Core Version:    0.7.0.1
  */

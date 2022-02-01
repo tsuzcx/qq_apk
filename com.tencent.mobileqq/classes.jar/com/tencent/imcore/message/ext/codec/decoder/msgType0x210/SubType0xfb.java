@@ -27,7 +27,7 @@ public class SubType0xfb
     try
     {
       Object localObject = new NowPushMsgList.MsgBody();
-      if (paramOnLinePushMessageProcessor.b(paramMsgType0x210))
+      if (paramOnLinePushMessageProcessor.d(paramMsgType0x210))
       {
         ((NowPushMsgList.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
         paramMsgType0x210 = ((NowPushMsgList.MsgBody)localObject).rpt_now_push_msg.get().iterator();
@@ -71,7 +71,7 @@ public class SubType0xfb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xfb
  * JD-Core Version:    0.7.0.1
  */

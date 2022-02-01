@@ -9,14 +9,14 @@ class ScanEntryProviderContainerView$1$1
   
   public void a()
   {
-    if (ScanEntryProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView$1.a) != null) {
-      ScanEntryProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView$1.a).post(new ScanEntryProviderContainerView.1.1.1(this));
+    if (ScanEntryProviderContainerView.b(this.b.a) != null) {
+      ScanEntryProviderContainerView.b(this.b.a).post(new ScanEntryProviderContainerView.1.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.1.1
  * JD-Core Version:    0.7.0.1
  */

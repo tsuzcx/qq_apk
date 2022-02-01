@@ -19,7 +19,7 @@ public class AIOPlusPanelAppInfoOrderConfigProcessor
   {
     AIOPlusPanelAppInfoOrderConfigProcessor.Config localConfig = new AIOPlusPanelAppInfoOrderConfigProcessor.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      AIOPlusPanelAppInfoOrderConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      AIOPlusPanelAppInfoOrderConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -60,7 +60,7 @@ public class AIOPlusPanelAppInfoOrderConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.AIOPlusPanelAppInfoOrderConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,14 @@ import java.util.HashMap;
 
 public final class FastClickUtils
 {
-  private static Pair<String, Long> a;
-  public static HashMap<String, Long> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_AndroidUtilPair = null;
-  }
+  public static HashMap<String, Long> a = new HashMap();
+  private static Pair<String, Long> b = null;
   
   public static boolean a(@NonNull String paramString)
   {
-    Object localObject = jdField_a_of_type_AndroidUtilPair;
+    Object localObject = b;
     if ((localObject != null) && (TextUtils.equals(paramString, (CharSequence)((Pair)localObject).first))) {
-      localObject = (Long)jdField_a_of_type_AndroidUtilPair.second;
+      localObject = (Long)b.second;
     } else {
       localObject = null;
     }
@@ -38,24 +32,24 @@ public final class FastClickUtils
       LogUtils.w("FastClickUtils", localStringBuilder.toString());
       return true;
     }
-    jdField_a_of_type_AndroidUtilPair = new Pair(paramString, Long.valueOf(l));
+    b = new Pair(paramString, Long.valueOf(l));
     return false;
   }
   
   public static boolean a(@NonNull String paramString, long paramLong)
   {
     long l = SystemClock.elapsedRealtime();
-    if (jdField_a_of_type_JavaUtilHashMap == null) {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (a == null) {
+      a = new HashMap();
     }
-    Long localLong = (Long)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Long localLong = (Long)a.get(paramString);
     boolean bool = false;
     if (localLong != null)
     {
-      if (jdField_a_of_type_JavaUtilHashMap.size() > 10) {
-        jdField_a_of_type_JavaUtilHashMap.clear();
+      if (a.size() > 10) {
+        a.clear();
       }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+      a.put(paramString, Long.valueOf(l));
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("fast click ,tag  = ");
       localStringBuilder.append(paramString);
@@ -71,13 +65,13 @@ public final class FastClickUtils
       }
       return bool;
     }
-    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+    a.put(paramString, Long.valueOf(l));
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.FastClickUtils
  * JD-Core Version:    0.7.0.1
  */

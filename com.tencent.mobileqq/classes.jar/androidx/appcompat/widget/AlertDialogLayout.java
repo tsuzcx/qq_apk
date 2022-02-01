@@ -8,6 +8,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.id;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 
@@ -82,17 +83,17 @@ public class AlertDialogLayout
       if (((View)localObject1).getVisibility() != 8)
       {
         j = ((View)localObject1).getId();
-        if (j == 2131378991)
+        if (j == R.id.topPanel)
         {
           localObject4 = localObject1;
         }
-        else if (j == 2131364160)
+        else if (j == R.id.buttonPanel)
         {
           localObject3 = localObject1;
         }
         else
         {
-          if ((j != 2131365176) && (j != 2131365353)) {
+          if ((j != R.id.contentPanel) && (j != R.id.customPanel)) {
             return false;
           }
           if (localObject2 != null) {

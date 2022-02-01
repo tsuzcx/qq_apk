@@ -12,10 +12,10 @@ class VideoFeedsShareController$OpenInSysBrowserShareAction
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    VideoFeedsShareController.a(this.a).b(VideoFeedsShareController.b(this.a));
-    if ((paramVideoInfo.m != null) && (paramVideoInfo.m.contains("kandianshare.html5.qq.com")))
+    VideoFeedsShareController.b(this.a).b(VideoFeedsShareController.c(this.a));
+    if ((paramVideoInfo.y != null) && (paramVideoInfo.y.contains("kandianshare.html5.qq.com")))
     {
-      this.a.a.b(paramVideoInfo.m);
+      this.a.a.b(paramVideoInfo.y);
       return;
     }
     paramVideoInfo = this.a.a;
@@ -32,7 +32,7 @@ class VideoFeedsShareController$OpenInSysBrowserShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.OpenInSysBrowserShareAction
  * JD-Core Version:    0.7.0.1
  */

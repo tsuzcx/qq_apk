@@ -16,6 +16,7 @@ public final class QQCircleFeedBase$StBusiInfoData
   public final PBRepeatMessageField<FeedCloudCommon.Entry> busiMap = PBField.initRepeatMessage(FeedCloudCommon.Entry.class);
   public final PBRepeatMessageField<QQCircleBase.UserCircleInfo> companyInfos = PBField.initRepeatMessage(QQCircleBase.UserCircleInfo.class);
   public final PBUInt32Field defaultTabIndex = PBField.initUInt32(0);
+  public final PBInt32Field defaultTabSourceType = PBField.initInt32(0);
   public final PBInt32Field goBackToSmallWorldWay = PBField.initInt32(0);
   public QQCircleFeedBase.StRewardData rewardData = new QQCircleFeedBase.StRewardData();
   public final PBRepeatMessageField<QQCircleFeedBase.StPolyLike> rewardPolyInfo = PBField.initRepeatMessage(QQCircleFeedBase.StPolyLike.class);
@@ -25,12 +26,12 @@ public final class QQCircleFeedBase$StBusiInfoData
   static
   {
     Integer localInteger = Integer.valueOf(0);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 64, 74 }, new String[] { "tabInfos", "busiMap", "allPolyInfo", "schoolInfos", "companyInfos", "defaultTabIndex", "rewardData", "goBackToSmallWorldWay", "rewardPolyInfo" }, new Object[] { null, null, null, null, null, localInteger, null, localInteger, null }, StBusiInfoData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 64, 74, 80 }, new String[] { "tabInfos", "busiMap", "allPolyInfo", "schoolInfos", "companyInfos", "defaultTabIndex", "rewardData", "goBackToSmallWorldWay", "rewardPolyInfo", "defaultTabSourceType" }, new Object[] { null, null, null, null, null, localInteger, null, localInteger, null, localInteger }, StBusiInfoData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StBusiInfoData
  * JD-Core Version:    0.7.0.1
  */

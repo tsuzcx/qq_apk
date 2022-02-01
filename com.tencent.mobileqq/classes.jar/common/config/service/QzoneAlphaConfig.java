@@ -15,21 +15,21 @@ import org.json.JSONObject;
 
 public class QzoneAlphaConfig
 {
-  private static QzoneAlphaConfig jdField_a_of_type_CommonConfigServiceQzoneAlphaConfig;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(\\d+)\\.(\\d+).(\\d+)_(\\d+)");
+  private static QzoneAlphaConfig a;
+  private Pattern b = Pattern.compile("(\\d+)\\.(\\d+).(\\d+)_(\\d+)");
   
   public static QzoneAlphaConfig a()
   {
-    if (jdField_a_of_type_CommonConfigServiceQzoneAlphaConfig == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_CommonConfigServiceQzoneAlphaConfig == null) {
-          jdField_a_of_type_CommonConfigServiceQzoneAlphaConfig = new QzoneAlphaConfig();
+        if (a == null) {
+          a = new QzoneAlphaConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CommonConfigServiceQzoneAlphaConfig;
+    return a;
   }
   
   private boolean a(String paramString)
@@ -43,8 +43,8 @@ public class QzoneAlphaConfig
       if (localObject.length < 2) {
         return false;
       }
-      paramString = a(localObject[0].trim());
-      localObject = a(localObject[1].trim());
+      paramString = b(localObject[0].trim());
+      localObject = b(localObject[1].trim());
       if ((paramString != null) && (localObject != null) && (paramString.length >= 4) && (localObject.length >= 4))
       {
         long l1 = paramString[0];
@@ -55,7 +55,7 @@ public class QzoneAlphaConfig
         long l6 = localObject[1] << 24;
         long l7 = localObject[2] << 16;
         long l8 = localObject[3];
-        paramString = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(QUA.getQUA3());
+        paramString = this.b.matcher(QUA.getQUA3());
         if (paramString.find())
         {
           long l9 = Long.parseLong(paramString.group(1));
@@ -119,7 +119,7 @@ public class QzoneAlphaConfig
     return true;
   }
   
-  private int[] a(String paramString)
+  private int[] b(String paramString)
   {
     try
     {
@@ -243,7 +243,7 @@ public class QzoneAlphaConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.config.service.QzoneAlphaConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.addfriend.ui;
 
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -13,53 +12,57 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 class AddFriendVerifyFragment$7
-  implements View.OnClickListener
+  extends AddFriendVerifyFragment.AddFriendOnclick
 {
-  AddFriendVerifyFragment$7(AddFriendVerifyFragment paramAddFriendVerifyFragment, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3) {}
+  AddFriendVerifyFragment$7(AddFriendVerifyFragment paramAddFriendVerifyFragment, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramAddFriendVerifyFragment);
+  }
   
   public void onClick(View paramView)
   {
-    AddFriendVerifyFragment.b(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment);
-    Object localObject = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    super.onClick(paramView);
+    AddFriendVerifyFragment.g(this.e);
+    Object localObject = this.a.toString();
     int i = 0;
-    while (i < AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment).size())
+    while (i < AddFriendVerifyFragment.h(this.e).size())
     {
-      String str = ((EditText)AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment).get(i)).getText().toString().trim();
+      String str = ((EditText)AddFriendVerifyFragment.h(this.e).get(i)).getText().toString().trim();
       if ("".equals(str))
       {
         i = 1;
-        break label92;
+        break label97;
       }
       localObject = ((String)localObject).replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
       i += 1;
     }
     i = 0;
-    label92:
+    label97:
     if (i != 0) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.getActivity(), 0, this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.getString(2131690017), 0).b(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.getQBaseActivity().getTitleBarHeight());
+      QQToast.makeText(this.e.getActivity(), 0, this.e.getString(2131886666), 0).show(this.e.getQBaseActivity().getTitleBarHeight());
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.a((String)localObject, null, "");
+      this.e.a((String)localObject, null, "");
     }
-    ReportController.b(AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment), "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+    ReportController.b(AddFriendVerifyFragment.f(this.e), "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.b), String.valueOf(this.c), "", "");
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reportClickEvent action: 0X80077B4  sourceId = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(" subSourceId = ");
       ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(" subSourceId = ");
+      ((StringBuilder)localObject).append(this.c);
       QLog.d("IphoneTitleBarFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.a)) {
-      ReportController.b(AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment), "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+    if (!TextUtils.isEmpty(this.e.b)) {
+      ReportController.b(AddFriendVerifyFragment.f(this.e), "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.a(this.jdField_a_of_type_Int, this.c);
+    this.e.a(this.b, this.d);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.7
  * JD-Core Version:    0.7.0.1
  */

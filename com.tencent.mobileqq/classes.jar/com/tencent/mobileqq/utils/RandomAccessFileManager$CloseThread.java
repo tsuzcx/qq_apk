@@ -21,15 +21,15 @@ class RandomAccessFileManager$CloseThread
         Thread.sleep(1000L);
         synchronized (RandomAccessFileManager.a(this.this$0))
         {
-          if (RandomAccessFileManager.a(this.this$0).isEmpty()) {
-            synchronized (RandomAccessFileManager.b(this.this$0))
+          if (RandomAccessFileManager.b(this.this$0).isEmpty()) {
+            synchronized (RandomAccessFileManager.c(this.this$0))
             {
               RandomAccessFileManager.a(this.this$0, null);
               return;
             }
           }
-          String[] arrayOfString = new String[RandomAccessFileManager.a(this.this$0).size()];
-          ??? = RandomAccessFileManager.a(this.this$0).keySet().iterator();
+          String[] arrayOfString = new String[RandomAccessFileManager.b(this.this$0).size()];
+          ??? = RandomAccessFileManager.b(this.this$0).keySet().iterator();
           int i = 0;
           while (((Iterator)???).hasNext())
           {
@@ -38,29 +38,29 @@ class RandomAccessFileManager$CloseThread
           }
           if (j < i)
           {
-            localFileEntry2 = (RandomAccessFileManager.FileEntry)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
-            ??? = localFileEntry2.jdField_b_of_type_ComTencentMobileqqUtilsRandomAccessFileManager$FileEntry;
-            localFileEntry1 = ((RandomAccessFileManager.FileEntry)???).jdField_b_of_type_ComTencentMobileqqUtilsRandomAccessFileManager$FileEntry;
-            if (((RandomAccessFileManager.FileEntry)???).jdField_a_of_type_Int != 0) {
+            localFileEntry2 = (RandomAccessFileManager.FileEntry)RandomAccessFileManager.b(this.this$0).get(arrayOfString[j]);
+            ??? = localFileEntry2.e;
+            localFileEntry1 = ((RandomAccessFileManager.FileEntry)???).e;
+            if (((RandomAccessFileManager.FileEntry)???).b != 0) {
               break label349;
             }
             long l1 = System.currentTimeMillis();
-            long l2 = ((RandomAccessFileManager.FileEntry)???).jdField_b_of_type_Long;
+            long l2 = ((RandomAccessFileManager.FileEntry)???).f;
             if (l1 - l2 <= 1000L) {
               break label349;
             }
             try
             {
-              ((RandomAccessFileManager.FileEntry)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
+              ((RandomAccessFileManager.FileEntry)???).a.close();
               if (QLog.isColorLevel()) {
-                QLog.d("AppleMojiHandler", 2, new Object[] { "file ", arrayOfString[j], "[", Long.valueOf(((RandomAccessFileManager.FileEntry)???).jdField_a_of_type_Long), "]", " close by Thread:", Long.valueOf(Thread.currentThread().getId()) });
+                QLog.d("AppleMojiHandler", 2, new Object[] { "file ", arrayOfString[j], "[", Long.valueOf(((RandomAccessFileManager.FileEntry)???).c), "]", " close by Thread:", Long.valueOf(Thread.currentThread().getId()) });
               }
             }
             catch (IOException localIOException)
             {
               localIOException.printStackTrace();
             }
-            RandomAccessFileManager.a(this.this$0, localFileEntry2, (RandomAccessFileManager.FileEntry)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
+            RandomAccessFileManager.a(this.this$0, localFileEntry2, (RandomAccessFileManager.FileEntry)???, arrayOfString[j], RandomAccessFileManager.b(this.this$0));
           }
         }
       }
@@ -86,7 +86,7 @@ class RandomAccessFileManager$CloseThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RandomAccessFileManager.CloseThread
  * JD-Core Version:    0.7.0.1
  */

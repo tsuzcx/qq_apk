@@ -19,7 +19,7 @@ import android.webkit.WebResourceRequest;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.i;
-import com.tencent.smtt.utils.n;
+import com.tencent.smtt.utils.o;
 
 @SuppressLint({"NewApi", "Override"})
 class SystemWebViewClient
@@ -63,10 +63,10 @@ class SystemWebViewClient
   {
     if (c == null)
     {
-      localObject = n.a();
+      localObject = o.a();
       if (localObject != null)
       {
-        ((n)localObject).a(true);
+        ((o)localObject).a(true);
         c = Boolean.toString(true);
       }
     }
@@ -78,7 +78,7 @@ class SystemWebViewClient
       this.b.a(paramWebView.getContext());
     }
     TbsLog.app_extra("SystemWebViewClient", paramWebView.getContext());
-    WebView.d();
+    WebView.c();
     if ((!TbsShareManager.mHasQueryed) && (this.b.getContext() != null) && (TbsShareManager.isThirdPartyApp(this.b.getContext())))
     {
       TbsShareManager.mHasQueryed = true;
@@ -281,7 +281,7 @@ class SystemWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient
  * JD-Core Version:    0.7.0.1
  */

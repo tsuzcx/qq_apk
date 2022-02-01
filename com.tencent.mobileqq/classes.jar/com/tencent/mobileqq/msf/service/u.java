@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
-import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -65,7 +65,7 @@ public class u
       localIntent.putExtra("uin", paramString2);
       localIntent.putExtra("istatus", paramInt1);
       localIntent.putExtra("type", paramInt2);
-      localIntent.putExtra("gatewayip", ac.q());
+      localIntent.putExtra("gatewayip", ad.q());
       localIntent.setPackage(paramContext.getPackageName());
       if (paramInt2 == 1) {
         localIntent.putExtra("processExitTimestamp", System.currentTimeMillis());
@@ -182,7 +182,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.u
  * JD-Core Version:    0.7.0.1
  */

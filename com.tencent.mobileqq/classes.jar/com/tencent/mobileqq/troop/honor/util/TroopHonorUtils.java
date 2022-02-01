@@ -159,7 +159,7 @@ public class TroopHonorUtils
       int i = 0;
       while (i < paramList.size())
       {
-        localStringBuilder.append(((TroopHonor)paramList.get(i)).jdField_a_of_type_Int);
+        localStringBuilder.append(((TroopHonor)paramList.get(i)).a);
         if (i != paramList.size() - 1) {
           localStringBuilder.append("|");
         }
@@ -177,7 +177,7 @@ public class TroopHonorUtils
     {
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        localStringBuilder.append(((TroopHonor)paramList.next()).jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(((TroopHonor)paramList.next()).b);
       }
     }
     return localStringBuilder.toString();
@@ -185,7 +185,7 @@ public class TroopHonorUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.util.TroopHonorUtils
  * JD-Core Version:    0.7.0.1
  */

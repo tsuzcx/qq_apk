@@ -11,14 +11,14 @@ class VideoAppInterface$5
   
   public void run()
   {
-    if (VideoAppInterface.a(this.this$0).a())
+    if (VideoAppInterface.a(this.this$0).c())
     {
       String str1 = VideoAppInterface.a(this.this$0).a();
       BeautyConfigUtil.a(this.this$0.getCurrentAccountUin(), str1);
-      VideoAppInterface.a(this.this$0).a();
+      VideoAppInterface.a(this.this$0).b();
       if (QLog.isColorLevel())
       {
-        String str2 = VideoAppInterface.c();
+        String str2 = VideoAppInterface.C();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("saveBeautyConfig, config[");
         localStringBuilder.append(str1);

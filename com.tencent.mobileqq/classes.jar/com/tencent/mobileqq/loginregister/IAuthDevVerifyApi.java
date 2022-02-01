@@ -11,17 +11,17 @@ public abstract interface IAuthDevVerifyApi
   
   public abstract void a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView);
   
-  public abstract boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView);
-  
   public abstract boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView, String paramString);
   
   public abstract void b();
   
   public abstract boolean b(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView);
+  
+  public abstract boolean c(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.IAuthDevVerifyApi
  * JD-Core Version:    0.7.0.1
  */

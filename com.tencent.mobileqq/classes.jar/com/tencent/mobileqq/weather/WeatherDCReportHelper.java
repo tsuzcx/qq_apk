@@ -5,6 +5,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.statistics.DcReportUtil;
 import com.tencent.mobileqq.weather.webpage.WeatherPreloadHelper;
+import com.tencent.mobileqq.weather.webpage.WeatherWebPageHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -26,9 +27,24 @@ public class WeatherDCReportHelper
     return a;
   }
   
-  public void a(AppInterface paramAppInterface)
+  private String a(int paramInt)
   {
-    a(paramAppInterface, "new_folder_weather_expose");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("| |");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("| | | | | |");
+    localObject = ((StringBuilder)localObject).toString();
+    if (WeatherWebPageHelper.a(false))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("1");
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("0");
+    return localStringBuilder.toString();
   }
   
   public void a(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
@@ -36,7 +52,7 @@ public class WeatherDCReportHelper
     if ((paramMessageRecord != null) && (paramMessageRecord.msgtype == -5008))
     {
       WeatherPreloadHelper.a(1, "");
-      a(paramAppInterface, "new_folder_weather_arrive");
+      a(paramAppInterface, "new_folder_weather_arrive", a(WeatherWebPageHelper.b(paramMessageRecord)));
     }
   }
   
@@ -110,14 +126,19 @@ public class WeatherDCReportHelper
     }
   }
   
-  public void b(AppInterface paramAppInterface)
+  public void b(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
   {
-    a(paramAppInterface, "new_folder_weather_click");
+    a(paramAppInterface, "new_folder_weather_expose", a(WeatherWebPageHelper.b(paramMessageRecord)));
+  }
+  
+  public void c(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
+  {
+    a(paramAppInterface, "new_folder_weather_click", a(WeatherWebPageHelper.b(paramMessageRecord)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.WeatherDCReportHelper
  * JD-Core Version:    0.7.0.1
  */

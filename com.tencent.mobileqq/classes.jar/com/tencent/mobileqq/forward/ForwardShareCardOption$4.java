@@ -24,30 +24,30 @@ class ForwardShareCardOption$4
     }
     if (!paramBoolean)
     {
-      this.a.A();
+      this.a.ae();
       if (paramInt != 1)
       {
         if (paramInt != 2) {
-          paramString1 = HardCodeUtil.a(2131704925);
+          paramString1 = HardCodeUtil.a(2131902817);
         } else {
-          paramString1 = HardCodeUtil.a(2131704931);
+          paramString1 = HardCodeUtil.a(2131902823);
         }
       }
       else {
-        paramString1 = HardCodeUtil.a(2131704932);
+        paramString1 = HardCodeUtil.a(2131902824);
       }
       ForwardShareCardOption.c(this.a, null);
       ForwardShareCardOption.a(this.a, false);
-      QQToast.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+      QQToast.makeText(this.a.s, 1, paramString1, 0).show(((BaseActivity)this.a.s).getTitleBarHeight());
       return;
     }
-    if ((ForwardShareCardOption.c(this.a) != null) && (Long.parseLong(ForwardShareCardOption.c(this.a)) == paramLong2))
+    if ((ForwardShareCardOption.d(this.a) != null) && (Long.parseLong(ForwardShareCardOption.d(this.a)) == paramLong2))
     {
-      if (ForwardShareCardOption.a(this.a))
+      if (ForwardShareCardOption.f(this.a))
       {
         ForwardShareCardOption.c(this.a, paramString1);
         paramString1 = this.a;
-        ForwardShareCardOption.a(paramString1, ForwardShareCardOption.c(paramString1), true);
+        ForwardShareCardOption.a(paramString1, ForwardShareCardOption.d(paramString1), true);
       }
       ForwardShareCardOption.a(this.a, false);
     }
@@ -65,16 +65,16 @@ class ForwardShareCardOption$4
       localStringBuilder.append("]");
       QLog.i("ForwardOption.ForwardShareCardOption", 2, localStringBuilder.toString());
     }
-    if ((ForwardShareCardOption.c(this.a) != null) && (ForwardShareCardOption.c(this.a).equals(paramString)))
+    if ((ForwardShareCardOption.d(this.a) != null) && (ForwardShareCardOption.d(this.a).equals(paramString)))
     {
       paramString = this.a;
-      ForwardShareCardOption.a(paramString, ForwardShareCardOption.c(paramString), false);
+      ForwardShareCardOption.a(paramString, ForwardShareCardOption.d(paramString), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareCardOption.4
  * JD-Core Version:    0.7.0.1
  */

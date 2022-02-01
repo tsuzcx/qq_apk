@@ -22,7 +22,7 @@ class StatusJsHandler$4
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.a.get();
     Object localObject;
     if (localBaseActivity != null)
     {
@@ -37,7 +37,7 @@ class StatusJsHandler$4
         QLog.d("Q.richstatus.", 2, ((StringBuilder)localObject).toString());
       }
       if (!paramBoolean) {
-        this.a.a(2131695217);
+        this.a.a(2131892951);
       }
     }
     try
@@ -63,28 +63,28 @@ class StatusJsHandler$4
     }
     if (paramInt == 0)
     {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.setFollowType(1);
-      this.a.a(localBaseActivity, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail);
-      ((IPublicAccountHandler)localBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).onFollowPublicAccount(this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail);
-      ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMenuSetting(localBaseActivity.getApplicationContext(), localBaseActivity.app, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.getUin(), null, true);
-      this.a.a(this.a.c, "true");
+      this.a.d.setFollowType(1);
+      this.a.a(localBaseActivity, this.a.d);
+      ((IPublicAccountHandler)localBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).onFollowPublicAccount(this.a.d);
+      ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMenuSetting(localBaseActivity.getApplicationContext(), localBaseActivity.app, this.a.d.getUin(), null, true);
+      this.a.a(this.a.h, "true");
       return;
     }
     if (paramInt == 58) {
-      this.a.a(2131695212);
+      this.a.a(2131892946);
     } else if (paramInt == 65) {
-      this.a.a(2131695185);
+      this.a.a(2131892918);
     } else {
-      this.a.a(2131695217);
+      this.a.a(2131892951);
     }
     label327:
     paramBundle = this.a;
-    paramBundle.a(paramBundle.c, "false");
+    paramBundle.a(paramBundle.h, "false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler.4
  * JD-Core Version:    0.7.0.1
  */

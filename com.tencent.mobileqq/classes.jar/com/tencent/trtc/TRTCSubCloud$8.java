@@ -5,95 +5,88 @@ import org.json.JSONObject;
 class TRTCSubCloud$8
   implements Runnable
 {
-  TRTCSubCloud$8(TRTCSubCloud paramTRTCSubCloud, String paramString) {}
+  TRTCSubCloud$8(TRTCSubCloud paramTRTCSubCloud, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {
     try
     {
-      Object localObject3 = new JSONObject(this.a);
-      if (!((JSONObject)localObject3).has("api"))
+      if (this.a.equals("setSEIPayloadType"))
       {
-        localObject1 = this.b;
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("callExperimentalAPI[lack api or illegal type]: ");
-        ((StringBuilder)localObject2).append(this.a);
-        TRTCSubCloud.access$6900((TRTCSubCloud)localObject1, ((StringBuilder)localObject2).toString());
+        TRTCSubCloud.access$7100(this.d, this.b);
         return;
       }
-      localObject2 = ((JSONObject)localObject3).getString("api");
-      localObject1 = null;
-      if (((JSONObject)localObject3).has("params")) {
-        localObject1 = ((JSONObject)localObject3).getJSONObject("params");
+      if (this.a.equals("setLocalAudioMuteMode")) {
+        return;
       }
-      if (((String)localObject2).equals("setSEIPayloadType"))
+      if (this.a.equals("setVideoEncodeParamEx")) {
+        return;
+      }
+      if (this.a.equals("setAudioSampleRate")) {
+        return;
+      }
+      if (this.a.equals("muteRemoteAudioInSpeaker"))
       {
-        TRTCSubCloud.access$7000(this.b, (JSONObject)localObject1);
+        TRTCSubCloud.access$7200(this.d, this.b);
         return;
       }
-      if (((String)localObject2).equals("setLocalAudioMuteMode")) {
+      if (this.a.equals("enableAudioAGC")) {
         return;
       }
-      if (((String)localObject2).equals("setVideoEncodeParamEx")) {
+      if (this.a.equals("enableAudioAEC")) {
         return;
       }
-      if (((String)localObject2).equals("setAudioSampleRate")) {
+      if (this.a.equals("enableAudioANS")) {
         return;
       }
-      if (((String)localObject2).equals("muteRemoteAudioInSpeaker"))
+      if (this.a.equals("setPerformanceMode"))
       {
-        TRTCSubCloud.access$7100(this.b, (JSONObject)localObject1);
+        TRTCSubCloud.access$7300(this.d, this.b);
         return;
       }
-      if (((String)localObject2).equals("enableAudioAGC")) {
+      if (this.a.equals("setCustomRenderMode")) {
         return;
       }
-      if (((String)localObject2).equals("enableAudioAEC")) {
+      if (this.a.equals("setMediaCodecConfig")) {
         return;
       }
-      if (((String)localObject2).equals("enableAudioANS")) {
+      if (this.a.equals("setKeepAVCaptureOption")) {
         return;
       }
-      if (((String)localObject2).equals("setPerformanceMode"))
+      if (this.a.equals("sendJsonCMD"))
       {
-        TRTCSubCloud.access$7200(this.b, (JSONObject)localObject1);
+        TRTCSubCloud.access$7400(this.d, this.b, this.c);
         return;
       }
-      if (((String)localObject2).equals("setCustomRenderMode")) {
-        return;
-      }
-      if (((String)localObject2).equals("setMediaCodecConfig")) {
-        return;
-      }
-      if (((String)localObject2).equals("sendJsonCMD"))
+      if (this.a.equals("updatePrivateMapKey"))
       {
-        TRTCSubCloud.access$7300(this.b, (JSONObject)localObject1, this.a);
+        TRTCSubCloud.access$7500(this.d, this.b);
         return;
       }
-      if (((String)localObject2).equals("updatePrivateMapKey"))
+      if (this.a.equals("setRoomType"))
       {
-        TRTCSubCloud.access$7400(this.b, (JSONObject)localObject1);
+        TRTCSubCloud.access$7600(this.d, this.b);
         return;
       }
-      localObject1 = this.b;
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("callExperimentalAPI[illegal api]: ");
-      ((StringBuilder)localObject3).append((String)localObject2);
-      TRTCSubCloud.access$7500((TRTCSubCloud)localObject1, ((StringBuilder)localObject3).toString());
+      localTRTCSubCloud = this.d;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("callExperimentalAPI[illegal api]: ");
+      localStringBuilder.append(this.a);
+      TRTCSubCloud.access$7700(localTRTCSubCloud, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
     {
-      Object localObject1;
-      Object localObject2;
-      label293:
-      break label293;
+      TRTCSubCloud localTRTCSubCloud;
+      StringBuilder localStringBuilder;
+      label303:
+      break label303;
     }
-    localObject1 = this.b;
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("callExperimentalAPI[failed]: ");
-    ((StringBuilder)localObject2).append(this.a);
-    TRTCSubCloud.access$7600((TRTCSubCloud)localObject1, ((StringBuilder)localObject2).toString());
+    localTRTCSubCloud = this.d;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("callExperimentalAPI[failed]: ");
+    localStringBuilder.append(this.c);
+    TRTCSubCloud.access$7800(localTRTCSubCloud, localStringBuilder.toString());
   }
 }
 

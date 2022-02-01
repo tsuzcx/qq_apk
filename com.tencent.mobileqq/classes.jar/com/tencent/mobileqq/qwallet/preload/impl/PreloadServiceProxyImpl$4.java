@@ -17,14 +17,14 @@ class PreloadServiceProxyImpl$4
     {
       int i = paramEIPCResult.data.getInt("result_code");
       paramEIPCResult = (HashMap)paramEIPCResult.data.getSerializable("path_result");
-      IPreloadService.OnGetPathsListener localOnGetPathsListener = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener;
+      IPreloadService.OnGetPathsListener localOnGetPathsListener = this.a;
       if (localOnGetPathsListener != null) {
         localOnGetPathsListener.a(i, paramEIPCResult);
       }
     }
     else
     {
-      paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener;
+      paramEIPCResult = this.a;
       if (paramEIPCResult != null) {
         paramEIPCResult.a(1, null);
       }
@@ -33,7 +33,7 @@ class PreloadServiceProxyImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

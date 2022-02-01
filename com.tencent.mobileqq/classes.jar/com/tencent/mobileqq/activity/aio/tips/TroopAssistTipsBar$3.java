@@ -15,15 +15,15 @@ class TroopAssistTipsBar$3
   
   public void onClick(View paramView)
   {
-    TroopAssistTipsBar.a(this.a).setTroopMsgFilterToServer(TroopAssistTipsBar.a(this.a).a, Integer.valueOf(4));
-    TroopAssistTipsBar.a(this.a).a();
-    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a).a, TroopAssistTipsBar.a(this.a));
-    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-    ReportController.b(TroopAssistTipsBar.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).a, "", "", "");
-    QQAppInterface localQQAppInterface = TroopAssistTipsBar.a(this.a);
-    String str2 = TroopAssistTipsBar.a(this.a).a;
+    TroopAssistTipsBar.b(this.a).setTroopMsgFilterToServer(TroopAssistTipsBar.a(this.a).b, Integer.valueOf(4));
+    TroopAssistTipsBar.c(this.a).c();
+    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a).b, TroopAssistTipsBar.b(this.a));
+    TroopAssistantManager.a().f(TroopAssistTipsBar.b(this.a), TroopAssistTipsBar.a(this.a).b);
+    ReportController.b(TroopAssistTipsBar.b(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).b, "", "", "");
+    QQAppInterface localQQAppInterface = TroopAssistTipsBar.b(this.a);
+    String str2 = TroopAssistTipsBar.a(this.a).b;
     String str1;
-    if (TroopAssistTipsBar.a(this.a).getTroopMask(TroopAssistTipsBar.a(this.a).a) == 3) {
+    if (TroopAssistTipsBar.b(this.a).getTroopMask(TroopAssistTipsBar.a(this.a).b) == 3) {
       str1 = "1";
     } else {
       str1 = "0";
@@ -34,7 +34,7 @@ class TroopAssistTipsBar$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar.3
  * JD-Core Version:    0.7.0.1
  */

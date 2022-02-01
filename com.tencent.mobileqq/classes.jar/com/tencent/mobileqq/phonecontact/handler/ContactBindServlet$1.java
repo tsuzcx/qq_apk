@@ -16,7 +16,7 @@ class ContactBindServlet$1
     }
     try
     {
-      ContactBindServlet.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
+      ContactBindServlet.a(this.this$0, this.a, this.b);
       return;
     }
     catch (Exception localException)
@@ -27,7 +27,7 @@ class ContactBindServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.handler.ContactBindServlet.1
  * JD-Core Version:    0.7.0.1
  */

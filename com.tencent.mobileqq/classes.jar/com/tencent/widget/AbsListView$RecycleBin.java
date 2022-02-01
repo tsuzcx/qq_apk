@@ -30,7 +30,7 @@ class AbsListView$RecycleBin
       int k = 0;
       while (k < i1 - m)
       {
-        AbsListView.access$3600(this.this$0, (View)localArrayList.remove(j), false);
+        AbsListView.access$3700(this.this$0, (View)localArrayList.remove(j), false);
         k += 1;
         j -= 1;
       }
@@ -48,19 +48,19 @@ class AbsListView$RecycleBin
     if (!shouldRecycleViewType(i))
     {
       if (i != -2) {
-        AbsListView.access$3300(this.this$0, paramView, false);
+        AbsListView.access$3400(this.this$0, paramView, false);
       }
       return;
     }
     ((AbsListView.LayoutParams)localObject).scrappedFromPosition = paramInt;
     if (this.mViewTypeCount == 1)
     {
-      AbsListView.access$3400(this.this$0, paramView);
+      AbsListView.access$3500(this.this$0, paramView);
       this.mCurrentScrap.add(paramView);
     }
     else
     {
-      AbsListView.access$3400(this.this$0, paramView);
+      AbsListView.access$3500(this.this$0, paramView);
       localObject = this.mScrapViews;
       if (i < localObject.length) {
         localObject[i].add(paramView);
@@ -84,7 +84,7 @@ class AbsListView$RecycleBin
       i = 0;
       while (i < j)
       {
-        AbsListView.access$3100(this.this$0, (View)localArrayList.remove(j - 1 - i), false);
+        AbsListView.access$3200(this.this$0, (View)localArrayList.remove(j - 1 - i), false);
         i += 1;
       }
     }
@@ -96,7 +96,7 @@ class AbsListView$RecycleBin
       j = 0;
       while (j < m)
       {
-        AbsListView.access$3200(this.this$0, (View)localArrayList.remove(m - 1 - j), false);
+        AbsListView.access$3300(this.this$0, (View)localArrayList.remove(m - 1 - j), false);
         j += 1;
       }
       i += 1;
@@ -230,7 +230,7 @@ class AbsListView$RecycleBin
           localObject2 = localObject1;
           if (m != -2)
           {
-            AbsListView.access$3500(this.this$0, localView, false);
+            AbsListView.access$3600(this.this$0, localView, false);
             localObject2 = localObject1;
           }
         }
@@ -239,7 +239,7 @@ class AbsListView$RecycleBin
           if (j != 0) {
             localObject1 = this.mScrapViews[m];
           }
-          AbsListView.access$3400(this.this$0, localView);
+          AbsListView.access$3500(this.this$0, localView);
           ((AbsListView.LayoutParams)localObject2).scrappedFromPosition = (this.mFirstActivePosition + k);
           ((ArrayList)localObject1).add(localView);
           localObject2 = localObject1;
@@ -327,7 +327,7 @@ class AbsListView$RecycleBin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AbsListView.RecycleBin
  * JD-Core Version:    0.7.0.1
  */

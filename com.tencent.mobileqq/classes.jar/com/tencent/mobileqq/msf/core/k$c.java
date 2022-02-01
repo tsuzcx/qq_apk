@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.b.a;
 import com.tencent.qphone.base.util.QLog;
@@ -68,7 +68,7 @@ public class k$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.k.c
  * JD-Core Version:    0.7.0.1
  */

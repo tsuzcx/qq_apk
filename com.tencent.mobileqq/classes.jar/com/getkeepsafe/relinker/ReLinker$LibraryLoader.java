@@ -2,15 +2,15 @@ package com.getkeepsafe.relinker;
 
 public abstract interface ReLinker$LibraryLoader
 {
-  public abstract String a(String paramString);
-  
   public abstract void a(String paramString);
   
   public abstract String[] a();
   
-  public abstract String b(String paramString);
-  
   public abstract void b(String paramString);
+  
+  public abstract String c(String paramString);
+  
+  public abstract String d(String paramString);
 }
 
 

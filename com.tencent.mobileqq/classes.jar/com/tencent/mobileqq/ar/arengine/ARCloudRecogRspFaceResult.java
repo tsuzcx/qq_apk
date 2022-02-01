@@ -7,19 +7,19 @@ import java.util.ArrayList;
 public class ARCloudRecogRspFaceResult
 {
   public int a;
-  public String a;
-  public ArrayList<ARCloudRecogRspFaceResult.StarInfo> a;
-  public FaceStatus[] a;
-  public int b;
   public String b;
   public int c;
-  public String c;
-  public int d;
+  public String d;
+  public int e;
+  public int f;
+  public String g;
+  public ArrayList<ARCloudRecogRspFaceResult.StarInfo> h;
+  public FaceStatus[] i;
   
   public static boolean a(ARCloudRecogRspFaceResult paramARCloudRecogRspFaceResult)
   {
     boolean bool;
-    if ((paramARCloudRecogRspFaceResult != null) && (paramARCloudRecogRspFaceResult.jdField_a_of_type_Int == 0) && (paramARCloudRecogRspFaceResult.jdField_b_of_type_Int == 0)) {
+    if ((paramARCloudRecogRspFaceResult != null) && (paramARCloudRecogRspFaceResult.a == 0) && (paramARCloudRecogRspFaceResult.c == 0)) {
       bool = true;
     } else {
       bool = false;
@@ -38,32 +38,32 @@ public class ARCloudRecogRspFaceResult
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARCloudRecogRspFaceResult{errCode_MQ=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", errMsg_MQ='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", errCode_YT=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", errMsg_YT=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", time_ms_YT=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", group_size_YT=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", time_ms_YT=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", group_size_YT=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", sessionID='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", starInfoList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", faceStatus[]=");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudRecogRspFaceResult
  * JD-Core Version:    0.7.0.1
  */

@@ -39,55 +39,100 @@ public class ReadInJoyAdVideoGuide
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInJoyAdStarBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar;
-  private ReadInJoyAdVideoGuide.AdGuideClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
+  public boolean a = false;
+  private RelativeLayout b;
+  private LinearLayout c;
+  private URLImageView d;
+  private TextView e;
+  private TextView f;
+  private View g;
+  private ReadInJoyAdStarBar h;
+  private URLImageView i;
+  private RelativeLayout j;
+  private int k;
+  private String l;
+  private ReadInJoyAdVideoGuide.AdGuideClickListener m;
+  private boolean n = false;
+  private String o;
   
   public ReadInJoyAdVideoGuide(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
     a(paramContext);
   }
   
   public ReadInJoyAdVideoGuide(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
     a(paramContext);
   }
   
   public ReadInJoyAdVideoGuide(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
     a(paramContext);
   }
   
-  private int a()
+  private void a(Context paramContext)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    inflate(paramContext, 2131626119, this);
+    setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    d();
+  }
+  
+  private void d()
+  {
+    this.b = ((RelativeLayout)findViewById(2131445146));
+    this.c = ((LinearLayout)findViewById(2131431280));
+    this.d = ((URLImageView)findViewById(2131428619));
+    this.e = ((TextView)findViewById(2131428632));
+    this.f = ((TextView)findViewById(2131429866));
+    this.g = findViewById(2131427737);
+    this.h = ((ReadInJoyAdStarBar)findViewById(2131427744));
+    this.j = ((RelativeLayout)findViewById(2131428517));
+    this.i = ((URLImageView)findViewById(2131428518));
+    this.b.setOnClickListener(this);
+    this.d.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    setOnClickListener(this);
+  }
+  
+  private void e()
+  {
+    Object localObject = (LinearLayout.LayoutParams)this.d.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(48.0F, getContext().getResources());
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (LinearLayout.LayoutParams)this.e.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).topMargin = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(4.0F, getContext().getResources());
+    this.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (LinearLayout.LayoutParams)this.f.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(62.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(22.0F, getContext().getResources());
+    this.f.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.f.setTextSize(11.0F);
+    localObject = new GradientDrawable();
+    ((GradientDrawable)localObject).setColor(Color.parseColor("#00CAFC"));
+    ((GradientDrawable)localObject).setCornerRadius(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(12.0F, getContext().getResources()));
+    this.f.setBackgroundDrawable((Drawable)localObject);
+  }
+  
+  private int getAdState()
+  {
+    if (this.n) {
       return 4;
     }
-    if (this.jdField_a_of_type_Int != 12) {
+    if (this.k != 12) {
       return 1;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.l))
     {
-      if (PackageUtil.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (PackageUtil.a(getContext(), this.l)) {
         return 3;
       }
-      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isPkgExistSyn(((IRIJAdService)QRoute.api(IRIJAdService.class)).getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isPkgExistSyn(((IRIJAdService)QRoute.api(IRIJAdService.class)).getContext(), this.l)) {
         return 5;
       }
       return 2;
@@ -95,58 +140,78 @@ public class ReadInJoyAdVideoGuide
     return 0;
   }
   
-  private String a()
+  private String getBtnText()
   {
-    int i = a();
-    if ((i != 0) && (i != 1))
+    int i1 = getAdState();
+    if ((i1 != 0) && (i1 != 1))
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3)
+        if (i1 != 3)
         {
-          if (i != 4)
+          if (i1 != 4)
           {
-            if (i != 5) {
+            if (i1 != 5) {
               return "";
             }
             return "立即安装";
           }
-          return getResources().getText(2131717920).toString();
+          return getResources().getText(2131915394).toString();
         }
-        return getResources().getText(2131717918).toString();
+        return getResources().getText(2131915392).toString();
       }
-      return getResources().getText(2131717917).toString();
+      return getResources().getText(2131915391).toString();
     }
-    return getResources().getText(2131717969).toString();
+    return getResources().getText(2131915449).toString();
   }
   
-  private void a(float paramFloat)
+  private void setAppBackground(AdvertisementInfo paramAdvertisementInfo)
   {
-    ReadInJoyAdStarBar localReadInJoyAdStarBar = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions;
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdSmallVideo(paramAdvertisementInfo))
+    {
+      this.j.setVisibility(0);
+      paramAdvertisementInfo = paramAdvertisementInfo.getVideoCoverUrlWithSmartCut(false);
+      if (paramAdvertisementInfo != null) {
+        paramAdvertisementInfo = paramAdvertisementInfo.getFile();
+      } else {
+        paramAdvertisementInfo = null;
+      }
+      getResources();
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = this.j.getWidth();
+      localURLDrawableOptions.mRequestHeight = this.j.getHeight();
+    }
+    try
+    {
+      paramAdvertisementInfo = URLDrawable.getDrawable(new URL(paramAdvertisementInfo), localURLDrawableOptions);
+      paramAdvertisementInfo.setDecodeHandler(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).getRoundCornerDecoder());
+      this.i.setImageDrawable(paramAdvertisementInfo);
+      return;
+    }
+    catch (MalformedURLException paramAdvertisementInfo) {}
+  }
+  
+  private void setAppGrade(float paramFloat)
+  {
+    ReadInJoyAdStarBar localReadInJoyAdStarBar = this.h;
     if (localReadInJoyAdStarBar == null) {
       return;
     }
     localReadInJoyAdStarBar.setGrade(Float.valueOf(paramFloat));
     if (paramFloat > 0.0F)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar.setVisibility(0);
+      this.h.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
-  private void a(Context paramContext)
-  {
-    inflate(paramContext, 2131560072, this);
-    setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    d();
-  }
-  
-  private void a(String paramString)
+  private void setAppIcon(String paramString)
   {
     Resources localResources;
     URLDrawable.URLDrawableOptions localURLDrawableOptions;
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentImageURLImageView != null))
+    if ((!TextUtils.isEmpty(paramString)) && (this.d != null))
     {
       localResources = getResources();
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -158,15 +223,15 @@ public class ReadInJoyAdVideoGuide
       paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
       paramString.setTag(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).builderDecoderParams(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(60.0F, localResources), ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(60.0F, localResources), ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(12.0F, localResources)));
       paramString.setDecodeHandler(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).getRoundCornerDecoder());
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
+      this.d.setImageDrawable(paramString);
       return;
     }
     catch (MalformedURLException paramString) {}
   }
   
-  private void b(String paramString)
+  private void setAppName(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    if ((!TextUtils.isEmpty(paramString)) && (this.e != null))
     {
       Object localObject = paramString;
       if (paramString.length() > 12)
@@ -176,91 +241,54 @@ public class ReadInJoyAdVideoGuide
         ((StringBuilder)localObject).append("…");
         localObject = ((StringBuilder)localObject).toString();
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.e.setText((CharSequence)localObject);
     }
   }
   
-  private void c(String paramString)
+  private void setAppPkgName(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.l = paramString;
       c();
     }
   }
   
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376816));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365132));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362839));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362851));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363912));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362158);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar = ((ReadInJoyAdStarBar)findViewById(2131362164));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    setOnClickListener(this);
-  }
-  
-  private void e()
-  {
-    Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(48.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(48.0F, getContext().getResources());
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).topMargin = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(4.0F, getContext().getResources());
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(62.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(22.0F, getContext().getResources());
-    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(11.0F);
-    localObject = new GradientDrawable();
-    ((GradientDrawable)localObject).setColor(Color.parseColor("#00CAFC"));
-    ((GradientDrawable)localObject).setCornerRadius(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(12.0F, getContext().getResources()));
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    this.g.setVisibility(8);
+    Object localObject = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).width = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(130.0F, getContext().getResources());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setGradientType(0);
-    int i = Color.parseColor("#00242424");
-    int j = Color.parseColor("#B2242424");
+    int i1 = Color.parseColor("#00242424");
+    int i2 = Color.parseColor("#B2242424");
     if (Build.VERSION.SDK_INT >= 16)
     {
-      ((GradientDrawable)localObject).setColors(new int[] { i, j });
+      ((GradientDrawable)localObject).setColors(new int[] { i1, i2 });
       ((GradientDrawable)localObject).setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackground((Drawable)localObject);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackground(null);
+      this.c.setBackground((Drawable)localObject);
+      this.b.setBackground(null);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#B2242424"));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#00000000"));
+    this.c.setBackgroundColor(Color.parseColor("#B2242424"));
+    this.b.setBackgroundColor(Color.parseColor("#00000000"));
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    this.g.setVisibility(0);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
     localLayoutParams.addRule(11, 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    this.c.setLayoutParams(localLayoutParams);
     if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackground(null);
+      this.c.setBackground(null);
     } else {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#00000000"));
+      this.c.setBackgroundColor(Color.parseColor("#00000000"));
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#80000000"));
+    this.b.setBackgroundColor(Color.parseColor("#80000000"));
   }
   
   public void c()
@@ -270,53 +298,53 @@ public class ReadInJoyAdVideoGuide
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131362839)
+    int i1 = paramView.getId();
+    if (i1 == 2131428619)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        i = 23;
+      if (this.a) {
+        i1 = 23;
       } else {
-        i = 15;
+        i1 = 15;
       }
     }
-    else if (i == 2131362851)
+    else if (i1 == 2131428632)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        i = 24;
+      if (this.a) {
+        i1 = 24;
       } else {
-        i = 16;
+        i1 = 16;
       }
     }
-    else if (i == 2131363912)
+    else if (i1 == 2131429866)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        i = 26;
+      if (this.a) {
+        i1 = 26;
       } else {
-        i = 17;
+        i1 = 17;
       }
     }
-    else if (i == 2131362158) {
-      i = 21;
-    } else if (i == 2131362164)
+    else if (i1 == 2131427737) {
+      i1 = 21;
+    } else if (i1 == 2131427744)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        i = 25;
+      if (this.a) {
+        i1 = 25;
       } else {
-        i = 27;
+        i1 = 27;
       }
     }
     else {
-      i = 1000;
+      i1 = 1000;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener;
+    Object localObject = this.m;
     if (localObject != null) {
-      ((ReadInJoyAdVideoGuide.AdGuideClickListener)localObject).a(paramView, i);
+      ((ReadInJoyAdVideoGuide.AdGuideClickListener)localObject).a(paramView, i1);
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onClick:");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       QLog.d("ReadInJoyAdVideoGuide", 2, ((StringBuilder)localObject).toString());
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -337,20 +365,20 @@ public class ReadInJoyAdVideoGuide
   
   public void setAdGuideClickListener(ReadInJoyAdVideoGuide.AdGuideClickListener paramAdGuideClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener = paramAdGuideClickListener;
+    this.m = paramAdGuideClickListener;
   }
   
   public void setAppInfo(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    a(paramString1);
-    b(paramString2);
-    c(paramString3);
+    this.k = paramInt;
+    setAppIcon(paramString1);
+    setAppName(paramString2);
+    setAppPkgName(paramString3);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("setAppInfo:\n");
       localStringBuilder.append("type:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.k);
       localStringBuilder.append("\n");
       localStringBuilder.append("icon:");
       localStringBuilder.append(paramString1);
@@ -367,11 +395,12 @@ public class ReadInJoyAdVideoGuide
   
   public void setAppInfo(int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean, AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    a(paramString1);
-    b(paramString2);
-    c(paramString3);
+    this.k = paramInt;
+    this.n = paramBoolean;
+    setAppIcon(paramString1);
+    setAppName(paramString2);
+    setAppPkgName(paramString3);
+    setAppBackground(paramAdvertisementInfo);
     if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdExtInfo != null)) {
       try
       {
@@ -379,7 +408,7 @@ public class ReadInJoyAdVideoGuide
         if (paramAdvertisementInfo.has("video_guide")) {
           e();
         }
-        a((float)paramAdvertisementInfo.optDouble("app_score_num"));
+        setAppGrade((float)paramAdvertisementInfo.optDouble("app_score_num"));
       }
       catch (Exception paramAdvertisementInfo)
       {
@@ -390,7 +419,7 @@ public class ReadInJoyAdVideoGuide
     {
       paramAdvertisementInfo = new StringBuilder("setAppInfo:\n");
       paramAdvertisementInfo.append("type:");
-      paramAdvertisementInfo.append(this.jdField_a_of_type_Int);
+      paramAdvertisementInfo.append(this.k);
       paramAdvertisementInfo.append("\n");
       paramAdvertisementInfo.append("icon:");
       paramAdvertisementInfo.append(paramString1);
@@ -410,12 +439,12 @@ public class ReadInJoyAdVideoGuide
   
   public void setBtnInfo(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.o = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide
  * JD-Core Version:    0.7.0.1
  */

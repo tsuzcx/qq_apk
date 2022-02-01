@@ -20,93 +20,63 @@ public class RecentDynamicAvatarView
   extends DynamicAvatarView
   implements IRecentImgv
 {
-  private static boolean e = false;
-  protected float a;
-  protected long a;
-  protected Bitmap a;
-  protected Paint a;
-  protected Rect a;
-  protected float c;
-  protected Paint c;
-  protected boolean c;
-  protected float d;
-  protected boolean d;
+  private static boolean r = false;
+  protected float h = -1.0F;
+  protected float i = -1.0F;
+  protected float j = 0.0F;
+  protected Paint k = null;
+  protected Paint l = null;
+  protected boolean m = false;
+  protected boolean n = false;
+  protected Rect o = null;
+  protected long p = 5L;
+  protected Bitmap q = null;
   
   static
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("isShow_setting", 4);
     if (localSharedPreferences != null) {
-      e = localSharedPreferences.getBoolean("isShow", false);
+      r = localSharedPreferences.getBoolean("isShow", false);
     }
   }
   
   public RecentDynamicAvatarView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_c_of_type_Float = -1.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_c_of_type_AndroidGraphicsPaint = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public RecentDynamicAvatarView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_c_of_type_Float = -1.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_c_of_type_AndroidGraphicsPaint = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public RecentDynamicAvatarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_c_of_type_Float = -1.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_c_of_type_AndroidGraphicsPaint = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   protected static Bitmap a(long paramLong)
   {
-    long l = System.currentTimeMillis();
-    int i;
+    long l1 = System.currentTimeMillis();
+    int i1;
     Object localObject;
     if (paramLong == 1L)
     {
-      i = 2130850815;
+      i1 = 2130852645;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
     }
     else if (paramLong == 2L)
     {
-      i = 2130850817;
+      i1 = 2130852647;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
     }
     else
     {
-      i = -1;
+      i1 = -1;
       localObject = "";
     }
     Bitmap localBitmap1 = null;
-    if (i < 0) {
+    if (i1 < 0) {
       return null;
     }
     if (GlobalImageCache.a != null) {
@@ -115,7 +85,7 @@ public class RecentDynamicAvatarView
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i1);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -131,7 +101,7 @@ public class RecentDynamicAvatarView
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getTroopCreditStatusIcon:");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
       QLog.i("FixSizeImageView", 2, ((StringBuilder)localObject).toString());
     }
     return localBitmap2;
@@ -139,66 +109,66 @@ public class RecentDynamicAvatarView
   
   public static void setNeedRequestLayout(boolean paramBoolean)
   {
-    e = paramBoolean;
+    r = paramBoolean;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    int i;
-    int j;
-    if (this.jdField_c_of_type_Boolean)
+    int i1;
+    int i2;
+    if (this.m)
     {
-      if ((this.jdField_a_of_type_Float == -1.0F) || (this.jdField_c_of_type_Float == -1.0F))
+      if ((this.h == -1.0F) || (this.i == -1.0F))
       {
-        i = getWidth() - getPaddingLeft() - getPaddingRight();
-        this.jdField_a_of_type_Float = (getPaddingLeft() + i * 0.5F);
-        j = getHeight() - getPaddingTop() - getPaddingBottom();
-        this.jdField_c_of_type_Float = (getPaddingTop() + j * 0.5F);
-        this.jdField_d_of_type_Float = (Math.max(i, j) / 2);
+        i1 = getWidth() - getPaddingLeft() - getPaddingRight();
+        this.h = (getPaddingLeft() + i1 * 0.5F);
+        i2 = getHeight() - getPaddingTop() - getPaddingBottom();
+        this.i = (getPaddingTop() + i2 * 0.5F);
+        this.j = (Math.max(i1, i2) / 2);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.k == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#B2000000"));
+        this.k = new Paint();
+        this.k.setAntiAlias(true);
+        this.k.setColor(Color.parseColor("#B2000000"));
       }
-      paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(this.h, this.i, this.j, this.k);
     }
-    if (this.jdField_d_of_type_Boolean)
+    if (this.n)
     {
-      if (this.jdField_c_of_type_AndroidGraphicsPaint == null)
+      if (this.l == null)
       {
-        this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_c_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+        this.l = new Paint();
+        this.l.setAntiAlias(true);
+        this.l.setFilterBitmap(true);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      if (this.q != null)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsRect == null)
+        if (this.o == null)
         {
-          i = getWidth() - getPaddingRight();
-          j = getHeight() - getPaddingBottom();
-          this.jdField_a_of_type_AndroidGraphicsRect = new Rect(i - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), j - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), i, j);
+          i1 = getWidth() - getPaddingRight();
+          i2 = getHeight() - getPaddingBottom();
+          this.o = new Rect(i1 - this.q.getWidth(), i2 - this.q.getHeight(), i1, i2);
         }
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_c_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(this.q, null, this.o, this.l);
       }
     }
   }
   
   public void requestLayout()
   {
-    if (e) {
+    if (r) {
       super.requestLayout();
     }
   }
   
   public void showTroopCreditStatus(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == paramLong) {
+    if (this.p == paramLong) {
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.p = paramLong;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -208,22 +178,22 @@ public class RecentDynamicAvatarView
     }
     if ((paramLong != 2L) && (paramLong != 1L))
     {
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.m = false;
+      this.n = false;
+      this.q = null;
     }
     else
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramLong);
+      this.m = true;
+      this.n = true;
+      this.q = a(paramLong);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.RecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

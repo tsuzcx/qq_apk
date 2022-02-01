@@ -21,9 +21,9 @@ class CarrierHelper$1
       {
         Integer localInteger = (Integer)localIterator.next();
         if (5 == localInteger.intValue()) {
-          ReportController.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.this$0), 0, "", "", "", "");
-        } else if ((CarrierHelper.a(this.this$0) == 2) || (CarrierHelper.a(this.this$0) == 1)) {
-          ReportController.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.this$0), 0, String.valueOf(localInteger), "", "", "");
+          ReportController.b(CarrierHelper.b(this.this$0), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.c(this.this$0), 0, "", "", "", "");
+        } else if ((CarrierHelper.c(this.this$0) == 2) || (CarrierHelper.c(this.this$0) == 1)) {
+          ReportController.b(CarrierHelper.b(this.this$0), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.c(this.this$0), 0, String.valueOf(localInteger), "", "", "");
         }
       }
       CarrierHelper.a(this.this$0, true);
@@ -32,7 +32,7 @@ class CarrierHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.CarrierHelper.1
  * JD-Core Version:    0.7.0.1
  */

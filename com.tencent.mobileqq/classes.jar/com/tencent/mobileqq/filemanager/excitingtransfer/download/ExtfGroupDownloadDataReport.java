@@ -12,21 +12,18 @@ import java.util.HashMap;
 
 public class ExtfGroupDownloadDataReport
 {
-  int a;
-  protected long a;
   protected final QQAppInterface a;
-  protected DataReportBasicInfo a;
-  protected ExcitingTransferDownloadCompletedInfo a;
-  protected ExcitingTransferDownloaderFirstPkgRp a;
-  int b;
-  int c = 0;
+  protected DataReportBasicInfo b;
+  protected ExcitingTransferDownloaderFirstPkgRp c;
+  protected ExcitingTransferDownloadCompletedInfo d;
+  protected long e = 0L;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
   public ExtfGroupDownloadDataReport(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   protected String a()
@@ -36,34 +33,34 @@ public class ExtfGroupDownloadDataReport
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo = new DataReportBasicInfo();
-    DataReportBasicInfo localDataReportBasicInfo = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo;
-    localDataReportBasicInfo.jdField_a_of_type_Long = paramInt;
-    localDataReportBasicInfo.jdField_b_of_type_Long = paramLong1;
-    localDataReportBasicInfo.jdField_a_of_type_JavaLangString = paramString;
-    localDataReportBasicInfo.d = paramLong2;
-    localDataReportBasicInfo.c = paramLong3;
-    localDataReportBasicInfo.jdField_a_of_type_Int = 0;
-    localDataReportBasicInfo.jdField_b_of_type_Int = 1;
+    this.b = new DataReportBasicInfo();
+    DataReportBasicInfo localDataReportBasicInfo = this.b;
+    localDataReportBasicInfo.a = paramInt;
+    localDataReportBasicInfo.b = paramLong1;
+    localDataReportBasicInfo.d = paramString;
+    localDataReportBasicInfo.g = paramLong2;
+    localDataReportBasicInfo.e = paramLong3;
+    localDataReportBasicInfo.c = 0;
+    localDataReportBasicInfo.f = 1;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     if (paramExcitingTransferDownloadCompletedInfo.muFirstRecvDataTime > paramExcitingTransferDownloadCompletedInfo.muStartTime) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.muFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.muStartTime);
+      this.c.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.muFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.muStartTime);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.muFirstRecvDataSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
+    this.c.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.muFirstRecvDataSize;
+    this.d = paramExcitingTransferDownloadCompletedInfo;
   }
   
   public void a(boolean paramBoolean)
@@ -73,31 +70,31 @@ public class ExtfGroupDownloadDataReport
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void b(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
+    if (this.c == null) {
+      this.c = new ExcitingTransferDownloaderFirstPkgRp();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = paramLong;
+    this.c.mCSStartTime = paramLong;
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null))
+    if ((this.b != null) && (this.d != null))
     {
       localObject1 = new HashMap();
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo;
+      Object localObject2 = this.b;
       if (localObject2 != null) {
         ((HashMap)localObject1).putAll(((DataReportBasicInfo)localObject2).a());
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+      localObject2 = this.d;
       if (localObject2 != null) {
         ((HashMap)localObject1).putAll(((ExcitingTransferDownloadCompletedInfo)localObject2).getReportData());
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp;
+      localObject2 = this.c;
       if (localObject2 != null)
       {
         ((HashMap)localObject1).putAll(((ExcitingTransferDownloaderFirstPkgRp)localObject2).getReportData());
@@ -108,33 +105,33 @@ public class ExtfGroupDownloadDataReport
         ((HashMap)localObject1).put("param_HttpFirstTime", String.valueOf(0));
         ((HashMap)localObject1).put("param_HttpFirstDataSize", String.valueOf(0));
       }
-      ((HashMap)localObject1).put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
-      ((HashMap)localObject1).put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
-      ((HashMap)localObject1).put("param_stackType", String.valueOf(QFileUtils.b()));
-      ((HashMap)localObject1).put("param_loginType", String.valueOf(QFileUtils.c()));
-      ((HashMap)localObject1).put("param_ishttps", String.valueOf(this.c));
+      ((HashMap)localObject1).put("param_V6SelectType", String.valueOf(this.f));
+      ((HashMap)localObject1).put("param_ipAddrType", String.valueOf(this.g));
+      ((HashMap)localObject1).put("param_stackType", String.valueOf(QFileUtils.d()));
+      ((HashMap)localObject1).put("param_loginType", String.valueOf(QFileUtils.e()));
+      ((HashMap)localObject1).put("param_ishttps", String.valueOf(this.h));
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("Id[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.e);
       ((StringBuilder)localObject2).append("] >>> GroupDownloadDataReport: act=");
       ((StringBuilder)localObject2).append(a());
       ((StringBuilder)localObject2).append(((HashMap)localObject1).toString());
       QLog.i("ExtfGroupDownloadDataReport<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), a(), paramBoolean, 0L, 0L, (HashMap)localObject1, "");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(), paramBoolean, 0L, 0L, (HashMap)localObject1, "");
+      this.b = null;
+      this.d = null;
       return;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("Id[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append(this.e);
     ((StringBuilder)localObject1).append("] GroupDownloadDataReport err. param err");
     QLog.e("ExtfGroupDownloadDataReport<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
   }
   
   public void c(long paramLong)
   {
-    ExcitingTransferDownloaderFirstPkgRp localExcitingTransferDownloaderFirstPkgRp = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp;
+    ExcitingTransferDownloaderFirstPkgRp localExcitingTransferDownloaderFirstPkgRp = this.c;
     if (localExcitingTransferDownloaderFirstPkgRp == null) {
       return;
     }
@@ -143,7 +140,7 @@ public class ExtfGroupDownloadDataReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.ExtfGroupDownloadDataReport
  * JD-Core Version:    0.7.0.1
  */

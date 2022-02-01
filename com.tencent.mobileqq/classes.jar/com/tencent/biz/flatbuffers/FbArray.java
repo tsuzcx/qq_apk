@@ -9,21 +9,21 @@ public class FbArray
   
   public byte a(int paramInt)
   {
-    paramInt = this.c + paramInt;
+    paramInt = this.d + paramInt;
     if (a(paramInt, 1)) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
+      return this.e.get(paramInt);
     }
     return 0;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public FbArray a(int paramInt, FbArray paramFbArray)
   {
-    return paramFbArray.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+    return paramFbArray.a(d(this.d + paramInt * 4), this.e);
   }
   
   public FbArray a(int paramInt, ByteBuffer paramByteBuffer)
@@ -34,38 +34,38 @@ public class FbArray
       int j = paramInt + 4;
       if (i >= j)
       {
-        this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
-        this.c = j;
-        this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+        this.a = paramByteBuffer.getInt(paramInt);
+        this.d = j;
+        this.e = paramByteBuffer;
         return this;
       }
     }
     return null;
   }
   
-  public FbTable a(int paramInt)
-  {
-    return a(paramInt, new FbTable());
-  }
-  
   public FbTable a(int paramInt, FbTable paramFbTable)
   {
-    return paramFbTable.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+    return paramFbTable.a(d(this.d + paramInt * 4), this.e);
   }
   
-  public String a()
+  public String b()
   {
-    return a(this.c - 4, true);
+    return a(this.d - 4, true);
   }
   
-  public String a(int paramInt)
+  public String b(int paramInt)
   {
-    return b(this.c + paramInt * 4);
+    return e(this.d + paramInt * 4);
+  }
+  
+  public FbTable c(int paramInt)
+  {
+    return a(paramInt, new FbTable());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.FbArray
  * JD-Core Version:    0.7.0.1
  */

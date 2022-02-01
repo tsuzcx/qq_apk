@@ -28,14 +28,14 @@ public class MiniCodeApiImpl
     return MiniCodeController.a(paramString);
   }
   
-  public String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return MiniCodeController.a().a(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+    return MiniCodeController.a().a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  public String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return MiniCodeController.a().a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+    return MiniCodeController.a().a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
   }
   
   public boolean detect(Bitmap paramBitmap, long paramLong)
@@ -50,7 +50,7 @@ public class MiniCodeApiImpl
   
   public int getSupportDetectType()
   {
-    return MiniCodeUtil.a();
+    return MiniCodeUtil.f();
   }
   
   public void init(Context paramContext, long paramLong, String paramString)
@@ -60,17 +60,17 @@ public class MiniCodeApiImpl
   
   public boolean isDecodeInited()
   {
-    return MiniCodeController.a();
+    return MiniCodeController.b();
   }
   
   public boolean isDetectInited()
   {
-    return MiniCodeController.b();
+    return MiniCodeController.c();
   }
   
   public boolean isDetectReady()
   {
-    return MiniCodeController.a().c();
+    return MiniCodeController.a().d();
   }
   
   public void removeDetectCallback(OnMiniCodeDetectCallback paramOnMiniCodeDetectCallback)
@@ -95,7 +95,7 @@ public class MiniCodeApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.api.impl.MiniCodeApiImpl
  * JD-Core Version:    0.7.0.1
  */

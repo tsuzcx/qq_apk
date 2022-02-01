@@ -71,9 +71,9 @@ public class ScaleMoveImageViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     clearSeclected();
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2064056377));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2064122261);
-    this.mMaskCoverImage = getResources().getDrawable(2064056385);
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2063925336));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2063991136);
+    this.mMaskCoverImage = getResources().getDrawable(2063925346);
   }
   
   private void drawAnimationIfNeed(Canvas paramCanvas)
@@ -172,7 +172,7 @@ public class ScaleMoveImageViewer
       return;
     }
     activeSelected();
-    AEBaseDataReporter.a().o();
+    AEBaseDataReporter.a().p();
     ((IPicChooseJumpUtil)QRoute.api(IPicChooseJumpUtil.class)).jumpWithSinglePicResult(this.mActivity, this.mNodeItem.nodeID);
   }
   
@@ -480,7 +480,7 @@ public class ScaleMoveImageViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.ScaleMoveImageViewer
  * JD-Core Version:    0.7.0.1
  */

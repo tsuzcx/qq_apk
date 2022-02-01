@@ -20,15 +20,15 @@ public class AIOBrowserAnimation
   implements IBrowserAnimationListener
 {
   public int a;
-  public Rect a;
-  private RichMediaBaseData a;
-  Rect b;
+  public Rect b;
+  Rect c;
+  private RichMediaBaseData d;
   
   public AIOBrowserAnimation() {}
   
   public AIOBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
   {
-    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData = paramRichMediaBaseData;
+    this.d = paramRichMediaBaseData;
     this.isImgCenterCropMode = true;
   }
   
@@ -39,24 +39,24 @@ public class AIOBrowserAnimation
       try
       {
         Drawable localDrawable;
-        if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
+        if ((this.d instanceof AIOPictureData))
         {
-          localDrawable = new AIOPictureModel().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localDrawable = new AIOPictureModel().a((AIOPictureData)this.d);
         }
-        else if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+        else if ((this.d instanceof AIOVideoData))
         {
-          localDrawable = new AIOVideoModel().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localDrawable = new AIOVideoModel().a((AIOVideoData)this.d);
         }
-        else if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
+        else if ((this.d instanceof AIOFilePictureData))
         {
-          localDrawable = new AIOFilePictureModel().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localDrawable = new AIOFilePictureModel().a((AIOFilePictureData)this.d);
         }
         else
         {
-          if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
+          if (!(this.d instanceof AIOFileVideoData)) {
             break label223;
           }
-          localDrawable = new AIOFileVideoModel().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localDrawable = new AIOFileVideoModel().e((AIOFileVideoData)this.d);
         }
         Rect localRect = getThumbRect();
         if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
@@ -64,7 +64,7 @@ public class AIOBrowserAnimation
         }
         if ((localDrawable != null) && (localRect != null))
         {
-          this.jdField_a_of_type_Int = getCutValue(localRect, localDrawable);
+          this.a = getCutValue(localRect, localDrawable);
           if (localDrawable.getIntrinsicHeight() != -1)
           {
             int i = localDrawable.getIntrinsicWidth();
@@ -91,18 +91,18 @@ public class AIOBrowserAnimation
   public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
   {
     paramRichMediaBaseData = new AIOBrowserAnimation(paramRichMediaBaseData);
-    paramRichMediaBaseData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    paramRichMediaBaseData.b = this.b;
     return paramRichMediaBaseData;
   }
   
   public int getCutValue()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public Rect getStartSrcRect()
   {
-    return this.b;
+    return this.c;
   }
   
   public int getStartX()
@@ -117,7 +117,7 @@ public class AIOBrowserAnimation
   
   public Rect getThumbRect()
   {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = this.b;
     if (localRect != null) {
       return localRect;
     }
@@ -126,7 +126,7 @@ public class AIOBrowserAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOBrowserAnimation
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class RedPacketKSongFragment$2
   
   public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.2
  * JD-Core Version:    0.7.0.1
  */

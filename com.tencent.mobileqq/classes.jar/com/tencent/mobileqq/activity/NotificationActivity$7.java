@@ -24,7 +24,7 @@ class NotificationActivity$7
     ReportController.a(null, "dc00898", "", "", "0X800B430", "0X800B430", 0, 0, "", "", "", "");
     this.a.getAppRuntime().logout(true);
     FrozenKickUtils.a(this.a.getAppRuntime().getApp(), this.a.getAppRuntime().getCurrentAccountUin(), false);
-    paramDialogInterface = NotificationActivity.access$100().a((BaseQQAppInterface)this.a.getAppRuntime());
+    paramDialogInterface = NotificationActivity.access$100().b((BaseQQAppInterface)this.a.getAppRuntime());
     if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
     {
       paramDialogInterface = paramDialogInterface.iterator();
@@ -45,7 +45,7 @@ class NotificationActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.7
  * JD-Core Version:    0.7.0.1
  */

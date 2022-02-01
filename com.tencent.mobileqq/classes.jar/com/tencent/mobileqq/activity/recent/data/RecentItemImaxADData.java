@@ -48,7 +48,7 @@ public class RecentItemImaxADData
       if (this.mUnreadNum > 0) {
         this.mUnreadNum = 1;
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName);
@@ -93,7 +93,7 @@ public class RecentItemImaxADData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData
  * JD-Core Version:    0.7.0.1
  */

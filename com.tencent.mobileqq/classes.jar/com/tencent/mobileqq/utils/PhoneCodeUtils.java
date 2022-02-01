@@ -20,16 +20,15 @@ import org.json.JSONObject;
 
 public class PhoneCodeUtils
 {
-  private static int jdField_a_of_type_Int = jdField_a_of_type_ArrayOfChar.length;
-  private static String jdField_a_of_type_JavaLangString;
-  public static HashMap<String, String> a;
-  private static char[] jdField_a_of_type_ArrayOfChar;
-  public static HashMap<String, String> b;
+  public static HashMap<String, String> a = new PhoneCodeUtils.1(130);
+  public static HashMap<String, String> b = new PhoneCodeUtils.2(20);
   private static HashMap<String, String> c = new HashMap(250);
+  private static String d = null;
+  private static char[] e = { 0, 1, 0, 1 };
+  private static int f = e.length;
   
   static
   {
-    jdField_a_of_type_JavaLangString = null;
     c.put("IL", "972");
     c.put("AF", "93");
     c.put("AL", "355");
@@ -271,9 +270,6 @@ public class PhoneCodeUtils
     c.put("VN", "84");
     c.put("VG", "1284");
     c.put("VI", "1340");
-    jdField_a_of_type_JavaUtilHashMap = new PhoneCodeUtils.1(130);
-    b = new PhoneCodeUtils.2(20);
-    jdField_a_of_type_ArrayOfChar = new char[] { 0, 1, 0, 1 };
   }
   
   public static String a()
@@ -282,7 +278,7 @@ public class PhoneCodeUtils
     if (!TextUtils.isEmpty(str))
     {
       HashSet localHashSet = new HashSet();
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      Iterator localIterator = a.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -299,21 +295,21 @@ public class PhoneCodeUtils
   
   public static String a(Context paramContext)
   {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(d))
     {
       paramContext = paramContext.getResources().getConfiguration().locale.getCountry();
       if (!TextUtils.isEmpty(paramContext)) {
-        jdField_a_of_type_JavaLangString = (String)c.get(paramContext.toUpperCase());
+        d = (String)c.get(paramContext.toUpperCase());
       }
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = "86";
+      if (TextUtils.isEmpty(d)) {
+        d = "86";
       }
       paramContext = new StringBuilder();
       paramContext.append("+");
-      paramContext.append(jdField_a_of_type_JavaLangString);
-      jdField_a_of_type_JavaLangString = paramContext.toString();
+      paramContext.append(d);
+      d = paramContext.toString();
     }
-    return jdField_a_of_type_JavaLangString;
+    return d;
   }
   
   public static String a(String paramString)
@@ -328,7 +324,7 @@ public class PhoneCodeUtils
       int i = 0;
       while (i < paramString.length)
       {
-        arrayOfChar[i] = ((char)(paramString[i] ^ jdField_a_of_type_ArrayOfChar[(i % jdField_a_of_type_Int)]));
+        arrayOfChar[i] = ((char)(paramString[i] ^ e[(i % f)]));
         i += 1;
       }
       if (arrayOfChar.length == 0) {
@@ -349,7 +345,7 @@ public class PhoneCodeUtils
     String str1 = paramLocale.getLanguage();
     String str2 = paramLocale.getCountry();
     paramLocale = str1;
-    if (!StringUtil.a(str2))
+    if (!StringUtil.isEmpty(str2))
     {
       paramLocale = new StringBuilder();
       paramLocale.append(str1);
@@ -358,38 +354,6 @@ public class PhoneCodeUtils
       paramLocale = paramLocale.toString();
     }
     return paramLocale.toLowerCase();
-  }
-  
-  public static ArrayList<PhoneCodeUtils.CountryCode> a(String paramString)
-  {
-    QLog.d("PhoneCodeUtils", 1, "start parseCountryList");
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.d("PhoneCodeUtils", 1, "parseCountryList error : countryData is empty");
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optJSONArray("favList");
-      localObject = ((JSONObject)localObject).optJSONArray("itemList");
-      paramString = a(paramString);
-      if (paramString != null) {
-        localArrayList.addAll(paramString);
-      }
-      paramString = a((JSONArray)localObject);
-      if (paramString != null) {
-        localArrayList.addAll(paramString);
-      }
-      QLog.d("PhoneCodeUtils", 1, "parseCountryList finish");
-      return localArrayList;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("PhoneCodeUtils", 1, new Object[] { "parseCountryList JSONException : ", paramString.getMessage() });
-    }
-    return localArrayList;
   }
   
   public static ArrayList<PhoneCodeUtils.CountryCode> a(JSONArray paramJSONArray)
@@ -445,8 +409,8 @@ public class PhoneCodeUtils
       while (paramList.hasNext())
       {
         PhoneCodeUtils.CountryCode localCountryCode = (PhoneCodeUtils.CountryCode)paramList.next();
-        if (!localLinkedHashMap.containsKey(localCountryCode.jdField_a_of_type_JavaLangString)) {
-          localLinkedHashMap.put(localCountryCode.jdField_a_of_type_JavaLangString, Integer.valueOf(i));
+        if (!localLinkedHashMap.containsKey(localCountryCode.a)) {
+          localLinkedHashMap.put(localCountryCode.a, Integer.valueOf(i));
         }
         i += 1;
       }
@@ -488,11 +452,11 @@ public class PhoneCodeUtils
   
   public static String b(Context paramContext)
   {
-    String str2 = DeviceInfoUtil.b();
+    String str2 = DeviceInfoUtil.c();
     if ((!TextUtils.isEmpty(str2)) && (str2.length() > 3))
     {
       paramContext = str2.trim().substring(0, 3);
-      String str1 = (String)jdField_a_of_type_JavaUtilHashMap.get(paramContext);
+      String str1 = (String)a.get(paramContext);
       paramContext = str1;
       if (QLog.isColorLevel())
       {
@@ -511,10 +475,42 @@ public class PhoneCodeUtils
     }
     return paramContext;
   }
+  
+  public static ArrayList<PhoneCodeUtils.CountryCode> b(String paramString)
+  {
+    QLog.d("PhoneCodeUtils", 1, "start parseCountryList");
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.d("PhoneCodeUtils", 1, "parseCountryList error : countryData is empty");
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optJSONArray("favList");
+      localObject = ((JSONObject)localObject).optJSONArray("itemList");
+      paramString = a(paramString);
+      if (paramString != null) {
+        localArrayList.addAll(paramString);
+      }
+      paramString = a((JSONArray)localObject);
+      if (paramString != null) {
+        localArrayList.addAll(paramString);
+      }
+      QLog.d("PhoneCodeUtils", 1, "parseCountryList finish");
+      return localArrayList;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("PhoneCodeUtils", 1, new Object[] { "parseCountryList JSONException : ", paramString.getMessage() });
+    }
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PhoneCodeUtils
  * JD-Core Version:    0.7.0.1
  */

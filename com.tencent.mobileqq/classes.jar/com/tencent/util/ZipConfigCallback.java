@@ -17,7 +17,7 @@ public class ZipConfigCallback
     if (paramQSafeManagerBean == null) {
       i = 20;
     } else {
-      i = paramQSafeManagerBean.a();
+      i = paramQSafeManagerBean.c();
     }
     ZipReporter.a(i);
     ZipUtils.setUnzipCallback(new ZipConfigCallback.1(this));
@@ -44,7 +44,7 @@ public class ZipConfigCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.ZipConfigCallback
  * JD-Core Version:    0.7.0.1
  */

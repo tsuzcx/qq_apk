@@ -25,15 +25,15 @@ class AioPanelMiniAppManager$1
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadSuccessed: invoked.  url: ");
-      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable.append(this.a);
       QLog.i("AioPanelMiniAppManager", 2, paramURLDrawable.toString());
     }
-    AioPanelMiniAppManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelMiniappAioPanelMiniAppManager).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    AioPanelMiniAppManager.a(this.b).put(this.a, Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.miniapp.AioPanelMiniAppManager.1
  * JD-Core Version:    0.7.0.1
  */

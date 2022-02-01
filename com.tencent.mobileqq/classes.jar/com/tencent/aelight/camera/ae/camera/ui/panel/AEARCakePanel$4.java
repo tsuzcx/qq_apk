@@ -11,8 +11,8 @@ class AEARCakePanel$4
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel.jdField_a_of_type_Boolean = false;
-    paramAnimation = this.jdField_a_of_type_JavaLangRunnable;
+    this.b.b = false;
+    paramAnimation = this.a;
     if (paramAnimation != null) {
       paramAnimation.run();
     }
@@ -22,12 +22,12 @@ class AEARCakePanel$4
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel;
-    paramAnimation.jdField_a_of_type_Boolean = true;
-    if (paramAnimation.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView != null)
+    paramAnimation = this.b;
+    paramAnimation.b = true;
+    if (paramAnimation.a != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView.setAlpha(1.0F);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView.setVisibility(0);
+      this.b.a.setAlpha(1.0F);
+      this.b.a.setVisibility(0);
       return;
     }
     AEQLog.d("AEARCakePanel", "[openWithAnimation] alpha - onAnimationStart, mContentView == null");
@@ -35,7 +35,7 @@ class AEARCakePanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakePanel.4
  * JD-Core Version:    0.7.0.1
  */

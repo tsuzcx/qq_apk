@@ -20,26 +20,26 @@ public class StoryAtVideoFragment$FeedVideoCookieUpdateReceiver
   
   public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull FeedVideoManager.FeedVideoInfoUpdate paramFeedVideoInfoUpdate)
   {
-    if ((paramFeedVideoInfoUpdate.jdField_a_of_type_Int != 2) && (paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) && (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null))
+    if ((paramFeedVideoInfoUpdate.b != 2) && (paramFeedVideoInfoUpdate.a.equals(paramStoryAtVideoFragment.q)) && (paramStoryAtVideoFragment.s != null))
     {
-      if (!paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.c())
+      if (!paramStoryAtVideoFragment.s.e())
       {
         SLog.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramFeedVideoInfoUpdate.toString() });
         return;
       }
-      paramFeedVideoInfoUpdate = paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString, paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoPullType);
+      paramFeedVideoInfoUpdate = paramStoryAtVideoFragment.t.a(paramStoryAtVideoFragment.q, paramStoryAtVideoFragment.s.f().mVideoPullType);
       if (paramFeedVideoInfoUpdate == null)
       {
-        SLog.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString, Integer.valueOf(paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().mVideoPullType) });
+        SLog.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { paramStoryAtVideoFragment.q, Integer.valueOf(paramStoryAtVideoFragment.s.f().mVideoPullType) });
         return;
       }
       SLog.a(this.TAG, "receive video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().updateVideoInfo(paramFeedVideoInfoUpdate);
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(paramFeedVideoInfoUpdate.mVideoItemList, true);
-      if (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader != null) {
-        paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader.a(paramFeedVideoInfoUpdate.mVideoPullType, paramFeedVideoInfoUpdate.mVideoNextCookie, paramFeedVideoInfoUpdate.mVideoSeq);
+      paramStoryAtVideoFragment.s.f().updateVideoInfo(paramFeedVideoInfoUpdate);
+      paramStoryAtVideoFragment.s.a(paramFeedVideoInfoUpdate.mVideoItemList, true);
+      if (paramStoryAtVideoFragment.i != null) {
+        paramStoryAtVideoFragment.i.a(paramFeedVideoInfoUpdate.mVideoPullType, paramFeedVideoInfoUpdate.mVideoNextCookie, paramFeedVideoInfoUpdate.mVideoSeq);
       }
-      paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem);
+      paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.s);
       return;
     }
     SLog.b(this.TAG, "ignore this video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());

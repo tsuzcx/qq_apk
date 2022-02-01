@@ -168,9 +168,9 @@ public class CookieManager
           localObject1 = TbsLogReport.getInstance(paramContext).tbsLogInfo();
           if (!TextUtils.isEmpty(this.b))
           {
-            if (p.a().i(paramContext) > 0)
+            if (p.a().j(paramContext) > 0)
             {
-              i = p.a().i(paramContext);
+              i = p.a().j(paramContext);
               if (i < 36001) {
                 return;
               }
@@ -594,7 +594,7 @@ public class CookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.CookieManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,53 +5,53 @@ import com.tencent.gathererga.core.IExecutor;
 public class GathererExecutor
   implements IExecutor
 {
-  private static volatile GathererExecutor jdField_a_of_type_ComTencentGatherergaCoreInternalUtilGathererExecutor;
-  private IExecutor jdField_a_of_type_ComTencentGatherergaCoreIExecutor = null;
+  private static volatile GathererExecutor a;
   private IExecutor b = null;
-  
-  private IExecutor a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentGatherergaCoreIExecutor;
-    if (localObject != null) {
-      return localObject;
-    }
-    IExecutor localIExecutor = this.b;
-    localObject = localIExecutor;
-    if (localIExecutor == null)
-    {
-      this.b = new GathererExecutor.DefaultExecutor();
-      localObject = this.b;
-    }
-    return localObject;
-  }
+  private IExecutor c = null;
   
   public static GathererExecutor a()
   {
-    if (jdField_a_of_type_ComTencentGatherergaCoreInternalUtilGathererExecutor == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGatherergaCoreInternalUtilGathererExecutor == null) {
-          jdField_a_of_type_ComTencentGatherergaCoreInternalUtilGathererExecutor = new GathererExecutor();
+        if (a == null) {
+          a = new GathererExecutor();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGatherergaCoreInternalUtilGathererExecutor;
+    return a;
+  }
+  
+  private IExecutor b()
+  {
+    Object localObject = this.b;
+    if (localObject != null) {
+      return localObject;
+    }
+    IExecutor localIExecutor = this.c;
+    localObject = localIExecutor;
+    if (localIExecutor == null)
+    {
+      this.c = new GathererExecutor.DefaultExecutor();
+      localObject = this.c;
+    }
+    return localObject;
   }
   
   public void a(IExecutor paramIExecutor)
   {
-    this.jdField_a_of_type_ComTencentGatherergaCoreIExecutor = paramIExecutor;
+    this.b = paramIExecutor;
   }
   
-  public void execute(Runnable paramRunnable)
+  public void a(Runnable paramRunnable)
   {
-    a().execute(paramRunnable);
+    b().a(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.util.GathererExecutor
  * JD-Core Version:    0.7.0.1
  */

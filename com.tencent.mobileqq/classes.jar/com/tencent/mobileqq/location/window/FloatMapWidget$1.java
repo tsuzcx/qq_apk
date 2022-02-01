@@ -13,7 +13,7 @@ class FloatMapWidget$1
   
   public void onMapLoaded()
   {
-    Object localObject = FloatMapWidget.a(this.a).a();
+    Object localObject = FloatMapWidget.a(this.a).f();
     if (QLog.isColorLevel()) {
       QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((LocationItem)localObject).a() });
     }
@@ -23,19 +23,19 @@ class FloatMapWidget$1
       if (QLog.isColorLevel()) {
         QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
       }
-      if ((FloatMapWidget.c(this.a).d().size() == 1) && (localObject == null)) {
+      if ((FloatMapWidget.c(this.a).j().size() == 1) && (localObject == null)) {
         this.a.a(false, null);
       } else {
         this.a.b();
       }
     }
     FloatMapWidget.a(this.a, true);
-    FloatMapWidget.a(this.a);
+    FloatMapWidget.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.FloatMapWidget.1
  * JD-Core Version:    0.7.0.1
  */

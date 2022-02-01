@@ -32,10 +32,10 @@ public class ExternalUtilsApiImpl
   {
     if ((paramBoolean2) && (paramBoolean1))
     {
-      AVVoiceRecog.a().b(1);
+      AVVoiceRecog.b().c(1);
       return;
     }
-    AVVoiceRecog.a().a(1);
+    AVVoiceRecog.b().b(1);
   }
   
   public void deviceExitVideoProcess(BaseVideoAppInterface paramBaseVideoAppInterface, Bundle paramBundle)
@@ -45,7 +45,7 @@ public class ExternalUtilsApiImpl
     if ((i == 0) && (paramBundle.longValue() != 0L))
     {
       paramBaseVideoAppInterface = (VideoAppInterface)paramBaseVideoAppInterface;
-      if ((paramBaseVideoAppInterface != null) && (paramBaseVideoAppInterface.a() != null) && (paramBaseVideoAppInterface.a().a() != null) && (paramBaseVideoAppInterface.a().a().c != null) && (paramBaseVideoAppInterface.a().a().c.equals(String.valueOf(paramBundle)))) {
+      if ((paramBaseVideoAppInterface != null) && (paramBaseVideoAppInterface.b() != null) && (paramBaseVideoAppInterface.b().k() != null) && (paramBaseVideoAppInterface.b().k().s != null) && (paramBaseVideoAppInterface.b().k().s.equals(String.valueOf(paramBundle)))) {
         paramBaseVideoAppInterface.b(1000);
       }
     }
@@ -103,7 +103,7 @@ public class ExternalUtilsApiImpl
   
   public boolean isEnableAEModuleManager()
   {
-    return EffectsRenderController.b();
+    return EffectsRenderController.c();
   }
   
   public boolean isShowVideoMsg(Context paramContext, String paramString1, String paramString2, int paramInt)
@@ -139,7 +139,7 @@ public class ExternalUtilsApiImpl
   
   public void tryLoadPtuSo()
   {
-    EffectsRenderController.f();
+    EffectsRenderController.m();
   }
 }
 

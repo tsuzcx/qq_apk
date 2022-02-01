@@ -11,21 +11,21 @@ class GameRoomFragment$2
   public void run()
   {
     Object localObject;
-    if (GameRoomFragment.a(this.this$0))
+    if (GameRoomFragment.b(this.this$0))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("delayTipRunnable return,nextTransientTipString = ");
-        ((StringBuilder)localObject).append(GameRoomFragment.a(this.this$0));
+        ((StringBuilder)localObject).append(GameRoomFragment.c(this.this$0));
         QLog.d("GameRoomFragment", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    if (!TextUtils.isEmpty(GameRoomFragment.a(this.this$0)))
+    if (!TextUtils.isEmpty(GameRoomFragment.c(this.this$0)))
     {
       localObject = this.this$0;
-      ((GameRoomFragment)localObject).a(GameRoomFragment.a((GameRoomFragment)localObject));
+      ((GameRoomFragment)localObject).a(GameRoomFragment.c((GameRoomFragment)localObject));
       GameRoomFragment.a(this.this$0, null);
     }
   }

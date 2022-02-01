@@ -20,24 +20,24 @@ import java.lang.ref.WeakReference;
 public class VoiceChangeHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  WeakReference<ListenChangeVoicePanel> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<ListenChangeVoicePanel> a;
+  private QQAppInterface b;
   
   public VoiceChangeHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   public void a(int paramInt1, int paramInt2, ListenChangeVoicePanel paramListenChangeVoicePanel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramListenChangeVoicePanel);
+    this.a = new WeakReference(paramListenChangeVoicePanel);
     paramListenChangeVoicePanel = super.createToServiceMsg("voiceChange.Auth");
     paramListenChangeVoicePanel.extraData.putInt("callId", paramInt2);
     Object localObject = new VipVoiceChange.voiceChangeReq();
     ((VipVoiceChange.voiceChangeReq)localObject).int32_platform.set(109);
     ((VipVoiceChange.voiceChangeReq)localObject).int32_sub_cmd.set(1);
-    ((VipVoiceChange.voiceChangeReq)localObject).str_qq_version.set("8.7.0");
+    ((VipVoiceChange.voiceChangeReq)localObject).str_qq_version.set("8.8.17");
     VipVoiceChange.subCmd0x1ReqAuth localsubCmd0x1ReqAuth = new VipVoiceChange.subCmd0x1ReqAuth();
     localsubCmd0x1ReqAuth.int32_item_id.set(paramInt2);
     ((VipVoiceChange.voiceChangeReq)localObject).msg_subcmd0x1_req_auth.set(localsubCmd0x1ReqAuth);
@@ -83,7 +83,7 @@ public class VoiceChangeHandler
           paramToServiceMsg.append("onReceive~ isSuccess=false ,data=");
           paramToServiceMsg.append(PkgTools.toHexStr((byte[])paramObject));
           QLog.e("VoiceChangeHandler", 1, paramToServiceMsg.toString());
-          ReportCenter.a().a("voiceChange.Auth", 100, paramFromServiceMsg.getBusinessFailCode(), this.appRuntime.getAccount(), 0, HardCodeUtil.a(2131716325), true);
+          ReportCenter.a().a("voiceChange.Auth", 100, paramFromServiceMsg.getBusinessFailCode(), this.appRuntime.getAccount(), 0, HardCodeUtil.a(2131913767), true);
           localBundle.putInt("result", -1);
           super.notifyUI(1, false, localBundle);
           return;
@@ -115,10 +115,10 @@ public class VoiceChangeHandler
         localBundle.putString("message", paramFromServiceMsg);
         localBundle.putString("svr_url", paramObject);
         localBundle.putString("svr_actStr", null);
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+        if ((this.a == null) || (this.a.get() == null)) {
           break label527;
         }
-        paramToServiceMsg = (ListenChangeVoicePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramToServiceMsg = (ListenChangeVoicePanel)this.a.get();
         if (paramToServiceMsg != null)
         {
           paramToServiceMsg.a(i, j, localBundle, false);
@@ -146,7 +146,7 @@ public class VoiceChangeHandler
         paramFromServiceMsg.append(paramToServiceMsg.getMessage());
         QLog.e("VoiceChangeHandler", 1, paramFromServiceMsg.toString());
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.a = null;
       return;
       label527:
       paramToServiceMsg = null;
@@ -155,7 +155,7 @@ public class VoiceChangeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.VoiceChangeHandler
  * JD-Core Version:    0.7.0.1
  */

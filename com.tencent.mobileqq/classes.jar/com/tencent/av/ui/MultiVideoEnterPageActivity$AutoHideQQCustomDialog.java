@@ -15,8 +15,8 @@ class MultiVideoEnterPageActivity$AutoHideQQCustomDialog
   
   public static QQCustomDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramContext = new AutoHideQQCustomDialog(paramContext, 2131756189);
-    paramContext.setContentView(2131558978);
+    paramContext = new AutoHideQQCustomDialog(paramContext, 2131953338);
+    paramContext.setContentView(2131624611);
     paramContext.setTitle(paramString1);
     paramContext.setMessage(paramString2);
     paramContext.setNegativeButton(paramInt2, paramOnClickListener2);

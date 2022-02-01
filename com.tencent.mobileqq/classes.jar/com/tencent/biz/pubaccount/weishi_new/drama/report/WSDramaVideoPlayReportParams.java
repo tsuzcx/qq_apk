@@ -4,76 +4,76 @@ import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerParam;
 
 public class WSDramaVideoPlayReportParams
 {
-  private int jdField_a_of_type_Int;
-  private WSPlayerParam jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private String a;
+  private String b;
+  private int c;
+  private boolean d;
+  private boolean e;
+  private WSPlayerParam f;
   
   public WSDramaVideoPlayReportParams(String paramString, WSPlayerParam paramWSPlayerParam)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString;
+    this.f = paramWSPlayerParam;
   }
   
   public WSDramaVideoPlayReportParams a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     return this;
   }
   
   public WSDramaVideoPlayReportParams a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public WSDramaVideoPlayReportParams a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
-  }
-  
-  public WSPlayerParam a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public WSDramaVideoPlayReportParams b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
     return this;
   }
   
-  public String b()
+  public WSPlayerParam b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.f;
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.d;
+  }
+  
+  public String d()
+  {
+    return this.b;
+  }
+  
+  public int e()
+  {
+    return this.c;
+  }
+  
+  public boolean f()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.report.WSDramaVideoPlayReportParams
  * JD-Core Version:    0.7.0.1
  */

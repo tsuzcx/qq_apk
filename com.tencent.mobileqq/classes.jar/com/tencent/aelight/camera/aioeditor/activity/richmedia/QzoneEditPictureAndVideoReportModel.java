@@ -9,18 +9,18 @@ import java.util.Set;
 
 class QzoneEditPictureAndVideoReportModel
 {
-  private int jdField_a_of_type_Int;
-  private final Class<? extends EditVideoPart> jdField_a_of_type_JavaLangClass;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private int a;
   private final int b;
   private final int c;
+  private final Class<? extends EditVideoPart> d;
+  private Set<Integer> e = new HashSet();
   
   private QzoneEditPictureAndVideoReportModel(int paramInt1, int paramInt2, int paramInt3, Class<? extends EditVideoPart> paramClass)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.d = paramClass;
   }
   
   static QzoneEditPictureAndVideoReportModel a(int paramInt1, int paramInt2, int paramInt3, Class<? extends EditVideoPart> paramClass)
@@ -30,18 +30,23 @@ class QzoneEditPictureAndVideoReportModel
   
   Class<? extends EditVideoPart> a()
   {
-    return this.jdField_a_of_type_JavaLangClass;
+    return this.d;
   }
   
-  void a()
+  void a(Set<Integer> paramSet)
   {
-    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+    this.e.addAll(paramSet);
+  }
+  
+  void b()
+  {
+    if (this.e.size() > 0)
     {
-      localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+      localObject = this.e.iterator();
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
-        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
+        LpReportInfo_pf00064.allReport(this.a, this.b, localInteger.intValue());
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(toString());
         localStringBuilder.append(" with ");
@@ -49,23 +54,18 @@ class QzoneEditPictureAndVideoReportModel
         QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", localStringBuilder.toString() });
       }
     }
-    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
+    LpReportInfo_pf00064.allReport(this.a, this.b, this.c);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("performReport ");
     ((StringBuilder)localObject).append(toString());
     QZLog.d("QzoneEditPictureAndVide", 2, ((StringBuilder)localObject).toString());
   }
   
-  void a(Set<Integer> paramSet)
-  {
-    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QzoneEditPictureReportModel{actionType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", subActionType=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", reserve=");
@@ -76,7 +76,7 @@ class QzoneEditPictureAndVideoReportModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPictureAndVideoReportModel
  * JD-Core Version:    0.7.0.1
  */

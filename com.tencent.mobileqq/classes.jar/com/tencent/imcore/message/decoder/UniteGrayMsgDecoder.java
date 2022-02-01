@@ -25,7 +25,7 @@ public class UniteGrayMsgDecoder
         {
           paramIMessageManager.mergeFrom(paramMessage.msgData);
           paramMessage.msg = paramIMessageManager.content.get();
-          if ((!paramIMessageManager.graytip_id.has()) || (!MutualMarkUtils.b(paramIMessageManager.graytip_id.get()))) {
+          if ((!paramIMessageManager.graytip_id.has()) || (!MutualMarkUtils.c(paramIMessageManager.graytip_id.get()))) {
             return;
           }
           paramMessage.emoRecentMsg = ReactivePushHelper.a(paramAppRuntime.getApp(), paramMessage.msg);
@@ -57,7 +57,7 @@ public class UniteGrayMsgDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.UniteGrayMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

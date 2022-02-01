@@ -16,7 +16,7 @@ public class OpenSdkLoginAction
   public void a(Activity paramActivity, Bundle paramBundle)
   {
     if (!AuthParamUtil.a(paramBundle)) {
-      OpenSdkIMBlockFragment.a(paramActivity, SharedPrefs.a(), true);
+      OpenSdkIMBlockFragment.a(paramActivity, SharedPrefs.c(), true);
     }
   }
   
@@ -63,7 +63,7 @@ public class OpenSdkLoginAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.OpenSdkLoginAction
  * JD-Core Version:    0.7.0.1
  */

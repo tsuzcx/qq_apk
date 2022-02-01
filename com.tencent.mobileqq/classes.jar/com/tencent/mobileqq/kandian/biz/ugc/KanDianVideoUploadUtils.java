@@ -26,7 +26,7 @@ public class KanDianVideoUploadUtils
   public static ArrayList<Intent> a()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = RIJSPUtils.a(ReadInJoyUtils.a(), true, false);
+    Object localObject1 = RIJSPUtils.a(ReadInJoyUtils.b(), true, false);
     int i = 1;
     while (i <= 2)
     {
@@ -112,9 +112,9 @@ public class KanDianVideoUploadUtils
       try
       {
         ((JSONObject)localObject).put("tagId", localTagInfo.a());
-        ((JSONObject)localObject).put("tagName", localTagInfo.a());
-        ((JSONObject)localObject).put("tagScore", localTagInfo.a());
-        ((JSONObject)localObject).put("channel", localTagInfo.b());
+        ((JSONObject)localObject).put("tagName", localTagInfo.b());
+        ((JSONObject)localObject).put("tagScore", localTagInfo.c());
+        ((JSONObject)localObject).put("channel", localTagInfo.d());
         localJSONArray.put(localObject);
       }
       catch (JSONException localJSONException)
@@ -145,7 +145,7 @@ public class KanDianVideoUploadUtils
       int i;
       try
       {
-        SharedPreferences localSharedPreferences = RIJSPUtils.a(ReadInJoyUtils.a(), true, true);
+        SharedPreferences localSharedPreferences = RIJSPUtils.a(ReadInJoyUtils.b(), true, true);
         SharedPreferences.Editor localEditor = localSharedPreferences.edit();
         localObject1 = a();
         ArrayList localArrayList = new ArrayList();
@@ -176,16 +176,16 @@ public class KanDianVideoUploadUtils
             ((StringBuilder)localObject1).append("arg_video_local_task1");
             ((StringBuilder)localObject1).append(i);
             localObject1 = ((StringBuilder)localObject1).toString();
-            break label821;
+            break label823;
           }
           if (localArrayList.contains(localObject2)) {
-            break label821;
+            break label823;
           }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("arg_video_local_task1");
           ((StringBuilder)localObject1).append(i);
           localObject1 = ((StringBuilder)localObject1).toString();
-          break label821;
+          break label823;
         }
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
@@ -241,7 +241,7 @@ public class KanDianVideoUploadUtils
       QLog.e("KanDianVideoUploadUtils", 1, ((StringBuilder)localObject1).toString());
       paramBundle.printStackTrace();
       return;
-      label821:
+      label823:
       i += 1;
     }
   }
@@ -259,11 +259,11 @@ public class KanDianVideoUploadUtils
   
   private static void a(String paramString, ArrayList<Intent> paramArrayList)
   {
-    label712:
-    label748:
-    label753:
-    label758:
-    label763:
+    label714:
+    label750:
+    label755:
+    label760:
+    label765:
     for (;;)
     {
       Intent localIntent;
@@ -283,10 +283,10 @@ public class KanDianVideoUploadUtils
           str1 = localJSONObject.getString("mTaskID");
           bool2 = localJSONObject.getBoolean("arg_is_from_wang_zhe");
           if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(paramString))) {
-            break label753;
+            break label755;
           }
           if (new File(paramString).exists()) {
-            break label748;
+            break label750;
           }
         }
         catch (Exception paramString)
@@ -297,17 +297,17 @@ public class KanDianVideoUploadUtils
           Object localObject;
           String str3;
           StringBuilder localStringBuilder;
-          break label712;
+          break label714;
         }
         str2 = localJSONObject.getString("arg_video_path");
         if (bool2) {
-          break label763;
+          break label765;
         }
         if (TextUtils.isEmpty(str2)) {
-          break label758;
+          break label760;
         }
         if (new File(str2).exists()) {
-          break label763;
+          break label765;
         }
       }
       catch (Exception paramString) {}
@@ -436,7 +436,7 @@ public class KanDianVideoUploadUtils
   {
     String str = paramBundle.getString("mTaskID", "");
     c(paramBundle);
-    Object localObject = RIJSPUtils.a(ReadInJoyUtils.a(), true, true);
+    Object localObject = RIJSPUtils.a(ReadInJoyUtils.b(), true, true);
     paramBundle = ((SharedPreferences)localObject).edit();
     int i = 1;
     while (i <= 2)
@@ -483,7 +483,7 @@ public class KanDianVideoUploadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.KanDianVideoUploadUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class ArkQQAPIIPCModule$GetUinHandler
 {
   public EIPCResult a(Bundle paramBundle)
   {
-    paramBundle = ArkQQAPIIPCModule.a();
+    paramBundle = ArkQQAPIIPCModule.d();
     if (paramBundle == null)
     {
       QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
@@ -29,7 +29,7 @@ public class ArkQQAPIIPCModule$GetUinHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetUinHandler
  * JD-Core Version:    0.7.0.1
  */

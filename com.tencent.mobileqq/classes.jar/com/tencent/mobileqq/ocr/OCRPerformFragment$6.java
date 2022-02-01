@@ -14,19 +14,19 @@ class OCRPerformFragment$6
   
   public void a()
   {
-    OCRPerformFragment.a(this.a).sendEmptyMessageDelayed(101, 60000L);
+    OCRPerformFragment.c(this.a).sendEmptyMessageDelayed(101, 60000L);
   }
   
   public void a(PicOcrRspResult paramPicOcrRspResult)
   {
-    OCRPerformFragment.a(this.a).obtainMessage(102, paramPicOcrRspResult).sendToTarget();
+    OCRPerformFragment.c(this.a).obtainMessage(102, paramPicOcrRspResult).sendToTarget();
   }
   
   protected void a(boolean paramBoolean, PicOcrRspResult paramPicOcrRspResult)
   {
-    if ((OCRPerformFragment.a(this.a)) && (OCRPerformFragment.a(this.a) != null))
+    if ((OCRPerformFragment.g(this.a)) && (OCRPerformFragment.a(this.a) != null))
     {
-      OCRPerformFragment.a(this.a).removeMessages(101);
+      OCRPerformFragment.c(this.a).removeMessages(101);
       OCRPerformFragment.a(this.a, false);
       OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramPicOcrRspResult));
       return;
@@ -38,7 +38,7 @@ class OCRPerformFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.6
  * JD-Core Version:    0.7.0.1
  */

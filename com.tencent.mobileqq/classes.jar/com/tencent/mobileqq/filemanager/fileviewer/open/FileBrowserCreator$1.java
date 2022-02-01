@@ -9,12 +9,12 @@ class FileBrowserCreator$1
   
   public void a()
   {
-    FileBrowserCreator.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenFileBrowserCreator, this.jdField_a_of_type_Int);
+    FileBrowserCreator.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.open.FileBrowserCreator.1
  * JD-Core Version:    0.7.0.1
  */

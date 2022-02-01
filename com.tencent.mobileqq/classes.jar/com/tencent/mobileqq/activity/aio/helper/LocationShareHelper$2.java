@@ -15,8 +15,8 @@ class LocationShareHelper$2
   
   public boolean a(QBaseActivity paramQBaseActivity, LocationRoom.RoomKey paramRoomKey)
   {
-    if ((LocationShareHelper.a(this.a) != null) && (LocationShareHelper.a(this.a).equals(paramRoomKey)) && (LocationShareHelper.a(this.a) == LocationShareHelper.a(this.a).a().a())) {
-      LocationShareHelper.a(this.a).a().a();
+    if ((LocationShareHelper.c(this.a) != null) && (LocationShareHelper.c(this.a).equals(paramRoomKey)) && (LocationShareHelper.a(this.a) == LocationShareHelper.b(this.a).J().a())) {
+      LocationShareHelper.b(this.a).J().c();
     }
     return true;
   }
@@ -25,7 +25,7 @@ class LocationShareHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.LocationShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

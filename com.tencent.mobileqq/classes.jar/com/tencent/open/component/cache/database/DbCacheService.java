@@ -5,30 +5,28 @@ import java.util.HashMap;
 
 public class DbCacheService
 {
-  protected static DbCacheService a;
+  protected static DbCacheService d;
   protected Context a;
-  protected DbCacheManager.OnCloseListener a;
-  protected final HashMap<String, DbCacheManager> a;
+  protected final HashMap<String, DbCacheManager> b = new HashMap();
+  protected DbCacheManager.OnCloseListener c = new DbCacheService.1(this);
   
   protected DbCacheService(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager$OnCloseListener = new DbCacheService.1(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.a = paramContext.getApplicationContext();
   }
   
   public static DbCacheService a(Context paramContext)
   {
-    DbCacheService localDbCacheService = jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheService;
+    DbCacheService localDbCacheService = d;
     if (localDbCacheService != null) {
       return localDbCacheService;
     }
     try
     {
-      if (jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheService == null) {
-        jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheService = new DbCacheService(paramContext);
+      if (d == null) {
+        d = new DbCacheService(paramContext);
       }
-      paramContext = jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheService;
+      paramContext = d;
       return paramContext;
     }
     finally {}
@@ -36,20 +34,20 @@ public class DbCacheService
   
   public DbCacheManager a(Class<? extends DbCacheData> paramClass, long paramLong, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_AndroidContentContext != null)
+      if (this.a != null)
       {
         if (paramString != null)
         {
           Object localObject = DbCacheManager.a(paramLong, paramString);
-          DbCacheManager localDbCacheManager = (DbCacheManager)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+          DbCacheManager localDbCacheManager = (DbCacheManager)this.b.get(localObject);
           localObject = localDbCacheManager;
           if (localDbCacheManager == null)
           {
-            localObject = new DbCacheManager(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-            ((DbCacheManager)localObject).a(this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager$OnCloseListener);
-            this.jdField_a_of_type_JavaUtilHashMap.put(((DbCacheManager)localObject).a(), localObject);
+            localObject = new DbCacheManager(this.a, paramClass, paramLong, paramString);
+            ((DbCacheManager)localObject).a(this.c);
+            this.b.put(((DbCacheManager)localObject).b(), localObject);
           }
           return localObject;
         }
@@ -61,7 +59,7 @@ public class DbCacheService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheService
  * JD-Core Version:    0.7.0.1
  */

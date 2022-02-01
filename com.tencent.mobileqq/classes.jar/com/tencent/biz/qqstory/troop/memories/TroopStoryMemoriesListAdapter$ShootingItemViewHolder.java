@@ -9,13 +9,13 @@ class TroopStoryMemoriesListAdapter$ShootingItemViewHolder
   
   public TroopStoryMemoriesListAdapter$ShootingItemViewHolder(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131380563);
+    this.a = paramView;
+    this.b = paramView.findViewById(2131449520);
   }
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new TroopStoryMemoriesListAdapter.ShootingItemViewHolder.1(this));
+    this.a.setOnClickListener(new TroopStoryMemoriesListAdapter.ShootingItemViewHolder.1(this));
   }
 }
 

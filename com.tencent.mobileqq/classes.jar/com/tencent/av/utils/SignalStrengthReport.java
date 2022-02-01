@@ -14,52 +14,53 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.av.AVLog;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import org.json.JSONObject;
 
 public class SignalStrengthReport
 {
-  static volatile SignalStrengthReport jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport;
-  int jdField_a_of_type_Int = -1;
-  WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager;
-  SignalStrengthReport.QavPhoneStateListener jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener;
-  Runnable jdField_a_of_type_JavaLangRunnable = new SignalStrengthReport.1(this);
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int = 0;
-  Runnable jdField_b_of_type_JavaLangRunnable = new SignalStrengthReport.2(this);
-  int c = 0;
-  int d = -1;
+  static volatile SignalStrengthReport a;
+  WeakReference<Context> b;
+  SignalStrengthReport.QavPhoneStateListener c;
+  WifiManager d;
+  TelephonyManager e;
+  int f = -1;
+  HandlerThread g;
+  Handler h;
+  int i = 0;
+  int j = 0;
+  int k = -1;
+  String l = "";
+  Runnable m = new SignalStrengthReport.1(this);
+  Runnable n = new SignalStrengthReport.2(this);
   
   private SignalStrengthReport(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.b = new WeakReference(paramContext);
     if (Looper.myLooper() != null) {
-      this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener = new SignalStrengthReport.QavPhoneStateListener(this);
+      this.c = new SignalStrengthReport.QavPhoneStateListener(this);
     }
     if (paramContext != null)
     {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager = ((WifiManager)paramContext.getSystemService("wifi"));
-      this.jdField_a_of_type_AndroidTelephonyTelephonyManager = ((TelephonyManager)paramContext.getSystemService("phone"));
+      this.d = ((WifiManager)paramContext.getSystemService("wifi"));
+      this.e = ((TelephonyManager)paramContext.getSystemService("phone"));
     }
   }
   
   public static SignalStrengthReport a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport == null) {
-          jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport = new SignalStrengthReport(paramContext);
+        if (a == null) {
+          a = new SignalStrengthReport(paramContext);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport;
+    return a;
   }
   
   private String a(long paramLong)
@@ -75,13 +76,13 @@ public class SignalStrengthReport
     return localStringBuffer.toString();
   }
   
-  private String b()
+  private String i()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      if (this.d != null)
       {
-        Object localObject = this.jdField_a_of_type_AndroidNetWifiWifiManager.getDhcpInfo();
+        Object localObject = this.d.getDhcpInfo();
         if (localObject != null)
         {
           localObject = a(((DhcpInfo)localObject).gateway);
@@ -99,24 +100,24 @@ public class SignalStrengthReport
     return "";
   }
   
-  private static int f()
+  private static int j()
   {
     boolean bool = AppNetConnInfo.isWifiConn();
-    int i = 4;
+    int i1 = 4;
     if (bool) {
       return 1;
     }
     if (AppNetConnInfo.isMobileConn())
     {
-      int j = AppNetConnInfo.getMobileInfo();
-      if (j != 1)
+      int i2 = AppNetConnInfo.getMobileInfo();
+      if (i2 != 1)
       {
-        if (j != 2)
+        if (i2 != 2)
         {
-          if (j == 3) {
-            return i;
+          if (i2 == 3) {
+            return i1;
           }
-          if (j == 4) {
+          if (i2 == 4) {
             return 5;
           }
         }
@@ -129,17 +130,17 @@ public class SignalStrengthReport
         return 2;
       }
     }
-    i = 0;
-    return i;
+    i1 = 0;
+    return i1;
   }
   
-  private int g()
+  private int k()
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      if ((this.b != null) && (this.b.get() != null))
       {
-        Object localObject = QAVConfigUtils.a(218, QAVConfigUtils.b);
+        Object localObject = QAVConfigUtils.b(218, QAVConfigUtils.b);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           localStringBuilder = new StringBuilder();
@@ -149,11 +150,11 @@ public class SignalStrengthReport
           localObject = new JSONObject((String)localObject);
           if (((JSONObject)localObject).has("pingInterval"))
           {
-            int i = ((JSONObject)localObject).getInt("pingInterval");
-            if ((i >= 0) && (i < 2000)) {
+            int i1 = ((JSONObject)localObject).getInt("pingInterval");
+            if ((i1 >= 0) && (i1 < 2000)) {
               return 2000;
             }
-            return i;
+            return i1;
           }
         }
       }
@@ -168,11 +169,6 @@ public class SignalStrengthReport
     return -1;
   }
   
-  int a()
-  {
-    return this.d;
-  }
-  
   int a(SignalStrength paramSignalStrength)
   {
     if (paramSignalStrength != null) {
@@ -180,12 +176,12 @@ public class SignalStrengthReport
       {
         if (Build.VERSION.SDK_INT >= 23)
         {
-          int i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getLevel", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
-          i *= 25;
-          if (i > 100) {
+          int i1 = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getLevel", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
+          i1 *= 25;
+          if (i1 > 100) {
             return 100;
           }
-          return i;
+          return i1;
         }
       }
       catch (Exception paramSignalStrength)
@@ -199,14 +195,9 @@ public class SignalStrengthReport
     return 0;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    Object localObject = this.g;
     if ((localObject != null) && (((HandlerThread)localObject).isAlive())) {
       return;
     }
@@ -214,44 +205,39 @@ public class SignalStrengthReport
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("SignalStrengthReportThread");
     ((StringBuilder)localObject).append((int)(Math.random() * 100.0D));
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_Int = g();
-    this.jdField_a_of_type_JavaLangString = "";
-    localObject = this.jdField_a_of_type_JavaLangRunnable;
+    this.g = new HandlerThread(((StringBuilder)localObject).toString());
+    this.g.start();
+    this.h = new Handler(this.g.getLooper());
+    this.f = k();
+    this.l = "";
+    localObject = this.m;
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject);
+      this.h.post((Runnable)localObject);
     }
-    localObject = this.jdField_b_of_type_JavaLangRunnable;
+    localObject = this.n;
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject);
+      this.h.post((Runnable)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener;
+    localObject = this.c;
     if (localObject != null)
     {
-      TelephonyManager localTelephonyManager = this.jdField_a_of_type_AndroidTelephonyTelephonyManager;
+      TelephonyManager localTelephonyManager = this.e;
       if (localTelephonyManager != null) {
         localTelephonyManager.listen((PhoneStateListener)localObject, 256);
       }
     }
   }
   
-  int b()
-  {
-    return this.c;
-  }
-  
   int b(SignalStrength paramSignalStrength)
   {
-    int k = -1;
-    int j = k;
-    int i;
+    int i3 = -1;
+    int i2 = i3;
+    int i1;
     if (paramSignalStrength != null)
     {
       try
       {
-        i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getDbm", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
+        i1 = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getDbm", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
       }
       catch (Exception localException)
       {
@@ -259,39 +245,39 @@ public class SignalStrengthReport
         localStringBuilder2.append("getDbmBySignalStrength reflect getDbm e1:");
         localStringBuilder2.append(localException);
         AVLog.printColorLog("SignalStrengthReport", localStringBuilder2.toString());
-        i = -1;
+        i1 = -1;
       }
-      if (i == -1) {
+      if (i1 == -1) {
         try
         {
           if (paramSignalStrength.isGsm())
           {
-            j = paramSignalStrength.getGsmSignalStrength();
-            i = j;
-            if (j != 99) {
+            i2 = paramSignalStrength.getGsmSignalStrength();
+            i1 = i2;
+            if (i2 != 99) {
               break label204;
             }
-            i = -1;
+            i1 = -1;
             break label204;
           }
-          j = paramSignalStrength.getCdmaDbm();
-          k = paramSignalStrength.getEvdoDbm();
-          if (k != -120)
+          i2 = paramSignalStrength.getCdmaDbm();
+          i3 = paramSignalStrength.getEvdoDbm();
+          if (i3 != -120)
           {
-            if (j == -120)
+            if (i2 == -120)
             {
-              i = k;
+              i1 = i3;
             }
             else
             {
-              i = k;
-              if (j >= k) {}
+              i1 = i3;
+              if (i2 >= i3) {}
             }
           }
           else {
-            i = j;
+            i1 = i2;
           }
-          return i;
+          return i1;
         }
         catch (Exception paramSignalStrength)
         {
@@ -302,68 +288,83 @@ public class SignalStrengthReport
           return -1;
         }
       }
-      j = i;
+      i2 = i1;
     }
     label204:
     do
     {
-      return j;
-      j = k;
-    } while (i == -1);
-    return i * 2 - 113;
+      return i2;
+      i2 = i3;
+    } while (i1 == -1);
+    return i1 * 2 - 113;
   }
   
   public void b()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject1 = this.h;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_JavaLangRunnable;
+      localObject2 = this.m;
       if (localObject2 != null) {
         ((Handler)localObject1).removeCallbacks((Runnable)localObject2);
       }
-      localObject1 = this.jdField_b_of_type_JavaLangRunnable;
+      localObject1 = this.n;
       if (localObject1 != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject1);
+        this.h.removeCallbacks((Runnable)localObject1);
       }
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.h = null;
     }
-    this.jdField_a_of_type_Int = -1;
-    localObject1 = this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener;
+    this.f = -1;
+    localObject1 = this.c;
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_AndroidTelephonyTelephonyManager;
+      localObject2 = this.e;
       if (localObject2 != null) {
         ((TelephonyManager)localObject2).listen((PhoneStateListener)localObject1, 0);
       }
     }
-    localObject1 = this.jdField_a_of_type_AndroidOsHandlerThread;
+    localObject1 = this.g;
     if (localObject1 != null)
     {
       ((HandlerThread)localObject1).quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.g = null;
     }
-    this.jdField_a_of_type_JavaLangString = "";
+    this.l = "";
     AVLog.printColorLog("SignalStrengthReport", "report stop");
   }
   
-  int c()
+  public String c()
   {
-    int j = 0;
-    int i = j;
+    return this.l;
+  }
+  
+  int d()
+  {
+    return this.k;
+  }
+  
+  int e()
+  {
+    return this.j;
+  }
+  
+  int f()
+  {
+    int i2 = 0;
+    int i1 = i2;
     try
     {
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      if (this.d != null)
       {
-        WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
-        i = j;
+        WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo(this.d);
+        i1 = i2;
         if (localWifiInfo.getBSSID() != null)
         {
-          i = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 5);
-          j = i * 25;
-          i = j;
-          if (j > 100) {
+          i1 = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 5);
+          i2 = i1 * 25;
+          i1 = i2;
+          if (i2 > 100) {
             return 100;
           }
         }
@@ -375,22 +376,22 @@ public class SignalStrengthReport
       localStringBuilder.append("getWifiLevelPercent e:");
       localStringBuilder.append(localException);
       AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
-      i = j;
+      i1 = i2;
     }
-    return i;
+    return i1;
   }
   
-  int d()
+  int g()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      if (this.d != null)
       {
-        WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+        WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo(this.d);
         if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
         {
-          int i = localWifiInfo.getRssi();
-          return i;
+          int i1 = localWifiInfo.getRssi();
+          return i1;
         }
       }
     }

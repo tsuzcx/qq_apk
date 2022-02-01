@@ -16,25 +16,25 @@ class UiApiPlugin$28
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    Object localObject = this.c.mRuntime.d();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
         return;
       }
-      if (paramDownloadTask.a == 0)
+      if (paramDownloadTask.c == 0)
       {
-        paramDownloadTask = AbsDownloader.getFilePath(this.jdField_a_of_type_JavaLangString);
+        paramDownloadTask = AbsDownloader.getFilePath(this.a);
         if (new File(paramDownloadTask).exists())
         {
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("mergeTextToImage->downloadFile success: ");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.a);
             QLog.d("UiApiPlugin", 2, ((StringBuilder)localObject).toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, paramDownloadTask, 0);
+          this.c.a(this.b, paramDownloadTask, 0);
           return;
         }
       }
@@ -42,16 +42,16 @@ class UiApiPlugin$28
       {
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("mergeTextToImage->downloadFile failed: ");
-        paramDownloadTask.append(this.jdField_a_of_type_JavaLangString);
+        paramDownloadTask.append(this.a);
         QLog.d("UiApiPlugin", 2, paramDownloadTask.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
+      this.c.a(this.b, null, -2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.28
  * JD-Core Version:    0.7.0.1
  */

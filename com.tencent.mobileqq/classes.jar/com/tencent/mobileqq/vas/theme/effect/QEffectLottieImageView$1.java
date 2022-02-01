@@ -34,14 +34,14 @@ class QEffectLottieImageView$1
     this.a.setComposition(paramLottieComposition);
     this.a.setProgress(0.0F);
     paramLottieComposition = this.a;
-    paramLottieComposition.setRepeatCount(QEffectLottieImageView.a(paramLottieComposition).repeat);
+    paramLottieComposition.setRepeatCount(QEffectLottieImageView.b(paramLottieComposition).repeat);
     this.a.setVisibility(0);
     this.a.playAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.effect.QEffectLottieImageView.1
  * JD-Core Version:    0.7.0.1
  */

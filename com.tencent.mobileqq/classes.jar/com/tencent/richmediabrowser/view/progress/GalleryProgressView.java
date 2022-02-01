@@ -29,7 +29,7 @@ public class GalleryProgressView
     Object localObject1;
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130841618);
+      Bitmap localBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130842518);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -65,7 +65,7 @@ public class GalleryProgressView
   
   public void init(Context paramContext, BrowserBaseScene paramBrowserBaseScene)
   {
-    this.progressBar = ((ImageView)paramBrowserBaseScene.getRootView().findViewById(2131373163));
+    this.progressBar = ((ImageView)paramBrowserBaseScene.getRootView().findViewById(2131440773));
     initDrawable(paramContext);
   }
   
@@ -137,7 +137,7 @@ public class GalleryProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.progress.GalleryProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.handlers;
 
 import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.IJsObjectHandler;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import java.lang.ref.WeakReference;
@@ -17,6 +18,7 @@ public class JsReportHandler
   private static final String KEY_APP_KEY = "appKey";
   private static final String KEY_EVENT_ID = "eventId";
   private static final String KEY_PARAMS = "params";
+  private static final String TAG = "JsReportHandler";
   
   public JsReportHandler(WeakReference<Object> paramWeakReference)
   {
@@ -83,7 +85,10 @@ public class JsReportHandler
       }
       catch (JSONException localJSONException)
       {
-        localJSONException.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("wrapJsonToMap ");
+        localStringBuilder.append(localJSONException);
+        Log.e("JsReportHandler", localStringBuilder.toString());
         localObject = null;
       }
       localHashMap.put(str2, localObject);
@@ -104,7 +109,7 @@ public class JsReportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.handlers.JsReportHandler
  * JD-Core Version:    0.7.0.1
  */

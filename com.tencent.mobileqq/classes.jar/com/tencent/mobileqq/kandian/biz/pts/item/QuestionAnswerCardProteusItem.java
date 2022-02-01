@@ -35,12 +35,12 @@ public class QuestionAnswerCardProteusItem
   {
     ProteusItemDataBuilder localProteusItemDataBuilder = new ProteusItemDataBuilder();
     String str1 = "ReadInjoy_QA_NoImage_cell";
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a.a != null))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x.v != null))
     {
       String str2;
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo.a.c != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a.c.size() > 0) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a.a.b == 1))
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo.x.s != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x.s.size() > 0) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x.v.e == 1))
       {
-        str2 = ((String)paramAbsBaseArticleInfo.mSocialFeedInfo.a.c.get(0)).trim();
+        str2 = ((String)paramAbsBaseArticleInfo.mSocialFeedInfo.x.s.get(0)).trim();
         str1 = "ReadInjoy_QA_Image_cell";
       }
       else
@@ -75,7 +75,7 @@ public class QuestionAnswerCardProteusItem
     Object localObject = paramContainer.getVirtualView();
     if ((localObject != null) && (paramIReadInJoyModel != null))
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
       localObject = ((ViewBase)localObject).findViewBaseByName("id_summary");
@@ -84,7 +84,7 @@ public class QuestionAnswerCardProteusItem
         NativeTextImp localNativeTextImp = (NativeTextImp)((ViewBase)localObject).getNativeView();
         if (localNativeTextImp != null)
         {
-          boolean bool = ReadInJoyLogicEngine.a().a(paramIReadInJoyModel.a().mArticleID);
+          boolean bool = ReadInJoyLogicEngine.a().a(paramIReadInJoyModel.k().mArticleID);
           localNativeTextImp.setTextSize(2, 15.0F);
           if (bool) {
             localObject = "#999999";
@@ -98,7 +98,7 @@ public class QuestionAnswerCardProteusItem
           if (paramContainer.widthPixels <= 720)
           {
             paramInt1 = paramInt2;
-            if (!RIJFeedsType.r(paramIReadInJoyModel.a())) {
+            if (!RIJFeedsType.x(paramIReadInJoyModel.k())) {
               paramInt1 = 2;
             }
           }
@@ -119,7 +119,7 @@ public class QuestionAnswerCardProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.QuestionAnswerCardProteusItem
  * JD-Core Version:    0.7.0.1
  */

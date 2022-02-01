@@ -9,17 +9,17 @@ class PublicAccountChatPie$25
 {
   PublicAccountChatPie$25(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (this.a.R) {
+    if (this.a.cj) {
       return;
     }
     paramView = this.a;
-    paramView.R = true;
-    if ((paramView.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    paramView.cj = true;
+    if ((paramView.bv != null) && (this.a.bv.length > 0))
     {
-      this.a.l(2131695275);
-      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      this.a.s(2131893010);
+      paramInt = this.a.bv[0];
       if (paramInt == 0) {
         this.a.a(true, 0);
       } else {
@@ -28,15 +28,15 @@ class PublicAccountChatPie$25
     }
     else
     {
-      this.a.l(2131695275);
+      this.a.s(2131893010);
       this.a.a(true, 0);
     }
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.ck.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.25
  * JD-Core Version:    0.7.0.1
  */

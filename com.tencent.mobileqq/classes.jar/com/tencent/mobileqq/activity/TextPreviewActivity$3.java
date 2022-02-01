@@ -13,22 +13,22 @@ class TextPreviewActivity$3
   
   public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    HightlightHotWordText.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
-    paramArrayOfHotWordItem = ColorNickManager.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
+    HightlightHotWordText.a(this.a.app, this.a.h, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = ColorNickManager.a(this.a.h, this.a.i, 30, this.a.aa, 13);
+    if (this.a.o.a(this.a))
     {
-      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
+      this.a.ad = paramArrayOfHotWordItem;
       return;
     }
     TextPreviewActivity localTextPreviewActivity = this.a;
-    localTextPreviewActivity.jdField_a_of_type_JavaLangCharSequence = null;
-    localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
-    this.a.i = 0;
+    localTextPreviewActivity.ad = null;
+    localTextPreviewActivity.o.setText(paramArrayOfHotWordItem);
+    this.a.ac = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ class BaseGuessPictureStageView$4
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setVisibility(8);
+    if (this.this$0.i != null) {
+      this.this$0.i.setVisibility(8);
     }
   }
 }

@@ -18,25 +18,25 @@ class ForwardSdkShareOption$10
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c) {
-      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false, true);
+    if (this.a.F) {
+      ReportCenter.a().a(this.a.q.getAccount(), "", String.valueOf(this.a.G), "1000", "52", "0", false, true);
     }
     paramDialogInterface = new Intent();
-    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "addToQQFavorites" })));
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
-    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.G), "addToQQFavorites" })));
+    paramDialogInterface.setPackage(this.a.s.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.s, 0, paramDialogInterface, 268435456);
     Intent localIntent = new Intent();
     localIntent.putExtra("is_share_flag", true);
-    if (this.a.jdField_a_of_type_Long > 0L) {
+    if (this.a.G > 0L) {
       localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
     }
-    QfavHelper.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
-    QfavReport.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0);
+    QfavHelper.a(this.a.s, this.a.q.getAccount(), localIntent, -1, true);
+    QfavReport.b(this.a.q, 2, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.10
  * JD-Core Version:    0.7.0.1
  */

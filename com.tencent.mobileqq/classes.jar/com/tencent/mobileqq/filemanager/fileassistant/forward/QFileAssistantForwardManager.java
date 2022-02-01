@@ -16,22 +16,22 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class QFileAssistantForwardManager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
+  private QQAppInterface a;
+  private String b;
+  private boolean c = false;
   
   public QFileAssistantForwardManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a = paramQQAppInterface;
+    this.b = QFileAssistantUtils.b(this.a);
   }
   
   private void b(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692645);
+    String str = this.a.getApp().getString(2131889669);
     if (TextUtils.isEmpty(paramString)) {
       paramString = str;
     }
@@ -43,16 +43,16 @@ public class QFileAssistantForwardManager
     if (paramFileManagerEntity == null) {
       return;
     }
-    FileManagerEngine localFileManagerEngine = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
+    FileManagerEngine localFileManagerEngine = this.a.getFileManagerEngine();
     if (paramFileManagerEntity.getCloudType() == 4)
     {
       long l1 = paramFileManagerEntity.TroopUin;
-      long l2 = Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue();
+      long l2 = Long.valueOf(this.b).longValue();
       localFileManagerEngine.a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.strFilePath, l1, l2, 0, 0);
     }
     else
     {
-      localFileManagerEngine.a(paramFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString, 0, true);
+      localFileManagerEngine.a(paramFileManagerEntity.nSessionId, this.a.getAccount(), this.b, 0, true);
     }
     b("");
   }
@@ -68,22 +68,22 @@ public class QFileAssistantForwardManager
     localBundle.putString("forward_text", paramString);
     localBundle.putBoolean("forward _key_nojump", true);
     localBundle.putInt("uintype", 0);
-    localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("uinname", BaseApplicationImpl.getContext().getString(2131698288));
-    localBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.a.intValue());
+    localBundle.putString("uin", this.b);
+    localBundle.putString("uinname", BaseApplicationImpl.getContext().getString(2131896189));
+    localBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.b.intValue());
     localIntent.putExtras(localBundle);
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, BaseApplicationImpl.getContext(), localIntent, null);
+    ForwardUtils.a(this.a, null, BaseApplicationImpl.getContext(), localIntent, null);
     b("");
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.QFileAssistantForwardManager
  * JD-Core Version:    0.7.0.1
  */

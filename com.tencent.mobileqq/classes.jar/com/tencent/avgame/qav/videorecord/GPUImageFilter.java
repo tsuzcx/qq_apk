@@ -9,26 +9,20 @@ import java.util.LinkedList;
 
 public class GPUImageFilter
 {
-  public static final float[] a;
-  public static final float[] b;
-  protected int a;
-  private final String jdField_a_of_type_JavaLangString;
-  protected FloatBuffer a;
-  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  protected int b;
-  private final String b;
-  protected FloatBuffer b;
-  protected int c;
-  protected int d;
+  public static final float[] a = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  public static final float[] b = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  protected FloatBuffer c;
+  protected FloatBuffer d;
   protected int e;
   protected int f;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  }
+  protected int g;
+  protected int h;
+  protected int i;
+  protected int j;
+  private final String k;
+  private final String l;
+  private boolean m;
+  private final LinkedList<Runnable> n = new LinkedList();
   
   public GPUImageFilter()
   {
@@ -37,127 +31,127 @@ public class GPUImageFilter
   
   public GPUImageFilter(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(jdField_a_of_type_ArrayOfFloat);
-    this.jdField_b_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_b_of_type_JavaNioFloatBuffer.put(jdField_b_of_type_ArrayOfFloat).position(0);
+    this.k = paramString1;
+    this.l = paramString2;
+    this.c = ByteBuffer.allocateDirect(a.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.c.put(a);
+    this.d = ByteBuffer.allocateDirect(b.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.d.put(b).position(0);
   }
   
-  public static int c()
+  public static int k()
   {
-    int i = GLES20.glGetError();
-    if (i != 0)
+    int i1 = GLES20.glGetError();
+    if (i1 != 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("error:");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       AVLog.a("GPUImageFilter", localStringBuilder.toString());
     }
-    return i;
-  }
-  
-  public int a()
-  {
-    return this.e;
+    return i1;
   }
   
   public final void a()
   {
     b();
-    this.jdField_a_of_type_Boolean = true;
+    this.m = true;
     c();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
+    this.i = paramInt1;
+    this.j = paramInt2;
   }
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    if (!a()) {
+    if (!f()) {
       a();
     }
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    if (!this.jdField_a_of_type_Boolean) {
+    GLES20.glUseProgram(this.e);
+    if (!this.m) {
       return;
     }
-    g();
+    j();
     paramFloatBuffer1.position(0);
-    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, paramFloatBuffer1);
-    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
+    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 0, paramFloatBuffer1);
+    GLES20.glEnableVertexAttribArray(this.f);
     paramFloatBuffer2.position(0);
-    GLES20.glVertexAttribPointer(this.d, 2, 5126, false, 0, paramFloatBuffer2);
-    GLES20.glEnableVertexAttribArray(this.d);
+    GLES20.glVertexAttribPointer(this.h, 2, 5126, false, 0, paramFloatBuffer2);
+    GLES20.glEnableVertexAttribArray(this.h);
     if (paramInt != -1)
     {
       GLES20.glActiveTexture(33984);
       GLES20.glBindTexture(3553, paramInt);
-      GLES20.glUniform1i(this.c, 0);
+      GLES20.glUniform1i(this.g, 0);
     }
     GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
-    GLES20.glDisableVertexAttribArray(this.d);
+    GLES20.glDisableVertexAttribArray(this.f);
+    GLES20.glDisableVertexAttribArray(this.h);
     GLES20.glBindTexture(3553, 0);
-    c();
+    k();
   }
   
   protected void a(Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.n)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramRunnable);
+      this.n.addLast(paramRunnable);
       return;
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.f;
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_Int = OpenGlUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "position");
-    this.c = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "inputImageTexture");
-    this.d = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "inputTextureCoordinate");
-    this.jdField_a_of_type_Boolean = true;
+    this.e = OpenGlUtils.a(this.k, this.l);
+    this.f = GLES20.glGetAttribLocation(this.e, "position");
+    this.g = GLES20.glGetUniformLocation(this.e, "inputImageTexture");
+    this.h = GLES20.glGetAttribLocation(this.e, "inputTextureCoordinate");
+    this.m = true;
   }
   
   public void c() {}
   
   public final void d()
   {
-    this.jdField_a_of_type_Boolean = false;
-    GLES20.glDeleteProgram(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.m = false;
+    GLES20.glDeleteProgram(this.e);
+    this.n.clear();
     e();
   }
   
   public void e() {}
   
-  protected void f()
+  public boolean f()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    return this.m;
+  }
+  
+  public int g()
+  {
+    return this.i;
+  }
+  
+  public int h()
+  {
+    return this.j;
+  }
+  
+  protected void i()
+  {
+    synchronized (this.n)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      this.n.clear();
       return;
     }
   }
   
-  protected void g()
+  protected void j()
   {
-    while (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      ((Runnable)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst()).run();
+    while (!this.n.isEmpty()) {
+      ((Runnable)this.n.removeFirst()).run();
     }
   }
 }

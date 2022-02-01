@@ -15,18 +15,18 @@ class ChatHistoryTroopFileFragment$3
   {
     if (paramMessage.what == 1)
     {
-      if (ChatHistoryTroopFileFragment.a(this.a) == null) {
+      if (ChatHistoryTroopFileFragment.c(this.a) == null) {
         return;
       }
-      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
-      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
+      int i = ChatHistoryTroopFileFragment.c(this.a).getFirstVisiblePosition();
+      while (i <= ChatHistoryTroopFileFragment.c(this.a).getLastVisiblePosition())
       {
-        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
+        paramMessage = ChatHistoryTroopFileFragment.c(this.a).getChildAt(i);
         if (paramMessage != null)
         {
           paramMessage = paramMessage.getTag();
           if ((paramMessage != null) && ((paramMessage instanceof TroopFileItem))) {
-            ((TroopFileItem)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
+            ((TroopFileItem)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.b(this.a));
           }
         }
         i += 1;
@@ -36,7 +36,7 @@ class ChatHistoryTroopFileFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.3
  * JD-Core Version:    0.7.0.1
  */

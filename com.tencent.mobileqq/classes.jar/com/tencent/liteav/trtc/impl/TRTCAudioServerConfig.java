@@ -11,13 +11,17 @@ public class TRTCAudioServerConfig
   public static final int DEFAULT_16K_PACKAGE_STRATEGY = 0;
   public static final int DEFAULT_DEVICE_AUTO_RESTART_MIN_INTERVAL = 5000;
   public static final boolean DEFAULT_ENABLE_AUTO_RESTART_DEVICE = false;
+  public static final int DEFAULT_ENABLE_DEVICE_ABNORMAL_DETECTION = 1;
   public static final boolean DEFAULT_ENABLE_OPENSL = false;
+  public static final int DEFAULT_IS_ENABLE_INBAND_FEC = 0;
   private static final boolean DEFAULT_IS_LOW_LATENCY_SAMPLERATE_SUPPORTED = false;
   private static final long DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME = TimeUnit.DAYS.toMillis(7L);
   public static final int DEFAULT_MAX_SELECTED_PLAY_STREAMS = 0;
   private static final String KEY_16K_PACKAGE_STRATEGY = "16k_package_strategy";
   private static final String KEY_DEVICE_AUTO_RESTART_MIN_INTERVAL = "device_auto_restart_interval";
   private static final String KEY_ENABLE_AUTO_RESTART_DEVICE = "enable_auto_restart_device";
+  private static final String KEY_ENABLE_DEVICE_ABNORMAL_DETECTION = "enable_device_abnormal_detection";
+  private static final String KEY_ENABLE_INBAND_FEC = "enable_inband_fec";
   private static final String KEY_ENABLE_OPENSL = "enable_opensl";
   private static final String KEY_IS_LOW_LATENCY_SAMPLERATE_SUPPORTED = "is_low_latency_samplerate_supported";
   private static final String KEY_LOW_LATENCY_SAMPLERATE_BLOCK_TIME = "low_latency_samplerate_block_time";
@@ -25,6 +29,8 @@ public class TRTCAudioServerConfig
   public int audio16KPackageStrategy = 0;
   public int deviceAutoRestartMinInterval = 5000;
   public boolean enableAutoRestartDevice = false;
+  public int enableDeviceAbnormalDetection = 1;
+  public int enableInbandFEC = 0;
   public boolean enableOpenSL = false;
   public boolean isLowLatencySampleRateSupported = false;
   public long lowLatencySampleRateBlockTime = DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME;
@@ -43,6 +49,8 @@ public class TRTCAudioServerConfig
       localTRTCAudioServerConfig.maxSelectedPlayStreams = paramContext.getInt("max_selected_play_streams", 0);
       localTRTCAudioServerConfig.isLowLatencySampleRateSupported = paramContext.getBoolean("is_low_latency_samplerate_supported", false);
       localTRTCAudioServerConfig.lowLatencySampleRateBlockTime = paramContext.getLong("low_latency_samplerate_block_time", DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME);
+      localTRTCAudioServerConfig.enableInbandFEC = paramContext.getInt("enable_inband_fec", 0);
+      localTRTCAudioServerConfig.enableDeviceAbnormalDetection = paramContext.getInt("enable_device_abnormal_detection", 1);
       return localTRTCAudioServerConfig;
     }
     finally {}
@@ -60,6 +68,8 @@ public class TRTCAudioServerConfig
       paramContext.putInt("max_selected_play_streams", paramTRTCAudioServerConfig.maxSelectedPlayStreams);
       paramContext.putBoolean("is_low_latency_samplerate_supported", paramTRTCAudioServerConfig.isLowLatencySampleRateSupported);
       paramContext.putLong("low_latency_samplerate_block_time", paramTRTCAudioServerConfig.lowLatencySampleRateBlockTime);
+      paramContext.putInt("enable_inband_fec", paramTRTCAudioServerConfig.enableInbandFEC);
+      paramContext.putInt("enable_device_abnormal_detection", paramTRTCAudioServerConfig.enableDeviceAbnormalDetection);
       paramContext.apply();
       return;
     }
@@ -81,12 +91,14 @@ public class TRTCAudioServerConfig
     localStringBuilder.append(this.isLowLatencySampleRateSupported);
     localStringBuilder.append(", lowLatencySampleRateBlockTime: ");
     localStringBuilder.append(this.lowLatencySampleRateBlockTime);
+    localStringBuilder.append(", enableDeviceAbnormalDetection: ");
+    localStringBuilder.append(this.enableDeviceAbnormalDetection);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCAudioServerConfig
  * JD-Core Version:    0.7.0.1
  */

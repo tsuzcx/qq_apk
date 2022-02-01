@@ -21,16 +21,16 @@ class PhotoPreviewCustomizationEmotion$1
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent();
-    int i = this.a.a().a();
-    if ((this.a.a.selectedPhotoList != null) && (this.a.a.selectedPhotoList.size() != 0))
+    int i = this.a.s().m();
+    if ((this.a.f.selectedPhotoList != null) && (this.a.f.selectedPhotoList.size() != 0))
     {
-      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.a.a.selectedPhotoList);
-      ReportController.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(this.a.a.selectedPhotoList.size()), "", "", "");
+      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.a.f.selectedPhotoList);
+      ReportController.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(this.a.f.selectedPhotoList.size()), "", "", "");
     }
-    else if ((PhotoPreviewCustomizationEmotion.a(this.a).a != null) && (i != -1))
+    else if ((PhotoPreviewCustomizationEmotion.a(this.a).y != null) && (i != -1))
     {
       ArrayList localArrayList = new ArrayList();
-      String str = (String)PhotoPreviewCustomizationEmotion.b(this.a).a.get(i);
+      String str = (String)PhotoPreviewCustomizationEmotion.b(this.a).y.get(i);
       if (!TextUtils.isEmpty(str))
       {
         localArrayList.add(str);
@@ -42,14 +42,14 @@ class PhotoPreviewCustomizationEmotion$1
         QLog.d("QQAlbum", 2, "sendBtn click currentPath is null");
       }
     }
-    PhotoPreviewCustomizationEmotion.a(this.a).setResult(-1, localIntent);
-    PhotoPreviewCustomizationEmotion.b(this.a).finish();
+    PhotoPreviewCustomizationEmotion.c(this.a).setResult(-1, localIntent);
+    PhotoPreviewCustomizationEmotion.d(this.a).finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationEmotion.1
  * JD-Core Version:    0.7.0.1
  */

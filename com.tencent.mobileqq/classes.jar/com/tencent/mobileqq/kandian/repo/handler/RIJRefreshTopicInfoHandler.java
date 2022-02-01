@@ -25,14 +25,14 @@ public class RIJRefreshTopicInfoHandler
   
   public void a(int paramInt)
   {
-    ConcurrentMap localConcurrentMap1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().c(paramInt);
-    ConcurrentMap localConcurrentMap2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(paramInt);
-    if ((localConcurrentMap1 != null) && (localConcurrentMap2 != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated()))
+    ConcurrentMap localConcurrentMap1 = this.a.i().d(paramInt);
+    ConcurrentMap localConcurrentMap2 = this.a.i().a(paramInt);
+    if ((localConcurrentMap1 != null) && (localConcurrentMap2 != null) && (!this.f.isTerminated()))
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
+      if (this.f.isShutdown()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJRefreshTopicInfoHandler.1(this, localConcurrentMap2, localConcurrentMap1, paramInt));
+      this.f.execute(new RIJRefreshTopicInfoHandler.1(this, localConcurrentMap2, localConcurrentMap1, paramInt));
     }
   }
   
@@ -44,13 +44,13 @@ public class RIJRefreshTopicInfoHandler
       paramFromServiceMsg = localRspBody.rpt_topicinfo.get();
       int i = ((Integer)paramToServiceMsg.getAttribute("channelId")).intValue();
       paramToServiceMsg = (Set)paramToServiceMsg.getAttribute("0xa6e_articleSeqSet");
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJRefreshTopicInfoHandler.2(this, i, paramToServiceMsg, paramFromServiceMsg));
+      this.f.execute(new RIJRefreshTopicInfoHandler.2(this, i, paramToServiceMsg, paramFromServiceMsg));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJRefreshTopicInfoHandler
  * JD-Core Version:    0.7.0.1
  */

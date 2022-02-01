@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
@@ -83,8 +82,6 @@ public abstract interface IMsgBackupTempApi
   
   public abstract String getUnsupportMsgStr(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord);
   
-  public abstract boolean getUseNewSettings(AppInterface paramAppInterface);
-  
   public abstract void gotoChatHistoryFragment(Context paramContext, Intent paramIntent);
   
   public abstract void gotoConversation(Activity paramActivity);
@@ -131,7 +128,7 @@ public abstract interface IMsgBackupTempApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.tempapi.IMsgBackupTempApi
  * JD-Core Version:    0.7.0.1
  */

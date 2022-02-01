@@ -11,17 +11,17 @@ final class LocationDialogUtil$6
 {
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719123));
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localObject = DialogUtil.a((Context)localObject, 230, null, localStringBuilder.toString(), 2131694583, 2131690728, new LocationDialogUtil.6.1(this), null);
-    LocationDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, (QQCustomDialog)localObject);
+    localStringBuilder.append(this.a.getResources().getString(2131916659));
+    localStringBuilder.append(this.b);
+    localObject = DialogUtil.a((Context)localObject, 230, null, localStringBuilder.toString(), 2131892267, 2131887648, new LocationDialogUtil.6.1(this), null);
+    LocationDialogUtil.a(this.a, (QQCustomDialog)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.6
  * JD-Core Version:    0.7.0.1
  */

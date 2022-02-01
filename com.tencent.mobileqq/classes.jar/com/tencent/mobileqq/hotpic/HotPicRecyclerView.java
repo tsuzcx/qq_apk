@@ -13,14 +13,14 @@ public class HotPicRecyclerView
   extends FooterRecyclerView
   implements ScrollVelometer.SpeedListener
 {
-  public static boolean b = false;
-  int jdField_a_of_type_Int = 0;
-  HotPicRecyclerView.PullAndFastScrollListener jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener;
-  HotPicRecyclerView.ScrollStatusChengedListener jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener;
-  ScrollVelometer jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer = new ScrollVelometer(200, this);
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  boolean c = false;
+  public static boolean e = false;
+  int b = 0;
+  int[] c = new int[3];
+  boolean d = false;
+  HotPicRecyclerView.PullAndFastScrollListener f;
+  ScrollVelometer g = new ScrollVelometer(200, this);
+  HotPicRecyclerView.ScrollStatusChengedListener h;
+  boolean i = false;
   
   public HotPicRecyclerView(Context paramContext)
   {
@@ -48,70 +48,36 @@ public class HotPicRecyclerView
     }
   }
   
-  public int a()
-  {
-    Object localObject = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
-    if (i >= 0) {
-      return i;
-    }
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject);
-    i = localObject[0];
-    localObject = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
-    if (i == j) {
-      return i;
-    }
-    localObject = findViewHolderForPosition(i);
-    RecyclerView.ViewHolder localViewHolder = findViewHolderForPosition(j);
-    float f2 = 0.0F;
-    float f1;
-    if (localObject != null) {
-      f1 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom() / ((RecyclerView.ViewHolder)localObject).itemView.getHeight();
-    } else {
-      f1 = 0.0F;
-    }
-    if (localViewHolder != null) {
-      f2 = (getHeight() - localViewHolder.itemView.getTop()) / localViewHolder.itemView.getHeight();
-    }
-    if (f1 >= f2) {
-      return i;
-    }
-    return j;
-  }
-  
   void a()
   {
     Object localObject1 = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject1);
-    int i = localObject1[0];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject1);
     int j = localObject1[0];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject1);
+    int k = localObject1[0];
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(" nEndIndex = ");
-    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(j);
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(" nCompletelyEndIndex = ");
-    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append(k);
     localObject1 = ((StringBuilder)localObject2).toString();
     localObject2 = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject2);
-    i = localObject2[0];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject2);
     j = localObject2[0];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject2);
+    k = localObject2[0];
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(" nStartIndex = ");
-    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(j);
     localObject1 = ((StringBuilder)localObject2).toString();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(" nCompletelyStartIndex = ");
-    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append(k);
     localObject1 = ((StringBuilder)localObject2).toString();
     if (QLog.isColorLevel()) {
       QLog.i("HotPicRecyclerView", 2, (String)localObject1);
@@ -129,16 +95,16 @@ public class HotPicRecyclerView
     a();
     localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
+    int j = localObject[0];
     int[] arrayOfInt = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
-    int j = arrayOfInt[0];
-    if ((i == -1) && (j == -1)) {}
+    int k = arrayOfInt[0];
+    if ((j == -1) && (k == -1)) {}
     do
     {
       paramInt1 = 0;
       break;
-      if ((paramInt1 < j) || ((paramInt1 > i) && (i >= 0))) {
+      if ((paramInt1 < k) || ((paramInt1 > j) && (j >= 0))) {
         break label265;
       }
       localObject = findViewHolderForPosition(paramInt1);
@@ -167,12 +133,12 @@ public class HotPicRecyclerView
     smoothScrollToPosition(paramInt2);
     return;
     label265:
-    if (paramInt2 < j)
+    if (paramInt2 < k)
     {
       smoothScrollToPosition(paramInt2);
       return;
     }
-    if ((paramInt2 > i) && (i >= 0))
+    if ((paramInt2 > j) && (j >= 0))
     {
       ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
       paramInt1 = localObject[0];
@@ -227,10 +193,10 @@ public class HotPicRecyclerView
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener != null) && (HotPicPageView.b)) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener.c();
+    if ((paramBoolean) && (this.f != null) && (HotPicPageView.z)) {
+      this.f.c();
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(false);
+    this.g.a(false);
   }
   
   public boolean a(int paramInt)
@@ -242,11 +208,11 @@ public class HotPicRecyclerView
     a();
     localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
+    int j = localObject[0];
     localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
-    if ((i == -1) && (j == -1))
+    int k = localObject[0];
+    if ((j == -1) && (k == -1))
     {
       localObject = findViewHolderForPosition(paramInt);
       if (localObject == null) {
@@ -259,31 +225,65 @@ public class HotPicRecyclerView
       }
       return paramInt != 0;
     }
-    if (paramInt >= j) {
-      return (paramInt > i) && (i >= 0);
+    if (paramInt >= k) {
+      return (paramInt > j) && (j >= 0);
     }
     return true;
   }
   
   public void b()
   {
-    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener;
+    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.h;
     if (localScrollStatusChengedListener != null) {
       localScrollStatusChengedListener.g();
     }
-    this.c = false;
+    this.i = false;
   }
   
   public void c()
   {
-    if (this.c) {
+    if (this.i) {
       return;
     }
-    this.c = true;
-    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener;
+    this.i = true;
+    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.h;
     if (localScrollStatusChengedListener != null) {
       localScrollStatusChengedListener.f();
     }
+  }
+  
+  public int d()
+  {
+    Object localObject = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
+    int j = localObject[0];
+    if (j >= 0) {
+      return j;
+    }
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject);
+    j = localObject[0];
+    localObject = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
+    int k = localObject[0];
+    if (j == k) {
+      return j;
+    }
+    localObject = findViewHolderForPosition(j);
+    RecyclerView.ViewHolder localViewHolder = findViewHolderForPosition(k);
+    float f2 = 0.0F;
+    float f1;
+    if (localObject != null) {
+      f1 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom() / ((RecyclerView.ViewHolder)localObject).itemView.getHeight();
+    } else {
+      f1 = 0.0F;
+    }
+    if (localViewHolder != null) {
+      f2 = (getHeight() - localViewHolder.itemView.getTop()) / localViewHolder.itemView.getHeight();
+    }
+    if (f1 >= f2) {
+      return j;
+    }
+    return k;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -303,13 +303,13 @@ public class HotPicRecyclerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    HotPicPageView.b = true;
+    HotPicPageView.z = true;
     if (paramMotionEvent.getAction() == 1)
     {
-      ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.jdField_a_of_type_ArrayOfInt);
-      if (this.jdField_a_of_type_ArrayOfInt[0] == 0)
+      ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.c);
+      if (this.c[0] == 0)
       {
-        HotPicRecyclerView.PullAndFastScrollListener localPullAndFastScrollListener = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener;
+        HotPicRecyclerView.PullAndFastScrollListener localPullAndFastScrollListener = this.f;
         if (localPullAndFastScrollListener != null) {
           localPullAndFastScrollListener.d();
         }
@@ -326,12 +326,12 @@ public class HotPicRecyclerView
   
   public void setScrollStatusChengedListener(HotPicRecyclerView.ScrollStatusChengedListener paramScrollStatusChengedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener = paramScrollStatusChengedListener;
+    this.h = paramScrollStatusChengedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicRecyclerView
  * JD-Core Version:    0.7.0.1
  */

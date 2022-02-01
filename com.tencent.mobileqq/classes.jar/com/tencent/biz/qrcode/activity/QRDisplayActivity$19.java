@@ -14,7 +14,7 @@ class QRDisplayActivity$19
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QRDisplayActivity.a(this.a).dismiss();
+    QRDisplayActivity.b(this.a).dismiss();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -25,8 +25,8 @@ class QRDisplayActivity$19
       QLog.i("QRDisplayActivity", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    ((QRDisplayActivity)localObject).i = ((int)paramLong);
-    QRDisplayActivity.a((QRDisplayActivity)localObject);
+    ((QRDisplayActivity)localObject).aN = ((int)paramLong);
+    QRDisplayActivity.c((QRDisplayActivity)localObject);
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }

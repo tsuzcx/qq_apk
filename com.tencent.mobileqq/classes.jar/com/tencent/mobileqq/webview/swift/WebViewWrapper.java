@@ -32,35 +32,33 @@ import mqq.app.MobileQQ;
 
 public class WebViewWrapper
 {
-  public long a;
-  protected Intent a;
-  protected CustomWebChromeClient a;
-  protected TouchWebView a;
-  protected SonicClientImpl a;
   private IWebViewWrapperInjector a;
-  protected WebViewCallback a;
-  protected AppRuntime a;
+  protected AppRuntime b;
+  protected WebViewCallback c;
+  protected TouchWebView d;
+  protected Intent e;
+  protected CustomWebChromeClient f;
+  protected SonicClientImpl g;
+  public long h = 0L;
   
   public WebViewWrapper(AppRuntime paramAppRuntime, WebViewCallback paramWebViewCallback, Intent paramIntent, Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback = paramWebViewCallback;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(paramContext, paramBoolean);
+    this.b = paramAppRuntime;
+    this.c = paramWebViewCallback;
+    this.e = paramIntent;
+    this.d = a(paramContext, paramBoolean);
     a();
-    a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, paramAppRuntime, paramIntent);
+    a(this.d, paramAppRuntime, paramIntent);
   }
   
   public WebViewWrapper(AppRuntime paramAppRuntime, WebViewCallback paramWebViewCallback, Intent paramIntent, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback = paramWebViewCallback;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    this.b = paramAppRuntime;
+    this.c = paramWebViewCallback;
+    this.e = paramIntent;
+    this.d = paramTouchWebView;
     a();
-    paramWebViewCallback = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    paramWebViewCallback = this.d;
     if (paramWebViewCallback != null) {
       a(paramWebViewCallback, paramAppRuntime, paramIntent);
     }
@@ -70,25 +68,15 @@ public class WebViewWrapper
   {
     WebViewWrapper.1 local1 = new WebViewWrapper.1(this);
     paramTouchWebView.setWebChromeClient(local1);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebChromeClient = local1;
-  }
-  
-  public CustomWebChromeClient a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountCustomWebChromeClient;
-  }
-  
-  public TouchWebView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    this.f = local1;
   }
   
   public TouchWebView a(Context paramContext, boolean paramBoolean)
   {
-    Util.a("Web_qqbrowser_init_only_webview");
+    Util.f("Web_qqbrowser_init_only_webview");
     long l = System.currentTimeMillis();
     if (paramBoolean) {
-      paramContext = SwiftReuseTouchWebView.a(paramContext);
+      paramContext = SwiftReuseTouchWebView.b(paramContext);
     } else {
       paramContext = new TouchWebView(paramContext);
     }
@@ -104,13 +92,13 @@ public class WebViewWrapper
       localLayoutParams.height = localDisplayMetrics.heightPixels;
     }
     paramContext.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+    this.h = (System.currentTimeMillis() - l);
     return paramContext;
   }
   
   public TouchWebView a(TouchWebView paramTouchWebView, AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    l1 = this.jdField_a_of_type_Long;
+    l1 = this.h;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -119,17 +107,17 @@ public class WebViewWrapper
       QLog.d("WebLog_WebViewWrapper", 2, ((StringBuilder)localObject1).toString());
     }
     paramTouchWebView.setIntent(paramIntent);
-    Util.b("Web_qqbrowser_init_only_webview");
+    Util.g("Web_qqbrowser_init_only_webview");
     l2 = System.currentTimeMillis();
     a(paramTouchWebView);
     b(paramTouchWebView);
     l3 = System.currentTimeMillis();
     paramTouchWebView.setScrollBarStyle(0);
-    Util.a("Web_AdjustSettings");
+    Util.f("Web_AdjustSettings");
     WebSettings localWebSettings = paramTouchWebView.getSettings();
-    Util.a("Web_SetUserAgent");
+    Util.f("Web_SetUserAgent");
     Object localObject1 = localWebSettings.getUserAgentString();
-    Object localObject2 = a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback);
+    Object localObject2 = a(this.c);
     boolean bool;
     if (paramTouchWebView.getX5WebViewExtension() != null) {
       bool = true;
@@ -137,7 +125,7 @@ public class WebViewWrapper
       bool = false;
     }
     localWebSettings.setUserAgentString(SwiftWebViewUtils.a((String)localObject1, (String)localObject2, bool));
-    Util.b("Web_SetUserAgent");
+    Util.g("Web_SetUserAgent");
     localWebSettings.setSavePassword(false);
     localWebSettings.setSaveFormData(false);
     localWebSettings.setBuiltInZoomControls(true);
@@ -166,25 +154,25 @@ public class WebViewWrapper
         if (paramTouchWebView.getX5WebViewExtension() == null) {
           break label566;
         }
-        paramTouchWebView.getX5WebViewExtension().setWebViewClientExtension(new WebViewWrapper.DownloadQQBrowserExtension(this, paramTouchWebView, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback));
+        paramTouchWebView.getX5WebViewExtension().setWebViewClientExtension(new WebViewWrapper.DownloadQQBrowserExtension(this, paramTouchWebView, this.c));
         BaseOpenWebMonitor.b(paramIntent, "use_x5", "1");
         break label576;
         BaseOpenWebMonitor.b(paramIntent, "use_x5", "2");
-        if (!SwiftBrowserStatistics.u) {
+        if (!SwiftBrowserStatistics.aL) {
           break label688;
         }
         paramAppRuntime = new HashMap(5);
         paramAppRuntime.put("createWebview", String.valueOf(l1));
         paramAppRuntime.put("initWebClient", String.valueOf(l3 - l2));
         paramAppRuntime.put("setWebSetting", String.valueOf(l4 - l2));
-        paramAppRuntime.put("coreInit", String.valueOf(SwiftWebAccelerator.TbsAccelerator.jdField_a_of_type_Long));
-        paramAppRuntime.put("coldStart", String.valueOf(SwiftBrowserStatistics.p));
+        paramAppRuntime.put("coreInit", String.valueOf(SwiftWebAccelerator.TbsAccelerator.b));
+        paramAppRuntime.put("coldStart", String.valueOf(SwiftBrowserStatistics.aD));
         StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(null, "actWebviewInit", true, 0L, 0L, paramAppRuntime, null);
         if (!QLog.isColorLevel()) {
           break label734;
         }
-        QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "sReportPerformance:", Boolean.valueOf(SwiftBrowserStatistics.u), " cost:", Long.valueOf(SwiftWebAccelerator.TbsAccelerator.jdField_a_of_type_Long) });
-        Util.b("Web_AdjustSettings");
+        QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "sReportPerformance:", Boolean.valueOf(SwiftBrowserStatistics.aL), " cost:", Long.valueOf(SwiftWebAccelerator.TbsAccelerator.b) });
+        Util.g("Web_AdjustSettings");
         return paramTouchWebView;
         localRuntimeException = localRuntimeException;
       }
@@ -254,7 +242,7 @@ public class WebViewWrapper
     {
       if ((WebViewWrapperInjectorUtil.a != null) && (WebViewWrapperInjectorUtil.a.size() > 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftIWebViewWrapperInjector = ((IWebViewWrapperInjector)((Class)WebViewWrapperInjectorUtil.a.get(0)).newInstance());
+        this.a = ((IWebViewWrapperInjector)((Class)WebViewWrapperInjectorUtil.a.get(0)).newInstance());
         return;
       }
     }
@@ -277,52 +265,47 @@ public class WebViewWrapper
   
   public void a(SonicClientImpl paramSonicClientImpl)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = paramSonicClientImpl;
+    this.g = paramSonicClientImpl;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setSonicClient sonicClient = ");
     localStringBuilder.append(paramSonicClientImpl);
     QLog.i("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
   }
   
-  protected boolean a()
-  {
-    return false;
-  }
-  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback = null;
+    if (this.c != null) {
+      this.c = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    localObject = this.d;
     if (localObject != null)
     {
       localObject = ((TouchWebView)localObject).getPluginEngine();
       if (localObject != null) {
-        ((WebViewPluginEngine)localObject).b();
+        ((WebViewPluginEngine)localObject).d();
       }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setPluginEngine(null);
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent() == null) {}
+      this.d.setPluginEngine(null);
+      if (this.d.getParent() == null) {}
     }
     try
     {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+      ((ViewGroup)this.d.getParent()).removeView(this.d);
     }
     catch (Exception localException1)
     {
       try
       {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.destroy();
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebChromeClient;
+        this.d.stopLoading();
+        this.d.loadUrlOriginal("about:blank");
+        this.d.clearView();
+        this.d.destroy();
+        this.d = null;
+        localObject = this.f;
         if (localObject == null) {
           break label141;
         }
         ((CustomWebChromeClient)localObject).a();
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebChromeClient = null;
+        this.f = null;
         return;
         localException1 = localException1;
       }
@@ -335,10 +318,25 @@ public class WebViewWrapper
       QLog.d("WebLog_WebViewWrapper", 2, "remove webview error");
     }
   }
+  
+  public TouchWebView c()
+  {
+    return this.d;
+  }
+  
+  public CustomWebChromeClient d()
+  {
+    return this.f;
+  }
+  
+  protected boolean e()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapper
  * JD-Core Version:    0.7.0.1
  */

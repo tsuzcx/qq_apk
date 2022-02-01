@@ -10,24 +10,24 @@ import com.tencent.qphone.base.util.QLog;
 class VideoFeedsListView$RotationObserver
   extends ContentObserver
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  private ContentResolver b;
   
   public VideoFeedsListView$RotationObserver(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
   {
     super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
+    this.b = VideoFeedsListView.h(paramVideoFeedsListView).getContentResolver();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    this.b.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
   }
   
   public void onChange(boolean paramBoolean)
   {
     super.onChange(paramBoolean);
-    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsListView;
+    int i = Settings.System.getInt(VideoFeedsListView.h(this.a).getContentResolver(), "accelerometer_rotation", -1);
+    Object localObject = this.a;
     paramBoolean = true;
     if (i != 1) {
       paramBoolean = false;
@@ -44,7 +44,7 @@ class VideoFeedsListView$RotationObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsListView.RotationObserver
  * JD-Core Version:    0.7.0.1
  */

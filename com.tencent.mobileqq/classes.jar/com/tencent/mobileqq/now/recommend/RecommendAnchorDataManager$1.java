@@ -11,13 +11,13 @@ class RecommendAnchorDataManager$1
   
   public void a(int paramInt, String paramString)
   {
-    RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager, false);
-    if (RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager).size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager$RecommendAnchorDataCallback, true);
+    RecommendAnchorDataManager.a(this.c, false);
+    if (RecommendAnchorDataManager.a(this.c).size() == 0) {
+      this.c.a(this.a, this.b, true);
     }
     if (QLog.isColorLevel())
     {
-      String str = RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager);
+      String str = RecommendAnchorDataManager.b(this.c);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Focus cmd:1718 sub cmd:100 errCode:");
       localStringBuilder.append(paramInt);
@@ -29,22 +29,22 @@ class RecommendAnchorDataManager$1
   
   public void a(byte[] paramArrayOfByte)
   {
-    RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager, false);
+    RecommendAnchorDataManager.a(this.c, false);
     try
     {
-      RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager, 0);
-      if ((this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a(this.jdField_a_of_type_Int, paramArrayOfByte) == -1) && (RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager).size() == 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager$RecommendAnchorDataCallback, true);
+      RecommendAnchorDataManager.a(this.c, 0);
+      if ((this.c.a(this.a, paramArrayOfByte) == -1) && (RecommendAnchorDataManager.a(this.c).size() == 0)) {
+        this.c.a(this.a, this.b, true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager$RecommendAnchorDataCallback.a(RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager));
-      RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager, System.currentTimeMillis());
+      this.b.a(RecommendAnchorDataManager.a(this.c));
+      RecommendAnchorDataManager.a(this.c, System.currentTimeMillis());
       return;
     }
     catch (Exception paramArrayOfByte)
     {
       if (QLog.isColorLevel())
       {
-        String str = RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager);
+        String str = RecommendAnchorDataManager.b(this.c);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("Focus cmd:1718 sub cmd:100 Exception:");
         localStringBuilder.append(paramArrayOfByte.getMessage());
@@ -55,7 +55,7 @@ class RecommendAnchorDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendAnchorDataManager.1
  * JD-Core Version:    0.7.0.1
  */

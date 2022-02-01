@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import com.tencent.mobileqq.relationx.util.UnLeakOnDismissListenerWrapper;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 class AccountManageActivity$35
-  extends UnLeakOnDismissListenerWrapper
+  extends AccountObserver
 {
   AccountManageActivity$35(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, long paramLong1, boolean paramBoolean2, boolean paramBoolean3, long paramLong2, boolean paramBoolean4)
   {
-    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
-      ((Dialog)paramDialogInterface).setOnDismissListener(null);
-    }
-    if (paramDialogInterface == this.a.c) {
-      this.a.c = null;
-    }
+    AccountManageActivity.o(this.a);
+  }
+  
+  protected void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    AccountManageActivity.o(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.35
  * JD-Core Version:    0.7.0.1
  */

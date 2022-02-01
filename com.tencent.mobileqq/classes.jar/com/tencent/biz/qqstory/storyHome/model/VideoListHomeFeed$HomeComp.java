@@ -8,13 +8,13 @@ class VideoListHomeFeed$HomeComp
   public int a(StoryHomeFeed paramStoryHomeFeed1, StoryHomeFeed paramStoryHomeFeed2)
   {
     int i;
-    if (((paramStoryHomeFeed1 instanceof HotRecommendHomeFeed)) && (((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryHomeFeed1).a()).mIsTopLocation)) {
+    if (((paramStoryHomeFeed1 instanceof HotRecommendHomeFeed)) && (((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryHomeFeed1).i()).mIsTopLocation)) {
       i = 1;
     } else {
       i = 0;
     }
     int j;
-    if (((paramStoryHomeFeed2 instanceof HotRecommendHomeFeed)) && (((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryHomeFeed2).a()).mIsTopLocation)) {
+    if (((paramStoryHomeFeed2 instanceof HotRecommendHomeFeed)) && (((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryHomeFeed2).i()).mIsTopLocation)) {
       j = 1;
     } else {
       j = 0;
@@ -26,7 +26,7 @@ class VideoListHomeFeed$HomeComp
       }
       return 1;
     }
-    if (paramStoryHomeFeed1.a.dateTimeMillis == paramStoryHomeFeed2.a.dateTimeMillis)
+    if (paramStoryHomeFeed1.f.dateTimeMillis == paramStoryHomeFeed2.f.dateTimeMillis)
     {
       if (((paramStoryHomeFeed1 instanceof VideoListHomeFeed)) && (VideoListHomeFeed.a((VideoListHomeFeed)paramStoryHomeFeed1))) {
         return -1;
@@ -36,7 +36,7 @@ class VideoListHomeFeed$HomeComp
       }
       return 0;
     }
-    if (paramStoryHomeFeed1.a.dateTimeMillis > paramStoryHomeFeed2.a.dateTimeMillis) {
+    if (paramStoryHomeFeed1.f.dateTimeMillis > paramStoryHomeFeed2.f.dateTimeMillis) {
       return -1;
     }
     return 1;

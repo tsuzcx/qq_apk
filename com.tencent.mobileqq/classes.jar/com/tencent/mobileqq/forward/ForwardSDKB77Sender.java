@@ -36,38 +36,17 @@ import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ReqBody;
 
 public class ForwardSDKB77Sender
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131718870);
-  private long jdField_a_of_type_Long = -1L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForArkApp jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
-  private OpenSdkShareModel jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel;
-  private String b;
-  
-  private void a(Bundle paramBundle)
-  {
-    String str = paramBundle.getString("share_comment_message_for_server");
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (!TextUtils.isEmpty(str))) {
-      try
-      {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        paramBundle = ForwardUtils.a(paramBundle);
-        AnonymousChatHelper.a().a = true;
-        ChatActivityFacade.b(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramBundle, str);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, "sendCommentMsg exception", paramBundle);
-        return;
-      }
-    }
-    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "sendCommentMsg null");
-  }
+  private static final String a = HardCodeUtil.a(2131916403);
+  private Context b;
+  private long c = -1L;
+  private String d;
+  private QQAppInterface e;
+  private MessageForArkApp f;
+  private OpenSdkShareModel g;
   
   private void a(Bundle paramBundle, String paramString1, String paramString2, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
+    Object localObject = this.f;
     long l;
     if (localObject == null) {
       l = 0L;
@@ -75,17 +54,17 @@ public class ForwardSDKB77Sender
       l = ((MessageForArkApp)localObject).uniseq;
     }
     paramString1 = ForwardShareByServerHelper.a(paramBundle, paramString1, paramString2, null, l);
-    ForwardShareByServerHelper.a(this.jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel, paramBundle, paramString1);
+    ForwardShareByServerHelper.a(this.g, paramBundle, paramString1);
     paramString2 = BaseApplicationImpl.getApplication().getRuntime();
     if (paramString2 == null)
     {
       QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, "notifyServerSendMessage send runtime = null ");
-      a(new Object[] { Integer.valueOf(0), "", jdField_a_of_type_JavaLangString, "" }, -5);
+      a(new Object[] { Integer.valueOf(0), "", a, "" }, -5);
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
     localObject = new Bundle();
-    ((Bundle)localObject).putLong("0xb77_9_sendTime", this.jdField_a_of_type_Long);
+    ((Bundle)localObject).putLong("0xb77_9_sendTime", this.c);
     QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "notifyServerSendMessage sendOIDBRequest");
     ForwardStatisticsReporter.a("KEY_STAGE_2_NORMAL_B77");
     ProtoUtils.a(paramString2, new ForwardSDKB77Sender.3(this, paramLong, paramBundle), paramString1.toByteArray(), "OidbSvc.0xb77_9", 2935, 9, (Bundle)localObject, 0L);
@@ -96,7 +75,7 @@ public class ForwardSDKB77Sender
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("fake_key", this.b);
+      localJSONObject.put("fake_key", this.d);
       localJSONObject.put("forward_type", paramAbsShareMsg.forwardType);
       localJSONObject.put("serviceType", paramAbsShareMsg.mMsgServiceID);
       localJSONObject.put("appId", paramAbsShareMsg.mSourceAppid);
@@ -141,6 +120,7 @@ public class ForwardSDKB77Sender
       localJSONObject.put("add_friend_source_id", paramBundle.getInt("add_friend_source_id", 3999));
       localJSONObject.put("game_tag_name", paramBundle.getString("game_tag_name"));
       localJSONObject.put("game_message_ext", paramBundle.getString("game_message_ext"));
+      localJSONObject.put("guild_id", paramBundle.getString("guild_id"));
       paramAbsShareMsg = localJSONObject.toString();
       try
       {
@@ -181,11 +161,11 @@ public class ForwardSDKB77Sender
     QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "handleSendResult timeout=", Boolean.valueOf(bool) });
     if (bool)
     {
-      a(new Object[] { localInteger, "", HardCodeUtil.a(2131704893), "" }, -3);
+      a(new Object[] { localInteger, "", HardCodeUtil.a(2131902785), "" }, -3);
       return;
     }
-    int i = paramSendResult.jdField_a_of_type_Int;
-    localObject = (String[])paramSendResult.jdField_a_of_type_JavaLangObject;
+    int i = paramSendResult.a;
+    localObject = (String[])paramSendResult.l;
     if (i == 0)
     {
       if ((localObject != null) && (localObject.length == 2))
@@ -205,7 +185,7 @@ public class ForwardSDKB77Sender
     if (-1 == i)
     {
       i = paramSendResult.b;
-      bool = ForwardUtils.a(this.jdField_a_of_type_AndroidContentContext);
+      bool = ForwardUtils.a(this.b);
       paramSendResult = new StringBuilder();
       paramSendResult.append(i);
       paramSendResult.append(", hasSDPermission=");
@@ -217,7 +197,7 @@ public class ForwardSDKB77Sender
         a(paramBundle, localObject[0], localObject[1], paramLong);
         return;
       }
-      a(new Object[] { localInteger, "", jdField_a_of_type_JavaLangString, "" }, -4);
+      a(new Object[] { localInteger, "", a, "" }, -4);
     }
   }
   
@@ -231,11 +211,11 @@ public class ForwardSDKB77Sender
     ForwardSDKB77Sender.1 local1 = new ForwardSDKB77Sender.1(this, paramBundle, System.currentTimeMillis());
     if (a(paramBundle))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = AbsShareMsg.sendSdkFakeMessage(paramBundle, localQQAppInterface, paramAbsShareMsg, str1, i, str2, local1);
-      a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, paramAbsShareMsg, paramBundle);
-      paramBundle.putString("fake_friend_uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.frienduin);
-      paramBundle.putInt("fake_is_troop", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.istroop);
-      paramBundle.putLong("fake_uinseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+      this.f = AbsShareMsg.sendSdkFakeMessage(paramBundle, localQQAppInterface, paramAbsShareMsg, str1, i, str2, local1);
+      a(this.f, paramAbsShareMsg, paramBundle);
+      paramBundle.putString("fake_friend_uin", this.f.frienduin);
+      paramBundle.putInt("fake_is_troop", this.f.istroop);
+      paramBundle.putLong("fake_uinseq", this.f.uniseq);
       return;
     }
     AbsShareMsg.sendSdkShareMessageByServer(localQQAppInterface, paramAbsShareMsg, str1, i, str2, local1);
@@ -259,7 +239,8 @@ public class ForwardSDKB77Sender
       paramArrayOfObject = new Intent("action_notify_aio_activity_by_b77");
       paramArrayOfObject.putExtra("key_b77_error_code", paramInt);
       BaseApplication.getContext().sendBroadcast(paramArrayOfObject);
-      ((ForwardSdkStatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SDK_SHARE)).a(this.b, localHashMap);
+      ((ForwardSdkStatusManager)this.e.getManager(QQManagerFactory.SDK_SHARE)).a(this.d, localHashMap);
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "notifyAIOActivity mKey =", this.d });
     }
   }
   
@@ -274,7 +255,7 @@ public class ForwardSDKB77Sender
       return false;
     }
     int i = paramBundle.getInt("uintype");
-    if ("0".equals(SdkShareReporter.b(i)))
+    if ("0".equals(SdkShareReporter.c(i)))
     {
       QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "toFakeMsg not support =", Integer.valueOf(i) });
       return false;
@@ -287,9 +268,26 @@ public class ForwardSDKB77Sender
     return bool1;
   }
   
+  private void b(Bundle paramBundle)
+  {
+    String str = paramBundle.getString("share_comment_message_for_server");
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      paramBundle = ForwardUtils.a(paramBundle);
+      AnonymousChatHelper.a().j = true;
+      ChatActivityFacade.b(localQQAppInterface, this.b, paramBundle, str);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, "sendCommentMsgToC2C exception", paramBundle);
+    }
+  }
+  
   private void b(Object[] paramArrayOfObject, int paramInt)
   {
-    MessageForArkApp localMessageForArkApp = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
+    MessageForArkApp localMessageForArkApp = this.f;
     if (localMessageForArkApp == null)
     {
       QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "updateFakeArkMsg (null == mFakeArkMsg)");
@@ -297,31 +295,55 @@ public class ForwardSDKB77Sender
     }
     if ((paramInt != 0) && (paramInt != -2))
     {
-      ForwardOptionUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForArkApp, paramInt, (String)paramArrayOfObject[2]);
+      ForwardOptionUtils.a(this.e, localMessageForArkApp, paramInt, (String)paramArrayOfObject[2]);
       return;
     }
     QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "updateFakeArkMsg errorCode=", Integer.valueOf(paramInt) });
-    paramArrayOfObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
+    paramArrayOfObject = this.f;
     paramArrayOfObject.extraflag = 0;
-    paramArrayOfObject.saveMsgExtStrAndFlag(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(6003, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq) });
+    paramArrayOfObject.saveMsgExtStrAndFlag(this.e);
+    this.e.getMsgCache().b(this.f.frienduin, this.f.istroop, this.f.uniseq);
+    this.e.getMsgHandler().notifyUI(6003, true, new String[] { this.f.frienduin, String.valueOf(this.f.uniseq) });
+  }
+  
+  private void c(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("uintype");
+    String str = paramBundle.getString("share_comment_message_for_server");
+    if ((this.b != null) && (!TextUtils.isEmpty(str)))
+    {
+      if ((this.b != null) && (!TextUtils.isEmpty(str)))
+      {
+        if (i != 10014)
+        {
+          b(paramBundle);
+          return;
+        }
+        ForwardUtils.b(paramBundle);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("SDK_SHARE.ForwardSDKB77Sender", 2, "sendCommentMsg null ");
+      }
+      return;
+    }
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "sendCommentMsg null");
   }
   
   public void a(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, Activity paramActivity, Bundle paramBundle, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel = ((OpenSdkShareModel)paramActivity.getIntent().getParcelableExtra("KEY_MINI_PROGRAM_SHARE_OBJ"));
+    this.e = paramQQAppInterface;
+    this.d = paramString;
+    this.b = paramActivity;
+    this.g = ((OpenSdkShareModel)paramActivity.getIntent().getParcelableExtra("KEY_MINI_PROGRAM_SHARE_OBJ"));
     if (paramAbsShareMsg == null)
     {
       QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, "requestShareMessage error structMsg = null");
       return;
     }
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      a(new Object[] { Integer.valueOf(0), "", HardCodeUtil.a(2131704894), "" }, -2);
+      a(new Object[] { Integer.valueOf(0), "", HardCodeUtil.a(2131902786), "" }, -2);
       QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, " requestShareMessage net error");
       return;
     }
@@ -338,16 +360,16 @@ public class ForwardSDKB77Sender
       QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "resend message null == jsonObject");
       return;
     }
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
       QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, " resend net error");
-      ForwardDialogMgr.a((Activity)paramContext, HardCodeUtil.a(2131704894), new ForwardSDKB77Sender.4(this));
+      ForwardDialogMgr.a((Activity)paramContext, HardCodeUtil.a(2131902786), new ForwardSDKB77Sender.4(this));
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.b = paramJSONObject.optString("fake_key");
+    this.b = paramContext;
+    this.f = paramMessageForArkApp;
+    this.e = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.d = paramJSONObject.optString("fake_key");
     paramContext = new Bundle();
     paramContext.putInt("forward_type", paramJSONObject.optInt("forward_type"));
     paramContext.putInt("serviceType", paramJSONObject.optInt("serviceType"));
@@ -391,20 +413,21 @@ public class ForwardSDKB77Sender
     paramContext.putString("phonenum", paramJSONObject.optString("phonenum"));
     paramContext.putInt("entrance", paramJSONObject.optInt("entrance", 0));
     paramContext.putInt("add_friend_source_id", paramJSONObject.optInt("add_friend_source_id", 3999));
+    paramContext.putString("guild_id", paramJSONObject.optString("guild_id"));
     paramContext.putString("game_tag_name", paramJSONObject.optString("game_tag_name", ""));
     paramContext.putString("game_message_ext", paramJSONObject.optString("game_message_ext", ""));
     AbsShareMsg.resendSdkFakeMessage(paramMessageForArkApp, paramJSONObject, new ForwardSDKB77Sender.5(this, paramContext, System.currentTimeMillis()));
-    paramMessageForArkApp = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
+    paramMessageForArkApp = this.f;
     paramMessageForArkApp.extraflag = 32772;
-    paramMessageForArkApp.saveMsgData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.saveMsgExtStrAndFlag(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(6003, false, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq) });
+    paramMessageForArkApp.saveMsgData(this.e);
+    this.f.saveMsgExtStrAndFlag(this.e);
+    this.e.getMsgCache().e(this.f);
+    this.e.getMsgHandler().notifyUI(6003, false, new String[] { this.f.frienduin, String.valueOf(this.f.uniseq) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77Sender
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.BaseProxy;
 import com.tencent.mobileqq.app.proxy.BaseProxyManager;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
@@ -84,7 +85,7 @@ public class MsgBackupMsgProxy
   
   private static long a(@NonNull QQAppInterface paramQQAppInterface, msg_comm.Msg paramMsg, msg_comm.MsgHead paramMsgHead, long paramLong1, long paramLong2, int paramInt, MessageInfo paramMessageInfo, long paramLong3, MessageHandler paramMessageHandler, ArrayList<MessageRecord> paramArrayList)
   {
-    if (((MessageUtils.c(paramInt)) || (paramInt == 208) || (paramInt == 529)) && (paramMsgHead.c2c_cmd.has()))
+    if (((MessageUtils.d(paramInt)) || (paramInt == 208) || (paramInt == 529)) && (paramMsgHead.c2c_cmd.has()))
     {
       paramLong1 = a(paramQQAppInterface.getLongAccountUin(), paramLong1, paramLong2);
       a(paramQQAppInterface, paramMsg, paramMessageInfo, paramMsgHead, paramInt, paramMessageHandler, paramArrayList);
@@ -233,7 +234,7 @@ public class MsgBackupMsgProxy
   public static msg_comm.MsgHead a(MessageRecord paramMessageRecord, long paramLong)
   {
     msg_comm.MsgHead localMsgHead = new msg_comm.MsgHead();
-    Object localObject = MsgProxyUtils.a(paramMessageRecord);
+    Object localObject = MsgProxyUtils.d(paramMessageRecord);
     try
     {
       long l1 = Long.valueOf((String)localObject).longValue();
@@ -374,21 +375,24 @@ public class MsgBackupMsgProxy
         {
           paramQQAppInterface = MessageProtoCodec.a((MessageForMarketFace)paramMessageRecord);
         }
+        else if (paramMessageRecord.msgtype == -2059)
+        {
+          paramQQAppInterface = localElem;
+          if (!TextUtils.isEmpty(paramMessageRecord.msg))
+          {
+            paramQQAppInterface = new im_msg_body.RichText();
+            localElem = new im_msg_body.Elem();
+            im_msg_body.Text localText = new im_msg_body.Text();
+            localText.str.set(ByteStringMicro.copyFromUtf8(paramMessageRecord.msg));
+            localElem.text.set(localText);
+            paramQQAppInterface.elems.add(localElem);
+          }
+        }
         else
         {
           paramQQAppInterface = localElem;
-          if (paramMessageRecord.msgtype == -2059)
-          {
-            paramQQAppInterface = localElem;
-            if (!TextUtils.isEmpty(paramMessageRecord.msg))
-            {
-              paramQQAppInterface = new im_msg_body.RichText();
-              localElem = new im_msg_body.Elem();
-              im_msg_body.Text localText = new im_msg_body.Text();
-              localText.str.set(ByteStringMicro.copyFromUtf8(paramMessageRecord.msg));
-              localElem.text.set(localText);
-              paramQQAppInterface.elems.add(localElem);
-            }
+          if (paramMessageRecord.msgtype == -8018) {
+            paramQQAppInterface = MessageProtoCodec.a((MessageForAniSticker)paramMessageRecord);
           }
         }
       }
@@ -561,22 +565,22 @@ public class MsgBackupMsgProxy
   
   private static void b(MessageRecord paramMessageRecord, im_msg_body.RichText paramRichText)
   {
-    if ((paramRichText != null) && (AnonymousChatHelper.a(paramMessageRecord)))
+    if ((paramRichText != null) && (AnonymousChatHelper.c(paramMessageRecord)))
     {
       im_msg_body.Elem localElem = new im_msg_body.Elem();
       im_msg_body.AnonymousGroupMsg localAnonymousGroupMsg = new im_msg_body.AnonymousGroupMsg();
-      AnonymousChatHelper.AnonymousExtInfo localAnonymousExtInfo = AnonymousChatHelper.a(paramMessageRecord);
-      localAnonymousGroupMsg.uint32_flags.set(localAnonymousExtInfo.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(localAnonymousExtInfo.jdField_a_of_type_JavaLangString)) {
-        localAnonymousGroupMsg.str_anon_id.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.jdField_a_of_type_JavaLangString.getBytes()));
+      AnonymousChatHelper.AnonymousExtInfo localAnonymousExtInfo = AnonymousChatHelper.g(paramMessageRecord);
+      localAnonymousGroupMsg.uint32_flags.set(localAnonymousExtInfo.a);
+      if (!TextUtils.isEmpty(localAnonymousExtInfo.b)) {
+        localAnonymousGroupMsg.str_anon_id.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.b.getBytes()));
       }
-      if (!TextUtils.isEmpty(localAnonymousExtInfo.jdField_b_of_type_JavaLangString)) {
-        localAnonymousGroupMsg.str_anon_nick.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.jdField_b_of_type_JavaLangString.getBytes()));
+      if (!TextUtils.isEmpty(localAnonymousExtInfo.c)) {
+        localAnonymousGroupMsg.str_anon_nick.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.c.getBytes()));
       }
-      localAnonymousGroupMsg.uint32_head_portrait.set(localAnonymousExtInfo.jdField_b_of_type_Int);
-      localAnonymousGroupMsg.uint32_expire_time.set(localAnonymousExtInfo.jdField_c_of_type_Int);
-      if (!TextUtils.isEmpty(localAnonymousExtInfo.jdField_c_of_type_JavaLangString)) {
-        localAnonymousGroupMsg.str_rank_color.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.jdField_c_of_type_JavaLangString.getBytes()));
+      localAnonymousGroupMsg.uint32_head_portrait.set(localAnonymousExtInfo.d);
+      localAnonymousGroupMsg.uint32_expire_time.set(localAnonymousExtInfo.e);
+      if (!TextUtils.isEmpty(localAnonymousExtInfo.f)) {
+        localAnonymousGroupMsg.str_rank_color.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.f.getBytes()));
       }
       localAnonymousGroupMsg.uint32_bubble_id.set((int)paramMessageRecord.vipBubbleID);
       localElem.anon_group_msg.set(localAnonymousGroupMsg);
@@ -611,7 +615,7 @@ public class MsgBackupMsgProxy
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("troopMsg msgshseq = 0,mr  == ");
-      ((StringBuilder)localObject1).append(paramMessageRecord.toString());
+      ((StringBuilder)localObject1).append(paramMessageRecord.getUserLogString());
       QLog.e("MsgBackup_msgproxy", 1, ((StringBuilder)localObject1).toString());
     }
     msg_comm.Msg localMsg = new msg_comm.Msg();
@@ -691,7 +695,7 @@ public class MsgBackupMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupMsgProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class StudyModeManagerImpl
 {
   public boolean getStudyModeSwitch()
   {
-    return StudyModeManager.a();
+    return StudyModeManager.h();
   }
   
   public void registerStudyModeChangeListener(StudyModeChangeListener paramStudyModeChangeListener)
@@ -24,7 +24,7 @@ public class StudyModeManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.api.impl.StudyModeManagerImpl
  * JD-Core Version:    0.7.0.1
  */

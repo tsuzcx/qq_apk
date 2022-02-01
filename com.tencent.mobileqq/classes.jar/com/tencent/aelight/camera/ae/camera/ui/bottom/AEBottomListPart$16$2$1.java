@@ -10,13 +10,13 @@ class AEBottomListPart$16$2$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart$16.this$0.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAECaptureController.a(this.a.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart$16.this$0.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(this.a.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData, false);
+    this.a.b.this$0.d.a(this.a.a);
+    this.a.b.this$0.e.b(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.16.2.1
  * JD-Core Version:    0.7.0.1
  */

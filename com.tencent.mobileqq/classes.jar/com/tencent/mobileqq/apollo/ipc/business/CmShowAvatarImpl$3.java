@@ -17,7 +17,7 @@ class CmShowAvatarImpl$3
       localStringBuilder.append("handleSetAvatarResp actionId: ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" actionType:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.i("[cmshow]CmShowAvatarImpl", 1, localStringBuilder.toString());
     }
     if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
@@ -25,12 +25,12 @@ class CmShowAvatarImpl$3
     } else {
       paramList = "";
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloIpcBusinessICmShowAvatar$IAvatarInterface.a(true, paramList);
+    this.b.a(true, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.business.CmShowAvatarImpl.3
  * JD-Core Version:    0.7.0.1
  */

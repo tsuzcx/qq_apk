@@ -13,21 +13,21 @@ class MediaFileBrowseProcessorBase$3
   
   public void a()
   {
-    QFileAssistantForwardManager localQFileAssistantForwardManager = new QFileAssistantForwardManager(this.jdField_a_of_type_ComTencentMobileqqFilemanagerOpenbrowserMediaFileBrowseProcessorBase.a);
+    QFileAssistantForwardManager localQFileAssistantForwardManager = new QFileAssistantForwardManager(this.c.a);
     localQFileAssistantForwardManager.a(true);
-    localQFileAssistantForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localQFileAssistantForwardManager.a(this.a);
   }
   
   public void b()
   {
-    QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerOpenbrowserMediaFileBrowseProcessorBase.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    QFileUtils.a(this.c.a, this.b, this.a);
   }
   
   public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.MediaFileBrowseProcessorBase.3
  * JD-Core Version:    0.7.0.1
  */

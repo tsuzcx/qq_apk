@@ -12,7 +12,7 @@ class OCRResultFragmentNew$8
   
   public void a()
   {
-    OCRResultFragmentNew.a(this.a, 0);
+    OCRResultFragmentNew.b(this.a, 0);
   }
   
   public void a(String paramString)
@@ -37,7 +37,7 @@ class OCRResultFragmentNew$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.8
  * JD-Core Version:    0.7.0.1
  */

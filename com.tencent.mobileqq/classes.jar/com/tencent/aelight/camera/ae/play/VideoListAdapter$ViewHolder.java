@@ -22,14 +22,14 @@ public class VideoListAdapter$ViewHolder
   public VideoListAdapter$ViewHolder(VideoListAdapter paramVideoListAdapter, View paramView)
   {
     super(paramView);
-    this.outFrameLayout = ((FrameLayout)paramView.findViewById(2064122811));
-    this.internFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2064122268));
-    this.thumb = ((ImageView)paramView.findViewById(2064122269));
+    this.outFrameLayout = ((FrameLayout)paramView.findViewById(2063991585));
+    this.internFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2063991141));
+    this.thumb = ((ImageView)paramView.findViewById(2063991143));
     this.thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.hover = ((ImageView)paramView.findViewById(2064122249));
-    this.index = ((TextView)paramView.findViewById(2064122270));
-    this.hover_selected = ((ImageView)paramView.findViewById(2064122250));
-    this.index_selected = ((TextView)paramView.findViewById(2064122271));
+    this.hover = ((ImageView)paramView.findViewById(2063991123));
+    this.index = ((TextView)paramView.findViewById(2063991144));
+    this.hover_selected = ((ImageView)paramView.findViewById(2063991124));
+    this.index_selected = ((TextView)paramView.findViewById(2063991145));
   }
   
   public void autoClick()
@@ -39,7 +39,7 @@ public class VideoListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.VideoListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

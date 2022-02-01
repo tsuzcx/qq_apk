@@ -1,5 +1,6 @@
 package com.tencent.imcore.message;
 
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
@@ -31,6 +32,10 @@ import com.tencent.mobileqq.managers.TroopAssistantManager;
 import com.tencent.mobileqq.nearby.NearbyManagerHelper;
 import com.tencent.mobileqq.nearby.api.INearbyProxy;
 import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
 import com.tencent.mobileqq.qcircle.api.helper.QCircleChatBoxHelper;
 import com.tencent.mobileqq.qqexpand.network.IExpandHandler;
@@ -40,11 +45,13 @@ import com.tencent.mobileqq.util.api.IAppBadgeService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.app.AppRuntime;
+import qqcircle.QQCircleCounter.PrivateMessage;
 
 public class ConversationFacadeCallback
   implements ConversationFacade.Callback
@@ -59,31 +66,27 @@ public class ConversationFacadeCallback
   
   private ConfessProxy a(QQAppInterface paramQQAppInterface)
   {
-    return paramQQAppInterface.getProxyManager().a();
+    return paramQQAppInterface.getProxyManager().j();
   }
   
-  public int a(AppRuntime paramAppRuntime)
+  private QQCircleCounter.PrivateMessage g(MessageRecord paramMessageRecord)
   {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getInterFollowMgr().getInterFollowMsgBoxUnreadCount();
+    QQCircleCounter.PrivateMessage localPrivateMessage = new QQCircleCounter.PrivateMessage();
+    localPrivateMessage.uID.set(paramMessageRecord.frienduin);
+    localPrivateMessage.timestamp.set((int)paramMessageRecord.time);
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("key_qcircle_extra_info");
+    if (!TextUtils.isEmpty(paramMessageRecord)) {
+      try
+      {
+        localPrivateMessage.attachInfo.set(ByteStringMicro.copyFrom(paramMessageRecord.getBytes("ISO_8859_1")));
+        return localPrivateMessage;
+      }
+      catch (UnsupportedEncodingException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+      }
     }
-    return 0;
-  }
-  
-  public int a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return a(a((QQAppInterface)paramAppRuntime).a(paramString, paramInt1, paramInt2));
-    }
-    return 0;
-  }
-  
-  public long a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return a((QQAppInterface)paramAppRuntime).a(paramString, paramInt1, paramInt2);
-    }
-    return 0L;
+    return localPrivateMessage;
   }
   
   public long a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, long paramLong)
@@ -91,7 +94,7 @@ public class ConversationFacadeCallback
     if ((paramAppRuntime instanceof QQAppInterface))
     {
       paramAppRuntime = (QQAppInterface)paramAppRuntime;
-      long l = a(paramAppRuntime).a(paramString, paramInt1, paramInt2);
+      long l = a(paramAppRuntime).c(paramString, paramInt1, paramInt2);
       a(paramAppRuntime).a(paramString, paramInt1, paramInt2, paramLong, 0);
       return l;
     }
@@ -106,34 +109,10 @@ public class ConversationFacadeCallback
     return null;
   }
   
-  public ConversationFacade a(AppRuntime paramAppRuntime)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getConversationFacade();
-    }
-    return null;
-  }
-  
-  public ConversationProxy a(AppRuntime paramAppRuntime)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getProxyManager().a();
-    }
-    return null;
-  }
-  
   public Message a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getMessageFacade().a(paramString, paramInt1, paramInt2);
-    }
-    return null;
-  }
-  
-  public RecentUserProxy a(AppRuntime paramAppRuntime)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getProxyManager().a();
+      return ((QQAppInterface)paramAppRuntime).getMessageFacade().b(paramString, paramInt1, paramInt2);
     }
     return null;
   }
@@ -141,14 +120,6 @@ public class ConversationFacadeCallback
   public ConversationInfo a(ConversationInfo paramConversationInfo)
   {
     return ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).onGetUnreadCount(paramConversationInfo);
-  }
-  
-  public BaseApplication a(AppRuntime paramAppRuntime)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getApp();
-    }
-    return null;
   }
   
   public String a()
@@ -167,7 +138,7 @@ public class ConversationFacadeCallback
   public void a(MessageRecord paramMessageRecord, ConversationFacade paramConversationFacade)
   {
     MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)paramMessageRecord;
-    paramConversationFacade.c(paramMessageRecord.senderuin, paramMessageRecord.istroop, localMessageForInteractAndFollow.unReadCount);
+    paramConversationFacade.d(paramMessageRecord.senderuin, paramMessageRecord.istroop, localMessageForInteractAndFollow.unReadCount);
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean, long paramLong)
@@ -179,13 +150,6 @@ public class ConversationFacadeCallback
   {
     if (paramAppRuntime.isLogin()) {
       ((IAppBadgeService)paramAppRuntime.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
-    }
-  }
-  
-  public void a(AppRuntime paramAppRuntime, int paramInt)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      NearbyManagerHelper.a((QQAppInterface)paramAppRuntime).a(paramInt);
     }
   }
   
@@ -202,8 +166,8 @@ public class ConversationFacadeCallback
             if (paramInt != 10008) {
               return;
             }
-            QCircleChatBoxHelper.getInstance().insertUnReadMessage(paramMessageRecord.frienduin);
-            QCircleUtils.a().updateRedPoint();
+            QCircleChatBoxHelper.getInstance().insertUnReadMessage(g(paramMessageRecord));
+            QCircleUtils.b().updateRedPoint();
           }
         }
         else
@@ -229,11 +193,11 @@ public class ConversationFacadeCallback
   {
     if ((paramAppRuntime instanceof QQAppInterface))
     {
-      Object localObject2 = a(paramAppRuntime, paramInt).a(paramString, paramInt);
+      Object localObject2 = a(paramAppRuntime, paramInt).b(paramString, paramInt);
       QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
       int i;
       int j;
-      if (!ConfessMsgUtil.a(localQQAppInterface, true))
+      if (!ConfessMsgUtil.c(localQQAppInterface, true))
       {
         localObject1 = localObject2;
         if (localObject2 == null) {
@@ -270,16 +234,16 @@ public class ConversationFacadeCallback
       {
         i = 0;
       }
-      if (paramConversationFacade.f(paramString, paramInt) != 0) {
+      if (paramConversationFacade.g(paramString, paramInt) != 0) {
         j = 1;
       } else {
         j = 0;
       }
-      if ((paramConversationFacade.a(paramString, paramInt) == i) && (paramConversationFacade.e(paramString, paramInt) == 0) && (j == 0)) {
+      if ((paramConversationFacade.a(paramString, paramInt) == i) && (paramConversationFacade.f(paramString, paramInt) == 0) && (j == 0)) {
         break label351;
       }
-      Object localObject1 = a(paramAppRuntime).a(paramString, paramInt);
-      localObject2 = a(paramAppRuntime);
+      Object localObject1 = b(paramAppRuntime).e(paramString, paramInt);
+      localObject2 = b(paramAppRuntime);
       long l;
       if (localObject1 == null) {
         l = 0L;
@@ -287,8 +251,8 @@ public class ConversationFacadeCallback
         l = ((ConversationInfo)localObject1).lastread;
       }
       ((ConversationProxy)localObject2).a(paramString, paramInt, l, i, 0, 0);
-      if ((UinTypeUtil.j(paramInt)) && (j != 0)) {
-        paramConversationFacade.a(a(paramAppRuntime).a(paramString, paramInt), "");
+      if ((UinTypeUtil.l(paramInt)) && (j != 0)) {
+        paramConversationFacade.a(b(paramAppRuntime).e(paramString, paramInt), "");
       }
       label351:
       if (QLog.isColorLevel())
@@ -330,13 +294,6 @@ public class ConversationFacadeCallback
     }
   }
   
-  public void a(AppRuntime paramAppRuntime, String paramString)
-  {
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      ServiceAccountFolderManager.a().a((QQAppInterface)paramAppRuntime, paramString);
-    }
-  }
-  
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean, Object paramObject)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
@@ -350,7 +307,7 @@ public class ConversationFacadeCallback
     {
       if (paramBoolean1)
       {
-        paramAppRuntime = a((QQAppInterface)paramAppRuntime).a().iterator();
+        paramAppRuntime = a((QQAppInterface)paramAppRuntime).b().iterator();
         while (paramAppRuntime.hasNext())
         {
           ConfessConvInfo localConfessConvInfo = (ConfessConvInfo)paramAppRuntime.next();
@@ -359,7 +316,7 @@ public class ConversationFacadeCallback
           }
         }
       }
-      a((QQAppInterface)paramAppRuntime).b();
+      a((QQAppInterface)paramAppRuntime).c();
     }
   }
   
@@ -376,7 +333,7 @@ public class ConversationFacadeCallback
   public boolean a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getMsgCache().a(paramMessageRecord);
+      return ((QQAppInterface)paramAppRuntime).getMsgCache().b(paramMessageRecord);
     }
     return false;
   }
@@ -397,29 +354,60 @@ public class ConversationFacadeCallback
     return false;
   }
   
+  public int b(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return a(a((QQAppInterface)paramAppRuntime).b(paramString, paramInt1, paramInt2));
+    }
+    return 0;
+  }
+  
+  public ConversationProxy b(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return ((QQAppInterface)paramAppRuntime).getProxyManager().h();
+    }
+    return null;
+  }
+  
   public String b()
   {
     return "sp_key_nearby_clean_unread_time";
   }
   
-  public void b(AppRuntime paramAppRuntime)
+  public void b(AppRuntime paramAppRuntime, int paramInt)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramAppRuntime).a();
+      NearbyManagerHelper.a((QQAppInterface)paramAppRuntime).a(paramInt);
+    }
+  }
+  
+  public void b(AppRuntime paramAppRuntime, String paramString)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      ServiceAccountFolderManager.a().c((QQAppInterface)paramAppRuntime, paramString);
     }
   }
   
   public boolean b(MessageRecord paramMessageRecord)
   {
-    return UniteGrayTipMsgUtil.a(paramMessageRecord);
+    return UniteGrayTipMsgUtil.b(paramMessageRecord);
   }
   
-  public boolean b(AppRuntime paramAppRuntime, String paramString)
+  public long c(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      return TroopBarAssistantManager.a().a((QQAppInterface)paramAppRuntime, paramString);
+      return a((QQAppInterface)paramAppRuntime).a(paramString, paramInt1, paramInt2);
     }
-    return false;
+    return 0L;
+  }
+  
+  public RecentUserProxy c(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return ((QQAppInterface)paramAppRuntime).getProxyManager().g();
+    }
+    return null;
   }
   
   public boolean c(MessageRecord paramMessageRecord)
@@ -430,9 +418,17 @@ public class ConversationFacadeCallback
   public boolean c(AppRuntime paramAppRuntime, String paramString)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      return TroopAssistantManager.a().a((QQAppInterface)paramAppRuntime, paramString);
+      return TroopBarAssistantManager.a().a((QQAppInterface)paramAppRuntime, paramString);
     }
     return false;
+  }
+  
+  public ConversationFacade d(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return ((QQAppInterface)paramAppRuntime).getConversationFacade();
+    }
+    return null;
   }
   
   public boolean d(MessageRecord paramMessageRecord)
@@ -440,19 +436,50 @@ public class ConversationFacadeCallback
     return ((MessageForNearbyLiveTip)paramMessageRecord).isLiving;
   }
   
+  public boolean d(AppRuntime paramAppRuntime, String paramString)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return TroopAssistantManager.a().a((QQAppInterface)paramAppRuntime, paramString);
+    }
+    return false;
+  }
+  
+  public int e(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return ((QQAppInterface)paramAppRuntime).getInterFollowMgr().getInterFollowMsgBoxUnreadCount();
+    }
+    return 0;
+  }
+  
   public boolean e(MessageRecord paramMessageRecord)
   {
     return MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord);
+  }
+  
+  public BaseApplication f(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      return ((QQAppInterface)paramAppRuntime).getApp();
+    }
+    return null;
   }
   
   public boolean f(MessageRecord paramMessageRecord)
   {
     return MsgProxyUtils.c(paramMessageRecord);
   }
+  
+  public void g(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      a((QQAppInterface)paramAppRuntime).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacadeCallback
  * JD-Core Version:    0.7.0.1
  */

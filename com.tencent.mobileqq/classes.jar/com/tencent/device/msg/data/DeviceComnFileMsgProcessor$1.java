@@ -17,7 +17,7 @@ class DeviceComnFileMsgProcessor$1
       MessageForDeviceFile localMessageForDeviceFile = this.a;
       localMessageForDeviceFile.nFileStatus = 23;
       localMessageForDeviceFile.serial();
-      DeviceComnFileMsgProcessor.a(this.this$0).getMessageFacade().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
+      DeviceComnFileMsgProcessor.b(this.this$0).getMessageFacade().a(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
       DeviceComnFileMsgProcessor.a(this.this$0, this.a);
       DeviceComnFileMsgProcessor.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
     }
@@ -25,7 +25,7 @@ class DeviceComnFileMsgProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceComnFileMsgProcessor.1
  * JD-Core Version:    0.7.0.1
  */

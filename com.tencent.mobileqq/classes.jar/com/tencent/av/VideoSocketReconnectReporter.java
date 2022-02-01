@@ -10,8 +10,8 @@ public class VideoSocketReconnectReporter
 {
   public static void a()
   {
-    int i = QavRecordDpc.a().o;
-    int j = NetworkUtil.a(BaseApplication.getContext());
+    int i = QavRecordDpc.a().p;
+    int j = NetworkUtil.b(BaseApplication.getContext());
     if (QLog.isColorLevel()) {
       QLog.d("VideoSocketReconnectReporter", 2, String.format("reportSocketReconRequest policyType=%s netType=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
     }
@@ -20,8 +20,8 @@ public class VideoSocketReconnectReporter
   
   public static void a(long paramLong)
   {
-    int i = QavRecordDpc.a().o;
-    int j = NetworkUtil.a(BaseApplication.getContext());
+    int i = QavRecordDpc.a().p;
+    int j = NetworkUtil.b(BaseApplication.getContext());
     if (QLog.isColorLevel()) {
       QLog.d("VideoSocketReconnectReporter", 2, String.format("reportSocketReconResult policyType=%s netType=%s timeCost=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(paramLong) }));
     }

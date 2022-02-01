@@ -33,45 +33,45 @@ public class TroopLineTipsChatItemBuilder
     if (paramView == null)
     {
       paramViewHolder = (TroopLineTipsChatItemBuilder.Holder)paramViewHolder;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558864, null);
-      paramLinearLayout = (TextView)paramView.findViewById(2131367798);
-      paramOnLongClickAndTouchListener = (TextView)paramView.findViewById(2131368157);
-      TextView localTextView = (TextView)paramView.findViewById(2131368158);
+      paramView = LayoutInflater.from(this.c).inflate(2131624484, null);
+      paramLinearLayout = (TextView)paramView.findViewById(2131434371);
+      paramOnLongClickAndTouchListener = (TextView)paramView.findViewById(2131435014);
+      TextView localTextView = (TextView)paramView.findViewById(2131435015);
       paramLinearLayout.setMovementMethod(null);
       paramLinearLayout.setGravity(17);
-      paramViewHolder.b = paramLinearLayout;
-      paramViewHolder.c = paramOnLongClickAndTouchListener;
-      paramViewHolder.d = localTextView;
+      paramViewHolder.d = paramLinearLayout;
+      paramViewHolder.e = paramOnLongClickAndTouchListener;
+      paramViewHolder.f = localTextView;
       paramView.setTag(paramViewHolder);
     }
     else
     {
       paramViewHolder = (TroopLineTipsChatItemBuilder.Holder)paramView.getTag();
     }
-    if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (ThemeUtil.isInNightMode(this.a))
     {
-      paramViewHolder.c.setBackgroundResource(2130842631);
-      paramViewHolder.d.setBackgroundResource(2130842631);
+      paramViewHolder.e.setBackgroundResource(2130843584);
+      paramViewHolder.f.setBackgroundResource(2130843584);
     }
     else
     {
-      paramViewHolder.c.setBackgroundResource(2130842630);
-      paramViewHolder.d.setBackgroundResource(2130842630);
+      paramViewHolder.e.setBackgroundResource(2130843583);
+      paramViewHolder.f.setBackgroundResource(2130843583);
     }
     if ((paramMessageRecord.istroop == 1) && (AnonymousChatHelper.a().a(paramMessageRecord.senderuin))) {
-      paramViewHolder.b.setTextColor(AnonymousChatHelper.d);
+      paramViewHolder.d.setTextColor(AnonymousChatHelper.d);
     } else {
-      paramViewHolder.b.setTextColor(paramView.getResources().getColorStateList(2131165527));
+      paramViewHolder.d.setTextColor(paramView.getResources().getColorStateList(2131165854));
     }
     if ((paramMessageRecord instanceof MessageForSplitLineTips))
     {
       paramMessageRecord = (MessageForSplitLineTips)paramMessageRecord;
       if (paramMessageRecord.subType != 1)
       {
-        paramViewHolder.b.setText(paramMessageRecord.msgContent);
+        paramViewHolder.d.setText(paramMessageRecord.msgContent);
         return paramView;
       }
-      paramViewHolder.b.setText(HardCodeUtil.a(2131715255));
+      paramViewHolder.d.setText(HardCodeUtil.a(2131912737));
     }
     return paramView;
   }
@@ -90,7 +90,7 @@ public class TroopLineTipsChatItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopLineTipsChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

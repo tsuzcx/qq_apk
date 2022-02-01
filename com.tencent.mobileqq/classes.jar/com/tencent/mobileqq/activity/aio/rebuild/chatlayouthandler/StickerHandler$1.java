@@ -21,17 +21,17 @@ class StickerHandler$1
     String str = IndividuationUrlHelper.a("aioEmojiStickerDetail");
     ViewParent localViewParent = paramView.getParent();
     if ((localViewParent instanceof ChatXListView)) {
-      EmojiStickerManager.h = ((ChatXListView)localViewParent).getPositionForView(paramView);
+      EmojiStickerManager.w = ((ChatXListView)localViewParent).getPositionForView(paramView);
     }
     paramView = new Intent(StickerHandler.a(this.a).getApp(), QQBrowserActivity.class);
     paramView.setFlags(268435456);
     int i = 1;
     paramView.putExtra("vasUsePreWebview", true);
     VasWebviewUtil.b(StickerHandler.b(this.a).getApp(), str, -1L, paramView, false, -1);
-    if (EmojiStickerManager.a().a != 0) {
-      if (EmojiStickerManager.a().a == 1) {
+    if (EmojiStickerManager.a().h != 0) {
+      if (EmojiStickerManager.a().h == 1) {
         i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
+      } else if (EmojiStickerManager.a().h == 3000) {
         i = 3;
       } else {
         i = -1;
@@ -42,7 +42,7 @@ class StickerHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.StickerHandler.1
  * JD-Core Version:    0.7.0.1
  */

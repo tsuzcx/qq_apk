@@ -9,28 +9,23 @@ public class UidToVidHandler$GetUserVidListEvent
   extends BaseEvent
 {
   public int a;
-  public List<String> a;
-  public List<GetVidListResponse.UserVidList> b = new ArrayList();
-  
-  public UidToVidHandler$GetUserVidListEvent()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<String> b = new ArrayList();
+  public List<GetVidListResponse.UserVidList> c = new ArrayList();
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetUserVidListEvent{pullType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mUserVidList=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.UidToVidHandler.GetUserVidListEvent
  * JD-Core Version:    0.7.0.1
  */

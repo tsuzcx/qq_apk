@@ -9,108 +9,108 @@ import java.nio.ByteBuffer;
 @TargetApi(18)
 public class HWAudioRecoder
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private HWAudioRecoder.TrackResult jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder$TrackResult;
-  private final MediaMuxerWrapper jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean b;
-  private volatile boolean c;
-  private volatile boolean d;
-  
-  public void a()
-  {
-    TLog.b("HWAudioRecoder", "stopRecording audio");
-    while ((!a()) && (b())) {}
-    TLog.b("HWAudioRecoder", "stopRecording audio, indeed");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a();
-    MediaExtractor localMediaExtractor = this.jdField_a_of_type_AndroidMediaMediaExtractor;
-    if (localMediaExtractor != null)
-    {
-      localMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-  }
+  private final MediaMuxerWrapper b;
+  private final MediaCodec.BufferInfo c;
+  private MediaExtractor d;
+  private HWAudioRecoder.TrackResult e;
+  private boolean f;
+  private int g;
+  private ByteBuffer h;
+  private volatile boolean i;
+  private volatile boolean j;
+  private long k;
   
   public boolean a()
   {
-    if (!this.b) {
+    if (!this.f) {
       return true;
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder$TrackResult.b < 0) {
-      return this.c;
+    if (this.e.b < 0) {
+      return this.i;
     }
-    return (this.c) && (this.d);
+    return (this.i) && (this.j);
   }
   
   public boolean b()
   {
-    if (this.b)
+    if (this.f)
     {
       if (a()) {
         return false;
       }
-      int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTrackIndex();
-      int i = 2;
-      if (j < 0)
+      int n = this.d.getSampleTrackIndex();
+      int m = 2;
+      if (n < 0)
       {
-        this.jdField_a_of_type_JavaNioByteBuffer.clear();
-        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, 0, 0L, 4);
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a(1, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a(2, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-        this.c = true;
-        this.d = true;
+        this.h.clear();
+        this.c.set(0, 0, 0L, 4);
+        this.b.a(1, this.h, this.c);
+        this.b.a(2, this.h, this.c);
+        this.i = true;
+        this.j = true;
         return true;
       }
-      if (j == this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder$TrackResult.jdField_a_of_type_Int) {
-        i = 1;
+      if (n == this.e.a) {
+        m = 1;
       } else {
-        if (j != this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder$TrackResult.b) {
+        if (n != this.e.b) {
           break label325;
         }
       }
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      int k = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_JavaNioByteBuffer, 0);
-      long l1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-      if ((!jdField_a_of_type_Boolean) && (k > this.jdField_a_of_type_Int)) {
+      this.h.clear();
+      int i1 = this.d.readSampleData(this.h, 0);
+      long l1 = this.d.getSampleTime();
+      if ((!a) && (i1 > this.g)) {
         throw new AssertionError();
       }
-      if (k >= 0)
+      if (i1 >= 0)
       {
-        long l2 = this.jdField_a_of_type_Long;
+        long l2 = this.k;
         if ((l2 <= 0L) || (l1 <= l2))
         {
-          if ((this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags() & 0x1) != 0) {
-            j = 1;
+          if ((this.d.getSampleFlags() & 0x1) != 0) {
+            n = 1;
           } else {
-            j = 0;
+            n = 0;
           }
-          this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, k, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), j);
-          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a(i, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+          this.c.set(0, i1, this.d.getSampleTime(), n);
+          this.b.a(m, this.h, this.c);
+          this.d.advance();
           return true;
         }
       }
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.set(0, 0, 0L, 4);
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a(i, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      if (j == this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWAudioRecoder$TrackResult.jdField_a_of_type_Int)
+      this.h.clear();
+      this.c.set(0, 0, 0L, 4);
+      this.b.a(m, this.h, this.c);
+      if (n == this.e.a)
       {
-        this.c = true;
+        this.i = true;
         return true;
       }
-      this.d = true;
+      this.j = true;
       return true;
     }
     label325:
     return false;
   }
+  
+  public void c()
+  {
+    TLog.b("HWAudioRecoder", "stopRecording audio");
+    while ((!a()) && (b())) {}
+    TLog.b("HWAudioRecoder", "stopRecording audio, indeed");
+    this.b.a();
+    MediaExtractor localMediaExtractor = this.d;
+    if (localMediaExtractor != null)
+    {
+      localMediaExtractor.release();
+      this.d = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.HWAudioRecoder
  * JD-Core Version:    0.7.0.1
  */

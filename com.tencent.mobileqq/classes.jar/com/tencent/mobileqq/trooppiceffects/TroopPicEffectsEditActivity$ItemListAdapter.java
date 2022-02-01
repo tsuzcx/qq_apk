@@ -22,17 +22,17 @@ public class TroopPicEffectsEditActivity$ItemListAdapter
   
   public int getCount()
   {
-    return this.a.a.length;
+    return this.a.j.length;
   }
   
   public Object getItem(int paramInt)
   {
-    return this.a.a[paramInt];
+    return this.a.j[paramInt];
   }
   
   public long getItemId(int paramInt)
   {
-    return this.a.a[paramInt].jdField_a_of_type_Int;
+    return this.a.j[paramInt].a;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -41,10 +41,10 @@ public class TroopPicEffectsEditActivity$ItemListAdapter
     if (paramView == null)
     {
       localObject1 = new TroopPicEffectsEditActivity.ViewHolder();
-      paramView = LayoutInflater.from(this.a).inflate(2131562993, paramViewGroup, false);
-      ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379336));
-      ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379338));
-      ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379337);
+      paramView = LayoutInflater.from(this.a).inflate(2131629601, paramViewGroup, false);
+      ((TroopPicEffectsEditActivity.ViewHolder)localObject1).a = ((ImageView)paramView.findViewById(2131448073));
+      ((TroopPicEffectsEditActivity.ViewHolder)localObject1).b = ((TextView)paramView.findViewById(2131448075));
+      ((TroopPicEffectsEditActivity.ViewHolder)localObject1).c = paramView.findViewById(2131448074);
       paramView.setTag(localObject1);
     }
     else
@@ -55,18 +55,18 @@ public class TroopPicEffectsEditActivity$ItemListAdapter
     ColorDrawable localColorDrawable = new ColorDrawable(0);
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
-    localObject2 = URLDrawable.getDrawable(this.a.a[paramInt].jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
+    localObject2 = URLDrawable.getDrawable(this.a.j[paramInt].c, (URLDrawable.URLDrawableOptions)localObject2);
     ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.b(190, 270, DisplayUtil.a(this.a, 3.0F)));
-    ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.i);
-    ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-    ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(this.a.a[paramInt].jdField_a_of_type_JavaLangString);
+    ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.j);
+    ((TroopPicEffectsEditActivity.ViewHolder)localObject1).a.setImageDrawable((Drawable)localObject2);
+    ((TroopPicEffectsEditActivity.ViewHolder)localObject1).b.setText(this.a.j[paramInt].b);
     localObject2 = new GradientDrawable();
     ((GradientDrawable)localObject2).setShape(0);
     ((GradientDrawable)localObject2).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, DisplayUtil.a(this.a, 5.0F), DisplayUtil.a(this.a, 5.0F), DisplayUtil.a(this.a, 5.0F), DisplayUtil.a(this.a, 5.0F) });
-    ((GradientDrawable)localObject2).setColor(this.a.a[paramInt].jdField_b_of_type_Int);
-    ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject2);
-    Object localObject1 = ((TroopPicEffectsEditActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView;
-    if (!this.a.a[paramInt].jdField_a_of_type_Boolean) {
+    ((GradientDrawable)localObject2).setColor(this.a.j[paramInt].d);
+    ((TroopPicEffectsEditActivity.ViewHolder)localObject1).b.setBackgroundDrawable((Drawable)localObject2);
+    Object localObject1 = ((TroopPicEffectsEditActivity.ViewHolder)localObject1).c;
+    if (!this.a.j[paramInt].e) {
       i = 8;
     }
     ((View)localObject1).setVisibility(i);
@@ -76,7 +76,7 @@ public class TroopPicEffectsEditActivity$ItemListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.ItemListAdapter
  * JD-Core Version:    0.7.0.1
  */

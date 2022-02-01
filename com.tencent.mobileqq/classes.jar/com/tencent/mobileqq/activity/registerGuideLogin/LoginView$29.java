@@ -27,10 +27,10 @@ class LoginView$29
       LoginView.a(this.a, null);
     }
     PhoneNumQuickLoginManager.b("0X800B8D0");
-    PhoneNumQuickLoginManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, LoginView.b(this.a));
-    LoginView.a(this.a, 4);
+    PhoneNumQuickLoginManager.a(this.a.b, LoginView.B(this.a));
+    this.a.b(4);
     paramString = this.a;
-    LoginView.b(paramString, paramString.getString(2131699187));
+    LoginView.c(paramString, paramString.getString(2131897203));
   }
   
   public void onLoginByGateway(int paramInt, OnLoginByGatewayParam paramOnLoginByGatewayParam)
@@ -50,7 +50,7 @@ class LoginView$29
     QLog.d("LoginActivity.LoginView", 1, new Object[] { "quickLoginByGateway response, ret : ", Integer.valueOf(paramInt), " errorMsg : ", paramOnLoginByGatewayParam });
     if (paramInt == 0)
     {
-      LoginView.a(this.a, str2);
+      LoginView.b(this.a, str2);
       PhoneNumQuickLoginManager.a(String.valueOf(2));
       PhoneNumQuickLoginManager.b("0X800B8D8");
       QuickLoginReporter.b(paramInt, "SUCCESS");
@@ -58,20 +58,20 @@ class LoginView$29
     }
     if (paramInt == 21)
     {
-      PhoneNumQuickLoginManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+      PhoneNumQuickLoginManager.a(this.a.b);
       PhoneNumQuickLoginManager.b("0X800B8D6");
       i = 1;
     }
     else if (paramInt == 22)
     {
-      PhoneNumQuickLoginManager.a(localWUserSigInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, LoginView.b(this.a), LoginView.k(this.a));
+      PhoneNumQuickLoginManager.a(localWUserSigInfo, this.a.b, LoginView.B(this.a), LoginView.F(this.a));
       i = 4;
     }
     else if (paramInt == 160)
     {
       paramOnLoginByGatewayParam = this.a;
-      LoginView.b(paramOnLoginByGatewayParam, paramOnLoginByGatewayParam.getString(2131699187));
-      PhoneNumQuickLoginManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, LoginView.b(this.a));
+      LoginView.c(paramOnLoginByGatewayParam, paramOnLoginByGatewayParam.getString(2131897203));
+      PhoneNumQuickLoginManager.a(this.a.b, LoginView.B(this.a));
       PhoneNumQuickLoginManager.b("0X800B8D0");
       i = 3;
     }
@@ -79,7 +79,7 @@ class LoginView$29
     {
       if (paramInt == 224)
       {
-        paramOnLoginByGatewayParam = (VerifyDevLockManagerImpl)this.a.jdField_a_of_type_MqqAppAppRuntime.getManager(7);
+        paramOnLoginByGatewayParam = (VerifyDevLockManagerImpl)this.a.a.getManager(7);
         if (paramOnLoginByGatewayParam != null) {
           paramOnLoginByGatewayParam.pullToServiceMsg(i, localToServiceMsg);
         }
@@ -91,14 +91,15 @@ class LoginView$29
         paramOnLoginByGatewayParam.putExtra("uin", str2);
         paramOnLoginByGatewayParam.putExtra("from_login", true);
         paramOnLoginByGatewayParam.putExtra("from_phone_num_login", true);
-        QPublicFragmentActivity.start(this.a.getActivity(), paramOnLoginByGatewayParam, NewAuthDevUgFragment.class);
-        LoginView.h(this.a, true);
-        LoginView.a(this.a, 4);
+        QPublicFragmentActivity.start(this.a.b, paramOnLoginByGatewayParam, NewAuthDevUgFragment.class);
+        paramOnLoginByGatewayParam = this.a;
+        paramOnLoginByGatewayParam.F = true;
+        paramOnLoginByGatewayParam.b(4);
         return;
       }
       paramOnLoginByGatewayParam = this.a;
-      LoginView.b(paramOnLoginByGatewayParam, paramOnLoginByGatewayParam.getString(2131699187));
-      PhoneNumQuickLoginManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, LoginView.b(this.a));
+      LoginView.c(paramOnLoginByGatewayParam, paramOnLoginByGatewayParam.getString(2131897203));
+      PhoneNumQuickLoginManager.a(this.a.b, LoginView.B(this.a));
       PhoneNumQuickLoginManager.b("0X800B8D0");
       i = 5;
     }
@@ -109,12 +110,12 @@ class LoginView$29
     }
     QuickLoginReporter.b(paramInt, paramOnLoginByGatewayParam);
     PhoneNumQuickLoginManager.a(String.valueOf(i));
-    LoginView.a(this.a, 4);
+    this.a.b(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.29
  * JD-Core Version:    0.7.0.1
  */

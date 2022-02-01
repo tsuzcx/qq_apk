@@ -13,14 +13,14 @@ class TroopSettingActivity$10
   
   public void onClick(View paramView)
   {
-    TroopSettingActivity.a(this.a);
-    TroopReportor.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.a.troopUin, TroopReportor.a(this.a.a) });
+    TroopSettingActivity.c(this.a);
+    TroopReportor.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.i.troopUin, TroopReportor.a(this.a.i) });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.10
  * JD-Core Version:    0.7.0.1
  */

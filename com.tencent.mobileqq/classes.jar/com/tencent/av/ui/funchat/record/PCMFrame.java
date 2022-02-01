@@ -2,22 +2,21 @@ package com.tencent.av.ui.funchat.record;
 
 public class PCMFrame
 {
-  public long a;
   public byte[] a;
-  public long b;
+  public long b = 0L;
+  public long c;
   
   public PCMFrame(byte[] paramArrayOfByte, long paramLong)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramArrayOfByte;
+    this.b = paramLong;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PCMFrame:");
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.a;
     int i;
     if (arrayOfByte == null) {
       i = -1;
@@ -26,9 +25,9 @@ public class PCMFrame
     }
     localStringBuilder.append(i);
     localStringBuilder.append(", idx=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", pts=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", pts=");
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }

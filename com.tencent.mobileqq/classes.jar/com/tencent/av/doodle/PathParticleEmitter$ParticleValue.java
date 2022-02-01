@@ -4,22 +4,22 @@ import java.io.BufferedReader;
 
 public class PathParticleEmitter$ParticleValue
 {
-  boolean a;
   boolean b;
+  boolean c;
   
   public void a(BufferedReader paramBufferedReader)
   {
-    if (!this.b)
+    if (!this.c)
     {
-      this.a = PathParticleEmitter.a(paramBufferedReader, "active");
+      this.b = PathParticleEmitter.b(paramBufferedReader, "active");
       return;
     }
-    this.a = true;
+    this.b = true;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 

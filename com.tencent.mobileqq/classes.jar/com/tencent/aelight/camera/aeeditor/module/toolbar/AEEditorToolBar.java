@@ -18,9 +18,9 @@ public abstract class AEEditorToolBar
   extends LinearLayout
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "AEEditorToolBar";
+  private static final String b = "AEEditorToolBar";
   protected AEEditorToolBar.ToolBarBaseListener a;
-  private List<AECompoundButton> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<AECompoundButton> c = new ArrayList();
   
   public AEEditorToolBar(Context paramContext)
   {
@@ -55,31 +55,31 @@ public abstract class AEEditorToolBar
     localAECompoundButton.setOnClickListener(this);
     localAECompoundButton.setBackgroundResource(paramInt3);
     localAECompoundButton.setForegroundResource(paramInt2);
-    localAECompoundButton.setForegroundSize(ViewUtils.a(32.0F), ViewUtils.a(32.0F));
+    localAECompoundButton.setForegroundSize(ViewUtils.dip2px(32.0F), ViewUtils.dip2px(32.0F));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.width = ViewUtils.a(56.0F);
-    localLayoutParams.height = ViewUtils.a(56.0F);
-    if ((a(paramString)) && (!b(paramString))) {
-      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2064318582, localAECompoundButton, false));
+    localLayoutParams.width = ViewUtils.dip2px(56.0F);
+    localLayoutParams.height = ViewUtils.dip2px(56.0F);
+    if ((b(paramString)) && (!c(paramString))) {
+      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2064056454, localAECompoundButton, false));
     }
     addView(localAECompoundButton, paramInt1, localLayoutParams);
-    this.jdField_a_of_type_JavaUtilList.add(paramInt1, localAECompoundButton);
+    this.c.add(paramInt1, localAECompoundButton);
   }
   
   abstract void a(String paramString);
   
-  protected boolean a(String paramString)
+  protected boolean b(String paramString)
   {
     return false;
   }
   
-  protected boolean b(String paramString)
+  protected boolean c(String paramString)
   {
     AECameraPrefsUtil localAECameraPrefsUtil = AECameraPrefsUtil.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ae_editor_tool_bar_red_dot_");
     localStringBuilder.append(paramString);
-    return localAECameraPrefsUtil.a(localStringBuilder.toString(), false, 0);
+    return localAECameraPrefsUtil.b(localStringBuilder.toString(), false, 0);
   }
   
   public void onClick(View paramView)
@@ -89,12 +89,12 @@ public abstract class AEEditorToolBar
   
   public void setToolBarListener(AEEditorToolBar.ToolBarBaseListener paramToolBarBaseListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleToolbarAEEditorToolBar$ToolBarBaseListener = paramToolBarBaseListener;
+    this.a = paramToolBarBaseListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.toolbar.AEEditorToolBar
  * JD-Core Version:    0.7.0.1
  */

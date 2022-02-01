@@ -5,15 +5,9 @@ import com.tencent.av.opengl.texture.BasicTexture;
 
 public abstract interface GLCanvas
 {
-  public abstract float a();
-  
-  public abstract int a();
-  
   public abstract Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2);
   
   public abstract GLId a();
-  
-  public abstract void a();
   
   public abstract void a(float paramFloat);
   
@@ -31,8 +25,6 @@ public abstract interface GLCanvas
   
   public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void a(BasicTexture paramBasicTexture);
-  
   public abstract void a(BasicTexture paramBasicTexture, int paramInt1, int paramInt2);
   
   public abstract void a(BasicTexture paramBasicTexture, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
@@ -47,13 +39,21 @@ public abstract interface GLCanvas
   
   public abstract int b();
   
-  public abstract void b();
-  
   public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public abstract void c();
+  public abstract void b(BasicTexture paramBasicTexture);
+  
+  public abstract int c();
   
   public abstract void d();
+  
+  public abstract float e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

@@ -5,7 +5,7 @@ public class NewFriendBindContactGuideBuilder$MyHolder
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBindContactGuideBuilder.MyHolder
  * JD-Core Version:    0.7.0.1
  */

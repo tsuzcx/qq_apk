@@ -20,7 +20,7 @@ class GameDemoFragment$1
     while (i < j)
     {
       String str = arrayOfString[i];
-      GameDemoFragment.a(this.a).loadJavaScriptFileFromSDCard(str);
+      GameDemoFragment.b(this.a).loadJavaScriptFileFromSDCard(str);
       i += 1;
     }
   }
@@ -29,7 +29,7 @@ class GameDemoFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.qq.GameDemoFragment.1
  * JD-Core Version:    0.7.0.1
  */

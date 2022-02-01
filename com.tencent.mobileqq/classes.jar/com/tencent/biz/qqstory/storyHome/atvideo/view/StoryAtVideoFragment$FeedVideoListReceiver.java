@@ -22,24 +22,24 @@ public class StoryAtVideoFragment$FeedVideoListReceiver
   
   public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if ((paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) && (!paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null))
+    if ((paramGetVideoListEvent.e.equals(paramStoryAtVideoFragment.q)) && (!paramGetVideoListEvent.g.isFail()) && (paramStoryAtVideoFragment.s != null))
     {
-      if (!paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.c())
+      if (!paramStoryAtVideoFragment.s.e())
       {
         SLog.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramGetVideoListEvent.toString() });
         return;
       }
       SLog.a(this.TAG, "receive comment list event. %s.", paramGetVideoListEvent.toString());
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent.c);
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-      if (paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().size() < 1)
+      paramStoryAtVideoFragment.s.a(paramGetVideoListEvent.h, paramGetVideoListEvent.c);
+      paramStoryAtVideoFragment.s.f().updateVideoInfo(paramGetVideoListEvent.i);
+      if (paramStoryAtVideoFragment.s.a().size() < 1)
       {
-        paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-        paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
-        paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        paramStoryAtVideoFragment.f.setVisibility(0);
+        paramStoryAtVideoFragment.a.setVisibility(8);
+        paramStoryAtVideoFragment.b.setVisibility(8);
         return;
       }
-      paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem);
+      paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.s);
       return;
     }
     SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());

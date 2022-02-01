@@ -7,12 +7,12 @@ class ArkAiDictUpdateMgr$1$1$1
   
   public void run()
   {
-    this.a.a.this$0.a();
+    this.a.d.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr.1.1.1
  * JD-Core Version:    0.7.0.1
  */

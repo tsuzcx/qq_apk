@@ -81,7 +81,10 @@ public class HippyQQImageLoader$HippyImageInfo
       ((StringBuilder)localObject).append(paramString);
       localObject = ((StringBuilder)localObject).toString();
     }
-    if (!((String)localObject).startsWith("http")) {
+    if ((!((String)localObject).startsWith("http:")) && (!((String)localObject).startsWith("https:")) && (!((String)localObject).startsWith("file:"))) {
+      return;
+    }
+    if ((((String)localObject).startsWith("file:")) && ((((String)localObject).contains("\\..\\")) || (((String)localObject).contains("/../")) || (((String)localObject).contains("\\../")) || (((String)localObject).contains("/..\\")))) {
       return;
     }
     this.url = ((String)localObject);
@@ -105,7 +108,7 @@ public class HippyQQImageLoader$HippyImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQImageLoader.HippyImageInfo
  * JD-Core Version:    0.7.0.1
  */

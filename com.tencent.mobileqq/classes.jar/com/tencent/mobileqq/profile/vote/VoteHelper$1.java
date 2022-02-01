@@ -13,9 +13,9 @@ class VoteHelper$1
   
   public void run()
   {
-    boolean bool = ((FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(Long.toString(this.jdField_a_of_type_Long));
+    boolean bool = ((FriendsManager)this.this$0.c.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(Long.toString(this.a));
     int i;
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.b == 2)
     {
       if (bool) {
         i = 5;
@@ -29,25 +29,25 @@ class VoteHelper$1
       i = 8;
     }
     int j;
-    if (PraiseManager.a(this.this$0.a) > 0)
+    if (PraiseManager.a(this.this$0.c) > 0)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         j = 2;
       } else {
         j = 3;
       }
     }
-    else if (this.jdField_a_of_type_Boolean) {
+    else if (this.c) {
       j = 0;
     } else {
       j = 1;
     }
-    ReportController.b(this.this$0.a, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, Long.toString(this.b), "1", this.this$0.a.getCurrentAccountUin(), Long.toString(this.jdField_a_of_type_Long));
+    ReportController.b(this.this$0.c, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, Long.toString(this.d), "1", this.this$0.c.getCurrentAccountUin(), Long.toString(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.vote.VoteHelper.1
  * JD-Core Version:    0.7.0.1
  */

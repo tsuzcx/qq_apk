@@ -17,29 +17,29 @@ class InformationFaceAdapter$InformationItemLayout$1$1
   
   public void run()
   {
-    ((QIMCommonLoadingView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
-    ((ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get()).setVisibility(0);
-    if (this.jdField_a_of_type_Boolean)
+    ((QIMCommonLoadingView)this.b.b.get()).setVisibility(8);
+    ((ImageView)this.b.c.get()).setVisibility(0);
+    if (this.a)
     {
-      URLDrawable localURLDrawable = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.jdField_a_of_type_JavaLangString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+      URLDrawable localURLDrawable = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.b.d, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
       if (localURLDrawable != null)
       {
-        ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get();
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.jdField_a_of_type_Boolean) {
+        ImageView localImageView = (ImageView)this.b.c.get();
+        if (this.b.e) {
           localObject = localURLDrawable;
         } else {
           localObject = null;
         }
         localImageView.setImageDrawable((Drawable)localObject);
-        ((ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get()).setTag(2131378280, Boolean.valueOf(true));
+        ((ImageView)this.b.c.get()).setTag(2131446799, Boolean.valueOf(true));
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.restartDownload();
         }
         if (localURLDrawable.getStatus() == 1) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$URLDrawableListener.onLoadSuccessed((View)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get(), localURLDrawable);
+          this.b.f.onLoadSuccessed((View)this.b.c.get(), localURLDrawable);
         }
-        Object localObject = (ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get();
-        if (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.jdField_a_of_type_Boolean) {
+        Object localObject = (ImageView)this.b.c.get();
+        if (!this.b.e) {
           localURLDrawable = null;
         }
         ((ImageView)localObject).setImageDrawable(localURLDrawable);
@@ -47,13 +47,13 @@ class InformationFaceAdapter$InformationItemLayout$1$1
     }
     else
     {
-      ((ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get()).setImageDrawable(URLDrawableHelperConstants.a);
+      ((ImageView)this.b.c.get()).setImageDrawable(URLDrawableHelperConstants.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.InformationItemLayout.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,15 @@ class TimUpgradeBannerProcessor$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)TimUpgradeBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorTimUpgradeBannerProcessor).getAppRuntime();
-    ((UpgradeTIMManager)localQQAppInterface.getManager(QQManagerFactory.TIM_UPGRADE_DOWNLOAD_MANAGER)).a(TimUpgradeBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorTimUpgradeBannerProcessor), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.g);
+    QQAppInterface localQQAppInterface = (QQAppInterface)TimUpgradeBannerProcessor.a(this.b).getAppRuntime();
+    ((UpgradeTIMManager)localQQAppInterface.getManager(QQManagerFactory.TIM_UPGRADE_DOWNLOAD_MANAGER)).a(TimUpgradeBannerProcessor.b(this.b), this.a.h);
     ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.TimUpgradeBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

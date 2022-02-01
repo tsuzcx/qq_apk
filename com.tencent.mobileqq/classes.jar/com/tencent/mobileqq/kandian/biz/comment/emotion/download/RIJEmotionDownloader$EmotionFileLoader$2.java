@@ -9,16 +9,16 @@ class RIJEmotionDownloader$EmotionFileLoader$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDownloadRIJEmotionDownloader$EmotionFileLoader.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDownloadRIJEmotionDownloader$ServerEmotionHolder);
+    this.b.a.a(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loadDataOnMainThread: serverEmotionHolder=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDownloadRIJEmotionDownloader$ServerEmotionHolder);
+    localStringBuilder.append(this.a);
     QLog.d("RIJEmotionDownloader", 4, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.download.RIJEmotionDownloader.EmotionFileLoader.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,17 @@ import org.json.JSONObject;
 public class BannerInfo
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
   public String c;
-  public String d;
+  public int d;
   public String e;
   public String f;
   public String g;
   public String h;
   public String i;
   public String j;
+  public String k;
+  public String l;
   
   public static BannerInfo a(String paramString)
   {
@@ -27,18 +27,18 @@ public class BannerInfo
     {
       BannerInfo localBannerInfo = new BannerInfo();
       paramString = new JSONObject(paramString);
-      localBannerInfo.jdField_a_of_type_Int = paramString.optInt("bannerType");
-      localBannerInfo.jdField_a_of_type_JavaLangString = paramString.optString("iconUrl");
-      localBannerInfo.jdField_b_of_type_JavaLangString = paramString.optString("abstractText");
-      localBannerInfo.jdField_b_of_type_Int = paramString.optInt("jumpType");
-      localBannerInfo.c = paramString.optString("linkUrl");
-      localBannerInfo.d = paramString.optString("appid");
-      localBannerInfo.e = paramString.optString("scheme");
-      localBannerInfo.f = paramString.optString("packagename");
-      localBannerInfo.g = paramString.optString("androidDownloadUrl");
-      localBannerInfo.h = paramString.optString("iOSDownloadUrl");
-      localBannerInfo.i = paramString.optString("appName");
-      localBannerInfo.j = paramString.optString("apkUrl");
+      localBannerInfo.a = paramString.optInt("bannerType");
+      localBannerInfo.b = paramString.optString("iconUrl");
+      localBannerInfo.c = paramString.optString("abstractText");
+      localBannerInfo.d = paramString.optInt("jumpType");
+      localBannerInfo.e = paramString.optString("linkUrl");
+      localBannerInfo.f = paramString.optString("appid");
+      localBannerInfo.g = paramString.optString("scheme");
+      localBannerInfo.h = paramString.optString("packagename");
+      localBannerInfo.i = paramString.optString("androidDownloadUrl");
+      localBannerInfo.j = paramString.optString("iOSDownloadUrl");
+      localBannerInfo.k = paramString.optString("appName");
+      localBannerInfo.l = paramString.optString("apkUrl");
       return localBannerInfo;
     }
     catch (Exception paramString) {}
@@ -47,22 +47,22 @@ public class BannerInfo
   
   public boolean a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.c)) {
         return false;
       }
-      if ((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) {
+      if ((this.a == 2) && (TextUtils.isEmpty(this.e))) {
         return false;
       }
-      return (this.jdField_a_of_type_Int != 1) || ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.j)));
+      return (this.a != 1) || ((!TextUtils.isEmpty(this.h)) && (!TextUtils.isEmpty(this.l)));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.data.BannerInfo
  * JD-Core Version:    0.7.0.1
  */

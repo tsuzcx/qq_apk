@@ -9,7 +9,7 @@ class LiteActivity$27$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_Float);
+    this.c.a.m.a(this.a, this.c.a.f, this.b);
   }
 }
 

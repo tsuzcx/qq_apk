@@ -11,9 +11,9 @@ class LiteActivity$3
   
   public void onGlobalLayout()
   {
-    int i = this.a.a.getBottom() - LiteActivity.a(this.a).getTop();
-    if ((LiteActivity.a(this.a).getVisibility() == 0) && (this.a.a.getPaddingBottom() != i)) {
-      this.a.a.setPadding(this.a.a.getPaddingLeft(), this.a.a.getPaddingTop(), this.a.a.getPaddingRight(), i);
+    int i = this.a.f.getBottom() - LiteActivity.a(this.a).getTop();
+    if ((LiteActivity.a(this.a).getVisibility() == 0) && (this.a.f.getPaddingBottom() != i)) {
+      this.a.f.setPadding(this.a.f.getPaddingLeft(), this.a.f.getPaddingTop(), this.a.f.getPaddingRight(), i);
     }
   }
 }

@@ -15,16 +15,9 @@ import java.util.ArrayList;
 
 public class ARVideoUtil
 {
-  public static final float[] a;
-  public static final short[] a;
-  public static final float[] b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 1.0F, -0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.5F, 0.5F, 0.0F, 1.0F, 1.0F };
-    b = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 0.0F, -0.5F, -0.5F, 0.0F, 0.0F, 1.0F, 0.5F, -0.5F, 0.0F, 1.0F, 1.0F, 0.5F, 0.5F, 0.0F, 1.0F, 0.0F };
-    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
-  }
+  public static final float[] a = { -0.5F, 0.5F, 0.0F, 0.0F, 1.0F, -0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.5F, 0.5F, 0.0F, 1.0F, 1.0F };
+  public static final float[] b = { -0.5F, 0.5F, 0.0F, 0.0F, 0.0F, -0.5F, -0.5F, 0.0F, 0.0F, 1.0F, 0.5F, -0.5F, 0.0F, 1.0F, 1.0F, 0.5F, 0.5F, 0.0F, 1.0F, 0.0F };
+  public static final short[] c = { 0, 1, 2, 2, 3, 0 };
   
   public static int a(ARTarget paramARTarget)
   {
@@ -35,7 +28,7 @@ public class ARVideoUtil
       }
       try
       {
-        int i = ((ArVideoResourceInfo)paramARTarget.a.a.get(0)).jdField_b_of_type_Int;
+        int i = ((ArVideoResourceInfo)paramARTarget.a.i.get(0)).f;
         if (i >= 0) {
           return i;
         }
@@ -51,67 +44,48 @@ public class ARVideoUtil
     return 0;
   }
   
-  public static ArCloudConfigInfo.ARVideoLayout a(String paramString)
-  {
-    ArCloudConfigInfo.ARVideoLayout localARVideoLayout = new ArCloudConfigInfo.ARVideoLayout();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\|");
-      if (paramString != null)
-      {
-        if (paramString.length >= 1) {
-          localARVideoLayout.jdField_a_of_type_Int = Integer.valueOf(paramString[0]).intValue();
-        }
-        if (paramString.length >= 2) {
-          localARVideoLayout.jdField_b_of_type_Int = Integer.valueOf(paramString[1]).intValue();
-        }
-      }
-    }
-    return localARVideoLayout;
-  }
-  
   public static ArCloudConfigInfo.ARVideoLayout a(String paramString, int paramInt1, int paramInt2)
   {
-    paramString = a(paramString);
-    if (paramString.jdField_a_of_type_Int != 0)
+    paramString = b(paramString);
+    if (paramString.a != 0)
     {
-      if (paramString.jdField_b_of_type_Int == 0) {
+      if (paramString.b == 0) {
         return paramString;
       }
-      int i = paramString.jdField_a_of_type_Int;
-      int j = paramString.jdField_b_of_type_Int;
+      int i = paramString.a;
+      int j = paramString.b;
       float f1 = paramInt2;
       float f2 = f1 * 1.0F / j;
       float f3 = paramInt1;
       if (f2 > 1.0F * f3 / i)
       {
         paramInt1 = j * 1 * paramInt1 / i;
-        paramString.jdField_a_of_type_Float = 2.0F;
-        paramString.jdField_b_of_type_Float = (paramInt1 * 2.0F / f1);
+        paramString.c = 2.0F;
+        paramString.d = (paramInt1 * 2.0F / f1);
       }
       else
       {
-        paramString.jdField_a_of_type_Float = (i * 1 * paramInt2 / j * 2.0F / f3);
-        paramString.jdField_b_of_type_Float = 2.0F;
+        paramString.c = (i * 1 * paramInt2 / j * 2.0F / f3);
+        paramString.d = 2.0F;
       }
-      paramString.c = 0.0F;
-      paramString.d = 0.0F;
       paramString.e = 0.0F;
+      paramString.f = 0.0F;
+      paramString.g = 0.0F;
     }
     return paramString;
   }
   
   public static ArCloudConfigInfo.ARVideoLayout a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    ArCloudConfigInfo.ARVideoLayout localARVideoLayout = a(paramString);
-    if ((localARVideoLayout.jdField_a_of_type_Int == 0) || (localARVideoLayout.jdField_b_of_type_Int == 0))
+    ArCloudConfigInfo.ARVideoLayout localARVideoLayout = b(paramString);
+    if ((localARVideoLayout.a == 0) || (localARVideoLayout.b == 0))
     {
-      localARVideoLayout.jdField_a_of_type_Int = paramInt1;
-      localARVideoLayout.jdField_b_of_type_Int = paramInt2;
+      localARVideoLayout.a = paramInt1;
+      localARVideoLayout.b = paramInt2;
     }
     float f7 = paramInt1 * 1.0F / Math.max(1, paramInt2);
-    float f8 = localARVideoLayout.jdField_a_of_type_Int;
-    float f9 = localARVideoLayout.jdField_b_of_type_Int;
+    float f8 = localARVideoLayout.a;
+    float f9 = localARVideoLayout.b;
     float f10 = f8 * 1.0F / f9;
     boolean bool = TextUtils.isEmpty(paramString);
     paramInt1 = 0;
@@ -185,54 +159,54 @@ public class ARVideoUtil
     label318:
     if (paramBoolean)
     {
-      localARVideoLayout.jdField_a_of_type_Float = (f7 * 10.0F);
-      localARVideoLayout.jdField_b_of_type_Float = 10.0F;
-      localARVideoLayout.c = 0.0F;
-      localARVideoLayout.d = 0.0F;
-      localARVideoLayout.e = -5.0F;
+      localARVideoLayout.c = (f7 * 10.0F);
+      localARVideoLayout.d = 10.0F;
+      localARVideoLayout.e = 0.0F;
+      localARVideoLayout.f = 0.0F;
+      localARVideoLayout.g = -5.0F;
       if (paramInt2 != 0)
       {
         if (paramInt1 != 0)
         {
-          localARVideoLayout.jdField_a_of_type_Float = (f5 * localARVideoLayout.jdField_a_of_type_Float);
-          localARVideoLayout.jdField_b_of_type_Float = (localARVideoLayout.jdField_a_of_type_Float * (f9 / f8));
-          f1 = localARVideoLayout.jdField_a_of_type_Float;
+          localARVideoLayout.c = (f5 * localARVideoLayout.c);
+          localARVideoLayout.d = (localARVideoLayout.c * (f9 / f8));
+          f1 = localARVideoLayout.c;
         }
         else
         {
-          localARVideoLayout.jdField_b_of_type_Float = (f6 * localARVideoLayout.jdField_b_of_type_Float);
-          localARVideoLayout.jdField_a_of_type_Float = (localARVideoLayout.jdField_b_of_type_Float * (f8 / f9));
-          f1 = localARVideoLayout.jdField_b_of_type_Float;
+          localARVideoLayout.d = (f6 * localARVideoLayout.d);
+          localARVideoLayout.c = (localARVideoLayout.d * (f8 / f9));
+          f1 = localARVideoLayout.d;
         }
         f1 /= 2.0F;
-        localARVideoLayout.c = (f3 * f7 / f1);
-        localARVideoLayout.d = (f4 / f1);
+        localARVideoLayout.e = (f3 * f7 / f1);
+        localARVideoLayout.f = (f4 / f1);
       }
     }
     else
     {
-      localARVideoLayout.jdField_a_of_type_Float = 2.0F;
-      localARVideoLayout.jdField_b_of_type_Float = 2.0F;
-      localARVideoLayout.c = 0.0F;
-      localARVideoLayout.d = 0.0F;
+      localARVideoLayout.c = 2.0F;
+      localARVideoLayout.d = 2.0F;
       localARVideoLayout.e = 0.0F;
+      localARVideoLayout.f = 0.0F;
+      localARVideoLayout.g = 0.0F;
       if (paramInt2 != 0)
       {
         if (paramInt1 != 0)
         {
-          localARVideoLayout.jdField_a_of_type_Float = (f5 * localARVideoLayout.jdField_a_of_type_Float);
-          localARVideoLayout.jdField_b_of_type_Float = (localARVideoLayout.jdField_a_of_type_Float * f7 * (f9 / f8));
-          f1 = localARVideoLayout.jdField_a_of_type_Float;
+          localARVideoLayout.c = (f5 * localARVideoLayout.c);
+          localARVideoLayout.d = (localARVideoLayout.c * f7 * (f9 / f8));
+          f1 = localARVideoLayout.c;
         }
         else
         {
-          localARVideoLayout.jdField_b_of_type_Float = (f6 * localARVideoLayout.jdField_b_of_type_Float);
-          localARVideoLayout.jdField_a_of_type_Float = (localARVideoLayout.jdField_b_of_type_Float / f7 * (f8 / f9));
-          f1 = localARVideoLayout.jdField_b_of_type_Float;
+          localARVideoLayout.d = (f6 * localARVideoLayout.d);
+          localARVideoLayout.c = (localARVideoLayout.d / f7 * (f8 / f9));
+          f1 = localARVideoLayout.d;
         }
         f1 /= 2.0F;
-        localARVideoLayout.c = (f3 / f1);
-        localARVideoLayout.d = (f4 / f1);
+        localARVideoLayout.e = (f3 / f1);
+        localARVideoLayout.f = (f4 / f1);
       }
     }
     paramString = new StringBuilder();
@@ -242,14 +216,55 @@ public class ARVideoUtil
     return localARVideoLayout;
   }
   
-  public static Pair<Integer, KeyingParams> a(ARTarget paramARTarget)
+  public static void a(String paramString)
+  {
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      QLog.d("ARVideoUtil", 1, localStringBuilder.toString());
+    }
+  }
+  
+  public static boolean a()
+  {
+    String str = Build.MODEL.toLowerCase();
+    return (Build.MANUFACTURER.toLowerCase().contains("meizu")) && (str.contains("m040"));
+  }
+  
+  public static ArCloudConfigInfo.ARVideoLayout b(String paramString)
+  {
+    ArCloudConfigInfo.ARVideoLayout localARVideoLayout = new ArCloudConfigInfo.ARVideoLayout();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("\\|");
+      if (paramString != null)
+      {
+        if (paramString.length >= 1) {
+          localARVideoLayout.a = Integer.valueOf(paramString[0]).intValue();
+        }
+        if (paramString.length >= 2) {
+          localARVideoLayout.b = Integer.valueOf(paramString[1]).intValue();
+        }
+      }
+    }
+    return localARVideoLayout;
+  }
+  
+  public static Pair<Integer, KeyingParams> b(ARTarget paramARTarget)
   {
     int j = 0;
     KeyingParams localKeyingParams = KeyingManager.a(0);
-    if (paramARTarget.a.d == 2) {}
+    if (paramARTarget.a.e == 2) {}
     try
     {
-      i = Integer.parseInt(((ArVideoResourceInfo)paramARTarget.a.a.get(0)).jdField_a_of_type_JavaLangString);
+      i = Integer.parseInt(((ArVideoResourceInfo)paramARTarget.a.i.get(0)).c);
     }
     catch (Throwable paramARTarget)
     {
@@ -270,12 +285,12 @@ public class ARVideoUtil
     else
     {
       break label610;
-      if (paramARTarget.a.d != 3)
+      if (paramARTarget.a.e != 3)
       {
         i = j;
-        if (paramARTarget.a.d != 4) {}
+        if (paramARTarget.a.e != 4) {}
       }
-      else if ((paramARTarget.a.d == 4) && ("circle".equalsIgnoreCase(((ArVideoResourceInfo)paramARTarget.a.a.get(0)).jdField_a_of_type_JavaLangString)))
+      else if ((paramARTarget.a.e == 4) && ("circle".equalsIgnoreCase(((ArVideoResourceInfo)paramARTarget.a.i.get(0)).c)))
       {
         i = 1;
       }
@@ -283,7 +298,7 @@ public class ARVideoUtil
       {
         try
         {
-          paramARTarget = ((ArVideoResourceInfo)paramARTarget.a.a.get(0)).jdField_a_of_type_JavaLangString.split("\\|");
+          paramARTarget = ((ArVideoResourceInfo)paramARTarget.a.i.get(0)).c.split("\\|");
           i = j;
           if (paramARTarget != null)
           {
@@ -328,11 +343,11 @@ public class ARVideoUtil
                                 else
                                 {
                                   localKeyingParams.a(k / 255.0F, m / 255.0F, n / 255.0F);
-                                  localKeyingParams.jdField_a_of_type_Int = 1;
-                                  localKeyingParams.d = (i1 / 255.0F);
-                                  localKeyingParams.e = (i2 / 100.0F);
+                                  localKeyingParams.a = 1;
+                                  localKeyingParams.e = (i1 / 255.0F);
+                                  localKeyingParams.f = (i2 / 100.0F);
                                   if ((paramARTarget != null) && (paramARTarget.length >= 6) && (Integer.parseInt(paramARTarget[5]) == 1)) {
-                                    localKeyingParams.jdField_a_of_type_Int = 2;
+                                    localKeyingParams.a = 2;
                                   }
                                   if ((paramARTarget != null) && (paramARTarget.length >= 8))
                                   {
@@ -343,10 +358,10 @@ public class ARVideoUtil
                                       paramARTarget = paramARTarget.split(";");
                                       if ((paramARTarget != null) && (paramARTarget.length == 3))
                                       {
-                                        localKeyingParams.f = Float.valueOf(paramARTarget[0]).floatValue();
-                                        localKeyingParams.g = Float.valueOf(paramARTarget[1]).floatValue();
-                                        localKeyingParams.h = Float.valueOf(paramARTarget[2]).floatValue();
-                                        localKeyingParams.jdField_a_of_type_Int = 3;
+                                        localKeyingParams.g = Float.valueOf(paramARTarget[0]).floatValue();
+                                        localKeyingParams.h = Float.valueOf(paramARTarget[1]).floatValue();
+                                        localKeyingParams.i = Float.valueOf(paramARTarget[2]).floatValue();
+                                        localKeyingParams.a = 3;
                                       }
                                     }
                                     else if ((i == 3) && (!TextUtils.isEmpty(paramARTarget)))
@@ -354,16 +369,16 @@ public class ARVideoUtil
                                       paramARTarget = paramARTarget.split(";");
                                       if ((paramARTarget != null) && (paramARTarget.length == 3))
                                       {
-                                        localKeyingParams.f = Float.valueOf(paramARTarget[0]).floatValue();
-                                        localKeyingParams.g = Float.valueOf(paramARTarget[1]).floatValue();
-                                        localKeyingParams.h = Float.valueOf(paramARTarget[2]).floatValue();
-                                        localKeyingParams.jdField_a_of_type_Int = 4;
+                                        localKeyingParams.g = Float.valueOf(paramARTarget[0]).floatValue();
+                                        localKeyingParams.h = Float.valueOf(paramARTarget[1]).floatValue();
+                                        localKeyingParams.i = Float.valueOf(paramARTarget[2]).floatValue();
+                                        localKeyingParams.a = 4;
                                       }
                                     }
                                     else if ((i == 4) && (!TextUtils.isEmpty(paramARTarget)))
                                     {
-                                      localKeyingParams.jdField_a_of_type_JavaLangString = CustomizeKey.a(paramARTarget, "uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n");
-                                      localKeyingParams.jdField_a_of_type_Int = 5;
+                                      localKeyingParams.k = CustomizeKey.a(paramARTarget, "uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n");
+                                      localKeyingParams.a = 5;
                                     }
                                   }
                                   i = 2;
@@ -393,32 +408,10 @@ public class ARVideoUtil
     }
     return new Pair(Integer.valueOf(i), localKeyingParams);
   }
-  
-  public static void a(String paramString)
-  {
-    for (;;)
-    {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(": glError ");
-      localStringBuilder.append(i);
-      QLog.d("ARVideoUtil", 1, localStringBuilder.toString());
-    }
-  }
-  
-  public static boolean a()
-  {
-    String str = Build.MODEL.toLowerCase();
-    return (Build.MANUFACTURER.toLowerCase().contains("meizu")) && (str.contains("m040"));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARVideoUtil
  * JD-Core Version:    0.7.0.1
  */

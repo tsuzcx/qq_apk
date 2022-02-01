@@ -6,19 +6,9 @@ import com.tencent.aladdin.config.AladdinConfig;
 @Deprecated
 public class RIJBiuAndCommentAladdinUtils
 {
-  private static AladdinConfig a()
-  {
-    return Aladdin.getConfig(278);
-  }
-  
-  public static String a()
-  {
-    return a().getString("comment_guide_wording", "");
-  }
-  
   public static boolean a()
   {
-    AladdinConfig localAladdinConfig = a();
+    AladdinConfig localAladdinConfig = m();
     boolean bool = false;
     if (localAladdinConfig.getIntegerFromString("comment_and_biu_combine_switch", 0) == 1) {
       bool = true;
@@ -28,12 +18,27 @@ public class RIJBiuAndCommentAladdinUtils
   
   public static String b()
   {
-    return a().getString("biu_editor_guide_wording", "");
+    return m().getString("comment_guide_wording", "");
   }
   
-  public static boolean b()
+  public static String c()
   {
-    AladdinConfig localAladdinConfig = a();
+    return m().getString("biu_editor_guide_wording", "");
+  }
+  
+  public static String d()
+  {
+    return m().getString("biu_editor_confirm_btn_wording", "");
+  }
+  
+  public static String e()
+  {
+    return m().getString("biu_editor_checkbox_wording", "");
+  }
+  
+  public static boolean f()
+  {
+    AladdinConfig localAladdinConfig = m();
     boolean bool = false;
     if (localAladdinConfig.getIntegerFromString("biu_editor_checkbox_default_status", 0) == 1) {
       bool = true;
@@ -41,14 +46,9 @@ public class RIJBiuAndCommentAladdinUtils
     return bool;
   }
   
-  public static String c()
+  public static boolean g()
   {
-    return a().getString("biu_editor_confirm_btn_wording", "");
-  }
-  
-  public static boolean c()
-  {
-    AladdinConfig localAladdinConfig = a();
+    AladdinConfig localAladdinConfig = m();
     boolean bool = false;
     if (localAladdinConfig.getIntegerFromString("biu_editor_checkbox_enable_remember", 0) == 1) {
       bool = true;
@@ -56,14 +56,9 @@ public class RIJBiuAndCommentAladdinUtils
     return bool;
   }
   
-  public static String d()
+  public static boolean h()
   {
-    return a().getString("biu_editor_checkbox_wording", "");
-  }
-  
-  public static boolean d()
-  {
-    AladdinConfig localAladdinConfig = a();
+    AladdinConfig localAladdinConfig = m();
     boolean bool = false;
     if (localAladdinConfig.getIntegerFromString("biu_editor_checkbox_hidden", 0) == 1) {
       bool = true;
@@ -71,34 +66,39 @@ public class RIJBiuAndCommentAladdinUtils
     return bool;
   }
   
-  public static String e()
+  public static String i()
   {
     boolean bool = a();
     String str = "";
     if (bool) {
-      str = a().getString("operate_cell_aladding_keys", "");
+      str = m().getString("operate_cell_aladding_keys", "");
     }
     return str;
   }
   
-  public static boolean e()
+  public static boolean j()
   {
-    return a().getIntegerFromString("biu_feed_card_white_jump", 1) == 1;
+    return m().getIntegerFromString("biu_feed_card_white_jump", 1) == 1;
   }
   
-  public static boolean f()
+  public static boolean k()
   {
-    return a().getIntegerFromString("biu_feed_card_gray_jump", 1) == 1;
+    return m().getIntegerFromString("biu_feed_card_gray_jump", 1) == 1;
   }
   
-  public static boolean g()
+  public static boolean l()
   {
-    return a().getIntegerFromString("biu_feed_card_btn_jump", 1) == 1;
+    return m().getIntegerFromString("biu_feed_card_btn_jump", 1) == 1;
+  }
+  
+  private static AladdinConfig m()
+  {
+    return Aladdin.getConfig(278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.RIJBiuAndCommentAladdinUtils
  * JD-Core Version:    0.7.0.1
  */

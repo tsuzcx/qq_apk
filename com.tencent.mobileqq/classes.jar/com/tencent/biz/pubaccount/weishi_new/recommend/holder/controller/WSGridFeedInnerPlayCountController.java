@@ -11,24 +11,24 @@ public class WSGridFeedInnerPlayCountController
     super(paramContext);
   }
   
-  protected int c()
+  protected int l()
   {
-    return 2130843292;
+    return 2130844246;
   }
   
-  protected int d()
+  protected int m()
   {
-    return this.a.playNum;
+    return this.g.playNum;
   }
   
-  protected int e()
+  protected int n()
   {
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerPlayCountController
  * JD-Core Version:    0.7.0.1
  */

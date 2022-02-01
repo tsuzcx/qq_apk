@@ -14,6 +14,7 @@ import com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.Devic
 import com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.FakeSelfHeadIconController;
 import com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.FileAssistantHeadIconController;
 import com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.NonFriendHeadIconController;
+import com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.RIJPrivateChatHeadIconController;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -27,95 +28,96 @@ import java.util.List;
 public class BaseBubbleBuilderHeadIconControllerImpl
   extends BaseBubbleBuilderHeadIconController
 {
-  private BaseBubbleBuilderHeadIconController jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController;
-  private List<BaseBubbleBuilderHeadIconController> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private BaseBubbleBuilderHeadIconController b;
+  private List<BaseBubbleBuilderHeadIconController> i = new ArrayList();
+  private BaseBubbleBuilderHeadIconController j;
+  private BaseBubbleBuilderHeadIconController k;
   
   public BaseBubbleBuilderHeadIconControllerImpl()
   {
-    h();
+    k();
   }
   
-  private BaseBubbleBuilderHeadIconController a(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, BaseChatItemLayout paramBaseChatItemLayout, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, IFaceDecoder paramIFaceDecoder)
+  private BaseBubbleBuilderHeadIconController b(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, BaseChatItemLayout paramBaseChatItemLayout, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, IFaceDecoder paramIFaceDecoder)
   {
-    if (this.b == null) {
-      this.b = new DefaultHeadIconController();
+    if (this.k == null) {
+      this.k = new DefaultHeadIconController();
     }
-    this.b.a(paramChatMessage, paramQQAppInterface, paramContext, paramSessionInfo, paramBaseChatItemLayout, paramOnClickListener, paramOnLongClickListener, paramIFaceDecoder);
-    return this.b;
+    this.k.a(paramChatMessage, paramQQAppInterface, paramContext, paramSessionInfo, paramBaseChatItemLayout, paramOnClickListener, paramOnLongClickListener, paramIFaceDecoder);
+    return this.k;
   }
   
-  private void h()
+  private void k()
   {
-    this.jdField_a_of_type_JavaUtilList.add(new FakeSelfHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new CustomizeByBizHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new AnonymousHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new GameChatMessageHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new FileAssistantHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new AnonymousMsgHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new TroopScriptMsgHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new TroopBusinessMsgHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new AioApolloHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new NonFriendHeadIconController());
-    this.jdField_a_of_type_JavaUtilList.add(new DeviceMsgHeadIconController());
+    this.i.add(new FakeSelfHeadIconController());
+    this.i.add(new CustomizeByBizHeadIconController());
+    this.i.add(new AnonymousHeadIconController());
+    this.i.add(new GameChatMessageHeadIconController());
+    this.i.add(new FileAssistantHeadIconController());
+    this.i.add(new AnonymousMsgHeadIconController());
+    this.i.add(new TroopScriptMsgHeadIconController());
+    this.i.add(new TroopBusinessMsgHeadIconController());
+    this.i.add(new AioApolloHeadIconController());
+    this.i.add(new NonFriendHeadIconController());
+    this.i.add(new DeviceMsgHeadIconController());
+    this.i.add(new RIJPrivateChatHeadIconController());
   }
   
   public void a(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, BaseChatItemLayout paramBaseChatItemLayout, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, IFaceDecoder paramIFaceDecoder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController = a(paramChatMessage, paramQQAppInterface, paramContext, paramSessionInfo, paramBaseChatItemLayout, paramOnClickListener, paramOnLongClickListener, paramIFaceDecoder);
+    this.j = b(paramChatMessage, paramQQAppInterface, paramContext, paramSessionInfo, paramBaseChatItemLayout, paramOnClickListener, paramOnLongClickListener, paramIFaceDecoder);
     super.a(paramChatMessage, paramQQAppInterface, paramContext, paramSessionInfo, paramBaseChatItemLayout, paramOnClickListener, paramOnLongClickListener, paramIFaceDecoder);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       BaseBubbleBuilderHeadIconController localBaseBubbleBuilderHeadIconController = (BaseBubbleBuilderHeadIconController)localIterator.next();
       if (localBaseBubbleBuilderHeadIconController != null)
       {
         localBaseBubbleBuilderHeadIconController.a(paramChatMessage, paramQQAppInterface, paramContext, paramSessionInfo, paramBaseChatItemLayout, paramOnClickListener, paramOnLongClickListener, paramIFaceDecoder);
-        if (localBaseBubbleBuilderHeadIconController.a()) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController = localBaseBubbleBuilderHeadIconController;
+        if (localBaseBubbleBuilderHeadIconController.h()) {
+          this.j = localBaseBubbleBuilderHeadIconController;
         }
       }
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController != null;
-  }
-  
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController.b();
+    this.j.b();
   }
   
   protected void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController.c();
+    this.j.c();
   }
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController.d();
+    this.j.d();
   }
   
   protected void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController.e();
+    this.j.e();
   }
   
   protected void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController.f();
+    this.j.f();
   }
   
   protected void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiBasebubblebuilderheadiconBaseBubbleBuilderHeadIconController.g();
+    this.j.g();
+  }
+  
+  public boolean h()
+  {
+    return this.j != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.basebubblebuilderheadicon.BaseBubbleBuilderHeadIconControllerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ class IliveFloatWindowModule$2
 {
   IliveFloatWindowModule$2(IliveFloatWindowModule paramIliveFloatWindowModule) {}
   
-  public void b()
+  public void onFocusGain() {}
+  
+  public void onFocusLoss()
   {
     QLog.e("IliveFloatWindowModule", 1, "mFocusChangeListener onFocusLoss");
     ThreadManager.getUIHandler().post(new IliveFloatWindowModule.2.1(this));
   }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveFloatWindowModule.2
  * JD-Core Version:    0.7.0.1
  */

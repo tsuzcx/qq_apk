@@ -10,7 +10,7 @@ final class DynamicNowManager$11
 {
   public void onJump(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == DynamicNowManager.a)
+    if (paramInt1 == DynamicNowManager.c)
     {
       Intent localIntent = new Intent();
       localIntent.setAction("action.now.jump");
@@ -21,7 +21,7 @@ final class DynamicNowManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.11
  * JD-Core Version:    0.7.0.1
  */

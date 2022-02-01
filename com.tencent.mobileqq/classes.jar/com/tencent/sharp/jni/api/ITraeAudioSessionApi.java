@@ -41,7 +41,7 @@ public abstract interface ITraeAudioSessionApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sharp.jni.api.ITraeAudioSessionApi
  * JD-Core Version:    0.7.0.1
  */

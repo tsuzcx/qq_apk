@@ -13,7 +13,7 @@ class QQComicJsPlugin$4
   
   public void run()
   {
-    Object localObject = QQComicJsPlugin.a();
+    Object localObject = QQComicJsPlugin.c();
     if (localObject != null)
     {
       long l1 = System.currentTimeMillis();
@@ -28,7 +28,7 @@ class QQComicJsPlugin$4
         QLog.d("QQComicJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
     }
-    QQComicJsPlugin.a().set(false);
+    QQComicJsPlugin.d().set(false);
     localObject = new JSONObject();
     try
     {
@@ -38,7 +38,7 @@ class QQComicJsPlugin$4
       localJSONObject.put("size", this.this$0.a());
       ((JSONObject)localObject).put("data", localJSONObject);
       label150:
-      this.this$0.callJs(QQComicJsPlugin.b(), new String[] { ((JSONObject)localObject).toString() });
+      this.this$0.callJs(QQComicJsPlugin.e(), new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception localException)
@@ -49,7 +49,7 @@ class QQComicJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.jsp.QQComicJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

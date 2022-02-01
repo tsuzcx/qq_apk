@@ -15,11 +15,11 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemType
   extends AbsStructMsgElement
 {
-  public int o;
+  public int au;
   
   public StructMsgItemType()
   {
-    this.a = "type";
+    this.b = "type";
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -27,28 +27,23 @@ public class StructMsgItemType
     return null;
   }
   
-  public String a()
-  {
-    return "type";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.o = paramObjectInput.readInt();
+    this.au = paramObjectInput.readInt();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.o);
+    paramObjectOutput.writeInt(this.au);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "type");
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.o);
+    localStringBuilder.append(this.au);
     localStringBuilder.append("");
     paramXmlSerializer.text(localStringBuilder.toString());
     paramXmlSerializer.endTag(null, "type");
@@ -61,7 +56,7 @@ public class StructMsgItemType
     }
     try
     {
-      this.o = Integer.valueOf(MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false)).intValue();
+      this.au = Integer.valueOf(MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false)).intValue();
     }
     catch (Exception paramStructMsgNode)
     {
@@ -71,10 +66,15 @@ public class StructMsgItemType
     }
     return true;
   }
+  
+  public String b()
+  {
+    return "type";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemType
  * JD-Core Version:    0.7.0.1
  */

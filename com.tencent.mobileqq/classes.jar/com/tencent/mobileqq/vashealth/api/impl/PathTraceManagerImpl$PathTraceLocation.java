@@ -12,12 +12,12 @@ import mqq.app.AppRuntime;
 public class PathTraceManagerImpl$PathTraceLocation
   extends SosoInterfaceOnLocationListener
 {
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private AppRuntime b;
   
   public PathTraceManagerImpl$PathTraceLocation(PathTraceManagerImpl paramPathTraceManagerImpl, AppInterface paramAppInterface)
   {
     super(0, true, true, 0L, true, true, "pathtrace");
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppInterface;
+    this.b = paramAppInterface;
   }
   
   public void onConsecutiveFailure(int paramInt1, int paramInt2)
@@ -40,17 +40,17 @@ public class PathTraceManagerImpl$PathTraceLocation
       localTracePointsData.altitude = paramSosoLbsInfo.altitude;
       localTracePointsData.accuracy = ((int)paramSosoLbsInfo.accuracy);
       localTracePointsData.speed = paramSosoLbsInfo.speed;
-      if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
-        PathTraceManagerImpl.access$800(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl, localTracePointsData);
+      if (this.b != null) {
+        PathTraceManagerImpl.access$800(this.a, localTracePointsData);
       }
     }
     else
     {
-      paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl;
+      paramSosoLbsInfo = this.a;
       PathTraceManagerImpl.access$402(paramSosoLbsInfo, PathTraceManagerImpl.access$200(paramSosoLbsInfo));
-      if (PathTraceManagerImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl) != null)
+      if (PathTraceManagerImpl.access$300(this.a) != null)
       {
-        paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl;
+        paramSosoLbsInfo = this.a;
         paramSosoLbsInfo.updateEntity(PathTraceManagerImpl.access$300(paramSosoLbsInfo));
       }
       paramSosoLbsInfo = new StringBuilder();
@@ -69,7 +69,7 @@ public class PathTraceManagerImpl$PathTraceLocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.PathTraceManagerImpl.PathTraceLocation
  * JD-Core Version:    0.7.0.1
  */

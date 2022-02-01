@@ -28,39 +28,39 @@ public final class QShadowDebugSettingFragment$installDebugPlugin$1
   
   public void onInstallError(@Nullable String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppAlertDialog.dismiss();
+    this.b.dismiss();
     if (paramInt == 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a((CharSequence)"插件正在运行，请重启手Q");
+      this.c.setToastMsg((CharSequence)"插件正在运行，请重启手Q");
     }
     else
     {
-      QQToast localQQToast = this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+      QQToast localQQToast = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("插件安装失败: ");
       localStringBuilder.append(paramString);
-      localQQToast.a((CharSequence)localStringBuilder.toString());
+      localQQToast.setToastMsg((CharSequence)localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
+    this.c.show();
   }
   
   public void onInstallFinish(@Nullable String paramString)
   {
-    this.jdField_a_of_type_AndroidAppAlertDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a((CharSequence)"插件安装成功！");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
-    paramString = (EditText)this.jdField_a_of_type_ComTencentMobileqqDebugQShadowDebugSettingFragment.a(R.id.pluginIdEditText);
+    this.b.dismiss();
+    this.c.setToastMsg((CharSequence)"插件安装成功！");
+    this.c.show();
+    paramString = (EditText)this.a.a(R.id.pluginIdEditText);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "pluginIdEditText");
     paramString = paramString.getText().toString();
-    Object localObject = (EditText)this.jdField_a_of_type_ComTencentMobileqqDebugQShadowDebugSettingFragment.a(R.id.pluginBranchEditText);
+    Object localObject = (EditText)this.a.a(R.id.pluginBranchEditText);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "pluginBranchEditText");
     localObject = ((EditText)localObject).getText().toString();
-    QShadowDebugSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqDebugQShadowDebugSettingFragment, paramString, (String)localObject);
+    QShadowDebugSettingFragment.a(this.a, paramString, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.QShadowDebugSettingFragment.installDebugPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,20 @@ class IdentificationPoseReflect$2
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[YTUtilityInterface.setAppBrightness] brightness: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     YtLogger.i("qq_Identification.Model", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_AndroidAppActivity;
+    localObject = this.b;
     int i = 1;
     if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getWindow();
+      localObject = this.b.getWindow();
       if (localObject == null)
       {
         QLog.e("qq_Identification.Model", 1, "setAppBrightness window==null");
         return;
       }
       WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-      int j = this.jdField_a_of_type_Int;
+      int j = this.a;
       if (j == -1)
       {
         localLayoutParams.screenBrightness = -1.0F;
@@ -48,7 +48,7 @@ class IdentificationPoseReflect$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.2
  * JD-Core Version:    0.7.0.1
  */

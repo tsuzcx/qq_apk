@@ -15,8 +15,8 @@ class FileAssistantActivity$1
   {
     SharedPreferences localSharedPreferences = this.this$0.getAppRuntime().getPreferences();
     boolean bool = localSharedPreferences.getBoolean("_file_assistant_guid_tips_", false);
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.this$0.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
-    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerApiIFileAssistantTipsConfig = localIQFileConfigManager.getFileAssistantTipsConfig();
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.this$0.p.getRuntimeService(IQFileConfigManager.class, "");
+    this.this$0.T = localIQFileConfigManager.getFileAssistantTipsConfig();
     this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
     if (!bool)
     {
@@ -27,7 +27,7 @@ class FileAssistantActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.1
  * JD-Core Version:    0.7.0.1
  */

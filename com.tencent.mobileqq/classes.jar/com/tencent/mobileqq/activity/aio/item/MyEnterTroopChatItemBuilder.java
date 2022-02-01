@@ -31,19 +31,19 @@ public class MyEnterTroopChatItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.a).inflate(2131558861, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131367798));
+      paramViewHolder = LayoutInflater.from(this.c).inflate(2131624481, null);
+      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131434371));
     }
-    paramLinearLayout.b.setMovementMethod(null);
-    paramLinearLayout.b.setGravity(17);
+    paramLinearLayout.d.setMovementMethod(null);
+    paramLinearLayout.d.setGravity(17);
     if ((paramMessageRecord instanceof MessageForMyEnterTroop))
     {
       paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.a.getString(2131697220);
-      paramLinearLayout.b.setText(paramMessageRecord);
-      paramView = this.a.getResources().getColorStateList(2131165418);
+      paramMessageRecord = this.c.getString(2131894993);
+      paramLinearLayout.d.setText(paramMessageRecord);
+      paramView = this.c.getResources().getColorStateList(2131165715);
       if (paramView != null) {
-        paramLinearLayout.b.setTextColor(paramView);
+        paramLinearLayout.d.setTextColor(paramView);
       }
       paramViewHolder.setContentDescription(paramMessageRecord);
     }
@@ -64,7 +64,7 @@ public class MyEnterTroopChatItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -110,29 +110,29 @@ public class RecommendEmotionAdapter
     localObject1 = new RelativeLayout(this.mContext);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams((int)(this.density * 85.0F), (int)(this.density * 85.0F));
     localLayoutParams.gravity = 1;
-    ((RelativeLayout)localObject1).setId(2131374765);
+    ((RelativeLayout)localObject1).setId(2131442955);
     Object localObject2 = new URLImageView(this.mContext);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((URLImageView)localObject2).setId(2131374396);
+    ((URLImageView)localObject2).setId(2131442562);
     ((URLImageView)localObject2).setAdjustViewBounds(true);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     localObject2 = new URLImageView(this.mContext);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((URLImageView)localObject2).setId(2131374395);
+    ((URLImageView)localObject2).setId(2131442561);
     ((URLImageView)localObject2).setAdjustViewBounds(true);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
     localObject2 = new ImageView(this.mContext);
     int i = -2;
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject2).setId(2131374766);
+    ((ImageView)localObject2).setId(2131442956);
     localLayoutParams1.addRule(10, -1);
     localLayoutParams1.addRule(11, -1);
-    ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130850766));
+    ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130852588));
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     localLinearLayout.addView((View)localObject1, localLayoutParams);
     localObject1 = new TextView(this.mContext);
-    ((TextView)localObject1).setId(2131374397);
+    ((TextView)localObject1).setId(2131442563);
     localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(this.density * 18.0F));
     localLayoutParams.gravity = 1;
     localLayoutParams.topMargin = ((int)(this.density * 10.0F));
@@ -143,14 +143,14 @@ public class RecommendEmotionAdapter
     ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
     localLinearLayout.addView((View)localObject1, localLayoutParams);
     localObject1 = new ProgressButton(this.mContext);
-    ((ProgressButton)localObject1).setId(2131374394);
+    ((ProgressButton)localObject1).setId(2131442560);
     if (this.app.getQQAppInterface() == null) {
       i = (int)(this.density * 60.0F);
     }
     localLayoutParams = new LinearLayout.LayoutParams(i, (int)(this.density * 25.0F));
     localLayoutParams.topMargin = ((int)(this.density * 10.0F));
     localLayoutParams.gravity = 1;
-    ((ProgressButton)localObject1).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130846440));
+    ((ProgressButton)localObject1).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847913));
     ((ProgressButton)localObject1).setTextColor(-14894864);
     ((ProgressButton)localObject1).setPadding((int)(this.density * 15.0F), 0, (int)(this.density * 15.0F), 0);
     ((ProgressButton)localObject1).setEllipsize(TextUtils.TruncateAt.END);
@@ -302,23 +302,23 @@ public class RecommendEmotionAdapter
         QLog.d("RecommendEmotionAdapter", 2, ((StringBuilder)localObject1).toString());
       }
       paramView.setVisibility(0);
-      if (paramPromotionEmoticonPkg == paramView.getTag(2131380884)) {
+      if (paramPromotionEmoticonPkg == paramView.getTag(2131449867)) {
         return;
       }
-      paramView.setTag(2131380884, paramPromotionEmoticonPkg);
+      paramView.setTag(2131449867, paramPromotionEmoticonPkg);
       try
       {
-        localObject1 = (URLImageView)paramView.findViewById(2131374396);
-        localObject2 = this.mContext.getResources().getDrawable(2130846448);
-        localObject3 = this.mContext.getResources().getDrawable(2130846449);
+        localObject1 = (URLImageView)paramView.findViewById(2131442562);
+        localObject2 = this.mContext.getResources().getDrawable(2130847921);
+        localObject3 = this.mContext.getResources().getDrawable(2130847922);
         ((URLImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(paramPromotionEmoticonPkg.imgUrl, (Drawable)localObject2, (Drawable)localObject3));
         ((URLImageView)localObject1).setTag(paramPromotionEmoticonPkg);
         ((URLImageView)localObject1).setOnClickListener(this);
-        localObject2 = (TextView)paramView.findViewById(2131374397);
+        localObject2 = (TextView)paramView.findViewById(2131442563);
         ((TextView)localObject2).setText(paramPromotionEmoticonPkg.pkgDesc);
-        ((TextView)localObject2).setTextColor(this.mContext.getResources().getColor(2131167142));
+        ((TextView)localObject2).setTextColor(this.mContext.getResources().getColor(2131168122));
         ((URLImageView)localObject1).setContentDescription(paramPromotionEmoticonPkg.pkgDesc);
-        localObject1 = (ProgressButton)paramView.findViewById(2131374394);
+        localObject1 = (ProgressButton)paramView.findViewById(2131442560);
         ((ProgressButton)localObject1).setText(paramPromotionEmoticonPkg.btnDesc);
         ((ProgressButton)localObject1).setTag(paramPromotionEmoticonPkg);
         ((ProgressButton)localObject1).setContentDescription(paramPromotionEmoticonPkg.btnDesc);
@@ -327,10 +327,10 @@ public class RecommendEmotionAdapter
         if ((this.btns != null) && (!this.btns.contains(localObject1))) {
           this.btns.add(localObject1);
         }
-        localObject2 = (URLImageView)paramView.findViewById(2131374395);
+        localObject2 = (URLImageView)paramView.findViewById(2131442561);
         ((URLImageView)localObject2).setImageDrawable(null);
         ((URLImageView)localObject2).setVisibility(8);
-        localObject2 = (ImageView)paramView.findViewById(2131374766);
+        localObject2 = (ImageView)paramView.findViewById(2131442956);
         ((ImageView)localObject2).setVisibility(8);
         ((ImageView)localObject2).setTag(paramPromotionEmoticonPkg);
         if (paramPromotionEmoticonPkg.redpointFlag == 1)
@@ -361,7 +361,7 @@ public class RecommendEmotionAdapter
         if (f >= 0.0F)
         {
           ((ProgressButton)localObject1).setProgress((int)f);
-          ((ProgressButton)localObject1).setText(this.mContext.getString(2131699719));
+          ((ProgressButton)localObject1).setText(this.mContext.getString(2131897752));
           return;
         }
         ((ProgressButton)localObject1).setText(paramPromotionEmoticonPkg.btnDesc);
@@ -632,7 +632,7 @@ public class RecommendEmotionAdapter
             if (paramMessage.contentView.getVisibility() != 0) {
               return true;
             }
-            if (((URLImageView)paramMessage.contentView.findViewById(2131374396)).getTag() != paramMessage.recommendPkg) {
+            if (((URLImageView)paramMessage.contentView.findViewById(2131442562)).getTag() != paramMessage.recommendPkg) {
               return true;
             }
             localObject1 = this.mShowedEffectList;
@@ -647,7 +647,7 @@ public class RecommendEmotionAdapter
                 localObject2 = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
                 this.mLoadingDrawable = new BitmapDrawable(this.mContext.getResources(), (Bitmap)localObject2);
               }
-              localObject2 = (URLImageView)paramMessage.contentView.findViewById(2131374395);
+              localObject2 = (URLImageView)paramMessage.contentView.findViewById(2131442561);
               localObject1 = getApngDrawable(this.mLoadingDrawable, (String)localObject1, (int)(this.density * 85.0F));
               ((URLImageView)localObject2).setVisibility(0);
               ((URLImageView)localObject2).setImageDrawable((Drawable)localObject1);
@@ -933,7 +933,7 @@ public class RecommendEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

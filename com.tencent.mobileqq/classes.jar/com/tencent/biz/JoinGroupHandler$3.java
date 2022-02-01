@@ -10,19 +10,19 @@ class JoinGroupHandler$3
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
-    if (paramLong != this.a.jdField_a_of_type_Long) {
+    if (paramLong != this.a.d) {
       return;
     }
     JoinGroupHandler localJoinGroupHandler = this.a;
-    localJoinGroupHandler.jdField_a_of_type_Long = 0L;
+    localJoinGroupHandler.d = 0L;
     JoinGroupHandler.a(localJoinGroupHandler, false);
     if (paramBoolean)
     {
       JoinGroupHandler.a(this.a, paramTroopInfo);
       return;
     }
-    JoinGroupHandler.a(this.a, 2131718739, 1);
-    this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
+    JoinGroupHandler.a(this.a, 2131916242, 1);
+    this.a.f.a();
   }
 }
 

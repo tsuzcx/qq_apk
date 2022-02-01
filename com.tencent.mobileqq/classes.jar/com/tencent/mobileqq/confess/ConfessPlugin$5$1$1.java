@@ -23,20 +23,20 @@ class ConfessPlugin$5$1$1
     {
       if (i != 0)
       {
-        ConfessPlugin.a(this.a.a.this$0, false);
-        ConfessPlugin.a(this.a.a.this$0, 1, 2131719009);
+        ConfessPlugin.a(this.a.g.this$0, false);
+        ConfessPlugin.a(this.a.g.this$0, 1, 2131916544);
         return;
       }
-      ConfessPlugin.a(this.a.a.this$0, true);
-      ConfessPlugin.a(this.a.a.this$0, 2, 2131719027);
+      ConfessPlugin.a(this.a.g.this$0, true);
+      ConfessPlugin.a(this.a.g.this$0, 2, 2131916563);
       return;
     }
-    ConfessPlugin.a(this.a.a.this$0, false);
+    ConfessPlugin.a(this.a.g.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.5.1.1
  * JD-Core Version:    0.7.0.1
  */

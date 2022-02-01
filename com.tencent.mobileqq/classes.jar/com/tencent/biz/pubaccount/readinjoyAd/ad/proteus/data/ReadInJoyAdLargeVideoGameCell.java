@@ -67,22 +67,22 @@ public class ReadInJoyAdLargeVideoGameCell
       ((JSONObject)localObject).put("video_play_icon", paramAbsBaseArticleInfo.mSmallMiniGameInfo.g);
     }
     localJSONObject1.put("id_video_play_icon", localObject);
-    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.q)))
+    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.t)))
     {
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("small_game_guide_icon_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.q);
+      ((JSONObject)localObject).put("small_game_guide_icon_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.t);
       localJSONObject1.put("id_small_game_guide_icon", localObject);
     }
-    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.s)))
+    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.v)))
     {
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("game_follow_btn_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.s);
+      ((JSONObject)localObject).put("game_follow_btn_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.v);
       localJSONObject1.put("id_game_follow_btn", localObject);
     }
-    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.u)))
+    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.x)))
     {
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("guide_name_text", paramAbsBaseArticleInfo.mSmallMiniGameInfo.u);
+      ((JSONObject)localObject).put("guide_name_text", paramAbsBaseArticleInfo.mSmallMiniGameInfo.x);
       localJSONObject1.put("id_guide_name_text", localObject);
     }
     localJSONObject1.put("style_ID", "ReadInjoy_ad_small_game_large_cell");
@@ -95,7 +95,7 @@ public class ReadInJoyAdLargeVideoGameCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInJoyAdLargeVideoGameCell
  * JD-Core Version:    0.7.0.1
  */

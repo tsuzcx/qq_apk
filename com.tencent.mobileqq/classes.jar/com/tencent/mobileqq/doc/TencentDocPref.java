@@ -13,17 +13,17 @@ public class TencentDocPref
     return MyPref.a(paramContext, localStringBuilder.toString(), false);
   }
   
-  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  public static void c(Context paramContext, String paramString, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TencentDoc_USER_");
     localStringBuilder.append(paramString);
-    MyPref.a(paramContext, localStringBuilder.toString(), paramBoolean);
+    MyPref.b(paramContext, localStringBuilder.toString(), paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocPref
  * JD-Core Version:    0.7.0.1
  */

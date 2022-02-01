@@ -17,15 +17,15 @@ public final class PTSLiteItemViewUtil$Companion
 {
   private final int a(IReadInJoyModel paramIReadInJoyModel)
   {
-    boolean bool = paramIReadInJoyModel.g();
+    boolean bool = paramIReadInJoyModel.i();
     int j = 3;
     if (bool) {
       return 3;
     }
-    AbsBaseArticleInfo localAbsBaseArticleInfo1 = paramIReadInJoyModel.a();
-    int k = paramIReadInJoyModel.d();
-    AbsBaseArticleInfo localAbsBaseArticleInfo2 = paramIReadInJoyModel.b();
-    int i = paramIReadInJoyModel.e();
+    AbsBaseArticleInfo localAbsBaseArticleInfo1 = paramIReadInJoyModel.k();
+    int k = paramIReadInJoyModel.o();
+    AbsBaseArticleInfo localAbsBaseArticleInfo2 = paramIReadInJoyModel.l();
+    int i = paramIReadInJoyModel.p();
     paramIReadInJoyModel = (Companion)this;
     k = paramIReadInJoyModel.a(localAbsBaseArticleInfo1, k);
     int m = paramIReadInJoyModel.a(localAbsBaseArticleInfo2, i);
@@ -62,11 +62,11 @@ public final class PTSLiteItemViewUtil$Companion
   
   public final int a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    boolean bool = PTSLiteItemViewBuilder.b(paramAbsBaseArticleInfo);
+    boolean bool = PTSLiteItemViewBuilder.c(paramAbsBaseArticleInfo);
     int i = 1;
     if ((!bool) || (paramAbsBaseArticleInfo == null) || (paramAbsBaseArticleInfo.ptsSpecialCard != true))
     {
-      if ((!PTSLiteItemViewBuilder.b(paramAbsBaseArticleInfo)) && (!ProteusSupportUtil.b(paramInt))) {
+      if ((!PTSLiteItemViewBuilder.c(paramAbsBaseArticleInfo)) && (!ProteusSupportUtil.b(paramInt))) {
         return 1;
       }
       i = 0;
@@ -84,7 +84,7 @@ public final class PTSLiteItemViewUtil$Companion
     Intrinsics.checkParameterIsNotNull(paramIReadInJoyModel, "readInJoyModel");
     Intrinsics.checkParameterIsNotNull(paramPTSLitePlayableCardView, "ptsLitePlayableCardView");
     Intrinsics.checkParameterIsNotNull(paramReadInJoyBaseAdapter, "adapter");
-    paramPTSLitePlayableCardView.a(((Companion)this).a(paramIReadInJoyModel));
+    paramPTSLitePlayableCardView.b(((Companion)this).a(paramIReadInJoyModel));
     paramPTSLitePlayableCardView.a(paramIReadInJoyModel, paramReadInJoyBaseAdapter);
   }
   
@@ -100,7 +100,7 @@ public final class PTSLiteItemViewUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSLiteItemViewUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

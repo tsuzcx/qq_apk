@@ -18,42 +18,11 @@ import mqq.app.MobileQQ;
 public class GLDrawableDownloadHelper
 {
   private static boolean a = true;
-  private static boolean b = QVipSDKProcessor.c().a(Build.VERSION.SDK_INT);
+  private static boolean b = QVipSDKProcessor.e().a(Build.VERSION.SDK_INT);
   
   static
   {
     ThreadManagerV2.executeOnSubThread(new GLDrawableDownloadHelper.1());
-  }
-  
-  public static String a(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramContext);
-      localStringBuilder.append("GLDrawableV860.zip");
-      return localStringBuilder.toString();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContext);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("GLDrawableV860.zip");
-    return localStringBuilder.toString();
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      a(false);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -106,17 +75,48 @@ public class GLDrawableDownloadHelper
   
   public static boolean a(Context paramContext)
   {
-    return new File(a(paramContext)).exists();
+    return new File(b(paramContext)).exists();
   }
   
-  public static boolean b()
+  public static String b(Context paramContext)
+  {
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("GLDrawableV860.zip");
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("GLDrawableV860.zip");
+    return localStringBuilder.toString();
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      a(false);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static boolean c()
   {
     return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.gldrawable.GLDrawableDownloadHelper
  * JD-Core Version:    0.7.0.1
  */

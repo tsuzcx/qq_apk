@@ -31,18 +31,12 @@ import tencent.im.oidb.cmd0xebf.oidb_cmd0xebf.RspBody;
 public final class PTSGeneralRequestModule
   extends ReadInJoyEngineModule
 {
-  public static final PTSGeneralRequestModule.Companion a;
-  private final ConcurrentHashMap<Integer, PTSComposer> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsNetworkPTSGeneralRequestModule$Companion = new PTSGeneralRequestModule.Companion(null);
-  }
+  public static final PTSGeneralRequestModule.Companion a = new PTSGeneralRequestModule.Companion(null);
+  private final ConcurrentHashMap<Integer, PTSComposer> b = new ConcurrentHashMap();
   
   public PTSGeneralRequestModule(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable ReadInJoyMSFService paramReadInJoyMSFService, @Nullable Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
   private final void a(ToServiceMsg paramToServiceMsg, PTSComposer paramPTSComposer)
@@ -57,7 +51,7 @@ public final class PTSGeneralRequestModule
     paramToServiceMsg = paramToServiceMsg.getAttributes();
     Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "request.attributes");
     ((Map)paramToServiceMsg).put("key_pts_app_instance_id", Integer.valueOf(i));
-    ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Integer.valueOf(i), paramPTSComposer);
+    ((Map)this.b).put(Integer.valueOf(i), paramPTSComposer);
     paramToServiceMsg = new StringBuilder();
     paramToServiceMsg.append("[addRequestAttributes] uniqueId = ");
     paramToServiceMsg.append(i);
@@ -86,7 +80,7 @@ public final class PTSGeneralRequestModule
     }
     paramToServiceMsg = null;
     label72:
-    paramFromServiceMsg = (PTSComposer)((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).get(paramToServiceMsg);
+    paramFromServiceMsg = (PTSComposer)((Map)this.b).get(paramToServiceMsg);
     paramToServiceMsg = new StringBuilder();
     paramToServiceMsg.append("[handleReceivePtsData], result = ");
     paramToServiceMsg.append(k);
@@ -163,12 +157,12 @@ public final class PTSGeneralRequestModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.network.PTSGeneralRequestModule
  * JD-Core Version:    0.7.0.1
  */

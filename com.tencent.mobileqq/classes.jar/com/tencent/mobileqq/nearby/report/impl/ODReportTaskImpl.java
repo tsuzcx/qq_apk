@@ -28,8 +28,8 @@ public class ODReportTaskImpl
   public ODReportTaskImpl(Application paramApplication)
   {
     this.mApplication = paramApplication;
-    this.mQQVersion = DeviceInfoUtil.c();
-    this.mImei = DeviceInfoUtil.a();
+    this.mQQVersion = DeviceInfoUtil.e();
+    this.mImei = DeviceInfoUtil.b();
     this.mBundle = createBaseReportBundle(this.mApplication);
     this.mBundle.putString("tid", "personal_live_base");
     this.mBundle.putString("bid", "b_sng_im_personal_live");
@@ -41,11 +41,11 @@ public class ODReportTaskImpl
     localBundle.putString("platform", "Android");
     localBundle.putString("uin_type", "0");
     localBundle.putString("manufacturer", Build.MANUFACTURER);
-    localBundle.putString("deviceID", String.valueOf(DeviceInfoUtil.a()));
+    localBundle.putString("deviceID", String.valueOf(DeviceInfoUtil.b()));
     localBundle.putString("osversion", Build.VERSION.RELEASE);
     localBundle.putString("osVersion", Build.VERSION.RELEASE);
     localBundle.putString("rom", Build.MANUFACTURER);
-    localBundle.putString("device", DeviceInfoUtil.j());
+    localBundle.putString("device", DeviceInfoUtil.v());
     localBundle.putString("qqversion", this.mQQVersion);
     localBundle.putString("clientVersion", this.mQQVersion);
     localBundle.putString("actiontime", String.valueOf(System.currentTimeMillis() / 1000L));
@@ -267,7 +267,7 @@ public class ODReportTaskImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.report.impl.ODReportTaskImpl
  * JD-Core Version:    0.7.0.1
  */

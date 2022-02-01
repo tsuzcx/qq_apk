@@ -11,7 +11,7 @@ final class RIJDanmakuModel$1
   public final void run()
   {
     RIJDanmakuModel localRIJDanmakuModel = this.this$0;
-    RIJDanmakuModel.a(localRIJDanmakuModel, RIJDanmakuModel.a(localRIJDanmakuModel) + RIJDanmakuModel.b(this.this$0));
+    RIJDanmakuModel.a(localRIJDanmakuModel, RIJDanmakuModel.b(localRIJDanmakuModel) + RIJDanmakuModel.c(this.this$0));
     RIJDanmakuModel.a(this.this$0, false);
     localRIJDanmakuModel = this.this$0;
     RIJDanmakuModel.a(localRIJDanmakuModel, localRIJDanmakuModel.a());
@@ -19,7 +19,7 @@ final class RIJDanmakuModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.model.RIJDanmakuModel.1
  * JD-Core Version:    0.7.0.1
  */

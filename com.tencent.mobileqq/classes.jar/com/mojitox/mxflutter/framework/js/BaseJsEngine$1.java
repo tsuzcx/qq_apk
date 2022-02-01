@@ -9,13 +9,13 @@ class BaseJsEngine$1
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine.a();
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkCallbackExecuteScriptCallback.a(paramObject);
+    this.a.c();
+    this.b.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.BaseJsEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,27 +15,27 @@ class VipSpecialSoundWebViewPlugin$4
   {
     paramMediaPlayer = new StringBuilder();
     paramMediaPlayer.append("play completed, soundId:");
-    paramMediaPlayer.append(this.jdField_a_of_type_Int);
+    paramMediaPlayer.append(this.a);
     QLog.e("QVipSpecialSoundWebViewPlugin", 1, paramMediaPlayer.toString());
     try
     {
       paramMediaPlayer = new JSONObject();
       paramMediaPlayer.put("code", 1);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+      this.c.callJs(this.b, new String[] { paramMediaPlayer.toString() });
       return;
     }
     catch (JSONException paramMediaPlayer)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCompletion: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.e("QVipSpecialSoundWebViewPlugin", 1, localStringBuilder.toString(), paramMediaPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.4
  * JD-Core Version:    0.7.0.1
  */

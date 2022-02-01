@@ -11,17 +11,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AIOIconChangeByTimeHelper
   implements ILifeCycleHelper
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static Calendar jdField_a_of_type_JavaUtilCalendar = ;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private AIOIconChangeByTimeHelper.TimeChangeReceiver jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOIconChangeByTimeHelper$TimeChangeReceiver;
-  private RedpointObserver jdField_a_of_type_ComTencentMobileqqTianshuObserverRedpointObserver = new AIOIconChangeByTimeHelper.3(this);
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static Calendar d = ;
+  private static int e = -1;
+  private volatile AtomicInteger a = new AtomicInteger(0);
+  private BaseChatPie b;
+  private AIOIconChangeByTimeHelper.TimeChangeReceiver c;
+  private final Object f = new Object();
+  private RedpointObserver g = new AIOIconChangeByTimeHelper.3(this);
   
   AIOIconChangeByTimeHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.b = paramBaseChatPie;
   }
   
   public static boolean a(boolean paramBoolean)
@@ -29,7 +29,7 @@ public class AIOIconChangeByTimeHelper
     boolean bool2 = false;
     boolean bool3 = ThemeUtil.isNowThemeIsDefault(null, false, null);
     boolean bool1;
-    if (jdField_a_of_type_Int == -1) {
+    if (e == -1) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -37,8 +37,8 @@ public class AIOIconChangeByTimeHelper
     int i;
     if ((paramBoolean | bool1))
     {
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-      i = jdField_a_of_type_JavaUtilCalendar.get(11);
+      d.setTimeInMillis(System.currentTimeMillis());
+      i = d.get(11);
       if ((i < 19) && (i >= 7))
       {
         i = 0;
@@ -49,7 +49,7 @@ public class AIOIconChangeByTimeHelper
     {
       i = 1;
       break label82;
-      if (jdField_a_of_type_Int != 1) {
+      if (e != 1) {
         break;
       }
     }
@@ -89,18 +89,18 @@ public class AIOIconChangeByTimeHelper
       {
         if (paramInt == 15)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTianshuObserverRedpointObserver);
+          this.b.d.removeObserver(this.g);
           localObject = new AIOIconChangeByTimeHelper.2(this);
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.addObserver(this.jdField_a_of_type_ComTencentMobileqqTianshuObserverRedpointObserver);
+        this.b.d.addObserver(this.g);
         localObject = new AIOIconChangeByTimeHelper.1(this);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOIconChangeByTimeHelper$TimeChangeReceiver = new AIOIconChangeByTimeHelper.TimeChangeReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, null);
+      this.c = new AIOIconChangeByTimeHelper.TimeChangeReceiver(this.b, null);
     }
     if (localObject != null) {
       try
@@ -117,7 +117,7 @@ public class AIOIconChangeByTimeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper
  * JD-Core Version:    0.7.0.1
  */

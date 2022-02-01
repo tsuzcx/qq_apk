@@ -10,12 +10,7 @@ import org.json.JSONObject;
 public abstract interface IViolaInitDelegate
 {
   @Nullable
-  public abstract Object a();
-  
-  @Nullable
   public abstract String a();
-  
-  public abstract void a();
   
   public abstract void a(@NotNull Bundle paramBundle);
   
@@ -25,11 +20,16 @@ public abstract interface IViolaInitDelegate
   
   public abstract void a(boolean paramBoolean);
   
+  @Nullable
+  public abstract Object b();
+  
   public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.api.IViolaInitDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -22,25 +22,25 @@ class RIJRefreshTopicInfoHandler$2
   
   public void run()
   {
-    ConcurrentMap localConcurrentMap = this.this$0.a.a().c(this.jdField_a_of_type_Int);
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilSet.iterator();
+    ConcurrentMap localConcurrentMap = this.this$0.a.i().d(this.a);
+    Iterator localIterator1 = this.b.iterator();
     while (localIterator1.hasNext())
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)localConcurrentMap.get(Long.valueOf(((Long)localIterator1.next()).longValue()));
-      if ((localAbsBaseArticleInfo != null) && (RIJFeedsType.F(localAbsBaseArticleInfo)) && (localAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null))
+      if ((localAbsBaseArticleInfo != null) && (RIJFeedsType.L(localAbsBaseArticleInfo)) && (localAbsBaseArticleInfo.mNewPolymericInfo.p != null))
       {
-        Iterator localIterator2 = localAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator2 = localAbsBaseArticleInfo.mNewPolymericInfo.p.iterator();
         while (localIterator2.hasNext())
         {
           NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)localIterator2.next();
-          if (localPackArticleInfo.a != null)
+          if (localPackArticleInfo.p != null)
           {
-            Iterator localIterator3 = this.jdField_a_of_type_JavaUtilList.iterator();
+            Iterator localIterator3 = this.c.iterator();
             while (localIterator3.hasNext())
             {
               oidb_cmd0xa6e.TopicInfo localTopicInfo = (oidb_cmd0xa6e.TopicInfo)localIterator3.next();
-              if (localPackArticleInfo.a.b == localTopicInfo.uint64_topic_id.get()) {
-                localPackArticleInfo.a.jdField_a_of_type_Int = localTopicInfo.uint32_pv.get();
+              if (localPackArticleInfo.p.d == localTopicInfo.uint64_topic_id.get()) {
+                localPackArticleInfo.p.a = localTopicInfo.uint32_pv.get();
               }
             }
           }
@@ -53,7 +53,7 @@ class RIJRefreshTopicInfoHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJRefreshTopicInfoHandler.2
  * JD-Core Version:    0.7.0.1
  */

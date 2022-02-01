@@ -22,7 +22,7 @@ public class ConfessMsgLoader
     int i = 0;
     while (i < paramList.size())
     {
-      if (((ChatMessage)paramList.get(i)).getConfessTopicId() == paramBaseSessionInfo.e)
+      if (((ChatMessage)paramList.get(i)).getConfessTopicId() == paramBaseSessionInfo.v)
       {
         localArrayList.add(paramList.get(i));
         if ((((ChatMessage)paramList.get(i)).msgtype == 1032) && (QLog.isColorLevel())) {
@@ -36,23 +36,23 @@ public class ConfessMsgLoader
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext)
   {
-    return a(a(paramAIOContext, false), paramAIOContext.a());
+    return a(a(paramAIOContext, false), paramAIOContext.O());
   }
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext, boolean paramBoolean)
   {
-    BaseSessionInfo localBaseSessionInfo = paramAIOContext.a();
-    return a(paramAIOContext.a().getMessageFacade().a(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int, -1L, localBaseSessionInfo.e, paramBoolean), localBaseSessionInfo);
+    BaseSessionInfo localBaseSessionInfo = paramAIOContext.O();
+    return a(paramAIOContext.a().getMessageFacade().a(localBaseSessionInfo.b, localBaseSessionInfo.a, -1L, localBaseSessionInfo.v, paramBoolean), localBaseSessionInfo);
   }
   
-  public void a(@NonNull AIOContext paramAIOContext)
+  public void b(@NonNull AIOContext paramAIOContext)
   {
     ThreadManager.post(new ConfessMsgLoader.1(this, paramAIOContext), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ConfessMsgLoader
  * JD-Core Version:    0.7.0.1
  */

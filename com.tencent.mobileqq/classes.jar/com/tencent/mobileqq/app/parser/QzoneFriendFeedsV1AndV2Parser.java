@@ -11,9 +11,9 @@ public class QzoneFriendFeedsV1AndV2Parser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QzoneFriendFeedsV1AndV2Action((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qzone";
-    paramBaseQQAppInterface.c = "to_friend_feeds";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qzone";
+    paramBaseQQAppInterface.e = "to_friend_feeds";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class QzoneFriendFeedsV1AndV2Parser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzoneFriendFeedsV1AndV2Parser
  * JD-Core Version:    0.7.0.1
  */

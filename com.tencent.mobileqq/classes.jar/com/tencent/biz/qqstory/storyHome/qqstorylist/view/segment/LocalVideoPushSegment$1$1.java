@@ -7,7 +7,7 @@ class LocalVideoPushSegment$1$1
   
   public void run()
   {
-    LocalVideoPushSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentLocalVideoPushSegment$1.this$0, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentLocalVideoPushSegment$LoadAlbumResult);
+    LocalVideoPushSegment.a(this.b.this$0, this.a);
   }
 }
 

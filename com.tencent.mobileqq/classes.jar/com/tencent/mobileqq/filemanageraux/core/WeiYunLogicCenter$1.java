@@ -36,7 +36,7 @@ class WeiYunLogicCenter$1
       paramLibInfoListGetMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramLibInfoListGetMsgRsp.toString());
     }
-    WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter().a(false, 31, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_JavaLangString });
+    WeiYunLogicCenter.c(this.b).getFileManagerNotifyCenter().a(false, 31, new Object[] { Integer.valueOf(paramInt), paramString, this.a });
   }
   
   public void a(WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
@@ -55,37 +55,37 @@ class WeiYunLogicCenter$1
     {
       localObject3 = (WeiyunPB.FileItem)((Iterator)localObject2).next();
       WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-      localWeiYunFileInfo.jdField_b_of_type_Long = ((WeiyunPB.FileItem)localObject3).file_mtime.get();
-      localWeiYunFileInfo.jdField_a_of_type_Long = ((WeiyunPB.FileItem)localObject3).file_size.get();
-      localWeiYunFileInfo.jdField_a_of_type_Int = ((WeiyunPB.FileItem)localObject3).ext_info.from_source.get();
-      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = ((WeiyunPB.FileItem)localObject3).file_id.get();
-      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = StringUtils.a(((WeiyunPB.FileItem)localObject3).pdir_key.get());
+      localWeiYunFileInfo.e = ((WeiyunPB.FileItem)localObject3).file_mtime.get();
+      localWeiYunFileInfo.d = ((WeiyunPB.FileItem)localObject3).file_size.get();
+      localWeiYunFileInfo.f = ((WeiyunPB.FileItem)localObject3).ext_info.from_source.get();
+      localWeiYunFileInfo.a = ((WeiyunPB.FileItem)localObject3).file_id.get();
+      localWeiYunFileInfo.b = StringUtils.a(((WeiyunPB.FileItem)localObject3).pdir_key.get());
       localWeiYunFileInfo.c = ((WeiyunPB.FileItem)localObject3).filename.get();
-      localWeiYunFileInfo.f = ((WeiyunPB.FileItem)localObject3).ext_info.cookie_name.get();
-      localWeiYunFileInfo.g = ((WeiyunPB.FileItem)localObject3).ext_info.cookie_value.get();
-      localWeiYunFileInfo.e = ((WeiyunPB.FileItem)localObject3).ext_info.thumb_url.get();
-      localWeiYunFileInfo.d = ((WeiyunPB.FileItem)localObject3).ext_info.weiyun_host.get();
-      localWeiYunFileInfo.jdField_b_of_type_Int = ((WeiyunPB.FileItem)localObject3).ext_info.weiyun_port.get();
-      localWeiYunFileInfo.i = StringUtils.a(((WeiyunPB.FileItem)localObject3).file_md5.get());
-      localWeiYunFileInfo.j = StringUtils.a(((WeiyunPB.FileItem)localObject3).file_sha.get());
-      if (!WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).containsKey(localWeiYunFileInfo.jdField_a_of_type_JavaLangString))
+      localWeiYunFileInfo.j = ((WeiyunPB.FileItem)localObject3).ext_info.cookie_name.get();
+      localWeiYunFileInfo.k = ((WeiyunPB.FileItem)localObject3).ext_info.cookie_value.get();
+      localWeiYunFileInfo.i = ((WeiyunPB.FileItem)localObject3).ext_info.thumb_url.get();
+      localWeiYunFileInfo.g = ((WeiyunPB.FileItem)localObject3).ext_info.weiyun_host.get();
+      localWeiYunFileInfo.h = ((WeiyunPB.FileItem)localObject3).ext_info.weiyun_port.get();
+      localWeiYunFileInfo.m = StringUtils.a(((WeiyunPB.FileItem)localObject3).file_md5.get());
+      localWeiYunFileInfo.n = StringUtils.a(((WeiyunPB.FileItem)localObject3).file_sha.get());
+      if (!WeiYunLogicCenter.a(this.b).containsKey(localWeiYunFileInfo.a))
       {
-        WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).put(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo);
+        WeiYunLogicCenter.a(this.b).put(localWeiYunFileInfo.a, localWeiYunFileInfo);
         ((List)localObject1).add(localWeiYunFileInfo);
       }
     }
-    localObject2 = WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter();
-    Object localObject3 = this.jdField_a_of_type_JavaLangString;
+    localObject2 = WeiYunLogicCenter.c(this.b).getFileManagerNotifyCenter();
+    Object localObject3 = this.a;
     boolean bool = false;
     if (paramLibInfoListGetMsgRsp.finish_flag.get() == 1) {
       bool = true;
     }
-    ((FileManagerNotifyCenter)localObject2).a(true, 31, new Object[] { localObject3, Boolean.valueOf(bool), Integer.valueOf(paramLibInfoListGetMsgRsp.FileItem_items.size()), paramLibInfoListGetMsgRsp.server_version.get(), localObject1, Integer.valueOf(WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter)) });
+    ((FileManagerNotifyCenter)localObject2).a(true, 31, new Object[] { localObject3, Boolean.valueOf(bool), Integer.valueOf(paramLibInfoListGetMsgRsp.FileItem_items.size()), paramLibInfoListGetMsgRsp.server_version.get(), localObject1, Integer.valueOf(WeiYunLogicCenter.b(this.b)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.1
  * JD-Core Version:    0.7.0.1
  */

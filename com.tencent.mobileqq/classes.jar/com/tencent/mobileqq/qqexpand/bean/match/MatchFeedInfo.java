@@ -8,13 +8,13 @@ public class MatchFeedInfo
   extends StrangerInfo
 {
   public int a;
-  public List<String> a = new ArrayList();
   public int b;
-  public int c = -1;
+  public List<String> c = new ArrayList();
+  public int d = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.match.MatchFeedInfo
  * JD-Core Version:    0.7.0.1
  */

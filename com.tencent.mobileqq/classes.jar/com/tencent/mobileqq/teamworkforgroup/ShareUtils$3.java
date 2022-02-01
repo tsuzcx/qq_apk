@@ -11,14 +11,14 @@ class ShareUtils$3
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (ShareUtils.a(this.a) != null) {
-      ShareUtils.a(this.a).a();
+    if (ShareUtils.d(this.a) != null) {
+      ShareUtils.d(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.ShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

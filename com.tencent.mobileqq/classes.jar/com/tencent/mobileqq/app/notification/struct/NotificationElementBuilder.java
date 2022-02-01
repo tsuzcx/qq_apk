@@ -12,39 +12,24 @@ import org.jetbrains.annotations.NotNull;
 
 public class NotificationElementBuilder
 {
-  private final Message jdField_a_of_type_ComTencentImcoreMessageMessage;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private NotificationElement jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
-  private final boolean jdField_a_of_type_Boolean;
+  private final Message a;
+  private final QQAppInterface b;
+  private NotificationElement c;
+  private final boolean d;
   
   public NotificationElementBuilder(QQAppInterface paramQQAppInterface, Message paramMessage, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageMessage = paramMessage;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement = new NotificationElement();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramMessage;
+    this.b = paramQQAppInterface;
+    this.c = new NotificationElement();
+    this.d = paramBoolean;
   }
   
-  private Intent a()
+  private void b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-  }
-  
-  private Bitmap a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-  }
-  
-  private String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b();
-  }
-  
-  private void a()
-  {
-    Object localObject = MessageBriefGenerator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentImcoreMessageMessage);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((String)localObject);
-    String str = a().getStringExtra("uinname");
+    Object localObject = MessageBriefGenerator.a(this.b, this.a);
+    this.c.a((String)localObject);
+    String str = e().getStringExtra("uinname");
     if (str != null)
     {
       localObject = str;
@@ -52,63 +37,78 @@ public class NotificationElementBuilder
     }
     else
     {
-      localObject = a().getStringExtra("uin");
+      localObject = e().getStringExtra("uin");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c((String)localObject);
-  }
-  
-  private String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c();
-  }
-  
-  private void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localObject = ((QQAppInterface)localObject).getIntentByMessage(((QQAppInterface)localObject).getApp(), this.jdField_a_of_type_ComTencentImcoreMessageMessage, true);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Intent)localObject);
-    a().putExtra("entrance", 6);
-    a().putExtra("key_notification_click_action", true);
-  }
-  
-  private String c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d();
+    this.c.c((String)localObject);
   }
   
   private void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b(null);
+    Object localObject = this.b;
+    localObject = ((QQAppInterface)localObject).getIntentByMessage(((QQAppInterface)localObject).getApp(), this.a, true);
+    this.c.a((Intent)localObject);
+    e().putExtra("entrance", 6);
+    e().putExtra("key_notification_click_action", true);
+  }
+  
+  private void d()
+  {
+    if (!this.d) {
+      this.c.b(null);
     }
+  }
+  
+  private Intent e()
+  {
+    return this.c.b();
+  }
+  
+  private String f()
+  {
+    return this.c.c();
+  }
+  
+  private String g()
+  {
+    return this.c.d();
+  }
+  
+  private String h()
+  {
+    return this.c.e();
+  }
+  
+  private Bitmap i()
+  {
+    return this.c.f();
   }
   
   @Nullable
   public NotificationElement a()
   {
+    c();
     b();
-    a();
-    int i = this.jdField_a_of_type_ComTencentImcoreMessageMessage.istroop;
-    Object localObject = ProcessorFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement);
+    int i = this.a.istroop;
+    Object localObject = ProcessorFactory.a(this.b, i, this.c);
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement = ((BaseUinTypeProcessor)localObject).a(this.jdField_a_of_type_ComTencentImcoreMessageMessage);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement == null) {
+      this.c = ((BaseUinTypeProcessor)localObject).a(this.a);
+      if (this.c == null) {
         return null;
       }
-      i = ((BaseUinTypeProcessor)localObject).a(this.jdField_a_of_type_ComTencentImcoreMessageMessage);
-      if (a() == null)
+      i = ((BaseUinTypeProcessor)localObject).b(this.a);
+      if (e() == null)
       {
         localObject = new Intent();
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Intent)localObject);
+        this.c.a((Intent)localObject);
       }
-      a().putExtra("KEY_NOTIFY_ID_FROM_PROCESSOR", i);
-      a().putExtra("param_notifyid", i);
-      c();
+      e().putExtra("KEY_NOTIFY_ID_FROM_PROCESSOR", i);
+      e().putExtra("param_notifyid", i);
+      d();
       if (QLog.isColorLevel()) {
-        QLog.d("[NotificationRebuild] NotificationElementBuilder", 2, new Object[] { "[create] build: invoked. ", " notificationElement: ", this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement });
+        QLog.d("[NotificationRebuild] NotificationElementBuilder", 2, new Object[] { "[create] build: invoked. ", " notificationElement: ", this.c });
       }
-      return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
+      return this.c;
     }
     return null;
   }
@@ -116,16 +116,16 @@ public class NotificationElementBuilder
   @NotNull
   public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement == null) {
+    if (this.c == null) {
       return "notificationElement: null";
     }
     Bundle localBundle = null;
-    if (a() != null) {
-      localBundle = a().getExtras();
+    if (e() != null) {
+      localBundle = e().getExtras();
     }
     String str;
-    if (a() != null) {
-      str = String.valueOf(a().getHeight());
+    if (i() != null) {
+      str = String.valueOf(i().getHeight());
     } else {
       str = "using default bitmap";
     }
@@ -133,13 +133,13 @@ public class NotificationElementBuilder
     localStringBuilder.append("NotificationElementBuilder{contentIntentExtras=");
     localStringBuilder.append(localBundle);
     localStringBuilder.append(", ticker='");
-    localStringBuilder.append(a());
+    localStringBuilder.append(f());
     localStringBuilder.append('\'');
     localStringBuilder.append(", contentTitle='");
-    localStringBuilder.append(b());
+    localStringBuilder.append(g());
     localStringBuilder.append('\'');
     localStringBuilder.append(", notificationContentText='");
-    localStringBuilder.append(c());
+    localStringBuilder.append(h());
     localStringBuilder.append('\'');
     localStringBuilder.append(", notificationIconBitmapStr=");
     localStringBuilder.append(str);
@@ -149,7 +149,7 @@ public class NotificationElementBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.NotificationElementBuilder
  * JD-Core Version:    0.7.0.1
  */

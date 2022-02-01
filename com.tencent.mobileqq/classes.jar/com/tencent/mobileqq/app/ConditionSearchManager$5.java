@@ -20,7 +20,7 @@ class ConditionSearchManager$5
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onCondSearchFriendResult searchseq = ");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a.q);
       ((StringBuilder)localObject).append(" | seq = ");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(", isSuccess=");
@@ -31,7 +31,7 @@ class ConditionSearchManager$5
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.jdField_a_of_type_Long != paramLong) {
+    if (this.a.q != paramLong) {
       return;
     }
     Object localObject = null;
@@ -46,13 +46,13 @@ class ConditionSearchManager$5
         } else {
           paramBoolean = false;
         }
-        ((ConditionSearchManager)localObject).jdField_e_of_type_Boolean = paramBoolean;
-        this.a.jdField_f_of_type_Int = paramObject.iPage;
-        this.a.jdField_b_of_type_Long = paramObject.dwSessionID;
-        if (this.a.jdField_b_of_type_JavaUtilList == null) {
-          this.a.jdField_b_of_type_JavaUtilList = paramObject.vUserList;
+        ((ConditionSearchManager)localObject).E = paramBoolean;
+        this.a.z = paramObject.iPage;
+        this.a.A = paramObject.dwSessionID;
+        if (this.a.D == null) {
+          this.a.D = paramObject.vUserList;
         } else if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
-          this.a.jdField_b_of_type_JavaUtilList.addAll(paramObject.vUserList);
+          this.a.D.addAll(paramObject.vUserList);
         }
       }
       else if ((paramObject instanceof oidb_0x972.RspBody))
@@ -69,63 +69,63 @@ class ConditionSearchManager$5
         } else {
           paramBoolean = false;
         }
-        paramObject.jdField_e_of_type_Boolean = paramBoolean;
+        paramObject.E = paramBoolean;
         ConditionSearchManager localConditionSearchManager = this.a;
         paramObject = localObject;
         if (localRspBody.cookie.has()) {
           paramObject = localRspBody.cookie.get().toByteArray();
         }
-        localConditionSearchManager.jdField_a_of_type_ArrayOfByte = paramObject;
+        localConditionSearchManager.B = paramObject;
         if (QLog.isColorLevel())
         {
           paramObject = new StringBuilder();
           paramObject.append("onCondSearchFriendResult hasMore = ");
-          paramObject.append(this.a.jdField_e_of_type_Boolean);
+          paramObject.append(this.a.E);
           paramObject.append(",cookie = ");
-          paramObject.append(this.a.jdField_a_of_type_ArrayOfByte);
+          paramObject.append(this.a.B);
           QLog.d("ConditionSearch.Manager", 2, paramObject.toString());
         }
         paramObject = ConditionSearchManager.a(this.a, localRspBody);
-        if (this.a.jdField_b_of_type_JavaUtilList == null) {
-          this.a.jdField_b_of_type_JavaUtilList = paramObject;
+        if (this.a.D == null) {
+          this.a.D = paramObject;
         } else if (paramObject != null) {
-          this.a.jdField_b_of_type_JavaUtilList.addAll(paramObject);
+          this.a.D.addAll(paramObject);
         }
       }
-      if ((this.a.jdField_g_of_type_Int < 2) && ((this.a.jdField_b_of_type_JavaUtilList == null) || (this.a.jdField_b_of_type_JavaUtilList.size() < 10)) && (this.a.jdField_e_of_type_Boolean))
+      if ((this.a.C < 2) && ((this.a.D == null) || (this.a.D.size() < 10)) && (this.a.E))
       {
         paramObject = this.a;
-        paramObject.jdField_g_of_type_Int += 1;
-        ((FriendListHandler)ConditionSearchManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).condtionalSearchFriendBy0x972(this.a.jdField_a_of_type_Long, this.a.jdField_f_of_type_Int + 1, this.a.jdField_a_of_type_ArrayOfByte, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, this.a.c, this.a.jdField_f_of_type_ArrayOfJavaLangString, this.a.jdField_g_of_type_ArrayOfJavaLangString, this.a.d, this.a.jdField_e_of_type_Int, paramInt2);
+        paramObject.C += 1;
+        ((FriendListHandler)ConditionSearchManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).condtionalSearchFriendBy0x972(this.a.q, this.a.z + 1, this.a.B, this.a.r, this.a.s, this.a.t, this.a.u, this.a.x, this.a.y, this.a.v, this.a.w, paramInt2);
         return;
       }
-      if ((this.a.jdField_b_of_type_JavaUtilList == null) || (this.a.jdField_b_of_type_JavaUtilList.size() < 6)) {
-        this.a.jdField_e_of_type_Boolean = false;
+      if ((this.a.D == null) || (this.a.D.size() < 6)) {
+        this.a.E = false;
       }
       paramObject = this.a;
-      paramObject.a(true, paramObject.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+      paramObject.a(true, paramObject.D, this.a.E, paramInt2);
       return;
     }
     if ((paramBoolean) && (paramInt1 != 0))
     {
       paramObject = this.a;
-      paramObject.jdField_e_of_type_Boolean = false;
-      paramObject.a(true, paramObject.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+      paramObject.E = false;
+      paramObject.a(true, paramObject.D, this.a.E, paramInt2);
       return;
     }
-    if (this.a.jdField_g_of_type_Int == 0)
+    if (this.a.C == 0)
     {
       paramObject = this.a;
-      paramObject.a(false, null, paramObject.jdField_e_of_type_Boolean, paramInt2);
+      paramObject.a(false, null, paramObject.E, paramInt2);
       return;
     }
     paramObject = this.a;
-    paramObject.a(true, paramObject.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+    paramObject.a(true, paramObject.D, this.a.E, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.5
  * JD-Core Version:    0.7.0.1
  */

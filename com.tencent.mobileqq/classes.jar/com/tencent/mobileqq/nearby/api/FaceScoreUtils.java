@@ -23,27 +23,27 @@ public class FaceScoreUtils
     ((StringBuilder)localObject).append(paramAppInterface.getCurrentAccountUin());
     localObject = ((StringBuilder)localObject).toString();
     paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences((String)localObject, 4);
-    localFaceScoreConfig.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
-    localFaceScoreConfig.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
-    localFaceScoreConfig.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
-    localFaceScoreConfig.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
-    localFaceScoreConfig.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
-    localFaceScoreConfig.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
+    localFaceScoreConfig.a = paramAppInterface.getBoolean("isShowCard", false);
+    localFaceScoreConfig.b = paramAppInterface.getBoolean("isShowList", false);
+    localFaceScoreConfig.c = paramAppInterface.getLong("expireTime", 0L);
+    localFaceScoreConfig.d = paramAppInterface.getString("entranceJumpUrl", "");
+    localFaceScoreConfig.e = paramAppInterface.getString("entranceJumpUrlForHost", "");
+    localFaceScoreConfig.f = paramAppInterface.getString("entranceJumpUrlForGuest", "");
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("FaceScoreUtils.getConfig config.expireTime=");
-      paramAppInterface.append(localFaceScoreConfig.jdField_a_of_type_Boolean);
+      paramAppInterface.append(localFaceScoreConfig.a);
       paramAppInterface.append("  config.isShowList=");
-      paramAppInterface.append(localFaceScoreConfig.jdField_b_of_type_Boolean);
+      paramAppInterface.append(localFaceScoreConfig.b);
       paramAppInterface.append("  config.expireTime=");
-      paramAppInterface.append(localFaceScoreConfig.jdField_a_of_type_Long);
-      paramAppInterface.append("  config.entranceJumpUrl=");
-      paramAppInterface.append(localFaceScoreConfig.jdField_a_of_type_JavaLangString);
-      paramAppInterface.append("  config.entranceJumpUrlForHost=");
-      paramAppInterface.append(localFaceScoreConfig.jdField_b_of_type_JavaLangString);
-      paramAppInterface.append("  config.entranceJumpUrlForGuest=");
       paramAppInterface.append(localFaceScoreConfig.c);
+      paramAppInterface.append("  config.entranceJumpUrl=");
+      paramAppInterface.append(localFaceScoreConfig.d);
+      paramAppInterface.append("  config.entranceJumpUrlForHost=");
+      paramAppInterface.append(localFaceScoreConfig.e);
+      paramAppInterface.append("  config.entranceJumpUrlForGuest=");
+      paramAppInterface.append(localFaceScoreConfig.f);
       QLog.e("Q..troop.faceScore", 2, paramAppInterface.toString());
     }
     return localFaceScoreConfig;
@@ -65,22 +65,22 @@ public class FaceScoreUtils
       ((StringBuilder)localObject).append("nearby_face_score_config_");
       ((StringBuilder)localObject).append(paramAppInterface.getCurrentAccountUin());
       localObject = ((StringBuilder)localObject).toString();
-      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences((String)localObject, 4).edit().putBoolean("isShowCard", paramFaceScoreConfig.jdField_a_of_type_Boolean).putBoolean("isShowList", paramFaceScoreConfig.jdField_b_of_type_Boolean).putLong("expireTime", paramFaceScoreConfig.jdField_a_of_type_Long).putString("entranceJumpUrl", paramFaceScoreConfig.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramFaceScoreConfig.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramFaceScoreConfig.c).commit();
+      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences((String)localObject, 4).edit().putBoolean("isShowCard", paramFaceScoreConfig.a).putBoolean("isShowList", paramFaceScoreConfig.b).putLong("expireTime", paramFaceScoreConfig.c).putString("entranceJumpUrl", paramFaceScoreConfig.d).putString("entranceJumpUrlForHost", paramFaceScoreConfig.e).putString("entranceJumpUrlForGuest", paramFaceScoreConfig.f).commit();
       if (QLog.isColorLevel())
       {
         paramAppInterface = new StringBuilder();
         paramAppInterface.append("FaceScoreUtils.saveConfig config.expireTime=");
-        paramAppInterface.append(paramFaceScoreConfig.jdField_a_of_type_Boolean);
+        paramAppInterface.append(paramFaceScoreConfig.a);
         paramAppInterface.append("  config.isShowList=");
-        paramAppInterface.append(paramFaceScoreConfig.jdField_b_of_type_Boolean);
+        paramAppInterface.append(paramFaceScoreConfig.b);
         paramAppInterface.append("  config.expireTime=");
-        paramAppInterface.append(paramFaceScoreConfig.jdField_a_of_type_Long);
-        paramAppInterface.append("  config.entranceJumpUrl=");
-        paramAppInterface.append(paramFaceScoreConfig.jdField_a_of_type_JavaLangString);
-        paramAppInterface.append("  config.entranceJumpUrlForHost=");
-        paramAppInterface.append(paramFaceScoreConfig.jdField_b_of_type_JavaLangString);
-        paramAppInterface.append("  config.entranceJumpUrlForGuest=");
         paramAppInterface.append(paramFaceScoreConfig.c);
+        paramAppInterface.append("  config.entranceJumpUrl=");
+        paramAppInterface.append(paramFaceScoreConfig.d);
+        paramAppInterface.append("  config.entranceJumpUrlForHost=");
+        paramAppInterface.append(paramFaceScoreConfig.e);
+        paramAppInterface.append("  config.entranceJumpUrlForGuest=");
+        paramAppInterface.append(paramFaceScoreConfig.f);
         QLog.e("Q..troop.faceScore", 2, paramAppInterface.toString());
       }
       return;
@@ -158,29 +158,6 @@ public class FaceScoreUtils
     ReportController.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
   }
   
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("nearby_face_score_config_");
-    ((StringBuilder)localObject).append(paramAppInterface.getCurrentAccountUin());
-    localObject = ((StringBuilder)localObject).toString();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences((String)localObject, 4);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("has_insert_face_score_msg_");
-    ((StringBuilder)localObject).append(paramString);
-    boolean bool = paramAppInterface.getBoolean(((StringBuilder)localObject).toString(), false);
-    if (QLog.isColorLevel())
-    {
-      paramAppInterface = new StringBuilder();
-      paramAppInterface.append("FaceScoreUtils.getHasInsertMsgFlag uin=");
-      paramAppInterface.append(paramString);
-      paramAppInterface.append("  flag=");
-      paramAppInterface.append(bool);
-      QLog.e("Q..troop.faceScore", 2, paramAppInterface.toString());
-    }
-    return bool;
-  }
-  
   public static boolean a(MessageRecord paramMessageRecord, String paramString)
   {
     if (QLog.isColorLevel())
@@ -223,10 +200,33 @@ public class FaceScoreUtils
     }
     return bool1;
   }
+  
+  public static boolean b(AppInterface paramAppInterface, String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("nearby_face_score_config_");
+    ((StringBuilder)localObject).append(paramAppInterface.getCurrentAccountUin());
+    localObject = ((StringBuilder)localObject).toString();
+    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences((String)localObject, 4);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("has_insert_face_score_msg_");
+    ((StringBuilder)localObject).append(paramString);
+    boolean bool = paramAppInterface.getBoolean(((StringBuilder)localObject).toString(), false);
+    if (QLog.isColorLevel())
+    {
+      paramAppInterface = new StringBuilder();
+      paramAppInterface.append("FaceScoreUtils.getHasInsertMsgFlag uin=");
+      paramAppInterface.append(paramString);
+      paramAppInterface.append("  flag=");
+      paramAppInterface.append(bool);
+      QLog.e("Q..troop.faceScore", 2, paramAppInterface.toString());
+    }
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.FaceScoreUtils
  * JD-Core Version:    0.7.0.1
  */

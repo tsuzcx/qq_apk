@@ -17,7 +17,7 @@ class PullLoadMoreAdapter$2
   {
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      this.a.g();
+      this.a.r();
     }
   }
 }

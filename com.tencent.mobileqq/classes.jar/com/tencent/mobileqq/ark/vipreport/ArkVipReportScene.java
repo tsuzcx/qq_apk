@@ -9,17 +9,17 @@ import org.json.JSONObject;
 
 public class ArkVipReportScene
 {
-  public long a;
   public String a;
-  public ArrayList<ArkVipReportItem> a;
-  public long b;
   public String b;
-  public long c;
   public String c;
   public String d;
   public String e;
   public String f;
   public String g;
+  public long h;
+  public long i;
+  public long j;
+  public ArrayList<ArkVipReportItem> k;
   
   public JSONObject a()
   {
@@ -28,21 +28,21 @@ public class ArkVipReportScene
     {
       try
       {
-        boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+        boolean bool = TextUtils.isEmpty(this.a);
         String str2 = "";
         if (!bool)
         {
-          Object localObject = this.jdField_a_of_type_JavaLangString;
+          Object localObject = this.a;
           localJSONObject.put("uin", localObject);
-          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          if (TextUtils.isEmpty(this.b)) {
             break label326;
           }
-          localObject = this.jdField_b_of_type_JavaLangString;
+          localObject = this.b;
           localJSONObject.put("phone", localObject);
-          if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+          if (TextUtils.isEmpty(this.c)) {
             break label332;
           }
-          localObject = this.jdField_c_of_type_JavaLangString;
+          localObject = this.c;
           localJSONObject.put("os", localObject);
           if (TextUtils.isEmpty(this.d)) {
             break label338;
@@ -64,17 +64,17 @@ public class ArkVipReportScene
             localObject = this.g;
           }
           localJSONObject.put("endEvt", localObject);
-          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
-          localJSONObject.put("endTime", this.jdField_b_of_type_Long);
-          localJSONObject.put("costTime", this.jdField_c_of_type_Long);
+          localJSONObject.put("startTime", this.h);
+          localJSONObject.put("endTime", this.i);
+          localJSONObject.put("costTime", this.j);
           localObject = new JSONArray();
-          if (this.jdField_a_of_type_JavaUtilArrayList != null)
+          if (this.k != null)
           {
-            int i = 0;
-            if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+            int m = 0;
+            if (m < this.k.size())
             {
-              ((JSONArray)localObject).put(i, ((ArkVipReportItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-              i += 1;
+              ((JSONArray)localObject).put(m, ((ArkVipReportItem)this.k.get(m)).a());
+              m += 1;
               continue;
             }
           }
@@ -108,7 +108,7 @@ public class ArkVipReportScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReportScene
  * JD-Core Version:    0.7.0.1
  */

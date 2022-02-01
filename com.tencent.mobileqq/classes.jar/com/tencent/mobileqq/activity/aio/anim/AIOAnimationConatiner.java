@@ -24,19 +24,12 @@ public class AIOAnimationConatiner
   extends ViewGroup
   implements View.OnLayoutChangeListener
 {
-  public static final ViewGroup.LayoutParams a;
-  public static ClassLoader a;
-  private int jdField_a_of_type_Int;
-  private AIOAnimationConatiner.AIOAnimator jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
-  public IAioAnimListener a;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<AIOAnimationConatiner.AIOAnimator> jdField_a_of_type_JavaUtilList;
-  
-  static
-  {
-    jdField_a_of_type_AndroidViewViewGroup$LayoutParams = new ViewGroup.LayoutParams(-2, -2);
-    jdField_a_of_type_JavaLangClassLoader = AIOAnimationConatiner.class.getClassLoader();
-  }
+  public static final ViewGroup.LayoutParams a = new ViewGroup.LayoutParams(-2, -2);
+  public static ClassLoader b = AIOAnimationConatiner.class.getClassLoader();
+  private AIOAnimationConatiner.AIOAnimator c;
+  private List<AIOAnimationConatiner.AIOAnimator> d;
+  private int e;
+  private ListView f;
   
   public AIOAnimationConatiner(Context paramContext)
   {
@@ -48,7 +41,7 @@ public class AIOAnimationConatiner
     super(paramContext, paramAttributeSet);
   }
   
-  private AIOAnimationConatiner.AIOAnimator a(int paramInt)
+  private AIOAnimationConatiner.AIOAnimator d(int paramInt)
   {
     if (paramInt != 0)
     {
@@ -67,43 +60,43 @@ public class AIOAnimationConatiner
                   if (paramInt != 9) {
                     return null;
                   }
-                  return new DigitLottieAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+                  return new DigitLottieAnimation(paramInt, this, this.f);
                 }
-                return new BusinessEggsAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+                return new BusinessEggsAnimation(paramInt, this, this.f);
               }
-              return new LottieAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+              return new LottieAnimation(paramInt, this, this.f);
             }
-            return new BubbleInterActiveAnim(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+            return new BubbleInterActiveAnim(paramInt, this, this.f);
           }
-          return new PathAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+          return new PathAnimation(paramInt, this, this.f);
         }
-        return new FloorJumperSet(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+        return new FloorJumperSet(paramInt, this, this.f);
       }
-      return new ComboAnimation3(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new ComboAnimation3(paramInt, this, this.f);
     }
-    return new BubbleAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
-  }
-  
-  private void f()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() != 0))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        a(((AIOAnimationConatiner.AIOAnimator)((Iterator)localObject).next()).jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
+    return new BubbleAnimation(paramInt, this, this.f);
   }
   
   private void g()
   {
+    Object localObject = this.d;
+    if ((localObject != null) && (((List)localObject).size() != 0))
+    {
+      localObject = this.d.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        a(((AIOAnimationConatiner.AIOAnimator)((Iterator)localObject).next()).c);
+      }
+      this.d.clear();
+    }
+  }
+  
+  private void h()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("AIOAnimationContainer", 2, "animation end");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = null;
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    this.c = null;
+    List localList = this.d;
     if ((localList == null) || (localList.size() == 0))
     {
       removeAllViewsInLayout();
@@ -114,18 +107,13 @@ public class AIOAnimationConatiner
     invalidate();
   }
   
-  public ListView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetListView;
-  }
-  
   public void a()
   {
-    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.c;
     if (localAIOAnimator != null) {
       localAIOAnimator.c();
     }
-    g();
+    h();
   }
   
   public void a(int paramInt)
@@ -133,12 +121,12 @@ public class AIOAnimationConatiner
     int i = 0;
     for (;;)
     {
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.d;
       if ((localObject == null) || (i >= ((List)localObject).size())) {
         break;
       }
-      localObject = (AIOAnimationConatiner.AIOAnimator)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((localObject != null) && (paramInt == ((AIOAnimationConatiner.AIOAnimator)localObject).jdField_a_of_type_Int)) {
+      localObject = (AIOAnimationConatiner.AIOAnimator)this.d.get(i);
+      if ((localObject != null) && (paramInt == ((AIOAnimationConatiner.AIOAnimator)localObject).c)) {
         break label61;
       }
       i += 1;
@@ -149,10 +137,10 @@ public class AIOAnimationConatiner
     if (i != -1)
     {
       ((AIOAnimationConatiner.AIOAnimator)localObject).c();
-      this.jdField_a_of_type_JavaUtilList.remove(i);
+      this.d.remove(i);
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
-    if (((localObject == null) || (((List)localObject).size() == 0)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator == null))
+    localObject = this.d;
+    if (((localObject == null) || (((List)localObject).size() == 0)) && (this.c == null))
     {
       removeAllViewsInLayout();
       if (QLog.isColorLevel()) {
@@ -165,7 +153,7 @@ public class AIOAnimationConatiner
   public void a(ListView paramListView)
   {
     AssertUtils.checkNotNull(paramListView);
-    ListView localListView = this.jdField_a_of_type_ComTencentWidgetListView;
+    ListView localListView = this.f;
     if (localListView == paramListView)
     {
       SLog.e("AIOAnimationConatiner", "attach the same listView!");
@@ -174,42 +162,37 @@ public class AIOAnimationConatiner
     if (localListView != null)
     {
       SLog.e("AIOAnimationConatiner", "attach and override listView!");
-      e();
+      f();
     }
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_ComTencentWidgetListView.addOnLayoutChangeListener(this);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null;
+    this.f = paramListView;
+    this.f.addOnLayoutChangeListener(this);
   }
   
   public boolean a(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
-    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.c;
     boolean bool1 = false;
-    if ((localAIOAnimator != null) && (paramInt2 < localAIOAnimator.jdField_a_of_type_Int)) {
+    if ((localAIOAnimator != null) && (paramInt2 < localAIOAnimator.c)) {
       return false;
     }
-    localAIOAnimator = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
-    if ((localAIOAnimator != null) && (paramInt2 == localAIOAnimator.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramInt1))) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramVarArgs);
+    localAIOAnimator = this.c;
+    if ((localAIOAnimator != null) && (paramInt2 == localAIOAnimator.c) && (this.c.b(paramInt1))) {
+      return this.c.a(paramVarArgs);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
+    if (this.c != null) {
       a();
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = a(paramInt1);
-    localAIOAnimator = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    this.e = paramInt1;
+    this.c = d(paramInt1);
+    localAIOAnimator = this.c;
     if (localAIOAnimator != null)
     {
-      localAIOAnimator.jdField_a_of_type_Int = paramInt2;
+      localAIOAnimator.c = paramInt2;
       boolean bool2 = localAIOAnimator.a(paramVarArgs);
       bool1 = bool2;
       if (!bool2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = null;
+        this.c = null;
         bool1 = bool2;
       }
     }
@@ -223,27 +206,27 @@ public class AIOAnimationConatiner
   
   public void b()
   {
-    f();
+    g();
     a();
   }
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) && (paramInt == this.jdField_a_of_type_Int)) {
+    if ((this.c != null) && (paramInt == this.e)) {
       a();
     }
   }
   
   public boolean b(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.d == null) {
+      this.d = new ArrayList();
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext())
     {
       AIOAnimationConatiner.AIOAnimator localAIOAnimator = (AIOAnimationConatiner.AIOAnimator)((Iterator)localObject).next();
-      if ((paramInt1 == localAIOAnimator.jdField_a_of_type_Int) && (localAIOAnimator.a(paramInt1)))
+      if ((paramInt1 == localAIOAnimator.c) && (localAIOAnimator.b(paramInt1)))
       {
         localAIOAnimator.a(paramVarArgs);
         if (QLog.isColorLevel())
@@ -261,11 +244,11 @@ public class AIOAnimationConatiner
     label124:
     if (paramInt2 == 0)
     {
-      localObject = a(paramInt1);
+      localObject = d(paramInt1);
       if (localObject == null) {
         return false;
       }
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
+      this.d.add(localObject);
       ((AIOAnimationConatiner.AIOAnimator)localObject).a(paramVarArgs);
       if (QLog.isColorLevel())
       {
@@ -278,54 +261,59 @@ public class AIOAnimationConatiner
     return true;
   }
   
-  public void c()
+  public void c(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.c;
+    if (localAIOAnimator != null) {
+      localAIOAnimator.a(paramInt);
+    }
+  }
+  
+  public boolean c()
+  {
+    return this.c != null;
+  }
+  
+  public void d()
+  {
+    Object localObject = this.c;
     if (localObject != null) {
       ((AIOAnimationConatiner.AIOAnimator)localObject).a();
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.d;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.d.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((AIOAnimationConatiner.AIOAnimator)((Iterator)localObject).next()).a();
       }
     }
   }
   
-  public void c(int paramInt)
+  public void e()
   {
-    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
-    if (localAIOAnimator != null) {
-      localAIOAnimator.a(paramInt);
-    }
-  }
-  
-  public void d()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    Object localObject = this.c;
     if (localObject != null) {
       ((AIOAnimationConatiner.AIOAnimator)localObject).b();
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.d;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.d.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((AIOAnimationConatiner.AIOAnimator)((Iterator)localObject).next()).b();
       }
     }
   }
   
-  public void e()
+  public void f()
   {
-    ListView localListView = this.jdField_a_of_type_ComTencentWidgetListView;
+    ListView localListView = this.f;
     if (localListView == null) {
       return;
     }
     localListView.removeOnLayoutChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetListView = null;
+    this.f = null;
   }
   
   protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
@@ -334,22 +322,27 @@ public class AIOAnimationConatiner
     if ((VersionUtils.e()) && ((localObject instanceof AnimationPath.Values)))
     {
       localObject = (AnimationPath.Values)localObject;
-      if (((AnimationPath.Values)localObject).b)
+      if (((AnimationPath.Values)localObject).k)
       {
         Matrix localMatrix = paramTransformation.getMatrix();
         localMatrix.reset();
         int i = paramView.getWidth() / 2;
         int j = paramView.getHeight() / 2;
-        float f1 = ((AnimationPath.Values)localObject).a;
+        float f1 = ((AnimationPath.Values)localObject).c;
         float f2 = i;
         float f3 = j;
         localMatrix.preRotate(f1, f2, f3);
-        localMatrix.preScale(((AnimationPath.Values)localObject).d, ((AnimationPath.Values)localObject).e, f3, f3);
-        paramTransformation.setAlpha(((AnimationPath.Values)localObject).f);
+        localMatrix.preScale(((AnimationPath.Values)localObject).f, ((AnimationPath.Values)localObject).g, f3, f3);
+        paramTransformation.setAlpha(((AnimationPath.Values)localObject).i);
         return true;
       }
     }
     return false;
+  }
+  
+  public ListView getListView()
+  {
+    return this.f;
   }
   
   public boolean isInEditMode()
@@ -360,7 +353,7 @@ public class AIOAnimationConatiner
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ListView localListView = this.jdField_a_of_type_ComTencentWidgetListView;
+    ListView localListView = this.f;
     if (localListView != null) {
       localListView.removeOnLayoutChangeListener(this);
     }
@@ -368,7 +361,7 @@ public class AIOAnimationConatiner
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    AIOAnimationConatiner.AIOAnimator localAIOAnimator = this.c;
     if (localAIOAnimator != null) {
       localAIOAnimator.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
@@ -376,7 +369,7 @@ public class AIOAnimationConatiner
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null)
+    if (this.c != null)
     {
       boolean bool;
       if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
@@ -384,13 +377,13 @@ public class AIOAnimationConatiner
       } else {
         bool = true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
+      this.c.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner
  * JD-Core Version:    0.7.0.1
  */

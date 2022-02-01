@@ -25,7 +25,7 @@ public class RockDownloaderManager
   private void a()
   {
     long l = System.currentTimeMillis();
-    Object localObject1 = RockDownloader.a().query(RockDownloadInfo.class);
+    Object localObject1 = RockDownloader.b().query(RockDownloadInfo.class);
     RockDownloadInfo localRockDownloadInfo;
     int i;
     if (localObject1 != null)
@@ -41,14 +41,14 @@ public class RockDownloaderManager
           if (((VFSFile)localObject2).exists()) {
             ((VFSFile)localObject2).delete();
           }
-          RockDownloader.a().remove(localRockDownloadInfo);
+          RockDownloader.b().remove(localRockDownloadInfo);
           if (QLog.isColorLevel()) {
             QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has overdue", localRockDownloadInfo });
           }
         }
         else
         {
-          localObject2 = PackageUtil.d(this.a.getApp(), localRockDownloadInfo.getPackageName());
+          localObject2 = PackageUtil.e(this.a.getApp(), localRockDownloadInfo.getPackageName());
           try
           {
             i = Integer.parseInt((String)localObject2);
@@ -59,7 +59,7 @@ public class RockDownloaderManager
             if (((VFSFile)localObject2).exists()) {
               ((VFSFile)localObject2).delete();
             }
-            RockDownloader.a().remove(localRockDownloadInfo);
+            RockDownloader.b().remove(localRockDownloadInfo);
             if (!QLog.isColorLevel()) {
               continue;
             }
@@ -103,7 +103,7 @@ public class RockDownloaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager
  * JD-Core Version:    0.7.0.1
  */

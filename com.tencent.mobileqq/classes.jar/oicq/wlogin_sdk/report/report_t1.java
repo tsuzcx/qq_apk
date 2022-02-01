@@ -16,14 +16,14 @@ public class report_t1
   public String _app_sig = new String("");
   public String _app_v = new String("");
   public String _btime = util.get_release_time();
-  public String _bver = "6.0.0.2473";
+  public String _bver = "6.0.0.2477";
   public String _device = new String("");
   public String _disp_name = new String("");
   public String _ksid = new String("");
   public TreeMap<Integer, report_t2> _lst = new TreeMap();
   public int _os = 2;
   public String _os_v = new String("");
-  public String _sdk_v = new Integer(17).toString();
+  public String _sdk_v = new Integer(18).toString();
   
   public void add_t2(report_t2 paramreport_t2)
   {
@@ -181,7 +181,7 @@ public class report_t1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.report.report_t1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,38 +18,28 @@ import org.json.JSONObject;
 public final class CEArgument
   extends Argument
 {
-  public static final CEArgument.Companion a;
-  private final IScriptService jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService;
-  @NotNull
-  private final Lazy jdField_a_of_type_KotlinLazy;
-  @NotNull
-  private final Lazy b;
+  public static final CEArgument.Companion a = new CEArgument.Companion(null);
   @NotNull
   private final Lazy c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowCrossengineModelCEArgument$Companion = new CEArgument.Companion(null);
-  }
+  @NotNull
+  private final Lazy d;
+  @NotNull
+  private final Lazy e;
+  private final IScriptService f;
   
   public CEArgument(@NotNull IScriptService paramIScriptService, @Nullable String paramString)
   {
     super(paramIScriptService, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService = paramIScriptService;
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new CEArgument.moduleName.2(this));
-    this.b = LazyKt.lazy((Function0)new CEArgument.callbackId.2(this));
-    this.c = LazyKt.lazy((Function0)new CEArgument.isAsync.2(this));
-  }
-  
-  public final int a()
-  {
-    return ((Number)this.b.getValue()).intValue();
+    this.f = paramIScriptService;
+    this.c = LazyKt.lazy((Function0)new CEArgument.moduleName.2(this));
+    this.d = LazyKt.lazy((Function0)new CEArgument.callbackId.2(this));
+    this.e = LazyKt.lazy((Function0)new CEArgument.isAsync.2(this));
   }
   
   @NotNull
   public final String a()
   {
-    return (String)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (String)this.c.getValue();
   }
   
   @Deprecated(message="CE回调无需命令字")
@@ -63,12 +53,12 @@ public final class CEArgument
       localStringBuilder.append("callback for responseCmd:");
       localStringBuilder.append(paramString1);
       localStringBuilder.append("(reqCmd:");
-      localStringBuilder.append(c());
+      localStringBuilder.append(f());
       localStringBuilder.append(") with responseData:");
       localStringBuilder.append(paramString2);
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService.a(CEChannelUtil.a.a(paramString1, paramString2));
+    this.f.a(CEChannelUtil.a.a(paramString1, paramString2));
   }
   
   public final void a(@Nullable JSONObject paramJSONObject)
@@ -78,14 +68,14 @@ public final class CEArgument
       localObject1 = String.valueOf(this);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("callback for (reqCmd:");
-      ((StringBuilder)localObject2).append(c());
+      ((StringBuilder)localObject2).append(f());
       ((StringBuilder)localObject2).append(") with responseData:");
       ((StringBuilder)localObject2).append(paramJSONObject);
       QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService;
+    Object localObject1 = this.f;
     Object localObject2 = CEChannelUtil.a;
-    int i = a();
+    int i = b();
     if (paramJSONObject != null) {
       paramJSONObject = paramJSONObject.toString();
     } else {
@@ -94,14 +84,19 @@ public final class CEArgument
     ((IScriptService)localObject1).a(((CEChannelUtil)localObject2).a(String.valueOf(i), paramJSONObject));
   }
   
-  public final boolean a()
+  public final int b()
   {
-    return ((Boolean)this.c.getValue()).booleanValue();
+    return ((Number)this.d.getValue()).intValue();
+  }
+  
+  public final boolean c()
+  {
+    return ((Boolean)this.e.getValue()).booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.model.CEArgument
  * JD-Core Version:    0.7.0.1
  */

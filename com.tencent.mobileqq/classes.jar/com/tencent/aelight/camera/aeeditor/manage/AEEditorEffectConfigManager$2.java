@@ -15,24 +15,24 @@ class AEEditorEffectConfigManager$2
   
   public void run()
   {
-    if (!TextUtils.isEmpty(AEEditorEffectConfigManager.a())) {
+    if (!TextUtils.isEmpty(AEEditorEffectConfigManager.b())) {
       try
       {
-        synchronized (AEEditorEffectConfigManager.a())
+        synchronized (AEEditorEffectConfigManager.c())
         {
-          if (new File(AEEditorEffectConfigManager.a()).exists())
+          if (new File(AEEditorEffectConfigManager.b()).exists())
           {
             if (AEEditorEffectConfigManager.a(this.this$0) != null) {
-              AEEditorEffectConfigManager.a(this.this$0).a(AEEditorEffectConfigManager.a());
+              AEEditorEffectConfigManager.a(this.this$0).a(AEEditorEffectConfigManager.b());
             } else {
               AEQLog.d("AEEditorEffectConfigManager", "group list back is null.");
             }
           }
           else if (AEEditorEffectConfigManager.a(this.this$0) != null)
           {
-            ((AEEditorEffectConfigProcessor)QConfigManager.a().a(643)).a();
-            ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(AEEditorEffectConfigManager.a(this.this$0));
-            ThreadManager.getSubThreadHandler().postAtTime(new AEEditorEffectConfigManager.2.1(this), AEEditorEffectConfigManager.a(this.this$0), SystemClock.uptimeMillis() + 5000L);
+            ((AEEditorEffectConfigProcessor)QConfigManager.b().a(643)).a();
+            ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(AEEditorEffectConfigManager.b(this.this$0));
+            ThreadManager.getSubThreadHandler().postAtTime(new AEEditorEffectConfigManager.2.1(this), AEEditorEffectConfigManager.b(this.this$0), SystemClock.uptimeMillis() + 5000L);
           }
           else
           {
@@ -51,7 +51,7 @@ class AEEditorEffectConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

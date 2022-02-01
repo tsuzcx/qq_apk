@@ -54,7 +54,7 @@ class ScribbleItemBuilder$ProgressRunnable
       }
       ScribbleItemBuilder.a((MessageForScribble)localObject1);
       ScribbleItemBuilder.a((MessageForScribble)localObject1, (ScribbleItemBuilder.Holder)localObject2, ((MessageForScribble)localObject1).mUiProgress, false, localContext, (Handler)localObject3);
-      if (((ScribbleItemBuilder.Holder)localObject2).a.isShown()) {
+      if (((ScribbleItemBuilder.Holder)localObject2).b.isShown()) {
         ((Handler)localObject3).postDelayed(((MessageForScribble)localObject1).mUpdateProgressRunnable, 50L);
       }
     }
@@ -62,7 +62,7 @@ class ScribbleItemBuilder$ProgressRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.ProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

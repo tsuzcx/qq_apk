@@ -4,50 +4,50 @@ import java.util.List;
 
 public class MsgBackupUserData$Builder
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
-  private String b;
+  private String a;
+  private List<Integer> b;
   private String c;
+  private String d;
+  private int e;
   
   public Builder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public Builder a(List<Integer> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     return this;
   }
   
   public MsgBackupUserData a()
   {
-    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
+    return new MsgBackupUserData(this.a, this.b, this.c, this.d, this.e, null);
   }
   
   public Builder b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
     return this;
   }
   
   public Builder c(String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupUserData.Builder
  * JD-Core Version:    0.7.0.1
  */

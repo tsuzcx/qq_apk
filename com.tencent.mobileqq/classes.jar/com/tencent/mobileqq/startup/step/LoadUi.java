@@ -8,7 +8,7 @@ public class LoadUi
 {
   protected boolean doStep()
   {
-    AppActivity localAppActivity = this.mDirector.a;
+    AppActivity localAppActivity = this.mDirector.e;
     if (localAppActivity != null) {
       localAppActivity.preloadUi();
     }
@@ -17,7 +17,7 @@ public class LoadUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadUi
  * JD-Core Version:    0.7.0.1
  */

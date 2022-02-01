@@ -2,9 +2,9 @@ package com.tencent.biz.qqstory.view.widget;
 
 public abstract interface LoadingMoreHelper$OnLoadMoreListener
 {
-  public abstract void a();
-  
   public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void bx_();
 }
 
 

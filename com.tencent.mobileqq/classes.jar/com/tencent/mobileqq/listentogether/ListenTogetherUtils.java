@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.avbiz.AVBizModuleFactory;
+import com.tencent.avbiz.IModule;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -47,7 +49,7 @@ public class ListenTogetherUtils
     int i = -1;
     try
     {
-      paramString2 = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString2);
+      paramString2 = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString2);
       if (paramString2 != null)
       {
         if (paramString2.isTroopOwner(paramString1)) {
@@ -65,63 +67,37 @@ public class ListenTogetherUtils
     return -1;
   }
   
-  public static String a()
-  {
-    String str2 = ThemeUtil.getCurrentThemeId();
-    String str1 = str2;
-    if (!"3064".equals(str2))
-    {
-      str1 = str2;
-      if (!"3063".equals(str2))
-      {
-        str1 = str2;
-        if (!"3066".equals(str2))
-        {
-          str1 = str2;
-          if (!"3065".equals(str2))
-          {
-            if ("3067".equals(str2)) {
-              return str2;
-            }
-            str1 = "";
-          }
-        }
-      }
-    }
-    return str1;
-  }
-  
   public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 == 2)
     {
       if (paramInt3 == 3) {
-        return HardCodeUtil.a(2131693643);
+        return HardCodeUtil.a(2131891218);
       }
       if (paramInt3 == 2) {
-        return HardCodeUtil.a(2131693654);
+        return HardCodeUtil.a(2131891229);
       }
       if (paramInt3 == 1) {
-        return HardCodeUtil.a(2131693670);
+        return HardCodeUtil.a(2131891245);
       }
-      return HardCodeUtil.a(2131693664);
+      return HardCodeUtil.a(2131891239);
     }
     StringBuilder localStringBuilder;
     if (paramInt2 > 1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt2);
-      localStringBuilder.append(HardCodeUtil.a(2131693662));
+      localStringBuilder.append(HardCodeUtil.a(2131891237));
       return localStringBuilder.toString();
     }
     if (paramInt2 == 1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt2);
-      localStringBuilder.append(HardCodeUtil.a(2131693680));
+      localStringBuilder.append(HardCodeUtil.a(2131891255));
       return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131693664);
+    return HardCodeUtil.a(2131891239);
   }
   
   public static final String a(int paramInt, String paramString)
@@ -185,13 +161,13 @@ public class ListenTogetherUtils
     }
     String str1 = paramMusicInfo.b.trim();
     String str2 = str1;
-    if (paramMusicInfo.a != null)
+    if (paramMusicInfo.d != null)
     {
       int i = 0;
       int j = 1;
-      while (i < paramMusicInfo.a.size())
+      while (i < paramMusicInfo.d.size())
       {
-        str2 = (String)paramMusicInfo.a.get(i);
+        str2 = (String)paramMusicInfo.d.get(i);
         if (!TextUtils.isEmpty(str2))
         {
           StringBuilder localStringBuilder;
@@ -247,8 +223,8 @@ public class ListenTogetherUtils
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     ListenTogetherManager localListenTogetherManager = ListenTogetherManager.a((QQAppInterface)localObject);
-    boolean bool2 = localListenTogetherManager.b(paramInt1, paramString1);
-    boolean bool3 = localListenTogetherManager.a(paramInt1, paramString1);
+    boolean bool2 = localListenTogetherManager.d(paramInt1, paramString1);
+    boolean bool3 = localListenTogetherManager.c(paramInt1, paramString1);
     boolean bool1 = false;
     QLog.d("ListenTogetherUtils", 1, new Object[] { "onJoinClick sessionType=", Integer.valueOf(paramInt1), ",uin=", MobileQQ.getShortUinStr(paramString1), ",joinFrom=", Integer.valueOf(paramInt2), ",reopenIfNeed=", Boolean.valueOf(paramBoolean), ",songId=", paramString2, ",meJoined=", Boolean.valueOf(bool2), ",isOpened=", Boolean.valueOf(bool3) });
     if ((!bool2) && (!bool3))
@@ -257,11 +233,11 @@ public class ListenTogetherUtils
       {
         localObject = DialogUtil.a(paramContext, 230);
         paramString2 = new ListenTogetherUtils.1(paramInt1, paramString1, paramString2, paramInt2);
-        ((QQCustomDialog)localObject).setTitle(2131693656);
+        ((QQCustomDialog)localObject).setTitle(2131891231);
         ((QQCustomDialog)localObject).setTitleMutiLine();
         ((QQCustomDialog)localObject).setMessage(null);
-        ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131706255), paramString2);
-        ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131693644), paramString2);
+        ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131898212), paramString2);
+        ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131891219), paramString2);
         ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
         if (!((BaseActivity)paramContext).isFinishing())
         {
@@ -286,36 +262,36 @@ public class ListenTogetherUtils
   
   public static void a(BaseChatPie paramBaseChatPie, int paramInt, String paramString)
   {
-    if (paramBaseChatPie.a() != null)
+    if (paramBaseChatPie.aX() != null)
     {
-      if (paramBaseChatPie.a().getIntent() == null) {
+      if (paramBaseChatPie.aX().getIntent() == null) {
         return;
       }
-      Object localObject = paramBaseChatPie.a().getIntent();
+      Object localObject = paramBaseChatPie.aX().getIntent();
       boolean bool1 = false;
       if (!((Intent)localObject).getBooleanExtra("key_from_listen_together_notify_msg", false)) {
         return;
       }
-      ListenTogetherManager.a(paramBaseChatPie.a);
+      ListenTogetherManager.a(paramBaseChatPie.d);
       if (paramInt == 1) {
         paramInt = 1;
       } else {
         paramInt = 2;
       }
-      boolean bool2 = b(paramBaseChatPie, paramInt, paramString);
+      boolean bool2 = c(paramBaseChatPie, paramInt, paramString);
       if (QLog.isColorLevel()) {
         QLog.i("ListenTogetherUtils", 2, String.format("checkEnterAioByListenTogetherNotifyMsg sessionType=%d uin=%s isOpen=%b", new Object[] { Integer.valueOf(paramInt), paramString, Boolean.valueOf(bool2) }));
       }
       if (bool2)
       {
-        localObject = DialogUtil.a(paramBaseChatPie.a(), 230);
+        localObject = DialogUtil.a(paramBaseChatPie.aX(), 230);
         ListenTogetherUtils.2 local2 = new ListenTogetherUtils.2(paramBaseChatPie, paramInt, paramString);
-        ((QQCustomDialog)localObject).setTitle(2131693655);
+        ((QQCustomDialog)localObject).setTitle(2131891230);
         ((QQCustomDialog)localObject).setMessage(null);
-        ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131706255), local2);
-        ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131707064), local2);
+        ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131898212), local2);
+        ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131904904), local2);
         ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
-        if (!paramBaseChatPie.a().isFinishing())
+        if (!paramBaseChatPie.aX().isFinishing())
         {
           ((QQCustomDialog)localObject).show();
           if (paramInt == 1) {
@@ -325,11 +301,6 @@ public class ListenTogetherUtils
         }
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface.getApplication().getSharedPreferences(paramQQAppInterface.getCurrentUin(), 0).edit().putBoolean("sp_key_listen_together_has_show_guide", true).apply();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, String paramString)
@@ -345,7 +316,7 @@ public class ListenTogetherUtils
     {
       if (paramInt1 == 1)
       {
-        Object localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+        Object localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
         boolean bool;
         if (localObject != null) {
           bool = ((TroopInfo)localObject).isAdmin();
@@ -354,13 +325,13 @@ public class ListenTogetherUtils
         }
         if (!bool)
         {
-          localObject = ListenTogetherManager.a(paramQQAppInterface).a(paramInt1, paramString);
-          if ((localObject != null) && (((ListenTogetherSession)localObject).h != 3))
+          localObject = ListenTogetherManager.a(paramQQAppInterface).e(paramInt1, paramString);
+          if ((localObject != null) && (((ListenTogetherSession)localObject).p != 3))
           {
             b(paramQQAppInterface, paramContext, paramInt1, paramString, paramInt2);
             return;
           }
-          QQToast.a(BaseApplication.getContext(), 2131693659, 0).a();
+          QQToast.makeText(BaseApplication.getContext(), 2131891234, 0).show();
           return;
         }
         b(paramQQAppInterface, paramContext, paramInt1, paramString, paramInt2);
@@ -372,17 +343,6 @@ public class ListenTogetherUtils
       return;
     }
     QLog.d("ListenTogetherUtils", 1, "gotoListenTogetherSettingPage return");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str;
-    if (paramBoolean2) {
-      str = paramQQAppInterface.getCurrentUin();
-    } else {
-      str = "qq_listen_together_pref";
-    }
-    paramQQAppInterface.getApplication().getSharedPreferences(str, 0).edit().putBoolean(paramString, paramBoolean1).apply();
   }
   
   public static void a(boolean paramBoolean, String paramString1, String paramString2)
@@ -493,18 +453,60 @@ public class ListenTogetherUtils
     return paramQQAppInterface.getApplication().getSharedPreferences(str, 0).getBoolean(paramString, paramBoolean1);
   }
   
+  public static String b()
+  {
+    String str2 = ThemeUtil.getCurrentThemeId();
+    String str1 = str2;
+    if (!"3064".equals(str2))
+    {
+      str1 = str2;
+      if (!"3063".equals(str2))
+      {
+        str1 = str2;
+        if (!"3066".equals(str2))
+        {
+          str1 = str2;
+          if (!"3065".equals(str2))
+          {
+            if ("3067".equals(str2)) {
+              return str2;
+            }
+            str1 = "";
+          }
+        }
+      }
+    }
+    return str1;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface.getApplication().getSharedPreferences(paramQQAppInterface.getCurrentUin(), 0).edit().putBoolean("sp_key_listen_together_has_show_guide", true).apply();
+  }
+  
   public static void b(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
+    Object localObject1 = AVBizModuleFactory.getModuleByName("一起听歌").checkAVFocus();
+    if (!"true".equals(localObject1))
+    {
+      QQToast.makeText(paramContext, String.format(paramContext.getString(2131887170), new Object[] { localObject1 }), 1).show();
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("preCheckIsUserGamePlaying, res[");
+      paramQQAppInterface.append((String)localObject1);
+      paramQQAppInterface.append("]");
+      QLog.e("ListenTogetherUtils", 1, paramQQAppInterface.toString());
+      return;
+    }
     if (TogetherControlManager.a(paramQQAppInterface).a(paramContext, 1, paramString, paramInt2)) {
       return;
     }
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     String str1 = URLUtil.a("https://web.qun.qq.com/qunmusic/index", "uin", paramString);
     Object localObject2 = (ListenTogetherManager)paramQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
-    ((ListenTogetherManager)localObject2).d();
-    boolean bool = ((ListenTogetherManager)localObject2).c(paramInt1, paramString);
-    String str2 = a();
-    Object localObject1 = str1;
+    ((ListenTogetherManager)localObject2).m();
+    boolean bool = ((ListenTogetherManager)localObject2).g(paramInt1, paramString);
+    String str2 = b();
+    localObject1 = str1;
     if (!TextUtils.isEmpty(str2)) {
       localObject1 = URLUtil.a(str1, "themeId", str2);
     }
@@ -516,7 +518,7 @@ public class ListenTogetherUtils
       localObject1 = "0";
     }
     str2 = URLUtil.a(URLUtil.a(URLUtil.a(str2, "showlrc", (String)localObject1), "_wv", "2"), "_wwv", "128");
-    if (((ListenTogetherManager)localObject2).b(paramInt1, paramString)) {
+    if (((ListenTogetherManager)localObject2).d(paramInt1, paramString)) {
       localObject1 = "1";
     } else {
       localObject1 = "0";
@@ -535,21 +537,32 @@ public class ListenTogetherUtils
     ListenTogetherManager.a(paramQQAppInterface).a(paramContext, paramInt1, paramString);
   }
   
-  private static boolean b(BaseChatPie paramBaseChatPie, int paramInt, String paramString)
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = ListenTogetherManager.a(paramBaseChatPie.a()).a(paramInt, paramString);
+    String str;
+    if (paramBoolean2) {
+      str = paramQQAppInterface.getCurrentUin();
+    } else {
+      str = "qq_listen_together_pref";
+    }
+    paramQQAppInterface.getApplication().getSharedPreferences(str, 0).edit().putBoolean(paramString, paramBoolean1).apply();
+  }
+  
+  private static boolean c(BaseChatPie paramBaseChatPie, int paramInt, String paramString)
+  {
+    boolean bool = ListenTogetherManager.a(paramBaseChatPie.i()).c(paramInt, paramString);
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherUtils", 2, String.format("checkEnterAioByListenTogetherNotifyMsg sessionType=%d uin=%s isOpen=%b", new Object[] { Integer.valueOf(paramInt), paramString, Boolean.valueOf(bool) }));
     }
     if (!bool) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131693659, 1).b(paramBaseChatPie.a());
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2131891234, 1).show(paramBaseChatPie.A());
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherUtils
  * JD-Core Version:    0.7.0.1
  */

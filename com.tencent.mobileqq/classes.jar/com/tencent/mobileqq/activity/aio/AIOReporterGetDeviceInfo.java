@@ -4,47 +4,42 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class AIOReporterGetDeviceInfo
 {
-  private static AIOReporterGetDeviceInfo a;
-  public int a;
-  private int b = -1;
-  
-  private AIOReporterGetDeviceInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  private static AIOReporterGetDeviceInfo b;
+  public int a = 0;
+  private int c = -1;
   
   public static AIOReporterGetDeviceInfo a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioAIOReporterGetDeviceInfo == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityAioAIOReporterGetDeviceInfo = new AIOReporterGetDeviceInfo();
+      if (b == null) {
+        b = new AIOReporterGetDeviceInfo();
       } else {
-        jdField_a_of_type_ComTencentMobileqqActivityAioAIOReporterGetDeviceInfo.jdField_a_of_type_Int = 1;
+        b.a = 1;
       }
-      AIOReporterGetDeviceInfo localAIOReporterGetDeviceInfo = jdField_a_of_type_ComTencentMobileqqActivityAioAIOReporterGetDeviceInfo;
+      AIOReporterGetDeviceInfo localAIOReporterGetDeviceInfo = b;
       return localAIOReporterGetDeviceInfo;
     }
     finally {}
   }
   
-  public int a()
+  public int b()
   {
-    if (-1 == this.b) {
-      if ((DeviceInfoUtil.a() >>> 20 > 1390L) && (DeviceInfoUtil.b() > 3) && (DeviceInfoUtil.b() > 1433L)) {
-        this.b = 1;
-      } else if ((DeviceInfoUtil.a() >>> 20 > 926L) && (DeviceInfoUtil.b() > 1) && (DeviceInfoUtil.b() > 961L)) {
-        this.b = 2;
+    if (-1 == this.c) {
+      if ((DeviceInfoUtil.a() >>> 20 > 1390L) && (DeviceInfoUtil.h() > 3) && (DeviceInfoUtil.k() > 1433L)) {
+        this.c = 1;
+      } else if ((DeviceInfoUtil.a() >>> 20 > 926L) && (DeviceInfoUtil.h() > 1) && (DeviceInfoUtil.k() > 961L)) {
+        this.c = 2;
       } else {
-        this.b = 3;
+        this.c = 3;
       }
     }
-    return this.b;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOReporterGetDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

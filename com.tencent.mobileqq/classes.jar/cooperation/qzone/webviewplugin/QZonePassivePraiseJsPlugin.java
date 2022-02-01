@@ -160,7 +160,7 @@ public class QZonePassivePraiseJsPlugin
   
   private void downloadAnimationRs(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZonePassivePraiseJsPlugin.1(this, paramArrayOfString));
+    paramPluginRuntime.b().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZonePassivePraiseJsPlugin.1(this, paramArrayOfString));
   }
   
   private void playAnimation(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -191,7 +191,7 @@ public class QZonePassivePraiseJsPlugin
       localObject = new File(paramArrayOfString);
       if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
       {
-        this.giftController = new QzoneGiftFullScreenViewController(this.parentPlugin.mRuntime.a());
+        this.giftController = new QzoneGiftFullScreenViewController(this.parentPlugin.mRuntime.d());
         if (QzoneGiftFullScreenViewController.isSupportMagicface()) {
           this.giftController.playMaigcface(paramWebViewPlugin, paramArrayOfString, true, new QZonePassivePraiseJsPlugin.2(this, paramPluginRuntime));
         }
@@ -326,7 +326,7 @@ public class QZonePassivePraiseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

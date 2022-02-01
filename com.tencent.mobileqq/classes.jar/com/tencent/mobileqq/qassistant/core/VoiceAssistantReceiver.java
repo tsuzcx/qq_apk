@@ -18,7 +18,7 @@ public class VoiceAssistantReceiver
       if (paramIntent.getAction() == null) {
         return;
       }
-      if (!WakeManager.a().b())
+      if (!WakeManager.a().h())
       {
         AssistantUtils.b("VoiceAssistantReceiver not allow");
         return;
@@ -67,7 +67,7 @@ public class VoiceAssistantReceiver
         }
         WakeManager.a().b(paramContext);
         if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-          WakeManager.a().a();
+          WakeManager.a().e();
         }
       }
     }
@@ -75,7 +75,7 @@ public class VoiceAssistantReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.VoiceAssistantReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class RecycleViewAdapterHelper$3
   
   public void onFound(ViewBase paramViewBase)
   {
-    if (RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper) != null)
+    if (RecycleViewAdapterHelper.b(this.c) != null)
     {
       paramViewBase.setOnClickListener(new RecycleViewAdapterHelper.3.1(this));
       return;
@@ -34,20 +34,20 @@ class RecycleViewAdapterHelper$3
             default: 
               return;
             case 1205: 
-              RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper, 3, paramViewBase, this.jdField_a_of_type_Int);
+              RecycleViewAdapterHelper.a(this.c, 3, paramViewBase, this.a);
               return;
             case 1204: 
-              RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper, 2, paramViewBase, this.jdField_a_of_type_Int);
+              RecycleViewAdapterHelper.a(this.c, 2, paramViewBase, this.a);
               return;
             }
-            RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper, 1, paramViewBase, this.jdField_a_of_type_Int);
+            RecycleViewAdapterHelper.a(this.c, 1, paramViewBase, this.a);
             return;
           }
           paramViewBase.setOnClickListener(new RecycleViewAdapterHelper.3.4(this));
           return;
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a.a() != null)) {
-          paramViewBase.setOnClickListener(new OnSmallGameCardClickListener(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a, RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).getContext(), 1116, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a.c(), this.jdField_a_of_type_Int));
+        if ((this.c.e != null) && (this.c.e.k() != null)) {
+          paramViewBase.setOnClickListener(new OnSmallGameCardClickListener(this.c.e, RecycleViewAdapterHelper.d(this.c).getContext(), 1116, this.c.e.m(), this.a));
         }
       }
       else
@@ -62,7 +62,7 @@ class RecycleViewAdapterHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.RecycleViewAdapterHelper.3
  * JD-Core Version:    0.7.0.1
  */

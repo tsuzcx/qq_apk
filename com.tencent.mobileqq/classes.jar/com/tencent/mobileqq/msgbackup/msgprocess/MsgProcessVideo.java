@@ -16,38 +16,39 @@ public class MsgProcessVideo
     super(paramMessageForShortVideo);
   }
   
-  protected int a()
-  {
-    return 2;
-  }
-  
   protected MsgBackupResEntity a(String paramString, int paramInt)
   {
     if (!a(paramString)) {
       return null;
     }
-    MsgBackupResEntity localMsgBackupResEntity = a();
+    MsgBackupResEntity localMsgBackupResEntity = f();
     localMsgBackupResEntity.msgSubType = paramInt;
     localMsgBackupResEntity.filePath = paramString;
     a(paramString, localMsgBackupResEntity);
     paramString = a(paramInt);
-    paramString.put("selfuin", ((MessageForShortVideo)this.a).selfuin);
-    paramString.put("md5", ((MessageForShortVideo)this.a).md5);
-    paramString.put("thumbMd5", ((MessageForShortVideo)this.a).thumbMD5);
+    paramString.put("selfuin", ((MessageForShortVideo)this.b).selfuin);
+    paramString.put("md5", ((MessageForShortVideo)this.b).md5);
+    paramString.put("thumbMd5", ((MessageForShortVideo)this.b).thumbMD5);
     localMsgBackupResEntity.extraDataStr = a(paramString);
     return localMsgBackupResEntity;
   }
   
-  public List<MsgBackupResEntity> a()
+  public void a()
+  {
+    im_msg_body.RichText localRichText = ((MessageForShortVideo)this.b).getRichText();
+    ((MessageForShortVideo)this.b).richText = localRichText;
+  }
+  
+  public List<MsgBackupResEntity> b()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject2 = SVUtils.a((MessageForShortVideo)this.a, "mp4");
-    Object localObject1 = SVUtils.a(((MessageForShortVideo)this.a).thumbMD5, "jpg");
+    Object localObject2 = SVUtils.a((MessageForShortVideo)this.b, "mp4");
+    Object localObject1 = SVUtils.a(((MessageForShortVideo)this.b).thumbMD5, "jpg");
     int i;
     int j;
-    if ((((MessageForShortVideo)this.a).busiType != 0) && (((MessageForShortVideo)this.a).busiType != 1))
+    if ((((MessageForShortVideo)this.b).busiType != 0) && (((MessageForShortVideo)this.b).busiType != 1))
     {
-      if (((MessageForShortVideo)this.a).subBusiType == 2)
+      if (((MessageForShortVideo)this.b).subBusiType == 2)
       {
         i = 5;
         j = 8;
@@ -73,23 +74,22 @@ public class MsgProcessVideo
     return localArrayList;
   }
   
-  public void a()
+  protected int c()
   {
-    im_msg_body.RichText localRichText = ((MessageForShortVideo)this.a).getRichText();
-    ((MessageForShortVideo)this.a).richText = localRichText;
+    return 2;
   }
   
-  public void b()
+  public void d()
   {
-    if (((MessageForShortVideo)this.a).isSendFromLocal()) {
-      ((MessageForShortVideo)this.a).issend = 2;
+    if (((MessageForShortVideo)this.b).isSendFromLocal()) {
+      ((MessageForShortVideo)this.b).issend = 2;
     }
-    ((MessageForShortVideo)this.a).serial();
+    ((MessageForShortVideo)this.b).serial();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessVideo
  * JD-Core Version:    0.7.0.1
  */

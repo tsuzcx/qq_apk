@@ -66,6 +66,7 @@ public class SearchConfig
   public static long typeFriendConversation = 15L;
   public static long typeFriendNotOftenContact = 12L;
   public static long typeFriendSpecialCare = 14L;
+  public static long typeGameMsgBox = 0L;
   public static long typeGlobalTroop = 7L;
   public static long typeGlobalTroopConversation = 8L;
   public static long typeGlobalTroopMember = 9L;
@@ -211,7 +212,7 @@ public class SearchConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.config.SearchConfig
  * JD-Core Version:    0.7.0.1
  */

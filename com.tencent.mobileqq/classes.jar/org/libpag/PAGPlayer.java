@@ -45,7 +45,12 @@ public class PAGPlayer
     nativeFinalize();
   }
   
-  public native boolean flush();
+  public boolean flush()
+  {
+    return flushAndFenceSync(null);
+  }
+  
+  public native boolean flushAndFenceSync(long[] paramArrayOfLong);
   
   public native RectF getBounds(PAGLayer paramPAGLayer);
   
@@ -113,10 +118,12 @@ public class PAGPlayer
   public native void setVideoEnabled(boolean paramBoolean);
   
   public native boolean videoEnabled();
+  
+  public native boolean waitSync(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ class TextAppearance$1
   
   public void onFontRetrievalFailed(int paramInt)
   {
-    TextAppearance.a(this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance, true);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback.a(paramInt);
+    TextAppearance.a(this.b, true);
+    this.a.a(paramInt);
   }
   
   public void onFontRetrieved(@NonNull Typeface paramTypeface)
   {
-    TextAppearance localTextAppearance = this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance;
-    TextAppearance.a(localTextAppearance, Typeface.create(paramTypeface, localTextAppearance.a));
-    TextAppearance.a(this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance, true);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback.a(TextAppearance.a(this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance), false);
+    TextAppearance localTextAppearance = this.b;
+    TextAppearance.a(localTextAppearance, Typeface.create(paramTypeface, localTextAppearance.f));
+    TextAppearance.a(this.b, true);
+    this.a.a(TextAppearance.a(this.b), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.resources.TextAppearance.1
  * JD-Core Version:    0.7.0.1
  */

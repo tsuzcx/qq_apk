@@ -10,7 +10,7 @@ class StepAlarmReceiver$1
   
   public void run()
   {
-    ISportManager localISportManager = (ISportManager)this.this$0.a.getRuntimeService(ISportManager.class, "multi");
+    ISportManager localISportManager = (ISportManager)this.this$0.d.getRuntimeService(ISportManager.class, "multi");
     if (localISportManager != null) {
       localISportManager.doOnTimer1();
     }
@@ -18,7 +18,7 @@ class StepAlarmReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver.1
  * JD-Core Version:    0.7.0.1
  */

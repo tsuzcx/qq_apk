@@ -6,10 +6,10 @@ import java.util.Random;
 public class UFTTransferKey
   implements IUFTTransferKey
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a = 0;
+  private long b = 0L;
+  private boolean c = false;
+  private Object d;
   
   public UFTTransferKey(int paramInt, boolean paramBoolean)
   {
@@ -18,49 +18,49 @@ public class UFTTransferKey
     a(paramBoolean);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   public Object a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.d;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.d = paramObject;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public boolean a()
+  public long b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.a;
+  }
+  
+  public boolean d()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.api.impl.UFTTransferKey
  * JD-Core Version:    0.7.0.1
  */

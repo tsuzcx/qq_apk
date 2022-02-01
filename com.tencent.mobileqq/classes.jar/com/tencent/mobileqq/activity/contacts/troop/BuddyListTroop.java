@@ -23,21 +23,21 @@ import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 public class BuddyListTroop
   extends BuddyListItem
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131693067 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130839508 };
-  private static final int[] c = { 2131370814 };
-  private DiscussionManager jdField_a_of_type_ComTencentMobileqqAppDiscussionManager;
-  private int jdField_b_of_type_Int;
+  private static final int[] k = { 2131890181 };
+  private static final int[] l = { 2130839699 };
+  private static final int[] m = { 2131438137 };
+  private DiscussionManager n;
+  private int o;
   
   public BuddyListTroop(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity, int paramInt)
   {
     super(paramQQAppInterface, paramContext, paramEntity);
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(this.jdField_a_of_type_AndroidContentContext);
+    this.o = paramInt;
+    this.a = a(this.e);
     if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER));
+      this.n = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER));
     }
-    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
   public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
@@ -48,37 +48,37 @@ public class BuddyListTroop
     }
     else
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559068, null);
+      paramView = LayoutInflater.from(this.e).inflate(2131624728, null);
       paramViewGroup = new BuddyListTroop.TroopDisChildTag();
-      paramView = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.createView(this.jdField_a_of_type_AndroidContentContext, paramView, paramViewGroup, -1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378461));
-      paramViewGroup.d = ((ImageView)paramView.findViewById(2131368343));
-      ((RelativeLayout.LayoutParams)paramViewGroup.d.getLayoutParams()).leftMargin = AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378463));
+      paramView = this.a.createView(this.e, paramView, paramViewGroup, -1);
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131447063));
+      paramViewGroup.r = ((ImageView)paramView.findViewById(2131435219));
+      ((RelativeLayout.LayoutParams)paramViewGroup.r.getLayoutParams()).leftMargin = AIOUtils.b(12.0F, this.e.getResources());
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131447065));
       paramView.setTag(paramViewGroup);
     }
-    paramViewGroup.leftView.setBackgroundResource(2130839393);
+    paramViewGroup.leftView.setBackgroundResource(2130839577);
     Object localObject;
-    if (this.jdField_b_of_type_Int == 2)
+    if (this.o == 2)
     {
-      localObject = (DiscussionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((DiscussionInfo)localObject).uin;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
-      paramViewGroup.jdField_b_of_type_Int = 101;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((DiscussionInfo)localObject).discussionName);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("(%d)", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager.a(((DiscussionInfo)localObject).uin)) }));
+      localObject = (DiscussionInfo)this.f;
+      paramViewGroup.p = ((DiscussionInfo)localObject).uin;
+      paramViewGroup.c = localObject;
+      paramViewGroup.q = 101;
+      paramViewGroup.e.setText(((DiscussionInfo)localObject).discussionName);
+      paramViewGroup.f.setVisibility(0);
+      paramViewGroup.f.setText(String.format("(%d)", new Object[] { Integer.valueOf(this.n.c(((DiscussionInfo)localObject).uin)) }));
     }
     else
     {
-      localObject = (TroopInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((TroopInfo)localObject).troopuin;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
-      paramViewGroup.jdField_b_of_type_Int = 4;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopDisplayName());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      localObject = (TroopInfo)this.f;
+      paramViewGroup.p = ((TroopInfo)localObject).troopuin;
+      paramViewGroup.c = localObject;
+      paramViewGroup.q = 4;
+      paramViewGroup.e.setText(((TroopInfo)localObject).getTroopDisplayName());
+      paramViewGroup.f.setVisibility(8);
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167063));
+    paramViewGroup.e.setTextColor(this.e.getResources().getColor(2131168001));
     a(paramView, paramInt2, paramViewGroup, paramOnClickListener);
     return paramView;
   }
@@ -107,24 +107,24 @@ public class BuddyListTroop
     }
   }
   
-  protected int[] a()
-  {
-    return c;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
-  }
-  
   protected int[] c()
   {
-    return jdField_b_of_type_ArrayOfInt;
+    return m;
+  }
+  
+  protected int[] d()
+  {
+    return k;
+  }
+  
+  protected int[] e()
+  {
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.BuddyListTroop
  * JD-Core Version:    0.7.0.1
  */

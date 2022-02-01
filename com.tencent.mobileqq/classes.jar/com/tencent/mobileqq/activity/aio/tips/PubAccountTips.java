@@ -40,20 +40,20 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xc3.submsgtype0xc3.MsgBody;
 public class PubAccountTips
   implements View.OnClickListener, TipsBarTask
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private PubAccountTips.PubAccountTipsMsg jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private QQAppInterface a;
+  private TipsManager b;
+  private Context c;
+  private BaseSessionInfo d;
+  private MqqHandler e;
+  private PubAccountTips.PubAccountTipsMsg f;
   
   public PubAccountTips(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, TipsManager paramTipsManager, Context paramContext, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.a = paramQQAppInterface;
+    this.d = paramBaseSessionInfo;
+    this.b = paramTipsManager;
+    this.c = paramContext;
+    this.e = paramMqqHandler;
   }
   
   public static PubAccountTips.PubAccountTipsMsg a(QQAppInterface paramQQAppInterface, String paramString)
@@ -110,12 +110,12 @@ public class PubAccountTips
     Object localObject = paramQQAppInterface.getApp().getSharedPreferences("push_campus_tips", 0);
     if (paramPubAccountTipsMsg != null)
     {
-      paramQQAppInterface.getMessageFacade().b(paramString1, 1008, paramPubAccountTipsMsg.jdField_d_of_type_Long, true);
+      paramQQAppInterface.getMessageFacade().b(paramString1, 1008, paramPubAccountTipsMsg.n, true);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("removeMsgByUniseq. uniqSeqno:");
-        localStringBuilder.append(paramPubAccountTipsMsg.jdField_d_of_type_Long);
+        localStringBuilder.append(paramPubAccountTipsMsg.n);
         QLog.i("PubAccountTips", 2, localStringBuilder.toString());
       }
     }
@@ -166,7 +166,7 @@ public class PubAccountTips
             localObject1 = new PubAccountTips.PubAccountTipsMsg(paramArrayOfByte);
             if (((PubAccountTips.PubAccountTipsMsg)localObject1).a())
             {
-              i = ((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_b_of_type_Int;
+              i = ((PubAccountTips.PubAccountTipsMsg)localObject1).c;
               Object localObject2;
               Object localObject3;
               if (i == 1)
@@ -175,13 +175,13 @@ public class PubAccountTips
                 localObject3 = paramQQAppInterface.getCurrentAccountUin();
                 Object localObject4 = new StringBuilder();
                 ((StringBuilder)localObject4).append("");
-                ((StringBuilder)localObject4).append(((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_a_of_type_Long);
+                ((StringBuilder)localObject4).append(((PubAccountTips.PubAccountTipsMsg)localObject1).d);
                 Object localObject5 = ((StringBuilder)localObject4).toString();
-                localObject4 = ((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_a_of_type_JavaLangString;
+                localObject4 = ((PubAccountTips.PubAccountTipsMsg)localObject1).e;
                 ((MessageForStructing)localObject2).init((String)localObject3, (String)localObject5, (String)localObject5, (String)localObject4, 0L, -2011, 1008, 0L);
                 localObject5 = StructMsgFactory.a();
                 ((AbsStructMsg)localObject5).mMsgBrief = ((String)localObject4);
-                ((AbsStructMsg)localObject5).mMsgUrl = ((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_c_of_type_JavaLangString;
+                ((AbsStructMsg)localObject5).mMsgUrl = ((PubAccountTips.PubAccountTipsMsg)localObject1).g;
                 ((AbsStructMsg)localObject5).mMsgServiceID = 85;
                 ((MessageForStructing)localObject2).structingMsg = ((AbsStructMsg)localObject5);
                 ((MessageForStructing)localObject2).saveExtInfoToExtStr("public_account_msg_extra_info_type", "1");
@@ -192,7 +192,7 @@ public class PubAccountTips
               {
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append("Msg0x210Sub0xc3 .type:");
-                ((StringBuilder)localObject2).append(((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_a_of_type_Int);
+                ((StringBuilder)localObject2).append(((PubAccountTips.PubAccountTipsMsg)localObject1).b);
                 ((StringBuilder)localObject2).append(", push_data:");
                 ((StringBuilder)localObject2).append(paramArrayOfByte.toString());
                 QLog.d("PubAccountTips", 2, ((StringBuilder)localObject2).toString());
@@ -201,11 +201,11 @@ public class PubAccountTips
               {
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append("");
-                ((StringBuilder)localObject2).append(((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_a_of_type_Long);
+                ((StringBuilder)localObject2).append(((PubAccountTips.PubAccountTipsMsg)localObject1).d);
                 localObject2 = a(paramQQAppInterface, ((StringBuilder)localObject2).toString());
                 localObject3 = new StringBuilder();
                 ((StringBuilder)localObject3).append("");
-                ((StringBuilder)localObject3).append(((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_a_of_type_Long);
+                ((StringBuilder)localObject3).append(((PubAccountTips.PubAccountTipsMsg)localObject1).d);
                 a(paramQQAppInterface, ((StringBuilder)localObject3).toString(), (PubAccountTips.PubAccountTipsMsg)localObject2, paramArrayOfByte.toString());
                 paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
                 if (paramQQAppInterface != null)
@@ -243,18 +243,18 @@ public class PubAccountTips
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559974, null);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg;
+    paramVarArgs = LayoutInflater.from(this.c).inflate(2131626017, null);
+    Object localObject = this.f;
     if (localObject != null)
     {
-      if (((PubAccountTips.PubAccountTipsMsg)localObject).jdField_a_of_type_Int == 1) {
-        paramVarArgs.setBackgroundResource(2131165911);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_Int == 2) {
-        paramVarArgs.setBackgroundResource(2131165912);
+      if (((PubAccountTips.PubAccountTipsMsg)localObject).b == 1) {
+        paramVarArgs.setBackgroundResource(2131166612);
+      } else if (this.f.b == 2) {
+        paramVarArgs.setBackgroundResource(2131166613);
       }
-      ((TextView)paramVarArgs.findViewById(2131362532)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_JavaLangString);
-      localObject = (ImageView)paramVarArgs.findViewById(2131362528);
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_b_of_type_JavaLangString;
+      ((TextView)paramVarArgs.findViewById(2131428143)).setText(this.f.e);
+      localObject = (ImageView)paramVarArgs.findViewById(2131428139);
+      String str = this.f.f;
       if (!TextUtils.isEmpty(str)) {
         ((ImageView)localObject).setImageDrawable(URLDrawableHelper.getDrawable(str, null, null));
       } else {
@@ -270,17 +270,17 @@ public class PubAccountTips
     if (paramInt != 1000) {
       return;
     }
-    paramVarArgs = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    paramVarArgs = a(this.a, this.d.b);
     if ((paramVarArgs != null) && (paramVarArgs.a())) {
-      if ((paramVarArgs.e >= 0) && (paramVarArgs.e < paramVarArgs.jdField_c_of_type_Int) && (!paramVarArgs.b()))
+      if ((paramVarArgs.l >= 0) && (paramVarArgs.l < paramVarArgs.j) && (!paramVarArgs.b()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg = paramVarArgs;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]))
+        this.f = paramVarArgs;
+        if (this.b.a(this, new Object[0]))
         {
-          QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          QQAppInterface localQQAppInterface = this.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(paramVarArgs.jdField_d_of_type_Int);
+          localStringBuilder.append(paramVarArgs.k);
           ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "school", "school.aio.tips.show", 0, 0, localStringBuilder.toString(), "", "", "");
         }
       }
@@ -289,14 +289,9 @@ public class PubAccountTips
         if (QLog.isColorLevel()) {
           QLog.w("PubAccountTips", 2, "onAIOEvent():ON_SHOW tips expired!");
         }
-        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, paramVarArgs, null);
+        a(this.a, this.d.b, paramVarArgs, null);
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
   }
   
   public int b()
@@ -304,49 +299,54 @@ public class PubAccountTips
     return 7;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1008)
+    if (this.d.a == 1008)
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg;
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_c_of_type_JavaLangString)))
+      Object localObject1 = this.f;
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((PubAccountTips.PubAccountTipsMsg)localObject1).g)))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("push_campus_tips", 0);
+        localObject1 = this.a.getApp().getSharedPreferences("push_campus_tips", 0);
         if (localObject1 != null)
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("selfuin_");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          ((StringBuilder)localObject3).append(this.a.getCurrentAccountUin());
           ((StringBuilder)localObject3).append("_puin_");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(this.d.b);
           ((StringBuilder)localObject3).append("_msgdata");
           localObject3 = ((StringBuilder)localObject3).toString();
           if (QLog.isColorLevel())
           {
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("clickedTimes:");
-            ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.e + 1);
+            ((StringBuilder)localObject4).append(this.f.l + 1);
             QLog.d("PubAccountTips", 2, ((StringBuilder)localObject4).toString());
           }
-          Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg;
-          int i = ((PubAccountTips.PubAccountTipsMsg)localObject4).e + 1;
-          ((PubAccountTips.PubAccountTipsMsg)localObject4).e = i;
-          if (i >= this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_c_of_type_Int)
+          Object localObject4 = this.f;
+          int i = ((PubAccountTips.PubAccountTipsMsg)localObject4).l + 1;
+          ((PubAccountTips.PubAccountTipsMsg)localObject4).l = i;
+          if (i >= this.f.j)
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            localObject1 = this.a;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("");
-            ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_Long);
-            a((QQAppInterface)localObject1, ((StringBuilder)localObject3).toString(), this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg, null);
-            this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(28, 2000L);
+            ((StringBuilder)localObject3).append(this.f.d);
+            a((QQAppInterface)localObject1, ((StringBuilder)localObject3).toString(), this.f, null);
+            this.e.sendEmptyMessageDelayed(28, 2000L);
           }
           else
           {
             localObject1 = ((SharedPreferences)localObject1).edit();
             try
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_OrgJsonJSONObject.put("clicked", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.e);
-              ((SharedPreferences.Editor)localObject1).putString((String)localObject3, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_OrgJsonJSONObject.toString()).commit();
+              this.f.a.put("clicked", this.f.l);
+              ((SharedPreferences.Editor)localObject1).putString((String)localObject3, this.f.a.toString()).commit();
             }
             catch (JSONException localJSONException)
             {
@@ -354,13 +354,13 @@ public class PubAccountTips
             }
           }
         }
-        Object localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_c_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        Object localObject2 = new Intent(this.c, QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", this.f.g);
+        this.c.startActivity((Intent)localObject2);
+        localObject2 = this.a;
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_d_of_type_Int);
+        ((StringBuilder)localObject3).append(this.f.k);
         ReportController.b((AppRuntime)localObject2, "P_CliOper", "Vip_pay_mywallet", "", "school", "school.aio.tips.click", 0, 0, ((StringBuilder)localObject3).toString(), "", "", "");
       }
     }
@@ -369,7 +369,7 @@ public class PubAccountTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.PubAccountTips
  * JD-Core Version:    0.7.0.1
  */

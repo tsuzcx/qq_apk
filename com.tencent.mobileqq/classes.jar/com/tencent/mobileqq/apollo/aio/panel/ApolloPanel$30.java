@@ -1,27 +1,21 @@
 package com.tencent.mobileqq.apollo.aio.panel;
 
-import com.tencent.mobileqq.apollo.listener.ApolloStatusUpdateListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.listener.ApolloRspCallback;
+import org.jetbrains.annotations.Nullable;
 
 class ApolloPanel$30
-  implements ApolloStatusUpdateListener
+  implements ApolloRspCallback
 {
-  ApolloPanel$30(ApolloPanel paramApolloPanel) {}
+  ApolloPanel$30(ApolloPanel paramApolloPanel, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean, long paramLong, @Nullable String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onStatusUpdate, currentStatus=");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("， is3dAvailable=");
-    localStringBuilder.append(paramBoolean);
-    QLog.d("[cmshow]ApolloPanel", 2, localStringBuilder.toString());
-    this.a.post(new ApolloPanel.30.1(this));
+    this.c.post(new ApolloPanel.30.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.30
  * JD-Core Version:    0.7.0.1
  */

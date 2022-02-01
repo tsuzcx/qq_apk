@@ -10,7 +10,7 @@ class MusicPlayerActivity$1$1$1
   
   public void run()
   {
-    Object localObject = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1$1.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.c);
+    Object localObject = MusicGeneWebViewPlugin.a(this.b.a.c);
     if (localObject != null)
     {
       int j = ((Bitmap)localObject).getWidth();
@@ -28,8 +28,8 @@ class MusicPlayerActivity$1$1$1
         Double.isNaN(d2);
         Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, j, (int)(d2 * d1), true);
         ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1$1.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1.a), 55);
-        ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
+        localObject = Message.obtain(MusicPlayerActivity.b(this.b.b.a), 55);
+        ((Message)localObject).arg1 = this.a;
         ((Message)localObject).obj = localBitmap;
         ((Message)localObject).sendToTarget();
       }
@@ -38,7 +38,7 @@ class MusicPlayerActivity$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.1.1.1
  * JD-Core Version:    0.7.0.1
  */

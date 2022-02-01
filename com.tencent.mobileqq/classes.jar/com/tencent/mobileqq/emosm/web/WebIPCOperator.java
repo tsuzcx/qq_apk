@@ -3,7 +3,6 @@ package com.tencent.mobileqq.emosm.web;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.TextUtils;
 import com.tencent.mobileqq.emosm.Client;
 import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.qphone.base.util.QLog;
@@ -13,96 +12,83 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class WebIPCOperator
 {
-  private static WebIPCOperator jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator;
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private Client jdField_a_of_type_ComTencentMobileqqEmosmClient = new Client();
-  private EmojiIPCAlarmer.TimeoutObserver jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = new WebIPCOperator.5(this);
-  EmojiIPCAlarmer jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = null;
-  private Vector<WebIPCOperator.RequestItem> jdField_a_of_type_JavaUtilVector = new Vector();
-  private CopyOnWriteArrayList<OnRemoteRespObserver> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static WebIPCOperator b;
+  EmojiIPCAlarmer a = null;
+  private CopyOnWriteArrayList<OnRemoteRespObserver> c = new CopyOnWriteArrayList();
+  private Client d = new Client();
+  private Handler e = new Handler(Looper.getMainLooper());
+  private int f = 0;
+  private Vector<WebIPCOperator.RequestItem> g = new Vector();
+  private EmojiIPCAlarmer.TimeoutObserver h = new WebIPCOperator.5(this);
   
   public static WebIPCOperator a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator == null) {
-          jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator = new WebIPCOperator();
+        if (b == null) {
+          b = new WebIPCOperator();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator;
+    return b;
   }
   
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return (paramString.equals("ipc_apollo_changerole")) || (paramString.equals("ipc_apollo_preview")) || (paramString.equals("ipc_apollo_check_avatar_res")) || (paramString.equals("ipc_apollo_preview_audio_action")) || (paramString.equals("ipc_apollo_preview_action")) || (paramString.equals("IPC_APOLLO_DOWNLOAD_GAME")) || (paramString.equals("ipc_apollo_downloadImageOnFrame")) || (paramString.equals("ipc_cmd_apollo_exec_script"));
-  }
-  
-  private void c()
+  private void f()
   {
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((OnRemoteRespObserver)localIterator.next()).onBindedToClient();
     }
   }
   
-  private void d()
+  private void g()
   {
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((OnRemoteRespObserver)localIterator.next()).onDisconnectWithService();
     }
   }
   
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "alarm init");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = new EmojiIPCAlarmer(this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a();
-    }
-  }
-  
-  private void f(Bundle paramBundle)
+  private void g(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchPushMsg suc");
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((OnRemoteRespObserver)localIterator.next()).onPushMsg(paramBundle);
     }
   }
   
-  public Client a()
+  private void h()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
+    if (this.a == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "alarm init");
+      }
+      this.a = new EmojiIPCAlarmer(this.h);
+      this.a.a();
+    }
   }
   
   public WebIPCOperator.RequestItem a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    synchronized (this.g)
     {
-      Object localObject2 = this.jdField_a_of_type_JavaUtilVector.iterator();
+      Object localObject2 = this.g.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         WebIPCOperator.RequestItem localRequestItem = (WebIPCOperator.RequestItem)((Iterator)localObject2).next();
-        if (localRequestItem.jdField_a_of_type_Int == paramInt)
+        if (localRequestItem.a == paramInt)
         {
           if (QLog.isColorLevel())
           {
@@ -111,13 +97,13 @@ public class WebIPCOperator
             ((StringBuilder)localObject2).append(paramInt);
             QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, ((StringBuilder)localObject2).toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(localRequestItem.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_a_of_type_JavaUtilVector.remove(localRequestItem);
+          this.a.a(localRequestItem.c);
+          this.g.remove(localRequestItem);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("after remove req queue size:");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilVector.size());
+            ((StringBuilder)localObject2).append(this.g.size());
             QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, ((StringBuilder)localObject2).toString());
           }
           return localRequestItem;
@@ -131,32 +117,6 @@ public class WebIPCOperator
     }
   }
   
-  public WebIPCOperator.RequestItem a(Bundle paramBundle)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
-    {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      paramBundle = new WebIPCOperator.RequestItem(i, paramBundle);
-      e();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("add to req queue seq: ");
-        localStringBuilder.append(paramBundle.jdField_a_of_type_Int);
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, localStringBuilder.toString());
-      }
-      paramBundle.jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(paramBundle.jdField_a_of_type_Int, 30000L);
-      this.jdField_a_of_type_JavaUtilVector.add(paramBundle);
-      return paramBundle;
-    }
-  }
-  
-  public void a()
-  {
-    c();
-  }
-  
   public void a(Bundle paramBundle)
   {
     if (paramBundle == null)
@@ -164,25 +124,25 @@ public class WebIPCOperator
       QLog.e("Q.emoji.web.EmoWebIPCOperator", 1, "error:reqbundle is null.");
       return;
     }
-    Object localObject = a(paramBundle);
+    Object localObject = f(paramBundle);
     if (localObject != null)
     {
-      Client localClient = this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
-      if ((localClient == null) || (!localClient.onReqToServer(((WebIPCOperator.RequestItem)localObject).jdField_a_of_type_AndroidOsBundle)))
+      Client localClient = this.d;
+      if ((localClient == null) || (!localClient.onReqToServer(((WebIPCOperator.RequestItem)localObject).b)))
       {
         paramBundle = a(paramBundle.getInt("seq"));
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("sendServiceIpcReq unbind fail seq:");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.f);
           QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, ((StringBuilder)localObject).toString());
         }
         if (paramBundle != null)
         {
           localObject = new Bundle();
           a((Bundle)localObject, 1002);
-          paramBundle.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+          paramBundle.b.putBundle("response", (Bundle)localObject);
           a(new WebIPCOperator.1(this, paramBundle));
         }
       }
@@ -208,44 +168,35 @@ public class WebIPCOperator
       localStringBuilder.append(paramOnRemoteRespObserver.key);
       QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramOnRemoteRespObserver)) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramOnRemoteRespObserver);
+    if (!this.c.contains(paramOnRemoteRespObserver)) {
+      this.c.add(paramOnRemoteRespObserver);
     }
   }
   
   void a(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+      this.e.post(paramRunnable);
     }
-  }
-  
-  public boolean a()
-  {
-    Client localClient = this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
-    if (localClient != null) {
-      return localClient.isClientBinded();
-    }
-    return false;
   }
   
   public void b()
   {
-    d();
+    f();
   }
   
   public void b(Bundle paramBundle)
   {
     if (paramBundle != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
+      Object localObject = this.d;
       if ((localObject == null) || (!((Client)localObject).onReqToServer(paramBundle)))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("sendServiceIpcReq unbind fail seq:");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.f);
           QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new Bundle();
@@ -267,10 +218,15 @@ public class WebIPCOperator
         localStringBuilder.append(paramOnRemoteRespObserver.key);
         QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramOnRemoteRespObserver)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramOnRemoteRespObserver);
+      if (this.c.contains(paramOnRemoteRespObserver)) {
+        this.c.remove(paramOnRemoteRespObserver);
       }
     }
+  }
+  
+  public Client c()
+  {
+    return this.d;
   }
   
   public void c(Bundle paramBundle)
@@ -293,7 +249,7 @@ public class WebIPCOperator
         return;
       }
       localObject = paramBundle.getString("cmd");
-      if ((localObject != null) && ((a((String)localObject)) || (((String)localObject).equals("startDownloadEmoji")) || (((String)localObject).equals("stopdownload")) || (((String)localObject).equals("openEquipmentLock")) || (((String)localObject).equals("card_setSummaryCard")) || (((String)localObject).equals("card_getVipInfo")) || (((String)localObject).equals("closeWeb")) || (((String)localObject).equals("setMobileResult")) || (((String)localObject).equals("setWaitingResponse")) || (((String)localObject).equals("openEmojiMall")) || (((String)localObject).equals("openProfileCard")) || (((String)localObject).equals("close_version")) || (((String)localObject).equals("openEmojiDetail")) || (((String)localObject).equals("openFontSetting")) || (((String)localObject).equals("startDownloadColorRing")) || (((String)localObject).equals("stopDownloadColorRing")) || (((String)localObject).equals("funcall_download")) || (((String)localObject).equals("funcall_set")) || (((String)localObject).equals("getA2")) || (((String)localObject).equals("openDevLock")) || (((String)localObject).equals("queryDevLockStatus")) || (((String)localObject).equals("ipc_funnypic_add")) || (((String)localObject).equals("ipc_video_isinstalled")) || (((String)localObject).equals("ipc_video_install_plugin")) || (((String)localObject).equals("gamecenter_delaydownload")) || (((String)localObject).equals("emojiStickerRecall")) || (((String)localObject).equals("ipc_cmd_get_team_work_url"))))
+      if ((localObject != null) && ((((String)localObject).equals("startDownloadEmoji")) || (((String)localObject).equals("stopdownload")) || (((String)localObject).equals("openEquipmentLock")) || (((String)localObject).equals("card_setSummaryCard")) || (((String)localObject).equals("card_getVipInfo")) || (((String)localObject).equals("closeWeb")) || (((String)localObject).equals("setMobileResult")) || (((String)localObject).equals("setWaitingResponse")) || (((String)localObject).equals("openEmojiMall")) || (((String)localObject).equals("openProfileCard")) || (((String)localObject).equals("close_version")) || (((String)localObject).equals("openEmojiDetail")) || (((String)localObject).equals("openFontSetting")) || (((String)localObject).equals("startDownloadColorRing")) || (((String)localObject).equals("stopDownloadColorRing")) || (((String)localObject).equals("funcall_download")) || (((String)localObject).equals("funcall_set")) || (((String)localObject).equals("getA2")) || (((String)localObject).equals("openDevLock")) || (((String)localObject).equals("queryDevLockStatus")) || (((String)localObject).equals("ipc_funnypic_add")) || (((String)localObject).equals("ipc_video_isinstalled")) || (((String)localObject).equals("ipc_video_install_plugin")) || (((String)localObject).equals("gamecenter_delaydownload")) || (((String)localObject).equals("emojiStickerRecall")) || (((String)localObject).equals("ipc_cmd_get_team_work_url"))))
       {
         a(paramBundle, 1000);
         a(new WebIPCOperator.4(this, paramBundle));
@@ -301,9 +257,14 @@ public class WebIPCOperator
     }
   }
   
+  public void d()
+  {
+    g();
+  }
+  
   public void d(Bundle paramBundle)
   {
-    f(paramBundle);
+    g(paramBundle);
   }
   
   void e(Bundle paramBundle)
@@ -319,15 +280,45 @@ public class WebIPCOperator
       localStringBuilder.append(i);
       QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, localStringBuilder.toString());
     }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    localObject = this.c.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((OnRemoteRespObserver)((Iterator)localObject).next()).onResponse(paramBundle);
+    }
+  }
+  
+  public boolean e()
+  {
+    Client localClient = this.d;
+    if (localClient != null) {
+      return localClient.isClientBinded();
+    }
+    return false;
+  }
+  
+  public WebIPCOperator.RequestItem f(Bundle paramBundle)
+  {
+    synchronized (this.g)
+    {
+      int i = this.f;
+      this.f = (i + 1);
+      paramBundle = new WebIPCOperator.RequestItem(i, paramBundle);
+      h();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("add to req queue seq: ");
+        localStringBuilder.append(paramBundle.a);
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, localStringBuilder.toString());
+      }
+      paramBundle.c = this.a.a(paramBundle.a, 30000L);
+      this.g.add(paramBundle);
+      return paramBundle;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.WebIPCOperator
  * JD-Core Version:    0.7.0.1
  */

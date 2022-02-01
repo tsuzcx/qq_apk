@@ -10,20 +10,20 @@ class AIOEmotionFragment$11
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionAdapter.notifyDataSetChanged();
-    EmoticonPreviewData localEmoticonPreviewData = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData;
+    this.this$0.h.a(this.a);
+    this.this$0.h.notifyDataSetChanged();
+    EmoticonPreviewData localEmoticonPreviewData = this.b;
     boolean bool = false;
     int i;
     if (localEmoticonPreviewData != null) {
-      i = this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData);
+      i = this.this$0.h.a(this.b);
     } else {
       i = 0;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSelection(i);
+    this.this$0.g.setSelection(i);
     if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData == null) {
+      if (this.b == null) {
         bool = true;
       }
       QLog.d("AIOEmotionFragment", 2, new Object[] { "mGallery setSelection pos:", Integer.valueOf(i), " dataIsNull:", Boolean.valueOf(bool) });
@@ -32,7 +32,7 @@ class AIOEmotionFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.11
  * JD-Core Version:    0.7.0.1
  */

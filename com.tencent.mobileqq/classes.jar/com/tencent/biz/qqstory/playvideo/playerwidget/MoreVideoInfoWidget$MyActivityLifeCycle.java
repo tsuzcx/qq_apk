@@ -21,16 +21,16 @@ public class MoreVideoInfoWidget$MyActivityLifeCycle
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject = this.a.a();
+    Object localObject = this.a.o();
     if (localObject != null)
     {
-      if (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.equals(localObject)) {
+      if (!this.a.e.equals(localObject)) {
         return;
       }
       if (paramInt1 == this.a.hashCode())
       {
-        SLog.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        SLog.b(this.a.i, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.d()).r();
         if (localObject != null) {
           ((VideoViewVideoHolder)localObject).c(false);
         }
@@ -41,26 +41,26 @@ public class MoreVideoInfoWidget$MyActivityLifeCycle
       if ((paramInt1 == 10002) && (paramInt2 == -1))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.a.b);
+        ((StringBuilder)localObject).append(this.a.i);
         ((StringBuilder)localObject).append(" onActivityResult");
         StoryVideoUploadManager.b(((StringBuilder)localObject).toString());
-        QQToast.a(this.a.b(), this.a.b().getString(2131719035), 1).a();
+        QQToast.makeText(this.a.y(), this.a.y().getString(2131916571), 1).show();
       }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (MoreVideoInfoWidget.a(this.a) != null)) {
-        MoreVideoInfoWidget.a(this.a).a();
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (MoreVideoInfoWidget.b(this.a) != null)) {
+        MoreVideoInfoWidget.b(this.a).a();
       }
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+        QLog.d(this.a.i, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
       }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(paramInt1, paramInt2, paramIntent);
+      if (this.a.s != null) {
+        this.a.s.a(paramInt1, paramInt2, paramIntent);
       }
     }
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
+    super.h();
     if (MoreVideoInfoWidget.a(this.a) != null) {
       MoreVideoInfoWidget.a(this.a).a();
     }

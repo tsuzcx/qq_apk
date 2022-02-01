@@ -14,17 +14,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PttShowRoomMng
 {
-  final LruCache<String, PttShowRoomMng.Guest> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  final List<PttShowRoomMng.PendingCmd> jdField_a_of_type_JavaUtilList;
-  final ConcurrentHashMap<String, PttShowRoomMng.CancelSeat[]> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  QQAppInterface a;
+  final LruCache<String, PttShowRoomMng.Guest> b;
+  final ConcurrentHashMap<String, PttShowRoomMng.CancelSeat[]> c;
+  final List<PttShowRoomMng.PendingCmd> d;
   
   public PttShowRoomMng(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new PttShowRoomMng.1(this, 20);
+    this.a = paramQQAppInterface;
+    this.c = new ConcurrentHashMap(3);
+    this.d = new ArrayList();
+    this.b = new PttShowRoomMng.1(this, 20);
   }
   
   public static final int a(QQAppInterface paramQQAppInterface)
@@ -39,13 +39,26 @@ public class PttShowRoomMng
     return 2;
   }
   
-  private PttShowRoomMng.Guest a(String paramString)
+  private void a(String paramString, PttShowRoomMng.Guest paramGuest)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache != null)
+      this.b.put(paramString, paramGuest);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private PttShowRoomMng.Guest b(String paramString)
+  {
+    try
+    {
+      if (this.b != null)
       {
-        paramString = (PttShowRoomMng.Guest)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+        paramString = (PttShowRoomMng.Guest)this.b.get(paramString);
         return paramString;
       }
     }
@@ -54,19 +67,6 @@ public class PttShowRoomMng
       paramString.printStackTrace();
     }
     return null;
-  }
-  
-  private void a(String paramString, PttShowRoomMng.Guest paramGuest)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramGuest);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
   }
   
   public Object a(String paramString, int paramInt)
@@ -78,18 +78,18 @@ public class PttShowRoomMng
       localObject1 = localObject2;
       if (paramString.length() != 0)
       {
-        if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
+        if (this.b == null) {
           return null;
         }
-        localObject1 = a(paramString);
+        localObject1 = b(paramString);
         int i;
         if (localObject1 == null)
         {
-          if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+          if (paramString.equals(this.a.getCurrentAccountUin()))
           {
-            paramString = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_nick", "");
-            i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, i, NetConnInfoCenter.getServerTime());
+            paramString = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "self_nick", "");
+            i = a(this.a);
+            a(this.a.getAccount(), paramString, i, NetConnInfoCenter.getServerTime());
           }
           else
           {
@@ -102,7 +102,7 @@ public class PttShowRoomMng
         }
         else
         {
-          i = ((PttShowRoomMng.Guest)localObject1).jdField_a_of_type_Int;
+          i = ((PttShowRoomMng.Guest)localObject1).c;
           paramString = ((PttShowRoomMng.Guest)localObject1).b;
         }
         if (paramInt != 1)
@@ -127,7 +127,7 @@ public class PttShowRoomMng
       localObject1 = localObject2;
       if (paramString.length() != 0)
       {
-        if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
+        if (this.b == null) {
           return null;
         }
         paramString = a(paramString, 2);
@@ -151,19 +151,19 @@ public class PttShowRoomMng
       if (paramMessageRecord.senderuin == null) {
         return;
       }
-      localObject1 = a(paramMessageRecord.senderuin);
-      if ((localObject1 == null) || (((PttShowRoomMng.Guest)localObject1).jdField_a_of_type_Long < paramMessageRecord.time))
+      localObject1 = b(paramMessageRecord.senderuin);
+      if ((localObject1 == null) || (((PttShowRoomMng.Guest)localObject1).d < paramMessageRecord.time))
       {
         try
         {
           str1 = paramMessageRecord.getExtInfoFromExtStr("hotchat_nick");
           i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("hotchat_gender"));
           l = paramMessageRecord.time;
-          if (!paramMessageRecord.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          if (!paramMessageRecord.senderuin.equals(this.a.getCurrentAccountUin())) {
             break label261;
           }
-          str2 = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_nick", "");
-          j = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          str2 = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "self_nick", "");
+          j = a(this.a);
           localObject1 = str1;
           if (str2 == null) {
             break label248;
@@ -215,14 +215,14 @@ public class PttShowRoomMng
       if (paramString1.length() == 0) {
         return;
       }
-      PttShowRoomMng.Guest localGuest = a(paramString1);
-      if ((localGuest != null) && (localGuest.jdField_a_of_type_Long <= paramLong))
+      PttShowRoomMng.Guest localGuest = b(paramString1);
+      if ((localGuest != null) && (localGuest.d <= paramLong))
       {
-        localGuest.jdField_a_of_type_Int = paramInt;
+        localGuest.c = paramInt;
         if ((paramString2 != null) && (paramString2.length() > 0)) {
           localGuest.b = paramString2;
         }
-        localGuest.jdField_a_of_type_Long = paramLong;
+        localGuest.d = paramLong;
         if (QLog.isDevelopLevel()) {
           NearbyUtils.a("PttShow", "cacheGender_update", new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
         }
@@ -230,12 +230,12 @@ public class PttShowRoomMng
       else if (localGuest == null)
       {
         localGuest = new PttShowRoomMng.Guest();
-        localGuest.jdField_a_of_type_JavaLangString = paramString1;
-        localGuest.jdField_a_of_type_Int = paramInt;
+        localGuest.a = paramString1;
+        localGuest.c = paramInt;
         if ((paramString2 != null) && (paramString2.length() > 0)) {
           localGuest.b = paramString2;
         }
-        localGuest.jdField_a_of_type_Long = paramLong;
+        localGuest.d = paramLong;
         a(paramString1, localGuest);
         if (QLog.isDevelopLevel()) {
           NearbyUtils.a("PttShow", "cacheGender_add", new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
@@ -246,7 +246,7 @@ public class PttShowRoomMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.PttShowRoomMng
  * JD-Core Version:    0.7.0.1
  */

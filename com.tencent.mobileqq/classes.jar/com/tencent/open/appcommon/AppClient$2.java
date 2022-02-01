@@ -21,15 +21,15 @@ final class AppClient$2
   public void run()
   {
     boolean bool;
-    if (Common.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null) {
+    if (Common.b(this.a.getString("schemaUrl")).get("auto_download") != null) {
       bool = true;
     } else {
       bool = false;
     }
-    if (!MyAppApi.a().a(CommonDataAdapter.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
+    if (!MyAppApi.l().a(CommonDataAdapter.a().b(), this.b, bool, false))
     {
       Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(Common.g());
+      ((StringBuilder)localObject1).append(Common.h());
       ((StringBuilder)localObject1).append(File.separator);
       ((StringBuilder)localObject1).append("qapp_center_detail.htm");
       localObject1 = ((StringBuilder)localObject1).toString();
@@ -42,7 +42,7 @@ final class AppClient$2
         ((StringBuilder)localObject3).append((String)localObject1);
         ((StringBuilder)localObject3).append(" not exist copyassets.");
         LogUtility.d("AppClient", ((StringBuilder)localObject3).toString());
-        FileUtils.a("Page/system", Common.h());
+        FileUtils.a("Page/system", Common.i());
       }
       Intent localIntent = new Intent();
       Bundle localBundle = new Bundle();
@@ -56,26 +56,26 @@ final class AppClient$2
       else
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(Common.m());
+        ((StringBuilder)localObject1).append(Common.o());
         ((StringBuilder)localObject1).append(File.separator);
         ((StringBuilder)localObject1).append("qapp_center_detail.htm");
         localObject3 = ((StringBuilder)localObject1).toString();
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("&from=-10&id=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.c);
       localObject2 = ((StringBuilder)localObject1).toString();
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.d))
       {
         localObject1 = localObject2;
-        if (this.jdField_b_of_type_JavaLangString.contains("channelId")) {}
+        if (this.d.contains("channelId")) {}
       }
       else
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append((String)localObject2);
         ((StringBuilder)localObject1).append("&channelId=");
-        ((StringBuilder)localObject1).append(this.c);
+        ((StringBuilder)localObject1).append(this.e);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       localObject2 = localObject1;
@@ -87,8 +87,8 @@ final class AppClient$2
         localObject2 = ((StringBuilder)localObject2).toString();
       }
       localObject1 = localObject2;
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        if (this.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.d)) {
+        if (this.d.equals(this.c))
         {
           localObject1 = localObject2;
         }
@@ -97,12 +97,12 @@ final class AppClient$2
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append((String)localObject2);
           ((StringBuilder)localObject1).append("&");
-          ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.d);
           localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
-      localIntent.setClass(CommonDataAdapter.a().a(), QZoneAppListActivity.class);
-      if (DownloadSDKConfigManager.canGotoNewDetailPage(this.d)) {
+      localIntent.setClass(CommonDataAdapter.a().b(), QZoneAppListActivity.class);
+      if (DownloadSDKConfigManager.canGotoNewDetailPage(this.f)) {
         localBundle.putInt("goto_type", 7);
       } else {
         localBundle.putInt("goto_type", 3);
@@ -110,7 +110,7 @@ final class AppClient$2
       localBundle.putString("APP_URL", (String)localObject3);
       localBundle.putBoolean("FROM_FEED", true);
       localBundle.putString("APP_PARAMS", (String)localObject1);
-      if (this.jdField_a_of_type_AndroidOsBundle.getInt("process_id") == 2) {
+      if (this.a.getInt("process_id") == 2) {
         localBundle.putInt("process_id", 2);
       }
       localObject1 = new StringBuilder();
@@ -122,13 +122,13 @@ final class AppClient$2
       localIntent.putExtras(localBundle);
       localIntent.putExtra("adapter_action", "action_app_detail");
       localIntent.addFlags(872415232);
-      CommonDataAdapter.a().a().startActivity(localIntent);
+      CommonDataAdapter.a().b().startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.2
  * JD-Core Version:    0.7.0.1
  */

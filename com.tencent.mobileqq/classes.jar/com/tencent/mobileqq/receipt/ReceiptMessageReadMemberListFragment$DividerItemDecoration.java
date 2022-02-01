@@ -12,29 +12,29 @@ import android.view.View;
 class ReceiptMessageReadMemberListFragment$DividerItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable a;
   private int b;
+  private int c;
   
   private ReceiptMessageReadMemberListFragment$DividerItemDecoration(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = paramDrawable;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    paramRect.set(0, 0, 0, this.a.getIntrinsicHeight());
   }
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     int j = paramRecyclerView.getPaddingLeft();
-    int k = this.jdField_a_of_type_Int;
+    int k = this.b;
     int m = paramRecyclerView.getWidth();
     int n = paramRecyclerView.getPaddingRight();
-    int i1 = this.b;
+    int i1 = this.c;
     int i2 = paramRecyclerView.getChildCount();
     int i = 0;
     while (i < i2)
@@ -42,16 +42,16 @@ class ReceiptMessageReadMemberListFragment$DividerItemDecoration
       paramState = paramRecyclerView.getChildAt(i);
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
       int i3 = paramState.getBottom() + localLayoutParams.bottomMargin;
-      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      int i4 = this.a.getIntrinsicHeight();
+      this.a.setBounds(j + k, i3, m - n - i1, i4 + i3);
+      this.a.draw(paramCanvas);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.DividerItemDecoration
  * JD-Core Version:    0.7.0.1
  */

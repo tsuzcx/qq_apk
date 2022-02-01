@@ -9,12 +9,12 @@ final class AdVideoButtonUIUtils$1
   
   public void run()
   {
-    AdVideoButtonUIUtils.b(this.a.n);
+    AdVideoButtonUIUtils.b(this.a.R);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdVideoButtonUIUtils.1
  * JD-Core Version:    0.7.0.1
  */

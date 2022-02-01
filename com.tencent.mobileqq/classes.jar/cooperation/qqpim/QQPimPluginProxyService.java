@@ -17,20 +17,20 @@ public class QQPimPluginProxyService
     }
     Intent localIntent = new Intent(paramQQAppInterface.getApp(), QQPimPluginProxyService.class);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "qqpim_plugin.apk";
-    localPluginParams.e = "QQ同步助手插件";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    localPluginParams.f = QQPimDefineList.k;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localPluginParams.d = "qqpim_plugin.apk";
+    localPluginParams.g = "QQ同步助手插件";
+    localPluginParams.c = paramQQAppInterface.getCurrentAccountUin();
+    localPluginParams.h = QQPimDefineList.l;
+    localPluginParams.j = localIntent;
     IPluginManager.c(paramQQAppInterface.getApp(), localPluginParams);
     if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyService.preloadQQPimService() IPluginManager.SUPPORT_NETWORKING = true");
+      QLog.i(QQPimDefineList.a, 2, "QQPimPluginProxyService.preloadQQPimService() IPluginManager.SUPPORT_NETWORKING = true");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

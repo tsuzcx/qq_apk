@@ -14,9 +14,9 @@ public final class FirstCommentCreateData
 {
   public static final FirstCommentCreateData.CREATOR CREATOR = new FirstCommentCreateData.CREATOR(null);
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
+  private String a = "";
   @Nullable
-  private List<BaseCommentData.CommentRptData> jdField_a_of_type_JavaUtilList;
+  private List<BaseCommentData.CommentRptData> b;
   
   public FirstCommentCreateData(int paramInt, @NotNull String paramString)
   {
@@ -32,13 +32,7 @@ public final class FirstCommentCreateData
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @Nullable
-  public final List<BaseCommentData.CommentRptData> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(@NotNull Parcel paramParcel)
@@ -49,30 +43,36 @@ public final class FirstCommentCreateData
     if (paramParcel == null) {
       paramParcel = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramParcel;
+    this.a = paramParcel;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public final void a(@Nullable List<BaseCommentData.CommentRptData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
+  }
+  
+  @Nullable
+  public final List<BaseCommentData.CommentRptData> b()
+  {
+    return this.b;
   }
   
   @NotNull
-  public final String b()
+  public final String c()
   {
-    Object localObject1 = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = new StringBuilder(this.a);
+    Object localObject2 = this.b;
     if (localObject2 != null)
     {
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((StringBuilder)localObject1).append(((BaseCommentData.CommentRptData)((Iterator)localObject2).next()).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(((BaseCommentData.CommentRptData)((Iterator)localObject2).next()).b);
       }
     }
     localObject1 = ((StringBuilder)localObject1).toString();
@@ -92,7 +92,7 @@ public final class FirstCommentCreateData
     localStringBuilder.append("FirstCommentCreateData:");
     localStringBuilder.append(super.toString());
     localStringBuilder.append("commentStr: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     return localStringBuilder.toString();
   }
   
@@ -100,12 +100,12 @@ public final class FirstCommentCreateData
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.FirstCommentCreateData
  * JD-Core Version:    0.7.0.1
  */

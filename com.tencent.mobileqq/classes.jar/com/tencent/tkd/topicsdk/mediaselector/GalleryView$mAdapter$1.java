@@ -22,29 +22,29 @@ public final class GalleryView$mAdapter$1
   
   public int a()
   {
-    return GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView).size();
+    return GalleryView.a(this.a).size();
   }
   
   @NotNull
   public Object a(@NotNull ViewGroup paramViewGroup, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
-    PhotoView localPhotoView = new PhotoView(this.jdField_a_of_type_AndroidContentContext);
+    PhotoView localPhotoView = new PhotoView(this.b);
     localPhotoView.a();
     paramViewGroup.addView((View)localPhotoView);
-    paramViewGroup = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView.a();
+    paramViewGroup = this.a.getPicLoader();
     if (paramViewGroup != null)
     {
-      Object localObject = GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView).get(paramInt);
+      Object localObject = GalleryView.a(this.a).get(paramInt);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "mList[position]");
       paramViewGroup.invoke(localObject, localPhotoView);
     }
     else
     {
-      localPhotoView.setImageURI(Uri.parse((String)GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView).get(paramInt)));
+      localPhotoView.setImageURI(Uri.parse((String)GalleryView.a(this.a).get(paramInt)));
     }
     localPhotoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localPhotoView.setOnClickListener(GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView));
+    localPhotoView.setOnClickListener(GalleryView.b(this.a));
     localPhotoView.setOnLongClickListener((View.OnLongClickListener)new GalleryView.mAdapter.1.instantiateItem.1(this, paramInt));
     return localPhotoView;
   }
@@ -68,12 +68,12 @@ public final class GalleryView$mAdapter$1
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
     Intrinsics.checkParameterIsNotNull(paramObject, "obj");
     super.b(paramViewGroup, paramInt, paramObject);
-    GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView, (PhotoView)paramObject);
+    GalleryView.a(this.a, (PhotoView)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.GalleryView.mAdapter.1
  * JD-Core Version:    0.7.0.1
  */

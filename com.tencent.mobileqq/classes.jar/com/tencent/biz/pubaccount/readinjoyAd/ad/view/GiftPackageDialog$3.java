@@ -11,18 +11,18 @@ class GiftPackageDialog$3
   
   public void a(GiftServiceBean paramGiftServiceBean)
   {
-    String str = GiftPackageDialog.c(this.a).getText().toString();
+    String str = GiftPackageDialog.d(this.a).getText().toString();
     if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
     {
       GiftPackageDialog.c(this.a, paramGiftServiceBean);
-      GiftPackageDialog.c(this.a).setText(paramGiftServiceBean.t);
+      GiftPackageDialog.d(this.a).setText(paramGiftServiceBean.t);
     }
-    GiftPackageDialog.a(this.a);
+    GiftPackageDialog.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.3
  * JD-Core Version:    0.7.0.1
  */

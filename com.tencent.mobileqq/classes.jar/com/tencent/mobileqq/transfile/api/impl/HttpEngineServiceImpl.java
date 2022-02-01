@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.transfile.api.impl;
 
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.transfile.HttpCommunicator;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.IHttpCommunicator;
@@ -11,9 +12,11 @@ import com.tencent.mobileqq.transfile.ServerAddr;
 import com.tencent.mobileqq.transfile.TransFileUtil;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
+import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +31,7 @@ public class HttpEngineServiceImpl
   implements IHttpEngineService
 {
   public static final String TAG = "Q.richmedia.HttpEngineServiceImpl";
+  public static String privateDir;
   public volatile int mCmwapConTypeFromDpc = 4;
   public ConcurrentHashMap<String, String> mDownloadingFiles = new ConcurrentHashMap();
   HttpCommunicator mHttpExcuter;
@@ -91,6 +95,14 @@ public class HttpEngineServiceImpl
     return new HttpEngineServiceImpl(new HttpCommunicator(), true);
   }
   
+  public static String getPrivateDir()
+  {
+    if (privateDir == null) {
+      privateDir = RmVFSUtils.getVFSPath(AppConstants.SDCARD_PATH);
+    }
+    return privateDir;
+  }
+  
   public static String getServerReason(String paramString, long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -100,15 +112,15 @@ public class HttpEngineServiceImpl
     return localStringBuilder.toString();
   }
   
-  public static String getTempPath(NetReq paramNetReq, String paramString1, String paramString2)
+  public static String getTempPath(NetReq paramNetReq, String paramString)
   {
     if ((paramNetReq != null) && (paramNetReq.mTempPath != null) && (paramNetReq.mTempPath.length() > 0)) {
       return paramNetReq.mTempPath;
     }
-    paramNetReq = new StringBuilder();
-    paramNetReq.append(paramString1);
-    paramNetReq.append(".");
-    paramNetReq.append(MD5.toMD5(TransFileUtil.getUrlResoursePath(paramString2, false)));
+    paramNetReq = new StringBuilder(getPrivateDir());
+    paramNetReq.append("httpengine");
+    paramNetReq.append(File.separator);
+    paramNetReq.append(MD5.toMD5(TransFileUtil.getUrlResoursePath(paramString, false)));
     paramNetReq.append(".tmp");
     return paramNetReq.toString();
   }
@@ -390,19 +402,19 @@ public class HttpEngineServiceImpl
         localObject1 = localObject2;
         if (paramNetReq.mOutPath != null)
         {
-          localObject2 = getTempPath(paramNetReq, paramNetReq.mOutPath, ((HttpNetReq)localObject3).mReqUrl);
+          localObject2 = getTempPath(paramNetReq, ((HttpNetReq)localObject3).mReqUrl);
           paramNetReq.mKey = ((String)localObject2);
           localObject1 = localObject2;
           if (this.mDownloadingFiles.putIfAbsent(localObject2, localObject2) != null)
           {
             i = 1;
             localObject1 = localObject2;
-            break label96;
+            break label92;
           }
         }
       }
       int i = 0;
-      label96:
+      label92:
       doInnerDns((HttpNetReq)localObject3);
       ((HttpNetReq)localObject3).mResp = new NetResp((NetReq)localObject3);
       OldHttpCommunicatorListener localOldHttpCommunicatorListener = new OldHttpCommunicatorListener(this);
@@ -463,7 +475,7 @@ public class HttpEngineServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.HttpEngineServiceImpl
  * JD-Core Version:    0.7.0.1
  */

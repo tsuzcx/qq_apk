@@ -7,13 +7,13 @@ final class d$1
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != -1)
     {
-      Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+      Object[] arrayOfObject = this.b;
       if (arrayOfObject != null)
       {
-        byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        byte[] arrayOfByte = this.c;
         if (arrayOfByte != null) {
           try
           {
@@ -31,7 +31,7 @@ final class d$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.d.1
  * JD-Core Version:    0.7.0.1
  */

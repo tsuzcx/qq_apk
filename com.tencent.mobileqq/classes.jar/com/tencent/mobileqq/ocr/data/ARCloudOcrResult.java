@@ -26,7 +26,7 @@ public class ARCloudOcrResult
     } else {
       i = 0;
     }
-    localYoutuOcrResult.jdField_a_of_type_Int = i;
+    localYoutuOcrResult.a = i;
     boolean bool = paramYoutuOcrRsp.youtu_ocr_errormsg.has();
     String str = "";
     Object localObject;
@@ -35,7 +35,7 @@ public class ARCloudOcrResult
     } else {
       localObject = "";
     }
-    localYoutuOcrResult.jdField_a_of_type_JavaLangString = ((String)localObject);
+    localYoutuOcrResult.b = ((String)localObject);
     if (paramYoutuOcrRsp.youtu_orc_detail.has())
     {
       localObject = (YoutuOcr.YoutuOcrDetail)paramYoutuOcrRsp.youtu_orc_detail.get();
@@ -44,19 +44,19 @@ public class ARCloudOcrResult
       } else {
         i = -1;
       }
-      localYoutuOcrResult.jdField_b_of_type_Int = i;
+      localYoutuOcrResult.c = i;
       paramYoutuOcrRsp = str;
       if (((YoutuOcr.YoutuOcrDetail)localObject).errormsg.has()) {
         paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).errormsg.get();
       }
-      localYoutuOcrResult.jdField_b_of_type_JavaLangString = paramYoutuOcrRsp;
+      localYoutuOcrResult.d = paramYoutuOcrRsp;
       if (((YoutuOcr.YoutuOcrDetail)localObject).language.has()) {
-        localYoutuOcrResult.e = ((YoutuOcr.YoutuOcrDetail)localObject).language.get();
+        localYoutuOcrResult.g = ((YoutuOcr.YoutuOcrDetail)localObject).language.get();
       }
       if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.has())
       {
-        localYoutuOcrResult.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        localYoutuOcrResult.jdField_a_of_type_JavaUtilArrayList.addAll(((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.get());
+        localYoutuOcrResult.h = new ArrayList();
+        localYoutuOcrResult.h.addAll(((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.get());
       }
       if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.has()) {
         paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.get();
@@ -64,7 +64,7 @@ public class ARCloudOcrResult
         paramYoutuOcrRsp = null;
       }
       if (paramYoutuOcrRsp != null) {
-        localYoutuOcrResult.d = a(paramYoutuOcrRsp);
+        localYoutuOcrResult.f = a(paramYoutuOcrRsp);
       }
     }
     return localYoutuOcrResult;
@@ -94,15 +94,15 @@ public class ARCloudOcrResult
   public OcrRecogResult a()
   {
     Object localObject1 = this.a;
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((ARCloudOcrResult.YoutuOcrResult)localObject1).d)))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((ARCloudOcrResult.YoutuOcrResult)localObject1).f)))
     {
       localObject1 = new OcrRecogResult();
       Object localObject2 = this.a;
       if (localObject2 != null)
       {
-        ((OcrRecogResult)localObject1).language = ((ARCloudOcrResult.YoutuOcrResult)localObject2).e;
-        ((OcrRecogResult)localObject1).ocrContent = this.a.d;
-        ((OcrRecogResult)localObject1).ocr_languages = this.a.jdField_a_of_type_JavaUtilArrayList;
+        ((OcrRecogResult)localObject1).language = ((ARCloudOcrResult.YoutuOcrResult)localObject2).g;
+        ((OcrRecogResult)localObject1).ocrContent = this.a.f;
+        ((OcrRecogResult)localObject1).ocr_languages = this.a.h;
       }
       if (QLog.isColorLevel())
       {
@@ -126,7 +126,7 @@ public class ARCloudOcrResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.ARCloudOcrResult
  * JD-Core Version:    0.7.0.1
  */

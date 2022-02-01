@@ -14,14 +14,14 @@ class ScrimInsetsFrameLayout$1
   
   public WindowInsetsCompat onApplyWindowInsets(View paramView, @NonNull WindowInsetsCompat paramWindowInsetsCompat)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsRect == null) {
-      this.a.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (this.a.b == null) {
+      this.a.b = new Rect();
     }
-    this.a.jdField_a_of_type_AndroidGraphicsRect.set(paramWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.getSystemWindowInsetBottom());
+    this.a.b.set(paramWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.getSystemWindowInsetBottom());
     this.a.a(paramWindowInsetsCompat);
     paramView = this.a;
     boolean bool;
-    if ((paramWindowInsetsCompat.hasSystemWindowInsets()) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
+    if ((paramWindowInsetsCompat.hasSystemWindowInsets()) && (this.a.a != null)) {
       bool = false;
     } else {
       bool = true;
@@ -33,7 +33,7 @@ class ScrimInsetsFrameLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.ScrimInsetsFrameLayout.1
  * JD-Core Version:    0.7.0.1
  */

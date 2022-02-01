@@ -13,7 +13,7 @@ class PubAccountMailJsPlugin$3
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    DialogUtil.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a.mRuntime.d(), paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -24,7 +24,7 @@ class PubAccountMailJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountMailJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

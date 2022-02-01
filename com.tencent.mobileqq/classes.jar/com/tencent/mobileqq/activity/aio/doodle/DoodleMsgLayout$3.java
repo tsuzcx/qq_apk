@@ -29,7 +29,7 @@ class DoodleMsgLayout$3
     if (localObject != null) {
       ((URLDrawable)localObject).startDownload();
     }
-    if (this.a != DoodleMsgLayout.a(this.this$0)) {
+    if (this.a != DoodleMsgLayout.f(this.this$0)) {
       return;
     }
     new Handler(Looper.getMainLooper()).post(new DoodleMsgLayout.3.1(this, (Drawable)localObject));
@@ -41,7 +41,7 @@ class DoodleMsgLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.3
  * JD-Core Version:    0.7.0.1
  */

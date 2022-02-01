@@ -13,16 +13,16 @@ class FastWebActivity$41
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.g != null)
     {
       QLog.d("FastWebActivity", 1, "requestControllInfo requestInsertArticlesAndRecordAction in native page");
-      RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(this.this$0.a.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_NONE, 0, 0, 0), 5);
+      RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(this.this$0.g.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_NONE, 0, 0, 0), 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.41
  * JD-Core Version:    0.7.0.1
  */

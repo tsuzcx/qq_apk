@@ -11,20 +11,20 @@ public abstract class AbsWSRichWidgetData
     this.a = paramInt;
   }
   
-  public int a()
+  public abstract stSchema a();
+  
+  public abstract String b();
+  
+  public abstract String c();
+  
+  public int d()
   {
     return this.a;
   }
-  
-  public abstract stSchema a();
-  
-  public abstract String a();
-  
-  public abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.AbsWSRichWidgetData
  * JD-Core Version:    0.7.0.1
  */

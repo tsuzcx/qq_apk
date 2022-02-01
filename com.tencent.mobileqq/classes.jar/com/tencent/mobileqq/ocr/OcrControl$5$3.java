@@ -13,7 +13,7 @@ class OcrControl$5$3
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("ocr_sso_code", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("ocr_sso_code", String.valueOf(this.a));
     localHashMap.put("ocr_code", String.valueOf(this.b));
     localHashMap.put("ret_code", String.valueOf(this.c));
     try
@@ -33,7 +33,7 @@ class OcrControl$5$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.5.3
  * JD-Core Version:    0.7.0.1
  */

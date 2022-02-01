@@ -9,12 +9,12 @@ class FloatWindowHelper$3
   
   public void permissionFinish(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_liveFloatwindowFloatWindowHelper$IPermissionCallback.a(paramBoolean);
+    this.a.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.floatwindow.FloatWindowHelper.3
  * JD-Core Version:    0.7.0.1
  */

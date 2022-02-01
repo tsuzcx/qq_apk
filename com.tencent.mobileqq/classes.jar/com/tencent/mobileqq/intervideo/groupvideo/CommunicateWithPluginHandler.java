@@ -20,22 +20,15 @@ import mqq.manager.TicketManager;
 
 class CommunicateWithPluginHandler
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new CommunicateWithPluginHandler.2(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PushMessageDelegate jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanPushMessageDelegate = new CommunicateWithPluginHandler.1(this);
-  private List<OnOpenCloseRoomCallback> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<OnOpenCloseRoomCallback> b = new ArrayList();
-  
-  private Intent a()
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
-    return localIntent;
-  }
+  private QQAppInterface a;
+  private PushMessageDelegate b = new CommunicateWithPluginHandler.1(this);
+  private BroadcastReceiver c = new CommunicateWithPluginHandler.2(this);
+  private List<OnOpenCloseRoomCallback> d = new ArrayList();
+  private List<OnOpenCloseRoomCallback> e = new ArrayList();
   
   private void a(Intent paramIntent)
   {
-    WatchTogetherManager localWatchTogetherManager = (WatchTogetherManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WATCH_LIVE_TOGETHER);
+    WatchTogetherManager localWatchTogetherManager = (WatchTogetherManager)this.a.getManager(QQManagerFactory.WATCH_LIVE_TOGETHER);
     NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
     localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
     localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
@@ -48,13 +41,13 @@ class CommunicateWithPluginHandler
     {
       int i = paramIntent.getIntExtra("callback_return_code", 0);
       String str = paramIntent.getStringExtra("callback_return_message");
-      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramIntent = this.d.iterator();
       while (paramIntent.hasNext()) {
         ((OnOpenCloseRoomCallback)paramIntent.next()).a(i, str);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("receive ");
-      if (paramList == this.jdField_a_of_type_JavaUtilList) {
+      if (paramList == this.d) {
         paramIntent = "close";
       } else {
         paramIntent = "open";
@@ -71,19 +64,31 @@ class CommunicateWithPluginHandler
   
   private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
   {
-    Intent localIntent = a();
+    Intent localIntent = c();
     localIntent.putExtra("command_type", paramInt);
     localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
     b(localIntent);
   }
   
-  private void b()
+  private void b(Intent paramIntent)
   {
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+    this.a.getApp().sendBroadcast(paramIntent);
+  }
+  
+  private Intent c()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
+    return localIntent;
+  }
+  
+  private void d()
+  {
+    Object localObject = (TicketManager)this.a.getManager(2);
+    if ((localObject != null) && (!TextUtils.isEmpty(this.a.getAccount())))
     {
-      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      Intent localIntent = a();
+      localObject = ((TicketManager)localObject).getSkey(this.a.getAccount());
+      Intent localIntent = c();
       localIntent.putExtra("command_type", 6);
       localIntent.putExtra("sKeyKey", (String)localObject);
       b(localIntent);
@@ -92,49 +97,44 @@ class CommunicateWithPluginHandler
     QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
   }
   
-  private void b(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
-  }
-  
-  public PushMessageDelegate a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanPushMessageDelegate;
-  }
-  
   void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.a.getApp().unregisterReceiver(this.c);
+    this.e.clear();
+    this.d.clear();
+    this.a = null;
   }
   
   void a(Bundle paramBundle, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
-    Intent localIntent = a();
+    Intent localIntent = c();
     localIntent.putExtra("command_type", 4);
     localIntent.putExtra("closeRoomBundle", paramBundle);
     b(localIntent);
-    this.jdField_a_of_type_JavaUtilList.add(paramOnOpenCloseRoomCallback);
+    this.d.add(paramOnOpenCloseRoomCallback);
   }
   
   void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     paramQQAppInterface = new IntentFilter();
     paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
+    this.a.getApp().registerReceiver(this.c, paramQQAppInterface);
   }
   
   void a(OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
-    this.b.add(paramOnOpenCloseRoomCallback);
+    this.e.add(paramOnOpenCloseRoomCallback);
+  }
+  
+  public PushMessageDelegate b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.CommunicateWithPluginHandler
  * JD-Core Version:    0.7.0.1
  */

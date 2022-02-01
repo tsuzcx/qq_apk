@@ -11,14 +11,14 @@ class DownloadNativeApi$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloadCenterImpl.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    DownloadNativeApi.a(this.a.this$0).a(this.a.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadTaskInfo);
+    DownloadCenterImpl.a().a(this.a.a);
+    DownloadNativeApi.a(this.a.this$0).a(this.a.b);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1.1
  * JD-Core Version:    0.7.0.1
  */

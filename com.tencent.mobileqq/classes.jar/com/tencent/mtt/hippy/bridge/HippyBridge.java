@@ -17,15 +17,11 @@ public abstract interface HippyBridge
   
   public abstract void onDestroy();
   
-  public abstract boolean runScriptFromAssets(String paramString1, AssetManager paramAssetManager, boolean paramBoolean, String paramString2, NativeCallback paramNativeCallback);
-  
-  public abstract boolean runScriptFromFile(String paramString1, String paramString2, boolean paramBoolean, String paramString3, NativeCallback paramNativeCallback);
-  
   public abstract boolean runScriptFromUri(String paramString1, AssetManager paramAssetManager, boolean paramBoolean, String paramString2, NativeCallback paramNativeCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.HippyBridge
  * JD-Core Version:    0.7.0.1
  */

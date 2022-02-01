@@ -21,16 +21,10 @@ public class AEGIFTextEditViewModel
     return this.a;
   }
   
-  public void a()
-  {
-    this.a.postValue(new AEGIFTextColorConfig.SmartTextColor("#ccffffff", "#000000"));
-    this.b.postValue("");
-  }
-  
   public void a(String paramString, int paramInt)
   {
     this.b.postValue(paramString);
-    this.a.postValue(AEGIFTextColorConfig.a.get(paramInt));
+    this.a.postValue(AEGIFTextColorConfig.b.get(paramInt));
   }
   
   public void a(String paramString1, String paramString2)
@@ -65,10 +59,16 @@ public class AEGIFTextEditViewModel
   {
     return this.c;
   }
+  
+  public void d()
+  {
+    this.a.postValue(new AEGIFTextColorConfig.SmartTextColor("#ccffffff", "#000000"));
+    this.b.postValue("");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.viewmodel.AEGIFTextEditViewModel
  * JD-Core Version:    0.7.0.1
  */

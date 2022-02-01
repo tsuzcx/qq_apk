@@ -2,6 +2,7 @@ package com.tencent.mqq.shared_file_accessor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -44,7 +45,7 @@ public class SharedPreferencesProxyManager
     }
   }
   
-  private SharedPreferencesProxyManager realInit(Context paramContext, SharedPreferencesProxyManager.IAdapter paramIAdapter)
+  private SharedPreferencesProxyManager realInit(Context paramContext, String paramString, SharedPreferencesProxyManager.IAdapter paramIAdapter)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("init ");
@@ -60,7 +61,11 @@ public class SharedPreferencesProxyManager
     }
     if ((this.mBoundContext == null) && (paramContext != null))
     {
-      Utils.initCurrentProcessName(paramContext);
+      if (TextUtils.isEmpty(paramString)) {
+        Utils.initCurrentProcessName(paramContext);
+      } else {
+        Utils.initCurrentProcessName(paramContext, paramString);
+      }
       this.mBoundContext = new WeakReference(paramContext);
     }
     int i = 0;
@@ -116,7 +121,21 @@ public class SharedPreferencesProxyManager
   {
     try
     {
-      paramContext = realInit(paramContext, paramIAdapter);
+      paramContext = realInit(paramContext, null, paramIAdapter);
+      return paramContext;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public SharedPreferencesProxyManager init(Context paramContext, String paramString, SharedPreferencesProxyManager.IAdapter paramIAdapter)
+  {
+    try
+    {
+      paramContext = realInit(paramContext, paramString, paramIAdapter);
       return paramContext;
     }
     finally
@@ -131,7 +150,22 @@ public class SharedPreferencesProxyManager
     try
     {
       sIsDebugVersion = paramBoolean;
-      paramContext = realInit(paramContext, paramIAdapter);
+      paramContext = realInit(paramContext, null, paramIAdapter);
+      return paramContext;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public SharedPreferencesProxyManager init(Context paramContext, boolean paramBoolean, String paramString, SharedPreferencesProxyManager.IAdapter paramIAdapter)
+  {
+    try
+    {
+      sIsDebugVersion = paramBoolean;
+      paramContext = realInit(paramContext, paramString, paramIAdapter);
       return paramContext;
     }
     finally
@@ -165,7 +199,7 @@ public class SharedPreferencesProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager
  * JD-Core Version:    0.7.0.1
  */

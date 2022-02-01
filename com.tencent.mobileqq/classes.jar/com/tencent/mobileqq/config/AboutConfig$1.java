@@ -23,9 +23,9 @@ class AboutConfig$1
       int j = localList.size();
       i = j;
       if (j > 0) {
-        synchronized (AboutConfig.a(this.this$0))
+        synchronized (AboutConfig.b(this.this$0))
         {
-          AboutConfig.a(this.this$0);
+          AboutConfig.c(this.this$0);
           AboutConfig.a(this.this$0, localList);
           this.this$0.b();
           i = j;
@@ -36,7 +36,7 @@ class AboutConfig$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Load about config from DB = ");
-      localStringBuilder.append(AboutConfig.a(this.this$0));
+      localStringBuilder.append(AboutConfig.b(this.this$0));
       localStringBuilder.append(",asynchronous=");
       localStringBuilder.append(this.a);
       localStringBuilder.append(",size=");
@@ -48,7 +48,7 @@ class AboutConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.AboutConfig.1
  * JD-Core Version:    0.7.0.1
  */

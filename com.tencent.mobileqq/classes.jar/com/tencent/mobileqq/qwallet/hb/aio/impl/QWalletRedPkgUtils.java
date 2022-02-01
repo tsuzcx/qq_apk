@@ -2,14 +2,19 @@ package com.tencent.mobileqq.qwallet.hb.aio.impl;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import androidx.annotation.NonNull;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.hb.aio.QQWalletBaseMsgElem;
 import com.tencent.mobileqq.relation.api.IContactUtilsApi;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
@@ -26,7 +31,7 @@ public class QWalletRedPkgUtils
       if (paramBaseSessionInfo == null) {
         return -1;
       }
-      i = paramBaseSessionInfo.jdField_a_of_type_Int;
+      i = paramBaseSessionInfo.a;
       if (i != 0) {
         if (i != 1)
         {
@@ -77,7 +82,7 @@ public class QWalletRedPkgUtils
   public static Bundle a(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo)
   {
     String str = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getFriendName(paramBaseQQAppInterface.getCurrentAccountUin());
-    int j = paramBaseSessionInfo.jdField_a_of_type_Int;
+    int j = paramBaseSessionInfo.a;
     int i = 1;
     if (j != 0)
     {
@@ -158,7 +163,7 @@ public class QWalletRedPkgUtils
     {
       paramBaseSessionInfo = str;
       if (paramInt == 1) {
-        break label200;
+        break label216;
       }
       if (paramInt != 1000)
       {
@@ -166,35 +171,41 @@ public class QWalletRedPkgUtils
           if (paramInt != 1004)
           {
             if (paramInt == 1008) {
-              break label195;
+              break label211;
             }
             if (paramInt != 3000)
             {
               if ((paramInt != 10002) && (paramInt != 10004))
               {
-                if ((paramInt != 1024) && (paramInt != 1025))
+                if (paramInt != 10014)
                 {
-                  i = -1;
+                  if ((paramInt != 1024) && (paramInt != 1025))
+                  {
+                    i = -1;
+                    paramBaseSessionInfo = str;
+                    break label216;
+                  }
+                  i = 58;
                   paramBaseSessionInfo = str;
-                  break label200;
+                  break label216;
                 }
-                i = 58;
+                i = 11;
                 paramBaseSessionInfo = str;
-                break label200;
+                break label216;
               }
             }
             else
             {
               i = 2;
               paramBaseSessionInfo = str;
-              break label200;
+              break label216;
             }
           }
           else
           {
             i = 4;
             paramBaseSessionInfo = str;
-            break label200;
+            break label216;
           }
         }
         paramInt = 6;
@@ -202,27 +213,52 @@ public class QWalletRedPkgUtils
         i = paramInt;
         paramBaseSessionInfo = str;
         if (!TextUtils.isEmpty(str)) {
-          break label200;
+          break label216;
         }
         paramBaseSessionInfo = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getFriendName(paramBaseQQAppInterface.getCurrentAccountUin());
         i = paramInt;
-        break label200;
+        break label216;
       }
       else
       {
         i = 3;
         paramBaseSessionInfo = str;
-        break label200;
+        break label216;
       }
     }
-    label195:
+    label211:
     i = 0;
     paramBaseSessionInfo = str;
-    label200:
+    label216:
     paramBaseQQAppInterface = new Bundle();
     paramBaseQQAppInterface.putInt("groupType", i);
     paramBaseQQAppInterface.putString("name", paramBaseSessionInfo);
     return paramBaseQQAppInterface;
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    if (paramAppRuntime == null) {
+      return "";
+    }
+    if (!StringUtil.isEmpty(paramString1))
+    {
+      if (StringUtil.isEmpty(paramString2)) {
+        return "";
+      }
+      String str = paramString2;
+      if (TextUtils.equals(paramAppRuntime.getCurrentAccountUin(), paramString2)) {
+        str = ((IGPSService)paramAppRuntime.getRuntimeService(IGPSService.class, "")).getSelfTinyId();
+      }
+      paramString2 = (IGPSService)paramAppRuntime.getRuntimeService(IGPSService.class, "");
+      paramString1 = paramString2.getGuildMemberName(paramString1, str);
+      paramAppRuntime = paramString1;
+      if (TextUtils.isEmpty(paramString1)) {
+        paramAppRuntime = paramString2.getGuildUserNick(str);
+      }
+      return paramAppRuntime;
+    }
+    return "";
   }
   
   public static JSONObject a(AppInterface paramAppInterface, BaseSessionInfo paramBaseSessionInfo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, int paramInt3, int paramInt4)
@@ -232,8 +268,8 @@ public class QWalletRedPkgUtils
   
   public static JSONObject a(AppInterface paramAppInterface, BaseSessionInfo paramBaseSessionInfo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, int paramInt3, String paramString8, int paramInt4, int paramInt5, Bundle paramBundle)
   {
-    paramString1 = a(paramString2, paramString1, paramInt1, paramString3, paramString4, paramString7, paramBaseSessionInfo.b, paramInt2, paramInt3, paramInt4, paramString8, paramInt5, paramBundle, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 1008)
+    paramString1 = a(paramString2, paramString1, paramInt1, paramString3, paramString4, paramString7, paramBaseSessionInfo.c, paramInt2, paramInt3, paramInt4, paramString8, paramInt5, paramBundle, paramBaseSessionInfo.b);
+    if (paramBaseSessionInfo.a == 1008)
     {
       paramBaseSessionInfo = new JSONObject();
       try
@@ -267,7 +303,7 @@ public class QWalletRedPkgUtils
     return paramBaseSessionInfo;
   }
   
-  public static JSONObject a(AppInterface paramAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt1, BaseSessionInfo paramBaseSessionInfo, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public static JSONObject a(AppInterface paramAppInterface, @NonNull MessageForQQWalletMsg paramMessageForQQWalletMsg, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt1, BaseSessionInfo paramBaseSessionInfo, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     int m = 0;
     int i;
@@ -275,10 +311,10 @@ public class QWalletRedPkgUtils
     int k;
     if (paramQQWalletBaseMsgElem != null)
     {
-      i = paramQQWalletBaseMsgElem.h;
-      j = paramQQWalletBaseMsgElem.i;
-      m = paramQQWalletBaseMsgElem.k;
-      k = paramQQWalletBaseMsgElem.m;
+      i = paramQQWalletBaseMsgElem.u;
+      j = paramQQWalletBaseMsgElem.v;
+      m = paramQQWalletBaseMsgElem.x;
+      k = paramQQWalletBaseMsgElem.A;
     }
     else
     {
@@ -286,16 +322,28 @@ public class QWalletRedPkgUtils
       i = 0;
       j = 0;
     }
-    paramQQWalletBaseMsgElem = a(paramString2, paramString1, paramInt2, paramString3, paramString4, paramString7, paramMessageForQQWalletMsg.senderuin, paramInt1, i, j, "", paramMessageForQQWalletMsg.fromHBList, null, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    paramQQWalletBaseMsgElem = a(paramString2, paramString1, paramInt2, paramString3, paramString4, paramString7, paramMessageForQQWalletMsg.senderuin, paramInt1, i, j, "", paramMessageForQQWalletMsg.fromHBList, null, paramBaseSessionInfo.b);
     try
     {
       paramQQWalletBaseMsgElem.put("bigAnimId", m);
       paramQQWalletBaseMsgElem.put("hb_from", k);
-      if (paramBaseSessionInfo.jdField_a_of_type_Int == 1008)
+      paramQQWalletBaseMsgElem.put("pay_flag", paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.payFlag);
+      if (paramBaseSessionInfo.a == 1008)
       {
         paramBaseSessionInfo = new JSONObject();
         paramBaseSessionInfo.put("channel", 2);
         paramQQWalletBaseMsgElem.put("detailinfo", paramBaseSessionInfo);
+      }
+      else if (paramBaseSessionInfo.a == 10014)
+      {
+        paramString1 = ((IGPSService)paramAppInterface.getRuntimeService(IGPSService.class, "")).getSelfTinyId();
+        paramQQWalletBaseMsgElem.put("tinyId", paramString1);
+        paramQQWalletBaseMsgElem.put("guildId", paramBaseSessionInfo.c);
+        paramQQWalletBaseMsgElem.put("subGuildId", paramBaseSessionInfo.b);
+        paramBaseSessionInfo = a(paramAppInterface, paramString4, paramString1);
+        if (!TextUtils.isEmpty(paramBaseSessionInfo)) {
+          paramQQWalletBaseMsgElem.put("name", paramBaseSessionInfo);
+        }
       }
     }
     catch (Exception paramBaseSessionInfo)
@@ -312,7 +360,7 @@ public class QWalletRedPkgUtils
       paramBaseSessionInfo.put("app_info", paramString5);
       paramBaseSessionInfo.put("comeForm", 2);
       paramBaseSessionInfo.put("extra_data", paramQQWalletBaseMsgElem);
-      paramBaseSessionInfo.put("senderuin", MsgProxyUtils.a(paramMessageForQQWalletMsg));
+      paramBaseSessionInfo.put("senderuin", MsgProxyUtils.d(paramMessageForQQWalletMsg));
       return paramBaseSessionInfo;
     }
     catch (Exception paramAppInterface)
@@ -377,10 +425,15 @@ public class QWalletRedPkgUtils
       }
     }
   }
+  
+  public static boolean a(String paramString)
+  {
+    return TextUtils.equals(paramString, String.valueOf(11));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.QWalletRedPkgUtils
  * JD-Core Version:    0.7.0.1
  */

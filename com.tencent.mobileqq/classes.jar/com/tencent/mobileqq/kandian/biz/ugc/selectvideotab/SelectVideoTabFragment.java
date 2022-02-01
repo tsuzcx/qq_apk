@@ -32,31 +32,26 @@ public class SelectVideoTabFragment
   extends PublicBaseFragment
   implements View.OnClickListener
 {
-  public static String a;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131717942, 2131717953 };
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QBaseFragment jdField_a_of_type_ComTencentMobileqqAppQBaseFragment;
-  private ViolaFragment jdField_a_of_type_ComTencentMobileqqKandianBizViolaViewViolaFragment;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new SelectVideoTabFragment.1(this);
-  private TabLayoutCompat jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat;
-  private ViewPagerCompat jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat;
-  private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  private ArrayList<QBaseFragment> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String b = "";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "KEY_BUNDLE";
-  }
+  public static String a = "KEY_BUNDLE";
+  private static final int[] b = { 2131915417, 2131915433 };
+  private ImmersiveTitleBar2 c;
+  private ViewPagerCompat d;
+  private TabLayoutCompat e;
+  private ArrayList<QBaseFragment> f = new ArrayList();
+  private ImageView g;
+  private QBaseFragment h;
+  private ViolaFragment i;
+  private Activity j;
+  private int k = 0;
+  private String l = "";
+  private ReadInJoyObserver m = new SelectVideoTabFragment.1(this);
   
   private void a()
   {
-    if ((VersionUtils.k()) && (!SystemUtil.b()) && (!SystemUtil.d()))
+    if ((VersionUtils.k()) && (!SystemUtil.d()) && (!SystemUtil.g()))
     {
       getBaseActivity().getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(-1);
+      this.c.setBackgroundColor(-1);
     }
   }
   
@@ -66,41 +61,41 @@ public class SelectVideoTabFragment
     if (localBundle != null)
     {
       ColumnInfo localColumnInfo = (ColumnInfo)localBundle.getParcelable("key_column_info");
-      int i;
+      int n;
       if (localColumnInfo != null) {
-        i = localColumnInfo.columnID;
+        n = localColumnInfo.columnID;
       } else {
-        i = 0;
+        n = 0;
       }
-      this.jdField_a_of_type_Int = i;
-      this.b = localBundle.getString("arg_callback");
+      this.k = n;
+      this.l = localBundle.getString("arg_callback");
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment = SelectVideoFragment.a(false);
+    this.h = SelectVideoFragment.a(false);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(RIJUgcUtils.b());
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaViewViolaFragment = ViolaFragment.newInstance(localStringBuilder.toString(), null, true);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaViewViolaFragment);
+    localStringBuilder.append(RIJUgcUtils.t());
+    localStringBuilder.append(this.k);
+    this.i = ViolaFragment.newInstance(localStringBuilder.toString(), null, true);
+    this.f.add(this.h);
+    this.f.add(this.i);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.a(new SelectVideoTabFragment.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setTabMode(1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setTabGravity(1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(DisplayUtil.a(getBaseActivity(), 2.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setSelectedTabIndicatorColor(Color.parseColor("#262626"));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingLeft(DisplayUtil.a(getBaseActivity(), 32.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingRight(DisplayUtil.a(getBaseActivity(), 32.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingBottom(DisplayUtil.a(getBaseActivity(), 0.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setTabTextColors(Color.parseColor("#737373"), Color.parseColor("#262626"));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setTabTextSize(DisplayUtil.c(getBaseActivity(), 16.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.setupWithViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat, false);
+    this.e.a(new SelectVideoTabFragment.2(this));
+    this.e.setTabMode(1);
+    this.e.setTabGravity(1);
+    this.e.setSelectedTabIndicatorHeight(DisplayUtil.a(getBaseActivity(), 2.0F));
+    this.e.setSelectedTabIndicatorColor(Color.parseColor("#262626"));
+    this.e.setSelectedTabIndicatorPaddingLeft(DisplayUtil.a(getBaseActivity(), 32.0F));
+    this.e.setSelectedTabIndicatorPaddingRight(DisplayUtil.a(getBaseActivity(), 32.0F));
+    this.e.setSelectedTabIndicatorPaddingBottom(DisplayUtil.a(getBaseActivity(), 0.0F));
+    this.e.setTabTextColors(Color.parseColor("#737373"), Color.parseColor("#262626"));
+    this.e.setTabTextSize(DisplayUtil.c(getBaseActivity(), 16.0F));
+    this.e.setupWithViewPager(this.d, false);
   }
   
   public boolean needImmersive()
@@ -112,20 +107,20 @@ public class SelectVideoTabFragment
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 10001) && (paramInt2 == -1)) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.j.finish();
     }
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    this.j = paramActivity;
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.m);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364715) {
+    if (paramView.getId() == 2131430821) {
       getBaseActivity().finish();
     }
   }
@@ -133,35 +128,35 @@ public class SelectVideoTabFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     RIJDtReportHelper.a.a(getBaseActivity());
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560280, null);
+    return View.inflate(this.j, 2131626326, null);
   }
   
   public void onDetach()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.m);
     super.onDetach();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131378881));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364715));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat = ((ViewPagerCompat)paramView.findViewById(2131377165));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat = ((TabLayoutCompat)paramView.findViewById(2131377161));
+    this.c = ((ImmersiveTitleBar2)paramView.findViewById(2131447582));
+    this.g = ((ImageView)paramView.findViewById(2131430821));
+    this.g.setOnClickListener(this);
+    this.d = ((ViewPagerCompat)paramView.findViewById(2131445543));
+    this.e = ((TabLayoutCompat)paramView.findViewById(2131445539));
     b();
     c();
     d();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat.setScrollable(false);
+    this.d.setScrollable(false);
     getBaseActivity().getSupportFragmentManager();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat.setCurrentItem(0);
+    this.d.setCurrentItem(0);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectvideotab.SelectVideoTabFragment
  * JD-Core Version:    0.7.0.1
  */

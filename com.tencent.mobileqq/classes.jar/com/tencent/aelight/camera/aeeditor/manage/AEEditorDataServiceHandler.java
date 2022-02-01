@@ -30,21 +30,20 @@ import java.util.Map;
 public class AEEditorDataServiceHandler
   extends BusinessHandler
 {
-  private static final String a;
-  protected Map<String, Long> a;
+  private static final String b;
+  protected Map<String, Long> a = new HashMap();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[AEEditor2]");
     localStringBuilder.append(AEEditorDataServiceHandler.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
   }
   
   public AEEditorDataServiceHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
     LogUtils.setEnable(false);
   }
   
@@ -53,7 +52,7 @@ public class AEEditorDataServiceHandler
     paramFromServiceMsg = (GetCatMatTreeRsp)paramObject;
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.Code == 0) && (paramFromServiceMsg.Categories != null) && (!paramFromServiceMsg.Categories.isEmpty()))
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCircleCatMatTree.MqCircleEditor", "response", "succeeded with content"));
       }
       AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCircleCatMatTreeMqCircleEditor", paramFromServiceMsg.ETag, 4);
@@ -66,38 +65,39 @@ public class AEEditorDataServiceHandler
         {
           str = new Gson().toJson(paramObject.subCategories);
           bool = FileUtils.writeFile(AEditorMaterialManager.a().a(AEPath.Editor.FILES.d, "editor_filter_update_template.json"), str);
-          AEEditorResourceManager.a().e();
+          AEEditorResourceManager.a().q();
         }
         else if (paramObject.id.equals("10002"))
         {
           str = new Gson().toJson(paramObject.subCategories);
           bool = FileUtils.writeFile(AEditorMaterialManager.a().a(AEPath.Editor.FILES.b, "editor_text_sticker_update_template.json"), str);
-          AEEditorResourceManager.a().i();
+          AEEditorResourceManager.a().u();
         }
         else if (paramObject.id.equals("10003"))
         {
           str = new Gson().toJson(paramObject.subCategories);
           bool = FileUtils.writeFile(AEditorMaterialManager.a().a(AEPath.Editor.FILES.c, "editor_auto_template_update_template.json"), str);
+          AEEditorResourceManager.a().t();
         }
         else if (paramObject.id.equals("10004"))
         {
           str = new Gson().toJson(paramObject.subCategories);
           bool = FileUtils.writeFile(AEditorMaterialManager.a().a(AEPath.Editor.FILES.g, "editor_text_update_template.json"), str);
-          AEEditorResourceManager.a().j();
+          AEEditorResourceManager.a().v();
         }
         else if (paramObject.id.equals("10005"))
         {
           str = new Gson().toJson(paramObject.subCategories);
           bool = FileUtils.writeFile(AEditorMaterialManager.a().a(AEPath.Editor.FILES.e, "editor_frame_update_template.json"), str);
-          AEEditorResourceManager.a().f();
+          AEEditorResourceManager.a().r();
         }
         else if (paramObject.id.equals("10006"))
         {
           str = new Gson().toJson(paramObject.subCategories);
           bool = FileUtils.writeFile(AEditorMaterialManager.a().a(AEPath.Editor.FILES.f, "editor_pic_template_update_template.json"), str);
-          AEEditorResourceManager.a().g();
+          AEEditorResourceManager.a().s();
         }
-        String str = jdField_a_of_type_JavaLangString;
+        String str = b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramObject.id);
         localStringBuilder.append(" isWriteFile:");
@@ -113,7 +113,7 @@ public class AEEditorDataServiceHandler
     Object localObject = (GetBigShowRecommendRsp)paramObject;
     if ((localObject != null) && (((GetBigShowRecommendRsp)localObject).Code == 0) && (((GetBigShowRecommendRsp)localObject).Materials != null) && (!((GetBigShowRecommendRsp)localObject).Materials.isEmpty()))
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetBigShowRecommend.MqCircleEditor", "response", "succeeded with content"));
       }
       paramFromServiceMsg = new ArrayList();
@@ -128,22 +128,22 @@ public class AEEditorDataServiceHandler
       AEditorMaterialManager.a().a(paramFromServiceMsg, paramObject);
       return;
     }
-    AEditorMaterialManager.a().a();
+    AEditorMaterialManager.a().c();
   }
   
   public void a(String paramString)
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[requestEditorMaterials] no network....");
+      LogUtils.w(b, "[requestEditorMaterials] no network....");
       return;
     }
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("【REQUEST】requestEditorMaterials");
     localStringBuilder.append(paramString);
     AEQLog.b((String)localObject, localStringBuilder.toString());
-    if (AEDashboardUtil.a())
+    if (AEDashboardUtil.f())
     {
       localObject = AEDashboardUtil.a();
       localStringBuilder = new StringBuilder();
@@ -151,7 +151,7 @@ public class AEEditorDataServiceHandler
       localStringBuilder.append(paramString);
       ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo(localStringBuilder.toString(), "request", "null"));
     }
-    localObject = this.jdField_a_of_type_JavaUtilMap;
+    localObject = this.a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("ShadowBackendSvc.GetCircleCatMatTree.");
     localStringBuilder.append(paramString);
@@ -165,10 +165,10 @@ public class AEEditorDataServiceHandler
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
-      AEditorMaterialManager.a().a();
+      AEditorMaterialManager.a().c();
       return;
     }
-    if (AEDashboardUtil.a())
+    if (AEDashboardUtil.f())
     {
       localObject1 = AEDashboardUtil.a();
       localObject2 = new StringBuilder();
@@ -176,7 +176,7 @@ public class AEEditorDataServiceHandler
       ((StringBuilder)localObject2).append(paramString);
       ((MutableLiveData)localObject1).postValue(new AEDashboardUtil.NetInfo(((StringBuilder)localObject2).toString(), "request", "null"));
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("ShadowBackendSvc.GetBigShowRecommend.");
     ((StringBuilder)localObject2).append(paramString);
@@ -206,7 +206,7 @@ public class AEEditorDataServiceHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorDataServiceHandler
  * JD-Core Version:    0.7.0.1
  */

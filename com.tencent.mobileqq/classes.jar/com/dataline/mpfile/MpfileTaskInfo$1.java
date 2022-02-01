@@ -9,23 +9,23 @@ final class MpfileTaskInfo$1
   public MpfileTaskInfo a(Parcel paramParcel)
   {
     MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
-    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.f = paramParcel.readInt();
+    localMpfileTaskInfo.g = paramParcel.readInt();
     localMpfileTaskInfo.h = paramParcel.readString();
-    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.i = paramParcel.readString();
+    localMpfileTaskInfo.j = paramParcel.readString();
+    localMpfileTaskInfo.k = paramParcel.readString();
+    localMpfileTaskInfo.l = paramParcel.readString();
+    localMpfileTaskInfo.m = paramParcel.readString();
+    localMpfileTaskInfo.n = paramParcel.readString();
+    localMpfileTaskInfo.o = paramParcel.readString();
+    localMpfileTaskInfo.p = paramParcel.readLong();
+    localMpfileTaskInfo.q = paramParcel.readLong();
+    localMpfileTaskInfo.r = paramParcel.readLong();
+    localMpfileTaskInfo.s = paramParcel.readLong();
+    localMpfileTaskInfo.t = paramParcel.readLong();
+    localMpfileTaskInfo.u = paramParcel.readLong();
+    localMpfileTaskInfo.v = paramParcel.readLong();
     return localMpfileTaskInfo;
   }
   

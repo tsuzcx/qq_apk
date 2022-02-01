@@ -6,13 +6,13 @@ import com.tencent.biz.qqstory.base.BaseEvent;
 public class FeedVideoManager$FeedVideoInfoUpdate
   extends BaseEvent
 {
-  public int a;
   public String a;
+  public int b;
   
   public FeedVideoManager$FeedVideoInfoUpdate(@NonNull String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
 }
 

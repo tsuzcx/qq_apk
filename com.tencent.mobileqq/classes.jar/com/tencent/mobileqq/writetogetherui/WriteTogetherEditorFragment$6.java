@@ -11,15 +11,15 @@ class WriteTogetherEditorFragment$6
   {
     if (WriteTogetherUtils.a())
     {
-      WriteTogetherEditorFragment.c(this.this$0);
+      WriteTogetherEditorFragment.e(this.this$0);
       return;
     }
-    WriteTogetherEditorFragment.d(this.this$0);
+    WriteTogetherEditorFragment.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.6
  * JD-Core Version:    0.7.0.1
  */

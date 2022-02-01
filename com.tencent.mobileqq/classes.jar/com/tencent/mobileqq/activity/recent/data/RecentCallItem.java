@@ -30,7 +30,7 @@ public class RecentCallItem
       this.mShowTime = "0";
       this.mUnreadNum = 0;
       this.mMenuFlag = 12288;
-      this.mCallingText = HardCodeUtil.a(2131713081);
+      this.mCallingText = HardCodeUtil.a(2131910640);
       this.call.isVideo = 1;
     }
   }
@@ -69,7 +69,7 @@ public class RecentCallItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentCallItem
  * JD-Core Version:    0.7.0.1
  */

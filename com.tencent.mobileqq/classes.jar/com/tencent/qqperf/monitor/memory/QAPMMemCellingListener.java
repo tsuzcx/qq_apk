@@ -15,7 +15,7 @@ public class QAPMMemCellingListener
 {
   static void a(long paramLong)
   {
-    MagnifierSDK.a().a().a("LowMemory", null, paramLong);
+    MagnifierSDK.b().c().a("LowMemory", null, paramLong);
   }
   
   public void onBeforeUpload()
@@ -56,7 +56,7 @@ public class QAPMMemCellingListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMMemCellingListener
  * JD-Core Version:    0.7.0.1
  */

@@ -38,35 +38,32 @@ import mqq.os.MqqHandler;
 
 public class SubscriptRecommendController
 {
-  public int a;
-  public View a;
-  ViewStub jdField_a_of_type_AndroidViewViewStub = null;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton = null;
-  private IPublicAccountObserver.OnCallback jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver$OnCallback = new SubscriptRecommendController.2(this);
-  private IPublicAccountObserver jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
-  private SubscriptObserver jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver = new SubscriptRecommendController.1(this);
-  SubscriptPicManager jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager;
-  SubscriptRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  public WeakReference<Activity> a;
-  public boolean a;
-  int b = 0;
-  int c = 0;
-  private int d = 0;
+  ViewStub a = null;
+  public View b = null;
+  SubscriptRecommendAdapter c;
+  HorizontalListView d;
+  public WeakReference<Activity> e;
+  QQAppInterface f;
+  SubscriptPicManager g;
+  ImageButton h = null;
+  public boolean i = true;
+  public int j = 0;
+  int k = 0;
+  int l = 0;
+  private int m = 0;
+  private SubscriptObserver n = new SubscriptRecommendController.1(this);
+  private IPublicAccountObserver o = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+  private IPublicAccountObserver.OnCallback p = new SubscriptRecommendController.2(this);
   
   public SubscriptRecommendController(Activity paramActivity, QQAppInterface paramQQAppInterface, SubscriptPicManager paramSubscriptPicManager)
   {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager = paramSubscriptPicManager;
-    this.d = ((int)paramActivity.getResources().getDimension(2131298061));
-    i();
+    this.e = new WeakReference(paramActivity);
+    this.f = paramQQAppInterface;
+    this.g = paramSubscriptPicManager;
+    this.m = ((int)paramActivity.getResources().getDimension(2131298737));
+    j();
     ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.3(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.setOnCallback(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver$OnCallback);
+    this.o.setOnCallback(this.p);
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -76,11 +73,6 @@ public class SubscriptRecommendController
     localStringBuilder.append("subscribe_version");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
     return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getString("subscirpt_full_recommend_url", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -137,23 +129,6 @@ public class SubscriptRecommendController
     return paramAppInterface.commit();
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    boolean bool2 = false;
-    paramQQAppInterface = localBaseApplication.getSharedPreferences(paramQQAppInterface, 0);
-    boolean bool1 = bool2;
-    if (paramQQAppInterface.getBoolean("subscript_inner_recommend", false))
-    {
-      bool1 = bool2;
-      if (!paramQQAppInterface.getBoolean("subscript_full_recommend", false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
   public static int b(QQAppInterface paramQQAppInterface)
   {
     SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
@@ -161,15 +136,6 @@ public class SubscriptRecommendController
     localStringBuilder.append("subscript_full_recommend_version");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
     return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
-  }
-  
-  public static String b(QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pa_subscribe_config_msg");
-    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    return localSharedPreferences.getString(localStringBuilder.toString(), "");
   }
   
   public static void b(QQAppInterface paramQQAppInterface, int paramInt)
@@ -190,11 +156,6 @@ public class SubscriptRecommendController
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
     localEditor.putBoolean(localStringBuilder.toString(), paramBoolean);
     localEditor.commit();
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("subscript_full_recommend", false);
   }
   
   public static int c(QQAppInterface paramQQAppInterface)
@@ -226,7 +187,41 @@ public class SubscriptRecommendController
     localEditor.commit();
   }
   
-  public static boolean c(QQAppInterface paramQQAppInterface)
+  public static void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    paramQQAppInterface.putBoolean("subscribe_discovery_btn", paramBoolean);
+    paramQQAppInterface.commit();
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    boolean bool2 = false;
+    paramQQAppInterface = localBaseApplication.getSharedPreferences(paramQQAppInterface, 0);
+    boolean bool1 = bool2;
+    if (paramQQAppInterface.getBoolean("subscript_inner_recommend", false))
+    {
+      bool1 = bool2;
+      if (!paramQQAppInterface.getBoolean("subscript_full_recommend", false)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean e(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("subscript_full_recommend", false);
+  }
+  
+  public static String f(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getString("subscirpt_full_recommend_url", "");
+  }
+  
+  public static boolean g(QQAppInterface paramQQAppInterface)
   {
     Object localObject1 = paramQQAppInterface.getApp();
     Object localObject2 = paramQQAppInterface.getCurrentAccountUin();
@@ -239,21 +234,14 @@ public class SubscriptRecommendController
     if (((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), true))
     {
       bool1 = bool2;
-      if (f(paramQQAppInterface)) {
+      if (k(paramQQAppInterface)) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public static void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    paramQQAppInterface.putBoolean("subscribe_discovery_btn", paramBoolean);
-    paramQQAppInterface.commit();
-  }
-  
-  public static boolean d(QQAppInterface paramQQAppInterface)
+  public static boolean h(QQAppInterface paramQQAppInterface)
   {
     SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -262,7 +250,26 @@ public class SubscriptRecommendController
     return localSharedPreferences.getInt(localStringBuilder.toString(), 1) != 0;
   }
   
-  public static boolean e(QQAppInterface paramQQAppInterface)
+  public static String i(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pa_subscribe_config_msg");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    return localSharedPreferences.getString(localStringBuilder.toString(), "");
+  }
+  
+  private void j()
+  {
+    QQAppInterface localQQAppInterface = this.f;
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.addObserver(this.n);
+      this.f.addObserver(this.o.getBusinessObserver());
+    }
+  }
+  
+  public static boolean j(QQAppInterface paramQQAppInterface)
   {
     SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -271,48 +278,38 @@ public class SubscriptRecommendController
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
   }
   
-  public static boolean f(QQAppInterface paramQQAppInterface)
+  private void k()
+  {
+    QQAppInterface localQQAppInterface = this.f;
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.removeObserver(this.o.getBusinessObserver());
+      this.f.removeObserver(this.n);
+    }
+  }
+  
+  public static boolean k(QQAppInterface paramQQAppInterface)
   {
     return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("subscribe_discovery_btn", true);
   }
   
-  private void i()
+  private void l()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface != null)
+    if ((this.b != null) && (this.a != null))
     {
-      localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.getBusinessObserver());
-    }
-  }
-  
-  private void j()
-  {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface != null)
-    {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.getBusinessObserver());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver);
-    }
-  }
-  
-  private void k()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewViewStub != null))
-    {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.e;
       if (localObject != null)
       {
         if (((WeakReference)localObject).get() == null) {
           return;
         }
-        if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)
+        if (this.b.getVisibility() == 0)
         {
-          localObject = AnimationUtils.loadAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2130772241);
+          localObject = AnimationUtils.loadAnimation((Context)this.e.get(), 2130772307);
           ((Animation)localObject).setFillAfter(true);
           ((Animation)localObject).setAnimationListener(new SubscriptRecommendController.8(this));
           a(0);
-          this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+          this.b.startAnimation((Animation)localObject);
         }
       }
     }
@@ -320,47 +317,47 @@ public class SubscriptRecommendController
   
   void a()
   {
-    this.jdField_a_of_type_Int = 1;
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.j = 1;
+    Object localObject = this.e;
     if (localObject != null)
     {
       if (((WeakReference)localObject).get() == null) {
         return;
       }
-      if (this.jdField_a_of_type_AndroidViewViewStub == null)
+      if (this.a == null)
       {
-        localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject = this.e;
         if ((localObject != null) && (((WeakReference)localObject).get() != null))
         {
-          this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131376992));
-          localObject = this.jdField_a_of_type_AndroidViewViewStub;
+          this.a = ((ViewStub)((Activity)this.e.get()).findViewById(2131445356));
+          localObject = this.a;
           if (localObject != null)
           {
             ((ViewStub)localObject).setOnInflateListener(new SubscriptRecommendController.4(this));
-            this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+            this.b = this.a.inflate();
             b();
-            h();
+            i();
           }
         }
       }
       else
       {
-        e();
-        a(this.d);
+        f();
+        a(this.m);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
+      ReportController.b(this.f, "CliOper", "", "", "0X8006431", "0X8006431", 0, 0, "", "", "", "");
     }
   }
   
   void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.e;
     if (localObject != null)
     {
       if (((WeakReference)localObject).get() == null) {
         return;
       }
-      localObject = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131370110);
+      localObject = ((Activity)this.e.get()).findViewById(2131437272);
       if (localObject != null) {
         ((View)localObject).setPadding(0, 0, 0, paramInt);
       }
@@ -369,14 +366,14 @@ public class SubscriptRecommendController
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.j = 3;
+    this.b = paramView;
+    this.b.setVisibility(0);
   }
   
   void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.f;
     if (localQQAppInterface != null) {
       ((SubscriptHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SUBSCRIPT_HANDLER)).a(paramString);
     }
@@ -384,157 +381,157 @@ public class SubscriptRecommendController
   
   void a(List<SubscriptRecommendAccountInfo> paramList)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.e;
     if (localWeakReference != null)
     {
       if (localWeakReference.get() == null) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter = new SubscriptRecommendAdapter((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager);
+      if (this.c == null) {
+        this.c = new SubscriptRecommendAdapter((Activity)this.e.get(), this.f, this.g);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a(paramList);
+      this.c.a();
+      this.c.a(paramList);
     }
-  }
-  
-  public boolean a()
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    boolean bool = false;
-    if (localActivity == null) {
-      return false;
-    }
-    View localView = localActivity.findViewById(2131366219);
-    WindowManager localWindowManager = (WindowManager)localActivity.getSystemService("window");
-    int i = localWindowManager.getDefaultDisplay().getWidth();
-    int j = localWindowManager.getDefaultDisplay().getHeight();
-    int k = (int)localActivity.getResources().getDimension(2131299168);
-    int m = (int)localActivity.getResources().getDimension(2131299174);
-    int n = this.d;
-    int i1 = localView.getHeight();
-    int i2 = localView.getWidth();
-    int i3 = ImmersiveUtils.getStatusBarHeight(localActivity);
-    if ((i < i2) || (j - (k + m + n) - i3 < i1)) {
-      bool = true;
-    }
-    return bool;
   }
   
   @TargetApi(9)
   public void b()
   {
-    boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject1 = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources();
+    boolean bool = ThemeUtil.isInNightMode(this.f);
+    Object localObject1 = ((Activity)this.e.get()).getResources();
     if (bool) {
-      i = 2131166116;
+      i1 = 2131166843;
     } else {
-      i = 2131166106;
+      i1 = 2131166833;
     }
-    int i = ((Resources)localObject1).getColor(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new SubscriptRecommendController.5(this));
-    Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378091);
+    int i1 = ((Resources)localObject1).getColor(i1);
+    this.b.setBackgroundColor(i1);
+    this.b.setOnClickListener(new SubscriptRecommendController.5(this));
+    Object localObject2 = (ImageView)this.b.findViewById(2131446597);
     if (localObject2 != null)
     {
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        i = 2131167251;
+      if (ThemeUtil.isInNightMode(this.f)) {
+        i1 = 2131168246;
       } else {
-        i = 2131166391;
+        i1 = 2131167227;
       }
-      ((ImageView)localObject2).setBackgroundResource(i);
+      ((ImageView)localObject2).setBackgroundResource(i1);
     }
-    localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378784);
+    localObject2 = (TextView)this.b.findViewById(2131447463);
     if (bool) {
-      i = 2131166105;
+      i1 = 2131166832;
     } else {
-      i = 2131166104;
+      i1 = 2131166831;
     }
-    ((TextView)localObject2).setTextColor(((Resources)localObject1).getColor(i));
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null)
+    ((TextView)localObject2).setTextColor(((Resources)localObject1).getColor(i1));
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376987));
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((Resources)localObject1).getDimension(2131298062));
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter);
+      this.d = ((HorizontalListView)this.b.findViewById(2131445351));
+      this.d.setDividerWidth((int)((Resources)localObject1).getDimension(2131298738));
+      this.d.setAdapter(this.c);
       if (Build.VERSION.SDK_INT >= 9) {
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
+        this.d.setOverScrollMode(2);
       }
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageButton == null)
+    if (this.h == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131364703));
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageButton;
+      this.h = ((ImageButton)this.b.findViewById(2131430806));
+      localObject1 = this.h;
       if (!bool) {
-        i = 2130843363;
+        i1 = 2130844317;
       } else {
-        i = 2130843365;
+        i1 = 2130844319;
       }
-      ((ImageButton)localObject1).setImageResource(i);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new SubscriptRecommendController.6(this));
+      ((ImageButton)localObject1).setImageResource(i1);
+      this.h.setOnClickListener(new SubscriptRecommendController.6(this));
     }
   }
   
-  public void c()
+  public boolean c()
   {
-    if (a())
-    {
-      Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject == null) {
-        return;
-      }
-      int i = DisplayUtil.a((Context)localObject, 100.0F);
-      localObject = (ImageView)((Activity)localObject).findViewById(2131373220);
-      this.b = ((ImageView)localObject).getHeight();
-      this.c = ((ImageView)localObject).getWidth();
-      ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(i, i));
+    Activity localActivity = (Activity)this.e.get();
+    boolean bool = false;
+    if (localActivity == null) {
+      return false;
     }
+    View localView = localActivity.findViewById(2131432507);
+    WindowManager localWindowManager = (WindowManager)localActivity.getSystemService("window");
+    int i1 = localWindowManager.getDefaultDisplay().getWidth();
+    int i2 = localWindowManager.getDefaultDisplay().getHeight();
+    int i3 = (int)localActivity.getResources().getDimension(2131299920);
+    int i4 = (int)localActivity.getResources().getDimension(2131299926);
+    int i5 = this.m;
+    int i6 = localView.getHeight();
+    int i7 = localView.getWidth();
+    int i8 = ImmersiveUtils.getStatusBarHeight(localActivity);
+    if ((i1 < i7) || (i2 - (i3 + i4 + i5) - i8 < i6)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void d()
   {
-    c();
+    if (c())
+    {
+      Object localObject = (Activity)this.e.get();
+      if (localObject == null) {
+        return;
+      }
+      int i1 = DisplayUtil.a((Context)localObject, 100.0F);
+      localObject = (ImageView)((Activity)localObject).findViewById(2131440829);
+      this.k = ((ImageView)localObject).getHeight();
+      this.l = ((ImageView)localObject).getWidth();
+      ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(i1, i1));
+    }
   }
   
-  void e()
+  public void e()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewViewStub != null))
+    d();
+  }
+  
+  void f()
+  {
+    if ((this.b != null) && (this.a != null))
     {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.e;
       if (localObject != null)
       {
         if (((WeakReference)localObject).get() == null) {
           return;
         }
-        if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0)
+        if (this.b.getVisibility() != 0)
         {
-          localObject = AnimationUtils.loadAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2130772242);
+          localObject = AnimationUtils.loadAnimation((Context)this.e.get(), 2130772308);
           ((Animation)localObject).setFillAfter(true);
           ((Animation)localObject).setAnimationListener(new SubscriptRecommendController.7(this));
-          this.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+          this.a.setVisibility(0);
+          this.b.setVisibility(0);
+          this.b.startAnimation((Animation)localObject);
         }
       }
     }
   }
   
-  public void f()
+  public void g()
   {
-    j();
-    SubscriptRecommendAdapter localSubscriptRecommendAdapter = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter;
+    k();
+    SubscriptRecommendAdapter localSubscriptRecommendAdapter = this.c;
     if (localSubscriptRecommendAdapter != null) {
       localSubscriptRecommendAdapter.b();
     }
   }
   
-  public void g()
+  public void h()
   {
     ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.9(this));
   }
   
-  public void h()
+  public void i()
   {
-    SubscriptRecommendAdapter localSubscriptRecommendAdapter = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter;
+    SubscriptRecommendAdapter localSubscriptRecommendAdapter = this.c;
     if (localSubscriptRecommendAdapter != null)
     {
       localSubscriptRecommendAdapter.notifyDataSetChanged();
@@ -547,7 +544,7 @@ public class SubscriptRecommendController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController
  * JD-Core Version:    0.7.0.1
  */

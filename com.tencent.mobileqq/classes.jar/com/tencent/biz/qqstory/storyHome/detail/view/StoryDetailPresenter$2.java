@@ -18,8 +18,8 @@ class StoryDetailPresenter$2
   public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
     SLog.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!StoryDetailPresenter.a(this.a).get()) {
-      StoryDetailPresenter.a(this.a).c();
+    if (!StoryDetailPresenter.d(this.a).get()) {
+      StoryDetailPresenter.e(this.a).c();
     }
   }
   

@@ -16,7 +16,7 @@ public class WebColorNoteInjectImpl
   {
     WebColorNoteController localWebColorNoteController = this.a;
     if (localWebColorNoteController != null) {
-      localWebColorNoteController.g();
+      localWebColorNoteController.j();
     }
   }
   
@@ -26,15 +26,6 @@ public class WebColorNoteInjectImpl
     if (localWebColorNoteController != null) {
       localWebColorNoteController.a(paramIServiceInfo);
     }
-  }
-  
-  public boolean a()
-  {
-    WebColorNoteController localWebColorNoteController = this.a;
-    if (localWebColorNoteController != null) {
-      return localWebColorNoteController.b();
-    }
-    return false;
   }
   
   public boolean a(String paramString)
@@ -50,7 +41,7 @@ public class WebColorNoteInjectImpl
   {
     WebColorNoteController localWebColorNoteController = this.a;
     if (localWebColorNoteController != null) {
-      return localWebColorNoteController.a();
+      return localWebColorNoteController.h();
     }
     return false;
   }
@@ -59,7 +50,16 @@ public class WebColorNoteInjectImpl
   {
     WebColorNoteController localWebColorNoteController = this.a;
     if (localWebColorNoteController != null) {
-      return localWebColorNoteController.c();
+      return localWebColorNoteController.g();
+    }
+    return false;
+  }
+  
+  public boolean d()
+  {
+    WebColorNoteController localWebColorNoteController = this.a;
+    if (localWebColorNoteController != null) {
+      return localWebColorNoteController.k();
     }
     return false;
   }
@@ -125,7 +125,7 @@ public class WebColorNoteInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebColorNoteInjectImpl
  * JD-Core Version:    0.7.0.1
  */

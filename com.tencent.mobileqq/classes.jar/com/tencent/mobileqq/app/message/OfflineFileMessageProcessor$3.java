@@ -15,29 +15,29 @@ class OfflineFileMessageProcessor$3
   
   public ToServiceMsg a()
   {
-    ToServiceMsg localToServiceMsg = OfflineFileMessageProcessor.d(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor).createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    ToServiceMsg localToServiceMsg = OfflineFileMessageProcessor.e(this.g).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.a);
     localToServiceMsg.extraData.putByte("cmd", (byte)0);
     localToServiceMsg.extraData.putByte("keyType", (byte)0);
     localToServiceMsg.extraData.putByte("sendType", (byte)0);
     localToServiceMsg.extraData.putInt("busiType", 1025);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putString("toUin", this.a);
+    localToServiceMsg.extraData.putLong("sessionid", this.b);
+    localToServiceMsg.extraData.putInt("random", this.c);
     localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.d));
     localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.e);
     TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localToServiceMsg.putWupBuffer(MessageProtoCodec.a(OfflineFileMessageProcessor.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor), 9, this.jdField_a_of_type_JavaLangString, localTransMsgContext, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    localTransMsgContext.a = this.e;
+    localTransMsgContext.b = this.f;
+    localToServiceMsg.putWupBuffer(MessageProtoCodec.a(OfflineFileMessageProcessor.f(this.g), 9, this.a, localTransMsgContext, this.d, this.c).toByteArray());
     return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.OfflineFileMessageProcessor.3
  * JD-Core Version:    0.7.0.1
  */

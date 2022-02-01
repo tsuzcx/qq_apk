@@ -40,7 +40,7 @@ class ReadinjoyAdPKFragment$1
         localCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
         localCanvas.drawColor(Color.parseColor("#7F03081A"));
         localCanvas.setBitmap(null);
-        ReadinjoyAdPKFragment.a(this.this$0).post(new ReadinjoyAdPKFragment.1.1(this, localBitmap));
+        ReadinjoyAdPKFragment.c(this.this$0).post(new ReadinjoyAdPKFragment.1.1(this, localBitmap));
         return;
       }
       catch (Throwable localThrowable)
@@ -63,7 +63,7 @@ class ReadinjoyAdPKFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdPKFragment.1
  * JD-Core Version:    0.7.0.1
  */

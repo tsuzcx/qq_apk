@@ -32,11 +32,11 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 public class TroopNotificationRecordMessageController
   extends TroopNotificationController
 {
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<Integer, List<MessageRecord>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b;
-  private boolean c;
+  private boolean a = false;
+  private List<MessageRecord> b = new CopyOnWriteArrayList();
+  private Map<Integer, List<MessageRecord>> e = new ConcurrentHashMap();
+  private boolean f;
+  private boolean g;
   
   public TroopNotificationRecordMessageController(AppRuntime paramAppRuntime)
   {
@@ -68,7 +68,7 @@ public class TroopNotificationRecordMessageController
     if (paramList == null) {
       return localArrayList;
     }
-    a(paramList);
+    c(paramList);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -121,119 +121,18 @@ public class TroopNotificationRecordMessageController
     return a(paramList1);
   }
   
-  private void a()
-  {
-    Object localObject1 = Looper.myLooper();
-    Object localObject2 = Looper.getMainLooper();
-    boolean bool2 = false;
-    if (localObject1 != localObject2)
-    {
-      localObject1 = (IMessageFacade)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IMessageFacade.class, "");
-      if (localObject1 != null)
-      {
-        localObject2 = this.jdField_a_of_type_JavaUtilList;
-        String str = String.valueOf(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
-        boolean bool1 = bool2;
-        if (TroopSystemMsgUtils.a((ArrayList)this.jdField_a_of_type_JavaUtilList))
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_MqqAppAppRuntime.isBackgroundStop) {
-            bool1 = true;
-          }
-        }
-        ((IMessageFacade)localObject1).addMessage((List)localObject2, str, bool1);
-      }
-    }
-    else
-    {
-      ThreadManager.postImmediately(new TroopNotificationRecordMessageController.3(this), null, false);
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    List localList1 = b(2);
-    List localList2 = b(0);
-    List localList3 = b(1);
-    localList1.clear();
-    localList2.clear();
-    localList3.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      Object localObject = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();
-      if ((localObject != null) && (((structmsg.StructMsg)localObject).msg.has()))
-      {
-        int j = ((structmsg.SystemMsg)((structmsg.StructMsg)localObject).msg.get()).group_msg_type.get();
-        int k = ((structmsg.SystemMsg)((structmsg.StructMsg)localObject).msg.get()).sub_type.get();
-        if ((j != 13) && (j != 6))
-        {
-          localList2.add(localMessageRecord);
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("message is not quit Troop");
-            ((StringBuilder)localObject).append(localMessageRecord.toString());
-            ((StringBuilder)localObject).append("size:");
-            ((StringBuilder)localObject).append(localList2.size());
-            QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "classifyMessageRecord", ((StringBuilder)localObject).toString() });
-          }
-        }
-        else
-        {
-          localList1.add(localMessageRecord);
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("message is quit Troop");
-            ((StringBuilder)localObject).append(localMessageRecord.toString());
-            ((StringBuilder)localObject).append("size:");
-            ((StringBuilder)localObject).append(localList1.size());
-            QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "classifyMessageRecord", ((StringBuilder)localObject).toString() });
-          }
-        }
-        if (k == 1)
-        {
-          localList3.add(localMessageRecord);
-          if ((i < paramInt) && (!this.jdField_a_of_type_Boolean)) {
-            this.jdField_a_of_type_Boolean = true;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("message is undeal");
-            ((StringBuilder)localObject).append(localMessageRecord.toString());
-            ((StringBuilder)localObject).append("size:");
-            ((StringBuilder)localObject).append(localList3.size());
-            ((StringBuilder)localObject).append("mHasUndealDataList");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
-            QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "classifyMessageRecord", ((StringBuilder)localObject).toString() });
-          }
-        }
-      }
-      i += 1;
-    }
-  }
-  
   private void a(ArrayList<MessageRecord> paramArrayList)
   {
     int i = 0;
     while (i < paramArrayList.size())
     {
       structmsg.StructMsg localStructMsg = ((MessageForSystemMsg)paramArrayList.get(i)).getSystemMsg();
-      TroopNotificationConfig localTroopNotificationConfig = (TroopNotificationConfig)QConfigManager.a().a(634);
-      if ((localStructMsg != null) && (localStructMsg.msg_time != null) && (localStructMsg.msg_time.has()) && (localTroopNotificationConfig != null) && (NetConnInfoCenter.getServerTimeMillis() - localStructMsg.msg_time.get() * 1000L > localTroopNotificationConfig.b * 1000L)) {
+      TroopNotificationConfig localTroopNotificationConfig = (TroopNotificationConfig)QConfigManager.b().b(634);
+      if ((localStructMsg != null) && (localStructMsg.msg_time != null) && (localStructMsg.msg_time.has()) && (localTroopNotificationConfig != null) && (NetConnInfoCenter.getServerTimeMillis() - localStructMsg.msg_time.get() * 1000L > localTroopNotificationConfig.f * 1000L)) {
         paramArrayList.remove(i);
       }
       i += 1;
     }
-  }
-  
-  private void a(List<MessageRecord> paramList)
-  {
-    Collections.sort(paramList, new TroopNotificationRecordMessageController.4(this));
   }
   
   private void a(List<MessageRecord> paramList, int paramInt, boolean paramBoolean)
@@ -256,7 +155,7 @@ public class TroopNotificationRecordMessageController
       }
       b(paramList, paramInt);
       if (paramBoolean) {
-        a();
+        i();
       }
     }
   }
@@ -274,7 +173,7 @@ public class TroopNotificationRecordMessageController
         if (localHashMap.containsKey(str))
         {
           structmsg.StructMsg localStructMsg2 = ((MessageForSystemMsg)localHashMap.get(str)).getSystemMsg();
-          if (a(localStructMsg1.msg.group_msg_type.get()))
+          if (d(localStructMsg1.msg.group_msg_type.get()))
           {
             paramArrayList.add(localMessageRecord);
           }
@@ -299,17 +198,12 @@ public class TroopNotificationRecordMessageController
     }
   }
   
-  private boolean a(int paramInt)
-  {
-    return TroopSystemMsgUtils.a(paramInt);
-  }
-  
   @NotNull
   private List<MessageRecord> b(int paramInt)
   {
     List localList;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
-      localList = (List)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (this.e.containsKey(Integer.valueOf(paramInt))) {
+      localList = (List)this.e.get(Integer.valueOf(paramInt));
     } else {
       localList = null;
     }
@@ -317,7 +211,7 @@ public class TroopNotificationRecordMessageController
     if (localList == null)
     {
       localObject = new CopyOnWriteArrayList();
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+      this.e.put(Integer.valueOf(paramInt), localObject);
     }
     return localObject;
   }
@@ -356,38 +250,138 @@ public class TroopNotificationRecordMessageController
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilList, paramList);
-      boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      this.b = a(this.b, paramList);
+      boolean bool = this.b.isEmpty();
       if (bool) {
         return;
       }
-      paramList = (TroopNotificationConfig)QConfigManager.a().a(634);
-      if ((paramList != null) && (paramList.jdField_a_of_type_Boolean))
+      paramList = (TroopNotificationConfig)QConfigManager.b().b(634);
+      if ((paramList != null) && (paramList.a))
       {
-        a(paramInt);
+        c(paramInt);
         return;
       }
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), this.jdField_a_of_type_JavaUtilList);
+      this.e.put(Integer.valueOf(0), this.b);
       return;
     }
     finally {}
   }
   
-  private boolean d()
+  private void c(int paramInt)
+  {
+    List localList1 = b(2);
+    List localList2 = b(0);
+    List localList3 = b(1);
+    localList1.clear();
+    localList2.clear();
+    localList3.clear();
+    Iterator localIterator = this.b.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      Object localObject = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();
+      if ((localObject != null) && (((structmsg.StructMsg)localObject).msg.has()))
+      {
+        int j = ((structmsg.SystemMsg)((structmsg.StructMsg)localObject).msg.get()).group_msg_type.get();
+        int k = ((structmsg.SystemMsg)((structmsg.StructMsg)localObject).msg.get()).sub_type.get();
+        if ((j != 13) && (j != 6))
+        {
+          localList2.add(localMessageRecord);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("message is not quit Troop");
+            ((StringBuilder)localObject).append(localMessageRecord.toString());
+            ((StringBuilder)localObject).append("size:");
+            ((StringBuilder)localObject).append(localList2.size());
+            QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "classifyMessageRecord", ((StringBuilder)localObject).toString() });
+          }
+        }
+        else
+        {
+          localList1.add(localMessageRecord);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("message is quit Troop");
+            ((StringBuilder)localObject).append(localMessageRecord.toString());
+            ((StringBuilder)localObject).append("size:");
+            ((StringBuilder)localObject).append(localList1.size());
+            QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "classifyMessageRecord", ((StringBuilder)localObject).toString() });
+          }
+        }
+        if (k == 1)
+        {
+          localList3.add(localMessageRecord);
+          if ((i < paramInt) && (!this.a)) {
+            this.a = true;
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("message is undeal");
+            ((StringBuilder)localObject).append(localMessageRecord.toString());
+            ((StringBuilder)localObject).append("size:");
+            ((StringBuilder)localObject).append(localList3.size());
+            ((StringBuilder)localObject).append("mHasUndealDataList");
+            ((StringBuilder)localObject).append(this.a);
+            QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "classifyMessageRecord", ((StringBuilder)localObject).toString() });
+          }
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  private void c(List<MessageRecord> paramList)
+  {
+    Collections.sort(paramList, new TroopNotificationRecordMessageController.4(this));
+  }
+  
+  private boolean d(int paramInt)
+  {
+    return TroopSystemMsgUtils.b(paramInt);
+  }
+  
+  private boolean h()
   {
     return Looper.myLooper() != Looper.getMainLooper();
   }
   
-  @Nullable
-  protected String a()
+  private void i()
   {
-    return "TroopNotificationRecordMessageController";
+    Object localObject1 = Looper.myLooper();
+    Object localObject2 = Looper.getMainLooper();
+    boolean bool2 = false;
+    if (localObject1 != localObject2)
+    {
+      localObject1 = (IMessageFacade)this.c.getRuntimeService(IMessageFacade.class, "");
+      if (localObject1 != null)
+      {
+        localObject2 = this.b;
+        String str = String.valueOf(this.c.getAccount());
+        boolean bool1 = bool2;
+        if (TroopSystemMsgUtils.a((ArrayList)this.b))
+        {
+          bool1 = bool2;
+          if (this.c.isBackgroundStop) {
+            bool1 = true;
+          }
+        }
+        ((IMessageFacade)localObject1).addMessage((List)localObject2, str, bool1);
+      }
+    }
+    else
+    {
+      ThreadManager.postImmediately(new TroopNotificationRecordMessageController.3(this), null, false);
+    }
   }
   
   public List<MessageRecord> a()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+    localArrayList.addAll(this.b);
     return localArrayList;
   }
   
@@ -400,36 +394,36 @@ public class TroopNotificationRecordMessageController
   
   public List<MessageRecord> a(ITroopNotificationService.ITroopNotificationLoadDBListener paramITroopNotificationLoadDBListener)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (!this.b.isEmpty())
     {
       if (QLog.isColorLevel())
       {
         paramITroopNotificationLoadDBListener = new StringBuilder();
         paramITroopNotificationLoadDBListener.append("getMessageRecordMayBeLoadDB Cache is not empty:");
-        paramITroopNotificationLoadDBListener.append(this.jdField_a_of_type_JavaUtilList.toString());
+        paramITroopNotificationLoadDBListener.append(this.b.toString());
         paramITroopNotificationLoadDBListener.append("size:");
-        paramITroopNotificationLoadDBListener.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramITroopNotificationLoadDBListener.append(this.b.size());
         QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "getMessageRecordMayBeLoadDB", paramITroopNotificationLoadDBListener.toString() });
       }
       paramITroopNotificationLoadDBListener = new ArrayList();
-      paramITroopNotificationLoadDBListener.addAll(this.jdField_a_of_type_JavaUtilList);
+      paramITroopNotificationLoadDBListener.addAll(this.b);
       return paramITroopNotificationLoadDBListener;
     }
-    if (d())
+    if (h())
     {
-      paramITroopNotificationLoadDBListener = (IMessageFacade)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IMessageFacade.class, "");
+      paramITroopNotificationLoadDBListener = (IMessageFacade)this.c.getRuntimeService(IMessageFacade.class, "");
       if (paramITroopNotificationLoadDBListener != null)
       {
-        b(paramITroopNotificationLoadDBListener.getAllMessages(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, null), GroupSystemMsgController.a().a(this.jdField_a_of_type_MqqAppAppRuntime));
+        b(paramITroopNotificationLoadDBListener.getAllMessages(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, null), GroupSystemMsgController.a().b(this.c));
         paramITroopNotificationLoadDBListener = new ArrayList();
-        paramITroopNotificationLoadDBListener.addAll(this.jdField_a_of_type_JavaUtilList);
+        paramITroopNotificationLoadDBListener.addAll(this.b);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getMessageRecordMayBeLoadDB Cache is empty, currentThread is not mainThread:");
-          localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+          localStringBuilder.append(this.b.toString());
           localStringBuilder.append("size:");
-          localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+          localStringBuilder.append(this.b.size());
           QLog.d("TroopNotificationRecordMessageController", 2, new Object[] { "getMessageRecordMayBeLoadDB", localStringBuilder.toString() });
         }
         return paramITroopNotificationLoadDBListener;
@@ -449,16 +443,16 @@ public class TroopNotificationRecordMessageController
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject = this.b.iterator();
       while (((Iterator)localObject).hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
         if (localMessageRecord.uniseq == paramLong) {
-          this.jdField_a_of_type_JavaUtilList.remove(localMessageRecord);
+          this.b.remove(localMessageRecord);
         }
       }
-      a(GroupSystemMsgController.a().a(this.jdField_a_of_type_MqqAppAppRuntime));
-      localObject = (IMessageFacade)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IMessageFacade.class, "");
+      c(GroupSystemMsgController.a().b(this.c));
+      localObject = (IMessageFacade)this.c.getRuntimeService(IMessageFacade.class, "");
       if (localObject != null) {
         ((IMessageFacade)localObject).removeMsgByUniseq(paramString, paramInt, paramLong, paramBoolean);
       }
@@ -478,30 +472,20 @@ public class TroopNotificationRecordMessageController
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a = paramBoolean;
   }
   
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.a = false;
+    this.e.clear();
   }
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    this.f = paramBoolean;
   }
   
   public void c()
@@ -511,17 +495,33 @@ public class TroopNotificationRecordMessageController
   
   public void c(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.g = paramBoolean;
   }
   
-  public boolean c()
+  @Nullable
+  protected String d()
   {
-    return this.c;
+    return "TroopNotificationRecordMessageController";
+  }
+  
+  public boolean e()
+  {
+    return this.a;
+  }
+  
+  public boolean f()
+  {
+    return this.f;
+  }
+  
+  public boolean g()
+  {
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationRecordMessageController
  * JD-Core Version:    0.7.0.1
  */

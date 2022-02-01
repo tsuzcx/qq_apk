@@ -27,14 +27,14 @@ class SignatureAdapter$3
     {
       localObject = new File((String)localObject);
       if (DownloaderFactory.a(new File(SignatureTemplateConfig.a(str1, str2)), (File)localObject, true)) {
-        SignatureAdapter.a(this.this$0).a().sendEmptyMessage(10003);
+        SignatureAdapter.c(this.this$0).a().sendEmptyMessage(10003);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.3
  * JD-Core Version:    0.7.0.1
  */

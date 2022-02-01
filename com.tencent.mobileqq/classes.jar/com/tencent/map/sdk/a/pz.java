@@ -16,6 +16,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.net.URLEncoder;
 
 public final class pz
@@ -95,7 +97,7 @@ public final class pz
     if (paramContext == null) {
       return "";
     }
-    paramContext = paramContext.getConnectionInfo();
+    paramContext = NetworkMonitor.getConnectionInfo(paramContext);
     if (paramContext == null) {
       return "";
     }
@@ -130,7 +132,7 @@ public final class pz
           {
             try
             {
-              localObject1 = localTelephonyManager.getImei();
+              localObject1 = PhoneInfoMonitor.getImei(localTelephonyManager);
             }
             catch (Exception localException1)
             {
@@ -147,7 +149,7 @@ public final class pz
           }
         }
         else {
-          localObject2 = localTelephonyManager.getDeviceId();
+          localObject2 = PhoneInfoMonitor.getDeviceId(localTelephonyManager);
         }
       }
     }
@@ -155,7 +157,7 @@ public final class pz
     {
       try
       {
-        localObject2 = localTelephonyManager.getDeviceId();
+        localObject2 = PhoneInfoMonitor.getDeviceId(localTelephonyManager);
       }
       catch (Exception localException2)
       {
@@ -229,7 +231,7 @@ public final class pz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pz
  * JD-Core Version:    0.7.0.1
  */

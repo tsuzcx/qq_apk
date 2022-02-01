@@ -15,12 +15,12 @@ public class ListView$OverscrollViewContainer
   
   private void setParent(ViewParent paramViewParent)
   {
-    ReflectionUtil.a(this, "android.view.View", "mParent", paramViewParent);
+    ReflectionUtil.b(this, "android.view.View", "mParent", paramViewParent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ListView.OverscrollViewContainer
  * JD-Core Version:    0.7.0.1
  */

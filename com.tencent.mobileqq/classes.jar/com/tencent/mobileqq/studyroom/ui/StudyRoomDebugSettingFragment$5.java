@@ -23,8 +23,8 @@ class StudyRoomDebugSettingFragment$5
   
   public void onInstallError(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    StudyRoomDebugSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment, "studyroom_plugin_name", this.jdField_a_of_type_JavaLangString);
+    this.a.dismiss();
+    StudyRoomDebugSettingFragment.a(this.c, "studyroom_plugin_name", this.b);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onInstallError: [");
     ((StringBuilder)localObject).append(paramInt);
@@ -33,30 +33,30 @@ class StudyRoomDebugSettingFragment$5
     QLog.e("StudyRoomDebugSettingFragment", 1, ((StringBuilder)localObject).toString());
     if (paramInt == 2)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity(), "插件正在运行，请重启手Q", 1).a();
+      QQToast.makeText(this.c.getQBaseActivity(), "插件正在运行，请重启手Q", 1).show();
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity();
+    localObject = this.c.getQBaseActivity();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("插件安装失败: ");
     localStringBuilder.append(paramString);
-    QQToast.a((Context)localObject, localStringBuilder.toString(), 1).a();
+    QQToast.makeText((Context)localObject, localStringBuilder.toString(), 1).show();
   }
   
   public void onInstallFinish(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.a.dismiss();
     paramString = new StringBuilder();
     paramString.append("onInstallFinish: branch=");
-    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(this.b);
     QLog.d("StudyRoomDebugSettingFragment", 1, paramString.toString());
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity(), "重置成功，返回打开自习室吧。", 2).a();
-    StudyRoomDebugSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment, "studyroom_plugin_name", this.jdField_a_of_type_JavaLangString);
+    QQToast.makeText(this.c.getQBaseActivity(), "重置成功，返回打开自习室吧。", 2).show();
+    StudyRoomDebugSettingFragment.a(this.c, "studyroom_plugin_name", this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomDebugSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

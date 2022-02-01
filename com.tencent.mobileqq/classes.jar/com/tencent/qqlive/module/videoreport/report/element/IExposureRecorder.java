@@ -24,7 +24,7 @@ public abstract interface IExposureRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.IExposureRecorder
  * JD-Core Version:    0.7.0.1
  */

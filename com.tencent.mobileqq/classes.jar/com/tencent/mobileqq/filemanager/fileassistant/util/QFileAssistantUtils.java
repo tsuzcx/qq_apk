@@ -12,11 +12,6 @@ import msf.msgcomm.msg_comm.Msg;
 
 public class QFileAssistantUtils
 {
-  public static int a()
-  {
-    return a().getCurrentDeviceType();
-  }
-  
   public static int a(int paramInt)
   {
     return a().getMachineHeadResId(paramInt);
@@ -25,11 +20,6 @@ public class QFileAssistantUtils
   public static int a(msg_comm.Msg paramMsg)
   {
     return a().decodeMessageDeviceType(paramMsg);
-  }
-  
-  public static long a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return a().getOnlyOfflineLimitSize(paramBaseQQAppInterface);
   }
   
   public static IQFileAssistantUtils a()
@@ -42,16 +32,6 @@ public class QFileAssistantUtils
     return a().getMachineNickName(paramContext, paramInt);
   }
   
-  public static String a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return a().getNewVersionDatalineUin(paramBaseQQAppInterface);
-  }
-  
-  public static void a(int paramInt)
-  {
-    a().setSendTarget(paramInt);
-  }
-  
   public static void a(Context paramContext)
   {
     a().openNewDatalineAio(paramContext);
@@ -60,11 +40,6 @@ public class QFileAssistantUtils
   public static void a(Context paramContext, Intent paramIntent)
   {
     a().openNewDatalineAioSingle(paramContext, paramIntent);
-  }
-  
-  public static void a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    a().resetFileAssistantOnlineMark(paramBaseQQAppInterface);
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, boolean paramBoolean)
@@ -80,11 +55,6 @@ public class QFileAssistantUtils
   public static void a(MessageRecord paramMessageRecord, int paramInt)
   {
     a().saveMessageDeviceType(paramMessageRecord, paramInt);
-  }
-  
-  public static boolean a()
-  {
-    return a().isNewVersionDataline();
   }
   
   public static boolean a(BaseQQAppInterface paramBaseQQAppInterface)
@@ -112,29 +82,19 @@ public class QFileAssistantUtils
     return a().isFileAssistantAio(paramString);
   }
   
-  public static int b()
+  public static String b(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return a().getCurrentTargetDeviceType();
+    return a().getNewVersionDatalineUin(paramBaseQQAppInterface);
   }
   
-  public static int b(int paramInt)
+  public static void b(int paramInt)
   {
-    return a().getMachineType(paramInt);
+    a().setSendTarget(paramInt);
   }
   
-  public static long b(BaseQQAppInterface paramBaseQQAppInterface)
+  public static boolean b()
   {
-    return a().getOfflineDelay(paramBaseQQAppInterface);
-  }
-  
-  public static void b(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    a().notifyUpdateRecentFileAssistant(paramBaseQQAppInterface);
-  }
-  
-  public static boolean b(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return a().isNeedShowPadOpts(paramBaseQQAppInterface);
+    return a().isNewVersionDataline();
   }
   
   public static boolean b(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
@@ -147,14 +107,54 @@ public class QFileAssistantUtils
     return a().isMessageSender(paramMessageRecord);
   }
   
-  public static boolean c(BaseQQAppInterface paramBaseQQAppInterface)
+  public static int c()
+  {
+    return a().getCurrentDeviceType();
+  }
+  
+  public static int c(int paramInt)
+  {
+    return a().getMachineType(paramInt);
+  }
+  
+  public static void c(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    a().resetFileAssistantOnlineMark(paramBaseQQAppInterface);
+  }
+  
+  public static int d()
+  {
+    return a().getCurrentTargetDeviceType();
+  }
+  
+  public static long d(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return a().getOnlyOfflineLimitSize(paramBaseQQAppInterface);
+  }
+  
+  public static boolean e(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return a().isNeedShowPadOpts(paramBaseQQAppInterface);
+  }
+  
+  public static long f(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return a().getOfflineDelay(paramBaseQQAppInterface);
+  }
+  
+  public static boolean g(BaseQQAppInterface paramBaseQQAppInterface)
   {
     return a().checkNotifyDeviceOnline(paramBaseQQAppInterface);
+  }
+  
+  public static void h(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    a().notifyUpdateRecentFileAssistant(paramBaseQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils
  * JD-Core Version:    0.7.0.1
  */

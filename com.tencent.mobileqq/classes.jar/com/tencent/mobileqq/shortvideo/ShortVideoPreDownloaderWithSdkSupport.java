@@ -21,9 +21,9 @@ import java.util.List;
 public class ShortVideoPreDownloaderWithSdkSupport
   extends ShortVideoPreDownloader
 {
-  ISPlayerDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader;
-  ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-  private ArrayList<ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ISPlayerDownloader p;
+  ISPlayerPreDownloader q;
+  private ArrayList<ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler> r = new ArrayList();
   
   public ShortVideoPreDownloaderWithSdkSupport(QQAppInterface paramQQAppInterface)
   {
@@ -34,18 +34,18 @@ public class ShortVideoPreDownloaderWithSdkSupport
   {
     if (paramShortVideoReq != null)
     {
-      if (paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+      if (paramShortVideoReq.j == null) {
         return;
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("downFullVideo, uniseq = ");
-        localStringBuilder.append(paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+        localStringBuilder.append(paramShortVideoReq.j.uniseq);
         QLog.d("ShortVideoPreDownloader", 2, localStringBuilder.toString());
       }
-      if (!QQVideoPlaySDKManager.a()) {
-        QQVideoPlaySDKManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new ShortVideoPreDownloaderWithSdkSupport.1(this, paramShortVideoReq));
+      if (!QQVideoPlaySDKManager.isSDKReady()) {
+        QQVideoPlaySDKManager.initSDKAsync(this.a.getApplication(), new ShortVideoPreDownloaderWithSdkSupport.1(this, paramShortVideoReq));
       }
       c(paramShortVideoReq);
     }
@@ -57,15 +57,15 @@ public class ShortVideoPreDownloaderWithSdkSupport
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("startFullDownload, uniseq = ");
-      ((StringBuilder)localObject1).append(paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      ((StringBuilder)localObject1).append(paramShortVideoReq.j.uniseq);
       QLog.d("ShortVideoPreDownloader", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader = SuperPlayerFactory.createDownloader(BaseApplicationImpl.getContext(), 101);
-    Object localObject1 = SVUtils.a(paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    if ((paramShortVideoReq.jdField_a_of_type_ArrayOfJavaLangString != null) && (paramShortVideoReq.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    this.p = SuperPlayerFactory.createDownloader(BaseApplicationImpl.getContext(), 101);
+    Object localObject1 = SVUtils.a(paramShortVideoReq.j, "mp4");
+    if ((paramShortVideoReq.q != null) && (paramShortVideoReq.q.length > 0))
     {
       Object localObject2 = new StringBuilder();
-      Object localObject3 = paramShortVideoReq.jdField_a_of_type_ArrayOfJavaLangString;
+      Object localObject3 = paramShortVideoReq.q;
       int j = localObject3.length;
       int i = 0;
       while (i < j)
@@ -76,13 +76,13 @@ public class ShortVideoPreDownloaderWithSdkSupport
       }
       localObject2 = ((StringBuilder)localObject2).toString();
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5());
-      ((StringBuilder)localObject3).append(paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      ((StringBuilder)localObject3).append(paramShortVideoReq.j.getMd5());
+      ((StringBuilder)localObject3).append(paramShortVideoReq.j.uniseq);
       localObject1 = SuperPlayerFactory.createVideoInfoForUrl((String)localObject2, 101, ((StringBuilder)localObject3).toString(), (String)localObject1);
-      i = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.startOfflineDownload((SuperPlayerVideoInfo)localObject1, new ShortVideoPreDownloaderWithSdkSupport.2(this, paramShortVideoReq));
+      i = this.p.startOfflineDownload((SuperPlayerVideoInfo)localObject1, new ShortVideoPreDownloaderWithSdkSupport.2(this, paramShortVideoReq));
       if (i > 0)
       {
-        paramShortVideoReq.f = i;
+        paramShortVideoReq.p = i;
         return;
       }
       if (QLog.isColorLevel())
@@ -99,48 +99,6 @@ public class ShortVideoPreDownloaderWithSdkSupport
     }
   }
   
-  ShortVideoReq a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      ShortVideoReq localShortVideoReq = a(this.jdField_a_of_type_JavaUtilList);
-      if (localShortVideoReq != null)
-      {
-        a("getShortVideoRequest", "get a short video request from AIORequests");
-        return localShortVideoReq;
-      }
-      synchronized (this.b)
-      {
-        localShortVideoReq = a(this.b);
-        if (localShortVideoReq != null)
-        {
-          a("getShortVideoRequest", "get a short video request from C2CRequests");
-          return localShortVideoReq;
-        }
-        synchronized (this.c)
-        {
-          localShortVideoReq = a(this.c);
-          if (localShortVideoReq != null)
-          {
-            a("getShortVideoRequest", "get a short video request from DiscussionRequests");
-            return localShortVideoReq;
-          }
-          synchronized (this.d)
-          {
-            localShortVideoReq = a(this.d);
-            if (localShortVideoReq != null)
-            {
-              a("getShortVideoRequest", "get a short video request from GroupRequests");
-              return localShortVideoReq;
-            }
-            a("getShortVideoRequest", "cannot get any request");
-            return null;
-          }
-        }
-      }
-    }
-  }
-  
   ShortVideoReq a(List<ShortVideoReq> paramList)
   {
     int i = paramList.size();
@@ -149,7 +107,7 @@ public class ShortVideoPreDownloaderWithSdkSupport
       return null;
     }
     Object localObject1;
-    if (QQVideoPlaySDKManager.a())
+    if (QQVideoPlaySDKManager.isSDKReady())
     {
       i -= 1;
       localObject1 = (ShortVideoReq)paramList.get(i);
@@ -165,7 +123,7 @@ public class ShortVideoPreDownloaderWithSdkSupport
         break;
       }
       localObject1 = (ShortVideoReq)localIterator.next();
-    } while (((ShortVideoReq)localObject1).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_Int == 0);
+    } while (((ShortVideoReq)localObject1).e.b == 0);
     paramList.remove(localObject1);
     a("getRequestBySDKStatus", "get a short video request");
     return localObject1;
@@ -176,16 +134,16 @@ public class ShortVideoPreDownloaderWithSdkSupport
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoPreDownloader", 2, "downloadLongVideoForSave.");
     }
-    if ((paramFileSaveReq != null) && (paramFileSaveReq.a != null))
+    if ((paramFileSaveReq != null) && (paramFileSaveReq.c != null))
     {
-      c(paramFileSaveReq.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      Object localObject = paramFileSaveReq.a.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.c;
-      long l = paramFileSaveReq.a.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_Long;
-      localObject = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor((String)localObject, l);
+      d(paramFileSaveReq.c.j);
+      Object localObject = paramFileSaveReq.c.e.e;
+      long l = paramFileSaveReq.c.e.g;
+      localObject = ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).findProcessor((String)localObject, l);
       if ((localObject != null) && ((localObject instanceof BaseDownloadProcessor))) {
         ((BaseDownloadProcessor)localObject).cancel();
       }
-      a(paramFileSaveReq.a);
+      a(paramFileSaveReq.c);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -196,13 +154,13 @@ public class ShortVideoPreDownloaderWithSdkSupport
   protected void a(ShortVideoReq paramShortVideoReq)
   {
     super.a(paramShortVideoReq);
-    if (paramShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_Int == 0)
+    if (paramShortVideoReq.e.b == 0)
     {
-      FileTransferManager localFileTransferManager = FileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      FileTransferManager localFileTransferManager = FileTransferManager.a(this.a);
       if (localFileTransferManager != null)
       {
         paramShortVideoReq = new ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler(this, paramShortVideoReq);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramShortVideoReq);
+        this.r.add(paramShortVideoReq);
         localFileTransferManager.a(paramShortVideoReq.a, paramShortVideoReq);
       }
     }
@@ -210,15 +168,15 @@ public class ShortVideoPreDownloaderWithSdkSupport
   
   public void b(FileSaveReq paramFileSaveReq)
   {
-    if ((paramFileSaveReq != null) && (paramFileSaveReq.a != null))
+    if ((paramFileSaveReq != null) && (paramFileSaveReq.c != null))
     {
-      c(paramFileSaveReq.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      IHttpCommunicatorListener localIHttpCommunicatorListener = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(paramFileSaveReq.a.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.c, paramFileSaveReq.a.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_Long);
+      d(paramFileSaveReq.c.j);
+      IHttpCommunicatorListener localIHttpCommunicatorListener = ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).findProcessor(paramFileSaveReq.c.e.e, paramFileSaveReq.c.e.g);
       if ((localIHttpCommunicatorListener instanceof BaseDownloadProcessor)) {
         ((BaseDownloadProcessor)localIHttpCommunicatorListener).cancel();
       }
-      if ((this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader != null) && (paramFileSaveReq.a.f > 0)) {
-        this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.stopOfflineDownload(paramFileSaveReq.a.f);
+      if ((this.p != null) && (paramFileSaveReq.c.p > 0)) {
+        this.p.stopOfflineDownload(paramFileSaveReq.c.p);
       }
       return;
     }
@@ -227,21 +185,63 @@ public class ShortVideoPreDownloaderWithSdkSupport
     }
   }
   
+  ShortVideoReq e()
+  {
+    synchronized (this.d)
+    {
+      ShortVideoReq localShortVideoReq = a(this.d);
+      if (localShortVideoReq != null)
+      {
+        a("getShortVideoRequest", "get a short video request from AIORequests");
+        return localShortVideoReq;
+      }
+      synchronized (this.e)
+      {
+        localShortVideoReq = a(this.e);
+        if (localShortVideoReq != null)
+        {
+          a("getShortVideoRequest", "get a short video request from C2CRequests");
+          return localShortVideoReq;
+        }
+        synchronized (this.f)
+        {
+          localShortVideoReq = a(this.f);
+          if (localShortVideoReq != null)
+          {
+            a("getShortVideoRequest", "get a short video request from DiscussionRequests");
+            return localShortVideoReq;
+          }
+          synchronized (this.g)
+          {
+            localShortVideoReq = a(this.g);
+            if (localShortVideoReq != null)
+            {
+              a("getShortVideoRequest", "get a short video request from GroupRequests");
+              return localShortVideoReq;
+            }
+            a("getShortVideoRequest", "cannot get any request");
+            return null;
+          }
+        }
+      }
+    }
+  }
+  
   public void onDestroy()
   {
     super.onDestroy();
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.q;
     if (localISPlayerPreDownloader != null)
     {
       localISPlayerPreDownloader.stopAllPreDownload();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.destory();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = null;
+      this.q.destory();
+      this.q = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPreDownloaderWithSdkSupport
  * JD-Core Version:    0.7.0.1
  */

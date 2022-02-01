@@ -9,14 +9,14 @@ class GameVideoImageFilter$1
   
   public void run()
   {
-    if ((GameVideoImageFilter.a(this.this$0) == -1) && (GameVideoImageFilter.a(this.this$0) != null))
+    if ((GameVideoImageFilter.a(this.this$0) == -1) && (GameVideoImageFilter.b(this.this$0) != null))
     {
       GLES20.glActiveTexture(33987);
       localGameVideoImageFilter = this.this$0;
-      GameVideoImageFilter.a(localGameVideoImageFilter, OpenGlUtils.a(GameVideoImageFilter.a(localGameVideoImageFilter), -1));
+      GameVideoImageFilter.a(localGameVideoImageFilter, OpenGlUtils.a(GameVideoImageFilter.b(localGameVideoImageFilter), -1));
     }
     GameVideoImageFilter localGameVideoImageFilter = this.this$0;
-    GameVideoImageFilter.b(localGameVideoImageFilter, GameVideoImageFilter.c(localGameVideoImageFilter, GameVideoImageFilter.b(localGameVideoImageFilter)));
+    GameVideoImageFilter.b(localGameVideoImageFilter, GameVideoImageFilter.c(localGameVideoImageFilter, GameVideoImageFilter.c(localGameVideoImageFilter)));
   }
 }
 

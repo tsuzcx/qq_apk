@@ -15,7 +15,7 @@ class CasualTips$1
       this.this$0.a = ((int)(System.currentTimeMillis() % this.a.size()));
       CasualTips.a(this.this$0).addAll(this.a);
     }
-    CasualTips.a(this.this$0);
+    CasualTips.b(this.this$0);
     if (CasualTips.a(this.this$0).size() > 1) {
       this.this$0.c();
     }

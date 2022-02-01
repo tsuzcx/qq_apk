@@ -6,11 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView.BufferType;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.qqsettingme.api.IQQSettingMeApi;
 import com.tencent.mobileqq.activity.qqsettingme.config.QQSettingMeBizBean.Title;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,8 +27,11 @@ import com.tencent.mobileqq.utils.VipUtils.VipIconUtils;
 import com.tencent.mobileqq.utils.VipUtils.VipIconUtils.VipIconTouchListener;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
 import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.mobileqq.vas.theme.TintManager;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IGameCardManager.GameCardInfo;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.util.DrawerCoverUtil;
 import mqq.app.AppRuntime;
@@ -35,11 +40,6 @@ import org.json.JSONObject;
 public class QQSettingMeApiImpl
   implements IQQSettingMeApi
 {
-  public SpannableString addNamePlateOfKing(View paramView, Resources paramResources, long paramLong, int paramInt, boolean paramBoolean)
-  {
-    return QQSettingUtil.a(paramView, paramResources, paramLong, paramInt, paramBoolean);
-  }
-  
   public void checkAndGetSelfNickName(AppRuntime paramAppRuntime)
   {
     ((QQAppInterface)paramAppRuntime).checkAndGetSelfNickName();
@@ -109,6 +109,11 @@ public class QQSettingMeApiImpl
     return null;
   }
   
+  public URLDrawable getGameCardIcon(View paramView, long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    return QQSettingUtil.a(paramView, new IGameCardManager.GameCardInfo(paramLong, paramInt1, paramBoolean, paramInt2));
+  }
+  
   public Integer getPlateColor(String paramString)
   {
     return TintManager.a().a(paramString);
@@ -136,6 +141,11 @@ public class QQSettingMeApiImpl
     return VipUtils.a(paramInt);
   }
   
+  public boolean isCanOpenHippy(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (VasUtil.b().isCanOpenHippyPage(paramString));
+  }
+  
   public SpannableString parseQQLevel(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
   {
     return QQSettingUtil.a(paramResources, paramInt1, paramInt2, paramInt3);
@@ -146,10 +156,10 @@ public class QQSettingMeApiImpl
     paramAppRuntime = ((AvatarPendantManager)paramAppRuntime.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a(paramLong);
     if (AvatarPendantUtil.a(paramLong))
     {
-      paramAppRuntime.a(paramView, 2, PendantInfo.h, paramString, paramInt);
+      paramAppRuntime.a(paramView, 2, PendantInfo.i, paramString, paramInt);
       return;
     }
-    paramAppRuntime.a(paramView, 1, PendantInfo.h, paramString, paramInt);
+    paramAppRuntime.a(paramView, 1, PendantInfo.i, paramString, paramInt);
   }
   
   public void setImageDrawableForDynamic(View paramView, Drawable paramDrawable)
@@ -179,7 +189,7 @@ public class QQSettingMeApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.api.impl.QQSettingMeApiImpl
  * JD-Core Version:    0.7.0.1
  */

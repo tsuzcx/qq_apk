@@ -22,9 +22,9 @@ public class RIJMaybeInitializedAladdinConfig
   {
     if (!a)
     {
-      Aladdin.InitParams.Builder localBuilder = Aladdin.InitParams.newBuilder().withUserId(RIJQQAppInterfaceUtil.a()).withAppVersion("8.7.0").withContext(BaseApplicationImpl.getContext()).withExecutor(QQAsyncTaskExecutor.a).withRequestHandler(new QQAladdinRequestHandler()).withLogger(new QQAladdinLogger());
+      Aladdin.InitParams.Builder localBuilder = Aladdin.InitParams.newBuilder().withUserId(RIJQQAppInterfaceUtil.d()).withAppVersion("8.8.17").withContext(BaseApplicationImpl.getContext()).withExecutor(QQAsyncTaskExecutor.a).withRequestHandler(new QQAladdinRequestHandler()).withLogger(new QQAladdinLogger());
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(AppSetting.a());
+      localStringBuilder.append(AppSetting.d());
       localStringBuilder.append("");
       Aladdin.initialize(localBuilder.withAppFlavorId(localStringBuilder.toString()).build());
       Aladdin.registerBeanClass("AchillesParams", AchillesParams.class);
@@ -35,7 +35,7 @@ public class RIJMaybeInitializedAladdinConfig
   
   public static void b()
   {
-    Boolean localBoolean = (Boolean)RIJSPUtils.a("should_request_aladdin_config", Boolean.valueOf(true));
+    Boolean localBoolean = (Boolean)RIJSPUtils.b("should_request_aladdin_config", Boolean.valueOf(true));
     QLog.i("RIJMaybeInitializedAladdinConfig", 1, "[maybeGetAllConfigs] shouldRequest=$shouldRequest");
     if (localBoolean.booleanValue()) {
       QQAladdinUtils.b();
@@ -44,7 +44,7 @@ public class RIJMaybeInitializedAladdinConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.RIJMaybeInitializedAladdinConfig
  * JD-Core Version:    0.7.0.1
  */

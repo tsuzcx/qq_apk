@@ -12,14 +12,14 @@ public class HackVm
       HackVmImpl.a();
     }
     if ((Build.VERSION.SDK_INT < 24) && ((this.mId == 42) || (this.mId == 43))) {
-      HackVmImpl.a();
+      HackVmImpl.b();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.HackVm
  * JD-Core Version:    0.7.0.1
  */

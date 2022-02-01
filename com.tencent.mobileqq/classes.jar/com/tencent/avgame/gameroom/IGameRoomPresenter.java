@@ -17,19 +17,7 @@ import java.util.List;
 
 public abstract interface IGameRoomPresenter
 {
-  public abstract Activity a();
-  
-  public abstract RectF a();
-  
-  public abstract IOverlayPresenter a();
-  
-  public abstract ISeatPresenter a();
-  
-  public abstract IStageRecordPresenter a();
-  
   public abstract AVGameUserInfo a(String paramString);
-  
-  public abstract String a();
   
   public abstract void a();
   
@@ -37,39 +25,51 @@ public abstract interface IGameRoomPresenter
   
   public abstract void a(Context paramContext, IGameListPresenter paramIGameListPresenter, IStagePresenter paramIStagePresenter, ISeatPresenter paramISeatPresenter, IOverlayPresenter paramIOverlayPresenter, IAVControlUiPresenter paramIAVControlUiPresenter, IStageRecordPresenter paramIStageRecordPresenter, ISurvivalStagePresenter paramISurvivalStagePresenter);
   
-  public abstract void a(String paramString);
-  
   public abstract void a(boolean paramBoolean);
   
   public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
   
   public abstract void b();
   
   public abstract void b(String paramString);
   
-  public abstract List<Player> c();
-  
   public abstract void c();
+  
+  public abstract void c(String paramString);
   
   public abstract void c(boolean paramBoolean);
   
-  public abstract void d();
+  public abstract ISeatPresenter d();
   
   public abstract void d(boolean paramBoolean);
+  
+  public abstract IOverlayPresenter e();
   
   public abstract void e(boolean paramBoolean);
   
   public abstract void f(boolean paramBoolean);
   
+  public abstract IStageRecordPresenter g();
+  
   public abstract void i(EngineData paramEngineData);
   
   public abstract void k(EngineData paramEngineData);
   
+  public abstract Activity m();
+  
   public abstract void m(EngineData paramEngineData);
+  
+  public abstract List<Player> p();
+  
+  public abstract void q();
+  
+  public abstract String r();
+  
+  public abstract String s();
+  
+  public abstract boolean t();
+  
+  public abstract RectF u();
 }
 
 

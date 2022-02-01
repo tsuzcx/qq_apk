@@ -7,12 +7,12 @@ class TroopMemberListActivity$45$1
   
   public void run()
   {
-    TroopMemberListActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$45.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
+    TroopMemberListActivity.access$3000(this.g.a, this.a, this.b, this.c, 0, 0, this.d, this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.45.1
  * JD-Core Version:    0.7.0.1
  */

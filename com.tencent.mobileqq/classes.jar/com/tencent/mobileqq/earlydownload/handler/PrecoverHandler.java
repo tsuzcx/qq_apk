@@ -13,19 +13,9 @@ public class PrecoverHandler
     super("qq.android.early.precover", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10045;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return PrecoverData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPrecover";
   }
   
   public void a(XmlData paramXmlData)
@@ -36,19 +26,29 @@ public class PrecoverHandler
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public String b()
   {
+    return "actEarlyPrecover";
+  }
+  
+  public int c()
+  {
+    return 10045;
+  }
+  
+  public String d()
+  {
     return "prd";
+  }
+  
+  public boolean e()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PrecoverHandler
  * JD-Core Version:    0.7.0.1
  */

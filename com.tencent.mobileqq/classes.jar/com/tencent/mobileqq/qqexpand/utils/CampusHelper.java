@@ -100,14 +100,6 @@ public class CampusHelper
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface).edit().putBoolean("has_shown_fill_birthday_dialog_before", true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("CampusHelper", 2, "markHasShownFillBirthdayDialog ");
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
     SharedPreferences localSharedPreferences = a(paramQQAppInterface);
@@ -168,7 +160,15 @@ public class CampusHelper
     return bool;
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface)
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    a(paramQQAppInterface).edit().putBoolean("has_shown_fill_birthday_dialog_before", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("CampusHelper", 2, "markHasShownFillBirthdayDialog ");
+    }
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
   {
     boolean bool = a(paramQQAppInterface).getBoolean("need_show_campus_certi_banner", false);
     if (QLog.isColorLevel())
@@ -181,7 +181,7 @@ public class CampusHelper
     return bool;
   }
   
-  public static boolean c(QQAppInterface paramQQAppInterface)
+  public static boolean d(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return false;
@@ -191,7 +191,7 @@ public class CampusHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.CampusHelper
  * JD-Core Version:    0.7.0.1
  */

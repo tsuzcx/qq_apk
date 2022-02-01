@@ -8,33 +8,33 @@ public class AddFriendBlockedInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<AddFriendBlockedInfo> CREATOR = new AddFriendBlockedInfo.1();
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
   public int c;
-  public String c;
+  public int d;
+  public String e;
+  public long f;
+  public boolean g;
+  public int h;
   
   public AddFriendBlockedInfo() {}
   
   protected AddFriendBlockedInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readString();
+    this.f = paramParcel.readLong();
     boolean bool;
     if (paramParcel.readByte() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.g = bool;
+    this.h = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -46,28 +46,28 @@ public class AddFriendBlockedInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AddFriendBlockedInfo {, friendUin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", friendNick='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", age='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", sex='");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", sourceDsp='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", blockTime='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isRead='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", commFriends='");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -75,19 +75,19 @@ public class AddFriendBlockedInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeString(this.e);
+    paramParcel.writeLong(this.f);
+    paramParcel.writeByte((byte)this.g);
+    paramParcel.writeInt(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.data.AddFriendBlockedInfo
  * JD-Core Version:    0.7.0.1
  */

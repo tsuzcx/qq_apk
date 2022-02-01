@@ -15,7 +15,7 @@ class GetUserGroupMemberListHandler$GetMemberListBusinessObserver$1
   
   protected Object a(@NonNull JobContext paramJobContext, Void... paramVarArgs)
   {
-    GetUserGroupMemberListHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    GetUserGroupMemberListHandler.a(this.a, this.b);
     return null;
   }
 }

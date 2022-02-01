@@ -27,7 +27,7 @@ class FavRoamingStrategy$4
     if (QLog.isColorLevel()) {
       QLog.i("FavRoamingStrategy", 2, "Call getEmoticonDataList-2 from doDelete.");
     }
-    Object localObject1 = this.this$0.a().getEmoticonDataList();
+    Object localObject1 = this.this$0.n().getEmoticonDataList();
     Object localObject3;
     Object localObject4;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -38,7 +38,7 @@ class FavRoamingStrategy$4
         localObject4 = (CustomEmotionData)((Iterator)localObject3).next();
         if (localObject4 != null)
         {
-          localObject1 = this.jdField_a_of_type_JavaLangObject;
+          localObject1 = this.a;
           if ((localObject1 instanceof PicEmoticonInfo))
           {
             localObject1 = ((PicEmoticonInfo)localObject1).emoticon;
@@ -48,16 +48,16 @@ class FavRoamingStrategy$4
           }
           else if ((localObject1 instanceof FavoriteEmoticonInfo))
           {
-            if (this.this$0.a.contains(this.jdField_a_of_type_JavaLangObject))
+            if (this.this$0.d.contains(this.a))
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append(AppConstants.SDCARD_IMG_FAVORITE);
-              ((StringBuilder)localObject1).append(FunnyPicHelperConstant.a(((FavoriteEmoticonInfo)this.jdField_a_of_type_JavaLangObject).path));
+              ((StringBuilder)localObject1).append(FunnyPicHelperConstant.a(((FavoriteEmoticonInfo)this.a).path));
               localObject1 = ((StringBuilder)localObject1).toString();
             }
             else
             {
-              localObject1 = ((FavoriteEmoticonInfo)this.jdField_a_of_type_JavaLangObject).path;
+              localObject1 = ((FavoriteEmoticonInfo)this.a).path;
             }
             if ((!TextUtils.isEmpty(((CustomEmotionData)localObject4).emoPath)) && (((CustomEmotionData)localObject4).emoPath.equals(localObject1))) {
               ((List)localObject2).add(localObject4);
@@ -83,7 +83,7 @@ class FavRoamingStrategy$4
         if (!TextUtils.isEmpty(((CustomEmotionData)localObject3).resid))
         {
           ((CustomEmotionData)localObject3).RomaingType = "needDel";
-          this.this$0.a().updateCustomEmotion((CustomEmotionBase)localObject3);
+          this.this$0.n().updateCustomEmotion((CustomEmotionBase)localObject3);
           FavRoamingStrategy.a(this.this$0).add(((CustomEmotionData)localObject3).resid);
           if (!TextUtils.isEmpty(((CustomEmotionData)localObject3).md5)) {
             ((List)localObject1).add(((CustomEmotionData)localObject3).md5);
@@ -98,28 +98,28 @@ class FavRoamingStrategy$4
             ((StringBuilder)localObject4).append(((CustomEmotionData)localObject3).RomaingType);
             QLog.d("FavRoamingStrategy", 2, ((StringBuilder)localObject4).toString());
           }
-          this.this$0.a().deleteCustomEmotion((CustomEmotionBase)localObject3);
+          this.this$0.n().deleteCustomEmotion((CustomEmotionBase)localObject3);
           if (!TextUtils.isEmpty(((CustomEmotionData)localObject3).md5)) {
             ((List)localObject1).add(((CustomEmotionData)localObject3).md5);
           }
         }
       }
       if (((List)localObject1).size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmApiIVipComicMqqManagerService.delComicEmoticonList((List)localObject1);
+        this.b.delComicEmoticonList((List)localObject1);
       }
     }
     else
     {
       QLog.e("FavRoamingStrategy", 1, "delete failed, not find original emotion data");
     }
-    if (FavRoamingStrategy.a(this.this$0) != null) {
-      FavRoamingStrategy.a(this.this$0).obtainMessage(207, Integer.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+    if (FavRoamingStrategy.b(this.this$0) != null) {
+      FavRoamingStrategy.b(this.this$0).obtainMessage(207, Integer.valueOf(this.c)).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavRoamingStrategy.4
  * JD-Core Version:    0.7.0.1
  */

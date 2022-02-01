@@ -13,282 +13,282 @@ import org.jetbrains.annotations.Nullable;
 final class TofuAskAnonymouslyItemBuilder$Holder
   extends AbstractChatItemBuilder.ViewHolder
 {
-  private long jdField_a_of_type_Long;
   @Nullable
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  @Nullable
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ImageView A;
+  private long d;
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private String e = "";
+  private boolean f;
   @Nullable
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private ViewGroup g;
   @Nullable
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private ViewGroup h;
   @Nullable
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  @Nullable
-  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
-  @Nullable
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  @Nullable
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  @Nullable
-  private ViewGroup jdField_d_of_type_AndroidViewViewGroup;
-  @Nullable
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  @Nullable
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  @Nullable
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
-  @Nullable
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  @Nullable
-  private ImageView jdField_f_of_type_AndroidWidgetImageView;
-  @Nullable
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  @Nullable
-  private ImageView g;
-  @Nullable
-  private ImageView h;
-  @Nullable
-  private ImageView i;
+  private ViewGroup i;
   @Nullable
   private ImageView j;
-  
   @Nullable
-  public final ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
+  private ImageView k;
   @Nullable
-  public final ImageView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
+  private ImageView l;
   @Nullable
-  public final TextView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
+  private ImageView m;
+  @Nullable
+  private ImageView n;
+  @Nullable
+  private TextView o;
+  @Nullable
+  private ImageView p;
+  @Nullable
+  private ViewGroup s;
+  @Nullable
+  private ImageView t;
+  @Nullable
+  private TextView u;
+  @Nullable
+  private ImageView v;
+  @Nullable
+  private TextView w;
+  @Nullable
+  private TextView x;
+  @Nullable
+  private ImageView y;
+  @Nullable
+  private TextView z;
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.e;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
   public final void a(@Nullable ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.g = paramViewGroup;
   }
   
   public final void a(@Nullable ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.j = paramImageView;
   }
   
   public final void a(@Nullable TextView paramTextView)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView = paramTextView;
+    this.o = paramTextView;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @Nullable
-  public final ViewGroup b()
-  {
-    return this.jdField_b_of_type_AndroidViewViewGroup;
-  }
-  
-  @Nullable
-  public final ImageView b()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView b()
-  {
-    return this.jdField_c_of_type_AndroidWidgetTextView;
+    this.f = paramBoolean;
   }
   
   public final void b(@Nullable ViewGroup paramViewGroup)
   {
-    this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.h = paramViewGroup;
   }
   
   public final void b(@Nullable ImageView paramImageView)
   {
-    this.jdField_b_of_type_AndroidWidgetImageView = paramImageView;
+    this.k = paramImageView;
   }
   
   public final void b(@Nullable TextView paramTextView)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView = paramTextView;
+    this.u = paramTextView;
+  }
+  
+  public final boolean b()
+  {
+    return this.f;
   }
   
   @Nullable
   public final ViewGroup c()
   {
-    return this.jdField_d_of_type_AndroidViewViewGroup;
-  }
-  
-  @Nullable
-  public final ImageView c()
-  {
-    return this.jdField_c_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView c()
-  {
-    return this.jdField_d_of_type_AndroidWidgetTextView;
+    return this.g;
   }
   
   public final void c(@Nullable ViewGroup paramViewGroup)
   {
-    this.jdField_c_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.i = paramViewGroup;
   }
   
   public final void c(@Nullable ImageView paramImageView)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView = paramImageView;
+    this.l = paramImageView;
   }
   
   public final void c(@Nullable TextView paramTextView)
   {
-    this.jdField_d_of_type_AndroidWidgetTextView = paramTextView;
+    this.w = paramTextView;
   }
   
   @Nullable
-  public final ImageView d()
+  public final ViewGroup d()
   {
-    return this.jdField_d_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView d()
-  {
-    return this.jdField_e_of_type_AndroidWidgetTextView;
+    return this.h;
   }
   
   public final void d(@Nullable ViewGroup paramViewGroup)
   {
-    this.jdField_d_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.s = paramViewGroup;
   }
   
   public final void d(@Nullable ImageView paramImageView)
   {
-    this.jdField_d_of_type_AndroidWidgetImageView = paramImageView;
+    this.m = paramImageView;
   }
   
   public final void d(@Nullable TextView paramTextView)
   {
-    this.jdField_e_of_type_AndroidWidgetTextView = paramTextView;
+    this.x = paramTextView;
   }
   
   @Nullable
   public final ImageView e()
   {
-    return this.jdField_e_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView e()
-  {
-    return this.jdField_f_of_type_AndroidWidgetTextView;
+    return this.j;
   }
   
   public final void e(@Nullable ImageView paramImageView)
   {
-    this.jdField_e_of_type_AndroidWidgetImageView = paramImageView;
+    this.n = paramImageView;
   }
   
   public final void e(@Nullable TextView paramTextView)
   {
-    this.jdField_f_of_type_AndroidWidgetTextView = paramTextView;
+    this.z = paramTextView;
   }
   
   @Nullable
   public final ImageView f()
   {
-    return this.jdField_f_of_type_AndroidWidgetImageView;
+    return this.k;
   }
   
   public final void f(@Nullable ImageView paramImageView)
   {
-    this.jdField_f_of_type_AndroidWidgetImageView = paramImageView;
+    this.p = paramImageView;
   }
   
   @Nullable
   public final ImageView g()
   {
-    return this.g;
+    return this.l;
   }
   
   public final void g(@Nullable ImageView paramImageView)
   {
-    this.g = paramImageView;
+    this.t = paramImageView;
   }
   
   @Nullable
   public final ImageView h()
   {
-    return this.h;
+    return this.m;
   }
   
   public final void h(@Nullable ImageView paramImageView)
   {
-    this.h = paramImageView;
+    this.v = paramImageView;
   }
   
   @Nullable
   public final ImageView i()
   {
-    return this.i;
+    return this.n;
   }
   
   public final void i(@Nullable ImageView paramImageView)
   {
-    this.i = paramImageView;
+    this.y = paramImageView;
   }
   
   @Nullable
-  public final ImageView j()
+  public final TextView j()
   {
-    return this.j;
+    return this.o;
   }
   
   public final void j(@Nullable ImageView paramImageView)
   {
-    this.j = paramImageView;
+    this.A = paramImageView;
+  }
+  
+  @Nullable
+  public final ImageView k()
+  {
+    return this.p;
+  }
+  
+  @Nullable
+  public final ViewGroup l()
+  {
+    return this.s;
+  }
+  
+  @Nullable
+  public final ImageView m()
+  {
+    return this.t;
+  }
+  
+  @Nullable
+  public final TextView n()
+  {
+    return this.u;
+  }
+  
+  @Nullable
+  public final ImageView o()
+  {
+    return this.v;
+  }
+  
+  @Nullable
+  public final TextView p()
+  {
+    return this.w;
+  }
+  
+  @Nullable
+  public final TextView q()
+  {
+    return this.x;
+  }
+  
+  @Nullable
+  public final ImageView r()
+  {
+    return this.y;
+  }
+  
+  @Nullable
+  public final TextView s()
+  {
+    return this.z;
+  }
+  
+  @Nullable
+  public final ImageView t()
+  {
+    return this.A;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAskAnonymouslyItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

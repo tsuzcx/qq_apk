@@ -7,13 +7,13 @@ import java.nio.FloatBuffer;
 public class GameVideoImageFilter
   extends GPUImageFilter
 {
-  private volatile Bitmap a;
-  private volatile int g = -1;
-  private volatile int h = -1;
-  private volatile int i;
-  private volatile int j;
-  private volatile int k;
-  private volatile int l;
+  private volatile int k = -1;
+  private volatile int l = -1;
+  private volatile Bitmap m;
+  private volatile int n;
+  private volatile int o;
+  private volatile int p;
+  private volatile int q;
   
   private int a(int paramInt)
   {
@@ -41,10 +41,10 @@ public class GameVideoImageFilter
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    if ((this.i > 0) && (this.j > 0))
+    if ((this.n > 0) && (this.o > 0))
     {
-      this.b.clear();
-      this.b.put(a(paramInt1, paramInt2, this.i, this.j, this.k, this.l)).position(0);
+      this.d.clear();
+      this.d.put(a(paramInt1, paramInt2, this.n, this.o, this.p, this.q)).position(0);
     }
   }
   
@@ -52,46 +52,46 @@ public class GameVideoImageFilter
   {
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(770, 771);
-    g();
-    if (this.g != -1) {
-      super.a(this.g, paramFloatBuffer1, paramFloatBuffer2);
+    j();
+    if (this.k != -1) {
+      super.a(this.k, paramFloatBuffer1, paramFloatBuffer2);
     }
   }
   
   public void a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)
+    if (paramBitmap != this.m)
     {
-      this.h = this.g;
-      this.g = -1;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.l = this.k;
+      this.k = -1;
+      this.m = paramBitmap;
     }
-    this.i = paramInt1;
-    this.j = paramInt2;
-    this.k = paramInt3;
-    this.l = paramInt4;
-    if ((a() > 0) && (b() > 0))
+    this.n = paramInt1;
+    this.o = paramInt2;
+    this.p = paramInt3;
+    this.q = paramInt4;
+    if ((g() > 0) && (h() > 0))
     {
-      this.b.clear();
-      this.b.put(a(a(), b(), paramInt1, paramInt2, paramInt3, paramInt4)).position(0);
+      this.d.clear();
+      this.d.put(a(g(), h(), paramInt1, paramInt2, paramInt3, paramInt4)).position(0);
     }
-    f();
+    i();
     a(new GameVideoImageFilter.1(this));
   }
   
   public void e()
   {
     super.e();
-    this.g = a(this.g);
-    this.h = a(this.h);
-    this.g = -1;
-    this.h = -1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.k = a(this.k);
+    this.l = a(this.l);
+    this.k = -1;
+    this.l = -1;
+    this.m = null;
   }
   
-  public void h()
+  public void l()
   {
-    a(this.g, this.b, this.jdField_a_of_type_JavaNioFloatBuffer);
+    a(this.k, this.d, this.c);
   }
 }
 

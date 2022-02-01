@@ -40,7 +40,7 @@ public class SubMessageManager
       return;
     }
     if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = MessageCache.a();
+      paramMessageRecord.time = MessageCache.c();
     }
     if (paramMessageRecord.msgseq == 0L) {
       paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
@@ -76,7 +76,7 @@ public class SubMessageManager
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : clean all");
       }
-      paramString = (ISubAccountService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ISubAccountService.class, "");
+      paramString = (ISubAccountService)this.a.getRuntimeService(ISubAccountService.class, "");
       if (paramString != null)
       {
         paramString = paramString.getAllSubUin().iterator();
@@ -84,30 +84,30 @@ public class SubMessageManager
         {
           localObject = (String)paramString.next();
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            c((String)localObject, paramInt1, paramBoolean1, paramBoolean1);
+            d((String)localObject, paramInt1, paramBoolean1, paramBoolean1);
           }
         }
       }
       return;
     }
-    c(paramString, paramInt1, paramBoolean1, paramBoolean2);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if (((ISubAccountConfigApi)QRoute.api(ISubAccountConfigApi.class)).getIsHideSubAccountTroopMsg()) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade.setSubAccountTroopUnReadMsg(paramString, paramInt, 0);
+    d(paramString, paramInt1, paramBoolean1, paramBoolean2);
   }
   
   public void b(String paramString, int paramInt1, int paramInt2, RefreshMessageContext paramRefreshMessageContext) {}
   
-  public void c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void d(String paramString, int paramInt)
+  {
+    super.d(paramString, paramInt);
+    if (((ISubAccountConfigApi)QRoute.api(ISubAccountConfigApi.class)).getIsHideSubAccountTroopMsg()) {
+      return;
+    }
+    this.c.setSubAccountTroopUnReadMsg(paramString, paramInt, 0);
+  }
+  
+  public void d(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade.getUnreadCount(paramString, paramInt) > 0)
+    if (this.c.getUnreadCount(paramString, paramInt) > 0)
     {
       if (QLog.isColorLevel())
       {
@@ -116,8 +116,8 @@ public class SubMessageManager
         ((StringBuilder)localObject).append(paramString);
         QLog.d("Q.msg.BaseMessageManager", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = a(paramInt).a(paramString, paramInt);
-      IConversationFacade localIConversationFacade = this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade;
+      localObject = a(paramInt).e(paramString, paramInt);
+      IConversationFacade localIConversationFacade = this.c;
       long l;
       if (localObject != null) {
         l = a((MessageRecord)localObject);
@@ -125,11 +125,11 @@ public class SubMessageManager
         l = 0L;
       }
       localIConversationFacade.cleanUnread(paramString, paramInt, l, paramBoolean1, paramBoolean2);
-      b(paramString, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setChangeAndNotify(this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getLastMessage(paramString, paramInt));
+      d(paramString, paramInt);
+      this.b.setChangeAndNotify(this.b.getLastMessage(paramString, paramInt));
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade.getUnreadCountFromExtInt2(paramString, paramInt) > 0)
+    if (this.c.getUnreadCountFromExtInt2(paramString, paramInt) > 0)
     {
       if (QLog.isColorLevel())
       {
@@ -138,13 +138,13 @@ public class SubMessageManager
         ((StringBuilder)localObject).append(paramString);
         QLog.d("Q.msg.BaseMessageManager", 2, ((StringBuilder)localObject).toString());
       }
-      b(paramString, paramInt);
+      d(paramString, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SubMessageManager
  * JD-Core Version:    0.7.0.1
  */

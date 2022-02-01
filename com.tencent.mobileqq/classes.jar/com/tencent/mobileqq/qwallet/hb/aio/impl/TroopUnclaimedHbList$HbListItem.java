@@ -18,36 +18,36 @@ import com.tencent.qphone.base.util.QLog;
 class TroopUnclaimedHbList$HbListItem
   extends FrameLayout
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  QQWalletTroopHbItem jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplQQWalletTroopHbItem;
+  FrameLayout a;
+  ImageView b;
+  QQWalletTroopHbItem c;
+  LinearLayout d;
+  Context e;
   
   public TroopUnclaimedHbList$HbListItem(TroopUnclaimedHbList paramTroopUnclaimedHbList, @NonNull Context paramContext, QQWalletTroopHbItem paramQQWalletTroopHbItem)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplQQWalletTroopHbItem = paramQQWalletTroopHbItem;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    paramTroopUnclaimedHbList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    this.e = paramContext;
+    this.c = paramQQWalletTroopHbItem;
+    this.d = new LinearLayout(paramContext);
+    this.d.setOrientation(1);
+    this.d.setClickable(true);
+    addView(this.d);
+    paramTroopUnclaimedHbList = (FrameLayout.LayoutParams)this.d.getLayoutParams();
     paramTroopUnclaimedHbList.width = -2;
     paramTroopUnclaimedHbList.height = -2;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    if (!SimpleUIUtil.a()) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(R.drawable.aq);
+    this.a = new FrameLayout(paramContext);
+    if (!SimpleUIUtil.e()) {
+      this.a.setBackgroundResource(R.drawable.ar);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    paramTroopUnclaimedHbList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    this.d.addView(this.a);
+    paramTroopUnclaimedHbList = (LinearLayout.LayoutParams)this.a.getLayoutParams();
     paramTroopUnclaimedHbList.width = ScreenUtil.dip2px(29.0F);
     paramTroopUnclaimedHbList.height = ScreenUtil.dip2px(29.0F);
     paramTroopUnclaimedHbList.gravity = 1;
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    paramTroopUnclaimedHbList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    this.b = new ImageView(paramContext);
+    this.a.addView(this.b);
+    paramTroopUnclaimedHbList = (FrameLayout.LayoutParams)this.b.getLayoutParams();
     paramTroopUnclaimedHbList.width = ScreenUtil.dip2px(28.0F);
     paramTroopUnclaimedHbList.height = ScreenUtil.dip2px(28.0F);
     paramTroopUnclaimedHbList.gravity = 17;
@@ -55,23 +55,23 @@ class TroopUnclaimedHbList$HbListItem
   
   public void a(RedPackGrapInfo paramRedPackGrapInfo)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.b != null)
     {
-      localObject = FaceDrawable.getUserFaceDrawable(TroopUnclaimedHbList.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = FaceDrawable.getUserFaceDrawable(TroopUnclaimedHbList.a(this.f), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
+      this.b.setImageDrawable((Drawable)localObject);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplQQWalletTroopHbItem;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((QQWalletTroopHbItem)localObject).a(paramRedPackGrapInfo);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplQQWalletTroopHbItem.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      localObject = this.c.a(this.d);
       if (localObject != null)
       {
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.topMargin = ScreenUtil.dip2px(11.5F);
         localLayoutParams.gravity = 16;
         ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplQQWalletTroopHbItem.a((FrameLayout)localObject, paramRedPackGrapInfo, new TroopUnclaimedHbList.HbListItem.1(this));
+        this.c.a((FrameLayout)localObject, paramRedPackGrapInfo, new TroopUnclaimedHbList.HbListItem.1(this));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -82,7 +82,7 @@ class TroopUnclaimedHbList$HbListItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.HbListItem
  * JD-Core Version:    0.7.0.1
  */

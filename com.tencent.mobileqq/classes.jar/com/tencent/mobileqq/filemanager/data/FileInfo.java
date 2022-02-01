@@ -12,22 +12,22 @@ public class FileInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FileInfo> CREATOR = new FileInfo.1();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private String d;
-  private String e;
+  private String a;
+  private int b;
+  private String c;
+  private long d;
+  private long e;
+  private String f;
+  private int g;
+  private String h;
+  private String i;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l = false;
   
   public FileInfo()
   {
-    e("");
+    f("");
     d("");
     a(0L);
     b(System.currentTimeMillis());
@@ -39,7 +39,7 @@ public class FileInfo
   
   private FileInfo(Parcel paramParcel)
   {
-    e(paramParcel.readString());
+    f(paramParcel.readString());
     d(paramParcel.readString());
     a(paramParcel.readLong());
     b(paramParcel.readLong());
@@ -57,11 +57,11 @@ public class FileInfo
       if (paramString.exists())
       {
         b(paramString.isDirectory());
-        e(paramString.getAbsolutePath());
+        f(paramString.getAbsolutePath());
         d(paramString.getName());
         a(paramString.length());
         b(paramString.lastModified());
-        b(QQFileManagerUtil.b(this.jdField_b_of_type_JavaLangString));
+        b(QQFileManagerUtil.k(this.c));
         c("");
         a("");
         return;
@@ -71,7 +71,12 @@ public class FileInfo
     throw new FileNotFoundException("file path is null!");
   }
   
-  public static FileInfo a(String paramString)
+  private boolean a(FileInfo paramFileInfo)
+  {
+    return (f() == paramFileInfo.f()) && (g() == paramFileInfo.g()) && (d().equals(paramFileInfo.d()));
+  }
+  
+  public static FileInfo e(String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -97,119 +102,74 @@ public class FileInfo
     return null;
   }
   
-  private boolean a(FileInfo paramFileInfo)
-  {
-    return (a() == paramFileInfo.a()) && (b() == paramFileInfo.b()) && (c().equals(paramFileInfo.c()));
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   public String a()
   {
-    return this.e;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    return this.i;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.e = paramString;
+    this.i = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangString.startsWith(AppConstants.SDCARD_FILE_SAVE_PATH);
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
+    this.k = paramBoolean;
   }
   
   public String b()
   {
-    return this.d;
+    return this.h;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void b(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.l = paramBoolean;
   }
   
   public void c(String paramString)
   {
-    this.d = paramString;
+    this.h = paramString;
   }
   
   public boolean c()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.a.startsWith(AppConstants.SDCARD_FILE_SAVE_PATH);
   }
   
   public String d()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.a;
   }
   
   public void d(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_c_of_type_Boolean;
+    this.c = paramString;
   }
   
   public int describeContents()
@@ -217,9 +177,9 @@ public class FileInfo
     return 0;
   }
   
-  public void e(String paramString)
+  public String e()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.c;
   }
   
   public boolean equals(Object paramObject)
@@ -233,30 +193,70 @@ public class FileInfo
     return false;
   }
   
+  public long f()
+  {
+    return this.d;
+  }
+  
+  public void f(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public long g()
+  {
+    return this.e;
+  }
+  
+  public boolean h()
+  {
+    return this.j;
+  }
+  
   public int hashCode()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d());
-    localStringBuilder.append(a());
-    localStringBuilder.append(b());
+    localStringBuilder.append(e());
+    localStringBuilder.append(f());
+    localStringBuilder.append(g());
     return localStringBuilder.toString().hashCode();
+  }
+  
+  public void i()
+  {
+    this.j = true;
+  }
+  
+  public boolean j()
+  {
+    return this.k;
+  }
+  
+  public boolean k()
+  {
+    return this.l;
+  }
+  
+  public int l()
+  {
+    return this.g;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.d);
-    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeInt(this.g);
+    paramParcel.writeString(this.h);
+    paramParcel.writeString(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileInfo
  * JD-Core Version:    0.7.0.1
  */

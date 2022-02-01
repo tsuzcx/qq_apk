@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@id/msh" android:layout_width="fill_parent" android:layout_height="fill_parent" app:cardBackgroundColor="@color/7u" app:cardCornerRadius="4.0dip" app:cardElevation="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/o9i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/o8z" android:background="@drawable/gng" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/o6a" android:background="@drawable/gmt" android:visibility="invisible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/jrz" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/o7c" android:background="@drawable/gmt" android:visibility="invisible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/jmz" />
+    <com.tencent.mobileqq.wink.editor.view.WinkDownLoadingView android:layout_gravity="bottom|center|right" android:id="@id/g2d" android:visibility="invisible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" />
+</androidx.cardview.widget.CardView>

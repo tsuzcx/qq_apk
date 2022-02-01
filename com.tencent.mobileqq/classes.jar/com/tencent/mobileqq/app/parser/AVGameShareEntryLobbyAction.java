@@ -21,11 +21,11 @@ public class AVGameShareEntryLobbyAction
   {
     try
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromType");
+      String str = (String)this.f.get("fromType");
       if ((str != null) && ("1".equals(str))) {
-        ReportController.b(a(), "dc00898", "", "", "0X800B693", "0X800B693", 0, 0, "", "", "", "");
+        ReportController.b(p(), "dc00898", "", "", "0X800B693", "0X800B693", 0, 0, "", "", "", "");
       }
-      QPublicFragmentActivity.start(this.jdField_a_of_type_AndroidContentContext, AVGameRoomCenterFragment.class);
+      QPublicFragmentActivity.start(this.b, AVGameRoomCenterFragment.class);
       return true;
     }
     catch (Exception localException)
@@ -34,14 +34,14 @@ public class AVGameShareEntryLobbyAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("AVGameShareEntryLobbyAction", 1, localStringBuilder.toString());
-      b_("AVGameShareEntryLobbyAction");
+      h_("AVGameShareEntryLobbyAction");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AVGameShareEntryLobbyAction
  * JD-Core Version:    0.7.0.1
  */

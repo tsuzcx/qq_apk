@@ -9,27 +9,27 @@ import com.tencent.mobileqq.app.ThreadManager;
 
 public class WSVideoPluginInstall
 {
-  private static volatile boolean b;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new WSVideoPluginInstall.3(this));
-  private WSVideoPluginInstall.OnVideoPluginInstallListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall$OnVideoPluginInstallListener;
-  private IWSPlayerSdkMgr jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerSdkMgr = WSPlayerWrapHelper.a().a();
-  private boolean jdField_a_of_type_Boolean;
+  private static volatile boolean d;
+  private WSVideoPluginInstall.OnVideoPluginInstallListener a;
+  private IWSPlayerSdkMgr b = WSPlayerWrapHelper.a().c();
+  private boolean c;
+  private Handler e = new Handler(new WSVideoPluginInstall.3(this));
   
   public WSVideoPluginInstall()
   {
     ThreadManager.executeOnSubThread(new WSVideoPluginInstall.1(this));
   }
   
-  private void c()
+  private void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerSdkMgr.a();
+    this.b.a();
     try
     {
-      if (!b)
+      if (!d)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerSdkMgr.a(BaseApplicationImpl.getContext());
+        this.b.a(BaseApplicationImpl.getContext());
         WSLog.f("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][initVideoSDK] finish!");
-        b = true;
+        d = true;
       }
       return;
     }
@@ -38,37 +38,37 @@ public class WSVideoPluginInstall
   
   public void a()
   {
-    boolean bool = a();
+    boolean bool = b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSVideoPluginInstall.java][installPlugin] isPluginInstalled:");
     localStringBuilder.append(bool);
     localStringBuilder.append(", mIsInstalling:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     WSLog.e("WS_VIDEO_WSVideoPluginInstall", localStringBuilder.toString());
-    if ((!bool) && (!this.jdField_a_of_type_Boolean)) {
+    if ((!bool) && (!this.c)) {
       ThreadManager.post(new WSVideoPluginInstall.2(this), 8, null, true);
     }
   }
   
   public void a(WSVideoPluginInstall.OnVideoPluginInstallListener paramOnVideoPluginInstallListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall$OnVideoPluginInstallListener = paramOnVideoPluginInstallListener;
+    this.a = paramOnVideoPluginInstallListener;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerSdkMgr.a(BaseApplicationImpl.getContext());
+    return this.b.b(BaseApplicationImpl.getContext());
   }
   
-  public void b()
+  public void c()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall$OnVideoPluginInstallListener = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.a = null;
+    this.e.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall
  * JD-Core Version:    0.7.0.1
  */

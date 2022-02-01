@@ -14,13 +14,13 @@ class UpdateLoginAction$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, true, false, false);
+    paramDialogInterface = (UpgradeDetailWrapper)this.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
+    UpgradeDetailActivity.a(this.a, paramDialogInterface, true, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.UpdateLoginAction.1
  * JD-Core Version:    0.7.0.1
  */

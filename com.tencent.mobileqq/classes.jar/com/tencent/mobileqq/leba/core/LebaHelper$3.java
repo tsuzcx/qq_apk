@@ -8,11 +8,13 @@ class LebaHelper$3
   public void run()
   {
     CommPluginHandlerApi.a(this.this$0.a);
+    this.this$0.i();
+    this.this$0.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ class QzoneGiftManager$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QzoneGiftManager.a(this.a) != null) {
-      QzoneGiftManager.a(this.a).c();
+    if (QzoneGiftManager.i(this.a) != null) {
+      QzoneGiftManager.i(this.a).e();
     }
     QzoneGiftManager.a(this.a, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager.3
  * JD-Core Version:    0.7.0.1
  */

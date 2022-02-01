@@ -37,11 +37,11 @@ final class QIMMusicConfigManager$GetSongListStepTask
         return;
       }
       QIMMusicConfigManager.a(this.this$0, false);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a(1, false, "have no data.");
+      this.b.a(1, false, "have no data.");
       return;
     }
     QIMMusicConfigManager.a(this.this$0, false);
-    QIMMusicConfigManager localQIMMusicConfigManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager;
+    QIMMusicConfigManager localQIMMusicConfigManager = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Http Request fail, code=");
     localStringBuilder.append(paramNetResp.mHttpCode);
@@ -52,7 +52,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
   {
     try
     {
-      localObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      localObject1 = new JSONObject(this.a);
       if (((JSONObject)localObject1).optInt("ret", -1) != 0) {
         break label406;
       }
@@ -91,17 +91,17 @@ final class QIMMusicConfigManager$GetSongListStepTask
           ((HttpNetReq)localObject1).mPrioty = 1;
           ((HttpNetReq)localObject1).mCallback = this;
           l2 = System.currentTimeMillis() / 1000L;
-          localObject2 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
+          localObject2 = ((TicketManagerImpl)this.c.getManager(2)).getSkey(this.e);
           localHashMap = new HashMap();
           localHashMap.put("app_id", "2000000228");
           localHashMap.put("app_key", "TCOHANTCNlddnsTY");
-          localHashMap.put("device_id", DeviceInfoUtil.a());
+          localHashMap.put("device_id", DeviceInfoUtil.b());
           localHashMap.put("timestamp", String.valueOf(l2));
           localHashMap.put("sign", a(l2));
           localHashMap.put("dissid", String.valueOf(l1));
-          localHashMap.putAll(a(this.c, (String)localObject2));
+          localHashMap.putAll(a(this.e, (String)localObject2));
           ((HttpNetReq)localObject1).mReqUrl = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
-          this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq((NetReq)localObject1);
+          this.f.sendReq((NetReq)localObject1);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -113,13 +113,13 @@ final class QIMMusicConfigManager$GetSongListStepTask
         else
         {
           QIMMusicConfigManager.a(this.this$0, true);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a(1, false, "can not find myFav diss.");
+          this.b.a(1, false, "can not find myFav diss.");
           return;
           QIMMusicConfigManager.a(this.this$0, false);
-          localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager;
+          localObject1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("parsed json error, json=");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.a);
           ((QIMMusicConfigManager)localObject1).a(1, false, ((StringBuilder)localObject2).toString());
         }
         return;
@@ -129,7 +129,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QIMMusicConfigManager.GetSongListStepTask
  * JD-Core Version:    0.7.0.1
  */

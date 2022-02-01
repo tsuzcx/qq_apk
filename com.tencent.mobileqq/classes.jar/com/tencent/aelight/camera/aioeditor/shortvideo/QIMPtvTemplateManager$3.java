@@ -22,13 +22,13 @@ class QIMPtvTemplateManager$3
     if ((bool1) && (bool2) && (i != 0))
     {
       QIMPtvTemplateManager localQIMPtvTemplateManager = this.this$0;
-      localQIMPtvTemplateManager.a(localQIMPtvTemplateManager.a);
+      localQIMPtvTemplateManager.a(localQIMPtvTemplateManager.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager.3
  * JD-Core Version:    0.7.0.1
  */

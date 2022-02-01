@@ -7,16 +7,16 @@ import java.util.Queue;
 public class DispatchThread
   extends Thread
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private final Queue<Runnable> a;
+  private Boolean b;
+  private Handler c;
+  private HandlerThread d;
   
   private boolean a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangBoolean)
+    synchronized (this.b)
     {
-      boolean bool = this.jdField_a_of_type_JavaLangBoolean.booleanValue();
+      boolean bool = this.b.booleanValue();
       return bool;
     }
   }
@@ -26,60 +26,60 @@ public class DispatchThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 25	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   1: getfield 28	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	Ljava/util/Queue;
     //   4: astore_2
     //   5: aload_2
     //   6: monitorenter
     //   7: aload_0
-    //   8: getfield 25	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   11: invokeinterface 31 1 0
+    //   8: getfield 28	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	Ljava/util/Queue;
+    //   11: invokeinterface 34 1 0
     //   16: ifne +36 -> 52
     //   19: aload_0
-    //   20: invokespecial 33	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	()Z
+    //   20: invokespecial 36	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	()Z
     //   23: istore_1
     //   24: iload_1
     //   25: ifne +27 -> 52
     //   28: aload_0
-    //   29: getfield 25	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   32: invokevirtual 38	java/lang/Object:wait	()V
+    //   29: getfield 28	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	Ljava/util/Queue;
+    //   32: invokevirtual 41	java/lang/Object:wait	()V
     //   35: goto -28 -> 7
-    //   38: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   38: invokestatic 46	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   41: ifeq +11 -> 52
-    //   44: ldc 45
+    //   44: ldc 48
     //   46: iconst_2
-    //   47: ldc 47
-    //   49: invokestatic 51	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   47: ldc 50
+    //   49: invokestatic 54	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: aload_0
-    //   53: getfield 25	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   56: invokeinterface 55 1 0
-    //   61: checkcast 57	java/lang/Runnable
+    //   53: getfield 28	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	Ljava/util/Queue;
+    //   56: invokeinterface 58 1 0
+    //   61: checkcast 60	java/lang/Runnable
     //   64: astore_3
     //   65: aload_2
     //   66: monitorexit
     //   67: aload_3
     //   68: ifnonnull +19 -> 87
     //   71: aload_0
-    //   72: invokespecial 33	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	()Z
+    //   72: invokespecial 36	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:a	()Z
     //   75: ifeq -75 -> 0
     //   78: aload_0
-    //   79: getfield 59	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
-    //   82: invokevirtual 64	android/os/HandlerThread:quit	()Z
+    //   79: getfield 62	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:d	Landroid/os/HandlerThread;
+    //   82: invokevirtual 67	android/os/HandlerThread:quit	()Z
     //   85: pop
     //   86: return
     //   87: aload_3
-    //   88: invokeinterface 66 1 0
+    //   88: invokeinterface 69 1 0
     //   93: aload_0
     //   94: monitorenter
     //   95: aload_0
-    //   96: getfield 68	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   99: new 70	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread$1
+    //   96: getfield 71	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:c	Landroid/os/Handler;
+    //   99: new 73	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread$1
     //   102: dup
     //   103: aload_0
-    //   104: invokespecial 74	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread$1:<init>	(Lcom/tencent/mobileqq/shortvideo/mediadevice/DispatchThread;)V
-    //   107: invokevirtual 80	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   104: invokespecial 77	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread$1:<init>	(Lcom/tencent/mobileqq/shortvideo/mediadevice/DispatchThread;)V
+    //   107: invokevirtual 83	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   110: pop
     //   111: aload_0
-    //   112: invokevirtual 38	java/lang/Object:wait	()V
+    //   112: invokevirtual 41	java/lang/Object:wait	()V
     //   115: aload_0
     //   116: monitorexit
     //   117: goto -117 -> 0
@@ -126,7 +126,7 @@ public class DispatchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.DispatchThread
  * JD-Core Version:    0.7.0.1
  */

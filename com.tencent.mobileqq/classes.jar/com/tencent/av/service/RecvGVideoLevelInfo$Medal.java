@@ -10,20 +10,20 @@ public class RecvGVideoLevelInfo$Medal
 {
   public static final Parcelable.Creator<Medal> CREATOR = new RecvGVideoLevelInfo.Medal.1();
   public int a;
-  public String a;
   public int b;
-  public String b;
   public int c;
-  public String c;
+  public String d;
+  public String e;
+  public String f;
   
   public RecvGVideoLevelInfo$Medal(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramString3;
   }
   
   public RecvGVideoLevelInfo$Medal(Parcel paramParcel)
@@ -35,12 +35,12 @@ public class RecvGVideoLevelInfo$Medal
   {
     try
     {
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      this.a = paramParcel.readInt();
+      this.b = paramParcel.readInt();
+      this.c = paramParcel.readInt();
+      this.d = paramParcel.readString();
+      this.e = paramParcel.readString();
+      this.f = paramParcel.readString();
       return;
     }
     catch (RuntimeException paramParcel)
@@ -60,12 +60,12 @@ public class RecvGVideoLevelInfo$Medal
   {
     try
     {
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      paramParcel.writeInt(this.jdField_c_of_type_Int);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+      paramParcel.writeInt(this.a);
+      paramParcel.writeInt(this.b);
+      paramParcel.writeInt(this.c);
+      paramParcel.writeString(this.d);
+      paramParcel.writeString(this.e);
+      paramParcel.writeString(this.f);
       return;
     }
     catch (RuntimeException paramParcel)

@@ -10,9 +10,9 @@ class NearbyPeopleProfileActivity$23
   
   public void run()
   {
-    if (NearbyPeopleProfileActivity.access$1200(this.this$0) != null)
+    if (NearbyPeopleProfileActivity.access$1100(this.this$0) != null)
     {
-      NearbyPeopleProfileActivity.access$1200(this.this$0).a(this.a);
+      NearbyPeopleProfileActivity.access$1100(this.this$0).a(this.a);
       return;
     }
     QLog.i("NearbyPeopleProfileActivity", 1, "mDynamicAvatarDownloadManager is NULL!!!");
@@ -20,7 +20,7 @@ class NearbyPeopleProfileActivity$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.23
  * JD-Core Version:    0.7.0.1
  */

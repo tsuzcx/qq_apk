@@ -12,12 +12,12 @@ class NewUpgradeDialog$8
   
   public void run()
   {
-    MyAppApi.a().a((Context)this.this$0.a.get(), this.a, false, false);
+    MyAppApi.l().a((Context)this.this$0.a.get(), this.a, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.8
  * JD-Core Version:    0.7.0.1
  */

@@ -14,21 +14,21 @@ class AudioPanelAioHelper$5
   
   public void run()
   {
-    AudioPanelAioHelper.a(this.this$0).b(true);
-    AudioPanelAioHelper.a(this.this$0).ah();
-    ((AudioPanelAioHelper)AudioPanelAioHelper.a(this.this$0).a(128)).g(0);
-    AudioPanelAioHelper.a(this.this$0).jdField_a_of_type_ComTencentWidgetXEditTextEx.setEnabled(true);
+    AudioPanelAioHelper.a(this.this$0).d(true);
+    AudioPanelAioHelper.a(this.this$0).be();
+    ((AudioPanelAioHelper)AudioPanelAioHelper.a(this.this$0).q(128)).h(0);
+    AudioPanelAioHelper.a(this.this$0).Y.setEnabled(true);
     if (this.a)
     {
-      ((AudioPanelAioHelper)AudioPanelAioHelper.a(this.this$0).a(128)).c();
+      ((AudioPanelAioHelper)AudioPanelAioHelper.a(this.this$0).q(128)).j();
       return;
     }
-    QQToast.a(AudioPanelAioHelper.a(this.this$0).getApp(), 2131689977, 1).b(AudioPanelAioHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(AudioPanelAioHelper.b(this.this$0).getApp(), 2131886619, 1).show(AudioPanelAioHelper.a(this.this$0).e.getResources().getDimensionPixelSize(2131299920));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAioHelper.5
  * JD-Core Version:    0.7.0.1
  */

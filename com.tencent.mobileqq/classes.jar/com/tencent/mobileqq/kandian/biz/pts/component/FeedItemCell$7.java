@@ -1,26 +1,32 @@
 package com.tencent.mobileqq.kandian.biz.pts.component;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
+import com.tencent.mobileqq.kandian.glue.video.VideoPlayManager;
+import com.tencent.widget.KandianNegativeWindow;
 
 class FeedItemCell$7
-  implements Animation.AnimationListener
+  implements PopupWindow.OnDismissListener
 {
-  FeedItemCell$7(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, Object paramObject) {}
+  FeedItemCell$7(FeedItemCell paramFeedItemCell, KandianNegativeWindow paramKandianNegativeWindow) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss()
   {
-    FeedItemCell.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject, true);
+    this.a.a(1.0F);
+    if (this.b.g.A())
+    {
+      VideoPlayManager localVideoPlayManager = this.b.g.R();
+      if (localVideoPlayManager != null)
+      {
+        localVideoPlayManager.v();
+        this.b.g.b(false);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCell.7
  * JD-Core Version:    0.7.0.1
  */

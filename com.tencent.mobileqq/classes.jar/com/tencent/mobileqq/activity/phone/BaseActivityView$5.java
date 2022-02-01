@@ -8,12 +8,12 @@ class BaseActivityView$5
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BaseActivityView.5
  * JD-Core Version:    0.7.0.1
  */

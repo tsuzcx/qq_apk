@@ -38,34 +38,34 @@ public class ConfessNewsItemBuilder
     ConfessNewsItemBuilder.ConfessNewsViewHolder localConfessNewsViewHolder = (ConfessNewsItemBuilder.ConfessNewsViewHolder)paramViewHolder;
     if (paramView == null)
     {
-      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558801, null);
-      localConfessNewsViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131378784));
-      localConfessNewsViewHolder.c = ((TextView)paramLinearLayout.findViewById(2131365202));
-      localConfessNewsViewHolder.d = ((TextView)paramLinearLayout.findViewById(2131378039));
-      localConfessNewsViewHolder.jdField_b_of_type_AndroidViewView = paramLinearLayout.findViewById(2131365169);
-      localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView = ((ConfessNewsBgView)paramLinearLayout.findViewById(2131363496));
-      localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setPressMask(true);
-      localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnClickListener(new ConfessNewsItemBuilder.1(this));
+      paramLinearLayout = LayoutInflater.from(this.c).inflate(2131624421, null);
+      localConfessNewsViewHolder.f = ((TextView)paramLinearLayout.findViewById(2131447463));
+      localConfessNewsViewHolder.g = ((TextView)paramLinearLayout.findViewById(2131431367));
+      localConfessNewsViewHolder.h = ((TextView)paramLinearLayout.findViewById(2131446539));
+      localConfessNewsViewHolder.d = paramLinearLayout.findViewById(2131431322);
+      localConfessNewsViewHolder.e = ((ConfessNewsBgView)paramLinearLayout.findViewById(2131429397));
+      localConfessNewsViewHolder.e.setPressMask(true);
+      localConfessNewsViewHolder.e.setOnClickListener(new ConfessNewsItemBuilder.1(this));
     }
     else
     {
       paramLinearLayout = paramView;
     }
-    localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setTag(localMessageForConfessNews);
-    localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setBgType(localMessageForConfessNews.nBGType);
-    localConfessNewsViewHolder.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-    localConfessNewsViewHolder.jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
+    localConfessNewsViewHolder.e.setTag(localMessageForConfessNews);
+    localConfessNewsViewHolder.e.setBgType(localMessageForConfessNews.nBGType);
+    localConfessNewsViewHolder.i = paramMessageRecord.uniseq;
+    localConfessNewsViewHolder.j = paramMessageRecord.frienduin;
     int i = paramMessageRecord.istroop;
     if (paramMessageRecord.istroop == 1) {
       i = 1;
     } else {
       i = 0;
     }
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localMessageForConfessNews.strConfessorUin);
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localMessageForConfessNews.strRecUin);
+    boolean bool1 = this.a.getCurrentAccountUin().equals(localMessageForConfessNews.strConfessorUin);
+    boolean bool2 = this.a.getCurrentAccountUin().equals(localMessageForConfessNews.strRecUin);
     if (bool2)
     {
-      paramView = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { HardCodeUtil.a(2131702591) });
+      paramView = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { HardCodeUtil.a(2131900584) });
     }
     else
     {
@@ -79,7 +79,7 @@ public class ConfessNewsItemBuilder
         }
         else
         {
-          localObject2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForConfessNews.strGroupUin, localMessageForConfessNews.strRecUin);
+          localObject2 = ContactUtils.b(this.a, localMessageForConfessNews.strGroupUin, localMessageForConfessNews.strRecUin);
           paramView = (View)localObject1;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             paramView = (View)localObject2;
@@ -96,12 +96,12 @@ public class ConfessNewsItemBuilder
       }
       paramView = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { localObject1 });
     }
-    localConfessNewsViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramView);
+    localConfessNewsViewHolder.f.setText(paramView);
     String str = localMessageForConfessNews.strConfessorDesc;
-    float f = TagUtils.a(str);
+    float f = TagUtils.b(str);
     Object localObject1 = localMessageForConfessNews.strConfessorNick;
     if (bool1) {
-      localObject1 = HardCodeUtil.a(2131702590);
+      localObject1 = HardCodeUtil.a(2131900583);
     }
     long l = localMessageForConfessNews.confessTime;
     Object localObject2 = "";
@@ -113,18 +113,18 @@ public class ConfessNewsItemBuilder
     {
       if (bool2)
       {
-        localObject1 = HardCodeUtil.a(2131702595);
+        localObject1 = HardCodeUtil.a(2131900588);
       }
       else
       {
         if (localMessageForConfessNews.nGetConfessSex == 1) {
-          i = 2131702592;
+          i = 2131900585;
         } else {
-          i = 2131702593;
+          i = 2131900586;
         }
         localObject1 = HardCodeUtil.a(i);
       }
-      localStringBuilder.append(String.format(Locale.getDefault(), HardCodeUtil.a(2131702594), new Object[] { Integer.valueOf(localMessageForConfessNews.nConfessNum), localObject1 }));
+      localStringBuilder.append(String.format(Locale.getDefault(), HardCodeUtil.a(2131900587), new Object[] { Integer.valueOf(localMessageForConfessNews.nConfessNum), localObject1 }));
     }
     else
     {
@@ -136,11 +136,11 @@ public class ConfessNewsItemBuilder
         localStringBuilder.append((String)localObject2);
       }
     }
-    localConfessNewsViewHolder.d.setText(localStringBuilder.toString());
+    localConfessNewsViewHolder.h.setText(localStringBuilder.toString());
     if (f > 8.0F)
     {
-      localConfessNewsViewHolder.c.setTextSize(1, 21.0F);
-      localConfessNewsViewHolder.c.setLineSpacing(0.0F, 1.2F);
+      localConfessNewsViewHolder.g.setTextSize(1, 21.0F);
+      localConfessNewsViewHolder.g.setLineSpacing(0.0F, 1.2F);
       localObject1 = str;
       if (f <= 12.0F)
       {
@@ -160,23 +160,23 @@ public class ConfessNewsItemBuilder
     }
     else
     {
-      localConfessNewsViewHolder.c.setTextSize(1, 24.0F);
-      localConfessNewsViewHolder.c.setLineSpacing(0.0F, 1.0F);
+      localConfessNewsViewHolder.g.setTextSize(1, 24.0F);
+      localConfessNewsViewHolder.g.setLineSpacing(0.0F, 1.0F);
       localObject1 = str;
     }
-    localConfessNewsViewHolder.c.setText((CharSequence)localObject1);
-    if (e)
+    localConfessNewsViewHolder.g.setText((CharSequence)localObject1);
+    if (v)
     {
-      localObject2 = paramViewHolder.b;
+      localObject2 = paramViewHolder.r;
       ((StringBuilder)localObject2).append(paramView);
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(",");
       ((StringBuilder)localObject2).append(localStringBuilder.toString());
-      paramLinearLayout.setContentDescription(paramViewHolder.b.toString());
+      paramLinearLayout.setContentDescription(paramViewHolder.r.toString());
     }
-    localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setTag(paramMessageRecord);
-    localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnTouchListener(paramOnLongClickAndTouchListener);
-    localConfessNewsViewHolder.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    localConfessNewsViewHolder.e.setTag(paramMessageRecord);
+    localConfessNewsViewHolder.e.setOnTouchListener(paramOnLongClickAndTouchListener);
+    localConfessNewsViewHolder.e.setOnLongClickListener(paramOnLongClickAndTouchListener);
     return paramLinearLayout;
   }
   
@@ -189,12 +189,12 @@ public class ConfessNewsItemBuilder
   {
     paramView = new QQCustomMenu();
     a(paramView);
-    return paramView.a();
+    return paramView.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ConfessNewsItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class CTEntryMng$3
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(CTEntryMng.a(this.this$0));
+    ArrayList localArrayList = new ArrayList(CTEntryMng.b(this.this$0));
     String str2 = "";
     Object localObject1 = str2;
     for (;;)
@@ -31,7 +31,7 @@ class CTEntryMng$3
           if (i < localArrayList.size())
           {
             Object localObject2 = (CTEntryMng.EntryUserSetting)localArrayList.get(i);
-            if ((((CTEntryMng.EntryUserSetting)localObject2).a > 4) && (!CTEntryMng.b(this.this$0).contains(Integer.valueOf(((CTEntryMng.EntryUserSetting)localObject2).a))))
+            if ((((CTEntryMng.EntryUserSetting)localObject2).a > 4) && (!CTEntryMng.c(this.this$0).contains(Integer.valueOf(((CTEntryMng.EntryUserSetting)localObject2).a))))
             {
               if (!QLog.isColorLevel()) {
                 break label237;
@@ -69,7 +69,7 @@ class CTEntryMng$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.3
  * JD-Core Version:    0.7.0.1
  */

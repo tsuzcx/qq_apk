@@ -14,7 +14,7 @@ public class MsgTabStoryNodeDelegate$UpdateMsgTabShotViewEventReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull MsgTabStoryNodeConfigManager.UpdateTakeVideoConfigEvent paramUpdateTakeVideoConfigEvent)
   {
-    paramMsgTabStoryNodeDelegate.a.a.d();
+    paramMsgTabStoryNodeDelegate.b.F.d();
   }
   
   public Class acceptEventClass()
@@ -24,7 +24,7 @@ public class MsgTabStoryNodeDelegate$UpdateMsgTabShotViewEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.UpdateMsgTabShotViewEventReceiver
  * JD-Core Version:    0.7.0.1
  */

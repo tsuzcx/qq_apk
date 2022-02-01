@@ -38,67 +38,53 @@ public class AEMaterialAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   implements View.OnClickListener, AEMaterialDownloader.MaterialDownloadListener, Observer
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AEGridView jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEGridView;
-  private AEMaterialPanel.AEMaterialPanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  public AEMaterialMetaData a;
-  public String a;
-  public ArrayList<AEMaterialMetaData> a;
-  private boolean jdField_a_of_type_Boolean = false;
+  public ArrayList<AEMaterialMetaData> a = new ArrayList();
+  public AEMaterialMetaData b = null;
+  public String c;
+  private final LayoutInflater d;
+  private final Context e;
+  private AEGridView f;
+  private AEMaterialManager g;
+  private HashMap<String, Boolean> h = new HashMap();
+  private AEMaterialPanel.AEMaterialPanelListener i;
+  private boolean j = false;
   
   public AEMaterialAdapter(Context paramContext, AEGridView paramAEGridView, AEMaterialPanel.AEMaterialPanelListener paramAEMaterialPanelListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a(1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener = paramAEMaterialPanelListener;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEGridView = paramAEGridView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private int a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).k.equals(paramAEMaterialMetaData.k)) {
-        return i;
-      }
-      i += 1;
-    }
-    return 0;
+    this.e = paramContext;
+    this.d = LayoutInflater.from(paramContext);
+    this.g = ((AEMaterialManager)AEQIMManager.a(1));
+    this.i = paramAEMaterialPanelListener;
+    this.f = paramAEGridView;
+    this.j = paramBoolean;
   }
   
   private void a(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
     if (paramAEMaterialMetaData == null)
     {
-      this.jdField_a_of_type_JavaLangString = null;
+      this.c = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramAEMaterialMetaData.k;
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this.jdField_a_of_type_JavaLangString);
-    AEBaseReportParam.a().b(paramAEMaterialMetaData.D);
-    AEBaseReportParam.a().a(paramAEMaterialMetaData.k);
-    AEBaseReportParam.a().d(-1);
-    AEBaseReportParam.a().n("none");
-    AEBaseReportParam.a().m("1");
-    AEBaseReportParam.a().e(0);
+    this.c = paramAEMaterialMetaData.m;
+    this.g.a(this.c);
+    AEBaseReportParam.a().b(paramAEMaterialMetaData.W);
+    AEBaseReportParam.a().a(paramAEMaterialMetaData.m);
+    AEBaseReportParam.a().f(-1);
+    AEBaseReportParam.a().r("none");
+    AEBaseReportParam.a().q("1");
+    AEBaseReportParam.a().g(0);
     Object localObject;
     if (paramAEMaterialMetaData != null)
     {
-      AEBaseDataReporter.a().c(paramAEMaterialMetaData.k);
+      AEBaseDataReporter.a().c(paramAEMaterialMetaData.m);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("【Select Material】：");
-      ((StringBuilder)localObject).append(paramAEMaterialMetaData.k);
+      ((StringBuilder)localObject).append(paramAEMaterialMetaData.m);
       AEQLog.b("AEMaterialAdapter", ((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("【Select Material】Usable :");
-      ((StringBuilder)localObject).append(paramAEMaterialMetaData.e);
+      ((StringBuilder)localObject).append(paramAEMaterialMetaData.A);
       AEQLog.b("AEMaterialAdapter", ((StringBuilder)localObject).toString());
     }
     else
@@ -106,54 +92,54 @@ public class AEMaterialAdapter
       AEBaseDataReporter.a().c("null");
       AEQLog.b("AEMaterialAdapter", "【Select Material】：null");
     }
-    if ((paramAEMaterialMetaData != null) && (!TextUtils.isEmpty(paramAEMaterialMetaData.k)) && (!AEMaterialMetaData.a(paramAEMaterialMetaData)))
+    if ((paramAEMaterialMetaData != null) && (!TextUtils.isEmpty(paramAEMaterialMetaData.m)) && (!AEMaterialMetaData.a(paramAEMaterialMetaData)))
     {
       if (paramAEMaterialMetaData.a())
       {
-        WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext, paramAEMaterialMetaData, 1);
+        WeishiGuideUtils.a(this.e, paramAEMaterialMetaData, 1);
         return;
       }
-      if (paramAEMaterialMetaData.e)
+      if (paramAEMaterialMetaData.A)
       {
-        if (!AEResUtil.a())
+        if (!AEResUtil.e())
         {
-          QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131709780), 0).a();
+          QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131907500), 0).show();
           ThreadManager.excute(new AEMaterialAdapter.1(this), 64, null, true);
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialMetaData, this.jdField_a_of_type_Boolean ^ true);
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener;
+        this.g.a(paramAEMaterialMetaData, this.j ^ true);
+        localObject = this.i;
         if (localObject != null) {
           ((AEMaterialPanel.AEMaterialPanelListener)localObject).a(paramAEMaterialMetaData);
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("### [material panel] select material ");
-        ((StringBuilder)localObject).append(paramAEMaterialMetaData.k);
+        ((StringBuilder)localObject).append(paramAEMaterialMetaData.m);
         QLog.d("AEMaterialAdapter", 4, ((StringBuilder)localObject).toString());
       }
       else
       {
-        c(paramAEMaterialMetaData);
+        d(paramAEMaterialMetaData);
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.j)
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext;
-        if (((localObject instanceof Activity)) && (AECameraEntryManager.k(((Activity)localObject).getIntent())))
+        localObject = this.e;
+        if (((localObject instanceof Activity)) && (AECameraEntryManager.o(((Activity)localObject).getIntent())))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(paramAEMaterialMetaData);
+          this.g.c(paramAEMaterialMetaData);
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialMetaData);
+        this.g.b(paramAEMaterialMetaData);
       }
       return;
     }
-    paramAEMaterialMetaData = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener;
+    paramAEMaterialMetaData = this.i;
     if (paramAEMaterialMetaData != null) {
       paramAEMaterialMetaData.a();
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData, this.jdField_a_of_type_Boolean ^ true);
+    this.g.a(AEMaterialMetaData.l, this.j ^ true);
     QLog.d("AEMaterialAdapter", 4, "### [material panel] select material none");
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().removeExtra("widgetinfo");
+    ((Activity)this.e).getIntent().removeExtra("widgetinfo");
   }
   
   private void a(boolean paramBoolean, Object paramObject)
@@ -162,70 +148,214 @@ public class AEMaterialAdapter
     if (paramObject == null) {
       return;
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int k = 0;
+    while (k < this.a.size())
     {
-      if ((paramObject.getId() != null) && (paramObject.getId().equals(((AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).k)))
+      if ((paramObject.getId() != null) && (paramObject.getId().equals(((AEMaterialMetaData)this.a.get(k)).m)))
       {
-        ((AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean = paramBoolean;
-        notifyItemChanged(i, Integer.valueOf(1));
+        ((AEMaterialMetaData)this.a.get(k)).u = paramBoolean;
+        notifyItemChanged(k, Integer.valueOf(1));
         return;
       }
-      i += 1;
+      k += 1;
     }
   }
   
   private void b(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    AEMaterialMetaData localAEMaterialMetaData = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    AEMaterialMetaData localAEMaterialMetaData = this.b;
     if ((localAEMaterialMetaData != null) && (!localAEMaterialMetaData.equals(paramAEMaterialMetaData)))
     {
-      localAEMaterialMetaData = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-      localAEMaterialMetaData.b = false;
-      localAEMaterialMetaData.c = false;
+      localAEMaterialMetaData = this.b;
+      localAEMaterialMetaData.v = false;
+      localAEMaterialMetaData.w = false;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
+    this.b = paramAEMaterialMetaData;
   }
   
-  private void c(AEMaterialMetaData paramAEMaterialMetaData)
+  private int c(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    if (paramAEMaterialMetaData == null) {
-      return;
+    int k = 0;
+    while (k < this.a.size())
+    {
+      if (((AEMaterialMetaData)this.a.get(k)).m.equals(paramAEMaterialMetaData.m)) {
+        return k;
+      }
+      k += 1;
     }
-    if (paramAEMaterialMetaData.f) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramAEMaterialMetaData.k)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager == null) {
-      return;
-    }
-    d(paramAEMaterialMetaData);
+    return 0;
   }
   
   private void d(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    AEMaterialManager localAEMaterialManager = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
+    if (paramAEMaterialMetaData == null) {
+      return;
+    }
+    if (paramAEMaterialMetaData.B) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramAEMaterialMetaData.m)) {
+      return;
+    }
+    if (this.g == null) {
+      return;
+    }
+    e(paramAEMaterialMetaData);
+  }
+  
+  private void e(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    AEMaterialManager localAEMaterialManager = this.g;
     localAEMaterialManager.a(localAEMaterialManager.getApp(), paramAEMaterialMetaData, this);
   }
   
   public void a(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    a(paramAEMaterialMetaData, a(paramAEMaterialMetaData));
+    a(paramAEMaterialMetaData, c(paramAEMaterialMetaData));
   }
   
   public void a(List<AEMaterialMetaData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.a.clear();
+    this.h.clear();
+    this.a.add(AEMaterialMetaData.l);
+    this.a.addAll(paramList);
     notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("dtexpose mTemplateList position");
+      ((StringBuilder)localObject1).append(paramInt);
+      AEQLog.a("AEMaterialAdapter", ((StringBuilder)localObject1).toString());
+      if (paramInt < this.a.size())
+      {
+        localObject1 = (AEMaterialMetaData)this.a.get(paramInt);
+        if (localObject1 != null)
+        {
+          Object localObject2 = this.h;
+          if (localObject2 != null) {
+            if (((HashMap)localObject2).containsKey(((AEMaterialMetaData)localObject1).m))
+            {
+              boolean bool = ((Boolean)this.h.get(((AEMaterialMetaData)localObject1).m)).booleanValue();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("dtexpose mTemplateList data.id");
+              ((StringBuilder)localObject2).append(((AEMaterialMetaData)localObject1).m);
+              ((StringBuilder)localObject2).append(" vis");
+              ((StringBuilder)localObject2).append(bool);
+              AEQLog.a("AEMaterialAdapter", ((StringBuilder)localObject2).toString());
+              if ((!bool) && (paramBoolean))
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("dtexpose mTemplateList report ~~~~data.id");
+                ((StringBuilder)localObject2).append(((AEMaterialMetaData)localObject1).m);
+                AEQLog.a("AEMaterialAdapter", ((StringBuilder)localObject2).toString());
+                AEBaseDataReporter.a().g(((AEMaterialMetaData)localObject1).m);
+              }
+            }
+            else
+            {
+              this.h.put(((AEMaterialMetaData)localObject1).m, Boolean.valueOf(true));
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("dtexpose mTemplateList report ~~~~~data.id");
+              ((StringBuilder)localObject2).append(((AEMaterialMetaData)localObject1).m);
+              AEQLog.a("AEMaterialAdapter", ((StringBuilder)localObject2).toString());
+              AEBaseDataReporter.a().g(((AEMaterialMetaData)localObject1).m);
+            }
+          }
+        }
+      }
+      return;
+    }
+    AEQLog.a("AEMaterialAdapter", "dtexpose mTemplateList is null");
+  }
+  
+  public void a(int[] paramArrayOfInt)
+  {
+    if (paramArrayOfInt != null)
+    {
+      if (paramArrayOfInt.length != 2) {
+        return;
+      }
+      if (this.h == null) {
+        return;
+      }
+      Object localObject = this.a;
+      if (localObject != null)
+      {
+        if (((ArrayList)localObject).isEmpty()) {
+          return;
+        }
+        int m = paramArrayOfInt[0];
+        int n = paramArrayOfInt[1];
+        paramArrayOfInt = new StringBuilder();
+        paramArrayOfInt.append("dtexpose begin");
+        paramArrayOfInt.append(m);
+        paramArrayOfInt.append(" end ");
+        paramArrayOfInt.append(n);
+        AEQLog.a("AEMaterialAdapter", paramArrayOfInt.toString());
+        int k = 0;
+        while (k < this.a.size())
+        {
+          if ((k < m) || (k > n))
+          {
+            paramArrayOfInt = (AEMaterialMetaData)this.a.get(k);
+            if ((paramArrayOfInt != null) && (this.h.containsKey(paramArrayOfInt.m)))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("dtexpose materialMetaData.id");
+              ((StringBuilder)localObject).append(paramArrayOfInt.m);
+              ((StringBuilder)localObject).append(" gone ");
+              AEQLog.a("AEMaterialAdapter", ((StringBuilder)localObject).toString());
+              this.h.put(paramArrayOfInt.m, Boolean.valueOf(false));
+            }
+          }
+          k += 1;
+        }
+      }
+    }
+  }
+  
+  public void b(List<AEMaterialMetaData> paramList)
+  {
+    AEQLog.a("AEMaterialAdapter", "dtexpose reportFirstItems");
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      if (this.h == null) {
+        return;
+      }
+      int k = 14;
+      if (paramList.size() < 15) {
+        k = paramList.size() - 1;
+      }
+      int m = 0;
+      while (m < k)
+      {
+        AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)paramList.get(m);
+        if (localAEMaterialMetaData != null)
+        {
+          this.h.put(localAEMaterialMetaData.m, Boolean.valueOf(true));
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("dtexpose mTemplateList report ~~~~~ data.id");
+          localStringBuilder.append(localAEMaterialMetaData.m);
+          AEQLog.a("AEMaterialAdapter", localStringBuilder.toString());
+          AEBaseDataReporter.a().g(localAEMaterialMetaData.m);
+        }
+        m += 1;
+      }
+    }
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (localArrayList == null) {
       return 0;
     }
@@ -244,7 +374,7 @@ public class AEMaterialAdapter
   {
     if (paramInt == 113)
     {
-      if (AEMaterialManager.a() != null) {
+      if (AEMaterialManager.n() != null) {
         notifyDataSetChanged();
       }
     }
@@ -258,7 +388,7 @@ public class AEMaterialAdapter
       }
       if (paramInt == 111)
       {
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && (this.jdField_a_of_type_Boolean))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && (this.j))
         {
           a(((AEMaterialCategory)paramVarArgs[0]).a);
           notifyDataSetChanged();
@@ -278,15 +408,14 @@ public class AEMaterialAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.a.get(paramInt);
     if (localAEMaterialMetaData == null) {
       return;
     }
-    AEBaseDataReporter.a().g(localAEMaterialMetaData.k);
     if ((paramViewHolder instanceof MaterialNoneViewHolder))
     {
       paramViewHolder = (MaterialNoneViewHolder)paramViewHolder;
-      if ((AEMaterialManager.a() != null) && (!localAEMaterialMetaData.equals(AEMaterialManager.a())))
+      if ((AEMaterialManager.n() != null) && (!localAEMaterialMetaData.equals(AEMaterialManager.n())))
       {
         paramViewHolder.b();
         return;
@@ -297,34 +426,34 @@ public class AEMaterialAdapter
     if ((paramViewHolder instanceof MaterialViewHolder))
     {
       paramViewHolder = (MaterialViewHolder)paramViewHolder;
-      if ((localAEMaterialMetaData.equals(AEMaterialManager.a())) && (localAEMaterialMetaData.e))
+      if ((localAEMaterialMetaData.equals(AEMaterialManager.n())) && (localAEMaterialMetaData.A))
       {
         paramViewHolder.a(2, localAEMaterialMetaData);
         return;
       }
-      localAEMaterialMetaData.jdField_a_of_type_Boolean = false;
+      localAEMaterialMetaData.u = false;
       paramViewHolder.a(1, localAEMaterialMetaData);
     }
   }
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEGridView.getChildAdapterPosition(paramView);
-    if (i == -1) {
+    int k = this.f.getChildAdapterPosition(paramView);
+    if (k == -1) {
       return;
     }
-    paramView = (AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+    paramView = (AEMaterialMetaData)this.a.get(k);
     b(paramView);
-    if (paramView.b) {
-      paramView.c = true;
+    if (paramView.v) {
+      paramView.w = true;
     } else {
-      paramView.b = true;
+      paramView.v = true;
     }
-    a(paramView, i);
-    if (AECameraEntryManager.k(((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent()))
+    a(paramView, k);
+    if (AECameraEntryManager.o(((Activity)this.e).getIntent()))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("ext2", paramView.k);
+      localHashMap.put("ext2", paramView.m);
       AEReportUtils.b(5, localHashMap);
     }
   }
@@ -334,14 +463,14 @@ public class AEMaterialAdapter
     Object localObject;
     if (paramInt == 0)
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318506, paramViewGroup, false);
+      paramViewGroup = this.d.inflate(2064056373, paramViewGroup, false);
       localObject = new MaterialNoneViewHolder(paramViewGroup);
     }
     else
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318505, paramViewGroup, false);
+      paramViewGroup = this.d.inflate(2064056372, paramViewGroup, false);
       localObject = new MaterialViewHolder(paramViewGroup);
-      ((MaterialViewHolder)localObject).a(this.jdField_a_of_type_AndroidContentContext);
+      ((MaterialViewHolder)localObject).a(this.e);
     }
     paramViewGroup.setOnClickListener(this);
     return localObject;
@@ -352,7 +481,7 @@ public class AEMaterialAdapter
     if (paramAEMaterialMetaData == null) {
       return;
     }
-    paramInt = a(paramAEMaterialMetaData);
+    paramInt = c(paramAEMaterialMetaData);
     if (paramInt <= 0) {
       return;
     }
@@ -364,13 +493,13 @@ public class AEMaterialAdapter
   
   public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
-    paramInt = a(paramAEMaterialMetaData);
+    paramInt = c(paramAEMaterialMetaData);
     ThreadManager.getUIHandler().post(new AEMaterialAdapter.4(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialAdapter
  * JD-Core Version:    0.7.0.1
  */

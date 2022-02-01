@@ -12,112 +12,74 @@ import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 public abstract class GestureHelper$ZoomItem
   implements DoodleItem
 {
-  public ValueAnimator a;
-  public Matrix a;
-  public PointF a;
-  public SegmentKeeper a;
-  private float[] a;
-  public int[] a;
-  public boolean d = true;
-  public boolean e = false;
-  public boolean f;
-  public boolean g = false;
-  public boolean h = false;
-  public int i;
-  public boolean i;
-  public float j;
-  public int j;
-  public float k;
-  public int k;
-  public float l;
-  public int l;
-  public float m = 0.0F;
-  public float n;
-  public float o;
-  public float p = 1.0F;
+  public PointF A;
+  public float B = 1.0F;
+  public float C = 0.0F;
+  public float D = 0.0F;
+  public float E = 0.0F;
+  public Matrix F = new Matrix();
+  public float G;
+  public float H;
+  public boolean I = true;
+  public boolean J = false;
+  public float K = 1.0F;
+  public ValueAnimator L = null;
+  public boolean M;
+  public int N = 0;
+  public int O = -1;
+  public int[] P;
+  public int Q = -1;
+  public int R = -1;
+  public boolean S = false;
+  public boolean T = false;
+  public SegmentKeeper U = new SegmentKeeper();
+  public boolean V = false;
+  private float[] a = new float[9];
   
-  public GestureHelper$ZoomItem()
-  {
-    this.jdField_j_of_type_Float = 1.0F;
-    this.jdField_k_of_type_Float = 0.0F;
-    this.jdField_l_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_j_of_type_Int = -1;
-    this.jdField_k_of_type_Int = -1;
-    this.jdField_l_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfFloat = new float[9];
-  }
+  public GestureHelper$ZoomItem() {}
   
   public GestureHelper$ZoomItem(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    this.jdField_j_of_type_Float = 1.0F;
-    this.jdField_k_of_type_Float = 0.0F;
-    this.jdField_l_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_j_of_type_Int = -1;
-    this.jdField_k_of_type_Int = -1;
-    this.jdField_l_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfFloat = new float[9];
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramPointF.x, paramPointF.y);
-    this.jdField_j_of_type_Float = paramFloat1;
-    this.jdField_k_of_type_Float = paramFloat2;
-    this.jdField_l_of_type_Float = paramFloat3;
-    this.m = paramFloat4;
-    this.n = paramFloat5;
-    this.o = paramFloat6;
-    this.d = paramBoolean;
-    this.jdField_i_of_type_Boolean = Build.MODEL.equals("MI 5C");
+    this.A = new PointF(paramPointF.x, paramPointF.y);
+    this.B = paramFloat1;
+    this.C = paramFloat2;
+    this.D = paramFloat3;
+    this.E = paramFloat4;
+    this.G = paramFloat5;
+    this.H = paramFloat6;
+    this.I = paramBoolean;
+    this.V = Build.MODEL.equals("MI 5C");
   }
   
   public GestureHelper$ZoomItem(ZoomItem paramZoomItem, float paramFloat)
   {
-    this.jdField_j_of_type_Float = 1.0F;
-    this.jdField_k_of_type_Float = 0.0F;
-    this.jdField_l_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_j_of_type_Int = -1;
-    this.jdField_k_of_type_Int = -1;
-    this.jdField_l_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfFloat = new float[9];
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF.x * paramFloat, paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF.y * paramFloat);
-    paramZoomItem.jdField_j_of_type_Float *= paramFloat;
-    this.jdField_k_of_type_Float = paramZoomItem.jdField_k_of_type_Float;
-    paramZoomItem.jdField_l_of_type_Float *= paramFloat;
-    paramZoomItem.m *= paramFloat;
-    this.n = paramZoomItem.n;
-    this.o = paramZoomItem.o;
-    this.d = paramZoomItem.d;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(paramZoomItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
-  }
-  
-  public float a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    return this.jdField_a_of_type_ArrayOfFloat[0];
+    this.A = new PointF(paramZoomItem.A.x * paramFloat, paramZoomItem.A.y * paramFloat);
+    paramZoomItem.B *= paramFloat;
+    this.C = paramZoomItem.C;
+    paramZoomItem.D *= paramFloat;
+    paramZoomItem.E *= paramFloat;
+    this.G = paramZoomItem.G;
+    this.H = paramZoomItem.H;
+    this.I = paramZoomItem.I;
+    this.U.set(paramZoomItem.U);
   }
   
   public void a(Canvas paramCanvas) {}
   
-  public boolean a()
+  public float d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isEmpty() ^ true;
+    this.F.getValues(this.a);
+    return this.a[0];
+  }
+  
+  public boolean e()
+  {
+    return this.U.isEmpty() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.GestureHelper.ZoomItem
  * JD-Core Version:    0.7.0.1
  */

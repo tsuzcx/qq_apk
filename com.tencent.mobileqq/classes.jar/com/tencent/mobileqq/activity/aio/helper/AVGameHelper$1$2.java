@@ -14,18 +14,18 @@ class AVGameHelper$1$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
-      AVGameHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAVGameHelper$1.a).a();
-      ReportController.b(null, "dc00898", "", "", "0X800B033", "0X800B033", 0, 0, "", "", AVGameHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAVGameHelper$1.a).a, "");
+      AVGameHelper.b(this.b.a).d();
+      ReportController.b(null, "dc00898", "", "", "0X800B033", "0X800B033", 0, 0, "", "", AVGameHelper.a(this.b.a).b, "");
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAVGameHelper$1.a.a, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAVGameHelper$1.a.a.getResources().getString(2131690505), 0).a();
+    QQToast.makeText(this.b.a.a, 1, this.b.a.a.getResources().getString(2131887416), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.2
  * JD-Core Version:    0.7.0.1
  */

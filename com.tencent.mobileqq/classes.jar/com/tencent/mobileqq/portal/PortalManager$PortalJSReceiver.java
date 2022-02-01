@@ -46,8 +46,8 @@ class PortalManager$PortalJSReceiver
       }
       paramContext = new JSONObject(paramContext);
       paramIntent = paramContext.getString("key");
-      localObject = PortalUtils.b(paramIntent);
-      localObject = ContactUtils.f(PortalManager.a(this.a), (String)localObject);
+      localObject = PortalUtils.c(paramIntent);
+      localObject = ContactUtils.f(PortalManager.b(this.a), (String)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
       } else {
@@ -83,7 +83,7 @@ class PortalManager$PortalJSReceiver
     }
     paramContext = new JSONObject();
     paramIntent = paramContext.put("errorCode", 0);
-    if (this.a.a() != -1)
+    if (this.a.b() != -1)
     {
       paramIntent.put("result", i);
       PortalManager.a(this.a, k, paramContext.toString(), m);
@@ -96,8 +96,8 @@ class PortalManager$PortalJSReceiver
       paramContext = new JSONObject(paramContext).getString("key");
       if (!TextUtils.isEmpty(paramContext))
       {
-        paramIntent = PortalUtils.b(paramContext);
-        localObject = PortalManager.a(this.a).getFaceBitmap(paramIntent, false);
+        paramIntent = PortalUtils.c(paramContext);
+        localObject = PortalManager.b(this.a).getFaceBitmap(paramIntent, false);
         if (localObject != null)
         {
           paramIntent = PortalUtils.a((Bitmap)localObject);
@@ -109,13 +109,13 @@ class PortalManager$PortalJSReceiver
           return;
         }
         localObject = new PortalManager.IconReqDetails();
-        ((PortalManager.IconReqDetails)localObject).jdField_a_of_type_JavaLangString = paramContext;
+        ((PortalManager.IconReqDetails)localObject).c = paramContext;
         ((PortalManager.IconReqDetails)localObject).b = k;
-        ((PortalManager.IconReqDetails)localObject).jdField_a_of_type_Int = m;
-        this.a.a.put(paramIntent, localObject);
-        if ((PortalManager.a(this.a).getFaceBitmap(paramIntent, true) == null) && (QLog.isColorLevel()))
+        ((PortalManager.IconReqDetails)localObject).a = m;
+        this.a.q.put(paramIntent, localObject);
+        if ((PortalManager.b(this.a).getFaceBitmap(paramIntent, true) == null) && (QLog.isColorLevel()))
         {
-          paramIntent = ContactUtils.d(PortalManager.a(this.a), String.valueOf(paramIntent));
+          paramIntent = ContactUtils.d(PortalManager.b(this.a), String.valueOf(paramIntent));
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("昵称为");
           ((StringBuilder)localObject).append(paramIntent);
@@ -151,7 +151,7 @@ class PortalManager$PortalJSReceiver
     }
     for (;;)
     {
-      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
+      RedPacketServlet.a(PortalManager.b(this.a), i, n, k, m);
       return;
       label709:
       return;
@@ -167,7 +167,7 @@ class PortalManager$PortalJSReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.PortalJSReceiver
  * JD-Core Version:    0.7.0.1
  */

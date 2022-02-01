@@ -21,7 +21,7 @@ public class NowShadowImpl
   {
     try
     {
-      PluginManagerInterfaceImpl.a().a().b("enter_shadow_err").c(paramString).b();
+      PluginManagerInterfaceImpl.a().d().b("enter_shadow_err").c(paramString).b();
       ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
       return;
     }
@@ -50,7 +50,7 @@ public class NowShadowImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl
  * JD-Core Version:    0.7.0.1
  */

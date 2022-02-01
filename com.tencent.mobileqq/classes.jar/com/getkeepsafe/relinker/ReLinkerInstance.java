@@ -8,12 +8,12 @@ import java.util.Set;
 
 public class ReLinkerInstance
 {
-  protected final ReLinker.LibraryInstaller a;
-  protected final ReLinker.LibraryLoader a;
-  protected ReLinker.Logger a;
-  protected final Set<String> a;
-  protected boolean a;
-  protected boolean b;
+  protected final Set<String> a = new HashSet();
+  protected final ReLinker.LibraryLoader b;
+  protected final ReLinker.LibraryInstaller c;
+  protected boolean d;
+  protected boolean e;
+  protected ReLinker.Logger f;
   
   protected ReLinkerInstance()
   {
@@ -22,13 +22,12 @@ public class ReLinkerInstance
   
   protected ReLinkerInstance(ReLinker.LibraryLoader paramLibraryLoader, ReLinker.LibraryInstaller paramLibraryInstaller)
   {
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
     if (paramLibraryLoader != null)
     {
       if (paramLibraryInstaller != null)
       {
-        this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader = paramLibraryLoader;
-        this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryInstaller = paramLibraryInstaller;
+        this.b = paramLibraryLoader;
+        this.c = paramLibraryInstaller;
         return;
       }
       throw new IllegalArgumentException("Cannot pass null library installer");
@@ -37,38 +36,38 @@ public class ReLinkerInstance
   }
   
   /* Error */
-  private void b(Context paramContext, String paramString1, String paramString2)
+  private void c(Context paramContext, String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 31	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   1: getfield 35	com/getkeepsafe/relinker/ReLinkerInstance:a	Ljava/util/Set;
     //   4: aload_2
-    //   5: invokeinterface 58 2 0
+    //   5: invokeinterface 62 2 0
     //   10: ifeq +25 -> 35
     //   13: aload_0
-    //   14: getfield 60	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_Boolean	Z
+    //   14: getfield 64	com/getkeepsafe/relinker/ReLinkerInstance:d	Z
     //   17: ifne +18 -> 35
     //   20: aload_0
-    //   21: ldc 62
+    //   21: ldc 66
     //   23: iconst_1
     //   24: anewarray 4	java/lang/Object
     //   27: dup
     //   28: iconst_0
     //   29: aload_2
     //   30: aastore
-    //   31: invokevirtual 65	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   31: invokevirtual 69	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   34: return
     //   35: aload_0
-    //   36: getfield 33	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
+    //   36: getfield 37	com/getkeepsafe/relinker/ReLinkerInstance:b	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
     //   39: aload_2
-    //   40: invokeinterface 69 2 0
+    //   40: invokeinterface 73 2 0
     //   45: aload_0
-    //   46: getfield 31	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   46: getfield 35	com/getkeepsafe/relinker/ReLinkerInstance:a	Ljava/util/Set;
     //   49: aload_2
-    //   50: invokeinterface 72 2 0
+    //   50: invokeinterface 76 2 0
     //   55: pop
     //   56: aload_0
-    //   57: ldc 74
+    //   57: ldc 78
     //   59: iconst_2
     //   60: anewarray 4	java/lang/Object
     //   63: dup
@@ -79,21 +78,21 @@ public class ReLinkerInstance
     //   68: iconst_1
     //   69: aload_3
     //   70: aastore
-    //   71: invokevirtual 65	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   71: invokevirtual 69	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   74: return
     //   75: astore 5
     //   77: aload_0
-    //   78: ldc 76
+    //   78: ldc 80
     //   80: iconst_1
     //   81: anewarray 4	java/lang/Object
     //   84: dup
     //   85: iconst_0
     //   86: aload 5
-    //   88: invokestatic 82	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   88: invokestatic 86	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   91: aastore
-    //   92: invokevirtual 65	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   92: invokevirtual 69	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   95: aload_0
-    //   96: ldc 84
+    //   96: ldc 88
     //   98: iconst_2
     //   99: anewarray 4	java/lang/Object
     //   102: dup
@@ -104,24 +103,24 @@ public class ReLinkerInstance
     //   107: iconst_1
     //   108: aload_3
     //   109: aastore
-    //   110: invokevirtual 65	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   110: invokevirtual 69	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   113: aload_0
     //   114: aload_1
     //   115: aload_2
     //   116: aload_3
-    //   117: invokevirtual 87	com/getkeepsafe/relinker/ReLinkerInstance:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   117: invokevirtual 91	com/getkeepsafe/relinker/ReLinkerInstance:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   120: astore 7
     //   122: aload 7
-    //   124: invokevirtual 93	java/io/File:exists	()Z
+    //   124: invokevirtual 97	java/io/File:exists	()Z
     //   127: ifeq +10 -> 137
     //   130: aload_0
-    //   131: getfield 60	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_Boolean	Z
+    //   131: getfield 64	com/getkeepsafe/relinker/ReLinkerInstance:d	Z
     //   134: ifeq +67 -> 201
     //   137: aload_0
-    //   138: getfield 60	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_Boolean	Z
+    //   138: getfield 64	com/getkeepsafe/relinker/ReLinkerInstance:d	Z
     //   141: ifeq +21 -> 162
     //   144: aload_0
-    //   145: ldc 95
+    //   145: ldc 99
     //   147: iconst_2
     //   148: anewarray 4	java/lang/Object
     //   151: dup
@@ -132,76 +131,76 @@ public class ReLinkerInstance
     //   156: iconst_1
     //   157: aload_3
     //   158: aastore
-    //   159: invokevirtual 65	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   159: invokevirtual 69	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   162: aload_0
     //   163: aload_1
     //   164: aload_2
     //   165: aload_3
-    //   166: invokevirtual 97	com/getkeepsafe/relinker/ReLinkerInstance:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    //   166: invokevirtual 101	com/getkeepsafe/relinker/ReLinkerInstance:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
     //   169: aload_0
-    //   170: getfield 35	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryInstaller	Lcom/getkeepsafe/relinker/ReLinker$LibraryInstaller;
+    //   170: getfield 39	com/getkeepsafe/relinker/ReLinkerInstance:c	Lcom/getkeepsafe/relinker/ReLinker$LibraryInstaller;
     //   173: aload_1
     //   174: aload_0
-    //   175: getfield 33	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
-    //   178: invokeinterface 100 1 0
+    //   175: getfield 37	com/getkeepsafe/relinker/ReLinkerInstance:b	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
+    //   178: invokeinterface 104 1 0
     //   183: aload_0
-    //   184: getfield 33	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
+    //   184: getfield 37	com/getkeepsafe/relinker/ReLinkerInstance:b	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
     //   187: aload_2
-    //   188: invokeinterface 103 2 0
+    //   188: invokeinterface 107 2 0
     //   193: aload 7
     //   195: aload_0
-    //   196: invokeinterface 108 6 0
+    //   196: invokeinterface 112 6 0
     //   201: aload_0
-    //   202: getfield 110	com/getkeepsafe/relinker/ReLinkerInstance:b	Z
+    //   202: getfield 114	com/getkeepsafe/relinker/ReLinkerInstance:e	Z
     //   205: istore 4
     //   207: iload 4
     //   209: ifeq +86 -> 295
     //   212: aconst_null
     //   213: astore 6
-    //   215: new 112	com/getkeepsafe/relinker/elf/ElfParser
+    //   215: new 116	com/getkeepsafe/relinker/elf/ElfParser
     //   218: dup
     //   219: aload 7
-    //   221: invokespecial 115	com/getkeepsafe/relinker/elf/ElfParser:<init>	(Ljava/io/File;)V
+    //   221: invokespecial 119	com/getkeepsafe/relinker/elf/ElfParser:<init>	(Ljava/io/File;)V
     //   224: astore 5
     //   226: aload 5
-    //   228: invokevirtual 118	com/getkeepsafe/relinker/elf/ElfParser:a	()Ljava/util/List;
+    //   228: invokevirtual 122	com/getkeepsafe/relinker/elf/ElfParser:b	()Ljava/util/List;
     //   231: astore 6
     //   233: aload 5
-    //   235: invokevirtual 121	com/getkeepsafe/relinker/elf/ElfParser:close	()V
+    //   235: invokevirtual 125	com/getkeepsafe/relinker/elf/ElfParser:close	()V
     //   238: aload 6
-    //   240: invokeinterface 127 1 0
+    //   240: invokeinterface 131 1 0
     //   245: astore 5
     //   247: aload 5
-    //   249: invokeinterface 132 1 0
+    //   249: invokeinterface 136 1 0
     //   254: ifeq +41 -> 295
     //   257: aload 5
-    //   259: invokeinterface 136 1 0
-    //   264: checkcast 138	java/lang/String
+    //   259: invokeinterface 140 1 0
+    //   264: checkcast 142	java/lang/String
     //   267: astore 6
     //   269: aload_0
     //   270: aload_1
     //   271: aload_0
-    //   272: getfield 33	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
+    //   272: getfield 37	com/getkeepsafe/relinker/ReLinkerInstance:b	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
     //   275: aload 6
-    //   277: invokeinterface 140 2 0
-    //   282: invokevirtual 143	com/getkeepsafe/relinker/ReLinkerInstance:a	(Landroid/content/Context;Ljava/lang/String;)V
+    //   277: invokeinterface 144 2 0
+    //   282: invokevirtual 147	com/getkeepsafe/relinker/ReLinkerInstance:a	(Landroid/content/Context;Ljava/lang/String;)V
     //   285: goto -38 -> 247
     //   288: aload_1
-    //   289: invokevirtual 121	com/getkeepsafe/relinker/elf/ElfParser:close	()V
+    //   289: invokevirtual 125	com/getkeepsafe/relinker/elf/ElfParser:close	()V
     //   292: aload 5
     //   294: athrow
     //   295: aload_0
-    //   296: getfield 33	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
+    //   296: getfield 37	com/getkeepsafe/relinker/ReLinkerInstance:b	Lcom/getkeepsafe/relinker/ReLinker$LibraryLoader;
     //   299: aload 7
-    //   301: invokevirtual 147	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   304: invokeinterface 149 2 0
+    //   301: invokevirtual 151	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   304: invokeinterface 153 2 0
     //   309: aload_0
-    //   310: getfield 31	com/getkeepsafe/relinker/ReLinkerInstance:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   310: getfield 35	com/getkeepsafe/relinker/ReLinkerInstance:a	Ljava/util/Set;
     //   313: aload_2
-    //   314: invokeinterface 72 2 0
+    //   314: invokeinterface 76 2 0
     //   319: pop
     //   320: aload_0
-    //   321: ldc 151
+    //   321: ldc 155
     //   323: iconst_2
     //   324: anewarray 4	java/lang/Object
     //   327: dup
@@ -212,7 +211,7 @@ public class ReLinkerInstance
     //   332: iconst_1
     //   333: aload_3
     //   334: aastore
-    //   335: invokevirtual 65	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   335: invokevirtual 69	com/getkeepsafe/relinker/ReLinkerInstance:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   338: return
     //   339: astore_1
     //   340: goto -45 -> 295
@@ -257,7 +256,7 @@ public class ReLinkerInstance
   
   protected File a(Context paramContext, String paramString1, String paramString2)
   {
-    paramString1 = this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader.a(paramString1);
+    paramString1 = this.b.c(paramString1);
     if (TextUtils.a(paramString2)) {
       return new File(a(paramContext), paramString1);
     }
@@ -274,26 +273,6 @@ public class ReLinkerInstance
     a(paramContext, paramString, null, null);
   }
   
-  protected void a(Context paramContext, String paramString1, String paramString2)
-  {
-    File localFile = a(paramContext);
-    paramContext = a(paramContext, paramString1, paramString2);
-    paramString1 = localFile.listFiles(new ReLinkerInstance.2(this, this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LibraryLoader.a(paramString1)));
-    if (paramString1 == null) {
-      return;
-    }
-    int j = paramString1.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramString2 = paramString1[i];
-      if ((this.jdField_a_of_type_Boolean) || (!paramString2.getAbsolutePath().equals(paramContext.getAbsolutePath()))) {
-        paramString2.delete();
-      }
-      i += 1;
-    }
-  }
-  
   public void a(Context paramContext, String paramString1, String paramString2, ReLinker.LoadListener paramLoadListener)
   {
     if (paramContext != null)
@@ -303,7 +282,7 @@ public class ReLinkerInstance
         a("Beginning load of %s...", new Object[] { paramString1 });
         if (paramLoadListener == null)
         {
-          b(paramContext, paramString1, paramString2);
+          c(paramContext, paramString1, paramString2);
           return;
         }
         new Thread(new ReLinkerInstance.1(this, paramContext, paramString1, paramString2, paramLoadListener)).start();
@@ -316,7 +295,7 @@ public class ReLinkerInstance
   
   public void a(String paramString)
   {
-    ReLinker.Logger localLogger = this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$Logger;
+    ReLinker.Logger localLogger = this.f;
     if (localLogger != null) {
       localLogger.a(paramString);
     }
@@ -325,6 +304,26 @@ public class ReLinkerInstance
   public void a(String paramString, Object... paramVarArgs)
   {
     a(String.format(Locale.US, paramString, paramVarArgs));
+  }
+  
+  protected void b(Context paramContext, String paramString1, String paramString2)
+  {
+    File localFile = a(paramContext);
+    paramContext = a(paramContext, paramString1, paramString2);
+    paramString1 = localFile.listFiles(new ReLinkerInstance.2(this, this.b.c(paramString1)));
+    if (paramString1 == null) {
+      return;
+    }
+    int j = paramString1.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString2 = paramString1[i];
+      if ((this.d) || (!paramString2.getAbsolutePath().equals(paramContext.getAbsolutePath()))) {
+        paramString2.delete();
+      }
+      i += 1;
+    }
   }
 }
 

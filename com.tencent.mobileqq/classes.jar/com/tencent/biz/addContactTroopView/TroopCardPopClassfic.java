@@ -13,25 +13,25 @@ import tencent.im.troop_search_popclassifc.popclassifc.PopItem;
 public class TroopCardPopClassfic
   extends BaseTroopCardView
 {
-  protected int a;
-  protected RecyclerView.Adapter<TroopCardPopClassfic.ViewHolder> a;
-  protected popclassifc.PopCard a;
+  protected popclassifc.PopCard d;
+  protected int e;
+  protected RecyclerView.Adapter<TroopCardPopClassfic.ViewHolder> f;
   
   private void a(int paramInt)
   {
-    popclassifc.PopItem localPopItem = (popclassifc.PopItem)((popclassifc.PopCard)this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.get(paramInt);
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    popclassifc.PopItem localPopItem = (popclassifc.PopItem)((popclassifc.PopCard)this.d.get()).rpt_pop_items.get(paramInt);
+    Intent localIntent = new Intent(this.b, QQBrowserActivity.class);
     localIntent.putExtra("url", localPopItem.str_transfer_url.get());
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_find_new", "", "grptab", "Clk_hotcal", 0, 0, "", String.valueOf(paramInt), "", "");
+    this.b.startActivity(localIntent);
+    ReportController.b(this.c, "dc00899", "Grp_find_new", "", "grptab", "Clk_hotcal", 0, 0, "", String.valueOf(paramInt), "", "");
   }
   
   public void setData(popclassifc.PopCard paramPopCard)
   {
     if (paramPopCard != null)
     {
-      this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard = paramPopCard;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyDataSetChanged();
+      this.d = paramPopCard;
+      this.f.notifyDataSetChanged();
     }
   }
 }

@@ -1,43 +1,35 @@
 package com.tencent.biz;
 
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import java.util.ArrayList;
 
 class AuthorizeConfig$5
   implements Runnable
 {
-  AuthorizeConfig$5(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  AuthorizeConfig$5(AuthorizeConfig paramAuthorizeConfig, String paramString, long paramLong) {}
   
   public void run()
   {
-    try
+    this.this$0.o();
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_MqqManagerTicketManager == null) {
-        break label101;
+      int i = 0;
+      if (this.this$0.C != null) {
+        i = this.this$0.C.size();
       }
-      if ((this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, this.this$0.a) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
-        break label106;
-      }
-      bool = true;
+      QLog.d("AuthorizeConfig", 2, new Object[] { "[preload] preloadPskey list:", Integer.valueOf(i), " waitPt4Token:", Boolean.valueOf(AuthorizeConfig.a(this.this$0)) });
     }
-    catch (Exception localException)
+    if (!AuthorizeConfig.a(this.this$0))
     {
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        label101:
-        continue;
-        label106:
-        boolean bool = false;
-      }
+      this.this$0.p();
+      SharedPreferences.Editor localEditor = this.this$0.w.edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lastPreloadPskey");
+      localStringBuilder.append(this.a);
+      localEditor.putLong(localStringBuilder.toString(), this.b).commit();
     }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pre hits result : ");
-    localStringBuilder.append(bool);
-    QLog.d("AuthorizeConfig", 1, localStringBuilder.toString());
-    return;
-    QLog.e("AuthorizeConfig", 1, "preload k exception ");
   }
 }
 

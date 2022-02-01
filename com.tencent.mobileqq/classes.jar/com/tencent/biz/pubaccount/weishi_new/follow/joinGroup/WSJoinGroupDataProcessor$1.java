@@ -15,24 +15,24 @@ class WSJoinGroupDataProcessor$1
   
   public void a(WeishiTask paramWeishiTask)
   {
-    Object localObject = new WeakReference(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor$DataCallback);
-    if ((paramWeishiTask != null) && (paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest != null))
+    Object localObject = new WeakReference(this.a);
+    if ((paramWeishiTask != null) && (paramWeishiTask.g != null))
     {
-      if (!TextUtils.equals(paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.b, WSJoinGroupDataProcessor.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupWSJoinGroupDataProcessor))) {
+      if (!TextUtils.equals(paramWeishiTask.g.d, WSJoinGroupDataProcessor.a(this.c))) {
         return;
       }
       localObject = (WSJoinGroupDataProcessor.DataCallback)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        if (!((WSJoinGroupDataProcessor.DataCallback)localObject).a()) {
+        if (!((WSJoinGroupDataProcessor.DataCallback)localObject).d()) {
           return;
         }
         ((WSJoinGroupDataProcessor.DataCallback)localObject).c();
-        if (paramWeishiTask.a())
+        if (paramWeishiTask.b())
         {
-          if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stQQGroupDetailRsp))
+          if ((paramWeishiTask.m instanceof stQQGroupDetailRsp))
           {
-            paramWeishiTask = (stQQGroupDetailRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
+            paramWeishiTask = (stQQGroupDetailRsp)paramWeishiTask.m;
             if (paramWeishiTask.status == 0)
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -43,7 +43,7 @@ class WSJoinGroupDataProcessor$1
               localStringBuilder.append("; signature = ");
               localStringBuilder.append(paramWeishiTask.signature);
               WSLog.e("WSJoinGroupDataProcessor", localStringBuilder.toString());
-              ((WSJoinGroupDataProcessor.DataCallback)localObject).a(this.jdField_a_of_type_JavaLangString, paramWeishiTask.signature);
+              ((WSJoinGroupDataProcessor.DataCallback)localObject).a(this.b, paramWeishiTask.signature);
               return;
             }
           }
@@ -59,7 +59,7 @@ class WSJoinGroupDataProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.WSJoinGroupDataProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,18 +8,18 @@ public class SendVideoToFriendHelper$GenShareThumbEvent
   extends BaseEvent
 {
   public StoryVideoItem a;
-  public String a;
   public String b;
+  public String c;
   
   public SendVideoToFriendHelper$GenShareThumbEvent(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    this.g = paramErrorMessage;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper.GenShareThumbEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -51,7 +51,7 @@ public class EnterTroopChatItemBuilder
       localObject1 = new LinearLayout(paramViewHolder.getContext());
       ((LinearLayout)localObject1).setOrientation(0);
       ((LinearLayout)localObject1).setGravity(1);
-      paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject1);
+      paramOnLongClickAndTouchListener.f = ((LinearLayout)localObject1);
       paramView = new LinearLayout(paramViewHolder.getContext());
       paramView.setOrientation(0);
       localObject2 = new LinearLayout.LayoutParams(-1, -2);
@@ -60,19 +60,19 @@ public class EnterTroopChatItemBuilder
       ((LinearLayout.LayoutParams)localObject2).topMargin = AIOUtils.b(4.0F, paramLinearLayout.getContext().getResources());
       paramViewHolder.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
       paramViewHolder.addView(paramView, (ViewGroup.LayoutParams)localObject2);
-      paramOnLongClickAndTouchListener.b = new TextView(paramView.getContext());
+      paramOnLongClickAndTouchListener.e = new TextView(paramView.getContext());
       localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      paramView.addView(paramOnLongClickAndTouchListener.b, (ViewGroup.LayoutParams)localObject1);
-      paramOnLongClickAndTouchListener.b.setTextColor(-8355712);
-      paramOnLongClickAndTouchListener.b.setGravity(1);
-      paramOnLongClickAndTouchListener.b.setSingleLine();
-      paramOnLongClickAndTouchListener.b.setEllipsize(TextUtils.TruncateAt.END);
-      paramOnLongClickAndTouchListener.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramView.addView(paramOnLongClickAndTouchListener.e, (ViewGroup.LayoutParams)localObject1);
+      paramOnLongClickAndTouchListener.e.setTextColor(-8355712);
+      paramOnLongClickAndTouchListener.e.setGravity(1);
+      paramOnLongClickAndTouchListener.e.setSingleLine();
+      paramOnLongClickAndTouchListener.e.setEllipsize(TextUtils.TruncateAt.END);
+      paramOnLongClickAndTouchListener.d = new ArrayList();
     }
     if ((paramMessageRecord instanceof MessageForEnterTroop))
     {
       localObject1 = (MessageForEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getString(2131697222);
+      paramMessageRecord = this.c.getString(2131894995);
       localObject2 = ((MessageForEnterTroop)localObject1).mList.iterator();
       for (int i = 1; ((Iterator)localObject2).hasNext(); i = 0)
       {
@@ -90,24 +90,24 @@ public class EnterTroopChatItemBuilder
         paramMessageRecord.append(localUser.b);
         paramMessageRecord = paramMessageRecord.toString();
       }
-      paramOnLongClickAndTouchListener.b.setText(paramMessageRecord);
+      paramOnLongClickAndTouchListener.e.setText(paramMessageRecord);
       int k = ((MessageForEnterTroop)localObject1).mList.size();
       i = k;
       if (k > 5) {
         i = 5;
       }
-      k = paramOnLongClickAndTouchListener.jdField_a_of_type_JavaUtilList.size();
+      k = paramOnLongClickAndTouchListener.d.size();
       if (k < i) {
         while (j < i - k)
         {
-          paramMessageRecord = new ImageView(paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout.getContext());
+          paramMessageRecord = new ImageView(paramOnLongClickAndTouchListener.f.getContext());
           paramMessageRecord.setScaleType(ImageView.ScaleType.FIT_XY);
           int m = AIOUtils.b(26.0F, paramLinearLayout.getContext().getResources());
           paramView = new LinearLayout.LayoutParams(m, m);
           paramView.leftMargin = AIOUtils.b(4.0F, paramLinearLayout.getContext().getResources());
           paramView.rightMargin = AIOUtils.b(4.0F, paramLinearLayout.getContext().getResources());
-          paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramMessageRecord, paramView);
-          paramOnLongClickAndTouchListener.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
+          paramOnLongClickAndTouchListener.f.addView(paramMessageRecord, paramView);
+          paramOnLongClickAndTouchListener.d.add(paramMessageRecord);
           j += 1;
         }
       }
@@ -116,21 +116,21 @@ public class EnterTroopChatItemBuilder
         j = k;
         while (j > i)
         {
-          paramMessageRecord = paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout;
-          paramView = paramOnLongClickAndTouchListener.jdField_a_of_type_JavaUtilList;
+          paramMessageRecord = paramOnLongClickAndTouchListener.f;
+          paramView = paramOnLongClickAndTouchListener.d;
           k = j - 1;
           paramMessageRecord.removeView((View)paramView.get(k));
-          paramOnLongClickAndTouchListener.jdField_a_of_type_JavaUtilList.remove(k);
+          paramOnLongClickAndTouchListener.d.remove(k);
           j -= 1;
         }
       }
-      paramMessageRecord = paramOnLongClickAndTouchListener.jdField_a_of_type_JavaUtilList.iterator();
+      paramMessageRecord = paramOnLongClickAndTouchListener.d.iterator();
       paramView = ((MessageForEnterTroop)localObject1).mList.iterator();
       while ((paramMessageRecord.hasNext()) && (paramView.hasNext()))
       {
         paramLinearLayout = (ImageView)paramMessageRecord.next();
         paramOnLongClickAndTouchListener = (MessageForEnterTroop.User)paramView.next();
-        paramLinearLayout.setImageDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramOnLongClickAndTouchListener.a));
+        paramLinearLayout.setImageDrawable(FaceDrawable.getFaceDrawable(this.a, 1, paramOnLongClickAndTouchListener.a));
       }
     }
     return paramViewHolder;
@@ -150,7 +150,7 @@ public class EnterTroopChatItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

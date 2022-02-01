@@ -12,7 +12,7 @@ class VideoCallStateMonitor$1
   
   public void run()
   {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(VideoCallStateMonitor.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(VideoCallStateMonitor.c(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
   }
 }
 

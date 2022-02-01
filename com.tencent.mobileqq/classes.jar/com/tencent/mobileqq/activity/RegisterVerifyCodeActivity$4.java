@@ -14,16 +14,16 @@ class RegisterVerifyCodeActivity$4
   {
     QLog.d("RegisterVerifyCodeActivity", 1, "identifying code auto-fill start");
     String str = Utils.a(this.a, this.b);
-    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.this$0) != null))
+    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.d(this.this$0) != null))
     {
       QLog.d("RegisterVerifyCodeActivity", 1, new Object[] { "get identifying code: ", str });
-      if (!str.equals(RegisterVerifyCodeActivity.a(this.this$0)))
+      if (!str.equals(RegisterVerifyCodeActivity.i(this.this$0)))
       {
-        if (!TextUtils.isEmpty(RegisterVerifyCodeActivity.a(this.this$0).a())) {
+        if (!TextUtils.isEmpty(RegisterVerifyCodeActivity.d(this.this$0).getCode())) {
           return;
         }
         RegisterVerifyCodeActivity.b(this.this$0, str);
-        RegisterVerifyCodeActivity.a(this.this$0).setCode(str);
+        RegisterVerifyCodeActivity.d(this.this$0).setCode(str);
       }
       return;
     }
@@ -32,7 +32,7 @@ class RegisterVerifyCodeActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.4
  * JD-Core Version:    0.7.0.1
  */

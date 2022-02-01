@@ -17,7 +17,7 @@ final class EvilReportUtil$1
   public void onFailure(Call paramCall, IOException paramIOException)
   {
     QLog.d("QCircleEvilReport", 1, "repose is failed jump to h5");
-    EvilReportUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizSubscribeUtilsEvilReportUtil$EvilReportParams, "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA");
+    EvilReportUtil.a(this.a, this.b, "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA");
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
@@ -26,7 +26,7 @@ final class EvilReportUtil$1
     {
       paramCall = new JSONObject(paramResponse.body().string()).optString("key");
       QLog.d("QCircleEvilReport", 1, "response is success jump to h5");
-      EvilReportUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizSubscribeUtilsEvilReportUtil$EvilReportParams, paramCall);
+      EvilReportUtil.a(this.a, this.b, paramCall);
       return;
     }
     catch (Throwable paramCall)

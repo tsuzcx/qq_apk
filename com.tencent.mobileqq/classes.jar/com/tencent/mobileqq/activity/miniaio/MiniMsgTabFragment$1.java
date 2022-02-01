@@ -51,7 +51,7 @@ class MiniMsgTabFragment$1
       case 83: 
         if (this.a.getBaseActivity() != null)
         {
-          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchPermissionSettingFragmentForResult(this.a.getBaseActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchPermissionSettingFragmentForResult(this.a.getBaseActivity(), MiniMsgTabFragment.d(this.a), MiniMsgTabFragment.e(this.a), 5);
           return;
         }
         QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
@@ -67,12 +67,12 @@ class MiniMsgTabFragment$1
         if (MiniMsgTabFragment.a(this.a) == -1) {
           break;
         }
-        if (MiniMsgTabFragment.a(this.a))
+        if (MiniMsgTabFragment.b(this.a))
         {
-          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragmentForMiniGame(this.a.getBaseActivity(), MiniMsgTabFragment.a(this.a), 1, true);
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragmentForMiniGame(this.a.getBaseActivity(), MiniMsgTabFragment.c(this.a), 1, true);
           return;
         }
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragment(this.a.getBaseActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragment(this.a.getBaseActivity(), MiniMsgTabFragment.c(this.a), MiniMsgTabFragment.a(this.a));
         return;
       case 76: 
       case 77: 
@@ -117,7 +117,7 @@ class MiniMsgTabFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

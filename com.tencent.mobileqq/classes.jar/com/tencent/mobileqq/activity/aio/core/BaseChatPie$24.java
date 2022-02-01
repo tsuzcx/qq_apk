@@ -11,14 +11,14 @@ class BaseChatPie$24
   
   protected void a(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
+    if ((paramBoolean) && (this.a.V != null)) {
+      this.a.V.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.24
  * JD-Core Version:    0.7.0.1
  */

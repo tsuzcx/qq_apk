@@ -18,15 +18,15 @@ class QavPanel$5
   {
     if (QavPanel.a(this.a))
     {
-      paramAnimator = this.a.a.a().a();
+      paramAnimator = this.a.U.b().k();
       paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
       paramAnimator.c("tryPlayBtnMuteAnimation onAnimationEnd", 1);
       this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
       return;
     }
-    this.a.a.a().c("tryPlayBtnMuteAnimation onAnimationEnd", 1);
+    this.a.U.b().c("tryPlayBtnMuteAnimation onAnimationEnd", 1);
     this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
-    QavPanel.a(this.a).a(false, false);
+    QavPanel.b(this.a).a(false, false);
   }
   
   public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
@@ -38,7 +38,7 @@ class QavPanel$5
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    QavPanel.a(this.a).a(false);
+    QavPanel.c(this.a).a(false);
   }
   
   public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)

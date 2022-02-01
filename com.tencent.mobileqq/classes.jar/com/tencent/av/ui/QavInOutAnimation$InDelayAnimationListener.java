@@ -12,58 +12,58 @@ class QavInOutAnimation$InDelayAnimationListener
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    if (this.a.i != null)
     {
-      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.clearAnimation();
-      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.a.f);
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.a.jdField_g_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+      this.a.i.clearAnimation();
+      this.a.i.startAnimation(this.a.o);
+      if (this.a.i.getWave() != null) {
+        this.a.i.getWave().startAnimation(this.a.p);
       }
     }
     if (this.a.b != null)
     {
       this.a.b.clearAnimation();
       if (this.a.b.getVisibility() == 0) {
-        this.a.b.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+        this.a.b.startAnimation(this.a.l);
       }
     }
-    if (this.a.jdField_c_of_type_AndroidViewView != null)
+    if (this.a.c != null)
     {
-      this.a.jdField_c_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_c_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_c_of_type_AndroidViewView.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      this.a.c.clearAnimation();
+      if (this.a.c.getVisibility() == 0) {
+        this.a.c.startAnimation(this.a.m);
       }
     }
-    if (this.a.jdField_d_of_type_AndroidViewView != null)
+    if (this.a.d != null)
     {
-      this.a.jdField_d_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_d_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      this.a.d.clearAnimation();
+      if (this.a.d.getVisibility() == 0) {
+        this.a.d.startAnimation(this.a.m);
       }
     }
-    if (this.a.jdField_e_of_type_AndroidViewView != null)
+    if (this.a.e != null)
     {
-      this.a.jdField_e_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_e_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      this.a.e.clearAnimation();
+      if (this.a.e.getVisibility() == 0) {
+        this.a.e.startAnimation(this.a.n);
       }
     }
-    if (this.a.jdField_g_of_type_AndroidViewView != null)
+    if (this.a.f != null)
     {
-      this.a.jdField_g_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_g_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_g_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      this.a.f.clearAnimation();
+      if (this.a.f.getVisibility() == 0) {
+        this.a.f.startAnimation(this.a.n);
       }
     }
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ai = true;
+    if (this.a.h != null)
+    {
+      this.a.h.clearAnimation();
+      if (this.a.h.getVisibility() == 0) {
+        this.a.h.startAnimation(this.a.n);
+      }
+    }
+    if ((this.a.x != null) && (this.a.x.k() != null)) {
+      this.a.x.k().bD = true;
     }
   }
   

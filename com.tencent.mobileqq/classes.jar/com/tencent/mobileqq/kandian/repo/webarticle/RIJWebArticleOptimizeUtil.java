@@ -14,7 +14,7 @@ public final class RIJWebArticleOptimizeUtil
   
   private final String b(String paramString)
   {
-    if (!RIJWebArticleUtil.a.b()) {
+    if (!RIJWebArticleUtil.a.c()) {
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ public final class RIJWebArticleOptimizeUtil
   
   private final String c(String paramString)
   {
-    if (!RIJWebArticleUtil.a.c()) {
+    if (!RIJWebArticleUtil.a.d()) {
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -57,14 +57,14 @@ public final class RIJWebArticleOptimizeUtil
   
   public final void a(@Nullable Context paramContext)
   {
-    if ((RIJWebArticleUtil.a.d()) && ((paramContext instanceof Activity))) {
-      ((Activity)paramContext).overridePendingTransition(2130771996, 0);
+    if ((RIJWebArticleUtil.a.e()) && ((paramContext instanceof Activity))) {
+      ((Activity)paramContext).overridePendingTransition(2130771999, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleOptimizeUtil
  * JD-Core Version:    0.7.0.1
  */

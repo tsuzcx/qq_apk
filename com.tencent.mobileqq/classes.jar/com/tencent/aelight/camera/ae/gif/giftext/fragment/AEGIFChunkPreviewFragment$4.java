@@ -15,7 +15,7 @@ class AEGIFChunkPreviewFragment$4
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
-    int j = (int)(LightDeviceUtils.getScreenWidth(AEGIFChunkPreviewFragment.a(this.a)) * 0.04F);
+    int j = (int)(LightDeviceUtils.getScreenWidth(AEGIFChunkPreviewFragment.c(this.a)) * 0.04F);
     paramRect.left = (j - i * j / 2);
     paramRect.right = ((i + 1) * j / 2);
     paramRect.bottom = j;
@@ -23,7 +23,7 @@ class AEGIFChunkPreviewFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.4
  * JD-Core Version:    0.7.0.1
  */

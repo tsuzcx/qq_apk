@@ -76,11 +76,11 @@ public final class RIJPublishTrendsHandler
       ((StringBuilder)localObject2).append("type=");
       ((StringBuilder)localObject2).append(paramList1);
       ((StringBuilder)localObject2).append(", pic=");
-      ((StringBuilder)localObject2).append(paramDeliverData.a());
+      ((StringBuilder)localObject2).append(paramDeliverData.d());
       ((StringBuilder)localObject2).append(", width=");
-      ((StringBuilder)localObject2).append(paramDeliverData.a());
-      ((StringBuilder)localObject2).append(", height=");
       ((StringBuilder)localObject2).append(paramDeliverData.b());
+      ((StringBuilder)localObject2).append(", height=");
+      ((StringBuilder)localObject2).append(paramDeliverData.c());
       ((StringBuilder)localObject2).append(", location=");
       if (paramTroopBarPOI != null) {
         localObject1 = paramTroopBarPOI.a();
@@ -105,11 +105,11 @@ public final class RIJPublishTrendsHandler
       while (i < paramInt)
       {
         localObject2 = new oidb_cmd0xf8b.Picture();
-        int j = paramDeliverData.a()[i];
+        int j = paramDeliverData.b()[i];
         ((oidb_cmd0xf8b.Picture)localObject2).width.set(j);
-        j = paramDeliverData.b()[i];
+        j = paramDeliverData.c()[i];
         ((oidb_cmd0xf8b.Picture)localObject2).height.set(j);
-        Object localObject3 = paramDeliverData.a();
+        Object localObject3 = paramDeliverData.d();
         if (localObject3 != null)
         {
           localObject3 = localObject3[i];
@@ -140,7 +140,7 @@ public final class RIJPublishTrendsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJPublishTrendsHandler
  * JD-Core Version:    0.7.0.1
  */

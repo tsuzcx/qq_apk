@@ -16,23 +16,23 @@ import tencent.im.msg.im_msg_body.RichText;
 class MultiMsgManager$PttUploadCallback
   implements UpCallBack
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private MultiMsgManager jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
-  private int b;
+  private MessageRecord a;
+  private QQAppInterface b;
+  private String c;
+  private int d;
+  private MultiMsgManager e;
+  private int f;
+  private ArrayList<MessageRecord> g;
   
   private MultiMsgManager$PttUploadCallback(MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, MultiMsgManager paramMultiMsgManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager = paramMultiMsgManager;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramMessageRecord;
+    this.b = paramQQAppInterface;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.e = paramMultiMsgManager;
+    this.f = paramInt2;
+    this.g = paramArrayList;
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
@@ -46,16 +46,16 @@ class MultiMsgManager$PttUploadCallback
         localStringBuilder.append(paramRichText.toString());
         QLog.d("MultiMsg_TAG", 2, localStringBuilder.toString());
       }
-      if (((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForRichText)) && (((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText == null))
+      if (((this.g.get(0) instanceof MessageForRichText)) && (((MessageForRichText)this.g.get(0)).richText == null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG", 2, "PttUploadCallback.attachRichText2Msg return but mr.richtext is null");
         }
-        ((MessageForRichText)this.jdField_a_of_type_JavaUtilArrayList.get(0)).richText = paramRichText;
+        ((MessageForRichText)this.g.get(0)).richText = paramRichText;
       }
-      if ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt))
+      if ((this.g.get(0) instanceof MessageForPtt))
       {
-        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize < 0L)
+        if (((MessageForPtt)this.g.get(0)).fileSize < 0L)
         {
           QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg with fileSize < 0");
           if (QLog.isColorLevel())
@@ -70,14 +70,14 @@ class MultiMsgManager$PttUploadCallback
               i += 1;
             }
           }
-          ((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize = 1L;
+          ((MessageForPtt)this.g.get(0)).fileSize = 1L;
         }
       }
       else {
         QLog.d("MultiMsg_TAG", 1, "PttUploadCallback attachRichText2Msg but not message for ptt");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new HashMap(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.b);
+      this.b.getProxyManager().b().a(this.g, null);
+      MultiMsgManager.a(this.e, this.b, this.c, this.d, new HashMap(), this.a, null, this.g, true, this.f);
       return null;
     }
     QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack attachRichText2Msg with null");
@@ -97,7 +97,7 @@ class MultiMsgManager$PttUploadCallback
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    if (paramSendResult.jdField_a_of_type_Int != 0)
+    if (paramSendResult.a != 0)
     {
       if (QLog.isColorLevel())
       {
@@ -106,9 +106,9 @@ class MultiMsgManager$PttUploadCallback
         localStringBuilder.append(paramSendResult.toString());
         QLog.d("MultiMsg_TAG", 2, localStringBuilder.toString());
       }
-      if ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof MessageForPtt))
+      if ((this.g.get(0) instanceof MessageForPtt))
       {
-        if (((MessageForPtt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).fileSize < 0L)
+        if (((MessageForPtt)this.g.get(0)).fileSize < 0L)
         {
           QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend with fileSize < 0");
           if (QLog.isColorLevel())
@@ -128,8 +128,8 @@ class MultiMsgManager$PttUploadCallback
       else {
         QLog.d("MultiMsg_TAG", 1, "PttUploadCallback onSend but no message for ptt");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.b.getProxyManager().b().a(this.g, null);
+      MultiMsgManager.a(this.e, this.a, this.b, this.c, this.d);
       return;
     }
     QLog.d("MultiMsg_TAG", 1, "mPttUpCallBack onSend result ok");
@@ -137,7 +137,7 @@ class MultiMsgManager$PttUploadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.PttUploadCallback
  * JD-Core Version:    0.7.0.1
  */

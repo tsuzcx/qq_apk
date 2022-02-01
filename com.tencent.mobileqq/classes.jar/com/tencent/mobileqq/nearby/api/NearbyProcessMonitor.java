@@ -26,9 +26,9 @@ import mqq.app.AccountNotMatchException;
 
 public class NearbyProcessMonitor
 {
-  static int jdField_a_of_type_Int;
-  static PreloadProcHitSession[] jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession = new PreloadProcHitSession[3];
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "nearby_leba", "nearby_msgbox", "nearby_guide" };
+  static final String[] a = { "nearby_leba", "nearby_msgbox", "nearby_guide" };
+  static int b;
+  static PreloadProcHitSession[] c = new PreloadProcHitSession[3];
   
   protected static void a()
   {
@@ -45,12 +45,12 @@ public class NearbyProcessMonitor
     if ((paramInt >= 0) && (paramInt < 3)) {
       try
       {
-        if (jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt] == null) {
-          jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt] = new PreloadProcHitSession(jdField_a_of_type_ArrayOfJavaLangString[paramInt], "com.tencent.mobileqq:tool");
+        if (c[paramInt] == null) {
+          c[paramInt] = new PreloadProcHitSession(a[paramInt], "com.tencent.mobileqq:tool");
         } else {
-          jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt].d();
+          c[paramInt].e();
         }
-        jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt].a();
+        c[paramInt].a();
         return;
       }
       catch (Throwable localThrowable)
@@ -103,7 +103,7 @@ public class NearbyProcessMonitor
     }
     if (!((INearbySPUtil)QRoute.api(INearbySPUtil.class)).contains(paramString, "self_gender"))
     {
-      localObject3 = ((FriendsManager)((QQAppInterface)localObject6).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString);
+      localObject3 = ((FriendsManager)((QQAppInterface)localObject6).getManager(QQManagerFactory.FRIENDS_MANAGER)).f(paramString);
       if (localObject3 != null)
       {
         localObject6 = (INearbyCardManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
@@ -111,7 +111,7 @@ public class NearbyProcessMonitor
           NearbyUtils.a("NearbyProcessMonitor", new Object[] { "gender", Short.valueOf(((Card)localObject3).shGender) });
         }
         if (localObject6 != null) {
-          ((INearbyCardManager)localObject6).b(((Card)localObject3).shGender);
+          ((INearbyCardManager)localObject6).c(((Card)localObject3).shGender);
         }
       }
     }
@@ -245,10 +245,10 @@ public class NearbyProcessMonitor
       if (!((INearbySPUtil)QRoute.api(INearbySPUtil.class)).checkPreload(paramString)) {
         return;
       }
-      if (jdField_a_of_type_Int > 10)
+      if (b > 10)
       {
         if (QLog.isColorLevel()) {
-          NearbyUtils.a("cation: preload  to much times, ", new Object[] { Integer.valueOf(jdField_a_of_type_Int) });
+          NearbyUtils.a("cation: preload  to much times, ", new Object[] { Integer.valueOf(b) });
         }
         return;
       }
@@ -261,9 +261,9 @@ public class NearbyProcessMonitor
     if ((paramInt >= 0) && (paramInt < 3)) {
       try
       {
-        if (jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt] != null)
+        if (c[paramInt] != null)
         {
-          jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt].b();
+          c[paramInt].b();
           return;
         }
       }
@@ -288,7 +288,7 @@ public class NearbyProcessMonitor
         if ((localObject2 instanceof QQAppInterface))
         {
           localObject1 = (QQAppInterface)localObject2;
-          localObject2 = ((FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+          localObject2 = ((FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER)).g(paramString);
           if (localObject2 != null)
           {
             str = ((Card)localObject2).strSchool;
@@ -337,9 +337,9 @@ public class NearbyProcessMonitor
     if ((paramInt >= 0) && (paramInt < 3)) {
       try
       {
-        if (jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt] != null)
+        if (c[paramInt] != null)
         {
-          jdField_a_of_type_ArrayOfComTencentMobileqqHitratePreloadProcHitSession[paramInt].d();
+          c[paramInt].e();
           return;
         }
       }
@@ -354,7 +354,7 @@ public class NearbyProcessMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyProcessMonitor
  * JD-Core Version:    0.7.0.1
  */

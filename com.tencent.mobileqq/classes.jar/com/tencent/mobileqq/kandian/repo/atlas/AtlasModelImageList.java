@@ -36,17 +36,17 @@ public class AtlasModelImageList
     this.hasMoreData = paramBoolean;
     this.source = paramInt;
     this.rowKey = paramString;
-    this.mParsedInfo.jdField_a_of_type_Long = paramGalleryInfo.uint64_article_id.get();
-    this.mParsedInfo.jdField_b_of_type_Long = paramGalleryInfo.int32_reason.get();
-    this.mParsedInfo.jdField_a_of_type_JavaLangString = String.valueOf(paramGalleryInfo.uint64_publisher_uin.get());
-    this.mParsedInfo.jdField_b_of_type_JavaLangString = paramGalleryInfo.bytes_row_key.get().toStringUtf8();
+    this.mParsedInfo.a = paramGalleryInfo.uint64_article_id.get();
+    this.mParsedInfo.b = paramGalleryInfo.int32_reason.get();
+    this.mParsedInfo.c = String.valueOf(paramGalleryInfo.uint64_publisher_uin.get());
+    this.mParsedInfo.d = paramGalleryInfo.bytes_row_key.get().toStringUtf8();
     TimeSliceHelper.a(paramString, this.commentTimeMonitor);
   }
   
   public void onPause()
   {
     this.mPauseTime = System.currentTimeMillis();
-    this.commentTimeMonitor.b();
+    this.commentTimeMonitor.c();
   }
   
   public void onResume()
@@ -56,7 +56,7 @@ public class AtlasModelImageList
       this.noUseTime += System.currentTimeMillis() - this.mPauseTime;
       this.mPauseTime = -1L;
     }
-    this.commentTimeMonitor.a();
+    this.commentTimeMonitor.b();
   }
   
   public String toString()
@@ -73,7 +73,7 @@ public class AtlasModelImageList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.atlas.AtlasModelImageList
  * JD-Core Version:    0.7.0.1
  */

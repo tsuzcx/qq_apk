@@ -1,21 +1,40 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Message;
+import mqq.os.MqqHandler;
 
 class SubLoginActivity$1
-  implements DialogInterface.OnDismissListener
+  extends MqqHandler
 {
   SubLoginActivity$1(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b = false;
+    int i = paramMessage.what;
+    if (i != 1982)
+    {
+      if (i != 2001)
+      {
+        if (i != 2002) {
+          return;
+        }
+        if (!this.a.isFinishing()) {
+          SubLoginActivity.a(this.a, true);
+        }
+      }
+      else
+      {
+        this.a.hideJuhua();
+      }
+    }
+    else {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubLoginActivity.1
  * JD-Core Version:    0.7.0.1
  */

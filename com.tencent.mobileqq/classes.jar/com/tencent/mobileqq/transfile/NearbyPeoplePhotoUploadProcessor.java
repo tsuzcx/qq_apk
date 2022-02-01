@@ -11,6 +11,8 @@ import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.nearby.NearbyManagerHelper;
+import com.tencent.mobileqq.nearby.api.INearbyProxy;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -64,9 +66,9 @@ public class NearbyPeoplePhotoUploadProcessor
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = new CompressInfo(this.mUiRequest.mLocalPath, 0);
-    ((CompressInfo)localObject1).f = 0;
+    ((CompressInfo)localObject1).o = 0;
     ((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject1);
-    if (TextUtils.isEmpty(((CompressInfo)localObject1).e))
+    if (TextUtils.isEmpty(((CompressInfo)localObject1).l))
     {
       onError();
       return true;
@@ -76,14 +78,14 @@ public class NearbyPeoplePhotoUploadProcessor
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("personality_label start compress dst:");
-      ((StringBuilder)localObject2).append(((CompressInfo)localObject1).e);
+      ((StringBuilder)localObject2).append(((CompressInfo)localObject1).l);
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, ((StringBuilder)localObject2).toString());
     }
-    if (!TextUtils.equals(((CompressInfo)localObject1).e, ((CompressInfo)localObject1).c))
+    if (!TextUtils.equals(((CompressInfo)localObject1).l, ((CompressInfo)localObject1).h))
     {
       localObject2 = this.file;
       TransferRequest localTransferRequest = this.mUiRequest;
-      localObject1 = ((CompressInfo)localObject1).e;
+      localObject1 = ((CompressInfo)localObject1).l;
       localTransferRequest.mLocalPath = ((String)localObject1);
       ((FileMsg)localObject2).filePath = ((String)localObject1);
       if (checkParam() != 0) {
@@ -134,6 +136,12 @@ public class NearbyPeoplePhotoUploadProcessor
             if (this.file.fileType == 56) {
               return 39;
             }
+            if (this.file.fileType == 67) {
+              return 84;
+            }
+            if (this.file.fileType == 68) {
+              return 85;
+            }
             return -1;
           }
           return 35;
@@ -143,6 +151,55 @@ public class NearbyPeoplePhotoUploadProcessor
       return 23;
     }
     return 3;
+  }
+  
+  private String getRichTag(String paramString)
+  {
+    if ((this.file.fileType != 8) && (this.file.fileType != 64))
+    {
+      if (this.file.fileType == 21) {
+        return "actFreshNewsPicUpload";
+      }
+      if (this.file.fileType == 22) {
+        return "actFriendAvatarUpload";
+      }
+      if (this.file.fileType == 34) {
+        return "C2BUploadFile";
+      }
+      if (this.file.fileType == 35) {
+        return "actProfileCoverPicUpload";
+      }
+      if ((this.file.fileType != 36) && (this.file.fileType != 37) && (this.file.fileType != 38) && (this.file.fileType != 48))
+      {
+        if ((this.file.fileType != 39) && (this.file.fileType != 40) && (this.file.fileType != 41))
+        {
+          if ((this.file.fileType != 50) && (this.file.fileType != 51))
+          {
+            if (this.file.fileType == 56) {
+              return "actPersonalityLabelPhotoUpload";
+            }
+            if (this.file.fileType == 23) {
+              return "actExtendFriendSoundUpload";
+            }
+          }
+          else
+          {
+            return "actHongbaoStarPhotoUpload";
+          }
+        }
+        else {
+          return "actNearbyDynamicAvatarUpload";
+        }
+      }
+      else {
+        return "actBaseDynamicAvatarUpload";
+      }
+    }
+    else
+    {
+      paramString = "actNearbyPeoplePicUpload";
+    }
+    return paramString;
   }
   
   private void handleTransFileBaseStaticAvatarOnSuccess(byte[] paramArrayOfByte)
@@ -173,7 +230,7 @@ public class NearbyPeoplePhotoUploadProcessor
     onError();
   }
   
-  private void handleTransFileExtendFriendSoundOnSuccess(byte[] paramArrayOfByte)
+  private void handleTransFileExtendFriendOnSuccess(byte[] paramArrayOfByte)
   {
     Bdh_extinfo.CommFileExtRsp localCommFileExtRsp = new Bdh_extinfo.CommFileExtRsp();
     try
@@ -258,10 +315,10 @@ public class NearbyPeoplePhotoUploadProcessor
         if (this.file.fileType == 21)
         {
           this.mPhotoUrl = new String(paramArrayOfByte, 2, localByteBuffer.get() & 0xFF);
-          break label460;
+          break label475;
         }
         if ((this.file.fileType != 36) && (this.file.fileType != 37) && (this.file.fileType != 38) && (this.file.fileType != 39) && (this.file.fileType != 40) && (this.file.fileType != 41) && (this.file.fileType != 56)) {
-          break label460;
+          break label475;
         }
       }
     }
@@ -284,7 +341,7 @@ public class NearbyPeoplePhotoUploadProcessor
       this.file.fileID = l;
       this.file.fileUrl = this.mPhotoUrl;
       if (!TextUtils.isEmpty(this.file.fileUrl)) {
-        break label460;
+        break label475;
       }
       this.file.fileUrl = this.mUiRequest.mLocalPath;
     }
@@ -292,15 +349,16 @@ public class NearbyPeoplePhotoUploadProcessor
     {
       int j;
       int k;
-      break label460;
+      break label475;
     }
     i = localByteBuffer.get();
     j = localByteBuffer.get();
     k = localByteBuffer.get();
     this.mVideoId = new String(paramArrayOfByte, 5, (localByteBuffer.get() & 0xFF) << 24 | i | 0x0 | (j & 0xFF) << 8 | (k & 0xFF) << 16);
-    break label460;
+    break label475;
     mPhotoId = Integer.parseInt(new String(paramArrayOfByte, 2, localByteBuffer.get() & 0xFF));
-    label460:
+    NearbyManagerHelper.a(this.app).c(mPhotoId);
+    label475:
     onSuccess();
     return;
     if (this.file.fileType == 34)
@@ -448,58 +506,19 @@ public class NearbyPeoplePhotoUploadProcessor
           i = 1;
         }
         ((ProcessorReport)localObject).mReportedFlag = (i | j);
-        if ((this.file.fileType != 8) && (this.file.fileType != 64))
-        {
-          if (this.file.fileType == 21) {
-            localObject = "actFreshNewsPicUpload";
-          } else if (this.file.fileType == 22) {
-            localObject = "actFriendAvatarUpload";
-          } else if (this.file.fileType == 34) {
-            localObject = "C2BUploadFile";
-          } else if (this.file.fileType == 35) {
-            localObject = "actProfileCoverPicUpload";
-          } else if ((this.file.fileType != 36) && (this.file.fileType != 37) && (this.file.fileType != 38) && (this.file.fileType != 48))
-          {
-            if ((this.file.fileType != 39) && (this.file.fileType != 40) && (this.file.fileType != 41))
-            {
-              if ((this.file.fileType != 50) && (this.file.fileType != 51))
-              {
-                if (this.file.fileType == 56) {
-                  localObject = "actPersonalityLabelPhotoUpload";
-                } else if (this.file.fileType == 23) {
-                  localObject = "actExtendFriendSoundUpload";
-                } else {
-                  localObject = "";
-                }
-              }
-              else {
-                localObject = "actHongbaoStarPhotoUpload";
-              }
-            }
-            else {
-              localObject = "actNearbyDynamicAvatarUpload";
-            }
-          }
-          else {
-            localObject = "actBaseDynamicAvatarUpload";
-          }
-        }
-        else {
-          localObject = "actNearbyPeoplePicUpload";
-        }
+        String str = getRichTag("");
         this.mProcessorReport.mEndTime = System.currentTimeMillis();
         long l = (System.nanoTime() - this.mProcessorReport.mStartTime) / 1000000L;
         HashMap localHashMap = this.mProcessorReport.mReportInfo;
-        String str;
         if (this.mSessionKey == null) {
-          str = "null";
+          localObject = "null";
         } else {
-          str = PkgTools.toHexStr(this.mSessionKey);
+          localObject = PkgTools.toHexStr(this.mSessionKey);
         }
-        localHashMap.put("param_sessionKey", str);
+        localHashMap.put("param_sessionKey", localObject);
         if (paramBoolean)
         {
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, true, l, this.mFileSize, this.mProcessorReport.mReportInfo, "");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, l, this.mFileSize, this.mProcessorReport.mReportInfo, "");
         }
         else
         {
@@ -509,7 +528,7 @@ public class NearbyPeoplePhotoUploadProcessor
           this.mProcessorReport.mReportInfo.put("param_FailCode", String.valueOf(this.mProcessorReport.errCode));
           this.mProcessorReport.mReportInfo.put("param_errorDesc", this.mProcessorReport.errDesc);
           this.mProcessorReport.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, false, l, this.mFileSize, this.mProcessorReport.mReportInfo, "");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, false, l, this.mFileSize, this.mProcessorReport.mReportInfo, "");
         }
         setReportFlag();
       }
@@ -556,9 +575,9 @@ public class NearbyPeoplePhotoUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       localObject = new UpCallBack.SendResult();
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+      ((UpCallBack.SendResult)localObject).a = -1;
       ((UpCallBack.SendResult)localObject).b = this.mProcessorReport.errCode;
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      ((UpCallBack.SendResult)localObject).c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
   }
@@ -578,7 +597,7 @@ public class NearbyPeoplePhotoUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.a = 0;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -670,7 +689,7 @@ public class NearbyPeoplePhotoUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

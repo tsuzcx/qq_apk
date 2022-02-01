@@ -39,32 +39,23 @@ import mqq.util.WeakReference;
 public class FileBannerTianshuManger
 {
   public static int a = 488;
-  protected View a;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  protected RelativeLayout a;
-  protected URLImageView a;
-  TianShuGetAdvCallback jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback = new FileBannerTianshuManger.2(this);
-  public TianShuAccess.AdItem a;
-  public String a;
-  public WeakReference<Activity> a;
-  public int b;
-  protected View b;
-  public String b;
+  public String b = "";
+  public String c = "";
+  public TianShuAccess.AdItem d = null;
+  public WeakReference<Activity> e;
+  protected View f;
+  protected URLImageView g;
+  protected RelativeLayout h;
+  protected View i;
+  public int j = 0;
+  TianShuGetAdvCallback k = new FileBannerTianshuManger.2(this);
+  private ViewStub l;
   
   public FileBannerTianshuManger(Activity paramActivity, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return ViewUtils.a();
+    this.e = new WeakReference(paramActivity);
+    this.i = paramView;
+    this.j = paramInt;
   }
   
   public void a()
@@ -79,7 +70,7 @@ public class FileBannerTianshuManger
       QZLog.e("FileBannerTianshuManger", "item is  null");
       return;
     }
-    int i = paramAdItem.iAdId.get();
+    int m = paramAdItem.iAdId.get();
     paramAdItem = paramAdItem.traceinfo.get();
     if (TextUtils.isEmpty(paramAdItem))
     {
@@ -87,24 +78,24 @@ public class FileBannerTianshuManger
       return;
     }
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.99";
-    localTianShuReportData.jdField_f_of_type_JavaLangString = "tianshu.99";
+    long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = "tianshu.99";
+    localTianShuReportData.g = "tianshu.99";
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
+    localStringBuilder.append(m);
     localStringBuilder.append("");
-    localTianShuReportData.g = localStringBuilder.toString();
-    localTianShuReportData.h = "";
-    localTianShuReportData.jdField_a_of_type_Long = l;
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.jdField_f_of_type_Int = 1;
-    localTianShuReportData.l = paramAdItem;
+    localTianShuReportData.h = localStringBuilder.toString();
+    localTianShuReportData.i = "";
+    localTianShuReportData.o = l1;
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.r = 1;
+    localTianShuReportData.s = paramAdItem;
     TianShuManager.getInstance().report(localTianShuReportData);
     paramAdItem = new StringBuilder();
     paramAdItem.append("report appid");
-    paramAdItem.append(i);
+    paramAdItem.append(m);
     paramAdItem.append("actionid");
     paramAdItem.append(paramInt);
     QZLog.i("FileBannerTianshuManger", paramAdItem.toString());
@@ -114,7 +105,7 @@ public class FileBannerTianshuManger
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject1 = this.jdField_a_of_type_MqqUtilWeakReference;
+      Object localObject1 = this.e;
       if (localObject1 != null)
       {
         if (((WeakReference)localObject1).get() == null) {
@@ -122,7 +113,7 @@ public class FileBannerTianshuManger
         }
         try
         {
-          Object localObject2 = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+          Object localObject2 = (Activity)this.e.get();
           localObject1 = localObject2;
           if ((localObject2 instanceof BasePluginActivity)) {
             localObject1 = ((BasePluginActivity)localObject2).getOutActivity();
@@ -132,9 +123,9 @@ public class FileBannerTianshuManger
             localObject2 = new Intent((Context)localObject1, JumpActivity.class);
             ((Intent)localObject2).setData(Uri.parse(paramString));
             ((Context)localObject1).startActivity((Intent)localObject2);
-            a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 102);
-            if (this.jdField_b_of_type_Int == 1) {
-              a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 138);
+            a(this.d, 102);
+            if (this.j == 1) {
+              a(this.d, 138);
             }
           }
           else
@@ -143,10 +134,10 @@ public class FileBannerTianshuManger
             ((Intent)localObject2).putExtra("url", paramString);
             ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_vip");
             ((Context)localObject1).startActivity((Intent)localObject2);
-            a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 102);
-            if (this.jdField_b_of_type_Int == 1)
+            a(this.d, 102);
+            if (this.j == 1)
             {
-              a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 138);
+              a(this.d, 138);
               return;
             }
           }
@@ -163,9 +154,9 @@ public class FileBannerTianshuManger
   {
     try
     {
-      if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null))
+      if ((this.e != null) && (this.e.get() != null))
       {
-        ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).runOnUiThread(new FileBannerTianshuManger.4(this, paramURLDrawable, paramString));
+        ((Activity)this.e.get()).runOnUiThread(new FileBannerTianshuManger.4(this, paramURLDrawable, paramString));
         return;
       }
       QZLog.i("FileBannerTianshuManger", "showFileBanner activity is null ");
@@ -212,7 +203,7 @@ public class FileBannerTianshuManger
           ((Map)localObject1).put(Integer.valueOf(((TianShuAccess.RspEntry)localObject2).key.get()), localObject2);
         }
       }
-      localObject1 = (TianShuAccess.RspEntry)((Map)localObject1).get(Integer.valueOf(jdField_a_of_type_Int));
+      localObject1 = (TianShuAccess.RspEntry)((Map)localObject1).get(Integer.valueOf(a));
       if ((localObject1 != null) && (((TianShuAccess.RspEntry)localObject1).value != null) && (((TianShuAccess.RspEntry)localObject1).value.lst.size() != 0) && (((TianShuAccess.RspEntry)localObject1).value.lst.get(0) != null) && (((TianShuAccess.AdItem)((TianShuAccess.RspEntry)localObject1).value.lst.get(0)).argList != null) && (((TianShuAccess.AdItem)((TianShuAccess.RspEntry)localObject1).value.lst.get(0)).argList.get() != null))
       {
         localObject2 = ((TianShuAccess.AdItem)((TianShuAccess.RspEntry)localObject1).value.lst.get(0)).argList.get();
@@ -228,9 +219,9 @@ public class FileBannerTianshuManger
           }
         }
         localObject1 = (TianShuAccess.AdItem)((TianShuAccess.RspEntry)localObject1).value.lst.get(0);
-        this.jdField_b_of_type_JavaLangString = ((String)paramGetAdsRsp.get("pic"));
-        this.jdField_a_of_type_JavaLangString = ((String)paramGetAdsRsp.get("url"));
-        this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)localObject1);
+        this.c = ((String)paramGetAdsRsp.get("pic"));
+        this.b = ((String)paramGetAdsRsp.get("url"));
+        this.d = ((TianShuAccess.AdItem)localObject1);
         b();
         return;
       }
@@ -238,31 +229,26 @@ public class FileBannerTianshuManger
     }
   }
   
-  public int b()
-  {
-    return (int)(a() * 0.1449275F);
-  }
-  
   public void b()
   {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+    if (!TextUtils.isEmpty(this.c)) {}
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, localURLDrawableOptions);
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.c, localURLDrawableOptions);
       localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
       localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-      localURLDrawableOptions.mRequestWidth = a();
-      localURLDrawableOptions.mRequestHeight = b();
+      localURLDrawableOptions.mRequestWidth = c();
+      localURLDrawableOptions.mRequestHeight = d();
       if (localURLDrawable.getStatus() == 1)
       {
         QZLog.i("FileBannerTianshuManger", "showFileBanner URLDrawable success ");
-        a(this.jdField_a_of_type_JavaLangString, localURLDrawable);
-        a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 101);
-        if (this.jdField_b_of_type_Int != 1) {
+        a(this.b, localURLDrawable);
+        a(this.d, 101);
+        if (this.j != 1) {
           break label148;
         }
-        a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 137);
+        a(this.d, 137);
         return;
       }
       localURLDrawable.setURLDrawableListener(new FileBannerTianshuManger.3(this));
@@ -281,10 +267,20 @@ public class FileBannerTianshuManger
     }
     label148:
   }
+  
+  public int c()
+  {
+    return ViewUtils.getScreenWidth();
+  }
+  
+  public int d()
+  {
+    return (int)(c() * 0.1449275F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.FileBannerTianshuManger
  * JD-Core Version:    0.7.0.1
  */

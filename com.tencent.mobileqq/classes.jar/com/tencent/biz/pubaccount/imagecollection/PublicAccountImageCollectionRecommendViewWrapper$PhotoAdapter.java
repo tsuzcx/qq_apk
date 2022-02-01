@@ -28,16 +28,16 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
   
   public IPublicAccountImageCollectionUtils.RecommendItemInfo a(int paramInt)
   {
-    if (PublicAccountImageCollectionRecommendViewWrapper.a != null) {
-      return (IPublicAccountImageCollectionUtils.RecommendItemInfo)PublicAccountImageCollectionRecommendViewWrapper.a.get(paramInt);
+    if (PublicAccountImageCollectionRecommendViewWrapper.b != null) {
+      return (IPublicAccountImageCollectionUtils.RecommendItemInfo)PublicAccountImageCollectionRecommendViewWrapper.b.get(paramInt);
     }
     return null;
   }
   
   public int getCount()
   {
-    if (PublicAccountImageCollectionRecommendViewWrapper.a != null) {
-      return PublicAccountImageCollectionRecommendViewWrapper.a.size();
+    if (PublicAccountImageCollectionRecommendViewWrapper.b != null) {
+      return PublicAccountImageCollectionRecommendViewWrapper.b.size();
     }
     return 0;
   }
@@ -53,10 +53,10 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
     Object localObject3;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(PublicAccountImageCollectionRecommendViewWrapper.a()).inflate(2131559584, paramViewGroup, false);
+      paramView = LayoutInflater.from(PublicAccountImageCollectionRecommendViewWrapper.b()).inflate(2131625613, paramViewGroup, false);
       paramViewGroup = new PublicAccountImageCollectionRecommendViewWrapper.PhotoAdapter.ViewHolder(this);
       localObject1 = paramView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = ((PublicAccountImageCollectionRecommendViewWrapper.b() - AIOUtils.b(110.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources())) / 3);
+      ((ViewGroup.LayoutParams)localObject1).height = ((PublicAccountImageCollectionRecommendViewWrapper.c() - AIOUtils.b(110.0F, PublicAccountImageCollectionRecommendViewWrapper.b().getResources())) / 3);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       if (QLog.isColorLevel())
       {
@@ -65,11 +65,11 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
         ((StringBuilder)localObject2).append(((ViewGroup.LayoutParams)localObject1).height);
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, ((StringBuilder)localObject2).toString());
       }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131376241));
-      localObject2 = paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).width = ((PublicAccountImageCollectionRecommendViewWrapper.c() - AIOUtils.b(2.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources())) / 2);
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131444449));
+      localObject2 = paramViewGroup.a.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject2).width = ((PublicAccountImageCollectionRecommendViewWrapper.d() - AIOUtils.b(2.0F, PublicAccountImageCollectionRecommendViewWrapper.b().getResources())) / 2);
       ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      paramViewGroup.a.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       if (QLog.isColorLevel())
       {
         localObject3 = new StringBuilder();
@@ -77,9 +77,9 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
         ((StringBuilder)localObject3).append(((ViewGroup.LayoutParams)localObject2).height);
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, ((StringBuilder)localObject3).toString());
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376257));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131444465));
       int i;
-      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - AIOUtils.b(40.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources()) > AIOUtils.b(16.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources())) {
+      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - AIOUtils.b(40.0F, PublicAccountImageCollectionRecommendViewWrapper.b().getResources()) > AIOUtils.b(16.0F, PublicAccountImageCollectionRecommendViewWrapper.b().getResources())) {
         i = 2;
       } else {
         i = 1;
@@ -98,10 +98,10 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
         }
         localObject1 = new LinearLayout.LayoutParams(-1, -2);
         ((LinearLayout.LayoutParams)localObject1).setMargins(12, 0, 12, 1);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
+        paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        paramViewGroup.b.setTextSize(1, 10.0F);
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(i);
+      paramViewGroup.b.setMaxLines(i);
       paramView.setTag(paramViewGroup);
     }
     else
@@ -120,8 +120,8 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
       if ((localObject2 != null) && (((URLDrawable)localObject2).getStatus() == 2)) {
         ((URLDrawable)localObject2).restartDownload();
       }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IPublicAccountImageCollectionUtils.RecommendItemInfo)localObject1).b);
+      paramViewGroup.a.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.b.setText(((IPublicAccountImageCollectionUtils.RecommendItemInfo)localObject1).b);
       if (QLog.isColorLevel())
       {
         paramViewGroup = new StringBuilder();
@@ -139,7 +139,7 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionRecommendViewWrapper.PhotoAdapter
  * JD-Core Version:    0.7.0.1
  */

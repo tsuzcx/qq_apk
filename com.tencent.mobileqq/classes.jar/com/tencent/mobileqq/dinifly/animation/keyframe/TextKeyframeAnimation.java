@@ -14,12 +14,15 @@ public class TextKeyframeAnimation
   
   DocumentData getValue(Keyframe<DocumentData> paramKeyframe, float paramFloat)
   {
+    if ((paramFloat == 1.0F) && (paramKeyframe.endValue != null)) {
+      return (DocumentData)paramKeyframe.endValue;
+    }
     return (DocumentData)paramKeyframe.startValue;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.TextKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ class AddRequestActivity$ClickJumpSpan
   extends ClickableSpan
 {
   public int a;
-  public Bundle a;
-  public String a;
+  public String b;
+  public Bundle c;
   
   public AddRequestActivity$ClickJumpSpan(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = paramInt;
+    this.b = paramString;
+    this.c = paramBundle;
   }
   
   public void onClick(View paramView)
@@ -34,7 +34,7 @@ class AddRequestActivity$ClickJumpSpan
     if (paramView == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 1)
     {
       Object localObject;
@@ -45,9 +45,9 @@ class AddRequestActivity$ClickJumpSpan
         }
         try
         {
-          localObject = new AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+          localObject = new AllInOne(this.c.getString("key_profile_uin"), this.c.getInt("key_profile_pa", 25));
           ((AllInOne)localObject).profileEntryType = 109;
-          ((AllInOne)localObject).chatAbility = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+          ((AllInOne)localObject).chatAbility = this.c.getInt("key_profile_chatability");
           ProfileUtils.openProfileCard(paramView, (AllInOne)localObject);
           return;
         }
@@ -60,7 +60,7 @@ class AddRequestActivity$ClickJumpSpan
       try
       {
         localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
-        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        ((Intent)localObject).putExtras(this.c);
         paramView.startActivity((Intent)localObject);
         return;
       }
@@ -70,7 +70,7 @@ class AddRequestActivity$ClickJumpSpan
         return;
       }
     }
-    TroopUtils.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
+    TroopUtils.a(paramView, this.c, 2);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -80,7 +80,7 @@ class AddRequestActivity$ClickJumpSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.ClickJumpSpan
  * JD-Core Version:    0.7.0.1
  */

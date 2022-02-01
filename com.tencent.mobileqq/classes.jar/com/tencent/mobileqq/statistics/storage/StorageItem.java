@@ -5,13 +5,13 @@ import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 public class StorageItem
   extends RecyclablePool.Recyclable
 {
-  public long a;
   public String a;
-  public boolean a;
-  public long b;
   public String b;
   public long c;
   public long d;
+  public boolean e;
+  public long f;
+  public long g;
   
   public void recycle()
   {
@@ -22,26 +22,26 @@ public class StorageItem
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
     localStringBuilder.append("StorageItem info[size=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",accessTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",isFile=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",fileCount=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(",dirCount=");
+    localStringBuilder.append(",accessTime=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(",isFile=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",fileCount=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",dirCount=");
+    localStringBuilder.append(this.g);
     localStringBuilder.append(",name=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",path=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.storage.StorageItem
  * JD-Core Version:    0.7.0.1
  */

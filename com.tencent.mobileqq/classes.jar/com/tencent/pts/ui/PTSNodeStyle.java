@@ -14,29 +14,59 @@ import org.json.JSONObject;
 public class PTSNodeStyle
   extends PTSStrToObjMap
 {
-  public PTSNodeStyle() {}
+  private Integer backgroundColor;
+  private float[] borderRadii;
+  private float borderWidth;
+  private float fontSize;
+  private int height;
+  private int left;
+  private float lineHeight;
+  private int[] padding;
+  private int top;
+  private int width;
+  
+  public PTSNodeStyle()
+  {
+    init();
+  }
   
   public PTSNodeStyle(Map<String, Object> paramMap)
   {
     super(paramMap);
+    init();
   }
   
   public PTSNodeStyle(JSONObject paramJSONObject)
   {
     super(paramJSONObject);
+    init();
   }
   
-  public Integer getBackgroundColor()
+  private void init()
   {
-    if (get("background-color") != null) {
-      return Integer.valueOf(PTSValueConvertUtil.getColor(get("background-color")));
+    this.left = PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_left")));
+    this.top = PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_top")));
+    this.width = PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_width")));
+    this.height = PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_height")));
+    this.borderWidth = PTSValueConvertUtil.getFloat(get("border-width"));
+    this.fontSize = 16.0F;
+    if (get("font-size") != null) {
+      this.fontSize = PTSValueConvertUtil.getFloat(get("font-size"));
     }
-    return null;
+    this.lineHeight = (getFontSize() * 1.6F);
+    if (get("line-height") != null) {
+      this.lineHeight = PTSValueConvertUtil.getFloat(get("line-height"));
+    }
+    if (get("background-color") != null) {
+      this.backgroundColor = Integer.valueOf(PTSValueConvertUtil.getColor(get("background-color")));
+    }
+    initPadding();
+    initBorderRadii();
   }
   
-  public float[] getBorderRadii()
+  private void initBorderRadii()
   {
-    arrayOfFloat = new float[4];
+    this.borderRadii = new float[4];
     try
     {
       Object localObject = (String)get("border-radius");
@@ -47,16 +77,16 @@ public class PTSNodeStyle
         while (i < Math.min(localObject.length, 4))
         {
           if (Float.valueOf(localObject[i]).floatValue() > 0.0F) {
-            arrayOfFloat[i] = PTSDeviceUtil.dp2px(Float.valueOf(localObject[i]).floatValue());
+            this.borderRadii[i] = PTSDeviceUtil.dp2px(Float.valueOf(localObject[i]).floatValue());
           } else {
-            arrayOfFloat[i] = 0.0F;
+            this.borderRadii[i] = 0.0F;
           }
           i += 1;
         }
       }
       String str;
       StringBuilder localStringBuilder;
-      return arrayOfFloat;
+      return;
     }
     catch (Exception localException)
     {
@@ -68,12 +98,52 @@ public class PTSNodeStyle
     }
   }
   
+  private void initLineSpacing() {}
+  
+  private void initPadding()
+  {
+    this.padding = new int[4];
+    try
+    {
+      String[] arrayOfString = ((String)get("padding")).trim().split("\\s+");
+      int i = 0;
+      while (i < Math.min(arrayOfString.length, 4))
+      {
+        this.padding[i] = PTSDeviceUtil.dp2pxInt(Float.valueOf(arrayOfString[i]).floatValue());
+        i += 1;
+      }
+      String str;
+      StringBuilder localStringBuilder;
+      return;
+    }
+    catch (Exception localException)
+    {
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPadding, e = ");
+      localStringBuilder.append(localException);
+      PTSLog.e(str, localStringBuilder.toString());
+    }
+  }
+  
+  public Integer getBackgroundColor()
+  {
+    return this.backgroundColor;
+  }
+  
+  public float[] getBorderRadii()
+  {
+    return this.borderRadii;
+  }
+  
+  public float getBorderWidth()
+  {
+    return this.borderWidth;
+  }
+  
   public float getFontSize()
   {
-    if (get("font-size") != null) {
-      return PTSValueConvertUtil.getFloat(get("font-size"));
-    }
-    return 16.0F;
+    return this.fontSize;
   }
   
   public String getFontWeight()
@@ -86,21 +156,17 @@ public class PTSNodeStyle
   
   public int getHeight()
   {
-    return PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_height")));
+    return this.height;
   }
   
   public int getLeft()
   {
-    return PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_left")));
+    return this.left;
   }
   
   public float getLineHeight()
   {
-    float f = getFontSize() * 1.6F;
-    if (get("line-height") != null) {
-      f = PTSValueConvertUtil.getFloat(get("line-height"));
-    }
-    return f;
+    return this.lineHeight;
   }
   
   public float getLineSpacing(TextPaint paramTextPaint)
@@ -117,43 +183,22 @@ public class PTSNodeStyle
   
   public int[] getPadding()
   {
-    arrayOfInt = new int[4];
-    try
-    {
-      String[] arrayOfString = ((String)get("padding")).trim().split("\\s+");
-      int i = 0;
-      while (i < Math.min(arrayOfString.length, 4))
-      {
-        arrayOfInt[i] = PTSDeviceUtil.dp2pxInt(Float.valueOf(arrayOfString[i]).floatValue());
-        i += 1;
-      }
-      String str;
-      StringBuilder localStringBuilder;
-      return arrayOfInt;
-    }
-    catch (Exception localException)
-    {
-      str = this.TAG;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getPadding, e = ");
-      localStringBuilder.append(localException);
-      PTSLog.e(str, localStringBuilder.toString());
-    }
+    return this.padding;
   }
   
   public int getTop()
   {
-    return PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_top")));
+    return this.top;
   }
   
   public int getWidth()
   {
-    return PTSDeviceUtil.dp2pxInt(PTSValueConvertUtil.getFloat(get("calculated_width")));
+    return this.width;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeStyle
  * JD-Core Version:    0.7.0.1
  */

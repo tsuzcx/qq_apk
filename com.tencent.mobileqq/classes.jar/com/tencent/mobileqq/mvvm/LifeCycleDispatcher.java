@@ -12,22 +12,14 @@ import com.tencent.qphone.base.util.QLog;
 public class LifeCycleDispatcher
   implements LifecycleOwner, ViewModelStoreOwner
 {
-  private LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = null;
-  private ViewModelStore jdField_a_of_type_AndroidxLifecycleViewModelStore = null;
-  
-  private LifecycleRegistry a()
-  {
-    if (this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry == null) {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-    }
-    return this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
-  }
+  private LifecycleRegistry a = null;
+  private ViewModelStore b = null;
   
   private void a(Lifecycle.Event paramEvent)
   {
     try
     {
-      a().handleLifecycleEvent(paramEvent);
+      g().handleLifecycleEvent(paramEvent);
       if (!QLog.isColorLevel()) {
         break label77;
       }
@@ -48,6 +40,14 @@ public class LifeCycleDispatcher
     localStringBuilder.append("handleLifecycleEvent fail : event -> ");
     localStringBuilder.append(paramEvent);
     QLog.e("LifeCycleDispatcher", 1, localStringBuilder.toString());
+  }
+  
+  private LifecycleRegistry g()
+  {
+    if (this.a == null) {
+      this.a = new LifecycleRegistry(this);
+    }
+    return this.a;
   }
   
   public void a()
@@ -84,21 +84,21 @@ public class LifeCycleDispatcher
   @NonNull
   public Lifecycle getLifecycle()
   {
-    return a();
+    return g();
   }
   
   @NonNull
   public ViewModelStore getViewModelStore()
   {
-    if (this.jdField_a_of_type_AndroidxLifecycleViewModelStore == null) {
-      this.jdField_a_of_type_AndroidxLifecycleViewModelStore = new ViewModelStore();
+    if (this.b == null) {
+      this.b = new ViewModelStore();
     }
-    return this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mvvm.LifeCycleDispatcher
  * JD-Core Version:    0.7.0.1
  */

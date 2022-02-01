@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.base.utils.api.impl;
 
 import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
+import com.tencent.mobileqq.kandian.base.image.api.impl.PublicAccountHttpDownloaderImpl;
 import com.tencent.mobileqq.kandian.base.utils.api.IImageUtil;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ImageUtil;
 import java.net.URL;
 import kotlin.Metadata;
@@ -16,18 +15,18 @@ public final class ImageUtilImpl
   @Nullable
   public Drawable getDefaultFaceDrawable140_140()
   {
-    return ImageUtil.f();
+    return ImageUtil.m();
   }
   
   @Nullable
   public URL getDrawableUrl(@Nullable String paramString)
   {
-    return ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramString, 3);
+    return new PublicAccountHttpDownloaderImpl().makeURL(paramString, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.api.impl.ImageUtilImpl
  * JD-Core Version:    0.7.0.1
  */

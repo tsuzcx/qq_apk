@@ -12,9 +12,9 @@ public class NetSearchTemplateSubItem
   extends NetSearchTemplateBaseItem
 {
   public CharSequence a;
-  public String a;
   public CharSequence b;
-  public boolean b;
+  public String c;
+  public boolean d;
   
   public NetSearchTemplateSubItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -26,28 +26,28 @@ public class NetSearchTemplateSubItem
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a(String paramString)
+  public void o_(String paramString)
   {
     for (;;)
     {
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optJSONArray("leftText"));
-        this.jdField_b_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optJSONArray("rightText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
+        this.a = SearchUtils.a(paramString.optJSONArray("leftText"));
+        this.b = SearchUtils.a(paramString.optJSONArray("rightText"));
+        this.c = paramString.optString("bgColor");
         int i = paramString.optInt("needCenter");
         bool = true;
         if (i == 1)
         {
-          this.jdField_b_of_type_Boolean = bool;
+          this.d = bool;
           return;
         }
       }
       catch (JSONException paramString)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(NetSearchTemplateBaseItem.c, 2, paramString.toString());
+          QLog.d(NetSearchTemplateBaseItem.g, 2, paramString.toString());
         }
         return;
       }
@@ -57,7 +57,7 @@ public class NetSearchTemplateSubItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateSubItem
  * JD-Core Version:    0.7.0.1
  */

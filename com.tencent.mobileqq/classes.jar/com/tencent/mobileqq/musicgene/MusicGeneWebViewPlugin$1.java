@@ -18,12 +18,12 @@ class MusicGeneWebViewPlugin$1
     MusicGeneWebViewPlugin.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
     try
     {
-      MusicGeneWebViewPlugin.a(this.a).a(MusicGeneWebViewPlugin.a(this.a));
-      if (MusicGeneWebViewPlugin.a(this.a) != null)
+      MusicGeneWebViewPlugin.b(this.a).a(MusicGeneWebViewPlugin.a(this.a));
+      if (MusicGeneWebViewPlugin.c(this.a) != null)
       {
         paramComponentName = new JSONObject();
         paramComponentName.put("code", "0");
-        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
+        MusicGeneWebViewPlugin.c(this.a).a(paramComponentName);
         MusicGeneWebViewPlugin.a(this.a, null);
         return;
       }
@@ -38,14 +38,14 @@ class MusicGeneWebViewPlugin$1
   {
     try
     {
-      if (MusicGeneWebViewPlugin.a(this.a) != null) {
-        MusicGeneWebViewPlugin.a(this.a).b(MusicGeneWebViewPlugin.a(this.a));
+      if (MusicGeneWebViewPlugin.b(this.a) != null) {
+        MusicGeneWebViewPlugin.b(this.a).b(MusicGeneWebViewPlugin.a(this.a));
       }
-      if (MusicGeneWebViewPlugin.a(this.a) != null)
+      if (MusicGeneWebViewPlugin.c(this.a) != null)
       {
         paramComponentName = new JSONObject();
         paramComponentName.put("code", "1");
-        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
+        MusicGeneWebViewPlugin.c(this.a).a(paramComponentName);
         MusicGeneWebViewPlugin.a(this.a, null);
       }
     }
@@ -58,7 +58,7 @@ class MusicGeneWebViewPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

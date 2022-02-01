@@ -16,7 +16,7 @@ class AVGameLobbyOnClickListenerFactory$5
       return;
     }
     paramView = (AVGameLobbyCommonContentInfo)paramIBaseData;
-    this.a.a.b(paramView.e, true);
+    this.a.a.b(paramView.i, true);
   }
 }
 

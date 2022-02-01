@@ -24,25 +24,25 @@ import java.util.List;
 public class PhotoWallViewForQiDianProfile$PhotoAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
-  List<CompanyShowCaseInfo> jdField_a_of_type_JavaUtilList;
+  List<CompanyShowCaseInfo> a;
+  private Context c = null;
+  private LayoutInflater d = null;
   
   public PhotoWallViewForQiDianProfile$PhotoAdapter(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.c = paramContext;
+    this.d = LayoutInflater.from(this.c);
   }
   
   public void a(List<CompanyShowCaseInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.size();
     }
@@ -51,7 +51,7 @@ public class PhotoWallViewForQiDianProfile$PhotoAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -69,10 +69,10 @@ public class PhotoWallViewForQiDianProfile$PhotoAdapter
     Object localObject;
     try
     {
-      localObject = ((CompanyShowCaseInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c;
+      localObject = ((CompanyShowCaseInfo)this.a.get(paramInt)).c;
       try
       {
-        String str = ((CompanyShowCaseInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a;
+        String str = ((CompanyShowCaseInfo)this.a.get(paramInt)).a;
       }
       catch (Exception localException1) {}
       if (!QLog.isColorLevel()) {
@@ -91,42 +91,42 @@ public class PhotoWallViewForQiDianProfile$PhotoAdapter
     if (paramView == null)
     {
       localViewHolder = new PhotoWallViewForQiDianProfile.PhotoAdapter.ViewHolder(this);
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559563, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile.a, this.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile.b));
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131372672));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370710));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(AIOUtils.b(2.5F, localResources), 1.0F);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841704);
+      paramView = this.d.inflate(2131625587, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.b.d, this.b.e));
+      localViewHolder.a = ((URLImageView)paramView.findViewById(2131440218));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131437988));
+      localViewHolder.b.setMaxLines(2);
+      localViewHolder.b.setTextColor(-1);
+      localViewHolder.b.setTextSize(2, 14.0F);
+      localViewHolder.b.setMaxLines(2);
+      Resources localResources = this.c.getResources();
+      localViewHolder.b.setLineSpacing(AIOUtils.b(2.5F, localResources), 1.0F);
+      localViewHolder.b.setGravity(80);
+      localViewHolder.b.setEllipsize(TextUtils.TruncateAt.END);
+      localViewHolder.b.setBackgroundResource(2130842619);
       int i = AIOUtils.b(11.0F, localResources);
       int j = AIOUtils.b(14.0F, localResources);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, i);
+      localViewHolder.b.setPadding(j, 0, j, i);
       paramView.setTag(localViewHolder);
     }
     else
     {
       localViewHolder = (PhotoWallViewForQiDianProfile.PhotoAdapter.ViewHolder)paramView.getTag();
     }
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setTag(new DataTag(25, Integer.valueOf(paramInt)));
+    localViewHolder.a.setTag(new DataTag(25, Integer.valueOf(paramInt)));
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130850831);
+      localViewHolder.a.setImageResource(2130852666);
     }
     else
     {
       localObject = URLDrawable.getDrawable((String)localObject);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      localViewHolder.a.setImageDrawable((Drawable)localObject);
     }
     if (!TextUtils.isEmpty(localCharSequence))
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence);
+      localViewHolder.b.setVisibility(0);
+      localViewHolder.b.setText(localCharSequence);
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -134,7 +134,7 @@ public class PhotoWallViewForQiDianProfile$PhotoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoAdapter
  * JD-Core Version:    0.7.0.1
  */

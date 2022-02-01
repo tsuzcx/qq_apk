@@ -14,14 +14,14 @@ class QQStoryCmdHandler$7
     paramJobContext = new Bundle();
     paramJobContext.putInt("data_error_code", 0);
     paramJobContext.putLong("start_time", System.currentTimeMillis());
-    paramJobContext.putByteArray("data", this.jdField_a_of_type_ArrayOfByte);
-    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, this.jdField_a_of_type_ArrayOfByte, paramJobContext);
+    paramJobContext.putByteArray("data", this.a);
+    QQStoryCmdHandler.a(this.c, this.b, this.a, paramJobContext);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.7
  * JD-Core Version:    0.7.0.1
  */

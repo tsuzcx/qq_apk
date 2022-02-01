@@ -13,7 +13,7 @@ class RedPacketVoiceFragment$1
   
   public void onClick(View paramView)
   {
-    if ((!this.a.d()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
+    if ((!this.a.p()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
     {
       Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
       localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
@@ -24,7 +24,7 @@ class RedPacketVoiceFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketVoiceFragment.1
  * JD-Core Version:    0.7.0.1
  */

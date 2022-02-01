@@ -10,7 +10,7 @@ class WakeManager$ServiceHelloQQCallback
   
   public void a()
   {
-    WakeManager.a(this.a).post(new WakeManager.ServiceHelloQQCallback.1(this));
+    WakeManager.b(this.a).post(new WakeManager.ServiceHelloQQCallback.1(this));
   }
   
   public void a(boolean paramBoolean)
@@ -30,7 +30,7 @@ class WakeManager$ServiceHelloQQCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeManager.ServiceHelloQQCallback
  * JD-Core Version:    0.7.0.1
  */

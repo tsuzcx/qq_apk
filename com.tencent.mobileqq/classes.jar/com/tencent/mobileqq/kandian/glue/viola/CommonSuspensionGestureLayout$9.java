@@ -13,7 +13,7 @@ class CommonSuspensionGestureLayout$9
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
+    this.a.setLayerType(0, null);
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
@@ -26,7 +26,7 @@ class CommonSuspensionGestureLayout$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.CommonSuspensionGestureLayout.9
  * JD-Core Version:    0.7.0.1
  */

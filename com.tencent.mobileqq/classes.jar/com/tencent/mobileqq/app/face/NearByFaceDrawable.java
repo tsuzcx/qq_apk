@@ -12,28 +12,28 @@ import com.tencent.qphone.base.util.QLog;
 public class NearByFaceDrawable
   extends FaceDrawable
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  FaceObserver jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver = null;
+  AppInterface a;
+  FaceObserver b = null;
   
   public NearByFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, boolean paramBoolean2)
   {
     super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean2);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
   }
   
   public void cancel()
   {
-    FaceObserver localFaceObserver = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver;
+    FaceObserver localFaceObserver = this.b;
     if (localFaceObserver != null)
     {
-      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      AppInterface localAppInterface = this.a;
       if (localAppInterface != null)
       {
         localAppInterface.removeObserver(localFaceObserver);
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver = null;
+        this.b = null;
       }
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    this.a = null;
     super.cancel();
   }
   
@@ -42,8 +42,8 @@ public class NearByFaceDrawable
     if (this.mFaceInfo == null) {
       return null;
     }
-    String str = FaceInfo.a(this.mFaceInfo.jdField_a_of_type_Int, this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.b, this.mFaceInfo.c, this.mFaceInfo.d);
-    return ((IQQAvatarManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceFromCache(str);
+    String str = FaceInfo.a(this.mFaceInfo.b, this.mFaceInfo.c, this.mFaceInfo.d, this.mFaceInfo.e, this.mFaceInfo.j);
+    return ((IQQAvatarManagerService)this.a.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceFromCache(str);
   }
   
   protected Bitmap getBitmapFromCache(boolean paramBoolean)
@@ -74,12 +74,12 @@ public class NearByFaceDrawable
       onDecodeTaskCompleted(this.mFaceInfo, (Bitmap)localObject);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver = new NearByFaceDrawable.1(this);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver);
+      this.b = new NearByFaceDrawable.1(this);
+      this.a.addObserver(this.b);
     }
-    ((IQQNearbyAvatarHandlerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQNearbyAvatarHandlerService.class, "nearby")).getStrangerFaceInfo(this.mFaceInfo);
+    ((IQQNearbyAvatarHandlerService)this.a.getRuntimeService(IQQNearbyAvatarHandlerService.class, "nearby")).getStrangerFaceInfo(this.mFaceInfo);
   }
   
   protected boolean requestDecode()
@@ -94,18 +94,18 @@ public class NearByFaceDrawable
     if (this.mFaceInfo == null) {
       return false;
     }
-    ((IQQAvatarDecoderApi)QRoute.api(IQQAvatarDecoderApi.class)).executeTask(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.mFaceInfo, this);
+    ((IQQAvatarDecoderApi)QRoute.api(IQQAvatarDecoderApi.class)).executeTask(this.a, this.mFaceInfo, this);
     return true;
   }
   
   protected void setApp(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.NearByFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

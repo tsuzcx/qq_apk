@@ -32,8 +32,8 @@ public class RIJFastWebRecommendAdServiceImpl
   public oidb_cmd0x68b.ReqAdvertisePara getAdRequestData()
   {
     AdRequestData localAdRequestData = new AdRequestData();
-    localAdRequestData.a = true;
-    return (oidb_cmd0x68b.ReqAdvertisePara)((IRIJAdvertisementInfoModule)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().c()).a(null, 0, 1, 0, 10000, localAdRequestData);
+    localAdRequestData.e = true;
+    return (oidb_cmd0x68b.ReqAdvertisePara)((IRIJAdvertisementInfoModule)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().ak()).a(null, 0, 1, 0, 10000, localAdRequestData);
   }
   
   public void onAdJump(Context paramContext, AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean, int paramInt)
@@ -57,12 +57,12 @@ public class RIJFastWebRecommendAdServiceImpl
   
   public List<AbsBaseArticleInfo> parseAdvertise(oidb_cmd0xf30.InsertArticle paramInsertArticle)
   {
-    return ((IRIJAdvertisementInfoModule)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().c()).a(paramInsertArticle);
+    return ((IRIJAdvertisementInfoModule)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().ak()).a(paramInsertArticle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJFastWebRecommendAdServiceImpl
  * JD-Core Version:    0.7.0.1
  */

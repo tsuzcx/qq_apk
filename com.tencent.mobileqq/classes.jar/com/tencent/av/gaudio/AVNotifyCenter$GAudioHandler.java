@@ -26,7 +26,7 @@ class AVNotifyCenter$GAudioHandler
     if (localAVNotifyCenter == null) {
       return;
     }
-    if (!localAVNotifyCenter.i()) {
+    if (!localAVNotifyCenter.y()) {
       return;
     }
     Object localObject;
@@ -87,7 +87,7 @@ class AVNotifyCenter$GAudioHandler
       localAVNotifyCenter.a.getApp().sendBroadcast((Intent)localObject);
       return;
     case 10002: 
-      localAVNotifyCenter.b();
+      localAVNotifyCenter.x();
     }
   }
 }

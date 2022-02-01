@@ -42,7 +42,7 @@ public class RIJInteractiveCardsHandler
         paramToServiceMsg.add(((ByteStringMicro)paramFromServiceMsg.next()).toStringUtf8());
       }
       i = paramToServiceMsg.size();
-      this.jdField_a_of_type_AndroidOsHandler.post(new RIJInteractiveCardsHandler.1(this, paramToServiceMsg));
+      this.b.post(new RIJInteractiveCardsHandler.1(this, paramToServiceMsg));
     }
     else
     {
@@ -65,7 +65,7 @@ public class RIJInteractiveCardsHandler
       ((oidb_cmd0xc6d.ReqBody)localObject).bytes_row_key.set(ByteStringMicro.copyFromUtf8(""));
     }
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xc6d", 3181, 1, ((oidb_cmd0xc6d.ReqBody)localObject).toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry((ToServiceMsg)localObject);
+    this.a.sendPbReqWithAutoRetry((ToServiceMsg)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("request0xc6dInteractiveAreaCards,rowKey=");
     ((StringBuilder)localObject).append(paramString);
@@ -74,7 +74,7 @@ public class RIJInteractiveCardsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJInteractiveCardsHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,12 +21,14 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import com.gyailib.library.GYAIDocEnhance;
+import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.ae.util.AECameraPrefsUtil;
 import com.tencent.aelight.camera.aebase.fragment.AEFullScreenPublicFragment;
 import com.tencent.aelight.camera.log.AEQLog;
@@ -36,6 +41,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.widget.ScaleGestureDetector;
 import java.util.Arrays;
 import mqq.os.MqqHandler;
 
@@ -43,81 +49,58 @@ public class DocEnhanceFragment
   extends AEFullScreenPublicFragment
   implements View.OnClickListener
 {
-  private static final int jdField_b_of_type_Int = ViewConfiguration.get(BaseApplicationImpl.getContext()).getScaledTouchSlop();
-  private static final int jdField_c_of_type_Int = ViewConfiguration.getLongPressTimeout();
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 2;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GYAIDocEnhance jdField_a_of_type_ComGyailibLibraryGYAIDocEnhance = new GYAIDocEnhance();
-  private BubbleTextView jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F };
-  private float jdField_b_of_type_Float;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private static final int H = ViewConfiguration.get(BaseApplicationImpl.getContext()).getScaledTouchSlop();
+  private static final int I = ViewConfiguration.getLongPressTimeout();
+  private Bitmap A;
+  private float[] B = { 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F };
+  private int C = 2;
+  private GYAIDocEnhance D = new GYAIDocEnhance();
+  private Bitmap E;
+  private float F;
+  private float G;
+  private Runnable J;
+  private Handler K = new Handler();
+  private ImageView a;
+  private TextView b;
+  private TextView c;
+  private TextView d;
   private TextView e;
   private TextView f;
-  private TextView g;
-  private TextView h;
-  
-  @Nullable
-  private Bitmap a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1) {
-      return this.jdField_c_of_type_AndroidGraphicsBitmap;
-    }
-    if (i == 2) {
-      return this.jdField_a_of_type_ComGyailibLibraryGYAIDocEnhance.documentDeshadow(this.jdField_c_of_type_AndroidGraphicsBitmap);
-    }
-    if (i == 3) {
-      return this.jdField_a_of_type_ComGyailibLibraryGYAIDocEnhance.documentEnhance(this.jdField_c_of_type_AndroidGraphicsBitmap);
-    }
-    return null;
-  }
+  private RelativeLayout g;
+  private ImageView h;
+  private ImageView i;
+  private ImageView j;
+  private TextView k;
+  private TextView l;
+  private TextView m;
+  private BubbleTextView n;
+  private Rect o = new Rect();
+  private Matrix p = new Matrix();
+  private float q;
+  private float r;
+  private final float[] s = new float[9];
+  private final RectF t = new RectF();
+  private final RectF u = new RectF();
+  private int v;
+  private int w;
+  private boolean x;
+  private Bitmap y;
+  private String z;
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
-    this.jdField_c_of_type_AndroidWidgetImageView.setSelected(false);
-    this.jdField_d_of_type_AndroidWidgetImageView.setSelected(false);
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
-    } else if (i == 2) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setSelected(true);
-    } else if (i == 3) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setSelected(true);
-    }
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16725252);
-      this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2064056443, 0, 0, 0);
-      return;
-    }
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2064056442, 0, 0, 0);
+    ScaleGestureDetector localScaleGestureDetector = new ScaleGestureDetector(getContext(), new DocEnhanceFragment.7(this));
+    this.a.setOnTouchListener(new DocEnhanceFragment.8(this, localScaleGestureDetector));
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    if (this.C == paramInt) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-    n();
+    this.C = paramInt;
+    c();
+    r();
   }
   
   public static void a(Activity paramActivity, int paramInt1, String paramString1, String paramString2, float[] paramArrayOfFloat, int paramInt2)
@@ -136,23 +119,85 @@ public class DocEnhanceFragment
     QPublicFragmentActivityForMultiProcess.a(paramActivity, localIntent, DocEnhanceFragment.class, paramInt1);
   }
   
+  private void a(Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      this.v = paramBitmap.getWidth();
+      this.w = paramBitmap.getHeight();
+      int i1 = this.a.getWidth();
+      int i2 = this.a.getHeight();
+      float f1 = i1;
+      float f2 = f1 * 1.0F / this.v;
+      float f4 = i2;
+      float f5 = 1.0F * f4 / this.w;
+      float f3 = Math.min(f2, f5);
+      if (f2 < f5)
+      {
+        f1 = (f4 - this.w * f3) / 2.0F;
+        f2 = 0.0F;
+      }
+      else
+      {
+        f2 = (f1 - this.v * f3) / 2.0F;
+        f1 = 0.0F;
+      }
+      this.p.reset();
+      this.p.postScale(f3, f3);
+      this.p.postTranslate(f2, f1);
+      this.a.setImageMatrix(this.p);
+      this.q = f3;
+      this.r = Math.max(3.0F, f3);
+      this.t.set(0.0F, 0.0F, this.v, this.w);
+      this.p.mapRect(this.t);
+    }
+  }
+  
+  private void a(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if ((this.a.getWidth() > 0) && (this.a.getHeight() > 0)) {
+        a(paramBitmap);
+      } else {
+        this.a.addOnLayoutChangeListener(new DocEnhanceFragment.6(this, paramBitmap));
+      }
+    }
+    this.a.setImageBitmap(paramBitmap);
+  }
+  
   private void a(FragmentActivity paramFragmentActivity)
   {
-    ThreadManager.excute(new DocEnhanceFragment.5(this, paramFragmentActivity), 64, null, false);
+    ThreadManager.excute(new DocEnhanceFragment.9(this, paramFragmentActivity), 64, null, false);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    Bitmap localBitmap1 = o();
+    if (localBitmap1 != null)
+    {
+      this.x = true;
+      this.b.setEnabled(true);
+      Bitmap localBitmap2 = this.A;
+      if ((localBitmap2 != null) && (localBitmap2 != localBitmap1) && (localBitmap2 != this.y) && (localBitmap2 != this.E)) {
+        localBitmap2.recycle();
+      }
+      this.A = localBitmap1;
+      a(this.A, paramBoolean);
+    }
   }
   
   private boolean a(MotionEvent paramMotionEvent)
   {
     boolean bool1;
-    if (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() <= jdField_c_of_type_Int) {
+    if (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() <= I) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    float f1 = paramMotionEvent.getRawX() - this.jdField_a_of_type_Float;
-    float f2 = paramMotionEvent.getRawY() - this.jdField_b_of_type_Float;
+    float f1 = paramMotionEvent.getRawX() - this.F;
+    float f2 = paramMotionEvent.getRawY() - this.G;
     boolean bool2;
-    if (Math.sqrt(f1 * f1 + f2 * f2) <= jdField_b_of_type_Int) {
+    if (Math.sqrt(f1 * f1 + f2 * f2) <= H) {
       bool2 = true;
     } else {
       bool2 = false;
@@ -168,7 +213,68 @@ public class DocEnhanceFragment
   
   private void b()
   {
-    if (this.jdField_a_of_type_Int == 2)
+    RectF localRectF = this.u;
+    float f1 = this.v;
+    float f2 = this.w;
+    float f3 = 0.0F;
+    localRectF.set(0.0F, 0.0F, f1, f2);
+    this.p.mapRect(this.u);
+    if (this.u.left > this.t.left) {
+      f1 = this.t.left;
+    }
+    for (f2 = this.u.left;; f2 = this.u.right)
+    {
+      f1 -= f2;
+      break label121;
+      if (this.u.right >= this.t.right) {
+        break;
+      }
+      f1 = this.t.right;
+    }
+    f1 = 0.0F;
+    label121:
+    if (this.u.top > this.t.top) {
+      f2 = this.t.top;
+    }
+    for (f3 = this.u.top;; f3 = this.u.bottom)
+    {
+      f2 -= f3;
+      break;
+      f2 = f3;
+      if (this.u.bottom >= this.t.bottom) {
+        break;
+      }
+      f2 = this.t.bottom;
+    }
+    this.p.postTranslate(f1, f2);
+  }
+  
+  private void c()
+  {
+    this.h.setSelected(false);
+    this.i.setSelected(false);
+    this.j.setSelected(false);
+    int i1 = this.C;
+    if (i1 == 1) {
+      this.h.setSelected(true);
+    } else if (i1 == 2) {
+      this.i.setSelected(true);
+    } else if (i1 == 3) {
+      this.j.setSelected(true);
+    }
+    if (this.C == 2)
+    {
+      this.d.setTextColor(-16725252);
+      this.d.setCompoundDrawablesWithIntrinsicBounds(2063925412, 0, 0, 0);
+      return;
+    }
+    this.d.setTextColor(-1);
+    this.d.setCompoundDrawablesWithIntrinsicBounds(2063925411, 0, 0, 0);
+  }
+  
+  private void d()
+  {
+    if (this.C == 2)
     {
       a(1);
       return;
@@ -176,89 +282,89 @@ public class DocEnhanceFragment
     a(2);
   }
   
-  private void c()
+  private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.g.setVisibility(8);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
     localTranslateAnimation.setDuration(200L);
     localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+    this.g.startAnimation(localTranslateAnimation);
   }
   
-  private void d()
+  private void f()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity != null)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.x)
       {
         a(localFragmentActivity);
         return;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("RESULT_KEY_IS_ENHANCED", this.jdField_a_of_type_Boolean);
+      localIntent.putExtra("RESULT_KEY_IS_ENHANCED", this.x);
       localFragmentActivity.setResult(-1, localIntent);
       localFragmentActivity.finish();
     }
   }
   
-  private void e()
-  {
-    g();
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F };
-    m();
-    this.jdField_a_of_type_Int = 1;
-    a();
-  }
-  
   private void g()
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(getContext(), 2131756189);
-    localQQCustomDialog.setContentView(2131558978);
-    localQQCustomDialog.setTitle(HardCodeUtil.a(2064515151));
-    localQQCustomDialog.setMessage(HardCodeUtil.a(2064515150));
-    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2064515117), new DocEnhanceFragment.6(this));
-    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2064515119), new DocEnhanceFragment.7(this));
-    localQQCustomDialog.setCanceledOnTouchOutside(true);
-    localQQCustomDialog.show();
+    i();
   }
   
   private void h()
   {
+    this.x = false;
+    this.b.setEnabled(false);
+    a(this.y, true);
+    this.B = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F };
+    q();
+    this.C = 1;
+    c();
+  }
+  
+  private void i()
+  {
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(getContext(), 2131953338);
+    localQQCustomDialog.setContentView(2131624611);
+    localQQCustomDialog.setTitle(HardCodeUtil.a(2064187493));
+    localQQCustomDialog.setMessage(HardCodeUtil.a(2064187492));
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2064187459), new DocEnhanceFragment.10(this));
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2064187461), new DocEnhanceFragment.11(this));
+    localQQCustomDialog.setCanceledOnTouchOutside(true);
+    localQQCustomDialog.show();
+  }
+  
+  private void j()
+  {
     long l1 = System.currentTimeMillis();
-    Object localObject1 = this.jdField_a_of_type_ComGyailibLibraryGYAIDocEnhance.documentDetect(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    Object localObject1 = this.D.documentDetect(this.y);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("doEnhancementOnFirstEnter---detect points=");
     ((StringBuilder)localObject2).append(Arrays.toString((float[])localObject1));
     AEQLog.b("DocEnhanceFragment", ((StringBuilder)localObject2).toString());
     if ((localObject1 != null) && (localObject1.length == 8))
     {
-      int i = 0;
-      while (i < 4)
+      int i1 = 0;
+      while (i1 < 4)
       {
-        localObject2 = this.jdField_a_of_type_ArrayOfFloat;
-        int j = i * 2;
-        localObject1[j] /= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        localObject2 = this.jdField_a_of_type_ArrayOfFloat;
-        j += 1;
-        localObject1[j] /= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-        i += 1;
+        localObject2 = this.B;
+        int i2 = i1 * 2;
+        localObject1[i2] /= this.y.getWidth();
+        localObject2 = this.B;
+        i2 += 1;
+        localObject1[i2] /= this.y.getHeight();
+        i1 += 1;
       }
-      i();
+      k();
     }
     else
     {
-      j();
+      l();
     }
-    m();
-    k();
+    q();
+    a(true);
     if ((localObject1 != null) && (localObject1.length == 8))
     {
       long l2 = System.currentTimeMillis();
@@ -269,9 +375,9 @@ public class DocEnhanceFragment
     }
   }
   
-  private void i()
+  private void k()
   {
-    boolean bool = AECameraPrefsUtil.a().a("sp_key_doc_enhance_has_shown_adjust_guide_bubble", false, 0);
+    boolean bool = AECameraPrefsUtil.a().b("sp_key_doc_enhance_has_shown_adjust_guide_bubble", false, 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkShowGuideBubble---hasShown=");
     localStringBuilder.append(bool);
@@ -280,108 +386,131 @@ public class DocEnhanceFragment
       return;
     }
     AECameraPrefsUtil.a().a("sp_key_doc_enhance_has_shown_adjust_guide_bubble", true, 0);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setText(2064515148);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setVisibility(0);
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setText(2064515149);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setVisibility(0);
-  }
-  
-  private void k()
-  {
-    Bitmap localBitmap1 = a();
-    if (localBitmap1 != null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      Bitmap localBitmap2 = this.jdField_b_of_type_AndroidGraphicsBitmap;
-      if ((localBitmap2 != null) && (localBitmap2 != localBitmap1) && (localBitmap2 != this.jdField_a_of_type_AndroidGraphicsBitmap) && (localBitmap2 != this.jdField_c_of_type_AndroidGraphicsBitmap)) {
-        localBitmap2.recycle();
-      }
-      this.jdField_b_of_type_AndroidGraphicsBitmap = localBitmap1;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
+    m();
+    this.n.setText(2064187490);
+    this.n.setVisibility(0);
   }
   
   private void l()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("doEnhancementOnAdjustPointsChanged---mAdjustPoints=");
-    ((StringBuilder)localObject).append(Arrays.toString(this.jdField_a_of_type_ArrayOfFloat));
-    AEQLog.b("DocEnhanceFragment", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ArrayOfFloat;
-    if ((localObject != null) && (localObject.length == 8))
-    {
-      m();
-      k();
+    int i1 = AECameraPrefsUtil.a().b("sp_key_doc_enhance_fail_detect_bubble_times", 0, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkShowNeedAdjustBubble---showTimes=");
+    localStringBuilder.append(i1);
+    AEQLog.b("DocEnhanceFragment", localStringBuilder.toString());
+    if (i1 >= 2) {
+      return;
     }
+    AECameraPrefsUtil.a().a("sp_key_doc_enhance_fail_detect_bubble_times", i1 + 1, 0);
+    m();
+    this.n.setText(2064187491);
+    this.n.setVisibility(0);
+    n();
   }
   
   private void m()
   {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    this.K.removeCallbacks(this.J);
+  }
+  
+  private void n()
+  {
+    this.K.postDelayed(this.J, 3000L);
+  }
+  
+  @Nullable
+  private Bitmap o()
+  {
+    int i1 = this.C;
+    if (i1 == 1) {
+      return this.E;
+    }
+    if (i1 == 2) {
+      return this.D.documentDeshadow(this.E);
+    }
+    if (i1 == 3) {
+      return this.D.documentEnhance(this.E);
+    }
+    return null;
+  }
+  
+  private void p()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doEnhancementOnAdjustPointsChanged---mAdjustPoints=");
+    ((StringBuilder)localObject).append(Arrays.toString(this.B));
+    AEQLog.b("DocEnhanceFragment", ((StringBuilder)localObject).toString());
+    localObject = this.B;
+    if ((localObject != null) && (localObject.length == 8))
+    {
+      q();
+      a(true);
+    }
+  }
+  
+  private void q()
+  {
+    float[] arrayOfFloat = this.B;
     if (arrayOfFloat != null)
     {
       if (arrayOfFloat.length != 8) {
         return;
       }
       arrayOfFloat = new float[8];
-      int i = 0;
-      while (i < 4)
+      int i1 = 0;
+      while (i1 < 4)
       {
-        int j = i * 2;
-        arrayOfFloat[j] = (this.jdField_a_of_type_ArrayOfFloat[j] * this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-        j += 1;
-        arrayOfFloat[j] = (this.jdField_a_of_type_ArrayOfFloat[j] * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-        i += 1;
+        int i2 = i1 * 2;
+        arrayOfFloat[i2] = (this.B[i2] * this.y.getWidth());
+        i2 += 1;
+        arrayOfFloat[i2] = (this.B[i2] * this.y.getHeight());
+        i1 += 1;
       }
-      Bitmap localBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
+      Bitmap localBitmap = this.E;
       if (localBitmap != null) {
         localBitmap.recycle();
       }
-      this.jdField_c_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComGyailibLibraryGYAIDocEnhance.documentWarp(this.jdField_a_of_type_AndroidGraphicsBitmap, arrayOfFloat);
+      this.E = this.D.documentWarp(this.y, arrayOfFloat);
     }
   }
   
-  private void n()
+  private void r()
   {
-    if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {
+    if (this.E == null) {
       return;
     }
-    k();
+    a(false);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int i1 = paramMotionEvent.getActionMasked();
+    if (i1 != 0)
     {
-      if (i == 1)
+      if (i1 == 1)
       {
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getVisibility() == 0) && (a(paramMotionEvent)))
+        if ((this.n.getVisibility() == 0) && (a(paramMotionEvent)))
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setVisibility(8);
+          m();
+          this.n.setVisibility(8);
           return false;
         }
-        if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) && (a(paramMotionEvent)))
+        if ((this.g.getVisibility() == 0) && (a(paramMotionEvent)))
         {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-          i = (int)paramMotionEvent.getRawX();
-          int j = (int)paramMotionEvent.getRawY();
+          this.g.getGlobalVisibleRect(this.o);
+          i1 = (int)paramMotionEvent.getRawX();
+          int i2 = (int)paramMotionEvent.getRawY();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("considerAClick mConfigPanelRect=");
-          localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRect);
+          localStringBuilder.append(this.o);
           localStringBuilder.append(", ev=");
-          localStringBuilder.append(i);
+          localStringBuilder.append(i1);
           localStringBuilder.append(",");
-          localStringBuilder.append(j);
+          localStringBuilder.append(i2);
           AEQLog.a("DocEnhanceFragment", localStringBuilder.toString());
-          if (j < this.jdField_a_of_type_AndroidGraphicsRect.top)
+          if (i2 < this.o.top)
           {
-            c();
+            e();
             return true;
           }
         }
@@ -389,8 +518,8 @@ public class DocEnhanceFragment
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      this.F = paramMotionEvent.getRawX();
+      this.G = paramMotionEvent.getRawY();
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -398,7 +527,7 @@ public class DocEnhanceFragment
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
-    paramActivity.overridePendingTransition(2130772011, 2130772004);
+    paramActivity.overridePendingTransition(2130772014, 2130772007);
   }
   
   public boolean needDispatchTouchEvent()
@@ -410,16 +539,16 @@ public class DocEnhanceFragment
   {
     if ((paramInt1 == 3721) && (paramInt2 == -1) && (paramIntent != null))
     {
-      this.jdField_a_of_type_ArrayOfFloat = paramIntent.getFloatArrayExtra("RESULT_ADJUST_POINTS_ARRAY");
-      l();
+      this.B = paramIntent.getFloatArrayExtra("RESULT_ADJUST_POINTS_ARRAY");
+      p();
     }
   }
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+    if (this.g.getVisibility() == 0)
     {
-      c();
+      e();
       return true;
     }
     return super.onBackEvent();
@@ -431,20 +560,31 @@ public class DocEnhanceFragment
     {
     default: 
       return;
-    case 2064122787: 
-      e();
+    case 2063991562: 
+      g();
+      AEBaseDataReporter.a().t("还原");
       return;
-    case 2064122762: 
+    case 2063991537: 
+      f();
+      AEBaseDataReporter.a().t("完成");
+      return;
+    case 2063991534: 
       d();
+      AEBaseDataReporter localAEBaseDataReporter = AEBaseDataReporter.a();
+      if (this.C != 1) {
+        paramView = "效果开";
+      } else {
+        paramView = "效果关";
+      }
+      localAEBaseDataReporter.t(paramView);
       return;
-    case 2064122760: 
-      b();
-      return;
-    case 2064122749: 
+    case 2063991523: 
       onBackEvent();
+      AEBaseDataReporter.a().t("取消");
       return;
     }
-    DocEnhanceAdjustFragment.a(getActivity(), 3721, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfFloat);
+    DocEnhanceAdjustFragment.a(getActivity(), 3721, this.z, this.B);
+    AEBaseDataReporter.a().t("校准");
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -456,27 +596,27 @@ public class DocEnhanceFragment
       String str = paramBundle.getString("ARG_RAW_PIC_PATH");
       if (!TextUtils.isEmpty(str))
       {
-        this.jdField_a_of_type_JavaLangString = str;
-        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(str);
+        this.z = str;
+        this.y = BitmapFactory.decodeFile(str);
       }
       str = paramBundle.getString("ARG_ENHANCED_PIC_PATH");
       float[] arrayOfFloat = paramBundle.getFloatArray("ARG_ENHANCED_POINTS_ARRAY");
       if ((!TextUtils.isEmpty(str)) && (arrayOfFloat != null) && (arrayOfFloat.length == 8))
       {
-        this.jdField_a_of_type_ArrayOfFloat = arrayOfFloat;
-        this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(str);
-        this.jdField_a_of_type_Int = paramBundle.getInt("ARG_ENHANCED_COLOR_CONFIG", 2);
-        this.jdField_a_of_type_Boolean = true;
+        this.B = arrayOfFloat;
+        this.A = BitmapFactory.decodeFile(str);
+        this.C = paramBundle.getInt("ARG_ENHANCED_COLOR_CONFIG", 2);
+        this.x = true;
       }
       paramBundle = new StringBuilder();
       paramBundle.append("onCreate--mIsEnhanced=");
-      paramBundle.append(this.jdField_a_of_type_Boolean);
+      paramBundle.append(this.x);
       paramBundle.append(", mRawPicPath=");
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.z);
       paramBundle.append(", mEnhancedPicPath=");
       paramBundle.append(str);
       paramBundle.append(", mEnhancePoints=");
-      paramBundle.append(Arrays.toString(this.jdField_a_of_type_ArrayOfFloat));
+      paramBundle.append(Arrays.toString(this.B));
       AEQLog.b("DocEnhanceFragment", paramBundle.toString());
     }
   }
@@ -484,89 +624,94 @@ public class DocEnhanceFragment
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318563, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056435, paramViewGroup, false);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.y;
     if (localBitmap != null)
     {
       localBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.y = null;
     }
-    localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    localBitmap = this.A;
     if (localBitmap != null)
     {
       localBitmap.recycle();
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+      this.A = null;
     }
-    localBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
+    localBitmap = this.E;
     if (localBitmap != null)
     {
       localBitmap.recycle();
-      this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+      this.E = null;
     }
   }
   
   public void onViewCreated(@NonNull View paramView, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122303));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122787));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122746));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122760));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122749));
-    this.e = ((TextView)paramView.findViewById(2064122762));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = ((BubbleTextView)paramView.findViewById(2064122003));
+    this.a = ((ImageView)paramView.findViewById(2063991182));
+    this.b = ((TextView)paramView.findViewById(2063991562));
+    this.c = ((TextView)paramView.findViewById(2063991519));
+    this.d = ((TextView)paramView.findViewById(2063991534));
+    this.e = ((TextView)paramView.findViewById(2063991523));
+    this.f = ((TextView)paramView.findViewById(2063991537));
+    this.n = ((BubbleTextView)paramView.findViewById(2063990935));
     paramBundle = getContext();
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setPadding(UIUtils.a(paramBundle, 10.0F), UIUtils.a(paramBundle, 11.0F), UIUtils.a(paramBundle, 10.0F), UIUtils.a(paramBundle, 11.0F));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.setTextColor(Color.parseColor("#03081A"));
-    BubbleTextView localBubbleTextView = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-    localBubbleTextView.jdField_a_of_type_Int = -1;
-    localBubbleTextView.jdField_b_of_type_Float = UIUtils.a(paramBundle, 6.0F);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2064122568));
-    paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2064122354);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122312));
-    this.f = ((TextView)paramView.findViewById(2064122752));
-    paramView.setOnClickListener(new DocEnhanceFragment.2(this));
-    paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2064122353);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122312));
-    this.g = ((TextView)paramView.findViewById(2064122752));
+    this.n.setPadding(UIUtils.a(paramBundle, 10.0F), UIUtils.a(paramBundle, 11.0F), UIUtils.a(paramBundle, 10.0F), UIUtils.a(paramBundle, 11.0F));
+    this.n.setIncludeFontPadding(false);
+    this.n.setTextSize(1, 14.0F);
+    this.n.setTextColor(Color.parseColor("#03081A"));
+    BubbleTextView localBubbleTextView = this.n;
+    localBubbleTextView.e = -1;
+    localBubbleTextView.b = UIUtils.a(paramBundle, 6.0F);
+    this.n.a();
+    this.J = new DocEnhanceFragment.2(this);
+    this.g = ((RelativeLayout)paramView.findViewById(2063991386));
+    paramView = this.g.findViewById(2063991227);
+    this.h = ((ImageView)paramView.findViewById(2063991193));
+    this.k = ((TextView)paramView.findViewById(2063991526));
     paramView.setOnClickListener(new DocEnhanceFragment.3(this));
-    paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2064122352);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122312));
-    this.h = ((TextView)paramView.findViewById(2064122752));
+    paramView = this.g.findViewById(2063991226);
+    this.i = ((ImageView)paramView.findViewById(2063991193));
+    this.l = ((TextView)paramView.findViewById(2063991526));
     paramView.setOnClickListener(new DocEnhanceFragment.4(this));
-    this.f.setText(2064515143);
-    this.g.setText(2064515142);
-    this.h.setText(2064515141);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2064056441);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2064056437);
-    this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2064056436);
-    a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    paramView = this.g.findViewById(2063991225);
+    this.j = ((ImageView)paramView.findViewById(2063991193));
+    this.m = ((TextView)paramView.findViewById(2063991526));
+    paramView.setOnClickListener(new DocEnhanceFragment.5(this));
+    this.k.setText(2064187485);
+    this.l.setText(2064187484);
+    this.m.setText(2064187483);
+    this.h.setImageResource(2063925410);
+    this.i.setImageResource(2063925406);
+    this.j.setImageResource(2063925405);
+    c();
+    this.b.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.d.setOnClickListener(this);
     this.e.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Boolean)
+    this.f.setOnClickListener(this);
+    this.b.setEnabled(this.x);
+    this.a.setScaleType(ImageView.ScaleType.MATRIX);
+    if (this.x)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      m();
-      return;
+      a(this.A, true);
+      q();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    h();
+    else
+    {
+      a(this.y, true);
+      j();
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhanceFragment
  * JD-Core Version:    0.7.0.1
  */

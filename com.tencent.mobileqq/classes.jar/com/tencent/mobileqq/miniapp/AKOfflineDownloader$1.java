@@ -29,21 +29,21 @@ class AKOfflineDownloader$1
       }
       if (paramString.contains("url"))
       {
-        AKOfflineDownloader.a(true, this.b, this.c, 2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
-        QLog.d("AKOfflineDownloader", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+        AKOfflineDownloader.a(true, this.b, this.c, 2, this.a, this.d);
+        QLog.d("AKOfflineDownloader", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.e) });
         return;
       }
       ThreadManagerV2.excute(new AKOfflineDownloader.1.2(this), 64, null, true);
       return;
     }
-    AKOfflineDownloader.a(false, this.b, this.c, -1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    AKOfflineDownloader.a(false, this.b, this.c, -1, this.a, this.d);
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.AKOfflineDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class QQMusicPlayerScene$MyMusicTimerTask
   
   public void run()
   {
-    this.this$0.a.sendEmptyMessage(1);
+    this.this$0.e.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.d("QQMusicPlayerScene", 2, "MyMusicTimerTask MSG_MUSIC_REPLAY");
     }
@@ -19,7 +19,7 @@ class QQMusicPlayerScene$MyMusicTimerTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QQMusicPlayerScene.MyMusicTimerTask
  * JD-Core Version:    0.7.0.1
  */

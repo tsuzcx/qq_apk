@@ -8,12 +8,12 @@ class PermissionChecker$1
   public void run()
   {
     PermissionChecker localPermissionChecker = this.this$0;
-    PermissionChecker.a(localPermissionChecker, Boolean.valueOf(localPermissionChecker.c()));
+    PermissionChecker.a(localPermissionChecker, Boolean.valueOf(localPermissionChecker.e()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.permission.PermissionChecker.1
  * JD-Core Version:    0.7.0.1
  */

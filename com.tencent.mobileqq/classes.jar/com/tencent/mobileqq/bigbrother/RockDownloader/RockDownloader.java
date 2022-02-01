@@ -47,16 +47,16 @@ import mqq.app.NewIntent;
 
 public class RockDownloader
 {
-  private static EntityManager a;
   public static final String a;
   private static String b;
+  private static EntityManager c;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append(".Rock/");
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static RockDownloadInfo a(Context paramContext, String paramString)
@@ -75,25 +75,17 @@ public class RockDownloader
     return null;
   }
   
-  public static EntityManager a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-      jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = new RockEntityManagerFactory().createEntityManager();
-    }
-    return jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  }
-  
   public static String a()
   {
-    if (jdField_b_of_type_JavaLangString == null)
+    if (b == null)
     {
-      jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-      VFSFile localVFSFile = new VFSFile(jdField_b_of_type_JavaLangString);
+      b = a;
+      VFSFile localVFSFile = new VFSFile(b);
       if (!localVFSFile.exists()) {
         localVFSFile.mkdirs();
       }
     }
-    return jdField_b_of_type_JavaLangString;
+    return b;
   }
   
   private static String a(RockDownloadInfo paramRockDownloadInfo)
@@ -102,46 +94,6 @@ public class RockDownloader
     localStringBuilder.append(a());
     localStringBuilder.append(paramRockDownloadInfo.getDownloadFileNameMD5());
     return localStringBuilder.toString();
-  }
-  
-  public static ArrayList<RockDownloadInfo> a(RockDownloaderTask paramRockDownloaderTask)
-  {
-    if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, "RockDownloadInfo verifyDate fail");
-      }
-      return null;
-    }
-    Object localObject = a().query(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { paramRockDownloaderTask.getDownloadInfo().businessName, paramRockDownloaderTask.getDownloadInfo().packageName }, null, null, null, null);
-    paramRockDownloaderTask = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, new Object[] { "result size=", Integer.valueOf(((List)localObject).size()) });
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Entity localEntity = (Entity)((Iterator)localObject).next();
-        if ((localEntity instanceof RockDownloadInfo))
-        {
-          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localEntity;
-          if ((!TextUtils.isEmpty(localRockDownloadInfo.localPath)) && (new VFSFile(localRockDownloadInfo.localPath).exists()))
-          {
-            paramRockDownloaderTask.add(localRockDownloadInfo);
-          }
-          else
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localEntity.toString() });
-            }
-            a().remove(localRockDownloadInfo);
-          }
-        }
-      }
-    }
-    return paramRockDownloaderTask;
   }
   
   public static void a(RockDownloaderTask paramRockDownloaderTask)
@@ -178,229 +130,229 @@ public class RockDownloader
     //   4: astore 7
     //   6: aconst_null
     //   7: astore 4
-    //   9: new 302	java/io/RandomAccessFile
+    //   9: new 226	java/io/RandomAccessFile
     //   12: dup
     //   13: aload_1
-    //   14: invokevirtual 305	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
+    //   14: invokevirtual 229	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
     //   17: iconst_0
-    //   18: invokestatic 311	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   21: ldc_w 313
-    //   24: invokespecial 316	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   27: astore 5
-    //   29: aload 5
-    //   31: invokevirtual 320	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
-    //   34: astore 4
-    //   36: aload 4
-    //   38: getstatic 326	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
-    //   41: lconst_0
-    //   42: ldc2_w 327
-    //   45: invokevirtual 334	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   48: astore 6
-    //   50: iconst_0
-    //   51: istore_2
-    //   52: iload_2
-    //   53: iconst_4
-    //   54: if_icmpge +41 -> 95
-    //   57: aload 6
-    //   59: iload_2
-    //   60: invokevirtual 340	java/nio/MappedByteBuffer:get	(I)B
-    //   63: istore_3
-    //   64: iload_2
-    //   65: ifne +12 -> 77
-    //   68: iload_3
-    //   69: bipush 80
-    //   71: if_icmpne +6 -> 77
-    //   74: goto +21 -> 95
-    //   77: aload 6
-    //   79: iload_2
-    //   80: iload_3
-    //   81: iconst_4
-    //   82: isub
-    //   83: i2b
-    //   84: invokevirtual 344	java/nio/MappedByteBuffer:put	(IB)Ljava/nio/ByteBuffer;
-    //   87: pop
-    //   88: iload_2
-    //   89: iconst_1
-    //   90: iadd
-    //   91: istore_2
-    //   92: goto -40 -> 52
-    //   95: aload 6
-    //   97: invokevirtual 348	java/nio/MappedByteBuffer:flip	()Ljava/nio/Buffer;
-    //   100: pop
-    //   101: aload 6
-    //   103: invokevirtual 352	java/nio/MappedByteBuffer:force	()Ljava/nio/MappedByteBuffer;
-    //   106: pop
-    //   107: aload 6
-    //   109: invokevirtual 355	java/nio/MappedByteBuffer:clear	()Ljava/nio/Buffer;
-    //   112: pop
-    //   113: aload 4
-    //   115: invokevirtual 358	java/nio/channels/FileChannel:close	()V
-    //   118: aload 5
-    //   120: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   123: aload_0
-    //   124: aload_1
-    //   125: invokevirtual 305	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
-    //   128: iconst_0
-    //   129: invokestatic 311	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   132: invokestatic 361	com/tencent/mobileqq/bigbrother/RockDownloader/RockDownloader:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/data/RockDownloadInfo;
-    //   135: astore_0
-    //   136: aload_0
-    //   137: ifnull +24 -> 161
-    //   140: aload 5
-    //   142: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   145: goto +12 -> 157
-    //   148: astore_0
-    //   149: goto +10 -> 159
-    //   152: astore_0
-    //   153: aload_0
-    //   154: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   157: iconst_1
-    //   158: ireturn
-    //   159: aload_0
-    //   160: athrow
-    //   161: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   164: ifeq +12 -> 176
-    //   167: ldc 125
-    //   169: iconst_2
-    //   170: ldc_w 366
-    //   173: invokestatic 131	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   176: aload 5
-    //   178: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   181: iconst_0
-    //   182: ireturn
-    //   183: astore_0
-    //   184: goto +10 -> 194
-    //   187: astore_0
-    //   188: aload_0
-    //   189: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   192: iconst_0
-    //   193: ireturn
-    //   194: aload_0
-    //   195: athrow
-    //   196: astore_0
-    //   197: goto +95 -> 292
-    //   200: astore_1
-    //   201: aload 5
-    //   203: astore_0
-    //   204: goto +22 -> 226
-    //   207: astore_1
-    //   208: aload 5
-    //   210: astore_0
-    //   211: goto +49 -> 260
-    //   214: astore_0
-    //   215: aload 4
-    //   217: astore 5
-    //   219: goto +73 -> 292
-    //   222: astore_1
-    //   223: aload 6
-    //   225: astore_0
-    //   226: aload_0
-    //   227: astore 4
-    //   229: aload_1
-    //   230: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   233: aload_0
-    //   234: ifnull +56 -> 290
-    //   237: aload_0
-    //   238: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   241: iconst_0
-    //   242: ireturn
-    //   243: astore_0
-    //   244: goto +10 -> 254
-    //   247: astore_0
-    //   248: aload_0
-    //   249: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   252: iconst_0
-    //   253: ireturn
-    //   254: aload_0
-    //   255: athrow
-    //   256: astore_1
-    //   257: aload 7
-    //   259: astore_0
-    //   260: aload_0
-    //   261: astore 4
-    //   263: aload_1
-    //   264: invokevirtual 367	java/io/FileNotFoundException:printStackTrace	()V
-    //   267: aload_0
-    //   268: ifnull +22 -> 290
-    //   271: aload_0
-    //   272: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   275: iconst_0
-    //   276: ireturn
-    //   277: astore_0
-    //   278: goto +10 -> 288
-    //   281: astore_0
-    //   282: aload_0
-    //   283: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   286: iconst_0
-    //   287: ireturn
-    //   288: aload_0
-    //   289: athrow
-    //   290: iconst_0
-    //   291: ireturn
-    //   292: aload 5
-    //   294: ifnull +25 -> 319
-    //   297: aload 5
-    //   299: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   302: goto +17 -> 319
-    //   305: astore_0
-    //   306: goto +11 -> 317
-    //   309: astore_1
-    //   310: aload_1
-    //   311: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   314: goto +5 -> 319
-    //   317: aload_0
-    //   318: athrow
-    //   319: goto +5 -> 324
-    //   322: aload_0
-    //   323: athrow
-    //   324: goto -2 -> 322
+    //   18: invokestatic 235	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   21: ldc 237
+    //   23: invokespecial 240	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: astore 5
+    //   28: aload 5
+    //   30: invokevirtual 244	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
+    //   33: astore 4
+    //   35: aload 4
+    //   37: getstatic 250	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
+    //   40: lconst_0
+    //   41: ldc2_w 251
+    //   44: invokevirtual 258	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   47: astore 6
+    //   49: iconst_0
+    //   50: istore_2
+    //   51: iload_2
+    //   52: iconst_4
+    //   53: if_icmpge +41 -> 94
+    //   56: aload 6
+    //   58: iload_2
+    //   59: invokevirtual 264	java/nio/MappedByteBuffer:get	(I)B
+    //   62: istore_3
+    //   63: iload_2
+    //   64: ifne +12 -> 76
+    //   67: iload_3
+    //   68: bipush 80
+    //   70: if_icmpne +6 -> 76
+    //   73: goto +21 -> 94
+    //   76: aload 6
+    //   78: iload_2
+    //   79: iload_3
+    //   80: iconst_4
+    //   81: isub
+    //   82: i2b
+    //   83: invokevirtual 268	java/nio/MappedByteBuffer:put	(IB)Ljava/nio/ByteBuffer;
+    //   86: pop
+    //   87: iload_2
+    //   88: iconst_1
+    //   89: iadd
+    //   90: istore_2
+    //   91: goto -40 -> 51
+    //   94: aload 6
+    //   96: invokevirtual 272	java/nio/MappedByteBuffer:flip	()Ljava/nio/Buffer;
+    //   99: pop
+    //   100: aload 6
+    //   102: invokevirtual 276	java/nio/MappedByteBuffer:force	()Ljava/nio/MappedByteBuffer;
+    //   105: pop
+    //   106: aload 6
+    //   108: invokevirtual 279	java/nio/MappedByteBuffer:clear	()Ljava/nio/Buffer;
+    //   111: pop
+    //   112: aload 4
+    //   114: invokevirtual 282	java/nio/channels/FileChannel:close	()V
+    //   117: aload 5
+    //   119: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   122: aload_0
+    //   123: aload_1
+    //   124: invokevirtual 229	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
+    //   127: iconst_0
+    //   128: invokestatic 235	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   131: invokestatic 285	com/tencent/mobileqq/bigbrother/RockDownloader/RockDownloader:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/data/RockDownloadInfo;
+    //   134: astore_0
+    //   135: aload_0
+    //   136: ifnull +24 -> 160
+    //   139: aload 5
+    //   141: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   144: goto +12 -> 156
+    //   147: astore_0
+    //   148: goto +10 -> 158
+    //   151: astore_0
+    //   152: aload_0
+    //   153: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   156: iconst_1
+    //   157: ireturn
+    //   158: aload_0
+    //   159: athrow
+    //   160: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   163: ifeq +12 -> 175
+    //   166: ldc 117
+    //   168: iconst_2
+    //   169: ldc_w 290
+    //   172: invokestatic 123	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   175: aload 5
+    //   177: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   180: iconst_0
+    //   181: ireturn
+    //   182: astore_0
+    //   183: goto +10 -> 193
+    //   186: astore_0
+    //   187: aload_0
+    //   188: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   191: iconst_0
+    //   192: ireturn
+    //   193: aload_0
+    //   194: athrow
+    //   195: astore_0
+    //   196: goto +95 -> 291
+    //   199: astore_1
+    //   200: aload 5
+    //   202: astore_0
+    //   203: goto +22 -> 225
+    //   206: astore_1
+    //   207: aload 5
+    //   209: astore_0
+    //   210: goto +49 -> 259
+    //   213: astore_0
+    //   214: aload 4
+    //   216: astore 5
+    //   218: goto +73 -> 291
+    //   221: astore_1
+    //   222: aload 6
+    //   224: astore_0
+    //   225: aload_0
+    //   226: astore 4
+    //   228: aload_1
+    //   229: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   232: aload_0
+    //   233: ifnull +56 -> 289
+    //   236: aload_0
+    //   237: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   240: iconst_0
+    //   241: ireturn
+    //   242: astore_0
+    //   243: goto +10 -> 253
+    //   246: astore_0
+    //   247: aload_0
+    //   248: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   251: iconst_0
+    //   252: ireturn
+    //   253: aload_0
+    //   254: athrow
+    //   255: astore_1
+    //   256: aload 7
+    //   258: astore_0
+    //   259: aload_0
+    //   260: astore 4
+    //   262: aload_1
+    //   263: invokevirtual 291	java/io/FileNotFoundException:printStackTrace	()V
+    //   266: aload_0
+    //   267: ifnull +22 -> 289
+    //   270: aload_0
+    //   271: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   274: iconst_0
+    //   275: ireturn
+    //   276: astore_0
+    //   277: goto +10 -> 287
+    //   280: astore_0
+    //   281: aload_0
+    //   282: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   285: iconst_0
+    //   286: ireturn
+    //   287: aload_0
+    //   288: athrow
+    //   289: iconst_0
+    //   290: ireturn
+    //   291: aload 5
+    //   293: ifnull +25 -> 318
+    //   296: aload 5
+    //   298: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   301: goto +17 -> 318
+    //   304: astore_0
+    //   305: goto +11 -> 316
+    //   308: astore_1
+    //   309: aload_1
+    //   310: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   313: goto +5 -> 318
+    //   316: aload_0
+    //   317: athrow
+    //   318: goto +5 -> 323
+    //   321: aload_0
+    //   322: athrow
+    //   323: goto -2 -> 321
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	327	0	paramContext	Context
-    //   0	327	1	paramVFSFile	VFSFile
-    //   51	41	2	i	int
-    //   63	20	3	j	int
-    //   7	255	4	localObject1	Object
-    //   27	271	5	localObject2	Object
-    //   1	223	6	localMappedByteBuffer	java.nio.MappedByteBuffer
-    //   4	254	7	localObject3	Object
+    //   0	326	0	paramContext	Context
+    //   0	326	1	paramVFSFile	VFSFile
+    //   50	41	2	i	int
+    //   62	20	3	j	int
+    //   7	254	4	localObject1	Object
+    //   26	271	5	localObject2	Object
+    //   1	222	6	localMappedByteBuffer	java.nio.MappedByteBuffer
+    //   4	253	7	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   140	145	148	finally
-    //   153	157	148	finally
-    //   140	145	152	java/io/IOException
-    //   176	181	183	finally
-    //   188	192	183	finally
-    //   176	181	187	java/io/IOException
-    //   29	50	196	finally
-    //   57	64	196	finally
-    //   77	88	196	finally
-    //   95	136	196	finally
-    //   161	176	196	finally
-    //   29	50	200	java/io/IOException
-    //   57	64	200	java/io/IOException
-    //   77	88	200	java/io/IOException
-    //   95	136	200	java/io/IOException
-    //   161	176	200	java/io/IOException
-    //   29	50	207	java/io/FileNotFoundException
-    //   57	64	207	java/io/FileNotFoundException
-    //   77	88	207	java/io/FileNotFoundException
-    //   95	136	207	java/io/FileNotFoundException
-    //   161	176	207	java/io/FileNotFoundException
-    //   9	29	214	finally
-    //   229	233	214	finally
-    //   263	267	214	finally
-    //   9	29	222	java/io/IOException
-    //   237	241	243	finally
-    //   248	252	243	finally
-    //   237	241	247	java/io/IOException
-    //   9	29	256	java/io/FileNotFoundException
-    //   271	275	277	finally
-    //   282	286	277	finally
-    //   271	275	281	java/io/IOException
-    //   297	302	305	finally
-    //   310	314	305	finally
-    //   297	302	309	java/io/IOException
+    //   139	144	147	finally
+    //   152	156	147	finally
+    //   139	144	151	java/io/IOException
+    //   175	180	182	finally
+    //   187	191	182	finally
+    //   175	180	186	java/io/IOException
+    //   28	49	195	finally
+    //   56	63	195	finally
+    //   76	87	195	finally
+    //   94	135	195	finally
+    //   160	175	195	finally
+    //   28	49	199	java/io/IOException
+    //   56	63	199	java/io/IOException
+    //   76	87	199	java/io/IOException
+    //   94	135	199	java/io/IOException
+    //   160	175	199	java/io/IOException
+    //   28	49	206	java/io/FileNotFoundException
+    //   56	63	206	java/io/FileNotFoundException
+    //   76	87	206	java/io/FileNotFoundException
+    //   94	135	206	java/io/FileNotFoundException
+    //   160	175	206	java/io/FileNotFoundException
+    //   9	28	213	finally
+    //   228	232	213	finally
+    //   262	266	213	finally
+    //   9	28	221	java/io/IOException
+    //   236	240	242	finally
+    //   247	251	242	finally
+    //   236	240	246	java/io/IOException
+    //   9	28	255	java/io/FileNotFoundException
+    //   270	274	276	finally
+    //   281	285	276	finally
+    //   270	274	280	java/io/IOException
+    //   296	301	304	finally
+    //   309	313	304	finally
+    //   296	301	308	java/io/IOException
   }
   
   /* Error */
@@ -413,218 +365,192 @@ public class RockDownloader
     //   4: astore 5
     //   6: aconst_null
     //   7: astore_2
-    //   8: new 302	java/io/RandomAccessFile
+    //   8: new 226	java/io/RandomAccessFile
     //   11: dup
     //   12: aload_0
-    //   13: invokevirtual 305	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
+    //   13: invokevirtual 229	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
     //   16: iconst_0
-    //   17: invokestatic 311	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   20: ldc_w 313
-    //   23: invokespecial 316	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   26: astore_0
-    //   27: aload_0
-    //   28: invokevirtual 320	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
-    //   31: astore_2
-    //   32: aload_2
-    //   33: getstatic 326	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
-    //   36: lconst_0
-    //   37: ldc2_w 327
-    //   40: invokevirtual 334	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   43: astore_3
-    //   44: iconst_0
-    //   45: istore_1
-    //   46: iload_1
-    //   47: iconst_4
-    //   48: if_icmpge +24 -> 72
-    //   51: aload_3
-    //   52: iload_1
-    //   53: aload_3
-    //   54: iload_1
-    //   55: invokevirtual 340	java/nio/MappedByteBuffer:get	(I)B
-    //   58: iconst_4
-    //   59: iadd
-    //   60: i2b
-    //   61: invokevirtual 344	java/nio/MappedByteBuffer:put	(IB)Ljava/nio/ByteBuffer;
-    //   64: pop
-    //   65: iload_1
-    //   66: iconst_1
-    //   67: iadd
-    //   68: istore_1
-    //   69: goto -23 -> 46
-    //   72: aload_3
-    //   73: invokevirtual 348	java/nio/MappedByteBuffer:flip	()Ljava/nio/Buffer;
-    //   76: pop
-    //   77: aload_3
-    //   78: invokevirtual 352	java/nio/MappedByteBuffer:force	()Ljava/nio/MappedByteBuffer;
-    //   81: pop
-    //   82: aload_3
-    //   83: invokevirtual 355	java/nio/MappedByteBuffer:clear	()Ljava/nio/Buffer;
-    //   86: pop
-    //   87: aload_2
-    //   88: invokevirtual 358	java/nio/channels/FileChannel:close	()V
-    //   91: aload_0
-    //   92: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   95: aload_0
-    //   96: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   99: goto +12 -> 111
-    //   102: astore_0
-    //   103: goto +10 -> 113
-    //   106: astore_0
-    //   107: aload_0
-    //   108: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   111: iconst_1
-    //   112: ireturn
-    //   113: aload_0
-    //   114: athrow
-    //   115: astore_2
-    //   116: goto +87 -> 203
-    //   119: astore_3
-    //   120: goto +19 -> 139
-    //   123: astore_3
-    //   124: goto +48 -> 172
-    //   127: astore_3
-    //   128: aload_2
-    //   129: astore_0
-    //   130: aload_3
-    //   131: astore_2
-    //   132: goto +71 -> 203
-    //   135: astore_3
-    //   136: aload 4
-    //   138: astore_0
-    //   139: aload_0
-    //   140: astore_2
-    //   141: aload_3
-    //   142: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   145: aload_0
-    //   146: ifnull +55 -> 201
-    //   149: aload_0
-    //   150: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   153: iconst_0
-    //   154: ireturn
-    //   155: astore_0
-    //   156: goto +10 -> 166
-    //   159: astore_0
-    //   160: aload_0
-    //   161: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   164: iconst_0
-    //   165: ireturn
-    //   166: aload_0
-    //   167: athrow
-    //   168: astore_3
-    //   169: aload 5
-    //   171: astore_0
-    //   172: aload_0
-    //   173: astore_2
-    //   174: aload_3
-    //   175: invokevirtual 367	java/io/FileNotFoundException:printStackTrace	()V
-    //   178: aload_0
-    //   179: ifnull +22 -> 201
-    //   182: aload_0
-    //   183: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   186: iconst_0
-    //   187: ireturn
-    //   188: astore_0
-    //   189: goto +10 -> 199
-    //   192: astore_0
-    //   193: aload_0
-    //   194: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   197: iconst_0
-    //   198: ireturn
-    //   199: aload_0
-    //   200: athrow
-    //   201: iconst_0
-    //   202: ireturn
-    //   203: aload_0
-    //   204: ifnull +24 -> 228
-    //   207: aload_0
-    //   208: invokevirtual 359	java/io/RandomAccessFile:close	()V
-    //   211: goto +17 -> 228
-    //   214: astore_0
-    //   215: goto +11 -> 226
-    //   218: astore_0
-    //   219: aload_0
-    //   220: invokevirtual 364	java/io/IOException:printStackTrace	()V
-    //   223: goto +5 -> 228
-    //   226: aload_0
-    //   227: athrow
-    //   228: goto +5 -> 233
-    //   231: aload_2
-    //   232: athrow
-    //   233: goto -2 -> 231
+    //   17: invokestatic 235	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   20: ldc 237
+    //   22: invokespecial 240	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: astore_0
+    //   26: aload_0
+    //   27: invokevirtual 244	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
+    //   30: astore_2
+    //   31: aload_2
+    //   32: getstatic 250	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
+    //   35: lconst_0
+    //   36: ldc2_w 251
+    //   39: invokevirtual 258	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   42: astore_3
+    //   43: iconst_0
+    //   44: istore_1
+    //   45: iload_1
+    //   46: iconst_4
+    //   47: if_icmpge +24 -> 71
+    //   50: aload_3
+    //   51: iload_1
+    //   52: aload_3
+    //   53: iload_1
+    //   54: invokevirtual 264	java/nio/MappedByteBuffer:get	(I)B
+    //   57: iconst_4
+    //   58: iadd
+    //   59: i2b
+    //   60: invokevirtual 268	java/nio/MappedByteBuffer:put	(IB)Ljava/nio/ByteBuffer;
+    //   63: pop
+    //   64: iload_1
+    //   65: iconst_1
+    //   66: iadd
+    //   67: istore_1
+    //   68: goto -23 -> 45
+    //   71: aload_3
+    //   72: invokevirtual 272	java/nio/MappedByteBuffer:flip	()Ljava/nio/Buffer;
+    //   75: pop
+    //   76: aload_3
+    //   77: invokevirtual 276	java/nio/MappedByteBuffer:force	()Ljava/nio/MappedByteBuffer;
+    //   80: pop
+    //   81: aload_3
+    //   82: invokevirtual 279	java/nio/MappedByteBuffer:clear	()Ljava/nio/Buffer;
+    //   85: pop
+    //   86: aload_2
+    //   87: invokevirtual 282	java/nio/channels/FileChannel:close	()V
+    //   90: aload_0
+    //   91: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   94: aload_0
+    //   95: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   98: goto +12 -> 110
+    //   101: astore_0
+    //   102: goto +10 -> 112
+    //   105: astore_0
+    //   106: aload_0
+    //   107: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   110: iconst_1
+    //   111: ireturn
+    //   112: aload_0
+    //   113: athrow
+    //   114: astore_2
+    //   115: goto +87 -> 202
+    //   118: astore_3
+    //   119: goto +19 -> 138
+    //   122: astore_3
+    //   123: goto +48 -> 171
+    //   126: astore_3
+    //   127: aload_2
+    //   128: astore_0
+    //   129: aload_3
+    //   130: astore_2
+    //   131: goto +71 -> 202
+    //   134: astore_3
+    //   135: aload 4
+    //   137: astore_0
+    //   138: aload_0
+    //   139: astore_2
+    //   140: aload_3
+    //   141: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   144: aload_0
+    //   145: ifnull +55 -> 200
+    //   148: aload_0
+    //   149: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   152: iconst_0
+    //   153: ireturn
+    //   154: astore_0
+    //   155: goto +10 -> 165
+    //   158: astore_0
+    //   159: aload_0
+    //   160: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   163: iconst_0
+    //   164: ireturn
+    //   165: aload_0
+    //   166: athrow
+    //   167: astore_3
+    //   168: aload 5
+    //   170: astore_0
+    //   171: aload_0
+    //   172: astore_2
+    //   173: aload_3
+    //   174: invokevirtual 291	java/io/FileNotFoundException:printStackTrace	()V
+    //   177: aload_0
+    //   178: ifnull +22 -> 200
+    //   181: aload_0
+    //   182: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   185: iconst_0
+    //   186: ireturn
+    //   187: astore_0
+    //   188: goto +10 -> 198
+    //   191: astore_0
+    //   192: aload_0
+    //   193: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   196: iconst_0
+    //   197: ireturn
+    //   198: aload_0
+    //   199: athrow
+    //   200: iconst_0
+    //   201: ireturn
+    //   202: aload_0
+    //   203: ifnull +24 -> 227
+    //   206: aload_0
+    //   207: invokevirtual 283	java/io/RandomAccessFile:close	()V
+    //   210: goto +17 -> 227
+    //   213: astore_0
+    //   214: goto +11 -> 225
+    //   217: astore_0
+    //   218: aload_0
+    //   219: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   222: goto +5 -> 227
+    //   225: aload_0
+    //   226: athrow
+    //   227: goto +5 -> 232
+    //   230: aload_2
+    //   231: athrow
+    //   232: goto -2 -> 230
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	236	0	paramVFSFile	VFSFile
-    //   45	24	1	i	int
-    //   7	81	2	localFileChannel	java.nio.channels.FileChannel
-    //   115	14	2	localObject1	Object
-    //   131	101	2	localObject2	Object
-    //   43	40	3	localMappedByteBuffer	java.nio.MappedByteBuffer
-    //   119	1	3	localIOException1	java.io.IOException
-    //   123	1	3	localFileNotFoundException1	java.io.FileNotFoundException
-    //   127	4	3	localObject3	Object
-    //   135	7	3	localIOException2	java.io.IOException
-    //   168	7	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   1	136	4	localObject4	Object
-    //   4	166	5	localObject5	Object
+    //   0	235	0	paramVFSFile	VFSFile
+    //   44	24	1	i	int
+    //   7	80	2	localFileChannel	java.nio.channels.FileChannel
+    //   114	14	2	localObject1	Object
+    //   130	101	2	localObject2	Object
+    //   42	40	3	localMappedByteBuffer	java.nio.MappedByteBuffer
+    //   118	1	3	localIOException1	java.io.IOException
+    //   122	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   126	4	3	localObject3	Object
+    //   134	7	3	localIOException2	java.io.IOException
+    //   167	7	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1	135	4	localObject4	Object
+    //   4	165	5	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   95	99	102	finally
-    //   107	111	102	finally
-    //   95	99	106	java/io/IOException
-    //   27	44	115	finally
-    //   51	65	115	finally
-    //   72	95	115	finally
-    //   27	44	119	java/io/IOException
-    //   51	65	119	java/io/IOException
-    //   72	95	119	java/io/IOException
-    //   27	44	123	java/io/FileNotFoundException
-    //   51	65	123	java/io/FileNotFoundException
-    //   72	95	123	java/io/FileNotFoundException
-    //   8	27	127	finally
-    //   141	145	127	finally
-    //   174	178	127	finally
-    //   8	27	135	java/io/IOException
-    //   149	153	155	finally
-    //   160	164	155	finally
-    //   149	153	159	java/io/IOException
-    //   8	27	168	java/io/FileNotFoundException
-    //   182	186	188	finally
-    //   193	197	188	finally
-    //   182	186	192	java/io/IOException
-    //   207	211	214	finally
-    //   219	223	214	finally
-    //   207	211	218	java/io/IOException
-  }
-  
-  public static boolean a(RockDownloaderTask paramRockDownloaderTask)
-  {
-    if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(4))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, "RockDownloadInfo verifyDate fail");
-      }
-      return false;
-    }
-    VFSFile localVFSFile = new VFSFile(paramRockDownloaderTask.getDownloadInfo().localPath);
-    if (!localVFSFile.exists()) {
-      return false;
-    }
-    if (!a(paramRockDownloaderTask.getRuntime().getApplication(), localVFSFile)) {
-      return false;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.putExtra("big_brother_source_key", paramRockDownloaderTask.getDownloadInfo().businessName);
-    localIntent.setFlags(268435456);
-    String str = AppSetting.h();
-    localIntent.setDataAndType(Uri.fromFile(new File(VFSFileOp.exportExternalPath(localVFSFile.getAbsolutePath(), false))), str);
-    paramRockDownloaderTask.getRuntime().getApplication().startActivity(localIntent);
-    b(paramRockDownloaderTask, "0x800A1E7");
-    return true;
+    //   94	98	101	finally
+    //   106	110	101	finally
+    //   94	98	105	java/io/IOException
+    //   26	43	114	finally
+    //   50	64	114	finally
+    //   71	94	114	finally
+    //   26	43	118	java/io/IOException
+    //   50	64	118	java/io/IOException
+    //   71	94	118	java/io/IOException
+    //   26	43	122	java/io/FileNotFoundException
+    //   50	64	122	java/io/FileNotFoundException
+    //   71	94	122	java/io/FileNotFoundException
+    //   8	26	126	finally
+    //   140	144	126	finally
+    //   173	177	126	finally
+    //   8	26	134	java/io/IOException
+    //   148	152	154	finally
+    //   159	163	154	finally
+    //   148	152	158	java/io/IOException
+    //   8	26	167	java/io/FileNotFoundException
+    //   181	185	187	finally
+    //   192	196	187	finally
+    //   181	185	191	java/io/IOException
+    //   206	210	213	finally
+    //   218	222	213	finally
+    //   206	210	217	java/io/IOException
   }
   
   private static boolean a(RockDownloaderTask paramRockDownloaderTask, DownloadInfo paramDownloadInfo)
   {
-    paramDownloadInfo = new VFSFile(paramDownloadInfo.l);
+    paramDownloadInfo = new VFSFile(paramDownloadInfo.q);
     paramRockDownloaderTask = new VFSFile(paramRockDownloaderTask.getDownloadInfo().getLocalPath());
     boolean bool3 = paramDownloadInfo.exists();
     boolean bool2 = false;
@@ -650,6 +576,14 @@ public class RockDownloader
     return bool1;
   }
   
+  public static EntityManager b()
+  {
+    if (c == null) {
+      c = new RockEntityManagerFactory().createEntityManager();
+    }
+    return c;
+  }
+  
   public static void b(RockDownloaderTask paramRockDownloaderTask)
   {
     if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(2))
@@ -670,7 +604,7 @@ public class RockDownloader
     if (QLog.isColorLevel()) {
       QLog.d("RockDownloader", 2, new Object[] { "onDownloadFinish: info=", paramDownloadInfo });
     }
-    Object localObject = a(paramRockDownloaderTask.getRuntime().getApplication(), paramDownloadInfo.l);
+    Object localObject = a(paramRockDownloaderTask.getRuntime().getApplication(), paramDownloadInfo.q);
     boolean bool1;
     if ((localObject != null) && (paramRockDownloaderTask.getDownloadInfo().getPackageName().equals(((RockDownloadInfo)localObject).getPackageName())))
     {
@@ -679,9 +613,9 @@ public class RockDownloader
     }
     else
     {
-      if (paramDownloadInfo.l != null)
+      if (paramDownloadInfo.q != null)
       {
-        localObject = new VFSFile(paramDownloadInfo.l);
+        localObject = new VFSFile(paramDownloadInfo.q);
         if (((VFSFile)localObject).exists()) {
           ((VFSFile)localObject).delete();
         }
@@ -711,16 +645,16 @@ public class RockDownloader
     }
     if ((bool1) && (bool2))
     {
-      e(paramRockDownloaderTask);
-      a().persistOrReplace(paramRockDownloaderTask.getDownloadInfo());
+      h(paramRockDownloaderTask);
+      b().persistOrReplace(paramRockDownloaderTask.getDownloadInfo());
       if (paramBoolean) {
         paramRockDownloaderTask.getRockDownloadListener().onDownloadSuccess(paramRockDownloaderTask.getDownloadInfo());
       }
-      localObject = (DownloadInfo)DownloadManagerV2.a().a().remove(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+      localObject = (DownloadInfo)DownloadManagerV2.a().d().remove(paramDownloadInfo.b);
       if (QLog.isColorLevel()) {
         QLog.d("RockDownloader", 2, new Object[] { "removedDownload=", localObject });
       }
-      DownloadInfoDB.a().a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+      DownloadInfoDB.a().c(paramDownloadInfo.b);
       b(paramRockDownloaderTask, "0x800A1E5");
     }
     if (paramBoolean) {
@@ -807,17 +741,17 @@ public class RockDownloader
     if (paramBoolean)
     {
       if (paramInt1 == 6) {
-        paramRockDownloaderTask.getRockDownloadListener().onDownloadFail(paramRockDownloaderTask.getDownloadInfo(), HardCodeUtil.a(2131713417), 10010);
+        paramRockDownloaderTask.getRockDownloadListener().onDownloadFail(paramRockDownloaderTask.getDownloadInfo(), HardCodeUtil.a(2131910968), 10010);
       } else {
         paramRockDownloaderTask.getRockDownloadListener().onDownloadFail(paramRockDownloaderTask.getDownloadInfo(), paramString, paramInt1);
       }
       paramRockDownloaderTask.getRockDownloadListener().onDownloadFinish(paramRockDownloaderTask.getDownloadInfo());
     }
-    paramString = (DownloadInfo)DownloadManagerV2.a().a().remove(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    paramString = (DownloadInfo)DownloadManagerV2.a().d().remove(paramDownloadInfo.b);
     if (QLog.isColorLevel()) {
       QLog.d("RockDownloader", 2, new Object[] { "onDownloadError removedDownload=", paramString });
     }
-    DownloadInfoDB.a().a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    DownloadInfoDB.a().c(paramDownloadInfo.b);
     b(paramRockDownloaderTask, "0x800A1E6");
   }
   
@@ -872,26 +806,9 @@ public class RockDownloader
     {
       DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
       if ((localDownloadInfo.e != null) && (localDownloadInfo.e.equals(paramRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-        paramRockDownloaderTask.getRockDownloadListener().onDownloadProceedOn(paramRockDownloaderTask.getDownloadInfo(), localDownloadInfo.jdField_f_of_type_Int);
+        paramRockDownloaderTask.getRockDownloadListener().onDownloadProceedOn(paramRockDownloaderTask.getDownloadInfo(), localDownloadInfo.t);
       }
     }
-  }
-  
-  public static boolean b(RockDownloaderTask paramRockDownloaderTask)
-  {
-    if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, "RockDownloadInfo verifyDate fail");
-      }
-      return false;
-    }
-    VFSFile localVFSFile = new VFSFile(paramRockDownloaderTask.getDownloadInfo().localPath);
-    if (!localVFSFile.exists()) {
-      return false;
-    }
-    a().remove(paramRockDownloaderTask.getDownloadInfo());
-    return localVFSFile.delete();
   }
   
   private static boolean b(ServerApi.RspPreDownloadRecmd paramRspPreDownloadRecmd, RockDownloaderTask paramRockDownloaderTask)
@@ -935,19 +852,102 @@ public class RockDownloader
     return false;
   }
   
-  private static void d(RockDownloaderTask paramRockDownloaderTask)
+  public static ArrayList<RockDownloadInfo> c(RockDownloaderTask paramRockDownloaderTask)
+  {
+    if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, "RockDownloadInfo verifyDate fail");
+      }
+      return null;
+    }
+    Object localObject = b().query(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { paramRockDownloaderTask.getDownloadInfo().businessName, paramRockDownloaderTask.getDownloadInfo().packageName }, null, null, null, null);
+    paramRockDownloaderTask = new ArrayList();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "result size=", Integer.valueOf(((List)localObject).size()) });
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Entity localEntity = (Entity)((Iterator)localObject).next();
+        if ((localEntity instanceof RockDownloadInfo))
+        {
+          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localEntity;
+          if ((!TextUtils.isEmpty(localRockDownloadInfo.localPath)) && (new VFSFile(localRockDownloadInfo.localPath).exists()))
+          {
+            paramRockDownloaderTask.add(localRockDownloadInfo);
+          }
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localEntity.toString() });
+            }
+            b().remove(localRockDownloadInfo);
+          }
+        }
+      }
+    }
+    return paramRockDownloaderTask;
+  }
+  
+  public static boolean d(RockDownloaderTask paramRockDownloaderTask)
+  {
+    if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(4))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, "RockDownloadInfo verifyDate fail");
+      }
+      return false;
+    }
+    VFSFile localVFSFile = new VFSFile(paramRockDownloaderTask.getDownloadInfo().localPath);
+    if (!localVFSFile.exists()) {
+      return false;
+    }
+    if (!a(paramRockDownloaderTask.getRuntime().getApplication(), localVFSFile)) {
+      return false;
+    }
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.putExtra("big_brother_source_key", paramRockDownloaderTask.getDownloadInfo().businessName);
+    localIntent.setFlags(268435456);
+    String str = AppSetting.o();
+    localIntent.setDataAndType(Uri.fromFile(new File(VFSFileOp.exportExternalPath(localVFSFile.getAbsolutePath(), false))), str);
+    paramRockDownloaderTask.getRuntime().getApplication().startActivity(localIntent);
+    b(paramRockDownloaderTask, "0x800A1E7");
+    return true;
+  }
+  
+  public static boolean e(RockDownloaderTask paramRockDownloaderTask)
+  {
+    if (!paramRockDownloaderTask.getDownloadInfo().verifyDate(3))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, "RockDownloadInfo verifyDate fail");
+      }
+      return false;
+    }
+    VFSFile localVFSFile = new VFSFile(paramRockDownloaderTask.getDownloadInfo().localPath);
+    if (!localVFSFile.exists()) {
+      return false;
+    }
+    b().remove(paramRockDownloaderTask.getDownloadInfo());
+    return localVFSFile.delete();
+  }
+  
+  private static void g(RockDownloaderTask paramRockDownloaderTask)
   {
     DownloadInfo localDownloadInfo1 = new DownloadInfo();
     paramRockDownloaderTask.getDownloadInfo().setLocalPath(a(paramRockDownloaderTask.getDownloadInfo()));
-    localDownloadInfo1.l = paramRockDownloaderTask.getDownloadInfo().getLocalPath();
-    localDownloadInfo1.jdField_d_of_type_JavaLangString = paramRockDownloaderTask.getDownloadInfo().getDownloadURL();
+    localDownloadInfo1.q = paramRockDownloaderTask.getDownloadInfo().getLocalPath();
+    localDownloadInfo1.d = paramRockDownloaderTask.getDownloadInfo().getDownloadURL();
     localDownloadInfo1.e = paramRockDownloaderTask.getDownloadInfo().getPackageName();
-    localDownloadInfo1.m = paramRockDownloaderTask.getDownloadInfo().getBusinessName();
-    localDownloadInfo1.jdField_b_of_type_Boolean = true;
-    localDownloadInfo1.jdField_d_of_type_Boolean = false;
-    localDownloadInfo1.a = false;
+    localDownloadInfo1.r = paramRockDownloaderTask.getDownloadInfo().getBusinessName();
+    localDownloadInfo1.x = true;
+    localDownloadInfo1.G = false;
+    localDownloadInfo1.w = false;
     localDownloadInfo1.h = paramRockDownloaderTask.getDownloadInfo().getBusinessName();
-    localDownloadInfo1.jdField_f_of_type_Boolean = true;
+    localDownloadInfo1.U = true;
     boolean bool;
     if (paramRockDownloaderTask.getRockDownloadListener() != null) {
       bool = true;
@@ -955,21 +955,21 @@ public class RockDownloader
       bool = false;
     }
     RockDownloader.3 local3 = new RockDownloader.3(paramRockDownloaderTask, bool);
-    Iterator localIterator = DownloadManagerV2.a().a().values().iterator();
+    Iterator localIterator = DownloadManagerV2.a().d().values().iterator();
     while (localIterator.hasNext())
     {
       DownloadInfo localDownloadInfo2 = (DownloadInfo)localIterator.next();
-      if ((!TextUtils.isEmpty(localDownloadInfo2.jdField_d_of_type_JavaLangString)) && (localDownloadInfo2.jdField_d_of_type_JavaLangString.equals(localDownloadInfo1.jdField_d_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(localDownloadInfo2.d)) && (localDownloadInfo2.d.equals(localDownloadInfo1.d)))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("RockDownloader", 2, new Object[] { "find exist task, downloadInfo.urlStr=", localDownloadInfo2.jdField_d_of_type_JavaLangString, " downloadInfo.progress=", Integer.valueOf(localDownloadInfo2.jdField_f_of_type_Int), " downloadInfo.filePath=", localDownloadInfo2.l });
+          QLog.d("RockDownloader", 2, new Object[] { "find exist task, downloadInfo.urlStr=", localDownloadInfo2.d, " downloadInfo.progress=", Integer.valueOf(localDownloadInfo2.t), " downloadInfo.filePath=", localDownloadInfo2.q });
         }
-        if (localDownloadInfo2.jdField_f_of_type_Int != 100)
+        if (localDownloadInfo2.t != 100)
         {
           DownloadManagerV2.a().b(localDownloadInfo1);
           if (bool)
           {
-            paramRockDownloaderTask.getRockDownloadListener().onDownloadFail(paramRockDownloaderTask.getDownloadInfo(), HardCodeUtil.a(2131713414), 10011);
+            paramRockDownloaderTask.getRockDownloadListener().onDownloadFail(paramRockDownloaderTask.getDownloadInfo(), HardCodeUtil.a(2131910965), 10011);
             paramRockDownloaderTask.getRockDownloadListener().onDownloadFinish(paramRockDownloaderTask.getDownloadInfo());
           }
           return;
@@ -980,7 +980,7 @@ public class RockDownloader
     DownloadManagerV2.a().b(localDownloadInfo1);
   }
   
-  private static void e(RockDownloaderTask paramRockDownloaderTask)
+  private static void h(RockDownloaderTask paramRockDownloaderTask)
   {
     Object localObject = new NewIntent(paramRockDownloaderTask.getRuntime().getApplication(), RockDownloaderServlet.class);
     ((NewIntent)localObject).putExtra("BUNDLE_CMD", "QQApkSvc.update_download_count");
@@ -1018,7 +1018,7 @@ public class RockDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader
  * JD-Core Version:    0.7.0.1
  */

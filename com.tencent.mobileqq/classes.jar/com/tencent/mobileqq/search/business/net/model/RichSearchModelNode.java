@@ -10,38 +10,71 @@ import unify.search.UnifySearchCommon.ResultItem;
 public class RichSearchModelNode
   extends NetSearchTemplateBaseItem
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
+  private String a;
+  private String b;
+  private String c;
   private int d;
-  private String j;
+  private boolean e = false;
+  private int f;
+  private int t;
+  private String u;
   
-  public RichSearchModelNode(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public RichSearchModelNode(String paramString1, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt, String paramString2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super(paramString1, paramLong, paramList, paramResultItem, paramInt);
+    this.u = paramString2;
   }
   
-  public void a(int paramInt)
+  public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    this.c = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+    a(this.e);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public CharSequence d()
+  {
+    return this.u;
+  }
+  
+  public boolean i()
+  {
+    return true;
+  }
+  
+  public void o_(String paramString)
+  {
+    this.a = paramString;
+    if (TextUtils.isEmpty(this.a)) {
       return;
     }
     try
     {
-      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      this.t = new JSONObject(this.a).getInt("appid");
       return;
     }
     catch (JSONException paramString)
     {
-      String str = c;
+      String str = g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parseLayoutExtensions exception:");
       localStringBuilder.append(paramString);
@@ -49,69 +82,44 @@ public class RichSearchModelNode
     }
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.j = paramString;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.j;
-  }
-  
-  public String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int g()
+  public int r()
   {
     return this.d;
   }
   
-  public int h()
+  public String s()
   {
-    return this.jdField_b_of_type_Int;
+    return this.a;
+  }
+  
+  public String t()
+  {
+    return this.c;
+  }
+  
+  public int u()
+  {
+    return this.t;
+  }
+  
+  public String v()
+  {
+    return this.b;
+  }
+  
+  public int w()
+  {
+    return this.f;
+  }
+  
+  public boolean x()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.RichSearchModelNode
  * JD-Core Version:    0.7.0.1
  */

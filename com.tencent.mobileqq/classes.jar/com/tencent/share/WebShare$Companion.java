@@ -6,7 +6,7 @@ import kotlin.Metadata;
 public final class WebShare$Companion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.share.WebShare.Companion
  * JD-Core Version:    0.7.0.1
  */

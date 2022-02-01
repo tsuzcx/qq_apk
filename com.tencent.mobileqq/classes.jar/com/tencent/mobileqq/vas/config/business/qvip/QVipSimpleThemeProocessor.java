@@ -15,7 +15,7 @@ public class QVipSimpleThemeProocessor
   @NonNull
   public QVipSimpleThemeConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    return QVipSimpleThemeConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipSimpleThemeConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -36,7 +36,7 @@ public class QVipSimpleThemeProocessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipSimpleThemeProocessor
  * JD-Core Version:    0.7.0.1
  */

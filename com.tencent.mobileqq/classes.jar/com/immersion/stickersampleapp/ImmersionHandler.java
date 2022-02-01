@@ -14,18 +14,18 @@ import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
 public class ImmersionHandler
   extends BusinessHandler
 {
-  private ImmerIConnectionProxy jdField_a_of_type_ComImmersionStickersampleappImmerIConnectionProxy;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private ImmerIConnectionProxy b;
   
   public ImmersionHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public void a(ImmerIConnectionProxy paramImmerIConnectionProxy)
   {
-    this.jdField_a_of_type_ComImmersionStickersampleappImmerIConnectionProxy = paramImmerIConnectionProxy;
+    this.b = paramImmerIConnectionProxy;
   }
   
   public void a(String paramString)
@@ -37,7 +37,7 @@ public class ImmersionHandler
     localIMMRReq.str_url.set(paramString);
     paramString = new oidb_0xa4d.ReqBody();
     paramString.msg_immr_req.set(localIMMRReq);
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ImmersionHandler.ImmersionObserver(false, this.jdField_a_of_type_ComImmersionStickersampleappImmerIConnectionProxy), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
+    ProtoUtils.a(this.a, new ImmersionHandler.ImmersionObserver(false, this.b), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -48,14 +48,14 @@ public class ImmersionHandler
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.a = null;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.immersion.stickersampleapp.ImmersionHandler
  * JD-Core Version:    0.7.0.1
  */

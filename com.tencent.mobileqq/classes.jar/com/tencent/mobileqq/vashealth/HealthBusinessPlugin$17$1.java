@@ -13,15 +13,15 @@ class HealthBusinessPlugin$17$1
   
   public void run()
   {
-    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).setTimeTextForTextView(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs() - this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs());
-    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).setTimeTextForTextView(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin$17.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs());
-    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).setTimeTextForTextView(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin$17.b, this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs());
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin$17.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)Math.ceil((float)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs() * 1.0F / (float)this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs() * this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin$17.jdField_a_of_type_AndroidWidgetSeekBar.getMax()));
+    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).setTimeTextForTextView(this.a, this.b.getDurationMs() - this.b.getCurrentPositionMs());
+    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).setTimeTextForTextView(this.c.c, this.b.getCurrentPositionMs());
+    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).setTimeTextForTextView(this.c.d, this.b.getDurationMs());
+    this.c.e.setProgress((int)Math.ceil((float)this.b.getCurrentPositionMs() * 1.0F / (float)this.b.getDurationMs() * this.c.e.getMax()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.17.1
  * JD-Core Version:    0.7.0.1
  */

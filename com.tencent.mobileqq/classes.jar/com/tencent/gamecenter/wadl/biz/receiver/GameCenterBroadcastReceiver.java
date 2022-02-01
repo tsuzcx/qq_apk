@@ -12,34 +12,34 @@ import mqq.app.MobileQQ;
 public class GameCenterBroadcastReceiver
   implements INetEventHandler
 {
-  public static int a = 100;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private static GameCenterBroadcastReceiver jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver;
   public static boolean a = false;
-  public static boolean b = false;
-  boolean c = false;
+  public static int b = 100;
+  public static boolean c = false;
+  private static GameCenterBroadcastReceiver f;
+  private static BroadcastReceiver g;
   boolean d = false;
+  boolean e = false;
   
   public static void a()
   {
     QLog.i("GameCenterBroadcastReceiver", 1, "registerReceiver");
-    if (jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver == null) {
-      jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver = new GameCenterBroadcastReceiver();
+    if (f == null) {
+      f = new GameCenterBroadcastReceiver();
     }
-    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new GameCenterBroadcastReceiver.1();
+    if (g == null) {
+      g = new GameCenterBroadcastReceiver.1();
     }
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       try
       {
-        AppNetConnInfo.registerNetChangeReceiver(MobileQQ.sMobileQQ, jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver);
+        AppNetConnInfo.registerNetChangeReceiver(MobileQQ.sMobileQQ, f);
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
         localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
         localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
         localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
-        MobileQQ.sMobileQQ.registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-        jdField_a_of_type_Boolean = true;
+        MobileQQ.sMobileQQ.registerReceiver(g, localIntentFilter);
+        a = true;
         return;
       }
       catch (Throwable localThrowable)
@@ -53,45 +53,45 @@ public class GameCenterBroadcastReceiver
   public static void b()
   {
     // Byte code:
-    //   0: ldc 30
+    //   0: ldc 33
     //   2: iconst_1
-    //   3: ldc 86
-    //   5: invokestatic 38	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8: getstatic 40	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
+    //   3: ldc 88
+    //   5: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   8: getstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:f	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
     //   11: ifnull +14 -> 25
-    //   14: getstatic 40	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
-    //   17: invokestatic 90	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:unregisterNetEventHandler	(Lcom/tencent/mobileqq/msf/sdk/handler/INetEventHandler;)Z
+    //   14: getstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:f	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
+    //   17: invokestatic 92	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:unregisterNetEventHandler	(Lcom/tencent/mobileqq/msf/sdk/handler/INetEventHandler;)Z
     //   20: pop
     //   21: aconst_null
-    //   22: putstatic 40	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
-    //   25: getstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   22: putstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:f	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
+    //   25: getstatic 46	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:g	Landroid/content/BroadcastReceiver;
     //   28: ifnull +16 -> 44
-    //   31: getstatic 54	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   34: getstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
-    //   37: invokevirtual 94	mqq/app/MobileQQ:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   31: getstatic 57	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   34: getstatic 46	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:g	Landroid/content/BroadcastReceiver;
+    //   37: invokevirtual 96	mqq/app/MobileQQ:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   40: aconst_null
-    //   41: putstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   41: putstatic 46	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:g	Landroid/content/BroadcastReceiver;
     //   44: aconst_null
-    //   45: putstatic 40	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
+    //   45: putstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:f	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
     //   48: aconst_null
-    //   49: putstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   49: putstatic 46	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:g	Landroid/content/BroadcastReceiver;
     //   52: goto +20 -> 72
     //   55: astore_0
     //   56: goto +21 -> 77
     //   59: astore_0
-    //   60: ldc 30
+    //   60: ldc 33
     //   62: iconst_1
-    //   63: ldc 96
+    //   63: ldc 98
     //   65: aload_0
-    //   66: invokestatic 84	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   66: invokestatic 86	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   69: goto -25 -> 44
     //   72: iconst_0
-    //   73: putstatic 48	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_Boolean	Z
+    //   73: putstatic 51	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:a	Z
     //   76: return
     //   77: aconst_null
-    //   78: putstatic 40	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterBroadcastReceiver	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
+    //   78: putstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:f	Lcom/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver;
     //   81: aconst_null
-    //   82: putstatic 43	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   82: putstatic 46	com/tencent/gamecenter/wadl/biz/receiver/GameCenterBroadcastReceiver:g	Landroid/content/BroadcastReceiver;
     //   85: goto +5 -> 90
     //   88: aload_0
     //   89: athrow
@@ -118,17 +118,17 @@ public class GameCenterBroadcastReceiver
     }
     if (AppNetConnInfo.isMobileConn())
     {
-      if (this.d) {
+      if (this.e) {
         return;
       }
       QLog.i("GameCenterBroadcastReceiver", 1, "mobile connect");
     }
     else if (AppNetConnInfo.isWifiConn())
     {
-      if (this.c) {
+      if (this.d) {
         return;
       }
-      this.c = true;
+      this.d = true;
       QLog.i("GameCenterBroadcastReceiver", 1, "wifi connect");
       ((IQQGameCheckService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameCheckService.class, "")).checkGameCenter();
     }
@@ -136,12 +136,12 @@ public class GameCenterBroadcastReceiver
     {
       QLog.i("GameCenterBroadcastReceiver", 1, "no connect");
     }
-    this.c = false;
+    this.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.receiver.GameCenterBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

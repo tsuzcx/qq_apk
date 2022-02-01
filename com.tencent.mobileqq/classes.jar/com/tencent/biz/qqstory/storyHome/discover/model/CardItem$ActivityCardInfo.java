@@ -31,29 +31,29 @@ public class CardItem$ActivityCardInfo
     }
   }
   
-  public int a()
-  {
-    return this.a.join_num.get();
-  }
-  
   public long a()
   {
     return this.a.topic_id.get();
   }
   
-  public String a()
+  public String b()
   {
     return this.a.topic_name.get().toStringUtf8();
   }
   
-  public String b()
+  public String c()
   {
     return this.a.topic_cover.get().toStringUtf8();
   }
   
-  public String c()
+  public String d()
   {
     return this.a.topic_label.get().toStringUtf8();
+  }
+  
+  public int e()
+  {
+    return this.a.join_num.get();
   }
 }
 

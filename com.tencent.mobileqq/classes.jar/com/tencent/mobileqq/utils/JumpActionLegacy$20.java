@@ -12,12 +12,12 @@ class JumpActionLegacy$20
   
   public void run()
   {
-    String str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, this.a, "opensdk_tmp");
+    String str = FileUtils.saveFileUriToFile(this.this$0.b, this.a, "opensdk_tmp");
     try
     {
       str = new String(Base64Util.encode(str.getBytes("UTF-8"), 0));
       if (!TextUtils.isEmpty(str)) {
-        this.this$0.jdField_a_of_type_JavaUtilHashMap.put("videoPath", str);
+        this.this$0.f.put("videoPath", str);
       }
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -29,7 +29,7 @@ class JumpActionLegacy$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.20
  * JD-Core Version:    0.7.0.1
  */

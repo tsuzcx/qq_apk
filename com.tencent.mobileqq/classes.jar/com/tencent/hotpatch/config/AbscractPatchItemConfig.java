@@ -13,20 +13,20 @@ import org.json.JSONObject;
 
 public abstract class AbscractPatchItemConfig
 {
-  protected int a;
   protected String a;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
   protected String b;
-  private Set<Integer> jdField_b_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_b_of_type_Boolean;
-  private Set<String> c = new HashSet();
+  protected int c;
+  private boolean d;
+  private boolean e;
+  private Set<String> f = new HashSet();
+  private Set<Integer> g = new HashSet();
+  private Set<String> h = new HashSet();
   
   public static AbscractPatchItemConfig a(String paramString, JSONObject paramJSONObject)
   {
     if ("dex".equals(paramString))
     {
-      if (!a(paramJSONObject)) {
+      if (!b(paramJSONObject)) {
         return null;
       }
       if (PatchCommonUtil.isDalvik()) {
@@ -52,7 +52,7 @@ public abstract class AbscractPatchItemConfig
     return null;
   }
   
-  private static boolean a(JSONObject paramJSONObject)
+  private static boolean b(JSONObject paramJSONObject)
   {
     boolean bool2 = false;
     if (paramJSONObject == null) {
@@ -130,77 +130,11 @@ public abstract class AbscractPatchItemConfig
     return bool1;
   }
   
-  public String a()
-  {
-    try
-    {
-      Object localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("relaxEnable", this.jdField_a_of_type_Boolean);
-      ((JSONObject)localObject1).put("nPatchEnable", this.jdField_b_of_type_Boolean);
-      StringBuilder localStringBuilder = new StringBuilder("");
-      Object localObject2 = this.jdField_a_of_type_JavaUtilSet;
-      Object localObject3;
-      if ((localObject2 != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0))
-      {
-        localObject2 = this.jdField_a_of_type_JavaUtilSet.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (String)((Iterator)localObject2).next();
-          if (!TextUtils.isEmpty((CharSequence)localObject3))
-          {
-            localStringBuilder.append((String)localObject3);
-            localStringBuilder.append(";");
-          }
-        }
-      }
-      ((JSONObject)localObject1).put("process", localStringBuilder.toString());
-      localStringBuilder = new StringBuilder("");
-      if ((this.jdField_b_of_type_JavaUtilSet != null) && (this.jdField_b_of_type_JavaUtilSet.size() > 0))
-      {
-        localObject2 = this.jdField_b_of_type_JavaUtilSet.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (Integer)((Iterator)localObject2).next();
-          if (localObject3 != null)
-          {
-            localStringBuilder.append(((Integer)localObject3).toString());
-            localStringBuilder.append(";");
-          }
-        }
-      }
-      ((JSONObject)localObject1).put("systemVersion", localStringBuilder.toString());
-      localStringBuilder = new StringBuilder("");
-      if ((this.c != null) && (this.c.size() > 0))
-      {
-        localObject2 = this.c.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (String)((Iterator)localObject2).next();
-          if (!TextUtils.isEmpty((CharSequence)localObject3))
-          {
-            localStringBuilder.append((String)localObject3);
-            localStringBuilder.append(";");
-          }
-        }
-      }
-      ((JSONObject)localObject1).put("deviceInfo", localStringBuilder.toString());
-      localObject1 = ((JSONObject)localObject1).toString();
-      return localObject1;
-    }
-    catch (JSONException localJSONException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PatchLogTag", 2, "AbscractPatchItemConfig writeToJsonString", localJSONException);
-      }
-    }
-    return null;
-  }
-  
   protected void a(JSONObject paramJSONObject)
   {
     int k = 0;
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("relaxEnable", false);
-    this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("nPatchEnable", false);
+    this.d = paramJSONObject.optBoolean("relaxEnable", false);
+    this.e = paramJSONObject.optBoolean("nPatchEnable", false);
     String[] arrayOfString = paramJSONObject.optString("process", "").split(";");
     int j;
     int i;
@@ -213,7 +147,7 @@ public abstract class AbscractPatchItemConfig
       {
         str = arrayOfString[i];
         if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_JavaUtilSet.add(str);
+          this.f.add(str);
         }
         i += 1;
       }
@@ -237,7 +171,7 @@ public abstract class AbscractPatchItemConfig
         }
         j = 0;
         if (j > 0) {
-          this.jdField_b_of_type_JavaUtilSet.add(Integer.valueOf(j));
+          this.g.add(Integer.valueOf(j));
         }
         i += 1;
       }
@@ -253,7 +187,7 @@ public abstract class AbscractPatchItemConfig
         {
           arrayOfString = paramJSONObject[i];
           if (!TextUtils.isEmpty(arrayOfString)) {
-            this.c.add(arrayOfString);
+            this.h.add(arrayOfString);
           }
           i += 1;
         }
@@ -264,39 +198,39 @@ public abstract class AbscractPatchItemConfig
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
   
   public boolean a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString)))
+    if ((!TextUtils.isEmpty(paramString)) && (this.f.size() > 0) && (!this.f.contains(paramString)))
     {
       QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig process not match");
       return false;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
       QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig patchName is null");
       return false;
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.b))
     {
       QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig patchUrl is null");
       return false;
     }
-    if (this.jdField_a_of_type_Int <= 0)
+    if (this.c <= 0)
     {
       QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig patchSize is invalid");
       return false;
     }
-    if ((this.jdField_b_of_type_JavaUtilSet.size() > 0) && (!this.jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(Build.VERSION.SDK_INT))))
+    if ((this.g.size() > 0) && (!this.g.contains(Integer.valueOf(Build.VERSION.SDK_INT))))
     {
       QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig system version not match");
       return false;
     }
-    if (this.c.size() > 0)
+    if (this.h.size() > 0)
     {
-      paramString = this.c;
+      paramString = this.h;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(Build.BRAND);
       localStringBuilder.append("-");
@@ -311,14 +245,75 @@ public abstract class AbscractPatchItemConfig
     return true;
   }
   
-  public boolean b()
+  public String b()
   {
-    return this.jdField_b_of_type_Boolean;
+    try
+    {
+      Object localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("relaxEnable", this.d);
+      ((JSONObject)localObject1).put("nPatchEnable", this.e);
+      StringBuilder localStringBuilder = new StringBuilder("");
+      Object localObject2 = this.f;
+      Object localObject3;
+      if ((localObject2 != null) && (this.f.size() > 0))
+      {
+        localObject2 = this.f.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (String)((Iterator)localObject2).next();
+          if (!TextUtils.isEmpty((CharSequence)localObject3))
+          {
+            localStringBuilder.append((String)localObject3);
+            localStringBuilder.append(";");
+          }
+        }
+      }
+      ((JSONObject)localObject1).put("process", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("");
+      if ((this.g != null) && (this.g.size() > 0))
+      {
+        localObject2 = this.g.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (Integer)((Iterator)localObject2).next();
+          if (localObject3 != null)
+          {
+            localStringBuilder.append(((Integer)localObject3).toString());
+            localStringBuilder.append(";");
+          }
+        }
+      }
+      ((JSONObject)localObject1).put("systemVersion", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("");
+      if ((this.h != null) && (this.h.size() > 0))
+      {
+        localObject2 = this.h.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (String)((Iterator)localObject2).next();
+          if (!TextUtils.isEmpty((CharSequence)localObject3))
+          {
+            localStringBuilder.append((String)localObject3);
+            localStringBuilder.append(";");
+          }
+        }
+      }
+      ((JSONObject)localObject1).put("deviceInfo", localStringBuilder.toString());
+      localObject1 = ((JSONObject)localObject1).toString();
+      return localObject1;
+    }
+    catch (JSONException localJSONException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PatchLogTag", 2, "AbscractPatchItemConfig writeToJsonString", localJSONException);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hotpatch.config.AbscractPatchItemConfig
  * JD-Core Version:    0.7.0.1
  */

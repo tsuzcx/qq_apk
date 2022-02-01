@@ -26,15 +26,15 @@ class ReadInJoySkinAnimManager$ResourceHandler
       if (i != 2) {
         return;
       }
-      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
+      ReadInJoySkinAnimManager.c(localReadInJoySkinAnimManager);
       return;
     }
-    ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
+    ReadInJoySkinAnimManager.d(localReadInJoySkinAnimManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinAnimManager.ResourceHandler
  * JD-Core Version:    0.7.0.1
  */

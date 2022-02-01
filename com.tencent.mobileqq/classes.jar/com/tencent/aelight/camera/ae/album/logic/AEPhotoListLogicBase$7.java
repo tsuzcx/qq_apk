@@ -12,14 +12,14 @@ class AEPhotoListLogicBase$7
   
   public void run()
   {
-    ((AEAbstractPhotoListFragment)this.this$0.a.get()).a.notifyDataSetChanged();
+    ((AEAbstractPhotoListFragment)this.this$0.b.get()).d.notifyDataSetChanged();
     this.this$0.d();
-    QQToast.a(((AEAbstractPhotoListFragment)this.this$0.a.get()).getActivity(), "暂无媒体文件", 1000).a();
+    QQToast.makeText(((AEAbstractPhotoListFragment)this.this$0.b.get()).getActivity(), "暂无媒体文件", 1000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.7
  * JD-Core Version:    0.7.0.1
  */

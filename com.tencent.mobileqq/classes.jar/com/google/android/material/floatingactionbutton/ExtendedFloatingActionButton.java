@@ -33,29 +33,29 @@ public class ExtendedFloatingActionButton
   extends MaterialButton
   implements CoordinatorLayout.AttachedBehavior
 {
-  private static final int jdField_a_of_type_Int = R.style.B;
-  static final Property<View, Float> jdField_a_of_type_AndroidUtilProperty = new ExtendedFloatingActionButton.4(Float.class, "width");
-  static final Property<View, Float> jdField_b_of_type_AndroidUtilProperty = new ExtendedFloatingActionButton.5(Float.class, "height");
-  static final Property<View, Float> jdField_c_of_type_AndroidUtilProperty = new ExtendedFloatingActionButton.6(Float.class, "paddingStart");
-  static final Property<View, Float> jdField_d_of_type_AndroidUtilProperty = new ExtendedFloatingActionButton.7(Float.class, "paddingEnd");
+  static final Property<View, Float> b = new ExtendedFloatingActionButton.4(Float.class, "width");
+  static final Property<View, Float> c = new ExtendedFloatingActionButton.5(Float.class, "height");
+  static final Property<View, Float> d = new ExtendedFloatingActionButton.6(Float.class, "paddingStart");
+  static final Property<View, Float> e = new ExtendedFloatingActionButton.7(Float.class, "paddingEnd");
+  private static final int f = R.style.D;
   @NonNull
   protected ColorStateList a;
+  private int g = 0;
+  private final AnimatorTracker h = new AnimatorTracker();
   @NonNull
-  private final CoordinatorLayout.Behavior<ExtendedFloatingActionButton> jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout$Behavior;
-  private final AnimatorTracker jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker = new AnimatorTracker();
+  private final MotionStrategy i;
   @NonNull
-  private final MotionStrategy jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
+  private final MotionStrategy j;
+  private final MotionStrategy k = new ExtendedFloatingActionButton.ShowStrategy(this, this.h);
+  private final MotionStrategy l = new ExtendedFloatingActionButton.HideStrategy(this, this.h);
+  private final int m;
+  private int n;
+  private int o;
   @NonNull
-  private final MotionStrategy jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy;
-  private boolean jdField_b_of_type_Boolean = false;
-  private final int jdField_c_of_type_Int;
-  private final MotionStrategy jdField_c_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy = new ExtendedFloatingActionButton.ShowStrategy(this, this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker);
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  private final MotionStrategy jdField_d_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy = new ExtendedFloatingActionButton.HideStrategy(this, this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker);
-  private int e;
+  private final CoordinatorLayout.Behavior<ExtendedFloatingActionButton> p;
+  private boolean q = true;
+  private boolean r = false;
+  private boolean s = false;
   
   public ExtendedFloatingActionButton(@NonNull Context paramContext)
   {
@@ -64,93 +64,74 @@ public class ExtendedFloatingActionButton
   
   public ExtendedFloatingActionButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.q);
+    this(paramContext, paramAttributeSet, R.attr.x);
   }
   
   public ExtendedFloatingActionButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, f), paramAttributeSet, paramInt);
     paramContext = getContext();
-    this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout$Behavior = new ExtendedFloatingActionButton.ExtendedFloatingActionButtonBehavior(paramContext, paramAttributeSet);
-    TypedArray localTypedArray = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.x, paramInt, jdField_a_of_type_Int, new int[0]);
-    MotionSpec localMotionSpec1 = MotionSpec.a(paramContext, localTypedArray, R.styleable.bC);
-    MotionSpec localMotionSpec2 = MotionSpec.a(paramContext, localTypedArray, R.styleable.bB);
-    MotionSpec localMotionSpec3 = MotionSpec.a(paramContext, localTypedArray, R.styleable.bA);
-    MotionSpec localMotionSpec4 = MotionSpec.a(paramContext, localTypedArray, R.styleable.bD);
-    this.jdField_c_of_type_Int = localTypedArray.getDimensionPixelSize(R.styleable.bz, -1);
-    this.jdField_d_of_type_Int = ViewCompat.getPaddingStart(this);
-    this.e = ViewCompat.getPaddingEnd(this);
+    this.p = new ExtendedFloatingActionButton.ExtendedFloatingActionButtonBehavior(paramContext, paramAttributeSet);
+    TypedArray localTypedArray = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.cw, paramInt, f, new int[0]);
+    MotionSpec localMotionSpec1 = MotionSpec.a(paramContext, localTypedArray, R.styleable.cA);
+    MotionSpec localMotionSpec2 = MotionSpec.a(paramContext, localTypedArray, R.styleable.cz);
+    MotionSpec localMotionSpec3 = MotionSpec.a(paramContext, localTypedArray, R.styleable.cy);
+    MotionSpec localMotionSpec4 = MotionSpec.a(paramContext, localTypedArray, R.styleable.cB);
+    this.m = localTypedArray.getDimensionPixelSize(R.styleable.cx, -1);
+    this.n = ViewCompat.getPaddingStart(this);
+    this.o = ViewCompat.getPaddingEnd(this);
     AnimatorTracker localAnimatorTracker = new AnimatorTracker();
-    this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy = new ExtendedFloatingActionButton.ChangeSizeStrategy(this, localAnimatorTracker, new ExtendedFloatingActionButton.1(this), true);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy = new ExtendedFloatingActionButton.ChangeSizeStrategy(this, localAnimatorTracker, new ExtendedFloatingActionButton.2(this), false);
-    this.jdField_c_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(localMotionSpec1);
-    this.jdField_d_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(localMotionSpec2);
-    this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(localMotionSpec3);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(localMotionSpec4);
+    this.j = new ExtendedFloatingActionButton.ChangeSizeStrategy(this, localAnimatorTracker, new ExtendedFloatingActionButton.1(this), true);
+    this.i = new ExtendedFloatingActionButton.ChangeSizeStrategy(this, localAnimatorTracker, new ExtendedFloatingActionButton.2(this), false);
+    this.k.a(localMotionSpec1);
+    this.l.a(localMotionSpec2);
+    this.j.a(localMotionSpec3);
+    this.i.a(localMotionSpec4);
     localTypedArray.recycle();
-    setShapeAppearanceModel(ShapeAppearanceModel.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int, ShapeAppearanceModel.a).a());
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
+    setShapeAppearanceModel(ShapeAppearanceModel.a(paramContext, paramAttributeSet, paramInt, f, ShapeAppearanceModel.a).a());
+    b();
   }
   
   private void a(@NonNull MotionStrategy paramMotionStrategy, @Nullable ExtendedFloatingActionButton.OnChangedCallback paramOnChangedCallback)
   {
-    if (paramMotionStrategy.a()) {
+    if (paramMotionStrategy.i()) {
       return;
     }
-    if (!d())
+    if (!e())
     {
-      paramMotionStrategy.c();
+      paramMotionStrategy.g();
       paramMotionStrategy.a(paramOnChangedCallback);
       return;
     }
     measure(0, 0);
-    AnimatorSet localAnimatorSet = paramMotionStrategy.a();
+    AnimatorSet localAnimatorSet = paramMotionStrategy.f();
     localAnimatorSet.addListener(new ExtendedFloatingActionButton.3(this, paramMotionStrategy, paramOnChangedCallback));
-    paramMotionStrategy = paramMotionStrategy.a().iterator();
+    paramMotionStrategy = paramMotionStrategy.b().iterator();
     while (paramMotionStrategy.hasNext()) {
       localAnimatorSet.addListener((Animator.AnimatorListener)paramMotionStrategy.next());
     }
     localAnimatorSet.start();
   }
   
-  private boolean b()
+  private void b()
   {
-    int i = getVisibility();
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (i != 0)
-    {
-      if (this.jdField_b_of_type_Int == 2) {
-        bool1 = true;
-      }
-      return bool1;
-    }
-    bool1 = bool2;
-    if (this.jdField_b_of_type_Int != 1) {
-      bool1 = true;
-    }
-    return bool1;
+    this.a = getTextColors();
   }
   
   private boolean c()
   {
-    int i = getVisibility();
+    int i1 = getVisibility();
     boolean bool2 = false;
     boolean bool1 = false;
-    if (i == 0)
+    if (i1 != 0)
     {
-      if (this.jdField_b_of_type_Int == 1) {
+      if (this.g == 2) {
         bool1 = true;
       }
       return bool1;
     }
     bool1 = bool2;
-    if (this.jdField_b_of_type_Int != 2) {
+    if (this.g != 1) {
       bool1 = true;
     }
     return bool1;
@@ -158,7 +139,26 @@ public class ExtendedFloatingActionButton
   
   private boolean d()
   {
-    return ((ViewCompat.isLaidOut(this)) || ((!b()) && (this.jdField_c_of_type_Boolean))) && (!isInEditMode());
+    int i1 = getVisibility();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (i1 == 0)
+    {
+      if (this.g == 1) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (this.g != 2) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
+  private boolean e()
+  {
+    return ((ViewCompat.isLaidOut(this)) || ((!c()) && (this.s))) && (!isInEditMode());
   }
   
   protected void a(@NonNull ColorStateList paramColorStateList)
@@ -166,46 +166,70 @@ public class ExtendedFloatingActionButton
     super.setTextColor(paramColorStateList);
   }
   
-  @VisibleForTesting
-  int c()
-  {
-    int j = this.jdField_c_of_type_Int;
-    int i = j;
-    if (j < 0) {
-      i = Math.min(ViewCompat.getPaddingStart(this), ViewCompat.getPaddingEnd(this)) * 2 + a();
-    }
-    return i;
-  }
-  
-  int d()
-  {
-    return (c() - a()) / 2;
-  }
-  
   @NonNull
   public CoordinatorLayout.Behavior<ExtendedFloatingActionButton> getBehavior()
   {
-    return this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout$Behavior;
+    return this.p;
+  }
+  
+  int getCollapsedPadding()
+  {
+    return (getCollapsedSize() - getIconSize()) / 2;
+  }
+  
+  @VisibleForTesting
+  int getCollapsedSize()
+  {
+    int i2 = this.m;
+    int i1 = i2;
+    if (i2 < 0) {
+      i1 = Math.min(ViewCompat.getPaddingStart(this), ViewCompat.getPaddingEnd(this)) * 2 + getIconSize();
+    }
+    return i1;
+  }
+  
+  @Nullable
+  public MotionSpec getExtendMotionSpec()
+  {
+    return this.j.c();
+  }
+  
+  @Nullable
+  public MotionSpec getHideMotionSpec()
+  {
+    return this.l.c();
+  }
+  
+  @Nullable
+  public MotionSpec getShowMotionSpec()
+  {
+    return this.k.c();
+  }
+  
+  @Nullable
+  public MotionSpec getShrinkMotionSpec()
+  {
+    return this.i.c();
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(getText())) && (a() != null))
+    if ((this.q) && (TextUtils.isEmpty(getText())) && (getIcon() != null))
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.c();
+      this.q = false;
+      this.i.g();
     }
   }
   
   public void setAnimateShowBeforeLayout(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.s = paramBoolean;
   }
   
   public void setExtendMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(paramMotionSpec);
+    this.j.a(paramMotionSpec);
   }
   
   public void setExtendMotionSpecResource(@AnimatorRes int paramInt)
@@ -215,24 +239,24 @@ public class ExtendedFloatingActionButton
   
   public void setExtended(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (this.q == paramBoolean) {
       return;
     }
     MotionStrategy localMotionStrategy;
     if (paramBoolean) {
-      localMotionStrategy = this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy;
+      localMotionStrategy = this.j;
     } else {
-      localMotionStrategy = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy;
+      localMotionStrategy = this.i;
     }
-    if (localMotionStrategy.a()) {
+    if (localMotionStrategy.i()) {
       return;
     }
-    localMotionStrategy.c();
+    localMotionStrategy.g();
   }
   
   public void setHideMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_d_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(paramMotionSpec);
+    this.l.a(paramMotionSpec);
   }
   
   public void setHideMotionSpecResource(@AnimatorRes int paramInt)
@@ -243,26 +267,26 @@ public class ExtendedFloatingActionButton
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+    if ((this.q) && (!this.r))
     {
-      this.jdField_d_of_type_Int = ViewCompat.getPaddingStart(this);
-      this.e = ViewCompat.getPaddingEnd(this);
+      this.n = ViewCompat.getPaddingStart(this);
+      this.o = ViewCompat.getPaddingEnd(this);
     }
   }
   
   public void setPaddingRelative(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.setPaddingRelative(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+    if ((this.q) && (!this.r))
     {
-      this.jdField_d_of_type_Int = paramInt1;
-      this.e = paramInt3;
+      this.n = paramInt1;
+      this.o = paramInt3;
     }
   }
   
   public void setShowMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(paramMotionSpec);
+    this.k.a(paramMotionSpec);
   }
   
   public void setShowMotionSpecResource(@AnimatorRes int paramInt)
@@ -272,7 +296,7 @@ public class ExtendedFloatingActionButton
   
   public void setShrinkMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonMotionStrategy.a(paramMotionSpec);
+    this.i.a(paramMotionSpec);
   }
   
   public void setShrinkMotionSpecResource(@AnimatorRes int paramInt)
@@ -283,18 +307,18 @@ public class ExtendedFloatingActionButton
   public void setTextColor(int paramInt)
   {
     super.setTextColor(paramInt);
-    a();
+    b();
   }
   
   public void setTextColor(@NonNull ColorStateList paramColorStateList)
   {
     super.setTextColor(paramColorStateList);
-    a();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
  * JD-Core Version:    0.7.0.1
  */

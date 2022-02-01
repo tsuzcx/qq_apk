@@ -15,16 +15,19 @@ import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.superplayer.utils.NetworkUtil;
 import com.tencent.superplayer.utils.ThreadUtil;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class SPBandwidthPredictor
-  implements Handler.Callback, ISPBandwidthPredictor
+  implements Handler.Callback, ISPBandwidthPredictor, NetworkListener
 {
   public static final String CONFIG_RESET_TIME_SECOND_FOR_WIFI = "reset_time_threshold_wifi";
   public static final String CONFIG_RESET_TIME_SECOND_FOR_XG = "reset_time_threshold_xg";
+  private static final float DEFAULT_EXO_WEIGHT = 5.0F;
   private static final int DEFAULT_RESET_TIME_THRESHOLD_WIFI = 3600;
   private static final int DEFAULT_RESET_TIME_THRESHOLD_XG = 600;
   private static final long INTERVAL_SAMPLE = 1000L;
@@ -32,12 +35,15 @@ public class SPBandwidthPredictor
   private static final int MSG_SAMPLE = 0;
   private static final int SAMPLE_EXPIRE_DURATION = 5;
   private static final String TAG = "BandwidthPredictor";
-  private Context appContext;
+  private static volatile SPBandwidthPredictor.NetworkCallbackImpl networkCallback;
+  private static volatile SPBandwidthPredictor.NetworkChangeReceiver networkChangeReceiver;
+  private static final List<WeakReference<NetworkListener>> networkListeners = new ArrayList();
+  private final Context appContext;
   private ArrayList<IBandwidthObtainer> bandwidthObtainers;
   private ArrayList<AbstractPredictor> bandwidthPredictors;
   private Map<String, String> configMap;
   private long currentPrediction = 0L;
-  private Handler handler;
+  private final Handler handler;
   private int idleTimes = 0;
   private long lastBandwidth = 0L;
   private long lastRestTimeStamp = 0L;
@@ -71,7 +77,37 @@ public class SPBandwidthPredictor
     if (this.configMap == null) {
       this.configMap = new HashMap();
     }
-    regsiterNetworkChangeListener();
+    networkListeners.add(new WeakReference(this));
+    registerNetworkCallback(this.appContext);
+  }
+  
+  private static void dispatchNetworkChanged()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = networkListeners.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      NetworkListener localNetworkListener = (NetworkListener)localWeakReference.get();
+      if (localNetworkListener != null) {
+        localNetworkListener.onNetChanged();
+      } else {
+        localArrayList.add(localWeakReference);
+      }
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dispatchNetworkChanged: toRemoveList.size=");
+    ((StringBuilder)localObject).append(localArrayList.size());
+    LogUtil.d("BandwidthPredictor", ((StringBuilder)localObject).toString());
+    try
+    {
+      networkListeners.removeAll(localArrayList);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
   private long getCurrentBandwidth()
@@ -114,20 +150,29 @@ public class SPBandwidthPredictor
     this.currentPrediction = l;
   }
   
-  private void regsiterNetworkChangeListener()
+  private static void registerNetworkCallback(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 21)
+    if ((networkCallback == null) && (networkChangeReceiver == null))
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)this.appContext.getSystemService("connectivity");
-      if (localConnectivityManager != null)
+      LogUtil.d("BandwidthPredictor", "registerNetworkCallback: ");
+      try
       {
-        localConnectivityManager.registerNetworkCallback(new NetworkRequest.Builder().build(), new SPBandwidthPredictor.NetworkCallbackImpl(this, null));
+        ConnectivityManager localConnectivityManager = (ConnectivityManager)paramContext.getSystemService("connectivity");
+        if ((Build.VERSION.SDK_INT >= 21) && (localConnectivityManager != null))
+        {
+          networkCallback = new SPBandwidthPredictor.NetworkCallbackImpl(null);
+          localConnectivityManager.registerNetworkCallback(new NetworkRequest.Builder().build(), networkCallback);
+          return;
+        }
+        networkChangeReceiver = new SPBandwidthPredictor.NetworkChangeReceiver(null);
+        paramContext.registerReceiver(networkChangeReceiver, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
         return;
       }
-      this.appContext.registerReceiver(new SPBandwidthPredictor.NetworkChangeReceiver(this, null), new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-      return;
+      catch (Exception paramContext)
+      {
+        LogUtil.e("BandwidthPredictor", paramContext);
+      }
     }
-    this.appContext.registerReceiver(new SPBandwidthPredictor.NetworkChangeReceiver(this, null), new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
   }
   
   private void reset()
@@ -213,6 +258,12 @@ public class SPBandwidthPredictor
     return false;
   }
   
+  public void onNetChanged()
+  {
+    LogUtil.d("BandwidthPredictor", "onNetChanged: ");
+    this.handler.post(new SPBandwidthPredictor.1(this));
+  }
+  
   public void start(Context paramContext)
   {
     if (this.scene <= 0)
@@ -234,7 +285,7 @@ public class SPBandwidthPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBandwidthPredictor
  * JD-Core Version:    0.7.0.1
  */

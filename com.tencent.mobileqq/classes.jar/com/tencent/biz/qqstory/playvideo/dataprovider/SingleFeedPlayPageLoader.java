@@ -17,7 +17,7 @@ public class SingleFeedPlayPageLoader
   public FeedIdListSeqInfo a(String paramString)
   {
     paramString = new FeedIdListSeqInfo(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    paramString.h = ((SingleFeedPlayInfo)this.a).mFeedPullType;
     return paramString;
   }
   
@@ -25,14 +25,14 @@ public class SingleFeedPlayPageLoader
   {
     ArrayList localArrayList = new ArrayList();
     FeedIdBasePlayPageLoader.FeedBaseGroupId localFeedBaseGroupId = new FeedIdBasePlayPageLoader.FeedBaseGroupId(((SingleFeedPlayInfo)this.a).mFeedFeedId, new FeedIdListSeqInfo(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localFeedBaseGroupId.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    localFeedBaseGroupId.a.h = ((SingleFeedPlayInfo)this.a).mFeedPullType;
     localArrayList.add(localFeedBaseGroupId);
     paramCallBack.a(new ErrorMessage(), localArrayList, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.SingleFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

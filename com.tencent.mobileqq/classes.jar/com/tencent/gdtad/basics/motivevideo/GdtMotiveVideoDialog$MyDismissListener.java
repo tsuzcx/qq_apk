@@ -25,14 +25,14 @@ public class GdtMotiveVideoDialog$MyDismissListener
       QLog.i("GdtMotiveVideoDialog", 1, "gdtMotiveVideoDialog == null");
       return;
     }
-    GdtMotiveVideoDialog.a(paramDialogInterface).setIntent(GdtMotiveVideoDialog.a(paramDialogInterface));
-    GdtMotiveVideoDialog.a(paramDialogInterface).getApplication().unregisterActivityLifecycleCallbacks(GdtMotiveVideoDialog.a(paramDialogInterface));
-    GdtMotiveVideoDialog.a(paramDialogInterface).k();
+    GdtMotiveVideoDialog.e(paramDialogInterface).setIntent(GdtMotiveVideoDialog.f(paramDialogInterface));
+    GdtMotiveVideoDialog.e(paramDialogInterface).getApplication().unregisterActivityLifecycleCallbacks(GdtMotiveVideoDialog.g(paramDialogInterface));
+    GdtMotiveVideoDialog.c(paramDialogInterface).p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoDialog.MyDismissListener
  * JD-Core Version:    0.7.0.1
  */

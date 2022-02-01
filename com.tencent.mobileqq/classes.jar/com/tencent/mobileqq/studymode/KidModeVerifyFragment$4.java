@@ -13,13 +13,13 @@ class KidModeVerifyFragment$4
   {
     BaseActivity localBaseActivity = this.this$0.getBaseActivity();
     if (localBaseActivity != null) {
-      ((InputMethodManager)localBaseActivity.getSystemService("input_method")).showSoftInput(KidModeVerifyFragment.a(this.this$0), 0);
+      ((InputMethodManager)localBaseActivity.getSystemService("input_method")).showSoftInput(KidModeVerifyFragment.e(this.this$0), 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeVerifyFragment.4
  * JD-Core Version:    0.7.0.1
  */

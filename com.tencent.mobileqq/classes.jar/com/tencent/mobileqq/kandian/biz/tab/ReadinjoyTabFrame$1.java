@@ -18,14 +18,14 @@ class ReadinjoyTabFrame$1
   {
     ReadinjoyTabFrame.a(this.a).setText("");
     ReadinjoyTabFrame.a(this.a).setVisibility(8);
-    ReadinjoyReportUtils.a(this.a.a(), true);
-    ((KandianMergeManager)this.a.a.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).d(true);
-    RIJMsgBoxUtils.a(this.a.a(), 1);
+    ReadinjoyReportUtils.a(this.a.t(), true);
+    ((KandianMergeManager)this.a.aF.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).d(true);
+    RIJMsgBoxUtils.a(this.a.P(), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.1
  * JD-Core Version:    0.7.0.1
  */

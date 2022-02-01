@@ -13,38 +13,36 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadInJoySkinGuideView
   extends RelativeLayout
 {
-  private int a;
-  protected MediaPlayer a;
   protected SpriteNativeView a;
-  protected boolean a;
+  protected boolean b = false;
+  protected MediaPlayer c;
+  private int d = 2;
   
   public ReadInJoySkinGuideView(int paramInt1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt2, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2131562708, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377644));
+    LayoutInflater.from(getContext()).inflate(2131629141, this);
+    this.a = ((SpriteNativeView)findViewById(2131446056));
     setClickable(true);
     if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == paramInt2) {
-      this.jdField_a_of_type_Int = 1;
+      this.d = 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.post(new ReadInJoySkinGuideView.1(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext, paramInt1));
+    this.a.post(new ReadInJoySkinGuideView.1(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext, paramInt1));
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.d();
+      this.b = true;
+      this.a.d();
     }
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.c;
     if (localMediaPlayer != null) {
       try
       {
         localMediaPlayer.stop();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.c.release();
         return;
       }
       catch (Exception localException)
@@ -58,12 +56,12 @@ public class ReadInJoySkinGuideView
   
   public void b()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.c;
     if (localMediaPlayer != null) {
       try
       {
         localMediaPlayer.pause();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(0);
+        this.c.seekTo(0);
         return;
       }
       catch (Exception localException)
@@ -77,7 +75,7 @@ public class ReadInJoySkinGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinGuideView
  * JD-Core Version:    0.7.0.1
  */

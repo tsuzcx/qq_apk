@@ -14,46 +14,46 @@ class GroupFileSearchDialog$7
   public void a(int paramInt, String paramString)
   {
     paramString = this.a;
-    paramString.jdField_a_of_type_Int -= 1;
-    if (this.a.c) {
-      paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+    paramString.x -= 1;
+    if (this.a.t) {
+      paramString = this.a.n.obtainMessage(3);
     } else {
-      paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+      paramString = this.a.n.obtainMessage(5);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+    this.a.n.sendMessage(paramString);
   }
   
   public void a(String arg1, String paramString2, int paramInt1, int paramInt2, List<TroopFileSearchItemData> paramList)
   {
     paramString2 = this.a;
-    int i = paramString2.jdField_a_of_type_Int;
+    int i = paramString2.x;
     boolean bool = true;
-    paramString2.jdField_a_of_type_Int = (i - 1);
+    paramString2.x = (i - 1);
     paramString2 = this.a;
-    paramString2.jdField_b_of_type_JavaLangString = ???;
-    paramString2.jdField_b_of_type_Int = paramInt2;
+    paramString2.y = ???;
+    paramString2.A = paramInt2;
     paramInt2 = 0;
     if (paramInt1 != 1) {
       bool = false;
     }
-    paramString2.f = bool;
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    paramString2.z = bool;
+    synchronized (this.a.r)
     {
-      if (this.a.jdField_b_of_type_JavaUtilList != null) {
-        this.a.jdField_b_of_type_JavaUtilList.clear();
+      if (this.a.D != null) {
+        this.a.D.clear();
       } else {
-        this.a.jdField_b_of_type_JavaUtilList = new ArrayList();
+        this.a.D = new ArrayList();
       }
       paramInt1 = paramInt2;
       while (paramInt1 < paramList.size()) {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        synchronized (this.a.r)
         {
-          this.a.jdField_b_of_type_JavaUtilList.add(paramList.get(paramInt1));
+          this.a.D.add(paramList.get(paramInt1));
           paramInt1 += 1;
         }
       }
-      ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+      ??? = this.a.n.obtainMessage(5);
+      this.a.n.sendMessage(???);
       return;
     }
     for (;;)
@@ -64,7 +64,7 @@ class GroupFileSearchDialog$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.7
  * JD-Core Version:    0.7.0.1
  */

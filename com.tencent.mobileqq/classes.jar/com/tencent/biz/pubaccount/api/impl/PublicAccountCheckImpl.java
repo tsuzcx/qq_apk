@@ -23,10 +23,10 @@ public class PublicAccountCheckImpl
   
   protected int doStep()
   {
-    Object localObject = (PublicAccountHandlerImpl)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
+    Object localObject = (PublicAccountHandlerImpl)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
     if (this.mStepId == 6)
     {
-      if (!this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isPublicAccountListOK", false))
+      if (!this.mAutomator.d.getBoolean("isPublicAccountListOK", false))
       {
         registeObserver();
         ((PublicAccountHandlerImpl)localObject).setNotNeedUpdate();
@@ -42,18 +42,18 @@ public class PublicAccountCheckImpl
         registeObserver();
         ((PublicAccountHandlerImpl)localObject).getUserFollowList();
       }
-      localObject = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getSharedPreferences(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
+      localObject = this.mAutomator.k.getApplication().getApplicationContext().getSharedPreferences(this.mAutomator.k.getAccount(), 0);
       long l = System.currentTimeMillis();
       if (l - ((SharedPreferences)localObject).getLong("eqqlist_login_update_ts", 0L) > 86400000L)
       {
-        EnterpriseQQHandler localEnterpriseQQHandler = (EnterpriseQQHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ENTERPRISEQQ_HANDLER);
+        EnterpriseQQHandler localEnterpriseQQHandler = (EnterpriseQQHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.ENTERPRISEQQ_HANDLER);
         if (localEnterpriseQQHandler != null) {
           localEnterpriseQQHandler.a(SystemClock.uptimeMillis());
         }
         ((SharedPreferences)localObject).edit().putLong("eqqlist_login_update_ts", l);
       }
-      localObject = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((EntityManager)localObject);
+      localObject = this.mAutomator.k.getEntityManagerFactory().createEntityManager();
+      this.mAutomator.k.getMessageFacade().a((EntityManager)localObject);
       if (bool) {
         return 2;
       }
@@ -65,7 +65,7 @@ public class PublicAccountCheckImpl
   {
     if (this.mPublicAccountObserver != null)
     {
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.mPublicAccountObserver);
+      this.mAutomator.k.removeObserver(this.mPublicAccountObserver);
       this.mPublicAccountObserver = null;
     }
   }
@@ -76,13 +76,13 @@ public class PublicAccountCheckImpl
     {
       this.mPublicAccountObserver = new PublicAccountObserverImpl();
       this.mPublicAccountObserver.setOnCallback(new PublicAccountCheckImpl.1(this));
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.mPublicAccountObserver);
+      this.mAutomator.k.addObserver(this.mPublicAccountObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountCheckImpl
  * JD-Core Version:    0.7.0.1
  */

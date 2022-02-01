@@ -8,7 +8,7 @@ class StoryDownloadView$1
 {
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.q = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.v = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

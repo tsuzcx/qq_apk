@@ -22,109 +22,109 @@ class TroopTransferActivity$TroopMemberListAdapter$1
   
   public void run()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_JavaUtilArrayList.size();
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(QQManagerFactory.TROOP_MANAGER);
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    int j = this.b.a.size();
+    TroopManager localTroopManager = (TroopManager)this.b.c.app.getManager(QQManagerFactory.TROOP_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)this.b.c.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     StringBuilder localStringBuilder;
     while (i < j)
     {
-      TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (!TextUtils.isEmpty(localTroopMemberItem.a))
+      TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.b.a.get(i);
+      if (!TextUtils.isEmpty(localTroopMemberItem.c))
       {
         localStringBuilder = null;
         if (localFriendsManager == null) {
           localObject = null;
         } else {
-          localObject = localFriendsManager.e(localTroopMemberItem.a);
+          localObject = localFriendsManager.m(localTroopMemberItem.c);
         }
         if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
-          localTroopMemberItem.g = ((Friends)localObject).name;
+          localTroopMemberItem.i = ((Friends)localObject).name;
         }
         if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
-          localTroopMemberItem.j = ((Friends)localObject).remark;
+          localTroopMemberItem.l = ((Friends)localObject).remark;
         }
         if (localTroopManager == null) {
           localObject = localStringBuilder;
         } else {
-          localObject = localTroopManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, localTroopMemberItem.a);
+          localObject = localTroopManager.e(this.b.c.r, localTroopMemberItem.c);
         }
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localTroopMemberItem.a)))
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localTroopMemberItem.c)))
         {
-          localTroopMemberItem.m = ((String)localObject);
+          localTroopMemberItem.o = ((String)localObject);
         }
         else
         {
-          localObject = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a), localTroopMemberItem.a);
+          localObject = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.b.c.app, String.valueOf(this.b.c.r), localTroopMemberItem.c);
           if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopColorNick))) {
-            localTroopMemberItem.m = ((TroopMemberInfo)localObject).troopColorNick;
+            localTroopMemberItem.o = ((TroopMemberInfo)localObject).troopColorNick;
           }
           if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopremark))) {
-            localTroopMemberItem.j = ((TroopMemberInfo)localObject).troopremark;
+            localTroopMemberItem.l = ((TroopMemberInfo)localObject).troopremark;
           }
         }
-        if (!TextUtils.isEmpty(localTroopMemberItem.j))
+        if (!TextUtils.isEmpty(localTroopMemberItem.l))
         {
-          localTroopMemberItem.b = localTroopMemberItem.j;
+          localTroopMemberItem.d = localTroopMemberItem.l;
         }
-        else if (!TextUtils.isEmpty(localTroopMemberItem.m))
+        else if (!TextUtils.isEmpty(localTroopMemberItem.o))
         {
-          localTroopMemberItem.b = localTroopMemberItem.m;
+          localTroopMemberItem.d = localTroopMemberItem.o;
         }
-        else if (!TextUtils.isEmpty(localTroopMemberItem.g))
+        else if (!TextUtils.isEmpty(localTroopMemberItem.i))
         {
-          localTroopMemberItem.b = localTroopMemberItem.g;
+          localTroopMemberItem.d = localTroopMemberItem.i;
         }
-        else if (!TextUtils.isEmpty(localTroopMemberItem.a))
+        else if (!TextUtils.isEmpty(localTroopMemberItem.c))
         {
-          localTroopMemberItem.b = localTroopMemberItem.a;
-          localArrayList.add(localTroopMemberItem.a);
+          localTroopMemberItem.d = localTroopMemberItem.c;
+          localArrayList.add(localTroopMemberItem.c);
         }
-        if (!TextUtils.isEmpty(localTroopMemberItem.b))
+        if (!TextUtils.isEmpty(localTroopMemberItem.d))
         {
-          localTroopMemberItem.c = ChnToSpell.a(localTroopMemberItem.b, 2);
-          localTroopMemberItem.d = ChnToSpell.a(localTroopMemberItem.b, 1);
-        }
-        else
-        {
-          localTroopMemberItem.c = "";
-          localTroopMemberItem.d = "";
-        }
-        if (!TextUtils.isEmpty(localTroopMemberItem.g))
-        {
-          localTroopMemberItem.h = ChnToSpell.a(localTroopMemberItem.g, 2);
-          localTroopMemberItem.i = ChnToSpell.a(localTroopMemberItem.g, 1);
+          localTroopMemberItem.e = ChnToSpell.b(localTroopMemberItem.d, 2);
+          localTroopMemberItem.f = ChnToSpell.b(localTroopMemberItem.d, 1);
         }
         else
         {
-          localTroopMemberItem.h = "";
-          localTroopMemberItem.i = "";
+          localTroopMemberItem.e = "";
+          localTroopMemberItem.f = "";
         }
-        if (!TextUtils.isEmpty(localTroopMemberItem.j))
+        if (!TextUtils.isEmpty(localTroopMemberItem.i))
         {
-          localTroopMemberItem.k = ChnToSpell.a(localTroopMemberItem.j, 2);
-          localTroopMemberItem.l = ChnToSpell.a(localTroopMemberItem.j, 1);
+          localTroopMemberItem.j = ChnToSpell.b(localTroopMemberItem.i, 2);
+          localTroopMemberItem.k = ChnToSpell.b(localTroopMemberItem.i, 1);
         }
         else
         {
+          localTroopMemberItem.j = "";
           localTroopMemberItem.k = "";
-          localTroopMemberItem.l = "";
         }
-        if (!TextUtils.isEmpty(localTroopMemberItem.m))
+        if (!TextUtils.isEmpty(localTroopMemberItem.l))
         {
-          localTroopMemberItem.n = ChnToSpell.a(localTroopMemberItem.m, 2);
-          localTroopMemberItem.o = ChnToSpell.a(localTroopMemberItem.m, 1);
+          localTroopMemberItem.m = ChnToSpell.b(localTroopMemberItem.l, 2);
+          localTroopMemberItem.n = ChnToSpell.b(localTroopMemberItem.l, 1);
         }
         else
         {
+          localTroopMemberItem.m = "";
           localTroopMemberItem.n = "";
-          localTroopMemberItem.o = "";
+        }
+        if (!TextUtils.isEmpty(localTroopMemberItem.o))
+        {
+          localTroopMemberItem.p = ChnToSpell.b(localTroopMemberItem.o, 2);
+          localTroopMemberItem.q = ChnToSpell.b(localTroopMemberItem.o, 1);
+        }
+        else
+        {
+          localTroopMemberItem.p = "";
+          localTroopMemberItem.q = "";
         }
       }
       i += 1;
     }
-    Object localObject = (ITroopMemberCardHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
+    Object localObject = (ITroopMemberCardHandler)this.b.c.app.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -135,13 +135,13 @@ class TroopTransferActivity$TroopMemberListAdapter$1
       QLog.i("Q.troopdisband.transfer", 2, localStringBuilder.toString());
     }
     if ((localArrayList.size() > 0) && (localObject != null)) {
-      ((ITroopMemberCardHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, localArrayList);
+      ((ITroopMemberCardHandler)localObject).a(this.b.c.r, this.b.c.s, localArrayList);
     }
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.isFinishing()))
+      if ((this.b.c != null) && (!this.b.c.isFinishing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.runOnUiThread(new TroopTransferActivity.TroopMemberListAdapter.1.1(this));
+        this.b.c.runOnUiThread(new TroopTransferActivity.TroopMemberListAdapter.1.1(this));
         return;
       }
     }
@@ -155,7 +155,7 @@ class TroopTransferActivity$TroopMemberListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

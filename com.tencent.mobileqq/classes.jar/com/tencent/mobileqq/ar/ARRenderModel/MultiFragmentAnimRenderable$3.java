@@ -10,9 +10,9 @@ class MultiFragmentAnimRenderable$3
   public void run()
   {
     MultiFragmentAnimRenderable.a(this.this$0).lock();
-    if (MultiFragmentAnimRenderable.a(this.this$0) != null)
+    if (MultiFragmentAnimRenderable.b(this.this$0) != null)
     {
-      MultiFragmentAnimRenderable.a(this.this$0).f();
+      MultiFragmentAnimRenderable.b(this.this$0).l();
       MultiFragmentAnimRenderable.a(this.this$0, null);
     }
     MultiFragmentAnimRenderable.a(this.this$0).unlock();
@@ -20,7 +20,7 @@ class MultiFragmentAnimRenderable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.3
  * JD-Core Version:    0.7.0.1
  */

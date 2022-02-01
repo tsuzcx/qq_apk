@@ -7,7 +7,7 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 public abstract class NativeCallback
 {
   private String mAction = null;
-  private Handler mHandler;
+  private final Handler mHandler;
   private Message mMsg = null;
   
   public NativeCallback(Handler paramHandler)
@@ -39,7 +39,7 @@ public abstract class NativeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.NativeCallback
  * JD-Core Version:    0.7.0.1
  */

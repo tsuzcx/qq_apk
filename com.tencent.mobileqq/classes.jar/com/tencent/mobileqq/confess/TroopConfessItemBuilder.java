@@ -23,18 +23,12 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 public class TroopConfessItemBuilder
   extends BaseBubbleBuilder
 {
-  private int a;
+  private int a = 0;
   
   public TroopConfessItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Int = (BaseChatItemLayout.B + AIOUtils.b(20.0F, paramContext.getResources()));
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
+    this.a = (BaseChatItemLayout.B + AIOUtils.b(20.0F, paramContext.getResources()));
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -44,29 +38,29 @@ public class TroopConfessItemBuilder
     paramChatMessage = paramView;
     if (paramView == null)
     {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558837, null);
-      paramChatMessage.setLayoutParams(new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, -2));
-      TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder, (TextView)paramChatMessage.findViewById(2131380076));
-      TroopConfessItemBuilder.TroopConfessViewHolder.b(paramViewHolder, (TextView)paramChatMessage.findViewById(2131380067));
-      TroopConfessItemBuilder.TroopConfessViewHolder.c(paramViewHolder, (TextView)paramChatMessage.findViewById(2131380091));
-      TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder, (ConfessNewsBgView)paramChatMessage.findViewById(2131380359));
+      paramChatMessage = LayoutInflater.from(this.e).inflate(2131624457, null);
+      paramChatMessage.setLayoutParams(new ViewGroup.LayoutParams(this.a, -2));
+      TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder, (TextView)paramChatMessage.findViewById(2131448989));
+      TroopConfessItemBuilder.TroopConfessViewHolder.b(paramViewHolder, (TextView)paramChatMessage.findViewById(2131448980));
+      TroopConfessItemBuilder.TroopConfessViewHolder.c(paramViewHolder, (TextView)paramChatMessage.findViewById(2131449004));
+      TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder, (ConfessNewsBgView)paramChatMessage.findViewById(2131449303));
       TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder).setPressMask(true);
-      TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder, paramChatMessage.findViewById(2131370283));
+      TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder, paramChatMessage.findViewById(2131437512));
     }
     TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder).setBgType(paramBaseChatItemLayout.getConfessTopicId() % 4);
-    TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder).setOnLongClickListener(paramOnLongClickAndTouchListener);
-    TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder).setOnTouchListener(paramOnLongClickAndTouchListener);
+    TroopConfessItemBuilder.TroopConfessViewHolder.b(paramViewHolder).setOnLongClickListener(paramOnLongClickAndTouchListener);
+    TroopConfessItemBuilder.TroopConfessViewHolder.b(paramViewHolder).setOnTouchListener(paramOnLongClickAndTouchListener);
     paramViewHolder.a(paramBaseChatItemLayout.mTroopConfessMsg);
     paramChatMessage.setOnClickListener(new TroopConfessItemBuilder.1(this, paramBaseChatItemLayout));
-    if (e)
+    if (v)
     {
-      paramView = paramViewHolder.b;
-      paramView.append(TroopConfessItemBuilder.TroopConfessViewHolder.b(paramViewHolder).getText());
-      paramView.append(TroopConfessItemBuilder.TroopConfessViewHolder.a(paramViewHolder).getText());
-      if (TroopConfessItemBuilder.TroopConfessViewHolder.c(paramViewHolder).getVisibility() == 0) {
-        paramViewHolder.b.append(TroopConfessItemBuilder.TroopConfessViewHolder.c(paramViewHolder).getText());
+      paramView = paramViewHolder.r;
+      paramView.append(TroopConfessItemBuilder.TroopConfessViewHolder.d(paramViewHolder).getText());
+      paramView.append(TroopConfessItemBuilder.TroopConfessViewHolder.c(paramViewHolder).getText());
+      if (TroopConfessItemBuilder.TroopConfessViewHolder.e(paramViewHolder).getVisibility() == 0) {
+        paramViewHolder.r.append(TroopConfessItemBuilder.TroopConfessViewHolder.e(paramViewHolder).getText());
       }
-      paramChatMessage.setContentDescription(paramViewHolder.b.toString());
+      paramChatMessage.setContentDescription(paramViewHolder.r.toString());
     }
     return paramChatMessage;
   }
@@ -74,11 +68,6 @@ public class TroopConfessItemBuilder
   protected BaseBubbleBuilder.ViewHolder a()
   {
     return new TroopConfessItemBuilder.TroopConfessViewHolder();
-  }
-  
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return null;
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -89,31 +78,41 @@ public class TroopConfessItemBuilder
         return;
       }
       MessageForTroopConfess localMessageForTroopConfess = (MessageForTroopConfess)paramChatMessage;
-      if (paramInt != 2131365480)
+      if (paramInt != 2131431695)
       {
         super.a(paramInt, paramContext, paramChatMessage);
         return;
       }
-      ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      ChatActivityFacade.b(this.e, this.d, paramChatMessage);
     }
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return paramView.a();
+    ChatActivityFacade.a(paramView, this.e, this.f.a);
+    super.a(paramView, this.e, 2131428089, null, null);
+    return paramView.d();
   }
   
-  protected void b(View paramView)
+  public int c(ChatMessage paramChatMessage)
   {
-    super.b(paramView);
+    return 0;
+  }
+  
+  protected void c(View paramView)
+  {
+    super.c(paramView);
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TroopConfessItemBuilder
  * JD-Core Version:    0.7.0.1
  */

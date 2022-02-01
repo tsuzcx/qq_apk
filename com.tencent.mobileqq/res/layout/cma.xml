@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:paddingTop="14.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/e_k" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="16.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="left" android:id="@id/ngi" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="start|center" android:id="@id/a35" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/account_panel_add_icon" />
-        <TextView android:textSize="18.0sp" android:textColor="@color/ah_" android:id="@id/tv_name" android:paddingLeft="45.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="right" android:id="@id/ngg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip">
-        <ImageView android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gv6" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/ah8" android:gravity="center" android:layout_gravity="end|center" android:id="@id/ogf" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:text="@string/x1h" />
-    </FrameLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/n1c" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.0dip" android:layout_below="@id/ngj" />
-</FrameLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/on5" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/on6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" />
+</LinearLayout>

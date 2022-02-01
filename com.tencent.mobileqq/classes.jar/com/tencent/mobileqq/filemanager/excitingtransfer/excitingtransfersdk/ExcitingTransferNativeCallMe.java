@@ -15,16 +15,16 @@ public class ExcitingTransferNativeCallMe
 {
   public static boolean getConfigFromServer()
   {
-    return ((IExcitingTransferAdapter)QQFileManagerUtil.a().getRuntimeService(IExcitingTransferAdapter.class, "")).getConfigFromServer();
+    return ((IExcitingTransferAdapter)QQFileManagerUtil.f().getRuntimeService(IExcitingTransferAdapter.class, "")).getConfigFromServer();
   }
   
   public static long getFreeSpaceForFile(String paramString)
   {
     long l;
     if (SystemUtil.a()) {
-      l = SystemUtil.a();
-    } else {
       l = SystemUtil.b();
+    } else {
+      l = SystemUtil.c();
     }
     return l * 1024L;
   }
@@ -41,7 +41,7 @@ public class ExcitingTransferNativeCallMe
   
   public static long getPubNo()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public static long getRegulatedMilliTime()
@@ -51,12 +51,12 @@ public class ExcitingTransferNativeCallMe
   
   public static long getSelfUin()
   {
-    return ((IExcitingTransferAdapter)QQFileManagerUtil.a().getRuntimeService(IExcitingTransferAdapter.class, "")).getSelfUin();
+    return ((IExcitingTransferAdapter)QQFileManagerUtil.f().getRuntimeService(IExcitingTransferAdapter.class, "")).getSelfUin();
   }
   
   public static String getVersion()
   {
-    return AppSetting.g();
+    return AppSetting.i();
   }
   
   public static void onLog(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -109,7 +109,7 @@ public class ExcitingTransferNativeCallMe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNativeCallMe
  * JD-Core Version:    0.7.0.1
  */

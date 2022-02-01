@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:src="@drawable/jhl" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/h0l" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingVertical="6.0dip">
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/qa_" android:paddingLeft="18.0dip" android:paddingTop="13.0dip" android:paddingRight="18.0dip" android:paddingBottom="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zfe" android:drawableLeft="@drawable/jhn" android:drawablePadding="12.0dip" android:paddingHorizontal="18.0dip" android:paddingVertical="13.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/qaa" android:paddingLeft="18.0dip" android:paddingTop="13.0dip" android:paddingRight="18.0dip" android:paddingBottom="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zfh" android:drawableLeft="@drawable/jhp" android:drawablePadding="12.0dip" android:paddingHorizontal="18.0dip" android:paddingVertical="13.0dip" />
+    </LinearLayout>
+</merge>

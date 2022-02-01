@@ -11,8 +11,8 @@ class GameEngine$4
   
   public void run()
   {
-    List localList = this.a.a();
-    new AvGameResDownloadManager(this.this$0.a()).a(localList, ".mp3", false);
+    List localList = this.a.t();
+    new AvGameResDownloadManager(this.this$0.f()).a(localList, ".mp3", false);
   }
 }
 

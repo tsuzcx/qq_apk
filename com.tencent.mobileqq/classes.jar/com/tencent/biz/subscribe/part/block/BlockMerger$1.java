@@ -9,7 +9,7 @@ class BlockMerger$1
   {
     try
     {
-      this.a.onDetachedFromRecyclerView(this.this$0.a().a());
+      this.a.onDetachedFromRecyclerView(this.this$0.f().getRecyclerView());
       this.this$0.b(this.a);
       BlockMerger.a(this.this$0).remove(this.a);
       BlockMerger.a(this.this$0, this.a, 2);

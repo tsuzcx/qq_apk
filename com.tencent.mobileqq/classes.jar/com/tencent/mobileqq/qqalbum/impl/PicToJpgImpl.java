@@ -613,7 +613,7 @@ public class PicToJpgImpl
     if (isHeif(paramPicData)) {
       str = "heif";
     } else {
-      str = fileType(paramPicData);
+      str = fileType(paramPicData.a);
     }
     int i = -1;
     int j = str.hashCode();
@@ -637,33 +637,33 @@ public class PicToJpgImpl
     if (paramPicData != null)
     {
       Object localObject1 = new BitmapFactory.Options();
-      int i = getOrientation(paramPicData.jdField_a_of_type_JavaLangObject);
+      int i = getOrientation(paramPicData.a);
       Matrix localMatrix = getMatrixByOrientation(i);
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("generate ");
       ((StringBuilder)localObject2).append("PicToJpg");
       ((StringBuilder)localObject2).append(",sourcePath:");
-      ((StringBuilder)localObject2).append(paramPicData.jdField_a_of_type_JavaLangObject);
+      ((StringBuilder)localObject2).append(paramPicData.a);
       ((StringBuilder)localObject2).append(",targetPath:");
-      ((StringBuilder)localObject2).append(paramPicData.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramPicData.b);
       ((StringBuilder)localObject2).append(",orientation:");
       ((StringBuilder)localObject2).append(i);
       if (QLog.isColorLevel()) {
         QLog.d("PicToJpg", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject2 = SafeBitmapFactory.safeDecode(paramPicData.jdField_a_of_type_JavaLangObject, (BitmapFactory.Options)localObject1);
+      localObject2 = SafeBitmapFactory.safeDecode(paramPicData.a, (BitmapFactory.Options)localObject1);
       localObject1 = localObject2;
       if (localMatrix != null) {
         localObject1 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), localMatrix, true);
       }
-      return compressQuality(paramPicData.jdField_a_of_type_JavaLangString, (Bitmap)localObject1, paramPicData.jdField_a_of_type_Int, "PicToJpg");
+      return compressQuality(paramPicData.b, (Bitmap)localObject1, paramPicData.c, "PicToJpg");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqalbum.impl.PicToJpgImpl
  * JD-Core Version:    0.7.0.1
  */

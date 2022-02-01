@@ -12,21 +12,16 @@ import java.io.File;
 public class WyUploadJob
   implements IUploader, Runnable
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private IUploader.IUploadListener jdField_a_of_type_ComTencentWeiyunUploaderIUploader$IUploadListener;
-  protected UploadRequest a;
   protected File a;
-  protected volatile boolean a;
-  protected volatile boolean b = false;
-  
-  public WyUploadJob()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  protected UploadRequest b;
+  protected volatile boolean c = false;
+  protected volatile boolean d = false;
+  private IUploader.IUploadListener e;
+  private volatile int f = 0;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.f;
   }
   
   Transfer a(UploadRequest paramUploadRequest)
@@ -34,22 +29,9 @@ public class WyUploadJob
     return new UploadTransfer(paramUploadRequest, this);
   }
   
-  UploadResponse a(int paramInt)
-  {
-    UploadResponse.Builder localBuilder = new UploadResponse.Builder();
-    localBuilder.request(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest);
-    localBuilder.code(paramInt);
-    return localBuilder.build();
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentWeiyunUploaderIUploader$IUploadListener.onUploadCanceled(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest);
-  }
-  
   protected void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -59,33 +41,34 @@ public class WyUploadJob
     Double.isNaN(d1);
     Double.isNaN(d2);
     d1 /= d2;
-    this.jdField_a_of_type_ComTencentWeiyunUploaderIUploader$IUploadListener.onUploadProgress(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest, paramLong2, (float)d1, 0L, 0L, 0L);
+    this.e.onUploadProgress(this.b, paramLong2, (float)d1, 0L, 0L, 0L);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    UploadResponse localUploadResponse = a(paramInt);
-    this.jdField_a_of_type_ComTencentWeiyunUploaderIUploader$IUploadListener.onUploadFinished(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest, paramBoolean, localUploadResponse);
+    UploadResponse localUploadResponse = b(paramInt);
+    this.e.onUploadFinished(this.b, paramBoolean, localUploadResponse);
   }
   
-  public boolean a()
+  UploadResponse b(int paramInt)
   {
-    return (!this.jdField_a_of_type_Boolean) && (!this.b);
+    UploadResponse.Builder localBuilder = new UploadResponse.Builder();
+    localBuilder.request(this.b);
+    localBuilder.code(paramInt);
+    return localBuilder.build();
   }
   
-  boolean b()
+  public boolean b()
   {
-    if (!a()) {
-      return false;
-    }
-    return c();
+    return (!this.c) && (!this.d);
   }
   
   boolean c()
   {
-    int i = a(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest).a();
-    a(i);
-    return i == 0;
+    if (!b()) {
+      return false;
+    }
+    return d();
   }
   
   public String[] calSliceSha1(String paramString, UploadNative.CanceledFlag paramCanceledFlag)
@@ -97,14 +80,14 @@ public class WyUploadJob
   {
     if (paramUploadRequest != null)
     {
-      UploadRequest localUploadRequest = this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest;
+      UploadRequest localUploadRequest = this.b;
       if (localUploadRequest != null)
       {
         if (localUploadRequest.requestKey() == null) {
           return;
         }
-        if (this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.requestKey().equals(paramUploadRequest.requestKey())) {
-          this.jdField_a_of_type_Boolean = true;
+        if (this.b.requestKey().equals(paramUploadRequest.requestKey())) {
+          this.c = true;
         }
       }
     }
@@ -112,7 +95,19 @@ public class WyUploadJob
   
   public void cancelAll()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
+  }
+  
+  boolean d()
+  {
+    int i = a(this.b).a();
+    a(i);
+    return i == 0;
+  }
+  
+  void e()
+  {
+    this.e.onUploadCanceled(this.b);
   }
   
   public void reportError(long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, boolean paramBoolean1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean2, int paramInt2) {}
@@ -121,19 +116,19 @@ public class WyUploadJob
   {
     try
     {
-      if (b() == true)
+      if (c() == true)
       {
         a(true, 0);
         return;
       }
-      if ((!Thread.interrupted()) && (a()))
+      if ((!Thread.interrupted()) && (b()))
       {
         a(false, a());
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
-        a();
+        e();
         return;
       }
       a(false, a());
@@ -167,9 +162,9 @@ public class WyUploadJob
     if (paramUploadRequest == null) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest = paramUploadRequest;
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.path());
-    this.jdField_a_of_type_ComTencentWeiyunUploaderIUploader$IUploadListener = this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.listener();
+    this.b = paramUploadRequest;
+    this.a = new File(this.b.path());
+    this.e = this.b.listener();
     new Thread(this).start();
     return true;
   }
@@ -178,7 +173,7 @@ public class WyUploadJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.upload.WyUploadJob
  * JD-Core Version:    0.7.0.1
  */

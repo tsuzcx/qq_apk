@@ -1,32 +1,25 @@
 package com.tencent.mobileqq.activity.main;
 
-import com.tencent.mobileqq.tianshu.observer.RedpointObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class MainAssistObserver$25
-  extends RedpointObserver
+  implements DialogInterface.OnClickListener
 {
   MainAssistObserver$25(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
-    }
-    this.a.e();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
-    }
-    this.a.g();
+    this.a.a.getIntent().removeExtra("if_check_account_same");
+    this.a.t.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.25
  * JD-Core Version:    0.7.0.1
  */

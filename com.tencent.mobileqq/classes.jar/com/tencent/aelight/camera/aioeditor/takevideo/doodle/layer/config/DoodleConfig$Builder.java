@@ -5,14 +5,14 @@ import com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.base.DoodleSt
 
 public class DoodleConfig$Builder
 {
-  private int jdField_a_of_type_Int = 0;
-  private DoodleStrategy jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerBaseDoodleStrategy = new DefaultDoodleStrategy();
+  private DoodleStrategy a = new DefaultDoodleStrategy();
   private int b = 0;
+  private int c = 0;
   
   public Builder a(int paramInt)
   {
     if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+      this.b = paramInt;
     }
     return this;
   }
@@ -20,7 +20,7 @@ public class DoodleConfig$Builder
   public Builder a(DoodleStrategy paramDoodleStrategy)
   {
     if (paramDoodleStrategy != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerBaseDoodleStrategy = paramDoodleStrategy;
+      this.a = paramDoodleStrategy;
     }
     return this;
   }
@@ -33,14 +33,14 @@ public class DoodleConfig$Builder
   public Builder b(int paramInt)
   {
     if (paramInt > 0) {
-      this.b = paramInt;
+      this.c = paramInt;
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.config.DoodleConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

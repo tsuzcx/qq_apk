@@ -6,52 +6,36 @@ import java.util.List;
 
 public class EmotionData
 {
-  public static final Object a;
-  public static final Comparator<EmotionData> a;
-  private static EmotionData b;
-  private static int c;
-  public int a;
-  private EmotionData a;
+  public static final Object d = new Object();
+  public static final Comparator<EmotionData> e = new EmotionData.1();
+  private static EmotionData g = null;
+  private static int h = 0;
   public EmoticonSpan a;
   public int b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_b_of_type_ComTencentAvChatroomEmotionData = null;
-    c = 0;
-    jdField_a_of_type_JavaUtilComparator = new EmotionData.1();
-  }
+  public int c;
+  private EmotionData f;
   
   private EmotionData(EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTextStyleEmoticonSpan = paramEmoticonSpan;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramEmoticonSpan;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public static EmotionData a(EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (jdField_b_of_type_ComTencentAvChatroomEmotionData != null)
+      if (g != null)
       {
-        EmotionData localEmotionData = jdField_b_of_type_ComTencentAvChatroomEmotionData;
-        jdField_b_of_type_ComTencentAvChatroomEmotionData = localEmotionData.jdField_a_of_type_ComTencentAvChatroomEmotionData;
-        localEmotionData.a(paramEmoticonSpan, paramInt1, paramInt2);
-        c -= 1;
+        EmotionData localEmotionData = g;
+        g = localEmotionData.f;
+        localEmotionData.b(paramEmoticonSpan, paramInt1, paramInt2);
+        h -= 1;
         return localEmotionData;
       }
       return new EmotionData(paramEmoticonSpan, paramInt1, paramInt2);
     }
-  }
-  
-  private void a(EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentAvChatroomEmotionData = null;
-    this.jdField_a_of_type_ComTencentMobileqqTextStyleEmoticonSpan = paramEmoticonSpan;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
   }
   
   public static void a(List<EmotionData> paramList)
@@ -73,16 +57,24 @@ public class EmotionData
     }
   }
   
+  private void b(EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
+  {
+    this.f = null;
+    this.a = paramEmoticonSpan;
+    this.b = paramInt1;
+    this.c = paramInt2;
+  }
+  
   public void a()
   {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    b(null, -1, -1);
+    synchronized (d)
     {
-      if (c < 50)
+      if (h < 50)
       {
-        this.jdField_a_of_type_ComTencentAvChatroomEmotionData = jdField_b_of_type_ComTencentAvChatroomEmotionData;
-        jdField_b_of_type_ComTencentAvChatroomEmotionData = this;
-        c += 1;
+        this.f = g;
+        g = this;
+        h += 1;
       }
       return;
     }

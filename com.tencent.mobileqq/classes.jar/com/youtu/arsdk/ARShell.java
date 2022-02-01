@@ -144,7 +144,7 @@ public class ARShell
       }
       if (ArCoreNativeSoManager.a((IArCoreNativeSoLoader)localObject1))
       {
-        Object localObject3 = ((IArCoreNativeSoLoader)localObject1).a();
+        Object localObject3 = ((IArCoreNativeSoLoader)localObject1).d();
         if (localObject3 != null)
         {
           int i = ((List)localObject3).size();
@@ -155,7 +155,7 @@ public class ARShell
               while (localIterator.hasNext())
               {
                 localObject3 = (String)localIterator.next();
-                i = ArCoreNativeSoManager.a((IArCoreNativeSoLoader)localObject1, (String)localObject3);
+                i = ArCoreNativeSoManager.b((IArCoreNativeSoLoader)localObject1, (String)localObject3);
                 if (i != 0)
                 {
                   if (QLog.isColorLevel())
@@ -226,7 +226,7 @@ public class ARShell
         try
         {
           System.loadLibrary("YTCommon");
-          int i = ArSDK2NativeSoLoader.a("libAlphaAR");
+          int i = ArSDK2NativeSoLoader.b("libAlphaAR");
           if (i != 0) {
             break label211;
           }
@@ -387,7 +387,7 @@ public class ARShell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.youtu.arsdk.ARShell
  * JD-Core Version:    0.7.0.1
  */

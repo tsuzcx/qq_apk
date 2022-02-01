@@ -10,24 +10,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class WSExposeDataManager
 {
-  private final HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final CopyOnWriteArrayList<stExposureFeedInfo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private final CopyOnWriteArrayList<stExposureFeedInfo> a = new CopyOnWriteArrayList();
+  private final HashSet<String> b = new HashSet();
   
   public static WSExposeDataManager a()
   {
     return WSExposeDataManager.SingleHolder.a;
-  }
-  
-  public ArrayList<stExposureFeedInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -36,13 +24,13 @@ public class WSExposeDataManager
       return;
     }
     paramstSimpleMetaFeed = paramstSimpleMetaFeed.id;
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramstSimpleMetaFeed)) {
+    if (this.b.contains(paramstSimpleMetaFeed)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashSet.add(paramstSimpleMetaFeed);
+    this.b.add(paramstSimpleMetaFeed);
     stExposureFeedInfo localstExposureFeedInfo = new stExposureFeedInfo();
     localstExposureFeedInfo.id = paramstSimpleMetaFeed;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localstExposureFeedInfo);
+    this.a.add(localstExposureFeedInfo);
   }
   
   public void a(List<stSimpleMetaFeed> paramList)
@@ -58,10 +46,22 @@ public class WSExposeDataManager
       }
     }
   }
+  
+  public ArrayList<stExposureFeedInfo> b()
+  {
+    ArrayList localArrayList = new ArrayList(this.a);
+    this.a.clear();
+    return localArrayList;
+  }
+  
+  public void c()
+  {
+    this.b.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSExposeDataManager
  * JD-Core Version:    0.7.0.1
  */

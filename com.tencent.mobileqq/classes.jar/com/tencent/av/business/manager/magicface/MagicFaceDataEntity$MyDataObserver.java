@@ -20,7 +20,7 @@ class MagicFaceDataEntity$MyDataObserver
   {
     if (this.a.get() != null)
     {
-      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
+      paramObservable = ((MagicFaceDataEntity)this.a.get()).b;
       if (paramObject != null)
       {
         Object localObject = (Object[])paramObject;

@@ -11,15 +11,14 @@ import org.json.JSONObject;
 public class ArkAuthorizeConfigInjector
   implements IAuthorizeConfigInjector
 {
-  protected static final JSONArray a;
+  protected static final JSONArray b = new JSONArray();
   protected volatile JSONObject a;
   
   static
   {
-    jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
-    jdField_a_of_type_OrgJsonJSONArray.put("com.tencent.qqcomic.aiogift");
-    jdField_a_of_type_OrgJsonJSONArray.put("com.tencent.gamecenter.hebao");
-    jdField_a_of_type_OrgJsonJSONArray.put("com.tencent.gamecenter.hebao2020");
+    b.put("com.tencent.qqcomic.aiogift");
+    b.put("com.tencent.gamecenter.hebao");
+    b.put("com.tencent.gamecenter.hebao2020");
   }
   
   @NonNull
@@ -32,13 +31,8 @@ public class ArkAuthorizeConfigInjector
   {
     paramJSONObject = paramJSONObject.optJSONArray("arkShareWhiteList");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject(0);
+      this.a = paramJSONObject.optJSONObject(0);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject == null;
   }
   
   public boolean a(String paramString)
@@ -49,14 +43,14 @@ public class ArkAuthorizeConfigInjector
       ((StringBuilder)localObject1).append("[canShareArkMsg] ArkName: ");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(" ArkShareConfig: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_OrgJsonJSONObject);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.i("ArkAuthorizeConfigInjector", 2, ((StringBuilder)localObject1).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    AuthorizeConfig.a().k();
-    Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
+    AuthorizeConfig.a().s();
+    Object localObject2 = this.a;
     Object localObject1 = null;
     if (localObject2 != null) {
       localObject1 = ((JSONObject)localObject2).optJSONArray("validArkNames");
@@ -68,7 +62,7 @@ public class ArkAuthorizeConfigInjector
     }
     else
     {
-      localObject2 = jdField_a_of_type_OrgJsonJSONArray;
+      localObject2 = b;
     }
     int i = ((JSONArray)localObject2).length() - 1;
     while (i >= 0)
@@ -84,6 +78,11 @@ public class ArkAuthorizeConfigInjector
   public boolean a(String paramString1, String paramString2)
   {
     return false;
+  }
+  
+  public boolean b()
+  {
+    return this.a == null;
   }
 }
 

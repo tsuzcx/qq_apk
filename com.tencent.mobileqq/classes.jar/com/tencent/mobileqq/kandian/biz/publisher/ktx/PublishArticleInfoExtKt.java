@@ -191,6 +191,7 @@ public final class PublishArticleInfoExtKt
       localUgcVideo.setMultiTitleStruct(localArrayList);
       localUgcVideo.kdCommunityId = paramPublishArticleInfo.getCommunityId();
       localUgcVideo.needShowPublishToast = paramPublishArticleInfo.getShowPublishToast();
+      localUgcVideo.videoPublishType = paramPublishArticleInfo.getPublishType();
       return localUgcVideo;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -198,7 +199,7 @@ public final class PublishArticleInfoExtKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.ktx.PublishArticleInfoExtKt
  * JD-Core Version:    0.7.0.1
  */

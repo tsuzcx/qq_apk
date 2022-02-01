@@ -11,13 +11,13 @@ class AEBaseCameraUnit$4
   
   public void a(String paramString)
   {
-    paramString = new AEPhotoCaptureResult(1, 0, paramString, null, this.a.a.getEffectOrientation());
+    paramString = new AEPhotoCaptureResult(1, 0, paramString, null, this.a.h.getEffectOrientation());
     this.a.onPhotoCaptured(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEBaseCameraUnit.4
  * JD-Core Version:    0.7.0.1
  */

@@ -20,18 +20,18 @@ public final class UserActionHandlerImpl$observer$1
         if (i != 60001) {
           return;
         }
-        UserActionHandlerImpl.c(this.a, paramClickActionEvent.a());
+        UserActionHandlerImpl.c(this.a, paramClickActionEvent.b());
         return;
       }
-      UserActionHandlerImpl.b(this.a, paramClickActionEvent.a());
+      UserActionHandlerImpl.b(this.a, paramClickActionEvent.b());
       return;
     }
-    UserActionHandlerImpl.a(this.a, paramClickActionEvent.a());
+    UserActionHandlerImpl.a(this.a, paramClickActionEvent.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.UserActionHandlerImpl.observer.1
  * JD-Core Version:    0.7.0.1
  */

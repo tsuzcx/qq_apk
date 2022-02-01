@@ -8,32 +8,32 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "onClick"}, k=3, mv={1, 1, 16})
 final class RIJCommentBubbleView$clickSinkButton$1
   implements ActionSheet.OnButtonClickListener
 {
   RIJCommentBubbleView$clickSinkButton$1(RIJCommentBubbleView paramRIJCommentBubbleView, ReadInJoyCommentDataManager paramReadInJoyCommentDataManager, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public final void OnClick(View paramView, int paramInt)
+  public final void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      ReadInJoyCommentDataManager localReadInJoyCommentDataManager = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager;
-      paramView = RIJCommentBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiRIJCommentBubbleView).a;
+      ReadInJoyCommentDataManager localReadInJoyCommentDataManager = this.b;
+      paramView = RIJCommentBubbleView.b(this.a).c;
       if (paramView != null) {
         paramView = paramView.commentId;
       } else {
         paramView = null;
       }
-      localReadInJoyCommentDataManager.b(paramView, this.jdField_a_of_type_Boolean);
-      RIJCommentBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiRIJCommentBubbleView, 8);
+      localReadInJoyCommentDataManager.b(paramView, this.c);
+      RIJCommentBubbleView.a(this.a, 8);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.d.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.RIJCommentBubbleView.clickSinkButton.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,95 +12,85 @@ import com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.animation.CropHo
 
 public class CropNewImage
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private ClipConstant.Anchor jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipConstant$Anchor;
-  private ClipWindow jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow = new ClipWindow();
   public CropNewView a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float = 0.0F;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_c_of_type_Boolean = true;
-  private RectF jdField_d_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_d_of_type_Boolean = false;
+  private Bitmap b;
+  private RectF c = new RectF();
+  private RectF d = new RectF();
+  private RectF e = new RectF();
+  private float f = 0.0F;
+  private float g = 0.0F;
+  private float h = 0.0F;
+  private boolean i = false;
+  private boolean j = false;
+  private ClipConstant.Anchor k;
+  private boolean l = true;
+  private ClipWindow m = new ClipWindow();
+  private RectF n = new RectF();
+  private boolean o = false;
+  private Matrix p = new Matrix();
   
-  private void e(float paramFloat1, float paramFloat2)
+  private void h(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat1, paramFloat2);
-    if (this.jdField_b_of_type_AndroidGraphicsRectF.isEmpty()) {
+    this.c.set(0.0F, 0.0F, this.b.getWidth(), this.b.getHeight());
+    this.d.set(this.c);
+    this.m.a(paramFloat1, paramFloat2);
+    if (this.d.isEmpty()) {
       return;
     }
-    g();
-    this.jdField_d_of_type_Boolean = true;
-    h();
-    CropNewView localCropNewView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView;
+    l();
+    this.o = true;
+    m();
+    CropNewView localCropNewView = this.a;
     if (localCropNewView != null) {
-      localCropNewView.d();
+      localCropNewView.h();
     }
   }
   
-  private void f()
+  private void k()
   {
-    this.jdField_d_of_type_Boolean = false;
-    a(this.jdField_d_of_type_AndroidGraphicsRectF.width(), this.jdField_d_of_type_AndroidGraphicsRectF.height());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
+    this.o = false;
+    d(this.n.width(), this.n.height());
+    this.m.a(this.d, g());
   }
   
-  private void g()
+  private void l()
   {
-    if (this.jdField_b_of_type_AndroidGraphicsRectF.isEmpty()) {
+    if (this.d.isEmpty()) {
       return;
     }
-    float f = Math.min(this.jdField_d_of_type_AndroidGraphicsRectF.width() / this.jdField_b_of_type_AndroidGraphicsRectF.width(), this.jdField_d_of_type_AndroidGraphicsRectF.height() / this.jdField_b_of_type_AndroidGraphicsRectF.height());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f, f, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_d_of_type_AndroidGraphicsRectF.centerX() - this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_d_of_type_AndroidGraphicsRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
+    float f1 = Math.min(this.n.width() / this.d.width(), this.n.height() / this.d.height());
+    this.p.setScale(f1, f1, this.d.centerX(), this.d.centerY());
+    this.p.postTranslate(this.n.centerX() - this.d.centerX(), this.n.centerY() - this.d.centerY());
+    this.p.mapRect(this.c);
+    this.p.mapRect(this.d);
   }
   
-  private void h()
+  private void m()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
-  }
-  
-  public float a()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public RectF a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
+    this.m.a(this.d, g());
   }
   
   public CropHomeing a(float paramFloat1, float paramFloat2)
   {
-    RectF localRectF = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-b(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF, localRectF);
-    return new CropHomeing(paramFloat1 + (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() - localRectF.centerX()), paramFloat2 + (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - localRectF.centerY()), c(), b());
+    RectF localRectF = this.m.b(paramFloat1, paramFloat2);
+    this.p.setRotate(-h(), this.d.centerX(), this.d.centerY());
+    this.p.mapRect(this.d, localRectF);
+    return new CropHomeing(paramFloat1 + (this.d.centerX() - localRectF.centerX()), paramFloat2 + (this.d.centerY() - localRectF.centerY()), i(), h());
   }
   
   public CropHomeing a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.d(false);
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipConstant$Anchor;
+    this.m.d(false);
+    Object localObject = this.k;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a((ClipConstant.Anchor)localObject, paramFloat3, paramFloat4);
+      this.m.a((ClipConstant.Anchor)localObject, paramFloat3, paramFloat4);
       localObject = new RectF();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(b(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect((RectF)localObject, this.jdField_a_of_type_AndroidGraphicsRectF);
-      RectF localRectF = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat1, paramFloat2);
-      CropHomeing localCropHomeing = new CropHomeing(paramFloat1, paramFloat2, c(), a());
-      localCropHomeing.a(ClipUtils.b(localRectF, (RectF)localObject, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY()));
+      this.p.setRotate(h(), this.d.centerX(), this.d.centerY());
+      this.p.mapRect((RectF)localObject, this.c);
+      RectF localRectF = this.m.b(paramFloat1, paramFloat2);
+      CropHomeing localCropHomeing = new CropHomeing(paramFloat1, paramFloat2, i(), g());
+      localCropHomeing.a(ClipUtils.b(localRectF, (RectF)localObject, this.d.centerX(), this.d.centerY()));
       return localCropHomeing;
     }
     return null;
@@ -108,50 +98,28 @@ public class CropNewImage
   
   public void a()
   {
-    this.jdField_a_of_type_Float = b();
-    this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
-    float f = 1.0F / c();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-this.jdField_a_of_type_AndroidGraphicsRectF.left, -this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f, f);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_c_of_type_AndroidGraphicsRectF);
+    this.f = h();
+    this.e.set(this.d);
+    float f1 = 1.0F / i();
+    this.p.setTranslate(-this.c.left, -this.c.top);
+    this.p.postScale(f1, f1);
+    this.p.mapRect(this.e);
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (paramFloat1 != 0.0F)
-    {
-      if (paramFloat2 == 0.0F) {
-        return;
-      }
-      this.jdField_d_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1, paramFloat2);
-      if (!this.jdField_d_of_type_Boolean)
-      {
-        e(paramFloat1, paramFloat2);
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(this.jdField_d_of_type_AndroidGraphicsRectF.centerX() - this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_d_of_type_AndroidGraphicsRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-        this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat1, paramFloat2);
-    }
+    this.h = paramFloat;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    b(paramFloat1 / c(), paramFloat2, paramFloat3);
+    b(paramFloat1 / i(), paramFloat2, paramFloat3);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Float = (Math.round((this.jdField_b_of_type_Float + paramInt) / 90.0F) * 90 % 360);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
+    this.h = (Math.round((this.g + paramInt) / 90.0F) * 90 % 360);
+    this.m.a(this.d, g());
   }
   
   public void a(Bitmap paramBitmap)
@@ -161,84 +129,64 @@ public class CropNewImage
       if (paramBitmap.isRecycled()) {
         return;
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.b = paramBitmap;
       b(0.0F);
       a(0.0F);
-      f();
+      k();
     }
   }
   
   public void a(Canvas paramCanvas)
   {
     RectF localRectF;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.c()) {
-      localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (this.m.c()) {
+      localRectF = this.c;
     } else {
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      localRectF = this.d;
     }
     paramCanvas.clipRect(localRectF);
-    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+    if (!this.b.isRecycled()) {
+      paramCanvas.drawBitmap(this.b, null, this.c, null);
     }
   }
   
   public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramCanvas);
+    this.m.a(paramCanvas);
   }
   
   public void a(CropNewView paramCropNewView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView = paramCropNewView;
+    this.a = paramCropNewView;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a();
+    this.j = false;
   }
   
   public boolean a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    paramBoolean = this.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.b(true);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.c(false);
+    paramBoolean = this.j;
+    this.m.a(false);
+    this.m.b(true);
+    this.m.c(false);
     return paramBoolean ^ true;
   }
   
-  public float b()
+  public RectF b()
   {
-    return this.jdField_b_of_type_Float;
+    return this.d;
   }
   
   public CropHomeing b(float paramFloat1, float paramFloat2)
   {
-    return new CropHomeing(paramFloat1, paramFloat2, c(), b());
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(c(), c());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_AndroidGraphicsRectF);
-    a(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_Boolean = true;
+    return new CropHomeing(paramFloat1, paramFloat2, i(), h());
   }
   
   public void b(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipConstant$Anchor = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat1, paramFloat2);
+    this.g = paramFloat;
   }
   
   public void b(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -246,105 +194,157 @@ public class CropNewImage
     if (paramFloat1 == 1.0F) {
       return;
     }
-    float f = paramFloat1;
-    if (Math.min(this.jdField_b_of_type_AndroidGraphicsRectF.width(), this.jdField_b_of_type_AndroidGraphicsRectF.height()) <= 500.0F) {
-      f = paramFloat1 + (1.0F - paramFloat1) / 2.0F;
+    float f1 = paramFloat1;
+    if (Math.min(this.d.width(), this.d.height()) <= 500.0F) {
+      f1 = paramFloat1 + (1.0F - paramFloat1) / 2.0F;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f, f, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
+    this.p.setScale(f1, f1, paramFloat2, paramFloat3);
+    this.p.mapRect(this.c);
+    this.p.mapRect(this.d);
   }
   
   public void b(Canvas paramCanvas)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.l)
     {
-      paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_AndroidGraphicsRectF.right, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-      paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRectF, Region.Op.DIFFERENCE);
+      paramCanvas.clipRect(this.c.left, this.c.top, this.c.right, this.c.bottom);
+      paramCanvas.clipRect(this.d, Region.Op.DIFFERENCE);
       paramCanvas.drawColor(-872415232);
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.c(paramBoolean);
-  }
-  
-  public float c()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRectF.width() * 1.0F / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    this.m.c(paramBoolean);
   }
   
   public CropHomeing c(float paramFloat1, float paramFloat2)
   {
-    CropHomeing localCropHomeing = new CropHomeing(paramFloat1, paramFloat2, c(), a());
-    RectF localRectF1 = new RectF(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a());
+    CropHomeing localCropHomeing = new CropHomeing(paramFloat1, paramFloat2, i(), g());
+    RectF localRectF1 = new RectF(this.m.e());
     localRectF1.offset(paramFloat1, paramFloat2);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.d())
+    if (this.m.d())
     {
       localRectF2 = new RectF();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(a(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF2, this.jdField_b_of_type_AndroidGraphicsRectF);
-      localCropHomeing.a(ClipUtils.a(localRectF1, localRectF2));
+      this.p.setRotate(g(), this.d.centerX(), this.d.centerY());
+      this.p.mapRect(localRectF2, this.d);
+      localCropHomeing.a(ClipUtils.b(localRectF1, localRectF2));
       return localCropHomeing;
     }
     RectF localRectF2 = new RectF();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.b())
+    if (this.m.b())
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(a() - b(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF2, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat1, paramFloat2));
-      localCropHomeing.a(ClipUtils.a(localRectF1, localRectF2, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY()));
+      this.p.setRotate(g() - h(), this.d.centerX(), this.d.centerY());
+      this.p.mapRect(localRectF2, this.m.b(paramFloat1, paramFloat2));
+      localCropHomeing.a(ClipUtils.a(localRectF1, localRectF2, this.d.centerX(), this.d.centerY()));
       return localCropHomeing;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(a(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF2, this.jdField_a_of_type_AndroidGraphicsRectF);
-    localCropHomeing.a(ClipUtils.b(localRectF1, localRectF2, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY()));
+    this.p.setRotate(g(), this.d.centerX(), this.d.centerY());
+    this.p.mapRect(localRectF2, this.c);
+    localCropHomeing.a(ClipUtils.b(localRectF1, localRectF2, this.d.centerX(), this.d.centerY()));
     return localCropHomeing;
   }
   
   public void c()
   {
-    a(b() - b() % 360.0F);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
+    this.p.setScale(i(), i());
+    this.p.postTranslate(this.c.left, this.c.top);
+    this.p.mapRect(this.d, this.e);
+    a(this.f);
+    this.i = true;
   }
   
   public void c(float paramFloat)
   {
-    a(paramFloat, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-  }
-  
-  public void c(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipConstant$Anchor != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipConstant$Anchor = null;
-    }
+    a(paramFloat, this.d.centerX(), this.d.centerY());
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.j = true;
   }
   
-  public void d() {}
+  public void d()
+  {
+    a(h() - h() % 360.0F);
+    this.d.set(this.c);
+    this.m.a(this.d, g());
+  }
   
   public void d(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.a(paramFloat);
+    this.m.a(paramFloat);
   }
   
   public void d(float paramFloat1, float paramFloat2)
   {
-    this.jdField_c_of_type_Boolean = true;
-    a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiClipClipWindow.d(true);
+    if (paramFloat1 != 0.0F)
+    {
+      if (paramFloat2 == 0.0F) {
+        return;
+      }
+      this.n.set(0.0F, 0.0F, paramFloat1, paramFloat2);
+      if (!this.o)
+      {
+        h(paramFloat1, paramFloat2);
+      }
+      else
+      {
+        this.p.setTranslate(this.n.centerX() - this.d.centerX(), this.n.centerY() - this.d.centerY());
+        this.p.mapRect(this.c);
+        this.p.mapRect(this.d);
+      }
+      this.m.a(paramFloat1, paramFloat2);
+    }
   }
   
-  public void e() {}
+  public void e(float paramFloat1, float paramFloat2)
+  {
+    this.l = false;
+    this.k = this.m.c(paramFloat1, paramFloat2);
+  }
+  
+  public boolean e()
+  {
+    return this.m.a();
+  }
+  
+  public void f() {}
+  
+  public void f(float paramFloat1, float paramFloat2)
+  {
+    if (this.k != null) {
+      this.k = null;
+    }
+  }
+  
+  public float g()
+  {
+    return this.h;
+  }
+  
+  public void g(float paramFloat1, float paramFloat2)
+  {
+    this.l = true;
+    e();
+    this.m.d(true);
+  }
+  
+  public float h()
+  {
+    return this.g;
+  }
+  
+  public float i()
+  {
+    return this.c.width() * 1.0F / this.b.getWidth();
+  }
+  
+  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.crop.CropNewImage
  * JD-Core Version:    0.7.0.1
  */

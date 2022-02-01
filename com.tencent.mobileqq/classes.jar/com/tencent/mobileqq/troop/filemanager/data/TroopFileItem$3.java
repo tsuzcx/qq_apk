@@ -11,13 +11,13 @@ class TroopFileItem$3
   
   public void onClick(View paramView)
   {
-    this.a.b(paramView);
+    this.a.d(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopFileItem.3
  * JD-Core Version:    0.7.0.1
  */

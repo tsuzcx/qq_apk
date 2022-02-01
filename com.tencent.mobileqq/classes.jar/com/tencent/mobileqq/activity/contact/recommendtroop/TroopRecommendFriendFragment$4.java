@@ -12,14 +12,14 @@ class TroopRecommendFriendFragment$4
   
   public void onClick(View paramView)
   {
-    TroopRecommendFriendFragment localTroopRecommendFriendFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment;
-    TroopRecommendFriendFragment.a(localTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(localTroopRecommendFriendFragment), this.jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecommendMember.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment));
+    TroopRecommendFriendFragment localTroopRecommendFriendFragment = this.b;
+    TroopRecommendFriendFragment.a(localTroopRecommendFriendFragment, TroopRecommendFriendFragment.f(localTroopRecommendFriendFragment), this.a.a, TroopRecommendFriendFragment.f(this.b));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.4
  * JD-Core Version:    0.7.0.1
  */

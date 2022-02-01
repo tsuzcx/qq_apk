@@ -28,7 +28,7 @@ public class DBReportCorruptionInterceptor
     if (localObject1 == null) {
       return null;
     }
-    Object localObject3 = ((AppRuntime)localObject1).getApplication().getSharedPreferences(DBFixManager.b, 0);
+    Object localObject3 = ((AppRuntime)localObject1).getApplication().getSharedPreferences(DBFixManager.d, 0);
     Object localObject2 = ((AppRuntime)localObject1).getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(((AppRuntime)localObject1).getAccount());
@@ -36,13 +36,13 @@ public class DBReportCorruptionInterceptor
     localObject2 = ((MobileQQ)localObject2).getDatabasePath(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(((AppRuntime)localObject1).getAccount());
-    localStringBuilder.append(DBFixManager.g);
+    localStringBuilder.append(DBFixManager.n);
     if (!((SharedPreferences)localObject3).contains(localStringBuilder.toString()))
     {
       localObject3 = ((SharedPreferences)localObject3).edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(((AppRuntime)localObject1).getAccount());
-      localStringBuilder.append(DBFixManager.g);
+      localStringBuilder.append(DBFixManager.n);
       ((SharedPreferences.Editor)localObject3).putBoolean(localStringBuilder.toString(), true).apply();
       EntityManagerFactory.corruptedTime = System.currentTimeMillis();
       boolean bool = localObject1 instanceof QQAppInterface;
@@ -61,7 +61,7 @@ public class DBReportCorruptionInterceptor
             if (SystemUtil.a())
             {
               l1 = l2;
-              if (SystemUtil.a() > ((File)localObject2).length())
+              if (SystemUtil.b() > ((File)localObject2).length())
               {
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
@@ -90,7 +90,7 @@ public class DBReportCorruptionInterceptor
       label335:
       localObject1 = EntityManagerFactory.getSqliteLibraryVersion();
       localObject2 = new HashMap();
-      ((HashMap)localObject2).put("param_ROM", DeviceInfoUtil.j());
+      ((HashMap)localObject2).put("param_ROM", DeviceInfoUtil.v());
       ((HashMap)localObject2).put("isCopySucc", String.valueOf(bool));
       ((HashMap)localObject2).put("totalLen", String.valueOf(l1));
       ((HashMap)localObject2).put("copyLen", String.valueOf(l2));
@@ -108,7 +108,7 @@ public class DBReportCorruptionInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.corruption.interceptor.DBReportCorruptionInterceptor
  * JD-Core Version:    0.7.0.1
  */

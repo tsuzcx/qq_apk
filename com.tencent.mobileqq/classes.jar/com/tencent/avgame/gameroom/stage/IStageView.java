@@ -7,10 +7,6 @@ import com.tencent.avgame.gamelogic.data.EngineData;
 
 public abstract interface IStageView
 {
-  public abstract RectF a();
-  
-  public abstract View a();
-  
   public abstract void a();
   
   public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
@@ -28,6 +24,10 @@ public abstract interface IStageView
   public abstract void b(String paramString);
   
   public abstract void c();
+  
+  public abstract RectF getPlayingVideoDisplayRect();
+  
+  public abstract View getTopicWrapperView();
 }
 
 

@@ -9,19 +9,19 @@ class FastWebRequestUtil$5$1
   
   public void run()
   {
-    FeedbackCallback localFeedbackCallback = this.this$0.a;
+    FeedbackCallback localFeedbackCallback = this.this$0.b;
     boolean bool;
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.a == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    localFeedbackCallback.a(bool, this.jdField_a_of_type_JavaLangString);
+    localFeedbackCallback.a(bool, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRequestUtil.5.1
  * JD-Core Version:    0.7.0.1
  */

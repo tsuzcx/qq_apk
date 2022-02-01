@@ -43,10 +43,10 @@ public class MostUseResultGroupPresenter
   public void a(IModel paramIModel, ISearchResultGroupView paramISearchResultGroupView)
   {
     paramIModel = (ISearchResultGroupModel)paramIModel;
-    LinearLayout localLinearLayout = ((MostUsedSearchResultGroupView)paramISearchResultGroupView).a();
+    LinearLayout localLinearLayout = ((MostUsedSearchResultGroupView)paramISearchResultGroupView).d();
     if (localLinearLayout != null)
     {
-      List localList = paramIModel.a();
+      List localList = paramIModel.b();
       if (localList != null)
       {
         localLinearLayout.removeAllViews();
@@ -60,18 +60,18 @@ public class MostUseResultGroupPresenter
           if ((paramIModel instanceof IContactSearchModel))
           {
             IContactSearchModel localIContactSearchModel = (IContactSearchModel)paramIModel;
-            int j = MostUseConstants.a(localIContactSearchModel.e());
+            int j = MostUseConstants.a(localIContactSearchModel.o());
             localObject2 = null;
             if (j == 1)
             {
-              localObject2 = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562792, null);
-              paramIModel = ((View)localObject2).findViewById(2131369010);
+              localObject2 = LayoutInflater.from(paramISearchResultGroupView.h().getContext()).inflate(2131629237, null);
+              paramIModel = ((View)localObject2).findViewById(2131435970);
               localObject1 = new ContactSearchResultView((View)localObject2);
             }
-            else if (MostUseConstants.a(localIContactSearchModel.e()) == 2)
+            else if (MostUseConstants.a(localIContactSearchModel.o()) == 2)
             {
-              localObject2 = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562799, null);
-              paramIModel = ((View)localObject2).findViewById(2131369010);
+              localObject2 = LayoutInflater.from(paramISearchResultGroupView.h().getContext()).inflate(2131629244, null);
+              paramIModel = ((View)localObject2).findViewById(2131435970);
               localObject1 = new MiniProgramSearchResultView((View)localObject2);
             }
             else
@@ -81,17 +81,17 @@ public class MostUseResultGroupPresenter
             }
             if ((localObject2 != null) && (paramIModel != null))
             {
-              ((View)localObject2).setTag(2131380884, localIContactSearchModel);
-              ((View)localObject2).setTag(2131380889, localObject1);
-              ((View)localObject2).setTag(2131380885, Integer.valueOf(i));
-              ((View)localObject2).setTag(2131380883, Integer.valueOf(localList.size()));
-              ((View)localObject2).setTag(2131380886, this.a);
-              TroopBlockUtils.a((View)localObject2, localIContactSearchModel.d(), localIContactSearchModel.a(), 1);
+              ((View)localObject2).setTag(2131449867, localIContactSearchModel);
+              ((View)localObject2).setTag(2131449873, localObject1);
+              ((View)localObject2).setTag(2131449868, Integer.valueOf(i));
+              ((View)localObject2).setTag(2131449866, Integer.valueOf(localList.size()));
+              ((View)localObject2).setTag(2131449869, this.a);
+              TroopBlockUtils.a((View)localObject2, localIContactSearchModel.j(), localIContactSearchModel.c(), 1);
               SearchViewUtils.a(localIContactSearchModel, k, i);
-              int m = localIContactSearchModel.b();
-              int n = localIContactSearchModel.f_();
+              int m = localIContactSearchModel.ck_();
+              int n = localIContactSearchModel.cl_();
               if ((localIContactSearchModel instanceof ISearchResultPositionModel)) {
-                j = localIContactSearchModel.u;
+                j = localIContactSearchModel.af;
               } else {
                 j = 0;
               }
@@ -103,23 +103,23 @@ public class MostUseResultGroupPresenter
             {
               paramIModel = new StringBuilder();
               paramIModel.append("unresolved id type");
-              paramIModel.append(localIContactSearchModel.e());
+              paramIModel.append(localIContactSearchModel.o());
               QLog.e("MostUseResultGroupPresenter", 2, paramIModel.toString());
             }
           }
           else if ((paramIModel instanceof GroupBaseNetSearchModelItem))
           {
             paramIModel = (GroupBaseNetSearchModelItem)paramIModel;
-            localObject1 = new SearchResultFromNetView(localLinearLayout, paramIModel.d());
-            localObject2 = ((SearchResultFromNetView)localObject1).a();
-            ((View)localObject2).setTag(2131380884, paramIModel);
-            ((View)localObject2).setTag(2131380889, localObject1);
-            ((View)localObject2).setTag(2131380885, Integer.valueOf(i));
-            ((View)localObject2).setTag(2131380883, Integer.valueOf(localList.size()));
-            ((View)localObject2).setTag(2131380886, this.a);
+            localObject1 = new SearchResultFromNetView(localLinearLayout, paramIModel.j());
+            localObject2 = ((SearchResultFromNetView)localObject1).h();
+            ((View)localObject2).setTag(2131449867, paramIModel);
+            ((View)localObject2).setTag(2131449873, localObject1);
+            ((View)localObject2).setTag(2131449868, Integer.valueOf(i));
+            ((View)localObject2).setTag(2131449866, Integer.valueOf(localList.size()));
+            ((View)localObject2).setTag(2131449869, this.a);
             SearchViewUtils.a(paramIModel, k, i);
             localObject2 = new LinearLayout.LayoutParams(-1, -2);
-            localLinearLayout.addView(((SearchResultFromNetView)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+            localLinearLayout.addView(((SearchResultFromNetView)localObject1).h(), (ViewGroup.LayoutParams)localObject2);
             this.a.a(paramIModel, (IView)localObject1);
           }
           else
@@ -137,7 +137,7 @@ public class MostUseResultGroupPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.MostUseResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,40 +9,34 @@ import java.util.List;
 @TargetApi(14)
 public class BaseTaskInfo
 {
-  public volatile int a;
-  public long a;
-  public ErrorMessage a;
-  public List<UploadObject> a;
-  public int b;
+  public volatile int a = 0;
+  public List<UploadObject> b = new ArrayList();
   public int c;
-  
-  public BaseTaskInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public int d;
+  public long e;
+  public ErrorMessage f;
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 5;
+    return this.a == 5;
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
     localStringBuffer.append("status=");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.a);
     localStringBuffer.append(", retryTimes=");
-    localStringBuffer.append(this.b);
+    localStringBuffer.append(this.c);
     localStringBuffer.append(", result=");
-    localStringBuffer.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuffer.append(this.f);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BaseTaskInfo
  * JD-Core Version:    0.7.0.1
  */

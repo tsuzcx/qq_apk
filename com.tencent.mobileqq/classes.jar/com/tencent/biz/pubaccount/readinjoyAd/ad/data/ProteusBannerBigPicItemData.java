@@ -7,9 +7,9 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.pts_bind_actio
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.ReadInjoyAdBannerGameCell;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.ReadInjoyAdBannerPkCell;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.FastWeqAdUtils;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import com.tencent.mobileqq.kandian.biz.pts.api.ITemplateFactory;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -21,25 +21,27 @@ import org.json.JSONObject;
 public class ProteusBannerBigPicItemData
   extends AdData
 {
-  public String a;
-  public boolean a;
+  public boolean a = false;
   public String b = "";
-  public String c;
+  public String c = "";
   public String d = "";
   public String e = "";
   public String f = "";
   public String g = "";
   public String h = "";
+  public String i = "";
   
   public ProteusBannerBigPicItemData()
   {
     super(10);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  private JSONObject a()
+  private boolean a(ProteusBannerBigPicItemData paramProteusBannerBigPicItemData)
+  {
+    return (!TextUtils.isEmpty(this.l)) && (!TextUtils.isEmpty(this.n)) && (!TextUtils.isEmpty(this.u));
+  }
+  
+  private JSONObject b()
   {
     localJSONObject = new JSONObject();
     if (FastWeqAdUtils.b(this)) {
@@ -55,7 +57,7 @@ public class ProteusBannerBigPicItemData
       if (!bool) {
         return null;
       }
-      bool = this.jdField_a_of_type_Boolean;
+      bool = this.a;
       if (bool) {
         localJSONObject.put("style_ID", "ReadInjoy_ad_banner_large_pic_location_cell");
       }
@@ -70,7 +72,7 @@ public class ProteusBannerBigPicItemData
       label139:
       label142:
       String str3;
-      int i;
+      int j;
       long l;
       localJSONException.printStackTrace();
       return localJSONObject;
@@ -85,8 +87,8 @@ public class ProteusBannerBigPicItemData
     }
     try
     {
-      localObject4 = this.e;
-      d1 = ParseUtil.a(this.d, 0.0D);
+      localObject4 = this.f;
+      d1 = ParseUtil.a(this.e, 0.0D);
       d2 = ParseUtil.a((String)localObject4, 0.0D);
       if ((d2 == 0.0D) && (d1 == 0.0D)) {
         return null;
@@ -109,11 +111,11 @@ public class ProteusBannerBigPicItemData
     } else {
       d1 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getADDistanceByPos((double[])localObject1, BaseApplicationImpl.getContext());
     }
-    localObject1 = this.h;
-    localObject4 = this.b;
-    str2 = this.f;
-    str3 = this.jdField_c_of_type_JavaLangString;
-    i = ParseUtil.a((String)localObject1, 3000);
+    localObject1 = this.i;
+    localObject4 = this.c;
+    str2 = this.g;
+    str3 = this.d;
+    j = ParseUtil.a((String)localObject1, 3000);
     str1 = "";
     if (d1 <= 0.0D)
     {
@@ -128,7 +130,7 @@ public class ProteusBannerBigPicItemData
     localObject3 = new StringBuilder();
     if (d1 != 0.0D)
     {
-      d2 = i;
+      d2 = j;
       if (d1 <= d2)
       {
         if (d1 < 1000.0D)
@@ -168,15 +170,15 @@ public class ProteusBannerBigPicItemData
         break label456;
         localJSONObject.put("style_ID", "ReadInjoy_ad_banner_large_pic_cell");
         label456:
-        bool = TextUtils.isEmpty(this.j);
+        bool = TextUtils.isEmpty(this.l);
         if (!bool)
         {
           localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("text", this.j);
-          i = this.r;
-          if (i != 1)
+          ((JSONObject)localObject1).put("text", this.l);
+          j = this.aD;
+          if (j != 1)
           {
-            if (i != 2)
+            if (j != 2)
             {
               ((JSONObject)localObject1).put("bottom_line_number", "2");
               ((JSONObject)localObject1).put("text_color", "#bbbbbb");
@@ -194,9 +196,9 @@ public class ProteusBannerBigPicItemData
           }
           localJSONObject.put("id_tv_title", localObject1);
         }
-        if (!TextUtils.isEmpty(this.l))
+        if (!TextUtils.isEmpty(this.n))
         {
-          localObject1 = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(this.l, 4);
+          localObject1 = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(this.n, 4);
           localObject3 = new JSONObject();
           ((JSONObject)localObject3).put("image_url", ((URL)localObject1).toString());
           localJSONObject.put("id_ad_banner_bottom_imge", localObject3);
@@ -205,12 +207,12 @@ public class ProteusBannerBigPicItemData
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("detail ad Bottom Pic adInconText:");
-          ((StringBuilder)localObject1).append(this.L);
+          ((StringBuilder)localObject1).append(this.ah);
           QLog.d("ProteusBannerBigPicItemData", 2, ((StringBuilder)localObject1).toString());
         }
         localObject1 = new JSONObject();
-        i = this.r;
-        if ((i != 1) && (i != 2))
+        j = this.aD;
+        if ((j != 1) && (j != 2))
         {
           ((JSONObject)localObject1).put("bottom_background_color", "#f8f8f8");
         }
@@ -223,15 +225,15 @@ public class ProteusBannerBigPicItemData
         localJSONObject.put("id_operate_area", localObject1);
         localJSONObject.put("id_ad_title", new JSONObject());
         localJSONObject.put("id_ad_title_rl", new JSONObject());
-        if (!TextUtils.isEmpty(this.q))
+        if (!TextUtils.isEmpty(this.u))
         {
           localObject1 = new JSONObject();
-          if ((this.jdField_a_of_type_Boolean) && (this.q.length() > 8)) {
-            this.q = this.q.substring(0, 8).concat("...");
+          if ((this.a) && (this.u.length() > 8)) {
+            this.u = this.u.substring(0, 8).concat("...");
           }
-          ((JSONObject)localObject1).put("text", this.q);
-          i = this.r;
-          if ((i != 1) && (i != 2)) {
+          ((JSONObject)localObject1).put("text", this.u);
+          j = this.aD;
+          if ((j != 1) && (j != 2)) {
             ((JSONObject)localObject1).put("text_color", "#000000");
           } else {
             ((JSONObject)localObject1).put("text_color", "#262626");
@@ -244,18 +246,13 @@ public class ProteusBannerBigPicItemData
     }
   }
   
-  private boolean a(ProteusBannerBigPicItemData paramProteusBannerBigPicItemData)
-  {
-    return (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.l)) && (!TextUtils.isEmpty(this.q));
-  }
-  
   public void a()
   {
-    this.jdField_c_of_type_OrgJsonJSONObject = a();
+    this.bb = b();
     Object localObject;
     try
     {
-      TemplateBean localTemplateBean = ((ITemplateFactory)QRoute.api(ITemplateFactory.class)).getTemplateBean("native_article", true, this.jdField_c_of_type_OrgJsonJSONObject);
+      TemplateBean localTemplateBean = ((ITemplateFactory)QRoute.api(ITemplateFactory.class)).getTemplateBean("native_article", true, this.bb);
     }
     catch (JSONException localJSONException)
     {
@@ -263,13 +260,13 @@ public class ProteusBannerBigPicItemData
       localObject = null;
     }
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localObject;
+      this.bd = localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData
  * JD-Core Version:    0.7.0.1
  */

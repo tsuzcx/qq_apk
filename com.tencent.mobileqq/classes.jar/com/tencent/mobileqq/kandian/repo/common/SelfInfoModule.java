@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.kandian.repo.common;
 
 import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
@@ -12,6 +13,7 @@ import com.tencent.mobileqq.kandian.repo.aladdin.RIJKanDianMessageAladdinConfig;
 import com.tencent.mobileqq.kandian.repo.aladdin.RIJRedDotAladdinConfig;
 import com.tencent.mobileqq.kandian.repo.db.struct.KandianMsgBoxRedPntInfoUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyMedalInfo;
+import com.tencent.mobileqq.kandian.repo.reddot.KandianMsgBoxRedPntInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -47,9 +49,9 @@ import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.RspBody;
 public class SelfInfoModule
   extends ReadInJoyEngineModule
 {
-  private volatile long jdField_a_of_type_Long = 0L;
-  private Map<Integer, SelfInfoModule.IGetMsgBoxRedDotInfoCallback> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<Integer, SelfInfoModule.IGetMsgBoxRedDotInfoCallback> a = new ConcurrentHashMap();
   private volatile long b = 0L;
+  private volatile long c = 0L;
   
   public SelfInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -70,30 +72,30 @@ public class SelfInfoModule
         oidb_cmd0x97b.MedalInfo localMedalInfo = (oidb_cmd0x97b.MedalInfo)paramList.next();
         ReadInJoyMedalInfo localReadInJoyMedalInfo = new ReadInJoyMedalInfo();
         if (localMedalInfo.uint32_is_jump.has()) {
-          localReadInJoyMedalInfo.jdField_b_of_type_Int = localMedalInfo.uint32_is_jump.get();
+          localReadInJoyMedalInfo.e = localMedalInfo.uint32_is_jump.get();
         }
         if (localMedalInfo.bytes_jump_url.has()) {
-          localReadInJoyMedalInfo.jdField_c_of_type_JavaLangString = localMedalInfo.bytes_jump_url.get().toStringUtf8();
+          localReadInJoyMedalInfo.f = localMedalInfo.bytes_jump_url.get().toStringUtf8();
         }
         if (localMedalInfo.uint32_medal_type.has()) {
-          localReadInJoyMedalInfo.jdField_a_of_type_Int = localMedalInfo.uint32_medal_type.get();
+          localReadInJoyMedalInfo.d = localMedalInfo.uint32_medal_type.get();
         }
         if (localMedalInfo.uint64_medal_id.has()) {
-          localReadInJoyMedalInfo.jdField_a_of_type_Long = localMedalInfo.uint64_medal_id.get();
+          localReadInJoyMedalInfo.a = localMedalInfo.uint64_medal_id.get();
         }
         if (localMedalInfo.bytes_medal_name.has()) {
-          localReadInJoyMedalInfo.jdField_a_of_type_JavaLangString = localMedalInfo.bytes_medal_name.get().toStringUtf8();
+          localReadInJoyMedalInfo.b = localMedalInfo.bytes_medal_name.get().toStringUtf8();
         }
         if (localMedalInfo.bytes_medal_url.has()) {
-          localReadInJoyMedalInfo.jdField_b_of_type_JavaLangString = localMedalInfo.bytes_medal_url.get().toStringUtf8();
+          localReadInJoyMedalInfo.c = localMedalInfo.bytes_medal_url.get().toStringUtf8();
         }
         if (localMedalInfo.uint32_pic_width.has()) {
-          localReadInJoyMedalInfo.jdField_c_of_type_Int = localMedalInfo.uint32_pic_width.get();
+          localReadInJoyMedalInfo.g = localMedalInfo.uint32_pic_width.get();
         }
         if (localMedalInfo.uint32_pic_height.has()) {
-          localReadInJoyMedalInfo.d = localMedalInfo.uint32_pic_height.get();
+          localReadInJoyMedalInfo.h = localMedalInfo.uint32_pic_height.get();
         }
-        localReadInJoyMedalInfo.h = String.valueOf(paramLong);
+        localReadInJoyMedalInfo.m = String.valueOf(paramLong);
         localArrayList.add(localReadInJoyMedalInfo);
       }
     }
@@ -102,6 +104,20 @@ public class SelfInfoModule
     paramList.append(localArrayList.size());
     QLog.d("SelfInfoModule", 1, paramList.toString());
     return localArrayList;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo)
+  {
+    String str;
+    if (paramToServiceMsg.getAttribute("from") != null) {
+      str = paramToServiceMsg.getAttribute("from").toString();
+    } else {
+      str = "";
+    }
+    long l = ((Long)paramToServiceMsg.getAttribute("privateChatUin", Long.valueOf(0L))).longValue();
+    if ((TextUtils.equals(str, Integer.toString(3))) && (l != 0L)) {
+      KandianMsgBoxRedPntInfoUtils.a(paramKandianMsgBoxRedPntInfo, l);
+    }
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -123,12 +139,12 @@ public class SelfInfoModule
         if (paramObject.enum_type.get() == 1)
         {
           localObject = new SelfInfoModule.BusinessCountInfo();
-          ((SelfInfoModule.BusinessCountInfo)localObject).jdField_a_of_type_Int = paramObject.uint32_id.get();
-          ((SelfInfoModule.BusinessCountInfo)localObject).jdField_b_of_type_Int = 1;
-          ((SelfInfoModule.BusinessCountInfo)localObject).jdField_a_of_type_JavaLangString = paramObject.bytes_name.get().toStringUtf8();
-          ((SelfInfoModule.BusinessCountInfo)localObject).jdField_c_of_type_JavaLangString = paramObject.bytes_icon_url.get().toStringUtf8();
-          ((SelfInfoModule.BusinessCountInfo)localObject).jdField_b_of_type_JavaLangString = paramObject.bytes_url.get().toStringUtf8();
-          ((SelfInfoModule.BusinessCountInfo)localObject).jdField_c_of_type_Int = paramObject.uint32_count.get();
+          ((SelfInfoModule.BusinessCountInfo)localObject).a = paramObject.uint32_id.get();
+          ((SelfInfoModule.BusinessCountInfo)localObject).b = 1;
+          ((SelfInfoModule.BusinessCountInfo)localObject).c = paramObject.bytes_name.get().toStringUtf8();
+          ((SelfInfoModule.BusinessCountInfo)localObject).e = paramObject.bytes_icon_url.get().toStringUtf8();
+          ((SelfInfoModule.BusinessCountInfo)localObject).d = paramObject.bytes_url.get().toStringUtf8();
+          ((SelfInfoModule.BusinessCountInfo)localObject).f = paramObject.uint32_count.get();
           ((oidb_cmd0x97b.FollowCountInfo)localRspBody.msg_follow_count_info.get()).toByteArray();
           paramFromServiceMsg.add(localObject);
         }
@@ -224,10 +240,10 @@ public class SelfInfoModule
     RIJUserInfoSp.a(this.mApp);
   }
   
-  private void a(String paramString, int paramInt, SelfInfoModule.IGetMsgBoxRedDotInfoCallback paramIGetMsgBoxRedDotInfoCallback)
+  private void a(String paramString, int paramInt, SelfInfoModule.IGetMsgBoxRedDotInfoCallback paramIGetMsgBoxRedDotInfoCallback, long paramLong)
   {
     oidb_cmd0xbe4.ReqBody localReqBody = new oidb_cmd0xbe4.ReqBody();
-    localReqBody.client_version.set("8.7.0");
+    localReqBody.client_version.set("8.8.17");
     oidb_cmd0xbe4.MsgGetReq localMsgGetReq = new oidb_cmd0xbe4.MsgGetReq();
     if (RIJKanDianMessageAladdinConfig.a.a() == 2)
     {
@@ -240,8 +256,9 @@ public class SelfInfoModule
     localReqBody.msg_get_req.set(localMsgGetReq);
     paramString = ReadInJoyOidbHelper.a("OidbSvc.0xbe4", 3044, 1, localReqBody.toByteArray());
     paramString.addAttribute("from", Integer.toString(paramInt));
+    paramString.addAttribute("privateChatUin", Long.valueOf(paramLong));
     if (paramIGetMsgBoxRedDotInfoCallback != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramString.getRequestSsoSeq()), paramIGetMsgBoxRedDotInfoCallback);
+      this.a.put(Integer.valueOf(paramString.getRequestSsoSeq()), paramIGetMsgBoxRedDotInfoCallback);
     }
     sendPbReq(paramString);
   }
@@ -250,7 +267,7 @@ public class SelfInfoModule
   {
     Object localObject = new oidb_cmd0xbe4.RspBody();
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-    SelfInfoModule.IGetMsgBoxRedDotInfoCallback localIGetMsgBoxRedDotInfoCallback = (SelfInfoModule.IGetMsgBoxRedDotInfoCallback)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+    SelfInfoModule.IGetMsgBoxRedDotInfoCallback localIGetMsgBoxRedDotInfoCallback = (SelfInfoModule.IGetMsgBoxRedDotInfoCallback)this.a.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
     if (i == 0)
     {
       paramFromServiceMsg = (oidb_cmd0xbe4.MsgGetRsp)((oidb_cmd0xbe4.RspBody)localObject).msg_get_rsp.get();
@@ -259,17 +276,17 @@ public class SelfInfoModule
         paramObject = KandianMsgBoxRedPntInfoUtils.a(paramFromServiceMsg);
         paramFromServiceMsg = paramObject;
         if (paramObject == null) {
-          break label183;
+          break label187;
         }
-        localObject = RIJQQAppInterfaceUtil.a();
+        localObject = RIJQQAppInterfaceUtil.e();
         paramFromServiceMsg = paramObject;
         if (localObject == null) {
-          break label183;
+          break label187;
         }
         localObject = (KandianMergeManager)((AppRuntime)localObject).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
         paramFromServiceMsg = paramObject;
         if (localObject == null) {
-          break label183;
+          break label187;
         }
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("update msgbox : ");
@@ -278,13 +295,14 @@ public class SelfInfoModule
         if ((paramToServiceMsg.getAttribute("from") != null) && (paramToServiceMsg.getAttribute("from").toString().equals(Integer.toString(2)))) {
           paramObject.isFromNotification = true;
         }
+        a(paramToServiceMsg, paramObject);
         ((KandianMergeManager)localObject).a(paramObject);
         paramFromServiceMsg = paramObject;
-        break label183;
+        break label187;
       }
     }
     paramFromServiceMsg = null;
-    label183:
+    label187:
     if (localIGetMsgBoxRedDotInfoCallback != null) {
       localIGetMsgBoxRedDotInfoCallback.a(paramFromServiceMsg);
     }
@@ -294,9 +312,9 @@ public class SelfInfoModule
     QLog.d("SelfInfoModule", 1, paramToServiceMsg.toString());
   }
   
-  public void a(int paramInt, String paramString, SelfInfoModule.IGetMsgBoxRedDotInfoCallback paramIGetMsgBoxRedDotInfoCallback)
+  public void a(int paramInt, String paramString, SelfInfoModule.IGetMsgBoxRedDotInfoCallback paramIGetMsgBoxRedDotInfoCallback, long paramLong)
   {
-    if (!((Boolean)RIJSPUtils.a("sp_msg_box_80a_enable_receive", Boolean.valueOf(true))).booleanValue())
+    if (!((Boolean)RIJSPUtils.b("sp_msg_box_80a_enable_receive", Boolean.valueOf(true))).booleanValue())
     {
       QLog.d("SelfInfoModule", 1, "unable to show msgbox redpnt, give up send req !");
       return;
@@ -308,22 +326,22 @@ public class SelfInfoModule
         QLog.d("SelfInfoModule", 2, "getMsgBoxRedPntInfoFromServer use new route, give up request!");
         return;
       }
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 200L) {
+      if (System.currentTimeMillis() - this.b < 200L) {
         QLog.d("SelfInfoModule", 2, "getMsgBoxRedPntInfoFromServer has excute now, give up !");
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      a("", paramInt, paramIGetMsgBoxRedDotInfoCallback);
+      this.b = System.currentTimeMillis();
+      a("", paramInt, paramIGetMsgBoxRedDotInfoCallback, paramLong);
       paramString = new StringBuilder();
       paramString.append("trigger get MsgRedPntReq, from ");
       paramString.append(paramInt);
       QLog.d("SelfInfoModule", 1, paramString.toString());
       return;
     }
-    if (System.currentTimeMillis() - this.b < 200L) {
+    if (System.currentTimeMillis() - this.c < 200L) {
       QLog.d("SelfInfoModule", 2, "getMsgBoxRedPntInfoFromServer has excute now, give up !");
     }
-    this.b = System.currentTimeMillis();
-    a(paramString, paramInt, paramIGetMsgBoxRedDotInfoCallback);
+    this.c = System.currentTimeMillis();
+    a(paramString, paramInt, paramIGetMsgBoxRedDotInfoCallback, paramLong);
     paramIGetMsgBoxRedDotInfoCallback = new StringBuilder();
     paramIGetMsgBoxRedDotInfoCallback.append("getMsgBoxRedPntInfoFromServerWithMsgId: from = ");
     paramIGetMsgBoxRedDotInfoCallback.append(paramInt);
@@ -360,7 +378,7 @@ public class SelfInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.SelfInfoModule
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ class TroopFileManager$1
       return;
     case 6: 
       paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.j(paramMessage);
+      this.a.k(paramMessage);
       return;
     case 5: 
       int i = paramMessage.arg1;
@@ -32,15 +32,15 @@ class TroopFileManager$1
       return;
     case 4: 
       paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.h(paramMessage);
+      this.a.i(paramMessage);
       return;
     case 3: 
       paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.g(paramMessage);
+      this.a.h(paramMessage);
       return;
     case 2: 
       paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.f(paramMessage);
+      this.a.g(paramMessage);
       return;
     }
     paramMessage = (List)arrayOfObject[0];
@@ -52,7 +52,7 @@ class TroopFileManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.1
  * JD-Core Version:    0.7.0.1
  */

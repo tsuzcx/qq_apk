@@ -103,7 +103,7 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((!StringUtil.a(str)) && (!StringUtil.a(str)))
+    if ((!StringUtil.isEmpty(str)) && (!StringUtil.isEmpty(str)))
     {
       Object localObject = new Handler(Looper.getMainLooper());
       IQQReminderService localIQQReminderService = (IQQReminderService)this.app.getRuntimeService(IQQReminderService.class, "");
@@ -114,7 +114,7 @@ public class QWalletMixJsPlugin
       paramJSONObject = (IQQReminderCalendarService)this.app.getRuntimeService(IQQReminderCalendarService.class, "");
       localObject = new CalendarEntity();
       ((CalendarEntity)localObject).msg_id = str;
-      paramJSONObject.deleteCalendarAlarm((AppActivity)this.mRuntime.a(), (CalendarEntity)localObject);
+      paramJSONObject.deleteCalendarAlarm((AppActivity)this.mRuntime.d(), (CalendarEntity)localObject);
       return;
     }
     handJsError("4", "params error");
@@ -223,7 +223,7 @@ public class QWalletMixJsPlugin
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if (StringUtil.a(str1))
+    if (StringUtil.isEmpty(str1))
     {
       handJsError("4", "params error");
       return;
@@ -231,7 +231,7 @@ public class QWalletMixJsPlugin
     if (this.mRuntime != null)
     {
       String str2 = Uri.parse(this.mRuntime.a().getUrl()).getHost();
-      QQNotifyUtils.a(this.mRuntime.a(), str1, str2, paramJSONObject, QQNotifySettingBaseFragment.a);
+      QQNotifyUtils.a(this.mRuntime.d(), str1, str2, paramJSONObject, QQNotifySettingBaseFragment.a);
     }
   }
   
@@ -267,7 +267,7 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if (StringUtil.a(str))
+    if (StringUtil.isEmpty(str))
     {
       handJsError("4", "params error");
       return;
@@ -281,12 +281,12 @@ public class QWalletMixJsPlugin
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((!StringUtil.a(str1)) && (!StringUtil.a(str1)))
+    if ((!StringUtil.isEmpty(str1)) && (!StringUtil.isEmpty(str1)))
     {
       if (this.mRuntime != null)
       {
         String str2 = Uri.parse(this.mRuntime.a().getUrl()).getHost();
-        QQNotifySettingInnerFragment.a(this.mRuntime.a(), str1, paramJSONObject, str2);
+        QQNotifySettingInnerFragment.a(this.mRuntime.d(), str1, paramJSONObject, str2);
       }
       return;
     }
@@ -360,10 +360,10 @@ public class QWalletMixJsPlugin
     super.onCreate();
     if (this.mRuntime != null)
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       if (localActivity != null)
       {
-        this.app = this.mRuntime.a();
+        this.app = this.mRuntime.b();
         if (QLog.isColorLevel())
         {
           String str = TAG;
@@ -379,9 +379,9 @@ public class QWalletMixJsPlugin
   
   protected void onDestroy()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
       mFirstUrls.remove(localObject.hashCode());
       mSequence.remove(Integer.valueOf(localObject.hashCode()));
     }
@@ -395,9 +395,9 @@ public class QWalletMixJsPlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       Intent localIntent = localActivity.getIntent();
       if (localIntent != null)
       {
@@ -422,7 +422,7 @@ public class QWalletMixJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin
  * JD-Core Version:    0.7.0.1
  */

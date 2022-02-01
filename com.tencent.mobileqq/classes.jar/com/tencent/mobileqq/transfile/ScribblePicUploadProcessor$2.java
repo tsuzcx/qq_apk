@@ -23,7 +23,7 @@ class ScribblePicUploadProcessor$2
       return;
     }
     if (paramStatictisInfo != null) {
-      this.this$0.shouldMsgReportSucc = paramStatictisInfo.d;
+      this.this$0.shouldMsgReportSucc = paramStatictisInfo.f;
     }
     this.this$0.mProcessorReport.setError(-1, "MessageForScribble SEND FAIL", "", this.this$0.mProcessorReport.mStepTrans);
     this.this$0.onError();
@@ -31,7 +31,7 @@ class ScribblePicUploadProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ScribblePicUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

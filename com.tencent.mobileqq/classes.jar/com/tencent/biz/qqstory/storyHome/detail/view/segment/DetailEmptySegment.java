@@ -21,19 +21,9 @@ public class DetailEmptySegment
     super(paramContext);
   }
   
-  public void P_()
-  {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.m) {
       return 1;
     }
     return 0;
@@ -41,14 +31,14 @@ public class DetailEmptySegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      paramInt = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();
+    if ((this.l instanceof BaseActivity)) {
+      paramInt = ((BaseActivity)this.l).getTitleBarHeight();
     } else {
       paramInt = 0;
     }
-    int i = UIUtils.e(this.jdField_a_of_type_AndroidContentContext);
-    int j = UIUtils.a(this.jdField_a_of_type_AndroidContentContext);
-    int k = UIUtils.d(this.jdField_a_of_type_AndroidContentContext);
+    int i = UIUtils.f(this.l);
+    int j = UIUtils.b(this.l);
+    int k = UIUtils.e(this.l);
     paramBaseViewHolder.a().getLayoutParams().width = j;
     paramBaseViewHolder.a().getLayoutParams().height = (k - paramInt - i);
     SLog.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
@@ -57,12 +47,22 @@ public class DetailEmptySegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561642, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628021, paramViewGroup, false));
   }
   
-  public String a()
+  public String b()
   {
     return "DetailEmptySegment";
+  }
+  
+  public void br_()
+  {
+    if (((StoryDetailListView)w()).b())
+    {
+      this.m = false;
+      return;
+    }
+    this.m = true;
   }
 }
 

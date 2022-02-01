@@ -24,38 +24,38 @@ public class AVGameLobbyCommonCellViewHolder
   extends BaseViewHolder<AVGameLobbyCommonContentInfo>
   implements View.OnTouchListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gamelobby.rv.AVGameLobbyCommonCellViewHolder";
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AutoResizeAsyncImageView jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
-  private OverlappingImgLayout jdField_a_of_type_ComTencentAvgameGamelobbyViewOverlappingImgLayout;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-  private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+  private static final String d = "com.tencent.avgame.gamelobby.rv.AVGameLobbyCommonCellViewHolder";
+  private AsyncImageView e;
+  private AutoResizeAsyncImageView f;
+  private View g;
+  private LinearLayout h;
+  private OverlappingImgLayout i;
+  private TextView j;
+  private IFaceDecoder k = null;
   
   public AVGameLobbyCommonCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363210));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363207);
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363208));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363205));
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewOverlappingImgLayout = ((OverlappingImgLayout)paramView.findViewById(2131363204));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363206));
+    this.e = ((AsyncImageView)paramView.findViewById(2131429084));
+    this.g = paramView.findViewById(2131429081);
+    this.f = ((AutoResizeAsyncImageView)paramView.findViewById(2131429082));
+    this.h = ((LinearLayout)paramView.findViewById(2131429079));
+    this.i = ((OverlappingImgLayout)paramView.findViewById(2131429078));
+    this.j = ((TextView)paramView.findViewById(2131429080));
     paramView.setOnTouchListener(this);
     a(paramView);
   }
   
   private void a(AppInterface paramAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
+    if (this.k == null) {
+      this.k = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
     }
   }
   
   protected void a()
   {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    IFaceDecoder localIFaceDecoder = this.k;
     if (localIFaceDecoder != null) {
       localIFaceDecoder.destory();
     }
@@ -68,38 +68,38 @@ public class AVGameLobbyCommonCellViewHolder
     if (paramAVGameLobbyCommonContentInfo == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbyCommonContentInfo.jdField_a_of_type_JavaLangString);
-    float f = ViewUtils.a(6.0F);
-    paramInt = paramAVGameLobbyCommonContentInfo.jdField_c_of_type_Int;
-    int i = paramAVGameLobbyCommonContentInfo.d;
-    Object localObject = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { paramInt | 0xFF000000, 0xFF000000 | i });
-    ((GradientDrawable)localObject).setCornerRadius(f);
+    this.e.setUrlIconAsyncImage(paramAVGameLobbyCommonContentInfo.b);
+    float f1 = ViewUtils.dip2px(6.0F);
+    paramInt = paramAVGameLobbyCommonContentInfo.f;
+    int m = paramAVGameLobbyCommonContentInfo.g;
+    Object localObject = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { paramInt | 0xFF000000, 0xFF000000 | m });
+    ((GradientDrawable)localObject).setCornerRadius(f1);
     ((GradientDrawable)localObject).setGradientType(0);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
-    localObject = jdField_a_of_type_JavaLangString;
+    this.g.setBackgroundDrawable((Drawable)localObject);
+    localObject = d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ApngImage url:");
-    localStringBuilder.append(paramAVGameLobbyCommonContentInfo.b);
+    localStringBuilder.append(paramAVGameLobbyCommonContentInfo.c);
     QLog.d((String)localObject, 2, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramAVGameLobbyCommonContentInfo.b);
+    this.f.a(paramAVGameLobbyCommonContentInfo.c);
     if ((paramViewHolderContext instanceof AVGameLobbyViewHolderContext)) {
       a(((AVGameLobbyViewHolderContext)paramViewHolderContext).a());
     }
-    if (paramAVGameLobbyCommonContentInfo.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (paramAVGameLobbyCommonContentInfo.e.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyViewOverlappingImgLayout.a(17, 17, paramAVGameLobbyCommonContentInfo.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAVGameLobbyCommonContentInfo.jdField_c_of_type_JavaLangString);
+      this.i.a(17, 17, paramAVGameLobbyCommonContentInfo.e, this.k);
+      this.j.setText(paramAVGameLobbyCommonContentInfo.h);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int m = paramMotionEvent.getActionMasked();
+    if (m != 0)
     {
-      if ((i == 1) || (i == 3)) {
+      if ((m == 1) || (m == 3)) {
         paramView.setAlpha(1.0F);
       }
     }

@@ -8,66 +8,66 @@ import com.tencent.mobileqq.ocr.view.gesture.utils.MathUtils;
 
 public class ScaleBounds
 {
-  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private float jdField_a_of_type_Float;
-  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
-  private float b;
-  private float c;
+  private static final Matrix a = new Matrix();
+  private static final RectF b = new RectF();
+  private final Settings c;
+  private float d;
+  private float e;
+  private float f;
   
   public ScaleBounds(Settings paramSettings)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+    this.c = paramSettings;
   }
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
+    return this.d;
   }
   
   public float a(float paramFloat1, float paramFloat2)
   {
-    return MathUtils.a(paramFloat1, this.jdField_a_of_type_Float / paramFloat2, this.b * paramFloat2);
+    return MathUtils.a(paramFloat1, this.d / paramFloat2, this.e * paramFloat2);
   }
   
   public ScaleBounds a(State paramState)
   {
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
-    float f6 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f();
-    float f7 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c();
-    float f8 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
+    float f5 = this.c.g();
+    float f6 = this.c.h();
+    float f7 = this.c.e();
+    float f8 = this.c.f();
     if ((f5 != 0.0F) && (f6 != 0.0F) && (f7 != 0.0F) && (f8 != 0.0F))
     {
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a();
-      this.b = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b();
-      float f9 = paramState.d();
+      this.d = this.c.i();
+      this.e = this.c.j();
+      float f9 = paramState.e();
       float f3 = f5;
       float f1 = f6;
       float f2 = f7;
       float f4 = f8;
-      if (!State.a(f9, 0.0F)) {
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() == Settings.Fit.OUTSIDE)
+      if (!State.c(f9, 0.0F)) {
+        if (this.c.q() == Settings.Fit.OUTSIDE)
         {
-          jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-f9);
-          jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f7, f8);
-          jdField_a_of_type_AndroidGraphicsMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
-          f2 = jdField_a_of_type_AndroidGraphicsRectF.width();
-          f4 = jdField_a_of_type_AndroidGraphicsRectF.height();
+          a.setRotate(-f9);
+          b.set(0.0F, 0.0F, f7, f8);
+          a.mapRect(b);
+          f2 = b.width();
+          f4 = b.height();
           f3 = f5;
           f1 = f6;
         }
         else
         {
-          jdField_a_of_type_AndroidGraphicsMatrix.setRotate(f9);
-          jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f5, f6);
-          jdField_a_of_type_AndroidGraphicsMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
-          f3 = jdField_a_of_type_AndroidGraphicsRectF.width();
-          f1 = jdField_a_of_type_AndroidGraphicsRectF.height();
+          a.setRotate(f9);
+          b.set(0.0F, 0.0F, f5, f6);
+          a.mapRect(b);
+          f3 = b.width();
+          f1 = b.height();
           f4 = f8;
           f2 = f7;
         }
       }
-      int i = ScaleBounds.1.a[this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a().ordinal()];
+      int i = ScaleBounds.1.a[this.c.q().ordinal()];
       if (i != 1)
       {
         if (i != 2)
@@ -76,76 +76,76 @@ public class ScaleBounds
           {
             if (i != 4)
             {
-              f1 = this.jdField_a_of_type_Float;
+              f1 = this.d;
               if (f1 <= 0.0F) {
                 f1 = 1.0F;
               }
-              this.c = f1;
+              this.f = f1;
             }
             else
             {
-              this.c = Math.max(f2 / f3, f4 / f1);
+              this.f = Math.max(f2 / f3, f4 / f1);
             }
           }
           else {
-            this.c = Math.min(f2 / f3, f4 / f1);
+            this.f = Math.min(f2 / f3, f4 / f1);
           }
         }
         else {
-          this.c = (f4 / f1);
+          this.f = (f4 / f1);
         }
       }
       else {
-        this.c = (f2 / f3);
+        this.f = (f2 / f3);
       }
-      if (this.jdField_a_of_type_Float <= 0.0F) {
-        this.jdField_a_of_type_Float = this.c;
+      if (this.d <= 0.0F) {
+        this.d = this.f;
       }
-      if (this.b <= 0.0F) {
-        this.b = this.c;
+      if (this.e <= 0.0F) {
+        this.e = this.f;
       }
-      if (this.c > this.b) {
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a()) {
-          this.b = this.c;
+      if (this.f > this.e) {
+        if (this.c.o()) {
+          this.e = this.f;
         } else {
-          this.c = this.b;
+          this.f = this.e;
         }
       }
-      f1 = this.jdField_a_of_type_Float;
-      f2 = this.b;
+      f1 = this.d;
+      f2 = this.e;
       if (f1 > f2) {
-        this.jdField_a_of_type_Float = f2;
+        this.d = f2;
       }
-      if (this.c < this.jdField_a_of_type_Float)
+      if (this.f < this.d)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a())
+        if (this.c.o())
         {
-          this.jdField_a_of_type_Float = this.c;
+          this.d = this.f;
           return this;
         }
-        this.c = this.jdField_a_of_type_Float;
+        this.f = this.d;
       }
       return this;
     }
-    this.c = 1.0F;
-    this.b = 1.0F;
-    this.jdField_a_of_type_Float = 1.0F;
+    this.f = 1.0F;
+    this.e = 1.0F;
+    this.d = 1.0F;
     return this;
   }
   
   public float b()
   {
-    return this.b;
+    return this.e;
   }
   
   public float c()
   {
-    return this.c;
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.state.ScaleBounds
  * JD-Core Version:    0.7.0.1
  */

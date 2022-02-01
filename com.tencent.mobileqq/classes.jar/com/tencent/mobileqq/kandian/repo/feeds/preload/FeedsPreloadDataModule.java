@@ -13,22 +13,22 @@ import java.util.concurrent.ExecutorService;
 
 public class FeedsPreloadDataModule
 {
-  private volatile FeedsPreloadDataModule.PreloadCache jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private volatile FeedsPreloadDataModule.PreloadCache a;
+  private ExecutorService b;
   
   public FeedsPreloadDataModule(ExecutorService paramExecutorService)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
+    this.b = paramExecutorService;
   }
   
   static FeedsPreloadDataModule a()
   {
-    Object localObject = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    Object localObject = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localObject != null)
     {
       localObject = ((ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine();
       if (localObject != null) {
-        return ((ReadInJoyLogicEngine)localObject).a();
+        return ((ReadInJoyLogicEngine)localObject).h();
       }
     }
     return null;
@@ -62,9 +62,9 @@ public class FeedsPreloadDataModule
     {
       try
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.a != null))
+        if ((this.a != null) && (this.a.a != null))
         {
-          Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.a;
+          Object localObject = this.a.a;
           Long localLong1 = (Long)((ToServiceMsg)localObject).getAttribute("BeginSeq");
           Long localLong2 = (Long)((ToServiceMsg)localObject).getAttribute("EndSeq");
           long l2 = -1L;
@@ -75,17 +75,17 @@ public class FeedsPreloadDataModule
           if (localLong2 != null) {
             l2 = localLong2.longValue();
           }
-          QLog.d("FeedsPreloadDataModule", 1, new Object[] { "isReqEqual: ", "cache bSeq = ", Long.valueOf(l1), ", request bSeq = ", Long.valueOf(paramRequest0x68bParams.a), "\n", "cache eSeq = ", Long.valueOf(l2), ", request eSeq = ", Long.valueOf(paramRequest0x68bParams.jdField_b_of_type_Long) });
-          if ((l1 == paramRequest0x68bParams.a) && (l2 == paramRequest0x68bParams.jdField_b_of_type_Long))
+          QLog.d("FeedsPreloadDataModule", 1, new Object[] { "isReqEqual: ", "cache bSeq = ", Long.valueOf(l1), ", request bSeq = ", Long.valueOf(paramRequest0x68bParams.c), "\n", "cache eSeq = ", Long.valueOf(l2), ", request eSeq = ", Long.valueOf(paramRequest0x68bParams.d) });
+          if ((l1 == paramRequest0x68bParams.c) && (l2 == paramRequest0x68bParams.d))
           {
-            paramRequest0x68bParams = paramRequest0x68bParams.jdField_b_of_type_JavaUtilList;
+            paramRequest0x68bParams = paramRequest0x68bParams.i;
             localObject = (List)((ToServiceMsg)localObject).getAttribute("SubscriptionArticles");
             if ((paramRequest0x68bParams != null) && (paramRequest0x68bParams.size() > 0))
             {
               if (a(paramRequest0x68bParams, (List)localObject))
               {
                 QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists are the same.");
-                paramRequest0x68bParams = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.a();
+                paramRequest0x68bParams = this.a.a();
                 return paramRequest0x68bParams;
               }
               QLog.d("FeedsPreloadDataModule", 1, "two subscriptionList are different.");
@@ -97,7 +97,7 @@ public class FeedsPreloadDataModule
             else
             {
               QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists both are empty.");
-              paramRequest0x68bParams = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.a();
+              paramRequest0x68bParams = this.a.a();
               return paramRequest0x68bParams;
             }
           }
@@ -115,27 +115,27 @@ public class FeedsPreloadDataModule
     }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache = null;
-  }
-  
   void a(FeedsPreloadDataModule.PreloadCache paramPreloadCache)
   {
     if (paramPreloadCache != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache = paramPreloadCache;
+      this.a = paramPreloadCache;
     }
     finally {}
   }
   
-  void b()
+  public void b()
+  {
+    this.a = null;
+  }
+  
+  void c()
   {
     try
     {
       QLog.d("FeedsPreloadDataModule", 2, "clearCache.");
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache = null;
+      this.a = null;
       return;
     }
     finally
@@ -147,7 +147,7 @@ public class FeedsPreloadDataModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadDataModule
  * JD-Core Version:    0.7.0.1
  */

@@ -11,50 +11,50 @@ class FloatingVideoWrapper$14
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_AndroidViewView;
+    paramAnimator = this.b;
     if (paramAnimator != null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if (i == 0) {
         paramAnimator.setAlpha(1.0F);
       } else if (i == 1) {
         paramAnimator.setAlpha(0.0F);
       }
-      FloatingVideoWrapper.b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper, this.jdField_a_of_type_Int);
+      FloatingVideoWrapper.d(this.c, this.a);
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    FloatingVideoWrapper.b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 1)
+    FloatingVideoWrapper.d(this.c, this.a);
+    if (this.a == 1)
     {
-      FloatingVideoWrapper.b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper, false);
-      paramAnimator = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper;
-      paramAnimator.a(false, new View[] { FloatingVideoWrapper.a(paramAnimator) });
+      FloatingVideoWrapper.b(this.c, false);
+      paramAnimator = this.c;
+      paramAnimator.a(false, new View[] { FloatingVideoWrapper.b(paramAnimator) });
     }
-    FloatingVideoWrapper.d(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper);
+    FloatingVideoWrapper.l(this.c);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    FloatingVideoWrapper.b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper, 2);
-    if (this.jdField_a_of_type_Int == 0)
+    FloatingVideoWrapper.d(this.c, 2);
+    if (this.a == 0)
     {
-      FloatingVideoWrapper.b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper, true);
-      if (FloatingVideoWrapper.a(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper) == 1)
+      FloatingVideoWrapper.b(this.c, true);
+      if ((FloatingVideoWrapper.e(this.c) == 1) || (FloatingVideoWrapper.e(this.c) == 4))
       {
-        paramAnimator = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplUiwrapperFloatingVideoWrapper;
-        paramAnimator.a(true, new View[] { FloatingVideoWrapper.a(paramAnimator) });
+        paramAnimator = this.c;
+        paramAnimator.a(true, new View[] { FloatingVideoWrapper.b(paramAnimator) });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper.14
  * JD-Core Version:    0.7.0.1
  */

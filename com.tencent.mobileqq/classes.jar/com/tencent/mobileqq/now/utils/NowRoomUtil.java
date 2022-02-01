@@ -51,7 +51,7 @@ public class NowRoomUtil
     }
     if ((paramActivity != null) && (!NetworkUtil.isNetworkAvailable(paramActivity.getApplication())))
     {
-      QfavUtil.a(paramActivity, 2131694435, 1);
+      QfavUtil.a(paramActivity, 2131892115, 1);
       return false;
     }
     if ((paramString != null) && (paramString.startsWith("mqqapi://"))) {
@@ -105,7 +105,7 @@ public class NowRoomUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.utils.NowRoomUtil
  * JD-Core Version:    0.7.0.1
  */

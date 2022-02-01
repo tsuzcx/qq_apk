@@ -83,8 +83,8 @@ class e
     //   146: getfield 14	com/tencent/mobileqq/msf/core/a/e:c	Lcom/tencent/mobileqq/msf/core/a/d;
     //   149: getfield 31	com/tencent/mobileqq/msf/core/a/d:c	Lcom/tencent/mobileqq/msf/core/a/c;
     //   152: getfield 95	com/tencent/mobileqq/msf/core/a/c:n	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   155: getfield 101	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   158: invokevirtual 107	com/tencent/mobileqq/msf/core/ac:m	()I
+    //   155: getfield 101	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   158: invokevirtual 107	com/tencent/mobileqq/msf/core/ad:m	()I
     //   161: aload_2
     //   162: aload_0
     //   163: getfield 16	com/tencent/mobileqq/msf/core/a/e:a	Ljava/lang/String;
@@ -215,7 +215,7 @@ class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,12 @@ import android.os.Bundle;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qqgamepub.api.IGamePubAccountMsgService;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameFlutterApi;
+import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
@@ -147,13 +149,17 @@ public class QQGameIPCModule
     {
       paramString = localBundle.getAccount();
       ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).setLastCleanReqMsgTime(paramString, System.currentTimeMillis());
+      return null;
+    }
+    if ("preDownloadDnflutter".equals(paramString)) {
+      ((IQQGameFlutterApi)QRoute.api(IQQGameFlutterApi.class)).updateDnFlutter(GamePubAccountHelper.g());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.ipc.QQGameIPCModule
  * JD-Core Version:    0.7.0.1
  */

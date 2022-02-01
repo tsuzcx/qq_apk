@@ -14,35 +14,35 @@ class TabFrameControllerImpl$3
   
   public void run()
   {
-    String str = this.this$0.getCurrentTabTag(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost);
+    String str = this.this$0.getCurrentTabTag(this.a.s);
     Object localObject;
-    if ((FrameControllerUtil.a.equals(str)) || (FrameControllerUtil.b.equals(str)))
+    if ((FrameControllerUtil.l.equals(str)) || (FrameControllerUtil.m.equals(str)))
     {
-      if (FrameControllerUtil.a.equals(str)) {
+      if (FrameControllerUtil.l.equals(str)) {
         localObject = "Msg_tab";
       } else {
         localObject = "Contacts_tab";
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      ReportController.b(this.a.A, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    if (this.a.M != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_AndroidContentSharedPreferences;
+      localObject = this.a.M;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("theme_voice_setting_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append(this.a.A.getCurrentAccountUin());
       if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true)) {
-        TabFrameControllerImpl.sFrameControllerInjectInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment, this.jdField_a_of_type_Int);
+        TabFrameControllerImpl.sFrameControllerInjectInterface.a(this.a, this.b);
       }
     }
-    if ((str != null) && (AppSetting.d)) {
-      this.this$0.dispatchTabContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment, str);
+    if ((str != null) && (AppSetting.e)) {
+      this.this$0.dispatchTabContentDescription(this.a, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl.3
  * JD-Core Version:    0.7.0.1
  */

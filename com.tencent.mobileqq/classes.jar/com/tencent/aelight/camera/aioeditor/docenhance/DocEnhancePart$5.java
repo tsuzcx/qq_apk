@@ -1,8 +1,6 @@
 package com.tencent.aelight.camera.aioeditor.docenhance;
 
 import com.tencent.aelight.camera.aioeditor.takevideo.EditVideoPartManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 class DocEnhancePart$5
   implements Runnable
@@ -12,13 +10,12 @@ class DocEnhancePart$5
   public void run()
   {
     DocEnhancePart localDocEnhancePart = this.this$0;
-    DocEnhancePart.b(localDocEnhancePart, DocEnhancePart.a(localDocEnhancePart, localDocEnhancePart.a.a()));
-    ThreadManager.getUIHandler().post(new DocEnhancePart.5.1(this));
+    localDocEnhancePart.a(DocEnhancePart.a(localDocEnhancePart, localDocEnhancePart.t.H()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhancePart.5
  * JD-Core Version:    0.7.0.1
  */

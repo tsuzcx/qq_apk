@@ -6,44 +6,44 @@ import java.util.List;
 
 public class HotPicIndexAndIDMap
 {
-  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
+  private SparseArray<HotPicTagInfo> a = new SparseArray();
+  private ArrayList<HotPicTagInfo> b = new ArrayList();
   
   public HotPicTagInfo a(int paramInt)
   {
-    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return (HotPicTagInfo)this.a.get(paramInt);
   }
   
   public List<HotPicTagInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    return this.b;
   }
   
   public void a(HotPicTagInfo paramHotPicTagInfo)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
+    this.b.add(paramHotPicTagInfo);
+    this.a.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
   }
   
   public HotPicTagInfo b(int paramInt)
   {
-    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (HotPicTagInfo)this.b.get(paramInt);
+  }
+  
+  public void b()
+  {
+    this.b.clear();
+    this.a.clear();
+  }
+  
+  public int c()
+  {
+    return this.b.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicIndexAndIDMap
  * JD-Core Version:    0.7.0.1
  */

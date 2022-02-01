@@ -10,12 +10,12 @@ class NowRoomSwitchService$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_liveServicesNowRoomSwitchService$1.a.onResult(0, this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaUtilList);
+    this.b.b.onResult(0, this.a.size(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.services.NowRoomSwitchService.1.1
  * JD-Core Version:    0.7.0.1
  */

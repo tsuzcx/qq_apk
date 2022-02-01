@@ -18,7 +18,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).a(paramInt, paramBoolean, paramObject);
       }
@@ -54,7 +54,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).c(0);
       }
@@ -66,7 +66,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).c(3);
       }
@@ -78,7 +78,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).a(paramInt);
       }
@@ -90,7 +90,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).a(3, 3, true);
       }
@@ -102,7 +102,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).a(paramInt1, paramLong1, paramLong2, paramInt2, paramInt3, paramInt4, paramInt5, paramSystemMsgActionInfo, paramInt6);
       }
@@ -119,7 +119,7 @@ public class MessageHandlerImpl
     Object localObject = this.app;
     if (localObject != null)
     {
-      localObject = ((QQAppInterface)localObject).getMsgHandler().a();
+      localObject = ((QQAppInterface)localObject).getMsgHandler().B();
       if (localObject != null) {
         ((SystemMessageProcessor)localObject).a(paramBoolean);
       }
@@ -128,7 +128,7 @@ public class MessageHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.impl.MessageHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

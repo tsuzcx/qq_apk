@@ -16,13 +16,8 @@ import cooperation.vip.ad.TianshuRenewalsBarManager;
 public class RenewalsBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  public VipBannerInfo a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.z;
-  }
+  public static final int a = BannerTypeCollections.A;
+  public VipBannerInfo b;
   
   public RenewalsBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -31,18 +26,18 @@ public class RenewalsBannerProcessor
   
   public static void a(VipBannerInfo paramVipBannerInfo)
   {
-    if (BannerManager.a().a(jdField_a_of_type_Int) != 0) {
+    if (BannerManager.a().b(a) != 0) {
       return;
     }
     Message localMessage = Message.obtain();
     localMessage.obj = paramVipBannerInfo;
-    BannerManager.a().a(jdField_a_of_type_Int, 2, localMessage);
+    BannerManager.a().a(a, 2, localMessage);
   }
   
-  public static void b()
+  public static void d()
   {
-    if (BannerManager.a().a(jdField_a_of_type_Int) != 0) {
-      BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+    if (BannerManager.a().b(a) != 0) {
+      BannerManager.a().a(a, 0, null);
     }
   }
   
@@ -53,14 +48,9 @@ public class RenewalsBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131562042, null);
+    paramBanner = View.inflate(this.f, 2131628468, null);
     paramBanner.setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
@@ -71,7 +61,7 @@ public class RenewalsBannerProcessor
       return;
     }
     if (paramMessage.what == 2001) {
-      b();
+      d();
     }
   }
   
@@ -82,30 +72,35 @@ public class RenewalsBannerProcessor
       if ((paramMessage.obj instanceof VipBannerInfo))
       {
         paramMessage = (VipBannerInfo)paramMessage.obj;
-        this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo = paramMessage;
-        TianshuRenewalsBarManager.a((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramBanner.a, paramMessage, BannerManager.a().a);
+        this.b = paramMessage;
+        TianshuRenewalsBarManager.a((BaseActivity)this.f, paramBanner.c, paramMessage, BannerManager.a().c);
       }
     }
     else
     {
-      if (paramBanner.a.getVisibility() == 8)
+      if (paramBanner.c.getVisibility() == 8)
       {
-        BannerManager.a().a(jdField_a_of_type_Int, 0, null);
-        this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo = null;
+        BannerManager.a().a(a, 0, null);
+        this.b = null;
         return;
       }
-      TianshuRenewalsBarManager.b((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramBanner.a, this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo, BannerManager.a().a);
+      TianshuRenewalsBarManager.b((BaseActivity)this.f, paramBanner.c, this.b, BannerManager.a().c);
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.RenewalsBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

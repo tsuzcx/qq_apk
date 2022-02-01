@@ -7,16 +7,16 @@ import java.io.InputStream;
 public class ChunkedInputStream
   extends InputStream
 {
-  private int jdField_a_of_type_Int;
-  private final InputStream jdField_a_of_type_JavaIoInputStream;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private int a;
+  private int b = 0;
+  private boolean c = true;
+  private boolean d = false;
+  private boolean e = false;
+  private final InputStream f;
   
   public ChunkedInputStream(InputStream paramInputStream)
   {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.f = paramInputStream;
   }
   
   private static int a(InputStream paramInputStream)
@@ -68,23 +68,23 @@ public class ChunkedInputStream
     return Integer.parseInt(localStringBuilder.toString(), 16);
   }
   
-  private boolean a()
+  private boolean b()
   {
-    boolean bool1 = this.jdField_a_of_type_Boolean;
+    boolean bool1 = this.c;
     boolean bool3 = false;
     if (!bool1) {
-      bool1 = b();
+      bool1 = c();
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_b_of_type_Boolean = true;
+    this.a = a(this.f);
+    this.c = false;
+    this.b = 0;
+    if (this.a == 0) {
+      this.d = true;
     }
     boolean bool2 = bool3;
-    if (this.jdField_a_of_type_Int >= 0)
+    if (this.a >= 0)
     {
       bool2 = bool3;
       if (bool1) {
@@ -94,38 +94,38 @@ public class ChunkedInputStream
     return bool2;
   }
   
-  private boolean b()
+  private boolean c()
   {
-    int i = this.jdField_a_of_type_JavaIoInputStream.read();
-    int j = this.jdField_a_of_type_JavaIoInputStream.read();
+    int i = this.f.read();
+    int j = this.f.read();
     return (i == 13) && (j == 10);
   }
   
   public byte[] a()
   {
     boolean bool;
-    if (!this.jdField_a_of_type_Boolean) {
-      bool = b();
+    if (!this.c) {
+      bool = c();
     } else {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_JavaIoInputStream;
+    this.c = false;
+    Object localObject = this.f;
     if (localObject == null) {
       return new byte[0];
     }
-    this.jdField_a_of_type_Int = a((InputStream)localObject);
-    if (4 == this.jdField_a_of_type_Int) {
+    this.a = a((InputStream)localObject);
+    if (4 == this.a) {
       read(new byte[4], 0, 4);
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if ((i > 0) && (bool))
     {
       localObject = new byte[i];
       int j;
       do
       {
-        j = read((byte[])localObject, this.jdField_b_of_type_Int, i);
+        j = read((byte[])localObject, this.b, i);
         if (j < 0) {
           return new byte[0];
         }
@@ -139,43 +139,43 @@ public class ChunkedInputStream
   
   public int read()
   {
-    if (!this.c)
+    if (!this.e)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.d) {
         return -1;
       }
-      if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
+      if (this.b >= this.a)
       {
-        a();
-        if (this.jdField_b_of_type_Boolean) {
+        b();
+        if (this.d) {
           return -1;
         }
       }
-      this.jdField_b_of_type_Int += 1;
-      return this.jdField_a_of_type_JavaIoInputStream.read();
+      this.b += 1;
+      return this.f.read();
     }
     throw new IOException("Attempted read from closed stream.");
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!this.c)
+    if (!this.e)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.d) {
         return -1;
       }
-      if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
+      if (this.b >= this.a)
       {
-        boolean bool = a();
-        if ((this.jdField_b_of_type_Boolean) || (!bool)) {
+        boolean bool = b();
+        if ((this.d) || (!bool)) {
           return -1;
         }
       }
-      paramInt2 = Math.min(paramInt2, this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
-      paramInt1 = this.jdField_a_of_type_JavaIoInputStream.read(paramArrayOfByte, paramInt1, paramInt2);
-      this.jdField_b_of_type_Int += paramInt1;
-      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {
-        this.jdField_b_of_type_Int = 0;
+      paramInt2 = Math.min(paramInt2, this.a - this.b);
+      paramInt1 = this.f.read(paramArrayOfByte, paramInt1, paramInt2);
+      this.b += paramInt1;
+      if (this.b == this.a) {
+        this.b = 0;
       }
       return paramInt1;
     }
@@ -184,7 +184,7 @@ public class ChunkedInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.stream.ChunkedInputStream
  * JD-Core Version:    0.7.0.1
  */

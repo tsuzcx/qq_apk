@@ -32,7 +32,7 @@ public class VipFunCallManager
     //   1: invokespecial 15	java/lang/Object:<init>	()V
     //   4: new 17	java/io/File
     //   7: dup
-    //   8: invokestatic 23	com/tencent/av/AVPathUtil:k	()Ljava/lang/String;
+    //   8: invokestatic 23	com/tencent/av/AVPathUtil:o	()Ljava/lang/String;
     //   11: invokespecial 26	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_2
     //   15: aload_2
@@ -64,7 +64,7 @@ public class VipFunCallManager
     //   66: astore_2
     //   67: aload_1
     //   68: astore_3
-    //   69: invokestatic 23	com/tencent/av/AVPathUtil:k	()Ljava/lang/String;
+    //   69: invokestatic 23	com/tencent/av/AVPathUtil:o	()Ljava/lang/String;
     //   72: new 71	java/lang/StringBuffer
     //   75: dup
     //   76: ldc 73
@@ -130,7 +130,7 @@ public class VipFunCallManager
       if (paramRelativeLayout == null) {
         return null;
       }
-      View localView = LayoutInflater.from(VasUtil.a().getApplicationContext()).inflate(2131563034, null);
+      View localView = LayoutInflater.from(VasUtil.c().getApplicationContext()).inflate(2131629648, null);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       localLayoutParams.addRule(13);
       if (paramActivity.isFinishing()) {
@@ -140,7 +140,7 @@ public class VipFunCallManager
       if (QLog.isDevelopLevel()) {
         QLog.i("VipFunCall", 4, "addVideoView");
       }
-      return (VipFullScreenVideoView)localView.findViewById(2131380499);
+      return (VipFullScreenVideoView)localView.findViewById(2131449456);
     }
     return null;
   }
@@ -212,7 +212,7 @@ public class VipFunCallManager
       return;
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(AVPathUtil.k());
+    ((StringBuilder)localObject).append(AVPathUtil.o());
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(File.separator);
     localObject = new File(((StringBuilder)localObject).toString());
@@ -259,7 +259,7 @@ public class VipFunCallManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallManager
  * JD-Core Version:    0.7.0.1
  */

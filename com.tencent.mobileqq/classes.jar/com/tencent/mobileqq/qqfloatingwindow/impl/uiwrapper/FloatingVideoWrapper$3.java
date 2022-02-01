@@ -7,12 +7,12 @@ class FloatingVideoWrapper$3
   
   public void run()
   {
-    FloatingVideoWrapper.a(this.this$0, this.a);
+    FloatingVideoWrapper.b(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper.3
  * JD-Core Version:    0.7.0.1
  */

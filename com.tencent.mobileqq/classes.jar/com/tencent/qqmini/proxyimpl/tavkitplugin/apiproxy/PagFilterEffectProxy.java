@@ -9,7 +9,7 @@ class PagFilterEffectProxy
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
   {
     super.a(paramObjCreateTavEvent);
-    paramObjCreateTavEvent = paramObjCreateTavEvent.a("pagFile");
+    paramObjCreateTavEvent = paramObjCreateTavEvent.b("pagFile");
     if (!(paramObjCreateTavEvent instanceof TAVSticker))
     {
       a("error params pagFile");
@@ -20,7 +20,7 @@ class PagFilterEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagFilterEffectProxy
  * JD-Core Version:    0.7.0.1
  */

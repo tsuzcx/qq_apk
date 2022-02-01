@@ -438,7 +438,7 @@ public class AppV8JsService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppV8JsService
  * JD-Core Version:    0.7.0.1
  */

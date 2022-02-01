@@ -9,16 +9,16 @@ class PhotoListPanel$9
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a();
+    if (this.this$0.T != null) {
+      this.this$0.T.a();
     }
-    this.this$0.b(this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_Boolean);
-    com.tencent.mobileqq.shortvideo.SVBusiUtil.b = System.currentTimeMillis();
+    this.this$0.b(this.a, this.b, this.c);
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.c = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.9
  * JD-Core Version:    0.7.0.1
  */

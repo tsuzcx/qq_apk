@@ -184,12 +184,12 @@ public class AEVideoShelfEditFragment
     localProgressPieDrawable.a(AIOUtils.b(50.0F, getBaseActivity().getResources()));
     localProgressPieDrawable.a(true);
     localProgressPieDrawable.c(false);
-    localProgressPieDrawable.g(-1);
-    localProgressPieDrawable.f(0);
-    localProgressPieDrawable.d(-15550475);
-    localProgressPieDrawable.i(3);
-    localProgressPieDrawable.jdField_f_of_type_Boolean = true;
-    localProgressPieDrawable.jdField_f_of_type_Int = 2;
+    localProgressPieDrawable.h(-1);
+    localProgressPieDrawable.g(0);
+    localProgressPieDrawable.e(-15550475);
+    localProgressPieDrawable.j(3);
+    localProgressPieDrawable.D = true;
+    localProgressPieDrawable.A = 2;
     localProgressPieDrawable.e(true);
     localProgressPieDrawable.a(new AEVideoShelfEditFragment.3(this));
     return localProgressPieDrawable;
@@ -548,7 +548,7 @@ public class AEVideoShelfEditFragment
       {
         paramImageView = (EditTextViewer)paramImageView;
         paramImageView.updateMatrix(Math.abs(k), Math.abs(n));
-        paramImageView.setActionBarHeight(getResources().getDimensionPixelSize(2131296719));
+        paramImageView.setActionBarHeight(getResources().getDimensionPixelSize(2131297050));
       }
     }
   }
@@ -842,15 +842,15 @@ public class AEVideoShelfEditFragment
       }
     }
     this.mDialog.requestWindowFeature(1);
-    this.mDialog.setContentView(2131561828);
-    localObject = (ImageView)this.mDialog.findViewById(2131373123);
+    this.mDialog.setContentView(2131628207);
+    localObject = (ImageView)this.mDialog.findViewById(2131440726);
     this.ppd = createProgressPie();
     ((ImageView)localObject).setImageDrawable(this.ppd);
-    ((TextView)this.mDialog.findViewById(2131371529)).setText(2064515252);
+    ((TextView)this.mDialog.findViewById(2131438908)).setText(2064187599);
     this.mDialog.setCancelable(true);
     this.mDialog.setCanceledOnTouchOutside(false);
     this.mDialog.setOnCancelListener(new AEVideoShelfEditFragment.2(this));
-    this.ppd.c(0);
+    this.ppd.d(0);
   }
   
   private void initSelectedFacePosition(FaceImageViewer paramFaceImageViewer, FaceParam paramFaceParam)
@@ -880,15 +880,15 @@ public class AEVideoShelfEditFragment
   
   private void initView()
   {
-    this.mButtonCancel = getBaseActivity().findViewById(2064121970);
-    this.mButtonOk = ((TextView)getBaseActivity().findViewById(2064121996));
-    this.mButtonOk.setText(2064515238);
+    this.mButtonCancel = getBaseActivity().findViewById(2063990900);
+    this.mButtonOk = ((TextView)getBaseActivity().findViewById(2063990925));
+    this.mButtonOk.setText(2064187585);
     this.mButtonOk.setOnClickListener(this);
     this.mButtonCancel.setOnClickListener(this);
-    this.mButtonChangeImage = getBaseActivity().findViewById(2064122133);
+    this.mButtonChangeImage = getBaseActivity().findViewById(2063991023);
     this.mButtonChangeImage.setOnClickListener(this);
-    this.mCenterView = ((RelativeLayout)getBaseActivity().findViewById(2064122032));
-    this.mBoxRecycleView = ((RecyclerView)getBaseActivity().findViewById(2064121985));
+    this.mCenterView = ((RelativeLayout)getBaseActivity().findViewById(2063990963));
+    this.mBoxRecycleView = ((RecyclerView)getBaseActivity().findViewById(2063990911));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getBaseActivity());
     localLinearLayoutManager.setOrientation(0);
     this.mBoxRecycleView.addItemDecoration(new AEVideoShelfEditFragment.SpacesItemDecoration(this, dp2px(getBaseActivity(), 12.0F)));
@@ -1366,16 +1366,16 @@ public class AEVideoShelfEditFragment
     {
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new Dialog((Context)localObject, 2131756189);
+        this.mLoadingDialog = new Dialog((Context)localObject, 2131953338);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559561);
+        this.mLoadingDialog.setContentView(2131625585);
       }
-      localObject = (TextView)this.mLoadingDialog.findViewById(2131372646);
+      localObject = (TextView)this.mLoadingDialog.findViewById(2131440191);
       if (!TextUtils.isEmpty(paramString)) {
         ((TextView)localObject).setText(paramString);
       } else {
-        ((TextView)localObject).setText(2131694879);
+        ((TextView)localObject).setText(2131892582);
       }
       this.mLoadingDialog.show();
     }
@@ -1428,8 +1428,8 @@ public class AEVideoShelfEditFragment
     if (localProgressPieDrawable == null) {
       return;
     }
-    localProgressPieDrawable.a();
-    this.ppd.c(paramInt);
+    localProgressPieDrawable.b();
+    this.ppd.d(paramInt);
     this.ppd.b(true);
     this.ppd.d(false);
     localProgressPieDrawable = this.ppd;
@@ -1483,18 +1483,18 @@ public class AEVideoShelfEditFragment
       return;
     }
     int i = paramView.getId();
-    if (i == 2064121970)
+    if (i == 2063990900)
     {
       onBackPressed();
       return;
     }
-    if (i == 2064121996)
+    if (i == 2063990925)
     {
       goNext();
-      AEBaseDataReporter.a().n();
+      AEBaseDataReporter.a().o();
       return;
     }
-    if (i == 2064122133) {
+    if (i == 2063991023) {
       onFirstImageViewClick(paramView);
     }
   }
@@ -1521,7 +1521,7 @@ public class AEVideoShelfEditFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318497, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056364, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -1741,12 +1741,12 @@ public class AEVideoShelfEditFragment
   
   public void showDownloadDialog()
   {
-    showLoading(getResources().getString(2064515247));
+    showLoading(getResources().getString(2064187594));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoShelfEditFragment
  * JD-Core Version:    0.7.0.1
  */

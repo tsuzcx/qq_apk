@@ -45,7 +45,7 @@ public class AIONavigationItem
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramActivity.getClass() != SingleTaskQQBrowser.class) && (a(paramString)))
     {
-      if (AuthorizeConfig.a().d("aio_authorize_config", paramString))
+      if (AuthorizeConfig.a().f("aio_authorize_config", paramString))
       {
         if (QLog.isColorLevel())
         {
@@ -75,7 +75,7 @@ public class AIONavigationItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.navigate.AIONavigationItem
  * JD-Core Version:    0.7.0.1
  */

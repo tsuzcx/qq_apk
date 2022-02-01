@@ -22,8 +22,8 @@ import java.io.File;
 public class PayLikeFloatViewBuilder
   extends BaseFloatViewBuilder
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+  private static boolean f = false;
+  private Drawable[] e;
   
   public PayLikeFloatViewBuilder(Context paramContext, int paramInt, HeartAnimator paramHeartAnimator)
   {
@@ -48,15 +48,15 @@ public class PayLikeFloatViewBuilder
       return paramContext;
     }
     catch (OutOfMemoryError paramContext) {}
-    if (!jdField_a_of_type_Boolean)
+    if (!f)
     {
-      jdField_a_of_type_Boolean = true;
+      f = true;
       paramContext = new Bundle();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(".tmp");
       localObject2 = new DownloadTask("https://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(((StringBuilder)localObject2).toString()));
-      ((DownloadTask)localObject2).b = 2;
+      ((DownloadTask)localObject2).e = 2;
       ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload((DownloadTask)localObject2, new PayLikeFloatViewBuilder.1((String)localObject1), paramContext);
     }
     return null;
@@ -66,10 +66,10 @@ public class PayLikeFloatViewBuilder
   public Bitmap a()
   {
     super.a();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+    if (this.a == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int);
+      this.a = BitmapFactory.decodeResource(this.c.getResources(), this.b);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -77,34 +77,34 @@ public class PayLikeFloatViewBuilder
       break label33;
     }
     return null;
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.a;
   }
   
   public Drawable[] a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable == null)
+    if (this.e == null)
     {
-      paramQQAppInterface = a(this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface);
+      paramQQAppInterface = a(this.c, paramQQAppInterface);
       if (paramQQAppInterface == null) {
         return null;
       }
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[20];
+      this.e = new Drawable[20];
       int j = paramQQAppInterface.getWidth();
       int k = paramQQAppInterface.getHeight() / 20;
       int i = 0;
       while (i < 20)
       {
         Bitmap localBitmap = Bitmap.createBitmap(paramQQAppInterface, 0, i * k, j, k);
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap);
+        this.e[i] = new BitmapDrawable(this.c.getResources(), localBitmap);
         i += 1;
       }
     }
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class TempMsgManager$5
   
   public void run()
   {
-    QQToast.a(TempMsgManager.a(this.this$0).getApp(), this.a, 1).a();
+    QQToast.makeText(TempMsgManager.a(this.this$0).getApp(), this.a, 1).show();
   }
 }
 

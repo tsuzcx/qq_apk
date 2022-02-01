@@ -10,12 +10,12 @@ class AccountDetailGroupListContainer$15
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.f = false;
+    this.a.y = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.15
  * JD-Core Version:    0.7.0.1
  */

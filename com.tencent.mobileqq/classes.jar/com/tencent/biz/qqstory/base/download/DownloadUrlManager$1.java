@@ -10,13 +10,13 @@ class DownloadUrlManager$1
   
   public void a(boolean paramBoolean)
   {
-    DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean);
+    DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = this.d.a(this.a, this.b, paramBoolean);
     ThreadManager.getUIHandler().post(new DownloadUrlManager.1.1(this, localDownloadUrlQueryResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.1
  * JD-Core Version:    0.7.0.1
  */

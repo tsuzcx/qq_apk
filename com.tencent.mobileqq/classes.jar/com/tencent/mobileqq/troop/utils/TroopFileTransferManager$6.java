@@ -24,19 +24,19 @@ class TroopFileTransferManager$6
         ((StringBuilder)localObject).append(str);
         localObject = ((StringBuilder)localObject).toString();
       }
-      localObject = this.a.a().a((String)localObject);
+      localObject = this.a.h().a((String)localObject);
       if (localObject != null)
       {
-        ((TroopFileInfo)localObject).a = paramFileInfo.uint32_bus_id.get();
-        ((TroopFileInfo)localObject).c = paramFileInfo.uint32_dead_time.get();
+        ((TroopFileInfo)localObject).f = paramFileInfo.uint32_bus_id.get();
+        ((TroopFileInfo)localObject).j = paramFileInfo.uint32_dead_time.get();
       }
-      this.a.a().d((TroopFileInfo)localObject);
+      this.a.h().e((TroopFileInfo)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.6
  * JD-Core Version:    0.7.0.1
  */

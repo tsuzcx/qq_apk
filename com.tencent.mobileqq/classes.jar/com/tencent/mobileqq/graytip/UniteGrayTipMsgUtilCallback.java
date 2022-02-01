@@ -14,14 +14,14 @@ public class UniteGrayTipMsgUtilCallback
     {
       localObject = ((BaseActivity)localObject).getChatFragment();
       if (localObject != null) {
-        ((ChatFragment)localObject).a().e(131072);
+        ((ChatFragment)localObject).k().j(131072);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipMsgUtilCallback
  * JD-Core Version:    0.7.0.1
  */

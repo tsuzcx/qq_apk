@@ -7,7 +7,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Visibility;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "vi", "", "getVi", "()Z", "setVi", "(Z)V", "doFrameUpdate", "", "animTime", "", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Visibility;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "vi", "", "getVi", "()Z", "setVi", "(Z)V", "doFrameUpdate", "", "animTime", "", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Visibility
   extends BaseAnim
@@ -32,8 +32,6 @@ public final class Visibility
     }
   }
   
-  public void end() {}
-  
   public final boolean getVi()
   {
     return this.vi;
@@ -52,7 +50,7 @@ public final class Visibility
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.anim.Visibility
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class CommodityListView$CommodityAdapter$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Int < CommodityListView.CommodityAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter).size())
+    if (this.a < CommodityListView.CommodityAdapter.a(this.b).size())
     {
-      CommodityListView.CommodityAdapter.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter).remove(this.jdField_a_of_type_Int);
-      ((ArrayList)this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.a.a()).remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.notifyDataSetChanged();
-      if (CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.a) != null) {
-        CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.a).a(CommodityListView.CommodityAdapter.c(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter).size());
+      CommodityListView.CommodityAdapter.b(this.b).remove(this.a);
+      ((ArrayList)this.b.a.getData()).remove(this.a);
+      this.b.notifyDataSetChanged();
+      if (CommodityListView.c(this.b.a) != null) {
+        CommodityListView.c(this.b.a).a(CommodityListView.CommodityAdapter.c(this.b).size());
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -26,7 +26,7 @@ class CommodityListView$CommodityAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityListView.CommodityAdapter.1
  * JD-Core Version:    0.7.0.1
  */

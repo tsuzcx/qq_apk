@@ -20,6 +20,8 @@ import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
+import com.tencent.mobileqq.qqguildsdk.data.GuildUserAvatar;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.config.IQWalletConfigService;
 import com.tencent.mobileqq.qwallet.config.IQWalletConfigService.ConfigUpdateListener;
@@ -28,6 +30,7 @@ import com.tencent.mobileqq.qwallet.hb.aio.elem.RedPacketInfoBase;
 import com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService;
 import com.tencent.mobileqq.qwallet.hb.emoji.ConvertParam;
 import com.tencent.mobileqq.qwallet.hb.emoji.impl.EmojiGifHelper;
+import com.tencent.mobileqq.qwallet.hb.grap.QWalletGuildObserver;
 import com.tencent.mobileqq.qwallet.preload.DownloadParam;
 import com.tencent.mobileqq.qwallet.preload.IPreloadService;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
@@ -39,6 +42,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import eipc.EIPCResult;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -50,8 +54,8 @@ import org.json.JSONObject;
 public class QWalletIPCModule
   extends QIPCModule
 {
-  private static QWalletIPCModule jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCModule;
-  private Map<Integer, IQWalletConfigService.ConfigUpdateListener> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static QWalletIPCModule a;
+  private Map<Integer, IQWalletConfigService.ConfigUpdateListener> b = new HashMap();
   
   private QWalletIPCModule()
   {
@@ -60,83 +64,16 @@ public class QWalletIPCModule
   
   public static QWalletIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCModule == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCModule == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCModule = new QWalletIPCModule();
+        if (a == null) {
+          a = new QWalletIPCModule();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQwalletIpcImplQWalletIPCModule;
-  }
-  
-  private void a(Bundle paramBundle, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
-  {
-    int i = paramBundle.getInt("channel");
-    Object localObject1 = paramBundle.getString("uin");
-    Object localObject2 = paramBundle.getString("group_id");
-    Object localObject3 = (IFriendsManager)paramBaseQQAppInterface.getRuntimeService(IFriendsManager.class);
-    if (((i != 5) && ((i & 0x10) == 0)) || ((((IFriendsManager)localObject3).isFriend((String)localObject1)) && (!paramBaseQQAppInterface.getCurrentAccountUin().equals(localObject1))))
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        paramBundle = null;
-        localObject3 = ((IFriendsManager)localObject3).findFriendEntityByUin((String)localObject1);
-        localObject2 = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).TroopManager$getTroopMember(paramBaseQQAppInterface, (String)localObject2, (String)localObject1);
-        if ((localObject3 != null) && (!TextUtils.isEmpty(((Friends)localObject3).remark))) {
-          paramBundle = ((Friends)localObject3).remark;
-        } else if ((localObject2 != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject2).troopnick))) {
-          paramBundle = ((TroopMemberInfo)localObject2).troopnick;
-        } else if (localObject3 != null) {
-          paramBundle = ((Friends)localObject3).name;
-        } else if (localObject2 != null) {
-          if (((String)localObject1).equals(paramBaseQQAppInterface.getCurrentAccountUin())) {
-            paramBundle = ((TroopMemberInfo)localObject2).friendnick;
-          } else if (!TextUtils.isEmpty(((TroopMemberInfo)localObject2).autoremark)) {
-            paramBundle = ((TroopMemberInfo)localObject2).autoremark;
-          } else {
-            paramBundle = ((TroopMemberInfo)localObject2).friendnick;
-          }
-        }
-        paramBaseQQAppInterface = paramBundle;
-        if (TextUtils.isEmpty(paramBundle)) {
-          paramBaseQQAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName((String)localObject1, true);
-        }
-      }
-      else
-      {
-        paramBaseQQAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName((String)localObject1, true);
-      }
-    }
-    else
-    {
-      paramBaseQQAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getDateNickName((String)localObject1);
-      if (TextUtils.isEmpty(paramBaseQQAppInterface)) {
-        paramBaseQQAppInterface = (BaseQQAppInterface)localObject1;
-      }
-    }
-    paramBundle = new EIPCResult();
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("user_nick", paramBaseQQAppInterface);
-    paramBundle.data = ((Bundle)localObject1);
-    callbackResult(paramInt, paramBundle);
-  }
-  
-  private void a(BaseQQAppInterface paramBaseQQAppInterface, Bundle paramBundle)
-  {
-    if ((paramBaseQQAppInterface != null) && (paramBundle != null))
-    {
-      paramBundle = (HashMap)paramBundle.getSerializable("params_value");
-      if (paramBundle != null)
-      {
-        paramBaseQQAppInterface = (IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
-        if (paramBaseQQAppInterface != null) {
-          paramBaseQQAppInterface.setConfigSession(paramBundle);
-        }
-      }
-    }
+    return a;
   }
   
   private EIPCResult b(BaseQQAppInterface paramBaseQQAppInterface, Bundle paramBundle, int paramInt)
@@ -157,10 +94,10 @@ public class QWalletIPCModule
     case 16: 
       localObject1 = paramBundle.getString("key");
       paramInt = paramBundle.getInt("code");
-      paramBundle = this.jdField_a_of_type_JavaUtilMap;
+      paramBundle = this.b;
       if ((paramBundle != null) && (paramBundle.containsKey(Integer.valueOf(paramInt))))
       {
-        paramBundle = (IQWalletConfigService.ConfigUpdateListener)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        paramBundle = (IQWalletConfigService.ConfigUpdateListener)this.b.get(Integer.valueOf(paramInt));
         paramBaseQQAppInterface = (IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
         if (paramBaseQQAppInterface != null) {
           paramBaseQQAppInterface.unRegisterUpdateListener((String)localObject1, paramBundle);
@@ -174,9 +111,9 @@ public class QWalletIPCModule
       paramBaseQQAppInterface = (IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
       if (paramBaseQQAppInterface != null)
       {
-        localObject2 = this.jdField_a_of_type_JavaUtilMap;
+        localObject2 = this.b;
         if ((localObject2 != null) && (!((Map)localObject2).containsKey(Integer.valueOf(paramInt)))) {
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramBundle);
+          this.b.put(Integer.valueOf(paramInt), paramBundle);
         }
         paramBaseQQAppInterface.registerUpdateListener((String)localObject1, paramBundle);
       }
@@ -272,6 +209,73 @@ public class QWalletIPCModule
     return EIPCResult.createSuccessResult(paramBundle);
   }
   
+  private void b(Bundle paramBundle, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    int i = paramBundle.getInt("channel");
+    Object localObject1 = paramBundle.getString("uin");
+    Object localObject2 = paramBundle.getString("group_id");
+    Object localObject3 = (IFriendsManager)paramBaseQQAppInterface.getRuntimeService(IFriendsManager.class);
+    if (((i != 5) && ((i & 0x10) == 0)) || ((((IFriendsManager)localObject3).isFriend((String)localObject1)) && (!paramBaseQQAppInterface.getCurrentAccountUin().equals(localObject1))))
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        paramBundle = null;
+        localObject3 = ((IFriendsManager)localObject3).findFriendEntityByUin((String)localObject1);
+        localObject2 = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).TroopManager$getTroopMember(paramBaseQQAppInterface, (String)localObject2, (String)localObject1);
+        if ((localObject3 != null) && (!TextUtils.isEmpty(((Friends)localObject3).remark))) {
+          paramBundle = ((Friends)localObject3).remark;
+        } else if ((localObject2 != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject2).troopnick))) {
+          paramBundle = ((TroopMemberInfo)localObject2).troopnick;
+        } else if (localObject3 != null) {
+          paramBundle = ((Friends)localObject3).name;
+        } else if (localObject2 != null) {
+          if (((String)localObject1).equals(paramBaseQQAppInterface.getCurrentAccountUin())) {
+            paramBundle = ((TroopMemberInfo)localObject2).friendnick;
+          } else if (!TextUtils.isEmpty(((TroopMemberInfo)localObject2).autoremark)) {
+            paramBundle = ((TroopMemberInfo)localObject2).autoremark;
+          } else {
+            paramBundle = ((TroopMemberInfo)localObject2).friendnick;
+          }
+        }
+        paramBaseQQAppInterface = paramBundle;
+        if (TextUtils.isEmpty(paramBundle)) {
+          paramBaseQQAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName((String)localObject1, true);
+        }
+      }
+      else
+      {
+        paramBaseQQAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName((String)localObject1, true);
+      }
+    }
+    else
+    {
+      paramBaseQQAppInterface = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getDateNickName((String)localObject1);
+      if (TextUtils.isEmpty(paramBaseQQAppInterface)) {
+        paramBaseQQAppInterface = (BaseQQAppInterface)localObject1;
+      }
+    }
+    paramBundle = new EIPCResult();
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("user_nick", paramBaseQQAppInterface);
+    paramBundle.data = ((Bundle)localObject1);
+    callbackResult(paramInt, paramBundle);
+  }
+  
+  private void b(BaseQQAppInterface paramBaseQQAppInterface, Bundle paramBundle)
+  {
+    if ((paramBaseQQAppInterface != null) && (paramBundle != null))
+    {
+      paramBundle = (HashMap)paramBundle.getSerializable("params_value");
+      if (paramBundle != null)
+      {
+        paramBaseQQAppInterface = (IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
+        if (paramBaseQQAppInterface != null) {
+          paramBaseQQAppInterface.setConfigSession(paramBundle);
+        }
+      }
+    }
+  }
+  
   private EIPCResult c(BaseQQAppInterface paramBaseQQAppInterface, Bundle paramBundle, int paramInt)
   {
     if (paramBundle == null) {
@@ -309,6 +313,44 @@ public class QWalletIPCModule
     paramBundle = (DownloadParam)paramBundle.getSerializable("download_params");
     ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, "")).getResPath(paramBundle, new QWalletIPCModule.7(this, paramInt));
     return null;
+  }
+  
+  private void c(Bundle paramBundle, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    Object localObject = paramBundle.getString("tinyId");
+    paramBundle = paramBundle.getString("guildId");
+    IGPSService localIGPSService = (IGPSService)paramBaseQQAppInterface.getRuntimeService(IGPSService.class, "");
+    paramBaseQQAppInterface = localIGPSService.getGuildMemberName(paramBundle, (String)localObject);
+    paramBundle = paramBaseQQAppInterface;
+    if (TextUtils.isEmpty(paramBaseQQAppInterface)) {
+      paramBundle = localIGPSService.getGuildUserNick((String)localObject);
+    }
+    paramBaseQQAppInterface = paramBundle;
+    if (TextUtils.isEmpty(paramBundle)) {
+      paramBaseQQAppInterface = (BaseQQAppInterface)localObject;
+    }
+    paramBundle = new EIPCResult();
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("guildNickName", paramBaseQQAppInterface);
+    paramBundle.data = ((Bundle)localObject);
+    callbackResult(paramInt, paramBundle);
+  }
+  
+  private void d(Bundle paramBundle, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    paramBundle = paramBundle.getString("tinyId");
+    paramBaseQQAppInterface = (IGPSService)paramBaseQQAppInterface.getRuntimeService(IGPSService.class, "");
+    paramBundle = paramBaseQQAppInterface.getFullAvatarUrl(paramBaseQQAppInterface.getGuildUsersAvatarUrl(paramBundle), 0);
+    paramBaseQQAppInterface = new EIPCResult();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("guildAvatarUrl", paramBundle);
+    paramBaseQQAppInterface.data = localBundle;
+    callbackResult(paramInt, paramBaseQQAppInterface);
+  }
+  
+  private void e(Bundle paramBundle, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    a(paramBundle.getStringArrayList("tinyIds"), paramBaseQQAppInterface, paramInt);
   }
   
   public Bundle a(BaseQQAppInterface paramBaseQQAppInterface, Bundle paramBundle)
@@ -407,6 +449,88 @@ public class QWalletIPCModule
     return null;
   }
   
+  public void a(Bundle paramBundle, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    a(paramBundle.getStringArrayList("tinyIds"), paramBundle.getString("guildId"), paramBaseQQAppInterface, paramInt);
+  }
+  
+  public void a(ArrayList<String> paramArrayList, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    if (paramArrayList == null) {
+      return;
+    }
+    IGPSService localIGPSService = (IGPSService)paramBaseQQAppInterface.getRuntimeService(IGPSService.class, "");
+    Map localMap = localIGPSService.getGuildUsersAvatarUrls(new ArrayList(paramArrayList));
+    if ((localMap != null) && (localMap.size() != 0))
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        paramBaseQQAppInterface = (GuildUserAvatar)localMap.get(paramArrayList.get(i));
+        if (paramBaseQQAppInterface != null)
+        {
+          paramBaseQQAppInterface = localIGPSService.getFullAvatarUrl(paramBaseQQAppInterface, 0);
+          if (paramBaseQQAppInterface == null) {
+            paramBaseQQAppInterface = "";
+          }
+          localArrayList.add(paramBaseQQAppInterface);
+        }
+        else
+        {
+          localArrayList.add("");
+        }
+        i += 1;
+      }
+      paramArrayList = new EIPCResult();
+      paramBaseQQAppInterface = new Bundle();
+      paramBaseQQAppInterface.putStringArrayList("guildAvatarUrls", localArrayList);
+      paramArrayList.data = paramBaseQQAppInterface;
+      callbackResult(paramInt, paramArrayList);
+    }
+  }
+  
+  public void a(ArrayList<String> paramArrayList, String paramString, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    if (paramArrayList != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      Object localObject1 = (IGPSService)paramBaseQQAppInterface.getRuntimeService(IGPSService.class, "");
+      Object localObject2 = new ArrayList(paramArrayList);
+      paramBaseQQAppInterface = ((IGPSService)localObject1).getGuildMemberNames(paramString, (List)localObject2);
+      localObject2 = ((IGPSService)localObject1).getGuildUsersNicks((List)localObject2);
+      if ((paramBaseQQAppInterface != null) && (localObject2 != null) && ((paramBaseQQAppInterface.size() != 0) || (((Map)localObject2).size() != 0)))
+      {
+        localObject1 = new ArrayList();
+        int i = 0;
+        while (i < paramArrayList.size())
+        {
+          paramString = (String)paramBaseQQAppInterface.get(paramArrayList.get(i));
+          if (!TextUtils.isEmpty(paramString))
+          {
+            ((ArrayList)localObject1).add(paramString);
+          }
+          else
+          {
+            paramString = (String)((Map)localObject2).get(paramArrayList.get(i));
+            if (paramString == null) {
+              paramString = "";
+            }
+            ((ArrayList)localObject1).add(paramString);
+          }
+          i += 1;
+        }
+        paramArrayList = new EIPCResult();
+        paramString = new Bundle();
+        paramString.putStringArrayList("guildNickNames", (ArrayList)localObject1);
+        paramArrayList.data = paramString;
+        callbackResult(paramInt, paramArrayList);
+      }
+    }
+  }
+  
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel())
@@ -491,7 +615,7 @@ public class QWalletIPCModule
       }
       if ("setConfigSession".equals(paramString))
       {
-        a((BaseQQAppInterface)localObject2, paramBundle);
+        b((BaseQQAppInterface)localObject2, paramBundle);
         return null;
       }
       if ("getConditionSearchManager".equals(paramString))
@@ -527,29 +651,89 @@ public class QWalletIPCModule
       }
       if ("getUserNick".equals(paramString))
       {
+        b(paramBundle, (BaseQQAppInterface)localObject2, paramInt);
+        return null;
+      }
+      if ("getGuildNick".equals(paramString))
+      {
+        c(paramBundle, (BaseQQAppInterface)localObject2, paramInt);
+        return null;
+      }
+      if ("getGuildNicks".equals(paramString))
+      {
         a(paramBundle, (BaseQQAppInterface)localObject2, paramInt);
         return null;
       }
-      if ("red_packet".equals(paramString)) {
-        return a((BaseQQAppInterface)localObject2, paramBundle, paramInt);
-      }
-      if ("ComIPCUtilsImpl".equals(paramString)) {
-        try
+      if ("getGuildNicksAsync".equals(paramString))
+      {
+        paramString = paramBundle.getStringArrayList("tinyIds");
+        paramBundle = paramBundle.getString("guildId");
+        if ((paramString != null) && (!TextUtils.isEmpty(paramBundle)))
         {
-          paramString = b((BaseQQAppInterface)localObject2, paramBundle, paramInt);
-          return paramString;
-        }
-        catch (Throwable paramString)
-        {
-          if (-1 == paramInt) {
-            return EIPCResult.createExceptionResult(paramString);
-          }
-          callbackResult(paramInt, EIPCResult.createExceptionResult(paramString));
+          QWalletGuildObserver.c().a(paramInt, paramString, paramBundle);
           return null;
         }
       }
-      if ("preloadCommon".equals(paramString)) {
-        return c((BaseQQAppInterface)localObject2, paramBundle, paramInt);
+      else if ("getGuildMemberNicksAsync".equals(paramString))
+      {
+        paramString = paramBundle.getStringArrayList("tinyIds");
+        paramBundle = paramBundle.getString("guildId");
+        if ((paramString != null) && (!TextUtils.isEmpty(paramBundle)))
+        {
+          QWalletGuildObserver.c().b(paramInt, paramString, paramBundle);
+          return null;
+        }
+      }
+      else
+      {
+        if ("getGuildAvatarUrl".equals(paramString))
+        {
+          d(paramBundle, (BaseQQAppInterface)localObject2, paramInt);
+          return null;
+        }
+        if ("getGuildAvatarUrls".equals(paramString))
+        {
+          e(paramBundle, (BaseQQAppInterface)localObject2, paramInt);
+          return null;
+        }
+        if ("getGuildAvatarUrlsAsync".equals(paramString))
+        {
+          paramString = paramBundle.getStringArrayList("tinyIds");
+          if (paramString != null)
+          {
+            QWalletGuildObserver.c().a(paramInt, paramString);
+            return null;
+          }
+        }
+        else
+        {
+          if ("removeAllGuildCallback".equals(paramString))
+          {
+            QWalletGuildObserver.c().d();
+            return null;
+          }
+          if ("red_packet".equals(paramString)) {
+            return a((BaseQQAppInterface)localObject2, paramBundle, paramInt);
+          }
+          if ("ComIPCUtilsImpl".equals(paramString)) {
+            try
+            {
+              paramString = b((BaseQQAppInterface)localObject2, paramBundle, paramInt);
+              return paramString;
+            }
+            catch (Throwable paramString)
+            {
+              if (-1 == paramInt) {
+                return EIPCResult.createExceptionResult(paramString);
+              }
+              callbackResult(paramInt, EIPCResult.createExceptionResult(paramString));
+              return null;
+            }
+          }
+          if ("preloadCommon".equals(paramString)) {
+            return c((BaseQQAppInterface)localObject2, paramBundle, paramInt);
+          }
+        }
       }
     }
     else
@@ -569,7 +753,7 @@ public class QWalletIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -24,20 +24,31 @@ public final class GdtMotiveBrowsingFragment$Companion
     Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
     paramGdtMotiveVideoPageData = new GdtMotiveVideoModel(paramGdtMotiveVideoPageData);
     paramIntent.putExtra("fragment_class", GdtMotiveBrowsingFragment.class.getCanonicalName());
-    paramIntent.putExtra("url", paramGdtMotiveVideoPageData.a().dest_info.landing_page.get());
+    paramIntent.putExtra("url", paramGdtMotiveVideoPageData.b().dest_info.landing_page.get());
     paramIntent.putExtra("isTransparentTitle", true);
-    GdtAd localGdtAd = paramGdtMotiveVideoPageData.a();
+    GdtAd localGdtAd = paramGdtMotiveVideoPageData.d();
     Intrinsics.checkExpressionValueIsNotNull(localGdtAd, "modelData.gdtAd");
     paramIntent.putExtra("GdtWebReportQQ_TRACE_ID", localGdtAd.getTraceId());
-    paramGdtMotiveVideoPageData = paramGdtMotiveVideoPageData.a();
+    localGdtAd = paramGdtMotiveVideoPageData.d();
+    Intrinsics.checkExpressionValueIsNotNull(localGdtAd, "modelData.gdtAd");
+    paramIntent.putExtra("GdtWebReportQQ_ACTION_URL", localGdtAd.getUrlForAction());
+    localGdtAd = paramGdtMotiveVideoPageData.d();
+    Intrinsics.checkExpressionValueIsNotNull(localGdtAd, "modelData.gdtAd");
+    paramIntent.putExtra("GdtWebReportQQ_AD_ID", localGdtAd.getAId());
+    localGdtAd = paramGdtMotiveVideoPageData.d();
+    Intrinsics.checkExpressionValueIsNotNull(localGdtAd, "modelData.gdtAd");
+    paramIntent.putExtra("GdtWebReportQQ_POS_ID", localGdtAd.getPosId());
+    paramIntent.putExtra("GdtWebReportQQ_IS_H5", true);
+    paramGdtMotiveVideoPageData = paramGdtMotiveVideoPageData.d();
     Intrinsics.checkExpressionValueIsNotNull(paramGdtMotiveVideoPageData, "modelData.gdtAd");
-    paramIntent.putExtra("GdtWebReportQQ_ACTION_URL", paramGdtMotiveVideoPageData.getUrlForAction());
+    paramIntent.putExtra("GdtWebReportQQ_CLICK_URL", paramGdtMotiveVideoPageData.getUrlForClick());
+    paramIntent.putExtra("GdtWebReportQQ_CLICK_TIME", System.currentTimeMillis());
     RouteUtils.a((Context)paramActivity, paramIntent, "/base/browser");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingFragment.Companion
  * JD-Core Version:    0.7.0.1
  */

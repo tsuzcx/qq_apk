@@ -66,7 +66,7 @@ public class SingTogetherConfigBean
       while (i < j)
       {
         SingTogetherConfigBean.GeneralTogetherItem localGeneralTogetherItem = arrayOfGeneralTogetherItem[i];
-        if (localGeneralTogetherItem.a == paramInt) {
+        if (localGeneralTogetherItem.c == paramInt) {
           return localGeneralTogetherItem;
         }
         i += 1;
@@ -96,7 +96,7 @@ public class SingTogetherConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SingTogetherConfigBean
  * JD-Core Version:    0.7.0.1
  */

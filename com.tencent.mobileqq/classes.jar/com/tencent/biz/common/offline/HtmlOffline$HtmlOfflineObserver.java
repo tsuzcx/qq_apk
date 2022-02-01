@@ -14,26 +14,26 @@ import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 class HtmlOffline$HtmlOfflineObserver
   implements BusinessObserver
 {
-  private NewIntent jdField_a_of_type_MqqAppNewIntent;
-  private WeakReference<AsyncBack> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<AppRuntime> jdField_b_of_type_MqqUtilWeakReference;
-  private boolean jdField_b_of_type_Boolean;
+  private WeakReference<AsyncBack> a;
+  private WeakReference<AppRuntime> b;
   private boolean c;
+  private boolean d;
+  private boolean e;
+  private NewIntent f;
   
   public HtmlOffline$HtmlOfflineObserver(@NonNull AsyncBack paramAsyncBack, @NonNull AppRuntime paramAppRuntime, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, @NonNull NewIntent paramNewIntent)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAsyncBack);
-    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean3;
-    this.c = paramBoolean2;
-    this.jdField_a_of_type_MqqAppNewIntent = paramNewIntent;
+    this.a = new WeakReference(paramAsyncBack);
+    this.b = new WeakReference(paramAppRuntime);
+    this.c = paramBoolean1;
+    this.d = paramBoolean3;
+    this.e = paramBoolean2;
+    this.f = paramNewIntent;
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    this.f.setObserver(null);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -41,8 +41,8 @@ class HtmlOffline$HtmlOfflineObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("HtmlCheckUpdate", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (AsyncBack)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    AppRuntime localAppRuntime = (AppRuntime)this.jdField_b_of_type_MqqUtilWeakReference.get();
+    Object localObject = (AsyncBack)this.a.get();
+    AppRuntime localAppRuntime = (AppRuntime)this.b.get();
     boolean bool = false;
     if ((localObject == null) || (localAppRuntime == null) || (paramBoolean)) {}
     try
@@ -57,15 +57,15 @@ class HtmlOffline$HtmlOfflineObserver
       if (localObject != null) {
         ((AsyncBack)localObject).loaded(paramBundle, 0);
       }
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.c) {
         break label220;
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.d)
       {
-        HtmlOffline.c(paramBundle, localAppRuntime, this.c, (AsyncBack)localObject);
+        HtmlOffline.c(paramBundle, localAppRuntime, this.e, (AsyncBack)localObject);
         return;
       }
-      HtmlOffline.c(paramBundle, localAppRuntime, this.c, null);
+      HtmlOffline.c(paramBundle, localAppRuntime, this.e, null);
       return;
     }
     catch (Exception paramBundle)
@@ -89,7 +89,7 @@ class HtmlOffline$HtmlOfflineObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.HtmlOfflineObserver
  * JD-Core Version:    0.7.0.1
  */

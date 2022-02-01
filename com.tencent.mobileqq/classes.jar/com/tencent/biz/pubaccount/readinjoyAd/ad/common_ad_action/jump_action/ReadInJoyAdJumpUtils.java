@@ -87,15 +87,15 @@ public class ReadInJoyAdJumpUtils
     {
     case 5: 
     default: 
-      return a(a(paramAdvertisementInfo), paramActivity);
+      return b(c(paramAdvertisementInfo), paramActivity);
     case 7: 
       a(paramActivity, paramAdvertisementInfo);
       return Integer.valueOf(24);
     case 4: 
       boolean bool = false;
-      if (a(paramAdvertisementInfo))
+      if (b(paramAdvertisementInfo))
       {
-        bool = a(paramAdvertisementInfo.mAdvertisementSoftInfo.g, paramActivity);
+        bool = a(paramAdvertisementInfo.mAdvertisementSoftInfo.k, paramActivity);
         paramReadInJoyGdtAdParams = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("jumpScheme result = ");
@@ -103,7 +103,7 @@ public class ReadInJoyAdJumpUtils
         paramReadInJoyGdtAdParams.d("ReadInJoyAdJumpUtils", ((StringBuilder)localObject).toString());
       }
       if (!bool) {
-        return a(a(paramAdvertisementInfo), paramActivity);
+        return b(c(paramAdvertisementInfo), paramActivity);
       }
       return Integer.valueOf(16);
     case 2: 
@@ -114,7 +114,7 @@ public class ReadInJoyAdJumpUtils
     if (paramReadInJoyGdtAdParams == null) {
       localObject = new ReadInJoyGdtAdParams();
     }
-    if (((paramAdvertisementInfo.mAdvertisementExtInfo == null) || (paramAdvertisementInfo.mAdvertisementExtInfo.j == 32)) && (a(paramAdvertisementInfo, paramActivity, (ReadInJoyGdtAdParams)localObject)))
+    if (((paramAdvertisementInfo.mAdvertisementExtInfo == null) || (paramAdvertisementInfo.mAdvertisementExtInfo.o == 32)) && (b(paramAdvertisementInfo, paramActivity, (ReadInJoyGdtAdParams)localObject)))
     {
       paramAdvertisementInfo = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
       paramActivity = new StringBuilder();
@@ -123,28 +123,7 @@ public class ReadInJoyAdJumpUtils
       paramAdvertisementInfo.d("ReadInJoyAdJumpUtils", paramActivity.toString());
       return Integer.valueOf(10);
     }
-    return a(a(paramAdvertisementInfo), paramActivity);
-  }
-  
-  private static Integer a(String paramString, Activity paramActivity)
-  {
-    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("jumpUrl 。url = ");
-    localStringBuilder.append(paramString);
-    localIRIJAdLogService.d("ReadInJoyAdJumpUtils", localStringBuilder.toString());
-    return ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(paramActivity, paramString);
-  }
-  
-  private static String a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentType(paramAdvertisementInfo)) {
-      return a(paramAdvertisementInfo.gameAdComData.p, paramAdvertisementInfo.gameAdComData.q, "");
-    }
-    if (paramAdvertisementInfo.isSoftAd()) {
-      return a(paramAdvertisementInfo.mAdvertisementSoftInfo.f, paramAdvertisementInfo.mAdvertisementSoftInfo.h, "");
-    }
-    return paramAdvertisementInfo.mAdLandingPage;
+    return b(c(paramAdvertisementInfo), paramActivity);
   }
   
   private static String a(String paramString1, String paramString2, String paramString3)
@@ -171,82 +150,6 @@ public class ReadInJoyAdJumpUtils
     ((IRIJAdService)QRoute.api(IRIJAdService.class)).startNativeAdVideoFragment(paramActivity, localBundle);
   }
   
-  private static void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
-  {
-    String str = paramAdvertisementInfo.mAdAppJson;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_ad_json", str);
-    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
-    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
-    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
-    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
-    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
-    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
-    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
-    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
-    localBundle.putLong("param_ad_app_info_video_playposition", paramReadInJoyGdtAdParams.b);
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).closeFloatWindow(paramActivity);
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).startReadInJoyNativeAdAppFragment(paramActivity, localBundle);
-  }
-  
-  private static boolean a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAdvertisementInfo != null)
-    {
-      if (paramAdvertisementInfo.mAdvertisementSoftInfo == null) {
-        return false;
-      }
-      bool1 = bool2;
-      if (TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.h))
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.g)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static boolean a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
-  {
-    int i = a(paramAdvertisementInfo);
-    Object localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("gdtType = ");
-    localStringBuilder.append(i);
-    ((IRIJAdLogService)localObject).d("ReadInJoyAdJumpUtils", localStringBuilder.toString());
-    localObject = paramReadInJoyGdtAdParams;
-    if (paramReadInJoyGdtAdParams == null) {
-      localObject = new ReadInJoyGdtAdParams();
-    }
-    paramReadInJoyGdtAdParams = (GdtHandler.Params)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).obtainGdtParams(paramAdvertisementInfo, paramActivity, localObject);
-    if (i != 2)
-    {
-      if (i != 3)
-      {
-        if (i != 4)
-        {
-          if (i != 5)
-          {
-            if (i != 6) {
-              return false;
-            }
-            a(paramAdvertisementInfo, paramActivity, ((ReadInJoyGdtAdParams)localObject).b);
-            return true;
-          }
-          a(paramAdvertisementInfo, paramActivity, (ReadInJoyGdtAdParams)localObject);
-          return true;
-        }
-        return c(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams, (ReadInJoyGdtAdParams)localObject);
-      }
-      return a(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams, (ReadInJoyGdtAdParams)localObject);
-    }
-    return b(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams, (ReadInJoyGdtAdParams)localObject);
-  }
-  
   private static boolean a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, GdtHandler.Params paramParams, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
   {
     boolean bool = false;
@@ -254,9 +157,9 @@ public class ReadInJoyAdJumpUtils
       return false;
     }
     if ((paramAdvertisementInfo.mChannelID == 0L) || (paramAdvertisementInfo.mChannelID == 2L) || (paramAdvertisementInfo.isCommentAd())) {
-      bool = ReadInJoyAdSwitchUtil.b(paramAdvertisementInfo);
+      bool = ReadInJoyAdSwitchUtil.e(paramAdvertisementInfo);
     }
-    paramParams.f = bool;
+    paramParams.l = bool;
     return a(paramParams, paramActivity, paramAdvertisementInfo);
   }
   
@@ -310,12 +213,109 @@ public class ReadInJoyAdJumpUtils
     return false;
   }
   
+  private static Integer b(String paramString, Activity paramActivity)
+  {
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("jumpUrl 。url = ");
+    localStringBuilder.append(paramString);
+    localIRIJAdLogService.d("ReadInJoyAdJumpUtils", localStringBuilder.toString());
+    return ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(paramActivity, paramString);
+  }
+  
+  private static boolean b(AdvertisementInfo paramAdvertisementInfo)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAdvertisementInfo != null)
+    {
+      if (paramAdvertisementInfo.mAdvertisementSoftInfo == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.l))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.k)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private static boolean b(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
+  {
+    int i = a(paramAdvertisementInfo);
+    Object localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gdtType = ");
+    localStringBuilder.append(i);
+    ((IRIJAdLogService)localObject).d("ReadInJoyAdJumpUtils", localStringBuilder.toString());
+    localObject = paramReadInJoyGdtAdParams;
+    if (paramReadInJoyGdtAdParams == null) {
+      localObject = new ReadInJoyGdtAdParams();
+    }
+    paramReadInJoyGdtAdParams = (GdtHandler.Params)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).obtainGdtParams(paramAdvertisementInfo, paramActivity, localObject);
+    if (i != 2)
+    {
+      if (i != 3)
+      {
+        if (i != 4)
+        {
+          if (i != 5)
+          {
+            if (i != 6) {
+              return false;
+            }
+            a(paramAdvertisementInfo, paramActivity, ((ReadInJoyGdtAdParams)localObject).f);
+            return true;
+          }
+          c(paramAdvertisementInfo, paramActivity, (ReadInJoyGdtAdParams)localObject);
+          return true;
+        }
+        return c(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams, (ReadInJoyGdtAdParams)localObject);
+      }
+      return a(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams, (ReadInJoyGdtAdParams)localObject);
+    }
+    return b(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams, (ReadInJoyGdtAdParams)localObject);
+  }
+  
   private static boolean b(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, GdtHandler.Params paramParams, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
   {
     if (paramParams == null) {
       return false;
     }
     return a(paramParams, paramActivity, paramAdvertisementInfo);
+  }
+  
+  private static String c(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentType(paramAdvertisementInfo)) {
+      return a(paramAdvertisementInfo.gameAdComData.q, paramAdvertisementInfo.gameAdComData.r, "");
+    }
+    if (paramAdvertisementInfo.isSoftAd()) {
+      return a(paramAdvertisementInfo.mAdvertisementSoftInfo.j, paramAdvertisementInfo.mAdvertisementSoftInfo.l, "");
+    }
+    return paramAdvertisementInfo.mAdLandingPage;
+  }
+  
+  private static void c(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
+  {
+    String str = paramAdvertisementInfo.mAdAppJson;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("param_ad_json", str);
+    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
+    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
+    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
+    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
+    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
+    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
+    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
+    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
+    localBundle.putLong("param_ad_app_info_video_playposition", paramReadInJoyGdtAdParams.f);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).closeFloatWindow(paramActivity);
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).startReadInJoyNativeAdAppFragment(paramActivity, localBundle);
   }
   
   private static boolean c(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, GdtHandler.Params paramParams, ReadInJoyGdtAdParams paramReadInJoyGdtAdParams)
@@ -370,7 +370,7 @@ public class ReadInJoyAdJumpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.jump_action.ReadInJoyAdJumpUtils
  * JD-Core Version:    0.7.0.1
  */

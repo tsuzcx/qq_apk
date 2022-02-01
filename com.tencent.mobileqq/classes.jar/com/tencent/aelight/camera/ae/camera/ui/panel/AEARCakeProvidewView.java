@@ -16,30 +16,30 @@ import java.util.List;
 public class AEARCakeProvidewView
   extends FrameLayout
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AEARCakeMaterialAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter;
-  private AEARCakePanel.AEARCakePanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener;
+  private RecyclerView a;
+  private View b;
+  private AEARCakeMaterialAdapter c;
+  private AEARCakePanel.AEARCakePanelListener d;
+  private TextView e;
   
   public AEARCakeProvidewView(@NonNull Context paramContext, AEARCakePanel.AEARCakePanelListener paramAEARCakePanelListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener = paramAEARCakePanelListener;
+    this.d = paramAEARCakePanelListener;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2064318465, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122195));
+    this.b = LayoutInflater.from(getContext()).inflate(2064056321, this);
+    this.a = ((RecyclerView)this.b.findViewById(2063991076));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122336));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter = new AEARCakeMaterialAdapter(paramContext, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener);
-    AEARCakeMaterialManager.a().a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new AEARCakeProvidewView.1(this));
+    this.a.setLayoutManager(localLinearLayoutManager);
+    this.e = ((TextView)this.b.findViewById(2063991215));
+    this.c = new AEARCakeMaterialAdapter(paramContext, this.d);
+    AEARCakeMaterialManager.a().a(this.c);
+    this.a.setAdapter(this.c);
+    this.a.addItemDecoration(new AEARCakeProvidewView.1(this));
   }
   
   public void a()
@@ -55,31 +55,31 @@ public class AEARCakeProvidewView
       Object localObject;
       while (i < paramList.size())
       {
-        if (((AEGiftMaterial)paramList.get(i)).a() != null)
+        if (((AEGiftMaterial)paramList.get(i)).c() != null)
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("arcake : categories.get(0).materialList :");
-          ((StringBuilder)localObject).append(((AEGiftMaterial)paramList.get(i)).a().p);
+          ((StringBuilder)localObject).append(((AEGiftMaterial)paramList.get(i)).c().t);
           AEQLog.a("AEARCakeProvidewView", ((StringBuilder)localObject).toString());
         }
         i += 1;
       }
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+      if (this.e != null)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(getContext().getString(2064515289));
+        ((StringBuilder)localObject).append(getContext().getString(2064187639));
         ((StringBuilder)localObject).append(String.valueOf(paramList.size()));
-        ((StringBuilder)localObject).append(getContext().getString(2064515290));
+        ((StringBuilder)localObject).append(getContext().getString(2064187640));
         localObject = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        this.e.setText((CharSequence)localObject);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter.a(paramList, paramInt);
+      this.c.a(paramList, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeProvidewView
  * JD-Core Version:    0.7.0.1
  */

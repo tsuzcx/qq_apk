@@ -10,7 +10,7 @@ class CaptureQmcfSoDownloadFragment$3
   
   public void run()
   {
-    CaptureQmcfSoDownloadFragment.a(this.this$0).setText(this.a);
+    CaptureQmcfSoDownloadFragment.g(this.this$0).setText(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -22,7 +22,7 @@ class CaptureQmcfSoDownloadFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.fragment.CaptureQmcfSoDownloadFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ class ExpandSearchBarView$3
       return;
     }
     float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = (int)(-ExpandSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandSearchBarView) * f);
-    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
+    int i = (int)(-ExpandSearchBarView.a(this.c) * f);
+    paramValueAnimator = this.a;
     paramValueAnimator.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    this.b.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.search.ExpandSearchBarView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,10 @@ public class WSLaunchDeltaTimeCalculator
   private long e;
   private long f;
   
-  public long a()
-  {
-    return this.b - this.a;
-  }
-  
   public void a()
   {
     WSLog.e("WSLaunchDeltaTimeCalculator", "[WSLaunchDeltaTimeCalculator.java][onEntranceClick]");
     this.a = SystemClock.uptimeMillis();
-  }
-  
-  public long b()
-  {
-    return this.c - this.b;
   }
   
   public void b()
@@ -35,20 +25,10 @@ public class WSLaunchDeltaTimeCalculator
     this.b = SystemClock.uptimeMillis();
   }
   
-  public long c()
-  {
-    return this.d - this.c;
-  }
-  
   public void c()
   {
     WSLog.e("WSLaunchDeltaTimeCalculator", "[WSLaunchDeltaTimeCalculator.java][onRecommendFeedsRspReceive]");
     this.c = SystemClock.uptimeMillis();
-  }
-  
-  public long d()
-  {
-    return this.e - this.d;
   }
   
   public void d()
@@ -57,20 +37,10 @@ public class WSLaunchDeltaTimeCalculator
     this.d = SystemClock.uptimeMillis();
   }
   
-  public long e()
-  {
-    return this.f - this.e;
-  }
-  
   public void e()
   {
     WSLog.e("WSLaunchDeltaTimeCalculator", "[WSLaunchDeltaTimeCalculator.java][onFirstPageCoverLoadStart]");
     this.e = SystemClock.uptimeMillis();
-  }
-  
-  public long f()
-  {
-    return this.f - this.a;
   }
   
   public void f()
@@ -78,10 +48,40 @@ public class WSLaunchDeltaTimeCalculator
     WSLog.e("WSLaunchDeltaTimeCalculator", "[WSLaunchDeltaTimeCalculator.java][onFirstPageCoverLoadFinish]");
     this.f = SystemClock.uptimeMillis();
   }
+  
+  public long g()
+  {
+    return this.b - this.a;
+  }
+  
+  public long h()
+  {
+    return this.c - this.b;
+  }
+  
+  public long i()
+  {
+    return this.d - this.c;
+  }
+  
+  public long j()
+  {
+    return this.e - this.d;
+  }
+  
+  public long k()
+  {
+    return this.f - this.e;
+  }
+  
+  public long l()
+  {
+    return this.f - this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSLaunchDeltaTimeCalculator
  * JD-Core Version:    0.7.0.1
  */

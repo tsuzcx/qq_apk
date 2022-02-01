@@ -7,108 +7,95 @@ import com.tencent.qphone.base.util.QLog;
 
 public abstract class KeyingBase
 {
-  public static final float[] a;
-  public float a;
-  public CylinderSide a;
-  public FrameBuffer a;
-  public KeyingBase.UserInterface a;
-  public Plane a;
-  public String a;
-  private boolean a;
-  public short[] a;
-  public float b;
-  public String b;
-  public float[] b;
-  public float c;
-  public String c;
+  public static final float[] w = new float[16];
+  public String A = "//抠像算法相关定义片段\n";
+  public String B = "//用户自己定义变量及方法相关片段\n";
+  public String C = "void main() {\n    vec2 position = vTextureCoord;\n";
+  public String D = "    //用户定义片段，用于在获取颜色值前处理, 如纹理坐标改变\n";
+  public String E = "    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);\n    #if defined(TEXTURE_TYPE_OES)\n        gl_FragColor = texture2D(samplerOES, position);\n        gl_FragColor.r = max(0.0, min(gl_FragColor.r, 1.0));\n        gl_FragColor.g = max(0.0, min(gl_FragColor.g, 1.0));\n        gl_FragColor.b = max(0.0, min(gl_FragColor.b, 1.0));\n    #endif\n    #if defined(TEXTURE_TYPE_SAMPLER2D)\n        gl_FragColor = texture2D(sampler2d1, position);\n    #endif\n    #if defined(TEXTURE_TYPE_Y_U_V)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        yuv.y = texture2D(sampler2d2, position).r-0.5;\n        yuv.z = texture2D(sampler2d3, position).r-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;\n        gl_FragColor.a = 1.0;\n    #endif\n    #if defined(TEXTURE_TYPE_Y_UV)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        vec2 uv = texture2D(sampler2d2, position).ra;\n        yuv.y = uv.x-0.5;\n        yuv.z = uv.y-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;//yuv->rgb\n        gl_FragColor.a = 1.0;\n    #endif\n";
+  public String F = KeyingUtil.b;
+  public String G = KeyingUtil.c;
+  public String H = KeyingUtil.d;
+  public float[] I;
+  public short[] J;
+  public KeyingBase.UserInterface K;
+  private boolean a = false;
   public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
+  public String e = "precision mediump float;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nuniform mat4 uMVPMatrix;\nvoid main() {\n   gl_Position = uMVPMatrix * aPosition;\n   vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}";
   public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
+  public Plane g;
+  public CylinderSide h;
+  public FrameBuffer i;
   public int j;
-  public String j;
   public int k;
-  public String k;
   public int l;
-  public String l;
   public int m;
-  public int n = -1;
-  public int o = 0;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s = -1;
+  public float t;
+  public float u;
+  public float v;
+  public int x = 0;
+  public String y = KeyingUtil.a;
+  public String z = "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nuniform samplerExternalOES samplerOES;\nuniform sampler2D sampler2d1;\nuniform sampler2D sampler2d2;\nuniform sampler2D sampler2d3;\nuniform vec4 u_screenColor;\nvarying vec2 vTextureCoord;\n";
   
   static
   {
-    jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
+    Matrix.setIdentityM(w, 0);
   }
   
   public KeyingBase(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = KeyingUtil.jdField_a_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nuniform samplerExternalOES samplerOES;\nuniform sampler2D sampler2d1;\nuniform sampler2D sampler2d2;\nuniform sampler2D sampler2d3;\nuniform vec4 u_screenColor;\nvarying vec2 vTextureCoord;\n";
-    this.jdField_e_of_type_JavaLangString = "//抠像算法相关定义片段\n";
-    this.jdField_f_of_type_JavaLangString = "//用户自己定义变量及方法相关片段\n";
-    this.jdField_g_of_type_JavaLangString = "void main() {\n    vec2 position = vTextureCoord;\n";
-    this.jdField_h_of_type_JavaLangString = "    //用户定义片段，用于在获取颜色值前处理, 如纹理坐标改变\n";
-    this.jdField_i_of_type_JavaLangString = "    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);\n    #if defined(TEXTURE_TYPE_OES)\n        gl_FragColor = texture2D(samplerOES, position);\n        gl_FragColor.r = max(0.0, min(gl_FragColor.r, 1.0));\n        gl_FragColor.g = max(0.0, min(gl_FragColor.g, 1.0));\n        gl_FragColor.b = max(0.0, min(gl_FragColor.b, 1.0));\n    #endif\n    #if defined(TEXTURE_TYPE_SAMPLER2D)\n        gl_FragColor = texture2D(sampler2d1, position);\n    #endif\n    #if defined(TEXTURE_TYPE_Y_U_V)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        yuv.y = texture2D(sampler2d2, position).r-0.5;\n        yuv.z = texture2D(sampler2d3, position).r-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;\n        gl_FragColor.a = 1.0;\n    #endif\n    #if defined(TEXTURE_TYPE_Y_UV)\n        vec4 yuv;\n        yuv.x = texture2D(sampler2d1, position).r;\n        vec2 uv = texture2D(sampler2d2, position).ra;\n        yuv.y = uv.x-0.5;\n        yuv.z = uv.y-0.5;\n        yuv.w = 1.0;\n        gl_FragColor.rgb = mat3(1.0, 1.0, 1.0, 0.0, -0.34414, 1.772, 1.402, -0.71414, 0.0) * yuv.rgb;//yuv->rgb\n        gl_FragColor.a = 1.0;\n    #endif\n";
-    this.jdField_j_of_type_JavaLangString = KeyingUtil.jdField_b_of_type_JavaLangString;
-    this.jdField_k_of_type_JavaLangString = KeyingUtil.jdField_c_of_type_JavaLangString;
-    this.jdField_l_of_type_JavaLangString = KeyingUtil.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangString = "precision mediump float;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nuniform mat4 uMVPMatrix;\nvoid main() {\n   gl_Position = uMVPMatrix * aPosition;\n   vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}";
-    this.o = paramInt;
+    this.x = paramInt;
   }
   
   private final int a(KeyingParams paramKeyingParams, boolean paramBoolean)
   {
     a(paramKeyingParams);
-    paramKeyingParams = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase$UserInterface;
+    paramKeyingParams = this.K;
     if (paramKeyingParams != null) {
       paramKeyingParams.a();
     }
-    if (this.n == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingCylinderSide.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    if (this.s == 1) {
+      this.h.a(this.j, this.k);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingPlane.a();
+      this.g.a();
     }
     GLES20.glBindTexture(3553, 0);
     GLES20.glBindFramebuffer(36160, 0);
     KeyingUtil.a("keyingHandleAfter");
     if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentMobileqqArKeyingFrameBuffer.a();
+      return this.i.b();
     }
     return 0;
   }
   
   private final void a(KeyingParams paramKeyingParams, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a(-1, 0.0F, 0.0F, 0.0F);
     }
-    GLES20.glUseProgram(this.jdField_d_of_type_Int);
+    GLES20.glUseProgram(this.d);
     KeyingUtil.a("glUseProgram");
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingFrameBuffer.a(paramInt1, paramInt2);
+      this.i.a(paramInt1, paramInt2);
       GLES20.glViewport(0, 0, paramInt1, paramInt2);
       GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
       GLES20.glClear(16384);
     }
-    if (this.n != 1) {
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingPlane.a(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    if (this.s != 1) {
+      this.g.a(this.j, this.k);
     }
-    GLES20.glUniformMatrix4fv(this.jdField_g_of_type_Int, 1, false, paramArrayOfFloat1, 0);
-    GLES20.glUniformMatrix4fv(this.jdField_h_of_type_Int, 1, false, paramArrayOfFloat2, 0);
-    paramInt1 = this.m;
+    GLES20.glUniformMatrix4fv(this.l, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(this.m, 1, false, paramArrayOfFloat2, 0);
+    paramInt1 = this.r;
     if (paramInt1 != -1) {
-      GLES20.glUniform4f(paramInt1, paramKeyingParams.jdField_a_of_type_Float, paramKeyingParams.jdField_b_of_type_Float, paramKeyingParams.jdField_c_of_type_Float, 1.0F);
+      GLES20.glUniform4f(paramInt1, paramKeyingParams.b, paramKeyingParams.c, paramKeyingParams.d, 1.0F);
     }
     KeyingUtil.a("keyingHandleBefore");
   }
@@ -123,7 +110,7 @@ public abstract class KeyingBase
     if (paramArrayOfInt != null)
     {
       a(paramKeyingParams, paramArrayOfFloat1, paramArrayOfFloat2, paramBoolean, paramInt1, paramInt2);
-      paramInt1 = this.o;
+      paramInt1 = this.x;
       if (paramInt1 != 1)
       {
         if (paramInt1 != 2)
@@ -137,15 +124,15 @@ public abstract class KeyingBase
               GLES20.glTexParameterf(3553, 10241, 9729.0F);
               GLES20.glTexParameterf(3553, 10242, 33071.0F);
               GLES20.glTexParameterf(3553, 10243, 33071.0F);
-              GLES20.glUniform1i(this.jdField_i_of_type_Int, 0);
+              GLES20.glUniform1i(this.n, 0);
               GLES20.glActiveTexture(33985);
               GLES20.glBindTexture(3553, paramArrayOfInt[1]);
               GLES20.glTexParameterf(3553, 10240, 9729.0F);
               GLES20.glTexParameterf(3553, 10241, 9729.0F);
               GLES20.glTexParameterf(3553, 10242, 33071.0F);
               GLES20.glTexParameterf(3553, 10243, 33071.0F);
-              GLES20.glUniform1i(this.jdField_j_of_type_Int, 1);
-              if (this.o == 3) {
+              GLES20.glUniform1i(this.o, 1);
+              if (this.x == 3) {
                 if (paramArrayOfInt.length >= 3)
                 {
                   GLES20.glActiveTexture(33986);
@@ -154,7 +141,7 @@ public abstract class KeyingBase
                   GLES20.glTexParameterf(3553, 10241, 9729.0F);
                   GLES20.glTexParameterf(3553, 10242, 33071.0F);
                   GLES20.glTexParameterf(3553, 10243, 33071.0F);
-                  GLES20.glUniform1i(this.jdField_k_of_type_Int, 2);
+                  GLES20.glUniform1i(this.p, 2);
                 }
                 else
                 {
@@ -176,7 +163,7 @@ public abstract class KeyingBase
           GLES20.glTexParameterf(3553, 10241, 9729.0F);
           GLES20.glTexParameterf(3553, 10242, 33071.0F);
           GLES20.glTexParameterf(3553, 10243, 33071.0F);
-          GLES20.glUniform1i(this.jdField_i_of_type_Int, 0);
+          GLES20.glUniform1i(this.n, 0);
         }
         else
         {
@@ -186,7 +173,7 @@ public abstract class KeyingBase
       else
       {
         if (paramArrayOfInt.length < 1) {
-          break label457;
+          break label458;
         }
         GLES20.glActiveTexture(33984);
         GLES20.glBindTexture(36197, paramArrayOfInt[0]);
@@ -194,31 +181,14 @@ public abstract class KeyingBase
         GLES20.glTexParameterf(36197, 10240, 9729.0F);
         GLES20.glTexParameteri(36197, 10242, 33071);
         GLES20.glTexParameteri(36197, 10243, 33071);
-        GLES20.glUniform1i(this.jdField_l_of_type_Int, 0);
+        GLES20.glUniform1i(this.q, 0);
       }
       KeyingUtil.a("keyingTexture");
       return a(paramKeyingParams, paramBoolean);
-      label457:
+      label458:
       throw new IllegalArgumentException("textureIds.size should >= 1!");
     }
     throw new IllegalArgumentException("textureIds can not be null!");
-  }
-  
-  protected String a()
-  {
-    this.jdField_c_of_type_JavaLangString = KeyingUtil.a(this.o);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_j_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_k_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_l_of_type_JavaLangString);
-    return localStringBuilder.toString();
   }
   
   protected abstract void a();
@@ -226,83 +196,83 @@ public abstract class KeyingBase
   public final void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     long l1 = System.currentTimeMillis();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.e))
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.n = paramInt;
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_b_of_type_Float = paramFloat2;
-      this.jdField_c_of_type_Float = paramFloat3;
-      this.jdField_b_of_type_JavaLangString = a();
+      this.a = true;
+      this.s = paramInt;
+      this.t = paramFloat1;
+      this.u = paramFloat2;
+      this.v = paramFloat3;
+      this.f = b();
       Object localObject;
       if (QLog.isDevelopLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("init. markerType = ");
-        ((StringBuilder)localObject).append(this.n);
+        ((StringBuilder)localObject).append(this.s);
         ((StringBuilder)localObject).append(", markerWidth = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+        ((StringBuilder)localObject).append(this.t);
         ((StringBuilder)localObject).append(", markerHeight = ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Float);
+        ((StringBuilder)localObject).append(this.u);
         ((StringBuilder)localObject).append(", mFragmentShader = \n");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.f);
         QLog.d("KeyingBase", 4, ((StringBuilder)localObject).toString());
       }
-      if (this.n == 1)
+      if (this.s == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArKeyingCylinderSide = new CylinderSide(1.0F, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
+        this.h = new CylinderSide(1.0F, this.t, this.u, this.v);
       }
       else
       {
-        localObject = this.jdField_b_of_type_ArrayOfFloat;
+        localObject = this.I;
         if (localObject != null)
         {
-          short[] arrayOfShort = this.jdField_a_of_type_ArrayOfShort;
+          short[] arrayOfShort = this.J;
           if (arrayOfShort != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqArKeyingPlane = new Plane((float[])localObject, arrayOfShort);
+            this.g = new Plane((float[])localObject, arrayOfShort);
             break label246;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArKeyingPlane = new Plane();
+        this.g = new Plane();
       }
       label246:
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingFrameBuffer = new FrameBuffer();
-      this.jdField_d_of_type_Int = KeyingUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      this.i = new FrameBuffer();
+      this.d = KeyingUtil.a(this.e, this.f);
       KeyingUtil.a("createProgram");
-      paramInt = this.jdField_d_of_type_Int;
+      paramInt = this.d;
       if (paramInt == 0) {
         return;
       }
-      this.jdField_e_of_type_Int = GLES20.glGetAttribLocation(paramInt, "aPosition");
+      this.j = GLES20.glGetAttribLocation(paramInt, "aPosition");
       KeyingUtil.a("glGetAttribLocation aPosition");
-      if (this.jdField_e_of_type_Int != -1)
+      if (this.j != -1)
       {
-        this.jdField_f_of_type_Int = GLES20.glGetAttribLocation(this.jdField_d_of_type_Int, "aTextureCoord");
+        this.k = GLES20.glGetAttribLocation(this.d, "aTextureCoord");
         KeyingUtil.a("glGetAttribLocation aTextureCoord");
-        if (this.jdField_f_of_type_Int != -1)
+        if (this.k != -1)
         {
-          this.jdField_g_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "uMVPMatrix");
+          this.l = GLES20.glGetUniformLocation(this.d, "uMVPMatrix");
           KeyingUtil.a("glGetUniformLocation uMVPMatrix");
-          this.jdField_h_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "uSTMatrix");
+          this.m = GLES20.glGetUniformLocation(this.d, "uSTMatrix");
           KeyingUtil.a("glGetUniformLocation uSTMatrix");
-          this.jdField_l_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "samplerOES");
+          this.q = GLES20.glGetUniformLocation(this.d, "samplerOES");
           KeyingUtil.a("glGetUniformLocation samplerOES");
-          this.jdField_i_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d1");
+          this.n = GLES20.glGetUniformLocation(this.d, "sampler2d1");
           KeyingUtil.a("glGetUniformLocation sampler2d1");
-          this.jdField_j_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d2");
+          this.o = GLES20.glGetUniformLocation(this.d, "sampler2d2");
           KeyingUtil.a("glGetUniformLocation sampler2d2");
-          this.jdField_k_of_type_Int = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "sampler2d3");
+          this.p = GLES20.glGetUniformLocation(this.d, "sampler2d3");
           KeyingUtil.a("glGetUniformLocation sampler2d3");
-          this.m = GLES20.glGetUniformLocation(this.jdField_d_of_type_Int, "u_screenColor");
+          this.r = GLES20.glGetUniformLocation(this.d, "u_screenColor");
           KeyingUtil.a("glGetUniformLocation u_screenColor");
           a();
-          localObject = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase$UserInterface;
+          localObject = this.K;
           if (localObject != null) {
-            ((KeyingBase.UserInterface)localObject).a(this.jdField_d_of_type_Int);
+            ((KeyingBase.UserInterface)localObject).a(this.d);
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(" init need ");
@@ -323,40 +293,57 @@ public abstract class KeyingBase
   public void a(String paramString1, String paramString2, String paramString3, KeyingBase.UserInterface paramUserInterface)
   {
     if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_f_of_type_JavaLangString = paramString1;
+      this.B = paramString1;
     }
     if (!TextUtils.isEmpty(paramString2)) {
-      this.jdField_h_of_type_JavaLangString = paramString2;
+      this.D = paramString2;
     }
     if (!TextUtils.isEmpty(paramString3)) {
-      this.jdField_k_of_type_JavaLangString = paramString3;
+      this.G = paramString3;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase$UserInterface = paramUserInterface;
+    this.K = paramUserInterface;
   }
   
   public void a(float[] paramArrayOfFloat, short[] paramArrayOfShort)
   {
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfShort = paramArrayOfShort;
+    this.I = paramArrayOfFloat;
+    this.J = paramArrayOfShort;
   }
   
-  public void b()
+  protected String b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    this.y = KeyingUtil.a(this.x);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(this.z);
+    localStringBuilder.append(this.A);
+    localStringBuilder.append(this.B);
+    localStringBuilder.append(this.C);
+    localStringBuilder.append(this.D);
+    localStringBuilder.append(this.E);
+    localStringBuilder.append(this.F);
+    localStringBuilder.append(this.G);
+    localStringBuilder.append(this.H);
+    return localStringBuilder.toString();
+  }
+  
+  public void c()
+  {
+    if (!this.a) {
       return;
     }
-    GLES20.glDeleteProgram(this.jdField_d_of_type_Int);
-    FrameBuffer localFrameBuffer = this.jdField_a_of_type_ComTencentMobileqqArKeyingFrameBuffer;
+    GLES20.glDeleteProgram(this.d);
+    FrameBuffer localFrameBuffer = this.i;
     if (localFrameBuffer != null)
     {
       localFrameBuffer.a();
-      this.jdField_a_of_type_ComTencentMobileqqArKeyingFrameBuffer = null;
+      this.i = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.KeyingBase
  * JD-Core Version:    0.7.0.1
  */

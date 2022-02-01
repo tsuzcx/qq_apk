@@ -14,25 +14,20 @@ public class InjectHelper
 {
   @ConfigInject(configPath="Business/qqaddfriend-impl/src/main/resources/Inject_AddFriendBusinessProcessor.yml", version=1)
   public static ArrayList<Class<? extends BaseAddFriendProcessor>> a;
-  private static final ArrayList<BaseAddFriendProcessor> b = new ArrayList();
-  private volatile boolean a;
+  private static final ArrayList<BaseAddFriendProcessor> c = new ArrayList();
+  private volatile boolean b = false;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(KplAddFriendProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ExtendFriendAddFriendProcessor.class);
+    a = new ArrayList();
+    a.add(KplAddFriendProcessor.class);
+    a.add(ExtendFriendAddFriendProcessor.class);
   }
   
-  public InjectHelper()
+  private void b(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void a(AppInterface paramAppInterface)
-  {
-    b.clear();
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    c.clear();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Class)localIterator.next();
@@ -54,24 +49,24 @@ public class InjectHelper
         localObject2 = null;
       }
       if (localObject2 != null) {
-        b.add(localObject2);
+        c.add(localObject2);
       }
     }
   }
   
   public ArrayList<BaseAddFriendProcessor> a(AppInterface paramAppInterface)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      a(paramAppInterface);
-      this.jdField_a_of_type_Boolean = true;
+      b(paramAppInterface);
+      this.b = true;
     }
-    return b;
+    return c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.helper.InjectHelper
  * JD-Core Version:    0.7.0.1
  */

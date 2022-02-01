@@ -19,8 +19,8 @@ public class WebForceHttpsPlugin
   private boolean a(String paramString)
   {
     AuthorizeConfig localAuthorizeConfig = AuthorizeConfig.a();
-    if (localAuthorizeConfig.e(paramString)) {
-      return localAuthorizeConfig.f(paramString) ^ true;
+    if (localAuthorizeConfig.j(paramString)) {
+      return localAuthorizeConfig.k(paramString) ^ true;
     }
     return false;
   }
@@ -32,14 +32,14 @@ public class WebForceHttpsPlugin
   
   protected boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    if (!AuthorizeConfig.a().d()) {
+    if (!AuthorizeConfig.a().h()) {
       return false;
     }
     if (("http".equals(paramString2)) && (a(paramString1)))
     {
       paramString2 = (SwiftBrowserStatistics)getBrowserComponent(-2);
       if (paramString2 != null) {
-        paramString2.z = true;
+        paramString2.aU = true;
       }
       paramString2 = new StringBuilder();
       paramString2.append("https");
@@ -70,7 +70,7 @@ public class WebForceHttpsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebForceHttpsPlugin
  * JD-Core Version:    0.7.0.1
  */

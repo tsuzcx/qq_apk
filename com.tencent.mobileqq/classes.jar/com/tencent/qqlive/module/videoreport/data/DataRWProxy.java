@@ -10,7 +10,7 @@ public class DataRWProxy
     return DataEntityOperator.getContentId(getDataEntity(paramObject, false));
   }
   
-  private static DataEntity getDataEntity(Object paramObject, boolean paramBoolean)
+  public static DataEntity getDataEntity(Object paramObject, boolean paramBoolean)
   {
     DataEntity localDataEntity2 = DataBinder.getDataEntity(paramObject);
     DataEntity localDataEntity1 = localDataEntity2;
@@ -36,6 +36,16 @@ public class DataRWProxy
     return DataEntityOperator.getElementParams(getDataEntity(paramObject, false));
   }
   
+  public static Object getExtendParam(DataEntity paramDataEntity, String paramString)
+  {
+    return DataEntityOperator.getExtendParam(paramDataEntity, paramString);
+  }
+  
+  public static Object getExtendParam(Object paramObject, String paramString)
+  {
+    return getExtendParam(getDataEntity(paramObject, true), paramString);
+  }
+  
   @Nullable
   public static Object getInnerParam(Object paramObject, String paramString)
   {
@@ -50,6 +60,16 @@ public class DataRWProxy
   public static Map<String, ?> getPageParams(Object paramObject)
   {
     return DataEntityOperator.getPageParams(getDataEntity(paramObject, false));
+  }
+  
+  public static void putExtendParam(DataEntity paramDataEntity, String paramString, Object paramObject)
+  {
+    DataEntityOperator.putExtendParam(paramDataEntity, paramString, paramObject);
+  }
+  
+  public static void putExtendParam(Object paramObject1, String paramString, Object paramObject2)
+  {
+    putExtendParam(getDataEntity(paramObject1, true), paramString, paramObject2);
   }
   
   public static void removeAllElementParams(Object paramObject)
@@ -135,7 +155,7 @@ public class DataRWProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataRWProxy
  * JD-Core Version:    0.7.0.1
  */

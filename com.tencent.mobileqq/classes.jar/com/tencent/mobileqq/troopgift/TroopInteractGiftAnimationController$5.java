@@ -11,21 +11,21 @@ class TroopInteractGiftAnimationController$5
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie == null) {
+    if (this.this$0.a == null) {
       return;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a.removeView(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView);
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton != null) {
-      this.this$0.jdField_a_of_type_AndroidViewViewGroup.removeView(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton);
+    this.this$0.a.bG.removeView(this.this$0.b);
+    if (this.this$0.c != null) {
+      this.this$0.d.removeView(this.this$0.c);
     }
     TroopInteractGiftAnimationController localTroopInteractGiftAnimationController = this.this$0;
-    localTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = null;
-    localTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton = null;
+    localTroopInteractGiftAnimationController.b = null;
+    localTroopInteractGiftAnimationController.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.5
  * JD-Core Version:    0.7.0.1
  */

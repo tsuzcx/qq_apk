@@ -17,17 +17,17 @@ class DownloadPicOperator$1
   
   public void run()
   {
-    if ((this.a != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqPicPicReq.a != null) && (this.a.b != null))
+    if ((this.a != null) && (this.this$0.c.l != null) && (this.a.e != null))
     {
-      MessageForPic localMessageForPic = this.this$0.jdField_a_of_type_ComTencentMobileqqPicPicReq.a;
-      File localFile = new File(this.a.b);
+      MessageForPic localMessageForPic = this.this$0.c.l;
+      File localFile = new File(this.a.e);
       if (this.a.a == 0)
       {
-        PicStatisticsManager localPicStatisticsManager = ((PicPreDownloadImpl)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPicPreDownload.class, "")).picStatisticsManager;
+        PicStatisticsManager localPicStatisticsManager = ((PicPreDownloadImpl)this.this$0.e.getRuntimeService(IPicPreDownload.class, "")).picStatisticsManager;
         if (localPicStatisticsManager != null)
         {
           long l = localFile.length();
-          int i = this.a.c;
+          int i = this.a.h;
           if (i != 1) {
             if (i != 65537)
             {
@@ -47,12 +47,12 @@ class DownloadPicOperator$1
       }
     }
     label157:
-    ((PicPreDownloadImpl)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPicPreDownload.class, "")).picPreDownloader.a(this.this$0.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.a);
+    ((PicPreDownloadImpl)this.this$0.e.getRuntimeService(IPicPreDownload.class, "")).picPreDownloader.a(this.this$0.c, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.DownloadPicOperator.1
  * JD-Core Version:    0.7.0.1
  */

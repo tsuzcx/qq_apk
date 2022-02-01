@@ -16,49 +16,76 @@ public class CommonGameFloatWindowLayout
   extends FloatWindowBaseLayout
   implements View.OnClickListener, IGameFloatWindow
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CommonGameFloatWindowLayout.OnFloatWindowClickListener jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout$OnFloatWindowClickListener;
+  View a;
+  ImageView b;
+  CommonGameFloatWindowLayout.OnFloatWindowClickListener c;
   
   public CommonGameFloatWindowLayout(Context paramContext)
   {
     super(paramContext);
-    f();
+    h();
   }
   
-  private void f()
+  private void h()
   {
-    this.b = ((int)getResources().getDimension(2131296610));
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296611));
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558656, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369368));
-    Bitmap localBitmap = AVGameUtil.a("avgame_float_waiting@2x.png");
+    this.f = ((int)getResources().getDimension(2131296912));
+    this.e = ((int)getResources().getDimension(2131296913));
+    this.a = LayoutInflater.from(getContext()).inflate(2131624273, null);
+    this.b = ((ImageView)this.a.findViewById(2131436392));
+    Bitmap localBitmap = AVGameUtil.c("avgame_float_waiting@2x.png");
     if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      this.b.setImageBitmap(localBitmap);
     }
-    addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.b;
+    addView(this.a, new FrameLayout.LayoutParams(this.e, this.f));
+    this.h.width = this.e;
+    this.h.height = this.f;
     setOnClickListener(this);
   }
   
   public int a(FloatWindowParams paramFloatWindowParams)
   {
-    return paramFloatWindowParams.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
+    return paramFloatWindowParams.b - this.e / 2;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.b != null)
     {
-      Bitmap localBitmap = AVGameUtil.a("avgame_float_waiting@2x.png");
+      Bitmap localBitmap = AVGameUtil.c("avgame_float_waiting@2x.png");
       if (localBitmap != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+        this.b.setImageBitmap(localBitmap);
       }
     }
   }
   
-  public boolean a(FloatWindowParams paramFloatWindowParams)
+  public int b(FloatWindowParams paramFloatWindowParams)
+  {
+    return paramFloatWindowParams.c - this.f / 2;
+  }
+  
+  public void b()
+  {
+    if (this.b != null)
+    {
+      Bitmap localBitmap = AVGameUtil.c("avgame_float_playing@2x.png");
+      if (localBitmap != null) {
+        this.b.setImageBitmap(localBitmap);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if (this.b != null)
+    {
+      Bitmap localBitmap = AVGameUtil.c("avgame_float_you_play@2x.png");
+      if (localBitmap != null) {
+        this.b.setImageBitmap(localBitmap);
+      }
+    }
+  }
+  
+  public boolean c(FloatWindowParams paramFloatWindowParams)
   {
     if (paramFloatWindowParams == null) {
       return false;
@@ -67,48 +94,21 @@ public class CommonGameFloatWindowLayout
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateFloatWindow isForeground: ");
-      localStringBuilder.append(paramFloatWindowParams.jdField_a_of_type_Boolean);
+      localStringBuilder.append(paramFloatWindowParams.a);
       QLog.d("FloatWindowBaseLayout", 2, localStringBuilder.toString());
     }
     boolean bool;
-    if (paramFloatWindowParams.jdField_a_of_type_Boolean) {
-      bool = a();
+    if (paramFloatWindowParams.a) {
+      bool = d();
     } else {
-      bool = b();
+      bool = f();
     }
     return bool ^ true;
   }
   
-  public int b(FloatWindowParams paramFloatWindowParams)
-  {
-    return paramFloatWindowParams.b - this.b / 2;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      Bitmap localBitmap = AVGameUtil.a("avgame_float_playing@2x.png");
-      if (localBitmap != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      Bitmap localBitmap = AVGameUtil.a("avgame_float_you_play@2x.png");
-      if (localBitmap != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      }
-    }
-  }
-  
   public void onClick(View paramView)
   {
-    CommonGameFloatWindowLayout.OnFloatWindowClickListener localOnFloatWindowClickListener = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout$OnFloatWindowClickListener;
+    CommonGameFloatWindowLayout.OnFloatWindowClickListener localOnFloatWindowClickListener = this.c;
     if (localOnFloatWindowClickListener != null) {
       localOnFloatWindowClickListener.a();
     }
@@ -117,7 +117,7 @@ public class CommonGameFloatWindowLayout
   
   public void setOnFloatWindowClickListener(CommonGameFloatWindowLayout.OnFloatWindowClickListener paramOnFloatWindowClickListener)
   {
-    this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout$OnFloatWindowClickListener = paramOnFloatWindowClickListener;
+    this.c = paramOnFloatWindowClickListener;
   }
 }
 

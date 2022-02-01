@@ -19,7 +19,7 @@ class TroopSettingActivity$29
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, List<TroopUnreadMsgInfo> paramList, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData == null) {
+    if (this.a.i == null) {
       return;
     }
     if ((paramBoolean1) && (paramList != null))
@@ -31,37 +31,37 @@ class TroopSettingActivity$29
       while (paramInt < paramList.size())
       {
         TroopUnreadMsgInfo localTroopUnreadMsgInfo = (TroopUnreadMsgInfo)paramList.get(paramInt);
-        if ((localTroopUnreadMsgInfo != null) && (Utils.a(localTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin)))
+        if ((localTroopUnreadMsgInfo != null) && (Utils.a(localTroopUnreadMsgInfo.b, this.a.i.troopUin)))
         {
           Object localObject;
-          if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 2L)
+          if (localTroopUnreadMsgInfo.a == 2L)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewPhotoNum = localTroopUnreadMsgInfo.b;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadMsgNum = localTroopUnreadMsgInfo.jdField_a_of_type_Int;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+            this.a.i.nNewPhotoNum = localTroopUnreadMsgInfo.d;
+            this.a.i.nUnreadMsgNum = localTroopUnreadMsgInfo.c;
+            this.a.aD.sendEmptyMessage(4);
             if (paramBoolean2)
             {
               localObject = (IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class);
               TroopSettingActivity localTroopSettingActivity = this.a;
-              ((IChatSettingForTroopApi)localObject).sendBroadcastQunMsgUnreadCount(localTroopSettingActivity, localTroopSettingActivity.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadMsgNum);
+              ((IChatSettingForTroopApi)localObject).sendBroadcastQunMsgUnreadCount(localTroopSettingActivity, localTroopSettingActivity.i.nUnreadMsgNum);
             }
           }
-          else if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1L)
+          else if (localTroopUnreadMsgInfo.a == 1L)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadFileMsgnum = localTroopUnreadMsgInfo.jdField_a_of_type_Int;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewFileMsgNum = localTroopUnreadMsgInfo.b;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+            this.a.i.nUnreadFileMsgnum = localTroopUnreadMsgInfo.c;
+            this.a.i.nNewFileMsgNum = localTroopUnreadMsgInfo.d;
+            this.a.aD.sendEmptyMessage(8);
           }
-          else if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1101236949L)
+          else if (localTroopUnreadMsgInfo.a == 1101236949L)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.mNewTroopNotificationNum = localTroopUnreadMsgInfo.b;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+            this.a.i.mNewTroopNotificationNum = localTroopUnreadMsgInfo.d;
+            this.a.aD.sendEmptyMessage(9);
           }
-          else if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1106664488L)
+          else if (localTroopUnreadMsgInfo.a == 1106664488L)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadFileMsgnum = 1;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewFileMsgNum = localTroopUnreadMsgInfo.b;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+            this.a.i.nUnreadFileMsgnum = 1;
+            this.a.i.nNewFileMsgNum = localTroopUnreadMsgInfo.d;
+            this.a.aD.sendEmptyMessage(8);
           }
           if (QLog.isColorLevel())
           {
@@ -81,18 +81,18 @@ class TroopSettingActivity$29
   protected void b(boolean paramBoolean, String paramString)
   {
     super.b(paramBoolean, paramString);
-    TroopSettingActivity.n(this.a);
+    TroopSettingActivity.q(this.a);
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewFileMsgNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.a).getCurrentAccountUin(), "troop_file_new", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadFileMsgnum = 0;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      this.a.i.nNewFileMsgNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.a).getCurrentAccountUin(), "troop_file_new", this.a.i.troopUin);
+      this.a.i.nUnreadFileMsgnum = 0;
+      this.a.aD.sendEmptyMessage(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.29
  * JD-Core Version:    0.7.0.1
  */

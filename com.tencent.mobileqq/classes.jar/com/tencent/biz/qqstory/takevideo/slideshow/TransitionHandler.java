@@ -14,8 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TransitionHandler
   extends BusinessHandler
 {
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, LocalMediaInfo> a = new ConcurrentHashMap();
+  private MediaFormat b;
   
   public TransitionHandler(AppInterface paramAppInterface)
   {
@@ -24,36 +24,20 @@ public class TransitionHandler
   
   public MediaFormat a()
   {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
+    return this.b;
   }
   
   public LocalMediaInfo a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      return (LocalMediaInfo)this.a.get(paramString);
     }
     return null;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
-    }
-  }
-  
   public void a(MediaFormat paramMediaFormat)
   {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
+    this.b = paramMediaFormat;
   }
   
   public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
@@ -65,12 +49,28 @@ public class TransitionHandler
       localStringBuilder.append(paramString);
       QLog.d("SlideShowProcessor", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
+    this.a.put(paramString, paramLocalMediaInfo);
   }
   
-  public boolean a(String paramString)
+  public void b()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    this.b = null;
+    this.a.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
+    }
+  }
+  
+  public boolean b(String paramString)
+  {
+    return this.a.containsKey(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.remove(paramString);
+    }
   }
   
   protected Class<? extends BusinessObserver> observerClass()

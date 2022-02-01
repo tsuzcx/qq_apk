@@ -21,9 +21,9 @@ public class GetSig
   {
     ToServiceMsg localToServiceMsg = this.mAutomator.createToServiceMsg("TransService.ReqGetSign");
     localToServiceMsg.extraData.putInt("ssover", 1);
-    localToServiceMsg.extraData.putInt("app_id", AppSetting.a());
+    localToServiceMsg.extraData.putInt("app_id", AppSetting.d());
     localToServiceMsg.extraData.putByte("a2type", (byte)4);
-    localToServiceMsg.extraData.putByteArray("enkey", this.mAutomator.a.getUinSign());
+    localToServiceMsg.extraData.putByteArray("enkey", this.mAutomator.k.getUinSign());
     this.mAutomator.send(localToServiceMsg);
   }
   
@@ -32,7 +32,7 @@ public class GetSig
     if (this.a == null)
     {
       this.a = new GetSig.MyMessageObserver(this, null);
-      this.mAutomator.a.addDefaultObservers(this.a);
+      this.mAutomator.k.addDefaultObservers(this.a);
     }
     a();
     return 2;
@@ -40,8 +40,8 @@ public class GetSig
   
   public void onCreate()
   {
-    ((ShieldListHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.SHIELD_LIST_HANDLER)).a();
-    ReportController.a(this.mAutomator.a, true);
+    ((ShieldListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.SHIELD_LIST_HANDLER)).a();
+    ReportController.a(this.mAutomator.k, true);
     QlinkReliableReport.a();
   }
   
@@ -49,14 +49,14 @@ public class GetSig
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSig
  * JD-Core Version:    0.7.0.1
  */

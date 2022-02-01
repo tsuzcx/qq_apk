@@ -23,7 +23,7 @@ class MiniCardManager$1
   {
     if (paramInt != 0)
     {
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardIGetMiniCardCallback;
+      paramArrayOfByte = this.a;
       if (paramArrayOfByte != null) {
         paramArrayOfByte.a(paramInt, null, "Request error.");
       }
@@ -40,17 +40,17 @@ class MiniCardManager$1
       ((StringBuilder)localObject).append(", retCode: ");
       ((StringBuilder)localObject).append(paramBundle.ret_code.get());
       QLog.d("MiniCardManager", 1, ((StringBuilder)localObject).toString());
-      paramBundle = MiniCardManager.a();
+      paramBundle = MiniCardManager.b();
       int i = 0;
       try
       {
         while (i < paramArrayOfByte.size())
         {
           localObject = (NowSummaryCard.MiniCard)paramArrayOfByte.get(i);
-          MiniCardManager.a().put(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), localObject);
+          MiniCardManager.b().put(String.valueOf(this.b.get(i)), localObject);
           i += 1;
         }
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardIGetMiniCardCallback;
+        paramBundle = this.a;
         if (paramBundle != null) {
           paramBundle.a(paramInt, paramArrayOfByte, "");
         }
@@ -61,7 +61,7 @@ class MiniCardManager$1
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardIGetMiniCardCallback;
+      paramBundle = this.a;
       if (paramBundle != null)
       {
         localObject = new StringBuilder();
@@ -78,7 +78,7 @@ class MiniCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.MiniCardManager.1
  * JD-Core Version:    0.7.0.1
  */

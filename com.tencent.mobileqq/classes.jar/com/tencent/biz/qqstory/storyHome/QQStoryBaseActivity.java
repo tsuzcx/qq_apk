@@ -110,11 +110,11 @@ public class QQStoryBaseActivity
       if (!TextUtils.isEmpty(paramIntent))
       {
         localObject = (QQStoryManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QQSTORY_MANAGER);
-        SoftReference localSoftReference = (SoftReference)((QQStoryManager)localObject).a.get(paramIntent);
+        SoftReference localSoftReference = (SoftReference)((QQStoryManager)localObject).k.get(paramIntent);
         if ((localSoftReference != null) && (localSoftReference.get() != null))
         {
           this.mOriginViewBitmap = ((Bitmap)localSoftReference.get());
-          ((QQStoryManager)localObject).a.remove(paramIntent);
+          ((QQStoryManager)localObject).k.remove(paramIntent);
         }
       }
     }
@@ -266,7 +266,7 @@ public class QQStoryBaseActivity
     this.mActivityHelper = ((QQStoryActivityManager)SuperManager.a(18));
     this.mActivityHelper.a(this);
     QQStoryContext.a();
-    this.mApp = QQStoryContext.a();
+    this.mApp = QQStoryContext.k();
     Bosses.get().postLightWeightJob(new QQStoryBaseActivity.1(this), 10);
     ((TrimmableManager)SuperManager.a(26)).a(0);
     initAnimation(getIntent());
@@ -362,12 +362,12 @@ public class QQStoryBaseActivity
     if (paramOnClickListener != null) {
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramString = this.rightViewText;
       paramOnClickListener = new StringBuilder();
       paramOnClickListener.append(this.rightViewText.getText());
-      paramOnClickListener.append(HardCodeUtil.a(2131710756));
+      paramOnClickListener.append(HardCodeUtil.a(2131908436));
       paramString.setContentDescription(paramOnClickListener.toString());
     }
   }

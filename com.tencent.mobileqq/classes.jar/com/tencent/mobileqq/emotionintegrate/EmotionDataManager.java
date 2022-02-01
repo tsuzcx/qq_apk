@@ -35,21 +35,21 @@ import java.util.List;
 
 public class EmotionDataManager
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 9223372036854775807L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 3;
-  private long jdField_b_of_type_Long = 9223372036854775807L;
-  private int jdField_c_of_type_Int = 60;
-  private long jdField_c_of_type_Long = 9223372036854775807L;
+  private String a;
+  private int b;
+  private volatile boolean c;
+  private long d = 9223372036854775807L;
+  private long e = 9223372036854775807L;
+  private int f = 3;
+  private long g = 9223372036854775807L;
+  private int h = 60;
+  private QQAppInterface i;
   
   public EmotionDataManager(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
+    this.a = paramString;
+    this.b = paramInt;
+    this.i = ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
   }
   
   public static Drawable a(Context paramContext, EmotionPreviewData paramEmotionPreviewData)
@@ -65,7 +65,7 @@ public class EmotionDataManager
       if (localObject2 != null) {
         paramContext = ((IPicEmoticonInfo)localObject2).getLoadingDrawable("fromAIO", true);
       }
-      paramEmotionPreviewData.c = true;
+      paramEmotionPreviewData.d = true;
       return paramContext;
     }
     localObject1 = localObject2;
@@ -76,17 +76,21 @@ public class EmotionDataManager
       if (AbsDownloader.getFile(((URL)localObject2).toString()) != null)
       {
         paramContext = URLDrawable.getDrawable((URL)localObject2, a(paramContext, (int)((MessageForPic)localObject1).width, (int)((MessageForPic)localObject1).height));
-        paramEmotionPreviewData.c = true;
+        paramEmotionPreviewData.d = true;
         return paramContext;
       }
-      localObject2 = PicItemBuilder.a((MessageForPic)localObject1);
-      paramContext = URLDrawable.getDrawable((URL)localObject2, a(paramContext, ((MessageForPic)localObject1).thumbWidth, ((MessageForPic)localObject1).thumbHeight));
-      paramEmotionPreviewData.c = false;
-      localObject1 = paramContext;
-      if (QLog.isColorLevel())
+      localObject2 = PicItemBuilder.f((MessageForPic)localObject1);
+      int k = ((MessageForPic)localObject1).thumbWidth;
+      int j = ((MessageForPic)localObject1).thumbHeight;
+      if (localMessageRecord.istroop == 10014)
       {
+        k = ((com.tencent.mobileqq.guild.pic.api.IGuildPicAIO)QRoute.api(com.tencent.mobileqq.guild.pic.api.IGuildPicAIO.class)).getThumbMinDp(true)[0];
+        j = ((com.tencent.mobileqq.guild.pic.api.IGuildPicAIO)QRoute.api(com.tencent.mobileqq.guild.pic.api.IGuildPicAIO.class)).getThumbMinDp(true)[1];
+      }
+      localObject1 = URLDrawable.getDrawable((URL)localObject2, a(paramContext, k, j));
+      paramEmotionPreviewData.d = false;
+      if (QLog.isColorLevel()) {
         QLog.d("EmotionDataManager", 2, new Object[] { "init view,big pic not exist:", AbsDownloader.getFile(((URL)localObject2).toString()) });
-        localObject1 = paramContext;
       }
     }
     return localObject1;
@@ -120,17 +124,17 @@ public class EmotionDataManager
     while (paramList.hasNext())
     {
       Object localObject1 = (MessageRecord)paramList.next();
-      if (((MessageRecord)localObject1).shmsgseq < this.jdField_b_of_type_Long) {
-        this.jdField_b_of_type_Long = ((MessageRecord)localObject1).shmsgseq;
+      if (((MessageRecord)localObject1).shmsgseq < this.e) {
+        this.e = ((MessageRecord)localObject1).shmsgseq;
       }
-      if (((MessageRecord)localObject1).versionCode < this.jdField_b_of_type_Int) {
-        this.jdField_b_of_type_Int = ((MessageRecord)localObject1).versionCode;
+      if (((MessageRecord)localObject1).versionCode < this.f) {
+        this.f = ((MessageRecord)localObject1).versionCode;
       }
-      if ((((MessageRecord)localObject1).getId() > 0L) && (((MessageRecord)localObject1).getId() < this.jdField_a_of_type_Long)) {
-        this.jdField_a_of_type_Long = ((MessageRecord)localObject1).getId();
+      if ((((MessageRecord)localObject1).getId() > 0L) && (((MessageRecord)localObject1).getId() < this.d)) {
+        this.d = ((MessageRecord)localObject1).getId();
       }
-      if (((MessageRecord)localObject1).time < this.jdField_c_of_type_Long) {
-        this.jdField_c_of_type_Long = ((MessageRecord)localObject1).time;
+      if (((MessageRecord)localObject1).time < this.g) {
+        this.g = ((MessageRecord)localObject1).time;
       }
       Object localObject2;
       if ((localObject1 instanceof MessageForPic))
@@ -171,12 +175,12 @@ public class EmotionDataManager
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Long = 9223372036854775807L;
-    this.jdField_c_of_type_Int = 60;
+    this.c = false;
+    this.d = 9223372036854775807L;
+    this.e = 9223372036854775807L;
+    this.f = 3;
+    this.g = 9223372036854775807L;
+    this.h = 60;
   }
   
   public List<MessageRecord> a(String paramString, int paramInt, boolean paramBoolean)
@@ -186,20 +190,20 @@ public class EmotionDataManager
   
   public List<MessageRecord> a(String paramString, int paramInt, boolean paramBoolean, long paramLong)
   {
-    label533:
-    label536:
-    label539:
+    label543:
+    label546:
+    label549:
     for (;;)
     {
       Object localObject2;
       try
       {
-        if ((paramString.equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == paramInt))
+        if ((paramString.equals(this.a)) && (this.b == paramInt))
         {
           if (paramBoolean) {
             a();
           }
-          if (this.jdField_c_of_type_Int < 60) {
+          if (this.h < 60) {
             return null;
           }
           if (QLog.isColorLevel()) {
@@ -212,12 +216,12 @@ public class EmotionDataManager
           Object localObject1 = localObject2;
           if (paramLong != -1L)
           {
-            paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMultiMessageProxy();
+            paramString = this.i.getMultiMessageProxy();
             if (paramString != null) {
               ((List)localObject2).addAll(a(paramString.a(paramLong)));
             }
             if (!QLog.isColorLevel()) {
-              break label533;
+              break label543;
             }
             paramInt = ((List)localObject2).size();
             if (paramString == null) {
@@ -231,40 +235,40 @@ public class EmotionDataManager
           arrayOfInt[1] = -20000;
           arrayOfInt[2] = -2000;
           arrayOfInt[3] = -1035;
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.c)
           {
-            List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(paramInt).a(paramString, paramInt, arrayOfInt);
+            List localList = this.i.getMessageProxy(paramInt).a(paramString, paramInt, arrayOfInt);
             localObject2 = localList;
             if (localList.size() >= 60) {
-              break label536;
+              break label546;
             }
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt, arrayOfInt, 60);
-            this.jdField_c_of_type_Int = ((List)localObject2).size();
-            break label536;
+            localObject2 = this.i.getMessageFacade().a(paramString, paramInt, arrayOfInt, 60);
+            this.h = ((List)localObject2).size();
+            break label546;
           }
-          int i;
+          int j;
           long l2;
-          if (UinTypeUtil.g(paramInt))
+          if ((!UinTypeUtil.h(paramInt)) && (paramInt != 10014))
           {
-            this.jdField_b_of_type_Long -= 1L;
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-            paramLong = this.jdField_a_of_type_Long;
-            i = this.jdField_b_of_type_Int;
-            l2 = this.jdField_b_of_type_Long;
+            localObject2 = this.i.getMessageFacade();
+            paramLong = this.d;
+            j = this.f;
+            l2 = this.g;
           }
           try
           {
-            localObject2 = ((QQMessageFacade)localObject2).a(paramString, paramInt, paramLong, i, l2, arrayOfInt, 60);
+            localObject2 = ((QQMessageFacade)localObject2).a(paramString, paramInt, paramLong, j, l2, arrayOfInt, 60);
             continue;
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, arrayOfInt, 60);
-            this.jdField_c_of_type_Int = ((List)localObject2).size();
-            if (!this.jdField_a_of_type_Boolean) {
-              this.jdField_a_of_type_Boolean = true;
+            this.e -= 1L;
+            localObject2 = this.i.getMessageFacade().a(paramString, paramInt, this.d, this.f, this.e, arrayOfInt, 60);
+            this.h = ((List)localObject2).size();
+            if (!this.c) {
+              this.c = true;
             }
             localObject1.addAll(0, a((List)localObject2));
             if (localObject1.size() < 30) {
-              if (this.jdField_c_of_type_Int >= 60) {
-                break label539;
+              if (this.h >= 60) {
+                break label549;
               }
             }
             if (QLog.isColorLevel())
@@ -305,7 +309,7 @@ public class EmotionDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDataManager
  * JD-Core Version:    0.7.0.1
  */

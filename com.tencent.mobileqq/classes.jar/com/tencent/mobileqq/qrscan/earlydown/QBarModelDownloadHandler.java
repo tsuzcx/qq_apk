@@ -6,7 +6,7 @@ import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.mobileqq.qrscan.ipc.QRScanResDownloadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,17 +15,12 @@ import mqq.app.AppRuntime;
 public class QBarModelDownloadHandler
   extends EarlyHandler
 {
-  private int a;
-  private boolean d = false;
+  private int h;
+  private boolean i = false;
   
   public QBarModelDownloadHandler(AppRuntime paramAppRuntime)
   {
     super("qq.android.qbarnative.model_v8.6.0", paramAppRuntime);
-  }
-  
-  public int a()
-  {
-    return ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).getEarlyDownBusId(4);
   }
   
   public Class<? extends XmlData> a()
@@ -33,21 +28,16 @@ public class QBarModelDownloadHandler
     return QBarModelData.class;
   }
   
-  public String a()
-  {
-    return "QBarModelData";
-  }
-  
   public void a(long paramLong1, long paramLong2)
   {
     super.a(paramLong1, paramLong2);
-    this.a = ((int)(paramLong1 * 100L / paramLong2));
-    QRScanResDownloadManager.a(3, this.a);
+    this.h = ((int)(paramLong1 * 100L / paramLong2));
+    QRScanResDownloadManager.a(3, this.h);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("download progress: ");
-      localStringBuilder.append(this.a);
+      localStringBuilder.append(this.h);
       QLog.d("MiniRecog.QBarModelDownloadHandler", 2, localStringBuilder.toString());
     }
   }
@@ -56,7 +46,7 @@ public class QBarModelDownloadHandler
   {
     if (!paramBoolean)
     {
-      f();
+      w();
       QRScanResDownloadManager.a(3, false);
     }
     super.a(paramXmlData, paramBoolean, paramInt, paramString);
@@ -71,19 +61,19 @@ public class QBarModelDownloadHandler
   
   public void a(String paramString)
   {
-    int i = QBarModelLoader.a(paramString);
+    int j = QBarModelLoader.c(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("doOnDownloadSuccess ret=");
-      localStringBuilder.append(i);
+      localStringBuilder.append(j);
       localStringBuilder.append(", filePath=");
       localStringBuilder.append(paramString);
       QLog.d("MiniRecog.QBarModelDownloadHandler", 2, localStringBuilder.toString());
     }
-    if (i != 0)
+    if (j != 0)
     {
-      f();
+      w();
       QRScanResDownloadManager.a(3, false);
     }
     else
@@ -95,8 +85,8 @@ public class QBarModelDownloadHandler
   
   public void a(boolean paramBoolean)
   {
-    if (!this.d) {
-      this.d = paramBoolean;
+    if (!this.i) {
+      this.i = paramBoolean;
     }
     super.a(paramBoolean);
     if (QLog.isColorLevel())
@@ -108,17 +98,35 @@ public class QBarModelDownloadHandler
     }
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "QBarModelData";
   }
   
-  public String b()
+  public void b(XmlData paramXmlData)
+  {
+    super.b(paramXmlData);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.QBarModelDownloadHandler", 2, "download begin");
+    }
+  }
+  
+  public int c()
+  {
+    return ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).getEarlyDownBusId(4);
+  }
+  
+  public String d()
   {
     return "prd";
   }
   
-  public void b()
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public void j()
   {
     boolean bool = FileUtil.a(new File(QBarModelLoader.a()));
     if (QLog.isColorLevel())
@@ -130,17 +138,9 @@ public class QBarModelDownloadHandler
     }
   }
   
-  public void b(XmlData paramXmlData)
+  public boolean m()
   {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.QBarModelDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean c()
-  {
-    if (this.d)
+    if (this.i)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MiniRecog.QBarModelDownloadHandler", 2, "isNetValid2Download by user ");
@@ -150,12 +150,12 @@ public class QBarModelDownloadHandler
     if (QLog.isColorLevel()) {
       QLog.d("MiniRecog.QBarModelDownloadHandler", 2, "isNetValid2Download by startup ");
     }
-    return super.c();
+    return super.m();
   }
   
-  public boolean e()
+  public boolean o()
   {
-    if (!this.d)
+    if (!this.i)
     {
       boolean bool = QBaseActivity.mAppForground ^ true;
       if (QLog.isColorLevel())
@@ -169,22 +169,22 @@ public class QBarModelDownloadHandler
         return false;
       }
     }
-    return super.e();
+    return super.o();
   }
   
-  public void f()
+  public void w()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MiniRecog.QBarModelDownloadHandler", 2, "restoreState");
     }
-    a().loadState = 0;
-    a().Version = 0;
-    EarlyDataFactory.a(a(), new String[0]);
+    h().loadState = 0;
+    h().Version = 0;
+    EarlyDataFactory.a(h(), new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.QBarModelDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ final class ThemeIPCModule$2
     if (paramInt == 0)
     {
       BaseApplication localBaseApplication = MobileQQ.getContext();
-      localObject = new ThemeLocator().a(this.jdField_a_of_type_JavaLangString);
+      localObject = new ThemeLocator().a(this.a);
       ((ThemeLocator)localObject).a(localBaseApplication, paramString1, paramString2);
       paramString1 = (String)localObject;
     }
@@ -40,7 +40,7 @@ final class ThemeIPCModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.ThemeIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

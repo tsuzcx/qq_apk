@@ -14,8 +14,8 @@ class ConversationHongBaoV2$9
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    this.a.A.setVisibility(8);
+    this.a.g.sendEmptyMessageDelayed(1001, 200L);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -24,7 +24,7 @@ class ConversationHongBaoV2$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.9
  * JD-Core Version:    0.7.0.1
  */

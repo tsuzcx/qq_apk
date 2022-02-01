@@ -12,27 +12,27 @@ class TroopClassChoiceActivity$GetClassChoiceCallBack$1
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a.a.c))
     {
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a();
+      this.a.a.a = GroupCatalogTool.a(this.a.a).b();
     }
     else
     {
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a(this.a.a.jdField_a_of_type_JavaLangString);
-      if ((this.a.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      this.a.a.a = GroupCatalogTool.a(this.a.a).a(this.a.a.c);
+      if ((this.a.a.a != null) && (this.a.a.a.size() > 0))
       {
-        GroupCatalogBean localGroupCatalogBean = (GroupCatalogBean)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean != null) {
-          this.a.a.setTitle(localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.jdField_a_of_type_JavaLangString);
+        GroupCatalogBean localGroupCatalogBean = (GroupCatalogBean)this.a.a.a.get(0);
+        if (localGroupCatalogBean.e != null) {
+          this.a.a.setTitle(localGroupCatalogBean.e.b);
         }
       }
     }
-    TroopClassChoiceActivity.a(this.a.a).notifyDataSetChanged();
+    TroopClassChoiceActivity.b(this.a.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1
  * JD-Core Version:    0.7.0.1
  */

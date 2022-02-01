@@ -24,53 +24,48 @@ public class ComponentTopicItemSingle
   extends RelativeLayout
   implements ComponentInheritView
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-  TextView b;
+  CmpCtxt a;
+  KandianUrlImageView b;
+  TextView c;
+  TextView d;
   
   public ComponentTopicItemSingle(Context paramContext)
   {
     super(paramContext);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentTopicItemSingle(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentTopicItemSingle(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b(paramContext);
+    c(paramContext);
   }
   
-  private void b(Context paramContext)
+  private void c(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
+    this.a = new CmpCtxt();
     a(paramContext);
     a();
-  }
-  
-  public View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560158, this, true);
   }
   
   public void a() {}
   
   public void a(Context paramContext)
   {
-    a(a(paramContext));
+    a(b(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)findViewById(2131365284));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
-    this.b = ((TextView)findViewById(2131365517));
+    this.b = ((KandianUrlImageView)findViewById(2131431458));
+    this.c = ((TextView)findViewById(2131447463));
+    this.d = ((TextView)findViewById(2131431733));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener) {}
@@ -80,33 +75,33 @@ public class ComponentTopicItemSingle
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramObject);
+      this.a.a(paramObject);
       b();
-      paramObject = paramObject.a();
-      if ((paramObject != null) && (paramObject.mTopicRecommendFeedsInfo != null) && (paramObject.mTopicRecommendFeedsInfo.a != null))
+      paramObject = paramObject.k();
+      if ((paramObject != null) && (paramObject.mTopicRecommendFeedsInfo != null) && (paramObject.mTopicRecommendFeedsInfo.g != null))
       {
-        if (paramObject.mTopicRecommendFeedsInfo.a.size() == 0) {
+        if (paramObject.mTopicRecommendFeedsInfo.g.size() == 0) {
           return;
         }
-        paramObject = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject.mTopicRecommendFeedsInfo.a.get(0);
+        paramObject = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject.mTopicRecommendFeedsInfo.g.get(0);
         try
         {
-          URL localURL = new URL(paramObject.d);
-          ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, localURL, getContext());
+          URL localURL = new URL(paramObject.f);
+          ReadInJoyDisplayUtils.a(this.b, localURL, getContext());
         }
         catch (MalformedURLException localMalformedURLException)
         {
-          ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, null, getContext());
+          ReadInJoyDisplayUtils.a(this.b, null, getContext());
           localMalformedURLException.printStackTrace();
         }
-        Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        Object localObject = this.c;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramObject.c);
-        localStringBuilder.append(paramObject.a);
+        localStringBuilder.append(paramObject.d);
+        localStringBuilder.append(paramObject.b);
         ((TextView)localObject).setText(localStringBuilder.toString());
-        localObject = String.format(getResources().getString(2131718065), new Object[] { ReadInJoyHelper.a(paramObject.jdField_b_of_type_Int) });
-        this.b.setText((CharSequence)localObject);
-        if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString))
+        localObject = String.format(getResources().getString(2131915542), new Object[] { ReadInJoyHelper.c(paramObject.e) });
+        this.d.setText((CharSequence)localObject);
+        if (!TextUtils.isEmpty(paramObject.c))
         {
           setOnClickListener(new ComponentTopicItemSingle.1(this, paramObject));
           return;
@@ -116,14 +111,19 @@ public class ComponentTopicItemSingle
     }
   }
   
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626205, this, true);
+  }
+  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentTopicItemSingle
  * JD-Core Version:    0.7.0.1
  */

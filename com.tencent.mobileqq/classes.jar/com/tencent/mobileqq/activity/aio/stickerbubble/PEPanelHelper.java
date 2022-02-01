@@ -24,124 +24,65 @@ import org.json.JSONObject;
 
 public class PEPanelHelper
 {
-  public static Typeface a;
-  public static SparseArray<String> a;
   public static final String a;
-  public static ArrayList<PEItemData> a;
-  public static volatile boolean a;
   public static final String b;
-  public static volatile boolean b;
   public static final String c;
   public static final String d;
   public static final String e;
   public static final String f;
-  public static String g;
+  public static SparseArray<String> g = new SparseArray();
+  public static ArrayList<PEItemData> h = new ArrayList();
+  public static volatile boolean i = false;
+  public static String j;
+  public static Typeface k;
+  public static volatile boolean l;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PE));
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("res/");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("lottie/");
     c = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("font/");
     d = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("summary/");
     e = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(d);
     localStringBuilder.append("sticker_bubble_animation.ttf");
     f = localStringBuilder.toString();
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static Drawable a(int paramInt)
-  {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    String str = b(paramInt);
-    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130841546);
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130841546);
-    localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);
-    if (((URLDrawable)localObject).getStatus() == 2) {
-      ((URLDrawable)localObject).restartDownload();
-    }
-    return localObject;
-  }
-  
-  public static PEItemData a(int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilArrayList.size() > paramInt) {
-      return (PEItemData)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
   }
   
   public static String a(int paramInt)
   {
-    if (jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
+    if (g.size() == 0) {
       a();
     }
-    String str2 = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    String str2 = (String)g.get(paramInt);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = HardCodeUtil.a(2131707919);
+      str1 = HardCodeUtil.a(2131905733);
     }
     return str1;
-  }
-  
-  public static List<PEItemData> a(String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(g))) {
-      return jdField_a_of_type_JavaUtilArrayList;
-    }
-    jdField_a_of_type_JavaUtilArrayList.clear();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split(",");
-      if ((paramString != null) && (paramString.length > 0))
-      {
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
-        {
-          try
-          {
-            int k = Integer.parseInt(paramString[i]);
-            PEItemData localPEItemData = new PEItemData();
-            localPEItemData.jdField_a_of_type_Int = k;
-            localPEItemData.jdField_a_of_type_JavaLangString = b(k);
-            jdField_a_of_type_JavaUtilArrayList.add(localPEItemData);
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-          i += 1;
-        }
-      }
-    }
-    return jdField_a_of_type_JavaUtilArrayList;
   }
   
   public static void a()
   {
     try
     {
-      boolean bool = jdField_a_of_type_Boolean;
+      boolean bool = i;
       if (bool) {
         return;
       }
@@ -182,10 +123,10 @@ public class PEPanelHelper
           {
             localObject4 = (String)localIterator.next();
             String str = (String)((JSONObject)localObject2).get((String)localObject4);
-            int i = Integer.parseInt((String)localObject4);
-            jdField_a_of_type_AndroidUtilSparseArray.put(i, str);
+            int m = Integer.parseInt((String)localObject4);
+            g.put(m, str);
           }
-          jdField_a_of_type_Boolean = true;
+          i = true;
         }
         catch (JSONException localJSONException)
         {
@@ -203,10 +144,10 @@ public class PEPanelHelper
   
   public static boolean a(String paramString)
   {
-    if (!new File(jdField_a_of_type_JavaLangString).exists()) {
+    if (!new File(a).exists()) {
       return false;
     }
-    QQAlbumUtils.a(jdField_a_of_type_JavaLangString);
+    QQAlbumUtils.a(a);
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
@@ -218,13 +159,13 @@ public class PEPanelHelper
       bool1 = bool2;
       if (paramString.length > 0)
       {
-        int j = paramString.length;
-        int i = 0;
+        int n = paramString.length;
+        int m = 0;
         bool1 = true;
-        while (i < j) {
+        while (m < n) {
           try
           {
-            bool2 = new File(b(Integer.parseInt(paramString[i]))).exists();
+            bool2 = new File(b(Integer.parseInt(paramString[m]))).exists();
             if (!bool2) {
               return false;
             }
@@ -236,7 +177,7 @@ public class PEPanelHelper
             localStringBuilder.append(localException);
             QLog.d("PokeEmo", 1, localStringBuilder.toString());
             bool1 = false;
-            i += 1;
+            m += 1;
           }
         }
       }
@@ -244,46 +185,55 @@ public class PEPanelHelper
     return bool1;
   }
   
-  public static PEItemData b(int paramInt)
+  public static String b(int paramInt)
   {
-    if (jdField_a_of_type_JavaUtilArrayList.size() != 0)
+    return String.format("%spe_%d.gif", new Object[] { b, Integer.valueOf(paramInt) });
+  }
+  
+  public static List<PEItemData> b(String paramString)
+  {
+    if ((paramString != null) && (paramString.equals(j))) {
+      return h;
+    }
+    h.clear();
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
+      paramString = paramString.split(",");
+      if ((paramString != null) && (paramString.length > 0))
       {
-        localPEItemData = (PEItemData)((Iterator)localObject).next();
-        if (localPEItemData.jdField_a_of_type_Int == paramInt) {
-          break label48;
+        int n = paramString.length;
+        int m = 0;
+        while (m < n)
+        {
+          try
+          {
+            int i1 = Integer.parseInt(paramString[m]);
+            PEItemData localPEItemData = new PEItemData();
+            localPEItemData.a = i1;
+            localPEItemData.b = b(i1);
+            h.add(localPEItemData);
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+          m += 1;
         }
       }
     }
-    PEItemData localPEItemData = null;
-    label48:
-    Object localObject = localPEItemData;
-    if (localPEItemData == null)
-    {
-      localObject = new PEItemData();
-      ((PEItemData)localObject).jdField_a_of_type_Int = paramInt;
-      ((PEItemData)localObject).jdField_a_of_type_JavaLangString = b(paramInt);
-    }
-    return localObject;
-  }
-  
-  public static String b(int paramInt)
-  {
-    return String.format("%spe_%d.gif", new Object[] { jdField_b_of_type_JavaLangString, Integer.valueOf(paramInt) });
+    return h;
   }
   
   public static void b()
   {
-    if (jdField_a_of_type_AndroidGraphicsTypeface != null) {
+    if (k != null) {
       return;
     }
     try
     {
       File localFile = new File(f);
       if (localFile.exists()) {
-        jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(localFile);
+        k = Typeface.createFromFile(localFile);
       }
       QLog.e("PokeEmo", 1, "loadFont success ");
       return;
@@ -294,14 +244,61 @@ public class PEPanelHelper
       localStringBuilder.append("loadFont failed ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("PokeEmo", 1, localStringBuilder.toString());
-      jdField_a_of_type_AndroidGraphicsTypeface = null;
-      jdField_b_of_type_Boolean = false;
+      k = null;
+      l = false;
     }
+  }
+  
+  public static Drawable c(int paramInt)
+  {
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    String str = b(paramInt);
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130842390);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130842390);
+    localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);
+    if (((URLDrawable)localObject).getStatus() == 2) {
+      ((URLDrawable)localObject).restartDownload();
+    }
+    return localObject;
+  }
+  
+  public static PEItemData d(int paramInt)
+  {
+    if (h.size() > paramInt) {
+      return (PEItemData)h.get(paramInt);
+    }
+    return null;
+  }
+  
+  public static PEItemData e(int paramInt)
+  {
+    if (h.size() != 0)
+    {
+      localObject = h.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localPEItemData = (PEItemData)((Iterator)localObject).next();
+        if (localPEItemData.a == paramInt) {
+          break label48;
+        }
+      }
+    }
+    PEItemData localPEItemData = null;
+    label48:
+    Object localObject = localPEItemData;
+    if (localPEItemData == null)
+    {
+      localObject = new PEItemData();
+      ((PEItemData)localObject).a = paramInt;
+      ((PEItemData)localObject).b = b(paramInt);
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import java.util.LinkedList;
 class PreloadServiceImpl$8
   extends Handler
 {
-  private LinkedList<IPreloadService.FlowControlObj> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private LinkedList<IPreloadService.FlowControlObj> b = new LinkedList();
+  private boolean c = false;
   
   PreloadServiceImpl$8(PreloadServiceImpl paramPreloadServiceImpl, Looper paramLooper)
   {
@@ -21,15 +21,15 @@ class PreloadServiceImpl$8
   
   private void a()
   {
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl);
-    IPreloadService.FlowControlObj localFlowControlObj = (IPreloadService.FlowControlObj)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    WeakReference localWeakReference = new WeakReference(this.a);
+    IPreloadService.FlowControlObj localFlowControlObj = (IPreloadService.FlowControlObj)this.b.getFirst();
+    this.b.removeFirst();
     ThreadManager.excute(new PreloadServiceImpl.8.1(this, localWeakReference, localFlowControlObj), 64, null, false);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl.mIsOnDestroy) {
+    if (this.a.mIsOnDestroy) {
       return;
     }
     int i = paramMessage.what;
@@ -38,25 +38,25 @@ class PreloadServiceImpl$8
       if (i != 2) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+      if (this.b.size() > 0)
       {
         a();
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
       return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedList.addLast((IPreloadService.FlowControlObj)paramMessage.obj);
-    if (!this.jdField_a_of_type_Boolean)
+    this.b.addLast((IPreloadService.FlowControlObj)paramMessage.obj);
+    if (!this.c)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

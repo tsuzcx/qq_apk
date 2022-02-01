@@ -20,7 +20,7 @@ class GameRoomFragment$19
       if (paramInt == 1)
       {
         GameRoomFragment.a(this.a, true, "2");
-        GameRoomFragment.b(this.a);
+        GameRoomFragment.f(this.a);
         return;
       }
       GameRoomFragment.a(this.a, true, "3");

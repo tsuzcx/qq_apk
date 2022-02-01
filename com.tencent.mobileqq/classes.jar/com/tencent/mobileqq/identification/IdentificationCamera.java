@@ -27,27 +27,12 @@ import java.util.Arrays;
 public class IdentificationCamera
   implements ICamera, Observer
 {
-  public static final CameraProxy a;
-  protected int a;
-  protected NewFlowCameraOperator a;
-  protected CaptureListener a;
-  public CaptureParam a;
-  protected SizeListener a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy = new CameraProxy(null, null);
-  }
-  
-  public IdentificationCamera()
-  {
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public int a()
-  {
-    return CameraControl.a().jdField_a_of_type_Int;
-  }
+  public static final CameraProxy a = new CameraProxy(null, null);
+  protected int b = 2;
+  protected NewFlowCameraOperator c;
+  public CaptureParam d;
+  protected CaptureListener e;
+  protected SizeListener f;
   
   public Bitmap a(Bitmap paramBitmap)
   {
@@ -57,7 +42,7 @@ public class IdentificationCamera
       QLog.e("IdentificationCamera", 1, "blurManager.process return null");
       return null;
     }
-    int i = CameraControl.a().b();
+    int i = CameraControl.a().o();
     paramBitmap = new Matrix();
     paramBitmap.setRotate(i);
     localBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), paramBitmap, false);
@@ -66,34 +51,29 @@ public class IdentificationCamera
     return Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), paramBitmap, false);
   }
   
-  public Camera a()
-  {
-    return CameraControl.a().jdField_a_of_type_AndroidHardwareCamera;
-  }
-  
   public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("IdentificationCamera", 2, "openCamera");
     }
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(this);
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.b(this.jdField_a_of_type_Int);
-    NewFlowCameraOperator localNewFlowCameraOperator = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraOperator;
+    a.a(this);
+    a.b(this.b);
+    NewFlowCameraOperator localNewFlowCameraOperator = this.c;
     if (localNewFlowCameraOperator != null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       boolean bool = true;
       if (i != 1) {
         bool = false;
       }
       localNewFlowCameraOperator.a(bool);
     }
-    com.tencent.mobileqq.activity.richmedia.FlowCameraConstant.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    com.tencent.mobileqq.activity.richmedia.FlowCameraConstant.b = this.b;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    NewFlowCameraOperator localNewFlowCameraOperator = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraOperator;
+    NewFlowCameraOperator localNewFlowCameraOperator = this.c;
     if (localNewFlowCameraOperator != null) {
       localNewFlowCameraOperator.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
@@ -101,43 +81,38 @@ public class IdentificationCamera
   
   public void a(SurfaceTexture paramSurfaceTexture, SurfaceHolder paramSurfaceHolder, OutPreviewCallback paramOutPreviewCallback, boolean paramBoolean)
   {
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(new CameraControl.CustomSize(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.b), new CameraControl.CustomSize(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.c, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.d), 0, 30, false);
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(paramSurfaceTexture, paramSurfaceHolder, new IdentificationCamera.1(this, paramOutPreviewCallback), paramBoolean);
+    a.a(new CameraControl.CustomSize(this.d.a, this.d.b), new CameraControl.CustomSize(this.d.c, this.d.d), 0, 30, false);
+    a.a(paramSurfaceTexture, paramSurfaceHolder, new IdentificationCamera.1(this, paramOutPreviewCallback), paramBoolean);
   }
   
   public void a(CaptureListener paramCaptureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener = paramCaptureListener;
+    this.e = paramCaptureListener;
   }
   
   public void a(CaptureParam paramCaptureParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam = paramCaptureParam;
+    this.d = paramCaptureParam;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setCaptureParam : ");
     localStringBuilder.append(paramCaptureParam);
     QLog.d("IdentificationCamera", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Int = paramCaptureParam.e;
-    if ((this.jdField_a_of_type_Int == 1) && (!CameraUtils.d())) {
-      this.jdField_a_of_type_Int = 2;
+    this.b = paramCaptureParam.e;
+    if ((this.b == 1) && (!CameraUtils.d())) {
+      this.b = 2;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraOperator = new NewFlowCameraOperator();
-    QmcfManager.getInstance().setCameraMode(this.jdField_a_of_type_Int);
+    this.c = new NewFlowCameraOperator();
+    QmcfManager.getInstance().setCameraMode(this.b);
   }
   
   public void a(SizeListener paramSizeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSizeListener = paramSizeListener;
+    this.f = paramSizeListener;
   }
   
   public void a(boolean paramBoolean)
   {
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.d(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return CameraUtils.d();
+    a.d(paramBoolean);
   }
   
   public void b()
@@ -145,10 +120,25 @@ public class IdentificationCamera
     if (QLog.isColorLevel()) {
       QLog.d("IdentificationCamera", 2, "stopCamera");
     }
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(false);
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.b(false);
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.b(this);
-    CameraHelper.a(this.jdField_a_of_type_Int);
+    a.a(false);
+    a.b(false);
+    a.b(this);
+    CameraHelper.a(this.b);
+  }
+  
+  public boolean c()
+  {
+    return CameraUtils.d();
+  }
+  
+  public Camera d()
+  {
+    return CameraControl.a().d;
+  }
+  
+  public int e()
+  {
+    return CameraControl.a().g;
   }
   
   public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
@@ -177,11 +167,11 @@ public class IdentificationCamera
           if ((paramVarArgs[0] instanceof CameraControl.CustomSize))
           {
             paramObject = (CameraControl.CustomSize)paramVarArgs[0];
-            localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSizeListener;
+            localObject = this.f;
             if (localObject != null) {
-              ((SizeListener)localObject).a(paramObject.jdField_a_of_type_Int, paramObject.b);
+              ((SizeListener)localObject).a(paramObject.a, paramObject.b);
             }
-            paramObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener;
+            paramObject = this.e;
             if (paramObject != null) {
               paramObject.a(true, "");
             }
@@ -191,7 +181,7 @@ public class IdentificationCamera
           }
           else if ((paramVarArgs[0] instanceof String))
           {
-            paramObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener;
+            paramObject = this.e;
             if (paramObject != null)
             {
               localObject = new StringBuilder();
@@ -203,7 +193,7 @@ public class IdentificationCamera
         }
         else if ((paramVarArgs[0] instanceof Integer))
         {
-          paramObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener;
+          paramObject = this.e;
           if (paramObject != null)
           {
             localObject = new StringBuilder();
@@ -216,18 +206,18 @@ public class IdentificationCamera
       else if ((paramVarArgs[0] instanceof CameraControl.CustomSize))
       {
         paramObject = (CameraControl.CustomSize)paramVarArgs[0];
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSizeListener;
+        paramVarArgs = this.f;
         if (paramVarArgs != null) {
-          paramVarArgs.a(paramObject.jdField_a_of_type_Int, paramObject.b);
+          paramVarArgs.a(paramObject.a, paramObject.b);
         }
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener;
+        paramObject = this.e;
         if (paramObject != null) {
           paramObject.a(true, "");
         }
       }
       else if ((paramVarArgs[0] instanceof String))
       {
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener;
+        paramObject = this.e;
         if (paramObject != null) {
           paramObject.a(false, (String)paramVarArgs[0]);
         }
@@ -235,7 +225,7 @@ public class IdentificationCamera
     }
     else if ((paramVarArgs[0] instanceof String))
     {
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureListener;
+      paramObject = this.e;
       if (paramObject != null) {
         paramObject.a(false, (String)paramVarArgs[0]);
       }
@@ -244,7 +234,7 @@ public class IdentificationCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationCamera
  * JD-Core Version:    0.7.0.1
  */

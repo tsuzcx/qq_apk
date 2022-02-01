@@ -1,63 +1,73 @@
 package com.tencent.smtt.utils;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Environment;
-import android.os.StatFs;
-import com.tencent.smtt.sdk.QbSdk;
 import java.io.File;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class p
 {
-  private static File a;
+  private p.b a = null;
+  private p.b b = null;
   
-  public static long a()
+  private boolean a(p.b paramb1, p.b paramb2)
   {
-    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-    return localStatFs.getBlockSize() * localStatFs.getAvailableBlocks();
-  }
-  
-  @TargetApi(9)
-  public static boolean a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    if (a == null) {
-      try
+    if ((paramb1 != null) && (paramb1.a() != null) && (paramb2 != null) && (paramb2.a() != null))
+    {
+      Object localObject1 = paramb1.a();
+      paramb1 = paramb2.a();
+      paramb2 = ((Map)localObject1).entrySet().iterator();
+      while (paramb2.hasNext())
       {
-        if (!paramContext.getApplicationInfo().processName.contains("com.tencent.mm")) {
+        Object localObject2 = (Map.Entry)paramb2.next();
+        localObject1 = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (p.a)((Map.Entry)localObject2).getValue();
+        if (paramb1.containsKey(localObject1))
+        {
+          localObject1 = (p.a)paramb1.get(localObject1);
+          if ((((p.a)localObject2).a() == ((p.a)localObject1).a()) && (((p.a)localObject2).b() == ((p.a)localObject1).b())) {
+            break;
+          }
+        }
+        else
+        {
           return false;
         }
-        paramContext = QbSdk.getTbsFolderDir(paramContext);
-        if (paramContext != null)
-        {
-          if (!paramContext.isDirectory()) {
-            return false;
-          }
-          paramContext = new File(paramContext, "share");
-          if ((!paramContext.isDirectory()) && (!paramContext.mkdir())) {
-            return false;
-          }
-          a = paramContext;
-          paramContext.setExecutable(true, false);
-          return true;
-        }
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void a(File paramFile)
+  {
+    this.a = new p.b(this, paramFile);
+  }
+  
+  public boolean a()
+  {
+    p.b localb = this.b;
+    if (localb != null)
+    {
+      if (this.a == null) {
         return false;
       }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return false;
+      if ((localb.a().size() == this.a.a().size()) && (a(this.a, this.b))) {
+        return true;
       }
     }
-    return true;
+    return false;
+  }
+  
+  public void b(File paramFile)
+  {
+    this.b = new p.b(this, paramFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.utils.p
  * JD-Core Version:    0.7.0.1
  */

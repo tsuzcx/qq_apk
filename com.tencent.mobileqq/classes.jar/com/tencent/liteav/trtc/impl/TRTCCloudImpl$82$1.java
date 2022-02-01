@@ -1,38 +1,24 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.TXCRenderAndDec;
-import java.util.HashMap;
+import com.tencent.trtc.TRTCCloudListener;
 
 class TRTCCloudImpl$82$1
-  implements TRTCRoomInfo.UserAction
+  implements Runnable
 {
   TRTCCloudImpl$82$1(TRTCCloudImpl.82 param82) {}
   
-  public void accept(String paramString, TRTCRoomInfo.UserInfo paramUserInfo)
+  public void run()
   {
-    if (paramString.equalsIgnoreCase(this.this$1.val$userId))
-    {
-      TRTCCloudImpl.RenderListenerAdapter localRenderListenerAdapter = (TRTCCloudImpl.RenderListenerAdapter)this.this$1.this$0.mRenderListenerMap.get(this.this$1.val$userId);
-      if (localRenderListenerAdapter != null) {
-        localRenderListenerAdapter.strTinyID = String.valueOf(paramUserInfo.tinyID);
-      }
-      if (this.this$1.val$listener != null) {
-        paramString = this.this$1.this$0;
-      } else {
-        paramString = null;
-      }
-      if (paramUserInfo.mainRender.render != null) {
-        paramUserInfo.mainRender.render.setVideoFrameListener(paramString, TRTCCloudImpl.access$6400(this.this$1.this$0, localRenderListenerAdapter.pixelFormat));
-      }
-      if (paramUserInfo.subRender.render != null) {
-        paramUserInfo.subRender.render.setVideoFrameListener(paramString, TRTCCloudImpl.access$6400(this.this$1.this$0, localRenderListenerAdapter.pixelFormat));
-      }
+    TRTCCloudListener localTRTCCloudListener = this.this$1.this$0.mTRTCListener;
+    if (localTRTCCloudListener == null) {
+      return;
     }
+    localTRTCCloudListener.onWarning(6001, "ignore send custom video,for role audience", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.82.1
  * JD-Core Version:    0.7.0.1
  */

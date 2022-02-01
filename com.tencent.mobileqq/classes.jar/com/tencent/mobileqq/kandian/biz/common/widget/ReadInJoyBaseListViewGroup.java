@@ -33,29 +33,28 @@ public abstract class ReadInJoyBaseListViewGroup
   extends FrameLayout
 {
   protected int a;
-  KandianProgressView.ClickCallBack jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianProgressView$ClickCallBack = new ReadInJoyBaseListViewGroup.2(this);
-  protected ReadInJoyPageItemCache a;
-  protected ReadInJoyXListView a;
-  protected ReadInJoyBaseViewController a;
-  KandianVideoUploadService.ICallBack jdField_a_of_type_ComTencentMobileqqKandianBizUgcKandianVideoUploadService$ICallBack = new ReadInJoyBaseListViewGroup.1(this);
-  List<KandianProgressView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  Map<String, KandianProgressView> jdField_a_of_type_JavaUtilMap = new HashMap();
-  protected boolean a;
+  protected ReadInJoyPageItemCache b;
+  protected ReadInJoyBaseViewController c;
+  protected ReadInJoyXListView d;
+  protected boolean e = false;
+  Map<String, KandianProgressView> f = new HashMap();
+  List<KandianProgressView> g = new ArrayList();
+  KandianVideoUploadService.ICallBack h = new ReadInJoyBaseListViewGroup.1(this);
+  KandianProgressView.ClickCallBack i = new ReadInJoyBaseListViewGroup.2(this);
   
   public ReadInJoyBaseListViewGroup(ReadInJoyBaseViewController paramReadInJoyBaseViewController, int paramInt, ReadInJoyPageItemCache paramReadInJoyPageItemCache)
   {
-    super(paramReadInJoyBaseViewController.a());
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyBaseViewController = paramReadInJoyBaseViewController;
+    super(paramReadInJoyBaseViewController.cQ_());
+    this.a = paramInt;
+    this.c = paramReadInJoyBaseViewController;
     if (paramReadInJoyPageItemCache == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache = new ReadInJoyPageItemCache();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.a = ReadInJoyHelper.a(paramInt, (QQAppInterface)ReadInJoyUtils.a());
+      this.b = new ReadInJoyPageItemCache();
+      this.b.b = ReadInJoyHelper.a(paramInt, (QQAppInterface)ReadInJoyUtils.b());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache = paramReadInJoyPageItemCache;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.b = 1;
+    this.b = paramReadInJoyPageItemCache;
+    this.b.h = 1;
   }
   
   private void a()
@@ -69,10 +68,10 @@ public abstract class ReadInJoyBaseListViewGroup
       localStringBuilder.append("is loading fail view:");
       localStringBuilder.append(str);
       localStringBuilder.append("map size");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.size());
+      localStringBuilder.append(this.f.size());
       QLog.d("KandianVideoUpload", 1, localStringBuilder.toString());
-      if (this.jdField_a_of_type_JavaUtilMap.get(str) == null) {
-        KandianVideoUploadService.a(localIntent.getExtras(), this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcKandianVideoUploadService$ICallBack);
+      if (this.f.get(str) == null) {
+        KandianVideoUploadService.a(localIntent.getExtras(), this.h);
       }
     }
   }
@@ -81,24 +80,24 @@ public abstract class ReadInJoyBaseListViewGroup
   {
     String str1 = paramBundle.getString("mTaskID");
     String str2 = paramBundle.getString("arg_video_cover");
-    Object localObject = (View)this.jdField_a_of_type_JavaUtilMap.get(str1);
+    Object localObject = (View)this.f.get(str1);
     if (localObject == null)
     {
-      if (this.jdField_a_of_type_JavaUtilMap.size() < 2)
+      if (this.f.size() < 2)
       {
-        if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+        if (!this.g.isEmpty())
         {
-          localObject = (KandianProgressView)this.jdField_a_of_type_JavaUtilList.get(0);
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
+          localObject = (KandianProgressView)this.g.get(0);
+          this.g.remove(localObject);
         }
         else
         {
-          localObject = new KandianProgressView(a(), paramBundle, str1, str2, this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianProgressView$ClickCallBack);
+          localObject = new KandianProgressView(getCurrentActivity(), paramBundle, str1, str2, this.i);
         }
         ((KandianProgressView)localObject).setTag(paramString);
         ((KandianProgressView)localObject).setViewInformation(paramBundle, str1, str2);
         a((View)localObject);
-        this.jdField_a_of_type_JavaUtilMap.put(str1, localObject);
+        this.f.put(str1, localObject);
       }
     }
     else {
@@ -108,7 +107,7 @@ public abstract class ReadInJoyBaseListViewGroup
   
   private void a(View paramView)
   {
-    ReadInJoyXListView localReadInJoyXListView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView;
+    ReadInJoyXListView localReadInJoyXListView = this.d;
     if (localReadInJoyXListView != null) {
       localReadInJoyXListView.addHeaderView(paramView);
     }
@@ -116,33 +115,13 @@ public abstract class ReadInJoyBaseListViewGroup
   
   private void a(String paramString)
   {
-    KandianProgressView localKandianProgressView = (KandianProgressView)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    KandianProgressView localKandianProgressView = (KandianProgressView)this.f.get(paramString);
     if (localKandianProgressView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.removeHeaderView(localKandianProgressView);
-      this.jdField_a_of_type_JavaUtilList.add(localKandianProgressView);
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      this.d.removeHeaderView(localKandianProgressView);
+      this.g.add(localKandianProgressView);
+      this.f.remove(paramString);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyBaseViewController.a();
-  }
-  
-  public RIJDataFetchManager a()
-  {
-    return null;
-  }
-  
-  public ReadInJoyBaseViewController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyBaseViewController;
   }
   
   public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
@@ -174,7 +153,36 @@ public abstract class ReadInJoyBaseListViewGroup
   public void g()
   {
     a();
-    KandianVideoUploadService.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcKandianVideoUploadService$ICallBack);
+    KandianVideoUploadService.a(this.h);
+  }
+  
+  public int getChannelID()
+  {
+    return this.a;
+  }
+  
+  public Activity getCurrentActivity()
+  {
+    return this.c.cQ_();
+  }
+  
+  public RIJDataFetchManager getDataFetchManager()
+  {
+    return null;
+  }
+  
+  public abstract String getLastActionBrief();
+  
+  public abstract long getLastActionTime();
+  
+  public ReadInJoyXListView getReadInJoyXListView()
+  {
+    return this.d;
+  }
+  
+  public ReadInJoyBaseViewController getViewController()
+  {
+    return this.c;
   }
   
   public void h()
@@ -184,18 +192,18 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public void i()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      this.jdField_a_of_type_Boolean = true;
-      ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).isChannelRefreshing(this.jdField_a_of_type_Int, true);
+      this.e = true;
+      ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).isChannelRefreshing(this.a, true);
       PublicTracker.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
+      ReadInJoyLogicEngine.a().a(this.a, 20, 9223372036854775807L, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBaseListViewGroup
  * JD-Core Version:    0.7.0.1
  */

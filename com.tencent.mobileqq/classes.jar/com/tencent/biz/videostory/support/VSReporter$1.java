@@ -18,18 +18,18 @@ final class VSReporter$1
     REPORT.SingleDcData localSingleDcData = new REPORT.SingleDcData();
     localSingleDcData.dcid.set(5);
     localSingleDcData.type.set(String.valueOf(2));
-    localSingleDcData.report_data.add(VSReporter.a("event", this.jdField_a_of_type_JavaLangString));
+    localSingleDcData.report_data.add(VSReporter.a("event", this.a));
     localSingleDcData.report_data.addAll(VSReporter.a());
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (!localList.isEmpty())) {
-      localSingleDcData.report_data.addAll(this.jdField_a_of_type_JavaUtilList);
+      localSingleDcData.report_data.addAll(this.b);
     }
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).addMiniProgramReportData(localSingleDcData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.support.VSReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ class ShortVideoRealItemBuilder$8
   {
     ShortVideoRealItemBuilder localShortVideoRealItemBuilder = this.a;
     long l;
-    if (ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder) != null) {
-      l = ShortVideoRealItemBuilder.a(this.a).uniseq;
+    if (ShortVideoRealItemBuilder.c(localShortVideoRealItemBuilder) != null) {
+      l = ShortVideoRealItemBuilder.c(this.a).uniseq;
     } else {
       l = -1L;
     }
@@ -29,18 +29,18 @@ class ShortVideoRealItemBuilder$8
     {
       paramArrayOfByte2 = new StringBuilder();
       paramArrayOfByte2.append("onEncodeSuccess curMsg:");
-      if (ShortVideoRealItemBuilder.a(this.a) != null) {
-        paramString2 = Long.valueOf(ShortVideoRealItemBuilder.a(this.a).uniseq);
+      if (ShortVideoRealItemBuilder.c(this.a) != null) {
+        paramString2 = Long.valueOf(ShortVideoRealItemBuilder.c(this.a).uniseq);
       } else {
         paramString2 = "";
       }
       paramArrayOfByte2.append(paramString2);
       QLog.i("ShortVideoRealItemBuilder", 2, paramArrayOfByte2.toString());
     }
-    if (ShortVideoRealItemBuilder.a(this.a) != null)
+    if (ShortVideoRealItemBuilder.c(this.a) != null)
     {
-      ShortVideoRealItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
-      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ShortVideoRealItemBuilder.a(this.a), paramString1, this.a).run();
+      ShortVideoRealItemBuilder.c(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
+      new ShortVideoRealItemBuilder.UploadTask(this.a.d, this.a.e, ShortVideoRealItemBuilder.c(this.a), paramString1, this.a).run();
       return;
     }
     ShortVideoExceptionReporter.a(new RuntimeException("onMediaMessageSend failed"));
@@ -48,7 +48,7 @@ class ShortVideoRealItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

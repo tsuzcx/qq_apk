@@ -9,27 +9,27 @@ import java.lang.ref.WeakReference;
 public class ProfileURLDrawableDownListener
   implements URLDrawableDownListener
 {
-  final String jdField_a_of_type_JavaLangString;
-  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  final WeakReference<View> a;
   final String b;
+  final String c;
   
   public ProfileURLDrawableDownListener(View paramView, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.a = new WeakReference(paramView);
+    this.c = paramString1;
+    this.b = paramString2;
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramView = (View)this.a.get();
     if (paramView != null)
     {
       paramURLDrawable = new StringBuilder();
-      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
       paramURLDrawable.append(this.b);
+      paramURLDrawable.append(this.c);
       QLog.e("Q.profilecard.FrdProfileCard", 1, paramURLDrawable.toString());
       paramView.setVisibility(8);
     }
@@ -41,7 +41,7 @@ public class ProfileURLDrawableDownListener
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramView = (View)this.a.get();
     if (paramView != null) {
       paramView.setVisibility(0);
     }
@@ -49,7 +49,7 @@ public class ProfileURLDrawableDownListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileURLDrawableDownListener
  * JD-Core Version:    0.7.0.1
  */

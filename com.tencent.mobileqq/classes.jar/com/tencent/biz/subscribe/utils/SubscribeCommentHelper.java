@@ -11,22 +11,22 @@ import java.util.Map;
 
 public class SubscribeCommentHelper
 {
-  private static SubscribeCommentHelper jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeCommentHelper;
   public static final String a = "SubscribeCommentHelper";
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static SubscribeCommentHelper b;
+  private Map<String, String> c = new HashMap();
   
   public static SubscribeCommentHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeCommentHelper == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeCommentHelper == null) {
-          jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeCommentHelper = new SubscribeCommentHelper();
+        if (b == null) {
+          b = new SubscribeCommentHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeCommentHelper;
+    return b;
   }
   
   private String a(String paramString1, String paramString2, String paramString3)
@@ -62,14 +62,14 @@ public class SubscribeCommentHelper
   
   private void a(String paramString1, String paramString2)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("storeComment storeKey: ");
     localStringBuilder.append(paramString1);
     localStringBuilder.append(" comment: ");
     localStringBuilder.append(paramString2);
     QLog.d(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+    this.c.put(paramString1, paramString2);
   }
   
   private String b(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
@@ -94,18 +94,18 @@ public class SubscribeCommentHelper
   public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
     paramStFeed = b(paramStFeed, paramStComment, paramStReply);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramStFeed))
+    if (this.c.containsKey(paramStFeed))
     {
-      paramStComment = jdField_a_of_type_JavaLangString;
+      paramStComment = a;
       paramStReply = new StringBuilder();
       paramStReply.append("getComment storeKey: ");
       paramStReply.append(paramStFeed);
       paramStReply.append(" preCommentText: ");
-      paramStReply.append((String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed));
+      paramStReply.append((String)this.c.get(paramStFeed));
       QLog.d(paramStComment, 1, paramStReply.toString());
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed);
+      return (String)this.c.get(paramStFeed);
     }
-    paramStComment = jdField_a_of_type_JavaLangString;
+    paramStComment = a;
     paramStReply = new StringBuilder();
     paramStReply.append("getComment storeKey: ");
     paramStReply.append(paramStFeed);

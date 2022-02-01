@@ -12,9 +12,9 @@ import com.google.android.material.R.string;
 class PasswordToggleEndIconDelegate
   extends EndIconDelegate
 {
-  private final TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new PasswordToggleEndIconDelegate.1(this);
-  private final TextInputLayout.OnEditTextAttachedListener jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEditTextAttachedListener = new PasswordToggleEndIconDelegate.2(this);
-  private final TextInputLayout.OnEndIconChangedListener jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEndIconChangedListener = new PasswordToggleEndIconDelegate.3(this);
+  private final TextWatcher d = new PasswordToggleEndIconDelegate.1(this);
+  private final TextInputLayout.OnEditTextAttachedListener e = new PasswordToggleEndIconDelegate.2(this);
+  private final TextInputLayout.OnEndIconChangedListener f = new PasswordToggleEndIconDelegate.3(this);
   
   PasswordToggleEndIconDelegate(@NonNull TextInputLayout paramTextInputLayout)
   {
@@ -26,20 +26,20 @@ class PasswordToggleEndIconDelegate
     return (paramEditText != null) && ((paramEditText.getInputType() == 16) || (paramEditText.getInputType() == 128) || (paramEditText.getInputType() == 144) || (paramEditText.getInputType() == 224));
   }
   
-  private boolean b()
+  private boolean c()
   {
-    EditText localEditText = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a();
+    EditText localEditText = this.a.getEditText();
     return (localEditText != null) && ((localEditText.getTransformationMethod() instanceof PasswordTransformationMethod));
   }
   
   void a()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconDrawable(AppCompatResources.getDrawable(this.jdField_a_of_type_AndroidContentContext, R.drawable.b));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconContentDescription(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.getResources().getText(R.string.R));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconOnClickListener(new PasswordToggleEndIconDelegate.4(this));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEditTextAttachedListener);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEndIconChangedListener);
-    EditText localEditText = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a();
+    this.a.setEndIconDrawable(AppCompatResources.getDrawable(this.b, R.drawable.b));
+    this.a.setEndIconContentDescription(this.a.getResources().getText(R.string.R));
+    this.a.setEndIconOnClickListener(new PasswordToggleEndIconDelegate.4(this));
+    this.a.a(this.e);
+    this.a.a(this.f);
+    EditText localEditText = this.a.getEditText();
     if (a(localEditText)) {
       localEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
     }
@@ -47,7 +47,7 @@ class PasswordToggleEndIconDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.PasswordToggleEndIconDelegate
  * JD-Core Version:    0.7.0.1
  */

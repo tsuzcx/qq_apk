@@ -13,9 +13,18 @@ final class Constants$1
     put("音视频通话", localLong2);
     put("一起派对", localLong2);
     put("ptt", localLong1);
-    put("listen_together", localLong1);
+    put("一起听歌", localLong1);
     put("voice_assistant", localLong1);
-    put("开播啦鹅", localLong1);
+    put("QQ直播", localLong1);
+    put("自习室", localLong2);
+    put("看点", localLong1);
+    put("运动", localLong2);
+    put("物联设备", localLong2);
+    put("小世界", localLong2);
+    put("频道通话", localLong1);
+    put("频道直播", localLong1);
+    put("频道观看直播", localLong1);
+    put("游戏组队", localLong1);
   }
 }
 

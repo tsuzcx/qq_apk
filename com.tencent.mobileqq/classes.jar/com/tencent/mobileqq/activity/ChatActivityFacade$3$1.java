@@ -26,9 +26,9 @@ class ChatActivityFacade$3$1
           localStringBuilder.append(paramStGetC2CFeedRsp.attchInfo.get());
           QLog.d("ChatActivityFacade.QCircleFeeds", 2, localStringBuilder.toString());
         }
-        ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramStGetC2CFeedRsp, this.a.jdField_a_of_type_Boolean);
-        if ((paramStGetC2CFeedRsp.attchInfo != null) && (!StringUtil.a(paramStGetC2CFeedRsp.attchInfo.get()))) {
-          ChatActivityFacade.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramStGetC2CFeedRsp.attchInfo.get());
+        ChatActivityFacade.a(this.a.a, this.a.b, paramStGetC2CFeedRsp, this.a.c);
+        if ((paramStGetC2CFeedRsp.attchInfo != null) && (!StringUtil.isEmpty(paramStGetC2CFeedRsp.attchInfo.get()))) {
+          ChatActivityFacade.f(this.a.a, this.a.b, paramStGetC2CFeedRsp.attchInfo.get());
         }
       }
       else if (QLog.isColorLevel())
@@ -55,7 +55,7 @@ class ChatActivityFacade$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.3.1
  * JD-Core Version:    0.7.0.1
  */

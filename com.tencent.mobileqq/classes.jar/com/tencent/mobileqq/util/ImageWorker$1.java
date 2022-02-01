@@ -8,13 +8,13 @@ class ImageWorker$1
 {
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker$BitmapWorkerTask.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator, Boolean.valueOf(true) });
+    Drawable localDrawable = this.a.a(new Object[] { this.b, this.c, Boolean.valueOf(true) });
     ImageWorker.a(this.this$0).post(new ImageWorker.1.1(this, localDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageWorker.1
  * JD-Core Version:    0.7.0.1
  */

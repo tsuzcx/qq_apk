@@ -12,12 +12,12 @@ public class MeetingNotify
 {
   public void a(GrayTipsItemBuilder paramGrayTipsItemBuilder, MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramGrayTipsItemBuilder.d(paramHolder.b, paramString);
+    paramGrayTipsItemBuilder.d(paramHolder.d, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.graytipsitem.MeetingNotify
  * JD-Core Version:    0.7.0.1
  */

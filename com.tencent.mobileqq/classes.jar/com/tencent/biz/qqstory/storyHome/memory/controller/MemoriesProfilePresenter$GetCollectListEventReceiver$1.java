@@ -10,7 +10,7 @@ class MemoriesProfilePresenter$GetCollectListEventReceiver$1
   
   public void run()
   {
-    ((UserManager)SuperManager.a(2)).a(this.a.a);
+    ((UserManager)SuperManager.a(2)).a(this.a.b);
   }
 }
 

@@ -13,7 +13,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.HorizontalScrollView;
 import android.widget.Spinner;
+import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.app.ActionBar.Tab;
 import androidx.appcompat.view.ActionBarPolicy;
 
@@ -37,7 +39,7 @@ public class ScrollingTabContainerView
   protected final ScrollingTabContainerView.VisibilityAnimListener mVisAnimListener = new ScrollingTabContainerView.VisibilityAnimListener(this);
   protected ViewPropertyAnimator mVisibilityAnim;
   
-  public ScrollingTabContainerView(Context paramContext)
+  public ScrollingTabContainerView(@NonNull Context paramContext)
   {
     super(paramContext);
     setHorizontalScrollBarEnabled(false);
@@ -50,7 +52,7 @@ public class ScrollingTabContainerView
   
   private Spinner createSpinner()
   {
-    AppCompatSpinner localAppCompatSpinner = new AppCompatSpinner(getContext(), null, 2131034129);
+    AppCompatSpinner localAppCompatSpinner = new AppCompatSpinner(getContext(), null, R.attr.actionDropDownStyle);
     localAppCompatSpinner.setLayoutParams(new LinearLayoutCompat.LayoutParams(-2, -1));
     localAppCompatSpinner.setOnItemSelectedListener(this);
     return localAppCompatSpinner;
@@ -58,7 +60,7 @@ public class ScrollingTabContainerView
   
   private LinearLayoutCompat createTabLayout()
   {
-    LinearLayoutCompat localLinearLayoutCompat = new LinearLayoutCompat(getContext(), null, 2131034123);
+    LinearLayoutCompat localLinearLayoutCompat = new LinearLayoutCompat(getContext(), null, R.attr.actionBarTabBarStyle);
     localLinearLayoutCompat.setMeasureWithLargestChildEnabled(true);
     localLinearLayoutCompat.setGravity(17);
     localLinearLayoutCompat.setLayoutParams(new LinearLayoutCompat.LayoutParams(-2, -1));

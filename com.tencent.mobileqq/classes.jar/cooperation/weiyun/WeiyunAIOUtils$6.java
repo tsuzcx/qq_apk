@@ -12,14 +12,14 @@ final class WeiyunAIOUtils$6
   
   public void a()
   {
-    WeiyunAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    WeiyunAIOUtils.a(this.a, this.b, this.c);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.6
  * JD-Core Version:    0.7.0.1
  */

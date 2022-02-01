@@ -3,7 +3,6 @@ package com.tencent.mobileqq.kandian.biz.biu;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
@@ -36,77 +35,77 @@ class ReadInJoyDeliverBiuActivity$1
       ((StringBuilder)localObject).append(bool);
       QLog.d("ReadInJoyDeliverBiuActivity", 2, ((StringBuilder)localObject).toString());
     }
-    i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
-    if (bool != ReadInJoyDeliverBiuActivity.a(this.a))
+    i = ReadInJoyDeliverBiuActivity.c(this.a).getHeight();
+    if (bool != ReadInJoyDeliverBiuActivity.d(this.a))
     {
-      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
+      if (j > ReadInJoyDeliverBiuActivity.e(this.a)) {
         ReadInJoyDeliverBiuActivity.a(this.a, j);
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onGlobalLayout mMAXExternalPanelheight:");
-        ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.b(this.a));
+        ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.f(this.a));
         QLog.d("ReadInJoyDeliverBiuActivity", 2, ((StringBuilder)localObject).toString());
       }
-      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
+      j = i - ReadInJoyDeliverBiuActivity.g(this.a);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onGlobalLayout contentHeight:");
         ((StringBuilder)localObject).append(i);
         ((StringBuilder)localObject).append(", fixedHeight:");
-        ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.d(this.a));
+        ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.h(this.a));
         ((StringBuilder)localObject).append(", maxHeight:");
         ((StringBuilder)localObject).append(j);
         QLog.d("ReadInJoyDeliverBiuActivity", 2, ((StringBuilder)localObject).toString());
       }
-      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.i(this.a).setMaxHeight(j);
       ReadInJoyDeliverBiuActivity.a(this.a, bool);
       localObject = this.a;
-      if (i < ReadInJoyDeliverBiuActivity.e((ReadInJoyDeliverBiuActivity)localObject)) {
+      if (i < ReadInJoyDeliverBiuActivity.j((ReadInJoyDeliverBiuActivity)localObject)) {
         j = i;
       } else {
-        j = ReadInJoyDeliverBiuActivity.e(this.a);
+        j = ReadInJoyDeliverBiuActivity.j(this.a);
       }
       ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
       localObject = this.a;
-      if (i <= ReadInJoyDeliverBiuActivity.f((ReadInJoyDeliverBiuActivity)localObject)) {
-        i = ReadInJoyDeliverBiuActivity.f(this.a);
+      if (i <= ReadInJoyDeliverBiuActivity.k((ReadInJoyDeliverBiuActivity)localObject)) {
+        i = ReadInJoyDeliverBiuActivity.k(this.a);
       }
       ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
     }
-    else if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+    else if ((ReadInJoyDeliverBiuActivity.l(this.a) != ReadInJoyDeliverBiuActivity.m(this.a)) && (i == ReadInJoyDeliverBiuActivity.k(this.a)))
     {
-      i -= ReadInJoyDeliverBiuActivity.h(this.a);
-      j = i - ReadInJoyDeliverBiuActivity.i(this.a);
+      i -= ReadInJoyDeliverBiuActivity.m(this.a);
+      j = i - ReadInJoyDeliverBiuActivity.n(this.a);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onGlobalLayout contentHeight:");
         ((StringBuilder)localObject).append(i);
         ((StringBuilder)localObject).append(", fixedHeight:");
-        ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.j(this.a));
+        ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.o(this.a));
         ((StringBuilder)localObject).append(", maxHeight:");
         ((StringBuilder)localObject).append(j);
         QLog.d("ReadInJoyDeliverBiuActivity", 2, ((StringBuilder)localObject).toString());
       }
-      ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.p(this.a).setMaxHeight(j);
     }
     localObject = this.a;
-    ReadInJoyDeliverBiuActivity.d((ReadInJoyDeliverBiuActivity)localObject, ReadInJoyDeliverBiuActivity.h((ReadInJoyDeliverBiuActivity)localObject));
+    ReadInJoyDeliverBiuActivity.d((ReadInJoyDeliverBiuActivity)localObject, ReadInJoyDeliverBiuActivity.m((ReadInJoyDeliverBiuActivity)localObject));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onGlobalLayout mExternalPanelheight:");
-      ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.g(this.a));
+      ((StringBuilder)localObject).append(ReadInJoyDeliverBiuActivity.l(this.a));
       QLog.d("ReadInJoyDeliverBiuActivity", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.ReadInJoyDeliverBiuActivity.1
  * JD-Core Version:    0.7.0.1
  */

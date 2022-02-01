@@ -8,15 +8,14 @@ import mqq.os.MqqHandler;
 public class LocalCrashCollector
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("");
-  protected final MqqHandler a;
+  protected final MqqHandler a = new MqqWeakReferenceHandler(Looper.getMainLooper(), null, true);
+  private StringBuilder b = new StringBuilder("");
+  private int c;
+  private AIOContext d;
   
   public LocalCrashCollector(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), null, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.d = paramAIOContext;
   }
   
   /* Error */
@@ -32,8 +31,8 @@ public class LocalCrashCollector
     //   8: aload 8
     //   10: astore 4
     //   12: aload_0
-    //   13: getfield 25	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   16: invokevirtual 53	java/lang/StringBuilder:length	()I
+    //   13: getfield 28	com/tencent/mobileqq/statistics/LocalCrashCollector:b	Ljava/lang/StringBuilder;
+    //   16: invokevirtual 56	java/lang/StringBuilder:length	()I
     //   19: istore_2
     //   20: iconst_0
     //   21: istore_1
@@ -42,38 +41,38 @@ public class LocalCrashCollector
     //   26: aload 8
     //   28: astore 4
     //   30: aload_0
-    //   31: getfield 25	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   31: getfield 28	com/tencent/mobileqq/statistics/LocalCrashCollector:b	Ljava/lang/StringBuilder;
     //   34: iconst_0
     //   35: aload_0
-    //   36: getfield 25	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   39: invokevirtual 53	java/lang/StringBuilder:length	()I
-    //   42: invokevirtual 57	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   36: getfield 28	com/tencent/mobileqq/statistics/LocalCrashCollector:b	Ljava/lang/StringBuilder;
+    //   39: invokevirtual 56	java/lang/StringBuilder:length	()I
+    //   42: invokevirtual 60	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload 8
     //   48: astore 4
-    //   50: new 59	java/io/File
+    //   50: new 62	java/io/File
     //   53: dup
-    //   54: ldc 61
-    //   56: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
+    //   54: ldc 64
+    //   56: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
     //   59: astore 5
     //   61: aload 8
     //   63: astore 4
     //   65: aload 5
-    //   67: invokevirtual 66	java/io/File:exists	()Z
+    //   67: invokevirtual 69	java/io/File:exists	()Z
     //   70: ifne +13 -> 83
     //   73: aload 8
     //   75: astore 4
     //   77: aload 5
-    //   79: invokevirtual 69	java/io/File:mkdirs	()Z
+    //   79: invokevirtual 72	java/io/File:mkdirs	()Z
     //   82: pop
     //   83: aload 8
     //   85: astore 4
     //   87: aload 5
-    //   89: new 71	com/tencent/mobileqq/statistics/LocalCrashCollector$1
+    //   89: new 74	com/tencent/mobileqq/statistics/LocalCrashCollector$1
     //   92: dup
     //   93: aload_0
-    //   94: invokespecial 74	com/tencent/mobileqq/statistics/LocalCrashCollector$1:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
-    //   97: invokevirtual 78	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
+    //   94: invokespecial 77	com/tencent/mobileqq/statistics/LocalCrashCollector$1:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   97: invokevirtual 81	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
     //   100: astore 9
     //   102: aload 9
     //   104: ifnull +272 -> 376
@@ -88,15 +87,15 @@ public class LocalCrashCollector
     //   124: aload_0
     //   125: aload 9
     //   127: arraylength
-    //   128: putfield 44	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_Int	I
+    //   128: putfield 48	com/tencent/mobileqq/statistics/LocalCrashCollector:c	I
     //   131: aload 8
     //   133: astore 4
     //   135: aload 9
-    //   137: new 80	com/tencent/mobileqq/statistics/LocalCrashCollector$2
+    //   137: new 83	com/tencent/mobileqq/statistics/LocalCrashCollector$2
     //   140: dup
     //   141: aload_0
-    //   142: invokespecial 81	com/tencent/mobileqq/statistics/LocalCrashCollector$2:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
-    //   145: invokestatic 87	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
+    //   142: invokespecial 84	com/tencent/mobileqq/statistics/LocalCrashCollector$2:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   145: invokestatic 90	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
     //   148: aload 8
     //   150: astore 4
     //   152: aload 9
@@ -111,15 +110,15 @@ public class LocalCrashCollector
     //   165: iload_1
     //   166: aaload
     //   167: astore 6
-    //   169: new 89	java/io/FileReader
+    //   169: new 92	java/io/FileReader
     //   172: dup
     //   173: aload 6
-    //   175: invokespecial 92	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   175: invokespecial 95	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   178: astore 4
     //   180: aload 4
     //   182: astore 5
     //   184: aload 6
-    //   186: invokevirtual 95	java/io/File:length	()J
+    //   186: invokevirtual 98	java/io/File:length	()J
     //   189: l2i
     //   190: newarray char
     //   192: astore_3
@@ -127,29 +126,29 @@ public class LocalCrashCollector
     //   195: astore 5
     //   197: aload 4
     //   199: aload_3
-    //   200: invokevirtual 99	java/io/FileReader:read	([C)I
+    //   200: invokevirtual 102	java/io/FileReader:read	([C)I
     //   203: pop
     //   204: aload 4
     //   206: astore 5
     //   208: aload_3
-    //   209: invokestatic 105	java/lang/String:valueOf	([C)Ljava/lang/String;
+    //   209: invokestatic 108	java/lang/String:valueOf	([C)Ljava/lang/String;
     //   212: astore_3
     //   213: aload 4
     //   215: astore 5
     //   217: aload_0
-    //   218: getfield 25	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   218: getfield 28	com/tencent/mobileqq/statistics/LocalCrashCollector:b	Ljava/lang/StringBuilder;
     //   221: astore 6
     //   223: aload 4
     //   225: astore 5
     //   227: aload 6
     //   229: aload_3
-    //   230: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: pop
     //   234: aload 4
     //   236: astore 5
     //   238: aload 6
-    //   240: ldc 111
-    //   242: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: ldc 114
+    //   242: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   245: pop
     //   246: aload 4
     //   248: astore_3
@@ -168,7 +167,7 @@ public class LocalCrashCollector
     //   273: aload_3
     //   274: astore 5
     //   276: aload 6
-    //   278: invokevirtual 114	java/lang/Exception:printStackTrace	()V
+    //   278: invokevirtual 117	java/lang/Exception:printStackTrace	()V
     //   281: aload_3
     //   282: astore 4
     //   284: aload_3
@@ -176,7 +175,7 @@ public class LocalCrashCollector
     //   288: aload 8
     //   290: astore 4
     //   292: aload_3
-    //   293: invokevirtual 117	java/io/FileReader:close	()V
+    //   293: invokevirtual 120	java/io/FileReader:close	()V
     //   296: aload_3
     //   297: astore 4
     //   299: aload 4
@@ -192,25 +191,25 @@ public class LocalCrashCollector
     //   315: aload 8
     //   317: astore 4
     //   319: aload 5
-    //   321: invokevirtual 117	java/io/FileReader:close	()V
+    //   321: invokevirtual 120	java/io/FileReader:close	()V
     //   324: aload 8
     //   326: astore 4
     //   328: aload_3
     //   329: athrow
     //   330: aload 8
     //   332: astore 4
-    //   334: new 119	java/io/FileWriter
+    //   334: new 122	java/io/FileWriter
     //   337: dup
-    //   338: ldc 121
-    //   340: invokespecial 122	java/io/FileWriter:<init>	(Ljava/lang/String;)V
+    //   338: ldc 124
+    //   340: invokespecial 125	java/io/FileWriter:<init>	(Ljava/lang/String;)V
     //   343: astore_3
     //   344: aload_3
     //   345: aload_0
-    //   346: getfield 25	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
-    //   349: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   352: invokevirtual 129	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   346: getfield 28	com/tencent/mobileqq/statistics/LocalCrashCollector:b	Ljava/lang/StringBuilder;
+    //   349: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   352: invokevirtual 132	java/io/FileWriter:write	(Ljava/lang/String;)V
     //   355: aload_3
-    //   356: invokevirtual 132	java/io/FileWriter:flush	()V
+    //   356: invokevirtual 135	java/io/FileWriter:flush	()V
     //   359: goto +26 -> 385
     //   362: astore 4
     //   364: goto +81 -> 445
@@ -222,11 +221,11 @@ public class LocalCrashCollector
     //   378: astore 4
     //   380: aload_0
     //   381: iconst_0
-    //   382: putfield 44	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_Int	I
+    //   382: putfield 48	com/tencent/mobileqq/statistics/LocalCrashCollector:c	I
     //   385: aload_3
     //   386: ifnull +42 -> 428
     //   389: aload_3
-    //   390: invokevirtual 133	java/io/FileWriter:close	()V
+    //   390: invokevirtual 136	java/io/FileWriter:close	()V
     //   393: goto +35 -> 428
     //   396: astore 5
     //   398: aload 4
@@ -240,23 +239,23 @@ public class LocalCrashCollector
     //   413: aload_3
     //   414: astore 4
     //   416: aload 5
-    //   418: invokevirtual 114	java/lang/Exception:printStackTrace	()V
+    //   418: invokevirtual 117	java/lang/Exception:printStackTrace	()V
     //   421: aload_3
     //   422: ifnull +6 -> 428
     //   425: goto -36 -> 389
     //   428: aload_0
-    //   429: getfield 38	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   432: new 135	com/tencent/mobileqq/statistics/LocalCrashCollector$3
+    //   429: getfield 41	com/tencent/mobileqq/statistics/LocalCrashCollector:a	Lmqq/os/MqqHandler;
+    //   432: new 138	com/tencent/mobileqq/statistics/LocalCrashCollector$3
     //   435: dup
     //   436: aload_0
-    //   437: invokespecial 136	com/tencent/mobileqq/statistics/LocalCrashCollector$3:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
-    //   440: invokevirtual 142	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   437: invokespecial 139	com/tencent/mobileqq/statistics/LocalCrashCollector$3:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   440: invokevirtual 145	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   443: pop
     //   444: return
     //   445: aload_3
     //   446: ifnull +7 -> 453
     //   449: aload_3
-    //   450: invokevirtual 133	java/io/FileWriter:close	()V
+    //   450: invokevirtual 136	java/io/FileWriter:close	()V
     //   453: goto +6 -> 459
     //   456: aload 4
     //   458: athrow
@@ -355,7 +354,7 @@ public class LocalCrashCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector
  * JD-Core Version:    0.7.0.1
  */

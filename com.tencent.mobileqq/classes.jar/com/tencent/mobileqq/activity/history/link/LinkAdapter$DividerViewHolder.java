@@ -5,12 +5,12 @@ import android.widget.TextView;
 
 class LinkAdapter$DividerViewHolder
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
+  CheckBox b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.LinkAdapter.DividerViewHolder
  * JD-Core Version:    0.7.0.1
  */

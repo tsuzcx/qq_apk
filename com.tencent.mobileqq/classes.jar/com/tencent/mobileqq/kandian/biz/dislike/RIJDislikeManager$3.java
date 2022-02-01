@@ -13,17 +13,17 @@ class RIJDislikeManager$3
   
   public void onDismiss()
   {
-    RIJDislikeManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeRIJDislikeManager).a(1.0F);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b())
+    RIJDislikeManager.a(this.b).a(1.0F);
+    if (this.a.a().f())
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().c();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().f(false);
+      this.a.a().z().v();
+      this.a.a().f(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.RIJDislikeManager.3
  * JD-Core Version:    0.7.0.1
  */

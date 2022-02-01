@@ -30,11 +30,6 @@ public class AEOldShortVideoOtherResourceMgr
     return "other_res000_0";
   }
   
-  static boolean a()
-  {
-    return true;
-  }
-  
   static boolean a(AppInterface paramAppInterface, AEOldShortVideoResManager.SVConfigItem paramSVConfigItem)
   {
     return false;
@@ -116,10 +111,15 @@ public class AEOldShortVideoOtherResourceMgr
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
+  
+  static boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoOtherResourceMgr
  * JD-Core Version:    0.7.0.1
  */

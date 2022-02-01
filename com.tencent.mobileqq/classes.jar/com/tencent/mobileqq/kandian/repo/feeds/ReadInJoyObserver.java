@@ -26,6 +26,7 @@ import com.tencent.mobileqq.kandian.repo.share.KingMomentInfo;
 import com.tencent.widget.AbsListView;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONObject;
 import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
 import tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.ModuleInfo;
 import tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.TextCardInfo;
@@ -56,6 +57,8 @@ public class ReadInJoyObserver
   
   public void a(int paramInt, Object paramObject) {}
   
+  public void a(int paramInt, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  
   public void a(int paramInt, String paramString, List<AbsBaseArticleInfo> paramList, IInsertArticleCallback paramIInsertArticleCallback) {}
   
   public void a(int paramInt, List<Long> paramList) {}
@@ -63,6 +66,8 @@ public class ReadInJoyObserver
   public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
   
   public void a(int paramInt, boolean paramBoolean, Object... paramVarArgs) {}
+  
+  public void a(long paramLong, int paramInt) {}
   
   public void a(long paramLong, int paramInt, String paramString) {}
   
@@ -144,21 +149,11 @@ public class ReadInJoyObserver
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public void aE_() {}
-  
-  public void aF_() {}
-  
   public void a_(AbsBaseArticleInfo paramAbsBaseArticleInfo) {}
   
   public void a_(List<SubscriptionFeed> paramList) {}
   
   public void a_(boolean paramBoolean, String paramString) {}
-  
-  public void aq_() {}
-  
-  public void ar_() {}
-  
-  public void as_() {}
   
   public void b(int paramInt, List<Long> paramList) {}
   
@@ -166,7 +161,7 @@ public class ReadInJoyObserver
   
   public void b(String paramString, int paramInt) {}
   
-  public void b(List<TagInfo> paramList) {}
+  public void b(List<TopicInfo> paramList) {}
   
   public void b(List<String> paramList, List<TopicInfo> paramList1) {}
   
@@ -180,59 +175,69 @@ public class ReadInJoyObserver
   
   public void b_(int paramInt1, int paramInt2) {}
   
-  public void c() {}
-  
-  public void c(int paramInt) {}
-  
   public void c(int paramInt, List<Long> paramList) {}
   
   public void c(String paramString, int paramInt) {}
+  
+  public void c(List<TagInfo> paramList) {}
+  
+  public void c(boolean paramBoolean) {}
   
   public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
   
   public void c(boolean paramBoolean1, List<FollowingMember> paramList, long paramLong, boolean paramBoolean2) {}
   
-  public void d(int paramInt) {}
+  public void cD_() {}
+  
+  public void cE_() {}
+  
+  public void cF_() {}
+  
+  public void cG_() {}
+  
+  public void cH_() {}
+  
+  public void cI_() {}
+  
+  public void cJ_() {}
+  
+  public void cK_() {}
+  
+  public void cL_() {}
+  
+  public void cM_() {}
+  
+  public void cN_() {}
   
   public void d(int paramInt, List<ChannelBannerInfo> paramList) {}
   
-  public void d(String paramString) {}
-  
   public void d(boolean paramBoolean, List<DiandianTopConfig> paramList) {}
-  
-  public void d_(String paramString) {}
-  
-  public void e() {}
   
   public void e(int paramInt) {}
   
   public void e(boolean paramBoolean, List<TabChannelCoverInfo> paramList) {}
   
-  public void e_(String paramString) {}
+  public void f() {}
   
   public void f(int paramInt) {}
   
   public void f(boolean paramBoolean, List<ChannelInfo> paramList) {}
   
-  public void g() {}
-  
-  public void g(int paramInt) {}
-  
   public void g(boolean paramBoolean, List<Integer> paramList) {}
-  
-  public void h() {}
   
   public void h(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
   
-  public void i() {}
+  public void j_(String paramString) {}
   
-  public void j_(int paramInt) {}
+  public void k_(String paramString) {}
   
-  public void k() {}
+  public void l_(String paramString) {}
   
-  public void l() {}
+  public void m_(int paramInt) {}
   
-  public void o() {}
+  public void n_(int paramInt) {}
+  
+  public void o_(int paramInt) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -255,11 +260,13 @@ public class ReadInJoyObserver
     }
   }
   
-  public void p() {}
+  public void s() {}
+  
+  public void t() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver
  * JD-Core Version:    0.7.0.1
  */

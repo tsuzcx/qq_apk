@@ -8,21 +8,16 @@ import org.json.JSONObject;
 
 class ApolloSSOConfig$CmdConfig
 {
-  public int a;
   public String a;
-  public final List<ApolloSSOConfig.CmdParameter> a;
-  
-  public ApolloSSOConfig$CmdConfig()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public int b;
+  public final List<ApolloSSOConfig.CmdParameter> c = new ArrayList();
   
   public JSONObject a(String paramString, AppInterface paramAppInterface)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramAppInterface != null))
+    if ((this.c != null) && (paramAppInterface != null))
     {
       JSONObject localJSONObject = new JSONObject();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
         ((ApolloSSOConfig.CmdParameter)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
       }
@@ -35,17 +30,17 @@ class ApolloSSOConfig$CmdConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mClientId:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" mCmdSSOName:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mParameters:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.CmdConfig
  * JD-Core Version:    0.7.0.1
  */

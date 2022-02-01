@@ -1,26 +1,21 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.HashSet;
 
-class FileJsPlugin$2
-  implements Runnable
+final class FileJsPlugin$2
+  extends HashSet<String>
 {
-  FileJsPlugin$2(FileJsPlugin paramFileJsPlugin, String paramString1, RequestEvent paramRequestEvent, long paramLong, String paramString2, String paramString3, MiniAppFileManager paramMiniAppFileManager, int paramInt, JSONObject paramJSONObject, String paramString4, Map paramMap) {}
-  
-  public void run()
+  FileJsPlugin$2()
   {
-    FileJsPlugin.2.1 local1 = new FileJsPlugin.2.1(this);
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(this.val$downloadUrl, this.val$header, this.val$filePath, 60, local1);
+    add("binary");
+    add("hex");
+    add("base64");
+    add("__internal__array_buffer");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

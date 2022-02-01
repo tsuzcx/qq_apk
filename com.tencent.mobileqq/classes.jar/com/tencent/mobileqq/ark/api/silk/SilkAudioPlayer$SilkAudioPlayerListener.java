@@ -10,8 +10,6 @@ public abstract interface SilkAudioPlayer$SilkAudioPlayerListener
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void b();
-  
   public abstract void c();
   
   public abstract void c(int paramInt);
@@ -19,10 +17,12 @@ public abstract interface SilkAudioPlayer$SilkAudioPlayerListener
   public abstract void d();
   
   public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.silk.SilkAudioPlayer.SilkAudioPlayerListener
  * JD-Core Version:    0.7.0.1
  */

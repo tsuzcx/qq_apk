@@ -12,7 +12,6 @@ import com.tencent.camerasdk.avreport.AEKitBean;
 import com.tencent.camerasdk.avreport.AEKitReportEvent;
 import com.tencent.camerasdk.avreport.AVReportCenter;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.ar.filter.ARParticleFilter;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.face.FaceRangeStatus;
@@ -105,7 +104,7 @@ public class VideoFilterUtil
       }
       return bool1;
     }
-    if ((!(paramVideoFilterBase instanceof FaceOffByImageFilter)) && (!(paramVideoFilterBase instanceof ThreeDimFilter)) && (!(paramVideoFilterBase instanceof ARParticleFilter)))
+    if ((!(paramVideoFilterBase instanceof FaceOffByImageFilter)) && (!(paramVideoFilterBase instanceof ThreeDimFilter)))
     {
       if ((paramVideoFilterBase instanceof HeadCropFilter)) {
         return true;
@@ -559,7 +558,7 @@ public class VideoFilterUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoFilterUtil
  * JD-Core Version:    0.7.0.1
  */

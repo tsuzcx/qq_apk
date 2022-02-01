@@ -357,11 +357,6 @@ public class TroopBatchInfoHandler
     }
   }
   
-  protected String a()
-  {
-    return "TroopBatchInfoHandler";
-  }
-  
   public void a(long paramLong, boolean paramBoolean, int paramInt)
   {
     ToServiceMsg localToServiceMsg = createToServiceMsg("ProfileService.ReqBatchProcess");
@@ -629,6 +624,11 @@ public class TroopBatchInfoHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopBatchInfoHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -672,7 +672,7 @@ public class TroopBatchInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopBatchInfoHandler
  * JD-Core Version:    0.7.0.1
  */

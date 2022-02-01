@@ -16,71 +16,71 @@ import javax.microedition.khronos.opengles.GL10;
 class SpriteGLView$SimpleRenderer
   implements GLSurfaceView.Renderer
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Label jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int jdField_b_of_type_Int;
-  private final float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private int jdField_c_of_type_Int;
-  private final float[] jdField_c_of_type_ArrayOfFloat = new float[16];
-  private int d;
+  private final float[] b = new float[16];
+  private final float[] c = new float[16];
+  private final float[] d = new float[16];
   private int e;
-  private int f = 0;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private long j;
+  private int k = 0;
+  private Label l;
   
   private SpriteGLView$SimpleRenderer(SpriteGLView paramSpriteGLView) {}
   
   @SuppressLint({"DefaultLocale"})
   public void onDrawFrame(GL10 paramGL10)
   {
-    paramGL10 = SpriteGLView.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
-    int i = 0;
+    paramGL10 = SpriteGLView.b(this.a);
+    int m = 0;
     try
     {
-      while (i < SpriteGLView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).size())
+      while (m < SpriteGLView.c(this.a).size())
       {
-        ((Runnable)SpriteGLView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).get(i)).run();
-        i += 1;
+        ((Runnable)SpriteGLView.c(this.a).get(m)).run();
+        m += 1;
       }
-      SpriteGLView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).clear();
-      paramGL10 = SpriteGLView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
-      i = 0;
+      SpriteGLView.c(this.a).clear();
+      paramGL10 = SpriteGLView.d(this.a);
+      m = 0;
       try
       {
-        while (i < SpriteGLView.c(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).size())
+        while (m < SpriteGLView.e(this.a).size())
         {
-          ((Runnable)SpriteGLView.c(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).get(i)).run();
-          i += 1;
+          ((Runnable)SpriteGLView.e(this.a).get(m)).run();
+          m += 1;
         }
         GLES20.glClear(16640);
-        paramGL10 = SpriteGLView.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).toArray();
-        int j = paramGL10.length;
-        i = 0;
-        while (i < j)
+        paramGL10 = SpriteGLView.a(this.a).toArray();
+        int n = paramGL10.length;
+        m = 0;
+        while (m < n)
         {
-          Object localObject1 = paramGL10[i];
+          Object localObject1 = paramGL10[m];
           if ((localObject1 instanceof Node))
           {
             GLES20.glEnable(3042);
             GLES20.glBlendFunc(1, 771);
-            GLES20.glUseProgram(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int);
-            ((Node)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getHeight(), this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.d, this.e, this.jdField_c_of_type_ArrayOfFloat);
+            GLES20.glUseProgram(this.a.w);
+            ((Node)localObject1).c(this.a.getWidth(), this.a.getHeight(), this.e, this.g, this.f, this.h, this.i, this.d);
           }
-          i += 1;
+          m += 1;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.a)
+        if (this.a.u)
         {
-          this.f += 1;
-          if (this.f >= 5)
+          this.k += 1;
+          if (this.k >= 5)
           {
-            i = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-            paramGL10 = String.format("fps: %.1f", new Object[] { Float.valueOf(this.f * 1000.0F / i) });
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.f = 0;
-            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, paramGL10);
+            m = (int)(System.currentTimeMillis() - this.j);
+            paramGL10 = String.format("fps: %.1f", new Object[] { Float.valueOf(this.k * 1000.0F / m) });
+            this.j = System.currentTimeMillis();
+            this.k = 0;
+            this.l.a(this.a, paramGL10);
           }
-          GLES20.glUseProgram(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int);
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.c(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getHeight(), this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.d, this.e, this.jdField_c_of_type_ArrayOfFloat);
+          GLES20.glUseProgram(this.a.w);
+          this.l.c(this.a.getWidth(), this.a.getHeight(), this.e, this.g, this.f, this.h, this.i, this.d);
         }
         GLES20.glFlush();
         return;
@@ -95,21 +95,21 @@ class SpriteGLView$SimpleRenderer
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     float f1 = paramInt1 / paramInt2;
-    Matrix.frustumM(this.jdField_a_of_type_ArrayOfFloat, 0, -f1, f1, -1.0F, 1.0F, 3.0F, 7.0F);
-    Matrix.setLookAtM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-    Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.c = (DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), 50.0F) - paramInt1 / 2);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.d = (DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), 10.0F) - paramInt2 / 2);
+    Matrix.frustumM(this.b, 0, -f1, f1, -1.0F, 1.0F, 3.0F, 7.0F);
+    Matrix.setLookAtM(this.c, 0, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    Matrix.multiplyMM(this.d, 0, this.b, 0, this.c, 0);
+    this.l.d = (DisplayUtil.a(this.a.getContext(), 50.0F) - paramInt1 / 2);
+    this.l.e = (DisplayUtil.a(this.a.getContext(), 10.0F) - paramInt2 / 2);
     GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.o();
+    this.a.p();
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
     try
     {
-      paramGL10 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView;
-      paramEGLConfig = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext();
+      paramGL10 = this.a;
+      paramEGLConfig = this.a.getContext();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("troop");
       ((StringBuilder)localObject).append(File.separator);
@@ -117,20 +117,20 @@ class SpriteGLView$SimpleRenderer
       ((StringBuilder)localObject).append(File.separator);
       ((StringBuilder)localObject).append("VertexShader.glsl");
       paramEGLConfig = GLUtil.a(paramEGLConfig, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext();
+      localObject = this.a.getContext();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("troop");
       localStringBuilder.append(File.separator);
       localStringBuilder.append("shaders");
       localStringBuilder.append(File.separator);
       localStringBuilder.append("FragmentShader.glsl");
-      paramGL10.jdField_c_of_type_Int = GLUtil.a(paramEGLConfig, GLUtil.a((Context)localObject, localStringBuilder.toString()));
-      GLES20.glUseProgram(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "vPosition");
-      this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "a_texCoord");
-      this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "uMVPMatrix");
-      this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "s_texture");
-      this.e = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "v_alpha");
+      paramGL10.w = GLUtil.a(paramEGLConfig, GLUtil.a((Context)localObject, localStringBuilder.toString()));
+      GLES20.glUseProgram(this.a.w);
+      this.e = GLES20.glGetAttribLocation(this.a.w, "vPosition");
+      this.g = GLES20.glGetAttribLocation(this.a.w, "a_texCoord");
+      this.f = GLES20.glGetUniformLocation(this.a.w, "uMVPMatrix");
+      this.h = GLES20.glGetUniformLocation(this.a.w, "s_texture");
+      this.i = GLES20.glGetUniformLocation(this.a.w, "v_alpha");
     }
     catch (Exception paramGL10)
     {
@@ -138,26 +138,26 @@ class SpriteGLView$SimpleRenderer
     }
     paramGL10 = new StringBuilder();
     paramGL10.append("program = ");
-    paramGL10.append(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int);
+    paramGL10.append(this.a.w);
     paramGL10.append(",mPositionHandle =");
-    paramGL10.append(this.jdField_a_of_type_Int);
-    paramGL10.append(",mTexCoordHandle =");
-    paramGL10.append(this.jdField_c_of_type_Int);
-    paramGL10.append(",mMatrixHandle= ");
-    paramGL10.append(this.jdField_b_of_type_Int);
-    paramGL10.append(",mTexSamplerHandle =");
-    paramGL10.append(this.d);
-    paramGL10.append(",mAlphaHandle = ");
     paramGL10.append(this.e);
+    paramGL10.append(",mTexCoordHandle =");
+    paramGL10.append(this.g);
+    paramGL10.append(",mMatrixHandle= ");
+    paramGL10.append(this.f);
+    paramGL10.append(",mTexSamplerHandle =");
+    paramGL10.append(this.h);
+    paramGL10.append(",mAlphaHandle = ");
+    paramGL10.append(this.i);
     QLog.i("SpriteGLView", 1, paramGL10.toString());
-    paramGL10 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel = new Label(paramGL10, paramGL10.getContext(), "fps:", -1, 40);
-    SpriteGLView.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, System.currentTimeMillis());
+    paramGL10 = this.a;
+    this.l = new Label(paramGL10, paramGL10.getContext(), "fps:", -1, 40);
+    SpriteGLView.a(this.a, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView.SimpleRenderer
  * JD-Core Version:    0.7.0.1
  */

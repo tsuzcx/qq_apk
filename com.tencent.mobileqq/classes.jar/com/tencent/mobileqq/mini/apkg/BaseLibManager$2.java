@@ -15,7 +15,7 @@ class BaseLibManager$2
   public void run()
   {
     String str2 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str1 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+    String str1 = StorageUtil.getPreference().getString("version", "1.29.0.00002");
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("updateBaseLib start. baseLibVersion=");
     ((StringBuilder)localObject1).append(str1);
@@ -36,9 +36,9 @@ class BaseLibManager$2
       localObject2 = str1;
       bool2 = false;
     }
-    if ("1.22.0.00008".equals(str1))
+    if ("1.29.0.00002".equals(str1))
     {
-      QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] current version is default:1.22.0.00008");
+      QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] current version is default:1.29.0.00002");
       localObject1 = localObject2;
       bool1 = bool2;
     }
@@ -95,7 +95,7 @@ class BaseLibManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager.2
  * JD-Core Version:    0.7.0.1
  */

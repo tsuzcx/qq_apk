@@ -13,13 +13,13 @@ class OnlineStatusPermissionManager$2
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("online_status_file_");
-    localStringBuilder.append(OnlineStatusPermissionManager.a(this.this$0).getCurrentAccountUin());
+    localStringBuilder.append(OnlineStatusPermissionManager.c(this.this$0).getCurrentAccountUin());
     FileUtils.writeObject(localStringBuilder.toString(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager.2
  * JD-Core Version:    0.7.0.1
  */

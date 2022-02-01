@@ -22,9 +22,9 @@ import java.util.HashMap;
 public class MessageHandler
   extends BusinessHandler
 {
-  static volatile long jdField_a_of_type_Long = 1L;
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  static volatile HashMap<Long, MessageHandler.MsgListener> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  static volatile long a = 1L;
+  static volatile HashMap<Long, MessageHandler.MsgListener> b = new HashMap();
+  static Object c = new Object();
   
   public MessageHandler(QQAppInterface paramQQAppInterface)
   {
@@ -43,8 +43,8 @@ public class MessageHandler
   {
     try
     {
-      jdField_a_of_type_Long += 1L;
-      long l = jdField_a_of_type_Long;
+      a += 1L;
+      long l = a;
       return l;
     }
     finally
@@ -56,27 +56,19 @@ public class MessageHandler
   
   static MessageHandler.MsgListener a(long paramLong)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      MessageHandler.MsgListener localMsgListener = (MessageHandler.MsgListener)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+      MessageHandler.MsgListener localMsgListener = (MessageHandler.MsgListener)b.get(Long.valueOf(paramLong));
+      b.remove(Long.valueOf(paramLong));
       return localMsgListener;
     }
   }
   
-  public static String a(common.ErrorInfo paramErrorInfo)
-  {
-    if ((paramErrorInfo.has()) && (paramErrorInfo.bytes_errmsg.has())) {
-      return paramErrorInfo.bytes_errmsg.get().toStringUtf8();
-    }
-    return "";
-  }
-  
   static void a(long paramLong, MessageHandler.MsgListener paramMsgListener)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramMsgListener);
+      b.put(Long.valueOf(paramLong), paramMsgListener);
       return;
     }
   }
@@ -156,15 +148,23 @@ public class MessageHandler
     if (((localObject != null) && (localClass != null)) || (!AudioHelper.a()))
     {
       MessageHandler.ClassInfo localClassInfo = new MessageHandler.ClassInfo(null);
-      localClassInfo.jdField_a_of_type_JavaLangString = paramMsgListener;
-      localClassInfo.jdField_a_of_type_JavaLangClass = ((Class)localObject);
-      localClassInfo.b = localClass;
+      localClassInfo.a = paramMsgListener;
+      localClassInfo.b = ((Class)localObject);
+      localClassInfo.c = localClass;
       return localClassInfo;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("QAVMessageHandler get getClassInfo失败, ");
     ((StringBuilder)localObject).append(paramMsgListener);
     throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+  }
+  
+  public static String b(common.ErrorInfo paramErrorInfo)
+  {
+    if ((paramErrorInfo.has()) && (paramErrorInfo.bytes_errmsg.has())) {
+      return paramErrorInfo.bytes_errmsg.get().toStringUtf8();
+    }
+    return "";
   }
   
   protected Class<? extends BusinessObserver> observerClass()

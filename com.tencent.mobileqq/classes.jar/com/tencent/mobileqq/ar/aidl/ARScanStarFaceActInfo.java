@@ -8,29 +8,29 @@ public class ARScanStarFaceActInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new ARScanStarFaceActInfo.1();
-  public long a;
   public String a;
-  public long b;
   public String b;
-  public long c;
   public String c;
   public String d;
   public String e;
   public String f;
+  public long g;
+  public long h;
+  public long i;
   
   public ARScanStarFaceActInfo() {}
   
   protected ARScanStarFaceActInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
     this.f = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.g = paramParcel.readLong();
+    this.h = paramParcel.readLong();
+    this.i = paramParcel.readLong();
   }
   
   public int describeContents()
@@ -42,16 +42,16 @@ public class ARScanStarFaceActInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARScanStarFaceActInfo{actTitle='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append("actDescription='");
     localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", starName='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", starUin='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", starWebUrl='");
     localStringBuilder.append(this.e);
@@ -60,31 +60,31 @@ public class ARScanStarFaceActInfo
     localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", beginTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", endTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", actID=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
     paramParcel.writeString(this.f);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
+    paramParcel.writeLong(this.g);
+    paramParcel.writeLong(this.h);
+    paramParcel.writeLong(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo
  * JD-Core Version:    0.7.0.1
  */

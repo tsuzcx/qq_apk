@@ -27,27 +27,27 @@ class ChatHistoryC2CAllFragment$13
       localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
       str = (String)paramArrayOfObject[1];
       long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719549).equals(str))
+      if (this.a.a.getApp().getString(2131917112).equals(str))
       {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((DocsGrayTipsInfo)localObject).a, 0, l);
+        paramArrayOfObject = this.a.a.getMessageFacade().a(((DocsGrayTipsInfo)localObject).a, 0, l);
         if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
         {
           localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a() != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a();
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.b() != null)) {
+            ((MessageForUniteGrayTip)localObject).tipParam.c();
           }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.a, str);
           localObject = new Message();
           Bundle localBundle = new Bundle();
           localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
           ((Message)localObject).setData(localBundle);
           ((Message)localObject).what = 78;
           ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+          this.a.F.sendMessage((Message)localObject);
         }
       }
-      QQToast.a(this.a.getBaseActivity(), str, 0).a();
-      paramArrayOfObject = TeamWorkConstants.i;
+      QQToast.makeText(this.a.getBaseActivity(), str, 0).show();
+      paramArrayOfObject = TeamWorkConstants.j;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" onGetUserAuth  isSuccess = ");
       ((StringBuilder)localObject).append(paramBoolean);
@@ -58,7 +58,7 @@ class ChatHistoryC2CAllFragment$13
     }
     catch (Exception paramArrayOfObject)
     {
-      String str = TeamWorkConstants.i;
+      String str = TeamWorkConstants.j;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" onGetUserAuth  exception = ");
       ((StringBuilder)localObject).append(paramArrayOfObject.toString());
@@ -70,7 +70,7 @@ class ChatHistoryC2CAllFragment$13
   {
     try
     {
-      str = TeamWorkConstants.i;
+      str = TeamWorkConstants.j;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" onSetUserAuth  isSuccess = ");
       ((StringBuilder)localObject).append(paramBoolean);
@@ -80,29 +80,29 @@ class ChatHistoryC2CAllFragment$13
       long l = ((Long)paramArrayOfObject[2]).longValue();
       if (paramBoolean)
       {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((DocsGrayTipsInfo)localObject).a, 0, l);
+        paramArrayOfObject = this.a.a.getMessageFacade().a(((DocsGrayTipsInfo)localObject).a, 0, l);
         if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
         {
           localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a() != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a();
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.b() != null)) {
+            ((MessageForUniteGrayTip)localObject).tipParam.c();
           }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.a, str);
           localObject = new Message();
           Bundle localBundle = new Bundle();
           localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
           ((Message)localObject).setData(localBundle);
           ((Message)localObject).what = 78;
           ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+          this.a.F.sendMessage((Message)localObject);
         }
       }
-      QQToast.a(this.a.getBaseActivity(), str, 0).a();
+      QQToast.makeText(this.a.getBaseActivity(), str, 0).show();
       return;
     }
     catch (Exception paramArrayOfObject)
     {
-      String str = TeamWorkConstants.i;
+      String str = TeamWorkConstants.j;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" onSetUserAuth  exception  = ");
       ((StringBuilder)localObject).append(paramArrayOfObject.toString());
@@ -112,7 +112,7 @@ class ChatHistoryC2CAllFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.13
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ class QavSharpnessSVIPHelper$2
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper.b(this.jdField_a_of_type_AndroidAppActivity);
+    this.c.b(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("launchQQPayFunction time end: ");
-    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    localStringBuilder.append(System.currentTimeMillis() - this.b);
     QLog.d("QavSharpnessSVIPHelper", 2, localStringBuilder.toString());
   }
 }

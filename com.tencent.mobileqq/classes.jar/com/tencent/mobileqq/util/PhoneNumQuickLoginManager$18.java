@@ -22,7 +22,7 @@ final class PhoneNumQuickLoginManager$18
       paramDownloadParams = paramBitmap;
       if (localObject.length == 2)
       {
-        float f2 = DeviceInfoUtil.a();
+        float f2 = DeviceInfoUtil.A();
         float f1 = f2;
         if (f2 < 0.01F) {
           f1 = 1.0F;
@@ -37,7 +37,7 @@ final class PhoneNumQuickLoginManager$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.18
  * JD-Core Version:    0.7.0.1
  */

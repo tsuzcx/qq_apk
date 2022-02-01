@@ -13,7 +13,7 @@ public class UniformShaderParameter
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    this.a = GLES20.glGetUniformLocation(paramInt, this.b);
     Utils.a();
   }
 }

@@ -19,10 +19,10 @@ class IMBlockLoginAction$1
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_sso_ret", paramInt);
     localBundle.putString("uin", paramString);
-    localBundle.putBoolean("is_from_login", this.jdField_a_of_type_Boolean);
+    localBundle.putBoolean("is_from_login", this.a);
     BaseOpenSdkQIPCClient.a(localBundle);
-    this.jdField_a_of_type_ComTencentQqconnectWtloginAbstractOpenSdkAppInterface.a(2, null);
-    IMBlockLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategyIMBlockLoginAction, this.jdField_a_of_type_AndroidAppActivity);
+    this.b.a(2, null);
+    IMBlockLoginAction.a(this.d, this.c);
   }
   
   public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
@@ -47,7 +47,7 @@ class IMBlockLoginAction$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.IMBlockLoginAction.1
  * JD-Core Version:    0.7.0.1
  */

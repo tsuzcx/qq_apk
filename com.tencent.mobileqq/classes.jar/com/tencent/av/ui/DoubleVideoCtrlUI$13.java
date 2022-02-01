@@ -11,21 +11,21 @@ class DoubleVideoCtrlUI$13
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d;
+    paramAnimation = this.b.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showNoAnswerAnimation, onAnimationEnd, seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(paramAnimation, 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
+    if (this.b.aA != null)
     {
-      paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
+      paramAnimation = this.b;
       paramAnimation.c = true;
-      paramAnimation.a.j();
+      paramAnimation.aA.m();
     }
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    paramAnimation = this.b.U();
     if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
+      paramAnimation.h(this.a);
     }
   }
   
@@ -33,15 +33,15 @@ class DoubleVideoCtrlUI$13
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d;
+    paramAnimation = this.b.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showNoAnswerAnimation, onAnimationStart, seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(paramAnimation, 1, localStringBuilder.toString());
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    paramAnimation = this.b.U();
     if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
+      paramAnimation.h(this.a);
     }
   }
 }

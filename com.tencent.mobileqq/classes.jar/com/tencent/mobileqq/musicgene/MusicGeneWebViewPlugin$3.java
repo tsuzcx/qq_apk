@@ -12,13 +12,13 @@ class MusicGeneWebViewPlugin$3
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      MusicGeneWebViewPlugin.a(this.a);
+      MusicGeneWebViewPlugin.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.3
  * JD-Core Version:    0.7.0.1
  */

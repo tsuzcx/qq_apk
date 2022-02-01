@@ -11,25 +11,25 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 public class MoreSysMsgHolder
   extends SwipRightMenuBuilder.SwipItemBaseHolder
 {
-  public int a;
-  public long a;
-  public Button a;
   public ImageView a;
-  public TextView a;
-  public QIMNotifyAddFriend a;
-  public PhoneContactAdd a;
-  public String a;
-  public structmsg.StructMsg a;
-  public long b;
-  public ImageView b;
   public TextView b;
   public TextView c;
   public TextView d;
   public TextView e;
+  public Button f;
+  public TextView g;
+  public long h;
+  public structmsg.StructMsg i;
+  public long j;
+  public String k;
+  public int l;
+  public PhoneContactAdd m;
+  public QIMNotifyAddFriend n;
+  public ImageView o;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.holder.MoreSysMsgHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,10 @@ class TroopRemarkEditFragment$7
   
   public void onClick(View paramView)
   {
-    if (TroopRemarkEditFragment.a(this.a) != null)
+    if (TroopRemarkEditFragment.b(this.a) != null)
     {
       TroopRemarkEditFragment localTroopRemarkEditFragment = this.a;
-      TroopRemarkEditFragment.a(localTroopRemarkEditFragment, TroopRemarkEditFragment.a(localTroopRemarkEditFragment));
+      TroopRemarkEditFragment.a(localTroopRemarkEditFragment, TroopRemarkEditFragment.b(localTroopRemarkEditFragment));
     }
     this.a.getActivity().finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -23,7 +23,7 @@ class TroopRemarkEditFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.7
  * JD-Core Version:    0.7.0.1
  */

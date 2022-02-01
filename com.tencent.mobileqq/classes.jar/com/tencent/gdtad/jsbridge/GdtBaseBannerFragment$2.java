@@ -14,11 +14,11 @@ class GdtBaseBannerFragment$2
   
   public void onClick(View paramView)
   {
-    if (this.a.a() == null) {
+    if (this.a.b() == null) {
       Toast.makeText(this.a.getBaseActivity().getApplicationContext(), "error", 0).show();
-    } else if (!this.a.a().isLoaded()) {
+    } else if (!this.a.b().isLoaded()) {
       Toast.makeText(this.a.getBaseActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    } else if (this.a.a().isInvalidated()) {
+    } else if (this.a.b().isInvalidated()) {
       Toast.makeText(this.a.getBaseActivity().getApplicationContext(), "ad is invalidated", 0).show();
     } else {
       this.a.a();
@@ -28,7 +28,7 @@ class GdtBaseBannerFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBaseBannerFragment.2
  * JD-Core Version:    0.7.0.1
  */

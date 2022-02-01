@@ -46,16 +46,11 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/playfeedback/ScreenCaptureHelper;", "", "()V", "handler", "Landroid/os/Handler;", "paint", "Landroid/graphics/Paint;", "captureActivity", "", "activity", "Landroid/app/Activity;", "containSurface", "", "callback", "Lcom/tencent/mobileqq/kandian/biz/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "scale", "", "captureAndUpload", "listener", "Lcom/tencent/mobileqq/kandian/biz/ugc/upload/IImageUploadListener;", "captureViewApiO", "view", "Landroid/view/View;", "captureViewLowApi", "combineTextureView", "Landroid/graphics/Bitmap;", "viewBitmap", "textureView", "Landroid/view/TextureView;", "getBitmapFromViewLowApi", "getBitmapFromViewLowApiContainSurface", "isInScreen", "mergeBitmap", "backBitmap", "frontBitmap", "frontRect", "Landroid/graphics/RectF;", "needCombine", "onResultBitmapCallback", "resultBitmap", "recycleBitmap", "bitmap", "saveBitmapAndUpload", "searchTextureView", "resultList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "searchTextureViewAndCombine", "uploadFile", "path", "", "CaptureViewCallback", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ScreenCaptureHelper
 {
+  public static final ScreenCaptureHelper.Companion a = new ScreenCaptureHelper.Companion(null);
   @NotNull
-  private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
-  public static final ScreenCaptureHelper.Companion a;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(4);
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedbackScreenCaptureHelper$Companion = new ScreenCaptureHelper.Companion(null);
-  }
+  private static final Bitmap.Config d = Bitmap.Config.ARGB_8888;
+  private final Paint b = new Paint(4);
+  private final Handler c = new Handler();
   
   private final Bitmap a(Bitmap paramBitmap1, Bitmap paramBitmap2, RectF paramRectF)
   {
@@ -71,7 +66,7 @@ public final class ScreenCaptureHelper
   private final Bitmap a(Bitmap paramBitmap, View paramView, TextureView paramTextureView, float paramFloat)
   {
     Bitmap localBitmap2 = paramTextureView.getBitmap((int)(paramTextureView.getWidth() * paramFloat), (int)(paramTextureView.getHeight() * paramFloat));
-    Bitmap localBitmap1 = Bitmap.createBitmap((int)(paramView.getWidth() * paramFloat), (int)(paramView.getHeight() * paramFloat), jdField_a_of_type_AndroidGraphicsBitmap$Config);
+    Bitmap localBitmap1 = Bitmap.createBitmap((int)(paramView.getWidth() * paramFloat), (int)(paramView.getHeight() * paramFloat), d);
     int[] arrayOfInt = new int[2];
     int[] tmp57_55 = arrayOfInt;
     tmp57_55[0] = 0;
@@ -95,7 +90,7 @@ public final class ScreenCaptureHelper
   {
     paramView.setDrawingCacheEnabled(true);
     paramView.setDrawingCacheBackgroundColor(0);
-    Bitmap localBitmap = paramView.getDrawingCache(true).copy(jdField_a_of_type_AndroidGraphicsBitmap$Config, true);
+    Bitmap localBitmap = paramView.getDrawingCache(true).copy(d, true);
     localBitmap.setHasAlpha(true);
     paramView.setDrawingCacheEnabled(false);
     paramView.destroyDrawingCache();
@@ -125,12 +120,12 @@ public final class ScreenCaptureHelper
     paramActivity = paramActivity.getWindow();
     if (paramActivity != null)
     {
-      Bitmap localBitmap = Bitmap.createBitmap((int)(paramView.getWidth() * paramFloat), (int)(paramView.getHeight() * paramFloat), jdField_a_of_type_AndroidGraphicsBitmap$Config);
+      Bitmap localBitmap = Bitmap.createBitmap((int)(paramView.getWidth() * paramFloat), (int)(paramView.getHeight() * paramFloat), d);
       int[] arrayOfInt = new int[2];
       paramView.getLocationInWindow(arrayOfInt);
       try
       {
-        PixelCopy.request(paramActivity, new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight()), localBitmap, (PixelCopy.OnPixelCopyFinishedListener)new ScreenCaptureHelper.captureViewApiO..inlined.let.lambda.1(localBitmap, this, paramView, paramFloat, paramCaptureViewCallback), this.jdField_a_of_type_AndroidOsHandler);
+        PixelCopy.request(paramActivity, new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight()), localBitmap, (PixelCopy.OnPixelCopyFinishedListener)new ScreenCaptureHelper.captureViewApiO..inlined.let.lambda.1(localBitmap, this, paramView, paramFloat, paramCaptureViewCallback), this.c);
         return;
       }
       catch (IllegalArgumentException paramActivity)
@@ -203,7 +198,7 @@ public final class ScreenCaptureHelper
   private final void a(String paramString, IImageUploadListener paramIImageUploadListener)
   {
     Context localContext = (Context)BaseApplicationImpl.getContext();
-    AppRuntime localAppRuntime = ReadInJoyUtils.a();
+    AppRuntime localAppRuntime = ReadInJoyUtils.b();
     if (localAppRuntime != null)
     {
       paramString = (IImageUploader)new RIJUgcImageUploader(localContext, (QQAppInterface)localAppRuntime, paramString);
@@ -230,11 +225,11 @@ public final class ScreenCaptureHelper
     paramTextureView.getLocationOnScreen(arrayOfInt);
     if (arrayOfInt[0] >= 0)
     {
-      if (arrayOfInt[0] > UIUtils.a((Context)BaseApplicationImpl.getContext())) {
+      if (arrayOfInt[0] > UIUtils.b((Context)BaseApplicationImpl.getContext())) {
         return false;
       }
       if (arrayOfInt[1] >= 0) {
-        return arrayOfInt[1] <= UIUtils.d((Context)BaseApplicationImpl.getContext());
+        return arrayOfInt[1] <= UIUtils.e((Context)BaseApplicationImpl.getContext());
       }
     }
     return false;
@@ -277,7 +272,7 @@ public final class ScreenCaptureHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeedback.ScreenCaptureHelper
  * JD-Core Version:    0.7.0.1
  */

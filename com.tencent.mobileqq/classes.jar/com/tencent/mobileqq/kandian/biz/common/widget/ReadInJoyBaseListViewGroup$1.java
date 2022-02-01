@@ -17,8 +17,8 @@ class ReadInJoyBaseListViewGroup$1
   {
     String str = paramBundle.getString("mTaskID");
     ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
+    if (this.a.f.get(str) != null) {
+      ((KandianProgressView)this.a.f.get(str)).a((int)paramFloat);
     }
   }
   
@@ -40,28 +40,28 @@ class ReadInJoyBaseListViewGroup$1
       KanDianVideoUploadUtils.b(paramBundle);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizUgcKandianVideoUploadService$ICallBack.a(paramBundle, (int)paramFloat);
+    this.a.h.a(paramBundle, (int)paramFloat);
   }
   
   public void a(Bundle paramBundle, String paramString)
   {
     paramString = paramBundle.getString("mTaskID");
     ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
+    if (this.a.f.get(paramString) != null) {
+      ((KandianProgressView)this.a.f.get(paramString)).a();
     }
   }
   
   public void a(String paramString)
   {
-    this.a.a();
+    this.a.getCurrentActivity();
     ReadInJoyLogicEngine.a().b(true);
     ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBaseListViewGroup.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class RecentServiceAccountFaceDecoder
 {
   public Drawable a(int paramInt, String paramString, boolean paramBoolean)
   {
-    Object localObject = a(this.a, paramInt, paramString);
+    Object localObject = a(this.b, paramInt, paramString);
     int i = ((Integer)((Pair)localObject).first).intValue();
     int j = ((Integer)((Pair)localObject).second).intValue();
     if (QLog.isColorLevel())
@@ -34,7 +34,7 @@ public class RecentServiceAccountFaceDecoder
     label304:
     try
     {
-      localObject = a(i, paramString);
+      localObject = b(i, paramString);
     }
     catch (Exception localException)
     {
@@ -81,7 +81,7 @@ public class RecentServiceAccountFaceDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentServiceAccountFaceDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,8 @@ package com.tencent.autotemplate.transition;
 
 import android.support.annotation.NonNull;
 import com.tencent.autotemplate.TAVAutomaticRenderContext;
+import com.tencent.autotemplate.TAVRhythmAutomaticTemplate.ApplyEffectType;
+import com.tencent.autotemplate.model.TAVTransitionAutomaticEffect;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavsticker.model.TAVSticker;
@@ -74,6 +76,51 @@ public class TransitionUtils
       localTransitionEffectParam.setDurationTime(CMTime.fromUs(paramTAVSticker.durationTime()));
     }
     return localTransitionEffectParam;
+  }
+  
+  @NonNull
+  public static ArrayList<TAVTransitionAutomaticEffect> randomTransitionEffects(@NonNull List<TAVTransitionAutomaticEffect> paramList, int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (CollectionUtil.isEmptyList(paramList)) {
+      return localArrayList;
+    }
+    int k = paramInt1 - 1;
+    int m = TAVRhythmAutomaticTemplate.ApplyEffectType.DefaultApplyEffect.ordinal();
+    int i = 0;
+    int j = 0;
+    paramInt1 = 0;
+    if (m == paramInt2)
+    {
+      paramList = (TAVTransitionAutomaticEffect)paramList.get(0);
+      while (paramInt1 < k)
+      {
+        localArrayList.add(paramList);
+        paramInt1 += 1;
+      }
+    }
+    if (TAVRhythmAutomaticTemplate.ApplyEffectType.RandomApplyEffect.ordinal() == paramInt2)
+    {
+      paramInt1 = i;
+      while (paramInt1 < k)
+      {
+        double d1 = Math.random();
+        double d2 = paramList.size();
+        Double.isNaN(d2);
+        localArrayList.add((TAVTransitionAutomaticEffect)paramList.get((int)(d1 * d2)));
+        paramInt1 += 1;
+      }
+    }
+    if (TAVRhythmAutomaticTemplate.ApplyEffectType.SequenceApplyEffect.ordinal() == paramInt2)
+    {
+      paramInt1 = j;
+      while (paramInt1 < k)
+      {
+        localArrayList.add((TAVTransitionAutomaticEffect)paramList.get(paramInt1 % paramList.size()));
+        paramInt1 += 1;
+      }
+    }
+    return localArrayList;
   }
 }
 

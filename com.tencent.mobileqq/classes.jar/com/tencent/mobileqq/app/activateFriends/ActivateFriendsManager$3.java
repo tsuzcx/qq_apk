@@ -14,42 +14,42 @@ class ActivateFriendsManager$3
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object localObject;
     if (i == 1)
     {
-      localObject = this.jdField_a_of_type_ArrayOfLong;
+      localObject = this.b;
       int j = localObject.length;
       i = 0;
       while (i < j)
       {
         long l = localObject[i];
         SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = String.valueOf(l);
-        localSessionInfo.jdField_a_of_type_Int = 0;
-        localSessionInfo.d = ContactUtils.f(ActivateFriendsManager.a(this.this$0), String.valueOf(l));
+        localSessionInfo.b = String.valueOf(l);
+        localSessionInfo.a = 0;
+        localSessionInfo.e = ContactUtils.g(ActivateFriendsManager.e(this.this$0), String.valueOf(l));
         ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
         localSendMsgParams.a = false;
-        ChatActivityFacade.a(ActivateFriendsManager.a(this.this$0), ActivateFriendsManager.a(this.this$0).getApp(), localSessionInfo, this.jdField_a_of_type_JavaLangString, null, localSendMsgParams);
+        ChatActivityFacade.a(ActivateFriendsManager.e(this.this$0), ActivateFriendsManager.e(this.this$0).getApp(), localSessionInfo, this.c, null, localSendMsgParams);
         i += 1;
       }
-      this.this$0.a(this.jdField_a_of_type_ArrayOfLong, 1);
+      this.this$0.a(this.b, 1);
       localObject = new Bundle();
       ((Bundle)localObject).putInt("key_rt_type", 0);
-      ActivateFriendsManager.a(this.this$0).notifyObservers(ActivateFriendsObserver.class, 113, true, (Bundle)localObject);
+      ActivateFriendsManager.e(this.this$0).notifyObservers(ActivateFriendsObserver.class, 113, true, (Bundle)localObject);
       return;
     }
-    if ((i == 2) && (this.jdField_b_of_type_Int != -1) && (!ActivateFriendServlet.a(ActivateFriendsManager.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong, this.jdField_b_of_type_ArrayOfLong, this.jdField_b_of_type_Int)))
+    if ((i == 2) && (this.d != -1) && (!ActivateFriendServlet.a(ActivateFriendsManager.e(this.this$0), this.c, this.b, this.e, this.d)))
     {
       localObject = new Bundle();
       ((Bundle)localObject).putInt("key_rt_type", 2);
-      ActivateFriendsManager.a(this.this$0).notifyObservers(ActivateFriendsObserver.class, 113, false, (Bundle)localObject);
+      ActivateFriendsManager.e(this.this$0).notifyObservers(ActivateFriendsObserver.class, 113, false, (Bundle)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.3
  * JD-Core Version:    0.7.0.1
  */

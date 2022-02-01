@@ -13,31 +13,31 @@ public class MultiMsgImpl
 {
   public MultiMsgBean getMultiMsgValue()
   {
-    SessionInfo localSessionInfo = MultiMsgManager.a().a();
+    SessionInfo localSessionInfo = MultiMsgManager.a().d();
     MultiMsgBean localMultiMsgBean = new MultiMsgBean();
-    localMultiMsgBean.jdField_a_of_type_Boolean = MessageRecordInfo.a(MultiMsgManager.a().b());
+    localMultiMsgBean.a = MessageRecordInfo.b(MultiMsgManager.a().e());
     if (localSessionInfo != null)
     {
-      localMultiMsgBean.jdField_a_of_type_JavaLangObject = localSessionInfo;
-      localMultiMsgBean.jdField_a_of_type_JavaLangString = localSessionInfo.jdField_a_of_type_JavaLangString;
-      localMultiMsgBean.jdField_a_of_type_Int = localSessionInfo.jdField_a_of_type_Int;
+      localMultiMsgBean.d = localSessionInfo;
+      localMultiMsgBean.c = localSessionInfo.b;
+      localMultiMsgBean.b = localSessionInfo.a;
     }
     return localMultiMsgBean;
   }
   
   public String getPicDefaultPath()
   {
-    return MultiMsgManager.a((QQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime());
+    return MultiMsgManager.b((QQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime());
   }
   
   public long getPicDefaultSize()
   {
-    return MultiMsgManager.a();
+    return MultiMsgManager.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.api.impl.MultiMsgImpl
  * JD-Core Version:    0.7.0.1
  */

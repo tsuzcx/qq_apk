@@ -16,11 +16,11 @@ class QQAssistantGuider$4
   {
     ReportController.b(null, "dc00898", "", "", "0X800B44D", "0X800B44D", 1, 0, "", "", "", "");
     QQAssistantGuider localQQAssistantGuider = this.a;
-    localQQAssistantGuider.a = -1;
+    localQQAssistantGuider.g = -1;
     localQQAssistantGuider.dismiss();
     try
     {
-      AssistantSwitchImpl.a(AssistantUtils.a(), true);
+      AssistantSwitchImpl.a(AssistantUtils.c(), true);
       WakeManager.a().a(true);
     }
     catch (Exception localException)
@@ -35,7 +35,7 @@ class QQAssistantGuider$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuider.4
  * JD-Core Version:    0.7.0.1
  */

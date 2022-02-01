@@ -2,7 +2,7 @@ package com.tencent.mobileqq.kandian.biz.feeds.presenter;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.OnLastReadRefreshListener;
 import com.tencent.mobileqq.kandian.biz.skin.ReadInJoyRefreshManager;
 import com.tencent.mobileqq.kandian.biz.skin.RefreshData;
@@ -10,7 +10,6 @@ import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.Repor
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
 import com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJProteusOfflineBidSp;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
-import com.tencent.mobileqq.qroute.QRoute;
 import org.json.JSONException;
 
 class ReadInJoyFooterPresenter$3
@@ -25,8 +24,8 @@ class ReadInJoyFooterPresenter$3
     RefreshData localRefreshData = ReadInJoyRefreshManager.b(paramView, 0);
     ReadinjoyReportUtils.a(false);
     paramView = new RIJTransMergeKanDianReport.ReportR5Builder();
-    paramView.addSessionId().addFolderStatus().addKandianMode().addChannelId(ReadInJoyFooterPresenter.a(this.a).c()).addKandianModeNew().addTabSource().addRedStyle();
-    if (ReadInJoyFooterPresenter.a(this.a).c() == 0)
+    paramView.addSessionId().addFolderStatus().addKandianMode().addChannelId(ReadInJoyFooterPresenter.b(this.a).m()).addKandianModeNew().addTabSource().addRedStyle();
+    if (ReadInJoyFooterPresenter.b(this.a).m() == 0)
     {
       int i = j;
       if (localRefreshData != null) {
@@ -44,15 +43,15 @@ class ReadInJoyFooterPresenter$3
         localJSONException.printStackTrace();
       }
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid"), "", "", paramView.build(), false);
-    if (ReadInJoyFooterPresenter.a(this.a) != null) {
-      ReadInJoyFooterPresenter.a(this.a).m();
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid"), "", "", paramView.build(), false);
+    if (ReadInJoyFooterPresenter.c(this.a) != null) {
+      ReadInJoyFooterPresenter.c(this.a).m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.presenter.ReadInJoyFooterPresenter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,23 +21,23 @@ class StatusManager$3$1
   
   public void run()
   {
-    Object localObject3 = (FriendsManager)StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject3 = (FriendsManager)StatusManager.b(this.c.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject1;
     int i;
     Object localObject4;
     if (localObject3 != null)
     {
-      localObject2 = ((FriendsManager)localObject3).a(StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).getAccount());
+      localObject2 = ((FriendsManager)localObject3).x(StatusManager.b(this.c.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = StatusManager.b(this.c.a).getAccount();
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        i = this.jdField_a_of_type_AndroidOsBundle.getInt("k_source", 0);
-        localObject2 = this.jdField_a_of_type_AndroidOsBundle.getByteArray("k_rspbody");
+        i = this.b.getInt("k_source", 0);
+        localObject2 = this.b.getByteArray("k_rspbody");
         if (localObject2 != null)
         {
           localObject2 = ByteBuffer.wrap((byte[])localObject2);
@@ -50,27 +50,27 @@ class StatusManager$3$1
           if (l1 != l2)
           {
             ExtensionRichStatus.a((ExtensionInfo)localObject1, (byte[])localObject4, l2);
-            localObject2 = ExtensionRichStatus.a((ExtensionInfo)localObject1);
-            if ((i == 1) && (this.jdField_a_of_type_AndroidOsBundle.getInt("ret", 0) == 65535))
+            localObject2 = ExtensionRichStatus.c((ExtensionInfo)localObject1);
+            if ((i == 1) && (this.b.getInt("ret", 0) == 65535))
             {
               ((RichStatus)localObject2).fontId = 0;
               ((RichStatus)localObject2).fontType = 0;
             }
-            else if (StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a) != null)
+            else if (StatusManager.n(this.c.a) != null)
             {
-              ((RichStatus)localObject2).fontId = StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).fontId;
-              ((RichStatus)localObject2).fontType = StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).fontType;
-              if ((StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).mStickerInfos != null) && (StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).mStickerInfos.size() > 0)) {
-                ((RichStatus)localObject2).mStickerInfos = new ArrayList(StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).mStickerInfos);
+              ((RichStatus)localObject2).fontId = StatusManager.n(this.c.a).fontId;
+              ((RichStatus)localObject2).fontType = StatusManager.n(this.c.a).fontType;
+              if ((StatusManager.n(this.c.a).mStickerInfos != null) && (StatusManager.n(this.c.a).mStickerInfos.size() > 0)) {
+                ((RichStatus)localObject2).mStickerInfos = new ArrayList(StatusManager.n(this.c.a).mStickerInfos);
               }
             }
             ((FriendsManager)localObject3).a((ExtensionInfo)localObject1);
           }
         }
       }
-      localObject2 = ExtensionRichStatus.a((ExtensionInfo)localObject1);
+      localObject2 = ExtensionRichStatus.c((ExtensionInfo)localObject1);
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         if (((RichStatus)localObject2).tplId == 0) {
           localObject1 = "1";
@@ -86,40 +86,40 @@ class StatusManager$3$1
       localObject1 = null;
     }
     Object localObject2 = new TipsInfo();
-    localObject3 = this.jdField_a_of_type_AndroidOsBundle;
+    localObject3 = this.b;
     if ((localObject3 != null) && (((Bundle)localObject3).getInt("k_source", 0) == 1)) {
-      ((TipsInfo)localObject2).errorDesc = this.jdField_a_of_type_AndroidOsBundle.getString("errorDesc");
+      ((TipsInfo)localObject2).errorDesc = this.b.getString("errorDesc");
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      localObject3 = this.jdField_a_of_type_AndroidOsBundle;
+      localObject3 = this.b;
       if (localObject3 != null)
       {
         i = ((Bundle)localObject3).getInt("k_auth_code", -1);
-        j = this.jdField_a_of_type_AndroidOsBundle.getInt("cRet", 0);
+        j = this.b.getInt("cRet", 0);
         if (j == 2) {
           i = 103;
         } else if (j != 0) {
           i = j;
         }
-        if ((TextUtils.isEmpty(((TipsInfo)localObject2).errorDesc)) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("errorDesc"))) {
-          ((TipsInfo)localObject2).errorDesc = this.jdField_a_of_type_AndroidOsBundle.getString("errorDesc");
+        if ((TextUtils.isEmpty(((TipsInfo)localObject2).errorDesc)) && (this.b.containsKey("errorDesc"))) {
+          ((TipsInfo)localObject2).errorDesc = this.b.getString("errorDesc");
         }
-        boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("valid");
-        ((TipsInfo)localObject2).authAppid = this.jdField_a_of_type_AndroidOsBundle.getInt("authAppid");
+        boolean bool = this.b.getBoolean("valid");
+        ((TipsInfo)localObject2).authAppid = this.b.getInt("authAppid");
         j = i;
         if (!bool) {
           break label874;
         }
-        j = this.jdField_a_of_type_AndroidOsBundle.getInt("type", -1);
-        localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("titleWording");
-        localObject4 = this.jdField_a_of_type_AndroidOsBundle.getString("wording");
-        String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("rightBtnWording");
-        String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("leftBtnWording");
-        String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("vipType");
-        int k = this.jdField_a_of_type_AndroidOsBundle.getInt("vipMonth");
-        String str4 = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        ((TipsInfo)localObject2).ret = this.jdField_a_of_type_AndroidOsBundle.getInt("ret");
+        j = this.b.getInt("type", -1);
+        localObject3 = this.b.getString("titleWording");
+        localObject4 = this.b.getString("wording");
+        String str1 = this.b.getString("rightBtnWording");
+        String str2 = this.b.getString("leftBtnWording");
+        String str3 = this.b.getString("vipType");
+        int k = this.b.getInt("vipMonth");
+        String str4 = this.b.getString("url");
+        ((TipsInfo)localObject2).ret = this.b.getInt("ret");
         ((TipsInfo)localObject2).type = j;
         ((TipsInfo)localObject2).titleWording = ((String)localObject3);
         ((TipsInfo)localObject2).wording = ((String)localObject4);
@@ -136,44 +136,44 @@ class StatusManager$3$1
             break label874;
           }
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((TipsInfo)localObject2).titleWording = HardCodeUtil.a(2131714170);
+            ((TipsInfo)localObject2).titleWording = HardCodeUtil.a(2131911697);
           }
           if (TextUtils.isEmpty(str2)) {
-            ((TipsInfo)localObject2).leftBtnWording = HardCodeUtil.a(2131714172);
+            ((TipsInfo)localObject2).leftBtnWording = HardCodeUtil.a(2131898212);
           }
           j = i;
           if (!TextUtils.isEmpty(str1)) {
             break label874;
           }
-          ((TipsInfo)localObject2).rightBtnWording = HardCodeUtil.a(2131714174);
+          ((TipsInfo)localObject2).rightBtnWording = HardCodeUtil.a(2131911700);
           j = i;
           break label874;
         }
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          ((TipsInfo)localObject2).titleWording = HardCodeUtil.a(2131714171);
+          ((TipsInfo)localObject2).titleWording = HardCodeUtil.a(2131911698);
         }
         if (TextUtils.isEmpty(str2)) {
-          ((TipsInfo)localObject2).leftBtnWording = HardCodeUtil.a(2131714169);
+          ((TipsInfo)localObject2).leftBtnWording = HardCodeUtil.a(2131898212);
         }
         j = i;
         if (!TextUtils.isEmpty(str1)) {
           break label874;
         }
-        ((TipsInfo)localObject2).rightBtnWording = HardCodeUtil.a(2131714173);
+        ((TipsInfo)localObject2).rightBtnWording = HardCodeUtil.a(2131911699);
         j = i;
         break label874;
       }
     }
     int j = 100;
     label874:
-    StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a, null);
+    StatusManager.a(this.c.a, null);
     ThreadManager.getUIHandler().post(new StatusManager.3.1.1(this, j, (RichStatus)localObject1, (TipsInfo)localObject2));
     VasFontIPCModule.a().a(j, (RichStatus)localObject1, (TipsInfo)localObject2, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.1
  * JD-Core Version:    0.7.0.1
  */

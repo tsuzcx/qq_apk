@@ -13,9 +13,9 @@ import com.tencent.mobileqq.dating.DatingUtil;
 public class DatingCommentTextView$ViewProfileCardSpan
   extends ClickableSpan
 {
-  private long jdField_a_of_type_Long;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private String jdField_a_of_type_JavaLangString;
+  private long a;
+  private String b;
+  private BaseActivity c;
   
   public void onClick(View paramView)
   {
@@ -24,9 +24,9 @@ public class DatingCommentTextView$ViewProfileCardSpan
       if (!(paramView instanceof TextView)) {
         return;
       }
-      long l = this.jdField_a_of_type_Long;
+      long l = this.a;
       if (l > 0L) {
-        DatingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, l, this.jdField_a_of_type_JavaLangString, null, 18, null, -1, -1, 0, false);
+        DatingUtil.a(this.c, l, this.b, null, 18, null, -1, -1, 0, false);
       }
       paramView = ((TextView)paramView).getText();
       if ((paramView != null) && ((paramView instanceof Spannable))) {
@@ -38,12 +38,12 @@ public class DatingCommentTextView$ViewProfileCardSpan
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131167203));
+    paramTextPaint.setColor(this.c.getResources().getColor(2131168189));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.DatingCommentTextView.ViewProfileCardSpan
  * JD-Core Version:    0.7.0.1
  */

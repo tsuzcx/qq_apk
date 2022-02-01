@@ -7,28 +7,37 @@ import org.json.JSONObject;
 public class DexPatchItemConfigArtGeN
   extends AbscractPatchItemConfig
 {
-  private int b;
+  private int d;
   
   public DexPatchItemConfigArtGeN(JSONObject paramJSONObject)
   {
     a(paramJSONObject);
   }
   
-  public int a()
+  protected void a(JSONObject paramJSONObject)
   {
-    return this.jdField_b_of_type_Int;
+    super.a(paramJSONObject);
+    this.a = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patch7zUrl", null);
+    this.c = paramJSONObject.optInt("patchSize", 0);
+    this.d = paramJSONObject.optInt("patch7zSize", 0);
   }
   
-  public String a()
+  public boolean a(String paramString)
   {
-    String str = super.a();
+    return super.a(paramString);
+  }
+  
+  public String b()
+  {
+    String str = super.b();
     try
     {
       Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patch7zUrl", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("patch7zSize", this.jdField_b_of_type_Int);
+      ((JSONObject)localObject).put("patchName", this.a);
+      ((JSONObject)localObject).put("patch7zUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.c);
+      ((JSONObject)localObject).put("patch7zSize", this.d);
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
@@ -39,23 +48,14 @@ public class DexPatchItemConfigArtGeN
     return str;
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public int c()
   {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("patch7zUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("patch7zSize", 0);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return super.a(paramString);
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hotpatch.config.DexPatchItemConfigArtGeN
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ final class RIJXTabFrame$badgeChangerListener$1
   
   public final void invoke()
   {
-    RIJXTabFrame.a(this.this$0).a().a();
+    RIJXTabFrame.f(this.this$0).getTabLayout().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabFrame.badgeChangerListener.1
  * JD-Core Version:    0.7.0.1
  */

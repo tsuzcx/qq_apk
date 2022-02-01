@@ -18,11 +18,11 @@ public class ThemeTabLayout
   extends FrameLayout
 {
   public float a;
-  private ConnectionsTabLayout jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout = null;
-  private TabThemeMaskView jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTabThemeMaskView;
   public float b;
   public float c;
   public float d;
+  private ConnectionsTabLayout e = null;
+  private TabThemeMaskView f;
   
   public ThemeTabLayout(Context paramContext)
   {
@@ -40,35 +40,26 @@ public class ThemeTabLayout
     a();
   }
   
-  public float a()
-  {
-    ConnectionsTabLayout localConnectionsTabLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout;
-    if (localConnectionsTabLayout != null) {
-      return localConnectionsTabLayout.getScrollX();
-    }
-    return 0.0F;
-  }
-  
   public void a()
   {
-    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561247, this, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131365098));
+    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131627603, this, false);
+    this.e = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131431244));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = ViewUtils.a(10.0F);
+    localLayoutParams.topMargin = ViewUtils.dip2px(10.0F);
     addView((View)localObject, localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTabThemeMaskView = new TabThemeMaskView(getContext());
+    this.f = new TabThemeMaskView(getContext());
     localObject = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTabThemeMaskView, (ViewGroup.LayoutParams)localObject);
+    addView(this.f, (ViewGroup.LayoutParams)localObject);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout.a(paramInt);
+    this.e.a(paramInt);
   }
   
   public void a(TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    ConnectionsTabLayout localConnectionsTabLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout;
+    ConnectionsTabLayout localConnectionsTabLayout = this.e;
     if (localConnectionsTabLayout == null) {
       return;
     }
@@ -77,10 +68,10 @@ public class ThemeTabLayout
   
   public void a(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
-    ConnectionsTabLayout localConnectionsTabLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout;
+    ConnectionsTabLayout localConnectionsTabLayout = this.e;
     if (localConnectionsTabLayout != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTabThemeMaskView == null) {
+      if (this.f == null) {
         return;
       }
       if ((paramArrayList != null) && (paramInt >= 0)) {
@@ -91,12 +82,12 @@ public class ThemeTabLayout
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout.a();
+    this.e.b();
   }
   
   public void b(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout.b(paramArrayList, paramInt);
+    this.e.b(paramArrayList, paramInt);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -108,11 +99,11 @@ public class ThemeTabLayout
       {
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        this.jdField_a_of_type_Float += Math.abs(f1 - this.c);
+        this.a += Math.abs(f1 - this.c);
         this.b += Math.abs(f2 - this.d);
         this.c = f1;
         this.d = f2;
-        if (this.jdField_a_of_type_Float <= this.b) {
+        if (this.a <= this.b) {
           getParent().requestDisallowInterceptTouchEvent(false);
         } else {
           getParent().requestDisallowInterceptTouchEvent(true);
@@ -122,7 +113,7 @@ public class ThemeTabLayout
     else
     {
       this.b = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
+      this.a = 0.0F;
       this.c = paramMotionEvent.getX();
       this.d = paramMotionEvent.getY();
       getParent().requestDisallowInterceptTouchEvent(true);
@@ -130,12 +121,30 @@ public class ThemeTabLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
+  public float getScrollPositionOffset()
+  {
+    ConnectionsTabLayout localConnectionsTabLayout = this.e;
+    if (localConnectionsTabLayout != null) {
+      return localConnectionsTabLayout.getScrollX();
+    }
+    return 0.0F;
+  }
+  
+  public int getSelectedTabPosition()
+  {
+    ConnectionsTabLayout localConnectionsTabLayout = this.e;
+    if (localConnectionsTabLayout != null) {
+      return localConnectionsTabLayout.getSelectedTabPosition();
+    }
+    return 0;
+  }
+  
   public void setOnTabSelectedListener(TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    ConnectionsTabLayout localConnectionsTabLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout;
+    ConnectionsTabLayout localConnectionsTabLayout = this.e;
     if (localConnectionsTabLayout != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTabThemeMaskView == null) {
+      if (this.f == null) {
         return;
       }
       if (paramOnTabSelectedListener != null) {
@@ -146,7 +155,7 @@ public class ThemeTabLayout
   
   public void setScrollPosition(float paramFloat)
   {
-    ConnectionsTabLayout localConnectionsTabLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectionsTabLayout;
+    ConnectionsTabLayout localConnectionsTabLayout = this.e;
     if (localConnectionsTabLayout != null) {
       localConnectionsTabLayout.setScrollX((int)paramFloat);
     }
@@ -154,7 +163,7 @@ public class ThemeTabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout
  * JD-Core Version:    0.7.0.1
  */

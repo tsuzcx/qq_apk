@@ -32,14 +32,14 @@ public class PttAutoChangeBean
     return null;
   }
   
-  public int a()
-  {
-    return this.b;
-  }
-  
   public boolean a()
   {
     return this.a == 1;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
   
   public String toString()
@@ -52,7 +52,7 @@ public class PttAutoChangeBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PttAutoChangeBean
  * JD-Core Version:    0.7.0.1
  */

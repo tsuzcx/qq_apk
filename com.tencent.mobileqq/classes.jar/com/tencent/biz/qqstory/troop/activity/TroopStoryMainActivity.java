@@ -30,39 +30,24 @@ public class TroopStoryMainActivity
   implements IMyStoryListView
 {
   public static final String a = "com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity";
-  protected StoryInputBarView a;
-  public FeedManager a;
-  public TroopStoryListView a;
-  public FullScreenEmptyView a;
-  protected Runnable a;
-  
-  public TroopStoryMainActivity()
-  {
-    this.jdField_a_of_type_JavaLangRunnable = new TroopStoryMainActivity.1(this);
-  }
+  public TroopStoryListView b;
+  public FullScreenEmptyView c;
+  protected StoryInputBarView d;
+  public FeedManager e;
+  protected Runnable f = new TroopStoryMainActivity.1(this);
   
   public static void a(Activity paramActivity)
   {
     paramActivity.startActivity(new Intent(paramActivity, TroopStoryMainActivity.class));
   }
   
-  public StoryInputBarView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView;
-  }
-  
-  public SegmentView a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(paramString);
-  }
-  
   public void a(boolean paramBoolean) {}
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
   
-  public boolean a()
+  public SegmentView b(String paramString)
   {
-    return isResume();
+    return this.b.b(paramString);
   }
   
   public void b(boolean paramBoolean) {}
@@ -78,11 +63,11 @@ public class TroopStoryMainActivity
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.getVisibility() == 0)
+    if (this.d.getVisibility() == 0)
     {
-      ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.getWindowToken(), 0);
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.clearFocus();
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setVisibility(8);
+      ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(this.d.getWindowToken(), 0);
+      this.d.clearFocus();
+      this.d.setVisibility(8);
       return;
     }
     super.doOnBackPressed();
@@ -92,21 +77,21 @@ public class TroopStoryMainActivity
   {
     this.mUseOptimizMode = true;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561792);
-    super.setTitle(HardCodeUtil.a(2131715573));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131374556));
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131370164));
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(this, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839388);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131167116));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView = new FullScreenEmptyView(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView.setVisibility(8);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setEmptyView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.j();
+    super.setContentView(2131628171);
+    super.setTitle(HardCodeUtil.a(2131913045));
+    this.e = ((FeedManager)SuperManager.a(11));
+    this.e.g.clear();
+    this.d = ((StoryInputBarView)super.findViewById(2131442726));
+    this.b = ((TroopStoryListView)super.findViewById(2131437330));
+    this.b.a(this, this);
+    this.b.setDivider(null);
+    this.b.setContentBackground(2130839572);
+    ((ViewGroup)this.b.getParent()).setBackgroundColor(getResources().getColor(2131168094));
+    this.c = new FullScreenEmptyView(this);
+    this.c.setVisibility(8);
+    ((ViewGroup)this.b.getParent()).addView(this.c);
+    this.b.setEmptyView(this.c);
+    this.b.k();
     this.rightViewText.setVisibility(8);
     this.rightViewImg.setVisibility(8);
     QQStoryMainController.a(this, "troopStoryHallConfig", this.rightViewImg, this.rightViewText);
@@ -116,43 +101,53 @@ public class TroopStoryMainActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    TroopStoryListView localTroopStoryListView = this.b;
     if (localTroopStoryListView != null) {
-      localTroopStoryListView.l();
+      localTroopStoryListView.m();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.d();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a.clear();
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.d.d();
+    this.e.g.clear();
+    ThreadManager.getUIHandler().removeCallbacks(this.f);
   }
   
   protected void doOnPause()
   {
     super.doOnPause();
-    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    TroopStoryListView localTroopStoryListView = this.b;
     if (localTroopStoryListView != null) {
-      localTroopStoryListView.k();
+      localTroopStoryListView.l();
     }
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    TroopStoryListView localTroopStoryListView = this.b;
     if (localTroopStoryListView != null)
     {
-      localTroopStoryListView.o();
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.p();
+      localTroopStoryListView.p();
+      this.b.q();
     }
   }
   
-  public void g() {}
+  public StoryInputBarView h()
+  {
+    return this.d;
+  }
   
-  public void h() {}
+  public boolean i()
+  {
+    return isResume();
+  }
+  
+  public void j() {}
+  
+  public void k() {}
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    TroopStoryListView localTroopStoryListView = this.b;
     if (localTroopStoryListView != null) {
       localTroopStoryListView.a(paramInt1, paramInt2, paramIntent);
     }
@@ -161,8 +156,8 @@ public class TroopStoryMainActivity
       if (paramInt1 != 30000) {
         return;
       }
-      AtVideoTextWatcher.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
+      AtVideoTextWatcher.a(this.d.e, paramIntent);
+      ThreadManager.getUIHandler().postDelayed(this.f, 100L);
     }
   }
   

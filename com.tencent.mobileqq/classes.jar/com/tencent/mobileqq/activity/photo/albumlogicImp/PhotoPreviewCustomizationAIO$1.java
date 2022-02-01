@@ -13,13 +13,13 @@ class PhotoPreviewCustomizationAIO$1
   
   public void onClick(View paramView)
   {
-    this.a.a().a.toggle();
+    this.a.s().h.toggle();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAIO.1
  * JD-Core Version:    0.7.0.1
  */

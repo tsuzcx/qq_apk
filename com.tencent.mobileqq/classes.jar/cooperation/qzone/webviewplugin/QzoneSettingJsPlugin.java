@@ -43,7 +43,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -83,7 +83,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -128,7 +128,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return;
       }
-      Object localObject = paramWebViewPlugin.mRuntime.a();
+      Object localObject = paramWebViewPlugin.mRuntime.d();
       if (localObject != null)
       {
         if (((Activity)localObject).isFinishing()) {
@@ -152,7 +152,7 @@ public class QzoneSettingJsPlugin
         if (paramArrayOfString == null) {
           return;
         }
-        long l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
+        long l = paramWebViewPlugin.mRuntime.b().getLongAccountUin();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("WaterMark_");
         ((StringBuilder)localObject).append(l);
@@ -206,7 +206,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -252,7 +252,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -286,7 +286,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      Object localObject = paramWebViewPlugin.mRuntime.a();
+      Object localObject = paramWebViewPlugin.mRuntime.d();
       if (localObject != null)
       {
         if (((Activity)localObject).isFinishing()) {
@@ -301,7 +301,7 @@ public class QzoneSettingJsPlugin
           paramArrayOfString.printStackTrace();
           paramArrayOfString = "";
         }
-        int i = LocalMultiProcConfig.getInt(((Activity)localObject).getResources().getString(2131718401), 0);
+        int i = LocalMultiProcConfig.getInt(((Activity)localObject).getResources().getString(2131915893), 0);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("window.");
         ((StringBuilder)localObject).append(paramArrayOfString);
@@ -327,7 +327,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -347,7 +347,7 @@ public class QzoneSettingJsPlugin
         paramArrayOfString.append("---handlePictureModeSetting-:");
         paramArrayOfString.append(i);
         QLog.i("QzoneSettingJsPlugin", 4, paramArrayOfString.toString());
-        LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131718401), i);
+        LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131915893), i);
         return true;
       }
     }
@@ -361,7 +361,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -400,7 +400,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramJsBridgeListener = paramWebViewPlugin.mRuntime.a();
+      paramJsBridgeListener = paramWebViewPlugin.mRuntime.d();
       bool1 = bool2;
       if (paramJsBridgeListener != null) {
         if (paramJsBridgeListener.isFinishing()) {
@@ -416,7 +416,7 @@ public class QzoneSettingJsPlugin
       paramArrayOfString = localJSONObject.optString("callback");
       bool1 = localJSONObject.optBoolean("hidden");
       localJSONObject.optBoolean("disable");
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.e();
       if ((paramWebViewPlugin != null) && (paramWebViewPlugin.getWebTitleBarInterface() != null)) {
         paramWebViewPlugin.getWebTitleBarInterface().a(paramArrayOfString, paramJsBridgeListener, null, bool1, i + 1000, 0, null, null);
       }
@@ -437,7 +437,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return;
       }
-      Activity localActivity = paramWebViewPlugin.mRuntime.a();
+      Activity localActivity = paramWebViewPlugin.mRuntime.d();
       if (localActivity != null)
       {
         if (localActivity.isFinishing()) {
@@ -460,7 +460,7 @@ public class QzoneSettingJsPlugin
         }
         bool = true;
         label114:
-        long l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
+        long l = paramWebViewPlugin.mRuntime.b().getLongAccountUin();
         paramWebViewPlugin = new StringBuilder();
         paramWebViewPlugin.append("handleSetWaterMark: ");
         paramWebViewPlugin.append(bool);
@@ -492,7 +492,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -532,7 +532,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -572,13 +572,13 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      Activity localActivity = paramWebViewPlugin.mRuntime.a();
+      Activity localActivity = paramWebViewPlugin.mRuntime.d();
       if (localActivity != null)
       {
         if (localActivity.isFinishing()) {
           return false;
         }
-        long l = paramWebViewPlugin.mRuntime.a().getLongAccountUin();
+        long l = paramWebViewPlugin.mRuntime.b().getLongAccountUin();
         try
         {
           int i = new JSONObject(paramArrayOfString[0]).getInt("new_value");
@@ -595,7 +595,7 @@ public class QzoneSettingJsPlugin
         paramWebViewPlugin.append(bool);
         QLog.i("QzoneSettingJsPlugin", 4, paramWebViewPlugin.toString());
         paramWebViewPlugin = new StringBuilder();
-        paramWebViewPlugin.append(localActivity.getString(2131718396));
+        paramWebViewPlugin.append(localActivity.getString(2131915888));
         paramWebViewPlugin.append(l);
         LocalMultiProcConfig.putBooleanAsync(paramWebViewPlugin.toString(), bool);
         return true;
@@ -617,7 +617,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -651,7 +651,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -670,7 +670,7 @@ public class QzoneSettingJsPlugin
   
   private boolean handleUpdateFontList(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+    paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
     if ((paramWebViewPlugin != null) && (!paramWebViewPlugin.isFinishing()))
     {
       RemoteHandleManager.getInstance().getSender().handleUpdateFontList();
@@ -687,7 +687,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -711,7 +711,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      Object localObject = paramWebViewPlugin.mRuntime.a();
+      Object localObject = paramWebViewPlugin.mRuntime.d();
       if (localObject != null)
       {
         if (((Activity)localObject).isFinishing()) {
@@ -761,7 +761,7 @@ public class QzoneSettingJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -982,7 +982,7 @@ public class QzoneSettingJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneSettingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

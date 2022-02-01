@@ -18,36 +18,36 @@ class PngFrameManager$2
   
   public void run()
   {
-    File localFile = new File(EmotionPanelConstans.emoticonJsonFilePath.replace("[epId]", this.a.jdField_a_of_type_JavaLangString));
-    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
-    ??? = localIEmoticonManagerService.syncFindEmoticonPackageById(this.a.jdField_a_of_type_JavaLangString);
+    File localFile = new File(EmotionPanelConstans.emoticonJsonFilePath.replace("[epId]", this.a.d));
+    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.this$0.a.getRuntimeService(IEmoticonManagerService.class);
+    ??? = localIEmoticonManagerService.syncFindEmoticonPackageById(this.a.d);
     Object localObject1 = ???;
     if (??? == null)
     {
       localObject1 = new EmoticonPackage();
-      ((EmoticonPackage)localObject1).epId = this.a.jdField_a_of_type_JavaLangString;
+      ((EmoticonPackage)localObject1).epId = this.a.d;
       ((EmoticonPackage)localObject1).aio = true;
     }
     synchronized (this.this$0)
     {
-      if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
+      if (this.this$0.e != null) {
         if (localFile.exists())
         {
-          this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
-          this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
-          ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
+          this.a.a = this.this$0.d.a(localFile);
+          this.this$0.e.obtainMessage(224, this.a).sendToTarget();
+          ((EmoticonPackage)localObject1).rscType = this.a.a;
           localIEmoticonManagerService.saveEmoticonPackage((EmoticonPackage)localObject1);
         }
         else
         {
-          DownloadTask localDownloadTask = new DownloadTask(EmoticonPanelUtils.a(this.a.jdField_a_of_type_JavaLangString), localFile);
-          localDownloadTask.j = true;
-          if ((DownloaderFactory.a(localDownloadTask, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) && (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil != null) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null))
+          DownloadTask localDownloadTask = new DownloadTask(EmoticonPanelUtils.c(this.a.d), localFile);
+          localDownloadTask.D = true;
+          if ((DownloaderFactory.a(localDownloadTask, this.this$0.a) == 0) && (this.this$0.d != null) && (this.this$0.e != null))
           {
-            this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
-            ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
+            this.a.a = this.this$0.d.a(localFile);
+            ((EmoticonPackage)localObject1).rscType = this.a.a;
             localIEmoticonManagerService.saveEmoticonPackage((EmoticonPackage)localObject1);
-            this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
+            this.this$0.e.obtainMessage(224, this.a).sendToTarget();
           }
         }
       }
@@ -57,7 +57,7 @@ class PngFrameManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ public final class qqshop_report$SQQSHPCliAdfbReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliAdfbReq
  * JD-Core Version:    0.7.0.1
  */

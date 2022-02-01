@@ -8,21 +8,21 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class OneWayFriendHelper
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private OneWayFriendHelper.OneWayFriendListener jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener;
-  private OneWayFriendObserver jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendObserver = new OneWayFriendHelper.1(this);
-  private String jdField_a_of_type_JavaLangString;
+  private QQAppInterface a;
+  private int b;
+  private String c;
+  private OneWayFriendHelper.OneWayFriendListener d;
+  private OneWayFriendObserver e = new OneWayFriendHelper.1(this);
   
   public OneWayFriendHelper(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("OneWayFriendHelper", 0, String.format("OneWayFriendHelper app=%s curType=%s friendUin=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt), paramString }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendObserver);
+    this.a = paramQQAppInterface;
+    this.b = paramInt;
+    this.c = paramString;
+    this.a.addObserver(this.e);
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -30,7 +30,7 @@ public class OneWayFriendHelper
     if (QLog.isColorLevel()) {
       QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
     }
-    OneWayFriendHelper.OneWayFriendListener localOneWayFriendListener = this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener;
+    OneWayFriendHelper.OneWayFriendListener localOneWayFriendListener = this.d;
     if (localOneWayFriendListener != null) {
       localOneWayFriendListener.a(paramString, paramBoolean);
     }
@@ -39,38 +39,38 @@ public class OneWayFriendHelper
   public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    return (paramInt == 0) && (!paramQQAppInterface.b(paramString));
+    return (paramInt == 0) && (!paramQQAppInterface.n(paramString));
   }
   
   public void a()
   {
-    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString))
+    if (a(this.a, this.b, this.c))
     {
-      OneWayFriendHandler localOneWayFriendHandler = (OneWayFriendHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ONE_WAY_FRIEND_HANDLER);
+      OneWayFriendHandler localOneWayFriendHandler = (OneWayFriendHandler)this.a.getBusinessHandler(BusinessHandlerFactory.ONE_WAY_FRIEND_HANDLER);
       if (localOneWayFriendHandler != null) {
-        localOneWayFriendHandler.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
+        localOneWayFriendHandler.a(Long.parseLong(this.c));
       }
     }
     else
     {
-      a(this.jdField_a_of_type_JavaLangString, false);
+      a(this.c, false);
     }
   }
   
   public void a(OneWayFriendHelper.OneWayFriendListener paramOneWayFriendListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener = paramOneWayFriendListener;
+    this.d = paramOneWayFriendListener;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendHelper$OneWayFriendListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqRelationxOnewayfriendOneWayFriendObserver);
+    this.d = null;
+    this.a.removeObserver(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class LimitChatPie$22
   
   public void run()
   {
-    this.this$0.f.setText(this.this$0.a.getString(2131698869));
+    this.this$0.I.setText(this.this$0.e.getString(2131896838));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.22
  * JD-Core Version:    0.7.0.1
  */

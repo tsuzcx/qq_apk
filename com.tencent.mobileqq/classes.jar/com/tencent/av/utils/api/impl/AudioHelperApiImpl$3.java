@@ -15,14 +15,14 @@ class AudioHelperApiImpl$3
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("de:");
     localStringBuilder.append(this.a);
-    localObject = QQToast.a((Context)localObject, localStringBuilder.toString(), 1);
-    ((QQToast)localObject).a();
-    ((QQToast)localObject).a();
+    localObject = QQToast.makeText((Context)localObject, localStringBuilder.toString(), 1);
+    ((QQToast)localObject).setAutoTextSize();
+    ((QQToast)localObject).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.utils.api.impl.AudioHelperApiImpl.3
  * JD-Core Version:    0.7.0.1
  */

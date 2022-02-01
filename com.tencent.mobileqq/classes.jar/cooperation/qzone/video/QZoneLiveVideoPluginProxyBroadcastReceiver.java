@@ -43,13 +43,13 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
         break label194;
       }
       paramString2 = new IPluginManager.PluginParams(0);
-      paramString2.b = "qzone_live_video_plugin.apk";
-      paramString2.e = "QZoneLiveVideo";
-      paramString2.jdField_a_of_type_JavaLangString = paramString1;
-      paramString2.f = "com.qzone.adapter.livevideo.LiveVideoPluginPreloadBroadcastReceiver";
-      paramString2.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      paramString2.b = "qzone_live_video_plugin.apk";
-      paramString2.e = "QZoneLiveVideo";
+      paramString2.d = "qzone_live_video_plugin.apk";
+      paramString2.g = "QZoneLiveVideo";
+      paramString2.c = paramString1;
+      paramString2.h = "com.qzone.adapter.livevideo.LiveVideoPluginPreloadBroadcastReceiver";
+      paramString2.j = paramIntent;
+      paramString2.d = "qzone_live_video_plugin.apk";
+      paramString2.g = "QZoneLiveVideo";
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
@@ -65,7 +65,7 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QZoneLiveVideoPluginProxyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

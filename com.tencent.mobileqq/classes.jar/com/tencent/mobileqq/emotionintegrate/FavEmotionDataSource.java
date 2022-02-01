@@ -25,11 +25,6 @@ public class FavEmotionDataSource
     this.a = ((CustomEmotionRoamingDBManagerBase)paramQQAppInterface.getRuntimeService(paramFavEmoticonPreviewData));
   }
   
-  public int a()
-  {
-    return 2;
-  }
-  
   public List<EmoticonPreviewData> a(boolean paramBoolean)
   {
     Object localObject = this.a.syncGetCustomEmotionInfoShowedInPanel();
@@ -41,16 +36,21 @@ public class FavEmotionDataSource
     return localArrayList;
   }
   
-  public void a() {}
-  
   public boolean a()
   {
     return false;
   }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.FavEmotionDataSource
  * JD-Core Version:    0.7.0.1
  */

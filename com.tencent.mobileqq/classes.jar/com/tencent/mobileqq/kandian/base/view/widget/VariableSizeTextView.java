@@ -29,66 +29,60 @@ public class VariableSizeTextView
   extends RelativeLayout
 {
   public static final String a;
-  protected float a;
-  ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VariableSizeTextView.OnSizeChangedListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView$OnSizeChangedListener;
-  protected boolean a;
   protected float b;
-  private boolean b;
-  float jdField_c_of_type_Float;
-  private boolean jdField_c_of_type_Boolean = false;
-  float d;
-  float e;
+  protected float c = 0.0F;
+  protected boolean d = false;
+  ViewConfiguration e = ViewConfiguration.get(getContext());
   float f;
-  private float g;
-  private float h;
-  private float i = 0.0F;
-  private float j = 0.0F;
+  float g;
+  float h;
+  float i;
+  private TextView j;
+  private float k;
+  private float l;
+  private boolean m = false;
+  private boolean n = false;
+  private VariableSizeTextView.OnSizeChangedListener o;
+  private float p = 0.0F;
+  private float q = 0.0F;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.readinjoy.atlas.");
     localStringBuilder.append(VariableSizeTextView.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public VariableSizeTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
   }
   
   public VariableSizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
     setClickable(true);
     setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#E8E8E8"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(DisplayUtil.a(paramContext, 3.0F), 1.0F);
+    this.j = new TextView(getContext());
+    this.j.setTextColor(Color.parseColor("#E8E8E8"));
+    this.j.setTextSize(1, 16.0F);
+    this.j.setIncludeFontPadding(false);
+    this.j.setLineSpacing(DisplayUtil.a(paramContext, 3.0F), 1.0F);
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.addRule(10);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
+    addView(this.j, paramContext);
   }
   
   public int a(int paramInt)
   {
-    int m = 1;
-    int k = paramInt;
-    paramInt = m;
+    int i2 = 1;
+    int i1 = paramInt;
+    paramInt = i2;
     for (;;)
     {
-      k /= 10;
-      if (k == 0) {
+      i1 /= 10;
+      if (i1 == 0) {
         break;
       }
       paramInt += 1;
@@ -99,11 +93,11 @@ public class VariableSizeTextView
   public void a()
   {
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    float f1 = this.jdField_b_of_type_Float;
+    float f1 = this.c;
     if (f1 == 0.0F) {
-      localLayoutParams.height = ((int)(this.jdField_a_of_type_Float + 0.5F));
+      localLayoutParams.height = ((int)(this.b + 0.5F));
     } else {
-      localLayoutParams.height = Math.min((int)(this.jdField_a_of_type_Float + 0.5F), (int)(f1 + 0.5F));
+      localLayoutParams.height = Math.min((int)(this.b + 0.5F), (int)(f1 + 0.5F));
     }
     setLayoutParams(localLayoutParams);
   }
@@ -112,19 +106,19 @@ public class VariableSizeTextView
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.i = this.jdField_a_of_type_AndroidWidgetTextView.getLineSpacingMultiplier();
-      this.j = this.jdField_a_of_type_AndroidWidgetTextView.getLineSpacingExtra();
+      this.p = this.j.getLineSpacingMultiplier();
+      this.q = this.j.getLineSpacingExtra();
       return;
     }
-    if ((this.i == 0.0F) && (this.j == 0.0F)) {}
+    if ((this.p == 0.0F) && (this.q == 0.0F)) {}
     try
     {
       Field localField = TextView.class.getDeclaredField("mSpacingMult");
       localField.setAccessible(true);
-      this.i = localField.getFloat(this);
+      this.p = localField.getFloat(this);
       localField = TextView.class.getDeclaredField("mSpacingAdd");
       localField.setAccessible(true);
-      this.j = localField.getFloat(this);
+      this.q = localField.getFloat(this);
       return;
     }
     catch (Exception localException)
@@ -132,75 +126,75 @@ public class VariableSizeTextView
       label94:
       break label94;
     }
-    this.i = 1.0F;
-    this.j = 3.0F;
+    this.p = 1.0F;
+    this.q = 3.0F;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     b();
-    int m = getMeasuredWidth();
-    int k = m;
-    if (m == 0) {
-      k = (int)DeviceInfoUtil.k();
+    int i2 = getMeasuredWidth();
+    int i1 = i2;
+    if (i2 == 0) {
+      i1 = (int)DeviceInfoUtil.F();
     }
-    paramCanvas = new StaticLayout(this.jdField_a_of_type_AndroidWidgetTextView.getText(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), k - getPaddingLeft() - getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, this.i, this.j, true);
+    paramCanvas = new StaticLayout(this.j.getText(), this.j.getPaint(), i1 - getPaddingLeft() - getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, this.p, this.q, true);
     float f1 = paramCanvas.getHeight() + getPaddingTop() + getPaddingBottom();
-    k = paramCanvas.getLineCount();
-    if (f1 != this.jdField_b_of_type_Float)
+    i1 = paramCanvas.getLineCount();
+    if (f1 != this.c)
     {
-      this.jdField_b_of_type_Float = f1;
+      this.c = f1;
       a();
     }
     boolean bool;
-    if (k > 5) {
+    if (i1 > 5) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.d = bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int k = paramMotionEvent.getAction();
+    int i1 = paramMotionEvent.getAction();
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onTouchEvent()  action=");
-      ((StringBuilder)localObject2).append(k);
+      ((StringBuilder)localObject2).append(i1);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject1 = getLayoutParams();
-    if (k == 0)
+    if (i1 == 0)
     {
-      this.g = paramMotionEvent.getRawX();
-      this.h = paramMotionEvent.getRawY();
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_c_of_type_Float = paramMotionEvent.getRawY();
-      this.d = this.jdField_c_of_type_Float;
-      this.f = ((ViewGroup.LayoutParams)localObject1).height;
+      this.k = paramMotionEvent.getRawX();
+      this.l = paramMotionEvent.getRawY();
+      this.n = false;
+      this.m = false;
+      this.f = paramMotionEvent.getRawY();
+      this.g = this.f;
+      this.i = ((ViewGroup.LayoutParams)localObject1).height;
       getParent().requestDisallowInterceptTouchEvent(true);
       return true;
     }
     float f1;
     float f2;
-    if (k == 1)
+    if (i1 == 1)
     {
-      this.d = paramMotionEvent.getRawY();
+      this.g = paramMotionEvent.getRawY();
       f1 = ((ViewGroup.LayoutParams)localObject1).height;
-      if (f1 != this.jdField_b_of_type_Float)
+      if (f1 != this.c)
       {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView$OnSizeChangedListener;
+        paramMotionEvent = this.o;
         if (paramMotionEvent != null) {
           paramMotionEvent.a();
         }
       }
-      f2 = this.jdField_b_of_type_Float;
+      f2 = this.c;
       if (f1 > f2)
       {
         paramMotionEvent = ValueAnimator.ofFloat(new float[] { f1, f2 });
@@ -213,18 +207,18 @@ public class VariableSizeTextView
         return true;
       }
     }
-    else if (k == 2)
+    else if (i1 == 2)
     {
-      f1 = paramMotionEvent.getRawX() - this.g;
-      f2 = paramMotionEvent.getRawY() - this.h;
-      if ((Math.max(Math.abs(f1), Math.abs(f2)) > this.jdField_a_of_type_AndroidViewViewConfiguration.getScaledTouchSlop()) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && ((f1 != 0.0F) || (f2 != 0.0F)))
+      f1 = paramMotionEvent.getRawX() - this.k;
+      f2 = paramMotionEvent.getRawY() - this.l;
+      if ((Math.max(Math.abs(f1), Math.abs(f2)) > this.e.getScaledTouchSlop()) && (!this.n) && (!this.m) && ((f1 != 0.0F) || (f2 != 0.0F)))
       {
         if (QLog.isColorLevel())
         {
-          localObject2 = jdField_a_of_type_JavaLangString;
+          localObject2 = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onTouchEvent()  action=");
-          localStringBuilder.append(k);
+          localStringBuilder.append(i1);
           localStringBuilder.append(" distanceX=");
           localStringBuilder.append(f1);
           localStringBuilder.append(" distanceY=");
@@ -232,56 +226,56 @@ public class VariableSizeTextView
           QLog.d((String)localObject2, 2, localStringBuilder.toString());
         }
         if (Math.abs(f1) >= Math.abs(f2)) {
-          this.jdField_c_of_type_Boolean = true;
+          this.n = true;
         } else {
-          this.jdField_b_of_type_Boolean = true;
+          this.m = true;
         }
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.m)
       {
         getParent().requestDisallowInterceptTouchEvent(true);
-        this.e = this.d;
-        this.d = paramMotionEvent.getRawY();
-        f1 = this.e - this.d;
-        int m = ((ViewGroup.LayoutParams)localObject1).height;
-        f2 = m;
-        k = (int)(f2 + f1);
-        float f3 = k;
-        float f4 = this.jdField_b_of_type_Float;
+        this.h = this.g;
+        this.g = paramMotionEvent.getRawY();
+        f1 = this.h - this.g;
+        int i2 = ((ViewGroup.LayoutParams)localObject1).height;
+        f2 = i2;
+        i1 = (int)(f2 + f1);
+        float f3 = i1;
+        float f4 = this.c;
         if (f3 > f4)
         {
-          if (this.jdField_a_of_type_Boolean)
+          if (this.d)
           {
             if (f1 < 0.0F) {
-              k = -1;
+              i1 = -1;
             } else {
-              k = 1;
+              i1 = 1;
             }
-            double d1 = m;
-            double d2 = k;
+            double d1 = i2;
+            double d2 = i1;
             double d3 = Math.pow(Math.abs(f1), 0.7D);
             Double.isNaN(d2);
             Double.isNaN(d1);
-            k = (int)(d1 + d2 * d3);
+            i1 = (int)(d1 + d2 * d3);
           }
           else
           {
-            k = (int)(f4 + 0.5F);
+            i1 = (int)(f4 + 0.5F);
           }
-          ((ViewGroup.LayoutParams)localObject1).height = k;
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView$OnSizeChangedListener;
+          ((ViewGroup.LayoutParams)localObject1).height = i1;
+          paramMotionEvent = this.o;
           if (paramMotionEvent != null) {
-            paramMotionEvent.a(m, k);
+            paramMotionEvent.a(i2, i1);
           }
           setLayoutParams((ViewGroup.LayoutParams)localObject1);
           return true;
         }
-        if (((f2 < this.jdField_a_of_type_Float) && (f1 > 0.0F)) || (f3 >= this.jdField_a_of_type_Float))
+        if (((f2 < this.b) && (f1 > 0.0F)) || (f3 >= this.b))
         {
-          ((ViewGroup.LayoutParams)localObject1).height = k;
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView$OnSizeChangedListener;
+          ((ViewGroup.LayoutParams)localObject1).height = i1;
+          paramMotionEvent = this.o;
           if (paramMotionEvent != null) {
-            paramMotionEvent.a(m, k);
+            paramMotionEvent.a(i2, i1);
           }
           setLayoutParams((ViewGroup.LayoutParams)localObject1);
           return true;
@@ -297,7 +291,7 @@ public class VariableSizeTextView
   
   public void setOnSizeChangedListener(VariableSizeTextView.OnSizeChangedListener paramOnSizeChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView$OnSizeChangedListener = paramOnSizeChangedListener;
+    this.o = paramOnSizeChangedListener;
   }
   
   public void setText(int paramInt1, int paramInt2, CharSequence paramCharSequence)
@@ -320,17 +314,17 @@ public class VariableSizeTextView
     if (!TextUtils.isEmpty(paramCharSequence)) {
       ((SpannableStringBuilder)localObject).append(paramCharSequence);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.j.setText((CharSequence)localObject);
   }
   
   public void setText(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.j.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.VariableSizeTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,22 +9,22 @@ class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1
   
   public void run()
   {
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, null);
-    if (!HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0))
+    HWEditLocalVideoPlayer.a(this.a.b.this$0, null);
+    if (!HWEditLocalVideoPlayer.e(this.a.b.this$0))
     {
       SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Convert video finished but player not displayed.");
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a != null) && (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.b() == 3) && (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.c == this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int)) {
-      HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo);
+    if ((this.a.b.this$0.t.P != null) && (this.a.b.this$0.t.P.k() == 3) && (this.a.b.c == this.a.b.this$0.d)) {
+      HWEditLocalVideoPlayer.a(this.a.b.this$0, this.a.a);
     }
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0);
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int);
+    HWEditLocalVideoPlayer.f(this.a.b.this$0);
+    HWEditLocalVideoPlayer.a(this.a.b.this$0, this.a.b.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable.1.1
  * JD-Core Version:    0.7.0.1
  */

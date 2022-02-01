@@ -14,8 +14,8 @@ class PublicAccountUtilImpl$18
   public void run()
   {
     Object localObject1 = ServiceAccountFolderManager.a();
-    int i = ((ServiceAccountFolderManager)localObject1).b();
-    int j = ((ServiceAccountFolderManager)localObject1).a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    int i = ((ServiceAccountFolderManager)localObject1).h();
+    int j = ((ServiceAccountFolderManager)localObject1).g((QQAppInterface)this.a);
     String str;
     if (j == 1) {
       str = "0X80067E8";
@@ -24,8 +24,8 @@ class PublicAccountUtilImpl$18
     } else {
       str = "0X80067EA";
     }
-    long l = ((ServiceAccountFolderManager)localObject1).a();
-    localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    long l = ((ServiceAccountFolderManager)localObject1).d();
+    localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
     ((StringBuilder)localObject2).append(l);
@@ -37,13 +37,13 @@ class PublicAccountUtilImpl$18
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(i);
-    ReportController.b((AppRuntime)localObject1, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, (String)localObject2, (String)localObject3, localStringBuilder.toString(), String.valueOf(this.jdField_a_of_type_Int + 1));
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
+    ReportController.b((AppRuntime)localObject1, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, (String)localObject2, (String)localObject3, localStringBuilder.toString(), String.valueOf(this.b + 1));
+    ReportController.b(this.a, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.18
  * JD-Core Version:    0.7.0.1
  */

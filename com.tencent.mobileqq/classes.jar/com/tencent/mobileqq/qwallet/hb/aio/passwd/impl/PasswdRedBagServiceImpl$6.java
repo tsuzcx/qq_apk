@@ -14,23 +14,23 @@ class PasswdRedBagServiceImpl$6
   
   public void a(String paramString)
   {
-    if (PasswdRedBagServiceImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl) != null)
+    if (PasswdRedBagServiceImpl.access$200(this.d) != null)
     {
       GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
-      localGetRandomHbIdiomReq.makeUin = PasswdRedBagServiceImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl).getLongAccountUin();
-      localGetRandomHbIdiomReq.subchannel = this.jdField_a_of_type_Int;
+      localGetRandomHbIdiomReq.makeUin = PasswdRedBagServiceImpl.access$200(this.d).getLongAccountUin();
+      localGetRandomHbIdiomReq.subchannel = this.a;
       localGetRandomHbIdiomReq.sKey = paramString;
-      localGetRandomHbIdiomReq.appid = AppSetting.a();
+      localGetRandomHbIdiomReq.appid = AppSetting.d();
       localGetRandomHbIdiomReq.fromType = this.b;
       localGetRandomHbIdiomReq.platform = 0;
-      localGetRandomHbIdiomReq.qqVersion = "8.7.0";
-      QWalletCommonServlet.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
+      localGetRandomHbIdiomReq.qqVersion = "8.8.17";
+      QWalletCommonServlet.a(localGetRandomHbIdiomReq, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

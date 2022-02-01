@@ -19,13 +19,13 @@ public class EquipLockCircleView
   {
     super.onDraw(paramCanvas);
     Paint localPaint = new Paint();
-    localPaint.setColor(getResources().getColor(2131167056));
+    localPaint.setColor(getResources().getColor(2131167993));
     paramCanvas.drawCircle(AIOUtils.b(3.0F, getResources()), getHeight() / 2, AIOUtils.b(2.0F, getResources()), localPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipLockCircleView
  * JD-Core Version:    0.7.0.1
  */

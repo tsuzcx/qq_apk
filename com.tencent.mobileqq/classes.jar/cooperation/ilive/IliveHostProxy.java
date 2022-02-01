@@ -14,12 +14,12 @@ public class IliveHostProxy
   public static boolean isVideoPlayerReady()
   {
     QLog.e("IliveHostProxy", 1, "host isVideoPlayerReady");
-    return QQVideoPlaySDKManager.b();
+    return QQVideoPlaySDKManager.isSoLoadSucess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveHostProxy
  * JD-Core Version:    0.7.0.1
  */

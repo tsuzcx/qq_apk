@@ -16,12 +16,12 @@ class ArkMultiProc$4$1
     localStringBuilder.append(", data=");
     localStringBuilder.append(paramString);
     QLog.i("ArkApp.MultiProc", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateSSOCallback.onComplete(paramBoolean, paramString);
+    this.a.onComplete(paramBoolean, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkMultiProc.4.1
  * JD-Core Version:    0.7.0.1
  */

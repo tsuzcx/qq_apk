@@ -19,8 +19,8 @@ class HbThemeConfigApiImpl$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("qb_tenpay_share_face", 0).edit();
-    ((SharedPreferences.Editor)localObject).putString("hb_face", HbThemeConfigApiImpl.access$002(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject).toString());
+    Object localObject = this.a.getSharedPreferences("qb_tenpay_share_face", 0).edit();
+    ((SharedPreferences.Editor)localObject).putString("hb_face", HbThemeConfigApiImpl.access$002(this.this$0, this.b).toString());
     ((SharedPreferences.Editor)localObject).commit();
     localObject = HbThemeConfigApiImpl.access$000(this.this$0).optString("hb_face_imgurl");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -31,12 +31,12 @@ class HbThemeConfigApiImpl$1
     }
     HashSet localHashSet = new HashSet(2);
     localHashSet.add(localObject);
-    ((IPreloadImgApi)QRoute.api(IPreloadImgApi.class)).startDownload(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localHashSet);
+    ((IPreloadImgApi)QRoute.api(IPreloadImgApi.class)).startDownload(this.c, localHashSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.HbThemeConfigApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -139,10 +139,10 @@ public class GameCenterActivity
   
   public static boolean isContainsGameUrl(String paramString)
   {
-    if (SwiftBrowserStatistics.CrashStepStatsEntry.a == null) {
+    if (SwiftBrowserStatistics.CrashStepStatsEntry.i == null) {
       parseTraceUrl();
     }
-    List localList = SwiftBrowserStatistics.CrashStepStatsEntry.a;
+    List localList = SwiftBrowserStatistics.CrashStepStatsEntry.i;
     if (!TextUtils.isEmpty(paramString))
     {
       if (localList == null) {
@@ -173,7 +173,7 @@ public class GameCenterActivity
     localStringBuilder.append("trace_url_keyword");
     localStringBuilder.append((String)localObject1);
     localObject1 = ((SharedPreferences)localObject2).getString(localStringBuilder.toString(), "");
-    SwiftBrowserStatistics.CrashStepStatsEntry.a = new ArrayList();
+    SwiftBrowserStatistics.CrashStepStatsEntry.i = new ArrayList();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("parseTraceUrl:");
     ((StringBuilder)localObject2).append((String)localObject1);
@@ -188,7 +188,7 @@ public class GameCenterActivity
       while (i < ((JSONArray)localObject1).length())
       {
         localObject2 = (String)((JSONArray)localObject1).opt(i);
-        SwiftBrowserStatistics.CrashStepStatsEntry.a.add(localObject2);
+        SwiftBrowserStatistics.CrashStepStatsEntry.i.add(localObject2);
         i += 1;
       }
       return;
@@ -303,13 +303,13 @@ public class GameCenterActivity
     if (localObject == null) {
       return false;
     }
-    localObject = ((WebViewFragment)localObject).getSwiftTitleUI().b;
+    localObject = ((WebViewFragment)localObject).getSwiftTitleUI().e;
     if (localObject == null) {
       return false;
     }
     if (this.ad == null)
     {
-      this.ad = super.getResources().getDrawable(2130839404);
+      this.ad = super.getResources().getDrawable(2130839588);
       this.mOldDrawables = ((TextView)localObject).getCompoundDrawables();
       this.mOldPadding = ((TextView)localObject).getCompoundDrawablePadding();
       ((TextView)localObject).setCompoundDrawablePadding(10);
@@ -328,7 +328,7 @@ public class GameCenterActivity
     if (localObject1 == null) {
       return false;
     }
-    localObject1 = ((WebViewFragment)localObject1).getSwiftTitleUI().b;
+    localObject1 = ((WebViewFragment)localObject1).getSwiftTitleUI().e;
     if (localObject1 == null) {
       return false;
     }
@@ -358,7 +358,7 @@ public class GameCenterActivity
   {
     sActivityNum += 1;
     handlePushReport();
-    QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), this);
+    QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), this);
     return super.doOnCreate(paramBundle);
   }
   
@@ -444,7 +444,7 @@ public class GameCenterActivity
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().b();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.isFullScreenMode()))
     {
       localGameCenterVideoViewController.exitFullScreen();
@@ -486,7 +486,7 @@ public class GameCenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity
  * JD-Core Version:    0.7.0.1
  */

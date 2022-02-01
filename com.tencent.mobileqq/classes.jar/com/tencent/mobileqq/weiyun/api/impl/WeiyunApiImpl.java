@@ -85,9 +85,9 @@ public final class WeiyunApiImpl
   
   public void cleanPwdRecord(Context paramContext, long paramLong)
   {
-    PreferenceUtils.a(paramContext, String.valueOf(paramLong), "key_pwd_queried");
-    PreferenceUtils.a(paramContext, String.valueOf(paramLong), "key_pwd_has");
-    PreferenceUtils.a(paramContext, String.valueOf(paramLong), "key_pwd_verified");
+    PreferenceUtils.b(paramContext, String.valueOf(paramLong), "key_pwd_queried");
+    PreferenceUtils.b(paramContext, String.valueOf(paramLong), "key_pwd_has");
+    PreferenceUtils.b(paramContext, String.valueOf(paramLong), "key_pwd_verified");
     PWD_RECORD[0].set(false);
     PWD_RECORD[1].set(false);
     PWD_RECORD[2].set(false);
@@ -221,7 +221,7 @@ public final class WeiyunApiImpl
   public FileManagerEntity newEntityByWeiYunMiniAppParams(Bundle paramBundle)
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.nSessionId = QQFileManagerUtil.a().longValue();
+    localFileManagerEntity.nSessionId = QQFileManagerUtil.g().longValue();
     localFileManagerEntity.setCloudType(2);
     localFileManagerEntity.nOpType = 50;
     localFileManagerEntity.bSend = false;
@@ -308,7 +308,7 @@ public final class WeiyunApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunApiImpl
  * JD-Core Version:    0.7.0.1
  */

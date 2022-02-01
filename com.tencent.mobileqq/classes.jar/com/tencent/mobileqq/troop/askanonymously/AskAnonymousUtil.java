@@ -32,7 +32,80 @@ import org.json.JSONObject;
 
 public class AskAnonymousUtil
 {
-  public static long a(MessageRecord paramMessageRecord)
+  protected static Activity a()
+  {
+    if (BaseActivity.sTopActivity != null) {
+      return BaseActivity.sTopActivity;
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QzoneMainRuntime))
+    {
+      localObject = ((AppRuntime)localObject).getApplication().getResumeActivity();
+      if (localObject != null) {
+        return (Activity)((WeakReference)localObject).get();
+      }
+    }
+    return null;
+  }
+  
+  public static String a(MessageRecord paramMessageRecord, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AskAnonymousUtil", 2, String.format("appendAskAnonymousParamIfNeed mr is arkMsg?=%b", new Object[] { Boolean.valueOf(paramMessageRecord instanceof MessageForArkApp) }));
+    }
+    if (!(paramMessageRecord instanceof MessageForArkApp)) {
+      return paramString;
+    }
+    String str = paramString;
+    if (a((MessageForArkApp)paramMessageRecord))
+    {
+      paramMessageRecord = new StringBuilder();
+      paramMessageRecord.append(paramString);
+      paramMessageRecord.append("&busi=ask_anonymously=1");
+      str = paramMessageRecord.toString();
+    }
+    return str;
+  }
+  
+  public static void a(MessageForArkApp paramMessageForArkApp)
+  {
+    AskAnonymousUtil.1 local1 = new AskAnonymousUtil.1(paramMessageForArkApp);
+    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+      local1.run();
+    } else {
+      ThreadManager.getUIHandlerV2().post(local1);
+    }
+    ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "clk_askark_ans", 0, 0, paramMessageForArkApp.frienduin, "0", "", "");
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return (paramLong & 0x40000000) != 0L;
+  }
+  
+  protected static boolean a(TroopChatPie paramTroopChatPie)
+  {
+    if (paramTroopChatPie == null) {
+      return true;
+    }
+    QQAppInterface localQQAppInterface = paramTroopChatPie.d;
+    if (localQQAppInterface == null) {
+      return true;
+    }
+    if (((TroopGagMgr)localQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramTroopChatPie.ah.b, true).b)
+    {
+      QQToast.makeText(localQQAppInterface.getApp(), 2131895180, 0).show(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299920));
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    return b(paramMessageRecord) > 0L;
+  }
+  
+  public static long b(MessageRecord paramMessageRecord)
   {
     boolean bool = paramMessageRecord instanceof MessageForArkApp;
     long l3 = 0L;
@@ -107,79 +180,6 @@ public class AskAnonymousUtil
     }
   }
   
-  protected static Activity a()
-  {
-    if (BaseActivity.sTopActivity != null) {
-      return BaseActivity.sTopActivity;
-    }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QzoneMainRuntime))
-    {
-      localObject = ((AppRuntime)localObject).getApplication().getResumeActivity();
-      if (localObject != null) {
-        return (Activity)((WeakReference)localObject).get();
-      }
-    }
-    return null;
-  }
-  
-  public static String a(MessageRecord paramMessageRecord, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AskAnonymousUtil", 2, String.format("appendAskAnonymousParamIfNeed mr is arkMsg?=%b", new Object[] { Boolean.valueOf(paramMessageRecord instanceof MessageForArkApp) }));
-    }
-    if (!(paramMessageRecord instanceof MessageForArkApp)) {
-      return paramString;
-    }
-    String str = paramString;
-    if (a((MessageForArkApp)paramMessageRecord))
-    {
-      paramMessageRecord = new StringBuilder();
-      paramMessageRecord.append(paramString);
-      paramMessageRecord.append("&busi=ask_anonymously=1");
-      str = paramMessageRecord.toString();
-    }
-    return str;
-  }
-  
-  public static void a(MessageForArkApp paramMessageForArkApp)
-  {
-    AskAnonymousUtil.1 local1 = new AskAnonymousUtil.1(paramMessageForArkApp);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      local1.run();
-    } else {
-      ThreadManager.getUIHandlerV2().post(local1);
-    }
-    ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "clk_askark_ans", 0, 0, paramMessageForArkApp.frienduin, "0", "", "");
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return (paramLong & 0x40000000) != 0L;
-  }
-  
-  protected static boolean a(TroopChatPie paramTroopChatPie)
-  {
-    if (paramTroopChatPie == null) {
-      return true;
-    }
-    QQAppInterface localQQAppInterface = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface == null) {
-      return true;
-    }
-    if (((TroopGagMgr)localQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true).a)
-    {
-      QQToast.a(localQQAppInterface.getApp(), 2131697407, 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299168));
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    return a(paramMessageRecord) > 0L;
-  }
-  
   public static void b(MessageForArkApp paramMessageForArkApp)
   {
     Object localObject = a();
@@ -191,12 +191,12 @@ public class AskAnonymousUtil
       localObject = (BaseActivity)localObject;
       if (((BaseActivity)localObject).getChatFragment() != null)
       {
-        localObject = ((BaseActivity)localObject).getChatFragment().a();
+        localObject = ((BaseActivity)localObject).getChatFragment().k();
         if ((localObject instanceof TroopChatPie))
         {
           TroopChatPie localTroopChatPie = (TroopChatPie)localObject;
           if ((!a(localTroopChatPie)) && (!b(localTroopChatPie))) {
-            ((ReplyHelper)((BaseChatPie)localObject).a(119)).a(paramMessageForArkApp, 0, 0L, null);
+            ((ReplyHelper)((BaseChatPie)localObject).q(119)).a(paramMessageForArkApp, 0, 0L, null);
           }
         }
         else
@@ -220,13 +220,13 @@ public class AskAnonymousUtil
     if (paramTroopChatPie == null) {
       return true;
     }
-    QQAppInterface localQQAppInterface = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = paramTroopChatPie.d;
     if (localQQAppInterface == null) {
       return true;
     }
-    if (paramTroopChatPie.v())
+    if (paramTroopChatPie.bG())
     {
-      QQToast.a(localQQAppInterface.getApp(), 2131696046, 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(localQQAppInterface.getApp(), 2131893808, 0).show(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299920));
       return true;
     }
     return false;
@@ -234,7 +234,7 @@ public class AskAnonymousUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.askanonymously.AskAnonymousUtil
  * JD-Core Version:    0.7.0.1
  */

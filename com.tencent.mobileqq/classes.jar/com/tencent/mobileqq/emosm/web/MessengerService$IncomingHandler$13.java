@@ -26,8 +26,8 @@ class MessengerService$IncomingHandler$13
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject1 = (IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class);
+    this.a.getEntityManagerFactory().createEntityManager();
+    Object localObject1 = (IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class);
     Object localObject2 = ((IFavroamingDBManagerService)localObject1).getEmoticonDataList();
     if (localObject2 != null) {}
     label633:
@@ -82,19 +82,19 @@ class MessengerService$IncomingHandler$13
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("remainNum", FavEmoConstant.a - i);
         ((JSONObject)localObject1).put("uid", localJSONArray);
-        this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-        this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject1).toString());
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        this.b.putInt("result", 0);
+        this.b.putString("data", ((JSONObject)localObject1).toString());
+        this.c.a(this.b);
         return;
       }
       catch (Exception localException1)
       {
-        this.jdField_a_of_type_AndroidOsBundle.putInt("result", 1);
+        this.b.putInt("result", 1);
         String str = localException1.getMessage();
         if (str != null) {
-          this.jdField_a_of_type_AndroidOsBundle.putString("message", str);
+          this.b.putString("message", str);
         }
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        this.c.a(this.b);
         if (!QLog.isColorLevel()) {
           break label633;
         }
@@ -103,12 +103,12 @@ class MessengerService$IncomingHandler$13
       }
       catch (JSONException localJSONException)
       {
-        this.jdField_a_of_type_AndroidOsBundle.putInt("result", 1);
+        this.b.putInt("result", 1);
         localObject1 = localJSONException.getMessage();
         if (localObject1 != null) {
-          this.jdField_a_of_type_AndroidOsBundle.putString("message", (String)localObject1);
+          this.b.putString("message", (String)localObject1);
         }
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        this.c.a(this.b);
         if (!QLog.isColorLevel()) {
           break label633;
         }
@@ -120,9 +120,9 @@ class MessengerService$IncomingHandler$13
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("remainNum", FavEmoConstant.a);
         localJSONObject.put("uid", new JSONArray());
-        this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-        this.jdField_a_of_type_AndroidOsBundle.putString("data", localJSONObject.toString());
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        this.b.putInt("result", 0);
+        this.b.putString("data", localJSONObject.toString());
+        this.c.a(this.b);
         return;
       }
       catch (Exception localException2)
@@ -137,7 +137,7 @@ class MessengerService$IncomingHandler$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.13
  * JD-Core Version:    0.7.0.1
  */

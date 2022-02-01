@@ -22,29 +22,29 @@ import java.util.concurrent.ExecutorService;
 public class ODLoadingActivity
   extends Activity
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-  private final ODLoadingActivity.ODEnterCallback jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity$ODEnterCallback = new ODLoadingActivity.ODEnterCallback(this);
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private QQProgressDialog a;
+  private FrameLayout b;
+  private boolean c;
+  private View d;
+  private IVPluginDataReporter e = new IVPluginDataReporter();
+  private Handler f;
+  private boolean g;
+  private final ODLoadingActivity.ODEnterCallback h = new ODLoadingActivity.ODEnterCallback(this);
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, 40);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707828));
+      this.a = new QQProgressDialog(this, 40);
+      this.a.a(HardCodeUtil.a(2131905642));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a.show();
   }
   
   private void d()
   {
-    this.b = true;
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    this.g = true;
+    QQProgressDialog localQQProgressDialog = this.a;
     if (localQQProgressDialog != null) {
       localQQProgressDialog.dismiss();
     }
@@ -54,21 +54,21 @@ public class ODLoadingActivity
   {
     d();
     finish();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onCloseLoadingView").report();
+    this.e.opType("onCloseLoadingView").report();
     Monitor.b("33669909");
   }
   
   void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.d = paramView;
     runOnUiThread(new ODLoadingActivity.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onShowLoadingView").report();
+    this.e.opType("onShowLoadingView").report();
     Monitor.b("33669908");
   }
   
   void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onEnterComplete").report();
+    this.e.opType("onEnterComplete").report();
     Monitor.b("33669911");
   }
   
@@ -81,9 +81,9 @@ public class ODLoadingActivity
   public void onBackPressed()
   {
     finish();
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onBackPressed").report();
+      this.e.opType("onBackPressed").report();
       Monitor.b("33669910");
       IVCommonInterfaceImpl.getInstance().onHostActivityBackPress();
     }
@@ -115,17 +115,17 @@ public class ODLoadingActivity
     QLog.e("ODLoadingActivity", 2, "fromId not long");
     label86:
     str = paramBundle.getString("bizType");
-    paramBundle.putString("qqVersion", "8.7.0");
+    paramBundle.putString("qqVersion", "8.8.17");
     paramBundle.putBoolean("isGooglePlayVersion", false);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l1));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
+    this.e.opDepartment("shadow").opName(str).d1(String.valueOf(l1));
+    this.e.opType("enterLoading").report();
     Monitor.b("33669907");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    this.b = new FrameLayout(this);
+    this.b.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    setContentView(this.b);
     findViewById(16908290).setVisibility(8);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
+    this.f = new Handler(Looper.getMainLooper());
+    this.f.postDelayed(new ODLoadingActivity.1(this), 1000L);
     localExecutorService = ThreadManagerExecutor.getExecutorService(192);
     localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new ODLoadingActivity.2(this, str)), l1, paramBundle));
   }
@@ -133,12 +133,12 @@ public class ODLoadingActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_AndroidViewView != null) {}
+    if (this.d != null) {}
     try
     {
       Field localField = View.class.getDeclaredField("mParent");
       localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_AndroidViewView, null);
+      localField.set(this.d, null);
       label34:
       d();
       IVCommonInterfaceImpl.getInstance().onHostActivityDestroy();
@@ -182,7 +182,7 @@ public class ODLoadingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity
  * JD-Core Version:    0.7.0.1
  */

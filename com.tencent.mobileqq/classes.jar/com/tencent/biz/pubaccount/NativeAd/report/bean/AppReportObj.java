@@ -25,21 +25,13 @@ public final class AppReportObj
     return "app";
   }
   
-  @Nullable
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    ReportExKt.a(localJSONObject, "appInstallStatus", Integer.valueOf(this.a));
-    return localJSONObject;
-  }
-  
   public void a(@NotNull AdReportData paramAdReportData)
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    if (paramAdReportData.a() == null) {
+    if (paramAdReportData.g() == null) {
       return;
     }
-    String str = paramAdReportData.a().packageName;
+    String str = paramAdReportData.g().packageName;
     Intrinsics.checkExpressionValueIsNotNull(str, "adReportData.advertisementInfo.packageName");
     int i;
     if (((CharSequence)str).length() > 0) {
@@ -49,7 +41,7 @@ public final class AppReportObj
     }
     if (i != 0)
     {
-      if (AdReportUtil.a((Context)BaseApplication.context, paramAdReportData.a().getPackageName()))
+      if (AdReportUtil.a((Context)BaseApplication.context, paramAdReportData.g().getPackageName()))
       {
         this.a = 1;
         return;
@@ -58,14 +50,22 @@ public final class AppReportObj
     }
   }
   
-  public boolean a()
+  @Nullable
+  public JSONObject b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    ReportExKt.a(localJSONObject, "appInstallStatus", Integer.valueOf(this.a));
+    return localJSONObject;
+  }
+  
+  public boolean c()
   {
     return this.a != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.AppReportObj
  * JD-Core Version:    0.7.0.1
  */

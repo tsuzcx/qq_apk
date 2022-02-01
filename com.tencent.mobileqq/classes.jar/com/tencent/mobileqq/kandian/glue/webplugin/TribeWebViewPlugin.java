@@ -17,18 +17,8 @@ import org.json.JSONObject;
 public final class TribeWebViewPlugin
   extends WebViewPlugin
 {
-  public static final TribeWebViewPlugin.Companion a;
-  private final Map<String, ShowShareMenuProcessor> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginTribeWebViewPlugin$Companion = new TribeWebViewPlugin.Companion(null);
-  }
-  
-  public TribeWebViewPlugin()
-  {
-    this.jdField_a_of_type_JavaUtilMap = MapsKt.mapOf(TuplesKt.to("showShareMenu", new ShowShareMenuProcessor(this)));
-  }
+  public static final TribeWebViewPlugin.Companion a = new TribeWebViewPlugin.Companion(null);
+  private final Map<String, ShowShareMenuProcessor> b = MapsKt.mapOf(TuplesKt.to("showShareMenu", new ShowShareMenuProcessor(this)));
   
   protected boolean handleJsRequest(@Nullable JsBridgeListener paramJsBridgeListener, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @NotNull String... paramVarArgs)
   {
@@ -42,7 +32,7 @@ public final class TribeWebViewPlugin
     }
     if (i == 0)
     {
-      localObject = (ShowShareMenuProcessor)this.jdField_a_of_type_JavaUtilMap.get(paramString3);
+      localObject = (ShowShareMenuProcessor)this.b.get(paramString3);
       if (localObject != null)
       {
         if (paramVarArgs.length == 0) {
@@ -64,7 +54,7 @@ public final class TribeWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.TribeWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

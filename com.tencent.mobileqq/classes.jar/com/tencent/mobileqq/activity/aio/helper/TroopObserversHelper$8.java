@@ -15,14 +15,14 @@ class TroopObserversHelper$8
   
   protected void a(Boolean paramBoolean)
   {
-    if ((PlusPanel)TroopObserversHelper.a(this.a).a().b(8) != null) {
+    if ((PlusPanel)TroopObserversHelper.d(this.a).bq().d(8) != null) {
       paramBoolean.booleanValue();
     }
   }
   
   protected void a(Boolean paramBoolean, ArrayList<Integer> paramArrayList, List<cmd0xca05.Result> paramList)
   {
-    paramArrayList = (PlusPanel)TroopObserversHelper.a(this.a).a().b(8);
+    paramArrayList = (PlusPanel)TroopObserversHelper.d(this.a).bq().d(8);
     if ((paramArrayList != null) && (paramBoolean.booleanValue())) {
       paramArrayList.a();
     }
@@ -30,7 +30,7 @@ class TroopObserversHelper$8
   
   protected void b(Boolean paramBoolean)
   {
-    PlusPanel localPlusPanel = (PlusPanel)TroopObserversHelper.a(this.a).a().b(8);
+    PlusPanel localPlusPanel = (PlusPanel)TroopObserversHelper.d(this.a).bq().d(8);
     if ((localPlusPanel != null) && (paramBoolean.booleanValue())) {
       localPlusPanel.a();
     }
@@ -38,7 +38,7 @@ class TroopObserversHelper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.8
  * JD-Core Version:    0.7.0.1
  */

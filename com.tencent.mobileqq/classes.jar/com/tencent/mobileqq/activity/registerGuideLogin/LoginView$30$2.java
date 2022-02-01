@@ -7,12 +7,12 @@ class LoginView$30$2
   
   public void run()
   {
-    LoginView.e(this.a.a);
+    this.a.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.30.2
  * JD-Core Version:    0.7.0.1
  */

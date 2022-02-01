@@ -42,11 +42,11 @@ public class PopupDialogQQSide
     localObject2 = new PopupDialogQQSide.2(this, (ResultReceiver)localObject2);
     int i = j;
     if (j == 0) {
-      i = 2131720247;
+      i = 2131917882;
     }
     j = k;
     if (k == 0) {
-      j = 2131720247;
+      j = 2131917882;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(getQBaseActivity(), m);
     localQQCustomDialog.setMessage(str2);

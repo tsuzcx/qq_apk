@@ -20,34 +20,34 @@ import java.util.Map;
 public class CreateDiscussionSearchEngine
   implements ISearchEngine<IContactSearchModel>
 {
-  int jdField_a_of_type_Int;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  ContactSearchEngine jdField_a_of_type_ComTencentMobileqqSearchBusinessContactContactSearchEngine;
-  boolean jdField_a_of_type_Boolean;
-  private boolean b = false;
-  private boolean c = false;
+  AppInterface a;
+  boolean b;
+  ContactSearchEngine c;
+  int d;
+  private boolean e = false;
+  private boolean f = false;
   
   public CreateDiscussionSearchEngine(AppInterface paramAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactContactSearchEngine = new ContactSearchEngine(paramAppInterface, 10002, 5, null);
+    this.a = paramAppInterface;
+    this.d = paramInt;
+    this.c = new ContactSearchEngine(paramAppInterface, 10002, 5, null);
   }
   
   public List<IContactSearchModel> a(SearchRequest paramSearchRequest)
   {
     long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     if ((paramSearchRequest != null) && (!TextUtils.isEmpty(paramSearchRequest.a)))
     {
       Object localObject2 = paramSearchRequest.a.split("\\s+");
       if (localObject2.length < 2) {
         return null;
       }
-      if (!this.c)
+      if (!this.f)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactContactSearchEngine.a();
-        this.c = true;
+        this.c.a();
+        this.f = true;
       }
       Object localObject1 = new ArrayList();
       int j = localObject2.length;
@@ -55,11 +55,11 @@ public class CreateDiscussionSearchEngine
       while (i < j)
       {
         localObject3 = localObject2[i];
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.b) {
           return null;
         }
         localObject3 = new SearchRequest((String)localObject3);
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactContactSearchEngine.a((SearchRequest)localObject3);
+        localObject3 = this.c.a((SearchRequest)localObject3);
         if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
           ((List)localObject1).add(localObject3);
         }
@@ -97,10 +97,10 @@ public class CreateDiscussionSearchEngine
           }
           localObject6 = (IContactSearchModel)((Iterator)localObject5).next();
           i = j;
-          if (!((Map)localObject2).containsKey(((IContactSearchModel)localObject6).a()))
+          if (!((Map)localObject2).containsKey(((IContactSearchModel)localObject6).c()))
           {
-            ((Map)localObject2).put(((IContactSearchModel)localObject6).a(), Integer.valueOf(j));
-            ((Map)localObject1).put(Integer.valueOf(j), ((IContactSearchModel)localObject6).a());
+            ((Map)localObject2).put(((IContactSearchModel)localObject6).c(), Integer.valueOf(j));
+            ((Map)localObject1).put(Integer.valueOf(j), ((IContactSearchModel)localObject6).c());
             i = j + 1;
           }
         }
@@ -112,9 +112,9 @@ public class CreateDiscussionSearchEngine
         int k = 0;
         while (k < ((List)((List)localObject3).get(j)).size())
         {
-          localObject5 = (Integer)((Map)localObject2).get(((IContactSearchModel)((List)((List)localObject3).get(j)).get(k)).a());
+          localObject5 = (Integer)((Map)localObject2).get(((IContactSearchModel)((List)((List)localObject3).get(j)).get(k)).c());
           if (localObject5 != null) {
-            localObject4[j][localObject5.intValue()] = ((IContactSearchModel)((List)((List)localObject3).get(j)).get(k)).b();
+            localObject4[j][localObject5.intValue()] = ((IContactSearchModel)((List)((List)localObject3).get(j)).get(k)).u();
           }
           k += 1;
         }
@@ -133,7 +133,7 @@ public class CreateDiscussionSearchEngine
           while (((Iterator)localObject6).hasNext())
           {
             IContactSearchModel localIContactSearchModel = (IContactSearchModel)((Iterator)localObject6).next();
-            if ((localObject5 != null) && (((String)localObject5).equals(localIContactSearchModel.a()))) {
+            if ((localObject5 != null) && (((String)localObject5).equals(localIContactSearchModel.c()))) {
               ((List)localObject4).add(localIContactSearchModel);
             }
           }
@@ -143,7 +143,7 @@ public class CreateDiscussionSearchEngine
       if (((List)localObject4).size() < 2) {
         return null;
       }
-      localObject1 = new ContactSearchModelCreateDiscussion(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, paramSearchRequest.a, (List)localObject4);
+      localObject1 = new ContactSearchModelCreateDiscussion(this.a, this.d, paramSearchRequest.a, (List)localObject4);
       paramSearchRequest = new ArrayList();
       paramSearchRequest.add(localObject1);
       long l2 = System.currentTimeMillis();
@@ -154,10 +154,10 @@ public class CreateDiscussionSearchEngine
         ((StringBuilder)localObject1).append(l2 - l1);
         QLog.d("CreateDiscussionSearchEngine", 2, ((StringBuilder)localObject1).toString());
       }
-      if (!this.b)
+      if (!this.e)
       {
-        this.b = true;
-        ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "CliOper", "", "", "0X800635E", "0X800635E", 0, 0, "", "", "", "");
+        this.e = true;
+        ReportController.b(this.a, "CliOper", "", "", "0X800635E", "0X800635E", 0, 0, "", "", "", "");
       }
       return paramSearchRequest;
     }
@@ -170,7 +170,7 @@ public class CreateDiscussionSearchEngine
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactContactSearchEngine.b();
+    this.c.b();
   }
   
   public void c() {}
@@ -181,7 +181,7 @@ public class CreateDiscussionSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.CreateDiscussionSearchEngine
  * JD-Core Version:    0.7.0.1
  */

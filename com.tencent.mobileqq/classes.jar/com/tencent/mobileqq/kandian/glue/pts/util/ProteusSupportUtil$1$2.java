@@ -10,14 +10,14 @@ class ProteusSupportUtil$1$2
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.a.a != null) {
-      ProteusSupportUtil.a(this.a.a, paramViewBase);
+    if (this.a.b != null) {
+      ProteusSupportUtil.a(this.a.b, paramViewBase);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil.1.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class CommentPresenter$9
   
   public void run()
   {
-    this.this$0.h();
+    this.this$0.q();
   }
 }
 

@@ -18,16 +18,16 @@ class CaptureAsyncStep$BindTroopMemberClient$1
     if (localObject == null) {
       paramBundle = "";
     }
-    localObject = QIMManager.a();
+    localObject = QIMManager.c();
     if ((localObject instanceof PeakAppInterface)) {
       ((PeakAppInterface)localObject).a(paramBundle);
     }
-    this.a.a.b();
+    this.a.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStep.BindTroopMemberClient.1
  * JD-Core Version:    0.7.0.1
  */

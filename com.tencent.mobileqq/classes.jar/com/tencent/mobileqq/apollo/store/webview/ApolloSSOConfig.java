@@ -164,12 +164,12 @@ public class ApolloSSOConfig
     }
     ((File)localObject).getParentFile().mkdirs();
     localObject = new DownloadTask("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_thunder_config/xydata.json", (File)localObject);
-    ((DownloadTask)localObject).p = true;
-    ((DownloadTask)localObject).n = true;
-    ((DownloadTask)localObject).f = "apollo_res";
-    ((DownloadTask)localObject).b = 1;
-    ((DownloadTask)localObject).q = true;
-    ((DownloadTask)localObject).r = true;
+    ((DownloadTask)localObject).N = true;
+    ((DownloadTask)localObject).J = true;
+    ((DownloadTask)localObject).L = "apollo_res";
+    ((DownloadTask)localObject).e = 1;
+    ((DownloadTask)localObject).P = true;
+    ((DownloadTask)localObject).Q = true;
     ((DownloadTask)localObject).a(new ApolloSSOConfig.2(localSharedPreferences, paramInt, paramApolloSSOConfig));
     ThreadManager.executeOnNetWorkThread(new ApolloSSOConfig.3(paramAppRuntime, (DownloadTask)localObject));
   }
@@ -235,8 +235,8 @@ public class ApolloSSOConfig
             break label1258;
           }
           localThunderConfig = new ApolloSSOConfig.ThunderConfig();
-          localThunderConfig.jdField_a_of_type_Int = i2;
-          localThunderConfig.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          localThunderConfig.a = i2;
+          localThunderConfig.b = ((String)localObject1);
           this.a.put(String.valueOf(i2), localThunderConfig);
           JSONArray localJSONArray = ((JSONObject)localObject6).optJSONArray("cmds");
           localObject1 = "valueType";
@@ -293,17 +293,17 @@ public class ApolloSSOConfig
                 str2 = ((JSONObject)localObject8).optString("value");
                 int i3 = ((JSONObject)localObject8).optInt((String)localObject1);
                 localObject8 = new ApolloSSOConfig.CmdParameter(null);
-                ((ApolloSSOConfig.CmdParameter)localObject8).jdField_a_of_type_JavaLangString = str1;
-                ((ApolloSSOConfig.CmdParameter)localObject8).jdField_a_of_type_Int = i3;
+                ((ApolloSSOConfig.CmdParameter)localObject8).a = str1;
+                ((ApolloSSOConfig.CmdParameter)localObject8).c = i3;
                 ((ApolloSSOConfig.CmdParameter)localObject8).b = str2;
                 ((List)localObject7).add(localObject8);
                 break label1274;
               }
               localObject3 = new ApolloSSOConfig.CmdConfig();
-              ((ApolloSSOConfig.CmdConfig)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject4);
-              ((ApolloSSOConfig.CmdConfig)localObject3).jdField_a_of_type_Int = i2;
-              ((ApolloSSOConfig.CmdConfig)localObject3).jdField_a_of_type_JavaUtilList.addAll((Collection)localObject7);
-              localThunderConfig.jdField_a_of_type_JavaUtilList.add(localObject3);
+              ((ApolloSSOConfig.CmdConfig)localObject3).a = ((String)localObject4);
+              ((ApolloSSOConfig.CmdConfig)localObject3).b = i2;
+              ((ApolloSSOConfig.CmdConfig)localObject3).c.addAll((Collection)localObject7);
+              localThunderConfig.c.add(localObject3);
               break label1283;
             }
           }
@@ -337,7 +337,7 @@ public class ApolloSSOConfig
             break label1292;
           }
           localObject3 = new ApolloSSOConfig.CGIConfig();
-          ((ApolloSSOConfig.CGIConfig)localObject3).jdField_a_of_type_JavaLangString = str1;
+          ((ApolloSSOConfig.CGIConfig)localObject3).a = str1;
           ((ApolloSSOConfig.CGIConfig)localObject3).b = str2;
           localObject7 = ((JSONObject)localObject5).optJSONArray((String)localObject1);
           if (localObject7 == null) {
@@ -380,8 +380,8 @@ public class ApolloSSOConfig
               str2 = ((JSONObject)localObject8).optString("value");
               i2 = ((JSONObject)localObject8).optInt((String)localObject2);
               localObject8 = new ApolloSSOConfig.CmdParameter(null);
-              ((ApolloSSOConfig.CmdParameter)localObject8).jdField_a_of_type_JavaLangString = str1;
-              ((ApolloSSOConfig.CmdParameter)localObject8).jdField_a_of_type_Int = i2;
+              ((ApolloSSOConfig.CmdParameter)localObject8).a = str1;
+              ((ApolloSSOConfig.CmdParameter)localObject8).c = i2;
               ((ApolloSSOConfig.CmdParameter)localObject8).b = str2;
               ((List)localObject6).add(localObject8);
             }
@@ -389,7 +389,7 @@ public class ApolloSSOConfig
         }
         else
         {
-          ((ApolloSSOConfig.CGIConfig)localObject3).jdField_a_of_type_JavaUtilList.addAll((Collection)localObject6);
+          ((ApolloSSOConfig.CGIConfig)localObject3).d.addAll((Collection)localObject6);
           localObject5 = ((JSONObject)localObject5).optJSONObject("headers");
           if (localObject5 != null)
           {
@@ -397,11 +397,11 @@ public class ApolloSSOConfig
             if (((Iterator)localObject6).hasNext())
             {
               localObject7 = (String)((Iterator)localObject6).next();
-              ((ApolloSSOConfig.CGIConfig)localObject3).jdField_a_of_type_JavaUtilHashMap.put(localObject7, ((JSONObject)localObject5).optString((String)localObject7));
+              ((ApolloSSOConfig.CGIConfig)localObject3).c.put(localObject7, ((JSONObject)localObject5).optString((String)localObject7));
               continue;
             }
           }
-          localThunderConfig.b.add(localObject3);
+          localThunderConfig.d.add(localObject3);
           break label1310;
           if (QLog.isColorLevel())
           {
@@ -479,50 +479,10 @@ public class ApolloSSOConfig
     {
       paramString = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString);
       if (paramString != null) {
-        return paramString.jdField_a_of_type_JavaLangString;
+        return paramString.b;
       }
     }
     return "";
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString2);
-    return localStringBuilder.toString();
-  }
-  
-  public List<ApolloSSOConfig.CGIConfig> a(String paramString)
-  {
-    paramString = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString);
-    if (paramString != null) {
-      return paramString.b;
-    }
-    return null;
-  }
-  
-  public Set<String> a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString);
-      if (localObject != null)
-      {
-        paramString = new HashSet();
-        localObject = ((ApolloSSOConfig.ThunderConfig)localObject).jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          ApolloSSOConfig.CmdConfig localCmdConfig = (ApolloSSOConfig.CmdConfig)((Iterator)localObject).next();
-          if ((localCmdConfig != null) && (!TextUtils.isEmpty(localCmdConfig.jdField_a_of_type_JavaLangString))) {
-            paramString.add(localCmdConfig.jdField_a_of_type_JavaLangString);
-          }
-        }
-        return paramString;
-      }
-    }
-    return null;
   }
   
   public JSONObject a(String paramString1, String paramString2, String paramString3, AppInterface paramAppInterface)
@@ -535,11 +495,11 @@ public class ApolloSSOConfig
       paramString2 = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString2);
       if (paramString2 != null)
       {
-        paramString2 = paramString2.jdField_a_of_type_JavaUtilList.iterator();
+        paramString2 = paramString2.c.iterator();
         while (paramString2.hasNext())
         {
           ApolloSSOConfig.CmdConfig localCmdConfig = (ApolloSSOConfig.CmdConfig)paramString2.next();
-          if ((localCmdConfig != null) && (paramString3.equals(localCmdConfig.jdField_a_of_type_JavaLangString))) {
+          if ((localCmdConfig != null) && (paramString3.equals(localCmdConfig.a))) {
             return localCmdConfig.a(paramString1, paramAppInterface);
           }
         }
@@ -566,7 +526,7 @@ public class ApolloSSOConfig
       }
       localReqBody.int_protocolver.set(1);
       localReqBody.uint_clientplatid.set(109);
-      localReqBody.str_clientver.set("8.7.0.5295");
+      localReqBody.str_clientver.set("8.8.17.5770");
       localReqBody.uint_uin.set(Long.parseLong((String)localObject2));
       int i = ((SharedPreferences)localObject1).getInt("sp_key_apollo_webView_config_version", 0);
       localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
@@ -591,14 +551,6 @@ public class ApolloSSOConfig
     }
   }
   
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return this.a.containsKey(paramString);
-    }
-    return false;
-  }
-  
   public boolean a(String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
@@ -606,11 +558,11 @@ public class ApolloSSOConfig
       paramString1 = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString1);
       if (paramString1 != null)
       {
-        paramString1 = paramString1.jdField_a_of_type_JavaUtilList.iterator();
+        paramString1 = paramString1.c.iterator();
         while (paramString1.hasNext())
         {
           ApolloSSOConfig.CmdConfig localCmdConfig = (ApolloSSOConfig.CmdConfig)paramString1.next();
-          if ((localCmdConfig != null) && (paramString2.equals(localCmdConfig.jdField_a_of_type_JavaLangString))) {
+          if ((localCmdConfig != null) && (paramString2.equals(localCmdConfig.a))) {
             return true;
           }
         }
@@ -618,10 +570,58 @@ public class ApolloSSOConfig
     }
     return false;
   }
+  
+  public String b(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return this.a.containsKey(paramString);
+    }
+    return false;
+  }
+  
+  public Set<String> c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString);
+      if (localObject != null)
+      {
+        paramString = new HashSet();
+        localObject = ((ApolloSSOConfig.ThunderConfig)localObject).c.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          ApolloSSOConfig.CmdConfig localCmdConfig = (ApolloSSOConfig.CmdConfig)((Iterator)localObject).next();
+          if ((localCmdConfig != null) && (!TextUtils.isEmpty(localCmdConfig.a))) {
+            paramString.add(localCmdConfig.a);
+          }
+        }
+        return paramString;
+      }
+    }
+    return null;
+  }
+  
+  public List<ApolloSSOConfig.CGIConfig> d(String paramString)
+  {
+    paramString = (ApolloSSOConfig.ThunderConfig)this.a.get(paramString);
+    if (paramString != null) {
+      return paramString.d;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig
  * JD-Core Version:    0.7.0.1
  */

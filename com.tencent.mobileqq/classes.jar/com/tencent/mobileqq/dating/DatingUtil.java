@@ -25,6 +25,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.werewolves.WerewolvesHandler;
 import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
@@ -40,9 +41,9 @@ import tencent.im.msg.im_msg_body.NearByMessageType;
 
 public class DatingUtil
 {
-  public static Intent a;
   public static String a = "";
   public static String b = "";
+  public static Intent c;
   
   public static String a(long paramLong, int paramInt, boolean paramBoolean)
   {
@@ -61,23 +62,23 @@ public class DatingUtil
     int i = 0;
     if (l == paramLong)
     {
-      i = 2131719716;
+      i = 2131917319;
     }
     else if (l == paramLong + 1L)
     {
-      i = 2131719718;
+      i = 2131917321;
     }
     else if (l == paramLong + 2L)
     {
-      i = 2131689789;
+      i = 2131886430;
     }
     else if (l == paramLong - 1L)
     {
-      i = 2131720491;
+      i = 2131918208;
     }
     else if (l == paramLong - 2L)
     {
-      i = 2131690631;
+      i = 2131887542;
     }
     else
     {
@@ -171,7 +172,7 @@ public class DatingUtil
     {
       i = (int)(l2 / 3600000L);
       if (i <= 0) {
-        return HardCodeUtil.a(2131703027);
+        return HardCodeUtil.a(2131901002);
       }
       return String.format("%d小时前", new Object[] { Integer.valueOf(i) });
     }
@@ -182,7 +183,7 @@ public class DatingUtil
         str2 = "HH:mm";
       }
       str1 = new SimpleDateFormat(str2).format(localCalendar1.getTime());
-      return String.format(HardCodeUtil.a(2131703028), new Object[] { str1 });
+      return String.format(HardCodeUtil.a(2131901003), new Object[] { str1 });
     }
     if (i == j + 2)
     {
@@ -190,7 +191,7 @@ public class DatingUtil
         str2 = "HH:mm";
       }
       str1 = new SimpleDateFormat(str2).format(localCalendar1.getTime());
-      return String.format(HardCodeUtil.a(2131703029), new Object[] { str1 });
+      return String.format(HardCodeUtil.a(2131901004), new Object[] { str1 });
     }
     if (localCalendar1.get(1) == localCalendar2.get(1))
     {
@@ -247,7 +248,7 @@ public class DatingUtil
   public static void a(Context paramContext, long paramLong, String paramString1, byte[] paramArrayOfByte, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     a("openDatingProfileCard", new Object[] { paramContext, Long.valueOf(paramLong), paramString1, paramArrayOfByte, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    ProfilePerformanceReport.a();
+    ProfilePerformanceReport.b();
     AllInOne localAllInOne = new AllInOne(String.valueOf(0), 75);
     localAllInOne.nickname = paramString2;
     localAllInOne.age = paramInt2;
@@ -265,23 +266,6 @@ public class DatingUtil
     RouteUtils.a(paramContext, paramArrayOfByte, "/nearby/people/profile");
   }
   
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (((paramMessageRecord.istroop == 1010) || (paramMessageRecord.istroop == 1001)) && ((paramMessageRecord.msgtype == -1000) || (paramMessageRecord.msgtype == -2000)))
-    {
-      paramMessageRecord.saveExtInfoToExtStr("nearby_clearing_msg", "true");
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("setClearingMessage|istroop:");
-        localStringBuilder.append(paramMessageRecord.istroop);
-        localStringBuilder.append(",msgType:");
-        localStringBuilder.append(paramMessageRecord.msgtype);
-        QLog.d("Q.nearby_bank", 2, localStringBuilder.toString());
-      }
-    }
-  }
-  
   public static void a(String paramString, Object... paramVarArgs) {}
   
   public static boolean a()
@@ -291,7 +275,7 @@ public class DatingUtil
     if (localTelephonyManager != null) {}
     try
     {
-      localCellLocation = localTelephonyManager.getCellLocation();
+      localCellLocation = PhoneInfoMonitor.getCellLocation(localTelephonyManager);
       i = localTelephonyManager.getSimState();
       if (i == 5) {
         i = 1;
@@ -310,7 +294,7 @@ public class DatingUtil
     }
     try
     {
-      bool = TextUtils.isEmpty(DeviceInfoUtil.b());
+      bool = TextUtils.isEmpty(DeviceInfoUtil.c());
       j = bool ^ true;
     }
     catch (Exception localException2)
@@ -366,7 +350,7 @@ public class DatingUtil
     if (paramQQAppInterface != null)
     {
       bool2 = bool3;
-      if (paramQQAppInterface.a(paramMessage.istroop) > 0)
+      if (paramQQAppInterface.b(paramMessage.istroop) > 0)
       {
         bool2 = bool3;
         if (bool1) {
@@ -391,7 +375,24 @@ public class DatingUtil
       return false;
     }
     paramQQAppInterface = paramQQAppInterface.getConversationFacade();
-    return (paramQQAppInterface != null) && (paramQQAppInterface.f(paramString, paramInt) > 0);
+    return (paramQQAppInterface != null) && (paramQQAppInterface.g(paramString, paramInt) > 0);
+  }
+  
+  public static void b(MessageRecord paramMessageRecord)
+  {
+    if (((paramMessageRecord.istroop == 1010) || (paramMessageRecord.istroop == 1001)) && ((paramMessageRecord.msgtype == -1000) || (paramMessageRecord.msgtype == -2000)))
+    {
+      paramMessageRecord.saveExtInfoToExtStr("nearby_clearing_msg", "true");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setClearingMessage|istroop:");
+        localStringBuilder.append(paramMessageRecord.istroop);
+        localStringBuilder.append(",msgType:");
+        localStringBuilder.append(paramMessageRecord.msgtype);
+        QLog.d("Q.nearby_bank", 2, localStringBuilder.toString());
+      }
+    }
   }
   
   public static void b(String paramString, Object... paramVarArgs)
@@ -416,11 +417,11 @@ public class DatingUtil
   
   public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramString = paramQQAppInterface.getHotChatMng(true).a(paramString);
+    paramString = paramQQAppInterface.getHotChatMng(true).c(paramString);
     if (paramString != null)
     {
       paramQQAppInterface = ((WerewolvesHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a("");
-      if ((paramString.isGameRoom) || (paramString.troopUin.equals(paramQQAppInterface.a))) {
+      if ((paramString.isGameRoom) || (paramString.troopUin.equals(paramQQAppInterface.d))) {
         return true;
       }
     }
@@ -433,14 +434,14 @@ public class DatingUtil
       return false;
     }
     paramQQAppInterface = paramQQAppInterface.getConversationFacade();
-    return (paramQQAppInterface != null) && (paramQQAppInterface.e(paramString, paramInt) > 0);
+    return (paramQQAppInterface != null) && (paramQQAppInterface.f(paramString, paramInt) > 0);
   }
   
   public static void c(String paramString, Object... paramVarArgs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingUtil
  * JD-Core Version:    0.7.0.1
  */

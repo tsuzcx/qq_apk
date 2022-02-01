@@ -45,7 +45,7 @@ public class BiuPgcProteusItem
   private void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     int i = a(paramAbsBaseArticleInfo, paramReadInJoyBaseAdapter);
-    paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.a().a();
+    paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.y().d();
     if (paramReadInJoyBaseAdapter != null) {
       paramReadInJoyBaseAdapter.a(paramContext, paramAbsBaseArticleInfo, paramInt1, paramString, i, paramInt2, paramInt3);
     }
@@ -53,8 +53,8 @@ public class BiuPgcProteusItem
   
   private void a(Context paramContext, IReadInJoyModel paramIReadInJoyModel, int paramInt)
   {
-    OnGalleryImageClickListener localOnGalleryImageClickListener = ((ReadInJoyBaseAdapter)paramIReadInJoyModel.a()).a().a();
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
+    OnGalleryImageClickListener localOnGalleryImageClickListener = ((ReadInJoyBaseAdapter)paramIReadInJoyModel.u()).y().d();
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
     if ((paramIReadInJoyModel != null) && (localOnGalleryImageClickListener != null)) {
       localOnGalleryImageClickListener.a(paramContext, paramIReadInJoyModel, 0, paramIReadInJoyModel.innerUniqueID, 6, paramInt, 0);
     }
@@ -64,7 +64,7 @@ public class BiuPgcProteusItem
   {
     if ((paramViewBase != null) && (paramIReadInJoyModel != null))
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
       paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
@@ -73,7 +73,7 @@ public class BiuPgcProteusItem
         if (paramViewBase.getNativeView() == null) {
           return;
         }
-        ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+        ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
         paramViewBase.getNativeView().setOnClickListener(new BiuPgcProteusItem.7(this, localReadInJoyBaseAdapter, paramIReadInJoyModel));
       }
     }
@@ -81,8 +81,8 @@ public class BiuPgcProteusItem
   
   private View b(int paramInt, Context paramContext, IReadInJoyModel paramIReadInJoyModel)
   {
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size() > 0) && (ComponentContentGridImage.a(paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size(), paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_Int) == 1)) {
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.t != null) && (paramIReadInJoyModel.mSocialFeedInfo.t.a != null) && (paramIReadInJoyModel.mSocialFeedInfo.t.a.size() > 0) && (ComponentContentGridImage.a(paramIReadInJoyModel.mSocialFeedInfo.t.a.size(), paramIReadInJoyModel.mSocialFeedInfo.b) == 1)) {
       return new ComponentContentBig(paramContext);
     }
     return new ComponentContentGridImage(paramContext);
@@ -90,15 +90,15 @@ public class BiuPgcProteusItem
   
   private void b(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
-    if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size() > 0) && (ComponentContentGridImage.a(localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size(), localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int) == 1))
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
+    if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.t.a != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.t.a.size() > 0) && (ComponentContentGridImage.a(localAbsBaseArticleInfo.mSocialFeedInfo.t.a.size(), localAbsBaseArticleInfo.mSocialFeedInfo.b) == 1))
     {
       c(paramInt1, paramIReadInJoyModel, paramNativeMiddleBodyView, paramInt2, paramContainer);
       return;
     }
-    if ((paramNativeMiddleBodyView.a() instanceof ComponentContentGridImage))
+    if ((paramNativeMiddleBodyView.getContent() instanceof ComponentContentGridImage))
     {
-      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
       paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel, paramInt1));
       paramNativeMiddleBodyView.setMIReadInJoyModel(paramIReadInJoyModel);
       paramNativeMiddleBodyView.setGalleryClickListener(new BiuPgcProteusItem.5(this, paramIReadInJoyModel, paramContainer, paramInt2));
@@ -108,21 +108,21 @@ public class BiuPgcProteusItem
     paramNativeMiddleBodyView.append("[bindGalleryBodyView] unexpected item: ");
     paramNativeMiddleBodyView.append(paramInt1);
     paramNativeMiddleBodyView.append(" ");
-    paramNativeMiddleBodyView.append(paramIReadInJoyModel.a());
+    paramNativeMiddleBodyView.append(paramIReadInJoyModel.k());
     QLog.e("BiuPgcProteusItem", 1, paramNativeMiddleBodyView.toString());
   }
   
   private void c(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    if (!(paramNativeMiddleBodyView.a() instanceof AdapterView)) {
-      paramNativeMiddleBodyView.a().setOnClickListener(new BiuPgcProteusItem.6(this, paramIReadInJoyModel, paramContainer, paramInt2));
+    if (!(paramNativeMiddleBodyView.getContent() instanceof AdapterView)) {
+      paramNativeMiddleBodyView.getContent().setOnClickListener(new BiuPgcProteusItem.6(this, paramIReadInJoyModel, paramContainer, paramInt2));
     }
-    ((ComponentView)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+    ((ComponentView)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
   }
   
   public int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    return GalleryReportedUtils.a(paramReadInJoyBaseAdapter.a(), RIJFeedsType.a(paramAbsBaseArticleInfo));
+    return GalleryReportedUtils.a(paramReadInJoyBaseAdapter.c(), RIJFeedsType.g(paramAbsBaseArticleInfo));
   }
   
   protected View a(int paramInt, Context paramContext, IReadInJoyModel paramIReadInJoyModel)
@@ -175,23 +175,23 @@ public class BiuPgcProteusItem
   {
     ProteusItemDataBuilder localProteusItemDataBuilder = new ProteusItemDataBuilder();
     long l;
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null)) {
-      l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a;
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null)) {
+      l = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
     } else {
       l = 0L;
     }
     if ((paramInt == 35) && (!paramAbsBaseArticleInfo.isPGCShortContent())) {
-      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131701371));
+      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131899400));
     }
     if (paramInt == 33) {
-      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131701372));
+      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131899401));
     }
     if (paramInt != 33) {
       localProteusItemDataBuilder.A(paramAbsBaseArticleInfo).D(paramAbsBaseArticleInfo).B(paramAbsBaseArticleInfo);
     }
     if ((paramInt != 10) && (paramInt != 12) && (paramInt != 94) && (paramInt != 95)) {
       localProteusItemDataBuilder.o(paramAbsBaseArticleInfo);
-    } else if ((paramAbsBaseArticleInfo.mSocialFeedInfo.a()) && (!ArticleInfoHelper.b(paramAbsBaseArticleInfo))) {
+    } else if ((paramAbsBaseArticleInfo.mSocialFeedInfo.c()) && (!ArticleInfoHelper.b(paramAbsBaseArticleInfo))) {
       localProteusItemDataBuilder.o(paramAbsBaseArticleInfo);
     }
     localProteusItemDataBuilder.a(paramAbsBaseArticleInfo).b(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, l).f(paramAbsBaseArticleInfo).g(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, "Biu了").k(paramAbsBaseArticleInfo).i(paramAbsBaseArticleInfo).j(paramAbsBaseArticleInfo).n(paramAbsBaseArticleInfo).m(paramAbsBaseArticleInfo).C(paramAbsBaseArticleInfo).r(paramAbsBaseArticleInfo).v(paramAbsBaseArticleInfo).w(paramAbsBaseArticleInfo).G(paramAbsBaseArticleInfo).E(paramAbsBaseArticleInfo).s(paramAbsBaseArticleInfo).l(paramAbsBaseArticleInfo).I(paramAbsBaseArticleInfo).t(paramAbsBaseArticleInfo).u(paramAbsBaseArticleInfo);
@@ -219,7 +219,7 @@ public class BiuPgcProteusItem
     if (localReadInJoyMiddleBodyView != null)
     {
       NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localReadInJoyMiddleBodyView.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      if (localNativeMiddleBodyView.getContent() == null)
       {
         View localView = a(paramInt1, paramContainer.getContext(), paramIReadInJoyModel);
         if ((localView instanceof PgcSmallView))
@@ -256,7 +256,7 @@ public class BiuPgcProteusItem
     if (((paramInt1 == 49) || (paramInt1 == 62) || (paramInt1 == 63)) && (localObject != null) && (((ViewBase)localObject).getNativeView() != null)) {
       ((ViewBase)localObject).getNativeView().setOnClickListener(new BiuPgcProteusItem.2(this, paramContainer, paramIReadInJoyModel, paramInt2));
     }
-    BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
     a(localViewBase, paramIReadInJoyModel);
     Util.a(localViewBase, paramIReadInJoyModel);
     Util.b(localViewBase, paramIReadInJoyModel);
@@ -267,12 +267,12 @@ public class BiuPgcProteusItem
   
   protected void a(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    if (paramNativeMiddleBodyView.a() != null)
+    if (paramNativeMiddleBodyView.getContent() != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.u() == null) {
         return;
       }
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
       if ((paramInt1 != 27) && (paramInt1 != 28) && (paramInt1 != 33))
       {
         if (paramInt1 != 35) {
@@ -295,7 +295,7 @@ public class BiuPgcProteusItem
             b(paramInt1, paramIReadInJoyModel, paramNativeMiddleBodyView, paramInt2, paramContainer);
             return;
           case 114: 
-            paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+            paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
             paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel, paramInt1));
             paramNativeMiddleBodyView.setMIReadInJoyModel(paramIReadInJoyModel);
             paramNativeMiddleBodyView.setOnNoItemClickListener(new BiuPgcProteusItem.3(this, paramIReadInJoyModel));
@@ -305,18 +305,18 @@ public class BiuPgcProteusItem
         }
       }
       label217:
-      if ((paramNativeMiddleBodyView.a() instanceof AdapterView))
+      if ((paramNativeMiddleBodyView.getContent() instanceof AdapterView))
       {
         paramNativeMiddleBodyView = new StringBuilder();
         paramNativeMiddleBodyView.append(" adapterViewType ");
         paramNativeMiddleBodyView.append(paramInt1);
         paramNativeMiddleBodyView.append(" articleInfo : ");
-        paramNativeMiddleBodyView.append(paramIReadInJoyModel.a());
+        paramNativeMiddleBodyView.append(paramIReadInJoyModel.k());
         AIOUtils.a("BiuPgcProteusItem", "", new IllegalArgumentException(paramNativeMiddleBodyView.toString()));
         return;
       }
-      paramNativeMiddleBodyView.a().setOnClickListener(new BiuPgcProteusItem.4(this, localReadInJoyBaseAdapter, paramIReadInJoyModel));
-      ((ComponentView)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+      paramNativeMiddleBodyView.getContent().setOnClickListener(new BiuPgcProteusItem.4(this, localReadInJoyBaseAdapter, paramIReadInJoyModel));
+      ((ComponentView)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
     }
   }
   
@@ -327,7 +327,7 @@ public class BiuPgcProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuPgcProteusItem
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class QfileFavPicFileTabView$1
   
   public View.OnClickListener a(TextView paramTextView)
   {
-    this.a.g();
+    this.a.getMoreFileRecord();
     return null;
   }
   
   public boolean a()
   {
-    return this.a.a();
+    return this.a.h();
   }
   
   public boolean a(FavFileInfo paramFavFileInfo)
@@ -27,12 +27,12 @@ class QfileFavPicFileTabView$1
   
   public boolean b()
   {
-    return this.a.b();
+    return this.a.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,18 @@ class VideoViewVideoHolder$8
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(this.b.b.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694422, 0).a();
+      QQToast.makeText(this.b.b.getContext(), 1, 2131892102, 0).show();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      VideoViewVideoHolder localVideoViewVideoHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+      this.b.s.setVisibility(0);
+      this.b.t.setVisibility(8);
+      VideoViewVideoHolder localVideoViewVideoHolder = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("retry ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+      localStringBuilder.append(this.a.errorCode);
       localVideoViewVideoHolder.a(10, true, localStringBuilder.toString());
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -35,7 +35,7 @@ class VideoViewVideoHolder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.8
  * JD-Core Version:    0.7.0.1
  */

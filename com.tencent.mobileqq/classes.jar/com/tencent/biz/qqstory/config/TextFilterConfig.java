@@ -15,14 +15,14 @@ import org.json.JSONObject;
 public class TextFilterConfig
   extends CommonConfigBase
 {
-  public SparseArray<TextFilterConfig.TextTemplateConfig> a;
-  public boolean a;
-  public int b;
-  public SparseArray<TextFilterConfig.ColorTemplateConfig> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  public String d;
+  public int e;
+  public String f;
+  public SparseArray<TextFilterConfig.TextTemplateConfig> g;
+  public SparseArray<TextFilterConfig.ColorTemplateConfig> h;
+  public boolean i;
+  public boolean j;
+  public int k;
   
   public TextFilterConfig(Context paramContext, String paramString)
   {
@@ -36,11 +36,11 @@ public class TextFilterConfig
   
   public void a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
     Object localObject1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.StoryCfg.name(), "1|1");
-    this.jdField_b_of_type_Boolean = true;
+    this.j = true;
     boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-    int j = 0;
+    int n = 0;
     Object localObject2;
     if (!bool)
     {
@@ -52,88 +52,88 @@ public class TextFilterConfig
         } else {
           bool = false;
         }
-        this.jdField_b_of_type_Boolean = bool;
+        this.j = bool;
       }
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.g = new SparseArray();
+    this.h = new SparseArray();
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.i = false;
       return;
     }
     for (;;)
     {
-      int i;
+      int m;
       try
       {
         paramString = new JSONObject(paramString);
         if (paramString.optInt("is_enable", 0) == 1)
         {
           bool = true;
-          this.jdField_a_of_type_Boolean = bool;
-          this.jdField_b_of_type_Int = paramString.optInt("bid");
-          this.jdField_c_of_type_JavaLangString = paramString.optString("template_manager", "TemplateManager");
-          this.jdField_c_of_type_Int = paramString.optInt("bg_alpha", 80);
+          this.i = bool;
+          this.e = paramString.optInt("bid");
+          this.f = paramString.optString("template_manager", "TemplateManager");
+          this.k = paramString.optInt("bg_alpha", 80);
           localObject1 = paramString.optJSONArray("template");
           if (localObject1 != null)
           {
-            i = 0;
-            if (i < ((JSONArray)localObject1).length())
+            m = 0;
+            if (m < ((JSONArray)localObject1).length())
             {
-              localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+              localObject2 = ((JSONArray)localObject1).optJSONObject(m);
               if (localObject2 == null) {
                 break label677;
               }
               TextFilterConfig.TextTemplateConfig localTextTemplateConfig = new TextFilterConfig.TextTemplateConfig();
-              localTextTemplateConfig.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
-              localTextTemplateConfig.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_id");
-              localTextTemplateConfig.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("name");
-              localTextTemplateConfig.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("color_template_id");
+              localTextTemplateConfig.a = ((JSONObject)localObject2).optInt("id");
+              localTextTemplateConfig.b = ((JSONObject)localObject2).optString("report_id");
+              localTextTemplateConfig.c = ((JSONObject)localObject2).optString("name");
+              localTextTemplateConfig.d = ((JSONObject)localObject2).optInt("color_template_id");
               if (((JSONObject)localObject2).optInt("is_support_other_color") != 1) {
                 break label665;
               }
               bool = true;
-              localTextTemplateConfig.jdField_a_of_type_Boolean = bool;
-              localTextTemplateConfig.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("text_color");
-              localTextTemplateConfig.e = ((JSONObject)localObject2).optString("background_color");
-              localTextTemplateConfig.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("max_text_count");
+              localTextTemplateConfig.e = bool;
+              localTextTemplateConfig.f = ((JSONObject)localObject2).optString("text_color");
+              localTextTemplateConfig.j = ((JSONObject)localObject2).optString("background_color");
+              localTextTemplateConfig.g = ((JSONObject)localObject2).optInt("max_text_count");
               if (((JSONObject)localObject2).optInt("is_dynamictmp") != 1) {
                 break label671;
               }
               bool = true;
-              localTextTemplateConfig.jdField_b_of_type_Boolean = bool;
-              localTextTemplateConfig.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("res_name");
-              localTextTemplateConfig.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("bid", 0);
-              localTextTemplateConfig.f = ((JSONObject)localObject2).optString("music_file");
-              localTextTemplateConfig.g = ((JSONObject)localObject2).optString("pcm_music_file");
-              localTextTemplateConfig.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("hint");
-              localTextTemplateConfig.h = ((JSONObject)localObject2).optString("image_url");
-              localTextTemplateConfig.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("extra_json_config");
-              this.jdField_a_of_type_AndroidUtilSparseArray.put(localTextTemplateConfig.jdField_a_of_type_Int, localTextTemplateConfig);
+              localTextTemplateConfig.i = bool;
+              localTextTemplateConfig.h = ((JSONObject)localObject2).optString("res_name");
+              localTextTemplateConfig.m = ((JSONObject)localObject2).optInt("bid", 0);
+              localTextTemplateConfig.k = ((JSONObject)localObject2).optString("music_file");
+              localTextTemplateConfig.l = ((JSONObject)localObject2).optString("pcm_music_file");
+              localTextTemplateConfig.o = ((JSONObject)localObject2).optJSONObject("hint");
+              localTextTemplateConfig.n = ((JSONObject)localObject2).optString("image_url");
+              localTextTemplateConfig.p = ((JSONObject)localObject2).optJSONObject("extra_json_config");
+              this.g.put(localTextTemplateConfig.a, localTextTemplateConfig);
               break label677;
             }
           }
           paramString = paramString.optJSONArray("color_template");
           if (paramString != null)
           {
-            i = j;
-            if (i < paramString.length())
+            m = n;
+            if (m < paramString.length())
             {
-              localObject1 = paramString.optJSONObject(i);
+              localObject1 = paramString.optJSONObject(m);
               if (localObject1 != null)
               {
                 localObject2 = new TextFilterConfig.ColorTemplateConfig();
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("report_id");
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color");
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color2");
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color3");
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).e = ((JSONObject)localObject1).optString("text_color");
-                ((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1).optJSONObject("extra_json_config");
-                this.jdField_b_of_type_AndroidUtilSparseArray.put(((TextFilterConfig.ColorTemplateConfig)localObject2).jdField_a_of_type_Int, localObject2);
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).a = ((JSONObject)localObject1).optInt("id");
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).b = ((JSONObject)localObject1).optString("report_id");
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).c = ((JSONObject)localObject1).optString("background_color");
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).d = ((JSONObject)localObject1).optString("background_color2");
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).e = ((JSONObject)localObject1).optString("background_color3");
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).f = ((JSONObject)localObject1).optString("text_color");
+                ((TextFilterConfig.ColorTemplateConfig)localObject2).g = ((JSONObject)localObject1).optJSONObject("extra_json_config");
+                this.h.put(((TextFilterConfig.ColorTemplateConfig)localObject2).a, localObject2);
               }
-              i += 1;
+              m += 1;
               continue;
             }
           }
@@ -145,8 +145,8 @@ public class TextFilterConfig
         if (QLog.isColorLevel()) {
           QLog.e("read TextFilter Config", 2, paramString.getMessage());
         }
-        if (this.jdField_b_of_type_Boolean) {
-          bool = this.jdField_a_of_type_Boolean;
+        if (this.j) {
+          bool = this.i;
         }
         return;
       }
@@ -158,7 +158,7 @@ public class TextFilterConfig
       bool = false;
       continue;
       label677:
-      i += 1;
+      m += 1;
     }
   }
   
@@ -169,7 +169,7 @@ public class TextFilterConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.config.TextFilterConfig
  * JD-Core Version:    0.7.0.1
  */

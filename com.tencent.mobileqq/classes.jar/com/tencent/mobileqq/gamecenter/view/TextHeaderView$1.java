@@ -21,23 +21,23 @@ class TextHeaderView$1
 {
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.c)))
     {
-      if (!((IQQGamePreDownloadService)QRoute.api(IQQGamePreDownloadService.class)).interceptJumpHippy(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+      if (!((IQQGamePreDownloadService)QRoute.api(IQQGamePreDownloadService.class)).interceptJumpHippy(TextHeaderView.a(this.c)))
       {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 0);
+        Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+        localIntent.putExtra("url", TextHeaderView.a(this.c));
+        this.a.startActivityForResult(localIntent, 0);
       }
-      QQGameConstant.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
-      ((IApolloExtensionHandler)((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface().getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      QQGameConstant.a(this.b, 0);
+      ((IApolloExtensionHandler)((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface().getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(3, this.b.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.c));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.TextHeaderView.1
  * JD-Core Version:    0.7.0.1
  */

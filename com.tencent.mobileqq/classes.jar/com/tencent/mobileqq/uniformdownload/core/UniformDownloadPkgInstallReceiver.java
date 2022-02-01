@@ -17,19 +17,19 @@ import com.tencent.smtt.sdk.QbSdk;
 public class UniformDownloadPkgInstallReceiver
   extends BroadcastReceiver
 {
-  private static IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private static UniformDownloadPkgInstallReceiver jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadPkgInstallReceiver = new UniformDownloadPkgInstallReceiver();
+  private static UniformDownloadPkgInstallReceiver a = new UniformDownloadPkgInstallReceiver();
+  private static IntentFilter b;
   
   public static void a(Context paramContext)
   {
-    jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
-    jdField_a_of_type_AndroidContentIntentFilter.addDataScheme("package");
-    jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
-    jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
+    b = new IntentFilter();
+    b.addDataScheme("package");
+    b.addAction("android.intent.action.PACKAGE_ADDED");
+    b.addAction("android.intent.action.PACKAGE_REPLACED");
     if (paramContext != null) {
       try
       {
-        paramContext.registerReceiver(jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadPkgInstallReceiver, jdField_a_of_type_AndroidContentIntentFilter);
+        paramContext.registerReceiver(a, b);
         return;
       }
       catch (Exception paramContext)
@@ -44,23 +44,23 @@ public class UniformDownloadPkgInstallReceiver
     if (paramSucDownloadInfo == null) {
       return;
     }
-    if (FileUtil.a(paramSucDownloadInfo.b))
+    if (FileUtil.b(paramSucDownloadInfo.c))
     {
-      QbSdk.openFileWithQB(paramContext, paramSucDownloadInfo.b, "biz_src_jc_file");
+      QbSdk.openFileWithQB(paramContext, paramSucDownloadInfo.c, "biz_src_jc_file");
       if (QLog.isDevelopLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("浏览器安装成功，准备打开文件:");
-        paramContext.append(paramSucDownloadInfo.b);
+        paramContext.append(paramSucDownloadInfo.c);
         QLog.i("UniformDownloadPkgInstallReceiver", 1, paramContext.toString());
       }
     }
-    if (paramSucDownloadInfo.a.containsKey("params_open_with_yyb"))
+    if (paramSucDownloadInfo.d.containsKey("params_open_with_yyb"))
     {
-      paramContext = paramSucDownloadInfo.a.getString("params_open_with_yyb", "");
+      paramContext = paramSucDownloadInfo.d.getString("params_open_with_yyb", "");
       ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).startAppStoreByTmast(paramContext, 2);
     }
-    if (paramSucDownloadInfo.a.getBoolean("tbs_new_report", false))
+    if (paramSucDownloadInfo.d.getBoolean("tbs_new_report", false))
     {
       ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).reportQQBrowserDownloadEvent("stat_download_installed_success");
       ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).reportQQBrowserDownloadEvent("stat_open_qb_success");
@@ -85,7 +85,7 @@ public class UniformDownloadPkgInstallReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadPkgInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

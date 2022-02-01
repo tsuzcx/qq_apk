@@ -28,8 +28,8 @@ import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMemberInfoReq;
 public class StudyRoomHandler
   extends BusinessHandler
 {
-  private Map<Integer, CommProtocolProto.commRequest> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
+  private AtomicInteger a = new AtomicInteger(100);
+  private Map<Integer, CommProtocolProto.commRequest> b = new ConcurrentHashMap();
   
   public StudyRoomHandler(QQAppInterface paramQQAppInterface)
   {
@@ -39,7 +39,7 @@ public class StudyRoomHandler
   private CommProtocolProto.commRequest a(int paramInt)
   {
     CommProtocolProto.commRequest localcommRequest = new CommProtocolProto.commRequest();
-    localcommRequest.seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    localcommRequest.seq.set(this.a.getAndIncrement());
     localcommRequest.cmd.set(paramInt);
     paramInt = NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication());
     localcommRequest.network.set(paramInt);
@@ -66,7 +66,7 @@ public class StudyRoomHandler
       localStringBuilder.append(paramcommRequest.cmd.get());
       QLog.d("studyroom.proto", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf((int)paramcommRequest.seq.get()), paramcommRequest);
+    this.b.put(Integer.valueOf((int)paramcommRequest.seq.get()), paramcommRequest);
     paramString = createToServiceMsg(paramString);
     paramString.putWupBuffer(paramcommRequest.toByteArray());
     paramString.extraData.putInt("extra_seq", (int)paramcommRequest.seq.get());
@@ -86,7 +86,7 @@ public class StudyRoomHandler
   public Set<String> getCommandList()
   {
     HashSet localHashSet = new HashSet();
-    localHashSet.add(Integer.toString(17101));
+    localHashSet.add("SelfStudyRoomForQQ.17101");
     return localHashSet;
   }
   
@@ -108,7 +108,7 @@ public class StudyRoomHandler
       paramToServiceMsg.append(i);
       QLog.d("studyroom.proto", 2, paramToServiceMsg.toString());
     }
-    paramToServiceMsg = (CommProtocolProto.commRequest)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+    paramToServiceMsg = (CommProtocolProto.commRequest)this.b.get(Integer.valueOf(i));
     if (paramToServiceMsg == null)
     {
       QLog.w("studyroom.proto", 1, "can't find request");
@@ -121,7 +121,7 @@ public class StudyRoomHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.channel.StudyRoomHandler
  * JD-Core Version:    0.7.0.1
  */

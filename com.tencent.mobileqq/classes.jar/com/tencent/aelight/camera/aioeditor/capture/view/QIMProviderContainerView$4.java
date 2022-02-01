@@ -15,12 +15,12 @@ class QIMProviderContainerView$4
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.c.setVisibility(8);
+    this.a.f.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.4
  * JD-Core Version:    0.7.0.1
  */

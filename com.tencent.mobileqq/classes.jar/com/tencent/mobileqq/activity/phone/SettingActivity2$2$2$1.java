@@ -20,20 +20,20 @@ class SettingActivity2$2$2$1
       localStringBuilder.append("]");
       QLog.i("SettingActivity2", 2, localStringBuilder.toString());
     }
-    this.a.a.a.dismissProgressDialog();
-    this.a.a.a.app.unRegistObserver(this);
+    this.a.a.b.dismissProgressDialog();
+    this.a.a.b.app.unRegistObserver(this);
     if (paramBoolean)
     {
-      this.a.a.a.a();
-      this.a.a.a.setResult(-1);
+      this.a.a.b.a();
+      this.a.a.b.setResult(-1);
       return;
     }
-    this.a.a.a.showToast(1, HardCodeUtil.a(2131713734));
+    this.a.a.b.showToast(1, HardCodeUtil.a(2131911276));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.2.2.1
  * JD-Core Version:    0.7.0.1
  */

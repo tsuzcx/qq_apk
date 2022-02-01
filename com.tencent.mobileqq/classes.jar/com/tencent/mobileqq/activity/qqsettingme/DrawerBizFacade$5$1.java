@@ -7,12 +7,12 @@ class DrawerBizFacade$5$1
   
   public void run()
   {
-    this.a.a.a("d_nickname").g();
+    this.a.a.b("d_nickname").i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.5.1
  * JD-Core Version:    0.7.0.1
  */

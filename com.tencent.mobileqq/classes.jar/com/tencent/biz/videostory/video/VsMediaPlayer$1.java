@@ -13,17 +13,17 @@ class VsMediaPlayer$1
   {
     VsMediaPlayer localVsMediaPlayer = this.this$0;
     VsMediaPlayer.a(localVsMediaPlayer, VsMediaPlayer.a(localVsMediaPlayer) + 1000);
-    if (VsMediaPlayer.a(this.this$0) != null) {
-      VideoPlayStatusDispatcher.a().a(VsMediaPlayer.a(this.this$0).getCurrentPosition());
+    if (VsMediaPlayer.b(this.this$0) != null) {
+      VideoPlayStatusDispatcher.a().a(VsMediaPlayer.b(this.this$0).getCurrentPosition());
     }
-    if ((VsMediaPlayer.a(this.this$0) != null) && (VsMediaPlayer.b(this.this$0) != -1) && (VsMediaPlayer.a(this.this$0) >= VsMediaPlayer.b(this.this$0))) {
-      VsMediaPlayer.a(this.this$0);
+    if ((VsMediaPlayer.c(this.this$0) != null) && (VsMediaPlayer.d(this.this$0) != -1) && (VsMediaPlayer.a(this.this$0) >= VsMediaPlayer.d(this.this$0))) {
+      VsMediaPlayer.e(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.video.VsMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

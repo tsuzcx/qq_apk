@@ -21,8 +21,8 @@ class AvGameLoadingActivity$6
       QLog.i("AvGameLoadingActivity", 2, "onResDownloadStart");
     }
     AvGameLoadingActivity localAvGameLoadingActivity = this.a;
-    localAvGameLoadingActivity.jdField_a_of_type_Int = 0;
-    AvGameLoadingActivity.a(localAvGameLoadingActivity, localAvGameLoadingActivity.jdField_a_of_type_Int);
+    localAvGameLoadingActivity.e = 0;
+    AvGameLoadingActivity.e(localAvGameLoadingActivity, localAvGameLoadingActivity.e);
     AvGameLoadingActivity.c(this.a, true);
   }
   
@@ -36,9 +36,9 @@ class AvGameLoadingActivity$6
       QLog.i("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    ((AvGameLoadingActivity)localObject).jdField_a_of_type_Int = (paramInt / ((AvGameLoadingActivity)localObject).b);
+    ((AvGameLoadingActivity)localObject).e = (paramInt / ((AvGameLoadingActivity)localObject).f);
     localObject = this.a;
-    AvGameLoadingActivity.a((AvGameLoadingActivity)localObject, ((AvGameLoadingActivity)localObject).jdField_a_of_type_Int);
+    AvGameLoadingActivity.e((AvGameLoadingActivity)localObject, ((AvGameLoadingActivity)localObject).e);
   }
   
   public void a(String paramString)
@@ -46,9 +46,9 @@ class AvGameLoadingActivity$6
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 2, "onResDownloadReady");
     }
-    if (AvGameLoadingActivity.h(this.a))
+    if (AvGameLoadingActivity.l(this.a))
     {
-      AvGameLoadingActivity.a(this.a);
+      AvGameLoadingActivity.m(this.a);
       AvGameLoadingActivity.c(this.a, false);
     }
     else
@@ -73,7 +73,7 @@ class AvGameLoadingActivity$6
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 1, "onResDownloadFailed");
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.a.b.sendEmptyMessage(1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramInt);

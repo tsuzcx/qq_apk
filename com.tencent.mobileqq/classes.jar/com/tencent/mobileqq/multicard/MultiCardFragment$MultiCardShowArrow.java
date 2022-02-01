@@ -12,14 +12,14 @@ class MultiCardFragment$MultiCardShowArrow
     if (QLog.isColorLevel()) {
       QLog.d("MultiCardFragment", 2, "run() called MiniAIOScrollToNewMsg");
     }
-    if (MultiCardFragment.a(this.this$0) != null) {
-      MultiCardFragment.a(this.this$0).b();
+    if (MultiCardFragment.b(this.this$0) != null) {
+      MultiCardFragment.b(this.this$0).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.MultiCardShowArrow
  * JD-Core Version:    0.7.0.1
  */

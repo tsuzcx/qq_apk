@@ -81,14 +81,14 @@ public class DanmuDataIPCServerImpl
     }
     paramSpannableString = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getTroopMemberName(paramString2);
     paramString1 = new DanmuItemBean(Long.parseLong(MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin()), 0L, paramLong1, paramLong2, paramString1, paramSpannableString);
-    paramString1.jdField_a_of_type_Boolean = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAioAnonymousStatus(paramString2);
-    if (paramString1.jdField_a_of_type_Boolean)
+    paramString1.g = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAioAnonymousStatus(paramString2);
+    if (paramString1.g)
     {
       if (QLog.isColorLevel()) {
         QLog.d("DanmuDataIPCServer", 2, "notifyDanmuSendResult, anonymousFlag true");
       }
-      paramString1.c = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAnonymousNickName(paramString2);
-      paramString1.jdField_a_of_type_Int = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAnonymousHeadId(paramString2);
+      paramString1.h = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAnonymousNickName(paramString2);
+      paramString1.i = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAnonymousHeadId(paramString2);
     }
     paramSpannableString = new Bundle();
     paramSpannableString.putParcelable("key_barrage_danmu_msg", paramString1);
@@ -107,7 +107,7 @@ public class DanmuDataIPCServerImpl
       boolean bool = paramBundle.getBoolean("key_barrage_is_update");
       QLog.d("DanmuDataIPCServer", 1, new Object[] { "onCall, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
       Object localObject = DanmuDataHolder.a().a(DanmuDataHolder.a().a(l2, l1));
-      if ((localObject != null) && (!((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_Boolean))
+      if ((localObject != null) && (!((DanmuDataHolder.CacheHolder)localObject).c))
       {
         QLog.d("DanmuDataIPCServer", 1, "filter duplicate request, continue pull is not completed");
         paramString = new Bundle();
@@ -118,16 +118,16 @@ public class DanmuDataIPCServerImpl
       if (localObject == null) {
         localObject = new DanmuDataContext(l2, l1, i, bool);
       } else {
-        localObject = ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext;
+        localObject = ((DanmuDataHolder.CacheHolder)localObject).b;
       }
-      ((DanmuDataContext)localObject).c = paramBundle.getLong("key_barrage_req_time");
-      ((DanmuDataContext)localObject).d = System.currentTimeMillis();
-      ((DanmuDataContext)localObject).jdField_a_of_type_Boolean = bool;
+      ((DanmuDataContext)localObject).e = paramBundle.getLong("key_barrage_req_time");
+      ((DanmuDataContext)localObject).f = System.currentTimeMillis();
+      ((DanmuDataContext)localObject).d = bool;
       DanmuDataHolder.a().a((DanmuDataContext)localObject, this);
       callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
     }
     if ("qipc_action_clear_cache".equals(paramString)) {
-      DanmuDataHolder.a().a();
+      DanmuDataHolder.a().b();
     }
     return null;
   }
@@ -141,17 +141,17 @@ public class DanmuDataIPCServerImpl
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putLong("key_barrage_msg_seq", paramDanmuDataContext.jdField_a_of_type_Long);
+    localBundle.putLong("key_barrage_msg_seq", paramDanmuDataContext.a);
     localBundle.putLong("key_barrage_grp_uin", paramDanmuDataContext.b);
-    localBundle.putInt("key_barrage_topic_type", paramDanmuDataContext.jdField_a_of_type_Int);
+    localBundle.putInt("key_barrage_topic_type", paramDanmuDataContext.c);
     localBundle.putInt("key_barrage_interval_time", paramInt);
     localBundle.putBoolean("key_barrage_is_success", paramBoolean1);
-    if (paramDanmuDataContext.c > 0L)
+    if (paramDanmuDataContext.e > 0L)
     {
-      localBundle.putLong("key_barrage_req_time", paramDanmuDataContext.c);
-      localBundle.putLong("key_barrage_net_req_time", paramDanmuDataContext.d);
+      localBundle.putLong("key_barrage_req_time", paramDanmuDataContext.e);
+      localBundle.putLong("key_barrage_net_req_time", paramDanmuDataContext.f);
       localBundle.putLong("key_barrage_net_response_time", System.currentTimeMillis());
-      paramDanmuDataContext.c = -1L;
+      paramDanmuDataContext.e = -1L;
     }
     if (paramArrayList != null) {
       localBundle.putParcelableArrayList("key_barrage_danmu_list", paramArrayList);
@@ -164,7 +164,7 @@ public class DanmuDataIPCServerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.impl.DanmuDataIPCServerImpl
  * JD-Core Version:    0.7.0.1
  */

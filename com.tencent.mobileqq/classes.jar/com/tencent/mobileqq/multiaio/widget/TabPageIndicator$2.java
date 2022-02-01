@@ -30,16 +30,16 @@ class TabPageIndicator$2
     }
     if (localObject1 != null)
     {
-      int i = TabPageIndicator.a(this.a).a();
-      int j = ((TabPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_Int;
+      int i = TabPageIndicator.a(this.a).getCurrentItem();
+      int j = ((TabPageIndicator.MultiAIOHolder)localObject1).b;
       this.a.setCurrentItem(j);
-      ((TabPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ((TabPageIndicator.MultiAIOHolder)localObject1).a.setVisibility(0);
       TabPageIndicator.a(this.a).setCurrentItem(j);
-      if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
-        TabPageIndicator.a(this.a).a(j);
+      if ((i == j) && (TabPageIndicator.b(this.a) != null)) {
+        TabPageIndicator.b(this.a).a(j);
       }
-      if (TabPageIndicator.a(this.a) != null) {
-        TabPageIndicator.a(this.a).a(j);
+      if (TabPageIndicator.c(this.a) != null) {
+        TabPageIndicator.c(this.a).a(j);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -47,7 +47,7 @@ class TabPageIndicator$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.TabPageIndicator.2
  * JD-Core Version:    0.7.0.1
  */

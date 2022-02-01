@@ -8,7 +8,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectData;", "Ljava/io/Serializable;", "()V", "captureVideoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "getCaptureVideoInfo", "()Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "setCaptureVideoInfo", "(Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;)V", "coverFrom", "", "coverFrom$annotations", "getCoverFrom", "()I", "setCoverFrom", "(I)V", "coverPath", "", "getCoverPath", "()Ljava/lang/String;", "setCoverPath", "(Ljava/lang/String;)V", "globalPublisherConfig", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "getGlobalPublisherConfig", "()Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "setGlobalPublisherConfig", "(Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;)V", "initialProgress", "", "getInitialProgress", "()F", "setInitialProgress", "(F)V", "selectMode", "selectMode$annotations", "getSelectMode", "setSelectMode", "videoHeight", "getVideoHeight", "setVideoHeight", "videoPath", "getVideoPath", "setVideoPath", "videoWidth", "getVideoWidth", "setVideoWidth", "Companion", "CoverSelectFromTab", "CoverSelectMode", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectData;", "Ljava/io/Serializable;", "()V", "captureVideoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "getCaptureVideoInfo", "()Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "setCaptureVideoInfo", "(Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;)V", "coverFrom", "", "coverFrom$annotations", "getCoverFrom", "()I", "setCoverFrom", "(I)V", "coverPath", "", "getCoverPath", "()Ljava/lang/String;", "setCoverPath", "(Ljava/lang/String;)V", "coverRatio", "", "getCoverRatio", "()F", "setCoverRatio", "(F)V", "globalPublisherConfig", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "getGlobalPublisherConfig", "()Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "setGlobalPublisherConfig", "(Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;)V", "initialProgress", "getInitialProgress", "setInitialProgress", "selectMode", "selectMode$annotations", "getSelectMode", "setSelectMode", "videoHeight", "getVideoHeight", "setVideoHeight", "videoPath", "getVideoPath", "setVideoPath", "videoWidth", "getVideoWidth", "setVideoWidth", "Companion", "CoverSelectFromTab", "CoverSelectMode", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class CoverSelectData
   implements Serializable
 {
@@ -18,6 +18,7 @@ public final class CoverSelectData
   private int coverFrom;
   @NotNull
   private String coverPath = "";
+  private float coverRatio;
   @Nullable
   private GlobalPublisherConfig globalPublisherConfig;
   private float initialProgress;
@@ -42,6 +43,11 @@ public final class CoverSelectData
   public final String getCoverPath()
   {
     return this.coverPath;
+  }
+  
+  public final float getCoverRatio()
+  {
+    return this.coverRatio;
   }
   
   @Nullable
@@ -92,6 +98,11 @@ public final class CoverSelectData
     this.coverPath = paramString;
   }
   
+  public final void setCoverRatio(float paramFloat)
+  {
+    this.coverRatio = paramFloat;
+  }
+  
   public final void setGlobalPublisherConfig(@Nullable GlobalPublisherConfig paramGlobalPublisherConfig)
   {
     this.globalPublisherConfig = paramGlobalPublisherConfig;
@@ -125,7 +136,7 @@ public final class CoverSelectData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.coverselect.CoverSelectData
  * JD-Core Version:    0.7.0.1
  */

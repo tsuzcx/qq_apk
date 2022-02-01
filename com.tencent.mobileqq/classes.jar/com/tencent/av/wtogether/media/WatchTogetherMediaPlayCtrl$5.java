@@ -12,22 +12,22 @@ class WatchTogetherMediaPlayCtrl$5
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 112)
     {
       if (i == 113) {
-        WatchTogetherMediaPlayCtrl.b(this.this$0, 11);
+        WatchTogetherMediaPlayCtrl.c(this.this$0, 11);
       }
     }
     else {
-      WatchTogetherMediaPlayCtrl.b(this.this$0, 3);
+      WatchTogetherMediaPlayCtrl.c(this.this$0, 3);
     }
-    Iterator localIterator = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    Iterator localIterator = WatchTogetherMediaPlayCtrl.e(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_JavaLangObject);
+        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(this.a, this.b, this.c, this.d);
       }
     }
   }

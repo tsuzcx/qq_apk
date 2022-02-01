@@ -24,16 +24,27 @@ class LebaListController$LebaListRedTouch
       return null;
     }
     paramAppRuntime = ((IRedTouchManager)paramAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(0, paramString);
-    if ((RedTouch.a(paramAppRuntime)) && (paramAppRuntime.type.get() != 5) && (paramAppRuntime.red_display_info.has()) && (paramAppRuntime.red_display_info.get() != null) && (paramAppRuntime.red_display_info.red_type_info.has()) && (paramAppRuntime.red_display_info.red_type_info.get() != null))
+    if ((RedTouch.d(paramAppRuntime)) && (paramAppRuntime.type.get() != 5) && (paramAppRuntime.red_display_info.has()) && (paramAppRuntime.red_display_info.get() != null) && (paramAppRuntime.red_display_info.red_type_info.has()) && (paramAppRuntime.red_display_info.red_type_info.get() != null))
     {
       int i = paramAppRuntime.type.get();
+      StringBuilder localStringBuilder = new StringBuilder("getAppInfoByResId resId=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",type=");
+      localStringBuilder.append(i);
       if ((i == 11) || (i == 16) || (i == 17)) {
         paramAppRuntime.type.set(0);
       }
       paramString = paramAppRuntime.red_display_info.red_type_info.get().iterator();
-      while (paramString.hasNext()) {
-        a((BusinessInfoCheckUpdate.RedTypeInfo)paramString.next());
+      while (paramString.hasNext())
+      {
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.next();
+        localStringBuilder.append(",info.red_type=");
+        localStringBuilder.append(localRedTypeInfo.red_type.get());
+        localStringBuilder.append(",info.red_content=");
+        localStringBuilder.append(localRedTypeInfo.red_content.get());
+        a(localRedTypeInfo);
       }
+      QLog.i("Q.lebatab.LebaListController", 1, localStringBuilder.toString());
     }
     return paramAppRuntime;
   }
@@ -112,7 +123,7 @@ class LebaListController$LebaListRedTouch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.list.LebaListController.LebaListRedTouch
  * JD-Core Version:    0.7.0.1
  */

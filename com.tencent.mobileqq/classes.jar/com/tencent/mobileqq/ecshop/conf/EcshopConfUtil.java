@@ -16,11 +16,6 @@ public class EcshopConfUtil
     return localEcshopConfBean1;
   }
   
-  public static boolean a()
-  {
-    return a(EcshopConfProcessor.a());
-  }
-  
   public static boolean a(EcshopConfBean paramEcshopConfBean)
   {
     return a(paramEcshopConfBean, 1, 1);
@@ -33,12 +28,12 @@ public class EcshopConfUtil
     if (paramEcshopConfBean != null)
     {
       bool1 = bool2;
-      if (paramEcshopConfBean.jdField_a_of_type_JavaUtilArrayList != null)
+      if (paramEcshopConfBean.k != null)
       {
-        if (paramEcshopConfBean.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        if (paramEcshopConfBean.k.isEmpty()) {
           return false;
         }
-        paramEcshopConfBean = paramEcshopConfBean.jdField_a_of_type_JavaUtilArrayList.iterator();
+        paramEcshopConfBean = paramEcshopConfBean.k.iterator();
         EcshopConfBean.TabConfBean localTabConfBean;
         do
         {
@@ -47,7 +42,7 @@ public class EcshopConfUtil
             break;
           }
           localTabConfBean = (EcshopConfBean.TabConfBean)paramEcshopConfBean.next();
-        } while ((localTabConfBean.b != paramInt1) || (localTabConfBean.jdField_a_of_type_Int != paramInt2));
+        } while ((localTabConfBean.i != paramInt1) || (localTabConfBean.b != paramInt2));
         bool1 = true;
       }
     }
@@ -55,6 +50,11 @@ public class EcshopConfUtil
   }
   
   public static boolean b()
+  {
+    return a(EcshopConfProcessor.a());
+  }
+  
+  public static boolean c()
   {
     EcshopConfBean localEcshopConfBean = a();
     Object localObject;
@@ -65,7 +65,7 @@ public class EcshopConfUtil
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(localEcshopConfBean.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(localEcshopConfBean.a);
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -74,7 +74,7 @@ public class EcshopConfUtil
     if (localEcshopConfBean == null) {
       return false;
     }
-    if (localEcshopConfBean.jdField_a_of_type_Int == 1) {
+    if (localEcshopConfBean.a == 1) {
       bool = true;
     }
     return bool;
@@ -82,7 +82,7 @@ public class EcshopConfUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.conf.EcshopConfUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class PreviewScene$1
   @RequiresApi(api=17)
   public void onClick(View paramView)
   {
-    this.a.a.a(paramView);
+    this.a.b.a(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.view.PreviewScene.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,20 +9,20 @@ import java.util.ArrayList;
 
 final class BaseOnLinePushMessageProcessor$ProcessOneMsgBuildParams
 {
-  long jdField_a_of_type_Long;
-  MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
-  SvcReqPushMsg jdField_a_of_type_OnlinePushPackSvcReqPushMsg;
-  FromServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean;
-  ArrayList<MsgInfo> b;
-  ArrayList<DelMsgInfo> c;
-  ArrayList<String> d;
+  FromServiceMsg a;
+  SvcReqPushMsg b;
+  String c;
+  ArrayList<MessageRecord> d;
+  ArrayList<MsgInfo> e;
+  ArrayList<DelMsgInfo> f;
+  long g;
+  ArrayList<String> h;
+  MsgInfo i;
+  boolean j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseOnLinePushMessageProcessor.ProcessOneMsgBuildParams
  * JD-Core Version:    0.7.0.1
  */

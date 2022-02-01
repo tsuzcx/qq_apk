@@ -32,22 +32,14 @@ import org.jetbrains.annotations.Nullable;
 public final class SlidingUpDialog
   extends BaseDialog
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private final RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+  private final View a;
+  private final RelativeLayout.LayoutParams b;
   
   public SlidingUpDialog(@NotNull Context paramContext, @NotNull View paramView, @NotNull RelativeLayout.LayoutParams paramLayoutParams)
   {
     super(paramContext, 16973833);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = paramLayoutParams;
-  }
-  
-  private final void a()
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(R.id.aE);
-    Intrinsics.checkExpressionValueIsNotNull(localRelativeLayout, "rootView");
-    localRelativeLayout.setVisibility(4);
-    ((RelativeLayout)findViewById(R.id.aE)).post((Runnable)new SlidingUpDialog.slidingUp.1(this));
+    this.a = paramView;
+    this.b = paramLayoutParams;
   }
   
   private final void a(View paramView, float paramFloat1, float paramFloat2, long paramLong, Function0<Unit> paramFunction0)
@@ -64,22 +56,30 @@ public final class SlidingUpDialog
   
   private final void b()
   {
-    Object localObject = (RelativeLayout)findViewById(R.id.aE);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(R.id.ag);
+    Intrinsics.checkExpressionValueIsNotNull(localRelativeLayout, "rootView");
+    localRelativeLayout.setVisibility(4);
+    ((RelativeLayout)findViewById(R.id.ag)).post((Runnable)new SlidingUpDialog.slidingUp.1(this));
+  }
+  
+  private final void c()
+  {
+    Object localObject = (RelativeLayout)findViewById(R.id.ag);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "rootView");
     localObject = (View)localObject;
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(R.id.aE);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(R.id.ag);
     Intrinsics.checkExpressionValueIsNotNull(localRelativeLayout, "rootView");
     a((View)localObject, 0.0F, localRelativeLayout.getHeight(), 200L, (Function0)new SlidingUpDialog.slidingDown.1(this));
   }
   
   public boolean a()
   {
-    return TopicSDK.a.a().a().a().a();
+    return TopicSDK.a.a().b().j().a();
   }
   
   public void dismiss()
   {
-    b();
+    c();
   }
   
   protected void onCreate(@Nullable Bundle paramBundle)
@@ -90,18 +90,18 @@ public final class SlidingUpDialog
       setCancelable(true);
     }
     super.onCreate(paramBundle);
-    setContentView(R.layout.I);
-    this.jdField_a_of_type_AndroidViewView.setId(R.id.P);
-    paramBundle = findViewById(R.id.l);
+    setContentView(R.layout.E);
+    this.a.setId(R.id.w);
+    paramBundle = findViewById(R.id.d);
     Intrinsics.checkExpressionValueIsNotNull(paramBundle, "blank");
     paramBundle = paramBundle.getLayoutParams();
     if (paramBundle != null)
     {
-      ((RelativeLayout.LayoutParams)paramBundle).addRule(3, this.jdField_a_of_type_AndroidViewView.getId());
-      ((FrameLayout)findViewById(R.id.q)).setOnClickListener((View.OnClickListener)new SlidingUpDialog.onCreate.2(this));
-      ((RelativeLayout)findViewById(R.id.aE)).setOnClickListener((View.OnClickListener)SlidingUpDialog.onCreate.3.a);
-      ((RelativeLayout)findViewById(R.id.aE)).addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ((PressTextView)findViewById(R.id.o)).setOnClickListener((View.OnClickListener)new SlidingUpDialog.onCreate.4(this));
+      ((RelativeLayout.LayoutParams)paramBundle).addRule(3, this.a.getId());
+      ((FrameLayout)findViewById(R.id.i)).setOnClickListener((View.OnClickListener)new SlidingUpDialog.onCreate.2(this));
+      ((RelativeLayout)findViewById(R.id.ag)).setOnClickListener((View.OnClickListener)SlidingUpDialog.onCreate.3.a);
+      ((RelativeLayout)findViewById(R.id.ag)).addView(this.a, (ViewGroup.LayoutParams)this.b);
+      ((PressTextView)findViewById(R.id.g)).setOnClickListener((View.OnClickListener)new SlidingUpDialog.onCreate.4(this));
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
@@ -110,12 +110,12 @@ public final class SlidingUpDialog
   public void show()
   {
     super.show();
-    a();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.SlidingUpDialog
  * JD-Core Version:    0.7.0.1
  */

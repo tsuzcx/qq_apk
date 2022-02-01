@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.PointF;
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePathValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableSplitDimensionPathValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.ArrayList;
@@ -15,10 +16,12 @@ import java.util.List;
 
 public class AnimatablePathValueParser
 {
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "k", "x", "y" });
+  
   public static AnimatablePathValue parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY)
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY)
     {
       paramJsonReader.beginArray();
       while (paramJsonReader.hasNext()) {
@@ -38,55 +41,39 @@ public class AnimatablePathValueParser
   {
     paramJsonReader.beginObject();
     AnimatablePathValue localAnimatablePathValue = null;
-    Object localObject1 = localAnimatablePathValue;
-    Object localObject2 = localObject1;
-    int j = 0;
-    while (paramJsonReader.peek() != JsonToken.END_OBJECT)
+    int i = 0;
+    AnimatableFloatValue localAnimatableFloatValue2 = null;
+    AnimatableFloatValue localAnimatableFloatValue1 = localAnimatableFloatValue2;
+    while (paramJsonReader.peek() != JsonReader.Token.END_OBJECT)
     {
-      String str = paramJsonReader.nextName();
-      int i = -1;
-      int k = str.hashCode();
-      if (k != 107)
+      int j = paramJsonReader.selectName(NAMES);
+      if (j != 0)
       {
-        if (k != 120)
+        if (j != 1)
         {
-          if ((k == 121) && (str.equals("y"))) {
-            i = 2;
-          }
-        }
-        else if (str.equals("x")) {
-          i = 1;
-        }
-      }
-      else if (str.equals("k")) {
-        i = 0;
-      }
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 2)
+          if (j != 2)
           {
+            paramJsonReader.skipName();
             paramJsonReader.skipValue();
             continue;
           }
-          if (paramJsonReader.peek() == JsonToken.STRING) {
+          if (paramJsonReader.peek() == JsonReader.Token.STRING) {
             paramJsonReader.skipValue();
           } else {
-            localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+            localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
           }
         }
         else
         {
-          if (paramJsonReader.peek() != JsonToken.STRING) {
-            break label175;
+          if (paramJsonReader.peek() != JsonReader.Token.STRING) {
+            break label105;
           }
           paramJsonReader.skipValue();
         }
-        j = 1;
+        i = 1;
         continue;
-        label175:
-        localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+        label105:
+        localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
       }
       else
       {
@@ -94,18 +81,18 @@ public class AnimatablePathValueParser
       }
     }
     paramJsonReader.endObject();
-    if (j != 0) {
+    if (i != 0) {
       paramLottieComposition.addWarning("Lottie doesn't support expressions.");
     }
     if (localAnimatablePathValue != null) {
       return localAnimatablePathValue;
     }
-    return new AnimatableSplitDimensionPathValue((AnimatableFloatValue)localObject1, (AnimatableFloatValue)localObject2);
+    return new AnimatableSplitDimensionPathValue(localAnimatableFloatValue2, localAnimatableFloatValue1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.AnimatablePathValueParser
  * JD-Core Version:    0.7.0.1
  */

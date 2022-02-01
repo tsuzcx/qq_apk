@@ -12,7 +12,7 @@ class VipTagView$2
   public void onAnimationEnd(Animation paramAnimation)
   {
     if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
+      VipTagView.b(this.a).a();
     }
     VipTagView.a(this.a, false);
     this.a.invalidate();
@@ -27,7 +27,7 @@ class VipTagView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipTagView.2
  * JD-Core Version:    0.7.0.1
  */

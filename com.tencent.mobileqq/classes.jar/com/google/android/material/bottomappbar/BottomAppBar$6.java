@@ -10,19 +10,19 @@ class BottomAppBar$6
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    BottomAppBar.e(this.a);
+    BottomAppBar.o(this.a);
     BottomAppBar.a(this.a, false);
     BottomAppBar.b(this.a, null);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    BottomAppBar.d(this.a);
+    BottomAppBar.n(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.6
  * JD-Core Version:    0.7.0.1
  */

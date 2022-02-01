@@ -15,7 +15,7 @@ final class FixedSizeVideoView$1
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
     FixedSizeVideoView.a(this.a).removeMessages(0);
-    FixedSizeVideoView.OnTrimVDPlayCompleteListener localOnTrimVDPlayCompleteListener = this.a.a();
+    FixedSizeVideoView.OnTrimVDPlayCompleteListener localOnTrimVDPlayCompleteListener = this.a.getListener();
     if (localOnTrimVDPlayCompleteListener != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(paramMediaPlayer, "mp");
@@ -25,7 +25,7 @@ final class FixedSizeVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.FixedSizeVideoView.1
  * JD-Core Version:    0.7.0.1
  */

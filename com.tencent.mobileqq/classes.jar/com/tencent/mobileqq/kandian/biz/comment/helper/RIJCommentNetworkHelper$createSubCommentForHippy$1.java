@@ -30,20 +30,20 @@ final class RIJCommentNetworkHelper$createSubCommentForHippy$1
       RIJBiuNetworkHelper.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createSubCommentForHippy.1.1(this, paramString));
     }
     RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, 0, System.currentTimeMillis() - this.$requestTime);
-    if (((CharSequence)this.$requestData.c()).length() <= 0) {
+    if (((CharSequence)this.$requestData.d()).length() <= 0) {
       i = 0;
     }
     if (i != 0) {
-      paramString = this.$requestData.c();
-    } else {
       paramString = this.$requestData.d();
+    } else {
+      paramString = this.$requestData.e();
     }
-    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, this.$requestData.g(), paramString, this.$requestData.a(), this.$requestData.f(), String.valueOf(paramInt));
+    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, this.$requestData.n(), paramString, this.$requestData.a(), this.$requestData.m(), String.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.createSubCommentForHippy.1
  * JD-Core Version:    0.7.0.1
  */

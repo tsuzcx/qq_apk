@@ -19,20 +19,20 @@ class AvGameManagerImpl$8
   {
     try
     {
-      if (AvGameManagerImpl.access$300(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl) != null) {
-        AvGameManagerImpl.access$200(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl).removeObserver(AvGameManagerImpl.access$300(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl));
+      if (AvGameManagerImpl.access$300(this.h) != null) {
+        AvGameManagerImpl.access$200(this.h).removeObserver(AvGameManagerImpl.access$300(this.h));
       }
-      AvGameManagerImpl.access$302(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl, new AvGameManagerImpl.8.1(this));
-      AvGameManagerImpl.access$200(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl).addObserver(AvGameManagerImpl.access$300(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl));
-      ReportController.b(null, "dc00898", "", "", "0X800B078", "0X800B078", this.jdField_a_of_type_Int, 0, "", "", "", "");
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      AvGameManagerImpl.access$302(this.h, new AvGameManagerImpl.8.1(this));
+      AvGameManagerImpl.access$200(this.h).addObserver(AvGameManagerImpl.access$300(this.h));
+      ReportController.b(null, "dc00898", "", "", "0X800B078", "0X800B078", this.b, 0, "", "", "", "");
+      paramDialogInterface = new Intent(this.g, QQBrowserActivity.class);
       paramDialogInterface.putExtra("url", "https://ti.qq.com/realname/index.html?source=avgame");
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+      this.g.startActivity(paramDialogInterface);
       if (QLog.isColorLevel())
       {
         paramDialogInterface = new StringBuilder();
         paramDialogInterface.append("showRealNameDialog click confirm. roomId: ");
-        paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+        paramDialogInterface.append(this.c);
         QLog.i("AvGameManager", 2, paramDialogInterface.toString());
       }
       return;

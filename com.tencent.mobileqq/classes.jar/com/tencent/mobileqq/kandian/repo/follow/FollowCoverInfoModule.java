@@ -14,59 +14,36 @@ import java.util.Iterator;
 
 public class FollowCoverInfoModule
 {
-  private int jdField_a_of_type_Int = -1;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private TopicRecommendFeedsInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo = null;
-  private HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private AppInterface a;
+  private TopicRecommendFeedsInfo b = null;
+  private int c = -1;
+  private HashMap<Long, Long> d = new HashMap();
   
   public FollowCoverInfoModule(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    a();
+    this.a = paramAppInterface;
+    d();
   }
   
-  private void a()
+  private void d()
   {
-    if (this.jdField_a_of_type_Int == -1) {
+    if (this.c == -1) {
       ThreadManager.executeOnFileThread(new FollowCoverInfoModule.1(this));
     }
   }
   
   public int a()
   {
-    SharedPreferences localSharedPreferences = RIJSPUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    SharedPreferences localSharedPreferences = RIJSPUtils.a(this.a, true, false);
     if (localSharedPreferences != null) {
       return localSharedPreferences.getInt("follow_tab_enter_topic_reddot_time", 0);
     }
     return 0;
   }
   
-  public String a()
-  {
-    SharedPreferences localSharedPreferences = RIJSPUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString("follow_tab_last_refresh_cookie", "");
-    }
-    return "";
-  }
-  
-  public HashMap<Long, Long> a()
-  {
-    try
-    {
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-      return localHashMap;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public void a(int paramInt)
   {
-    Object localObject = RIJSPUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    Object localObject = RIJSPUtils.a(this.a, true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -86,7 +63,7 @@ public class FollowCoverInfoModule
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo = paramTopicRecommendFeedsInfo;
+      this.b = paramTopicRecommendFeedsInfo;
       if (paramTopicRecommendFeedsInfo != null) {
         break label178;
       }
@@ -106,22 +83,22 @@ public class FollowCoverInfoModule
         int i = 1;
       }
     }
-    this.jdField_a_of_type_Int = i;
+    this.c = i;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("topic update save info exists ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(" size ");
-      if ((paramTopicRecommendFeedsInfo != null) && (paramTopicRecommendFeedsInfo.a != null))
+      if ((paramTopicRecommendFeedsInfo != null) && (paramTopicRecommendFeedsInfo.g != null))
       {
-        localStringBuilder.append(paramTopicRecommendFeedsInfo.a.size());
+        localStringBuilder.append(paramTopicRecommendFeedsInfo.g.size());
         localStringBuilder.append(" ");
-        localIterator = paramTopicRecommendFeedsInfo.a.iterator();
+        localIterator = paramTopicRecommendFeedsInfo.g.iterator();
       }
       while (localIterator.hasNext())
       {
-        localStringBuilder.append(((TopicRecommendFeedsInfo.TopicRecommendInfo)localIterator.next()).jdField_a_of_type_Int);
+        localStringBuilder.append(((TopicRecommendFeedsInfo.TopicRecommendInfo)localIterator.next()).a);
         localStringBuilder.append(" ");
         continue;
         localStringBuilder.append("0");
@@ -133,7 +110,7 @@ public class FollowCoverInfoModule
   
   public void a(String paramString)
   {
-    Object localObject = RIJSPUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    Object localObject = RIJSPUtils.a(this.a, true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -151,7 +128,7 @@ public class FollowCoverInfoModule
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = RIJSPUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    Object localObject = RIJSPUtils.a(this.a, true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -166,10 +143,33 @@ public class FollowCoverInfoModule
       }
     }
   }
+  
+  public String b()
+  {
+    SharedPreferences localSharedPreferences = RIJSPUtils.a(this.a, true, false);
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString("follow_tab_last_refresh_cookie", "");
+    }
+    return "";
+  }
+  
+  public HashMap<Long, Long> c()
+  {
+    try
+    {
+      HashMap localHashMap = this.d;
+      return localHashMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.follow.FollowCoverInfoModule
  * JD-Core Version:    0.7.0.1
  */

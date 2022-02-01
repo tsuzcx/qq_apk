@@ -13,13 +13,13 @@ class QBaseFileListContentView$2
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.size() > 0))
+    if ((this.this$0.h != null) && (this.this$0.h.size() > 0))
     {
-      Iterator localIterator = this.this$0.a.keySet().iterator();
+      Iterator localIterator = this.this$0.h.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
-        localObject = ((List)this.this$0.a.get(localObject)).iterator();
+        localObject = ((List)this.this$0.h.get(localObject)).iterator();
         while (((Iterator)localObject).hasNext()) {
           if (((FileManagerEntity)((Iterator)localObject).next()).sendCloudUnsuccessful()) {
             ((Iterator)localObject).remove();
@@ -32,7 +32,7 @@ class QBaseFileListContentView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QBaseFileListContentView.2
  * JD-Core Version:    0.7.0.1
  */

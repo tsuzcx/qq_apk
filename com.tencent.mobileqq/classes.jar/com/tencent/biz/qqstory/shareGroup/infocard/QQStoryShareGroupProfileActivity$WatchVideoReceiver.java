@@ -21,12 +21,12 @@ public class QQStoryShareGroupProfileActivity$WatchVideoReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull WatchVideoHandler.WatchVideoEvent paramWatchVideoEvent)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
+    if (!paramQQStoryShareGroupProfileActivity.G) {
       return;
     }
     Object localObject2 = null;
-    ShareGroupsListAdapter localShareGroupsListAdapter = paramQQStoryShareGroupProfileActivity.a.a;
-    Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+    ShareGroupsListAdapter localShareGroupsListAdapter = paramQQStoryShareGroupProfileActivity.d.f;
+    Iterator localIterator = paramQQStoryShareGroupProfileActivity.d.f.i.iterator();
     Object localObject1;
     do
     {
@@ -41,7 +41,7 @@ public class QQStoryShareGroupProfileActivity$WatchVideoReceiver
       ((HotSortVideoEntry)localObject1).viewCount += 1;
       ((HotSortVideoManager)SuperManager.a(25)).a((HotSortVideoEntry)localObject1);
       localShareGroupsListAdapter.a((HotSortVideoEntry)localObject1);
-      paramQQStoryShareGroupProfileActivity.d = true;
+      paramQQStoryShareGroupProfileActivity.D = true;
     }
   }
   

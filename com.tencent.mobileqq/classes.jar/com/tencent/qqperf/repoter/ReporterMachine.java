@@ -28,36 +28,24 @@ import org.json.JSONObject;
 
 public class ReporterMachine
 {
-  private static IReporter jdField_a_of_type_ComTencentQqperfRepoterIReporter;
-  private static ReporterMachine jdField_a_of_type_ComTencentQqperfRepoterReporterMachine;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private static Queue<String> jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  private static MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static ReporterMachine a;
+  private static boolean b = false;
+  private static MqqHandler c;
+  private static String d = "";
+  private static IReporter e;
+  private static Queue<String> f = new ConcurrentLinkedQueue();
+  private static List<ResultObject> g = Collections.synchronizedList(new ArrayList());
   
   private ReporterMachine()
   {
-    if (jdField_a_of_type_MqqOsMqqHandler == null)
+    if (c == null)
     {
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("ReporterMachine", 0);
       localHandlerThread.start();
-      jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-      jdField_a_of_type_ComTencentQqperfRepoterIReporter = new QCloudReporter(localHandlerThread);
+      c = new MqqHandler(localHandlerThread.getLooper());
+      e = new QCloudReporter(localHandlerThread);
     }
-    jdField_a_of_type_JavaLangString = a();
-  }
-  
-  public static ReporterMachine a()
-  {
-    if (jdField_a_of_type_ComTencentQqperfRepoterReporterMachine == null) {
-      try
-      {
-        jdField_a_of_type_ComTencentQqperfRepoterReporterMachine = new ReporterMachine();
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentQqperfRepoterReporterMachine;
+    d = a();
   }
   
   public static void a(ResultObject paramResultObject)
@@ -75,13 +63,25 @@ public class ReporterMachine
         return;
       }
     }
-    if (jdField_a_of_type_MqqOsMqqHandler != null)
+    if (c != null)
     {
       paramResultObject = new ReporterMachine.InsertRunnable(paramResultObject);
-      jdField_a_of_type_MqqOsMqqHandler.post(paramResultObject);
+      c.post(paramResultObject);
       return;
     }
-    jdField_a_of_type_JavaUtilList.add(paramResultObject);
+    g.add(paramResultObject);
+  }
+  
+  public static ReporterMachine b()
+  {
+    if (a == null) {
+      try
+      {
+        a = new ReporterMachine();
+      }
+      finally {}
+    }
+    return a;
   }
   
   private static void c(ResultObject paramResultObject)
@@ -90,12 +90,12 @@ public class ReporterMachine
       return;
     }
     JSONObject localJSONObject = paramResultObject.params.getJSONObject("clientinfo");
-    localJSONObject.put("versionname", MagnifierSDK.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("versionname", MagnifierSDK.a);
     localJSONObject.put("uin", String.valueOf(paramResultObject.uin));
     localJSONObject.put("manu", Build.MANUFACTURER);
     localJSONObject.put("model", Build.MODEL);
     localJSONObject.put("os", Build.VERSION.RELEASE);
-    localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
+    localJSONObject.put("rdmuuid", d);
     localJSONObject.put("deviceid", ((IPerfApi)QRoute.api(IPerfApi.class)).getDeviceId());
     if (MobileQQ.sProcessId == 1) {
       try
@@ -107,22 +107,22 @@ public class ReporterMachine
         QLog.d("Magnifier_ReporterMachine", 1, "reportAtOnce", localException);
       }
     }
-    jdField_a_of_type_ComTencentQqperfRepoterIReporter.a(paramResultObject, new ReporterMachine.1());
+    e.a(paramResultObject, new ReporterMachine.1());
   }
   
   public String a()
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(d)) {
+      return d;
     }
     try
     {
-      jdField_a_of_type_JavaLangString = MobileQQ.getContext().getPackageManager().getApplicationInfo(MobileQQ.getContext().getPackageName(), 128).metaData.get("com.tencent.qapm.uuid").toString();
-      if ("1234567890".equals(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = "0";
+      d = MobileQQ.getContext().getPackageManager().getApplicationInfo(MobileQQ.getContext().getPackageName(), 128).metaData.get("com.tencent.qapm.uuid").toString();
+      if ("1234567890".equals(d)) {
+        d = "0";
       }
       label64:
-      return jdField_a_of_type_JavaLangString;
+      return d;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
@@ -130,21 +130,21 @@ public class ReporterMachine
     }
   }
   
-  public void a()
+  public void c()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!b)
     {
       ReporterMachine.ReportRunnable localReportRunnable = new ReporterMachine.ReportRunnable(this, null);
       ReporterMachine.getFileRunnable localgetFileRunnable = new ReporterMachine.getFileRunnable();
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localgetFileRunnable, 120000L);
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localReportRunnable, 300000L);
-      jdField_a_of_type_Boolean = true;
+      c.postDelayed(localgetFileRunnable, 120000L);
+      c.postDelayed(localReportRunnable, 300000L);
+      b = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine
  * JD-Core Version:    0.7.0.1
  */

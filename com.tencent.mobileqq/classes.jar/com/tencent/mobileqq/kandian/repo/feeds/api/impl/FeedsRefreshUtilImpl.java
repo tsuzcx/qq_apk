@@ -25,7 +25,7 @@ public final class FeedsRefreshUtilImpl
     if (FeedsRefreshUtilImpl.Companion.a(Companion, paramLong)) {
       return 0;
     }
-    Object localObject = RIJSPUtils.a("sp_key_rij_content_flush_num_day", Integer.valueOf(0));
+    Object localObject = RIJSPUtils.b("sp_key_rij_content_flush_num_day", Integer.valueOf(0));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…CONTENT_FLUSH_NUM_DAY, 0)");
     return ((Number)localObject).intValue();
   }
@@ -40,7 +40,7 @@ public final class FeedsRefreshUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.api.impl.FeedsRefreshUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,27 @@
 package com.tencent.mobileqq.apollo.aio.panel;
 
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.apollo.listener.ApolloStatusUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ApolloPanel$25
-  implements Runnable
+  implements ApolloStatusUpdateListener
 {
   ApolloPanel$25(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (ApolloPanel.a(this.this$0) != null)
-    {
-      if (ApolloPanel.a(this.this$0).a == null) {
-        return;
-      }
-      ApolloPanel.b(this.this$0).setVisibility(8);
-      int i;
-      if (ApolloPanel.a(this.this$0) != null) {
-        i = ApolloPanel.a(this.this$0).a.get();
-      } else {
-        i = 0;
-      }
-      if (i > 0) {
-        ApolloPanel.b(this.this$0).setVisibility(0);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStatusUpdate, currentStatus=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("， is3dAvailable=");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("[cmshow]ApolloPanel", 2, localStringBuilder.toString());
+    this.a.post(new ApolloPanel.25.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.25
  * JD-Core Version:    0.7.0.1
  */

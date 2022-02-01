@@ -28,18 +28,18 @@ import mqq.app.AppRuntime;
 public class ArkAsyncShareMsgManager
   implements Handler.Callback
 {
-  private long jdField_a_of_type_Long = 120000L;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = null;
-  private IArkMessagePreprocessorCallback jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback = new ArkAsyncShareMsgManager.1(this);
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final WeakReference<AppRuntime> jdField_a_of_type_JavaLangRefWeakReference;
-  private final HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
+  private final WeakReference<AppRuntime> a;
+  private final HashMap<Long, Bundle> b = new HashMap();
+  private HandlerThread c = null;
+  private Handler d = null;
+  private boolean e = false;
+  private long f = 120000L;
+  private final Object g = new Object();
+  private IArkMessagePreprocessorCallback h = new ArkAsyncShareMsgManager.1(this);
   
   public ArkAsyncShareMsgManager(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
+    this.a = new WeakReference(paramAppRuntime);
   }
   
   private void a(QQAppInterface paramQQAppInterface, MessageForArkApp paramMessageForArkApp)
@@ -75,7 +75,7 @@ public class ArkAsyncShareMsgManager
     }
   }
   
-  public static void b(MessageForArkApp paramMessageForArkApp)
+  public static void d(MessageForArkApp paramMessageForArkApp)
   {
     if (paramMessageForArkApp == null)
     {
@@ -89,7 +89,7 @@ public class ArkAsyncShareMsgManager
       {
         localObject = (QQAppInterface)localObject;
         ArkAsyncShareMsgManager localArkAsyncShareMsgManager = ((IArkAsyncShareMsgService)((QQAppInterface)localObject).getRuntimeService(IArkAsyncShareMsgService.class, "")).getAsyncShareMsgManager();
-        if ((localArkAsyncShareMsgManager != null) && (!localArkAsyncShareMsgManager.a(paramMessageForArkApp)))
+        if ((localArkAsyncShareMsgManager != null) && (!localArkAsyncShareMsgManager.b(paramMessageForArkApp)))
         {
           if (QLog.isColorLevel()) {
             QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.change last sending msg to fail state, uniseq=", Long.valueOf(paramMessageForArkApp.uniseq) });
@@ -104,43 +104,8 @@ public class ArkAsyncShareMsgManager
   
   public long a()
   {
-    QLog.d("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.get timeout=", Long.valueOf(this.jdField_a_of_type_Long) });
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Bundle a(MessageForArkApp paramMessageForArkApp)
-  {
-    if (paramMessageForArkApp == null) {
-      return null;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Bundle localBundle = (Bundle)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageForArkApp.uniseq));
-      if (localBundle != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.allready add to timeout check bundle=", localBundle.toString() });
-        }
-        return localBundle;
-      }
-      localBundle = new Bundle();
-      localBundle.putLong("key_process_message_uniseq", paramMessageForArkApp.uniseq);
-      localBundle.putString("key_process_message_friend_uin", paramMessageForArkApp.frienduin);
-      localBundle.putInt("key_process_message_uin_type", paramMessageForArkApp.istroop);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageForArkApp.uniseq), localBundle);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Ark-Msg-Monitor");
-        this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-      }
-      paramMessageForArkApp = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localBundle);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessageForArkApp, this.jdField_a_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.--add timeout check bundle=", Integer.valueOf(System.identityHashCode(localBundle)), ", content", localBundle.toString() });
-      }
-      return localBundle;
-    }
+    QLog.d("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.get timeout=", Long.valueOf(this.f) });
+    return this.f;
   }
   
   public void a(MessageForArkApp paramMessageForArkApp)
@@ -183,8 +148,8 @@ public class ArkAsyncShareMsgManager
           }
           a(localQQAppInterface, paramMessageForArkApp);
           localQQAppInterface.getMessageFacade().a(paramMessageForArkApp);
-          localObject2 = a(paramMessageForArkApp);
-          ((IArkMessagePreprocessor)localObject1).a(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject(), this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback, localObject2);
+          localObject2 = c(paramMessageForArkApp);
+          ((IArkMessagePreprocessor)localObject1).a(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject(), this.h, localObject2);
           bool1 = bool2;
         }
       }
@@ -212,7 +177,7 @@ public class ArkAsyncShareMsgManager
     {
       IArkMessagePreprocessor localIArkMessagePreprocessor = ((IArkAsyncShareMsgService)paramQQAppInterface.getRuntimeService(IArkAsyncShareMsgService.class, "")).getMessagePreprocessorMgr().a(paramString);
       if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.shareData curType=", Integer.valueOf(paramSessionInfo.jdField_a_of_type_Int), ", curFriendUin= ", paramSessionInfo.jdField_a_of_type_JavaLangString, ", troopUin=", paramSessionInfo.b, ", istroop=", Integer.valueOf(paramMessageForArkApp.istroop), ", \n --shareMessage=", paramMessageForArkApp.ark_app_message.toShareMsgJSONObject() });
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.shareData curType=", Integer.valueOf(paramSessionInfo.a), ", curFriendUin= ", paramSessionInfo.b, ", troopUin=", paramSessionInfo.c, ", istroop=", Integer.valueOf(paramMessageForArkApp.istroop), ", \n --shareMessage=", paramMessageForArkApp.ark_app_message.toShareMsgJSONObject() });
       }
       if (localIArkMessagePreprocessor != null)
       {
@@ -233,8 +198,8 @@ public class ArkAsyncShareMsgManager
         {
           paramMessageForArkApp.updateProcessStateAndExtraFlag(1001);
           paramQQAppInterface.getMessageFacade().a(paramMessageForArkApp);
-          paramQQAppInterface = a(paramMessageForArkApp);
-          localIArkMessagePreprocessor.a(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject(), this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback, paramQQAppInterface);
+          paramQQAppInterface = c(paramMessageForArkApp);
+          localIArkMessagePreprocessor.a(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject(), this.h, paramQQAppInterface);
           return true;
         }
       }
@@ -244,16 +209,16 @@ public class ArkAsyncShareMsgManager
     return false;
   }
   
-  public boolean a(MessageForArkApp paramMessageForArkApp)
+  public boolean b(MessageForArkApp paramMessageForArkApp)
   {
     if (paramMessageForArkApp == null) {
       return false;
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.g)
       {
-        if ((Bundle)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageForArkApp.uniseq)) != null)
+        if ((Bundle)this.b.get(Long.valueOf(paramMessageForArkApp.uniseq)) != null)
         {
           bool = true;
           if (QLog.isColorLevel()) {
@@ -266,12 +231,47 @@ public class ArkAsyncShareMsgManager
     }
   }
   
+  public Bundle c(MessageForArkApp paramMessageForArkApp)
+  {
+    if (paramMessageForArkApp == null) {
+      return null;
+    }
+    synchronized (this.g)
+    {
+      Bundle localBundle = (Bundle)this.b.get(Long.valueOf(paramMessageForArkApp.uniseq));
+      if (localBundle != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.allready add to timeout check bundle=", localBundle.toString() });
+        }
+        return localBundle;
+      }
+      localBundle = new Bundle();
+      localBundle.putLong("key_process_message_uniseq", paramMessageForArkApp.uniseq);
+      localBundle.putString("key_process_message_friend_uin", paramMessageForArkApp.frienduin);
+      localBundle.putInt("key_process_message_uin_type", paramMessageForArkApp.istroop);
+      this.b.put(Long.valueOf(paramMessageForArkApp.uniseq), localBundle);
+      if (!this.e)
+      {
+        this.c = new HandlerThread("Ark-Msg-Monitor");
+        this.c.start();
+        this.d = new Handler(this.c.getLooper(), this);
+      }
+      paramMessageForArkApp = this.d.obtainMessage(1, localBundle);
+      this.d.sendMessageDelayed(paramMessageForArkApp, this.f);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.--add timeout check bundle=", Integer.valueOf(System.identityHashCode(localBundle)), ", content", localBundle.toString() });
+      }
+      return localBundle;
+    }
+  }
+  
   public boolean handleMessage(Message arg1)
   {
     if (???.what != 1) {
       return true;
     }
-    Object localObject2 = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (AppRuntime)this.a.get();
     ??? = ???.obj;
     if ((localObject2 != null) && (??? != null) && ((??? instanceof Bundle)))
     {
@@ -279,11 +279,11 @@ public class ArkAsyncShareMsgManager
       long l = ((Bundle)localObject3).getLong("key_process_message_uniseq");
       String str = ((Bundle)localObject3).getString("key_process_message_friend_uin");
       int i = ((Bundle)localObject3).getInt("key_process_message_uin_type");
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.g)
       {
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l)) != null)
+        if (this.b.get(Long.valueOf(l)) != null)
         {
-          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l));
+          this.b.remove(Long.valueOf(l));
           if ((localObject2 instanceof QQAppInterface)) {
             ??? = (QQAppInterface)localObject2;
           } else {
@@ -306,7 +306,7 @@ public class ArkAsyncShareMsgManager
           }
           ((MessageForArkApp)localObject3).updateProcessStateAndExtraFlag(1003);
           ((MessageForArkApp)localObject3).saveMsgExtStrAndFlag(???);
-          ???.getMsgCache().a(((MessageForArkApp)localObject3).frienduin, ((MessageForArkApp)localObject3).istroop, ((MessageForArkApp)localObject3).uniseq);
+          ???.getMsgCache().b(((MessageForArkApp)localObject3).frienduin, ((MessageForArkApp)localObject3).istroop, ((MessageForArkApp)localObject3).uniseq);
           a(???, (MessageForArkApp)localObject3);
           return true;
         }
@@ -322,7 +322,7 @@ public class ArkAsyncShareMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.share.core.ArkAsyncShareMsgManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,36 +6,36 @@ import org.jetbrains.annotations.NotNull;
 
 public class ViolaVideoUpdateController
 {
-  private long jdField_a_of_type_Long = 500L;
   @NotNull
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Runnable b = new ViolaVideoUpdateController.1(this);
+  private Runnable a;
+  private boolean b = false;
+  private long c = 500L;
+  private Runnable d = new ViolaVideoUpdateController.1(this);
   
   public ViolaVideoUpdateController(@NotNull Runnable paramRunnable, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramRunnable;
+    this.c = paramLong;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManagerV2.getUIHandlerV2().post(this.b);
+    this.b = true;
+    ThreadManagerV2.getUIHandlerV2().post(this.d);
   }
   
   public void b()
   {
-    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.b);
-    this.jdField_a_of_type_Boolean = false;
+    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.d);
+    this.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.ViolaVideoUpdateController
  * JD-Core Version:    0.7.0.1
  */

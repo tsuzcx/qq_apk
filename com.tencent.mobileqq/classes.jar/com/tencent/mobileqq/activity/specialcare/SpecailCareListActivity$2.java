@@ -18,27 +18,27 @@ class SpecailCareListActivity$2
   
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    this.a.j.c(0L);
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+    this.a.j.b(0L);
   }
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+    this.a.j.a(0L);
     if (NetworkUtil.isNetSupport(this.a))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendGroupList(true);
+      this.a.v.getFriendGroupList(true);
       paramView = this.a;
-      paramView.jdField_a_of_type_Boolean = true;
+      paramView.r = true;
       ((QzoneContactsFeedManager)paramView.app.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
       return true;
     }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
+    paramView = this.a.A.obtainMessage(2000, 0, 0);
+    this.a.A.sendMessageDelayed(paramView, 1000L);
     return true;
   }
   
@@ -46,7 +46,7 @@ class SpecailCareListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.2
  * JD-Core Version:    0.7.0.1
  */

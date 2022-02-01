@@ -11,14 +11,14 @@ class DoodleLayout$10
   
   public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
+    if (this.a.y != null) {
+      this.a.y.a(paramBitmap, paramBoolean);
     }
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null)
+    if (this.a.y != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("notify outside onDrawMosaic. width:");
@@ -26,13 +26,13 @@ class DoodleLayout$10
       localStringBuilder.append(",height:");
       localStringBuilder.append(paramInt2);
       SLog.b("DoodleLayout", localStringBuilder.toString());
-      this.a.a.a(paramArrayOfByte);
+      this.a.y.a(paramArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.10
  * JD-Core Version:    0.7.0.1
  */

@@ -34,15 +34,15 @@ class QQGameSubscribeInfoView$1
       paramString2.append(bool);
       QLog.i("QQGamePub_QQGameSubscribeInfoView", 1, paramString2.toString());
     }
-    float f = UIUtils.a(12.0F, QQGameSubscribeInfoView.a(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGameSubscribeInfoView).getResources());
-    int i = this.jdField_a_of_type_Int;
+    float f = UIUtils.a(12.0F, QQGameSubscribeInfoView.a(this.b).getResources());
+    int i = this.a;
     paramString1 = BaseImageUtil.a(paramBitmap, f, true, i, i);
     ThreadManagerV2.getUIHandlerV2().post(new QQGameSubscribeInfoView.1.1(this, paramString1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.QQGameSubscribeInfoView.1
  * JD-Core Version:    0.7.0.1
  */

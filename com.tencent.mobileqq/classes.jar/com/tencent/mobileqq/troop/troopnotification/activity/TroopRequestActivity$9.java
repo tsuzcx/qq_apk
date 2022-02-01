@@ -13,23 +13,23 @@ class TroopRequestActivity$9
 {
   TroopRequestActivity$9(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-        TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity);
+        TroopRequestActivity.b(this.b);
       } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity, 2131719980, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.getTitleBarHeight());
+        QQToast.makeText(this.b, 2131917585, 0).show(this.b.getTitleBarHeight());
       }
-      ReportController.b(TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity), "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.u, "", "");
+      ReportController.b(TroopRequestActivity.a(this.b), "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.b.c, this.b.ad, "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.9
  * JD-Core Version:    0.7.0.1
  */

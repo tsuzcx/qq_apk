@@ -13,33 +13,33 @@ class AccountDetailGroupListContainer$19
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.d)
+    if (this.b.q)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer;
-      paramView.e = true;
-      if (this.jdField_a_of_type_Int == 0)
+      paramView = this.b;
+      paramView.r = true;
+      if (this.a == 0)
       {
-        ReportController.b(paramView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_num", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+        ReportController.b(paramView.b, "P_CliOper", "Grp_public", "", "connect", "Clk_num", 0, 0, "", "", "", this.b.f.uin);
         paramView = new StringBuilder();
         paramView.append("https://qun.qq.com/qqweb/m/qun/qun_pub_bind/qun2pub.html?_wv=1027&scode=");
-        paramView.append(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString);
+        paramView.append(this.b.g);
         paramView = paramView.toString();
       }
       else
       {
-        ReportController.b(paramView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+        ReportController.b(paramView.b, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.b.f.uin);
         paramView = new StringBuilder();
         paramView.append("https://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&power=1&scode=");
-        paramView.append(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString);
+        paramView.append(this.b.g);
         paramView = paramView.toString();
       }
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+      ReportController.b(this.b.b, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.b.f.uin);
       paramView = new StringBuilder();
       paramView.append("https://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&scode=");
-      paramView.append(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString);
+      paramView.append(this.b.g);
       paramView = paramView.toString();
     }
     if (QLog.isColorLevel())
@@ -49,12 +49,12 @@ class AccountDetailGroupListContainer$19
       localStringBuilder.append(paramView);
       QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, localStringBuilder.toString());
     }
-    AccountDetailGroupListContainer.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, paramView);
+    AccountDetailGroupListContainer.c(this.b, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.19
  * JD-Core Version:    0.7.0.1
  */

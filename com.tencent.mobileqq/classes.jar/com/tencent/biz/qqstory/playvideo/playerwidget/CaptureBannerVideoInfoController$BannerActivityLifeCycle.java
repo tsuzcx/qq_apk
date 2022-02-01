@@ -28,12 +28,12 @@ public class CaptureBannerVideoInfoController$BannerActivityLifeCycle
         {
           if (str3.startsWith(str1))
           {
-            this.a.b();
+            this.a.d();
             return;
           }
           if (TextUtils.equals(str3, str2))
           {
-            this.a.c();
+            this.a.e();
             return;
           }
         }

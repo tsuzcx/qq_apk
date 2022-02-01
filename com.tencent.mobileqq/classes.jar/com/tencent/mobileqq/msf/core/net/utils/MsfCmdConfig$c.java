@@ -114,7 +114,7 @@ class MsfCmdConfig$c
         }
         else
         {
-          localObject4 = new File(paramList).listFiles(new d(this, (Pair)localObject3));
+          localObject4 = new File(paramList).listFiles(new e(this, (Pair)localObject3));
           localObject1 = paramList;
           if (localObject4 != null)
           {
@@ -186,7 +186,7 @@ class MsfCmdConfig$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.c
  * JD-Core Version:    0.7.0.1
  */

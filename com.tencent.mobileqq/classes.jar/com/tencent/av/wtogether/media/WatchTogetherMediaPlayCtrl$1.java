@@ -17,8 +17,8 @@ class WatchTogetherMediaPlayCtrl$1
         return;
       }
       WatchTogetherMediaPlayCtrl.a(this.this$0, localVideoSink2);
-      WatchTogetherMediaPlayCtrl.a(this.this$0);
-      WatchTogetherMediaPlayCtrl.a(this.this$0).a(WatchTogetherMediaPlayCtrl.a(this.this$0));
+      WatchTogetherMediaPlayCtrl.b(this.this$0);
+      WatchTogetherMediaPlayCtrl.c(this.this$0).a(WatchTogetherMediaPlayCtrl.a(this.this$0));
     }
   }
 }

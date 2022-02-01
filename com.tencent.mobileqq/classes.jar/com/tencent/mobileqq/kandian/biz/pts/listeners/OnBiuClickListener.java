@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.kandian.biz.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.util.ReadInjoyFeedsUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJFrameworkReportManager;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
@@ -18,7 +18,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
@@ -45,7 +44,7 @@ public class OnBiuClickListener
       paramActivity.putExtra("biu_src", 1);
       paramActivity.putExtra("arg_from_type", 1);
     }
-    if (RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo)) {
+    if (RIJItemViewTypeUtils.E(paramAbsBaseArticleInfo)) {
       paramActivity.putExtra("biu_src", 2);
     }
     if (ReadInjoyFeedsUtils.a(paramAbsBaseArticleInfo)) {
@@ -54,10 +53,10 @@ public class OnBiuClickListener
     return paramActivity;
   }
   
-  private void a()
+  private void b()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    Intent localIntent = a(localActivity, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    Activity localActivity = (Activity)this.b;
+    Intent localIntent = a(localActivity, this.a);
     int i = BiuBehaviour.a();
     boolean bool = true;
     if (i != 1) {
@@ -76,13 +75,13 @@ public class OnBiuClickListener
   protected void a(ViewBase paramViewBase)
   {
     QLog.d("OnBiuClickListener", 1, "click biu");
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.b()))
+    if ((this.a != null) && (this.a.mSocialFeedInfo != null) && (this.a.mSocialFeedInfo.d()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 0, 2131717988, 0).a();
+      QQToast.makeText(BaseApplicationImpl.sApplication, 0, 2131915468, 0).show();
       return;
     }
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)) {
-      RIJUserLevelModule.getInstance().doActionsByUserLevel(this.jdField_a_of_type_AndroidContentContext, 2, new OnBiuClickListener.1(this));
+    if (((this.b instanceof Activity)) && (this.a != null)) {
+      RIJUserLevelModule.getInstance().doActionsByUserLevel(this.b, 2, new OnBiuClickListener.1(this));
     }
   }
   
@@ -90,45 +89,42 @@ public class OnBiuClickListener
   {
     Object localObject = paramAbsBaseArticleInfo.mSocialFeedInfo;
     String str1;
-    if (ReadinjoyReportUtils.a(paramAbsBaseArticleInfo.mChannelID)) {
+    if (ReadinjoyReportUtils.d(paramAbsBaseArticleInfo.mChannelID)) {
       str1 = "0X8009361";
     } else {
       str1 = "0X8007EE4";
     }
     String str2 = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo);
-    IPublicAccountReportUtils localIPublicAccountReportUtils;
     long l1;
     long l2;
     if ((!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo)))
     {
-      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
       String str3 = paramAbsBaseArticleInfo.mSubscribeID;
-      l1 = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Long;
+      l1 = ((SocializeFeedsInfo)localObject).a;
       l2 = paramAbsBaseArticleInfo.mArticleID;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mStrategyId);
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str3, str1, str1, 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject).toString(), str2, false);
+      PublicAccountReportUtils.a(null, str3, str1, str1, 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject).toString(), str2, false);
       return;
     }
     if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo))
     {
-      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      l1 = ((SocializeFeedsInfo)localObject).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
-      l2 = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Long;
+      l1 = ((SocializeFeedsInfo)localObject).s.e;
+      l2 = ((SocializeFeedsInfo)localObject).a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mStrategyId);
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, String.valueOf(l1), str1, str1, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject).toString(), str2, false);
+      PublicAccountReportUtils.a(null, String.valueOf(l1), str1, str1, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject).toString(), str2, false);
     }
-    if ((!RIJFeedsType.s(paramAbsBaseArticleInfo)) && (!RIJFeedsType.t(paramAbsBaseArticleInfo))) {
+    if ((!RIJFeedsType.y(paramAbsBaseArticleInfo)) && (!RIJFeedsType.z(paramAbsBaseArticleInfo))) {
       RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, (int)paramAbsBaseArticleInfo.mChannelID);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnBiuClickListener
  * JD-Core Version:    0.7.0.1
  */

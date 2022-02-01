@@ -10,19 +10,18 @@ import com.tencent.qphone.base.util.QLog;
 public class MiniMultiForwardHelper
   implements ILifeCycleHelper
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private MiniPie jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public boolean a;
+  public boolean a = false;
+  private QQAppInterface b;
+  private Context c;
+  private MiniPie d;
+  private SessionInfo e;
   
   public MiniMultiForwardHelper(MiniPie paramMiniPie)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramMiniPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramMiniPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie = paramMiniPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramMiniPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.b = paramMiniPie.d;
+    this.c = paramMiniPie.b;
+    this.d = paramMiniPie;
+    this.e = paramMiniPie.c;
   }
   
   public String getTag()
@@ -46,28 +45,28 @@ public class MiniMultiForwardHelper
       if (paramInt != 11) {
         return;
       }
-      BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      BaseChatItemLayout.ad = this.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("RESUME mPreCheckBoxVisibleStat：=");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("  BaseChatItemLayout.CheckBoxVisible :");
-      localStringBuilder.append(BaseChatItemLayout.jdField_a_of_type_Boolean);
+      localStringBuilder.append(BaseChatItemLayout.ad);
       QLog.i("MiniMultiForwardHelper", 2, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
-    BaseChatItemLayout.jdField_a_of_type_Boolean = false;
+    this.a = BaseChatItemLayout.ad;
+    BaseChatItemLayout.ad = false;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("RESUME mPreCheckBoxVisibleStat：=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("  BaseChatItemLayout.CheckBoxVisible :");
-    localStringBuilder.append(BaseChatItemLayout.jdField_a_of_type_Boolean);
+    localStringBuilder.append(BaseChatItemLayout.ad);
     QLog.i("MiniMultiForwardHelper", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardHelper
  * JD-Core Version:    0.7.0.1
  */

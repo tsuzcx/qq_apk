@@ -16,15 +16,6 @@ public class AIOInputTypeHelper
   public static boolean c = false;
   private static boolean d = false;
   
-  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
-  {
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("sp_aio_input_helper_");
-    localStringBuilder.append(paramQQAppInterface.getAccount());
-    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
-  }
-  
   public static void a()
   {
     c = true;
@@ -38,7 +29,7 @@ public class AIOInputTypeHelper
       {
         if (!d)
         {
-          a = a(paramQQAppInterface).getBoolean("ptt_guide_have_show", true);
+          a = c(paramQQAppInterface).getBoolean("ptt_guide_have_show", true);
           d = true;
           return;
         }
@@ -48,7 +39,7 @@ public class AIOInputTypeHelper
   }
   
   @TargetApi(9)
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static boolean b(QQAppInterface paramQQAppInterface)
   {
     if (!d) {
       a(paramQQAppInterface);
@@ -69,10 +60,19 @@ public class AIOInputTypeHelper
     }
     return bool1;
   }
+  
+  public static SharedPreferences c(QQAppInterface paramQQAppInterface)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_aio_input_helper_");
+    localStringBuilder.append(paramQQAppInterface.getAccount());
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOInputTypeHelper
  * JD-Core Version:    0.7.0.1
  */

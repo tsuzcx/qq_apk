@@ -3,20 +3,14 @@ package com.tencent.mobileqq.activity.photo.incompatiblephoto;
 public class PhotoWebp
   extends PhotoIncompatibleBase
 {
-  private static final byte[] a;
-  private static final byte[] b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = "WEBP".getBytes();
-    jdField_b_of_type_ArrayOfByte = "RIFF".getBytes();
-  }
+  private static final byte[] d = "WEBP".getBytes();
+  private static final byte[] e = "RIFF".getBytes();
   
   public PhotoWebp(String paramString)
   {
     super(paramString);
-    this.jdField_a_of_type_JavaLangString = "PhotoIncompatibleWebp";
-    this.jdField_b_of_type_JavaLangString = "reportGenerateWebp";
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateWebp";
   }
   
   /* Error */
@@ -30,14 +24,14 @@ public class PhotoWebp
     //   7: astore 6
     //   9: aconst_null
     //   10: astore 4
-    //   12: new 44	java/io/FileInputStream
+    //   12: new 46	java/io/FileInputStream
     //   15: dup
     //   16: aload_0
-    //   17: invokespecial 45	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 47	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   20: astore_0
     //   21: aload_0
     //   22: aload 5
-    //   24: invokevirtual 49	java/io/FileInputStream:read	([B)I
+    //   24: invokevirtual 51	java/io/FileInputStream:read	([B)I
     //   27: pop
     //   28: aload 5
     //   30: arraylength
@@ -46,21 +40,21 @@ public class PhotoWebp
     //   33: bipush 12
     //   35: if_icmpge +16 -> 51
     //   38: aload_0
-    //   39: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   39: invokevirtual 54	java/io/FileInputStream:close	()V
     //   42: iconst_0
     //   43: ireturn
     //   44: astore_0
     //   45: aload_0
-    //   46: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   46: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   49: iconst_0
     //   50: ireturn
     //   51: iconst_0
     //   52: istore_1
     //   53: iload_1
-    //   54: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_b_of_type_ArrayOfByte	[B
+    //   54: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:e	[B
     //   57: arraylength
     //   58: if_icmpge +39 -> 97
-    //   61: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_b_of_type_ArrayOfByte	[B
+    //   61: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:e	[B
     //   64: iload_1
     //   65: baload
     //   66: istore_2
@@ -72,12 +66,12 @@ public class PhotoWebp
     //   73: iload_3
     //   74: if_icmpeq +16 -> 90
     //   77: aload_0
-    //   78: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   78: invokevirtual 54	java/io/FileInputStream:close	()V
     //   81: iconst_0
     //   82: ireturn
     //   83: astore_0
     //   84: aload_0
-    //   85: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   85: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   88: iconst_0
     //   89: ireturn
     //   90: iload_1
@@ -90,7 +84,7 @@ public class PhotoWebp
     //   100: iload_1
     //   101: bipush 12
     //   103: if_icmpge +42 -> 145
-    //   106: getstatic 19	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_a_of_type_ArrayOfByte	[B
+    //   106: getstatic 19	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:d	[B
     //   109: iload_1
     //   110: bipush 8
     //   112: isub
@@ -104,12 +98,12 @@ public class PhotoWebp
     //   121: iload_3
     //   122: if_icmpeq +16 -> 138
     //   125: aload_0
-    //   126: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   126: invokevirtual 54	java/io/FileInputStream:close	()V
     //   129: iconst_0
     //   130: ireturn
     //   131: astore_0
     //   132: aload_0
-    //   133: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   133: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   136: iconst_0
     //   137: ireturn
     //   138: iload_1
@@ -118,11 +112,11 @@ public class PhotoWebp
     //   141: istore_1
     //   142: goto -42 -> 100
     //   145: aload_0
-    //   146: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   146: invokevirtual 54	java/io/FileInputStream:close	()V
     //   149: goto +8 -> 157
     //   152: astore_0
     //   153: aload_0
-    //   154: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   154: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   157: iconst_1
     //   158: ireturn
     //   159: astore 4
@@ -141,26 +135,26 @@ public class PhotoWebp
     //   186: aload_0
     //   187: astore 4
     //   189: aload 5
-    //   191: invokevirtual 56	java/lang/Exception:printStackTrace	()V
+    //   191: invokevirtual 58	java/lang/Exception:printStackTrace	()V
     //   194: aload_0
     //   195: ifnull +14 -> 209
     //   198: aload_0
-    //   199: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   199: invokevirtual 54	java/io/FileInputStream:close	()V
     //   202: iconst_0
     //   203: ireturn
     //   204: astore_0
     //   205: aload_0
-    //   206: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   206: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   209: iconst_0
     //   210: ireturn
     //   211: aload_0
     //   212: ifnull +15 -> 227
     //   215: aload_0
-    //   216: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   216: invokevirtual 54	java/io/FileInputStream:close	()V
     //   219: goto +8 -> 227
     //   222: astore_0
     //   223: aload_0
-    //   224: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   224: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   227: goto +6 -> 233
     //   230: aload 4
     //   232: athrow
@@ -200,7 +194,7 @@ public class PhotoWebp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.incompatiblephoto.PhotoWebp
  * JD-Core Version:    0.7.0.1
  */

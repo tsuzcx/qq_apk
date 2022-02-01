@@ -18,25 +18,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import mqq.util.LogUtil;
 
 public class TroopFileDataCenter
 {
-  static long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<UUID, TroopFileTransferManager.Item> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
+  static long a;
+  private QQAppInterface b;
+  private long c;
+  private Map<UUID, TroopFileTransferManager.Item> d;
+  private boolean e;
   
   @Deprecated
   private void a()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.e;
       if (bool) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.b).iterator();
+      Iterator localIterator = this.b.getProxyManager().f().a(this.c).iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (TroopFileTansferItemEntity)localIterator.next();
@@ -53,11 +54,11 @@ public class TroopFileDataCenter
           else {
             ((TroopFileTransferManager.Item)localObject2).Status = 3;
           }
-          this.jdField_a_of_type_JavaUtilMap.put(((TroopFileTransferManager.Item)localObject2).Id, localObject2);
+          this.d.put(((TroopFileTransferManager.Item)localObject2).Id, localObject2);
         }
       }
       ThreadManager.post(new TroopFileDataCenter.2(this), 8, null, true);
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
       return;
     }
     finally {}
@@ -75,19 +76,19 @@ public class TroopFileDataCenter
     }
     if (paramItem.troopuin == 0L)
     {
-      int i = TroopFileTransferUtil.Log.a;
+      int i = TroopFileTransferUtil.Log.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("saveStatus. item.troopuin=0, change to:");
-      localStringBuilder.append(paramLong);
+      localStringBuilder.append(LogUtil.wrapLogUin(String.valueOf(paramLong)));
       TroopFileTransferUtil.Log.b("TroopFileDataCenter", i, localStringBuilder.toString());
       paramItem.troopuin = paramLong;
     }
     if (paramItem.troopuin == 0L)
     {
-      TroopFileTransferUtil.Log.a("TroopFileDataCenter", TroopFileTransferUtil.Log.a, "saveStatus. item.troopuin=0 err");
+      TroopFileTransferUtil.Log.a("TroopFileDataCenter", TroopFileTransferUtil.Log.b, "saveStatus. item.troopuin=0 err");
       return;
     }
-    localQQAppInterface.getProxyManager().a().a(paramItem);
+    localQQAppInterface.getProxyManager().f().a(paramItem);
   }
   
   public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
@@ -130,7 +131,7 @@ public class TroopFileDataCenter
     }
     paramItem.IsNewStatus = bool;
     paramItem.Status = paramInt;
-    paramItem.ErrorCode = paramSimpleErrorInfo.a;
+    paramItem.ErrorCode = paramSimpleErrorInfo.b;
     paramItem.Pausing = 0;
     if (paramItem.W2MPause == 1) {
       paramItem.W2MPause = 0;
@@ -142,12 +143,32 @@ public class TroopFileDataCenter
     TroopFileError.a(TroopFileTransferUtil.a(), paramSimpleErrorInfo);
   }
   
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem)
+  {
+    long l1 = SystemClock.uptimeMillis() - a;
+    long l2 = SystemClock.uptimeMillis() - paramItem.StatusUpdateTimeMs;
+    if ((a == 0L) || (paramItem.StatusUpdateTimeMs == 0L) || (l2 > 5000L) || (l2 < 0L) || (l1 > 1000L) || (l1 < 0L))
+    {
+      a += l1;
+      paramItem.StatusUpdateTimeMs += l2;
+      QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
+      if (localQQAppInterface != null) {
+        ((TroopFileHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).a(paramItem.getInfo(paramLong));
+      }
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    TroopFileError.a(TroopFileTransferUtil.a(), paramLong, paramItem.FileName, paramItem.Status, paramInt);
+  }
+  
   @Deprecated
-  private boolean a()
+  private boolean b()
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilMap.values();
+      Object localObject1 = this.d.values();
       localObject1 = ((Collection)localObject1).iterator();
       boolean bool1 = false;
       while (((Iterator)localObject1).hasNext())
@@ -169,28 +190,28 @@ public class TroopFileDataCenter
               if (new VFSFile(localItem.LocalFile).exists()) {
                 break label156;
               }
-              a(this.b, localItem, 7);
+              a(this.c, localItem, 7);
             }
             else
             {
-              a(this.b, localItem, 7);
+              a(this.c, localItem, 7);
             }
             bool2 = true;
           }
           label156:
-          if ((localItem.HasThumbnailFile_Small) && (!TroopFileThumbnailMgr.a(this.b, localItem, 128))) {}
+          if ((localItem.HasThumbnailFile_Small) && (!TroopFileThumbnailMgr.b(this.c, localItem, 128))) {}
           for (;;)
           {
             bool1 = true;
             break;
-            if ((!localItem.HasThumbnailFile_Large) || (TroopFileThumbnailMgr.a(this.b, localItem, 640)))
+            if ((!localItem.HasThumbnailFile_Large) || (TroopFileThumbnailMgr.b(this.c, localItem, 640)))
             {
               bool1 = bool2;
               if (!localItem.HasThumbnailFile_Middle) {
                 break;
               }
               bool1 = bool2;
-              if (TroopFileThumbnailMgr.a(this.b, localItem, 383)) {
+              if (TroopFileThumbnailMgr.b(this.c, localItem, 383)) {
                 break;
               }
             }
@@ -205,30 +226,10 @@ public class TroopFileDataCenter
       throw localObject2;
     }
   }
-  
-  public static void b(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    long l1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
-    long l2 = SystemClock.uptimeMillis() - paramItem.StatusUpdateTimeMs;
-    if ((jdField_a_of_type_Long == 0L) || (paramItem.StatusUpdateTimeMs == 0L) || (l2 > 5000L) || (l2 < 0L) || (l1 > 1000L) || (l1 < 0L))
-    {
-      jdField_a_of_type_Long += l1;
-      paramItem.StatusUpdateTimeMs += l2;
-      QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-      if (localQQAppInterface != null) {
-        ((TroopFileHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).a(paramItem.getInfo(paramLong));
-      }
-    }
-  }
-  
-  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    TroopFileError.a(TroopFileTransferUtil.a(), paramLong, paramItem.FileName, paramItem.Status, paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileDataCenter
  * JD-Core Version:    0.7.0.1
  */

@@ -204,7 +204,7 @@ public class SubAccountServiceImpl
     localSubAccountMessage.senderuin = String.valueOf(13002L);
     localSubAccountMessage.subUin = paramString;
     localSubAccountMessage.istroop = 1;
-    localSubAccountMessage.sendername = HardCodeUtil.a(2131719336);
+    localSubAccountMessage.sendername = HardCodeUtil.a(2131916888);
     localSubAccountMessage.msg = "";
     return localSubAccountMessage;
   }
@@ -2313,18 +2313,18 @@ public class SubAccountServiceImpl
         localObject2 = (SubAccountInfo)paramString.next();
         if ((localObject2 != null) && (!TextUtils.isEmpty(((SubAccountInfo)localObject2).subuin)) && (((SubAccountInfo)localObject2).status == 1))
         {
-          ISubAccountControlService.SubAccountUnReadItem localSubAccountUnReadItem = SubAccountControllUtil.a(this.mApp, ((SubAccountInfo)localObject2).subuin);
+          ISubAccountControlService.SubAccountUnReadItem localSubAccountUnReadItem = SubAccountControllUtil.k(this.mApp, ((SubAccountInfo)localObject2).subuin);
           j = ((IConversationFacade)localObject1).getUnreadCount(((SubAccountInfo)localObject2).subuin, 7000);
           int k = ((IConversationFacade)localObject1).getUnreadCountFromExtInt2(((SubAccountInfo)localObject2).subuin, 7000);
           Object localObject3;
-          if ((!localSubAccountUnReadItem.jdField_a_of_type_Boolean) && (j != localSubAccountUnReadItem.jdField_a_of_type_Int))
+          if ((!localSubAccountUnReadItem.b) && (j != localSubAccountUnReadItem.a))
           {
-            ((IConversationFacade)localObject1).increaseUnread(((SubAccountInfo)localObject2).subuin, 7000, localSubAccountUnReadItem.jdField_a_of_type_Int - j);
+            ((IConversationFacade)localObject1).increaseUnread(((SubAccountInfo)localObject2).subuin, 7000, localSubAccountUnReadItem.a - j);
           }
-          else if ((localSubAccountUnReadItem.jdField_a_of_type_Boolean) && (localSubAccountUnReadItem.jdField_a_of_type_Int != k))
+          else if ((localSubAccountUnReadItem.b) && (localSubAccountUnReadItem.a != k))
           {
             localObject3 = ((SubAccountInfo)localObject2).subuin;
-            if (localSubAccountUnReadItem.jdField_a_of_type_Int > 0) {
+            if (localSubAccountUnReadItem.a > 0) {
               i = 1;
             } else {
               i = 0;
@@ -2341,9 +2341,9 @@ public class SubAccountServiceImpl
             ((StringBuilder)localObject3).append(" anotherTroopUnread=");
             ((StringBuilder)localObject3).append(k);
             ((StringBuilder)localObject3).append(" item.showRedDot=");
-            ((StringBuilder)localObject3).append(localSubAccountUnReadItem.jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject3).append(localSubAccountUnReadItem.b);
             ((StringBuilder)localObject3).append(" item.unReadCount=");
-            ((StringBuilder)localObject3).append(localSubAccountUnReadItem.jdField_a_of_type_Int);
+            ((StringBuilder)localObject3).append(localSubAccountUnReadItem.a);
             QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject3).toString());
           }
         }
@@ -2641,19 +2641,19 @@ public class SubAccountServiceImpl
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("data.mMainAccount=");
-        ((StringBuilder)localObject1).append(paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramSubAccountBackProtocData.c);
         ((StringBuilder)localObject1).append(" data.mSubUin=");
-        ((StringBuilder)localObject1).append(paramSubAccountBackProtocData.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramSubAccountBackProtocData.d);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       ((StringBuilder)localObject3).append((String)localObject1);
       QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject3).toString());
     }
-    if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString != null) && (paramSubAccountBackProtocData.c()))
+    if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.c != null) && (paramSubAccountBackProtocData.e()))
     {
-      localObject3 = paramSubAccountBackProtocData.a();
-      localObject1 = paramSubAccountBackProtocData.c();
-      ArrayList localArrayList1 = paramSubAccountBackProtocData.b();
+      localObject3 = paramSubAccountBackProtocData.b();
+      localObject1 = paramSubAccountBackProtocData.f();
+      ArrayList localArrayList1 = paramSubAccountBackProtocData.d();
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -2682,7 +2682,7 @@ public class SubAccountServiceImpl
               break;
             }
             localObject1 = (SubAccountInfo)localIterator2.next();
-          } while ((!paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString.equals(((SubAccountInfo)localObject1).trunkuin)) || (!str.equals(((SubAccountInfo)localObject1).subuin)));
+          } while ((!paramSubAccountBackProtocData.c.equals(((SubAccountInfo)localObject1).trunkuin)) || (!str.equals(((SubAccountInfo)localObject1).subuin)));
           localObject2 = localObject1;
           if (localObject1 == null)
           {
@@ -2690,9 +2690,9 @@ public class SubAccountServiceImpl
             this.listSubInfo.add(localObject2);
           }
           ((SubAccountInfo)localObject2).subuin = str;
-          ((SubAccountInfo)localObject2).trunkuin = paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString;
-          ((SubAccountInfo)localObject2).serverErrorType = paramSubAccountBackProtocData.jdField_b_of_type_Int;
-          ((SubAccountInfo)localObject2).serverErrorMsg = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
+          ((SubAccountInfo)localObject2).trunkuin = paramSubAccountBackProtocData.c;
+          ((SubAccountInfo)localObject2).serverErrorType = paramSubAccountBackProtocData.i;
+          ((SubAccountInfo)localObject2).serverErrorMsg = paramSubAccountBackProtocData.b;
           if ((localObject3 != null) && (((ArrayList)localObject3).contains(str)))
           {
             ((SubAccountInfo)localObject2).hintIsNew = true;
@@ -2745,9 +2745,9 @@ public class SubAccountServiceImpl
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("data.mMainAccount=");
-        ((StringBuilder)localObject2).append(paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(paramSubAccountBackProtocData.c);
         ((StringBuilder)localObject2).append(" data.mSubUin=");
-        ((StringBuilder)localObject2).append(paramSubAccountBackProtocData.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(paramSubAccountBackProtocData.d);
         paramSubAccountBackProtocData = ((StringBuilder)localObject2).toString();
       }
       ((StringBuilder)localObject1).append(paramSubAccountBackProtocData);
@@ -2921,10 +2921,10 @@ public class SubAccountServiceImpl
       ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, paramString1 });
       ((IAppBadgeService)paramAppInterface.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
       paramAppInterface = new SubAccountBackProtocData();
-      paramAppInterface.jdField_c_of_type_JavaLangString = paramString1;
-      paramAppInterface.jdField_c_of_type_Boolean = true;
-      paramAppInterface.d = true;
-      paramAppInterface.jdField_a_of_type_Int = 0;
+      paramAppInterface.d = paramString1;
+      paramAppInterface.l = true;
+      paramAppInterface.m = true;
+      paramAppInterface.a = 0;
       ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).notifyBusinessMessage(8003, true, paramAppInterface);
       return;
     }
@@ -2940,7 +2940,7 @@ public class SubAccountServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountServiceImpl
  * JD-Core Version:    0.7.0.1
  */

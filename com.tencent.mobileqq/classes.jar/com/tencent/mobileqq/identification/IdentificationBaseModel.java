@@ -7,10 +7,10 @@ import android.support.annotation.RequiresApi;
 
 public class IdentificationBaseModel
 {
-  static String[] a = { "libopencv_tinyworld.so", "libYTFaceTracker.so", "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so" };
-  static String[] b = { "YTCommon" };
+  static String[] c = { "libopencv_tinyworld.so", "libYTFaceTracker.so", "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so" };
+  static String[] d = { "YTCommon" };
   protected IFaceController a;
-  protected RequestListener a;
+  protected RequestListener b;
   
   @RequiresApi(api=18)
   public static IdentificationBaseModel a(int paramInt, Intent paramIntent, RequestListener paramRequestListener)
@@ -39,7 +39,7 @@ public class IdentificationBaseModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationBaseModel
  * JD-Core Version:    0.7.0.1
  */

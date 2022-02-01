@@ -21,12 +21,12 @@ final class XAEngine$initZipAsync$1
     if (localObject2 == null) {
       Intrinsics.throwNpe();
     }
-    localObject1 = ((FileUtil.Companion)localObject1).a((Context)localObject2, this.jdField_a_of_type_JavaLangString, false);
+    localObject1 = ((FileUtil.Companion)localObject1).a((Context)localObject2, this.a, false);
     if (localObject1 == null)
     {
       localObject1 = this.this$0;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append(" 资源不存在");
       ((XAEngine)localObject1).logd("XAEngine", 1, ((StringBuilder)localObject2).toString());
       return;
@@ -36,12 +36,12 @@ final class XAEngine$initZipAsync$1
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append("/xa.json");
-    ((XAEngine)localObject2).initFromFileAsync(localStringBuilder.toString(), this.jdField_a_of_type_KotlinJvmFunctionsFunction0);
+    ((XAEngine)localObject2).initFromFileAsync(localStringBuilder.toString(), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.XAEngine.initZipAsync.1
  * JD-Core Version:    0.7.0.1
  */

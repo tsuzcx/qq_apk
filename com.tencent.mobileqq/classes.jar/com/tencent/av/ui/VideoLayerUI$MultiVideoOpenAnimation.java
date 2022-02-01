@@ -7,20 +7,20 @@ import com.tencent.av.app.VideoAppInterface;
 public class VideoLayerUI$MultiVideoOpenAnimation
   implements Runnable
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
+  private int a = 0;
   private int b = 0;
+  private float c = 0.0F;
   
   public VideoLayerUI$MultiVideoOpenAnimation(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
-    Rect localRect = paramVideoLayerUI.b();
-    this.jdField_a_of_type_Float = (localRect.width() / 10.0F);
+    this.a = paramInt;
+    paramVideoLayerUI = paramVideoLayerUI.ae[this.a];
+    Rect localRect = paramVideoLayerUI.f();
+    this.c = (localRect.width() / 10.0F);
     paramInt = localRect.right;
     int i = localRect.width();
-    paramVideoLayerUI.b(paramInt, localRect.top, i + paramInt, localRect.bottom);
-    paramVideoLayerUI.b();
+    paramVideoLayerUI.c(paramInt, localRect.top, i + paramInt, localRect.bottom);
+    paramVideoLayerUI.m();
   }
   
   public void run()
@@ -31,16 +31,16 @@ public class VideoLayerUI$MultiVideoOpenAnimation
     }
     else
     {
-      GLVideoView localGLVideoView = this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
-      Rect localRect = localGLVideoView.b();
-      int i = (int)(localRect.left - this.jdField_a_of_type_Float);
+      GLVideoView localGLVideoView = this.this$0.ae[this.a];
+      Rect localRect = localGLVideoView.f();
+      int i = (int)(localRect.left - this.c);
       int j = localRect.width();
-      localGLVideoView.b(i, localRect.top, j + i, localRect.bottom);
-      localGLVideoView.b();
+      localGLVideoView.c(i, localRect.top, j + i, localRect.bottom);
+      localGLVideoView.m();
     }
     this.b += 1;
     if (this.b <= 9) {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
+      this.this$0.Y.a().postDelayed(this, 30L);
     }
   }
 }

@@ -8,19 +8,19 @@ final class RippleDrawableCompat$RippleDrawableCompatState
   extends Drawable.ConstantState
 {
   @NonNull
-  MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  boolean jdField_a_of_type_Boolean;
+  MaterialShapeDrawable a;
+  boolean b;
   
   public RippleDrawableCompat$RippleDrawableCompatState(@NonNull RippleDrawableCompatState paramRippleDrawableCompatState)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = ((MaterialShapeDrawable)paramRippleDrawableCompatState.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.getConstantState().newDrawable());
-    this.jdField_a_of_type_Boolean = paramRippleDrawableCompatState.jdField_a_of_type_Boolean;
+    this.a = ((MaterialShapeDrawable)paramRippleDrawableCompatState.a.getConstantState().newDrawable());
+    this.b = paramRippleDrawableCompatState.b;
   }
   
   public RippleDrawableCompat$RippleDrawableCompatState(MaterialShapeDrawable paramMaterialShapeDrawable)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = paramMaterialShapeDrawable;
-    this.jdField_a_of_type_Boolean = false;
+    this.a = paramMaterialShapeDrawable;
+    this.b = false;
   }
   
   @NonNull
@@ -36,7 +36,7 @@ final class RippleDrawableCompat$RippleDrawableCompatState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.ripple.RippleDrawableCompat.RippleDrawableCompatState
  * JD-Core Version:    0.7.0.1
  */

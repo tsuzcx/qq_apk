@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.util.Vector;
 
 public class TXCRTMPDownloader
@@ -42,9 +42,9 @@ public class TXCRTMPDownloader
     if (!this.mIsRunning) {
       return;
     }
-    if ((this.mIsPlayRtmpAccStream) && (this.mLastNetworkType != f.e(this.mApplicationContext)))
+    if ((this.mIsPlayRtmpAccStream) && (this.mLastNetworkType != h.e(this.mApplicationContext)))
     {
-      this.mLastNetworkType = f.e(this.mApplicationContext);
+      this.mLastNetworkType = h.e(this.mApplicationContext);
       if (this.mRestartListener != null) {
         this.mRestartListener.onRestartDownloader();
       }
@@ -217,6 +217,7 @@ public class TXCRTMPDownloader
     Bundle localBundle = new Bundle();
     localBundle.putString("EVT_MSG", paramString);
     localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+    localBundle.putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
     if (this.mNotifyListener != null) {
       this.mNotifyListener.onNotifyEvent(paramInt, localBundle);
     }
@@ -310,7 +311,7 @@ public class TXCRTMPDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXCRTMPDownloader
  * JD-Core Version:    0.7.0.1
  */

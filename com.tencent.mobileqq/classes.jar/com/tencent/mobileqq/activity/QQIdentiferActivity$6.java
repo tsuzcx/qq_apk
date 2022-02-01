@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import mqq.os.MqqHandler;
-
 class QQIdentiferActivity$6
   implements Runnable
 {
@@ -11,17 +9,15 @@ class QQIdentiferActivity$6
   {
     if (QQIdentiferActivity.access$500(this.this$0))
     {
-      this.this$0.showSuccessResult();
-      QQIdentiferActivity.access$700(this.this$0).sendEmptyMessageDelayed(3, QQIdentiferActivity.access$600(this.this$0));
+      QQIdentiferActivity.access$600(this.this$0);
       return;
     }
-    QQIdentiferActivity localQQIdentiferActivity = this.this$0;
-    localQQIdentiferActivity.showFailedResult(QQIdentiferActivity.access$800(localQQIdentiferActivity));
+    QQIdentiferActivity.access$700(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,17 @@ class MultiIncomingCallUICtr$5
   
   public void run()
   {
-    String str = UITools.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
-    if (this.this$0.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)
+    String str = UITools.a(this.this$0.D.z());
+    if (this.this$0.o != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(str);
-      if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L)
+      this.this$0.o.a(str);
+      if (this.this$0.D.z() % 60L >= 1L)
       {
-        this.this$0.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
+        this.this$0.o.a();
         this.this$0.a();
         return;
       }
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+      this.this$0.c.a().postDelayed(this, 1000L);
     }
   }
 }

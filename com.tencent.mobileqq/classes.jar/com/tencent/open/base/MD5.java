@@ -164,15 +164,6 @@ public class MD5
     return "";
   }
   
-  public static String a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null) {
-      return "";
-    }
-    return a(paramString);
-  }
-  
   public static String a(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16))
@@ -203,31 +194,31 @@ public class MD5
     //   2: invokestatic 79	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore_1
     //   6: aload_0
-    //   7: ldc 114
-    //   9: invokevirtual 117	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   7: ldc 111
+    //   9: invokevirtual 114	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   12: astore_0
     //   13: aload_1
     //   14: aload_0
-    //   15: invokevirtual 120	java/security/MessageDigest:digest	([B)[B
+    //   15: invokevirtual 117	java/security/MessageDigest:digest	([B)[B
     //   18: areturn
     //   19: astore_0
     //   20: aload_0
-    //   21: invokevirtual 121	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   24: ldc 123
-    //   26: ldc 125
-    //   28: invokestatic 131	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokevirtual 118	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   24: ldc 120
+    //   26: ldc 122
+    //   28: invokestatic 128	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   31: aconst_null
     //   32: areturn
     //   33: astore_0
     //   34: aload_0
-    //   35: invokevirtual 132	java/lang/Exception:printStackTrace	()V
-    //   38: ldc 123
-    //   40: ldc 134
-    //   42: invokestatic 131	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: invokevirtual 129	java/lang/Exception:printStackTrace	()V
+    //   38: ldc 120
+    //   40: ldc 131
+    //   42: invokestatic 128	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   45: aconst_null
     //   46: areturn
     //   47: aload_0
-    //   48: invokevirtual 135	java/lang/Throwable:printStackTrace	()V
+    //   48: invokevirtual 132	java/lang/Throwable:printStackTrace	()V
     //   51: aconst_null
     //   52: areturn
     //   53: astore_0
@@ -246,10 +237,19 @@ public class MD5
     //   20	31	53	java/lang/Throwable
     //   34	45	53	java/lang/Throwable
   }
+  
+  public static String b(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString == null) {
+      return "";
+    }
+    return a(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.MD5
  * JD-Core Version:    0.7.0.1
  */

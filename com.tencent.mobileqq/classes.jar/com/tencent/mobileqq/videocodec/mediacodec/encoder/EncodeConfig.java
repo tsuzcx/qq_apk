@@ -6,46 +6,43 @@ import com.tencent.mobileqq.videocodec.mediacodec.util.ThumbnailUtil.ThumbConfig
 
 public class EncodeConfig
 {
-  public int a;
   public EGLContext a;
-  public MuxerDataListener a;
-  public MediaMuxerWrapper a;
-  public ThumbnailUtil.ThumbConfig a;
-  public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
   public int c;
-  public String c;
-  public boolean c;
   public int d;
-  public String d;
-  public boolean d;
-  public int e = 8;
-  public int f;
-  public int g;
-  public int h = 0;
-  public int i = -1;
-  public int j = -1;
+  public int e;
+  public int f = 30;
+  public int g = 8;
+  public int h;
+  public boolean i;
+  public String j;
+  public String k;
+  public int l;
+  public int m = 0;
+  public boolean n = false;
+  public String o;
+  public int p = -1;
+  public int q = -1;
+  public boolean r;
+  public MediaMuxerWrapper s;
+  public MuxerDataListener t;
+  public boolean u = true;
+  public ThumbnailUtil.ThumbConfig v;
   
   public EncodeConfig(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean1, int paramInt7, String paramString2, String paramString3, String paramString4, boolean paramBoolean2)
   {
-    this.jdField_d_of_type_Int = 30;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.e = paramInt4;
-    this.f = paramInt6;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_Int = paramInt5;
-    this.g = paramInt7;
-    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.b = paramString1;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.g = paramInt4;
+    this.h = paramInt6;
+    this.i = paramBoolean1;
+    this.j = paramString2;
+    this.k = paramString3;
+    this.f = paramInt5;
+    this.l = paramInt7;
+    this.o = paramString4;
   }
   
   public EncodeConfig(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
@@ -55,58 +52,58 @@ public class EncodeConfig
   
   public EGLContext a()
   {
-    return this.jdField_a_of_type_AndroidOpenglEGLContext;
+    return this.a;
   }
   
   public void a(EGLContext paramEGLContext)
   {
-    this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+    this.a = paramEGLContext;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("EncodeConfig{sharedContext=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidOpenglEGLContext);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", outputFilePath='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", width='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", height='");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", bitRate='");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", frameRate='");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", iFrameInterval='");
     localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", filterType=");
+    localStringBuilder.append(", frameRate='");
     localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iFrameInterval='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", filterType=");
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", needGenerateThumb=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", watermarkPath='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mosaicPath='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(", orientation=");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", adjustRotation=");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.encoder.EncodeConfig
  * JD-Core Version:    0.7.0.1
  */

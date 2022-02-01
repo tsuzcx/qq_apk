@@ -13,15 +13,15 @@ class QFileConfigManager$1
     if (this.a != null)
     {
       QFileConfigManager.a(this.this$0);
-      QFileConfigManager.a(this.this$0).clear();
-      QFileConfigManager.a(this.this$0).putAll(this.a);
+      QFileConfigManager.b(this.this$0).clear();
+      QFileConfigManager.b(this.this$0).putAll(this.a);
       QLog.i("QFileConfigManager", 1, "setFileDownloadConfig: set download config. ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

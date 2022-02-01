@@ -19,52 +19,52 @@ public class MsgProcessMixed
     super(paramMessageRecord);
   }
   
-  protected int a()
+  public void a()
   {
-    return 1;
+    Iterator localIterator = ((IMsgMixed)QRoute.api(IMsgMixed.class)).getElementList(this.b).iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord instanceof MessageForPic)) {
+        RichMediaProcessor.b(localMessageRecord).a();
+      }
+    }
   }
   
-  public List<MsgBackupResEntity> a()
+  public List<MsgBackupResEntity> b()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((IMsgMixed)QRoute.api(IMsgMixed.class)).getElementList(this.a).iterator();
+    Iterator localIterator = ((IMsgMixed)QRoute.api(IMsgMixed.class)).getElementList(this.b).iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (MessageRecord)localIterator.next();
       if ((localObject instanceof MessageForPic))
       {
-        localObject = RichMediaProcessor.a((MessageRecord)localObject);
-        ((MsgProcessRichMedia)localObject).a(this.a);
-        localArrayList.addAll(((MsgProcessRichMedia)localObject).a());
+        localObject = RichMediaProcessor.b((MessageRecord)localObject);
+        ((MsgProcessRichMedia)localObject).a(this.b);
+        localArrayList.addAll(((MsgProcessRichMedia)localObject).b());
       }
     }
     return localArrayList;
   }
   
-  public void a()
+  protected int c()
   {
-    Iterator localIterator = ((IMsgMixed)QRoute.api(IMsgMixed.class)).getElementList(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        RichMediaProcessor.a(localMessageRecord).a();
-      }
-    }
+    return 1;
   }
   
-  public void b()
+  public void d()
   {
-    if (this.a.isSendFromLocal())
+    if (this.b.isSendFromLocal())
     {
-      this.a.issend = 2;
-      ((MessageForRichText)this.a).prewriteForMsgbackup();
+      this.b.issend = 2;
+      ((MessageForRichText)this.b).prewriteForMsgbackup();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessMixed
  * JD-Core Version:    0.7.0.1
  */

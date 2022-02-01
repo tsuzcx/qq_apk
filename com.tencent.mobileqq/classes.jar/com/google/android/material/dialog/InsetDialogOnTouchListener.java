@@ -15,26 +15,26 @@ import androidx.annotation.RestrictTo;
 public class InsetDialogOnTouchListener
   implements View.OnTouchListener
 {
-  private final int jdField_a_of_type_Int;
   @NonNull
-  private final Dialog jdField_a_of_type_AndroidAppDialog;
+  private final Dialog a;
   private final int b;
   private final int c;
+  private final int d;
   
   public InsetDialogOnTouchListener(@NonNull Dialog paramDialog, @NonNull Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    this.jdField_a_of_type_Int = paramRect.left;
-    this.b = paramRect.top;
-    this.c = ViewConfiguration.get(paramDialog.getContext()).getScaledWindowTouchSlop();
+    this.a = paramDialog;
+    this.b = paramRect.left;
+    this.c = paramRect.top;
+    this.d = ViewConfiguration.get(paramDialog.getContext()).getScaledWindowTouchSlop();
   }
   
   public boolean onTouch(@NonNull View paramView, @NonNull MotionEvent paramMotionEvent)
   {
     Object localObject = paramView.findViewById(16908290);
-    int i = this.jdField_a_of_type_Int + ((View)localObject).getLeft();
+    int i = this.b + ((View)localObject).getLeft();
     int j = ((View)localObject).getWidth();
-    int k = this.b + ((View)localObject).getTop();
+    int k = this.c + ((View)localObject).getTop();
     int m = ((View)localObject).getHeight();
     if (new RectF(i, k, j + i, m + k).contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
       return false;
@@ -46,16 +46,16 @@ public class InsetDialogOnTouchListener
     if (Build.VERSION.SDK_INT < 28)
     {
       ((MotionEvent)localObject).setAction(0);
-      i = this.c;
+      i = this.d;
       ((MotionEvent)localObject).setLocation(-i - 1, -i - 1);
     }
     paramView.performClick();
-    return this.jdField_a_of_type_AndroidAppDialog.onTouchEvent((MotionEvent)localObject);
+    return this.a.onTouchEvent((MotionEvent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.dialog.InsetDialogOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

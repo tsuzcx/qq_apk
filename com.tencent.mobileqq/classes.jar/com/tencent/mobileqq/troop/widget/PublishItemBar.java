@@ -13,13 +13,13 @@ public class PublishItemBar
   extends LinearLayout
   implements View.OnClickListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private boolean jdField_b_of_type_Boolean = false;
-  private Handler jdField_c_of_type_AndroidOsHandler;
-  private boolean jdField_c_of_type_Boolean = false;
+  private boolean a = false;
+  private boolean b = false;
+  private boolean c = false;
   private Handler d;
+  private Handler e;
+  private Handler f;
+  private Handler g;
   
   public PublishItemBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,7 +29,7 @@ public class PublishItemBar
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+    if ((localObject != null) && (this.d != null))
     {
       int i = ((Integer)localObject).intValue();
       if (i != 1)
@@ -41,13 +41,13 @@ public class PublishItemBar
             if (i != 4)
             {
               if (i == 5) {
-                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+                this.d.sendEmptyMessage(5);
               }
             }
             else
             {
-              this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-              localObject = this.jdField_c_of_type_AndroidOsHandler;
+              this.d.sendEmptyMessage(4);
+              localObject = this.f;
               if (localObject != null) {
                 ((Handler)localObject).sendEmptyMessage(4);
               }
@@ -55,8 +55,8 @@ public class PublishItemBar
           }
           else
           {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-            localObject = this.jdField_b_of_type_AndroidOsHandler;
+            this.d.sendEmptyMessage(3);
+            localObject = this.e;
             if (localObject != null) {
               ((Handler)localObject).sendEmptyMessage(3);
             }
@@ -64,15 +64,15 @@ public class PublishItemBar
         }
         else
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-          localObject = this.d;
+          this.d.sendEmptyMessage(2);
+          localObject = this.g;
           if (localObject != null) {
             ((Handler)localObject).sendEmptyMessage(2);
           }
         }
       }
       else {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        this.d.sendEmptyMessage(1);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -80,7 +80,7 @@ public class PublishItemBar
   
   public void setAudioCallback(Handler paramHandler)
   {
-    this.d = paramHandler;
+    this.g = paramHandler;
   }
   
   public void setAudioEnable(boolean paramBoolean)
@@ -93,9 +93,9 @@ public class PublishItemBar
       localView.setEnabled(paramBoolean);
       if ((localView instanceof ImageButton)) {
         if (paramBoolean) {
-          ((ImageButton)localView).setImageResource(2130843936);
+          ((ImageButton)localView).setImageResource(2130844891);
         } else {
-          ((ImageButton)localView).setImageResource(2130843935);
+          ((ImageButton)localView).setImageResource(2130844890);
         }
       }
       i += 1;
@@ -104,22 +104,22 @@ public class PublishItemBar
   
   public void setCallback(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.d = paramHandler;
   }
   
   public void setMusicCallback(Handler paramHandler)
   {
-    this.jdField_c_of_type_AndroidOsHandler = paramHandler;
+    this.f = paramHandler;
   }
   
   public void setVideoCallback(Handler paramHandler)
   {
-    this.jdField_b_of_type_AndroidOsHandler = paramHandler;
+    this.e = paramHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PublishItemBar
  * JD-Core Version:    0.7.0.1
  */

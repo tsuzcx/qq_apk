@@ -14,15 +14,15 @@ import java.io.File;
 class QimMusicDownloader$DownloadMusicTask
   implements Runnable
 {
-  MusicDownloadListener jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener;
-  String jdField_a_of_type_JavaLangString;
+  String a;
   String b;
+  MusicDownloadListener c;
   
   public QimMusicDownloader$DownloadMusicTask(String paramString1, String paramString2, MusicDownloadListener paramMusicDownloadListener)
   {
     this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener = paramMusicDownloadListener;
+    this.a = paramString2;
+    this.c = paramMusicDownloadListener;
   }
   
   public void run()
@@ -31,14 +31,14 @@ class QimMusicDownloader$DownloadMusicTask
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("begin download ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" ");
       ((StringBuilder)localObject).append(this.b);
       QLog.d("MusicProviderView.Downloader", 2, ((StringBuilder)localObject).toString());
     }
-    if ((Utils.a()) && (Utils.b() < 31457280L))
+    if ((Utils.b()) && (Utils.c() < 31457280L))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener;
+      localObject = this.c;
       if (localObject != null) {
         ((MusicDownloadListener)localObject).a(this.b, false);
       }
@@ -49,14 +49,14 @@ class QimMusicDownloader$DownloadMusicTask
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    localObject = new File(this.jdField_a_of_type_JavaLangString);
+    localObject = new File(this.a);
     long l1 = SystemClock.uptimeMillis();
     localObject = new DownloadTask(this.b, (File)localObject);
-    ((DownloadTask)localObject).n = true;
-    ((DownloadTask)localObject).b = 2;
-    ((DownloadTask)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ((DownloadTask)localObject).J = true;
+    ((DownloadTask)localObject).e = 2;
+    ((DownloadTask)localObject).b = this.a;
     ((DownloadTask)localObject).b(512);
-    ((DownloadTask)localObject).a(this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener);
+    ((DownloadTask)localObject).a(this.c);
     int i = DownloaderFactory.a((DownloadTask)localObject, null, null);
     long l2 = SystemClock.uptimeMillis();
     if (QLog.isColorLevel())
@@ -67,14 +67,14 @@ class QimMusicDownloader$DownloadMusicTask
       localStringBuilder.append(" result ");
       localStringBuilder.append(i);
       localStringBuilder.append(" key ");
-      localStringBuilder.append(((DownloadTask)localObject).jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(((DownloadTask)localObject).b);
       QLog.i("MusicProviderView.Downloader", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QimMusicDownloader.DownloadMusicTask
  * JD-Core Version:    0.7.0.1
  */

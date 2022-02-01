@@ -12,12 +12,12 @@ class WebBundleWebView$1
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_ComTencentComicWebbundleWebBundleWebView, paramString);
+    this.a.onPageFinished(this.b, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.webbundle.WebBundleWebView.1
  * JD-Core Version:    0.7.0.1
  */

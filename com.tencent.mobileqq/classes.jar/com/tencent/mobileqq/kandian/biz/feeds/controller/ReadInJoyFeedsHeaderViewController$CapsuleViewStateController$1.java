@@ -15,19 +15,19 @@ class ReadInJoyFeedsHeaderViewController$CapsuleViewStateController$1
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onClick: ");
-    ((StringBuilder)localObject).append(ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController).mChannelCoverName);
+    ((StringBuilder)localObject).append(ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.a(this.b).mChannelCoverName);
     QLog.d("ReadInJoyFeedsHeaderVie", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    localObject = this.a;
     if (localObject != null) {
       ((View.OnClickListener)localObject).onClick(paramView);
     }
-    ReadInJoyHelper.a(ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController).mChannelCoverId, true);
-    ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController);
+    ReadInJoyHelper.a(ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.a(this.b).mChannelCoverId, true);
+    ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.1
  * JD-Core Version:    0.7.0.1
  */

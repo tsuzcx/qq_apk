@@ -19,18 +19,13 @@ public final class FixedSizeVideoView
   extends VideoView
   implements Handler.Callback
 {
-  public static final FixedSizeVideoView.Companion a;
-  private int jdField_a_of_type_Int = -1;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), (Handler.Callback)this);
-  @Nullable
-  private FixedSizeVideoView.OnTrimVDPlayCompleteListener jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView$OnTrimVDPlayCompleteListener;
-  private int b;
+  public static final FixedSizeVideoView.Companion a = new FixedSizeVideoView.Companion(null);
+  private int b = -1;
   private int c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView$Companion = new FixedSizeVideoView.Companion(null);
-  }
+  private int d;
+  private final Handler e = new Handler(Looper.getMainLooper(), (Handler.Callback)this);
+  @Nullable
+  private FixedSizeVideoView.OnTrimVDPlayCompleteListener f;
   
   public FixedSizeVideoView(@Nullable Context paramContext)
   {
@@ -44,10 +39,25 @@ public final class FixedSizeVideoView
     super.setOnCompletionListener((MediaPlayer.OnCompletionListener)new FixedSizeVideoView.2(this));
   }
   
-  @Nullable
-  public final FixedSizeVideoView.OnTrimVDPlayCompleteListener a()
+  public final int getEndMilliSec()
   {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView$OnTrimVDPlayCompleteListener;
+    return this.d;
+  }
+  
+  @Nullable
+  public final FixedSizeVideoView.OnTrimVDPlayCompleteListener getListener()
+  {
+    return this.f;
+  }
+  
+  public final int getPlayDuration()
+  {
+    return this.b;
+  }
+  
+  public final int getStartMilliSec()
+  {
+    return this.c;
   }
   
   public boolean handleMessage(@NotNull Message paramMessage)
@@ -55,9 +65,9 @@ public final class FixedSizeVideoView
     Intrinsics.checkParameterIsNotNull(paramMessage, "msg");
     if (paramMessage.what == 0)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView$OnTrimVDPlayCompleteListener;
+      paramMessage = this.f;
       if (paramMessage != null) {
-        paramMessage.a(this, this.b, this.jdField_a_of_type_Int);
+        paramMessage.a(this, this.c, this.b);
       }
     }
     return true;
@@ -66,12 +76,12 @@ public final class FixedSizeVideoView
   public void pause()
   {
     super.pause();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.e.removeMessages(0);
   }
   
   public final void setListener(@Nullable FixedSizeVideoView.OnTrimVDPlayCompleteListener paramOnTrimVDPlayCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFixedSizeVideoView$OnTrimVDPlayCompleteListener = paramOnTrimVDPlayCompleteListener;
+    this.f = paramOnTrimVDPlayCompleteListener;
   }
   
   public final void setPlayDuration(int paramInt)
@@ -87,12 +97,12 @@ public final class FixedSizeVideoView
       if (paramInt1 >= i) {
         return;
       }
-      this.c = (paramInt2 + paramInt1);
-      if (this.c > i) {
-        this.c = i;
+      this.d = (paramInt2 + paramInt1);
+      if (this.d > i) {
+        this.d = i;
       }
-      this.b = paramInt1;
-      this.jdField_a_of_type_Int = paramInt2;
+      this.c = paramInt1;
+      this.b = paramInt2;
       seekTo(paramInt1);
       return;
     }
@@ -108,18 +118,18 @@ public final class FixedSizeVideoView
   public void start()
   {
     int i = getCurrentPosition();
-    i = this.c - i;
+    i = this.d - i;
     if (i >= 0)
     {
       super.start();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, i);
+      this.e.removeMessages(0);
+      this.e.sendEmptyMessageDelayed(0, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

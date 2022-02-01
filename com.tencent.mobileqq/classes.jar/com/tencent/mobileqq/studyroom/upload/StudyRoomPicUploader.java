@@ -16,40 +16,40 @@ import java.util.UUID;
 public class StudyRoomPicUploader
   implements IStudyRoomPicUploadListener, IStudyRoomPicUploader
 {
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IStudyRoomPicUploadListener jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private IStudyRoomPicUploadListener a;
+  private String b;
+  private QQAppInterface c;
+  private boolean d;
+  private long e;
   
   public StudyRoomPicUploader(String paramString, IStudyRoomPicUploadListener paramIStudyRoomPicUploadListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener = paramIStudyRoomPicUploadListener;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.b = paramString;
+    this.a = paramIStudyRoomPicUploadListener;
+    this.c = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
   
   public void a()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("cancelUpload localPath=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.d("StudyRoomPicUploader", 2, ((StringBuilder)localObject).toString());
-    StudyRoomPicUploader.StudyRoomPicHandler.a(StudyRoomPicUploader.StudyRoomPicHandler.a(), this.jdField_a_of_type_Long);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener;
+    StudyRoomPicUploader.StudyRoomPicHandler.a(StudyRoomPicUploader.StudyRoomPicHandler.b(), this.e);
+    localObject = this.a;
     if (localObject != null) {
       ((IStudyRoomPicUploadListener)localObject).a(100, "已取消上传");
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void a(int paramInt)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onProgress localPath=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.d("StudyRoomPicUploader", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener;
+    localObject = this.a;
     if (localObject != null) {
       ((IStudyRoomPicUploadListener)localObject).a(paramInt);
     }
@@ -59,69 +59,69 @@ public class StudyRoomPicUploader
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onFailed localPath=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.d("StudyRoomPicUploader", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener;
+    localObject = this.a;
     if (localObject != null) {
       ((IStudyRoomPicUploadListener)localObject).a(paramInt, paramString);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void a(String paramString1, String paramString2)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onSuccess localPath=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.d("StudyRoomPicUploader", 2, ((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onSuccess downloadUrl=");
     ((StringBuilder)localObject).append(paramString1);
     QLog.d("StudyRoomPicUploader", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener;
+    localObject = this.a;
     if (localObject != null) {
       ((IStudyRoomPicUploadListener)localObject).a(paramString1, paramString2);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     try
     {
-      ITransFileController localITransFileController = (ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class);
-      StudyRoomPicUploader.StudyRoomPicHandler.a().a(localITransFileController);
+      ITransFileController localITransFileController = (ITransFileController)this.c.getRuntimeService(ITransFileController.class);
+      StudyRoomPicUploader.StudyRoomPicHandler.b().a(localITransFileController);
       localObject1 = new TransferRequest();
       ((TransferRequest)localObject1).mIsUp = true;
-      ((TransferRequest)localObject1).mLocalPath = this.jdField_a_of_type_JavaLangString;
+      ((TransferRequest)localObject1).mLocalPath = this.b;
       ((TransferRequest)localObject1).mCommandId = 80;
       ((TransferRequest)localObject1).mPeerUin = "0";
       ((TransferRequest)localObject1).mRichTag = "studyRoomPicUpload";
-      this.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-      ((TransferRequest)localObject1).mUniseq = this.jdField_a_of_type_Long;
+      this.e = ((Math.random() * 1000000.0D));
+      ((TransferRequest)localObject1).mUniseq = this.e;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("startUpload transReq uniseq:");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.e);
       QLog.d("StudyRoomPicUploader", 2, ((StringBuilder)localObject2).toString());
       ((TransferRequest)localObject1).mFileType = 24;
-      ((TransferRequest)localObject1).mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-      ((TransferRequest)localObject1).mRequestLength = ((int)new File(this.jdField_a_of_type_JavaLangString).length());
+      ((TransferRequest)localObject1).mSelfUin = this.c.getCurrentUin();
+      ((TransferRequest)localObject1).mRequestLength = ((int)new File(this.b).length());
       localObject2 = new Bdh_extinfo.CommFileExtReq();
       ((Bdh_extinfo.CommFileExtReq)localObject2).uint32_action_type.set(0);
       ((Bdh_extinfo.CommFileExtReq)localObject2).bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
       ((TransferRequest)localObject1).mExtentionInfo = ((Bdh_extinfo.CommFileExtReq)localObject2).toByteArray();
       localITransFileController.transferAsync((TransferRequest)localObject1);
-      StudyRoomPicUploader.StudyRoomPicHandler.a().a(this.jdField_a_of_type_Long, this);
-      this.jdField_a_of_type_Boolean = true;
+      StudyRoomPicUploader.StudyRoomPicHandler.b().a(this.e, this);
+      this.d = true;
       QLog.d("StudyRoomPicUploader", 2, "startUpload");
       return;
     }
     catch (Exception localException)
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener;
+      Object localObject1 = this.a;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("error=");
       ((StringBuilder)localObject2).append(localException.getLocalizedMessage());
@@ -135,7 +135,7 @@ public class StudyRoomPicUploader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.upload.StudyRoomPicUploader
  * JD-Core Version:    0.7.0.1
  */

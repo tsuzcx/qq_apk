@@ -24,17 +24,17 @@ import com.tencent.qphone.base.util.QLog;
 public class FolderTextView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  private TextView a;
+  private TextView b;
+  private CharSequence c;
   private int d;
   private int e;
+  private int f;
+  private String g;
+  private int h;
+  private int i;
+  private boolean j;
+  private View.OnClickListener k;
   
   public FolderTextView(Context paramContext)
   {
@@ -54,97 +54,97 @@ public class FolderTextView
     //   1: aload_1
     //   2: aload_2
     //   3: iload_3
-    //   4: invokespecial 29	android/widget/RelativeLayout:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   4: invokespecial 35	android/widget/RelativeLayout:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     //   7: aload_0
-    //   8: new 31	com/tencent/mobileqq/widget/FolderTextView$2
+    //   8: new 37	com/tencent/mobileqq/widget/FolderTextView$2
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 34	com/tencent/mobileqq/widget/FolderTextView$2:<init>	(Lcom/tencent/mobileqq/widget/FolderTextView;)V
-    //   16: putfield 36	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_AndroidViewView$OnClickListener	Landroid/view/View$OnClickListener;
+    //   13: invokespecial 40	com/tencent/mobileqq/widget/FolderTextView$2:<init>	(Lcom/tencent/mobileqq/widget/FolderTextView;)V
+    //   16: putfield 42	com/tencent/mobileqq/widget/FolderTextView:k	Landroid/view/View$OnClickListener;
     //   19: aload_1
     //   20: aload_2
-    //   21: getstatic 42	com/tencent/mobileqq/qqui/R$styleable:R	[I
-    //   24: invokevirtual 48	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    //   21: getstatic 48	com/tencent/mobileqq/qqui/R$styleable:aJ	[I
+    //   24: invokevirtual 54	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
     //   27: astore_2
     //   28: aload_0
     //   29: aload_2
-    //   30: getstatic 51	com/tencent/mobileqq/qqui/R$styleable:J	I
-    //   33: invokevirtual 57	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
-    //   36: putfield 59	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
+    //   30: getstatic 57	com/tencent/mobileqq/qqui/R$styleable:aM	I
+    //   33: invokevirtual 63	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
+    //   36: putfield 65	com/tencent/mobileqq/widget/FolderTextView:c	Ljava/lang/CharSequence;
     //   39: aload_0
     //   40: aload_0
     //   41: aload_2
-    //   42: getstatic 61	com/tencent/mobileqq/qqui/R$styleable:I	I
-    //   45: invokevirtual 65	android/content/res/TypedArray:getColorStateList	(I)Landroid/content/res/ColorStateList;
-    //   48: invokespecial 68	com/tencent/mobileqq/widget/FolderTextView:a	(Landroid/content/res/ColorStateList;)I
-    //   51: putfield 70	com/tencent/mobileqq/widget/FolderTextView:jdField_b_of_type_Int	I
+    //   42: getstatic 68	com/tencent/mobileqq/qqui/R$styleable:aL	I
+    //   45: invokevirtual 72	android/content/res/TypedArray:getColorStateList	(I)Landroid/content/res/ColorStateList;
+    //   48: invokespecial 75	com/tencent/mobileqq/widget/FolderTextView:a	(Landroid/content/res/ColorStateList;)I
+    //   51: putfield 77	com/tencent/mobileqq/widget/FolderTextView:e	I
     //   54: aload_0
     //   55: aload_2
-    //   56: getstatic 73	com/tencent/mobileqq/qqui/R$styleable:H	I
-    //   59: ldc 74
-    //   61: invokestatic 79	com/tencent/mobileqq/utils/ViewUtils:a	(F)I
-    //   64: invokevirtual 83	android/content/res/TypedArray:getDimensionPixelSize	(II)I
-    //   67: putfield 85	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_Int	I
+    //   56: getstatic 80	com/tencent/mobileqq/qqui/R$styleable:aK	I
+    //   59: ldc 81
+    //   61: invokestatic 87	com/tencent/mobileqq/utils/ViewUtils:dip2px	(F)I
+    //   64: invokevirtual 91	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   67: putfield 93	com/tencent/mobileqq/widget/FolderTextView:d	I
     //   70: aload_0
     //   71: aload_0
-    //   72: getfield 85	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_Int	I
+    //   72: getfield 93	com/tencent/mobileqq/widget/FolderTextView:d	I
     //   75: i2f
-    //   76: invokestatic 87	com/tencent/mobileqq/utils/ViewUtils:e	(F)I
-    //   79: putfield 85	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_Int	I
+    //   76: invokestatic 96	com/tencent/mobileqq/utils/ViewUtils:pxTosp	(F)I
+    //   79: putfield 93	com/tencent/mobileqq/widget/FolderTextView:d	I
     //   82: aload_0
     //   83: aload_2
-    //   84: getstatic 90	com/tencent/mobileqq/qqui/R$styleable:M	I
+    //   84: getstatic 99	com/tencent/mobileqq/qqui/R$styleable:aP	I
     //   87: iconst_2
-    //   88: invokevirtual 93	android/content/res/TypedArray:getInt	(II)I
-    //   91: putfield 95	com/tencent/mobileqq/widget/FolderTextView:c	I
+    //   88: invokevirtual 102	android/content/res/TypedArray:getInt	(II)I
+    //   91: putfield 104	com/tencent/mobileqq/widget/FolderTextView:f	I
     //   94: aload_0
     //   95: aload_2
-    //   96: getstatic 98	com/tencent/mobileqq/qqui/R$styleable:L	I
-    //   99: invokevirtual 57	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
-    //   102: putfield 100	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   96: getstatic 107	com/tencent/mobileqq/qqui/R$styleable:aO	I
+    //   99: invokevirtual 63	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
+    //   102: putfield 109	com/tencent/mobileqq/widget/FolderTextView:g	Ljava/lang/String;
     //   105: aload_0
     //   106: aload_2
-    //   107: getstatic 103	com/tencent/mobileqq/qqui/R$styleable:K	I
+    //   107: getstatic 112	com/tencent/mobileqq/qqui/R$styleable:aN	I
     //   110: aload_1
-    //   111: invokevirtual 107	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   114: ldc 108
-    //   116: invokevirtual 114	android/content/res/Resources:getColor	(I)I
-    //   119: invokevirtual 116	android/content/res/TypedArray:getColor	(II)I
-    //   122: putfield 118	com/tencent/mobileqq/widget/FolderTextView:d	I
+    //   111: invokevirtual 116	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   114: ldc 117
+    //   116: invokevirtual 123	android/content/res/Resources:getColor	(I)I
+    //   119: invokevirtual 125	android/content/res/TypedArray:getColor	(II)I
+    //   122: putfield 127	com/tencent/mobileqq/widget/FolderTextView:h	I
     //   125: goto +17 -> 142
     //   128: astore_1
     //   129: goto +62 -> 191
     //   132: astore_1
-    //   133: ldc 120
+    //   133: ldc 129
     //   135: iconst_1
-    //   136: ldc 122
+    //   136: ldc 131
     //   138: aload_1
-    //   139: invokestatic 127	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   139: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   142: aload_2
-    //   143: invokevirtual 131	android/content/res/TypedArray:recycle	()V
+    //   143: invokevirtual 140	android/content/res/TypedArray:recycle	()V
     //   146: aload_0
-    //   147: getfield 100	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   150: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   147: getfield 109	com/tencent/mobileqq/widget/FolderTextView:g	Ljava/lang/String;
+    //   150: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   153: ifeq +12 -> 165
     //   156: aload_0
-    //   157: ldc 138
-    //   159: invokestatic 142	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   162: putfield 100	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   157: ldc 147
+    //   159: invokestatic 151	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   162: putfield 109	com/tencent/mobileqq/widget/FolderTextView:g	Ljava/lang/String;
     //   165: aload_0
-    //   166: getfield 59	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
-    //   169: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   166: getfield 65	com/tencent/mobileqq/widget/FolderTextView:c	Ljava/lang/CharSequence;
+    //   169: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   172: ifeq +9 -> 181
     //   175: aload_0
-    //   176: ldc 144
-    //   178: putfield 59	com/tencent/mobileqq/widget/FolderTextView:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
+    //   176: ldc 153
+    //   178: putfield 65	com/tencent/mobileqq/widget/FolderTextView:c	Ljava/lang/CharSequence;
     //   181: aload_0
     //   182: iconst_0
-    //   183: putfield 146	com/tencent/mobileqq/widget/FolderTextView:e	I
+    //   183: putfield 155	com/tencent/mobileqq/widget/FolderTextView:i	I
     //   186: aload_0
-    //   187: invokespecial 148	com/tencent/mobileqq/widget/FolderTextView:a	()V
+    //   187: invokespecial 157	com/tencent/mobileqq/widget/FolderTextView:a	()V
     //   190: return
     //   191: aload_2
-    //   192: invokevirtual 131	android/content/res/TypedArray:recycle	()V
+    //   192: invokevirtual 140	android/content/res/TypedArray:recycle	()V
     //   195: aload_1
     //   196: athrow
     // Local variable table:
@@ -180,139 +180,139 @@ public class FolderTextView
       if (paramFloat <= 0.0F) {
         return 0;
       }
-      float f = paramTextPaint.measureText("...");
-      int i = paramCharSequence.length();
-      while (a(paramCharSequence, paramTextPaint) > paramFloat - f)
+      float f1 = paramTextPaint.measureText("...");
+      int m = paramCharSequence.length();
+      while (a(paramCharSequence, paramTextPaint) > paramFloat - f1)
       {
-        int j = paramCharSequence.length() - 1;
-        i = j;
+        int n = paramCharSequence.length() - 1;
+        m = n;
         if ((paramCharSequence instanceof Spanned))
         {
           Spanned localSpanned = (Spanned)paramCharSequence;
           Object[] arrayOfObject = localSpanned.getSpans(0, paramCharSequence.length(), Object.class);
-          i = j;
-          j = 0;
-          while (j < arrayOfObject.length)
+          m = n;
+          n = 0;
+          while (n < arrayOfObject.length)
           {
-            int m = localSpanned.getSpanStart(Integer.valueOf(j));
-            int n = localSpanned.getSpanEnd(Integer.valueOf(j));
-            int k = i;
-            if (m != -1)
+            int i2 = localSpanned.getSpanStart(Integer.valueOf(n));
+            int i3 = localSpanned.getSpanEnd(Integer.valueOf(n));
+            int i1 = m;
+            if (i2 != -1)
             {
-              k = i;
-              if (n != -1) {
-                if (i < m)
+              i1 = m;
+              if (i3 != -1) {
+                if (m < i2)
                 {
-                  k = i;
-                  if (i > n) {}
+                  i1 = m;
+                  if (m > i3) {}
                 }
                 else
                 {
-                  k = m;
+                  i1 = i2;
                 }
               }
             }
-            j += 1;
-            i = k;
+            n += 1;
+            m = i1;
           }
         }
-        if (i <= 0) {
+        if (m <= 0) {
           return 0;
         }
-        paramCharSequence = paramCharSequence.subSequence(0, i);
+        paramCharSequence = paramCharSequence.subSequence(0, m);
       }
-      return i;
+      return m;
     }
     return 0;
   }
   
   private Layout a(int paramInt, CharSequence paramCharSequence)
   {
-    if (a()) {
-      return new DynamicLayout(paramCharSequence, this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+    if (b()) {
+      return new DynamicLayout(paramCharSequence, this.a.getPaint(), paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
     }
-    return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+    return new StaticLayout(paramCharSequence, this.a.getPaint(), paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379684);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_Int);
+    this.a = new TextView(getContext());
+    this.a.setId(2131448466);
+    this.a.setTextColor(this.e);
+    this.a.setTextSize(this.d);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.d);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    int i = ViewUtils.a(10.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
+    addView(this.a, localLayoutParams);
+    this.b = new TextView(getContext());
+    this.b.setTextSize(this.d);
+    this.b.setOnClickListener(this.k);
+    this.b.setText(this.g);
+    this.b.setTextColor(this.h);
+    this.b.setVisibility(4);
+    int m = ViewUtils.dip2px(10.0F);
+    this.b.setPadding(m, 0, m, 0);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(8, 2131379684);
-    localLayoutParams.addRule(7, 2131379684);
-    addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+    localLayoutParams.addRule(8, 2131448466);
+    localLayoutParams.addRule(7, 2131448466);
+    addView(this.b, localLayoutParams);
+    if (!TextUtils.isEmpty(this.c)) {
       post(new FolderTextView.1(this));
     }
   }
   
-  private boolean a()
+  private boolean b()
   {
-    boolean bool1 = this.jdField_a_of_type_JavaLangCharSequence instanceof Spannable;
-    boolean bool2 = this.jdField_a_of_type_AndroidWidgetTextView.isTextSelectable();
+    boolean bool1 = this.c instanceof Spannable;
+    boolean bool2 = this.a.isTextSelectable();
     return (bool1) || (bool2);
   }
   
-  private void b()
+  private void c()
   {
-    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - this.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft() - this.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
-    int j = 1;
-    if (k <= 0)
+    int i1 = this.a.getMeasuredWidth() - this.a.getPaddingLeft() - this.a.getPaddingRight();
+    int n = 1;
+    if (i1 <= 0)
     {
-      this.e = 1;
+      this.i = 1;
       QLog.d("FolderTextView", 1, "updateFoldStatus, layoutWidth <= 0");
     }
-    if (this.e == 0)
+    if (this.i == 0)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getLayout() != null)
+      if (this.a.getLayout() != null)
       {
-        i = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getWidth();
+        m = this.a.getLayout().getWidth();
       }
       else
       {
-        i = k;
+        m = i1;
         if (QLog.isDebugVersion())
         {
           QLog.d("FolderTextView", 4, "getLayout == null");
-          i = k;
+          m = i1;
         }
       }
-      Layout localLayout = a(i, this.jdField_a_of_type_JavaLangCharSequence);
-      int i = localLayout.getLineCount();
-      k = this.c;
-      if (i <= k)
+      Layout localLayout = a(m, this.c);
+      int m = localLayout.getLineCount();
+      i1 = this.f;
+      if (m <= i1)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.setText(this.c);
+        this.b.setVisibility(4);
         return;
       }
-      k = localLayout.getLineStart(k - 1);
-      i = localLayout.getLineEnd(this.c - 1);
-      Object localObject1 = this.jdField_a_of_type_JavaLangCharSequence;
+      i1 = localLayout.getLineStart(i1 - 1);
+      m = localLayout.getLineEnd(this.f - 1);
+      Object localObject1 = this.c;
       if ((localObject1 instanceof QQText))
       {
         localObject1 = new SpannableStringBuilder();
-        ((SpannableStringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangCharSequence, k, i);
+        ((SpannableStringBuilder)localObject1).append(this.c, i1, m);
       }
       else
       {
-        localObject1 = ((CharSequence)localObject1).subSequence(k, i);
+        localObject1 = ((CharSequence)localObject1).subSequence(i1, m);
       }
       if (QLog.isDebugVersion()) {
-        QLog.d("FolderTextView", 4, String.format("mText: %s, lineCount: %s, lastLineText: %s", new Object[] { this.jdField_a_of_type_JavaLangCharSequence.toString(), Integer.valueOf(localLayout.getLineCount()), localObject1 }));
+        QLog.d("FolderTextView", 4, String.format("mText: %s, lineCount: %s, lastLineText: %s", new Object[] { this.c.toString(), Integer.valueOf(localLayout.getLineCount()), localObject1 }));
       }
       Object localObject2 = localObject1;
       if (((CharSequence)localObject1).length() > 0)
@@ -326,54 +326,54 @@ public class FolderTextView
           }
         }
       }
-      i = localLayout.getWidth();
-      int m = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredWidth();
-      m = a((CharSequence)localObject2, this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), i - m);
-      if (m != ((CharSequence)localObject2).length()) {
-        i = j;
+      m = localLayout.getWidth();
+      int i2 = this.b.getMeasuredWidth();
+      i2 = a((CharSequence)localObject2, this.a.getPaint(), m - i2);
+      if (i2 != ((CharSequence)localObject2).length()) {
+        m = n;
       } else {
-        i = 0;
+        m = 0;
       }
       localObject1 = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangCharSequence, 0, m + k);
-      if (i != 0) {
+      ((SpannableStringBuilder)localObject1).append(this.c, 0, i2 + i1);
+      if (m != 0) {
         ((SpannableStringBuilder)localObject1).append("...");
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.setText((CharSequence)localObject1);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.setText(this.c);
+    this.b.setVisibility(4);
   }
   
-  public CharSequence a()
+  public CharSequence getText()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    return this.a.getText();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.j)
     {
-      this.jdField_a_of_type_Boolean = true;
-      b();
+      this.j = true;
+      c();
     }
   }
   
   public void setText(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.e = 0;
-    if (this.jdField_a_of_type_Boolean) {
-      b();
+    this.c = paramCharSequence;
+    this.i = 0;
+    if (this.j) {
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FolderTextView
  * JD-Core Version:    0.7.0.1
  */

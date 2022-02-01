@@ -11,15 +11,15 @@ class BaseMessageProcessor$3
   
   public ToServiceMsg a()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    ToServiceMsg localToServiceMsg = this.b.r.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.a.toByteArray());
     localToServiceMsg.setEnableFastResend(true);
     return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageProcessor.3
  * JD-Core Version:    0.7.0.1
  */

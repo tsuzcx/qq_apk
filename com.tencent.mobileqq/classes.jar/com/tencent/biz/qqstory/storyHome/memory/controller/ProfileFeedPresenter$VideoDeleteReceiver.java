@@ -16,7 +16,7 @@ public class ProfileFeedPresenter$VideoDeleteReceiver
   
   public void a(@NonNull ProfileFeedPresenter paramProfileFeedPresenter, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    if (paramDeleteStoryVideoEvent.a.isSuccess())
+    if (paramDeleteStoryVideoEvent.g.isSuccess())
     {
       SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramDeleteStoryVideoEvent.toString());
       ProfileFeedPresenter.a(paramProfileFeedPresenter, true);

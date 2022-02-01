@@ -18,7 +18,7 @@ class SecurityPolicyChecker$1
     Object localObject = AvGameConfigUtil.a();
     boolean bool2 = false;
     if (localObject != null) {
-      if (((AvGameConfBean)localObject).a() == 1) {
+      if (((AvGameConfBean)localObject).f() == 1) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -45,7 +45,7 @@ class SecurityPolicyChecker$1
     if (!SecurityPolicyChecker.b(this.this$0)) {
       SecurityPolicyChecker.b(this.this$0, true);
     }
-    AVGameHandler.a().b().post(new SecurityPolicyChecker.1.1(this, bool2));
+    AVGameHandler.a().c().post(new SecurityPolicyChecker.1.1(this, bool2));
   }
 }
 

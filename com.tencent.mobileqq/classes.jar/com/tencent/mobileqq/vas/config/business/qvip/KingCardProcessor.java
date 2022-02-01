@@ -9,9 +9,9 @@ public class KingCardProcessor
   extends BaseQVipConfigProcessor<KingCardConfig>
 {
   @NonNull
-  public static KingCardConfig c()
+  public static KingCardConfig e()
   {
-    KingCardConfig localKingCardConfig2 = (KingCardConfig)QConfigManager.a().a(541);
+    KingCardConfig localKingCardConfig2 = (KingCardConfig)QConfigManager.b().b(541);
     KingCardConfig localKingCardConfig1 = localKingCardConfig2;
     if (localKingCardConfig2 == null) {
       localKingCardConfig1 = KingCardConfig.a();
@@ -29,9 +29,9 @@ public class KingCardProcessor
   public KingCardConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfQConfItem[0].b);
     }
-    return KingCardConfig.a(paramArrayOfQConfItem[0].a);
+    return KingCardConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -52,7 +52,7 @@ public class KingCardProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.KingCardProcessor
  * JD-Core Version:    0.7.0.1
  */

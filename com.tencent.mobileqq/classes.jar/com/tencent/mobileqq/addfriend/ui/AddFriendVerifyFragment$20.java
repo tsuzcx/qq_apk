@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.addfriend.ui;
 
 import android.text.TextUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.ContactCard;
@@ -16,7 +17,7 @@ class AddFriendVerifyFragment$20
   
   protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    if (AddFriendVerifyFragment.b(this.a)) {
+    if (AddFriendVerifyFragment.k(this.a)) {
       return;
     }
     if ((paramBoolean) && (paramObject != null))
@@ -29,13 +30,13 @@ class AddFriendVerifyFragment$20
         if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyFragment.a(this.a))))
         {
           paramObject = localIProfileCardBusinessApi.makeSexAgeArea(this.a.getActivity(), ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
-          if (this.a.a != null) {
+          if (this.a.e != null) {
             paramObject = localIProfileCardBusinessApi.makeSexAgeArea(this.a.getActivity(), ((Card)localObject).shGender, 0, "", "", "");
           }
           if (!TextUtils.isEmpty(paramObject))
           {
-            AddFriendVerifyFragment.b(this.a).setVisibility(0);
-            AddFriendVerifyFragment.b(this.a).setText(paramObject);
+            AddFriendVerifyFragment.l(this.a).setVisibility(0);
+            AddFriendVerifyFragment.l(this.a).setText(paramObject);
           }
         }
       }
@@ -45,25 +46,31 @@ class AddFriendVerifyFragment$20
         if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyFragment.a(this.a))))
         {
           paramObject = localIProfileCardBusinessApi.makeSexAgeArea(this.a.getActivity(), ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
-          if (this.a.a != null) {
+          if (this.a.e != null) {
             paramObject = localIProfileCardBusinessApi.makeSexAgeArea(this.a.getActivity(), ((ContactCard)localObject).bSex, 0, "", "", "");
           }
           if (!TextUtils.isEmpty(paramObject))
           {
-            AddFriendVerifyFragment.b(this.a).setVisibility(0);
-            AddFriendVerifyFragment.b(this.a).setText(paramObject);
+            AddFriendVerifyFragment.l(this.a).setVisibility(0);
+            AddFriendVerifyFragment.l(this.a).setText(paramObject);
           }
         }
       }
-      if (((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).isQidianMaster(AddFriendVerifyFragment.a(this.a), AddFriendVerifyFragment.a(this.a))) {
+      if (((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).isQidianMaster(AddFriendVerifyFragment.f(this.a), AddFriendVerifyFragment.a(this.a))) {
+        AddFriendVerifyFragment.l(this.a).setVisibility(8);
+      }
+      if (AddFriendVerifyFragment.m(this.a) == 3094)
+      {
+        AddFriendVerifyFragment.l(this.a).setVisibility(8);
         AddFriendVerifyFragment.b(this.a).setVisibility(8);
+        AddFriendVerifyFragment.i(this.a).setVisibility(8);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.20
  * JD-Core Version:    0.7.0.1
  */

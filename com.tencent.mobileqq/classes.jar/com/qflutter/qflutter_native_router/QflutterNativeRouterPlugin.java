@@ -51,32 +51,55 @@ public final class QflutterNativeRouterPlugin
   {
     Intrinsics.checkParameterIsNotNull(paramMethodCall, "call");
     Intrinsics.checkParameterIsNotNull(paramResult, "result");
-    Object localObject1 = paramMethodCall.method;
-    if ((localObject1 != null) && (((String)localObject1).hashCode() == 2075029808) && (((String)localObject1).equals("openNativePage")))
+    Object localObject2 = paramMethodCall.method;
+    if (localObject2 != null)
     {
-      String str1 = (String)paramMethodCall.argument("nativeType");
-      String str2 = (String)paramMethodCall.argument("url");
-      Object localObject2 = paramMethodCall.argument("urlParams");
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof Map)) {
-        localObject1 = null;
+      int i = ((String)localObject2).hashCode();
+      Object localObject1 = null;
+      if (i != -1812943591)
+      {
+        if ((i != 2075029808) || (!((String)localObject2).equals("openNativePage"))) {
+          break label167;
+        }
+        localObject2 = paramMethodCall.arguments;
+        paramMethodCall = (MethodCall)localObject1;
+        if (localObject2 != null) {
+          paramMethodCall = localObject2.toString();
+        }
+        localObject1 = paramMethodCall;
+        paramMethodCall = sRouter;
+        if (paramMethodCall == null) {
+          return;
+        }
+        localObject2 = null;
       }
-      localObject1 = (Map)localObject1;
-      paramMethodCall = (Map)paramMethodCall.argument("exts");
-      localObject2 = sRouter;
-      if (localObject2 != null) {
-        ((NativeRouter)localObject2).openNativePage(str1, str2, (Map)localObject1, paramMethodCall, paramResult);
+      else
+      {
+        if (!((String)localObject2).equals("openNativePageLegacy")) {
+          break label167;
+        }
+        localObject1 = (String)paramMethodCall.argument("url");
+        localObject2 = paramMethodCall.argument("params");
+        paramMethodCall = (MethodCall)localObject2;
+        if (!(localObject2 instanceof Map)) {
+          paramMethodCall = null;
+        }
+        localObject2 = (Map)paramMethodCall;
+        paramMethodCall = sRouter;
+        if (paramMethodCall == null) {
+          return;
+        }
       }
+      paramMethodCall.openNativePage(null, (String)localObject1, (Map)localObject2, null, paramResult);
+      return;
     }
-    else
-    {
-      paramResult.notImplemented();
-    }
+    label167:
+    paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.qflutter_native_router.QflutterNativeRouterPlugin
  * JD-Core Version:    0.7.0.1
  */

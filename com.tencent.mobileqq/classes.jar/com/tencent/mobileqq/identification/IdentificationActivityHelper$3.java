@@ -15,12 +15,12 @@ class IdentificationActivityHelper$3
       QLog.e("qq_Identification.Helper", 1, "postResult2UI, context invalid");
       return;
     }
-    IdentificationActivityHelper.a(this.this$0).showYTInitFinish(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    IdentificationActivityHelper.b(this.this$0).showYTInitFinish(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationActivityHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import java.nio.ByteBuffer;
 
 class AudioPlayback$BufferQueue$Item
 {
-  protected long a;
   protected ByteBuffer a;
+  protected long b;
   
   AudioPlayback$BufferQueue$Item(int paramInt)
   {

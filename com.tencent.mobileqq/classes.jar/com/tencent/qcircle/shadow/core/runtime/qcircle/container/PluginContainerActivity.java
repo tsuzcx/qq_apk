@@ -82,7 +82,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class PluginContainerActivity
+public abstract class PluginContainerActivity
   extends Activity
   implements HostActivity, HostActivityDelegator
 {
@@ -93,7 +93,7 @@ public class PluginContainerActivity
   
   public PluginContainerActivity()
   {
-    Object localObject = DelegateProviderHolder.getDelegateProvider();
+    Object localObject = DelegateProviderHolder.getDelegateProvider(getUUID());
     if (localObject != null)
     {
       localObject = ((DelegateProvider)localObject).getHostActivityDelegate(getClass());
@@ -236,6 +236,8 @@ public class PluginContainerActivity
     }
     return super.getTheme();
   }
+  
+  public abstract String getUUID();
   
   public boolean isChangingConfigurations()
   {
@@ -2573,7 +2575,7 @@ public class PluginContainerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.shadow.core.runtime.qcircle.container.PluginContainerActivity
  * JD-Core Version:    0.7.0.1
  */

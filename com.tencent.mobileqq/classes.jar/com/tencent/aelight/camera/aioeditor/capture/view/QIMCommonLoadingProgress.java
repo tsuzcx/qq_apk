@@ -13,37 +13,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class QIMCommonLoadingProgress
 {
-  public static final SparseArray<ConcurrentHashMap<String, QIMCommonLoadingProgress>> a;
-  public static final AccelerateInterpolator a;
-  public static final ConcurrentHashMap<String, QIMCommonLoadingProgress> a;
-  public byte a;
-  float jdField_a_of_type_Float = 1.0F;
-  long jdField_a_of_type_Long;
-  public ArrayList<WeakReference<QIMCommonLoadingProgress.Observer>> a;
-  long b = 0L;
-  long c = 0L;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator();
-  }
-  
-  public QIMCommonLoadingProgress()
-  {
-    this.jdField_a_of_type_Byte = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public static final ConcurrentHashMap<String, QIMCommonLoadingProgress> a = new ConcurrentHashMap();
+  public static final SparseArray<ConcurrentHashMap<String, QIMCommonLoadingProgress>> b = new SparseArray(3);
+  public static final AccelerateInterpolator c = new AccelerateInterpolator();
+  public byte d = 1;
+  long e;
+  long f = 0L;
+  long g = 0L;
+  float h = 1.0F;
+  public ArrayList<WeakReference<QIMCommonLoadingProgress.Observer>> i = new ArrayList();
   
   static QIMCommonLoadingProgress a(int paramInt, String paramString)
   {
-    Object localObject2 = (ConcurrentHashMap)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject2 = (ConcurrentHashMap)b.get(paramInt);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ConcurrentHashMap(50);
-      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+      b.put(paramInt, localObject1);
     }
     QIMCommonLoadingProgress localQIMCommonLoadingProgress = (QIMCommonLoadingProgress)((ConcurrentHashMap)localObject1).get(paramString);
     localObject2 = localQIMCommonLoadingProgress;
@@ -58,7 +45,7 @@ public class QIMCommonLoadingProgress
   public static QIMCommonLoadingProgress a(Object paramObject)
   {
     if ((paramObject instanceof ComboSet)) {
-      return a(1, ((ComboSet)paramObject).a());
+      return a(1, ((ComboSet)paramObject).f());
     }
     if ((paramObject instanceof PtvTemplateInfo)) {
       return a(3, ((PtvTemplateInfo)paramObject).a);
@@ -67,41 +54,83 @@ public class QIMCommonLoadingProgress
       return a(2, ((MusicItemInfo)paramObject).mMusicName);
     }
     if ((paramObject instanceof FilterSet)) {
-      return a(4, ((FilterSet)paramObject).a());
+      return a(4, ((FilterSet)paramObject).f());
     }
     return null;
   }
   
-  public float a()
+  public void a()
   {
-    int i = this.jdField_a_of_type_Byte;
+    float f1 = this.h;
+    if ((f1 == 0.0F) || (f1 == 1.0F))
+    {
+      this.d = 2;
+      this.e = SystemClock.elapsedRealtime();
+      this.f = 0L;
+      this.g = 0L;
+      this.h = 0.01F;
+      a(0.01F);
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    int j = this.i.size() - 1;
+    while (j >= 0)
+    {
+      QIMCommonLoadingProgress.Observer localObserver = (QIMCommonLoadingProgress.Observer)((WeakReference)this.i.get(j)).get();
+      if (localObserver == null) {
+        this.i.remove(j);
+      } else {
+        localObserver.a();
+      }
+      j -= 1;
+    }
+  }
+  
+  public void a(QIMCommonLoadingProgress.Observer paramObserver)
+  {
+    int j = this.i.size() - 1;
+    while (j >= 0)
+    {
+      QIMCommonLoadingProgress.Observer localObserver = (QIMCommonLoadingProgress.Observer)((WeakReference)this.i.get(j)).get();
+      if ((localObserver == null) || (localObserver == paramObserver)) {
+        this.i.remove(j);
+      }
+      j -= 1;
+    }
+  }
+  
+  public float b()
+  {
+    int j = this.d;
     long l;
     float f1;
-    if (i != 1)
+    if (j != 1)
     {
-      if (i != 2)
+      if (j != 2)
       {
-        if (i == 3) {
-          if (this.c == 0L)
+        if (j == 3) {
+          if (this.g == 0L)
           {
-            this.c = SystemClock.elapsedRealtime();
+            this.g = SystemClock.elapsedRealtime();
           }
           else
           {
-            l = SystemClock.elapsedRealtime() - this.c;
+            l = SystemClock.elapsedRealtime() - this.g;
             if (l > 1L) {
-              this.jdField_a_of_type_Float = 0.0F;
+              this.h = 0.0F;
             }
-            this.jdField_a_of_type_Float *= (1.0F - (float)l * 1.0F / 1.0F);
+            this.h *= (1.0F - (float)l * 1.0F / 1.0F);
           }
         }
       }
       else
       {
-        if (this.jdField_a_of_type_Long == 0L) {
+        if (this.e == 0L) {
           return 0.0F;
         }
-        float f2 = (float)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+        float f2 = (float)(SystemClock.elapsedRealtime() - this.e);
         f1 = 0.01F;
         if (f2 > 4250.0F)
         {
@@ -114,89 +143,47 @@ public class QIMCommonLoadingProgress
             f1 = f2;
           }
         }
-        this.jdField_a_of_type_Float = f1;
+        this.h = f1;
       }
     }
-    else if (this.b == 0L)
+    else if (this.f == 0L)
     {
-      this.b = SystemClock.elapsedRealtime();
+      this.f = SystemClock.elapsedRealtime();
     }
     else
     {
-      l = SystemClock.elapsedRealtime() - this.b;
+      l = SystemClock.elapsedRealtime() - this.f;
       if (l > 1L)
       {
-        this.jdField_a_of_type_Float = 1.0F;
+        this.h = 1.0F;
       }
       else
       {
-        f1 = this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Float = (f1 + (1.0F - f1) * jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation((float)l * 1.0F / 1.0F));
+        f1 = this.h;
+        this.h = (f1 + (1.0F - f1) * c.getInterpolation((float)l * 1.0F / 1.0F));
       }
     }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public void a()
-  {
-    float f = this.jdField_a_of_type_Float;
-    if ((f == 0.0F) || (f == 1.0F))
-    {
-      this.jdField_a_of_type_Byte = 2;
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.b = 0L;
-      this.c = 0L;
-      this.jdField_a_of_type_Float = 0.01F;
-      a(0.01F);
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    while (i >= 0)
-    {
-      QIMCommonLoadingProgress.Observer localObserver = (QIMCommonLoadingProgress.Observer)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if (localObserver == null) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      } else {
-        localObserver.a();
-      }
-      i -= 1;
-    }
-  }
-  
-  public void a(QIMCommonLoadingProgress.Observer paramObserver)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    while (i >= 0)
-    {
-      QIMCommonLoadingProgress.Observer localObserver = (QIMCommonLoadingProgress.Observer)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if ((localObserver == null) || (localObserver == paramObserver)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-      i -= 1;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Byte = 1;
+    return this.h;
   }
   
   public void b(QIMCommonLoadingProgress.Observer paramObserver)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramObserver));
+    this.i.add(new WeakReference(paramObserver));
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Byte = 3;
+    this.d = 1;
+  }
+  
+  public void d()
+  {
+    this.d = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMCommonLoadingProgress
  * JD-Core Version:    0.7.0.1
  */

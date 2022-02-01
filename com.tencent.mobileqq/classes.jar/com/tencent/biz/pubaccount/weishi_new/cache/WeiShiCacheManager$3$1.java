@@ -11,7 +11,7 @@ class WeiShiCacheManager$3$1
   
   public void run()
   {
-    IWeiShiCacheCallback localIWeiShiCacheCallback = (IWeiShiCacheCallback)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCacheWeiShiCacheManager$3.a.get();
+    IWeiShiCacheCallback localIWeiShiCacheCallback = (IWeiShiCacheCallback)this.b.a.get();
     if (localIWeiShiCacheCallback != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -20,13 +20,13 @@ class WeiShiCacheManager$3$1
       localStringBuilder.append(", thread = ");
       localStringBuilder.append(Thread.currentThread());
       WSLog.b("CacheResponseLog", localStringBuilder.toString());
-      localIWeiShiCacheCallback.a(this.jdField_a_of_type_UserGrowthStFollowFeedsRsp);
+      localIWeiShiCacheCallback.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3.1
  * JD-Core Version:    0.7.0.1
  */

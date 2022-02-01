@@ -12,20 +12,20 @@ class EditTextDialog$8
   {
     if (paramInt1 == 1)
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerModelTextInfo.a = paramInt2;
+      this.a.n.b = paramInt2;
       EditTextDialog localEditTextDialog = this.a;
-      localEditTextDialog.c = paramInt2;
-      if ((localEditTextDialog.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem instanceof NormalTextItem))
+      localEditTextDialog.l = paramInt2;
+      if ((localEditTextDialog.y instanceof NormalTextItem))
       {
-        ((NormalTextItem)this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem).a(paramInt2);
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.invalidate();
+        ((NormalTextItem)this.a.y).a(paramInt2);
+        this.a.t.invalidate();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.8
  * JD-Core Version:    0.7.0.1
  */

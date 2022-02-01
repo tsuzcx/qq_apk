@@ -24,41 +24,41 @@ import java.util.List;
 public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
   extends RecyclerView.Adapter<IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder>
 {
-  private int jdField_a_of_type_Int = 9999;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final String jdField_a_of_type_JavaLangString;
-  private List<MISC.StAppPlayingInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private List<MISC.StAppPlayingInfo> a;
+  private final String b;
+  private final View.OnClickListener c;
+  private int d = 9999;
+  private boolean e;
+  private ColorStateList f;
+  private int g;
   
   public IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter(List<MISC.StAppPlayingInfo> paramList, String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.a = paramList;
+    this.b = paramString;
+    this.c = paramOnClickListener;
   }
   
   private int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131693446;
+      return 2131890995;
     }
-    return 2131693449;
+    return 2131890998;
   }
   
   private void a(IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder paramIntimatePlayTogetherViewHolder)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
+      if (this.f != null)
       {
-        paramIntimatePlayTogetherViewHolder.a().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-        paramIntimatePlayTogetherViewHolder.b().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+        paramIntimatePlayTogetherViewHolder.b().setTextColor(this.f);
+        paramIntimatePlayTogetherViewHolder.d().setTextColor(this.f);
         return;
       }
-      paramIntimatePlayTogetherViewHolder.a().setTextColor(this.b);
-      paramIntimatePlayTogetherViewHolder.b().setTextColor(this.b);
+      paramIntimatePlayTogetherViewHolder.b().setTextColor(this.g);
+      paramIntimatePlayTogetherViewHolder.d().setTextColor(this.g);
       return;
     }
     catch (Throwable paramIntimatePlayTogetherViewHolder)
@@ -69,69 +69,69 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
   
   public IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559274, null, false));
+    return new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625195, null, false));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = paramInt;
+    this.e = true;
+    this.g = paramInt;
   }
   
   public void a(ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.e = true;
+    this.f = paramColorStateList;
   }
   
   public void a(IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder paramIntimatePlayTogetherViewHolder, int paramInt)
   {
-    MISC.StAppPlayingInfo localStAppPlayingInfo = (MISC.StAppPlayingInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    MISC.StAppPlayingInfo localStAppPlayingInfo = (MISC.StAppPlayingInfo)this.a.get(paramInt);
     if (localStAppPlayingInfo != null)
     {
       boolean bool = MiniGamePlayTogetherHandler.a(localStAppPlayingInfo.appMetaInfo);
       paramIntimatePlayTogetherViewHolder.itemView.setOnClickListener(new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.1(this, localStAppPlayingInfo, bool));
-      paramIntimatePlayTogetherViewHolder.a().setVisibility(0);
-      paramIntimatePlayTogetherViewHolder.a().setVisibility(0);
-      paramIntimatePlayTogetherViewHolder.b().setVisibility(0);
+      paramIntimatePlayTogetherViewHolder.f().setVisibility(0);
+      paramIntimatePlayTogetherViewHolder.c().setVisibility(0);
+      paramIntimatePlayTogetherViewHolder.d().setVisibility(0);
       if (localStAppPlayingInfo.appMetaInfo != null)
       {
-        paramIntimatePlayTogetherViewHolder.a().setText(localStAppPlayingInfo.appMetaInfo.appName.get());
+        paramIntimatePlayTogetherViewHolder.b().setText(localStAppPlayingInfo.appMetaInfo.appName.get());
         paramIntimatePlayTogetherViewHolder.a().setImageDrawable(((IMiniAppService)QRoute.api(IMiniAppService.class)).getIcon(paramIntimatePlayTogetherViewHolder.a().getContext(), localStAppPlayingInfo.appMetaInfo.icon.get(), true));
       }
-      IntimatePlayTogetherMiniGameCardView.a(paramIntimatePlayTogetherViewHolder.a(), this.jdField_a_of_type_JavaLangString);
+      IntimatePlayTogetherMiniGameCardView.a(paramIntimatePlayTogetherViewHolder.c(), this.b);
       if ((localStAppPlayingInfo.myRank.get() != 0) && (localStAppPlayingInfo.friendRank.get() != 0))
       {
         if (localStAppPlayingInfo.myRank.get() == localStAppPlayingInfo.friendRank.get())
         {
-          paramIntimatePlayTogetherViewHolder.b().setText(2131693441);
+          paramIntimatePlayTogetherViewHolder.d().setText(2131890990);
         }
         else
         {
-          TextView localTextView = paramIntimatePlayTogetherViewHolder.b();
+          TextView localTextView = paramIntimatePlayTogetherViewHolder.d();
           int i;
           if (localStAppPlayingInfo.myRank.get() < localStAppPlayingInfo.friendRank.get()) {
-            i = 2131693443;
+            i = 2131890992;
           } else {
-            i = 2131693442;
+            i = 2131890991;
           }
           localTextView.setText(i);
         }
-        paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
+        paramIntimatePlayTogetherViewHolder.e().setText(a(bool));
       }
       else if ((localStAppPlayingInfo.myRank.get() == 0) && (localStAppPlayingInfo.friendRank.get() > 0))
       {
-        paramIntimatePlayTogetherViewHolder.b().setText(String.format(paramIntimatePlayTogetherViewHolder.itemView.getContext().getString(2131693444), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
-        paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
+        paramIntimatePlayTogetherViewHolder.d().setText(String.format(paramIntimatePlayTogetherViewHolder.itemView.getContext().getString(2131890993), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
+        paramIntimatePlayTogetherViewHolder.e().setText(a(bool));
       }
       else
       {
-        paramIntimatePlayTogetherViewHolder.a().setVisibility(8);
-        paramIntimatePlayTogetherViewHolder.a().setVisibility(8);
-        paramIntimatePlayTogetherViewHolder.b().setVisibility(8);
-        paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
+        paramIntimatePlayTogetherViewHolder.f().setVisibility(8);
+        paramIntimatePlayTogetherViewHolder.c().setVisibility(8);
+        paramIntimatePlayTogetherViewHolder.d().setVisibility(8);
+        paramIntimatePlayTogetherViewHolder.e().setText(a(bool));
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.e) {
         a(paramIntimatePlayTogetherViewHolder);
       }
     }
@@ -140,7 +140,7 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public int getItemCount()
@@ -150,7 +150,7 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter
  * JD-Core Version:    0.7.0.1
  */

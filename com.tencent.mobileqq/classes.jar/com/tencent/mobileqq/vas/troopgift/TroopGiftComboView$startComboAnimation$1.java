@@ -11,21 +11,21 @@ public final class TroopGiftComboView$startComboAnimation$1
 {
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    TroopGiftComboView.c(this.a, TroopGiftPAGAnimationController.PlayState.PLAYED);
-    if (TroopGiftComboView.a(this.a) == TroopGiftPAGAnimationController.PlayState.PLAYED) {
-      TroopGiftComboView.b(this.a, TroopGiftPAGAnimationController.PlayState.PLAYED);
+    TroopGiftComboView.c(this.a, PlayState.PLAYED);
+    if (TroopGiftComboView.a(this.a) == PlayState.PLAYED) {
+      TroopGiftComboView.b(this.a, PlayState.PLAYED);
     }
   }
   
   public void onAnimationStart(@Nullable Animator paramAnimator)
   {
-    TroopGiftComboView.b(this.a, TroopGiftPAGAnimationController.PlayState.PLAYING);
-    TroopGiftComboView.c(this.a, TroopGiftPAGAnimationController.PlayState.PLAYING);
+    TroopGiftComboView.b(this.a, PlayState.PLAYING);
+    TroopGiftComboView.c(this.a, PlayState.PLAYING);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.startComboAnimation.1
  * JD-Core Version:    0.7.0.1
  */

@@ -210,7 +210,7 @@ public class H264GiftView
         ThreadCenter.postDefaultUITask(new H264GiftView.3(this, paramLuxuryGiftInfo));
         return;
       }
-      this.mLuxuryGiftAdapter.getImageLoaderInterface().displayImage(this.mCurrentLottieGiftInfo.jdField_b_of_type_JavaLangString, this.fakeImageView, getDisplayImageOptions(2130840463), new H264GiftView.4(this, paramLuxuryGiftInfo));
+      this.mLuxuryGiftAdapter.getImageLoaderInterface().displayImage(this.mCurrentLottieGiftInfo.b, this.fakeImageView, getDisplayImageOptions(2130841225), new H264GiftView.4(this, paramLuxuryGiftInfo));
       return;
     }
     LogInterface localLogInterface = this.mLuxuryGiftAdapter.getLogger();
@@ -238,16 +238,16 @@ public class H264GiftView
     if (paramLottieGiftInfo == null) {
       return;
     }
-    this.mCurrentLottieGiftInfo.jdField_a_of_type_JavaLangString = paramLottieGiftInfo.jdField_a_of_type_JavaLangString;
-    this.mCurrentLottieGiftInfo.jdField_b_of_type_JavaLangString = paramLottieGiftInfo.jdField_b_of_type_JavaLangString;
+    this.mCurrentLottieGiftInfo.a = paramLottieGiftInfo.a;
+    this.mCurrentLottieGiftInfo.b = paramLottieGiftInfo.b;
     this.mCurrentLottieGiftInfo.c = paramLottieGiftInfo.c;
     this.mCurrentLottieGiftInfo.d = paramLottieGiftInfo.d;
     this.mCurrentLottieGiftInfo.e = paramLottieGiftInfo.e;
     this.mCurrentLottieGiftInfo.f = paramLottieGiftInfo.f;
     this.mCurrentLottieGiftInfo.g = paramLottieGiftInfo.g;
-    this.mCurrentLottieGiftInfo.jdField_a_of_type_Long = paramLottieGiftInfo.jdField_a_of_type_Long;
     this.mCurrentLottieGiftInfo.h = paramLottieGiftInfo.h;
-    this.mCurrentLottieGiftInfo.jdField_b_of_type_Long = paramLottieGiftInfo.jdField_b_of_type_Long;
+    this.mCurrentLottieGiftInfo.i = paramLottieGiftInfo.i;
+    this.mCurrentLottieGiftInfo.j = paramLottieGiftInfo.j;
   }
   
   public void setPlayListener(IH264PlayL paramIH264PlayL)
@@ -300,7 +300,7 @@ public class H264GiftView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.H264GiftView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
 package com.tencent.tkd.topicsdk.bean;
 
+import com.tencent.tkd.topicsdk.framework.TLog;
+import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import kotlin.Metadata;
-import kotlin.concurrent.ThreadsKt;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "Ljava/io/Serializable;", "media", "Lcom/tencent/tkd/topicsdk/bean/Media;", "(Lcom/tencent/tkd/topicsdk/bean/Media;)V", "backupCoverPath", "", "getBackupCoverPath", "()Ljava/lang/String;", "setBackupCoverPath", "(Ljava/lang/String;)V", "value", "coverPath", "getCoverPath", "setCoverPath", "endMergeTime", "", "getEndMergeTime", "()I", "setEndMergeTime", "(I)V", "filterType", "getFilterType", "setFilterType", "fromPage", "getFromPage", "setFromPage", "initialProgress", "", "getInitialProgress", "()F", "setInitialProgress", "(F)V", "getMedia", "()Lcom/tencent/tkd/topicsdk/bean/Media;", "setMedia", "mergeDuration", "", "getMergeDuration", "()J", "mergePath", "getMergePath", "setMergePath", "realDuration", "getRealDuration", "realPath", "getRealPath", "speedMode", "getSpeedMode", "setSpeedMode", "startMergeTime", "getStartMergeTime", "setStartMergeTime", "copyCoverToBaseDir", "", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "Ljava/io/Serializable;", "media", "Lcom/tencent/tkd/topicsdk/bean/Media;", "(Lcom/tencent/tkd/topicsdk/bean/Media;)V", "backupCoverPath", "", "getBackupCoverPath", "()Ljava/lang/String;", "setBackupCoverPath", "(Ljava/lang/String;)V", "value", "coverPath", "getCoverPath", "setCoverPath", "endMergeTime", "", "getEndMergeTime", "()I", "setEndMergeTime", "(I)V", "filterType", "getFilterType", "setFilterType", "fromPage", "getFromPage", "setFromPage", "initialProgress", "", "getInitialProgress", "()F", "setInitialProgress", "(F)V", "getMedia", "()Lcom/tencent/tkd/topicsdk/bean/Media;", "setMedia", "mergeDuration", "", "getMergeDuration", "()J", "mergePath", "getMergePath", "setMergePath", "realDuration", "getRealDuration", "realPath", "getRealPath", "speedMode", "getSpeedMode", "setSpeedMode", "startMergeTime", "getStartMergeTime", "setStartMergeTime", "copyCoverToBaseDir", "", "getBackUpCoverInputStream", "Ljava/io/FileInputStream;", "cover", "Ljava/io/File;", "getBackUpCoverOutputStream", "Ljava/io/FileOutputStream;", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class DisplayItem
   implements Serializable
 {
@@ -36,17 +40,56 @@ public final class DisplayItem
     this.coverPath = "";
     this.mergePath = "";
     this.endMergeTime = ((int)this.media.getDuration());
-    paramMedia = new File(TopicSDKHelperKt.a(), "tmp_cover_path.jpg").getAbsolutePath();
+    paramMedia = new File(TopicSDKHelperKt.d(), "tmp_cover_path.jpg").getAbsolutePath();
     Intrinsics.checkExpressionValueIsNotNull(paramMedia, "File(baseFileDir, \"tmp_c…r_path.jpg\").absolutePath");
     this.backupCoverPath = paramMedia;
   }
   
+  private final FileInputStream a(File paramFile)
+  {
+    try
+    {
+      paramFile = new FileInputStream(paramFile);
+      return paramFile;
+    }
+    catch (FileNotFoundException paramFile)
+    {
+      TLog.a("DisplayItem", (Throwable)paramFile);
+    }
+    return null;
+  }
+  
   private final void a()
   {
-    File localFile = new File(this.coverPath);
-    if (localFile.exists()) {
-      ThreadsKt.thread$default(false, false, null, null, 0, (Function0)new DisplayItem.copyCoverToBaseDir.1(this, localFile), 31, null);
+    File localFile1 = new File(this.coverPath);
+    File localFile2 = new File(this.backupCoverPath);
+    if (!localFile2.getParentFile().exists()) {
+      localFile2.getParentFile().mkdirs();
     }
+    if (localFile1.exists()) {
+      ThreadManagerKt.c((Function0)new DisplayItem.copyCoverToBaseDir.1(this, localFile1));
+    }
+  }
+  
+  private final FileOutputStream b()
+  {
+    File localFile = new File(this.backupCoverPath);
+    try
+    {
+      FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
+      return localFileOutputStream;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      label23:
+      break label23;
+    }
+    if (localFile.exists())
+    {
+      localFile.delete();
+      return b();
+    }
+    return null;
   }
   
   @NotNull
@@ -193,7 +236,7 @@ public final class DisplayItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.DisplayItem
  * JD-Core Version:    0.7.0.1
  */

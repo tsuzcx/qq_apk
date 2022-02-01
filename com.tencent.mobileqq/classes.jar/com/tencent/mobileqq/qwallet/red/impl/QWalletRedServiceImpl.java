@@ -72,10 +72,10 @@ public class QWalletRedServiceImpl
         localRedInfo = (QWRedConfig.RedInfo)paramString.next();
         ((ArrayList)localObject).add(new RedInfo(localRedInfo.path, localRedInfo.taskId, localRedInfo.isShow));
       }
-      QWalletCommonServlet.a(new RedInfoSyncReq(1, DeviceInfoUtil.c(), DeviceInfoUtil.e(), DeviceInfoUtil.i(), (ArrayList)localObject), new QWalletRedServiceImpl.2(this));
+      QWalletCommonServlet.a(new RedInfoSyncReq(1, DeviceInfoUtil.e(), DeviceInfoUtil.g(), DeviceInfoUtil.u(), (ArrayList)localObject), new QWalletRedServiceImpl.2(this));
     }
     if (localList.size() > 0) {
-      VACDReportUtil.a(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
+      VACDReportUtil.b(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
     }
   }
   
@@ -99,7 +99,7 @@ public class QWalletRedServiceImpl
       localLinkedList.addAll(this.mConfig.getCurShowRedInfosByPath(str));
     }
     if (localLinkedList.size() > 0) {
-      VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
+      VACDReportUtil.b(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
     }
   }
   
@@ -148,7 +148,7 @@ public class QWalletRedServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.red.impl.QWalletRedServiceImpl
  * JD-Core Version:    0.7.0.1
  */

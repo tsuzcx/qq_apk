@@ -12,20 +12,6 @@ import com.tencent.mobileqq.statistics.ReportController;
 
 public class QQPimJumpHelper
 {
-  public static Intent a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
     PackageManager localPackageManager = paramContext.getPackageManager();
@@ -34,7 +20,7 @@ public class QQPimJumpHelper
       int i = localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode;
       if (i < 1171)
       {
-        paramContext = a(paramContext);
+        paramContext = b(paramContext);
         paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
         return paramContext;
       }
@@ -73,6 +59,20 @@ public class QQPimJumpHelper
     return paramContext != null;
   }
   
+  public static Intent b(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return null;
+  }
+  
   public void a(Activity paramActivity, Bundle paramBundle)
   {
     Intent localIntent = new Intent();
@@ -86,7 +86,7 @@ public class QQPimJumpHelper
     if (a(paramActivity))
     {
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8006711", "0X8006711", 0, 0, "", "", "", "");
-      paramActivity.startActivity(a(paramActivity, QQPimDefineList.s, null));
+      paramActivity.startActivity(a(paramActivity, QQPimDefineList.w, null));
       return;
     }
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8006712", "0X8006712", 0, 0, "", "", "", "");
@@ -98,7 +98,7 @@ public class QQPimJumpHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimJumpHelper
  * JD-Core Version:    0.7.0.1
  */

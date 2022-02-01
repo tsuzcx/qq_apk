@@ -13,12 +13,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class UniteDownloadUtil
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new UniteDownloadUtil.1());
-  private static ConcurrentHashMap<Long, UniteDownloadUtil.DownloadDialogListener> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<Long, UniteDownloadUtil.DownloadDialogListener> a = new ConcurrentHashMap();
+  private static Handler b = new Handler(ThreadManager.getSubThreadLooper(), new UniteDownloadUtil.1());
   
   public static Handler a()
   {
-    return jdField_a_of_type_AndroidOsHandler;
+    return b;
   }
   
   public static void a(DownloadInfo paramDownloadInfo, UniteDownloadUtil.DownloadDialogListener paramDownloadDialogListener)
@@ -26,8 +26,8 @@ public class UniteDownloadUtil
     if (BaseApplicationImpl.sProcessId == 1)
     {
       Random localRandom = new Random();
-      for (localObject = Long.valueOf(localRandom.nextLong()); jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject); localObject = Long.valueOf(localRandom.nextLong())) {}
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, paramDownloadDialogListener);
+      for (localObject = Long.valueOf(localRandom.nextLong()); a.containsKey(localObject); localObject = Long.valueOf(localRandom.nextLong())) {}
+      a.put(localObject, paramDownloadDialogListener);
       DownloadDialogFragment.a(paramDownloadInfo, ((Long)localObject).longValue());
       return;
     }
@@ -48,7 +48,7 @@ public class UniteDownloadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.util.UniteDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

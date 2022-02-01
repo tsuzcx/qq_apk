@@ -3,12 +3,12 @@ package com.tencent.mobileqq.qcircle.api.impl;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.TextView;
-import com.tencent.biz.qcircleshadow.local.QCircleShadow;
 import com.tencent.biz.richframework.download.RFWDownloader;
 import com.tencent.biz.richframework.download.RFWDownloaderFactory;
 import com.tencent.biz.richframework.download.RFWMultiDownloadHelper;
 import com.tencent.biz.richframework.download.RFWMultiDownloadHelper.DownloadTask;
 import com.tencent.biz.richframework.util.RFWTypefaceUtil;
+import com.tencent.mobileqq.auto.engine.loader.ASDynamicEngine;
 import com.tencent.mobileqq.qcircle.api.IQCircleRFWApi;
 import com.tencent.qcircle.cooperation.config.download.QCircleDownloadConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ public class QCircleRFWApiImpl
   public void checkExceptionWhetherCauseByQCircle(String paramString)
   {
     QLog.e("QCircleConfigApiImpl", 1, "checkExceptionWhetherCauseByQCircle");
-    QCircleShadow.a().a(paramString);
+    ASDynamicEngine.c(paramString);
   }
   
   public String getDefaultSavePath(String paramString)
@@ -54,7 +54,7 @@ public class QCircleRFWApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleRFWApiImpl
  * JD-Core Version:    0.7.0.1
  */

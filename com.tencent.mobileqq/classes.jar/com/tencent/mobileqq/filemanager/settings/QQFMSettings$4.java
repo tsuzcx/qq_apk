@@ -9,14 +9,14 @@ class QQFMSettings$4
   
   public void run()
   {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    QQFMSettings.a(this.this$0, localFile, this.jdField_a_of_type_JavaIoFile, new QQFMSettings.4.1(this));
+    File localFile = new File(this.a);
+    QQFMSettings.a(this.this$0, localFile, this.b, new QQFMSettings.4.1(this));
     localFile.delete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.QQFMSettings.4
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ import java.util.Map;
 
 public final class ProcessorFactory
 {
-  private static final List<Integer> jdField_a_of_type_JavaUtilList = new ProcessorFactory.1();
-  private static final Map<Integer, Class<? extends BaseUinTypeProcessor>> jdField_a_of_type_JavaUtilMap = new ProcessorFactory.2();
+  private static final List<Integer> a = new ProcessorFactory.1();
+  private static final Map<Integer, Class<? extends BaseUinTypeProcessor>> b = new ProcessorFactory.2();
   
   @Nullable
   public static BaseUinTypeProcessor a(QQAppInterface paramQQAppInterface, int paramInt, NotificationElement paramNotificationElement)
   {
-    Class localClass = (Class)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    Class localClass = (Class)b.get(Integer.valueOf(paramInt));
     Object localObject = localClass;
     if (localClass == null) {
       localObject = CaseDefaultNotificationProcessor.class;
@@ -41,7 +41,7 @@ public final class ProcessorFactory
   
   public static boolean a(int paramInt)
   {
-    boolean bool3 = jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
+    boolean bool3 = a.contains(Integer.valueOf(paramInt));
     boolean bool2 = true;
     boolean bool1 = bool2;
     if (paramInt != 0)
@@ -52,10 +52,14 @@ public final class ProcessorFactory
         bool1 = bool2;
         if (paramInt != 3000)
         {
-          if (bool3) {
-            return true;
+          bool1 = bool2;
+          if (paramInt != 10014)
+          {
+            if (bool3) {
+              return true;
+            }
+            bool1 = false;
           }
-          bool1 = false;
         }
       }
     }
@@ -64,7 +68,7 @@ public final class ProcessorFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.ProcessorFactory
  * JD-Core Version:    0.7.0.1
  */

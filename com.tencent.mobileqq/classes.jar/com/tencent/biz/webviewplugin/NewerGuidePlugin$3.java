@@ -16,7 +16,7 @@ class NewerGuidePlugin$3
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
     }
-    QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, HardCodeUtil.a(2131707466));
+    QQCustomDialog.showPermissionSettingDialog(this.a, HardCodeUtil.a(2131905284));
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -24,12 +24,12 @@ class NewerGuidePlugin$3
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
     }
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
+    NewerGuidePlugin.c(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.3
  * JD-Core Version:    0.7.0.1
  */

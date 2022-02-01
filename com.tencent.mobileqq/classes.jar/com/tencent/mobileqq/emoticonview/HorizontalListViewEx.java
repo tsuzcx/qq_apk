@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
@@ -102,9 +103,9 @@ public class HorizontalListViewEx
     this.mRectPaint = new Paint();
     this.mRectPaint.setAntiAlias(true);
     this.mRectPaint.setStyle(Paint.Style.FILL);
-    this.mRectPaint.setColor(getResources().getColor(2131166553));
+    this.mRectPaint.setColor(getResources().getColor(2131167473));
     this.mRoundRect = new RectF();
-    this.mIndicatorRoundRectX = ViewUtils.a(18.0F);
+    this.mIndicatorRoundRectX = ViewUtils.dip2px(18.0F);
   }
   
   public static void produceTabView(int paramInt)
@@ -120,7 +121,7 @@ public class HorizontalListViewEx
       {
         try
         {
-          localObject1 = inflater.inflate(2131561591, null, false);
+          localObject1 = inflater.inflate(2131627954, null, false);
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
@@ -270,7 +271,7 @@ public class HorizontalListViewEx
     int j = getMeasuredWidth();
     int i = j;
     if (j == 0) {
-      i = ViewUtils.a();
+      i = ViewUtils.getScreenWidth();
     }
     i = paramInt * k - (i - this.mTabWidth);
     paramInt = i;
@@ -293,6 +294,21 @@ public class HorizontalListViewEx
     setCurrentScrollState(4098);
     requestLayout();
     return 0;
+  }
+  
+  public void setInGuildLiveRoom(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.mRectPaint.setColor(Color.parseColor("#2F3033"));
+      return;
+    }
+    this.mRectPaint.setColor(getResources().getColor(2131167473));
+  }
+  
+  public void setNoSkinColor(int paramInt)
+  {
+    this.mRectPaint.setColor(paramInt);
   }
   
   public void setSelection(int paramInt)
@@ -472,7 +488,7 @@ public class HorizontalListViewEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HorizontalListViewEx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,24 @@
 package com.tencent.qqmini.minigame;
 
-import android.content.Intent;
-import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
-import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.minigame.action.DebugSocketAction;
 
 class GamePage$5
-  implements IActivityResultListener
+  implements View.OnClickListener
 {
-  GamePage$5(GamePage paramGamePage, PayProxy paramPayProxy) {}
+  GamePage$5(GamePage paramGamePage) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 3004)
-    {
-      if (GamePage.access$1200(this.this$0) != null)
-      {
-        paramIntent = this.val$payProxy;
-        if (paramIntent != null) {
-          paramIntent.callJs("~function(d,e){try{e=d.createEvent('Event');e.initEvent('qbrowserVisibilityChange');e.hidden=false;d.dispatchEvent(e)}catch(err){}}(document);", GamePage.access$1200(this.this$0));
-        }
-      }
-      ActivityResultManager.g().removeActivityResultListener(this);
-      return true;
-    }
-    return false;
+    DebugSocketAction.obtain(GamePage.access$1200(this.this$0)).quitDebugSocket();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage.5
  * JD-Core Version:    0.7.0.1
  */

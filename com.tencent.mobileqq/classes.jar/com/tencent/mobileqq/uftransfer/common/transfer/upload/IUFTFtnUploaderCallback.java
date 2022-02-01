@@ -8,13 +8,13 @@ public abstract interface IUFTFtnUploaderCallback
   
   public abstract void a(long paramLong, String paramString);
   
-  public abstract void b();
+  public abstract void g();
   
-  public abstract void g_(String paramString);
+  public abstract void r_(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.upload.IUFTFtnUploaderCallback
  * JD-Core Version:    0.7.0.1
  */

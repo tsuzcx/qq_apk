@@ -16,9 +16,11 @@ public class Metrics
   public long fullySolved;
   public long graphOptimizer;
   public long graphSolved;
+  public long grouping;
   public long infeasibleDetermineGroups;
   public long iterations;
   public long lastTableSize;
+  public long layouts;
   public long linearSolved;
   public long matchConnectionResolved;
   public long maxRows;
@@ -109,7 +111,7 @@ public class Metrics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.Metrics
  * JD-Core Version:    0.7.0.1
  */

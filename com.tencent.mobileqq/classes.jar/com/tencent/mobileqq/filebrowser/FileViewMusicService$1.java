@@ -9,45 +9,45 @@ class FileViewMusicService$1
   public void run()
   {
     // Byte code:
-    //   0: new 30	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
+    //   0: new 31	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
     //   3: dup
-    //   4: invokespecial 31	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
+    //   4: invokespecial 32	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
     //   7: astore 4
-    //   9: new 33	java/io/FileInputStream
+    //   9: new 34	java/io/FileInputStream
     //   12: dup
-    //   13: new 35	java/io/File
+    //   13: new 36	java/io/File
     //   16: dup
     //   17: aload_0
-    //   18: getfield 17	com/tencent/mobileqq/filebrowser/FileViewMusicService$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   21: invokespecial 38	java/io/File:<init>	(Ljava/lang/String;)V
-    //   24: invokespecial 41	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   18: getfield 18	com/tencent/mobileqq/filebrowser/FileViewMusicService$1:a	Ljava/lang/String;
+    //   21: invokespecial 39	java/io/File:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 42	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   27: astore_2
     //   28: aload_2
     //   29: astore_1
     //   30: aload 4
     //   32: iconst_3
-    //   33: invokevirtual 47	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   33: invokevirtual 48	android/media/MediaPlayer:setAudioStreamType	(I)V
     //   36: aload_2
     //   37: astore_1
     //   38: aload 4
     //   40: aload_2
-    //   41: invokevirtual 51	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   44: invokevirtual 55	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   41: invokevirtual 52	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   44: invokevirtual 56	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
     //   47: aload_2
     //   48: astore_1
     //   49: aload 4
-    //   51: new 57	com/tencent/mobileqq/filebrowser/FileViewMusicService$1$1
+    //   51: new 58	com/tencent/mobileqq/filebrowser/FileViewMusicService$1$1
     //   54: dup
     //   55: aload_0
     //   56: aload 4
-    //   58: invokespecial 60	com/tencent/mobileqq/filebrowser/FileViewMusicService$1$1:<init>	(Lcom/tencent/mobileqq/filebrowser/FileViewMusicService$1;Landroid/media/MediaPlayer;)V
-    //   61: invokevirtual 64	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   58: invokespecial 61	com/tencent/mobileqq/filebrowser/FileViewMusicService$1$1:<init>	(Lcom/tencent/mobileqq/filebrowser/FileViewMusicService$1;Landroid/media/MediaPlayer;)V
+    //   61: invokevirtual 65	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
     //   64: aload_2
     //   65: astore_1
     //   66: aload 4
-    //   68: invokevirtual 67	android/media/MediaPlayer:prepareAsync	()V
+    //   68: invokevirtual 68	android/media/MediaPlayer:prepareAsync	()V
     //   71: aload_2
-    //   72: invokevirtual 70	java/io/FileInputStream:close	()V
+    //   72: invokevirtual 71	java/io/FileInputStream:close	()V
     //   75: return
     //   76: astore_3
     //   77: goto +12 -> 89
@@ -61,23 +61,23 @@ class FileViewMusicService$1
     //   89: aload_2
     //   90: astore_1
     //   91: aload_3
-    //   92: invokevirtual 73	java/lang/Exception:printStackTrace	()V
+    //   92: invokevirtual 74	java/lang/Exception:printStackTrace	()V
     //   95: aload_2
     //   96: astore_1
     //   97: aload 4
-    //   99: invokevirtual 76	android/media/MediaPlayer:stop	()V
+    //   99: invokevirtual 77	android/media/MediaPlayer:stop	()V
     //   102: aload_2
     //   103: astore_1
     //   104: aload 4
-    //   106: invokevirtual 79	android/media/MediaPlayer:release	()V
+    //   106: invokevirtual 80	android/media/MediaPlayer:release	()V
     //   109: aload_2
     //   110: ifnull +13 -> 123
     //   113: aload_2
-    //   114: invokevirtual 70	java/io/FileInputStream:close	()V
+    //   114: invokevirtual 71	java/io/FileInputStream:close	()V
     //   117: return
     //   118: astore_1
     //   119: aload_1
-    //   120: invokevirtual 80	java/io/IOException:printStackTrace	()V
+    //   120: invokevirtual 81	java/io/IOException:printStackTrace	()V
     //   123: return
     //   124: astore_3
     //   125: aload_1
@@ -87,11 +87,11 @@ class FileViewMusicService$1
     //   129: aload_2
     //   130: ifnull +15 -> 145
     //   133: aload_2
-    //   134: invokevirtual 70	java/io/FileInputStream:close	()V
+    //   134: invokevirtual 71	java/io/FileInputStream:close	()V
     //   137: goto +8 -> 145
     //   140: astore_2
     //   141: aload_2
-    //   142: invokevirtual 80	java/io/IOException:printStackTrace	()V
+    //   142: invokevirtual 81	java/io/IOException:printStackTrace	()V
     //   145: aload_1
     //   146: athrow
     // Local variable table:
@@ -130,7 +130,7 @@ class FileViewMusicService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.FileViewMusicService.1
  * JD-Core Version:    0.7.0.1
  */

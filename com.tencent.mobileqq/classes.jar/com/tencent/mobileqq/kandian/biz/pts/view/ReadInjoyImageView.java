@@ -21,14 +21,13 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadInjoyImageView
   extends ImageBase
 {
-  private Drawable a;
   protected NativeReadInjoyImageView a;
+  private Drawable b = new ColorDrawable(Color.parseColor("#E9E9E9"));
   
   public ReadInjoyImageView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
+    this.a = new NativeReadInjoyImageView(paramVafContext.getContext());
   }
   
   private boolean a()
@@ -36,8 +35,8 @@ public class ReadInjoyImageView
     if (this.mSrc == null) {
       return false;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredWidth();
-    int j = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredHeight();
+    int i = this.a.getComMeasuredWidth();
+    int j = this.a.getComMeasuredHeight();
     if ((i > 0) && (j > 0))
     {
       this.mSrc = ((IRIJSmartCropUtils)QRoute.api(IRIJSmartCropUtils.class)).getSmartCropURL(this.mSrc, i, j);
@@ -48,17 +47,17 @@ public class ReadInjoyImageView
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredHeight();
+    return this.a.getComMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredWidth();
+    return this.a.getComMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+    return this.a;
   }
   
   public void loadImage(String paramString)
@@ -78,8 +77,8 @@ public class ReadInjoyImageView
     }
     try
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getResources().getDrawable(paramString.intValue());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageDrawable(paramString);
+      paramString = this.a.getResources().getDrawable(paramString.intValue());
+      this.a.setImageDrawable(paramString);
       return;
     }
     catch (Resources.NotFoundException paramString)
@@ -89,41 +88,41 @@ public class ReadInjoyImageView
     }
     QLog.d("ReadInjoyImageView", 2, "loadImage: cant find in resources dir, do nothing");
     return;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageSrc("");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.setImageSrc("");
+    this.a.setImagePlaceHolder(this.b);
     return;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.setImagePlaceHolder(this.b);
     if (a()) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageSrc(paramString);
+      this.a.setImageSrc(paramString);
     }
   }
   
   protected void onComDraw(Canvas paramCanvas)
   {
-    if ((this.mSrc != null) && (!this.mSrc.equals(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.a())))
+    if ((this.mSrc != null) && (!this.mSrc.equals(this.a.getPath())))
     {
       a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageSrc(this.mSrc);
+      this.a.setImageSrc(this.mSrc);
     }
     super.onComDraw(paramCanvas);
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
+    this.a.measureComponent(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.a.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
+    this.a.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     loadImage(this.mSrc);
     refresh();
   }
@@ -131,23 +130,23 @@ public class ReadInjoyImageView
   public void reset()
   {
     super.reset();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageSrc(null);
+    this.a.setImageSrc(null);
     this.mSrc = null;
   }
   
   public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageBitmap(paramBitmap);
+    this.a.setImageBitmap(paramBitmap);
   }
   
   public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageDrawable(paramDrawable);
+    this.a.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.util;
 class PreloadManager$ReadFileThread
   implements Runnable
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
+  String a;
   String b;
+  boolean c = false;
   
   public PreloadManager$ReadFileThread(PreloadManager paramPreloadManager, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
   }
   
@@ -18,44 +18,44 @@ class PreloadManager$ReadFileThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 23	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4: invokestatic 36	com/tencent/biz/pubaccount/util/PreloadManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1: getfield 24	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:a	Ljava/lang/String;
+    //   4: invokestatic 38	com/tencent/biz/pubaccount/util/PreloadManager:d	(Ljava/lang/String;)Ljava/lang/String;
     //   7: astore 5
     //   9: aload 5
     //   11: ifnonnull +4 -> 15
     //   14: return
     //   15: aload_0
     //   16: aload_0
-    //   17: getfield 23	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   20: ldc 38
-    //   22: invokevirtual 44	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   25: putfield 21	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:jdField_a_of_type_Boolean	Z
+    //   17: getfield 24	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:a	Ljava/lang/String;
+    //   20: ldc 40
+    //   22: invokevirtual 46	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   25: putfield 22	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:c	Z
     //   28: aload_0
-    //   29: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   32: invokestatic 47	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Landroid/support/v4/util/MQLruCache;
+    //   29: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   32: invokestatic 49	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Landroid/support/v4/util/MQLruCache;
     //   35: aload 5
-    //   37: invokevirtual 53	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   40: checkcast 55	[B
+    //   37: invokevirtual 55	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   40: checkcast 57	[B
     //   43: astore_2
     //   44: aload_2
     //   45: ifnonnull +495 -> 540
-    //   48: new 57	java/io/File
+    //   48: new 59	java/io/File
     //   51: dup
-    //   52: new 57	java/io/File
+    //   52: new 59	java/io/File
     //   55: dup
-    //   56: getstatic 62	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD	Ljava/lang/String;
-    //   59: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
+    //   56: getstatic 64	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD	Ljava/lang/String;
+    //   59: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
     //   62: aload 5
-    //   64: invokespecial 68	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   64: invokespecial 70	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   67: astore 6
     //   69: aload 6
-    //   71: invokevirtual 72	java/io/File:exists	()Z
+    //   71: invokevirtual 74	java/io/File:exists	()Z
     //   74: ifeq +586 -> 660
-    //   77: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   77: invokestatic 80	java/lang/System:currentTimeMillis	()J
     //   80: aload 6
-    //   82: invokevirtual 81	java/io/File:lastModified	()J
+    //   82: invokevirtual 83	java/io/File:lastModified	()J
     //   85: lsub
-    //   86: ldc2_w 82
+    //   86: ldc2_w 84
     //   89: lcmp
     //   90: ifge +570 -> 660
     //   93: aconst_null
@@ -64,185 +64,185 @@ class PreloadManager$ReadFileThread
     //   97: astore_3
     //   98: aload_3
     //   99: astore_2
-    //   100: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   100: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   103: ifeq +48 -> 151
     //   106: aload_3
     //   107: astore_2
-    //   108: new 90	java/lang/StringBuilder
+    //   108: new 92	java/lang/StringBuilder
     //   111: dup
-    //   112: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   112: invokespecial 93	java/lang/StringBuilder:<init>	()V
     //   115: astore 7
     //   117: aload_3
     //   118: astore_2
     //   119: aload 7
-    //   121: ldc 93
-    //   123: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: ldc 95
+    //   123: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: aload_3
     //   128: astore_2
     //   129: aload 7
-    //   131: invokestatic 78	java/lang/System:currentTimeMillis	()J
-    //   134: invokevirtual 100	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   131: invokestatic 80	java/lang/System:currentTimeMillis	()J
+    //   134: invokevirtual 102	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   137: pop
     //   138: aload_3
     //   139: astore_2
-    //   140: ldc 102
+    //   140: ldc 104
     //   142: iconst_2
     //   143: aload 7
-    //   145: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   145: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   148: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   151: aload_3
     //   152: astore_2
-    //   153: new 112	java/io/FileInputStream
+    //   153: new 113	java/io/FileInputStream
     //   156: dup
     //   157: aload 6
-    //   159: invokespecial 115	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   159: invokespecial 116	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   162: astore_3
     //   163: aload_3
-    //   164: invokevirtual 119	java/io/FileInputStream:available	()I
+    //   164: invokevirtual 120	java/io/FileInputStream:available	()I
     //   167: newarray byte
     //   169: astore_2
     //   170: aload_3
     //   171: aload_2
-    //   172: invokevirtual 123	java/io/FileInputStream:read	([B)I
+    //   172: invokevirtual 124	java/io/FileInputStream:read	([B)I
     //   175: pop
     //   176: aload_3
-    //   177: invokevirtual 126	java/io/FileInputStream:close	()V
+    //   177: invokevirtual 127	java/io/FileInputStream:close	()V
     //   180: aload_0
-    //   181: getfield 25	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:b	Ljava/lang/String;
-    //   184: invokestatic 129	com/tencent/biz/pubaccount/util/PreloadManager:a	(Ljava/lang/String;)[B
+    //   181: getfield 26	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:b	Ljava/lang/String;
+    //   184: invokestatic 131	com/tencent/biz/pubaccount/util/PreloadManager:e	(Ljava/lang/String;)[B
     //   187: aload_2
-    //   188: invokestatic 132	com/tencent/biz/pubaccount/util/PreloadManager:a	([B[B)[B
+    //   188: invokestatic 134	com/tencent/biz/pubaccount/util/PreloadManager:a	([B[B)[B
     //   191: astore_2
     //   192: aload_2
     //   193: ifnull +276 -> 469
-    //   196: new 40	java/lang/String
+    //   196: new 42	java/lang/String
     //   199: dup
     //   200: aload_2
-    //   201: invokespecial 135	java/lang/String:<init>	([B)V
+    //   201: invokespecial 137	java/lang/String:<init>	([B)V
     //   204: astore_2
     //   205: aload_2
     //   206: aload_2
-    //   207: ldc 137
-    //   209: invokevirtual 141	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   207: ldc 139
+    //   209: invokevirtual 143	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   212: bipush 10
     //   214: iadd
     //   215: aload_2
-    //   216: invokevirtual 144	java/lang/String:length	()I
-    //   219: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
+    //   216: invokevirtual 146	java/lang/String:length	()I
+    //   219: invokevirtual 150	java/lang/String:substring	(II)Ljava/lang/String;
     //   222: astore 4
-    //   224: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   224: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   227: ifeq +39 -> 266
-    //   230: new 90	java/lang/StringBuilder
+    //   230: new 92	java/lang/StringBuilder
     //   233: dup
-    //   234: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   234: invokespecial 93	java/lang/StringBuilder:<init>	()V
     //   237: astore 6
     //   239: aload 6
-    //   241: ldc 150
-    //   243: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: ldc 152
+    //   243: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: pop
     //   247: aload 6
     //   249: aload 4
-    //   251: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   254: pop
-    //   255: ldc 102
+    //   255: ldc 104
     //   257: iconst_2
     //   258: aload 6
-    //   260: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   263: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   260: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   263: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   266: aload 5
     //   268: aload 4
-    //   270: invokevirtual 154	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   270: invokevirtual 156	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   273: istore_1
     //   274: iload_1
     //   275: ifne +14 -> 289
     //   278: aload_3
-    //   279: invokevirtual 126	java/io/FileInputStream:close	()V
+    //   279: invokevirtual 127	java/io/FileInputStream:close	()V
     //   282: return
     //   283: astore_2
     //   284: aload_2
-    //   285: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   285: invokevirtual 159	java/io/IOException:printStackTrace	()V
     //   288: return
     //   289: aload_2
     //   290: iconst_0
     //   291: aload_2
-    //   292: ldc 137
-    //   294: invokevirtual 141	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   297: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
+    //   292: ldc 139
+    //   294: invokevirtual 143	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   297: invokevirtual 150	java/lang/String:substring	(II)Ljava/lang/String;
     //   300: astore 4
     //   302: aload_0
-    //   303: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   306: getfield 161	com/tencent/biz/pubaccount/util/PreloadManager:c	Ljava/lang/Object;
+    //   303: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   306: getfield 163	com/tencent/biz/pubaccount/util/PreloadManager:g	Ljava/lang/Object;
     //   309: astore_2
     //   310: aload_2
     //   311: monitorenter
     //   312: aload_0
-    //   313: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   316: invokestatic 47	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Landroid/support/v4/util/MQLruCache;
+    //   313: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   316: invokestatic 49	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Landroid/support/v4/util/MQLruCache;
     //   319: aload 5
     //   321: aload 4
-    //   323: invokevirtual 165	java/lang/String:getBytes	()[B
-    //   326: invokevirtual 169	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   323: invokevirtual 167	java/lang/String:getBytes	()[B
+    //   326: invokevirtual 171	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   329: pop
     //   330: aload_2
     //   331: monitorexit
-    //   332: new 171	java/util/ArrayList
+    //   332: new 173	java/util/ArrayList
     //   335: dup
-    //   336: invokespecial 172	java/util/ArrayList:<init>	()V
+    //   336: invokespecial 174	java/util/ArrayList:<init>	()V
     //   339: pop
     //   340: aload_0
-    //   341: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   341: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
     //   344: aload 4
     //   346: aload_0
-    //   347: getfield 21	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:jdField_a_of_type_Boolean	Z
-    //   350: invokestatic 175	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;Ljava/lang/String;Z)Ljava/util/ArrayList;
+    //   347: getfield 22	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:c	Z
+    //   350: invokestatic 177	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;Ljava/lang/String;Z)Ljava/util/ArrayList;
     //   353: astore 4
     //   355: aload_0
-    //   356: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   359: getfield 177	com/tencent/biz/pubaccount/util/PreloadManager:a	Ljava/lang/Object;
+    //   356: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   359: getfield 179	com/tencent/biz/pubaccount/util/PreloadManager:d	Ljava/lang/Object;
     //   362: astore_2
     //   363: aload_2
     //   364: monitorenter
     //   365: aload_0
-    //   366: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   369: invokestatic 180	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Ljava/util/HashMap;
+    //   366: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   369: invokestatic 182	com/tencent/biz/pubaccount/util/PreloadManager:d	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Ljava/util/HashMap;
     //   372: aload 5
     //   374: aload 4
-    //   376: invokevirtual 183	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   376: invokevirtual 185	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   379: pop
-    //   380: new 90	java/lang/StringBuilder
+    //   380: new 92	java/lang/StringBuilder
     //   383: dup
-    //   384: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   384: invokespecial 93	java/lang/StringBuilder:<init>	()V
     //   387: astore 4
     //   389: aload 4
-    //   391: ldc 185
-    //   393: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   391: ldc 187
+    //   393: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   396: pop
     //   397: aload 4
     //   399: aload 5
-    //   401: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   404: pop
-    //   405: ldc 102
+    //   405: ldc 104
     //   407: iconst_2
     //   408: aload 4
-    //   410: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   413: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   410: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   413: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   416: aload_2
     //   417: monitorexit
     //   418: aload_0
-    //   419: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   422: getfield 187	com/tencent/biz/pubaccount/util/PreloadManager:b	Z
+    //   419: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   422: getfield 188	com/tencent/biz/pubaccount/util/PreloadManager:c	Z
     //   425: ifne +44 -> 469
-    //   428: invokestatic 192	cooperation/qzone/util/NetworkState:getNetworkType	()I
+    //   428: invokestatic 193	cooperation/qzone/util/NetworkState:getNetworkType	()I
     //   431: iconst_1
     //   432: if_icmpne +37 -> 469
     //   435: aload_0
-    //   436: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   439: invokevirtual 194	com/tencent/biz/pubaccount/util/PreloadManager:b	()Z
+    //   436: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   439: invokevirtual 195	com/tencent/biz/pubaccount/util/PreloadManager:g	()Z
     //   442: ifeq +27 -> 469
     //   445: aload_0
-    //   446: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   449: invokevirtual 196	com/tencent/biz/pubaccount/util/PreloadManager:d	()V
+    //   446: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   449: invokevirtual 197	com/tencent/biz/pubaccount/util/PreloadManager:e	()V
     //   452: goto +17 -> 469
     //   455: astore 4
     //   457: aload_2
@@ -255,7 +255,7 @@ class PreloadManager$ReadFileThread
     //   466: aload 4
     //   468: athrow
     //   469: aload_3
-    //   470: invokevirtual 126	java/io/FileInputStream:close	()V
+    //   470: invokevirtual 127	java/io/FileInputStream:close	()V
     //   473: return
     //   474: astore_2
     //   475: goto +47 -> 522
@@ -275,98 +275,98 @@ class PreloadManager$ReadFileThread
     //   500: aload_3
     //   501: astore_2
     //   502: aload 4
-    //   504: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   504: invokevirtual 159	java/io/IOException:printStackTrace	()V
     //   507: aload_3
     //   508: ifnull +152 -> 660
     //   511: aload_3
-    //   512: invokevirtual 126	java/io/FileInputStream:close	()V
+    //   512: invokevirtual 127	java/io/FileInputStream:close	()V
     //   515: return
     //   516: astore_2
     //   517: aload_2
-    //   518: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   518: invokevirtual 159	java/io/IOException:printStackTrace	()V
     //   521: return
     //   522: aload_3
     //   523: ifnull +15 -> 538
     //   526: aload_3
-    //   527: invokevirtual 126	java/io/FileInputStream:close	()V
+    //   527: invokevirtual 127	java/io/FileInputStream:close	()V
     //   530: goto +8 -> 538
     //   533: astore_3
     //   534: aload_3
-    //   535: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   535: invokevirtual 159	java/io/IOException:printStackTrace	()V
     //   538: aload_2
     //   539: athrow
-    //   540: new 171	java/util/ArrayList
+    //   540: new 173	java/util/ArrayList
     //   543: dup
-    //   544: invokespecial 172	java/util/ArrayList:<init>	()V
+    //   544: invokespecial 174	java/util/ArrayList:<init>	()V
     //   547: pop
     //   548: aload_0
-    //   549: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   552: new 40	java/lang/String
+    //   549: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   552: new 42	java/lang/String
     //   555: dup
     //   556: aload_2
-    //   557: invokespecial 135	java/lang/String:<init>	([B)V
+    //   557: invokespecial 137	java/lang/String:<init>	([B)V
     //   560: aload_0
-    //   561: getfield 21	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:jdField_a_of_type_Boolean	Z
-    //   564: invokestatic 175	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;Ljava/lang/String;Z)Ljava/util/ArrayList;
+    //   561: getfield 22	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:c	Z
+    //   564: invokestatic 177	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;Ljava/lang/String;Z)Ljava/util/ArrayList;
     //   567: astore_3
     //   568: aload_0
-    //   569: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   572: getfield 177	com/tencent/biz/pubaccount/util/PreloadManager:a	Ljava/lang/Object;
+    //   569: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   572: getfield 179	com/tencent/biz/pubaccount/util/PreloadManager:d	Ljava/lang/Object;
     //   575: astore_2
     //   576: aload_2
     //   577: monitorenter
     //   578: aload_0
-    //   579: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   582: invokestatic 180	com/tencent/biz/pubaccount/util/PreloadManager:a	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Ljava/util/HashMap;
+    //   579: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   582: invokestatic 182	com/tencent/biz/pubaccount/util/PreloadManager:d	(Lcom/tencent/biz/pubaccount/util/PreloadManager;)Ljava/util/HashMap;
     //   585: aload 5
     //   587: aload_3
-    //   588: invokevirtual 183	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   588: invokevirtual 185	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   591: pop
-    //   592: new 90	java/lang/StringBuilder
+    //   592: new 92	java/lang/StringBuilder
     //   595: dup
-    //   596: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   596: invokespecial 93	java/lang/StringBuilder:<init>	()V
     //   599: astore_3
     //   600: aload_3
-    //   601: ldc 185
-    //   603: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: ldc 187
+    //   603: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   606: pop
     //   607: aload_3
     //   608: aload 5
-    //   610: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   610: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   613: pop
-    //   614: ldc 102
+    //   614: ldc 104
     //   616: iconst_2
     //   617: aload_3
-    //   618: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   621: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   618: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   621: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   624: aload_2
     //   625: monitorexit
     //   626: aload_0
-    //   627: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   630: getfield 187	com/tencent/biz/pubaccount/util/PreloadManager:b	Z
+    //   627: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   630: getfield 188	com/tencent/biz/pubaccount/util/PreloadManager:c	Z
     //   633: ifne +27 -> 660
-    //   636: invokestatic 192	cooperation/qzone/util/NetworkState:getNetworkType	()I
+    //   636: invokestatic 193	cooperation/qzone/util/NetworkState:getNetworkType	()I
     //   639: iconst_1
     //   640: if_icmpne +20 -> 660
     //   643: aload_0
-    //   644: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   647: invokevirtual 194	com/tencent/biz/pubaccount/util/PreloadManager:b	()Z
+    //   644: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   647: invokevirtual 195	com/tencent/biz/pubaccount/util/PreloadManager:g	()Z
     //   650: ifeq +10 -> 660
     //   653: aload_0
-    //   654: getfield 16	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
-    //   657: invokevirtual 196	com/tencent/biz/pubaccount/util/PreloadManager:d	()V
+    //   654: getfield 17	com/tencent/biz/pubaccount/util/PreloadManager$ReadFileThread:this$0	Lcom/tencent/biz/pubaccount/util/PreloadManager;
+    //   657: invokevirtual 197	com/tencent/biz/pubaccount/util/PreloadManager:e	()V
     //   660: return
     //   661: astore_3
     //   662: aload_2
     //   663: monitorexit
     //   664: aload_3
     //   665: athrow
-    //   666: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   666: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   669: ifeq +11 -> 680
-    //   672: ldc 102
+    //   672: ldc 104
     //   674: iconst_2
-    //   675: ldc 198
-    //   677: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   675: ldc 199
+    //   677: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   680: return
     //   681: astore_2
     //   682: goto -16 -> 666
@@ -443,7 +443,7 @@ class PreloadManager$ReadFileThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.ReadFileThread
  * JD-Core Version:    0.7.0.1
  */

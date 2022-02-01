@@ -7,34 +7,28 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class INetPageLoader
 {
-  public long a;
-  public String a;
-  protected AtomicBoolean a;
   public boolean a;
   public long b;
-  public boolean b;
-  
-  public INetPageLoader()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public long c;
+  public String d = null;
+  public boolean e;
+  protected AtomicBoolean f = new AtomicBoolean(false);
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.b = System.currentTimeMillis();
   }
   
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public void a(String paramString)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    long l3 = this.jdField_a_of_type_Long;
+    long l2 = this.c;
+    long l3 = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("page network respond times ");
     localStringBuilder.append(l2 - l3);
@@ -47,17 +41,17 @@ public abstract class INetPageLoader
   
   public void b()
   {
-    this.b = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.INetPageLoader
  * JD-Core Version:    0.7.0.1
  */

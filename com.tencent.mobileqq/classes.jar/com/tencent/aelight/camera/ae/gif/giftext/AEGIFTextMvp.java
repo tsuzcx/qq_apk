@@ -9,12 +9,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
-import com.tencent.aelight.camera.ae.AEViewModelProviders;
 import com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFSmartTextAdapter;
 import com.tencent.aelight.camera.ae.gif.giftext.viewmodel.AEGIFRecommandTextViewModel;
 import com.tencent.aelight.camera.aebase.BaseVMPeakActivity;
-import com.tencent.aelight.camera.aebase.lifecycle.GlobalViewModelFactory;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
@@ -26,214 +23,202 @@ import java.util.List;
 public class AEGIFTextMvp
   implements AEGIFTextListener
 {
-  public static final List<String> a;
-  private int jdField_a_of_type_Int = 0;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private StaggeredGridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AEGIFOutlineTextView jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView;
-  private AEGIFSmartTextAdapter jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter;
-  private AEGIFRecommandTextViewModel jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFRecommandTextViewModel;
-  private BaseVMPeakActivity jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { HardCodeUtil.a(2131700199), HardCodeUtil.a(2131700210), HardCodeUtil.a(2131700208), HardCodeUtil.a(2131700215), HardCodeUtil.a(2131700219), HardCodeUtil.a(2131700216), "dbq", "886", HardCodeUtil.a(2131700213), HardCodeUtil.a(2131700212), HardCodeUtil.a(2131700203), "ok", "666", HardCodeUtil.a(2131700205), HardCodeUtil.a(2131700222), HardCodeUtil.a(2131700214) });
-  }
+  public static final List<String> a = Arrays.asList(new String[] { HardCodeUtil.a(2131898243), HardCodeUtil.a(2131898254), HardCodeUtil.a(2131898252), HardCodeUtil.a(2131898259), HardCodeUtil.a(2131898263), HardCodeUtil.a(2131898260), "dbq", "886", HardCodeUtil.a(2131898257), HardCodeUtil.a(2131898256), HardCodeUtil.a(2131898247), "ok", "666", HardCodeUtil.a(2131898249), HardCodeUtil.a(2131898265), HardCodeUtil.a(2131898258) });
+  private HashMap<String, String> b;
+  private BaseVMPeakActivity c;
+  private RelativeLayout d;
+  private RecyclerView e;
+  private ImageView f;
+  private TextView g;
+  private ProgressBar h;
+  private StaggeredGridLayoutManager i;
+  private AEGIFSmartTextAdapter j;
+  private AEGIFOutlineTextView k;
+  private String l;
+  private int m = 0;
+  private ArrayList<String> n;
+  private boolean o = false;
   
   public AEGIFTextMvp(BaseVMPeakActivity paramBaseVMPeakActivity, RelativeLayout paramRelativeLayout, AEGIFOutlineTextView paramAEGIFOutlineTextView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity = paramBaseVMPeakActivity;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    paramBaseVMPeakActivity = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    this.c = paramBaseVMPeakActivity;
+    this.d = paramRelativeLayout;
+    paramBaseVMPeakActivity = this.d;
     if (paramBaseVMPeakActivity != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBaseVMPeakActivity.findViewById(2064122529));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2064122619));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2064122530));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2064122526));
+      this.g = ((TextView)paramBaseVMPeakActivity.findViewById(2063991348));
+      this.h = ((ProgressBar)this.d.findViewById(2063991426));
+      this.e = ((RecyclerView)this.d.findViewById(2063991349));
+      this.f = ((ImageView)this.d.findViewById(2063991345));
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView = paramAEGIFOutlineTextView;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("happy", HardCodeUtil.a(2131700224));
-    this.jdField_a_of_type_JavaUtilHashMap.put("neutral", HardCodeUtil.a(2131700200));
-    this.jdField_a_of_type_JavaUtilHashMap.put("sad", HardCodeUtil.a(2131700206));
-    this.jdField_a_of_type_JavaUtilHashMap.put("anger", HardCodeUtil.a(2131700217));
-    this.jdField_a_of_type_JavaUtilHashMap.put("disgust", HardCodeUtil.a(2131700209));
-    this.jdField_a_of_type_JavaUtilHashMap.put("fear", HardCodeUtil.a(2131700204));
+    this.k = paramAEGIFOutlineTextView;
+    this.b = new HashMap();
+    this.b.put("happy", HardCodeUtil.a(2131898267));
+    this.b.put("neutral", HardCodeUtil.a(2131898244));
+    this.b.put("sad", HardCodeUtil.a(2131898250));
+    this.b.put("anger", HardCodeUtil.a(2131898261));
+    this.b.put("disgust", HardCodeUtil.a(2131898253));
+    this.b.put("fear", HardCodeUtil.a(2131898248));
   }
   
   private void b(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setText(paramString1);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    int i;
+    this.k.setText(paramString1);
+    ViewGroup.LayoutParams localLayoutParams = this.k.getLayoutParams();
+    int i1;
     if (paramString1.indexOf('\n') > 0) {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 73.199997F);
+      i1 = DisplayUtil.a(this.c, 73.199997F);
     } else {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 41.0F);
+      i1 = DisplayUtil.a(this.c, 41.0F);
     }
-    localLayoutParams.height = i;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setTextColor(paramString2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramString3);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 4.0F));
+    localLayoutParams.height = i1;
+    this.k.setLayoutParams(localLayoutParams);
+    this.k.setTextColor(paramString2);
+    this.k.setOutlineColor(paramString3);
+    this.k.setOutlineWidth(DisplayUtil.a(this.c, 4.0F));
     if (paramString1.indexOf('\n') > 0) {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 26.0F);
+      i1 = DisplayUtil.a(this.c, 26.0F);
     } else {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 30.0F);
+      i1 = DisplayUtil.a(this.c, 30.0F);
     }
-    float f = i;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setTextSize(f);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.invalidate();
+    float f1 = i1;
+    this.k.setTextSize(f1);
+    this.k.invalidate();
   }
   
-  private void e()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFRecommandTextViewModel = ((AEGIFRecommandTextViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, GlobalViewModelFactory.a()).get(AEGIFRecommandTextViewModel.class));
+    this.l = "";
+    this.i = new StaggeredGridLayoutManager(2, 0);
+    this.i.setGapStrategy(0);
+    this.e.setLayoutManager(this.i);
+    this.e.setItemAnimator(null);
+    this.e.setVisibility(4);
+    this.f.setVisibility(4);
+    c();
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    this.m = paramInt;
   }
   
-  public RecyclerView a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    this.l = paramString;
+    if (!this.n.contains(paramString))
+    {
+      AEGIFSmartTextAdapter localAEGIFSmartTextAdapter = this.j;
+      if (localAEGIFSmartTextAdapter != null) {
+        localAEGIFSmartTextAdapter.a();
+      }
+    }
+    b(paramString);
+    this.f.setImageResource(2063925621);
   }
   
-  public String a()
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.k.setTextColor(paramString2);
+    this.k.setOutlineColor(paramString3);
+    a(paramString1);
   }
   
-  public ArrayList<AEGIFSmartTextData> a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.k.setStroke(paramBoolean1);
+    this.k.setShadow(paramBoolean2);
+  }
+  
+  public void b()
+  {
+    Log.d("AEGIFTextMvp", "On loading completed...");
+    this.h.setVisibility(4);
+    this.j = new AEGIFSmartTextAdapter(this.c, this);
+    this.j.setHasStableIds(true);
+    this.e.setAdapter(this.j);
+    this.e.setClipToPadding(false);
+    this.e.setClipChildren(false);
+    this.e.setVisibility(0);
+    this.e.addOnScrollListener(new AEGIFTextMvp.1(this));
+    this.f.setVisibility(0);
+    this.f.setOnClickListener(new AEGIFTextMvp.2(this));
+  }
+  
+  public void b(String paramString)
+  {
+    this.k.setText(paramString);
+    this.k.setOutlineWidth(DisplayUtil.a(this.c, 4.0F));
+    ViewGroup.LayoutParams localLayoutParams = this.k.getLayoutParams();
+    AEGIFOutlineTextView localAEGIFOutlineTextView = this.k;
+    int i1;
+    if (paramString.indexOf('\n') > 0) {
+      i1 = DisplayUtil.a(this.c, 26.0F);
+    } else {
+      i1 = DisplayUtil.a(this.c, 30.0F);
+    }
+    localAEGIFOutlineTextView.setTextSize(i1);
+    if (paramString.indexOf('\n') > 0) {
+      i1 = DisplayUtil.a(this.c, 73.199997F);
+    } else {
+      i1 = DisplayUtil.a(this.c, 41.0F);
+    }
+    localLayoutParams.height = i1;
+    this.k.setLayoutParams(localLayoutParams);
+  }
+  
+  public void c()
+  {
+    Log.d("AEGIFTextMvp", "On loading...");
+    this.h.setVisibility(0);
+    this.n = new ArrayList();
+    d();
+    AEGIFRecommandTextViewModel.a().observe(this.c, new AEGIFTextMvp.3(this));
+  }
+  
+  public void d()
+  {
+    Log.d("AEGIFTextMvp", "Clearing smart text");
+    this.f.setImageResource(2063925622);
+    AEGIFSmartTextAdapter localAEGIFSmartTextAdapter = this.j;
+    if (localAEGIFSmartTextAdapter != null) {
+      localAEGIFSmartTextAdapter.a();
+    }
+    this.l = "";
+    this.m = 0;
+    a(false, true);
+    this.k.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
+    b(HardCodeUtil.a(2131898264), "#ccffffff", "#000000");
+  }
+  
+  public RecyclerView e()
+  {
+    return this.e;
+  }
+  
+  public ArrayList<AEGIFSmartTextData> f()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.n.iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(new AEGIFSmartTextData((String)localIterator.next()));
     }
     return localArrayList;
   }
   
-  public void a()
+  public String g()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, 0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.setGapStrategy(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    e();
-    c();
+    return this.l;
   }
   
-  public void a(int paramInt)
+  public int h()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
-    {
-      AEGIFSmartTextAdapter localAEGIFSmartTextAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter;
-      if (localAEGIFSmartTextAdapter != null) {
-        localAEGIFSmartTextAdapter.a();
-      }
-    }
-    b(paramString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2064056631);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setTextColor(paramString2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramString3);
-    a(paramString1);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setStroke(paramBoolean1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setShadow(paramBoolean2);
-  }
-  
-  public void b()
-  {
-    Log.d("AEGIFTextMvp", "On loading completed...");
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter = new AEGIFSmartTextAdapter(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter.setHasStableIds(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setClipToPadding(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setClipChildren(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new AEGIFTextMvp.1(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new AEGIFTextMvp.2(this));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setText(paramString);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 4.0F));
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    AEGIFOutlineTextView localAEGIFOutlineTextView = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView;
-    int i;
-    if (paramString.indexOf('\n') > 0) {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 26.0F);
-    } else {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 30.0F);
-    }
-    localAEGIFOutlineTextView.setTextSize(i);
-    if (paramString.indexOf('\n') > 0) {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 73.199997F);
-    } else {
-      i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, 41.0F);
-    }
-    localLayoutParams.height = i;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setLayoutParams(localLayoutParams);
-  }
-  
-  public void c()
-  {
-    Log.d("AEGIFTextMvp", "On loading...");
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    d();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFRecommandTextViewModel.a().observe(this.jdField_a_of_type_ComTencentAelightCameraAebaseBaseVMPeakActivity, new AEGIFTextMvp.3(this));
-  }
-  
-  public void d()
-  {
-    Log.d("AEGIFTextMvp", "Clearing smart text");
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2064056632);
-    AEGIFSmartTextAdapter localAEGIFSmartTextAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter;
-    if (localAEGIFSmartTextAdapter != null) {
-      localAEGIFSmartTextAdapter.a();
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    a(false, true);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
-    b(HardCodeUtil.a(2131700220), "#ccffffff", "#000000");
+    return this.m;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.AEGIFTextMvp
  * JD-Core Version:    0.7.0.1
  */

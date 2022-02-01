@@ -15,7 +15,7 @@ class ReadInJoySelectMemberAQFragment$2
     if (("OidbSvc.0xbd4_1".equals(paramString)) && (this.a.getBaseActivity() != null))
     {
       paramString = this.a;
-      paramString.a = true;
+      paramString.b = true;
       paramString.a();
       if (paramInt == 0)
       {
@@ -23,23 +23,23 @@ class ReadInJoySelectMemberAQFragment$2
         ReadInJoySelectMemberAQFragment.a(this.a, false);
         this.a.c();
         this.a.getBaseActivity().finish();
-        ReadInJoySelectMemberAQFragment.a(this.a, true);
+        ReadInJoySelectMemberAQFragment.b(this.a, true);
         return;
       }
       ReadInJoySelectMemberAQFragment.a(this.a, true);
       ReadInJoySelectMemberAQFragment.a(this.a, 2);
       paramString = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131712696));
+      localStringBuilder.append(HardCodeUtil.a(2131910273));
       localStringBuilder.append(paramInt);
       ReadInJoySelectMemberAQFragment.a(paramString, localStringBuilder.toString());
-      QQToast.a(this.a.getBaseActivity(), 1, this.a.getString(2131718026), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
+      QQToast.makeText(this.a.getBaseActivity(), 1, this.a.getString(2131915507), 0).show(ReadInJoySelectMemberAQFragment.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.ReadInJoySelectMemberAQFragment.2
  * JD-Core Version:    0.7.0.1
  */

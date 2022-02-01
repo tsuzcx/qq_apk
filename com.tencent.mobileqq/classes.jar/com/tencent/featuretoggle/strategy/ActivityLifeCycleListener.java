@@ -33,7 +33,7 @@ public final class ActivityLifeCycleListener
       return;
     }
     this.a = true;
-    if (Utils.b(14))
+    if (Utils.a(14))
     {
       this.b = false;
       return;
@@ -62,13 +62,13 @@ public final class ActivityLifeCycleListener
     }
     this.b = false;
     if (this.b) {
-      LogUtils.c("[Strategy] ToggleActivityLifeCycleListener register success", new Object[0]);
+      LogUtils.e("[Strategy] ToggleActivityLifeCycleListener register success", new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.strategy.ActivityLifeCycleListener
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class DiandianTopConfigManager$2
   
   public void run()
   {
-    synchronized (DiandianTopConfigManager.a)
+    synchronized (DiandianTopConfigManager.b)
     {
       AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
       BaseApplication localBaseApplication = BaseApplication.getContext();
@@ -27,7 +27,7 @@ class DiandianTopConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.DiandianTopConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -43,7 +43,7 @@ public enum ActionType
   
   public final int toPBInt()
   {
-    switch (ActionType.WhenMappings.a[ordinal()])
+    switch (ActionType.WhenMappings.$EnumSwitchMapping$0[ordinal()])
     {
     default: 
       return 0;
@@ -65,7 +65,7 @@ public enum ActionType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ActionType
  * JD-Core Version:    0.7.0.1
  */

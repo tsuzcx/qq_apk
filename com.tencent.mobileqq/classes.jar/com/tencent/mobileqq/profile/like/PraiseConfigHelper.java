@@ -15,23 +15,16 @@ import org.json.JSONObject;
 
 public class PraiseConfigHelper
 {
-  public static int a;
   public static Vector<String> a;
-  private static AtomicBoolean a;
-  public static int b;
   public static Vector<PraiseConfigHelper.EntryBannerInfo> b;
-  public static int c = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = 10;
-    jdField_b_of_type_Int = 2000;
-  }
+  public static int c = 10;
+  public static int d = 2000;
+  public static int e = 0;
+  private static AtomicBoolean f = new AtomicBoolean(false);
   
   public static List<TPraiseInfo> a(List<TPraiseInfo> paramList)
   {
-    if ((c == 0) && (paramList != null) && (!paramList.isEmpty()))
+    if ((e == 0) && (paramList != null) && (!paramList.isEmpty()))
     {
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
@@ -84,7 +77,7 @@ public class PraiseConfigHelper
         i += 1;
       }
     }
-    bool = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+    bool = f.compareAndSet(false, true);
     if (!bool) {
       return;
     }
@@ -94,12 +87,12 @@ public class PraiseConfigHelper
       localObject2 = localJSONObject.optJSONArray("colorEntries");
       if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
       {
-        if (jdField_a_of_type_JavaUtilVector == null)
+        if (a == null)
         {
-          jdField_a_of_type_JavaUtilVector = new Vector();
+          a = new Vector();
           break label457;
         }
-        jdField_a_of_type_JavaUtilVector.clear();
+        a.clear();
         break label457;
         if (i < ((JSONArray)localObject2).length())
         {
@@ -115,19 +108,19 @@ public class PraiseConfigHelper
             paramAppRuntime.append((String)localObject1);
             paramAppRuntime = paramAppRuntime.toString();
           }
-          jdField_a_of_type_JavaUtilVector.add(paramAppRuntime);
+          a.add(paramAppRuntime);
           break label462;
         }
       }
       paramAppRuntime = localJSONObject.optJSONArray("newEntries");
       if ((paramAppRuntime != null) && (paramAppRuntime.length() > 0))
       {
-        if (jdField_b_of_type_JavaUtilVector == null)
+        if (b == null)
         {
-          jdField_b_of_type_JavaUtilVector = new Vector();
+          b = new Vector();
           break label469;
         }
-        jdField_b_of_type_JavaUtilVector.clear();
+        b.clear();
         break label469;
         if (i < paramAppRuntime.length())
         {
@@ -136,11 +129,11 @@ public class PraiseConfigHelper
             break label481;
           }
           localObject1 = new PraiseConfigHelper.EntryBannerInfo();
-          ((PraiseConfigHelper.EntryBannerInfo)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("title");
+          ((PraiseConfigHelper.EntryBannerInfo)localObject1).a = ((JSONObject)localObject2).optString("title");
           ((PraiseConfigHelper.EntryBannerInfo)localObject1).b = ((JSONObject)localObject2).optString("subtitle");
-          ((PraiseConfigHelper.EntryBannerInfo)localObject1).c = ((JSONObject)localObject2).optString("bannerLink");
-          ((PraiseConfigHelper.EntryBannerInfo)localObject1).d = ((JSONObject)localObject2).optString("reportName");
-          ((PraiseConfigHelper.EntryBannerInfo)localObject1).jdField_a_of_type_JavaUtilVector = new Vector();
+          ((PraiseConfigHelper.EntryBannerInfo)localObject1).d = ((JSONObject)localObject2).optString("bannerLink");
+          ((PraiseConfigHelper.EntryBannerInfo)localObject1).e = ((JSONObject)localObject2).optString("reportName");
+          ((PraiseConfigHelper.EntryBannerInfo)localObject1).c = new Vector();
           localObject2 = ((JSONObject)localObject2).optJSONArray("entrys");
           if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
           {
@@ -151,28 +144,28 @@ public class PraiseConfigHelper
               if (TextUtils.isEmpty(str)) {
                 break label474;
               }
-              ((PraiseConfigHelper.EntryBannerInfo)localObject1).jdField_a_of_type_JavaUtilVector.add(str);
+              ((PraiseConfigHelper.EntryBannerInfo)localObject1).c.add(str);
               break label474;
             }
           }
-          jdField_b_of_type_JavaUtilVector.add(localObject1);
+          b.add(localObject1);
           break label481;
         }
       }
-      jdField_a_of_type_Int = localJSONObject.optInt("playNum", 10);
-      jdField_b_of_type_Int = (int)(localJSONObject.optDouble("downloadTimeLimit", 2.0D) * 1000.0D);
-      c = localJSONObject.optInt("praiseFlyOrder", 0);
+      c = localJSONObject.optInt("playNum", 10);
+      d = (int)(localJSONObject.optDouble("downloadTimeLimit", 2.0D) * 1000.0D);
+      e = localJSONObject.optInt("praiseFlyOrder", 0);
     }
     else
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      f.set(false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseConfigHelper
  * JD-Core Version:    0.7.0.1
  */

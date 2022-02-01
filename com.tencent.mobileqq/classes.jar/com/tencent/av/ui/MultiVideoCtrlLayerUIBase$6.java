@@ -16,35 +16,35 @@ class MultiVideoCtrlLayerUIBase$6
   
   private void b()
   {
-    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AVActivity localAVActivity = (AVActivity)this.a.ak.get();
     if (localAVActivity != null)
     {
       boolean bool;
-      if ((!this.a.jdField_a_of_type_ComTencentAvVideoController.a().S) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().T)) {
+      if ((!this.a.am.k().bg) && (!this.a.am.k().bh)) {
         bool = false;
       } else {
         bool = true;
       }
-      VideoMsgTools.a(localAVActivity, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().f), bool, true);
+      VideoMsgTools.a(localAVActivity, String.valueOf(this.a.am.k().aN), bool, true);
       ReportController.b(null, "CliOper", "", "", "0X8009E27", "0X8009E27", 0, 0, "", "", "", "");
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.e(this.a.d, 2, "startMembersListViewPage-->can not get activity");
+      QLog.e(this.a.X, 2, "startMembersListViewPage-->can not get activity");
     }
   }
   
   public void a()
   {
-    long l = AudioHelper.b();
-    this.a.C(l);
+    long l = AudioHelper.c();
+    this.a.I(l);
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.a.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MultiVideoMembersClickListener , Uin = ");
       localStringBuilder.append(paramLong);

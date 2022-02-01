@@ -11,33 +11,23 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ColorNickColorPanelAdapter$PureColorAdapter
   extends BaseAdapter
 {
-  public static final int[] a;
-  public int a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, -16777216, -51904, -41579, -2992688, -15808515, -16268201, -12464 };
-  }
-  
-  public ColorNickColorPanelAdapter$PureColorAdapter()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public static final int[] a = { 0, -16777216, -51904, -41579, -2992688, -15808515, -16268201, -12464 };
+  public int b = -1;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return jdField_a_of_type_ArrayOfInt.length;
+    return a.length;
   }
   
   public Object getItem(int paramInt)
   {
-    return Integer.valueOf(jdField_a_of_type_ArrayOfInt[paramInt]);
+    return Integer.valueOf(a[paramInt]);
   }
   
   public long getItemId(int paramInt)
@@ -50,19 +40,19 @@ public class ColorNickColorPanelAdapter$PureColorAdapter
     boolean bool = false;
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561881, paramViewGroup, false);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131628299, paramViewGroup, false);
     }
-    paramView = (ColorSelectView)localView.findViewById(2131364837);
-    ImageView localImageView = (ImageView)localView.findViewById(2131364835);
+    paramView = (ColorSelectView)localView.findViewById(2131430962);
+    ImageView localImageView = (ImageView)localView.findViewById(2131430960);
     if (paramInt == 0)
     {
       paramView.setVisibility(8);
       localImageView.setVisibility(0);
       int i;
-      if (this.jdField_a_of_type_Int == paramInt) {
-        i = 2130847305;
+      if (this.b == paramInt) {
+        i = 2130848956;
       } else {
-        i = 2130847304;
+        i = 2130848955;
       }
       localImageView.setImageResource(i);
     }
@@ -70,8 +60,8 @@ public class ColorNickColorPanelAdapter$PureColorAdapter
     {
       paramView.setVisibility(0);
       localImageView.setVisibility(8);
-      paramView.setColor(jdField_a_of_type_ArrayOfInt[paramInt]);
-      if (this.jdField_a_of_type_Int == paramInt) {
+      paramView.setColor(a[paramInt]);
+      if (this.b == paramInt) {
         bool = true;
       }
       paramView.setSelect(bool);
@@ -82,7 +72,7 @@ public class ColorNickColorPanelAdapter$PureColorAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.PureColorAdapter
  * JD-Core Version:    0.7.0.1
  */

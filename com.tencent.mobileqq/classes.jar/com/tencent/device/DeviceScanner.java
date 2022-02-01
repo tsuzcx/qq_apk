@@ -65,12 +65,12 @@ public class DeviceScanner
           if (((!TextUtils.isEmpty(localDeviceQRCodeParser.strDevPid)) && ((localDeviceQRCodeParser.strDevPid.length() != 10) || (!TextUtils.isDigitsOnly(localDeviceQRCodeParser.strDevPid)))) || ((!TextUtils.isEmpty(localDeviceQRCodeParser.strDevSN)) && (localDeviceQRCodeParser.strDevSN.length() != 16)))
           {
             if (paramActivity != null) {
-              showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131691538, 2131691537);
+              showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131888500, 2131888499);
             }
             return false;
           }
-          SmartDeviceReport.a().jdField_a_of_type_Int = i;
-          SmartDeviceReport.a().jdField_a_of_type_JavaLangString = localDeviceQRCodeParser.strDevSN;
+          SmartDeviceReport.a().c = i;
+          SmartDeviceReport.a().b = localDeviceQRCodeParser.strDevSN;
           if ("SMS".equals(localDeviceQRCodeParser.strTag)) {
             SmartDeviceReport.a().a((AppRuntime)localObject, "Usr_Analyze_URL", 4);
           } else if ((localDeviceQRCodeParser.strDevToken != null) && (localDeviceQRCodeParser.strDevToken.length() > 0)) {
@@ -103,7 +103,7 @@ public class DeviceScanner
           paramOnQRHandleResultCallback.putExtra("DevicePID", localDeviceQRCodeParser.strDevPid);
           paramOnQRHandleResultCallback.putExtra("DeviceSN", localDeviceQRCodeParser.strDevSN);
           paramOnQRHandleResultCallback.putExtra("DeviceToken", localDeviceQRCodeParser.strDevToken);
-          paramOnQRHandleResultCallback.putExtra("DataReportSeq", SmartDeviceReport.a().jdField_a_of_type_Long);
+          paramOnQRHandleResultCallback.putExtra("DataReportSeq", SmartDeviceReport.a().d);
         }
       }
       catch (Exception localException2)
@@ -129,24 +129,24 @@ public class DeviceScanner
               localStringBuilder.append(localDeviceQRCodeParser.strDevToken);
               QLog.d("smartdevice::DeviceScanner", 2, localStringBuilder.toString());
             }
-            SmartDeviceReport.a().jdField_a_of_type_Int = i;
+            SmartDeviceReport.a().c = i;
             SmartDeviceReport.a().a((AppRuntime)localObject, "Usr_Analyze_URL", 3);
             SmartDeviceReport.a((AppRuntime)localObject, "Usr_QRCode_Result", 0, 0, i);
             if (paramActivity != null)
             {
               if (paramString.startsWith("http://iot.qq.com"))
               {
-                showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131691538, 2131691537);
+                showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131888500, 2131888499);
                 return false;
               }
               if ((!TextUtils.isEmpty(localDeviceQRCodeParser.strDevToken)) && (localDeviceQRCodeParser.strDevToken.length() != 32))
               {
-                showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131691538, 2131691539);
+                showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131888500, 2131888501);
                 return false;
               }
               if (!SmartDevicePluginLoader.a().a((QQAppInterface)localObject))
               {
-                showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131691538, 2131691537);
+                showNoticeDlg(paramActivity, paramOnQRHandleResultCallback, 2131888500, 2131888499);
                 return false;
               }
               goToErrorPage(paramActivity, (QQAppInterface)localObject);
@@ -170,7 +170,7 @@ public class DeviceScanner
       return;
     }
     paramActivity = DialogUtil.a(paramActivity, 230);
-    paramActivity.setNegativeButton(2131694583, new DeviceScanner.1(paramOnQRHandleResultCallback));
+    paramActivity.setNegativeButton(2131892267, new DeviceScanner.1(paramOnQRHandleResultCallback));
     paramActivity.setTitle(paramInt1);
     paramActivity.setMessage(paramInt2);
     paramActivity.show();
@@ -178,7 +178,7 @@ public class DeviceScanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.DeviceScanner
  * JD-Core Version:    0.7.0.1
  */

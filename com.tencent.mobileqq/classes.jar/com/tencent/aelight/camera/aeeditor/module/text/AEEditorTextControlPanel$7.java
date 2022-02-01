@@ -11,7 +11,7 @@ class AEEditorTextControlPanel$7
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(AEEditorTextControlPanel.a(this.this$0), "translationY", new float[] { 150.0F, 0.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(AEEditorTextControlPanel.h(this.this$0), "translationY", new float[] { 150.0F, 0.0F });
     localObjectAnimator.addListener(new AEEditorTextControlPanel.7.1(this));
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play(localObjectAnimator);
@@ -22,7 +22,7 @@ class AEEditorTextControlPanel$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextControlPanel.7
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import java.util.Iterator;
 class VideoItemEventManager$2
   extends BroadcastReceiver
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  private final String b = "reason";
+  private final String c = "homekey";
   
   VideoItemEventManager$2(VideoItemEventManager paramVideoItemEventManager) {}
   
@@ -27,7 +27,7 @@ class VideoItemEventManager$2
     }
     if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      paramContext = VideoItemEventManager.a(this.a).iterator();
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(false);
       }
@@ -35,7 +35,7 @@ class VideoItemEventManager$2
     }
     if ("android.intent.action.SCREEN_ON".equals(paramContext))
     {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      paramContext = VideoItemEventManager.a(this.a).iterator();
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(true);
       }
@@ -43,7 +43,7 @@ class VideoItemEventManager$2
     }
     if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
     {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      paramContext = VideoItemEventManager.a(this.a).iterator();
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(true);
       }
@@ -51,7 +51,7 @@ class VideoItemEventManager$2
     }
     if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
     {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      paramContext = VideoItemEventManager.a(this.a).iterator();
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(false);
       }
@@ -59,9 +59,9 @@ class VideoItemEventManager$2
     }
     if ("VolumeBtnDown".equals(paramIntent.getAction()))
     {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      paramContext = VideoItemEventManager.a(this.a).iterator();
       while (paramContext.hasNext()) {
-        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).i();
+        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).k();
       }
       return;
     }
@@ -73,10 +73,10 @@ class VideoItemEventManager$2
       }
       if (paramContext.equals("homekey"))
       {
-        paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+        paramContext = VideoItemEventManager.a(this.a).iterator();
         while (paramContext.hasNext())
         {
-          ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).h();
+          ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).j();
           QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
         }
       }
@@ -85,7 +85,7 @@ class VideoItemEventManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoItemEventManager.2
  * JD-Core Version:    0.7.0.1
  */

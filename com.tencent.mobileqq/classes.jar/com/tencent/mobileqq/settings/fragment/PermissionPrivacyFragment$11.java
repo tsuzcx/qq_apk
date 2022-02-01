@@ -14,7 +14,7 @@ class PermissionPrivacyFragment$11
     if (QLog.isColorLevel()) {
       QLog.i("PermissionPrivacyFragment", 2, "onBandIntimateRelationship");
     }
-    PermissionPrivacyFragment.b(this.a);
+    PermissionPrivacyFragment.g(this.a);
   }
   
   protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
@@ -23,12 +23,12 @@ class PermissionPrivacyFragment$11
     if (QLog.isColorLevel()) {
       QLog.i("PermissionPrivacyFragment", 2, "onDisbandIntimateRelationship");
     }
-    PermissionPrivacyFragment.b(this.a);
+    PermissionPrivacyFragment.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.11
  * JD-Core Version:    0.7.0.1
  */

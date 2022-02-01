@@ -34,16 +34,16 @@ class RollangleImageView$ImageCache$1
             return;
           }
           localQueueItem = (RollangleImageView.ImageCache.QueueItem)RollangleImageView.ImageCache.a(this.this$0).peek();
-          ??? = RollangleImageView.a(localQueueItem.jdField_a_of_type_JavaLangString);
+          ??? = RollangleImageView.a(localQueueItem.a);
           if (??? == null) {
             continue;
           }
-          MQLruCache localMQLruCache = RollangleImageView.a;
+          MQLruCache localMQLruCache = RollangleImageView.c;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("troopfileimage://");
-          localStringBuilder.append(localQueueItem.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localQueueItem.a);
           localMQLruCache.put(localStringBuilder.toString(), ???);
-          RollangleImageView.ImageCache.a(this.this$0).obtainMessage(0, new Object[] { localQueueItem.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localQueueItem.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
+          RollangleImageView.ImageCache.b(this.this$0).obtainMessage(0, new Object[] { localQueueItem.b, localQueueItem.a, ??? }).sendToTarget();
         }
       }
       catch (InterruptedException localInterruptedException)
@@ -55,7 +55,7 @@ class RollangleImageView$ImageCache$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache.1
  * JD-Core Version:    0.7.0.1
  */

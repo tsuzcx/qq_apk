@@ -147,6 +147,7 @@ public class AuthFilterList
       sEventLocalBlackList.add("addRecentColorSign");
       sEventLocalBlackList.add("detectAbnormalLog");
       sEventLocalBlackList.add("minigameRaffle");
+      sEventLocalBlackList.add("preloadPackage");
       return;
     }
   }
@@ -364,7 +365,7 @@ public class AuthFilterList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthFilterList
  * JD-Core Version:    0.7.0.1
  */

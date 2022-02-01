@@ -18,7 +18,7 @@ public class PtsNativeFeedsAladdinKeyConfigHandler
   
   public static Set<String> a()
   {
-    String str = RIJBiuAndCommentAladdinUtils.e();
+    String str = RIJBiuAndCommentAladdinUtils.i();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getNativeFeedsAlladinKey | operationBarAladdinKey : ");
     localStringBuilder.append(str);
@@ -32,7 +32,7 @@ public class PtsNativeFeedsAladdinKeyConfigHandler
   private static Set<String> b()
   {
     HashSet localHashSet = new HashSet();
-    Object localObject = (String)RIJSPUtils.a("native_feeds_aladdin_keys", "");
+    Object localObject = (String)RIJSPUtils.b("native_feeds_aladdin_keys", "");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return localHashSet;
     }
@@ -82,7 +82,7 @@ public class PtsNativeFeedsAladdinKeyConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.PtsNativeFeedsAladdinKeyConfigHandler
  * JD-Core Version:    0.7.0.1
  */

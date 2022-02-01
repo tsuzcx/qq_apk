@@ -85,12 +85,12 @@ public class EmotionCompleteInvalidAdapter
     localTextView.setGravity(1);
     localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
     localObject = new Button(this.mContext);
-    ((Button)localObject).setId(2131365365);
+    ((Button)localObject).setId(2131431558);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(this.density * 25.0F));
     ((Button)localObject).setGravity(17);
     localLayoutParams.topMargin = ((int)(this.density * 10.0F));
     localLayoutParams.gravity = 1;
-    ((Button)localObject).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130846440));
+    ((Button)localObject).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847913));
     ((Button)localObject).setTextColor(-14894864);
     ((Button)localObject).setPadding((int)(this.density * 30.0F), 0, (int)(this.density * 30.0F), 0);
     localLinearLayout.addView((View)localObject, localLayoutParams);
@@ -107,12 +107,12 @@ public class EmotionCompleteInvalidAdapter
       {
         this.contentHight = getCurrentListView().getHeight();
         if (this.contentHight == 0) {
-          this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966));
+          this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131297347));
         }
       }
       else
       {
-        this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966));
+        this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131297347));
       }
     }
   }
@@ -136,7 +136,7 @@ public class EmotionCompleteInvalidAdapter
           QLog.e("EmotionCompleteInvalidAdapter", 1, "updateUI emotionInfo = null");
           return;
         }
-        paramView = (URLImageView)paramView.findViewById(2131378202);
+        paramView = (URLImageView)paramView.findViewById(2131446720);
         paramView.setImageDrawable(localEmoticonInfo.getDrawable(this.mContext, this.density));
         paramView.setVisibility(0);
         return;
@@ -222,32 +222,32 @@ public class EmotionCompleteInvalidAdapter
     }
     this.openBtn = ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject1).downloadBtn;
     this.maskLayout = ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject1).maskLayout;
-    paramView = this.mContext.getString(2131699751);
-    paramViewHolder = this.mContext.getString(2131699779);
+    paramView = this.mContext.getString(2131897784);
+    paramViewHolder = this.mContext.getString(2131897812);
     if (this.emotionFeeType == 2) {
-      paramViewHolder = this.mContext.getString(2131699768);
+      paramViewHolder = this.mContext.getString(2131897801);
     }
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.mContext.getString(2131699770));
+    ((StringBuilder)localObject2).append(this.mContext.getString(2131897803));
     ((StringBuilder)localObject2).append(paramViewHolder);
     ((StringBuilder)localObject2).append("专享,\n开通");
     ((StringBuilder)localObject2).append(paramViewHolder);
-    ((StringBuilder)localObject2).append(this.mContext.getString(2131699780));
+    ((StringBuilder)localObject2).append(this.mContext.getString(2131897813));
     paramViewHolder = ((StringBuilder)localObject2).toString();
     if (this.emotionPkg.mobileFeetype == 6)
     {
-      paramViewHolder = this.mContext.getString(2131699730);
-      paramView = this.mContext.getString(2131699776);
+      paramViewHolder = this.mContext.getString(2131897763);
+      paramView = this.mContext.getString(2131897809);
     }
     else if (this.emotionPkg.mobileFeetype == 2)
     {
-      paramViewHolder = this.mContext.getString(2131699715);
-      paramView = this.mContext.getString(2131699776);
+      paramViewHolder = this.mContext.getString(2131897748);
+      paramView = this.mContext.getString(2131897809);
     }
     else if (this.emotionPkg.mobileFeetype == 3)
     {
-      paramViewHolder = this.mContext.getString(2131699747);
-      paramView = this.mContext.getString(2131699776);
+      paramViewHolder = this.mContext.getString(2131897780);
+      paramView = this.mContext.getString(2131897809);
     }
     ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject1).tips.setText(paramViewHolder);
     ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject1).downloadBtn.setText(paramView);
@@ -320,7 +320,7 @@ public class EmotionCompleteInvalidAdapter
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365365)
+    if (paramView.getId() == 2131431558)
     {
       Object localObject1 = this.emotionPkg;
       if (localObject1 == null)
@@ -384,7 +384,7 @@ public class EmotionCompleteInvalidAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionCompleteInvalidAdapter
  * JD-Core Version:    0.7.0.1
  */

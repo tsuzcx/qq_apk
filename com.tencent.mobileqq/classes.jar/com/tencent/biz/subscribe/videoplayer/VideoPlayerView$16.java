@@ -13,7 +13,7 @@ class VideoPlayerView$16
   
   public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    VSReporter.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+    VSReporter.a(VideoPlayerView.c(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.c(this.a).id.get(), VideoPlayerView.c(this.a).title.get() });
   }
 }
 

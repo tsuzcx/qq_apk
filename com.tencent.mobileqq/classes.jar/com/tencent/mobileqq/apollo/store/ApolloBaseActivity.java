@@ -58,7 +58,7 @@ public class ApolloBaseActivity
         localObject = ((TouchWebView)localObject).getPluginEngine();
         if (localObject != null)
         {
-          localObject = ((WebViewPluginEngine)localObject).a("offline");
+          localObject = ((WebViewPluginEngine)localObject).b("offline");
           if ((localObject != null) && ((localObject instanceof OfflinePlugin))) {
             this.mOfflinePlugin = ((OfflinePlugin)localObject);
           }
@@ -171,7 +171,7 @@ public class ApolloBaseActivity
     checkOfflinePlugin();
     OfflinePlugin localOfflinePlugin = this.mOfflinePlugin;
     if (localOfflinePlugin != null) {
-      return localOfflinePlugin.a;
+      return localOfflinePlugin.o;
     }
     return 0L;
   }
@@ -181,7 +181,7 @@ public class ApolloBaseActivity
     checkOfflinePlugin();
     OfflinePlugin localOfflinePlugin = this.mOfflinePlugin;
     if (localOfflinePlugin != null) {
-      return localOfflinePlugin.b;
+      return localOfflinePlugin.p;
     }
     return 0L;
   }
@@ -271,7 +271,7 @@ public class ApolloBaseActivity
     checkOfflinePlugin();
     OfflinePlugin localOfflinePlugin = this.mOfflinePlugin;
     if (localOfflinePlugin != null) {
-      return localOfflinePlugin.f;
+      return localOfflinePlugin.v;
     }
     return false;
   }
@@ -294,21 +294,21 @@ public class ApolloBaseActivity
     resetTimer(getIntent());
     super.onCreate(paramBundle);
     sApolloBaseActivityCounter += 1;
-    if ((this.mWebView != null) && (Build.VERSION.SDK_INT >= 14) && (SwiftBrowserShareMenuHandler.a.length >= 1))
+    if ((this.mWebView != null) && (Build.VERSION.SDK_INT >= 14) && (SwiftBrowserShareMenuHandler.c.length >= 1))
     {
-      int i = SwiftBrowserShareMenuHandler.a[1];
+      int i = SwiftBrowserShareMenuHandler.c[1];
       paramBundle = this.mWebView.getSettings();
       if (paramBundle != null) {
         paramBundle.setTextZoom(i);
       }
     }
-    if ((this.mStatistics != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (SwiftBrowserStatistics.d != 0))
+    if ((this.mStatistics != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (SwiftBrowserStatistics.aJ != 0))
     {
       paramBundle = this.mStatistics;
-      if (this.mRuntime.getLongAccountUin() % SwiftBrowserStatistics.d != 6L) {
+      if (this.mRuntime.getLongAccountUin() % SwiftBrowserStatistics.aJ != 6L) {
         bool1 = false;
       }
-      paramBundle.h = bool1;
+      paramBundle.as = bool1;
     }
   }
   
@@ -399,7 +399,7 @@ public class ApolloBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBaseActivity
  * JD-Core Version:    0.7.0.1
  */

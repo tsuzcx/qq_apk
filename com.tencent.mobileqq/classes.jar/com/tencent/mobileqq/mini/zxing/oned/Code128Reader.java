@@ -34,23 +34,64 @@ public final class Code128Reader
   
   static
   {
-    int[] arrayOfInt1 = { 2, 2, 2, 2, 2, 1 };
-    int[] arrayOfInt2 = { 2, 2, 1, 3, 1, 2 };
-    int[] arrayOfInt3 = { 2, 2, 3, 2, 1, 1 };
-    int[] arrayOfInt4 = { 3, 1, 1, 2, 2, 2 };
-    int[] arrayOfInt5 = { 2, 1, 2, 1, 2, 3 };
-    int[] arrayOfInt6 = { 2, 3, 2, 1, 2, 1 };
-    int[] arrayOfInt7 = { 2, 1, 3, 1, 3, 1 };
-    int[] arrayOfInt8 = { 3, 1, 4, 1, 1, 1 };
-    int[] arrayOfInt9 = { 2, 2, 1, 4, 1, 1 };
-    int[] arrayOfInt10 = { 1, 1, 2, 4, 1, 2 };
-    int[] arrayOfInt11 = { 2, 4, 1, 2, 1, 1 };
-    int[] arrayOfInt12 = { 1, 3, 4, 1, 1, 1 };
-    int[] arrayOfInt13 = { 1, 2, 4, 2, 1, 1 };
-    int[] arrayOfInt14 = { 1, 1, 1, 1, 4, 3 };
-    int[] arrayOfInt15 = { 1, 3, 1, 1, 4, 1 };
-    int[] arrayOfInt16 = { 1, 1, 3, 1, 4, 1 };
-    CODE_PATTERNS = new int[][] { { 2, 1, 2, 2, 2, 2 }, { 2, 2, 2, 1, 2, 2 }, arrayOfInt1, { 1, 2, 1, 2, 2, 3 }, { 1, 2, 1, 3, 2, 2 }, { 1, 3, 1, 2, 2, 2 }, { 1, 2, 2, 2, 1, 3 }, { 1, 2, 2, 3, 1, 2 }, { 1, 3, 2, 2, 1, 2 }, { 2, 2, 1, 2, 1, 3 }, arrayOfInt2, { 2, 3, 1, 2, 1, 2 }, { 1, 1, 2, 2, 3, 2 }, { 1, 2, 2, 1, 3, 2 }, { 1, 2, 2, 2, 3, 1 }, { 1, 1, 3, 2, 2, 2 }, { 1, 2, 3, 1, 2, 2 }, { 1, 2, 3, 2, 2, 1 }, arrayOfInt3, { 2, 2, 1, 1, 3, 2 }, { 2, 2, 1, 2, 3, 1 }, { 2, 1, 3, 2, 1, 2 }, { 2, 2, 3, 1, 1, 2 }, { 3, 1, 2, 1, 3, 1 }, arrayOfInt4, { 3, 2, 1, 1, 2, 2 }, { 3, 2, 1, 2, 2, 1 }, { 3, 1, 2, 2, 1, 2 }, { 3, 2, 2, 1, 1, 2 }, { 3, 2, 2, 2, 1, 1 }, arrayOfInt5, { 2, 1, 2, 3, 2, 1 }, arrayOfInt6, { 1, 1, 1, 3, 2, 3 }, { 1, 3, 1, 1, 2, 3 }, { 1, 3, 1, 3, 2, 1 }, { 1, 1, 2, 3, 1, 3 }, { 1, 3, 2, 1, 1, 3 }, { 1, 3, 2, 3, 1, 1 }, { 2, 1, 1, 3, 1, 3 }, { 2, 3, 1, 1, 1, 3 }, { 2, 3, 1, 3, 1, 1 }, { 1, 1, 2, 1, 3, 3 }, { 1, 1, 2, 3, 3, 1 }, { 1, 3, 2, 1, 3, 1 }, { 1, 1, 3, 1, 2, 3 }, { 1, 1, 3, 3, 2, 1 }, { 1, 3, 3, 1, 2, 1 }, { 3, 1, 3, 1, 2, 1 }, { 2, 1, 1, 3, 3, 1 }, { 2, 3, 1, 1, 3, 1 }, { 2, 1, 3, 1, 1, 3 }, { 2, 1, 3, 3, 1, 1 }, arrayOfInt7, { 3, 1, 1, 1, 2, 3 }, { 3, 1, 1, 3, 2, 1 }, { 3, 3, 1, 1, 2, 1 }, { 3, 1, 2, 1, 1, 3 }, { 3, 1, 2, 3, 1, 1 }, { 3, 3, 2, 1, 1, 1 }, arrayOfInt8, arrayOfInt9, { 4, 3, 1, 1, 1, 1 }, { 1, 1, 1, 2, 2, 4 }, { 1, 1, 1, 4, 2, 2 }, { 1, 2, 1, 1, 2, 4 }, { 1, 2, 1, 4, 2, 1 }, { 1, 4, 1, 1, 2, 2 }, { 1, 4, 1, 2, 2, 1 }, { 1, 1, 2, 2, 1, 4 }, arrayOfInt10, { 1, 2, 2, 1, 1, 4 }, { 1, 2, 2, 4, 1, 1 }, { 1, 4, 2, 1, 1, 2 }, { 1, 4, 2, 2, 1, 1 }, arrayOfInt11, { 2, 2, 1, 1, 1, 4 }, { 4, 1, 3, 1, 1, 1 }, { 2, 4, 1, 1, 1, 2 }, arrayOfInt12, { 1, 1, 1, 2, 4, 2 }, { 1, 2, 1, 1, 4, 2 }, { 1, 2, 1, 2, 4, 1 }, { 1, 1, 4, 2, 1, 2 }, { 1, 2, 4, 1, 1, 2 }, arrayOfInt13, { 4, 1, 1, 2, 1, 2 }, { 4, 2, 1, 1, 1, 2 }, { 4, 2, 1, 2, 1, 1 }, { 2, 1, 2, 1, 4, 1 }, { 2, 1, 4, 1, 2, 1 }, { 4, 1, 2, 1, 2, 1 }, arrayOfInt14, { 1, 1, 1, 3, 4, 1 }, arrayOfInt15, { 1, 1, 4, 1, 1, 3 }, { 1, 1, 4, 3, 1, 1 }, { 4, 1, 1, 1, 1, 3 }, { 4, 1, 1, 3, 1, 1 }, arrayOfInt16, { 1, 1, 4, 1, 3, 1 }, { 3, 1, 1, 1, 4, 1 }, { 4, 1, 1, 1, 3, 1 }, { 2, 1, 1, 4, 1, 2 }, { 2, 1, 1, 2, 1, 4 }, { 2, 1, 1, 2, 3, 2 }, { 2, 3, 3, 1, 1, 1, 2 } };
+    int[] arrayOfInt1 = { 2, 1, 2, 2, 2, 2 };
+    int[] arrayOfInt2 = { 2, 2, 2, 1, 2, 2 };
+    int[] arrayOfInt3 = { 2, 2, 2, 2, 2, 1 };
+    int[] arrayOfInt4 = { 1, 3, 2, 2, 1, 2 };
+    int[] arrayOfInt5 = { 2, 2, 1, 3, 1, 2 };
+    int[] arrayOfInt6 = { 2, 3, 1, 2, 1, 2 };
+    int[] arrayOfInt7 = { 1, 1, 2, 2, 3, 2 };
+    int[] arrayOfInt8 = { 1, 1, 3, 2, 2, 2 };
+    int[] arrayOfInt9 = { 1, 2, 3, 1, 2, 2 };
+    int[] arrayOfInt10 = { 1, 2, 3, 2, 2, 1 };
+    int[] arrayOfInt11 = { 2, 2, 3, 2, 1, 1 };
+    int[] arrayOfInt12 = { 2, 2, 1, 2, 3, 1 };
+    int[] arrayOfInt13 = { 2, 1, 3, 2, 1, 2 };
+    int[] arrayOfInt14 = { 2, 2, 3, 1, 1, 2 };
+    int[] arrayOfInt15 = { 3, 2, 1, 2, 2, 1 };
+    int[] arrayOfInt16 = { 3, 1, 2, 2, 1, 2 };
+    int[] arrayOfInt17 = { 3, 2, 2, 1, 1, 2 };
+    int[] arrayOfInt18 = { 2, 1, 2, 1, 2, 3 };
+    int[] arrayOfInt19 = { 1, 1, 1, 3, 2, 3 };
+    int[] arrayOfInt20 = { 1, 3, 1, 1, 2, 3 };
+    int[] arrayOfInt21 = { 1, 3, 1, 3, 2, 1 };
+    int[] arrayOfInt22 = { 1, 3, 2, 1, 1, 3 };
+    int[] arrayOfInt23 = { 2, 1, 1, 3, 1, 3 };
+    int[] arrayOfInt24 = { 2, 3, 1, 3, 1, 1 };
+    int[] arrayOfInt25 = { 1, 1, 2, 1, 3, 3 };
+    int[] arrayOfInt26 = { 1, 3, 2, 1, 3, 1 };
+    int[] arrayOfInt27 = { 1, 3, 3, 1, 2, 1 };
+    int[] arrayOfInt28 = { 3, 1, 3, 1, 2, 1 };
+    int[] arrayOfInt29 = { 2, 1, 1, 3, 3, 1 };
+    int[] arrayOfInt30 = { 2, 1, 3, 1, 1, 3 };
+    int[] arrayOfInt31 = { 3, 1, 2, 1, 1, 3 };
+    int[] arrayOfInt32 = { 3, 1, 2, 3, 1, 1 };
+    int[] arrayOfInt33 = { 3, 3, 2, 1, 1, 1 };
+    int[] arrayOfInt34 = { 2, 2, 1, 4, 1, 1 };
+    int[] arrayOfInt35 = { 1, 1, 1, 4, 2, 2 };
+    int[] arrayOfInt36 = { 1, 2, 1, 1, 2, 4 };
+    int[] arrayOfInt37 = { 1, 2, 1, 4, 2, 1 };
+    int[] arrayOfInt38 = { 1, 1, 2, 2, 1, 4 };
+    int[] arrayOfInt39 = { 1, 1, 2, 4, 1, 2 };
+    int[] arrayOfInt40 = { 1, 2, 2, 1, 1, 4 };
+    int[] arrayOfInt41 = { 2, 4, 1, 2, 1, 1 };
+    int[] arrayOfInt42 = { 2, 2, 1, 1, 1, 4 };
+    int[] arrayOfInt43 = { 4, 1, 3, 1, 1, 1 };
+    int[] arrayOfInt44 = { 2, 4, 1, 1, 1, 2 };
+    int[] arrayOfInt45 = { 1, 1, 1, 2, 4, 2 };
+    int[] arrayOfInt46 = { 1, 2, 1, 2, 4, 1 };
+    int[] arrayOfInt47 = { 1, 2, 4, 2, 1, 1 };
+    int[] arrayOfInt48 = { 4, 2, 1, 1, 1, 2 };
+    int[] arrayOfInt49 = { 4, 2, 1, 2, 1, 1 };
+    int[] arrayOfInt50 = { 2, 1, 2, 1, 4, 1 };
+    int[] arrayOfInt51 = { 2, 1, 4, 1, 2, 1 };
+    int[] arrayOfInt52 = { 4, 1, 2, 1, 2, 1 };
+    int[] arrayOfInt53 = { 1, 3, 1, 1, 4, 1 };
+    int[] arrayOfInt54 = { 1, 1, 3, 1, 4, 1 };
+    int[] arrayOfInt55 = { 4, 1, 1, 1, 3, 1 };
+    int[] arrayOfInt56 = { 2, 1, 1, 4, 1, 2 };
+    int[] arrayOfInt57 = { 2, 1, 1, 2, 1, 4 };
+    CODE_PATTERNS = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, { 1, 2, 1, 2, 2, 3 }, { 1, 2, 1, 3, 2, 2 }, { 1, 3, 1, 2, 2, 2 }, { 1, 2, 2, 2, 1, 3 }, { 1, 2, 2, 3, 1, 2 }, arrayOfInt4, { 2, 2, 1, 2, 1, 3 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, { 1, 2, 2, 1, 3, 2 }, { 1, 2, 2, 2, 3, 1 }, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, { 2, 2, 1, 1, 3, 2 }, arrayOfInt12, arrayOfInt13, arrayOfInt14, { 3, 1, 2, 1, 3, 1 }, { 3, 1, 1, 2, 2, 2 }, { 3, 2, 1, 1, 2, 2 }, arrayOfInt15, arrayOfInt16, arrayOfInt17, { 3, 2, 2, 2, 1, 1 }, arrayOfInt18, { 2, 1, 2, 3, 2, 1 }, { 2, 3, 2, 1, 2, 1 }, arrayOfInt19, arrayOfInt20, arrayOfInt21, { 1, 1, 2, 3, 1, 3 }, arrayOfInt22, { 1, 3, 2, 3, 1, 1 }, arrayOfInt23, { 2, 3, 1, 1, 1, 3 }, arrayOfInt24, arrayOfInt25, { 1, 1, 2, 3, 3, 1 }, arrayOfInt26, { 1, 1, 3, 1, 2, 3 }, { 1, 1, 3, 3, 2, 1 }, arrayOfInt27, arrayOfInt28, arrayOfInt29, { 2, 3, 1, 1, 3, 1 }, arrayOfInt30, { 2, 1, 3, 3, 1, 1 }, { 2, 1, 3, 1, 3, 1 }, { 3, 1, 1, 1, 2, 3 }, { 3, 1, 1, 3, 2, 1 }, { 3, 3, 1, 1, 2, 1 }, arrayOfInt31, arrayOfInt32, arrayOfInt33, { 3, 1, 4, 1, 1, 1 }, arrayOfInt34, { 4, 3, 1, 1, 1, 1 }, { 1, 1, 1, 2, 2, 4 }, arrayOfInt35, arrayOfInt36, arrayOfInt37, { 1, 4, 1, 1, 2, 2 }, { 1, 4, 1, 2, 2, 1 }, arrayOfInt38, arrayOfInt39, arrayOfInt40, { 1, 2, 2, 4, 1, 1 }, { 1, 4, 2, 1, 1, 2 }, { 1, 4, 2, 2, 1, 1 }, arrayOfInt41, arrayOfInt42, arrayOfInt43, arrayOfInt44, { 1, 3, 4, 1, 1, 1 }, arrayOfInt45, { 1, 2, 1, 1, 4, 2 }, arrayOfInt46, { 1, 1, 4, 2, 1, 2 }, { 1, 2, 4, 1, 1, 2 }, arrayOfInt47, { 4, 1, 1, 2, 1, 2 }, arrayOfInt48, arrayOfInt49, arrayOfInt50, arrayOfInt51, arrayOfInt52, { 1, 1, 1, 1, 4, 3 }, { 1, 1, 1, 3, 4, 1 }, arrayOfInt53, { 1, 1, 4, 1, 1, 3 }, { 1, 1, 4, 3, 1, 1 }, { 4, 1, 1, 1, 1, 3 }, { 4, 1, 1, 3, 1, 1 }, arrayOfInt54, { 1, 1, 4, 1, 3, 1 }, { 3, 1, 1, 1, 4, 1 }, arrayOfInt55, arrayOfInt56, arrayOfInt57, { 2, 1, 1, 2, 3, 2 }, { 2, 3, 3, 1, 1, 1, 2 } };
   }
   
   private static int decodeCode(BitArray paramBitArray, int[] paramArrayOfInt, int paramInt)
@@ -509,7 +550,7 @@ public final class Code128Reader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.Code128Reader
  * JD-Core Version:    0.7.0.1
  */

@@ -12,39 +12,39 @@ class AbsVideoPlayerImpl$2
   
   public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onAttationClick(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onAttationClick(this.b);
   }
   
   public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onBackClick(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onBackClick(this.b);
   }
   
   public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onBackOnFullScreenClick(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onBackOnFullScreenClick(this.b);
   }
   
   public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onCacheClick(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onCacheClick(this.b);
   }
   
   public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onFeedbackClick(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onFeedbackClick(this.b);
   }
   
   public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onFullScreenClick(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onFullScreenClick(this.b);
   }
   
   public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerImpl.2
  * JD-Core Version:    0.7.0.1
  */

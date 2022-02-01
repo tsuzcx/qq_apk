@@ -38,7 +38,7 @@ public class UFTTroopPbProtoRequestor
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramAppRuntime = ((ITroopFileProtoReqMgr)paramAppRuntime.getRuntimeService(ITroopFileProtoReqMgr.class, "")).createProtoReq();
     paramAppRuntime.a(paramString);
     paramAppRuntime.a(localOIDBSSOPkg.toByteArray());
@@ -77,7 +77,7 @@ public class UFTTroopPbProtoRequestor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTTroopPbProtoRequestor
  * JD-Core Version:    0.7.0.1
  */

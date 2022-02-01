@@ -11,7 +11,7 @@ public abstract interface Function2<P1, P2, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.functions.Function2
  * JD-Core Version:    0.7.0.1
  */

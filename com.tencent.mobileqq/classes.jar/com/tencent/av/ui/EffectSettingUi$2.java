@@ -16,13 +16,13 @@ class EffectSettingUi$2
   public void onGlobalLayout()
   {
     if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
+      this.a.removeOnGlobalLayoutListener(this);
     } else {
-      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+      this.a.removeGlobalOnLayoutListener(this);
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.a, 1, "onGlobalLayout");
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
-    this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.b();
+    QLog.w(this.c.g, 1, "onGlobalLayout");
+    this.b.setTag(new Object());
+    this.c.a();
   }
 }
 

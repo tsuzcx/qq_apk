@@ -1,35 +1,36 @@
 package com.tencent.biz.pubaccount.weishi_new.image;
 
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.widget.ImageView;
-import com.tencent.mobileqq.kandian.base.image.ImageRequest;
-import com.tencent.mobileqq.kandian.base.image.api.IBitmapCallback;
-import com.tencent.mobileqq.kandian.base.image.api.ICloseableBitmap;
-import java.net.URL;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.lang.ref.WeakReference;
 
-final class WSPicLoader$1
-  implements IBitmapCallback
+class WSPicLoader$1
+  implements Runnable
 {
-  WSPicLoader$1(ImageView paramImageView, Drawable paramDrawable) {}
+  WSPicLoader$1(WSPicLoader paramWSPicLoader, WeakReference paramWeakReference1, String paramString, Drawable paramDrawable, WeakReference paramWeakReference2) {}
   
-  public void a(ImageRequest paramImageRequest, int paramInt) {}
-  
-  public void a(ImageRequest paramImageRequest, ICloseableBitmap paramICloseableBitmap)
+  public void run()
   {
-    if (TextUtils.equals((String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(), paramImageRequest.a.toString())) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramICloseableBitmap.a());
+    if ((ImageView)this.a.get() == null) {
+      return;
     }
-  }
-  
-  public void a(ImageRequest paramImageRequest, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (WeishiUtils.c(this.b) == null) {
+      return;
+    }
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    Drawable localDrawable = this.c;
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+    localObject = URLDrawable.getDrawable(this.b, (URLDrawable.URLDrawableOptions)localObject);
+    this.this$0.a(this.a, (Drawable)localObject, this.b, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader.1
  * JD-Core Version:    0.7.0.1
  */

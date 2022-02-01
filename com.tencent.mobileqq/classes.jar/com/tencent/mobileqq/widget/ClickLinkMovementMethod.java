@@ -11,15 +11,15 @@ import java.lang.reflect.Field;
 public class ClickLinkMovementMethod
   extends LinkMovementMethod
 {
-  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
-  private static Field jdField_a_of_type_JavaLangReflectField;
+  private static Field a;
+  private static MovementMethod b;
   
   public static MovementMethod a()
   {
-    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
-      jdField_a_of_type_AndroidTextMethodMovementMethod = new ClickLinkMovementMethod();
+    if (b == null) {
+      b = new ClickLinkMovementMethod();
     }
-    return jdField_a_of_type_AndroidTextMethodMovementMethod;
+    return b;
   }
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
@@ -27,11 +27,11 @@ public class ClickLinkMovementMethod
     if (paramMotionEvent.getActionMasked() == 1) {
       try
       {
-        if (jdField_a_of_type_JavaLangReflectField == null) {
-          jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+        if (a == null) {
+          a = View.class.getDeclaredField("mHasPerformedLongPress");
         }
-        jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-        boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
+        a.setAccessible(true);
+        boolean bool = a.getBoolean(paramTextView);
         if (bool) {
           return true;
         }
@@ -50,7 +50,7 @@ public class ClickLinkMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

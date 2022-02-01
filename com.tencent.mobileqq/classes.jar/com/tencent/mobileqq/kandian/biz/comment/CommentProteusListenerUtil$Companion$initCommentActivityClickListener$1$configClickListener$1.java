@@ -17,23 +17,23 @@ final class CommentProteusListenerUtil$Companion$initCommentActivityClickListene
   
   public final void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a() != null)
+    if (this.a.m() != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a == null) {
+      if (this.b.c == null) {
         return;
       }
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a();
+      paramViewBase = this.a.m();
       Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      ReadInJoyUtils.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a.activityJumpUrl);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a().e(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem);
+      ReadInJoyUtils.a(paramViewBase.getContext(), this.b.c.activityJumpUrl);
+      if (this.a.q() != null) {
+        this.a.q().e(this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentActivityClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

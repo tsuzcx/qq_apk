@@ -13,14 +13,14 @@ import org.json.JSONObject;
 public class StudyRoomConfProcessor
   extends IQConfigProcessor<StudyRoomConfBean>
 {
-  public static StudyRoomConfBean a()
-  {
-    return (StudyRoomConfBean)QConfigManager.a().a(612);
-  }
-  
   public static void a()
   {
-    QConfigManager.a().a(new int[] { 612 });
+    QConfigManager.b().a(new int[] { 612 });
+  }
+  
+  public static StudyRoomConfBean b()
+  {
+    return (StudyRoomConfBean)QConfigManager.b().b(612);
   }
   
   @NonNull
@@ -42,10 +42,10 @@ public class StudyRoomConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0];
-      if ((paramArrayOfQConfItem != null) && (!TextUtils.isEmpty(paramArrayOfQConfItem.a))) {
+      if ((paramArrayOfQConfItem != null) && (!TextUtils.isEmpty(paramArrayOfQConfItem.b))) {
         try
         {
-          localStudyRoomConfBean.a = new JSONObject(paramArrayOfQConfItem.a);
+          localStudyRoomConfBean.a = new JSONObject(paramArrayOfQConfItem.b);
           return localStudyRoomConfBean;
         }
         catch (JSONException paramArrayOfQConfItem)
@@ -110,7 +110,7 @@ public class StudyRoomConfProcessor
       localStringBuilder.append("onReqNoReceive: type=");
       localStringBuilder.append(type());
       localStringBuilder.append("curContent:");
-      localStringBuilder.append(a());
+      localStringBuilder.append(b());
       QLog.d("StudyRoomConfProcessor", 2, localStringBuilder.toString());
     }
   }
@@ -122,7 +122,7 @@ public class StudyRoomConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.config.StudyRoomConfProcessor
  * JD-Core Version:    0.7.0.1
  */

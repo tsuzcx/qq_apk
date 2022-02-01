@@ -5,13 +5,13 @@ import java.lang.ref.WeakReference;
 class Image2Video$ConvertContext
 {
   public static int a = 3;
-  public long a;
-  public ConvertRunnable a;
-  public SlideItemInfo a;
-  public WeakReference<Image2Video.Image2VideoListener> a;
-  public int b;
-  public long b;
-  public int c;
+  public ConvertRunnable b;
+  public WeakReference<Image2Video.Image2VideoListener> c;
+  public long d;
+  public int e;
+  public int f;
+  public long g;
+  public SlideItemInfo h;
 }
 
 

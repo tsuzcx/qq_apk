@@ -19,20 +19,20 @@ import java.lang.reflect.Method;
 public class ViewPluginContext
   extends ContextThemeWrapper
 {
-  private int jdField_a_of_type_Int;
-  private AssetManager jdField_a_of_type_AndroidContentResAssetManager = null;
-  private Resources.Theme jdField_a_of_type_AndroidContentResResources$Theme = null;
-  private Resources jdField_a_of_type_AndroidContentResResources = null;
-  private ClassLoader jdField_a_of_type_JavaLangClassLoader;
+  private AssetManager a = null;
+  private Resources b = null;
+  private Resources.Theme c = null;
+  private int d;
+  private ClassLoader e;
   
   public ViewPluginContext(Context paramContext, int paramInt, ViewPluginContext paramViewPluginContext)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_JavaLangClassLoader = paramViewPluginContext.jdField_a_of_type_JavaLangClassLoader;
-    this.jdField_a_of_type_AndroidContentResAssetManager = paramViewPluginContext.jdField_a_of_type_AndroidContentResAssetManager;
-    this.jdField_a_of_type_AndroidContentResResources$Theme = paramViewPluginContext.jdField_a_of_type_AndroidContentResResources$Theme;
-    this.jdField_a_of_type_AndroidContentResResources = paramViewPluginContext.jdField_a_of_type_AndroidContentResResources;
-    this.jdField_a_of_type_Int = paramViewPluginContext.jdField_a_of_type_Int;
+    this.e = paramViewPluginContext.e;
+    this.a = paramViewPluginContext.a;
+    this.c = paramViewPluginContext.c;
+    this.b = paramViewPluginContext.b;
+    this.d = paramViewPluginContext.d;
   }
   
   public ViewPluginContext(Context paramContext, int paramInt, String paramString, ClassLoader paramClassLoader)
@@ -43,11 +43,11 @@ public class ViewPluginContext
   public ViewPluginContext(Context paramContext, int paramInt, String paramString, ClassLoader paramClassLoader, Resources paramResources, boolean paramBoolean)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_JavaLangClassLoader = paramClassLoader;
+    this.e = paramClassLoader;
     if (paramResources != null)
     {
-      this.jdField_a_of_type_AndroidContentResAssetManager = paramResources.getAssets();
-      this.jdField_a_of_type_AndroidContentResResources = paramResources;
+      this.a = paramResources.getAssets();
+      this.b = paramResources;
     }
     else
     {
@@ -85,15 +85,15 @@ public class ViewPluginContext
           }
           try
           {
-            this.jdField_a_of_type_AndroidContentResResources = paramContext.getResourcesForApplication(paramClassLoader.applicationInfo);
+            this.b = paramContext.getResourcesForApplication(paramClassLoader.applicationInfo);
           }
           catch (PackageManager.NameNotFoundException paramContext)
           {
             QLog.e("ViewPluginContext arendgx", 1, paramContext, new Object[0]);
           }
-          paramContext = this.jdField_a_of_type_AndroidContentResResources;
+          paramContext = this.b;
           if (paramContext != null) {
-            this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
+            this.a = paramContext.getAssets();
           }
         }
         else
@@ -103,13 +103,13 @@ public class ViewPluginContext
       }
       else
       {
-        this.jdField_a_of_type_AndroidContentResAssetManager = a(paramClassLoader);
-        this.jdField_a_of_type_AndroidContentResResources = a(paramContext, this.jdField_a_of_type_AndroidContentResAssetManager);
+        this.a = a(paramClassLoader);
+        this.b = a(paramContext, this.a);
       }
     }
-    paramContext = this.jdField_a_of_type_AndroidContentResResources;
+    paramContext = this.b;
     if (paramContext != null) {
-      this.jdField_a_of_type_AndroidContentResResources$Theme = a(paramContext);
+      this.c = a(paramContext);
     }
   }
   
@@ -207,8 +207,8 @@ public class ViewPluginContext
   private Resources.Theme a(Resources paramResources)
   {
     paramResources = paramResources.newTheme();
-    this.jdField_a_of_type_Int = a("com.android.internal.R.style.Theme");
-    paramResources.applyStyle(this.jdField_a_of_type_Int, true);
+    this.d = a("com.android.internal.R.style.Theme");
+    paramResources.applyStyle(this.d, true);
     return paramResources;
   }
   
@@ -240,12 +240,12 @@ public class ViewPluginContext
   
   public AssetManager getAssets()
   {
-    return this.jdField_a_of_type_AndroidContentResAssetManager;
+    return this.a;
   }
   
   public ClassLoader getClassLoader()
   {
-    ClassLoader localClassLoader = this.jdField_a_of_type_JavaLangClassLoader;
+    ClassLoader localClassLoader = this.e;
     if (localClassLoader != null) {
       return localClassLoader;
     }
@@ -254,17 +254,17 @@ public class ViewPluginContext
   
   public Resources getResources()
   {
-    return this.jdField_a_of_type_AndroidContentResResources;
+    return this.b;
   }
   
   public Resources.Theme getTheme()
   {
-    return this.jdField_a_of_type_AndroidContentResResources$Theme;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginContext
  * JD-Core Version:    0.7.0.1
  */

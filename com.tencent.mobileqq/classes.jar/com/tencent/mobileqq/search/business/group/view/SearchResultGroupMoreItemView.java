@@ -15,33 +15,28 @@ import java.util.List;
 public class SearchResultGroupMoreItemView
   implements ISearchResultGroupView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View a;
   private TextView b;
+  private TextView c;
   
   public SearchResultGroupMoreItemView(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
-    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461);
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
+    paramViewGroup = (ImageView)this.a.findViewById(2131435357);
     if ((paramViewGroup != null) && (paramInt2 > 0)) {
       paramViewGroup.setImageResource(paramInt2);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369676));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365536));
+    this.b = ((TextView)this.a.findViewById(2131436787));
+    this.c = ((TextView)this.a.findViewById(2131431757));
     if (paramInt3 == 12)
     {
-      paramViewGroup = this.b;
+      paramViewGroup = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131713579));
+      localStringBuilder.append(HardCodeUtil.a(2131911124));
       localStringBuilder.append(((IPublicAcountFetcher)QRoute.api(IPublicAcountFetcher.class)).getSubscriptName());
-      localStringBuilder.append(HardCodeUtil.a(2131713578));
+      localStringBuilder.append(HardCodeUtil.a(2131911123));
       paramViewGroup.setText(localStringBuilder.toString());
     }
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public TextView a()
@@ -49,19 +44,24 @@ public class SearchResultGroupMoreItemView
     return null;
   }
   
-  public List<ISearchResultView> a()
+  public TextView b()
+  {
+    return this.b;
+  }
+  
+  public List<ISearchResultView> c()
   {
     return null;
   }
   
-  public TextView b()
+  public View h()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.view.SearchResultGroupMoreItemView
  * JD-Core Version:    0.7.0.1
  */

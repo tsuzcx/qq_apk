@@ -42,7 +42,7 @@ class DefaultCustomHostProxyService$2
   
   public boolean isTestEnv()
   {
-    return new File(this.a.a, this.a.b).exists();
+    return new File(this.a.b, this.a.c).exists();
   }
   
   public boolean isWebActivityShowFloatWindow()
@@ -57,7 +57,7 @@ class DefaultCustomHostProxyService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService.2
  * JD-Core Version:    0.7.0.1
  */

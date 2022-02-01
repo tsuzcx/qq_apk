@@ -16,8 +16,6 @@ public abstract interface HippyScrollView
   
   public abstract void setPagingEnabled(boolean paramBoolean);
   
-  public abstract void setScrollAnimationEndEventEnable(boolean paramBoolean);
-  
   public abstract void setScrollBeginDragEventEnable(boolean paramBoolean);
   
   public abstract void setScrollEnabled(boolean paramBoolean);
@@ -34,7 +32,7 @@ public abstract interface HippyScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyScrollView
  * JD-Core Version:    0.7.0.1
  */

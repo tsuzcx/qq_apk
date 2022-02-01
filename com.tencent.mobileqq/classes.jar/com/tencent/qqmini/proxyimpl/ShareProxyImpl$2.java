@@ -11,12 +11,12 @@ class ShareProxyImpl$2
   
   public void run()
   {
-    QQToast.a(this.a, 0, 2131720478, 1).b(this.a.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.a, 0, 2131918154, 1).show(this.a.getResources().getDimensionPixelSize(2131299920));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

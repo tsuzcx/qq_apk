@@ -10,7 +10,7 @@ class VideoJsProxyImpl$2$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoJsProxyImpl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, this.a.b);
+    VideoJsProxyImpl.a(this.a.this$0, this.a.a, this.a.b, this.a.c, this.a.d);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -18,7 +18,7 @@ class VideoJsProxyImpl$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

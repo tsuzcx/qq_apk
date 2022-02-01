@@ -12,16 +12,16 @@ public abstract class IReportObj
   @NotNull
   public abstract String a();
   
-  @Nullable
-  public abstract JSONObject a();
-  
   public abstract void a(@NotNull AdReportData paramAdReportData);
   
-  public abstract boolean a();
+  @Nullable
+  public abstract JSONObject b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.IReportObj
  * JD-Core Version:    0.7.0.1
  */

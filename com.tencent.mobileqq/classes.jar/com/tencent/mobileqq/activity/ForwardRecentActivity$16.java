@@ -1,40 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import com.tencent.mobileqq.adapter.ForwardRecentListAdapter.IForwardRecentListAdapterCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel.DeviceChooseInterface;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 
 class ForwardRecentActivity$16
-  implements ForwardRecentListAdapter.IForwardRecentListAdapterCallback
+  implements DatalineDeviceChooseModel.DeviceChooseInterface
 {
-  ForwardRecentActivity$16(ForwardRecentActivity paramForwardRecentActivity) {}
+  ForwardRecentActivity$16(ForwardRecentActivity paramForwardRecentActivity, ResultRecord paramResultRecord, ForwardRecentItemView paramForwardRecentItemView) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    boolean bool = ForwardRecentActivity.access$400(this.a);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onItemViewClicked");
-      localStringBuilder.append(bool);
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, localStringBuilder.toString());
-    }
-    if (bool)
-    {
-      ForwardRecentActivity.access$2300(this.a, paramView);
-      return;
-    }
-    this.a.onListViewItemClickedInDefaultStatus(paramView);
+    ForwardRecentActivity.access$2100(this.c, this.a, this.b);
   }
   
-  public boolean a(String paramString, int paramInt)
+  public void b()
   {
-    return ForwardRecentActivity.access$500(this.a, paramString, paramInt);
+    ForwardRecentActivity.access$2100(this.c, this.a, this.b);
+  }
+  
+  public void c()
+  {
+    if (ForwardRecentActivity.access$2200(this.c) != null) {
+      this.c.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.16
  * JD-Core Version:    0.7.0.1
  */

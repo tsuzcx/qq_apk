@@ -26,7 +26,7 @@ public final class TextMetaMaterialHelper$Companion
     TextMetaMaterialKt.c(localMetaMaterial, "Font");
     Object localObject = BaseApplicationImpl.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getContext()");
-    localObject = ((BaseApplication)localObject).getResources().getString(2064515196);
+    localObject = ((BaseApplication)localObject).getResources().getString(2064187542);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getC…e_editor_text_thumb_text)");
     MetaMaterialKt.c(localMetaMaterial, (String)localObject);
     TextMetaMaterialKt.a(localMetaMaterial, true);
@@ -60,7 +60,7 @@ public final class TextMetaMaterialHelper$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.TextMetaMaterialHelper.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ class DynamicNowManager$4
   public void a(JSONObject paramJSONObject)
   {
     super.a(paramJSONObject);
-    DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager, this.jdField_a_of_type_AndroidOsBundle);
+    DynamicNowManager.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.4
  * JD-Core Version:    0.7.0.1
  */

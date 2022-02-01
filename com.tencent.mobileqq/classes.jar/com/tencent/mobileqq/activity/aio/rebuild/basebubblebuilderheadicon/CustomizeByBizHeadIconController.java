@@ -10,21 +10,16 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class CustomizeByBizHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  private boolean b()
+  private boolean k()
   {
-    return ((ITempChatPluginManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).isCustomizeByBiz(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop);
-  }
-  
-  public boolean a()
-  {
-    return b();
+    return ((ITempChatPluginManager)this.b.getRuntimeService(ITempChatPluginManager.class, "")).isCustomizeByBiz(this.a.istroop);
   }
   
   protected void b()
   {
-    Object localObject = ((ITempChatPluginManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop);
+    Object localObject = ((ITempChatPluginManager)this.b.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(this.a.istroop);
     if (localObject != null) {
-      localObject = ((AbstractTempChatPlugin)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, TempChatSource.SOURCE_FROM_AIO);
+      localObject = ((AbstractTempChatPlugin)localObject).a(this.a.senderuin, TempChatSource.SOURCE_FROM_AIO);
     } else {
       localObject = null;
     }
@@ -33,7 +28,7 @@ public class CustomizeByBizHeadIconController
   
   protected void c()
   {
-    a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    a(this.h);
   }
   
   protected void d()
@@ -43,12 +38,17 @@ public class CustomizeByBizHeadIconController
   
   protected void g()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    a(this.a);
+  }
+  
+  public boolean h()
+  {
+    return k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.CustomizeByBizHeadIconController
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 public abstract class TrooFileTextViewMenuBuilder
   extends SwipRightMenuBuilder
 {
-  protected final int a;
   protected final int[] a;
   protected final int[] b;
   protected final int[] c;
   protected final int[] d;
+  protected final int e;
   
   public TrooFileTextViewMenuBuilder(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
     super(paramInt1, paramInt2);
     this.d = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt2;
+    this.e = paramInt3;
+    this.a = paramArrayOfInt2;
     this.b = paramArrayOfInt3;
     this.c = paramArrayOfInt4;
   }
@@ -32,7 +32,7 @@ public abstract class TrooFileTextViewMenuBuilder
   public View createRightMenuItem(Context paramContext, int paramInt)
   {
     paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.jdField_a_of_type_Int));
+    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.e));
     paramContext.setGravity(17);
     paramContext.setTextSize(16.0F);
     paramContext.setTextColor(-1);
@@ -75,7 +75,7 @@ public abstract class TrooFileTextViewMenuBuilder
             {
               paramInt = this.b[paramSwipRightMenuItem.menuId];
               int i = this.c[paramSwipRightMenuItem.menuId];
-              int j = this.jdField_a_of_type_ArrayOfInt[paramSwipRightMenuItem.menuId];
+              int j = this.a[paramSwipRightMenuItem.menuId];
               paramObject.setVisibility(0);
               paramObject.setText(paramObject.getContext().getResources().getString(paramInt));
               paramObject.setBackgroundResource(i);
@@ -84,7 +84,7 @@ public abstract class TrooFileTextViewMenuBuilder
               paramObject.setContentDescription(paramObject.getResources().getString(paramInt));
               paramObject.setOnClickListener(paramOnClickListener);
               paramSwipRightMenuItem.menuWidth = this.d[paramSwipRightMenuItem.menuType];
-              paramSwipRightMenuItem.menuHeight = this.jdField_a_of_type_Int;
+              paramSwipRightMenuItem.menuHeight = this.e;
               localObject1 = paramObject;
             }
           }
@@ -96,7 +96,7 @@ public abstract class TrooFileTextViewMenuBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TrooFileTextViewMenuBuilder
  * JD-Core Version:    0.7.0.1
  */

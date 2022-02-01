@@ -23,15 +23,10 @@ import java.net.URL;
 public class PublicAccountImageCollectionActivity
   extends BaseActivity
 {
-  int jdField_a_of_type_Int = 0;
-  protected Handler a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  PublicAccountImageView jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView;
-  
-  public PublicAccountImageCollectionActivity()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new PublicAccountImageCollectionActivity.1(this);
-  }
+  PublicAccountImageView a;
+  RelativeLayout b;
+  int c = 0;
+  protected Handler d = new PublicAccountImageCollectionActivity.1(this);
   
   private Drawable a(String paramString, int paramInt1, int paramInt2)
   {
@@ -46,13 +41,13 @@ public class PublicAccountImageCollectionActivity
       paramString = null;
     }
     Object localObject2 = new ImageRequest();
-    ((ImageRequest)localObject2).jdField_a_of_type_JavaNetURL = paramString;
-    ((ImageRequest)localObject2).jdField_a_of_type_Int = paramInt1;
-    ((ImageRequest)localObject2).b = paramInt2;
+    ((ImageRequest)localObject2).a = paramString;
+    ((ImageRequest)localObject2).b = paramInt1;
+    ((ImageRequest)localObject2).c = paramInt2;
     localObject2 = ((IImageManager)QRoute.api(IImageManager.class)).getBitmap((ImageRequest)localObject2);
     paramString = localObject1;
     if (localObject2 != null) {
-      paramString = new ZBitmapDrawable(((ICloseableBitmap)localObject2).a());
+      paramString = new ZBitmapDrawable(((ICloseableBitmap)localObject2).b());
     }
     return paramString;
   }
@@ -73,7 +68,7 @@ public class PublicAccountImageCollectionActivity
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559605);
+    super.setContentView(2131625634);
     int i = getWindowManager().getDefaultDisplay().getHeight();
     int j = getWindowManager().getDefaultDisplay().getWidth();
     Object localObject = getIntent();
@@ -87,16 +82,16 @@ public class PublicAccountImageCollectionActivity
     if (arrayOfFloat != null) {
       ((Matrix)localObject).setValues(arrayOfFloat);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView = new PublicAccountImageView(this, this.jdField_a_of_type_AndroidOsHandler, (Matrix)localObject, this.jdField_a_of_type_Int, n, i1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373230));
+    this.a = new PublicAccountImageView(this, this.d, (Matrix)localObject, this.c, n, i1);
+    this.b = ((RelativeLayout)findViewById(2131440839));
     paramBundle = a(paramBundle, k, m);
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setImageDrawable(paramBundle);
+    this.a.setImageDrawable(paramBundle);
     ((Matrix)localObject).postScale(3.0F, 3.0F, n / 2, i1 / 2);
     ((Matrix)localObject).postTranslate((j - n) / 2, (i - i1) / 2);
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setImageMatrix((Matrix)localObject);
+    this.a.setImageMatrix((Matrix)localObject);
     paramBundle = new RelativeLayout.LayoutParams(-1, -1);
     paramBundle.addRule(10, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView, paramBundle);
+    this.b.addView(this.a, paramBundle);
     return true;
   }
   
@@ -104,11 +99,11 @@ public class PublicAccountImageCollectionActivity
   {
     super.doOnDestroy();
     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.doubleTapFlag = false;
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.d;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.d = null;
     }
   }
   
@@ -119,7 +114,7 @@ public class PublicAccountImageCollectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionActivity
  * JD-Core Version:    0.7.0.1
  */

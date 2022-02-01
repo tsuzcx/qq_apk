@@ -15,13 +15,13 @@ class QQGameSubscribeServiceImpl$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("enterSingleGameMsgPage onError,context:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(",result:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(",appId:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(",from:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.c);
       QLog.i("QQGamePub_QQGameSubscribeServiceImpl", 2, localStringBuilder.toString());
     }
   }
@@ -32,18 +32,18 @@ class QQGameSubscribeServiceImpl$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("enterSingleGameMsgPage onSuccess,context:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(",appId:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(",from:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.c);
       QLog.i("QQGamePub_QQGameSubscribeServiceImpl", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameSubscribeServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

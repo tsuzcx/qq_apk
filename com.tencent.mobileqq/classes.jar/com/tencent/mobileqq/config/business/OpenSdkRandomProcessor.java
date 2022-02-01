@@ -15,7 +15,7 @@ public class OpenSdkRandomProcessor
 {
   public static OpenSdkRandomConfBean b(int paramInt)
   {
-    OpenSdkRandomConfBean localOpenSdkRandomConfBean = (OpenSdkRandomConfBean)QConfigManager.a().a(paramInt);
+    OpenSdkRandomConfBean localOpenSdkRandomConfBean = (OpenSdkRandomConfBean)QConfigManager.b().b(paramInt);
     if (localOpenSdkRandomConfBean != null) {
       return localOpenSdkRandomConfBean;
     }
@@ -34,7 +34,7 @@ public class OpenSdkRandomProcessor
     Object localObject = null;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      String str = paramArrayOfQConfItem[0].a;
+      String str = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(str))
       {
         paramArrayOfQConfItem = new StringBuilder();
@@ -105,7 +105,7 @@ public class OpenSdkRandomProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkRandomProcessor
  * JD-Core Version:    0.7.0.1
  */

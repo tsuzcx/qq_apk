@@ -15,7 +15,7 @@ class MayknowRecommendManager$6
     {
       paramBundle = new StringBuilder();
       paramBundle.append("setRecommendTroopDeleted uin: ");
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.a);
       paramBundle.append(" isSuccess: ");
       paramBundle.append(paramBoolean);
       QLog.i("MayknowRecommendManager", 2, paramBundle.toString());
@@ -24,7 +24,7 @@ class MayknowRecommendManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.6
  * JD-Core Version:    0.7.0.1
  */

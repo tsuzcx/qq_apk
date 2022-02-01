@@ -9,15 +9,15 @@ import com.tencent.mobileqq.qwallet.preload.IPreloadService;
 class CustomizeStrategyFactory$PanelStrategy
   implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  IQWalletConfigService jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService = null;
-  IPreloadService jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = null;
+  IPreloadService a = null;
+  IQWalletConfigService b = null;
   
   CustomizeStrategyFactory$PanelStrategy(BaseQQAppInterface paramBaseQQAppInterface)
   {
     if (paramBaseQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
-      this.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService = ((IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, ""));
+      this.a = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
+      this.b = ((IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, ""));
     }
   }
   
@@ -33,14 +33,14 @@ class CustomizeStrategyFactory$PanelStrategy
     if ((paramRedPacketInfo != null) && ((paramInterfaceRedPkgElem instanceof PanelRedPkgElem)))
     {
       paramInterfaceRedPkgElem = (PanelRedPkgElem)paramInterfaceRedPkgElem;
-      paramRedPacketInfo.icon = paramInterfaceRedPkgElem.a;
-      paramRedPacketInfo.resPath = paramInterfaceRedPkgElem.b;
+      paramRedPacketInfo.icon = paramInterfaceRedPkgElem.b;
+      paramRedPacketInfo.resPath = paramInterfaceRedPkgElem.c;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.PanelStrategy
  * JD-Core Version:    0.7.0.1
  */

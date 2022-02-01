@@ -20,28 +20,28 @@ public class TroopGiftPanelForNearby
   extends TroopGiftPanel
   implements ITroopGiftPanelForNearby
 {
-  protected WeakReference<QQAppInterface> c = null;
-  protected boolean e = false;
-  protected boolean f = false;
+  protected WeakReference<QQAppInterface> ab = null;
+  protected boolean ac = false;
+  protected boolean ad = false;
   
   public TroopGiftPanelForNearby(QQAppInterface paramQQAppInterface, Context paramContext, TroopGiftPanel.OnShowOrHideListerner paramOnShowOrHideListerner, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, BaseChatPie paramBaseChatPie)
   {
     super(paramContext, paramOnShowOrHideListerner, false);
-    this.c = new WeakReference(paramQQAppInterface);
-    this.jdField_b_of_type_JavaLangString = "OidbSvc.0x7f8";
-    this.g = 2040;
-    this.e = paramBoolean1;
-    this.f = paramBoolean3;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    this.ab = new WeakReference(paramQQAppInterface);
+    this.h = "OidbSvc.0x7f8";
+    this.i = 2040;
+    this.ac = paramBoolean1;
+    this.ad = paramBoolean3;
+    this.j = true;
+    this.C = new WeakReference(paramBaseChatPie);
     if (paramBoolean3) {
-      this.k = 8;
-    } else if (this.e) {
-      this.k = 6;
+      this.V = 8;
+    } else if (this.ac) {
+      this.V = 6;
     } else if (paramBoolean2) {
-      this.k = 5;
+      this.V = 5;
     } else {
-      this.k = 4;
+      this.V = 4;
     }
     setBackgroundColor(-1);
   }
@@ -51,61 +51,61 @@ public class TroopGiftPanelForNearby
     super.a((TroopGiftPanel.OnGetGiveGiftCallback)paramObject);
   }
   
-  public void c(String paramString)
+  public void d(String paramString)
   {
-    Object localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (AppInterface)this.l.get();
     if (localObject == null) {
       return;
     }
     localObject = (TroopGiftManager)((AppInterface)localObject).getManager(QQManagerFactory.TROOP_GIFT_MANAGER);
-    TroopGiftAioItemData localTroopGiftAioItemData = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData;
-    int j = localTroopGiftAioItemData.b;
-    if (localTroopGiftAioItemData.b == 0) {
-      j = b();
+    TroopGiftAioItemData localTroopGiftAioItemData = this.A;
+    int j = localTroopGiftAioItemData.e;
+    if (localTroopGiftAioItemData.e == 0) {
+      j = getGiftNum();
     }
     int i;
-    if (this.e) {
+    if (this.ac) {
       i = 4;
     } else {
       i = 2;
     }
-    if (this.f) {
+    if (this.ad) {
       i = 5;
     }
-    int m = this.k;
-    String str = a();
+    int m = this.V;
+    String str = getTroopUin();
     long l = Long.parseLong(paramString);
-    int n = localTroopGiftAioItemData.c;
+    int n = localTroopGiftAioItemData.f;
     int k;
-    if (localTroopGiftAioItemData.b == 0) {
+    if (localTroopGiftAioItemData.e == 0) {
       k = 1;
     } else {
       k = 0;
     }
-    ((TroopGiftManager)localObject).a("OidbSvc.0x7f6", 2038, i, m, str, 2, j, l, n, k, localTroopGiftAioItemData.jdField_a_of_type_Int, 0, new TroopGiftPanelForNearby.1(this), localTroopGiftAioItemData.e);
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData = null;
+    ((TroopGiftManager)localObject).a("OidbSvc.0x7f6", 2038, i, m, str, 2, j, l, n, k, localTroopGiftAioItemData.d, 0, new TroopGiftPanelForNearby.1(this), localTroopGiftAioItemData.i);
+    this.A.k = false;
+    this.A = null;
   }
   
-  protected void e()
+  protected void f()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.c.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.ab.get();
     if (localQQAppInterface == null) {
       return;
     }
     Object localObject = (HotChatManager)localQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
     if (localObject != null) {
-      localObject = ((HotChatManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localObject = ((HotChatManager)localObject).c(this.n.b);
     } else {
       localObject = null;
     }
     if (localObject != null) {
-      ((IHotChatUtil)QRoute.api(IHotChatUtil.class)).startTroopMemberChooseForFlowerActivity(localObject, localQQAppInterface, a(), 0);
+      ((IHotChatUtil)QRoute.api(IHotChatUtil.class)).startTroopMemberChooseForFlowerActivity(localObject, localQQAppInterface, getActivity(), 0);
     } else {
-      c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      d(this.n.b);
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnShowOrHideListerner != null) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnShowOrHideListerner.b();
+    if (this.G != null) {
+      this.G.b();
     }
   }
   
@@ -113,15 +113,15 @@ public class TroopGiftPanelForNearby
   {
     if (paramBoolean)
     {
-      this.k = 5;
+      this.V = 5;
       return;
     }
-    this.k = 4;
+    this.V = 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby
  * JD-Core Version:    0.7.0.1
  */

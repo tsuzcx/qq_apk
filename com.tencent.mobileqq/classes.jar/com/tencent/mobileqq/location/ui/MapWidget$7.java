@@ -27,8 +27,8 @@ class MapWidget$7
   
   public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
-      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline.remove();
+    if (this.a.c != null) {
+      this.a.c.remove();
     }
     if (MapWidget.a(this.a) != null) {
       MapWidget.a(this.a).a(null);
@@ -37,7 +37,7 @@ class MapWidget$7
   
   public void a(LocationRoom.Venue paramVenue)
   {
-    Object localObject = (LocationEasterEggBean)QConfigManager.a().a(575);
+    Object localObject = (LocationEasterEggBean)QConfigManager.b().b(575);
     if (localObject != null) {
       localObject = ((LocationEasterEggBean)localObject).a();
     } else {
@@ -45,7 +45,7 @@ class MapWidget$7
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130840658)));
+      localObject = this.a.b.addMarker(new MarkerOptions(paramVenue.e).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130841431)));
     }
     else
     {
@@ -55,11 +55,11 @@ class MapWidget$7
       localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
       ((URLDrawable)localObject).downloadImediatly();
       localObject = BaseImageUtil.b((Drawable)localObject);
-      localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject)));
+      localObject = this.a.b.addMarker(new MarkerOptions(paramVenue.e).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject)));
     }
     if (localObject != null)
     {
-      paramVenue.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
+      paramVenue.a = new SoftReference(localObject);
       MapWidget.a(this.a, (Marker)localObject);
       ((Marker)localObject).setClickable(false);
       ((Marker)localObject).refreshInfoWindow();
@@ -74,23 +74,23 @@ class MapWidget$7
   
   public void a(String paramString)
   {
-    Marker localMarker = (Marker)MapWidget.a(this.a).get(paramString);
+    Marker localMarker = (Marker)MapWidget.d(this.a).get(paramString);
     if (localMarker != null)
     {
       localMarker.remove();
-      MapWidget.a(this.a).remove(paramString);
+      MapWidget.d(this.a).remove(paramString);
     }
-    localMarker = (Marker)this.a.jdField_a_of_type_JavaUtilMap.get(paramString);
+    localMarker = (Marker)this.a.d.get(paramString);
     if (localMarker != null)
     {
       localMarker.remove();
-      this.a.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      this.a.d.remove(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.7
  * JD-Core Version:    0.7.0.1
  */

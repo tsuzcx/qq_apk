@@ -4,35 +4,29 @@ import android.text.TextUtils;
 
 public class GameActivityCenterEntry
 {
-  public int a;
-  public String a;
+  public int a = 0;
   public String b = null;
-  
-  public GameActivityCenterEntry()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-  }
+  public String c = null;
   
   public boolean a()
   {
-    return TextUtils.isEmpty(this.b) ^ true;
+    return TextUtils.isEmpty(this.c) ^ true;
   }
   
   public boolean b()
   {
-    return (a()) && (this.jdField_a_of_type_Int == 1);
+    return (a()) && (this.a == 1);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{redPoint: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", iconUrl: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", jumpUrl: ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", jumpUrl: ");
+    localStringBuilder.append(this.c);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

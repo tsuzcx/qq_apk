@@ -1,6 +1,8 @@
 package com.tencent.xaction.api.data;
 
 import androidx.annotation.Keep;
+import com.tencent.xaction.impl.XATimeline;
+import com.tencent.xaction.impl.XATimeline.Companion;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +14,7 @@ public final class TimeProp
   private boolean autoPlay = true;
   private long delay;
   private int duration;
-  private int fps = 60;
+  private int fps = XATimeline.a.a();
   private int rc;
   private int rm = 1;
   private boolean single;
@@ -100,7 +102,7 @@ public final class TimeProp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.data.TimeProp
  * JD-Core Version:    0.7.0.1
  */

@@ -9,24 +9,24 @@ class LoginVerifyCodeActivity$3
   {
     try
     {
-      if ((LoginVerifyCodeActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
+      if ((LoginVerifyCodeActivity.n(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
         LoginVerifyCodeActivity.a(this.this$0, new QQProgressDialog(this.this$0, this.this$0.getTitleBarHeight()));
-        LoginVerifyCodeActivity.a(this.this$0).c(2131694668);
+        LoginVerifyCodeActivity.n(this.this$0).c(2131892360);
       }
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    if ((LoginVerifyCodeActivity.a(this.this$0) != null) && (!LoginVerifyCodeActivity.a(this.this$0).isShowing())) {
-      LoginVerifyCodeActivity.a(this.this$0).show();
+    if ((LoginVerifyCodeActivity.n(this.this$0) != null) && (!LoginVerifyCodeActivity.n(this.this$0).isShowing())) {
+      LoginVerifyCodeActivity.n(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.3
  * JD-Core Version:    0.7.0.1
  */

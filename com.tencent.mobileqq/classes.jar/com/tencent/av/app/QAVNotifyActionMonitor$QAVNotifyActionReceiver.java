@@ -44,8 +44,8 @@ class QAVNotifyActionMonitor$QAVNotifyActionReceiver
       localStringBuilder.append("]");
       QLog.i("QAVNotifyActionMonitor", 2, localStringBuilder.toString());
     }
-    TraeHelper.a(paramVideoAppInterface);
-    VideoController.a().a(paramLong1, paramInt, paramLong2);
+    TraeHelper.b(paramVideoAppInterface);
+    VideoController.f().a(paramLong1, paramInt, paramLong2);
     paramVideoAppInterface = QAVNotification.a(paramVideoAppInterface);
     if (paramVideoAppInterface != null) {
       paramVideoAppInterface.a(paramString);
@@ -68,12 +68,12 @@ class QAVNotifyActionMonitor$QAVNotifyActionReceiver
       ((StringBuilder)localObject).append("]");
       QLog.i("QAVNotifyActionMonitor", 2, ((StringBuilder)localObject).toString());
     }
-    TraeHelper.a(paramVideoAppInterface);
-    Object localObject = VideoController.a();
+    TraeHelper.b(paramVideoAppInterface);
+    Object localObject = VideoController.f();
     if (paramBoolean)
     {
       ((VideoController)localObject).a(paramLong, paramString2, 1, true);
-      long l = CharacterUtil.a(paramString2);
+      long l = CharacterUtil.b(paramString2);
       ((VideoController)localObject).a(paramLong, 3, l);
       ((VideoController)localObject).a(paramLong, l, 1);
     }
@@ -111,7 +111,7 @@ class QAVNotifyActionMonitor$QAVNotifyActionReceiver
     if ("com.tencent.qav.notify.refuse".equals(paramContext))
     {
       paramContext = paramIntent.getStringExtra("session_id");
-      paramIntent = SessionMgr.a().c(paramContext);
+      paramIntent = SessionMgr.a().d(paramContext);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -128,9 +128,9 @@ class QAVNotifyActionMonitor$QAVNotifyActionReceiver
       {
         localObject = (VideoAppInterface)this.a.get();
         if (SessionMgr.a(paramIntent)) {
-          a(l, (VideoAppInterface)localObject, paramIntent.b, paramIntent.c, paramIntent.y);
+          a(l, (VideoAppInterface)localObject, paramIntent.f, paramIntent.s, paramIntent.am);
         } else {
-          a(l, (VideoAppInterface)localObject, paramContext, paramIntent.E, paramIntent.f);
+          a(l, (VideoAppInterface)localObject, paramContext, paramIntent.aQ, paramIntent.aN);
         }
       }
       ReportController.b(null, "dc00898", "", "", "0X800A2C7", "0X800A2C7", 0, 0, "", "", "", "");
@@ -150,10 +150,10 @@ class QAVNotifyActionMonitor$QAVNotifyActionReceiver
       paramIntent = paramIntent.getByteArrayExtra("msg_content");
       if (TextUtils.equals(paramContext, "avChatRoom"))
       {
-        localObject = VideoController.a().a();
+        localObject = VideoController.f().aj();
         if (localObject != null)
         {
-          localObject = ((VideoAppInterface)localObject).a();
+          localObject = ((VideoAppInterface)localObject).A();
           if (localObject != null) {
             ((ChatRoomMng)localObject).a(j, paramIntent);
           }
@@ -161,10 +161,10 @@ class QAVNotifyActionMonitor$QAVNotifyActionReceiver
       }
       else if (TextUtils.equals(paramContext, "avWatchTogether"))
       {
-        localObject = VideoController.a().a();
+        localObject = VideoController.f().aj();
         if (localObject != null)
         {
-          localObject = (WTogetherMng)((VideoAppInterface)localObject).a(16);
+          localObject = (WTogetherMng)((VideoAppInterface)localObject).c(17);
           if (localObject != null) {
             ((WTogetherMng)localObject).a(j, paramIntent);
           }

@@ -2,12 +2,12 @@ package com.tencent.mobileqq.activity.aio.troop;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,6 +16,7 @@ import com.tencent.mobileqq.config.business.TroopFoldMsgConfProcessor;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -25,43 +26,38 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.NumberUtil;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.data.ChatMessage;>;
+import java.util.List<+Lcom.tencent.mobileqq.data.ChatMessage;>;
 import java.util.Map;
 import java.util.Set;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TroopMsgSameFold
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/aio/troop/TroopMsgSameFold;", "", "()V", "FOLD_GRAY_TIP_PRE_TEXT_LEN", "", "FOLD_GRAY_TIP_PRE_TEXT_WIDTH", "TAG", "", "TYPE_EXPAND", "TYPE_EXPAND_THEN_FOLD", "TYPE_FOLD", "configLoadMoreMsgCount", "configLoadMoreMsgCount$annotations", "getConfigLoadMoreMsgCount", "()I", "configMsgCount", "configMsgCount$annotations", "getConfigMsgCount", "configSwitch", "", "configSwitch$annotations", "getConfigSwitch", "()Z", "sHasReportShowExpandGrayTips", "", "", "sHasReportShowFoldGrayTips", "sLogSwitch", "getSLogSwitch", "setSLogSwitch", "(Z)V", "clearReportList", "", "isFirstOpenAIO", "filterSelfMsgList", "", "Lcom/tencent/mobileqq/data/ChatMessage;", "chatMessageList", "filterSelfUserSize", "findSameMsgIndexArr", "", "", "srcMsgList", "minSameMsgCount", "foldShMsgSeqArr", "", "foldMsgFirstShMsgSeqSet", "", "foldMsgShMsgSeqPair", "", "foldThenExpandMsgLastShMsgSeqArr", "(Ljava/util/List;I[JLjava/util/Set;Ljava/util/Map;[J)[[I", "foldSameMsg", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "openAIOFirstShmsgseq", "openAIOLastShmsgseq", "getAllUserNicknameGrayTipWording", "res", "Landroid/content/res/Resources;", "getCommonInitIndexArray", "shMsgSeqArr", "getFitTextSize", "dm", "Landroid/util/DisplayMetrics;", "textviewWidth", "source", "getFoldMsgGrayTipWording", "msgCount", "getGrayTipWording", "getInitSameMsgIndexArray", "maxGroup", "(I)[[I", "getNickSetFromMsgList", "troopUin", "getSameMsgPiots", "sameMsgArray", "index", "([[II)[I", "handleIndexEndIfNeed", "size", "sameMsgIndexArray", "sameMsgPointer", "curSameMsgCount", "foldIndexArray", "lastSameIndex", "foldThenExpandIndexArray", "chatMessage", "(I[JI[[III[II[J[ILcom/tencent/mobileqq/data/ChatMessage;)I", "handleOneSameNodeIfExit", "(Ljava/util/List;I[J[[III[II[J[I)I", "handleSameMsg", "i", "([[IIIILcom/tencent/mobileqq/data/ChatMessage;)I", "handleSameNodeEndIndexMsg", "dstMsgList", "needHandleMsgList", "tempSameMsgList", "Ljava/util/ArrayList;", "tempNoFoldMsgList", "needHandleSize", "firstSameMsg", "curMsg", "sameArray", "isFoldCareMsgType", "isFoldGrayMsg", "message", "isIgnoreMsg", "isInSameMsgs", "isMsgNoFold", "msg", "isTowMsgSame", "left", "right", "isWordingExceed", "lineCount", "log", "logStr", "param", "(Ljava/lang/String;[Ljava/lang/Object;)V", "logSameIndexArrayForDebug", "resultSameMsgIndexArray", "([[I[I)V", "makeCommonFoldMsgGrayTip", "firstShMsgSeq", "wording", "highStartIndex", "highEndIndex", "actionType", "isFold", "makeFoldMsgGrayTip", "makeGrayTipBundle", "Landroid/os/Bundle;", "lastShMsgSeq", "makeSameIndexArray", "([[II[I[I)[[I", "replaceSameMsgToGrayTip", "report", "replaceMsg", "reportAddFoldGrayTip", "foldMsgGrayTip", "updateFoldMsgIndexArr", "updateFoldMsgIndexArrPreMsg", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class TroopMsgSameFold
 {
-  protected static List<Long> a;
-  public static boolean a = false;
-  protected static List<Long> b = new ArrayList();
+  @JvmField
+  @NotNull
+  public static List<Long> a = (List)new ArrayList();
+  @JvmField
+  @NotNull
+  public static List<Long> b = (List)new ArrayList();
+  public static final TroopMsgSameFold c = new TroopMsgSameFold();
+  private static boolean d;
   
-  static
-  {
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static int a()
-  {
-    TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgConfProcessor.a();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getConfigSwitch = ");
-      localStringBuilder.append(localTroopFoldMsgBean.jdField_a_of_type_Int);
-      QLog.i("TroopMsgSameFold", 2, localStringBuilder.toString());
-    }
-    return localTroopFoldMsgBean.jdField_a_of_type_Int;
-  }
-  
-  private static int a(int paramInt1, long[] paramArrayOfLong1, int paramInt2, int[][] paramArrayOfInt, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int paramInt5, long[] paramArrayOfLong2, int[] paramArrayOfInt2, ChatMessage paramChatMessage)
+  private final int a(int paramInt1, long[] paramArrayOfLong1, int paramInt2, int[][] paramArrayOfInt, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int paramInt5, long[] paramArrayOfLong2, int[] paramArrayOfInt2, ChatMessage paramChatMessage)
   {
     if (paramInt5 == paramInt2 - 1) {
       if (paramInt4 >= paramInt1)
@@ -77,7 +73,7 @@ public class TroopMsgSameFold
     return paramInt3;
   }
   
-  private static int a(DisplayMetrics paramDisplayMetrics, int paramInt, String paramString)
+  private final int a(DisplayMetrics paramDisplayMetrics, int paramInt, String paramString)
   {
     TextPaint localTextPaint = new TextPaint(1);
     localTextPaint.density = paramDisplayMetrics.density;
@@ -89,37 +85,45 @@ public class TroopMsgSameFold
     {
       j = i;
       if (i >= k) {
+        break label106;
+      }
+      if (paramString == null) {
         break;
       }
-      if (localTextPaint.measureText(paramString.substring(0, i)) * f > paramInt)
+      paramDisplayMetrics = paramString.substring(0, i);
+      Intrinsics.checkExpressionValueIsNotNull(paramDisplayMetrics, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      if (localTextPaint.measureText(paramDisplayMetrics) * f > paramInt)
       {
         j = i - 1;
-        break;
+        break label106;
       }
       i += 1;
     }
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    label106:
     a("getFitTextSize = fitSize = %d", new Object[] { Integer.valueOf(j) });
     return j;
   }
   
-  protected static int a(List<ChatMessage> paramList)
+  @JvmStatic
+  public static final int a(@NotNull List<? extends ChatMessage> paramList)
   {
-    return ListUtils.a(a(paramList));
+    Intrinsics.checkParameterIsNotNull(paramList, "chatMessageList");
+    return ListUtils.b((Collection)c.b(paramList));
   }
   
-  private static int a(@NonNull List<ChatMessage> paramList, int paramInt1, long[] paramArrayOfLong1, int[][] paramArrayOfInt, int paramInt2, int paramInt3, int[] paramArrayOfInt1, int paramInt4, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
+  private final int a(List<? extends ChatMessage> paramList, int paramInt1, long[] paramArrayOfLong1, int[][] paramArrayOfInt, int paramInt2, int paramInt3, int[] paramArrayOfInt1, int paramInt4, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
   {
-    int i = paramInt2;
     if (paramInt3 >= paramInt1)
     {
       paramArrayOfInt[paramInt2][1] = paramInt4;
-      i = paramInt2 + 1;
       a(paramArrayOfLong1, paramArrayOfInt1, paramInt4, paramArrayOfLong2, paramArrayOfInt2, (ChatMessage)paramList.get(paramInt4));
+      return paramInt2 + 1;
     }
-    return i;
+    return paramInt2;
   }
   
-  private static int a(int[][] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, ChatMessage paramChatMessage)
+  private final int a(int[][] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, ChatMessage paramChatMessage)
   {
     int i = paramInt2;
     if (!paramChatMessage.isSend())
@@ -135,7 +139,7 @@ public class TroopMsgSameFold
     return i;
   }
   
-  private static Bundle a(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
+  private final Bundle a(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_action", paramInt);
@@ -144,27 +148,27 @@ public class TroopMsgSameFold
     return localBundle;
   }
   
-  public static ChatMessage a(QQAppInterface paramQQAppInterface, Resources paramResources, List<ChatMessage> paramList, long paramLong)
+  private final ChatMessage a(QQAppInterface paramQQAppInterface, List<? extends ChatMessage> paramList, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    paramResources = a(paramQQAppInterface, paramResources, paramList);
-    int i = paramResources.length();
-    return a(paramQQAppInterface, paramList, paramLong, paramResources, i - 6, i, 54, true);
-  }
-  
-  private static ChatMessage a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    int i = ListUtils.a(paramList);
+    int i = ListUtils.b((Collection)paramList);
     Object localObject = (ChatMessage)paramList.get(0);
     if (i > 1) {
       paramList = (ChatMessage)paramList.get(i - 1);
     } else {
-      paramList = (List<ChatMessage>)localObject;
+      paramList = (List<? extends ChatMessage>)localObject;
+    }
+    if (paramList == null) {
+      Intrinsics.throwNpe();
     }
     String str1 = paramList.frienduin;
     String str2 = paramQQAppInterface.getCurrentUin();
     long l1 = paramList.time;
     i = paramList.istroop;
-    if (paramLong == -1L) {
+    if (paramLong == -1L)
+    {
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
       paramLong = ((ChatMessage)localObject).shmsgseq;
     }
     long l2 = paramList.shmsgseq;
@@ -172,93 +176,114 @@ public class TroopMsgSameFold
     paramList = new UniteGrayTipParam(str1, str2, paramString, i, -5040, 2, l1);
     paramList.a(paramInt1, paramInt2, a(paramInt3, paramLong, l2, paramBoolean));
     localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramList);
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg((AppRuntime)paramQQAppInterface, paramList);
     ((MessageForUniteGrayTip)localObject).msg = paramString;
     ((MessageForUniteGrayTip)localObject).shmsgseq = l2;
     ((MessageForUniteGrayTip)localObject).uniseq = (l3 + 1L);
-    return localObject;
+    return (ChatMessage)localObject;
   }
   
-  @Nullable
-  private static ChatMessage a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, List<ChatMessage> paramList1, List<ChatMessage> paramList2, ArrayList<ChatMessage> paramArrayList, List<ChatMessage> paramList3, int paramInt, ChatMessage paramChatMessage1, ChatMessage paramChatMessage2, int[] paramArrayOfInt)
+  private final ChatMessage a(QQAppInterface paramQQAppInterface, boolean paramBoolean, List<ChatMessage> paramList, List<? extends ChatMessage> paramList1, ArrayList<ChatMessage> paramArrayList, List<? extends ChatMessage> paramList2, int paramInt, ChatMessage paramChatMessage1, ChatMessage paramChatMessage2, int[] paramArrayOfInt)
   {
-    ChatMessage localChatMessage = paramChatMessage1;
     if (paramArrayList.size() > 0)
     {
       int i = paramArrayOfInt[0] - 1;
-      localChatMessage = paramChatMessage1;
-      if (i >= 0)
-      {
-        localChatMessage = paramChatMessage1;
-        if (i < paramInt) {
-          localChatMessage = (ChatMessage)paramList2.get(i);
-        }
+      if ((i >= 0) && (i < paramInt)) {
+        paramList1 = (ChatMessage)paramList1.get(i);
+      } else {
+        paramList1 = paramChatMessage1;
       }
       long l;
-      if (localChatMessage == null) {
-        l = -1L;
+      if (paramList1 != null) {
+        l = paramList1.shmsgseq;
       } else {
-        l = localChatMessage.shmsgseq;
+        l = -1L;
       }
-      paramList2 = paramQQAppInterface.getApp().getResources();
+      paramChatMessage1 = paramQQAppInterface.getApp();
+      Intrinsics.checkExpressionValueIsNotNull(paramChatMessage1, "app.app");
+      paramChatMessage1 = paramChatMessage1.getResources();
       if (paramArrayOfInt[2] == 1)
       {
-        paramList1.addAll(paramArrayList);
+        paramList.addAll((Collection)paramArrayList);
       }
       else if (paramArrayOfInt[2] == 0)
       {
-        paramList1.addAll(paramList3);
-        paramList2 = a(paramQQAppInterface, paramList2, paramArrayList, l);
-        paramList1.add(paramList2);
+        paramList.addAll((Collection)paramList2);
+        Intrinsics.checkExpressionValueIsNotNull(paramChatMessage1, "res");
+        paramList2 = a(paramQQAppInterface, paramChatMessage1, (List)paramArrayList, l);
+        paramList.add(paramList2);
         a(paramQQAppInterface, paramChatMessage2, paramArrayList.size(), paramList2);
       }
       else
       {
-        paramList1.addAll(paramArrayList);
-        paramList2 = b(paramQQAppInterface, paramList2, paramArrayList, l);
-        paramList1.add(paramList2);
+        paramList.addAll((Collection)paramArrayList);
+        Intrinsics.checkExpressionValueIsNotNull(paramChatMessage1, "res");
+        paramList2 = b(paramQQAppInterface, paramChatMessage1, (List)paramArrayList, l);
+        paramList.add(paramList2);
         a(paramQQAppInterface, paramChatMessage2, paramList2);
       }
     }
+    else
+    {
+      paramList1 = paramChatMessage1;
+    }
     paramArrayList.clear();
-    return localChatMessage;
+    return paramList1;
   }
   
-  private static String a(Resources paramResources, int paramInt)
+  private final String a(Resources paramResources, int paramInt)
   {
-    paramResources = paramResources.getString(2131719865);
+    paramResources = paramResources.getString(2131917470);
     try
     {
-      paramResources = String.format(paramResources, new Object[] { Integer.valueOf(paramInt) });
+      Object localObject = StringCompanionObject.INSTANCE;
+      Intrinsics.checkExpressionValueIsNotNull(paramResources, "formatStr");
+      localObject = new Object[1];
+      localObject[0] = Integer.valueOf(paramInt);
+      paramResources = String.format(paramResources, Arrays.copyOf((Object[])localObject, localObject.length));
+      Intrinsics.checkExpressionValueIsNotNull(paramResources, "java.lang.String.format(format, *args)");
       return paramResources;
     }
     catch (Exception paramResources)
     {
-      label25:
-      break label25;
+      label51:
+      break label51;
     }
     return "text";
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, Resources paramResources, List<ChatMessage> paramList)
+  private final String a(QQAppInterface paramQQAppInterface, Resources paramResources, List<? extends ChatMessage> paramList)
   {
-    String str2 = paramResources.getString(2131719867);
-    String str1 = paramResources.getString(2131719866);
+    String str2 = paramResources.getString(2131917472);
+    String str1 = paramResources.getString(2131917471);
     Object localObject1 = (ChatMessage)paramList.get(0);
+    if (localObject1 == null) {
+      Intrinsics.throwNpe();
+    }
     Object localObject2 = ((ChatMessage)localObject1).frienduin;
     String str3 = ((MessageForText)localObject1).msg;
     localObject1 = new StringBuilder();
-    localObject2 = a(paramQQAppInterface, a(paramList), (String)localObject2);
-    paramQQAppInterface = ((List)localObject2).iterator();
-    while (paramQQAppInterface.hasNext())
+    paramList = b(paramList);
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "troopUin");
+    paramQQAppInterface = a(paramQQAppInterface, paramList, (String)localObject2);
+    paramList = paramQQAppInterface.iterator();
+    while (paramList.hasNext())
     {
-      ((StringBuilder)localObject1).append((String)paramQQAppInterface.next());
+      ((StringBuilder)localObject1).append((String)paramList.next());
       ((StringBuilder)localObject1).append("、");
     }
     ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-    paramList = String.format(str2, new Object[] { Integer.valueOf(ListUtils.a((Collection)localObject2)), str3 });
+    paramList = StringCompanionObject.INSTANCE;
+    Intrinsics.checkExpressionValueIsNotNull(str2, "firstLineResStr");
+    paramList = new Object[2];
+    localObject2 = (Collection)paramQQAppInterface;
+    paramList[0] = Integer.valueOf(ListUtils.b((Collection)localObject2));
+    paramList[1] = str3;
+    paramList = String.format(str2, Arrays.copyOf(paramList, paramList.length));
+    Intrinsics.checkExpressionValueIsNotNull(paramList, "java.lang.String.format(format, *args)");
     paramResources = paramResources.getDisplayMetrics();
-    int i = ViewUtils.a() - ViewUtils.a(57.0F) - BaseChatItemLayout.y;
+    int i = ViewUtils.getScreenWidth() - ViewUtils.dip2px(57) - BaseChatItemLayout.y;
+    Intrinsics.checkExpressionValueIsNotNull(paramResources, "dm");
     paramQQAppInterface = paramList;
     if (a(paramResources, i, 1, paramList))
     {
@@ -269,253 +294,250 @@ public class TroopMsgSameFold
         paramQQAppInterface = paramList;
         if (i < str3.length())
         {
-          int j = ListUtils.a((Collection)localObject2);
-          paramQQAppInterface = new StringBuilder();
-          paramQQAppInterface.append(str3.substring(0, i));
-          paramQQAppInterface.append("...");
-          paramQQAppInterface = String.format(str2, new Object[] { Integer.valueOf(j), paramQQAppInterface.toString() });
+          paramQQAppInterface = StringCompanionObject.INSTANCE;
+          paramQQAppInterface = new Object[2];
+          paramQQAppInterface[0] = Integer.valueOf(ListUtils.b((Collection)localObject2));
+          paramResources = new StringBuilder();
+          Intrinsics.checkExpressionValueIsNotNull(str3, "msgText");
+          if (str3 != null)
+          {
+            paramList = str3.substring(0, i);
+            Intrinsics.checkExpressionValueIsNotNull(paramList, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            paramResources.append(paramList);
+            paramResources.append("...");
+            paramQQAppInterface[1] = paramResources.toString();
+            paramQQAppInterface = String.format(str2, Arrays.copyOf(paramQQAppInterface, paramQQAppInterface.length));
+            Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "java.lang.String.format(format, *args)");
+          }
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+          }
         }
       }
     }
     ((StringBuilder)localObject1).insert(0, paramQQAppInterface);
     ((StringBuilder)localObject1).append(str1);
-    return ((StringBuilder)localObject1).toString();
+    paramQQAppInterface = ((StringBuilder)localObject1).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "stringBuilder.toString()");
+    return paramQQAppInterface;
   }
   
-  public static List<ChatMessage> a(@NonNull QQAppInterface paramQQAppInterface, @NonNull List<ChatMessage> paramList, int paramInt, long paramLong1, long paramLong2, long[] paramArrayOfLong1, Set<Long> paramSet, Map<Long, Long> paramMap, long[] paramArrayOfLong2, boolean paramBoolean)
+  @JvmStatic
+  @NotNull
+  public static final List<ChatMessage> a(@NotNull QQAppInterface paramQQAppInterface, @NotNull List<ChatMessage> paramList, int paramInt, long paramLong1, long paramLong2, @Nullable long[] paramArrayOfLong1, @NotNull Set<Long> paramSet, @NotNull Map<Long, Long> paramMap, @Nullable long[] paramArrayOfLong2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
+    List<ChatMessage> localList = paramList;
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(localList, "srcMsgList");
+    Intrinsics.checkParameterIsNotNull(paramSet, "foldMsgFirstShMsgSeqSet");
+    Intrinsics.checkParameterIsNotNull(paramMap, "foldMsgShMsgSeqPair");
+    boolean bool = QLog.isColorLevel();
+    Object localObject1 = "TroopMsgSameFold";
+    if (bool)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("mOpenAIOFirstMsgShmsgseq =");
-      ((StringBuilder)localObject).append(paramLong1);
-      ((StringBuilder)localObject).append(",mOpenAIOLastMsgShmsgseq =");
-      ((StringBuilder)localObject).append(paramLong2);
-      ((StringBuilder)localObject).append(",minSameMsgCount = ");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(",srcMsgList.size = ");
-      ((StringBuilder)localObject).append(paramList.size());
-      QLog.i("TroopMsgSameFold", 2, ((StringBuilder)localObject).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("mOpenAIOFirstMsgShmsgseq =");
+      ((StringBuilder)localObject2).append(paramLong1);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append("mOpenAIOLastMsgShmsgseq =");
+      ((StringBuilder)localObject2).append(paramLong2);
+      ((StringBuilder)localObject2).append(",minSameMsgCount = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(",srcMsgList.size = ");
+      ((StringBuilder)localObject2).append(paramList.size());
+      QLog.i("TroopMsgSameFold", 2, ((StringBuilder)localObject2).toString());
     }
-    a(paramBoolean);
+    c.a(paramBoolean);
     int m = paramList.size();
     int k = m - 1;
     int j = k;
     int i = 0;
     while (i < m)
     {
-      if (((ChatMessage)paramList.get(i)).shmsgseq == paramLong2) {
+      if (((ChatMessage)localList.get(i)).shmsgseq == paramLong2) {
         j = i;
       }
       i += 1;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("foldSameMsg.start = srcMsgList = ");
-    ((StringBuilder)localObject).append(m);
-    ((StringBuilder)localObject).append(",ThreadName = ");
-    ((StringBuilder)localObject).append(Thread.currentThread().getName());
-    a(((StringBuilder)localObject).toString(), new Object[0]);
+    paramList = new StringBuilder();
+    paramList.append("foldSameMsg.start = srcMsgList = ");
+    paramList.append(m);
+    paramList.append(",ThreadName = ");
+    Object localObject2 = Thread.currentThread();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "Thread.currentThread()");
+    paramList.append(((Thread)localObject2).getName());
+    a(paramList.toString(), new Object[0]);
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("openAIOFirstMsgIndex =");
-      ((StringBuilder)localObject).append(0);
-      ((StringBuilder)localObject).append(",openAIOLastMsgIndex =");
-      ((StringBuilder)localObject).append(j);
-      QLog.i("TroopMsgSameFold", 2, ((StringBuilder)localObject).toString());
+      paramList = new StringBuilder();
+      paramList.append("openAIOFirstMsgIndex =");
+      paramList.append(0);
+      paramList.append(",openAIOLastMsgIndex =");
+      paramList.append(j);
+      QLog.i((String)localObject1, 2, paramList.toString());
     }
     if (j < m) {
-      localObject = paramList.subList(0, j + 1);
+      paramList = localList.subList(0, j + 1);
     } else {
-      localObject = paramList;
+      paramList = localList;
     }
-    paramArrayOfLong2 = a((List)localObject, paramInt, paramArrayOfLong1, paramSet, paramMap, paramArrayOfLong2);
+    paramSet = c.a(paramList, paramInt, paramArrayOfLong1, paramSet, paramMap, paramArrayOfLong2);
     if (QLog.isColorLevel())
     {
       paramArrayOfLong1 = new StringBuilder();
       paramArrayOfLong1.append("findSameMsgIndexArr = ");
-      paramArrayOfLong1.append(NumberUtil.a(paramArrayOfLong2));
-      QLog.d("TroopMsgSameFold", 2, paramArrayOfLong1.toString());
+      paramArrayOfLong1.append(NumberUtil.a(paramSet));
+      QLog.d((String)localObject1, 2, paramArrayOfLong1.toString());
     }
-    if (paramArrayOfLong2 != null)
+    paramArrayOfLong1 = localList;
+    if (paramSet != null)
     {
       paramArrayOfLong1 = new StringBuilder();
       paramArrayOfLong1.append("findSameMsgArray = ");
-      paramArrayOfLong1.append(paramArrayOfLong2.length);
+      paramArrayOfLong1.append(((Object[])paramSet).length);
       a(paramArrayOfLong1.toString(), new Object[0]);
+      paramArrayOfLong1 = (List)new ArrayList();
       paramMap = new ArrayList();
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
+      paramArrayOfLong2 = (List)new ArrayList();
       a("foldSameMsg.add fold msg = ", new Object[0]);
-      i = ((List)localObject).size();
-      paramArrayOfLong1 = null;
-      paramInt = 0;
-      while (paramInt < i)
+      paramInt = paramList.size();
+      localObject1 = (ChatMessage)null;
+      i = 0;
+      while (i < paramInt)
       {
-        ChatMessage localChatMessage = (ChatMessage)((List)localObject).get(paramInt);
-        int[] arrayOfInt = a(paramArrayOfLong2, paramInt);
-        if ((arrayOfInt != null) && (paramInt != 0))
+        localObject2 = (ChatMessage)paramList.get(i);
+        int[] arrayOfInt = c.a(paramSet, i);
+        if ((arrayOfInt != null) && (i != 0))
         {
-          if (a(arrayOfInt, paramInt))
+          if (c.a(arrayOfInt, i))
           {
-            paramSet = new StringBuilder();
-            paramSet.append("inSame.");
-            paramSet.append(paramInt);
-            a(paramSet.toString(), new Object[0]);
-            localArrayList1.add(localChatMessage);
-            if (c(localChatMessage)) {
-              localArrayList2.add(localChatMessage);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("inSame.");
+            localStringBuilder.append(i);
+            a(localStringBuilder.toString(), new Object[0]);
+            paramMap.add(localObject2);
+            if (c((ChatMessage)localObject2)) {
+              paramArrayOfLong2.add(localObject2);
             }
-            paramSet = paramArrayOfLong1;
-            if (paramInt == arrayOfInt[1]) {
-              paramSet = a(paramQQAppInterface, paramBoolean, paramMap, (List)localObject, localArrayList1, localArrayList2, i, paramArrayOfLong1, localChatMessage, arrayOfInt);
+            if (i == arrayOfInt[1]) {
+              localObject1 = c.a(paramQQAppInterface, paramBoolean, paramArrayOfLong1, paramList, paramMap, paramArrayOfLong2, paramInt, (ChatMessage)localObject1, (ChatMessage)localObject2, arrayOfInt);
             }
           }
           else
           {
-            paramMap.add(localChatMessage);
-            localArrayList1.clear();
-            localArrayList2.clear();
-            paramSet = paramArrayOfLong1;
+            paramArrayOfLong1.add(localObject2);
+            paramMap.clear();
+            paramArrayOfLong2.clear();
           }
         }
         else
         {
           a("foldSameMsg.not same piots ", new Object[0]);
-          paramMap.add(localChatMessage);
-          localArrayList1.clear();
-          localArrayList2.clear();
-          paramSet = paramArrayOfLong1;
+          paramArrayOfLong1.add(localObject2);
+          paramMap.clear();
+          paramArrayOfLong2.clear();
         }
-        paramInt += 1;
-        paramArrayOfLong1 = paramSet;
+        i += 1;
       }
       a("foldSameMsg.add after msg = ", new Object[0]);
-      paramQQAppInterface = paramMap;
-      if (j < k)
-      {
-        paramMap.addAll(paramList.subList(j + 1, m));
-        return paramMap;
+      if (j < k) {
+        paramArrayOfLong1.addAll((Collection)localList.subList(j + 1, m));
       }
     }
-    else
-    {
-      paramQQAppInterface = paramList;
-    }
-    return paramQQAppInterface;
+    return paramArrayOfLong1;
   }
   
-  @NotNull
-  private static List<String> a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, String paramString)
+  private final List<String> a(QQAppInterface paramQQAppInterface, List<? extends ChatMessage> paramList, String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
+    List localList = (List)new ArrayList();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       paramList = (ChatMessage)localIterator.next();
+      if (paramList == null) {
+        Intrinsics.throwNpe();
+      }
       Object localObject = paramList.senderuin;
+      paramList = (MessageRecord)paramList;
       String str;
-      if (AnonymousChatHelper.a(paramList))
+      if (AnonymousChatHelper.c(paramList))
       {
-        str = AnonymousChatHelper.a(paramList).b;
+        str = AnonymousChatHelper.g(paramList).c;
+        Intrinsics.checkExpressionValueIsNotNull(str, "AnonymousChatHelper.getA…xtra(chatMessage).an_nick");
         paramList = str;
-        if (TextUtils.isEmpty(str)) {
-          paramList = (List<ChatMessage>)localObject;
+        if (TextUtils.isEmpty((CharSequence)str))
+        {
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "senderUin");
+          paramList = (List<? extends ChatMessage>)localObject;
         }
       }
       else
       {
-        str = ContactUtils.b(paramQQAppInterface, paramString, (String)localObject);
-        if (!TextUtils.isEmpty(str))
+        str = ContactUtils.b((AppInterface)paramQQAppInterface, paramString, (String)localObject);
+        Intrinsics.checkExpressionValueIsNotNull(str, "ContactUtils.getTroopMem…app, troopUin, senderUin)");
+        if (!TextUtils.isEmpty((CharSequence)str))
         {
           paramList = str;
-          if (!str.equals(localObject)) {}
+          if (!Intrinsics.areEqual(str, localObject)) {}
         }
         else
         {
-          paramList = ContactUtils.a(paramQQAppInterface, (String)localObject);
+          paramList = ContactUtils.a((AppRuntime)paramQQAppInterface, (String)localObject);
+          Intrinsics.checkExpressionValueIsNotNull(paramList, "ContactUtils.getFriendNick(app, senderUin)");
         }
       }
       localObject = paramList;
       if (paramList.length() > 20)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramList.substring(0, 20));
-        ((StringBuilder)localObject).append("...");
-        localObject = ((StringBuilder)localObject).toString();
-      }
-      localArrayList.add(localObject);
-    }
-    return localArrayList;
-  }
-  
-  private static List<ChatMessage> a(List<ChatMessage> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    HashSet localHashSet1 = new HashSet();
-    HashSet localHashSet2 = new HashSet();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (!c(localChatMessage)) {
-        if (AnonymousChatHelper.a(localChatMessage))
+        if (paramList != null)
         {
-          String str = AnonymousChatHelper.a(localChatMessage).b;
-          paramList = str;
-          if (TextUtils.isEmpty(str)) {
-            paramList = localChatMessage.senderuin;
-          }
-          if (localHashSet2.add(paramList)) {
-            localArrayList.add(localChatMessage);
-          }
+          paramList = paramList.substring(0, 20);
+          Intrinsics.checkExpressionValueIsNotNull(paramList, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+          ((StringBuilder)localObject).append(paramList);
+          ((StringBuilder)localObject).append("...");
+          localObject = ((StringBuilder)localObject).toString();
         }
-        else if (localHashSet1.add(localChatMessage.senderuin))
+        else
         {
-          localArrayList.add(localChatMessage);
+          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
         }
       }
+      localList.add(localObject);
     }
-    return localArrayList;
+    return localList;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage1, int paramInt, ChatMessage paramChatMessage2)
+  private final void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if (!b.contains(Long.valueOf(paramChatMessage2.shmsgseq)))
+    if (!a.contains(Long.valueOf(paramChatMessage2.shmsgseq)))
     {
-      if (paramInt > 15) {
-        paramInt = 15;
-      }
-      String str = paramChatMessage1.frienduin;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(paramChatMessage1.shmsgseq);
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800ADF2", "0X800ADF2", paramInt, 1, str, localStringBuilder.toString(), "", "");
-      b.add(Long.valueOf(paramChatMessage2.shmsgseq));
+      ReportController.b((AppRuntime)paramQQAppInterface, "dc00898", "", "", "0X800B191", "0X800B191", 0, 1, paramChatMessage1.frienduin, String.valueOf(paramChatMessage1.shmsgseq), "", "");
+      a.add(Long.valueOf(paramChatMessage2.shmsgseq));
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  @JvmStatic
+  public static final void a(@Nullable String paramString, @NotNull Object... paramVarArgs)
   {
-    if (!jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramChatMessage2.shmsgseq)))
-    {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B191", "0X800B191", 0, 1, paramChatMessage1.frienduin, String.valueOf(paramChatMessage1.shmsgseq), "", "");
-      jdField_a_of_type_JavaUtilList.add(Long.valueOf(paramChatMessage2.shmsgseq));
-    }
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (!jdField_a_of_type_Boolean) {
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "param");
+    if (!d) {
       return;
     }
-    paramString = String.format(paramString, paramVarArgs);
+    StringCompanionObject localStringCompanionObject = StringCompanionObject.INSTANCE;
+    if (paramString == null) {
+      Intrinsics.throwNpe();
+    }
+    paramVarArgs = Arrays.copyOf(paramVarArgs, paramVarArgs.length);
+    paramString = String.format(paramString, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "java.lang.String.format(format, *args)");
     if (QLog.isColorLevel()) {
       QLog.i("TroopMsgSameFold", 2, paramString);
     }
   }
   
-  private static void a(@NonNull List<ChatMessage> paramList, long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
+  private final void a(List<? extends ChatMessage> paramList, long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
   {
     if (paramInt > 0)
     {
@@ -524,51 +546,66 @@ public class TroopMsgSameFold
     }
   }
   
-  private static void a(boolean paramBoolean)
+  private final void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      jdField_a_of_type_JavaUtilList.clear();
+      a.clear();
       b.clear();
     }
   }
   
-  private static void a(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2, ChatMessage paramChatMessage)
+  private final void a(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2, ChatMessage paramChatMessage)
   {
     long l = paramChatMessage.shmsgseq;
     int j = 0;
+    int k;
     int i;
     if (paramArrayOfLong2 != null)
     {
+      k = paramArrayOfLong2.length;
       i = 0;
-      while (i < paramArrayOfLong2.length)
+      while (i < k)
       {
-        if ((l == paramArrayOfLong2[i]) && (paramArrayOfInt2[i] == -1))
+        if (l == paramArrayOfLong2[i])
         {
-          paramArrayOfInt2[i] = paramInt;
-          break;
+          if (paramArrayOfInt2 == null) {
+            Intrinsics.throwNpe();
+          }
+          if (paramArrayOfInt2[i] == -1)
+          {
+            paramArrayOfInt2[i] = paramInt;
+            break;
+          }
         }
         i += 1;
       }
     }
     if (paramArrayOfLong1 != null)
     {
+      k = paramArrayOfLong1.length;
       i = j;
-      while (i < paramArrayOfLong1.length)
+      while (i < k)
       {
-        if ((l == paramArrayOfLong1[i]) && (paramArrayOfInt1[i] == -1))
+        if (l == paramArrayOfLong1[i])
         {
-          paramArrayOfInt1[i] = paramInt;
-          return;
+          if (paramArrayOfInt1 == null) {
+            Intrinsics.throwNpe();
+          }
+          if (paramArrayOfInt1[i] == -1)
+          {
+            paramArrayOfInt1[i] = paramInt;
+            return;
+          }
         }
         i += 1;
       }
     }
   }
   
-  private static void a(int[][] paramArrayOfInt, int[] paramArrayOfInt1)
+  private final void a(int[][] paramArrayOfInt, int[] paramArrayOfInt1)
   {
-    boolean bool = jdField_a_of_type_Boolean;
+    boolean bool = d;
     int j = 0;
     int i;
     if (bool) {
@@ -578,7 +615,7 @@ public class TroopMsgSameFold
       }
       else
       {
-        int k = paramArrayOfInt.length;
+        int k = ((Object[])paramArrayOfInt).length;
         StringBuilder localStringBuilder = new StringBuilder("find same msg result:size = %d,range : ");
         i = 0;
         while (i < k)
@@ -610,10 +647,10 @@ public class TroopMsgSameFold
     }
     if (QLog.isColorLevel())
     {
-      if (paramArrayOfInt == null) {
-        i = 0;
+      if (paramArrayOfInt != null) {
+        i = ((Object[])paramArrayOfInt).length;
       } else {
-        i = paramArrayOfInt.length;
+        i = 0;
       }
       if (paramArrayOfInt1 != null) {
         j = paramArrayOfInt1.length;
@@ -627,11 +664,11 @@ public class TroopMsgSameFold
     }
   }
   
-  public static boolean a()
+  public static final boolean a()
   {
     TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgConfProcessor.a();
     boolean bool;
-    if (!localTroopFoldMsgBean.jdField_a_of_type_Boolean) {
+    if (!localTroopFoldMsgBean.a) {
       bool = false;
     } else {
       bool = true;
@@ -640,7 +677,7 @@ public class TroopMsgSameFold
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getConfigSwitch = ");
-      localStringBuilder.append(localTroopFoldMsgBean.jdField_a_of_type_Boolean);
+      localStringBuilder.append(localTroopFoldMsgBean.a);
       localStringBuilder.append(", openSwitch = ");
       localStringBuilder.append(bool);
       QLog.i("TroopMsgSameFold", 2, localStringBuilder.toString());
@@ -648,7 +685,7 @@ public class TroopMsgSameFold
     return bool;
   }
   
-  private static boolean a(DisplayMetrics paramDisplayMetrics, int paramInt1, int paramInt2, String paramString)
+  private final boolean a(DisplayMetrics paramDisplayMetrics, int paramInt1, int paramInt2, String paramString)
   {
     paramInt1 *= paramInt2;
     boolean bool = true;
@@ -676,7 +713,7 @@ public class TroopMsgSameFold
       paramDisplayMetrics.append(",中 = ");
       paramDisplayMetrics.append(localTextPaint.measureText("中"));
       paramDisplayMetrics.append(",screenW = ");
-      paramDisplayMetrics.append(ViewUtils.a());
+      paramDisplayMetrics.append(ViewUtils.getScreenWidth());
       QLog.d("TroopMsgSameFold", 4, paramDisplayMetrics.toString());
       paramDisplayMetrics = new StringBuilder();
       paramDisplayMetrics.append("test.density = ");
@@ -688,13 +725,16 @@ public class TroopMsgSameFold
     return bool;
   }
   
-  public static boolean a(@NonNull ChatMessage paramChatMessage)
+  @JvmStatic
+  public static final boolean a(@NotNull ChatMessage paramChatMessage)
   {
+    Intrinsics.checkParameterIsNotNull(paramChatMessage, "chatMessage");
     int i = paramChatMessage.msgtype;
     return (i == -1051) || (i == -1000);
   }
   
-  protected static boolean a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  @JvmStatic
+  public static final boolean a(@Nullable ChatMessage paramChatMessage1, @Nullable ChatMessage paramChatMessage2)
   {
     if (paramChatMessage1 == null)
     {
@@ -702,346 +742,131 @@ public class TroopMsgSameFold
         return true;
       }
     }
-    else if ((paramChatMessage2 != null) && (paramChatMessage1.msgtype == paramChatMessage2.msgtype) && (TextUtils.equals(paramChatMessage1.msg, paramChatMessage2.msg))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(int[] paramArrayOfInt, int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt >= paramArrayOfInt[0])
-    {
-      bool1 = bool2;
-      if (paramInt <= paramArrayOfInt[1]) {
-        bool1 = true;
+    else {
+      if (paramChatMessage2 != null) {
+        break label16;
       }
     }
-    return bool1;
+    label16:
+    while ((paramChatMessage1.msgtype != paramChatMessage2.msgtype) || (!TextUtils.equals((CharSequence)paramChatMessage1.msg, (CharSequence)paramChatMessage2.msg))) {
+      return false;
+    }
+    return true;
   }
   
-  private static int[] a(long[] paramArrayOfLong)
+  private final int[] a(long[] paramArrayOfLong)
   {
+    Object localObject = (int[])null;
     if (paramArrayOfLong != null)
     {
-      int[] arrayOfInt = new int[paramArrayOfLong.length];
+      paramArrayOfLong = new int[paramArrayOfLong.length];
       int i = 0;
+      int j = paramArrayOfLong.length;
       for (;;)
       {
-        paramArrayOfLong = arrayOfInt;
-        if (i >= arrayOfInt.length) {
+        localObject = paramArrayOfLong;
+        if (i >= j) {
           break;
         }
-        arrayOfInt[i] = -1;
+        paramArrayOfLong[i] = -1;
         i += 1;
       }
     }
-    paramArrayOfLong = null;
-    return paramArrayOfLong;
+    return localObject;
   }
   
-  public static int[] a(@NonNull int[][] paramArrayOfInt, int paramInt)
+  private final int[][] a(int paramInt)
   {
-    int j = paramArrayOfInt.length;
+    int j = paramInt + 1;
+    Object localObject = new int[j][];
     int i = 0;
-    while (i < j)
-    {
-      int k = paramArrayOfInt[i][0];
-      int m = paramArrayOfInt[i][1];
-      int n = paramArrayOfInt[i][2];
-      a("sameMsgArray.range start = %d,end = %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-      if ((paramInt >= k) && (paramInt <= m) && (m > k)) {
-        return new int[] { k, m, n };
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  private static int[][] a(int paramInt)
-  {
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramInt + 1, 3 });
-    int i = arrayOfInt.length;
     paramInt = 0;
-    while (paramInt < i)
+    while (paramInt < j)
     {
-      arrayOfInt[paramInt][2] = -1;
+      localObject[paramInt] = new int[3];
       paramInt += 1;
     }
-    return arrayOfInt;
-  }
-  
-  public static int[][] a(@NonNull List<ChatMessage> paramList, int paramInt, long[] paramArrayOfLong1, @NonNull Set<Long> paramSet, @NonNull Map<Long, Long> paramMap, long[] paramArrayOfLong2)
-  {
-    int i = paramInt;
-    if (i == 0) {
-      return (int[][])null;
-    }
-    int m = paramList.size();
-    int[][] arrayOfInt = a(Math.max(1, m / i));
-    boolean bool = ListUtils.a(paramSet);
-    int[] arrayOfInt2 = a(paramArrayOfLong1);
-    int[] arrayOfInt1 = a(paramArrayOfLong2);
-    long l1 = -1L;
-    Object localObject1 = null;
-    int n = 0;
-    int i1 = 0;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    while (j < m)
+    localObject = (int[][])localObject;
+    j = localObject.length;
+    paramInt = i;
+    while (paramInt < j)
     {
-      ChatMessage localChatMessage = (ChatMessage)paramList.get(j);
-      int i3;
-      if (!a(localChatMessage)) {
-        if ((d(localChatMessage)) && (j < m - 1))
-        {
-          i3 = m;
-          i2 = j;
-          j = n;
-          m = i1;
-          n = i3;
-        }
-        else
-        {
-          i1 = a(paramList, paramInt, paramArrayOfLong1, arrayOfInt, n, i1, arrayOfInt2, k, paramArrayOfLong2, arrayOfInt1);
-          localObject1 = null;
-          i2 = i;
-          n = m;
-          i = j;
-          j = i1;
-          m = 0;
-        }
-      }
-      int[] arrayOfInt3;
-      for (i1 = i;; i1 = i)
-      {
-        i = i2;
-        i2 = i1;
-        i1 = m;
-        m = i2;
-        break label976;
-        arrayOfInt3 = arrayOfInt1;
-        i3 = i;
-        i2 = n;
-        n = m;
-        i = i1;
-        Object localObject2 = (ChatMessage)paramList.get(j);
-        if (!bool) {
-          label750:
-          for (;;)
-          {
-            Object localObject3;
-            if (paramSet.contains(Long.valueOf(((ChatMessage)localObject2).shmsgseq)))
-            {
-              long l2 = ((ChatMessage)localObject2).shmsgseq;
-              localObject3 = (Long)paramMap.get(Long.valueOf(l2));
-              if (localObject3 != null)
-              {
-                m = j + 1;
-                if (m >= n) {
-                  break label750;
-                }
-                if ((i >= paramInt) && (!a((ChatMessage)localObject1, (ChatMessage)localObject2)))
-                {
-                  arrayOfInt[i2][1] = (j - 1);
-                  a(paramList, paramArrayOfLong1, arrayOfInt2, j, paramArrayOfLong2, arrayOfInt3);
-                  i2 += 1;
-                }
-                l1 = ((Long)localObject3).longValue();
-                arrayOfInt[i2][0] = m;
-                localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append("find fold msg, index = ");
-                ((StringBuilder)localObject1).append(j);
-                ((StringBuilder)localObject1).append(", shMsgSeq = ");
-                ((StringBuilder)localObject1).append(l2);
-                a(((StringBuilder)localObject1).toString(), new Object[0]);
-                localObject1 = null;
-                i = 0;
-                i3 = 1;
-              }
-              else
-              {
-                break label750;
-              }
-            }
-            else
-            {
-              if (i3 == 0) {
-                break label750;
-              }
-              if (l1 == ((ChatMessage)localObject2).shmsgseq)
-              {
-                arrayOfInt[i2][1] = j;
-                a(paramArrayOfLong1, arrayOfInt2, j, paramArrayOfLong2, arrayOfInt3, (ChatMessage)localObject2);
-                j += 1;
-                localObject2 = new StringBuilder();
-                ((StringBuilder)localObject2).append("end fold msg, index = ");
-                ((StringBuilder)localObject2).append(j);
-                ((StringBuilder)localObject2).append(", shMsgSeq = ");
-                ((StringBuilder)localObject2).append(l1);
-                a(((StringBuilder)localObject2).toString(), new Object[0]);
-              }
-              for (m = i2 + 1;; m = i2 + 1)
-              {
-                i1 = 0;
-                break label761;
-                if (l1 >= ((ChatMessage)localObject2).shmsgseq) {
-                  break;
-                }
-                arrayOfInt[i2][1] = (j - 1);
-                a(paramList, paramArrayOfLong1, arrayOfInt2, j, paramArrayOfLong2, arrayOfInt3);
-                j += 1;
-                if (!((ChatMessage)localObject2).isSend()) {
-                  localObject1 = localObject2;
-                }
-                localObject3 = new StringBuilder();
-                ((StringBuilder)localObject3).append("end fold msg, index = ");
-                ((StringBuilder)localObject3).append(j);
-                ((StringBuilder)localObject3).append(", shMsgSeq = ");
-                ((StringBuilder)localObject3).append(l1);
-                ((StringBuilder)localObject3).append(", msg.shmsgseq = ");
-                ((StringBuilder)localObject3).append(((ChatMessage)localObject2).shmsgseq);
-                a(((StringBuilder)localObject3).toString(), new Object[0]);
-              }
-            }
-            i1 = n;
-            m = j + 1;
-            if (m >= i1)
-            {
-              j = i3;
-              i3 = m;
-              m = i2;
-              i1 = i;
-              i = i3;
-              break label781;
-            }
-            n = i1;
-            j = m;
-            break;
-          }
-        }
-        m = i2;
-        i1 = i3;
-        label761:
-        i2 = j;
-        i3 = i;
-        j = i1;
-        i = i2;
-        i1 = i3;
-        label781:
-        if (i >= n) {
-          break label1001;
-        }
-        if (localObject1 != null) {
-          break label851;
-        }
-        if (!localChatMessage.isSend())
-        {
-          localObject1 = (ChatMessage)paramList.get(i);
-          k = i;
-          i2 = j;
-          j = m;
-          break;
-        }
-        i2 = j;
-        j = m;
-        m = i1;
-      }
-      label851:
-      if (a((ChatMessage)localObject1, localChatMessage))
-      {
-        i1 = a(arrayOfInt, m, i1, i, localChatMessage);
-        m = a(paramInt, paramArrayOfLong1, n, arrayOfInt, m, i1, arrayOfInt2, i, paramArrayOfLong2, arrayOfInt3, localChatMessage);
-        k = i;
-        i2 = j;
-        j = m;
-        m = i;
-        i = i2;
-      }
-      else
-      {
-        i2 = a(paramList, paramInt, paramArrayOfLong1, arrayOfInt, m, i1, arrayOfInt2, k, paramArrayOfLong2, arrayOfInt3);
-        localObject1 = localChatMessage;
-        if (localChatMessage.isSend()) {
-          localObject1 = null;
-        }
-        m = i;
-        i = j;
-        i1 = 0;
-        j = i2;
-      }
-      label976:
-      int i2 = m + 1;
-      m = n;
-      n = j;
-      j = i2;
+      localObject[paramInt][2] = -1;
+      paramInt += 1;
     }
-    m = n;
-    label1001:
-    paramList = a(arrayOfInt, m, arrayOfInt2, arrayOfInt1);
-    a(paramList, arrayOfInt2);
-    return paramList;
+    return localObject;
   }
   
-  private static int[][] a(int[][] paramArrayOfInt, int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  private final int[][] a(int[][] paramArrayOfInt, int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int[][] arrayOfInt = (int[][])null;
+    Object localObject = (int[][])null;
+    int i;
     if (paramInt >= 0)
     {
-      paramInt += 1;
-      arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramInt, 3 });
-      System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt);
-    }
-    int i;
-    if ((paramArrayOfInt2 != null) && (arrayOfInt != null))
-    {
+      i = paramInt + 1;
+      localObject = new int[i][];
       paramInt = 0;
-      while (paramInt < paramArrayOfInt2.length)
+      while (paramInt < i)
       {
-        long l = paramArrayOfInt2[paramInt];
+        localObject[paramInt] = new int[3];
+        paramInt += 1;
+      }
+      localObject = (int[][])localObject;
+      System.arraycopy(paramArrayOfInt, 0, localObject, 0, i);
+    }
+    int j;
+    int k;
+    int m;
+    if ((paramArrayOfInt2 != null) && (localObject != null))
+    {
+      j = paramArrayOfInt2.length;
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        k = paramArrayOfInt2[paramInt];
         paramArrayOfInt = new StringBuilder();
         paramArrayOfInt.append("find foldThenExpandIndex index = ");
-        paramArrayOfInt.append(l);
+        paramArrayOfInt.append(k);
         a(paramArrayOfInt.toString(), new Object[0]);
+        m = localObject.length;
         i = 0;
-        while (i < arrayOfInt.length)
+        while (i < m)
         {
-          if (arrayOfInt[i][1] == l) {
-            arrayOfInt[i][2] = 1;
+          if (localObject[i][1] == k) {
+            localObject[i][2] = 1;
           }
           i += 1;
         }
         paramInt += 1;
       }
     }
-    if ((paramArrayOfInt1 != null) && (arrayOfInt != null))
+    if ((paramArrayOfInt1 != null) && (localObject != null))
     {
+      j = paramArrayOfInt1.length;
       paramInt = 0;
-      while (paramInt < paramArrayOfInt1.length)
+      while (paramInt < j)
       {
-        int j = paramArrayOfInt1[paramInt];
+        k = paramArrayOfInt1[paramInt];
         paramArrayOfInt = new StringBuilder();
         paramArrayOfInt.append("find fold index = ");
-        paramArrayOfInt.append(j);
+        paramArrayOfInt.append(k);
         a(paramArrayOfInt.toString(), new Object[0]);
+        m = localObject.length;
         i = 0;
-        while (i < arrayOfInt.length)
+        while (i < m)
         {
-          if (arrayOfInt[i][1] == j) {
-            arrayOfInt[i][2] = 0;
+          if (localObject[i][1] == k) {
+            localObject[i][2] = 0;
           }
           i += 1;
         }
         paramInt += 1;
       }
     }
-    return arrayOfInt;
+    return localObject;
   }
   
-  public static int b()
+  public static final int b()
   {
     TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgConfProcessor.a();
     if (QLog.isColorLevel())
@@ -1054,15 +879,63 @@ public class TroopMsgSameFold
     return localTroopFoldMsgBean.b;
   }
   
-  private static ChatMessage b(QQAppInterface paramQQAppInterface, Resources paramResources, List<ChatMessage> paramList, long paramLong)
+  private final ChatMessage b(QQAppInterface paramQQAppInterface, Resources paramResources, List<? extends ChatMessage> paramList, long paramLong)
   {
     paramResources = a(paramResources, a(paramList));
     int i = paramResources.length();
-    paramResources = paramResources.concat(HardCodeUtil.a(2131719806));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramResources);
+    localStringBuilder.append(HardCodeUtil.a(2131917411));
+    paramResources = localStringBuilder.toString();
     return a(paramQQAppInterface, paramList, paramLong, paramResources, i, paramResources.length(), 61, false);
   }
   
-  public static boolean b(ChatMessage paramChatMessage)
+  private final List<ChatMessage> b(List<? extends ChatMessage> paramList)
+  {
+    List localList = (List)new ArrayList();
+    Set localSet1 = (Set)new HashSet();
+    Set localSet2 = (Set)new HashSet();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+      if (!c(localChatMessage))
+      {
+        paramList = (MessageRecord)localChatMessage;
+        if (AnonymousChatHelper.c(paramList))
+        {
+          String str = AnonymousChatHelper.g(paramList).c;
+          paramList = str;
+          if (TextUtils.isEmpty((CharSequence)str))
+          {
+            if (localChatMessage == null) {
+              Intrinsics.throwNpe();
+            }
+            paramList = localChatMessage.senderuin;
+          }
+          Intrinsics.checkExpressionValueIsNotNull(paramList, "nickName");
+          if (localSet2.add(paramList)) {
+            localList.add(localChatMessage);
+          }
+        }
+        else
+        {
+          if (localChatMessage == null) {
+            Intrinsics.throwNpe();
+          }
+          paramList = localChatMessage.senderuin;
+          Intrinsics.checkExpressionValueIsNotNull(paramList, "msg!!.senderuin");
+          if (localSet1.add(paramList)) {
+            localList.add(localChatMessage);
+          }
+        }
+      }
+    }
+    return localList;
+  }
+  
+  @JvmStatic
+  public static final boolean b(@Nullable ChatMessage paramChatMessage)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -1072,7 +945,7 @@ public class TroopMsgSameFold
       if ((paramChatMessage instanceof MessageForUniteGrayTip))
       {
         bool1 = bool2;
-        if (((MessageForUniteGrayTip)paramChatMessage).tipParam.b == 2) {
+        if (((MessageForUniteGrayTip)paramChatMessage).tipParam.i == 2) {
           bool1 = true;
         }
       }
@@ -1080,19 +953,336 @@ public class TroopMsgSameFold
     return bool1;
   }
   
-  protected static boolean c(ChatMessage paramChatMessage)
+  public static final int c()
   {
+    TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgConfProcessor.a();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getConfigSwitch = ");
+      localStringBuilder.append(localTroopFoldMsgBean.c);
+      QLog.i("TroopMsgSameFold", 2, localStringBuilder.toString());
+    }
+    return localTroopFoldMsgBean.c;
+  }
+  
+  @JvmStatic
+  public static final boolean c(@Nullable ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {
+      Intrinsics.throwNpe();
+    }
     return (paramChatMessage.isSend()) || (d(paramChatMessage));
   }
   
-  public static boolean d(ChatMessage paramChatMessage)
+  @JvmStatic
+  public static final boolean d(@Nullable ChatMessage paramChatMessage)
   {
     return (paramChatMessage != null) && (((paramChatMessage instanceof MessageForUniteGrayTip)) || ((paramChatMessage instanceof MessageForGrayTips)));
+  }
+  
+  @NotNull
+  public final ChatMessage a(@NotNull QQAppInterface paramQQAppInterface, @NotNull Resources paramResources, @NotNull List<? extends ChatMessage> paramList, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(paramResources, "res");
+    Intrinsics.checkParameterIsNotNull(paramList, "chatMessageList");
+    paramResources = a(paramQQAppInterface, paramResources, paramList);
+    int i = paramResources.length();
+    return a(paramQQAppInterface, paramList, paramLong, paramResources, i - 6, i, 54, true);
+  }
+  
+  public final void a(@Nullable QQAppInterface paramQQAppInterface, @NotNull ChatMessage paramChatMessage1, int paramInt, @NotNull ChatMessage paramChatMessage2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramChatMessage1, "chatMessage");
+    Intrinsics.checkParameterIsNotNull(paramChatMessage2, "replaceMsg");
+    if (!b.contains(Long.valueOf(paramChatMessage2.shmsgseq)))
+    {
+      if (paramInt > 15) {
+        paramInt = 15;
+      }
+      paramQQAppInterface = (AppRuntime)paramQQAppInterface;
+      String str = paramChatMessage1.frienduin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramChatMessage1.shmsgseq);
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800ADF2", "0X800ADF2", paramInt, 1, str, localStringBuilder.toString(), "", "");
+      b.add(Long.valueOf(paramChatMessage2.shmsgseq));
+    }
+  }
+  
+  public final boolean a(@NotNull int[] paramArrayOfInt, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "sameMsgArray");
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramInt >= paramArrayOfInt[0])
+    {
+      bool1 = bool2;
+      if (paramInt <= paramArrayOfInt[1]) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  @Nullable
+  public final int[] a(@NotNull int[][] paramArrayOfInt, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "sameMsgArray");
+    int[] arrayOfInt = (int[])null;
+    int j = ((Object[])paramArrayOfInt).length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = paramArrayOfInt[i][0];
+      int m = paramArrayOfInt[i][1];
+      int n = paramArrayOfInt[i][2];
+      a("sameMsgArray.range start = %d,end = %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+      if ((paramInt >= k) && (paramInt <= m) && (m > k)) {
+        return new int[] { k, m, n };
+      }
+      i += 1;
+    }
+    return arrayOfInt;
+  }
+  
+  @Nullable
+  public final int[][] a(@NotNull List<? extends ChatMessage> paramList, int paramInt, @Nullable long[] paramArrayOfLong1, @NotNull Set<Long> paramSet, @NotNull Map<Long, Long> paramMap, @Nullable long[] paramArrayOfLong2)
+  {
+    int i1 = paramInt;
+    Object localObject6 = paramSet;
+    Object localObject3 = paramMap;
+    Intrinsics.checkParameterIsNotNull(paramList, "srcMsgList");
+    Intrinsics.checkParameterIsNotNull(localObject6, "foldMsgFirstShMsgSeqSet");
+    Intrinsics.checkParameterIsNotNull(localObject3, "foldMsgShMsgSeqPair");
+    if (i1 == 0) {
+      return null;
+    }
+    int m = paramList.size();
+    Object localObject5 = a(Math.max(1, m / i1));
+    ChatMessage localChatMessage1 = (ChatMessage)null;
+    boolean bool = ListUtils.a((Collection)localObject6);
+    Object localObject1 = a(paramArrayOfLong1);
+    Object localObject4 = a(paramArrayOfLong2);
+    long l1 = -1L;
+    Object localObject2 = localChatMessage1;
+    int i2 = 0;
+    int j = 0;
+    int i = 0;
+    int k = 0;
+    int n = 0;
+    while (i2 < m)
+    {
+      ChatMessage localChatMessage2 = (ChatMessage)paramList.get(i2);
+      if (!a(localChatMessage2))
+      {
+        if ((d(localChatMessage2)) && (i2 < m - 1)) {
+          break label200;
+        }
+        i = a(paramList, paramInt, paramArrayOfLong1, (int[][])localObject5, i, k, (int[])localObject1, j, paramArrayOfLong2, (int[])localObject4);
+        localObject2 = localChatMessage1;
+        k = 0;
+        label200:
+        i2 += 1;
+        i3 = i1;
+      }
+      Object localObject9;
+      Object localObject8;
+      Object localObject7;
+      for (;;)
+      {
+        i1 = i3;
+        break;
+        localObject9 = localObject4;
+        localObject8 = localObject1;
+        localObject7 = localObject5;
+        i3 = m;
+        int i4 = k;
+        int i5 = n;
+        n = i2;
+        k = i;
+        Object localObject10 = localObject6;
+        i2 = i1;
+        localObject6 = localObject3;
+        localObject3 = localObject2;
+        i1 = i5;
+        i = i4;
+        localObject2 = localChatMessage2;
+        for (;;)
+        {
+          localChatMessage2 = (ChatMessage)paramList.get(n);
+          if (bool) {
+            break;
+          }
+          long l2;
+          if (((Set)localObject10).contains(Long.valueOf(localChatMessage2.shmsgseq)))
+          {
+            l2 = localChatMessage2.shmsgseq;
+            localObject6 = (Long)((Map)localObject6).get(Long.valueOf(l2));
+            if (localObject6 != null)
+            {
+              i4 = n + 1;
+              if (i4 < i3)
+              {
+                if ((i >= i2) && (!a((ChatMessage)localObject3, localChatMessage2)))
+                {
+                  localObject7[k][1] = (n - 1);
+                  a(paramList, paramArrayOfLong1, localObject8, n, paramArrayOfLong2, localObject9);
+                  k += 1;
+                }
+                l1 = ((Long)localObject6).longValue();
+                localObject7[k][0] = i4;
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("find fold msg, index = ");
+                ((StringBuilder)localObject3).append(n);
+                ((StringBuilder)localObject3).append(", shMsgSeq = ");
+                ((StringBuilder)localObject3).append(l2);
+                a(((StringBuilder)localObject3).toString(), new Object[0]);
+                localObject3 = localChatMessage1;
+                i = 0;
+                i1 = 1;
+                break label771;
+              }
+            }
+            break;
+          }
+          else
+          {
+            localObject6 = localObject2;
+            l2 = l1;
+            if (i1 == 0) {
+              break;
+            }
+            if (l2 == localChatMessage2.shmsgseq)
+            {
+              localObject7[k][1] = n;
+              a(paramArrayOfLong1, localObject8, n, paramArrayOfLong2, localObject9, localChatMessage2);
+              k += 1;
+              n += 1;
+              localObject6 = new StringBuilder();
+              ((StringBuilder)localObject6).append("end fold msg, index = ");
+              ((StringBuilder)localObject6).append(n);
+              ((StringBuilder)localObject6).append(", shMsgSeq = ");
+              ((StringBuilder)localObject6).append(l2);
+              a(((StringBuilder)localObject6).toString(), new Object[0]);
+            }
+            for (;;)
+            {
+              i2 = 0;
+              i1 = i;
+              i = i2;
+              break label829;
+              if (l2 >= localChatMessage2.shmsgseq) {
+                break;
+              }
+              localObject7[k][1] = (n - 1);
+              a(paramList, paramArrayOfLong1, localObject8, n, paramArrayOfLong2, localObject9);
+              k += 1;
+              n += 1;
+              if (!localChatMessage2.isSend()) {
+                localObject3 = localChatMessage2;
+              }
+              localObject6 = new StringBuilder();
+              ((StringBuilder)localObject6).append("end fold msg, index = ");
+              ((StringBuilder)localObject6).append(n);
+              ((StringBuilder)localObject6).append(", shMsgSeq = ");
+              ((StringBuilder)localObject6).append(l2);
+              ((StringBuilder)localObject6).append(", msg.shmsgseq = ");
+              ((StringBuilder)localObject6).append(localChatMessage2.shmsgseq);
+              a(((StringBuilder)localObject6).toString(), new Object[0]);
+            }
+            l1 = l2;
+            localObject2 = localObject6;
+          }
+          label771:
+          n += 1;
+          if (n >= i3)
+          {
+            i2 = i1;
+            i1 = i;
+            i = n;
+            n = i2;
+            break label841;
+          }
+          localObject10 = paramSet;
+          localObject6 = paramMap;
+          i2 = paramInt;
+        }
+        i2 = i1;
+        i1 = i;
+        i = i2;
+        label829:
+        i2 = n;
+        n = i;
+        i = i2;
+        label841:
+        if (i >= i3)
+        {
+          i = k;
+          break label1083;
+        }
+        if (localObject3 != null) {
+          break label923;
+        }
+        if (!((ChatMessage)localObject2).isSend())
+        {
+          localObject2 = (ChatMessage)paramList.get(i);
+          j = i;
+          i1 = 0;
+        }
+        else
+        {
+          localObject2 = localObject3;
+        }
+        i2 = i + 1;
+        i3 = paramInt;
+        localObject6 = paramSet;
+        localObject3 = paramMap;
+        i = k;
+        k = i1;
+      }
+      label923:
+      if (a((ChatMessage)localObject3, (ChatMessage)localObject2))
+      {
+        m = a(localObject7, k, i1, i, (ChatMessage)localObject2);
+        k = a(paramInt, paramArrayOfLong1, i3, localObject7, k, m, localObject8, i, paramArrayOfLong2, localObject9, (ChatMessage)localObject2);
+        localObject1 = localObject3;
+        j = i;
+      }
+      else
+      {
+        k = a(paramList, paramInt, paramArrayOfLong1, localObject7, k, i1, localObject8, j, paramArrayOfLong2, localObject9);
+        localObject1 = localObject2;
+        if (((ChatMessage)localObject2).isSend()) {
+          localObject1 = null;
+        }
+        m = 0;
+      }
+      i2 = i + 1;
+      localObject6 = paramSet;
+      localObject3 = paramMap;
+      i = i3;
+      int i3 = m;
+      localObject4 = localObject9;
+      localObject5 = localObject7;
+      i1 = paramInt;
+      localObject2 = localObject1;
+      localObject1 = localObject8;
+      m = i;
+      i = k;
+      k = i3;
+    }
+    label1083:
+    paramList = this;
+    paramArrayOfLong1 = paramList.a((int[][])localObject5, i, (int[])localObject1, (int[])localObject4);
+    paramList.a(paramArrayOfLong1, (int[])localObject1);
+    return paramArrayOfLong1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.troop.TroopMsgSameFold
  * JD-Core Version:    0.7.0.1
  */

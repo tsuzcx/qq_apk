@@ -13,9 +13,9 @@ import android.widget.ImageView.ScaleType;
 public class EditTextPreView
   extends ImageView
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private DynamicTextItem jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = null;
-  private EditTextPreView.OnClickListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView$OnClickListener;
+  private DynamicTextItem a = null;
+  private Paint b;
+  private EditTextPreView.OnClickListener c;
   
   public EditTextPreView(Context paramContext)
   {
@@ -37,10 +37,10 @@ public class EditTextPreView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+    this.b = new Paint();
+    this.b.setAntiAlias(true);
+    this.b.setDither(true);
+    this.b.setFilterBitmap(true);
     setScaleType(ImageView.ScaleType.CENTER);
     setClickable(true);
   }
@@ -50,7 +50,7 @@ public class EditTextPreView
     super.onDraw(paramCanvas);
     paramCanvas.save();
     paramCanvas.translate(paramCanvas.getWidth() / 2, paramCanvas.getHeight() / 2);
-    DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    DynamicTextItem localDynamicTextItem = this.a;
     if (localDynamicTextItem != null) {
       localDynamicTextItem.b(paramCanvas);
     }
@@ -71,23 +71,23 @@ public class EditTextPreView
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView$OnClickListener == null) {
+          if (this.c == null) {
             break label137;
           }
-          DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+          DynamicTextItem localDynamicTextItem = this.a;
           if (localDynamicTextItem == null) {
             break label137;
           }
           i = localDynamicTextItem.a(paramMotionEvent, getWidth(), getHeight(), null, null);
           if (i > -1)
           {
-            setText(i, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(i));
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(i, true);
-            paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-            paramMotionEvent.a(i, paramMotionEvent.a(i));
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.b(i);
+            setText(i, this.a.b(i));
+            this.a.a(i, true);
+            paramMotionEvent = this.a;
+            paramMotionEvent.a(i, paramMotionEvent.b(i));
+            this.a.e(i);
           }
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView$OnClickListener.a(this, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem, i);
+          this.c.a(this, this.a, i);
         }
       }
       return true;
@@ -104,29 +104,29 @@ public class EditTextPreView
   
   public void setOnClickListener(@Nullable EditTextPreView.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView$OnClickListener = paramOnClickListener;
+    this.c = paramOnClickListener;
   }
   
   public void setPreViewDrawer(DynamicTextItem paramDynamicTextItem)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = paramDynamicTextItem;
+    this.a = paramDynamicTextItem;
     invalidate();
   }
   
   public void setText(int paramInt, String paramString)
   {
-    DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-    if ((localDynamicTextItem != null) && (!paramString.equals(localDynamicTextItem.a(paramInt))))
+    DynamicTextItem localDynamicTextItem = this.a;
+    if ((localDynamicTextItem != null) && (!paramString.equals(localDynamicTextItem.b(paramInt))))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(paramInt, paramString);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(false);
+      this.a.a(paramInt, paramString);
+      this.a.a(false);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.EditTextPreView
  * JD-Core Version:    0.7.0.1
  */

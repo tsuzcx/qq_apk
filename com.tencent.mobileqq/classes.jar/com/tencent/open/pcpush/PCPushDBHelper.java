@@ -15,7 +15,7 @@ public class PCPushDBHelper
   
   public PCPushDBHelper()
   {
-    super(CommonDataAdapter.a().a(), "pcdb", null, 2);
+    super(CommonDataAdapter.a().b(), "pcdb", null, 2);
   }
   
   protected void a(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
@@ -79,7 +79,7 @@ public class PCPushDBHelper
     //   87: aload 8
     //   89: ldc 101
     //   91: aload_1
-    //   92: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   92: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:a	Ljava/lang/String;
     //   95: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   98: aload 7
     //   100: astore 6
@@ -88,7 +88,7 @@ public class PCPushDBHelper
     //   106: aload 8
     //   108: ldc 111
     //   110: aload_1
-    //   111: getfield 113	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   111: getfield 113	com/tencent/open/pcpush/PCPushProxy$PkgEntry:b	Ljava/lang/String;
     //   114: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   117: aload 7
     //   119: astore 6
@@ -97,7 +97,7 @@ public class PCPushDBHelper
     //   125: aload 8
     //   127: ldc 115
     //   129: aload_1
-    //   130: getfield 118	com/tencent/open/pcpush/PCPushProxy$PkgEntry:e	Ljava/lang/String;
+    //   130: getfield 118	com/tencent/open/pcpush/PCPushProxy$PkgEntry:f	Ljava/lang/String;
     //   133: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: aload 7
     //   138: astore 6
@@ -106,7 +106,7 @@ public class PCPushDBHelper
     //   144: aload 8
     //   146: ldc 120
     //   148: aload_1
-    //   149: getfield 123	com/tencent/open/pcpush/PCPushProxy$PkgEntry:h	Ljava/lang/String;
+    //   149: getfield 123	com/tencent/open/pcpush/PCPushProxy$PkgEntry:i	Ljava/lang/String;
     //   152: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   155: aload 7
     //   157: astore 6
@@ -115,7 +115,7 @@ public class PCPushDBHelper
     //   163: aload 8
     //   165: ldc 125
     //   167: aload_1
-    //   168: getfield 128	com/tencent/open/pcpush/PCPushProxy$PkgEntry:f	Ljava/lang/String;
+    //   168: getfield 128	com/tencent/open/pcpush/PCPushProxy$PkgEntry:g	Ljava/lang/String;
     //   171: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   174: aload 7
     //   176: astore 6
@@ -124,7 +124,7 @@ public class PCPushDBHelper
     //   182: aload 8
     //   184: ldc 130
     //   186: aload_1
-    //   187: getfield 134	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_d_of_type_Int	I
+    //   187: getfield 134	com/tencent/open/pcpush/PCPushProxy$PkgEntry:n	I
     //   190: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   193: invokevirtual 143	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   196: aload 7
@@ -134,7 +134,7 @@ public class PCPushDBHelper
     //   204: aload 8
     //   206: ldc 145
     //   208: aload_1
-    //   209: getfield 147	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_b_of_type_Int	I
+    //   209: getfield 148	com/tencent/open/pcpush/PCPushProxy$PkgEntry:j	I
     //   212: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   215: invokevirtual 143	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   218: aload 7
@@ -142,45 +142,45 @@ public class PCPushDBHelper
     //   222: aload 7
     //   224: astore 5
     //   226: aload 8
-    //   228: ldc 149
+    //   228: ldc 150
     //   230: aload_1
-    //   231: getfield 152	com/tencent/open/pcpush/PCPushProxy$PkgEntry:g	Ljava/lang/String;
+    //   231: getfield 153	com/tencent/open/pcpush/PCPushProxy$PkgEntry:h	Ljava/lang/String;
     //   234: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   237: aload 7
     //   239: astore 6
     //   241: aload 7
     //   243: astore 5
     //   245: aload 8
-    //   247: ldc 154
+    //   247: ldc 155
     //   249: aload_1
-    //   250: getfield 156	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   250: getfield 158	com/tencent/open/pcpush/PCPushProxy$PkgEntry:d	Ljava/lang/String;
     //   253: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   256: aload 7
     //   258: astore 6
     //   260: aload 7
     //   262: astore 5
     //   264: aload 8
-    //   266: ldc 158
+    //   266: ldc 160
     //   268: aload_1
-    //   269: getfield 161	com/tencent/open/pcpush/PCPushProxy$PkgEntry:i	Ljava/lang/String;
+    //   269: getfield 163	com/tencent/open/pcpush/PCPushProxy$PkgEntry:k	Ljava/lang/String;
     //   272: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   275: aload 7
     //   277: astore 6
     //   279: aload 7
     //   281: astore 5
     //   283: aload 8
-    //   285: ldc 163
+    //   285: ldc 165
     //   287: aload_1
-    //   288: getfield 166	com/tencent/open/pcpush/PCPushProxy$PkgEntry:j	Ljava/lang/String;
+    //   288: getfield 168	com/tencent/open/pcpush/PCPushProxy$PkgEntry:l	Ljava/lang/String;
     //   291: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   294: aload 7
     //   296: astore 6
     //   298: aload 7
     //   300: astore 5
     //   302: aload 8
-    //   304: ldc 168
+    //   304: ldc 170
     //   306: aload_1
-    //   307: getfield 170	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_Int	I
+    //   307: getfield 173	com/tencent/open/pcpush/PCPushProxy$PkgEntry:e	I
     //   310: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   313: invokevirtual 143	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   316: aload 7
@@ -188,9 +188,9 @@ public class PCPushDBHelper
     //   320: aload 7
     //   322: astore 5
     //   324: aload 8
-    //   326: ldc 172
+    //   326: ldc 175
     //   328: aload_1
-    //   329: getfield 174	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   329: getfield 177	com/tencent/open/pcpush/PCPushProxy$PkgEntry:c	Ljava/lang/String;
     //   332: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   335: aload 7
     //   337: astore 6
@@ -199,16 +199,16 @@ public class PCPushDBHelper
     //   343: aload 8
     //   345: ldc 101
     //   347: aload_1
-    //   348: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   348: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:a	Ljava/lang/String;
     //   351: invokevirtual 109	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   354: aload 7
     //   356: astore 6
     //   358: aload 7
     //   360: astore 5
     //   362: aload 8
-    //   364: ldc 176
+    //   364: ldc 179
     //   366: aload_1
-    //   367: getfield 178	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_c_of_type_Int	I
+    //   367: getfield 182	com/tencent/open/pcpush/PCPushProxy$PkgEntry:m	I
     //   370: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   373: invokevirtual 143	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   376: aload 7
@@ -216,26 +216,26 @@ public class PCPushDBHelper
     //   380: aload 7
     //   382: astore 5
     //   384: aload 8
-    //   386: ldc 180
-    //   388: invokestatic 186	java/lang/System:currentTimeMillis	()J
-    //   391: invokestatic 191	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   394: invokevirtual 194	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   386: ldc 184
+    //   388: invokestatic 190	java/lang/System:currentTimeMillis	()J
+    //   391: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   394: invokevirtual 198	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   397: aload 7
     //   399: astore 6
     //   401: aload 7
     //   403: astore 5
     //   405: aload 7
-    //   407: ldc 196
+    //   407: ldc 200
     //   409: aload 8
-    //   411: ldc 198
+    //   411: ldc 202
     //   413: iconst_1
-    //   414: anewarray 200	java/lang/String
+    //   414: anewarray 204	java/lang/String
     //   417: dup
     //   418: iconst_0
     //   419: aload_1
-    //   420: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   420: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:a	Ljava/lang/String;
     //   423: aastore
-    //   424: invokevirtual 204	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   424: invokevirtual 208	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
     //   427: istore_2
     //   428: aload 7
     //   430: astore 6
@@ -250,7 +250,7 @@ public class PCPushDBHelper
     //   448: aload 7
     //   450: astore 5
     //   452: aload_1
-    //   453: ldc 206
+    //   453: ldc 210
     //   455: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: pop
     //   459: aload 7
@@ -259,7 +259,7 @@ public class PCPushDBHelper
     //   465: astore 5
     //   467: aload_1
     //   468: iload_2
-    //   469: invokevirtual 209	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   469: invokevirtual 213	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   472: pop
     //   473: aload 7
     //   475: astore 6
@@ -268,7 +268,7 @@ public class PCPushDBHelper
     //   481: ldc 86
     //   483: aload_1
     //   484: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   487: invokestatic 211	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   487: invokestatic 215	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   490: iload_2
     //   491: ifne +85 -> 576
     //   494: aload 7
@@ -276,10 +276,10 @@ public class PCPushDBHelper
     //   498: aload 7
     //   500: astore 5
     //   502: aload 7
-    //   504: ldc 196
-    //   506: ldc 154
+    //   504: ldc 200
+    //   506: ldc 155
     //   508: aload 8
-    //   510: invokevirtual 215	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   510: invokevirtual 219	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
     //   513: lstore_3
     //   514: aload 7
     //   516: astore 6
@@ -294,7 +294,7 @@ public class PCPushDBHelper
     //   534: aload 7
     //   536: astore 5
     //   538: aload_1
-    //   539: ldc 217
+    //   539: ldc 221
     //   541: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   544: pop
     //   545: aload 7
@@ -303,7 +303,7 @@ public class PCPushDBHelper
     //   551: astore 5
     //   553: aload_1
     //   554: lload_3
-    //   555: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   555: invokevirtual 224	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   558: pop
     //   559: aload 7
     //   561: astore 6
@@ -312,7 +312,7 @@ public class PCPushDBHelper
     //   567: ldc 86
     //   569: aload_1
     //   570: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   573: invokestatic 211	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   573: invokestatic 215	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   576: aload 7
     //   578: astore 6
     //   580: aload 7
@@ -330,22 +330,22 @@ public class PCPushDBHelper
     //   606: aload 5
     //   608: astore 6
     //   610: ldc 86
-    //   612: ldc 222
+    //   612: ldc 226
     //   614: aload_1
-    //   615: invokestatic 225	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   615: invokestatic 229	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   618: aload 5
     //   620: ifnull +13 -> 633
     //   623: aload 5
     //   625: invokevirtual 61	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   628: aload 5
-    //   630: invokevirtual 228	android/database/sqlite/SQLiteDatabase:close	()V
+    //   630: invokevirtual 232	android/database/sqlite/SQLiteDatabase:close	()V
     //   633: return
     //   634: aload 6
     //   636: ifnull +13 -> 649
     //   639: aload 6
     //   641: invokevirtual 61	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   644: aload 6
-    //   646: invokevirtual 228	android/database/sqlite/SQLiteDatabase:close	()V
+    //   646: invokevirtual 232	android/database/sqlite/SQLiteDatabase:close	()V
     //   649: aload_1
     //   650: athrow
     // Local variable table:
@@ -455,7 +455,7 @@ public class PCPushDBHelper
     //   8: aconst_null
     //   9: astore 5
     //   11: aload_0
-    //   12: invokevirtual 240	com/tencent/open/pcpush/PCPushDBHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   12: invokevirtual 244	com/tencent/open/pcpush/PCPushDBHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   15: astore 4
     //   17: aload 5
     //   19: astore_3
@@ -464,14 +464,14 @@ public class PCPushDBHelper
     //   24: aload 7
     //   26: astore 6
     //   28: aload 4
-    //   30: ldc 196
+    //   30: ldc 200
     //   32: aconst_null
     //   33: aconst_null
     //   34: aconst_null
     //   35: aconst_null
     //   36: aconst_null
     //   37: aconst_null
-    //   38: invokevirtual 244	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   38: invokevirtual 248	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   41: astore 7
     //   43: aload 7
     //   45: ifnull +557 -> 602
@@ -482,7 +482,7 @@ public class PCPushDBHelper
     //   55: aload 7
     //   57: astore 6
     //   59: aload 7
-    //   61: invokeinterface 250 1 0
+    //   61: invokeinterface 254 1 0
     //   66: ifle +536 -> 602
     //   69: aload 7
     //   71: astore_3
@@ -491,7 +491,7 @@ public class PCPushDBHelper
     //   76: aload 7
     //   78: astore 6
     //   80: aload 7
-    //   82: invokeinterface 254 1 0
+    //   82: invokeinterface 258 1 0
     //   87: pop
     //   88: aload 7
     //   90: astore_3
@@ -501,7 +501,7 @@ public class PCPushDBHelper
     //   97: astore 6
     //   99: new 103	com/tencent/open/pcpush/PCPushProxy$PkgEntry
     //   102: dup
-    //   103: invokespecial 255	com/tencent/open/pcpush/PCPushProxy$PkgEntry:<init>	()V
+    //   103: invokespecial 259	com/tencent/open/pcpush/PCPushProxy$PkgEntry:<init>	()V
     //   106: astore 8
     //   108: aload 7
     //   110: astore_3
@@ -513,9 +513,9 @@ public class PCPushDBHelper
     //   121: aload 7
     //   123: aload 7
     //   125: ldc 111
-    //   127: invokeinterface 259 2 0
-    //   132: invokeinterface 263 2 0
-    //   137: putfield 113	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   127: invokeinterface 263 2 0
+    //   132: invokeinterface 267 2 0
+    //   137: putfield 113	com/tencent/open/pcpush/PCPushProxy$PkgEntry:b	Ljava/lang/String;
     //   140: aload 7
     //   142: astore_3
     //   143: aload 4
@@ -526,9 +526,9 @@ public class PCPushDBHelper
     //   153: aload 7
     //   155: aload 7
     //   157: ldc 115
-    //   159: invokeinterface 259 2 0
-    //   164: invokeinterface 263 2 0
-    //   169: putfield 118	com/tencent/open/pcpush/PCPushProxy$PkgEntry:e	Ljava/lang/String;
+    //   159: invokeinterface 263 2 0
+    //   164: invokeinterface 267 2 0
+    //   169: putfield 118	com/tencent/open/pcpush/PCPushProxy$PkgEntry:f	Ljava/lang/String;
     //   172: aload 7
     //   174: astore_3
     //   175: aload 4
@@ -539,9 +539,9 @@ public class PCPushDBHelper
     //   185: aload 7
     //   187: aload 7
     //   189: ldc 120
-    //   191: invokeinterface 259 2 0
-    //   196: invokeinterface 263 2 0
-    //   201: putfield 123	com/tencent/open/pcpush/PCPushProxy$PkgEntry:h	Ljava/lang/String;
+    //   191: invokeinterface 263 2 0
+    //   196: invokeinterface 267 2 0
+    //   201: putfield 123	com/tencent/open/pcpush/PCPushProxy$PkgEntry:i	Ljava/lang/String;
     //   204: aload 7
     //   206: astore_3
     //   207: aload 4
@@ -552,9 +552,9 @@ public class PCPushDBHelper
     //   217: aload 7
     //   219: aload 7
     //   221: ldc 125
-    //   223: invokeinterface 259 2 0
-    //   228: invokeinterface 263 2 0
-    //   233: putfield 128	com/tencent/open/pcpush/PCPushProxy$PkgEntry:f	Ljava/lang/String;
+    //   223: invokeinterface 263 2 0
+    //   228: invokeinterface 267 2 0
+    //   233: putfield 128	com/tencent/open/pcpush/PCPushProxy$PkgEntry:g	Ljava/lang/String;
     //   236: aload 7
     //   238: astore_3
     //   239: aload 4
@@ -565,9 +565,9 @@ public class PCPushDBHelper
     //   249: aload 7
     //   251: aload 7
     //   253: ldc 145
-    //   255: invokeinterface 259 2 0
-    //   260: invokeinterface 267 2 0
-    //   265: putfield 147	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_b_of_type_Int	I
+    //   255: invokeinterface 263 2 0
+    //   260: invokeinterface 271 2 0
+    //   265: putfield 148	com/tencent/open/pcpush/PCPushProxy$PkgEntry:j	I
     //   268: aload 7
     //   270: astore_3
     //   271: aload 4
@@ -577,10 +577,10 @@ public class PCPushDBHelper
     //   279: aload 8
     //   281: aload 7
     //   283: aload 7
-    //   285: ldc 149
-    //   287: invokeinterface 259 2 0
-    //   292: invokeinterface 263 2 0
-    //   297: putfield 152	com/tencent/open/pcpush/PCPushProxy$PkgEntry:g	Ljava/lang/String;
+    //   285: ldc 150
+    //   287: invokeinterface 263 2 0
+    //   292: invokeinterface 267 2 0
+    //   297: putfield 153	com/tencent/open/pcpush/PCPushProxy$PkgEntry:h	Ljava/lang/String;
     //   300: aload 7
     //   302: astore_3
     //   303: aload 4
@@ -590,10 +590,10 @@ public class PCPushDBHelper
     //   311: aload 8
     //   313: aload 7
     //   315: aload 7
-    //   317: ldc 154
-    //   319: invokeinterface 259 2 0
-    //   324: invokeinterface 263 2 0
-    //   329: putfield 156	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   317: ldc 155
+    //   319: invokeinterface 263 2 0
+    //   324: invokeinterface 267 2 0
+    //   329: putfield 158	com/tencent/open/pcpush/PCPushProxy$PkgEntry:d	Ljava/lang/String;
     //   332: aload 7
     //   334: astore_3
     //   335: aload 4
@@ -603,10 +603,10 @@ public class PCPushDBHelper
     //   343: aload 8
     //   345: aload 7
     //   347: aload 7
-    //   349: ldc 158
-    //   351: invokeinterface 259 2 0
-    //   356: invokeinterface 263 2 0
-    //   361: putfield 161	com/tencent/open/pcpush/PCPushProxy$PkgEntry:i	Ljava/lang/String;
+    //   349: ldc 160
+    //   351: invokeinterface 263 2 0
+    //   356: invokeinterface 267 2 0
+    //   361: putfield 163	com/tencent/open/pcpush/PCPushProxy$PkgEntry:k	Ljava/lang/String;
     //   364: aload 7
     //   366: astore_3
     //   367: aload 4
@@ -616,10 +616,10 @@ public class PCPushDBHelper
     //   375: aload 8
     //   377: aload 7
     //   379: aload 7
-    //   381: ldc 163
-    //   383: invokeinterface 259 2 0
-    //   388: invokeinterface 263 2 0
-    //   393: putfield 166	com/tencent/open/pcpush/PCPushProxy$PkgEntry:j	Ljava/lang/String;
+    //   381: ldc 165
+    //   383: invokeinterface 263 2 0
+    //   388: invokeinterface 267 2 0
+    //   393: putfield 168	com/tencent/open/pcpush/PCPushProxy$PkgEntry:l	Ljava/lang/String;
     //   396: aload 7
     //   398: astore_3
     //   399: aload 4
@@ -629,10 +629,10 @@ public class PCPushDBHelper
     //   407: aload 8
     //   409: aload 7
     //   411: aload 7
-    //   413: ldc 168
-    //   415: invokeinterface 259 2 0
-    //   420: invokeinterface 267 2 0
-    //   425: putfield 170	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_Int	I
+    //   413: ldc 170
+    //   415: invokeinterface 263 2 0
+    //   420: invokeinterface 271 2 0
+    //   425: putfield 173	com/tencent/open/pcpush/PCPushProxy$PkgEntry:e	I
     //   428: aload 7
     //   430: astore_3
     //   431: aload 4
@@ -642,10 +642,10 @@ public class PCPushDBHelper
     //   439: aload 8
     //   441: aload 7
     //   443: aload 7
-    //   445: ldc 172
-    //   447: invokeinterface 259 2 0
-    //   452: invokeinterface 263 2 0
-    //   457: putfield 174	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   445: ldc 175
+    //   447: invokeinterface 263 2 0
+    //   452: invokeinterface 267 2 0
+    //   457: putfield 177	com/tencent/open/pcpush/PCPushProxy$PkgEntry:c	Ljava/lang/String;
     //   460: aload 7
     //   462: astore_3
     //   463: aload 4
@@ -656,9 +656,9 @@ public class PCPushDBHelper
     //   473: aload 7
     //   475: aload 7
     //   477: ldc 130
-    //   479: invokeinterface 259 2 0
-    //   484: invokeinterface 267 2 0
-    //   489: putfield 134	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_d_of_type_Int	I
+    //   479: invokeinterface 263 2 0
+    //   484: invokeinterface 271 2 0
+    //   489: putfield 134	com/tencent/open/pcpush/PCPushProxy$PkgEntry:n	I
     //   492: aload 7
     //   494: astore_3
     //   495: aload 4
@@ -669,9 +669,9 @@ public class PCPushDBHelper
     //   505: aload 7
     //   507: aload 7
     //   509: ldc 101
-    //   511: invokeinterface 259 2 0
-    //   516: invokeinterface 263 2 0
-    //   521: putfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   511: invokeinterface 263 2 0
+    //   516: invokeinterface 267 2 0
+    //   521: putfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:a	Ljava/lang/String;
     //   524: aload 7
     //   526: astore_3
     //   527: aload 4
@@ -681,10 +681,10 @@ public class PCPushDBHelper
     //   535: aload 8
     //   537: aload 7
     //   539: aload 7
-    //   541: ldc 176
-    //   543: invokeinterface 259 2 0
-    //   548: invokeinterface 267 2 0
-    //   553: putfield 178	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_c_of_type_Int	I
+    //   541: ldc 179
+    //   543: invokeinterface 263 2 0
+    //   548: invokeinterface 271 2 0
+    //   553: putfield 182	com/tencent/open/pcpush/PCPushProxy$PkgEntry:m	I
     //   556: aload 7
     //   558: astore_3
     //   559: aload 4
@@ -693,9 +693,9 @@ public class PCPushDBHelper
     //   565: astore 6
     //   567: aload_1
     //   568: aload 8
-    //   570: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   570: getfield 106	com/tencent/open/pcpush/PCPushProxy$PkgEntry:a	Ljava/lang/String;
     //   573: aload 8
-    //   575: invokevirtual 272	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   575: invokevirtual 276	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   578: pop
     //   579: aload 7
     //   581: astore_3
@@ -704,20 +704,20 @@ public class PCPushDBHelper
     //   586: aload 7
     //   588: astore 6
     //   590: aload 7
-    //   592: invokeinterface 275 1 0
+    //   592: invokeinterface 279 1 0
     //   597: istore_2
     //   598: iload_2
     //   599: ifne -511 -> 88
     //   602: aload 7
     //   604: ifnull +10 -> 614
     //   607: aload 7
-    //   609: invokeinterface 276 1 0
+    //   609: invokeinterface 280 1 0
     //   614: aload 4
     //   616: ifnull +71 -> 687
     //   619: aload 4
     //   621: astore_1
     //   622: aload_1
-    //   623: invokevirtual 228	android/database/sqlite/SQLiteDatabase:close	()V
+    //   623: invokevirtual 232	android/database/sqlite/SQLiteDatabase:close	()V
     //   626: return
     //   627: astore_1
     //   628: goto +60 -> 688
@@ -739,13 +739,13 @@ public class PCPushDBHelper
     //   655: aload_1
     //   656: astore 5
     //   658: ldc 86
-    //   660: ldc_w 278
+    //   660: ldc_w 282
     //   663: aload 4
-    //   665: invokestatic 225	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   665: invokestatic 229	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   668: aload 6
     //   670: ifnull +10 -> 680
     //   673: aload 6
-    //   675: invokeinterface 276 1 0
+    //   675: invokeinterface 280 1 0
     //   680: aload_1
     //   681: ifnull +6 -> 687
     //   684: goto -62 -> 622
@@ -753,11 +753,11 @@ public class PCPushDBHelper
     //   688: aload_3
     //   689: ifnull +9 -> 698
     //   692: aload_3
-    //   693: invokeinterface 276 1 0
+    //   693: invokeinterface 280 1 0
     //   698: aload 5
     //   700: ifnull +8 -> 708
     //   703: aload 5
-    //   705: invokevirtual 228	android/database/sqlite/SQLiteDatabase:close	()V
+    //   705: invokevirtual 232	android/database/sqlite/SQLiteDatabase:close	()V
     //   708: goto +5 -> 713
     //   711: aload_1
     //   712: athrow
@@ -854,7 +854,7 @@ public class PCPushDBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.pcpush.PCPushDBHelper
  * JD-Core Version:    0.7.0.1
  */

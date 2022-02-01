@@ -27,34 +27,34 @@ public class LiteLiveSDKClientIPCModule
   extends QIPCModule
   implements SDKInitListener
 {
-  private static LiteLiveSDKClientIPCModule jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ILiveSDK jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK;
-  private LiteLiveSDKClientIPCModule.IPCConnectListenerImpl jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule$IPCConnectListenerImpl;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private static LiteLiveSDKClientIPCModule d;
+  private static final Object e = new Object();
+  private LiteLiveSDKClientIPCModule.IPCConnectListenerImpl a;
+  private ILiveSDK b;
+  private AppRuntime c;
   
   private LiteLiveSDKClientIPCModule(String paramString)
   {
     super(paramString);
-    if ((this.jdField_a_of_type_MqqAppAppRuntime == null) && (MobileQQ.sMobileQQ.waitAppRuntime(null) != null)) {
-      this.jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("ilive_plugin");
+    if ((this.c == null) && (MobileQQ.sMobileQQ.waitAppRuntime(null) != null)) {
+      this.c = MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("ilive_plugin");
     }
-    if (!QQVideoPlaySDKManager.a())
+    if (!QQVideoPlaySDKManager.isSDKReady())
     {
-      paramString = this.jdField_a_of_type_MqqAppAppRuntime;
+      paramString = this.c;
       if ((paramString != null) && (paramString.isLogin())) {
-        QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
+        QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), this);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK = new LiteLiveSDKClientIPCModule.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule$IPCConnectListenerImpl = new LiteLiveSDKClientIPCModule.IPCConnectListenerImpl(this, null);
+    this.b = new LiteLiveSDKClientIPCModule.1(this);
+    this.a = new LiteLiveSDKClientIPCModule.IPCConnectListenerImpl(this, null);
     QLog.e("LiteLiveSDKClientIPCModule", 1, "LiteLiveSDKClientIPCModule register IPC Bind");
     try
     {
       QIPCClientHelper.getInstance().getClient().unRegisterModule(this);
       QIPCClientHelper.getInstance().register(this);
-      QIPCClientHelper.getInstance().getClient().addListener(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule$IPCConnectListenerImpl);
-      a();
+      QIPCClientHelper.getInstance().getClient().addListener(this.a);
+      b();
     }
     catch (Throwable paramString)
     {
@@ -94,34 +94,34 @@ public class LiteLiveSDKClientIPCModule
   {
     if (paramBoolean)
     {
-      jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule = null;
+      d = null;
       QLog.e("LiteLiveSDKClientIPCModule", 1, "getInstance reset create instance");
     }
-    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (d == null) {
+      synchronized (e)
       {
-        if (jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule == null) {
-          jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule = new LiteLiveSDKClientIPCModule("LiteSDKClientModuleName");
+        if (d == null) {
+          d = new LiteLiveSDKClientIPCModule("LiteSDKClientModuleName");
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule;
+    return d;
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule$IPCConnectListenerImpl.a()) {
+    if (this.a.a()) {
       return;
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ilive connect, [");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule$IPCConnectListenerImpl.a.get());
+      localStringBuilder.append(this.a.a.get());
       localStringBuilder.append("]");
       QLog.d("LiteLiveSDKClientIPCModule", 2, localStringBuilder.toString());
     }
-    QIPCClientHelper.getInstance().getClient().connect(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteLiveSDKClientIPCModule$IPCConnectListenerImpl);
+    QIPCClientHelper.getInstance().getClient().connect(this.a);
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -131,14 +131,14 @@ public class LiteLiveSDKClientIPCModule
     localStringBuilder.append("ilive LiteLiveSDKClientIPCModule--onCall-----action = ");
     localStringBuilder.append(paramString);
     ((LogInterface)localObject).e("LiteLiveSDKClientIPCModule", localStringBuilder.toString());
-    if ((this.jdField_a_of_type_MqqAppAppRuntime == null) && (MobileQQ.sMobileQQ.waitAppRuntime(null) != null)) {
-      this.jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("ilive_plugin");
+    if ((this.c == null) && (MobileQQ.sMobileQQ.waitAppRuntime(null) != null)) {
+      this.c = MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("ilive_plugin");
     }
-    if (!QQVideoPlaySDKManager.a())
+    if (!QQVideoPlaySDKManager.isSDKReady())
     {
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+      localObject = this.c;
       if ((localObject != null) && (((AppRuntime)localObject).isLogin())) {
-        QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
+        QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), this);
       }
     }
     if ("Action_Client_isInitLiteSDK".equals(paramString))
@@ -151,33 +151,33 @@ public class LiteLiveSDKClientIPCModule
     {
       paramBundle.setClassLoader(BusinessConfig.class.getClassLoader());
       paramString = (BusinessConfig)paramBundle.getParcelable("Key_BusinessConfig");
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a(paramString);
+      this.b.a(paramString);
     }
     else if ("Action_Client_UninitLiteSDK".equals(paramString))
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a();
+      this.b.a();
     }
     else if ("Action_Client_Login".equals(paramString))
     {
       paramBundle.setClassLoader(BizLoginRequest.class.getClassLoader());
       paramString = (BizLoginRequest)paramBundle.getParcelable("Key_BizLoginRequest");
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a(paramString);
+      this.b.a(paramString);
     }
     else if ("Action_Client_Logout".equals(paramString))
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.b();
+      this.b.e();
     }
     else if ("Action_Client_EnterRoom".equals(paramString))
     {
       paramString = paramBundle.getString("Key_mqq");
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a(BusinessManager.a.a().a, paramString);
+      this.b.a(BusinessManager.a.b().a, paramString);
     }
     else
     {
       if ("Action_Client_getLiveLoginTicket".equals(paramString))
       {
         paramString = new Bundle();
-        paramString.putParcelable("Key_LoginResult", this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a());
+        paramString.putParcelable("Key_LoginResult", this.b.d());
         return EIPCResult.createSuccessResult(paramString);
       }
       if ("Action_Client_customizedBizSDKService".equals(paramString))
@@ -185,28 +185,28 @@ public class LiteLiveSDKClientIPCModule
         paramString = paramBundle.getString("Key_Appid");
         localObject = (Class)paramBundle.getSerializable("Key_ServiceClazz");
         paramBundle = (Class)paramBundle.getSerializable("Key_ServiceBuildClazz");
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a(paramString, (Class)localObject, paramBundle);
+        this.b.a(paramString, (Class)localObject, paramBundle);
       }
       else if ("Action_Client_CustomizedBizModules".equals(paramString))
       {
         paramString = paramBundle.getString("Key_Appid");
         paramInt = paramBundle.getInt("Key_PageType");
         paramBundle = (Class)paramBundle.getSerializable("Key_BizModulesClazz");
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a(paramString, paramInt, paramBundle);
+        this.b.a(paramString, paramInt, paramBundle);
       }
       else
       {
         if ("Action_Client_GetActiveBizConfig".equals(paramString))
         {
           paramString = new Bundle();
-          paramString.putParcelable("Key_BusinessConfig", this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.a());
+          paramString.putParcelable("Key_BusinessConfig", this.b.b());
           return EIPCResult.createSuccessResult(paramString);
         }
         if ("Action_Client_UpdateActiveBizConfig".equals(paramString))
         {
           paramBundle.setClassLoader(BusinessConfig.class.getClassLoader());
           paramString = (BusinessConfig)paramBundle.getParcelable("Key_BusinessConfig");
-          this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK.b(paramString);
+          this.b.b(paramString);
         }
         else
         {
@@ -230,7 +230,7 @@ public class LiteLiveSDKClientIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteLiveSDKClientIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,17 @@ public class ChildLockSignApiImpl
     try
     {
       Object localObject = (AVActivity)paramContext;
-      paramContext = ((AVActivity)localObject).a();
-      localObject = (DoubleVideoCtrlUI)((AVActivity)localObject).a;
-      if (!paramContext.a().w)
+      paramContext = ((AVActivity)localObject).r();
+      localObject = (DoubleVideoCtrlUI)((AVActivity)localObject).K;
+      if (!paramContext.k().af)
       {
-        paramContext.a().x = true;
+        paramContext.k().ag = true;
         ((DoubleVideoCtrlUI)localObject).e(true);
         ReportController.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
         return;
       }
-      paramContext.a().x = false;
-      ((DoubleVideoCtrlUI)localObject).s();
+      paramContext.k().ag = false;
+      ((DoubleVideoCtrlUI)localObject).w();
       ReportController.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       return;
     }
@@ -38,7 +38,7 @@ public class ChildLockSignApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.widget.api.impl.ChildLockSignApiImpl
  * JD-Core Version:    0.7.0.1
  */

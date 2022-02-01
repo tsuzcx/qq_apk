@@ -15,25 +15,25 @@ import android.widget.TextView;
 public class ShowTagNamePopupWindow
   extends PopupWindow
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ShowTagNamePopupWindow.1(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback jdField_a_of_type_ComTencentMobileqqNearbyInterestTagShowTagNamePopupWindow$IShowTagNamePopupWindowCallback;
-  private String jdField_a_of_type_JavaLangString;
+  private TextView a;
+  private ImageView b;
+  private String c;
+  private long d;
+  private float e;
+  private int f;
+  private ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback g;
+  private View.OnClickListener h = new ShowTagNamePopupWindow.1(this);
   
   public ShowTagNamePopupWindow(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = paramInt2;
-    setWidth(this.jdField_a_of_type_Int);
-    double d = this.jdField_a_of_type_Float * 42.0F;
-    Double.isNaN(d);
-    setHeight((int)(d + 0.5D));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559571, null);
+    this.e = paramContext.getResources().getDisplayMetrics().density;
+    this.f = paramInt2;
+    setWidth(this.f);
+    double d1 = this.e * 42.0F;
+    Double.isNaN(d1);
+    setHeight((int)(d1 + 0.5D));
+    View localView = LayoutInflater.from(paramContext).inflate(2131625597, null);
     setContentView(localView);
     a(paramContext, localView, paramInt1);
     setOutsideTouchable(true);
@@ -41,43 +41,43 @@ public class ShowTagNamePopupWindow
   
   private void a(Context paramContext, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380064));
-    this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363909));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131368716).getLayoutParams();
-    float f = this.jdField_a_of_type_Float;
-    double d = 10.0F * f;
-    Double.isNaN(d);
-    int i = (int)(d + 0.5D);
+    this.a = ((TextView)paramView.findViewById(2131448977));
+    this.a.getTextSize();
+    this.b = ((ImageView)paramView.findViewById(2131429861));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131435629).getLayoutParams();
+    float f1 = this.e;
+    double d1 = 10.0F * f1;
+    Double.isNaN(d1);
+    int i = (int)(d1 + 0.5D);
     if (paramInt <= 0)
     {
       localLayoutParams.leftMargin = 0;
     }
-    else if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
+    else if (paramInt < (this.f - i) / 2)
     {
-      localLayoutParams.leftMargin = (paramInt + (int)((f * 40.0F - i) / 2.0F));
+      localLayoutParams.leftMargin = (paramInt + (int)((f1 * 40.0F - i) / 2.0F));
     }
     else
     {
       int j = paramContext.getResources().getDisplayMetrics().widthPixels;
-      f = this.jdField_a_of_type_Float;
-      d = f * 40.0F;
-      Double.isNaN(d);
-      int k = (int)(d + 0.5D);
-      int m = this.jdField_a_of_type_Int;
+      f1 = this.e;
+      d1 = f1 * 40.0F;
+      Double.isNaN(d1);
+      int k = (int)(d1 + 0.5D);
+      int m = this.f;
       if (paramInt > j - k - (m - i) / 2)
       {
-        localLayoutParams.leftMargin = (m + paramInt + (int)((f * 40.0F - i) / 2.0F) - paramContext.getResources().getDisplayMetrics().widthPixels);
+        localLayoutParams.leftMargin = (m + paramInt + (int)((f1 * 40.0F - i) / 2.0F) - paramContext.getResources().getDisplayMetrics().widthPixels);
       }
       else
       {
-        d = (m - i) / 2;
-        Double.isNaN(d);
-        localLayoutParams.leftMargin = ((int)(d + 0.5D));
+        d1 = (m - i) / 2;
+        Double.isNaN(d1);
+        localLayoutParams.leftMargin = ((int)(d1 + 0.5D));
       }
     }
-    paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    setBackgroundDrawable(paramContext.getResources().getDrawable(2130851078));
+    paramView.setOnClickListener(this.h);
+    setBackgroundDrawable(paramContext.getResources().getDrawable(2130853309));
   }
   
   public void a(InterestTagInfo paramInterestTagInfo)
@@ -87,20 +87,20 @@ public class ShowTagNamePopupWindow
     }
     if (!TextUtils.isEmpty(paramInterestTagInfo.tagName))
     {
-      this.jdField_a_of_type_JavaLangString = paramInterestTagInfo.tagName;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      this.c = paramInterestTagInfo.tagName;
+      this.a.setText(this.c);
     }
-    this.jdField_a_of_type_Long = paramInterestTagInfo.tagId;
+    this.d = paramInterestTagInfo.tagId;
   }
   
   public void a(ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback paramIShowTagNamePopupWindowCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagShowTagNamePopupWindow$IShowTagNamePopupWindowCallback = paramIShowTagNamePopupWindowCallback;
+    this.g = paramIShowTagNamePopupWindowCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow
  * JD-Core Version:    0.7.0.1
  */

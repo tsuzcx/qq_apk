@@ -18,13 +18,13 @@ public class ExpandPushChannel
   extends ExpandBaseChannel
   implements EventChannel.StreamHandler
 {
-  private final IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener jdField_a_of_type_ComTencentMobileqqQqexpandIpcIExpandIpcFlutterNotifyListener$ExpandIpcFlutterNotifyListener = new ExpandPushChannel.1(this);
-  private EventChannel.EventSink jdField_a_of_type_IoFlutterPluginCommonEventChannel$EventSink;
+  private EventChannel.EventSink d;
+  private final IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener e = new ExpandPushChannel.1(this);
   
   public ExpandPushChannel(BinaryMessenger paramBinaryMessenger)
   {
     new EventChannel(paramBinaryMessenger, "com.tencent.qflutter/expand/event.expand_push.onPushEvent", StandardMethodCodec.INSTANCE).setStreamHandler(this);
-    ExpandFlutterIPCClient.a().a(this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcIExpandIpcFlutterNotifyListener$ExpandIpcFlutterNotifyListener);
+    ExpandFlutterIPCClient.a().a(this.e);
   }
   
   public static void a(@NonNull MethodCall paramMethodCall, IExpandChannelCallback paramIExpandChannelCallback)
@@ -61,27 +61,14 @@ public class ExpandPushChannel
     paramIExpandChannelCallback.notImplemented();
   }
   
-  public MethodCodec a()
-  {
-    return StandardMethodCodec.INSTANCE;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_IoFlutterPluginCommonEventChannel$EventSink = null;
-    ExpandFlutterIPCClient.a().b(this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcIExpandIpcFlutterNotifyListener$ExpandIpcFlutterNotifyListener);
-    QLog.i("expand.ExpandPushChannel", 1, "channel destroy");
-  }
-  
   public void a(long paramLong, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_IoFlutterPluginCommonEventChannel$EventSink != null)
+    if (this.d != null)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("pushType", Long.valueOf(paramLong));
       localHashMap.put("pushData", paramArrayOfByte);
-      this.jdField_a_of_type_IoFlutterPluginCommonEventChannel$EventSink.success(localHashMap);
+      this.d.success(localHashMap);
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("sendContendToFlutter pushType:");
       paramArrayOfByte.append(paramLong);
@@ -99,7 +86,20 @@ public class ExpandPushChannel
     a(paramMethodCall, new ExpandPushChannel.2(this, paramMethodChannelResultWrapper));
   }
   
-  protected String c()
+  public MethodCodec b()
+  {
+    return StandardMethodCodec.INSTANCE;
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.d = null;
+    ExpandFlutterIPCClient.a().b(this.e);
+    QLog.i("expand.ExpandPushChannel", 1, "channel destroy");
+  }
+  
+  protected String g()
   {
     return "method.expand_push";
   }
@@ -115,7 +115,7 @@ public class ExpandPushChannel
     localStringBuilder.append(paramObject);
     QLog.d("expand.ExpandPushChannel", 1, localStringBuilder.toString());
     if ("onPushEvent".equals(paramObject)) {
-      this.jdField_a_of_type_IoFlutterPluginCommonEventChannel$EventSink = null;
+      this.d = null;
     }
   }
   
@@ -130,13 +130,13 @@ public class ExpandPushChannel
     localStringBuilder.append(paramObject);
     QLog.d("expand.ExpandPushChannel", 1, localStringBuilder.toString());
     if ("onPushEvent".equals(paramObject)) {
-      this.jdField_a_of_type_IoFlutterPluginCommonEventChannel$EventSink = paramEventSink;
+      this.d = paramEventSink;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.ExpandPushChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ class FastWebActivity$34
     try
     {
       if (this.a) {
-        FastWebActivity.l(this.this$0);
+        FastWebActivity.S(this.this$0);
       } else {
-        FastWebActivity.m(this.this$0);
+        FastWebActivity.T(this.this$0);
       }
-      FastWebActivity.d(this.this$0, this.a);
+      FastWebActivity.h(this.this$0, this.a);
       return;
     }
     catch (Exception localException)
@@ -30,7 +30,7 @@ class FastWebActivity$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.34
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ class TroopFileThumbnailMgr$4
 {
   public void run()
   {
-    TroopFileThumbnailMgr.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
-    TroopFileThumbnailMgr.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
+    TroopFileThumbnailMgr.a(this.this$0).a(this.a, this.b);
+    TroopFileThumbnailMgr.b(this.this$0).a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.4
  * JD-Core Version:    0.7.0.1
  */

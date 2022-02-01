@@ -21,28 +21,28 @@ class SwiftWebAccelerator$5
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doThreadedStep_LoadConfigs.run cost ");
-    ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(l - this.a);
     ((StringBuilder)localObject).append("ms.");
     QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
     BaseInnerDns.getInstance();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doThreadedStep_LoadConfigs:init inner-dns cost ");
-    ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(l - this.a);
     ((StringBuilder)localObject).append("ms.");
     QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
     localObject = AuthorizeConfig.a(false);
     ((AuthorizeConfig)localObject).a("https://www.qq.com/", "foo.bar");
-    ((AuthorizeConfig)localObject).a("skey");
-    ((AuthorizeConfig)localObject).a("pskey");
-    ((AuthorizeConfig)localObject).a("pt4_token");
-    ((AuthorizeConfig)localObject).a("a1");
-    ((AuthorizeConfig)localObject).a("a2");
-    ((AuthorizeConfig)localObject).a("https://www.qq.com/");
-    ((AuthorizeConfig)localObject).a();
-    ((AuthorizeConfig)localObject).b();
+    ((AuthorizeConfig)localObject).m("skey");
+    ((AuthorizeConfig)localObject).m("pskey");
+    ((AuthorizeConfig)localObject).m("pt4_token");
+    ((AuthorizeConfig)localObject).m("a1");
+    ((AuthorizeConfig)localObject).m("a2");
+    ((AuthorizeConfig)localObject).b("https://www.qq.com/");
     ((AuthorizeConfig)localObject).e();
+    ((AuthorizeConfig)localObject).f();
+    ((AuthorizeConfig)localObject).i();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doThreadedStep_LoadConfigs:load domain white list config, cost ");
     ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
@@ -57,7 +57,7 @@ class SwiftWebAccelerator$5
     ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
     ((StringBuilder)localObject).append("ms.");
     QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("from", -1);
+    int i = this.b.getInt("from", -1);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -70,7 +70,7 @@ class SwiftWebAccelerator$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5
  * JD-Core Version:    0.7.0.1
  */

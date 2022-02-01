@@ -23,7 +23,7 @@ public class CheckAuthLoginAction
     localObject2 = ((Intent)localObject2).getStringExtra("StrCode");
     localObject1 = DialogUtil.a(paramQBaseActivity, 230).setTitle((String)localObject1).setMessage(str4);
     ((QQCustomDialog)localObject1).setPositiveButton(str1, new CheckAuthLoginAction.1(this, paramQBaseActivity, str2, str3, (String)localObject2));
-    ((QQCustomDialog)localObject1).setNegativeButton(HardCodeUtil.a(2131713865), new CheckAuthLoginAction.2(this, paramQBaseActivity));
+    ((QQCustomDialog)localObject1).setNegativeButton(HardCodeUtil.a(2131898212), new CheckAuthLoginAction.2(this, paramQBaseActivity));
     ((QQCustomDialog)localObject1).show();
     ReportController.a(paramQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8006795", "0X8006795", 0, 0, "", "", "", "");
   }
@@ -43,7 +43,7 @@ public class CheckAuthLoginAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.CheckAuthLoginAction
  * JD-Core Version:    0.7.0.1
  */

@@ -33,16 +33,16 @@ public class PaiYiPaiObserver
     {
     default: 
     case 1007: 
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694681, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892373, 0).show();
       return;
     case 1006: 
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694688, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892380, 0).show();
       return;
     case 1002: 
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694686, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892378, 0).show();
       return;
     case 1001: 
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694692, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892384, 0).show();
       return;
       a(paramBoolean);
       return;
@@ -52,7 +52,7 @@ public class PaiYiPaiObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.paiyipai.PaiYiPaiObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ public final class RIJAdDownloadStateUtil
   public final int a(@NotNull WadlResult paramWadlResult)
   {
     Intrinsics.checkParameterIsNotNull(paramWadlResult, "status");
-    int k = paramWadlResult.b;
+    int k = paramWadlResult.d;
     int j = 1;
     if (k != 0)
     {
@@ -81,7 +81,7 @@ public final class RIJAdDownloadStateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadStateUtil
  * JD-Core Version:    0.7.0.1
  */

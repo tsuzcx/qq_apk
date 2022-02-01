@@ -10,21 +10,21 @@ public class SayHelloListItemBuilder$SayHelloListItemHolder
   extends RecentItemBaseBuilder.RecentItemBaseHolder
 {
   public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public DragTextView a;
-  public SingleLineTextView a;
   public ImageView b;
-  public TextView b;
   public TextView c;
   public TextView d;
   public TextView e;
   public TextView f;
   public TextView g;
+  public SingleLineTextView h;
+  public DragTextView i;
+  public TextView j;
+  public TextView k;
+  public LinearLayout l;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.SayHelloListItemBuilder.SayHelloListItemHolder
  * JD-Core Version:    0.7.0.1
  */

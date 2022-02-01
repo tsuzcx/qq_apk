@@ -6,38 +6,22 @@ import java.util.ArrayList;
 
 public class TroopBarUtils$PublishDataCacheEntity
 {
-  public int a;
-  public TroopBarPOI a;
-  public AudioInfo a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public ArrayList<TroopBarPOI> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  
-  public TroopBarUtils$PublishDataCacheEntity()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-  }
+  public ArrayList<String> a = null;
+  public TroopBarPOI b = null;
+  public ArrayList<TroopBarPOI> c = null;
+  public int d = 0;
+  public int e = 0;
+  public String f = null;
+  public int g = 0;
+  public int h = 0;
+  public String i = null;
+  public String j = null;
+  public String k = null;
+  public AudioInfo l = null;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBarUtils.PublishDataCacheEntity
  * JD-Core Version:    0.7.0.1
  */

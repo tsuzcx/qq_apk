@@ -7,15 +7,15 @@ import com.tencent.widget.Switch;
 
 public class ShieldFriendsListFragment$Holder
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
   public URLImageView a;
-  public Switch a;
-  public String a;
+  public TextView b;
+  public Switch c;
+  public String d;
+  public CompoundButton.OnCheckedChangeListener e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.ShieldFriendsListFragment.Holder
  * JD-Core Version:    0.7.0.1
  */

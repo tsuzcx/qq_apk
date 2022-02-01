@@ -8,8 +8,8 @@ import java.util.List;
 public class DateVideoSimpleInfoPageLoader$GetSimpleInfoListEvent
   extends BasePageLoaderEvent
 {
-  public int a;
-  public List<StoryVideoItem> a;
+  public int e;
+  public List<StoryVideoItem> f;
   
   public DateVideoSimpleInfoPageLoader$GetSimpleInfoListEvent(ErrorMessage paramErrorMessage)
   {
@@ -18,7 +18,7 @@ public class DateVideoSimpleInfoPageLoader$GetSimpleInfoListEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DateVideoSimpleInfoPageLoader.GetSimpleInfoListEvent
  * JD-Core Version:    0.7.0.1
  */

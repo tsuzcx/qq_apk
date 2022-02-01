@@ -13,10 +13,10 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import com.tencent.aelight.camera.ae.AECameraConfig;
@@ -27,6 +27,7 @@ import com.tencent.aelight.camera.ae.album.data.AEAlbumImageModel;
 import com.tencent.aelight.camera.ae.album.data.AEAlbumVideoModel;
 import com.tencent.aelight.camera.ae.album.data.AEPhotoCropInfoWrapper;
 import com.tencent.aelight.camera.ae.camera.core.AECameraGLSurfaceView;
+import com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil;
 import com.tencent.aelight.camera.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel;
 import com.tencent.aelight.camera.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 import com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkDataManager;
@@ -79,12 +80,11 @@ import com.tencent.mobileqq.editor.params.EditVideoParams;
 import com.tencent.mobileqq.editor.params.EditVideoParams.EditSource;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qcircle.tavcut.util.BitmapUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tavcut.util.BitmapUtil;
 import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarTintManager;
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.SimpleObserver;
 import com.tribe.async.reactive.Stream;
@@ -100,82 +100,74 @@ import org.jetbrains.annotations.NotNull;
 public class VideoStoryCapturePart
   extends VideoStoryBasePart
 {
-  public static int a;
-  private long jdField_a_of_type_Long = 0L;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private AEPituCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-  private AECameraGLSurfaceView jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView;
-  private AEVideoStoryTopBarViewModel.Ratio jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio;
-  private AEVideoStoryTopBarViewModel jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel;
-  private AECaptureMode jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode = null;
-  private AEVideoStoryCaptureModeViewModel jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel;
-  private VideoStoryDataBean jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-  List<FrameVideoHelper.FrameBuffer> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long = ((Long)VSConfigManager.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = 0;
-  private View jdField_d_of_type_AndroidViewView;
-  private boolean jdField_d_of_type_Boolean;
-  private View e;
+  public static int b;
+  private boolean A;
+  private boolean B;
+  private boolean C = false;
+  List<FrameVideoHelper.FrameBuffer> a;
+  private AEVideoStoryCaptureModeViewModel c;
+  private AEVideoStoryTopBarViewModel d;
+  private AEPituCameraUnit e;
+  private long f = 0L;
+  private int g;
+  private int h;
+  private long i = ((Long)VSConfigManager.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
+  private AECameraGLSurfaceView j;
+  private ImageView k;
+  private View l;
+  private View m;
+  private View n;
+  private View o;
+  private View p;
+  private ViewGroup q;
+  private Dialog r;
+  private VideoStoryDataBean s;
+  private boolean t = false;
+  private boolean u = false;
+  private int v = 0;
+  private boolean w = false;
+  private AEVideoStoryTopBarViewModel.Ratio x;
+  private AECaptureMode y = null;
+  private boolean z;
   
   public VideoStoryCapturePart(Activity paramActivity, View paramView, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
     super(paramActivity, paramView, paramVideoStoryCapturePartManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
-    this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean = new VideoStoryDataBean();
-    jdField_a_of_type_Int = ViewUtils.a(60.0F) + ImmersiveUtils.getStatusBarHeight(paramActivity);
-  }
-  
-  private int a()
-  {
-    int i = AEPreviewSizeUtil.a();
-    int j = this.mActivity.getResources().getDimensionPixelSize(2063990794);
-    int k = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    if (i == 1) {
-      return j + k;
-    }
-    return 0;
+    this.e = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
+    this.s = new VideoStoryDataBean();
+    b = ViewUtils.dip2px(60.0F) + ImmersiveUtils.getStatusBarHeight(paramActivity);
   }
   
   @NotNull
   private GenerateContext a(EditVideoParams.EditSource paramEditSource, int paramInt1, int paramInt2, String paramString1, float paramFloat, int paramInt3, String paramString2, boolean paramBoolean, String paramString3, EditVideoParams paramEditVideoParams)
   {
     GenerateContext localGenerateContext = new GenerateContext(paramEditVideoParams);
-    localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoMaxrate = CodecParam.mMaxrate;
-    if (MediaCodecDPC.f())
+    localGenerateContext.d.videoMaxrate = CodecParam.mMaxrate;
+    if (MediaCodecDPC.j())
     {
-      localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoMaxrate = (MediaCodecDPC.b() * 1000);
-      localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.putExtra("composite_key_bitrate_mode", Boolean.valueOf(MediaCodecDPC.f()));
+      localGenerateContext.d.videoMaxrate = (MediaCodecDPC.k() * 1000);
+      localGenerateContext.d.putExtra("composite_key_bitrate_mode", Boolean.valueOf(MediaCodecDPC.j()));
     }
-    localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoMinrate = CodecParam.mMinrate;
-    localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoUploadGroupTempDir = paramString3;
-    localGenerateContext.b = PublishFileManager.a(paramEditVideoParams.jdField_a_of_type_Int);
-    localGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGenerateThumbArgs = new GenerateThumbArgs(this.mActivity, paramInt1, paramInt2, paramString1, paramFloat, false, paramInt3, 0.0D, 0.0D, paramString2, paramBoolean);
+    localGenerateContext.d.videoMinrate = CodecParam.mMinrate;
+    localGenerateContext.d.videoUploadGroupTempDir = paramString3;
+    localGenerateContext.p = PublishFileManager.a(paramEditVideoParams.a);
+    localGenerateContext.i = new GenerateThumbArgs(this.mActivity, paramInt1, paramInt2, paramString1, paramFloat, false, paramInt3, 0.0D, 0.0D, paramString2, paramBoolean);
     if ((!(paramEditSource instanceof EditTakeVideoSource)) && (!(paramEditSource instanceof EditLocalVideoSource))) {
-      localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.putExtra("is_hw_encode", Boolean.valueOf(false));
+      localGenerateContext.d.putExtra("is_hw_encode", Boolean.valueOf(false));
     } else {
-      localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.putExtra("is_hw_encode", Boolean.valueOf(true));
+      localGenerateContext.d.putExtra("is_hw_encode", Boolean.valueOf(true));
     }
-    localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.putExtra("thumb_rotation", Integer.valueOf(paramInt3));
-    paramEditSource = localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a("extra_text_filter_text");
+    localGenerateContext.d.putExtra("thumb_rotation", Integer.valueOf(paramInt3));
+    paramEditSource = localGenerateContext.a.a("extra_text_filter_text");
     if (!TextUtils.isEmpty(paramEditSource))
     {
-      if (TextUtils.isEmpty(localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoDoodleDescription))
+      if (TextUtils.isEmpty(localGenerateContext.d.videoDoodleDescription))
       {
-        localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoDoodleDescription = paramEditSource;
+        localGenerateContext.d.videoDoodleDescription = paramEditSource;
         return localGenerateContext;
       }
       paramString1 = new StringBuilder();
-      paramString2 = localGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry;
+      paramString2 = localGenerateContext.d;
       paramString1.append(paramString2.videoDoodleDescription);
       paramString1.append(paramEditSource);
       paramString2.videoDoodleDescription = paramString1.toString();
@@ -188,10 +180,10 @@ public class VideoStoryCapturePart
   {
     paramLocalMediaInfo = new EditVideoParams(paramInt2, paramInt1, paramEditSource, paramBundle);
     if (paramCaptureVideoParams != null) {
-      paramLocalMediaInfo.jdField_b_of_type_Int = paramCaptureVideoParams.jdField_a_of_type_Int;
+      paramLocalMediaInfo.b = paramCaptureVideoParams.c;
     }
-    paramLocalMediaInfo.f = paramActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    paramLocalMediaInfo.jdField_a_of_type_AndroidOsBundle.putBoolean("enable_hw_encode", true);
+    paramLocalMediaInfo.h = paramActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
+    paramLocalMediaInfo.d.putBoolean("enable_hw_encode", true);
     if (QLog.isColorLevel())
     {
       paramCaptureVideoParams = new StringBuilder();
@@ -199,16 +191,16 @@ public class VideoStoryCapturePart
       paramCaptureVideoParams.append(paramLocalMediaInfo.toString());
       QLog.d("VideoStoryCapturePart", 2, paramCaptureVideoParams.toString());
     }
-    long l = paramActivity.getIntent().getLongExtra("troop_uin", 0L);
-    if (l != 0L) {
-      paramLocalMediaInfo.jdField_a_of_type_AndroidOsBundle.putLong("troop_uin", l);
+    long l1 = paramActivity.getIntent().getLongExtra("troop_uin", 0L);
+    if (l1 != 0L) {
+      paramLocalMediaInfo.d.putLong("troop_uin", l1);
     }
     return paramLocalMediaInfo;
   }
   
   private SimpleObserver<GenerateContext> a(int paramInt)
   {
-    return new VideoStoryCapturePart.10(this, SystemClock.uptimeMillis(), paramInt);
+    return new VideoStoryCapturePart.11(this, SystemClock.uptimeMillis(), paramInt);
   }
   
   @Nullable
@@ -217,149 +209,139 @@ public class VideoStoryCapturePart
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    int i = paramString.indexOf("^");
+    int i1 = paramString.indexOf("^");
     String str = paramString;
-    if (i >= 0) {
-      str = paramString.substring(i + 1);
+    if (i1 >= 0) {
+      str = paramString.substring(i1 + 1);
     }
     return str;
   }
   
   private void a()
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.w) {
       return;
     }
-    Object localObject = (ViewStub)this.mRootView.findViewById(2064122659);
-    ViewStub localViewStub1 = (ViewStub)this.mRootView.findViewById(2064122655);
-    ViewStub localViewStub2 = (ViewStub)this.mRootView.findViewById(2064122656);
-    ViewStub localViewStub3 = (ViewStub)this.mRootView.findViewById(2064122657);
-    ViewStub localViewStub4 = (ViewStub)this.mRootView.findViewById(2064122658);
-    ViewStub localViewStub5 = (ViewStub)this.mRootView.findViewById(2064122654);
+    Object localObject = (ViewStub)this.mRootView.findViewById(2063991448);
+    ViewStub localViewStub1 = (ViewStub)this.mRootView.findViewById(2063991444);
+    ViewStub localViewStub2 = (ViewStub)this.mRootView.findViewById(2063991445);
+    ViewStub localViewStub3 = (ViewStub)this.mRootView.findViewById(2063991446);
+    ViewStub localViewStub4 = (ViewStub)this.mRootView.findViewById(2063991447);
+    ViewStub localViewStub5 = (ViewStub)this.mRootView.findViewById(2063991443);
     ((ViewStub)localObject).inflate();
     localViewStub1.inflate();
     localViewStub2.inflate();
     localViewStub3.inflate();
     localViewStub4.inflate();
     localViewStub5.inflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mRootView.findViewById(2064121869));
-    this.jdField_a_of_type_AndroidViewView = this.mRootView.findViewById(2064122017);
-    this.jdField_b_of_type_AndroidViewView = this.mRootView.findViewById(2064122013);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new VideoStoryCapturePart.1(this));
-    this.jdField_c_of_type_AndroidViewView = this.mRootView.findViewById(2064122014);
-    this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new VideoStoryCapturePart.2(this));
-    this.jdField_d_of_type_AndroidViewView = this.mRootView.findViewById(2064122015);
-    this.jdField_d_of_type_AndroidViewView.setOnTouchListener(new VideoStoryCapturePart.3(this));
-    this.e = this.mRootView.findViewById(2064122012);
-    this.e.setOnTouchListener(new VideoStoryCapturePart.4(this));
-    if (this.jdField_d_of_type_Boolean)
+    this.k = ((ImageView)this.mRootView.findViewById(2063990787));
+    this.l = this.mRootView.findViewById(2063990948);
+    this.m = this.mRootView.findViewById(2063990944);
+    this.m.setOnTouchListener(new VideoStoryCapturePart.1(this));
+    this.n = this.mRootView.findViewById(2063990945);
+    this.n.setOnTouchListener(new VideoStoryCapturePart.2(this));
+    this.o = this.mRootView.findViewById(2063990946);
+    this.o.setOnTouchListener(new VideoStoryCapturePart.3(this));
+    this.p = this.mRootView.findViewById(2063990943);
+    this.p.setOnTouchListener(new VideoStoryCapturePart.4(this));
+    if (this.z)
     {
-      boolean bool = AEThemeUtil.a();
+      boolean bool = AEThemeUtil.b();
       localObject = this.mActivity.getResources();
       if (bool) {
-        i = 2063925250;
+        i1 = 2063794178;
       } else {
-        i = 2063925252;
+        i1 = 2063794180;
       }
-      int i = ((Resources)localObject).getColor(i);
-      this.jdField_d_of_type_AndroidViewView.setBackgroundColor(i);
-      this.e.setBackgroundColor(i);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(i);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(i);
+      int i1 = ((Resources)localObject).getColor(i1);
+      this.o.setBackgroundColor(i1);
+      this.p.setBackgroundColor(i1);
+      this.m.setBackgroundColor(i1);
+      this.n.setBackgroundColor(i1);
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.w = true;
+  }
+  
+  @RequiresApi(api=21)
+  private void a(float paramFloat, AECameraGLSurfaceView paramAECameraGLSurfaceView)
+  {
+    paramAECameraGLSurfaceView.setOutlineProvider(new VideoStoryCapturePart.9(this, paramFloat));
+    paramAECameraGLSurfaceView.setClipToOutline(true);
   }
   
   private void a(int paramInt, com.tencent.mobileqq.activity.richmedia.Size paramSize)
   {
-    long l1 = paramSize.jdField_a_of_type_Int * paramSize.jdField_b_of_type_Int;
-    long l2 = this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.getWidth() * this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.getHeight();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("smooth2Size---oldArea=");
-    ((StringBuilder)localObject).append(l2);
-    ((StringBuilder)localObject).append(", newArea=");
-    ((StringBuilder)localObject).append(l1);
-    AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
-    if (l1 == l2) {
-      return;
-    }
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    localObject = ViewAnimator.a(new View[] { this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_AndroidViewView });
-    float f = this.jdField_b_of_type_AndroidViewView.getWidth();
-    double d1 = this.jdField_b_of_type_Int - paramSize.jdField_a_of_type_Int;
-    Double.isNaN(d1);
-    localObject = ((AnimationBuilder)localObject).d(new float[] { f, (int)Math.ceil(d1 / 2.0D) }).a(new View[] { this.jdField_d_of_type_AndroidViewView }).c(new float[] { this.jdField_d_of_type_AndroidViewView.getHeight(), paramInt }).a(new View[] { this.e }).c(new float[] { this.e.getHeight(), this.mRootView.getHeight() - paramInt - paramSize.jdField_b_of_type_Int });
-    if (l1 > l2) {
-      localObject = ((AnimationBuilder)localObject).a().a(300L);
-    } else {
-      localObject = ((AnimationBuilder)localObject).a(1.5F).a(500L);
-    }
-    ((ViewAnimator)localObject).a(new VideoStoryCapturePart.8(this)).a();
-    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = paramSize.jdField_a_of_type_Int;
-    ((RelativeLayout.LayoutParams)localObject).height = paramSize.jdField_b_of_type_Int;
-    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    c(paramInt, paramSize);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.j.getLayoutParams();
+    localLayoutParams.width = paramSize.a;
+    localLayoutParams.height = paramSize.b;
+    localLayoutParams.topMargin = paramInt;
+    this.j.setLayoutParams(localLayoutParams);
   }
   
   private void a(@NonNull AECaptureMode paramAECaptureMode)
   {
     if ((paramAECaptureMode == AECaptureMode.GIF) || (paramAECaptureMode == AECaptureMode.NORMAL))
     {
-      int j = 0;
-      int i;
+      int i2 = 0;
+      int i1;
       if (paramAECaptureMode == AECaptureMode.GIF)
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit != null)
+        if (this.e != null)
         {
-          if (this.jdField_a_of_type_Boolean)
+          if (this.t)
           {
-            i = this.jdField_d_of_type_Int;
-            if (i != 0) {}
+            i1 = this.v;
+            if (i1 != 0) {}
           }
           else
           {
-            i = DisplayUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a(), 147.0F);
+            i1 = DisplayUtil.a(this.e.s(), 147.0F);
           }
         }
         else
         {
-          float f;
-          if (this.jdField_a_of_type_Boolean)
+          float f1;
+          if (this.t)
           {
-            f = 0.0724138F;
-            i = this.mRootView.getHeight();
+            f1 = 0.0724138F;
+            i1 = this.mRootView.getHeight();
           }
           else
           {
-            f = 0.1810345F;
-            i = this.mRootView.getHeight();
+            f1 = 0.1810345F;
+            i1 = this.mRootView.getHeight();
           }
-          i = (int)(i * f);
+          i1 = (int)(i1 * f1);
         }
-        i = (int)i;
+        i1 = (int)i1;
       }
       else
       {
-        i = j;
-        if (this.jdField_d_of_type_Boolean) {
-          if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio == AEVideoStoryTopBarViewModel.Ratio.R_4_3)
+        i1 = i2;
+        if (this.z) {
+          if (this.x == AEVideoStoryTopBarViewModel.Ratio.R_4_3)
           {
-            i = a();
+            i1 = c();
           }
           else
           {
-            i = j;
-            if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {
-              i = jdField_a_of_type_Int;
+            i1 = i2;
+            if (this.x == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {
+              i1 = b;
             }
           }
         }
       }
       paramAECaptureMode = AEPreviewSizeUtil.a();
-      com.tencent.mobileqq.activity.richmedia.Size localSize = AEPreviewSizeUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode, paramAECaptureMode, this.jdField_d_of_type_Boolean, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio);
-      a(i, localSize);
+      com.tencent.mobileqq.activity.richmedia.Size localSize = AEPreviewSizeUtil.a(this.y, paramAECaptureMode, this.z, this.x);
+      if (this.z) {
+        a(i1, localSize);
+      } else if (this.y == AECaptureMode.NORMAL) {
+        b(i1, paramAECaptureMode);
+      } else {
+        a(i1, localSize);
+      }
       a(paramAECaptureMode, localSize);
     }
   }
@@ -370,33 +352,33 @@ public class VideoStoryCapturePart
     if (localActivity != null)
     {
       AEQLog.a("VideoStoryCapturePart", "Q.videostory.publish.upload[peak process]  sendBroadcast notify publish start(to read info from db)");
-      Object localObject = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraStructEditorPublishParam;
+      Object localObject = paramGenerateContext.m;
       paramGenerateContext = new StringBuilder();
       paramGenerateContext.append("publishParam = ");
       paramGenerateContext.append(localObject);
       AEQLog.a("VideoStoryCapturePart", paramGenerateContext.toString());
       paramGenerateContext = localActivity.getIntent();
       boolean bool = false;
-      int i;
-      int j;
+      int i1;
+      int i2;
       if (paramGenerateContext != null)
       {
-        i = paramGenerateContext.getIntExtra("sv_total_frame_count", 0);
-        j = paramGenerateContext.getIntExtra("sv_total_record_time", 0);
+        i1 = paramGenerateContext.getIntExtra("sv_total_frame_count", 0);
+        i2 = paramGenerateContext.getIntExtra("sv_total_record_time", 0);
       }
       else
       {
-        i = 0;
-        j = 0;
+        i1 = 0;
+        i2 = 0;
       }
-      Intent localIntent = SaveVideoActivity.a(localActivity, ((PublishParam)localObject).b, j, i, paramInt);
+      Intent localIntent = SaveVideoActivity.a(localActivity, ((PublishParam)localObject).b, i2, i1, paramInt);
       if (paramGenerateContext != null) {
         paramInt = paramGenerateContext.getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
       } else {
         paramInt = 0;
       }
       localIntent.putExtra("mediacodec_encode_enable", true);
-      if (((PublishParam)localObject).e != 0) {
+      if (((PublishParam)localObject).m != 0) {
         bool = true;
       }
       localIntent.putExtra("video_edit_flag", bool);
@@ -421,14 +403,14 @@ public class VideoStoryCapturePart
   {
     a(false);
     Object localObject2 = this.mActivity.getIntent();
-    if (AECameraEntryManager.f((Intent)localObject2))
+    if (AECameraEntryManager.j((Intent)localObject2))
     {
       AEQLog.b("VideoStoryCapturePart", "handleNoNeedEditPhoto---from playMiniApp");
       Intent localIntent = new Intent();
       localIntent.setAction("com.tencent.mobileqq.mini.out.nativePlugins.native_back");
       localIntent.putExtra("file_path", paramAEPhotoCaptureResult.filePath);
       localIntent.putExtra("is_video", false);
-      Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a();
+      Object localObject1 = this.e.aJ();
       paramAEPhotoCaptureResult = (AEPhotoCaptureResult)localObject1;
       if (localObject1 == null) {
         paramAEPhotoCaptureResult = new HashMap();
@@ -445,24 +427,24 @@ public class VideoStoryCapturePart
         paramAEPhotoCaptureResult.put("extra_info_key_widget_id", localObject2);
       }
       localIntent.putExtra("extra_info", paramAEPhotoCaptureResult);
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().sendBroadcast(localIntent);
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().finish();
+      this.e.s().sendBroadcast(localIntent);
+      this.e.s().setResult(-1, localIntent);
+      this.e.s().finish();
     }
   }
   
   private void a(AEVideoCaptureResult paramAEVideoCaptureResult, CaptureEntranceParams paramCaptureEntranceParams, LocalMediaInfo paramLocalMediaInfo)
   {
     AEQLog.b("VideoStoryCapturePart", "handleNoNeedEditVideo---");
-    ThreadManager.getUIHandler().post(new VideoStoryCapturePart.9(this));
+    ThreadManager.getUIHandler().post(new VideoStoryCapturePart.10(this));
     paramAEVideoCaptureResult = new EditTakeVideoSource(paramAEVideoCaptureResult.videoMp4FilePath, paramAEVideoCaptureResult.audioDataFilePath, paramLocalMediaInfo);
     Bundle localBundle = new Bundle();
-    int i = paramCaptureEntranceParams.a();
-    paramCaptureEntranceParams = a(this.mActivity, paramLocalMediaInfo, null, 0, localBundle, paramAEVideoCaptureResult, i);
-    paramLocalMediaInfo = paramCaptureEntranceParams.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource;
-    int j = paramAEVideoCaptureResult.a();
-    int k = paramAEVideoCaptureResult.b();
-    Stream.of(a(paramLocalMediaInfo, j, k, paramAEVideoCaptureResult.a(), j * 1.0F / k, paramAEVideoCaptureResult.a.rotation, "", false, paramCaptureEntranceParams.a("extra_upload_temp_directory"), paramCaptureEntranceParams)).map(new ThreadOffFunction("VideoStoryCapturePart", 2)).map(new AEGenerateThumbnailSegment()).map(new PublishVideoSegment(paramCaptureEntranceParams)).subscribe(a(i));
+    int i1 = paramCaptureEntranceParams.a();
+    paramCaptureEntranceParams = a(this.mActivity, paramLocalMediaInfo, null, 0, localBundle, paramAEVideoCaptureResult, i1);
+    paramLocalMediaInfo = paramCaptureEntranceParams.e;
+    int i2 = paramAEVideoCaptureResult.b();
+    int i3 = paramAEVideoCaptureResult.c();
+    Stream.of(a(paramLocalMediaInfo, i2, i3, paramAEVideoCaptureResult.a(), i2 * 1.0F / i3, paramAEVideoCaptureResult.b.rotation, "", false, paramCaptureEntranceParams.a("extra_upload_temp_directory"), paramCaptureEntranceParams)).map(new ThreadOffFunction("VideoStoryCapturePart", 2)).map(new AEGenerateThumbnailSegment()).map(new PublishVideoSegment(paramCaptureEntranceParams)).subscribe(a(i1));
   }
   
   private void a(AEVideoCaptureResult paramAEVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
@@ -498,18 +480,18 @@ public class VideoStoryCapturePart
       this.mActivity.getIntent().removeExtra("material_topic");
       this.mActivity.getIntent().removeExtra("key_camera_material_name");
     }
-    if (AEMaterialManager.a() != null)
+    if (AEMaterialManager.n() != null)
     {
-      paramLocalMediaInfo = AEMaterialManager.a().k;
+      paramLocalMediaInfo = AEMaterialManager.n().m;
       paramAEVideoCaptureResult = paramLocalMediaInfo;
       if (TextUtils.isEmpty(paramLocalMediaInfo)) {
         paramAEVideoCaptureResult = "none";
       }
       ((Bundle)localObject).putString("guajian_id", paramAEVideoCaptureResult);
     }
-    if (AEMaterialManager.b() != null)
+    if (AEMaterialManager.o() != null)
     {
-      paramLocalMediaInfo = AEMaterialManager.b().k;
+      paramLocalMediaInfo = AEMaterialManager.o().m;
       paramAEVideoCaptureResult = paramLocalMediaInfo;
       if (TextUtils.isEmpty(paramLocalMediaInfo)) {
         paramAEVideoCaptureResult = "none";
@@ -517,30 +499,30 @@ public class VideoStoryCapturePart
       ((Bundle)localObject).putString("water_mark_id", paramAEVideoCaptureResult);
     }
     paramAEVideoCaptureResult = this.mActivity.getIntent();
-    int i = 0;
+    int i1 = 0;
     ((Bundle)localObject).putInt("ae_editor_is_show_take_same", paramAEVideoCaptureResult.getIntExtra("ae_editor_is_show_take_same", 0));
     this.mActivity.getIntent().removeExtra("ae_editor_is_show_take_same");
     if ((Build.VERSION.SDK_INT < 23) || (this.mActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0)) {
-      i = 1;
+      i1 = 1;
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       AEQLog.b("VideoStoryCapturePart", "updateWMProps onGetLocation");
-      WatermarkDataManager.a().a(new VideoStoryCapturePart.11(this));
+      WatermarkDataManager.a().a(new VideoStoryCapturePart.12(this));
     }
-    i = c();
-    AEEditorLauncher.a(this.mActivity, 1, (Bundle)localObject, i);
+    i1 = j();
+    AEEditorLauncher.a(this.mActivity, 1, (Bundle)localObject, i1);
   }
   
   private void a(AEVideoCaptureResult paramAEVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, Integer paramInteger, CaptureEntranceParams paramCaptureEntranceParams, QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b().e();
-    if (i == 4)
+    int i1 = this.e.u().o();
+    if (i1 == 4)
     {
       a(paramAEVideoCaptureResult, paramLocalMediaInfo);
       return;
     }
-    if (i == -2)
+    if (i1 == -2)
     {
       AEQLog.b("VideoStoryCapturePart", "enterVideoEditByConfig---no need edit");
       a(paramAEVideoCaptureResult, paramCaptureEntranceParams, paramLocalMediaInfo);
@@ -549,24 +531,45 @@ public class VideoStoryCapturePart
     c(paramAEVideoCaptureResult, paramLocalMediaInfo, paramInteger, paramCaptureEntranceParams, paramQIMFilterCategoryItem);
   }
   
+  private void a(com.tencent.mobileqq.activity.richmedia.Size paramSize)
+  {
+    if (this.x == AEVideoStoryTopBarViewModel.Ratio.FULL)
+    {
+      d(0, paramSize);
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.j.getLayoutParams();
+    localLayoutParams.width = paramSize.a;
+    localLayoutParams.height = (paramSize.b - DisplayUtil.a(BaseApplication.getContext(), 56.0F));
+    localLayoutParams.topMargin = 0;
+    paramSize = new StringBuilder();
+    paramSize.append("adjustRatio lp.height: ");
+    paramSize.append(localLayoutParams.height);
+    paramSize.append(" : ");
+    paramSize.append(localLayoutParams.topMargin);
+    AEQLog.b("VideoStoryCapturePart", paramSize.toString());
+    this.j.setLayoutParams(localLayoutParams);
+    a(32.0F, this.j);
+  }
+  
   private void a(com.tencent.mobileqq.activity.richmedia.Size paramSize1, com.tencent.mobileqq.activity.richmedia.Size paramSize2)
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.z)
     {
-      int k = b();
-      int j = this.mActivity.getResources().getDimensionPixelSize(2063990802);
-      int m = this.mActivity.getResources().getDimensionPixelSize(2063990804);
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio == AEVideoStoryTopBarViewModel.Ratio.R_4_3)
+      int i3 = d();
+      int i2 = this.mActivity.getResources().getDimensionPixelSize(2063859729);
+      int i4 = this.mActivity.getResources().getDimensionPixelSize(2063859731);
+      int i1 = i2;
+      if (this.x == AEVideoStoryTopBarViewModel.Ratio.R_4_3)
       {
-        i = j;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode == AECaptureMode.NORMAL) {
-          i = Math.max(paramSize1.jdField_b_of_type_Int - k - paramSize2.jdField_b_of_type_Int + m, j);
+        i1 = i2;
+        if (this.y == AECaptureMode.NORMAL) {
+          i1 = Math.max(paramSize1.b - i3 - paramSize2.b + i4, i2);
         }
       }
-      paramSize1 = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      paramSize1.height = i;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramSize1);
+      paramSize1 = this.q.getLayoutParams();
+      paramSize1.height = i1;
+      this.q.setLayoutParams(paramSize1);
     }
   }
   
@@ -576,21 +579,21 @@ public class VideoStoryCapturePart
     {
       if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
       {
-        if (this.jdField_a_of_type_AndroidAppDialog == null)
+        if (this.r == null)
         {
-          this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.mActivity, 2131756189);
-          this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-          this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-          this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559561);
+          this.r = new Dialog(this.mActivity, 2131953338);
+          this.r.setCancelable(false);
+          this.r.setCanceledOnTouchOutside(false);
+          this.r.setContentView(2131625585);
         }
-        this.jdField_a_of_type_AndroidAppDialog.show();
+        this.r.show();
       }
     }
     else
     {
-      Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+      Dialog localDialog = this.r;
       if ((localDialog != null) && (localDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.r.dismiss();
       }
     }
   }
@@ -604,44 +607,30 @@ public class VideoStoryCapturePart
       Integer localInteger = (Integer)paramArrayOfObject[2];
       CaptureEntranceParams localCaptureEntranceParams = (CaptureEntranceParams)paramArrayOfObject[3];
       paramArrayOfObject = (QIMFilterCategoryItem)paramArrayOfObject[4];
-      if (b()) {
+      if (i()) {
         a(localAEVideoCaptureResult, localLocalMediaInfo, localInteger, localCaptureEntranceParams, paramArrayOfObject);
       } else {
         b(localAEVideoCaptureResult, localLocalMediaInfo, localInteger, localCaptureEntranceParams, paramArrayOfObject);
       }
-      e();
+      g();
     }
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b() != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b().f() != -1);
-  }
-  
-  private int b()
-  {
-    int i = AEPreviewSizeUtil.a();
-    int j = this.mActivity.getResources().getDimensionPixelSize(2063990791);
-    int k = this.mActivity.getResources().getDimensionPixelSize(2063990794);
-    int m = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    if (i == 1) {
-      return j + m + k;
-    }
-    if (i == 2) {
-      return j;
-    }
-    return 0;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryCaptureModeViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel = ((AEVideoStoryTopBarViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryTopBarViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio = ((AEVideoStoryTopBarViewModel.Ratio)this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel.a.getValue());
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel.b().observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new VideoStoryCapturePart.5(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.a.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new VideoStoryCapturePart.6(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel.a.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new VideoStoryCapturePart.7(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.c.postValue(Boolean.valueOf(this.jdField_b_of_type_Boolean));
+    this.c = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.e).get(AEVideoStoryCaptureModeViewModel.class));
+    this.d = ((AEVideoStoryTopBarViewModel)AEViewModelProviders.a(this.e).get(AEVideoStoryTopBarViewModel.class));
+    this.x = ((AEVideoStoryTopBarViewModel.Ratio)this.d.a.getValue());
+    this.d.d().observe(this.e, new VideoStoryCapturePart.5(this));
+    this.c.a.observe(this.e, new VideoStoryCapturePart.6(this));
+    this.d.a.observe(this.e, new VideoStoryCapturePart.7(this));
+    this.c.c.postValue(Boolean.valueOf(this.u));
+  }
+  
+  private void b(int paramInt, com.tencent.mobileqq.activity.richmedia.Size paramSize)
+  {
+    c(paramInt, paramSize);
+    a(paramSize);
   }
   
   private void b(AEVideoCaptureResult paramAEVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, Integer paramInteger, CaptureEntranceParams paramCaptureEntranceParams, QIMFilterCategoryItem paramQIMFilterCategoryItem)
@@ -656,10 +645,8 @@ public class VideoStoryCapturePart
   
   private void b(Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("camera_log_tag_photo", 2, "in photo end.");
-    }
-    if (a())
+    QLog.i("camera_log_tag_photo", 1, "in photo end.");
+    if (h())
     {
       c(paramArrayOfObject);
       return;
@@ -667,108 +654,129 @@ public class VideoStoryCapturePart
     d(paramArrayOfObject);
   }
   
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b() != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b().e() != -1);
-  }
-  
   private int c()
   {
-    int i = AECameraEntry.x.a();
-    if (this.mActivity.getIntent() != null)
-    {
-      int j = this.mActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.x.a());
-      i = j;
-      if (j == AECameraEntry.A.a()) {
-        i = AECameraEntry.z.a();
-      }
+    int i1 = AEPreviewSizeUtil.b();
+    int i2 = this.mActivity.getResources().getDimensionPixelSize(2063859721);
+    int i3 = ImmersiveUtils.getStatusBarHeight(this.mActivity);
+    if (i1 == 1) {
+      return i2 + i3;
     }
-    return i;
+    return 0;
   }
   
-  private void c()
+  private void c(int paramInt, com.tencent.mobileqq.activity.richmedia.Size paramSize)
   {
-    a(true);
+    long l1 = paramSize.a * paramSize.b;
+    long l2 = this.j.getWidth() * this.j.getHeight();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("smooth2Size---oldArea=");
+    ((StringBuilder)localObject).append(l2);
+    ((StringBuilder)localObject).append(", newArea=");
+    ((StringBuilder)localObject).append(l1);
+    AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
+    if (l1 == l2) {
+      return;
+    }
+    a();
+    this.l.setVisibility(0);
+    int i1;
+    if ((AEDashboardUtil.d()) && (this.y == AECaptureMode.NORMAL)) {
+      i1 = 0;
+    } else {
+      i1 = this.mRootView.getHeight() - paramInt - paramSize.b;
+    }
+    localObject = ViewAnimator.a(new View[] { this.m, this.n });
+    float f1 = this.m.getWidth();
+    double d1 = this.g - paramSize.a;
+    Double.isNaN(d1);
+    paramSize = ((AnimationBuilder)localObject).f(new float[] { f1, (int)Math.ceil(d1 / 2.0D) }).a(new View[] { this.o }).e(new float[] { this.o.getHeight(), paramInt }).a(new View[] { this.p }).e(new float[] { this.p.getHeight(), i1 });
+    if (l1 > l2) {
+      paramSize = paramSize.c().a(300L);
+    } else {
+      paramSize = paramSize.b(1.5F).a(500L);
+    }
+    paramSize.a(new VideoStoryCapturePart.8(this)).b();
   }
   
   private void c(AEVideoCaptureResult paramAEVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, Integer paramInteger, CaptureEntranceParams paramCaptureEntranceParams, QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
     AEQLog.a("VideoStoryCapturePart", "openVideoEditorWithVideo");
     Bundle localBundle1 = this.mActivity.getIntent().getExtras();
-    Object localObject = new CaptureVideoParams.CaptureVideoParamsBuilder().a(paramCaptureEntranceParams.jdField_c_of_type_Int).c(10);
-    if (AECameraEntryManager.g(this.mActivity.getIntent())) {
+    Object localObject = new CaptureVideoParams.CaptureVideoParamsBuilder().a(paramCaptureEntranceParams.c).c(10);
+    if (AECameraEntryManager.k(this.mActivity.getIntent())) {
       ((CaptureVideoParams.CaptureVideoParamsBuilder)localObject).c(0);
     }
-    if (AECameraEntryManager.l(this.mActivity.getIntent())) {
+    if (AECameraEntryManager.q(this.mActivity.getIntent())) {
       ((CaptureVideoParams.CaptureVideoParamsBuilder)localObject).b(false);
     }
     paramCaptureEntranceParams.a(((CaptureVideoParams.CaptureVideoParamsBuilder)localObject).a());
     this.mActivity.getIntent().putExtra("extra_transiton_src_from", -1);
     Bundle localBundle2 = new Bundle();
-    localBundle2.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", (Serializable)this.jdField_a_of_type_JavaUtilList);
-    localBundle2.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", this.jdField_a_of_type_Long);
+    localBundle2.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", (Serializable)this.a);
+    localBundle2.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", this.f);
     localBundle2.putInt("KEY_VIDEO_STORY_CAMERA_TYPE", paramInteger.intValue());
-    paramInteger = WatermarkDataManager.a().a();
+    paramInteger = WatermarkDataManager.a().d();
     if (paramInteger != null) {
-      paramInteger = paramInteger.p;
+      paramInteger = paramInteger.t;
     } else {
       paramInteger = "";
     }
-    VideoStoryDataBean localVideoStoryDataBean = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
+    VideoStoryDataBean localVideoStoryDataBean = this.s;
     boolean bool = TextUtils.isEmpty(paramInteger);
     localObject = "empty";
     if (bool) {
       paramInteger = "empty";
     }
     localVideoStoryDataBean.setWatermarkId(paramInteger);
-    localVideoStoryDataBean = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
+    localVideoStoryDataBean = this.s;
     if (paramQIMFilterCategoryItem != null) {
       paramInteger = paramQIMFilterCategoryItem.b;
     } else {
       paramInteger = "empty";
     }
     localVideoStoryDataBean.setFilterId(paramInteger);
-    paramQIMFilterCategoryItem = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-    if (AEMaterialManager.a() == null) {
+    paramQIMFilterCategoryItem = this.s;
+    if (AEMaterialManager.n() == null) {
       paramInteger = "empty";
     } else {
-      paramInteger = AEMaterialManager.a().k;
+      paramInteger = AEMaterialManager.n().m;
     }
     paramQIMFilterCategoryItem.setLensId(paramInteger);
-    paramQIMFilterCategoryItem = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-    if (AEMaterialManager.a() == null) {
+    paramQIMFilterCategoryItem = this.s;
+    if (AEMaterialManager.n() == null) {
       paramInteger = (Integer)localObject;
     } else {
-      paramInteger = Integer.valueOf(AEMaterialManager.a().jdField_b_of_type_Int);
+      paramInteger = Integer.valueOf(AEMaterialManager.n().n);
     }
     paramQIMFilterCategoryItem.setLensTabId(String.valueOf(paramInteger));
-    localBundle2.putSerializable("KEY_VIDEO_STORY_CAMERA_TYPE", this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean);
+    localBundle2.putSerializable("KEY_VIDEO_STORY_CAMERA_TYPE", this.s);
     this.mActivity.getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
     AEQLog.b("VideoStoryCapturePart", "[VideoEnd] jumpToEditVideoActivity");
-    JumpUtil.a(this.mActivity, paramAEVideoCaptureResult, paramLocalMediaInfo, paramCaptureEntranceParams, localBundle2, this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b().b().intValue(), localBundle1);
+    JumpUtil.a(this.mActivity, paramAEVideoCaptureResult, paramLocalMediaInfo, paramCaptureEntranceParams, localBundle2, this.e.u().v().intValue(), localBundle1);
   }
   
   private void c(Object[] paramArrayOfObject)
   {
-    AECameraConfig localAECameraConfig = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.b();
+    AECameraConfig localAECameraConfig = this.e.u();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("enterPhotoEditByConfig:  editType = ");
-    localStringBuilder.append(localAECameraConfig.f());
+    localStringBuilder.append(localAECameraConfig.q());
     localStringBuilder.append(" args = ");
     localStringBuilder.append(paramArrayOfObject);
-    AEQLog.a("VideoStoryCapturePart", localStringBuilder.toString());
-    int i = localAECameraConfig.f();
-    if (i != -2)
+    AEQLog.b("VideoStoryCapturePart", localStringBuilder.toString());
+    int i1 = localAECameraConfig.q();
+    if (i1 != -2)
     {
-      if (i != -1)
+      if (i1 != -1)
       {
-        if (i != 0)
+        if (i1 != 0)
         {
-          if (i != 1)
+          if (i1 != 1)
           {
-            if (i != 2)
+            if (i1 != 2)
             {
-              if (i != 3) {
+              if (i1 != 3) {
                 return;
               }
               f(paramArrayOfObject);
@@ -794,42 +802,51 @@ public class VideoStoryCapturePart
     a((AEPhotoCaptureResult)paramArrayOfObject[0]);
   }
   
-  private void d()
+  private int d()
   {
-    e();
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setCaptureRequest(new VideoStoryCapturePart.12(this));
+    int i1 = AEPreviewSizeUtil.b();
+    int i2 = this.mActivity.getResources().getDimensionPixelSize(2063859718);
+    int i3 = this.mActivity.getResources().getDimensionPixelSize(2063859721);
+    int i4 = ImmersiveUtils.getStatusBarHeight(this.mActivity);
+    if (i1 == 1) {
+      return i2 + i4 + i3;
+    }
+    if (i1 == 2) {
+      return i2;
+    }
+    return 0;
+  }
+  
+  private void d(int paramInt, com.tencent.mobileqq.activity.richmedia.Size paramSize)
+  {
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.j.getLayoutParams();
+    localLayoutParams.width = paramSize.a;
+    localLayoutParams.height = paramSize.b;
+    localLayoutParams.topMargin = paramInt;
+    paramSize = new StringBuilder();
+    paramSize.append("adjustRatio lp.height: ");
+    paramSize.append(localLayoutParams.height);
+    paramSize.append(" : ");
+    paramSize.append(localLayoutParams.topMargin);
+    AEQLog.b("VideoStoryCapturePart", paramSize.toString());
+    this.j.setLayoutParams(localLayoutParams);
   }
   
   private void d(Object[] paramArrayOfObject)
   {
     Object localObject = this.mActivity.getIntent();
-    int i;
-    if (AECameraEntryManager.l((Intent)localObject))
+    int i1;
+    if (AECameraEntryManager.q((Intent)localObject))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("enterPhotoEditByEntry:  isFromARCake args = ");
       if (paramArrayOfObject != null) {
-        i = paramArrayOfObject.length;
+        i1 = paramArrayOfObject.length;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      ((StringBuilder)localObject).append(i);
-      AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
-      h(paramArrayOfObject);
-      a(false);
-      return;
-    }
-    if (AECameraEntryManager.g((Intent)localObject))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("enterPhotoEditByEntry:  fromAIO args = ");
-      if (paramArrayOfObject != null) {
-        i = paramArrayOfObject.length;
-      } else {
-        i = 0;
-      }
-      ((StringBuilder)localObject).append(i);
-      AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
+      ((StringBuilder)localObject).append(i1);
+      AEQLog.b("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
       h(paramArrayOfObject);
       a(false);
       return;
@@ -837,27 +854,51 @@ public class VideoStoryCapturePart
     if (AECameraEntryManager.k((Intent)localObject))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("enterPhotoEditByEntry:  fromCircle args = ");
+      ((StringBuilder)localObject).append("enterPhotoEditByEntry:  fromAIO args = ");
       if (paramArrayOfObject != null) {
-        i = paramArrayOfObject.length;
+        i1 = paramArrayOfObject.length;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      ((StringBuilder)localObject).append(i);
-      AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
-      g(paramArrayOfObject);
-      a(false);
-      return;
-    }
-    if (AECameraEntryManager.n((Intent)localObject))
-    {
+      ((StringBuilder)localObject).append(i1);
+      AEQLog.b("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
       h(paramArrayOfObject);
       a(false);
       return;
     }
-    if ((!AECameraEntryManager.e((Intent)localObject)) && (AECameraEntryManager.a((Intent)localObject)))
+    if (AECameraEntryManager.o((Intent)localObject))
     {
-      if ((!AECameraEntryManager.i((Intent)localObject)) && (!AECameraEntryManager.j((Intent)localObject)))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enterPhotoEditByEntry:  fromCircle args = ");
+      if (paramArrayOfObject != null) {
+        i1 = paramArrayOfObject.length;
+      } else {
+        i1 = 0;
+      }
+      ((StringBuilder)localObject).append(i1);
+      AEQLog.b("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
+      g(paramArrayOfObject);
+      a(false);
+      return;
+    }
+    if (AECameraEntryManager.s((Intent)localObject))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enterPhotoEditByEntry:  fromAIOWeb args = ");
+      if (paramArrayOfObject != null) {
+        i1 = paramArrayOfObject.length;
+      } else {
+        i1 = 0;
+      }
+      ((StringBuilder)localObject).append(i1);
+      AEQLog.b("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
+      h(paramArrayOfObject);
+      a(false);
+      return;
+    }
+    if ((!AECameraEntryManager.i((Intent)localObject)) && (AECameraEntryManager.c((Intent)localObject)))
+    {
+      if ((!AECameraEntryManager.m((Intent)localObject)) && (!AECameraEntryManager.n((Intent)localObject)))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("【enterPhotoEditByEntry】: wrong entry: ");
@@ -871,12 +912,12 @@ public class VideoStoryCapturePart
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("enterPhotoEditByEntry:  isFromQudongTakeFace args = ");
       if (paramArrayOfObject != null) {
-        i = paramArrayOfObject.length;
+        i1 = paramArrayOfObject.length;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      ((StringBuilder)localObject).append(i);
-      AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
+      ((StringBuilder)localObject).append(i1);
+      AEQLog.b("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
       f(paramArrayOfObject);
       a(false);
       return;
@@ -884,21 +925,19 @@ public class VideoStoryCapturePart
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("enterPhotoEditByEntry:  isFromCheckEntry args = ");
     if (paramArrayOfObject != null) {
-      i = paramArrayOfObject.length;
+      i1 = paramArrayOfObject.length;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    ((StringBuilder)localObject).append(i);
-    AEQLog.a("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
+    ((StringBuilder)localObject).append(i1);
+    AEQLog.b("VideoStoryCapturePart", ((StringBuilder)localObject).toString());
     e(paramArrayOfObject);
     a(false);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setCaptureRequest(null);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Long = 0L;
+    a(true);
   }
   
   private void e(Object[] paramArrayOfObject)
@@ -922,27 +961,40 @@ public class VideoStoryCapturePart
     AEQLog.d("VideoStoryCapturePart", "【openVideoEditorWithPhoto】args is null or args.length is less than 3");
   }
   
+  private void f()
+  {
+    g();
+    this.j.setCaptureRequest(new VideoStoryCapturePart.13(this));
+  }
+  
   private void f(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1))
     {
-      int i = AECameraEntryManager.a(this.mActivity.getIntent());
+      int i1 = AECameraEntryManager.a(this.mActivity.getIntent());
       Object localObject = (AEPhotoCaptureResult)paramArrayOfObject[0];
       paramArrayOfObject = new Intent();
-      paramArrayOfObject.putExtra("VIDEO_STORY_FROM_TYPE", i);
+      paramArrayOfObject.putExtra("VIDEO_STORY_FROM_TYPE", i1);
       paramArrayOfObject.putExtra("photo_path", ((AEPhotoCaptureResult)localObject).filePath);
       paramArrayOfObject.putExtra("key_disable_face_detect", this.mActivity.getIntent().getBooleanExtra("key_disable_face_detect", false));
       paramArrayOfObject.putExtra("key_need_check_sensitive", this.mActivity.getIntent().getBooleanExtra("key_need_check_sensitive", false));
       localObject = this.mActivity;
-      if (i == AECameraEntry.I.a()) {
-        i = 1028;
+      if (i1 == AECameraEntry.I.a()) {
+        i1 = 1028;
       } else {
-        i = 1024;
+        i1 = 1024;
       }
-      AETakeFacePhotoPreviewFragment.jumpToMeForResult((Activity)localObject, paramArrayOfObject, i);
+      AETakeFacePhotoPreviewFragment.jumpToMeForResult((Activity)localObject, paramArrayOfObject, i1);
       return;
     }
     AEQLog.d("VideoStoryCapturePart", "[openPhotoPreview] args must not be null or length < 1!");
+  }
+  
+  private void g()
+  {
+    this.j.setCaptureRequest(null);
+    this.a.clear();
+    this.f = 0L;
   }
   
   private void g(Object[] paramArrayOfObject)
@@ -956,8 +1008,8 @@ public class VideoStoryCapturePart
       EditorPicInfo localEditorPicInfo = new EditorPicInfo();
       Object localObject = BitmapUtil.getImageSize(localAEPhotoCaptureResult.filePath);
       localEditorPicInfo.picPath = localAEPhotoCaptureResult.filePath;
-      localEditorPicInfo.originPicHeight = ((com.tencent.tavcut.bean.Size)localObject).getHeight();
-      localEditorPicInfo.originPicWidth = ((com.tencent.tavcut.bean.Size)localObject).getWidth();
+      localEditorPicInfo.originPicHeight = ((com.tencent.qcircle.tavcut.bean.Size)localObject).getHeight();
+      localEditorPicInfo.originPicWidth = ((com.tencent.qcircle.tavcut.bean.Size)localObject).getWidth();
       localEditorPicInfo.x = 0.0D;
       localEditorPicInfo.y = 0.0D;
       localEditorPicInfo.h = 1.0D;
@@ -975,18 +1027,18 @@ public class VideoStoryCapturePart
         this.mActivity.getIntent().removeExtra("material_topic");
         this.mActivity.getIntent().removeExtra("key_camera_material_name");
       }
-      if (AEMaterialManager.a() != null)
+      if (AEMaterialManager.n() != null)
       {
-        localObject = AEMaterialManager.a().k;
+        localObject = AEMaterialManager.n().m;
         paramArrayOfObject = (Object[])localObject;
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           paramArrayOfObject = "none";
         }
         localBundle.putString("guajian_id", paramArrayOfObject);
       }
-      if (AEMaterialManager.b() != null)
+      if (AEMaterialManager.o() != null)
       {
-        localObject = AEMaterialManager.b().k;
+        localObject = AEMaterialManager.o().m;
         paramArrayOfObject = (Object[])localObject;
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           paramArrayOfObject = "none";
@@ -1002,7 +1054,7 @@ public class VideoStoryCapturePart
       paramArrayOfObject.add(localObject);
       localBundle.putSerializable("ae_album_selected_media_models", paramArrayOfObject);
       this.mActivity.getIntent().removeExtra("ae_editor_is_show_take_same");
-      if (AECameraEntryManager.o(this.mActivity.getIntent()))
+      if (AECameraEntryManager.t(this.mActivity.getIntent()))
       {
         localObject = new Intent();
         ((Intent)localObject).putExtra("ae_album_selected_media_models", paramArrayOfObject);
@@ -1010,10 +1062,10 @@ public class VideoStoryCapturePart
         this.mActivity.finish();
         return;
       }
-      int i = c();
-      AEEditorLauncher.a(this.mActivity, 0, localBundle, i);
-      AEBaseReportParam.a().a().jdField_b_of_type_Long = AEBaseReportParam.b.longValue();
-      AEBaseReportParam.a().a().a = AEBaseReportParam.a().b();
+      int i1 = j();
+      AEEditorLauncher.a(this.mActivity, 0, localBundle, i1);
+      AEBaseReportParam.a().n().v = AEBaseReportParam.b.longValue();
+      AEBaseReportParam.a().n().d = AEBaseReportParam.a().S();
       AEBaseDataReporter.a().a(1);
       return;
     }
@@ -1036,12 +1088,36 @@ public class VideoStoryCapturePart
       localStringBuilder.append(" editFrom = ");
       localStringBuilder.append(paramArrayOfObject);
       localStringBuilder.append(" entranceParams.businessType = ");
-      localStringBuilder.append(localCaptureEntranceParams.jdField_c_of_type_Int);
+      localStringBuilder.append(localCaptureEntranceParams.c);
       AEQLog.d("VideoStoryCapturePart", localStringBuilder.toString());
       JumpUtil.a(this.mActivity, localAEPhotoCaptureResult, localCaptureEntranceParams, null, paramArrayOfObject.intValue());
       return;
     }
     AEQLog.d("VideoStoryCapturePart", "[openPicEditor]:args == null or args.length < 3!");
+  }
+  
+  private boolean h()
+  {
+    return (this.e.u() != null) && (this.e.u().q() != -1);
+  }
+  
+  private boolean i()
+  {
+    return (this.e.u() != null) && (this.e.u().o() != -1);
+  }
+  
+  private int j()
+  {
+    int i1 = AECameraEntry.x.a();
+    if (this.mActivity.getIntent() != null)
+    {
+      int i2 = this.mActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.x.a());
+      i1 = i2;
+      if (i2 == AECameraEntry.A.a()) {
+        i1 = AECameraEntry.z.a();
+      }
+    }
+    return i1;
   }
   
   public <T> T get(int paramInt, Object... paramVarArgs)
@@ -1051,51 +1127,50 @@ public class VideoStoryCapturePart
   
   protected void initView()
   {
-    this.jdField_d_of_type_Boolean = AECameraEntryManager.k(this.mActivity.getIntent());
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView = ((AECameraGLSurfaceView)this.mRootView.findViewById(2064122016));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.mRootView.findViewById(2064122220));
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean = new VideoStoryDataBean();
-    this.jdField_b_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
-    this.jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
-    if (ScreenUtil.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int)) {
-      this.jdField_b_of_type_Int = (this.jdField_c_of_type_Int * 9 / 16);
+    this.z = AECameraEntryManager.o(this.mActivity.getIntent());
+    this.A = AECameraEntryManager.k(this.mActivity.getIntent());
+    int i1 = AECameraEntryManager.h(this.mActivity.getIntent());
+    this.B = AECameraEntryManager.e(i1);
+    this.C = AECameraEntryManager.d(i1);
+    this.j = ((AECameraGLSurfaceView)this.mRootView.findViewById(2063990947));
+    this.q = ((ViewGroup)this.mRootView.findViewById(2063991102));
+    this.a = new CopyOnWriteArrayList();
+    this.s = new VideoStoryDataBean();
+    this.g = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
+    this.h = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+    if (ScreenUtil.a(this.g, this.h)) {
+      this.g = (this.h * 9 / 16);
     }
-    LiuHaiUtils.d(this.mActivity);
-    if (LiuHaiUtils.f()) {
-      i = LiuHaiUtils.a();
+    LiuHaiUtils.i(this.mActivity);
+    if (LiuHaiUtils.g()) {
+      i1 = LiuHaiUtils.h();
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if (SystemBarTintManager.hasNavBar(this.mActivity)) {
-      j = SystemBarTintManager.getNavigationBarHeight(this.mActivity);
+    i1 = this.h - i1 - 0;
+    int i2 = DisplayUtil.a(this.mActivity, 700.0F);
+    if (i1 < i2) {
+      this.t = true;
     } else {
-      j = 0;
+      this.t = false;
     }
-    int i = this.jdField_c_of_type_Int - i - j;
-    int j = DisplayUtil.a(this.mActivity, 700.0F);
-    if (i < j) {
-      this.jdField_a_of_type_Boolean = true;
-    } else {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.t)
     {
-      if (i < DisplayUtil.a(this.mActivity, 600.0F))
+      if (i1 < DisplayUtil.a(this.mActivity, 600.0F))
       {
-        this.jdField_d_of_type_Int = DisplayUtil.a(this.mActivity, 58.799999F);
+        this.v = DisplayUtil.a(this.mActivity, 58.799999F);
       }
       else
       {
-        float f = (j - i) / DisplayUtil.a(this.mActivity, 100.0F);
-        this.jdField_d_of_type_Int = DisplayUtil.a(this.mActivity, 147.0F - f * 88.199997F);
+        float f1 = (i2 - i1) / DisplayUtil.a(this.mActivity, 100.0F);
+        this.v = DisplayUtil.a(this.mActivity, 147.0F - f1 * 88.199997F);
       }
-      if (this.jdField_d_of_type_Int < DisplayUtil.a(this.mActivity, 110.0F))
-      {
-        this.jdField_b_of_type_Boolean = true;
-        if (this.jdField_d_of_type_Int < DisplayUtil.a(this.mActivity, 92.0F)) {
-          this.jdField_d_of_type_Int += DisplayUtil.a(this.mActivity, 12.0F);
-        }
+      if (this.v < DisplayUtil.a(this.mActivity, 110.0F)) {
+        this.u = true;
+      }
+      i1 = DisplayUtil.a(this.mActivity, LiuHaiUtils.d + 60 + 24);
+      if (this.v < i1) {
+        this.v = i1;
       }
     }
     b();
@@ -1113,7 +1188,7 @@ public class VideoStoryCapturePart
       if (paramInt2 == -1)
       {
         Object localObject2 = this.mActivity.getIntent();
-        if (AECameraEntryManager.f((Intent)localObject2))
+        if (AECameraEntryManager.j((Intent)localObject2))
         {
           AEQLog.b("VideoStoryCapturePart", "onActivityResult---success--from playMiniApp");
           Intent localIntent = new Intent();
@@ -1131,7 +1206,7 @@ public class VideoStoryCapturePart
             localIntent.putExtra("file_path", paramIntent.getStringExtra("take_photo_path"));
             localIntent.putExtra("is_video", false);
           }
-          localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a();
+          localObject1 = this.e.aJ();
           paramIntent = (Intent)localObject1;
           if (localObject1 == null) {
             paramIntent = new HashMap();
@@ -1176,18 +1251,18 @@ public class VideoStoryCapturePart
       b(paramVarArgs);
       return;
     case 262147: 
-      c();
+      e();
       return;
     case 262146: 
       a(paramVarArgs);
       return;
     }
-    d();
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.capture.VideoStoryCapturePart
  * JD-Core Version:    0.7.0.1
  */

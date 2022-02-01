@@ -9,101 +9,74 @@ public class ARCloudImageSelect
 {
   public static int a = 0;
   public static int b = 1;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  private byte[] jdField_b_of_type_ArrayOfByte = null;
-  public int c;
-  private byte[] c;
-  public int d;
-  private byte[] d;
-  private int e;
-  private int f = 0;
+  Context c = null;
+  public int d = -2147483648;
+  public int e = -2147483648;
+  private int f;
   private int g = 0;
   private int h = 0;
-  private int i = 0;
-  private int j = 10;
-  private int k = 170;
-  private int l = 640;
-  private int m = 480;
-  private int n = 0;
+  private byte[] i = null;
+  private int j = 0;
+  private byte[] k = null;
+  private int l = 0;
+  private boolean m = false;
+  private int n = 10;
+  private int o = 170;
+  private int p = 640;
+  private int q = 480;
+  private byte[] r = null;
+  private int s = 0;
+  private byte[] t = null;
+  private boolean u = false;
   
   public ARCloudImageSelect(int paramInt)
   {
-    this.jdField_c_of_type_ArrayOfByte = null;
-    this.jdField_d_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_Int = -2147483648;
-    this.jdField_d_of_type_Int = -2147483648;
-    this.e = paramInt;
-    if ((paramInt == jdField_a_of_type_Int) && (OcrDpc.a() != null))
+    this.f = paramInt;
+    if ((paramInt == a) && (OcrDpc.b() != null))
     {
-      this.j = OcrDpc.a().g;
-      this.k = OcrDpc.a().h;
+      this.n = OcrDpc.b().i;
+      this.o = OcrDpc.b().j;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("init args ocr bestImgThreshold:");
-        localStringBuilder.append(this.j);
+        localStringBuilder.append(this.n);
         localStringBuilder.append(",sameSceneDiff:");
-        localStringBuilder.append(this.k);
+        localStringBuilder.append(this.o);
         QLog.d("AREngine_ARCloudImageSelect", 2, localStringBuilder.toString());
       }
     }
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ARCloudImageFilter.nativeUninit();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    this.f = 0;
-    this.g = 0;
-    this.j = 10;
-    this.k = 170;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.h = 0;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.i = 0;
-    this.l = 0;
-    this.m = 0;
-    this.jdField_c_of_type_ArrayOfByte = null;
-    this.n = 0;
-    this.jdField_d_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
   }
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.u) {
       return false;
     }
     Object localObject;
-    if (this.e == jdField_a_of_type_Int)
+    if (this.f == a)
     {
-      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.h);
+      System.arraycopy(paramArrayOfByte, 0, this.i, 0, this.j);
     }
-    else if ((this.f == this.l) && (this.g == this.m))
+    else if ((this.g == this.p) && (this.h == this.q))
     {
-      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, 0, this.n);
+      System.arraycopy(paramArrayOfByte, 0, this.r, 0, this.s);
     }
     else
     {
-      int i2 = (this.f - this.l) / 2;
-      int i3 = (this.g - this.m) / 2;
+      int i2 = (this.g - this.p) / 2;
+      int i3 = (this.h - this.q) / 2;
       int i1 = 0;
-      while (i1 < this.m)
+      while (i1 < this.q)
       {
-        int i4 = this.f;
-        localObject = this.jdField_c_of_type_ArrayOfByte;
-        int i5 = this.l;
+        int i4 = this.g;
+        localObject = this.r;
+        int i5 = this.p;
         System.arraycopy(paramArrayOfByte, (i1 + i3) * i4 + i2, localObject, i1 * i5, i5);
         i1 += 1;
       }
@@ -111,10 +84,10 @@ public class ARCloudImageSelect
     try
     {
       boolean bool;
-      if (this.e == jdField_a_of_type_Int) {
-        bool = ARCloudImageFilter.nativeIsSameScene(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte);
+      if (this.f == a) {
+        bool = ARCloudImageFilter.nativeIsSameScene(this.i, this.t);
       } else {
-        bool = ARCloudImageFilter.nativeIsSameScene(this.jdField_c_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte);
+        bool = ARCloudImageFilter.nativeIsSameScene(this.r, this.t);
       }
       return bool;
     }
@@ -135,12 +108,35 @@ public class ARCloudImageSelect
   
   public byte[] a()
   {
-    return this.jdField_b_of_type_ArrayOfByte;
+    return this.k;
+  }
+  
+  public void b()
+  {
+    if (this.m)
+    {
+      ARCloudImageFilter.nativeUninit();
+      this.m = false;
+    }
+    this.g = 0;
+    this.h = 0;
+    this.n = 10;
+    this.o = 170;
+    this.i = null;
+    this.j = 0;
+    this.k = null;
+    this.l = 0;
+    this.p = 0;
+    this.q = 0;
+    this.r = null;
+    this.s = 0;
+    this.t = null;
+    this.u = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudImageSelect
  * JD-Core Version:    0.7.0.1
  */

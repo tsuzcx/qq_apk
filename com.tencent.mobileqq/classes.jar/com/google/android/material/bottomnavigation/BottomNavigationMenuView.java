@@ -46,43 +46,43 @@ public class BottomNavigationMenuView
   extends ViewGroup
   implements MenuView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842912 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { -16842910 };
-  private final int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private static final int[] a = { 16842912 };
+  private static final int[] b = { -16842910 };
+  private BottomNavigationPresenter A;
+  private MenuBuilder B;
   @NonNull
-  private final SparseArray<View.OnTouchListener> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
-  @NonNull
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private MenuBuilder jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder;
-  private final Pools.Pool<BottomNavigationItemView> jdField_a_of_type_AndroidxCoreUtilPools$Pool = new Pools.SynchronizedPool(5);
-  @NonNull
-  private final TransitionSet jdField_a_of_type_AndroidxTransitionTransitionSet;
-  private BottomNavigationPresenter jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter;
-  private boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private BottomNavigationItemView[] jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
-  private final int jdField_b_of_type_Int;
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  @NonNull
-  private SparseArray<BadgeDrawable> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray(5);
-  private final int jdField_c_of_type_Int;
-  @Nullable
-  private final ColorStateList jdField_c_of_type_AndroidContentResColorStateList;
-  private int[] jdField_c_of_type_ArrayOfInt;
+  private final TransitionSet c;
   private final int d;
   private final int e;
-  private int f;
-  private int g = 0;
-  private int h = 0;
+  private final int f;
+  private final int g;
+  private final int h;
+  @NonNull
+  private final View.OnClickListener i;
+  private final Pools.Pool<BottomNavigationItemView> j = new Pools.SynchronizedPool(5);
+  @NonNull
+  private final SparseArray<View.OnTouchListener> k = new SparseArray(5);
+  private boolean l;
+  private int m;
+  @Nullable
+  private BottomNavigationItemView[] n;
+  private int o = 0;
+  private int p = 0;
+  private ColorStateList q;
   @Dimension
-  private int i;
+  private int r;
+  private ColorStateList s;
+  @Nullable
+  private final ColorStateList t;
   @StyleRes
-  private int j;
+  private int u;
   @StyleRes
-  private int k;
-  private int l;
+  private int v;
+  private Drawable w;
+  private int x;
+  private int[] y;
+  @NonNull
+  private SparseArray<BadgeDrawable> z = new SparseArray(5);
   
   public BottomNavigationMenuView(Context paramContext)
   {
@@ -93,47 +93,20 @@ public class BottomNavigationMenuView
   {
     super(paramContext, paramAttributeSet);
     paramContext = getResources();
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.dimen.f);
-    this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(R.dimen.g);
-    this.jdField_c_of_type_Int = paramContext.getDimensionPixelSize(R.dimen.jdField_b_of_type_Int);
-    this.d = paramContext.getDimensionPixelSize(R.dimen.jdField_c_of_type_Int);
-    this.e = paramContext.getDimensionPixelSize(R.dimen.d);
-    this.jdField_c_of_type_AndroidContentResColorStateList = a(16842808);
-    this.jdField_a_of_type_AndroidxTransitionTransitionSet = new AutoTransition();
-    this.jdField_a_of_type_AndroidxTransitionTransitionSet.setOrdering(0);
-    this.jdField_a_of_type_AndroidxTransitionTransitionSet.setDuration(115L);
-    this.jdField_a_of_type_AndroidxTransitionTransitionSet.setInterpolator(new FastOutSlowInInterpolator());
-    this.jdField_a_of_type_AndroidxTransitionTransitionSet.addTransition(new TextScale());
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new BottomNavigationMenuView.1(this);
-    this.jdField_c_of_type_ArrayOfInt = new int[5];
+    this.d = paramContext.getDimensionPixelSize(R.dimen.f);
+    this.e = paramContext.getDimensionPixelSize(R.dimen.g);
+    this.f = paramContext.getDimensionPixelSize(R.dimen.b);
+    this.g = paramContext.getDimensionPixelSize(R.dimen.c);
+    this.h = paramContext.getDimensionPixelSize(R.dimen.d);
+    this.t = a(16842808);
+    this.c = new AutoTransition();
+    this.c.setOrdering(0);
+    this.c.setDuration(115L);
+    this.c.setInterpolator(new FastOutSlowInInterpolator());
+    this.c.addTransition(new TextScale());
+    this.i = new BottomNavigationMenuView.1(this);
+    this.y = new int[5];
     ViewCompat.setImportantForAccessibility(this, 1);
-  }
-  
-  private BottomNavigationItemView a()
-  {
-    BottomNavigationItemView localBottomNavigationItemView2 = (BottomNavigationItemView)this.jdField_a_of_type_AndroidxCoreUtilPools$Pool.acquire();
-    BottomNavigationItemView localBottomNavigationItemView1 = localBottomNavigationItemView2;
-    if (localBottomNavigationItemView2 == null) {
-      localBottomNavigationItemView1 = new BottomNavigationItemView(getContext());
-    }
-    return localBottomNavigationItemView1;
-  }
-  
-  private void a(@NonNull BottomNavigationItemView paramBottomNavigationItemView)
-  {
-    int m = paramBottomNavigationItemView.getId();
-    if (!a(m)) {
-      return;
-    }
-    BadgeDrawable localBadgeDrawable = (BadgeDrawable)this.jdField_b_of_type_AndroidUtilSparseArray.get(m);
-    if (localBadgeDrawable != null) {
-      paramBottomNavigationItemView.a(localBadgeDrawable);
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return paramInt != -1;
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -150,34 +123,56 @@ public class BottomNavigationMenuView
     return false;
   }
   
-  private void c()
+  private boolean c(int paramInt)
+  {
+    return paramInt != -1;
+  }
+  
+  private void d()
   {
     HashSet localHashSet = new HashSet();
-    int i1 = 0;
-    int n = 0;
-    int m;
+    int i3 = 0;
+    int i2 = 0;
+    int i1;
     for (;;)
     {
-      m = i1;
-      if (n >= this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.size()) {
+      i1 = i3;
+      if (i2 >= this.B.size()) {
         break;
       }
-      localHashSet.add(Integer.valueOf(this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(n).getItemId()));
-      n += 1;
+      localHashSet.add(Integer.valueOf(this.B.getItem(i2).getItemId()));
+      i2 += 1;
     }
-    while (m < this.jdField_b_of_type_AndroidUtilSparseArray.size())
+    while (i1 < this.z.size())
     {
-      n = this.jdField_b_of_type_AndroidUtilSparseArray.keyAt(m);
-      if (!localHashSet.contains(Integer.valueOf(n))) {
-        this.jdField_b_of_type_AndroidUtilSparseArray.delete(n);
+      i2 = this.z.keyAt(i1);
+      if (!localHashSet.contains(Integer.valueOf(i2))) {
+        this.z.delete(i2);
       }
-      m += 1;
+      i1 += 1;
     }
   }
   
-  public int a()
+  private BottomNavigationItemView getNewItem()
   {
-    return this.f;
+    BottomNavigationItemView localBottomNavigationItemView2 = (BottomNavigationItemView)this.j.acquire();
+    BottomNavigationItemView localBottomNavigationItemView1 = localBottomNavigationItemView2;
+    if (localBottomNavigationItemView2 == null) {
+      localBottomNavigationItemView1 = new BottomNavigationItemView(getContext());
+    }
+    return localBottomNavigationItemView1;
+  }
+  
+  private void setBadgeIfNeeded(@NonNull BottomNavigationItemView paramBottomNavigationItemView)
+  {
+    int i1 = paramBottomNavigationItemView.getId();
+    if (!c(i1)) {
+      return;
+    }
+    BadgeDrawable localBadgeDrawable = (BadgeDrawable)this.z.get(i1);
+    if (localBadgeDrawable != null) {
+      paramBottomNavigationItemView.setBadge(localBadgeDrawable);
+    }
   }
   
   @Nullable
@@ -192,187 +187,210 @@ public class BottomNavigationMenuView
       return null;
     }
     paramInt = ((TypedValue)localObject).data;
-    int m = localColorStateList.getDefaultColor();
-    localObject = jdField_b_of_type_ArrayOfInt;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+    int i1 = localColorStateList.getDefaultColor();
+    localObject = b;
+    int[] arrayOfInt1 = a;
     int[] arrayOfInt2 = EMPTY_STATE_SET;
-    int n = localColorStateList.getColorForState(jdField_b_of_type_ArrayOfInt, m);
-    return new ColorStateList(new int[][] { localObject, arrayOfInt1, arrayOfInt2 }, new int[] { n, paramInt, m });
-  }
-  
-  @Nullable
-  public Drawable a()
-  {
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
-    if ((arrayOfBottomNavigationItemView != null) && (arrayOfBottomNavigationItemView.length > 0)) {
-      return arrayOfBottomNavigationItemView[0].getBackground();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  SparseArray<BadgeDrawable> a()
-  {
-    return this.jdField_b_of_type_AndroidUtilSparseArray;
-  }
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  public void a()
-  {
-    removeAllViews();
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
-    int n;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      n = localObject1.length;
-      m = 0;
-      while (m < n)
-      {
-        localObject2 = localObject1[m];
-        if (localObject2 != null)
-        {
-          this.jdField_a_of_type_AndroidxCoreUtilPools$Pool.release(localObject2);
-          ((BottomNavigationItemView)localObject2).a();
-        }
-        m += 1;
-      }
-    }
-    if (this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.size() == 0)
-    {
-      this.g = 0;
-      this.h = 0;
-      this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView = null;
-      return;
-    }
-    c();
-    this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView = new BottomNavigationItemView[this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.size()];
-    boolean bool = a(this.f, this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getVisibleItems().size());
-    int m = 0;
-    while (m < this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.size())
-    {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(true);
-      this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(m).setCheckable(true);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(false);
-      localObject1 = a();
-      this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView[m] = localObject1;
-      ((BottomNavigationItemView)localObject1).setIconTintList(this.jdField_a_of_type_AndroidContentResColorStateList);
-      ((BottomNavigationItemView)localObject1).setIconSize(this.i);
-      ((BottomNavigationItemView)localObject1).setTextColor(this.jdField_c_of_type_AndroidContentResColorStateList);
-      ((BottomNavigationItemView)localObject1).setTextAppearanceInactive(this.j);
-      ((BottomNavigationItemView)localObject1).setTextAppearanceActive(this.k);
-      ((BottomNavigationItemView)localObject1).setTextColor(this.jdField_b_of_type_AndroidContentResColorStateList);
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (localObject2 != null) {
-        ((BottomNavigationItemView)localObject1).setItemBackground((Drawable)localObject2);
-      } else {
-        ((BottomNavigationItemView)localObject1).setItemBackground(this.l);
-      }
-      ((BottomNavigationItemView)localObject1).setShifting(bool);
-      ((BottomNavigationItemView)localObject1).setLabelVisibilityMode(this.f);
-      localObject2 = (MenuItemImpl)this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(m);
-      ((BottomNavigationItemView)localObject1).initialize((MenuItemImpl)localObject2, 0);
-      ((BottomNavigationItemView)localObject1).setItemPosition(m);
-      n = ((MenuItemImpl)localObject2).getItemId();
-      ((BottomNavigationItemView)localObject1).setOnTouchListener((View.OnTouchListener)this.jdField_a_of_type_AndroidUtilSparseArray.get(n));
-      ((BottomNavigationItemView)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      int i1 = this.g;
-      if ((i1 != 0) && (n == i1)) {
-        this.h = m;
-      }
-      a((BottomNavigationItemView)localObject1);
-      addView((View)localObject1);
-      m += 1;
-    }
-    this.h = Math.min(this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.size() - 1, this.h);
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(this.h).setChecked(true);
-  }
-  
-  void a(int paramInt)
-  {
-    int n = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.size();
-    int m = 0;
-    while (m < n)
-    {
-      MenuItem localMenuItem = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(m);
-      if (paramInt == localMenuItem.getItemId())
-      {
-        this.g = paramInt;
-        this.h = m;
-        localMenuItem.setChecked(true);
-        return;
-      }
-      m += 1;
-    }
-  }
-  
-  void a(SparseArray<BadgeDrawable> paramSparseArray)
-  {
-    this.jdField_b_of_type_AndroidUtilSparseArray = paramSparseArray;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
-    if (arrayOfBottomNavigationItemView != null)
-    {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
-      {
-        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[m];
-        localBottomNavigationItemView.a((BadgeDrawable)paramSparseArray.get(localBottomNavigationItemView.getId()));
-        m += 1;
-      }
-    }
+    int i2 = localColorStateList.getColorForState(b, i1);
+    return new ColorStateList(new int[][] { localObject, arrayOfInt1, arrayOfInt2 }, new int[] { i2, paramInt, i1 });
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.l;
   }
   
-  public int b()
-  {
-    return this.g;
-  }
-  
+  @SuppressLint({"ClickableViewAccessibility"})
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder;
-    if (localObject != null)
+    removeAllViews();
+    Object localObject1 = this.n;
+    int i2;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      if (this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView == null) {
-        return;
-      }
-      int n = ((MenuBuilder)localObject).size();
-      if (n != this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView.length)
+      i2 = localObject1.length;
+      i1 = 0;
+      while (i1 < i2)
       {
-        a();
-        return;
-      }
-      int i1 = this.g;
-      int m = 0;
-      while (m < n)
-      {
-        localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(m);
-        if (((MenuItem)localObject).isChecked())
+        localObject2 = localObject1[i1];
+        if (localObject2 != null)
         {
-          this.g = ((MenuItem)localObject).getItemId();
-          this.h = m;
+          this.j.release(localObject2);
+          ((BottomNavigationItemView)localObject2).a();
         }
-        m += 1;
-      }
-      if (i1 != this.g) {
-        TransitionManager.beginDelayedTransition(this, this.jdField_a_of_type_AndroidxTransitionTransitionSet);
-      }
-      boolean bool = a(this.f, this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getVisibleItems().size());
-      m = 0;
-      while (m < n)
-      {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(true);
-        this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView[m].setLabelVisibilityMode(this.f);
-        this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView[m].setShifting(bool);
-        this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView[m].initialize((MenuItemImpl)this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getItem(m), 0);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(false);
-        m += 1;
+        i1 += 1;
       }
     }
+    if (this.B.size() == 0)
+    {
+      this.o = 0;
+      this.p = 0;
+      this.n = null;
+      return;
+    }
+    d();
+    this.n = new BottomNavigationItemView[this.B.size()];
+    boolean bool = a(this.m, this.B.getVisibleItems().size());
+    int i1 = 0;
+    while (i1 < this.B.size())
+    {
+      this.A.a(true);
+      this.B.getItem(i1).setCheckable(true);
+      this.A.a(false);
+      localObject1 = getNewItem();
+      this.n[i1] = localObject1;
+      ((BottomNavigationItemView)localObject1).setIconTintList(this.q);
+      ((BottomNavigationItemView)localObject1).setIconSize(this.r);
+      ((BottomNavigationItemView)localObject1).setTextColor(this.t);
+      ((BottomNavigationItemView)localObject1).setTextAppearanceInactive(this.u);
+      ((BottomNavigationItemView)localObject1).setTextAppearanceActive(this.v);
+      ((BottomNavigationItemView)localObject1).setTextColor(this.s);
+      localObject2 = this.w;
+      if (localObject2 != null) {
+        ((BottomNavigationItemView)localObject1).setItemBackground((Drawable)localObject2);
+      } else {
+        ((BottomNavigationItemView)localObject1).setItemBackground(this.x);
+      }
+      ((BottomNavigationItemView)localObject1).setShifting(bool);
+      ((BottomNavigationItemView)localObject1).setLabelVisibilityMode(this.m);
+      localObject2 = (MenuItemImpl)this.B.getItem(i1);
+      ((BottomNavigationItemView)localObject1).initialize((MenuItemImpl)localObject2, 0);
+      ((BottomNavigationItemView)localObject1).setItemPosition(i1);
+      i2 = ((MenuItemImpl)localObject2).getItemId();
+      ((BottomNavigationItemView)localObject1).setOnTouchListener((View.OnTouchListener)this.k.get(i2));
+      ((BottomNavigationItemView)localObject1).setOnClickListener(this.i);
+      int i3 = this.o;
+      if ((i3 != 0) && (i2 == i3)) {
+        this.p = i1;
+      }
+      setBadgeIfNeeded((BottomNavigationItemView)localObject1);
+      addView((View)localObject1);
+      i1 += 1;
+    }
+    this.p = Math.min(this.B.size() - 1, this.p);
+    this.B.getItem(this.p).setChecked(true);
+  }
+  
+  void b(int paramInt)
+  {
+    int i2 = this.B.size();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      MenuItem localMenuItem = this.B.getItem(i1);
+      if (paramInt == localMenuItem.getItemId())
+      {
+        this.o = paramInt;
+        this.p = i1;
+        localMenuItem.setChecked(true);
+        return;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public void c()
+  {
+    Object localObject = this.B;
+    if (localObject != null)
+    {
+      if (this.n == null) {
+        return;
+      }
+      int i2 = ((MenuBuilder)localObject).size();
+      if (i2 != this.n.length)
+      {
+        b();
+        return;
+      }
+      int i3 = this.o;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localObject = this.B.getItem(i1);
+        if (((MenuItem)localObject).isChecked())
+        {
+          this.o = ((MenuItem)localObject).getItemId();
+          this.p = i1;
+        }
+        i1 += 1;
+      }
+      if (i3 != this.o) {
+        TransitionManager.beginDelayedTransition(this, this.c);
+      }
+      boolean bool = a(this.m, this.B.getVisibleItems().size());
+      i1 = 0;
+      while (i1 < i2)
+      {
+        this.A.a(true);
+        this.n[i1].setLabelVisibilityMode(this.m);
+        this.n[i1].setShifting(bool);
+        this.n[i1].initialize((MenuItemImpl)this.B.getItem(i1), 0);
+        this.A.a(false);
+        i1 += 1;
+      }
+    }
+  }
+  
+  SparseArray<BadgeDrawable> getBadgeDrawables()
+  {
+    return this.z;
+  }
+  
+  @Nullable
+  public ColorStateList getIconTintList()
+  {
+    return this.q;
+  }
+  
+  @Nullable
+  public Drawable getItemBackground()
+  {
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
+    if ((arrayOfBottomNavigationItemView != null) && (arrayOfBottomNavigationItemView.length > 0)) {
+      return arrayOfBottomNavigationItemView[0].getBackground();
+    }
+    return this.w;
+  }
+  
+  @Deprecated
+  public int getItemBackgroundRes()
+  {
+    return this.x;
+  }
+  
+  @Dimension
+  public int getItemIconSize()
+  {
+    return this.r;
+  }
+  
+  @StyleRes
+  public int getItemTextAppearanceActive()
+  {
+    return this.v;
+  }
+  
+  @StyleRes
+  public int getItemTextAppearanceInactive()
+  {
+    return this.u;
+  }
+  
+  public ColorStateList getItemTextColor()
+  {
+    return this.s;
+  }
+  
+  public int getLabelVisibilityMode()
+  {
+    return this.m;
+  }
+  
+  public int getSelectedItemId()
+  {
+    return this.o;
   }
   
   public int getWindowAnimations()
@@ -382,34 +400,34 @@ public class BottomNavigationMenuView
   
   public void initialize(MenuBuilder paramMenuBuilder)
   {
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder = paramMenuBuilder;
+    this.B = paramMenuBuilder;
   }
   
   public void onInitializeAccessibilityNodeInfo(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    AccessibilityNodeInfoCompat.wrap(paramAccessibilityNodeInfo).setCollectionInfo(AccessibilityNodeInfoCompat.CollectionInfoCompat.obtain(1, this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getVisibleItems().size(), false, 1));
+    AccessibilityNodeInfoCompat.wrap(paramAccessibilityNodeInfo).setCollectionInfo(AccessibilityNodeInfoCompat.CollectionInfoCompat.obtain(1, this.B.getVisibleItems().size(), false, 1));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int m = getChildCount();
-    int n = paramInt4 - paramInt2;
+    int i1 = getChildCount();
+    int i2 = paramInt4 - paramInt2;
     paramInt2 = 0;
     paramInt4 = 0;
-    while (paramInt2 < m)
+    while (paramInt2 < i1)
     {
       View localView = getChildAt(paramInt2);
       if (localView.getVisibility() != 8)
       {
         if (ViewCompat.getLayoutDirection(this) == 1)
         {
-          int i1 = paramInt3 - paramInt1 - paramInt4;
-          localView.layout(i1 - localView.getMeasuredWidth(), 0, i1, n);
+          int i3 = paramInt3 - paramInt1 - paramInt4;
+          localView.layout(i3 - localView.getMeasuredWidth(), 0, i3, i2);
         }
         else
         {
-          localView.layout(paramInt4, 0, localView.getMeasuredWidth() + paramInt4, n);
+          localView.layout(paramInt4, 0, localView.getMeasuredWidth() + paramInt4, i2);
         }
         paramInt4 += localView.getMeasuredWidth();
       }
@@ -419,20 +437,20 @@ public class BottomNavigationMenuView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i1 = View.MeasureSpec.getSize(paramInt1);
-    int m = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getVisibleItems().size();
-    int i2 = getChildCount();
-    int i3 = View.MeasureSpec.makeMeasureSpec(this.e, 1073741824);
+    int i3 = View.MeasureSpec.getSize(paramInt1);
+    int i1 = this.B.getVisibleItems().size();
+    int i4 = getChildCount();
+    int i5 = View.MeasureSpec.makeMeasureSpec(this.h, 1073741824);
     Object localObject;
-    int n;
-    if ((a(this.f, m)) && (this.jdField_a_of_type_Boolean))
+    int i2;
+    if ((a(this.m, i1)) && (this.l))
     {
-      localObject = getChildAt(this.h);
-      paramInt2 = this.d;
+      localObject = getChildAt(this.p);
+      paramInt2 = this.g;
       paramInt1 = paramInt2;
       if (((View)localObject).getVisibility() != 8)
       {
-        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.jdField_c_of_type_Int, -2147483648), i3);
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.f, -2147483648), i5);
         paramInt1 = Math.max(paramInt2, ((View)localObject).getMeasuredWidth());
       }
       if (((View)localObject).getVisibility() != 8) {
@@ -440,156 +458,173 @@ public class BottomNavigationMenuView
       } else {
         paramInt2 = 0;
       }
-      paramInt2 = m - paramInt2;
-      n = Math.min(i1 - this.jdField_b_of_type_Int * paramInt2, Math.min(paramInt1, this.jdField_c_of_type_Int));
-      m = i1 - n;
+      paramInt2 = i1 - paramInt2;
+      i2 = Math.min(i3 - this.e * paramInt2, Math.min(paramInt1, this.f));
+      i1 = i3 - i2;
       if (paramInt2 == 0) {
         paramInt1 = 1;
       } else {
         paramInt1 = paramInt2;
       }
-      i1 = Math.min(m / paramInt1, this.jdField_a_of_type_Int);
-      paramInt2 = m - paramInt2 * i1;
+      i3 = Math.min(i1 / paramInt1, this.d);
+      paramInt2 = i1 - paramInt2 * i3;
       paramInt1 = 0;
     }
-    while (paramInt1 < i2)
+    while (paramInt1 < i4)
     {
       if (getChildAt(paramInt1).getVisibility() != 8)
       {
-        localObject = this.jdField_c_of_type_ArrayOfInt;
-        if (paramInt1 == this.h) {
-          m = n;
+        localObject = this.y;
+        if (paramInt1 == this.p) {
+          i1 = i2;
         } else {
-          m = i1;
+          i1 = i3;
         }
-        localObject[paramInt1] = m;
-        m = paramInt2;
+        localObject[paramInt1] = i1;
+        i1 = paramInt2;
         if (paramInt2 > 0)
         {
-          localObject = this.jdField_c_of_type_ArrayOfInt;
+          localObject = this.y;
           localObject[paramInt1] += 1;
-          m = paramInt2 - 1;
+          i1 = paramInt2 - 1;
         }
       }
       else
       {
-        this.jdField_c_of_type_ArrayOfInt[paramInt1] = 0;
-        m = paramInt2;
+        this.y[paramInt1] = 0;
+        i1 = paramInt2;
       }
       paramInt1 += 1;
-      paramInt2 = m;
+      paramInt2 = i1;
       continue;
-      if (m == 0) {
+      if (i1 == 0) {
         paramInt1 = 1;
       } else {
-        paramInt1 = m;
+        paramInt1 = i1;
       }
-      n = Math.min(i1 / paramInt1, this.jdField_c_of_type_Int);
-      paramInt2 = i1 - m * n;
+      i2 = Math.min(i3 / paramInt1, this.f);
+      paramInt2 = i3 - i1 * i2;
       paramInt1 = 0;
-      while (paramInt1 < i2)
+      while (paramInt1 < i4)
       {
         if (getChildAt(paramInt1).getVisibility() != 8)
         {
-          localObject = this.jdField_c_of_type_ArrayOfInt;
-          localObject[paramInt1] = n;
-          m = paramInt2;
+          localObject = this.y;
+          localObject[paramInt1] = i2;
+          i1 = paramInt2;
           if (paramInt2 > 0)
           {
             localObject[paramInt1] += 1;
-            m = paramInt2 - 1;
+            i1 = paramInt2 - 1;
           }
         }
         else
         {
-          this.jdField_c_of_type_ArrayOfInt[paramInt1] = 0;
-          m = paramInt2;
+          this.y[paramInt1] = 0;
+          i1 = paramInt2;
         }
         paramInt1 += 1;
-        paramInt2 = m;
+        paramInt2 = i1;
       }
     }
     paramInt1 = 0;
     paramInt2 = 0;
-    while (paramInt1 < i2)
+    while (paramInt1 < i4)
     {
       localObject = getChildAt(paramInt1);
       if (((View)localObject).getVisibility() != 8)
       {
-        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.jdField_c_of_type_ArrayOfInt[paramInt1], 1073741824), i3);
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.y[paramInt1], 1073741824), i5);
         ((View)localObject).getLayoutParams().width = ((View)localObject).getMeasuredWidth();
         paramInt2 += ((View)localObject).getMeasuredWidth();
       }
       paramInt1 += 1;
     }
-    setMeasuredDimension(View.resolveSizeAndState(paramInt2, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824), 0), View.resolveSizeAndState(this.e, i3, 0));
+    setMeasuredDimension(View.resolveSizeAndState(paramInt2, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824), 0), View.resolveSizeAndState(this.h, i5, 0));
+  }
+  
+  void setBadgeDrawables(SparseArray<BadgeDrawable> paramSparseArray)
+  {
+    this.z = paramSparseArray;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
+    if (arrayOfBottomNavigationItemView != null)
+    {
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i1];
+        localBottomNavigationItemView.setBadge((BadgeDrawable)paramSparseArray.get(localBottomNavigationItemView.getId()));
+        i1 += 1;
+      }
+    }
   }
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.q = paramColorStateList;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        arrayOfBottomNavigationItemView[m].setIconTintList(paramColorStateList);
-        m += 1;
+        arrayOfBottomNavigationItemView[i1].setIconTintList(paramColorStateList);
+        i1 += 1;
       }
     }
   }
   
   public void setItemBackground(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.w = paramDrawable;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        arrayOfBottomNavigationItemView[m].setItemBackground(paramDrawable);
-        m += 1;
+        arrayOfBottomNavigationItemView[i1].setItemBackground(paramDrawable);
+        i1 += 1;
       }
     }
   }
   
   public void setItemBackgroundRes(int paramInt)
   {
-    this.l = paramInt;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.x = paramInt;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        arrayOfBottomNavigationItemView[m].setItemBackground(paramInt);
-        m += 1;
+        arrayOfBottomNavigationItemView[i1].setItemBackground(paramInt);
+        i1 += 1;
       }
     }
   }
   
   public void setItemHorizontalTranslationEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public void setItemIconSize(@Dimension int paramInt)
   {
-    this.i = paramInt;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.r = paramInt;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        arrayOfBottomNavigationItemView[m].setIconSize(paramInt);
-        m += 1;
+        arrayOfBottomNavigationItemView[i1].setIconSize(paramInt);
+        i1 += 1;
       }
     }
   }
@@ -598,97 +633,97 @@ public class BottomNavigationMenuView
   public void setItemOnTouchListener(int paramInt, @Nullable View.OnTouchListener paramOnTouchListener)
   {
     if (paramOnTouchListener == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+      this.k.remove(paramInt);
     } else {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramOnTouchListener);
+      this.k.put(paramInt, paramOnTouchListener);
     }
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[m];
+        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i1];
         if (localBottomNavigationItemView.getItemData().getItemId() == paramInt) {
           localBottomNavigationItemView.setOnTouchListener(paramOnTouchListener);
         }
-        m += 1;
+        i1 += 1;
       }
     }
   }
   
   public void setItemTextAppearanceActive(@StyleRes int paramInt)
   {
-    this.k = paramInt;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.v = paramInt;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[m];
+        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i1];
         localBottomNavigationItemView.setTextAppearanceActive(paramInt);
-        ColorStateList localColorStateList = this.jdField_b_of_type_AndroidContentResColorStateList;
+        ColorStateList localColorStateList = this.s;
         if (localColorStateList != null) {
           localBottomNavigationItemView.setTextColor(localColorStateList);
         }
-        m += 1;
+        i1 += 1;
       }
     }
   }
   
   public void setItemTextAppearanceInactive(@StyleRes int paramInt)
   {
-    this.j = paramInt;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.u = paramInt;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[m];
+        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i1];
         localBottomNavigationItemView.setTextAppearanceInactive(paramInt);
-        ColorStateList localColorStateList = this.jdField_b_of_type_AndroidContentResColorStateList;
+        ColorStateList localColorStateList = this.s;
         if (localColorStateList != null) {
           localBottomNavigationItemView.setTextColor(localColorStateList);
         }
-        m += 1;
+        i1 += 1;
       }
     }
   }
   
   public void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
-    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView;
+    this.s = paramColorStateList;
+    BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.n;
     if (arrayOfBottomNavigationItemView != null)
     {
-      int n = arrayOfBottomNavigationItemView.length;
-      int m = 0;
-      while (m < n)
+      int i2 = arrayOfBottomNavigationItemView.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        arrayOfBottomNavigationItemView[m].setTextColor(paramColorStateList);
-        m += 1;
+        arrayOfBottomNavigationItemView[i1].setTextColor(paramColorStateList);
+        i1 += 1;
       }
     }
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    this.f = paramInt;
+    this.m = paramInt;
   }
   
   public void setPresenter(BottomNavigationPresenter paramBottomNavigationPresenter)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter = paramBottomNavigationPresenter;
+    this.A = paramBottomNavigationPresenter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomnavigation.BottomNavigationMenuView
  * JD-Core Version:    0.7.0.1
  */

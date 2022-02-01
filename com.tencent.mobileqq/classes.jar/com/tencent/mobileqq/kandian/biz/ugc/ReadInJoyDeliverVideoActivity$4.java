@@ -16,7 +16,7 @@ class ReadInJoyDeliverVideoActivity$4
       if (paramInt != 1) {
         return;
       }
-      ReadInJoyDeliverVideoActivity.a(this.a);
+      ReadInJoyDeliverVideoActivity.i(this.a);
       this.a.finish();
       return;
     }
@@ -24,14 +24,14 @@ class ReadInJoyDeliverVideoActivity$4
       QLog.i("ReadInJoyDeliverVideoActivity", 2, "qbShowShareResultDialog back");
     }
     paramDialogInterface = this.a;
-    ForwardSdkShareOption.a(paramDialogInterface, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(paramDialogInterface));
+    ForwardSdkShareOption.a(paramDialogInterface, true, "shareToQQ", ReadInJoyDeliverVideoActivity.h(paramDialogInterface));
     Util.a(this.a, 0, "", "");
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.4
  * JD-Core Version:    0.7.0.1
  */

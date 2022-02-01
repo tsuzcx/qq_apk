@@ -17,21 +17,21 @@ class X5UpdateGuard$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.e("minisdk_X5UpdateGuard", 2, "confirm");
-    X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).postDelayed(X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard), 15000L);
-    QbSdk.setTbsListener(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard);
-    TbsDownloader.startDownload(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getContext(), true);
-    if (X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard) == null) {
-      X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard, new X5UpdateGuard.LoadingDialog(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity()));
+    X5UpdateGuard.e(this.b).postDelayed(X5UpdateGuard.d(this.b), 15000L);
+    QbSdk.setTbsListener(this.b);
+    TbsDownloader.startDownload(this.a.getContext(), true);
+    if (X5UpdateGuard.f(this.b) == null) {
+      X5UpdateGuard.a(this.b, new X5UpdateGuard.LoadingDialog(this.a.getAttachedActivity()));
     }
-    X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).a(HardCodeUtil.a(2131705965));
-    if (!X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).isShowing()) {
-      X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).show();
+    X5UpdateGuard.f(this.b).a(HardCodeUtil.a(2131903843));
+    if (!X5UpdateGuard.f(this.b).isShowing()) {
+      X5UpdateGuard.f(this.b).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.3
  * JD-Core Version:    0.7.0.1
  */

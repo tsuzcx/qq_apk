@@ -3,15 +3,15 @@ package com.tencent.av.ui;
 public class ControlUIObserver$ZimuRequest
   extends ControlUIObserver.BaseParameter
 {
-  public int a;
-  public String b;
+  public int b;
+  public String c;
   
   public ControlUIObserver$ZimuRequest(long paramLong, String paramString1, int paramInt, String paramString2)
   {
     super(6005);
     a(paramLong, paramString1);
-    this.a = paramInt;
-    this.b = paramString2;
+    this.b = paramInt;
+    this.c = paramString2;
   }
 }
 

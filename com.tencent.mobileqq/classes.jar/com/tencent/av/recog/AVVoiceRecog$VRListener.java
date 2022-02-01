@@ -39,8 +39,8 @@ class AVVoiceRecog$VRListener
         localStringBuilder.append("onGetResult. result.text = ");
         localStringBuilder.append(paramVoiceRecognizerResult.text);
         QLog.i("AVVoiceRecog", 1, localStringBuilder.toString());
-        if (AVVoiceRecog.a(this.a) != null) {
-          AVVoiceRecog.a(this.a).a(paramVoiceRecognizerResult.text);
+        if (AVVoiceRecog.c(this.a) != null) {
+          AVVoiceRecog.c(this.a).a(paramVoiceRecognizerResult.text);
         }
       }
       if (paramVoiceRecognizerResult.isEnd)

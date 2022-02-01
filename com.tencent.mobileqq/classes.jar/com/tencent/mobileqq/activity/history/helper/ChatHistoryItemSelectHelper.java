@@ -9,7 +9,7 @@ public class ChatHistoryItemSelectHelper
 {
   ArrayList<Object> a = new ArrayList();
   
-  private boolean a()
+  private boolean c()
   {
     ArrayList localArrayList = this.a;
     boolean bool = false;
@@ -28,39 +28,39 @@ public class ChatHistoryItemSelectHelper
     return bool;
   }
   
-  public List<Object> a()
-  {
-    return this.a;
-  }
-  
   public void a()
   {
     this.a.clear();
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (a(paramObject))
-    {
-      this.a.remove(paramObject);
-      return;
-    }
-    if (a())
-    {
-      FMToastUtil.a(2131692438);
-      return;
-    }
-    this.a.add(paramObject);
   }
   
   public boolean a(Object paramObject)
   {
     return this.a.contains(paramObject);
   }
+  
+  public List<Object> b()
+  {
+    return this.a;
+  }
+  
+  public void b(Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      this.a.remove(paramObject);
+      return;
+    }
+    if (c())
+    {
+      FMToastUtil.a(2131889426);
+      return;
+    }
+    this.a.add(paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.helper.ChatHistoryItemSelectHelper
  * JD-Core Version:    0.7.0.1
  */

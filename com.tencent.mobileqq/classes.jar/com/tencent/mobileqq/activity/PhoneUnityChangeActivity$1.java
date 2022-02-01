@@ -12,22 +12,22 @@ class PhoneUnityChangeActivity$1
 {
   PhoneUnityChangeActivity$1(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
+    this.a.f.cancel();
+    if (this.a.e == null)
     {
       paramView = this.a;
-      paramView.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramView, 230, HardCodeUtil.a(2131708045), HardCodeUtil.a(2131708035), HardCodeUtil.a(2131708023), HardCodeUtil.a(2131708026), new PhoneUnityChangeActivity.1.1(this), new PhoneUnityChangeActivity.1.2(this));
+      paramView.e = DialogUtil.a(paramView, 230, HardCodeUtil.a(2131905851), HardCodeUtil.a(2131905841), HardCodeUtil.a(2131905830), HardCodeUtil.a(2131898212), new PhoneUnityChangeActivity.1.1(this), new PhoneUnityChangeActivity.1.2(this));
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if ((this.a.e != null) && (!this.a.e.isShowing()) && (!this.a.isFinishing())) {
+      this.a.e.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityChangeActivity.1
  * JD-Core Version:    0.7.0.1
  */

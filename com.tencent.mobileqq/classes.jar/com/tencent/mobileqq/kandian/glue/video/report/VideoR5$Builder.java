@@ -36,10 +36,10 @@ public final class VideoR5$Builder
     Object localObject3;
     if (paramVideoInfo != null)
     {
-      localObject1 = paramVideoInfo.j;
-      localObject4 = paramVideoInfo.jdField_a_of_type_JavaLangString;
-      localObject2 = paramVideoInfo.g;
-      localObject3 = paramVideoInfo.d();
+      localObject1 = paramVideoInfo.q;
+      localObject4 = paramVideoInfo.b;
+      localObject2 = paramVideoInfo.l;
+      localObject3 = paramVideoInfo.l();
     }
     else
     {
@@ -52,7 +52,7 @@ public final class VideoR5$Builder
     }
     this.a = new VideoR5((String)localObject3, (String)localObject1, (String)localObject4, (String)localObject2);
     if (paramVideoInfo != null) {
-      a(paramVideoInfo.w);
+      b(paramVideoInfo.ao);
     }
   }
   
@@ -77,7 +77,7 @@ public final class VideoR5$Builder
     this.a = new VideoR5(paramString1, paramString2, paramString3, paramString4, paramString5);
   }
   
-  public static int a(int paramInt)
+  public static int N(int paramInt)
   {
     if (paramInt == 1004) {
       return 2;
@@ -185,96 +185,75 @@ public final class VideoR5$Builder
     return this;
   }
   
-  public Builder N(int paramInt)
-  {
-    this.a.a("entrance", Integer.valueOf(a(paramInt)));
-    return this;
-  }
-  
   public Builder O(int paramInt)
   {
-    this.a.a("entrance", Integer.valueOf(paramInt));
+    this.a.a("entrance", Integer.valueOf(N(paramInt)));
     return this;
   }
   
   public Builder P(int paramInt)
   {
-    this.a.a("count", Integer.valueOf(paramInt));
+    this.a.a("entrance", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder Q(int paramInt)
   {
-    this.a.a("style", Integer.valueOf(paramInt));
+    this.a.a("count", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder R(int paramInt)
   {
-    this.a.a("click_area", Integer.valueOf(paramInt));
+    this.a.a("style", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder S(int paramInt)
   {
-    this.a.a("show_video_logo", Integer.valueOf(paramInt));
+    this.a.a("click_area", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder T(int paramInt)
   {
-    this.a.a("trigger_src", Integer.valueOf(paramInt));
+    this.a.a("show_video_logo", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder U(int paramInt)
   {
-    this.a.a("diandianfeeds_type", Integer.valueOf(paramInt));
+    this.a.a("trigger_src", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder V(int paramInt)
   {
-    this.a.a("entrance_show_jump_icon", Integer.valueOf(paramInt));
+    this.a.a("diandianfeeds_type", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder W(int paramInt)
   {
-    this.a.a("feeds_type", Integer.valueOf(paramInt));
+    this.a.a("entrance_show_jump_icon", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder X(int paramInt)
   {
-    this.a.a("from_feedstype", Integer.valueOf(paramInt));
+    this.a.a("feeds_type", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder Y(int paramInt)
   {
-    this.a.a("column_id", Integer.valueOf(paramInt));
+    this.a.a("from_feedstype", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder Z(int paramInt)
   {
-    this.a.a("double_card_pos", Integer.valueOf(paramInt));
-    return this;
-  }
-  
-  public Builder a()
-  {
-    VideoR5 localVideoR5 = this.a;
-    int i;
-    if (RIJAppSetting.c()) {
-      i = 2;
-    } else if (RIJPushNotification.c()) {
-      i = 1;
-    } else {
-      i = 3;
-    }
-    localVideoR5.a("app_type", Integer.valueOf(i));
+    this.a.a("column_id", Integer.valueOf(paramInt));
     return this;
   }
   
@@ -286,7 +265,7 @@ public final class VideoR5$Builder
   
   public Builder a(int paramInt, String paramString)
   {
-    if (ReadInJoyHelper.d(paramInt)) {
+    if (ReadInJoyHelper.n(paramInt)) {
       this.a.a("column_play_session_id", paramString);
     }
     return this;
@@ -298,23 +277,11 @@ public final class VideoR5$Builder
     return this;
   }
   
-  public Builder a(VideoInfo.SoftAdDownloadBarInfo paramSoftAdDownloadBarInfo)
-  {
-    VideoR5 localVideoR5 = this.a;
-    if ((paramSoftAdDownloadBarInfo != null) && (paramSoftAdDownloadBarInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo != null)) {
-      paramSoftAdDownloadBarInfo = paramSoftAdDownloadBarInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo.e;
-    } else {
-      paramSoftAdDownloadBarInfo = "";
-    }
-    localVideoR5.a("ad_guide_area_video_report_info", paramSoftAdDownloadBarInfo);
-    return this;
-  }
-  
   public Builder a(VideoInfo paramVideoInfo)
   {
     VideoR5 localVideoR5 = this.a;
     int i;
-    if (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$SoftAdDownloadBarInfo != null) {
+    if (paramVideoInfo.aK != null) {
       i = 1;
     } else {
       i = 0;
@@ -325,8 +292,8 @@ public final class VideoR5$Builder
   
   public Builder a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$SubscriptInfo != null)) {
-      this.a.a("corner_mark", Integer.valueOf(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$SubscriptInfo.c));
+    if ((paramBoolean) && (paramVideoInfo.aM != null)) {
+      this.a.a("corner_mark", Integer.valueOf(paramVideoInfo.aM.d));
     }
     return this;
   }
@@ -342,7 +309,7 @@ public final class VideoR5$Builder
   public Builder a(VideoRecommendManager paramVideoRecommendManager, long paramLong)
   {
     if (paramVideoRecommendManager != null) {
-      return c(paramVideoRecommendManager.a(paramLong));
+      return e(paramVideoRecommendManager.a(paramLong));
     }
     return this;
   }
@@ -357,16 +324,16 @@ public final class VideoR5$Builder
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mVideoColumnInfo != null) && (paramAbsBaseArticleInfo.mChannelID == 56L))
     {
       if (paramBoolean) {
-        paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mVideoColumnInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo;
+        paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mVideoColumnInfo.n;
       } else {
-        paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mVideoColumnInfo.c;
+        paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mVideoColumnInfo.p;
       }
-      if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.e != null)) {
-        paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.e;
+      if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.f != null)) {
+        paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.f;
       } else {
         paramAbsBaseArticleInfo = "";
       }
-      q(paramAbsBaseArticleInfo);
+      r(paramAbsBaseArticleInfo);
     }
     return this;
   }
@@ -381,23 +348,6 @@ public final class VideoR5$Builder
     if (paramBoolean.booleanValue()) {
       this.a.a("is_ugc_as_pgc", Integer.valueOf(1));
     }
-    return this;
-  }
-  
-  public Builder a(String paramString)
-  {
-    VideoR5 localVideoR5 = this.a;
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    localVideoR5.a("video_report_info", str);
-    return this;
-  }
-  
-  public Builder a(String paramString, Object paramObject)
-  {
-    this.a.a(paramString, paramObject);
     return this;
   }
   
@@ -417,67 +367,62 @@ public final class VideoR5$Builder
             localStringBuilder.append("|");
           }
           i = 0;
-          localStringBuilder.append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localDislikeInfo.c);
         }
       }
     }
-    return m(localStringBuilder.toString());
-  }
-  
-  public Builder a(boolean paramBoolean)
-  {
-    this.a.a("download", Integer.valueOf(paramBoolean ^ true));
-    return this;
-  }
-  
-  public VideoR5 a()
-  {
-    return this.a;
+    return n(localStringBuilder.toString());
   }
   
   @NotNull
   public String a()
   {
-    return a().a();
+    return b().a();
   }
   
   public Builder aa(int paramInt)
   {
-    this.a.a("video_autoplay", Integer.valueOf(paramInt));
+    this.a.a("double_card_pos", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder ab(int paramInt)
   {
-    this.a.a("subscribe_page", Integer.valueOf(paramInt));
+    this.a.a("video_autoplay", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder ac(int paramInt)
   {
-    this.a.a("return_sence", Integer.valueOf(paramInt));
+    this.a.a("subscribe_page", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder ad(int paramInt)
   {
-    this.a.a("video_speed", Integer.valueOf(paramInt));
+    this.a.a("return_sence", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder ae(int paramInt)
   {
-    this.a.a("topic_from_page", Integer.valueOf(paramInt));
+    this.a.a("video_speed", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder af(int paramInt)
   {
-    this.a.a("follow_way", Integer.valueOf(paramInt));
+    this.a.a("topic_from_page", Integer.valueOf(paramInt));
     return this;
   }
   
   public Builder ag(int paramInt)
+  {
+    this.a.a("follow_way", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public Builder ah(int paramInt)
   {
     this.a.a("behavior_type", Integer.valueOf(paramInt));
     return this;
@@ -495,9 +440,21 @@ public final class VideoR5$Builder
     return this;
   }
   
+  public Builder b(VideoInfo.SoftAdDownloadBarInfo paramSoftAdDownloadBarInfo)
+  {
+    VideoR5 localVideoR5 = this.a;
+    if ((paramSoftAdDownloadBarInfo != null) && (paramSoftAdDownloadBarInfo.f != null)) {
+      paramSoftAdDownloadBarInfo = paramSoftAdDownloadBarInfo.f.f;
+    } else {
+      paramSoftAdDownloadBarInfo = "";
+    }
+    localVideoR5.a("ad_guide_area_video_report_info", paramSoftAdDownloadBarInfo);
+    return this;
+  }
+  
   public Builder b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mVideoLogoUrl)) && (VideoFeedsHelper.e()))
+    if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mVideoLogoUrl)) && (VideoFeedsHelper.h()))
     {
       this.a.a("show_video_logo", Integer.valueOf(1));
       return this;
@@ -509,20 +466,46 @@ public final class VideoR5$Builder
   public Builder b(VideoColumnInfo paramVideoColumnInfo)
   {
     if (paramVideoColumnInfo != null) {
-      return Y(paramVideoColumnInfo.jdField_a_of_type_Int);
+      return Z(paramVideoColumnInfo.b);
     }
     return this;
   }
   
   public Builder b(String paramString)
   {
-    this.a.a("strategy_ids", paramString);
+    VideoR5 localVideoR5 = this.a;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    localVideoR5.a("video_report_info", str);
     return this;
   }
   
-  public Builder b(boolean paramBoolean)
+  public Builder b(String paramString, Object paramObject)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    this.a.a(paramString, paramObject);
+    return this;
+  }
+  
+  public VideoR5 b()
+  {
+    return this.a;
+  }
+  
+  public Builder c()
+  {
+    VideoR5 localVideoR5 = this.a;
+    int i;
+    if (RIJAppSetting.f()) {
+      i = 2;
+    } else if (RIJPushNotification.d()) {
+      i = 1;
+    } else {
+      i = 3;
+    }
+    localVideoR5.a("app_type", Integer.valueOf(i));
+    return this;
   }
   
   public Builder c(int paramInt)
@@ -547,13 +530,13 @@ public final class VideoR5$Builder
   
   public Builder c(String paramString)
   {
-    this.a.a("session_id", paramString);
+    this.a.a("strategy_ids", paramString);
     return this;
   }
   
   public Builder c(boolean paramBoolean)
   {
-    this.a.a("video_inserted", Boolean.valueOf(paramBoolean));
+    this.a.a("download", Integer.valueOf(paramBoolean ^ true));
     return this;
   }
   
@@ -572,7 +555,7 @@ public final class VideoR5$Builder
   public Builder d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     int i;
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mChannelID == 56L) && (ReadInJoyHelper.d()) && (paramAbsBaseArticleInfo.mVideoColumnInfo != null)) {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mChannelID == 56L) && (ReadInJoyHelper.e()) && (paramAbsBaseArticleInfo.mVideoColumnInfo != null)) {
       i = 2;
     } else {
       i = 1;
@@ -583,23 +566,13 @@ public final class VideoR5$Builder
   
   public Builder d(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.a("video_session_id", paramString);
-    }
+    this.a.a("session_id", paramString);
     return this;
   }
   
   public Builder d(boolean paramBoolean)
   {
-    VideoR5 localVideoR5 = this.a;
-    String str;
-    if (paramBoolean) {
-      str = "1";
-    } else {
-      str = "0";
-    }
-    localVideoR5.a("fans", str);
-    return this;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public Builder e(int paramInt)
@@ -616,19 +589,22 @@ public final class VideoR5$Builder
   
   public Builder e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.a.a("account_expose_card", Integer.valueOf(RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo)));
+    this.a.a("account_expose_card", Integer.valueOf(RIJTransMergeKanDianReport.c(paramAbsBaseArticleInfo)));
     return this;
   }
   
   public Builder e(String paramString)
   {
-    this.a.a("puin", paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.a("video_session_id", paramString);
+    }
     return this;
   }
   
   public Builder e(boolean paramBoolean)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    this.a.a("video_inserted", Boolean.valueOf(paramBoolean));
+    return this;
   }
   
   public Builder f(int paramInt)
@@ -645,15 +621,15 @@ public final class VideoR5$Builder
   
   public Builder f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (ReadInJoySrtHandler.a().a(paramAbsBaseArticleInfo, false, ReadInJoySrtHandler.jdField_a_of_type_Int)) {
-      this.a.a("jump_src", Integer.valueOf(UGRuleManager.a(paramAbsBaseArticleInfo)));
+    if (ReadInJoySrtHandler.a().a(paramAbsBaseArticleInfo, false, ReadInJoySrtHandler.a)) {
+      this.a.a("jump_src", Integer.valueOf(UGRuleManager.g(paramAbsBaseArticleInfo)));
     }
     return this;
   }
   
   public Builder f(String paramString)
   {
-    this.a.a("vid", paramString);
+    this.a.a("puin", paramString);
     return this;
   }
   
@@ -662,11 +638,11 @@ public final class VideoR5$Builder
     VideoR5 localVideoR5 = this.a;
     String str;
     if (paramBoolean) {
-      str = "H265";
+      str = "1";
     } else {
-      str = "H264";
+      str = "0";
     }
-    localVideoR5.a("video_code_format", str);
+    localVideoR5.a("fans", str);
     return this;
   }
   
@@ -684,7 +660,7 @@ public final class VideoR5$Builder
   
   public Builder g(String paramString)
   {
-    this.a.a("aid", paramString);
+    this.a.a("vid", paramString);
     return this;
   }
   
@@ -707,13 +683,20 @@ public final class VideoR5$Builder
   
   public Builder h(String paramString)
   {
-    this.a.a("topic_id", paramString);
+    this.a.a("aid", paramString);
     return this;
   }
   
   public Builder h(boolean paramBoolean)
   {
-    this.a.a("outcome", Integer.valueOf(paramBoolean ^ true));
+    VideoR5 localVideoR5 = this.a;
+    String str;
+    if (paramBoolean) {
+      str = "H265";
+    } else {
+      str = "H264";
+    }
+    localVideoR5.a("video_code_format", str);
     return this;
   }
   
@@ -732,7 +715,7 @@ public final class VideoR5$Builder
   
   public Builder i(String paramString)
   {
-    this.a.a("first_video_rowkey", paramString);
+    this.a.a("topic_id", paramString);
     return this;
   }
   
@@ -749,13 +732,14 @@ public final class VideoR5$Builder
   
   public Builder j(String paramString)
   {
-    this.a.a("rowkey", paramString);
+    this.a.a("first_video_rowkey", paramString);
     return this;
   }
   
   public Builder j(boolean paramBoolean)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    this.a.a("outcome", Integer.valueOf(paramBoolean ^ true));
+    return this;
   }
   
   public Builder k(int paramInt)
@@ -766,9 +750,7 @@ public final class VideoR5$Builder
   
   public Builder k(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.a("error_code", paramString);
-    }
+    this.a.a("rowkey", paramString);
     return this;
   }
   
@@ -785,7 +767,9 @@ public final class VideoR5$Builder
   
   public Builder l(String paramString)
   {
-    this.a.a("video_to_uin", paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.a("error_code", paramString);
+    }
     return this;
   }
   
@@ -802,7 +786,7 @@ public final class VideoR5$Builder
   
   public Builder m(String paramString)
   {
-    this.a.a("neg_reason", paramString);
+    this.a.a("video_to_uin", paramString);
     return this;
   }
   
@@ -819,8 +803,13 @@ public final class VideoR5$Builder
   
   public Builder n(String paramString)
   {
-    this.a.a("uin", paramString);
+    this.a.a("neg_reason", paramString);
     return this;
+  }
+  
+  public Builder n(boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public Builder o(int paramInt)
@@ -831,8 +820,13 @@ public final class VideoR5$Builder
   
   public Builder o(String paramString)
   {
-    this.a.a("trigger_rowkey", paramString);
+    this.a.a("uin", paramString);
     return this;
+  }
+  
+  public Builder o(boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public Builder p(int paramInt)
@@ -843,7 +837,7 @@ public final class VideoR5$Builder
   
   public Builder p(String paramString)
   {
-    this.a.a("from_rk", paramString);
+    this.a.a("trigger_rowkey", paramString);
     return this;
   }
   
@@ -855,7 +849,7 @@ public final class VideoR5$Builder
   
   public Builder q(String paramString)
   {
-    this.a.a("jump_report_info", paramString);
+    this.a.a("from_rk", paramString);
     return this;
   }
   
@@ -867,7 +861,7 @@ public final class VideoR5$Builder
   
   public Builder r(String paramString)
   {
-    this.a.a("double_videocard_jump_page", paramString);
+    this.a.a("jump_report_info", paramString);
     return this;
   }
   
@@ -879,7 +873,7 @@ public final class VideoR5$Builder
   
   public Builder s(String paramString)
   {
-    this.a.a("double_videocard_jump_src", paramString);
+    this.a.a("double_videocard_jump_page", paramString);
     return this;
   }
   
@@ -891,13 +885,19 @@ public final class VideoR5$Builder
   
   public Builder t(String paramString)
   {
-    this.a.a("subscript", paramString);
+    this.a.a("double_videocard_jump_src", paramString);
     return this;
   }
   
   public Builder u(int paramInt)
   {
     this.a.a("video_from_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public Builder u(String paramString)
+  {
+    this.a.a("subscript", paramString);
     return this;
   }
   
@@ -935,7 +935,7 @@ public final class VideoR5$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder
  * JD-Core Version:    0.7.0.1
  */

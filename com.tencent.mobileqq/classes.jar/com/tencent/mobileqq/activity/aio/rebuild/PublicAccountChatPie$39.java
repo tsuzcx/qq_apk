@@ -13,19 +13,19 @@ class PublicAccountChatPie$39
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
+    paramDialogInterface = this.a;
     paramDialogInterface.mIsAgreeSyncLbs = true;
     paramDialogInterface.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager.savePublicAccountInfo(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a(1, null);
+    this.b.savePublicAccountInfo(paramDialogInterface);
+    this.c.a(1, null);
     paramDialogInterface = new PublicAccountChatPie.39.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.execute(paramDialogInterface);
-    PublicAccountChatPie.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie);
+    this.c.d.execute(paramDialogInterface);
+    PublicAccountChatPie.y(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.39
  * JD-Core Version:    0.7.0.1
  */

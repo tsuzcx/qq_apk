@@ -34,7 +34,7 @@ public class NickNameExtender
     if (this.a == null)
     {
       this.a = new ColorNickTextView(this.mContext);
-      this.a.setId(2131364538);
+      this.a.setId(2131430595);
       this.a.setGravity(48);
       this.a.setTextSize(2, 12.0F);
       this.a.setIncludeFontPadding(false);
@@ -63,36 +63,36 @@ public class NickNameExtender
   
   public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
   {
-    this.a.setText(paramNickNameLayoutData.jdField_a_of_type_JavaLangCharSequence);
-    this.a.setTag(paramNickNameLayoutData.jdField_a_of_type_JavaLangCharSequence);
-    if (paramNickNameLayoutData.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      this.a.setTextColor(paramNickNameLayoutData.jdField_a_of_type_AndroidContentResColorStateList);
+    this.a.setText(paramNickNameLayoutData.a);
+    this.a.setTag(paramNickNameLayoutData.a);
+    if (paramNickNameLayoutData.b != null) {
+      this.a.setTextColor(paramNickNameLayoutData.b);
     }
-    if ((QVipRedNameCardProcessor.c().a) && (!SimpleUIUtil.a()))
+    if ((QVipRedNameCardProcessor.e().a) && (!SimpleUIUtil.e()))
     {
-      boolean bool = ((FriendsManager)BaseActivity.sTopActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c;
-      if ((paramNickNameLayoutData.c != 0) && (paramNickNameLayoutData.c != -100))
+      boolean bool = ((FriendsManager)BaseActivity.sTopActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).t;
+      if ((paramNickNameLayoutData.l != 0) && (paramNickNameLayoutData.l != -100))
       {
         if (bool) {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167202));
+          this.a.setTextColor(this.mContext.getResources().getColor(2131168187));
         } else {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167063));
+          this.a.setTextColor(this.mContext.getResources().getColor(2131168001));
         }
       }
       else
       {
-        int i = VipUtils.a(paramNickNameLayoutData.jdField_a_of_type_Int);
+        int i = VipUtils.b(paramNickNameLayoutData.j);
         if ((i != 1) && (i != 2) && (i != 3) && (i != 4)) {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167063));
+          this.a.setTextColor(this.mContext.getResources().getColor(2131168001));
         } else if (bool) {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167202));
+          this.a.setTextColor(this.mContext.getResources().getColor(2131168187));
         } else {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167063));
+          this.a.setTextColor(this.mContext.getResources().getColor(2131168001));
         }
       }
     }
-    paramNickNameLayoutData = AIOLongShotHelper.a();
-    if ((paramNickNameLayoutData != null) && (paramNickNameLayoutData.a()) && (paramNickNameLayoutData.b()))
+    paramNickNameLayoutData = AIOLongShotHelper.f();
+    if ((paramNickNameLayoutData != null) && (paramNickNameLayoutData.c()) && (paramNickNameLayoutData.d()))
     {
       ((ColorNickTextView)this.a).setMosaicEffect(new MosaicEffect(10));
       return;
@@ -102,7 +102,7 @@ public class NickNameExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtender
  * JD-Core Version:    0.7.0.1
  */

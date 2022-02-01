@@ -30,7 +30,7 @@ class GdtVideoCommonView$9
     localStringBuilder.append("INetInfoHandler onNetNone2Mobile() apn=");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" onNetWifi2None ");
-    localStringBuilder.append(GdtVideoCommonView.c(this.a));
+    localStringBuilder.append(GdtVideoCommonView.x(this.a));
     QLog.i("GdtVideoCommonView", 1, localStringBuilder.toString());
     GdtVideoCommonView.a(this.a, 2);
   }
@@ -51,10 +51,10 @@ class GdtVideoCommonView$9
     localStringBuilder.append(paramString);
     QLog.i("GdtVideoCommonView", 1, localStringBuilder.toString());
     GdtVideoCommonView.a(this.a, 2);
-    if ((this.a.a) && (this.a.a()))
+    if ((this.a.a) && (this.a.i()))
     {
-      GdtVideoCommonView.d(this.a);
-      GdtVideoCommonView.a(this.a).post(GdtVideoCommonView.a(this.a));
+      GdtVideoCommonView.y(this.a);
+      GdtVideoCommonView.b(this.a).post(GdtVideoCommonView.z(this.a));
     }
   }
   
@@ -67,7 +67,7 @@ class GdtVideoCommonView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.9
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class MonitorTimeExecutor$WatchDogRunnable
   public void run()
   {
     StringBuilder localStringBuilder;
-    if (MonitorTimeExecutor.a())
+    if (MonitorTimeExecutor.c())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[run] checking ");
@@ -27,8 +27,8 @@ class MonitorTimeExecutor$WatchDogRunnable
     if ((!this.a.isTerminating()) && (!this.a.isTerminated()) && (!this.a.isShutdown()))
     {
       MonitorTimeExecutor.a(this.a);
-      if (MonitorTimeExecutor.a() != null) {
-        MonitorTimeExecutor.a().postDelayed(this, MonitorTimeExecutor.a());
+      if (MonitorTimeExecutor.d() != null) {
+        MonitorTimeExecutor.d().postDelayed(this, MonitorTimeExecutor.e());
       }
     }
     else
@@ -42,7 +42,7 @@ class MonitorTimeExecutor$WatchDogRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.MonitorTimeExecutor.WatchDogRunnable
  * JD-Core Version:    0.7.0.1
  */

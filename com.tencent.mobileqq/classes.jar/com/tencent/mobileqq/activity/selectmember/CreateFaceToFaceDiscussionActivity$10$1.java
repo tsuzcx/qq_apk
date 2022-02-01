@@ -51,13 +51,13 @@ class CreateFaceToFaceDiscussionActivity$10$1
     }
     paramSosoLbsInfo = this.a.this$0.mHandler.obtainMessage(2);
     paramSosoLbsInfo.arg1 = 1;
-    paramSosoLbsInfo.arg2 = 2131698973;
+    paramSosoLbsInfo.arg2 = 2131896965;
     paramSosoLbsInfo.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

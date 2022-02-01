@@ -12,7 +12,7 @@ class TroopNotificationRecordMessageController$2
   
   public void onPostRun()
   {
-    ITroopNotificationService.ITroopNotificationLoadDBListener localITroopNotificationLoadDBListener = this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopNotificationService$ITroopNotificationLoadDBListener;
+    ITroopNotificationService.ITroopNotificationLoadDBListener localITroopNotificationLoadDBListener = this.a;
     if (localITroopNotificationLoadDBListener != null) {
       localITroopNotificationLoadDBListener.a();
     }
@@ -22,7 +22,7 @@ class TroopNotificationRecordMessageController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationRecordMessageController.2
  * JD-Core Version:    0.7.0.1
  */

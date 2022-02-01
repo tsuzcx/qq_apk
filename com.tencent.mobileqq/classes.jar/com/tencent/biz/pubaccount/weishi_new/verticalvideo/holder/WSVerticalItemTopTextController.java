@@ -17,24 +17,19 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 public class WSVerticalItemTopTextController
   extends AbsWsUIGroup<WSVerticalItemData>
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private TextView b;
+  private WSVerticalPageFragment g;
+  private TextView h;
+  private TextView i;
   
   public WSVerticalItemTopTextController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
     if (paramWSVerticalVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      this.g = paramWSVerticalVideoHolder.d;
     }
   }
   
   protected void a() {}
-  
-  protected int b()
-  {
-    return 2131560047;
-  }
   
   @SuppressLint({"StringFormatMatches"})
   @UiThread
@@ -44,35 +39,40 @@ public class WSVerticalItemTopTextController
     ((StringBuilder)localObject).append("onUpdateUI hashcode******************************");
     ((StringBuilder)localObject).append(hashCode());
     ((StringBuilder)localObject).append(",position:");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(h());
     WSLog.a("WSVerticalItemTopTextController", ((StringBuilder)localObject).toString());
-    localObject = (WSVerticalItemData)a();
+    localObject = (WSVerticalItemData)c();
     if (localObject != null)
     {
-      localObject = ((WSVerticalItemData)localObject).a();
+      localObject = ((WSVerticalItemData)localObject).g();
       if (localObject == null) {
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((WSDramaEpisodeInfo)localObject).b());
-      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(1929707522, new Object[] { Integer.valueOf(((WSDramaEpisodeInfo)localObject).a()) }));
+      this.h.setText(((WSDramaEpisodeInfo)localObject).b());
+      this.i.setText(this.a.getString(1929838604, new Object[] { Integer.valueOf(((WSDramaEpisodeInfo)localObject).c()) }));
     }
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    WSVerticalUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getBaseActivity(), (ViewGroup)this.jdField_a_of_type_AndroidViewView);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    return 2131626091;
+  }
+  
+  protected void j()
+  {
+    WSVerticalUtils.a(this.g.getBaseActivity(), (ViewGroup)this.b);
+    ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
     localLayoutParams.width = -1;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380453));
-    this.b = ((TextView)a(2131380452));
+    this.b.setLayoutParams(localLayoutParams);
+    this.h = ((TextView)c(2131449405));
+    this.i = ((TextView)c(2131449404));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemTopTextController
  * JD-Core Version:    0.7.0.1
  */

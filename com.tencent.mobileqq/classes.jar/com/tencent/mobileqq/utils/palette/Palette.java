@@ -8,30 +8,52 @@ import java.util.List;
 
 public final class Palette
 {
-  static final Palette.Filter jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Filter = new Palette.1();
-  private final SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
+  static final Palette.Filter a = new Palette.1();
+  private final List<Palette.Swatch> b;
+  private final List<Target> c;
+  private final SimpleArrayMap<Target, Palette.Swatch> d;
+  private final SparseBooleanArray e;
   @Nullable
-  private final Palette.Swatch jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch;
-  private final SimpleArrayMap<Target, Palette.Swatch> jdField_a_of_type_ComTencentMobileqqUtilsPaletteSimpleArrayMap;
-  private final List<Palette.Swatch> jdField_a_of_type_JavaUtilList;
-  private final List<Target> b;
+  private final Palette.Swatch f;
   
   Palette(List<Palette.Swatch> paramList, List<Target> paramList1)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramList1;
-    this.jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteSimpleArrayMap = new SimpleArrayMap();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch = b();
+    this.b = paramList;
+    this.c = paramList1;
+    this.e = new SparseBooleanArray();
+    this.d = new SimpleArrayMap();
+    this.f = c();
   }
   
-  private float a(Palette.Swatch paramSwatch, Target paramTarget)
+  @NonNull
+  public static Palette.Builder a(@NonNull Bitmap paramBitmap)
   {
-    float[] arrayOfFloat = paramSwatch.a();
-    Palette.Swatch localSwatch = this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch;
+    return new Palette.Builder(paramBitmap);
+  }
+  
+  @Nullable
+  private Palette.Swatch a(Target paramTarget)
+  {
+    Palette.Swatch localSwatch = b(paramTarget);
+    if ((localSwatch != null) && (paramTarget.j())) {
+      this.e.append(localSwatch.a(), true);
+    }
+    return localSwatch;
+  }
+  
+  private boolean a(Palette.Swatch paramSwatch, Target paramTarget)
+  {
+    float[] arrayOfFloat = paramSwatch.b();
+    return (arrayOfFloat[1] >= paramTarget.a()) && (arrayOfFloat[1] <= paramTarget.c()) && (arrayOfFloat[2] >= paramTarget.d()) && (arrayOfFloat[2] <= paramTarget.f()) && (!this.e.get(paramSwatch.a()));
+  }
+  
+  private float b(Palette.Swatch paramSwatch, Target paramTarget)
+  {
+    float[] arrayOfFloat = paramSwatch.b();
+    Palette.Swatch localSwatch = this.f;
     int i;
     if (localSwatch != null) {
-      i = localSwatch.b();
+      i = localSwatch.c();
     } else {
       i = 1;
     }
@@ -53,70 +75,26 @@ public final class Palette
       f2 = 0.0F;
     }
     if (paramTarget.i() > 0.0F) {
-      f3 = paramTarget.i() * (paramSwatch.b() / i);
+      f3 = paramTarget.i() * (paramSwatch.c() / i);
     }
     return f1 + f2 + f3;
-  }
-  
-  @NonNull
-  public static Palette.Builder a(@NonNull Bitmap paramBitmap)
-  {
-    return new Palette.Builder(paramBitmap);
-  }
-  
-  @Nullable
-  private Palette.Swatch a(Target paramTarget)
-  {
-    Palette.Swatch localSwatch = b(paramTarget);
-    if ((localSwatch != null) && (paramTarget.a())) {
-      this.jdField_a_of_type_AndroidUtilSparseBooleanArray.append(localSwatch.a(), true);
-    }
-    return localSwatch;
-  }
-  
-  private boolean a(Palette.Swatch paramSwatch, Target paramTarget)
-  {
-    float[] arrayOfFloat = paramSwatch.a();
-    return (arrayOfFloat[1] >= paramTarget.a()) && (arrayOfFloat[1] <= paramTarget.c()) && (arrayOfFloat[2] >= paramTarget.d()) && (arrayOfFloat[2] <= paramTarget.f()) && (!this.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(paramSwatch.a()));
-  }
-  
-  @Nullable
-  private Palette.Swatch b()
-  {
-    int m = this.jdField_a_of_type_JavaUtilList.size();
-    int j = -2147483648;
-    Object localObject = null;
-    int i = 0;
-    while (i < m)
-    {
-      Palette.Swatch localSwatch = (Palette.Swatch)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = j;
-      if (localSwatch.b() > j)
-      {
-        k = localSwatch.b();
-        localObject = localSwatch;
-      }
-      i += 1;
-      j = k;
-    }
-    return localObject;
   }
   
   @Nullable
   private Palette.Swatch b(Target paramTarget)
   {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int j = this.b.size();
     float f1 = 0.0F;
     Object localObject1 = null;
     int i = 0;
     while (i < j)
     {
-      Palette.Swatch localSwatch = (Palette.Swatch)this.jdField_a_of_type_JavaUtilList.get(i);
+      Palette.Swatch localSwatch = (Palette.Swatch)this.b.get(i);
       float f2 = f1;
       Object localObject2 = localObject1;
       if (a(localSwatch, paramTarget))
       {
-        float f3 = a(localSwatch, paramTarget);
+        float f3 = b(localSwatch, paramTarget);
         if (localObject1 != null)
         {
           f2 = f1;
@@ -137,28 +115,50 @@ public final class Palette
   }
   
   @Nullable
-  public Palette.Swatch a()
+  private Palette.Swatch c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch;
+    int m = this.b.size();
+    int j = -2147483648;
+    Object localObject = null;
+    int i = 0;
+    while (i < m)
+    {
+      Palette.Swatch localSwatch = (Palette.Swatch)this.b.get(i);
+      int k = j;
+      if (localSwatch.c() > j)
+      {
+        k = localSwatch.c();
+        localObject = localSwatch;
+      }
+      i += 1;
+      j = k;
+    }
+    return localObject;
   }
   
-  void a()
+  @Nullable
+  public Palette.Swatch a()
   {
-    int j = this.b.size();
+    return this.f;
+  }
+  
+  void b()
+  {
+    int j = this.c.size();
     int i = 0;
     while (i < j)
     {
-      Target localTarget = (Target)this.b.get(i);
-      localTarget.a();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsPaletteSimpleArrayMap.b(localTarget, a(localTarget));
+      Target localTarget = (Target)this.c.get(i);
+      localTarget.k();
+      this.d.b(localTarget, a(localTarget));
       i += 1;
     }
-    this.jdField_a_of_type_AndroidUtilSparseBooleanArray.clear();
+    this.e.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette
  * JD-Core Version:    0.7.0.1
  */

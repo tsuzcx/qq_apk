@@ -16,13 +16,13 @@ class MyVideoVisiblePersonPageView$5
     if ((paramObject instanceof QQUserUIItem))
     {
       paramView = (QQUserUIItem)paramObject;
-      StoryApi.a(this.a.a, 10, paramView.uid);
+      StoryApi.a(this.a.b, 10, paramView.uid);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView.5
  * JD-Core Version:    0.7.0.1
  */

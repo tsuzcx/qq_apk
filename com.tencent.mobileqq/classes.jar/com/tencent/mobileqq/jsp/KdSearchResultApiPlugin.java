@@ -14,7 +14,7 @@ public class KdSearchResultApiPlugin
   {
     if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
     {
-      paramJsBridgeListener = this.mRuntime.a();
+      paramJsBridgeListener = this.mRuntime.d();
       paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
       paramString1.setFlags(67108864);
       paramJsBridgeListener.startActivity(paramString1);
@@ -25,7 +25,7 @@ public class KdSearchResultApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.KdSearchResultApiPlugin
  * JD-Core Version:    0.7.0.1
  */

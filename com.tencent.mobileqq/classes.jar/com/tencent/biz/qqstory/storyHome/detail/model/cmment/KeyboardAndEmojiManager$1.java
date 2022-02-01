@@ -7,29 +7,29 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 class KeyboardAndEmojiManager$1
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private int c;
+  private Rect d = new Rect();
   
   KeyboardAndEmojiManager$1(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
   
   public void onGlobalLayout()
   {
-    KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
+    KeyboardAndEmojiManager.a(this.a).getWindowVisibleDisplayFrame(this.d);
+    int i = this.d.bottom - this.d.top;
+    if (i != this.c)
     {
-      int j = KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager).getRootView().getHeight();
+      int j = KeyboardAndEmojiManager.a(this.a).getRootView().getHeight();
       if (j - i > j / 4)
       {
-        this.jdField_a_of_type_Boolean = true;
-        KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
+        this.b = true;
+        KeyboardAndEmojiManager.b(this.a);
       }
-      else if (this.jdField_a_of_type_Boolean)
+      else if (this.b)
       {
-        KeyboardAndEmojiManager.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
+        KeyboardAndEmojiManager.c(this.a);
       }
-      this.jdField_a_of_type_Int = i;
+      this.c = i;
     }
   }
 }

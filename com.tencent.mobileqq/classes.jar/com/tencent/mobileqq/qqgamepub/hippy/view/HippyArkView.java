@@ -22,12 +22,12 @@ public class HippyArkView
   extends RelativeLayout
   implements ArkViewImplement.LoadCallback, HippyViewBase
 {
-  private long jdField_a_of_type_Long;
-  private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
-  private QQGameMsgInfo jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo;
-  private HippyArray jdField_a_of_type_ComTencentMttHippyCommonHippyArray;
-  private HippyMap jdField_a_of_type_ComTencentMttHippyCommonHippyMap;
-  private String jdField_a_of_type_JavaLangString;
+  private ArkView a;
+  private String b;
+  private HippyArray c;
+  private HippyMap d;
+  private QQGameMsgInfo e;
+  private long f;
   
   public HippyArkView(Context paramContext)
   {
@@ -37,8 +37,8 @@ public class HippyArkView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(getContext()).inflate(2131559150, this);
-    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374419));
+    LayoutInflater.from(getContext()).inflate(2131624905, this);
+    this.a = ((ArkView)findViewById(2131442586));
   }
   
   public void a()
@@ -51,20 +51,20 @@ public class HippyArkView
   public void a(QQGameMsgInfo paramQQGameMsgInfo)
   {
     QLog.d("QQGamePub_HippyArkView", 1, "HippyArkView init");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
+    if (this.a != null)
     {
       a();
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo = paramQQGameMsgInfo;
-      this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.arkAppName;
-      this.jdField_a_of_type_ComTencentArkOpenArkView.getViewTreeObserver().dispatchOnGlobalLayout();
-      this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramQQGameMsgInfo.arkAppConfig, this);
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.e = paramQQGameMsgInfo;
+      this.b = paramQQGameMsgInfo.arkAppName;
+      this.a.getViewTreeObserver().dispatchOnGlobalLayout();
+      this.a.load(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramQQGameMsgInfo.arkAppConfig, this);
+      this.f = SystemClock.elapsedRealtime();
     }
   }
   
   public void a(HippyArray paramHippyArray)
   {
-    this.jdField_a_of_type_ComTencentMttHippyCommonHippyArray = paramHippyArray;
+    this.c = paramHippyArray;
     QQGameMsgInfo localQQGameMsgInfo = new QQGameMsgInfo();
     localQQGameMsgInfo.arkAppName = paramHippyArray.getString(0);
     localQQGameMsgInfo.arkAppView = paramHippyArray.getString(1);
@@ -78,7 +78,7 @@ public class HippyArkView
   public void b()
   {
     QLog.d("QQGamePub_HippyArkView", 1, "HippyArkView destory");
-    ArkView localArkView = this.jdField_a_of_type_ComTencentArkOpenArkView;
+    ArkView localArkView = this.a;
     if (localArkView != null) {
       localArkView.onDestroy();
     }
@@ -87,7 +87,7 @@ public class HippyArkView
   public void c()
   {
     QLog.d("QQGamePub_HippyArkView", 1, "HippyArkView resume");
-    ArkView localArkView = this.jdField_a_of_type_ComTencentArkOpenArkView;
+    ArkView localArkView = this.a;
     if (localArkView != null) {
       localArkView.onResume();
     }
@@ -101,7 +101,7 @@ public class HippyArkView
   public void e()
   {
     QLog.d("QQGamePub_HippyArkView", 1, "HippyArkView pause");
-    ArkView localArkView = this.jdField_a_of_type_ComTencentArkOpenArkView;
+    ArkView localArkView = this.a;
     if (localArkView != null) {
       localArkView.onPause();
     }
@@ -129,16 +129,16 @@ public class HippyArkView
     if (QLog.isColorLevel()) {
       QLog.d("QQGamePub_HippyArkView", 1, "onLoadFailed");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo != null)
+    if (this.e != null)
     {
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      Object localObject2 = GamePubAccountHelper.a(GamePubAccountHelper.a()).d("76918").c("207984").a(2, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.advId).b(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId);
+      long l = SystemClock.elapsedRealtime() - this.f;
+      Object localObject2 = GamePubAccountHelper.c(GamePubAccountHelper.a()).d("76918").c("207984").a(2, this.e.advId).b(this.e.gameAppId);
       if (l > 0L) {
         localObject1 = String.valueOf(l);
       } else {
         localObject1 = "";
       }
-      Object localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.arkAppName);
+      Object localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.e.arkAppName);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramInt1);
       ((StringBuilder)localObject2).append("");
@@ -164,16 +164,16 @@ public class HippyArkView
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("QQGamePub_HippyArkView", 1, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo != null)
+    if (this.e != null)
     {
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      Object localObject2 = GamePubAccountHelper.a(GamePubAccountHelper.a()).d("76918").c("207984").a(2, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.advId).b(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId);
+      long l = SystemClock.elapsedRealtime() - this.f;
+      Object localObject2 = GamePubAccountHelper.c(GamePubAccountHelper.a()).d("76918").c("207984").a(2, this.e.advId).b(this.e.gameAppId);
       if (l > 0L) {
         localObject1 = String.valueOf(l);
       } else {
         localObject1 = "";
       }
-      localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.arkAppName);
+      localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.e.arkAppName);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramInt);
       ((StringBuilder)localObject2).append("");
@@ -194,12 +194,12 @@ public class HippyArkView
   public void setSrc(HippyMap paramHippyMap)
   {
     QLog.d("QQGamePub_HippyArkView", 1, "HippyArkView setSrc");
-    this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap = paramHippyMap;
+    this.d = paramHippyMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.view.HippyArkView
  * JD-Core Version:    0.7.0.1
  */

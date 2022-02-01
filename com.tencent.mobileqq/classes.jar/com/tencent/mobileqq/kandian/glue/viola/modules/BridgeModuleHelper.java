@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
+import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.ad.tangram.thread.AdThreadManager;
@@ -56,27 +57,27 @@ import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment;
 import com.tencent.mobileqq.kandian.biz.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.kandian.biz.comment.entity.FirstCommentCreateData;
-import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentCreateData;
-import com.tencent.mobileqq.kandian.biz.comment.util.api.IRIJCommentEntranceUtils;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
+import com.tencent.mobileqq.kandian.biz.comment.WebCommentEditorHandler;
+import com.tencent.mobileqq.kandian.biz.comment.WebCommentEditorHandler.OpenEditorParams;
+import com.tencent.mobileqq.kandian.biz.comment.base.ReadInJoyCommentEntrance;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.diandian.entryview.RIJEntryViewUtils;
 import com.tencent.mobileqq.kandian.biz.framework.RIJUGCDianDian;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.push.RIJPushNotifyManager;
 import com.tencent.mobileqq.kandian.biz.push.RIJPushNotifyManager.Companion;
 import com.tencent.mobileqq.kandian.biz.push.activity.ReadInJoyMessagesActivity;
 import com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyPrivacyListFragment;
-import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJDeliverUGCUtils;
-import com.tencent.mobileqq.kandian.biz.ugc.camera.api.IReadInJoyCaptureLauncher;
+import com.tencent.mobileqq.kandian.biz.ugc.api.impl.RIJDeliverUGCUtils;
+import com.tencent.mobileqq.kandian.biz.ugc.camera.api.impl.ReadInJoyCaptureLauncher;
 import com.tencent.mobileqq.kandian.biz.ugc.selectmember.ReadInJoySelectMemberAQFragment;
 import com.tencent.mobileqq.kandian.biz.video.api.impl.VideoFeedsWeiShiUtils;
 import com.tencent.mobileqq.kandian.biz.viola.api.OnTitleChangeListener;
 import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicManager;
 import com.tencent.mobileqq.kandian.glue.report.GalleryReportedUtils;
@@ -89,6 +90,7 @@ import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.glue.viola.adapter.ui.ComponentAdapter;
 import com.tencent.mobileqq.kandian.repo.biu.BiuBehaviour;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
+import com.tencent.mobileqq.kandian.repo.db.struct.ColumnInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AccountProfileInfo;
@@ -119,7 +121,6 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.DeviceInfoUtil.NetInfo;
 import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
@@ -133,9 +134,12 @@ import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.protofile.cmd0xe36.cmd0xe36.ReqBody;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tkd.topicsdk.bean.CommunityInfo;
 import com.tencent.util.VersionUtils;
 import com.tencent.viola.bridge.ViolaBridgeManager;
+import com.tencent.viola.core.ViolaDomManager;
 import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
@@ -151,7 +155,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
+import mqq.app.Foreground;
 import mqq.manager.TicketManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -161,99 +168,12 @@ public class BridgeModuleHelper
 {
   public static void A(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    paramJSONObject = paramJSONObject.optJSONArray("bids");
-    if (paramJSONObject != null)
-    {
-      Object localObject = new ArrayList();
-      int i = 0;
-      try
-      {
-        while (i < paramJSONObject.length())
-        {
-          ((ArrayList)localObject).add(i, paramJSONObject.get(i).toString());
-          i += 1;
-        }
-        HtmlOffline.a((ArrayList)localObject, ReadInJoyUtils.a(), new BridgeModuleHelper.13(paramBridgeModule, paramString), true, false);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("batchCheckUpdate error");
-          ((StringBuilder)localObject).append(paramJSONObject.getMessage());
-          QLog.e("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
-          paramBridgeModule.invokeErrorCallJS(paramString, null);
-        }
-      }
-    }
-  }
-  
-  public static void B(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    if (paramJSONObject == null)
-    {
-      QLog.d("BridgeModuleHelper", 1, "Error in isCached, the param is null!");
-      return;
-    }
-    paramJSONObject = HtmlOffline.a(paramJSONObject.optString("bid"));
-    JSONObject localJSONObject = new JSONObject();
-    if (paramJSONObject != null) {}
-    try
-    {
-      localJSONObject.put("result", true);
-      localJSONObject.put("version", paramJSONObject);
-    }
-    catch (JSONException localJSONException)
-    {
-      StringBuilder localStringBuilder;
-      break label74;
-    }
-    localJSONObject.put("result", false);
-    localJSONObject.put("version", "");
-    break label115;
-    label74:
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isCached,version:");
-      localStringBuilder.append(paramJSONObject);
-      QLog.d("BridgeModuleHelper", 2, localStringBuilder.toString());
-    }
-    label115:
-    paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-  }
-  
-  public static void C(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    int i;
-    if (paramJSONObject != null) {
-      i = ViolaUtils.getInt(Integer.valueOf(paramJSONObject.optInt("allowCacheTime")));
-    } else {
-      i = -1;
-    }
-    if (a())
-    {
-      if (i > 0)
-      {
-        b(paramBridgeModule, "webview", paramString);
-        return;
-      }
-      c(paramBridgeModule, "webview", paramString);
-      return;
-    }
-    d(paramBridgeModule, paramString, "no authorize");
-  }
-  
-  public static void D(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
     if (!TextUtils.isEmpty(paramString))
     {
       if (paramJSONObject == null) {
         return;
       }
-      ReadInJoyUserInfoModule localReadInJoyUserInfoModule = a();
+      ReadInJoyUserInfoModule localReadInJoyUserInfoModule = d();
       if (localReadInJoyUserInfoModule == null) {
         return;
       }
@@ -274,16 +194,8 @@ public class BridgeModuleHelper
       if (localArrayList.isEmpty()) {
         return;
       }
-      localReadInJoyUserInfoModule.a(localArrayList, new BridgeModuleHelper.21(localArrayList, paramString, paramBridgeModule));
+      localReadInJoyUserInfoModule.a(localArrayList, new BridgeModuleHelper.25(localArrayList, paramString, paramBridgeModule));
     }
-  }
-  
-  private static int a()
-  {
-    if (StudyModeManager.a()) {
-      return 8193;
-    }
-    return 1;
   }
   
   public static int a(int paramInt)
@@ -328,82 +240,24 @@ public class BridgeModuleHelper
     return 1;
   }
   
-  private static Intent a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, long paramLong1, String paramString4, long paramLong2, int paramInt3, String paramString5, int paramInt4)
+  private static Intent a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, long paramLong1, String paramString4, long paramLong2, int paramInt3, String paramString5, int paramInt4, Activity paramActivity)
   {
-    Intent localIntent = new Intent(QBaseActivity.sTopActivity, ReadInJoyDeliverBiuActivity.class);
-    localIntent.putExtra("arg_article_info", paramAbsBaseArticleInfo);
+    paramActivity = new Intent(paramActivity, ReadInJoyDeliverBiuActivity.class);
+    paramActivity.putExtra("arg_article_info", paramAbsBaseArticleInfo);
     if (!TextUtils.isEmpty(paramString1)) {
-      localIntent.putExtra("biu_rowkey", paramString1);
+      paramActivity.putExtra("biu_rowkey", paramString1);
     }
-    localIntent.putExtra("arg_from_type", paramInt1);
-    localIntent.putExtra("arg_type", paramInt2);
-    localIntent.putExtra("result_js_callback", paramString2);
-    localIntent.putExtra("biu_src", paramInt4);
-    localIntent.putExtra("feed_id", paramString3);
-    localIntent.putExtra("feedsType", paramLong1);
-    localIntent.putExtra("ugc_comment", paramString4);
-    localIntent.putExtra("arg_account_id", paramLong2);
-    localIntent.putExtra("arg_account_type", paramInt3);
-    localIntent.putExtra("arg_source_url", paramString5);
-    return localIntent;
-  }
-  
-  public static ReadInJoyUserInfoModule a()
-  {
-    Object localObject = RIJQQAppInterfaceUtil.a();
-    if (localObject == null) {
-      return null;
-    }
-    localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
-    if (localObject == null) {
-      return null;
-    }
-    return ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
-  }
-  
-  public static QQCustomDialog a(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    QQCustomDialog localQQCustomDialog = null;
-    if (paramJSONObject != null)
-    {
-      QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-      if (localQBaseActivity == null) {
-        return null;
-      }
-      localQQCustomDialog = new QQCustomDialog(localQBaseActivity, 2131756189);
-      localQQCustomDialog.setContentView(2131558954);
-      localQQCustomDialog.getMessageTextView().setMovementMethod(new ScrollingMovementMethod());
-      localQQCustomDialog.getMessageTextView().setMaxHeight(DisplayUtil.a(localQBaseActivity, 200.0F));
-      localQQCustomDialog.setTitle(paramJSONObject.optString("title"));
-      localQQCustomDialog.setMessage(paramJSONObject.optString("text"));
-      localQQCustomDialog.setCanceledOnTouchOutside(false);
-      if (paramJSONObject.optBoolean("needOkBtn", true)) {
-        localQQCustomDialog.setPositiveButton(paramJSONObject.optString("okBtnText", HardCodeUtil.a(2131701409)), new BridgeModuleHelper.4(paramJSONObject, paramBridgeModule, paramString));
-      }
-      if (paramJSONObject.optBoolean("needCancelBtn", true)) {
-        localQQCustomDialog.setNegativeButton(paramJSONObject.optString("cancelBtnText", HardCodeUtil.a(2131701405)), new BridgeModuleHelper.5(paramJSONObject, paramBridgeModule, paramString));
-      }
-      localQQCustomDialog.show();
-    }
-    return localQQCustomDialog;
-  }
-  
-  private static String a(int paramInt)
-  {
-    if (paramInt != 122)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return "";
-      case 116: 
-        return "showUGCVideoRecordPage";
-      case 115: 
-        return "showUGCVideoUploadPage";
-      }
-      return "showUGCEditPage";
-    }
-    return "showQAAskEditor";
+    paramActivity.putExtra("arg_from_type", paramInt1);
+    paramActivity.putExtra("arg_type", paramInt2);
+    paramActivity.putExtra("result_js_callback", paramString2);
+    paramActivity.putExtra("biu_src", paramInt4);
+    paramActivity.putExtra("feed_id", paramString3);
+    paramActivity.putExtra("feedsType", paramLong1);
+    paramActivity.putExtra("ugc_comment", paramString4);
+    paramActivity.putExtra("arg_account_id", paramLong2);
+    paramActivity.putExtra("arg_account_type", paramInt3);
+    paramActivity.putExtra("arg_source_url", paramString5);
+    return paramActivity;
   }
   
   private static String a(QQAppInterface paramQQAppInterface, String paramString)
@@ -426,54 +280,28 @@ public class BridgeModuleHelper
     return str1;
   }
   
-  private static String a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public static String a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    String str1;
     if (paramJSONObject1 != null) {
-      str1 = ViolaUtils.getString(paramJSONObject1.opt("toUin"), "");
+      paramJSONObject1 = ViolaUtils.getString(paramJSONObject1.opt("toUin"), "");
     } else {
-      str1 = "";
+      paramJSONObject1 = "";
     }
-    String str2 = str1;
-    if (TextUtils.isEmpty(str1))
+    Object localObject = paramJSONObject1;
+    if (TextUtils.isEmpty(paramJSONObject1))
     {
-      str2 = str1;
+      localObject = paramJSONObject1;
       if (paramJSONObject2 != null) {
-        str2 = ViolaUtils.getString(paramJSONObject1.opt("toUin"), "");
+        localObject = ViolaUtils.getString(paramJSONObject2.opt("toUin"), "");
       }
     }
-    return str2;
-  }
-  
-  private static HashMap<String, Object> a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      HashMap localHashMap = new HashMap();
-      if (TextUtils.isEmpty(paramJSONObject.optString("bgclr"))) {
-        localHashMap.put("title_nav_text_color", paramJSONObject.optString("bgclr"));
-      }
-      if (TextUtils.isEmpty(paramJSONObject.optString("txtclr"))) {
-        localHashMap.put("title_nav_background_color", paramJSONObject.optString("txtclr"));
-      }
-      if (!TextUtils.isEmpty(paramJSONObject.optString("titleclr"))) {
-        localHashMap.put("title_nav_center_text_color", paramJSONObject.optString("titleclr"));
-      }
-      if (!TextUtils.isEmpty(paramJSONObject.optString("alpha"))) {
-        localHashMap.put("title_nav_alpha", paramJSONObject.optString("alpha"));
-      }
-      if (!TextUtils.isEmpty(paramJSONObject.optString("statusBarColor"))) {
-        localHashMap.put("title_status_bar_color", paramJSONObject.optString("statusBarColor"));
-      }
-      return localHashMap;
-    }
-    return null;
+    return localObject;
   }
   
   public static JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    Object localObject2 = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject2 = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject2 != null)
     {
       TicketManager localTicketManager = (TicketManager)((QQAppInterface)localObject2).getManager(2);
@@ -506,12 +334,12 @@ public class BridgeModuleHelper
   
   private static void a(Activity paramActivity, int paramInt1, int paramInt2, byte paramByte, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
   {
-    if (((QQAppInterface)ReadInJoyUtils.a() != null) && (paramActivity != null))
+    if (((QQAppInterface)ReadInJoyUtils.b() != null) && (paramActivity != null))
     {
       ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(paramActivity, "/base/album/photolist");
       localActivityURIRequest.extra().putInt("enter_from", 25);
-      localActivityURIRequest.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationReadInJoy.jdField_a_of_type_JavaLangString);
-      localActivityURIRequest.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationReadInJoy.jdField_a_of_type_JavaLangString);
+      localActivityURIRequest.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationReadInJoy.a);
+      localActivityURIRequest.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationReadInJoy.a);
       localActivityURIRequest.extra().putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ReadInJoyUploadAvatarFragment.class.getName());
       localActivityURIRequest.extra().putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
       localActivityURIRequest.extra().putBoolean("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
@@ -653,9 +481,9 @@ public class BridgeModuleHelper
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(a(paramInt1));
+          localStringBuilder.append(b(paramInt1));
           localStringBuilder.append(" result:");
-          localStringBuilder.append(((IRIJDeliverUGCUtils)QRoute.api(IRIJDeliverUGCUtils.class)).replaceUrlInLog((String)localObject));
+          localStringBuilder.append(RIJDeliverUGCUtils.INSTANCE.replaceUrlInLog((String)localObject));
           QLog.d("BridgeModuleHelper", 2, localStringBuilder.toString());
         }
         paramBridgeModule.invokeCallJS(str, paramIntent);
@@ -678,7 +506,7 @@ public class BridgeModuleHelper
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(a(paramInt1));
+        ((StringBuilder)localObject).append(b(paramInt1));
         ((StringBuilder)localObject).append(" result:");
         ((StringBuilder)localObject).append(paramIntent);
         QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
@@ -741,7 +569,7 @@ public class BridgeModuleHelper
   {
     if (paramIntent != null)
     {
-      if (QBaseActivity.sTopActivity == null) {
+      if (e() == null) {
         return;
       }
       String str = paramIntent.getStringExtra("arg_callback");
@@ -754,7 +582,7 @@ public class BridgeModuleHelper
         if (Looper.myLooper() == null) {
           Looper.prepare();
         }
-        new Handler(QBaseActivity.sTopActivity.getMainLooper()).postDelayed(new BridgeModuleHelper.20(), 200L);
+        new Handler(e().getMainLooper()).postDelayed(new BridgeModuleHelper.24(), 200L);
       }
       if (paramIntent.hasExtra("result_msg")) {
         paramIntent = paramIntent.getStringExtra("result_msg");
@@ -774,6 +602,33 @@ public class BridgeModuleHelper
         paramBridgeModule.printStackTrace();
       }
     }
+  }
+  
+  @VisibleForTesting
+  protected static void a(@NotNull BridgeModule paramBridgeModule, Bundle paramBundle)
+  {
+    paramBridgeModule = paramBridgeModule.getViolaInstance().getActivity();
+    if (paramBridgeModule != null)
+    {
+      Intent localIntent = new Intent(paramBridgeModule, TroopAvatarWallPreviewActivity.class);
+      localIntent.putExtras(paramBundle);
+      paramBridgeModule.startActivity(localIntent);
+      return;
+    }
+    QLog.e("BridgeModuleHelper", 1, "showPictureWithSocialBottomBar error, activity == null");
+  }
+  
+  private static void a(BridgeModule paramBridgeModule, SosoLbsInfo paramSosoLbsInfo, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      b(paramBridgeModule, paramSosoLbsInfo, paramString2);
+      return;
+    }
+    d(paramBridgeModule, paramString2, "fail to get locationInfo from cache");
   }
   
   public static void a(BridgeModule paramBridgeModule, String paramString)
@@ -800,12 +655,36 @@ public class BridgeModuleHelper
     }
   }
   
+  public static void a(BridgeModule paramBridgeModule, String paramString, Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return;
+    }
+    paramActivity = DeviceInfoUtil.a(paramActivity);
+    String str = DeviceInfoUtil.e();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("qqVersion", str);
+      localJSONObject.put("qqBuild", paramActivity);
+      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
+      return;
+    }
+    catch (JSONException paramBridgeModule)
+    {
+      paramString = new StringBuilder();
+      paramString.append("[getClientInfo]: ");
+      paramString.append(paramBridgeModule.getMessage());
+      QLog.e("BridgeModuleHelper", 1, paramString.toString());
+    }
+  }
+  
   private static void a(BridgeModule paramBridgeModule, String paramString, File paramFile)
   {
     Bundle localBundle = new Bundle();
     paramFile = new DownloadTask(paramString, paramFile);
-    paramFile.d = 60L;
-    ((DownloaderFactory)ReadInJoyUtils.a().getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload(paramFile, new BridgeModuleHelper.8(paramBridgeModule, paramString), localBundle);
+    paramFile.u = 60L;
+    ((DownloaderFactory)ReadInJoyUtils.b().getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload(paramFile, new BridgeModuleHelper.8(paramBridgeModule, paramString), localBundle);
   }
   
   public static void a(BridgeModule paramBridgeModule, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, String paramString3, String paramString4, String paramString5)
@@ -815,12 +694,12 @@ public class BridgeModuleHelper
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", GalleryReportedUtils.a(paramBridgeModule.getViolaInstance().getActivity()));
       localJSONObject.put("os", "1");
-      localJSONObject.put("uin", String.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin()));
+      localJSONObject.put("uin", String.valueOf(RIJQQAppInterfaceUtil.c()));
       localJSONObject.put("rowkey", paramString1);
       if (paramInt1 >= 0) {
         localJSONObject.put("source", String.valueOf(paramInt1));
       }
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("version", VideoReporter.a);
       localJSONObject.put("vid", paramString2);
       if (paramBoolean) {
         localJSONObject.put("cancel", "1");
@@ -852,30 +731,29 @@ public class BridgeModuleHelper
     paramBridgeModule = new VideoR5.Builder(paramBridgeModule);
     if (paramInt4 == 4)
     {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009546", "0X8009546", 0, 0, "", paramString4, paramString3, paramBridgeModule.a().a(), false);
+      PublicAccountReportUtils.a(null, "", "0X8009546", "0X8009546", 0, 0, "", paramString4, paramString3, paramBridgeModule.b().a(), false);
       return;
     }
     if (paramInt4 == 11) {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009546", "0X8009546", 0, 0, "", paramString5, "", paramBridgeModule.a().a(), false);
+      PublicAccountReportUtils.a(null, "", "0X8009546", "0X8009546", 0, 0, "", paramString5, "", paramBridgeModule.b().a(), false);
     }
   }
   
-  public static void a(BridgeModule paramBridgeModule, String paramString1, String paramString2, String paramString3)
+  public static void a(BridgeModule paramBridgeModule, String paramString1, String paramString2, String paramString3, Activity paramActivity)
   {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity == null) {
+    if (paramActivity == null) {
       return;
     }
     if (TextUtils.isEmpty(paramString1))
     {
       if (!TextUtils.isEmpty(paramString2)) {
-        paramBridgeModule.invokeErrorCallJS(paramString2, HardCodeUtil.a(2131701410));
+        paramBridgeModule.invokeErrorCallJS(paramString2, HardCodeUtil.a(2131899435));
       }
       return;
     }
     if ((!paramString1.contains("weishi")) && (!paramString1.contains("weishi://feed")))
     {
-      if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).launch(localQBaseActivity, paramString1))
+      if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).launch(paramActivity, paramString1))
       {
         Intent localIntent = new Intent();
         localIntent.setAction("android.intent.action.VIEW");
@@ -886,34 +764,33 @@ public class BridgeModuleHelper
         localIntent.putExtra("big_brother_source_key", str);
         localIntent.putExtra("big_brother_ref_source_key", RIJJumpUtils.a(0));
         localIntent.setData(Uri.parse(paramString1));
-        localQBaseActivity.startActivity(localIntent);
+        paramActivity.startActivity(localIntent);
       }
     }
-    else if (WeishiGuideUtils.a(localQBaseActivity))
+    else if (WeishiGuideUtils.a(paramActivity))
     {
-      VideoFeedsWeiShiUtils.a(localQBaseActivity, "video_type_videopublic");
+      VideoFeedsWeiShiUtils.a(paramActivity, "video_type_videopublic");
     }
     else
     {
-      QQToast.a(localQBaseActivity, -1, HardCodeUtil.a(2131701416), 0).b(localQBaseActivity.getResources().getDimensionPixelSize(2131299168));
-      VideoFeedsWeiShiUtils.b(localQBaseActivity, "video_type_videopublic");
+      QQToast.makeText(paramActivity, -1, HardCodeUtil.a(2131899441), 0).show(paramActivity.getResources().getDimensionPixelSize(2131299920));
+      VideoFeedsWeiShiUtils.b(paramActivity, "video_type_videopublic");
     }
     if (!TextUtils.isEmpty(paramString2)) {
       paramBridgeModule.invokeCallJS(paramString2, null);
     }
   }
   
-  public static void a(BridgeModule paramBridgeModule, String paramString1, String paramString2, boolean paramBoolean)
+  public static void a(BridgeModule paramBridgeModule, String paramString1, String paramString2, boolean paramBoolean, Activity paramActivity)
   {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity == null) {
+    if (paramActivity == null) {
       return;
     }
     boolean bool;
     if ((!"weishi://feed".equals(paramString1)) && (!"weishi".equals(paramString1))) {
-      bool = PackageUtil.a(localQBaseActivity, paramString1);
+      bool = PackageUtil.a(paramActivity, paramString1);
     } else {
-      bool = WeishiGuideUtils.a(localQBaseActivity);
+      bool = WeishiGuideUtils.a(paramActivity);
     }
     for (;;)
     {
@@ -950,9 +827,9 @@ public class BridgeModuleHelper
   
   public static void a(BridgeModule paramBridgeModule, String paramString, JSONObject paramJSONObject)
   {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    paramBridgeModule = new BridgeModuleHelper.15(paramBridgeModule, paramString);
-    if (localQBaseActivity == null)
+    Activity localActivity = e();
+    paramBridgeModule = new BridgeModuleHelper.18(paramBridgeModule, paramString);
+    if (localActivity == null)
     {
       paramBridgeModule.a(null, new GdtAdError(5));
       return;
@@ -962,13 +839,40 @@ public class BridgeModuleHelper
     long l2 = paramJSONObject.optLong("articleId", 0L);
     int i = paramJSONObject.optInt("sourceFrom", 0);
     int j = paramJSONObject.optInt("shareRate", 0);
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).getMotiveAd(localQBaseActivity, paramString, l1, l2, i, j, paramBridgeModule);
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).getMotiveAd(localActivity, paramString, l1, l2, i, j, paramBridgeModule);
+  }
+  
+  public static void a(BridgeModule paramBridgeModule, String paramString, JSONObject paramJSONObject, Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("res", 1);
+      paramJSONObject = paramJSONObject.optString("miniAppUrl");
+      if (((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramActivity, paramJSONObject, 2103, null))
+      {
+        localJSONObject.put("res", 0);
+        paramBridgeModule.invokeCallJS(paramString, localJSONObject);
+        return;
+      }
+      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      label81:
+      break label81;
+    }
+    paramBridgeModule.invokeCallJS(paramString, localJSONObject);
   }
   
   public static void a(BridgeModule paramBridgeModule, String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
     QLog.d("BridgeModuleHelper", 2, "getGdtDeviceInfo callback before");
-    AdThreadManager.INSTANCE.post(new BridgeModuleHelper.14(paramJSONObject, paramBoolean, paramBridgeModule, paramString), 4);
+    AdThreadManager.INSTANCE.post(new BridgeModuleHelper.17(paramJSONObject, paramBoolean, paramBridgeModule, paramString), 4);
   }
   
   public static void a(BridgeModule paramBridgeModule, String paramString, boolean paramBoolean)
@@ -1086,6 +990,49 @@ public class BridgeModuleHelper
     }
   }
   
+  public static void a(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString, int paramInt)
+  {
+    if (paramBridgeModule.getViolaInstance().getFragment() != null) {
+      paramBridgeModule = paramBridgeModule.getViolaInstance().getFragment().getActivity();
+    } else {
+      paramBridgeModule = paramBridgeModule.getViolaInstance().getActivity();
+    }
+    if (paramBridgeModule != null)
+    {
+      if (paramJSONObject == null) {
+        return;
+      }
+      WebCommentEditorHandler.OpenEditorParams localOpenEditorParams = new WebCommentEditorHandler.OpenEditorParams();
+      localOpenEditorParams.a = paramBridgeModule;
+      localOpenEditorParams.b = paramJSONObject;
+      localOpenEditorParams.c = paramInt;
+      localOpenEditorParams.d = paramString;
+      localOpenEditorParams.e = 126;
+      WebCommentEditorHandler.a(localOpenEditorParams);
+    }
+  }
+  
+  public static void a(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return;
+    }
+    paramJSONObject = paramJSONObject.optString("feedsId");
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showVisibleUserList feedsId ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("feeds_id", new BigInteger(paramJSONObject).longValue());
+      PublicFragmentActivity.a(paramActivity, (Intent)localObject, ReadInJoyPrivacyListFragment.class);
+      paramBridgeModule.invokeCallJS(paramString, null);
+      return;
+    }
+    paramBridgeModule.invokeErrorCallJS(paramString, "params error");
+  }
+  
   public static void a(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString, Fragment paramFragment)
   {
     Object localObject = paramFragment;
@@ -1108,11 +1055,11 @@ public class BridgeModuleHelper
     {
       if (((String)localObject).equals("right"))
       {
-        paramFragment.a(paramJSONObject, new BridgeModuleHelper.17(paramBridgeModule, paramString));
+        paramFragment.a(paramJSONObject, new BridgeModuleHelper.21(paramBridgeModule, paramString));
         return;
       }
       if (((String)localObject).equals("left")) {
-        paramFragment.b(paramJSONObject, new BridgeModuleHelper.18(paramBridgeModule, paramString));
+        paramFragment.b(paramJSONObject, new BridgeModuleHelper.22(paramBridgeModule, paramString));
       }
     }
   }
@@ -1130,10 +1077,10 @@ public class BridgeModuleHelper
     if (i == 1)
     {
       paramJSONObject = (JSONObject)localObject;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a != null)
       {
         paramJSONObject = (JSONObject)localObject;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() > 0)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a.size() > 0)
         {
           paramJSONObject = new StringBuilder();
           paramJSONObject.append((String)localObject);
@@ -1145,9 +1092,9 @@ public class BridgeModuleHelper
       ((StringBuilder)localObject).append("：");
       ((StringBuilder)localObject).append(paramJSONObject);
       paramJSONObject = ((StringBuilder)localObject).toString();
-      localObject = (QQAppInterface)ReadInJoyUtils.a();
+      localObject = (QQAppInterface)ReadInJoyUtils.b();
       if (localObject != null) {
-        ((ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), paramLong1, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo, 0L, paramJSONObject, paramLong2, -1L, paramInt1, paramString, paramInt2, paramAbsBaseArticleInfo);
+        ((ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().a(RIJQQAppInterfaceUtil.c(), paramLong1, paramAbsBaseArticleInfo.mSocialFeedInfo.n, 0L, paramJSONObject, paramLong2, -1L, paramInt1, paramString, paramInt2, paramAbsBaseArticleInfo);
       }
       paramBridgeModule.onActivityResult(113, -1, paramIntent);
       return;
@@ -1156,13 +1103,13 @@ public class BridgeModuleHelper
       bool = false;
     }
     paramIntent.putExtra("hideSuccessToast", bool);
-    QBaseActivity.sTopActivity.startActivityForResult(paramIntent, 113);
-    QBaseActivity.sTopActivity.overridePendingTransition(0, 0);
+    paramBridgeModule.getActivity().startActivityForResult(paramIntent, 113);
+    paramBridgeModule.getActivity().overridePendingTransition(0, 0);
   }
   
   private static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong)
   {
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo = new UGCFeedsInfo();
+    paramAbsBaseArticleInfo.mSocialFeedInfo.s = new UGCFeedsInfo();
     a(paramJSONObject, paramAbsBaseArticleInfo);
     paramAbsBaseArticleInfo.mTitle = new String(Base64Util.decode(paramString1, 0));
     paramAbsBaseArticleInfo.mSummary = "";
@@ -1176,65 +1123,115 @@ public class BridgeModuleHelper
       }
       else
       {
-        paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b = new ArrayList();
+        paramAbsBaseArticleInfo.mSocialFeedInfo.s.c = new ArrayList();
         paramString1 = new UGCVideoInfo();
         paramJSONObject = paramJSONObject.optJSONObject("ugcVideoInfo");
         if (paramJSONObject != null)
         {
           paramString1.d = paramJSONObject.optString("ugcVideoCoverUrl");
-          paramString1.jdField_a_of_type_Long = paramJSONObject.optInt("ugcVideoDuration");
+          paramString1.g = paramJSONObject.optInt("ugcVideoDuration");
           paramString1.e = paramString2;
-          paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.add(paramString1);
+          paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.add(paramString1);
         }
       }
     }
     else
     {
-      paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      paramAbsBaseArticleInfo.mSocialFeedInfo.s.b = new ArrayList();
       paramString1 = new UGCPicInfo();
       paramJSONObject = paramJSONObject.optJSONArray("ugcPicInfo");
       if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
       {
-        paramString1.c = paramJSONObject.getJSONObject(0).optString("ugcPicUrl");
-        paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+        paramString1.e = paramJSONObject.getJSONObject(0).optString("ugcPicUrl");
+        paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.add(paramString1);
       }
     }
     if (paramInt2 == 22)
     {
       paramJSONObject = new AccountProfileInfo();
-      paramJSONObject.jdField_a_of_type_JavaLangString = paramString3;
-      paramJSONObject.b = paramString4;
-      paramJSONObject.c = paramString5;
-      paramJSONObject.jdField_a_of_type_Long = paramLong;
-      paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAccountProfileInfo = paramJSONObject;
+      paramJSONObject.c = paramString3;
+      paramJSONObject.d = paramString4;
+      paramJSONObject.e = paramString5;
+      paramJSONObject.a = paramLong;
+      paramAbsBaseArticleInfo.mSocialFeedInfo.s.k = paramJSONObject;
     }
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Int = paramInt1;
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaLangString = paramAbsBaseArticleInfo.mTitle;
+    paramAbsBaseArticleInfo.mSocialFeedInfo.s.a = paramInt1;
+    paramAbsBaseArticleInfo.mSocialFeedInfo.s.f = paramAbsBaseArticleInfo.mTitle;
   }
   
   private static void a(File paramFile, String paramString)
   {
-    ThreadManager.executeOnNetWorkThread(new BridgeModuleHelper.19(paramString, paramFile));
+    ThreadManager.executeOnNetWorkThread(new BridgeModuleHelper.23(paramString, paramFile));
   }
   
   public static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("?client=androidQQ");
+      ((StringBuilder)localObject).append("&version=8.8.17.5770");
+      paramString = new StringBuilder();
+      paramString.append("&system=");
+      paramString.append(Build.VERSION.RELEASE);
+      ((StringBuilder)localObject).append(paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append("&device=");
+      paramString.append(Build.DEVICE);
+      ((StringBuilder)localObject).append(paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append("&uin=");
+      paramString.append(RIJQQAppInterfaceUtil.d());
+      ((StringBuilder)localObject).append(paramString.toString());
+      paramString = EmosmUtils.a("VIP_xingying", ((StringBuilder)localObject).toString());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("saveImageToLocal imageUrl=");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append(".jpg");
+      localObject = ((StringBuilder)localObject).toString();
+      a(new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_IMG_SAVE), (String)localObject), paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("saveImageToLocal imageUrl error=");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QLog.e("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+  }
+  
+  public static void a(String paramString, Activity paramActivity)
   {
     if (!TextUtils.isEmpty(paramString))
     {
       Intent localIntent = new Intent("android.intent.action.VIEW");
       localIntent.addCategory("android.intent.category.BROWSABLE");
       localIntent.setData(Uri.parse(paramString));
-      paramString = QBaseActivity.sTopActivity;
-      if (paramString != null) {
-        paramString.startActivity(localIntent);
+      if (paramActivity != null) {
+        paramActivity.startActivity(localIntent);
       }
     }
   }
   
-  public static void a(String paramString, Bundle paramBundle)
+  public static void a(String paramString, Bundle paramBundle, Activity paramActivity)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      a(QBaseActivity.sTopActivity, paramString, paramBundle);
+      a(paramActivity, paramString, paramBundle);
     }
   }
   
@@ -1242,34 +1239,34 @@ public class BridgeModuleHelper
   public static void a(String paramString, JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: ldc 119
+    //   0: ldc 148
     //   2: astore 6
-    //   4: getstatic 207	com/tencent/mobileqq/app/QBaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/QBaseActivity;
+    //   4: invokestatic 526	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:e	()Landroid/app/Activity;
     //   7: astore 8
     //   9: iconst_0
     //   10: istore_2
     //   11: iconst_0
     //   12: istore 4
     //   14: aload_1
-    //   15: ldc_w 1335
-    //   18: invokevirtual 132	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   15: ldc_w 1308
+    //   18: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   21: istore_3
     //   22: aload_1
-    //   23: ldc_w 1337
-    //   26: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: ldc_w 1310
+    //   26: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   29: astore 5
     //   31: iload 4
     //   33: istore_2
     //   34: aload_1
-    //   35: ldc_w 1339
+    //   35: ldc_w 1312
     //   38: iconst_0
-    //   39: invokevirtual 1020	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   39: invokevirtual 871	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   42: istore 4
     //   44: iload 4
     //   46: istore_2
     //   47: aload_1
-    //   48: ldc_w 1341
-    //   51: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: ldc_w 1314
+    //   51: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   54: astore_1
     //   55: iload 4
     //   57: istore_2
@@ -1281,33 +1278,33 @@ public class BridgeModuleHelper
     //   68: astore 5
     //   70: goto +18 -> 88
     //   73: astore 5
-    //   75: ldc 119
+    //   75: ldc 148
     //   77: astore_1
     //   78: goto +10 -> 88
     //   81: astore 5
-    //   83: ldc 119
+    //   83: ldc 148
     //   85: astore_1
     //   86: iconst_0
     //   87: istore_3
-    //   88: ldc 78
+    //   88: ldc 211
     //   90: iconst_1
-    //   91: ldc_w 1343
+    //   91: ldc_w 1316
     //   94: aload 5
-    //   96: invokestatic 798	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   96: invokestatic 618	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   99: aload_1
     //   100: astore 5
     //   102: aload 6
     //   104: astore_1
-    //   105: ldc_w 1024
-    //   108: invokestatic 687	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   111: checkcast 1024	com/tencent/mobileqq/kandian/ad/api/IRIJAdService
+    //   105: ldc_w 875
+    //   108: invokestatic 750	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   111: checkcast 875	com/tencent/mobileqq/kandian/ad/api/IRIJAdService
     //   114: aload 8
     //   116: iload_3
     //   117: aload 5
     //   119: iload_2
     //   120: aload_0
     //   121: aload_1
-    //   122: invokeinterface 1347 7 0
+    //   122: invokeinterface 1320 7 0
     //   127: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1322,7 +1319,7 @@ public class BridgeModuleHelper
     //   100	18	5	localJSONObject	JSONObject
     //   2	101	6	str	String
     //   61	6	7	localException3	Exception
-    //   7	108	8	localQBaseActivity	QBaseActivity
+    //   7	108	8	localActivity	Activity
     // Exception table:
     //   from	to	target	type
     //   34	44	61	java/lang/Exception
@@ -1333,9 +1330,43 @@ public class BridgeModuleHelper
   
   public static void a(JSONObject paramJSONObject)
   {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity != null) {
-      ViolaAccessHelper.a(localQBaseActivity, paramJSONObject);
+    String str = paramJSONObject.optString("code");
+    Object localObject4 = paramJSONObject.optJSONObject("params");
+    if ((!TextUtils.isEmpty(str)) && (localObject4 != null))
+    {
+      paramJSONObject = ((JSONObject)localObject4).optJSONObject("r2");
+      Object localObject1 = ((JSONObject)localObject4).optJSONObject("r3");
+      Object localObject2 = ((JSONObject)localObject4).optJSONObject("r4");
+      Object localObject3 = ((JSONObject)localObject4).optJSONObject("r5");
+      localObject4 = a((JSONObject)localObject4, (JSONObject)localObject3);
+      if (paramJSONObject != null) {
+        paramJSONObject = paramJSONObject.toString();
+      } else {
+        paramJSONObject = "";
+      }
+      if (localObject1 != null) {
+        localObject1 = ((JSONObject)localObject1).toString();
+      } else {
+        localObject1 = "";
+      }
+      if (localObject2 != null) {
+        localObject2 = ((JSONObject)localObject2).toString();
+      } else {
+        localObject2 = "";
+      }
+      if (localObject3 != null) {
+        localObject3 = ((JSONObject)localObject3).toString();
+      } else {
+        localObject3 = "";
+      }
+      PublicAccountReportUtils.a(null, (String)localObject4, str, str, 0, 0, paramJSONObject, (String)localObject1, (String)localObject2, (String)localObject3, false);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, Activity paramActivity)
+  {
+    if (paramActivity != null) {
+      ViolaAccessHelper.a(paramActivity, paramJSONObject);
     }
   }
   
@@ -1344,8 +1375,8 @@ public class BridgeModuleHelper
     paramJSONObject = paramJSONObject.optJSONArray("ugcAtLevelList");
     if (paramJSONObject != null)
     {
-      paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo = new BiuInfo();
-      paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramAbsBaseArticleInfo.mSocialFeedInfo.s.h = new BiuInfo();
+      paramAbsBaseArticleInfo.mSocialFeedInfo.s.h.a = new ArrayList();
       int i = 0;
       while (i < paramJSONObject.length())
       {
@@ -1373,7 +1404,7 @@ public class BridgeModuleHelper
         {
           localException.printStackTrace();
         }
-        paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.add(localBiuCommentInfo);
+        paramAbsBaseArticleInfo.mSocialFeedInfo.s.h.a.add(localBiuCommentInfo);
         i += 1;
       }
     }
@@ -1386,10 +1417,10 @@ public class BridgeModuleHelper
     }
     paramJSONObject = paramJSONObject.getJSONArray("biuLevelList");
     paramAbsBaseArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo = new BiuInfo();
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong1);
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b = Long.valueOf(paramLong2);
-    paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramAbsBaseArticleInfo.mSocialFeedInfo.n = new BiuInfo();
+    paramAbsBaseArticleInfo.mSocialFeedInfo.n.b = Long.valueOf(paramLong1);
+    paramAbsBaseArticleInfo.mSocialFeedInfo.n.c = Long.valueOf(paramLong2);
+    paramAbsBaseArticleInfo.mSocialFeedInfo.n.a = new ArrayList();
     if (paramJSONObject != null)
     {
       int i = 0;
@@ -1419,15 +1450,15 @@ public class BridgeModuleHelper
         {
           localException.printStackTrace();
         }
-        paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.add(localBiuCommentInfo);
+        paramAbsBaseArticleInfo.mSocialFeedInfo.n.a.add(localBiuCommentInfo);
         i += 1;
       }
     }
   }
   
-  public static void a(JSONObject paramJSONObject, String paramString)
+  public static void a(JSONObject paramJSONObject, String paramString, Activity paramActivity)
   {
-    if (QBaseActivity.sTopActivity == null) {
+    if (paramActivity == null) {
       return;
     }
     String str1 = paramJSONObject.optString("topicId");
@@ -1456,7 +1487,7 @@ public class BridgeModuleHelper
       paramJSONObject.printStackTrace();
       paramJSONObject = (JSONObject)localObject;
     }
-    localObject = new Intent(QBaseActivity.sTopActivity, ReadInJoyDeliverUGCActivity.class);
+    localObject = new Intent(paramActivity, ReadInJoyDeliverUGCActivity.class);
     ((Intent)localObject).putExtra("arg_topic_id", str1);
     if (i == 0)
     {
@@ -1473,553 +1504,509 @@ public class BridgeModuleHelper
     ((Intent)localObject).putExtra("arg_ad_tag", m);
     ((Intent)localObject).putExtra("arg_callback", paramString);
     ((Intent)localObject).putExtra("arg_ugc_edit_cookie", str2);
-    QBaseActivity.sTopActivity.startActivityForResult((Intent)localObject, 114);
-  }
-  
-  public static void a(JSONObject paramJSONObject, String paramString, Activity paramActivity)
-  {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity == null) {
-      return;
-    }
-    int n = paramJSONObject.optInt("type", 1);
-    int j;
-    int i;
-    if (paramJSONObject.has("width"))
-    {
-      j = paramJSONObject.optInt("width");
-      i = DisplayUtil.a(localQBaseActivity, j / 2);
-    }
-    else
-    {
-      i = 640;
-      j = 640;
-    }
-    int k;
-    int m;
-    if (paramJSONObject.has("height"))
-    {
-      k = paramJSONObject.optInt("height");
-      m = DisplayUtil.a(localQBaseActivity, k / 2);
-    }
-    else
-    {
-      m = 640;
-      k = 640;
-    }
-    a(paramActivity, 1, n, (byte)118, i, m, j, k, paramString);
+    paramActivity.startActivityForResult((Intent)localObject, 114);
   }
   
   /* Error */
   public static void a(JSONObject paramJSONObject, String paramString, BridgeModule paramBridgeModule)
   {
     // Byte code:
-    //   0: getstatic 207	com/tencent/mobileqq/app/QBaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/QBaseActivity;
-    //   3: ifnonnull +4 -> 7
-    //   6: return
-    //   7: aload_0
-    //   8: ldc_w 311
-    //   11: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   14: astore 26
-    //   16: aload_0
-    //   17: ldc_w 1462
-    //   20: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   23: astore 28
-    //   25: aload_0
-    //   26: ldc_w 1464
-    //   29: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: astore 30
-    //   34: aload 30
-    //   36: invokestatic 166	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   39: istore 8
-    //   41: iload 8
-    //   43: ifeq +10 -> 53
-    //   46: ldc 119
-    //   48: astore 30
-    //   50: goto +3 -> 53
-    //   53: lconst_0
-    //   54: lstore 15
-    //   56: new 853	java/lang/String
-    //   59: dup
-    //   60: aload 26
-    //   62: iconst_0
-    //   63: invokestatic 1064	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
-    //   66: invokespecial 1067	java/lang/String:<init>	([B)V
-    //   69: astore 25
-    //   71: new 853	java/lang/String
-    //   74: dup
-    //   75: aload 28
-    //   77: iconst_0
-    //   78: invokestatic 1064	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
-    //   81: invokespecial 1067	java/lang/String:<init>	([B)V
-    //   84: astore 27
-    //   86: aload_0
-    //   87: ldc_w 1402
-    //   90: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   93: astore 29
-    //   95: aload_0
-    //   96: ldc_w 858
-    //   99: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   102: astore 31
-    //   104: aload 29
-    //   106: invokestatic 166	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   109: ifne +20 -> 129
-    //   112: new 1404	java/math/BigInteger
-    //   115: dup
-    //   116: aload 29
-    //   118: invokespecial 1405	java/math/BigInteger:<init>	(Ljava/lang/String;)V
-    //   121: invokevirtual 1408	java/math/BigInteger:longValue	()J
-    //   124: lstore 9
-    //   126: goto +6 -> 132
-    //   129: lconst_0
-    //   130: lstore 9
-    //   132: aload_0
-    //   133: ldc_w 1466
-    //   136: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   139: astore 26
-    //   141: aload 26
-    //   143: invokestatic 166	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   146: ifne +20 -> 166
-    //   149: new 1404	java/math/BigInteger
-    //   152: dup
-    //   153: aload 26
-    //   155: invokespecial 1405	java/math/BigInteger:<init>	(Ljava/lang/String;)V
-    //   158: invokevirtual 1408	java/math/BigInteger:longValue	()J
-    //   161: lstore 11
-    //   163: goto +6 -> 169
-    //   166: lconst_0
-    //   167: lstore 11
-    //   169: aload_0
-    //   170: ldc_w 1468
-    //   173: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   176: astore 26
-    //   178: aload 26
-    //   180: invokestatic 166	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   183: ifne +20 -> 203
-    //   186: new 1404	java/math/BigInteger
-    //   189: dup
-    //   190: aload 26
-    //   192: invokespecial 1405	java/math/BigInteger:<init>	(Ljava/lang/String;)V
-    //   195: invokevirtual 1408	java/math/BigInteger:longValue	()J
-    //   198: lstore 13
-    //   200: goto +6 -> 206
-    //   203: lconst_0
-    //   204: lstore 13
-    //   206: aload_0
-    //   207: ldc_w 1470
-    //   210: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   213: astore 26
-    //   215: aload 26
-    //   217: invokestatic 166	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   220: ifne +20 -> 240
-    //   223: new 1404	java/math/BigInteger
-    //   226: dup
-    //   227: aload 26
-    //   229: invokespecial 1405	java/math/BigInteger:<init>	(Ljava/lang/String;)V
-    //   232: invokevirtual 1408	java/math/BigInteger:longValue	()J
-    //   235: lstore 19
-    //   237: goto +6 -> 243
-    //   240: lconst_0
-    //   241: lstore 19
-    //   243: aload_0
-    //   244: ldc_w 1472
-    //   247: invokevirtual 1075	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   250: lstore 17
-    //   252: lload 17
-    //   254: lstore 15
-    //   256: aload_0
-    //   257: ldc_w 1474
-    //   260: invokevirtual 132	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   263: istore_3
-    //   264: aload 27
-    //   266: astore 28
-    //   268: aload 29
-    //   270: astore 26
-    //   272: lload 17
-    //   274: lstore 15
-    //   276: aload 25
-    //   278: astore 27
-    //   280: lload 19
-    //   282: lstore 21
-    //   284: aload 31
-    //   286: astore 25
-    //   288: lload 9
-    //   290: lstore 17
-    //   292: lload 11
-    //   294: lstore 19
-    //   296: lload 21
-    //   298: lstore 11
-    //   300: lload 13
-    //   302: lstore 9
-    //   304: lload 17
-    //   306: lstore 13
-    //   308: lload 19
-    //   310: lstore 17
-    //   312: goto +228 -> 540
-    //   315: astore 26
-    //   317: lload 11
-    //   319: lstore 17
-    //   321: lload 15
-    //   323: lstore 11
-    //   325: aload 27
-    //   327: astore 28
-    //   329: lload 17
-    //   331: lstore 15
-    //   333: aload 25
-    //   335: astore 27
-    //   337: aload 31
-    //   339: astore 25
-    //   341: lload 9
-    //   343: lstore 17
-    //   345: lload 11
-    //   347: lstore 9
-    //   349: lload 19
-    //   351: lstore 11
-    //   353: goto +148 -> 501
-    //   356: astore 26
-    //   358: goto +8 -> 366
-    //   361: astore 26
-    //   363: lconst_0
-    //   364: lstore 13
-    //   366: lconst_0
-    //   367: lstore 19
-    //   369: lconst_0
-    //   370: lstore 21
-    //   372: aload 27
-    //   374: astore 28
-    //   376: lload 11
-    //   378: lstore 15
-    //   380: aload 25
-    //   382: astore 27
-    //   384: aload 31
-    //   386: astore 25
-    //   388: lload 9
-    //   390: lstore 17
-    //   392: lload 21
-    //   394: lstore 9
-    //   396: lload 19
-    //   398: lstore 11
-    //   400: goto +101 -> 501
-    //   403: astore 26
-    //   405: goto +8 -> 413
-    //   408: astore 26
-    //   410: lconst_0
-    //   411: lstore 9
-    //   413: lconst_0
-    //   414: lstore 19
-    //   416: lconst_0
-    //   417: lstore 13
-    //   419: lload 13
-    //   421: lstore 11
-    //   423: aload 27
-    //   425: astore 28
-    //   427: aload 25
-    //   429: astore 27
-    //   431: aload 31
-    //   433: astore 25
-    //   435: lload 9
-    //   437: lstore 17
-    //   439: lload 19
-    //   441: lstore 9
-    //   443: goto +58 -> 501
-    //   446: astore 26
-    //   448: aload 27
-    //   450: astore 28
-    //   452: aload 25
-    //   454: astore 27
-    //   456: goto +22 -> 478
-    //   459: astore 26
-    //   461: goto +13 -> 474
-    //   464: astore 27
-    //   466: aload 26
-    //   468: astore 25
-    //   470: aload 27
-    //   472: astore 26
-    //   474: aload 25
-    //   476: astore 27
-    //   478: lconst_0
-    //   479: lstore 17
-    //   481: lload 17
-    //   483: lstore 9
-    //   485: lload 9
-    //   487: lstore 13
-    //   489: lload 13
-    //   491: lstore 11
-    //   493: ldc 119
-    //   495: astore 29
-    //   497: aload 29
-    //   499: astore 25
-    //   501: aload 26
-    //   503: invokevirtual 1172	java/lang/Exception:printStackTrace	()V
-    //   506: aload 29
-    //   508: astore 26
-    //   510: iconst_0
-    //   511: istore_3
-    //   512: lload 15
-    //   514: lstore 19
-    //   516: lload 17
-    //   518: lstore 21
-    //   520: lload 13
-    //   522: lstore 23
-    //   524: lload 9
-    //   526: lstore 15
-    //   528: lload 19
-    //   530: lstore 17
-    //   532: lload 21
-    //   534: lstore 13
-    //   536: lload 23
-    //   538: lstore 9
-    //   540: aload_0
-    //   541: ldc_w 1476
-    //   544: lconst_1
-    //   545: invokevirtual 1014	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   548: lstore 19
-    //   550: aload_0
-    //   551: ldc 198
-    //   553: invokevirtual 132	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   556: istore 4
-    //   558: aload_0
-    //   559: ldc_w 1435
-    //   562: invokevirtual 132	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   565: istore 5
-    //   567: aload_0
-    //   568: ldc_w 1478
-    //   571: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   574: astore 32
-    //   576: aload_0
-    //   577: ldc_w 1480
-    //   580: invokevirtual 132	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   583: istore 7
-    //   585: new 853	java/lang/String
-    //   588: dup
-    //   589: aload_0
-    //   590: ldc_w 1482
-    //   593: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   596: iconst_0
-    //   597: invokestatic 1064	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
-    //   600: invokespecial 1067	java/lang/String:<init>	([B)V
-    //   603: astore 33
-    //   605: aload_0
-    //   606: ldc 238
-    //   608: iconst_1
-    //   609: invokevirtual 1020	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   612: istore 6
-    //   614: new 1484	com/tencent/mobileqq/kandian/repo/db/struct/BaseArticleInfo
-    //   617: dup
-    //   618: invokespecial 1485	com/tencent/mobileqq/kandian/repo/db/struct/BaseArticleInfo:<init>	()V
-    //   621: astore 31
-    //   623: aload 31
-    //   625: lload 17
-    //   627: putfield 1488	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mArticleID	J
-    //   630: aload 31
-    //   632: aload 27
-    //   634: putfield 1256	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mTitle	Ljava/lang/String;
-    //   637: aload 31
-    //   639: aload 28
-    //   641: putfield 1491	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSubscribeName	Ljava/lang/String;
-    //   644: aload 31
-    //   646: aload 32
-    //   648: putfield 1262	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mFirstPagePicUrl	Ljava/lang/String;
-    //   651: aload 31
-    //   653: iload 7
-    //   655: putfield 1494	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mVideoDuration	I
-    //   658: aload 31
-    //   660: lload 13
-    //   662: putfield 1496	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mFeedId	J
-    //   665: aload 31
-    //   667: aload 33
-    //   669: putfield 1259	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSummary	Ljava/lang/String;
-    //   672: aload 31
-    //   674: lload 11
-    //   676: putfield 1498	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:businessId	J
-    //   679: aload 31
-    //   681: iload 6
-    //   683: putfield 1501	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mFeedType	I
-    //   686: aload 31
-    //   688: aload 25
-    //   690: putfield 1504	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:innerUniqueID	Ljava/lang/String;
-    //   693: aload_0
-    //   694: aload 31
-    //   696: lload 9
-    //   698: lload 19
-    //   700: invokestatic 1506	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;JJ)V
-    //   703: aload_0
-    //   704: ldc_w 1508
-    //   707: invokevirtual 1274	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   710: astore 34
-    //   712: aload 34
-    //   714: ifnull +190 -> 904
-    //   717: iload 6
-    //   719: lload 19
-    //   721: invokestatic 1513	com/tencent/mobileqq/kandian/repo/common/RIJItemViewTypeUtils:a	(IJ)Z
-    //   724: ifeq +180 -> 904
-    //   727: aload 34
-    //   729: ldc_w 1515
-    //   732: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   735: astore 29
-    //   737: aload 34
-    //   739: ldc_w 1517
-    //   742: iconst_0
-    //   743: invokevirtual 1020	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   746: istore 4
-    //   748: aload 31
-    //   750: aload 34
-    //   752: aload 29
-    //   754: iload 4
-    //   756: iload 5
-    //   758: aload 27
-    //   760: aload 28
-    //   762: aload 32
-    //   764: aload 33
-    //   766: lload 15
-    //   768: invokestatic 1519	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;Lorg/json/JSONObject;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
-    //   771: iload 4
-    //   773: aload_0
-    //   774: invokestatic 1521	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(ILorg/json/JSONObject;)I
-    //   777: istore 4
-    //   779: aload 29
-    //   781: astore 27
-    //   783: goto +3 -> 786
-    //   786: aload 31
-    //   788: getfield 1207	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSocialFeedInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo;
-    //   791: ldc 119
-    //   793: putfield 1522	com/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   796: aload 31
-    //   798: getfield 1207	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSocialFeedInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo;
-    //   801: ldc 119
-    //   803: putfield 1523	com/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo:c	Ljava/lang/String;
-    //   806: aload 31
-    //   808: getfield 1207	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSocialFeedInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo;
-    //   811: ldc 119
-    //   813: putfield 1524	com/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo:b	Ljava/lang/String;
-    //   816: iload 5
-    //   818: aload 30
-    //   820: aload 31
-    //   822: invokestatic 1527	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(ILjava/lang/String;Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)Z
-    //   825: ifeq +13 -> 838
-    //   828: ldc 78
-    //   830: iconst_1
-    //   831: ldc_w 1529
-    //   834: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   837: return
-    //   838: iload 5
-    //   840: invokestatic 1531	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(I)I
-    //   843: istore 7
-    //   845: aload 31
-    //   847: aload_0
-    //   848: aload 31
-    //   850: aload 25
-    //   852: iload 5
-    //   854: iload 4
-    //   856: aload_1
-    //   857: aload 26
-    //   859: iload 6
-    //   861: i2l
-    //   862: aload 27
-    //   864: lload 15
-    //   866: iload_3
-    //   867: aload 30
-    //   869: iload 7
-    //   871: invokestatic 1533	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;JLjava/lang/String;JILjava/lang/String;I)Landroid/content/Intent;
-    //   874: lload 13
-    //   876: lload 17
-    //   878: iload 7
-    //   880: aload 25
-    //   882: iload 6
-    //   884: aload_2
-    //   885: invokestatic 1535	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;Lorg/json/JSONObject;Landroid/content/Intent;JJILjava/lang/String;ILcom/tencent/mobileqq/kandian/glue/viola/modules/BridgeModule;)V
-    //   888: return
-    //   889: astore_0
-    //   890: goto +4 -> 894
-    //   893: astore_0
-    //   894: ldc 78
-    //   896: aload_0
-    //   897: invokevirtual 456	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   900: invokestatic 1539	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   903: return
-    //   904: ldc 119
-    //   906: astore 27
-    //   908: goto -122 -> 786
+    //   0: aload_2
+    //   1: invokevirtual 1166	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModule:getActivity	()Landroid/app/Activity;
+    //   4: ifnonnull +4 -> 8
+    //   7: return
+    //   8: aload_0
+    //   9: ldc_w 927
+    //   12: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   15: astore 26
+    //   17: aload_0
+    //   18: ldc_w 1434
+    //   21: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   24: astore 28
+    //   26: aload_0
+    //   27: ldc_w 1436
+    //   30: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   33: astore 30
+    //   35: aload 30
+    //   37: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   40: istore 8
+    //   42: iload 8
+    //   44: ifeq +10 -> 54
+    //   47: ldc 148
+    //   49: astore 30
+    //   51: goto +3 -> 54
+    //   54: lconst_0
+    //   55: lstore 15
+    //   57: new 688	java/lang/String
+    //   60: dup
+    //   61: aload 26
+    //   63: iconst_0
+    //   64: invokestatic 933	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
+    //   67: invokespecial 936	java/lang/String:<init>	([B)V
+    //   70: astore 25
+    //   72: new 688	java/lang/String
+    //   75: dup
+    //   76: aload 28
+    //   78: iconst_0
+    //   79: invokestatic 933	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
+    //   82: invokespecial 936	java/lang/String:<init>	([B)V
+    //   85: astore 27
+    //   87: aload_0
+    //   88: ldc_w 1068
+    //   91: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   94: astore 29
+    //   96: aload_0
+    //   97: ldc_w 694
+    //   100: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   103: astore 31
+    //   105: aload 29
+    //   107: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   110: ifne +20 -> 130
+    //   113: new 1072	java/math/BigInteger
+    //   116: dup
+    //   117: aload 29
+    //   119: invokespecial 1073	java/math/BigInteger:<init>	(Ljava/lang/String;)V
+    //   122: invokevirtual 1076	java/math/BigInteger:longValue	()J
+    //   125: lstore 9
+    //   127: goto +6 -> 133
+    //   130: lconst_0
+    //   131: lstore 9
+    //   133: aload_0
+    //   134: ldc_w 1438
+    //   137: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   140: astore 26
+    //   142: aload 26
+    //   144: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   147: ifne +20 -> 167
+    //   150: new 1072	java/math/BigInteger
+    //   153: dup
+    //   154: aload 26
+    //   156: invokespecial 1073	java/math/BigInteger:<init>	(Ljava/lang/String;)V
+    //   159: invokevirtual 1076	java/math/BigInteger:longValue	()J
+    //   162: lstore 11
+    //   164: goto +6 -> 170
+    //   167: lconst_0
+    //   168: lstore 11
+    //   170: aload_0
+    //   171: ldc_w 1440
+    //   174: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   177: astore 26
+    //   179: aload 26
+    //   181: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   184: ifne +20 -> 204
+    //   187: new 1072	java/math/BigInteger
+    //   190: dup
+    //   191: aload 26
+    //   193: invokespecial 1073	java/math/BigInteger:<init>	(Ljava/lang/String;)V
+    //   196: invokevirtual 1076	java/math/BigInteger:longValue	()J
+    //   199: lstore 13
+    //   201: goto +6 -> 207
+    //   204: lconst_0
+    //   205: lstore 13
+    //   207: aload_0
+    //   208: ldc_w 1442
+    //   211: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   214: astore 26
+    //   216: aload 26
+    //   218: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   221: ifne +20 -> 241
+    //   224: new 1072	java/math/BigInteger
+    //   227: dup
+    //   228: aload 26
+    //   230: invokespecial 1073	java/math/BigInteger:<init>	(Ljava/lang/String;)V
+    //   233: invokevirtual 1076	java/math/BigInteger:longValue	()J
+    //   236: lstore 19
+    //   238: goto +6 -> 244
+    //   241: lconst_0
+    //   242: lstore 19
+    //   244: aload_0
+    //   245: ldc_w 1444
+    //   248: invokevirtual 944	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   251: lstore 17
+    //   253: lload 17
+    //   255: lstore 15
+    //   257: aload_0
+    //   258: ldc_w 1446
+    //   261: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   264: istore_3
+    //   265: aload 27
+    //   267: astore 28
+    //   269: aload 29
+    //   271: astore 26
+    //   273: lload 17
+    //   275: lstore 15
+    //   277: aload 25
+    //   279: astore 27
+    //   281: lload 19
+    //   283: lstore 21
+    //   285: aload 31
+    //   287: astore 25
+    //   289: lload 9
+    //   291: lstore 17
+    //   293: lload 11
+    //   295: lstore 19
+    //   297: lload 21
+    //   299: lstore 11
+    //   301: lload 13
+    //   303: lstore 9
+    //   305: lload 17
+    //   307: lstore 13
+    //   309: lload 19
+    //   311: lstore 17
+    //   313: goto +228 -> 541
+    //   316: astore 26
+    //   318: lload 11
+    //   320: lstore 17
+    //   322: lload 15
+    //   324: lstore 11
+    //   326: aload 27
+    //   328: astore 28
+    //   330: lload 17
+    //   332: lstore 15
+    //   334: aload 25
+    //   336: astore 27
+    //   338: aload 31
+    //   340: astore 25
+    //   342: lload 9
+    //   344: lstore 17
+    //   346: lload 11
+    //   348: lstore 9
+    //   350: lload 19
+    //   352: lstore 11
+    //   354: goto +148 -> 502
+    //   357: astore 26
+    //   359: goto +8 -> 367
+    //   362: astore 26
+    //   364: lconst_0
+    //   365: lstore 13
+    //   367: lconst_0
+    //   368: lstore 19
+    //   370: lconst_0
+    //   371: lstore 21
+    //   373: aload 27
+    //   375: astore 28
+    //   377: lload 11
+    //   379: lstore 15
+    //   381: aload 25
+    //   383: astore 27
+    //   385: aload 31
+    //   387: astore 25
+    //   389: lload 9
+    //   391: lstore 17
+    //   393: lload 21
+    //   395: lstore 9
+    //   397: lload 19
+    //   399: lstore 11
+    //   401: goto +101 -> 502
+    //   404: astore 26
+    //   406: goto +8 -> 414
+    //   409: astore 26
+    //   411: lconst_0
+    //   412: lstore 9
+    //   414: lconst_0
+    //   415: lstore 19
+    //   417: lconst_0
+    //   418: lstore 13
+    //   420: lload 13
+    //   422: lstore 11
+    //   424: aload 27
+    //   426: astore 28
+    //   428: aload 25
+    //   430: astore 27
+    //   432: aload 31
+    //   434: astore 25
+    //   436: lload 9
+    //   438: lstore 17
+    //   440: lload 19
+    //   442: lstore 9
+    //   444: goto +58 -> 502
+    //   447: astore 26
+    //   449: aload 27
+    //   451: astore 28
+    //   453: aload 25
+    //   455: astore 27
+    //   457: goto +22 -> 479
+    //   460: astore 26
+    //   462: goto +13 -> 475
+    //   465: astore 27
+    //   467: aload 26
+    //   469: astore 25
+    //   471: aload 27
+    //   473: astore 26
+    //   475: aload 25
+    //   477: astore 27
+    //   479: lconst_0
+    //   480: lstore 17
+    //   482: lload 17
+    //   484: lstore 9
+    //   486: lload 9
+    //   488: lstore 13
+    //   490: lload 13
+    //   492: lstore 11
+    //   494: ldc 148
+    //   496: astore 29
+    //   498: aload 29
+    //   500: astore 25
+    //   502: aload 26
+    //   504: invokevirtual 1039	java/lang/Exception:printStackTrace	()V
+    //   507: aload 29
+    //   509: astore 26
+    //   511: iconst_0
+    //   512: istore_3
+    //   513: lload 15
+    //   515: lstore 19
+    //   517: lload 17
+    //   519: lstore 21
+    //   521: lload 13
+    //   523: lstore 23
+    //   525: lload 9
+    //   527: lstore 15
+    //   529: lload 19
+    //   531: lstore 17
+    //   533: lload 21
+    //   535: lstore 13
+    //   537: lload 23
+    //   539: lstore 9
+    //   541: aload_0
+    //   542: ldc_w 1448
+    //   545: lconst_1
+    //   546: invokevirtual 865	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   549: lstore 19
+    //   551: aload_0
+    //   552: ldc 66
+    //   554: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   557: istore 4
+    //   559: aload_0
+    //   560: ldc_w 1417
+    //   563: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   566: istore 5
+    //   568: aload_0
+    //   569: ldc_w 1450
+    //   572: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   575: astore 32
+    //   577: aload_0
+    //   578: ldc_w 1452
+    //   581: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   584: istore 7
+    //   586: new 688	java/lang/String
+    //   589: dup
+    //   590: aload_0
+    //   591: ldc_w 1454
+    //   594: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   597: iconst_0
+    //   598: invokestatic 933	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
+    //   601: invokespecial 936	java/lang/String:<init>	([B)V
+    //   604: astore 33
+    //   606: aload_0
+    //   607: ldc 104
+    //   609: iconst_1
+    //   610: invokevirtual 871	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   613: istore 6
+    //   615: new 1456	com/tencent/mobileqq/kandian/repo/db/struct/BaseArticleInfo
+    //   618: dup
+    //   619: invokespecial 1457	com/tencent/mobileqq/kandian/repo/db/struct/BaseArticleInfo:<init>	()V
+    //   622: astore 31
+    //   624: aload 31
+    //   626: lload 17
+    //   628: putfield 1460	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mArticleID	J
+    //   631: aload 31
+    //   633: aload 27
+    //   635: putfield 1184	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mTitle	Ljava/lang/String;
+    //   638: aload 31
+    //   640: aload 28
+    //   642: putfield 1463	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSubscribeName	Ljava/lang/String;
+    //   645: aload 31
+    //   647: aload 32
+    //   649: putfield 1190	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mFirstPagePicUrl	Ljava/lang/String;
+    //   652: aload 31
+    //   654: iload 7
+    //   656: putfield 1466	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mVideoDuration	I
+    //   659: aload 31
+    //   661: lload 13
+    //   663: putfield 1468	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mFeedId	J
+    //   666: aload 31
+    //   668: aload 33
+    //   670: putfield 1187	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSummary	Ljava/lang/String;
+    //   673: aload 31
+    //   675: lload 11
+    //   677: putfield 1470	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:businessId	J
+    //   680: aload 31
+    //   682: iload 6
+    //   684: putfield 1473	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mFeedType	I
+    //   687: aload 31
+    //   689: aload 25
+    //   691: putfield 1476	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:innerUniqueID	Ljava/lang/String;
+    //   694: aload_0
+    //   695: aload 31
+    //   697: lload 9
+    //   699: lload 19
+    //   701: invokestatic 1478	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;JJ)V
+    //   704: aload_0
+    //   705: ldc_w 1480
+    //   708: invokevirtual 1202	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   711: astore 34
+    //   713: aload 34
+    //   715: ifnull +194 -> 909
+    //   718: iload 6
+    //   720: lload 19
+    //   722: invokestatic 1485	com/tencent/mobileqq/kandian/repo/common/RIJItemViewTypeUtils:a	(IJ)Z
+    //   725: ifeq +184 -> 909
+    //   728: aload 34
+    //   730: ldc_w 1487
+    //   733: invokevirtual 886	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   736: astore 29
+    //   738: aload 34
+    //   740: ldc_w 1489
+    //   743: iconst_0
+    //   744: invokevirtual 871	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   747: istore 4
+    //   749: aload 31
+    //   751: aload 34
+    //   753: aload 29
+    //   755: iload 4
+    //   757: iload 5
+    //   759: aload 27
+    //   761: aload 28
+    //   763: aload 32
+    //   765: aload 33
+    //   767: lload 15
+    //   769: invokestatic 1491	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;Lorg/json/JSONObject;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
+    //   772: iload 4
+    //   774: aload_0
+    //   775: invokestatic 1493	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(ILorg/json/JSONObject;)I
+    //   778: istore 4
+    //   780: aload 29
+    //   782: astore 27
+    //   784: goto +3 -> 787
+    //   787: aload 31
+    //   789: getfield 1122	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSocialFeedInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo;
+    //   792: ldc 148
+    //   794: putfield 1494	com/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo:e	Ljava/lang/String;
+    //   797: aload 31
+    //   799: getfield 1122	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSocialFeedInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo;
+    //   802: ldc 148
+    //   804: putfield 1496	com/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo:g	Ljava/lang/String;
+    //   807: aload 31
+    //   809: getfield 1122	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mSocialFeedInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo;
+    //   812: ldc 148
+    //   814: putfield 1497	com/tencent/mobileqq/kandian/repo/feeds/entity/SocializeFeedsInfo:f	Ljava/lang/String;
+    //   817: iload 5
+    //   819: aload 30
+    //   821: aload 31
+    //   823: invokestatic 1500	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(ILjava/lang/String;Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)Z
+    //   826: ifeq +13 -> 839
+    //   829: ldc 211
+    //   831: iconst_1
+    //   832: ldc_w 1502
+    //   835: invokestatic 412	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   838: return
+    //   839: iload 5
+    //   841: invokestatic 1504	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(I)I
+    //   844: istore 7
+    //   846: aload 31
+    //   848: aload_0
+    //   849: aload 31
+    //   851: aload 25
+    //   853: iload 5
+    //   855: iload 4
+    //   857: aload_1
+    //   858: aload 26
+    //   860: iload 6
+    //   862: i2l
+    //   863: aload 27
+    //   865: lload 15
+    //   867: iload_3
+    //   868: aload 30
+    //   870: iload 7
+    //   872: aload_2
+    //   873: invokevirtual 1166	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModule:getActivity	()Landroid/app/Activity;
+    //   876: invokestatic 1506	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;JLjava/lang/String;JILjava/lang/String;ILandroid/app/Activity;)Landroid/content/Intent;
+    //   879: lload 13
+    //   881: lload 17
+    //   883: iload 7
+    //   885: aload 25
+    //   887: iload 6
+    //   889: aload_2
+    //   890: invokestatic 1508	com/tencent/mobileqq/kandian/glue/viola/modules/BridgeModuleHelper:a	(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;Lorg/json/JSONObject;Landroid/content/Intent;JJILjava/lang/String;ILcom/tencent/mobileqq/kandian/glue/viola/modules/BridgeModule;)V
+    //   893: return
+    //   894: astore_0
+    //   895: goto +4 -> 899
+    //   898: astore_0
+    //   899: ldc 211
+    //   901: aload_0
+    //   902: invokevirtual 209	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   905: invokestatic 1512	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   908: return
+    //   909: ldc 148
+    //   911: astore 27
+    //   913: goto -126 -> 787
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	911	0	paramJSONObject	JSONObject
-    //   0	911	1	paramString	String
-    //   0	911	2	paramBridgeModule	BridgeModule
-    //   263	604	3	i	int
-    //   556	299	4	j	int
-    //   565	288	5	k	int
-    //   612	271	6	m	int
-    //   583	296	7	n	int
-    //   39	3	8	bool	boolean
-    //   124	573	9	l1	long
-    //   161	514	11	l2	long
-    //   198	677	13	l3	long
-    //   54	811	15	l4	long
-    //   250	627	17	l5	long
-    //   235	485	19	l6	long
-    //   282	251	21	l7	long
-    //   522	15	23	l8	long
-    //   69	812	25	localObject1	Object
-    //   14	257	26	localObject2	Object
-    //   315	1	26	localException1	Exception
-    //   356	1	26	localException2	Exception
-    //   361	1	26	localException3	Exception
-    //   403	1	26	localException4	Exception
-    //   408	1	26	localException5	Exception
-    //   446	1	26	localException6	Exception
-    //   459	8	26	localException7	Exception
-    //   472	386	26	localObject3	Object
-    //   84	371	27	localObject4	Object
-    //   464	7	27	localException8	Exception
-    //   476	431	27	localObject5	Object
-    //   23	738	28	localObject6	Object
-    //   93	687	29	str1	String
-    //   32	836	30	str2	String
-    //   102	747	31	localObject7	Object
-    //   574	189	32	str3	String
-    //   603	162	33	str4	String
-    //   710	41	34	localJSONObject	JSONObject
+    //   0	916	0	paramJSONObject	JSONObject
+    //   0	916	1	paramString	String
+    //   0	916	2	paramBridgeModule	BridgeModule
+    //   264	604	3	i	int
+    //   557	299	4	j	int
+    //   566	288	5	k	int
+    //   613	275	6	m	int
+    //   584	300	7	n	int
+    //   40	3	8	bool	boolean
+    //   125	573	9	l1	long
+    //   162	514	11	l2	long
+    //   199	681	13	l3	long
+    //   55	811	15	l4	long
+    //   251	631	17	l5	long
+    //   236	485	19	l6	long
+    //   283	251	21	l7	long
+    //   523	15	23	l8	long
+    //   70	816	25	localObject1	Object
+    //   15	257	26	localObject2	Object
+    //   316	1	26	localException1	Exception
+    //   357	1	26	localException2	Exception
+    //   362	1	26	localException3	Exception
+    //   404	1	26	localException4	Exception
+    //   409	1	26	localException5	Exception
+    //   447	1	26	localException6	Exception
+    //   460	8	26	localException7	Exception
+    //   473	386	26	localObject3	Object
+    //   85	371	27	localObject4	Object
+    //   465	7	27	localException8	Exception
+    //   477	435	27	localObject5	Object
+    //   24	738	28	localObject6	Object
+    //   94	687	29	str1	String
+    //   33	836	30	str2	String
+    //   103	747	31	localObject7	Object
+    //   575	189	32	str3	String
+    //   604	162	33	str4	String
+    //   711	41	34	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   243	252	315	java/lang/Exception
-    //   256	264	315	java/lang/Exception
-    //   206	237	356	java/lang/Exception
-    //   169	200	361	java/lang/Exception
-    //   132	163	403	java/lang/Exception
-    //   104	126	408	java/lang/Exception
-    //   86	104	446	java/lang/Exception
-    //   71	86	459	java/lang/Exception
-    //   56	71	464	java/lang/Exception
-    //   567	712	889	org/json/JSONException
-    //   717	779	889	org/json/JSONException
-    //   786	828	889	org/json/JSONException
-    //   7	41	893	org/json/JSONException
-    //   56	71	893	org/json/JSONException
-    //   71	86	893	org/json/JSONException
-    //   86	104	893	org/json/JSONException
-    //   104	126	893	org/json/JSONException
-    //   132	163	893	org/json/JSONException
-    //   169	200	893	org/json/JSONException
-    //   206	237	893	org/json/JSONException
-    //   243	252	893	org/json/JSONException
-    //   256	264	893	org/json/JSONException
-    //   501	506	893	org/json/JSONException
-    //   540	567	893	org/json/JSONException
-    //   828	837	893	org/json/JSONException
-    //   838	888	893	org/json/JSONException
-  }
-  
-  @SuppressLint({"NewApi"})
-  private static boolean a()
-  {
-    if (!VersionUtils.k()) {
-      return true;
-    }
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity == null) {
-      return false;
-    }
-    return localQBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0;
+    //   244	253	316	java/lang/Exception
+    //   257	265	316	java/lang/Exception
+    //   207	238	357	java/lang/Exception
+    //   170	201	362	java/lang/Exception
+    //   133	164	404	java/lang/Exception
+    //   105	127	409	java/lang/Exception
+    //   87	105	447	java/lang/Exception
+    //   72	87	460	java/lang/Exception
+    //   57	72	465	java/lang/Exception
+    //   568	713	894	org/json/JSONException
+    //   718	780	894	org/json/JSONException
+    //   787	829	894	org/json/JSONException
+    //   8	42	898	org/json/JSONException
+    //   57	72	898	org/json/JSONException
+    //   72	87	898	org/json/JSONException
+    //   87	105	898	org/json/JSONException
+    //   105	127	898	org/json/JSONException
+    //   133	164	898	org/json/JSONException
+    //   170	201	898	org/json/JSONException
+    //   207	238	898	org/json/JSONException
+    //   244	253	898	org/json/JSONException
+    //   257	265	898	org/json/JSONException
+    //   502	507	898	org/json/JSONException
+    //   541	568	898	org/json/JSONException
+    //   829	838	898	org/json/JSONException
+    //   839	893	898	org/json/JSONException
   }
   
   private static boolean a(int paramInt, String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -2027,14 +2014,58 @@ public class BridgeModuleHelper
     return (paramInt == 23) && ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSubscribeName)));
   }
   
+  @SuppressLint({"NewApi"})
+  public static boolean a(Activity paramActivity)
+  {
+    if (!VersionUtils.k()) {
+      return true;
+    }
+    boolean bool = false;
+    if (paramActivity == null) {
+      return false;
+    }
+    if (paramActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  static ColumnInfo b(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.optInt("topicId");
+    paramJSONObject = paramJSONObject.optString("title");
+    ColumnInfo localColumnInfo = new ColumnInfo();
+    localColumnInfo.columnID = i;
+    localColumnInfo.title = paramJSONObject;
+    return localColumnInfo;
+  }
+  
+  private static String b(int paramInt)
+  {
+    if (paramInt != 122)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return "";
+      case 116: 
+        return "showUGCVideoRecordPage";
+      case 115: 
+        return "showUGCVideoUploadPage";
+      }
+      return "showUGCEditPage";
+    }
+    return "showQAAskEditor";
+  }
+  
   public static JSONObject b()
   {
     JSONObject localJSONObject = new JSONObject();
-    String str1 = DeviceInfoUtil.f();
-    String str2 = DeviceInfoUtil.a();
+    String str1 = DeviceInfoUtil.j();
+    String str2 = DeviceInfoUtil.b();
     try
     {
-      localJSONObject.put("imsi", ReadInJoyUtils.c());
+      localJSONObject.put("imsi", ReadInJoyUtils.d());
       localJSONObject.put("androidID", str1);
       localJSONObject.put("identifier", str2);
       localJSONObject.put("qimei", UserAction.getQIMEI());
@@ -2158,8 +2189,8 @@ public class BridgeModuleHelper
     {
       try
       {
-        if (!ReadInJoyHelper.q()) {
-          break label44;
+        if (!ReadInJoyHelper.C()) {
+          break label45;
         }
         i = 1;
         localJSONObject.put("result", i);
@@ -2170,186 +2201,85 @@ public class BridgeModuleHelper
       }
       paramBridgeModule.invokeCallJS(paramString, localJSONObject);
       return;
-      label44:
+      label45:
       int i = 0;
     }
   }
   
-  private static void b(BridgeModule paramBridgeModule, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    paramString1 = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo(paramString1);
-    if ((paramString1 != null) && (paramString1.mLocation != null))
-    {
-      b(paramBridgeModule, paramString1, paramString2);
-      return;
-    }
-    d(paramBridgeModule, paramString2, "fail to get locationInfo from cache");
-  }
-  
-  public static void b(BridgeModule paramBridgeModule, String paramString, JSONObject paramJSONObject)
-  {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity == null) {
-      return;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("res", 1);
-      paramJSONObject = paramJSONObject.optString("miniAppUrl");
-      if (((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(localQBaseActivity, paramJSONObject, 2103, null))
-      {
-        localJSONObject.put("res", 0);
-        paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-        return;
-      }
-      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      label83:
-      break label83;
-    }
-    paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-  }
-  
   public static void b(BridgeModule paramBridgeModule, String paramString, boolean paramBoolean)
   {
-    JSONObject localJSONObject = b();
-    if (paramBoolean)
-    {
-      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-      return;
-    }
-    ViolaBridgeManager.getInstance().callbackJavascript(paramBridgeModule.getViolaInstance().getInstanceId(), paramBridgeModule.getModuleName(), "callback", paramString, localJSONObject, true);
+    ViolaSDKManager.getInstance().postOnThreadPool(new BridgeModuleHelper.9(paramBoolean, paramBridgeModule, paramString));
   }
   
-  public static void b(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void b(@NotNull BridgeModule paramBridgeModule, @NotNull JSONObject paramJSONObject, @Nullable String paramString)
   {
-    Object localObject = paramBridgeModule.getViolaInstance().getActivity();
-    if ((paramJSONObject != null) && (localObject != null)) {}
-    try
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      long l = paramJSONObject.getLong("puin");
-      paramJSONObject = new ActivityURIRequest((Context)localObject, "/pubaccount/detail");
-      localObject = paramJSONObject.extra();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(l);
-      ((Bundle)localObject).putString("uin", localStringBuilder.toString());
-      paramJSONObject.extra().putBoolean("from_js", true);
-      QRoute.startUri(paramJSONObject, null);
-      paramBridgeModule.invokeCallJS(paramString, null);
-      return;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("showPictureWithRowKey, json=");
+      ((StringBuilder)localObject1).append(paramJSONObject);
+      ((StringBuilder)localObject1).append(", callbackId=");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("BridgeModuleHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    catch (JSONException paramBridgeModule)
+    Object localObject2 = paramJSONObject.optJSONArray("imageIDs");
+    if ((localObject2 != null) && (((JSONArray)localObject2).length() != 0))
     {
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      paramJSONObject = new StringBuilder();
-      paramJSONObject.append("openAccountPageMore->error:");
-      paramJSONObject.append(paramBridgeModule);
-      QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
-    }
-    paramBridgeModule.invokeErrorCallJS(paramString, "params error");
-    return;
-  }
-  
-  public static void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    try
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("?client=androidQQ");
-      ((StringBuilder)localObject).append("&version=8.7.0.5295");
-      paramString = new StringBuilder();
-      paramString.append("&system=");
-      paramString.append(Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append(paramString.toString());
-      paramString = new StringBuilder();
-      paramString.append("&device=");
-      paramString.append(Build.DEVICE);
-      ((StringBuilder)localObject).append(paramString.toString());
-      paramString = new StringBuilder();
-      paramString.append("&uin=");
-      paramString.append(RIJQQAppInterfaceUtil.a());
-      ((StringBuilder)localObject).append(paramString.toString());
-      paramString = EmosmUtils.a("VIP_xingying", ((StringBuilder)localObject).toString());
-      if (QLog.isColorLevel())
+      localObject1 = new ArrayList();
+      int i = 0;
+      while (i < ((JSONArray)localObject2).length())
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("saveImageToLocal imageUrl=");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+        String str = ((JSONArray)localObject2).optString(i, "");
+        if (!TextUtils.isEmpty(str)) {
+          ((ArrayList)localObject1).add(str);
+        }
+        i += 1;
       }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(System.currentTimeMillis());
-      ((StringBuilder)localObject).append(".jpg");
-      localObject = ((StringBuilder)localObject).toString();
-      a(new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_IMG_SAVE), (String)localObject), paramString);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putStringArrayList("seqNum", (ArrayList)localObject1);
+      ((Bundle)localObject2).putString("src_id", paramJSONObject.optString("srcID"));
+      ((Bundle)localObject2).putInt("index", paramJSONObject.optInt("index"));
+      ((Bundle)localObject2).putBoolean("is_not_show_index", true);
+      ((Bundle)localObject2).putBoolean("show_title_bar", paramJSONObject.optBoolean("showTitleBar", true));
+      ((Bundle)localObject2).putString("acticle_info_rowkey", paramJSONObject.optString("rowkey"));
+      ((Bundle)localObject2).putString("callback_seq", paramString);
+      ((Bundle)localObject2).putBoolean("show_social_bottom_bar", true);
+      ((Bundle)localObject2).putString("show_social_bottom_bar_data", paramJSONObject.optJSONObject("socialBottomBar").toString());
+      ((Bundle)localObject2).putBoolean("is_need_to_aio", false);
+      a(paramBridgeModule, (Bundle)localObject2);
       return;
     }
-    catch (Exception paramString)
+    QLog.e("BridgeModuleHelper", 1, "showPictureWithRowKey imageJSONArray is Empty");
+  }
+  
+  public static void b(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    if (paramJSONObject != null)
     {
-      Object localObject;
-      if (QLog.isColorLevel())
+      String str1 = paramJSONObject.optString("url");
+      String str2 = paramJSONObject.optString("businessId", null);
+      if (!TextUtils.isEmpty(str1))
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("saveImageToLocal imageUrl error=");
-        ((StringBuilder)localObject).append(paramString.getMessage());
-        QLog.e("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+        if (!TextUtils.isEmpty(str2))
+        {
+          paramJSONObject = new Bundle();
+          paramJSONObject.putString("big_brother_source_key", str2);
+          paramJSONObject.putString("big_brother_ref_source_key", RIJJumpUtils.a(0));
+        }
+        else
+        {
+          paramJSONObject = null;
+        }
+        a(str1, paramJSONObject, paramActivity);
+        paramBridgeModule.invokeCallJS(paramString, null);
       }
     }
   }
   
-  public static void b(JSONObject paramJSONObject)
+  public static void b(JSONObject paramJSONObject, String paramString, Activity paramActivity)
   {
-    String str = paramJSONObject.optString("code");
-    Object localObject4 = paramJSONObject.optJSONObject("params");
-    if ((!TextUtils.isEmpty(str)) && (localObject4 != null))
-    {
-      paramJSONObject = ((JSONObject)localObject4).optJSONObject("r2");
-      Object localObject1 = ((JSONObject)localObject4).optJSONObject("r3");
-      Object localObject2 = ((JSONObject)localObject4).optJSONObject("r4");
-      Object localObject3 = ((JSONObject)localObject4).optJSONObject("r5");
-      IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      localObject4 = a((JSONObject)localObject4, (JSONObject)localObject3);
-      if (paramJSONObject != null) {
-        paramJSONObject = paramJSONObject.toString();
-      } else {
-        paramJSONObject = "";
-      }
-      if (localObject1 != null) {
-        localObject1 = ((JSONObject)localObject1).toString();
-      } else {
-        localObject1 = "";
-      }
-      if (localObject2 != null) {
-        localObject2 = ((JSONObject)localObject2).toString();
-      } else {
-        localObject2 = "";
-      }
-      if (localObject3 != null) {
-        localObject3 = ((JSONObject)localObject3).toString();
-      } else {
-        localObject3 = "";
-      }
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, (String)localObject4, str, str, 0, 0, paramJSONObject, (String)localObject1, (String)localObject2, (String)localObject3, false);
-    }
-  }
-  
-  public static void b(JSONObject paramJSONObject, String paramString)
-  {
-    if (QBaseActivity.sTopActivity == null) {
+    if (paramActivity == null) {
       return;
     }
     for (;;)
@@ -2370,10 +2300,10 @@ public class BridgeModuleHelper
           {
             paramJSONObject.append(((JSONArray)localObject).get(i));
             if (i >= ((JSONArray)localObject).length() - 1) {
-              break label266;
+              break label264;
             }
             paramJSONObject.append(",");
-            break label266;
+            break label264;
           }
         }
         localObject = new Intent();
@@ -2385,7 +2315,7 @@ public class BridgeModuleHelper
         }
         ((Intent)localObject).putExtra("rowkey", str);
         ((Intent)localObject).putExtra("callback", paramString);
-        PublicFragmentActivity.a(QBaseActivity.sTopActivity, (Intent)localObject, ReadInJoySelectMemberAQFragment.class, 119);
+        PublicFragmentActivity.a(paramActivity, (Intent)localObject, ReadInJoySelectMemberAQFragment.class, 119);
         return;
       }
       catch (Exception paramJSONObject)
@@ -2400,37 +2330,8 @@ public class BridgeModuleHelper
         paramJSONObject.printStackTrace();
         return;
       }
-      label266:
+      label264:
       i += 1;
-    }
-  }
-  
-  public static void b(JSONObject paramJSONObject, String paramString, Activity paramActivity)
-  {
-    Object localObject = QBaseActivity.sTopActivity;
-    if (localObject == null) {
-      return;
-    }
-    localObject = ((Context)localObject).getResources().getDisplayMetrics();
-    int n = paramJSONObject.optInt("type");
-    int i = Utils.rp2px(((DisplayMetrics)localObject).widthPixels, 360.0D);
-    int j = Utils.rp2px(((DisplayMetrics)localObject).widthPixels, 200.0D);
-    int k;
-    int m;
-    if (n == 1)
-    {
-      i = Utils.rp2px(((DisplayMetrics)localObject).widthPixels, 360.0D);
-      j = i;
-      k = 160;
-      m = 160;
-    }
-    else
-    {
-      k = 750;
-      m = 416;
-    }
-    if ((n == 1) || (n == 2)) {
-      a(paramActivity, 2, 0, (byte)121, i, j, k, m, paramString);
     }
   }
   
@@ -2439,11 +2340,50 @@ public class BridgeModuleHelper
     ViolaBridgeManager.getInstance().callbackJavascript(paramBridgeModule.getViolaInstance().getInstanceId(), paramBridgeModule.getModuleName(), "callback", paramString, paramJSONObject, true);
   }
   
+  public static QQCustomDialog c(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    QQCustomDialog localQQCustomDialog = null;
+    if (paramJSONObject != null)
+    {
+      if (paramActivity == null) {
+        return null;
+      }
+      localQQCustomDialog = new QQCustomDialog(paramActivity, 2131953338);
+      localQQCustomDialog.setContentView(2131624587);
+      localQQCustomDialog.getMessageTextView().setMovementMethod(new ScrollingMovementMethod());
+      localQQCustomDialog.getMessageTextView().setMaxHeight(DisplayUtil.a(paramActivity, 200.0F));
+      localQQCustomDialog.setTitle(paramJSONObject.optString("title"));
+      localQQCustomDialog.setMessage(paramJSONObject.optString("text"));
+      localQQCustomDialog.setCanceledOnTouchOutside(false);
+      if (paramJSONObject.optBoolean("needOkBtn", true)) {
+        localQQCustomDialog.setPositiveButton(paramJSONObject.optString("okBtnText", HardCodeUtil.a(2131899883)), new BridgeModuleHelper.4(paramJSONObject, paramBridgeModule, paramString));
+      }
+      if (paramJSONObject.optBoolean("needCancelBtn", true)) {
+        localQQCustomDialog.setNegativeButton(paramJSONObject.optString("cancelBtnText", HardCodeUtil.a(2131898212)), new BridgeModuleHelper.5(paramJSONObject, paramBridgeModule, paramString));
+      }
+      localQQCustomDialog.show();
+    }
+    return localQQCustomDialog;
+  }
+  
+  static CommunityInfo c(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optJSONObject("kdCommunityInfo");
+    if (paramJSONObject != null)
+    {
+      CommunityInfo localCommunityInfo = new CommunityInfo();
+      localCommunityInfo.setTitle(paramJSONObject.optString("communityName"));
+      localCommunityInfo.setCommunityId(String.valueOf(paramJSONObject.optInt("communityId")));
+      return localCommunityInfo;
+    }
+    return null;
+  }
+  
   public static JSONObject c()
   {
     int k = HttpUtil.getNetWorkType();
     String str = HttpUtil.getNetWorkTypeByStr();
-    Object localObject = DeviceInfoUtil.b();
+    Object localObject = DeviceInfoUtil.c();
     boolean bool = TextUtils.isEmpty((CharSequence)localObject);
     int j = 3;
     if ((!bool) && (((String)localObject).length() > 5) && (((String)localObject).startsWith("460")))
@@ -2502,31 +2442,38 @@ public class BridgeModuleHelper
     QLog.i("BridgeModuleHelper", 1, "request yyy_0xe36");
     cmd0xe36.ReqBody localReqBody = new cmd0xe36.ReqBody();
     localReqBody.nothing.set(1);
-    ProtoUtils.a(ReadInJoyUtils.a(), new BridgeModuleHelper.2(paramBridgeModule, paramString), localReqBody.toByteArray(), "OidbSvc.0xe36", 3638, 1, new Bundle(), 5000L);
+    ProtoUtils.a(ReadInJoyUtils.b(), new BridgeModuleHelper.2(paramBridgeModule, paramString), localReqBody.toByteArray(), "OidbSvc.0xe36", 3638, 1, new Bundle(), 5000L);
   }
   
   private static void c(BridgeModule paramBridgeModule, String paramString1, String paramString2)
   {
-    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new BridgeModuleHelper.16(paramString1, paramBridgeModule, paramString2));
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new BridgeModuleHelper.20(paramString1, paramBridgeModule, paramString2));
   }
   
   public static void c(BridgeModule paramBridgeModule, String paramString, boolean paramBoolean)
   {
-    paramBridgeModule.invokeCallJS(paramString, c());
+    ViolaSDKManager.getInstance().postOnThreadPool(new BridgeModuleHelper.10(paramBridgeModule, paramString));
   }
   
   public static void c(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    if (paramJSONObject != null) {}
+    Object localObject = paramBridgeModule.getViolaInstance().getActivity();
+    if ((paramJSONObject != null) && (localObject != null)) {}
     try
     {
-      String str = paramJSONObject.getString("feeds_id");
-      paramJSONObject = paramJSONObject.optString("feeds_type", "1");
-      ReadInJoyLogicEngine.a().a(str, Integer.valueOf(paramJSONObject).intValue());
+      long l = paramJSONObject.getLong("puin");
+      paramJSONObject = new ActivityURIRequest((Context)localObject, "/pubaccount/detail");
+      localObject = paramJSONObject.extra();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(l);
+      ((Bundle)localObject).putString("uin", localStringBuilder.toString());
+      paramJSONObject.extra().putBoolean("from_js", true);
+      QRoute.startUri(paramJSONObject, null);
       paramBridgeModule.invokeCallJS(paramString, null);
       return;
     }
-    catch (Exception paramBridgeModule)
+    catch (JSONException paramBridgeModule)
     {
       if (!QLog.isColorLevel()) {
         return;
@@ -2540,38 +2487,50 @@ public class BridgeModuleHelper
     return;
   }
   
-  public static void c(JSONObject paramJSONObject)
+  public static void c(JSONObject paramJSONObject, String paramString, Activity paramActivity)
   {
-    if ((paramJSONObject != null) && (paramJSONObject.optString("apkUrl") != null) && (paramJSONObject.optInt("action", -1) != -1))
-    {
-      int i = paramJSONObject.optInt("action", -1);
-      if (i == 1)
-      {
-        d(paramJSONObject);
-        return;
-      }
-      if (i == 2)
-      {
-        e(paramJSONObject);
-        return;
-      }
-      if (i == 3) {
-        f(paramJSONObject);
-      }
-    }
-  }
-  
-  public static void c(JSONObject paramJSONObject, String paramString)
-  {
-    paramString = paramJSONObject.optString("url");
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramActivity == null) {
       return;
     }
-    Bundle localBundle = new Bundle();
-    if (paramJSONObject.optJSONObject("param") != null) {
-      localBundle.putString("param", paramJSONObject.optJSONObject("param").toString());
+    int n = paramJSONObject.optInt("type", 1);
+    int j;
+    int i;
+    if (paramJSONObject.has("width"))
+    {
+      j = paramJSONObject.optInt("width");
+      i = DisplayUtil.a(paramActivity, j / 2);
     }
-    ViolaAccessHelper.a(QBaseActivity.sTopActivity, "", paramString, localBundle);
+    else
+    {
+      i = 640;
+      j = 640;
+    }
+    int k;
+    int m;
+    if (paramJSONObject.has("height"))
+    {
+      k = paramJSONObject.optInt("height");
+      m = DisplayUtil.a(paramActivity, k / 2);
+    }
+    else
+    {
+      m = 640;
+      k = 640;
+    }
+    a(paramActivity, 1, n, (byte)118, i, m, j, k, paramString);
+  }
+  
+  public static ReadInJoyUserInfoModule d()
+  {
+    Object localObject = RIJQQAppInterfaceUtil.a();
+    if (localObject == null) {
+      return null;
+    }
+    localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    if (localObject == null) {
+      return null;
+    }
+    return ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().e();
   }
   
   public static void d(BridgeModule paramBridgeModule, String paramString)
@@ -2632,50 +2591,89 @@ public class BridgeModuleHelper
   public static void d(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     if (paramJSONObject != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        long l = paramJSONObject.getLong("followUin");
-        int i = paramJSONObject.getInt("followInfo");
-        if ((i == 2) || (i == 1))
-        {
-          paramJSONObject = ReadInJoyLogicEngineEventDispatcher.a();
-          if (i != 2) {
-            break label127;
-          }
-          bool = true;
-          paramJSONObject.b(l, bool);
-          ThreadManager.post(new BridgeModuleHelper.1(l, i), 8, null, true);
-        }
-        paramBridgeModule.invokeCallJS(paramString, null);
-        return;
-      }
-      catch (JSONException paramBridgeModule)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramJSONObject = new StringBuilder();
-        paramJSONObject.append("openAccountPageMore -> error:");
-        paramJSONObject.append(paramBridgeModule);
-        QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
-        return;
-      }
-      paramBridgeModule.invokeErrorCallJS(paramString, "params error");
+      String str = paramJSONObject.getString("feeds_id");
+      paramJSONObject = paramJSONObject.optString("feeds_type", "1");
+      ReadInJoyLogicEngine.a().a(str, Integer.valueOf(paramJSONObject).intValue());
+      paramBridgeModule.invokeCallJS(paramString, null);
       return;
-      label127:
-      boolean bool = false;
+    }
+    catch (Exception paramBridgeModule)
+    {
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("openAccountPageMore->error:");
+      paramJSONObject.append(paramBridgeModule);
+      QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
+    }
+    paramBridgeModule.invokeErrorCallJS(paramString, "params error");
+    return;
+  }
+  
+  public static void d(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    paramJSONObject = paramJSONObject.optString("url");
+    if (TextUtils.isEmpty(paramJSONObject)) {
+      return;
+    }
+    if (paramActivity != null) {
+      ViolaAccessHelper.a(paramActivity, paramJSONObject, new BridgeModuleHelper.6(paramBridgeModule, paramString));
     }
   }
   
   public static void d(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
+    if ((paramJSONObject != null) && (paramJSONObject.optString("apkUrl") != null) && (paramJSONObject.optInt("action", -1) != -1))
     {
-      paramJSONObject = paramJSONObject.optString("apkUrl");
-      DownloadManagerV2.a().a(paramJSONObject);
+      int i = paramJSONObject.optInt("action", -1);
+      if (i == 1)
+      {
+        e(paramJSONObject);
+        return;
+      }
+      if (i == 2)
+      {
+        f(paramJSONObject);
+        return;
+      }
+      if (i == 3) {
+        g(paramJSONObject);
+      }
     }
+  }
+  
+  public static void d(JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return;
+    }
+    DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
+    int n = paramJSONObject.optInt("type");
+    int i = Utils.rp2px(localDisplayMetrics.widthPixels, 360.0D);
+    int j = Utils.rp2px(localDisplayMetrics.widthPixels, 200.0D);
+    int k = 750;
+    int m = 416;
+    if (n == 1)
+    {
+      i = Utils.rp2px(localDisplayMetrics.widthPixels, 360.0D);
+      j = i;
+      k = 160;
+      m = 160;
+    }
+    if ((n == 1) || (n == 2)) {
+      a(paramActivity, 2, 0, (byte)121, i, j, k, m, paramString);
+    }
+  }
+  
+  public static Activity e()
+  {
+    if (Foreground.getTopActivity() != null) {
+      return Foreground.getTopActivity();
+    }
+    return QBaseActivity.sTopActivity;
   }
   
   public static void e(BridgeModule paramBridgeModule, String paramString)
@@ -2698,37 +2696,42 @@ public class BridgeModuleHelper
   public static void e(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     if (paramJSONObject != null) {}
-    try
+    for (;;)
     {
-      int i = paramJSONObject.getInt("topicId");
-      int j = paramJSONObject.getInt("followInfo");
-      if (QLog.isColorLevel())
+      try
       {
-        paramJSONObject = new StringBuilder();
-        paramJSONObject.append("topic id = ");
-        paramJSONObject.append(i);
-        paramJSONObject.append("\t follow info =");
-        paramJSONObject.append(j);
-        QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
-      }
-      if (!ReadInJoyLogicEngine.a().a(i, j)) {
-        ReadInJoyLogicEngine.a().d(i, j);
-      }
-      paramBridgeModule.invokeCallJS(paramString, null);
-      return;
-    }
-    catch (JSONException paramBridgeModule)
-    {
-      if (!QLog.isColorLevel()) {
+        long l = paramJSONObject.getLong("followUin");
+        int i = paramJSONObject.getInt("followInfo");
+        if ((i == 2) || (i == 1))
+        {
+          paramJSONObject = ReadInJoyLogicEngineEventDispatcher.a();
+          if (i != 2) {
+            break label136;
+          }
+          bool = true;
+          paramJSONObject.b(l, bool);
+          ReadInJoyLogicEngineEventDispatcher.a().a(l, i);
+          ThreadManager.post(new BridgeModuleHelper.1(l, i), 8, null, true);
+        }
+        paramBridgeModule.invokeCallJS(paramString, null);
         return;
       }
-      paramJSONObject = new StringBuilder();
-      paramJSONObject.append("openAccountPageMore->error:");
-      paramJSONObject.append(paramBridgeModule);
-      QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
+      catch (JSONException paramBridgeModule)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("openAccountPageMore -> error:");
+        paramJSONObject.append(paramBridgeModule);
+        QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
+        return;
+      }
+      paramBridgeModule.invokeErrorCallJS(paramString, "params error");
+      return;
+      label136:
+      boolean bool = false;
     }
-    paramBridgeModule.invokeErrorCallJS(paramString, "params error");
-    return;
   }
   
   public static void e(JSONObject paramJSONObject)
@@ -2736,12 +2739,38 @@ public class BridgeModuleHelper
     if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
       paramJSONObject = paramJSONObject.optString("apkUrl");
-      DownloadInfo localDownloadInfo = new DownloadInfo();
-      localDownloadInfo.d = paramJSONObject;
-      localDownloadInfo.m = "biz_src_feeds_kandianads";
-      localDownloadInfo.a();
-      DownloadManagerV2.a().b(localDownloadInfo);
+      DownloadManagerV2.a().e(paramJSONObject);
     }
+  }
+  
+  public static void e(JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    int j = paramJSONObject.optInt("fromType");
+    boolean bool = paramJSONObject.has("permission");
+    int i;
+    if (bool) {
+      i = paramJSONObject.optInt("permission");
+    } else {
+      i = RIJEntryViewUtils.a.c();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasPermission: ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("  permission: ");
+      localStringBuilder.append(i);
+      QLog.i("BridgeModuleHelper", 2, localStringBuilder.toString());
+    }
+    RIJEntryViewUtils.a.a(paramActivity, i, j, 124, b(paramJSONObject), c(paramJSONObject), paramString);
+  }
+  
+  private static int f()
+  {
+    if (StudyModeManager.h()) {
+      return 8193;
+    }
+    return 1;
   }
   
   public static void f(BridgeModule paramBridgeModule, String paramString)
@@ -2758,7 +2787,7 @@ public class BridgeModuleHelper
         if (localViolaFragment.getCommonSuspensionGestureLayout() != null)
         {
           localObject = (CommonSuspensionGestureLayout)localViolaFragment.getCommonSuspensionGestureLayout();
-          if (((CommonSuspensionGestureLayout)localObject).a()) {
+          if (((CommonSuspensionGestureLayout)localObject).b()) {
             localViolaFragment.getQBaseActivity().doOnBackPressed();
           } else {
             ((CommonSuspensionGestureLayout)localObject).a(0, 3);
@@ -2779,24 +2808,38 @@ public class BridgeModuleHelper
   
   public static void f(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity == null) {
-      return;
-    }
-    paramJSONObject = paramJSONObject.optString("feedsId");
-    if (!TextUtils.isEmpty(paramJSONObject))
+    if (paramJSONObject != null) {}
+    try
     {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("showVisibleUserList feedsId ");
-      ((StringBuilder)localObject).append(paramJSONObject);
-      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("feeds_id", new BigInteger(paramJSONObject).longValue());
-      PublicFragmentActivity.a(localQBaseActivity, (Intent)localObject, ReadInJoyPrivacyListFragment.class);
+      int i = paramJSONObject.getInt("topicId");
+      int j = paramJSONObject.getInt("followInfo");
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("topic id = ");
+        paramJSONObject.append(i);
+        paramJSONObject.append("\t follow info =");
+        paramJSONObject.append(j);
+        QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
+      }
+      if (!ReadInJoyLogicEngine.a().g(i, j)) {
+        ReadInJoyLogicEngine.a().h(i, j);
+      }
       paramBridgeModule.invokeCallJS(paramString, null);
       return;
     }
+    catch (JSONException paramBridgeModule)
+    {
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("openAccountPageMore->error:");
+      paramJSONObject.append(paramBridgeModule);
+      QLog.d("BridgeModuleHelper", 2, paramJSONObject.toString());
+    }
     paramBridgeModule.invokeErrorCallJS(paramString, "params error");
+    return;
   }
   
   public static void f(JSONObject paramJSONObject)
@@ -2804,8 +2847,25 @@ public class BridgeModuleHelper
     if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
       paramJSONObject = paramJSONObject.optString("apkUrl");
-      DownloadManagerV2.a().b(paramJSONObject, true);
+      DownloadInfo localDownloadInfo = new DownloadInfo();
+      localDownloadInfo.d = paramJSONObject;
+      localDownloadInfo.r = "biz_src_feeds_kandianads";
+      localDownloadInfo.b();
+      DownloadManagerV2.a().b(localDownloadInfo);
     }
+  }
+  
+  public static void f(JSONObject paramJSONObject, String paramString, Activity paramActivity)
+  {
+    paramString = paramJSONObject.optString("url");
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    if (paramJSONObject.optJSONObject("param") != null) {
+      localBundle.putString("param", paramJSONObject.optJSONObject("param").toString());
+    }
+    ViolaAccessHelper.a(paramActivity, "", paramString, localBundle);
   }
   
   public static void g(BridgeModule paramBridgeModule, String paramString)
@@ -2858,15 +2918,10 @@ public class BridgeModuleHelper
   
   public static void g(JSONObject paramJSONObject)
   {
-    try
+    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
-      GdtLog.a("BridgeModuleHelper", paramJSONObject.toString());
-      GdtC2SReporter.a(paramJSONObject.optInt("operationType"), paramJSONObject.optInt("businessType"), (qq_ad_get.QQAdGetRsp.AdInfo)GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo")));
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      GdtLog.d("BridgeModuleHelper", "handleJsCallRequest", paramJSONObject);
+      paramJSONObject = paramJSONObject.optString("apkUrl");
+      DownloadManagerV2.a().b(paramJSONObject, true);
     }
   }
   
@@ -2880,7 +2935,7 @@ public class BridgeModuleHelper
       }
       if (!AppNetConnInfo.isNetSupport())
       {
-        QQToast.a(ReadInJoyUtils.a().getApplication(), 1, HardCodeUtil.a(2131701415), 0).a();
+        QQToast.makeText(ReadInJoyUtils.b().getApplication(), 1, HardCodeUtil.a(2131899440), 0).show();
         return;
       }
       localObject = new File(AbsDownloader.getFilePath(paramString));
@@ -2895,7 +2950,7 @@ public class BridgeModuleHelper
   
   public static void h(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    Object localObject = (AppInterface)ReadInJoyUtils.a();
+    Object localObject = (AppInterface)ReadInJoyUtils.b();
     localObject = paramBridgeModule.getViolaInstance().getFragment();
     if (localObject != null) {
       paramBridgeModule = ((Fragment)localObject).getActivity();
@@ -2923,9 +2978,9 @@ public class BridgeModuleHelper
       paramJSONObject.printStackTrace();
       paramJSONObject = (JSONObject)localObject;
     }
-    if (RIJUGCDianDian.a() >= 2)
+    if (RIJUGCDianDian.b() >= 2)
     {
-      QQToast.a(paramBridgeModule, 0, paramBridgeModule.getString(2131717884), 0).b(paramBridgeModule.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramBridgeModule, 0, paramBridgeModule.getString(2131915357), 0).show(paramBridgeModule.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     localObject = new Bundle();
@@ -2936,11 +2991,23 @@ public class BridgeModuleHelper
     ((Bundle)localObject).putInt("arg_ad_tag", i);
     ((Bundle)localObject).putString("arg_callback", paramString);
     ((Bundle)localObject).putString("arg_ugc_edit_cookie", str2);
-    ((IReadInJoyCaptureLauncher)QRoute.api(IReadInJoyCaptureLauncher.class)).launchFromViolaForResult(paramBridgeModule, (Bundle)localObject, (byte)116);
+    ReadInJoyCaptureLauncher.getInstance().launchFromViolaForResult(paramBridgeModule, (Bundle)localObject, (byte)116);
     RIJUGCDianDian.a("2", "2");
   }
   
-  public static void h(JSONObject paramJSONObject) {}
+  public static void h(JSONObject paramJSONObject)
+  {
+    try
+    {
+      GdtLog.a("BridgeModuleHelper", paramJSONObject.toString());
+      GdtC2SReporter.a(paramJSONObject.optInt("operationType"), paramJSONObject.optInt("businessType"), (qq_ad_get.QQAdGetRsp.AdInfo)GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject.getJSONObject("adInfo")));
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      GdtLog.d("BridgeModuleHelper", "handleJsCallRequest", paramJSONObject);
+    }
+  }
   
   public static void i(BridgeModule paramBridgeModule, String paramString)
   {
@@ -2972,86 +3039,59 @@ public class BridgeModuleHelper
     if (paramBridgeModule == null) {
       return;
     }
-    boolean bool1 = paramJSONObject.optBoolean("enableAnonymous", false);
-    boolean bool2 = paramJSONObject.optBoolean("canBiu", true);
     int i = paramJSONObject.optInt("maxLength", -1);
     int j = paramJSONObject.optInt("commentType", 0);
     int k = paramJSONObject.optInt("sourceType", 0);
-    int m = paramJSONObject.optInt("openAt", 0);
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("defaultCommentAtLevel");
-    Object localObject1 = paramJSONObject.optString("placeholder");
-    try
-    {
-      localObject2 = new String(Base64Util.decode((String)localObject1, 0));
-      localObject1 = localObject2;
-    }
-    catch (Exception localException1)
-    {
-      Object localObject2;
-      label136:
-      label247:
-      break label136;
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("showCommentEditor | comment_placeholder decode error! | comment_placeholder: ");
-    ((StringBuilder)localObject2).append((String)localObject1);
-    QLog.e("BridgeModuleHelper", 1, ((StringBuilder)localObject2).toString());
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("showCommentEditor | comment_placeholder after decode: ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject2).toString());
-    }
-    localObject2 = paramJSONObject.optString("defaultTxt");
-    try
-    {
-      localObject3 = new String(Base64Util.decode((String)localObject2, 0));
-      localObject2 = localObject3;
-    }
-    catch (Exception localException2)
-    {
-      Object localObject3;
-      StringBuilder localStringBuilder;
-      break label247;
-    }
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("showCommentEditor | defaultTxt decode error! | defaultTxt: ");
-    ((StringBuilder)localObject3).append((String)localObject2);
-    QLog.e("BridgeModuleHelper", 1, ((StringBuilder)localObject3).toString());
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("showCommentEditor | defaultTxt after decode: ");
-      ((StringBuilder)localObject3).append((String)localObject2);
-      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject3).toString());
-    }
-    localObject3 = new Intent();
+    String str1 = WebCommentEditorHandler.a(paramJSONObject.optString("placeholder"));
+    String str2 = WebCommentEditorHandler.a(paramJSONObject.optString("defaultTxt"));
+    Intent localIntent = new Intent();
     if (paramJSONObject.has("isPgcAuthor")) {
-      ((Intent)localObject3).putExtra("comment_is_pgc_author", paramJSONObject.optBoolean("isPgcAuthor"));
+      localIntent.putExtra("isPgcAuthor", paramJSONObject.optBoolean("isPgcAuthor"));
     }
-    localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("#showCommentEditor bridge isPgcAuthor = ");
     localStringBuilder.append(paramJSONObject.optBoolean("isPgcAuthor", false));
     QLog.d("BridgeModuleHelper", 2, localStringBuilder.toString());
-    ((Intent)localObject3).putExtra("comment_type", false);
-    ((Intent)localObject3).putExtra("arg_comment_enable_anonymous", bool1);
-    ((Intent)localObject3).putExtra("arg_comment_placeholder", (String)localObject1);
-    ((Intent)localObject3).putExtra("arg_comment_default_txt", (String)localObject2);
-    ((Intent)localObject3).putExtra("arg_comment_max_length", i);
-    ((Intent)localObject3).putExtra("arg_comment_comment_type", j);
-    ((Intent)localObject3).putExtra("arg_comment_source_type", k);
-    ((Intent)localObject3).putExtra("arg_callback", paramString);
-    ((Intent)localObject3).putExtra("arg_comment_open_at", m);
-    ((Intent)localObject3).putExtra("comment_can_biu", bool2);
-    ((Intent)localObject3).putExtra("public_fragment_window_feature", 1);
-    if (localJSONArray != null) {
-      ((Intent)localObject3).putExtra("arg_comment_default_comment_at", localJSONArray.toString());
-    }
-    ((IRIJCommentEntranceUtils)QRoute.api(IRIJCommentEntranceUtils.class)).startForResult(paramBridgeModule, (Intent)localObject3, 117);
+    localIntent.putExtra("comment_type", false);
+    localIntent.putExtra("placeholder", str1);
+    localIntent.putExtra("defaultTxt", str2);
+    localIntent.putExtra("maxLength", i);
+    localIntent.putExtra("commentType", j);
+    localIntent.putExtra("sourceType", k);
+    localIntent.putExtra("arg_callback", paramString);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    ReadInJoyCommentEntrance.a(paramBridgeModule, localIntent, 117);
   }
   
-  public static void i(JSONObject paramJSONObject)
+  public static void i(JSONObject paramJSONObject) {}
+  
+  public static void j(BridgeModule paramBridgeModule, String paramString)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", CUKingCardUtils.a());
+      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
+      return;
+    }
+    catch (Exception paramBridgeModule)
+    {
+      QLog.e("BridgeModuleHelper", 1, "getCUKingStatus error e = ", paramBridgeModule);
+    }
+  }
+  
+  public static void j(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  {
+    int i = paramJSONObject.optInt("type", 0);
+    boolean bool1 = paramJSONObject.optBoolean("blackScene", false);
+    boolean bool2 = paramJSONObject.optBoolean("isNightMode", false);
+    String str = paramJSONObject.optString("avatarUrl", "");
+    int j = paramJSONObject.optInt("bizType", 1);
+    paramJSONObject = paramJSONObject.optString("uniqueID", "");
+    RIJPushNotifyManager.Companion.a().showPushNotifyDialogForWeb(i, bool1, bool2, str, j, paramJSONObject, new BridgeModuleHelper.3(paramBridgeModule, paramString));
+  }
+  
+  public static void j(JSONObject paramJSONObject)
   {
     if (!TextUtils.isEmpty(paramJSONObject.optString("url", "")))
     {
@@ -3083,198 +3123,37 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void j(BridgeModule paramBridgeModule, String paramString)
+  private static HashMap<String, Object> k(JSONObject paramJSONObject)
   {
-    Object localObject = QBaseActivity.sTopActivity;
-    if (localObject == null) {
-      return;
-    }
-    localObject = DeviceInfoUtil.a((Context)localObject);
-    String str = DeviceInfoUtil.c();
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (paramJSONObject != null)
     {
-      localJSONObject.put("qqVersion", str);
-      localJSONObject.put("qqBuild", localObject);
-      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-      return;
-    }
-    catch (JSONException paramBridgeModule)
-    {
-      paramString = new StringBuilder();
-      paramString.append("[getClientInfo]: ");
-      paramString.append(paramBridgeModule.getMessage());
-      QLog.e("BridgeModuleHelper", 1, paramString.toString());
-    }
-  }
-  
-  public static void j(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    if (paramBridgeModule.getViolaInstance().getFragment() != null) {
-      paramBridgeModule = paramBridgeModule.getViolaInstance().getFragment().getActivity();
-    } else {
-      paramBridgeModule = paramBridgeModule.getViolaInstance().getActivity();
-    }
-    boolean bool1;
-    boolean bool2;
-    int i;
-    int j;
-    int k;
-    int m;
-    JSONArray localJSONArray;
-    Object localObject1;
-    if (paramBridgeModule != null)
-    {
-      if (paramJSONObject == null) {
-        return;
+      HashMap localHashMap = new HashMap();
+      if (TextUtils.isEmpty(paramJSONObject.optString("bgclr"))) {
+        localHashMap.put("title_nav_text_color", paramJSONObject.optString("bgclr"));
       }
-      bool1 = paramJSONObject.optBoolean("enableAnonymous", false);
-      bool2 = paramJSONObject.optBoolean("canBiu", true);
-      i = paramJSONObject.optInt("maxLength", -1);
-      j = paramJSONObject.optInt("commentType", 0);
-      k = paramJSONObject.optInt("sourceType", 0);
-      m = paramJSONObject.optInt("openAt", 0);
-      localJSONArray = paramJSONObject.optJSONArray("defaultCommentAtLevel");
-      localObject1 = paramJSONObject.optString("placeholder");
+      if (TextUtils.isEmpty(paramJSONObject.optString("txtclr"))) {
+        localHashMap.put("title_nav_background_color", paramJSONObject.optString("txtclr"));
+      }
+      if (!TextUtils.isEmpty(paramJSONObject.optString("titleclr"))) {
+        localHashMap.put("title_nav_center_text_color", paramJSONObject.optString("titleclr"));
+      }
+      if (!TextUtils.isEmpty(paramJSONObject.optString("alpha"))) {
+        localHashMap.put("title_nav_alpha", paramJSONObject.optString("alpha"));
+      }
+      if (!TextUtils.isEmpty(paramJSONObject.optString("statusBarColor"))) {
+        localHashMap.put("title_status_bar_color", paramJSONObject.optString("statusBarColor"));
+      }
+      return localHashMap;
     }
-    try
-    {
-      localObject2 = new String(Base64Util.decode((String)localObject1, 0));
-      localObject1 = localObject2;
-    }
-    catch (Exception localException1)
-    {
-      Object localObject2;
-      label140:
-      break label140;
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("showCommentEditorNative | comment_placeholder decode error! | comment_placeholder: ");
-    ((StringBuilder)localObject2).append((String)localObject1);
-    QLog.e("BridgeModuleHelper", 1, ((StringBuilder)localObject2).toString());
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("showCommentEditorNative | comment_placeholder after decode: ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject2).toString());
-    }
-    localObject2 = paramJSONObject.optString("defaultTxt");
-    try
-    {
-      localObject3 = new String(Base64Util.decode((String)localObject2, 0));
-      localObject2 = localObject3;
-    }
-    catch (Exception localException2)
-    {
-      Object localObject3;
-      label251:
-      String str1;
-      int n;
-      int i1;
-      String str4;
-      String str2;
-      long l;
-      String str3;
-      Intent localIntent;
-      StringBuilder localStringBuilder;
-      break label251;
-    }
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("showCommentEditorNative | defaultTxt decode error! | defaultTxt: ");
-    ((StringBuilder)localObject3).append((String)localObject2);
-    QLog.e("BridgeModuleHelper", 1, ((StringBuilder)localObject3).toString());
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("showCommentEditorNative | defaultTxt after decode: ");
-      ((StringBuilder)localObject3).append((String)localObject2);
-      QLog.d("BridgeModuleHelper", 2, ((StringBuilder)localObject3).toString());
-    }
-    localObject3 = paramJSONObject.optString("rowkey");
-    str1 = paramJSONObject.optString("articleId");
-    n = paramJSONObject.optInt("scene");
-    i1 = paramJSONObject.optInt("entry");
-    str4 = paramJSONObject.optString("businessInfo");
-    str2 = paramJSONObject.optString("firstCommentId");
-    l = paramJSONObject.optLong("repliedSubAuthorId");
-    str3 = paramJSONObject.optString("repliedSubCommentId");
-    localIntent = new Intent();
-    if (paramJSONObject.has("isPgcAuthor")) {
-      localIntent.putExtra("comment_is_pgc_author", paramJSONObject.optBoolean("isPgcAuthor"));
-    }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("#showCommentEditorNative bridge isPgcAuthor = ");
-    localStringBuilder.append(paramJSONObject.optBoolean("isPgcAuthor", false));
-    QLog.d("BridgeModuleHelper", 2, localStringBuilder.toString());
-    localIntent.putExtra("comment_type", false);
-    localIntent.putExtra("arg_comment_enable_anonymous", bool1);
-    localIntent.putExtra("arg_comment_placeholder", (String)localObject1);
-    localIntent.putExtra("arg_comment_default_txt", (String)localObject2);
-    localIntent.putExtra("arg_comment_max_length", i);
-    localIntent.putExtra("arg_comment_comment_type", j);
-    localIntent.putExtra("arg_comment_source_type", k);
-    localIntent.putExtra("arg_callback", paramString);
-    localIntent.putExtra("arg_comment_open_at", m);
-    localIntent.putExtra("comment_can_biu", bool2);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    if (localJSONArray != null) {
-      localIntent.putExtra("arg_comment_default_comment_at", localJSONArray.toString());
-    }
-    if (str2.isEmpty())
-    {
-      paramJSONObject = new FirstCommentCreateData(i1, str4);
-      paramJSONObject.b((String)localObject3);
-      paramJSONObject.c(str1);
-      paramJSONObject.b(n);
-      localIntent.putExtra("comment_create_data", paramJSONObject);
-    }
-    else
-    {
-      paramJSONObject = new SubCommentCreateData(i1, str4);
-      paramJSONObject.a(str2);
-      paramJSONObject.b((String)localObject3);
-      paramJSONObject.c(str1);
-      paramJSONObject.a(l);
-      paramJSONObject.e(str3);
-      paramJSONObject.b(n);
-      localIntent.putExtra("comment_create_data", paramJSONObject);
-    }
-    ((IRIJCommentEntranceUtils)QRoute.api(IRIJCommentEntranceUtils.class)).startForResult(paramBridgeModule, localIntent, 126);
+    return null;
   }
   
   public static void k(BridgeModule paramBridgeModule, String paramString)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", CUKingCardUtils.a());
-      paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-      return;
-    }
-    catch (Exception paramBridgeModule)
-    {
-      QLog.e("BridgeModuleHelper", 1, "getCUKingStatus error e = ", paramBridgeModule);
-    }
+    ThreadManager.post(new BridgeModuleHelper.11(paramBridgeModule, paramString), 8, null, true);
   }
   
   public static void k(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    int i = paramJSONObject.optInt("type", 0);
-    boolean bool1 = paramJSONObject.optBoolean("blackScene", false);
-    boolean bool2 = paramJSONObject.optBoolean("isNightMode", false);
-    String str = paramJSONObject.optString("avatarUrl", "");
-    int j = paramJSONObject.optInt("bizType", 1);
-    paramJSONObject = paramJSONObject.optString("uniqueID", "");
-    RIJPushNotifyManager.Companion.a().showPushNotifyDialogForWeb(i, bool1, bool2, str, j, paramJSONObject, new BridgeModuleHelper.3(paramBridgeModule, paramString));
-  }
-  
-  public static void l(BridgeModule paramBridgeModule, String paramString)
-  {
-    ThreadManager.post(new BridgeModuleHelper.9(paramBridgeModule, paramString), 8, null, true);
-  }
-  
-  public static void l(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     Object localObject1 = paramJSONObject.optString("key");
     int i = paramJSONObject.optInt("id", -1);
@@ -3318,12 +3197,12 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void m(BridgeModule paramBridgeModule, String paramString)
+  public static void l(BridgeModule paramBridgeModule, String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("recommendFlag", a());
+      localJSONObject.put("recommendFlag", f());
     }
     catch (JSONException localJSONException)
     {
@@ -3332,9 +3211,9 @@ public class BridgeModuleHelper
     paramBridgeModule.invokeCallJS(paramString, localJSONObject);
   }
   
-  public static void m(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void l(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject == null) {
       return;
     }
@@ -3374,14 +3253,14 @@ public class BridgeModuleHelper
       }
       int i = 0;
       label103:
-      QQToast.a((Context)localObject, i, str, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText((Context)localObject, i, str, 0).show(((Context)localObject).getResources().getDimensionPixelSize(2131299920));
       paramBridgeModule.invokeCallJS(paramString, new JSONObject());
       return;
     }
     paramBridgeModule.invokeErrorCallJS(paramString, "text为null!!");
   }
   
-  public static void n(BridgeModule paramBridgeModule, String paramString)
+  public static void m(BridgeModule paramBridgeModule, String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
     try
@@ -3390,8 +3269,8 @@ public class BridgeModuleHelper
     }
     catch (JSONException localJSONException)
     {
-      label19:
-      break label19;
+      label20:
+      break label20;
     }
     if (QLog.isColorLevel()) {
       QLog.d("BridgeModuleHelper", 2, "Error in isMobileQQ");
@@ -3399,31 +3278,31 @@ public class BridgeModuleHelper
     paramBridgeModule.invokeCallJS(paramString, localJSONObject);
   }
   
-  public static void n(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void m(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    if (paramJSONObject != null)
+    if (paramBridgeModule.getViolaInstance() == null) {
+      return;
+    }
+    Fragment localFragment = paramBridgeModule.getViolaInstance().getFragment();
+    if (localFragment == null) {
+      return;
+    }
+    if ((localFragment instanceof ViolaFragment))
     {
-      String str1 = paramJSONObject.optString("url");
-      String str2 = paramJSONObject.optString("businessId", null);
+      String str2 = paramJSONObject.optString("title");
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = paramJSONObject.optString("text");
+      }
       if (!TextUtils.isEmpty(str1))
       {
-        if (!TextUtils.isEmpty(str2))
-        {
-          paramJSONObject = new Bundle();
-          paramJSONObject.putString("big_brother_source_key", str2);
-          paramJSONObject.putString("big_brother_ref_source_key", RIJJumpUtils.a(0));
-        }
-        else
-        {
-          paramJSONObject = null;
-        }
-        a(str1, paramJSONObject);
-        paramBridgeModule.invokeCallJS(paramString, null);
+        ((ViolaFragment)localFragment).setTitle(str1);
+        paramBridgeModule.invokeCallJS(paramString, new JSONObject());
       }
     }
   }
   
-  public static void o(BridgeModule paramBridgeModule, String paramString)
+  public static void n(BridgeModule paramBridgeModule, String paramString)
   {
     if (paramBridgeModule.getViolaInstance() != null) {}
     for (;;)
@@ -3456,31 +3335,21 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void o(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void n(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    if (paramBridgeModule.getViolaInstance() == null) {
-      return;
-    }
-    Fragment localFragment = paramBridgeModule.getViolaInstance().getFragment();
-    if (localFragment == null) {
-      return;
-    }
-    if ((localFragment instanceof ViolaFragment))
+    paramJSONObject = k(paramJSONObject);
+    if (paramJSONObject != null)
     {
-      String str2 = paramJSONObject.optString("title");
-      String str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = paramJSONObject.optString("text");
-      }
-      if (!TextUtils.isEmpty(str1))
+      Fragment localFragment = paramBridgeModule.getViolaInstance().getFragment();
+      if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
       {
-        ((ViolaFragment)localFragment).setTitle(str1);
-        paramBridgeModule.invokeCallJS(paramString, new JSONObject());
+        ((ViolaFragment)localFragment).setTitleConf(paramJSONObject, null);
+        paramBridgeModule.invokeCallJS(paramString, null);
       }
     }
   }
   
-  public static void p(BridgeModule paramBridgeModule, String paramString)
+  public static void o(BridgeModule paramBridgeModule, String paramString)
   {
     paramBridgeModule = paramBridgeModule.getViolaInstance().getContext();
     if (paramBridgeModule != null)
@@ -3491,7 +3360,7 @@ public class BridgeModuleHelper
       Object localObject = VideoFeedsWeiShiUtils.b(paramString);
       if (localObject != null)
       {
-        ((DownloadInfo)localObject).a();
+        ((DownloadInfo)localObject).b();
         DownloadManagerV2.a().b((DownloadInfo)localObject);
         return;
       }
@@ -3517,33 +3386,7 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void p(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    paramJSONObject = paramJSONObject.optString("url");
-    if (TextUtils.isEmpty(paramJSONObject)) {
-      return;
-    }
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity != null) {
-      ViolaAccessHelper.a(localQBaseActivity, paramJSONObject, new BridgeModuleHelper.6(paramBridgeModule, paramString));
-    }
-  }
-  
-  public static void q(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
-  {
-    paramJSONObject = a(paramJSONObject);
-    if (paramJSONObject != null)
-    {
-      Fragment localFragment = paramBridgeModule.getViolaInstance().getFragment();
-      if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
-      {
-        ((ViolaFragment)localFragment).setTitleConf(paramJSONObject, null);
-        paramBridgeModule.invokeCallJS(paramString, null);
-      }
-    }
-  }
-  
-  public static void r(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void o(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     boolean bool = paramJSONObject.optBoolean("enable", true);
     if ((paramBridgeModule.getViolaInstance() != null) && ((paramBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
@@ -3552,10 +3395,10 @@ public class BridgeModuleHelper
       paramBridgeModule.invokeCallJS(paramString, new JSONObject());
       return;
     }
-    paramBridgeModule.invokeErrorCallJS(paramString, HardCodeUtil.a(2131701418));
+    paramBridgeModule.invokeErrorCallJS(paramString, HardCodeUtil.a(2131899443));
   }
   
-  public static void s(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void p(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     try
     {
@@ -3571,7 +3414,7 @@ public class BridgeModuleHelper
       }
       localJSONObject.put("retCode", 1);
       paramBridgeModule.invokeCallJS(paramString, localJSONObject);
-      QQToast.a(ReadInJoyUtils.a().getApplication(), 1, HardCodeUtil.a(2131701419), 0).a();
+      QQToast.makeText(ReadInJoyUtils.b().getApplication(), 1, HardCodeUtil.a(2131899444), 0).show();
       return;
     }
     catch (Exception paramBridgeModule)
@@ -3580,14 +3423,14 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void t(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void q(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     if ((paramJSONObject != null) && (paramBridgeModule.getViolaInstance() != null) && ((paramBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment))) {
       ((ViolaFragment)paramBridgeModule.getViolaInstance().getFragment()).updateViolaPageByData(paramJSONObject);
     }
   }
   
-  public static void u(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void r(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.optString("apkUrl"))))
     {
@@ -3598,7 +3441,7 @@ public class BridgeModuleHelper
       if (localObject != null)
       {
         i = ((DownloadInfo)localObject).a();
-        j = ((DownloadInfo)localObject).f;
+        j = ((DownloadInfo)localObject).t;
       }
       try
       {
@@ -3623,62 +3466,12 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void v(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void s(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localObject != null)
-    {
-      if (localQBaseActivity == null) {
-        return;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramJSONObject.optString("id"));
-      localStringBuilder.append("|");
-      localStringBuilder.append(paramJSONObject.optString("subid"));
-      localStringBuilder.append("|");
-      localStringBuilder.append(paramJSONObject.optString("content"));
-      localStringBuilder.append("|");
-      localStringBuilder.append("ANDROID");
-      localStringBuilder.append("|");
-      localStringBuilder.append("8.7.0.5295");
-      localStringBuilder.append("|");
-      localStringBuilder.append(DeviceInfoUtil.e());
-      localStringBuilder.append("|");
-      localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
-      localStringBuilder.append("|");
-      localStringBuilder.append(Build.MODEL);
-      localStringBuilder.append("|");
-      boolean bool = TextUtils.isEmpty(DeviceInfoUtil.a(localQBaseActivity).c);
-      String str = "未知";
-      if (bool) {
-        localObject = "未知";
-      } else {
-        localObject = DeviceInfoUtil.a(localQBaseActivity).c;
-      }
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append("|");
-      if (TextUtils.isEmpty(DeviceInfoUtil.a(localQBaseActivity).jdField_a_of_type_JavaLangString)) {
-        localObject = str;
-      } else {
-        localObject = DeviceInfoUtil.a(localQBaseActivity).jdField_a_of_type_JavaLangString;
-      }
-      localStringBuilder.append((String)localObject);
-      if (paramJSONObject.optBoolean("isall", false))
-      {
-        QLog.w("ViolaLog", 1, localStringBuilder.toString());
-        paramBridgeModule.invokeCallJS(paramString, null);
-        return;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.w("ViolaLog", 2, localStringBuilder.toString());
-        paramBridgeModule.invokeCallJS(paramString, null);
-      }
-    }
+    ViolaSDKManager.getInstance().getDomManager().post(new BridgeModuleHelper.12(paramJSONObject, paramBridgeModule, paramString));
   }
   
-  public static void w(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void t(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     label229:
     for (;;)
@@ -3734,7 +3527,7 @@ public class BridgeModuleHelper
     }
   }
   
-  public static void x(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void u(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     Activity localActivity = paramBridgeModule.getViolaInstance().getActivity();
     if (localActivity != null)
@@ -3744,14 +3537,14 @@ public class BridgeModuleHelper
       }
       if (!CheckPermission.isHasStoragePermission(localActivity))
       {
-        CheckPermission.requestSDCardPermission((AppActivity)localActivity, new BridgeModuleHelper.10(paramBridgeModule, paramJSONObject, paramString));
+        CheckPermission.requestSDCardPermission((AppActivity)localActivity, new BridgeModuleHelper.13(paramBridgeModule, paramJSONObject, paramString));
         return;
       }
-      y(paramBridgeModule, paramJSONObject, paramString);
+      v(paramBridgeModule, paramJSONObject, paramString);
     }
   }
   
-  public static void y(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  public static void v(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
     try
     {
@@ -3759,7 +3552,7 @@ public class BridgeModuleHelper
       paramJSONObject = new StringBuilder();
       paramJSONObject.append((String)localObject);
       paramJSONObject.append("?client=androidQQ");
-      paramJSONObject.append("&version=8.7.0.5295");
+      paramJSONObject.append("&version=8.8.17.5770");
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("&system=");
       ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
@@ -3770,7 +3563,7 @@ public class BridgeModuleHelper
       paramJSONObject.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("&uin=");
-      ((StringBuilder)localObject).append(RIJQQAppInterfaceUtil.a());
+      ((StringBuilder)localObject).append(RIJQQAppInterfaceUtil.d());
       paramJSONObject.append(((StringBuilder)localObject).toString());
       paramJSONObject = EmosmUtils.a("VIP_xingying", paramJSONObject.toString());
       if (QLog.isColorLevel())
@@ -3784,7 +3577,7 @@ public class BridgeModuleHelper
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       ((StringBuilder)localObject).append(".jpg");
       localObject = ((StringBuilder)localObject).toString();
-      ThreadManager.executeOnNetWorkThread(new BridgeModuleHelper.11(paramJSONObject, new File(AppConstants.SDCARD_IMG_SAVE, (String)localObject), paramBridgeModule, paramString));
+      ThreadManager.executeOnNetWorkThread(new BridgeModuleHelper.14(paramJSONObject, new File(AppConstants.SDCARD_IMG_SAVE, (String)localObject), paramBridgeModule, paramString));
       return;
     }
     catch (Exception paramJSONObject)
@@ -3801,14 +3594,112 @@ public class BridgeModuleHelper
     }
   }
   
+  public static void w(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  {
+    ViolaAccessHelper.a(String.valueOf(paramJSONObject.optInt("bid", 3256)), new BridgeModuleHelper.15(paramBridgeModule, paramString));
+  }
+  
+  public static void x(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  {
+    paramJSONObject = paramJSONObject.optJSONArray("bids");
+    if (paramJSONObject != null)
+    {
+      Object localObject = new ArrayList();
+      int i = 0;
+      try
+      {
+        while (i < paramJSONObject.length())
+        {
+          ((ArrayList)localObject).add(i, paramJSONObject.get(i).toString());
+          i += 1;
+        }
+        HtmlOffline.a((ArrayList)localObject, ReadInJoyUtils.b(), new BridgeModuleHelper.16(paramBridgeModule, paramString), true, false);
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("batchCheckUpdate error");
+          ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+          QLog.e("BridgeModuleHelper", 2, ((StringBuilder)localObject).toString());
+          paramBridgeModule.invokeErrorCallJS(paramString, null);
+        }
+      }
+    }
+  }
+  
+  public static void y(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
+  {
+    if (paramJSONObject == null)
+    {
+      QLog.d("BridgeModuleHelper", 1, "Error in isCached, the param is null!");
+      return;
+    }
+    paramJSONObject = HtmlOffline.d(paramJSONObject.optString("bid"));
+    JSONObject localJSONObject = new JSONObject();
+    if (paramJSONObject != null) {}
+    try
+    {
+      localJSONObject.put("result", true);
+      localJSONObject.put("version", paramJSONObject);
+    }
+    catch (JSONException localJSONException)
+    {
+      StringBuilder localStringBuilder;
+      break label80;
+    }
+    localJSONObject.put("result", false);
+    localJSONObject.put("version", "");
+    break label122;
+    label80:
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isCached,version:");
+      localStringBuilder.append(paramJSONObject);
+      QLog.d("BridgeModuleHelper", 2, localStringBuilder.toString());
+    }
+    label122:
+    paramBridgeModule.invokeCallJS(paramString, localJSONObject);
+  }
+  
   public static void z(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString)
   {
-    ViolaAccessHelper.a(String.valueOf(paramJSONObject.optInt("bid", 3256)), new BridgeModuleHelper.12(paramBridgeModule, paramString));
+    int i;
+    if (paramJSONObject != null) {
+      i = ViolaUtils.getInt(Integer.valueOf(paramJSONObject.optInt("allowCacheTime")));
+    } else {
+      i = -1;
+    }
+    paramJSONObject = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("webview");
+    if (i > 0)
+    {
+      a(paramBridgeModule, paramJSONObject, "webview", paramString);
+      return;
+    }
+    if ((paramJSONObject != null) && (paramJSONObject.mLocation != null))
+    {
+      a(paramBridgeModule, paramJSONObject, "webview", paramString);
+      return;
+    }
+    paramJSONObject = paramBridgeModule.getActivity();
+    if ((paramJSONObject instanceof QBaseActivity))
+    {
+      paramJSONObject = (QBaseActivity)paramJSONObject;
+      if (paramJSONObject.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+      {
+        paramJSONObject.requestPermissions(new BridgeModuleHelper.19(paramBridgeModule, "webview", paramString), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+        return;
+      }
+      c(paramBridgeModule, "webview", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper
  * JD-Core Version:    0.7.0.1
  */

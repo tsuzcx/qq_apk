@@ -18,7 +18,7 @@ public class QAVNotificationUtil
   public static int a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, int paramInt2)
   {
     if ((paramInt1 == 19) && (!TextUtils.isEmpty(paramString))) {
-      return paramVideoAppInterface.a(paramString);
+      return paramVideoAppInterface.m(paramString);
     }
     return VideoController.a(paramInt1, false, paramInt2);
   }
@@ -28,7 +28,7 @@ public class QAVNotificationUtil
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    paramString = SessionMgr.a().c(paramString);
+    paramString = SessionMgr.a().d(paramString);
     if (paramString == null) {
       return null;
     }
@@ -48,8 +48,8 @@ public class QAVNotificationUtil
   
   public static String a(VideoPackageUtils.VideoPacket paramVideoPacket)
   {
-    long l = paramVideoPacket.jdField_d_of_type_Long;
-    int i = paramVideoPacket.e;
+    long l = paramVideoPacket.l;
+    int i = paramVideoPacket.k;
     if ((i != 4) && (i != 5)) {
       switch (i)
       {
@@ -58,7 +58,7 @@ public class QAVNotificationUtil
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramVideoPacket.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramVideoPacket.b);
     localStringBuilder.append(paramVideoPacket.a);
     return localStringBuilder.toString();
   }
@@ -68,20 +68,20 @@ public class QAVNotificationUtil
     long l;
     try
     {
-      l = Long.parseLong(paramSessionInfo.r);
+      l = Long.parseLong(paramSessionInfo.aW);
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
       l = 0L;
     }
-    paramIntent.putExtra("uinType", paramSessionInfo.k);
-    paramIntent.putExtra("peerUin", paramSessionInfo.r);
+    paramIntent.putExtra("uinType", paramSessionInfo.p);
+    paramIntent.putExtra("peerUin", paramSessionInfo.aW);
     paramIntent.putExtra("friendUin", l);
-    paramIntent.putExtra("relationType", paramSessionInfo.E);
-    paramIntent.putExtra("MultiAVType", paramSessionInfo.j);
-    paramIntent.putExtra("discussId", paramSessionInfo.f);
-    paramIntent.putExtra("memberList", paramSessionInfo.a);
+    paramIntent.putExtra("relationType", paramSessionInfo.aQ);
+    paramIntent.putExtra("MultiAVType", paramSessionInfo.o);
+    paramIntent.putExtra("discussId", paramSessionInfo.aN);
+    paramIntent.putExtra("memberList", paramSessionInfo.aO);
   }
   
   public static void a(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface, VideoPackageUtils.VideoPacket paramVideoPacket)
@@ -98,19 +98,19 @@ public class QAVNotificationUtil
       ((StringBuilder)localObject).append("]");
       QLog.i("CompatModeTag", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = String.valueOf(paramVideoPacket.c);
-    int i = a(paramVideoAppInterface, paramVideoPacket.e, (String)localObject, 0);
+    Object localObject = String.valueOf(paramVideoPacket.h);
+    int i = a(paramVideoAppInterface, paramVideoPacket.k, (String)localObject, 0);
     String str = a(paramVideoPacket);
     boolean bool;
-    if (paramVideoPacket.jdField_d_of_type_Int == 1) {
+    if (paramVideoPacket.i == 1) {
       bool = true;
     } else {
       bool = false;
     }
-    int j = paramVideoPacket.jdField_b_of_type_Int;
+    int j = paramVideoPacket.f;
     try
     {
-      if (!paramVideoAppInterface.a().a(i, (String)localObject, str, null, bool, null, 0, j))
+      if (!paramVideoAppInterface.b().a(i, (String)localObject, str, null, bool, null, 0, j))
       {
         QLog.w("CompatModeTag", 1, "showNotification() return ! isRequestVideo = false");
         return;
@@ -180,12 +180,12 @@ public class QAVNotificationUtil
     if (TextUtils.isEmpty(paramString)) {
       return paramContext;
     }
-    paramString = SessionMgr.a().c(paramString);
+    paramString = SessionMgr.a().d(paramString);
     if (paramString == null) {
       return paramContext;
     }
-    paramContext.putExtra("sessionType", paramString.jdField_d_of_type_Int);
-    if (AVUtil.b(paramString.k))
+    paramContext.putExtra("sessionType", paramString.g);
+    if (AVUtil.e(paramString.p))
     {
       a(paramContext, paramString);
       return paramContext;
@@ -196,13 +196,13 @@ public class QAVNotificationUtil
   
   public static void b(Intent paramIntent, SessionInfo paramSessionInfo)
   {
-    paramIntent.putExtra("uinType", paramSessionInfo.k);
-    paramIntent.putExtra("relationType", UITools.b(paramSessionInfo.k));
-    paramIntent.putExtra("peerUin", paramSessionInfo.c);
-    paramIntent.putExtra("extraUin", paramSessionInfo.e);
-    paramIntent.putExtra("isAudioMode", paramSessionInfo.H);
-    paramIntent.putExtra("isDoubleVideoMeeting", paramSessionInfo.y);
-    paramIntent.putExtra("bindType", paramSessionInfo.A);
+    paramIntent.putExtra("uinType", paramSessionInfo.p);
+    paramIntent.putExtra("relationType", UITools.b(paramSessionInfo.p));
+    paramIntent.putExtra("peerUin", paramSessionInfo.s);
+    paramIntent.putExtra("extraUin", paramSessionInfo.u);
+    paramIntent.putExtra("isAudioMode", paramSessionInfo.aK);
+    paramIntent.putExtra("isDoubleVideoMeeting", paramSessionInfo.am);
+    paramIntent.putExtra("bindType", paramSessionInfo.az);
   }
 }
 

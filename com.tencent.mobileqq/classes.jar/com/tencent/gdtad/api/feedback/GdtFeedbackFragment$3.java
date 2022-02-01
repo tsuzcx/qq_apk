@@ -16,19 +16,19 @@ class GdtFeedbackFragment$3
     {
       int i = ((GdtFeedbackFragment.GdtFeedbackItemView)paramView).a;
       this.a.a.a(i);
-      GdtFeedbackFragment.a(this.a, this.a.a.a(i), this.a.a.c(i));
+      GdtFeedbackFragment.a(this.a, this.a.a.b(i), this.a.a.f(i));
       this.a.dismiss();
     }
     catch (Exception localException)
     {
-      AdLog.e(GdtFeedbackFragment.a(), "onItemClicked error", localException);
+      AdLog.e(GdtFeedbackFragment.b(), "onItemClicked error", localException);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.feedback.GdtFeedbackFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class ConfigInfoTips$1
       {
         ConfigInfoTips.a(this.a, true);
         if (ConfigInfoTips.b(this.a)) {
-          ConfigInfoTips.a(this.a);
+          ConfigInfoTips.c(this.a);
         }
       }
       int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
@@ -31,7 +31,7 @@ class ConfigInfoTips$1
     {
       ConfigInfoTips.b(this.a, true);
       if (ConfigInfoTips.a(this.a)) {
-        ConfigInfoTips.a(this.a);
+        ConfigInfoTips.c(this.a);
       }
     }
   }

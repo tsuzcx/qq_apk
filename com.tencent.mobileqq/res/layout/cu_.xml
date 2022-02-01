@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bf3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/xb"
+<merge android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/i4m" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.EllipsizeLayout android:gravity="right" android:layout_gravity="end|center" android:id="@id/dls" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/k9t" android:layout_width="48.0dip" android:layout_height="wrap_content" android:maxWidth="48.0dip" android:text="    " android:singleLine="true" />
+            <TextView android:textSize="9.0sp" android:textColor="@color/al3" android:id="@id/qla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="          " />
+        </LinearLayout>
+        <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsTiktokFollowBtn android:layout_gravity="center_vertical" android:id="@id/o0g" android:layout_width="44.0dip" android:layout_height="20.0dip" android:layout_margin="8.0dip" android:src="@drawable/cjl" android:contentDescription="@string/ka2" />
+    </com.tencent.mobileqq.widget.EllipsizeLayout>
+    <com.tencent.mobileqq.kandian.base.view.widget.ScalingFrameLayout android:layout_gravity="start" android:id="@id/ncd" android:clipChildren="false" android:layout_width="48.0dip" android:layout_height="48.0dip">
+        <FrameLayout android:layout_gravity="center" android:id="@id/nvi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/ewc">
+            <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView android:id="@id/d46" android:focusable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+        </FrameLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/nvj" android:background="@drawable/in0" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/imz" />
+    </com.tencent.mobileqq.kandian.base.view.widget.ScalingFrameLayout>
+</merge>

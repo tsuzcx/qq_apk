@@ -17,9 +17,9 @@ class BitmapCache
       while (i < j)
       {
         Object localObject = arrayOfEntry[i];
-        if (((BitmapCache.Entry)localObject).jdField_a_of_type_Int != -1)
+        if (((BitmapCache.Entry)localObject).a != -1)
         {
-          localObject = ((BitmapCache.Entry)localObject).jdField_a_of_type_AndroidGraphicsBitmap;
+          localObject = ((BitmapCache.Entry)localObject).b;
           if (localObject == paramBitmap) {
             return;
           }
@@ -38,7 +38,7 @@ class BitmapCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BitmapCache
  * JD-Core Version:    0.7.0.1
  */

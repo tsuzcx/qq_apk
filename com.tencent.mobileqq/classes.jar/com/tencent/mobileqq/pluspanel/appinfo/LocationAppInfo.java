@@ -21,7 +21,7 @@ public class LocationAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839132;
+    return 2130839288;
   }
   
   public int getAppID()
@@ -50,22 +50,22 @@ public class LocationAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719740);
+    return BaseApplicationImpl.getContext().getString(2131917343);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.a()))
+    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.aX()))
     {
-      CheckPermission.requestSDCardPermission(paramBaseChatPie.a(), null);
+      CheckPermission.requestSDCardPermission(paramBaseChatPie.aX(), null);
       return;
     }
-    new LocationSheet(paramBaseChatPie.a, paramBaseChatPie).a();
+    new LocationSheet(paramBaseChatPie.d, paramBaseChatPie).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.LocationAppInfo
  * JD-Core Version:    0.7.0.1
  */

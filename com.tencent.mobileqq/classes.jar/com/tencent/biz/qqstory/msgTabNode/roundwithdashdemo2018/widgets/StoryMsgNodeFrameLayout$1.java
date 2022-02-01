@@ -12,19 +12,19 @@ class StoryMsgNodeFrameLayout$1
   
   public void run()
   {
-    int i = StoryVideoUploadProgressManager.a().a();
+    int i = StoryVideoUploadProgressManager.a().c();
     if (i >= 0)
     {
-      this.this$0.a.setAnimProgress(i, QQStoryContext.a().b());
+      this.this$0.e.setAnimProgress(i, QQStoryContext.a().i());
       if (i < 100) {
-        StoryMsgNodeFrameLayout.a(this.this$0).postDelayed(StoryMsgNodeFrameLayout.a(this.this$0), 200L);
+        StoryMsgNodeFrameLayout.b(this.this$0).postDelayed(StoryMsgNodeFrameLayout.a(this.this$0), 200L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout.1
  * JD-Core Version:    0.7.0.1
  */

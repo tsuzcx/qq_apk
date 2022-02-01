@@ -8,7 +8,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.QRouteApi;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import kotlin.Metadata;
+import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,21 +22,14 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardBaseProcessor;", "", "()V", "getBtnText", "", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "getCorporateIconUrl", "getCorporateName", "getDisType", "message", "Lcom/tencent/mobileqq/data/MessageRecord;", "getImageUrl", "getLandingUrl", "getReportClick", "", "getTitle", "isVideoMsg", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardBaseProcessor;", "", "()V", "getBtnText", "", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "getCorporateIconUrl", "getCorporateName", "getDisType", "message", "Lcom/tencent/mobileqq/data/MessageRecord;", "getImageUrl", "getLabelList", "", "getLandingUrl", "getReportClick", "", "getTitle", "isVideoMsg", "Companion", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public class AdCardBaseProcessor
 {
-  @NotNull
-  public String a(@NotNull MessageRecord paramMessageRecord)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMessageRecord, "message");
-    QRouteApi localQRouteApi = QRoute.api(IEcshopMessageApi.class);
-    Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IEcshopMessageApi::class.java)");
-    paramMessageRecord = ((IEcshopMessageApi)localQRouteApi).getDisType(paramMessageRecord);
-    Intrinsics.checkExpressionValueIsNotNull(paramMessageRecord, "ecshopMessageApi.getDisType(message)");
-    return paramMessageRecord;
-  }
+  public static final AdCardBaseProcessor.Companion a = new AdCardBaseProcessor.Companion(null);
   
   @NotNull
   public String a(@NotNull qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
@@ -87,6 +85,17 @@ public class AdCardBaseProcessor
   }
   
   @NotNull
+  public String b(@NotNull MessageRecord paramMessageRecord)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMessageRecord, "message");
+    QRouteApi localQRouteApi = QRoute.api(IEcshopMessageApi.class);
+    Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IEcshopMessageApi::class.java)");
+    paramMessageRecord = ((IEcshopMessageApi)localQRouteApi).getDisType(paramMessageRecord);
+    Intrinsics.checkExpressionValueIsNotNull(paramMessageRecord, "ecshopMessageApi.getDisType(message)");
+    return paramMessageRecord;
+  }
+  
+  @NotNull
   public String b(@NotNull qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAdInfo, "adInfo");
@@ -133,10 +142,25 @@ public class AdCardBaseProcessor
     }
     return "";
   }
+  
+  @NotNull
+  public List<String> d(@NotNull qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAdInfo, "adInfo");
+    paramAdInfo = paramAdInfo.display_info.basic_info.element_structure_content.label.get();
+    Intrinsics.checkExpressionValueIsNotNull(paramAdInfo, "adInfo.display_info.basi…cture_content.label.get()");
+    Object localObject = (Iterable)paramAdInfo;
+    paramAdInfo = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramAdInfo.add(((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label)((Iterator)localObject).next()).content.get());
+    }
+    return (List)paramAdInfo;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.adcard.AdCardBaseProcessor
  * JD-Core Version:    0.7.0.1
  */

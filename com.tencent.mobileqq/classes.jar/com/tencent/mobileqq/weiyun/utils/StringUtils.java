@@ -15,7 +15,7 @@ public class StringUtils
     return Utils.bytes2HexStr(paramByteStringMicro.toByteArray());
   }
   
-  public static byte[] a(String paramString)
+  public static byte[] b(String paramString)
   {
     int j = paramString.length();
     byte[] arrayOfByte = new byte[j / 2];
@@ -30,7 +30,7 @@ public class StringUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.utils.StringUtils
  * JD-Core Version:    0.7.0.1
  */

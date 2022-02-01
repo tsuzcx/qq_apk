@@ -21,18 +21,6 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class DecorViewHelper
 {
-  public static int a(Context paramContext)
-  {
-    if ((paramContext instanceof Activity))
-    {
-      paramContext = ((Activity)paramContext).findViewById(16908290);
-      if (paramContext != null) {
-        return paramContext.getHeight();
-      }
-    }
-    return 0;
-  }
-  
   public static Bitmap a(Context paramContext)
   {
     boolean bool = paramContext instanceof QBaseActivity;
@@ -143,10 +131,22 @@ public class DecorViewHelper
     }
     return false;
   }
+  
+  public static int b(Context paramContext)
+  {
+    if ((paramContext instanceof Activity))
+    {
+      paramContext = ((Activity)paramContext).findViewById(16908290);
+      if (paramContext != null) {
+        return paramContext.getHeight();
+      }
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.DecorViewHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,17 +13,17 @@ import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.TextData;
 
 public final class CreateCommentResult
 {
-  public int a;
   public long a;
-  public String a;
-  public List<BaseCommentData.CommentRptData> a;
-  public boolean a;
-  public int b;
-  public String b;
   public boolean b;
   public int c;
-  public String c;
-  public String d;
+  public int d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public int i;
+  public boolean j;
+  public List<BaseCommentData.CommentRptData> k;
   
   @Nullable
   private static BaseCommentData.CommentRptData a(oidb_0xd1e.RptData paramRptData)
@@ -34,8 +34,8 @@ public final class CreateCommentResult
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 0;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.a = 0;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
         return localCommentRptData;
       }
     }
@@ -44,12 +44,12 @@ public final class CreateCommentResult
   
   private static void a(oidb_0xd1e.RptData paramRptData, List<BaseCommentData.CommentRptData> paramList)
   {
-    int i = RIJPBFieldUtils.a(paramRptData.data_type, 0);
-    if (i != 0)
+    int m = RIJPBFieldUtils.a(paramRptData.data_type, 0);
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 3) {
+        if (m != 3) {
           paramRptData = null;
         } else {
           paramRptData = b(paramRptData);
@@ -76,10 +76,10 @@ public final class CreateCommentResult
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 3;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
-        localCommentRptData.jdField_c_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.url, "");
-        localCommentRptData.d = RIJPBFieldUtils.a(paramRptData.topic_id, "");
+        localCommentRptData.a = 3;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.d = RIJPBFieldUtils.a(paramRptData.url, "");
+        localCommentRptData.e = RIJPBFieldUtils.a(paramRptData.topic_id, "");
         return localCommentRptData;
       }
     }
@@ -95,9 +95,9 @@ public final class CreateCommentResult
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 1;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
-        localCommentRptData.jdField_b_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.uid, "");
+        localCommentRptData.a = 1;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.c = RIJPBFieldUtils.a(paramRptData.uid, "");
         return localCommentRptData;
       }
     }
@@ -111,13 +111,13 @@ public final class CreateCommentResult
       if (paramCollection.isEmpty()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramCollection.size());
+      this.k = new ArrayList(paramCollection.size());
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext())
       {
         oidb_0xd1e.RptData localRptData = (oidb_0xd1e.RptData)paramCollection.next();
         if (localRptData != null) {
-          a(localRptData, this.jdField_a_of_type_JavaUtilList);
+          a(localRptData, this.k);
         }
       }
     }
@@ -127,38 +127,38 @@ public final class CreateCommentResult
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CreateCommentResult{seq=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", success=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", errorCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", commentType=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", commentId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", commentJsonStr='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", commentContent='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", shareUrl='");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", feedsType=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", isFeeds=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", commentRptDataList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.CreateCommentResult
  * JD-Core Version:    0.7.0.1
  */

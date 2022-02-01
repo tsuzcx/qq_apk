@@ -15,16 +15,16 @@ class ReadInJoyNewFeedsActivity$5$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.a);
-    if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.a) {
-      SharedPreUtils.o(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
+    this.b.this$0.k.a();
+    this.a.removeView(this.b.this$0.k);
+    if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == this.b.c) {
+      SharedPreUtils.u(this.b.this$0, this.b.this$0.app.getCurrentAccountUin(), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

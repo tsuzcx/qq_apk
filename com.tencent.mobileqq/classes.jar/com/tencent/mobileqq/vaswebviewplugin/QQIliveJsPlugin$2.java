@@ -47,7 +47,7 @@ class QQIliveJsPlugin$2
             long l2 = paramBundle.getLong("roomId");
             int i = paramBundle.getInt("closeFrom");
             if ((l1 != l2) || (!QQIliveJsPlugin.access$100(this.this$0))) {
-              break label247;
+              break label275;
             }
             paramBundle = new JSONObject();
             paramBundle.put("ret", 0);
@@ -67,15 +67,18 @@ class QQIliveJsPlugin$2
         paramBundle.append("error getLiveRoomIndex ");
         paramBundle.append(paramString);
         QLog.e("QQIliveJsPlugin", 1, paramBundle.toString());
+        return false;
       }
+    } else if ((paramString.equals("ACTION_WEBVIEW_SHOW_GIFT_ICON_EVENT")) && (QQIliveJsPlugin.access$000(this.this$0) != null)) {
+      QQIliveJsPlugin.access$300(this.this$0);
     }
-    label247:
+    label275:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQIliveJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

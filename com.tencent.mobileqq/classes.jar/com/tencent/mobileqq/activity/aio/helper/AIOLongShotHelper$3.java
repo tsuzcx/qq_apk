@@ -10,14 +10,14 @@ final class AIOLongShotHelper$3
 {
   AIOLongShotHelper$3(Activity paramActivity, ActionSheet paramActionSheet, String paramString, AIOLongShotHelper.OnActionSheetAction paramOnActionSheetAction) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_ComTencentWidgetActionSheet, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper$OnActionSheetAction);
+    AIOLongShotHelper.a(this.a, paramView, paramInt, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,26 +18,26 @@ public class MsgTabStoryNodeDelegate$GetGroupInfoEventReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
   {
-    if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetShareGroupInfoEvent.g.isSuccess())
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: ");
-        localStringBuilder.append(paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+        localStringBuilder.append(paramGetShareGroupInfoEvent.b);
         QLog.i("zivonchen", 2, localStringBuilder.toString());
       }
-      if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
-        paramMsgTabStoryNodeDelegate.a(paramMsgTabStoryNodeDelegate.a.a(8, paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
+      if (paramGetShareGroupInfoEvent.b != null) {
+        paramMsgTabStoryNodeDelegate.a(paramMsgTabStoryNodeDelegate.a.a(8, paramGetShareGroupInfoEvent.b.shareGroupId));
       }
     }
     else if (QLog.isColorLevel())
     {
       paramMsgTabStoryNodeDelegate = new StringBuilder();
       paramMsgTabStoryNodeDelegate.append("MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: ");
-      paramMsgTabStoryNodeDelegate.append(paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      paramMsgTabStoryNodeDelegate.append(paramGetShareGroupInfoEvent.g);
       paramMsgTabStoryNodeDelegate.append(", sharegroupInfo = ");
-      paramMsgTabStoryNodeDelegate.append(paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      paramMsgTabStoryNodeDelegate.append(paramGetShareGroupInfoEvent.b);
       QLog.i("zivonchen", 2, paramMsgTabStoryNodeDelegate.toString());
     }
   }
@@ -49,7 +49,7 @@ public class MsgTabStoryNodeDelegate$GetGroupInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.GetGroupInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

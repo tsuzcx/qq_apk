@@ -28,46 +28,30 @@ public class TroopAioNewMessageBar
   protected static int h = 2;
   protected static int i = 3;
   protected static int j;
-  protected static final int m = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131297577);
-  protected float a;
-  protected Handler a;
-  protected Animation a;
-  public LinearLayout a;
-  protected TextView a;
-  protected Animation b;
-  public LinearLayout b;
-  protected RelativeLayout b;
-  protected TextView b;
-  protected boolean b;
-  protected Animation c;
-  public boolean c;
-  protected int k = 0;
-  protected int l = f;
-  protected int n = 0;
-  
-  public TroopAioNewMessageBar()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new TroopAioNewMessageBar.1(this);
-  }
+  protected static final int r = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131298241);
+  public LinearLayout k = null;
+  public LinearLayout l = null;
+  protected RelativeLayout m = null;
+  protected TextView n = null;
+  protected TextView o = null;
+  protected int p = 0;
+  protected int q = f;
+  protected float s = 0.0F;
+  protected boolean t = false;
+  protected int u = 0;
+  protected Animation v = null;
+  protected Animation w = null;
+  protected Animation x = null;
+  public boolean y = true;
+  protected Handler z = new TroopAioNewMessageBar.1(this);
   
   private void a(TextView paramTextView, int paramInt)
   {
     Object localObject;
     if (paramInt == e)
     {
-      paramTextView.setText(2131697611);
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130842459, 0);
+      paramTextView.setText(2131895384);
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130843412, 0);
       paramTextView.setCompoundDrawablePadding(4);
       paramTextView.setGravity(17);
       localObject = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
@@ -82,105 +66,105 @@ public class TroopAioNewMessageBar
       localObject = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).width = -1;
       paramTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+      localObject = this.D.getMessageFacade().getLastMessage(this.F.b, this.F.a);
       if (localObject != null)
       {
         MsgSummary localMsgSummary = new MsgSummary();
-        MsgUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (com.tencent.imcore.message.Message)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, localMsgSummary, ((com.tencent.imcore.message.Message)localObject).nickName, false, false);
-        paramTextView.setText(localMsgSummary.a(this.jdField_a_of_type_AndroidContentContext));
+        MsgUtils.a(this.E, this.D, (com.tencent.imcore.message.Message)localObject, this.F.a, localMsgSummary, ((com.tencent.imcore.message.Message)localObject).nickName, false, false);
+        paramTextView.setText(localMsgSummary.a(this.E));
       }
     }
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(j);
-    int i1 = this.l;
+    this.z.removeMessages(j);
+    int i1 = this.q;
     if (i1 == g)
     {
-      f();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      this.l = i;
+      g();
+      this.k.setVisibility(0);
+      this.l.startAnimation(this.w);
+      this.q = i;
       return;
     }
     if (i1 == h)
     {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      this.l = i;
+      this.l.startAnimation(this.w);
+      this.q = i;
     }
   }
   
-  private void f()
+  private void g()
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.clearAnimation();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.l.clearAnimation();
+    this.m.clearAnimation();
   }
   
-  public int a()
+  protected void a()
   {
-    return this.n;
+    this.s = 0.0F;
+    this.v = new TranslateAnimation(0.0F, 0.0F, r, 0.0F);
+    this.w = new TranslateAnimation(0.0F, 0.0F, 0.0F, r);
+    this.v.setDuration(300L);
+    this.w.setDuration(300L);
+    this.v.setAnimationListener(this);
+    this.w.setAnimationListener(this);
+    this.x = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - r);
+    this.x.setDuration(300L);
+    this.x.setAnimationListener(this);
   }
   
   public void a(int paramInt)
   {
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    LinearLayout localLinearLayout = this.k;
     if (localLinearLayout != null) {
       localLinearLayout.setVisibility(paramInt);
     }
   }
   
-  public boolean a()
+  protected void b()
   {
-    return this.jdField_b_of_type_AndroidWidgetLinearLayout != null;
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, m, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, m);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - m);
-    this.jdField_c_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-  }
-  
-  protected void d()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(j);
-    if (this.jdField_b_of_type_AndroidWidgetLinearLayout != null)
+    this.z.removeMessages(j);
+    if (this.l != null)
     {
-      f();
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      g();
+      this.l.setVisibility(8);
     }
+  }
+  
+  public int c()
+  {
+    return this.u;
+  }
+  
+  public boolean d()
+  {
+    return this.l != null;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    if (paramAnimation.equals(this.jdField_b_of_type_AndroidViewAnimationAnimation))
+    this.s = 0.0F;
+    if (paramAnimation.equals(this.w))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.l = f;
+      this.k.setVisibility(8);
+      this.q = f;
       return;
     }
-    if (paramAnimation.equals(this.jdField_a_of_type_AndroidViewAnimationAnimation))
+    if (paramAnimation.equals(this.v))
     {
-      this.l = h;
-      if (this.k == e)
+      this.q = h;
+      if (this.p == e)
       {
-        paramAnimation = this.jdField_a_of_type_AndroidOsHandler;
+        paramAnimation = this.z;
         paramAnimation.sendMessageDelayed(android.os.Message.obtain(paramAnimation, j), 3000L);
       }
     }
-    else if (paramAnimation.equals(this.jdField_c_of_type_AndroidViewAnimationAnimation))
+    else if (paramAnimation.equals(this.x))
     {
-      a(this.jdField_a_of_type_AndroidWidgetTextView, this.k);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      a(this.n, this.p);
+      this.o.setVisibility(8);
     }
   }
   
@@ -188,12 +172,12 @@ public class TroopAioNewMessageBar
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    paramAnimation.equals(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    paramAnimation.equals(this.v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioNewMessageBar
  * JD-Core Version:    0.7.0.1
  */

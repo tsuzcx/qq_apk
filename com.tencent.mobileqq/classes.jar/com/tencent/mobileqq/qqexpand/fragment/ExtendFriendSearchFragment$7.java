@@ -10,18 +10,18 @@ class ExtendFriendSearchFragment$7
   
   public void onChanged()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentRecyclerViewAdapter.a() == 0)
+    if (this.a.m.b() == 0)
     {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentRecyclerViewItemDecoration);
+      this.a.p.removeItemDecoration(this.a.r);
       return;
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentRecyclerViewItemDecoration);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentRecyclerViewItemDecoration);
+    this.a.p.removeItemDecoration(this.a.r);
+    this.a.p.addItemDecoration(this.a.r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSearchFragment.7
  * JD-Core Version:    0.7.0.1
  */

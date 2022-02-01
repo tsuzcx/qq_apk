@@ -24,7 +24,7 @@ class AEGIFChunkPreviewFragment$6
   
   public void a(@Nullable RecognizedEmotionBean paramRecognizedEmotionBean)
   {
-    AEGIFChunkPreviewFragment.a(this.a).a().removeObservers(AEGIFChunkPreviewFragment.a(this.a));
+    AEGIFRecommandTextViewModel.a().removeObservers(AEGIFChunkPreviewFragment.c(this.a));
     if (paramRecognizedEmotionBean != null)
     {
       int i = 0;
@@ -34,69 +34,69 @@ class AEGIFChunkPreviewFragment$6
       QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Obtained recognizedEmotion", ((StringBuilder)localObject1).toString() });
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("emo ===");
-      ((StringBuilder)localObject1).append(paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramRecognizedEmotionBean.b);
       ((StringBuilder)localObject1).append("text ===");
-      ((StringBuilder)localObject1).append(paramRecognizedEmotionBean.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(paramRecognizedEmotionBean.c);
       ((StringBuilder)localObject1).append("material ====");
-      ((StringBuilder)localObject1).append(paramRecognizedEmotionBean.jdField_b_of_type_Int);
+      ((StringBuilder)localObject1).append(paramRecognizedEmotionBean.d);
       QLog.d("AEGIFChunkPreviewFragment", 4, ((StringBuilder)localObject1).toString());
-      if (paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString == null)
+      if (paramRecognizedEmotionBean.b == null)
       {
-        paramRecognizedEmotionBean.jdField_a_of_type_Int = 0;
-        paramRecognizedEmotionBean.jdField_b_of_type_Int = 6;
-        paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString = "default";
+        paramRecognizedEmotionBean.c = 0;
+        paramRecognizedEmotionBean.d = 6;
+        paramRecognizedEmotionBean.b = "default";
       }
-      if ((paramRecognizedEmotionBean.jdField_a_of_type_JavaUtilList != null) && (paramRecognizedEmotionBean.jdField_a_of_type_JavaUtilList.size() == 0)) {
-        paramRecognizedEmotionBean.jdField_a_of_type_JavaUtilList.addAll(AEGIFTextMvp.jdField_a_of_type_JavaUtilList);
+      if ((paramRecognizedEmotionBean.a != null) && (paramRecognizedEmotionBean.a.size() == 0)) {
+        paramRecognizedEmotionBean.a.addAll(AEGIFTextMvp.a);
       }
       Object localObject2;
-      if (paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString.equals("default"))
+      if (paramRecognizedEmotionBean.b.equals("default"))
       {
-        localObject1 = HardCodeUtil.a(2131700195);
+        localObject1 = HardCodeUtil.a(2131898239);
       }
       else
       {
-        localObject1 = (String)AEGIFChunkPreviewFragment.a(this.a).get(paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString);
+        localObject1 = (String)AEGIFChunkPreviewFragment.f(this.a).get(paramRecognizedEmotionBean.b);
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131700190));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131898234));
         ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131700197));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131898241));
         localObject1 = ((StringBuilder)localObject2).toString();
       }
-      AEGIFChunkPreviewFragment.a(this.a).setText((CharSequence)localObject1);
-      while (i < paramRecognizedEmotionBean.jdField_a_of_type_Int)
+      AEGIFChunkPreviewFragment.g(this.a).setText((CharSequence)localObject1);
+      while (i < paramRecognizedEmotionBean.c)
       {
         localObject1 = new AEGIFPreviewWrapper();
-        ((AEGIFPreviewWrapper)localObject1).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-        ((AEGIFPreviewWrapper)localObject1).jdField_a_of_type_JavaLangString = ((String)paramRecognizedEmotionBean.jdField_a_of_type_JavaUtilList.get(i % paramRecognizedEmotionBean.jdField_a_of_type_JavaUtilList.size()));
-        ((AEGIFPreviewWrapper)localObject1).jdField_b_of_type_Int = 2;
-        if (AEGIFChunkPreviewFragment.a(this.a).size() >= AEGIFChunkPreviewFragment.a(this.a)) {
+        ((AEGIFPreviewWrapper)localObject1).c = null;
+        ((AEGIFPreviewWrapper)localObject1).d = ((String)paramRecognizedEmotionBean.a.get(i % paramRecognizedEmotionBean.a.size()));
+        ((AEGIFPreviewWrapper)localObject1).b = 2;
+        if (AEGIFChunkPreviewFragment.a(this.a).size() >= AEGIFChunkPreviewFragment.h(this.a)) {
           break;
         }
         AEGIFChunkPreviewFragment.a(this.a).add(localObject1);
-        AEGIFChunkPreviewFragment.a(this.a).notifyItemInserted(AEGIFChunkPreviewFragment.a(this.a).size() - 1);
+        AEGIFChunkPreviewFragment.b(this.a).notifyItemInserted(AEGIFChunkPreviewFragment.a(this.a).size() - 1);
         localObject2 = new MaterialWrapper();
-        ((MaterialWrapper)localObject2).jdField_b_of_type_JavaLangString = ((AEGIFPreviewWrapper)localObject1).jdField_a_of_type_JavaLangString;
+        ((MaterialWrapper)localObject2).c = ((AEGIFPreviewWrapper)localObject1).d;
         i += 1;
-        ((MaterialWrapper)localObject2).jdField_a_of_type_Int = i;
-        AEGIFChunkPreviewFragment.a(this.a).a((MaterialWrapper)localObject2);
+        ((MaterialWrapper)localObject2).a = i;
+        AEGIFChunkPreviewFragment.d(this.a).a((MaterialWrapper)localObject2);
       }
-      AEGIFChunkPreviewFragment.a(this.a).a().observe(AEGIFChunkPreviewFragment.a(this.a), new AEGIFChunkPreviewFragment.6.1(this, paramRecognizedEmotionBean));
+      AEGIFChunkPreviewFragment.i(this.a).a().observe(AEGIFChunkPreviewFragment.c(this.a), new AEGIFChunkPreviewFragment.6.1(this, paramRecognizedEmotionBean));
       AEGIFChunkPreviewFragment.a(this.a, paramRecognizedEmotionBean);
       return;
     }
     QLog.d("AEGIFChunkPreviewFragment", 4, "Recognized emotion bean is null");
     paramRecognizedEmotionBean = new AEGIFPreviewWrapper();
-    paramRecognizedEmotionBean.jdField_b_of_type_JavaLangString = "";
-    paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString = "";
-    paramRecognizedEmotionBean.jdField_b_of_type_Int = 2;
-    paramRecognizedEmotionBean.jdField_a_of_type_Int = 11;
+    paramRecognizedEmotionBean.e = "";
+    paramRecognizedEmotionBean.d = "";
+    paramRecognizedEmotionBean.b = 2;
+    paramRecognizedEmotionBean.a = 11;
     AEGIFChunkPreviewFragment.a(this.a).add(paramRecognizedEmotionBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.6
  * JD-Core Version:    0.7.0.1
  */

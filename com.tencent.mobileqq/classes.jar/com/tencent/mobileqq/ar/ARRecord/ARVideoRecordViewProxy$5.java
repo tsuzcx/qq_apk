@@ -9,13 +9,13 @@ class ARVideoRecordViewProxy$5
   
   public void run()
   {
-    ARVideoRecordViewProxy.a(this.this$0).setText(ARRecordUtils.a(this.a / 1000));
-    ARVideoRecordViewProxy.b(this.this$0).setText(ARRecordUtils.b(this.b));
+    ARVideoRecordViewProxy.g(this.this$0).setText(ARRecordUtils.a(this.a / 1000));
+    ARVideoRecordViewProxy.h(this.this$0).setText(ARRecordUtils.b(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy.5
  * JD-Core Version:    0.7.0.1
  */

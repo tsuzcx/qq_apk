@@ -9,15 +9,15 @@ class TroopAIOEmotionFragment$2$1
   
   public void run()
   {
-    TroopAIOEmotionFragment.a(this.a.this$0);
-    if (TroopAIOEmotionFragment.a(this.a.this$0) != null) {
-      TroopAIOEmotionFragment.a(this.a.this$0).g();
+    TroopAIOEmotionFragment.b(this.a.this$0);
+    if (TroopAIOEmotionFragment.c(this.a.this$0) != null) {
+      TroopAIOEmotionFragment.c(this.a.this$0).j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

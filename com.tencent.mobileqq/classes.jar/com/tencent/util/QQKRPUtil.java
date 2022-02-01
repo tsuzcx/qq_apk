@@ -11,8 +11,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
-import com.tencent.mobileqq.kandian.biz.common.api.IRIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.xtab.api.IRIJXTabFrameUtils;
 import com.tencent.mobileqq.leba.entity.LebaPluginInfo;
 import com.tencent.mobileqq.leba.entity.LebaViewItem;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -72,7 +72,7 @@ public class QQKRPUtil
   {
     try
     {
-      if (((((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isKandianTabFrame(paramFrame)) || (paramInt == FrameControllerUtil.g)) && (paramFrameFragment.a(((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).getTabFrame()) != null) && (paramInt == FrameControllerUtil.g) && (paramFrameFragment.a().getIntent().getIntExtra("launch_from", 5) == 6))
+      if (((((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isKandianTabFrame(paramFrame)) || (paramInt == FrameControllerUtil.g)) && (paramFrameFragment.a(((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).getTabFrame()) != null) && (paramInt == FrameControllerUtil.g) && (paramFrameFragment.C().getIntent().getIntExtra("launch_from", 5) == 6))
       {
         a(paramQQAppInterface, "0X80098E2", "", "", "", "");
         return;
@@ -210,7 +210,7 @@ public class QQKRPUtil
   {
     try
     {
-      if (paramLebaViewItem.a.strPkgName.equals("com.android.ReadInJoy"))
+      if (paramLebaViewItem.b.strPkgName.equals("com.android.ReadInJoy"))
       {
         paramLebaViewItem = new StringBuilder();
         paramLebaViewItem.append("");
@@ -238,7 +238,7 @@ public class QQKRPUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.QQKRPUtil
  * JD-Core Version:    0.7.0.1
  */

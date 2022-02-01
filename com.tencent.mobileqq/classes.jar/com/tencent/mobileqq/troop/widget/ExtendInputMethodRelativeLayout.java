@@ -8,7 +8,7 @@ import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 public class ExtendInputMethodRelativeLayout
   extends InputMethodRelativeLayout
 {
-  private ExtendInputMethodRelativeLayout.OnDownListener a;
+  private ExtendInputMethodRelativeLayout.OnDownListener b;
   
   public ExtendInputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,14 +20,14 @@ public class ExtendInputMethodRelativeLayout
     ExtendInputMethodRelativeLayout.OnDownListener localOnDownListener;
     if (paramMotionEvent.getAction() == 0)
     {
-      localOnDownListener = this.a;
+      localOnDownListener = this.b;
       if ((localOnDownListener != null) && (localOnDownListener.a(paramMotionEvent))) {
         return true;
       }
     }
     else
     {
-      localOnDownListener = this.a;
+      localOnDownListener = this.b;
       if ((localOnDownListener != null) && (localOnDownListener.b(paramMotionEvent))) {
         return true;
       }
@@ -43,12 +43,12 @@ public class ExtendInputMethodRelativeLayout
   
   public void setOnDownListener(ExtendInputMethodRelativeLayout.OnDownListener paramOnDownListener)
   {
-    this.a = paramOnDownListener;
+    this.b = paramOnDownListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExtendInputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

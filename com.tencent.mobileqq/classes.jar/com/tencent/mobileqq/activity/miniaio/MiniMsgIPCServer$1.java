@@ -20,15 +20,15 @@ class MiniMsgIPCServer$1
       localStringBuilder.append("doMiniShareUploadImage newImagePath: ");
       localStringBuilder.append(paramBundle);
       QLog.d("mini_msg_IPCServer", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putString("preview", paramBundle);
+      this.a.putString("preview", paramBundle);
     }
-    localEIPCResult.data = this.jdField_a_of_type_AndroidOsBundle;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    localEIPCResult.data = this.a;
+    this.c.callbackResult(this.b, localEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCServer.1
  * JD-Core Version:    0.7.0.1
  */

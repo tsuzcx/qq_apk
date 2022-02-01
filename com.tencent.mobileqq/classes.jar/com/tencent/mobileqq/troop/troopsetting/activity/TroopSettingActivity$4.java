@@ -12,15 +12,15 @@ class TroopSettingActivity$4
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqTroopTroopurlConfigTroopUrlConfBean = TroopUrlConfProcessor.a();
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData != null) {
-      ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).preloadQunAlbum(TroopSettingActivity.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+    this.this$0.at = TroopUrlConfProcessor.a();
+    if (this.this$0.i != null) {
+      ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).preloadQunAlbum(TroopSettingActivity.a(this.this$0), this.this$0.i.troopUin);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.4
  * JD-Core Version:    0.7.0.1
  */

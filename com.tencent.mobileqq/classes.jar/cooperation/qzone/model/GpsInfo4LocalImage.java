@@ -91,7 +91,7 @@ public class GpsInfo4LocalImage
     if (this.gpsType == paramObject.gpsType)
     {
       bool1 = bool2;
-      if (getDistance(this.latitude * 1000000.0F, this.longtitude * 1000000.0F, paramObject.latitude * 1000000.0F, paramObject.longtitude * 1000000.0F) <= QzoneLbsConfig.a().a()) {
+      if (getDistance(this.latitude * 1000000.0F, this.longtitude * 1000000.0F, paramObject.latitude * 1000000.0F, paramObject.longtitude * 1000000.0F) <= QzoneLbsConfig.a().b()) {
         bool1 = true;
       }
     }
@@ -117,7 +117,7 @@ public class GpsInfo4LocalImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.GpsInfo4LocalImage
  * JD-Core Version:    0.7.0.1
  */

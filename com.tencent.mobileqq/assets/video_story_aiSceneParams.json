@@ -13,6 +13,8 @@
                         "新娘"
                     ],
                     "sceneFilterID": "和风",
+                    "sceneFilterIDForV7": "温柔",
+                    "sceneFilterPercentV7": 1,
                     "sceneFilterPercent": 0.8
                 },
                 {
@@ -27,7 +29,9 @@
                         "新郎"
                     ],
                     "sceneFilterID": "摩卡",
-                    "sceneFilterPercent": 1.0
+                    "sceneFilterPercent": 0.7,
+                    "sceneFilterIDForV7": "青春",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 3,
@@ -39,7 +43,9 @@
                         "婴儿"
                     ],
                     "sceneFilterID": "告白",
-                    "sceneFilterPercent": 1.0
+                    "sceneFilterPercent": 0.65,
+                    "sceneFilterIDForV7": "晚风",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 4,
@@ -55,7 +61,9 @@
                         "军队"
                     ],
                     "sceneFilterID": "自然",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "自然",
+                    "sceneFilterPercentV7": 0.8
                 }
             ]
         },
@@ -376,7 +384,9 @@
                         "屋顶"
                     ],
                     "sceneFilterID": "绚烂",
-                    "sceneFilterPercent": 0.6
+                    "sceneFilterPercent": 0.6,
+                    "sceneFilterIDForV7": "郊野",
+                    "sceneFilterPercentV7": 1.0
                 },
                 {
                     "sceneLvTwo": 6,
@@ -490,7 +500,9 @@
                         "拱形桥"
                     ],
                     "sceneFilterID": "风之谷",
-                    "sceneFilterPercent": 1.0
+                    "sceneFilterPercent": 0.7,
+                    "sceneFilterIDForV7": "都市",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 7,
@@ -520,7 +532,9 @@
                         "路面"
                     ],
                     "sceneFilterID": "风之谷",
-                    "sceneFilterPercent": 1.0
+                    "sceneFilterPercent": 1.0,
+                    "sceneFilterIDForV7": "都市",
+                    "sceneFilterPercentV7": 1.0
                 },
                 {
                     "sceneLvTwo": 8,
@@ -696,7 +710,9 @@
                         "演讲"
                     ],
                     "sceneFilterID": "慕斯",
-                    "sceneFilterPercent": 0.7
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "都市",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 9,
@@ -716,7 +732,9 @@
                         "夜晚"
                     ],
                     "sceneFilterID": "绚烂",
-                    "sceneFilterPercent": 0.6
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "绚烂",
+                    "sceneFilterPercentV7": 1.0
                 },
                 {
                     "sceneLvTwo": 10,
@@ -734,7 +752,9 @@
                         "云"
                     ],
                     "sceneFilterID": "极地",
-                    "sceneFilterPercent": 0.7
+                    "sceneFilterPercent": 0.7,
+                    "sceneFilterIDForV7": "绚烂",
+                    "sceneFilterPercentV7": 1.0
                 },
                 {
                     "sceneLvTwo": 11,
@@ -819,7 +839,9 @@
                         "健身"
                     ],
                     "sceneFilterID": "现代",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "故事",
+                    "sceneFilterPercentV7": 1.0
                 }
             ]
         },
@@ -875,7 +897,9 @@
                         "槟榔"
                     ],
                     "sceneFilterID": "新鲜",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "布丁",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 13,
@@ -911,7 +935,9 @@
                         "奶油"
                     ],
                     "sceneFilterID": "向阳",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "优格",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 14,
@@ -939,7 +965,9 @@
                         "烈酒"
                     ],
                     "sceneFilterID": "优格",
-                    "sceneFilterPercent": 0.7
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "优格",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 15,
@@ -950,7 +978,9 @@
                         "肉"
                     ],
                     "sceneFilterID": "冷萃",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "香醇",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 16,
@@ -968,7 +998,9 @@
                         "三明治"
                     ],
                     "sceneFilterID": "仪式感",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "冷萃",
+                    "sceneFilterPercentV7": 0.8
                 }
                 ,
                 {
@@ -991,7 +1023,9 @@
                         "烹饪"
                     ],
                     "sceneFilterID": "仪式感",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "冷萃",
+                    "sceneFilterPercentV7": 0.8
                 }
             ]
         },
@@ -1289,7 +1323,9 @@
                         "乐器"
                     ],
                     "sceneFilterID": "仪式感",
-                    "sceneFilterPercent": 0.8
+                    "sceneFilterPercent": 0.7,
+                    "sceneFilterIDForV7": "冷萃",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 19,
@@ -1443,7 +1479,9 @@
                         "小狗"
                     ],
                     "sceneFilterID": "慕斯",
-                    "sceneFilterPercent": 0.7
+                    "sceneFilterPercent": 0.7,
+                    "sceneFilterIDForV7": "星光",
+                    "sceneFilterPercentV7": 1.0
                 },
                 {
                     "sceneLvTwo": 20,
@@ -1500,7 +1538,9 @@
                         "草本植物"
                     ],
                     "sceneFilterID": "向阳",
-                    "sceneFilterPercent": 1.0
+                    "sceneFilterPercent": 0.7,
+                    "sceneFilterIDForV7": "清晨",
+                    "sceneFilterPercentV7": 0.8
                 },
                 {
                     "sceneLvTwo": 21,
@@ -1577,8 +1617,10 @@
                         "花卉图案",
                         "人物画"
                     ],
-                    "sceneFilterID": "绚烂",
-                    "sceneFilterPercent": 0.6
+                    "sceneFilterID": "自然",
+                    "sceneFilterPercent": 0.8,
+                    "sceneFilterIDForV7": "自然",
+                    "sceneFilterPercentV7": 0.8
                 }
             ]
         }

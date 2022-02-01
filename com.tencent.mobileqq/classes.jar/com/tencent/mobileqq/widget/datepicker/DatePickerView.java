@@ -16,9 +16,9 @@ public class DatePickerView
   extends RecyclerView
 {
   protected Context a;
-  private TypedArray a;
-  protected DatePickerController a;
-  protected SimpleMonthAdapter a;
+  protected SimpleMonthAdapter b;
+  protected DatePickerController c;
+  private TypedArray d;
   
   public DatePickerView(Context paramContext)
   {
@@ -35,7 +35,7 @@ public class DatePickerView
     super(paramContext, paramAttributeSet, paramInt);
     if (!isInEditMode())
     {
-      this.jdField_a_of_type_AndroidContentResTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.DatePickerView);
+      this.d = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.DatePickerView);
       setLayoutParams(new RecyclerView.LayoutParams(-1, -1));
       a(paramContext);
     }
@@ -43,11 +43,11 @@ public class DatePickerView
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter;
+    Object localObject = this.b;
     if (localObject != null)
     {
       ((SimpleMonthAdapter)localObject).a(paramInt1, paramInt2, paramArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter.notifyDataSetChanged();
+      this.b.notifyDataSetChanged();
     }
     if (QLog.isColorLevel())
     {
@@ -77,7 +77,7 @@ public class DatePickerView
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     setLayoutManager(new LinearLayoutManager(paramContext));
     setVerticalScrollBarEnabled(false);
     setFadingEdgeLength(0);
@@ -85,18 +85,18 @@ public class DatePickerView
   
   public void setController(DatePickerController paramDatePickerController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController = paramDatePickerController;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter = new SimpleMonthAdapter(getContext(), paramDatePickerController, this.jdField_a_of_type_AndroidContentResTypedArray);
+    this.c = paramDatePickerController;
+    if (this.b == null) {
+      this.b = new SimpleMonthAdapter(getContext(), paramDatePickerController, this.d);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter.notifyDataSetChanged();
-    setAdapter(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter);
-    scrollToPosition(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthAdapter.getItemCount() - 1);
+    this.b.notifyDataSetChanged();
+    setAdapter(this.b);
+    scrollToPosition(this.b.getItemCount() - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.DatePickerView
  * JD-Core Version:    0.7.0.1
  */

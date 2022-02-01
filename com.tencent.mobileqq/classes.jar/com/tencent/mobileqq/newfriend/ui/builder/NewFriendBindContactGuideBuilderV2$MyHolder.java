@@ -8,13 +8,13 @@ class NewFriendBindContactGuideBuilderV2$MyHolder
   extends NewFriendBaseBuilder.NewFriendBaseHolder
 {
   public ImageButton a;
-  public TextView a;
   public Button b;
-  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBindContactGuideBuilderV2.MyHolder
  * JD-Core Version:    0.7.0.1
  */

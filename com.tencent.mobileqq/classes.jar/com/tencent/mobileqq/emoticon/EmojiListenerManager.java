@@ -21,8 +21,8 @@ import mqq.app.MobileQQ;
 public class EmojiListenerManager
   implements IEmojiListenerManager
 {
-  private static EmojiListenerManager jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager;
-  CopyOnWriteArrayList<WeakReference<EmoticonPackageChangedListener>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static EmojiListenerManager d;
+  CopyOnWriteArrayList<WeakReference<EmoticonPackageChangedListener>> a = new CopyOnWriteArrayList();
   CopyOnWriteArrayList<WeakReference<EmoticonPackageDownloadListener>> b = new CopyOnWriteArrayList();
   CopyOnWriteArrayList<WeakReference<EmotionJsonDownloadListener>> c = new CopyOnWriteArrayList();
   
@@ -30,32 +30,13 @@ public class EmojiListenerManager
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager == null) {
-        jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager = new EmojiListenerManager();
+      if (d == null) {
+        d = new EmojiListenerManager();
       }
-      EmojiListenerManager localEmojiListenerManager = jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager;
+      EmojiListenerManager localEmojiListenerManager = d;
       return localEmojiListenerManager;
     }
     finally {}
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      synchronized (this.b)
-      {
-        this.b.clear();
-        if (EmotionUtils.a())
-        {
-          ??? = new Bundle();
-          ((Bundle)???).putString("module_emoticon_child_mainpanel", "emojilistener_destory");
-          EmoticonMainPanelIpcModule.getInstance().postChildIPCBundle((Bundle)???);
-        }
-        return;
-      }
-    }
   }
   
   public void a(EmoticonPackage paramEmoticonPackage)
@@ -64,7 +45,7 @@ public class EmojiListenerManager
       return;
     }
     EmoticonTabAdapter.removeTabDrawableCache(paramEmoticonPackage.epId);
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       EmoticonPackageChangedListener localEmoticonPackageChangedListener = (EmoticonPackageChangedListener)((WeakReference)((Iterator)localObject).next()).get();
@@ -113,7 +94,7 @@ public class EmojiListenerManager
     if (paramEmoticonPackage == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       EmoticonPackageChangedListener localEmoticonPackageChangedListener = (EmoticonPackageChangedListener)((WeakReference)((Iterator)localObject).next()).get();
@@ -196,16 +177,16 @@ public class EmojiListenerManager
     if (paramEmoticonPackageChangedListener == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         if (((WeakReference)localIterator.next()).get() == paramEmoticonPackageChangedListener) {
           return;
         }
       }
       paramEmoticonPackageChangedListener = new WeakReference(paramEmoticonPackageChangedListener);
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramEmoticonPackageChangedListener);
+      this.a.add(paramEmoticonPackageChangedListener);
       return;
     }
     for (;;)
@@ -260,6 +241,25 @@ public class EmojiListenerManager
     }
   }
   
+  public void b()
+  {
+    synchronized (this.a)
+    {
+      this.a.clear();
+      synchronized (this.b)
+      {
+        this.b.clear();
+        if (EmotionUtils.a())
+        {
+          ??? = new Bundle();
+          ((Bundle)???).putString("module_emoticon_child_mainpanel", "emojilistener_destory");
+          EmoticonMainPanelIpcModule.getInstance().postChildIPCBundle((Bundle)???);
+        }
+        return;
+      }
+    }
+  }
+  
   public void b(EmoticonPackage paramEmoticonPackage)
   {
     if (paramEmoticonPackage == null) {
@@ -279,7 +279,7 @@ public class EmojiListenerManager
       ((Bundle)localObject).putSerializable("paramter_one", paramEmoticonPackage);
       EmoticonMainPanelIpcModule.getInstance().postChildIPCBundle((Bundle)localObject);
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       EmoticonPackageChangedListener localEmoticonPackageChangedListener = (EmoticonPackageChangedListener)((WeakReference)((Iterator)localObject).next()).get();
@@ -294,12 +294,12 @@ public class EmojiListenerManager
     if (paramEmoticonPackageChangedListener == null) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() == paramEmoticonPackageChangedListener) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+        this.a.remove(localWeakReference);
       }
     }
   }
@@ -517,7 +517,7 @@ public class EmojiListenerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiListenerManager
  * JD-Core Version:    0.7.0.1
  */

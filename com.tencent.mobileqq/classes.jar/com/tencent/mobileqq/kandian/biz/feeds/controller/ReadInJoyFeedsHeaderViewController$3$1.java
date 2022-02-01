@@ -9,17 +9,17 @@ class ReadInJoyFeedsHeaderViewController$3$1
   
   public void run()
   {
-    if (this.a.this$0.jdField_a_of_type_Boolean) {
+    if (this.a.this$0.a) {
       return;
     }
     this.a.this$0.f();
-    this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler = new UniteSearchHandler(this.a.a);
-    this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(this.a.a, 6);
+    this.a.this$0.c = new UniteSearchHandler(this.a.a);
+    this.a.this$0.c.a(this.a.a, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController.3.1
  * JD-Core Version:    0.7.0.1
  */

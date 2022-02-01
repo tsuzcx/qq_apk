@@ -14,25 +14,25 @@ class AECMShowFaceScanView$4
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    AECMShowFaceScanView.a(this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView, false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.d.setAlpha(255);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    AECMShowFaceScanView.a(this.b, false);
+    this.b.e.setAlpha(255);
+    this.b.h.setAlpha(255);
+    this.a.start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    AECMShowFaceScanView.a(this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView, true);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView$ScanViewListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView$ScanViewListener.z();
+    AECMShowFaceScanView.a(this.b, true);
+    if (this.b.d != null) {
+      this.b.d.U();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECMShowFaceScanView.4
  * JD-Core Version:    0.7.0.1
  */

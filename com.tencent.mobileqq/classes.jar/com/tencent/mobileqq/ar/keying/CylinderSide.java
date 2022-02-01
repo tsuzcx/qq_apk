@@ -9,9 +9,9 @@ import java.nio.FloatBuffer;
 
 public class CylinderSide
 {
-  int jdField_a_of_type_Int = 0;
-  FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  FloatBuffer a;
   FloatBuffer b;
+  int c = 0;
   
   public CylinderSide(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -29,8 +29,8 @@ public class CylinderSide
     float f3 = paramFloat1 * paramFloat3;
     paramFloat1 = f1 / 1.0F;
     int k = (int)paramFloat1;
-    this.jdField_a_of_type_Int = (k * 3 * 4);
-    int i = this.jdField_a_of_type_Int;
+    this.c = (k * 3 * 4);
+    int i = this.c;
     float[] arrayOfFloat2 = new float[i * 4];
     float[] arrayOfFloat1 = new float[i * 4];
     Object localObject1 = new StringBuilder();
@@ -229,9 +229,9 @@ public class CylinderSide
     }
     localObject1 = ByteBuffer.allocateDirect(arrayOfFloat2.length * 4);
     ((ByteBuffer)localObject1).order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject1).asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat2);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    this.a = ((ByteBuffer)localObject1).asFloatBuffer();
+    this.a.put(arrayOfFloat2);
+    this.a.position(0);
     localObject1 = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4);
     ((ByteBuffer)localObject1).order(ByteOrder.nativeOrder());
     this.b = ((ByteBuffer)localObject1).asFloatBuffer();
@@ -241,16 +241,16 @@ public class CylinderSide
   
   public void a(int paramInt1, int paramInt2)
   {
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 16, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 16, this.a);
     GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 16, this.b);
     GLES20.glEnableVertexAttribArray(paramInt1);
     GLES20.glEnableVertexAttribArray(paramInt2);
-    GLES20.glDrawArrays(4, 0, this.jdField_a_of_type_Int);
+    GLES20.glDrawArrays(4, 0, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.CylinderSide
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ import mqq.app.MobileQQ;
 public class QAVGroupConfig$GroupInviteFlag
 {
   public String a;
-  public boolean a;
+  public boolean b;
   
   public static GroupInviteFlag a(Bundle paramBundle)
   {
     GroupInviteFlag localGroupInviteFlag = new GroupInviteFlag();
-    localGroupInviteFlag.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-    localGroupInviteFlag.jdField_a_of_type_Boolean = paramBundle.getBoolean("enableInvite");
+    localGroupInviteFlag.a = paramBundle.getString("uin");
+    localGroupInviteFlag.b = paramBundle.getBoolean("enableInvite");
     return localGroupInviteFlag;
   }
   
@@ -32,7 +32,7 @@ public class QAVGroupConfig$GroupInviteFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag
  * JD-Core Version:    0.7.0.1
  */

@@ -17,24 +17,24 @@ final class ProfileCardUtil$4
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      localObject = new cardDiyTextInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
+    if ((this.a > 0) && (!TextUtils.isEmpty(this.b))) {
+      localObject = new cardDiyTextInfo(this.a, this.b, this.c, this.d, this.e, this.f);
     } else {
       localObject = null;
     }
-    Object localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_Long, "8.7.0", 109L, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long, (cardDiyTextInfo)localObject, this.jdField_d_of_type_JavaLangString, new cardDiyComplicatedInfo(this.e));
+    Object localObject = new SSummaryCardSetReq(2, Long.parseLong(this.g.getCurrentAccountUin()), this.h, "8.8.17", 109L, this.i, this.j, this.k, this.l, (cardDiyTextInfo)localObject, this.m, new cardDiyComplicatedInfo(this.n));
     UniPacket localUniPacket = new UniPacket(true);
     localUniPacket.setEncodeName("utf-8");
     localUniPacket.setFuncName("set");
     localUniPacket.setServantName("MCardSvc");
     localUniPacket.put("req", localObject);
     localObject = localUniPacket.encode();
-    ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte[])localObject);
+    ((CardHandler)this.g.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(this.g.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.4
  * JD-Core Version:    0.7.0.1
  */

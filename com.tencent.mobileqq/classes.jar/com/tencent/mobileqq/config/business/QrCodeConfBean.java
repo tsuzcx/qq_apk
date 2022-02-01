@@ -26,11 +26,11 @@ public class QrCodeConfBean
         if (localQrCodeConfBean.a.size() > 0)
         {
           paramString = new QrCodeConfBean.QrCodeList();
-          paramString.jdField_a_of_type_JavaLangString = "default_bg";
-          paramString.c = 1;
-          paramString.jdField_b_of_type_Int = 0;
-          paramString.jdField_a_of_type_Int = 0;
-          paramString.jdField_b_of_type_JavaLangString = "";
+          paramString.a = "default_bg";
+          paramString.e = 1;
+          paramString.c = 0;
+          paramString.b = 0;
+          paramString.d = "";
           localQrCodeConfBean.a.add(paramString);
         }
       }
@@ -51,7 +51,7 @@ public class QrCodeConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeConfBean
  * JD-Core Version:    0.7.0.1
  */

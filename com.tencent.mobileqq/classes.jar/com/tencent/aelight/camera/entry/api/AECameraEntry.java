@@ -14,87 +14,59 @@ public class AECameraEntry
   public static final AECameraEntry H = new AECameraEntry("miniAppPlay", 38);
   public static final AECameraEntry I = new AECameraEntry("miniAppTakePhoto", 39);
   public static final AECameraEntry J = new AECameraEntry("aioARCake", 40);
-  public static final AECameraEntry K = new AECameraEntry("qudongTakeFacePhoto", 1001, false);
-  public static final AECameraEntry L = new AECameraEntry("web", 1002, false);
-  public static final AECameraEntry M = new AECameraEntry("faceUnlock", 1003, false);
-  public static final AECameraEntry a;
-  private static final AECameraEntry[] jdField_a_of_type_ArrayOfComTencentAelightCameraEntryApiAECameraEntry = { b, c, e, r, q, s, g, i, k, l, m, n, o, u, t, w, K, L, v, x, z, B, C, F, G, D, H, I, M, J };
-  public static final AECameraEntry b;
-  public static final AECameraEntry c;
-  public static final AECameraEntry d;
-  public static final AECameraEntry e;
-  public static final AECameraEntry f;
-  public static final AECameraEntry g;
-  public static final AECameraEntry h;
-  public static final AECameraEntry i;
-  public static final AECameraEntry j;
-  public static final AECameraEntry k;
-  public static final AECameraEntry l;
-  public static final AECameraEntry m;
-  public static final AECameraEntry n;
-  public static final AECameraEntry o;
-  public static final AECameraEntry p;
-  public static final AECameraEntry q;
-  public static final AECameraEntry r;
-  public static final AECameraEntry s;
-  public static final AECameraEntry t;
-  public static final AECameraEntry u;
-  public static final AECameraEntry v;
-  public static final AECameraEntry w;
-  public static final AECameraEntry x;
-  public static final AECameraEntry y;
-  public static final AECameraEntry z;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAelightCameraEntryApiAECameraEntry = new AECameraEntry("", -1);
-    b = new AECameraEntry("h5", 0);
-    c = new AECameraEntry("mainCamera", 1);
-    d = new AECameraEntry("", 2);
-    e = new AECameraEntry("aioMainCamera", 3);
-    f = new AECameraEntry("", 4);
-    g = new AECameraEntry("qzoneCamera", 5);
-    h = new AECameraEntry("", 6);
-    i = new AECameraEntry("aioGifCamera", 7);
-    j = new AECameraEntry("", 8);
-    k = new AECameraEntry("aioGroupSignin", 9);
-    l = new AECameraEntry("qzoneSignin", 10);
-    m = new AECameraEntry("qzoneBanner", 11);
-    n = new AECameraEntry("qzoneTail", 12);
-    o = new AECameraEntry("qzoneMoodList", 13);
-    p = new AECameraEntry("", 14);
-    q = new AECameraEntry("qzoneFriendPlus", 15);
-    r = new AECameraEntry("qzoneFriendState", 16);
-    s = new AECameraEntry("qzoneSlideCamera", 17);
-    t = new AECameraEntry("aioChats", 18);
-    u = new AECameraEntry("massSendBless", 19);
-    v = new AECameraEntry("qzonePublishFrame", 20);
-    w = new AECameraEntry("aioGifCameraTail", 23);
-    x = new AECameraEntry("circleCamera", 25);
-    y = new AECameraEntry("circlePickCamera", 26);
-    z = new AECameraEntry("circleGuideCamera", 27);
-  }
+  public static final AECameraEntry K = new AECameraEntry("autoTemplateMidPage", 41);
+  public static final AECameraEntry L = new AECameraEntry("flashShow", 42);
+  public static final AECameraEntry M = new AECameraEntry("qudongTakeFacePhoto", 1001, false);
+  public static final AECameraEntry N = new AECameraEntry("web", 1002, false);
+  public static final AECameraEntry O = new AECameraEntry("faceUnlock", 1003, false);
+  private static final AECameraEntry[] P = { b, c, e, r, q, s, g, i, k, l, m, n, o, u, t, w, M, N, v, x, z, B, C, F, G, D, H, I, O, J };
+  public static final AECameraEntry a = new AECameraEntry("", -1);
+  public static final AECameraEntry b = new AECameraEntry("h5", 0);
+  public static final AECameraEntry c = new AECameraEntry("mainCamera", 1);
+  public static final AECameraEntry d = new AECameraEntry("", 2);
+  public static final AECameraEntry e = new AECameraEntry("aioMainCamera", 3);
+  public static final AECameraEntry f = new AECameraEntry("", 4);
+  public static final AECameraEntry g = new AECameraEntry("qzoneCamera", 5);
+  public static final AECameraEntry h = new AECameraEntry("", 6);
+  public static final AECameraEntry i = new AECameraEntry("aioGifCamera", 7);
+  public static final AECameraEntry j = new AECameraEntry("", 8);
+  public static final AECameraEntry k = new AECameraEntry("aioGroupSignin", 9);
+  public static final AECameraEntry l = new AECameraEntry("qzoneSignin", 10);
+  public static final AECameraEntry m = new AECameraEntry("qzoneBanner", 11);
+  public static final AECameraEntry n = new AECameraEntry("qzoneTail", 12);
+  public static final AECameraEntry o = new AECameraEntry("qzoneMoodList", 13);
+  public static final AECameraEntry p = new AECameraEntry("", 14);
+  public static final AECameraEntry q = new AECameraEntry("qzoneFriendPlus", 15);
+  public static final AECameraEntry r = new AECameraEntry("qzoneFriendState", 16);
+  public static final AECameraEntry s = new AECameraEntry("qzoneSlideCamera", 17);
+  public static final AECameraEntry t = new AECameraEntry("aioChats", 18);
+  public static final AECameraEntry u = new AECameraEntry("massSendBless", 19);
+  public static final AECameraEntry v = new AECameraEntry("qzonePublishFrame", 20);
+  public static final AECameraEntry w = new AECameraEntry("aioGifCameraTail", 23);
+  public static final AECameraEntry x = new AECameraEntry("circleCamera", 25);
+  public static final AECameraEntry y = new AECameraEntry("circlePickCamera", 26);
+  public static final AECameraEntry z = new AECameraEntry("circleGuideCamera", 27);
+  private String Q;
+  private int R;
+  private boolean S;
   
   private AECameraEntry(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
+    this.R = paramInt;
+    this.Q = paramString;
+    this.S = true;
   }
   
   private AECameraEntry(String paramString, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.R = paramInt;
+    this.Q = paramString;
+    this.S = paramBoolean;
   }
   
   public static AECameraEntry a(int paramInt)
   {
-    AECameraEntry[] arrayOfAECameraEntry = jdField_a_of_type_ArrayOfComTencentAelightCameraEntryApiAECameraEntry;
+    AECameraEntry[] arrayOfAECameraEntry = P;
     int i2 = arrayOfAECameraEntry.length;
     int i1 = 0;
     while (i1 < i2)
@@ -105,46 +77,46 @@ public class AECameraEntry
       }
       i1 += 1;
     }
-    return jdField_a_of_type_ComTencentAelightCameraEntryApiAECameraEntry;
+    return a;
   }
   
   public static AECameraEntry a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      return jdField_a_of_type_ComTencentAelightCameraEntryApiAECameraEntry;
+      return a;
     }
-    AECameraEntry[] arrayOfAECameraEntry = jdField_a_of_type_ArrayOfComTencentAelightCameraEntryApiAECameraEntry;
+    AECameraEntry[] arrayOfAECameraEntry = P;
     int i2 = arrayOfAECameraEntry.length;
     int i1 = 0;
     while (i1 < i2)
     {
       AECameraEntry localAECameraEntry = arrayOfAECameraEntry[i1];
-      if ((!TextUtils.isEmpty(localAECameraEntry.a())) && (paramString.equals(localAECameraEntry.a()))) {
+      if ((!TextUtils.isEmpty(localAECameraEntry.b())) && (paramString.equals(localAECameraEntry.b()))) {
         return localAECameraEntry;
       }
       i1 += 1;
     }
-    return jdField_a_of_type_ComTencentAelightCameraEntryApiAECameraEntry;
+    return a;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.R;
   }
   
-  public String a()
+  public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.Q;
   }
   
-  public boolean a()
+  public boolean b(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.R == paramInt;
   }
   
-  public boolean a(int paramInt)
+  public boolean c()
   {
-    return this.jdField_a_of_type_Int == paramInt;
+    return this.S;
   }
 }
 

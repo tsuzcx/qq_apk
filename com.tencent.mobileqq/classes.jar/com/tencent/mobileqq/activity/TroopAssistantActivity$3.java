@@ -16,17 +16,17 @@ class TroopAssistantActivity$3
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((this.a.i != null) && (this.a.i.size() != 0))
     {
       ReportController.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
       Object localObject = this.a;
-      ((TroopAssistantActivity)localObject).jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService = ((IRoamSettingService)((TroopAssistantActivity)localObject).app.getRuntimeService(IRoamSettingService.class, ""));
-      localObject = this.a.b;
+      ((TroopAssistantActivity)localObject).j = ((IRoamSettingService)((TroopAssistantActivity)localObject).app.getRuntimeService(IRoamSettingService.class, ""));
+      localObject = this.a.s;
       int i = 0;
-      ((Button)localObject).setCompoundDrawablesWithIntrinsicBounds(2130839401, 0, 0, 0);
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      ((Button)localObject).setCompoundDrawablesWithIntrinsicBounds(2130839585, 0, 0, 0);
+      while (i < this.a.i.size())
       {
-        localObject = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+        localObject = String.valueOf(this.a.i.get(i));
         this.a.a((String)localObject, 4);
         i += 1;
       }
@@ -36,7 +36,7 @@ class TroopAssistantActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.3
  * JD-Core Version:    0.7.0.1
  */

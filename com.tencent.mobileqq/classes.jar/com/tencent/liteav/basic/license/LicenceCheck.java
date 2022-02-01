@@ -13,6 +13,7 @@ import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.datareport.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.liteav.basic.util.d;
 import java.io.File;
 import java.security.KeyFactory;
 import java.security.PublicKey;
@@ -193,7 +194,7 @@ public class LicenceCheck
           paramString2.append(File.separator);
           paramString2.append(this.b);
           paramString1 = new File(paramString2.toString());
-          com.tencent.liteav.basic.util.c.a(paramString1.getAbsolutePath(), parama);
+          d.a(paramString1.getAbsolutePath(), parama);
           TXCCommonUtil.setPituLicencePath(paramString1.getAbsolutePath());
         }
         catch (Exception parama)
@@ -204,7 +205,7 @@ public class LicenceCheck
           TXCLog.e("LicenceCheck", paramString1.toString());
         }
       }
-      TXCDRApi.txReportDAU(this.a, a.aI);
+      TXCDRApi.txReportDAU(this.a, a.aJ);
       return 0;
       label537:
       k = 0;
@@ -245,7 +246,7 @@ public class LicenceCheck
   
   private void a(int paramInt)
   {
-    TXCDRApi.txReportDAU(this.a, a.aJ, paramInt, "");
+    TXCDRApi.txReportDAU(this.a, a.aK, paramInt, "");
   }
   
   private void a(LicenceCheck.a parama, Context paramContext, String paramString1, String paramString2)
@@ -367,7 +368,7 @@ public class LicenceCheck
   
   private boolean b(String paramString)
   {
-    return com.tencent.liteav.basic.util.c.a(paramString);
+    return d.a(paramString);
   }
   
   private int c(LicenceCheck.a parama)
@@ -391,13 +392,22 @@ public class LicenceCheck
     if (!b((String)localObject)) {
       return -7;
     }
-    localObject = com.tencent.liteav.basic.util.c.b((String)localObject);
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    String str;
+    try
+    {
+      localObject = d.b((String)localObject);
+    }
+    catch (Exception localException)
+    {
+      TXCLog.e("LicenceCheck", "read licence file error: ", localException);
+      str = "";
+    }
+    if (TextUtils.isEmpty(str))
     {
       TXCLog.e("LicenceCheck", "checkSdcardLicence, licenceSdcardStr is empty");
       return -8;
     }
-    return a(parama, (String)localObject);
+    return a(parama, str);
   }
   
   private static long c(String paramString)
@@ -463,7 +473,7 @@ public class LicenceCheck
     if (!e(parama)) {
       return -6;
     }
-    String str = com.tencent.liteav.basic.util.c.b(this.a, parama.a);
+    String str = d.b(this.a, parama.a);
     if (TextUtils.isEmpty(str))
     {
       TXCLog.e("LicenceCheck", "checkAssetLicence, licenceSdcardStr is empty");
@@ -541,7 +551,7 @@ public class LicenceCheck
         return -5;
       }
       parama.h = 5;
-      TXCDRApi.txReportDAU(this.a, a.aI);
+      TXCDRApi.txReportDAU(this.a, a.aJ);
       return 0;
     }
     catch (JSONException parama)
@@ -557,7 +567,7 @@ public class LicenceCheck
   {
     try
     {
-      localObject = Base64.decode("MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKfMXaF6wx9lev2U\nIzkk6ydI2sdaSQAD2ZvDBLq+5Fm6nGwSSWawl03D4vHcWIUa3wnz6f19/y8wzrj4\nnTfcEnT94SPdB6GhGsqPwbwRp9MHAqd/2gWZxSb005il2yiOZafk6X4NGKCn2tGd\nyNaCF+m9rLykuLdZHB0Z53ivgseNAgMBAAECgYAvXI2pAH+Goxwd6uwuOu9svTGT\nRzaHnI6VWmxBUZQeh3+TOW4iYAG03291GN6bY0RFCOWouSGH7lzK9NFbbPCAQ/hx\ncO48PqioHoq7K8sqzd3XaYBv39HrRnM8JvZsqv0PLJwX/LGm2y/MRaKAC6bcHtse\npgh+NNmUxXNRcTMRAQJBANezmenBcR8HTcY5YaEk3SQRzOo+QhIXuuD4T/FESpVJ\nmVQGxJjLsEBua1j38WG2QuepE5JiVbkQ0jQSvhUiZK0CQQDHJa+vWu6l72lQAvIx\nwmRISorvLb/tnu5bH0Ele42oX+w4p/tm03awdVjhVANnpDjYS2H6EzrF/pfis7k9\nV2phAkB4E4gz47bYYhV+qsTZkw70HGCpab0YG1OyFylRkwW983nCl/3rXUChrZZe\nsbATCAZYtfuqOsmju2R5DpH4a+wFAkBmHlcWbmSNxlSUaM5U4b+WqlLQDv+qE6Na\nKo63b8HWI0n4S3tI4QqttZ7b/L66OKXFk/Ir0AyFVuX/o/VLFTZBAkAdSTEkGwE5\nGQmhxu95sKxmdlUY6Q0Gwwpi06C1BPBrj2VkGXpBP0twhPVAq/3xVjjb+2KXVTUW\nIpRLc06M4vhv", 0);
+      localObject = Base64.decode(nativeRSAKey(), 0);
       paramString = new String(h.b(Base64.decode(paramString, 0), (byte[])localObject));
       return paramString;
     }
@@ -574,7 +584,7 @@ public class LicenceCheck
   
   private boolean e(LicenceCheck.a parama)
   {
-    return com.tencent.liteav.basic.util.c.a(this.a, parama.a);
+    return d.a(this.a, parama.a);
   }
   
   private void f(LicenceCheck.a parama)
@@ -626,10 +636,12 @@ public class LicenceCheck
     localStringBuilder.append(parama.c);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(parama.b);
-    return com.tencent.liteav.basic.util.c.b(new File(localStringBuilder.toString()).getAbsolutePath());
+    return d.b(new File(localStringBuilder.toString()).getAbsolutePath());
   }
   
   private native byte[] nativeIvParameterSpec(byte[] paramArrayOfByte);
+  
+  private native String nativeRSAKey();
   
   public int a(LicenceCheck.a parama, String paramString)
   {
@@ -704,7 +716,7 @@ public class LicenceCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.license.LicenceCheck
  * JD-Core Version:    0.7.0.1
  */

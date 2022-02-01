@@ -17,24 +17,24 @@ class EmotionBatchForwardOption$2
   
   public void run()
   {
-    Object localObject1 = this.this$0.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    Object localObject2 = this.this$0.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
-    int i = this.this$0.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
+    Object localObject1 = this.this$0.t.getString("uin");
+    Object localObject2 = this.this$0.t.getString("troop_uin");
+    int i = this.this$0.t.getInt("uintype");
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = i;
-    localSessionInfo.jdField_a_of_type_JavaLangString = ((String)localObject1);
-    localSessionInfo.b = ((String)localObject2);
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog instanceof QQCustomDialogWtihEmoticonInput)) {
-      localObject1 = ((QQCustomDialogWtihEmoticonInput)this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog).getInputValue();
-    } else if ((this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog instanceof ForwardNewVersionDialog)) {
-      localObject1 = ((ForwardNewVersionDialog)this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog).getInputValue();
+    localSessionInfo.a = i;
+    localSessionInfo.b = ((String)localObject1);
+    localSessionInfo.c = ((String)localObject2);
+    if ((this.this$0.A instanceof QQCustomDialogWtihEmoticonInput)) {
+      localObject1 = ((QQCustomDialogWtihEmoticonInput)this.this$0.A).getInputValue();
+    } else if ((this.this$0.A instanceof ForwardNewVersionDialog)) {
+      localObject1 = ((ForwardNewVersionDialog)this.this$0.A).getInputValue();
     } else {
       localObject1 = "";
     }
     if ((localObject1 != null) && (!((String)localObject1).equals(""))) {
-      ChatActivityFacade.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidContentContext, localSessionInfo, (String)localObject1, null);
+      ChatActivityFacade.a(this.this$0.q, this.this$0.I, localSessionInfo, (String)localObject1, null);
     }
-    localObject1 = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localObject1 = this.this$0.a.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
@@ -53,7 +53,7 @@ class EmotionBatchForwardOption$2
             ((StringBuilder)localObject3).append(localObject2[1]);
             QLog.d("EmotionBatchForwardOption", 2, ((StringBuilder)localObject3).toString());
           }
-          ((IEmoticonManagerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(localObject2[0]), localObject2[1], new EmotionBatchForwardOption.2.1(this, localSessionInfo));
+          ((IEmoticonManagerService)this.this$0.q.getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(localObject2[0]), localObject2[1], new EmotionBatchForwardOption.2.1(this, localSessionInfo));
         }
       }
       else if ("PIC_EMOTION:".equals(localObject3))
@@ -66,14 +66,14 @@ class EmotionBatchForwardOption$2
           ((StringBuilder)localObject3).append((String)localObject2);
           QLog.d("EmotionBatchForwardOption", 2, ((StringBuilder)localObject3).toString());
         }
-        ChatActivityFacade.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidContentContext, localSessionInfo, (String)localObject2, false, "", null);
+        ChatActivityFacade.a(this.this$0.q, this.this$0.I, localSessionInfo, (String)localObject2, false, "", null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.EmotionBatchForwardOption.2
  * JD-Core Version:    0.7.0.1
  */

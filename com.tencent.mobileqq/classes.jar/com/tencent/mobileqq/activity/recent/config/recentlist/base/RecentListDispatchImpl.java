@@ -8,55 +8,45 @@ import java.util.Iterator;
 public class RecentListDispatchImpl<T extends IRecentListBaseProcessor>
   implements IDispatch<IRecentListBaseProcessor>
 {
-  protected static final Object a;
-  private static final String jdField_a_of_type_JavaLangString = "RecentListDispatchImpl";
-  protected ArrayList<T> a;
-  private boolean jdField_a_of_type_Boolean;
-  private ArrayList<Class<? extends IRecentListBaseProcessor>> b = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public RecentListDispatchImpl()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  protected static final Object a = new Object();
+  private static final String c = "RecentListDispatchImpl";
+  protected ArrayList<T> b = new ArrayList();
+  private ArrayList<Class<? extends IRecentListBaseProcessor>> d = new ArrayList();
+  private boolean e;
   
   public void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (a)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "prepare call,sPrepared=", Boolean.valueOf(this.jdField_a_of_type_Boolean), " class=", getClass().getName() });
+        QLog.d(c, 2, new Object[] { "prepare call,sPrepared=", Boolean.valueOf(this.e), " class=", getClass().getName() });
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.e) {
         return;
       }
-      Iterator localIterator = this.b.iterator();
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         Class localClass = (Class)localIterator.next();
         try
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add((IRecentListBaseProcessor)localClass.newInstance());
+          this.b.add((IRecentListBaseProcessor)localClass.newInstance());
         }
         catch (InstantiationException localInstantiationException)
         {
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "InstantiationException=", localInstantiationException);
+          QLog.d(c, 2, "InstantiationException=", localInstantiationException);
         }
         catch (IllegalAccessException localIllegalAccessException) {}
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "IllegalAccessException=", localIllegalAccessException);
+          QLog.d(c, 2, "IllegalAccessException=", localIllegalAccessException);
         }
       }
-      this.b.clear();
-      this.b = null;
-      this.jdField_a_of_type_Boolean = true;
+      this.d.clear();
+      this.d = null;
+      this.e = true;
       return;
     }
     for (;;)
@@ -69,11 +59,11 @@ public class RecentListDispatchImpl<T extends IRecentListBaseProcessor>
   {
     try
     {
-      boolean bool = this.b.contains(paramClass);
+      boolean bool = this.d.contains(paramClass);
       if (bool) {
         return;
       }
-      this.b.add(paramClass);
+      this.d.add(paramClass);
       return;
     }
     finally {}
@@ -81,7 +71,7 @@ public class RecentListDispatchImpl<T extends IRecentListBaseProcessor>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.base.RecentListDispatchImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -79,12 +79,12 @@ public class AvGameManagerImpl
   {
     if (!AvGameEntranceUtil.a())
     {
-      AvGameEntranceUtil.a(paramActivity, paramActivity.getString(2131690316));
+      AvGameEntranceUtil.a(paramActivity, paramActivity.getString(2131887227));
       return false;
     }
     if (!NetworkUtil.isNetworkAvailable())
     {
-      AvGameEntranceUtil.a(paramActivity, paramActivity.getString(2131690403));
+      AvGameEntranceUtil.a(paramActivity, paramActivity.getString(2131887314));
       return false;
     }
     if (preCheckIsOtherBusinessOpen(paramBoolean)) {
@@ -109,11 +109,11 @@ public class AvGameManagerImpl
       QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying app null");
       return false;
     }
-    localObject1 = AVBizModuleFactory.a("一起派对").b();
+    localObject1 = AVBizModuleFactory.getModuleByName("一起派对").checkAVFocus();
     if (!"true".equals(localObject1))
     {
       Object localObject2 = this.app.getApp().getBaseContext();
-      QQToast.a((Context)localObject2, String.format(((Context)localObject2).getString(2131690259), new Object[] { localObject1 }), 1).a();
+      QQToast.makeText((Context)localObject2, String.format(((Context)localObject2).getString(2131887170), new Object[] { localObject1 }), 1).show();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("preCheckIsUserGamePlaying, res[");
       ((StringBuilder)localObject2).append((String)localObject1);
@@ -123,7 +123,7 @@ public class AvGameManagerImpl
     }
     if (IliveEntranceUtil.a())
     {
-      QQToast.a(this.app.getApp().getBaseContext(), 2131698972, 1).a();
+      QQToast.makeText(this.app.getApp().getBaseContext(), 2131896964, 1).show();
       QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying qq is in live show");
       return true;
     }
@@ -165,7 +165,7 @@ public class AvGameManagerImpl
       }
       this.app.removeObserver(this.configObserver);
     }
-    return ((ConfigHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).c();
+    return ((ConfigHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).p();
   }
   
   private void setIsAVGameOpen(String paramString, boolean paramBoolean)
@@ -200,9 +200,9 @@ public class AvGameManagerImpl
   
   private void showInPlayDialog(Activity paramActivity, boolean paramBoolean)
   {
-    String str = paramActivity.getString(2131690309);
+    String str = paramActivity.getString(2131887220);
     if (!paramBoolean) {
-      str = paramActivity.getString(2131690358);
+      str = paramActivity.getString(2131887269);
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
     if (localQQCustomDialog != null)
@@ -210,8 +210,8 @@ public class AvGameManagerImpl
       localQQCustomDialog.setMessage(str);
       QLog.d("AvGameManager", 2, "showInPlayDialog  ");
       paramActivity = new AvGameManagerImpl.5(this, paramActivity);
-      localQQCustomDialog.setPositiveButton(2131690500, paramActivity);
-      localQQCustomDialog.setNegativeButton(2131690728, paramActivity);
+      localQQCustomDialog.setPositiveButton(2131887411, paramActivity);
+      localQQCustomDialog.setNegativeButton(2131887648, paramActivity);
       localQQCustomDialog.show();
       return;
     }
@@ -229,7 +229,7 @@ public class AvGameManagerImpl
     }
     ReportController.b(null, "dc00898", "", "", "0X800B077", "0X800B077", paramInt3, 0, "", "", "", "");
     Object localObject = new WeakReference(paramActivity);
-    paramActivity = DialogUtil.a(paramActivity, 230, paramActivity.getString(2131690525), paramActivity.getString(2131690524), paramActivity.getString(2131699195), paramActivity.getString(2131699197), new AvGameManagerImpl.8(this, (WeakReference)localObject, paramInt3, paramString2, paramInt1, paramInt2, paramString1, paramActivity), new AvGameManagerImpl.9(this));
+    paramActivity = DialogUtil.a(paramActivity, 230, paramActivity.getString(2131887436), paramActivity.getString(2131887435), paramActivity.getString(2131897211), paramActivity.getString(2131897213), new AvGameManagerImpl.8(this, (WeakReference)localObject, paramInt3, paramString2, paramInt1, paramInt2, paramString1, paramActivity), new AvGameManagerImpl.9(this));
     paramActivity.setCancelable(false);
     paramActivity.show();
   }
@@ -411,7 +411,7 @@ public class AvGameManagerImpl
       }
       if (TextUtils.isEmpty(paramString1))
       {
-        QQToast.a(paramActivity, 2131690502, 0).a();
+        QQToast.makeText(paramActivity, 2131887413, 0).show();
         QLog.e("AvGameManager", 2, "joinAvGameRoom with Empty room id");
         return;
       }
@@ -559,11 +559,11 @@ public class AvGameManagerImpl
         i = 1;
       }
       if ((i != 0) && (j != 0)) {
-        localObject1 = paramActivity.getResources().getString(2131690416);
+        localObject1 = paramActivity.getResources().getString(2131887327);
       } else if (i != 0) {
-        localObject1 = paramActivity.getResources().getString(2131690415);
+        localObject1 = paramActivity.getResources().getString(2131887326);
       } else {
-        localObject1 = paramActivity.getResources().getString(2131690414);
+        localObject1 = paramActivity.getResources().getString(2131887325);
       }
       localObject2 = new AvGameManagerImpl.7(this, paramActivity);
       DialogUtil.a(paramActivity, null, (String)localObject1, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject2, null);

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.qqgamepub.view;
 import android.os.Handler;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -40,7 +40,7 @@ class GameSessionView$1
             localGameCenterSessionInfo.a((BaseQQAppInterface)GameSessionView.a(this.this$0));
           }
         }
-        if (GameSessionView.a(this.this$0)) {
+        if (GameSessionView.b(this.this$0)) {
           break label170;
         }
       }
@@ -56,12 +56,12 @@ class GameSessionView$1
       GameSessionView.b(this.this$0, true);
     }
     label170:
-    GameSessionView.a(this.this$0).post(new GameSessionView.1.1(this, localList));
+    GameSessionView.c(this.this$0).post(new GameSessionView.1.1(this, localList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GameSessionView.1
  * JD-Core Version:    0.7.0.1
  */

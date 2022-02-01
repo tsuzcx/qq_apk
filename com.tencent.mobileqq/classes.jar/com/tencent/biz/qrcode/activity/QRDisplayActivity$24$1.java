@@ -11,23 +11,23 @@ class QRDisplayActivity$24$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0.isFinishing()) {
+    if (this.b.this$0.isFinishing()) {
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("forward_type", 1);
-    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_filepath", this.a);
+    localBundle.putString("forward_thumb", this.a);
+    localBundle.putString("forward_urldrawable_big_url", this.a);
+    localBundle.putString("forward_extra", this.a);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0.c == 1)
+    if (this.b.this$0.t == 1)
     {
-      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0, localIntent, 21, 100500, "biz_src_jc_gxl_ctcshare");
+      ForwardBaseOption.a(this.b.this$0, localIntent, 21, 100500, "biz_src_jc_gxl_ctcshare");
       return;
     }
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0, localIntent, 21);
+    ForwardBaseOption.a(this.b.this$0, localIntent, 21);
   }
 }
 

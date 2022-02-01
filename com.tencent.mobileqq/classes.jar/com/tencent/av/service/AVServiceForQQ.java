@@ -14,20 +14,20 @@ import mqq.app.AppService;
 public class AVServiceForQQ
   extends AppService
 {
-  private int jdField_a_of_type_Int = 10;
-  Notification jdField_a_of_type_AndroidAppNotification = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  private AVServiceForQQ.AVServiceForQQStub jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub = null;
-  private TraeHelper jdField_a_of_type_ComTencentAvUtilsTraeHelper;
-  public String a;
-  private int b = 13;
+  VideoAppInterface a = null;
+  Notification b = null;
+  public String c;
+  private TraeHelper d;
+  private int e = 10;
+  private int f = 13;
+  private AVServiceForQQ.AVServiceForQQStub g = null;
   
   public IBinder onBind(Intent paramIntent)
   {
     if ((this.app instanceof VideoAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
+      this.a = ((VideoAppInterface)this.app);
     }
-    paramIntent = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    paramIntent = this.a;
     boolean bool2 = false;
     boolean bool1;
     if (paramIntent != null) {
@@ -35,11 +35,11 @@ public class AVServiceForQQ
     } else {
       bool1 = false;
     }
-    if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub != null) {
+    if (this.g != null) {
       bool2 = true;
     }
     AVLog.printAllUserLog("AVServiceForQQ", String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    return this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub;
+    return this.g;
   }
   
   public void onCreate()
@@ -49,15 +49,15 @@ public class AVServiceForQQ
     try
     {
       super.onCreate();
-      if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub == null) {
-        this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub = new AVServiceForQQ.AVServiceForQQStub(this, null);
+      if (this.g == null) {
+        this.g = new AVServiceForQQ.AVServiceForQQStub(this, null);
       }
     }
     catch (Exception localException1)
     {
       QLog.d("AVServiceForQQ", 1, "AVServiceForQQ onCreate, Fail", localException1);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(super.getString(2131720211));
+      ((StringBuilder)localObject).append(super.getString(2131917844));
       ((StringBuilder)localObject).append(" 0x0a");
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -76,12 +76,12 @@ public class AVServiceForQQ
           }
           label104:
           boolean bool1;
-          if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+          if (this.a != null) {
             bool1 = true;
           } else {
             bool1 = false;
           }
-          if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub != null) {
+          if (this.g != null) {
             bool2 = true;
           }
           AVLog.printAllUserLog("AVServiceForQQ", String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -100,10 +100,10 @@ public class AVServiceForQQ
   {
     try
     {
-      if ((Build.VERSION.SDK_INT < 18) || (this.jdField_a_of_type_AndroidAppNotification != null))
+      if ((Build.VERSION.SDK_INT < 18) || (this.b != null))
       {
         stopForeground(true);
-        this.jdField_a_of_type_AndroidAppNotification = null;
+        this.b = null;
       }
     }
     catch (Exception localException)
@@ -115,14 +115,14 @@ public class AVServiceForQQ
       break label25;
     }
     super.onDestroy();
-    localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    localVideoAppInterface = this.a;
     bool2 = false;
     if (localVideoAppInterface != null) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub != null) {
+    if (this.g != null) {
       bool2 = true;
     }
     AVLog.printAllUserLog("AVServiceForQQ", String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -131,18 +131,18 @@ public class AVServiceForQQ
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     if ((this.app instanceof VideoAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
+      this.a = ((VideoAppInterface)this.app);
     }
     boolean bool1;
     if (QLog.isDevelopLevel())
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      if (this.a != null) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       boolean bool2;
-      if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub != null) {
+      if (this.g != null) {
         bool2 = true;
       } else {
         bool2 = false;
@@ -155,9 +155,9 @@ public class AVServiceForQQ
       paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
       try
       {
-        if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub != null)
+        if (this.g != null)
         {
-          this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ$AVServiceForQQStub.a(bool1, paramIntent);
+          this.g.a(bool1, paramIntent);
           return 2;
         }
       }

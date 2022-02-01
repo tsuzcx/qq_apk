@@ -9,22 +9,6 @@ public class LoadLibraryUtil
 {
   private static File a;
   
-  @TargetApi(23)
-  private static int a()
-  {
-    try
-    {
-      int i = Build.VERSION.PREVIEW_SDK_INT;
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      label6:
-      break label6;
-    }
-    return 1;
-  }
-  
   public static boolean a(ClassLoader paramClassLoader, File paramFile)
   {
     int i = 0;
@@ -40,7 +24,7 @@ public class LoadLibraryUtil
         j = Build.VERSION.SDK_INT;
         if (j == 25)
         {
-          int k = a();
+          int k = b();
           if (k != 0) {}
         }
         else
@@ -96,10 +80,26 @@ public class LoadLibraryUtil
     QLog.e("SoLoadWidget.LoadLibraryUtil", 1, paramClassLoader.toString());
     return false;
   }
+  
+  @TargetApi(23)
+  private static int b()
+  {
+    try
+    {
+      int i = Build.VERSION.PREVIEW_SDK_INT;
+      return i;
+    }
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.util.LoadLibraryUtil
  * JD-Core Version:    0.7.0.1
  */

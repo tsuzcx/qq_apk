@@ -15,7 +15,7 @@ class ViewOverlayApi14
   
   static ViewOverlayApi14 a(View paramView)
   {
-    ViewGroup localViewGroup = ViewUtils.a(paramView);
+    ViewGroup localViewGroup = ViewUtils.f(paramView);
     if (localViewGroup != null)
     {
       int j = localViewGroup.getChildCount();
@@ -24,7 +24,7 @@ class ViewOverlayApi14
       {
         View localView = localViewGroup.getChildAt(i);
         if ((localView instanceof ViewOverlayApi14.OverlayViewGroup)) {
-          return ((ViewOverlayApi14.OverlayViewGroup)localView).a;
+          return ((ViewOverlayApi14.OverlayViewGroup)localView).e;
         }
         i += 1;
       }
@@ -45,7 +45,7 @@ class ViewOverlayApi14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.ViewOverlayApi14
  * JD-Core Version:    0.7.0.1
  */

@@ -17,45 +17,25 @@ import org.json.JSONObject;
 
 public class QQComicPreloadManager
 {
-  private SparseArray<QQComicPreloadStrategy> jdField_a_of_type_AndroidUtilSparseArray;
-  public AtomicInteger a;
-  public AtomicReference<PreloadServerParam> a;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean = false;
-  public AtomicReference<PreloadPublicParam> b;
+  AppRuntime a;
+  public AtomicReference<PreloadServerParam> b;
+  public AtomicReference<PreloadPublicParam> c;
+  public AtomicInteger d;
+  private SparseArray<QQComicPreloadStrategy> e;
+  private boolean f = false;
   
   public QQComicPreloadManager(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
+    this.a = paramAppRuntime;
+    this.e = new SparseArray();
     this.b = new AtomicReference(null);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
-  }
-  
-  public int a()
-  {
-    SharedPreferences localSharedPreferences = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append("use_times");
-    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-  }
-  
-  public long a()
-  {
-    SharedPreferences localSharedPreferences = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append("active_time");
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    this.c = new AtomicReference(null);
+    this.d = new AtomicInteger(-1);
   }
   
   public QQComicPreloadStrategy a(int paramInt)
   {
-    QQComicPreloadStrategy localQQComicPreloadStrategy2 = (QQComicPreloadStrategy)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, null);
+    QQComicPreloadStrategy localQQComicPreloadStrategy2 = (QQComicPreloadStrategy)this.e.get(paramInt, null);
     QQComicPreloadStrategy localQQComicPreloadStrategy1 = localQQComicPreloadStrategy2;
     if (localQQComicPreloadStrategy2 == null)
     {
@@ -63,69 +43,45 @@ public class QQComicPreloadManager
         return localQQComicPreloadStrategy2;
       }
       localQQComicPreloadStrategy1 = new QQComicPreloadStrategy(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localQQComicPreloadStrategy1);
+      this.e.put(paramInt, localQQComicPreloadStrategy1);
     }
     return localQQComicPreloadStrategy1;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = null;
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    PluginPreloader.a(new PluginPreloadStrategy(a(paramInt)));
+    this.a = null;
+    this.e.clear();
   }
   
   public void a(long paramLong)
   {
     SharedPreferences.Editor localEditor = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a()).edit();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+    localStringBuilder.append(this.a.getCurrentAccountUin());
     localStringBuilder.append("_");
     localStringBuilder.append("active_time");
     localEditor.putLong(localStringBuilder.toString(), paramLong).commit();
   }
   
-  public int[] a()
-  {
-    int[] arrayOfInt = new int[24];
-    SharedPreferences localSharedPreferences = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
-    int i = 0;
-    while (i < 24)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-      localStringBuilder.append("_");
-      localStringBuilder.append("use_times");
-      localStringBuilder.append("_");
-      localStringBuilder.append(i);
-      arrayOfInt[i] = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-      i += 1;
-    }
-    return arrayOfInt;
-  }
-  
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return;
     }
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.f) {
           return;
         }
-        Object localObject1 = new PreloadServerParam(AppHelper.a(), 1113, this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-        if (((PreloadServerParam)localObject1).jdField_a_of_type_Int != -1)
+        Object localObject1 = new PreloadServerParam(AppHelper.a(), 1113, this.a.getCurrentAccountUin());
+        if (((PreloadServerParam)localObject1).a != -1)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.set(localObject1);
-          this.jdField_a_of_type_Boolean = true;
-          localObject1 = ((PreloadServerParam)localObject1).jdField_a_of_type_JavaLangString;
+          this.b.set(localObject1);
+          this.f = true;
+          localObject1 = ((PreloadServerParam)localObject1).e;
           try
           {
             localObject1 = new JSONObject((String)localObject1);
@@ -136,7 +92,7 @@ public class QQComicPreloadManager
                 continue;
               }
               localObject3 = ((JSONObject)localObject1).getJSONObject("publicaccount");
-              AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+              AtomicInteger localAtomicInteger = this.d;
               if (!((JSONObject)localObject3).getBoolean("switch")) {
                 break label283;
               }
@@ -164,23 +120,23 @@ public class QQComicPreloadManager
           if (localObject4 == null)
           {
             localObject1 = new PreloadPublicParam();
-            ((PreloadPublicParam)localObject1).jdField_a_of_type_Boolean = true;
-            ((PreloadPublicParam)localObject1).jdField_b_of_type_Int = 127;
-            ((PreloadPublicParam)localObject1).c = 16777215;
-            ((PreloadPublicParam)localObject1).jdField_h_of_type_Boolean = true;
-            ((PreloadPublicParam)localObject1).jdField_b_of_type_Boolean = true;
-            ((PreloadPublicParam)localObject1).d = true;
-            ((PreloadPublicParam)localObject1).jdField_e_of_type_Boolean = true;
-            ((PreloadPublicParam)localObject1).jdField_i_of_type_Boolean = true;
-            ((PreloadPublicParam)localObject1).jdField_e_of_type_Int = 24;
-            ((PreloadPublicParam)localObject1).j = true;
-            ((PreloadPublicParam)localObject1).f = 20;
-            ((PreloadPublicParam)localObject1).k = true;
-            ((PreloadPublicParam)localObject1).g = 6;
-            ((PreloadPublicParam)localObject1).jdField_h_of_type_Int = 1;
-            ((PreloadPublicParam)localObject1).jdField_i_of_type_Int = 3;
+            ((PreloadPublicParam)localObject1).b = true;
+            ((PreloadPublicParam)localObject1).c = 127;
+            ((PreloadPublicParam)localObject1).d = 16777215;
+            ((PreloadPublicParam)localObject1).l = true;
+            ((PreloadPublicParam)localObject1).e = true;
+            ((PreloadPublicParam)localObject1).g = true;
+            ((PreloadPublicParam)localObject1).h = true;
+            ((PreloadPublicParam)localObject1).m = true;
+            ((PreloadPublicParam)localObject1).n = 24;
+            ((PreloadPublicParam)localObject1).o = true;
+            ((PreloadPublicParam)localObject1).p = 20;
+            ((PreloadPublicParam)localObject1).q = true;
+            ((PreloadPublicParam)localObject1).r = 6;
+            ((PreloadPublicParam)localObject1).s = 1;
+            ((PreloadPublicParam)localObject1).t = 3;
           }
-          this.b.set(localObject1);
+          this.c.set(localObject1);
           return;
         }
         return;
@@ -191,11 +147,55 @@ public class QQComicPreloadManager
     }
   }
   
-  public void c()
+  public void b(int paramInt)
   {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
+    PluginPreloader.a(new PluginPreloadStrategy(a(paramInt)));
+  }
+  
+  public long c()
+  {
+    SharedPreferences localSharedPreferences = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append("active_time");
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+  }
+  
+  public int d()
+  {
+    SharedPreferences localSharedPreferences = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append("use_times");
+    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+  }
+  
+  public int[] e()
+  {
+    int[] arrayOfInt = new int[24];
+    SharedPreferences localSharedPreferences = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
+    int i = 0;
+    while (i < 24)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append("use_times");
+      localStringBuilder.append("_");
+      localStringBuilder.append(i);
+      arrayOfInt[i] = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+      i += 1;
+    }
+    return arrayOfInt;
+  }
+  
+  public void f()
+  {
+    String str = this.a.getCurrentAccountUin();
     Object localObject1 = AppHelper.a().getSharedPreferences("qqcomic_preload_profile", SecMsgUtil.a());
-    int i = a();
+    int i = d();
     Object localObject2 = ((SharedPreferences)localObject1).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
@@ -222,7 +222,7 @@ public class QQComicPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.QQComicPreloadManager
  * JD-Core Version:    0.7.0.1
  */

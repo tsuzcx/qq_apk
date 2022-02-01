@@ -4,73 +4,38 @@ import android.os.Handler;
 
 public class WebViewProgressBarController
 {
-  private byte jdField_a_of_type_Byte = -1;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new WebViewProgressBarController.MainThreadHandler(this);
   protected WebViewProgressBar a;
-  public boolean a;
-  private byte jdField_b_of_type_Byte = 6;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 255;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float c;
-  private float d;
-  private float e;
-  
-  public WebViewProgressBarController()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public boolean b = true;
+  private byte c = -1;
+  private int d = 0;
+  private Handler e = new WebViewProgressBarController.MainThreadHandler(this);
+  private boolean f = false;
+  private int g = 255;
+  private float h;
+  private float i;
+  private float j;
+  private float k;
+  private float l;
+  private byte m = 6;
+  private long n;
   
   private long a(long paramLong)
   {
-    long l = paramLong;
+    long l1 = paramLong;
     if (paramLong > 30L) {
-      l = 30L;
+      l1 = 30L;
     }
-    return l;
+    return l1;
   }
   
   public byte a()
   {
-    return this.jdField_b_of_type_Byte;
-  }
-  
-  public float a()
-  {
-    return this.e;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a()
-  {
-    int j = WebViewProgressBarController.DurationGenerator.a(0).b();
-    int i = j;
-    if (j <= 0) {
-      i = WebViewProgressBarController.DurationGenerator.a(0).a();
-    }
-    this.c = (20.0F / i);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Byte = 0;
-    this.e = this.d;
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    WebViewProgressBar localWebViewProgressBar = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
-    if (localWebViewProgressBar != null) {
-      localWebViewProgressBar.setVisibility(0);
-    }
-    e();
+    return this.m;
   }
   
   public void a(byte paramByte)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
     if (paramByte != 0)
@@ -80,219 +45,249 @@ public class WebViewProgressBarController
         if (paramByte != 2) {
           return;
         }
-        paramByte = this.jdField_a_of_type_Byte;
+        paramByte = this.c;
         if ((paramByte == 0) || (paramByte == 1)) {
-          c();
+          g();
         }
-        this.jdField_a_of_type_Byte = 2;
+        this.c = 2;
         return;
       }
-      b();
+      f();
       return;
     }
-    if (this.jdField_a_of_type_Byte == 0) {
+    if (this.c == 0) {
       return;
     }
-    this.jdField_a_of_type_Byte = 0;
-    a();
+    this.c = 0;
+    e();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(WebViewProgressBar paramWebViewProgressBar)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = paramWebViewProgressBar;
+    this.a = paramWebViewProgressBar;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {
+    if (paramBoolean == this.b) {
       return;
     }
     if (!paramBoolean)
     {
-      if (this.jdField_a_of_type_Byte != 2) {
+      if (this.c != 2) {
         a((byte)2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
-      this.jdField_a_of_type_Boolean = false;
+      this.a.setVisibility(8);
+      this.b = false;
     }
   }
   
-  public byte b()
+  public float b()
   {
-    return this.jdField_a_of_type_Byte;
+    return this.l;
   }
   
-  public void b()
+  public int c()
   {
-    WebViewProgressBarController.DurationGenerator.a(0).a();
-    int j = WebViewProgressBarController.DurationGenerator.a(1).b();
-    int i = j;
-    if (j <= 0) {
-      i = WebViewProgressBarController.DurationGenerator.a(1).a();
-    }
-    this.c = (60.0F / i);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Byte = 2;
-    this.jdField_a_of_type_Byte = 1;
-    e();
+    return this.g;
   }
   
-  public void c()
+  public byte d()
   {
-    WebViewProgressBarController.DurationGenerator.a(1).a();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Byte = 5;
-    this.c = 0.1333333F;
-    float f = this.jdField_b_of_type_Float;
-    if (f <= 60.0F)
-    {
-      this.c = (((60.0F - f) * 0.5F + 40.0F) / 300.0F);
-      this.jdField_a_of_type_Float = 0.8166667F;
-    }
-    else
-    {
-      this.jdField_a_of_type_Float = (this.c * 245.0F / (100.0F - f));
-    }
-    e();
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_Byte = 6;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.d = ((int)(this.jdField_b_of_type_Float * this.jdField_a_of_type_Int / 100.0F));
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return this.c;
   }
   
   public void e()
   {
-    if (this.jdField_b_of_type_Byte != 6)
+    int i2 = WebViewProgressBarController.DurationGenerator.a(0).b();
+    int i1 = i2;
+    if (i2 <= 0) {
+      i1 = WebViewProgressBarController.DurationGenerator.a(0).a();
+    }
+    this.j = (20.0F / i1);
+    this.i = 0.0F;
+    this.m = 0;
+    this.l = this.k;
+    this.g = 255;
+    this.n = System.currentTimeMillis();
+    WebViewProgressBar localWebViewProgressBar = this.a;
+    if (localWebViewProgressBar != null) {
+      localWebViewProgressBar.setVisibility(0);
+    }
+    i();
+  }
+  
+  public void f()
+  {
+    WebViewProgressBarController.DurationGenerator.a(0).c();
+    int i2 = WebViewProgressBarController.DurationGenerator.a(1).b();
+    int i1 = i2;
+    if (i2 <= 0) {
+      i1 = WebViewProgressBarController.DurationGenerator.a(1).a();
+    }
+    this.j = (60.0F / i1);
+    this.n = System.currentTimeMillis();
+    this.m = 2;
+    this.c = 1;
+    i();
+  }
+  
+  public void g()
+  {
+    WebViewProgressBarController.DurationGenerator.a(1).c();
+    this.n = System.currentTimeMillis();
+    this.m = 5;
+    this.j = 0.1333333F;
+    float f1 = this.i;
+    if (f1 <= 60.0F)
+    {
+      this.j = (((60.0F - f1) * 0.5F + 40.0F) / 300.0F);
+      this.h = 0.8166667F;
+    }
+    else
+    {
+      this.h = (this.j * 245.0F / (100.0F - f1));
+    }
+    i();
+  }
+  
+  public void h()
+  {
+    this.m = 6;
+    this.i = 0.0F;
+    this.k = ((int)(this.i * this.d / 100.0F));
+    this.g = 255;
+    this.n = System.currentTimeMillis();
+  }
+  
+  public void i()
+  {
+    if (this.m != 6)
     {
       long l1 = System.currentTimeMillis();
-      float f1 = this.jdField_b_of_type_Float;
+      float f1 = this.i;
       if (f1 >= 100.0F)
       {
-        d();
+        h();
       }
       else
       {
-        int i = this.jdField_b_of_type_Byte;
+        int i1 = this.m;
         long l2;
         float f2;
         float f3;
-        if (i != 0)
+        if (i1 != 0)
         {
-          if (i != 1)
+          if (i1 != 1)
           {
-            if (i != 2)
+            if (i1 != 2)
             {
-              if (i != 3)
+              if (i1 != 3)
               {
-                if (i != 4)
+                if (i1 != 4)
                 {
-                  if (i == 5)
+                  if (i1 == 5)
                   {
-                    l2 = a(l1 - this.jdField_a_of_type_Long);
-                    f1 = this.jdField_b_of_type_Float;
+                    l2 = a(l1 - this.n);
+                    f1 = this.i;
                     f2 = (float)l2;
-                    this.jdField_b_of_type_Float = (f1 + this.c * f2);
-                    this.jdField_a_of_type_Long = l1;
-                    i = this.jdField_a_of_type_Int;
-                    this.e = (i * this.jdField_b_of_type_Float / 100.0F);
-                    if (this.jdField_b_of_type_Boolean)
+                    this.i = (f1 + this.j * f2);
+                    this.n = l1;
+                    i1 = this.d;
+                    this.l = (i1 * this.i / 100.0F);
+                    if (this.f)
                     {
-                      if (this.e >= i) {
-                        this.e = i;
+                      if (this.l >= i1) {
+                        this.l = i1;
                       }
                     }
                     else
                     {
-                      this.jdField_b_of_type_Int -= (int)(f2 * this.jdField_a_of_type_Float);
-                      if (this.jdField_b_of_type_Int <= 0)
+                      this.g -= (int)(f2 * this.h);
+                      if (this.g <= 0)
                       {
-                        d();
-                        this.jdField_b_of_type_Int = 0;
+                        h();
+                        this.g = 0;
                       }
                     }
                   }
                 }
                 else {
-                  this.e = (this.jdField_a_of_type_Int * f1 / 100.0F);
+                  this.l = (this.d * f1 / 100.0F);
                 }
               }
               else
               {
-                l2 = a(l1 - this.jdField_a_of_type_Long);
-                this.jdField_b_of_type_Float += (float)l2 * this.c;
-                this.jdField_a_of_type_Long = l1;
-                if (this.jdField_b_of_type_Float >= 98.0F)
+                l2 = a(l1 - this.n);
+                this.i += (float)l2 * this.j;
+                this.n = l1;
+                if (this.i >= 98.0F)
                 {
-                  this.jdField_a_of_type_Long = l1;
-                  this.jdField_b_of_type_Byte = 4;
-                  this.c = 0.0F;
+                  this.n = l1;
+                  this.m = 4;
+                  this.j = 0.0F;
                 }
-                this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+                this.l = (this.d * this.i / 100.0F);
               }
             }
             else
             {
-              l2 = a(l1 - this.jdField_a_of_type_Long);
-              f1 = this.jdField_b_of_type_Float;
+              l2 = a(l1 - this.n);
+              f1 = this.i;
               f2 = (float)l2;
-              f3 = this.c;
-              this.jdField_b_of_type_Float = (f1 + f2 * f3);
-              this.jdField_a_of_type_Long = l1;
-              if (this.jdField_b_of_type_Float >= 80.0F)
+              f3 = this.j;
+              this.i = (f1 + f2 * f3);
+              this.n = l1;
+              if (this.i >= 80.0F)
               {
-                this.jdField_a_of_type_Long = l1;
-                this.jdField_b_of_type_Byte = 3;
-                this.c = (f3 / 20.0F);
+                this.n = l1;
+                this.m = 3;
+                this.j = (f3 / 20.0F);
               }
-              this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+              this.l = (this.d * this.i / 100.0F);
             }
           }
           else
           {
-            l2 = a(l1 - this.jdField_a_of_type_Long);
-            this.jdField_b_of_type_Float += (float)l2 * this.c;
-            this.jdField_a_of_type_Long = l1;
-            if (this.jdField_b_of_type_Float >= 98.0F)
+            l2 = a(l1 - this.n);
+            this.i += (float)l2 * this.j;
+            this.n = l1;
+            if (this.i >= 98.0F)
             {
-              this.jdField_a_of_type_Long = l1;
-              this.jdField_b_of_type_Byte = 4;
-              this.jdField_b_of_type_Float = 98.0F;
-              this.c = 0.0F;
+              this.n = l1;
+              this.m = 4;
+              this.i = 98.0F;
+              this.j = 0.0F;
             }
-            this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+            this.l = (this.d * this.i / 100.0F);
           }
         }
         else
         {
-          l2 = a(l1 - this.jdField_a_of_type_Long);
-          f1 = this.jdField_b_of_type_Float;
+          l2 = a(l1 - this.n);
+          f1 = this.i;
           f2 = (float)l2;
-          f3 = this.c;
-          this.jdField_b_of_type_Float = (f1 + f2 * f3);
-          this.jdField_a_of_type_Long = l1;
-          if (this.jdField_b_of_type_Float >= 20.0F)
+          f3 = this.j;
+          this.i = (f1 + f2 * f3);
+          this.n = l1;
+          if (this.i >= 20.0F)
           {
-            this.jdField_a_of_type_Long = l1;
-            this.jdField_b_of_type_Byte = 1;
-            this.c = (f3 / 5.0F);
+            this.n = l1;
+            this.m = 1;
+            this.j = (f3 / 5.0F);
           }
-          this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+          this.l = (this.d * this.i / 100.0F);
         }
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(200);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(200, 20L);
+      this.e.removeMessages(200);
+      this.e.sendEmptyMessageDelayed(200, 20L);
     }
-    WebViewProgressBar localWebViewProgressBar = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
+    WebViewProgressBar localWebViewProgressBar = this.a;
     if (localWebViewProgressBar != null) {
       localWebViewProgressBar.invalidate();
     }
@@ -300,7 +295,7 @@ public class WebViewProgressBarController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WebViewProgressBarController
  * JD-Core Version:    0.7.0.1
  */

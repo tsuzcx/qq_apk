@@ -7,12 +7,12 @@ class X5InterfaceFallback$3
 {
   protected void a()
   {
-    X5InterfaceFallback.a(this.this$0).a(this.a, null, null);
+    this.this$0.a.a(this.a, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5InterfaceFallback.3
  * JD-Core Version:    0.7.0.1
  */

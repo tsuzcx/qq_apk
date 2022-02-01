@@ -11,16 +11,16 @@ class MergeForwardRevokeHelper$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-    MergeForwardRevokeHelper.a(null);
-    if (MergeForwardRevokeHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper) != null) {
-      MergeForwardRevokeHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper).b();
+    this.a.finish();
+    MergeForwardRevokeHelper.d(null);
+    if (MergeForwardRevokeHelper.a(this.b) != null) {
+      MergeForwardRevokeHelper.a(this.b).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.forward.MergeForwardRevokeHelper.1
  * JD-Core Version:    0.7.0.1
  */

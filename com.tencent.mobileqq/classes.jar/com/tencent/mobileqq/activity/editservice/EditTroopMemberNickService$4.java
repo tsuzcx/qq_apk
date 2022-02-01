@@ -12,20 +12,20 @@ class EditTroopMemberNickService$4
   
   public void a()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+    if (this.a.q == null) {
       return;
     }
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) || (EditTroopMemberNickService.a(this.a)))
+    if ((this.a.q.getVisibility() == 0) || (EditTroopMemberNickService.c(this.a)))
     {
-      EditTroopMemberNickService.a(this.a).hideInputMethod();
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      EditTroopMemberNickService.d(this.a).hideInputMethod();
+      this.a.q.setVisibility(8);
+      this.a.a.setCursorVisible(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.4
  * JD-Core Version:    0.7.0.1
  */

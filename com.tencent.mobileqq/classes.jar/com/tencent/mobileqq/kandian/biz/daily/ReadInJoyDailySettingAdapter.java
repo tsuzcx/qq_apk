@@ -14,16 +14,16 @@ import java.util.List;
 public class ReadInJoyDailySettingAdapter
   extends RecyclerView.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  ReadInJoyDailySettingPopupWindow jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingPopupWindow;
-  private List<ReadInJoyDailySettingModel> jdField_a_of_type_JavaUtilList = new ArrayList();
+  ReadInJoyDailySettingPopupWindow a;
   private List<ReadInJoyDailySettingModel> b = new ArrayList();
+  private List<ReadInJoyDailySettingModel> c = new ArrayList();
+  private Context d;
   
   public ReadInJoyDailySettingAdapter(Context paramContext, List<ReadInJoyDailySettingModel> paramList1, List<ReadInJoyDailySettingModel> paramList2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramList1;
+    this.c = paramList2;
+    this.d = paramContext;
   }
   
   private void a(int paramInt, ReadInJoyDailySettingModel paramReadInJoyDailySettingModel)
@@ -35,7 +35,7 @@ public class ReadInJoyDailySettingAdapter
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     int j = 0;
     int i;
     if (localList != null) {
@@ -43,7 +43,7 @@ public class ReadInJoyDailySettingAdapter
     } else {
       i = 0;
     }
-    localList = this.b;
+    localList = this.c;
     if (localList != null) {
       j = localList.size();
     }
@@ -52,7 +52,7 @@ public class ReadInJoyDailySettingAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (paramInt < this.b.size()) {
+    if (paramInt < this.c.size()) {
       return 0;
     }
     return 1;
@@ -61,30 +61,30 @@ public class ReadInJoyDailySettingAdapter
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     ReadInJoyDailySettingAdapter.DailySettingViewHolder localDailySettingViewHolder = (ReadInJoyDailySettingAdapter.DailySettingViewHolder)paramViewHolder;
-    if (paramInt >= this.b.size())
+    if (paramInt >= this.c.size())
     {
-      paramInt -= this.b.size();
-      paramViewHolder = (ReadInJoyDailySettingModel)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localDailySettingViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramInt -= this.c.size();
+      paramViewHolder = (ReadInJoyDailySettingModel)this.b.get(paramInt);
+      localDailySettingViewHolder.c.setVisibility(8);
     }
     else
     {
-      paramViewHolder = (ReadInJoyDailySettingModel)this.b.get(paramInt);
-      localDailySettingViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramViewHolder = (ReadInJoyDailySettingModel)this.c.get(paramInt);
+      localDailySettingViewHolder.c.setVisibility(0);
     }
-    localDailySettingViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewHolder.b);
+    localDailySettingViewHolder.a.setText(paramViewHolder.b);
     localDailySettingViewHolder.b.setText(paramViewHolder.d);
     localDailySettingViewHolder.itemView.setOnClickListener(new ReadInJoyDailySettingAdapter.1(this, localDailySettingViewHolder, paramViewHolder, paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ReadInJoyDailySettingAdapter.DailySettingViewHolder(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560219, null));
+    return new ReadInJoyDailySettingAdapter.DailySettingViewHolder(this, View.inflate(this.d, 2131626266, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailySettingAdapter
  * JD-Core Version:    0.7.0.1
  */

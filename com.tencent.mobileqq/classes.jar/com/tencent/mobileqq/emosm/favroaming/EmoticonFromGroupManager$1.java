@@ -21,19 +21,19 @@ class EmoticonFromGroupManager$1
       if (paramMessage.obj != null)
       {
         paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-        this.a.a(paramMessage);
+        this.a.d(paramMessage);
         return true;
       }
-      QQToast.a(EmoticonFromGroupManager.a(this.a), 1, 2131689646, 0).b(2131299168);
+      QQToast.makeText(EmoticonFromGroupManager.a(this.a), 1, 2131886257, 0).show(2131299920);
       return true;
     }
-    QQToast.a(EmoticonFromGroupManager.a(this.a), 2131692690, 0).b(2131299168);
+    QQToast.makeText(EmoticonFromGroupManager.a(this.a), 2131889761, 0).show(2131299920);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.1
  * JD-Core Version:    0.7.0.1
  */

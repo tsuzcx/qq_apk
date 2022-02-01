@@ -21,7 +21,7 @@ abstract class BaseAction
   public void a(Activity paramActivity)
   {
     Bundle localBundle = AuthParamUtil.a(paramActivity.getIntent(), "key_params");
-    if (a(paramActivity, localBundle)) {
+    if (b(paramActivity, localBundle)) {
       a(paramActivity, localBundle);
     }
   }
@@ -56,7 +56,7 @@ abstract class BaseAction
     }
   }
   
-  protected boolean a(Activity paramActivity, Bundle paramBundle)
+  protected boolean b(Activity paramActivity, Bundle paramBundle)
   {
     if (paramBundle == null)
     {
@@ -68,7 +68,7 @@ abstract class BaseAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.BaseAction
  * JD-Core Version:    0.7.0.1
  */

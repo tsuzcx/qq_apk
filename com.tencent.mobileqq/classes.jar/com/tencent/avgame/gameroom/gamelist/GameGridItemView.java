@@ -19,14 +19,14 @@ public class GameGridItemView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  protected int a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   protected GameItem a;
-  protected GameGridItemView.GameGridClickListener a;
-  protected boolean a;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  protected int b;
+  protected boolean c;
+  protected GameGridItemView.GameGridClickListener d;
+  private TextView e;
+  private TextView f;
+  private View g;
+  private View h;
   
   public GameGridItemView(Context paramContext)
   {
@@ -45,38 +45,38 @@ public class GameGridItemView
   
   public void a(GameItem paramGameItem, boolean paramBoolean, int paramInt1, int paramInt2, URLDrawable paramURLDrawable1, URLDrawable paramURLDrawable2)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameItem = paramGameItem;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    float f;
-    if (paramGameItem.a >= 100000000L)
+    this.a = paramGameItem;
+    this.b = paramInt2;
+    this.c = paramBoolean;
+    float f1;
+    if (paramGameItem.o >= 100000000L)
     {
-      f = new BigDecimal((float)paramGameItem.a / 1.0E+008F).setScale(1, 1).floatValue();
+      f1 = new BigDecimal((float)paramGameItem.o / 1.0E+008F).setScale(1, 1).floatValue();
       paramGameItem = new StringBuilder();
-      paramGameItem.append(f);
-      paramGameItem.append(getContext().getResources().getString(2131690432));
+      paramGameItem.append(f1);
+      paramGameItem.append(getContext().getResources().getString(2131887343));
       paramGameItem = paramGameItem.toString();
     }
-    else if (paramGameItem.a >= 100000L)
+    else if (paramGameItem.o >= 100000L)
     {
-      f = new BigDecimal((float)paramGameItem.a / 10000.0F).setScale(1, 1).floatValue();
+      f1 = new BigDecimal((float)paramGameItem.o / 10000.0F).setScale(1, 1).floatValue();
       paramGameItem = new StringBuilder();
-      paramGameItem.append(f);
-      paramGameItem.append(getContext().getResources().getString(2131690431));
+      paramGameItem.append(f1);
+      paramGameItem.append(getContext().getResources().getString(2131887342));
       paramGameItem = paramGameItem.toString();
     }
     else
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramGameItem.a);
+      localStringBuilder.append(paramGameItem.o);
       localStringBuilder.append("");
       paramGameItem = localStringBuilder.toString();
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690293), new Object[] { paramGameItem }));
+    this.f.setText(String.format(getResources().getString(2131887204), new Object[] { paramGameItem }));
     if (paramURLDrawable1 != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramURLDrawable1);
+      this.e.setBackgroundDrawable(paramURLDrawable1);
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+      this.e.setBackgroundDrawable(null);
     }
     if (paramURLDrawable2 != null) {
       setBackgroundDrawable(paramURLDrawable2);
@@ -84,37 +84,37 @@ public class GameGridItemView
       setBackgroundDrawable(null);
     }
     setTag(Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_AndroidViewView.setTag(Integer.valueOf(paramInt2));
+    this.g.setTag(Integer.valueOf(paramInt2));
     if (paramInt2 == paramInt1)
     {
       setAlpha(1.0F);
-      paramGameItem = AVGameUtil.a("avgame_game_select@2x.png");
+      paramGameItem = AVGameUtil.c("avgame_game_select@2x.png");
       if (paramGameItem != null) {
-        this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(paramGameItem));
+        this.h.setBackgroundDrawable(new BitmapDrawable(paramGameItem));
       }
     }
     else
     {
       setAlpha(0.6F);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
+      this.h.setBackgroundDrawable(null);
     }
   }
   
   public void a(GameGridItemView.GameGridClickListener paramGameGridClickListener)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener = paramGameGridClickListener;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371697));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372844));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367441);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377133);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.d = paramGameGridClickListener;
+    this.e = ((TextView)findViewById(2131439121));
+    this.f = ((TextView)findViewById(2131440397));
+    this.g = findViewById(2131433944);
+    this.h = findViewById(2131445509);
+    this.g.setOnClickListener(this);
     setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (((localObject instanceof Integer)) && (this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener != null))
+    if (((localObject instanceof Integer)) && (this.d != null))
     {
       int i = ((Integer)localObject).intValue();
       if ((paramView instanceof GameGridItemView))
@@ -126,11 +126,11 @@ public class GameGridItemView
           ((StringBuilder)localObject).append(i);
           QLog.i("GameGridItemView", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.b(i);
+        this.d.b(i);
       }
-      else if (paramView.getId() == 2131367441)
+      else if (paramView.getId() == 2131433944)
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.a(i);
+        this.d.a(i);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

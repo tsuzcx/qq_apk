@@ -15,12 +15,12 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.view.widget.BezierSideBarView;
 import com.tencent.mobileqq.kandian.base.view.widget.DisableSlideHorizontalListView;
 import com.tencent.mobileqq.kandian.base.view.widget.DisableSlideHorizontalListView.OnOverScrollListener;
 import com.tencent.mobileqq.kandian.base.view.widget.DisableSlideHorizontalListView.OnViewWindowChangedListener;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.data.Util;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
@@ -50,28 +50,28 @@ public class ReadInJoySocializeRecommendFollowView
   extends ViewBase
   implements DisableSlideHorizontalListView.OnOverScrollListener, DisableSlideHorizontalListView.OnViewWindowChangedListener
 {
-  private int jdField_a_of_type_Int;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private DisableSlideHorizontalListView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView;
-  private ReadInJoySocializeRecommendFollowView.FollowListAdapter jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$FollowListAdapter;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoySocializeRecommendFollowView.10(this);
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private ViewBase b;
+  private LinearLayout a;
+  private DisableSlideHorizontalListView b;
+  private ReadInJoySocializeRecommendFollowView.FollowListAdapter c;
+  private ViewBase d;
+  private ViewBase e;
+  private AbsBaseArticleInfo f;
+  private int g;
+  private ReadInJoyObserver h = new ReadInJoySocializeRecommendFollowView.10(this);
   
   private ReadInJoySocializeRecommendFollowView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramVafContext.getContext()).inflate(2131560287, null));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376251));
-    BezierSideBarView localBezierSideBarView = (BezierSideBarView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363495);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView.setSideBarView(localBezierSideBarView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$FollowListAdapter = new ReadInJoySocializeRecommendFollowView.FollowListAdapter(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView.setDividerWidth(DisplayUtil.a(paramVafContext.getContext(), 5.0F));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$FollowListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView.setOnViewWindowChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView.setOnOverScrollListener(this);
-    this.jdField_a_of_type_Int = DisplayUtil.a(paramVafContext.getContext(), 6.0F);
+    this.a = ((LinearLayout)LayoutInflater.from(paramVafContext.getContext()).inflate(2131626333, null));
+    this.b = ((DisableSlideHorizontalListView)this.a.findViewById(2131444459));
+    BezierSideBarView localBezierSideBarView = (BezierSideBarView)this.a.findViewById(2131429396);
+    this.b.setSideBarView(localBezierSideBarView);
+    this.c = new ReadInJoySocializeRecommendFollowView.FollowListAdapter(this, null);
+    this.b.setDividerWidth(DisplayUtil.a(paramVafContext.getContext(), 5.0F));
+    this.b.setAdapter(this.c);
+    this.b.setOnViewWindowChangedListener(this);
+    this.b.setOnOverScrollListener(this);
+    this.g = DisplayUtil.a(paramVafContext.getContext(), 6.0F);
   }
   
   private void a(long paramLong)
@@ -92,7 +92,7 @@ public class ReadInJoySocializeRecommendFollowView
   
   private void a(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    ReadInJoyLogicEngine.a().e(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    ReadInJoyLogicEngine.a().f(this.f);
     ThreadManager.post(new ReadInJoySocializeRecommendFollowView.6(this, paramRecommendFollowInfo), 5, null, true);
   }
   
@@ -102,9 +102,9 @@ public class ReadInJoySocializeRecommendFollowView
     ReadInJoySocializeRecommendFollowView.8 local8 = new ReadInJoySocializeRecommendFollowView.8(this, paramBoolean);
     ValueAnimator localValueAnimator;
     if (paramBoolean) {
-      localValueAnimator = ValueAnimator.ofInt(new int[] { DisplayUtil.a(this.mContext.getContext(), 6.0F), this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() });
+      localValueAnimator = ValueAnimator.ofInt(new int[] { DisplayUtil.a(this.mContext.getContext(), 6.0F), this.a.getMeasuredHeight() });
     } else {
-      localValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight(), DisplayUtil.a(this.mContext.getContext(), 6.0F) });
+      localValueAnimator = ValueAnimator.ofInt(new int[] { this.a.getMeasuredHeight(), DisplayUtil.a(this.mContext.getContext(), 6.0F) });
     }
     localValueAnimator.addListener(local8);
     localValueAnimator.addUpdateListener(local7);
@@ -116,7 +116,7 @@ public class ReadInJoySocializeRecommendFollowView
   {
     if (!NetworkUtil.isNetworkAvailable(this.mContext.getContext()))
     {
-      QQToast.a(this.mContext.getContext(), 1, 2131717970, 0).a();
+      QQToast.makeText(this.mContext.getContext(), 1, 2131915450, 0).show();
       return;
     }
     Object localObject;
@@ -130,12 +130,12 @@ public class ReadInJoySocializeRecommendFollowView
     if (paramRecommendFollowInfo != null)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(ReadInJoyConstants.k);
+      ((StringBuilder)localObject).append(ReadInJoyConstants.l);
       ((StringBuilder)localObject).append(Base64Util.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2));
       paramRecommendFollowInfo = ((StringBuilder)localObject).toString();
-      if ((!TextUtils.isEmpty(paramRecommendFollowInfo)) && (ViolaAccessHelper.c(paramRecommendFollowInfo)))
+      if ((!TextUtils.isEmpty(paramRecommendFollowInfo)) && (ViolaAccessHelper.e(paramRecommendFollowInfo)))
       {
-        ViolaAccessHelper.a(this.mContext.getContext(), null, ViolaAccessHelper.c(paramRecommendFollowInfo), null);
+        ViolaAccessHelper.a(this.mContext.getContext(), null, ViolaAccessHelper.f(paramRecommendFollowInfo), null);
         return;
       }
       localObject = new ActivityURIRequest(this.mContext.getContext(), "/pubaccount/browser");
@@ -150,7 +150,7 @@ public class ReadInJoySocializeRecommendFollowView
   {
     ViewBean localViewBean = new ViewBean();
     ValueBean localValueBean = localViewBean.valueBean;
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.isShowRecommendList;
+    boolean bool = this.f.isShowRecommendList;
     String str2 = "VISIBLE";
     String str1;
     if (bool) {
@@ -162,7 +162,7 @@ public class ReadInJoySocializeRecommendFollowView
     bindDynamicValue(localViewBean);
     localViewBean = new ViewBean();
     localValueBean = localViewBean.valueBean;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.isShowRecommendList) {
+    if (this.f.isShowRecommendList) {
       str1 = "GONE";
     } else {
       str1 = "VISIBLE";
@@ -170,7 +170,7 @@ public class ReadInJoySocializeRecommendFollowView
     localValueBean.putTrueDynamicValue("visibility", str1);
     try
     {
-      if (Util.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) {
+      if (Util.a(this.f)) {
         localViewBean.valueBean.putTrueDynamicValue("visibility", "GONE");
       }
     }
@@ -178,19 +178,19 @@ public class ReadInJoySocializeRecommendFollowView
     {
       QLog.e("ReadInJoySocializeRecommendFollowView", 2, localJSONException, new Object[0]);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+    Object localObject = this.d;
     if (localObject != null) {
       ((ViewBase)localObject).bindDynamicValue(localViewBean);
     }
     localViewBean = new ViewBean();
     localValueBean = localViewBean.valueBean;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.isShowRecommendList) {
+    if (this.f.isShowRecommendList) {
       localObject = str2;
     } else {
       localObject = "GONE";
     }
     localValueBean.putTrueDynamicValue("visibility", localObject);
-    localObject = this.b;
+    localObject = this.e;
     if (localObject != null) {
       ((ViewBase)localObject).bindDynamicValue(localViewBean);
     }
@@ -198,45 +198,44 @@ public class ReadInJoySocializeRecommendFollowView
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos.b;
-    Object localObject2 = new ActivityURIRequest(this.mContext.getContext(), "/pubaccount/browser");
-    ((ActivityURIRequest)localObject2).extra().putString("url", (String)localObject1);
-    QRoute.startUri((URIRequest)localObject2, null);
-    localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-    ((StringBuilder)localObject2).append("");
-    ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEvent(null, ((StringBuilder)localObject2).toString(), "0X800984C", "0X800984C", 0, 0, "1", "", "", "", false);
+    Object localObject = this.f.mRecommendFollowInfos.f;
+    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.mContext.getContext(), "/pubaccount/browser");
+    localActivityURIRequest.extra().putString("url", (String)localObject);
+    QRoute.startUri(localActivityURIRequest, null);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(RIJQQAppInterfaceUtil.c());
+    ((StringBuilder)localObject).append("");
+    PublicAccountReportUtils.a(null, ((StringBuilder)localObject).toString(), "0X800984C", "0X800984C", 0, 0, "1", "", "", "", false);
   }
   
   public void a(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramIReadInJoyModel.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = getParent().findViewBaseByName("id_dislike_button");
+    this.f = paramIReadInJoyModel.k();
+    if (this.d == null) {
+      this.d = getParent().findViewBaseByName("id_dislike_button");
     }
-    if (this.b == null)
+    if (this.e == null)
     {
-      this.b = getParent().findViewBaseByName("id_social_header_fold_button");
-      paramIReadInJoyModel = this.b;
+      this.e = getParent().findViewBaseByName("id_social_header_fold_button");
+      paramIReadInJoyModel = this.e;
       if (paramIReadInJoyModel != null) {
         paramIReadInJoyModel.setOnClickListener(new ReadInJoySocializeRecommendFollowView.1(this));
       }
     }
     d();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.isShowRecommendList) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos.a != null))
+    if ((this.f.isShowRecommendList) && (this.f.mRecommendFollowInfos != null) && (this.f.mRecommendFollowInfos.c != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$FollowListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos.a);
+      this.c.a(this.f.mRecommendFollowInfos.c);
       paramIReadInJoyModel = new ReadInJoySocializeRecommendFollowView.2(this);
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() == 0)
+      if (this.a.getMeasuredHeight() == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.post(paramIReadInJoyModel);
+        this.a.post(paramIReadInJoyModel);
         return;
       }
       paramIReadInJoyModel.run();
       return;
     }
-    this.jdField_a_of_type_Int = DisplayUtil.a(this.mContext.getContext(), 6.0F);
+    this.g = DisplayUtil.a(this.mContext.getContext(), 6.0F);
   }
   
   protected void a(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
@@ -260,21 +259,21 @@ public class ReadInJoySocializeRecommendFollowView
         localStringBuilder.append(paramBoolean);
         QLog.e("ReadInJoySocializeRecommendFollowView", 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$FollowListAdapter.notifyDataSetChanged();
+      this.c.notifyDataSetChanged();
       return;
     }
-    QQToast.a(this.mContext.getContext(), 1, 2131717970, 0).a();
+    QQToast.makeText(this.mContext.getContext(), 1, 2131915450, 0).show();
   }
   
   public void b()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.h);
   }
   
   protected void b(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().a();
+    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().c();
     localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramRecommendFollowInfo.uin);
@@ -284,7 +283,7 @@ public class ReadInJoySocializeRecommendFollowView
   
   public void c()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.h);
   }
   
   protected void c(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
@@ -292,35 +291,35 @@ public class ReadInJoySocializeRecommendFollowView
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (paramBoolean)
     {
-      ReadInJoyLogicEngine.a().a().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, true, paramRecommendFollowInfo.headUrl, new ReadInJoySocializeRecommendFollowView.4(this, paramRecommendFollowInfo), 1);
+      ReadInJoyLogicEngine.a().c().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, true, paramRecommendFollowInfo.headUrl, new ReadInJoySocializeRecommendFollowView.4(this, paramRecommendFollowInfo), 1);
       return;
     }
-    ReadInJoyLogicEngine.a().a().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, false, paramRecommendFollowInfo.headUrl, new ReadInJoySocializeRecommendFollowView.5(this, paramRecommendFollowInfo), 1);
+    ReadInJoyLogicEngine.a().c().request0x978(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, false, paramRecommendFollowInfo.headUrl, new ReadInJoySocializeRecommendFollowView.5(this, paramRecommendFollowInfo), 1);
   }
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_Int;
+    return this.g;
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
+    return this.a.getMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    return this.a;
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
+    this.a.measure(paramInt1, paramInt2);
   }
   
   public void setVisibility(int paramInt)
@@ -330,7 +329,7 @@ public class ReadInJoySocializeRecommendFollowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView
  * JD-Core Version:    0.7.0.1
  */

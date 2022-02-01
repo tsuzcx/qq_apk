@@ -10,12 +10,12 @@ class QQAppInterface$21
   
   public void run()
   {
-    QQToast.a(QQAppInterface.access$3000(this.this$0).getApplicationContext(), 2131690528, 5000).a();
+    QQToast.makeText(QQAppInterface.access$3100(this.this$0).getApplicationContext(), 2131887439, 5000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.21
  * JD-Core Version:    0.7.0.1
  */

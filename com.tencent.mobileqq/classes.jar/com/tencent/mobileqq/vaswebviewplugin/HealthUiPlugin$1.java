@@ -32,7 +32,7 @@ class HealthUiPlugin$1
       if (!bool) {}
       try
       {
-        localObject2 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), ClubContentJsonTask.c.a);
+        localObject2 = new File(this.this$0.mRuntime.d().getApplicationContext().getFilesDir(), ClubContentJsonTask.c.a);
         if (((File)localObject2).exists())
         {
           localObject2 = new JSONObject(FileUtils.readFileContent((File)localObject2)).getJSONObject("data").getJSONArray("jdUploadLog");
@@ -59,7 +59,7 @@ class HealthUiPlugin$1
       {
         try
         {
-          int i = NetworkUtil.getSystemNetwork(this.this$0.mRuntime.a().getApplicationContext());
+          int i = NetworkUtil.getSystemNetwork(this.this$0.mRuntime.d().getApplicationContext());
           break label218;
           i = 0;
           if (i != 0) {
@@ -108,7 +108,7 @@ class HealthUiPlugin$1
             ((StringBuilder)localObject2).append("|");
             ((StringBuilder)localObject2).append("android");
             ((StringBuilder)localObject2).append("|");
-            ((StringBuilder)localObject2).append("8.7.0");
+            ((StringBuilder)localObject2).append("8.8.17");
             ((StringBuilder)localObject2).append("|");
             ((StringBuilder)localObject2).append("|");
             ((StringBuilder)localObject2).append("|");
@@ -167,7 +167,7 @@ class HealthUiPlugin$1
               ((StringBuilder)localObject3).append("|");
               ((StringBuilder)localObject3).append("android");
               ((StringBuilder)localObject3).append("|");
-              ((StringBuilder)localObject3).append("8.7.0");
+              ((StringBuilder)localObject3).append("8.8.17");
               ((StringBuilder)localObject3).append("|");
               ((StringBuilder)localObject3).append("|");
               ((StringBuilder)localObject3).append("|");
@@ -204,7 +204,7 @@ class HealthUiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

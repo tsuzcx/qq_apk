@@ -12,48 +12,48 @@ import com.tencent.mobileqq.qqpay.ui.R.styleable;
 public class KSongVolumeView
   extends View
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean = true;
   public int[] a;
-  private int b = 0;
+  private boolean b = true;
   private int c = 0;
   private int d = 0;
   private int e = 0;
   private int f = 0;
-  private int g = 0;
+  private Paint g;
+  private int h = 0;
+  private int i = 0;
+  private int j = 0;
   
   public KSongVolumeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bX);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cq);
     a(paramContext);
     paramContext.recycle();
   }
   
   private void a(TypedArray paramTypedArray)
   {
-    int i = R.styleable.n;
+    int k = R.styleable.cs;
     boolean bool = false;
-    if (paramTypedArray.getInt(i, 0) == 0) {
+    if (paramTypedArray.getInt(k, 0) == 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramTypedArray.getInt(R.styleable.o, 5);
-    this.b = ((int)paramTypedArray.getDimension(R.styleable.q, 8.0F));
-    this.c = paramTypedArray.getColor(R.styleable.m, -16776961);
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-    this.g = ((int)paramTypedArray.getDimension(R.styleable.p, this.b));
+    this.b = bool;
+    this.c = paramTypedArray.getInt(R.styleable.ct, 5);
+    this.d = ((int)paramTypedArray.getDimension(R.styleable.cv, 8.0F));
+    this.e = paramTypedArray.getColor(R.styleable.cr, -16776961);
+    this.a = new int[this.c];
+    this.j = ((int)paramTypedArray.getDimension(R.styleable.cu, this.d));
   }
   
   public void a(int paramInt)
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int i = this.d;
-    arrayOfInt[i] = paramInt;
-    this.d = (i + 1);
-    if (this.d >= this.jdField_a_of_type_Int) {
-      this.d = 0;
+    int[] arrayOfInt = this.a;
+    int k = this.f;
+    arrayOfInt[k] = paramInt;
+    this.f = (k + 1);
+    if (this.f >= this.c) {
+      this.f = 0;
     }
     invalidate();
   }
@@ -61,19 +61,19 @@ public class KSongVolumeView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = this.d - 1;
-    int j = 0;
+    int k = this.f - 1;
+    int m = 0;
     for (;;)
     {
-      int m = this.jdField_a_of_type_Int;
-      if (j >= m) {
+      int i1 = this.c;
+      if (m >= i1) {
         break;
       }
-      int k = i;
-      if (i < 0) {
-        k = m - 1;
+      int n = k;
+      if (k < 0) {
+        n = i1 - 1;
       }
-      float f2 = this.jdField_a_of_type_ArrayOfInt[k];
+      float f2 = this.a[n];
       float f1 = f2;
       if (f2 < 1.0F) {
         f1 = 1.0F;
@@ -82,70 +82,70 @@ public class KSongVolumeView
       if (f1 > 8.0F) {
         f2 = 8.0F;
       }
-      f2 = f2 / 2.0F * this.g + this.f / 2;
-      if (this.jdField_a_of_type_Boolean)
+      f2 = f2 / 2.0F * this.j + this.i / 2;
+      if (this.b)
       {
-        f1 = j * 2.0F * this.b;
+        f1 = m * 2.0F * this.d;
       }
       else
       {
-        f1 = this.jdField_a_of_type_Int - 1 - j;
-        i = this.b;
-        f1 = f1 * 2.0F * i + i;
+        f1 = this.c - 1 - m;
+        k = this.d;
+        f1 = f1 * 2.0F * k + k;
       }
-      i = this.e;
-      paramCanvas.drawRect(f1, i - f2, f1 + this.b, i + f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i = k - 1;
-      j += 1;
+      k = this.h;
+      paramCanvas.drawRect(f1, k - f2, f1 + this.d, k + f2, this.g);
+      k = n - 1;
+      m += 1;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_Int;
-    paramInt2 = this.b;
-    int i = this.g;
-    int j = this.f;
-    setMeasuredDimension(paramInt1 * 2 * paramInt2 + getPaddingLeft() + getPaddingRight(), i * 8 + j + getPaddingTop() + getPaddingBottom());
+    paramInt1 = this.c;
+    paramInt2 = this.d;
+    int k = this.j;
+    int m = this.i;
+    setMeasuredDimension(paramInt1 * 2 * paramInt2 + getPaddingLeft() + getPaddingRight(), k * 8 + m + getPaddingTop() + getPaddingBottom());
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.e = (paramInt2 / 2);
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    this.h = (paramInt2 / 2);
+    if (this.g == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      this.g = new Paint();
+      this.g.setStyle(Paint.Style.FILL);
+      this.g.setColor(this.e);
     }
     invalidate();
   }
   
   public void setColor(int paramInt)
   {
-    this.c = paramInt;
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    this.e = paramInt;
+    Paint localPaint = this.g;
     if (localPaint != null) {
-      localPaint.setColor(this.c);
+      localPaint.setColor(this.e);
     }
   }
   
   public void setCount(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+    this.c = paramInt;
+    this.a = new int[this.c];
     requestLayout();
   }
   
   public void setSquareWidth(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongVolumeView
  * JD-Core Version:    0.7.0.1
  */

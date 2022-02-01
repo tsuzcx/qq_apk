@@ -17,11 +17,6 @@ public class GdtMvWebJsCallHandler
     this.a.b();
   }
   
-  protected void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
-  
   protected void a(String paramString, boolean paramBoolean)
   {
     this.a.a(paramString, paramBoolean);
@@ -36,10 +31,15 @@ public class GdtMvWebJsCallHandler
   {
     this.a.c();
   }
+  
+  protected void b(String paramString)
+  {
+    this.a.b(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

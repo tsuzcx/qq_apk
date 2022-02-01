@@ -14,19 +14,13 @@ public abstract interface IShortVideoOperator
   
   public abstract MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo);
   
-  public abstract ShortVideoForwardInfo a(Object paramObject, ShortVideoReq paramShortVideoReq);
-  
   public abstract ShortVideoUploadInfo a(Object paramObject, ShortVideoReq paramShortVideoReq);
   
   public abstract void a(BaseQQAppInterface paramBaseQQAppInterface);
   
   public abstract void a(MessageRecord paramMessageRecord);
   
-  public abstract void a(ShortVideoForwardInfo paramShortVideoForwardInfo);
-  
   public abstract void a(ShortVideoReq paramShortVideoReq);
-  
-  public abstract void a(ShortVideoUploadInfo paramShortVideoUploadInfo);
   
   public abstract void a(UiCallBack paramUiCallBack);
   
@@ -34,11 +28,17 @@ public abstract interface IShortVideoOperator
   
   public abstract void a(ArrayList<ShortVideoForwardInfo> paramArrayList);
   
+  public abstract ShortVideoForwardInfo b(Object paramObject, ShortVideoReq paramShortVideoReq);
+  
+  public abstract void b(ShortVideoForwardInfo paramShortVideoForwardInfo);
+  
+  public abstract void b(ShortVideoUploadInfo paramShortVideoUploadInfo);
+  
   public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.api.IShortVideoOperator
  * JD-Core Version:    0.7.0.1
  */

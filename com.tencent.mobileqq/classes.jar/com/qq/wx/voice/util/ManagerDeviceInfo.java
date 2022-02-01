@@ -13,6 +13,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.ByteArrayInputStream;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -203,11 +205,11 @@ public class ManagerDeviceInfo
     Object localObject = this.a;
     if (localObject != null)
     {
-      this.g = ((TelephonyManager)((Context)localObject).getSystemService("phone")).getDeviceId();
+      this.g = PhoneInfoMonitor.getDeviceId((TelephonyManager)((Context)localObject).getSystemService("phone"));
       localObject = new StringBuilder(String.valueOf(this.g));
       ((StringBuilder)localObject).append("-");
       this.g = ((StringBuilder)localObject).toString();
-      localObject = ((WifiManager)this.a.getSystemService("wifi")).getConnectionInfo();
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)this.a.getSystemService("wifi"));
       StringBuilder localStringBuilder = new StringBuilder(String.valueOf(this.g));
       localStringBuilder.append(((WifiInfo)localObject).getMacAddress());
       this.g = localStringBuilder.toString();
@@ -218,7 +220,7 @@ public class ManagerDeviceInfo
   {
     try
     {
-      Enumeration localEnumeration1 = NetworkInterface.getNetworkInterfaces();
+      Enumeration localEnumeration1 = NetworkMonitor.getNetworkInterfaces();
       while (localEnumeration1.hasMoreElements())
       {
         Enumeration localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();

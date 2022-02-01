@@ -9,43 +9,43 @@ import org.xml.sax.helpers.DefaultHandler;
 public class EarlyXmlParser
   extends DefaultHandler
 {
-  private XmlData jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
-  private Class<? extends XmlData> jdField_a_of_type_JavaLangClass;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private StringBuilder a;
+  private XmlData b;
+  private Class<? extends XmlData> c;
   
   public EarlyXmlParser(Class<? extends XmlData> paramClass)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.c = paramClass;
   }
   
   public XmlData a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
+    return this.b;
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramArrayOfChar, paramInt1, paramInt2);
+    this.a.append(paramArrayOfChar, paramInt1, paramInt2);
   }
   
   public void endDocument()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = null;
+    this.a = null;
   }
   
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData == null)
+    if (this.b == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("EarlyDown", 2, "endElement() return. data is null.");
       }
       return;
     }
-    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {
+    if (this.c.getSimpleName().equals(paramString2)) {
       return;
     }
-    paramString1 = EarlyDataFactory.a(this.jdField_a_of_type_JavaLangClass, paramString2);
+    paramString1 = EarlyDataFactory.a(this.c, paramString2);
     if (paramString1 == null)
     {
       if (QLog.isColorLevel())
@@ -60,55 +60,55 @@ public class EarlyXmlParser
     if (!paramString1.isAccessible()) {
       paramString1.setAccessible(true);
     }
-    paramString3 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    paramString3 = this.a.toString();
     try
     {
       paramString2 = paramString1.getType();
       if (paramString2 == String.class)
       {
-        paramString1.set(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, paramString3);
+        paramString1.set(this.b, paramString3);
         return;
       }
       if (paramString2 == Long.TYPE)
       {
         long l = Long.parseLong(paramString3);
-        paramString1.setLong(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, l);
+        paramString1.setLong(this.b, l);
         return;
       }
       if (paramString2 == Double.TYPE)
       {
         double d = Double.parseDouble(paramString3);
-        paramString1.setDouble(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, d);
+        paramString1.setDouble(this.b, d);
         return;
       }
       if (paramString2 == Integer.TYPE)
       {
         int i = Integer.parseInt(paramString3);
-        paramString1.setInt(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, i);
+        paramString1.setInt(this.b, i);
         return;
       }
       if (paramString2 == Float.TYPE)
       {
         float f = Float.parseFloat(paramString3);
-        paramString1.setFloat(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, f);
+        paramString1.setFloat(this.b, f);
         return;
       }
       if (paramString2 == Short.TYPE)
       {
         short s = Short.parseShort(paramString3);
-        paramString1.setShort(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, s);
+        paramString1.setShort(this.b, s);
         return;
       }
       if (paramString2 == Byte.TYPE)
       {
-        byte b = Byte.parseByte(paramString3);
-        paramString1.setByte(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, b);
+        byte b1 = Byte.parseByte(paramString3);
+        paramString1.setByte(this.b, b1);
         return;
       }
       if (paramString2 == Boolean.TYPE)
       {
         boolean bool = Boolean.parseBoolean(paramString3);
-        paramString1.setBoolean(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, bool);
+        paramString1.setBoolean(this.b, bool);
         return;
       }
       if (QLog.isColorLevel())
@@ -157,16 +157,16 @@ public class EarlyXmlParser
   
   public void startDocument()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.a = new StringBuilder();
   }
   
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {
+    this.a.setLength(0);
+    if (this.c.getSimpleName().equals(paramString2)) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData = ((XmlData)this.jdField_a_of_type_JavaLangClass.newInstance());
+        this.b = ((XmlData)this.c.newInstance());
         return;
       }
       catch (IllegalAccessException paramString1)
@@ -195,7 +195,7 @@ public class EarlyXmlParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.EarlyXmlParser
  * JD-Core Version:    0.7.0.1
  */

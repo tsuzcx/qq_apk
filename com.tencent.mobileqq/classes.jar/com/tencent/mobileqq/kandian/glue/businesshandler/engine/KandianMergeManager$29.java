@@ -53,11 +53,11 @@ class KandianMergeManager$29
       }
     }
     paramBundle = BaseActivity.sTopActivity;
-    if (!ReadInJoyHelper.e(KandianMergeManager.a(this.a))) {
+    if (!ReadInJoyHelper.f(KandianMergeManager.c(this.a))) {
       if ((paramBundle instanceof ReadInJoySettingActivity))
       {
         paramBundle = (ReadInJoySettingActivity)paramBundle;
-        if (paramBundle.a())
+        if (paramBundle.b())
         {
           QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
         }
@@ -105,7 +105,7 @@ class KandianMergeManager$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.29
  * JD-Core Version:    0.7.0.1
  */

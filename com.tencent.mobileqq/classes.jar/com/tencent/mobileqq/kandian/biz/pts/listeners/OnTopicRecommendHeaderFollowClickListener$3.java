@@ -17,9 +17,9 @@ class OnTopicRecommendHeaderFollowClickListener$3
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("取消关注 handleResp request businessID = ");
-      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnTopicRecommendHeaderFollowClickListener).a);
+      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.b(this.b).a);
       localStringBuilder.append(" requestFollowType = ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" isSuccess = ");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" distUin = ");
@@ -28,7 +28,7 @@ class OnTopicRecommendHeaderFollowClickListener$3
       localStringBuilder.append(paramInt);
       QLog.d("OnTopicRecommendHeaderFollowClickListener", 2, localStringBuilder.toString());
     }
-    int i = OnTopicRecommendHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnTopicRecommendHeaderFollowClickListener).a;
+    int i = OnTopicRecommendHeaderFollowClickListener.b(this.b).a;
     if ((paramBoolean) && (paramInt == 2) && (String.valueOf(i).equals(paramString)))
     {
       ThreadManager.post(new OnTopicRecommendHeaderFollowClickListener.3.1(this), 5, null, true);
@@ -44,16 +44,16 @@ class OnTopicRecommendHeaderFollowClickListener$3
       localStringBuilder.append(" data = ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" isfollow ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" businessId = ");
-      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnTopicRecommendHeaderFollowClickListener).a);
+      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.b(this.b).a);
       QLog.e("OnTopicRecommendHeaderFollowClickListener", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnTopicRecommendHeaderFollowClickListener.3
  * JD-Core Version:    0.7.0.1
  */

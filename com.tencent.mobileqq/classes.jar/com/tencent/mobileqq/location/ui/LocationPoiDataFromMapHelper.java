@@ -17,29 +17,29 @@ import java.util.List;
 
 public class LocationPoiDataFromMapHelper
 {
-  private int jdField_a_of_type_Int = 1;
-  private LocationPoiDataFromMapHelper.OnPoiListUpdateListener jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper$OnPoiListUpdateListener;
-  private TencentMap jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap;
-  private final LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList = new ArrayList(20);
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  private TencentMap a;
+  private final LatLng b;
+  private final String c;
+  private final List<LocationRoom.Venue> d = new ArrayList(20);
+  private int e = 1;
+  private boolean f = true;
+  private boolean g;
+  private LocationPoiDataFromMapHelper.OnPoiListUpdateListener h;
   
   LocationPoiDataFromMapHelper(TencentMap paramTencentMap, LatLng paramLatLng, String paramString)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap = paramTencentMap;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.a = paramTencentMap;
+    this.b = paramLatLng;
     paramTencentMap = paramString;
     if (paramString == null) {
       paramTencentMap = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramTencentMap;
+    this.c = paramTencentMap;
   }
   
   void a(LocationPoiDataFromMapHelper.OnPoiListUpdateListener paramOnPoiListUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper$OnPoiListUpdateListener = paramOnPoiListUpdateListener;
+    this.h = paramOnPoiListUpdateListener;
   }
   
   public boolean a()
@@ -49,25 +49,25 @@ public class LocationPoiDataFromMapHelper
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[venue][poi-data] fetch next: mKeyWord = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.c);
       ((StringBuilder)localObject1).append(" latLng = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-      ((StringBuilder)localObject1).append(", page = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject1).append(", isSearching = ");
       ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(", page = ");
+      ((StringBuilder)localObject1).append(this.e);
+      ((StringBuilder)localObject1).append(", isSearching = ");
+      ((StringBuilder)localObject1).append(this.g);
       ((StringBuilder)localObject1).append(", hasMore = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.f);
       QLog.i("LocationPoiDataFromMapHelper", 4, ((StringBuilder)localObject1).toString());
     }
-    if (!this.b)
+    if (!this.g)
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.f) {
         return false;
       }
-      this.b = true;
+      this.g = true;
       TencentSearch localTencentSearch = new TencentSearch(BaseApplication.getContext());
-      Object localObject2 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCityName(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      Object localObject2 = this.a.getCityName(this.b);
       localObject1 = localObject2;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
@@ -77,12 +77,12 @@ public class LocationPoiDataFromMapHelper
         }
       }
       localObject2 = new LocationPoiDataFromMapHelper.1(this);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(this.c))
       {
-        localTencentSearch.geo2address(new Geo2AddressParam(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(20).setPageIndex(this.jdField_a_of_type_Int)), (HttpResponseListener)localObject2);
+        localTencentSearch.geo2address(new Geo2AddressParam(this.b).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(20).setPageIndex(this.e)), (HttpResponseListener)localObject2);
         return true;
       }
-      localTencentSearch.suggestion(new SuggestionParam(this.jdField_a_of_type_JavaLangString, (String)localObject1).location(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).policy(SuggestionParam.Policy.DEF).pageSize(20).pageIndex(this.jdField_a_of_type_Int), (HttpResponseListener)localObject2);
+      localTencentSearch.suggestion(new SuggestionParam(this.c, (String)localObject1).location(this.b).policy(SuggestionParam.Policy.DEF).pageSize(20).pageIndex(this.e), (HttpResponseListener)localObject2);
       return true;
     }
     return false;
@@ -90,12 +90,12 @@ public class LocationPoiDataFromMapHelper
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper
  * JD-Core Version:    0.7.0.1
  */

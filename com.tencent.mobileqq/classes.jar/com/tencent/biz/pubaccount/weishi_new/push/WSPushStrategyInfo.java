@@ -10,6 +10,7 @@ public class WSPushStrategyInfo
 {
   public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new WSPushStrategyInfo.1();
   public String mScheme;
+  public WSPushCommentModel mWSPushCommentModel;
   public WSPushGloryKingModel mWSPushGloryKingModel;
   public WSPushOpModel mWSPushModel;
   public WSPushOpDialogModel mWSPushOpDialogModel;
@@ -24,6 +25,7 @@ public class WSPushStrategyInfo
     this.mWSPushModel = ((WSPushOpModel)paramParcel.readParcelable(WSPushOpModel.class.getClassLoader()));
     this.mWSPushGloryKingModel = ((WSPushGloryKingModel)paramParcel.readParcelable(WSPushGloryKingModel.class.getClassLoader()));
     this.mWSPushVideoModel = ((WSPushVideoModel)paramParcel.readParcelable(WSPushVideoModel.class.getClassLoader()));
+    this.mWSPushCommentModel = ((WSPushCommentModel)paramParcel.readParcelable(WSPushCommentModel.class.getClassLoader()));
   }
   
   private WSPushStrategyInfo(JSONObject paramJSONObject)
@@ -68,6 +70,7 @@ public class WSPushStrategyInfo
     this.mWSPushPreloadModel = WSPushPreloadModel.a(paramJSONObject.optJSONObject("preload"));
     this.mWSPushGloryKingModel = WSPushGloryKingModel.a(paramJSONObject.optJSONObject("material_info"));
     this.mWSPushVideoModel = WSPushVideoModel.a(paramJSONObject.optJSONObject("video_abstract"));
+    this.mWSPushCommentModel = WSPushCommentModel.a(paramJSONObject.optJSONObject("comment"));
   }
   
   public String toString()
@@ -93,11 +96,12 @@ public class WSPushStrategyInfo
     paramParcel.writeParcelable(this.mWSPushModel, paramInt);
     paramParcel.writeParcelable(this.mWSPushGloryKingModel, paramInt);
     paramParcel.writeParcelable(this.mWSPushVideoModel, paramInt);
+    paramParcel.writeParcelable(this.mWSPushCommentModel, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo
  * JD-Core Version:    0.7.0.1
  */

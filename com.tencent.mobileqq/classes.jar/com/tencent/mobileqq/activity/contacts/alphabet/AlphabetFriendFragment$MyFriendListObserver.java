@@ -18,14 +18,14 @@ class AlphabetFriendFragment$MyFriendListObserver
   
   protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -37,21 +37,21 @@ class AlphabetFriendFragment$MyFriendListObserver
   
   protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -66,8 +66,8 @@ class AlphabetFriendFragment$MyFriendListObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("contacts.fragment.AlphabetFriendFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.a.b) && (AlphabetFriendFragment.a(this.a) != null)) {
-      AlphabetFriendFragment.a(this.a).a();
+    if ((this.a.v) && (AlphabetFriendFragment.b(this.a) != null)) {
+      AlphabetFriendFragment.b(this.a).b();
     }
     if ((paramBoolean) && (this.a.isResumed())) {
       try
@@ -81,10 +81,10 @@ class AlphabetFriendFragment$MyFriendListObserver
         {
           if (paramArrayOfObject[0] != 0)
           {
-            QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131700450), 0).a();
+            QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131898484), 0).show();
             return;
           }
-          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131700451), 0).a();
+          QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131898485), 0).show();
           return;
         }
       }
@@ -99,7 +99,7 @@ class AlphabetFriendFragment$MyFriendListObserver
   
   protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -120,7 +120,7 @@ class AlphabetFriendFragment$MyFriendListObserver
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -144,26 +144,26 @@ class AlphabetFriendFragment$MyFriendListObserver
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.d("contacts.fragment.AlphabetFriendFragment", 2, ((StringBuilder)localObject).toString());
     }
-    paramBoolean2 = AlphabetFriendFragment.a(this.a);
-    if (AlphabetFriendFragment.a(this.a))
+    paramBoolean2 = AlphabetFriendFragment.c(this.a);
+    if (AlphabetFriendFragment.c(this.a))
     {
-      if (AlphabetFriendFragment.b(this.a))
+      if (AlphabetFriendFragment.d(this.a))
       {
         AlphabetFriendFragment.b(this.a, false);
-        if (AlphabetFriendFragment.a(this.a) != null) {
-          AlphabetFriendFragment.b(this.a).a(this.a.b(), paramBoolean1, null);
+        if (AlphabetFriendFragment.e(this.a) != null) {
+          AlphabetFriendFragment.f(this.a).a(this.a.i(), paramBoolean1, null);
         }
       }
       localObject = this.a;
       long l;
-      if (AlphabetFriendFragment.b((AlphabetFriendFragment)localObject)) {
+      if (AlphabetFriendFragment.d((AlphabetFriendFragment)localObject)) {
         l = 0L;
       } else {
         l = 1400L;
       }
       AlphabetFriendFragment.a((AlphabetFriendFragment)localObject, l, true);
     }
-    if ((!paramBoolean2) && (AlphabetFriendFragment.b(this.a))) {
+    if ((!paramBoolean2) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -189,7 +189,7 @@ class AlphabetFriendFragment$MyFriendListObserver
   
   protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if ((paramString != null) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramString != null) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -203,14 +203,14 @@ class AlphabetFriendFragment$MyFriendListObserver
   
   protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+    if ((paramBoolean) && (AlphabetFriendFragment.d(this.a))) {
       AlphabetFriendFragment.a(this.a, 1400L, false);
     }
   }
@@ -226,16 +226,16 @@ class AlphabetFriendFragment$MyFriendListObserver
       paramList.append(paramBoolean2);
       QLog.d("contacts.fragment.AlphabetFriendFragment", 2, paramList.toString());
     }
-    if ((this.a.b) && (paramBoolean1) && (AlphabetFriendFragment.a(this.a) != null))
+    if ((this.a.v) && (paramBoolean1) && (AlphabetFriendFragment.b(this.a) != null))
     {
-      AlphabetFriendFragment.a(this.a).a();
+      AlphabetFriendFragment.b(this.a).b();
       AlphabetFriendFragment.a(this.a, 0L, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

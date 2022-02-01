@@ -6,25 +6,25 @@ import java.lang.reflect.Field;
 
 public class ValueAnimatorUtil
 {
-  @NonNull
-  private static Field a()
-  {
-    Field localField = ValueAnimator.class.getDeclaredField("sDurationScale");
-    localField.setAccessible(true);
-    return localField;
-  }
-  
   public static void a()
   {
     try
     {
-      a().setFloat(null, 1.0F);
+      b().setFloat(null, 1.0F);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
+  }
+  
+  @NonNull
+  private static Field b()
+  {
+    Field localField = ValueAnimator.class.getDeclaredField("sDurationScale");
+    localField.setAccessible(true);
+    return localField;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.apollo.aio.panel.viewbinder;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,17 +10,16 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListAdapter;
 import com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListView;
-import com.tencent.mobileqq.apollo.api.IApolloActionUsedManager;
-import com.tencent.mobileqq.apollo.api.impl.ApolloActionUsedManagerImpl;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.handler.IApolloExtensionObserver;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloInfo;
 import com.tencent.mobileqq.apollo.model.ApolloTagButtonData;
+import com.tencent.mobileqq.apollo.utils.ApolloActionUsedManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,32 +28,53 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ApolloTagActionViewBinder
   extends ApolloSecondaryViewBinder
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ApolloTagActionViewBinder.ApolloActionTagsAdapter jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$ApolloActionTagsAdapter;
-  private IApolloExtensionObserver jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionObserver = new ApolloTagActionViewBinder.5(this);
-  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("CMShow", "CMShowActionUsedTag", "最近使用");
-  private ConcurrentHashMap<String, List<ApolloInfo>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private List<ApolloTagButtonData> b;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private List<Integer> jdField_c_of_type_JavaUtilList;
-  private List<String> d;
-  private List<ApolloInfo> e;
+  private ConcurrentHashMap<String, List<ApolloInfo>> A;
+  private List<ApolloInfo> B;
+  private ApolloTagActionViewBinder.OnTagUpdateListener C;
+  private Handler D;
+  private IApolloExtensionObserver E = new ApolloTagActionViewBinder.5(this);
+  String h = CmShowWnsUtils.ak();
+  private HorizontalListView t;
+  private ApolloTagActionViewBinder.ApolloActionTagsAdapter u;
+  private View v;
+  private TextView w;
+  private List<ApolloTagButtonData> x;
+  private List<Integer> y;
+  private List<String> z;
   
   public ApolloTagActionViewBinder(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     super(paramContext, paramQQAppInterface, paramSessionInfo);
-    d();
+    f();
+  }
+  
+  private void c(List<ApolloInfo> paramList)
+  {
+    ApolloTagActionViewBinder.OnTagUpdateListener localOnTagUpdateListener = this.C;
+    if (localOnTagUpdateListener != null)
+    {
+      localOnTagUpdateListener.a(paramList);
+      return;
+    }
+    d(paramList);
+  }
+  
+  private void d(List<ApolloInfo> paramList)
+  {
+    b(paramList);
+    if (this.s != null) {
+      this.s.notifyDataSetChanged();
+    }
   }
   
   public View a()
   {
     View localView = super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionObserver);
+    if (this.j != null) {
+      this.j.addObserver(this.E);
     }
-    if (this.jdField_b_of_type_Int == 0) {
-      a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView);
+    if (this.k == 0) {
+      a(this.r);
     }
     return localView;
   }
@@ -67,11 +88,16 @@ public class ApolloTagActionViewBinder
   {
     if (paramApolloPanelListView != null)
     {
-      View localView = b();
+      View localView = g();
       if ((localView != null) && (localView.getParent() == null) && (paramApolloPanelListView.findHeaderViewPosition(localView) == -1)) {
         paramApolloPanelListView.addHeaderView(localView);
       }
     }
+  }
+  
+  public void a(ApolloTagActionViewBinder.OnTagUpdateListener paramOnTagUpdateListener)
+  {
+    this.C = paramOnTagUpdateListener;
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -84,33 +110,31 @@ public class ApolloTagActionViewBinder
     }
     if (!paramBoolean)
     {
-      paramString = this.jdField_c_of_type_AndroidWidgetTextView;
+      paramString = this.w;
       if (paramString != null)
       {
         paramString.setVisibility(8);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.removeHeaderView(this.jdField_c_of_type_AndroidWidgetTextView);
+        if (this.r != null) {
+          this.r.removeHeaderView(this.w);
         }
       }
-      b(this.e);
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.notifyDataSetChanged();
+      c(this.B);
       return;
     }
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) && (((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).size() > 0))
+      if ((this.A != null) && (this.A.get(paramString) != null) && (((List)this.A.get(paramString)).size() > 0))
       {
-        b((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString));
-        this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.notifyDataSetChanged();
+        c((List)this.A.get(paramString));
         return;
       }
-      if (this.jdField_a_of_type_JavaLangString.equals(paramString))
+      if (this.h.equals(paramString))
       {
-        paramString = (ApolloActionUsedManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloActionUsedManager.class, "all");
+        paramString = ApolloActionUsedManager.a(this.j);
         if (paramString == null) {
           return;
         }
-        Object localObject = paramString.getActionIdData(this.jdField_d_of_type_Int);
+        Object localObject = paramString.a(this.n);
         if ((localObject != null) && (((List)localObject).size() >= 1))
         {
           paramString = new ArrayList();
@@ -118,7 +142,7 @@ public class ApolloTagActionViewBinder
           while (((Iterator)localObject).hasNext())
           {
             int i = ((Integer)((Iterator)localObject).next()).intValue();
-            Iterator localIterator = this.e.iterator();
+            Iterator localIterator = this.B.iterator();
             while (localIterator.hasNext())
             {
               ApolloInfo localApolloInfo = (ApolloInfo)localIterator.next();
@@ -127,8 +151,7 @@ public class ApolloTagActionViewBinder
               }
             }
           }
-          b(paramString);
-          this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.notifyDataSetChanged();
+          c(paramString);
           return;
         }
         ThreadManagerV2.executeOnSubThread(new ApolloTagActionViewBinder.3(this, paramString));
@@ -147,79 +170,101 @@ public class ApolloTagActionViewBinder
   {
     super.a(paramList);
     if (paramList != null) {
-      this.e.addAll(paramList);
+      this.B.addAll(paramList);
     }
-  }
-  
-  @NonNull
-  public View b()
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      return localView;
-    }
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      return null;
-    }
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558616, null);
-    localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localView.findViewById(2131368269));
-    }
-    ThreadManagerV2.executeOnSubThread(new ApolloTagActionViewBinder.1(this));
-    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void b()
   {
     super.b();
-    Object localObject = this.jdField_c_of_type_JavaUtilList;
+    Object localObject = this.y;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    localObject = this.A;
     if (localObject != null) {
       ((ConcurrentHashMap)localObject).clear();
     }
-    localObject = this.e;
+    localObject = this.B;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    localObject = this.jdField_d_of_type_JavaUtilList;
+    localObject = this.z;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionObserver);
+    if (this.j != null) {
+      this.j.removeObserver(this.E);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.D.post(new ApolloTagActionViewBinder.6(this, paramString));
     }
   }
   
   public void b(List<ApolloInfo> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    if (this.o == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.o.clear();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.o.addAll(paramList);
     }
   }
   
-  public void d()
+  public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.e = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    HorizontalListView localHorizontalListView = this.t;
+    if (localHorizontalListView == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      localHorizontalListView.setVisibility(0);
+      return;
+    }
+    localHorizontalListView.setVisibility(8);
   }
   
-  public void e()
+  public void f()
+  {
+    this.A = new ConcurrentHashMap();
+    this.B = new ArrayList();
+    this.x = new ArrayList();
+    this.D = new Handler(Looper.getMainLooper());
+  }
+  
+  @NonNull
+  public View g()
+  {
+    View localView = this.v;
+    if (localView != null) {
+      return localView;
+    }
+    if (this.i == null) {
+      return null;
+    }
+    this.v = View.inflate(this.i, 2131624180, null);
+    localView = this.v;
+    if (localView != null) {
+      this.t = ((HorizontalListView)localView.findViewById(2131435141));
+    }
+    ThreadManagerV2.executeOnSubThread(new ApolloTagActionViewBinder.1(this));
+    return this.v;
+  }
+  
+  public void h()
   {
     ThreadManagerV2.getUIHandlerV2().post(new ApolloTagActionViewBinder.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinder
  * JD-Core Version:    0.7.0.1
  */

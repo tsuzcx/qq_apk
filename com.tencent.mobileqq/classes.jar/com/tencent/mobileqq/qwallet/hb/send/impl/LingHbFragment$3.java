@@ -20,14 +20,14 @@ class LingHbFragment$3
       localStringBuilder.append("choice: ");
       localStringBuilder.append(paramView);
       QLog.i("LingHbFragment", 2, localStringBuilder.toString());
-      this.a.c.setText(paramView);
+      this.a.l.setText(paramView);
       this.a.a.post(new LingHbFragment.3.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.LingHbFragment.3
  * JD-Core Version:    0.7.0.1
  */

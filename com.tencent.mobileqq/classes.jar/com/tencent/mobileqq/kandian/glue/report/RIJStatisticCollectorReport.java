@@ -4,9 +4,9 @@ import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.kandian.base.utils.RIJNetworkUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.RecycleViewAdapterHelper;
 import com.tencent.mobileqq.kandian.biz.video.feeds.entity.VideoPlayParam;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
@@ -17,7 +17,6 @@ import com.tencent.mobileqq.kandian.repo.report.BaseReportData;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -36,35 +35,35 @@ public class RIJStatisticCollectorReport
   {
     VideoR5.Builder localBuilder = new VideoR5.Builder("", "", "", "").a(paramInt).b(paramLong);
     if (paramVideoPlayParam != null) {
-      localBuilder.e(paramVideoPlayParam.jdField_g_of_type_Long).c(paramVideoPlayParam.jdField_g_of_type_Int);
+      localBuilder.e(paramVideoPlayParam.B).c(paramVideoPlayParam.C);
     }
     if (paramAbsBaseArticleInfo != null) {
-      localBuilder.i(paramAbsBaseArticleInfo.innerUniqueID).E(RIJFeedsType.a(paramAbsBaseArticleInfo));
+      localBuilder.j(paramAbsBaseArticleInfo.innerUniqueID).E(RIJFeedsType.g(paramAbsBaseArticleInfo));
     }
     if (paramBoolean) {
       paramVideoPlayParam = "1";
     } else {
       paramVideoPlayParam = "0";
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007DBB", "0X8007DBB", 0, 0, paramVideoPlayParam, "", "", localBuilder.a().a(), false);
+    PublicAccountReportUtils.a(null, "", "0X8007DBB", "0X8007DBB", 0, 0, paramVideoPlayParam, "", "", localBuilder.b().a(), false);
   }
   
   public static void a(Context paramContext, String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
-    paramHashMap.put("param_networkDetail", Integer.toString(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getDetailNetworkInfo(paramContext)));
+    paramHashMap.put("param_networkDetail", Integer.toString(RIJNetworkUtils.d(paramContext)));
     ThreadManager.post(new RIJStatisticCollectorReport.1(paramHashMap, paramBoolean, paramContext, paramString), 5, null, true);
   }
   
   public static void a(String paramString, BaseReportData paramBaseReportData, VideoR5.Builder paramBuilder)
   {
-    if (paramBaseReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
+    if (paramBaseReportData.l == null) {
       return;
     }
-    long l = paramBaseReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID;
+    long l = paramBaseReportData.l.mArticleID;
     Object localObject1 = RecycleViewAdapterHelper.a(l);
     if (localObject1 != null)
     {
-      paramBuilder = new VideoR5.Builder(paramBuilder.a().a());
+      paramBuilder = new VideoR5.Builder(paramBuilder.b().a());
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -79,7 +78,7 @@ public class RIJStatisticCollectorReport
             while ((localObject2 != null) && (((Iterator)localObject2).hasNext()))
             {
               Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-              paramBuilder.a((String)localEntry.getKey(), localEntry.getValue().toString());
+              paramBuilder.b((String)localEntry.getKey(), localEntry.getValue().toString());
             }
           }
           localObject2 = new StringBuilder();
@@ -96,9 +95,9 @@ public class RIJStatisticCollectorReport
           ((StringBuilder)localObject2).append(localAbsBaseArticleInfo);
           QLog.d("RIJStatisticCollectorReport", 1, ((StringBuilder)localObject2).toString());
         }
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", paramBaseReportData.d, paramString, paramString, 0, 0, Long.toString(paramBaseReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedId), Long.toString(paramBaseReportData.jdField_a_of_type_JavaLangLong.longValue()), Integer.toString(paramBaseReportData.b), paramBuilder.a().a(), false);
+        PublicAccountReportUtils.a(null, "CliOper", "", paramBaseReportData.s, paramString, paramString, 0, 0, Long.toString(paramBaseReportData.l.mFeedId), Long.toString(paramBaseReportData.g.longValue()), Integer.toString(paramBaseReportData.h), paramBuilder.b().a(), false);
       }
-      RecycleViewAdapterHelper.a(l);
+      RecycleViewAdapterHelper.b(l);
     }
   }
   
@@ -178,7 +177,7 @@ public class RIJStatisticCollectorReport
       if (paramLong > 50000L) {
         return;
       }
-      StatisticCollector.getInstance(paramAppRuntime.getApplication()).collectPerformance(RIJQQAppInterfaceUtil.a(), "actKandianRefreshSuccAndCost", paramBoolean, paramLong, 0L, paramHashMap, null);
+      StatisticCollector.getInstance(paramAppRuntime.getApplication()).collectPerformance(RIJQQAppInterfaceUtil.d(), "actKandianRefreshSuccAndCost", paramBoolean, paramLong, 0L, paramHashMap, null);
     }
   }
   
@@ -229,7 +228,7 @@ public class RIJStatisticCollectorReport
   
   public static void b(Context paramContext, String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
-    paramHashMap.put("param_networkDetail", Integer.toString(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getDetailNetworkInfo(paramContext)));
+    paramHashMap.put("param_networkDetail", Integer.toString(RIJNetworkUtils.d(paramContext)));
     StatisticCollector.getInstance(paramContext).collectPerformance(paramString, "actKandianVideoPreload", paramBoolean, -1L, 0L, paramHashMap, null);
   }
   
@@ -274,13 +273,13 @@ public class RIJStatisticCollectorReport
   
   public static void e(Context paramContext, String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
-    paramHashMap.put("param_networkDetail", Integer.toString(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getDetailNetworkInfo(paramContext)));
+    paramHashMap.put("param_networkDetail", Integer.toString(RIJNetworkUtils.d(paramContext)));
     StatisticCollector.getInstance(paramContext).collectPerformance(paramString, "actKandianVideoBehaviorsSeq", paramBoolean, -1L, 0L, paramHashMap, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJStatisticCollectorReport
  * JD-Core Version:    0.7.0.1
  */

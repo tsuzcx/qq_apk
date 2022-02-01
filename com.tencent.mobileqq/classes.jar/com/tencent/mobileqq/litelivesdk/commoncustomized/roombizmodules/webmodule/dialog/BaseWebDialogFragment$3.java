@@ -20,7 +20,7 @@ class BaseWebDialogFragment$3
   
   public void callJsFunctionByNative(String paramString, JSONObject paramJSONObject, JsBizAdapter.ValueCallback paramValueCallback)
   {
-    if (this.a.jdField_a_of_type_ComTencentSmttSdkWebView == null) {
+    if (this.a.e == null) {
       return;
     }
     if (paramJSONObject != null)
@@ -41,7 +41,7 @@ class BaseWebDialogFragment$3
       paramJSONObject.append("()");
       paramString = paramJSONObject.toString();
     }
-    this.a.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(paramString, new BaseWebDialogFragment.3.1(this, paramValueCallback));
+    this.a.e.evaluateJavascript(paramString, new BaseWebDialogFragment.3.1(this, paramValueCallback));
   }
   
   public HttpInterface getHttp()
@@ -56,7 +56,7 @@ class BaseWebDialogFragment$3
   
   public ModuleEvent getModuleEvent()
   {
-    return this.a.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent;
+    return this.a.i;
   }
   
   public RoomEngine getModuleRoomEngine()
@@ -79,7 +79,7 @@ class BaseWebDialogFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.BaseWebDialogFragment.3
  * JD-Core Version:    0.7.0.1
  */

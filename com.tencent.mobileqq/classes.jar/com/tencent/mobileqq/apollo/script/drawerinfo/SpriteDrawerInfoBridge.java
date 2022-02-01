@@ -13,6 +13,8 @@ import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
 import com.tencent.mobileqq.cmshow.engine.script.task.InitSpriteTask;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -22,39 +24,37 @@ import org.jetbrains.annotations.NotNull;
 public class SpriteDrawerInfoBridge
   implements ISpriteBridge
 {
-  private ISpriteTaskHandler jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler;
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private SpriteRscBuilder jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder;
-  private SpriteScriptCreator jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator;
-  private String jdField_a_of_type_JavaLangString;
+  private SpriteContext a;
+  private ISpriteTaskHandler b;
+  private SpriteRscBuilder c;
+  private SpriteScriptCreator d;
+  private Script e;
   
   public SpriteDrawerInfoBridge(SpriteContext paramSpriteContext, ISpriteTaskHandler paramISpriteTaskHandler, SpriteRscBuilder paramSpriteRscBuilder, SpriteScriptCreator paramSpriteScriptCreator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler = paramISpriteTaskHandler;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder = paramSpriteRscBuilder;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator = paramSpriteScriptCreator;
+    this.a = paramSpriteContext;
+    this.b = paramISpriteTaskHandler;
+    this.c = paramSpriteRscBuilder;
+    this.d = paramSpriteScriptCreator;
   }
   
   private boolean a(int paramInt)
   {
-    SpriteContext localSpriteContext = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+    SpriteContext localSpriteContext = this.a;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localSpriteContext != null)
     {
-      if (localSpriteContext.a() == null) {
+      if (localSpriteContext.l() == null) {
         return false;
       }
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.a(paramInt) != null) {
+      if (this.d.a(paramInt) != null) {
         bool1 = true;
       }
     }
     return bool1;
   }
-  
-  public void a() {}
   
   public void a(int paramInt, @NotNull MessageRecord paramMessageRecord) {}
   
@@ -67,51 +67,50 @@ public class SpriteDrawerInfoBridge
       return;
     }
     SpriteContext localSpriteContext = (SpriteContext)paramISpriteContext;
-    int i = localSpriteContext.c();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder != null) && (localSpriteContext.c()))
+    int i = localSpriteContext.w();
+    if ((this.c != null) && (localSpriteContext.c()))
     {
       if (!a(0))
       {
         QLog.w("[cmshow][scripted]SpriteDrawerInfoBridge", 1, "[initSprite], fail to load script.");
-        if (localSpriteContext.jdField_d_of_type_Int == 1) {
+        if (localSpriteContext.i == 1) {
           ThreadManager.getUIHandler().post(new SpriteDrawerInfoBridge.2(this, localSpriteContext));
         }
         return;
       }
-      boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-      paramISpriteContext = null;
-      if (bool)
+      paramISpriteContext = this.e;
+      if (paramISpriteContext == null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("initDrawerInfoSprite");
-        if (localObject != null)
+        paramISpriteContext = this.a.d("initDrawerInfoSprite");
+        if (paramISpriteContext != null)
         {
-          paramISpriteContext = ((InitSpriteTask)localObject).a();
+          paramISpriteContext = paramISpriteContext.a();
           QLog.d("[cmshow][scripted]SpriteDrawerInfoBridge", 1, "drawer get spriteJs");
         }
         else
         {
           QLog.w("[cmshow][scripted]SpriteDrawerInfoBridge", 1, "drawer get spriteJs but initSpriteTask null");
+          paramISpriteContext = null;
         }
       }
       else
       {
-        paramISpriteContext = this.jdField_a_of_type_JavaLangString;
         QLog.d("CmShowStatUtil", 1, "drawer spriteJs from cache");
-        this.jdField_a_of_type_JavaLangString = null;
+        this.e = null;
       }
-      if (TextUtils.isEmpty(paramISpriteContext))
+      if (paramISpriteContext == null)
       {
         TraceReportUtil.a(i, 300, 301, new Object[] { "spriteJs is empty" });
         return;
       }
-      Object localObject = (SpriteActionScript)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.b(0);
-      if (localObject == null) {
+      SpriteActionScript localSpriteActionScript = (SpriteActionScript)this.d.b(0);
+      if (localSpriteActionScript == null) {
         return;
       }
       TraceReportUtil.a(i, 350);
       localSpriteContext.a(paramISpriteContext);
       TraceReportUtil.a(i, 350, 0, new Object[] { "enter exeInitDrawerInfoSprite" });
-      ThreadManager.executeOnSubThread(new SpriteDrawerInfoBridge.3(this, (SpriteActionScript)localObject, localSpriteContext));
+      ThreadManager.executeOnSubThread(new SpriteDrawerInfoBridge.3(this, localSpriteActionScript, localSpriteContext));
       return;
     }
     TraceReportUtil.a(i, 300, 160, new Object[] { "glview is not ready" });
@@ -119,43 +118,42 @@ public class SpriteDrawerInfoBridge
   
   public void a(SpriteTaskParam paramSpriteTaskParam)
   {
-    if ((paramSpriteTaskParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder != null))
+    if ((paramSpriteTaskParam != null) && (this.c != null))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+      Object localObject = this.a;
       if (localObject != null)
       {
         if (!((SpriteContext)localObject).c()) {
           return;
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder;
-        SpriteRscBuilder.a(paramSpriteTaskParam.k, paramSpriteTaskParam.f, paramSpriteTaskParam.jdField_c_of_type_Int, paramSpriteTaskParam.h, paramSpriteTaskParam.jdField_d_of_type_Int, paramSpriteTaskParam.jdField_d_of_type_JavaLangString, paramSpriteTaskParam.jdField_a_of_type_Long);
-        if (!a(paramSpriteTaskParam.jdField_c_of_type_Int))
+        this.a.q().a(paramSpriteTaskParam.v, paramSpriteTaskParam.f, paramSpriteTaskParam.c, paramSpriteTaskParam.i, paramSpriteTaskParam.d, paramSpriteTaskParam.t, paramSpriteTaskParam.h);
+        if (!a(paramSpriteTaskParam.c))
         {
           QLog.w("[cmshow][scripted]SpriteDrawerInfoBridge", 1, "[playAction], fail to load script.");
-          paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+          paramSpriteTaskParam.b = 4;
           return;
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder.a(paramSpriteTaskParam, "playDrawerInfoAction");
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        localObject = this.c.a(paramSpriteTaskParam, "playDrawerInfoAction");
+        if (localObject == null)
         {
-          paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+          paramSpriteTaskParam.b = 4;
           return;
         }
-        SpriteAioScript localSpriteAioScript = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.b(paramSpriteTaskParam.jdField_c_of_type_Int);
+        SpriteAioScript localSpriteAioScript = this.d.b(paramSpriteTaskParam.c);
         if (localSpriteAioScript == null)
         {
           QLog.w("[cmshow][scripted]SpriteDrawerInfoBridge", 1, "actionScript == null.");
-          paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+          paramSpriteTaskParam.b = 4;
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow][scripted]SpriteDrawerInfoBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
         }
-        paramSpriteTaskParam.jdField_b_of_type_Int = 2;
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a((String)localObject);
-        localSpriteAioScript.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
-        localSpriteAioScript.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
-        ApolloActionHelperImpl.doActionReport(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), paramSpriteTaskParam, TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString) ^ true, paramSpriteTaskParam.jdField_b_of_type_Boolean);
+        paramSpriteTaskParam.b = 2;
+        this.a.a((Script)localObject);
+        localSpriteAioScript.a(paramSpriteTaskParam.j, false);
+        localSpriteAioScript.a(paramSpriteTaskParam.k, false);
+        ApolloActionHelperImpl.doActionReport(this.a.l(), paramSpriteTaskParam, TextUtils.isEmpty(paramSpriteTaskParam.o) ^ true, paramSpriteTaskParam.q);
       }
     }
   }
@@ -167,13 +165,12 @@ public class SpriteDrawerInfoBridge
     }
   }
   
-  public void b()
+  public boolean a()
   {
-    InitSpriteTask localInitSpriteTask = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("initDrawerInfoSprite");
-    if (localInitSpriteTask != null) {
-      this.jdField_a_of_type_JavaLangString = localInitSpriteTask.a();
-    }
+    return false;
   }
+  
+  public void b() {}
   
   public void b(SpriteTaskParam paramSpriteTaskParam)
   {
@@ -182,10 +179,18 @@ public class SpriteDrawerInfoBridge
     }
     ThreadManager.excute(new SpriteDrawerInfoBridge.1(this, paramSpriteTaskParam), 192, null, true);
   }
+  
+  public void c()
+  {
+    InitSpriteTask localInitSpriteTask = this.a.d("initDrawerInfoSprite");
+    if (localInitSpriteTask != null) {
+      this.e = localInitSpriteTask.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoBridge
  * JD-Core Version:    0.7.0.1
  */

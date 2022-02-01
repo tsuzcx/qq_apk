@@ -8,119 +8,118 @@ import com.tencent.qphone.base.util.QLog;
 public class RefreshProgressRunnable
   implements Runnable
 {
-  public int a;
-  private volatile long jdField_a_of_type_Long = -1L;
-  public MessageProgressView a;
-  public String a;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile long b = -1L;
+  public String a = "";
+  public MessageProgressView b;
+  public int c;
+  private volatile long d = -1L;
+  private volatile long e = -1L;
+  private volatile boolean f = false;
   
   public RefreshProgressRunnable(MessageProgressView paramMessageProgressView, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramMessageProgressView;
+    this.c = paramInt;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = -1L;
-    this.b = -1L;
+    this.f = true;
+    this.d = -1L;
+    this.e = -1L;
   }
   
   public void a(MessageProgressView paramMessageProgressView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramMessageProgressView;
+    this.c = paramInt;
   }
   
   public void run()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(" stopAnim in isStopped key=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.a);
         QLog.e("MessageProgressView", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
+      this.b.b(this.a);
+      this.b = null;
       return;
     }
-    if (this.jdField_a_of_type_Long == -1L)
+    if (this.d == -1L)
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.d = SystemClock.uptimeMillis();
     }
     else
     {
-      long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+      long l = SystemClock.uptimeMillis() - this.d;
       if (l >= 0L)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
-        if ((localObject != null) && (this.jdField_a_of_type_Int < 100))
+        localObject = this.b;
+        if ((localObject != null) && (this.c < 100))
         {
-          if (l / ((MessageProgressView)localObject).e % 2L == 0L)
+          if (l / ((MessageProgressView)localObject).w % 2L == 0L)
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
-            ((MessageProgressView)localObject).jdField_a_of_type_Long = (l % ((MessageProgressView)localObject).e);
+            localObject = this.b;
+            ((MessageProgressView)localObject).j = (l % ((MessageProgressView)localObject).w);
           }
           else
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
-            ((MessageProgressView)localObject).jdField_a_of_type_Long = (((MessageProgressView)localObject).e - l % this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.e);
+            localObject = this.b;
+            ((MessageProgressView)localObject).j = (((MessageProgressView)localObject).w - l % this.b.w);
           }
-          this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.invalidate();
+          this.b.invalidate();
         }
         else
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null) && (this.jdField_a_of_type_Int == 100) && (this.b == -1L)) {
-            this.b = SystemClock.uptimeMillis();
+          if ((this.b != null) && (this.c == 100) && (this.e == -1L)) {
+            this.e = SystemClock.uptimeMillis();
           }
-          l = SystemClock.uptimeMillis() - this.b;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
-          if ((localObject != null) && (l >= ((MessageProgressView)localObject).d))
+          l = SystemClock.uptimeMillis() - this.e;
+          localObject = this.b;
+          if ((localObject != null) && (l >= ((MessageProgressView)localObject).s))
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
-            ((MessageProgressView)localObject).jdField_a_of_type_Long = ((MessageProgressView)localObject).d;
-            this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.invalidate();
+            localObject = this.b;
+            ((MessageProgressView)localObject).j = ((MessageProgressView)localObject).s;
+            this.b.invalidate();
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append(" stopAnim in run key=");
-              ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject).append(this.a);
               ((StringBuilder)localObject).append(" , mProgress = ");
-              ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+              ((StringBuilder)localObject).append(this.c);
               QLog.e("MessageProgressView", 2, ((StringBuilder)localObject).toString());
             }
-            this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.b(this.jdField_a_of_type_JavaLangString);
-            if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView$AnimRunnableListener != null) {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView$AnimRunnableListener.a(this.jdField_a_of_type_JavaLangString);
+            this.b.b(this.a);
+            if (this.b.n != null) {
+              this.b.n.a(this.a);
             }
           }
           else
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+            localObject = this.b;
             if (localObject != null)
             {
-              ((MessageProgressView)localObject).jdField_a_of_type_Long = (l % ((MessageProgressView)localObject).d);
-              this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.invalidate();
+              ((MessageProgressView)localObject).j = (l % ((MessageProgressView)localObject).s);
+              this.b.invalidate();
             }
           }
         }
       }
       else
       {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        this.d = SystemClock.uptimeMillis();
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+      localObject = this.b;
       if (localObject != null) {
         ViewCompat.postOnAnimation((View)localObject, this);
       }
@@ -129,7 +128,7 @@ public class RefreshProgressRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RefreshProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

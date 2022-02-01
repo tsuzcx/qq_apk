@@ -28,7 +28,7 @@ class PublicAccountManagerImpl$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    this.a.setObserver(null);
     boolean bool = QLog.isColorLevel();
     int k = 2;
     Object localObject1;
@@ -91,12 +91,12 @@ class PublicAccountManagerImpl$2
           }
           localObject3 = new mobileqq_mp.ButtonInfo();
           ((mobileqq_mp.ButtonInfo)localObject3).id.set(1);
-          ((mobileqq_mp.ButtonInfo)localObject3).name.set(HardCodeUtil.a(2131708766));
+          ((mobileqq_mp.ButtonInfo)localObject3).name.set(HardCodeUtil.a(2131906545));
           ((mobileqq_mp.ButtonInfo)localObject3).event_id.set(1000001);
           ((mobileqq_mp.ButtonInfo)localObject3).type.set(3);
           localButtonInfo = new mobileqq_mp.ButtonInfo();
           localButtonInfo.id.set(2);
-          localButtonInfo.name.set(HardCodeUtil.a(2131708741));
+          localButtonInfo.name.set(HardCodeUtil.a(2131906522));
           localButtonInfo.event_id.set(1000002);
           localButtonInfo.type.set(3);
           ((List)localObject1).add(localObject3);
@@ -104,7 +104,7 @@ class PublicAccountManagerImpl$2
           localGetPublicAccountMenuResponse.button_info.set((List)localObject1);
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.getLocalPublicAccountMenuSetting(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
+      localObject1 = this.f.getLocalPublicAccountMenuSetting(this.b, this.c);
       if (!localGetPublicAccountMenuResponse.update_internal.has()) {
         break label634;
       }
@@ -118,7 +118,7 @@ class PublicAccountManagerImpl$2
       }
       if (j > 0)
       {
-        localObject3 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0).edit();
+        localObject3 = this.d.getSharedPreferences("menuEventSharePre", 0).edit();
         ((SharedPreferences.Editor)localObject3).putLong("menuCacheTime", j * 1000);
         ((SharedPreferences.Editor)localObject3).commit();
       }
@@ -134,7 +134,7 @@ class PublicAccountManagerImpl$2
       {
         paramBundle.putInt("update_type", 1);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl;
+      localObject1 = this.f;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
       ((StringBuilder)localObject3).append(l);
@@ -154,7 +154,7 @@ class PublicAccountManagerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

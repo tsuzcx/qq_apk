@@ -18,7 +18,7 @@ final class ReplyTextItemBuilder$4
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    Object localObject1 = this.a;
     boolean bool = localObject1 instanceof HasSourceMessage;
     Object localObject3 = null;
     if (bool)
@@ -34,10 +34,10 @@ final class ReplyTextItemBuilder$4
     if (localObject1 == null) {
       return;
     }
-    MessageRecord localMessageRecord2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgSeq);
+    MessageRecord localMessageRecord2 = this.b.getMessageFacade().c(this.a.frienduin, this.a.istroop, ((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgSeq);
     Object localObject2 = localMessageRecord2;
     localObject1 = localObject3;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 0) {
+    if (this.a.istroop != 0) {
       if (!(localMessageRecord2 instanceof MessageForText))
       {
         localObject2 = localMessageRecord2;
@@ -51,7 +51,7 @@ final class ReplyTextItemBuilder$4
         if (localMessageRecord2.isLongMsg())
         {
           StringBuilder localStringBuilder = new StringBuilder();
-          MessageRecord localMessageRecord1 = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localMessageRecord2, localStringBuilder);
+          MessageRecord localMessageRecord1 = ReplyTextItemBuilder.a(this.b, this.a, localMessageRecord2, localStringBuilder);
           localObject2 = localMessageRecord2;
           localObject1 = localObject3;
           if (localMessageRecord1 != null)
@@ -67,7 +67,7 @@ final class ReplyTextItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

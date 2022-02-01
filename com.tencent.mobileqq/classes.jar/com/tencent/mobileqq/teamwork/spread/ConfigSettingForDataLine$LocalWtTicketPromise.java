@@ -11,13 +11,13 @@ import oicq.wlogin_sdk.tools.ErrMsg;
 class ConfigSettingForDataLine$LocalWtTicketPromise
   implements WtTicketPromise
 {
-  private TencentDocDataLineTipsConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
-  private WeakReference<ConfigSettingForDataLine> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ConfigSettingForDataLine> a;
+  private TencentDocDataLineTipsConfigBean b;
   
   public ConfigSettingForDataLine$LocalWtTicketPromise(ConfigSettingForDataLine paramConfigSettingForDataLine, TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramConfigSettingForDataLine);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean = paramTencentDocDataLineTipsConfigBean;
+    this.a = new WeakReference(paramConfigSettingForDataLine);
+    this.b = paramTencentDocDataLineTipsConfigBean;
   }
   
   public void Done(Ticket paramTicket)
@@ -27,7 +27,7 @@ class ConfigSettingForDataLine$LocalWtTicketPromise
       ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
       return;
     }
-    paramTicket = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+    paramTicket = this.b;
     if (paramTicket != null) {
       paramTicket.a(false);
     }
@@ -37,7 +37,7 @@ class ConfigSettingForDataLine$LocalWtTicketPromise
   public void Failed(ErrMsg paramErrMsg)
   {
     QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+    paramErrMsg = this.b;
     if (paramErrMsg != null) {
       paramErrMsg.a(false);
     }
@@ -45,7 +45,7 @@ class ConfigSettingForDataLine$LocalWtTicketPromise
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+    paramErrMsg = this.b;
     if (paramErrMsg != null) {
       paramErrMsg.a(false);
     }
@@ -54,7 +54,7 @@ class ConfigSettingForDataLine$LocalWtTicketPromise
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise
  * JD-Core Version:    0.7.0.1
  */

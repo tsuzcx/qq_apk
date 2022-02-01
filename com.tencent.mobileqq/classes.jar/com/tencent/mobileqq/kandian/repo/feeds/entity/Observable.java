@@ -6,42 +6,25 @@ import java.util.List;
 
 public class Observable<T>
 {
-  private T jdField_a_of_type_JavaLangObject;
-  private List<Observer<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private T a;
+  private List<Observer<T>> b = new ArrayList();
   
   public Observable(T paramT)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.a = paramT;
   }
   
   public T a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((Observer)localIterator.next()).a(this);
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
-    }
+    return this.a;
   }
   
   public void a(Observer<T> paramObserver)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramObserver)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramObserver);
+      if (!this.b.contains(paramObserver)) {
+        this.b.add(paramObserver);
       }
       return;
     }
@@ -54,15 +37,32 @@ public class Observable<T>
   
   public void a(T paramT)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    a();
+    this.a = paramT;
+    b();
+  }
+  
+  public void b()
+  {
+    try
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((Observer)localIterator.next()).a(this);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void b(Observer<T> paramObserver)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramObserver);
+      this.b.remove(paramObserver);
       return;
     }
     finally
@@ -74,7 +74,7 @@ public class Observable<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.Observable
  * JD-Core Version:    0.7.0.1
  */

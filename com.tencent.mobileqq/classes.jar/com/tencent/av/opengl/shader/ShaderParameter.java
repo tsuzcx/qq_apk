@@ -2,13 +2,12 @@ package com.tencent.av.opengl.shader;
 
 public abstract class ShaderParameter
 {
-  public int a;
-  protected final String a;
+  public int a = -1;
+  protected final String b;
   
   public ShaderParameter(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public abstract void a(int paramInt);

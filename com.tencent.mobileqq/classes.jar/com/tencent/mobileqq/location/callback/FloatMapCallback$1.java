@@ -15,28 +15,28 @@ import com.tencent.qphone.base.util.QLog;
 class FloatMapCallback$1
   implements IWindowClickListener
 {
-  Dialog jdField_a_of_type_AndroidAppDialog;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  Dialog b;
   
   FloatMapCallback$1(FloatMapCallback paramFloatMapCallback, QQAppInterface paramQQAppInterface, LocationRoom.RoomKey paramRoomKey) {}
   
   public boolean a()
   {
-    Object localObject = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop))
+    Object localObject = LocationShareServiceHolder.b(this.c);
+    if ((!this.c.isBackgroundPause) && (!this.c.isBackgroundStop))
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
-        this.jdField_a_of_type_AndroidAppDialog = ((IFloatMapService)localObject).createFloatExitConfirmDialog(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
-        this.jdField_a_of_type_Boolean = true;
-        localObject = this.jdField_a_of_type_AndroidAppDialog;
+        this.b = ((IFloatMapService)localObject).createFloatExitConfirmDialog(this.d.a(), this.d.b());
+        this.a = true;
+        localObject = this.b;
         if (localObject != null) {
           ((Dialog)localObject).setOnDismissListener(new FloatMapCallback.1.1(this));
         }
       }
     }
     else {
-      ((IFloatMapService)localObject).showFloatTypeDialog(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
+      ((IFloatMapService)localObject).showFloatTypeDialog(this.d);
     }
     ReportController.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
     return true;
@@ -49,10 +49,10 @@ class FloatMapCallback$1
     }
     Object localObject = QBaseActivity.sTopActivity;
     if (localObject != null) {
-      LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).launchShareUi((Activity)localObject, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), 4);
+      LocationShareServiceHolder.a(this.c).launchShareUi((Activity)localObject, this.d.a(), this.d.b(), 4);
     }
     FloatMapCallback.d();
-    localObject = this.jdField_a_of_type_AndroidAppDialog;
+    localObject = this.b;
     if (localObject != null) {}
     try
     {
@@ -65,7 +65,7 @@ class FloatMapCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.callback.FloatMapCallback.1
  * JD-Core Version:    0.7.0.1
  */

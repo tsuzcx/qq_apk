@@ -11,8 +11,8 @@ class ScreenShareManager$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvScreenshareScreenShareManager.a(false);
-    ReportController.b(null, "dc00898", "", "", "0X800B8AA", "0X800B8AA", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+    this.b.a(false);
+    ReportController.b(null, "dc00898", "", "", "0X800B8AA", "0X800B8AA", 0, 0, this.a, "", "", "");
   }
 }
 

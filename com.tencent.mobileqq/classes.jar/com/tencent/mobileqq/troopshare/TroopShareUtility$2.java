@@ -12,9 +12,9 @@ class TroopShareUtility$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity instanceof TroopCreateLogicActivity)))
+    if ((this.a.a == -1) && ((this.a.h instanceof TroopCreateLogicActivity)))
     {
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).finish();
+      ((TroopCreateLogicActivity)this.a.h).finish();
       if (QLog.isColorLevel()) {
         QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
       }
@@ -23,7 +23,7 @@ class TroopShareUtility$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.2
  * JD-Core Version:    0.7.0.1
  */

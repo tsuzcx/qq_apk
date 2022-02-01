@@ -19,10 +19,10 @@ import org.json.JSONObject;
 
 public class OfflineExpire
 {
-  public static int a = 3;
   public static String a = "OfflineExpire";
-  public static boolean a = false;
-  private static int b;
+  public static int b = 3;
+  public static boolean c = false;
+  private static int d;
   
   protected static void a(String paramString)
   {
@@ -55,7 +55,7 @@ public class OfflineExpire
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append(k);
             ((StringBuilder)localObject).append("");
-            localObject = OfflineEnvHelper.a(((StringBuilder)localObject).toString());
+            localObject = OfflineEnvHelper.b(((StringBuilder)localObject).toString());
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
               localStringBuilder = new StringBuilder();
@@ -108,7 +108,7 @@ public class OfflineExpire
     try
     {
       paramString = new JSONObject(paramString).optJSONArray("data");
-      b = 0;
+      d = 0;
       paramContext = new WeakReference(paramAppRuntime);
       localObject1 = new ArrayList();
       int j = paramString.length();
@@ -128,9 +128,9 @@ public class OfflineExpire
             String str2 = ((JSONObject)localObject2).optString("url");
             int m = ((JSONObject)localObject2).optInt("filesize", 0);
             localObject3 = new BidDownloader(str1, paramAppRuntime, new OfflineExpire.1(paramContext, str2, m, str1), true, k);
-            ((BidDownloader)localObject3).d = ((JSONObject)localObject2).optInt("id");
-            JSONObject localJSONObject = HtmlOffline.a(str1);
-            if ((localJSONObject == null) || (localJSONObject.optInt("version", 0) < ((BidDownloader)localObject3).d))
+            ((BidDownloader)localObject3).p = ((JSONObject)localObject2).optInt("id");
+            JSONObject localJSONObject = HtmlOffline.c(str1);
+            if ((localJSONObject == null) || (localJSONObject.optInt("version", 0) < ((BidDownloader)localObject3).p))
             {
               boolean bool;
               if (((JSONObject)localObject2).optInt("network", 0) == 1) {
@@ -138,15 +138,15 @@ public class OfflineExpire
               } else {
                 bool = false;
               }
-              ((BidDownloader)localObject3).f = bool;
-              b += 1;
-              ((BidDownloader)localObject3).jdField_c_of_type_JavaLangString = str2;
-              ((BidDownloader)localObject3).jdField_c_of_type_Int = m;
-              ((BidDownloader)localObject3).a = true;
+              ((BidDownloader)localObject3).i = bool;
+              d += 1;
+              ((BidDownloader)localObject3).m = str2;
+              ((BidDownloader)localObject3).n = m;
+              ((BidDownloader)localObject3).d = true;
               if ((paramAppRuntime instanceof BaseQQAppInterface))
               {
                 localObject2 = new OfflineExpire.OfflinePreDownloadTask((BaseQQAppInterface)paramAppRuntime, str1, (BidDownloader)localObject3);
-                if (((BidDownloader)localObject3).f) {
+                if (((BidDownloader)localObject3).i) {
                   ((ArrayList)localObject1).add(localObject2);
                 } else {
                   ((ArrayList)localObject1).add(0, localObject2);
@@ -204,7 +204,7 @@ public class OfflineExpire
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire
  * JD-Core Version:    0.7.0.1
  */

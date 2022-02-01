@@ -14,16 +14,16 @@ class QQComicFragment$1
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (QQComicPluginBridge.a != null)
+    if (QQComicPluginBridge.d != null)
     {
       QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
-      QQComicPluginBridge.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
+      QQComicPluginBridge.d.a(this.a.getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -54,29 +54,23 @@ import org.json.JSONObject;
 public class TroopApiPlugin
   extends WebViewPlugin
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  TroopMngObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new TroopApiPlugin.2(this);
-  VideoUploadTask jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask;
-  String jdField_a_of_type_JavaLangString;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  int jdField_b_of_type_Int;
-  TroopMemberApiClient jdField_b_of_type_ComTencentBizTroopTroopMemberApiClient;
-  String jdField_b_of_type_JavaLangString;
+  AtomicBoolean a = new AtomicBoolean(false);
+  TroopMemberApiClient b = null;
   String c;
   String d;
-  String e;
+  int e;
+  int f;
+  String g;
+  String h;
+  String i;
+  VideoUploadTask j;
+  ImageView k;
+  TroopMemberApiClient l;
+  TroopMngObserver m = new TroopApiPlugin.2(this);
   
   public TroopApiPlugin()
   {
     this.mPluginNameSpace = "troopApi";
-  }
-  
-  private Context a()
-  {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
   }
   
   private String a(String paramString)
@@ -94,14 +88,14 @@ public class TroopApiPlugin
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.mRuntime.a() != null) {
-      QQToast.a(this.mRuntime.a(), paramInt2, this.mRuntime.a().getString(paramInt1), 0).b(this.mRuntime.a().getResources().getDimensionPixelSize(2131299168));
+    if (this.mRuntime.d() != null) {
+      QQToast.makeText(this.mRuntime.d(), paramInt2, this.mRuntime.d().getString(paramInt1), 0).show(this.mRuntime.d().getResources().getDimensionPixelSize(2131299920));
     }
   }
   
   private void a(TroopInfo paramTroopInfo)
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(paramTroopInfo.troopuin, this.jdField_b_of_type_Int, this.e);
+    this.b.b(paramTroopInfo.troopuin, this.f, this.i);
   }
   
   private void a(SosoLbsInfo paramSosoLbsInfo, String paramString)
@@ -122,7 +116,7 @@ public class TroopApiPlugin
       }
       catch (Exception paramSosoLbsInfo)
       {
-        QLog.e(this.TAG, 1, "onLocationFinish Failed!", paramSosoLbsInfo);
+        QLog.e(this.mTAG, 1, "onLocationFinish Failed!", paramSosoLbsInfo);
         callJs(paramString, new String[] { "-5", "{}" });
         return;
       }
@@ -130,9 +124,28 @@ public class TroopApiPlugin
     callJs(paramString, new String[] { "-4", "{}" });
   }
   
-  private void a(String paramString)
+  private Context b()
   {
-    Object localObject1 = this.TAG;
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  private void b(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo.cGroupOption != 3)
+    {
+      Intent localIntent = AddFriendLogicActivity.a(b(), paramTroopInfo.troopuin, paramTroopInfo.getTroopDisplayName(), paramTroopInfo.cGroupOption, this.f, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.g, this.h);
+      this.e = paramTroopInfo.cGroupOption;
+      startActivityForResult(localIntent, (byte)3);
+      return;
+    }
+    this.e = -1;
+    a(2131917537);
+  }
+  
+  private void b(String paramString)
+  {
+    Object localObject1 = this.mTAG;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("openSelectTroopMember, jsonData: ");
     ((StringBuilder)localObject2).append(paramString);
@@ -142,7 +155,7 @@ public class TroopApiPlugin
       paramString = new JSONObject(paramString).getString("troopUin");
       if (!TextUtils.isEmpty(paramString))
       {
-        localObject1 = this.mRuntime.a();
+        localObject1 = this.mRuntime.d();
         localObject2 = new Bundle();
         ((Bundle)localObject2).putInt("from", 2);
         SelectTroopMemberFragment.a((Activity)localObject1, (Bundle)localObject2, paramString);
@@ -152,11 +165,141 @@ public class TroopApiPlugin
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      QLog.d(this.TAG, 1, "JASPI openSelectTroopMember", paramString);
+      QLog.d(this.mTAG, 1, "JASPI openSelectTroopMember", paramString);
     }
   }
   
-  private boolean a(String[] paramArrayOfString)
+  private void b(String[] paramArrayOfString)
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new JSONObject(paramArrayOfString[0]);
+        paramArrayOfString = ((JSONObject)localObject).optString("callback");
+        localObject = ((JSONObject)localObject).optString("groupcode", "");
+        TroopEssenceMsgEntryInCardConfig localTroopEssenceMsgEntryInCardConfig = (TroopEssenceMsgEntryInCardConfig)QConfigManager.b().b(715);
+        if ((localTroopEssenceMsgEntryInCardConfig != null) && (localTroopEssenceMsgEntryInCardConfig.a((String)localObject)))
+        {
+          n = 1;
+          localObject = new JSONObject();
+          if (n == 0) {
+            break label116;
+          }
+          n = 1;
+          ((JSONObject)localObject).put("ret", n);
+          callJs(paramArrayOfString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+        }
+      }
+      catch (JSONException paramArrayOfString)
+      {
+        paramArrayOfString.printStackTrace();
+        return;
+      }
+      int n = 0;
+      continue;
+      label116:
+      n = 0;
+    }
+  }
+  
+  private void c(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString != null) {
+      try
+      {
+        if (paramArrayOfString.length > 0)
+        {
+          Activity localActivity = this.mRuntime.d();
+          Intent localIntent = new Intent();
+          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+          String str = paramArrayOfString.optString("callback");
+          if (paramArrayOfString.length() > 0) {
+            callJs(str, new String[] { localActivity.getString(2131896311) });
+          } else {
+            callJs(str, new String[] { localActivity.getString(2131896310) });
+          }
+          localIntent.putExtra("SchoolJsonObject", paramArrayOfString.getString("data"));
+          localIntent.putExtra("groupCode", paramArrayOfString.getString("groupCode"));
+          localActivity.setResult(-1, localIntent);
+          localActivity.finish();
+          return;
+        }
+      }
+      catch (Exception paramArrayOfString)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.e(this.mTAG, 4, "openRewardDetail, exception:", paramArrayOfString);
+        }
+      }
+    }
+  }
+  
+  private void d(String[] paramArrayOfString)
+  {
+    boolean bool = false;
+    try
+    {
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+      int n = paramArrayOfString.getInt("isOn");
+      paramArrayOfString = paramArrayOfString.getString("groupCode");
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopHonor.jsapi", 2, String.format("troop honor aio switch, troopUin: %s, switch: %s", new Object[] { paramArrayOfString, Integer.valueOf(n) }));
+      }
+      if (!TextUtils.isEmpty(paramArrayOfString))
+      {
+        TroopMemberApiClient localTroopMemberApiClient = this.b;
+        if (n == 1) {
+          bool = true;
+        }
+        localTroopMemberApiClient.e(paramArrayOfString, bool);
+        return;
+      }
+    }
+    catch (Exception paramArrayOfString)
+    {
+      paramArrayOfString.printStackTrace();
+      QLog.d(this.mTAG, 1, "JASPI setGroupMarkSwitch", paramArrayOfString);
+    }
+  }
+  
+  private void e(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString != null) {
+      try
+      {
+        if (paramArrayOfString.length > 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("open troop profile ");
+            ((StringBuilder)localObject).append(paramArrayOfString[0]);
+            QLog.w("TroopApiPlugin", 2, ((StringBuilder)localObject).toString());
+          }
+          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+          localObject = TroopInfoUIUtil.a(paramArrayOfString.optString("troopUin"), "", paramArrayOfString.optInt("from"));
+          ((Bundle)localObject).putString("authSig", paramArrayOfString.optString("authSig"));
+          TroopUtils.a(this.mRuntime.d(), (Bundle)localObject, 2);
+          return;
+        }
+      }
+      catch (JSONException paramArrayOfString)
+      {
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("open troop profile Exception:");
+          ((StringBuilder)localObject).append(paramArrayOfString);
+          QLog.w("TroopApiPlugin", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
+  }
+  
+  private boolean f(String[] paramArrayOfString)
   {
     paramArrayOfString = paramArrayOfString[0];
     try
@@ -166,12 +309,12 @@ public class TroopApiPlugin
       ((StringBuilder)localObject).append(paramArrayOfString);
       QLog.i("TroopAbility.Jsapi", 1, ((StringBuilder)localObject).toString());
       paramArrayOfString = new JSONObject(paramArrayOfString);
-      int i = paramArrayOfString.optInt("retCode");
+      int n = paramArrayOfString.optInt("retCode");
       paramArrayOfString.optString("error");
       paramArrayOfString = paramArrayOfString.optString("troopUin");
-      if (i == 0)
+      if (n == 0)
       {
-        localObject = (QBaseActivity)this.mRuntime.a();
+        localObject = (QBaseActivity)this.mRuntime.d();
         if (localObject == null) {
           return true;
         }
@@ -193,150 +336,7 @@ public class TroopApiPlugin
     return true;
   }
   
-  private void b(TroopInfo paramTroopInfo)
-  {
-    if (paramTroopInfo.cGroupOption != 3)
-    {
-      Intent localIntent = AddFriendLogicActivity.a(a(), paramTroopInfo.troopuin, paramTroopInfo.getTroopDisplayName(), paramTroopInfo.cGroupOption, this.jdField_b_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.c, this.d);
-      this.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-      startActivityForResult(localIntent, (byte)3);
-      return;
-    }
-    this.jdField_a_of_type_Int = -1;
-    a(2131719932);
-  }
-  
-  private void b(String[] paramArrayOfString)
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = new JSONObject(paramArrayOfString[0]);
-        paramArrayOfString = ((JSONObject)localObject).optString("callback");
-        localObject = ((JSONObject)localObject).optString("groupcode", "");
-        TroopEssenceMsgEntryInCardConfig localTroopEssenceMsgEntryInCardConfig = (TroopEssenceMsgEntryInCardConfig)QConfigManager.a().a(715);
-        if ((localTroopEssenceMsgEntryInCardConfig != null) && (localTroopEssenceMsgEntryInCardConfig.a((String)localObject)))
-        {
-          i = 1;
-          localObject = new JSONObject();
-          if (i == 0) {
-            break label116;
-          }
-          i = 1;
-          ((JSONObject)localObject).put("ret", i);
-          callJs(paramArrayOfString, new String[] { ((JSONObject)localObject).toString() });
-          return;
-        }
-      }
-      catch (JSONException paramArrayOfString)
-      {
-        paramArrayOfString.printStackTrace();
-        return;
-      }
-      int i = 0;
-      continue;
-      label116:
-      i = 0;
-    }
-  }
-  
-  private void c(String[] paramArrayOfString)
-  {
-    if (paramArrayOfString != null) {
-      try
-      {
-        if (paramArrayOfString.length > 0)
-        {
-          Activity localActivity = this.mRuntime.a();
-          Intent localIntent = new Intent();
-          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-          String str = paramArrayOfString.optString("callback");
-          if (paramArrayOfString.length() > 0) {
-            callJs(str, new String[] { localActivity.getString(2131698387) });
-          } else {
-            callJs(str, new String[] { localActivity.getString(2131698386) });
-          }
-          localIntent.putExtra("SchoolJsonObject", paramArrayOfString.getString("data"));
-          localIntent.putExtra("groupCode", paramArrayOfString.getString("groupCode"));
-          localActivity.setResult(-1, localIntent);
-          localActivity.finish();
-          return;
-        }
-      }
-      catch (Exception paramArrayOfString)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.e(this.TAG, 4, "openRewardDetail, exception:", paramArrayOfString);
-        }
-      }
-    }
-  }
-  
-  private void d(String[] paramArrayOfString)
-  {
-    boolean bool = false;
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      int i = paramArrayOfString.getInt("isOn");
-      paramArrayOfString = paramArrayOfString.getString("groupCode");
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHonor.jsapi", 2, String.format("troop honor aio switch, troopUin: %s, switch: %s", new Object[] { paramArrayOfString, Integer.valueOf(i) }));
-      }
-      if (!TextUtils.isEmpty(paramArrayOfString))
-      {
-        TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-        if (i == 1) {
-          bool = true;
-        }
-        localTroopMemberApiClient.e(paramArrayOfString, bool);
-        return;
-      }
-    }
-    catch (Exception paramArrayOfString)
-    {
-      paramArrayOfString.printStackTrace();
-      QLog.d(this.TAG, 1, "JASPI setGroupMarkSwitch", paramArrayOfString);
-    }
-  }
-  
-  private void e(String[] paramArrayOfString)
-  {
-    if (paramArrayOfString != null) {
-      try
-      {
-        if (paramArrayOfString.length > 0)
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("open troop profile ");
-            ((StringBuilder)localObject).append(paramArrayOfString[0]);
-            QLog.w("TroopApiPlugin", 2, ((StringBuilder)localObject).toString());
-          }
-          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-          localObject = TroopInfoUIUtil.a(paramArrayOfString.optString("troopUin"), "", paramArrayOfString.optInt("from"));
-          ((Bundle)localObject).putString("authSig", paramArrayOfString.optString("authSig"));
-          TroopUtils.a(this.mRuntime.a(), (Bundle)localObject, 2);
-          return;
-        }
-      }
-      catch (JSONException paramArrayOfString)
-      {
-        Object localObject;
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("open troop profile Exception:");
-          ((StringBuilder)localObject).append(paramArrayOfString);
-          QLog.w("TroopApiPlugin", 2, ((StringBuilder)localObject).toString());
-        }
-      }
-    }
-  }
-  
-  private void f(String[] paramArrayOfString)
+  private void g(String[] paramArrayOfString)
   {
     try
     {
@@ -349,7 +349,7 @@ public class TroopApiPlugin
         QLog.d("TroopApiPlugin", 2, paramArrayOfString.toString());
       }
       paramArrayOfString = ((JSONObject)localObject1).optString("troopUin");
-      this.jdField_b_of_type_Int = Integer.parseInt(((JSONObject)localObject1).optString("sourceid"));
+      this.f = Integer.parseInt(((JSONObject)localObject1).optString("sourceid"));
       str = ((JSONObject)localObject1).optString("isexactsearch");
       localObject2 = ((JSONObject)localObject1).optString("sourceext");
       if ((localObject2 != null) && (str != null) && (!((String)localObject2).isEmpty()))
@@ -370,19 +370,19 @@ public class TroopApiPlugin
         ((StringBuilder)localObject1).append(paramArrayOfString);
         QLog.w("TroopApiPlugin", 2, ((StringBuilder)localObject1).toString());
       }
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
+      callJs(this.c, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
       return;
     }
     catch (JSONException paramArrayOfString)
     {
       Object localObject1;
-      label146:
-      label154:
-      label162:
-      label170:
-      label178:
-      label186:
-      label235:
+      label147:
+      label155:
+      label163:
+      label171:
+      label179:
+      label187:
+      label236:
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -390,103 +390,103 @@ public class TroopApiPlugin
         ((StringBuilder)localObject1).append(paramArrayOfString);
         QLog.w("TroopApiPlugin", 2, ((StringBuilder)localObject1).toString());
       }
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
+      callJs(this.c, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
       return;
     }
     try
     {
-      k = Integer.parseInt((String)localObject2);
+      i2 = Integer.parseInt((String)localObject2);
       if (Integer.parseInt(str) != 1) {
-        break label482;
+        break label483;
       }
-      i = 1;
+      n = 1;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      break label186;
-      i = 0;
-      j = 30003;
-      if (k == 1) {
-        break label589;
+      break label187;
+      n = 0;
+      i1 = 30003;
+      if (i2 == 1) {
+        break label590;
       }
-      if (k == 2) {
-        break label575;
+      if (i2 == 2) {
+        break label576;
       }
-      if (k == 3) {
-        break label557;
+      if (i2 == 3) {
+        break label558;
       }
-      if (k == 4) {
-        break label539;
+      if (i2 == 4) {
+        break label540;
       }
-      if (k != 5) {
-        break label235;
+      if (i2 != 5) {
+        break label236;
       }
-      if (i == 0) {
-        break label532;
+      if (n == 0) {
+        break label533;
       }
-      i = 30017;
-      break label146;
-      i = 30019;
-      break label146;
-      if (i == 0) {
-        break label550;
+      n = 30017;
+      break label147;
+      n = 30019;
+      break label147;
+      if (n == 0) {
+        break label551;
       }
-      i = 30013;
-      break label154;
-      i = 30015;
-      break label154;
-      if (i == 0) {
-        break label568;
+      n = 30013;
+      break label155;
+      n = 30015;
+      break label155;
+      if (n == 0) {
+        break label569;
       }
-      i = 30009;
-      break label162;
-      i = 30011;
-      break label162;
-      if (i != 0) {
-        break label170;
+      n = 30009;
+      break label163;
+      n = 30011;
+      break label163;
+      if (n != 0) {
+        break label171;
       }
-      j = 30007;
-      break label170;
-      if (i != 0) {
-        break label178;
+      i1 = 30007;
+      break label171;
+      if (n != 0) {
+        break label179;
       }
-      j = 30005;
-      break label178;
+      i1 = 30005;
+      break label179;
     }
-    this.jdField_b_of_type_Int = i;
-    break label235;
-    this.jdField_b_of_type_Int = i;
-    break label235;
-    this.jdField_b_of_type_Int = i;
-    break label235;
-    this.jdField_b_of_type_Int = j;
-    break label235;
-    this.jdField_b_of_type_Int = j;
-    break label235;
+    this.f = n;
+    break label236;
+    this.f = n;
+    break label236;
+    this.f = n;
+    break label236;
+    this.f = i1;
+    break label236;
+    this.f = i1;
+    break label236;
     if (QLog.isColorLevel())
     {
-      str = this.TAG;
+      str = this.mTAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("cast sourceext from web error, sourceExt = ");
       localStringBuilder.append((String)localObject2);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.c = ((JSONObject)localObject1).optString("sourcename");
-    this.d = ((JSONObject)localObject1).optString("authSig");
-    this.e = ((JSONObject)localObject1).optString("authKey");
-    this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("callback");
-    localObject1 = this.mRuntime.a().getEntityManagerFactory(this.mRuntime.a().getAccount()).createEntityManager();
+    this.g = ((JSONObject)localObject1).optString("sourcename");
+    this.h = ((JSONObject)localObject1).optString("authSig");
+    this.i = ((JSONObject)localObject1).optString("authKey");
+    this.c = ((JSONObject)localObject1).optString("callback");
+    localObject1 = this.mRuntime.b().getEntityManagerFactory(this.mRuntime.b().getAccount()).createEntityManager();
     localObject2 = (TroopInfo)((EntityManager)localObject1).find(TroopInfo.class, paramArrayOfString);
     ((EntityManager)localObject1).close();
     if (localObject2 != null)
     {
-      a(2131689995);
+      a(2131886638);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramArrayOfString, 8390785);
+    this.b.a(paramArrayOfString, 8390785);
   }
   
-  private void g(String[] paramArrayOfString)
+  private void h(String[] paramArrayOfString)
   {
     try
     {
@@ -502,7 +502,7 @@ public class TroopApiPlugin
       paramArrayOfString = paramArrayOfString.optString("memberUin");
       if (TroopRankConfig.a().a((String)localObject, paramArrayOfString))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.k.setVisibility(8);
         TroopRankConfig.a().a((String)localObject, paramArrayOfString, false);
         return;
       }
@@ -515,12 +515,12 @@ public class TroopApiPlugin
     }
   }
   
-  private void h(String[] paramArrayOfString)
+  private void i(String[] paramArrayOfString)
   {
     try
     {
-      this.jdField_b_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_b_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+      this.l = TroopMemberApiClient.a();
+      this.l.e();
       paramArrayOfString = new JSONObject(paramArrayOfString[0]);
       if (QLog.isColorLevel())
       {
@@ -531,8 +531,8 @@ public class TroopApiPlugin
       }
       Object localObject = paramArrayOfString.optString("troopUin");
       String str = paramArrayOfString.optString("memberUin");
-      int i = paramArrayOfString.optInt("titleId");
-      this.jdField_b_of_type_ComTencentBizTroopTroopMemberApiClient.a((String)localObject, str, i);
+      int n = paramArrayOfString.optInt("titleId");
+      this.l.a((String)localObject, str, n);
       return;
     }
     catch (Exception paramArrayOfString)
@@ -543,12 +543,12 @@ public class TroopApiPlugin
     }
   }
   
-  private void i(String[] paramArrayOfString)
+  private void j(String[] paramArrayOfString)
   {
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      this.jdField_b_of_type_JavaLangString = paramArrayOfString.getString("callback");
+      this.d = paramArrayOfString.getString("callback");
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -558,9 +558,9 @@ public class TroopApiPlugin
       }
       Object localObject = paramArrayOfString.optString("troopUin");
       String str = paramArrayOfString.optString("memberUin");
-      int i = paramArrayOfString.optInt("memberRole");
+      int n = paramArrayOfString.optInt("memberRole");
       paramArrayOfString = paramArrayOfString.optString("uniqueTitle");
-      startActivityForResult(EditUniqueTitleActivity.a(this.mRuntime.a(), 1, (String)localObject, str, i, paramArrayOfString), (byte)4);
+      startActivityForResult(EditUniqueTitleActivity.a(this.mRuntime.d(), 1, (String)localObject, str, n, paramArrayOfString), (byte)4);
       return;
     }
     catch (Exception paramArrayOfString)
@@ -571,7 +571,7 @@ public class TroopApiPlugin
     }
   }
   
-  private void j(String[] paramArrayOfString)
+  private void k(String[] paramArrayOfString)
   {
     try
     {
@@ -587,40 +587,40 @@ public class TroopApiPlugin
       paramArrayOfString = paramArrayOfString.optString("memberUin");
       if (TroopRankConfig.a().a((String)localObject, paramArrayOfString))
       {
-        localObject = this.mRuntime.a();
-        paramArrayOfString = (WebViewFragment)this.mRuntime.a();
+        localObject = this.mRuntime.d();
+        paramArrayOfString = (WebViewFragment)this.mRuntime.f();
         RelativeLayout.LayoutParams localLayoutParams;
         if ((localObject != null) && ((localObject instanceof AbsBaseWebViewActivity)))
         {
           paramArrayOfString = (AbsBaseWebViewActivity)localObject;
           paramArrayOfString.rightViewImg.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramArrayOfString);
-          localObject = (RelativeLayout)paramArrayOfString.findViewById(2131376756);
+          this.k = new ImageView(paramArrayOfString);
+          localObject = (RelativeLayout)paramArrayOfString.findViewById(2131445049);
           if (localObject != null)
           {
             localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-            localLayoutParams.addRule(7, 2131369233);
+            localLayoutParams.addRule(7, 2131436211);
             localLayoutParams.setMargins(0, AIOUtils.b(5.0F, paramArrayOfString.getResources()), AIOUtils.b(5.0F, paramArrayOfString.getResources()), 0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850767);
-            ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetImageView);
+            this.k.setLayoutParams(localLayoutParams);
+            this.k.setVisibility(0);
+            this.k.setImageResource(2130852589);
+            ((RelativeLayout)localObject).addView(this.k);
           }
         }
         else if (paramArrayOfString != null)
         {
-          paramArrayOfString.getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramArrayOfString.getQBaseActivity());
-          localObject = (RelativeLayout)paramArrayOfString.getUIStyleHandler().d.findViewById(2131376756);
+          paramArrayOfString.getSwiftTitleUI().h.setVisibility(0);
+          this.k = new ImageView(paramArrayOfString.getQBaseActivity());
+          localObject = (RelativeLayout)paramArrayOfString.getUIStyleHandler().x.findViewById(2131445049);
           if (localObject != null)
           {
             localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-            localLayoutParams.addRule(7, 2131369233);
+            localLayoutParams.addRule(7, 2131436211);
             localLayoutParams.setMargins(0, AIOUtils.b(5.0F, paramArrayOfString.getResources()), AIOUtils.b(5.0F, paramArrayOfString.getResources()), 0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850767);
-            ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetImageView);
+            this.k.setLayoutParams(localLayoutParams);
+            this.k.setVisibility(0);
+            this.k.setImageResource(2130852589);
+            ((RelativeLayout)localObject).addView(this.k);
             return;
           }
         }
@@ -634,7 +634,7 @@ public class TroopApiPlugin
     }
   }
   
-  private void k(String[] paramArrayOfString)
+  private void l(String[] paramArrayOfString)
   {
     try
     {
@@ -651,7 +651,7 @@ public class TroopApiPlugin
       long l1 = paramArrayOfString.optLong("videoSize");
       long l2 = paramArrayOfString.optLong("videoDuration");
       paramArrayOfString = paramArrayOfString.optString("callback");
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b((String)localObject, str, new TroopApiPlugin.1(this, l1, l2, paramArrayOfString));
+      this.b.b((String)localObject, str, new TroopApiPlugin.1(this, l1, l2, paramArrayOfString));
       return;
     }
     catch (Exception paramArrayOfString)
@@ -662,33 +662,33 @@ public class TroopApiPlugin
     }
   }
   
-  private void l(String[] paramArrayOfString)
+  private void m(String[] paramArrayOfString)
   {
-    if (this.mRuntime.a() == null) {
+    if (this.mRuntime.d() == null) {
       return;
     }
     boolean bool = false;
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      int i = paramArrayOfString.optInt("type", -1);
-      int j = paramArrayOfString.optInt("value", 0);
-      if (j == 1) {
+      int n = paramArrayOfString.optInt("type", -1);
+      int i1 = paramArrayOfString.optInt("value", 0);
+      if (i1 == 1) {
         bool = true;
       }
       if (QLog.isColorLevel())
       {
-        paramArrayOfString = this.TAG;
+        paramArrayOfString = this.mTAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateSmartManagerSettingStatus, id: ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(n);
         localStringBuilder.append(", value: ");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i1);
         QLog.d(paramArrayOfString, 2, localStringBuilder.toString());
       }
       paramArrayOfString = new Intent("action_update_smart_manager_setting_status");
       paramArrayOfString.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-      paramArrayOfString.putExtra("id", i);
+      paramArrayOfString.putExtra("id", n);
       paramArrayOfString.putExtra("isSet", bool);
       BaseApplicationImpl.getApplication().sendBroadcast(paramArrayOfString);
       return;
@@ -696,16 +696,16 @@ public class TroopApiPlugin
     catch (JSONException paramArrayOfString)
     {
       paramArrayOfString.printStackTrace();
-      QLog.d(this.TAG, 1, "updateSmartManagerSettingStatus", paramArrayOfString);
+      QLog.d(this.mTAG, 1, "updateSmartManagerSettingStatus", paramArrayOfString);
     }
   }
   
   void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (this.a.compareAndSet(false, true))
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+      this.b = TroopMemberApiClient.a();
+      this.b.e();
     }
   }
   
@@ -714,7 +714,7 @@ public class TroopApiPlugin
     Object localObject1 = paramArrayOfString[0];
     if (QLog.isColorLevel())
     {
-      paramArrayOfString = this.TAG;
+      paramArrayOfString = this.mTAG;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getPois:");
       ((StringBuilder)localObject2).append((String)localObject1);
@@ -723,11 +723,11 @@ public class TroopApiPlugin
     if (this.mRuntime.a() == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w(this.TAG, 2, "getWebView()==null, return");
+        QLog.w(this.mTAG, 2, "getWebView()==null, return");
       }
       return;
     }
-    Object localObject2 = this.mRuntime.a();
+    Object localObject2 = this.mRuntime.d();
     if ((localObject2 != null) && (!((Activity)localObject2).isFinishing()))
     {
       paramArrayOfString = (String[])localObject1;
@@ -739,7 +739,7 @@ public class TroopApiPlugin
         catch (JSONException paramArrayOfString)
         {
           if (QLog.isColorLevel()) {
-            QLog.w(this.TAG, 2, "getLocation exception:", paramArrayOfString);
+            QLog.w(this.mTAG, 2, "getLocation exception:", paramArrayOfString);
           }
           return;
         }
@@ -762,7 +762,7 @@ public class TroopApiPlugin
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.w(this.TAG, 2, "context==null || isFinishing, return");
+      QLog.w(this.mTAG, 2, "context==null || isFinishing, return");
     }
   }
   
@@ -773,37 +773,37 @@ public class TroopApiPlugin
     }
     if ("previewRewardVideo".equals(paramString3))
     {
-      k(paramVarArgs);
+      l(paramVarArgs);
       return true;
     }
     if ("setRedPoint".equals(paramString3))
     {
-      j(paramVarArgs);
+      k(paramVarArgs);
       return true;
     }
     if ("openEditUniqTitle".equals(paramString3))
     {
-      i(paramVarArgs);
+      j(paramVarArgs);
       return true;
     }
     if ("saveTroopMemberTitle".equals(paramString3))
     {
-      h(paramVarArgs);
+      i(paramVarArgs);
       return true;
     }
     if ("clickMineButton".equals(paramString3))
     {
-      g(paramVarArgs);
+      h(paramVarArgs);
       return true;
     }
     if ("addTroop".equals(paramString3))
     {
-      f(paramVarArgs);
+      g(paramVarArgs);
       return true;
     }
     if ("thirdAppCreateGroupCallback".equals(paramString3))
     {
-      if (a(paramVarArgs)) {
+      if (f(paramVarArgs)) {
         return false;
       }
     }
@@ -831,7 +831,7 @@ public class TroopApiPlugin
       }
       if (("changeGroupHousekeeperSetting".equals(paramString3)) && (paramVarArgs.length == 1))
       {
-        l(paramVarArgs);
+        m(paramVarArgs);
         return true;
       }
       if ("getGlobalOpenGroupDigestOnSummary".equals(paramString3))
@@ -840,7 +840,7 @@ public class TroopApiPlugin
         return true;
       }
       if (("openSelectTroopMember".equals(paramString3)) && (paramVarArgs.length == 1)) {
-        a(paramVarArgs[0]);
+        b(paramVarArgs[0]);
       }
     }
     return true;
@@ -868,50 +868,50 @@ public class TroopApiPlugin
         {
           paramIntent.printStackTrace();
         }
-        callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        callJs(this.d, new String[] { localJSONObject.toString() });
         return;
       }
-      callJs(this.jdField_b_of_type_JavaLangString, new String[] { "{\"code\":-1}" });
+      callJs(this.d, new String[] { "{\"code\":-1}" });
     }
   }
   
   protected void onCreate()
   {
-    Object localObject = this.mRuntime.a();
-    Activity localActivity = this.mRuntime.a();
+    Object localObject = this.mRuntime.b();
+    Activity localActivity = this.mRuntime.d();
     if (localObject != null)
     {
       if (localActivity == null) {
         return;
       }
       a();
-      localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+      localObject = this.b;
       if (localObject != null) {
-        ((TroopMemberApiClient)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
+        ((TroopMemberApiClient)localObject).a(this.m);
       }
     }
   }
   
   protected void onDestroy()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.a.get())
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+      this.b.b(this.m);
+      this.b.f();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask;
-    if ((localObject != null) && (!((VideoUploadTask)localObject).a())) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask.a();
+    Object localObject = this.j;
+    if ((localObject != null) && (!((VideoUploadTask)localObject).b())) {
+      this.j.a();
     }
-    localObject = this.jdField_b_of_type_ComTencentBizTroopTroopMemberApiClient;
+    localObject = this.l;
     if (localObject != null) {
-      ((TroopMemberApiClient)localObject).b();
+      ((TroopMemberApiClient)localObject).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TroopApiPlugin
  * JD-Core Version:    0.7.0.1
  */

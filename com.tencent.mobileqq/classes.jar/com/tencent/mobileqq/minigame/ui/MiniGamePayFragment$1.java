@@ -28,7 +28,7 @@ class MiniGamePayFragment$1
       try
       {
         ((JSONObject)localObject1).put("resultCode", -1);
-        ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131706883));
+        ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131904729));
         paramJSONObject = ((JSONObject)localObject1).toString();
         if (paramJSONObject != null)
         {
@@ -66,7 +66,7 @@ class MiniGamePayFragment$1
       else
       {
         ((JSONObject)localObject1).put("resultCode", -3);
-        ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131706884));
+        ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131904730));
       }
     }
     catch (Throwable paramJSONObject)
@@ -75,7 +75,7 @@ class MiniGamePayFragment$1
       try
       {
         ((JSONObject)localObject1).put("resultCode", -3);
-        ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131706882));
+        ((JSONObject)localObject1).put("errMsg", HardCodeUtil.a(2131904728));
       }
       catch (JSONException paramJSONObject)
       {
@@ -87,7 +87,7 @@ class MiniGamePayFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment.1
  * JD-Core Version:    0.7.0.1
  */

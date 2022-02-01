@@ -12,27 +12,17 @@ import com.tencent.qphone.base.util.QLog;
 public class WebpSoDownloadHandler
   extends EarlyHandler
 {
-  QQAppInterface a = null;
+  QQAppInterface h = null;
   
   public WebpSoDownloadHandler(QQAppInterface paramQQAppInterface)
   {
     super("qq.android.pic.webp.so", paramQQAppInterface);
-    this.a = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10056;
+    this.h = paramQQAppInterface;
   }
   
   public Class<? extends XmlData> a()
   {
     return WebpSoData.class;
-  }
-  
-  public String a()
-  {
-    return "QWebpSoDownloadDuration";
   }
   
   public void a(String paramString)
@@ -60,19 +50,29 @@ public class WebpSoDownloadHandler
     super.a(paramString);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "QWebpSoDownloadDuration";
+  }
+  
+  public int c()
+  {
+    return 10056;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.WebpSoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

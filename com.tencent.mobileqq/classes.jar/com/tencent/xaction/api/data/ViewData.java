@@ -13,10 +13,11 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/ViewData;", "", "id", "", "singleTag", "", "tag", "st", "Lcom/tencent/xaction/api/style/Style;", "rules", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "tl", "Lcom/tencent/xaction/impl/XATimeline;", "tp", "Lcom/tencent/xaction/api/data/TimeProp;", "linkDelay", "anim", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lkotlin/collections/ArrayList;", "tr", "Lcom/tencent/xaction/trigger/BaseTrigger;", "type", "views", "gt", "comptId", "float", "drawable", "Lcom/tencent/xaction/api/base/DecorDrawableState;", "exts", "rwd", "", "(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/xaction/api/style/Style;Ljava/util/HashMap;Lcom/tencent/xaction/impl/XATimeline;Lcom/tencent/xaction/api/data/TimeProp;ILjava/util/ArrayList;Ljava/util/ArrayList;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;ILjava/lang/String;Lcom/tencent/xaction/api/base/DecorDrawableState;Ljava/util/HashMap;Z)V", "getAnim", "()Ljava/util/ArrayList;", "setAnim", "(Ljava/util/ArrayList;)V", "getComptId", "()I", "setComptId", "(I)V", "getDrawable", "()Lcom/tencent/xaction/api/base/DecorDrawableState;", "setDrawable", "(Lcom/tencent/xaction/api/base/DecorDrawableState;)V", "getExts", "()Ljava/util/HashMap;", "setExts", "(Ljava/util/HashMap;)V", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "getGt", "setGt", "getId", "setId", "getLinkDelay", "setLinkDelay", "getRules", "getRwd", "()Z", "setRwd", "(Z)V", "getSingleTag", "getSt", "()Lcom/tencent/xaction/api/style/Style;", "getTag", "getTl", "()Lcom/tencent/xaction/impl/XATimeline;", "setTl", "(Lcom/tencent/xaction/impl/XATimeline;)V", "getTp", "()Lcom/tencent/xaction/api/data/TimeProp;", "setTp", "(Lcom/tencent/xaction/api/data/TimeProp;)V", "getTr", "setTr", "getType", "setType", "getViews", "setViews", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component18", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/ViewData;", "", "id", "", "singleTag", "", "tag", "st", "Lcom/tencent/xaction/api/style/Style;", "rules", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "tl", "Lcom/tencent/xaction/impl/XATimeline;", "tp", "Lcom/tencent/xaction/api/data/TimeProp;", "linkDelay", "anim", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lkotlin/collections/ArrayList;", "tr", "Lcom/tencent/xaction/trigger/BaseTrigger;", "type", "views", "gt", "comptId", "float", "drawable", "Lcom/tencent/xaction/api/base/DecorDrawableState;", "exts", "template", "", "rwd", "(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/xaction/api/style/Style;Ljava/util/HashMap;Lcom/tencent/xaction/impl/XATimeline;Lcom/tencent/xaction/api/data/TimeProp;ILjava/util/ArrayList;Ljava/util/ArrayList;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;ILjava/lang/String;Lcom/tencent/xaction/api/base/DecorDrawableState;Ljava/util/HashMap;ZZ)V", "getAnim", "()Ljava/util/ArrayList;", "setAnim", "(Ljava/util/ArrayList;)V", "getComptId", "()I", "setComptId", "(I)V", "getDrawable", "()Lcom/tencent/xaction/api/base/DecorDrawableState;", "setDrawable", "(Lcom/tencent/xaction/api/base/DecorDrawableState;)V", "getExts", "()Ljava/util/HashMap;", "setExts", "(Ljava/util/HashMap;)V", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "getGt", "setGt", "getId", "setId", "getLinkDelay", "setLinkDelay", "getRules", "getRwd", "()Z", "setRwd", "(Z)V", "getSingleTag", "getSt", "()Lcom/tencent/xaction/api/style/Style;", "setSt", "(Lcom/tencent/xaction/api/style/Style;)V", "getTag", "getTemplate", "setTemplate", "getTl", "()Lcom/tencent/xaction/impl/XATimeline;", "setTl", "(Lcom/tencent/xaction/impl/XATimeline;)V", "getTp", "()Lcom/tencent/xaction/api/data/TimeProp;", "setTp", "(Lcom/tencent/xaction/api/data/TimeProp;)V", "getTr", "setTr", "getType", "setType", "getViews", "setViews", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component18", "component19", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "deepCopy", "equals", "other", "hashCode", "toString", "Companion", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class ViewData
 {
+  public static final ViewData.Companion Companion = new ViewData.Companion(null);
   @NotNull
   private ArrayList<BaseAnim> anim;
   private int comptId;
@@ -36,9 +37,10 @@ public final class ViewData
   @Nullable
   private final String singleTag;
   @NotNull
-  private final Style st;
+  private Style st;
   @Nullable
   private final String tag;
+  private boolean template;
   @Nullable
   private transient XATimeline tl;
   @NotNull
@@ -52,10 +54,10 @@ public final class ViewData
   
   public ViewData()
   {
-    this(0, null, null, null, null, null, null, 0, null, null, null, null, null, 0, null, null, null, false, 262143, null);
+    this(0, null, null, null, null, null, null, 0, null, null, null, null, null, 0, null, null, null, false, false, 524287, null);
   }
   
-  public ViewData(int paramInt1, @Nullable String paramString1, @Nullable String paramString2, @NotNull Style paramStyle, @Nullable HashMap<String, String> paramHashMap, @Nullable XATimeline paramXATimeline, @NotNull TimeProp paramTimeProp, int paramInt2, @NotNull ArrayList<BaseAnim> paramArrayList, @NotNull ArrayList<BaseTrigger> paramArrayList1, @NotNull String paramString3, @Nullable ArrayList<ViewData> paramArrayList2, @Nullable String paramString4, int paramInt3, @NotNull String paramString5, @Nullable DecorDrawableState paramDecorDrawableState, @Nullable HashMap<String, Object> paramHashMap1, boolean paramBoolean)
+  public ViewData(int paramInt1, @Nullable String paramString1, @Nullable String paramString2, @NotNull Style paramStyle, @Nullable HashMap<String, String> paramHashMap, @Nullable XATimeline paramXATimeline, @NotNull TimeProp paramTimeProp, int paramInt2, @NotNull ArrayList<BaseAnim> paramArrayList, @NotNull ArrayList<BaseTrigger> paramArrayList1, @NotNull String paramString3, @Nullable ArrayList<ViewData> paramArrayList2, @Nullable String paramString4, int paramInt3, @NotNull String paramString5, @Nullable DecorDrawableState paramDecorDrawableState, @Nullable HashMap<String, Object> paramHashMap1, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.id = paramInt1;
     this.singleTag = paramString1;
@@ -74,7 +76,8 @@ public final class ViewData
     this.jdField_float = paramString5;
     this.drawable = paramDecorDrawableState;
     this.exts = paramHashMap1;
-    this.rwd = paramBoolean;
+    this.template = paramBoolean1;
+    this.rwd = paramBoolean2;
   }
   
   public final int component1()
@@ -131,6 +134,11 @@ public final class ViewData
   
   public final boolean component18()
   {
+    return this.template;
+  }
+  
+  public final boolean component19()
+  {
     return this.rwd;
   }
   
@@ -182,7 +190,7 @@ public final class ViewData
   }
   
   @NotNull
-  public final ViewData copy(int paramInt1, @Nullable String paramString1, @Nullable String paramString2, @NotNull Style paramStyle, @Nullable HashMap<String, String> paramHashMap, @Nullable XATimeline paramXATimeline, @NotNull TimeProp paramTimeProp, int paramInt2, @NotNull ArrayList<BaseAnim> paramArrayList, @NotNull ArrayList<BaseTrigger> paramArrayList1, @NotNull String paramString3, @Nullable ArrayList<ViewData> paramArrayList2, @Nullable String paramString4, int paramInt3, @NotNull String paramString5, @Nullable DecorDrawableState paramDecorDrawableState, @Nullable HashMap<String, Object> paramHashMap1, boolean paramBoolean)
+  public final ViewData copy(int paramInt1, @Nullable String paramString1, @Nullable String paramString2, @NotNull Style paramStyle, @Nullable HashMap<String, String> paramHashMap, @Nullable XATimeline paramXATimeline, @NotNull TimeProp paramTimeProp, int paramInt2, @NotNull ArrayList<BaseAnim> paramArrayList, @NotNull ArrayList<BaseTrigger> paramArrayList1, @NotNull String paramString3, @Nullable ArrayList<ViewData> paramArrayList2, @Nullable String paramString4, int paramInt3, @NotNull String paramString5, @Nullable DecorDrawableState paramDecorDrawableState, @Nullable HashMap<String, Object> paramHashMap1, boolean paramBoolean1, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramStyle, "st");
     Intrinsics.checkParameterIsNotNull(paramTimeProp, "tp");
@@ -190,7 +198,17 @@ public final class ViewData
     Intrinsics.checkParameterIsNotNull(paramArrayList1, "tr");
     Intrinsics.checkParameterIsNotNull(paramString3, "type");
     Intrinsics.checkParameterIsNotNull(paramString5, "jdField_float");
-    return new ViewData(paramInt1, paramString1, paramString2, paramStyle, paramHashMap, paramXATimeline, paramTimeProp, paramInt2, paramArrayList, paramArrayList1, paramString3, paramArrayList2, paramString4, paramInt3, paramString5, paramDecorDrawableState, paramHashMap1, paramBoolean);
+    return new ViewData(paramInt1, paramString1, paramString2, paramStyle, paramHashMap, paramXATimeline, paramTimeProp, paramInt2, paramArrayList, paramArrayList1, paramString3, paramArrayList2, paramString4, paramInt3, paramString5, paramDecorDrawableState, paramHashMap1, paramBoolean1, paramBoolean2);
+  }
+  
+  @NotNull
+  public final ViewData deepCopy()
+  {
+    ViewData localViewData = copy$default(this, 0, null, null, null, null, null, null, 0, null, null, null, null, null, 0, null, null, null, false, false, 524287, null);
+    localViewData.st = Style.copy$default(this.st, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, 0, 0.0F, false, null, null, 0, 0, 0, 0.0F, 0.0F, 0.0F, 0.0F, null, null, null, null, null, 0, 0, 0, -1, 3, null);
+    localViewData.anim = Companion.a(this.anim);
+    localViewData.tr = Companion.b(this.tr);
+    return localViewData;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -199,7 +217,7 @@ public final class ViewData
       if ((paramObject instanceof ViewData))
       {
         paramObject = (ViewData)paramObject;
-        if ((this.id == paramObject.id) && (Intrinsics.areEqual(this.singleTag, paramObject.singleTag)) && (Intrinsics.areEqual(this.tag, paramObject.tag)) && (Intrinsics.areEqual(this.st, paramObject.st)) && (Intrinsics.areEqual(this.rules, paramObject.rules)) && (Intrinsics.areEqual(this.tl, paramObject.tl)) && (Intrinsics.areEqual(this.tp, paramObject.tp)) && (this.linkDelay == paramObject.linkDelay) && (Intrinsics.areEqual(this.anim, paramObject.anim)) && (Intrinsics.areEqual(this.tr, paramObject.tr)) && (Intrinsics.areEqual(this.type, paramObject.type)) && (Intrinsics.areEqual(this.views, paramObject.views)) && (Intrinsics.areEqual(this.gt, paramObject.gt)) && (this.comptId == paramObject.comptId) && (Intrinsics.areEqual(this.jdField_float, paramObject.jdField_float)) && (Intrinsics.areEqual(this.drawable, paramObject.drawable)) && (Intrinsics.areEqual(this.exts, paramObject.exts)) && (this.rwd == paramObject.rwd)) {}
+        if ((this.id == paramObject.id) && (Intrinsics.areEqual(this.singleTag, paramObject.singleTag)) && (Intrinsics.areEqual(this.tag, paramObject.tag)) && (Intrinsics.areEqual(this.st, paramObject.st)) && (Intrinsics.areEqual(this.rules, paramObject.rules)) && (Intrinsics.areEqual(this.tl, paramObject.tl)) && (Intrinsics.areEqual(this.tp, paramObject.tp)) && (this.linkDelay == paramObject.linkDelay) && (Intrinsics.areEqual(this.anim, paramObject.anim)) && (Intrinsics.areEqual(this.tr, paramObject.tr)) && (Intrinsics.areEqual(this.type, paramObject.type)) && (Intrinsics.areEqual(this.views, paramObject.views)) && (Intrinsics.areEqual(this.gt, paramObject.gt)) && (this.comptId == paramObject.comptId) && (Intrinsics.areEqual(this.jdField_float, paramObject.jdField_float)) && (Intrinsics.areEqual(this.drawable, paramObject.drawable)) && (Intrinsics.areEqual(this.exts, paramObject.exts)) && (this.template == paramObject.template) && (this.rwd == paramObject.rwd)) {}
       }
       else
       {
@@ -281,6 +299,11 @@ public final class ViewData
   public final String getTag()
   {
     return this.tag;
+  }
+  
+  public final boolean getTemplate()
+  {
+    return this.template;
   }
   
   @Nullable
@@ -365,6 +388,17 @@ public final class ViewData
     this.rwd = paramBoolean;
   }
   
+  public final void setSt(@NotNull Style paramStyle)
+  {
+    Intrinsics.checkParameterIsNotNull(paramStyle, "<set-?>");
+    this.st = paramStyle;
+  }
+  
+  public final void setTemplate(boolean paramBoolean)
+  {
+    this.template = paramBoolean;
+  }
+  
   public final void setTl(@Nullable XATimeline paramXATimeline)
   {
     this.tl = paramXATimeline;
@@ -431,6 +465,8 @@ public final class ViewData
     localStringBuilder.append(this.drawable);
     localStringBuilder.append(", exts=");
     localStringBuilder.append(this.exts);
+    localStringBuilder.append(", template=");
+    localStringBuilder.append(this.template);
     localStringBuilder.append(", rwd=");
     localStringBuilder.append(this.rwd);
     localStringBuilder.append(")");
@@ -439,7 +475,7 @@ public final class ViewData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.data.ViewData
  * JD-Core Version:    0.7.0.1
  */

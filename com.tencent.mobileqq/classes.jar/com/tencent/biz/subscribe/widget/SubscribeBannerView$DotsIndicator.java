@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class SubscribeBannerView$DotsIndicator
   extends LinearLayout
 {
-  public int a = 2130839041;
+  public int a = 2130839195;
   public int b;
   public int c;
   public int d;
@@ -70,7 +70,7 @@ public class SubscribeBannerView$DotsIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

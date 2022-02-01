@@ -23,24 +23,23 @@ public abstract class BaseProgressIndicatorSpec
 {
   @Px
   public int a;
-  @NonNull
-  public int[] a;
   @Px
   public int b;
+  @NonNull
+  public int[] c = new int[0];
   @ColorInt
-  public int c;
   public int d;
   public int e;
+  public int f;
   
   protected BaseProgressIndicatorSpec(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
     int i = paramContext.getResources().getDimensionPixelSize(R.dimen.ai);
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.e, paramInt1, paramInt2, new int[0]);
-    this.jdField_a_of_type_Int = MaterialResources.a(paramContext, paramAttributeSet, R.styleable.r, i);
-    this.b = Math.min(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.q, 0), this.jdField_a_of_type_Int / 2);
-    this.d = paramAttributeSet.getInt(R.styleable.n, 0);
-    this.e = paramAttributeSet.getInt(R.styleable.k, 0);
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.K, paramInt1, paramInt2, new int[0]);
+    this.a = MaterialResources.a(paramContext, paramAttributeSet, R.styleable.S, i);
+    this.b = Math.min(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.R, 0), this.a / 2);
+    this.e = paramAttributeSet.getInt(R.styleable.O, 0);
+    this.f = paramAttributeSet.getInt(R.styleable.L, 0);
     a(paramContext, paramAttributeSet);
     b(paramContext, paramAttributeSet);
     paramAttributeSet.recycle();
@@ -48,18 +47,18 @@ public abstract class BaseProgressIndicatorSpec
   
   private void a(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray)
   {
-    if (!paramTypedArray.hasValue(R.styleable.l))
+    if (!paramTypedArray.hasValue(R.styleable.M))
     {
-      this.jdField_a_of_type_ArrayOfInt = new int[] { MaterialColors.a(paramContext, R.attr.colorPrimary, -1) };
+      this.c = new int[] { MaterialColors.a(paramContext, R.attr.r, -1) };
       return;
     }
-    if (paramTypedArray.peekValue(R.styleable.l).type != 1)
+    if (paramTypedArray.peekValue(R.styleable.M).type != 1)
     {
-      this.jdField_a_of_type_ArrayOfInt = new int[] { paramTypedArray.getColor(R.styleable.l, -1) };
+      this.c = new int[] { paramTypedArray.getColor(R.styleable.M, -1) };
       return;
     }
-    this.jdField_a_of_type_ArrayOfInt = paramContext.getResources().getIntArray(paramTypedArray.getResourceId(R.styleable.l, -1));
-    if (this.jdField_a_of_type_ArrayOfInt.length != 0) {
+    this.c = paramContext.getResources().getIntArray(paramTypedArray.getResourceId(R.styleable.M, -1));
+    if (this.c.length != 0) {
       return;
     }
     throw new IllegalArgumentException("indicatorColors cannot be empty when indicatorColor is not used.");
@@ -67,34 +66,34 @@ public abstract class BaseProgressIndicatorSpec
   
   private void b(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray)
   {
-    if (paramTypedArray.hasValue(R.styleable.p))
+    if (paramTypedArray.hasValue(R.styleable.Q))
     {
-      this.c = paramTypedArray.getColor(R.styleable.p, -1);
+      this.d = paramTypedArray.getColor(R.styleable.Q, -1);
       return;
     }
-    this.c = this.jdField_a_of_type_ArrayOfInt[0];
+    this.d = this.c[0];
     paramContext = paramContext.getTheme().obtainStyledAttributes(new int[] { 16842803 });
-    float f = paramContext.getFloat(0, 0.2F);
+    float f1 = paramContext.getFloat(0, 0.2F);
     paramContext.recycle();
-    int i = (int)(f * 255.0F);
-    this.c = MaterialColors.b(this.c, i);
+    int i = (int)(f1 * 255.0F);
+    this.d = MaterialColors.b(this.d, i);
   }
-  
-  abstract void a();
   
   public boolean a()
   {
-    return this.d != 0;
+    return this.e != 0;
   }
   
   public boolean b()
   {
-    return this.e != 0;
+    return this.f != 0;
   }
+  
+  abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.BaseProgressIndicatorSpec
  * JD-Core Version:    0.7.0.1
  */

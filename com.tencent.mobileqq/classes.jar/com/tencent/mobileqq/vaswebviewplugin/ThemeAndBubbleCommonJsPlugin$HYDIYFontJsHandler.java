@@ -61,7 +61,7 @@ class ThemeAndBubbleCommonJsPlugin$HYDIYFontJsHandler
       if (paramThemeAndBubbleCommonJsPlugin.mRuntime == null) {
         return "";
       }
-      paramThemeAndBubbleCommonJsPlugin = paramThemeAndBubbleCommonJsPlugin.mRuntime.a();
+      paramThemeAndBubbleCommonJsPlugin = paramThemeAndBubbleCommonJsPlugin.mRuntime.d();
       if (!(paramThemeAndBubbleCommonJsPlugin instanceof QQBrowserActivity)) {
         return "";
       }
@@ -282,7 +282,7 @@ class ThemeAndBubbleCommonJsPlugin$HYDIYFontJsHandler
         return;
       }
       paramJSONObject = (ThemeAndBubbleCommonJsPlugin.HYDIYFontJsHandler.AddViewData)new Gson().fromJson(paramJSONObject.toString(), ThemeAndBubbleCommonJsPlugin.HYDIYFontJsHandler.AddViewData.class);
-      Activity localActivity = paramThemeAndBubbleCommonJsPlugin.mRuntime.a();
+      Activity localActivity = paramThemeAndBubbleCommonJsPlugin.mRuntime.d();
       if (((localActivity instanceof QQBrowserActivity)) && (paramJSONObject != null) && (paramJSONObject.params != null))
       {
         if (paramJSONObject.params.fontType != 1) {
@@ -395,7 +395,7 @@ class ThemeAndBubbleCommonJsPlugin$HYDIYFontJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin.HYDIYFontJsHandler
  * JD-Core Version:    0.7.0.1
  */

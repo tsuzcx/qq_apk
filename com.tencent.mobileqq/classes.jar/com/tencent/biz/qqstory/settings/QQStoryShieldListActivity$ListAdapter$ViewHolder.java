@@ -6,10 +6,10 @@ import android.widget.TextView;
 
 class QQStoryShieldListActivity$ListAdapter$ViewHolder
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  ImageView b;
+  TextView c;
+  Button d;
   
   QQStoryShieldListActivity$ListAdapter$ViewHolder(QQStoryShieldListActivity.ListAdapter paramListAdapter) {}
 }

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.aio.panel.viewbinder;
 
-import com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListAdapter;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -18,24 +17,23 @@ class ApolloTagActionViewBinder$4$1$1
   {
     try
     {
-      ApolloTagActionViewBinder.b(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0, this.jdField_a_of_type_JavaUtilList);
+      ApolloTagActionViewBinder.c(this.b.a.this$0, this.a);
       ArrayList localArrayList = new ArrayList();
-      if ((ApolloTagActionViewBinder.d(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0) != null) && (ApolloTagActionViewBinder.c(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0) != null) && (ApolloTagActionViewBinder.c(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0).size() > 0))
+      if ((ApolloTagActionViewBinder.f(this.b.a.this$0) != null) && (ApolloTagActionViewBinder.e(this.b.a.this$0) != null) && (ApolloTagActionViewBinder.e(this.b.a.this$0).size() > 0))
       {
-        Iterator localIterator = ApolloTagActionViewBinder.c(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0).iterator();
+        Iterator localIterator = ApolloTagActionViewBinder.e(this.b.a.this$0).iterator();
         while (localIterator.hasNext())
         {
           ApolloInfo localApolloInfo = (ApolloInfo)localIterator.next();
-          if ((localApolloInfo != null) && (ApolloTagActionViewBinder.d(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0).contains(Integer.valueOf(localApolloInfo.mAction.actionId)))) {
+          if ((localApolloInfo != null) && (ApolloTagActionViewBinder.f(this.b.a.this$0).contains(Integer.valueOf(localApolloInfo.mAction.actionId)))) {
             localArrayList.add(localApolloInfo);
           }
         }
       }
-      if (ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0) != null) {
-        ApolloTagActionViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0).put(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.a, localArrayList);
+      if (ApolloTagActionViewBinder.g(this.b.a.this$0) != null) {
+        ApolloTagActionViewBinder.g(this.b.a.this$0).put(this.b.a.a, localArrayList);
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0.b(localArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloTagActionViewBinder$4$1.a.this$0.a.notifyDataSetChanged();
+      ApolloTagActionViewBinder.b(this.b.a.this$0, localArrayList);
       return;
     }
     catch (Exception localException)
@@ -46,7 +44,7 @@ class ApolloTagActionViewBinder$4$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinder.4.1.1
  * JD-Core Version:    0.7.0.1
  */

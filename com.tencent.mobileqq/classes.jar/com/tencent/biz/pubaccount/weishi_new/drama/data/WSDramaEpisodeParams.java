@@ -5,36 +5,36 @@ import com.tencent.biz.pubaccount.weishi_new.data.FetcherParams;
 public class WSDramaEpisodeParams
   extends FetcherParams
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
+  private final String a;
   private final String b;
+  private final boolean c;
   
   public WSDramaEpisodeParams(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, boolean paramBoolean3)
   {
     super(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean3;
+    this.c = paramBoolean3;
   }
   
-  public String a()
+  public String c()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public String b()
+  public String d()
   {
     return this.b;
   }
   
-  public boolean c()
+  public boolean e()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.data.WSDramaEpisodeParams
  * JD-Core Version:    0.7.0.1
  */

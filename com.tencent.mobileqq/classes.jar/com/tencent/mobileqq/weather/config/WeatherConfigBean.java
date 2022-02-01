@@ -7,13 +7,8 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/weather/config/WeatherConfigBean;", "", "isPreloadAd", "", "(Z)V", "()Z", "component1", "copy", "equals", "other", "hashCode", "", "toString", "", "Companion", "qq-weather-impl_release"}, k=1, mv={1, 1, 16})
 public final class WeatherConfigBean
 {
-  public static final WeatherConfigBean.Companion a;
-  private final boolean a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqWeatherConfigWeatherConfigBean$Companion = new WeatherConfigBean.Companion(null);
-  }
+  public static final WeatherConfigBean.Companion a = new WeatherConfigBean.Companion(null);
+  private final boolean b;
   
   public WeatherConfigBean()
   {
@@ -22,12 +17,12 @@ public final class WeatherConfigBean
   
   public WeatherConfigBean(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -36,7 +31,7 @@ public final class WeatherConfigBean
       if ((paramObject instanceof WeatherConfigBean))
       {
         paramObject = (WeatherConfigBean)paramObject;
-        if (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) {}
+        if (this.b == paramObject.b) {}
       }
       else
       {
@@ -56,14 +51,14 @@ public final class WeatherConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WeatherConfigBean(isPreloadAd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.config.WeatherConfigBean
  * JD-Core Version:    0.7.0.1
  */

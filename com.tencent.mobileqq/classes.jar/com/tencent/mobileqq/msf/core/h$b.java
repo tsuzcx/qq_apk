@@ -95,21 +95,21 @@ class h$b
     //   162: aload 4
     //   164: ifnonnull +6 -> 170
     //   167: goto -43 -> 124
-    //   170: new 85	com/tencent/mobileqq/msf/core/quicksend/f
+    //   170: new 85	com/tencent/mobileqq/msf/core/quicksend/g
     //   173: dup
-    //   174: invokespecial 86	com/tencent/mobileqq/msf/core/quicksend/f:<init>	()V
+    //   174: invokespecial 86	com/tencent/mobileqq/msf/core/quicksend/g:<init>	()V
     //   177: astore 5
     //   179: aload 5
     //   181: invokestatic 92	android/os/SystemClock:elapsedRealtime	()J
-    //   184: putfield 95	com/tencent/mobileqq/msf/core/quicksend/f:b	J
+    //   184: putfield 95	com/tencent/mobileqq/msf/core/quicksend/g:b	J
     //   187: aload 5
     //   189: aload 5
-    //   191: getfield 95	com/tencent/mobileqq/msf/core/quicksend/f:b	J
-    //   194: putfield 98	com/tencent/mobileqq/msf/core/quicksend/f:j	J
+    //   191: getfield 95	com/tencent/mobileqq/msf/core/quicksend/g:b	J
+    //   194: putfield 98	com/tencent/mobileqq/msf/core/quicksend/g:j	J
     //   197: aload 5
     //   199: aload 5
-    //   201: getfield 95	com/tencent/mobileqq/msf/core/quicksend/f:b	J
-    //   204: putfield 101	com/tencent/mobileqq/msf/core/quicksend/f:g	J
+    //   201: getfield 95	com/tencent/mobileqq/msf/core/quicksend/g:b	J
+    //   204: putfield 101	com/tencent/mobileqq/msf/core/quicksend/g:g	J
     //   207: aload_0
     //   208: getfield 10	com/tencent/mobileqq/msf/core/h$b:a	Lcom/tencent/mobileqq/msf/core/h;
     //   211: aload 4
@@ -176,14 +176,14 @@ class h$b
     //   338: aload 5
     //   340: aload 6
     //   342: aload_1
-    //   343: invokestatic 139	com/tencent/mobileqq/msf/core/h:a	(Lcom/tencent/mobileqq/msf/core/h;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/mobileqq/msf/core/quicksend/f;Ljava/lang/String;Ljava/lang/String;)Z
+    //   343: invokestatic 139	com/tencent/mobileqq/msf/core/h:a	(Lcom/tencent/mobileqq/msf/core/h;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/mobileqq/msf/core/quicksend/g;Ljava/lang/String;Ljava/lang/String;)Z
     //   346: ifne +6 -> 352
     //   349: goto -225 -> 124
     //   352: aload_0
     //   353: getfield 10	com/tencent/mobileqq/msf/core/h$b:a	Lcom/tencent/mobileqq/msf/core/h;
     //   356: aload 5
     //   358: aload 4
-    //   360: invokestatic 142	com/tencent/mobileqq/msf/core/h:a	(Lcom/tencent/mobileqq/msf/core/h;Lcom/tencent/mobileqq/msf/core/quicksend/f;Lcom/tencent/qphone/base/remote/ToServiceMsg;)Z
+    //   360: invokestatic 142	com/tencent/mobileqq/msf/core/h:a	(Lcom/tencent/mobileqq/msf/core/h;Lcom/tencent/mobileqq/msf/core/quicksend/g;Lcom/tencent/qphone/base/remote/ToServiceMsg;)Z
     //   363: pop
     //   364: aload_0
     //   365: getfield 10	com/tencent/mobileqq/msf/core/h$b:a	Lcom/tencent/mobileqq/msf/core/h;
@@ -239,7 +239,7 @@ class h$b
     //   4	9	2	i	int
     //   257	58	3	str1	java.lang.String
     //   160	199	4	localToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
-    //   177	180	5	localf	com.tencent.mobileqq.msf.core.quicksend.f
+    //   177	180	5	localg	com.tencent.mobileqq.msf.core.quicksend.g
     //   216	125	6	str2	java.lang.String
     // Exception table:
     //   from	to	target	type
@@ -250,7 +250,7 @@ class h$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.h.b
  * JD-Core Version:    0.7.0.1
  */

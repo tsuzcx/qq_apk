@@ -29,13 +29,13 @@ import mqq.os.MqqHandler;
 
 public class ShareImageUtils
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new ShareImageUtils.1();
-  private static String jdField_a_of_type_JavaLangString;
+  private static String a;
+  private static Bitmap b;
+  private static WXShareHelper.WXShareListener c = new ShareImageUtils.1();
   
   public static void a()
   {
-    WXShareHelper.a().a(jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    WXShareHelper.a().a(c);
   }
   
   public static void a(Activity paramActivity)
@@ -44,10 +44,10 @@ public class ShareImageUtils
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("launchFriendPicker path = ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(a);
       QLog.d("ShareImageUtils", 2, ((StringBuilder)localObject).toString());
     }
-    if (jdField_a_of_type_JavaLangString == null)
+    if (a == null)
     {
       QLog.e("ShareImageUtils", 1, "currentPath is null");
       return;
@@ -60,13 +60,13 @@ public class ShareImageUtils
     ((Intent)localObject).putExtra("key_allow_multiple_forward_from_limit", false);
     ((Intent)localObject).putExtra("key_share_from_screen_shot", true);
     ((Intent)localObject).putExtra("key_share_from_screen_need_finish", true);
-    ((Intent)localObject).setData(Uri.parse(jdField_a_of_type_JavaLangString));
+    ((Intent)localObject).setData(Uri.parse(a));
     paramActivity.startActivityForResult((Intent)localObject, 3);
   }
   
   public static void a(Context paramContext)
   {
-    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if (b == null)
     {
       QLog.e("ShareImageUtils", 1, "bitmap is null");
       return;
@@ -76,7 +76,7 @@ public class ShareImageUtils
   
   public static void a(Bitmap paramBitmap)
   {
-    jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    b = paramBitmap;
   }
   
   public static void a(BaseActivity paramBaseActivity)
@@ -84,7 +84,7 @@ public class ShareImageUtils
     if (QLog.isColorLevel()) {
       QLog.d("ShareImageUtils", 2, "shareToQzone");
     }
-    if (jdField_a_of_type_JavaLangString == null)
+    if (a == null)
     {
       QLog.e("ShareImageUtils", 1, "currentPath is null");
       return;
@@ -92,21 +92,21 @@ public class ShareImageUtils
     paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
     Bundle localBundle = new Bundle();
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(jdField_a_of_type_JavaLangString);
+    localArrayList.add(a);
     localBundle.putStringArrayList("images", localArrayList);
     QZoneShareManager.publishToQzone(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
   }
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    a = paramString;
   }
   
   public static void b()
   {
-    jdField_a_of_type_JavaLangString = null;
-    jdField_a_of_type_AndroidGraphicsBitmap = null;
-    WXShareHelper.a().b(jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    a = null;
+    b = null;
+    WXShareHelper.a().b(c);
   }
   
   public static void b(Activity paramActivity)
@@ -114,22 +114,22 @@ public class ShareImageUtils
     if (QLog.isColorLevel()) {
       QLog.d("ShareImageUtils", 2, "ScreenShotShareFragment shareToWXFriend");
     }
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((a != null) && (b != null))
     {
       int i;
-      if (!WXShareHelper.a().a()) {
-        i = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        i = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        i = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        i = 2131918155;
       } else {
         i = -1;
       }
       if (i != -1)
       {
-        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
         return;
       }
-      ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareImageToWX(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+      ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareImageToWX(a, b, 0, false);
       return;
     }
     QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
@@ -140,22 +140,22 @@ public class ShareImageUtils
     if (QLog.isColorLevel()) {
       QLog.d("ShareImageUtils", 2, "shareToFriendCircle");
     }
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((a != null) && (b != null))
     {
       int i;
-      if (!WXShareHelper.a().a()) {
-        i = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        i = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        i = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        i = 2131918155;
       } else {
         i = -1;
       }
       if (i != -1)
       {
-        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
         return;
       }
-      ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareImageToWX(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 1, false);
+      ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareImageToWX(a, b, 1, false);
       return;
     }
     QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
@@ -169,12 +169,12 @@ public class ShareImageUtils
     ((StringBuilder)localObject).append(Calendar.getInstance().getTime());
     ((StringBuilder)localObject).append(".png");
     localObject = ((StringBuilder)localObject).toString();
-    if (FileUtils.saveBitmapToFile(jdField_a_of_type_AndroidGraphicsBitmap, (String)localObject))
+    if (FileUtils.saveBitmapToFile(b, (String)localObject))
     {
       QLog.d("ShareImageUtils", 1, "save to sdcard success");
-      ImageUtil.a(BaseApplicationImpl.getContext(), (String)localObject);
+      ImageUtil.b(BaseApplicationImpl.getContext(), (String)localObject);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131694913));
+      localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131892639));
       localStringBuilder.append(" ");
       localStringBuilder.append((String)localObject);
       localObject = localStringBuilder.toString();
@@ -187,7 +187,7 @@ public class ShareImageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils
  * JD-Core Version:    0.7.0.1
  */

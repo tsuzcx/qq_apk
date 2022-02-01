@@ -32,7 +32,7 @@ class AutoLocationMapView$1
       Double.isNaN(d2);
       localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(d1, d2 / 1000000.0D)));
       this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
-      Object localObject = BitmapManager.a(this.a.getContext().getResources(), 2130842582);
+      Object localObject = BitmapManager.a(this.a.getContext().getResources(), 2130843535);
       localTencentMap = this.a.getMap();
       localObject = new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject)).snippet("");
       d1 = localGeoPoint.getLatitudeE6();
@@ -49,7 +49,7 @@ class AutoLocationMapView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AutoLocationMapView.1
  * JD-Core Version:    0.7.0.1
  */

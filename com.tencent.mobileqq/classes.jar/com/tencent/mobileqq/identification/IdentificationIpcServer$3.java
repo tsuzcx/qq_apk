@@ -25,13 +25,13 @@ class IdentificationIpcServer$3
         return;
       }
       localObject = (AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
-      this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
+      this.c.callbackResult(this.a, EIPCResult.createResult(0, paramBundle));
       return;
     }
     if (paramInt != 15) {
-      this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
+      this.c.callbackResult(this.a, EIPCResult.createResult(-102, null));
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
+      this.c.callbackResult(this.a, EIPCResult.createResult(15, null));
     }
     if (paramInt == 17)
     {
@@ -40,7 +40,7 @@ class IdentificationIpcServer$3
       } else {
         paramBundle = "2";
       }
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
       return;
     }
     QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
@@ -48,7 +48,7 @@ class IdentificationIpcServer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationIpcServer.3
  * JD-Core Version:    0.7.0.1
  */

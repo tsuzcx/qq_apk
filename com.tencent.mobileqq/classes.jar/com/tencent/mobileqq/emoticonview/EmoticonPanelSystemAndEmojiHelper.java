@@ -71,7 +71,7 @@ public class EmoticonPanelSystemAndEmojiHelper
   public void onClick(View paramView)
   {
     QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = ((EmoticonPanelController)this.mPanelController).app;
-    if (paramView.getId() == 2131362355)
+    if (paramView.getId() == 2131427955)
     {
       SystemAndEmojiAdapter localSystemAndEmojiAdapter = fetchSystemAndEmojiAdapter();
       if (localSystemAndEmojiAdapter != null) {
@@ -210,8 +210,8 @@ public class EmoticonPanelSystemAndEmojiHelper
       if (this.mPopupGuideView == null)
       {
         this.mPopupGuideView = new ImageView(localContext);
-        this.mPopupGuideView.setId(2131362355);
-        this.mPopupGuideView.setImageResource(2130837965);
+        this.mPopupGuideView.setId(2131427955);
+        this.mPopupGuideView.setImageResource(2130837989);
       }
       this.mPopupGuideView.setClickable(true);
       this.mPopupGuideView.setOnClickListener(this);
@@ -299,7 +299,7 @@ public class EmoticonPanelSystemAndEmojiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSystemAndEmojiHelper
  * JD-Core Version:    0.7.0.1
  */

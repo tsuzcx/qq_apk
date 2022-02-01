@@ -8,7 +8,7 @@ public abstract interface CommentsView$OnItemClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.CommentsView.OnItemClickListener
  * JD-Core Version:    0.7.0.1
  */

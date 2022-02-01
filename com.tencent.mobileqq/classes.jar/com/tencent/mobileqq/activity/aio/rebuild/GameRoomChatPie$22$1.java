@@ -21,7 +21,7 @@ class GameRoomChatPie$22$1
   {
     if (QLog.isColorLevel())
     {
-      paramRspBody = this.a.a.b;
+      paramRspBody = this.a.b.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("exitRoom: errorCode = ");
       localStringBuilder.append(paramInt);
@@ -29,25 +29,25 @@ class GameRoomChatPie$22$1
     }
     if ((paramInt != 0) && (paramInt != 1285))
     {
-      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-        this.a.a.d.dismiss();
+      if ((this.a.b.bD != null) && (this.a.b.bD.isShowing())) {
+        this.a.b.bD.dismiss();
       }
-      QQToast.a(this.a.a.a(), 1, HardCodeUtil.a(2131705174), 0).b(this.a.a.a());
+      QQToast.makeText(this.a.b.aX(), 1, HardCodeUtil.a(2131903064), 0).show(this.a.b.A());
       return;
     }
-    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-      this.a.a.d.dismiss();
+    if ((this.a.b.bD != null) && (this.a.b.bD.isShowing())) {
+      this.a.b.bD.dismiss();
     }
     new Intent().putExtra("isNeedFinish", true);
-    SharedPreUtils.f(this.a.a.a(), this.a.a.a.getCurrentAccountUin(), false);
+    SharedPreUtils.e(this.a.b.aX(), this.a.b.d.getCurrentAccountUin(), false);
     ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).hideFloatView();
-    this.a.a.I = true;
-    this.a.a.b(1);
+    this.a.b.bz = true;
+    this.a.b.f(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.22.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ import com.tencent.qphone.base.util.QLog;
 
 public class EggKeyword
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
+  private int a;
+  private final String b;
   
   public EggKeyword(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
+    this.a = paramInt;
   }
   
   public static int a(String paramString)
@@ -27,36 +27,36 @@ public class EggKeyword
     return 0;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
-  public boolean a(String paramString)
+  public int b()
+  {
+    return this.a;
+  }
+  
+  public boolean b(String paramString)
   {
     boolean bool3 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!bool3)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.b)) {
         return false;
       }
-      if (a() == 0) {
-        return paramString.contains(this.jdField_a_of_type_JavaLangString);
+      if (b() == 0) {
+        return paramString.contains(this.b);
       }
       bool1 = bool2;
-      if (a() == 1)
+      if (b() == 1)
       {
         bool1 = bool2;
-        if (TextUtils.isDigitsOnly(this.jdField_a_of_type_JavaLangString))
+        if (TextUtils.isDigitsOnly(this.b))
         {
-          int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+          int i = Integer.parseInt(this.b);
           String str = "";
           if (QQSysFaceUtil.isEmoReady(i))
           {
@@ -77,7 +77,7 @@ public class EggKeyword
           }
           if (QLog.isColorLevel())
           {
-            str = this.jdField_a_of_type_JavaLangString;
+            str = this.b;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(i);
             localStringBuilder.append(", result: ");
@@ -93,15 +93,15 @@ public class EggKeyword
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.egg.EggKeyword
  * JD-Core Version:    0.7.0.1
  */

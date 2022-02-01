@@ -9,21 +9,17 @@ public class ReadInJoyDraftboxItem$PicData
   implements Parcelable
 {
   public static final Parcelable.Creator<PicData> CREATOR = new ReadInJoyDraftboxItem.PicData.1();
-  public int a;
   public HotPicData a;
-  public String a;
+  public String b;
+  public int c = -1;
   
-  public ReadInJoyDraftboxItem$PicData()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public ReadInJoyDraftboxItem$PicData() {}
   
   public ReadInJoyDraftboxItem$PicData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData = ((HotPicData)paramParcel.readParcelable(HotPicData.class.getClassLoader()));
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = ((HotPicData)paramParcel.readParcelable(HotPicData.class.getClassLoader()));
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -35,9 +31,9 @@ public class ReadInJoyDraftboxItem$PicData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PicData{hotPicData=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", localPic='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -45,14 +41,14 @@ public class ReadInJoyDraftboxItem$PicData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData, paramInt);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeParcelable(this.a, paramInt);
+    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxItem.PicData
  * JD-Core Version:    0.7.0.1
  */

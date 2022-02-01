@@ -49,29 +49,23 @@ public final class PTSValueConvertUtil
     }
     catch (Exception localException)
     {
-      localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("getColor, value = ");
-      localStringBuilder2.append(paramObject);
-      localStringBuilder2.append(", e = ");
-      localStringBuilder2.append(localException);
-      PTSLog.e("PTSValueConvertUtil", localStringBuilder2.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColor, value = ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", e = ");
+      localStringBuilder.append(localException);
+      PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("getColor, value = ");
-      localStringBuilder2.append(paramObject);
-      localStringBuilder2.append(", e = ");
-      localStringBuilder2.append(localNumberFormatException);
-      PTSLog.e("PTSValueConvertUtil", localStringBuilder2.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColor, value = ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", e = ");
+      localStringBuilder.append(localNumberFormatException);
+      PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
     }
     long l = 0L;
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    localStringBuilder1.append("getColor, value = ");
-    localStringBuilder1.append(paramObject);
-    localStringBuilder1.append(", res = ");
-    localStringBuilder1.append(l);
-    PTSLog.i("PTSValueConvertUtil", localStringBuilder1.toString());
     return (int)l;
   }
   
@@ -142,7 +136,7 @@ public final class PTSValueConvertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.utils.PTSValueConvertUtil
  * JD-Core Version:    0.7.0.1
  */

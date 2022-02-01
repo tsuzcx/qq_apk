@@ -14,9 +14,9 @@ class ArkAsyncShareMiniAppTest$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback != null))
+    if ((this.a != null) && (this.b != null))
     {
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      Object localObject1 = this.c;
       if ((localObject1 != null) && ((localObject1 instanceof Bundle)))
       {
         if (QLog.isColorLevel()) {
@@ -25,10 +25,10 @@ class ArkAsyncShareMiniAppTest$1$1
         boolean bool;
         try
         {
-          long l = ((Bundle)this.jdField_a_of_type_JavaLangObject).getLong("key_process_message_uniseq");
+          long l = ((Bundle)this.c).getLong("key_process_message_uniseq");
           if (!TextUtils.isEmpty("test"))
           {
-            JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_OrgJsonJSONObject.getString("forward_ark_app_meta"));
+            JSONObject localJSONObject = new JSONObject(this.a.getString("forward_ark_app_meta"));
             Object localObject2 = localJSONObject.optJSONObject("intro");
             localObject1 = localObject2;
             if (localObject2 == null) {
@@ -39,7 +39,7 @@ class ArkAsyncShareMiniAppTest$1$1
             ((StringBuilder)localObject2).append(String.valueOf(l));
             ((StringBuilder)localObject2).append(", 更新metaData接口测试,测试更新meta中的desc");
             ((JSONObject)localObject1).put("desc", ((StringBuilder)localObject2).toString());
-            this.jdField_a_of_type_OrgJsonJSONObject.put("forward_ark_app_meta", localJSONObject.toString());
+            this.a.put("forward_ark_app_meta", localJSONObject.toString());
             bool = true;
           }
         }
@@ -48,20 +48,20 @@ class ArkAsyncShareMiniAppTest$1$1
           QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, "AAShare.mArkMessagePreprocessor process e =", localJSONException);
           bool = false;
         }
-        QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process isProcessed=", Boolean.valueOf(bool), ", msgJson=", this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        IArkMessagePreprocessorCallback localIArkMessagePreprocessorCallback = this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback;
+        QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process isProcessed=", Boolean.valueOf(bool), ", msgJson=", this.a.toString() });
+        IArkMessagePreprocessorCallback localIArkMessagePreprocessorCallback = this.b;
         if (localIArkMessagePreprocessorCallback != null) {
-          localIArkMessagePreprocessorCallback.a(bool, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangObject);
+          localIArkMessagePreprocessorCallback.a(bool, this.a, this.c);
         }
         return;
       }
     }
-    QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process return callback=", this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback });
+    QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process return callback=", this.b });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -97,6 +97,7 @@ class SupportMenuInflater$MenuState
     Object localObject = paramMenuItem.setChecked(this.itemChecked).setVisible(this.itemVisible).setEnabled(this.itemEnabled);
     int j = this.itemCheckable;
     int i = 0;
+    boolean bool;
     if (j >= 1) {
       bool = true;
     } else {
@@ -114,12 +115,8 @@ class SupportMenuInflater$MenuState
         throw new IllegalStateException("The android:onClick attribute cannot be used within a restricted context");
       }
     }
-    boolean bool = paramMenuItem instanceof MenuItemImpl;
-    if (bool) {
-      localObject = (MenuItemImpl)paramMenuItem;
-    }
     if (this.itemCheckable >= 2) {
-      if (bool) {
+      if ((paramMenuItem instanceof MenuItemImpl)) {
         ((MenuItemImpl)paramMenuItem).setExclusiveCheckable(true);
       } else if ((paramMenuItem instanceof MenuItemWrapperICS)) {
         ((MenuItemWrapperICS)paramMenuItem).setExclusiveCheckable(true);

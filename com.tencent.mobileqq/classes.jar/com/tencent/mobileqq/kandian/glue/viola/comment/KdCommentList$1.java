@@ -18,19 +18,19 @@ class KdCommentList$1
   {
     KdCommentList localKdCommentList1 = this.this$0;
     ReadInJoyCommentHelper localReadInJoyCommentHelper = new ReadInJoyCommentHelper();
-    String str = KdCommentList.access$100(this.this$0, this.jdField_a_of_type_OrgJsonJSONObject, this.b).toString();
+    String str = KdCommentList.access$100(this.this$0, this.a, this.b).toString();
     KdCommentList localKdCommentList2 = this.this$0;
     KdCommentList.access$002(localKdCommentList1, localReadInJoyCommentHelper.a(str, localKdCommentList2, localKdCommentList2));
     if ((this.this$0.getInstance() != null) && ((this.this$0.getInstance().getActivity() instanceof QBaseActivity)) && (KdCommentList.access$000(this.this$0) != null))
     {
-      ((QBaseActivity)this.this$0.getInstance().getActivity()).getSupportFragmentManager().beginTransaction().add(this.jdField_a_of_type_AndroidViewView.getId(), KdCommentList.access$000(this.this$0)).commitAllowingStateLoss();
+      ((QBaseActivity)this.this$0.getInstance().getActivity()).getSupportFragmentManager().beginTransaction().add(this.c.getId(), KdCommentList.access$000(this.this$0)).commitAllowingStateLoss();
       RIJCommentResultDispatcher.a().a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.comment.KdCommentList.1
  * JD-Core Version:    0.7.0.1
  */

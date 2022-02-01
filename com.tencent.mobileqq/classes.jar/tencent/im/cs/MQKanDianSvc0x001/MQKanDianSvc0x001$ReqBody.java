@@ -33,7 +33,7 @@ public final class MQKanDianSvc0x001$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001.ReqBody
  * JD-Core Version:    0.7.0.1
  */

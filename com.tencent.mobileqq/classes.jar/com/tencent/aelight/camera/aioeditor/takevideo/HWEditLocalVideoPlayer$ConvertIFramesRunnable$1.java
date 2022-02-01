@@ -17,18 +17,18 @@ class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1
     localStringBuilder.append(" Exception = ");
     localStringBuilder.append(paramThrowable);
     SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.b == 0)
+    if (this.b.b == 0)
     {
-      paramThrowable = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable;
+      paramThrowable = this.b;
       paramThrowable.b = 1;
       paramThrowable.a = 3;
       paramThrowable = new StringBuilder();
       paramThrowable.append("Reencode i frame video by mIFrameInterval = ");
-      paramThrowable.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.b);
+      paramThrowable.append(this.b.b);
       paramThrowable.append(" mFrameRate = ");
-      paramThrowable.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.a);
+      paramThrowable.append(this.b.a);
       SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", paramThrowable.toString());
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable, 1000L);
+      this.b.this$0.a(this.b, 1000L);
       return;
     }
     SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video failed");
@@ -40,17 +40,17 @@ class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1
     {
       paramThrowable.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.a(new HWEditLocalVideoPlayer.ConvertIFramesRunnable.1.2(this), 0L);
+    this.b.this$0.a(new HWEditLocalVideoPlayer.ConvertIFramesRunnable.1.2(this), 0L);
   }
   
   public void onEncodeFinish(String paramString)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = paramString;
+    this.a.a = paramString;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onEncodeFinish  iframe file filePath = ");
     localStringBuilder.append(paramString);
     SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.a(new HWEditLocalVideoPlayer.ConvertIFramesRunnable.1.1(this), 0L);
+    this.b.this$0.a(new HWEditLocalVideoPlayer.ConvertIFramesRunnable.1.1(this), 0L);
   }
   
   public void onEncodeFrame() {}
@@ -59,7 +59,7 @@ class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable.1
  * JD-Core Version:    0.7.0.1
  */

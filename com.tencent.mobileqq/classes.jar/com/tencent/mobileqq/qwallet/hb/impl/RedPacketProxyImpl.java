@@ -41,7 +41,7 @@ public class RedPacketProxyImpl
   
   public RedPacketProxyImpl()
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
   }
   
   /* Error */
@@ -49,29 +49,29 @@ public class RedPacketProxyImpl
   {
     // Byte code:
     //   0: invokestatic 51	com/tencent/mobileqq/qwallet/ipc/impl/QWalletIPCConnector:a	()Lcom/tencent/mobileqq/qwallet/ipc/impl/QWalletIPCConnector;
-    //   3: invokevirtual 53	com/tencent/mobileqq/qwallet/ipc/impl/QWalletIPCConnector:a	()V
-    //   6: new 60	android/os/Bundle
+    //   3: invokevirtual 54	com/tencent/mobileqq/qwallet/ipc/impl/QWalletIPCConnector:b	()V
+    //   6: new 61	android/os/Bundle
     //   9: dup
-    //   10: invokespecial 61	android/os/Bundle:<init>	()V
+    //   10: invokespecial 62	android/os/Bundle:<init>	()V
     //   13: astore_3
     //   14: aload_3
     //   15: ldc 29
     //   17: iconst_4
-    //   18: invokevirtual 65	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   18: invokevirtual 66	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   21: aload_3
     //   22: ldc 38
     //   24: iload_1
-    //   25: invokevirtual 65	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   25: invokevirtual 66	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   28: aload_3
     //   29: ldc 26
     //   31: iload_2
-    //   32: invokevirtual 65	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   35: invokestatic 71	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   38: invokevirtual 75	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
-    //   41: ldc 77
-    //   43: ldc 79
+    //   32: invokevirtual 66	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   35: invokestatic 72	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   38: invokevirtual 76	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
+    //   41: ldc 78
+    //   43: ldc 80
     //   45: aload_3
-    //   46: invokevirtual 85	eipc/EIPCClient:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Leipc/EIPCResult;
+    //   46: invokevirtual 86	eipc/EIPCClient:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Leipc/EIPCResult;
     //   49: astore 5
     //   51: aconst_null
     //   52: astore 4
@@ -82,52 +82,52 @@ public class RedPacketProxyImpl
     //   62: aload 4
     //   64: astore_3
     //   65: aload 5
-    //   67: invokevirtual 91	eipc/EIPCResult:isSuccess	()Z
+    //   67: invokevirtual 92	eipc/EIPCResult:isSuccess	()Z
     //   70: ifeq +96 -> 166
     //   73: aload 5
-    //   75: getfield 95	eipc/EIPCResult:data	Landroid/os/Bundle;
-    //   78: ldc 97
-    //   80: invokevirtual 101	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   75: getfield 96	eipc/EIPCResult:data	Landroid/os/Bundle;
+    //   78: ldc 98
+    //   80: invokevirtual 102	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   83: astore 4
     //   85: aload 5
-    //   87: getfield 95	eipc/EIPCResult:data	Landroid/os/Bundle;
-    //   90: ldc 103
-    //   92: invokevirtual 101	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   87: getfield 96	eipc/EIPCResult:data	Landroid/os/Bundle;
+    //   90: ldc 104
+    //   92: invokevirtual 102	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   95: astore 6
     //   97: aload 5
-    //   99: getfield 95	eipc/EIPCResult:data	Landroid/os/Bundle;
-    //   102: ldc 105
-    //   104: invokevirtual 109	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   99: getfield 96	eipc/EIPCResult:data	Landroid/os/Bundle;
+    //   102: ldc 106
+    //   104: invokevirtual 110	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   107: istore_1
     //   108: aload 5
-    //   110: getfield 95	eipc/EIPCResult:data	Landroid/os/Bundle;
-    //   113: ldc 111
-    //   115: invokevirtual 101	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   110: getfield 96	eipc/EIPCResult:data	Landroid/os/Bundle;
+    //   113: ldc 112
+    //   115: invokevirtual 102	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   118: astore 5
-    //   120: new 113	org/json/JSONObject
+    //   120: new 114	org/json/JSONObject
     //   123: dup
-    //   124: invokespecial 114	org/json/JSONObject:<init>	()V
+    //   124: invokespecial 115	org/json/JSONObject:<init>	()V
     //   127: astore_3
     //   128: aload_3
-    //   129: ldc 97
+    //   129: ldc 98
     //   131: aload 4
-    //   133: invokevirtual 118	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   133: invokevirtual 119	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   136: pop
     //   137: aload_3
-    //   138: ldc 103
+    //   138: ldc 104
     //   140: aload 6
-    //   142: invokevirtual 118	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   142: invokevirtual 119	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   145: pop
     //   146: aload_3
-    //   147: ldc 105
+    //   147: ldc 106
     //   149: iload_1
-    //   150: invokestatic 124	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   153: invokevirtual 118	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   150: invokestatic 125	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   153: invokevirtual 119	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   156: pop
     //   157: aload_3
-    //   158: ldc 111
+    //   158: ldc 112
     //   160: aload 5
-    //   162: invokevirtual 118	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   162: invokevirtual 119	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   165: pop
     //   166: aload_3
     //   167: areturn
@@ -212,7 +212,7 @@ public class RedPacketProxyImpl
   
   public boolean isRiskSwitchOpen()
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_func", 2);
     localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
@@ -225,8 +225,8 @@ public class RedPacketProxyImpl
   public boolean isValidDate(String paramString1, String paramString2)
   {
     long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = QWalletTools.b(paramString1);
-    long l3 = QWalletTools.b(paramString2);
+    long l2 = QWalletTools.f(paramString1);
+    long l3 = QWalletTools.f(paramString2);
     boolean bool2 = true;
     boolean bool1;
     if (l1 >= l2) {
@@ -248,7 +248,7 @@ public class RedPacketProxyImpl
   
   public boolean onGetThemeConfig(int paramInt)
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_func", 6);
     ((Bundle)localObject).putInt("theme_id", paramInt);
@@ -280,7 +280,7 @@ public class RedPacketProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketProxyImpl
  * JD-Core Version:    0.7.0.1
  */

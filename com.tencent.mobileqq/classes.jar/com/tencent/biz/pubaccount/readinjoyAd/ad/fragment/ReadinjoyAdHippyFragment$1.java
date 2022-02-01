@@ -12,13 +12,13 @@ class ReadinjoyAdHippyFragment$1
   public void onClick(View paramView)
   {
     ReadinjoyAdHippyFragment.a(this.a).a();
-    ReadinjoyAdHippyFragment.a(this.a);
     ReadinjoyAdHippyFragment.b(this.a);
+    ReadinjoyAdHippyFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.1
  * JD-Core Version:    0.7.0.1
  */

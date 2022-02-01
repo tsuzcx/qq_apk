@@ -5,23 +5,23 @@ import com.tencent.mobileqq.app.BusinessObserver;
 public class TroopClockInObserver
   implements BusinessObserver
 {
-  public static final int a;
+  private static int a;
   public static final int b;
-  private static int c;
+  public static final int c;
   
   static
   {
-    int i = c;
-    c = i + 1;
-    a = i;
-    i = c;
-    c = i + 1;
+    int i = a;
+    a = i + 1;
     b = i;
+    i = a;
+    a = i + 1;
+    c = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -40,7 +40,7 @@ public class TroopClockInObserver
   
   private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != b) {
+    if (paramInt != c) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -69,7 +69,7 @@ public class TroopClockInObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.clockin.api.TroopClockInObserver
  * JD-Core Version:    0.7.0.1
  */

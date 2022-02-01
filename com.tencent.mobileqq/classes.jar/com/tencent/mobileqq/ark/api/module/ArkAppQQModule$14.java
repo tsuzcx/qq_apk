@@ -13,11 +13,11 @@ class ArkAppQQModule$14
   
   public void run()
   {
-    Object localObject2 = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    Object localObject2 = ark.arkGetContainer(this.a);
     if (localObject2 == null) {
       return;
     }
-    Object localObject1 = ArkAppQQModuleBase.a();
+    Object localObject1 = ArkAppQQModuleBase.f();
     if ((localObject1 instanceof ArkFullScreenAppActivity))
     {
       localObject1 = (ArkFullScreenAppActivity)localObject1;
@@ -26,7 +26,7 @@ class ArkAppQQModule$14
       {
         localObject2 = (ArkAppContainer)((WeakReference)localObject2).get();
         if (localObject2 != null) {
-          ((ArkFullScreenAppActivity)localObject1).a((ArkAppContainer)localObject2, this.jdField_a_of_type_JavaLangString);
+          ((ArkFullScreenAppActivity)localObject1).a((ArkAppContainer)localObject2, this.b);
         }
       }
     }
@@ -34,7 +34,7 @@ class ArkAppQQModule$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.14
  * JD-Core Version:    0.7.0.1
  */

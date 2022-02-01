@@ -16,109 +16,52 @@ import org.json.JSONObject;
 
 public class QQStoryMusicInfo
 {
-  public static final QQStoryMusicInfo a;
-  public static final QQStoryMusicInfo b;
-  public static final QQStoryMusicInfo c;
-  int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  String c;
-  public int d;
-  public String d;
-  public int e;
-  String e;
-  public int f;
-  String f;
+  public static final QQStoryMusicInfo a = new QQStoryMusicInfo(0, HardCodeUtil.a(2131908560));
+  public static final QQStoryMusicInfo b = new QQStoryMusicInfo(1, HardCodeUtil.a(2131908557));
+  public static final QQStoryMusicInfo c = new QQStoryMusicInfo(2, "QQ音乐曲库");
+  public String d = null;
+  public String e = null;
+  String f = null;
   public String g = null;
+  String h = null;
+  String i = null;
+  int j = 0;
+  public int k = -1;
+  public int l = 0;
+  public String m = null;
+  public int n = 0;
+  public int o = 0;
+  public int p = 0;
   
-  static
-  {
-    jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(0, HardCodeUtil.a(2131710889));
-    jdField_b_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(1, HardCodeUtil.a(2131710886));
-    jdField_c_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(2, "QQ音乐曲库");
-  }
-  
-  public QQStoryMusicInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-  }
+  public QQStoryMusicInfo() {}
   
   public QQStoryMusicInfo(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.k = paramInt;
+    this.e = paramString;
   }
   
   public QQStoryMusicInfo(qqstory_struct.MusicConfigInfo paramMusicConfigInfo)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = paramMusicConfigInfo.title.get().toStringUtf8();
-    this.jdField_d_of_type_JavaLangString = paramMusicConfigInfo.audio_url.get().toStringUtf8();
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramMusicConfigInfo.id.get());
+    this.e = paramMusicConfigInfo.title.get().toStringUtf8();
+    this.g = paramMusicConfigInfo.audio_url.get().toStringUtf8();
+    this.k = 3;
+    this.d = String.valueOf(paramMusicConfigInfo.id.get());
   }
   
   public QQStoryMusicInfo(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("title");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("audio_url");
+      this.e = paramString.optString("title");
+      this.g = paramString.optString("audio_url");
       if (paramString.has("type")) {
-        this.jdField_b_of_type_Int = paramString.optInt("type");
+        this.k = paramString.optInt("type");
       } else {
-        this.jdField_b_of_type_Int = 2;
+        this.k = 2;
       }
-      this.jdField_a_of_type_JavaLangString = paramString.optString("id");
+      this.d = paramString.optString("id");
       return;
     }
     catch (JSONException paramString)
@@ -136,19 +79,19 @@ public class QQStoryMusicInfo
     try
     {
       JSONArray localJSONArray = new JSONArray(paramContext);
-      int j = localJSONArray.length();
-      paramContext = new ArrayList(j);
-      int i = 0;
+      int i2 = localJSONArray.length();
+      paramContext = new ArrayList(i2);
+      int i1 = 0;
       for (;;)
       {
         localContext = paramContext;
-        if (i >= j) {
+        if (i1 >= i2) {
           return localContext;
         }
         try
         {
-          paramContext.add(new QQStoryMusicInfo(localJSONArray.optString(i)));
-          i += 1;
+          paramContext.add(new QQStoryMusicInfo(localJSONArray.optString(i1)));
+          i1 += 1;
         }
         catch (JSONException localJSONException1) {}
       }
@@ -170,13 +113,13 @@ public class QQStoryMusicInfo
   {
     if (paramArrayList != null)
     {
-      int j = paramArrayList.size();
+      int i2 = paramArrayList.size();
       JSONArray localJSONArray = new JSONArray();
-      int i = 0;
-      while (i < j)
+      int i1 = 0;
+      while (i1 < i2)
       {
-        localJSONArray.put(((QQStoryMusicInfo)paramArrayList.get(i)).a());
-        i += 1;
+        localJSONArray.put(((QQStoryMusicInfo)paramArrayList.get(i1)).a());
+        i1 += 1;
       }
       paramArrayList = localJSONArray.toString();
     }
@@ -186,7 +129,7 @@ public class QQStoryMusicInfo
     }
     if (TextUtils.isEmpty(paramArrayList))
     {
-      SharePreferenceUtils.a(paramContext, "qqstory_savedMusicList");
+      SharePreferenceUtils.b(paramContext, "qqstory_savedMusicList");
       return;
     }
     SharePreferenceUtils.a(paramContext, "qqstory_savedMusicList", paramArrayList);
@@ -197,10 +140,10 @@ public class QQStoryMusicInfo
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("title", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("audio_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("title", this.e);
+      localJSONObject.put("audio_url", this.g);
       localJSONObject.put("type", 3);
-      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("id", this.d);
     }
     catch (JSONException localJSONException)
     {
@@ -213,19 +156,19 @@ public class QQStoryMusicInfo
   
   public void a(QQStoryMusicInfo paramQQStoryMusicInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramQQStoryMusicInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramQQStoryMusicInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramQQStoryMusicInfo.jdField_c_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = paramQQStoryMusicInfo.jdField_d_of_type_JavaLangString;
-    this.jdField_e_of_type_JavaLangString = paramQQStoryMusicInfo.jdField_e_of_type_JavaLangString;
-    this.jdField_f_of_type_JavaLangString = paramQQStoryMusicInfo.jdField_f_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramQQStoryMusicInfo.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramQQStoryMusicInfo.jdField_b_of_type_Int;
-    this.jdField_c_of_type_Int = paramQQStoryMusicInfo.jdField_c_of_type_Int;
+    this.d = paramQQStoryMusicInfo.d;
+    this.e = paramQQStoryMusicInfo.e;
+    this.f = paramQQStoryMusicInfo.f;
     this.g = paramQQStoryMusicInfo.g;
-    this.jdField_d_of_type_Int = paramQQStoryMusicInfo.jdField_d_of_type_Int;
-    this.jdField_e_of_type_Int = paramQQStoryMusicInfo.jdField_e_of_type_Int;
-    this.jdField_f_of_type_Int = paramQQStoryMusicInfo.jdField_f_of_type_Int;
+    this.h = paramQQStoryMusicInfo.h;
+    this.i = paramQQStoryMusicInfo.i;
+    this.j = paramQQStoryMusicInfo.j;
+    this.k = paramQQStoryMusicInfo.k;
+    this.l = paramQQStoryMusicInfo.l;
+    this.m = paramQQStoryMusicInfo.m;
+    this.n = paramQQStoryMusicInfo.n;
+    this.o = paramQQStoryMusicInfo.o;
+    this.p = paramQQStoryMusicInfo.p;
   }
   
   public boolean equals(Object paramObject)
@@ -240,19 +183,19 @@ public class QQStoryMusicInfo
       return false;
     }
     Object localObject = (QQStoryMusicInfo)paramObject;
-    if ((((QQStoryMusicInfo)localObject).jdField_b_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0)) {
+    if ((((QQStoryMusicInfo)localObject).k == 0) && (this.k == 0)) {
       return true;
     }
-    if ((((QQStoryMusicInfo)localObject).jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int == 1)) {
+    if ((((QQStoryMusicInfo)localObject).k == 1) && (this.k == 1)) {
       return true;
     }
-    if (((QQStoryMusicInfo)localObject).jdField_b_of_type_Int == this.jdField_b_of_type_Int)
+    if (((QQStoryMusicInfo)localObject).k == this.k)
     {
-      String str = ((QQStoryMusicInfo)localObject).jdField_b_of_type_JavaLangString;
-      if ((str != null) && (str.equals(this.jdField_b_of_type_JavaLangString)))
+      String str = ((QQStoryMusicInfo)localObject).e;
+      if ((str != null) && (str.equals(this.e)))
       {
-        localObject = ((QQStoryMusicInfo)localObject).jdField_d_of_type_JavaLangString;
-        if ((localObject != null) && (((String)localObject).equals(this.jdField_d_of_type_JavaLangString))) {
+        localObject = ((QQStoryMusicInfo)localObject).g;
+        if ((localObject != null) && (((String)localObject).equals(this.g))) {
           return true;
         }
       }

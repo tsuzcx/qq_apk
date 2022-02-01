@@ -9,7 +9,7 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder A(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.S(paramAbsBaseArticleInfo, this.a);
+    Util.T(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -26,7 +26,7 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder D(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.U(paramAbsBaseArticleInfo, this.a);
+    Util.V(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -41,79 +41,79 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder F(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.y(paramAbsBaseArticleInfo, this.a);
+    Util.z(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder G(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.V(paramAbsBaseArticleInfo, this.a);
+    Util.W(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder H(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.W(paramAbsBaseArticleInfo, this.a);
+    Util.X(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder I(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.Y(paramAbsBaseArticleInfo, this.a);
+    Util.Z(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder J(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.Z(paramAbsBaseArticleInfo, this.a);
+    Util.aa(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder K(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.aa(paramAbsBaseArticleInfo, this.a);
+    Util.ab(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder L(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.X(paramAbsBaseArticleInfo, this.a);
+    Util.Y(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder M(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.C(paramAbsBaseArticleInfo, this.a);
+    Util.D(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder N(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.E(paramAbsBaseArticleInfo, this.a);
+    Util.F(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder O(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.Q(paramAbsBaseArticleInfo, this.a);
+    Util.R(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder P(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.ag(paramAbsBaseArticleInfo, this.a);
+    Util.ah(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder Q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.am(paramAbsBaseArticleInfo, this.a);
-    Util.ah(paramAbsBaseArticleInfo, this.a);
+    Util.an(paramAbsBaseArticleInfo, this.a);
     Util.ai(paramAbsBaseArticleInfo, this.a);
     Util.aj(paramAbsBaseArticleInfo, this.a);
     Util.ak(paramAbsBaseArticleInfo, this.a);
     Util.al(paramAbsBaseArticleInfo, this.a);
-    Util.ao(paramAbsBaseArticleInfo, this.a);
+    Util.am(paramAbsBaseArticleInfo, this.a);
+    Util.ap(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -155,7 +155,7 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.r(paramAbsBaseArticleInfo, this.a);
+    Util.s(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -167,7 +167,7 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.A(paramAbsBaseArticleInfo, this.a);
+    Util.B(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -179,7 +179,7 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.s(paramAbsBaseArticleInfo, this.a);
+    Util.t(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -191,31 +191,31 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.t(paramAbsBaseArticleInfo, this.a);
+    Util.u(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.u(paramAbsBaseArticleInfo, this.a);
+    Util.v(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.v(paramAbsBaseArticleInfo, this.a);
+    Util.w(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder h(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.w(paramAbsBaseArticleInfo, this.a);
+    Util.x(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder i(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.T(paramAbsBaseArticleInfo, this.a);
+    Util.U(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -227,103 +227,103 @@ public class ProteusItemDataBuilder
   
   public ProteusItemDataBuilder k(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.l(paramAbsBaseArticleInfo, this.a);
+    Util.m(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder l(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.m(paramAbsBaseArticleInfo, this.a);
+    Util.n(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder m(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.L(paramAbsBaseArticleInfo, this.a);
+    Util.M(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder n(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.J(paramAbsBaseArticleInfo, this.a);
+    Util.K(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder o(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.M(paramAbsBaseArticleInfo, this.a);
+    Util.N(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder p(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.N(paramAbsBaseArticleInfo, this.a);
+    Util.O(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.K(paramAbsBaseArticleInfo, this.a);
+    Util.L(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.n(paramAbsBaseArticleInfo, this.a);
+    Util.o(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.o(paramAbsBaseArticleInfo, this.a);
+    Util.p(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder t(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.p(paramAbsBaseArticleInfo, this.a);
+    Util.q(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder u(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.q(paramAbsBaseArticleInfo, this.a);
+    Util.r(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder v(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.G(paramAbsBaseArticleInfo, this.a);
+    Util.H(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder w(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.I(paramAbsBaseArticleInfo, this.a);
+    Util.J(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder x(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.O(paramAbsBaseArticleInfo, this.a);
+    Util.P(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder y(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.P(paramAbsBaseArticleInfo, this.a);
+    Util.Q(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
   public ProteusItemDataBuilder z(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Util.R(paramAbsBaseArticleInfo, this.a);
+    Util.S(paramAbsBaseArticleInfo, this.a);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ProteusItemDataBuilder
  * JD-Core Version:    0.7.0.1
  */

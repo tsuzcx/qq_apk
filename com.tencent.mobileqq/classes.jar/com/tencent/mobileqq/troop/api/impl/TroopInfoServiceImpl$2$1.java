@@ -9,12 +9,12 @@ class TroopInfoServiceImpl$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopInfoServiceImpl$2.a.onResult(this.jdField_a_of_type_JavaLangString);
+    this.b.b.onResult(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopInfoServiceImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

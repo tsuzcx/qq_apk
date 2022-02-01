@@ -23,7 +23,7 @@ public class EffectBeautyTools
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AVPathUtil.l());
+    localStringBuilder.append(AVPathUtil.p());
     localStringBuilder.append("SKINCOLOR");
     localStringBuilder.append(File.separator);
     a = localStringBuilder.toString();
@@ -89,26 +89,19 @@ public class EffectBeautyTools
     return localObject2;
   }
   
-  private static void a()
-  {
-    SharedPreferences.Editor localEditor = QAVConfigUtils.a(180, QAVConfigUtils.b).edit();
-    localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
-    localEditor.commit();
-  }
-  
   public static void a(Context paramContext)
   {
     try
     {
       if (a())
       {
-        a();
+        b();
         if (new File(a).exists()) {
           FileUtils.deleteDirectory(a);
         }
       }
-      paramContext = a(QAVConfigUtils.a(180, QAVConfigUtils.b));
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.a)))
+      paramContext = a(QAVConfigUtils.b(180, QAVConfigUtils.b));
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.b)))
       {
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(a);
@@ -122,10 +115,10 @@ public class EffectBeautyTools
         {
           localObject = new HttpNetReq();
           ((HttpNetReq)localObject).mCallback = new EffectBeautyTools.MyHttpListener();
-          ((HttpNetReq)localObject).mReqUrl = paramContext.a;
+          ((HttpNetReq)localObject).mReqUrl = paramContext.b;
           ((HttpNetReq)localObject).mHttpMethod = 0;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(AVPathUtil.l());
+          localStringBuilder.append(AVPathUtil.p());
           localStringBuilder.append("skin_color.zip");
           ((HttpNetReq)localObject).mOutPath = localStringBuilder.toString();
           ((HttpNetReq)localObject).setUserData(paramContext);
@@ -139,7 +132,7 @@ public class EffectBeautyTools
   
   public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    a(paramContext, paramString, QAVConfigUtils.a(180, QAVConfigUtils.b));
+    a(paramContext, paramString, QAVConfigUtils.b(180, QAVConfigUtils.b));
     QAVConfigUtils.a(180, QAVConfigUtils.b, paramInt, paramString);
     if (paramBoolean) {
       a(paramContext);
@@ -164,7 +157,7 @@ public class EffectBeautyTools
       FileUtils.deleteDirectory(a);
       return;
     }
-    if ((paramString1 != null) && (!paramContext.b.equals(paramString1.b))) {
+    if ((paramString1 != null) && (!paramContext.c.equals(paramString1.c))) {
       FileUtils.deleteDirectory(a);
     }
   }
@@ -182,6 +175,13 @@ public class EffectBeautyTools
       bool = true;
     }
     return bool;
+  }
+  
+  private static void b()
+  {
+    SharedPreferences.Editor localEditor = QAVConfigUtils.a(180, QAVConfigUtils.b).edit();
+    localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
+    localEditor.commit();
   }
 }
 

@@ -35,7 +35,7 @@ public class CitySplitStrategy
     while (paramList.hasNext())
     {
       localObject2 = (StoryAlbum.PicInfo)paramList.next();
-      Object localObject3 = ((StoryAlbum.PicInfo)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      Object localObject3 = ((StoryAlbum.PicInfo)localObject2).o;
       if (localObject3 != null)
       {
         localObject3 = a((AddressItem)localObject3);
@@ -52,7 +52,7 @@ public class CitySplitStrategy
       }
       else
       {
-        SLog.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((StoryAlbum.PicInfo)localObject2).jdField_a_of_type_JavaLangString);
+        SLog.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((StoryAlbum.PicInfo)localObject2).b);
       }
     }
     paramList = new ArrayList();
@@ -73,7 +73,7 @@ public class CitySplitStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.CitySplitStrategy
  * JD-Core Version:    0.7.0.1
  */

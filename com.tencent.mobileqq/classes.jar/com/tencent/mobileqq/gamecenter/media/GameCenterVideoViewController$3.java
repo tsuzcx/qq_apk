@@ -13,18 +13,18 @@ class GameCenterVideoViewController$3
   
   public void run()
   {
-    String str = HardCodeUtil.a(2131705123);
+    String str = HardCodeUtil.a(2131903013);
     if (!NetworkUtil.isNetworkAvailable(this.this$0.getContext())) {
-      str = this.this$0.getContext().getString(2131717855);
+      str = this.this$0.getContext().getString(2131915328);
     } else if (GameCenterVideoViewController.access$300(this.this$0).type == 1) {
-      str = HardCodeUtil.a(2131705130);
+      str = HardCodeUtil.a(2131903020);
     }
-    QQToast.a(this.this$0.getContext(), 1, str, 0).b(0);
+    QQToast.makeText(this.this$0.getContext(), 1, str, 0).show(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController.3
  * JD-Core Version:    0.7.0.1
  */

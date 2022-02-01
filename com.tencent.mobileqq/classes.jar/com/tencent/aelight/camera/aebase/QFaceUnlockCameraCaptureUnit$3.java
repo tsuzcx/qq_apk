@@ -10,14 +10,14 @@ class QFaceUnlockCameraCaptureUnit$3
   
   public void run()
   {
-    if (QFaceUnlockCameraCaptureUnit.a(this.this$0) != null) {
+    if (QFaceUnlockCameraCaptureUnit.d(this.this$0) != null) {
       try
       {
         if (QLog.isColorLevel()) {
           QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord begin");
         }
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).stop();
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).reset();
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).stop();
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).reset();
         if (QLog.isColorLevel()) {
           QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord end");
         }
@@ -49,7 +49,7 @@ class QFaceUnlockCameraCaptureUnit$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QFaceUnlockCameraCaptureUnit.3
  * JD-Core Version:    0.7.0.1
  */

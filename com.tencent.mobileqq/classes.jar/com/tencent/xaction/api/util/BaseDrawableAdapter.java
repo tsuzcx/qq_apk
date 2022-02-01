@@ -40,14 +40,23 @@ public final class BaseDrawableAdapter
     paramType = paramType.getAsString();
     paramType = (String)GsonAdapter.a.c().get(paramType);
     if (paramType != null) {
-      return (DecorDrawableState)paramJsonDeserializationContext.deserialize(paramJsonElement, (Type)Class.forName(paramType));
+      try
+      {
+        paramJsonElement = (DecorDrawableState)paramJsonDeserializationContext.deserialize(paramJsonElement, (Type)Class.forName(paramType));
+        return paramJsonElement;
+      }
+      catch (ClassNotFoundException paramJsonElement)
+      {
+        paramJsonElement.printStackTrace();
+        return (DecorDrawableState)new DefaultDrawable.DefaultDrawableState();
+      }
     }
     return (DecorDrawableState)new DefaultDrawable.DefaultDrawableState();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.util.BaseDrawableAdapter
  * JD-Core Version:    0.7.0.1
  */

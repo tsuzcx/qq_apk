@@ -33,13 +33,13 @@ public class AdDownloadStateQueryUtil
     if (paramDownloadInfo == null) {
       return;
     }
-    if (paramDownloadInfo.l != null)
+    if (paramDownloadInfo.q != null)
     {
-      File localFile = new File(paramDownloadInfo.l);
+      File localFile = new File(paramDownloadInfo.q);
       if ((localFile.exists()) && (localFile.isFile()))
       {
         paramDownloadInfo.a(4);
-        paramDownloadInfo.f = 100;
+        paramDownloadInfo.t = 100;
         return;
       }
     }
@@ -48,19 +48,19 @@ public class AdDownloadStateQueryUtil
       if (ADBaseAppDownloadManager.a(BaseApplicationImpl.getContext(), paramDownloadInfo.e))
       {
         paramDownloadInfo.a(4);
-        paramDownloadInfo.f = 100;
+        paramDownloadInfo.t = 100;
         return;
       }
       paramDownloadInfo.a(1);
-      paramDownloadInfo.f = 0;
+      paramDownloadInfo.t = 0;
       return;
     }
-    if ((paramDownloadInfo.f == 0) && (paramDownloadInfo.a() != 1))
+    if ((paramDownloadInfo.t == 0) && (paramDownloadInfo.a() != 1))
     {
       paramDownloadInfo.a(1);
       return;
     }
-    if ((paramDownloadInfo.f == 100) && (paramDownloadInfo.a() != 4)) {
+    if ((paramDownloadInfo.t == 100) && (paramDownloadInfo.a() != 4)) {
       paramDownloadInfo.a(4);
     }
   }
@@ -72,7 +72,7 @@ public class AdDownloadStateQueryUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateQueryUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -18,42 +18,40 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 public class QQMapView
   extends MapView
 {
-  GeoPoint jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
-  QQMapView.QQMapViewObserver jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver;
-  private TencentMap.OnCameraChangeListener jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener;
-  protected boolean a;
-  boolean b = false;
+  QQMapView.QQMapViewObserver a;
+  GeoPoint b;
+  protected boolean c = false;
+  boolean d = false;
+  private TencentMap.OnCameraChangeListener e;
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new QQMapView.2(this);
-    getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
+    this.e = new QQMapView.2(this);
+    getMap().setOnCameraChangeListener(this.e);
   }
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramTencentMapOptions);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new QQMapView.1(this);
-    getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
+    this.e = new QQMapView.1(this);
+    getMap().setOnCameraChangeListener(this.e);
   }
   
   private void a(CameraPosition paramCameraPosition)
   {
-    if (this.b)
+    if (this.d)
     {
       QLog.d("QQMapView", 1, "dismiss map scroll");
-      this.b = false;
+      this.d = false;
       return;
     }
     paramCameraPosition = new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D));
-    Object localObject = this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
+    Object localObject = this.b;
     if (localObject != null)
     {
       int i = Math.abs(((GeoPoint)localObject).getLatitudeE6() - paramCameraPosition.getLatitudeE6());
-      int j = Math.abs(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
+      int j = Math.abs(this.b.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("dealMapScroll() latScroll =");
       ((StringBuilder)localObject).append(i);
@@ -64,20 +62,20 @@ public class QQMapView
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver.onMapScrollEnd(paramCameraPosition);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramCameraPosition;
+    this.a.onMapScrollEnd(paramCameraPosition);
+    this.c = false;
+    this.b = paramCameraPosition;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver = null;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = null;
+    this.a = null;
+    this.e = null;
   }
   
   public void b()
   {
-    this.b = true;
+    this.d = true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -93,12 +91,12 @@ public class QQMapView
   
   public void setObserver(QQMapView.QQMapViewObserver paramQQMapViewObserver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver = paramQQMapViewObserver;
+    this.a = paramQQMapViewObserver;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView
  * JD-Core Version:    0.7.0.1
  */

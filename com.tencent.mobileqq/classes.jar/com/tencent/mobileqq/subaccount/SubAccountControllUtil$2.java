@@ -15,20 +15,20 @@ final class SubAccountControllUtil$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SubAccountAssistantForward.b(this.jdField_a_of_type_MqqAppAppRuntime);
-    SubAccountAssistantForward.a(this.jdField_a_of_type_MqqAppAppRuntime);
-    SubAccountAssistantForward.c(this.jdField_a_of_type_MqqAppAppRuntime);
-    SubAccountAssistantForward.d(this.jdField_a_of_type_MqqAppAppRuntime);
+    SubAccountAssistantForward.b(this.a);
+    SubAccountAssistantForward.a(this.a);
+    SubAccountAssistantForward.c(this.a);
+    SubAccountAssistantForward.d(this.a);
     paramDialogInterface = new Intent();
     paramDialogInterface.putExtra("tab_index", FrameControllerUtil.a);
     paramDialogInterface.setFlags(67108864);
-    RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramDialogInterface, "/base/start/splash");
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
+    RouteUtils.a(this.b, paramDialogInterface, "/base/start/splash");
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountControllUtil.2
  * JD-Core Version:    0.7.0.1
  */

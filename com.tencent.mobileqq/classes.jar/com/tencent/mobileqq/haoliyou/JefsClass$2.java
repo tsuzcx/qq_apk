@@ -15,7 +15,7 @@ class JefsClass$2
   {
     try
     {
-      ((PluginProxyActivity)this.jdField_a_of_type_AndroidAppActivity).superStartActivityForResult(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      ((PluginProxyActivity)this.a).superStartActivityForResult(this.b, this.c, this.d);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -23,7 +23,7 @@ class JefsClass$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.2
  * JD-Core Version:    0.7.0.1
  */

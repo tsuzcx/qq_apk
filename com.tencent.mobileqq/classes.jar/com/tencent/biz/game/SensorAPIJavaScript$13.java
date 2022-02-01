@@ -13,8 +13,8 @@ class SensorAPIJavaScript$13
     if (paramBundle != null)
     {
       int i = paramBundle.getInt("mode");
-      paramBundle = this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript;
-      String str = this.jdField_a_of_type_JavaLangString;
+      paramBundle = this.b;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(i);
       localStringBuilder.append("");
@@ -24,7 +24,7 @@ class SensorAPIJavaScript$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.13
  * JD-Core Version:    0.7.0.1
  */

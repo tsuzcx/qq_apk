@@ -23,46 +23,46 @@ class ChatHistoryC2CAllFragment$5
   
   public void run()
   {
-    if (VasUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getVipStatus().isSVip())
+    if (VasUtil.b(this.this$0.a).getVipStatus().isSVip())
     {
       localObject1 = this.this$0;
-      ((ChatHistoryC2CAllFragment)localObject1).jdField_b_of_type_JavaLangString = "svip";
-      ((ChatHistoryC2CAllFragment)localObject1).c = "2";
+      ((ChatHistoryC2CAllFragment)localObject1).C = "svip";
+      ((ChatHistoryC2CAllFragment)localObject1).D = "2";
     }
-    else if (VasUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getVipStatus().isVip())
+    else if (VasUtil.b(this.this$0.a).getVipStatus().isVip())
     {
       localObject1 = this.this$0;
-      ((ChatHistoryC2CAllFragment)localObject1).jdField_b_of_type_JavaLangString = "vip";
-      ((ChatHistoryC2CAllFragment)localObject1).c = "1";
+      ((ChatHistoryC2CAllFragment)localObject1).C = "vip";
+      ((ChatHistoryC2CAllFragment)localObject1).D = "1";
     }
     else
     {
       localObject1 = this.this$0;
-      ((ChatHistoryC2CAllFragment)localObject1).jdField_b_of_type_JavaLangString = "notvip";
-      ((ChatHistoryC2CAllFragment)localObject1).c = "0";
+      ((ChatHistoryC2CAllFragment)localObject1).C = "notvip";
+      ((ChatHistoryC2CAllFragment)localObject1).D = "0";
     }
-    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.this$0.a;
     boolean bool = true;
-    VipUtils.a((AppInterface)localObject1, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.jdField_b_of_type_JavaLangString });
+    VipUtils.a((AppInterface)localObject1, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.C });
     try
     {
-      localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
+      localObject2 = this.this$0.a.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("setting_guide_tips_flag");
-      ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject1).append(this.this$0.a.getCurrentAccountUin());
       if (1 == ((SharedPreferences)localObject2).getInt(((StringBuilder)localObject1).toString(), -1)) {
         break label616;
       }
       localObject1 = ((SharedPreferences)localObject2).edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setting_guide_tips_show_time");
-      localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.this$0.a.getCurrentAccountUin());
       j = ((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 1);
-      if (this.this$0.c.equals("2")) {
+      if (this.this$0.D.equals("2")) {
         break label658;
       }
-      if (this.this$0.c.equals("1")) {
-        if (this.this$0.jdField_a_of_type_Int < 3) {
+      if (this.this$0.D.equals("1")) {
+        if (this.this$0.B < 3) {
           break label663;
         }
       } else {
@@ -84,7 +84,7 @@ class ChatHistoryC2CAllFragment$5
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("setting_guide_tips_flag");
-      ((StringBuilder)localObject2).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.this$0.a.getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), 1);
     }
     int i = TimeZone.getTimeZone("GMT+8").getRawOffset();
@@ -109,14 +109,14 @@ class ChatHistoryC2CAllFragment$5
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("setting_guide_tips_show_time");
-        ((StringBuilder)localObject2).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append(this.this$0.a.getCurrentAccountUin());
         ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), i).commit();
-        this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.this$0.jdField_b_of_type_AndroidViewView));
+        this.this$0.F.sendMessage(this.this$0.F.obtainMessage(10, this.this$0.O));
       }
       label616:
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b() == 0)
+      if (this.this$0.G.z() == 0)
       {
-        MessageRoamHandler localMessageRoamHandler = (MessageRoamHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+        MessageRoamHandler localMessageRoamHandler = (MessageRoamHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
         if (localMessageRoamHandler != null) {
           localMessageRoamHandler.a();
         }
@@ -134,7 +134,7 @@ class ChatHistoryC2CAllFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.5
  * JD-Core Version:    0.7.0.1
  */

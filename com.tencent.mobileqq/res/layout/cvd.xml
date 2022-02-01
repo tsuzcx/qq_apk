@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
+<RelativeLayout android:id="@id/im8" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_information" android:layout_marginTop="6.0dip" style="@style/bw" />
-    <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/jfb" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" android:layout_toLeftOf="@id/yw" android:layout_toRightOf="@id/icon" android:lineSpacingExtra="5.0dip" />
-    <ImageView android:id="@id/yw" android:layout_marginTop="8.0dip" android:layout_alignParentRight="true" style="@style/bv" />
+    <com.tencent.widget.XExpandableListView android:scrollbarThumbVertical="@drawable/b2n" android:layout_gravity="center|left|top" android:id="@id/ec6" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:layout_weight="1.0" />
+    <RelativeLayout android:id="@id/jzs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:id="@id/d7z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="56.0dip" android:layout_marginRight="56.0dip" android:layout_marginBottom="15.0dip" android:maxHeight="4.0dip" android:max="100" android:progressDrawable="@drawable/am" android:minHeight="4.0dip" android:layout_centerInParent="true" style="?android:progressBarStyleHorizontal" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/j4" android:id="@id/efr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/t_d" android:layout_above="@id/d7z" android:layout_centerInParent="true" />
+    </RelativeLayout>
 </RelativeLayout>

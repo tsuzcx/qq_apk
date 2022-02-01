@@ -14,22 +14,24 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.selectmember.api.ISelectMemberRefatorHelperApi;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.guild.api.IQQGuildService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 class SelectedAndSearchBar$GridViewAdapter
   extends BaseAdapter
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private Drawable c;
+  private Bitmap d;
   
   public SelectedAndSearchBar$GridViewAdapter(SelectedAndSearchBar paramSelectedAndSearchBar)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = SelectedAndSearchBar.a(paramSelectedAndSearchBar).getResources().getDrawable(2130844953);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BaseImageUtil.f();
+    this.c = SelectedAndSearchBar.g(paramSelectedAndSearchBar).getResources().getDrawable(2130846389);
+    this.d = BaseImageUtil.k();
   }
   
   private int a(int paramInt)
@@ -42,40 +44,43 @@ class SelectedAndSearchBar$GridViewAdapter
       return 4;
     }
     if (paramInt == 3000) {
-      i = 101;
+      return 101;
+    }
+    if (paramInt == 10014) {
+      i = 117;
     }
     return i;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      if ((SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar) != null) && (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).size() > 0))
+      if ((SelectedAndSearchBar.a(this.a) != null) && (SelectedAndSearchBar.a(this.a).size() > 0))
       {
-        ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).get(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).size() - 1);
-        if (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar) != null) {
-          SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).a(localResultRecord);
+        ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.a).get(SelectedAndSearchBar.a(this.a).size() - 1);
+        if (SelectedAndSearchBar.b(this.a) != null) {
+          SelectedAndSearchBar.b(this.a).a(localResultRecord);
         }
-        this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar.a(false);
-        this.jdField_a_of_type_Boolean = false;
+        this.a.a(false);
+        this.b = false;
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       super.notifyDataSetChanged();
     }
   }
   
   public int getCount()
   {
-    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).size();
+    return SelectedAndSearchBar.a(this.a).size();
   }
   
   public Object getItem(int paramInt)
   {
-    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).get(paramInt);
+    return SelectedAndSearchBar.a(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -86,18 +91,26 @@ class SelectedAndSearchBar$GridViewAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
-    Bitmap localBitmap = null;
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar)).inflate(2131559277, null);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("#getView() ");
+      ((StringBuilder)localObject).append(localResultRecord.toString());
+      QLog.i("SelectedAndSearchBar", 2, ((StringBuilder)localObject).toString());
     }
-    localView.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)localView.findViewById(2131366401);
+    Bitmap localBitmap = null;
+    Object localObject = paramView;
+    if (paramView == null) {
+      localObject = LayoutInflater.from(SelectedAndSearchBar.g(this.a)).inflate(2131625198, null);
+    }
+    ((View)localObject).setTag(localResultRecord);
+    ImageView localImageView = (ImageView)((View)localObject).findViewById(2131432714);
     if (paramInt == getCount() - 1)
     {
-      paramView = localBitmap;
-      if (this.jdField_a_of_type_Boolean) {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (this.b) {
+        paramView = this.c;
+      } else {
+        paramView = null;
       }
       localImageView.setImageDrawable(paramView);
     }
@@ -118,59 +131,67 @@ class SelectedAndSearchBar$GridViewAdapter
       j = localResultRecord.type;
     }
     localResultRecord.type = j;
-    if (AppConstants.DATALINE_PC_UIN.equals(localResultRecord.uin))
+    if (localResultRecord.uinType == 10014)
     {
-      localImageView.setBackgroundResource(2130844282);
+      paramView = localBitmap;
+      if (SelectedAndSearchBar.h(this.a) != null) {
+        paramView = SelectedAndSearchBar.h(this.a).getAvatarDrawable(localResultRecord.guildId, 100, null, true);
+      }
+      localImageView.setBackgroundDrawable(paramView);
+    }
+    else if (AppConstants.DATALINE_PC_UIN.equals(localResultRecord.uin))
+    {
+      localImageView.setBackgroundResource(2130845599);
     }
     else if (AppConstants.DATALINE_IPAD_UIN.equals(localResultRecord.uin))
     {
-      localImageView.setBackgroundResource(2130844277);
+      localImageView.setBackgroundResource(2130845594);
     }
     else if (AppConstants.DATALINE_PRINTER_UIN.equals(localResultRecord.uin))
     {
-      localImageView.setBackgroundResource(2130844285);
+      localImageView.setBackgroundResource(2130845602);
     }
     else if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(localResultRecord.uin))
     {
-      localImageView.setBackgroundResource(2130839566);
+      localImageView.setBackgroundResource(2130839779);
     }
     else if (localResultRecord.type == 5)
     {
-      localImageView.setImageResource(2130842159);
+      localImageView.setImageResource(2130843087);
     }
     else
     {
       String str = localResultRecord.uin;
-      localBitmap = SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).getBitmapFromCache(i, str);
+      localBitmap = SelectedAndSearchBar.i(this.a).getBitmapFromCache(i, str);
       paramView = localBitmap;
       if (localBitmap == null)
       {
-        SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).requestDecodeFace(str, i, true);
-        paramView = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        SelectedAndSearchBar.i(this.a).requestDecodeFace(str, i, true);
+        paramView = this.d;
       }
-      localImageView.setBackgroundDrawable(new BitmapDrawable(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar).getResources(), paramView));
+      localImageView.setBackgroundDrawable(new BitmapDrawable(SelectedAndSearchBar.g(this.a).getResources(), paramView));
     }
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localImageView.setContentDescription(localResultRecord.name);
     }
-    if (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar) == 1)
+    if (SelectedAndSearchBar.j(this.a) == 1)
     {
-      paramView = (ImageView)localView.findViewById(2131369370);
+      paramView = (ImageView)((View)localObject).findViewById(2131436399);
       ((ISelectMemberRefatorHelperApi)QRoute.api(ISelectMemberRefatorHelperApi.class)).updateSelectGradeIcon(paramView, localResultRecord.uin);
     }
-    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-    return localView;
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectedAndSearchBar.GridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

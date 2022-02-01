@@ -24,24 +24,24 @@ import java.util.Iterator;
 public class MemoryDayView
 {
   public Context a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private MemoryDayView.OnItemClick jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick = new MemoryDayView.1(this);
-  private MemoryDayView.OnShareClick jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnShareClick = null;
-  public String a;
   public String b;
-  private String c;
+  public String c;
+  private LinearLayout d = null;
+  private String e;
+  private MemoryDayView.OnItemClick f = new MemoryDayView.1(this);
+  private MemoryDayView.OnShareClick g = null;
   
   public MemoryDayView(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramString;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.a = paramContext;
+    this.e = paramString;
+    this.d = new LinearLayout(paramContext);
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
+    this.d.setOrientation(1);
+    this.d.setLayoutParams(paramContext);
     paramContext = FriendIntimateRelationshipConfProcessor.a();
-    this.jdField_a_of_type_JavaLangString = paramContext.O;
     this.b = paramContext.P;
+    this.c = paramContext.Q;
   }
   
   private int a(String paramString, float paramFloat, int paramInt)
@@ -52,14 +52,14 @@ public class MemoryDayView
     if (!bool)
     {
       Paint localPaint = new Paint();
-      localPaint.setTextSize(TypedValue.applyDimension(2, paramFloat, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+      localPaint.setTextSize(TypedValue.applyDimension(2, paramFloat, this.a.getResources().getDisplayMetrics()));
       i = (int)localPaint.measureText(paramString, 0, paramString.length());
     }
     else
     {
       i = 0;
     }
-    paramString = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    paramString = (WindowManager)this.a.getSystemService("window");
     if (paramString != null) {
       j = paramString.getDefaultDisplay().getWidth();
     }
@@ -83,29 +83,18 @@ public class MemoryDayView
     }
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     localIntent.putExtra("url", paramString);
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131706577));
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     paramContext.startActivity(localIntent);
   }
   
   public LinearLayout a()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public void a()
-  {
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    if (localLinearLayout != null) {
-      localLinearLayout.removeAllViews();
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    return this.d;
   }
   
   public void a(Context paramContext, ArrayList<IntimateInfo.MemoryDayInfo> paramArrayList)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject1 = this.d;
     if (localObject1 != null)
     {
       ((LinearLayout)localObject1).removeAllViews();
@@ -129,7 +118,7 @@ public class MemoryDayView
       }
       if (((ArrayList)localObject1).size() > 0)
       {
-        paramArrayList = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+        paramArrayList = this.d;
         int i = 0;
         paramArrayList.setVisibility(0);
         while (i < ((ArrayList)localObject1).size())
@@ -137,25 +126,36 @@ public class MemoryDayView
           paramArrayList = (IntimateInfo.MemoryDayInfo)((ArrayList)localObject1).get(i);
           localObject2 = new MemoryDayView.MemoryDayItem(this, paramContext);
           ((MemoryDayView.MemoryDayItem)localObject2).a(paramArrayList);
-          ((MemoryDayView.MemoryDayItem)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick);
+          ((MemoryDayView.MemoryDayItem)localObject2).a(this.f);
           if (((MemoryDayView.MemoryDayItem)localObject2).a() != null) {
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((MemoryDayView.MemoryDayItem)localObject2).a());
+            this.d.addView(((MemoryDayView.MemoryDayItem)localObject2).a());
           }
           i += 1;
         }
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.d.setVisibility(8);
     }
   }
   
   public void a(MemoryDayView.OnShareClick paramOnShareClick)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnShareClick = paramOnShareClick;
+    this.g = paramOnShareClick;
+  }
+  
+  public void b()
+  {
+    LinearLayout localLinearLayout = this.d;
+    if (localLinearLayout != null) {
+      localLinearLayout.removeAllViews();
+    }
+    this.d = null;
+    this.f = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.MemoryDayView
  * JD-Core Version:    0.7.0.1
  */

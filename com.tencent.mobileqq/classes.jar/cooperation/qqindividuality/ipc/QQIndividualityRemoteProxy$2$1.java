@@ -9,9 +9,9 @@ class QQIndividualityRemoteProxy$2$1
   
   public void run()
   {
-    while (!this.a.a.a.isEmpty())
+    while (!this.a.a.f.isEmpty())
     {
-      QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper localQQIndividualityRemoteProxyCallWrapper = (QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper)this.a.a.a.poll();
+      QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper localQQIndividualityRemoteProxyCallWrapper = (QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper)this.a.a.f.poll();
       if (localQQIndividualityRemoteProxyCallWrapper != null) {
         this.a.a.a(localQQIndividualityRemoteProxyCallWrapper);
       }
@@ -20,7 +20,7 @@ class QQIndividualityRemoteProxy$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1
  * JD-Core Version:    0.7.0.1
  */

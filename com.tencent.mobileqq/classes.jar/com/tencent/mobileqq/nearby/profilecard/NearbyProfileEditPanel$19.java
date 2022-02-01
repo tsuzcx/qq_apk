@@ -11,33 +11,33 @@ class NearbyProfileEditPanel$19
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mEnterProfileIntent.getIntExtra("param_mode", 0) == 1)
+    if (this.a.F.mEnterProfileIntent.getIntExtra("param_mode", 0) == 1)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
+      if (this.a.G != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.showCancelAlertDialog(2131699028);
+        this.a.F.showCancelAlertDialog(2131897037);
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      this.a.F.finish();
       return;
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mIsProfileOk == 0)
+    this.a.t();
+    if (this.a.F.mIsProfileOk == 0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.showCancelAlertDialog(2131699028);
+      this.a.F.showCancelAlertDialog(2131897037);
       return;
     }
-    if (this.a.a())
+    if (this.a.d())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.showCancelAlertDialog(2131699024);
+      this.a.F.showCancelAlertDialog(2131897033);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.quitEditWithoutSaving();
+    this.a.F.quitEditWithoutSaving();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.19
  * JD-Core Version:    0.7.0.1
  */

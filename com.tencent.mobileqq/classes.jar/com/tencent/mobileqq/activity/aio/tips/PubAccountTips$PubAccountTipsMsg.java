@@ -5,57 +5,57 @@ import org.json.JSONObject;
 
 public class PubAccountTips$PubAccountTipsMsg
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  protected int c;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  public long d;
-  String jdField_d_of_type_JavaLangString;
-  int e = 0;
+  JSONObject a;
+  int b;
+  int c = 0;
+  long d;
+  String e;
+  String f;
+  String g;
+  long h;
+  long i;
+  protected int j;
+  int k = 0;
+  int l = 0;
+  String m;
+  public long n;
   
   public PubAccountTips$PubAccountTipsMsg(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.a = paramJSONObject;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("puin");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("type");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("show_tab");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("content");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
-      this.jdField_b_of_type_Long = paramJSONObject.optLong("begin");
-      this.jdField_c_of_type_Long = paramJSONObject.optLong("end");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("shool_id");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("times");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Int = paramJSONObject.optInt("tid");
-      this.e = paramJSONObject.optInt("clicked");
+      this.d = paramJSONObject.optLong("puin");
+      this.b = paramJSONObject.optInt("type");
+      this.c = paramJSONObject.optInt("show_tab");
+      this.e = paramJSONObject.optString("content");
+      this.f = paramJSONObject.optString("icon");
+      this.g = paramJSONObject.optString("url");
+      this.h = paramJSONObject.optLong("begin");
+      this.i = paramJSONObject.optLong("end");
+      this.m = paramJSONObject.optString("shool_id");
+      this.j = paramJSONObject.optInt("times");
+      this.n = paramJSONObject.optLong("msg_seqno");
+      this.n = paramJSONObject.optLong("msg_seqno");
+      this.k = paramJSONObject.optInt("tid");
+      this.l = paramJSONObject.optInt("clicked");
     }
   }
   
   boolean a()
   {
-    return (this.jdField_a_of_type_Long > 0L) && (this.jdField_c_of_type_Int >= 0);
+    return (this.d > 0L) && (this.j >= 0);
   }
   
   public boolean b()
   {
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    return (l < this.jdField_b_of_type_Long) || (l > this.jdField_c_of_type_Long);
+    long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    return (l1 < this.h) || (l1 > this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg
  * JD-Core Version:    0.7.0.1
  */

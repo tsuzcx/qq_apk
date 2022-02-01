@@ -17,30 +17,30 @@ public final class TouchDelegateProxy
   extends TouchDelegate
   implements GestureDetector.OnGestureListener
 {
-  private TouchDelegate jdField_a_of_type_AndroidViewTouchDelegate;
   @Nullable
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View.OnTouchListener a;
   @Nullable
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
-  private View jdField_a_of_type_AndroidViewView;
-  private final GestureDetectorCompat jdField_a_of_type_AndroidxCoreViewGestureDetectorCompat;
+  private View.OnClickListener b;
+  private final GestureDetectorCompat c;
+  private View d;
+  private TouchDelegate e;
   
   public TouchDelegateProxy(@NotNull View paramView, @Nullable TouchDelegate paramTouchDelegate)
   {
     super(new Rect(), paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewTouchDelegate = paramTouchDelegate;
-    this.jdField_a_of_type_AndroidxCoreViewGestureDetectorCompat = new GestureDetectorCompat(this.jdField_a_of_type_AndroidViewView.getContext(), (GestureDetector.OnGestureListener)this);
+    this.d = paramView;
+    this.e = paramTouchDelegate;
+    this.c = new GestureDetectorCompat(this.d.getContext(), (GestureDetector.OnGestureListener)this);
   }
   
   public final void a(@Nullable View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.b = paramOnClickListener;
   }
   
   public final void a(@Nullable View.OnTouchListener paramOnTouchListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
+    this.a = paramOnTouchListener;
   }
   
   public boolean onDown(@Nullable MotionEvent paramMotionEvent)
@@ -64,10 +64,10 @@ public final class TouchDelegateProxy
   
   public boolean onSingleTapUp(@Nullable MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    paramMotionEvent = this.b;
     if (paramMotionEvent != null)
     {
-      paramMotionEvent.onClick(this.jdField_a_of_type_AndroidViewView);
+      paramMotionEvent.onClick(this.d);
       return true;
     }
     return false;
@@ -75,20 +75,20 @@ public final class TouchDelegateProxy
   
   public boolean onTouchEvent(@Nullable MotionEvent paramMotionEvent)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewTouchDelegate;
+    Object localObject = this.e;
     if ((localObject != null) && (((TouchDelegate)localObject).onTouchEvent(paramMotionEvent) == true)) {
       return true;
     }
-    localObject = this.jdField_a_of_type_AndroidViewView$OnTouchListener;
-    if ((localObject != null) && (((View.OnTouchListener)localObject).onTouch(this.jdField_a_of_type_AndroidViewView, paramMotionEvent) == true)) {
+    localObject = this.a;
+    if ((localObject != null) && (((View.OnTouchListener)localObject).onTouch(this.d, paramMotionEvent) == true)) {
       return true;
     }
-    return this.jdField_a_of_type_AndroidxCoreViewGestureDetectorCompat.onTouchEvent(paramMotionEvent);
+    return this.c.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.touch.TouchDelegateProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ public class DataReportViewer$DataAdapter
   
   public int getCount()
   {
-    return this.a.a.size();
+    return this.a.h.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.a.a.get(paramInt);
+    return this.a.h.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -35,7 +35,7 @@ public class DataReportViewer$DataAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559599, paramViewGroup, false);
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131625628, paramViewGroup, false);
       paramView = new DataReportViewer.ViewHolder(this.a, localView);
       localView.setTag(paramView);
     }
@@ -45,7 +45,7 @@ public class DataReportViewer$DataAdapter
       localView = paramView;
       paramView = (View)localObject;
     }
-    Object localObject = (ReportData)this.a.a.get(paramInt);
+    Object localObject = (ReportData)this.a.h.get(paramInt);
     paramView.a.setText(((ReportData)localObject).table);
     paramView.b.setText(((ReportData)localObject).mainAction);
     paramView.c.setText(((ReportData)localObject).subAction);
@@ -57,9 +57,9 @@ public class DataReportViewer$DataAdapter
     paramView.i.setText(((ReportData)localObject).r4);
     paramView.j.setText(((ReportData)localObject).r5);
     if (((ReportData)localObject).isLightBlueBg) {
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166617));
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167537));
     } else {
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167394));
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131168464));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -67,7 +67,7 @@ public class DataReportViewer$DataAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.DataAdapter
  * JD-Core Version:    0.7.0.1
  */

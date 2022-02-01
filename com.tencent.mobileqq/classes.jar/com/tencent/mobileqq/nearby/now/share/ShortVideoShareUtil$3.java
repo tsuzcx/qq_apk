@@ -17,7 +17,7 @@ final class ShortVideoShareUtil$3
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack);
+    ShortVideoShareUtil.a(this.a, this.b, this.c, this.d, this.e, null, this.f);
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
@@ -31,12 +31,12 @@ final class ShortVideoShareUtil$3
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     paramURLDrawable = ShortVideoShareUtil.a(paramURLDrawable);
-    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack);
+    ShortVideoShareUtil.a(this.a, this.b, this.c, this.d, this.e, paramURLDrawable, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.3
  * JD-Core Version:    0.7.0.1
  */

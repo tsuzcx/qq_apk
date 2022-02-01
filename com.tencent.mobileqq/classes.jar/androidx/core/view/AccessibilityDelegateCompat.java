@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import androidx.annotation.RestrictTo;
+import androidx.core.R.id;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat;
 import androidx.core.view.accessibility.AccessibilityNodeProviderCompat;
@@ -37,7 +38,7 @@ public class AccessibilityDelegateCompat
   
   static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    List localList = (List)paramView.getTag(2131378267);
+    List localList = (List)paramView.getTag(R.id.tag_accessibility_actions);
     paramView = localList;
     if (localList == null) {
       paramView = Collections.emptyList();
@@ -64,7 +65,7 @@ public class AccessibilityDelegateCompat
   
   private boolean performClickableSpanAction(int paramInt, View paramView)
   {
-    Object localObject = (SparseArray)paramView.getTag(2131378268);
+    Object localObject = (SparseArray)paramView.getTag(R.id.tag_accessibility_clickable_spans);
     if (localObject != null)
     {
       localObject = (WeakReference)((SparseArray)localObject).get(paramInt);
@@ -154,7 +155,7 @@ public class AccessibilityDelegateCompat
     if (!bool2)
     {
       bool1 = bool2;
-      if (paramInt == 2131361829) {
+      if (paramInt == R.id.accessibility_action_clickable_span) {
         bool1 = performClickableSpanAction(paramBundle.getInt("ACCESSIBILITY_CLICKABLE_SPAN_ID", -1), paramView);
       }
     }

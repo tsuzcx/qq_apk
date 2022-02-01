@@ -13,8 +13,8 @@ import com.tencent.image.URLDrawable;
 public class TroopMemberLevelEffectView
   extends ImageView
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private Rect a;
+  private URLDrawable b;
   
   public TroopMemberLevelEffectView(Context paramContext)
   {
@@ -34,27 +34,27 @@ public class TroopMemberLevelEffectView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.b;
     if (localURLDrawable != null)
     {
-      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      Rect localRect = this.a;
       if (localRect != null)
       {
         localURLDrawable.setBounds(localRect);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.draw(paramCanvas);
+        this.b.draw(paramCanvas);
       }
     }
   }
   
   public void setCurrentDrawable(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback(this);
+    this.b = paramURLDrawable;
+    this.b.setCallback(this);
   }
   
   public void setLeftCropRect(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.a = paramRect;
   }
   
   protected boolean verifyDrawable(@NonNull Drawable paramDrawable)
@@ -64,7 +64,7 @@ public class TroopMemberLevelEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelEffectView
  * JD-Core Version:    0.7.0.1
  */

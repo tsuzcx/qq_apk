@@ -36,7 +36,7 @@ public class MsgLruCache
   public static String TAG = "MsgLruCacheLog";
   public static int cacheConfig;
   private ConcurrentHashMap<String, MsgLruCache.MsgCacheInfo> cacheInfoMap = new ConcurrentHashMap();
-  private HighFrequencyStringDetector detector = new HighFrequencyStringDetector(CacheConstants.o, CacheConstants.p);
+  private HighFrequencyStringDetector detector = new HighFrequencyStringDetector(CacheConstants.t, CacheConstants.u);
   private long initTime;
   public volatile boolean isDestroyed = false;
   private MsgLruCache.KeyTimeComparator keyTimeComparator = new MsgLruCache.KeyTimeComparator(this, null);
@@ -57,7 +57,7 @@ public class MsgLruCache
   
   private int a(Map.Entry paramEntry)
   {
-    return ((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(paramEntry.getKey())).jdField_a_of_type_Int;
+    return ((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(paramEntry.getKey())).a;
   }
   
   private void a()
@@ -117,29 +117,34 @@ public class MsgLruCache
   
   private void a(MsgLruCache.MsgCacheInfo paramMsgCacheInfo)
   {
-    if (paramMsgCacheInfo.b > CacheConstants.g)
+    if (paramMsgCacheInfo.b > CacheConstants.k)
     {
-      paramMsgCacheInfo.b = CacheConstants.g;
+      paramMsgCacheInfo.b = CacheConstants.k;
       return;
     }
-    if (paramMsgCacheInfo.b < CacheConstants.h) {
-      paramMsgCacheInfo.b = CacheConstants.h;
+    if (paramMsgCacheInfo.b < CacheConstants.l) {
+      paramMsgCacheInfo.b = CacheConstants.l;
     }
   }
   
-  private boolean a()
+  private int b(Map.Entry paramEntry)
+  {
+    return ((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(paramEntry.getKey())).b;
+  }
+  
+  private boolean b()
   {
     int i = getMsgCount();
-    if (i <= CacheConstants.jdField_a_of_type_Int) {
+    if (i <= CacheConstants.e) {
       return false;
     }
-    com.tencent.mobileqq.service.message.MessageCache.a = true;
+    com.tencent.mobileqq.service.message.MessageCache.q = true;
     synchronized (this.cacheInfoMap)
     {
       QLog.d(TAG, 1, new Object[] { "eliminateCache, MsgCount: ", Integer.valueOf(i) });
-      i -= CacheConstants.b;
-      d();
-      if ((this.mApp != null) && (this.mApp.get() != null) && (((QQAppInterface)this.mApp.get()).mAutomator.b()))
+      i -= CacheConstants.f;
+      e();
+      if ((this.mApp != null) && (this.mApp.get() != null) && (((QQAppInterface)this.mApp.get()).mAutomator.g()))
       {
         QLog.d(TAG, 1, "eliminateCache, isInRealActionLoginB");
         delList(new ArrayList(keySet()), i, true);
@@ -153,7 +158,7 @@ public class MsgLruCache
       {
         localEntry = (Map.Entry)localIterator.next();
         localList = (List)localEntry.getValue();
-        if ((a(localEntry) == CacheConstants.d) && (b(localEntry) == CacheConstants.h) && (localList != null) && (localList.size() > 0)) {
+        if ((a(localEntry) == CacheConstants.h) && (b(localEntry) == CacheConstants.l) && (localList != null) && (localList.size() > 0)) {
           localArrayList.add(localEntry.getKey());
         }
       }
@@ -167,12 +172,12 @@ public class MsgLruCache
       {
         localEntry = (Map.Entry)localIterator.next();
         localList = (List)localEntry.getValue();
-        if ((a(localEntry) == CacheConstants.c) && (b(localEntry) == CacheConstants.h))
+        if ((a(localEntry) == CacheConstants.g) && (b(localEntry) == CacheConstants.l))
         {
           MsgLruCache.MsgCacheInfo localMsgCacheInfo = (MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(localEntry.getKey());
-          if ((localMsgCacheInfo.c == 0) && (UinTypeUtil.a(localMsgCacheInfo.jdField_a_of_type_JavaLangString))) {
-            changeCacheType(localEntry.getKey(), CacheConstants.d);
-          } else if ((localList != null) && (localList.size() > CacheConstants.f)) {
+          if ((localMsgCacheInfo.d == 0) && (UinTypeUtil.a(localMsgCacheInfo.c))) {
+            changeCacheType(localEntry.getKey(), CacheConstants.h);
+          } else if ((localList != null) && (localList.size() > CacheConstants.j)) {
             localArrayList.add(localEntry.getKey());
           }
         }
@@ -189,12 +194,7 @@ public class MsgLruCache
     }
   }
   
-  private int b(Map.Entry paramEntry)
-  {
-    return ((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(paramEntry.getKey())).b;
-  }
-  
-  private void b()
+  private void c()
   {
     synchronized (this.cacheInfoMap)
     {
@@ -203,16 +203,16 @@ public class MsgLruCache
       {
         Object localObject2 = (Map.Entry)localIterator.next();
         localObject2 = (MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(((Map.Entry)localObject2).getKey());
-        d();
-        if ((this.mApp != null) && (this.mApp.get() != null) && (((QQAppInterface)this.mApp.get()).getConversationFacade().a(((MsgLruCache.MsgCacheInfo)localObject2).jdField_a_of_type_JavaLangString, ((MsgLruCache.MsgCacheInfo)localObject2).c) > 0))
+        e();
+        if ((this.mApp != null) && (this.mApp.get() != null) && (((QQAppInterface)this.mApp.get()).getConversationFacade().a(((MsgLruCache.MsgCacheInfo)localObject2).c, ((MsgLruCache.MsgCacheInfo)localObject2).d) > 0))
         {
           if (QLog.isColorLevel()) {
-            QLog.d(TAG, 2, new Object[] { "handleRegularScan, conv has unread msg, uin:", ((MsgLruCache.MsgCacheInfo)localObject2).jdField_a_of_type_JavaLangString, " type:", Integer.valueOf(((MsgLruCache.MsgCacheInfo)localObject2).c) });
+            QLog.d(TAG, 2, new Object[] { "handleRegularScan, conv has unread msg, uin:", ((MsgLruCache.MsgCacheInfo)localObject2).c, " type:", Integer.valueOf(((MsgLruCache.MsgCacheInfo)localObject2).d) });
           }
         }
         else
         {
-          ((MsgLruCache.MsgCacheInfo)localObject2).b += CacheConstants.j;
+          ((MsgLruCache.MsgCacheInfo)localObject2).b += CacheConstants.n;
           a((MsgLruCache.MsgCacheInfo)localObject2);
         }
       }
@@ -224,7 +224,7 @@ public class MsgLruCache
     }
   }
   
-  private void c()
+  private void d()
   {
     synchronized (this.cacheInfoMap)
     {
@@ -249,7 +249,7 @@ public class MsgLruCache
     }
   }
   
-  private void d()
+  private void e()
   {
     if (this.mApp == null)
     {
@@ -285,10 +285,10 @@ public class MsgLruCache
     {
       Object localObject = (String)paramObject;
       localObject = (MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(localObject);
-      if (((MsgLruCache.MsgCacheInfo)localObject).jdField_a_of_type_Int != paramInt)
+      if (((MsgLruCache.MsgCacheInfo)localObject).a != paramInt)
       {
-        ((MsgLruCache.MsgCacheInfo)localObject).jdField_a_of_type_Int = paramInt;
-        ((MsgLruCache.MsgCacheInfo)localObject).b = CacheConstants.i;
+        ((MsgLruCache.MsgCacheInfo)localObject).a = paramInt;
+        ((MsgLruCache.MsgCacheInfo)localObject).b = CacheConstants.m;
       }
       this.opWeightDiffCache.remove(paramObject);
       if (QLog.isColorLevel()) {
@@ -317,7 +317,7 @@ public class MsgLruCache
     //   2: iload_2
     //   3: istore 4
     //   5: aload_0
-    //   6: invokespecial 268	com/tencent/mobileqq/app/msgcache/MsgLruCache:d	()V
+    //   6: invokespecial 273	com/tencent/mobileqq/app/msgcache/MsgLruCache:e	()V
     //   9: iload_2
     //   10: istore 4
     //   12: aload_0
@@ -327,8 +327,8 @@ public class MsgLruCache
     //   20: istore 4
     //   22: aload_0
     //   23: getfield 67	com/tencent/mobileqq/app/msgcache/MsgLruCache:mApp	Lmqq/util/WeakReference;
-    //   26: invokevirtual 272	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   29: checkcast 274	com/tencent/mobileqq/app/QQAppInterface
+    //   26: invokevirtual 277	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   29: checkcast 279	com/tencent/mobileqq/app/QQAppInterface
     //   32: astore 6
     //   34: aload 6
     //   36: ifnull +392 -> 428
@@ -337,7 +337,7 @@ public class MsgLruCache
     //   43: iload_2
     //   44: istore 4
     //   46: aload_1
-    //   47: invokevirtual 411	java/util/ArrayList:isEmpty	()Z
+    //   47: invokevirtual 419	java/util/ArrayList:isEmpty	()Z
     //   50: ifeq +6 -> 56
     //   53: goto +375 -> 428
     //   56: iload_2
@@ -345,11 +345,11 @@ public class MsgLruCache
     //   59: aload_1
     //   60: aload_0
     //   61: getfield 87	com/tencent/mobileqq/app/msgcache/MsgLruCache:keyTimeComparator	Lcom/tencent/mobileqq/app/msgcache/MsgLruCache$KeyTimeComparator;
-    //   64: invokestatic 417	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   64: invokestatic 425	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   67: iload_2
     //   68: istore 4
     //   70: aload_1
-    //   71: invokevirtual 418	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   71: invokevirtual 426	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   74: astore_1
     //   75: iload_2
     //   76: istore 4
@@ -372,30 +372,30 @@ public class MsgLruCache
     //   113: iload_2
     //   114: istore 4
     //   116: aload 9
-    //   118: invokevirtual 421	com/tencent/imcore/message/MsgPool:a	()Ljava/util/Map;
-    //   121: invokeinterface 424 1 0
+    //   118: invokevirtual 429	com/tencent/imcore/message/MsgPool:c	()Ljava/util/Map;
+    //   121: invokeinterface 432 1 0
     //   126: aload 7
-    //   128: invokeinterface 427 2 0
+    //   128: invokeinterface 435 2 0
     //   133: ifeq +6 -> 139
     //   136: goto -61 -> 75
     //   139: iload_2
     //   140: istore 4
     //   142: aload 7
-    //   144: invokestatic 429	com/tencent/imcore/message/UinTypeUtil:b	(Ljava/lang/String;)Z
+    //   144: invokestatic 437	com/tencent/imcore/message/UinTypeUtil:b	(Ljava/lang/String;)Z
     //   147: ifeq +6 -> 153
     //   150: goto -75 -> 75
     //   153: iload_2
     //   154: istore 4
     //   156: aload_0
     //   157: aload 7
-    //   159: invokevirtual 433	com/tencent/mobileqq/app/msgcache/MsgLruCache:getOriginal	(Ljava/lang/Object;)Ljava/util/List;
+    //   159: invokevirtual 441	com/tencent/mobileqq/app/msgcache/MsgLruCache:getOriginal	(Ljava/lang/Object;)Ljava/util/List;
     //   162: astore 8
     //   164: aload 8
     //   166: ifnull -91 -> 75
     //   169: iload_2
     //   170: istore 4
     //   172: aload 8
-    //   174: invokeinterface 434 1 0
+    //   174: invokeinterface 442 1 0
     //   179: ifeq +6 -> 185
     //   182: goto -107 -> 75
     //   185: iload_2
@@ -412,14 +412,14 @@ public class MsgLruCache
     //   210: istore 4
     //   212: aload 6
     //   214: aload 10
-    //   216: getfield 437	com/tencent/mobileqq/data/MessageRecord:istroop	I
-    //   219: invokevirtual 441	com/tencent/mobileqq/app/QQAppInterface:getMessageProxy	(I)Lcom/tencent/imcore/message/BaseMsgProxy;
+    //   216: getfield 445	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   219: invokevirtual 449	com/tencent/mobileqq/app/QQAppInterface:getMessageProxy	(I)Lcom/tencent/imcore/message/BaseMsgProxy;
     //   222: aload 10
-    //   224: getfield 444	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   224: getfield 452	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   227: aload 10
-    //   229: getfield 437	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   229: getfield 445	com/tencent/mobileqq/data/MessageRecord:istroop	I
     //   232: iconst_1
-    //   233: invokevirtual 449	com/tencent/imcore/message/BaseMsgProxy:a	(Ljava/lang/String;IZ)Z
+    //   233: invokevirtual 457	com/tencent/imcore/message/BaseMsgProxy:a	(Ljava/lang/String;IZ)Z
     //   236: ifeq +6 -> 242
     //   239: goto -164 -> 75
     //   242: iload_3
@@ -428,7 +428,7 @@ public class MsgLruCache
     //   247: istore 4
     //   249: aload_0
     //   250: aload 7
-    //   252: invokevirtual 451	com/tencent/mobileqq/app/msgcache/MsgLruCache:remove	(Ljava/lang/Object;)Ljava/util/List;
+    //   252: invokevirtual 459	com/tencent/mobileqq/app/msgcache/MsgLruCache:remove	(Ljava/lang/Object;)Ljava/util/List;
     //   255: pop
     //   256: iload_2
     //   257: istore 4
@@ -447,13 +447,13 @@ public class MsgLruCache
     //   282: iconst_0
     //   283: invokeinterface 198 2 0
     //   288: checkcast 200	com/tencent/mobileqq/data/MessageRecord
-    //   291: getfield 444	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   291: getfield 452	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   294: aload 8
     //   296: iconst_0
     //   297: invokeinterface 198 2 0
     //   302: checkcast 200	com/tencent/mobileqq/data/MessageRecord
-    //   305: getfield 437	com/tencent/mobileqq/data/MessageRecord:istroop	I
-    //   308: invokevirtual 454	com/tencent/imcore/message/MsgPool:a	(Ljava/lang/String;I)Ljava/util/concurrent/locks/Lock;
+    //   305: getfield 445	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   308: invokevirtual 462	com/tencent/imcore/message/MsgPool:a	(Ljava/lang/String;I)Ljava/util/concurrent/locks/Lock;
     //   311: astore 9
     //   313: iload_2
     //   314: istore 4
@@ -464,7 +464,7 @@ public class MsgLruCache
     //   326: iload_2
     //   327: aload 8
     //   329: invokeinterface 166 1 0
-    //   334: getstatic 330	com/tencent/mobileqq/app/msgcache/CacheConstants:f	I
+    //   334: getstatic 338	com/tencent/mobileqq/app/msgcache/CacheConstants:j	I
     //   337: isub
     //   338: isub
     //   339: istore_2
@@ -472,25 +472,25 @@ public class MsgLruCache
     //   341: istore 5
     //   343: aload_0
     //   344: aload 7
-    //   346: new 289	java/util/ArrayList
+    //   346: new 295	java/util/ArrayList
     //   349: dup
     //   350: aload 8
     //   352: aload 8
     //   354: invokeinterface 166 1 0
-    //   359: getstatic 330	com/tencent/mobileqq/app/msgcache/CacheConstants:f	I
+    //   359: getstatic 338	com/tencent/mobileqq/app/msgcache/CacheConstants:j	I
     //   362: isub
     //   363: aload 8
     //   365: invokeinterface 166 1 0
-    //   370: invokeinterface 458 3 0
-    //   375: invokespecial 295	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   378: invokespecial 393	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   370: invokeinterface 466 3 0
+    //   375: invokespecial 301	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   378: invokespecial 401	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   381: pop
     //   382: iload_2
     //   383: istore 5
     //   385: aload_0
     //   386: aload 7
-    //   388: getstatic 304	com/tencent/mobileqq/app/msgcache/CacheConstants:d	I
-    //   391: invokevirtual 327	com/tencent/mobileqq/app/msgcache/MsgLruCache:changeCacheType	(Ljava/lang/Object;I)V
+    //   388: getstatic 311	com/tencent/mobileqq/app/msgcache/CacheConstants:h	I
+    //   391: invokevirtual 335	com/tencent/mobileqq/app/msgcache/MsgLruCache:changeCacheType	(Ljava/lang/Object;I)V
     //   394: iload_2
     //   395: istore 4
     //   397: aload 9
@@ -516,9 +516,9 @@ public class MsgLruCache
     //   436: astore_1
     //   437: getstatic 213	com/tencent/mobileqq/app/msgcache/MsgLruCache:TAG	Ljava/lang/String;
     //   440: iconst_1
-    //   441: ldc_w 460
+    //   441: ldc_w 468
     //   444: aload_1
-    //   445: invokestatic 464	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   445: invokestatic 471	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   448: iload 4
     //   450: istore 5
     //   452: aload_0
@@ -622,7 +622,7 @@ public class MsgLruCache
       } else {
         i = paramObject.intValue();
       }
-      int i = Math.max(i, CacheConstants.l);
+      int i = Math.max(i, CacheConstants.p);
       this.opWeightDiffCache.put(str, Integer.valueOf(i));
     }
     return localList;
@@ -633,9 +633,9 @@ public class MsgLruCache
     if (containsKey(paramObject))
     {
       paramObject = (String)paramObject;
-      return ((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(paramObject)).jdField_a_of_type_Int;
+      return ((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(paramObject)).a;
     }
-    return CacheConstants.c;
+    return CacheConstants.g;
   }
   
   public Pair<Integer, Integer> getCacheTypeInfo(int paramInt)
@@ -648,7 +648,7 @@ public class MsgLruCache
       while (localIterator.hasNext())
       {
         Object localObject2 = (Map.Entry)localIterator.next();
-        if (((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(((Map.Entry)localObject2).getKey())).jdField_a_of_type_Int == paramInt)
+        if (((MsgLruCache.MsgCacheInfo)this.cacheInfoMap.get(((Map.Entry)localObject2).getKey())).a == paramInt)
         {
           localObject2 = (List)((Map.Entry)localObject2).getValue();
           int k = i + 1;
@@ -694,9 +694,9 @@ public class MsgLruCache
     }
     QLog.d(TAG, 1, "BEFORE_SCAN");
     printMsgLruCache();
+    d();
     c();
-    b();
-    boolean bool = a();
+    boolean bool = b();
     QLog.d(TAG, 1, new Object[] { "AFTER_SCAN, isChanged: ", Boolean.valueOf(bool) });
     if (bool) {
       printMsgLruCache();
@@ -709,7 +709,7 @@ public class MsgLruCache
   
   protected WeakReference<QQAppInterface> makeApp()
   {
-    d();
+    e();
     return null;
   }
   
@@ -733,9 +733,9 @@ public class MsgLruCache
     String str = UinTypeUtil.a(paramString, paramInt);
     if (!containsKey(str))
     {
-      paramString = new MsgLruCache.MsgCacheInfo(this, paramString, paramInt, CacheConstants.c, CacheConstants.i);
+      paramString = new MsgLruCache.MsgCacheInfo(this, paramString, paramInt, CacheConstants.g, CacheConstants.m);
       this.cacheInfoMap.put(str, paramString);
-      a();
+      b();
       paramInt = size();
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, new Object[] { "put, key: ", str, " cacheSize:", Integer.valueOf(paramInt + 1), " msgCount:", Integer.valueOf(getMsgCount()) });
@@ -748,7 +748,7 @@ public class MsgLruCache
   {
     if (!containsKey(paramString))
     {
-      MsgLruCache.MsgCacheInfo localMsgCacheInfo = new MsgLruCache.MsgCacheInfo(this, CacheConstants.a(paramString), CacheConstants.a(paramString), CacheConstants.c, CacheConstants.i);
+      MsgLruCache.MsgCacheInfo localMsgCacheInfo = new MsgLruCache.MsgCacheInfo(this, CacheConstants.a(paramString), CacheConstants.b(paramString), CacheConstants.g, CacheConstants.m);
       this.cacheInfoMap.put(paramString, localMsgCacheInfo);
       int i = size();
       if (QLog.isColorLevel()) {
@@ -773,7 +773,7 @@ public class MsgLruCache
   {
     Object localObject2 = this.detector.getHighFrequencyString();
     this.detector.clear();
-    d();
+    e();
     Object localObject1 = this.mApp;
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
     {
@@ -824,7 +824,7 @@ public class MsgLruCache
           QLog.d(TAG, 2, new Object[] { "reportCacheLoad, ", localObject1 });
         }
       }
-      StatisticCollector.getInstance(((QQAppInterface)this.mApp.get()).getApp()).collectPerformance(null, CacheConstants.e, true, -1L, 0L, (HashMap)localObject1, null, false);
+      StatisticCollector.getInstance(((QQAppInterface)this.mApp.get()).getApp()).collectPerformance(null, CacheConstants.s, true, -1L, 0L, (HashMap)localObject1, null, false);
     }
   }
   
@@ -835,7 +835,7 @@ public class MsgLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgcache.MsgLruCache
  * JD-Core Version:    0.7.0.1
  */

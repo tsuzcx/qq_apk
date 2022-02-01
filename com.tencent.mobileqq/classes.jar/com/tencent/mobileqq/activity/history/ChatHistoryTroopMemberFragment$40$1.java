@@ -7,12 +7,12 @@ class ChatHistoryTroopMemberFragment$40$1
   
   public void run()
   {
-    ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$40.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", this.c);
+    ChatHistoryTroopMemberFragment.a(this.g.a, this.a, this.b, this.c, this.d, this.e, "", "", this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1
  * JD-Core Version:    0.7.0.1
  */

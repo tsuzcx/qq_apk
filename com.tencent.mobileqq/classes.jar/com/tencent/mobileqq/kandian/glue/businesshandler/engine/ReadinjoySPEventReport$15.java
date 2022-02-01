@@ -15,16 +15,16 @@ final class ReadinjoySPEventReport$15
   
   public void run()
   {
-    if (ReadinjoySPEventReport.b(60))
+    if (ReadinjoySPEventReport.j(60))
     {
-      long l1 = ReadinjoySPEventReport.b();
-      long l2 = ReadinjoySPEventReport.a(l1 * 1000L) / 1000L;
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      long l1 = ReadinjoySPEventReport.h();
+      long l2 = ReadinjoySPEventReport.b(l1 * 1000L) / 1000L;
+      int i = this.a.size() - 1;
       int k = 0;
       int j = 0;
       while (i >= 0)
       {
-        localObject1 = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(i);
+        localObject1 = (ChatMessage)this.a.get(i);
         if (((ChatMessage)localObject1).time <= l1) {
           break;
         }
@@ -39,7 +39,7 @@ final class ReadinjoySPEventReport$15
       Object localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("aiotype");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Int)));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(ReadinjoySPEventReport.f(this.b)));
       localArrayList.add(localObject1);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(2);
@@ -47,7 +47,7 @@ final class ReadinjoySPEventReport$15
       Object localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(this.b);
+      ((StringBuilder)localObject3).append(this.c);
       ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
       localArrayList.add(localObject1);
       localObject3 = new oidb_cmd0x80a.AttributeList();
@@ -88,7 +88,7 @@ final class ReadinjoySPEventReport$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.15
  * JD-Core Version:    0.7.0.1
  */

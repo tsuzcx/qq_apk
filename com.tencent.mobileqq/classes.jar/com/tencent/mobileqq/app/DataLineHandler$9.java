@@ -11,28 +11,28 @@ class DataLineHandler$9
   
   protected void onSelfIpadOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 1) && (this.a.b()))
+    if ((paramInt1 == 1) && (this.a.j()))
     {
       this.a.b(true);
-      DataLineHandler.b(this.a, MessageCache.a());
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(1).b();
+      DataLineHandler.b(this.a, MessageCache.c());
+      this.a.i.getMessageFacade().d(1).c();
     }
   }
   
   protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 1) && (this.a.a()))
+    if ((paramInt1 == 1) && (this.a.i()))
     {
       this.a.a(true);
-      DataLineHandler.a(this.a, MessageCache.a());
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(0).b();
+      DataLineHandler.a(this.a, MessageCache.c());
+      this.a.i.getMessageFacade().d(0).c();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(this.a);
+    this.a.e.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.9
  * JD-Core Version:    0.7.0.1
  */

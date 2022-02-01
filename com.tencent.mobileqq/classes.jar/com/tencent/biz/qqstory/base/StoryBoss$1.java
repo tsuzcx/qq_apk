@@ -13,12 +13,12 @@ class StoryBoss$1
   
   public void onFutureDone(@Nullable Result paramResult)
   {
-    StoryDispatcher.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
+    StoryDispatcher.a().dispatch(new JobController.DoneEvent(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryBoss.1
  * JD-Core Version:    0.7.0.1
  */

@@ -66,13 +66,13 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     //   93: aload 4
     //   95: aload_3
     //   96: getfield 39	com/tencent/aelight/camera/aioeditor/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:text_id	I
-    //   99: putfield 66	com/tencent/aelight/camera/aioeditor/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:jdField_a_of_type_Int	I
+    //   99: putfield 67	com/tencent/aelight/camera/aioeditor/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:d	I
     //   102: aload 4
     //   104: ifnull +13 -> 117
     //   107: aload_3
     //   108: getfield 20	com/tencent/aelight/camera/aioeditor/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
     //   111: aload 4
-    //   113: invokevirtual 70	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   113: invokevirtual 71	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   116: pop
     //   117: iload_1
     //   118: iconst_1
@@ -90,13 +90,13 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     //   136: astore_0
     //   137: aload_0
     //   138: astore 4
-    //   140: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   140: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq +16 -> 159
-    //   146: ldc 78
+    //   146: ldc 79
     //   148: iconst_2
     //   149: aload_3
-    //   150: invokevirtual 82	org/json/JSONException:toString	()Ljava/lang/String;
-    //   153: invokestatic 86	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: invokevirtual 83	org/json/JSONException:toString	()Ljava/lang/String;
+    //   153: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   156: aload_0
     //   157: astore 4
     //   159: aload 4
@@ -131,7 +131,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     int i = 0;
     localObject = this.fontInfos.iterator();
     while (((Iterator)localObject).hasNext()) {
-      i += ((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((Iterator)localObject).next()).b * 1 / j;
+      i += ((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((Iterator)localObject).next()).e * 1 / j;
     }
     return i;
   }
@@ -147,7 +147,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
       while (localIterator.hasNext())
       {
         DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo localDynamicTextFontInfo = (DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localIterator.next();
-        if ((localDynamicTextFontInfo != null) && (paramString.equals(localDynamicTextFontInfo.jdField_a_of_type_JavaLangString))) {
+        if ((localDynamicTextFontInfo != null) && (paramString.equals(localDynamicTextFontInfo.a))) {
           return true;
         }
       }
@@ -157,7 +157,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextConfigManager.DynamicTextConfigBean
  * JD-Core Version:    0.7.0.1
  */

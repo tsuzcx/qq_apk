@@ -24,16 +24,16 @@ public class QAPMLeakWrapper
   extends AbstractMagnifierItem
   implements Application.ActivityLifecycleCallbacks, IAPMModuleLeak
 {
-  static boolean jdField_a_of_type_Boolean = false;
   static boolean b = false;
-  IInspectorListener jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener = new QAPMLeakListener();
+  static boolean c = false;
+  IInspectorListener d = new QAPMLeakListener();
   
   public QAPMLeakWrapper()
   {
     MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(this);
   }
   
-  public static void c()
+  public static void k()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
@@ -45,21 +45,21 @@ public class QAPMLeakWrapper
       localStringBuilder.append("/tencent/AutoTestFlag_03");
       if (!new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString())).exists())
       {
-        jdField_a_of_type_Boolean = true;
+        b = true;
         break label106;
       }
     }
-    jdField_a_of_type_Boolean = false;
+    b = false;
     label106:
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
     localStringBuilder.append("/tencent/AutoTestFlag_03");
     if (new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString())).exists())
     {
-      b = false;
+      c = false;
       return;
     }
-    b = true;
+    c = true;
   }
   
   public DumpResult a(String paramString, IDumpMemoryCallback paramIDumpMemoryCallback)
@@ -109,7 +109,7 @@ public class QAPMLeakWrapper
   
   public void a(Object paramObject, String paramString)
   {
-    if (o_())
+    if (dH_())
     {
       LeakInspector.startInspect(paramObject, paramString);
       return;
@@ -122,12 +122,12 @@ public class QAPMLeakWrapper
     ((IPerfApi)QRoute.api(IPerfApi.class)).startDumpingMemory(paramString1, paramString2, paramLong);
   }
   
-  public void b()
+  public void j()
   {
-    c();
+    k();
     LeakInspector.setKeepUuidWhenLeak(true);
     com.tencent.qapmsdk.memory.MemoryLeakMonitor.enableFragmentInspect = false;
-    QAPM.setProperty(110, this.jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener);
+    QAPM.setProperty(110, this.d);
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
@@ -157,7 +157,7 @@ public class QAPMLeakWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMLeakWrapper
  * JD-Core Version:    0.7.0.1
  */

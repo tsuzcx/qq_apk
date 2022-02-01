@@ -82,7 +82,7 @@ public abstract class WSRequest<Rsp extends JceStruct>
     this.mTimeRecord = new WSServiceTimeRecord(getRequestCmd());
     this.mCompressInfo = new WSGzipCompressInfo();
     getTimeRecord().a();
-    setLoginUserId(WeishiUtils.a());
+    setLoginUserId(WeishiUtils.b());
   }
   
   private long getTimestamp(Bundle paramBundle, String paramString)
@@ -103,7 +103,7 @@ public abstract class WSRequest<Rsp extends JceStruct>
   {
     getTimeRecord().e();
     if (isNeedLaunchCalculator()) {
-      WSInitializeHelper.a().a().c();
+      WSInitializeHelper.a().h().c();
     }
     Object localObject1 = null;
     if (paramFromServiceMsg == null)
@@ -131,7 +131,7 @@ public abstract class WSRequest<Rsp extends JceStruct>
       localStringBuilder.append(",request size=");
       localStringBuilder.append(this.reqSize);
       localStringBuilder.append("，cost=");
-      localStringBuilder.append(getTimeRecord().c());
+      localStringBuilder.append(getTimeRecord().p());
       WSLog.a("[WSService][Request]", localStringBuilder.toString());
       if (localObject2 != null) {
         localObject1 = WupUtil.b((byte[])localObject2);
@@ -247,7 +247,7 @@ public abstract class WSRequest<Rsp extends JceStruct>
   {
     if (isHeaderNeedExpABTestData())
     {
-      String str = WSExpABTestManager.a().a();
+      String str = WSExpABTestManager.a().d();
       if (str != null) {
         return str;
       }
@@ -428,7 +428,7 @@ public abstract class WSRequest<Rsp extends JceStruct>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSRequest
  * JD-Core Version:    0.7.0.1
  */

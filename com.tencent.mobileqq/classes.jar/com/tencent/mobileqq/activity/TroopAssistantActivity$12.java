@@ -14,7 +14,7 @@ class TroopAssistantActivity$12
     if (paramInt1 == 6)
     {
       if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
+        this.a.I.sendEmptyMessage(1);
       }
     }
     else if ((paramInt1 == 2) && (paramInt2 == 0))
@@ -31,7 +31,7 @@ class TroopAssistantActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.12
  * JD-Core Version:    0.7.0.1
  */

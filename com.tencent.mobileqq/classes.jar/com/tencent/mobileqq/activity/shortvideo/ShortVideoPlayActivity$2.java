@@ -60,30 +60,30 @@ class ShortVideoPlayActivity$2
         }
         else
         {
-          paramMessage = DialogUtil.a(this.a.mContext, 232, this.a.mContext.getResources().getString(2131719107), this.a.mContext.getResources().getString(2131719106), 2131719090, 2131718205, new ShortVideoPlayActivity.2.1(this), new ShortVideoPlayActivity.2.2(this));
+          paramMessage = DialogUtil.a(this.a.mContext, 232, this.a.mContext.getResources().getString(2131916643), this.a.mContext.getResources().getString(2131916642), 2131916626, 2131915687, new ShortVideoPlayActivity.2.1(this), new ShortVideoPlayActivity.2.2(this));
           ShortVideoPlayActivity.access$000(this.a, paramMessage);
         }
       }
       else
       {
-        String str = this.a.getString(2131719076);
+        String str = this.a.getString(2131916612);
         paramMessage = (String)paramMessage.obj;
         Context localContext = this.a.mContext;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append(paramMessage);
-        QQToast.a(localContext, 2, localStringBuilder.toString(), 0).a();
-        ImageUtil.a(this.a, paramMessage);
+        QQToast.makeText(localContext, 2, localStringBuilder.toString(), 0).show();
+        ImageUtil.b(this.a, paramMessage);
       }
     }
     else {
-      QQToast.a(this.a, 2131719075, 0).a();
+      QQToast.makeText(this.a, 2131916611, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ class FileViewMusicService$1$1
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService$1.a.a(i);
+    int i = this.a.getDuration();
+    this.a.stop();
+    this.a.release();
+    this.b.b.a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.FileViewMusicService.1.1
  * JD-Core Version:    0.7.0.1
  */

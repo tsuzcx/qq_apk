@@ -7,6 +7,7 @@ import android.util.Xml;
 import android.view.View;
 import android.view.View.OnClickListener;
 import androidx.constraintlayout.widget.R.styleable;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.xmlpull.v1.XmlPullParser;
 
 class MotionScene$Transition$TransitionOnClick
@@ -119,90 +120,93 @@ class MotionScene$Transition$TransitionOnClick
   
   public void onClick(View paramView)
   {
-    paramView = MotionScene.access$800(MotionScene.Transition.access$700(this.mTransition));
-    if (!paramView.isInteractionEnabled()) {
-      return;
-    }
-    if (MotionScene.Transition.access$100(this.mTransition) == -1)
+    MotionLayout localMotionLayout = MotionScene.access$800(MotionScene.Transition.access$700(this.mTransition));
+    if (localMotionLayout.isInteractionEnabled())
     {
-      i = paramView.getCurrentState();
-      if (i == -1)
+      int i;
+      MotionScene.Transition localTransition1;
+      if (MotionScene.Transition.access$100(this.mTransition) == -1)
       {
-        paramView.transitionToState(MotionScene.Transition.access$000(this.mTransition));
-        return;
-      }
-      localTransition1 = new MotionScene.Transition(MotionScene.Transition.access$700(this.mTransition), this.mTransition);
-      MotionScene.Transition.access$102(localTransition1, i);
-      MotionScene.Transition.access$002(localTransition1, MotionScene.Transition.access$000(this.mTransition));
-      paramView.setTransition(localTransition1);
-      paramView.transitionToEnd();
-      return;
-    }
-    MotionScene.Transition localTransition1 = MotionScene.Transition.access$700(this.mTransition).mCurrentTransition;
-    int i = this.mMode;
-    if (((i & 0x1) == 0) && ((i & 0x100) == 0)) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    int j = this.mMode;
-    if (((j & 0x10) == 0) && ((j & 0x1000) == 0)) {
-      j = 0;
-    } else {
-      j = 1;
-    }
-    int n;
-    if ((i != 0) && (j != 0)) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    int k = i;
-    int m = j;
-    if (n != 0)
-    {
-      MotionScene.Transition localTransition2 = MotionScene.Transition.access$700(this.mTransition).mCurrentTransition;
-      MotionScene.Transition localTransition3 = this.mTransition;
-      if (localTransition2 != localTransition3) {
-        paramView.setTransition(localTransition3);
-      }
-      if ((paramView.getCurrentState() != paramView.getEndState()) && (paramView.getProgress() <= 0.5F))
-      {
-        m = 0;
-        k = i;
+        i = localMotionLayout.getCurrentState();
+        if (i == -1)
+        {
+          localMotionLayout.transitionToState(MotionScene.Transition.access$000(this.mTransition));
+        }
+        else
+        {
+          localTransition1 = new MotionScene.Transition(MotionScene.Transition.access$700(this.mTransition), this.mTransition);
+          MotionScene.Transition.access$102(localTransition1, i);
+          MotionScene.Transition.access$002(localTransition1, MotionScene.Transition.access$000(this.mTransition));
+          localMotionLayout.setTransition(localTransition1);
+          localMotionLayout.transitionToEnd();
+        }
       }
       else
       {
-        k = 0;
-        m = j;
+        localTransition1 = MotionScene.Transition.access$700(this.mTransition).mCurrentTransition;
+        i = this.mMode;
+        if (((i & 0x1) == 0) && ((i & 0x100) == 0)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        int j = this.mMode;
+        if (((j & 0x10) == 0) && ((j & 0x1000) == 0)) {
+          j = 0;
+        } else {
+          j = 1;
+        }
+        int n;
+        if ((i != 0) && (j != 0)) {
+          n = 1;
+        } else {
+          n = 0;
+        }
+        int k = i;
+        int m = j;
+        if (n != 0)
+        {
+          MotionScene.Transition localTransition2 = MotionScene.Transition.access$700(this.mTransition).mCurrentTransition;
+          MotionScene.Transition localTransition3 = this.mTransition;
+          if (localTransition2 != localTransition3) {
+            localMotionLayout.setTransition(localTransition3);
+          }
+          if ((localMotionLayout.getCurrentState() != localMotionLayout.getEndState()) && (localMotionLayout.getProgress() <= 0.5F))
+          {
+            m = 0;
+            k = i;
+          }
+          else
+          {
+            k = 0;
+            m = j;
+          }
+        }
+        if (isTransitionViable(localTransition1, localMotionLayout)) {
+          if ((k != 0) && ((this.mMode & 0x1) != 0))
+          {
+            localMotionLayout.setTransition(this.mTransition);
+            localMotionLayout.transitionToEnd();
+          }
+          else if ((m != 0) && ((this.mMode & 0x10) != 0))
+          {
+            localMotionLayout.setTransition(this.mTransition);
+            localMotionLayout.transitionToStart();
+          }
+          else if ((k != 0) && ((this.mMode & 0x100) != 0))
+          {
+            localMotionLayout.setTransition(this.mTransition);
+            localMotionLayout.setProgress(1.0F);
+          }
+          else if ((m != 0) && ((this.mMode & 0x1000) != 0))
+          {
+            localMotionLayout.setTransition(this.mTransition);
+            localMotionLayout.setProgress(0.0F);
+          }
+        }
       }
     }
-    if (isTransitionViable(localTransition1, paramView))
-    {
-      if ((k != 0) && ((this.mMode & 0x1) != 0))
-      {
-        paramView.setTransition(this.mTransition);
-        paramView.transitionToEnd();
-        return;
-      }
-      if ((m != 0) && ((this.mMode & 0x10) != 0))
-      {
-        paramView.setTransition(this.mTransition);
-        paramView.transitionToStart();
-        return;
-      }
-      if ((k != 0) && ((this.mMode & 0x100) != 0))
-      {
-        paramView.setTransition(this.mTransition);
-        paramView.setProgress(1.0F);
-        return;
-      }
-      if ((m != 0) && ((this.mMode & 0x1000) != 0))
-      {
-        paramView.setTransition(this.mTransition);
-        paramView.setProgress(0.0F);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void removeOnClickListeners(MotionLayout paramMotionLayout)
@@ -225,7 +229,7 @@ class MotionScene$Transition$TransitionOnClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.MotionScene.Transition.TransitionOnClick
  * JD-Core Version:    0.7.0.1
  */

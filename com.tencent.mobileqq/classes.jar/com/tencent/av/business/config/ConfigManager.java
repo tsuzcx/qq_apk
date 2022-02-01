@@ -33,12 +33,7 @@ public class ConfigManager
     return a;
   }
   
-  public static IConfigParser a(Context paramContext)
-  {
-    return a(paramContext).getConfigParser(paramContext);
-  }
-  
-  public static void a(Context paramContext)
+  public static void b(Context paramContext)
   {
     if (a != null) {
       try
@@ -52,6 +47,11 @@ public class ConfigManager
       }
       finally {}
     }
+  }
+  
+  public static IConfigParser c(Context paramContext)
+  {
+    return a(paramContext).getConfigParser(paramContext);
   }
 }
 

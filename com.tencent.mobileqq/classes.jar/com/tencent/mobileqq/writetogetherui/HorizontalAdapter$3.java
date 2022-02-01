@@ -13,15 +13,15 @@ class HorizontalAdapter$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B359", "0X800B359", 1, 0, "", "", "", "");
-    HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter).a(HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter)[this.jdField_a_of_type_Int].b);
-    HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter.notifyDataSetChanged();
+    HorizontalAdapter.c(this.b).a(HorizontalAdapter.b(this.b)[this.a].c);
+    HorizontalAdapter.a(this.b, this.a);
+    this.b.a(false);
+    this.b.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.HorizontalAdapter.3
  * JD-Core Version:    0.7.0.1
  */

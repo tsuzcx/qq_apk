@@ -27,21 +27,21 @@ import mqq.os.MqqHandler;
 public class AEEditorTextControlPanel
   extends FrameLayout
 {
-  private final int jdField_a_of_type_Int = getResources().getColor(2131166293);
-  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Observer<Integer> jdField_a_of_type_AndroidxLifecycleObserver;
-  private AEEditorColorSelectorView jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorSelectorView;
-  private AEEditorTextControlPanel.TextControlListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel$TextControlListener;
-  private AEEditorTextMaterialContentAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter;
-  private AEEditorTextViewModel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = getResources().getColor(2131166295);
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private Observer<String> jdField_b_of_type_AndroidxLifecycleObserver;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private Observer<List<MetaMaterial>> jdField_c_of_type_AndroidxLifecycleObserver;
-  private Observer<Integer> d;
+  private TextView a;
+  private TextView b;
+  private TextView c;
+  private AEEditorTextMaterialContentAdapter d;
+  private AEEditorColorSelectorView e;
+  private final int f = getResources().getColor(2131167030);
+  private final int g = getResources().getColor(2131167032);
+  private final Drawable h;
+  private AEEditorTextViewModel i;
+  private Observer<Integer> j;
+  private Observer<String> k;
+  private Observer<List<MetaMaterial>> l;
+  private Observer<Integer> m;
+  private boolean n;
+  private AEEditorTextControlPanel.TextControlListener o;
   
   public AEEditorTextControlPanel(@NonNull Context paramContext)
   {
@@ -56,63 +56,69 @@ public class AEEditorTextControlPanel
   public AEEditorTextControlPanel(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ContextCompat.getDrawable(paramContext, 2064056578);
+    this.h = ContextCompat.getDrawable(paramContext, 2063925537);
     a(paramContext);
     a();
   }
   
-  private ApplyMaterialTask a()
-  {
-    return new AEEditorTextControlPanel.8(this);
-  }
-  
   private void a()
   {
-    this.jdField_a_of_type_AndroidxLifecycleObserver = new AEEditorTextControlPanel.3(this);
-    this.jdField_b_of_type_AndroidxLifecycleObserver = new AEEditorTextControlPanel.4(this);
-    this.jdField_c_of_type_AndroidxLifecycleObserver = new AEEditorTextControlPanel.5(this);
-    this.d = new AEEditorTextControlPanel.6(this);
+    this.j = new AEEditorTextControlPanel.3(this);
+    this.k = new AEEditorTextControlPanel.4(this);
+    this.l = new AEEditorTextControlPanel.5(this);
+    this.m = new AEEditorTextControlPanel.6(this);
   }
   
   private void a(@NonNull Context paramContext)
   {
-    Object localObject = View.inflate(paramContext, 2064318584, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2064122765));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2064122763));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2064122764));
-    RecyclerView localRecyclerView = (RecyclerView)((View)localObject).findViewById(2064122586);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorSelectorView = ((AEEditorColorSelectorView)((View)localObject).findViewById(2064122053));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorSelectorView.setColorSelectedListener(new AEEditorTextControlPanel.1(this));
+    Object localObject = View.inflate(paramContext, 2064056456, this);
+    this.a = ((TextView)((View)localObject).findViewById(2063991540));
+    this.b = ((TextView)((View)localObject).findViewById(2063991538));
+    this.c = ((TextView)((View)localObject).findViewById(2063991539));
+    RecyclerView localRecyclerView = (RecyclerView)((View)localObject).findViewById(2063991403);
+    this.e = ((AEEditorColorSelectorView)((View)localObject).findViewById(2063990973));
+    this.e.setColorSelectedListener(new AEEditorTextControlPanel.1(this));
     localObject = new AEEditorTextControlPanel.2(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
+    this.a.setOnClickListener((View.OnClickListener)localObject);
+    this.b.setOnClickListener((View.OnClickListener)localObject);
+    this.c.setOnClickListener((View.OnClickListener)localObject);
     localRecyclerView.setOverScrollMode(2);
     localObject = new LinearLayoutManager(getContext(), 0, false);
     ((LinearLayoutManager)localObject).setAutoMeasureEnabled(false);
     localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter = new AEEditorTextMaterialContentAdapter(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter.a(a());
-    localRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter);
+    this.d = new AEEditorTextMaterialContentAdapter(paramContext);
+    this.d.a(c());
+    localRecyclerView.setAdapter(this.d);
   }
   
   private void a(TextView paramTextView, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      paramTextView.setTextColor(this.jdField_a_of_type_Int);
+      paramTextView.setTextColor(this.f);
       paramTextView.setTypeface(Typeface.defaultFromStyle(1));
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, this.h);
       return;
     }
-    paramTextView.setTextColor(this.jdField_b_of_type_Int);
+    paramTextView.setTextColor(this.g);
     paramTextView.setTypeface(Typeface.defaultFromStyle(0));
     paramTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
   }
   
-  private void a(boolean paramBoolean)
+  private void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorSelectorView;
+    AEEditorTextControlPanel.7 local7 = new AEEditorTextControlPanel.7(this);
+    ThreadManager.getUIHandler().post(local7);
+  }
+  
+  private ApplyMaterialTask c()
+  {
+    return new AEEditorTextControlPanel.8(this);
+  }
+  
+  private void setColorSelectorViewVisibility(boolean paramBoolean)
+  {
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
@@ -124,23 +130,17 @@ public class AEEditorTextControlPanel
     }
     else if (((AEEditorColorSelectorView)localObject).getVisibility() == 0)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorSelectorView.setVisibility(8);
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel$TextControlListener;
+      this.e.setVisibility(8);
+      localObject = this.o;
       if (localObject != null) {
         ((AEEditorTextControlPanel.TextControlListener)localObject).c(false);
       }
     }
   }
   
-  private void b()
-  {
-    AEEditorTextControlPanel.7 local7 = new AEEditorTextControlPanel.7(this);
-    ThreadManager.getUIHandler().post(local7);
-  }
-  
   public void a(int paramInt)
   {
-    AEEditorColorSelectorView localAEEditorColorSelectorView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorSelectorView;
+    AEEditorColorSelectorView localAEEditorColorSelectorView = this.e;
     if (localAEEditorColorSelectorView != null) {
       localAEEditorColorSelectorView.a(Integer.valueOf(paramInt));
     }
@@ -148,14 +148,14 @@ public class AEEditorTextControlPanel
   
   public boolean a(String paramString)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramString);
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramString);
-    if ((i != -1) && (paramString != null))
+    int i1 = this.i.b(paramString);
+    paramString = this.i.a(paramString);
+    if ((i1 != -1) && (paramString != null))
     {
-      AEEditorTextMaterialContentAdapter localAEEditorTextMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter;
+      AEEditorTextMaterialContentAdapter localAEEditorTextMaterialContentAdapter = this.d;
       if (localAEEditorTextMaterialContentAdapter != null)
       {
-        localAEEditorTextMaterialContentAdapter.a(i, paramString);
+        localAEEditorTextMaterialContentAdapter.a(i1, paramString);
         return true;
       }
     }
@@ -165,47 +165,47 @@ public class AEEditorTextControlPanel
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    AEEditorTextViewModel localAEEditorTextViewModel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel;
+    AEEditorTextViewModel localAEEditorTextViewModel = this.i;
     if (localAEEditorTextViewModel != null)
     {
-      if (this.jdField_a_of_type_AndroidxLifecycleObserver != null) {
-        localAEEditorTextViewModel.c().removeObserver(this.jdField_a_of_type_AndroidxLifecycleObserver);
+      if (this.j != null) {
+        localAEEditorTextViewModel.e().removeObserver(this.j);
       }
-      if (this.jdField_b_of_type_AndroidxLifecycleObserver != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.d().removeObserver(this.jdField_b_of_type_AndroidxLifecycleObserver);
+      if (this.k != null) {
+        this.i.g().removeObserver(this.k);
       }
-      if (this.jdField_c_of_type_AndroidxLifecycleObserver != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.e().removeObserver(this.jdField_c_of_type_AndroidxLifecycleObserver);
+      if (this.l != null) {
+        this.i.h().removeObserver(this.l);
       }
-      if (this.d != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.f().removeObserver(this.d);
+      if (this.m != null) {
+        this.i.i().removeObserver(this.m);
       }
     }
   }
   
   public void setIsImageMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter.b(paramBoolean);
+    this.n = paramBoolean;
+    this.d.b(paramBoolean);
   }
   
   public void setTextControlPanelListener(AEEditorTextControlPanel.TextControlListener paramTextControlListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel$TextControlListener = paramTextControlListener;
+    this.o = paramTextControlListener;
   }
   
   public void setTextViewModel(AEEditorTextViewModel paramAEEditorTextViewModel)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel = paramAEEditorTextViewModel;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.c().observeForever(this.jdField_a_of_type_AndroidxLifecycleObserver);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.d().observeForever(this.jdField_b_of_type_AndroidxLifecycleObserver);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.e().observeForever(this.jdField_c_of_type_AndroidxLifecycleObserver);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.f().observeForever(this.d);
+    this.i = paramAEEditorTextViewModel;
+    this.i.e().observeForever(this.j);
+    this.i.g().observeForever(this.k);
+    this.i.h().observeForever(this.l);
+    this.i.i().observeForever(this.m);
   }
   
   public void setToastValidListener(QQToast.IToastValidListener paramIToastValidListener)
   {
-    AEEditorTextMaterialContentAdapter localAEEditorTextMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextMaterialContentAdapter;
+    AEEditorTextMaterialContentAdapter localAEEditorTextMaterialContentAdapter = this.d;
     if (localAEEditorTextMaterialContentAdapter != null) {
       localAEEditorTextMaterialContentAdapter.a(paramIToastValidListener);
     }
@@ -213,7 +213,7 @@ public class AEEditorTextControlPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextControlPanel
  * JD-Core Version:    0.7.0.1
  */

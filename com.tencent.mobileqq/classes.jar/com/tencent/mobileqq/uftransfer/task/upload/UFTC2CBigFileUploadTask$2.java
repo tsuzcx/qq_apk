@@ -13,12 +13,12 @@ class UFTC2CBigFileUploadTask$2
     if (UFTC2CBigFileUploadTask.b(this.a)) {
       return;
     }
-    this.a.a(paramOpRetData.a(), paramOpRetData.a());
+    this.a.a(paramOpRetData.a(), paramOpRetData.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CBigFileUploadTask.2
  * JD-Core Version:    0.7.0.1
  */

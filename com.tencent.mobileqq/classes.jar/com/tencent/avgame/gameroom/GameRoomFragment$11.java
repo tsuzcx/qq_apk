@@ -17,7 +17,7 @@ class GameRoomFragment$11
       if (paramDialogInterface.isFinishing()) {
         return;
       }
-      GameRoomFragment.b(this.a);
+      GameRoomFragment.f(this.a);
     }
   }
 }

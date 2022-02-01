@@ -23,7 +23,6 @@ import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.biz.pubaccount.api.IPublicAccountHandler;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountMessageUtil;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.biz.videostory.support.VSReporter;
@@ -43,6 +42,7 @@ import com.tencent.mobileqq.data.MessageForPubAccount;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
@@ -62,12 +62,11 @@ import java.util.List;
 public class PASingleItemBuilder
   extends AbstractChatItemBuilder
 {
-  View.OnClickListener a;
+  View.OnClickListener e = new PASingleItemBuilder.1(this);
   
   public PASingleItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new PASingleItemBuilder.1(this);
   }
   
   private void a(PASingleItemBuilder.Holder paramHolder, ChatMessage paramChatMessage, long paramLong)
@@ -78,61 +77,61 @@ public class PASingleItemBuilder
         return;
       }
       String str;
-      if (TextUtils.isEmpty(paramHolder.f)) {
-        str = paramHolder.e;
+      if (TextUtils.isEmpty(paramHolder.m)) {
+        str = paramHolder.l;
       } else {
-        str = paramHolder.f;
+        str = paramHolder.m;
       }
-      EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-      EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+      EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)this.a.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+      EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)this.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
       if (!TextUtils.isEmpty(str))
       {
-        JumpAction localJumpAction = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, str);
+        JumpAction localJumpAction = JumpParser.a(this.a, this.c, str);
         if (localJumpAction == null)
         {
           int i;
-          if (paramHolder.jdField_a_of_type_Long == 0L) {
+          if (paramHolder.k == 0L) {
             i = 0;
           } else {
             i = 1;
           }
           if (i != 0)
           {
-            if (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_a_of_type_Long, str)) {
-              a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramLong);
+            if (!a(this.a, this.c, paramHolder.g, paramHolder.k, str)) {
+              a(this.a, this.c, paramHolder.g, paramHolder.h, paramHolder.i, this.d.b, this.d.e, paramLong);
             } else {
-              ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_34", "singlepic_appclick");
+              ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.a, this.d.b, "Pb_account_lifeservice", "mp_msg_sys_34", "singlepic_appclick");
             }
           }
           else {
-            a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramLong);
+            a(this.a, this.c, paramHolder.g, paramHolder.h, paramHolder.i, this.d.b, this.d.e, paramLong);
           }
         }
-        else if (TextUtils.isEmpty(localJumpAction.a()))
+        else if (TextUtils.isEmpty(localJumpAction.i()))
         {
-          if (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_a_of_type_Long, str)) {
-            a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramLong);
+          if (!a(this.a, this.c, paramHolder.g, paramHolder.k, str)) {
+            a(this.a, this.c, paramHolder.g, paramHolder.h, paramHolder.i, this.d.b, this.d.e, paramLong);
           } else {
-            ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_34", "singlepic_appclick");
+            ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.a, this.d.b, "Pb_account_lifeservice", "mp_msg_sys_34", "singlepic_appclick");
           }
         }
         else if (!localJumpAction.a())
         {
-          a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramLong);
+          a(this.a, this.c, paramHolder.g, paramHolder.h, paramHolder.i, this.d.b, this.d.e, paramLong);
         }
         else
         {
-          ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_33", "singlepic_mqqclick");
+          ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.a, this.d.b, "Pb_account_lifeservice", "mp_msg_sys_33", "singlepic_mqqclick");
         }
-        ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_32", "singlepic_allclick");
-        if ((paramChatMessage != null) && (localEcShopAssistantManager != null) && (localEcshopReportHandler != null) && (localEcShopAssistantManager.a(paramChatMessage.senderuin))) {
+        ((IPublicAccountHandler)QRoute.api(IPublicAccountHandler.class)).reportClickPublicAccountEvent(this.a, this.d.b, "Pb_account_lifeservice", "mp_msg_sys_32", "singlepic_allclick");
+        if ((paramChatMessage != null) && (localEcShopAssistantManager != null) && (localEcshopReportHandler != null) && (localEcShopAssistantManager.d(paramChatMessage.senderuin))) {
           localEcshopReportHandler.a(false, paramChatMessage, 1, str);
         }
         return;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramLong);
-      if ((paramChatMessage != null) && (localEcShopAssistantManager != null) && (localEcshopReportHandler != null) && (localEcShopAssistantManager.a(paramChatMessage.senderuin))) {
-        localEcshopReportHandler.a(false, paramChatMessage, 1, paramHolder.jdField_c_of_type_JavaLangString);
+      a(this.a, this.c, paramHolder.g, paramHolder.h, paramHolder.i, this.d.b, this.d.e, paramLong);
+      if ((paramChatMessage != null) && (localEcShopAssistantManager != null) && (localEcshopReportHandler != null) && (localEcShopAssistantManager.d(paramChatMessage.senderuin))) {
+        localEcshopReportHandler.a(false, paramChatMessage, 1, paramHolder.i);
       }
     }
   }
@@ -153,7 +152,7 @@ public class PASingleItemBuilder
     paramString1 = new Intent();
     paramString1.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
     paramString1.putExtra("url", paramString3);
-    paramString1.putExtra("assignBackText", paramContext.getResources().getString(2131690706));
+    paramString1.putExtra("assignBackText", paramContext.getResources().getString(2131887625));
     paramString1.putExtra("puin", paramString4);
     if (paramLong >= 0L) {
       paramString1.putExtra("msg_id", String.valueOf(paramLong));
@@ -189,7 +188,7 @@ public class PASingleItemBuilder
       if (AppLaucherHelper.a(paramString2) != 0) {
         i = 1;
       }
-      Bundle localBundle = AppLaucherHelper.a(paramString2);
+      Bundle localBundle = AppLaucherHelper.b(paramString2);
       int j = localBundle.getInt("a_launch_mode", 268435456);
       if (i != 0)
       {
@@ -208,12 +207,12 @@ public class PASingleItemBuilder
       paramChatMessage = (MessageForPubAccount)paramChatMessage;
       if ((paramChatMessage.mPAMessage != null) && (paramChatMessage.mPAMessage.mMsgId > 0L))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", paramChatMessage.frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(paramChatMessage.mPAMessage.mMsgId), "", "", "");
-        Object localObject = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-        if ((localObject != null) && (((IPublicAccountDataManager)localObject).isCertifiedAccount(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) && (paramChatMessage.mPAMessage.items != null) && (paramChatMessage.mPAMessage.items.size() > 0))
+        ReportController.b(this.a, "P_CliOper", "Pb_account_lifeservice", paramChatMessage.frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(paramChatMessage.mPAMessage.mMsgId), "", "", "");
+        Object localObject = (IPublicAccountDataManager)this.a.getRuntimeService(IPublicAccountDataManager.class, "all");
+        if ((localObject != null) && (((IPublicAccountDataManager)localObject).isCertifiedAccount(this.d)) && (paramChatMessage.mPAMessage.items != null) && (paramChatMessage.mPAMessage.items.size() > 0))
         {
           localObject = ((PAMessage.Item)paramChatMessage.mPAMessage.items.get(0)).title;
-          VSReporter.a(paramChatMessage.frienduin, "auth_aio", "clk_content", 0, 0, new String[] { "", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, localObject });
+          VSReporter.a(paramChatMessage.frienduin, "auth_aio", "clk_content", 0, 0, new String[] { "", "", this.d.e, localObject });
         }
       }
     }
@@ -221,23 +220,23 @@ public class PASingleItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout.setPadding(0, AIOUtils.b(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
+    paramLinearLayout.setPadding(0, AIOUtils.b(11.0F, this.c.getResources()), 0, 0);
     if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558812, null);
+      paramView = LayoutInflater.from(this.c).inflate(2131624432, null);
     }
     paramLinearLayout = (MessageForPubAccount)paramMessageRecord;
     paramViewHolder = (PASingleItemBuilder.Holder)paramViewHolder;
-    View localView = paramView.findViewById(2131372257);
-    Object localObject5 = (TextView)paramView.findViewById(2131372243);
-    Object localObject4 = (TextView)paramView.findViewById(2131372259);
-    Object localObject2 = (TextView)paramView.findViewById(2131372258);
-    Object localObject1 = (ImageView)paramView.findViewById(2131372256);
-    Object localObject6 = (TextView)paramView.findViewById(2131372248);
-    Object localObject7 = (TextView)paramView.findViewById(2131372249);
-    Object localObject8 = (TextView)paramView.findViewById(2131372250);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131372251);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131372252);
-    Object localObject3 = (TextView)paramView.findViewById(2131372254);
+    View localView = paramView.findViewById(2131439762);
+    Object localObject5 = (TextView)paramView.findViewById(2131439748);
+    Object localObject4 = (TextView)paramView.findViewById(2131439764);
+    Object localObject2 = (TextView)paramView.findViewById(2131439763);
+    Object localObject1 = (ImageView)paramView.findViewById(2131439761);
+    Object localObject6 = (TextView)paramView.findViewById(2131439753);
+    Object localObject7 = (TextView)paramView.findViewById(2131439754);
+    Object localObject8 = (TextView)paramView.findViewById(2131439755);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131439756);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131439757);
+    Object localObject3 = (TextView)paramView.findViewById(2131439759);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localObject6);
     localArrayList.add(localObject7);
@@ -255,30 +254,30 @@ public class PASingleItemBuilder
       ((TextView)localObject5).setVisibility(8);
     }
     localObject5 = (PAMessage.Item)((PAMessage)localObject6).items.get(0);
-    paramViewHolder.jdField_c_of_type_JavaLangString = ((PAMessage.Item)localObject5).url;
-    paramViewHolder.jdField_b_of_type_JavaLangString = ((PAMessage.Item)localObject5).actionUrl;
-    paramViewHolder.jdField_a_of_type_JavaLangString = ((PAMessage.Item)localObject5).nativeJumpString;
-    paramViewHolder.jdField_c_of_type_Int = ((PAMessage)localObject6).type;
-    paramViewHolder.jdField_b_of_type_Int = 5;
-    paramViewHolder.jdField_a_of_type_JavaLangObject = Long.valueOf(paramLinearLayout.uniseq);
-    paramViewHolder.d = ((PAMessage)localObject6).moreText;
-    paramViewHolder.jdField_a_of_type_Long = ((PAMessage.Item)localObject5).appId;
-    paramViewHolder.e = ((PAMessage.Item)localObject5).actionData;
-    paramViewHolder.f = ((PAMessage.Item)localObject5).a_actionData;
-    paramViewHolder.g = ((PAMessage.Item)localObject5).i_actionData;
+    paramViewHolder.i = ((PAMessage.Item)localObject5).url;
+    paramViewHolder.h = ((PAMessage.Item)localObject5).actionUrl;
+    paramViewHolder.g = ((PAMessage.Item)localObject5).nativeJumpString;
+    paramViewHolder.f = ((PAMessage)localObject6).type;
+    paramViewHolder.e = 5;
+    paramViewHolder.d = Long.valueOf(paramLinearLayout.uniseq);
+    paramViewHolder.j = ((PAMessage)localObject6).moreText;
+    paramViewHolder.k = ((PAMessage.Item)localObject5).appId;
+    paramViewHolder.l = ((PAMessage.Item)localObject5).actionData;
+    paramViewHolder.m = ((PAMessage.Item)localObject5).a_actionData;
+    paramViewHolder.n = ((PAMessage.Item)localObject5).i_actionData;
     if (!TextUtils.isEmpty(((PAMessage)localObject6).moreText)) {
       ((TextView)localObject3).setText(((PAMessage)localObject6).moreText);
     } else {
-      ((TextView)localObject3).setText(2131694676);
+      ((TextView)localObject3).setText(2131892368);
     }
-    localObject3 = Util.c(((PAMessage.Item)localObject5).title);
+    localObject3 = Util.e(((PAMessage.Item)localObject5).title);
     ((TextView)localObject4).setText((CharSequence)localObject3);
     int i;
     if (((PAMessage.Item)localObject5).mVideoFlag == 1)
     {
-      localObject7 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842748);
-      i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-      ((Drawable)localObject7).setBounds(i, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 17.0F) + i, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
+      localObject7 = this.c.getResources().getDrawable(2130843701);
+      i = DisplayUtil.a(this.c, 5.0F);
+      ((Drawable)localObject7).setBounds(i, 0, DisplayUtil.a(this.c, 17.0F) + i, DisplayUtil.a(this.c, 20.0F));
       localObject8 = new StringBuilder();
       ((StringBuilder)localObject8).append((String)localObject3);
       ((StringBuilder)localObject8).append("1");
@@ -294,7 +293,7 @@ public class PASingleItemBuilder
     }
     if (l != 0L)
     {
-      ((TextView)localObject2).setText(TimeFormatterUtils.a(this.jdField_a_of_type_AndroidContentContext, l * 1000L));
+      ((TextView)localObject2).setText(TimeFormatterUtils.a(this.c, l * 1000L));
       ((TextView)localObject2).setVisibility(0);
     }
     else
@@ -304,9 +303,9 @@ public class PASingleItemBuilder
     try
     {
       localObject2 = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(((PAMessage.Item)localObject5).cover, 0);
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-      j = AIOUtils.b(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int k = AIOUtils.b(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      i = this.c.getResources().getDisplayMetrics().widthPixels;
+      j = AIOUtils.b(50.0F, this.c.getResources());
+      int k = AIOUtils.b(150.0F, this.c.getResources());
       localObject4 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = (i - j);
       ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = k;
@@ -316,7 +315,7 @@ public class PASingleItemBuilder
       ((URLDrawable.URLDrawableOptions)localObject4).mGifRoundCorner = 0.0F;
       ((URLDrawable.URLDrawableOptions)localObject4).mExtraInfo = paramMessageRecord;
       paramMessageRecord = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject4);
-      paramMessageRecord.addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramMessageRecord.addHeader("my_uin", this.a.getCurrentAccountUin());
       ((ImageView)localObject1).setImageDrawable(paramMessageRecord);
     }
     catch (Exception paramMessageRecord)
@@ -325,7 +324,7 @@ public class PASingleItemBuilder
       label798:
       break label798;
     }
-    ((ImageView)localObject1).setImageResource(2130838024);
+    ((ImageView)localObject1).setImageResource(2130838066);
     paramMessageRecord = ((PAMessage.Item)localObject5).digestList;
     if (paramMessageRecord != null) {
       i = paramMessageRecord.size();
@@ -348,12 +347,12 @@ public class PASingleItemBuilder
       j += 1;
     }
     localView.setTag(paramViewHolder);
-    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localView.setOnClickListener(this.e);
     localView.setOnTouchListener(paramOnLongClickAndTouchListener);
     localView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-    paramMessageRecord = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-    if ((paramMessageRecord != null) && (paramMessageRecord.isCertifiedAccount(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) && (paramLinearLayout.mPAMessage.items != null) && (paramLinearLayout.mPAMessage.items.size() > 0)) {
-      VSReporter.a(paramLinearLayout.frienduin, "auth_aio", "exp", 0, 0, new String[] { "", "1", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, localObject3 });
+    paramMessageRecord = (IPublicAccountDataManager)this.a.getRuntimeService(IPublicAccountDataManager.class, "all");
+    if ((paramMessageRecord != null) && (paramMessageRecord.isCertifiedAccount(this.d)) && (paramLinearLayout.mPAMessage.items != null) && (paramLinearLayout.mPAMessage.items.size() > 0)) {
+      VSReporter.a(paramLinearLayout.frienduin, "auth_aio", "exp", 0, 0, new String[] { "", "1", this.d.e, localObject3 });
     }
     return paramView;
   }
@@ -365,18 +364,18 @@ public class PASingleItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131365480) {
+    if (paramInt != 2131431695) {
       return;
     }
-    paramContext = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    paramContext = ChatActivityFacade.e(this.a, this.d);
     if ((paramContext != null) && (paramContext.uniseq == paramChatMessage.uniseq)) {
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      ChatActivityFacade.a(this.a, this.d);
     }
     paramContext = (IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    QQAppInterface localQQAppInterface = this.a;
+    Context localContext = this.c;
+    String str = this.d.b;
+    paramInt = this.d.a;
     long l = paramChatMessage.uniseq;
     boolean bool;
     if (paramChatMessage.issend == 1) {
@@ -390,13 +389,13 @@ public class PASingleItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131365480, this.jdField_a_of_type_AndroidContentContext.getString(2131690788), 2130838907);
-    return paramView.a();
+    paramView.a(2131431695, this.c.getString(2131887718), 2130839061);
+    return paramView.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder
  * JD-Core Version:    0.7.0.1
  */

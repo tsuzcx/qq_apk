@@ -20,21 +20,21 @@ class VoteHelper$4
       ((StringBuilder)localObject).append(this.a);
       QLog.i("VisitorsActivity.VoteHelper", 2, ((StringBuilder)localObject).toString());
     }
-    CardProfile localCardProfile = VoteUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 2);
+    CardProfile localCardProfile = VoteUtil.b(this.this$0.c, this.a, 2);
     Object localObject = localCardProfile;
     if (localCardProfile == null) {
-      localObject = VoteUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 3);
+      localObject = VoteUtil.b(this.this$0.c, this.a, 3);
     }
     if (localObject != null)
     {
       ((CardProfile)localObject).updateTime(System.currentTimeMillis() / 1000L);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(9, localObject).sendToTarget();
+      this.this$0.b.obtainMessage(9, localObject).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.vote.VoteHelper.4
  * JD-Core Version:    0.7.0.1
  */

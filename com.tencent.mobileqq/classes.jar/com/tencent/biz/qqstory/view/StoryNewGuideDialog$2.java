@@ -12,15 +12,15 @@ class StoryNewGuideDialog$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidContentContext;
+    paramAnimation = this.a;
     if ((paramAnimation instanceof Activity))
     {
       if (!((Activity)paramAnimation).isFinishing()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.dismiss();
+        this.b.dismiss();
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.dismiss();
+      this.b.dismiss();
     }
   }
   

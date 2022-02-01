@@ -10,8 +10,8 @@ final class VideoMsgTools$4
   
   public void run()
   {
-    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade;
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    QQMessageFacade localQQMessageFacade = this.a;
+    MessageRecord localMessageRecord = this.b;
     localQQMessageFacade.a(localMessageRecord, localMessageRecord.selfuin);
   }
 }

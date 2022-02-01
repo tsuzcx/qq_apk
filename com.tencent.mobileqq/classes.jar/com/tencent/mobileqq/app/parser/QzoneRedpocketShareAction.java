@@ -18,10 +18,10 @@ public class QzoneRedpocketShareAction
   
   private boolean c()
   {
-    String str1 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin();
-    String str2 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentNickname();
+    String str1 = this.a.getCurrentUin();
+    String str2 = this.a.getCurrentNickname();
     String str3 = QUA.getQUA3();
-    QZoneShareManager.shareToQZoneForRedPocket(this.jdField_a_of_type_AndroidContentContext, str1, null, 0, str2, str3);
+    QZoneShareManager.shareToQZoneForRedPocket(this.b, str1, null, 0, str2, str3);
     return true;
   }
   
@@ -38,14 +38,14 @@ public class QzoneRedpocketShareAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QzoneRedpocketShareAction", 1, localStringBuilder.toString());
-      b_("QzoneRedpocketShareAction");
+      h_("QzoneRedpocketShareAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzoneRedpocketShareAction
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ final class UEC$UECItem$1
   public UEC.UECItem a(Parcel paramParcel)
   {
     UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
+    localUECItem.a = paramParcel.readString();
+    localUECItem.b = paramParcel.readInt();
+    localUECItem.c = paramParcel.readLong();
+    localUECItem.d = paramParcel.readInt();
+    localUECItem.g = paramParcel.readString();
+    localUECItem.h = paramParcel.readString();
+    localUECItem.i = paramParcel.readString();
+    localUECItem.j = paramParcel.readString();
+    localUECItem.k = paramParcel.readString();
     return localUECItem;
   }
   
@@ -28,7 +28,7 @@ final class UEC$UECItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.UEC.UECItem.1
  * JD-Core Version:    0.7.0.1
  */

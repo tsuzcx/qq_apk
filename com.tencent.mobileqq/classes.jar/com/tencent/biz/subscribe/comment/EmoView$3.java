@@ -16,25 +16,25 @@ class EmoView$3
     boolean bool1 = false;
     if (paramInt == 27)
     {
-      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      if (EmoView.c(this.b) != null) {
+        bool1 = EmoView.c(this.b).a();
       }
       if (!bool1) {
-        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+        EmoView.d(this.b).a();
       }
     }
     else
     {
-      int i = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      int i = (this.a - 1) * 27 + paramInt;
       if (i < 107)
       {
-        String str = Patterns.b[EmoWindowAdapter.b[i]];
+        String str = Patterns.e[EmoWindowAdapter.c[i]];
         bool1 = bool2;
-        if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-          bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        if (EmoView.c(this.b) != null) {
+          bool1 = EmoView.c(this.b).a(str);
         }
         if (!bool1) {
-          EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+          EmoView.d(this.b).a(str);
         }
       }
     }

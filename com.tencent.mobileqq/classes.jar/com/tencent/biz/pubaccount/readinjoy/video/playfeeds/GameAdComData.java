@@ -13,18 +13,18 @@ public class GameAdComData
   public String A;
   public String B;
   public String C;
-  public String D = "";
-  public String E;
+  public String D;
+  public String E = "";
   public String F;
-  public String G;
-  public String H;
-  public int a;
-  public GameAdDownloadInfo a;
+  public int G;
+  public int H;
+  public GameAdDownloadInfo I;
+  public String J;
+  public String K;
+  public String L;
   public String a;
-  public int b;
   public String b;
   public int c;
-  public String c;
   public String d;
   public String e;
   public String f;
@@ -51,10 +51,9 @@ public class GameAdComData
   
   protected GameAdComData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readString();
+    this.c = paramParcel.readInt();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
     this.f = paramParcel.readString();
@@ -64,7 +63,7 @@ public class GameAdComData
     this.j = paramParcel.readString();
     this.k = paramParcel.readString();
     this.l = paramParcel.readString();
-    this.n = paramParcel.readString();
+    this.m = paramParcel.readString();
     this.o = paramParcel.readString();
     this.p = paramParcel.readString();
     this.q = paramParcel.readString();
@@ -78,10 +77,11 @@ public class GameAdComData
     this.y = paramParcel.readString();
     this.z = paramParcel.readString();
     this.A = paramParcel.readString();
-    this.E = paramParcel.readString();
+    this.B = paramParcel.readString();
     this.F = paramParcel.readString();
-    this.G = paramParcel.readString();
-    this.H = paramParcel.readString();
+    this.J = paramParcel.readString();
+    this.K = paramParcel.readString();
+    this.L = paramParcel.readString();
   }
   
   public GameAdComData(String paramString, JSONObject paramJSONObject)
@@ -89,43 +89,43 @@ public class GameAdComData
     if (paramJSONObject == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     this.b = paramJSONObject.optString("sAdID", "");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("sDeliveryMode", 0);
-    this.c = paramJSONObject.optString("sGameName", "");
-    this.d = paramJSONObject.optString("sPackageName", "");
-    this.e = paramJSONObject.optString("sBusiness_type", "");
-    this.f = paramJSONObject.optString("sPlat_form", "");
-    this.g = paramJSONObject.optString("sAppid", "");
-    this.h = paramJSONObject.optString("sAppleid", "");
-    this.i = paramJSONObject.optString("sSlogan", "");
-    this.j = paramJSONObject.optString("sGameIcon", "");
-    this.k = paramJSONObject.optString("sOperType", "");
-    this.l = paramJSONObject.optString("sGameStage", "");
-    this.m = paramJSONObject.optString("sGameSize", "");
-    this.n = paramJSONObject.optString("sGameKind", "");
-    this.o = paramJSONObject.optString("sGameSubKind", "");
-    this.p = paramJSONObject.optString("sDetailUrl", "");
-    this.q = paramJSONObject.optString("sActivityUrl", "");
-    this.r = paramJSONObject.optString("sGameStatus", "");
-    this.s = paramJSONObject.optString("sComponentType", "");
-    this.t = paramJSONObject.optString("stDownloadInfo", "");
-    if (TextUtils.isEmpty(this.t)) {
-      this.t = new JSONObject().toString();
-    }
-    this.u = paramJSONObject.optString("sGiftInfo", "");
+    this.c = paramJSONObject.optInt("sDeliveryMode", 0);
+    this.d = paramJSONObject.optString("sGameName", "");
+    this.e = paramJSONObject.optString("sPackageName", "");
+    this.f = paramJSONObject.optString("sBusiness_type", "");
+    this.g = paramJSONObject.optString("sPlat_form", "");
+    this.h = paramJSONObject.optString("sAppid", "");
+    this.i = paramJSONObject.optString("sAppleid", "");
+    this.j = paramJSONObject.optString("sSlogan", "");
+    this.k = paramJSONObject.optString("sGameIcon", "");
+    this.l = paramJSONObject.optString("sOperType", "");
+    this.m = paramJSONObject.optString("sGameStage", "");
+    this.n = paramJSONObject.optString("sGameSize", "");
+    this.o = paramJSONObject.optString("sGameKind", "");
+    this.p = paramJSONObject.optString("sGameSubKind", "");
+    this.q = paramJSONObject.optString("sDetailUrl", "");
+    this.r = paramJSONObject.optString("sActivityUrl", "");
+    this.s = paramJSONObject.optString("sGameStatus", "");
+    this.t = paramJSONObject.optString("sComponentType", "");
+    this.u = paramJSONObject.optString("stDownloadInfo", "");
     if (TextUtils.isEmpty(this.u)) {
       this.u = new JSONObject().toString();
     }
-    this.v = paramJSONObject.optString("sButtonDesc", "");
-    this.w = paramJSONObject.optString("sWordTitle", "");
-    this.x = paramJSONObject.optString("sWordContentWifi", "");
-    this.y = paramJSONObject.optString("sWordContentNoWifi", "");
-    this.z = paramJSONObject.optString("sWordHighlight", "");
-    this.A = paramJSONObject.optString("sWordHighlightColor", "");
-    this.E = paramJSONObject.optString("mExtendGameInfo", "");
-    if (TextUtils.isEmpty(this.E)) {
-      this.E = new JSONObject().toString();
+    this.v = paramJSONObject.optString("sGiftInfo", "");
+    if (TextUtils.isEmpty(this.v)) {
+      this.v = new JSONObject().toString();
+    }
+    this.w = paramJSONObject.optString("sButtonDesc", "");
+    this.x = paramJSONObject.optString("sWordTitle", "");
+    this.y = paramJSONObject.optString("sWordContentWifi", "");
+    this.z = paramJSONObject.optString("sWordContentNoWifi", "");
+    this.A = paramJSONObject.optString("sWordHighlight", "");
+    this.B = paramJSONObject.optString("sWordHighlightColor", "");
+    this.F = paramJSONObject.optString("mExtendGameInfo", "");
+    if (TextUtils.isEmpty(this.F)) {
+      this.F = new JSONObject().toString();
     }
     a();
   }
@@ -134,16 +134,16 @@ public class GameAdComData
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.E);
-      this.F = localJSONObject.optString("liujinReportUrl");
-      this.G = localJSONObject.optString("ticket");
-      if (TextUtils.isEmpty(this.G)) {
-        this.G = localJSONObject.optString("ad_encrypted_ticket");
+      JSONObject localJSONObject = new JSONObject(this.F);
+      this.J = localJSONObject.optString("liujinReportUrl");
+      this.K = localJSONObject.optString("ticket");
+      if (TextUtils.isEmpty(this.K)) {
+        this.K = localJSONObject.optString("ad_encrypted_ticket");
       }
-      this.H = localJSONObject.optString("amsNfbUrl");
-      this.B = localJSONObject.optString("nfa_chainId");
-      this.C = localJSONObject.optString("gads_txt");
-      this.D = localJSONObject.optString("obj_type");
+      this.L = localJSONObject.optString("amsNfbUrl");
+      this.C = localJSONObject.optString("nfa_chainId");
+      this.D = localJSONObject.optString("gads_txt");
+      this.E = localJSONObject.optString("obj_type");
       return;
     }
     catch (Throwable localThrowable)
@@ -159,10 +159,9 @@ public class GameAdComData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.c);
+    paramParcel.writeInt(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
     paramParcel.writeString(this.f);
@@ -172,7 +171,7 @@ public class GameAdComData
     paramParcel.writeString(this.j);
     paramParcel.writeString(this.k);
     paramParcel.writeString(this.l);
-    paramParcel.writeString(this.n);
+    paramParcel.writeString(this.m);
     paramParcel.writeString(this.o);
     paramParcel.writeString(this.p);
     paramParcel.writeString(this.q);
@@ -186,15 +185,16 @@ public class GameAdComData
     paramParcel.writeString(this.y);
     paramParcel.writeString(this.z);
     paramParcel.writeString(this.A);
-    paramParcel.writeString(this.E);
+    paramParcel.writeString(this.B);
     paramParcel.writeString(this.F);
-    paramParcel.writeString(this.G);
-    paramParcel.writeString(this.H);
+    paramParcel.writeString(this.J);
+    paramParcel.writeString(this.K);
+    paramParcel.writeString(this.L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData
  * JD-Core Version:    0.7.0.1
  */

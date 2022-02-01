@@ -10,7 +10,7 @@ class RingAnimator$3
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((!this.a.a) && (10 != paramMessage.what)) {
+    if ((!this.a.k) && (10 != paramMessage.what)) {
       return;
     }
     int i = paramMessage.what;
@@ -33,23 +33,23 @@ class RingAnimator$3
           sendEmptyMessage(1);
           return;
         }
-        if (!this.a.a) {
+        if (!this.a.k) {
           return;
         }
-        this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+        this.a.c.setVisibility(0);
+        this.a.c.startAnimation(this.a.f);
         sendEmptyMessageDelayed(1, 3300L);
         return;
       }
-      if (!this.a.a) {
+      if (!this.a.k) {
         return;
       }
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+      this.a.b.setVisibility(0);
+      this.a.b.startAnimation(this.a.e);
       return;
     }
-    this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+    this.a.b.setVisibility(0);
+    this.a.b.startAnimation(this.a.e);
     sendEmptyMessageDelayed(3, 1300L);
   }
 }

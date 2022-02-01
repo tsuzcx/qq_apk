@@ -15,7 +15,7 @@ public class GetFunCallData
 {
   protected int doStep()
   {
-    long l = VipFunCallUtil.a(this.mAutomator.a, 1, null).getLong("update_time", 0L);
+    long l = VipFunCallUtil.a(this.mAutomator.k, 1, null).getLong("update_time", 0L);
     if ((System.currentTimeMillis() - l <= 14400000L) && (System.currentTimeMillis() >= l))
     {
       if (QLog.isColorLevel())
@@ -30,7 +30,7 @@ public class GetFunCallData
     }
     else
     {
-      ((VipSetFunCallHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.FUN_CALL_HANDLER)).a(1, new Bundle());
+      ((VipSetFunCallHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FUN_CALL_HANDLER)).a(1, new Bundle());
       if (QLog.isColorLevel()) {
         QLog.d("GetFunCallData", 2, "doStep SUB_CMD_GET_MY_FC.");
       }
@@ -40,7 +40,7 @@ public class GetFunCallData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetFunCallData
  * JD-Core Version:    0.7.0.1
  */

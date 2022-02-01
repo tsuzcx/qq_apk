@@ -16,28 +16,31 @@ class WSVerticalItemWidgetAdvBigCardController$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController;
-    WSVerticalItemWidgetAdvBigCardController.a(paramAnimator, WSVerticalItemWidgetAdvBigCardController.a(paramAnimator).c());
+    paramAnimator = WSVerticalItemWidgetAdvBigCardController.d(this.c);
+    if (paramAnimator == null) {
+      return;
+    }
+    WSVerticalItemWidgetAdvBigCardController.a(this.c, paramAnimator.i());
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
     paramAnimator = new StringBuilder();
     paramAnimator.append("ease-in onAnimationStart, from:");
-    paramAnimator.append(this.jdField_a_of_type_Int);
+    paramAnimator.append(this.a);
     paramAnimator.append(" to:");
     paramAnimator.append(this.b);
     WSLog.a("WSAdvBigCardController", paramAnimator.toString());
-    WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController).setVisibility(0);
-    if (WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController) != null) {
-      WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController).a();
+    WSVerticalItemWidgetAdvBigCardController.a(this.c).setVisibility(0);
+    if (WSVerticalItemWidgetAdvBigCardController.b(this.c) != null) {
+      WSVerticalItemWidgetAdvBigCardController.b(this.c).a();
     }
-    WSVerticalBeaconReport.a(WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController).a(), WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController).b(), (WSVerticalItemData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController.a(), true);
+    WSVerticalBeaconReport.a(WSVerticalItemWidgetAdvBigCardController.c(this.c).k(), WSVerticalItemWidgetAdvBigCardController.c(this.c).l(), (WSVerticalItemData)this.c.c(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemWidgetAdvBigCardController.1
  * JD-Core Version:    0.7.0.1
  */

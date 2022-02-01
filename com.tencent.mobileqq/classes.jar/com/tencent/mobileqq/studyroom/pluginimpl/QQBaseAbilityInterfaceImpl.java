@@ -9,6 +9,7 @@ import com.tencent.mobileqq.intervideo.now.dynamic.IPluginManagerInterfaceImpl;
 import com.tencent.mobileqq.intervideo.now.dynamic.IPluginManagerInterfaceImplApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.studyroom.api.impl.StudyRoomReporterImpl;
+import com.tencent.mobileqq.studyroom.channel.StudyRoomAVBizHandler;
 import com.tencent.mobileqq.studyroom.config.StudyRoomConfBean;
 import com.tencent.mobileqq.studyroom.config.StudyRoomConfProcessor;
 import com.tencent.qphone.base.util.QLog;
@@ -41,9 +42,19 @@ public class QQBaseAbilityInterfaceImpl
   {
     TroopMemberApiClient localTroopMemberApiClient = TroopMemberApiClient.a();
     if (this.mClientInitialized.compareAndSet(false, true)) {
-      localTroopMemberApiClient.a();
+      localTroopMemberApiClient.e();
     }
     return localTroopMemberApiClient;
+  }
+  
+  private void onEnterRoom(QQConfigAbilityInterface.Callback<JSONObject> paramCallback)
+  {
+    StudyRoomAVBizHandler.a().a(paramCallback);
+  }
+  
+  private void onExitRoom()
+  {
+    StudyRoomAVBizHandler.a().b();
   }
   
   private void uploadPic(JSONObject paramJSONObject, QQConfigAbilityInterface.Callback<JSONObject> paramCallback)
@@ -86,8 +97,18 @@ public class QQBaseAbilityInterfaceImpl
   {
     if (paramInt != 1)
     {
-      if (paramInt != 2) {
-        return false;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return false;
+          }
+          onEnterRoom(paramCallback);
+          return true;
+        }
+        onExitRoom();
+        return true;
       }
       uploadPicCancel(paramJSONObject);
       return true;
@@ -109,7 +130,7 @@ public class QQBaseAbilityInterfaceImpl
     try
     {
       if (this.mClientInitialized.get()) {
-        getClient().b();
+        getClient().f();
       }
       return;
     }
@@ -131,7 +152,7 @@ public class QQBaseAbilityInterfaceImpl
   
   public JSONObject getConfigFromQQ()
   {
-    StudyRoomConfBean localStudyRoomConfBean = StudyRoomConfProcessor.a();
+    StudyRoomConfBean localStudyRoomConfBean = StudyRoomConfProcessor.b();
     if (localStudyRoomConfBean != null) {
       return localStudyRoomConfBean.a;
     }
@@ -226,7 +247,7 @@ public class QQBaseAbilityInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

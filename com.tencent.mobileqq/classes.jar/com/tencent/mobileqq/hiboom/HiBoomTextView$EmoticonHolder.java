@@ -7,14 +7,14 @@ import java.lang.ref.WeakReference;
 
 class HiBoomTextView$EmoticonHolder
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = -1L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private WeakReference<HiBoomTextView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = 0L;
+  private Bitmap a = null;
+  private long b = -1L;
+  private String c = null;
+  private ETFont d = null;
+  private int e = 0;
+  private int f = 0;
+  private long g = 0L;
+  private WeakReference<HiBoomTextView> h;
   
   static EmoticonHolder a(HiBoomTextView paramHiBoomTextView)
   {
@@ -22,22 +22,22 @@ class HiBoomTextView$EmoticonHolder
     if (paramHiBoomTextView != null)
     {
       localEmoticonHolder = new EmoticonHolder();
-      localEmoticonHolder.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
-      localEmoticonHolder.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
-      localEmoticonHolder.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
-      localEmoticonHolder.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(HiBoomTextView.a(paramHiBoomTextView));
-      localEmoticonHolder.jdField_a_of_type_AndroidGraphicsBitmap = paramHiBoomTextView.a.a();
-      localEmoticonHolder.jdField_a_of_type_Int = HiBoomTextView.a(paramHiBoomTextView);
-      localEmoticonHolder.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
-      localEmoticonHolder.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
-      localEmoticonHolder.jdField_b_of_type_Long = System.currentTimeMillis();
+      localEmoticonHolder.b = HiBoomTextView.c(paramHiBoomTextView);
+      localEmoticonHolder.c = HiBoomTextView.d(paramHiBoomTextView);
+      localEmoticonHolder.d = new ETFont(0, null, 0.0F);
+      localEmoticonHolder.d.copy(HiBoomTextView.e(paramHiBoomTextView));
+      localEmoticonHolder.a = paramHiBoomTextView.d.a();
+      localEmoticonHolder.e = HiBoomTextView.f(paramHiBoomTextView);
+      localEmoticonHolder.f = HiBoomTextView.g(paramHiBoomTextView).currentFrameIndex();
+      localEmoticonHolder.h = new WeakReference(paramHiBoomTextView);
+      localEmoticonHolder.g = System.currentTimeMillis();
     }
     return localEmoticonHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView.EmoticonHolder
  * JD-Core Version:    0.7.0.1
  */

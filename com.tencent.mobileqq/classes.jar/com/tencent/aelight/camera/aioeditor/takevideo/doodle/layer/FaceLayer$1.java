@@ -27,12 +27,12 @@ class FaceLayer$1
     //   25: checkcast 39	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData
     //   28: astore 9
     //   30: aload 9
-    //   32: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   32: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:n	Ljava/lang/String;
     //   35: invokestatic 49	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   38: ifeq +6 -> 44
     //   41: goto +677 -> 718
     //   44: aload 9
-    //   46: getfield 53	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
+    //   46: getfield 53	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:p	I
     //   49: istore_2
     //   50: aconst_null
     //   51: astore 8
@@ -42,7 +42,7 @@ class FaceLayer$1
     //   58: getstatic 59	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   61: invokevirtual 63	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   64: aload 9
-    //   66: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   66: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:n	Ljava/lang/String;
     //   69: ldc 65
     //   71: getstatic 70	com/tencent/mobileqq/urldrawable/URLDrawableHelperConstants:a	Landroid/graphics/drawable/Drawable;
     //   74: iconst_1
@@ -78,7 +78,7 @@ class FaceLayer$1
     //   136: new 99	java/io/FileInputStream
     //   139: dup
     //   140: aload 9
-    //   142: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   142: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:n	Ljava/lang/String;
     //   145: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   148: invokespecial 105	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   151: astore 5
@@ -121,10 +121,10 @@ class FaceLayer$1
     //   229: astore 5
     //   231: aload 5
     //   233: astore 4
-    //   235: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   235: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:a	Ljava/lang/String;
     //   238: aload 6
     //   240: aload 7
-    //   242: invokestatic 129	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   242: invokestatic 130	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   245: aload 8
     //   247: astore 4
     //   249: aload 5
@@ -149,10 +149,10 @@ class FaceLayer$1
     //   291: astore 5
     //   293: aload 5
     //   295: astore 4
-    //   297: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   297: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:a	Ljava/lang/String;
     //   300: aload 6
     //   302: aload 7
-    //   304: invokestatic 129	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   304: invokestatic 130	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   307: aload 8
     //   309: astore 4
     //   311: aload 5
@@ -175,160 +175,160 @@ class FaceLayer$1
     //   350: aload 4
     //   352: ifnull -311 -> 41
     //   355: aload 9
-    //   357: getfield 132	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   360: getfield 138	android/graphics/RectF:left	F
+    //   357: getfield 134	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:k	Landroid/graphics/RectF;
+    //   360: getfield 140	android/graphics/RectF:left	F
     //   363: f2i
     //   364: istore_2
     //   365: aload 9
-    //   367: getfield 132	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   370: getfield 141	android/graphics/RectF:right	F
+    //   367: getfield 134	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:k	Landroid/graphics/RectF;
+    //   370: getfield 143	android/graphics/RectF:right	F
     //   373: f2i
     //   374: istore_3
     //   375: aload 4
     //   377: iload_2
     //   378: aload 9
-    //   380: getfield 132	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   383: getfield 144	android/graphics/RectF:top	F
+    //   380: getfield 134	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:k	Landroid/graphics/RectF;
+    //   383: getfield 146	android/graphics/RectF:top	F
     //   386: f2i
     //   387: iload_3
     //   388: aload 9
-    //   390: getfield 132	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsRectF	Landroid/graphics/RectF;
-    //   393: getfield 147	android/graphics/RectF:bottom	F
+    //   390: getfield 134	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:k	Landroid/graphics/RectF;
+    //   393: getfield 149	android/graphics/RectF:bottom	F
     //   396: f2i
-    //   397: invokevirtual 151	android/graphics/drawable/Drawable:setBounds	(IIII)V
+    //   397: invokevirtual 153	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   400: aload 9
-    //   402: getfield 154	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   402: getfield 156	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:u	Ljava/lang/String;
     //   405: invokestatic 49	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   408: ifeq +108 -> 516
-    //   411: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   414: ldc 156
-    //   416: invokestatic 160	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   419: new 162	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams
+    //   411: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:a	Ljava/lang/String;
+    //   414: ldc 158
+    //   416: invokestatic 162	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   419: new 164	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams
     //   422: dup
     //   423: aload 9
-    //   425: getfield 165	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   428: getfield 170	android/graphics/PointF:x	F
+    //   425: getfield 168	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:d	Landroid/graphics/PointF;
+    //   428: getfield 173	android/graphics/PointF:x	F
     //   431: aload 9
-    //   433: getfield 165	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   436: getfield 173	android/graphics/PointF:y	F
+    //   433: getfield 168	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:d	Landroid/graphics/PointF;
+    //   436: getfield 176	android/graphics/PointF:y	F
     //   439: aload 9
-    //   441: getfield 175	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_Float	F
+    //   441: getfield 179	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:e	F
     //   444: aload 9
-    //   446: getfield 177	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_b_of_type_Float	F
+    //   446: getfield 182	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:f	F
     //   449: aload 9
-    //   451: getfield 179	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_Float	F
+    //   451: getfield 185	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:g	F
     //   454: aload 9
-    //   456: getfield 181	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_d_of_type_Float	F
+    //   456: getfield 188	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:h	F
     //   459: aload 9
-    //   461: getfield 184	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:e	F
+    //   461: getfield 191	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:i	F
     //   464: f2i
     //   465: aload 9
-    //   467: getfield 186	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_f_of_type_Float	F
+    //   467: getfield 194	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:j	F
     //   470: f2i
-    //   471: invokespecial 189	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams:<init>	(FFFFFFII)V
+    //   471: invokespecial 197	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams:<init>	(FFFFFFII)V
     //   474: astore 5
-    //   476: new 191	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem
+    //   476: new 199	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem
     //   479: dup
     //   480: aload_0
     //   481: getfield 14	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$1:this$0	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;
     //   484: aload 4
     //   486: aload 5
     //   488: aload 9
-    //   490: getfield 192	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   490: getfield 202	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:l	Ljava/lang/String;
     //   493: aload 9
-    //   495: getfield 194	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   495: getfield 205	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:m	Ljava/lang/String;
     //   498: aload 9
-    //   500: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   500: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:n	Ljava/lang/String;
     //   503: aload 9
-    //   505: getfield 53	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
-    //   508: invokespecial 197	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:<init>	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;Landroid/graphics/drawable/Drawable;Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    //   505: getfield 53	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:p	I
+    //   508: invokespecial 208	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:<init>	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;Landroid/graphics/drawable/Drawable;Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
     //   511: astore 4
     //   513: goto +163 -> 676
-    //   516: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   516: getstatic 124	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:a	Ljava/lang/String;
     //   519: astore 5
-    //   521: new 199	java/lang/StringBuilder
+    //   521: new 210	java/lang/StringBuilder
     //   524: dup
-    //   525: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   525: invokespecial 211	java/lang/StringBuilder:<init>	()V
     //   528: astore 7
     //   530: aload 7
-    //   532: ldc 202
-    //   534: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: ldc 213
+    //   534: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   537: pop
     //   538: aload 7
     //   540: aload 9
-    //   542: getfield 154	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   545: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   542: getfield 156	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:u	Ljava/lang/String;
+    //   545: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   548: pop
     //   549: aload 5
     //   551: aload 7
-    //   553: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   556: invokestatic 160	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   559: new 162	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams
+    //   553: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   556: invokestatic 162	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   559: new 164	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams
     //   562: dup
     //   563: aload 9
-    //   565: getfield 165	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   568: getfield 170	android/graphics/PointF:x	F
+    //   565: getfield 168	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:d	Landroid/graphics/PointF;
+    //   568: getfield 173	android/graphics/PointF:x	F
     //   571: aload 9
-    //   573: getfield 165	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_AndroidGraphicsPointF	Landroid/graphics/PointF;
-    //   576: getfield 173	android/graphics/PointF:y	F
+    //   573: getfield 168	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:d	Landroid/graphics/PointF;
+    //   576: getfield 176	android/graphics/PointF:y	F
     //   579: aload 9
-    //   581: getfield 175	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_Float	F
+    //   581: getfield 179	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:e	F
     //   584: aload 9
-    //   586: getfield 177	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_b_of_type_Float	F
+    //   586: getfield 182	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:f	F
     //   589: aload 9
-    //   591: getfield 179	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_Float	F
+    //   591: getfield 185	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:g	F
     //   594: aload 9
-    //   596: getfield 181	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_d_of_type_Float	F
+    //   596: getfield 188	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:h	F
     //   599: aload 9
-    //   601: getfield 184	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:e	F
+    //   601: getfield 191	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:i	F
     //   604: f2i
     //   605: aload 9
-    //   607: getfield 186	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_f_of_type_Float	F
+    //   607: getfield 194	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:j	F
     //   610: f2i
     //   611: aload 9
-    //   613: getfield 154	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   613: getfield 156	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:u	Ljava/lang/String;
     //   616: aload 9
-    //   618: getfield 213	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:g	I
+    //   618: getfield 224	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:t	I
     //   621: aload 9
-    //   623: getfield 215	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_f_of_type_Int	I
-    //   626: invokespecial 218	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams:<init>	(FFFFFFIILjava/lang/String;II)V
+    //   623: getfield 227	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:s	I
+    //   626: invokespecial 230	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams:<init>	(FFFFFFIILjava/lang/String;II)V
     //   629: astore 5
-    //   631: new 220	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem
+    //   631: new 232	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem
     //   634: dup
     //   635: aload_0
     //   636: getfield 14	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$1:this$0	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;
     //   639: aload 4
     //   641: aload 5
     //   643: aload 9
-    //   645: getfield 192	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   645: getfield 202	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:l	Ljava/lang/String;
     //   648: aload 9
-    //   650: getfield 194	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   650: getfield 205	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:m	Ljava/lang/String;
     //   653: aload 9
-    //   655: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   655: getfield 43	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:n	Ljava/lang/String;
     //   658: aload 9
-    //   660: getfield 53	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:jdField_d_of_type_Int	I
-    //   663: invokespecial 221	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem:<init>	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;Landroid/graphics/drawable/Drawable;Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    //   660: getfield 53	com/tencent/aelight/camera/aioeditor/capture/paster/PasterParcelData:p	I
+    //   663: invokespecial 233	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem:<init>	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;Landroid/graphics/drawable/Drawable;Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$LayerParams;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
     //   666: astore 4
     //   668: aload 4
-    //   670: checkcast 220	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem
-    //   673: invokevirtual 223	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem:a	()V
+    //   670: checkcast 232	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem
+    //   673: invokevirtual 235	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceAndTextItem:a	()V
     //   676: aload 4
     //   678: iconst_0
-    //   679: putfield 225	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:e	I
+    //   679: putfield 238	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:q	I
     //   682: aload 4
     //   684: iconst_1
-    //   685: putfield 226	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:jdField_f_of_type_Int	I
+    //   685: putfield 241	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:r	I
     //   688: aload 4
-    //   690: getfield 229	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:a	Landroid/graphics/Matrix;
+    //   690: getfield 244	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$FaceItem:F	Landroid/graphics/Matrix;
     //   693: aload_0
     //   694: getfield 14	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$1:this$0	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;
-    //   697: invokestatic 232	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:a	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;)Landroid/graphics/Matrix;
-    //   700: invokevirtual 238	android/graphics/Matrix:set	(Landroid/graphics/Matrix;)V
+    //   697: invokestatic 247	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:b	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;)Landroid/graphics/Matrix;
+    //   700: invokevirtual 253	android/graphics/Matrix:set	(Landroid/graphics/Matrix;)V
     //   703: aload_0
     //   704: getfield 14	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$1:this$0	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;
-    //   707: getfield 241	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   707: getfield 256	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:b	Ljava/util/List;
     //   710: aload 4
-    //   712: invokeinterface 247 2 0
+    //   712: invokeinterface 262 2 0
     //   717: pop
     //   718: iload_1
     //   719: iconst_1
@@ -357,8 +357,8 @@ class FaceLayer$1
     //   768: athrow
     //   769: aload_0
     //   770: getfield 14	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer$1:this$0	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;
-    //   773: invokestatic 249	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:b	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;)Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleView;
-    //   776: invokevirtual 254	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleView:postInvalidate	()V
+    //   773: invokestatic 264	com/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer:c	(Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/layer/FaceLayer;)Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleView;
+    //   776: invokevirtual 269	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleView:postInvalidate	()V
     //   779: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -417,7 +417,7 @@ class FaceLayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.FaceLayer.1
  * JD-Core Version:    0.7.0.1
  */

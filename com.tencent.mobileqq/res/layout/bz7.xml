@@ -4,7 +4,7 @@
     <LinearLayout android:orientation="horizontal" android:id="@id/ivd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:layout_marginBottom="20.0dip">
         <ImageView android:id="@id/iv4" android:background="@drawable/agi" android:visibility="visible" android:layout_width="@dimen/vb" android:layout_height="@dimen/vb" android:layout_marginLeft="20.0dip" android:src="@drawable/com" android:scaleType="fitCenter" android:contentDescription="@string/b2q" />
         <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
-            <TextView android:textSize="@dimen/ayp" android:textColor="@color/bp" android:id="@id/iv5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
+            <TextView android:textSize="@dimen/ayp" android:textColor="@color/black" android:id="@id/iv5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
             <TextView android:textSize="@dimen/aym" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/m8u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
         </LinearLayout>
     </LinearLayout>

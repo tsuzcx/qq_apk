@@ -19,15 +19,15 @@ class IliveReportModule$5
     localObject = ((StringBuilder)localObject).toString();
     boolean bool = true;
     QLog.e("IliveReportModule", 1, (String)localObject);
-    if (!IliveReportModule.b(this.a)) {
+    if (!IliveReportModule.f(this.a)) {
       return false;
     }
     if (paramString.equals("ACTION_BACK_PRESS"))
     {
-      if (IliveFloatWindowHelper.a((Activity)IliveReportModule.a(this.a), IliveReportModule.a(this.a))) {
+      if (IliveFloatWindowHelper.a((Activity)IliveReportModule.g(this.a), IliveReportModule.h(this.a))) {
         return true;
       }
-      IliveReportModule.a(this.a);
+      IliveReportModule.i(this.a);
       return true;
     }
     if ((paramString.equals("ACTION_SSO_ENTER_ROOM")) && (paramBundle != null))
@@ -37,13 +37,14 @@ class IliveReportModule$5
         bool = false;
       }
       IliveReportModule.a(paramString, bool);
+      IliveReportModule.a(this.a, paramBundle.getString("anchor_nick_name"));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveReportModule.5
  * JD-Core Version:    0.7.0.1
  */

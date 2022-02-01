@@ -13,14 +13,6 @@ public class GestureUtil
     return 1.0F;
   }
   
-  public static float a(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-    }
-    return 1.0F;
-  }
-  
   public static float[] a(MotionEvent paramMotionEvent)
   {
     float[] arrayOfFloat = new float[2];
@@ -58,6 +50,14 @@ public class GestureUtil
   public static float b(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getPointerCount() > 1) {
+      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
+    }
+    return 1.0F;
+  }
+  
+  public static float c(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getPointerCount() > 1) {
       return b(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
     }
     return 0.0F;
@@ -65,7 +65,7 @@ public class GestureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.GestureUtil
  * JD-Core Version:    0.7.0.1
  */

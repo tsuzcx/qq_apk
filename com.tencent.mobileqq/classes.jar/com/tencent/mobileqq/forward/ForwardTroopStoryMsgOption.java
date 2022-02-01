@@ -36,42 +36,42 @@ public class ForwardTroopStoryMsgOption
   
   protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
-    int i = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 164.0F);
-    int j = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 265.0F);
+    int i = DisplayUtil.a(this.s, 164.0F);
+    int j = DisplayUtil.a(this.s, 265.0F);
     int k = Color.parseColor("#e1e1e5");
-    Object localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
+    Object localObject1 = new LinearLayout(this.s);
     ((LinearLayout)localObject1).setOrientation(1);
     Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
     ((LinearLayout.LayoutParams)localObject2).gravity = 1;
-    Object localObject3 = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
+    Object localObject3 = new RelativeLayout(this.s);
     Object localObject4 = new LinearLayout.LayoutParams(i, j);
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
+    URLImageView localURLImageView = new URLImageView(this.s);
     localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
-    Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
+    Object localObject5 = new ImageView(this.s);
     ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130839585);
+    ((ImageView)localObject5).setImageResource(2130839803);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    int m = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
+    int m = DisplayUtil.a(this.s, 8.0F);
     localLayoutParams.setMargins(0, m, m, 0);
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(11);
     ((RelativeLayout)localObject3).addView((View)localObject5, localLayoutParams);
     ((LinearLayout)localObject1).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-    localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("key_source_name");
+    localObject3 = this.t.getString("key_source_name");
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
-      localObject4 = new TextView(this.jdField_a_of_type_AndroidAppActivity);
+      localObject4 = new TextView(this.s);
       ((TextView)localObject4).setTextColor(-7829368);
       ((TextView)localObject4).setTextSize(1, 12.0F);
       localObject5 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject5).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 5.0F);
+      ((LinearLayout.LayoutParams)localObject5).topMargin = DisplayUtil.a(this.s, 5.0F);
       ((LinearLayout.LayoutParams)localObject5).gravity = 3;
       ((TextView)localObject4).setText((CharSequence)localObject3);
       ((LinearLayout)localObject1).addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
     }
     paramQQCustomDialog.addView((View)localObject1, (LinearLayout.LayoutParams)localObject2);
-    paramQQCustomDialog = this.jdField_a_of_type_AndroidOsBundle.getString("key_thumb_url");
+    paramQQCustomDialog = this.t.getString("key_thumb_url");
     try
     {
       localObject1 = new ColorDrawable(k);
@@ -97,21 +97,21 @@ public class ForwardTroopStoryMsgOption
     return true;
   }
   
-  protected boolean c()
+  protected boolean f()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    Intent localIntent = new Intent(this.s, SplashActivity.class);
+    localIntent.putExtras(this.t);
     localIntent = AIOUtils.a(localIntent, null);
     localIntent.putExtra("isBack2Root", true);
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
+    this.s.setResult(-1, localIntent);
+    this.s.finish();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopStoryMsgOption
  * JD-Core Version:    0.7.0.1
  */

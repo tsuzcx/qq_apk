@@ -21,15 +21,15 @@ class CommentBusiness$9
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    CommentBusiness.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), true);
+    CommentBusiness.a(this.c, this.a.id.get(), true);
     if (paramStGetCommentListRsp == null)
     {
-      QLog.d(CommentBusiness.a(), 1, "getCommentSize: rsp is null");
+      QLog.d(CommentBusiness.c(), 1, "getCommentSize: rsp is null");
       return;
     }
-    if (CommentBusiness.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get()) != null)
+    if (CommentBusiness.a(this.c).get(this.a.id.get()) != null)
     {
-      paramBaseRequest = CommentBusiness.a();
+      paramBaseRequest = CommentBusiness.c();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getCommentSize:");
       ((StringBuilder)localObject).append(paramStGetCommentListRsp.vecComment.size());
@@ -38,10 +38,10 @@ class CommentBusiness$9
       ((StringBuilder)localObject).append("isFinish：");
       ((StringBuilder)localObject).append(paramStGetCommentListRsp.isFinish.get());
       QLog.d(paramBaseRequest, 2, ((StringBuilder)localObject).toString());
-      ((ArrayList)CommentBusiness.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())).addAll(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.a(paramStGetCommentListRsp.vecComment.get(), this.jdField_a_of_type_JavaLangString));
+      ((ArrayList)CommentBusiness.a(this.c).get(this.a.id.get())).addAll(this.c.a(paramStGetCommentListRsp.vecComment.get(), this.b));
     }
-    paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness;
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
+    paramBaseRequest = this.c;
+    Object localObject = this.a.id.get();
     COMM.StCommonExt localStCommonExt = paramStGetCommentListRsp.extInfo;
     if (paramStGetCommentListRsp.isFinish.get() == 0) {
       paramBoolean = true;
@@ -49,7 +49,7 @@ class CommentBusiness$9
       paramBoolean = false;
     }
     CommentBusiness.a(paramBaseRequest, (String)localObject, localStCommonExt, paramBoolean, true);
-    StoryDispatcher.a().dispatch(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.hashCode()), this.jdField_a_of_type_JavaLangString }));
+    StoryDispatcher.a().dispatch(this.c.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.c.hashCode()), this.b }));
   }
 }
 

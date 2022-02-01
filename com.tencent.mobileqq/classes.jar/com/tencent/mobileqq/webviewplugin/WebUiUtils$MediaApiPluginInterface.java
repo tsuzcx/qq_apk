@@ -9,15 +9,15 @@ public abstract interface WebUiUtils$MediaApiPluginInterface
 {
   public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
   
-  public abstract String b();
+  public abstract boolean e();
   
-  public abstract boolean b();
+  public abstract String g();
   
-  public abstract String c();
+  public abstract String h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebUiUtils.MediaApiPluginInterface
  * JD-Core Version:    0.7.0.1
  */

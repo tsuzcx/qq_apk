@@ -94,7 +94,7 @@ public class PttPreSendServiceImpl
       Object localObject = new File(paramString.b);
       if (((File)localObject).exists())
       {
-        File localFile = new File(paramString.jdField_a_of_type_JavaLangString);
+        File localFile = new File(paramString.a);
         if (localFile.exists()) {
           localFile.delete();
         }
@@ -105,7 +105,7 @@ public class PttPreSendServiceImpl
           ((StringBuilder)localObject).append("rename presend file ! , from ");
           ((StringBuilder)localObject).append(paramString.b);
           ((StringBuilder)localObject).append(" to ");
-          ((StringBuilder)localObject).append(paramString.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramString.a);
           QLog.d("PttPreSendManager", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -118,7 +118,7 @@ public class PttPreSendServiceImpl
     {
       this.mStrategy.a(this.mApp, paramInt);
       if (this.mType == paramInt) {
-        this.mFlowController.a(this.mIsWifi, 1000L);
+        this.mFlowController.b(this.mIsWifi, 1000L);
       }
     }
     boolean bool2 = this.mIsWorking;
@@ -158,7 +158,7 @@ public class PttPreSendServiceImpl
       ((StringBuilder)localObject2).append(((BaseUploadProcessor)localObject1).mUiRequest.mCanSendMsg);
       QLog.d("PttPreSendManager", 2, ((StringBuilder)localObject2).toString());
     }
-    this.mFlowController.a(this.mIsWifi, this.mFileSize);
+    this.mFlowController.b(this.mIsWifi, this.mFileSize);
     Object localObject2 = (IPttTempApi)QRoute.api(IPttTempApi.class);
     AppRuntime localAppRuntime = this.mApp;
     ((IPttTempApi)localObject2).addAIOMessage(localAppRuntime, this.mMessage, localAppRuntime.getCurrentAccountUin());
@@ -188,7 +188,7 @@ public class PttPreSendServiceImpl
     if (!this.mIsWorking) {
       return;
     }
-    int j = this.mVoiceChanger.a();
+    int j = this.mVoiceChanger.c();
     this.mVoiceChanger.a();
     this.mFileSize = ((int)new File(this.mTempPath).length());
     int i = this.mFileSize;
@@ -205,8 +205,8 @@ public class PttPreSendServiceImpl
       }
       TransferRequest localTransferRequest = new TransferRequest();
       localTransferRequest.mSelfUin = this.mApp.getAccount();
-      localTransferRequest.mPeerUin = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
-      localTransferRequest.mUinType = paramBaseSessionInfo.jdField_a_of_type_Int;
+      localTransferRequest.mPeerUin = paramBaseSessionInfo.b;
+      localTransferRequest.mUinType = paramBaseSessionInfo.a;
       localTransferRequest.mFileType = 2;
       localTransferRequest.mUniseq = localMessageForPtt.uniseq;
       i = 1;
@@ -262,7 +262,7 @@ public class PttPreSendServiceImpl
   {
     if (!this.sCpuSupport)
     {
-      int i = QQAudioSystemInfo.d();
+      int i = QQAudioSystemInfo.h();
       if ((i == 3) || (i == 4) || (i == 5)) {
         this.sCpuSupport = true;
       }
@@ -350,7 +350,7 @@ public class PttPreSendServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PttPreSendServiceImpl
  * JD-Core Version:    0.7.0.1
  */

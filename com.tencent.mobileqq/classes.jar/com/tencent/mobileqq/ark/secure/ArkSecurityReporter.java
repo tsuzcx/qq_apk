@@ -11,10 +11,10 @@ import mqq.app.MobileQQ;
 
 public class ArkSecurityReporter
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap(8);
+  private static final HashMap<String, Integer> a = new HashMap(8);
   private static final HashMap<String, Integer> b = new HashMap(8);
+  private static final Object c = new Object();
+  private static String d = "";
   
   private static void a(ArkSecurityReporter.ReportItem paramReportItem)
   {
@@ -37,17 +37,17 @@ public class ArkSecurityReporter
     }
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (c)
       {
-        Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        Integer localInteger = (Integer)a.get(paramString);
         if (localInteger != null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("ArkApp.ArkSecurityReporter", 2, new Object[] { "ArkSafe.report valid resource app=", paramString, ", count=", localInteger, ", result=0 , QQVersion=", b() });
           }
           ReportController.b(null, "dc00898", "", "", "0X8009BCF", "0X8009BCF", 0, localInteger.intValue(), 0, b(), "", paramString, "");
-          jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-          synchronized (jdField_a_of_type_JavaLangObject)
+          a.remove(paramString);
+          synchronized (c)
           {
             localInteger = (Integer)b.get(paramString);
             if (localInteger != null)
@@ -73,17 +73,17 @@ public class ArkSecurityReporter
         return;
       }
       if (paramInt2 == 0) {
-        synchronized (jdField_a_of_type_JavaLangObject)
+        synchronized (c)
         {
-          paramString3 = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+          paramString3 = (Integer)a.get(paramString1);
           if (paramString3 != null)
           {
             paramInt1 = paramString3.intValue();
-            jdField_a_of_type_JavaUtilHashMap.put(paramString1, Integer.valueOf(paramInt1 + 1));
+            a.put(paramString1, Integer.valueOf(paramInt1 + 1));
           }
           else
           {
-            jdField_a_of_type_JavaUtilHashMap.put(paramString1, Integer.valueOf(1));
+            a.put(paramString1, Integer.valueOf(1));
           }
           return;
         }
@@ -93,27 +93,27 @@ public class ArkSecurityReporter
       }
       ReportController.a(null, "dc00898", "", paramString3, "0X8009BCF", "0X8009BCF", paramInt1, paramInt2, b(), "0", paramString1, ???);
       paramString3 = new ArkSecurityReporter.ReportItem();
-      paramString3.jdField_b_of_type_JavaLangString = paramString1;
-      paramString3.jdField_c_of_type_JavaLangString = ???;
-      paramString3.jdField_b_of_type_Int = 0;
-      paramString3.jdField_c_of_type_Int = paramInt1;
-      paramString3.a = paramInt2;
+      paramString3.b = paramString1;
+      paramString3.c = ???;
+      paramString3.e = 0;
+      paramString3.f = paramInt1;
+      paramString3.d = paramInt2;
       a(paramString3);
     }
   }
   
   private static String b()
   {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(d))
     {
       try
       {
-        String[] arrayOfString = "8.7.0".split("\\.");
+        String[] arrayOfString = "8.8.17".split("\\.");
         if (arrayOfString != null) {
           if (arrayOfString.length >= 3) {
-            jdField_a_of_type_JavaLangString = String.format("%d%02d%02d", new Object[] { Integer.valueOf(Integer.parseInt(arrayOfString[0])), Integer.valueOf(Integer.parseInt(arrayOfString[1])), Integer.valueOf(Integer.parseInt(arrayOfString[2])) });
+            d = String.format("%d%02d%02d", new Object[] { Integer.valueOf(Integer.parseInt(arrayOfString[0])), Integer.valueOf(Integer.parseInt(arrayOfString[1])), Integer.valueOf(Integer.parseInt(arrayOfString[2])) });
           } else if (arrayOfString.length == 2) {
-            jdField_a_of_type_JavaLangString = String.format("%d%02d00", new Object[] { Integer.valueOf(Integer.parseInt(arrayOfString[0])), Integer.valueOf(Integer.parseInt(arrayOfString[1])) });
+            d = String.format("%d%02d00", new Object[] { Integer.valueOf(Integer.parseInt(arrayOfString[0])), Integer.valueOf(Integer.parseInt(arrayOfString[1])) });
           }
         }
       }
@@ -122,10 +122,10 @@ public class ArkSecurityReporter
         QLog.d("ArkApp.ArkSecurityReporter", 2, "ArkSafe", localException);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkSecurityReporter", 2, new Object[] { "ArkSafe.report get QQVersion=", jdField_a_of_type_JavaLangString });
+        QLog.d("ArkApp.ArkSecurityReporter", 2, new Object[] { "ArkSafe.report get QQVersion=", d });
       }
     }
-    return jdField_a_of_type_JavaLangString;
+    return d;
   }
   
   public static void b(String paramString1, String arg1, int paramInt1, int paramInt2, String paramString3)
@@ -136,7 +136,7 @@ public class ArkSecurityReporter
         return;
       }
       if (paramInt2 == 0) {
-        synchronized (jdField_a_of_type_JavaLangObject)
+        synchronized (c)
         {
           paramString3 = (Integer)b.get(paramString1);
           if (paramString3 != null)
@@ -156,11 +156,11 @@ public class ArkSecurityReporter
       }
       ReportController.a(null, "dc00898", "", paramString3, "0X8009BD0", "0X8009BD0", paramInt1, paramInt2, b(), "1", paramString1, ???);
       paramString3 = new ArkSecurityReporter.ReportItem();
-      paramString3.jdField_b_of_type_JavaLangString = paramString1;
-      paramString3.jdField_c_of_type_JavaLangString = ???;
-      paramString3.jdField_b_of_type_Int = 1;
-      paramString3.jdField_c_of_type_Int = paramInt1;
-      paramString3.a = paramInt2;
+      paramString3.b = paramString1;
+      paramString3.c = ???;
+      paramString3.e = 1;
+      paramString3.f = paramInt1;
+      paramString3.d = paramInt2;
       a(paramString3);
     }
   }
@@ -185,19 +185,19 @@ public class ArkSecurityReporter
       }
       ReportController.a(null, "dc00898", "", paramString3, "0X8009BD0", "0X8009BD0", paramInt1, paramInt2, b(), "2", paramString1, paramString2);
       paramString3 = new ArkSecurityReporter.ReportItem();
-      paramString3.jdField_b_of_type_JavaLangString = paramString1;
-      paramString3.jdField_c_of_type_JavaLangString = paramString2;
-      paramString3.a = paramInt2;
-      paramString3.jdField_b_of_type_Int = 2;
-      paramString3.jdField_c_of_type_Int = paramInt1;
-      paramString3.a = paramInt2;
+      paramString3.b = paramString1;
+      paramString3.c = paramString2;
+      paramString3.d = paramInt2;
+      paramString3.e = 2;
+      paramString3.f = paramInt1;
+      paramString3.d = paramInt2;
       a(paramString3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.secure.ArkSecurityReporter
  * JD-Core Version:    0.7.0.1
  */

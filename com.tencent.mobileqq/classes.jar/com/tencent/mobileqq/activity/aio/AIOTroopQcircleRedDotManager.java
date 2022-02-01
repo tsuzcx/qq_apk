@@ -22,6 +22,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleTroopGreyRequest;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleTroopRedDotRequest;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -47,72 +48,67 @@ public class AIOTroopQcircleRedDotManager
   implements BusinessObserver
 {
   public static int a = 0;
-  private static AIOTroopQcircleRedDotManager jdField_a_of_type_ComTencentMobileqqActivityAioAIOTroopQcircleRedDotManager;
-  private static boolean jdField_a_of_type_Boolean = false;
   public static int b = 1;
   public static int c = 2;
-  private static int jdField_d_of_type_Int = jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = null;
-  private String jdField_a_of_type_JavaLangString = "";
-  WeakReference<TroopChatPie> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private long b;
-  private long c;
-  private long jdField_d_of_type_Long;
-  private long e;
-  private long f;
-  private long g;
+  private static AIOTroopQcircleRedDotManager e;
+  private static int p = a;
+  private static boolean q = false;
+  WeakReference<TroopChatPie> d = null;
+  private EntityManager f = null;
+  private EntityManagerFactory g = null;
+  private long h;
+  private long i;
+  private long j;
+  private long k;
+  private long l;
+  private long m;
+  private long n;
+  private ConcurrentHashMap<String, Integer> o;
+  private String r = "";
   
   private AIOTroopQcircleRedDotManager()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null)
+      if (this.g == null)
       {
-        this.jdField_a_of_type_Long = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_pull_time_threshold", 90000L);
-        this.b = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_pull_amount_threshold", 50L);
-        this.e = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_grey_time_threshold", 90000L);
-        this.f = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_grey_last_timestamp", -1L);
-        this.jdField_c_of_type_Long = LocalMultiProcConfig.getLong("qzone_troop_redpoint_pull_time_threshold", 90000L);
-        this.jdField_d_of_type_Long = LocalMultiProcConfig.getLong("qzone_troop_redpoint_pull_amount_threshold", 50L);
+        this.h = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_pull_time_threshold", 90000L);
+        this.i = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_pull_amount_threshold", 50L);
+        this.l = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_grey_time_threshold", 90000L);
+        this.m = LocalMultiProcConfig.getLong("qcircle_troop_redpoint_grey_last_timestamp", -1L);
+        this.j = LocalMultiProcConfig.getLong("qzone_troop_redpoint_pull_time_threshold", 90000L);
+        this.k = LocalMultiProcConfig.getLong("qzone_troop_redpoint_pull_amount_threshold", 50L);
         Object localObject1 = QQEntityManagerFactoryProxy.a(Config.a());
         ((EntityManagerFactory)localObject1).verifyAuthentication();
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.createEntityManager();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = a();
+        this.g = ((EntityManagerFactory)localObject1);
+        this.f = this.g.createEntityManager();
+        this.o = i();
         localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         if (localObject1 != null)
         {
-          this.g = ((QQAppInterface)localObject1).getLongAccountUin();
+          this.n = ((QQAppInterface)localObject1).getLongAccountUin();
           ((QQAppInterface)localObject1).registObserver(this);
         }
         else
         {
-          this.g = -1L;
+          this.n = -1L;
         }
-        this.jdField_a_of_type_JavaLangString = QzoneConfig.getQcircleTroopRedDotIconUrl();
-        jdField_a_of_type_Boolean = QzoneConfig.isQzoneTroopUnreadAllReport();
+        this.r = QzoneConfig.getQcircleTroopRedDotIconUrl();
+        q = QzoneConfig.isQzoneTroopUnreadAllReport();
       }
       return;
     }
     finally {}
   }
   
-  public static int a()
-  {
-    return jdField_d_of_type_Int;
-  }
-  
   public static AIOTroopQcircleRedDotManager a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioAIOTroopQcircleRedDotManager == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityAioAIOTroopQcircleRedDotManager = new AIOTroopQcircleRedDotManager();
+      if (e == null) {
+        e = new AIOTroopQcircleRedDotManager();
       }
-      AIOTroopQcircleRedDotManager localAIOTroopQcircleRedDotManager = jdField_a_of_type_ComTencentMobileqqActivityAioAIOTroopQcircleRedDotManager;
+      AIOTroopQcircleRedDotManager localAIOTroopQcircleRedDotManager = e;
       return localAIOTroopQcircleRedDotManager;
     }
     finally {}
@@ -132,33 +128,6 @@ public class AIOTroopQcircleRedDotManager
       return paramEntityManager.find(QcircleRedDotEntity.class, paramString);
     }
     return null;
-  }
-  
-  private ConcurrentHashMap<String, Integer> a()
-  {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localObject != null)
-    {
-      localObject = LocalMultiProcConfig.getString4Uin("qcircle_redpoint_grey_troop_uin", "", ((QQAppInterface)localObject).getLongAccountUin());
-      if (!"".equals(localObject))
-      {
-        localObject = ((String)localObject).split(",");
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          localConcurrentHashMap.put(localObject[i], Integer.valueOf(1));
-          i += 1;
-        }
-      }
-    }
-    return localConcurrentHashMap;
-  }
-  
-  public static void a()
-  {
-    jdField_d_of_type_Int = jdField_a_of_type_Int;
   }
   
   private void a(TroopChatPie paramTroopChatPie, ArrayMap<String, QzoneRedDotEntity> paramArrayMap)
@@ -189,7 +158,7 @@ public class AIOTroopQcircleRedDotManager
         localStringBuilder.append(str);
         QZLog.d("AIOTroopQcircleRedDotManager", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopChatPie);
+      this.d = new WeakReference(paramTroopChatPie);
       paramTroopChatPie = (AIOTroopQzoneRedDotManager)localQQAppInterface.getManager(QQManagerFactory.AIO_TROOP_QZONE_REDDOT_MANAGER);
       paramArrayMap = new QzoneTroopReddotRequest(localArrayList, null);
       paramArrayMap.a(0);
@@ -210,7 +179,7 @@ public class AIOTroopQcircleRedDotManager
           QzoneRedDotEntity localQzoneRedDotEntity = (QzoneRedDotEntity)paramCollection.next();
           paramEntityManager.persistOrReplace(localQzoneRedDotEntity);
           if (localQzoneRedDotEntity.isShowRedDot) {
-            if (!d()) {
+            if (!e()) {
               LpReportInfo_pf00064.report(1200, 1, 1, localQzoneRedDotEntity.uin);
             } else {
               LpReportInfo_pf00064.allReport(1200, 1, 1, localQzoneRedDotEntity.uin);
@@ -261,19 +230,6 @@ public class AIOTroopQcircleRedDotManager
     }
   }
   
-  public static boolean a()
-  {
-    return (QzoneConfig.isQQCircleShowTroopUnreadRedDot()) && (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getUserMode() == 0) && (!SimpleUIUtil.a());
-  }
-  
-  public static void b()
-  {
-    int i = jdField_d_of_type_Int;
-    if (i != jdField_c_of_type_Int) {
-      jdField_d_of_type_Int = i + 1;
-    }
-  }
-  
   private static void b(EntityManager paramEntityManager, Entity paramEntity)
   {
     if (paramEntityManager != null)
@@ -305,7 +261,7 @@ public class AIOTroopQcircleRedDotManager
           QcircleRedDotEntity localQcircleRedDotEntity = (QcircleRedDotEntity)paramCollection.next();
           paramEntityManager.persistOrReplace(localQcircleRedDotEntity);
           if (localQcircleRedDotEntity.isShowRedDot) {
-            ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(localQcircleRedDotEntity.uin, 61, 1, 1);
+            ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setToUin(localQcircleRedDotEntity.uin).setActionType(61).setSubActionType(1).setThrActionType(1));
           }
         }
         paramEntityManager.getTransaction().commit();
@@ -320,10 +276,15 @@ public class AIOTroopQcircleRedDotManager
   
   public static boolean b()
   {
-    return (QzoneConfig.isQzoneShowTroopUnreadRedDot()) && (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getUserMode() == 0) && (!SimpleUIUtil.a()) && (c());
+    return (QzoneConfig.isQQCircleShowTroopUnreadRedDot()) && (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getUserMode() == 0) && (!SimpleUIUtil.e());
   }
   
   public static boolean c()
+  {
+    return (QzoneConfig.isQzoneShowTroopUnreadRedDot()) && (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getUserMode() == 0) && (!SimpleUIUtil.e()) && (d());
+  }
+  
+  public static boolean d()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     boolean bool = false;
@@ -336,16 +297,56 @@ public class AIOTroopQcircleRedDotManager
     return bool;
   }
   
-  public static boolean d()
+  public static boolean e()
   {
-    return jdField_a_of_type_Boolean;
+    return q;
+  }
+  
+  public static void f()
+  {
+    p = a;
+  }
+  
+  public static void g()
+  {
+    int i1 = p;
+    if (i1 != c) {
+      p = i1 + 1;
+    }
+  }
+  
+  public static int h()
+  {
+    return p;
+  }
+  
+  private ConcurrentHashMap<String, Integer> i()
+  {
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if (localObject != null)
+    {
+      localObject = LocalMultiProcConfig.getString4Uin("qcircle_redpoint_grey_troop_uin", "", ((QQAppInterface)localObject).getLongAccountUin());
+      if (!"".equals(localObject))
+      {
+        localObject = ((String)localObject).split(",");
+        int i2 = localObject.length;
+        int i1 = 0;
+        while (i1 < i2)
+        {
+          localConcurrentHashMap.put(localObject[i1], Integer.valueOf(1));
+          i1 += 1;
+        }
+      }
+    }
+    return localConcurrentHashMap;
   }
   
   public void a(TroopChatPie paramTroopChatPie, List<ChatMessage> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (paramList != null) && (paramTroopChatPie != null))
+    if ((this.f != null) && (paramList != null) && (paramTroopChatPie != null))
     {
-      if (paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null) {
+      if (paramTroopChatPie.V == null) {
         return;
       }
       Object localObject1 = new ArraySet();
@@ -364,18 +365,18 @@ public class AIOTroopQcircleRedDotManager
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = (QzoneRedDotEntity)a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, QzoneRedDotEntity.class, (String)localObject2);
-        long l = System.currentTimeMillis();
+        localObject3 = (QzoneRedDotEntity)a(this.f, QzoneRedDotEntity.class, (String)localObject2);
+        long l1 = System.currentTimeMillis();
         if (localObject3 != null)
         {
-          if (l - ((QzoneRedDotEntity)localObject3).timeStamp >= this.jdField_c_of_type_Long) {
+          if (l1 - ((QzoneRedDotEntity)localObject3).timeStamp >= this.j) {
             localArrayMap2.put(localObject2, localObject3);
           } else {
             localArrayMap1.put(localObject2, localObject3);
           }
         }
         else {
-          localArrayMap2.put(localObject2, new QzoneRedDotEntity((String)localObject2, false, l, "", "https://sola.gtimg.cn/aoi/sola/20201120145856_F8zRPy6aU6.png"));
+          localArrayMap2.put(localObject2, new QzoneRedDotEntity((String)localObject2, false, l1, "", "https://sola.gtimg.cn/aoi/sola/20201120145856_F8zRPy6aU6.png"));
         }
       }
       a(paramTroopChatPie, localArrayMap2);
@@ -385,7 +386,7 @@ public class AIOTroopQcircleRedDotManager
   
   public void a(String paramString, TroopChatPie paramTroopChatPie, List<ChatMessage> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (paramList != null) && (paramTroopChatPie != null) && (paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (paramString != null))
+    if ((this.f != null) && (paramList != null) && (paramTroopChatPie != null) && (paramTroopChatPie.V != null) && (paramString != null))
     {
       if (!a(paramString)) {
         return;
@@ -406,18 +407,18 @@ public class AIOTroopQcircleRedDotManager
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = (QcircleRedDotEntity)a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (String)localObject2);
-        long l = System.currentTimeMillis();
+        localObject3 = (QcircleRedDotEntity)a(this.f, (String)localObject2);
+        long l1 = System.currentTimeMillis();
         if (localObject3 != null)
         {
-          if (l - ((QcircleRedDotEntity)localObject3).timeStamp >= this.jdField_a_of_type_Long) {
+          if (l1 - ((QcircleRedDotEntity)localObject3).timeStamp >= this.h) {
             localArrayMap2.put(localObject2, localObject3);
           } else {
             localArrayMap1.put(localObject2, localObject3);
           }
         }
         else {
-          localArrayMap2.put(localObject2, new QcircleRedDotEntity((String)localObject2, false, l, ""));
+          localArrayMap2.put(localObject2, new QcircleRedDotEntity((String)localObject2, false, l1, ""));
         }
       }
       a(paramString, paramList, paramTroopChatPie, localArrayMap2);
@@ -443,15 +444,15 @@ public class AIOTroopQcircleRedDotManager
   
   public boolean a(String paramString)
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.o;
     return (localConcurrentHashMap != null) && (localConcurrentHashMap.containsKey(paramString));
   }
   
   public void b(TroopChatPie paramTroopChatPie, List<ChatMessage> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (paramList != null) && (paramTroopChatPie != null))
+    if ((this.f != null) && (paramList != null) && (paramTroopChatPie != null))
     {
-      if (paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null) {
+      if (paramTroopChatPie.V == null) {
         return;
       }
       ArrayMap localArrayMap = new ArrayMap();
@@ -462,12 +463,12 @@ public class AIOTroopQcircleRedDotManager
         localObject = (ChatMessage)localIterator.next();
         if ((((ChatMessage)localObject).senderuin != null) && (!((ChatMessage)localObject).senderuin.equals(((ChatMessage)localObject).selfuin)) && (!((ChatMessage)localObject).getChatMsgRedDotInfo().getQzoneRedDotPulledFlag()))
         {
-          long l = System.currentTimeMillis();
-          localArrayMap.put(((ChatMessage)localObject).senderuin, new QzoneRedDotEntity(((ChatMessage)localObject).senderuin, false, l, "", "https://sola.gtimg.cn/aoi/sola/20201120145856_F8zRPy6aU6.png"));
+          long l1 = System.currentTimeMillis();
+          localArrayMap.put(((ChatMessage)localObject).senderuin, new QzoneRedDotEntity(((ChatMessage)localObject).senderuin, false, l1, "", "https://sola.gtimg.cn/aoi/sola/20201120145856_F8zRPy6aU6.png"));
         }
       }
       boolean bool;
-      if (localArrayMap.size() >= this.jdField_d_of_type_Long)
+      if (localArrayMap.size() >= this.k)
       {
         a(paramTroopChatPie, localArrayMap);
         bool = true;
@@ -478,7 +479,7 @@ public class AIOTroopQcircleRedDotManager
         while (localIterator.hasNext())
         {
           localObject = (String)localIterator.next();
-          QzoneRedDotEntity localQzoneRedDotEntity = (QzoneRedDotEntity)a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, QzoneRedDotEntity.class, (String)localObject);
+          QzoneRedDotEntity localQzoneRedDotEntity = (QzoneRedDotEntity)a(this.f, QzoneRedDotEntity.class, (String)localObject);
           if (localQzoneRedDotEntity != null) {
             localArrayMap.put(localObject, localQzoneRedDotEntity);
           }
@@ -491,7 +492,7 @@ public class AIOTroopQcircleRedDotManager
   
   public void b(String paramString, TroopChatPie paramTroopChatPie, List<ChatMessage> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (paramList != null) && (paramTroopChatPie != null) && (paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (paramString != null))
+    if ((this.f != null) && (paramList != null) && (paramTroopChatPie != null) && (paramTroopChatPie.V != null) && (paramString != null))
     {
       if (!a(paramString)) {
         return;
@@ -504,12 +505,12 @@ public class AIOTroopQcircleRedDotManager
         localObject2 = (ChatMessage)((Iterator)localObject1).next();
         if ((((ChatMessage)localObject2).senderuin != null) && (!((ChatMessage)localObject2).senderuin.equals(((ChatMessage)localObject2).selfuin)) && (!((ChatMessage)localObject2).getChatMsgRedDotInfo().getQcircleRedDotPulledFlag()))
         {
-          long l = System.currentTimeMillis();
-          localArrayMap.put(((ChatMessage)localObject2).senderuin, new QcircleRedDotEntity(((ChatMessage)localObject2).senderuin, false, l, ""));
+          long l1 = System.currentTimeMillis();
+          localArrayMap.put(((ChatMessage)localObject2).senderuin, new QcircleRedDotEntity(((ChatMessage)localObject2).senderuin, false, l1, ""));
         }
       }
       boolean bool;
-      if (localArrayMap.size() >= this.b)
+      if (localArrayMap.size() >= this.i)
       {
         a(paramString, paramList, paramTroopChatPie, localArrayMap);
         bool = true;
@@ -520,7 +521,7 @@ public class AIOTroopQcircleRedDotManager
         while (paramString.hasNext())
         {
           localObject1 = (String)paramString.next();
-          localObject2 = (QcircleRedDotEntity)a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (String)localObject1);
+          localObject2 = (QcircleRedDotEntity)a(this.f, (String)localObject1);
           if (localObject2 != null) {
             localArrayMap.put(localObject1, localObject2);
           }
@@ -556,20 +557,20 @@ public class AIOTroopQcircleRedDotManager
     } else {
       l1 = -1L;
     }
-    if (this.g >= 0L)
+    if (this.n >= 0L)
     {
       if (l1 < 0L) {
         return;
       }
       long l2 = System.currentTimeMillis();
-      long l3 = this.f;
-      if ((l3 != -1L) && (l2 - l3 < this.e) && (this.g == l1))
+      long l3 = this.m;
+      if ((l3 != -1L) && (l2 - l3 < this.l) && (this.n == l1))
       {
         a(paramString, paramTroopChatPie, paramList);
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = a();
-      this.g = l1;
+      this.o = i();
+      this.n = l1;
       d(paramString, paramTroopChatPie, paramList);
     }
   }
@@ -583,7 +584,7 @@ public class AIOTroopQcircleRedDotManager
       localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
       if (localObject != null)
       {
-        localObject = ((TroopManager)localObject).c();
+        localObject = ((TroopManager)localObject).i();
         break label56;
       }
     }
@@ -617,7 +618,7 @@ public class AIOTroopQcircleRedDotManager
         return;
       }
       ArrayMap localArrayMap = new ArrayMap();
-      long l = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       Object localObject = paramBundle.profileCountItems.iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -628,13 +629,13 @@ public class AIOTroopQcircleRedDotManager
         } else {
           paramBoolean = false;
         }
-        localArrayMap.put(str, new QzoneRedDotEntity(str, paramBoolean, l, localprofile_count_item.jumpSchema, paramBundle.iconURL));
+        localArrayMap.put(str, new QzoneRedDotEntity(str, paramBoolean, l1, localprofile_count_item.jumpSchema, paramBundle.iconURL));
       }
-      this.jdField_c_of_type_Long = (paramBundle.iNextTimeout * 1000);
-      this.jdField_d_of_type_Long = paramBundle.iNextUinsBufCount;
-      localObject = (TroopChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localObject != null) && (((TroopChatPie)localObject).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (((TroopChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a() != null)) {
-        paramBundle = ((TroopChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+      this.j = (paramBundle.iNextTimeout * 1000);
+      this.k = paramBundle.iNextUinsBufCount;
+      localObject = (TroopChatPie)this.d.get();
+      if ((localObject != null) && (((TroopChatPie)localObject).U != null) && (((TroopChatPie)localObject).V.a() != null)) {
+        paramBundle = ((TroopChatPie)localObject).V.a();
       } else {
         paramBundle = null;
       }
@@ -642,22 +643,22 @@ public class AIOTroopQcircleRedDotManager
         ThreadManager.getUIHandler().post(new AIOTroopQcircleRedDotManager.9(this, paramBundle, localArrayMap, (TroopChatPie)localObject));
       }
       ThreadManager.excute(new AIOTroopQcircleRedDotManager.10(this, localArrayMap), 160, null, true);
-      LocalMultiProcConfig.putLong("qzone_troop_redpoint_pull_time_threshold", this.jdField_c_of_type_Long);
-      LocalMultiProcConfig.putLong("qzone_troop_redpoint_pull_amount_threshold", this.jdField_d_of_type_Long);
+      LocalMultiProcConfig.putLong("qzone_troop_redpoint_pull_time_threshold", this.j);
+      LocalMultiProcConfig.putLong("qzone_troop_redpoint_pull_amount_threshold", this.k);
       paramBundle = new StringBuilder();
       paramBundle.append("new qzoneTimeLimits from backend: ");
-      paramBundle.append(this.jdField_c_of_type_Long);
+      paramBundle.append(this.j);
       QZLog.d("AIOTroopQcircleRedDotManager", 2, paramBundle.toString());
       paramBundle = new StringBuilder();
       paramBundle.append("new qzoneAmountLimits from backend: ");
-      paramBundle.append(this.jdField_d_of_type_Long);
+      paramBundle.append(this.k);
       QZLog.d("AIOTroopQcircleRedDotManager", 2, paramBundle.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTroopQcircleRedDotManager
  * JD-Core Version:    0.7.0.1
  */

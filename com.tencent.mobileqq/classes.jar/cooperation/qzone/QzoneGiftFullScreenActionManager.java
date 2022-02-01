@@ -48,10 +48,10 @@ public class QzoneGiftFullScreenActionManager
   {
     Object localObject = this.actionGlobalData;
     int j = 0;
-    if ((localObject != null) && (!"non-ver".equals(((ActionGlobalData)localObject).b)))
+    if ((localObject != null) && (!"non-ver".equals(((ActionGlobalData)localObject).f)))
     {
-      localObject = splitVersion("8.7.0");
-      int[] arrayOfInt = splitVersion(this.actionGlobalData.b);
+      localObject = splitVersion("8.8.17");
+      int[] arrayOfInt = splitVersion(this.actionGlobalData.f);
       if ((localObject != null) && (arrayOfInt != null) && (localObject.length == arrayOfInt.length))
       {
         i = 0;
@@ -113,13 +113,13 @@ public class QzoneGiftFullScreenActionManager
       if (localAction != null) {
         if (paramBoolean)
         {
-          if ("default".equals(localAction.a))
+          if ("default".equals(localAction.b))
           {
             localArrayList.add(localAction);
             return localArrayList;
           }
         }
-        else if (!"default".equals(localAction.a)) {
+        else if (!"default".equals(localAction.b)) {
           localArrayList.add(localAction);
         }
       }
@@ -133,7 +133,7 @@ public class QzoneGiftFullScreenActionManager
     if (paramString1 == null) {
       return null;
     }
-    return new MagicfaceActionDecoder().a(paramString1);
+    return new MagicfaceActionDecoder().b(paramString1);
   }
   
   private void initActionData(String paramString)
@@ -165,7 +165,7 @@ public class QzoneGiftFullScreenActionManager
     if (localMagicfaceActionListener != null) {
       localMagicfaceActionListener.magicfaceActionStart(paramActionGlobalData);
     }
-    if ((paramActionGlobalData != null) && (paramActionGlobalData.a != null)) {
+    if ((paramActionGlobalData != null) && (paramActionGlobalData.m != null)) {
       paramActionGlobalData.a();
     }
   }
@@ -211,7 +211,7 @@ public class QzoneGiftFullScreenActionManager
     this.isShutDown = true;
     paramMagicfaceCloseListener = this.currentMagicfaceAction;
     if (paramMagicfaceCloseListener != null) {
-      paramMagicfaceCloseListener.d();
+      paramMagicfaceCloseListener.e();
     }
     paramMagicfaceCloseListener = this.actionGlobalData;
     if (paramMagicfaceCloseListener != null) {
@@ -242,7 +242,7 @@ public class QzoneGiftFullScreenActionManager
   {
     ActionGlobalData localActionGlobalData = this.actionGlobalData;
     if (localActionGlobalData != null) {
-      localActionGlobalData.d = true;
+      localActionGlobalData.n = true;
     }
   }
   
@@ -280,7 +280,7 @@ public class QzoneGiftFullScreenActionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenActionManager
  * JD-Core Version:    0.7.0.1
  */

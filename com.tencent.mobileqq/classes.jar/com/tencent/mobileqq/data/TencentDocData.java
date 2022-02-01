@@ -27,9 +27,9 @@ public class TencentDocData
   public String peerTips;
   public long sendUin;
   public int serviceId = 95;
-  public String sourceAction = HardCodeUtil.a(2131714635);
-  public String sourceName = HardCodeUtil.a(2131714631);
-  public String summary = HardCodeUtil.a(2131714639);
+  public String sourceAction = HardCodeUtil.a(2131912144);
+  public String sourceName = HardCodeUtil.a(2131912140);
+  public String summary = HardCodeUtil.a(2131912148);
   public String title;
   public String url;
   
@@ -134,7 +134,7 @@ public class TencentDocData
   
   public String getBriefDes(Context paramContext)
   {
-    return paramContext.getString(2131692591, new Object[] { getTitle() });
+    return paramContext.getString(2131889614, new Object[] { getTitle() });
   }
   
   public String getTitle()
@@ -178,7 +178,7 @@ public class TencentDocData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TencentDocData
  * JD-Core Version:    0.7.0.1
  */

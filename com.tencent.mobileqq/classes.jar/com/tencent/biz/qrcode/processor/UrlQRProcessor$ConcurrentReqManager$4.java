@@ -14,41 +14,41 @@ class UrlQRProcessor$ConcurrentReqManager$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    paramDialogInterface = this.a.toLowerCase();
     if (paramDialogInterface.startsWith("www."))
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("http://");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append(this.a);
       paramDialogInterface = paramDialogInterface.toString();
     }
     else if (paramDialogInterface.startsWith("https:"))
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("https");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString.substring(5));
+      paramDialogInterface.append(this.a.substring(5));
       paramDialogInterface = paramDialogInterface.toString();
     }
     else if (paramDialogInterface.startsWith("http:"))
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("http");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString.substring(4));
+      paramDialogInterface.append(this.a.substring(4));
       paramDialogInterface = paramDialogInterface.toString();
     }
     else
     {
-      paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      paramDialogInterface = this.a;
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+    Intent localIntent = new Intent(this.b, QQBrowserDelegationActivity.class);
     localIntent.putExtra("url", paramDialogInterface);
     localIntent.putExtra("param_force_internal_browser", true);
     localIntent.putExtra("key_isReadModeEnabled", true);
     localIntent.putExtra("fromQrcode", true);
     localIntent.putExtra("injectrecommend", false);
     localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.b();
+    this.b.startActivity(localIntent);
+    this.c.b();
   }
 }
 

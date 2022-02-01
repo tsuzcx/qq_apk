@@ -11,12 +11,12 @@ class TroopRobotPickerActivity$2
   public void a(int paramInt, boolean paramBoolean)
   {
     TroopRobotPickerActivity.a(this.a);
-    this.a.a.dismiss();
+    this.a.j.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRobotPickerActivity.2
  * JD-Core Version:    0.7.0.1
  */

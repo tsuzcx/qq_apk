@@ -13,18 +13,18 @@ public class ApolloConfProcessor
 {
   public static void a()
   {
-    ApolloConfBean localApolloConfBean = (ApolloConfBean)QConfigManager.a().a(67);
+    ApolloConfBean localApolloConfBean = (ApolloConfBean)QConfigManager.b().b(67);
     ApolloConfBean.a(BaseApplicationImpl.getApplication().getRuntime(), false, localApolloConfBean);
   }
   
   public static void b()
   {
-    int i = QConfigManager.a().a(67, "");
+    int i = QConfigManager.b().a(67, "");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("resetApolloConfVersion localVersion:");
     localStringBuilder.append(i);
     QLog.w("[cmshow]ApolloConfig_GlobalProcessor", 1, localStringBuilder.toString());
-    QConfigManager.a().a(67, 0);
+    QConfigManager.b().a(67, 0);
   }
   
   @NonNull
@@ -100,7 +100,7 @@ public class ApolloConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.config.ApolloConfProcessor
  * JD-Core Version:    0.7.0.1
  */

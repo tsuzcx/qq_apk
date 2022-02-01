@@ -13,11 +13,11 @@ public class WSDownloadAppStrategy
   
   public boolean a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
-    if (((paramIWSStSchemaJumpFactor.a() instanceof Activity)) && (paramIWSStSchemaJumpFactor.a() != null))
+    if (((paramIWSStSchemaJumpFactor.a() instanceof Activity)) && (paramIWSStSchemaJumpFactor.c() != null))
     {
-      WeishiDownloadUtil.a((Activity)paramIWSStSchemaJumpFactor.a(), paramIWSStSchemaJumpFactor.a(), true);
-      if (paramIWSStSchemaJumpFactor.a() != null) {
-        paramIWSStSchemaJumpFactor.a().d();
+      WeishiDownloadUtil.a((Activity)paramIWSStSchemaJumpFactor.a(), paramIWSStSchemaJumpFactor.c(), true);
+      if (paramIWSStSchemaJumpFactor.h() != null) {
+        paramIWSStSchemaJumpFactor.h().d();
       }
       return true;
     }
@@ -26,7 +26,7 @@ public class WSDownloadAppStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.WSDownloadAppStrategy
  * JD-Core Version:    0.7.0.1
  */

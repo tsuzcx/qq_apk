@@ -14,19 +14,19 @@ import java.util.Observer;
 public class FileBrowserMiniAIOHelper
   implements Observer
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private QQAppInterface a;
+  private String b;
+  private View c;
   
   public FileBrowserMiniAIOHelper(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramQQAppInterface;
+    this.b = paramString;
   }
   
   public void a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -34,27 +34,27 @@ public class FileBrowserMiniAIOHelper
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramView;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addObserver(this);
+    if (this.a.getMessageFacade() != null) {
+      this.a.getMessageFacade().addObserver(this);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().deleteObserver(this);
+    if (this.a.getMessageFacade() != null) {
+      this.a.getMessageFacade().deleteObserver(this);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().deleteObserver(this);
+    if (this.a.getMessageFacade() != null) {
+      this.a.getMessageFacade().deleteObserver(this);
     }
   }
   
@@ -75,7 +75,7 @@ public class FileBrowserMiniAIOHelper
         paramObject.append(paramObservable.frienduin);
         paramObject.append("]");
         QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, paramObject.toString());
-        if (paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString)) {
+        if (paramObservable.frienduin.equals(this.b)) {
           ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
         }
       }
@@ -84,7 +84,7 @@ public class FileBrowserMiniAIOHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper
  * JD-Core Version:    0.7.0.1
  */

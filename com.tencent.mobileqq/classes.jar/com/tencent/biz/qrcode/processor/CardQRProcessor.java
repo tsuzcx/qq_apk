@@ -16,12 +16,11 @@ import mqq.app.AppRuntime;
 public class CardQRProcessor
   extends BaseQRScanResultProcessor
 {
-  private int a;
+  private int c = -1;
   
   public CardQRProcessor(AppRuntime paramAppRuntime, OnQRHandleResultCallback paramOnQRHandleResultCallback)
   {
     super(paramAppRuntime, paramOnQRHandleResultCallback);
-    this.jdField_a_of_type_Int = -1;
   }
   
   public static int a(String paramString)
@@ -64,22 +63,17 @@ public class CardQRProcessor
     return "CardQRProcessor";
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    this.jdField_a_of_type_Int = a(paramString1);
+    this.c = a(paramString1);
     paramString2 = a();
     boolean bool2 = false;
-    QLog.d("IQRScanConst_BaseQRScanResultProcessor", 1, String.format("intercept proc=[%s] cardMode=%d result=%s", new Object[] { paramString2, Integer.valueOf(this.jdField_a_of_type_Int), paramString1 }));
+    QLog.d("IQRScanConst_BaseQRScanResultProcessor", 1, String.format("intercept proc=[%s] cardMode=%d result=%s", new Object[] { paramString2, Integer.valueOf(this.c), paramString1 }));
     boolean bool1 = bool2;
     if (a(paramInt))
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Int != -1) {
+      if (this.c != -1) {
         bool1 = true;
       }
     }
@@ -88,18 +82,23 @@ public class CardQRProcessor
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return false;
     }
-    paramString2 = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-    paramScannerParams = (Activity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
-    if (this.jdField_a_of_type_Int != -1)
+    paramString2 = (QQAppInterface)this.a;
+    paramScannerParams = (Activity)this.b.d();
+    if (this.c != -1)
     {
-      ((IQRJumpApi)QRoute.api(IQRJumpApi.class)).displayQRCard(paramString2, paramScannerParams, paramString1, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.b();
+      ((IQRJumpApi)QRoute.api(IQRJumpApi.class)).displayQRCard(paramString2, paramScannerParams, paramString1, this.c);
+      this.b.b();
       return true;
     }
     return false;
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

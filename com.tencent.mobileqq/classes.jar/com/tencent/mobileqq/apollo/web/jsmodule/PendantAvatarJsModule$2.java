@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.web.jsmodule;
 
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
-import com.tencent.mobileqq.apollo.player.ICMSRecordCallback;
+import com.tencent.mobileqq.apollo.meme.ICMSRecordCallback;
 import com.tencent.mobileqq.apollo.web.api.impl.ApolloJsPluginImpl.AvatarInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -18,8 +18,8 @@ class PendantAvatarJsModule$2
     {
       if ((paramString2 != null) && (paramString1 != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmodulePendantAvatarJsModule.a.put(paramString2, new ApolloJsPluginImpl.AvatarInfo(paramString1, this.jdField_a_of_type_Int));
-        this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmodulePendantAvatarJsModule.a(paramString2, paramInt, this.jdField_a_of_type_Int, this.b);
+        this.c.b.put(paramString2, new ApolloJsPluginImpl.AvatarInfo(paramString1, this.a));
+        this.c.a(paramString2, paramInt, this.a, this.b);
       }
       return;
     }
@@ -28,7 +28,7 @@ class PendantAvatarJsModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.PendantAvatarJsModule.2
  * JD-Core Version:    0.7.0.1
  */

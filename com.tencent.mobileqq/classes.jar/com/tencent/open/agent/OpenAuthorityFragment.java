@@ -47,16 +47,16 @@ public class OpenAuthorityFragment
   extends QPublicBaseFragment
   implements View.OnClickListener, INewAuthorityContract.View
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private OpenCardContainer jdField_a_of_type_ComTencentOpenAgentOpenCardContainer;
-  private INewAuthorityContract.Presenter jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new OpenAuthorityFragment.3(this);
-  private TextView b;
-  private TextView c;
+  private long a = 0L;
+  private Button b;
+  private QQProgressDialog c;
+  private OpenCardContainer d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private INewAuthorityContract.Presenter h;
+  private Runnable i = new OpenAuthorityFragment.3(this);
+  private Handler j = new Handler(Looper.getMainLooper());
   
   private String a(Bundle paramBundle)
   {
@@ -71,25 +71,25 @@ public class OpenAuthorityFragment
   
   private void a(View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131372129));
-    this.c = ((TextView)paramView.findViewById(2131364433));
-    this.c.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer = ((OpenCardContainer)paramView.findViewById(2131364351));
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setOnUpdateStatusBarListener(new OpenAuthorityFragment.1(this));
-    d();
+    this.b = ((Button)paramView.findViewById(2131439600));
+    this.g = ((TextView)paramView.findViewById(2131430467));
+    this.g.setOnClickListener(this);
+    this.d = ((OpenCardContainer)paramView.findViewById(2131430379));
+    this.d.setOnUpdateStatusBarListener(new OpenAuthorityFragment.1(this));
+    e();
     if (AuthParamUtil.a(getQBaseActivity().getIntent(), "internal_authority", false))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setTag(Boolean.valueOf(true));
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.findViewById(2131371858).setVisibility(8);
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setVisibility(4);
+      this.d.setTag(Boolean.valueOf(true));
+      this.d.findViewById(2131439299).setVisibility(8);
+      this.d.setVisibility(4);
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.b.setOnClickListener(this);
     a(false);
-    paramView = AuthMemoryCache.a().a(a(paramBundle));
+    paramView = AuthMemoryCache.a().c(a(paramBundle));
     if (paramView != null)
     {
-      Object localObject = paramView.jdField_a_of_type_JavaUtilArrayList;
-      long l = paramView.jdField_a_of_type_Long;
+      Object localObject = paramView.c;
+      long l = paramView.b;
       if (localObject != null)
       {
         paramView = new LinkedList();
@@ -98,23 +98,23 @@ public class OpenAuthorityFragment
         {
           VirtualInfo localVirtualInfo = (VirtualInfo)((Iterator)localObject).next();
           VirtualAccountInfo localVirtualAccountInfo = new VirtualAccountInfo(localVirtualInfo);
-          if (localVirtualInfo.jdField_a_of_type_Long == l) {
-            localVirtualAccountInfo.a = true;
+          if (localVirtualInfo.a == l) {
+            localVirtualAccountInfo.d = true;
           }
           paramView.add(localVirtualAccountInfo);
         }
-        a(paramView, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
+        b(paramView, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
       }
     }
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setPresenter(this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter);
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setCurrentAppId(a(paramBundle));
+    this.d.setPresenter(this.h);
+    this.d.setCurrentAppId(a(paramBundle));
     if (AuthParamUtil.a(paramBundle, "key_login_by_qr_scan", false)) {
-      this.c.setVisibility(4);
+      this.g.setVisibility(4);
     }
     if (AuthParamUtil.a(getQBaseActivity().getIntent()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getQBaseActivity(), 0, 2131561399, 17);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(-1);
+      this.c = new QQProgressDialog(getQBaseActivity(), 0, 2131627755, 17);
+      this.c.a(-1);
     }
     else
     {
@@ -123,84 +123,67 @@ public class OpenAuthorityFragment
       } else {
         paramView = getQBaseActivity();
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramView, getQBaseActivity().getTitleBarHeight());
+      this.c = new QQProgressDialog(paramView, getQBaseActivity().getTitleBarHeight());
     }
     paramView = AuthParamUtil.a(paramBundle, "oauth_app_name");
     if (paramView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(paramView, null);
+      this.d.a(paramView, null);
     }
-  }
-  
-  private boolean a()
-  {
-    QBaseActivity localQBaseActivity = getQBaseActivity();
-    return (localQBaseActivity == null) || (localQBaseActivity.isFinishing());
   }
   
   private void b(String paramString)
   {
-    if ((paramString == null) || (!paramString.equals(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a))) {
-      a(new ArrayList(), paramString);
+    if ((paramString == null) || (!paramString.equals(this.d.l.b))) {
+      b(new ArrayList(), paramString);
     }
   }
   
-  private void d()
+  private void e()
   {
-    ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.findViewById(2131378881)).resetBkColor(0);
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.findViewById(2131369202).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.findViewById(2131369249));
-    this.b = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.findViewById(2131369233));
-    this.b.setText(2131690728);
-    this.b.setOnClickListener(this);
+    ((ImmersiveTitleBar2)this.d.findViewById(2131447582)).resetBkColor(0);
+    this.d.findViewById(2131436180).setOnClickListener(this);
+    this.e = ((TextView)this.d.findViewById(2131436227));
+    this.f = ((TextView)this.d.findViewById(2131436211));
+    this.f.setText(2131887648);
+    this.f.setOnClickListener(this);
   }
   
-  private void e()
+  private void f()
   {
     if (getQBaseActivity() == null)
     {
       SSOLog.b("OpenAuthorityFragment", new Object[] { "updateTitleColor activity is null" });
       return;
     }
-    int i = getResources().getColor(2131165963);
-    ColorStateList localColorStateList = getResources().getColorStateList(2131165963);
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    int k = getResources().getColor(2131166684);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131166684);
+    TextView localTextView = this.e;
     if (localTextView != null)
     {
-      localTextView.setTextColor(i);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      localTextView.setTextColor(k);
+      this.e.setText("");
     }
-    localTextView = this.b;
+    localTextView = this.f;
     if (localTextView != null) {
       localTextView.setTextColor(localColorStateList);
     }
   }
   
-  public long a()
+  private boolean g()
   {
-    return this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a();
-  }
-  
-  public Object a(int paramInt)
-  {
-    if (paramInt != 3)
-    {
-      if (paramInt != 5) {
-        return null;
-      }
-      return Integer.valueOf(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.getCount());
-    }
-    return getQBaseActivity();
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    return (localQBaseActivity == null) || (localQBaseActivity.isFinishing());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(1);
+    this.d.a(1);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(paramInt));
-    AuthUIUtil.a(getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, 0);
+    this.c.a(getResources().getString(paramInt));
+    AuthUIUtil.a(getQBaseActivity(), this.c, 0);
   }
   
   public void a(int paramInt, List<VirtualAccountInfo> paramList, long paramLong)
@@ -210,7 +193,7 @@ public class OpenAuthorityFragment
     {
       paramList = getQBaseActivity();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131707851));
+      localStringBuilder.append(HardCodeUtil.a(2131905665));
       localStringBuilder.append(paramInt);
       AuthUIUtil.a(paramList, localStringBuilder.toString(), false);
       b(str);
@@ -221,31 +204,31 @@ public class OpenAuthorityFragment
       b(str);
       return;
     }
-    a(paramList, str);
+    b(paramList, str);
     if (paramLong != 0L) {
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a(paramLong);
+      this.d.l.a(paramLong);
     }
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
+    this.j.removeCallbacks(this.i);
+    this.j.postDelayed(this.i, paramLong);
   }
   
   public void a(INewAuthorityContract.Presenter paramPresenter)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter = paramPresenter;
+    this.h = paramPresenter;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.b(paramString);
+    this.d.c(paramString);
   }
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(paramString, paramBitmap);
+    this.d.a(paramString, paramBitmap);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -253,30 +236,47 @@ public class OpenAuthorityFragment
     AuthUIUtil.a(getQBaseActivity(), paramString, paramBoolean);
   }
   
-  public void a(List<VirtualAccountInfo> paramList, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a(paramList, paramString);
-  }
-  
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
+    this.b.setEnabled(paramBoolean);
   }
   
   public boolean a(List<Permission> paramList, String paramString)
   {
-    return this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(paramList, paramString);
+    return this.d.a(paramList, paramString);
+  }
+  
+  public Object b(int paramInt)
+  {
+    if (paramInt != 3)
+    {
+      if (paramInt != 5) {
+        return null;
+      }
+      return Integer.valueOf(this.d.l.getCount());
+    }
+    return getQBaseActivity();
   }
   
   public void b()
   {
-    AuthUIUtil.a(getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    AuthUIUtil.a(getQBaseActivity(), this.c);
+  }
+  
+  public void b(List<VirtualAccountInfo> paramList, String paramString)
+  {
+    this.d.l.a(paramList, paramString);
   }
   
   public void c()
   {
     SSOLog.a("OpenAuthorityFragment", new Object[] { "onBackPressed" });
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.c();
+    this.h.c();
+  }
+  
+  public long d()
+  {
+    return this.d.getSelectVid();
   }
   
   public boolean isWrapContent()
@@ -301,25 +301,25 @@ public class OpenAuthorityFragment
     SSOLog.a("OpenAuthorityFragment", new Object[] { localStringBuilder.toString() });
     if ((paramInt1 == 101) && (paramIntent != null))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.a(paramIntent);
+      this.h.a(paramIntent);
     }
     else
     {
       if ((paramInt1 == 102) && (paramIntent != null))
       {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.b(paramIntent);
+        this.h.b(paramIntent);
         return;
       }
       if (paramInt1 == 100)
       {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.b(paramInt2, paramIntent);
+        this.h.b(paramInt2, paramIntent);
         return;
       }
     }
     b();
     if (paramInt2 == 0)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.a(paramInt2, paramIntent);
+      this.h.a(paramInt2, paramIntent);
       return;
     }
     if (-1 == paramInt2)
@@ -327,42 +327,42 @@ public class OpenAuthorityFragment
       if (AuthorityUtil.a(getActivity(), paramIntent)) {
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new OpenAuthorityFragment.2(this));
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.a(paramInt2, paramIntent);
+      this.j.post(new OpenAuthorityFragment.2(this));
+      this.h.a(paramInt2, paramIntent);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.b)
+    if (paramView == this.f)
     {
       SSOLog.a("OpenAuthorityFragment", new Object[] { "onClick cancel" });
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.c();
+      this.h.c();
     }
-    else if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    else if (paramView == this.b)
     {
       SSOLog.a("OpenAuthorityFragment", new Object[] { "onClick authorize btn" });
       long l = System.currentTimeMillis();
       try
       {
-        if (l - this.jdField_a_of_type_Long < 500L)
+        if (l - this.a < 500L)
         {
           SSOLog.a("OpenAuthorityFragment", new Object[] { "onClick btn repeat click" });
         }
         else
         {
-          this.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.g();
+          this.a = l;
+          this.h.g();
         }
       }
       finally {}
     }
-    else if (paramView == this.c)
+    else if (paramView == this.g)
     {
       SSOLog.a("OpenAuthorityFragment", new Object[] { "onClick showAccountSheet" });
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a();
-      AuthorityUtil.a("0X800BA78");
-      AuthorityUtil.a("0X800BA7B");
+      this.d.k.e();
+      AuthorityUtil.e("0X800BA78");
+      AuthorityUtil.e("0X800BA7B");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -370,13 +370,13 @@ public class OpenAuthorityFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     SSOLog.a("OpenAuthorityFragment", new Object[] { "onCreateView" });
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559666, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625696, paramViewGroup, false);
     if ((getQBaseActivity().getAppRuntime() instanceof AbstractOpenSdkAppInterface))
     {
       ContractBuilder.a(this, getContext());
       paramViewGroup = AuthParamUtil.a(getQBaseActivity().getIntent(), "key_params");
       a(paramLayoutInflater, paramViewGroup);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.a(paramViewGroup);
+      this.h.a(paramViewGroup);
     }
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -392,20 +392,20 @@ public class OpenAuthorityFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.a();
+    this.h.a();
   }
   
   public void onResume()
   {
     super.onResume();
     ImmersiveUtils.setStatusTextColor(true, getQBaseActivity().getWindow());
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.c();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter.b();
+    this.d.c();
+    this.h.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment
  * JD-Core Version:    0.7.0.1
  */

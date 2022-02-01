@@ -22,7 +22,7 @@ public class CameraAPIStrategy
         a = false;
         return;
       }
-      int i = Camera2Control.b();
+      int i = Camera2Control.n();
       boolean bool;
       if ((i != 1) && (i != 3)) {
         bool = false;
@@ -51,7 +51,7 @@ public class CameraAPIStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camerastrategy.CameraAPIStrategy
  * JD-Core Version:    0.7.0.1
  */

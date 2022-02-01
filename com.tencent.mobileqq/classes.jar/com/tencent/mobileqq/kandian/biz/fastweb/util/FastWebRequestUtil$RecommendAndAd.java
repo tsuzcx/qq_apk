@@ -9,25 +9,25 @@ import java.util.List;
 
 public class FastWebRequestUtil$RecommendAndAd
 {
-  private int jdField_a_of_type_Int;
-  private RecommendAndAdCallback jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebRecommendAndAdCallback;
-  private final String jdField_a_of_type_JavaLangString;
-  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private List<BaseData> a = new ArrayList();
   private List<BaseData> b = new ArrayList();
+  private RecommendAndAdCallback c;
+  private final String d;
+  private boolean e;
+  private int f;
   
   public FastWebRequestUtil$RecommendAndAd(String paramString, RecommendAndAdCallback paramRecommendAndAdCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebRecommendAndAdCallback = paramRecommendAndAdCallback;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramRecommendAndAdCallback;
+    this.d = paramString;
   }
   
   private void a()
   {
     try
     {
-      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebRecommendAndAdCallback != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebRecommendAndAdCallback.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      if ((this.b != null) && (this.a != null) && (this.c != null)) {
+        this.c.a(true, this.d, this.a, this.b, this.f, this.e);
       }
       return;
     }
@@ -47,16 +47,16 @@ public class FastWebRequestUtil$RecommendAndAd
   
   public void a(List<BaseData> paramList, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramList;
+    this.e = paramBoolean;
+    this.f = paramInt;
     ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("REPORT_LINK", "requestAdData recommendDatas callback");
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRequestUtil.RecommendAndAd
  * JD-Core Version:    0.7.0.1
  */

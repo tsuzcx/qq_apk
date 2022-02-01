@@ -40,85 +40,77 @@ public class MultiPicHeaderBlock
   extends DetailBaseBlock
   implements ITransAnimStateListener
 {
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private SubscribeFollowInfoView jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView;
-  private RelativeMultiPicHeadItemView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
+  private RelativeMultiPicHeadItemView g;
+  private long k;
+  private SubscribeFollowInfoView l;
+  private View m;
   
   public MultiPicHeaderBlock(Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  private boolean d()
+  private void e(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a() != null)
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((RelativeMultiPicHeadItemView)localObject).setData(paramStFeed);
+    }
+    localObject = this.l;
+    if (localObject != null)
     {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a();
-      if ((localStFeed.id.get().equals(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())) && (localStFeed.title.get().equals(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get())) && (localStFeed.createTime.get() == this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.createTime.get()) && (localStFeed.images.size() == this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.images.size())) {
+      ((SubscribeFollowInfoView)localObject).setData(paramStFeed);
+      if (this.l.getVisibility() == 4) {
+        this.l.setVisibility(0);
+      }
+    }
+    if ((A() instanceof SubscribeMultiPicFragment)) {
+      ((SubscribeMultiPicFragment)A()).a(System.currentTimeMillis());
+    }
+  }
+  
+  private boolean v()
+  {
+    if (this.g.getData() != null)
+    {
+      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)this.g.getData();
+      if ((localStFeed.id.get().equals(this.c.id.get())) && (localStFeed.title.get().equals(this.c.title.get())) && (localStFeed.createTime.get() == this.c.createTime.get()) && (localStFeed.images.size() == this.c.images.size())) {
         return true;
       }
     }
     return false;
   }
   
-  private void e(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
-    if (localObject != null) {
-      ((RelativeMultiPicHeadItemView)localObject).setData(paramStFeed);
-    }
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView;
-    if (localObject != null)
-    {
-      ((SubscribeFollowInfoView)localObject).setData(paramStFeed);
-      if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.getVisibility() == 4) {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.setVisibility(0);
-      }
-    }
-    if ((a() instanceof SubscribeMultiPicFragment)) {
-      ((SubscribeMultiPicFragment)a()).a(System.currentTimeMillis());
-    }
-  }
-  
-  protected View a()
-  {
-    if ((a() instanceof SubscribeMultiPicFragment)) {
-      return ((SubscribeMultiPicFragment)a()).b();
-    }
-    return null;
-  }
-  
   protected BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
   {
-    if ((a() instanceof SubscribeMultiPicFragment))
+    if ((A() instanceof SubscribeMultiPicFragment))
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView = new SubscribeFollowInfoView(a());
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.setExtraTypeInfo(a());
+      this.l = new SubscribeFollowInfoView(H());
+      this.l.setExtraTypeInfo(K());
       paramMultiViewBlock = new LinearLayout.LayoutParams(-1, ImmersiveUtils.dpToPx(29.0F));
       paramMultiViewBlock.leftMargin = ImmersiveUtils.dpToPx(9.0F);
       paramMultiViewBlock.rightMargin = ImmersiveUtils.dpToPx(15.0F);
       paramMultiViewBlock.gravity = 16;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.setLayoutParams(paramMultiViewBlock);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView = ((SubscribeMultiPicFragment)a()).c();
-      ((SubscribeMultiPicFragment)a()).a().addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView);
+      this.l.setLayoutParams(paramMultiViewBlock);
+      this.l.setVisibility(4);
+      this.m = ((SubscribeMultiPicFragment)A()).j();
+      ((SubscribeMultiPicFragment)A()).k().addView(this.l);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView = new RelativeMultiPicHeadItemView(paramViewGroup.getContext());
-    if (this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a());
+    this.g = new RelativeMultiPicHeadItemView(paramViewGroup.getContext());
+    if (this.e != null) {
+      this.e.a(this.g.getBannerView());
     }
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
+    return this.g;
   }
   
   protected void a(long paramLong, String paramString)
   {
     super.a(paramLong, paramString);
-    paramString = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView;
+    paramString = this.l;
     if (paramString != null) {
       paramString.setVisibility(8);
     }
-    paramString = this.jdField_a_of_type_AndroidViewView;
+    paramString = this.m;
     if (paramString != null) {
       paramString.setVisibility(8);
     }
@@ -127,16 +119,16 @@ public class MultiPicHeaderBlock
   protected void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean)
   {
     e((CertifiedAccountMeta.StFeed)paramStGetFeedDetailRsp.feed.get());
-    paramStGetFeedDetailRsp = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView;
+    paramStGetFeedDetailRsp = this.l;
     if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.getVisibility() == 8)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.setVisibility(0);
+      this.l.setVisibility(0);
     }
-    paramStGetFeedDetailRsp = this.jdField_a_of_type_AndroidViewView;
+    paramStGetFeedDetailRsp = this.m;
     if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.getVisibility() == 8)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.m.setVisibility(0);
     }
-    if ((a() != null) && ((a().getLayoutManager() instanceof StaggeredGridLayoutManager))) {
-      ((StaggeredGridLayoutManager)a().getLayoutManager()).scrollToPositionWithOffset(0, 0);
+    if ((J() != null) && ((J().getLayoutManager() instanceof StaggeredGridLayoutManager))) {
+      ((StaggeredGridLayoutManager)J().getLayoutManager()).scrollToPositionWithOffset(0, 0);
     }
   }
   
@@ -147,7 +139,7 @@ public class MultiPicHeaderBlock
   
   public void a(MultiViewBlock paramMultiViewBlock, int paramInt)
   {
-    if ((paramMultiViewBlock.a() != null) && ("RELATIVE_ADAPTER_UNIQUE_KEY".equals(paramMultiViewBlock.a()))) {
+    if ((paramMultiViewBlock.bA_() != null) && ("RELATIVE_ADAPTER_UNIQUE_KEY".equals(paramMultiViewBlock.bA_()))) {
       ((RelativeFeedsAdapter)paramMultiViewBlock).a(new MultiPicHeaderBlock.1(this));
     }
   }
@@ -156,66 +148,40 @@ public class MultiPicHeaderBlock
   
   public void d(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+    if (System.currentTimeMillis() - this.k < 500L) {
       return;
     }
     String str = paramStFeed.poster.id.get();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("auth_");
-    localStringBuilder.append(SubscribeShareHelper.a(a()));
+    localStringBuilder.append(SubscribeShareHelper.a(K()));
     VSReporter.a(str, localStringBuilder.toString(), "clk_recom", 0, 0, new String[] { "", "", paramStFeed.id.get(), paramStFeed.title.get() });
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.k = System.currentTimeMillis();
     if (SubscribeLaucher.b(paramStFeed.type.get()))
     {
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(paramStFeed);
+      this.c = paramStFeed;
+      this.b.a(paramStFeed);
       b("share_key_subscribe_feeds_update", new BlockMerger.ShareData(paramStFeed, true));
       return;
     }
-    SubscribeLaucher.a(a(), paramStFeed);
-    if (a() != null) {
-      a().finish();
+    SubscribeLaucher.a(G(), paramStFeed);
+    if (G() != null) {
+      G().finish();
     }
   }
   
-  public void k()
+  protected View h()
   {
-    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
-    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.a() != null)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a().setAlpha(0.0F);
+    if ((A() instanceof SubscribeMultiPicFragment)) {
+      return ((SubscribeMultiPicFragment)A()).i();
     }
-  }
-  
-  public void l()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onTransAnimateInit disableLoading!");
-    b();
-    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
-    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.a() != null)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a().setAlpha(0.0F);
-    }
-  }
-  
-  public void m()
-  {
-    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
-    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.a() != null)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a().setAlpha(1.0F);
-    }
-  }
-  
-  public void n()
-  {
-    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
-    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.a() != null)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView.a().setAlpha(1.0F);
-    }
+    return null;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (!d()) {
-      e(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    if (!v()) {
+      e(this.c);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
@@ -223,9 +189,43 @@ public class MultiPicHeaderBlock
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    paramRecyclerView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeMultiPicHeadItemView;
+    paramRecyclerView = this.g;
     if (paramRecyclerView != null) {
       paramRecyclerView.a();
+    }
+  }
+  
+  public void r()
+  {
+    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.g;
+    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.getBannerView() != null)) {
+      this.g.getBannerView().setAlpha(0.0F);
+    }
+  }
+  
+  public void s()
+  {
+    QLog.d(a, 1, "onTransAnimateInit disableLoading!");
+    e();
+    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.g;
+    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.getBannerView() != null)) {
+      this.g.getBannerView().setAlpha(0.0F);
+    }
+  }
+  
+  public void t()
+  {
+    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.g;
+    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.getBannerView() != null)) {
+      this.g.getBannerView().setAlpha(1.0F);
+    }
+  }
+  
+  public void u()
+  {
+    RelativeMultiPicHeadItemView localRelativeMultiPicHeadItemView = this.g;
+    if ((localRelativeMultiPicHeadItemView != null) && (localRelativeMultiPicHeadItemView.getBannerView() != null)) {
+      this.g.getBannerView().setAlpha(1.0F);
     }
   }
 }

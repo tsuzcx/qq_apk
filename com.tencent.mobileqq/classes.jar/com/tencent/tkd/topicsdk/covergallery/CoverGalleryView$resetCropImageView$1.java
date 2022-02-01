@@ -15,14 +15,14 @@ final class CoverGalleryView$resetCropImageView$1
   {
     this.a.performClick();
     if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 1)) {
-      CoverGalleryView.c(this.a);
+      CoverGalleryView.f(this.a);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.resetCropImageView.1
  * JD-Core Version:    0.7.0.1
  */

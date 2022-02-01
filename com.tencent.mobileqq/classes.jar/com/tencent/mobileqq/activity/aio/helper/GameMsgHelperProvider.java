@@ -5,7 +5,7 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie;
 
 public class GameMsgHelperProvider
-  extends HelperProvider
+  extends StrangerHelperProvider
 {
   public GameMsgHelperProvider(Activity paramActivity)
   {
@@ -14,11 +14,9 @@ public class GameMsgHelperProvider
   
   private void a(GameMsgChatPie paramGameMsgChatPie)
   {
-    a(56, new GameMsgChatHelper(paramGameMsgChatPie));
     a(103, new GameMsgAppHelper(paramGameMsgChatPie));
-    paramGameMsgChatPie = new GameMsgAddFriendHelper(paramGameMsgChatPie.b());
-    a(113, paramGameMsgChatPie);
-    a(paramGameMsgChatPie);
+    a(140, new GameMsgPopInfoHelper(paramGameMsgChatPie));
+    a(141, new GameMsgSayHiHelper(paramGameMsgChatPie));
   }
   
   public void a(BaseChatPie paramBaseChatPie)
@@ -29,7 +27,7 @@ public class GameMsgHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GameMsgHelperProvider
  * JD-Core Version:    0.7.0.1
  */

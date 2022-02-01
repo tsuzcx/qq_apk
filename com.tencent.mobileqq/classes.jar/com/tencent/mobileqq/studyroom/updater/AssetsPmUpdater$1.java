@@ -11,11 +11,11 @@ class AssetsPmUpdater$1
   
   public File a()
   {
-    if ((!AssetsPmUpdater.a(this.a).exists()) || (!AssetsPmUpdater.a(this.a)))
+    if ((!AssetsPmUpdater.a(this.a).exists()) || (!AssetsPmUpdater.b(this.a)))
     {
       long l = System.currentTimeMillis();
       Object localObject = this.a;
-      if (AssetsPmUpdater.a((AssetsPmUpdater)localObject, AssetsPmUpdater.a((AssetsPmUpdater)localObject), AssetsPmUpdater.a(this.a), AssetsPmUpdater.a(this.a).getAbsolutePath()))
+      if (AssetsPmUpdater.a((AssetsPmUpdater)localObject, AssetsPmUpdater.c((AssetsPmUpdater)localObject), AssetsPmUpdater.d(this.a), AssetsPmUpdater.a(this.a).getAbsolutePath()))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("copy asset pm success, cost=");
@@ -35,7 +35,7 @@ class AssetsPmUpdater$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.updater.AssetsPmUpdater.1
  * JD-Core Version:    0.7.0.1
  */

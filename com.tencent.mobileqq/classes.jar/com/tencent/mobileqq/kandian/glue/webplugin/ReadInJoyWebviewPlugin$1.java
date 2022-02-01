@@ -23,12 +23,12 @@ class ReadInJoyWebviewPlugin$1
     {
       QLog.w("ReadInJoyWebviewPlugin", 4, localJSONException.getMessage());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+    this.b.callJs(this.a, new String[] { paramBundle.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.ReadInJoyWebviewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class AuthorityControlFragment$6
   
   public void run()
   {
-    AuthorityControlFragment.a(this.this$0).springBackOverScrollHeaderView();
+    AuthorityControlFragment.i(this.this$0).springBackOverScrollHeaderView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlFragment.6
  * JD-Core Version:    0.7.0.1
  */

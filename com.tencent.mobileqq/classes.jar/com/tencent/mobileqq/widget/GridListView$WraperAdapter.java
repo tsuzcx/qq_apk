@@ -25,14 +25,14 @@ public class GridListView$WraperAdapter
   
   public int getCount()
   {
-    if (this.a.c == 0)
+    if (this.a.d == 0)
     {
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+      if (this.a.l != null) {
         return 1;
       }
       return 0;
     }
-    return this.a.c;
+    return this.a.d;
   }
   
   public Object getItem(int paramInt)
@@ -47,11 +47,11 @@ public class GridListView$WraperAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (this.a.c == 0) {
+    if (this.a.d == 0) {
       return 0;
     }
-    if (this.a.jdField_a_of_type_Int == 0) {
-      return this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getItemViewType(paramInt) + 2;
+    if (this.a.b == 0) {
+      return this.a.a.getItemViewType(paramInt) + 2;
     }
     return 1;
   }
@@ -60,15 +60,15 @@ public class GridListView$WraperAdapter
   {
     Object localObject1;
     Object localObject2;
-    if (this.a.c == 0)
+    if (this.a.d == 0)
     {
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(this.a.getWidth(), this.a.getHeight()));
-      localObject1 = this.a.jdField_a_of_type_AndroidViewView;
+      this.a.l.setLayoutParams(new AbsListView.LayoutParams(this.a.getWidth(), this.a.getHeight()));
+      localObject1 = this.a.l;
       localObject2 = localObject1;
     }
     else
     {
-      if (this.a.jdField_a_of_type_Int == 1)
+      if (this.a.b == 1)
       {
         paramView = (LinearLayout)paramView;
         localObject1 = paramView;
@@ -76,13 +76,13 @@ public class GridListView$WraperAdapter
           localObject1 = a(paramViewGroup);
         }
         ((LinearLayout)localObject1).removeAllViews();
-        int j = this.a.d - this.a.b * paramInt;
+        int j = this.a.g - this.a.c * paramInt;
         i = j;
-        if (j >= this.a.b) {
-          i = this.a.b;
+        if (j >= this.a.c) {
+          i = this.a.c;
         }
         GridListView.GridGroupHolder localGridGroupHolder = (GridListView.GridGroupHolder)((LinearLayout)localObject1).getTag();
-        int k = this.a.b;
+        int k = this.a.c;
         j = 0;
         for (;;)
         {
@@ -91,36 +91,36 @@ public class GridListView$WraperAdapter
             break;
           }
           localObject2 = localGridGroupHolder.a[j];
-          paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter;
+          paramView = this.a.a;
           int m = k * paramInt + j;
-          int n = paramView.b(m);
+          int n = paramView.c(m);
           paramView = (View)localObject2;
           if (localObject2 != null)
           {
             paramView = (View)localObject2;
-            if (((Integer)((View)localObject2).getTag(2131361863)).intValue() != n) {
+            if (((Integer)((View)localObject2).getTag(2131427416)).intValue() != n) {
               paramView = null;
             }
           }
-          View localView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getView(m, paramView, (ViewGroup)localObject1);
-          localView.setTag(2131361863, Integer.valueOf(n));
+          View localView = this.a.a.getView(m, paramView, (ViewGroup)localObject1);
+          localView.setTag(2131427416, Integer.valueOf(n));
           localGridGroupHolder.a[j] = localView;
           localObject2 = (LinearLayout.LayoutParams)localView.getLayoutParams();
           paramView = (View)localObject2;
           if (localObject2 == null)
           {
-            paramView = new LinearLayout.LayoutParams(this.a.g, this.a.h);
+            paramView = new LinearLayout.LayoutParams(this.a.j, this.a.k);
             localView.setLayoutParams(paramView);
           }
-          paramView.width = this.a.g;
-          paramView.height = this.a.h;
-          paramView.leftMargin = this.a.e;
-          paramView.topMargin = this.a.f;
+          paramView.width = this.a.j;
+          paramView.height = this.a.k;
+          paramView.leftMargin = this.a.h;
+          paramView.topMargin = this.a.i;
           ((LinearLayout)localObject1).addView(localView);
-          if ((this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.isEnabled(m)))
+          if ((this.a.e != null) && (this.a.a.isEnabled(m)))
           {
-            localView.setTag(2131361816, Integer.valueOf(m));
-            localView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+            localView.setTag(2131427368, Integer.valueOf(m));
+            localView.setOnClickListener(this.a.f);
           }
           else
           {
@@ -129,21 +129,21 @@ public class GridListView$WraperAdapter
           j += 1;
         }
       }
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.a(paramInt) + 2;
+      int i = this.a.a.b(paramInt) + 2;
       localObject1 = paramView;
       if (paramView != null)
       {
         localObject1 = paramView;
-        if (((Integer)paramView.getTag(2131361863)).intValue() != i) {
+        if (((Integer)paramView.getTag(2131427416)).intValue() != i) {
           localObject1 = null;
         }
       }
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getView(paramInt, (View)localObject1, paramViewGroup);
-      paramView.setTag(2131361863, Integer.valueOf(i));
-      if ((this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.isEnabled(paramInt)))
+      paramView = this.a.a.getView(paramInt, (View)localObject1, paramViewGroup);
+      paramView.setTag(2131427416, Integer.valueOf(i));
+      if ((this.a.e != null) && (this.a.a.isEnabled(paramInt)))
       {
-        paramView.setTag(2131361816, Integer.valueOf(paramInt));
-        paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramView.setTag(2131427368, Integer.valueOf(paramInt));
+        paramView.setOnClickListener(this.a.f);
       }
       else
       {
@@ -159,12 +159,12 @@ public class GridListView$WraperAdapter
   
   public int getViewTypeCount()
   {
-    return this.a.i + 2;
+    return this.a.n + 2;
   }
   
   public boolean isEnabled(int paramInt)
   {
-    if ((this.a.c != 0) && (this.a.jdField_a_of_type_Int != 1)) {
+    if ((this.a.d != 0) && (this.a.b != 1)) {
       return super.isEnabled(paramInt);
     }
     return false;
@@ -172,7 +172,7 @@ public class GridListView$WraperAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GridListView.WraperAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.VisibleForTesting;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.RIJFrameworkReportManager;
@@ -33,7 +33,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
 import com.tencent.mobileqq.kandian.repo.report.FeedsReportData;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,21 +45,21 @@ public class ComponentSocialOperation
   extends FrameLayout
   implements View.OnClickListener, ComponentView
 {
-  int jdField_a_of_type_Int = 0;
-  View jdField_a_of_type_AndroidViewView;
-  ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-  AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  SocializeFeedsInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  ScaleAnimation jdField_b_of_type_AndroidViewAnimationScaleAnimation;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  int jdField_c_of_type_Int = 0;
-  ScaleAnimation jdField_c_of_type_AndroidViewAnimationScaleAnimation;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  CmpCtxt a;
+  TextView b;
+  TextView c;
+  TextView d;
+  ImageView e;
+  View f;
+  SocializeFeedsInfo g;
+  AbsBaseArticleInfo h;
+  boolean i = false;
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  ScaleAnimation m;
+  ScaleAnimation n;
+  ScaleAnimation o;
   
   public ComponentSocialOperation(Context paramContext)
   {
@@ -90,20 +89,20 @@ public class ComponentSocialOperation
       paramInt /= 10000;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt);
-      localStringBuilder.append(HardCodeUtil.a(2131702469));
+      localStringBuilder.append(HardCodeUtil.a(2131900471));
       return localStringBuilder.toString();
     }
     paramInt /= 100000000;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt);
-    localStringBuilder.append(HardCodeUtil.a(2131702435));
+    localStringBuilder.append(HardCodeUtil.a(2131900438));
     return localStringBuilder.toString();
   }
   
   private void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull SocializeFeedsInfo paramSocializeFeedsInfo, ReportInfo paramReportInfo)
   {
     FeedsReportData localFeedsReportData = new FeedsReportData();
-    paramReportInfo.mUin = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    paramReportInfo.mUin = RIJQQAppInterfaceUtil.c();
     paramReportInfo.mSource = 0;
     paramReportInfo.mSourceArticleId = paramAbsBaseArticleInfo.mArticleID;
     paramReportInfo.mChannelId = ((int)paramAbsBaseArticleInfo.mChannelID);
@@ -111,22 +110,22 @@ public class ComponentSocialOperation
     paramReportInfo.mStrategyId = paramAbsBaseArticleInfo.mStrategyId;
     paramReportInfo.mServerContext = paramAbsBaseArticleInfo.mServerContext;
     paramReportInfo.mReadTimeLength = -1;
-    localFeedsReportData.jdField_a_of_type_Long = paramSocializeFeedsInfo.jdField_a_of_type_Long;
-    if (paramSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null) {
-      localFeedsReportData.jdField_b_of_type_Long = paramSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long;
+    localFeedsReportData.a = paramSocializeFeedsInfo.a;
+    if (paramSocializeFeedsInfo.c != null) {
+      localFeedsReportData.b = paramSocializeFeedsInfo.c.a;
     }
-    localFeedsReportData.jdField_a_of_type_Int = paramSocializeFeedsInfo.jdField_b_of_type_Int;
-    localFeedsReportData.jdField_b_of_type_Int = paramSocializeFeedsInfo.d;
-    paramAbsBaseArticleInfo = paramSocializeFeedsInfo.jdField_a_of_type_JavaUtilList;
+    localFeedsReportData.d = paramSocializeFeedsInfo.h;
+    localFeedsReportData.e = paramSocializeFeedsInfo.j;
+    paramAbsBaseArticleInfo = paramSocializeFeedsInfo.d;
     if ((paramAbsBaseArticleInfo != null) && (!paramAbsBaseArticleInfo.isEmpty()))
     {
-      localFeedsReportData.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localFeedsReportData.c = new ArrayList();
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.iterator();
       while (paramAbsBaseArticleInfo.hasNext())
       {
         paramSocializeFeedsInfo = (FeedsInfoUser)paramAbsBaseArticleInfo.next();
         if (paramSocializeFeedsInfo != null) {
-          localFeedsReportData.jdField_a_of_type_JavaUtilList.add(Long.valueOf(paramSocializeFeedsInfo.jdField_a_of_type_Long));
+          localFeedsReportData.c.add(Long.valueOf(paramSocializeFeedsInfo.a));
         }
       }
     }
@@ -139,31 +138,30 @@ public class ComponentSocialOperation
   private void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull SocializeFeedsInfo paramSocializeFeedsInfo, String paramString, ReportInfo paramReportInfo)
   {
     String str;
-    if (ReadinjoyReportUtils.a(paramAbsBaseArticleInfo.mChannelID)) {
+    if (ReadinjoyReportUtils.d(paramAbsBaseArticleInfo.mChannelID)) {
       str = "0X8009361";
     } else {
       str = "0X8007EE4";
     }
-    Object localObject1 = getContext();
-    Object localObject2;
-    if ((localObject1 instanceof Activity))
+    Object localObject = getContext();
+    if ((localObject instanceof Activity))
     {
-      localObject1 = (Activity)localObject1;
-      localObject2 = new Intent((Context)localObject1, ReadInJoyDeliverBiuActivity.class);
-      ((Intent)localObject2).putExtra("arg_article_info", paramAbsBaseArticleInfo);
-      ((Intent)localObject2).putExtra("feedsType", paramAbsBaseArticleInfo.mFeedType);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.c() == 70)
+      localObject = (Activity)localObject;
+      Intent localIntent = new Intent((Context)localObject, ReadInJoyDeliverBiuActivity.class);
+      localIntent.putExtra("arg_article_info", paramAbsBaseArticleInfo);
+      localIntent.putExtra("feedsType", paramAbsBaseArticleInfo.mFeedType);
+      if (this.a.a.m() == 70)
       {
-        ((Intent)localObject2).putExtra("biu_src", 9);
-        ((Intent)localObject2).putExtra("arg_from_type", 14);
+        localIntent.putExtra("biu_src", 9);
+        localIntent.putExtra("arg_from_type", 14);
       }
       else
       {
-        ((Intent)localObject2).putExtra("biu_src", 1);
-        ((Intent)localObject2).putExtra("arg_from_type", 1);
+        localIntent.putExtra("biu_src", 1);
+        localIntent.putExtra("arg_from_type", 1);
       }
-      ((Activity)localObject1).startActivity((Intent)localObject2);
-      ((Activity)localObject1).overridePendingTransition(0, 0);
+      ((Activity)localObject).startActivity(localIntent);
+      ((Activity)localObject).overridePendingTransition(0, 0);
     }
     long l1;
     long l2;
@@ -171,28 +169,26 @@ public class ComponentSocialOperation
     {
       if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo))
       {
-        localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        l1 = paramSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
-        l2 = paramSocializeFeedsInfo.jdField_a_of_type_Long;
+        l1 = paramSocializeFeedsInfo.s.e;
+        l2 = paramSocializeFeedsInfo.a;
         paramSocializeFeedsInfo = new StringBuilder();
         paramSocializeFeedsInfo.append("");
         paramSocializeFeedsInfo.append(paramAbsBaseArticleInfo.mStrategyId);
-        ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEvent(null, String.valueOf(l1), str, str, 0, 0, String.valueOf(l2), "0", paramSocializeFeedsInfo.toString(), paramString, false);
+        PublicAccountReportUtils.a(null, String.valueOf(l1), str, str, 0, 0, String.valueOf(l2), "0", paramSocializeFeedsInfo.toString(), paramString, false);
       }
-      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.c());
+      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, this.a.a.m());
     }
     else
     {
       try
       {
-        localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        localObject2 = paramAbsBaseArticleInfo.mSubscribeID;
-        l1 = paramSocializeFeedsInfo.jdField_a_of_type_Long;
+        localObject = paramAbsBaseArticleInfo.mSubscribeID;
+        l1 = paramSocializeFeedsInfo.a;
         l2 = paramAbsBaseArticleInfo.mArticleID;
         paramSocializeFeedsInfo = new StringBuilder();
         paramSocializeFeedsInfo.append("");
         paramSocializeFeedsInfo.append(paramAbsBaseArticleInfo.mStrategyId);
-        ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEvent(null, (String)localObject2, str, str, 0, 0, String.valueOf(l1), String.valueOf(l2), paramSocializeFeedsInfo.toString(), paramString, false);
+        PublicAccountReportUtils.a(null, (String)localObject, str, str, 0, 0, String.valueOf(l1), String.valueOf(l2), paramSocializeFeedsInfo.toString(), paramString, false);
       }
       catch (Throwable paramAbsBaseArticleInfo)
       {
@@ -209,7 +205,7 @@ public class ComponentSocialOperation
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
+    this.a = new CmpCtxt();
     a(paramContext);
     a();
   }
@@ -222,12 +218,11 @@ public class ComponentSocialOperation
   private void c(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull SocializeFeedsInfo paramSocializeFeedsInfo, String paramString, ReportInfo paramReportInfo)
   {
     String str1;
-    if (ReadinjoyReportUtils.a(paramAbsBaseArticleInfo.mChannelID)) {
+    if (ReadinjoyReportUtils.d(paramAbsBaseArticleInfo.mChannelID)) {
       str1 = "0X8009360";
     } else {
       str1 = "0X8007B67";
     }
-    IPublicAccountReportUtils localIPublicAccountReportUtils;
     long l1;
     long l2;
     if (a(paramAbsBaseArticleInfo))
@@ -235,34 +230,32 @@ public class ComponentSocialOperation
       if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo)) {
         try
         {
-          localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-          l1 = paramSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
-          l2 = paramSocializeFeedsInfo.jdField_a_of_type_Long;
+          l1 = paramSocializeFeedsInfo.s.e;
+          l2 = paramSocializeFeedsInfo.a;
           paramSocializeFeedsInfo = new StringBuilder();
           paramSocializeFeedsInfo.append("");
           paramSocializeFeedsInfo.append(paramAbsBaseArticleInfo.mStrategyId);
-          localIPublicAccountReportUtils.publicAccountReportClickEvent(null, String.valueOf(l1), str1, str1, 0, 0, String.valueOf(l2), "0", paramSocializeFeedsInfo.toString(), paramString, false);
+          PublicAccountReportUtils.a(null, String.valueOf(l1), str1, str1, 0, 0, String.valueOf(l2), "0", paramSocializeFeedsInfo.toString(), paramString, false);
         }
         catch (Throwable paramSocializeFeedsInfo)
         {
           paramSocializeFeedsInfo.printStackTrace();
         }
       }
-      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.c());
+      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, this.a.a.m());
     }
     else
     {
-      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
       String str2 = paramAbsBaseArticleInfo.mSubscribeID;
-      l1 = paramSocializeFeedsInfo.jdField_a_of_type_Long;
+      l1 = paramSocializeFeedsInfo.a;
       l2 = paramAbsBaseArticleInfo.mArticleID;
       paramSocializeFeedsInfo = new StringBuilder();
       paramSocializeFeedsInfo.append("");
       paramSocializeFeedsInfo.append(paramAbsBaseArticleInfo.mStrategyId);
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str2, str1, str1, 0, 0, String.valueOf(l1), String.valueOf(l2), paramSocializeFeedsInfo.toString(), paramString, false);
+      PublicAccountReportUtils.a(null, str2, str1, str1, 0, 0, String.valueOf(l1), String.valueOf(l2), paramSocializeFeedsInfo.toString(), paramString, false);
     }
     paramReportInfo.mOperation = 3;
-    if (RIJItemViewTypeUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a()))
+    if (RIJItemViewTypeUtils.a(this.a.a.k()))
     {
       RIJJumpUtils.a(getContext(), paramAbsBaseArticleInfo, 1, true, 0, true);
       return;
@@ -284,20 +277,20 @@ public class ComponentSocialOperation
         if (bool) {
           localJSONObject.put("feeds_source", paramAbsBaseArticleInfo.mSubscribeID);
         } else {
-          localJSONObject.put("feeds_source", paramSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long);
+          localJSONObject.put("feeds_source", paramSocializeFeedsInfo.c.a);
         }
         localJSONObject.put("rowkey", paramAbsBaseArticleInfo.innerUniqueID);
         paramSocializeFeedsInfo = new StringBuilder();
         paramSocializeFeedsInfo.append("");
-        paramSocializeFeedsInfo.append(RIJFeedsType.a(paramAbsBaseArticleInfo));
+        paramSocializeFeedsInfo.append(RIJFeedsType.g(paramAbsBaseArticleInfo));
         localJSONObject.put("feeds_type", paramSocializeFeedsInfo.toString());
         paramSocializeFeedsInfo = new StringBuilder();
         paramSocializeFeedsInfo.append("");
-        paramSocializeFeedsInfo.append(RIJAppSetting.a());
+        paramSocializeFeedsInfo.append(RIJAppSetting.b());
         localJSONObject.put("kandian_mode", paramSocializeFeedsInfo.toString());
         paramSocializeFeedsInfo = new StringBuilder();
         paramSocializeFeedsInfo.append("");
-        paramSocializeFeedsInfo.append(RIJTransMergeKanDianReport.a());
+        paramSocializeFeedsInfo.append(RIJTransMergeKanDianReport.b());
         localJSONObject.put("tab_source", paramSocializeFeedsInfo.toString());
         paramSocializeFeedsInfo = new StringBuilder();
         paramSocializeFeedsInfo.append("");
@@ -326,33 +319,33 @@ public class ComponentSocialOperation
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    this.d.setOnClickListener(this);
   }
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560152, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364986));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380280));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131380279));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131380278);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363659));
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.0F, 1.8F, 1.0F, 1.8F, 1, 0.5F, 1, 0.5F);
-    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.8F, 0.85F, 1.8F, 0.85F, 1, 0.5F, 1, 0.5F);
-    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(0.85F, 1.0F, 0.85F, 1.0F, 1, 0.5F, 1, 0.5F);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setDuration(200L);
-    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setDuration(100L);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new ComponentSocialOperation.1(this));
-    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new ComponentSocialOperation.2(this));
-    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new ComponentSocialOperation.3(this));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131626199, this, true);
+    this.b = ((TextView)paramContext.findViewById(2131431117));
+    this.c = ((TextView)paramContext.findViewById(2131449198));
+    this.e = ((ImageView)paramContext.findViewById(2131449197));
+    this.f = paramContext.findViewById(2131449196);
+    this.d = ((TextView)paramContext.findViewById(2131429572));
+    this.m = new ScaleAnimation(1.0F, 1.8F, 1.0F, 1.8F, 1, 0.5F, 1, 0.5F);
+    this.n = new ScaleAnimation(1.8F, 0.85F, 1.8F, 0.85F, 1, 0.5F, 1, 0.5F);
+    this.o = new ScaleAnimation(0.85F, 1.0F, 0.85F, 1.0F, 1, 0.5F, 1, 0.5F);
+    this.m.setDuration(300L);
+    this.n.setDuration(200L);
+    this.o.setDuration(100L);
+    this.m.setAnimationListener(new ComponentSocialOperation.1(this));
+    this.n.setAnimationListener(new ComponentSocialOperation.2(this));
+    this.o.setAnimationListener(new ComponentSocialOperation.3(this));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramCellListener);
+    this.a.a(paramCellListener);
   }
   
   public void a(Object paramObject)
@@ -360,25 +353,25 @@ public class ComponentSocialOperation
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramObject);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramObject.a();
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      this.a.a(paramObject);
+      this.h = paramObject.k();
+      paramObject = this.h;
       if (paramObject == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo = paramObject.mSocialFeedInfo;
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo;
+      this.g = paramObject.mSocialFeedInfo;
+      paramObject = this.g;
       if (paramObject != null)
       {
-        this.jdField_a_of_type_Int = paramObject.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo.d;
-        int i = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo.jdField_c_of_type_Int;
+        this.j = paramObject.h;
+        this.k = this.g.j;
+        int i1 = this.g.i;
         boolean bool = true;
-        if (i != 1) {
+        if (i1 != 1) {
           bool = false;
         }
-        this.jdField_a_of_type_Boolean = bool;
-        this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo.f;
+        this.i = bool;
+        this.l = this.g.l;
       }
       a(false);
     }
@@ -388,55 +381,55 @@ public class ComponentSocialOperation
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+      this.e.startAnimation(this.m);
     }
     else
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.i)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846610);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
+        this.e.setImageResource(2130848162);
+        this.c.setTextColor(Color.parseColor("#07D0B0"));
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846613);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
+        this.e.setImageResource(2130848165);
+        this.c.setTextColor(Color.parseColor("#777777"));
       }
-      i = this.jdField_a_of_type_Int;
-      if (i > 0) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(a(i));
+      i1 = this.j;
+      if (i1 > 0) {
+        this.c.setText(a(i1));
       } else {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718091);
+        this.c.setText(2131915569);
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("set upvote to ");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.i);
         localStringBuilder.append(", set num:");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.j);
         QLog.d("ComponentSocialOperation", 2, localStringBuilder.toString());
       }
     }
-    int i = this.jdField_b_of_type_Int;
-    if (i > 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(i));
+    int i1 = this.k;
+    if (i1 > 0) {
+      this.b.setText(a(i1));
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717790);
+      this.b.setText(2131915265);
     }
-    i = this.jdField_c_of_type_Int;
-    if (i > 0)
+    i1 = this.l;
+    if (i1 > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(a(i));
+      this.d.setText(a(i1));
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("Biu");
+    this.d.setText("Biu");
   }
   
   public void onClick(View paramView)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    SocializeFeedsInfo localSocializeFeedsInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntitySocializeFeedsInfo;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.h;
+    SocializeFeedsInfo localSocializeFeedsInfo = this.g;
     if (localAbsBaseArticleInfo != null)
     {
       if (localSocializeFeedsInfo == null) {
@@ -450,13 +443,13 @@ public class ComponentSocialOperation
         ((StringBuilder)localObject).append(paramView.getId());
         QLog.d("ComponentSocialOperation", 2, ((StringBuilder)localObject).toString());
       }
-      RIJJumpUtils.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = localAbsBaseArticleInfo;
+      RIJJumpUtils.a = localAbsBaseArticleInfo;
       Object localObject = new ReportInfo();
-      if (paramView.getId() == 2131364986) {
+      if (paramView.getId() == 2131431117) {
         c(localAbsBaseArticleInfo, localSocializeFeedsInfo, str, (ReportInfo)localObject);
-      } else if (paramView.getId() == 2131380278) {
+      } else if (paramView.getId() == 2131449196) {
         b(localAbsBaseArticleInfo, localSocializeFeedsInfo, str, (ReportInfo)localObject);
-      } else if (paramView.getId() == 2131363659) {
+      } else if (paramView.getId() == 2131429572) {
         a(localAbsBaseArticleInfo, localSocializeFeedsInfo, str, (ReportInfo)localObject);
       }
       a(localAbsBaseArticleInfo, localSocializeFeedsInfo, (ReportInfo)localObject);
@@ -465,7 +458,7 @@ public class ComponentSocialOperation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentSocialOperation
  * JD-Core Version:    0.7.0.1
  */

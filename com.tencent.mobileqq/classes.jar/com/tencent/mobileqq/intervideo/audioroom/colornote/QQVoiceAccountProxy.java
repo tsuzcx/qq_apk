@@ -42,7 +42,7 @@ public class QQVoiceAccountProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.colornote.QQVoiceAccountProxy
  * JD-Core Version:    0.7.0.1
  */

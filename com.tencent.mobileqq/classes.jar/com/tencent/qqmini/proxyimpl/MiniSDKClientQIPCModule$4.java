@@ -13,21 +13,21 @@ class MiniSDKClientQIPCModule$4
   
   public void run()
   {
-    MiniAppConfig localMiniAppConfig = MiniSdkUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime.getMiniAppInfo());
+    MiniAppConfig localMiniAppConfig = MiniSdkUtil.b(this.a.getMiniAppInfo());
     String str2 = MiniProgramLpReportDC04239.getAppType(localMiniAppConfig);
     String str1;
     if ("0".equals(str2)) {
-      str1 = ActionBridge.PageActionBridge.getPageUrl(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime);
+      str1 = ActionBridge.PageActionBridge.getPageUrl(this.a);
     } else {
       str1 = null;
     }
-    MiniProgramLpReportDC04239.report(localMiniAppConfig, str2, str1, "user_click", "custom_button", this.jdField_a_of_type_JavaLangString, this.b, String.valueOf(this.jdField_a_of_type_Int), str1, this.c, null);
+    MiniProgramLpReportDC04239.report(localMiniAppConfig, str2, str1, "user_click", "custom_button", this.b, this.c, String.valueOf(this.d), str1, this.e, null);
     MiniProgramReporter.getInstance().flush();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.4
  * JD-Core Version:    0.7.0.1
  */

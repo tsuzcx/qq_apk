@@ -5,14 +5,14 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
 
 class ChannelCoverSimpleAdapter$SimpleViewHolder
 {
-  ReadInJoyVideoTopicTextView jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewReadInJoyVideoTopicTextView;
-  ChannelCoverInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo;
+  ReadInJoyVideoTopicTextView a;
+  ChannelCoverInfo b;
   
   ChannelCoverSimpleAdapter$SimpleViewHolder(ChannelCoverSimpleAdapter paramChannelCoverSimpleAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelcover.ChannelCoverSimpleAdapter.SimpleViewHolder
  * JD-Core Version:    0.7.0.1
  */

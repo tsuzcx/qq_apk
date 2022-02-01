@@ -19,61 +19,61 @@ class AdvertisementVideoPreloadManager$NetInfoHandler
   
   public void onNetMobile2None()
   {
-    AdvertisementVideoPreloadManager.c("onNetMobile2None");
+    AdvertisementVideoPreloadManager.f("onNetMobile2None");
     AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = this.a;
     if (localAdvertisementVideoPreloadManager != null) {
-      AdvertisementVideoPreloadManager.b(localAdvertisementVideoPreloadManager);
+      AdvertisementVideoPreloadManager.i(localAdvertisementVideoPreloadManager);
     }
   }
   
   public void onNetMobile2Wifi(String paramString)
   {
-    AdvertisementVideoPreloadManager.c("onNetMobile2Wifi");
+    AdvertisementVideoPreloadManager.f("onNetMobile2Wifi");
     paramString = this.a;
     if (paramString != null) {
-      AdvertisementVideoPreloadManager.b(paramString);
+      AdvertisementVideoPreloadManager.i(paramString);
     }
   }
   
   public void onNetNone2Mobile(String paramString)
   {
-    AdvertisementVideoPreloadManager.c("onNetNone2Mobile");
+    AdvertisementVideoPreloadManager.f("onNetNone2Mobile");
     paramString = this.a;
     if (paramString != null) {
-      AdvertisementVideoPreloadManager.b(paramString);
+      AdvertisementVideoPreloadManager.i(paramString);
     }
   }
   
   public void onNetNone2Wifi(String paramString)
   {
-    AdvertisementVideoPreloadManager.c("onNetNone2Wifi");
+    AdvertisementVideoPreloadManager.f("onNetNone2Wifi");
     paramString = this.a;
     if (paramString != null) {
-      AdvertisementVideoPreloadManager.b(paramString);
+      AdvertisementVideoPreloadManager.i(paramString);
     }
   }
   
   public void onNetWifi2Mobile(String paramString)
   {
-    AdvertisementVideoPreloadManager.c("onNetWifi2Mobile");
+    AdvertisementVideoPreloadManager.f("onNetWifi2Mobile");
     paramString = this.a;
     if (paramString != null) {
-      AdvertisementVideoPreloadManager.b(paramString);
+      AdvertisementVideoPreloadManager.i(paramString);
     }
   }
   
   public void onNetWifi2None()
   {
-    AdvertisementVideoPreloadManager.c("onNetWifi2None");
+    AdvertisementVideoPreloadManager.f("onNetWifi2None");
     AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = this.a;
     if (localAdvertisementVideoPreloadManager != null) {
-      AdvertisementVideoPreloadManager.b(localAdvertisementVideoPreloadManager);
+      AdvertisementVideoPreloadManager.i(localAdvertisementVideoPreloadManager);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.NetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

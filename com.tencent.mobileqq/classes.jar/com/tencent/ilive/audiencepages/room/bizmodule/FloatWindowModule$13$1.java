@@ -12,12 +12,12 @@ class FloatWindowModule$13$1
   
   public void onCancel()
   {
-    BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().a();
+    BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.13.1
  * JD-Core Version:    0.7.0.1
  */

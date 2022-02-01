@@ -8,12 +8,12 @@ class FriendsManager$2
   public void run()
   {
     FriendsManager localFriendsManager = this.this$0;
-    localFriendsManager.c = localFriendsManager.f();
+    localFriendsManager.t = localFriendsManager.y();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.2
  * JD-Core Version:    0.7.0.1
  */

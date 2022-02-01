@@ -7,16 +7,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ProgressiveUtils
 {
-  private static ArrayList<String> jdField_a_of_type_JavaUtilArrayList = null;
-  public static AtomicBoolean a;
-  private static boolean jdField_a_of_type_Boolean = false;
-  public static String[] a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
-  }
+  public static AtomicBoolean a = new AtomicBoolean(false);
+  public static String[] b = { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
+  private static ArrayList<String> c = null;
+  private static boolean d = false;
   
   public static void a(String paramString)
   {
@@ -24,9 +18,9 @@ public class ProgressiveUtils
     try
     {
       if (Integer.valueOf(paramString).intValue() == 0) {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        a.set(false);
       } else {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        a.set(true);
       }
     }
     catch (Exception localException)
@@ -35,9 +29,9 @@ public class ProgressiveUtils
       StringBuilder localStringBuilder;
       break label37;
     }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    a.set(false);
     break label54;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    a.set(false);
     label54:
     if (QLog.isColorLevel())
     {
@@ -45,14 +39,14 @@ public class ProgressiveUtils
       localStringBuilder.append("parseConfig(): config = ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", sProgressiveEnable = ");
-      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      localStringBuilder.append(a.get());
       QLog.d("ShortVideo.ProgressiveUtils", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ProgressiveUtils
  * JD-Core Version:    0.7.0.1
  */

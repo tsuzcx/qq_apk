@@ -28,17 +28,17 @@ public class TkdConstraintWidthLayout
   
   protected LinearLayout.LayoutParams generateDefaultLayoutParams()
   {
-    return new TkdConstraintWidthLayout.LayoutParams(this, -2, -2);
+    return new TkdConstraintWidthLayout.LayoutParams(-2, -2);
   }
   
   public LinearLayout.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    return new TkdConstraintWidthLayout.LayoutParams(this, getContext(), paramAttributeSet);
+    return new TkdConstraintWidthLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
   protected LinearLayout.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return new TkdConstraintWidthLayout.LayoutParams(this, paramLayoutParams);
+    return new TkdConstraintWidthLayout.LayoutParams(paramLayoutParams);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -71,7 +71,7 @@ public class TkdConstraintWidthLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdConstraintWidthLayout
  * JD-Core Version:    0.7.0.1
  */

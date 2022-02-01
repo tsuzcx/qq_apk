@@ -2,8 +2,7 @@ package com.tencent.mobileqq.kandian.biz.hippy.module;
 
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJUGJsonUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.common.RIJUGJsonUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -62,7 +61,7 @@ public class TKDSearchStatManager
     }
     HashMap localHashMap = new HashMap();
     if (!paramMap.containsKey("qua2")) {
-      localHashMap.put("qua2", ((IRIJUGJsonUtils)QRoute.api(IRIJUGJsonUtils.class)).getQUA2ForKanDian());
+      localHashMap.put("qua2", RIJUGJsonUtils.c());
     }
     localHashMap.put("event_name", paramString1);
     localHashMap.put("event_details", getCommonEventDetail(paramMap));
@@ -114,7 +113,7 @@ public class TKDSearchStatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDSearchStatManager
  * JD-Core Version:    0.7.0.1
  */

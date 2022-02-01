@@ -13,8 +13,8 @@ import android.widget.RelativeLayout;
 public class ClipLayout
   extends RelativeLayout
 {
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private boolean jdField_a_of_type_Boolean = true;
+  private Path a;
+  private boolean b = true;
   
   public ClipLayout(Context paramContext)
   {
@@ -30,42 +30,42 @@ public class ClipLayout
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.a = new Path();
     RectF localRectF = new RectF(new Rect(0, 0, getWidth(), getHeight()));
-    this.jdField_a_of_type_AndroidGraphicsPath.addRect(localRectF, Path.Direction.CCW);
+    this.a.addRect(localRectF, Path.Direction.CCW);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+    if (this.a == null) {
       a();
     }
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.a.reset();
     RectF localRectF = new RectF(new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
-    this.jdField_a_of_type_AndroidGraphicsPath.addRect(localRectF, Path.Direction.CCW);
+    this.a.addRect(localRectF, Path.Direction.CCW);
     postInvalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+      if (this.a == null) {
         a();
       }
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.REPLACE);
+      paramCanvas.clipPath(this.a, Region.Op.REPLACE);
     }
     super.onDraw(paramCanvas);
   }
   
   public void setNeedClip(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ClipLayout
  * JD-Core Version:    0.7.0.1
  */

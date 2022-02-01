@@ -11,13 +11,13 @@ class QQStoryTakeVideoCloseAnimationActivity$1
   public void onAnimationCancel(Animator paramAnimator)
   {
     this.a.finish();
-    this.a.overridePendingTransition(0, 2130772067);
+    this.a.overridePendingTransition(0, 2130772092);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     this.a.finish();
-    this.a.overridePendingTransition(0, 2130772067);
+    this.a.overridePendingTransition(0, 2130772092);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

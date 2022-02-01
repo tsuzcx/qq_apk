@@ -13,12 +13,12 @@ class PublicAccountUtilImpl$11
   {
     try
     {
-      String str = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
+      String str = this.a.getQueryParameter("article_id");
       IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("");
-      localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, str, localStringBuilder.toString(), this.jdField_a_of_type_JavaLangString, "", false);
+      localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, str, localStringBuilder.toString(), this.c, "", false);
       return;
     }
     catch (Exception localException) {}
@@ -26,7 +26,7 @@ class PublicAccountUtilImpl$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.11
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,10 @@ public class LightFaceData
   public ByteBuffer imageByteBuffer;
   public byte[] imageData;
   public int[] imageSize = new int[2];
-  public List<LightFaceFeature> mLightFaceFeatureList;
+  public List<LightFaceFeature> mLightFaceFeatureList = new ArrayList();
   public int[] renderSize = new int[2];
   
-  public LightFaceData()
-  {
-    this.mLightFaceFeatureList = new ArrayList();
-  }
+  public LightFaceData() {}
   
   public LightFaceData(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3)
   {
@@ -70,7 +67,7 @@ public class LightFaceData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.bean.LightFaceData
  * JD-Core Version:    0.7.0.1
  */

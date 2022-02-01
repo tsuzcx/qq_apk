@@ -21,40 +21,40 @@ import org.jetbrains.annotations.Nullable;
 public final class CoverGalleryView$GalleryGridAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  private Function1<? super Integer, Unit> c;
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public Media a(int paramInt)
-  {
-    return (Media)CoverGalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView).get(paramInt);
-  }
-  
-  @Nullable
-  public final Function1<Integer, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    return this.b;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public final void a(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.c = paramFunction1;
+  }
+  
+  @NotNull
+  public Media b(int paramInt)
+  {
+    return (Media)CoverGalleryView.a(this.a).get(paramInt);
+  }
+  
+  @Nullable
+  public final Function1<Integer, Unit> b()
+  {
+    return this.c;
   }
   
   public int getCount()
   {
-    return CoverGalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView).size();
+    return CoverGalleryView.a(this.a).size();
   }
   
   public long getItemId(int paramInt)
@@ -67,9 +67,9 @@ public final class CoverGalleryView$GalleryGridAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView.getContext()).inflate(R.layout.u, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(R.layout.p, paramViewGroup, false);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "LayoutInflater.from(cont…ver_album, parent, false)");
-      paramViewGroup = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView;
+      paramViewGroup = this.a;
       if (paramView != null)
       {
         ViewGroup localViewGroup = (ViewGroup)paramView;
@@ -89,16 +89,16 @@ public final class CoverGalleryView$GalleryGridAdapter
       }
       paramViewGroup = (CoverGalleryView.GalleryGridHolder)paramViewGroup;
     }
-    paramViewGroup.a(a(paramInt).getFilePath());
-    if (paramInt == this.jdField_a_of_type_Int)
+    paramViewGroup.a(b(paramInt).getFilePath());
+    if (paramInt == this.b)
     {
-      paramViewGroup.a().setVisibility(0);
-      paramViewGroup.b().setVisibility(8);
+      paramViewGroup.b().setVisibility(0);
+      paramViewGroup.c().setVisibility(8);
     }
     else
     {
-      paramViewGroup.a().setVisibility(8);
-      paramViewGroup.b().setVisibility(0);
+      paramViewGroup.b().setVisibility(8);
+      paramViewGroup.c().setVisibility(0);
     }
     paramViewGroup.a().setOnClickListener((View.OnClickListener)new CoverGalleryView.GalleryGridAdapter.getView.1(this, paramInt));
     return paramView;
@@ -108,7 +108,7 @@ public final class CoverGalleryView$GalleryGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridAdapter
  * JD-Core Version:    0.7.0.1
  */

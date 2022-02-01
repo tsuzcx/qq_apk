@@ -6,8 +6,7 @@ import org.json.JSONObject;
 
 public class RecentOptPopBarSwitchBean
 {
-  private static final String jdField_a_of_type_JavaLangString = RecentOptPopBar.class.getSimpleName();
-  private boolean jdField_a_of_type_Boolean;
+  private static final String a = RecentOptPopBar.class.getSimpleName();
   private boolean b;
   private boolean c;
   private boolean d;
@@ -17,21 +16,12 @@ public class RecentOptPopBarSwitchBean
   private boolean h;
   private boolean i;
   private boolean j;
-  
-  public static RecentOptPopBarSwitchBean a()
-  {
-    RecentOptPopBarSwitchBean localRecentOptPopBarSwitchBean = new RecentOptPopBarSwitchBean();
-    localRecentOptPopBarSwitchBean.a(true);
-    localRecentOptPopBarSwitchBean.b(true);
-    localRecentOptPopBarSwitchBean.e(true);
-    localRecentOptPopBarSwitchBean.f(true);
-    return localRecentOptPopBarSwitchBean;
-  }
+  private boolean k;
   
   public static RecentOptPopBarSwitchBean a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramString);
+      QLog.d(a, 2, paramString);
     }
     RecentOptPopBarSwitchBean localRecentOptPopBarSwitchBean = new RecentOptPopBarSwitchBean();
     try
@@ -51,9 +41,9 @@ public class RecentOptPopBarSwitchBean
     }
     catch (Exception paramString)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "RecentOptPopBarSwitchBean#parce exception: ", paramString);
+      QLog.e(a, 1, "RecentOptPopBarSwitchBean#parce exception: ", paramString);
     }
-    return a();
+    return k();
   }
   
   public static boolean a(RecentOptPopBarSwitchBean paramRecentOptPopBarSwitchBean)
@@ -67,109 +57,119 @@ public class RecentOptPopBarSwitchBean
     return ((paramJSONObject instanceof Integer)) && (((Integer)paramJSONObject).intValue() == 1);
   }
   
+  public static RecentOptPopBarSwitchBean k()
+  {
+    RecentOptPopBarSwitchBean localRecentOptPopBarSwitchBean = new RecentOptPopBarSwitchBean();
+    localRecentOptPopBarSwitchBean.a(true);
+    localRecentOptPopBarSwitchBean.b(true);
+    localRecentOptPopBarSwitchBean.e(true);
+    localRecentOptPopBarSwitchBean.f(true);
+    return localRecentOptPopBarSwitchBean;
+  }
+  
   public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
   {
     this.b = paramBoolean;
   }
   
-  public boolean b()
+  public boolean a()
   {
     return this.b;
   }
   
-  public void c(boolean paramBoolean)
+  public void b(boolean paramBoolean)
   {
     this.c = paramBoolean;
   }
   
-  public boolean c()
+  public boolean b()
   {
     return this.c;
   }
   
-  public void d(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
     this.d = paramBoolean;
   }
   
-  public boolean d()
+  public boolean c()
   {
     return this.d;
   }
   
-  public void e(boolean paramBoolean)
+  public void d(boolean paramBoolean)
   {
     this.e = paramBoolean;
   }
   
-  public boolean e()
+  public boolean d()
   {
     return this.e;
   }
   
-  public void f(boolean paramBoolean)
+  public void e(boolean paramBoolean)
   {
     this.f = paramBoolean;
   }
   
-  public boolean f()
+  public boolean e()
   {
     return this.f;
   }
   
-  public void g(boolean paramBoolean)
+  public void f(boolean paramBoolean)
   {
     this.g = paramBoolean;
   }
   
-  public boolean g()
+  public boolean f()
   {
     return this.g;
   }
   
-  public void h(boolean paramBoolean)
+  public void g(boolean paramBoolean)
   {
     this.h = paramBoolean;
   }
   
-  public boolean h()
+  public boolean g()
   {
     return this.h;
   }
   
-  public void i(boolean paramBoolean)
+  public void h(boolean paramBoolean)
   {
     this.i = paramBoolean;
   }
   
-  public boolean i()
+  public boolean h()
   {
     return this.i;
   }
   
-  public void j(boolean paramBoolean)
+  public void i(boolean paramBoolean)
   {
     this.j = paramBoolean;
   }
   
-  public boolean j()
+  public boolean i()
   {
     return this.j;
+  }
+  
+  public void j(boolean paramBoolean)
+  {
+    this.k = paramBoolean;
+  }
+  
+  public boolean j()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.optpopbar.RecentOptPopBarSwitchBean
  * JD-Core Version:    0.7.0.1
  */

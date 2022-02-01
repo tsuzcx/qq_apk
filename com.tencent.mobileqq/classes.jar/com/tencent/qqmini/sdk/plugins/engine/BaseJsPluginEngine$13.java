@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class BaseJsPluginEngine$13
   implements AsyncResult
 {
-  BaseJsPluginEngine$13(BaseJsPluginEngine paramBaseJsPluginEngine, MiniAppProxy paramMiniAppProxy, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  BaseJsPluginEngine$13(BaseJsPluginEngine paramBaseJsPluginEngine, MiniAppProxy paramMiniAppProxy, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -50,14 +50,14 @@ class BaseJsPluginEngine$13
       paramJSONObject = null;
       localObject1 = paramJSONObject;
     }
-    int i = ViewUtils.dpToPx(26.0F);
-    int j = ViewUtils.dpToPx(40.0F);
-    BaseJsPluginEngine.access$300(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine).post(new BaseJsPluginEngine.13.1(this, i, paramJSONObject, j, (String)localObject1));
+    int j = ViewUtils.dpToPx(26.0F);
+    int k = ViewUtils.dpToPx(40.0F);
+    BaseJsPluginEngine.access$300(this.i).post(new BaseJsPluginEngine.13.1(this, j, paramJSONObject, k, (String)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.13
  * JD-Core Version:    0.7.0.1
  */

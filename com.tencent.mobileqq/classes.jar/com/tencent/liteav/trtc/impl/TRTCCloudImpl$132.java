@@ -1,23 +1,24 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.trtc.TRTCCloudListener;
+import android.os.Bundle;
 
 class TRTCCloudImpl$132
   implements Runnable
 {
-  TRTCCloudImpl$132(TRTCCloudImpl paramTRTCCloudImpl, int paramInt, String paramString) {}
+  TRTCCloudImpl$132(TRTCCloudImpl paramTRTCCloudImpl, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    TRTCCloudListener localTRTCCloudListener = this.this$0.mTRTCListener;
-    if (localTRTCCloudListener != null) {
-      localTRTCCloudListener.onError(this.val$err, this.val$errMsg, null);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("EVT_ID", this.val$notifyNo);
+    localBundle.putLong("EVT_TIME", System.currentTimeMillis());
+    localBundle.putString("EVT_MSG", this.val$errInfo);
+    TRTCCloudImpl.access$9000(this.this$0, this.val$ID, this.val$notifyNo, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.132
  * JD-Core Version:    0.7.0.1
  */

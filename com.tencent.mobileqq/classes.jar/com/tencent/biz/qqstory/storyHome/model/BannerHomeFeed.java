@@ -23,15 +23,15 @@ public class BannerHomeFeed
     return new ArrayList(0);
   }
   
-  public void a() {}
-  
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
     qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
-    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
-    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    ((BannerFeedItem)this.f).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
+    ((BannerFeedItem)this.f).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
     return true;
   }
+  
+  public void b() {}
 }
 
 

@@ -8,27 +8,32 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 class TroopAvatarHandler$DecodeGetTroopAvatarWallPkg
 {
-  private int jdField_a_of_type_Int;
-  private oidb_sso.OIDBSSOPkg jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private byte[] b;
+  private int c;
+  private oidb_sso.OIDBSSOPkg d;
   
   public TroopAvatarHandler$DecodeGetTroopAvatarWallPkg(TroopAvatarHandler paramTroopAvatarHandler, byte[] paramArrayOfByte, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramArrayOfByte;
+    this.c = paramInt;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
-  public DecodeGetTroopAvatarWallPkg a()
+  public oidb_sso.OIDBSSOPkg b()
   {
-    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    return this.d;
+  }
+  
+  public DecodeGetTroopAvatarWallPkg c()
+  {
+    this.d = new oidb_sso.OIDBSSOPkg();
     try
     {
-      this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = ((oidb_sso.OIDBSSOPkg)this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.mergeFrom(this.jdField_a_of_type_ArrayOfByte));
+      this.d = ((oidb_sso.OIDBSSOPkg)this.d.mergeFrom(this.b));
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
@@ -41,34 +46,29 @@ class TroopAvatarHandler$DecodeGetTroopAvatarWallPkg
       }
       localInvalidProtocolBufferMicroException.printStackTrace();
     }
-    Object localObject = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      this.jdField_a_of_type_Int = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
+      this.c = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("oidb_sso.OIDBSSOPkg(oidb_0x88d_7): {\n");
-        ((StringBuilder)localObject).append(OidbWrapper.proto2String(this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg));
+        ((StringBuilder)localObject).append(OidbWrapper.proto2String(this.d));
         ((StringBuilder)localObject).append("}");
         QLog.d("TroopAvatarHandler", 2, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("handle_oidb_0x88d_7|oidb_sso.OIDBSSOPkg.result ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.c);
         QLog.d("Q.troopdisband.", 2, ((StringBuilder)localObject).toString());
       }
     }
     return this;
   }
-  
-  public oidb_sso.OIDBSSOPkg a()
-  {
-    return this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopAvatarHandler.DecodeGetTroopAvatarWallPkg
  * JD-Core Version:    0.7.0.1
  */

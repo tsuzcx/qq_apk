@@ -30,17 +30,17 @@ public class DCShortVideo
   
   private void a(QQAppInterface paramQQAppInterface, DCShortVideo.DCShortVideoSendData paramDCShortVideoSendData, boolean paramBoolean, int paramInt, String paramString)
   {
-    paramDCShortVideoSendData.jdField_a_of_type_Boolean = paramBoolean;
+    paramDCShortVideoSendData.b = paramBoolean;
     if (paramBoolean)
     {
       if (paramInt == 0)
       {
-        paramDCShortVideoSendData.jdField_a_of_type_Int = 0;
+        paramDCShortVideoSendData.k = 0;
         return;
       }
       if (paramInt == 3000)
       {
-        paramDCShortVideoSendData.jdField_a_of_type_Int = 3000;
+        paramDCShortVideoSendData.k = 3000;
         return;
       }
       if (paramInt == 1)
@@ -53,35 +53,35 @@ public class DCShortVideo
             if (paramInt != 3)
             {
               if (paramInt != 4) {
-                paramDCShortVideoSendData.jdField_a_of_type_Int = 1;
+                paramDCShortVideoSendData.k = 1;
               } else {
-                paramDCShortVideoSendData.jdField_a_of_type_Int = 2;
+                paramDCShortVideoSendData.k = 2;
               }
             }
             else {
-              paramDCShortVideoSendData.jdField_a_of_type_Int = 4;
+              paramDCShortVideoSendData.k = 4;
             }
           }
           else {
-            paramDCShortVideoSendData.jdField_a_of_type_Int = 3;
+            paramDCShortVideoSendData.k = 3;
           }
         }
         else {
-          paramDCShortVideoSendData.jdField_a_of_type_Int = 1;
+          paramDCShortVideoSendData.k = 1;
         }
-        paramDCShortVideoSendData.i = 0;
+        paramDCShortVideoSendData.l = 0;
         paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         if (paramQQAppInterface != null)
         {
-          paramQQAppInterface = paramQQAppInterface.c(paramString);
+          paramQQAppInterface = paramQQAppInterface.g(paramString);
           if (paramQQAppInterface != null) {
-            paramDCShortVideoSendData.i = paramQQAppInterface.wMemberNum;
+            paramDCShortVideoSendData.l = paramQQAppInterface.wMemberNum;
           }
         }
       }
       else
       {
-        paramDCShortVideoSendData.jdField_a_of_type_Int = 9999;
+        paramDCShortVideoSendData.k = 9999;
       }
     }
   }
@@ -89,7 +89,7 @@ public class DCShortVideo
   private boolean a(DCShortVideo.DCShortVideoSendData paramDCShortVideoSendData, String paramString)
   {
     Object localObject2 = new File(paramString);
-    Object localObject1 = FileUtil.b(paramString);
+    Object localObject1 = FileUtil.c(paramString);
     paramString = (String)localObject1;
     if (localObject1 != null) {
       paramString = ((String)localObject1).toLowerCase(Locale.US);
@@ -110,21 +110,21 @@ public class DCShortVideo
       if (paramString.contains("/tencent/"))
       {
         if (paramString.contains("/mobileqq/shortvideo/")) {
-          paramDCShortVideoSendData.j = 1002;
+          paramDCShortVideoSendData.m = 1002;
         } else if (paramString.contains("/qq_collection/")) {
-          paramDCShortVideoSendData.j = 1001;
+          paramDCShortVideoSendData.m = 1001;
         } else if (paramString.contains("/qqfile_recv/")) {
-          paramDCShortVideoSendData.j = 1003;
+          paramDCShortVideoSendData.m = 1003;
         } else if ((!paramString.contains("/weixin/")) && (!paramString.contains("/wechat/")) && (!paramString.contains("/micromsg/")))
         {
           if (PhotoReportUtils.a(paramString)) {
-            paramDCShortVideoSendData.j = 1005;
+            paramDCShortVideoSendData.m = 1005;
           } else {
-            paramDCShortVideoSendData.j = 1006;
+            paramDCShortVideoSendData.m = 1006;
           }
         }
         else {
-          paramDCShortVideoSendData.j = 1004;
+          paramDCShortVideoSendData.m = 1004;
         }
       }
       else
@@ -133,17 +133,17 @@ public class DCShortVideo
         ((StringBuilder)localObject2).append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath());
         ((StringBuilder)localObject2).append(File.separator);
         if (paramString.equalsIgnoreCase(((StringBuilder)localObject2).toString())) {
-          paramDCShortVideoSendData.j = 1002;
-        } else if ((!((String)localObject1).contains("camera")) && (!((String)localObject1).equals("dcim")) && (!((String)localObject1).equals("100MEDIA")) && (!((String)localObject1).equals("100ANDRO")) && (!((String)localObject1).contains(HardCodeUtil.a(2131703046))) && (!((String)localObject1).contains(HardCodeUtil.a(2131703045))) && (!((String)localObject1).contains(HardCodeUtil.a(2131703047))))
+          paramDCShortVideoSendData.m = 1002;
+        } else if ((!((String)localObject1).contains("camera")) && (!((String)localObject1).equals("dcim")) && (!((String)localObject1).equals("100MEDIA")) && (!((String)localObject1).equals("100ANDRO")) && (!((String)localObject1).contains(HardCodeUtil.a(2131901020))) && (!((String)localObject1).contains(HardCodeUtil.a(2131901019))) && (!((String)localObject1).contains(HardCodeUtil.a(2131901021))))
         {
           if (PhotoReportUtils.a(paramString)) {
-            paramDCShortVideoSendData.j = 1005;
+            paramDCShortVideoSendData.m = 1005;
           } else {
-            paramDCShortVideoSendData.j = 1006;
+            paramDCShortVideoSendData.m = 1006;
           }
         }
         else {
-          paramDCShortVideoSendData.j = 1007;
+          paramDCShortVideoSendData.m = 1007;
         }
       }
       return true;
@@ -167,14 +167,14 @@ public class DCShortVideo
   
   void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, DCShortVideo.DCShortVideoReportData paramDCShortVideoReportData)
   {
-    paramDCShortVideoReportData.f = paramInt1;
+    paramDCShortVideoReportData.g = paramInt1;
     if (paramInt2 == 0)
     {
-      paramDCShortVideoReportData.b = 0;
+      paramDCShortVideoReportData.c = 0;
     }
     else if (paramInt2 == 3000)
     {
-      paramDCShortVideoReportData.b = 3000;
+      paramDCShortVideoReportData.c = 3000;
     }
     else if (paramInt2 == 1)
     {
@@ -188,49 +188,49 @@ public class DCShortVideo
             if (paramInt1 != 3)
             {
               if (paramInt1 != 4) {
-                paramDCShortVideoReportData.b = 1;
+                paramDCShortVideoReportData.c = 1;
               } else {
-                paramDCShortVideoReportData.b = 2;
+                paramDCShortVideoReportData.c = 2;
               }
             }
             else {
-              paramDCShortVideoReportData.b = 4;
+              paramDCShortVideoReportData.c = 4;
             }
           }
           else {
-            paramDCShortVideoReportData.b = 3;
+            paramDCShortVideoReportData.c = 3;
           }
         }
         else {
-          paramDCShortVideoReportData.b = 1;
+          paramDCShortVideoReportData.c = 1;
         }
       }
       else
       {
-        paramDCShortVideoReportData.b = 1;
+        paramDCShortVideoReportData.c = 1;
       }
-      paramDCShortVideoReportData.c = 0;
+      paramDCShortVideoReportData.d = 0;
       TroopManager localTroopManager = (TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       if (localTroopManager != null)
       {
-        paramString = localTroopManager.c(paramString);
+        paramString = localTroopManager.g(paramString);
         if (paramString != null) {
-          paramDCShortVideoReportData.c = paramString.wMemberNum;
+          paramDCShortVideoReportData.d = paramString.wMemberNum;
         }
       }
     }
     else
     {
-      paramDCShortVideoReportData.b = 9999;
+      paramDCShortVideoReportData.c = 9999;
     }
     paramAppInterface = (INearbyCardManager)paramAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
     if (paramAppInterface != null)
     {
-      paramDCShortVideoReportData.d = paramAppInterface.a();
       paramDCShortVideoReportData.e = paramAppInterface.b();
+      paramDCShortVideoReportData.f = paramAppInterface.c();
     }
-    paramDCShortVideoReportData.g = Calendar.getInstance().get(11);
-    paramDCShortVideoReportData.h = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    paramDCShortVideoReportData.h = Calendar.getInstance().get(11);
+    paramDCShortVideoReportData.i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3)
@@ -247,7 +247,7 @@ public class DCShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCShortVideo
  * JD-Core Version:    0.7.0.1
  */

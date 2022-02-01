@@ -139,7 +139,7 @@ public class GeneralRecommendFeedItem
     if (this.mUserUIItem == null) {
       return false;
     }
-    return QQStoryContext.a().a(this.mUserUIItem.getUnionId());
+    return QQStoryContext.a().b(this.mUserUIItem.getUnionId());
   }
   
   protected void onCovertFromEntry()

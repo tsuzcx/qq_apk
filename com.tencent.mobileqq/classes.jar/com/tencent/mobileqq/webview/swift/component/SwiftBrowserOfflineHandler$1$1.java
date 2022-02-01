@@ -13,29 +13,29 @@ class SwiftBrowserOfflineHandler$1$1
   
   public void loaded(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+    this.b.this$0.e.set(paramInt);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("now offline bid has checked, bid ");
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString);
+      paramString.append(this.b.this$0.d);
       paramString.append(", loadMode: ");
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      paramString.append(this.b.this$0.e.get());
       paramString.append(", cost: ");
-      paramString.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      paramString.append(System.currentTimeMillis() - this.a);
       QLog.i("SwiftBrowserOfflineHandler", 2, paramString.toString());
     }
     if (paramInt != 0)
     {
-      OfflinePlugin.c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString);
-      OfflineWebResManager.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.jdField_a_of_type_JavaLangString);
+      OfflinePlugin.f(this.b.this$0.d);
+      OfflineWebResManager.a(this.b.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.a();
+    this.b.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,16 @@ class ArkAppEventObserverManager$ArkConnectionHandler$6
   
   public void run()
   {
-    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"none".equals(ArkAppEventObserverManager.b(this.a.a))))
+    if ((ArkAppEventObserverManager.q(this.a.a) != null) && (!"none".equals(ArkAppEventObserverManager.p(this.a.a))))
     {
-      ArkAppEventObserverManager.a(this.a.a).a(true, "none");
+      ArkAppEventObserverManager.q(this.a.a).a(true, "none");
       ArkAppEventObserverManager.a(this.a.a, "none");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppEventObserverManager.ArkConnectionHandler.6
  * JD-Core Version:    0.7.0.1
  */

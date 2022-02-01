@@ -3,15 +3,18 @@ package com.dartnative.dart_native;
 import java.util.HashMap;
 
 final class CallbackInvocationHandler$1
-  extends HashMap<Class<?>, String>
+  extends HashMap<String, String>
 {
   CallbackInvocationHandler$1()
   {
-    put(Integer.TYPE, "I");
-    put(Float.TYPE, "F");
-    put(Double.TYPE, "D");
-    put(Boolean.TYPE, "Z");
-    put(String.class, "Ljava/lang/String;");
+    put("int", "java.lang.Integer");
+    put("float", "java.lang.Float");
+    put("double", "java.lang.Double");
+    put("boolean", "java.lang.Boolean");
+    put("byte", "java.lang.Byte");
+    put("short", "java.lang.Short");
+    put("long", "java.lang.Long");
+    put("char", "java.lang.Character");
   }
 }
 

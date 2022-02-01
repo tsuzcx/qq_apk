@@ -18,16 +18,16 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class TimTipsBar
   implements View.OnClickListener, TipsBarTask
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private QQAppInterface a;
+  private Context b;
+  private TipsManager c;
+  private String d;
   
   public TimTipsBar(QQAppInterface paramQQAppInterface, Context paramContext, TipsManager paramTipsManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
+    this.a = paramQQAppInterface;
+    this.b = paramContext;
+    this.c = paramTipsManager;
   }
   
   public int a()
@@ -37,26 +37,26 @@ public class TimTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = ((AppGuideTipsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER)).a();
-    this.jdField_a_of_type_JavaLangString = paramVarArgs.tipsUrl;
+    paramVarArgs = ((AppGuideTipsManager)this.a.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER)).e();
+    this.d = paramVarArgs.tipsUrl;
     paramVarArgs = paramVarArgs.tipsMsg;
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558591, null);
-    ((TextView)localView.findViewById(2131362538)).setText(paramVarArgs);
+    View localView = LayoutInflater.from(this.b).inflate(2131624150, null);
+    ((TextView)localView.findViewById(2131428149)).setText(paramVarArgs);
     localView.setOnClickListener(this);
-    localView.findViewById(2131362536).setOnClickListener(this);
+    localView.findViewById(2131428147).setOnClickListener(this);
     return localView;
   }
   
   public void a(int paramInt, Object... paramVarArgs) {}
   
-  public int[] a()
-  {
-    return null;
-  }
-  
   public int b()
   {
     return 18;
+  }
+  
+  public int[] c()
+  {
+    return null;
   }
   
   public void onClick(View paramView)
@@ -65,24 +65,24 @@ public class TimTipsBar
     {
     default: 
       break;
-    case 2131362535: 
+    case 2131428146: 
       if (QLog.isColorLevel()) {
         QLog.d("TimTipsBar", 2, "click tips, jump");
       }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      Intent localIntent = new Intent(this.b, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.d);
       localIntent.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.b.startActivity(localIntent);
       ReportController.b(null, "dc00898", "", "", "0X8008948", "0X8008948", 0, 0, "", "", "", "");
-    case 2131362536: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+    case 2131428147: 
+      this.c.c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TimTipsBar
  * JD-Core Version:    0.7.0.1
  */

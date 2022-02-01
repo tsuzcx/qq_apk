@@ -18,9 +18,9 @@ class ARPreSoResourceDownload$3
   protected void realCancel()
   {
     QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
-    synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
+    synchronized (ARPreSoResourceDownload.c(this.c))
     {
-      ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b);
+      ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.c(this.c).get(this.a.c);
       if (localARResourceDownloadCallback != null) {
         localARResourceDownloadCallback.b();
       }
@@ -32,11 +32,11 @@ class ARPreSoResourceDownload$3
   protected void realStart()
   {
     QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
-    synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
+    synchronized (ARPreSoResourceDownload.c(this.c))
     {
-      ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b);
+      ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.c(this.c).get(this.a.c);
       if (localARResourceDownloadCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a();
+        this.b.a();
       }
       super.realStart();
       return;
@@ -45,7 +45,7 @@ class ARPreSoResourceDownload$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.3
  * JD-Core Version:    0.7.0.1
  */

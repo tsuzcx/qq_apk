@@ -11,7 +11,7 @@ public class CameraCategoryMaterialStep
 {
   protected int doStep()
   {
-    IAECameraCategoryMaterialService localIAECameraCategoryMaterialService = (IAECameraCategoryMaterialService)this.mAutomator.a.getRuntimeService(IAECameraCategoryMaterialService.class, "");
+    IAECameraCategoryMaterialService localIAECameraCategoryMaterialService = (IAECameraCategoryMaterialService)this.mAutomator.k.getRuntimeService(IAECameraCategoryMaterialService.class, "");
     if (localIAECameraCategoryMaterialService != null) {
       localIAECameraCategoryMaterialService.doStep();
     } else {
@@ -22,7 +22,7 @@ public class CameraCategoryMaterialStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CameraCategoryMaterialStep
  * JD-Core Version:    0.7.0.1
  */

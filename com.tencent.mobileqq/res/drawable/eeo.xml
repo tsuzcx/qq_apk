@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="24.0dip" android:width="24.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/hxe" />
-    <item android:drawable="@drawable/hxc" />
-</selector>
+    <path android:fillColor="@android:color/white" android:pathData="M7 10l5 5 5-5z" />
+</vector>

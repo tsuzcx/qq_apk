@@ -19,7 +19,7 @@ class QZoneSharePictureJsPlugin$10
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
     QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
-    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131712282), 1);
+    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131909882), 1);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
@@ -34,12 +34,12 @@ class QZoneSharePictureJsPlugin$10
       return;
     }
     QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
-    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131712261), 1);
+    QZoneSharePictureJsPlugin.access$600(this.this$0, HardCodeUtil.a(2131909862), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

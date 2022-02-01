@@ -34,39 +34,32 @@ public class QQCustomDialogWtihInputAndChoose
   extends QQCustomDialogWtihForwardAvatar
   implements View.OnClickListener
 {
-  public static final Integer a;
-  public static final Integer b;
-  final float jdField_a_of_type_Float = 267.0F;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  protected View.OnClickListener a;
-  protected View a;
-  WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  MyLinearLayout jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout;
-  SoftReference<Context> jdField_a_of_type_JavaLangRefSoftReference;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  final float jdField_b_of_type_Float = 45.5F;
-  boolean jdField_b_of_type_Boolean;
-  final float jdField_c_of_type_Float = 39.0F;
-  boolean jdField_c_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
-    jdField_b_of_type_JavaLangInteger = Integer.valueOf(2);
-  }
+  public static final Integer p = Integer.valueOf(1);
+  public static final Integer q = Integer.valueOf(2);
+  SoftReference<Context> a;
+  boolean b = false;
+  EditText c;
+  ImageView d;
+  MyLinearLayout e;
+  Handler f = new Handler();
+  WindowManager g;
+  WindowManager.LayoutParams h;
+  boolean i;
+  RelativeLayout j;
+  final float k = 267.0F;
+  final float l = 45.5F;
+  final float m = 39.0F;
+  boolean n = true;
+  ArrayList<String> o = new ArrayList();
+  protected View r;
+  protected View.OnClickListener s = new QQCustomDialogWtihInputAndChoose.2(this);
   
   public QQCustomDialogWtihInputAndChoose(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new QQCustomDialogWtihInputAndChoose.2(this);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
+    this.a = new SoftReference(paramContext);
     getWindow().setSoftInputMode(19);
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.g = ((WindowManager)paramContext.getSystemService("window"));
   }
   
   int a(View paramView)
@@ -78,10 +71,10 @@ public class QQCustomDialogWtihInputAndChoose
   
   public void a()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout);
-      this.jdField_b_of_type_Boolean = false;
+      this.g.removeView(this.e);
+      this.i = false;
       WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
       localLayoutParams.y = 0;
       getWindow().setAttributes(localLayoutParams);
@@ -90,27 +83,27 @@ public class QQCustomDialogWtihInputAndChoose
   
   public void a(int paramInt)
   {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.c;
     if (localEditText != null)
     {
       localEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new QQCustomDialogWtihInputAndChoose.3(this, paramInt));
+      this.c.addTextChangedListener(new QQCustomDialogWtihInputAndChoose.3(this, paramInt));
     }
   }
   
   void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout = ((MyLinearLayout)View.inflate(paramContext, 2131558996, null));
-    this.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.findViewById(2131370117).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.setDispatchKeyEventListener(new QQCustomDialogWtihInputAndChoose.4(this));
+    this.e = ((MyLinearLayout)View.inflate(paramContext, 2131624629, null));
+    this.e.findViewById(2131437279).setOnClickListener(this);
+    this.e.setDispatchKeyEventListener(new QQCustomDialogWtihInputAndChoose.4(this));
   }
   
   public void a(String paramString)
   {
     if (paramString != null)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-      paramString = this.jdField_a_of_type_AndroidWidgetEditText;
+      this.c.setText(paramString);
+      paramString = this.c;
       paramString.setSelection(paramString.getText().length());
     }
   }
@@ -122,92 +115,92 @@ public class QQCustomDialogWtihInputAndChoose
       if (paramArrayList.size() <= 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      float f = getContext().getResources().getDisplayMetrics().density;
-      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.findViewById(2131370113);
+      this.o = paramArrayList;
+      float f1 = getContext().getResources().getDisplayMetrics().density;
+      LinearLayout localLinearLayout = (LinearLayout)this.e.findViewById(2131437275);
       localLinearLayout.removeAllViews();
-      int i = 0;
-      while (i < paramArrayList.size())
+      int i1 = 0;
+      while (i1 < paramArrayList.size())
       {
-        View localView = View.inflate(getContext(), 2131558997, null);
-        localView.setTag(Integer.valueOf(i));
+        View localView = View.inflate(getContext(), 2131624630, null);
+        localView.setTag(Integer.valueOf(i1));
         localView.setClickable(true);
-        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        ((TextView)localView.findViewById(2131370112)).setText((CharSequence)paramArrayList.get(i));
-        localLinearLayout.addView(localView, new LinearLayout.LayoutParams(-1, (int)(45.5F * f)));
-        i += 1;
+        localView.setOnClickListener(this.s);
+        ((TextView)localView.findViewById(2131437274)).setText((CharSequence)paramArrayList.get(i1));
+        localLinearLayout.addView(localView, new LinearLayout.LayoutParams(-1, (int)(45.5F * f1)));
+        i1 += 1;
       }
       if (paramArrayList.size() >= 5) {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, (int)(f * 267.0F), 2, 32, -1);
+        this.h = new WindowManager.LayoutParams(-1, (int)(f1 * 267.0F), 2, 32, -1);
       } else {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, (int)((paramArrayList.size() * 45.5F + 39.0F + 2.0F) * f), 2, 32, -1);
+        this.h = new WindowManager.LayoutParams(-1, (int)((paramArrayList.size() * 45.5F + 39.0F + 2.0F) * f1), 2, 32, -1);
       }
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 81;
+      this.h.gravity = 81;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public EditText getEditText()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText;
+    return this.c;
   }
   
   public String getInputValue()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    return this.c.getText().toString();
   }
   
   public void hideSoftInputFromWindow()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    if (this.c != null) {
+      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.c.getWindowToken(), 0);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368884)
+    if (paramView.getId() == 2131435823)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout != null) {
-        if (this.jdField_b_of_type_Boolean)
+      if (this.e != null) {
+        if (this.i)
         {
           a();
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847537);
-          this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130847537));
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQCustomDialogWtihInputAndChoose.5(this), 200L);
+          this.d.setImageResource(2130849197);
+          this.d.setTag(Integer.valueOf(2130849197));
+          this.f.postDelayed(new QQCustomDialogWtihInputAndChoose.5(this), 200L);
         }
         else
         {
-          Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
-          if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130848135))
+          Object localObject = this.d.getTag();
+          if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130849799))
           {
-            InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847537);
-            this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130847537));
-            this.jdField_b_of_type_Boolean = false;
+            InputMethodUtil.a(this.c);
+            this.d.setImageResource(2130849197);
+            this.d.setTag(Integer.valueOf(2130849197));
+            this.i = false;
           }
           else
           {
-            InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848135);
-            this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130848135));
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQCustomDialogWtihInputAndChoose.6(this), 200L);
+            InputMethodUtil.b(this.c);
+            this.d.setImageResource(2130849799);
+            this.d.setTag(Integer.valueOf(2130849799));
+            this.f.postDelayed(new QQCustomDialogWtihInputAndChoose.6(this), 200L);
           }
         }
       }
     }
-    else if (paramView.getId() == 2131370117)
+    else if (paramView.getId() == 2131437279)
     {
       a();
     }
     else
     {
       a();
-      InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+      InputMethodUtil.b(this.c);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -218,7 +211,7 @@ public class QQCustomDialogWtihInputAndChoose
       return super.onTouchEvent(paramMotionEvent);
     }
     a();
-    InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    InputMethodUtil.b(this.c);
     super.onTouchEvent(paramMotionEvent);
     return true;
   }
@@ -227,29 +220,29 @@ public class QQCustomDialogWtihInputAndChoose
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365640));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368874));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368884));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    findViewById(2131377003).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new QQCustomDialogWtihInputAndChoose.1(this));
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    this.j = ((RelativeLayout)findViewById(2131431871));
+    this.c = ((EditText)findViewById(2131435808));
+    this.d = ((ImageView)findViewById(2131435823));
+    this.d.setOnClickListener(this);
+    findViewById(2131445367).setOnClickListener(this);
+    this.c.setSingleLine(this.b);
+    this.c.setOnTouchListener(new QQCustomDialogWtihInputAndChoose.1(this));
+    Context localContext = (Context)this.a.get();
     if (localContext == null) {
       return;
     }
-    DeviceLib.a(localContext, this.jdField_a_of_type_AndroidWidgetEditText);
+    DeviceLib.a(localContext, this.c);
     a(localContext);
   }
   
   public void setEditLint(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramString);
+    this.c.setHint(paramString);
   }
   
   public QQCustomDialog setMessage(CharSequence paramCharSequence)
   {
-    TextView localTextView = (TextView)findViewById(2131365620);
+    TextView localTextView = (TextView)findViewById(2131431851);
     if (!TextUtils.isEmpty(paramCharSequence))
     {
       localTextView.setText(paramCharSequence);
@@ -272,7 +265,7 @@ public class QQCustomDialogWtihInputAndChoose
     TextView localTextView = this.lBtn;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getContext().getString(paramInt));
-    localStringBuilder.append(getContext().getString(2131691115));
+    localStringBuilder.append(getContext().getString(2131888061));
     localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialogWtihInputAndChoose.7(this, paramOnClickListener));
@@ -302,7 +295,7 @@ public class QQCustomDialogWtihInputAndChoose
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose
  * JD-Core Version:    0.7.0.1
  */

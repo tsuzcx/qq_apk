@@ -85,65 +85,6 @@ public class ApkSignatureSchemeV2Verifier
     throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(paramRandomAccessFile.toString());
   }
   
-  private static ByteBuffer a(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    paramByteBuffer = a(paramByteBuffer, 8, paramByteBuffer.capacity() - 24);
-    int i = 0;
-    while (paramByteBuffer.hasRemaining())
-    {
-      i += 1;
-      if (paramByteBuffer.remaining() >= 8)
-      {
-        long l = paramByteBuffer.getLong();
-        if ((l >= 4L) && (l <= 2147483647L))
-        {
-          int j = (int)l;
-          int k = paramByteBuffer.position();
-          if (j <= paramByteBuffer.remaining())
-          {
-            if (paramByteBuffer.getInt() == 1896449818) {
-              return a(paramByteBuffer, j - 4);
-            }
-            paramByteBuffer.position(k + j);
-          }
-          else
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("APK Signing Block entry #");
-            localStringBuilder.append(i);
-            localStringBuilder.append(" size out of range: ");
-            localStringBuilder.append(j);
-            localStringBuilder.append(", available: ");
-            localStringBuilder.append(paramByteBuffer.remaining());
-            throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(localStringBuilder.toString());
-          }
-        }
-        else
-        {
-          paramByteBuffer = new StringBuilder();
-          paramByteBuffer.append("APK Signing Block entry #");
-          paramByteBuffer.append(i);
-          paramByteBuffer.append(" size out of range: ");
-          paramByteBuffer.append(l);
-          throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(paramByteBuffer.toString());
-        }
-      }
-      else
-      {
-        paramByteBuffer = new StringBuilder();
-        paramByteBuffer.append("Insufficient data to read size of APK Signing Block entry #");
-        paramByteBuffer.append(i);
-        throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(paramByteBuffer.toString());
-      }
-    }
-    paramByteBuffer = new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("No APK Signature Scheme v2 block in APK Signing Block");
-    for (;;)
-    {
-      throw paramByteBuffer;
-    }
-  }
-  
   static ByteBuffer a(ByteBuffer paramByteBuffer, int paramInt)
   {
     if (paramInt >= 0)
@@ -240,41 +181,41 @@ public class ApkSignatureSchemeV2Verifier
     //   5: new 76	java/io/RandomAccessFile
     //   8: dup
     //   9: aload_0
-    //   10: ldc 212
-    //   12: invokespecial 215	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   10: ldc 177
+    //   12: invokespecial 180	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   15: astore_0
     //   16: aload_0
-    //   17: invokestatic 216	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;
+    //   17: invokestatic 181	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;
     //   20: astore_3
     //   21: aload_3
-    //   22: getfield 220	android/util/Pair:first	Ljava/lang/Object;
+    //   22: getfield 185	android/util/Pair:first	Ljava/lang/Object;
     //   25: checkcast 56	java/nio/ByteBuffer
     //   28: astore 4
     //   30: aload_3
-    //   31: getfield 223	android/util/Pair:second	Ljava/lang/Object;
+    //   31: getfield 188	android/util/Pair:second	Ljava/lang/Object;
     //   34: checkcast 105	java/lang/Long
-    //   37: invokevirtual 226	java/lang/Long:longValue	()J
+    //   37: invokevirtual 192	java/lang/Long:longValue	()J
     //   40: lstore_1
     //   41: aload_0
     //   42: lload_1
-    //   43: invokestatic 229	com/tencent/securitysdk/utils/ZipUtils:a	(Ljava/io/RandomAccessFile;J)Z
+    //   43: invokestatic 195	com/tencent/securitysdk/utils/ZipUtils:a	(Ljava/io/RandomAccessFile;J)Z
     //   46: ifne +29 -> 75
     //   49: aload_0
     //   50: aload 4
     //   52: lload_1
-    //   53: invokestatic 231	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/nio/ByteBuffer;J)J
-    //   56: invokestatic 233	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/io/RandomAccessFile;J)Landroid/util/Pair;
-    //   59: getfield 220	android/util/Pair:first	Ljava/lang/Object;
+    //   53: invokestatic 197	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/nio/ByteBuffer;J)J
+    //   56: invokestatic 199	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/io/RandomAccessFile;J)Landroid/util/Pair;
+    //   59: getfield 185	android/util/Pair:first	Ljava/lang/Object;
     //   62: checkcast 56	java/nio/ByteBuffer
-    //   65: invokestatic 235	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:a	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   65: invokestatic 202	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier:b	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
     //   68: pop
     //   69: aload_0
-    //   70: invokevirtual 238	java/io/RandomAccessFile:close	()V
+    //   70: invokevirtual 205	java/io/RandomAccessFile:close	()V
     //   73: iconst_1
     //   74: ireturn
     //   75: new 21	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier$SignatureNotFoundException
     //   78: dup
-    //   79: ldc 240
+    //   79: ldc 207
     //   81: invokespecial 26	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier$SignatureNotFoundException:<init>	(Ljava/lang/String;)V
     //   84: athrow
     //   85: astore_3
@@ -294,17 +235,17 @@ public class ApkSignatureSchemeV2Verifier
     //   112: aload_0
     //   113: astore_3
     //   114: aload 4
-    //   116: invokevirtual 243	java/lang/Throwable:printStackTrace	()V
+    //   116: invokevirtual 210	java/lang/Throwable:printStackTrace	()V
     //   119: aload_0
     //   120: ifnull +7 -> 127
     //   123: aload_0
-    //   124: invokevirtual 238	java/io/RandomAccessFile:close	()V
+    //   124: invokevirtual 205	java/io/RandomAccessFile:close	()V
     //   127: iconst_0
     //   128: ireturn
     //   129: aload_0
     //   130: ifnull +7 -> 137
     //   133: aload_0
-    //   134: invokevirtual 238	java/io/RandomAccessFile:close	()V
+    //   134: invokevirtual 205	java/io/RandomAccessFile:close	()V
     //   137: aload_3
     //   138: athrow
     //   139: aconst_null
@@ -312,7 +253,7 @@ public class ApkSignatureSchemeV2Verifier
     //   141: aload_0
     //   142: ifnull +7 -> 149
     //   145: aload_0
-    //   146: invokevirtual 238	java/io/RandomAccessFile:close	()V
+    //   146: invokevirtual 205	java/io/RandomAccessFile:close	()V
     //   149: iconst_0
     //   150: ireturn
     //   151: astore_0
@@ -344,6 +285,65 @@ public class ApkSignatureSchemeV2Verifier
     //   5	16	151	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier$SignatureNotFoundException
     //   16	69	155	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier$SignatureNotFoundException
     //   75	85	155	com/tencent/securitysdk/utils/ApkSignatureSchemeV2Verifier$SignatureNotFoundException
+  }
+  
+  private static ByteBuffer b(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    paramByteBuffer = a(paramByteBuffer, 8, paramByteBuffer.capacity() - 24);
+    int i = 0;
+    while (paramByteBuffer.hasRemaining())
+    {
+      i += 1;
+      if (paramByteBuffer.remaining() >= 8)
+      {
+        long l = paramByteBuffer.getLong();
+        if ((l >= 4L) && (l <= 2147483647L))
+        {
+          int j = (int)l;
+          int k = paramByteBuffer.position();
+          if (j <= paramByteBuffer.remaining())
+          {
+            if (paramByteBuffer.getInt() == 1896449818) {
+              return a(paramByteBuffer, j - 4);
+            }
+            paramByteBuffer.position(k + j);
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("APK Signing Block entry #");
+            localStringBuilder.append(i);
+            localStringBuilder.append(" size out of range: ");
+            localStringBuilder.append(j);
+            localStringBuilder.append(", available: ");
+            localStringBuilder.append(paramByteBuffer.remaining());
+            throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          paramByteBuffer = new StringBuilder();
+          paramByteBuffer.append("APK Signing Block entry #");
+          paramByteBuffer.append(i);
+          paramByteBuffer.append(" size out of range: ");
+          paramByteBuffer.append(l);
+          throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(paramByteBuffer.toString());
+        }
+      }
+      else
+      {
+        paramByteBuffer = new StringBuilder();
+        paramByteBuffer.append("Insufficient data to read size of APK Signing Block entry #");
+        paramByteBuffer.append(i);
+        throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException(paramByteBuffer.toString());
+      }
+    }
+    paramByteBuffer = new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("No APK Signature Scheme v2 block in APK Signing Block");
+    for (;;)
+    {
+      throw paramByteBuffer;
+    }
   }
   
   static ByteBuffer b(ByteBuffer paramByteBuffer, int paramInt)
@@ -407,7 +407,7 @@ public class ApkSignatureSchemeV2Verifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ApkSignatureSchemeV2Verifier
  * JD-Core Version:    0.7.0.1
  */

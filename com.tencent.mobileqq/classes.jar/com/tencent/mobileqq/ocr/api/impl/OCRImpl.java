@@ -18,7 +18,7 @@ public class OCRImpl
 {
   public boolean checkImageFormat(String paramString)
   {
-    return OcrImageUtil.a(paramString);
+    return OcrImageUtil.b(paramString);
   }
   
   public boolean compressImage(String paramString1, String paramString2)
@@ -28,7 +28,7 @@ public class OCRImpl
   
   public String getCachePath(String paramString)
   {
-    return OcrImageUtil.a(paramString);
+    return OcrImageUtil.c(paramString);
   }
   
   public String getImagePath(String paramString, boolean paramBoolean)
@@ -83,7 +83,7 @@ public class OCRImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.OCRImpl
  * JD-Core Version:    0.7.0.1
  */

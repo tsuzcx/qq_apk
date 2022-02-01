@@ -13,25 +13,25 @@ class EmoticonFromGroupManager$6
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getUploadDrawableList().remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    EmoticonFromGroupManager.b(this.b).getUploadDrawableList().remove(this.a);
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getUploadDrawableList().remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    EmoticonFromGroupManager.b(this.b).getUploadDrawableList().remove(this.a);
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getUploadDrawableList().remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    EmoticonFromGroupManager.a().execute(new EmoticonFromGroupManager.6.1(this, paramURLDrawable));
+    EmoticonFromGroupManager.b(this.b).getUploadDrawableList().remove(this.a);
+    EmoticonFromGroupManager.g().execute(new EmoticonFromGroupManager.6.1(this, paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.6
  * JD-Core Version:    0.7.0.1
  */

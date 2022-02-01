@@ -55,13 +55,13 @@ class GoogleTranslator$1
     catch (JSONException paramJSONObject)
     {
       paramJSONObject.printStackTrace();
-      this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
+      this.a.a(paramArrayOfHeader, localArrayList, this.b);
     }
   }
   
   public void a(Throwable paramThrowable, String paramString)
   {
-    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    this.a.a(new TranslateError(paramThrowable), this.b);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();

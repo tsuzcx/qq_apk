@@ -30,96 +30,76 @@ import mqq.os.MqqHandler;
 public class SubscribeMultiPicFragment
   extends SubscribeBaseFragment
 {
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private MultiPicHeaderBlock jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock;
-  private BlockContainer jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
-  private View b;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean;
+  private BlockContainer h;
+  private View i;
+  private View j;
+  private TextView k;
+  private boolean l;
+  private LinearLayout m;
+  private long n;
+  private MultiPicHeaderBlock o;
+  private View p;
   
-  private void b()
+  private void l()
   {
     Bundle localBundle = new Bundle();
-    localBundle.putByteArray("bundle_key_subscribe_feed_bytes_array", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray());
-    localBundle.putSerializable("bundle_key_feed_extra_type_info", this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock = new MultiPicHeaderBlock(localBundle);
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock.a(getBaseActivity().mSystemBarComp);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock);
+    localBundle.putByteArray("bundle_key_subscribe_feed_bytes_array", this.a.toByteArray());
+    localBundle.putSerializable("bundle_key_feed_extra_type_info", this.b);
+    this.o = new MultiPicHeaderBlock(localBundle);
+    this.o.a(getBaseActivity().mSystemBarComp);
+    if (this.g != null) {
+      this.g.a(this.o);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)this.mContentView.findViewById(2131365310));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370263));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369290);
-    this.b = this.mContentView.findViewById(2131369494);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131369419));
-    this.jdField_c_of_type_AndroidViewView = this.mContentView.findViewById(2131369879);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setParentFragment(this);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setLayoutManagerType(3, 2);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a(new CommodityAdapter(localBundle));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a(new RelativeFeedsAdapter(localBundle));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new SubscribeMultiPicFragment.1(this));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.c();
-    this.b.setOnClickListener(new SubscribeMultiPicFragment.2(this));
+    this.h = ((BlockContainer)this.mContentView.findViewById(2131431491));
+    this.m = ((LinearLayout)this.mContentView.findViewById(2131437470));
+    this.i = this.mContentView.findViewById(2131436276);
+    this.j = this.mContentView.findViewById(2131436572);
+    this.k = ((TextView)this.mContentView.findViewById(2131436456));
+    this.p = this.mContentView.findViewById(2131437017);
+    this.h.setParentFragment(this);
+    this.h.setLayoutManagerType(3, 2);
+    this.h.setEnableLoadMore(true);
+    this.h.setExtraTypeInfo(this.b);
+    this.h.a(this.o);
+    this.h.a(new CommodityAdapter(localBundle));
+    this.h.a(new RelativeFeedsAdapter(localBundle));
+    this.i.setOnClickListener(new SubscribeMultiPicFragment.1(this));
+    this.h.e();
+    this.j.setOnClickListener(new SubscribeMultiPicFragment.2(this));
   }
   
-  private void c()
+  private void m()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock;
-    if ((localObject != null) && (((MultiPicHeaderBlock)localObject).a() != null) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a() != null))
+    Object localObject = this.o;
+    if ((localObject != null) && (((MultiPicHeaderBlock)localObject).k() != null) && (this.h.getExtraTypeInfo() != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock.a().poster.id.get();
+      localObject = this.o.k().poster.id.get();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("auth_");
-      localStringBuilder.append(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a()));
-      VSReporter.a((String)localObject, localStringBuilder.toString(), "read", 0, 0, new String[] { "", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock.a().id.get() });
+      localStringBuilder.append(SubscribeShareHelper.a(this.h.getExtraTypeInfo()));
+      VSReporter.a((String)localObject, localStringBuilder.toString(), "read", 0, 0, new String[] { "", String.valueOf(System.currentTimeMillis() - this.n), "", this.o.k().id.get() });
     }
-  }
-  
-  public int a()
-  {
-    return ImmersiveUtils.dpToPx(50.0F);
   }
   
   protected View a()
   {
-    return this.b;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  protected TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.j;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.n = paramLong;
   }
   
   protected void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    MultiPicHeaderBlock localMultiPicHeaderBlock = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock;
+    MultiPicHeaderBlock localMultiPicHeaderBlock = this.o;
     if (localMultiPicHeaderBlock != null) {
       localMultiPicHeaderBlock.a(paramStFeed);
     }
   }
   
   protected void a(View paramView) {}
-  
-  protected boolean a()
-  {
-    return true;
-  }
   
   public int[] a(int paramInt1, int paramInt2)
   {
@@ -132,9 +112,9 @@ public class SubscribeMultiPicFragment
     return new int[] { (int)(paramInt1 / f2), paramInt1 };
   }
   
-  public View b()
+  protected TextView b()
   {
-    return this.jdField_c_of_type_AndroidViewView;
+    return this.k;
   }
   
   public void b(CertifiedAccountMeta.StFeed paramStFeed)
@@ -143,35 +123,55 @@ public class SubscribeMultiPicFragment
     ThreadManager.getSubThreadHandler().post(new SubscribeMultiPicFragment.3(this, paramStFeed));
   }
   
-  public View c()
+  protected boolean c()
   {
-    return this.b;
+    return true;
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     hideTitleBar();
-    b();
+    l();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131558747;
+    return 2131624367;
+  }
+  
+  public int h()
+  {
+    return ImmersiveUtils.dpToPx(50.0F);
+  }
+  
+  public View i()
+  {
+    return this.p;
   }
   
   public boolean isWrapContent()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.l;
+  }
+  
+  public View j()
+  {
+    return this.j;
+  }
+  
+  public LinearLayout k()
+  {
+    return this.m;
   }
   
   public boolean onBackEvent()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
-    if ((localObject != null) && (((BlockContainer)localObject).a())) {
+    Object localObject = this.h;
+    if ((localObject != null) && (((BlockContainer)localObject).b())) {
       return true;
     }
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.sourceType == 9001))
+    if ((this.b != null) && (this.b.sourceType == 9001))
     {
       localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(getBaseActivity(), (String)localObject, 2016, null, null);
@@ -182,28 +182,28 @@ public class SubscribeMultiPicFragment
   public void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
+    Object localObject = this.h;
     if (localObject != null) {
-      ((BlockContainer)localObject).b();
+      ((BlockContainer)localObject).c();
     }
     TimeAndCountHelper.a().a("subscribe_freshman_interaction_guide");
     TimeAndCountHelper.a().a("subscribe_freshman_share_guide");
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersMultiPicHeaderBlock;
+    localObject = this.o;
     if (localObject != null) {
-      ((MultiPicHeaderBlock)localObject).g();
+      ((MultiPicHeaderBlock)localObject).n();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    c();
+    m();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.n = System.currentTimeMillis();
   }
 }
 

@@ -29,7 +29,7 @@ public class QZoneWebViewPlugin
   
   public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, int paramInt)
   {
-    paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.a());
+    paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.d());
     int i = paramInt;
     if ((paramPluginRuntime instanceof WebViewPluginContainer)) {
       i = ((WebViewPluginContainer)paramPluginRuntime).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
@@ -43,7 +43,7 @@ public class QZoneWebViewPlugin
     {
       try
       {
-        Object localObject = this.mRuntime.a().getIntent();
+        Object localObject = this.mRuntime.d().getIntent();
         if ((localObject == null) || (!((Intent)localObject).getBooleanExtra("fromQZone", false))) {
           break label77;
         }
@@ -138,8 +138,8 @@ public class QZoneWebViewPlugin
     if ((paramLong == 8589934601L) && (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/sendGift/index.html")) || (paramString.startsWith("https://qzs.qzone.qq.com/qzone/hybrid/module/gift/mall.html"))))
     {
       paramString = new Intent();
-      this.mRuntime.a().setResult(0, paramString);
-      this.mRuntime.a().finish();
+      this.mRuntime.d().setResult(0, paramString);
+      this.mRuntime.d().finish();
       return true;
     }
     initInsidePlugins();
@@ -232,7 +232,7 @@ public class QZoneWebViewPlugin
       }
     }
     if (paramInt == -1) {
-      this.mRuntime.a().finish();
+      this.mRuntime.d().finish();
     }
   }
   
@@ -252,7 +252,7 @@ public class QZoneWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

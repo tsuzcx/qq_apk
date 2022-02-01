@@ -11,7 +11,7 @@ class SystemMsgListView$7
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, boolean paramBoolean4)
   {
-    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {
+    if (((Activity)SystemMsgListView.b(this.a)).isFinishing()) {
       return;
     }
     if ((paramBoolean1) && (SystemMsgListView.a(this.a) != null)) {
@@ -21,7 +21,7 @@ class SystemMsgListView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.view.SystemMsgListView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class VisitorsActivity$11
   {
     if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      paramBitmap = this.a.a;
+      paramBitmap = this.a.e;
       int i = 0;
       if (paramBitmap != null) {
         paramInt2 = paramBitmap.getChildCount();
@@ -27,8 +27,8 @@ class VisitorsActivity$11
         if ((localObject != null) && ((localObject instanceof VisitorsActivity.CustomViewHolder)))
         {
           localObject = (VisitorsActivity.CustomViewHolder)localObject;
-          if ((((VisitorsActivity.CustomViewHolder)localObject).b == paramInt1) && (((VisitorsActivity.CustomViewHolder)localObject).e != null)) {
-            VisitorsActivity.a(this.a, ((VisitorsActivity.CustomViewHolder)localObject).e, paramInt1);
+          if ((((VisitorsActivity.CustomViewHolder)localObject).n == paramInt1) && (((VisitorsActivity.CustomViewHolder)localObject).h != null)) {
+            VisitorsActivity.a(this.a, ((VisitorsActivity.CustomViewHolder)localObject).h, paramInt1);
           }
         }
         i += 1;
@@ -38,7 +38,7 @@ class VisitorsActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.11
  * JD-Core Version:    0.7.0.1
  */

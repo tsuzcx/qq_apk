@@ -12,89 +12,37 @@ import com.tencent.mobileqq.data.troop.TroopInfo;
 public class ContactSearchableSearchHistory
   extends IContactSearchable
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SearchHistory jdField_a_of_type_ComTencentMobileqqDataSearchHistory;
+  private SearchHistory a;
+  private QQAppInterface b;
   
   public ContactSearchableSearchHistory(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory = paramSearchHistory;
-  }
-  
-  public Drawable a()
-  {
-    return null;
-  }
-  
-  public SearchHistory a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory;
+    this.b = paramQQAppInterface;
+    this.a = paramSearchHistory;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.extralInfo;
+    return this.a.extralInfo;
   }
   
   public void a(String paramString) {}
-  
-  public int b()
-  {
-    return 0;
-  }
   
   public String b()
   {
     return null;
   }
   
-  public int c()
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.type;
-    if (i != 1)
-    {
-      if (i != 1006) {
-        if (i != 1008)
-        {
-          if (i != 3000)
-          {
-            if (i != 7220)
-            {
-              if (i != 56938) {
-                return 1;
-              }
-            }
-            else {
-              return 111;
-            }
-          }
-          else {
-            return 101;
-          }
-        }
-        else
-        {
-          if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.uin, AppConstants.NEW_KANDIAN_UIN)) {
-            return 110;
-          }
-          return 1;
-        }
-      }
-      return 11;
-    }
-    return 4;
-  }
-  
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.displayName;
+    return this.a.displayName;
   }
   
   public String d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.type == 1)
+    if (this.a.type == 1)
     {
-      TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.uin);
+      TroopInfo localTroopInfo = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.a.uin);
       if ((localTroopInfo != null) && (!TextUtils.isEmpty(localTroopInfo.troopRemark)))
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -107,14 +55,72 @@ public class ContactSearchableSearchHistory
     return "";
   }
   
-  public String e()
+  public SearchHistory e()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory.uin;
+    return this.a;
+  }
+  
+  public int g()
+  {
+    return 0;
+  }
+  
+  public Drawable i()
+  {
+    return null;
+  }
+  
+  public String j()
+  {
+    return this.a.uin;
+  }
+  
+  public int k()
+  {
+    int i = this.a.type;
+    if (i != 1)
+    {
+      if (i != 1006) {
+        if (i != 1008)
+        {
+          if (i != 3000)
+          {
+            if (i != 7220)
+            {
+              if (i != 10007)
+              {
+                if (i != 56938) {
+                  return 1;
+                }
+              }
+              else {
+                return 119;
+              }
+            }
+            else {
+              return 111;
+            }
+          }
+          else {
+            return 101;
+          }
+        }
+        else
+        {
+          if (TextUtils.equals(this.a.uin, AppConstants.NEW_KANDIAN_UIN)) {
+            return 110;
+          }
+          return 1;
+        }
+      }
+      return 11;
+    }
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ContactSearchableSearchHistory
  * JD-Core Version:    0.7.0.1
  */

@@ -61,50 +61,24 @@ public class AEBottomListPart
   extends VideoStoryBasePart
   implements AEBottomListScrollView.LayoutCallback, AEBottomListScrollView.OnItemChangedListener<AEBottomListAdapter.ViewHolder>, AEBottomListScrollView.ScrollStateChangeListener<AEBottomListAdapter.ViewHolder>, Observer
 {
-  protected int a;
   protected AEPituCameraUnit a;
-  protected AECaptureController a;
-  protected AEBottomListAdapter a;
-  protected AEBottomListScrollView a;
-  protected AEMaterialManager a;
-  private AECaptureMode jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode;
-  private AEVideoStoryCaptureModeViewModel jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel;
-  private AEVideoStoryStateViewModel jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel;
-  private AECameraCancelableProgressDialog jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog;
-  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  protected AEBottomListScrollView b;
+  protected AEBottomListAdapter c;
+  protected AECaptureController d;
+  protected AEMaterialManager e;
+  protected int f;
+  private AEVideoStoryCaptureModeViewModel g;
+  private AEVideoStoryStateViewModel h;
+  private AECaptureMode i;
+  private AECameraCancelableProgressDialog j;
+  private volatile boolean k = false;
+  private final CountDownLatch l = new CountDownLatch(1);
   
   public AEBottomListPart(Activity paramActivity, View paramView, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
     super(paramActivity, paramView, paramVideoStoryCapturePartManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAECaptureController = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a();
-  }
-  
-  private int a(String paramString)
-  {
-    if (paramString == null) {
-      return -1;
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.getItemCount())
-    {
-      AEMaterialMetaData localAEMaterialMetaData = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(i);
-      if ((localAEMaterialMetaData != null) && (paramString.equals(localAEMaterialMetaData.k))) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  private AEMaterialMetaData a(int paramInt)
-  {
-    AEBottomListAdapter localAEBottomListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter;
-    if (localAEBottomListAdapter != null) {
-      return localAEBottomListAdapter.a(paramInt);
-    }
-    return null;
+    this.a = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
+    this.d = this.a.am();
   }
   
   private AEMaterialMetaData a(String paramString, List<AEMaterialCategory> paramList)
@@ -132,75 +106,41 @@ public class AEBottomListPart
       if (TextUtils.isEmpty(paramString)) {
         return localAEMaterialMetaData;
       }
-    } while (!paramString.equals(localAEMaterialMetaData.k));
+    } while (!paramString.equals(localAEMaterialMetaData.m));
     return localAEMaterialMetaData;
     return null;
   }
   
-  private void a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    if ((paramAEMaterialMetaData != null) && (!paramAEMaterialMetaData.equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)))
-    {
-      int k = 0;
-      int i = 1;
-      int j;
-      for (;;)
-      {
-        j = k;
-        if (i >= this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.getItemCount()) {
-          break;
-        }
-        j = k;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(i) == null) {
-          break;
-        }
-        if (paramAEMaterialMetaData.k.equals(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(i).k))
-        {
-          this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(i).a(paramAEMaterialMetaData);
-          c(i);
-          j = 1;
-          break;
-        }
-        i += 1;
-      }
-      if (j == 0)
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(paramAEMaterialMetaData);
-        c(1);
-      }
-    }
-  }
-  
   private void a(String paramString)
   {
-    AEBaseReportParam.a().m("-1");
-    int j = a(paramString);
+    AEBaseReportParam.a().q("-1");
+    int n = c(paramString);
     Object localObject1;
     Object localObject2;
-    int i;
-    if (j != -1)
+    int m;
+    if (n != -1)
     {
       localObject1 = this.mActivity.getIntent();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("camera^");
       ((StringBuilder)localObject2).append(paramString);
       ((Intent)localObject1).putExtra("widgetinfo", ((StringBuilder)localObject2).toString());
-      paramString = a(j);
-      i = j;
+      paramString = d(n);
+      m = n;
       if (paramString != null)
       {
-        AEBaseDataReporter.a().c(paramString.k);
-        paramString.b = true;
-        this.mActivity.getIntent().putExtra("key_camera_material_name", paramString.s);
-        i = j;
+        AEBaseDataReporter.a().c(paramString.m);
+        paramString.v = true;
+        this.mActivity.getIntent().putExtra("key_camera_material_name", paramString.H);
+        m = n;
       }
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-      localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
+      localObject1 = this.e;
+      localObject2 = this.a;
       boolean bool;
-      if ((localObject2 != null) && (((AEPituCameraUnit)localObject2).l())) {
+      if ((localObject2 != null) && (((AEPituCameraUnit)localObject2).M())) {
         bool = true;
       } else {
         bool = false;
@@ -208,82 +148,51 @@ public class AEBottomListPart
       paramString = ((AEMaterialManager)localObject1).a(paramString, bool);
       if (paramString != null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(paramString);
-        AEBaseDataReporter.a().c(paramString.k);
-        paramString.b = true;
-        i = 1;
+        this.c.a(paramString);
+        AEBaseDataReporter.a().c(paramString.m);
+        paramString.v = true;
+        m = 1;
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode == AECaptureMode.NORMAL)
+        if (this.i == AECaptureMode.NORMAL)
         {
-          paramString = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
+          paramString = this.a;
           if (paramString != null) {
-            Toast.makeText(paramString.a(), 2064515088, 1).show();
+            Toast.makeText(paramString.s(), 2064187418, 1).show();
           }
         }
-        i = 0;
+        m = 0;
       }
     }
-    if (i < this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.getItemCount())
+    if (m < this.c.getItemCount())
     {
-      c(i);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.getAdapter().notifyDataSetChanged();
-    }
-  }
-  
-  @MainThread
-  private void a(String paramString1, String paramString2)
-  {
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
-    {
-      if ((paramString1 == null) || (paramString1.equals(AECaptureMode.NORMAL.name))) {
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          if (paramString2.startsWith("http"))
-          {
-            b(paramString2);
-          }
-          else if (!this.jdField_a_of_type_Boolean)
-          {
-            a(paramString2);
-          }
-          else
-          {
-            AEQLog.b("AEBottomListPart", "take same procedure CANCELED, handleNormalEnter");
-            m();
-          }
-        }
-        else {
-          m();
-        }
-      }
-      l();
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 116);
+      c(m);
+      this.b.getAdapter().notifyDataSetChanged();
     }
   }
   
   @WorkerThread
   private void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramBoolean, a());
+    Object localObject = this.e.a(paramBoolean, k());
     ThreadManager.getUIHandler().post(new AEBottomListPart.7(this, (List)localObject));
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramString2, a());
-    if ((a(paramString1, paramString2)) && (localObject != null) && (!((AEMaterialMetaData)localObject).f) && (!((AEMaterialMetaData)localObject).e)) {
+    localObject = this.e.a(paramString2, k());
+    if ((a(paramString1, paramString2)) && (localObject != null) && (!((AEMaterialMetaData)localObject).B) && (!((AEMaterialMetaData)localObject).A)) {
       if (!NetworkUtil.isNetworkAvailable(this.mActivity))
       {
         AEQLog.b("AEBottomListPart", "loadAndHandleData---no network");
-        this.jdField_a_of_type_Boolean = true;
+        this.k = true;
         ThreadManager.getUIHandler().post(new AEBottomListPart.8(this));
       }
       else
       {
-        AEMaterialManager localAEMaterialManager = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
+        AEMaterialManager localAEMaterialManager = this.e;
         localAEMaterialManager.a(localAEMaterialManager.getApp(), (AEMaterialMetaData)localObject, new AEBottomListPart.9(this));
         AEQLog.b("AEBottomListPart", "wait till takeSameMaterial download finish, BEGIN");
         try
         {
-          this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await();
+          this.l.await();
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -312,6 +221,40 @@ public class AEBottomListPart
     return bool1;
   }
   
+  private void b(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    if ((paramAEMaterialMetaData != null) && (!paramAEMaterialMetaData.equals(AEMaterialMetaData.l)))
+    {
+      int i1 = 0;
+      int m = 1;
+      int n;
+      for (;;)
+      {
+        n = i1;
+        if (m >= this.c.getItemCount()) {
+          break;
+        }
+        n = i1;
+        if (this.c.a(m) == null) {
+          break;
+        }
+        if (paramAEMaterialMetaData.m.equals(this.c.a(m).m))
+        {
+          this.c.a(m).b(paramAEMaterialMetaData);
+          c(m);
+          n = 1;
+          break;
+        }
+        m += 1;
+      }
+      if (n == 0)
+      {
+        this.c.a(paramAEMaterialMetaData);
+        c(1);
+      }
+    }
+  }
+  
   private void b(String paramString)
   {
     Object localObject = new StringBuilder();
@@ -320,7 +263,7 @@ public class AEBottomListPart
     AEQLog.b("AEBottomListPart", ((StringBuilder)localObject).toString());
     try
     {
-      localObject = new Intent(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a(), QQBrowserActivity.class);
+      localObject = new Intent(this.a.s(), QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", URLDecoder.decode(paramString, "UTF-8"));
       ((Intent)localObject).putExtra("loc_play_show_material_id", paramString);
       boolean bool = this.mActivity.getIntent().hasExtra("ORIGIN_VIDEO_STORY_FROM_TYPE");
@@ -329,9 +272,9 @@ public class AEBottomListPart
       } else {
         ((Intent)localObject).putExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", this.mActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a()));
       }
-      ((Intent)localObject).putExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.L.a());
+      ((Intent)localObject).putExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.N.a());
       ((Intent)localObject).putExtra("VIDEO_STORY_ACTIVITY_ID", this.mActivity.getIntent().getStringExtra("VIDEO_STORY_ACTIVITY_ID"));
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().startActivity((Intent)localObject);
+      this.a.s().startActivity((Intent)localObject);
       this.mActivity.getIntent().removeExtra("KEY_CURRENT_SELECT_ID");
       return;
     }
@@ -341,12 +284,77 @@ public class AEBottomListPart
     }
   }
   
-  private boolean b()
+  @MainThread
+  private void b(String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel;
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
+    {
+      if ((paramString1 == null) || (paramString1.equals(AECaptureMode.NORMAL.name))) {
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          if (paramString2.startsWith("http"))
+          {
+            b(paramString2);
+          }
+          else if (!this.k)
+          {
+            a(paramString2);
+          }
+          else
+          {
+            AEQLog.b("AEBottomListPart", "take same procedure CANCELED, handleNormalEnter");
+            q();
+          }
+        }
+        else {
+          q();
+        }
+      }
+      p();
+      this.e.a(this, 116);
+    }
+  }
+  
+  private int c(String paramString)
+  {
+    if (paramString == null) {
+      return -1;
+    }
+    int m = 0;
+    while (m < this.c.getItemCount())
+    {
+      AEMaterialMetaData localAEMaterialMetaData = this.c.a(m);
+      if ((localAEMaterialMetaData != null) && (paramString.equals(localAEMaterialMetaData.m))) {
+        return m;
+      }
+      m += 1;
+    }
+    return -1;
+  }
+  
+  private AEMaterialMetaData d(int paramInt)
+  {
+    AEBottomListAdapter localAEBottomListAdapter = this.c;
+    if (localAEBottomListAdapter != null) {
+      return localAEBottomListAdapter.a(paramInt);
+    }
+    return null;
+  }
+  
+  private void m()
+  {
+    if (!n()) {
+      return;
+    }
+    ViewAnimator.a(new View[] { this.b }).d(new float[] { 0.0F, 1.0F }).a(300L).a(new AEBottomListPart.4(this)).d();
+  }
+  
+  private boolean n()
+  {
+    Object localObject = this.h;
     if ((localObject != null) && (((AEVideoStoryStateViewModel)localObject).a() != null))
     {
-      localObject = (Boolean)this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.a().getValue();
+      localObject = (Boolean)this.h.a().getValue();
       if (localObject != null)
       {
         bool = ((Boolean)localObject).booleanValue();
@@ -355,141 +363,131 @@ public class AEBottomListPart
     }
     boolean bool = true;
     label44:
-    return (!c()) && (this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.b()) && (bool);
-  }
-  
-  private boolean c()
-  {
-    return (this.mActivity != null) && ((AECameraEntryManager.g(this.mActivity.getIntent())) || (AECameraEntryManager.i(this.mActivity.getIntent())) || (AECameraEntryManager.j(this.mActivity.getIntent())) || (AECameraEntryManager.a(this.mActivity.getIntent()) == AECameraEntry.I.a()));
-  }
-  
-  private void j()
-  {
-    if (!b()) {
-      return;
-    }
-    ViewAnimator.a(new View[] { this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView }).b(new float[] { 0.0F, 1.0F }).a(300L).a(new AEBottomListPart.4(this)).b();
-  }
-  
-  private void k()
-  {
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog == null)
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog = new AECameraCancelableProgressDialog(this.mActivity);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog.a(new AEBottomListPart.6(this));
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog.show();
-    }
-  }
-  
-  private void l()
-  {
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
-    {
-      AECameraCancelableProgressDialog localAECameraCancelableProgressDialog = this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog;
-      if ((localAECameraCancelableProgressDialog != null) && (localAECameraCancelableProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog.dismiss();
-      }
-    }
-  }
-  
-  private void m()
-  {
-    AEMaterialMetaData localAEMaterialMetaData = AEMaterialManager.a();
-    int i;
-    if (localAEMaterialMetaData != null)
-    {
-      int j = a(localAEMaterialMetaData.k);
-      i = j;
-      if (j == -1)
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(localAEMaterialMetaData);
-        i = 1;
-      }
-    }
-    else
-    {
-      i = 0;
-    }
-    if (i < this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.getItemCount()) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.scrollToPosition(i);
-    }
-  }
-  
-  private void n()
-  {
-    if ((AEMaterialManager.a() != null) && (AEMaterialManager.a().jdField_a_of_type_Boolean)) {
-      AEMaterialManager.a().b = true;
-    }
+    return (!r()) && (this.g.b()) && (bool);
   }
   
   private void o()
   {
-    AEMaterialMetaData localAEMaterialMetaData1 = AEMaterialManager.a();
-    int j = 0;
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
+    {
+      if (this.j == null)
+      {
+        this.j = new AECameraCancelableProgressDialog(this.mActivity);
+        this.j.a(new AEBottomListPart.6(this));
+      }
+      this.j.show();
+    }
+  }
+  
+  private void p()
+  {
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
+    {
+      AECameraCancelableProgressDialog localAECameraCancelableProgressDialog = this.j;
+      if ((localAECameraCancelableProgressDialog != null) && (localAECameraCancelableProgressDialog.isShowing())) {
+        this.j.dismiss();
+      }
+    }
+  }
+  
+  private void q()
+  {
+    AEMaterialMetaData localAEMaterialMetaData = AEMaterialManager.n();
+    int m;
+    if (localAEMaterialMetaData != null)
+    {
+      int n = c(localAEMaterialMetaData.m);
+      m = n;
+      if (n == -1)
+      {
+        this.c.a(localAEMaterialMetaData);
+        m = 1;
+      }
+    }
+    else
+    {
+      m = 0;
+    }
+    if (m < this.c.getItemCount()) {
+      this.b.scrollToPosition(m);
+    }
+  }
+  
+  private boolean r()
+  {
+    if (this.mActivity == null) {
+      return true;
+    }
+    return AECameraEntryManager.o(this.mActivity.getIntent()) ^ true;
+  }
+  
+  private void s()
+  {
+    if ((AEMaterialManager.n() != null) && (AEMaterialManager.n().u)) {
+      AEMaterialManager.n().v = true;
+    }
+  }
+  
+  private void t()
+  {
+    AEMaterialMetaData localAEMaterialMetaData1 = AEMaterialManager.n();
+    int n = 0;
     if (localAEMaterialMetaData1 != null)
     {
-      AEMaterialMetaData localAEMaterialMetaData2 = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(this.jdField_a_of_type_Int);
-      int i = j;
+      AEMaterialMetaData localAEMaterialMetaData2 = this.c.a(this.f);
+      int m = n;
       if (localAEMaterialMetaData2 != null)
       {
-        i = j;
-        if (localAEMaterialMetaData1.k.equals(localAEMaterialMetaData2.k))
+        m = n;
+        if (localAEMaterialMetaData1.m.equals(localAEMaterialMetaData2.m))
         {
-          c(this.jdField_a_of_type_Int);
+          c(this.f);
           return;
         }
       }
-      while (i < this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.getItemCount())
+      while (m < this.c.getItemCount())
       {
-        localAEMaterialMetaData2 = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(i);
-        if ((localAEMaterialMetaData2 != null) && (localAEMaterialMetaData1.k.equals(localAEMaterialMetaData2.k)))
+        localAEMaterialMetaData2 = this.c.a(m);
+        if ((localAEMaterialMetaData2 != null) && (localAEMaterialMetaData1.m.equals(localAEMaterialMetaData2.m)))
         {
-          c(i);
+          c(m);
           return;
         }
-        i += 1;
+        m += 1;
       }
-      c(this.jdField_a_of_type_Int);
+      c(this.f);
       return;
     }
     c(0);
   }
   
-  private void p()
+  private void u()
   {
-    String str = AECameraPrefsUtil.a().a("sp_key_ae_user_selected_watermark", "", 0);
+    String str = AECameraPrefsUtil.a().b("sp_key_ae_user_selected_watermark", "", 0);
     if (!"sp_val_ae_user_selected_watermark_none".equals(str))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("recoverLastWatermark---materialId=");
       localStringBuilder.append(str);
       AEQLog.b("AEBottomListPart", localStringBuilder.toString());
-      AEBaseDataReporter.a().ax();
+      AEBaseDataReporter.a().aC();
       ThreadManager.excute(new AEBottomListPart.16(this, str), 64, null, true);
     }
   }
   
-  public AEMaterialManager a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  }
-  
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a();
-    AEBaseReportParam.a().i();
-    AEBaseDataReporter.a().ae();
+    this.c.a();
+    AEBaseReportParam.a().N();
+    AEBaseDataReporter.a().aj();
   }
   
   public void a(float paramFloat, int paramInt1, int paramInt2, @Nullable AEBottomListAdapter.ViewHolder paramViewHolder1, @Nullable AEBottomListAdapter.ViewHolder paramViewHolder2) {}
   
   protected void a(int paramInt)
   {
-    int i = UIUtils.a(this.mActivity, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.getHeight());
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView, "translationY", new float[] { 0.0F, i });
+    int m = UIUtils.a(this.mActivity, this.b.getHeight());
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.b, "translationY", new float[] { 0.0F, m });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play(localObjectAnimator);
     localAnimatorSet.addListener(new AEBottomListPart.12(this));
@@ -500,31 +498,26 @@ public class AEBottomListPart
   public void a(@NonNull AEBottomListAdapter.ViewHolder paramViewHolder, int paramInt)
   {
     paramViewHolder.a(4);
-    if ((!"call_material_id".equals(paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)) && (!this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a()) && (paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.jdField_a_of_type_Boolean))
+    if ((!"call_material_id".equals(paramViewHolder.a.m)) && (!this.c.d()) && (paramViewHolder.a.u))
     {
-      paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.b = false;
-      paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.c = false;
+      paramViewHolder.a.v = false;
+      paramViewHolder.a.w = false;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(false);
+    this.c.a(false);
   }
   
   public void a(@NonNull AEBottomListAdapter.ViewHolder paramViewHolder, boolean paramBoolean)
   {
-    if (paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.b) {
-      paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.c = true;
+    if (paramViewHolder.a.v) {
+      paramViewHolder.a.w = true;
     } else {
-      paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.b = true;
+      paramViewHolder.a.v = true;
     }
-    if ((!"call_material_id".equals(paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)) && (AEMaterialManager.a() != null) && (!AEMaterialManager.a().equals(paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)))
+    if ((!"call_material_id".equals(paramViewHolder.a.m)) && (AEMaterialManager.n() != null) && (!AEMaterialManager.n().equals(paramViewHolder.a)))
     {
-      AEMaterialManager.a().b = false;
-      AEMaterialManager.a().c = false;
+      AEMaterialManager.n().v = false;
+      AEMaterialManager.n().w = false;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   protected boolean a(AEMaterialMetaData paramAEMaterialMetaData)
@@ -537,36 +530,36 @@ public class AEBottomListPart
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryCaptureModeViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.a.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEBottomListPart.2(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel = ((AEVideoStoryStateViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryStateViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.a().observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEBottomListPart.3(this));
+    this.g = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.a).get(AEVideoStoryCaptureModeViewModel.class));
+    this.g.a.observe(this.a, new AEBottomListPart.2(this));
+    this.h = ((AEVideoStoryStateViewModel)AEViewModelProviders.a(this.a).get(AEVideoStoryStateViewModel.class));
+    this.h.a().observe(this.a, new AEBottomListPart.3(this));
   }
   
   protected void b(int paramInt)
   {
-    Animation localAnimation = QIMAnimationUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView, 1.0F, 0.0F);
+    Animation localAnimation = QIMAnimationUtils.a(this.b, 1.0F, 0.0F);
     localAnimation.setStartOffset(0L);
     localAnimation.setDuration(100L);
     localAnimation.setAnimationListener(new AEBottomListPart.13(this, paramInt));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.startAnimation(localAnimation);
+    this.b.startAnimation(localAnimation);
   }
   
   public void b(@NonNull AEBottomListAdapter.ViewHolder paramViewHolder, int paramInt)
   {
-    if (!"call_material_id".equals(paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k))
+    if (!"call_material_id".equals(paramViewHolder.a.m))
     {
-      this.jdField_a_of_type_Int = paramInt;
-      paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.b = true;
-      if ((AEMaterialManager.a() != null) && (!AEMaterialManager.a().equals(paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)))
+      this.f = paramInt;
+      paramViewHolder.a.v = true;
+      if ((AEMaterialManager.n() != null) && (!AEMaterialManager.n().equals(paramViewHolder.a)))
       {
-        AEMaterialManager.a().b = false;
-        AEMaterialManager.a().c = false;
+        AEMaterialManager.n().v = false;
+        AEMaterialManager.n().w = false;
       }
     }
     paramViewHolder = new StringBuilder();
     paramViewHolder.append("prePosition:");
-    paramViewHolder.append(this.jdField_a_of_type_Int);
+    paramViewHolder.append(this.f);
     QLog.d("AEBottomListPart", 4, paramViewHolder.toString());
   }
   
@@ -589,19 +582,19 @@ public class AEBottomListPart
       if (bool2)
       {
         ((AEMaterialManager)AEQIMManager.a(1)).a(localObject1);
-        localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(localObject1, a());
+        localObject2 = this.e.a(localObject1, k());
         bool1 = bool2;
         if (localObject2 != null)
         {
           bool1 = bool2;
-          if (((AEMaterialMetaData)localObject2).e) {
+          if (((AEMaterialMetaData)localObject2).A) {
             bool1 = false;
           }
         }
         if (bool1)
         {
-          k();
-          localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeViewAECameraCancelableProgressDialog;
+          o();
+          localObject2 = this.j;
           if (localObject2 != null) {
             ((AECameraCancelableProgressDialog)localObject2).a(10);
           }
@@ -619,8 +612,8 @@ public class AEBottomListPart
     localStringBuilder.append("reset Selection pos: ");
     localStringBuilder.append(paramInt);
     AEQLog.a("AEBottomListPart", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.a(paramInt, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(paramInt));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.invalidate();
+    this.b.a(paramInt, this.c.a(paramInt));
+    this.b.invalidate();
   }
   
   public void c(@Nullable AEBottomListAdapter.ViewHolder paramViewHolder, int paramInt)
@@ -628,16 +621,16 @@ public class AEBottomListPart
     if (paramViewHolder != null)
     {
       paramViewHolder.a(3);
-      paramViewHolder = paramViewHolder.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+      paramViewHolder = paramViewHolder.a;
       WatermarkDataManager.a().a(paramViewHolder);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter != null)
+      if (this.c != null)
       {
         if (a(paramViewHolder))
         {
           WeishiGuideUtils.a(this.mActivity, paramViewHolder, 1);
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.b(paramViewHolder);
+        this.c.b(paramViewHolder);
       }
     }
   }
@@ -645,33 +638,33 @@ public class AEBottomListPart
   @TargetApi(12)
   protected void d()
   {
-    int i = UIUtils.a(this.mActivity, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.getHeight());
+    int m = UIUtils.a(this.mActivity, this.b.getHeight());
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.play(ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView, "translationY", new float[] { i, 0.0F }));
+    localAnimatorSet.play(ObjectAnimator.ofFloat(this.b, "translationY", new float[] { m, 0.0F }));
     localAnimatorSet.addListener(new AEBottomListPart.11(this));
     localAnimatorSet.setDuration(300L).start();
-    h();
+    i();
   }
   
   protected void e()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.a())
+    if (this.g.a())
     {
       if (this.mPartManager != null)
       {
-        this.mPartManager.a(327683, new Object[0]);
-        this.mPartManager.a(196612, new Object[0]);
+        this.mPartManager.b(327683, new Object[0]);
+        this.mPartManager.b(196612, new Object[0]);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().a(true, 150);
+      this.a.am().a(true, 150);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.d())
+    if (this.g.d())
     {
       if (this.mPartManager != null) {
-        this.mPartManager.a(327698, new Object[0]);
+        this.mPartManager.b(327698, new Object[0]);
       }
       Log.d("AEBottomListPart", "arcake : startARPanel");
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().a(true, 150);
+      this.a.am().a(true, 150);
       return;
     }
     a(327683);
@@ -681,14 +674,14 @@ public class AEBottomListPart
   
   protected void g()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.a())
+    if (this.g.a())
     {
       if (this.mPartManager != null)
       {
-        this.mPartManager.a(327684, new Object[0]);
-        this.mPartManager.a(196612, new Object[0]);
+        this.mPartManager.b(327684, new Object[0]);
+        this.mPartManager.b(196612, new Object[0]);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().a(true, 150);
+      this.a.am().a(true, 150);
       return;
     }
     a(327684);
@@ -696,55 +689,80 @@ public class AEBottomListPart
   
   protected void h()
   {
-    Animation localAnimation = QIMAnimationUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView, 0.0F, 1.0F);
+    if (this.g.a())
+    {
+      if (this.mPartManager != null)
+      {
+        this.mPartManager.b(327701, new Object[0]);
+        this.mPartManager.b(196612, new Object[0]);
+      }
+      this.a.am().a(true, 150);
+      return;
+    }
+    a(327701);
+  }
+  
+  protected void i()
+  {
+    Animation localAnimation = QIMAnimationUtils.a(this.b, 0.0F, 1.0F);
     localAnimation.setStartOffset(200L);
     localAnimation.setDuration(100L);
     localAnimation.setAnimationListener(new AEBottomListPart.14(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.startAnimation(localAnimation);
-  }
-  
-  public void i()
-  {
-    if (AEPlayShowGridAdapter.selectedMidMaterialNotConsumed())
-    {
-      a(AEPlayShowGridAdapter.selectedMidMaterial);
-      AEPlayShowGridAdapter.onSelectedMidMaterialConsumed();
-    }
+    this.b.startAnimation(localAnimation);
   }
   
   public void initView()
   {
     if (this.mRootView != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView = ((AEBottomListScrollView)((ViewStub)this.mRootView.findViewById(2064122645)).inflate().findViewById(2064122531));
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setSlideOnFling(true);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setItemTransitionTimeMillis(100);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setSlideOnFlingThreshold(1000);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setOffscreenItems(10);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setOnItemChangedListener(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setScrollStateChangeListener(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setItemTransformer(new ScaleTransformer.Builder().a(0.88F).a());
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setLayoutCallback(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter = new AEBottomListAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAECaptureController);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(new AEBottomListPart.1(this));
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter);
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a().b(1));
-      if (!c())
+      this.b = ((AEBottomListScrollView)((ViewStub)this.mRootView.findViewById(2063991432)).inflate().findViewById(2063991350));
+      this.b.setSlideOnFling(true);
+      this.b.setItemTransitionTimeMillis(100);
+      this.b.setSlideOnFlingThreshold(1000);
+      this.b.setOffscreenItems(10);
+      this.b.setOnItemChangedListener(this);
+      this.b.setScrollStateChangeListener(this);
+      this.b.setItemTransformer(new ScaleTransformer.Builder().a(0.754F).a());
+      this.b.setLayoutCallback(this);
+      this.c = new AEBottomListAdapter(this.a, this.b, this.d);
+      this.c.a(new AEBottomListPart.1(this));
+      this.b.setAdapter(this.c);
+      this.e = ((AEMaterialManager)AEQIMManager.a().b(1));
+      if (!r())
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 113);
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 114);
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 115);
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 112);
+        this.e.a(this, 113);
+        this.e.a(this, 114);
+        this.e.a(this, 115);
+        this.e.a(this, 112);
         a();
         c();
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.b();
+        this.b.setVisibility(8);
+        this.c.b();
       }
     }
     b();
+  }
+  
+  public AEMaterialManager j()
+  {
+    return this.e;
+  }
+  
+  public boolean k()
+  {
+    return false;
+  }
+  
+  public void l()
+  {
+    if (AEPlayShowGridAdapter.selectedMidMaterialNotConsumed())
+    {
+      b(AEPlayShowGridAdapter.selectedMidMaterial);
+      AEPlayShowGridAdapter.onSelectedMidMaterialConsumed();
+    }
   }
   
   public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
@@ -755,16 +773,16 @@ public class AEBottomListPart
     AEQLog.a("AEBottomListPart", paramObject.toString());
     if (paramInt == 113)
     {
-      paramObject = AEMaterialManager.a();
-      if ((paramObject != null) && (!paramObject.equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData)))
+      paramObject = AEMaterialManager.n();
+      if ((paramObject != null) && (!paramObject.equals(AEMaterialMetaData.l)))
       {
-        a(paramObject);
+        b(paramObject);
       }
       else
       {
         c(0);
-        if (a()) {
-          p();
+        if (k()) {
+          u();
         }
       }
       QLog.d("AEBottomListPart", 4, "current pendant has change");
@@ -778,20 +796,20 @@ public class AEBottomListPart
     }
     if (paramInt == 114)
     {
-      paramObject = AEMaterialManager.a();
-      if ((paramObject != null) && (!paramObject.equals(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData))) {
-        paramObject.jdField_a_of_type_Boolean = true;
+      paramObject = AEMaterialManager.n();
+      if ((paramObject != null) && (!paramObject.equals(AEMaterialMetaData.l))) {
+        paramObject.u = true;
       }
-      a(paramObject);
+      b(paramObject);
       return;
     }
     if (paramInt == 115)
     {
-      paramObject = AEMaterialManager.a();
+      paramObject = AEMaterialManager.n();
       if (paramObject != null) {
-        paramObject.jdField_a_of_type_Boolean = false;
+        paramObject.u = false;
       }
-      a(paramObject);
+      b(paramObject);
       return;
     }
     if (paramInt == 112)
@@ -800,14 +818,14 @@ public class AEBottomListPart
       {
         paramObject = (AEMaterialMetaData)paramVarArgs[0];
         paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.getItemCount())
+        while (paramInt < this.c.getItemCount())
         {
-          paramVarArgs = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(paramInt);
-          if ((paramVarArgs != null) && (paramObject.k.equals(paramVarArgs.k)))
+          paramVarArgs = this.c.a(paramInt);
+          if ((paramVarArgs != null) && (paramObject.m.equals(paramVarArgs.m)))
           {
-            paramVarArgs.e = true;
-            paramVarArgs.f = false;
-            this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.notifyItemChanged(paramInt);
+            paramVarArgs.A = true;
+            paramVarArgs.B = false;
+            this.c.notifyItemChanged(paramInt);
             return;
           }
           paramInt += 1;
@@ -823,28 +841,28 @@ public class AEBottomListPart
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (b()) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setVisibility(0);
+    if (n()) {
+      this.b.setVisibility(0);
     }
   }
   
   public void onActivityResume()
   {
-    if ((AEMaterialManager.a() != null) && (!AEMaterialManager.a().c()) && (this.mActivity.getIntent().getStringExtra("widgetinfo") == null))
+    if ((AEMaterialManager.n() != null) && (!AEMaterialManager.n().d()) && (this.mActivity.getIntent().getStringExtra("widgetinfo") == null))
     {
       Intent localIntent = this.mActivity.getIntent();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("camera^");
-      localStringBuilder.append(AEMaterialManager.a().k);
+      localStringBuilder.append(AEMaterialManager.n().m);
       localIntent.putExtra("widgetinfo", localStringBuilder.toString());
     }
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.f();
-    AEBottomListAdapter localAEBottomListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter;
+    this.e.a(this);
+    this.e.k();
+    AEBottomListAdapter localAEBottomListAdapter = this.c;
     if (localAEBottomListAdapter != null) {
       localAEBottomListAdapter.c();
     }
@@ -856,8 +874,11 @@ public class AEBottomListPart
     {
     default: 
       return;
+    case 131079: 
+      h();
+      return;
     case 131078: 
-      this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.d().postValue(Boolean.valueOf(true));
+      this.h.d().postValue(Boolean.valueOf(true));
       f();
       return;
     case 131077: 
@@ -867,20 +888,20 @@ public class AEBottomListPart
       e();
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.b().postValue(Boolean.valueOf(false));
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.d().postValue(Boolean.valueOf(false));
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.c().postValue(Boolean.valueOf(false));
-    n();
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.b()) && (!c()))
+    this.h.b().postValue(Boolean.valueOf(false));
+    this.h.d().postValue(Boolean.valueOf(false));
+    this.h.c().postValue(Boolean.valueOf(false));
+    s();
+    if ((this.g.b()) && (!r()))
     {
-      o();
+      t();
       d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart
  * JD-Core Version:    0.7.0.1
  */

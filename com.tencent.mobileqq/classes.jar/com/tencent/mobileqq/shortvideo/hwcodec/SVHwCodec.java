@@ -20,30 +20,29 @@ import java.util.List;
 public class SVHwCodec
 {
   public static int a = 1;
-  public static String a = "video/avc";
-  protected static Method a;
-  protected static boolean a = true;
   public static int b = 0;
-  public static String b = "request-sync";
-  protected static Method b;
-  public static String c = "AndroidCodec";
-  protected static Method c;
-  protected static Method d;
-  protected MediaCodec a;
-  protected MediaFormat a;
-  protected ByteBuffer[] a;
-  protected MediaFormat b;
-  protected ByteBuffer[] b;
-  protected int c;
+  public static String c = "video/avc";
+  public static String d = "request-sync";
+  public static String h = "AndroidCodec";
+  protected static Method k;
+  protected static Method l;
+  protected static Method m;
+  protected static Method n;
+  protected static boolean o = true;
+  protected MediaFormat e;
+  protected MediaFormat f;
+  protected MediaCodec g;
+  protected ByteBuffer[] i;
+  protected ByteBuffer[] j;
+  protected int p = b;
   
   public SVHwCodec()
   {
-    this.jdField_c_of_type_Int = jdField_b_of_type_Int;
     a();
-    if ((Build.VERSION.SDK_INT >= 19) && (d == null)) {}
+    if ((Build.VERSION.SDK_INT >= 19) && (n == null)) {}
     try
     {
-      d = MediaCodec.class.getMethod("setParameters", new Class[] { Bundle.class });
+      n = MediaCodec.class.getMethod("setParameters", new Class[] { Bundle.class });
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -51,7 +50,7 @@ public class SVHwCodec
       label48:
       break label48;
     }
-    d = null;
+    n = null;
   }
   
   public static MediaCodecInfo.CodecCapabilities a(MediaCodecInfo paramMediaCodecInfo, String paramString)
@@ -64,7 +63,7 @@ public class SVHwCodec
     catch (Exception paramMediaCodecInfo)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_c_of_type_JavaLangString, 2, "getCodecCapabilities erro", paramMediaCodecInfo);
+        QLog.e(h, 2, "getCodecCapabilities erro", paramMediaCodecInfo);
       }
     }
     return null;
@@ -72,65 +71,40 @@ public class SVHwCodec
   
   public static MediaCodecInfo a(String paramString)
   {
-    int j = MediaCodecList.getCodecCount();
-    int i = 0;
-    while (i < j)
+    int i2 = MediaCodecList.getCodecCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i1);
       if (localMediaCodecInfo.getName().equalsIgnoreCase(paramString)) {
         return localMediaCodecInfo;
       }
-      i += 1;
+      i1 += 1;
     }
     return null;
-  }
-  
-  public static List<MediaCodecInfo> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int k = MediaCodecList.getCodecCount();
-    int i = 0;
-    while (i < k)
-    {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if ((localMediaCodecInfo.isEncoder()) && ((localMediaCodecInfo.getName().contains(".sw.")) || (localMediaCodecInfo.getName().contains(".SW.")) || (localMediaCodecInfo.getName().contains("google")) || (localMediaCodecInfo.getName().contains("Google")) || (localMediaCodecInfo.getName().contains("GOOGLE"))))
-      {
-        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-        int j = 0;
-        while (j < arrayOfString.length)
-        {
-          if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-            localArrayList.add(localMediaCodecInfo);
-          }
-          j += 1;
-        }
-      }
-      i += 1;
-    }
-    return localArrayList;
   }
   
   public static List<MediaCodecInfo> a(String paramString, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    int k = MediaCodecList.getCodecCount();
-    int i = 0;
-    while (i < k)
+    int i3 = MediaCodecList.getCodecCount();
+    int i1 = 0;
+    while (i1 < i3)
     {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i1);
       if ((localMediaCodecInfo.isEncoder()) && ((!paramBoolean) || ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))))
       {
         String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-        int j = 0;
-        while (j < arrayOfString.length)
+        int i2 = 0;
+        while (i2 < arrayOfString.length)
         {
-          if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+          if (arrayOfString[i2].equalsIgnoreCase(paramString)) {
             localArrayList.add(localMediaCodecInfo);
           }
-          j += 1;
+          i2 += 1;
         }
       }
-      i += 1;
+      i1 += 1;
     }
     return localArrayList;
   }
@@ -140,16 +114,16 @@ public class SVHwCodec
     if (Build.VERSION.SDK_INT >= 21) {}
     try
     {
-      if (jdField_a_of_type_JavaLangReflectMethod == null) {
-        jdField_a_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getInputBuffer", new Class[] { Integer.TYPE });
+      if (k == null) {
+        k = MediaCodec.class.getMethod("getInputBuffer", new Class[] { Integer.TYPE });
       }
-      if (jdField_b_of_type_JavaLangReflectMethod == null) {
-        jdField_b_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getOutputBuffer", new Class[] { Integer.TYPE });
+      if (l == null) {
+        l = MediaCodec.class.getMethod("getOutputBuffer", new Class[] { Integer.TYPE });
       }
-      if (jdField_c_of_type_JavaLangReflectMethod != null) {
+      if (m != null) {
         break label103;
       }
-      jdField_c_of_type_JavaLangReflectMethod = MediaCodec.class.getMethod("getOutputFormat", new Class[] { Integer.TYPE });
+      m = MediaCodec.class.getMethod("getOutputFormat", new Class[] { Integer.TYPE });
       return;
     }
     catch (Exception localException)
@@ -157,63 +131,83 @@ public class SVHwCodec
       label87:
       break label87;
     }
-    jdField_a_of_type_JavaLangReflectMethod = null;
-    jdField_b_of_type_JavaLangReflectMethod = null;
-    jdField_c_of_type_JavaLangReflectMethod = null;
-    jdField_a_of_type_Boolean = false;
+    k = null;
+    l = null;
+    m = null;
+    o = false;
     label103:
   }
   
-  public MediaCodec a()
+  public static List<MediaCodecInfo> b(String paramString)
   {
-    return this.jdField_a_of_type_AndroidMediaMediaCodec;
+    ArrayList localArrayList = new ArrayList();
+    int i3 = MediaCodecList.getCodecCount();
+    int i1 = 0;
+    while (i1 < i3)
+    {
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i1);
+      if ((localMediaCodecInfo.isEncoder()) && ((localMediaCodecInfo.getName().contains(".sw.")) || (localMediaCodecInfo.getName().contains(".SW.")) || (localMediaCodecInfo.getName().contains("google")) || (localMediaCodecInfo.getName().contains("Google")) || (localMediaCodecInfo.getName().contains("GOOGLE"))))
+      {
+        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+        int i2 = 0;
+        while (i2 < arrayOfString.length)
+        {
+          if (arrayOfString[i2].equalsIgnoreCase(paramString)) {
+            localArrayList.add(localMediaCodecInfo);
+          }
+          i2 += 1;
+        }
+      }
+      i1 += 1;
+    }
+    return localArrayList;
   }
   
   public SVHwCodec.BufferData a(long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec == null) {
+    if (this.g == null) {
       return null;
     }
     SVHwCodec.BufferData localBufferData1 = new SVHwCodec.BufferData(this);
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(paramLong);
-    if (i >= 0)
+    int i1 = this.g.dequeueInputBuffer(paramLong);
+    if (i1 >= 0)
     {
       if (Build.VERSION.SDK_INT <= 20) {
         try
         {
-          localBufferData1.jdField_a_of_type_Int = i;
-          localBufferData1.jdField_a_of_type_JavaNioByteBuffer = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
+          localBufferData1.c = i1;
+          localBufferData1.a = this.i[i1];
           return localBufferData1;
         }
         finally {}
       }
       try
       {
-        localBufferData2.jdField_a_of_type_Int = i;
+        localBufferData2.c = i1;
         try
         {
-          localBufferData2.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
+          localBufferData2.a = ((ByteBuffer)k.invoke(this.g, new Object[] { Integer.valueOf(i1) }));
         }
         catch (InvocationTargetException localInvocationTargetException)
         {
           localInvocationTargetException.printStackTrace();
-          localBufferData2.jdField_a_of_type_Boolean = false;
+          localBufferData2.e = false;
         }
         catch (IllegalArgumentException localIllegalArgumentException)
         {
           localIllegalArgumentException.printStackTrace();
-          localBufferData2.jdField_a_of_type_Boolean = false;
+          localBufferData2.e = false;
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
           localIllegalAccessException.printStackTrace();
-          localBufferData2.jdField_a_of_type_Boolean = false;
+          localBufferData2.e = false;
         }
         return localBufferData2;
       }
       finally {}
     }
-    localBufferData3.jdField_a_of_type_Int = i;
+    localBufferData3.c = i1;
     return localBufferData3;
   }
   
@@ -221,15 +215,15 @@ public class SVHwCodec
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      if (this.g != null)
       {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(paramBufferData.jdField_a_of_type_Int, false);
+        this.g.releaseOutputBuffer(paramBufferData.c, false);
         if (QLog.isColorLevel())
         {
-          String str = jdField_c_of_type_JavaLangString;
+          String str = h;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("releaseOutputBuffer index = ");
-          localStringBuilder.append(paramBufferData.jdField_a_of_type_Int);
+          localStringBuilder.append(paramBufferData.c);
           QLog.d(str, 2, localStringBuilder.toString());
         }
       }
@@ -246,8 +240,8 @@ public class SVHwCodec
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(paramBufferData.jdField_a_of_type_Int, 0, paramInt1, paramLong, paramInt2);
+      if (this.g != null) {
+        this.g.queueInputBuffer(paramBufferData.c, 0, paramInt1, paramLong, paramInt2);
       }
       return;
     }
@@ -258,60 +252,35 @@ public class SVHwCodec
     }
   }
   
-  public boolean a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-        if (Build.VERSION.SDK_INT <= 20) {
-          try
-          {
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-            this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-          }
-          finally {}
-        }
-        return true;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
-  }
-  
   public boolean a(MediaFormat paramMediaFormat, String paramString)
   {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+    this.e = paramMediaFormat;
     paramMediaFormat = a(paramString);
-    int i;
+    int i1;
     if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder()))
     {
-      this.jdField_c_of_type_Int = jdField_a_of_type_Int;
-      i = 1;
+      this.p = a;
+      i1 = 1;
     }
     else
     {
-      i = 0;
+      i1 = 0;
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createByCodecName(paramString);
+      this.g = MediaCodec.createByCodecName(paramString);
       try
       {
-        if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, i);
+        if (this.g != null) {
+          this.g.configure(this.e, null, null, i1);
         }
-        return this.jdField_a_of_type_AndroidMediaMediaCodec != null;
+        return this.g != null;
       }
       catch (Exception paramMediaFormat)
       {
         paramMediaFormat.printStackTrace();
-        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+        this.g.release();
+        this.g = null;
         return false;
       }
       return false;
@@ -325,105 +294,105 @@ public class SVHwCodec
   public SVHwCodec.BufferData b(long paramLong)
   {
     Object localObject1;
-    int i;
+    int i1;
     StringBuilder localStringBuilder;
     String str2;
     label527:
     label599:
     try
     {
-      localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec;
+      localObject1 = this.g;
       if (localObject1 == null) {
         return null;
       }
       localObject1 = new SVHwCodec.BufferData(this);
-      i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, paramLong);
-      if (i != -3)
+      i1 = this.g.dequeueOutputBuffer(((SVHwCodec.BufferData)localObject1).d, paramLong);
+      if (i1 != -3)
       {
-        if (i != -2)
+        if (i1 != -2)
         {
-          if (i != -1)
+          if (i1 != -1)
           {
-            if (i >= 0)
+            if (i1 >= 0)
             {
               if (QLog.isColorLevel())
               {
-                String str1 = jdField_c_of_type_JavaLangString;
+                String str1 = h;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append("dequeueOutputBuffer ok,index = ");
-                localStringBuilder.append(i);
+                localStringBuilder.append(i1);
                 localStringBuilder.append(",BufferInfo[flags = ");
-                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
+                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).d.flags);
                 localStringBuilder.append(",offset=");
-                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).d.offset);
                 localStringBuilder.append(",size= ");
-                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).d.size);
                 localStringBuilder.append(",TimeUs=");
-                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs);
+                localStringBuilder.append(((SVHwCodec.BufferData)localObject1).d.presentationTimeUs);
                 localStringBuilder.append("]");
                 QLog.d(str1, 2, localStringBuilder.toString());
               }
               if (Build.VERSION.SDK_INT <= 20)
               {
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Int = i;
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
+                ((SVHwCodec.BufferData)localObject1).a = this.j[i1];
+                ((SVHwCodec.BufferData)localObject1).c = i1;
+                ((SVHwCodec.BufferData)localObject1).b = this.f;
                 return localObject1;
               }
-              ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Int = i;
+              ((SVHwCodec.BufferData)localObject1).c = i1;
               try
               {
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidMediaMediaCodec, new Object[] { Integer.valueOf(i) }));
+                ((SVHwCodec.BufferData)localObject1).a = ((ByteBuffer)l.invoke(this.g, new Object[] { Integer.valueOf(i1) }));
+                ((SVHwCodec.BufferData)localObject1).b = ((MediaFormat)m.invoke(this.g, new Object[] { Integer.valueOf(i1) }));
               }
               catch (InvocationTargetException localInvocationTargetException)
               {
                 localInvocationTargetException.printStackTrace();
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Boolean = false;
+                ((SVHwCodec.BufferData)localObject1).e = false;
               }
               catch (IllegalArgumentException localIllegalArgumentException)
               {
                 localIllegalArgumentException.printStackTrace();
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Boolean = false;
+                ((SVHwCodec.BufferData)localObject1).e = false;
               }
               catch (IllegalAccessException localIllegalAccessException)
               {
                 localIllegalAccessException.printStackTrace();
-                ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Boolean = false;
+                ((SVHwCodec.BufferData)localObject1).e = false;
               }
               return localObject1;
             }
             return null;
           }
           if (QLog.isColorLevel()) {
-            QLog.e(jdField_c_of_type_JavaLangString, 2, "dequeueOutputBuffer timed out!");
+            QLog.e(h, 2, "dequeueOutputBuffer timed out!");
           }
-          ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Int = -1;
+          ((SVHwCodec.BufferData)localObject1).c = -1;
           return localObject1;
         }
-        ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Int = -2;
-        this.jdField_b_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-        if (this.jdField_b_of_type_AndroidMediaMediaFormat == null) {
+        ((SVHwCodec.BufferData)localObject1).c = -2;
+        this.f = this.g.getOutputFormat();
+        if (this.f == null) {
           break label599;
         }
-        i = this.jdField_c_of_type_Int;
-        int j = jdField_b_of_type_Int;
-        if (i != j) {}
+        i1 = this.p;
+        int i2 = b;
+        if (i1 != i2) {}
       }
     }
     finally {}
     try
     {
-      i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
+      i1 = this.f.getInteger("color-format");
       if (!QLog.isColorLevel()) {
         break label599;
       }
-      str2 = jdField_c_of_type_JavaLangString;
+      str2 = h;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("New color format ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append("[0x");
-      localStringBuilder.append(Integer.toHexString(i));
+      localStringBuilder.append(Integer.toHexString(i1));
       localStringBuilder.append("]");
       QLog.e(str2, 2, localStringBuilder.toString());
     }
@@ -433,40 +402,65 @@ public class SVHwCodec
     }
     if (QLog.isColorLevel())
     {
-      QLog.e(jdField_c_of_type_JavaLangString, 2, "Exception,INFO_OUTPUT_FORMAT_CHANGED");
+      QLog.e(h, 2, "Exception,INFO_OUTPUT_FORMAT_CHANGED");
       break label599;
       if (QLog.isColorLevel())
       {
-        QLog.e(jdField_c_of_type_JavaLangString, 2, "EncCodec,INFO_OUTPUT_FORMAT_CHANGED");
+        QLog.e(h, 2, "EncCodec,INFO_OUTPUT_FORMAT_CHANGED");
         break label599;
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_c_of_type_JavaLangString, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
+          QLog.e(h, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
         }
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        ((SVHwCodec.BufferData)localObject1).jdField_a_of_type_Int = -3;
+        this.j = this.g.getOutputBuffers();
+        ((SVHwCodec.BufferData)localObject1).c = -3;
       }
     }
     return localObject1;
   }
   
-  public void b()
+  public boolean b()
   {
-    MediaCodec localMediaCodec = this.jdField_a_of_type_AndroidMediaMediaCodec;
+    try
+    {
+      if (this.g != null)
+      {
+        this.g.start();
+        if (Build.VERSION.SDK_INT <= 20) {
+          try
+          {
+            this.i = this.g.getInputBuffers();
+            this.j = this.g.getOutputBuffers();
+          }
+          finally {}
+        }
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    MediaCodec localMediaCodec = this.g;
     if (localMediaCodec != null) {
       localMediaCodec.stop();
     }
   }
   
-  public void c()
+  public void d()
   {
     try
     {
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = null;
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = null;
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      this.i = null;
+      this.j = null;
+      if (this.g != null)
       {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+        this.g.release();
+        this.g = null;
       }
       return;
     }
@@ -476,10 +470,15 @@ public class SVHwCodec
       throw localObject;
     }
   }
+  
+  public MediaCodec e()
+  {
+    return this.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwCodec
  * JD-Core Version:    0.7.0.1
  */

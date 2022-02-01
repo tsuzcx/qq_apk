@@ -36,22 +36,22 @@ public class TimeOut
     }
     if ("TransService.ReqTmpChatPicDownload".equalsIgnoreCase((String)localObject))
     {
-      paramMessageHandler.d(paramToServiceMsg, paramFromServiceMsg);
+      paramMessageHandler.e(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     if ("TransService.ReqGetSign".equalsIgnoreCase((String)localObject))
     {
-      paramMessageHandler.c(paramToServiceMsg, paramFromServiceMsg);
+      paramMessageHandler.d(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     if ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject))
     {
-      paramMessageHandler.e(paramToServiceMsg, paramFromServiceMsg);
+      paramMessageHandler.f(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     if ("OidbSvc.0xa89".equalsIgnoreCase((String)localObject))
     {
-      paramMessageHandler.o(paramToServiceMsg, paramFromServiceMsg);
+      paramMessageHandler.p(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     if ("AccostSvc.ClientMsg".equalsIgnoreCase((String)localObject))
@@ -68,29 +68,29 @@ public class TimeOut
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "<<---handle timeout - get thirdqq unread number");
           }
-          paramMessageHandler.a().a(paramToServiceMsg, paramFromServiceMsg);
+          paramMessageHandler.C().a(paramToServiceMsg, paramFromServiceMsg);
           return;
         }
-        paramMessageHandler.k(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.l(paramToServiceMsg, paramFromServiceMsg);
       }
     }
     else
     {
       if ("MessageSvc.SetRoamMsgAllUser".equalsIgnoreCase((String)localObject))
       {
-        paramMessageHandler.f(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.g(paramToServiceMsg, paramFromServiceMsg);
         return;
       }
       if ("MessageSvc.DelRoamMsg".equalsIgnoreCase((String)localObject))
       {
-        paramMessageHandler.h(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.i(paramToServiceMsg, paramFromServiceMsg);
         return;
       }
       if ((!"RegPrxySvc.infoLogin".equalsIgnoreCase((String)localObject)) && (!"RegPrxySvc.getOffMsg".equalsIgnoreCase((String)localObject)))
       {
         if ("PbMessageSvc.PbMsgReadedReport".equalsIgnoreCase((String)localObject))
         {
-          paramMessageHandler.n(paramToServiceMsg, paramFromServiceMsg);
+          paramMessageHandler.o(paramToServiceMsg, paramFromServiceMsg);
           return;
         }
         if ("RegPrxySvc.infoSync".equalsIgnoreCase((String)localObject))
@@ -99,7 +99,7 @@ public class TimeOut
           return;
         }
         if ("MessageSvc.PbReceiptRead".equalsIgnoreCase((String)localObject)) {
-          paramMessageHandler.p(paramToServiceMsg, paramFromServiceMsg);
+          paramMessageHandler.q(paramToServiceMsg, paramFromServiceMsg);
         }
       }
       else
@@ -111,7 +111,7 @@ public class TimeOut
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivetimeout.TimeOut
  * JD-Core Version:    0.7.0.1
  */

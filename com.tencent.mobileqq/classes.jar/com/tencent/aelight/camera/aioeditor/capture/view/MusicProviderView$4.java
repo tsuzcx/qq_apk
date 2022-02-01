@@ -23,21 +23,21 @@ class MusicProviderView$4
       QLog.d("MusicProviderView", 2, paramObject.toString());
     }
     if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
+      this.a.f.sendEmptyMessage(3);
     }
   }
   
   public void a(MusicItemInfo paramMusicItemInfo)
   {
-    Message localMessage = this.a.a.obtainMessage();
+    Message localMessage = this.a.f.obtainMessage();
     localMessage.obj = paramMusicItemInfo;
     localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
+    this.a.f.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.MusicProviderView.4
  * JD-Core Version:    0.7.0.1
  */

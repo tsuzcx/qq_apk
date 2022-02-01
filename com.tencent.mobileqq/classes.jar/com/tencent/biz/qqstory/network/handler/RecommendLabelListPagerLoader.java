@@ -18,15 +18,15 @@ public class RecommendLabelListPagerLoader
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback<GetLabelListRequest, GetLabelListResponse>
 {
-  public String b;
-  public String c;
+  public String g;
+  public String h;
   
   private void d()
   {
     GetLabelListRequest localGetLabelListRequest = new GetLabelListRequest();
-    localGetLabelListRequest.b = this.b;
-    localGetLabelListRequest.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localGetLabelListRequest.jdField_c_of_type_Int = 10;
+    localGetLabelListRequest.f = this.g;
+    localGetLabelListRequest.g = this.h;
+    localGetLabelListRequest.h = 10;
     CmdTaskManger.a().a(localGetLabelListRequest, this);
   }
   
@@ -36,12 +36,12 @@ public class RecommendLabelListPagerLoader
     RecommendLabelListPagerLoader.GetRecommendLabelListEvent localGetRecommendLabelListEvent = new RecommendLabelListPagerLoader.GetRecommendLabelListEvent(paramErrorMessage);
     if ((paramGetLabelListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      localGetRecommendLabelListEvent.jdField_a_of_type_JavaUtilList = paramGetLabelListResponse.jdField_a_of_type_JavaUtilList;
-      localGetRecommendLabelListEvent.jdField_a_of_type_JavaLangString = paramGetLabelListRequest.b;
-      localGetRecommendLabelListEvent.jdField_a_of_type_Boolean = paramGetLabelListResponse.jdField_a_of_type_Boolean;
-      localGetRecommendLabelListEvent.c = TextUtils.isEmpty(paramGetLabelListRequest.jdField_c_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = paramGetLabelListResponse.jdField_a_of_type_JavaLangString;
-      localGetRecommendLabelListEvent.d = this.jdField_a_of_type_Boolean;
+      localGetRecommendLabelListEvent.e = paramGetLabelListResponse.a;
+      localGetRecommendLabelListEvent.f = paramGetLabelListRequest.f;
+      localGetRecommendLabelListEvent.a = paramGetLabelListResponse.b;
+      localGetRecommendLabelListEvent.c = TextUtils.isEmpty(paramGetLabelListRequest.g);
+      this.h = paramGetLabelListResponse.e;
+      localGetRecommendLabelListEvent.d = this.a;
       StoryDispatcher.a().dispatch(localGetRecommendLabelListEvent);
       SLog.a("Q.qqstory.record.label.RecommendLabelListPagerLoader", "dispatch recommend label result %s", localGetRecommendLabelListEvent.toString());
       return;
@@ -52,7 +52,7 @@ public class RecommendLabelListPagerLoader
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
     super.a(paramTencentLocation, paramInt);
-    this.jdField_c_of_type_JavaLangString = "";
+    this.h = "";
     d();
   }
   
@@ -64,7 +64,7 @@ public class RecommendLabelListPagerLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecommendLabelListPagerLoader
  * JD-Core Version:    0.7.0.1
  */

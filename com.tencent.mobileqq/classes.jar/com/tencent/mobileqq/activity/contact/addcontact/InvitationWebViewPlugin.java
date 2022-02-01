@@ -37,33 +37,14 @@ public class InvitationWebViewPlugin
   extends WebViewPlugin
   implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener
 {
-  private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
-  private String jdField_a_of_type_JavaLangString;
+  private ShareActionSheetBuilder a;
   private String b;
   private String c;
+  private String d;
   
   public InvitationWebViewPlugin()
   {
     this.mPluginNameSpace = "newLogin";
-  }
-  
-  private void a()
-  {
-    QLog.d("InvitationFriend", 1, "handleRegWithNickAndPwd");
-    ReportController.a(null, "dc00898", "", "", "0X800B338", "0X800B338", 0, 0, "", "", "", "");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_reg_from_phone_protect_h5", true);
-    RouteUtils.a(this.mRuntime.a(), localIntent, "/base/safe/registerByNickAndPwd");
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Intent localIntent = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:"));
-    localIntent.putExtra("sms_body", paramString);
-    this.mRuntime.a().startActivity(localIntent);
   }
   
   private void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -82,12 +63,47 @@ public class InvitationWebViewPlugin
       ((Intent)localObject).putExtra("uinMask", paramString1);
       ((Intent)localObject).putExtra("uinEncrpyt", paramString2);
     }
-    RouteUtils.a(this.mRuntime.a(), (Intent)localObject, "/base/login");
+    RouteUtils.a(this.mRuntime.d(), (Intent)localObject, "/base/login");
   }
   
   private boolean a()
   {
-    return (this.mRuntime == null) || (this.mRuntime.a() == null);
+    return (this.mRuntime == null) || (this.mRuntime.d() == null);
+  }
+  
+  private boolean a(String paramString)
+  {
+    QLog.d("InvitationFriend", 1, "handleUnbindAccount");
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handle newLogin/unbindPhone jsonObj：");
+      localStringBuilder.append(((JSONObject)localObject).toString());
+      QLog.d("InvitationFriend", 2, localStringBuilder.toString());
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      if ((this.mRuntime != null) && (this.mRuntime.d() != null))
+      {
+        localObject = new Intent();
+        ((Intent)localObject).setAction("com.tencent.mobileqq.InvitationWebViewPlugin.unbindAccount");
+        ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
+        ((Intent)localObject).putExtra("key_login_unbind_phone_account_data", paramString);
+        paramString = this.mRuntime.d();
+        paramString.sendBroadcast((Intent)localObject);
+        paramString.finish();
+        return true;
+      }
+      QLog.e("InvitationFriend", 1, "PLUGIN_METHOD_UNBIND_PHONE error: runtime or activity is null");
+      return true;
+    }
+    catch (JSONException paramString) {}
+    return false;
   }
   
   private boolean a(String[] paramArrayOfString)
@@ -95,31 +111,50 @@ public class InvitationWebViewPlugin
     return (paramArrayOfString == null) || (paramArrayOfString.length == 0);
   }
   
-  private List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  private void b()
+  {
+    QLog.d("InvitationFriend", 1, "handleRegWithNickAndPwd");
+    ReportController.a(null, "dc00898", "", "", "0X800B338", "0X800B338", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_reg_from_phone_protect_h5", true);
+    RouteUtils.a(this.mRuntime.d(), localIntent, "/base/safe/registerByNickAndPwd");
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Intent localIntent = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:"));
+    localIntent.putExtra("sms_body", paramString);
+    this.mRuntime.d().startActivity(localIntent);
+  }
+  
+  private List<ShareActionSheetBuilder.ActionSheetItem>[] c()
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
+    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696402);
-    localActionSheetItem.icon = 2130839065;
+    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = HardCodeUtil.a(2131705905);
-    localActionSheetItem.icon = 2130839063;
+    localActionSheetItem.label = HardCodeUtil.a(2131903786);
+    localActionSheetItem.icon = 2130839217;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 1;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696391);
-    localActionSheetItem.icon = 2130839063;
+    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131894163);
+    localActionSheetItem.icon = 2130839217;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 1;
     localActionSheetItem.argus = "";
@@ -132,15 +167,15 @@ public class InvitationWebViewPlugin
   public void denied()
   {
     QLog.d("InvitationFriend", 1, "CheckPermission user denied = sms");
-    QQToast.a(this.mRuntime.a(), HardCodeUtil.a(2131705903), 1).a();
+    QQToast.makeText(this.mRuntime.d(), HardCodeUtil.a(2131903784), 1).show();
   }
   
   @QQPermissionGrant(1)
   public void grant()
   {
     QLog.d("InvitationFriend", 1, "CheckPermission user grant = sms");
-    if (!TextUtils.isEmpty(this.c)) {
-      a(this.c);
+    if (!TextUtils.isEmpty(this.d)) {
+      b(this.d);
     }
   }
   
@@ -175,19 +210,19 @@ public class InvitationWebViewPlugin
     {
       paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
       paramString1 = paramJsBridgeListener.getString("desc");
-      this.b = paramJsBridgeListener.getString("callback");
+      this.c = paramJsBridgeListener.getString("callback");
       if (Build.VERSION.SDK_INT >= 23)
       {
-        if (this.mRuntime.a().checkSelfPermission("android.permission.SEND_SMS") != 0)
+        if (this.mRuntime.d().checkSelfPermission("android.permission.SEND_SMS") != 0)
         {
-          this.c = paramString1;
-          ((AppActivity)this.mRuntime.a()).requestPermissions(this, 1, new String[] { "android.permission.SEND_SMS" });
+          this.d = paramString1;
+          ((AppActivity)this.mRuntime.d()).requestPermissions(this, 1, new String[] { "android.permission.SEND_SMS" });
           return true;
         }
-        a(paramString1);
+        b(paramString1);
         return true;
       }
-      a(paramString1);
+      b(paramString1);
       return true;
     }
     catch (JSONException paramJsBridgeListener)
@@ -206,19 +241,19 @@ public class InvitationWebViewPlugin
     }
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramJsBridgeListener).getString("callback");
-      paramJsBridgeListener = this.mRuntime.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramJsBridgeListener);
+      this.b = new JSONObject(paramJsBridgeListener).getString("callback");
+      paramJsBridgeListener = this.mRuntime.d();
+      if (this.a == null) {
+        this.a = new ShareActionSheetBuilder(paramJsBridgeListener);
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(HardCodeUtil.a(2131705904));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(this);
+      this.a.setActionSheetTitle(HardCodeUtil.a(2131903785));
+      this.a.setActionSheetItems(c());
+      this.a.setItemClickListener(this);
+      this.a.setOnDismissListener(this);
       if (!paramJsBridgeListener.isFinishing()) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+          this.a.show();
           ReportController.b(null, "dc00898", "", "", "0X80096F9", "0X80096F9", 0, 0, "", "", "", "");
           return true;
         }
@@ -243,13 +278,13 @@ public class InvitationWebViewPlugin
         if (QLog.isColorLevel()) {
           QLog.d("InvitationFriend", 2, "handle newLogin/AutoLogin");
         }
-        if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+        if ((this.mRuntime != null) && (this.mRuntime.d() != null))
         {
           paramJsBridgeListener = new Intent();
           paramJsBridgeListener.setAction("com.tencent.mobileqq.InvitationWebViewPlugin");
           paramJsBridgeListener.setPackage(MobileQQ.getContext().getPackageName());
           paramJsBridgeListener.putExtra("key_login_by_web", true);
-          this.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+          this.mRuntime.d().sendBroadcast(paramJsBridgeListener);
           return true;
         }
         QLog.e("InvitationFriend", 1, "PLUGIN_METHOD_AUTO_LOGIN error: runtime or activity is null");
@@ -305,7 +340,7 @@ public class InvitationWebViewPlugin
         QLog.e("InvitationFriend", 1, "METHOD_REG_WITH_NICK_PWD error: mRuntime invalid");
         return false;
       }
-      a();
+      b();
       return true;
     }
     if ("accountIdentityNotify".equals(paramString3))
@@ -313,15 +348,33 @@ public class InvitationWebViewPlugin
       if (QLog.isColorLevel()) {
         QLog.d("InvitationFriend", 2, "handle newLogin/accountIdentityNotify");
       }
-      if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+      if ((this.mRuntime != null) && (this.mRuntime.d() != null))
       {
         paramJsBridgeListener = new Intent();
         paramJsBridgeListener.setAction("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
         paramJsBridgeListener.setPackage(MobileQQ.getContext().getPackageName());
-        this.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+        this.mRuntime.d().sendBroadcast(paramJsBridgeListener);
         return true;
       }
       QLog.e("InvitationFriend", 1, "PLUGIN_METHOD_AUTO_LOGIN error: runtime or activity is null");
+      return true;
+    }
+    if ("unbindPhone".equalsIgnoreCase(paramString3))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("InvitationFriend", 2, "handle newLogin/unbindPhone");
+      }
+      if (paramVarArgs != null)
+      {
+        if (paramVarArgs.length != 1) {
+          return false;
+        }
+        if (a(paramVarArgs[0])) {}
+      }
+      else
+      {
+        return false;
+      }
     }
     return true;
     return false;
@@ -331,7 +384,7 @@ public class InvitationWebViewPlugin
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramInt) });
+    callJs(this.b, new String[] { String.valueOf(paramInt) });
     String str;
     if (paramInt == 0) {
       str = "0X80096FA";
@@ -357,7 +410,7 @@ public class InvitationWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.InvitationWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

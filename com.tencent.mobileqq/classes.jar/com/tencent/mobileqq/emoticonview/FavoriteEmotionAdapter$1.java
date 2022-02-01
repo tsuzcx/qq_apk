@@ -70,8 +70,8 @@ class FavoriteEmotionAdapter$1
             }
             return true;
           }
-          localObject = (URLImageView)paramView.findViewById(2131378202);
-          paramView = (URLImageView)paramView.findViewById(2131374391);
+          localObject = (URLImageView)paramView.findViewById(2131446720);
+          paramView = (URLImageView)paramView.findViewById(2131442557);
           if ((((URLImageView)localObject).getDrawable() instanceof URLDrawable))
           {
             URLDrawable localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
@@ -103,7 +103,7 @@ class FavoriteEmotionAdapter$1
               localURLDrawable.restartDownload();
               if (!(paramView.getDrawable() instanceof Animatable))
               {
-                paramEmoticonInfo = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130846461);
+                paramEmoticonInfo = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130847934);
                 paramView.setImageDrawable((Drawable)paramEmoticonInfo);
                 paramEmoticonInfo.start();
                 return true;
@@ -123,7 +123,7 @@ class FavoriteEmotionAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.getkeepsafe.relinker.elf;
 
 public abstract class Elf$Header
 {
-  public int a;
-  public long a;
   public boolean a;
   public int b;
-  public long b;
-  public int c;
-  public int d;
+  public long c;
+  public long d;
   public int e;
   public int f;
+  public int g;
+  public int h;
+  public int i;
   
   public abstract Elf.DynamicStructure a(long paramLong, int paramInt);
   

@@ -22,7 +22,7 @@ public class MoreMsgHeaderView
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
   {
     paramQQVipMsgInfo = new TextView(getContext());
-    paramQQVipMsgInfo.setText(HardCodeUtil.a(2131706910));
+    paramQQVipMsgInfo.setText(HardCodeUtil.a(2131904755));
     paramQQVipMsgInfo.setTextColor(-16777216);
     paramQQVipMsgInfo.setAlpha(0.5F);
     paramQQVipMsgInfo.setEms(1);
@@ -35,7 +35,7 @@ public class MoreMsgHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.MoreMsgHeaderView
  * JD-Core Version:    0.7.0.1
  */

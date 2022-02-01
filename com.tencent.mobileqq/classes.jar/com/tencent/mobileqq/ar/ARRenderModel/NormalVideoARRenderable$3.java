@@ -2,7 +2,7 @@ package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.activity.ScanTorchConstants;
 import com.tencent.qphone.base.util.QLog;
 
 class NormalVideoARRenderable$3
@@ -15,7 +15,7 @@ class NormalVideoARRenderable$3
   {
     try
     {
-      NormalVideoARRenderable.a(this.this$0).updateTexImage();
+      NormalVideoARRenderable.e(this.this$0).updateTexImage();
     }
     catch (Throwable localThrowable)
     {
@@ -23,17 +23,17 @@ class NormalVideoARRenderable$3
         localThrowable.printStackTrace();
       }
     }
-    NormalVideoARRenderable.a(this.this$0).getTransformMatrix(NormalVideoARRenderable.a(this.this$0));
-    if (ScanTorchActivity.b)
+    NormalVideoARRenderable.e(this.this$0).getTransformMatrix(NormalVideoARRenderable.f(this.this$0));
+    if (ScanTorchConstants.a)
     {
       Object localObject = this.this$0;
-      ((NormalVideoARRenderable)localObject).b += 1L;
-      if (this.this$0.b >= 30L)
+      ((NormalVideoARRenderable)localObject).f += 1L;
+      if (this.this$0.f >= 30L)
       {
-        this.this$0.b = 0L;
+        this.this$0.f = 0L;
         long l = System.currentTimeMillis();
-        float f = 30000.0F / (float)(l - this.this$0.a);
-        this.this$0.a = l;
+        float f = 30000.0F / (float)(l - this.this$0.e);
+        this.this$0.e = l;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("video fetch=");
         ((StringBuilder)localObject).append(f);
@@ -44,7 +44,7 @@ class NormalVideoARRenderable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.NormalVideoARRenderable.3
  * JD-Core Version:    0.7.0.1
  */

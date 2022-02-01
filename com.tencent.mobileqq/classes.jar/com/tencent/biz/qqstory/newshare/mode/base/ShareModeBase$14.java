@@ -8,15 +8,15 @@ class ShareModeBase$14
 {
   ShareModeBase$14(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
   
-  public boolean b()
+  public boolean c()
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
+    a("UploadImageJob_in_image_file_path", this.b.g);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.14
  * JD-Core Version:    0.7.0.1
  */

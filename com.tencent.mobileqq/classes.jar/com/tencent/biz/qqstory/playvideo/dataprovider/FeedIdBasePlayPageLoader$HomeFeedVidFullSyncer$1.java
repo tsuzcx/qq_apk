@@ -11,12 +11,12 @@ class FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer$1
   
   public void a(VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$HomeFeedVidFullSyncer, this.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent);
+    FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer.a(this.b, this.a, paramGetVideoListEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer.1
  * JD-Core Version:    0.7.0.1
  */

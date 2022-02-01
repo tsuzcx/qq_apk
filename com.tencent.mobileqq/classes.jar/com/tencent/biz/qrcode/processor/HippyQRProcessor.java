@@ -23,11 +23,6 @@ public class HippyQRProcessor
     return "HippyQRProcessor";
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     return (a(paramInt)) && (HippyCommonUtils.checkHippyQRCode(paramString1));
@@ -35,17 +30,22 @@ public class HippyQRProcessor
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return false;
     }
-    paramString2 = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-    paramScannerParams = (Activity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
+    paramString2 = (QQAppInterface)this.a;
+    paramScannerParams = (Activity)this.b.d();
     if (HippyCommonUtils.checkHippyQRCode(paramString1))
     {
       HippyCommonUtils.checkDebugHippyUpdate(paramString2, (AppActivity)paramScannerParams, paramString1);
-      this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.b();
+      this.b.b();
     }
     return true;
+  }
+  
+  public boolean b()
+  {
+    return super.b();
   }
 }
 

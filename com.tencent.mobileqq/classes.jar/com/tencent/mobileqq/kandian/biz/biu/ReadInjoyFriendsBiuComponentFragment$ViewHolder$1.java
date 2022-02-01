@@ -23,7 +23,7 @@ class ReadInjoyFriendsBiuComponentFragment$ViewHolder$1
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if ((paramReadInJoyUserInfo != null) && (this.a.a != null)) {
+    if ((paramReadInJoyUserInfo != null) && (this.a.k != null)) {
       ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1(this));
     }
     if (paramReadInJoyUserInfo != null) {
@@ -37,13 +37,13 @@ class ReadInjoyFriendsBiuComponentFragment$ViewHolder$1
     paramString = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(" mContents:");
-    localStringBuilder.append(this.a.a);
+    localStringBuilder.append(this.a.k);
     QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setComments infoSuccess nick = ", paramReadInJoyUserInfo, paramString, localStringBuilder.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

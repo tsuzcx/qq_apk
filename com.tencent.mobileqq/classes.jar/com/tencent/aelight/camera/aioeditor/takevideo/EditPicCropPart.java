@@ -29,25 +29,25 @@ public class EditPicCropPart
   extends EditVideoPart
   implements View.OnClickListener, CropNewView.CropListener
 {
-  int jdField_a_of_type_Int = 0;
-  public Bitmap a;
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CropNewView jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[5];
-  public Bitmap b;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  boolean jdField_b_of_type_Boolean = false;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  boolean jdField_c_of_type_Boolean = false;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  boolean jdField_d_of_type_Boolean = false;
-  boolean e = false;
-  boolean f = false;
+  protected ViewGroup a;
+  protected CropNewView b;
+  protected View c;
+  protected View d;
+  protected TextView e;
+  protected View f;
+  protected TextView g;
+  public Bitmap h;
+  public Bitmap i;
+  protected TextView j;
+  protected TextView k;
+  protected boolean l = false;
+  boolean m = false;
+  boolean n = false;
+  int o = 0;
+  boolean p = false;
+  boolean q = false;
+  boolean r = false;
+  int[] s = new int[5];
   
   public EditPicCropPart(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
@@ -56,28 +56,65 @@ public class EditPicCropPart
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager == null) {
+    if (this.t == null) {
       return;
     }
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a();
+    int i1 = this.t.I.h();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBussiRestoreClick , bussiId = ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append(",hasModified");
       localStringBuilder.append(paramBoolean);
       QLog.d("EditPicCropPart", 2, localStringBuilder.toString());
     }
   }
   
-  private boolean c()
+  private void k()
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a();
-    boolean bool;
-    if (i == 103)
+    this.m = true;
+    this.a.setVisibility(0);
+    if (!this.r)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.f();
+      this.e.setEnabled(false);
+      this.g.setVisibility(8);
+    }
+    else
+    {
+      this.g.setVisibility(0);
+    }
+    m();
+    this.c.setEnabled(false);
+    this.b.setImageBitmap(this.h);
+    this.i = this.h;
+  }
+  
+  private void l()
+  {
+    this.m = false;
+    this.a.setVisibility(8);
+    this.h = null;
+    this.i = null;
+  }
+  
+  private void m()
+  {
+    if (this.t.I.h() == 103)
+    {
+      this.e.setEnabled(false);
+      this.e.setText(2131897072);
+      this.g.setVisibility(8);
+    }
+  }
+  
+  private boolean n()
+  {
+    int i1 = this.t.I.h();
+    boolean bool;
+    if (i1 == 103)
+    {
+      this.t.i();
       bool = true;
     }
     else
@@ -88,7 +125,7 @@ public class EditPicCropPart
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBussiCropClick , bussiId = ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append(",clickHit = ");
       localStringBuilder.append(bool);
       QLog.d("EditPicCropPart", 2, localStringBuilder.toString());
@@ -96,15 +133,15 @@ public class EditPicCropPart
     return bool;
   }
   
-  private boolean d()
+  private boolean o()
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a();
-    this.jdField_d_of_type_Boolean = true;
+    int i1 = this.t.I.h();
+    this.p = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBussiCropClickIntercept , bussiId = ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append(",intercepte = ");
       localStringBuilder.append(false);
       QLog.d("EditPicCropPart", 2, localStringBuilder.toString());
@@ -112,14 +149,14 @@ public class EditPicCropPart
     return false;
   }
   
-  private boolean e()
+  private boolean p()
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a();
+    int i1 = this.t.I.h();
     boolean bool;
-    if (i == 103)
+    if (i1 == 103)
     {
       bool = true;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b();
+      this.t.b();
     }
     else
     {
@@ -129,7 +166,7 @@ public class EditPicCropPart
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBussiBackPressed , bussiId = ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append(",clickHit = ");
       localStringBuilder.append(bool);
       QLog.d("EditPicCropPart", 2, localStringBuilder.toString());
@@ -137,119 +174,52 @@ public class EditPicCropPart
     return bool;
   }
   
-  private void g()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2064122065));
-      this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-      {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-        localLayoutParams.bottomMargin = ViewUtils.a(56.5F);
-        this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView = ((CropNewView)a(2064122084));
-      this.jdField_a_of_type_AndroidViewView = a(2064122080);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = a(2064122082);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2064122063));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = a(2064122024);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2064122083));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2064122081));
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2064122665));
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.setCropListener(this);
-    }
-  }
-  
-  private void h()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    if (!this.f)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    else
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    k();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  private void j()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a() == 103)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699063);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  private void l() {}
+  private void q() {}
   
   public void a(int paramInt)
   {
     if (paramInt == 1)
     {
-      this.jdField_b_of_type_AndroidViewView.setEnabled(false);
+      this.d.setEnabled(false);
       return;
     }
     if (paramInt == 2) {
-      this.jdField_b_of_type_AndroidViewView.setEnabled(true);
+      this.d.setEnabled(true);
     }
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
   {
-    GeneratePicArgs localGeneratePicArgs = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs;
-    localGeneratePicArgs.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
-    if (this.jdField_c_of_type_Boolean)
+    GeneratePicArgs localGeneratePicArgs = paramGenerateContext.l;
+    localGeneratePicArgs.f += this.o;
+    if (this.n)
     {
-      paramGenerateContext.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reservesArray.add("2");
-      VideoEditReport.b("0X80075E9", VideoEditReport.jdField_a_of_type_Int);
+      paramGenerateContext.o.reservesArray.add("2");
+      VideoEditReport.b("0X80075E9", VideoEditReport.c);
       ((IAEBaseReportParam)QRoute.api(IAEBaseReportParam.class)).setEditHasCut(true);
     }
   }
   
   public void a(int paramInt, Object paramObject)
   {
-    g();
+    c();
     if (paramInt == 7)
     {
-      if (!this.jdField_b_of_type_Boolean) {
-        h();
+      if (!this.m) {
+        k();
       }
     }
-    else if (this.jdField_b_of_type_Boolean) {
-      j();
+    else if (this.m) {
+      l();
     }
   }
   
-  public boolean a()
+  public boolean au_()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.m)
     {
-      if (!e()) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b(0);
+      if (!p()) {
+        this.t.d(0);
       }
       VideoEditReport.b("0X80075D5");
       ((IOCR)QRoute.api(IOCR.class)).report("0X800AAE5", 0);
@@ -258,59 +228,89 @@ public class EditPicCropPart
     return false;
   }
   
-  public void b()
+  protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.e = true;
+    if (!this.l)
+    {
+      this.l = true;
+      this.a = ((ViewGroup)d(2063990982));
+      this.a.setOnClickListener(this);
+      if (this.t.Z != null)
+      {
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+        localLayoutParams.bottomMargin = ViewUtils.dip2px(56.5F);
+        this.a.setLayoutParams(localLayoutParams);
+      }
+      this.b = ((CropNewView)d(2063990998));
+      this.c = d(2063990994);
+      this.c.setOnClickListener(this);
+      this.d = d(2063990996);
+      this.d.setOnClickListener(this);
+      this.e = ((TextView)d(2063990980));
+      this.e.setOnClickListener(this);
+      this.f = d(2063990957);
+      this.f.setOnClickListener(this);
+      this.g = ((TextView)d(2063990997));
+      this.j = ((TextView)d(2063990995));
+      this.j.setOnClickListener(this);
+      this.k = ((TextView)d(2063991462));
+      this.b.setCropListener(this);
+    }
   }
   
-  public boolean b()
+  public void d()
   {
-    return this.jdField_c_of_type_Boolean;
+    this.e.setEnabled(true);
+    this.c.setEnabled(true);
+    this.q = true;
+  }
+  
+  public boolean i()
+  {
+    return this.n;
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2064122024)
+    int i1 = paramView.getId();
+    if (i1 != 2063990957)
     {
-      if (i != 2064122063)
+      if (i1 != 2063990980)
       {
-        switch (i)
+        switch (i1)
         {
         default: 
           return;
-        case 2064122082: 
-          b();
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.b();
+        case 2063990996: 
+          d();
+          this.b.d();
           VideoEditReport.b("0X80075D4");
           ((IOCR)QRoute.api(IOCR.class)).report("0X800AAE4", 0);
           return;
-        case 2064122081: 
-          l();
+        case 2063990995: 
+          q();
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.a();
-        this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-        if (!this.f) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.b.c();
+        this.c.setEnabled(false);
+        if (!this.r) {
+          this.e.setEnabled(false);
         }
-        if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a() == 103)) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        if ((this.t != null) && (this.t.I.h() == 103)) {
+          this.e.setEnabled(false);
         }
-        this.e = false;
-        a(this.e);
+        this.q = false;
+        a(this.q);
         VideoEditReport.b("0X80075D3");
         ((IOCR)QRoute.api(IOCR.class)).report("0X800AAE3", 0);
         return;
       }
-      if (d()) {
+      if (o()) {
         return;
       }
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_c_of_type_Boolean = true;
-      boolean bool = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.c();
+      this.o += 1;
+      this.n = true;
+      boolean bool = this.b.e();
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
@@ -320,37 +320,37 @@ public class EditPicCropPart
       }
       if (bool)
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle != null)
+        if (this.t.ad != null)
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle.remove(FaceLayer.a);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle.remove("DynamicFaceLayer");
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle.remove(TextLayer.a);
+          this.t.ad.remove(FaceLayer.a);
+          this.t.ad.remove("DynamicFaceLayer");
+          this.t.ad.remove(TextLayer.a);
         }
-        paramView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.a();
+        paramView = this.b.g();
         if (paramView != null)
         {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = paramView;
-          VideoFilterTools.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(this.jdField_a_of_type_AndroidGraphicsBitmap, false);
-          if (!c()) {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.w();
+          this.h = paramView;
+          VideoFilterTools.a().a(this.h);
+          this.t.a(this.h, false);
+          if (!n()) {
+            this.t.I();
           }
         }
         VideoEditReport.b("0X80075D2");
         ((IOCR)QRoute.api(IOCR.class)).report("0X800AAE6", 0);
-        GeneratePicArgs.a(this.jdField_a_of_type_ArrayOfInt);
+        GeneratePicArgs.a(this.s);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiCropCropNewView.c();
-      a();
+      this.b.f();
+      au_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicCropPart
  * JD-Core Version:    0.7.0.1
  */

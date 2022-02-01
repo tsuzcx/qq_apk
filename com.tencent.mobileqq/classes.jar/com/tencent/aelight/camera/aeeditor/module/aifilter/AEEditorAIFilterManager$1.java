@@ -12,26 +12,26 @@ class AEEditorAIFilterManager$1
   
   public void a(int paramInt)
   {
-    Object localObject = AEEditorAIFilterManager.a();
+    Object localObject = AEEditorAIFilterManager.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("proxy onProcessFailed: errCode=");
     localStringBuilder.append(paramInt);
     AEQLog.b((String)localObject, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager$AIFilterObserver;
+    localObject = this.c;
     if (localObject != null) {
-      ((AEEditorAIFilterManager.AIFilterObserver)localObject).a(paramInt, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterProxyBase.a());
+      ((AEEditorAIFilterManager.AIFilterObserver)localObject).a(paramInt, this.b.d());
     }
   }
   
   public void a(ArrayList<SmartFilterReqItem> paramArrayList)
   {
-    AEQLog.b(AEEditorAIFilterManager.a(), "proxy onDataReadyForRequest");
-    AEEditorAIFilterManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList, new AEEditorAIFilterManager.1.1(this));
+    AEQLog.b(AEEditorAIFilterManager.c(), "proxy onDataReadyForRequest");
+    AEEditorAIFilterManager.a(this.d, this.a, paramArrayList, new AEEditorAIFilterManager.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.AEEditorAIFilterManager.1
  * JD-Core Version:    0.7.0.1
  */

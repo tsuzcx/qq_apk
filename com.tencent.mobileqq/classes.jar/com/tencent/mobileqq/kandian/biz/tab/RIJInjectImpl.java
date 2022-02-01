@@ -9,6 +9,7 @@ import com.tencent.mobileqq.activity.framebusiness.BaseFrameBusiness;
 import com.tencent.mobileqq.activity.home.ITabFrameController;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.home.impl.FrameInfoBean;
+import com.tencent.mobileqq.activity.home.impl.FrameInitBean;
 import com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.Frame;
@@ -17,16 +18,18 @@ import com.tencent.mobileqq.app.FrameFragment.DragViewTouchListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.tab.IRIJTabFrame;
-import com.tencent.mobileqq.kandian.base.utils.api.IRIJRuntimeUtils;
-import com.tencent.mobileqq.kandian.base.view.api.IKanDianOptUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IRIJXTabFrameUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.base.view.api.impl.KanDianOptUtils;
+import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.push.api.IKanDianMergeManager;
 import com.tencent.mobileqq.kandian.biz.xtab.RIJXTabFrame;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
-import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
+import com.tencent.mobileqq.kandian.glue.report.RIJKanDianTabReport;
+import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.dt.RIJDtParamBuilder;
+import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -44,57 +47,38 @@ import mqq.app.AppRuntime;
 public class RIJInjectImpl
   extends BaseFrameBusiness
 {
-  public static final String a = FrameControllerUtil.f;
+  public static final String a = FrameControllerUtil.q;
   
-  public static void a(FrameFragment paramFrameFragment, int paramInt)
+  public static void a(FrameFragment paramFrameFragment, FrameInitBean paramFrameInitBean)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("update kandian tab, type : ");
-    ((StringBuilder)localObject).append(paramInt);
-    QLog.d("TabFrameControllerImpl", 2, ((StringBuilder)localObject).toString());
-    if (paramInt == 0)
+    KDBottomTabThemeManager.a(paramFrameInitBean, paramFrameFragment);
+    int i;
+    int j;
+    if (FrameControllerUtil.a())
     {
-      ((ITabFrameController)QRoute.api(ITabFrameController.class)).setFrames(paramFrameFragment, false);
-      return;
+      i = -1;
+      j = -1;
     }
-    if (!(paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.g) instanceof ReadInjoyTabDragAnimationView)) {
-      return;
-    }
-    localObject = (ReadInjoyTabDragAnimationView)paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.g);
-    paramFrameFragment = (TextView)paramFrameFragment.b.get(FrameControllerUtil.g);
-    if ((localObject != null) && (paramFrameFragment != null))
+    else
     {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2)
-        {
-          if (paramInt != 3)
-          {
-            if (paramInt != 4)
-            {
-              if (paramInt != 5) {
-                return;
-              }
-              ((ReadInjoyTabDragAnimationView)localObject).setIsSelect(true);
-              return;
-            }
-            ((ReadInjoyTabDragAnimationView)localObject).setIsSelect(false);
-            return;
-          }
-          ((ReadInjoyTabDragAnimationView)localObject).a(0);
-          return;
-        }
-        ((ReadInjoyTabDragAnimationView)localObject).a(false);
-        return;
-      }
-      if (((ReadInjoyTabDragAnimationView)localObject).a() != 1)
-      {
-        ((ReadInjoyTabDragAnimationView)localObject).a(1);
-        ((ReadInjoyTabDragAnimationView)localObject).a(true);
-      }
-      return;
+      i = 2130844340;
+      j = 2130844341;
     }
-    QLog.d("TabFrameControllerImpl", 2, "iconView is null, give up !");
+    paramFrameInitBean = KanDianOptUtils.INSTANCE.generateTabItem(i, 2130852574, j, 2130852576, 2131891953, 16, 8);
+    if (paramFrameInitBean != null)
+    {
+      paramFrameInitBean.setOnClickListener(new RIJInjectImpl.1(paramFrameFragment));
+      paramFrameFragment.z[6] = new RedTouch(paramFrameFragment.C(), paramFrameInitBean).c(49).c(3.0F).d(5).a();
+      VideoReport.setElementId(paramFrameInitBean, "tab_button");
+      VideoReport.setElementParams(paramFrameInitBean, new RIJDtParamBuilder().a("14").a("tab_id", "kandian").b("tab_bar").c("click_tab").a().c());
+      paramFrameFragment.G.put(FrameControllerUtil.q, paramFrameFragment.z[6]);
+      HashMap localHashMap = paramFrameFragment.G;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FrameControllerUtil.q);
+      localStringBuilder.append("_num");
+      localHashMap.put(localStringBuilder.toString(), paramFrameFragment.z[6].findViewById(2131449076));
+      paramFrameInitBean.setContentDescription(paramFrameFragment.getResources().getString(2131891953));
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, HashMap<String, View> paramHashMap)
@@ -104,9 +88,9 @@ public class RIJInjectImpl
     {
       try
       {
-        if (paramHashMap.get(FrameControllerUtil.f) != null)
+        if (paramHashMap.get(FrameControllerUtil.q) != null)
         {
-          paramHashMap = (BusinessInfoCheckUpdate.RedTypeInfo)((RedTouch)paramHashMap.get(FrameControllerUtil.f)).getTag(2131376127);
+          paramHashMap = (BusinessInfoCheckUpdate.RedTypeInfo)((RedTouch)paramHashMap.get(FrameControllerUtil.q)).getTag(2131444330);
           if (paramHashMap == null) {
             break label168;
           }
@@ -144,37 +128,88 @@ public class RIJInjectImpl
   
   public static void a(QQAppInterface paramQQAppInterface, HashMap<String, View> paramHashMap, View[] paramArrayOfView)
   {
-    ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).synSwitchCache();
+    ReadInJoyHelper.s();
     ((IKanDianMergeManager)paramQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).tryToShowAppInPush();
-    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowKandianTab())
+    if (RIJShowKanDianTabSp.c())
     {
       if ((paramArrayOfView != null) && (paramArrayOfView.length >= 6) && (paramArrayOfView[6] != null)) {
-        VideoReport.reportEvent("imp", ((RedTouch)paramArrayOfView[6]).a(), new RIJDtParamBuilder().a("14").a("tab_id", "kandian").b("tab_bar").a().a());
+        VideoReport.reportEvent("imp", ((RedTouch)paramArrayOfView[6]).getTarget(), new RIJDtParamBuilder().a("14").a("tab_id", "kandian").b("tab_bar").a().c());
       }
-      paramQQAppInterface = (RedTouch)paramHashMap.get(FrameControllerUtil.f);
+      paramQQAppInterface = (RedTouch)paramHashMap.get(FrameControllerUtil.q);
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = (BusinessInfoCheckUpdate.RedTypeInfo)paramQQAppInterface.getTag(2131376127);
-        ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportForReadInJoyTabExposure(paramQQAppInterface);
+        paramQQAppInterface = (BusinessInfoCheckUpdate.RedTypeInfo)paramQQAppInterface.getTag(2131444330);
+        RIJKanDianTabReport.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), paramQQAppInterface);
       }
       ThreadManager.executeOnSubThread(new RIJInjectImpl.2());
     }
   }
   
-  public static void h(FrameFragment paramFrameFragment)
+  public static void b(FrameFragment paramFrameFragment, int paramInt)
   {
-    RedTouch localRedTouch = (RedTouch)paramFrameFragment.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.f);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("update kandian tab, type : ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("TabFrameControllerImpl", 2, ((StringBuilder)localObject).toString());
+    if (paramInt == 0)
+    {
+      ((ITabFrameController)QRoute.api(ITabFrameController.class)).setFrames(paramFrameFragment, false);
+      return;
+    }
+    if (!(paramFrameFragment.B.get(FrameControllerUtil.g) instanceof ReadInjoyTabDragAnimationView)) {
+      return;
+    }
+    localObject = (ReadInjoyTabDragAnimationView)paramFrameFragment.B.get(FrameControllerUtil.g);
+    paramFrameFragment = (TextView)paramFrameFragment.C.get(FrameControllerUtil.g);
+    if ((localObject != null) && (paramFrameFragment != null))
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                return;
+              }
+              ((ReadInjoyTabDragAnimationView)localObject).setIsSelect(true);
+              return;
+            }
+            ((ReadInjoyTabDragAnimationView)localObject).setIsSelect(false);
+            return;
+          }
+          ((ReadInjoyTabDragAnimationView)localObject).a(0);
+          return;
+        }
+        ((ReadInjoyTabDragAnimationView)localObject).a(false);
+        return;
+      }
+      if (((ReadInjoyTabDragAnimationView)localObject).getStyle() != 1)
+      {
+        ((ReadInjoyTabDragAnimationView)localObject).a(1);
+        ((ReadInjoyTabDragAnimationView)localObject).a(true);
+      }
+      return;
+    }
+    QLog.d("TabFrameControllerImpl", 2, "iconView is null, give up !");
+  }
+  
+  public static void i(FrameFragment paramFrameFragment)
+  {
+    RedTouch localRedTouch = (RedTouch)paramFrameFragment.G.get(FrameControllerUtil.q);
     if (localRedTouch != null)
     {
-      Frame localFrame = paramFrameFragment.a();
+      Frame localFrame = paramFrameFragment.v();
       boolean bool3 = true;
       boolean bool1;
-      if ((localFrame != null) && (((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isKandianTabFrame(localFrame))) {
+      if ((localFrame != null) && (RIJXTabFrameUtils.INSTANCE.isKandianTabFrame(localFrame))) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      Object localObject1 = (QQAppInterface)((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
+      Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
       if (localObject1 != null) {
         localObject1 = ((IKanDianMergeManager)((QQAppInterface)localObject1).getRuntimeService(IKanDianMergeManager.class)).getReadInJoyTabRedInfo();
       } else {
@@ -196,16 +231,17 @@ public class RIJInjectImpl
           if (((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.get() == 0)
           {
             localObject2 = localObject1;
-            if (((IRIJTabFrame)localFrame).m_()) {
+            if (((IRIJTabFrame)localFrame).l()) {
               localObject2 = null;
             }
           }
         }
       }
-      localRedTouch.setTag(2131376127, localObject2);
+      localRedTouch.setTag(2131444330, localObject2);
+      localRedTouch.setUseNewStyle(true);
       ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateRedTouch(paramFrameFragment, 39, localRedTouch, localObject2);
-      if (((BaseActivity.sTopActivity instanceof SplashActivity)) && (paramFrameFragment.isVisible()) && (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).isAppOnForeground(null)) && (localObject2 != null)) {
-        ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportForReadInJoyTabExposure(localObject2);
+      if (((BaseActivity.sTopActivity instanceof SplashActivity)) && (paramFrameFragment.isVisible()) && (ReadInJoyUtils.a(null)) && (localObject2 != null)) {
+        RIJKanDianTabReport.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), localObject2);
       }
       if (QLog.isColorLevel())
       {
@@ -233,80 +269,50 @@ public class RIJInjectImpl
     }
   }
   
-  public static void i(FrameFragment paramFrameFragment)
-  {
-    int i;
-    int j;
-    if (FrameControllerUtil.a())
-    {
-      i = -1;
-      j = -1;
-    }
-    else
-    {
-      i = 2130843386;
-      j = 2130843387;
-    }
-    View localView = ((IKanDianOptUtils)QRoute.api(IKanDianOptUtils.class)).generateTabItem(i, 2130850756, j, 2130850757, 2131694315, 16, 8);
-    if (localView != null)
-    {
-      localView.setOnClickListener(new RIJInjectImpl.1(paramFrameFragment));
-      paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[6] = new RedTouch(paramFrameFragment.a(), localView).b(49).e(3).c(5).a();
-      VideoReport.setElementId(localView, "tab_button");
-      VideoReport.setElementParams(localView, new RIJDtParamBuilder().a("14").a("tab_id", "kandian").b("tab_bar").c("click_tab").a().a());
-      paramFrameFragment.jdField_a_of_type_JavaUtilHashMap.put(FrameControllerUtil.f, paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[6]);
-      HashMap localHashMap = paramFrameFragment.jdField_a_of_type_JavaUtilHashMap;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(FrameControllerUtil.f);
-      localStringBuilder.append("_num");
-      localHashMap.put(localStringBuilder.toString(), paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[6].findViewById(2131380161));
-      localView.setContentDescription(paramFrameFragment.getResources().getString(2131694315));
-    }
-  }
-  
   public void a()
   {
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(ReadinjoyTabFrame.class, true, FrameControllerUtil.g, "", 2130850756, 2130850757, 2131694315, 16, 8));
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(RIJXTabFrame.class, true, FrameControllerUtil.g, "", 2130850756, 2130850757, 2131694315, 16, 8));
-  }
-  
-  public void a(int paramInt)
-  {
-    ReadinjoySPEventReport.c(paramInt);
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(ReadinjoyTabFrame.class, true, FrameControllerUtil.g, FrameControllerUtil.q, 2130852574, 2130852576, 2131891953, 16, 8));
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(RIJXTabFrame.class, true, FrameControllerUtil.g, FrameControllerUtil.q, 2130852574, 2130852576, 2131891953, 16, 8));
   }
   
   public void a(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment = paramFrameFragment.a(((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).getTabFrame());
+    paramFrameFragment = paramFrameFragment.a(RIJXTabFrameUtils.INSTANCE.getTabFrame());
     if (paramFrameFragment != null) {
-      ((IRIJTabFrame)paramFrameFragment).au_();
+      ((IRIJTabFrame)paramFrameFragment).cP_();
     }
+    KDBottomTabThemeManager.a();
+  }
+  
+  public void a(FrameFragment paramFrameFragment, int paramInt)
+  {
+    ReadinjoySPEventReport.e(paramInt);
   }
   
   public void a(FrameFragment paramFrameFragment, int paramInt1, Frame paramFrame, int paramInt2)
   {
-    if ((!((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isKandianTabFrame(paramFrame)) && (paramInt2 != FrameControllerUtil.g))
+    if ((!RIJXTabFrameUtils.INSTANCE.isKandianTabFrame(paramFrame)) && (paramInt2 != FrameControllerUtil.g))
     {
-      a(paramFrameFragment, 4);
+      b(paramFrameFragment, 4);
     }
     else
     {
-      IRIJTabFrame localIRIJTabFrame = (IRIJTabFrame)paramFrameFragment.a(((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).getTabFrame());
+      IRIJTabFrame localIRIJTabFrame = (IRIJTabFrame)paramFrameFragment.a(RIJXTabFrameUtils.INSTANCE.getTabFrame());
       if (localIRIJTabFrame != null) {
         if (paramInt2 == FrameControllerUtil.g)
         {
-          ((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).reset68bRespArticlePosReportInfo(paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime);
+          ReadinjoyReportUtils.a(paramFrameFragment.A);
           localIRIJTabFrame.d(true);
-          a(paramFrameFragment, 5);
+          b(paramFrameFragment, 5);
         }
         else
         {
           localIRIJTabFrame.d(false);
-          a(paramFrameFragment, 4);
+          b(paramFrameFragment, 4);
         }
       }
     }
-    QQKRPUtil.a((QQAppInterface)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime, paramFrameFragment, paramFrame, paramInt2);
+    QQKRPUtil.a((QQAppInterface)paramFrameFragment.A, paramFrameFragment, paramFrame, paramInt2);
   }
   
   public void a(FrameFragment paramFrameFragment, FrameFragment.DragViewTouchListener paramDragViewTouchListener) {}
@@ -316,7 +322,7 @@ public class RIJInjectImpl
   public void a(RedTouch paramRedTouch, FrameFragment paramFrameFragment, int paramInt, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, IRedTouchManager paramIRedTouchManager)
   {
     if (paramInt == 39) {
-      h(paramFrameFragment);
+      i(paramFrameFragment);
     }
   }
   
@@ -327,11 +333,6 @@ public class RIJInjectImpl
   
   public void a(AppRuntime paramAppRuntime, SparseArray<TabDragAnimationView> paramSparseArray, int paramInt) {}
   
-  public boolean a(FrameFragment paramFrameFragment)
-  {
-    return false;
-  }
-  
   public void b()
   {
     FrameInfoBean localFrameInfoBean = ((ITabFrameController)QRoute.api(ITabFrameController.class)).getFrameInfoByClazz(ReadinjoyTabFrame.class);
@@ -340,7 +341,7 @@ public class RIJInjectImpl
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
     localStringBuilder.append(localFrameInfoBean.a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
+    localStringBuilder.append(localFrameInfoBean.c());
     QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
     localFrameInfoBean = ((ITabFrameController)QRoute.api(ITabFrameController.class)).getFrameInfoByClazz(RIJXTabFrame.class);
     localFrameInfoBean.a(FrameControllerUtil.g);
@@ -348,13 +349,15 @@ public class RIJInjectImpl
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
     localStringBuilder.append(localFrameInfoBean.a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
+    localStringBuilder.append(localFrameInfoBean.c());
     QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
+    KDBottomTabThemeManager.a();
   }
   
   public void b(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment.a(FrameControllerUtil.g, 2130843386, 2130843387);
+    paramFrameFragment.a(FrameControllerUtil.g, 2130844340, 2130844341);
+    KDBottomTabThemeManager.a();
   }
   
   public void b(FrameFragment paramFrameFragment, String paramString) {}
@@ -363,13 +366,19 @@ public class RIJInjectImpl
   
   public void d(FrameFragment paramFrameFragment) {}
   
-  public void e(FrameFragment paramFrameFragment) {}
+  public boolean e(FrameFragment paramFrameFragment)
+  {
+    KDBottomTabThemeManager.a();
+    return false;
+  }
   
   public void f(FrameFragment paramFrameFragment) {}
+  
+  public void g(FrameFragment paramFrameFragment) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.RIJInjectImpl
  * JD-Core Version:    0.7.0.1
  */

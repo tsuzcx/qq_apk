@@ -18,23 +18,23 @@ class MemoriesVideoListSegment$2$1
   
   public void run()
   {
-    Object localObject = new OpenPlayerBuilder(new MemoriesFeedPlayInfo(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.b, String.valueOf(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).hashCode()), this.b, MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).b, 0), StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int));
-    ((OpenPlayerBuilder)localObject).a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment));
+    Object localObject = new OpenPlayerBuilder(new MemoriesFeedPlayInfo(MemoriesVideoListSegment.a(this.e.e).a, (String)this.a.get(this.b), this.e.b, String.valueOf(MemoriesVideoListSegment.a(this.e.e).hashCode()), this.c, MemoriesVideoListSegment.a(this.e.e).f, 0), StoryMemoriesFragment.a(this.e.e.a));
+    ((OpenPlayerBuilder)localObject).a(MemoriesVideoListSegment.b(this.e.e));
     ((OpenPlayerBuilder)localObject).c();
-    StoryPlayerLauncher.a((Activity)MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment), ((OpenPlayerBuilder)localObject).a(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_AndroidViewView);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null)
+    StoryPlayerLauncher.a((Activity)MemoriesVideoListSegment.c(this.e.e), ((OpenPlayerBuilder)localObject).f(), this.e.d);
+    if (this.d == null)
     {
-      SLog.d("Q.qqstory.memories.MemoriesVideoListSegment", "userManager returns null with id %s", new Object[] { MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.memories.MemoriesVideoListSegment", "userManager returns null with id %s", new Object[] { MemoriesVideoListSegment.a(this.e.e).a });
       return;
     }
-    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe()) {
+    int i = StoryMemoriesFragment.a(this.e.e.a);
+    if (this.d.isMe()) {
       localObject = "1";
     } else {
       localObject = "2";
     }
-    StoryReportor.a("memory", "clk_video", i, 0, new String[] { localObject, "", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.b });
-    SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.b, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$2.jdField_a_of_type_Int), this.b });
+    StoryReportor.a("memory", "clk_video", i, 0, new String[] { localObject, "", "", this.e.b });
+    SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.e.a, this.a, this.e.b, Integer.valueOf(this.b), Integer.valueOf(this.e.c), this.c });
   }
 }
 

@@ -22,32 +22,32 @@ class VideoControlUI$CameraAvailabilityReceiver
   {
     if (paramIntent != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
+      if (this.a.am == null) {
         return;
       }
       long l = SeqUtil.a(paramIntent);
       paramContext = paramIntent.getStringExtra("camera_id");
       int i = paramIntent.getIntExtra("availability", 1);
-      paramIntent = this.a.d;
+      paramIntent = this.a.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CameraAvailabilityReceiver, cameraId[");
       localStringBuilder.append(paramContext);
       localStringBuilder.append("], availability[");
       localStringBuilder.append(i);
       localStringBuilder.append("], mCameraAvailable[");
-      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa);
+      localStringBuilder.append(this.a.am.k().co);
       localStringBuilder.append("], seq[");
       localStringBuilder.append(l);
       localStringBuilder.append("]");
       QLog.w(paramIntent, 1, localStringBuilder.toString());
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+      this.a.al.a(paramContext, i);
       if (i == 0)
       {
         VideoControlUI.a(this.a, l, i);
         return;
       }
       int j = -1;
-      paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      paramContext = this.a.al.i();
       i = j;
       if (paramContext != null)
       {

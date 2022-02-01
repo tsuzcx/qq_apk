@@ -11,23 +11,23 @@ class PhoneStatusMonitor$2
   
   public void run()
   {
-    boolean bool = PhoneStatusTools.e(PhoneStatusMonitor.a(this.this$0));
+    boolean bool = PhoneStatusTools.e(PhoneStatusMonitor.c(this.this$0));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkCalling, end, pre[");
-      ((StringBuilder)localObject).append(PhoneStatusMonitor.a(this.this$0));
+      ((StringBuilder)localObject).append(PhoneStatusMonitor.b(this.this$0));
       ((StringBuilder)localObject).append("], cur[");
       ((StringBuilder)localObject).append(bool);
       ((StringBuilder)localObject).append("]");
       QLog.d("PhoneStatusMonitor", 2, ((StringBuilder)localObject).toString());
     }
     PhoneStatusMonitor.a(this.this$0, bool);
-    Object localObject = PhoneStatusMonitor.a(this.this$0);
-    if ((localObject != null) && (PhoneStatusMonitor.a(this.this$0).get())) {
-      ((Handler)localObject).postDelayed(PhoneStatusMonitor.a(this.this$0), 10000L);
+    Object localObject = PhoneStatusMonitor.d(this.this$0);
+    if ((localObject != null) && (PhoneStatusMonitor.e(this.this$0).get())) {
+      ((Handler)localObject).postDelayed(PhoneStatusMonitor.f(this.this$0), 10000L);
     }
-    PhoneStatusMonitor.b(this.this$0).set(false);
+    PhoneStatusMonitor.g(this.this$0).set(false);
   }
 }
 

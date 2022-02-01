@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
-    <permission description="申请获取你的昵称、头像、地区及性别" id="scope.userInfo" name="用户信息" report_sub_action="userinfo" />
+    <permission description="申请获取你的昵称、头像、地区及性别" description-reject="取消" id="scope.userInfo" name="用户信息" report_sub_action="userinfo" />
     <permission description="申请获取你的位置信息" id="scope.userLocation" name="位置信息" report_sub_action="userLocation" />
     <permission description="申请获取你的通讯地址" id="scope.address" name="通讯地址" report_sub_action="chooseAddress" />
     <permission description="申请获取你的发票抬头" id="scope.invoiceTitle" name="发票抬头" report_sub_action="invoiceTitle" />
@@ -16,7 +16,10 @@
     <permission description="允许后，当你在阅读类小程序中添加阅读内容至书架时，该内容也将同步至“我的书架”中，你可在小程序设置中更改" id="scope.insertBookShelf" name="申请同步内容到“我的书架”" report_sub_action="insertBookShelf" />
     <permission description="允许授权后，小程序会加入到「最近浏览」彩签" id="scope.recentColorSign" name="申请加入「最近浏览」彩签" report_sub_action="addRecentColorSign" />
     <permission description="" id="scope.uploadAvatar" name="是否允许将此图标设为你的QQ头像" />
+    <permission description="交友卡" id="scope.expandUserInfo" name="获取你的交友卡资料" report_sub_action="getExpandUserInfo" />
     <permission description="允许该小游戏使用你的厘米秀形象" id="scope.cmshowInfo" name="厘米秀形象" report_sub_action="getCMShowInfo" />
+    <permission description="获取你的QQ2D厘米秀形象，若尚未开2D厘米秀将会为你开通，后续可在厘米秀主页继续进行装扮哦。" id="scope.cmshowInfo2d" name="QQ2D厘米秀形象" report_sub_action="getCMShowInfo" />
+    <permission description="获取你的QQ3D厘米秀形象，若尚未开通3D厘米秀将会为你开通，后续可在厘米秀主页继续进行装扮哦。" id="scope.cmshowInfo3d" name="QQ3D厘米秀形象" report_sub_action="getCMShowInfo" />
     <permission built-in="true" description="系统位置权限" id="android.permission.ACCESS_FINE_LOCATION" name="系统位置权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.RECORD_AUDIO" name="系统麦克风权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.CALL_PHONE" name="系统麦克风权限" />
@@ -92,6 +95,9 @@
     </event>
     <event name="invokeNativePlugin.uploadAvatar">
         <request-permission>scope.uploadAvatar</request-permission>
+    </event>
+    <event name="invokeNativePlugin.getExpandUserInfo">
+        <request-permission>scope.expandUserInfo</request-permission>
     </event>
     <event name="insertBookshelf">
         <request-permission>scope.insertBookShelf</request-permission>

@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/weather/webpage/WaterfallArk;", "", "appName", "", "appMeta", "appVersion", "appView", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppMeta", "()Ljava/lang/String;", "setAppMeta", "(Ljava/lang/String;)V", "getAppName", "getAppVersion", "getAppView", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "qq-weather-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/weather/webpage/WaterfallArk;", "", "appName", "", "appMeta", "appVersion", "appView", "pushType", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAppMeta", "()Ljava/lang/String;", "setAppMeta", "(Ljava/lang/String;)V", "getAppName", "getAppVersion", "getAppView", "getPushType", "()I", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "qq-weather-impl_release"}, k=1, mv={1, 1, 16})
 public final class WaterfallArk
 {
   @NotNull
@@ -16,13 +16,15 @@ public final class WaterfallArk
   private final String c;
   @NotNull
   private final String d;
+  private final int e;
   
-  public WaterfallArk(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
+  public WaterfallArk(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, int paramInt)
   {
     this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.d = paramString4;
+    this.e = paramInt;
   }
   
   @NotNull
@@ -61,7 +63,7 @@ public final class WaterfallArk
       if ((paramObject instanceof WaterfallArk))
       {
         paramObject = (WaterfallArk)paramObject;
-        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (this.e == paramObject.e)) {}
       }
       else
       {
@@ -99,7 +101,7 @@ public final class WaterfallArk
     if (str != null) {
       m = str.hashCode();
     }
-    return ((i * 31 + j) * 31 + k) * 31 + m;
+    return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + this.e;
   }
   
   @NotNull
@@ -114,13 +116,15 @@ public final class WaterfallArk
     localStringBuilder.append(this.c);
     localStringBuilder.append(", appView=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", pushType=");
+    localStringBuilder.append(this.e);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WaterfallArk
  * JD-Core Version:    0.7.0.1
  */

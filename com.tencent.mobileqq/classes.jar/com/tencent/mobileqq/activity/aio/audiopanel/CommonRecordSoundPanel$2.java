@@ -13,12 +13,12 @@ class CommonRecordSoundPanel$2
   {
     this.this$0.setRequestedOrientation4Recording(true);
     this.this$0.a.getWindow().clearFlags(128);
-    QQToast.a(this.this$0.a, 2131689977, 1).b(CommonRecordSoundPanel.a(this.this$0));
+    QQToast.makeText(this.this$0.a, 2131886619, 1).show(CommonRecordSoundPanel.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel.2
  * JD-Core Version:    0.7.0.1
  */

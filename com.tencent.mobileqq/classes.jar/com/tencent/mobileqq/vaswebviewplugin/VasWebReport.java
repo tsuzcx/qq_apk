@@ -132,7 +132,7 @@ public class VasWebReport
           paramJSONObject.append(", receive last packet end: ");
           paramJSONObject.append(l5);
           QLog.d("Web_X5_Performance", 1, paramJSONObject.toString());
-          paramJSONObject = this.mRuntime.a(this.mRuntime.a());
+          paramJSONObject = this.mRuntime.a(this.mRuntime.d());
           if ((paramJSONObject != null) && ((paramJSONObject instanceof WebUiUtils.WebviewReportSpeedInterface)))
           {
             ((WebUiUtils.WebviewReportSpeedInterface)paramJSONObject).setX5Performance(paramString);
@@ -140,12 +140,12 @@ public class VasWebReport
             this.mFirstScreenPerformanceObject = null;
             return;
           }
-          if ((this.mRuntime.a() instanceof SwiftWebViewFragmentSupporter))
+          if ((this.mRuntime.d() instanceof SwiftWebViewFragmentSupporter))
           {
             paramJSONObject = (SwiftBrowserStatistics)super.getBrowserComponent(-2);
             if (paramJSONObject != null)
             {
-              paramJSONObject.a = paramString;
+              paramJSONObject.aI = paramString;
               this.mIndexPerformanceObject = null;
               this.mFirstScreenPerformanceObject = null;
               return;
@@ -205,7 +205,7 @@ public class VasWebReport
         ((JSONObject)localObject1).optLong("connect_end");
         ((JSONObject)localObject1).optLong("recv_start");
         ((JSONObject)localObject1).optLong("recv_end");
-        localObject2 = this.mRuntime.a(this.mRuntime.a());
+        localObject2 = this.mRuntime.a(this.mRuntime.d());
         if ((localObject2 == null) || (!(localObject2 instanceof WebUiUtils.WebviewReportSpeedInterface))) {
           break label348;
         }
@@ -311,7 +311,7 @@ public class VasWebReport
             localStringBuilder.append(",website_address:");
             localStringBuilder.append((String)localObject);
             localStringBuilder.append(",AppSetting.subVersion:");
-            localStringBuilder.append("8.7.0,3,5295");
+            localStringBuilder.append("8.8.17,3,5770");
             QLog.i("PublicAccountWebReport", 2, localStringBuilder.toString());
             if ((str1.equalsIgnoreCase(paramString)) && ("post.mp.qq.com".equalsIgnoreCase(str2)))
             {
@@ -322,7 +322,7 @@ public class VasWebReport
               paramString = paramJSONObject.optString("website_address");
               try
               {
-                PublicAccountWebReport.reportPublicAccountNetInfoRequest(this.mRuntime.a(), j, i, m, k, str3, paramString);
+                PublicAccountWebReport.reportPublicAccountNetInfoRequest(this.mRuntime.b(), j, i, m, k, str3, paramString);
                 l2 = this.mFirstScreenPerformanceObject.optLong("first_screen");
                 if (!QLog.isColorLevel()) {
                   break label560;
@@ -359,9 +359,9 @@ public class VasWebReport
     if (this.mRuntime == null) {
       return;
     }
-    if (this.mRuntime.a() != null)
+    if (this.mRuntime.d() != null)
     {
-      this.mRuntime.a().startActivity(paramIntent);
+      this.mRuntime.d().startActivity(paramIntent);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -528,10 +528,10 @@ public class VasWebReport
           if (this.mRuntime == null) {
             break label1266;
           }
-          if (this.mRuntime.a() == null) {
+          if (this.mRuntime.d() == null) {
             return false;
           }
-          paramMap = this.mRuntime.a().getApplicationContext();
+          paramMap = this.mRuntime.d().getApplicationContext();
           if (2 == NetworkUtil.getSystemNetwork(paramMap)) {
             paramMap = "2G";
           }
@@ -556,7 +556,7 @@ public class VasWebReport
             localObject1 = ((StringBuilder)localObject1).toString();
             localObject2 = Util.b(paramString, new String[0]);
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("8.7.0--android--");
+            ((StringBuilder)localObject3).append("8.8.17--android--");
             ((StringBuilder)localObject3).append(Build.VERSION.SDK_INT);
             ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, (String)localObject1, paramMap, (String)localObject2, ((StringBuilder)localObject3).toString());
             this.errorMap.remove(paramString);
@@ -586,16 +586,16 @@ public class VasWebReport
             localObject1 = ((StringBuilder)localObject1).toString();
             localObject2 = Util.b(paramString, new String[0]);
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("8.7.0--android--");
+            ((StringBuilder)localObject3).append("8.8.17--android--");
             ((StringBuilder)localObject3).append(Build.VERSION.SDK_INT);
             ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, (String)localObject1, paramMap, (String)localObject2, ((StringBuilder)localObject3).toString());
           }
         }
         this.startTimeMap.remove(paramString);
-        paramString = this.mRuntime.a();
-        if ((this.mRuntime.a() != null) && (this.mRuntime.a().getAppRuntime() != null))
+        paramString = this.mRuntime.d();
+        if ((this.mRuntime.f() != null) && (this.mRuntime.f().getAppRuntime() != null))
         {
-          paramMap = (URLInterceptManager)this.mRuntime.a().getAppRuntime().getManager(QQManagerFactory.URL_INTECEPT_MANAGER);
+          paramMap = (URLInterceptManager)this.mRuntime.f().getAppRuntime().getManager(QQManagerFactory.URL_INTECEPT_MANAGER);
           if ((paramMap != null) && (!paramMap.a()))
           {
             paramMap.a(paramString);
@@ -628,13 +628,13 @@ public class VasWebReport
         {
           paramString2 = new StringBuilder();
           paramString2.append("try report web status, onNetworkCost,  step: 11, asyncMode: ");
-          paramString2.append(paramJsBridgeListener.jdField_b_of_type_Int);
+          paramString2.append(paramJsBridgeListener.ar);
           paramString2.append(", from loadUrl: ");
-          paramString2.append(System.currentTimeMillis() - paramJsBridgeListener.r);
+          paramString2.append(System.currentTimeMillis() - paramJsBridgeListener.u);
           paramString2.append(", stepTime: ");
-          paramString2.append(System.currentTimeMillis() - paramJsBridgeListener.jdField_b_of_type_Long);
+          paramString2.append(System.currentTimeMillis() - paramJsBridgeListener.c);
           paramString2.append(", totalTime: ");
-          paramString2.append(System.currentTimeMillis() - paramJsBridgeListener.jdField_b_of_type_Long);
+          paramString2.append(System.currentTimeMillis() - paramJsBridgeListener.c);
           paramString2.append(", \n ");
           paramString2.append(paramString1);
           QLog.d("QQBrowser_report", 2, paramString2.toString());
@@ -655,7 +655,7 @@ public class VasWebReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebReport
  * JD-Core Version:    0.7.0.1
  */

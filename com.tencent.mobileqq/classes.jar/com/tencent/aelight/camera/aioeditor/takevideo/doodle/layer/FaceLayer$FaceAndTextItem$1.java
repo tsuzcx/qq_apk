@@ -10,13 +10,13 @@ class FaceLayer$FaceAndTextItem$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
+    this.a.i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.k.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.FaceLayer.FaceAndTextItem.1
  * JD-Core Version:    0.7.0.1
  */

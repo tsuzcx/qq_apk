@@ -15,7 +15,7 @@ public class StartServiceLiteCmp
     {
       localObject = (QQAppInterface)localObject;
       if (((QQAppInterface)localObject).isAccLoginSuccess()) {
-        ((QQAppInterface)localObject).mAutomator.a(StepFactory.a(((QQAppInterface)localObject).mAutomator, StepFactory.b));
+        ((QQAppInterface)localObject).mAutomator.a(StepFactory.a(((QQAppInterface)localObject).mAutomator, StepFactory.e));
       }
     }
     return true;
@@ -23,7 +23,7 @@ public class StartServiceLiteCmp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.StartServiceLiteCmp
  * JD-Core Version:    0.7.0.1
  */

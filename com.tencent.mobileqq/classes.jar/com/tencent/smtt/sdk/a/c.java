@@ -79,19 +79,34 @@ public class c
     this.h = paramList;
   }
   
+  public void b(Integer paramInteger)
+  {
+    this.f = paramInteger;
+  }
+  
   public void b(String paramString)
   {
     this.b = paramString;
+  }
+  
+  public void c(Integer paramInteger)
+  {
+    this.g = paramInteger;
   }
   
   public void c(String paramString)
   {
     this.d = paramString;
   }
+  
+  public void d(String paramString)
+  {
+    this.e = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

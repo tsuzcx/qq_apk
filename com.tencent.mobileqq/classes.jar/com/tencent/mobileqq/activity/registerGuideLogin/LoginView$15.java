@@ -10,15 +10,15 @@ class LoginView$15
   
   public void run()
   {
-    LoginView.a(this.this$0, this.jdField_a_of_type_JavaLangString, false);
-    if (this.this$0.a != null) {
-      this.this$0.a.runOnUiThread(new LoginView.15.1(this));
+    LoginView.a(this.this$0, this.a, false);
+    if (this.this$0.b != null) {
+      this.this$0.b.runOnUiThread(new LoginView.15.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.15
  * JD-Core Version:    0.7.0.1
  */

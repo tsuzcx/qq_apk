@@ -10,6 +10,7 @@ import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentHelper;
 import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData.CommentLinkData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData.CommentRptData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.FirstCommentCreateData;
+import com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentAegisHelper;
 import com.tencent.mobileqq.kandian.biz.comment.helper.RIJPerformanceReporter;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -30,19 +31,20 @@ import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentCreateRsp;
 import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
 import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.RspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/handler/CreateFirstCommentHandler;", "", "data", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;", "(Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;)V", "getData", "()Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;", "onFailedCallback", "Lkotlin/Function3;", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$FirstCommentCreateRsp;", "", "", "", "getOnFailedCallback", "()Lkotlin/jvm/functions/Function3;", "setOnFailedCallback", "(Lkotlin/jvm/functions/Function3;)V", "onSuccessCallback", "Lkotlin/Function2;", "getOnSuccessCallback", "()Lkotlin/jvm/functions/Function2;", "setOnSuccessCallback", "(Lkotlin/jvm/functions/Function2;)V", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "getResponse", "", "onCommentOperationFailed", "response", "errorCode", "errorMsg", "onFirstCommentCreateSuccess", "commentId", "parseFirstCommentCreateData", "rateReport", "bundle", "Landroid/os/Bundle;", "send0xd1eRequest", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/handler/CreateFirstCommentHandler;", "", "data", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;", "(Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;)V", "getData", "()Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;", "onFailedCallback", "Lkotlin/Function3;", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$FirstCommentCreateRsp;", "", "", "", "getOnFailedCallback", "()Lkotlin/jvm/functions/Function3;", "setOnFailedCallback", "(Lkotlin/jvm/functions/Function3;)V", "onSuccessCallback", "Lkotlin/Function2;", "getOnSuccessCallback", "()Lkotlin/jvm/functions/Function2;", "setOnSuccessCallback", "(Lkotlin/jvm/functions/Function2;)V", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "getResponse", "", "onCommentOperationFailed", "response", "errorCode", "errorMsg", "onFirstCommentCreateSuccess", "commentId", "parseFirstCommentCreateData", "rateReport", "bundle", "Landroid/os/Bundle;", "reportAegisWhenFail", "send0xd1eRequest", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class CreateFirstCommentHandler
 {
+  public static final CreateFirstCommentHandler.Companion a = new CreateFirstCommentHandler.Companion(null);
+  @Nullable
+  private Function2<? super oidb_0xd1e.FirstCommentCreateRsp, ? super String, Unit> b;
+  @Nullable
+  private Function3<? super oidb_0xd1e.FirstCommentCreateRsp, ? super Integer, ? super String, Unit> c;
   @NotNull
-  private final FirstCommentCreateData jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityFirstCommentCreateData;
-  @Nullable
-  private Function2<? super oidb_0xd1e.FirstCommentCreateRsp, ? super String, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction2;
-  @Nullable
-  private Function3<? super oidb_0xd1e.FirstCommentCreateRsp, ? super Integer, ? super String, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction3;
+  private final FirstCommentCreateData d;
   
   public CreateFirstCommentHandler(@NotNull FirstCommentCreateData paramFirstCommentCreateData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityFirstCommentCreateData = paramFirstCommentCreateData;
+    this.d = paramFirstCommentCreateData;
   }
   
   private final oidb_0xd1e.FirstCommentCreateRsp a(byte[] paramArrayOfByte)
@@ -57,20 +59,44 @@ public final class CreateFirstCommentHandler
     return paramArrayOfByte;
   }
   
-  private final oidb_0xd1e.ReqBody a()
+  private final void a(int paramInt, String paramString)
+  {
+    if (paramInt != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errorCode:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" errorMsg:");
+      if (paramString == null) {
+        paramString = "Empty error message.";
+      }
+      localStringBuilder.append(paramString);
+      RIJCommentAegisHelper.a(localStringBuilder.toString(), "CreateFirstCommentHandler");
+    }
+  }
+  
+  private final void a(oidb_0xd1e.FirstCommentCreateRsp paramFirstCommentCreateRsp, String paramString)
+  {
+    Function2 localFunction2 = this.b;
+    if (localFunction2 != null) {
+      paramFirstCommentCreateRsp = (Unit)localFunction2.invoke(paramFirstCommentCreateRsp, paramString);
+    }
+  }
+  
+  private final oidb_0xd1e.ReqBody b()
   {
     oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
     oidb_0xd1e.FirstCommentCreateReq localFirstCommentCreateReq = new oidb_0xd1e.FirstCommentCreateReq();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityFirstCommentCreateData;
-    localFirstCommentCreateReq.rowkey.set(((FirstCommentCreateData)localObject1).c());
-    localFirstCommentCreateReq.article_id.set(((FirstCommentCreateData)localObject1).d());
-    localFirstCommentCreateReq.author_id.set(((FirstCommentCreateData)localObject1).a());
-    localFirstCommentCreateReq.business_info.set(((FirstCommentCreateData)localObject1).e());
-    localFirstCommentCreateReq.content_src.set(ReadInJoyCommentHelper.a(((FirstCommentCreateData)localObject1).d()));
-    localFirstCommentCreateReq.src.set(((FirstCommentCreateData)localObject1).c());
-    localFirstCommentCreateReq.scene.set(((FirstCommentCreateData)localObject1).b());
+    Object localObject1 = this.d;
+    localFirstCommentCreateReq.rowkey.set(((FirstCommentCreateData)localObject1).d());
+    localFirstCommentCreateReq.article_id.set(((FirstCommentCreateData)localObject1).e());
+    localFirstCommentCreateReq.author_id.set(((FirstCommentCreateData)localObject1).g());
+    localFirstCommentCreateReq.business_info.set(((FirstCommentCreateData)localObject1).k());
+    localFirstCommentCreateReq.content_src.set(ReadInJoyCommentHelper.a(((FirstCommentCreateData)localObject1).j()));
+    localFirstCommentCreateReq.src.set(((FirstCommentCreateData)localObject1).h());
+    localFirstCommentCreateReq.scene.set(((FirstCommentCreateData)localObject1).f());
     localFirstCommentCreateReq.content.set(((FirstCommentCreateData)localObject1).a());
-    Object localObject2 = ((FirstCommentCreateData)localObject1).a();
+    Object localObject2 = ((FirstCommentCreateData)localObject1).b();
     if (localObject2 != null)
     {
       localObject2 = ((Iterable)localObject2).iterator();
@@ -81,7 +107,7 @@ public final class CreateFirstCommentHandler
       }
     }
     localFirstCommentCreateReq.detect_dirty_word.set(1);
-    localObject1 = ((FirstCommentCreateData)localObject1).b();
+    localObject1 = ((FirstCommentCreateData)localObject1).i();
     if (localObject1 != null)
     {
       localObject1 = ((Iterable)localObject1).iterator();
@@ -95,15 +121,7 @@ public final class CreateFirstCommentHandler
     return localReqBody;
   }
   
-  private final void a(oidb_0xd1e.FirstCommentCreateRsp paramFirstCommentCreateRsp, String paramString)
-  {
-    Function2 localFunction2 = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
-    if (localFunction2 != null) {
-      paramFirstCommentCreateRsp = (Unit)localFunction2.invoke(paramFirstCommentCreateRsp, paramString);
-    }
-  }
-  
-  private final void a(byte[] paramArrayOfByte)
+  private final void b(byte[] paramArrayOfByte)
   {
     paramArrayOfByte = a(paramArrayOfByte);
     int j = paramArrayOfByte.link_comment_over_times.get();
@@ -141,7 +159,7 @@ public final class CreateFirstCommentHandler
   
   public final void a()
   {
-    oidb_0xd1e.ReqBody localReqBody = a();
+    oidb_0xd1e.ReqBody localReqBody = b();
     QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
     Bundle localBundle = new Bundle();
     localBundle.putLong("send_time", SystemClock.elapsedRealtime());
@@ -155,19 +173,19 @@ public final class CreateFirstCommentHandler
   
   public final void a(@Nullable Function2<? super oidb_0xd1e.FirstCommentCreateRsp, ? super String, Unit> paramFunction2)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
+    this.b = paramFunction2;
   }
   
   public final void a(@Nullable Function3<? super oidb_0xd1e.FirstCommentCreateRsp, ? super Integer, ? super String, Unit> paramFunction3)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction3 = paramFunction3;
+    this.c = paramFunction3;
   }
   
   public final void a(@NotNull oidb_0xd1e.FirstCommentCreateRsp paramFirstCommentCreateRsp, int paramInt, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramFirstCommentCreateRsp, "response");
     Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
-    Function3 localFunction3 = this.jdField_a_of_type_KotlinJvmFunctionsFunction3;
+    Function3 localFunction3 = this.c;
     if (localFunction3 != null) {
       paramFirstCommentCreateRsp = (Unit)localFunction3.invoke(paramFirstCommentCreateRsp, Integer.valueOf(paramInt), paramString);
     }
@@ -175,7 +193,7 @@ public final class CreateFirstCommentHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.handler.CreateFirstCommentHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,10 @@ class PhotoCropActivity$3
   
   protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
+    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.i))
     {
-      this.a.a.removeMessages(1003);
-      this.a.c();
+      this.a.D.removeMessages(1003);
+      this.a.d();
       if (!paramBoolean)
       {
         paramString = this.a.getIntent();
@@ -34,7 +34,7 @@ class PhotoCropActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoCropActivity.3
  * JD-Core Version:    0.7.0.1
  */

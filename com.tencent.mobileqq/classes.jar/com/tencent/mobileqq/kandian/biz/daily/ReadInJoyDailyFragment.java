@@ -36,7 +36,7 @@ import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.TimeSliceHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInjoyFloatingWindowHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.diandian.RecommendFeedsDiandianEntranceManager;
 import com.tencent.mobileqq.kandian.biz.feedspopup.RIJDailyFloatingPopupStep;
 import com.tencent.mobileqq.kandian.biz.feedspopup.RIJDailyPopupStep;
@@ -65,24 +65,19 @@ import mqq.os.MqqHandler;
 public class ReadInJoyDailyFragment
   extends PublicBaseFragment
 {
-  private static TimeSliceHelper jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper = new TimeSliceHelper();
-  public static List<String> a;
-  private int jdField_a_of_type_Int = 5;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ReadInJoyDailyFragment.3(this);
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ReadInJoyDailyFragment.2(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private RIJPopupAutomator jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator = new RIJPopupAutomator();
-  private DailyDynamicHeaderViewController jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController;
-  private ReadInJoyDailyViewController jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
-  private RIJDailyFloatingPopupStep jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJDailyFloatingPopupStep;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoyDailyFragment.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private View b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilList = new ArrayList(1);
-  }
+  public static List<String> a = new ArrayList(1);
+  private static TimeSliceHelper d = new TimeSliceHelper();
+  private ReadInJoyDailyViewController b;
+  private DailyDynamicHeaderViewController c;
+  private int e = 5;
+  private View f;
+  private View g;
+  private boolean h = false;
+  private RIJPopupAutomator i = new RIJPopupAutomator();
+  private RIJDailyFloatingPopupStep j;
+  private Runnable k = new ReadInJoyDailyFragment.1(this);
+  private final View.OnClickListener l = new ReadInJoyDailyFragment.2(this);
+  private BroadcastReceiver m = new ReadInJoyDailyFragment.3(this);
   
   private void a(Intent paramIntent)
   {
@@ -90,14 +85,14 @@ public class ReadInJoyDailyFragment
       return;
     }
     KandianDailyReportUtils.a(paramIntent);
-    if (b())
+    if (i())
     {
       paramIntent = RIJQQAppInterfaceUtil.a();
       if (paramIntent != null)
       {
         KandianMergeManager localKandianMergeManager = (KandianMergeManager)paramIntent.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-        localKandianMergeManager.d();
-        localKandianMergeManager.r();
+        localKandianMergeManager.o();
+        localKandianMergeManager.W();
         RIJKanDianFolderStatus.updateKandianFolderStatus(paramIntent);
       }
     }
@@ -106,7 +101,7 @@ public class ReadInJoyDailyFragment
   private void a(String paramString)
   {
     String str;
-    if (DailyModeConfigHandler.b(DailyModeConfigHandler.b())) {
+    if (DailyModeConfigHandler.b(DailyModeConfigHandler.j())) {
       str = "0X80089D1";
     } else {
       str = "0X80098B0";
@@ -116,90 +111,90 @@ public class ReadInJoyDailyFragment
   
   public static boolean a()
   {
-    return jdField_a_of_type_JavaUtilList.size() > 0;
-  }
-  
-  public static void b()
-  {
-    TimeSliceHelper localTimeSliceHelper = jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper;
-    if (localTimeSliceHelper != null)
-    {
-      localTimeSliceHelper.b();
-      QLog.d("ReadInJoyDailyFragment", 2, "stopTimeCalculateWhenInBackground");
-    }
-  }
-  
-  private boolean b()
-  {
-    int i = this.jdField_a_of_type_Int;
-    return (i == 6) || (i == 9);
+    return a.size() > 0;
   }
   
   public static void c()
   {
-    TimeSliceHelper localTimeSliceHelper = jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper;
+    TimeSliceHelper localTimeSliceHelper = d;
     if (localTimeSliceHelper != null)
     {
-      localTimeSliceHelper.a();
-      QLog.d("ReadInJoyDailyFragment", 2, "wakeUpTimeCalculateWhenInForeground");
+      localTimeSliceHelper.c();
+      QLog.d("ReadInJoyDailyFragment", 2, "stopTimeCalculateWhenInBackground");
     }
   }
   
-  private void d()
+  public static void d()
   {
-    if (RIJQQAppInterfaceUtil.a() == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJDailyFloatingPopupStep == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJDailyFloatingPopupStep = new RIJDailyFloatingPopupStep(this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator, getBaseActivity());
-    }
-    RIJPopupAutomator localRIJPopupAutomator = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
-    localRIJPopupAutomator.a(new BasePopupStep[] { new RIJLockScreenPopupStep(localRIJPopupAutomator, getBaseActivity()), new RIJDailyPopupStep(this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator, getBaseActivity()), new RIJMsgBoxPopupStep(this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator, getBaseActivity()), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJDailyFloatingPopupStep, (BasePopupStep)((IRIJAdService)QRoute.api(IRIJAdService.class)).createSuperMaskPopupStep(this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator, getBaseActivity()), new RIJUGCAccountPopupStep(this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator, getBaseActivity()), new RIJSkinOperationPopupStep(this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator, getBaseActivity()) });
-  }
-  
-  private void e()
-  {
-    if (getBaseActivity() != null)
+    TimeSliceHelper localTimeSliceHelper = d;
+    if (localTimeSliceHelper != null)
     {
-      IntentFilter localIntentFilter = new IntentFilter("float_layer_finsh_action");
-      getBaseActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      localTimeSliceHelper.b();
+      QLog.d("ReadInJoyDailyFragment", 2, "wakeUpTimeCalculateWhenInForeground");
     }
   }
   
   private void f()
   {
-    if (getBaseActivity() != null) {
-      getBaseActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    if (RIJQQAppInterfaceUtil.a() == null) {
+      return;
     }
+    if (this.j == null) {
+      this.j = new RIJDailyFloatingPopupStep(this.i, getBaseActivity());
+    }
+    RIJPopupAutomator localRIJPopupAutomator = this.i;
+    localRIJPopupAutomator.a(new BasePopupStep[] { new RIJLockScreenPopupStep(localRIJPopupAutomator, getBaseActivity()), new RIJDailyPopupStep(this.i, getBaseActivity()), new RIJMsgBoxPopupStep(this.i, getBaseActivity()), this.j, (BasePopupStep)((IRIJAdService)QRoute.api(IRIJAdService.class)).createSuperMaskPopupStep(this.i, getBaseActivity()), new RIJUGCAccountPopupStep(this.i, getBaseActivity()), new RIJSkinOperationPopupStep(this.i, getBaseActivity()) });
   }
   
   private void g()
   {
-    ThreadManager.executeOnSubThread(new ReadInJoyDailyFragment.5(this));
+    if (getBaseActivity() != null)
+    {
+      IntentFilter localIntentFilter = new IntentFilter("float_layer_finsh_action");
+      getBaseActivity().registerReceiver(this.m, localIntentFilter);
+    }
   }
   
   private void h()
   {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper.c();
+    if (getBaseActivity() != null) {
+      getBaseActivity().unregisterReceiver(this.m);
+    }
+  }
+  
+  private boolean i()
+  {
+    int n = this.e;
+    return (n == 6) || (n == 9);
+  }
+  
+  private void j()
+  {
+    ThreadManager.executeOnSubThread(new ReadInJoyDailyFragment.5(this));
+  }
+  
+  private void k()
+  {
+    d.g();
     QLog.d("ReadInJoyDailyFragment", 2, "resetTime when create");
   }
   
-  public void a()
+  public void b()
   {
     View localView;
-    if (ThemeUtil.isNowThemeIsNight(ReadInJoyUtils.a(), false, null))
+    if (ThemeUtil.isNowThemeIsNight(ReadInJoyUtils.b(), false, null))
     {
-      if (this.b == null) {
-        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365371)).inflate();
+      if (this.g == null) {
+        this.g = ((ViewStub)this.f.findViewById(2131431564)).inflate();
       }
-      localView = this.b;
+      localView = this.g;
       if (localView != null) {
         localView.setVisibility(0);
       }
     }
     else
     {
-      localView = this.b;
+      localView = this.g;
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -218,7 +213,7 @@ public class ReadInJoyDailyFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ReadInJoyDailyViewController localReadInJoyDailyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    ReadInJoyDailyViewController localReadInJoyDailyViewController = this.b;
     if (localReadInJoyDailyViewController != null) {
       localReadInJoyDailyViewController.a(paramInt1, paramInt2, paramIntent);
     }
@@ -229,12 +224,12 @@ public class ReadInJoyDailyFragment
   {
     if ((getBaseActivity() != null) && (getBaseActivity().getIntent() != null) && (getBaseActivity().getIntent().hasExtra("launch_from")))
     {
-      int i = getBaseActivity().getIntent().getIntExtra("launch_from", 0);
-      if ((i == 9) || (i == 6))
+      int n = getBaseActivity().getIntent().getIntExtra("launch_from", 0);
+      if ((n == 9) || (n == 6))
       {
         Intent localIntent = new Intent(getBaseActivity(), SplashActivity.class);
         localIntent.putExtra("fragment_id", 1);
-        localIntent.putExtra("tab_index", FrameControllerUtil.jdField_a_of_type_Int);
+        localIntent.putExtra("tab_index", FrameControllerUtil.a);
         localIntent.putExtra("open_kandian_tab_fragment", true);
         localIntent.putExtra("arg_channel_cover_id", 0);
         localIntent.setFlags(335544320);
@@ -267,58 +262,58 @@ public class ReadInJoyDailyFragment
   {
     super.onCreate(paramBundle);
     RIJImageAladdinConfig.a.a();
-    DailyModeConfigHandler.b();
+    DailyModeConfigHandler.h();
     KandianDailyReportUtils.a(getBaseActivity().app);
-    KandianDailyReportUtils.c();
-    jdField_a_of_type_JavaUtilList.add(String.valueOf(hashCode()));
-    UserActionCollector.a().a(UserActionCollector.d, 1);
+    KandianDailyReportUtils.g();
+    a.add(String.valueOf(hashCode()));
+    UserActionCollector.a().a(UserActionCollector.g, 1);
     GifHelper.a();
     paramBundle = getBaseActivity();
     if (paramBundle != null)
     {
       localObject = paramBundle.getIntent();
       if (localObject != null) {
-        this.jdField_a_of_type_Int = ((Intent)localObject).getIntExtra("launch_from", 5);
+        this.e = ((Intent)localObject).getIntExtra("launch_from", 5);
       }
       a((Intent)localObject);
     }
-    ThreadManager.getFileThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20000L);
-    PreLoader.a().a();
-    g();
+    ThreadManager.getFileThreadHandler().postDelayed(this.k, 20000L);
+    PreLoader.a().b();
+    j();
     Object localObject = getArguments();
-    int i;
-    if (this.jdField_a_of_type_Int == 15)
+    int n;
+    if (this.e == 15)
     {
-      com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.jdField_a_of_type_Boolean = true;
+      com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.b = true;
       QLog.d("ReadInJoyDailyFragment", 1, "from aio share");
-      i = 1;
+      n = 1;
     }
     else
     {
-      i = 0;
+      n = 0;
     }
     if ((localObject != null) && (paramBundle != null))
     {
       if (((Bundle)localObject).getBoolean("open_floating_window", false)) {
-        i = 1;
+        n = 1;
       }
-      if (i != 0)
+      if (n != 0)
       {
         QLog.d("ReadInJoyDailyFragment", 1, "openFloatingWindow is true");
-        i = ((Bundle)localObject).getInt("floating_window_business");
-        int j = ((Bundle)localObject).getInt("floating_window_scene");
-        ReadInjoyFloatingWindowHelper.a(paramBundle, j, i, (Bundle)localObject, DailyModeConfigHandler.b());
-        if ((j == 1) && ((i != 1) || (ReadInjoyFloatingWindowHelper.a((Bundle)localObject)))) {
+        n = ((Bundle)localObject).getInt("floating_window_business");
+        int i1 = ((Bundle)localObject).getInt("floating_window_scene");
+        ReadInjoyFloatingWindowHelper.a(paramBundle, i1, n, (Bundle)localObject, DailyModeConfigHandler.j());
+        if ((i1 == 1) && ((n != 1) || (ReadInjoyFloatingWindowHelper.a((Bundle)localObject)))) {
           KandianDailyReportUtils.a(32);
         }
       }
     }
-    e();
-    RIJPushNotification.a();
-    h();
-    d();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJDailyFloatingPopupStep.i();
+    g();
+    RIJPushNotification.c();
+    k();
+    f();
+    this.i.a();
+    this.j.j();
     paramBundle = RIJQQAppInterfaceUtil.a();
     if (paramBundle != null)
     {
@@ -333,44 +328,44 @@ public class ReadInJoyDailyFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     DailyTipsFoldUtils.a();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560163, paramViewGroup, false);
-    ReadinjoySPEventReport.b(0, KandianDailyReportUtils.a(), 0);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController = new ReadInJoyDailyViewController(getBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController.a(DailyModeConfigHandler.b());
-    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131376123);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController.a(paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController.aw_();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController = new DailyDynamicHeaderViewController(this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController.a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController.a(this.jdField_a_of_type_AndroidViewView);
-    a();
+    this.f = paramLayoutInflater.inflate(2131626210, paramViewGroup, false);
+    ReadinjoySPEventReport.b(0, KandianDailyReportUtils.c(), 0);
+    this.b = new ReadInJoyDailyViewController(getBaseActivity());
+    this.b.a(DailyModeConfigHandler.j());
+    paramLayoutInflater = (ViewGroup)this.f.findViewById(2131444326);
+    this.b.a(paramLayoutInflater);
+    this.b.cT_();
+    this.c = new DailyDynamicHeaderViewController(this.b.n());
+    this.c.a(this.l);
+    this.c.a(this.f);
+    b();
     VideoReport.addToDetectionWhitelist(getBaseActivity());
-    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "14");
-    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new RIJDtParamBuilder().a(Integer.valueOf(DailyModeConfigHandler.b())).a());
-    return this.jdField_a_of_type_AndroidViewView;
+    VideoReport.setPageId(this.f, "14");
+    VideoReport.setPageParams(this.f, new RIJDtParamBuilder().a(Integer.valueOf(DailyModeConfigHandler.j())).b());
+    return this.f;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    jdField_a_of_type_JavaUtilList.remove(String.valueOf(hashCode()));
+    a.remove(String.valueOf(hashCode()));
     GifHelper.b();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ReadInJoyDailyViewController)localObject).e();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
+    localObject = this.i;
     if (localObject != null) {
       ((RIJPopupAutomator)localObject).b();
     }
-    ThreadManager.getFileThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    PreLoader.a().b();
-    f();
+    ThreadManager.getFileThreadHandler().removeCallbacks(this.k);
+    PreLoader.a().c();
+    h();
   }
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController.a();
+    this.c.a();
     ((IRIJAdExposeFreshService)QRoute.api(IRIJAdExposeFreshService.class)).exitScene("RIJAdRefreshSceneDaily");
     super.onDestroyView();
   }
@@ -380,23 +375,23 @@ public class ReadInJoyDailyFragment
     super.onNewIntent(paramIntent);
     getBaseActivity().setIntent(paramIntent);
     if (paramIntent != null) {
-      this.jdField_a_of_type_Int = paramIntent.getIntExtra("launch_from", 5);
+      this.e = paramIntent.getIntExtra("launch_from", 5);
     }
     a(paramIntent);
-    paramIntent = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    paramIntent = this.b;
     if (paramIntent != null) {
-      paramIntent.j();
+      paramIntent.k();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ReadInJoyDailyViewController)localObject).h();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
+    localObject = this.i;
     if (localObject != null) {
       ((RIJPopupAutomator)localObject).d();
     }
@@ -409,22 +404,22 @@ public class ReadInJoyDailyFragment
   public void onResume()
   {
     super.onResume();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ReadInJoyDailyViewController)localObject).i();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
+    localObject = this.i;
     if (localObject != null) {
       ((RIJPopupAutomator)localObject).c();
     }
     RecommendFeedsDiandianEntranceManager.getInstance().checkAndReqRefreshDianDianIcon();
     ApngImage.playByTag(31);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009940", "0X8009940", 0, 0, "", "", "", "", false);
-    ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setChannelID(DailyModeConfigHandler.b());
+    PublicAccountReportUtils.a(null, "", "0X8009940", "0X8009940", 0, 0, "", "", "", "", false);
+    ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setChannelID(DailyModeConfigHandler.j());
     localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onResume: setSuperMaskChannelId = ");
-    localStringBuilder.append(DailyModeConfigHandler.b());
+    localStringBuilder.append(DailyModeConfigHandler.j());
     ((IRIJAdLogService)localObject).d("ReadInJoySuperMaskAd", localStringBuilder.toString());
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).onResume();
   }
@@ -432,44 +427,44 @@ public class ReadInJoyDailyFragment
   public void onStart()
   {
     super.onStart();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ReadInJoyDailyViewController)localObject).f();
     }
-    localObject = jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper;
+    localObject = d;
     if (localObject != null) {
-      ((TimeSliceHelper)localObject).a();
+      ((TimeSliceHelper)localObject).b();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ReadInJoyDailyViewController)localObject).g();
     }
     if (!BaseActivity.mAppForground)
     {
-      localObject = jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper;
+      localObject = d;
       if (localObject != null) {
-        ((TimeSliceHelper)localObject).b();
+        ((TimeSliceHelper)localObject).c();
       }
     }
     if (getBaseActivity().isFinishing())
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailyViewController;
+      localObject = this.b;
       if (localObject != null) {
         ((ReadInJoyDailyViewController)localObject).c();
       }
-      UserActionCollector.a().c();
-      ReadinjoySPEventReport.b(1, KandianDailyReportUtils.a(), KandianDailyReportUtils.b());
-      if (!this.jdField_a_of_type_Boolean) {
-        a(KandianDailyReportUtils.a());
+      UserActionCollector.a().d();
+      ReadinjoySPEventReport.b(1, KandianDailyReportUtils.c(), KandianDailyReportUtils.f());
+      if (!this.h) {
+        a(KandianDailyReportUtils.e());
       }
       KandianDailyReportUtils.b();
-      com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.jdField_a_of_type_Boolean = false;
-      DailyModeConfigHandler.c();
+      com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.b = false;
+      DailyModeConfigHandler.i();
     }
   }
   
@@ -478,7 +473,7 @@ public class ReadInJoyDailyFragment
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean)
     {
-      RIJPopupAutomator localRIJPopupAutomator = this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
+      RIJPopupAutomator localRIJPopupAutomator = this.i;
       if (localRIJPopupAutomator != null) {
         localRIJPopupAutomator.g();
       }
@@ -487,7 +482,7 @@ public class ReadInJoyDailyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -24,32 +24,32 @@ class ChatBackgroundManager$ReportChatBgHandler
     Object localObject1 = (Object[])paramMessage.obj;
     if (i == 1)
     {
-      if (ChatBackgroundManager.c < 3)
+      if (ChatBackgroundManager.j < 3)
       {
         paramMessage = (String)localObject1[0];
         localObject1 = (QQAppInterface)localObject1[1];
         ChatBackgroundManager.a((QQAppInterface)localObject1, paramMessage, StatisticCollector.getInstance(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
+        ChatBackgroundManager.j += 1;
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("reportTimes is:");
-          ((StringBuilder)localObject2).append(ChatBackgroundManager.c);
+          ((StringBuilder)localObject2).append(ChatBackgroundManager.j);
           QLog.d("ThemeDownloadTrace", 2, ((StringBuilder)localObject2).toString());
         }
-        Object localObject2 = ChatBackgroundManager.a.obtainMessage();
+        Object localObject2 = ChatBackgroundManager.k.obtainMessage();
         ((Message)localObject2).what = 1;
         ((Message)localObject2).obj = new Object[] { paramMessage, localObject1 };
-        ChatBackgroundManager.a.sendMessageDelayed((Message)localObject2, 120000L);
+        ChatBackgroundManager.k.sendMessageDelayed((Message)localObject2, 120000L);
         return;
       }
-      ChatBackgroundManager.c = 0;
+      ChatBackgroundManager.j = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.ReportChatBgHandler
  * JD-Core Version:    0.7.0.1
  */

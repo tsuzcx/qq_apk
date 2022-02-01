@@ -33,7 +33,7 @@ class PlayOperationViewModelImpl$33
     }
     if (paramInt != 0)
     {
-      QQToast.a(this.a.mBinding.getContext(), 1, HardCodeUtil.a(2131707384), 1).a();
+      QQToast.makeText(this.a.mBinding.getContext(), 1, HardCodeUtil.a(2131905203), 1).show();
       return;
     }
     paramBundle = new NowSummaryCard.NearbyUserFollowRsp();
@@ -61,10 +61,10 @@ class PlayOperationViewModelImpl$33
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
         localStringBuilder.append(paramArrayOfByte);
-        QQToast.a(paramBundle, 1, localStringBuilder.toString(), 1).a();
+        QQToast.makeText(paramBundle, 1, localStringBuilder.toString(), 1).show();
         return;
       }
-      QQToast.a(this.a.mBinding.getContext(), 1, HardCodeUtil.a(2131707292), 1).a();
+      QQToast.makeText(this.a.mBinding.getContext(), 1, HardCodeUtil.a(2131905117), 1).show();
       return;
     }
     paramArrayOfByte = this.a;
@@ -73,7 +73,7 @@ class PlayOperationViewModelImpl$33
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.33
  * JD-Core Version:    0.7.0.1
  */

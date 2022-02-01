@@ -29,11 +29,11 @@ class VideoFeedsGestureLayout$MyGestureListener
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    int i = VideoFeedsHelper.b(VideoFeedsGestureLayout.a(this.a))[0];
-    i = VideoFeedsHelper.b(VideoFeedsGestureLayout.a(this.a))[1];
+    int i = VideoFeedsHelper.c(VideoFeedsGestureLayout.c(this.a))[0];
+    i = VideoFeedsHelper.c(VideoFeedsGestureLayout.c(this.a))[1];
     paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
     paramFloat2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    if (VideoFeedsGestureLayout.a(this.a) == 0) {
+    if (VideoFeedsGestureLayout.d(this.a) == 0) {
       if (Math.abs(paramFloat2) - Math.abs(paramFloat1) < 0.0F)
       {
         if (paramMotionEvent1.getX() < this.a.getWidth() / 2) {
@@ -46,7 +46,7 @@ class VideoFeedsGestureLayout$MyGestureListener
         VideoFeedsGestureLayout.a(this.a, 3);
       }
     }
-    i = VideoFeedsGestureLayout.a(this.a);
+    i = VideoFeedsGestureLayout.d(this.a);
     if ((i != 1) && (i != 2))
     {
       if (i != 3) {
@@ -64,7 +64,7 @@ class VideoFeedsGestureLayout$MyGestureListener
           }
         }
         paramMotionEvent1 = this.a;
-        paramMotionEvent1.a(VideoFeedsGestureLayout.a(paramMotionEvent1), paramFloat1);
+        paramMotionEvent1.a(VideoFeedsGestureLayout.d(paramMotionEvent1), paramFloat1);
         return false;
       }
     }
@@ -80,14 +80,14 @@ class VideoFeedsGestureLayout$MyGestureListener
         }
       }
       paramMotionEvent1 = this.a;
-      paramMotionEvent1.a(VideoFeedsGestureLayout.a(paramMotionEvent1), paramFloat1);
+      paramMotionEvent1.a(VideoFeedsGestureLayout.d(paramMotionEvent1), paramFloat1);
     }
     return false;
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if ((VideoFeedsGestureLayout.a(this.a) != null) && (SystemClock.uptimeMillis() - VideoFeedsGestureLayout.a(this.a) > 500L)) {
+    if ((VideoFeedsGestureLayout.a(this.a) != null) && (SystemClock.uptimeMillis() - VideoFeedsGestureLayout.b(this.a) > 500L)) {
       VideoFeedsGestureLayout.a(this.a).a(this.a);
     }
     return false;
@@ -95,7 +95,7 @@ class VideoFeedsGestureLayout$MyGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsGestureLayout.MyGestureListener
  * JD-Core Version:    0.7.0.1
  */

@@ -11,34 +11,29 @@ import com.tencent.mobileqq.search.business.contact.view.ContactSearchResultView
 public class TroopAddFrdsSrchResultView
   extends ContactSearchResultView
 {
-  private View a;
   public Button a;
+  private View b;
   
   public TroopAddFrdsSrchResultView(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
   }
   
-  public Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
   protected void a()
   {
-    this.d = ((TextView)this.b.findViewById(2131371877));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.b.findViewById(2131361799));
-    this.e = ((TextView)this.b.findViewById(2131376487));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131376477));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689589));
-    this.g = ((TextView)this.b.findViewById(2131377726));
-    this.f = ((TextView)this.b.findViewById(2131376485));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131379859);
+    this.f = ((TextView)this.e.findViewById(2131439320));
+    this.j = ((ImageView)this.e.findViewById(2131427337));
+    this.g = ((TextView)this.e.findViewById(2131444728));
+    this.a = ((Button)this.e.findViewById(2131444718));
+    this.a.setText(HardCodeUtil.a(2131886199));
+    this.i = ((TextView)this.e.findViewById(2131446184));
+    this.h = ((TextView)this.e.findViewById(2131444726));
+    this.b = this.e.findViewById(2131448716);
   }
   
   public void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.b;
     if (localView != null)
     {
       int i;
@@ -50,10 +45,15 @@ public class TroopAddFrdsSrchResultView
       localView.setVisibility(i);
     }
   }
+  
+  public Button j()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.troop.view.TroopAddFrdsSrchResultView
  * JD-Core Version:    0.7.0.1
  */

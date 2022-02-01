@@ -12,32 +12,60 @@ import java.util.List;
 public abstract class OrientationProvider
   implements SensorEventListener
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  protected SensorManager a;
-  protected ARSensorManager.OnSensorChangeListener a;
-  protected List<Sensor> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  protected float[] a;
+  private boolean a = false;
   private float b = -1.0F;
   private float c = -1.0F;
+  protected List<Sensor> d = new ArrayList();
+  protected float[] e = new float[3];
+  protected SensorManager f;
+  protected ARSensorManager.OnSensorChangeListener g;
+  private float h = -1.0F;
   
   public OrientationProvider(SensorManager paramSensorManager, ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener = paramOnSensorChangeListener;
+    this.f = paramSensorManager;
+    this.g = paramOnSensorChangeListener;
   }
   
   private GeomagneticField a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    if (this.a) {
+      return new GeomagneticField(this.b, this.c, this.h, System.currentTimeMillis());
     }
     return null;
   }
   
-  protected float a()
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.f.registerListener(this, localSensor, paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.f.registerListener(this, localSensor, 1);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.f.unregisterListener(this, localSensor);
+    }
+  }
+  
+  protected float d()
   {
     GeomagneticField localGeomagneticField = a();
     if (localGeomagneticField != null) {
@@ -46,41 +74,11 @@ public abstract class OrientationProvider
     return 0.0F;
   }
   
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
-    }
-  }
-  
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.OrientationProvider
  * JD-Core Version:    0.7.0.1
  */

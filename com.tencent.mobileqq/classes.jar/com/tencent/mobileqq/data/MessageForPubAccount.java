@@ -27,7 +27,7 @@ public class MessageForPubAccount
       localObject1 = ((PAMessage.Item)((PAMessage)localObject2).items.get(0)).title;
       Object localObject3 = ((PAMessage.Item)((PAMessage)localObject2).items.get(0)).cover;
       if (paramBoolean) {
-        paramMessageRecord = String.format(paramQQAppInterface.getApp().getString(2131697684), new Object[] { ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(paramQQAppInterface, BaseApplicationImpl.getContext()) });
+        paramMessageRecord = String.format(paramQQAppInterface.getApp().getString(2131895457), new Object[] { ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(paramQQAppInterface, BaseApplicationImpl.getContext()) });
       } else {
         paramMessageRecord = "";
       }
@@ -49,7 +49,7 @@ public class MessageForPubAccount
       }
       localObject1 = paramMessageRecord;
       if (TextUtils.isEmpty(paramMessageRecord)) {
-        return paramQQAppInterface.getApp().getString(2131694677);
+        return paramQQAppInterface.getApp().getString(2131892369);
       }
     }
     else
@@ -57,7 +57,7 @@ public class MessageForPubAccount
       if ((localObject2 != null) && (((PAMessage)localObject2).msg != null)) {
         return ((PAMessage)localObject2).msg;
       }
-      localObject1 = paramQQAppInterface.getApp().getString(2131694677);
+      localObject1 = paramQQAppInterface.getApp().getString(2131892369);
     }
     return localObject1;
   }
@@ -109,7 +109,7 @@ public class MessageForPubAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPubAccount
  * JD-Core Version:    0.7.0.1
  */

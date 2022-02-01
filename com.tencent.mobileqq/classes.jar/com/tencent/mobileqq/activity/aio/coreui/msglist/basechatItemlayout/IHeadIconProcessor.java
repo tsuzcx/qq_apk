@@ -7,8 +7,6 @@ import com.tencent.mobileqq.vas.avatar.VasAvatar;
 public abstract interface IHeadIconProcessor
   extends IBaseChatItemLayoutProcessor
 {
-  public abstract VasAvatar a();
-  
   public abstract void a(Object paramObject);
   
   public abstract void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean);
@@ -22,10 +20,12 @@ public abstract interface IHeadIconProcessor
   public abstract BaseChatItemLayoutViewBasicAbility b();
   
   public abstract void b(boolean paramBoolean);
+  
+  public abstract VasAvatar c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.IHeadIconProcessor
  * JD-Core Version:    0.7.0.1
  */

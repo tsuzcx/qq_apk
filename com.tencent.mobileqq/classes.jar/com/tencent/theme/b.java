@@ -142,12 +142,12 @@ public class b
     if (localInteger == null) {
       return this.b.get(paramLong);
     }
-    return this.c.b(localInteger.intValue());
+    return this.c.loadColorStateList(localInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.b
  * JD-Core Version:    0.7.0.1
  */

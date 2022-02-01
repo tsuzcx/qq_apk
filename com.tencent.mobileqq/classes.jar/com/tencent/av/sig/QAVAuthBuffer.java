@@ -5,31 +5,31 @@ import com.tencent.TMG.utils.SoUtil;
 
 public class QAVAuthBuffer
 {
-  private static QAVAuthBuffer jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static QAVAuthBuffer b;
   
   public static QAVAuthBuffer a()
   {
-    if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null)
+        if (b == null)
         {
-          a();
-          if (jdField_a_of_type_Boolean) {
-            jdField_a_of_type_ComTencentAvSigQAVAuthBuffer = new QAVAuthBuffer();
+          b();
+          if (a) {
+            b = new QAVAuthBuffer();
           }
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
+    return b;
   }
   
   @SuppressLint({"UnsafeDynamicallyLoadedCode"})
-  private static void a()
+  private static void b()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       try
       {
         if (SoUtil.customLibPath != null)
@@ -48,12 +48,12 @@ public class QAVAuthBuffer
           System.loadLibrary("stlport_shared");
           System.loadLibrary("qav_authbuff");
         }
-        jdField_a_of_type_Boolean = true;
+        a = true;
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        jdField_a_of_type_Boolean = false;
+        a = false;
         localUnsatisfiedLinkError.printStackTrace();
       }
     }

@@ -24,7 +24,7 @@ class NormalVideoDeliverController$3
     if ((paramInt1 != 1) && (paramInt1 != 0))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707615));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905430));
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append("]");
       VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", ((StringBuilder)localObject).toString(), null);
@@ -34,7 +34,7 @@ class NormalVideoDeliverController$3
     if (paramInt2 != 0)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707624));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905439));
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append("]");
       VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", ((StringBuilder)localObject).toString(), null);
@@ -45,12 +45,12 @@ class NormalVideoDeliverController$3
     paramInt1 = ShortVideoResourceManager.a(NormalVideoDeliverController.a(this.a), (List)localObject);
     if (paramInt1 == 0)
     {
-      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131707621), null);
-      ShortVideoResourceManager.a(NormalVideoDeliverController.a(this.a), (List)localObject, this.a.a);
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131905436), null);
+      ShortVideoResourceManager.a(NormalVideoDeliverController.a(this.a), (List)localObject, this.a.q);
       return;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131707622));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131905437));
     ((StringBuilder)localObject).append(paramInt1);
     ((StringBuilder)localObject).append("]");
     VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", ((StringBuilder)localObject).toString(), null);
@@ -59,7 +59,7 @@ class NormalVideoDeliverController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.NormalVideoDeliverController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -16,23 +16,23 @@ class VideoHandler$5
   
   public void run()
   {
-    if (!VideoHandler.a(this.this$0)) {
+    if (!VideoHandler.d(this.this$0)) {
       return;
     }
-    if ((this.this$0.a != null) && (this.this$0.a.a() != null))
+    if ((this.this$0.f != null) && (this.this$0.f.a() != null))
     {
       VideoPlayParam localVideoPlayParam = this.a;
       if (localVideoPlayParam == null) {
         return;
       }
-      localVideoPlayParam.d = 0L;
-      if ((VideoHandler.a(this.this$0) != null) && (VideoHandler.a(this.this$0).canAutoPlayVideo()))
+      localVideoPlayParam.k = 0L;
+      if ((VideoHandler.b(this.this$0) != null) && (VideoHandler.e(this.this$0).canAutoPlayVideo()))
       {
-        int i = this.a.a;
-        int j = VideoHandler.a(this.this$0).getHeaderViewsCount();
-        VideoHandler.a(this.this$0).post(new VideoHandler.5.1(this, i + j));
-        if (ReadInJoyHelper.a(ReadInJoyUtils.a())) {
-          QQToast.a(VideoHandler.a(this.this$0).getApplicationContext(), "为你开启wifi下连续播放功能", 1).a();
+        int i = this.a.e;
+        int j = VideoHandler.b(this.this$0).getHeaderViewsCount();
+        VideoHandler.b(this.this$0).post(new VideoHandler.5.1(this, i + j));
+        if (ReadInJoyHelper.a(ReadInJoyUtils.b())) {
+          QQToast.makeText(VideoHandler.c(this.this$0).getApplicationContext(), "为你开启wifi下连续播放功能", 1).show();
         }
       }
     }
@@ -40,7 +40,7 @@ class VideoHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.5
  * JD-Core Version:    0.7.0.1
  */

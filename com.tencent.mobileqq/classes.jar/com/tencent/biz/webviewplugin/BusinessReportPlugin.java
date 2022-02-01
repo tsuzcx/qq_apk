@@ -12,22 +12,20 @@ public class BusinessReportPlugin
   extends WebViewPlugin
   implements IPreCreatePluginChecker
 {
-  private Handler a;
-  public boolean a;
+  public boolean a = false;
+  private Handler b = new Handler(Looper.getMainLooper());
   
   public BusinessReportPlugin()
   {
-    this.jdField_a_of_type_Boolean = false;
     this.mPluginNameSpace = "JD_REPORT";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       try
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
+        this.b.post(new BusinessReportPlugin.1(this, paramString));
         return;
       }
       catch (Exception paramString)
@@ -42,7 +40,7 @@ public class BusinessReportPlugin
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_Boolean = BusinessReporter.a(paramString);
+    this.a = BusinessReporter.a(paramString);
   }
   
   public long getWebViewEventByNameSpace(String paramString)
@@ -65,7 +63,7 @@ public class BusinessReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.BusinessReportPlugin
  * JD-Core Version:    0.7.0.1
  */

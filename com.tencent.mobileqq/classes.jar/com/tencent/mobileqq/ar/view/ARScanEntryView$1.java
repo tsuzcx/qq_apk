@@ -14,15 +14,15 @@ class ARScanEntryView$1
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
     }
-    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
-      ARScanEntryView.a(this.a).c();
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.J)) {
+      ARScanEntryView.b(this.a).d();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.1
  * JD-Core Version:    0.7.0.1
  */

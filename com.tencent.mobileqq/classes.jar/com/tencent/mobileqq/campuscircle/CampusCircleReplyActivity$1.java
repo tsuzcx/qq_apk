@@ -17,9 +17,9 @@ class CampusCircleReplyActivity$1
     Object localObject = this.a.getResources();
     TextView localTextView = CampusCircleReplyActivity.a(this.a);
     if (paramBoolean) {
-      localObject = ((Resources)localObject).getColorStateList(2131166373);
+      localObject = ((Resources)localObject).getColorStateList(2131167208);
     } else {
-      localObject = ((Resources)localObject).getColorStateList(2131166375);
+      localObject = ((Resources)localObject).getColorStateList(2131167210);
     }
     localTextView.setTextColor((ColorStateList)localObject);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -27,7 +27,7 @@ class CampusCircleReplyActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity.1
  * JD-Core Version:    0.7.0.1
  */

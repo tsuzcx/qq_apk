@@ -3,7 +3,7 @@ package com.tencent.liteav.audio;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,14 +17,15 @@ public class TXAudioEffectManagerImpl
   private static final int OLD_BGM_PLAYER_ID_TYPE = 0;
   private static final String TAG = "AudioCenter:TXAudioEffectManager";
   private static final Handler mMainHandler;
-  private static HashMap<Long, TXAudioEffectManager.TXMusicPlayObserver> mMusicObserverMap = new HashMap();
+  private static final HashMap<Long, TXAudioEffectManager.TXMusicPlayObserver> mMusicObserverMap = new HashMap();
+  private TXAudioEffectManagerImpl.TXAudioEffectManagerListener mAudioEffectManagerListener;
   private final int mIdType;
-  private List<Long> mPlayingMusicIDList = new ArrayList();
+  private final List<Long> mPlayingMusicIDList = new ArrayList();
   
   static
   {
     mMainHandler = new Handler(Looper.getMainLooper());
-    f.f();
+    h.f();
     nativeClassInit();
   }
   
@@ -55,6 +56,8 @@ public class TXAudioEffectManagerImpl
   }
   
   private static native void nativeClassInit();
+  
+  private native long nativeGetAvailableBGMBytes(long paramLong);
   
   private native long nativeGetCurrentPositionInMs(long paramLong);
   
@@ -111,8 +114,16 @@ public class TXAudioEffectManagerImpl
   
   public void enableVoiceEarMonitor(boolean paramBoolean)
   {
-    TXCAudioEngine.getInstance();
+    TXAudioEffectManagerImpl.TXAudioEffectManagerListener localTXAudioEffectManagerListener = this.mAudioEffectManagerListener;
+    if (localTXAudioEffectManagerListener != null) {
+      localTXAudioEffectManagerListener.onSwitchVoiceEarMonitor(paramBoolean);
+    }
     TXCAudioEngine.enableAudioEarMonitoring(paramBoolean);
+  }
+  
+  public long getAvailableBGMBytes(int paramInt)
+  {
+    return nativeGetAvailableBGMBytes(convertIdToInt64(this.mIdType, paramInt));
   }
   
   public long getMusicCurrentPosInMS(int paramInt)
@@ -172,6 +183,11 @@ public class TXAudioEffectManagerImpl
   public void setAllMusicVolume(int paramInt)
   {
     nativeSetAllVolume(paramInt);
+  }
+  
+  public void setAudioEffectManagerListener(TXAudioEffectManagerImpl.TXAudioEffectManagerListener paramTXAudioEffectManagerListener)
+  {
+    this.mAudioEffectManagerListener = paramTXAudioEffectManagerListener;
   }
   
   public void setAudioPlayoutVolume(int paramInt)
@@ -253,7 +269,6 @@ public class TXAudioEffectManagerImpl
   
   public void setVoiceEarMonitorVolume(int paramInt)
   {
-    TXCAudioEngine.getInstance();
     TXCAudioEngine.setAudioEarMonitoringVolume(paramInt);
   }
   
@@ -303,7 +318,7 @@ public class TXAudioEffectManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXAudioEffectManagerImpl
  * JD-Core Version:    0.7.0.1
  */

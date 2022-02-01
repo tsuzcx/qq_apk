@@ -10,29 +10,26 @@ import java.util.WeakHashMap;
 
 public abstract class Task
 {
-  public int a;
-  public Drawable a;
   public ImageLoader a;
-  protected Task.TaskStateListener a;
-  public Object a;
-  protected WeakReference<ImageView> a;
-  protected volatile boolean a;
-  public Drawable b;
+  public Object b;
+  public int c;
+  protected WeakReference<ImageView> d;
+  public Drawable e;
+  public Drawable f;
+  protected Task.TaskStateListener g;
+  protected volatile boolean h = false;
   
   public Task(ImageView paramImageView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    this.d = new WeakReference(paramImageView);
   }
-  
-  public abstract String a();
   
   public abstract void a();
   
   public void a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    paramDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener;
+    this.e = paramDrawable;
+    paramDrawable = this.g;
     if (paramDrawable != null) {
       paramDrawable.a(this);
     }
@@ -40,8 +37,8 @@ public abstract class Task
   
   public void a(Drawable paramDrawable, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    paramDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener;
+    this.e = paramDrawable;
+    paramDrawable = this.g;
     if (paramDrawable != null) {
       paramDrawable.a(this, paramString);
     }
@@ -49,54 +46,56 @@ public abstract class Task
   
   public void a(Task.TaskStateListener paramTaskStateListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener = paramTaskStateListener;
+    this.g = paramTaskStateListener;
   }
   
   public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ImageView localImageView = (ImageView)this.d.get();
     if (localImageView == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+    if (this.e == null) {
       return;
     }
-    if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
+    if ((paramBoolean) && (this.c == 0))
     {
-      SLog.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
-      paramWeakHashMap.put(localImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      SLog.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.b);
+      paramWeakHashMap.put(localImageView, this.e);
       return;
     }
-    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    paramWeakHashMap = localImageView.getTag(2131369674);
-    String str = this.jdField_a_of_type_JavaLangObject.toString();
+    localImageView.setImageDrawable(this.e);
+    paramWeakHashMap = localImageView.getTag(2131436784);
+    String str = this.b.toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" view hash:");
     localStringBuilder.append(localImageView.hashCode());
     InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", paramWeakHashMap, " and change to: ", str, localStringBuilder.toString() });
-    localImageView.setTag(2131369674, this.jdField_a_of_type_JavaLangObject.toString());
+    localImageView.setTag(2131436784, this.b.toString());
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131714525), this.jdField_a_of_type_JavaLangObject });
-  }
+  public abstract String b();
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderTask$TaskStateListener = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderImageLoader = null;
-    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131714526), this.jdField_a_of_type_JavaLangObject });
+    this.h = true;
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131912034), this.b });
+  }
+  
+  public boolean d()
+  {
+    return this.h;
+  }
+  
+  public void e()
+  {
+    this.e = null;
+    this.g = null;
+    this.a = null;
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131912035), this.b });
   }
 }
 

@@ -12,95 +12,95 @@ import mqq.os.MqqHandler;
 class CaptureOperateTouchLayout$IndicatorTouchListener
   implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private CaptureOperateTouchLayout.IndicatorLongPressCallback jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout$IndicatorLongPressCallback;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CaptureOperateTouchLayout.IndicatorTouchListener.1(this);
-  private float jdField_b_of_type_Float = 0.0F;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new CaptureOperateTouchLayout.IndicatorTouchListener.2(this);
+  private float b = 0.0F;
   private float c = 0.0F;
   private float d = 0.0F;
   private float e = 0.0F;
   private float f = 0.0F;
   private float g = 0.0F;
+  private float h = 0.0F;
+  private CaptureOperateTouchLayout.IndicatorLongPressCallback i;
+  private Runnable j = new CaptureOperateTouchLayout.IndicatorTouchListener.1(this);
+  private Runnable k = new CaptureOperateTouchLayout.IndicatorTouchListener.2(this);
   
   public CaptureOperateTouchLayout$IndicatorTouchListener(CaptureOperateTouchLayout paramCaptureOperateTouchLayout, CaptureOperateTouchLayout.IndicatorLongPressCallback paramIndicatorLongPressCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout$IndicatorLongPressCallback = paramIndicatorLongPressCallback;
+    this.i = paramIndicatorLongPressCallback;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int m = paramMotionEvent.getAction();
+    if (m != 0)
     {
       Object localObject;
-      if (i != 1)
+      if (m != 1)
       {
-        if (i == 2)
+        if (m == 2)
         {
-          float f2 = this.jdField_a_of_type_Float;
+          float f2 = this.b;
           float f3 = paramMotionEvent.getRawX();
-          float f4 = this.c;
-          float f1 = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout);
+          float f4 = this.d;
+          float f1 = CaptureOperateTouchLayout.b(this.a);
           f2 = Math.min(Math.max(f2 + (f3 - f4), 0.0F), f1);
           paramView.setX(f2);
           f1 = f2 / f1;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout;
-          ((CaptureOperateTouchLayout)localObject).a(f1, CaptureOperateTouchLayout.a((CaptureOperateTouchLayout)localObject));
-          if ((!CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout)) && ((Math.abs(this.e - paramView.getX()) > 10.0F) || (Math.abs(this.f - paramView.getY()) > 10.0F)))
+          localObject = this.a;
+          ((CaptureOperateTouchLayout)localObject).a(f1, CaptureOperateTouchLayout.h((CaptureOperateTouchLayout)localObject));
+          if ((!CaptureOperateTouchLayout.h(this.a)) && ((Math.abs(this.f - paramView.getX()) > 10.0F) || (Math.abs(this.g - paramView.getY()) > 10.0F)))
           {
-            this.e = paramView.getX();
-            this.f = paramView.getY();
-            ThreadManager.getUIHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-            ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-            ThreadManager.getUIHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
-            ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-            this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout$IndicatorLongPressCallback.c();
+            this.f = paramView.getX();
+            this.g = paramView.getY();
+            ThreadManager.getUIHandler().removeCallbacks(this.k);
+            ThreadManager.getUIHandler().removeCallbacks(this.j);
+            ThreadManager.getUIHandler().postDelayed(this.k, 300L);
+            ThreadManager.getUIHandler().postDelayed(this.j, 1000L);
+            this.i.c();
           }
         }
       }
       else
       {
-        if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout))
+        if (CaptureOperateTouchLayout.h(this.a))
         {
-          CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout, false);
-          i = (int)(Math.abs(paramView.getX() - this.e) / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout) * 400.0F);
-          localObject = ValueAnimator.ofFloat(new float[] { paramView.getScrollX(), this.e }).setDuration(i);
+          CaptureOperateTouchLayout.a(this.a, false);
+          m = (int)(Math.abs(paramView.getX() - this.f) / CaptureOperateTouchLayout.b(this.a) * 400.0F);
+          localObject = ValueAnimator.ofFloat(new float[] { paramView.getScrollX(), this.f }).setDuration(m);
           ((ValueAnimator)localObject).addUpdateListener(new CaptureOperateTouchLayout.IndicatorTouchListener.3(this, paramView));
           ((ValueAnimator)localObject).start();
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout$IndicatorLongPressCallback.a(true);
+          this.i.a(true);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout$IndicatorLongPressCallback.a(false);
+          this.i.a(false);
         }
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).abortAnimation();
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout, CaptureOperateTouchLayout.b());
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout, CaptureOperateTouchLayout.b());
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+        CaptureOperateTouchLayout.e(this.a).abortAnimation();
+        CaptureOperateTouchLayout.a(this.a, CaptureOperateTouchLayout.a());
+        CaptureOperateTouchLayout.a(this.a, CaptureOperateTouchLayout.a());
+        CaptureOperateTouchLayout.g(this.a).removeCallbacks(this.j);
+        CaptureOperateTouchLayout.g(this.a).removeCallbacks(this.k);
       }
     }
     else
     {
-      this.jdField_a_of_type_Float = paramView.getX();
-      this.jdField_b_of_type_Float = paramView.getY();
-      this.c = paramMotionEvent.getRawX();
-      this.d = paramMotionEvent.getRawY();
-      this.e = paramView.getX();
-      this.f = paramView.getY();
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout, false);
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).setFinalX((int)CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).getX());
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      this.b = paramView.getX();
+      this.c = paramView.getY();
+      this.d = paramMotionEvent.getRawX();
+      this.e = paramMotionEvent.getRawY();
+      this.f = paramView.getX();
+      this.g = paramView.getY();
+      CaptureOperateTouchLayout.a(this.a, false);
+      CaptureOperateTouchLayout.e(this.a).setFinalX((int)CaptureOperateTouchLayout.f(this.a).getX());
+      CaptureOperateTouchLayout.g(this.a).postDelayed(this.k, 300L);
+      CaptureOperateTouchLayout.g(this.a).postDelayed(this.j, 1000L);
     }
-    this.g = paramMotionEvent.getRawX();
+    this.h = paramMotionEvent.getRawX();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.CaptureOperateTouchLayout.IndicatorTouchListener
  * JD-Core Version:    0.7.0.1
  */

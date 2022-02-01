@@ -14,7 +14,7 @@ public final class DiyEmotionPb$Filter_Text_Rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.hiboom.protocol.DiyEmotionPb.Filter_Text_Rsp
  * JD-Core Version:    0.7.0.1
  */

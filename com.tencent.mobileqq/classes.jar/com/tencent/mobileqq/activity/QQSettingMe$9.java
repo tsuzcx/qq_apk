@@ -13,13 +13,13 @@ class QQSettingMe$9
   
   public void onClick(View paramView)
   {
-    QQSettingMe.a(this.a).a("d_pretty_num").onClick(paramView);
+    QQSettingMe.k(this.a).a("d_pretty_num").onClick(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.9
  * JD-Core Version:    0.7.0.1
  */

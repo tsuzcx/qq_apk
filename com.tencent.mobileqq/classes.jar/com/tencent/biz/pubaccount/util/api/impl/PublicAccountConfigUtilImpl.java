@@ -87,16 +87,16 @@ public class PublicAccountConfigUtilImpl
   public static final String CONFIG_WEB_NATIVE_RENDER = "web_viola_render_switch";
   public static final String CONFIG_WEB_NATIVE_RENDER_MODE = "web_viola_render_mode";
   public static boolean IMAGE_COLLECTION_COMMENT = false;
-  public static final int MERGE_KANDIAN_FOLDER_FOLDER_DEFAULT_ICON = 2130840430;
-  public static final int MERGE_KANDIAN_FOLDER_FOLDER_DEFAULT_NAME = 2131695228;
+  public static final int MERGE_KANDIAN_FOLDER_FOLDER_DEFAULT_ICON = 2130841186;
+  public static final int MERGE_KANDIAN_FOLDER_FOLDER_DEFAULT_NAME = 2131892962;
   public static final String PUBLIC_ACCOUNT_CATEGORY_DEFAULT_URL = "https://find.mp.qq.com/public/categories?_wv=67109947&_bid=2258";
   public static String PUBLIC_ACCOUNT_CATEGORY_URL;
   public static final String PUBLIC_ACCOUNT_CENTER_DEFAULT_URL = "https://find.mp.qq.com/public/index?_wv=67109947&_bid=2258";
   public static String PUBLIC_ACCOUNT_CENTER_URL;
-  public static final int PUBLIC_ACCOUNT_SUBSCRIPT_FOLDER_DEFAULT_ICON = 2130840425;
-  public static final int PUBLIC_ACCOUNT_SUBSCRIPT_FOLDER_DEFAULT_NAME = 2131696434;
-  public static final int PUBLIC_ACCOUNT_XIN_KANDIAN_FOLDER_DEFAULT_ICON = 2130840430;
-  public static final int PUBLIC_ACCOUNT_XIN_KANDIAN_FOLDER_DEFAULT_NAME = 2131695230;
+  public static final int PUBLIC_ACCOUNT_SUBSCRIPT_FOLDER_DEFAULT_ICON = 2130841181;
+  public static final int PUBLIC_ACCOUNT_SUBSCRIPT_FOLDER_DEFAULT_NAME = 2131894206;
+  public static final int PUBLIC_ACCOUNT_XIN_KANDIAN_FOLDER_DEFAULT_ICON = 2130841186;
+  public static final int PUBLIC_ACCOUNT_XIN_KANDIAN_FOLDER_DEFAULT_NAME = 2131892964;
   public static final String READINJOY_FOLDER_CONFIG_ID_TAG = "id";
   public static final String READINJOY_FOLDER_ICON_TAG = "icon";
   public static final String READINJOY_FOLDER_NICKNAME_TAG = "name";
@@ -757,9 +757,9 @@ public class PublicAccountConfigUtilImpl
       if ((paramInt != 2) && (paramInt != 3)) {
         return null;
       }
-      return paramContext.getString(2131695230);
+      return paramContext.getString(2131892964);
     }
-    return paramContext.getString(2131696434);
+    return paramContext.getString(2131894206);
   }
   
   private static void init(AppInterface paramAppInterface, Context paramContext)
@@ -767,13 +767,13 @@ public class PublicAccountConfigUtilImpl
     if (list == null) {
       list = new PublicAccountConfigUtilImpl.2(2011, 0, 1000);
     }
-    if (!parseConfigXml(paramAppInterface, paramContext, SharedPreUtils.e(paramContext)))
+    if (!parseConfigXml(paramAppInterface, paramContext, SharedPreUtils.t(paramContext)))
     {
-      localObject = new IPublicAccountConfigUtil.PublicAccountConfigFolder(paramAppInterface, paramContext, 1, 2131696434, 2130840425);
+      localObject = new IPublicAccountConfigUtil.PublicAccountConfigFolder(paramAppInterface, paramContext, 1, 2131894206, 2130841181);
       list.put(Integer.valueOf(1), localObject);
     }
-    Object localObject = SharedPreUtils.i(paramContext);
-    String str = SharedPreUtils.j(paramContext);
+    Object localObject = SharedPreUtils.K(paramContext);
+    String str = SharedPreUtils.L(paramContext);
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)))
     {
       IPublicAccountConfigUtil.PublicAccountConfigFolder localPublicAccountConfigFolder = new IPublicAccountConfigUtil.PublicAccountConfigFolder();
@@ -782,7 +782,7 @@ public class PublicAccountConfigUtilImpl
     }
     else
     {
-      paramAppInterface = new IPublicAccountConfigUtil.PublicAccountConfigFolder(paramAppInterface, paramContext, 2, 2131695230, 2130840430);
+      paramAppInterface = new IPublicAccountConfigUtil.PublicAccountConfigFolder(paramAppInterface, paramContext, 2, 2131892964, 2130841186);
       list.put(Integer.valueOf(2), paramAppInterface);
     }
     initiatedCache.set(true);
@@ -855,7 +855,7 @@ public class PublicAccountConfigUtilImpl
     boolean bool = parseConfigXml(paramAppInterface, paramContext, paramString);
     if (bool)
     {
-      SharedPreUtils.f(paramContext, paramString);
+      SharedPreUtils.C(paramContext, paramString);
       return bool;
     }
     if (QLog.isColorLevel()) {
@@ -1042,11 +1042,11 @@ public class PublicAccountConfigUtilImpl
     if (paramInt != 1)
     {
       if ((paramInt != 2) && (paramInt != 3)) {
-        return paramContext.getResources().getDrawable(2130840321);
+        return paramContext.getResources().getDrawable(2130841060);
       }
-      return paramContext.getResources().getDrawable(2130840430);
+      return paramContext.getResources().getDrawable(2130841186);
     }
-    return paramContext.getResources().getDrawable(2130840425);
+    return paramContext.getResources().getDrawable(2130841181);
   }
   
   public boolean getDisableBigDataChannel()
@@ -1093,7 +1093,7 @@ public class PublicAccountConfigUtilImpl
   {
     IPublicAccountConfigUtil.PublicAccountConfigFolder localPublicAccountConfigFolder = getFolder(paramAppInterface, paramContext, paramInt);
     if (localPublicAccountConfigFolder != null) {
-      return localPublicAccountConfigFolder.a();
+      return localPublicAccountConfigFolder.b();
     }
     return getDefaultName(paramAppInterface, paramContext, paramInt);
   }
@@ -1147,7 +1147,7 @@ public class PublicAccountConfigUtilImpl
     if (isSwitchToCertifiedAccount()) {
       return getCertifiedAccountTitle();
     }
-    return HardCodeUtil.a(2131716346);
+    return HardCodeUtil.a(2131913788);
   }
   
   public long getReadInJoyADBackgroundShowTime()
@@ -1287,7 +1287,7 @@ public class PublicAccountConfigUtilImpl
     if (isSwitchToCertifiedAccount()) {
       return getCertifiedAccountTitle();
     }
-    return HardCodeUtil.a(2131716346);
+    return HardCodeUtil.a(2131913788);
   }
   
   public boolean getServiceFolderRedDelete()
@@ -1307,33 +1307,33 @@ public class PublicAccountConfigUtilImpl
   
   public void initPublicAccountConfigFolder(IPublicAccountConfigUtil.PublicAccountConfigFolder paramPublicAccountConfigFolder, AppInterface paramAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
   {
-    paramPublicAccountConfigFolder.jdField_a_of_type_Int = paramInt;
-    paramPublicAccountConfigFolder.jdField_a_of_type_JavaLangString = paramString1;
-    paramPublicAccountConfigFolder.b = paramString2;
-    paramPublicAccountConfigFolder.c = paramPublicAccountConfigFolder.a(paramInt);
-    paramPublicAccountConfigFolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getDefaultDrawable(paramContext, paramInt);
+    paramPublicAccountConfigFolder.a = paramInt;
+    paramPublicAccountConfigFolder.b = paramString1;
+    paramPublicAccountConfigFolder.c = paramString2;
+    paramPublicAccountConfigFolder.e = paramPublicAccountConfigFolder.a(paramInt);
+    paramPublicAccountConfigFolder.d = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getDefaultDrawable(paramContext, paramInt);
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder();
       paramString1.append("PublicAccountConfigFolder mId: ");
-      paramString1.append(paramPublicAccountConfigFolder.jdField_a_of_type_Int);
+      paramString1.append(paramPublicAccountConfigFolder.a);
       paramString1.append(" | mName: ");
-      paramString1.append(paramPublicAccountConfigFolder.jdField_a_of_type_JavaLangString);
-      paramString1.append(" | mIconUrl: ");
       paramString1.append(paramPublicAccountConfigFolder.b);
-      paramString1.append(" | mUin : ");
+      paramString1.append(" | mIconUrl: ");
       paramString1.append(paramPublicAccountConfigFolder.c);
+      paramString1.append(" | mUin : ");
+      paramString1.append(paramPublicAccountConfigFolder.e);
       QLog.d("PublicAccountConfigUtil", 2, paramString1.toString());
     }
-    if ((!TextUtils.isEmpty(paramPublicAccountConfigFolder.b)) && (!TextUtils.isEmpty(paramPublicAccountConfigFolder.c)))
+    if ((!TextUtils.isEmpty(paramPublicAccountConfigFolder.c)) && (!TextUtils.isEmpty(paramPublicAccountConfigFolder.e)))
     {
       paramString1 = LebaIconDownloader.b(paramContext, paramString2);
       if (paramString1 != null)
       {
-        paramPublicAccountConfigFolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
+        paramPublicAccountConfigFolder.d = paramString1;
         return;
       }
-      LebaIconDownloader.a((QQAppInterface)paramAppInterface, paramContext, paramString2, new LebaIconDownloader.DownloadListenerAdapter(paramContext, new PublicAccountConfigUtilImpl.PublicAccountDownloadListener(paramPublicAccountConfigFolder, paramAppInterface, paramPublicAccountConfigFolder.c), new Object[0]));
+      LebaIconDownloader.a((QQAppInterface)paramAppInterface, paramContext, paramString2, new LebaIconDownloader.DownloadListenerAdapter(paramContext, new PublicAccountConfigUtilImpl.PublicAccountDownloadListener(paramPublicAccountConfigFolder, paramAppInterface, paramPublicAccountConfigFolder.e), new Object[0]));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -1876,14 +1876,14 @@ public class PublicAccountConfigUtilImpl
       if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
       {
         int i = Integer.valueOf(((Element)((NodeList)localObject).item(0)).getFirstChild().getNodeValue()).intValue();
-        if (i > SharedPreUtils.y(paramAppInterface.getApp()))
+        if (i > SharedPreUtils.J(paramAppInterface.getApp()))
         {
           localObject = (Element)paramString.getElementsByTagName("name").item(0);
           paramString = (Element)paramString.getElementsByTagName("icon").item(0);
           localObject = ((Element)localObject).getFirstChild().getNodeValue();
           paramString = paramString.getFirstChild().getNodeValue();
           if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString))) {
-            SharedPreUtils.a(paramAppInterface.getApp(), (String)localObject, paramString);
+            SharedPreUtils.b(paramAppInterface.getApp(), (String)localObject, paramString);
           }
           SharedPreUtils.p(paramAppInterface.getApp(), i);
           return false;
@@ -2422,7 +2422,7 @@ public class PublicAccountConfigUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ import java.util.HashMap;
 public class StoryPlayerTVKWrapper
 {
   @NonNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private StoryPlayerTVKWrapper.ReportData jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData = new StoryPlayerTVKWrapper.ReportData();
-  private StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$TVKSDKOnEventBaseListener = new StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData);
-  private StoryPlayerTVKWrapper.TVKSDKOnLogListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$TVKSDKOnLogListener = new StoryPlayerTVKWrapper.TVKSDKOnLogListener();
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private IVideoViewBase jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+  private final Context a;
+  private IVideoViewBase b;
+  private TVK_IMediaPlayer c;
+  private StoryPlayerTVKWrapper.ReportData d = new StoryPlayerTVKWrapper.ReportData();
+  private StoryPlayerTVKWrapper.TVKSDKOnLogListener e = new StoryPlayerTVKWrapper.TVKSDKOnLogListener();
+  private StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener f = new StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener(this.d);
   
   public StoryPlayerTVKWrapper(@NonNull Context paramContext)
   {
@@ -36,7 +36,7 @@ public class StoryPlayerTVKWrapper
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.a = paramContext.getApplicationContext();
     b();
   }
   
@@ -58,7 +58,7 @@ public class StoryPlayerTVKWrapper
     localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
     localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_subscribe");
     localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(QCircleConstants.QCIRCLE_DOWNLOAD_VIDEO_CACHE_PATH)))
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(QCircleConstants.k)))
     {
       localTVK_PlayerVideoInfo.setConfigMap("file_dir", paramString2);
       paramString2 = paramString2.substring(0, paramString2.lastIndexOf(File.separator));
@@ -77,24 +77,24 @@ public class StoryPlayerTVKWrapper
   
   private void b()
   {
-    TVK_SDKMgr.setOnLogListener(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$TVKSDKOnLogListener);
-    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    TVK_SDKMgr.setOnLogListener(this.e);
+    TVK_SDKMgr.initSdk(this.a.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
     SLog.d("StoryPlayerTVKWrapper", "TVK version: %s", new Object[] { TVK_SDKMgr.getSdkVersion() });
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+      this.c = null;
       ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.1(this, (TVK_IMediaPlayer)localObject));
     }
-    localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+    localObject = this.b;
     if (localObject != null)
     {
       localObject = (View)localObject;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = null;
+      this.b = null;
       if (((View)localObject).getParent() != null)
       {
         ViewParent localViewParent = ((View)localObject).getParent();
@@ -107,7 +107,7 @@ public class StoryPlayerTVKWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper
  * JD-Core Version:    0.7.0.1
  */

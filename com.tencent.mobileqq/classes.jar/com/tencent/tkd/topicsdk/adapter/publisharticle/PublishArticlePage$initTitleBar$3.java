@@ -13,13 +13,13 @@ final class PublishArticlePage$initTitleBar$3
   
   public final boolean onLongClick(View paramView)
   {
-    TopicSDKHelperKt.a("04.25-18:33", false, null, 6, null);
+    TopicSDKHelperKt.a("05.31-15:53", false, null, 6, null);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initTitleBar.3
  * JD-Core Version:    0.7.0.1
  */

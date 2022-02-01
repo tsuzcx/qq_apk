@@ -28,7 +28,7 @@ class LikeSettingActivity$2
     if (paramBoolean1)
     {
       localObject = this.a;
-      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).a.a(), paramBoolean2);
+      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).c.getSwitch(), paramBoolean2);
     }
   }
   
@@ -46,16 +46,16 @@ class LikeSettingActivity$2
     }
     if (!paramBoolean1)
     {
-      QQToast.a(this.a, 1, 2131718834, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 1, 2131916364, 0).show(this.a.getTitleBarHeight());
       paramBoolean1 = ((INearByGeneralManager)this.a.app.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER)).a();
       localObject = this.a;
-      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).a.a(), paramBoolean1);
+      LikeSettingActivity.a((LikeSettingActivity)localObject, ((LikeSettingActivity)localObject).c.getSwitch(), paramBoolean1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

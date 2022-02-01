@@ -12,22 +12,22 @@ class LocationPickFragment$4
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
+    if ((paramInt == 4) && (LocationPickFragment.d(this.b).h()))
     {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+      LocationPickFragment.d(this.b).f();
       return true;
     }
     if ((paramInt != 84) && (paramInt != 66)) {
       return false;
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-    LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+    LocationPickFragment.b(this.b).a(this.a.getText().toString().trim());
+    LocationPickFragment.e(this.b);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.4
  * JD-Core Version:    0.7.0.1
  */

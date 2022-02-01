@@ -9,39 +9,39 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class PromoteTaskItem
 {
-  public int a;
   public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
+  public int b;
+  public String c;
+  public String d;
   public long e;
+  public long f;
+  public long g;
+  public long h;
   
   public static PromoteTaskItem a(qqstory_service.PromoteTask paramPromoteTask)
   {
     PromoteTaskItem localPromoteTaskItem = new PromoteTaskItem();
-    localPromoteTaskItem.jdField_a_of_type_Long = paramPromoteTask.uint64_taskid.get();
-    localPromoteTaskItem.jdField_a_of_type_Int = paramPromoteTask.uint32_promote_type.get();
-    localPromoteTaskItem.jdField_a_of_type_JavaLangString = paramPromoteTask.bytes_union_id.get().toStringUtf8();
-    localPromoteTaskItem.jdField_b_of_type_JavaLangString = paramPromoteTask.bytes_feed_id.get().toStringUtf8();
-    localPromoteTaskItem.jdField_b_of_type_Long = paramPromoteTask.uint64_limit_count.get();
-    localPromoteTaskItem.c = paramPromoteTask.uint64_minimal_video_count.get();
-    localPromoteTaskItem.d = paramPromoteTask.uint64_expire_time.get();
+    localPromoteTaskItem.a = paramPromoteTask.uint64_taskid.get();
+    localPromoteTaskItem.b = paramPromoteTask.uint32_promote_type.get();
+    localPromoteTaskItem.c = paramPromoteTask.bytes_union_id.get().toStringUtf8();
+    localPromoteTaskItem.d = paramPromoteTask.bytes_feed_id.get().toStringUtf8();
+    localPromoteTaskItem.e = paramPromoteTask.uint64_limit_count.get();
+    localPromoteTaskItem.f = paramPromoteTask.uint64_minimal_video_count.get();
+    localPromoteTaskItem.g = paramPromoteTask.uint64_expire_time.get();
     return localPromoteTaskItem;
   }
   
   public PromoteTaskEntry a()
   {
     PromoteTaskEntry localPromoteTaskEntry = new PromoteTaskEntry();
-    localPromoteTaskEntry.taskId = this.jdField_a_of_type_Long;
-    localPromoteTaskEntry.type = this.jdField_a_of_type_Int;
-    localPromoteTaskEntry.unionId = this.jdField_a_of_type_JavaLangString;
-    localPromoteTaskEntry.feedId = this.jdField_b_of_type_JavaLangString;
-    localPromoteTaskEntry.limitPromoteCount = this.jdField_b_of_type_Long;
-    localPromoteTaskEntry.minimalVideoCount = this.c;
-    localPromoteTaskEntry.expireTime = this.d;
-    localPromoteTaskEntry.promoteCount = this.e;
+    localPromoteTaskEntry.taskId = this.a;
+    localPromoteTaskEntry.type = this.b;
+    localPromoteTaskEntry.unionId = this.c;
+    localPromoteTaskEntry.feedId = this.d;
+    localPromoteTaskEntry.limitPromoteCount = this.e;
+    localPromoteTaskEntry.minimalVideoCount = this.f;
+    localPromoteTaskEntry.expireTime = this.g;
+    localPromoteTaskEntry.promoteCount = this.h;
     return localPromoteTaskEntry;
   }
   
@@ -49,30 +49,30 @@ public class PromoteTaskItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PromoteTaskItem{taskId=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", unionId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", feedId='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", limitPromoteCount=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", minimalVideoCount=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", expireTime=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(", promoteCount=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", minimalVideoCount=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", expireTime=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", promoteCount=");
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.PromoteTaskItem
  * JD-Core Version:    0.7.0.1
  */

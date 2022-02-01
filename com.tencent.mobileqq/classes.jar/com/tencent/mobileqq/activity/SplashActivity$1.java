@@ -31,7 +31,7 @@ class SplashActivity$1
       localQQNotificationManager.cancel("SplashActivity", 269);
       localQQNotificationManager.cancel("SplashActivity", 239);
       localQQNotificationManager.cancel("SplashActivity", 527);
-      NotifyIdManager.a(this.this$0.app).a();
+      NotifyIdManager.a(this.this$0.app).c();
       SplashActivity.access$002(this.this$0, new SplashActivity.1.1(this));
       this.this$0.registerReceiver(SplashActivity.access$000(this.this$0), new IntentFilter("before_account_change"));
       return;
@@ -41,7 +41,7 @@ class SplashActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SplashActivity.1
  * JD-Core Version:    0.7.0.1
  */

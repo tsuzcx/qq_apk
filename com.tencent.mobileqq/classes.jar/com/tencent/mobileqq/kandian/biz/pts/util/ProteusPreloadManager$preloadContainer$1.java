@@ -14,15 +14,15 @@ final class ProteusPreloadManager$preloadContainer$1
   {
     ProteusPreloadManager localProteusPreloadManager = ProteusPreloadManager.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('#');
     localStringBuilder.append(this.b);
-    ProteusPreloadManager.a(localProteusPreloadManager, localStringBuilder.toString(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
+    ProteusPreloadManager.a(localProteusPreloadManager, localStringBuilder.toString(), this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ProteusPreloadManager.preloadContainer.1
  * JD-Core Version:    0.7.0.1
  */

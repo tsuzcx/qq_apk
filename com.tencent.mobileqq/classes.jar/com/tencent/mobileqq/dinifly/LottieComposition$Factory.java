@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.WorkerThread;
 import android.support.v4.util.MQLruCache;
-import android.util.JsonReader;
-import android.util.Log;
+import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
+import androidx.annotation.WorkerThread;
 import com.tencent.mobileqq.dinifly.model.FileCompositionLoader;
 import com.tencent.mobileqq.dinifly.model.JsonCompositionLoader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import java.io.InputStream;
 import org.json.JSONObject;
 
@@ -59,7 +59,7 @@ public class LottieComposition$Factory
   public static LottieComposition fromInputStreamSync(InputStream paramInputStream, boolean paramBoolean)
   {
     if (paramBoolean) {
-      Log.w("LOTTIE", "Lottie now auto-closes input stream!");
+      Logger.warning("Lottie now auto-closes input stream!");
     }
     return (LottieComposition)LottieCompositionFactory.fromJsonInputStreamSync(paramInputStream, null).getValue();
   }
@@ -128,7 +128,7 @@ public class LottieComposition$Factory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieComposition.Factory
  * JD-Core Version:    0.7.0.1
  */

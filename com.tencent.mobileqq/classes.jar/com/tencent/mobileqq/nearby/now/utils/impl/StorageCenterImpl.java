@@ -9,27 +9,27 @@ public class StorageCenterImpl
 {
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    return StorageCenter.a(paramString, paramBoolean);
+    return StorageCenter.b(paramString, paramBoolean);
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
-    return StorageCenter.a(paramString, paramFloat);
+    return StorageCenter.b(paramString, paramFloat);
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    return StorageCenter.a(paramString, paramInt);
+    return StorageCenter.b(paramString, paramInt);
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    return StorageCenter.a(paramString, paramLong);
+    return StorageCenter.b(paramString, paramLong);
   }
   
   public String getString(String paramString1, String paramString2)
   {
-    return StorageCenter.a(paramString1, paramString2);
+    return StorageCenter.b(paramString1, paramString2);
   }
   
   public void init(Context paramContext, String paramString)
@@ -69,7 +69,7 @@ public class StorageCenterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.utils.impl.StorageCenterImpl
  * JD-Core Version:    0.7.0.1
  */

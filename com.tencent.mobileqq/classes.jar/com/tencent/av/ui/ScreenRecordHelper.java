@@ -29,47 +29,41 @@ import java.util.Timer;
 @RequiresApi(api=21)
 public class ScreenRecordHelper
 {
-  static final int[][] jdField_a_of_type_Array2dOfInt;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private VirtualDisplay jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay;
-  private MediaProjection jdField_a_of_type_AndroidMediaProjectionMediaProjection;
-  private MediaProjectionManager jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager;
-  private EGLScreenCaptureThread jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread;
-  private ScreenRecordHelper.OnMediaProjectionReadyListener jdField_a_of_type_ComTencentAvUiScreenRecordHelper$OnMediaProjectionReadyListener;
-  private final RecordParam jdField_a_of_type_ComTencentAvcoreDataRecordParam = new RecordParam();
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c;
-  
-  static
-  {
-    int[] arrayOfInt = { 1080, 1920 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { { 720, 1280 }, arrayOfInt, { 1080, 1920 } };
-  }
+  static final int[][] a = { { 720, 1280 }, { 1080, 1920 }, { 1080, 1920 } };
+  private WeakReference<Context> b;
+  private VirtualDisplay c;
+  private MediaProjection d;
+  private MediaProjectionManager e;
+  private ScreenRecordHelper.OnMediaProjectionReadyListener f;
+  private boolean g = false;
+  private int h;
+  private int i;
+  private int j;
+  private EGLScreenCaptureThread k;
+  private Timer l;
+  private boolean m = false;
+  private long n;
+  private final RecordParam o = new RecordParam();
   
   private void a(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      ScreenRecordHelper.OnMediaProjectionReadyListener localOnMediaProjectionReadyListener = this.jdField_a_of_type_ComTencentAvUiScreenRecordHelper$OnMediaProjectionReadyListener;
+      ScreenRecordHelper.OnMediaProjectionReadyListener localOnMediaProjectionReadyListener = this.f;
       if (localOnMediaProjectionReadyListener != null) {
         localOnMediaProjectionReadyListener.b(1);
       }
     }
   }
   
-  private void d()
+  private void g()
   {
-    this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay = this.jdField_a_of_type_AndroidMediaProjectionMediaProjection.createVirtualDisplay("ScreenRecordHelper", this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int, 16, this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread.a(), null, null);
+    this.c = this.d.createVirtualDisplay("ScreenRecordHelper", this.i, this.j, this.h, 16, this.k.c(), null, null);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.b;
     Activity localActivity = null;
     if (localObject == null) {
       localObject = null;
@@ -87,7 +81,7 @@ public class ScreenRecordHelper
     QLog.d("ScreenRecordHelper", 1, "Start requestScreenCapture");
     try
     {
-      localActivity.startActivityForResult(this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager.createScreenCaptureIntent(), 8080);
+      localActivity.startActivityForResult(this.e.createScreenCaptureIntent(), 8080);
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)
@@ -98,90 +92,75 @@ public class ScreenRecordHelper
     QLog.d("ScreenRecordHelper", 1, "Start requestScreenCapture fail ActivityNotFoundException");
   }
   
-  public void a(int paramInt)
-  {
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("stop, fromType[");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append("]");
-      QLog.i("ScreenRecordHelper", 4, localStringBuilder.toString());
-    }
-    b();
-    a(paramInt);
-    c();
-  }
-  
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int k;
-    if (this.jdField_b_of_type_Int < this.c) {
-      k = 1;
+    int i3;
+    if (this.i < this.j) {
+      i3 = 1;
     } else {
-      k = 0;
+      i3 = 0;
     }
-    int i = AEFilterSupport.a();
-    if (i != 4)
+    int i1 = AEFilterSupport.a();
+    if (i1 != 4)
     {
-      if (i != 7) {
-        i = 0;
+      if (i1 != 7) {
+        i1 = 0;
       } else {
-        i = 2;
+        i1 = 2;
       }
     }
     else {
-      i = 1;
+      i1 = 1;
     }
-    Object localObject = jdField_a_of_type_Array2dOfInt;
-    int m = localObject[i][0];
-    int n = localObject[i][1];
-    int j = n;
-    i = m;
+    Object localObject = a;
+    int i4 = localObject[i1][0];
+    int i5 = localObject[i1][1];
+    int i2 = i5;
+    i1 = i4;
     if (paramInt1 != 0)
     {
-      j = n;
-      i = m;
+      i2 = i5;
+      i1 = i4;
       if (paramInt2 != 0)
       {
-        j = n;
-        i = m;
-        if (Math.max(paramInt1, paramInt2) < Math.max(m, n))
+        i2 = i5;
+        i1 = i4;
+        if (Math.max(paramInt1, paramInt2) < Math.max(i4, i5))
         {
-          i = Math.min(paramInt1, paramInt2);
-          j = Math.max(paramInt1, paramInt2);
+          i1 = Math.min(paramInt1, paramInt2);
+          i2 = Math.max(paramInt1, paramInt2);
         }
       }
     }
-    if (k != 0)
+    if (i3 != 0)
     {
-      m = i;
-      i = j;
-      j = m;
+      i4 = i1;
+      i1 = i2;
+      i2 = i4;
     }
-    if (k != 0)
+    if (i3 != 0)
     {
-      k = Math.min(this.c, i) / 8 * 8;
-      m = (int)(k * (this.jdField_b_of_type_Int / this.c)) / 16 * 16;
+      i3 = Math.min(this.j, i1) / 8 * 8;
+      i4 = (int)(i3 * (this.i / this.j)) / 16 * 16;
     }
     else
     {
-      m = Math.min(this.jdField_b_of_type_Int, j) / 16 * 16;
-      k = (int)(m * this.c / this.jdField_b_of_type_Int) / 8 * 8;
+      i4 = Math.min(this.i, i2) / 16 * 16;
+      i3 = (int)(i4 * this.j / this.i) / 8 * 8;
     }
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateRecordParam, pre[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
+      ((StringBuilder)localObject).append(this.o);
       ((StringBuilder)localObject).append("], display[");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.j);
       ((StringBuilder)localObject).append("], limit[");
-      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(i2);
       ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append("], come[");
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append(",");
@@ -189,53 +168,53 @@ public class ScreenRecordHelper
       ((StringBuilder)localObject).append(",");
       ((StringBuilder)localObject).append(paramInt3);
       ((StringBuilder)localObject).append("], record[");
-      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(i4);
       ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i3);
       ((StringBuilder)localObject).append("]");
       QLog.i("ScreenRecordHelper", 4, ((StringBuilder)localObject).toString());
     }
-    localObject = this.jdField_a_of_type_ComTencentAvcoreDataRecordParam;
-    ((RecordParam)localObject).width = m;
-    ((RecordParam)localObject).height = k;
+    localObject = this.o;
+    ((RecordParam)localObject).width = i4;
+    ((RecordParam)localObject).height = i3;
     if (paramInt3 > 0) {
       ((RecordParam)localObject).fps = paramInt3;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread;
+    localObject = this.k;
     if (localObject != null) {
-      ((EGLScreenCaptureThread)localObject).a(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
+      ((EGLScreenCaptureThread)localObject).a(this.o);
     }
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    if (this.jdField_a_of_type_Boolean) {
+    this.b = new WeakReference(paramContext);
+    if (this.g) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager = ((MediaProjectionManager)paramContext.getApplicationContext().getSystemService("media_projection"));
+    this.g = true;
+    this.e = ((MediaProjectionManager)paramContext.getApplicationContext().getSystemService("media_projection"));
     Object localObject = new DisplayMetrics();
     ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    this.jdField_a_of_type_Int = ((DisplayMetrics)localObject).densityDpi;
+    this.h = ((DisplayMetrics)localObject).densityDpi;
     localObject = new Point();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRealSize((Point)localObject);
-    this.jdField_b_of_type_Int = ((Point)localObject).x;
-    this.c = ((Point)localObject).y;
+    this.i = ((Point)localObject).x;
+    this.j = ((Point)localObject).y;
     a(0, 0, 15);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread = new EGLScreenCaptureThread();
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread.a(this.jdField_b_of_type_Int, this.c);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread.a(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread.a();
+    this.k = new EGLScreenCaptureThread();
+    this.k.a(this.i, this.j);
+    this.k.a(this.o);
+    this.k.a();
     if (QLog.isDevelopLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("doBindActivityContext, density[");
-      paramContext.append(this.jdField_a_of_type_Int);
+      paramContext.append(this.h);
       paramContext.append("], size[");
-      paramContext.append(this.jdField_b_of_type_Int);
+      paramContext.append(this.i);
       paramContext.append(",");
-      paramContext.append(this.c);
+      paramContext.append(this.j);
       paramContext.append("]");
       QLog.i("ScreenRecordHelper", 4, paramContext.toString());
     }
@@ -243,7 +222,7 @@ public class ScreenRecordHelper
   
   public void a(EGLScreenCaptureThread.onVideoFrameAvailableListener paramonVideoFrameAvailableListener)
   {
-    EGLScreenCaptureThread localEGLScreenCaptureThread = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread;
+    EGLScreenCaptureThread localEGLScreenCaptureThread = this.k;
     if (localEGLScreenCaptureThread != null) {
       localEGLScreenCaptureThread.a(paramonVideoFrameAvailableListener);
     }
@@ -251,57 +230,38 @@ public class ScreenRecordHelper
   
   public void a(ScreenRecordHelper.OnMediaProjectionReadyListener paramOnMediaProjectionReadyListener)
   {
-    this.jdField_a_of_type_ComTencentAvUiScreenRecordHelper$OnMediaProjectionReadyListener = paramOnMediaProjectionReadyListener;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      QLog.d("ScreenRecordHelper", 1, "attachRecorder");
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
-      }
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.f = paramOnMediaProjectionReadyListener;
   }
   
   public boolean a(int paramInt)
   {
-    long l = AudioHelper.b();
+    long l1 = AudioHelper.c();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("Start stopProjection fromType:=");
     ((StringBuilder)localObject1).append(paramInt);
     QLog.d("ScreenRecordHelper", 1, ((StringBuilder)localObject1).toString());
-    Object localObject2 = this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay;
+    Object localObject2 = this.c;
     localObject1 = null;
     if (localObject2 != null)
     {
       ((VirtualDisplay)localObject2).release();
-      this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay = null;
+      this.c = null;
     }
-    localObject2 = this.jdField_a_of_type_AndroidMediaProjectionMediaProjection;
+    localObject2 = this.d;
     if (localObject2 != null)
     {
       ((MediaProjection)localObject2).stop();
-      this.jdField_a_of_type_AndroidMediaProjectionMediaProjection = null;
+      this.d = null;
     }
-    localObject2 = this.jdField_a_of_type_ComTencentAvUiScreenRecordHelper$OnMediaProjectionReadyListener;
+    localObject2 = this.f;
     if (localObject2 != null) {
       ((ScreenRecordHelper.OnMediaProjectionReadyListener)localObject2).a(paramInt);
     }
     a(null);
     a(null);
-    this.jdField_b_of_type_Boolean = false;
-    TipsUtil.a(VideoController.a().a, true);
-    localObject2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.m = false;
+    TipsUtil.a(VideoController.f().e, true);
+    localObject2 = this.b;
     if (localObject2 != null) {
       localObject1 = (Context)((WeakReference)localObject2).get();
     }
@@ -309,13 +269,13 @@ public class ScreenRecordHelper
     {
       if (paramInt == 1)
       {
-        SmallScreenUtils.a(l, 3, (Context)localObject1);
+        SmallScreenUtils.a(l1, 3, (Context)localObject1);
         return true;
       }
       if (paramInt == 2) {
         return true;
       }
-      SmallScreenUtils.a(l, 3, (Context)localObject1);
+      SmallScreenUtils.a(l1, 3, (Context)localObject1);
     }
     return true;
   }
@@ -323,8 +283,8 @@ public class ScreenRecordHelper
   public boolean a(Intent paramIntent)
   {
     QLog.d("ScreenRecordHelper", 1, "Start startProjection");
-    long l = AudioHelper.b();
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    long l1 = AudioHelper.c();
+    Object localObject = this.b;
     if (localObject == null) {
       localObject = null;
     } else {
@@ -335,34 +295,34 @@ public class ScreenRecordHelper
       QLog.d("ScreenRecordHelper", 1, "Start startProjection, context is null.");
       return false;
     }
-    MediaProjectionManager localMediaProjectionManager = this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager;
+    MediaProjectionManager localMediaProjectionManager = this.e;
     if (localMediaProjectionManager == null)
     {
       a(false);
       QLog.d("ScreenRecordHelper", 1, "Start startProjection, mMediaProjectionManager is null.");
       return false;
     }
-    this.jdField_a_of_type_AndroidMediaProjectionMediaProjection = localMediaProjectionManager.getMediaProjection(-1, paramIntent);
-    if (this.jdField_a_of_type_AndroidMediaProjectionMediaProjection == null)
+    this.d = localMediaProjectionManager.getMediaProjection(-1, paramIntent);
+    if (this.d == null)
     {
       a(false);
       return false;
     }
     a(true);
-    d();
-    paramIntent = this.jdField_a_of_type_ComTencentAvUiScreenRecordHelper$OnMediaProjectionReadyListener;
+    g();
+    paramIntent = this.f;
     if (paramIntent != null) {
-      paramIntent.a(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam, this.jdField_b_of_type_Int, this.c);
+      paramIntent.a(this.o, this.i, this.j);
     }
-    paramIntent = VideoController.a().a;
+    paramIntent = VideoController.f().e;
     if (Build.VERSION.SDK_INT >= 21) {
-      SmallScreenUtils.a(l, 3, (Context)localObject, true, paramIntent.getCurrentAccountUin(), true);
+      SmallScreenUtils.a(l1, 3, (Context)localObject, true, paramIntent.getCurrentAccountUin(), true);
     }
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new ScreenRecordHelper.1(this), 0L, 1000L);
-    this.jdField_b_of_type_Boolean = true;
-    com.tencent.av.screenshare.ScreenShareTipsHelper.jdField_a_of_type_Boolean = false;
+    this.l = new Timer();
+    this.n = 0L;
+    this.l.scheduleAtFixedRate(new ScreenRecordHelper.1(this), 0L, 1000L);
+    this.m = true;
+    com.tencent.av.screenshare.ScreenShareTipsHelper.a = false;
     return true;
   }
   
@@ -371,7 +331,41 @@ public class ScreenRecordHelper
     a(false);
   }
   
-  public boolean b()
+  public void b(int paramInt)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop, fromType[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.i("ScreenRecordHelper", 4, localStringBuilder.toString());
+    }
+    d();
+    a(paramInt);
+    f();
+  }
+  
+  public boolean c()
+  {
+    try
+    {
+      QLog.d("ScreenRecordHelper", 1, "attachRecorder");
+      if (this.l != null)
+      {
+        this.l.cancel();
+        this.l = null;
+      }
+      return true;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean d()
   {
     try
     {
@@ -385,26 +379,26 @@ public class ScreenRecordHelper
     }
   }
   
-  public void c()
+  public boolean e()
+  {
+    return (this.g) && (this.m);
+  }
+  
+  public void f()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("ScreenRecordHelper", 4, "quit");
     }
-    EGLScreenCaptureThread localEGLScreenCaptureThread = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread;
+    EGLScreenCaptureThread localEGLScreenCaptureThread = this.k;
     if (localEGLScreenCaptureThread != null)
     {
       localEGLScreenCaptureThread.a(true);
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread = null;
+      this.k = null;
     }
-    this.jdField_a_of_type_AndroidMediaProjectionMediaProjectionManager = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareDisplayVirtualDisplay = null;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean);
+    this.e = null;
+    this.m = false;
+    this.g = false;
+    this.c = null;
   }
 }
 

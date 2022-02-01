@@ -1,32 +1,19 @@
 package com.dataline.activities;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.DialogUtil;
+import mqq.app.QQPermissionCallback;
 
 class LiteActivity$43
-  implements FMDialogUtil.FMDialogInterface
+  implements QQPermissionCallback
 {
-  LiteActivity$43(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  LiteActivity$43(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Bundle localBundle;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
-      new LiteActivity.SendPhotoAsyncTask(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
-    }
-    if (!this.b.isEmpty())
-    {
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
-      new LiteActivity.SendVideoAsyncTask(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
-    }
+    DialogUtil.a(this.a);
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

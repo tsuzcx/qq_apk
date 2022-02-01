@@ -1,13 +1,14 @@
 package com.tencent.vas.update.business;
 
 import androidx.annotation.NonNull;
-import com.tencent.vas.update.VasUpdateSystem;
 import com.tencent.vas.update.callback.listener.IBusinessCallback;
 import com.tencent.vas.update.callback.listener.IUpdateListener;
 import com.tencent.vas.update.entity.BusinessItemInfo;
 import com.tencent.vas.update.entity.BusinessUpdateParams;
 import com.tencent.vas.update.entity.UpdateListenerParams;
+import com.tencent.vas.update.module.api.IVasUpdateSystem;
 import com.tencent.vas.update.util.FileUtil;
+import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
@@ -26,12 +27,12 @@ public abstract class BaseUpdateBusiness
   
   public void cancelDownload(long paramLong, String paramString)
   {
-    VasUpdateSystem.getInstance().cancelDownload(paramLong, paramString);
+    VasUpdateWrapper.getVasUpdateSystem().a(paramLong, paramString);
   }
   
   public void cancelDownload(String paramString)
   {
-    VasUpdateSystem.getInstance().cancelDownload(getBid(), paramString);
+    VasUpdateWrapper.getVasUpdateSystem().a(getBid(), paramString);
   }
   
   public void deleteFile(@NonNull BusinessUpdateParams paramBusinessUpdateParams, BusinessItemInfo paramBusinessItemInfo)
@@ -96,18 +97,18 @@ public abstract class BaseUpdateBusiness
   
   public void startDownload(BusinessUpdateParams paramBusinessUpdateParams)
   {
-    VasUpdateSystem.getInstance().downloadItem(paramBusinessUpdateParams);
+    VasUpdateWrapper.getVasUpdateSystem().a(paramBusinessUpdateParams);
   }
   
   public void startDownload(String paramString)
   {
     paramString = new BusinessUpdateParams(getBid(), paramString, getFrom());
-    VasUpdateSystem.getInstance().downloadItem(paramString);
+    VasUpdateWrapper.getVasUpdateSystem().a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.business.BaseUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

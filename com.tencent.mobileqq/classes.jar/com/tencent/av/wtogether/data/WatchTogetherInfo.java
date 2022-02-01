@@ -7,38 +7,33 @@ import java.util.ArrayList;
 
 public class WatchTogetherInfo
 {
-  public final int a;
-  private long a;
-  public ChooseFileInfo a;
-  public WTInfoFromPush a;
-  public WTogetherRoom a;
   public final String a;
-  public final ArrayList<Long> a;
-  public boolean a;
-  public int b;
   public final String b;
-  private boolean b;
-  public int c;
-  public final String c;
-  private int d;
-  private int e;
+  public final int c;
+  public final String d;
+  public boolean e = false;
+  public ChooseFileInfo f;
+  public WTogetherRoom g;
+  public WTInfoFromPush h = null;
+  public int i = 0;
+  public int j = 0;
+  public final ArrayList<Long> k = new ArrayList();
+  private int l;
+  private long m;
+  private boolean n;
+  private int o;
   
   public WatchTogetherInfo(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTInfoFromPush = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.d = a(paramInt);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramInt;
+    this.d = paramString3;
+    this.l = a(paramInt);
+    this.m = 0L;
+    this.g = null;
+    this.n = false;
+    this.i = 0;
   }
   
   private static int a(int paramInt)
@@ -54,8 +49,8 @@ public class WatchTogetherInfo
   
   private static long a(SessionInfo paramSessionInfo)
   {
-    VideoController localVideoController = VideoController.a();
-    long l2 = paramSessionInfo.b();
+    VideoController localVideoController = VideoController.f();
+    long l2 = paramSessionInfo.D();
     long l1 = l2;
     if (l2 == 0L)
     {
@@ -73,43 +68,7 @@ public class WatchTogetherInfo
   
   public int a()
   {
-    return this.e;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public WTogetherRoom a()
-  {
-    if ((this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom == null) && (a()))
-    {
-      this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom = new WTogetherRoom(this.d, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-    }
-    else
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
-      if ((localObject != null) && (!((WTogetherRoom)localObject).a(this.d, this.jdField_a_of_type_Long)))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("checkAndCreateRoom, not same come[");
-          ((StringBuilder)localObject).append(this.d);
-          ((StringBuilder)localObject).append(",");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-          ((StringBuilder)localObject).append("], cur[");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom.jdField_a_of_type_Int);
-          ((StringBuilder)localObject).append(",");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom.b);
-          ((StringBuilder)localObject).append("]");
-          QLog.i("WatchTogetherInfo", 2, ((StringBuilder)localObject).toString());
-        }
-        this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom = new WTogetherRoom(this.d, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    return this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom;
+    return this.o;
   }
   
   public void a(int paramInt, long paramLong)
@@ -118,9 +77,9 @@ public class WatchTogetherInfo
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("update, from[");
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.l);
       localStringBuilder.append(",");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.m);
       localStringBuilder.append("], to[");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(",");
@@ -128,25 +87,25 @@ public class WatchTogetherInfo
       localStringBuilder.append("]");
       QLog.i("WatchTogetherInfo", 2, localStringBuilder.toString());
     }
-    if ((this.d != paramInt) || (this.jdField_a_of_type_Long != paramLong))
+    if ((this.l != paramInt) || (this.m != paramLong))
     {
-      this.d = paramInt;
-      this.jdField_a_of_type_Long = paramLong;
+      this.l = paramInt;
+      this.m = paramLong;
     }
-    if (this.e == 1) {
-      a();
+    if (this.o == 1) {
+      f();
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (this.e != paramInt)
+    if (this.o != paramInt)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateFlag, [");
-        localStringBuilder.append(this.e);
+        localStringBuilder.append(this.o);
         localStringBuilder.append("-->");
         localStringBuilder.append(paramInt);
         localStringBuilder.append("], from[");
@@ -154,7 +113,7 @@ public class WatchTogetherInfo
         localStringBuilder.append("]");
         QLog.i("WatchTogetherInfo", 2, localStringBuilder.toString());
       }
-      this.e = paramInt;
+      this.o = paramInt;
     }
   }
   
@@ -163,26 +122,26 @@ public class WatchTogetherInfo
     if (paramSessionInfo == null) {
       return;
     }
-    if ((paramBoolean) || (this.d == 0)) {
-      this.d = a(this.jdField_a_of_type_Int);
+    if ((paramBoolean) || (this.l == 0)) {
+      this.l = a(this.c);
     }
-    if ((paramBoolean) || (this.jdField_a_of_type_Long == 0L)) {
-      this.jdField_a_of_type_Long = a(paramSessionInfo);
+    if ((paramBoolean) || (this.m == 0L)) {
+      this.m = a(paramSessionInfo);
     }
-    if (this.e == 1) {
-      a();
+    if (this.o == 1) {
+      f();
     }
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    if (this.n != paramBoolean)
     {
       if (QLog.isDevelopLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateChangeFileFlag, [");
-        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        localStringBuilder.append(this.n);
         localStringBuilder.append(" --> ");
         localStringBuilder.append(paramBoolean);
         localStringBuilder.append("], from[");
@@ -190,64 +149,100 @@ public class WatchTogetherInfo
         localStringBuilder.append("");
         QLog.i("WatchTogetherInfo", 4, localStringBuilder.toString());
       }
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.n = paramBoolean;
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Long != 0L) && (this.d != 0);
-  }
-  
-  public long[] a()
-  {
-    long[] arrayOfLong = new long[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    int i = 0;
-    while (i < arrayOfLong.length)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.get(i) != null) {
-        arrayOfLong[i] = ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue();
-      } else {
-        arrayOfLong[i] = 0L;
-      }
-      i += 1;
-    }
-    return arrayOfLong;
-  }
-  
-  public int b()
-  {
-    return this.d;
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return (this.m != 0L) && (this.l != 0);
+  }
+  
+  public int c()
+  {
+    return this.l;
+  }
+  
+  public long d()
+  {
+    return this.m;
+  }
+  
+  public boolean e()
+  {
+    return this.n;
+  }
+  
+  public WTogetherRoom f()
+  {
+    if ((this.g == null) && (b()))
+    {
+      this.g = new WTogetherRoom(this.l, this.m, this.a);
+    }
+    else
+    {
+      Object localObject = this.g;
+      if ((localObject != null) && (!((WTogetherRoom)localObject).a(this.l, this.m)))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("checkAndCreateRoom, not same come[");
+          ((StringBuilder)localObject).append(this.l);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(this.m);
+          ((StringBuilder)localObject).append("], cur[");
+          ((StringBuilder)localObject).append(this.g.b);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(this.g.c);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("WatchTogetherInfo", 2, ((StringBuilder)localObject).toString());
+        }
+        this.g = new WTogetherRoom(this.l, this.m, this.a);
+      }
+    }
+    return this.g;
+  }
+  
+  public long[] g()
+  {
+    long[] arrayOfLong = new long[this.k.size()];
+    int i1 = 0;
+    while (i1 < arrayOfLong.length)
+    {
+      if (this.k.get(i1) != null) {
+        arrayOfLong[i1] = ((Long)this.k.get(i1)).longValue();
+      } else {
+        arrayOfLong[i1] = 0L;
+      }
+      i1 += 1;
+    }
+    return arrayOfLong;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WatchTogetherInfo{sessionId: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", selfUin: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", flag: ");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", relationType: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", relationId: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", roomType: ");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", roomType: ");
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", roomId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(", quitReason: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", isChangingFile: ");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.n);
     localStringBuilder.append(", room: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvWtogetherDataWTogetherRoom);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

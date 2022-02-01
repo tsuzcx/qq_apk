@@ -14,75 +14,75 @@ import java.util.List;
 
 public class DownloadNativeApi
 {
-  private static DownloadNativeApi jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi;
-  private DownloadCallbackNativeImpl jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl = new DownloadCallbackNativeImpl();
+  private static DownloadNativeApi b;
+  private DownloadCallbackNativeImpl a = new DownloadCallbackNativeImpl();
   
   public static DownloadNativeApi a()
   {
-    if (jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi == null) {
-      jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi = new DownloadNativeApi();
+    if (b == null) {
+      b = new DownloadNativeApi();
     }
-    return jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi;
+    return b;
   }
   
-  private DownloadInfo a(DownloadTaskInfo paramDownloadTaskInfo)
+  private DownloadInfo b(DownloadTaskInfo paramDownloadTaskInfo)
   {
-    DownloadInfo localDownloadInfo = new DownloadInfo(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString, paramDownloadTaskInfo.jdField_b_of_type_JavaLangString);
-    localDownloadInfo.jdField_d_of_type_JavaLangString = paramDownloadTaskInfo.jdField_d_of_type_JavaLangString;
-    localDownloadInfo.jdField_b_of_type_Int = paramDownloadTaskInfo.jdField_a_of_type_Int;
-    localDownloadInfo.jdField_b_of_type_Boolean = paramDownloadTaskInfo.jdField_d_of_type_Boolean;
-    localDownloadInfo.jdField_a_of_type_Boolean = paramDownloadTaskInfo.e;
-    localDownloadInfo.f = paramDownloadTaskInfo.jdField_c_of_type_JavaLangString;
-    localDownloadInfo.jdField_a_of_type_Int = paramDownloadTaskInfo.jdField_c_of_type_Int;
-    localDownloadInfo.jdField_c_of_type_Int = paramDownloadTaskInfo.jdField_b_of_type_Int;
-    localDownloadInfo.jdField_d_of_type_Int = 0;
-    localDownloadInfo.jdField_c_of_type_Boolean = true;
+    DownloadInfo localDownloadInfo = new DownloadInfo(paramDownloadTaskInfo.a, paramDownloadTaskInfo.b);
+    localDownloadInfo.d = paramDownloadTaskInfo.d;
+    localDownloadInfo.n = paramDownloadTaskInfo.e;
+    localDownloadInfo.x = paramDownloadTaskInfo.i;
+    localDownloadInfo.w = paramDownloadTaskInfo.j;
+    localDownloadInfo.f = paramDownloadTaskInfo.c;
+    localDownloadInfo.j = paramDownloadTaskInfo.m;
+    localDownloadInfo.o = paramDownloadTaskInfo.l;
+    localDownloadInfo.p = 0;
+    localDownloadInfo.A = true;
     return localDownloadInfo;
   }
   
-  private boolean a()
+  private boolean b()
   {
-    return "com.tencent.mobileqq:tool".equals(Common.r());
+    return "com.tencent.mobileqq:tool".equals(Common.x());
   }
   
   public int a(Activity paramActivity, DownloadTaskInfo paramDownloadTaskInfo)
   {
-    if (!a()) {
+    if (!b()) {
       return 401;
     }
     if (paramDownloadTaskInfo == null) {
       return 400;
     }
-    if ((paramDownloadTaskInfo.jdField_a_of_type_Boolean) && (!"com.tencent.now".equals(paramDownloadTaskInfo.jdField_c_of_type_JavaLangString))) {
+    if ((paramDownloadTaskInfo.f) && (!"com.tencent.now".equals(paramDownloadTaskInfo.c))) {
       return 402;
     }
-    DownloadInfo localDownloadInfo = a(paramDownloadTaskInfo);
-    localDownloadInfo.g = 2;
-    localDownloadInfo.jdField_c_of_type_Boolean = true;
-    if ((HttpUtil.getNetWorkType() != 1) && (paramActivity != null) && (paramDownloadTaskInfo.f))
+    DownloadInfo localDownloadInfo = b(paramDownloadTaskInfo);
+    localDownloadInfo.v = 2;
+    localDownloadInfo.A = true;
+    if ((HttpUtil.getNetWorkType() != 1) && (paramActivity != null) && (paramDownloadTaskInfo.k))
     {
       a(paramActivity, localDownloadInfo, paramDownloadTaskInfo);
     }
     else
     {
       DownloadCenterImpl.a().a(localDownloadInfo);
-      this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl.a(paramDownloadTaskInfo);
+      this.a.a(paramDownloadTaskInfo);
     }
     return 200;
   }
   
   public int a(DownloadTaskInfo paramDownloadTaskInfo)
   {
-    if (!a()) {
+    if (!b()) {
       return 401;
     }
     if (paramDownloadTaskInfo == null) {
       return -1;
     }
-    paramDownloadTaskInfo = a(paramDownloadTaskInfo);
-    paramDownloadTaskInfo.g = 13;
-    paramDownloadTaskInfo.jdField_c_of_type_Int = 0;
-    int i = DownloadCenterImpl.a().a(paramDownloadTaskInfo);
+    paramDownloadTaskInfo = b(paramDownloadTaskInfo);
+    paramDownloadTaskInfo.v = 13;
+    paramDownloadTaskInfo.o = 0;
+    int i = DownloadCenterImpl.a().b(paramDownloadTaskInfo);
     if (i == 1) {
       return 1;
     }
@@ -94,17 +94,17 @@ public class DownloadNativeApi
   
   public int a(String paramString)
   {
-    if (!a()) {
+    if (!b()) {
       return 401;
     }
-    this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl.a(paramString);
+    this.a.a(paramString);
     DownloadCenterImpl.a().a(paramString);
     return 200;
   }
   
   public int a(String paramString1, String paramString2)
   {
-    if (!a()) {
+    if (!b()) {
       return 401;
     }
     DownloadCenterImpl.a().a(paramString1, paramString2);
@@ -122,8 +122,8 @@ public class DownloadNativeApi
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        DownloadInfo localDownloadInfo = a((DownloadTaskInfo)paramList.next());
-        localDownloadInfo.jdField_c_of_type_Int = 0;
+        DownloadInfo localDownloadInfo = b((DownloadTaskInfo)paramList.next());
+        localDownloadInfo.o = 0;
         localArrayList.add(localDownloadInfo);
       }
       if (DownloadCenterImpl.a().a(localArrayList) != 0) {
@@ -141,25 +141,25 @@ public class DownloadNativeApi
   
   public void a(DownloadNativeApi.IDownloadObserver paramIDownloadObserver)
   {
-    this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl.a(paramIDownloadObserver);
-    DownloadCenterImpl.a().a(this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return AppUtil.a(paramString);
+    this.a.a(paramIDownloadObserver);
+    DownloadCenterImpl.a().a(this.a);
   }
   
   public void b(DownloadNativeApi.IDownloadObserver paramIDownloadObserver)
   {
-    this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl.a();
-    this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl.b(paramIDownloadObserver);
-    DownloadCenterImpl.a().b(this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl);
+    this.a.a();
+    this.a.b(paramIDownloadObserver);
+    DownloadCenterImpl.a().b(this.a);
+  }
+  
+  public boolean b(String paramString)
+  {
+    return AppUtil.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadNativeApi
  * JD-Core Version:    0.7.0.1
  */

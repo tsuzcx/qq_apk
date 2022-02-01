@@ -21,32 +21,27 @@ import java.util.List;
 public class ServiceFolderFollowPBHeadView
   extends RelativeFeedBaseHeaderView
 {
-  private static String jdField_a_of_type_JavaLangString = "ServiceFolderFollowPBHeadView";
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter;
-  private boolean jdField_a_of_type_Boolean = false;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
+  private static String c = "ServiceFolderFollowPBHeadView";
+  private RecyclerView d;
+  private LinearLayout e;
+  private TextView f;
+  private TextView g;
+  private ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter h;
+  private LinearLayoutManager i;
+  private boolean j = false;
+  private String k;
+  private RelativeLayout l;
+  private ImageView m;
+  private ViewPager n;
   
   public ServiceFolderFollowPBHeadView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public int a()
-  {
-    return 2131559636;
-  }
-  
   public void a()
   {
-    ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter localServiceAccountFoldAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter;
+    ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter localServiceAccountFoldAdapter = this.h;
     if (localServiceAccountFoldAdapter != null) {
       localServiceAccountFoldAdapter.b();
     }
@@ -54,33 +49,33 @@ public class ServiceFolderFollowPBHeadView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.post(new ServiceFolderFollowPBHeadView.2(this, paramInt));
+    this.f.post(new ServiceFolderFollowPBHeadView.2(this, paramInt));
   }
   
   protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_Boolean = SubscribeUtils.a();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377280));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377277));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377278));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377273));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter = new ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter(getContext(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter.a(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter.a();
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext());
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366273));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366272));
+    this.j = SubscribeUtils.a();
+    this.d = ((RecyclerView)paramView.findViewById(2131445667));
+    this.e = ((LinearLayout)paramView.findViewById(2131445664));
+    this.f = ((TextView)paramView.findViewById(2131445665));
+    this.g = ((TextView)paramView.findViewById(2131445660));
+    this.h = new ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter(getContext(), this.d);
+    this.h.a(this.j);
+    this.d.setAdapter(this.h);
+    this.h.a();
+    this.i = new LinearLayoutManager(getContext());
+    this.i.setOrientation(0);
+    this.d.setLayoutManager(this.i);
+    this.l = ((RelativeLayout)paramView.findViewById(2131432573));
+    this.m = ((ImageView)paramView.findViewById(2131432572));
     paramContext = URLDrawable.getDrawable("https://sola.gtimg.cn/aoi/sola/20201119210154_6KQkLOzrpX.png", null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramContext);
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground() != null) && ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground() instanceof GradientDrawable))) {
-      ((GradientDrawable)this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground()).setColor(Color.parseColor("#00cafc"));
+    this.m.setImageDrawable(paramContext);
+    if ((this.e.getBackground() != null) && ((this.e.getBackground() instanceof GradientDrawable))) {
+      ((GradientDrawable)this.e.getBackground()).setColor(Color.parseColor("#00cafc"));
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ServiceFolderFollowPBHeadView.1(this));
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-10132123);
+    this.e.setOnClickListener(new ServiceFolderFollowPBHeadView.1(this));
+    if (this.j) {
+      this.g.setTextColor(-10132123);
     }
   }
   
@@ -91,20 +86,25 @@ public class ServiceFolderFollowPBHeadView
     if (paramBoolean)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+        this.g.setText(paramString);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.l.setVisibility(0);
+      this.g.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.l.setVisibility(8);
+    this.g.setVisibility(8);
+  }
+  
+  public int getLayoutId()
+  {
+    return 2131625665;
   }
   
   public void setData(Object paramObject)
   {
     paramObject = (List)paramObject;
-    ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter localServiceAccountFoldAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter;
+    ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter localServiceAccountFoldAdapter = this.h;
     if (localServiceAccountFoldAdapter != null) {
       localServiceAccountFoldAdapter.a(paramObject);
     }
@@ -112,7 +112,7 @@ public class ServiceFolderFollowPBHeadView
   
   public void setDragHost(DragFrameLayout paramDragFrameLayout)
   {
-    ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter localServiceAccountFoldAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter;
+    ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter localServiceAccountFoldAdapter = this.h;
     if (localServiceAccountFoldAdapter != null) {
       localServiceAccountFoldAdapter.a(paramDragFrameLayout);
     }
@@ -120,32 +120,32 @@ public class ServiceFolderFollowPBHeadView
   
   public void setJumpWebMessageListUrl(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public void setTopBannerVisibility(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getVisibility() == 8)
+      if (this.d.getVisibility() == 8)
       {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+        this.d.setVisibility(0);
         VSReporter.a("auth_follow", "service_exp", 0, 0, new String[0]);
       }
     }
-    else if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    else if (this.d.getVisibility() == 0) {
+      this.d.setVisibility(8);
     }
   }
   
   public void setmFolderViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
+    this.n = paramViewPager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView
  * JD-Core Version:    0.7.0.1
  */

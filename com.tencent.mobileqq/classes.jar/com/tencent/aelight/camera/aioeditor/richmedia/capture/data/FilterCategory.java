@@ -19,20 +19,20 @@ public class FilterCategory
 {
   public static final Parcelable.Creator<FilterCategory> CREATOR = new FilterCategory.1();
   public int a;
-  public String a;
-  public List<FilterCategoryItem> a;
+  public String b;
+  public List<FilterCategoryItem> c;
   
   protected FilterCategory(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilList = paramParcel.createTypedArrayList(FilterCategoryItem.CREATOR);
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.createTypedArrayList(FilterCategoryItem.CREATOR);
   }
   
   public FilterCategory(JSONObject paramJSONObject, CaptureRedDotConfig paramCaptureRedDotConfig)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("categoryId");
+    this.b = paramJSONObject.optString("name");
+    this.a = paramJSONObject.optInt("categoryId");
     int i;
     Object localObject2;
     Object localObject1;
@@ -40,7 +40,7 @@ public class FilterCategory
     {
       i = paramJSONObject.optInt("redDotVersion");
       boolean bool = paramJSONObject.optBoolean("needRedDot");
-      localObject2 = (CaptureRedDotConfig.CategoryRedConfig)paramCaptureRedDotConfig.categories.get(Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject2 = (CaptureRedDotConfig.CategoryRedConfig)paramCaptureRedDotConfig.categories.get(Integer.valueOf(this.a));
       if (localObject2 != null)
       {
         localObject1 = localObject2;
@@ -56,7 +56,7 @@ public class FilterCategory
       else
       {
         localObject1 = new CaptureRedDotConfig.CategoryRedConfig();
-        ((CaptureRedDotConfig.CategoryRedConfig)localObject1).categoryId = this.jdField_a_of_type_Int;
+        ((CaptureRedDotConfig.CategoryRedConfig)localObject1).categoryId = this.a;
         ((CaptureRedDotConfig.CategoryRedConfig)localObject1).version = i;
         ((CaptureRedDotConfig.CategoryRedConfig)localObject1).showRedDot = bool;
       }
@@ -76,32 +76,32 @@ public class FilterCategory
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         FilterCategoryItem localFilterCategoryItem = new FilterCategoryItem();
         localFilterCategoryItem.d = localJSONObject.optString("iconUrl");
-        localFilterCategoryItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("name");
-        localFilterCategoryItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("id");
-        localFilterCategoryItem.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-        localFilterCategoryItem.e = localJSONObject.optString("englishName");
-        localFilterCategoryItem.f = localJSONObject.optString("usedPeople");
-        localFilterCategoryItem.jdField_a_of_type_Boolean = localJSONObject.optBoolean("advertisement");
+        localFilterCategoryItem.b = localJSONObject.optString("name");
+        localFilterCategoryItem.a = localJSONObject.optString("id");
+        localFilterCategoryItem.f = this.a;
+        localFilterCategoryItem.g = localJSONObject.optString("englishName");
+        localFilterCategoryItem.h = localJSONObject.optString("usedPeople");
+        localFilterCategoryItem.i = localJSONObject.optBoolean("advertisement");
         Object localObject4;
-        if (localFilterCategoryItem.jdField_a_of_type_Boolean)
+        if (localFilterCategoryItem.i)
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("item.advertisement is true name is:");
-          ((StringBuilder)localObject4).append(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject4).append(localFilterCategoryItem.b);
           QLog.d("FilterCategory", 2, ((StringBuilder)localObject4).toString());
           try
           {
-            localFilterCategoryItem.j = localJSONObject.optString("badgeurl");
-            localFilterCategoryItem.h = localJSONObject.optString("openurl");
-            localFilterCategoryItem.g = localJSONObject.optString("androidopenurlheader");
-            localFilterCategoryItem.i = localJSONObject.optString("storeurl");
-            localFilterCategoryItem.jdField_b_of_type_Boolean = localJSONObject.optBoolean("popup");
-            localFilterCategoryItem.m = localJSONObject.optString("popupbtn");
-            localFilterCategoryItem.l = localJSONObject.optString("popupcontent");
-            localFilterCategoryItem.o = localJSONObject.optString("popupbtn2");
-            localFilterCategoryItem.n = localJSONObject.optString("popupcontent2");
-            localFilterCategoryItem.k = localJSONObject.optString("popupimgurl");
-            localFilterCategoryItem.p = localJSONObject.optString("buttonbgcolor");
+            localFilterCategoryItem.n = localJSONObject.optString("badgeurl");
+            localFilterCategoryItem.k = localJSONObject.optString("openurl");
+            localFilterCategoryItem.j = localJSONObject.optString("androidopenurlheader");
+            localFilterCategoryItem.l = localJSONObject.optString("storeurl");
+            localFilterCategoryItem.m = localJSONObject.optBoolean("popup");
+            localFilterCategoryItem.q = localJSONObject.optString("popupbtn");
+            localFilterCategoryItem.p = localJSONObject.optString("popupcontent");
+            localFilterCategoryItem.s = localJSONObject.optString("popupbtn2");
+            localFilterCategoryItem.r = localJSONObject.optString("popupcontent2");
+            localFilterCategoryItem.o = localJSONObject.optString("popupimgurl");
+            localFilterCategoryItem.t = localJSONObject.optString("buttonbgcolor");
           }
           catch (Exception localException)
           {
@@ -119,12 +119,12 @@ public class FilterCategory
             {
               localObject4 = ((JSONArray)localObject3).getJSONObject(j).optString("name");
               if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-                localFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList.add(localObject4);
+                localFilterCategoryItem.v.add(localObject4);
               }
               j += 1;
             }
           }
-          localObject3 = localFilterCategoryItem.a();
+          localObject3 = localFilterCategoryItem.c();
           if ((localObject3 != null) && (((FilterDesc)localObject3).type == 1) && (!QmcfManager.getInstance().hasQmcfEntrance(1))) {
             break label599;
           }
@@ -133,7 +133,7 @@ public class FilterCategory
         label599:
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilList = ((List)localObject2);
+      this.c = ((List)localObject2);
       if ((paramCaptureRedDotConfig != null) && (localObject1 != null)) {
         paramCaptureRedDotConfig.categories.put(Integer.valueOf(((CaptureRedDotConfig.CategoryRedConfig)localObject1).categoryId), localObject1);
       }
@@ -147,14 +147,14 @@ public class FilterCategory
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeTypedList(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

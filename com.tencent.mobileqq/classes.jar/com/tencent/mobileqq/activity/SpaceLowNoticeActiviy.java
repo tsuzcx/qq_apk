@@ -72,15 +72,15 @@ public class SpaceLowNoticeActiviy
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559505);
+    super.setContentView(2131625527);
     paramBundle = this.a;
     if ((paramBundle != null) && (paramBundle.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
     this.a = DialogUtil.a(this, 230);
-    this.a.setContentView(2131558954);
-    this.a.setTitle(getString(2131698749)).setMessage(getString(2131698750)).setPositiveButton(2131699235, new SpaceLowNoticeActiviy.2(this)).setNegativeButton(2131690728, new SpaceLowNoticeActiviy.1(this));
+    this.a.setContentView(2131624587);
+    this.a.setTitle(getString(2131896707)).setMessage(getString(2131896708)).setPositiveButton(2131897251, new SpaceLowNoticeActiviy.2(this)).setNegativeButton(2131887648, new SpaceLowNoticeActiviy.1(this));
     this.a.setOnKeyListener(new SpaceLowNoticeActiviy.3(this));
     this.a.show();
     return false;
@@ -107,7 +107,7 @@ public class SpaceLowNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

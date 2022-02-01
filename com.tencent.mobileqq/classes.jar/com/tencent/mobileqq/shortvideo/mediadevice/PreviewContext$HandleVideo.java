@@ -38,13 +38,13 @@ public class PreviewContext$HandleVideo
         QLog.d("PreviewContext", 2, "[@] HandleVideo: encode=null");
       }
     }
-    this.this$0.mCamera.a.a(7, new Object[] { Integer.valueOf(0) });
+    this.this$0.mCamera.p.a(7, new Object[] { Integer.valueOf(0) });
     this.this$0.mVideoFrameProcess.incrementAndGet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.HandleVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ class AVGameStatusTipsBar$2
   
   public void onClick(View paramView)
   {
-    AVGameStatusTipsBar.b(this.a);
-    ReportController.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", AVGameStatusTipsBar.a(this.a).a, "");
+    AVGameStatusTipsBar.c(this.a);
+    ReportController.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", AVGameStatusTipsBar.b(this.a).b, "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.AVGameStatusTipsBar.2
  * JD-Core Version:    0.7.0.1
  */

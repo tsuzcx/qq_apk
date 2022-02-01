@@ -32,44 +32,44 @@ class QFileMsgForwardManager$Buddy2BuddyTaskExcuter$1
     {
       paramString = new StringBuilder();
       paramString.append("start forwardOfflineFileToX[");
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.jdField_a_of_type_JavaLangString);
+      paramString.append(this.c.a);
       paramString.append("] faild:");
       paramString.append(paramInt);
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.jdField_a_of_type_Long, bool2), bool1);
+    this.b.a(QFileMsgForwardManager.a(this.c.h, bool2), bool1);
   }
   
   public void a(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardReceiverUin", this.a);
+    localBundle.putString("_m_ForwardFileName", this.c.a);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c.h);
     localStringBuilder.append("");
     localBundle.putString("_m_ForwardSize", localStringBuilder.toString());
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.d);
+    localBundle.putString("_m_ForwardMd5", this.c.d);
     localBundle.putString("_m_ForwardUuid", paramString1);
     localBundle.putString("_m_ForwardFileIdCrc", paramString2);
     localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.f);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.g);
+    localBundle.putString("_m_ForwardImgWidth", this.c.f);
+    localBundle.putString("_m_ForwardImgHeight", this.c.g);
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
       paramString2.append("start forwardOfflineFileToX[");
-      paramString2.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Buddy2BuddyTaskExcuter.jdField_a_of_type_JavaLangString);
+      paramString2.append(this.c.a);
       paramString2.append("] success");
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, paramString2.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(paramString1, localBundle);
+    this.b.a(paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.Buddy2BuddyTaskExcuter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,52 +18,52 @@ import java.util.ArrayList;
 
 public class GAudioMemberListCtrl
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new GAudioMemberListCtrl.1(this);
-  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  private GAudioMemberListCtrl.GAudioMemberListAdapter jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl$GAudioMemberListAdapter = null;
-  private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = null;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
-  ArrayList<GAudioMemberListCtrl.GAudioMemberInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new GAudioMemberListCtrl.2(this);
-  private boolean jdField_b_of_type_Boolean = false;
+  WeakReference<Context> a = null;
+  long b = 0L;
+  int c = 0;
+  VideoController d = null;
+  LayoutInflater e = null;
+  ArrayList<GAudioMemberListCtrl.GAudioMemberInfo> f = new ArrayList();
+  View.OnClickListener g = new GAudioMemberListCtrl.1(this);
+  View.OnClickListener h = new GAudioMemberListCtrl.2(this);
+  private PinnedDividerListView i = null;
+  private GAudioMemberListCtrl.GAudioMemberListAdapter j = null;
+  private VideoAppInterface k = null;
+  private boolean l = false;
+  private boolean m = false;
   
   @TargetApi(9)
   public GAudioMemberListCtrl(Context paramContext, VideoAppInterface paramVideoAppInterface, PinnedDividerListView paramPinnedDividerListView, long paramLong, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = paramPinnedDividerListView;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if (this.jdField_a_of_type_ComTencentAvVideoController == null)
+    this.a = new WeakReference(paramContext);
+    this.i = paramPinnedDividerListView;
+    this.b = paramLong;
+    this.c = paramInt;
+    this.k = paramVideoAppInterface;
+    this.d = this.k.b();
+    if (this.d == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("GAudioMemberListCtrl", 2, "MVMembersContolUI-->can not get videoControl");
       }
       return;
     }
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl$GAudioMemberListAdapter = new GAudioMemberListCtrl.GAudioMemberListAdapter(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl$GAudioMemberListAdapter);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Boolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    this.e = LayoutInflater.from((Context)this.a.get());
+    this.j = new GAudioMemberListCtrl.GAudioMemberListAdapter(this, null);
+    this.i.setAdapter(this.j);
+    this.l = paramBoolean;
+    this.m = ThemeUtil.isInNightMode(this.k);
   }
   
   private int a(long paramLong)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int n = 0;
+    while (n < this.f.size())
     {
-      if (((GAudioMemberListCtrl.GAudioMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long == paramLong) {
-        return i;
+      if (((GAudioMemberListCtrl.GAudioMemberInfo)this.f.get(n)).a == paramLong) {
+        return n;
       }
-      i += 1;
+      n += 1;
     }
     return -1;
   }
@@ -80,67 +80,67 @@ public class GAudioMemberListCtrl
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    int i = 0;
-    while (i < paramArrayList.size())
+    this.f.clear();
+    int n = 0;
+    while (n < paramArrayList.size())
     {
-      VideoController.GAudioFriends localGAudioFriends = (VideoController.GAudioFriends)paramArrayList.get(i);
+      VideoController.GAudioFriends localGAudioFriends = (VideoController.GAudioFriends)paramArrayList.get(n);
       GAudioMemberListCtrl.GAudioMemberInfo localGAudioMemberInfo = new GAudioMemberListCtrl.GAudioMemberInfo(this, null);
-      localGAudioMemberInfo.jdField_a_of_type_Long = localGAudioFriends.jdField_a_of_type_Long;
-      localGAudioMemberInfo.jdField_a_of_type_Boolean = localGAudioFriends.jdField_a_of_type_Boolean;
-      localGAudioMemberInfo.jdField_a_of_type_Int = localGAudioFriends.d;
-      localGAudioMemberInfo.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = localGAudioFriends.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
-      localGAudioMemberInfo.c = localGAudioFriends.e;
-      localGAudioMemberInfo.d = localGAudioFriends.f;
-      localGAudioMemberInfo.e = localGAudioFriends.h;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localGAudioMemberInfo);
-      i += 1;
+      localGAudioMemberInfo.a = localGAudioFriends.a;
+      localGAudioMemberInfo.b = localGAudioFriends.b;
+      localGAudioMemberInfo.g = localGAudioFriends.n;
+      localGAudioMemberInfo.h = localGAudioFriends.o;
+      localGAudioMemberInfo.i = localGAudioFriends.p;
+      localGAudioMemberInfo.j = localGAudioFriends.q;
+      localGAudioMemberInfo.k = localGAudioFriends.w;
+      this.f.add(localGAudioMemberInfo);
+      n += 1;
     }
   }
   
   public void a()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition();
+    int i1 = this.i.getFirstVisiblePosition();
     boolean bool2 = false;
-    int i = j;
-    if (j < 0) {
-      i = 0;
+    int n = i1;
+    if (i1 < 0) {
+      n = 0;
     }
-    int k = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getLastVisiblePosition();
-    j = i;
+    int i2 = this.i.getLastVisiblePosition();
+    i1 = n;
     boolean bool1;
     Object localObject;
     for (;;)
     {
       bool1 = bool2;
-      if (j >= k) {
+      if (i1 >= i2) {
         break;
       }
       bool1 = bool2;
-      if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (i1 >= this.f.size()) {
         break;
       }
-      localObject = (GAudioMemberListCtrl.GAudioMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if ((localObject != null) && (!((GAudioMemberListCtrl.GAudioMemberInfo)localObject).jdField_b_of_type_Boolean))
+      localObject = (GAudioMemberListCtrl.GAudioMemberInfo)this.f.get(i1);
+      if ((localObject != null) && (!((GAudioMemberListCtrl.GAudioMemberInfo)localObject).c))
       {
         bool1 = true;
         break;
       }
-      j += 1;
+      i1 += 1;
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("refreshHeadbitmap-->minIndex=");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(n);
       ((StringBuilder)localObject).append(",maxIndex=");
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i2);
       ((StringBuilder)localObject).append(",needRefresh=");
       ((StringBuilder)localObject).append(bool1);
       QLog.d("GAudioMemberListCtrl", 2, ((StringBuilder)localObject).toString());
     }
     if (bool1) {
-      this.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl$GAudioMemberListAdapter.notifyDataSetChanged();
+      this.j.notifyDataSetChanged();
     }
   }
   
@@ -160,21 +160,21 @@ public class GAudioMemberListCtrl
       }
       return;
     }
-    Object localObject1 = (GAudioMemberListCtrl.GAudioMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
-    ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).c = paramBoolean;
-    ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).jdField_a_of_type_Int = paramInt1;
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition();
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getLastVisiblePosition();
+    Object localObject1 = (GAudioMemberListCtrl.GAudioMemberInfo)this.f.get(paramInt2);
+    ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).i = paramBoolean;
+    ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).g = paramInt1;
+    paramInt1 = this.i.getFirstVisiblePosition();
+    int n = this.i.getLastVisiblePosition();
     if (paramInt2 >= paramInt1)
     {
-      if (paramInt2 > i) {
+      if (paramInt2 > n) {
         return;
       }
       paramInt1 = paramInt2 + 1 - paramInt1;
-      if (paramInt1 > this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount()) {
+      if (paramInt1 > this.i.getChildCount()) {
         return;
       }
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(paramInt1);
+      Object localObject2 = this.i.getChildAt(paramInt1);
       if (localObject2 == null)
       {
         if (QLog.isColorLevel())
@@ -205,33 +205,33 @@ public class GAudioMemberListCtrl
       if (localObject2 == null) {
         return;
       }
-      if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).c)
+      if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).i)
       {
-        ((GAudioMemberListCtrl.ViewHolder)localObject2).c.setVisibility(8);
-        if (((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_AndroidViewView != null) {
-          ((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+        ((GAudioMemberListCtrl.ViewHolder)localObject2).f.setVisibility(8);
+        if (((GAudioMemberListCtrl.ViewHolder)localObject2).g != null) {
+          ((GAudioMemberListCtrl.ViewHolder)localObject2).g.setVisibility(8);
         }
       }
-      if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).c)
+      if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).i)
       {
-        if ((((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_Int == -1) || (((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_Int == 0))
+        if ((((GAudioMemberListCtrl.ViewHolder)localObject2).k == -1) || (((GAudioMemberListCtrl.ViewHolder)localObject2).k == 0))
         {
-          a(((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_b_of_type_AndroidWidgetImageView, ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).c);
-          ((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_Int = 1;
+          a(((GAudioMemberListCtrl.ViewHolder)localObject2).e, ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).i);
+          ((GAudioMemberListCtrl.ViewHolder)localObject2).k = 1;
         }
       }
-      else if ((((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_Int == -1) || (((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_Int == 1))
+      else if ((((GAudioMemberListCtrl.ViewHolder)localObject2).k == -1) || (((GAudioMemberListCtrl.ViewHolder)localObject2).k == 1))
       {
-        a(((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_b_of_type_AndroidWidgetImageView, ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).c);
-        ((GAudioMemberListCtrl.ViewHolder)localObject2).jdField_a_of_type_Int = 0;
+        a(((GAudioMemberListCtrl.ViewHolder)localObject2).e, ((GAudioMemberListCtrl.GAudioMemberInfo)localObject1).i);
+        ((GAudioMemberListCtrl.ViewHolder)localObject2).k = 0;
       }
     }
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    int i = a(paramLong);
-    if (i == -1)
+    int n = a(paramLong);
+    if (n == -1)
     {
       if (QLog.isColorLevel())
       {
@@ -244,29 +244,29 @@ public class GAudioMemberListCtrl
       }
       return;
     }
-    Object localObject = (GAudioMemberListCtrl.GAudioMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-    ((GAudioMemberListCtrl.GAudioMemberInfo)localObject).jdField_a_of_type_Boolean = paramBoolean;
-    if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).c)
+    Object localObject = (GAudioMemberListCtrl.GAudioMemberInfo)this.f.get(n);
+    ((GAudioMemberListCtrl.GAudioMemberInfo)localObject).b = paramBoolean;
+    if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).i)
     {
-      ((GAudioMemberListCtrl.GAudioMemberInfo)localObject).jdField_a_of_type_Boolean = false;
+      ((GAudioMemberListCtrl.GAudioMemberInfo)localObject).b = false;
       paramBoolean = false;
     }
-    int j = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getLastVisiblePosition();
-    if ((i >= j) && (i <= k))
+    int i1 = this.i.getFirstVisiblePosition();
+    int i2 = this.i.getLastVisiblePosition();
+    if ((n >= i1) && (n <= i2))
     {
-      j = i + 1 - j;
-      if (j > this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount()) {
+      i1 = n + 1 - i1;
+      if (i1 > this.i.getChildCount()) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(j);
+      localObject = this.i.getChildAt(i1);
       if (localObject == null)
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("notifyDataSetChanged--> view == null , index = ");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(n);
           QLog.e("GAudioMemberListCtrl", 2, ((StringBuilder)localObject).toString());
         }
         return;
@@ -277,7 +277,7 @@ public class GAudioMemberListCtrl
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("notifyDataSetChanged-->can not get tag from uin-->index=");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(n);
           ((StringBuilder)localObject).append(",uin=");
           ((StringBuilder)localObject).append(paramLong);
           ((StringBuilder)localObject).append(",isSpeak=");
@@ -290,18 +290,18 @@ public class GAudioMemberListCtrl
       if (localObject == null) {
         return;
       }
-      if ((paramBoolean) && (((GAudioMemberListCtrl.ViewHolder)localObject).jdField_b_of_type_Boolean))
+      if ((paramBoolean) && (((GAudioMemberListCtrl.ViewHolder)localObject).j))
       {
-        ((GAudioMemberListCtrl.ViewHolder)localObject).c.setVisibility(0);
-        if (((GAudioMemberListCtrl.ViewHolder)localObject).jdField_a_of_type_AndroidViewView != null) {
-          ((GAudioMemberListCtrl.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+        ((GAudioMemberListCtrl.ViewHolder)localObject).f.setVisibility(0);
+        if (((GAudioMemberListCtrl.ViewHolder)localObject).g != null) {
+          ((GAudioMemberListCtrl.ViewHolder)localObject).g.setVisibility(0);
         }
       }
       else
       {
-        ((GAudioMemberListCtrl.ViewHolder)localObject).c.setVisibility(8);
-        if (((GAudioMemberListCtrl.ViewHolder)localObject).jdField_a_of_type_AndroidViewView != null) {
-          ((GAudioMemberListCtrl.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
+        ((GAudioMemberListCtrl.ViewHolder)localObject).f.setVisibility(8);
+        if (((GAudioMemberListCtrl.ViewHolder)localObject).g != null) {
+          ((GAudioMemberListCtrl.ViewHolder)localObject).g.setVisibility(8);
         }
       }
       return;
@@ -312,32 +312,32 @@ public class GAudioMemberListCtrl
       ((StringBuilder)localObject).append("notifyDataSetChanged--> view is invisible uin =");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(" , index = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(n);
       QLog.e("GAudioMemberListCtrl", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   void a(ImageView paramImageView, boolean paramBoolean)
   {
-    int i;
+    int n;
     if (paramBoolean)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        i = 2130842041;
+      if (this.m) {
+        n = 2130842961;
       } else {
-        i = 2130842040;
+        n = 2130842960;
       }
-      paramImageView.setImageResource(i);
-      paramImageView.setContentDescription(HardCodeUtil.a(2131705254));
+      paramImageView.setImageResource(n);
+      paramImageView.setContentDescription(HardCodeUtil.a(2131903138));
       return;
     }
-    if (this.jdField_b_of_type_Boolean) {
-      i = 2130842043;
+    if (this.m) {
+      n = 2130842963;
     } else {
-      i = 2130842042;
+      n = 2130842962;
     }
-    paramImageView.setImageResource(i);
-    paramImageView.setContentDescription(HardCodeUtil.a(2131705256));
+    paramImageView.setImageResource(n);
+    paramImageView.setContentDescription(HardCodeUtil.a(2131903140));
   }
   
   public void a(ArrayList<VideoController.GAudioFriends> paramArrayList)
@@ -345,39 +345,39 @@ public class GAudioMemberListCtrl
     if (paramArrayList != null)
     {
       b(paramArrayList);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl$GAudioMemberListAdapter.notifyDataSetChanged();
+      this.j.notifyDataSetChanged();
     }
   }
   
   public void b()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
-    int i = 0;
-    while (i < j)
+    int i1 = this.i.getChildCount();
+    int n = 0;
+    while (n < i1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).setTag(null);
-      i += 1;
+      this.i.getChildAt(n).setTag(null);
+      n += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = null;
-    this.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl$GAudioMemberListAdapter = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = null;
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    this.i = null;
+    this.j = null;
+    this.k = null;
+    this.d = null;
+    this.e = null;
+    Object localObject = this.f;
     if (localObject != null) {
       ((ArrayList)localObject).clear();
     }
-    localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    localObject = this.a;
     if (localObject != null) {
       ((WeakReference)localObject).clear();
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.a = null;
   }
   
   public void b(long paramLong, boolean paramBoolean)
   {
-    int i = a(paramLong);
-    if (i == -1)
+    int n = a(paramLong);
+    if (n == -1)
     {
       if (QLog.isColorLevel())
       {
@@ -390,7 +390,7 @@ public class GAudioMemberListCtrl
       }
       return;
     }
-    ((GAudioMemberListCtrl.GAudioMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d = paramBoolean;
+    ((GAudioMemberListCtrl.GAudioMemberInfo)this.f.get(n)).j = paramBoolean;
   }
 }
 

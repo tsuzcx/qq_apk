@@ -10,12 +10,12 @@ class ResourceGrabRepository$4
   
   public String a(ResourceGrabSkinData paramResourceGrabSkinData)
   {
-    return paramResourceGrabSkinData.a.mFileName;
+    return paramResourceGrabSkinData.b.mFileName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabRepository.4
  * JD-Core Version:    0.7.0.1
  */

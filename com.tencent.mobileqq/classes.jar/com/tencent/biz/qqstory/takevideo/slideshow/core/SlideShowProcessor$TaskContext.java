@@ -2,9 +2,9 @@ package com.tencent.biz.qqstory.takevideo.slideshow.core;
 
 public class SlideShowProcessor$TaskContext
 {
-  public SlideShowProcessor.SlideShowProcessListener a;
-  public long b;
-  public boolean d = false;
+  public boolean j = false;
+  public long k;
+  public SlideShowProcessor.SlideShowProcessListener l;
 }
 
 

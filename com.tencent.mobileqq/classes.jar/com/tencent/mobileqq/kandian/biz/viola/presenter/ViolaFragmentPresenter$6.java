@@ -14,8 +14,8 @@ class ViolaFragmentPresenter$6
   
   public void a()
   {
-    this.a.a.d();
-    this.a.a.a();
+    this.a.b.h();
+    this.a.b.a();
     if (QLog.isColorLevel()) {
       QLog.d("ViolaFragment", 2, "initViola success!");
     }
@@ -23,8 +23,8 @@ class ViolaFragmentPresenter$6
   
   public void a(int paramInt)
   {
-    this.a.a.d();
-    this.a.a.b();
+    this.a.b.h();
+    this.a.b.f();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -36,20 +36,20 @@ class ViolaFragmentPresenter$6
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    if ((this.a.a.a()) && (paramBoolean)) {
-      if (Math.abs(paramInt1) >= this.a.a.a() / 2)
+    if ((this.a.b.d()) && (paramBoolean)) {
+      if (Math.abs(paramInt1) >= this.a.b.m() / 2)
       {
-        if (!ViolaFragmentPresenter.a(this.a))
+        if (!ViolaFragmentPresenter.c(this.a))
         {
           ViolaFragmentPresenter.a(this.a).setStatusBarFontColor(Boolean.valueOf(false));
-          FlymeOSStatusBarFontUtils.a(ViolaFragmentPresenter.a(this.a), true);
+          FlymeOSStatusBarFontUtils.a(ViolaFragmentPresenter.d(this.a), true);
           ViolaFragmentPresenter.a(this.a, true);
         }
       }
-      else if (ViolaFragmentPresenter.a(this.a))
+      else if (ViolaFragmentPresenter.c(this.a))
       {
         ViolaFragmentPresenter.a(this.a).setStatusBarFontColor(Boolean.valueOf(true));
-        FlymeOSStatusBarFontUtils.a(ViolaFragmentPresenter.a(this.a), false);
+        FlymeOSStatusBarFontUtils.a(ViolaFragmentPresenter.d(this.a), false);
         ViolaFragmentPresenter.a(this.a, false);
       }
     }
@@ -57,8 +57,8 @@ class ViolaFragmentPresenter$6
   
   public void a(String paramString, int paramInt)
   {
-    if (ViolaFragmentPresenter.a(this.a) != null) {
-      ViolaFragmentPresenter.a(this.a).a(paramInt);
+    if (ViolaFragmentPresenter.b(this.a) != null) {
+      ViolaFragmentPresenter.b(this.a).a(paramInt);
     }
   }
   
@@ -75,7 +75,7 @@ class ViolaFragmentPresenter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.presenter.ViolaFragmentPresenter.6
  * JD-Core Version:    0.7.0.1
  */

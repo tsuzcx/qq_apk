@@ -6,13 +6,14 @@ import com.tencent.aelight.camera.ae.download.AEResUtil;
 import com.tencent.aelight.camera.download.api.AEResInfo;
 import com.tencent.aelight.camera.download.api.IAEResUtil;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.util.Map;
 
 public class AEResUtilImpl
   implements IAEResUtil
 {
   public boolean checkAEResVersionOK(@NonNull AEResInfo paramAEResInfo)
   {
-    return AEResUtil.a(paramAEResInfo);
+    return AEResUtil.c(paramAEResInfo);
   }
   
   public int checkBundleStatus(VideoMaterial paramVideoMaterial)
@@ -27,7 +28,7 @@ public class AEResUtilImpl
   
   public int getAEResStatus(AEResInfo paramAEResInfo)
   {
-    return AEResUtil.a(paramAEResInfo);
+    return AEResUtil.e(paramAEResInfo);
   }
   
   public int getDownloadPackageVersion(int paramInt)
@@ -37,7 +38,7 @@ public class AEResUtilImpl
   
   public String getFinalUnzipFilePath()
   {
-    return AEResUtil.b();
+    return AEResUtil.c();
   }
   
   public String getFinalUnzippedPackageDir(@NonNull AEResInfo paramAEResInfo)
@@ -47,27 +48,32 @@ public class AEResUtilImpl
   
   public String getLightAssetsDir()
   {
-    return AEResUtil.d();
+    return AEResUtil.k();
   }
   
   public String getLightBundleDir(@NonNull AEResInfo paramAEResInfo)
   {
-    return AEResUtil.c(paramAEResInfo);
+    return AEResUtil.f(paramAEResInfo);
+  }
+  
+  public Map<AEResInfo, String> getLightBundleMap()
+  {
+    return AEResUtil.a();
   }
   
   public String getLightEmptyMaterialConfigPath()
   {
-    return AEResUtil.e();
+    return AEResUtil.l();
   }
   
   public String getLightModelDir()
   {
-    return AEResUtil.g();
+    return AEResUtil.n();
   }
   
   public String getPituDownloadTips()
   {
-    return AEResUtil.a;
+    return AEResUtil.b;
   }
   
   public String getUnzipAEResPath(@NonNull AEResInfo paramAEResInfo)
@@ -77,32 +83,32 @@ public class AEResUtilImpl
   
   public boolean isAEBaseSoReady()
   {
-    return AEResUtil.a();
+    return AEResUtil.e();
   }
   
   public boolean isAEResExist(AEResInfo paramAEResInfo)
   {
-    return AEResUtil.b(paramAEResInfo);
+    return AEResUtil.d(paramAEResInfo);
   }
   
   public boolean isFilterFaceSoVersionOK()
   {
-    return AEResUtil.d();
+    return AEResUtil.h();
   }
   
   public boolean isLightCameraBaseResNotAllExist()
   {
-    return AEResUtil.c();
+    return AEResUtil.g();
   }
   
   public boolean isLightCameraResExist()
   {
-    return AEResUtil.b();
+    return AEResUtil.f();
   }
   
   public boolean loadAEBaseSo()
   {
-    return AEResUtil.e();
+    return AEResUtil.i();
   }
   
   public void peakRequestAEBaseRes() {}
@@ -114,7 +120,7 @@ public class AEResUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.download.api.impl.AEResUtilImpl
  * JD-Core Version:    0.7.0.1
  */

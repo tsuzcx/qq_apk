@@ -8,7 +8,7 @@ import java.util.List;
 public class OfficialRecommendListPageLoader$GetOfficialRecommendListEvent
   extends BasePageLoaderEvent
 {
-  public List<RecommendItem> a;
+  public List<RecommendItem> e;
   
   public OfficialRecommendListPageLoader$GetOfficialRecommendListEvent(ErrorMessage paramErrorMessage)
   {
@@ -19,14 +19,14 @@ public class OfficialRecommendListPageLoader$GetOfficialRecommendListEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetOfficialRecommendListEvent{recommendItemList=");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.OfficialRecommendListPageLoader.GetOfficialRecommendListEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -13,95 +13,41 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class VideoAdStrategyManager
 {
-  public static int a;
-  public static AtomicBoolean a;
-  public static AtomicInteger a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
-  public static int c;
-  public static boolean c;
-  public static int d;
-  public static int e;
-  public static int f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j = 0;
-  public static int k = 0;
-  public static int l = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = 2;
-    jdField_b_of_type_Int = 10;
-    jdField_c_of_type_Int = 25;
-    d = 2;
-    e = 2;
-    f = 0;
-    g = 0;
-    h = 0;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    i = 5;
-    jdField_c_of_type_Boolean = false;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Int != 0) {
-      return;
-    }
-    Object localObject = Aladdin.getConfig(319);
-    jdField_a_of_type_Int = ((AladdinConfig)localObject).getIntegerFromString("strategy", 1);
-    jdField_b_of_type_Int = ((AladdinConfig)localObject).getIntegerFromString("ad_first_time", 10);
-    jdField_c_of_type_Int = ((AladdinConfig)localObject).getIntegerFromString("ad_interval_time", 25);
-    d = ((AladdinConfig)localObject).getIntegerFromString("ad_pre_req", 2);
-    e = ((AladdinConfig)localObject).getIntegerFromString("ad_protect_gap", 2);
-    f = ((AladdinConfig)localObject).getIntegerFromString("ad_first_pos", 4);
-    g = ((AladdinConfig)localObject).getIntegerFromString("ad_interval_pos", 3);
-    h = ((AladdinConfig)localObject).getIntegerFromString("ad_protect_interval", 3);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-    localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setAdStrategyFromAladin: strategy = ");
-    localStringBuilder.append(jdField_a_of_type_Int);
-    localStringBuilder.append(" adFirstTime = ");
-    localStringBuilder.append(jdField_b_of_type_Int);
-    localStringBuilder.append(" adIntervalTime = ");
-    localStringBuilder.append(jdField_c_of_type_Int);
-    localStringBuilder.append(" adPreReq = ");
-    localStringBuilder.append(d);
-    localStringBuilder.append(" adProtectGap = ");
-    localStringBuilder.append(e);
-    localStringBuilder.append(" adFirstPos = ");
-    localStringBuilder.append(f);
-    localStringBuilder.append(" adIntervalPos = ");
-    localStringBuilder.append(g);
-    localStringBuilder.append(" adProtectInterval = ");
-    localStringBuilder.append(h);
-    ((IRIJAdLogService)localObject).d("VideoAdStrategy", localStringBuilder.toString());
-  }
+  public static AtomicBoolean a = new AtomicBoolean(false);
+  public static int b = 2;
+  public static int c = 10;
+  public static int d = 25;
+  public static int e = 2;
+  public static int f = 2;
+  public static int g = 0;
+  public static int h = 0;
+  public static int i = 0;
+  public static boolean j = false;
+  public static boolean k = false;
+  public static int l = 5;
+  public static boolean m = false;
+  public static AtomicInteger n = new AtomicInteger(0);
+  public static int o = 0;
+  public static int p = 0;
+  public static int q = 0;
   
   public static void a(VideoPlayParam paramVideoPlayParam)
   {
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.a != null) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger != null))
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.c != null) && (n != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("changeVvCount  count : ");
-      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      localStringBuilder.append(n.get());
       ReadInJoyAdLog.a("VideoAdStrategyManager", localStringBuilder.toString());
-      if (paramVideoPlayParam.a.r)
+      if (paramVideoPlayParam.c.aq)
       {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        n.set(0);
         return;
       }
-      int m = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      int i1 = n.incrementAndGet();
       paramVideoPlayParam = new StringBuilder();
       paramVideoPlayParam.append("changeVvCount  count : ");
-      paramVideoPlayParam.append(m);
+      paramVideoPlayParam.append(i1);
       ReadInJoyAdLog.a("VideoAdStrategyManager", paramVideoPlayParam.toString());
       return;
     }
@@ -110,19 +56,7 @@ public class VideoAdStrategyManager
   
   public static boolean a()
   {
-    return jdField_a_of_type_Int == 2;
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    j = 0;
-    k = 0;
-    l = 0;
+    return b == 2;
   }
   
   public static boolean b()
@@ -132,14 +66,14 @@ public class VideoAdStrategyManager
       IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("judge isNotVVStrategy : adStrategy = ");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(b);
       localIRIJAdLogService.d("VideoAdStrategyManager", localStringBuilder.toString());
     }
-    int m = jdField_a_of_type_Int;
+    int i1 = b;
     boolean bool = true;
-    if (m != 0)
+    if (i1 != 0)
     {
-      if (m == 1) {
+      if (i1 == 1) {
         return true;
       }
       bool = false;
@@ -149,7 +83,7 @@ public class VideoAdStrategyManager
   
   public static boolean c()
   {
-    return jdField_c_of_type_Boolean;
+    return m;
   }
   
   public static boolean d()
@@ -159,10 +93,10 @@ public class VideoAdStrategyManager
       IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("judge isNotMixStrategy : adStrategy = ");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(b);
       localIRIJAdLogService.d("VideoAdStrategyManager", localStringBuilder.toString());
     }
-    return jdField_a_of_type_Int != 3;
+    return b != 3;
   }
   
   public static boolean e()
@@ -172,20 +106,68 @@ public class VideoAdStrategyManager
       IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("judge isNotTimeStrategy : adStrategy = ");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(b);
       localIRIJAdLogService.d("VideoAdStrategyManager", localStringBuilder.toString());
     }
-    return jdField_a_of_type_Int != 1;
+    return b != 1;
   }
   
   public static boolean f()
   {
-    return (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (jdField_a_of_type_Int == 1);
+    return (a.get()) && (b == 1);
+  }
+  
+  public static void g()
+  {
+    if (b != 0) {
+      return;
+    }
+    Object localObject = Aladdin.getConfig(319);
+    b = ((AladdinConfig)localObject).getIntegerFromString("strategy", 1);
+    c = ((AladdinConfig)localObject).getIntegerFromString("ad_first_time", 10);
+    d = ((AladdinConfig)localObject).getIntegerFromString("ad_interval_time", 25);
+    e = ((AladdinConfig)localObject).getIntegerFromString("ad_pre_req", 2);
+    f = ((AladdinConfig)localObject).getIntegerFromString("ad_protect_gap", 2);
+    g = ((AladdinConfig)localObject).getIntegerFromString("ad_first_pos", 4);
+    h = ((AladdinConfig)localObject).getIntegerFromString("ad_interval_pos", 3);
+    i = ((AladdinConfig)localObject).getIntegerFromString("ad_protect_interval", 3);
+    a.compareAndSet(false, true);
+    localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAdStrategyFromAladin: strategy = ");
+    localStringBuilder.append(b);
+    localStringBuilder.append(" adFirstTime = ");
+    localStringBuilder.append(c);
+    localStringBuilder.append(" adIntervalTime = ");
+    localStringBuilder.append(d);
+    localStringBuilder.append(" adPreReq = ");
+    localStringBuilder.append(e);
+    localStringBuilder.append(" adProtectGap = ");
+    localStringBuilder.append(f);
+    localStringBuilder.append(" adFirstPos = ");
+    localStringBuilder.append(g);
+    localStringBuilder.append(" adIntervalPos = ");
+    localStringBuilder.append(h);
+    localStringBuilder.append(" adProtectInterval = ");
+    localStringBuilder.append(i);
+    ((IRIJAdLogService)localObject).d("VideoAdStrategy", localStringBuilder.toString());
+  }
+  
+  public static void h()
+  {
+    a.compareAndSet(true, false);
+    b = 0;
+    j = false;
+    k = false;
+    n.set(0);
+    o = 0;
+    p = 0;
+    q = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdStrategyManager
  * JD-Core Version:    0.7.0.1
  */

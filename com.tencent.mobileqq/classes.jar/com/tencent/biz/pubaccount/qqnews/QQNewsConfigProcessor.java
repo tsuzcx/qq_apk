@@ -37,7 +37,7 @@ public final class QQNewsConfigProcessor
       }
       if ((i ^ 0x1) != 0)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+        paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
         Intrinsics.checkExpressionValueIsNotNull(paramArrayOfQConfItem, "confFiles[0].content");
         localConfig.a(paramArrayOfQConfItem);
       }
@@ -87,7 +87,7 @@ public final class QQNewsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

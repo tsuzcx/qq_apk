@@ -11,19 +11,19 @@ class VideoControlUI$12
 {
   VideoControlUI$12(VideoControlUI paramVideoControlUI, long paramLong1, long paramLong2) {}
   
-  protected void a(long paramLong, boolean paramBoolean, String paramString)
+  protected void b(long paramLong, boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h())
+    if (this.d.V())
     {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
+      if (this.d.al != null) {
+        this.d.al.b(this);
       }
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
+    String str = this.d.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onNotify_ScreenShot_Finish, flag[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], _flag[");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("], path[");
@@ -31,16 +31,16 @@ class VideoControlUI$12
     localStringBuilder.append("], ret[");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Long == paramLong)
+    if (this.a == paramLong)
     {
       if (paramBoolean) {
-        ScreenShotHelper.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, false);
+        ScreenShotHelper.a((Context)this.d.ak.get(), paramString, false);
       }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
+      if (this.d.al != null) {
+        this.d.al.b(this);
       }
     }
   }

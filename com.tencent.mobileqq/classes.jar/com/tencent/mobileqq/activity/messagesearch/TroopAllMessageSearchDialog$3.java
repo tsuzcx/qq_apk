@@ -12,14 +12,14 @@ class TroopAllMessageSearchDialog$3
   public void onClick(View paramView)
   {
     TroopAllMessageSearchDialog localTroopAllMessageSearchDialog = this.a;
-    localTroopAllMessageSearchDialog.a = null;
+    localTroopAllMessageSearchDialog.l = null;
     localTroopAllMessageSearchDialog.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TroopAllMessageSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

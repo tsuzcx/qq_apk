@@ -4,37 +4,37 @@ import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 
 public abstract class IApp
 {
-  public MiniAppInfo a;
   public MiniAppActivity a;
+  public MiniAppInfo b;
   
   public IApp(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
+    this.a = paramMiniAppActivity;
   }
   
   public abstract void a();
   
   public void a(MiniAppInfo paramMiniAppInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo = paramMiniAppInfo;
-    MiniAppActivity localMiniAppActivity = this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity;
+    this.b = paramMiniAppInfo;
+    MiniAppActivity localMiniAppActivity = this.a;
     if (localMiniAppActivity != null) {
-      localMiniAppActivity.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo = paramMiniAppInfo;
+      localMiniAppActivity.c = paramMiniAppInfo;
     }
   }
   
-  public abstract boolean a();
-  
   public abstract void b();
   
-  public void c()
+  public abstract boolean c();
+  
+  public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.IApp
  * JD-Core Version:    0.7.0.1
  */

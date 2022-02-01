@@ -14,17 +14,17 @@ class RIJTipMessageManager$1
   
   public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    RIJTipMessageManager.a(this.a).a().runOnUiThread(new RIJTipMessageManager.1.2(this));
+    RIJTipMessageManager.a(this.a).b().runOnUiThread(new RIJTipMessageManager.1.2(this));
   }
   
   public void b(MessageRecord paramMessageRecord)
   {
-    RIJTipMessageManager.a(this.a).a().runOnUiThread(new RIJTipMessageManager.1.1(this));
+    RIJTipMessageManager.a(this.a).b().runOnUiThread(new RIJTipMessageManager.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.RIJTipMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

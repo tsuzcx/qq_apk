@@ -47,7 +47,7 @@ public class NinePatchUtil
       if (paramNinePatchParams == null) {
         return null;
       }
-      paramNinePatchParams = a(paramBitmap, paramNinePatchParams);
+      paramNinePatchParams = b(paramBitmap, paramNinePatchParams);
       if ((paramNinePatchParams != null) && (NinePatch.isNinePatchChunk(paramNinePatchParams))) {
         return new NinePatch(paramBitmap, paramNinePatchParams, null);
       }
@@ -55,7 +55,7 @@ public class NinePatchUtil
     return null;
   }
   
-  private static byte[] a(Bitmap paramBitmap, NinePatchUtil.NinePatchParams paramNinePatchParams)
+  private static byte[] b(Bitmap paramBitmap, NinePatchUtil.NinePatchParams paramNinePatchParams)
   {
     if ((paramBitmap != null) && (paramNinePatchParams != null))
     {
@@ -95,7 +95,7 @@ public class NinePatchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.util.NinePatchUtil
  * JD-Core Version:    0.7.0.1
  */

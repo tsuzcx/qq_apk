@@ -43,7 +43,7 @@ public class VipComicHelper
   
   public static String a()
   {
-    String str = AppHelper.a().getAccount();
+    String str = AppHelper.b().getAccount();
     Object localObject = AppHelper.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ComicGlobalConfig_");
@@ -66,8 +66,8 @@ public class VipComicHelper
       if (paramString == null) {
         return null;
       }
-      if ((paramMobileQQ.peekAppRuntime().getRunningModuleSize() > 0) && (VipComicDataHelper.a.get() != 2)) {
-        VipComicDataHelper.a.set(3);
+      if ((paramMobileQQ.peekAppRuntime().getRunningModuleSize() > 0) && (VipComicDataHelper.n.get() != 2)) {
+        VipComicDataHelper.n.set(3);
       }
     }
     try
@@ -191,7 +191,7 @@ public class VipComicHelper
       QLog.w("WebBundle.Comic", 2, "init webbundle failed because jsApi forbid.");
       return;
     }
-    Object localObject = (QQComicConfBean)QConfigManager.a().a(534);
+    Object localObject = (QQComicConfBean)QConfigManager.b().b(534);
     if ((localObject != null) && (((QQComicConfBean)localObject).a.a()))
     {
       if (WebBundleManager.getInstance("comic").isInit()) {
@@ -204,7 +204,7 @@ public class VipComicHelper
         return;
       }
       paramContext = new WebBundleRuntime(paramContext);
-      localObject = new WebBundleConfig().setCarrierActivityClass(QQBrowserActivity.class).setPreloadUrl(((QQComicConfBean)localObject).a.a).setLogListener(new VipComicHelper.4()).setOptionListener(new VipComicHelper.3(localSharedPreferences));
+      localObject = new WebBundleConfig().setCarrierActivityClass(QQBrowserActivity.class).setPreloadUrl(((QQComicConfBean)localObject).a.b).setLogListener(new VipComicHelper.4()).setOptionListener(new VipComicHelper.3(localSharedPreferences));
       WebBundleManager.getInstance("comic").init(paramContext, (WebBundleConfig)localObject);
       WebBundleManager.getInstance("comic").triggerPreload(1500L);
       return;
@@ -238,7 +238,7 @@ public class VipComicHelper
   
   public static void a(String paramString)
   {
-    Object localObject = AppHelper.a().getAccount();
+    Object localObject = AppHelper.b().getAccount();
     Application localApplication = AppHelper.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ComicGlobalConfig_");
@@ -263,7 +263,7 @@ public class VipComicHelper
       try
       {
         QLog.i("ComicHelper", 4, "MagnifierSDK is enable, current process is QQComic");
-        ReporterMachine.a();
+        ReporterMachine.b();
       }
       catch (Exception paramAppRuntime)
       {
@@ -272,7 +272,7 @@ public class VipComicHelper
         localStringBuilder.append(paramAppRuntime);
         QLog.e("ComicHelper", 4, localStringBuilder.toString());
       }
-      UnifiedMonitor.a().b();
+      UnifiedMonitor.a().c();
       a = true;
     }
   }
@@ -318,7 +318,7 @@ public class VipComicHelper
   
   public static void b(String paramString)
   {
-    Object localObject1 = AppHelper.a().getAccount();
+    Object localObject1 = AppHelper.b().getAccount();
     Object localObject2 = AppHelper.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ComicGlobalConfig_");
@@ -350,7 +350,7 @@ public class VipComicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicHelper
  * JD-Core Version:    0.7.0.1
  */

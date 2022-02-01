@@ -7,12 +7,12 @@ class ArkPubicEventWrapImpl$1$1
   
   public void run()
   {
-    ArkPubicEventWrapImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletUtilsImplArkPubicEventWrapImpl$1.a, this.jdField_a_of_type_JavaLangString, this.b);
+    ArkPubicEventWrapImpl.access$100(this.c.a, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.utils.impl.ArkPubicEventWrapImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

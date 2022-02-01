@@ -15,19 +15,19 @@ class WordChainHbFragment$3
     if (paramBoolean)
     {
       WordChainHbFragment.a(this.a, (ISoftKeyboardObserverTemp)QRoute.api(ISoftKeyboardObserverTemp.class));
-      WordChainHbFragment.a(this.a).newSoftKeyboardObserverTempImpl(this.a.a, new WordChainHbFragment.3.1(this));
+      WordChainHbFragment.f(this.a).newSoftKeyboardObserverTempImpl(this.a.a, new WordChainHbFragment.3.1(this));
       WordChainHbFragment.a(this.a, 8);
       return;
     }
     WordChainHbFragment.a(this.a, 0);
-    if (WordChainHbFragment.a(this.a) != null) {
-      WordChainHbFragment.a(this.a).destroy();
+    if (WordChainHbFragment.f(this.a) != null) {
+      WordChainHbFragment.f(this.a).destroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.WordChainHbFragment.3
  * JD-Core Version:    0.7.0.1
  */

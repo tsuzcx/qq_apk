@@ -15,15 +15,15 @@ final class ActionSheetPrivacySelectAdapter$onBindViewHolder$$inlined$let$lambda
   
   public final void onClick(View paramView)
   {
-    ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener localPrivacySelectActionSheetClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;
+    ActionSheetPrivacySelectAdapter.PrivacySelectActionSheetClickListener localPrivacySelectActionSheetClickListener = this.a;
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    localPrivacySelectActionSheetClickListener.a(paramView, (ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)ActionSheetPrivacySelectAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingActionSheetPrivacySelectAdapter).get(this.jdField_a_of_type_Int));
+    localPrivacySelectActionSheetClickListener.a(paramView, (ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean)ActionSheetPrivacySelectAdapter.a(this.b).get(this.d));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ActionSheetPrivacySelectAdapter.onBindViewHolder..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

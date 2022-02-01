@@ -32,10 +32,10 @@ public class WebUiStrategy2
     paramMiniGamePublicAccountWebFragment.rootView.setBackgroundColor(-16777216);
     paramMiniGamePublicAccountWebFragment.titleBar.changeBg(false);
     paramMiniGamePublicAccountWebFragment.navTitle.setTextColor(-1);
-    paramMiniGamePublicAccountWebFragment.titleBar.setRightImage(getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2130850474), null);
+    paramMiniGamePublicAccountWebFragment.titleBar.setRightImage(getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2130852270), null);
     paramMiniGamePublicAccountWebFragment.moreMsgText.setTextColor(-1);
     paramMiniGamePublicAccountWebFragment.moreMsgBtn.setTextColor(Color.parseColor("#7C7B82"));
-    paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2030174211), null);
+    paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2030239754), null);
     paramMiniGamePublicAccountWebFragment.headLayout.setBackgroundColor(-16777216);
     paramMiniGamePublicAccountWebFragment.webView.setBackgroundColor(-16777216);
   }
@@ -46,10 +46,10 @@ public class WebUiStrategy2
     paramMiniGamePublicAccountWebFragment.rootView.setBackgroundColor(-1);
     paramMiniGamePublicAccountWebFragment.titleBar.changeBg(true);
     paramMiniGamePublicAccountWebFragment.navTitle.setTextColor(-16777216);
-    paramMiniGamePublicAccountWebFragment.titleBar.setRightImage(getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2130848560), null);
+    paramMiniGamePublicAccountWebFragment.titleBar.setRightImage(getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2130850223), null);
     paramMiniGamePublicAccountWebFragment.moreMsgText.setTextColor(-16777216);
     paramMiniGamePublicAccountWebFragment.moreMsgBtn.setTextColor(Color.parseColor("#878B99"));
-    paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2030174210), null);
+    paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources(paramMiniGamePublicAccountWebFragment).getDrawable(2030239753), null);
     paramMiniGamePublicAccountWebFragment.headLayout.setBackgroundColor(-1);
     paramMiniGamePublicAccountWebFragment.webView.setBackgroundColor(-1);
   }
@@ -62,7 +62,7 @@ public class WebUiStrategy2
     } else {
       i = -1;
     }
-    if (!SimpleUIUtil.a())
+    if (!SimpleUIUtil.e())
     {
       paramMiniGamePublicAccountWebFragment.getBaseActivity().mSystemBarComp = null;
       paramMiniGamePublicAccountWebFragment.getBaseActivity().setImmersiveStatus(i);
@@ -84,7 +84,7 @@ public class WebUiStrategy2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.strategy.WebUiStrategy2
  * JD-Core Version:    0.7.0.1
  */

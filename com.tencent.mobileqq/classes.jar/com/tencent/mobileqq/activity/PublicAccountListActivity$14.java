@@ -55,7 +55,7 @@ class PublicAccountListActivity$14
     paramView.putExtra("uin", str);
     paramView.putExtra("uintype", paramInt);
     paramView.putExtra("uinname", paramAdapterView.a.name);
-    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131695165));
+    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131892898));
     paramView.putExtra("jump_from", 3);
     this.a.startActivity(paramView);
     ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.a.app, "P_CliOper", "Pb_account_lifeservice", str, "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
@@ -64,7 +64,7 @@ class PublicAccountListActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.14
  * JD-Core Version:    0.7.0.1
  */

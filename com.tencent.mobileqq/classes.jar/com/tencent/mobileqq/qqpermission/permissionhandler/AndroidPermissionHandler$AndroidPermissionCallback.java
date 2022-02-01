@@ -6,28 +6,28 @@ import java.util.List;
 
 public abstract class AndroidPermissionHandler$AndroidPermissionCallback
 {
-  private ArrayMap<String, Boolean> a;
   protected AndroidPermissionHandler a;
+  private ArrayMap<String, Boolean> b;
   
   public AndroidPermissionHandler$AndroidPermissionCallback(AndroidPermissionHandler paramAndroidPermissionHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler = paramAndroidPermissionHandler;
-    this.jdField_a_of_type_AndroidxCollectionArrayMap = new ArrayMap();
+    this.a = paramAndroidPermissionHandler;
+    this.b = new ArrayMap();
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.put(paramString, Boolean.valueOf(paramBoolean));
-  }
-  
-  private boolean a(String paramString)
-  {
-    return ((Boolean)this.jdField_a_of_type_AndroidxCollectionArrayMap.getOrDefault(paramString, Boolean.valueOf(false))).booleanValue();
+    this.b.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.clear();
+    this.b.clear();
+  }
+  
+  private boolean b(String paramString)
+  {
+    return ((Boolean)this.b.getOrDefault(paramString, Boolean.valueOf(false))).booleanValue();
   }
   
   void a()
@@ -60,7 +60,7 @@ public abstract class AndroidPermissionHandler$AndroidPermissionCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.AndroidPermissionHandler.AndroidPermissionCallback
  * JD-Core Version:    0.7.0.1
  */

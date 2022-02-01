@@ -21,7 +21,7 @@ public class TroopFansEntryConfig
     int i = 0;
     while (i < paramArrayOfQConfItem.length)
     {
-      Object localObject = paramArrayOfQConfItem[i].a;
+      Object localObject = paramArrayOfQConfItem[i].b;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
@@ -86,7 +86,7 @@ public class TroopFansEntryConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.TroopFansEntryConfig
  * JD-Core Version:    0.7.0.1
  */

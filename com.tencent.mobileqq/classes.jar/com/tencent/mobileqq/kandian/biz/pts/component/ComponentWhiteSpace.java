@@ -30,7 +30,7 @@ public class ComponentWhiteSpace
   
   public void a(Context paramContext)
   {
-    setBackgroundResource(2131166928);
+    setBackgroundResource(2131167849);
   }
   
   public void b()
@@ -43,7 +43,7 @@ public class ComponentWhiteSpace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentWhiteSpace
  * JD-Core Version:    0.7.0.1
  */

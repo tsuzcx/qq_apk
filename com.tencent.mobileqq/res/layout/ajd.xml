@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/ncb" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/i9m" android:layout_alignParentLeft="true" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="15.5dip" android:layout_toRightOf="@id/ncb">
-        <com.tencent.mobileqq.troop.widget.ExpandableTextView android:id="@id/mzb" android:layout_width="fill_parent" android:layout_height="fill_parent" app:animAlphaStart="1.0" app:animDuration="300" app:maxCollapsedLines="6">
+    <ImageView android:id="@id/o74" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/j2n" android:layout_alignParentLeft="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="15.5dip" android:layout_toRightOf="@id/o74">
+        <com.tencent.mobileqq.troop.widget.ExpandableTextView android:id="@id/n_g" android:layout_width="fill_parent" android:layout_height="fill_parent" app:animAlphaStart="1.0" app:animDuration="300" app:maxCollapsedLines="6">
             <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/bzm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="4.0dip" />
             <TextView android:textSize="14.0dip" android:textColor="@color/skin_blue_item" android:layout_gravity="bottom|center|right" android:id="@id/bzk" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </com.tencent.mobileqq.troop.widget.ExpandableTextView>

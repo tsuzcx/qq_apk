@@ -23,37 +23,37 @@ import java.util.List;
 public class NewPhotoListActivityHandler
   extends Handler
 {
-  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private final WeakReference<PhotoListCustomization<? extends OtherCommonData>> jdField_a_of_type_JavaLangRefWeakReference;
+  ProgressDialog a;
+  private final WeakReference<PhotoListCustomization<? extends OtherCommonData>> b;
   
   public NewPhotoListActivityHandler(PhotoListCustomization<? extends OtherCommonData> paramPhotoListCustomization)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPhotoListCustomization);
+    this.b = new WeakReference(paramPhotoListCustomization);
   }
   
   public void a()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidAppProgressDialog != null)
+      if (this.a != null)
       {
         b();
       }
       else
       {
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(((PhotoListCustomization)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, 2131756189);
-        this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
-        this.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559561);
-        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372646)).setText("");
+        this.a = new ReportProgressDialog(((PhotoListCustomization)this.b.get()).d, 2131953338);
+        this.a.setCancelable(true);
+        this.a.setCanceledOnTouchOutside(false);
+        this.a.show();
+        this.a.setContentView(2131625585);
+        ((TextView)this.a.findViewById(2131440191)).setText("");
         if (QLog.isColorLevel()) {
           QLog.d("QQAlbum", 2, "showProgressDialog");
         }
       }
-      if (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())
+      if (!this.a.isShowing())
       {
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        this.a.show();
         return;
       }
     }
@@ -69,22 +69,22 @@ public class NewPhotoListActivityHandler
     if (QLog.isColorLevel()) {
       QLog.d("QQAlbum", 2, "cancleProgressDailog");
     }
-    ProgressDialog localProgressDialog = this.jdField_a_of_type_AndroidAppProgressDialog;
+    ProgressDialog localProgressDialog = this.a;
     if ((localProgressDialog != null) && (localProgressDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
+      this.a.cancel();
     }
   }
   
   public void handleMessage(Message paramMessage)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject1 = this.b;
     if (localObject1 != null)
     {
       if (((WeakReference)localObject1).get() == null) {
         return;
       }
-      Object localObject2 = (PhotoListCustomization)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localObject1 = ((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList;
+      Object localObject2 = (PhotoListCustomization)this.b.get();
+      localObject1 = ((PhotoListCustomization)localObject2).e.selectedPhotoList;
       int i = paramMessage.what;
       if (i != 0)
       {
@@ -112,8 +112,8 @@ public class NewPhotoListActivityHandler
                 if (i != -1) {
                   paramMessage.set(i, str2);
                 }
-                QQAlbumUtils.a((PhotoListCustomization)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-                QQAlbumUtils.a(((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, str2);
+                QQAlbumUtils.a((PhotoListCustomization)this.b.get());
+                QQAlbumUtils.a(((PhotoListCustomization)localObject2).d, str2);
               }
             }
             else if ((paramMessage.obj instanceof String))
@@ -124,25 +124,25 @@ public class NewPhotoListActivityHandler
                 paramMessage = new ArrayList();
               }
               QLog.d("QQAlbum", 2, new Object[] { "MSG_PHOTO_ENCODE_SUCCEED = ", str1 });
-              if (paramMessage.size() < ((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum)
+              if (paramMessage.size() < ((PhotoListCustomization)localObject2).e.maxSelectNum)
               {
                 paramMessage.add(str1);
-                QQAlbumUtils.a((PhotoListCustomization)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+                QQAlbumUtils.a((PhotoListCustomization)this.b.get());
               }
               else
               {
-                QQToast.a(((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, String.format(((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity.getResources().getString(2131694856), new Object[] { Integer.valueOf(((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum) }), 0).a();
+                QQToast.makeText(((PhotoListCustomization)localObject2).d, String.format(((PhotoListCustomization)localObject2).d.getResources().getString(2131892559), new Object[] { Integer.valueOf(((PhotoListCustomization)localObject2).e.maxSelectNum) }), 0).show();
               }
-              QQAlbumUtils.a(((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, str1);
+              QQAlbumUtils.a(((PhotoListCustomization)localObject2).d, str1);
             }
           }
           else
           {
-            if ((((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity instanceof NewPhotoListActivity)) {
+            if ((((PhotoListCustomization)localObject2).d instanceof NewPhotoListActivity)) {
               b();
             }
             QLog.e("QQAlbum", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
-            QQToast.a(((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, ((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity.getResources().getString(2131694860), 0).a();
+            QQToast.makeText(((PhotoListCustomization)localObject2).d, ((PhotoListCustomization)localObject2).d.getResources().getString(2131892563), 0).show();
           }
         }
         else {
@@ -151,12 +151,12 @@ public class NewPhotoListActivityHandler
       }
       else
       {
-        localObject1 = ((PhotoListCustomization)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a;
+        localObject1 = ((PhotoListCustomization)localObject2).h.t;
         if (localObject1 == null) {
           return;
         }
         localObject2 = new ArrayList();
-        ((List)localObject2).addAll(((PhotoListAdapter)localObject1).a);
+        ((List)localObject2).addAll(((PhotoListAdapter)localObject1).d);
         paramMessage = paramMessage.getData();
         i = paramMessage.getInt("ALBUMLIST_POSITION");
         long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
@@ -171,7 +171,7 @@ public class NewPhotoListActivityHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoListActivityHandler
  * JD-Core Version:    0.7.0.1
  */

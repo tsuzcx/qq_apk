@@ -17,7 +17,7 @@ class SubscriptFeedsActivity$4
       paramView.clearFocus();
       SubscriptFeedsActivity.a(this.a);
       long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
+      if (l - SubscriptFeedsActivity.b(this.a) > 1500L)
       {
         SubscriptFeedsActivity.a(this.a, l);
         UniteSearchActivity.a(this.a, null, 12);
@@ -30,7 +30,7 @@ class SubscriptFeedsActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.4
  * JD-Core Version:    0.7.0.1
  */

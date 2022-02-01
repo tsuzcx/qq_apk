@@ -12,24 +12,24 @@ import java.util.concurrent.Executor;
 public class PreviewCaptureManager
   implements CapturePreparedListener, CaptureTask.OnTaskListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new PreviewCaptureManager.1(this);
-  private ICaptureProxy jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy;
-  private Queue<CaptureTask> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(64);
-  private boolean jdField_a_of_type_Boolean = false;
+  private Queue<CaptureTask> a = new ArrayDeque();
   private Queue<CaptureTask> b = new ArrayDeque();
+  private Executor c = ThreadManagerExecutor.getExecutorService(64);
+  private ICaptureProxy d;
+  private boolean e = false;
+  private Handler f = new PreviewCaptureManager.1(this);
   
   public PreviewCaptureManager(ICaptureProxy paramICaptureProxy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy = paramICaptureProxy;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy.a(this);
+    this.d = paramICaptureProxy;
+    this.d.a(this);
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilQueue.isEmpty()))
+    if ((this.e) && (!this.a.isEmpty()))
     {
-      int j = Math.min(3 - this.b.size(), this.jdField_a_of_type_JavaUtilQueue.size());
+      int j = Math.min(3 - this.b.size(), this.a.size());
       int i = j;
       Object localObject;
       if (QLog.isColorLevel())
@@ -43,7 +43,7 @@ public class PreviewCaptureManager
       while (i > 0)
       {
         j = i - 1;
-        localObject = (CaptureTask)this.jdField_a_of_type_JavaUtilQueue.poll();
+        localObject = (CaptureTask)this.a.poll();
         i = j;
         if (localObject != null)
         {
@@ -60,12 +60,12 @@ public class PreviewCaptureManager
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+    this.f.sendEmptyMessage(1000);
   }
   
   private void d(CaptureTask paramCaptureTask)
   {
-    paramCaptureTask.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy);
+    paramCaptureTask.a(this.d);
     paramCaptureTask.a(this);
   }
   
@@ -73,15 +73,15 @@ public class PreviewCaptureManager
   {
     this.b.add(paramCaptureTask);
     d(paramCaptureTask);
-    paramCaptureTask.executeOnExecutor(this.jdField_a_of_type_JavaUtilConcurrentExecutor, null);
+    paramCaptureTask.executeOnExecutor(this.c, null);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilQueue);
+    this.f.removeCallbacksAndMessages(null);
+    Object localObject = new ArrayList(this.a);
     ((List)localObject).addAll(this.b);
-    this.jdField_a_of_type_JavaUtilQueue.clear();
+    this.a.clear();
     this.b.clear();
     int i = 0;
     while (i < ((List)localObject).size())
@@ -92,7 +92,7 @@ public class PreviewCaptureManager
       }
       i += 1;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy;
+    localObject = this.d;
     if (localObject != null) {
       ((ICaptureProxy)localObject).a();
     }
@@ -100,7 +100,7 @@ public class PreviewCaptureManager
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     c();
   }
   
@@ -114,7 +114,7 @@ public class PreviewCaptureManager
   
   public void c(CaptureTask paramCaptureTask)
   {
-    if (!this.jdField_a_of_type_JavaUtilQueue.contains(paramCaptureTask))
+    if (!this.a.contains(paramCaptureTask))
     {
       if (this.b.contains(paramCaptureTask)) {
         return;
@@ -126,14 +126,14 @@ public class PreviewCaptureManager
         localStringBuilder.append(paramCaptureTask);
         QLog.d("PreviewCaptureManager", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaUtilQueue.add(paramCaptureTask);
+      this.a.add(paramCaptureTask);
       c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.capture.PreviewCaptureManager
  * JD-Core Version:    0.7.0.1
  */

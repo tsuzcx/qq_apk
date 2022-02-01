@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public class HorizontalSelectColorLayout
   extends RelativeLayout
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  HorizontalSelectColorLayout.OnStrokeSelectedListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnStrokeSelectedListener;
-  HorizontalSelectColorLayout.OnUndoViewClickListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener;
-  HorizontalSelectColorLayout.SelectColorAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$SelectColorAdapter;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  ArrayList<HorizontalStroke> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean;
-  boolean b = false;
+  HorizontalListView a;
+  HorizontalSelectColorLayout.SelectColorAdapter b;
+  ImageView c;
+  ArrayList<HorizontalStroke> d = new ArrayList();
+  int e;
+  boolean f;
+  boolean g = false;
+  HorizontalSelectColorLayout.OnStrokeSelectedListener h;
+  HorizontalSelectColorLayout.OnUndoViewClickListener i;
+  private long j = 0L;
   
   public HorizontalSelectColorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,117 +39,117 @@ public class HorizontalSelectColorLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131561684, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131364813));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setStayDisplayOffsetZero(true);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new HorizontalSelectColorLayout.1(this));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemSelectedListener(new HorizontalSelectColorLayout.2(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$SelectColorAdapter = new HorizontalSelectColorLayout.SelectColorAdapter(this, getContext());
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$SelectColorAdapter);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131380163));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new HorizontalSelectColorLayout.3(this));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+    LayoutInflater.from(getContext()).inflate(2131628063, this);
+    this.a = ((HorizontalListView)super.findViewById(2131430938));
+    this.a.setStayDisplayOffsetZero(true);
+    this.a.setOverScrollMode(2);
+    this.a.setOnItemClickListener(new HorizontalSelectColorLayout.1(this));
+    this.a.setOnItemSelectedListener(new HorizontalSelectColorLayout.2(this));
+    this.b = new HorizontalSelectColorLayout.SelectColorAdapter(this, getContext());
+    this.a.setAdapter(this.b);
+    this.c = ((ImageView)super.findViewById(2131449078));
+    this.c.setOnClickListener(new HorizontalSelectColorLayout.3(this));
+    this.f = false;
+    this.c.setEnabled(false);
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long > System.currentTimeMillis()) {
+    if (this.j > System.currentTimeMillis()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$SelectColorAdapter.a(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    HorizontalSelectColorLayout.OnStrokeSelectedListener localOnStrokeSelectedListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnStrokeSelectedListener;
+    this.b.a(paramInt);
+    this.e = paramInt;
+    HorizontalSelectColorLayout.OnStrokeSelectedListener localOnStrokeSelectedListener = this.h;
     if (localOnStrokeSelectedListener != null) {
-      localOnStrokeSelectedListener.a(a());
+      localOnStrokeSelectedListener.a(getCurrentStroke());
     }
   }
   
-  public HorizontalStroke a()
+  public HorizontalStroke getCurrentStroke()
   {
-    return (HorizontalStroke)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    return (HorizontalStroke)this.d.get(this.e);
   }
   
   public void setAnimationEndTime(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.j = paramLong;
   }
   
   public void setEditDialogMode(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public void setOnStrokeSelectedListener(HorizontalSelectColorLayout.OnStrokeSelectedListener paramOnStrokeSelectedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnStrokeSelectedListener = paramOnStrokeSelectedListener;
+    this.h = paramOnStrokeSelectedListener;
   }
   
   public void setOnUndoViewClickListener(HorizontalSelectColorLayout.OnUndoViewClickListener paramOnUndoViewClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener = paramOnUndoViewClickListener;
+    this.i = paramOnUndoViewClickListener;
   }
   
   public void setSelectedStroke(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (!this.d.isEmpty())
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      int k = 0;
+      while (k < this.d.size())
       {
-        HorizontalStroke localHorizontalStroke = (HorizontalStroke)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localHorizontalStroke.jdField_a_of_type_Int == paramInt1) && (localHorizontalStroke.b == paramInt2))
+        HorizontalStroke localHorizontalStroke = (HorizontalStroke)this.d.get(k);
+        if ((localHorizontalStroke.c == paramInt1) && (localHorizontalStroke.d == paramInt2))
         {
-          a(i);
-          if (i <= 5) {
+          a(k);
+          if (k <= 5) {
             break;
           }
-          this.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPosition(i);
+          this.a.smoothScrollToPosition(k);
           return;
         }
-        i += 1;
+        k += 1;
       }
     }
   }
   
   public void setSelectedStrokeWithColor(int paramInt)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (!this.d.isEmpty())
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      int k = 0;
+      while (k < this.d.size())
       {
-        HorizontalStroke localHorizontalStroke = (HorizontalStroke)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localHorizontalStroke.jdField_a_of_type_Int == 0) && (localHorizontalStroke.b == paramInt))
+        HorizontalStroke localHorizontalStroke = (HorizontalStroke)this.d.get(k);
+        if ((localHorizontalStroke.c == 0) && (localHorizontalStroke.d == paramInt))
         {
-          a(i);
+          a(k);
           return;
         }
-        i += 1;
+        k += 1;
       }
     }
   }
   
   public void setStrokeStrategy(StrokeStrategy paramStrokeStrategy, boolean paramBoolean, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    int i;
+    Object localObject = this.c;
+    int k;
     if (paramBoolean) {
-      i = 0;
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((ImageView)localObject).setVisibility(i);
-    localObject = super.findViewById(2131380164);
+    ((ImageView)localObject).setVisibility(k);
+    localObject = super.findViewById(2131449079);
     if (paramBoolean) {
-      i = 0;
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((View)localObject).setVisibility(i);
-    localObject = super.findViewById(2131379013);
-    View localView = super.findViewById(2131363751);
+    ((View)localObject).setVisibility(k);
+    localObject = super.findViewById(2131447733);
+    View localView = super.findViewById(2131429675);
     if (paramInt == 1)
     {
       ((View)localObject).setVisibility(0);
@@ -165,11 +165,11 @@ public class HorizontalSelectColorLayout
     }
     if (paramStrokeStrategy != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramStrokeStrategy.a(this.jdField_a_of_type_JavaUtilArrayList, getContext());
-      paramStrokeStrategy = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout$SelectColorAdapter;
+      this.d.clear();
+      paramStrokeStrategy.a(this.d, getContext());
+      paramStrokeStrategy = this.b;
       if (paramStrokeStrategy != null) {
-        paramStrokeStrategy.a(this.jdField_a_of_type_JavaUtilArrayList);
+        paramStrokeStrategy.a(this.d);
       }
     }
     else
@@ -180,16 +180,16 @@ public class HorizontalSelectColorLayout
   
   public void setUndoViewEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.f != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+      this.f = paramBoolean;
+      this.c.setEnabled(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.colorbar.HorizontalSelectColorLayout
  * JD-Core Version:    0.7.0.1
  */

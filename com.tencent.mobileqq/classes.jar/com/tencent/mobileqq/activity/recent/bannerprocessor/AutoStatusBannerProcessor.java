@@ -25,12 +25,7 @@ import mqq.app.AppRuntime;
 public class AutoStatusBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.D;
-  }
+  public static final int a = BannerTypeCollections.E;
   
   public AutoStatusBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -47,22 +42,17 @@ public class AutoStatusBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "[status][banner] initAutoStatusBanner");
     }
-    paramBanner = new AdvancedTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    paramBanner = new AdvancedTipsBar(this.f);
     paramBanner.b(true);
     paramBanner.setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(CommonConstants.jdField_a_of_type_Int, 0);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
     if ((paramMessage != null) && (paramMessage.obj != null))
     {
-      paramBanner = (TipsBar)paramBanner.a;
+      paramBanner = (TipsBar)paramBanner.c;
       paramBanner.setVisibility(0);
       paramMessage = (AutoStatusItem)paramMessage.obj;
       paramBanner.setCloseListener(new AutoStatusBannerProcessor.1(this, paramMessage));
@@ -71,31 +61,36 @@ public class AutoStatusBannerProcessor
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[status][banner] banner mgr show banner ");
-        ((StringBuilder)localObject).append(paramMessage.b);
+        ((StringBuilder)localObject).append(paramMessage.c);
         QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject).toString());
       }
-      if (!TextUtils.isEmpty(paramMessage.c))
+      if (!TextUtils.isEmpty(paramMessage.d))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getApp().getResources().getDrawable(2130847659);
-        paramBanner.setTipsIcon(URLDrawable.getDrawable(paramMessage.c, (Drawable)localObject, (Drawable)localObject));
+        localObject = this.f.getAppRuntime().getApp().getResources().getDrawable(2130849319);
+        paramBanner.setTipsIcon(URLDrawable.getDrawable(paramMessage.d, (Drawable)localObject, (Drawable)localObject));
       }
-      paramBanner.setTipsText(String.format(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131690255), new Object[] { paramMessage.b }));
-      paramBanner.setButtonText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131690254));
+      paramBanner.setTipsText(String.format(this.f.getString(2131887166), new Object[] { paramMessage.c }));
+      paramBanner.setButtonText(this.f.getString(2131887165));
       paramBanner.b(true);
       paramBanner.setOnClickListener(new AutoStatusBannerProcessor.2(this, paramMessage));
       paramBanner.setOriginalOnClickListener(new AutoStatusBannerProcessor.3(this, paramMessage));
-      ReportHelperKt.a("0X800AF9E", (int)paramMessage.a);
+      ReportHelperKt.a("0X800AF9E", (int)paramMessage.b);
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(CommonConstants.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.AutoStatusBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

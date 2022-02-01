@@ -13,24 +13,24 @@ class WSGetFollowDramaFetcher$1
   
   protected WSGetFollowDramaFetcher.ResponseModel a(WSRequest<stGetFollowedDramasRsp> paramWSRequest, stGetFollowedDramasRsp paramstGetFollowedDramasRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSGetFollowDramaFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSGetFollowDramaFetcher, paramWSRequest, paramstGetFollowedDramasRsp);
+    return WSGetFollowDramaFetcher.a(this.b, paramWSRequest, paramstGetFollowedDramasRsp);
   }
   
   protected void a(WSGetFollowDramaFetcher.ResponseModel paramResponseModel)
   {
-    WSGetFollowDramaFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSGetFollowDramaFetcher, paramResponseModel, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener);
+    WSGetFollowDramaFetcher.a(this.b, paramResponseModel, this.a);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
   
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
-    WSGetFollowDramaFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSGetFollowDramaFetcher, paramWSServiceErrorInfo, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener);
+    WSGetFollowDramaFetcher.a(this.b, paramWSServiceErrorInfo, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSGetFollowDramaFetcher.1
  * JD-Core Version:    0.7.0.1
  */

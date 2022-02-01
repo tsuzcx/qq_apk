@@ -20,12 +20,12 @@ class PhotoListCustomizationAECamera$1
       VSReporter.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
       return;
     }
-    PhotoListCustomizationAECamera.a(this.a).a.b();
+    PhotoListCustomizationAECamera.b(this.a).u.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.PhotoListCustomizationAECamera.1
  * JD-Core Version:    0.7.0.1
  */

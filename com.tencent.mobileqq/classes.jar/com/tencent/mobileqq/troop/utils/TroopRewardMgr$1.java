@@ -9,17 +9,17 @@ class TroopRewardMgr$1
 {
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    paramJSONObject = TroopRewardMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRewardMgr, paramJSONObject);
+    paramJSONObject = TroopRewardMgr.a(this.d, paramJSONObject);
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
       paramBundle.append("payReward rewardId:");
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.a);
       paramBundle.append(",troopUin:");
       paramBundle.append(this.b);
       QLog.d(".troop.troop_reward", 2, paramBundle.toString());
     }
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRewardMgr$OnPayRewardListener;
+    paramBundle = this.c;
     if (paramBundle != null) {
       paramBundle.a(paramJSONObject);
     }
@@ -27,7 +27,7 @@ class TroopRewardMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRewardMgr.1
  * JD-Core Version:    0.7.0.1
  */

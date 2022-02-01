@@ -38,16 +38,16 @@ final class RIJCommentNetworkHelper$createFirstComment$1
       if (localRIJCreateCommentObserver != null)
       {
         CreateCommentResult localCreateCommentResult = new CreateCommentResult();
-        localCreateCommentResult.jdField_a_of_type_Long = this.$commentSeq;
-        localCreateCommentResult.jdField_a_of_type_Boolean = true;
-        localCreateCommentResult.jdField_a_of_type_Int = 0;
-        localCreateCommentResult.jdField_b_of_type_Int = 1;
-        localCreateCommentResult.jdField_a_of_type_JavaLangString = paramString;
-        localCreateCommentResult.jdField_b_of_type_JavaLangString = this.$commentJsonStr;
-        localCreateCommentResult.jdField_c_of_type_JavaLangString = paramFirstCommentCreateRsp.actual_create_content.get();
-        localCreateCommentResult.d = paramFirstCommentCreateRsp.share_url.get();
-        localCreateCommentResult.jdField_c_of_type_Int = this.$feedsType;
-        localCreateCommentResult.jdField_b_of_type_Boolean = this.$isFeeds;
+        localCreateCommentResult.a = this.$commentSeq;
+        localCreateCommentResult.b = true;
+        localCreateCommentResult.c = 0;
+        localCreateCommentResult.d = 1;
+        localCreateCommentResult.e = paramString;
+        localCreateCommentResult.f = this.$commentJsonStr;
+        localCreateCommentResult.g = paramFirstCommentCreateRsp.actual_create_content.get();
+        localCreateCommentResult.h = paramFirstCommentCreateRsp.share_url.get();
+        localCreateCommentResult.i = this.$feedsType;
+        localCreateCommentResult.j = this.$isFeeds;
         localCreateCommentResult.a((Collection)paramFirstCommentCreateRsp.rpt_data.get());
         paramFirstCommentCreateRsp = new StringBuilder();
         paramFirstCommentCreateRsp.append("createFirstComment: result=");
@@ -61,20 +61,20 @@ final class RIJCommentNetworkHelper$createFirstComment$1
       RIJBiuNetworkHelper.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createFirstComment.1.2(this, paramString, paramFirstCommentCreateRsp));
     }
     RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, 0, System.currentTimeMillis() - this.$requestTime);
-    if (((CharSequence)this.$requestData.c()).length() > 0) {
+    if (((CharSequence)this.$requestData.d()).length() > 0) {
       i = 1;
     }
     if (i != 0) {
-      paramFirstCommentCreateRsp = this.$requestData.c();
-    } else {
       paramFirstCommentCreateRsp = this.$requestData.d();
+    } else {
+      paramFirstCommentCreateRsp = this.$requestData.e();
     }
-    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, this.$requestData.b(), paramFirstCommentCreateRsp, "", "", paramString);
+    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, this.$requestData.c(), paramFirstCommentCreateRsp, "", "", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.createFirstComment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class TroopSettingActivity$59
     {
       paramDialogInterface = (IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class);
       TroopSettingActivity localTroopSettingActivity = this.a;
-      paramDialogInterface.startJumpAccountLogin(localTroopSettingActivity, localTroopSettingActivity.a);
+      paramDialogInterface.startJumpAccountLogin(localTroopSettingActivity, localTroopSettingActivity.aW);
       this.a.finish();
       return;
     }
@@ -27,7 +27,7 @@ class TroopSettingActivity$59
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.59
  * JD-Core Version:    0.7.0.1
  */

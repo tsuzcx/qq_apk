@@ -12,7 +12,7 @@ public class QVipGiftProcessor
 {
   public static QVipGiftConfig a()
   {
-    QVipGiftConfig localQVipGiftConfig2 = (QVipGiftConfig)QConfigManager.a().a(667);
+    QVipGiftConfig localQVipGiftConfig2 = (QVipGiftConfig)QConfigManager.b().b(667);
     QVipGiftConfig localQVipGiftConfig1 = localQVipGiftConfig2;
     if (localQVipGiftConfig2 == null) {
       localQVipGiftConfig1 = new QVipGiftConfig();
@@ -24,10 +24,10 @@ public class QVipGiftProcessor
   public QVipGiftConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.QVipGfitProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QVIP.SDK.QVipGfitProcessor", 1, paramArrayOfQConfItem[0].b);
     }
     Object localObject = null;
-    String str = paramArrayOfQConfItem[0].a;
+    String str = paramArrayOfQConfItem[0].b;
     paramArrayOfQConfItem = localObject;
     if (!TextUtils.isEmpty(str)) {
       paramArrayOfQConfItem = (QVipGiftConfig)JSONConverter.a(str, QVipGiftConfig.class);
@@ -41,15 +41,15 @@ public class QVipGiftProcessor
     return new QVipGiftConfig();
   }
   
-  @NonNull
-  public QVipGiftConfig c()
-  {
-    return new QVipGiftConfig();
-  }
-  
   public Class<QVipGiftConfig> clazz()
   {
     return QVipGiftConfig.class;
+  }
+  
+  @NonNull
+  public QVipGiftConfig e()
+  {
+    return new QVipGiftConfig();
   }
   
   public int type()
@@ -59,7 +59,7 @@ public class QVipGiftProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipGiftProcessor
  * JD-Core Version:    0.7.0.1
  */

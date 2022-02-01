@@ -13,16 +13,16 @@ class VideoFeedsUGView$5
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f.equals(this.a.d)))
+    if ((this.this$0.a != null) && (!TextUtils.isEmpty(this.this$0.a.f)) && (this.this$0.a.f.equals(this.a.d)))
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.this$0.b.setVisibility(0);
+      this.this$0.g.setVisibility(8);
+      this.this$0.e.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsUGView.5
  * JD-Core Version:    0.7.0.1
  */

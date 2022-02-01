@@ -26,14 +26,14 @@ import java.util.List;
 class IntimateContentItemMutualMarkView$FriendMaskAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 0;
-  private List<IntimateInfo.MutualMarkInfo> jdField_a_of_type_JavaUtilList;
+  private List<IntimateInfo.MutualMarkInfo> b;
+  private int c = 0;
   
   private IntimateContentItemMutualMarkView$FriendMaskAdapter(IntimateContentItemMutualMarkView paramIntimateContentItemMutualMarkView) {}
   
   public IntimateInfo.MutualMarkInfo a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return null;
     }
@@ -42,19 +42,19 @@ class IntimateContentItemMutualMarkView$FriendMaskAdapter
   
   public void a(List<IntimateInfo.MutualMarkInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_Int == 0)
+    this.b = paramList;
+    if (this.c == 0)
     {
-      this.jdField_a_of_type_Int = ((ViewUtils.a() - ViewUtils.a(40.0F) - 80) / ViewUtils.a(60.0F));
+      this.c = ((ViewUtils.getScreenWidth() - ViewUtils.dip2px(40.0F) - 80) / ViewUtils.dip2px(60.0F));
       if (QLog.isColorLevel())
       {
         paramList = new StringBuilder();
         paramList.append("friend mark max count: ");
-        paramList.append(this.jdField_a_of_type_Int);
+        paramList.append(this.c);
         QLog.d("intimate_relationship", 2, paramList.toString());
       }
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_Int = 5;
+      if (this.c <= 0) {
+        this.c = 5;
       }
     }
     notifyDataSetChanged();
@@ -62,16 +62,16 @@ class IntimateContentItemMutualMarkView$FriendMaskAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
     int i = localList.size();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.c;
     if (i > j) {
       return j;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public long getItemId(int paramInt)
@@ -84,15 +84,15 @@ class IntimateContentItemMutualMarkView$FriendMaskAdapter
   {
     Object localObject = null;
     if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_AndroidContentContext).inflate(2131559270, null);
+      paramView = LayoutInflater.from(this.a.a).inflate(2131625191, null);
     }
-    ImageView localImageView = (ImageView)paramView.findViewById(2131367338);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131433795);
     RelativeLayout localRelativeLayout = (RelativeLayout)paramView;
     IntimateInfo.MutualMarkInfo localMutualMarkInfo = a(paramInt);
     if ((localMutualMarkInfo instanceof IntimateInfo.PrefetchMutualMarkInfo))
     {
       localObject = (IntimateInfo.PrefetchMutualMarkInfo)localMutualMarkInfo;
-      IntimateContentItemMutualMarkView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView, (IntimateInfo.PrefetchMutualMarkInfo)localObject);
+      IntimateContentItemMutualMarkView.a(this.a, (IntimateInfo.PrefetchMutualMarkInfo)localObject);
     }
     else
     {
@@ -100,20 +100,20 @@ class IntimateContentItemMutualMarkView$FriendMaskAdapter
       if ((localMutualMarkInfo != null) && (!TextUtils.isEmpty(localMutualMarkInfo.iconStaticUrl)))
       {
         localObject = new ColorDrawable(0);
-        String str = MutualMarkAlienationHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), localMutualMarkInfo.type, localMutualMarkInfo.level, localMutualMarkInfo.subLevel, localMutualMarkInfo.iconStaticUrl);
-        IntimateContentItemMutualMarkView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView, localImageView, str, (Drawable)localObject, localMutualMarkInfo.type);
+        String str = MutualMarkAlienationHelper.a(this.a.h.n(), this.a.h.k(), localMutualMarkInfo.type, localMutualMarkInfo.level, localMutualMarkInfo.subLevel, localMutualMarkInfo.iconStaticUrl);
+        IntimateContentItemMutualMarkView.a(this.a, localImageView, str, (Drawable)localObject, localMutualMarkInfo.type);
       }
       else
       {
         if (localMutualMarkInfo != null) {
-          i = MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), localMutualMarkInfo.type, localMutualMarkInfo.level);
+          i = MutualMarkConfigHelper.b(this.a.h.n(), this.a.h.k(), localMutualMarkInfo.type, localMutualMarkInfo.level);
         }
         if (i != 0) {
-          localObject = new MutualMarkIconProxyDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_AndroidContentContext, i);
+          localObject = new MutualMarkIconProxyDrawable(this.a.a, i);
         }
         localImageView.setImageDrawable((Drawable)localObject);
       }
-      localRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getResources().getDrawable(2130840518));
+      localRelativeLayout.setBackgroundDrawable(this.a.h.l().getResources().getDrawable(2130841284));
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -121,7 +121,7 @@ class IntimateContentItemMutualMarkView$FriendMaskAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemMutualMarkView.FriendMaskAdapter
  * JD-Core Version:    0.7.0.1
  */

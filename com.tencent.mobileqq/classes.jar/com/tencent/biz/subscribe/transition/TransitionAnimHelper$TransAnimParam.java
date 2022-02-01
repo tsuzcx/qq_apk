@@ -5,20 +5,20 @@ import org.json.JSONObject;
 
 public class TransitionAnimHelper$TransAnimParam
 {
-  int a;
   public String a;
-  int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "image_url";
-  private final String c = "image_width";
-  private final String d = "image_height";
+  int b;
+  int c;
+  private final String d = "image_url";
+  private final String e = "image_width";
+  private final String f = "image_height";
   
   public TransitionAnimHelper$TransAnimParam() {}
   
   public TransitionAnimHelper$TransAnimParam(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public String a()
@@ -26,9 +26,9 @@ public class TransitionAnimHelper$TransAnimParam
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
-      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
+      localJSONObject.put("image_url", this.a);
+      localJSONObject.put("image_width", this.b);
+      localJSONObject.put("image_height", this.c);
     }
     catch (JSONException localJSONException)
     {
@@ -42,9 +42,9 @@ public class TransitionAnimHelper$TransAnimParam
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
-      this.jdField_a_of_type_Int = paramString.getInt("image_width");
-      this.jdField_b_of_type_Int = paramString.getInt("image_height");
+      this.a = paramString.getString("image_url");
+      this.b = paramString.getInt("image_width");
+      this.c = paramString.getInt("image_height");
       return;
     }
     catch (JSONException paramString)

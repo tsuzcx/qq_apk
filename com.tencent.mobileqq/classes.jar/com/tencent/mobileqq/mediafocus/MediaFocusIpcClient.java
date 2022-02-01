@@ -11,13 +11,13 @@ public class MediaFocusIpcClient
   extends QIPCModule
 {
   public static boolean a = false;
-  private String a;
   private boolean b = false;
+  private String c;
   
   private MediaFocusIpcClient()
   {
     super("MediaFocusModuleClient");
-    b();
+    c();
   }
   
   public static MediaFocusIpcClient a()
@@ -25,17 +25,17 @@ public class MediaFocusIpcClient
     return MediaFocusIpcClient.Holder.a();
   }
   
-  public static void a()
+  public static void b()
   {
     MediaFocusIpcClient localMediaFocusIpcClient = a();
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       QIPCClientHelper.getInstance().register(localMediaFocusIpcClient);
-      jdField_a_of_type_Boolean = true;
+      a = true;
     }
   }
   
-  private void b()
+  private void c()
   {
     QIPCClientHelper.getInstance().getClient().connect(new MediaFocusIpcClient.1(this));
     QIPCClientHelper.getInstance().getClient().addListener(new MediaFocusIpcClient.2(this));
@@ -59,7 +59,7 @@ public class MediaFocusIpcClient
       paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
       boolean bool = false;
       if (paramString != null) {
-        bool = MediaFocusManager.a().a(paramString.a(), paramString.b());
+        bool = MediaFocusManager.b().a(paramString.b(), paramString.c());
       }
       ((Bundle)localObject).putBoolean("isItemExist", bool);
       ((Bundle)localObject).putBoolean("isConnected", this.b);
@@ -70,7 +70,7 @@ public class MediaFocusIpcClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusIpcClient
  * JD-Core Version:    0.7.0.1
  */

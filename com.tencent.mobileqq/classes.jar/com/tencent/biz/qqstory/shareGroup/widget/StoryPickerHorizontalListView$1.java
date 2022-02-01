@@ -9,8 +9,8 @@ class StoryPickerHorizontalListView$1
   
   public void onScrollStateChanged(int paramInt)
   {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener != null)) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a);
+    if ((paramInt == 4097) && (this.a.b != null)) {
+      this.a.b.a(this.a.a.d);
     }
   }
 }

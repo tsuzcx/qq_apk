@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseProtocolCoder;
+import com.tencent.mobileqq.guild.api.IQQGuildRouterApi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusItem;
 import com.tencent.mobileqq.onlinestatus.api.IOnLineStatueHelperApi;
@@ -27,12 +28,12 @@ import mqq.app.Constants.Key;
 public class OnlineStatusService
   extends BaseProtocolCoder
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "StatSvc" };
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private static final String[] a = { "StatSvc" };
+  private AppInterface b;
   
   public OnlineStatusService(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.b = paramAppInterface;
   }
   
   private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -58,6 +59,13 @@ public class OnlineStatusService
     }
     localSvcReqSetToken.bEnterVersion = 37;
     localSvcReqSetToken.bPushMsg = 1;
+    long l;
+    if (((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).isShowGuildTab()) {
+      l = 1L;
+    } else {
+      l = 0L;
+    }
+    localSvcReqSetToken.uGroupProSwitch = l;
     paramUniPacket.put("SvcReqSetToken", localSvcReqSetToken);
     paramUniPacket.setServantName("PushService");
     paramUniPacket.setFuncName("SvcReqSetToken");
@@ -68,6 +76,8 @@ public class OnlineStatusService
       paramUniPacket.append(str);
       paramUniPacket.append(",profileid = ");
       paramUniPacket.append(paramToServiceMsg);
+      paramUniPacket.append(" uGroupProSwitch:");
+      paramUniPacket.append(localSvcReqSetToken.uGroupProSwitch);
       QLog.d("OnlineStatusService", 2, paramUniPacket.toString());
     }
     return true;
@@ -89,16 +99,16 @@ public class OnlineStatusService
     localSvcReqRegister.iStatus = localStatus.getValue();
     localSvcReqRegister.bKikPC = 0;
     localSvcReqRegister.bKikWeak = 0;
-    localSvcReqRegister.timeStamp = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getPreferences().getLong(Constants.Key.SvcRegister_timeStamp.toString(), 0L);
+    localSvcReqRegister.timeStamp = this.b.getPreferences().getLong(Constants.Key.SvcRegister_timeStamp.toString(), 0L);
     localSvcReqRegister.iLargeSeq = paramToServiceMsg.extraData.getLong("K_SEQ", 0L);
     localSvcReqRegister.bRegType = 0;
-    byte b;
+    byte b1;
     if (paramToServiceMsg.extraData.getBoolean("isAutoSet", false)) {
-      b = 2;
+      b1 = 2;
     } else {
-      b = 1;
+      b1 = 1;
     }
-    localSvcReqRegister.bIsSetStatus = b;
+    localSvcReqRegister.bIsSetStatus = b1;
     localSvcReqRegister.uExtOnlineStatus = paramToServiceMsg.extraData.getLong("extOnlineStatus", -1L);
     int i = paramToServiceMsg.extraData.getInt("vendor_push_type", 1);
     if (QLog.isColorLevel())
@@ -145,7 +155,7 @@ public class OnlineStatusService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -172,7 +182,7 @@ public class OnlineStatusService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.OnlineStatusService
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ public class RIJCoinInfoModule$ContentCoinCheckRequestHandler
       }
       paramReqBody.meta.type.set(4);
       paramReqBody.content_coin_check_req.setHasFlag(true);
-      paramReqBody.content_coin_check_req.uin.set(RIJQQAppInterfaceUtil.a());
-      paramReqBody.content_coin_check_req.rowkey.set(paramRequest0xed4Params.a);
+      paramReqBody.content_coin_check_req.uin.set(RIJQQAppInterfaceUtil.c());
+      paramReqBody.content_coin_check_req.rowkey.set(paramRequest0xed4Params.b);
     }
   }
   
@@ -49,7 +49,7 @@ public class RIJCoinInfoModule$ContentCoinCheckRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.reward.RIJCoinInfoModule.ContentCoinCheckRequestHandler
  * JD-Core Version:    0.7.0.1
  */

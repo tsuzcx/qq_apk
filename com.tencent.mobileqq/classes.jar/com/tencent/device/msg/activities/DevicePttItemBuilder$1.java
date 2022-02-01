@@ -23,14 +23,14 @@ class DevicePttItemBuilder$1
 {
   DevicePttItemBuilder$1(DevicePttItemBuilder paramDevicePttItemBuilder, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
-    if (this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    this.c.d.getMessageFacade().h(this.a.frienduin, this.a.istroop, this.a.uniseq);
+    if (this.c.f != null)
     {
-      paramView = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+      paramView = MessageRecordFactory.a(this.a);
       ((MessageForPtt)paramView).fileSize = -3L;
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      this.c.d.getMessageFacade().a(paramView, this.c.d.getCurrentAccountUin());
     }
     else
     {
@@ -46,25 +46,25 @@ class DevicePttItemBuilder$1
           paramView.extraflag = 32768;
           paramView.extStr = "device_groupchat";
           paramView.serial();
-          this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
-          this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+          this.c.d.getMessageFacade().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
+          this.c.d();
+          this.b.dismiss();
           return;
         }
-        DeviceMsgChatPie.a(((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength), paramView);
+        DeviceMsgChatPie.a(((SmartDeviceProxyMgr)this.c.d.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(this.c.f.b), this.a.url, this.a.voiceLength), paramView);
       }
       else
       {
-        ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.f, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, Long.parseLong(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), paramView.uniseq, paramView.istroop, (int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime / 1000);
+        ((DeviceMsgHandle)this.c.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.f, this.a.url, Long.parseLong(this.c.f.b), paramView.uniseq, paramView.istroop, (int)this.a.msgRecTime / 1000);
       }
     }
-    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.d();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevicePttItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

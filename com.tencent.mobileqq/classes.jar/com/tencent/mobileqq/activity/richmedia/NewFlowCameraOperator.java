@@ -10,19 +10,19 @@ import com.tencent.mobileqq.camera.utils.CameraUtils;
 public class NewFlowCameraOperator
 {
   public static boolean a = false;
-  private static int jdField_b_of_type_Int;
-  private int jdField_a_of_type_Int = 90;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static int e;
+  private Matrix b = new Matrix();
+  private Matrix c = new Matrix();
+  private int d = 90;
   
   private static int a()
   {
-    int j = jdField_b_of_type_Int;
+    int j = e;
     int i = j;
     if (j == 0)
     {
-      jdField_b_of_type_Int = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131298135);
-      i = jdField_b_of_type_Int;
+      e = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131298815);
+      i = e;
     }
     return i;
   }
@@ -46,25 +46,25 @@ public class NewFlowCameraOperator
     paramInt1 = a(k - j, 0, paramInt1 - i);
     paramInt2 = a((int)paramFloat2 - j, 0, paramInt2 - i);
     RectF localRectF = new RectF(paramInt1, paramInt2, paramInt1 + i, paramInt2 + i);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF);
+    this.b.mapRect(localRectF);
     return new Rect(Math.round(localRectF.left), Math.round(localRectF.top), Math.round(localRectF.right), Math.round(localRectF.bottom));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
-    CameraUtils.a(this.jdField_b_of_type_AndroidGraphicsMatrix, jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, paramInt3, paramInt4, paramInt1, paramInt2);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.invert(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.c = new Matrix();
+    CameraUtils.a(this.c, a, this.d, paramInt3, paramInt4, paramInt1, paramInt2);
+    this.c.invert(this.b);
   }
   
   public void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator
  * JD-Core Version:    0.7.0.1
  */

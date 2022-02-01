@@ -20,9 +20,9 @@ class QQPimGetTipsInfoIPC$GetContactTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putString(QQPimDefineList.l, this.a);
-      localBundle.putString(QQPimDefineList.m, this.b);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.d, localBundle, new QQPimGetTipsInfoIPC.GetContactTipsRunnable.1(this));
+      localBundle.putString(QQPimDefineList.m, this.a);
+      localBundle.putString(QQPimDefineList.n, this.b);
+      QIPCServerHelper.getInstance().callClient(QQPimDefineList.c, QQPimDefineList.d, QQPimDefineList.e, localBundle, new QQPimGetTipsInfoIPC.GetContactTipsRunnable.1(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -33,7 +33,7 @@ class QQPimGetTipsInfoIPC$GetContactTipsRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable
  * JD-Core Version:    0.7.0.1
  */

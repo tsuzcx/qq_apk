@@ -2,9 +2,12 @@ package com.tencent.mobileqq.ecshop.view.hippy;
 
 import android.content.Context;
 import android.view.View;
+import com.tencent.mobileqq.ecshop.view.controller.AdHeaderController;
 import com.tencent.mtt.hippy.annotation.HippyController;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.uimanager.HippyViewController;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -24,19 +27,23 @@ public final class QQShopHeaderViewController
   protected View createViewImpl(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return (View)new QQShopHeaderView(paramContext);
+    paramContext = new QQShopHeaderView(paramContext);
+    new AdHeaderController(paramContext, (Map)new HashMap());
+    return (View)paramContext;
   }
   
   @NotNull
   protected View createViewImpl(@NotNull Context paramContext, @Nullable HippyMap paramHippyMap)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return (View)new QQShopHeaderView(paramContext);
+    paramContext = new QQShopHeaderView(paramContext);
+    new AdHeaderController(paramContext, (Map)new HashMap());
+    return (View)paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.hippy.QQShopHeaderViewController
  * JD-Core Version:    0.7.0.1
  */

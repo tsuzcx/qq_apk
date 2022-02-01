@@ -12,12 +12,12 @@ class TroopRedTouchManager$2
   
   public void run()
   {
-    this.this$0.a = MsgBoxListActivity.getNearbyMsgBoxUnReadNum(this.a, AppConstants.NEARBY_LBS_HELLO_UIN, true);
+    this.this$0.i = MsgBoxListActivity.getNearbyMsgBoxUnReadNum(this.a, AppConstants.NEARBY_LBS_HELLO_UIN, true);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("asyn nearbyMsgBoxUnReadNum=");
-      localStringBuilder.append(this.this$0.a);
+      localStringBuilder.append(this.this$0.i);
       QLog.d("nearby.redpoint", 2, localStringBuilder.toString());
     }
   }

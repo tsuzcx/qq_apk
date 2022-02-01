@@ -18,7 +18,7 @@ class QQStoryCmdHandler$1
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramJobContext = ((StoryConfigManager)SuperManager.a(10)).a();
+    paramJobContext = ((StoryConfigManager)SuperManager.a(10)).e();
     if (!TextUtils.isEmpty(paramJobContext)) {
       this.a.a(paramJobContext);
     }
@@ -27,7 +27,7 @@ class QQStoryCmdHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.1
  * JD-Core Version:    0.7.0.1
  */

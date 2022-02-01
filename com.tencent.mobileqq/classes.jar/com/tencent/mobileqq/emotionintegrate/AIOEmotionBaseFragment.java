@@ -21,44 +21,33 @@ import mqq.app.AppRuntime;
 public abstract class AIOEmotionBaseFragment
   extends PublicBaseFragment
 {
-  protected int a;
-  protected Context a;
   protected View a;
+  protected Context b;
+  protected int c;
   
   public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
-  
-  protected QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  protected abstract void a();
   
   protected abstract void a(int paramInt, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem);
   
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131369202);
-    localTextView.setText(HardCodeUtil.a(2131700245));
+    TextView localTextView = (TextView)paramView.findViewById(2131436180);
+    localTextView.setText(HardCodeUtil.a(2131901576));
     localTextView.setOnClickListener(new AIOEmotionBaseFragment.1(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131369216);
-      paramView.setImageResource(2130837997);
+      paramView = (ImageView)paramView.findViewById(2131436194);
+      paramView.setImageResource(2130838021);
       paramView.setVisibility(0);
-      paramView.setContentDescription(HardCodeUtil.a(2131700244));
+      paramView.setContentDescription(HardCodeUtil.a(2131898287));
       paramView.setOnClickListener(new AIOEmotionBaseFragment.2(this));
     }
   }
   
   protected void a(String paramString)
   {
-    ReportController.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, this.c, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -66,7 +55,18 @@ public abstract class AIOEmotionBaseFragment
     return true;
   }
   
+  protected abstract void b();
+  
   protected abstract void b(View paramView);
+  
+  protected QQAppInterface c()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
   
   public boolean needImmersive()
   {
@@ -77,8 +77,8 @@ public abstract class AIOEmotionBaseFragment
   {
     a("0X800997D");
     paramLayoutInflater = a(paramLayoutInflater, paramViewGroup);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidContentContext = getBaseActivity();
+    this.a = paramLayoutInflater;
+    this.b = getBaseActivity();
     a(paramLayoutInflater);
     b(paramLayoutInflater);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
@@ -101,7 +101,7 @@ public abstract class AIOEmotionBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment
  * JD-Core Version:    0.7.0.1
  */

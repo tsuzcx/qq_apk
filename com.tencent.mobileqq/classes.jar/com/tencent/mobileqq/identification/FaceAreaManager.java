@@ -16,48 +16,27 @@ import mqq.observer.BusinessObserver;
 
 public class FaceAreaManager
 {
-  private static volatile FaceAreaManager jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager;
+  private static volatile FaceAreaManager b;
   protected int a;
-  private String jdField_a_of_type_JavaLangString;
+  private String c;
   
   public static FaceAreaManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager == null) {
-          jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager = new FaceAreaManager();
+        if (b == null) {
+          b = new FaceAreaManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager;
-  }
-  
-  public IFaceAreaStrategy a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 11) && (i != 0))
-    {
-      if (i == 10)
-      {
-        this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131698932);
-        return new UnusableAreaStrategy(this.jdField_a_of_type_JavaLangString);
-      }
-      QLog.d("FaceContext", 1, new Object[] { "unknown usable state : ", Integer.valueOf(i) });
-      return null;
-    }
-    return new UsableAreaStrategy();
+    return b;
   }
   
   protected LoginVerifyObserver a(LoginVerifyObserver paramLoginVerifyObserver)
   {
     return new FaceAreaManager.1(this, paramLoginVerifyObserver);
-  }
-  
-  protected String a()
-  {
-    return DBNetworkUtil.a(false);
   }
   
   public void a(int paramInt, String paramString1, String paramString2, LoginVerifyObserver paramLoginVerifyObserver)
@@ -91,23 +70,23 @@ public class FaceAreaManager
         if (!bool) {
           i = 10;
         }
-        this.jdField_a_of_type_Int = i;
+        this.a = i;
         paramLoginVerifyObserver.ipJudgeSuccess(bool, paramEIPCResult.data.getString("msg"));
         return;
       }
       if (paramEIPCResult.code == -102)
       {
-        this.jdField_a_of_type_Int = 11;
+        this.a = 11;
         i = paramEIPCResult.data.getInt("code");
         paramLoginVerifyObserver.onFailedResponse(paramEIPCResult.data.getString("cmd"), i, paramEIPCResult.data.getString("msg"));
         return;
       }
-      this.jdField_a_of_type_Int = 11;
+      this.a = 11;
       QLog.e("FaceContext", 1, new Object[] { "refreshIpStateOnSubProcess error, unknown code : ", Integer.valueOf(paramEIPCResult.code) });
       paramLoginVerifyObserver.onFailedResponse(null, -1, "unknown code");
       return;
     }
-    this.jdField_a_of_type_Int = 11;
+    this.a = 11;
     QLog.e("FaceContext", 1, "refreshIpStateOnSubProcess error, eipcResult is null or data is null");
     paramLoginVerifyObserver.onFailedResponse(null, -1, "eipcResult is null");
   }
@@ -133,7 +112,7 @@ public class FaceAreaManager
     }
     if (IdentificationConstant.d.contains(paramString1))
     {
-      paramContext = a();
+      paramContext = b();
       paramAppRuntime = null;
       if (IPAddressUtil.isIPv4LiteralAddress(paramContext))
       {
@@ -166,10 +145,31 @@ public class FaceAreaManager
       a(paramInt, paramContext, l1, paramLoginVerifyObserver);
     }
   }
+  
+  protected String b()
+  {
+    return DBNetworkUtil.a(false);
+  }
+  
+  public IFaceAreaStrategy c()
+  {
+    int i = this.a;
+    if ((i != 11) && (i != 0))
+    {
+      if (i == 10)
+      {
+        this.c = HardCodeUtil.a(2131896906);
+        return new UnusableAreaStrategy(this.c);
+      }
+      QLog.d("FaceContext", 1, new Object[] { "unknown usable state : ", Integer.valueOf(i) });
+      return null;
+    }
+    return new UsableAreaStrategy();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceAreaManager
  * JD-Core Version:    0.7.0.1
  */

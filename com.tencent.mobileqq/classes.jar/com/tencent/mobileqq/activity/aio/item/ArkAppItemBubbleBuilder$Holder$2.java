@@ -15,15 +15,15 @@ class ArkAppItemBubbleBuilder$Holder$2
   {
     if ((paramInt == 0) && (paramAppPathInfo.path != null))
     {
-      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new ArkAppItemBubbleBuilder.Holder.2.1(this));
-      paramString = ArkAppCacheMgr.getApplicationDesc(this.jdField_a_of_type_JavaLangString);
+      ArkAppCacheMgr.getAppIcon(this.a, new ArkAppItemBubbleBuilder.Holder.2.1(this));
+      paramString = ArkAppCacheMgr.getApplicationDesc(this.a);
       ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkAppItemBubbleBuilder.Holder.2.2(this, paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder.2
  * JD-Core Version:    0.7.0.1
  */

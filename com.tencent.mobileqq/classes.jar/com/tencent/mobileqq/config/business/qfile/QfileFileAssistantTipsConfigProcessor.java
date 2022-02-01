@@ -35,7 +35,7 @@ public class QfileFileAssistantTipsConfigProcessor
   {
     QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QfileFileAssistantTipsConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QfileFileAssistantTipsConfigBean.class);
+      return (QfileFileAssistantTipsConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QfileFileAssistantTipsConfigBean.class);
     }
     return null;
   }
@@ -48,7 +48,7 @@ public class QfileFileAssistantTipsConfigProcessor
       return;
     }
     QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "QfileFileAssistantTipsConfigProcessor onUpdate");
-    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     if (localBaseQQAppInterface == null)
     {
       QLog.e("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "app is null!!!");
@@ -111,7 +111,7 @@ public class QfileFileAssistantTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -54,7 +54,7 @@ public class DiyPendantHandler
       Object localObject = new DiyAddonPbInfo.AddonReqComm();
       ((DiyAddonPbInfo.AddonReqComm)localObject).platform.set(109L);
       ((DiyAddonPbInfo.AddonReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((DiyAddonPbInfo.AddonReqComm)localObject).mqqver.set("8.7.0");
+      ((DiyAddonPbInfo.AddonReqComm)localObject).mqqver.set("8.8.17");
       DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
       localAddonGetDiyInfoReq.uin.set(paramList);
       paramList = new DiyAddonPbInfo.ReadAddonReq();
@@ -166,7 +166,7 @@ public class DiyPendantHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantHandler
  * JD-Core Version:    0.7.0.1
  */

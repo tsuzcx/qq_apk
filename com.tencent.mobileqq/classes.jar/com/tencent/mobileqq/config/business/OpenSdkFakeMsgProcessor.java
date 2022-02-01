@@ -12,7 +12,7 @@ public class OpenSdkFakeMsgProcessor
 {
   public static boolean a()
   {
-    OpenSdkFakeMsgBean localOpenSdkFakeMsgBean = (OpenSdkFakeMsgBean)QConfigManager.a().a(632);
+    OpenSdkFakeMsgBean localOpenSdkFakeMsgBean = (OpenSdkFakeMsgBean)QConfigManager.b().b(632);
     boolean bool;
     if (localOpenSdkFakeMsgBean != null) {
       bool = localOpenSdkFakeMsgBean.a();
@@ -90,7 +90,7 @@ public class OpenSdkFakeMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkFakeMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

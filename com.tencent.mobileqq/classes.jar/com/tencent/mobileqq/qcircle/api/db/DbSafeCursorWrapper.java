@@ -16,13 +16,13 @@ import com.tencent.mobileqq.qcircle.api.db.util.EncryptUtil;
 public class DbSafeCursorWrapper
   extends CursorWrapper
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private String b;
   
   public DbSafeCursorWrapper(Cursor paramCursor, String paramString)
   {
     super(paramCursor);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     boolean bool;
     if (paramCursor != null) {
       bool = true;
@@ -34,7 +34,7 @@ public class DbSafeCursorWrapper
   
   private void a(Throwable paramThrowable)
   {
-    DbCacheExceptionHandler.a().a(paramThrowable, this.jdField_a_of_type_JavaLangString);
+    DbCacheExceptionHandler.a().a(paramThrowable, this.b);
   }
   
   public void close()
@@ -42,7 +42,7 @@ public class DbSafeCursorWrapper
     try
     {
       super.close();
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
     catch (Throwable localThrowable)
@@ -359,7 +359,7 @@ public class DbSafeCursorWrapper
     {
       a(localThrowable);
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public boolean isFirst()
@@ -583,7 +583,7 @@ public class DbSafeCursorWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbSafeCursorWrapper
  * JD-Core Version:    0.7.0.1
  */

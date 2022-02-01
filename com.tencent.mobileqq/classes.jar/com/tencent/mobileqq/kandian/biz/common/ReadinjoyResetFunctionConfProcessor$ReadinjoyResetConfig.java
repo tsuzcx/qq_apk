@@ -23,7 +23,7 @@ public class ReadinjoyResetFunctionConfProcessor$ReadinjoyResetConfig
           int i = 0;
           while (i < j)
           {
-            TextUtils.isEmpty(paramArrayOfQConfItem[i].a);
+            TextUtils.isEmpty(paramArrayOfQConfItem[i].b);
             i += 1;
           }
         }
@@ -38,7 +38,7 @@ public class ReadinjoyResetFunctionConfProcessor$ReadinjoyResetConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadinjoyResetFunctionConfProcessor.ReadinjoyResetConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -44,7 +44,7 @@ public class ReportExposeConfigProcessor
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("onParsed item: ");
-            ((StringBuilder)localObject2).append(((QConfItem)localObject1).a);
+            ((StringBuilder)localObject2).append(((QConfItem)localObject1).b);
             QLog.d("ReportExposeConfigProcessor", 2, ((StringBuilder)localObject2).toString());
           }
           i += 1;
@@ -58,16 +58,16 @@ public class ReportExposeConfigProcessor
       while (i < j)
       {
         localObject2 = paramArrayOfQConfItem[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((QConfItem)localObject2).a))) {
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((QConfItem)localObject2).b))) {
           try
           {
             localObject1 = new ContactReportUtils.ReportExposeIntervalConfig();
-            localObject2 = new JSONObject(((QConfItem)localObject2).a);
+            localObject2 = new JSONObject(((QConfItem)localObject2).b);
             if (((JSONObject)localObject2).has("enable")) {
-              ((ContactReportUtils.ReportExposeIntervalConfig)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+              ((ContactReportUtils.ReportExposeIntervalConfig)localObject1).a = ((JSONObject)localObject2).getBoolean("enable");
             }
             if (((JSONObject)localObject2).has("interval")) {
-              ((ContactReportUtils.ReportExposeIntervalConfig)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+              ((ContactReportUtils.ReportExposeIntervalConfig)localObject1).b = ((JSONObject)localObject2).getLong("interval");
             }
             return localObject1;
           }
@@ -133,7 +133,7 @@ public class ReportExposeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.ReportExposeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

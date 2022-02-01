@@ -10,51 +10,51 @@ import mqq.util.WeakReference;
 public abstract class AbsWSDramaHolder
   extends BaseViewHolder<WSDramaItemData>
 {
-  public IWSItemView<WSDramaItemData> a;
-  public WSDramaItemData a;
   public WeakReference<WSDramaPageContract.View> a;
+  public IWSItemView<WSDramaItemData> b;
+  public WSDramaItemData c;
   
   public AbsWSDramaHolder(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSDramaPageContract.View paramView)
   {
     super(paramViewGroup, paramInt1);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView = a(paramInt2);
+    this.a = new WeakReference(paramView);
+    this.b = a(paramInt2);
   }
   
   public abstract IWSItemView<WSDramaItemData> a(int paramInt);
   
   public WSDramaPageContract.View a()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    WeakReference localWeakReference = this.a;
     if (localWeakReference != null) {
       return (WSDramaPageContract.View)localWeakReference.get();
     }
     return null;
   }
   
-  public void a(int paramInt)
-  {
-    IWSItemView localIWSItemView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView;
-    if (localIWSItemView != null) {
-      localIWSItemView.b(paramInt);
-    }
-  }
-  
   public void a(WSDramaItemData paramWSDramaItemData)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaItemData = paramWSDramaItemData;
-    IWSItemView localIWSItemView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView;
+    this.c = paramWSDramaItemData;
+    IWSItemView localIWSItemView = this.b;
     if (localIWSItemView != null)
     {
       localIWSItemView.a(paramWSDramaItemData);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.a(getLayoutPosition() - 1);
+      this.b.a(getLayoutPosition() - 1);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    IWSItemView localIWSItemView = this.b;
+    if (localIWSItemView != null) {
+      localIWSItemView.b(paramInt);
     }
   }
   
   public void onViewDetachedFromWindow()
   {
     super.onViewDetachedFromWindow();
-    IWSItemView localIWSItemView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView;
+    IWSItemView localIWSItemView = this.b;
     if (localIWSItemView != null) {
       localIWSItemView.c();
     }
@@ -62,7 +62,7 @@ public abstract class AbsWSDramaHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.AbsWSDramaHolder
  * JD-Core Version:    0.7.0.1
  */

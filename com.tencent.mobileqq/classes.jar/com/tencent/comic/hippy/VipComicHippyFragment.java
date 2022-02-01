@@ -70,10 +70,10 @@ public class VipComicHippyFragment
       return false;
     }
     ComicCancelRedPointPopIntercetorParams localComicCancelRedPointPopIntercetorParams = new ComicCancelRedPointPopIntercetorParams();
-    localComicCancelRedPointPopIntercetorParams.jdField_a_of_type_Boolean = this.hasRedDot;
-    localComicCancelRedPointPopIntercetorParams.jdField_a_of_type_Long = VipComicHippyBounceRateHelper.a(localObject.hashCode(), 12);
-    localComicCancelRedPointPopIntercetorParams.jdField_b_of_type_Long = VipComicHippyBounceRateHelper.a(localObject.hashCode(), 13);
-    localComicCancelRedPointPopIntercetorParams.jdField_c_of_type_Long = this.mLastTouchUpTime;
+    localComicCancelRedPointPopIntercetorParams.a = this.hasRedDot;
+    localComicCancelRedPointPopIntercetorParams.b = VipComicHippyBounceRateHelper.a(localObject.hashCode(), 12);
+    localComicCancelRedPointPopIntercetorParams.c = VipComicHippyBounceRateHelper.a(localObject.hashCode(), 13);
+    localComicCancelRedPointPopIntercetorParams.d = this.mLastTouchUpTime;
     if (ComicHippyBackEventInterceptorProxy.INSTANCE.canShowCancelRedPoinDialog(localComicCancelRedPointPopIntercetorParams))
     {
       showBackPopDialog();
@@ -118,7 +118,7 @@ public class VipComicHippyFragment
     while (i < VipComicHippyBounceRateHelper.a.size())
     {
       int k = ((Integer)VipComicHippyBounceRateHelper.a.get(i)).intValue();
-      if (VipComicHippyBounceRateHelper.a(localObject1.hashCode(), k))
+      if (VipComicHippyBounceRateHelper.b(localObject1.hashCode(), k))
       {
         l1 = VipComicHippyBounceRateHelper.a(localObject1.hashCode(), k);
         i = k;
@@ -155,25 +155,25 @@ public class VipComicHippyFragment
       QLog.d("VipComicHippyFragment", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = new ComicTechReportParams();
-    ((ComicTechReportParams)localObject1).jdField_a_of_type_JavaLangString = "qqcomic_web";
-    ((ComicTechReportParams)localObject1).jdField_b_of_type_JavaLangString = "page_break";
+    ((ComicTechReportParams)localObject1).a = "qqcomic_web";
+    ((ComicTechReportParams)localObject1).b = "page_break";
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(localHippyQQPreloadEngine.getModuleName());
     ((StringBuilder)localObject2).append("_");
     ((StringBuilder)localObject2).append(localHippyQQPreloadEngine.getModuleVersion());
-    ((ComicTechReportParams)localObject1).jdField_c_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-    ((ComicTechReportParams)localObject1).jdField_a_of_type_Long = 2L;
+    ((ComicTechReportParams)localObject1).c = ((StringBuilder)localObject2).toString();
+    ((ComicTechReportParams)localObject1).k = 2L;
     long l2;
     if (this.hasRedDot) {
       l2 = 1L;
     } else {
       l2 = 0L;
     }
-    ((ComicTechReportParams)localObject1).jdField_b_of_type_Long = l2;
-    ((ComicTechReportParams)localObject1).jdField_c_of_type_Long = i;
-    ((ComicTechReportParams)localObject1).d = (l1 - l3);
-    ((ComicTechReportParams)localObject1).e = (System.currentTimeMillis() - l3);
-    ((ComicTechReportParams)localObject1).jdField_b_of_type_Int = HttpUtil.getNetWorkTypeContain5G();
+    ((ComicTechReportParams)localObject1).l = l2;
+    ((ComicTechReportParams)localObject1).m = i;
+    ((ComicTechReportParams)localObject1).n = (l1 - l3);
+    ((ComicTechReportParams)localObject1).o = (System.currentTimeMillis() - l3);
+    ((ComicTechReportParams)localObject1).t = HttpUtil.getNetWorkTypeContain5G();
     ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportTechReport2021(((ComicTechReportParams)localObject1).toString());
   }
   
@@ -257,7 +257,7 @@ public class VipComicHippyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.hippy.VipComicHippyFragment
  * JD-Core Version:    0.7.0.1
  */

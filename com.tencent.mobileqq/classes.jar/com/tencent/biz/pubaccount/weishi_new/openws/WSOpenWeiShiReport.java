@@ -47,7 +47,7 @@ public class WSOpenWeiShiReport
       localObject = new HashMap();
     }
     ((Map)localObject).put("position", "auth_float");
-    a().setSopName(paramWSReportParams.a()).addParams((Map)localObject).addExtParams(paramWSReportParams.b()).build("gzh_exposure").report();
+    a().setSopName(paramWSReportParams.c()).addParams((Map)localObject).addExtParams(paramWSReportParams.b()).build("gzh_exposure").report();
   }
   
   public static void b(@Nullable WSReportParams paramWSReportParams)
@@ -62,7 +62,7 @@ public class WSOpenWeiShiReport
     }
     ((Map)localObject).put("position", "auth_weishi");
     ((Map)localObject).put("action_id", "1000003");
-    a().setSopName(paramWSReportParams.a()).addParams((Map)localObject).addExtParams(paramWSReportParams.b()).build("gzh_click").report();
+    a().setSopName(paramWSReportParams.c()).addParams((Map)localObject).addExtParams(paramWSReportParams.b()).build("gzh_click").report();
   }
   
   public static void c(@Nullable WSReportParams paramWSReportParams)
@@ -77,12 +77,12 @@ public class WSOpenWeiShiReport
     }
     ((Map)localObject).put("position", "auth_close");
     ((Map)localObject).put("action_id", "1000001");
-    a().setSopName(paramWSReportParams.a()).addParams((Map)localObject).addExtParams(paramWSReportParams.b()).build("gzh_click").report();
+    a().setSopName(paramWSReportParams.c()).addParams((Map)localObject).addExtParams(paramWSReportParams.b()).build("gzh_click").report();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.openws.WSOpenWeiShiReport
  * JD-Core Version:    0.7.0.1
  */

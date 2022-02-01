@@ -14,6 +14,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.id;
 import androidx.appcompat.R.styleable;
 import androidx.core.view.ViewCompat;
 
@@ -45,7 +46,7 @@ public class ActionBarContainer
     this.mBackground = paramContext.getDrawable(R.styleable.ActionBar_background);
     this.mStackedBackground = paramContext.getDrawable(R.styleable.ActionBar_backgroundStacked);
     this.mHeight = paramContext.getDimensionPixelSize(R.styleable.ActionBar_height, -1);
-    if (getId() == 2131377790)
+    if (getId() == R.id.split_action_bar)
     {
       this.mIsSplit = true;
       this.mSplitBackground = paramContext.getDrawable(R.styleable.ActionBar_backgroundSplit);
@@ -127,8 +128,8 @@ public class ActionBarContainer
   public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.mActionBarView = findViewById(2131361954);
-    this.mContextView = findViewById(2131361966);
+    this.mActionBarView = findViewById(R.id.action_bar);
+    this.mContextView = findViewById(R.id.action_context_bar);
   }
   
   public boolean onHoverEvent(MotionEvent paramMotionEvent)

@@ -9,14 +9,14 @@ final class AllInOneFactory$17
 {
   public AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    paramQQAppInterface = new AllInOne(paramSessionInfo.a, 115);
-    paramQQAppInterface.nickname = paramSessionInfo.d;
+    paramQQAppInterface = new AllInOne(paramSessionInfo.b, 115);
+    paramQQAppInterface.nickname = paramSessionInfo.e;
     return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AllInOneFactory.17
  * JD-Core Version:    0.7.0.1
  */

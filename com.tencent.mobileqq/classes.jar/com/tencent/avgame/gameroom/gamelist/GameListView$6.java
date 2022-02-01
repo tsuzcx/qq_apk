@@ -10,8 +10,8 @@ class GameListView$6
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramInt == 1) && (!this.a.c)) {
-      this.a.c = true;
+    if ((paramInt == 1) && (!this.a.h)) {
+      this.a.h = true;
     }
   }
 }

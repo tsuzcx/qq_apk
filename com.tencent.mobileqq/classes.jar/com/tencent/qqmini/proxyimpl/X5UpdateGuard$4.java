@@ -7,20 +7,20 @@ class X5UpdateGuard$4
   
   public void run()
   {
-    if (this.a == X5UpdateGuard.a()) {
+    if (this.a == X5UpdateGuard.b()) {
       return;
     }
-    if ((this.a != X5UpdateGuard.b()) && (this.a != X5UpdateGuard.c()))
+    if ((this.a != X5UpdateGuard.c()) && (this.a != X5UpdateGuard.d()))
     {
-      X5UpdateGuard.b(this.this$0);
+      X5UpdateGuard.c(this.this$0);
       return;
     }
-    X5UpdateGuard.a(this.this$0);
+    X5UpdateGuard.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.4
  * JD-Core Version:    0.7.0.1
  */

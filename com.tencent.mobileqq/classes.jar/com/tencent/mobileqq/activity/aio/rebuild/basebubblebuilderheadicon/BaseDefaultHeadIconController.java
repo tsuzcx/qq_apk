@@ -110,22 +110,23 @@ public abstract class BaseDefaultHeadIconController
   
   protected void c()
   {
-    a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    a(this.h);
   }
   
   protected void d()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSendFromLocal()) || (!a(i))) && (i != 10008) && (i != 10009))
+    int i = this.a.istroop;
+    if (((!this.a.isSendFromLocal()) && (a(i))) || (i == 10008))
     {
-      a(null);
-      return;
+      if (!this.b.getCurrentAccountUin().equals(this.a.senderuin))
+      {
+        String str1 = this.a.frienduin;
+        String str2 = this.a.senderuin;
+        ThreadManager.executeOnSubThread(new BaseDefaultHeadIconController.ProcessMemberNickTask(this.b, this.c, this.e, str1, str2, i, this.g));
+      }
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin))
-    {
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin;
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
-      ThreadManager.executeOnSubThread(new BaseDefaultHeadIconController.ProcessMemberNickTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, str1, str2, i, this.jdField_a_of_type_AndroidViewView$OnLongClickListener));
+    else {
+      a(null);
     }
   }
   
@@ -136,30 +137,30 @@ public abstract class BaseDefaultHeadIconController
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("AppSetting.enableTalkBack = ");
-      ((StringBuilder)localObject).append(AppSetting.d);
+      ((StringBuilder)localObject).append(AppSetting.e);
       QLog.d("BaseBubbleBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 1) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000))
+      if ((this.a.istroop != 1) && (this.a.istroop != 3000))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())
+        if (this.a.isSend())
         {
-          localObject = HardCodeUtil.a(2131701166);
+          localObject = HardCodeUtil.a(2131899182);
         }
         else
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-          ((StringBuilder)localObject).append(HardCodeUtil.a(2131701169));
+          ((StringBuilder)localObject).append(this.d.e);
+          ((StringBuilder)localObject).append(HardCodeUtil.a(2131899185));
           localObject = ((StringBuilder)localObject).toString();
         }
       }
       else {
         localObject = "";
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msgtype == -3006) {
-        localObject = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697679), new Object[] { ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext()) });
+      if (this.a.msgtype == -3006) {
+        localObject = String.format(this.c.getResources().getString(2131895452), new Object[] { ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.b, BaseApplicationImpl.getContext()) });
       }
       a((CharSequence)localObject);
     }
@@ -167,17 +168,17 @@ public abstract class BaseDefaultHeadIconController
   
   protected void f()
   {
-    new TouchEventHandler().a(this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, this.jdField_a_of_type_AndroidContentContext);
+    new TouchEventHandler().a(this.e, this.c);
   }
   
   protected void g()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.BaseDefaultHeadIconController
  * JD-Core Version:    0.7.0.1
  */

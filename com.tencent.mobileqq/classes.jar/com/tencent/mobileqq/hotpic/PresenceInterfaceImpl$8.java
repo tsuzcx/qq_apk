@@ -13,15 +13,15 @@ class PresenceInterfaceImpl$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PresenceInterfaceImpl.jdField_a_of_type_Boolean = false;
+    PresenceInterfaceImpl.a = false;
     PresenceInterfaceImpl.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    this.a.c.b(-11);
     QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.8
  * JD-Core Version:    0.7.0.1
  */

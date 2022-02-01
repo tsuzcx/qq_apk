@@ -32,6 +32,7 @@ import com.tencent.mtt.hippy.utils.ContextHolder;
 import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.views.common.CommonBackgroundDrawable;
 import com.tencent.mtt.hippy.views.common.CommonBorder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
 
 public class HippyTextInput
@@ -39,19 +40,18 @@ public class HippyTextInput
   implements View.OnFocusChangeListener, TextView.OnEditorActionListener, HippyViewBase, CommonBorder
 {
   public boolean bUserSetValue = false;
-  ViewTreeObserver.OnGlobalLayoutListener globaListener = new HippyTextInput.1(this);
-  private int mDefaultGravityHorizontal;
-  private int mDefaultGravityVertical;
+  final ViewTreeObserver.OnGlobalLayoutListener globaListener = new HippyTextInput.1(this);
+  private final int mDefaultGravityHorizontal;
+  private final int mDefaultGravityVertical;
   boolean mHasAddWatcher = false;
   boolean mHasSetOnSelectListener = false;
-  HippyEngineContext mHippyContext;
+  final HippyEngineContext mHippyContext;
   private boolean mIsKeyBoardShow = false;
-  private Rect mLastRect = new Rect();
   private int mLastRootViewVisibleHeight = -1;
   private String mPreviousText;
   private CommonBackgroundDrawable mReactBackgroundDrawable;
   private HippyTextInput.ReactContentSizeWatcher mReactContentSizeWatcher = null;
-  private Rect mRect = new Rect();
+  private final Rect mRect = new Rect();
   private boolean mTextInputed = false;
   TextWatcher mTextWatcher = null;
   private String mValidator = "";
@@ -238,10 +238,11 @@ public class HippyTextInput
   {
     if (((paramInt & 0xFF) > 0) || (paramInt == 0))
     {
-      paramTextView = new HippyMap();
-      paramTextView.pushString("text", getText().toString());
-      ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onEndEditing", paramTextView);
+      HippyMap localHippyMap = new HippyMap();
+      localHippyMap.pushString("text", getText().toString());
+      ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onEndEditing", localHippyMap);
     }
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
     return false;
   }
   
@@ -447,7 +448,7 @@ public class HippyTextInput
   public void setOnContentSizeChange(boolean paramBoolean)
   {
     HippyTextInput.ReactContentSizeWatcher localReactContentSizeWatcher;
-    if (paramBoolean == true) {
+    if (paramBoolean) {
       localReactContentSizeWatcher = new HippyTextInput.ReactContentSizeWatcher(this, this, this.mHippyContext);
     } else {
       localReactContentSizeWatcher = null;
@@ -470,8 +471,6 @@ public class HippyTextInput
     this.mHasSetOnSelectListener = paramBoolean;
   }
   
-  public void setReturnKeyType(String paramString) {}
-  
   public void setValidator(String paramString)
   {
     this.mValidator = paramString;
@@ -493,7 +492,7 @@ public class HippyTextInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInput
  * JD-Core Version:    0.7.0.1
  */

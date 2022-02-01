@@ -13,7 +13,7 @@ class SubscribePersonalDetailFragment$3
   {
     if ((paramVarArgs != null) && (paramVarArgs.length == 4))
     {
-      VSDispatchObserver.onVSRspCallBack localonVSRspCallBack = this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack;
+      VSDispatchObserver.onVSRspCallBack localonVSRspCallBack = this.a;
       if (localonVSRspCallBack != null) {
         localonVSRspCallBack.onReceive(null, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
       }

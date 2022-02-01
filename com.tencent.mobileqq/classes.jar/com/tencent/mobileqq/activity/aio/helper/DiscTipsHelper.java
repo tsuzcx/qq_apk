@@ -15,8 +15,8 @@ import java.util.Observer;
 public class DiscTipsHelper
   extends TipsHelper
 {
-  GamePartyTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar;
-  private Observer jdField_a_of_type_JavaUtilObserver = new DiscTipsHelper.1(this);
+  GamePartyTipsBar a;
+  private Observer b = new DiscTipsHelper.1(this);
   
   public DiscTipsHelper(AIOContext paramAIOContext)
   {
@@ -26,12 +26,12 @@ public class DiscTipsHelper
   protected void a()
   {
     super.a();
-    DiscActiveTipsBar localDiscActiveTipsBar = new DiscActiveTipsBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    DiscFreqPttGrayTips localDiscFreqPttGrayTips = new DiscFreqPttGrayTips(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar = new GamePartyTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(localDiscActiveTipsBar);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(localDiscFreqPttGrayTips);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar);
+    DiscActiveTipsBar localDiscActiveTipsBar = new DiscActiveTipsBar(this.c);
+    DiscFreqPttGrayTips localDiscFreqPttGrayTips = new DiscFreqPttGrayTips(this.c);
+    this.a = new GamePartyTipsBar(this.d, this.f, this.e, this.g);
+    this.f.b(localDiscActiveTipsBar);
+    this.f.b(localDiscFreqPttGrayTips);
+    this.f.b(this.a);
   }
   
   @NonNull
@@ -53,15 +53,15 @@ public class DiscTipsHelper
       if (paramInt != 15) {
         return;
       }
-      ((GamePartyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      ((GamePartyManager)this.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().deleteObserver(this.b);
       return;
     }
-    ((GamePartyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    ((GamePartyManager)this.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().addObserver(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.DiscTipsHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ class VipProfileCardBaseActivity$2$1
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    boolean bool = this.d.a.a((int)this.a.lCurrentStyleId, (int)this.a.lCurrentBgId, this.a.backgroundUrl, (int)this.a.backgroundColor, this.a.templateRet);
+    HashMap localHashMap = this.b;
     if (bool) {
       localObject = "0";
     } else {
@@ -24,19 +24,19 @@ class VipProfileCardBaseActivity$2$1
     localHashMap.put("param_FailCode", localObject);
     if (bool == true)
     {
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.app.getApp()).collectPerformance(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.obtainMessage(5);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.sendMessage((Message)localObject);
+      StatisticCollector.getInstance(this.d.a.app.getApp()).collectPerformance(this.c, "profileCardSet", true, 0L, 0L, this.b, "", false);
+      localObject = this.d.a.y.obtainMessage(5);
+      this.d.a.y.sendMessage((Message)localObject);
       return;
     }
-    StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.app.getApp()).collectPerformance(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.obtainMessage(6);
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.sendMessage((Message)localObject);
+    StatisticCollector.getInstance(this.d.a.app.getApp()).collectPerformance(this.c, "profileCardSet", false, 0L, 0L, this.b, "", false);
+    Object localObject = this.d.a.y.obtainMessage(6);
+    this.d.a.y.sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class MessageLoginAction
   {
     paramAppRuntime.stopPCActivePolling("deleteAccount");
     ((AccountManager)paramAppRuntime.getManager(0)).deleteAccount(paramString, paramString, null);
-    HistoryChatMsgSearchKeyUtil.a(paramString);
+    HistoryChatMsgSearchKeyUtil.b(paramString);
   }
   
   private void b(String paramString)
@@ -61,7 +61,7 @@ public class MessageLoginAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.MessageLoginAction
  * JD-Core Version:    0.7.0.1
  */

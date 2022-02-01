@@ -13,6 +13,7 @@ import android.provider.Settings.Secure;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
@@ -103,7 +104,7 @@ public class MobileInfoUtil
       localStringBuilder.append(Build.MANUFACTURER);
       localStringBuilder.append("&");
       localStringBuilder.append("wifi=");
-      localStringBuilder.append(APNUtil.e(localBaseApplication));
+      localStringBuilder.append(APNUtil.h(localBaseApplication));
       str1 = localStringBuilder.toString();
       return str1;
       return null;
@@ -226,7 +227,7 @@ public class MobileInfoUtil
       localObject2 = ((LocationManager)localObject1).getBestProvider((Criteria)localObject2, true);
       if (localObject2 != null)
       {
-        localObject1 = ((LocationManager)localObject1).getLastKnownLocation((String)localObject2);
+        localObject1 = LocationMonitor.getLastKnownLocation((LocationManager)localObject1, (String)localObject2);
         if (localObject1 == null) {
           return "";
         }
@@ -252,14 +253,14 @@ public class MobileInfoUtil
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("qua", CommonDataAdapter.a().f());
+      localJSONObject.put("qua", CommonDataAdapter.a().l());
       localJSONObject.put("longitude", getLocation());
-      localJSONObject.put("platform", CommonDataAdapter.a().g());
-      localJSONObject.put("uin", CommonDataAdapter.a().a());
+      localJSONObject.put("platform", CommonDataAdapter.a().m());
+      localJSONObject.put("uin", CommonDataAdapter.a().c());
       localJSONObject.put("imei", getImei());
       localJSONObject.put("imei", getImei());
       localJSONObject.put("resolution", getResolution());
-      localJSONObject.put("network", APNUtil.a(CommonDataAdapter.a().a()));
+      localJSONObject.put("network", APNUtil.a(CommonDataAdapter.a().b()));
       localJSONObject.put("wifimac", getLocalMacAddress());
       localJSONObject.put("mobile_pf", "1");
       localJSONObject.put("os_ver", Build.VERSION.RELEASE);
@@ -271,13 +272,13 @@ public class MobileInfoUtil
       localJSONObject.put("city", getCity());
       localJSONObject.put("longitude", getLocation());
       localJSONObject.put("ret_code", "0");
-      localJSONObject.put("qua", CommonDataAdapter.a().f());
-      localJSONObject.put("qz_ver", CommonDataAdapter.a().c());
+      localJSONObject.put("qua", CommonDataAdapter.a().l());
+      localJSONObject.put("qz_ver", CommonDataAdapter.a().g());
       localJSONObject.put("imsi", getImsi());
-      localJSONObject.put("androidID", Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id"));
+      localJSONObject.put("androidID", Settings.Secure.getString(CommonDataAdapter.a().b().getContentResolver(), "android_id"));
       localJSONObject.put("os_api_level", Build.VERSION.SDK_INT);
       localJSONObject.put("sdkVersionCode", 1);
-      localJSONObject.put("QVersionCode", CommonDataAdapter.a().a());
+      localJSONObject.put("QVersionCode", CommonDataAdapter.a().h());
       localJSONObject.put("brand", GlobalUtil.getInstance().getBrand());
       localJSONObject.put("manufacture", GlobalUtil.getInstance().getManufacture());
       localJSONObject.put("product", GlobalUtil.getInstance().getProduct());
@@ -319,7 +320,7 @@ public class MobileInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.MobileInfoUtil
  * JD-Core Version:    0.7.0.1
  */

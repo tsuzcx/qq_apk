@@ -9,12 +9,12 @@ class ApolloGuestsPresenter$3
   
   public int a(DressDescriptionItem paramDressDescriptionItem1, DressDescriptionItem paramDressDescriptionItem2)
   {
-    return paramDressDescriptionItem1.h - paramDressDescriptionItem2.h;
+    return paramDressDescriptionItem1.i - paramDressDescriptionItem2.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter.3
  * JD-Core Version:    0.7.0.1
  */

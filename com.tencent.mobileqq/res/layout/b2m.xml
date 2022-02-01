@@ -8,12 +8,13 @@
                 <ImageView android:layout_gravity="center|left|top" android:id="@id/gms" android:layout_width="@dimen/ul" android:layout_height="@dimen/uk" android:layout_marginTop="1.0dip" android:src="@null" />
                 <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:layout_gravity="center|left|top" android:id="@id/gmt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="0.0dip" android:text="" />
             </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:layout_marginBottom="@dimen/al1">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1">
                 <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/account_switch" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:customHeight="@dimen/j2" formItem:rightIcon="@drawable/com" formItem:rightIconHeight="32.0dip" formItem:rightIconWidth="32.0dip" formItem:showArrow="false" />
-                <include android:id="@id/guh" layout="@layout/cvt" />
+                <include android:id="@id/guh" layout="@layout/d7r" />
                 <include android:id="@id/gub" layout="@layout/b29" />
                 <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/guf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:customHeight="@dimen/j2" formItem:showArrow="true" />
             </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/or5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" />
             <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <include android:id="@id/qqsetting2_msg_notify" layout="@layout/b2a" />
             </LinearLayout>
@@ -36,6 +37,8 @@
             <include android:id="@id/e96" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" layout="@layout/b2a" />
             <include android:id="@id/about" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" layout="@layout/b2a" />
             <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/by3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" formItem:bgType="iwf" formItem:customHeight="@dimen/j2" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/o1e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" formItem:bgType="iwf" formItem:customHeight="@dimen/j2" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/o1f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" formItem:bgType="iwf" formItem:customHeight="@dimen/j2" formItem:showArrow="true" />
         </LinearLayout>
     </com.tencent.mobileqq.widget.BounceScrollView>
 </LinearLayout>

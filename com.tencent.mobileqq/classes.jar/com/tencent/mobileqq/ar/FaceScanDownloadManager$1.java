@@ -7,15 +7,15 @@ final class FaceScanDownloadManager$1
   
   public void run()
   {
-    FaceScanDownloadManager.DownloadCallback localDownloadCallback = this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback;
+    FaceScanDownloadManager.DownloadCallback localDownloadCallback = this.a;
     if (localDownloadCallback != null) {
-      localDownloadCallback.a(this.jdField_a_of_type_Int, this.b);
+      localDownloadCallback.a(this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FaceScanDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

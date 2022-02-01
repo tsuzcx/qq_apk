@@ -39,10 +39,10 @@ public class KandianShortContentGifStrategy
   extends ReadInJoyEngineModule
   implements IStrategy
 {
-  private static KandianShortContentGifStrategy jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianShortContentGifStrategy = new KandianShortContentGifStrategy();
-  private final String jdField_a_of_type_JavaLangString = "gifvideo.KandianShortContentGifStrategy";
-  private ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static KandianShortContentGifStrategy b = new KandianShortContentGifStrategy();
+  private final String a = "gifvideo.KandianShortContentGifStrategy";
+  private AtomicInteger c = new AtomicInteger(0);
+  private ConcurrentHashMap<Integer, Object> d = new ConcurrentHashMap();
   
   public KandianShortContentGifStrategy()
   {
@@ -51,12 +51,12 @@ public class KandianShortContentGifStrategy
   
   public static KandianShortContentGifStrategy a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianShortContentGifStrategy;
+    return b;
   }
   
   private Object a(Integer paramInteger)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
+    return this.d.remove(paramInteger);
   }
   
   private void a(Integer paramInteger, Object paramObject)
@@ -64,7 +64,7 @@ public class KandianShortContentGifStrategy
     if (paramObject == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramInteger, paramObject);
+    this.d.put(paramInteger, paramObject);
   }
   
   public void a(String paramString, IStrategy.URLCallback paramURLCallback)
@@ -77,7 +77,7 @@ public class KandianShortContentGifStrategy
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
       Object localObject2 = new content_vidurl_svr.GetVid2UrlsReq();
-      Object localObject1 = DeviceInfoUtil.c();
+      Object localObject1 = DeviceInfoUtil.e();
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         ((content_vidurl_svr.GetVid2UrlsReq)localObject2).app_version.set((String)localObject1);
       }
@@ -89,7 +89,7 @@ public class KandianShortContentGifStrategy
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
         ((content_vidurl_svr.GetVid2UrlsReq)localObject2).client_ip.set((String)localObject3);
       }
-      localObject3 = ReadInJoyUtils.b();
+      localObject3 = ReadInJoyUtils.c();
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
         ((content_vidurl_svr.GetVid2UrlsReq)localObject2).imei.set((String)localObject3);
       }
@@ -100,8 +100,8 @@ public class KandianShortContentGifStrategy
       localStringBuilder.append(System.currentTimeMillis() / 1000L);
       localStringBuilder.append("");
       ((PBStringField)localObject3).set(localStringBuilder.toString());
-      if (ReadInJoyUtils.a() != null) {
-        localObject1 = ReadInJoyUtils.a().getAccount();
+      if (ReadInJoyUtils.b() != null) {
+        localObject1 = ReadInJoyUtils.b().getAccount();
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         ((content_vidurl_svr.GetVid2UrlsReq)localObject2).uid.set((String)localObject1);
@@ -138,7 +138,7 @@ public class KandianShortContentGifStrategy
       ((StringBuilder)localObject2).append("request vids ");
       ((StringBuilder)localObject2).append(paramArrayOfString);
       QLog.d("gifvideo.KandianShortContentGifStrategy", 2, ((StringBuilder)localObject2).toString());
-      i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      i = this.c.incrementAndGet();
       ((ToServiceMsg)localObject1).addAttribute("vidToUrlSeq", Integer.valueOf(i));
       a(Integer.valueOf(i), paramURLCallback);
       sendPbReq((ToServiceMsg)localObject1);
@@ -212,7 +212,7 @@ public class KandianShortContentGifStrategy
             QLog.d("gifvideo.KandianShortContentGifStrategy", 2, ((StringBuilder)localObject3).toString());
             localObject3 = new VideoUrlInfo();
             ((VideoUrlInfo)localObject3).b = ((content_vidurl_svr.UrlInfo)localObject2).vid.get();
-            ((VideoUrlInfo)localObject3).jdField_a_of_type_JavaLangString = ((content_vidurl_svr.UrlInfo)localObject2).url.get();
+            ((VideoUrlInfo)localObject3).a = ((content_vidurl_svr.UrlInfo)localObject2).url.get();
             ThirdVideoManager.a((VideoUrlInfo)localObject3);
           }
         }
@@ -234,12 +234,12 @@ public class KandianShortContentGifStrategy
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.d.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianShortContentGifStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,30 @@ class LyricsController$13
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.b)
+    if (!this.i.e)
     {
       paramValueAnimator.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.i.A = null;
       return;
     }
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = this.jdField_a_of_type_Int;
-    i = (int)(i + (this.b - i) * f1 + 0.5F);
-    int j = this.c;
-    j = (int)(j + (this.d - j) * f1 + 0.5F);
-    int k = this.e;
-    k = (int)(k + (this.f - k) * f1 + 0.5F);
-    int m = this.g;
-    m = (int)(m + (this.h - m) * f1 + 0.5F);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(i, j);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(k, m);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    int j = this.a;
+    j = (int)(j + (this.b - j) * f1 + 0.5F);
+    int k = this.c;
+    k = (int)(k + (this.d - k) * f1 + 0.5F);
+    int m = this.e;
+    m = (int)(m + (this.f - m) * f1 + 0.5F);
+    int n = this.g;
+    n = (int)(n + (this.h - n) * f1 + 0.5F);
+    this.i.i.a(j, k);
+    this.i.j.a(m, n);
+    this.i.i.b();
+    this.i.j.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.13
  * JD-Core Version:    0.7.0.1
  */

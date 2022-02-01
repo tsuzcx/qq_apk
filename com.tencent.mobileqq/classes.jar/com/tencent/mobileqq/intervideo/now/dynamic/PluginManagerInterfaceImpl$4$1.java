@@ -14,18 +14,18 @@ class PluginManagerInterfaceImpl$4$1
   
   public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
   {
-    paramString = new Bundle(this.jdField_a_of_type_ComTencentMobileqqIntervideoILoginKeyHelper.getAccountInfo().a.getExtras());
+    paramString = new Bundle(this.a.getAccountInfo().d.getExtras());
     Bundle localBundle = new Bundle();
     localBundle.putBundle("data", paramString);
     localBundle.putBoolean("isSuccess", paramBoolean);
     localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.b[0] = localBundle;
+    this.c.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

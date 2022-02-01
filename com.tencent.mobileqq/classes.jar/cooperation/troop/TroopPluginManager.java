@@ -14,15 +14,13 @@ public class TroopPluginManager
   implements Manager
 {
   public static final String a = "cooperation.troop.TroopPluginManager";
-  Handler a;
-  protected WeakReference<QQAppInterface> a;
-  public ConcurrentLinkedQueue<String> a;
+  protected WeakReference<QQAppInterface> b;
+  public ConcurrentLinkedQueue<String> c = new ConcurrentLinkedQueue();
+  Handler d = new TroopPluginManager.2(this, Looper.getMainLooper());
   
   public TroopPluginManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_AndroidOsHandler = new TroopPluginManager.2(this, Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramQQAppInterface);
   }
   
   public boolean a(String paramString, TroopPluginCallback paramTroopPluginCallback)
@@ -39,8 +37,8 @@ public class TroopPluginManager
       ((PluginCommunicationHandler)localObject).unregister("troop.troopmemcard.get_app_interface_data");
       ((PluginCommunicationHandler)localObject).unregister("troop.manage.get_app_interface_data");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-    localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.d.removeMessages(1001);
+    localObject = this.b;
     if (localObject != null) {
       ((WeakReference)localObject).clear();
     }
@@ -48,7 +46,7 @@ public class TroopPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager
  * JD-Core Version:    0.7.0.1
  */

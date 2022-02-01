@@ -17,46 +17,51 @@ final class ViolaSoLoader$loadLibrary$1
   {
     if (paramInt == 0)
     {
-      ViolaSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader, true);
-      paramLoadExtResult = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebLoadLibCallback;
+      ViolaSoLoader.a(this.a, true);
+      paramLoadExtResult = this.b;
       if (paramLoadExtResult != null) {
-        paramLoadExtResult.onFinish(ReadInJoyWebRenderEngine.f);
+        paramLoadExtResult.onFinish(ReadInJoyWebRenderEngine.g);
       }
-      ViolaSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader, 0);
+      ViolaSoLoader.a(this.a, 0);
+      ViolaSoLoaderManager.a.a().g();
       paramLoadExtResult = new StringBuilder();
       paramLoadExtResult.append("load viola so success, from: ");
-      paramLoadExtResult.append(this.jdField_a_of_type_JavaLangString);
+      paramLoadExtResult.append(this.c);
       QLog.d("ViolaSoLoader", 1, paramLoadExtResult.toString());
       return;
     }
-    ViolaSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader, false);
-    if (ViolaSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader) < 3)
+    ViolaSoLoader.a(this.a, false);
+    if (ViolaSoLoader.a(this.a) < 3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebLoadLibCallback);
-      paramLoadExtResult = this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader;
+      this.a.a(this.c, this.b);
+      paramLoadExtResult = this.a;
       ViolaSoLoader.a(paramLoadExtResult, ViolaSoLoader.a(paramLoadExtResult) + 1);
       paramLoadExtResult = new StringBuilder();
       paramLoadExtResult.append("load viola so error, from: ");
-      paramLoadExtResult.append(this.jdField_a_of_type_JavaLangString);
+      paramLoadExtResult.append(this.c);
       paramLoadExtResult.append(", retryCount: ");
-      paramLoadExtResult.append(ViolaSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader));
+      paramLoadExtResult.append(ViolaSoLoader.a(this.a));
+      paramLoadExtResult.append(", errorCode: ");
+      paramLoadExtResult.append(paramInt);
       QLog.e("ViolaSoLoader", 1, paramLoadExtResult.toString());
       return;
     }
-    ViolaSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaSoViolaSoLoader, 0);
-    paramLoadExtResult = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebLoadLibCallback;
+    ViolaSoLoader.a(this.a, 0);
+    paramLoadExtResult = this.b;
     if (paramLoadExtResult != null) {
       paramLoadExtResult.onError(paramInt);
     }
     paramLoadExtResult = new StringBuilder();
     paramLoadExtResult.append("load viola so error, from: ");
-    paramLoadExtResult.append(this.jdField_a_of_type_JavaLangString);
+    paramLoadExtResult.append(this.c);
+    paramLoadExtResult.append(", errorCode: ");
+    paramLoadExtResult.append(paramInt);
     QLog.d("ViolaSoLoader", 1, paramLoadExtResult.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoader.loadLibrary.1
  * JD-Core Version:    0.7.0.1
  */

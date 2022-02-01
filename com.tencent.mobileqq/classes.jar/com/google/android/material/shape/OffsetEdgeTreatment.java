@@ -5,28 +5,28 @@ import androidx.annotation.NonNull;
 public final class OffsetEdgeTreatment
   extends EdgeTreatment
 {
-  private final float jdField_a_of_type_Float;
-  private final EdgeTreatment jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
+  private final EdgeTreatment a;
+  private final float b;
   
   public OffsetEdgeTreatment(@NonNull EdgeTreatment paramEdgeTreatment, float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramEdgeTreatment;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramEdgeTreatment;
+    this.b = paramFloat;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, @NonNull ShapePath paramShapePath)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment.a(paramFloat1, paramFloat2 - this.jdField_a_of_type_Float, paramFloat3, paramShapePath);
+    this.a.a(paramFloat1, paramFloat2 - this.b, paramFloat3, paramShapePath);
   }
   
-  boolean a()
+  boolean f()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment.a();
+    return this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.OffsetEdgeTreatment
  * JD-Core Version:    0.7.0.1
  */

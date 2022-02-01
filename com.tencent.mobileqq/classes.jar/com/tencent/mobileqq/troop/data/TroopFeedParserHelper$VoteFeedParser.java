@@ -66,7 +66,7 @@ public class TroopFeedParserHelper$VoteFeedParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.VoteFeedParser
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ class EqqAccountDetailActivityImpl$2
     if (!paramBoolean)
     {
       if (!this.a.isFirst) {
-        this.a.displayToast(2131695217);
+        this.a.displayToast(2131892951);
       }
     }
     else if (!paramBoolean) {}
@@ -58,12 +58,12 @@ class EqqAccountDetailActivityImpl$2
           }
         }
         else {
-          this.a.displayToast(2131695217);
+          this.a.displayToast(2131892951);
         }
       }
       else if (!this.a.isFirst)
       {
-        this.a.displayToast(2131695217);
+        this.a.displayToast(2131892951);
       }
     }
     catch (Exception paramBundle)
@@ -71,7 +71,7 @@ class EqqAccountDetailActivityImpl$2
       break label331;
     }
     if (!this.a.isFirst) {
-      this.a.displayToast(2131695217);
+      this.a.displayToast(2131892951);
     }
     label331:
     paramBundle = this.a;
@@ -90,7 +90,7 @@ class EqqAccountDetailActivityImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.EqqAccountDetailActivityImpl.2
  * JD-Core Version:    0.7.0.1
  */

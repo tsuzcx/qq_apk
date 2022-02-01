@@ -62,13 +62,13 @@ class SnapshotService$SnapShotWebView
     super.onPageFinished(paramWebView, paramString);
     paramString = new StringBuilder();
     paramString.append("javascript:");
-    paramString.append(SnapshotService.a);
+    paramString.append(SnapshotService.b);
     paramWebView.loadUrl(paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.SnapshotService.SnapShotWebView
  * JD-Core Version:    0.7.0.1
  */

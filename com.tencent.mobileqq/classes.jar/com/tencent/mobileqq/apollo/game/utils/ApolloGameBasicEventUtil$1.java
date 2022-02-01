@@ -47,7 +47,7 @@ final class ApolloGameBasicEventUtil$1
         paramString1 = new Bundle();
         paramString1.putString("resData", paramQQAppInterface.toString());
         paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-        CmGameServerQIPCModule.a().callbackResult(paramInt1, paramQQAppInterface);
+        CmGameServerQIPCModule.b().callbackResult(paramInt1, paramQQAppInterface);
         return;
       }
       catch (Exception paramQQAppInterface)
@@ -62,7 +62,7 @@ final class ApolloGameBasicEventUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.utils.ApolloGameBasicEventUtil.1
  * JD-Core Version:    0.7.0.1
  */

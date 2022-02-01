@@ -12,16 +12,16 @@ class NewVoteAnimHelper$1
   
   public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.hasMessages(0))
+    if (this.b.c.hasMessages(0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.removeMessages(0);
-      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
+      this.b.c.removeMessages(0);
+      this.b.c.obtainMessage(0, this.a, 0).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NewVoteAnimHelper.1
  * JD-Core Version:    0.7.0.1
  */

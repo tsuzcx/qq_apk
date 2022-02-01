@@ -11,6 +11,7 @@ public class QQWalletAioBodyReserve
 {
   public String feedId = "";
   public String makeHbExtend;
+  public int payFlag;
   public int pfa_type;
   public String poemRule;
   public String shengpiziMD5 = "";
@@ -91,9 +92,13 @@ public class QQWalletAioBodyReserve
           {
             this.shengpiziMask = paramArrayOfByte.substring(0, i);
             this.shengpiziMD5 = paramArrayOfByte.substring(i + 1);
-            return;
           }
         }
+      }
+      if (localqqwalletaio_body_resv.uint32_pay_flag.has())
+      {
+        this.payFlag = localqqwalletaio_body_resv.uint32_pay_flag.get();
+        return;
       }
     }
     catch (Throwable paramArrayOfByte)
@@ -116,7 +121,7 @@ public class QQWalletAioBodyReserve
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletAioBodyReserve
  * JD-Core Version:    0.7.0.1
  */

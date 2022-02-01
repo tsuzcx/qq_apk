@@ -18,20 +18,20 @@ class GroupManagerActivity$2
     paramInt -= 1;
     if (paramInt >= 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a.size() <= paramInt) {
+      if (this.b.a.size() <= paramInt) {
         return;
       }
-      paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity;
+      paramAdapterView = this.b;
       GroupManagerActivity.a(paramAdapterView, (Groups)paramAdapterView.a.get(paramInt));
-      paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity;
-      GroupManagerActivity.a(paramAdapterView, DialogUtils.a(paramAdapterView, 2131693089, 2131693093, GroupManagerActivity.a(paramAdapterView).group_name, this.jdField_a_of_type_ComTencentMobileqqUtilsGroupManagerInputTextWatcher, GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity), GroupManagerActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)));
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, 1);
+      paramAdapterView = this.b;
+      GroupManagerActivity.a(paramAdapterView, DialogUtils.a(paramAdapterView, 2131890203, 2131890207, GroupManagerActivity.a(paramAdapterView).group_name, this.a, GroupManagerActivity.b(this.b), GroupManagerActivity.c(this.b)));
+      GroupManagerActivity.a(this.b, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity.2
  * JD-Core Version:    0.7.0.1
  */

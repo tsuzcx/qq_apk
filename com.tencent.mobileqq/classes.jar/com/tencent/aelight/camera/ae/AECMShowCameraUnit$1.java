@@ -8,12 +8,12 @@ class AECMShowCameraUnit$1
   public void run()
   {
     AECMShowCameraUnit localAECMShowCameraUnit = this.this$0;
-    localAECMShowCameraUnit.a(1, localAECMShowCameraUnit.a);
+    localAECMShowCameraUnit.a(1, localAECMShowCameraUnit.G);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECMShowCameraUnit.1
  * JD-Core Version:    0.7.0.1
  */

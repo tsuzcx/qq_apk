@@ -16,11 +16,11 @@ class MultiIncomingCallsActivity$4
   {
     if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      long l = QQAudioHelper.b();
-      paramContext = SessionMgr.a().a();
+      long l = QQAudioHelper.d();
+      paramContext = SessionMgr.a().b();
       paramIntent = this.a;
       paramIntent.a(l, "BroadcastReceiver_qzone", paramIntent.getIntent(), paramContext);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      this.a.e.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.b), Integer.valueOf(3) });
       this.a.b("BroadcastReceiver_qzone");
     }
   }

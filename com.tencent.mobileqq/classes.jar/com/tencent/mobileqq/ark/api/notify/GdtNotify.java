@@ -39,9 +39,9 @@ public class GdtNotify
   implements IAppNotifyCallback
 {
   public static GdtNotify.ArkClickListener a;
-  private static GdtNotify.VolumeReceiver jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver;
-  GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener;
-  private GdtFeedbackListener jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackListener;
+  private static GdtNotify.VolumeReceiver d;
+  GdtAdLoader.Listener b;
+  private GdtFeedbackListener c;
   
   protected static QQAppInterface a()
   {
@@ -50,19 +50,6 @@ public class GdtNotify
       return (QQAppInterface)localAppRuntime;
     }
     return null;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver == null) {
-      jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver = new GdtNotify.VolumeReceiver(null);
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
-    localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
-    localIntentFilter.addAction("android.media.AUDIO_BECOMING_NOISY");
-    localIntentFilter.addAction("android.media.RINGER_MODE_CHANGED");
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver, localIntentFilter);
   }
   
   private void a(String paramString1, String paramString2)
@@ -106,7 +93,7 @@ public class GdtNotify
       label123:
       b(paramString1, localWeakReference, "ad_show_feedback_callback", (JSONObject)localObject1, false);
       bool = false;
-      this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackListener = new GdtNotify.6(this, paramString1, localWeakReference);
+      this.c = new GdtNotify.6(this, paramString1, localWeakReference);
       paramString1 = new GdtAd(paramString2);
       ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new GdtNotify.7(this, localWeakReference, paramString1, i, bool));
       return;
@@ -121,7 +108,7 @@ public class GdtNotify
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (StringUtil.a(paramString)) {
+      if (StringUtil.isEmpty(paramString)) {
         return null;
       }
       int i = 0;
@@ -134,7 +121,7 @@ public class GdtNotify
           if (localObject != null)
           {
             localObject = ((ArkAppMessage)localObject).metaList;
-            if (!StringUtil.a((String)localObject)) {
+            if (!StringUtil.isEmpty((String)localObject)) {
               try
               {
                 localObject = new JSONObject((String)localObject).optJSONObject("gdt");
@@ -177,11 +164,15 @@ public class GdtNotify
   
   public static void b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver != null)
-    {
-      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver);
-      jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$VolumeReceiver = null;
+    if (d == null) {
+      d = new GdtNotify.VolumeReceiver(null);
     }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
+    localIntentFilter.addAction("android.media.AUDIO_BECOMING_NOISY");
+    localIntentFilter.addAction("android.media.RINGER_MODE_CHANGED");
+    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(d, localIntentFilter);
   }
   
   private static void b(String paramString)
@@ -196,7 +187,7 @@ public class GdtNotify
     try
     {
       if (((AudioManager)((QQAppInterface)localObject).getApplication().getApplicationContext().getSystemService("audio")).getRingerMode() == 2) {
-        break label162;
+        break label161;
       }
     }
     catch (Throwable localThrowable)
@@ -238,7 +229,16 @@ public class GdtNotify
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(paramString1, new GdtNotify.8(paramString1, paramString2, paramJSONObject, paramWeakReference, paramBoolean));
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3)
+  public static void c()
+  {
+    if (d != null)
+    {
+      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(d);
+      d = null;
+    }
+  }
+  
+  public boolean notify(String paramString1, String paramString2, String paramString3)
   {
     if (paramString2.equals("ad_query_mute"))
     {
@@ -256,7 +256,7 @@ public class GdtNotify
     ((StringBuilder)localObject).append(" params : ");
     ((StringBuilder)localObject).append(paramString3);
     QLog.d("GdtNotify", 1, ((StringBuilder)localObject).toString(), null);
-    localObject = jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$ArkClickListener;
+    localObject = a;
     if (localObject != null) {
       ((GdtNotify.ArkClickListener)localObject).a(paramString1, paramString2, paramString3);
     }
@@ -327,7 +327,7 @@ public class GdtNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.notify.GdtNotify
  * JD-Core Version:    0.7.0.1
  */

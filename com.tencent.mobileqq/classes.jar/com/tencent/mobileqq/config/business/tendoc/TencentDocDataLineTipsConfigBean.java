@@ -16,27 +16,27 @@ import org.json.JSONObject;
 
 public class TencentDocDataLineTipsConfigBean
 {
-  private int jdField_a_of_type_Int = 0;
-  private SparseArray<TencentDocDataLineTipsConfigBean.KeyWords> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<TencentDocDataLineTipsConfigBean.TeamworkKeyWords> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private Map<String, TencentDocDataLineTipsConfigBean.KeyWords> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private int jdField_c_of_type_Int = 0;
-  private String jdField_c_of_type_JavaLangString = "";
-  private Map<String, String> jdField_c_of_type_JavaUtilMap = new HashMap();
-  private int jdField_d_of_type_Int = 0;
-  private String jdField_d_of_type_JavaLangString = "";
+  private boolean a = false;
+  private int b = 0;
+  private int c = 0;
+  private int d = 0;
+  private int e = 0;
+  private String f = "";
+  private String g = "";
+  private String h = "";
+  private String i = "";
+  private Map<String, String> j = new HashMap();
+  private Map<String, TencentDocDataLineTipsConfigBean.KeyWords> k = new HashMap();
+  private Map<String, String> l = new HashMap();
+  private SparseArray<TencentDocDataLineTipsConfigBean.KeyWords> m = new SparseArray();
+  private List<TencentDocDataLineTipsConfigBean.TeamworkKeyWords> n = new ArrayList();
   
   public static TencentDocDataLineTipsConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       boolean bool = false;
-      Object localObject1 = paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString;
+      Object localObject1 = paramArrayOfQConfItem[0].b;
       paramArrayOfQConfItem = new TencentDocDataLineTipsConfigBean();
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
@@ -49,8 +49,8 @@ public class TencentDocDataLineTipsConfigBean
       {
         localObject1 = new JSONObject((String)localObject1);
         JSONObject localJSONObject = ((JSONObject)localObject1).optJSONObject("File");
-        paramArrayOfQConfItem.jdField_a_of_type_Int = localJSONObject.optInt("maxCount");
-        paramArrayOfQConfItem.jdField_b_of_type_Int = localJSONObject.optInt("insertDur");
+        paramArrayOfQConfItem.b = localJSONObject.optInt("maxCount");
+        paramArrayOfQConfItem.c = localJSONObject.optInt("insertDur");
         Object localObject2 = localJSONObject.optJSONObject("fileType");
         Object localObject3 = new StringBuilder();
         Object localObject4 = ((JSONObject)localObject2).keys();
@@ -63,7 +63,7 @@ public class TencentDocDataLineTipsConfigBean
           ((StringBuilder)localObject3).append((String)localObject6);
           ((StringBuilder)localObject3).append("|");
           localObject7 = ((JSONObject)localObject2).getString((String)localObject6);
-          Object localObject8 = paramArrayOfQConfItem.jdField_a_of_type_JavaUtilMap;
+          Object localObject8 = paramArrayOfQConfItem.j;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("fileType_");
           localStringBuilder.append((String)localObject6);
@@ -71,8 +71,8 @@ public class TencentDocDataLineTipsConfigBean
           ((StringBuilder)localObject5).append((String)localObject7);
           ((StringBuilder)localObject5).append("|");
           localObject8 = new TencentDocDataLineTipsConfigBean.KeyWords();
-          ((TencentDocDataLineTipsConfigBean.KeyWords)localObject8).jdField_b_of_type_ArrayOfJavaLangString = a((String)localObject7);
-          paramArrayOfQConfItem.jdField_b_of_type_JavaUtilMap.put(localObject6, localObject8);
+          ((TencentDocDataLineTipsConfigBean.KeyWords)localObject8).d = a((String)localObject7);
+          paramArrayOfQConfItem.k.put(localObject6, localObject8);
         }
         if (((StringBuilder)localObject5).length() > 0) {
           ((StringBuilder)localObject5).deleteCharAt(((StringBuilder)localObject5).length() - 1);
@@ -80,52 +80,52 @@ public class TencentDocDataLineTipsConfigBean
         if (((StringBuilder)localObject3).length() > 0) {
           ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
         }
-        paramArrayOfQConfItem.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
-        paramArrayOfQConfItem.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject5).toString();
+        paramArrayOfQConfItem.f = ((StringBuilder)localObject3).toString();
+        paramArrayOfQConfItem.g = ((StringBuilder)localObject5).toString();
         localJSONObject = localJSONObject.optJSONObject("KeyWords");
-        localObject2 = paramArrayOfQConfItem.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+        localObject2 = paramArrayOfQConfItem.k.keySet().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
           localObject6 = localJSONObject.optJSONObject((String)localObject3);
-          localObject4 = (TencentDocDataLineTipsConfigBean.KeyWords)paramArrayOfQConfItem.jdField_b_of_type_JavaUtilMap.get(localObject3);
+          localObject4 = (TencentDocDataLineTipsConfigBean.KeyWords)paramArrayOfQConfItem.k.get(localObject3);
           localObject5 = ((JSONObject)localObject6).optString("key");
-          ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_a_of_type_ArrayOfJavaLangString = a((String)localObject5);
-          if (paramArrayOfQConfItem.jdField_c_of_type_Int == 1)
+          ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).a = a((String)localObject5);
+          if (paramArrayOfQConfItem.d == 1)
           {
-            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject6).optString("Tips1");
-            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_b_of_type_JavaLangString = ((JSONObject)localObject6).optString("Link1");
+            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).b = ((JSONObject)localObject6).optString("Tips1");
+            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).c = ((JSONObject)localObject6).optString("Link1");
           }
           else
           {
-            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject6).optString("Tips0");
-            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_b_of_type_JavaLangString = ((JSONObject)localObject6).optString("Link0");
+            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).b = ((JSONObject)localObject6).optString("Tips0");
+            ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).c = ((JSONObject)localObject6).optString("Link0");
           }
-          paramArrayOfQConfItem.jdField_b_of_type_JavaUtilMap.put(localObject3, localObject4);
-          localObject6 = paramArrayOfQConfItem.jdField_c_of_type_JavaUtilMap;
+          paramArrayOfQConfItem.k.put(localObject3, localObject4);
+          localObject6 = paramArrayOfQConfItem.l;
           localObject7 = new StringBuilder();
           ((StringBuilder)localObject7).append("key_str_key_words");
           ((StringBuilder)localObject7).append((String)localObject3);
           ((Map)localObject6).put(((StringBuilder)localObject7).toString(), localObject5);
-          localObject5 = paramArrayOfQConfItem.jdField_c_of_type_JavaUtilMap;
+          localObject5 = paramArrayOfQConfItem.l;
           localObject6 = new StringBuilder();
           ((StringBuilder)localObject6).append("key_str_key_tips");
           ((StringBuilder)localObject6).append((String)localObject3);
-          ((Map)localObject5).put(((StringBuilder)localObject6).toString(), ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_a_of_type_JavaLangString);
-          localObject5 = paramArrayOfQConfItem.jdField_c_of_type_JavaUtilMap;
+          ((Map)localObject5).put(((StringBuilder)localObject6).toString(), ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).b);
+          localObject5 = paramArrayOfQConfItem.l;
           localObject6 = new StringBuilder();
           ((StringBuilder)localObject6).append("key_str_key_link");
           ((StringBuilder)localObject6).append((String)localObject3);
-          ((Map)localObject5).put(((StringBuilder)localObject6).toString(), ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).jdField_b_of_type_JavaLangString);
+          ((Map)localObject5).put(((StringBuilder)localObject6).toString(), ((TencentDocDataLineTipsConfigBean.KeyWords)localObject4).c);
         }
         localObject1 = ((JSONObject)localObject1).optJSONObject("Text");
         if (localObject1 != null)
         {
-          paramArrayOfQConfItem.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+          paramArrayOfQConfItem.h = ((JSONObject)localObject1).toString();
           if (((JSONObject)localObject1).optInt("textSwitch", 0) == 1) {
             bool = true;
           }
-          paramArrayOfQConfItem.jdField_a_of_type_Boolean = bool;
+          paramArrayOfQConfItem.a = bool;
           a((JSONObject)localObject1, paramArrayOfQConfItem);
           return paramArrayOfQConfItem;
         }
@@ -143,28 +143,28 @@ public class TencentDocDataLineTipsConfigBean
   private static void a(JSONObject paramJSONObject, TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean)
   {
     JSONArray localJSONArray = paramJSONObject.optJSONArray("template_list");
-    int i = 0;
-    while (i < localJSONArray.length())
+    int i1 = 0;
+    while (i1 < localJSONArray.length())
     {
-      int k = localJSONArray.getJSONObject(i).optInt("template_type", -1);
+      int i3 = localJSONArray.getJSONObject(i1).optInt("template_type", -1);
       TencentDocDataLineTipsConfigBean.KeyWords localKeyWords = new TencentDocDataLineTipsConfigBean.KeyWords();
-      paramTencentDocDataLineTipsConfigBean.jdField_d_of_type_Int = paramJSONObject.optInt("containKeyword");
-      if (paramTencentDocDataLineTipsConfigBean.jdField_d_of_type_Int == 1)
+      paramTencentDocDataLineTipsConfigBean.e = paramJSONObject.optInt("containKeyword");
+      if (paramTencentDocDataLineTipsConfigBean.e == 1)
       {
-        localKeyWords.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips1");
-        localKeyWords.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link1");
+        localKeyWords.b = paramJSONObject.optString("Tips1");
+        localKeyWords.c = paramJSONObject.optString("Link1");
       }
       else
       {
-        localKeyWords.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips0");
-        localKeyWords.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link0");
+        localKeyWords.b = paramJSONObject.optString("Tips0");
+        localKeyWords.c = paramJSONObject.optString("Link0");
       }
-      int j = k;
-      if (k == -1) {
-        j = i;
+      int i2 = i3;
+      if (i3 == -1) {
+        i2 = i1;
       }
-      paramTencentDocDataLineTipsConfigBean.jdField_a_of_type_AndroidUtilSparseArray.put(j, localKeyWords);
-      i += 1;
+      paramTencentDocDataLineTipsConfigBean.m.put(i2, localKeyWords);
+      i1 += 1;
     }
   }
   
@@ -172,7 +172,7 @@ public class TencentDocDataLineTipsConfigBean
   {
     Object localObject = new StringTokenizer(paramString, "|");
     boolean bool = ((StringTokenizer)localObject).hasMoreTokens();
-    int i = 0;
+    int i1 = 0;
     if (!bool)
     {
       if (QLog.isColorLevel())
@@ -187,30 +187,15 @@ public class TencentDocDataLineTipsConfigBean
     paramString = new String[((StringTokenizer)localObject).countTokens()];
     while (((StringTokenizer)localObject).hasMoreTokens())
     {
-      paramString[i] = ((StringTokenizer)localObject).nextToken();
-      i += 1;
+      paramString[i1] = ((StringTokenizer)localObject).nextToken();
+      i1 += 1;
     }
     return paramString;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public List<TencentDocDataLineTipsConfigBean.TeamworkKeyWords> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public Map<String, TencentDocDataLineTipsConfigBean.KeyWords> a()
-  {
-    return this.jdField_b_of_type_JavaUtilMap;
+    return this.b;
   }
   
   public void a(JSONObject paramJSONObject)
@@ -221,56 +206,56 @@ public class TencentDocDataLineTipsConfigBean
     } else {
       localObject = paramJSONObject.toString();
     }
-    this.jdField_d_of_type_JavaLangString = ((String)localObject);
+    this.i = ((String)localObject);
     if (paramJSONObject == null)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       return;
     }
     for (;;)
     {
-      int i;
+      int i1;
       try
       {
         localObject = paramJSONObject.optJSONArray("template_list");
         if (paramJSONObject.optInt("retcode", -1) == 0) {
           break label217;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
         return;
       }
       catch (Exception paramJSONObject)
       {
-        int k;
-        int j;
+        int i3;
+        int i2;
         JSONObject localJSONObject;
         TencentDocDataLineTipsConfigBean.TeamworkKeyWords localTeamworkKeyWords;
         QLog.e("TencentDocDataLineTipsConfigBean", 2, paramJSONObject.toString());
       }
-      if (i < ((JSONArray)localObject).length())
+      if (i1 < ((JSONArray)localObject).length())
       {
-        paramJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        k = paramJSONObject.optInt("template_type", -1);
+        paramJSONObject = ((JSONArray)localObject).getJSONObject(i1);
+        i3 = paramJSONObject.optInt("template_type", -1);
         if (paramJSONObject.optJSONArray("infos") != null)
         {
           paramJSONObject = paramJSONObject.optJSONArray("infos");
-          j = 0;
-          if (j < paramJSONObject.length())
+          i2 = 0;
+          if (i2 < paramJSONObject.length())
           {
-            localJSONObject = paramJSONObject.getJSONObject(j);
+            localJSONObject = paramJSONObject.getJSONObject(i2);
             localTeamworkKeyWords = new TencentDocDataLineTipsConfigBean.TeamworkKeyWords();
-            localTeamworkKeyWords.jdField_a_of_type_JavaLangString = localJSONObject.optString("template_name");
-            localTeamworkKeyWords.jdField_a_of_type_Int = localJSONObject.optInt("template_id", -1);
-            if (localTeamworkKeyWords.jdField_a_of_type_Int == -1) {
+            localTeamworkKeyWords.a = localJSONObject.optString("template_name");
+            localTeamworkKeyWords.b = localJSONObject.optInt("template_id", -1);
+            if (localTeamworkKeyWords.b == -1) {
               QLog.d("TencentDocDataLineTipsConfigBean", 2, "template has no id");
             }
-            localTeamworkKeyWords.jdField_b_of_type_Int = k;
-            this.jdField_a_of_type_JavaUtilList.add(localTeamworkKeyWords);
-            j += 1;
+            localTeamworkKeyWords.c = i3;
+            this.n.add(localTeamworkKeyWords);
+            i2 += 1;
             continue;
           }
         }
-        i += 1;
+        i1 += 1;
       }
       else
       {
@@ -278,29 +263,44 @@ public class TencentDocDataLineTipsConfigBean
         while (localObject == null) {
           return;
         }
-        i = 0;
+        i1 = 0;
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
-  public String b()
+  public String c()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.g;
+  }
+  
+  public String d()
+  {
+    return this.h;
+  }
+  
+  public Map<String, TencentDocDataLineTipsConfigBean.KeyWords> e()
+  {
+    return this.k;
+  }
+  
+  public List<TencentDocDataLineTipsConfigBean.TeamworkKeyWords> f()
+  {
+    return this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigBean
  * JD-Core Version:    0.7.0.1
  */

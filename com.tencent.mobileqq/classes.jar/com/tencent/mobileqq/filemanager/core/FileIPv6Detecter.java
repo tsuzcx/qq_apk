@@ -15,28 +15,16 @@ import java.util.concurrent.Executor;
 
 public class FileIPv6Detecter
 {
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private Map<String, FileIPv6Detecter.DomainDetectResult> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  
-  private FileIPv6Detecter.DomainDetectResult a(FileIPv6StrateyController.DomainInfo paramDomainInfo)
-  {
-    if ((paramDomainInfo != null) && (paramDomainInfo.jdField_a_of_type_JavaLangString != null)) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
-      {
-        paramDomainInfo = (FileIPv6Detecter.DomainDetectResult)this.jdField_a_of_type_JavaUtilMap.get(paramDomainInfo.jdField_a_of_type_JavaLangString);
-        return paramDomainInfo;
-      }
-    }
-    return null;
-  }
+  private Map<String, FileIPv6Detecter.DomainDetectResult> a = new HashMap();
+  private Executor b;
+  private String c = "";
+  private long d = 0L;
   
   private void a(FileIPv6StrateyController.DomainInfo paramDomainInfo, FileIPv6Detecter.DomainDetectResult paramDomainDetectResult)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramDomainInfo.jdField_a_of_type_JavaLangString, paramDomainDetectResult);
+      this.a.put(paramDomainInfo.a, paramDomainDetectResult);
       return;
     }
   }
@@ -73,7 +61,7 @@ public class FileIPv6Detecter
     localHashMap.put("param_result", String.valueOf(paramBoolean ^ true));
     localHashMap.put("param_stackType", String.valueOf(i));
     localHashMap.put("param_loginType", String.valueOf(j));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, "actFAIPConnect", true, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.c, "actFAIPConnect", true, 0L, 0L, localHashMap, null);
     paramString1 = new StringBuilder();
     paramString1.append("[IPv6-File] >> reportDetectConnResult:");
     paramString1.append(localHashMap.toString());
@@ -82,22 +70,22 @@ public class FileIPv6Detecter
   
   private boolean a(FileIPv6StrateyController.DomainInfo paramDomainInfo, FileIPv6StrateyController.IPInfo paramIPInfo)
   {
-    if ((paramDomainInfo != null) && (!TextUtils.isEmpty(paramDomainInfo.jdField_a_of_type_JavaLangString)) && (paramIPInfo != null) && (!TextUtils.isEmpty(paramIPInfo.jdField_a_of_type_JavaLangString)))
+    if ((paramDomainInfo != null) && (!TextUtils.isEmpty(paramDomainInfo.a)) && (paramIPInfo != null) && (!TextUtils.isEmpty(paramIPInfo.a)))
     {
       long l = System.currentTimeMillis();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[IPv6-File] start delectIP [");
-      ((StringBuilder)localObject).append(paramDomainInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramDomainInfo.a);
       ((StringBuilder)localObject).append(":");
-      ((StringBuilder)localObject).append(paramDomainInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramDomainInfo.b);
       ((StringBuilder)localObject).append("] ipInfo[");
-      ((StringBuilder)localObject).append(paramIPInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramIPInfo.a);
       ((StringBuilder)localObject).append(":");
-      ((StringBuilder)localObject).append(paramIPInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramIPInfo.b);
       ((StringBuilder)localObject).append("]");
       QLog.i("FileIPv6Detecter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       c();
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+      localObject = this.b;
       if (localObject == null) {
         return false;
       }
@@ -108,11 +96,23 @@ public class FileIPv6Detecter
     return false;
   }
   
+  private FileIPv6Detecter.DomainDetectResult b(FileIPv6StrateyController.DomainInfo paramDomainInfo)
+  {
+    if ((paramDomainInfo != null) && (paramDomainInfo.a != null)) {
+      synchronized (this.a)
+      {
+        paramDomainInfo = (FileIPv6Detecter.DomainDetectResult)this.a.get(paramDomainInfo.a);
+        return paramDomainInfo;
+      }
+    }
+    return null;
+  }
+  
   private void b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.a.clear();
       return;
     }
   }
@@ -121,7 +121,7 @@ public class FileIPv6Detecter
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
+      if (this.b == null)
       {
         QLog.i("FileIPv6Detecter<FileAssistant>", 1, "[IPv6-File] start conn pool");
         try
@@ -129,7 +129,7 @@ public class FileIPv6Detecter
           ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
           localThreadPoolParams.priority = 5;
           localThreadPoolParams.poolThreadName = "IPv6ConnDelectPool";
-          this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+          this.b = ThreadManager.newFreeThreadPool(localThreadPoolParams);
         }
         catch (Exception localException)
         {
@@ -151,21 +151,21 @@ public class FileIPv6Detecter
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface, FileIPv6StrateyController.DomainInfo paramDomainInfo, FileIPv6StrateyController.IPInfo paramIPInfo)
   {
-    if ((paramDomainInfo == null) || (TextUtils.isEmpty(paramDomainInfo.jdField_a_of_type_JavaLangString)) || (paramIPInfo == null) || (TextUtils.isEmpty(paramIPInfo.jdField_a_of_type_JavaLangString))) {
+    if ((paramDomainInfo == null) || (TextUtils.isEmpty(paramDomainInfo.a)) || (paramIPInfo == null) || (TextUtils.isEmpty(paramIPInfo.a))) {
       QLog.e("FileIPv6Detecter<FileAssistant>", 1, "[IPv6-File] detectV6Domain err. param=null");
     }
     if (paramBaseQQAppInterface != null) {
-      this.jdField_a_of_type_JavaLangString = paramBaseQQAppInterface.getCurrentUin();
+      this.c = paramBaseQQAppInterface.getCurrentUin();
     }
     long l = System.currentTimeMillis();
-    paramBaseQQAppInterface = a(paramDomainInfo);
+    paramBaseQQAppInterface = b(paramDomainInfo);
     if (paramBaseQQAppInterface != null) {
-      if (!paramBaseQQAppInterface.jdField_a_of_type_Boolean)
+      if (!paramBaseQQAppInterface.a)
       {
         if (paramBaseQQAppInterface.b) {
           return;
         }
-        if (l - paramBaseQQAppInterface.jdField_a_of_type_Long > 600000L) {}
+        if (l - paramBaseQQAppInterface.d > 600000L) {}
       }
       else
       {
@@ -176,8 +176,8 @@ public class FileIPv6Detecter
     {
       paramBaseQQAppInterface = new FileIPv6Detecter.DomainDetectResult(this);
       paramBaseQQAppInterface.b = true;
-      paramBaseQQAppInterface.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo = paramIPInfo;
-      paramBaseQQAppInterface.jdField_a_of_type_Long = l;
+      paramBaseQQAppInterface.c = paramIPInfo;
+      paramBaseQQAppInterface.d = l;
       a(paramDomainInfo, paramBaseQQAppInterface);
       return;
     }
@@ -186,16 +186,16 @@ public class FileIPv6Detecter
   
   public boolean a(FileIPv6StrateyController.DomainInfo paramDomainInfo)
   {
-    paramDomainInfo = a(paramDomainInfo);
+    paramDomainInfo = b(paramDomainInfo);
     if (paramDomainInfo != null) {
-      return paramDomainInfo.jdField_a_of_type_Boolean;
+      return paramDomainInfo.a;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6Detecter
  * JD-Core Version:    0.7.0.1
  */

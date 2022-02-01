@@ -17,7 +17,7 @@ class PhotoPreviewCustomizationReadInJoy$1
     if (PhotoPreviewCustomizationReadInJoy.a(this.a) == null)
     {
       PhotoPreviewCustomizationReadInJoy localPhotoPreviewCustomizationReadInJoy = this.a;
-      PhotoPreviewCustomizationReadInJoy.a(localPhotoPreviewCustomizationReadInJoy, DialogUtil.a(PhotoPreviewCustomizationReadInJoy.a(localPhotoPreviewCustomizationReadInJoy), 0, PhotoPreviewCustomizationReadInJoy.b(this.a).getString(2131717867), null, PhotoPreviewCustomizationReadInJoy.c(this.a).getString(2131717865), PhotoPreviewCustomizationReadInJoy.d(this.a).getString(2131717866), new PhotoPreviewCustomizationReadInJoy.1.1(this), new PhotoPreviewCustomizationReadInJoy.1.2(this)));
+      PhotoPreviewCustomizationReadInJoy.a(localPhotoPreviewCustomizationReadInJoy, DialogUtil.a(PhotoPreviewCustomizationReadInJoy.b(localPhotoPreviewCustomizationReadInJoy), 0, PhotoPreviewCustomizationReadInJoy.c(this.a).getString(2131915340), null, PhotoPreviewCustomizationReadInJoy.d(this.a).getString(2131915338), PhotoPreviewCustomizationReadInJoy.e(this.a).getString(2131915339), new PhotoPreviewCustomizationReadInJoy.1.1(this), new PhotoPreviewCustomizationReadInJoy.1.2(this)));
       PhotoPreviewCustomizationReadInJoy.a(this.a).setCanceledOnTouchOutside(false);
     }
     PhotoPreviewCustomizationReadInJoy.a(this.a).show();
@@ -26,7 +26,7 @@ class PhotoPreviewCustomizationReadInJoy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationReadInJoy.1
  * JD-Core Version:    0.7.0.1
  */

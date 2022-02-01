@@ -14,15 +14,14 @@ import java.util.List;
 public class QQOperateTipsHelper
   implements ILifeCycleHelper, PanelListener
 {
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private QQOperateTips jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new QQOperateTipsHelper.1(this);
-  protected List<QQOperationViopTipTask> a;
+  protected List<QQOperationViopTipTask> a = new ArrayList();
+  private final AIOContext b;
+  private QQOperateTips c;
+  private ConfigObserver d = new QQOperateTipsHelper.1(this);
   
   public QQOperateTipsHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.b = paramAIOContext;
   }
   
   @NonNull
@@ -47,19 +46,19 @@ public class QQOperateTipsHelper
         if (paramInt != 15) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+        this.c = null;
+        this.b.a().removeObserver(this.d);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips = new QQOperateTips(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips);
+        this.c = new QQOperateTips(this.b, this.a);
+        this.b.c().b(this.c);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+      this.b.a().addObserver(this.d);
     }
   }
   
@@ -69,25 +68,25 @@ public class QQOperateTipsHelper
   
   public void postOnPanelChanged(int paramInt1, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    paramInt2 = this.jdField_a_of_type_JavaUtilList.size();
+    paramInt1 = this.b.k();
+    paramInt2 = this.a.size();
     if (paramInt1 != 0)
     {
-      paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
+      paramInt1 = this.b.c().b();
       if ((paramInt1 == 5) || (paramInt1 == 6)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
+        this.b.c().c();
       }
     }
-    else if ((paramInt2 != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips != null) && (!((FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(24)).c()))
+    else if ((paramInt2 != 0) && (this.c != null) && (!((FullScreenInputHelper)this.b.a(24)).e()))
     {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)this.jdField_a_of_type_JavaUtilList.get(paramInt2 - 1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips.a(localQQOperationViopTipTask);
+      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)this.a.get(paramInt2 - 1);
+      this.c.a(localQQOperationViopTipTask);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQOperateTipsHelper
  * JD-Core Version:    0.7.0.1
  */

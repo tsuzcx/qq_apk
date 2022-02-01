@@ -13,15 +13,15 @@ class PoiMapActivity$14
   public boolean onPreDraw()
   {
     PoiMapActivity localPoiMapActivity = this.a;
-    localPoiMapActivity.o = PoiMapActivity.e(localPoiMapActivity).getMeasuredHeight();
+    localPoiMapActivity.N = PoiMapActivity.h(localPoiMapActivity).getMeasuredHeight();
     localPoiMapActivity = this.a;
-    PoiMapActivity.a(localPoiMapActivity, PoiMapActivity.a(localPoiMapActivity).getMeasuredHeight());
-    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
+    PoiMapActivity.a(localPoiMapActivity, PoiMapActivity.i(localPoiMapActivity).getMeasuredHeight());
+    if ((this.a.N > 0) && (PoiMapActivity.j(this.a) > 0))
     {
       localPoiMapActivity = this.a;
-      localPoiMapActivity.a((localPoiMapActivity.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
-      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      localPoiMapActivity.a((localPoiMapActivity.N - PoiMapActivity.k(this.a)) / 2 + this.a.T, false);
+      PoiMapActivity.l(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.m(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
     return true;
   }

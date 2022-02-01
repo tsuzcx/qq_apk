@@ -42,7 +42,7 @@ public class MsgSummaryProvider
           localMessage.isFromLS = true;
           paramQQMessageFacade.a(localMessage);
           localMessage.isFromLS = false;
-          ThreadManager.getSubThreadHandler().post(new QQLSActivity.SyncTroopSummaryTask(paramQQAppInterface, ((QQLSActivity)paramContext).a, localMessage.senderuin, localMessage.frienduin));
+          ThreadManager.getSubThreadHandler().post(new QQLSActivity.SyncTroopSummaryTask(paramQQAppInterface, ((QQLSActivity)paramContext).w, localMessage.senderuin, localMessage.frienduin));
         }
         else
         {
@@ -69,7 +69,7 @@ public class MsgSummaryProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.msg.summary.MsgSummaryProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,6 @@ package com.tencent.mobileqq.sharehelper;
 
 public abstract interface IShareBusinessInterface
 {
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
   public abstract void d(int paramInt);
   
   public abstract void e(int paramInt);
@@ -21,10 +17,14 @@ public abstract interface IShareBusinessInterface
   public abstract void j(int paramInt);
   
   public abstract void k(int paramInt);
+  
+  public abstract void l(int paramInt);
+  
+  public abstract void m(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.IShareBusinessInterface
  * JD-Core Version:    0.7.0.1
  */

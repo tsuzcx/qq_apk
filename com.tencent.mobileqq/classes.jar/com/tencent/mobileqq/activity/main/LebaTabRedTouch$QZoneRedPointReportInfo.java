@@ -2,19 +2,19 @@ package com.tencent.mobileqq.activity.main;
 
 class LebaTabRedTouch$QZoneRedPointReportInfo
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  private final int a;
+  private final boolean b;
   
   private LebaTabRedTouch$QZoneRedPointReportInfo(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     boolean bool;
     if (paramInt2 > 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
   }
   
   public boolean equals(Object paramObject)
@@ -28,10 +28,10 @@ class LebaTabRedTouch$QZoneRedPointReportInfo
         return false;
       }
       paramObject = (QZoneRedPointReportInfo)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+      if (this.a != paramObject.a) {
         return false;
       }
-      return this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean;
+      return this.b == paramObject.b;
     }
     return false;
   }
@@ -43,7 +43,7 @@ class LebaTabRedTouch$QZoneRedPointReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.LebaTabRedTouch.QZoneRedPointReportInfo
  * JD-Core Version:    0.7.0.1
  */

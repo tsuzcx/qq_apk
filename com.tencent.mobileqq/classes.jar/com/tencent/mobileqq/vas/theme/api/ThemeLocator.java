@@ -42,11 +42,6 @@ public class ThemeLocator
     return this;
   }
   
-  public String a()
-  {
-    return this.a;
-  }
-  
   public String a(Context paramContext)
   {
     paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
@@ -60,19 +55,9 @@ public class ThemeLocator
     return localStringBuilder.toString();
   }
   
-  public boolean a()
-  {
-    return new File(this.b).exists();
-  }
-  
   public ThemeLocator b()
   {
     return a(MobileQQ.getContext(), "test", "test");
-  }
-  
-  public String b()
-  {
-    return ThemeUtil.getThemeConfigID(this.a);
   }
   
   public String b(Context paramContext)
@@ -81,14 +66,9 @@ public class ThemeLocator
     StringBuilder localStringBuilder = StringBuilderUtils.a();
     localStringBuilder.append(paramContext);
     localStringBuilder.append("3_");
-    localStringBuilder.append(b());
+    localStringBuilder.append(e());
     localStringBuilder.append(".cfg");
     return localStringBuilder.toString();
-  }
-  
-  public boolean b()
-  {
-    return new File(this.c).exists();
   }
   
   public ThemeLocator c()
@@ -98,14 +78,34 @@ public class ThemeLocator
     return this;
   }
   
-  public String c()
+  public String d()
+  {
+    return this.a;
+  }
+  
+  public String e()
+  {
+    return ThemeUtil.getThemeConfigID(this.a);
+  }
+  
+  public String f()
   {
     return this.b;
   }
   
-  public String d()
+  public String g()
   {
     return this.c;
+  }
+  
+  public boolean h()
+  {
+    return new File(this.b).exists();
+  }
+  
+  public boolean i()
+  {
+    return new File(this.c).exists();
   }
   
   public String toString()
@@ -115,7 +115,7 @@ public class ThemeLocator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.ThemeLocator
  * JD-Core Version:    0.7.0.1
  */

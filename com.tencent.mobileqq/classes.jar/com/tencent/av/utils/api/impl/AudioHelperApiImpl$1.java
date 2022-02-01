@@ -34,7 +34,7 @@ class AudioHelperApiImpl$1
           QLog.w("AudioHelper", 1, paramContext.toString());
         }
         if (i == 2) {
-          this.jdField_a_of_type_ComTencentAvUtilsApiImplAudioHelperApiImpl.setBeaconDebug(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication.getApplicationContext());
+          this.b.setBeaconDebug(this.a.getApplicationContext());
         }
       }
     }
@@ -42,7 +42,7 @@ class AudioHelperApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.utils.api.impl.AudioHelperApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class SubType0xeb
     try
     {
       submsgtype0xeb.MsgBody localMsgBody = new submsgtype0xeb.MsgBody();
-      if (paramOnLinePushMessageProcessor.b(paramMsgType0x210)) {
+      if (paramOnLinePushMessageProcessor.d(paramMsgType0x210)) {
         localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
       }
       ActivateFriendsManager.a((QQAppInterface)paramOnLinePushMessageProcessor.a(), localMsgBody);
@@ -43,7 +43,7 @@ public class SubType0xeb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xeb
  * JD-Core Version:    0.7.0.1
  */

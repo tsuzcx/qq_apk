@@ -26,7 +26,7 @@ class HuayangJsPluginImpl$1
     {
       if (((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getBackNotifyAction(this.a.pluginPackageName).equals(paramContext))
       {
-        paramContext = this.a.mRuntime.a();
+        paramContext = this.a.mRuntime.d();
         if ((paramContext instanceof BaseActivity))
         {
           ((BaseActivity)paramContext).doOnBackPressed();
@@ -142,7 +142,7 @@ class HuayangJsPluginImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangJsPluginImpl.1
  * JD-Core Version:    0.7.0.1
  */

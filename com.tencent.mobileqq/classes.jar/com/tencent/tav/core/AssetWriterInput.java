@@ -8,22 +8,27 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import com.tencent.tav.asset.MetadataItem;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
+import com.tencent.tav.decoder.AssetWriterVideoEncoder;
+import com.tencent.tav.decoder.DecoderUtils;
 import com.tencent.tav.decoder.EncoderWriter;
 import com.tencent.tav.decoder.Filter;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.logger.Logger;
 import java.nio.ByteBuffer;
 import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 public class AssetWriterInput
 {
   private static final String TAG = "AssetWriterInput";
   private AssetWriter assetWriter;
+  private final ExportConfig exportConfig;
   private Handler handler;
   private HandlerThread handlerThread;
-  Filter matrixFilter;
+  final Filter matrixFilter = new Filter();
   private int mediaType;
   private List<MetadataItem> metadata;
   private AssetWriterInput.WriterProgressListener progressListener;
@@ -32,82 +37,103 @@ public class AssetWriterInput
   private AssetWriterInput.StatusListener statusListener;
   private boolean stop = false;
   private Matrix transform;
-  private EncoderWriter writer;
+  EncoderWriter writer;
   private Handler writerHandler;
   private HandlerThread writerThread;
   
-  public AssetWriterInput(int paramInt)
+  public AssetWriterInput(int paramInt, ExportConfig paramExportConfig)
   {
     this.mediaType = paramInt;
+    this.exportConfig = paramExportConfig;
   }
   
-  private ExportErrorStatus appendAudioSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
+  @RequiresApi(api=18)
+  private void doWriteAudio(CMSampleBuffer paramCMSampleBuffer, boolean paramBoolean)
   {
-    boolean bool = paramCMSampleBuffer.getTime().smallThan(CMTime.CMTimeZero);
-    Object localObject = paramCMSampleBuffer;
-    if (!bool)
-    {
-      localObject = ByteBuffer.allocate(paramCMSampleBuffer.getSampleByteBuffer().limit());
-      ((ByteBuffer)localObject).order(paramCMSampleBuffer.getSampleByteBuffer().order());
-      ((ByteBuffer)localObject).put(paramCMSampleBuffer.getSampleByteBuffer());
-      ((ByteBuffer)localObject).flip();
-      localObject = new CMSampleBuffer(paramCMSampleBuffer.getTime().sub(this.assetWriter.startTime), (ByteBuffer)localObject);
+    if (this.handler == null) {
+      return;
     }
-    this.writerHandler.post(new AssetWriterInput.WriterAudioRunnable(this, (CMSampleBuffer)localObject, bool, null));
-    return null;
-  }
-  
-  private ExportErrorStatus appendVideoSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
-  {
+    long l1 = -1L;
+    if (paramBoolean) {}
     try
     {
-      this.assetWriter.renderContext().makeCurrent();
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-      GLES20.glClear(16640);
-      ExportErrorStatus localExportErrorStatus2;
-      if ((paramCMSampleBuffer != null) && (paramCMSampleBuffer.getTime().getTimeUs() >= 0L))
-      {
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("appendSampleBuffer: start ");
-        localStringBuilder1.append(paramCMSampleBuffer.getTime());
-        Logger.v("AssetWriterInput", localStringBuilder1.toString());
-        try
-        {
-          renderSampleBuffer(paramCMSampleBuffer);
-          localStringBuilder1 = null;
-        }
-        catch (Exception localException1)
-        {
-          ExportErrorStatus localExportErrorStatus1 = new ExportErrorStatus(-112, localException1);
-        }
-        try
-        {
-          long l = paramCMSampleBuffer.getTime().sub(this.assetWriter.startTime).getTimeUs();
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("setPresentationTime: ");
-          localStringBuilder2.append(l);
-          Logger.d("AssetWriterInput", localStringBuilder2.toString());
-          this.assetWriter.renderContext().setPresentationTime(l);
-          this.assetWriter.renderContext().swapBuffers();
-        }
-        catch (Exception localException2)
-        {
-          localExportErrorStatus2 = new ExportErrorStatus(-113, localException2);
-        }
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("appendSampleBuffer: end ");
-        localStringBuilder2.append(paramCMSampleBuffer.getTime());
-        Logger.v("AssetWriterInput", localStringBuilder2.toString());
-      }
-      else
-      {
-        localExportErrorStatus2 = null;
-      }
-      this.writerHandler.post(new AssetWriterInput.WriterVideoRunnable(this, paramCMSampleBuffer, null));
-      return localExportErrorStatus2;
+      this.writer.endWriteAudioSample();
     }
-    catch (Exception paramCMSampleBuffer) {}
-    return new ExportErrorStatus(-111, paramCMSampleBuffer);
+    catch (Throwable paramCMSampleBuffer)
+    {
+      long l2;
+      if (!(paramCMSampleBuffer instanceof ExportRuntimeException)) {
+        break label78;
+      }
+      paramCMSampleBuffer = ((ExportRuntimeException)paramCMSampleBuffer).getErrorStatus();
+      break label89;
+      paramCMSampleBuffer = new ExportErrorStatus(-122, paramCMSampleBuffer);
+      AssetWriterInput.WriterProgressListener localWriterProgressListener = this.progressListener;
+      if (localWriterProgressListener == null) {
+        break label109;
+      }
+      localWriterProgressListener.onError(paramCMSampleBuffer);
+      return;
+    }
+    this.writer.writeAudioSample(paramCMSampleBuffer.getTime().getTimeUs(), paramCMSampleBuffer.getSampleByteBuffer());
+    l2 = this.writer.getAudioPresentationTimeUs();
+    l1 = l2;
+    label78:
+    label89:
+    label109:
+    paramCMSampleBuffer = this.progressListener;
+    if (paramCMSampleBuffer != null) {
+      paramCMSampleBuffer.onProgressChanged(this, l1);
+    }
+  }
+  
+  @RequiresApi(api=18)
+  private void doWriteVideo(CMSampleBuffer paramCMSampleBuffer, TextureInfo paramTextureInfo)
+  {
+    if (this.handler == null) {
+      return;
+    }
+    try
+    {
+      this.writer.writeVideoSample(paramCMSampleBuffer, paramTextureInfo);
+      if (paramCMSampleBuffer != null) {
+        if (paramCMSampleBuffer.getState().stateMatchingTo(new long[] { -1L })) {
+          this.writer.endWriteVideoSample(paramCMSampleBuffer, paramTextureInfo);
+        }
+      }
+    }
+    catch (Throwable paramCMSampleBuffer)
+    {
+      if ((paramCMSampleBuffer instanceof ExportRuntimeException)) {
+        paramCMSampleBuffer = ((ExportRuntimeException)paramCMSampleBuffer).getErrorStatus();
+      } else {
+        paramCMSampleBuffer = new ExportErrorStatus(-121, paramCMSampleBuffer);
+      }
+      paramTextureInfo = this.progressListener;
+      if (paramTextureInfo != null)
+      {
+        paramTextureInfo.onError(paramCMSampleBuffer);
+        return;
+      }
+    }
+    paramCMSampleBuffer = this.progressListener;
+    if (paramCMSampleBuffer != null) {
+      paramCMSampleBuffer.onProgressChanged(this, this.writer.getVideoPresentationTimeUs());
+    }
+  }
+  
+  @Nullable
+  private Matrix getStMatrix(TextureInfo paramTextureInfo)
+  {
+    paramTextureInfo = paramTextureInfo.getTextureMatrix();
+    Matrix localMatrix = this.writer.getVideoEncoder().getFrameMatrix();
+    if ((localMatrix != null) && (paramTextureInfo != null)) {
+      paramTextureInfo.postConcat(localMatrix);
+    }
+    if (paramTextureInfo != null) {
+      return paramTextureInfo;
+    }
+    return localMatrix;
   }
   
   private void onStartError(Exception paramException, int paramInt)
@@ -131,21 +157,48 @@ public class AssetWriterInput
     }
   }
   
-  private void renderSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
+  @RequiresApi(api=18)
+  private TextureInfo renderSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
   {
     paramCMSampleBuffer = paramCMSampleBuffer.getTextureInfo();
     if (paramCMSampleBuffer != null)
     {
-      RenderContext localRenderContext = this.assetWriter.renderContext();
-      if (this.matrixFilter == null)
+      Object localObject = this.assetWriter.renderContext();
+      if (this.writer.isVideoEncodeNeedVideoRenderOutputTexture())
       {
-        this.matrixFilter = new Filter();
-        this.matrixFilter.setRendererWidth(localRenderContext.width());
-        this.matrixFilter.setRendererHeight(localRenderContext.height());
+        this.matrixFilter.setRendererWidth(((RenderContext)localObject).width());
+        this.matrixFilter.setRendererHeight(((RenderContext)localObject).height());
+        this.matrixFilter.setRenderForScreen(false);
+        ((RenderContext)localObject).updateViewport(0, 0, ((RenderContext)localObject).width(), ((RenderContext)localObject).height());
       }
-      localRenderContext.updateViewport(0, 0, localRenderContext.width(), localRenderContext.height());
-      this.matrixFilter.applyFilter(paramCMSampleBuffer, this.transform, paramCMSampleBuffer.getTextureMatrix());
+      else
+      {
+        int i;
+        int j;
+        if (this.exportConfig.getOutputRotate() % 2 != 0)
+        {
+          i = ((RenderContext)localObject).height();
+          j = ((RenderContext)localObject).width();
+        }
+        else
+        {
+          i = ((RenderContext)localObject).width();
+          j = ((RenderContext)localObject).height();
+        }
+        this.matrixFilter.setRendererWidth(i);
+        this.matrixFilter.setRendererHeight(j);
+        this.matrixFilter.setRenderForScreen(true);
+        ((RenderContext)localObject).updateViewport(0, 0, i, j);
+        localObject = DecoderUtils.getRotationMatrix(this.exportConfig.getOutputRotate(), paramCMSampleBuffer.width, paramCMSampleBuffer.height);
+        if (this.transform == null) {
+          this.transform = new Matrix();
+        }
+        this.transform.postConcat((Matrix)localObject);
+      }
+      localObject = getStMatrix(paramCMSampleBuffer);
+      return this.matrixFilter.applyFilter(paramCMSampleBuffer, this.transform, (Matrix)localObject);
     }
+    return null;
   }
   
   void addStatusListener(AssetWriterInput.StatusListener paramStatusListener)
@@ -153,31 +206,88 @@ public class AssetWriterInput
     this.statusListener = paramStatusListener;
   }
   
-  public ExportErrorStatus appendSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
+  ExportErrorStatus appendAudioSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
   {
-    if (!this.stop) {
-      try
-      {
-        if ((this.mediaType == 1) && (this.assetWriter.renderContext() != null)) {
-          return appendVideoSampleBuffer(paramCMSampleBuffer);
-        }
-        if (this.mediaType == 2)
-        {
-          paramCMSampleBuffer = appendAudioSampleBuffer(paramCMSampleBuffer);
-          return paramCMSampleBuffer;
-        }
-      }
-      catch (Throwable paramCMSampleBuffer)
-      {
-        Logger.e("AssetWriterInput", "appendSampleBuffer: error", paramCMSampleBuffer);
-        AssetWriterInput.StatusListener localStatusListener = this.statusListener;
-        if (localStatusListener != null) {
-          localStatusListener.statusChanged(this, AssetWriter.AssetWriterStatus.AssetWriterStatusFailed);
-        }
-        return new ExportErrorStatus(-110, paramCMSampleBuffer);
-      }
+    boolean bool = paramCMSampleBuffer.getTime().smallThan(CMTime.CMTimeZero);
+    Object localObject = paramCMSampleBuffer;
+    if (!bool)
+    {
+      localObject = ByteBuffer.allocate(paramCMSampleBuffer.getSampleByteBuffer().limit());
+      ((ByteBuffer)localObject).order(paramCMSampleBuffer.getSampleByteBuffer().order());
+      ((ByteBuffer)localObject).put(paramCMSampleBuffer.getSampleByteBuffer());
+      ((ByteBuffer)localObject).flip();
+      localObject = new CMSampleBuffer(paramCMSampleBuffer.getTime().sub(this.assetWriter.startTime), (ByteBuffer)localObject);
     }
-    return new ExportErrorStatus(-11);
+    this.writerHandler.post(new AssetWriterInput.WriterAudioRunnable(this, (CMSampleBuffer)localObject, bool, null));
+    return null;
+  }
+  
+  @RequiresApi(api=18)
+  ExportErrorStatus appendVideoSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
+  {
+    try
+    {
+      this.assetWriter.renderContext().makeCurrent();
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+      GLES20.glClear(16640);
+      Object localObject1;
+      Object localObject3;
+      if ((paramCMSampleBuffer != null) && (paramCMSampleBuffer.getTime().getTimeUs() >= 0L))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("appendSampleBuffer: start ");
+        ((StringBuilder)localObject1).append(paramCMSampleBuffer.getTime());
+        Logger.v("AssetWriterInput", ((StringBuilder)localObject1).toString());
+        try
+        {
+          localObject1 = renderSampleBuffer(paramCMSampleBuffer);
+          try
+          {
+            if (this.writer.isVideoEncodeNeedVideoRenderOutputTexture()) {
+              GLES20.glFinish();
+            }
+            Object localObject2 = null;
+          }
+          catch (Exception localException1) {}
+          localExportErrorStatus = new ExportErrorStatus(-112, localException2);
+        }
+        catch (Exception localException2)
+        {
+          localObject1 = null;
+        }
+        try
+        {
+          ExportErrorStatus localExportErrorStatus;
+          long l = paramCMSampleBuffer.getTime().sub(this.assetWriter.startTime).getTimeUs();
+          if (this.writer.isVideoEncodeNeedVideoRenderOutputTexture()) {
+            this.assetWriter.encoderWriter().getVideoEncoder().onOutputTextureUpdate((TextureInfo)localObject1, l);
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setPresentationTime: ");
+          localStringBuilder.append(l);
+          Logger.d("AssetWriterInput", localStringBuilder.toString());
+          this.assetWriter.renderContext().setPresentationTime(l);
+          this.assetWriter.renderContext().swapBuffers();
+        }
+        catch (Exception localException3)
+        {
+          localObject3 = new ExportErrorStatus(-113, localException3);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("appendSampleBuffer: end ");
+        localStringBuilder.append(paramCMSampleBuffer.getTime());
+        Logger.v("AssetWriterInput", localStringBuilder.toString());
+      }
+      else
+      {
+        localObject1 = null;
+        localObject3 = localObject1;
+      }
+      this.writerHandler.post(new AssetWriterInput.WriterVideoRunnable(this, paramCMSampleBuffer, (TextureInfo)localObject1, null));
+      return localObject3;
+    }
+    catch (Exception paramCMSampleBuffer) {}
+    return new ExportErrorStatus(-111, paramCMSampleBuffer);
   }
   
   public void close()
@@ -258,7 +368,12 @@ public class AssetWriterInput
       paramHandlerThread.start();
       this.handler = new Handler(paramHandlerThread.getLooper());
       this.handler.post(new AssetWriterInput.1(this, paramRunnable));
-      this.writerThread = new HandlerThread("writerThread");
+      paramHandlerThread = new StringBuilder();
+      paramHandlerThread.append("writerThread-");
+      paramHandlerThread.append(this.mediaType);
+      paramHandlerThread.append("@");
+      paramHandlerThread.append(Integer.toHexString(hashCode()));
+      this.writerThread = new HandlerThread(paramHandlerThread.toString());
       this.writerThread.start();
       this.writerHandler = new Handler(this.writerThread.getLooper());
       return;
@@ -289,9 +404,13 @@ public class AssetWriterInput
     }
     try
     {
-      if (this.mediaType == 1) {
+      if (this.mediaType == 1)
+      {
         this.writer.startVideoEncoder();
-      } else {
+        this.writer.setVideoSampleRenderContext(this.assetWriter.renderContext());
+      }
+      else
+      {
         this.writer.startAudioEncoder();
       }
       this.readyForMoreMediaData = true;
@@ -313,7 +432,7 @@ public class AssetWriterInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriterInput
  * JD-Core Version:    0.7.0.1
  */

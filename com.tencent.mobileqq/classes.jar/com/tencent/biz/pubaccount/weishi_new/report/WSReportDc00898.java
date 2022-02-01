@@ -49,17 +49,6 @@ public class WSReportDc00898
     return "Other";
   }
   
-  private static String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return "weishi_share_officialacc";
-    }
-    if (paramInt == 2) {
-      return "weishi_share_trendstab";
-    }
-    return "";
-  }
-  
   public static String a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     if (paramstSimpleMetaFeed == null) {
@@ -229,7 +218,7 @@ public class WSReportDc00898
     }
     localHashMap.put("preload_status", Integer.valueOf(i));
     localHashMap.put("networkType", a());
-    localHashMap.put("ipAddress", WSDeviceUtils.a());
+    localHashMap.put("ipAddress", WSDeviceUtils.b());
     return new JSONObject(localHashMap).toString();
   }
   
@@ -259,19 +248,13 @@ public class WSReportDc00898
     localHashMap.put("feeds_list_type", Integer.valueOf(paramInt3));
     localHashMap.put("preload_count", Integer.valueOf(paramInt1));
     localHashMap.put("networkType", a());
-    localHashMap.put("ipAddress", WSDeviceUtils.a());
+    localHashMap.put("ipAddress", WSDeviceUtils.b());
     return new JSONObject(localHashMap).toString();
-  }
-  
-  public static void a()
-  {
-    a("officialacc_weishi", "feeds_clk", 0, 0, -1L, 0L, "", b());
-    a("weishi_share_officialacc", "feeds_clk_ws", 0, 0, -1L, 0L, "", b());
   }
   
   public static void a(int paramInt)
   {
-    a("weishi_share_officialacc", "start_dl_ws_fin", paramInt, 0, WSGlobalConfig.a().b(), 0L, "", "");
+    a("weishi_share_officialacc", "start_dl_ws_fin", paramInt, 0, WSGlobalConfig.a().i(), 0L, "", "");
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -374,60 +357,19 @@ public class WSReportDc00898
     if (paramWSDownloadParams == null) {
       return;
     }
-    a("weishi_share_officialacc", "start_dl_ws", paramInt, 0, WSGlobalConfig.a().b(), 0L, "", paramWSDownloadParams.mTestId);
+    a("weishi_share_officialacc", "start_dl_ws", paramInt, 0, WSGlobalConfig.a().i(), 0L, "", paramWSDownloadParams.mTestId);
   }
   
   public static void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
     if (paramWSPlayerParam != null)
     {
-      if (paramWSPlayerParam.a == null) {
+      if (paramWSPlayerParam.c == null) {
         return;
       }
-      paramWSPlayerParam = WSReportDC898Vertical.a(paramWSPlayerParam, paramBoolean);
+      paramWSPlayerParam = WSReportDC898Vertical.b(paramWSPlayerParam, paramBoolean);
       paramWSPlayerParam = new Gson().toJson(paramWSPlayerParam);
       a(WSReportUtils.a(), "focus_video_play", 0, 0, 0L, 0L, paramWSPlayerParam, WeishiUtils.a(9));
-    }
-  }
-  
-  public static void a(WSRedDotPushMsg paramWSRedDotPushMsg)
-  {
-    if (paramWSRedDotPushMsg != null)
-    {
-      IWSPushBaseStrategy localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
-      boolean bool = localIWSPushBaseStrategy instanceof WSPushStrategyInfo;
-      int i = 0;
-      int j = 0;
-      if (bool)
-      {
-        localObject = (WSPushStrategyInfo)localIWSPushBaseStrategy;
-        i = j;
-        if (((WSPushStrategyInfo)localObject).mWSPushModel != null) {
-          i = ((WSPushStrategyInfo)localObject).mWSPushModel.a;
-        }
-        j = ((WSPushStrategyInfo)localObject).getType();
-      }
-      else
-      {
-        j = 0;
-      }
-      if (j == 3) {
-        j = 1;
-      }
-      long l1;
-      if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication().getApplicationContext())) {
-        l1 = 1L;
-      } else {
-        l1 = 0L;
-      }
-      long l2 = i;
-      Object localObject = paramWSRedDotPushMsg.mPushId;
-      if (localIWSPushBaseStrategy != null) {
-        paramWSRedDotPushMsg = localIWSPushBaseStrategy.getAbTest();
-      } else {
-        paramWSRedDotPushMsg = "";
-      }
-      a("officialacc_weishi", "push_text_clk", j, 0, l1, l2, (String)localObject, paramWSRedDotPushMsg);
     }
   }
   
@@ -488,7 +430,7 @@ public class WSReportDc00898
     if (paramWSDownloadParams == null) {
       return;
     }
-    String str = a(paramWSDownloadParams.mScene);
+    String str = d(paramWSDownloadParams.mScene);
     if (TextUtils.isEmpty(str)) {
       return;
     }
@@ -497,17 +439,12 @@ public class WSReportDc00898
       a(str, "dl_clk_QQdownloader", 0, 0, 0L, 0L, "", paramWSDownloadParams.mTestId);
       return;
     }
-    a(str, "dl_clk_officialdownloader", WSGlobalConfig.a().b(), 0, 0L, 0L, "", paramWSDownloadParams.mTestId);
+    a(str, "dl_clk_officialdownloader", WSGlobalConfig.a().i(), 0, 0L, 0L, "", paramWSDownloadParams.mTestId);
   }
   
   public static String b()
   {
     return WeishiUtils.a(1);
-  }
-  
-  public static void b()
-  {
-    a("trandstab_weishi", "push_clk", 0, 0, 0L, 0L, "", "");
   }
   
   public static void b(int paramInt)
@@ -533,6 +470,47 @@ public class WSReportDc00898
     a("officialacc_weishi", "comment_popup_exp", 0, 0, 0L, 0L, (String)localObject, "");
   }
   
+  public static void b(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    if (paramWSRedDotPushMsg != null)
+    {
+      IWSPushBaseStrategy localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
+      boolean bool = localIWSPushBaseStrategy instanceof WSPushStrategyInfo;
+      int i = 0;
+      int j = 0;
+      if (bool)
+      {
+        localObject = (WSPushStrategyInfo)localIWSPushBaseStrategy;
+        i = j;
+        if (((WSPushStrategyInfo)localObject).mWSPushModel != null) {
+          i = ((WSPushStrategyInfo)localObject).mWSPushModel.a;
+        }
+        j = ((WSPushStrategyInfo)localObject).getType();
+      }
+      else
+      {
+        j = 0;
+      }
+      if (j == 3) {
+        j = 1;
+      }
+      long l1;
+      if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication().getApplicationContext())) {
+        l1 = 1L;
+      } else {
+        l1 = 0L;
+      }
+      long l2 = i;
+      Object localObject = paramWSRedDotPushMsg.mPushId;
+      if (localIWSPushBaseStrategy != null) {
+        paramWSRedDotPushMsg = localIWSPushBaseStrategy.getAbTest();
+      } else {
+        paramWSRedDotPushMsg = "";
+      }
+      a("officialacc_weishi", "push_text_clk", j, 0, l1, l2, (String)localObject, paramWSRedDotPushMsg);
+    }
+  }
+  
   public static void b(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -545,7 +523,8 @@ public class WSReportDc00898
   
   public static void c()
   {
-    a(WSReportUtils.a(), "focus_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), WeishiUtils.a(9));
+    a("officialacc_weishi", "feeds_clk", 0, 0, -1L, 0L, "", b());
+    a("weishi_share_officialacc", "feeds_clk_ws", 0, 0, -1L, 0L, "", b());
   }
   
   public static void c(int paramInt)
@@ -586,17 +565,38 @@ public class WSReportDc00898
     a("weishi_share_officialacc", "feeds_popup_exp", paramInt2, 0, 0L, 0L, (String)localObject, b());
   }
   
-  private static String d()
+  private static String d(int paramInt)
+  {
+    if (paramInt == 1) {
+      return "weishi_share_officialacc";
+    }
+    if (paramInt == 2) {
+      return "weishi_share_trendstab";
+    }
+    return "";
+  }
+  
+  public static void d()
+  {
+    a("trandstab_weishi", "push_clk", 0, 0, 0L, 0L, "", "");
+  }
+  
+  public static void e()
+  {
+    a(WSReportUtils.a(), "focus_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), WeishiUtils.a(9));
+  }
+  
+  private static String g()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("networkType", a());
-    localHashMap.put("ipAddress", WSDeviceUtils.a());
+    localHashMap.put("ipAddress", WSDeviceUtils.b());
     return new JSONObject(localHashMap).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898
  * JD-Core Version:    0.7.0.1
  */

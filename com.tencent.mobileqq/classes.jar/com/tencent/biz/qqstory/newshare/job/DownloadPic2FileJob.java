@@ -11,9 +11,9 @@ public class DownloadPic2FileJob
   extends Job
 {
   public UrlBitmapDownloader a;
-  private String a;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private String b;
+  private String c;
+  private boolean d;
   
   public DownloadPic2FileJob()
   {
@@ -23,16 +23,16 @@ public class DownloadPic2FileJob
   public DownloadPic2FileJob(String paramString1, String paramString2, boolean paramBoolean)
   {
     a(false, true);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramBoolean;
   }
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
-      a(this.jdField_a_of_type_JavaLangString);
+      a(this.b);
       return;
     }
     b(false);
@@ -40,7 +40,7 @@ public class DownloadPic2FileJob
   
   public void a(String paramString)
   {
-    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
+    File localFile1 = new File(this.c);
     try
     {
       File localFile2 = localFile1.getParentFile();
@@ -56,8 +56,8 @@ public class DownloadPic2FileJob
       label45:
       break label45;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(paramString, 0, 0, new DownloadPic2FileJob.1(this, paramString));
+    this.a = new ShareGroupIconManager.UrlBitmapDownloaderImp();
+    this.a.a(paramString, 0, 0, new DownloadPic2FileJob.1(this, paramString));
   }
   
   protected void a(Map<String, Object> paramMap)
@@ -65,20 +65,20 @@ public class DownloadPic2FileJob
     if ((paramMap != null) && (!paramMap.isEmpty()))
     {
       if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
-        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
+        this.b = ((String)b("DownloadPic2FileJob_iiu"));
       }
       if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
-        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
+        this.c = ((String)b("DownloadPic2FileJob_isfp"));
       }
       if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
-        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
+        this.d = ((Boolean)b("DownloadPic2FileJob_IN_ROUND")).booleanValue();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob
  * JD-Core Version:    0.7.0.1
  */

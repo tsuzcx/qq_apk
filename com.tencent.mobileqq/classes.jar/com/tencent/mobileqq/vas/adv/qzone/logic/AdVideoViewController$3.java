@@ -22,17 +22,17 @@ class AdVideoViewController$3
   
   public void onLoopBack(long paramLong1, long paramLong2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    Object localObject = this.b;
     if (localObject != null) {
       paramLong1 = ((BaseVideoView)localObject).getCurPlayingPos();
     } else {
       paramLong1 = 0L;
     }
-    AdVideoViewController.b(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController);
-    if (AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController) != null)
+    AdVideoViewController.i(this.c);
+    if (AdVideoViewController.a(this.c) != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController;
-      AdVideoViewController.a((AdVideoViewController)localObject, AdVideoViewController.a((AdVideoViewController)localObject), paramLong1, 0, 3, true, this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.mVideoReportUrl);
+      localObject = this.c;
+      AdVideoViewController.a((AdVideoViewController)localObject, AdVideoViewController.g((AdVideoViewController)localObject), paramLong1, 0, 3, true, this.a.mVideoReportUrl);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AdVideoView", 0, "onLoopBack ");
@@ -41,22 +41,22 @@ class AdVideoViewController$3
   
   public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    paramString = this.b;
     if (paramString != null) {
       paramLong = paramString.getCurPlayingPos();
     } else {
       paramLong = 0L;
     }
-    if (AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController) != null)
+    if (AdVideoViewController.a(this.c) != null)
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController;
-      AdVideoViewController.a(paramString, AdVideoViewController.a(paramString), paramLong, 3, 3, false, this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.mVideoReportUrl);
+      paramString = this.c;
+      AdVideoViewController.a(paramString, AdVideoViewController.g(paramString), paramLong, 3, 3, false, this.a.mVideoReportUrl);
     }
   }
   
   public void onPlayProgress(long paramLong1, long paramLong2)
   {
-    AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController, paramLong2);
+    AdVideoViewController.a(this.c, paramLong2);
   }
   
   public void onStateChange(long paramLong, int paramInt)
@@ -78,39 +78,39 @@ class AdVideoViewController$3
       if (paramInt != 6) {
         return;
       }
-      if (AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController) != null) {
-        AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController).setVisibility(0);
+      if (AdVideoViewController.c(this.c) != null) {
+        AdVideoViewController.c(this.c).setVisibility(0);
       }
-      if (AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController))
+      if (AdVideoViewController.f(this.c))
       {
-        AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController, false);
+        AdVideoViewController.a(this.c, false);
         paramInt = 2;
       }
       else
       {
         paramInt = 3;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData != null)
+      if (this.a != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController;
-        AdVideoViewController.a((AdVideoViewController)localObject, AdVideoViewController.a((AdVideoViewController)localObject), AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController), 0, paramInt, false, this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.mVideoReportUrl);
+        localObject = this.c;
+        AdVideoViewController.a((AdVideoViewController)localObject, AdVideoViewController.g((AdVideoViewController)localObject), AdVideoViewController.h(this.c), 0, paramInt, false, this.a.mVideoReportUrl);
       }
     }
     else
     {
-      if (AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController) != null) {
-        AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController).setVisibility(8);
+      if (AdVideoViewController.c(this.c) != null) {
+        AdVideoViewController.c(this.c).setVisibility(8);
       }
-      if (AdVideoViewController.b(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController) != null) {
-        AdVideoViewController.b(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController).setVisibility(8);
+      if (AdVideoViewController.e(this.c) != null) {
+        AdVideoViewController.e(this.c).setVisibility(8);
       }
-      AdVideoViewController.b(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController, true);
+      AdVideoViewController.b(this.c, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AdVideoViewController.3
  * JD-Core Version:    0.7.0.1
  */

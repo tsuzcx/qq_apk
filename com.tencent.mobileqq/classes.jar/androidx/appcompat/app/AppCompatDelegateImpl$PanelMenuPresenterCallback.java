@@ -1,6 +1,7 @@
 package androidx.appcompat.app;
 
 import android.view.Window.Callback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPresenter.Callback;
 
@@ -9,7 +10,7 @@ final class AppCompatDelegateImpl$PanelMenuPresenterCallback
 {
   AppCompatDelegateImpl$PanelMenuPresenterCallback(AppCompatDelegateImpl paramAppCompatDelegateImpl) {}
   
-  public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+  public void onCloseMenu(@NonNull MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
     MenuBuilder localMenuBuilder = paramMenuBuilder.getRootMenu();
     int i;
@@ -35,9 +36,9 @@ final class AppCompatDelegateImpl$PanelMenuPresenterCallback
     }
   }
   
-  public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+  public boolean onOpenSubMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
-    if ((paramMenuBuilder == null) && (this.this$0.mHasActionBar))
+    if ((paramMenuBuilder == paramMenuBuilder.getRootMenu()) && (this.this$0.mHasActionBar))
     {
       Window.Callback localCallback = this.this$0.getWindowCallback();
       if ((localCallback != null) && (!this.this$0.mIsDestroyed)) {

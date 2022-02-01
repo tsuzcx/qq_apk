@@ -21,27 +21,92 @@ import org.json.JSONObject;
 public class AVGameShareH5Entry
   extends AVGameShareEntry
 {
-  private String a;
-  private String b;
   private String c;
   private String d;
+  private String e;
+  private String f;
   
   public AVGameShareH5Entry(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
-    this.jdField_a_of_type_JavaLangString = paramString4;
-    this.b = paramString5;
-    this.c = paramString6;
-    this.d = paramString7;
-    if (TextUtils.isEmpty(this.c)) {
-      this.c = paramActivity.getResources().getString(2131690327);
+    this.c = paramString4;
+    this.d = paramString5;
+    this.e = paramString6;
+    this.f = paramString7;
+    if (TextUtils.isEmpty(this.e)) {
+      this.e = paramActivity.getResources().getString(2131887238);
     }
-    if (TextUtils.isEmpty(this.d)) {
-      this.d = "https://qqvgame.qq.com/116da9321d03f927e434a165c14c7c1b.png";
+    if (TextUtils.isEmpty(this.f)) {
+      this.f = "https://qqvgame.qq.com/116da9321d03f927e434a165c14c7c1b.png";
     }
   }
   
-  protected Intent a()
+  protected String a(int paramInt)
+  {
+    return this.c;
+  }
+  
+  protected String b(int paramInt)
+  {
+    return this.d;
+  }
+  
+  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    QLog.d("AVGameShareResultLink", 1, "shareToSpecifiedFriend");
+    x();
+    Object localObject = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", t(), ArkAppCenterUtil.d(), null, null);
+    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", "邀请你领礼包", t(), (Bundle)localObject, "avgame_share_callback_key");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkDirectly("avShareH5Entry", a(), (ArkShareInfo)localObject, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+    y();
+    QLog.d("AVGameShareResultLink", 1, "shareToSpecifiedFriend success");
+  }
+  
+  protected boolean f()
+  {
+    return true;
+  }
+  
+  protected boolean g()
+  {
+    return true;
+  }
+  
+  protected String h()
+  {
+    return this.c;
+  }
+  
+  protected String i()
+  {
+    return this.d;
+  }
+  
+  protected int l()
+  {
+    return -1;
+  }
+  
+  protected String n()
+  {
+    return this.f;
+  }
+  
+  protected String o()
+  {
+    return this.f;
+  }
+  
+  protected void q()
+  {
+    v();
+    Object localObject = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", t(), ArkAppCenterUtil.d(), null, null);
+    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", "邀请你领礼包", t(), (Bundle)localObject, "avgame_share_callback_key");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkBySelect("avShareH5Entry", a(), (ArkShareInfo)localObject);
+    w();
+  }
+  
+  protected Intent s()
   {
     QLog.d("AVGameShareResultLink", 1, "getShareArkIntent");
     if (a() == null)
@@ -58,88 +123,23 @@ public class AVGameShareH5Entry
     localIntent.putExtra("forward_ark_app_prompt", "邀请你领礼包");
     localIntent.putExtra("selection_mode", 2);
     localIntent.putExtra("avgame_share_callback_key", false);
-    String str = h();
+    String str = t();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getShareArkIntent metaDataString: ");
     localStringBuilder.append(str);
     QLog.d("AVGameShareResultLink", 1, localStringBuilder.toString());
     localIntent.putExtra("forward_ark_app_meta", str);
-    localIntent.putExtras(QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", str, ArkAppCenterUtil.a(), null, null));
+    localIntent.putExtras(QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", str, ArkAppCenterUtil.d(), null, null));
     return localIntent;
   }
   
-  protected String a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  protected int b()
-  {
-    return -1;
-  }
-  
-  protected String b(int paramInt)
-  {
-    return this.b;
-  }
-  
-  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    QLog.d("AVGameShareResultLink", 1, "shareToSpecifiedFriend");
-    h();
-    Object localObject = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", h(), ArkAppCenterUtil.a(), null, null);
-    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", "邀请你领礼包", h(), (Bundle)localObject, "avgame_share_callback_key");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkDirectly("avShareH5Entry", a(), (ArkShareInfo)localObject, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-    i();
-    QLog.d("AVGameShareResultLink", 1, "shareToSpecifiedFriend success");
-  }
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  protected void c()
-  {
-    f();
-    Object localObject = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", h(), ArkAppCenterUtil.a(), null, null);
-    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", "邀请你领礼包", h(), (Bundle)localObject, "avgame_share_callback_key");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkBySelect("avShareH5Entry", a(), (ArkShareInfo)localObject);
-    g();
-  }
-  
-  protected String d()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected String e()
-  {
-    return this.b;
-  }
-  
-  protected String f()
-  {
-    return this.d;
-  }
-  
-  protected String g()
-  {
-    return this.d;
-  }
-  
-  protected String h()
+  protected String t()
   {
     try
     {
-      b();
-      long l = this.jdField_a_of_type_Long;
-      String str = a();
+      c();
+      long l = this.b;
+      String str = b();
       localObject = new JSONObject();
       JSONObject localJSONObject1 = new JSONObject();
       localJSONObject1.put("type", "award");
@@ -151,10 +151,10 @@ public class AVGameShareH5Entry
       localStringBuilder.append("4");
       localJSONObject2.put("jump_url", localStringBuilder.toString());
       localJSONObject2.put("h5_url", str);
-      localJSONObject2.put("icon_url", this.d);
-      localJSONObject2.put("title", this.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("summary", this.b);
-      localJSONObject2.put("button", this.c);
+      localJSONObject2.put("icon_url", this.f);
+      localJSONObject2.put("title", this.c);
+      localJSONObject2.put("summary", this.d);
+      localJSONObject2.put("button", this.e);
       localJSONObject1.put("extra", localJSONObject2);
       ((JSONObject)localObject).put("invite", localJSONObject1);
       str = ((JSONObject)localObject).toString();
@@ -172,7 +172,7 @@ public class AVGameShareH5Entry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareH5Entry
  * JD-Core Version:    0.7.0.1
  */

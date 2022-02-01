@@ -39,7 +39,90 @@ import org.json.JSONObject;
 public class VoiceRoomService
   extends DefaultCustomRoomService
 {
-  private LiveInfo a(pbenterroom.EnterRoomRsp paramEnterRoomRsp, EnterRoomInfo paramEnterRoomInfo)
+  private void a(int paramInt, EnterExitRoomCallback paramEnterExitRoomCallback)
+  {
+    pbenterroom.EnterRoomReq localEnterRoomReq = new pbenterroom.EnterRoomReq();
+    localEnterRoomReq.roomId.set((int)this.c.roomId);
+    if (!StringUtil.isEmpty(this.c.source)) {}
+    try
+    {
+      i = Integer.valueOf(this.c.source).intValue();
+    }
+    catch (Exception localException)
+    {
+      int i;
+      label55:
+      com.tencent.falco.base.libapi.log.LogInterface localLogInterface;
+      StringBuilder localStringBuilder;
+      break label55;
+    }
+    this.a.getLogger().i("AbstractCustomRoomService", "fromid is not integer", new Object[0]);
+    i = 0;
+    localEnterRoomReq.from_id.set(i);
+    localLogInterface = this.a.getLogger();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fromid = ");
+    localStringBuilder.append(i);
+    localLogInterface.i("AbstractCustomRoomService", localStringBuilder.toString(), new Object[0]);
+    localEnterRoomReq.enter_type.set(1);
+    localEnterRoomReq.room_type.set(this.c.roomType);
+    this.a.getChannel().send(16423, 1, localEnterRoomReq.toByteArray(), new VoiceRoomService.1(this, paramEnterExitRoomCallback, paramInt));
+  }
+  
+  private void a(EnterExitRoomCallback paramEnterExitRoomCallback)
+  {
+    int i = this.c.extData.getInt("content_type");
+    com.tencent.mobileqq.litelivesdk.utils.log.LogInterface localLogInterface = LogFactory.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("----------watchEnterRoom contentType ");
+    ((StringBuilder)localObject).append(i);
+    localLogInterface.c("AbstractCustomRoomService", ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((Map)localObject).put("Referer", g());
+    long l = System.currentTimeMillis();
+    h();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("room_id", String.valueOf(this.c.roomId));
+    }
+    catch (Exception localException)
+    {
+      a(System.currentTimeMillis() - l, -2, localException.getMessage());
+      paramEnterExitRoomCallback.onSuccess();
+    }
+    String str;
+    if (this.d) {
+      str = b();
+    } else {
+      str = a();
+    }
+    HttpsFactory.a().a(str, (Map)localObject, localJSONObject, new VoiceRoomService.2(this, paramEnterExitRoomCallback, l), CookieHelper.a());
+  }
+  
+  private boolean a(pbenterroom.EnterRoomRsp paramEnterRoomRsp, EnterRoomInfo paramEnterRoomInfo)
+  {
+    paramEnterRoomRsp = b(paramEnterRoomRsp, paramEnterRoomInfo);
+    if ((paramEnterRoomRsp != null) && (paramEnterRoomRsp.watchMediaInfo != null) && (paramEnterRoomRsp.watchMediaInfo.sig != null))
+    {
+      if (paramEnterRoomRsp.watchMediaInfo != null) {
+        getLiveInfo().watchMediaInfo = paramEnterRoomRsp.watchMediaInfo;
+      }
+      if (paramEnterRoomRsp.anchorInfo != null) {
+        getLiveInfo().anchorInfo = paramEnterRoomRsp.anchorInfo;
+      }
+      if (paramEnterRoomRsp.mediaInfo != null) {
+        getLiveInfo().mediaInfo = paramEnterRoomRsp.mediaInfo;
+      }
+      if (paramEnterRoomRsp.roomInfo != null) {
+        getLiveInfo().roomInfo = paramEnterRoomRsp.roomInfo;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private LiveInfo b(pbenterroom.EnterRoomRsp paramEnterRoomRsp, EnterRoomInfo paramEnterRoomInfo)
   {
     paramEnterRoomInfo = new LiveInfo();
     Object localObject = new LiveRoomInfo();
@@ -154,93 +237,10 @@ public class VoiceRoomService
     return paramEnterRoomInfo;
   }
   
-  private void a(int paramInt, EnterExitRoomCallback paramEnterExitRoomCallback)
-  {
-    pbenterroom.EnterRoomReq localEnterRoomReq = new pbenterroom.EnterRoomReq();
-    localEnterRoomReq.roomId.set((int)this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.roomId);
-    if (!StringUtil.isEmpty(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.source)) {}
-    try
-    {
-      i = Integer.valueOf(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.source).intValue();
-    }
-    catch (Exception localException)
-    {
-      int i;
-      label55:
-      com.tencent.falco.base.libapi.log.LogInterface localLogInterface;
-      StringBuilder localStringBuilder;
-      break label55;
-    }
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger().i("AbstractCustomRoomService", "fromid is not integer", new Object[0]);
-    i = 0;
-    localEnterRoomReq.from_id.set(i);
-    localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fromid = ");
-    localStringBuilder.append(i);
-    localLogInterface.i("AbstractCustomRoomService", localStringBuilder.toString(), new Object[0]);
-    localEnterRoomReq.enter_type.set(1);
-    localEnterRoomReq.room_type.set(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.roomType);
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getChannel().send(16423, 1, localEnterRoomReq.toByteArray(), new VoiceRoomService.1(this, paramEnterExitRoomCallback, paramInt));
-  }
-  
-  private void a(EnterExitRoomCallback paramEnterExitRoomCallback)
-  {
-    int i = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.extData.getInt("content_type");
-    com.tencent.mobileqq.litelivesdk.utils.log.LogInterface localLogInterface = LogFactory.a();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("----------watchEnterRoom contentType ");
-    ((StringBuilder)localObject).append(i);
-    localLogInterface.c("AbstractCustomRoomService", ((StringBuilder)localObject).toString());
-    localObject = new HashMap();
-    ((Map)localObject).put("Referer", g());
-    long l = System.currentTimeMillis();
-    a();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("room_id", String.valueOf(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo.roomId));
-    }
-    catch (Exception localException)
-    {
-      a(System.currentTimeMillis() - l, -2, localException.getMessage());
-      paramEnterExitRoomCallback.onSuccess();
-    }
-    String str;
-    if (this.jdField_a_of_type_Boolean) {
-      str = b();
-    } else {
-      str = a();
-    }
-    HttpsFactory.a().a(str, (Map)localObject, localJSONObject, new VoiceRoomService.2(this, paramEnterExitRoomCallback, l), CookieHelper.a());
-  }
-  
-  private boolean a(pbenterroom.EnterRoomRsp paramEnterRoomRsp, EnterRoomInfo paramEnterRoomInfo)
-  {
-    paramEnterRoomRsp = a(paramEnterRoomRsp, paramEnterRoomInfo);
-    if ((paramEnterRoomRsp != null) && (paramEnterRoomRsp.watchMediaInfo != null) && (paramEnterRoomRsp.watchMediaInfo.sig != null))
-    {
-      if (paramEnterRoomRsp.watchMediaInfo != null) {
-        getLiveInfo().watchMediaInfo = paramEnterRoomRsp.watchMediaInfo;
-      }
-      if (paramEnterRoomRsp.anchorInfo != null) {
-        getLiveInfo().anchorInfo = paramEnterRoomRsp.anchorInfo;
-      }
-      if (paramEnterRoomRsp.mediaInfo != null) {
-        getLiveInfo().mediaInfo = paramEnterRoomRsp.mediaInfo;
-      }
-      if (paramEnterRoomRsp.roomInfo != null) {
-        getLiveInfo().roomInfo = paramEnterRoomRsp.roomInfo;
-      }
-      return true;
-    }
-    return false;
-  }
-  
   public void watchEnterRoom(EnterRoomInfo paramEnterRoomInfo, EnterExitRoomCallback paramEnterExitRoomCallback)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo = paramEnterRoomInfo;
-    com.tencent.falco.base.libapi.log.LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger();
+    this.c = paramEnterRoomInfo;
+    com.tencent.falco.base.libapi.log.LogInterface localLogInterface = this.a.getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestEnterRoom roomInfo=");
     localStringBuilder.append(paramEnterRoomInfo.toString());
@@ -250,7 +250,7 @@ public class VoiceRoomService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomService
  * JD-Core Version:    0.7.0.1
  */

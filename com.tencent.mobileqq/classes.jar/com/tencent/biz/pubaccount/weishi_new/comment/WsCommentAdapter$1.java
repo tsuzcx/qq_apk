@@ -12,19 +12,19 @@ class WsCommentAdapter$1
   
   public void onClick(View paramView)
   {
-    if (WsCommentAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentAdapter) != null)
+    if (WsCommentAdapter.a(this.b) != null)
     {
-      String str = WsCommentAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentAdapter);
-      if (WsCommentAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentAdapter) != null) {
-        str = WsCommentAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentAdapter).id;
+      String str = WsCommentAdapter.b(this.b);
+      if (WsCommentAdapter.c(this.b) != null) {
+        str = WsCommentAdapter.c(this.b).id;
       }
-      WsCommentAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentAdapter).a(paramView, 12, this.jdField_a_of_type_Int, str);
+      WsCommentAdapter.a(this.b).a(paramView, 12, this.a, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentAdapter.1
  * JD-Core Version:    0.7.0.1
  */

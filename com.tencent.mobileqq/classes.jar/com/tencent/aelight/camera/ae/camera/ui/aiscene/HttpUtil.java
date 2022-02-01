@@ -12,8 +12,8 @@ public class HttpUtil
 {
   public static String a(long paramLong, int paramInt)
   {
-    Object localObject = CommonDataAdapter.a().f();
-    long l = CommonDataAdapter.a().a();
+    Object localObject = CommonDataAdapter.a().l();
+    long l = CommonDataAdapter.a().c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://tu.qq.com/wspeed.qq.com/w.cgi?appid=1000322&commandid=pitu.qqsdk.AutoAIScene&releaseversion=");
     localStringBuilder.append((String)localObject);
@@ -90,7 +90,7 @@ public class HttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

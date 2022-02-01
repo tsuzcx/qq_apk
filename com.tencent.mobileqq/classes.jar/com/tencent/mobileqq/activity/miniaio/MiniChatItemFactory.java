@@ -14,12 +14,11 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class MiniChatItemFactory
   extends ItemBuilderFactory
 {
-  boolean a;
+  boolean f = false;
   
   public MiniChatItemFactory(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
     super(paramContext, paramQQAppInterface, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   private boolean a(int paramInt)
@@ -29,31 +28,31 @@ public class MiniChatItemFactory
   
   public ChatItemBuilder a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage)))
+    if (a(a(this.b, paramChatMessage)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder = new MiniChatTextItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      if (this.e == null) {
+        this.e = new MiniChatTextItemBuilder(this.b, paramBaseAdapter, this.a, this.c, this.d);
       }
-      paramChatMessage = a(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder, paramBaseAdapter);
+      paramChatMessage = a(this.e, paramBaseAdapter);
     }
     else
     {
       paramChatMessage = super.a(paramChatMessage, paramBaseAdapter);
     }
     if ((paramChatMessage instanceof BaseBubbleBuilder)) {
-      ((BaseBubbleBuilder)paramChatMessage).b = true;
+      ((BaseBubbleBuilder)paramChatMessage).o = true;
     }
     return paramChatMessage;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatItemFactory
  * JD-Core Version:    0.7.0.1
  */

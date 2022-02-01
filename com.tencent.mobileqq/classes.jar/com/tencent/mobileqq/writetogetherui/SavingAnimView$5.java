@@ -11,8 +11,8 @@ class SavingAnimView$5
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    float f2 = SavingAnimView.b(this.a) + f1;
-    float f3 = f1 + SavingAnimView.c(this.a);
+    float f2 = SavingAnimView.c(this.a) + f1;
+    float f3 = f1 + SavingAnimView.d(this.a);
     f1 = f2;
     if (f2 + 1.0E-005F >= 1.0F)
     {
@@ -24,7 +24,7 @@ class SavingAnimView$5
     if (1.0E-005F + f3 >= 1.0F) {
       f2 = 1.0F;
     }
-    if (!SavingAnimView.a(this.a)) {
+    if (!SavingAnimView.g(this.a)) {
       SavingAnimView.a(this.a, f1);
     }
     SavingAnimView.b(this.a, f2);
@@ -33,7 +33,7 @@ class SavingAnimView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.5
  * JD-Core Version:    0.7.0.1
  */

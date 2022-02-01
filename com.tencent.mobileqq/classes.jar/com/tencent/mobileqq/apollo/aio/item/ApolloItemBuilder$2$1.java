@@ -9,13 +9,13 @@ class ApolloItemBuilder$2$1
   
   public void run()
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.c.setVisibility(8);
+    this.a.c.y.setVisibility(8);
+    this.a.c.x.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.2.1
  * JD-Core Version:    0.7.0.1
  */

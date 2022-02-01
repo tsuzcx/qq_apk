@@ -24,11 +24,11 @@ import org.json.JSONObject;
 public class GoodsSoftAdAppDelegate
   extends IUIDelegate
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RIJDownloadView jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private ImageView i;
+  private TextView j;
+  private TextView k;
+  private RIJDownloadView l;
+  private ImageView m;
   
   public GoodsSoftAdAppDelegate(Context paramContext, int paramInt)
   {
@@ -37,88 +37,88 @@ public class GoodsSoftAdAppDelegate
   
   private void a(AdClickPos paramAdClickPos)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+    if (this.h != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.setClickPos(0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.setAdClickPos(paramAdClickPos);
-      ReadInJoyAdActionManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Activity)this.jdField_a_of_type_AndroidContentContext, 35, 1, 4, null);
+      this.h.setClickPos(0);
+      this.h.setAdClickPos(paramAdClickPos);
+      ReadInJoyAdActionManager.a(this.h, (Activity)this.b, 35, 1, 4, null);
     }
   }
   
   public int a()
   {
-    return 2131562845;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-    {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368343));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378784));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365517));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366743));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView = ((RIJDownloadView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365856));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setInFloatingBar(true);
-    }
+    return 2131629296;
   }
   
   public void b()
   {
-    a(new View[] { this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, this.jdField_b_of_type_AndroidWidgetImageView });
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new GoodsSoftAdAppDelegate.1(this));
+    if (this.c != null)
+    {
+      if (this.b == null) {
+        return;
+      }
+      this.i = ((ImageView)this.c.findViewById(2131435219));
+      this.j = ((TextView)this.c.findViewById(2131447463));
+      this.k = ((TextView)this.c.findViewById(2131431733));
+      this.m = ((ImageView)this.c.findViewById(2131433065));
+      this.l = ((RIJDownloadView)this.c.findViewById(2131432115));
+      this.l.setInFloatingBar(true);
+    }
   }
   
   public void b(AdData paramAdData)
   {
     super.b(paramAdData);
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (paramAdData != null))
+    if ((this.b != null) && (paramAdData != null))
     {
-      if (paramAdData.b == null) {
+      if (paramAdData.aE == null) {
         return;
       }
-      String str1 = paramAdData.b.optString("adImg", "");
-      String str2 = paramAdData.b.optString("goodsName", "");
-      String str3 = paramAdData.b.optString("buttonTxt", "");
-      ReadInJoyCommonSoftAdUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetImageView, str1, 8, 30, -1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(str3);
+      String str1 = paramAdData.aE.optString("adImg", "");
+      String str2 = paramAdData.aE.optString("goodsName", "");
+      String str3 = paramAdData.aE.optString("buttonTxt", "");
+      ReadInJoyCommonSoftAdUtils.a(this.b, this.i, str1, 8, 30, -1);
+      this.j.setText(str2);
+      this.k.setText(str3);
       paramAdData = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData);
       if (paramAdData == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setAdvertisementInfo(paramAdData);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.setProgressStyle(RoundProgressStyle.FastWebSoftAd);
+      this.l.setAdvertisementInfo(paramAdData);
+      this.l.setProgressStyle(RoundProgressStyle.FastWebSoftAd);
     }
   }
   
-  public void c() {}
-  
-  public void d()
+  public void c()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    ReadInJoyAdReportUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 35, 1, 4);
-    super.d();
+    a(new View[] { this.i, this.j, this.k, this.l, this.m });
+    this.c.setOnClickListener(new GoodsSoftAdAppDelegate.1(this));
   }
+  
+  public void d() {}
   
   public void e()
   {
+    if (this.f) {
+      return;
+    }
+    ReadInJoyAdReportUtils.a(this.h, 35, 1, 4);
     super.e();
-    RIJDownloadView localRIJDownloadView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+  }
+  
+  public void g()
+  {
+    super.g();
+    RIJDownloadView localRIJDownloadView = this.l;
     if (localRIJDownloadView != null) {
       localRIJDownloadView.a();
     }
   }
   
-  public void f()
+  public void h()
   {
-    super.f();
-    RIJDownloadView localRIJDownloadView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+    super.h();
+    RIJDownloadView localRIJDownloadView = this.l;
     if (localRIJDownloadView != null) {
       localRIJDownloadView.b();
     }
@@ -129,41 +129,41 @@ public class GoodsSoftAdAppDelegate
     switch (paramView.getId())
     {
     default: 
-    case 2131366743: 
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_barCallbackFeedBackClickListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_barCallbackFeedBackClickListener.b();
+    case 2131433065: 
+      this.e = true;
+      if (this.d != null) {
+        this.d.b();
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+      if (this.h != null)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.setClickPos(3);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.adClickPos = AdClickPos.SoftAdClose;
-        ReadInJoyAdReportUtils.a(ReportAction.CLICK, Integer.valueOf(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 35, 1, 4);
+        this.h.setClickPos(3);
+        this.h.adClickPos = AdClickPos.SoftAdClose;
+        ReadInJoyAdReportUtils.a(ReportAction.CLICK, Integer.valueOf(0), this.h, 35, 1, 4);
         return;
       }
       break;
-    case 2131365856: 
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null)
+    case 2131432115: 
+      if (this.l != null)
       {
-        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
+        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(this.h))
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a(AdClickPos.SoftAdClickBtn, 8);
+          this.l.a(AdClickPos.SoftAdClickBtn, 8);
           return;
         }
         a(AdClickPos.SoftAdClickBtn);
         return;
       }
       break;
-    case 2131365517: 
-    case 2131368343: 
-    case 2131378784: 
+    case 2131431733: 
+    case 2131435219: 
+    case 2131447463: 
       a(AdClickPos.SoftAdComponent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate
  * JD-Core Version:    0.7.0.1
  */

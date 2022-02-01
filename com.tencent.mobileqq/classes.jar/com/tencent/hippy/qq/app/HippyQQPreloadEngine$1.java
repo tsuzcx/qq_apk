@@ -15,10 +15,10 @@ class HippyQQPreloadEngine$1
   public boolean onJsException(HippyJsException paramHippyJsException)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Hippy: predrawModule onJsException:");
+    localStringBuilder.append("predrawModule exception:");
     localStringBuilder.append(paramHippyJsException);
-    QLog.d("Hippy", 1, localStringBuilder.toString());
-    HippyReporter.getInstance().reportException(this.this$0.getModuleName(), this.this$0.mPreloadModuleVersion, 4, paramHippyJsException);
+    QLog.e("Hippy", 1, localStringBuilder.toString());
+    HippyReporter.getInstance().reportException(this.this$0.getModuleName(), this.this$0.mModuleVersion, 4, paramHippyJsException, this.this$0.generateReportExtraParams());
     return true;
   }
   
@@ -42,7 +42,7 @@ class HippyQQPreloadEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQPreloadEngine.1
  * JD-Core Version:    0.7.0.1
  */

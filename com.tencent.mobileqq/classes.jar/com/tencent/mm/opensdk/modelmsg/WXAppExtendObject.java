@@ -2,7 +2,7 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXAppExtendObject
   implements WXMediaMessage.IMediaObject
@@ -31,7 +31,7 @@ public class WXAppExtendObject
   
   private int getFileSize(String paramString)
   {
-    return d.getFileSize(paramString);
+    return b.a(paramString);
   }
   
   public boolean checkArgs()
@@ -107,7 +107,7 @@ public class WXAppExtendObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXAppExtendObject
  * JD-Core Version:    0.7.0.1
  */

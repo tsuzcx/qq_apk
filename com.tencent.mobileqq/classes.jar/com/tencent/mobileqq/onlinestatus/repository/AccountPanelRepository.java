@@ -23,17 +23,17 @@ import mqq.observer.AccountObserver;
 public class AccountPanelRepository
   extends BaseRepository
 {
-  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = ((IFriendsUtils)QRoute.api(IFriendsUtils.class)).createFriendObserver(new AccountPanelRepository.8(this));
-  private AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new AccountPanelRepository.7(this);
-  private OnBatteryChangeObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver = new AccountPanelRepository.5(this);
-  private OnlineStatusObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver = new AccountPanelRepository.1(this);
-  private OnlineStatusPermissionObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver = new AccountPanelRepository.2(this);
-  private AccountPanelViewModel jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountPanelViewModel;
-  private WeatherObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver = new AccountPanelRepository.3(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new AccountPanelRepository.6(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new AccountPanelRepository.4(this);
-  private BusinessObserver b = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).createSubAccountBindObserver(new AccountPanelRepository.9(this));
-  private BusinessObserver c = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).createMessageObserver(new AccountPanelRepository.10(this));
+  private AccountPanelViewModel a;
+  private OnlineStatusObserver b = new AccountPanelRepository.1(this);
+  private OnlineStatusPermissionObserver c = new AccountPanelRepository.2(this);
+  private WeatherObserver d = new AccountPanelRepository.3(this);
+  private AccountObserver e = new AccountPanelRepository.4(this);
+  private OnBatteryChangeObserver f = new AccountPanelRepository.5(this);
+  private Observer g = new AccountPanelRepository.6(this);
+  private AvatarObserver h = new AccountPanelRepository.7(this);
+  private BusinessObserver i = ((IFriendsUtils)QRoute.api(IFriendsUtils.class)).createFriendObserver(new AccountPanelRepository.8(this));
+  private BusinessObserver j = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).createSubAccountBindObserver(new AccountPanelRepository.9(this));
+  private BusinessObserver k = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).createMessageObserver(new AccountPanelRepository.10(this));
   
   public AccountPanelRepository(AppInterface paramAppInterface) {}
   
@@ -63,16 +63,16 @@ public class AccountPanelRepository
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
     if (localAppInterface != null)
     {
-      localAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-      localAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+      localAppInterface.addObserver(this.i);
+      localAppInterface.addObserver(this.h);
+      localAppInterface.addObserver(this.j);
+      localAppInterface.addObserver(this.k);
+      localAppInterface.registObserver(this.f);
+      localAppInterface.registObserver(this.c);
+      localAppInterface.registObserver(this.d);
+      localAppInterface.registObserver(this.e);
+      ((IMessageFacade)localAppInterface.getRuntimeService(IMessageFacade.class, "")).addObserver(this.g);
       localAppInterface.addObserver(this.b);
-      localAppInterface.addObserver(this.c);
-      localAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver);
-      localAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
-      localAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver);
-      localAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-      ((IMessageFacade)localAppInterface.getRuntimeService(IMessageFacade.class, "")).addObserver(this.jdField_a_of_type_JavaUtilObserver);
-      localAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
       if (QLog.isColorLevel()) {
         QLog.d("AccountPanelRepository", 2, "addObservers");
       }
@@ -81,7 +81,7 @@ public class AccountPanelRepository
   
   public void a(AccountPanelViewModel paramAccountPanelViewModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountPanelViewModel = paramAccountPanelViewModel;
+    this.a = paramAccountPanelViewModel;
   }
   
   public void a(boolean paramBoolean)
@@ -89,19 +89,19 @@ public class AccountPanelRepository
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
     if (localAppInterface != null)
     {
-      localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-      localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-      localAppInterface.removeObserver(this.b);
-      localAppInterface.removeObserver(this.c);
-      localAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver);
-      localAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
-      localAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver);
+      localAppInterface.removeObserver(this.i);
+      localAppInterface.removeObserver(this.h);
+      localAppInterface.removeObserver(this.j);
+      localAppInterface.removeObserver(this.k);
+      localAppInterface.unRegistObserver(this.f);
+      localAppInterface.unRegistObserver(this.c);
+      localAppInterface.unRegistObserver(this.d);
       if (paramBoolean)
       {
-        localAppInterface.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-        localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
+        localAppInterface.unRegistObserver(this.e);
+        localAppInterface.removeObserver(this.b);
       }
-      ((IMessageFacade)localAppInterface.getRuntimeService(IMessageFacade.class, "")).deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      ((IMessageFacade)localAppInterface.getRuntimeService(IMessageFacade.class, "")).deleteObserver(this.g);
       if (QLog.isColorLevel()) {
         QLog.d("AccountPanelRepository", 2, "removeObservers");
       }
@@ -110,7 +110,7 @@ public class AccountPanelRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.repository.AccountPanelRepository
  * JD-Core Version:    0.7.0.1
  */

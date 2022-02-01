@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.vas.updatesystem.business.QQVasUpdateBusiness;
 import com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness;
+import com.tencent.mobileqq.vas.util.QQVasUpdateBusinessUtil;
 import com.tencent.vas.update.callback.listener.IUpdateListener;
 import com.tencent.vas.update.entity.BusinessUpdateParams;
 import com.tencent.vas.update.entity.UpdateListenerParams;
@@ -27,7 +27,7 @@ class EmoticonManagerIPC$1
     EIPCResult localEIPCResult = new EIPCResult();
     localEIPCResult.data = new Bundle();
     localEIPCResult.data.putBoolean("status", true);
-    localEIPCResult.data.putString("filepath", ((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).a(paramUpdateListenerParams.mBusinessUpdateParams.mScid));
+    localEIPCResult.data.putString("filepath", ((TroopNickNameBusiness)QQVasUpdateBusinessUtil.a(TroopNickNameBusiness.class)).d(paramUpdateListenerParams.mBusinessUpdateParams.mScid));
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
   }
   
@@ -35,7 +35,7 @@ class EmoticonManagerIPC$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.EmoticonManagerIPC.1
  * JD-Core Version:    0.7.0.1
  */

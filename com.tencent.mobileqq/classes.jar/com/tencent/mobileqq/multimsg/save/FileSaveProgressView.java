@@ -12,14 +12,14 @@ import com.tencent.qphone.base.util.QLog;
 public class FileSaveProgressView
   extends TextView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_a_of_type_JavaLangString = "0%";
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer;
-  private int b = -1;
-  private int c = -16725252;
-  private int d = 5;
+  private Paint a;
+  private RectF b = new RectF();
+  private int c = 0;
+  private int d = -1;
+  private int e = -16725252;
+  private int f = 5;
+  private String g = "0%";
+  private StringBuffer h;
   
   public FileSaveProgressView(Context paramContext)
   {
@@ -35,10 +35,10 @@ public class FileSaveProgressView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaLangStringBuffer = new StringBuffer(this.jdField_a_of_type_JavaLangString);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    setText(this.g);
+    this.h = new StringBuffer(this.g);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -47,19 +47,19 @@ public class FileSaveProgressView
     int k = getHeight();
     int i = paramCanvas.getSaveCount();
     paramCanvas.save();
-    int m = this.b;
-    float f;
+    int m = this.d;
+    float f1;
     if (m > 0) {
-      f = m;
+      f1 = m;
     } else {
-      f = 2.5F;
+      f1 = 2.5F;
     }
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(f, f, j - f, k - f);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-    j = this.jdField_a_of_type_Int * 360 / 100;
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, j, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.b.set(f1, f1, j - f1, k - f1);
+    this.a.setStyle(Paint.Style.STROKE);
+    this.a.setStrokeWidth(this.f);
+    this.a.setColor(this.e);
+    j = this.c * 360 / 100;
+    paramCanvas.drawArc(this.b, 270.0F, j, false, this.a);
     paramCanvas.restoreToCount(i);
     super.onDraw(paramCanvas);
   }
@@ -68,15 +68,15 @@ public class FileSaveProgressView
   {
     if (paramInt < 0)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.c = 0;
       return;
     }
     if (paramInt > 100)
     {
-      this.jdField_a_of_type_Int = 100;
+      this.c = 100;
       return;
     }
-    if (paramInt < this.jdField_a_of_type_Int)
+    if (paramInt < this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.d("FileSaveProgressView", 2, "progress < currentProgress, so return;");
@@ -84,36 +84,36 @@ public class FileSaveProgressView
     }
     else
     {
-      this.jdField_a_of_type_Int = paramInt;
-      StringBuffer localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+      this.c = paramInt;
+      StringBuffer localStringBuffer = this.h;
       localStringBuffer.delete(0, localStringBuffer.length());
-      localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+      localStringBuffer = this.h;
       localStringBuffer.append(paramInt);
       localStringBuffer.append("%");
-      this.jdField_a_of_type_JavaLangString = localStringBuffer.toString();
-      setText(this.jdField_a_of_type_JavaLangString);
+      this.g = localStringBuffer.toString();
+      setText(this.g);
       invalidate();
     }
   }
   
   public void setRingColor(int paramInt)
   {
-    this.c = paramInt;
+    this.e = paramInt;
   }
   
   public void setRingWidth(int paramInt)
   {
-    this.d = paramInt;
+    this.f = paramInt;
   }
   
   public void setStrokeWidth(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveProgressView
  * JD-Core Version:    0.7.0.1
  */

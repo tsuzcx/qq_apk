@@ -187,9 +187,9 @@ public class VerifyCodeActivity
   
   private void initTitleBar()
   {
-    setTitle(2131720188);
-    setLeftButton(2131690728, new VerifyCodeActivity.2(this));
-    setRightHighlightButton(2131692486, new VerifyCodeActivity.3(this));
+    setTitle(2131917818);
+    setLeftButton(2131887648, new VerifyCodeActivity.2(this));
+    setRightHighlightButton(2131889474, new VerifyCodeActivity.3(this));
   }
   
   void cancelVerifyDialog()
@@ -224,10 +224,10 @@ public class VerifyCodeActivity
       super.finish();
       return false;
     }
-    super.setContentView(2131563019);
-    setContentBackgroundResource(2130838739);
-    this.mVerifyCodeImageView = ((ImageView)findViewById(2131380396));
-    this.notestr = ((TextView)findViewById(2131371978));
+    super.setContentView(2131629627);
+    setContentBackgroundResource(2130838958);
+    this.mVerifyCodeImageView = ((ImageView)findViewById(2131449345));
+    this.notestr = ((TextView)findViewById(2131439423));
     init2(paramBundle);
     LoginHelper.a(this.mApp);
     return true;
@@ -285,7 +285,7 @@ public class VerifyCodeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ class OverlappingImgLayout$1
       {
         if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
         {
-          ((ImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          ((ImageView)OverlappingImgLayout.b(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
           if (QLog.isColorLevel()) {
             QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
           }

@@ -21,25 +21,25 @@ class ComponentHeaderPolymeric$2
       localStringBuilder.append(", isSuccess=");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" followStatus = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e);
+      localStringBuilder.append(this.a.mPolymericInfo.p);
       QLog.d("ComponentHeaderPolymeric", 2, localStringBuilder.toString());
     }
-    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric).getTag())) {
+    if (!paramString.equals(ComponentHeaderPolymeric.a(this.b).getTag())) {
       return;
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, true);
+    ComponentHeaderPolymeric.a(this.b, true);
     if (paramBoolean)
     {
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, true);
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 2);
+      ComponentHeaderPolymeric.b(this.b, true);
+      ComponentHeaderPolymeric.a(this.b, this.a, 2);
       return;
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, 1);
+    ComponentHeaderPolymeric.a(this.b, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderPolymeric.2
  * JD-Core Version:    0.7.0.1
  */

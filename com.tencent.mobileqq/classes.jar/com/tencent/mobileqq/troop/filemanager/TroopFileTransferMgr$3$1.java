@@ -19,25 +19,25 @@ class TroopFileTransferMgr$3$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("waterTest, onGetAppDetailTimeLimit. apkName[");
-    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName);
+    localStringBuilder.append(this.a.a.yybApkName);
     localStringBuilder.append("]");
     QLog.i("TroopFileTransferMgr", 1, localStringBuilder.toString());
     if (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) == 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, 106);
+      this.a.b.a(this.a.a, 3, 106);
     }
-    TroopFileTransferMgr.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferMgr).getFileManagerEngine().a().a(TroopFileTransferMgr.c(this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferMgr), this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
+    TroopFileTransferMgr.e(this.a.b).getFileManagerEngine().m().a(TroopFileTransferMgr.d(this.a.b), this.a.a, null);
   }
   
   public void a(boolean paramBoolean, AppDetail paramAppDetail)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkPackageName = paramAppDetail.packageName;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName = paramAppDetail.appName;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkIconUrl = paramAppDetail.iconUrl;
+    this.a.a.yybApkPackageName = paramAppDetail.packageName;
+    this.a.a.yybApkName = paramAppDetail.appName;
+    this.a.a.yybApkIconUrl = paramAppDetail.iconUrl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.3.1
  * JD-Core Version:    0.7.0.1
  */

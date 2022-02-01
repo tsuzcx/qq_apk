@@ -107,7 +107,7 @@ public class BaseMessageManagerCallback
       if (paramInt == 3000) {
         return ContactUtils.a((QQAppInterface)paramAppRuntime, paramString2, paramString1, 2, 0);
       }
-      paramAppRuntime = HardCodeUtil.a(2131701235);
+      paramAppRuntime = HardCodeUtil.a(2131899245);
     }
     return paramAppRuntime;
   }
@@ -132,14 +132,14 @@ public class BaseMessageManagerCallback
     return paramString3;
   }
   
-  public String a(AppRuntime paramAppRuntime, String paramString)
-  {
-    return ContactUtils.e((QQAppInterface)paramAppRuntime, paramString);
-  }
-  
   public Manager a(AppRuntime paramAppRuntime)
   {
     return ((QQAppInterface)paramAppRuntime).getManager(QQManagerFactory.TROOPINFO_MANAGER);
+  }
+  
+  public void a(int paramInt, List<MessageRecord> paramList, AppRuntime paramAppRuntime)
+  {
+    PretreatmentAIOMsg.a(paramInt, paramList, (QQAppInterface)paramAppRuntime);
   }
   
   public void a(BaseMessageManager paramBaseMessageManager, AppRuntime paramAppRuntime, int paramInt, String paramString, List<MessageRecord> paramList1, List<MessageRecord> paramList2, boolean paramBoolean1, boolean paramBoolean2)
@@ -152,13 +152,13 @@ public class BaseMessageManagerCallback
   
   public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
-    AnonymousChatHelper.c(paramMessageForUniteGrayTip);
+    AnonymousChatHelper.e(paramMessageForUniteGrayTip);
   }
   
   public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip, Bundle paramBundle)
   {
-    paramBundle.putInt(ContactUtils.a, ContactUtils.jdField_b_of_type_Int);
-    paramBundle.putLong(ContactUtils.jdField_b_of_type_JavaLangString, paramMessageForUniteGrayTip.uniseq);
+    paramBundle.putInt(ContactUtils.a, ContactUtils.c);
+    paramBundle.putLong(ContactUtils.e, paramMessageForUniteGrayTip.uniseq);
   }
   
   public void a(IMessageFacade paramIMessageFacade, String paramString, int paramInt, List<MessageRecord> paramList, BaseMessageManager paramBaseMessageManager)
@@ -173,18 +173,6 @@ public class BaseMessageManagerCallback
         paramBaseMessageManager.a(paramList, true, 3);
         paramBaseMessageManager.b(paramString, paramInt, paramList, 3);
       }
-    }
-  }
-  
-  public void a(List<MessageRecord> paramList, AppRuntime paramAppRuntime)
-  {
-    PretreatmentAIOMsg.a(paramList, (QQAppInterface)paramAppRuntime);
-  }
-  
-  public void a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime.isLogin()) {
-      ((IAppBadgeService)paramAppRuntime.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
     }
   }
   
@@ -206,9 +194,9 @@ public class BaseMessageManagerCallback
   public void a(AppRuntime paramAppRuntime, IMessageFacade paramIMessageFacade, BaseMessageManager paramBaseMessageManager, MessageRecord paramMessageRecord)
   {
     EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramAppRuntime.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-    if (UinTypeUtil.h(paramMessageRecord.istroop))
+    if (UinTypeUtil.j(paramMessageRecord.istroop))
     {
-      paramBaseMessageManager.c(paramMessageRecord);
+      paramBaseMessageManager.e(paramMessageRecord);
       return;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
@@ -219,14 +207,14 @@ public class BaseMessageManagerCallback
     }
     if ((paramMessageRecord.istroop == 1008) && (ServiceAccountFolderManager.b(localQQAppInterface, paramMessageRecord.frienduin)))
     {
-      paramBaseMessageManager.d(paramMessageRecord);
+      paramBaseMessageManager.f(paramMessageRecord);
       ServiceAccountFolderManager.a().b(localQQAppInterface);
       return;
     }
     if ((paramMessageRecord.istroop == 1008) && (ServiceAccountFolderManager.a((AppInterface)paramAppRuntime, paramMessageRecord.frienduin))) {
       return;
     }
-    paramBaseMessageManager.d(paramMessageRecord);
+    paramBaseMessageManager.f(paramMessageRecord);
   }
   
   public void a(AppRuntime paramAppRuntime, IMessageFacade paramIMessageFacade, BaseMessageManager paramBaseMessageManager, MessageRecord paramMessageRecord, EcShopAssistantManager paramEcShopAssistantManager)
@@ -236,7 +224,7 @@ public class BaseMessageManagerCallback
     paramMessageRecord = UinTypeUtil.a(str, i);
     if (paramIMessageFacade.getCachedMsg().containsKey(paramMessageRecord))
     {
-      EcShopData localEcShopData = paramEcShopAssistantManager.a();
+      EcShopData localEcShopData = paramEcShopAssistantManager.c();
       paramMessageRecord = paramIMessageFacade.getLastMsgForMsgTab(str, i);
       i = 0;
       if (paramMessageRecord != null)
@@ -246,8 +234,8 @@ public class BaseMessageManagerCallback
       }
       else
       {
-        paramEcShopAssistantManager.b(str);
-        paramEcShopAssistantManager = paramEcShopAssistantManager.a();
+        paramEcShopAssistantManager.c(str);
+        paramEcShopAssistantManager = paramEcShopAssistantManager.c();
         paramBaseMessageManager = paramEcShopAssistantManager;
         if (paramEcShopAssistantManager != null)
         {
@@ -258,7 +246,7 @@ public class BaseMessageManagerCallback
       }
       if (((paramBaseMessageManager != null) && (str.equals(paramBaseMessageManager.mUin))) || (i != 0))
       {
-        paramBaseMessageManager = ((IRecentUserProxyService)paramAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().a(String.valueOf(9970L), 7120);
+        paramBaseMessageManager = ((IRecentUserProxyService)paramAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().b(String.valueOf(9970L), 7120);
         if (paramBaseMessageManager != null)
         {
           if (paramMessageRecord != null)
@@ -285,47 +273,48 @@ public class BaseMessageManagerCallback
       }
       return;
     }
-    if (UinTypeUtil.a(paramInt) == 1032) {
-      return;
-    }
-    if ((!paramIConversationFacade.isUinInRecentList(paramString1, paramInt)) && (UinTypeUtil.h(paramInt)))
+    if ((UinTypeUtil.e(paramInt) != 1032) && (paramInt != 10014))
     {
-      paramIConversationFacade = null;
-    }
-    else
-    {
-      RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)paramAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      if (0L == paramLong)
+      if ((!paramIConversationFacade.isUinInRecentList(paramString1, paramInt)) && (UinTypeUtil.j(paramInt)))
       {
-        paramIConversationFacade = localRecentUserProxy.b(paramString1, paramInt);
+        paramIConversationFacade = null;
       }
       else
       {
-        paramIConversationFacade = localRecentUserProxy.a(paramString1, paramInt);
-        paramIConversationFacade.troopUin = paramString2;
-      }
-      if (paramIConversationFacade != null)
-      {
-        paramIConversationFacade.lastmsgdrafttime = paramLong;
-        if ((0L == paramLong) && (paramIConversationFacade.lastmsgtime == 0L))
+        RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)paramAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+        if (0L == paramLong)
         {
-          localRecentUserProxy.a(paramIConversationFacade);
+          paramIConversationFacade = localRecentUserProxy.c(paramString1, paramInt);
         }
         else
         {
-          a(paramAppRuntime, paramIConversationFacade);
-          localRecentUserProxy.b(paramIConversationFacade);
+          paramIConversationFacade = localRecentUserProxy.b(paramString1, paramInt);
+          paramIConversationFacade.troopUin = paramString2;
+        }
+        if (paramIConversationFacade != null)
+        {
+          paramIConversationFacade.lastmsgdrafttime = paramLong;
+          if ((0L == paramLong) && (paramIConversationFacade.lastmsgtime == 0L))
+          {
+            localRecentUserProxy.a(paramIConversationFacade);
+          }
+          else
+          {
+            a(paramAppRuntime, paramIConversationFacade);
+            localRecentUserProxy.b(paramIConversationFacade);
+          }
         }
       }
-    }
-    if (paramInt == 1008)
-    {
-      paramAppRuntime = (QQAppInterface)paramAppRuntime;
-      if (ServiceAccountFolderManager.b(paramAppRuntime, paramString1)) {
-        ServiceAccountFolderManager.a().a(paramAppRuntime, paramString1, paramString3, paramLong);
+      if (paramInt == 1008)
+      {
+        paramAppRuntime = (QQAppInterface)paramAppRuntime;
+        if (ServiceAccountFolderManager.b(paramAppRuntime, paramString1)) {
+          ServiceAccountFolderManager.a().a(paramAppRuntime, paramString1, paramString3, paramLong);
+        }
       }
+      paramIMessageFacade.setChangeAndNotify(paramIConversationFacade);
+      return;
     }
-    paramIMessageFacade.setChangeAndNotify(paramIConversationFacade);
   }
   
   public void a(AppRuntime paramAppRuntime, IMessageFacade paramIMessageFacade, boolean paramBoolean1, int paramInt, boolean paramBoolean2, List<MessageRecord> paramList, MessageRecord paramMessageRecord)
@@ -347,8 +336,8 @@ public class BaseMessageManagerCallback
           localObject3 = ((FileManagerDataCenter)localObject2).a(((MessageRecord)localObject3).uniseq, ((MessageRecord)localObject3).frienduin, ((MessageRecord)localObject3).istroop);
           if (localObject3 != null)
           {
-            ((FileManagerDataCenter)localObject2).b((FileManagerEntity)localObject3);
-            ((QQAppInterface)localObject1).getFileManagerEngine().b(((FileManagerEntity)localObject3).nSessionId);
+            ((FileManagerDataCenter)localObject2).f((FileManagerEntity)localObject3);
+            ((QQAppInterface)localObject1).getFileManagerEngine().c(((FileManagerEntity)localObject3).nSessionId);
           }
           if (paramMessageRecord.istroop == 3000) {
             FileManagerReporter.a("0X8005E50");
@@ -392,8 +381,8 @@ public class BaseMessageManagerCallback
             if (QLog.isColorLevel()) {
               QLog.i("Q.msg.BaseMessageManager", 2, "find fileEntity");
             }
-            ((FileManagerDataCenter)localObject3).b((FileManagerEntity)localObject4);
-            ((QQAppInterface)localObject2).getFileManagerEngine().b(((FileManagerEntity)localObject4).nSessionId);
+            ((FileManagerDataCenter)localObject3).f((FileManagerEntity)localObject4);
+            ((QQAppInterface)localObject2).getFileManagerEngine().c(((FileManagerEntity)localObject4).nSessionId);
           }
           else if (QLog.isColorLevel())
           {
@@ -412,24 +401,19 @@ public class BaseMessageManagerCallback
           localObject3 = TroopFileUtils.a((QQAppInterface)localObject4, (MessageForTroopFile)localObject3);
           if ((localObject3 != null) && (((TroopFileStatusInfo)localObject3).a != null) && (localObject2 != null))
           {
-            localObject3 = ((TroopFileTransferManager)localObject2).a(((TroopFileStatusInfo)localObject3).a);
+            localObject3 = ((TroopFileTransferManager)localObject2).i(((TroopFileStatusInfo)localObject3).a);
             if (localObject3 != null) {
-              ((TroopFileTransferManager)localObject2).a((TroopFileTransferManager.Item)localObject3, 12);
+              ((TroopFileTransferManager)localObject2).b((TroopFileTransferManager.Item)localObject3, 12);
             }
           }
         }
         ((AIOMessageSpreadManager)paramAppRuntime.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).b((MessageRecord)localObject1);
       }
-      localObject1 = EmojiStickerManager.a((MessageRecord)localObject1);
+      localObject1 = EmojiStickerManager.f((MessageRecord)localObject1);
       if (localObject1 != null) {
-        EmojiStickerManager.a().b.put(localObject1, Boolean.valueOf(true));
+        EmojiStickerManager.a().D.put(localObject1, Boolean.valueOf(true));
       }
     }
-  }
-  
-  public void a(AppRuntime paramAppRuntime, String paramString)
-  {
-    ((ITransFileController)paramAppRuntime.getRuntimeService(ITransFileController.class, "")).removeProcessorByPeerUin(paramString, 0);
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -446,17 +430,17 @@ public class BaseMessageManagerCallback
   
   public void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    ((QQAppInterface)paramAppRuntime).getMsgHandler().a().a(paramString, paramInt1, paramInt2, paramInt3);
+    ((QQAppInterface)paramAppRuntime).getMsgHandler().E().a(paramString, paramInt1, paramInt2, paramInt3);
   }
   
   public void a(AppRuntime paramAppRuntime, List<MessageRecord> paramList, MessageRecord paramMessageRecord)
   {
     if (paramList != null)
     {
-      ((QQAppInterface)paramAppRuntime).getMsgHandler().a().a(paramList);
+      ((QQAppInterface)paramAppRuntime).getMsgHandler().E().a(paramList);
       return;
     }
-    ((QQAppInterface)paramAppRuntime).getMsgHandler().a().a(paramMessageRecord);
+    ((QQAppInterface)paramAppRuntime).getMsgHandler().E().a(paramMessageRecord);
   }
   
   public void a(AppRuntime paramAppRuntime, List<ChatMessage> paramList1, List<ChatMessage> paramList2)
@@ -533,7 +517,7 @@ public class BaseMessageManagerCallback
   
   public void a(AppRuntime paramAppRuntime, List<MessageRecord> paramList, boolean paramBoolean)
   {
-    ((QQAppInterface)paramAppRuntime).getMsgHandler().a().a(paramList, paramBoolean);
+    ((QQAppInterface)paramAppRuntime).getMsgHandler().E().a(paramList, paramBoolean);
   }
   
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean1, boolean paramBoolean2)
@@ -564,7 +548,7 @@ public class BaseMessageManagerCallback
           ((StringBuilder)localObject).append(bool);
           QLog.d("Q.msg.BaseMessageManager", 2, ((StringBuilder)localObject).toString());
         }
-        paramBaseMessageManager.f(paramMessageRecord);
+        paramBaseMessageManager.i(paramMessageRecord);
         return true;
       }
     }
@@ -576,7 +560,7 @@ public class BaseMessageManagerCallback
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageManager", 2, "doMsgRevokeReqForRichMsg, msgForPic");
         }
-        paramBaseMessageManager.f(paramMessageRecord);
+        paramBaseMessageManager.i(paramMessageRecord);
         return true;
       }
     }
@@ -642,15 +626,9 @@ public class BaseMessageManagerCallback
     return ((ITroopRobotService)paramAppRuntime.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramString);
   }
   
-  public boolean a(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  public Manager b(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = (QQAppInterface)paramAppRuntime;
-    return (DiscussionManager.a(paramAppRuntime, paramString, paramInt)) || (paramAppRuntime.isTroopMark(paramString, paramInt));
-  }
-  
-  public void b(AppRuntime paramAppRuntime)
-  {
-    ((PaiYiPaiHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.PAI_YI_PAI_HANDLER)).notifyUI(9999, true, null);
+    return ((QQAppInterface)paramAppRuntime).getManager(QQManagerFactory.GUILDINFO_MANAGER);
   }
   
   public void b(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord, long paramLong)
@@ -658,19 +636,52 @@ public class BaseMessageManagerCallback
     ((PaiYiPaiHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.PAI_YI_PAI_HANDLER)).a(paramMessageRecord, paramLong);
   }
   
-  public void b(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  public void b(AppRuntime paramAppRuntime, String paramString)
   {
-    ((MiniMsgHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.MINIMSG_HANDLER)).a(paramString, paramInt, -1);
+    ((ITransFileController)paramAppRuntime.getRuntimeService(ITransFileController.class, "")).removeProcessorByPeerUin(paramString, 0);
+  }
+  
+  public void b(AppRuntime paramAppRuntime, List<MessageRecord> paramList, boolean paramBoolean)
+  {
+    ((QQAppInterface)paramAppRuntime).getMsgHandler().E().b(paramList, paramBoolean);
   }
   
   public boolean b(AppRuntime paramAppRuntime, String paramString, int paramInt)
   {
-    return QCallFacade.a((QQAppInterface)paramAppRuntime, paramString, paramInt);
+    paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    return (DiscussionManager.a(paramAppRuntime, paramString, paramInt)) || (paramAppRuntime.isTroopMark(paramString, paramInt));
+  }
+  
+  public String c(AppRuntime paramAppRuntime, String paramString)
+  {
+    return ContactUtils.f((QQAppInterface)paramAppRuntime, paramString);
+  }
+  
+  public void c(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime.isLogin()) {
+      ((IAppBadgeService)paramAppRuntime.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
+    }
+  }
+  
+  public boolean c(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    return QCallFacade.b((QQAppInterface)paramAppRuntime, paramString, paramInt);
+  }
+  
+  public void d(AppRuntime paramAppRuntime)
+  {
+    ((PaiYiPaiHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.PAI_YI_PAI_HANDLER)).notifyUI(9999, true, null);
+  }
+  
+  public void d(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    ((MiniMsgHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.MINIMSG_HANDLER)).a(paramString, paramInt, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerCallback
  * JD-Core Version:    0.7.0.1
  */

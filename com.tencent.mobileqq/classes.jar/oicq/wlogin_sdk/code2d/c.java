@@ -29,7 +29,7 @@ public class c
   protected byte[] getAppInfo(long paramLong1, long paramLong2)
   {
     byte[] arrayOfByte = new byte[t.F.length + 2 + 2 + t.H.length + 2 + t.I.length + 28];
-    util.int64_to_buf32(arrayOfByte, 0, 17L);
+    util.int64_to_buf32(arrayOfByte, 0, 18L);
     util.int64_to_buf32(arrayOfByte, 4, paramLong1);
     util.int64_to_buf32(arrayOfByte, 8, paramLong2);
     System.arraycopy(t.B, 0, arrayOfByte, 12, t.B.length);
@@ -81,7 +81,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.code2d.c
  * JD-Core Version:    0.7.0.1
  */

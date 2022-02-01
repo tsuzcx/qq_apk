@@ -9,14 +9,14 @@ public class RecordParams$RecorderParam
 {
   public static final Parcelable.Creator<RecorderParam> CREATOR = new RecordParams.RecorderParam.1();
   public int a;
-  public Object a;
-  public String a;
-  public int[] a;
   public int b;
   public int c;
   public int d;
   public int e;
-  public int f;
+  public Object f;
+  public int g;
+  public int[] h;
+  public String i;
   
   public RecordParams$RecorderParam(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -50,7 +50,7 @@ public class RecordParams$RecorderParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RecordParams.RecorderParam
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ class MapWidget$5
   
   public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null)
+    this.a.removeGlobalOnLayoutListener(this);
+    if (this.b.c != null)
     {
-      MapWidget localMapWidget = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
-      MapWidget.a(localMapWidget, localMapWidget.a.getPoints());
+      MapWidget localMapWidget = this.b;
+      MapWidget.a(localMapWidget, localMapWidget.c.getPoints());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.5
  * JD-Core Version:    0.7.0.1
  */

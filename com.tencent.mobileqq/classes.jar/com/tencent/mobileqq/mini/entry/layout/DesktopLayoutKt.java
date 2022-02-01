@@ -66,7 +66,7 @@ public final class DesktopLayoutKt
     ViewGroup localViewGroup = (ViewGroup)paramContext;
     paramContext = new ImageView(localViewGroup.getContext());
     paramContext.setTag(localViewGroup);
-    paramContext.setId(2131371100);
+    paramContext.setId(2131438441);
     localObject1 = (View)paramContext;
     Object localObject2 = ((View)localObject1).getLayoutParams();
     if (localObject2 != null) {
@@ -102,7 +102,7 @@ public final class DesktopLayoutKt
     localViewGroup.addView((View)localObject1);
     Object localObject3 = new LinearLayout(localViewGroup.getContext());
     ((LinearLayout)localObject3).setTag(localViewGroup);
-    ((LinearLayout)localObject3).setId(2131371141);
+    ((LinearLayout)localObject3).setId(2131438482);
     localObject2 = (View)localObject3;
     paramContext = ((View)localObject2).getLayoutParams();
     if (paramContext != null) {
@@ -147,7 +147,7 @@ public final class DesktopLayoutKt
     localObject3 = (ViewGroup)localObject3;
     paramContext = new RelativeLayout(((ViewGroup)localObject3).getContext());
     paramContext.setTag(localObject3);
-    paramContext.setId(2131370833);
+    paramContext.setId(2131438171);
     Object localObject4 = (View)paramContext;
     localObject1 = ((View)localObject4).getLayoutParams();
     if (localObject1 != null) {
@@ -184,7 +184,7 @@ public final class DesktopLayoutKt
     ((ViewGroup)localObject5).setClipChildren(false);
     Object localObject6 = new TextView(((ViewGroup)localObject5).getContext());
     ((TextView)localObject6).setTag(localObject5);
-    ((TextView)localObject6).setId(2131371094);
+    ((TextView)localObject6).setId(2131438435);
     Object localObject7 = (View)localObject6;
     paramContext = ((View)localObject7).getLayoutParams();
     if (paramContext != null) {
@@ -258,12 +258,12 @@ public final class DesktopLayoutKt
     } else {
       ((TextView)localObject6).setText((CharSequence)"QQ小程序");
     }
-    ((TextView)localObject6).setTextColor(((TextView)localObject6).getResources().getColor(2131167063));
+    ((TextView)localObject6).setTextColor(((TextView)localObject6).getResources().getColor(2131168001));
     ((TextView)localObject6).setTextSize(17.0F);
     ((ViewGroup)localObject5).addView((View)localObject7);
     localObject8 = new RelativeLayout(((ViewGroup)localObject5).getContext());
     ((RelativeLayout)localObject8).setTag(localObject5);
-    ((RelativeLayout)localObject8).setId(2131371047);
+    ((RelativeLayout)localObject8).setId(2131438388);
     localObject6 = (View)localObject8;
     j = LayoutAttrsKt.getDp(80);
     paramContext = ((View)localObject6).getLayoutParams();
@@ -380,7 +380,7 @@ public final class DesktopLayoutKt
     if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
     }
-    paramContext = Integer.valueOf(2130850592);
+    paramContext = Integer.valueOf(2130852390);
     if ((paramContext instanceof String)) {
       ((View)localObject6).setBackgroundColor(Color.parseColor((String)paramContext));
     } else {
@@ -391,7 +391,7 @@ public final class DesktopLayoutKt
     ((RelativeLayout)localObject8).setGravity(16);
     Object localObject9 = new RelativeLayout(((ViewGroup)localObject7).getContext());
     ((RelativeLayout)localObject9).setTag(localObject7);
-    ((RelativeLayout)localObject9).setId(2131371082);
+    ((RelativeLayout)localObject9).setId(2131438423);
     localObject8 = (View)localObject9;
     j = LayoutAttrsKt.getDp(22);
     paramContext = ((View)localObject8).getLayoutParams();
@@ -512,7 +512,7 @@ public final class DesktopLayoutKt
     ((ViewGroup)localObject9).setClipChildren(false);
     paramContext = new ImageView(((ViewGroup)localObject9).getContext());
     paramContext.setTag(localObject9);
-    paramContext.setId(2131371081);
+    paramContext.setId(2131438422);
     localObject1 = (View)paramContext;
     j = LayoutAttrsKt.getDp(22);
     localObject10 = ((View)localObject1).getLayoutParams();
@@ -546,12 +546,12 @@ public final class DesktopLayoutKt
     {
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    paramContext.setImageResource(2130841024);
+    paramContext.setImageResource(2130841815);
     paramContext.setVisibility(0);
     ((ViewGroup)localObject9).addView((View)localObject1);
     localObject10 = new TextView(((ViewGroup)localObject9).getContext());
     ((TextView)localObject10).setTag(localObject9);
-    ((TextView)localObject10).setId(2131371083);
+    ((TextView)localObject10).setId(2131438424);
     View localView2 = (View)localObject10;
     paramContext = localView2.getLayoutParams();
     if (paramContext != null) {
@@ -650,7 +650,7 @@ public final class DesktopLayoutKt
     ((ViewGroup)localObject7).addView((View)localObject8);
     localObject8 = new ImageView(((ViewGroup)localObject7).getContext());
     ((ImageView)localObject8).setTag(localObject7);
-    ((ImageView)localObject8).setId(2131371078);
+    ((ImageView)localObject8).setId(2131438419);
     localObject9 = (View)localObject8;
     j = LayoutAttrsKt.getDp(22);
     paramContext = ((View)localObject9).getLayoutParams();
@@ -767,13 +767,13 @@ public final class DesktopLayoutKt
     if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
     }
-    ((ImageView)localObject8).setImageResource(2130841006);
+    ((ImageView)localObject8).setImageResource(2130841797);
     ((ViewGroup)localObject7).addView((View)localObject9);
     ((ViewGroup)localObject5).addView((View)localObject6);
     ((ViewGroup)localObject3).addView((View)localObject4);
     paramContext = new DragRecyclerView(((ViewGroup)localObject3).getContext());
     paramContext.setTag(localObject3);
-    paramContext.setId(2131370834);
+    paramContext.setId(2131438172);
     localObject1 = (View)paramContext;
     localObject4 = ((View)localObject1).getLayoutParams();
     if (localObject4 != null) {
@@ -816,7 +816,7 @@ public final class DesktopLayoutKt
     localViewGroup.addView((View)localObject2);
     localObject1 = new LinearLayout(localViewGroup.getContext());
     ((LinearLayout)localObject1).setTag(localViewGroup);
-    ((LinearLayout)localObject1).setId(2131371138);
+    ((LinearLayout)localObject1).setId(2131438479);
     paramContext = (View)localObject1;
     localObject2 = paramContext.getLayoutParams();
     if (localObject2 != null) {
@@ -878,7 +878,7 @@ public final class DesktopLayoutKt
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       }
     }
-    localObject2 = Integer.valueOf(2130838740);
+    localObject2 = Integer.valueOf(2130838959);
     if ((localObject2 instanceof String)) {
       paramContext.setBackgroundColor(Color.parseColor((String)localObject2));
     } else {
@@ -888,7 +888,7 @@ public final class DesktopLayoutKt
     localObject1 = (ViewGroup)localObject1;
     localObject2 = new ImageView(((ViewGroup)localObject1).getContext());
     ((ImageView)localObject2).setTag(localObject1);
-    ((ImageView)localObject2).setId(2131371139);
+    ((ImageView)localObject2).setId(2131438480);
     localObject3 = (View)localObject2;
     localObject4 = ((View)localObject3).getLayoutParams();
     if (localObject4 != null) {
@@ -920,12 +920,12 @@ public final class DesktopLayoutKt
     {
       ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
     }
-    ((ImageView)localObject2).setImageResource(2130841007);
+    ((ImageView)localObject2).setImageResource(2130841798);
     ((ViewGroup)localObject1).addView((View)localObject3);
     localViewGroup.addView(paramContext);
     localObject1 = new LinearLayout(localViewGroup.getContext());
     ((LinearLayout)localObject1).setTag(localViewGroup);
-    ((LinearLayout)localObject1).setId(2131365504);
+    ((LinearLayout)localObject1).setId(2131431719);
     paramContext = (View)localObject1;
     localObject2 = paramContext.getLayoutParams();
     if (localObject2 != null) {
@@ -987,7 +987,7 @@ public final class DesktopLayoutKt
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       }
     }
-    localObject2 = Integer.valueOf(2130841009);
+    localObject2 = Integer.valueOf(2130841800);
     if ((localObject2 instanceof String)) {
       paramContext.setBackgroundColor(Color.parseColor((String)localObject2));
     } else {
@@ -998,7 +998,7 @@ public final class DesktopLayoutKt
     localObject2 = (ViewGroup)localObject1;
     localObject3 = new TextView(((ViewGroup)localObject2).getContext());
     ((TextView)localObject3).setTag(localObject2);
-    ((TextView)localObject3).setId(2131365497);
+    ((TextView)localObject3).setId(2131431712);
     localObject4 = (View)localObject3;
     localObject1 = ((View)localObject4).getLayoutParams();
     if (localObject1 != null) {
@@ -1031,8 +1031,8 @@ public final class DesktopLayoutKt
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
     }
     ((TextView)localObject3).setGravity(17);
-    ((TextView)localObject3).setText(2131711950);
-    localObject5 = ((TextView)localObject3).getContext().getDrawable(2130841011);
+    ((TextView)localObject3).setText(2131909575);
+    localObject5 = ((TextView)localObject3).getContext().getDrawable(2130841802);
     localObject1 = null;
     ((TextView)localObject3).setCompoundDrawables((Drawable)localObject5, null, null, null);
     ((TextView)localObject3).setCompoundDrawablePadding(LayoutAttrsKt.getDp(12));
@@ -1045,7 +1045,7 @@ public final class DesktopLayoutKt
     localViewGroup.addView(paramContext);
     paramContext = new RelativeLayout(localViewGroup.getContext());
     paramContext.setTag(localViewGroup);
-    paramContext.setId(2131371096);
+    paramContext.setId(2131438437);
     localObject3 = (View)paramContext;
     j = LayoutAttrsKt.getDp(66);
     localObject2 = ((View)localObject3).getLayoutParams();
@@ -1082,7 +1082,7 @@ public final class DesktopLayoutKt
     localObject4 = (ViewGroup)paramContext;
     localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
     ((ImageView)localObject5).setTag(localObject4);
-    ((ImageView)localObject5).setId(2131371095);
+    ((ImageView)localObject5).setId(2131438436);
     localObject6 = (View)localObject5;
     j = LayoutAttrsKt.getDp(48);
     paramContext = ((View)localObject6).getLayoutParams();
@@ -1163,11 +1163,11 @@ public final class DesktopLayoutKt
     }
     ((RelativeLayout.LayoutParams)localObject7).addRule(14, -1);
     ((View)localObject6).setLayoutParams((ViewGroup.LayoutParams)localObject7);
-    ((ImageView)localObject5).setImageResource(2130848654);
+    ((ImageView)localObject5).setImageResource(2130850319);
     ((ViewGroup)localObject4).addView((View)localObject6);
     localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
     ((ImageView)localObject5).setTag(localObject4);
-    ((ImageView)localObject5).setId(2131371097);
+    ((ImageView)localObject5).setId(2131438438);
     localObject6 = (View)localObject5;
     j = LayoutAttrsKt.getDp(15);
     paramContext = ((View)localObject6).getLayoutParams();
@@ -1292,7 +1292,7 @@ public final class DesktopLayoutKt
     if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(4);
     }
-    ((ImageView)localObject5).setImageResource(2130841014);
+    ((ImageView)localObject5).setImageResource(2130841805);
     ((ViewGroup)localObject4).addView((View)localObject6);
     localViewGroup.addView((View)localObject3);
     return localView1;
@@ -1300,7 +1300,7 @@ public final class DesktopLayoutKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.layout.DesktopLayoutKt
  * JD-Core Version:    0.7.0.1
  */

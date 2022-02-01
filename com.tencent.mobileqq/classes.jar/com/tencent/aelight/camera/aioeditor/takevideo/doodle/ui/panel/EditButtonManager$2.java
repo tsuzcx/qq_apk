@@ -12,41 +12,41 @@ class EditButtonManager$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     paramValueAnimator = new StringBuilder();
     paramValueAnimator.append("onAnimation Update, value = ");
-    paramValueAnimator.append(f);
+    paramValueAnimator.append(f1);
     Log.d("[EditButton]", paramValueAnimator.toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunButton.a.getMeasuredWidth();
+      this.b.b.getMeasuredWidth();
       int i;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup != null)
+      if (this.c != null)
       {
-        i = this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunButton.a.getMeasuredWidth();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup.a.getLayoutParams().width = ((int)(i * (2.0F - f)));
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup.a.requestLayout();
+        i = this.d.b.getMeasuredWidth();
+        this.c.a.getLayoutParams().width = ((int)(i * (2.0F - f1)));
+        this.c.a.requestLayout();
       }
-      if (this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup != null)
+      if (this.e != null)
       {
-        int j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunButton.a.getMeasuredWidth();
+        int j = this.b.b.getMeasuredWidth();
         i = j;
         if (j <= 0) {
-          i = this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup.b.getMeasuredWidth();
+          i = this.e.b.getMeasuredWidth();
         }
-        this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup.a.getLayoutParams().width = ((int)(i * (f + 1.0F)));
-        this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager$FunGroup.a.requestLayout();
+        this.e.a.getLayoutParams().width = ((int)(i * (f1 + 1.0F)));
+        this.e.a.requestLayout();
       }
     }
     else
     {
-      EditButtonManager.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditButtonManager);
+      EditButtonManager.c(this.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditButtonManager.2
  * JD-Core Version:    0.7.0.1
  */

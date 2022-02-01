@@ -10,39 +10,39 @@ import java.util.List;
 class AndroidPermissionHandler$ViewPermissionCallback
   extends AndroidPermissionHandler.AndroidPermissionCallback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQPermission.BasePermissionsListener jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener;
-  private PermissionRequestView jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView;
-  private boolean jdField_a_of_type_Boolean;
+  private Context b;
+  private QQPermission.BasePermissionsListener c;
+  private PermissionRequestView d;
+  private boolean e;
   
   public AndroidPermissionHandler$ViewPermissionCallback(AndroidPermissionHandler paramAndroidPermissionHandler, Context paramContext, QQPermission.BasePermissionsListener paramBasePermissionsListener)
   {
     super(paramAndroidPermissionHandler);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener = paramBasePermissionsListener;
+    this.b = paramContext;
+    this.c = paramBasePermissionsListener;
   }
   
   private void a(List<String> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView = new PermissionRequestView(this.jdField_a_of_type_AndroidContentContext);
+    if (this.d == null) {
+      this.d = new PermissionRequestView(this.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView.setOnSettingClickListener(new AndroidPermissionHandler.ViewPermissionCallback.1(this, paramList));
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView.setTitle(AndroidPermissionHandler.AndroidPermissionText.a(this.jdField_a_of_type_AndroidContentContext, paramList));
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView.setContent(AndroidPermissionHandler.AndroidPermissionText.b(this.jdField_a_of_type_AndroidContentContext, paramList));
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionViewPermissionRequestView, paramList);
+    this.d.setOnSettingClickListener(new AndroidPermissionHandler.ViewPermissionCallback.1(this, paramList));
+    this.d.setTitle(AndroidPermissionHandler.AndroidPermissionText.a(this.b, paramList));
+    this.d.setContent(AndroidPermissionHandler.AndroidPermissionText.b(this.b, paramList));
+    this.c.a(this.d, paramList);
   }
   
   void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a();
+    this.c.a();
   }
   
   void a(String paramString)
   {
     super.a(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramString);
+    this.c.a(paramString);
   }
   
   void a(List<String> paramList, String paramString)
@@ -54,7 +54,7 @@ class AndroidPermissionHandler$ViewPermissionCallback
   void a(List<String> paramList, List<Integer> paramList1)
   {
     super.a(paramList, paramList1);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramList, paramList1);
+    this.c.a(paramList, paramList1);
     ArrayList localArrayList = new ArrayList();
     int j = 0;
     int i = 0;
@@ -76,16 +76,16 @@ class AndroidPermissionHandler$ViewPermissionCallback
       j += 1;
     }
     a(localArrayList);
-    if ((i == 0) && (this.jdField_a_of_type_Boolean))
+    if ((i == 0) && (this.e))
     {
-      this.jdField_a_of_type_Boolean = false;
-      PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext);
+      this.e = false;
+      PermissionUtil.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.AndroidPermissionHandler.ViewPermissionCallback
  * JD-Core Version:    0.7.0.1
  */

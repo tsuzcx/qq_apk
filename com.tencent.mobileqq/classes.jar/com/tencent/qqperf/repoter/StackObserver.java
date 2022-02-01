@@ -20,11 +20,11 @@ public class StackObserver
         paramObject = new JSONObject();
         paramObject.put("fileObj1", ((HashMap)localObject).get("filePath"));
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("p_id", MagnifierSDK.b());
+        ((JSONObject)localObject).put("p_id", MagnifierSDK.m());
         paramObservable.put("fileObj", paramObject);
         paramObservable.put("clientinfo", localObject);
         paramObservable.put("newplugin", 123);
-        ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, paramObservable, true, true, MagnifierSDK.a));
+        ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, paramObservable, true, true, MagnifierSDK.b));
         if (QLog.isColorLevel())
         {
           QLog.d("StackObserver", 2, "report apm suc");
@@ -40,7 +40,7 @@ public class StackObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.repoter.StackObserver
  * JD-Core Version:    0.7.0.1
  */

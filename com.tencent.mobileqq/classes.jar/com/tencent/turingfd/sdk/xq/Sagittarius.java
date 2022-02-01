@@ -1,78 +1,41 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-public class Sagittarius
-  extends case
+public final class Sagittarius
+  extends else
 {
-  public static List<String> Qa = new ArrayList();
-  public static List<String> Ra;
-  public String Za = "";
-  public List<String> _a = null;
-  public List<String> ab = null;
-  public int jb = 0;
-  public String nb = "";
-  public int type = 0;
+  public int a = 0;
+  public float b = 0.0F;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
   
-  static
+  public void a(case paramcase)
   {
-    Qa.add("");
-    Ra = new ArrayList();
-    Ra.add("");
-  }
-  
-  public void a(byte parambyte)
-  {
-    parambyte.b(this.jb, 0);
-    Object localObject = this.nb;
-    if (localObject != null) {
-      parambyte.b((String)localObject, 1);
+    paramcase.a(this.a, 0);
+    paramcase.a(this.b, 1);
+    paramcase.a(this.c, 2);
+    float f = this.d;
+    if (f != 0.0F) {
+      paramcase.a(f, 3);
     }
-    parambyte.b(this.type, 2);
-    localObject = this.Za;
-    if (localObject != null) {
-      parambyte.b((String)localObject, 3);
-    }
-    localObject = this._a;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 4);
-    }
-    localObject = this.ab;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 5);
+    f = this.e;
+    if (f != 0.0F) {
+      paramcase.a(f, 4);
     }
   }
   
   public void a(try paramtry)
   {
-    this.jb = paramtry.a(this.jb, 0, true);
-    this.nb = paramtry.a(1, false);
-    this.type = paramtry.a(this.type, 2, false);
-    this.Za = paramtry.a(3, false);
-    this._a = ((List)paramtry.a(Qa, 4, false));
-    this.ab = ((List)paramtry.a(Ra, 5, false));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if (paramObject == null) {
-      return false;
-    }
-    if (!(paramObject instanceof Sagittarius)) {
-      return false;
-    }
-    paramObject = (Sagittarius)paramObject;
-    return (char.equals(this.jb, paramObject.jb)) && (char.equals(this.nb, paramObject.nb)) && (char.equals(this.type, paramObject.type)) && (char.equals(this.Za, paramObject.Za)) && (char.equals(this._a, paramObject._a)) && (char.equals(this.ab, paramObject.ab));
+    this.a = paramtry.a(this.a, 0, true);
+    this.b = paramtry.a(this.b, 1, true);
+    this.c = paramtry.a(this.c, 2, true);
+    this.d = paramtry.a(this.d, 3, false);
+    this.e = paramtry.a(this.e, 4, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Sagittarius
  * JD-Core Version:    0.7.0.1
  */

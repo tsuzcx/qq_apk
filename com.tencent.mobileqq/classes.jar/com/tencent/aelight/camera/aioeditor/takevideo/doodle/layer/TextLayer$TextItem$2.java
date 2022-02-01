@@ -10,32 +10,32 @@ class TextLayer$TextItem$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a.b == null) {
+    if (this.a.m.w == null) {
       return;
     }
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     paramValueAnimator = this.a;
-    float f2 = paramValueAnimator.d;
-    float f3 = this.a.f;
+    float f2 = paramValueAnimator.f;
+    float f3 = this.a.h;
     float f4 = 1.0F - f1;
-    paramValueAnimator.l = (f2 + f3 * f4);
+    paramValueAnimator.D = (f2 + f3 * f4);
     paramValueAnimator = this.a;
-    paramValueAnimator.m = (paramValueAnimator.e + this.a.g * f4);
+    paramValueAnimator.E = (paramValueAnimator.g + this.a.i * f4);
     paramValueAnimator = this.a;
-    paramValueAnimator.j = (paramValueAnimator.b + this.a.h * f4);
+    paramValueAnimator.B = (paramValueAnimator.d + this.a.j * f4);
     paramValueAnimator = this.a;
-    paramValueAnimator.k = (paramValueAnimator.c + this.a.i * f4);
+    paramValueAnimator.C = (paramValueAnimator.e + this.a.k * f4);
     if (f1 == 1.0F)
     {
-      this.a.a.b = null;
-      this.a.a.a(4);
+      this.a.m.w = null;
+      this.a.m.a(4);
     }
-    TextLayer.b(this.a.a);
+    TextLayer.e(this.a.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.TextLayer.TextItem.2
  * JD-Core Version:    0.7.0.1
  */

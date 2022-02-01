@@ -11,14 +11,14 @@ class GroupVideoLoadingFragment$VideoButtonListener
   
   public void onClick(View paramView)
   {
-    GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705495), HardCodeUtil.a(2131705499));
-    GroupVideoLoadingFragment.a(this.a).c();
+    GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903383), HardCodeUtil.a(2131903387));
+    GroupVideoLoadingFragment.c(this.a).c();
     GroupVideoLoadingFragment.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.VideoButtonListener
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ class SubscriptFeedsActivity$1
   
   public void drawFinished()
   {
-    if ((!this.a.c) && (this.a.d))
+    if ((!this.a.i) && (this.a.j))
     {
-      this.a.c = true;
+      this.a.i = true;
       PublicTracker.a("SUBSCRIPT_FEEDS_COST", null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.1
  * JD-Core Version:    0.7.0.1
  */

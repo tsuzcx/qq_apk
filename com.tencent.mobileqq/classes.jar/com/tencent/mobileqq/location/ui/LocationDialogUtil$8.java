@@ -15,7 +15,7 @@ final class LocationDialogUtil$8
   public void run()
   {
     Object localObject = this.a;
-    localObject = DialogUtil.a((Context)localObject, 230, null, ((Activity)localObject).getResources().getString(2131719125), 2131718849, 2131690728, null, new LocationDialogUtil.8.1(this));
+    localObject = DialogUtil.a((Context)localObject, 230, null, ((Activity)localObject).getResources().getString(2131916661), 2131916381, 2131887648, null, new LocationDialogUtil.8.1(this));
     ((QQCustomDialog)localObject).setCancelable(false);
     if (!String.valueOf(this.a.hashCode()).equals(LocationDialogUtil.a()))
     {
@@ -32,7 +32,7 @@ final class LocationDialogUtil$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.8
  * JD-Core Version:    0.7.0.1
  */

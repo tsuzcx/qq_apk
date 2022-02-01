@@ -25,18 +25,9 @@ public class DynamicMsgProcessor
     super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public ArrayList<MessageRecord> a(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    paramList = b(paramLong, paramList);
-    ArrayList localArrayList = new ArrayList();
-    a(paramList, localArrayList, true);
-    paramList.clear();
-    return localArrayList;
-  }
-  
   public void a(long paramLong, List<msg_comm.Msg> paramList)
   {
-    paramList = a(paramLong, paramList);
+    paramList = b(paramLong, paramList);
     IPublicAccountManager localIPublicAccountManager;
     long l2;
     long l1;
@@ -44,7 +35,7 @@ public class DynamicMsgProcessor
     if ((paramList != null) && (paramList.size() > 0))
     {
       localIPublicAccountManager = (IPublicAccountManager)QRoute.api(IPublicAccountManager.class);
-      l2 = localIPublicAccountManager.getMsgID(this.a, String.valueOf(paramLong));
+      l2 = localIPublicAccountManager.getMsgID(this.q, String.valueOf(paramLong));
       l1 = l2;
       if (l2 == 0L) {
         l1 = 9223372036854775807L;
@@ -67,11 +58,11 @@ public class DynamicMsgProcessor
           if ((l2 >= l1) || (l2 == 0L)) {
             continue;
           }
-          localIPublicAccountManager.setMsgID(this.a, String.valueOf(paramLong), l2);
+          localIPublicAccountManager.setMsgID(this.q, String.valueOf(paramLong), l2);
           l1 = l2;
         }
         catch (Exception localException) {}
-        ((IMessageFacade)this.a.getRuntimeService(IMessageFacade.class, "")).addMessage(paramList, this.a.getCurrentAccountUin(), true);
+        ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).addMessage(paramList, this.q.getCurrentAccountUin(), true);
         return;
       }
     }
@@ -79,11 +70,20 @@ public class DynamicMsgProcessor
   
   public ArrayList<MessageRecord> b(long paramLong, List<msg_comm.Msg> paramList)
   {
+    paramList = c(paramLong, paramList);
+    ArrayList localArrayList = new ArrayList();
+    a(paramList, localArrayList, true);
+    paramList.clear();
+    return localArrayList;
+  }
+  
+  public ArrayList<MessageRecord> c(long paramLong, List<msg_comm.Msg> paramList)
+  {
     Object localObject1 = new ArrayList();
     a(paramList, (List)localObject1);
     paramList = new ArrayList();
-    DecodeProtoPkgContext localDecodeProtoPkgContext = new DecodeProtoPkgContext(this.a.getLongAccountUin(), paramLong, true, true, false, false);
-    localDecodeProtoPkgContext.h = true;
+    DecodeProtoPkgContext localDecodeProtoPkgContext = new DecodeProtoPkgContext(this.q.getLongAccountUin(), paramLong, true, true, false, false);
+    localDecodeProtoPkgContext.n = true;
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -106,7 +106,7 @@ public class DynamicMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.DynamicMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

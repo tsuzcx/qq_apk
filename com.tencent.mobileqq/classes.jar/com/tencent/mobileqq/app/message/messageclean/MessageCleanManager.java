@@ -5,6 +5,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -35,26 +36,26 @@ import mqq.os.MqqHandler;
 public class MessageCleanManager
   implements IFileScanListener, IMessageDataListener, Manager
 {
-  private long jdField_a_of_type_Long = 0L;
-  private IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
   public PeakAppInterface a;
-  private FileCleanManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager;
-  private IMessageLoadListener jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener;
-  private MessageDataManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private List<CleanMessageItemInfo> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<String, List<String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
-  private ConcurrentHashMap<String, MessageRecord> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private volatile boolean c = false;
-  private volatile boolean d = false;
-  private volatile boolean e = false;
+  private MessageDataManager b;
+  private FileCleanManager c;
+  private ConcurrentHashMap<String, List<String>> d;
+  private ConcurrentHashMap<String, MessageRecord> e;
+  private volatile boolean f = false;
+  private volatile boolean g = false;
+  private volatile boolean h = false;
+  private volatile boolean i = false;
+  private IAIOImageProvider j;
+  private List<CleanMessageItemInfo> k;
+  private IMessageLoadListener l;
+  private HashMap<String, String> m;
+  private HashMap<String, Integer> n;
+  private long o = 0L;
+  private volatile boolean p = false;
   
   public MessageCleanManager()
   {
-    c();
+    d();
   }
   
   private long a(String paramString)
@@ -64,11 +65,11 @@ public class MessageCleanManager
     long l3 = l2;
     if (!bool)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      if (this.d == null) {
         return 0L;
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a();
-      Object localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      Object localObject1 = this.c.c();
+      Object localObject2 = (List)this.d.get(paramString);
       long l1 = l2;
       if (localObject2 != null)
       {
@@ -86,14 +87,14 @@ public class MessageCleanManager
             FileInfo localFileInfo = (FileInfo)((ConcurrentHashMap)localObject1).get(str);
             if (localFileInfo != null)
             {
-              l2 += localFileInfo.jdField_a_of_type_Long;
-              localFileInfo.b += 1;
-              this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a(str, localFileInfo);
+              l2 += localFileInfo.b;
+              localFileInfo.d += 1;
+              this.c.a(str, localFileInfo);
             }
           }
         }
       }
-      localObject1 = this.jdField_b_of_type_JavaUtilHashMap;
+      localObject1 = this.n;
       l3 = l1;
       if (localObject1 != null)
       {
@@ -101,103 +102,13 @@ public class MessageCleanManager
         if (((HashMap)localObject1).containsKey(paramString))
         {
           l3 = l1;
-          if (((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).intValue() > 0) {
-            l3 = l1 + ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).intValue() * 200;
+          if (((Integer)this.n.get(paramString)).intValue() > 0) {
+            l3 = l1 + ((Integer)this.n.get(paramString)).intValue() * 200;
           }
         }
       }
     }
     return l3;
-  }
-  
-  private Pair<String, List<String>> a(String paramString, List<MessageRecord> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        paramList = (MessageRecord)localIterator.next();
-        int i = paramList.msgtype;
-        if (MessageTypeUtils.a(i))
-        {
-          paramList = Cursor2EntityConvert.a(paramList);
-          if ((paramList != null) && ((paramList instanceof MessageForPic)))
-          {
-            paramList = (MessageForPic)paramList;
-            paramList = ((IPicHelper)QRoute.api(IPicHelper.class)).getBiggestFilePath(paramList);
-            break label297;
-          }
-        }
-        else if (MessageTypeUtils.b(i))
-        {
-          paramList = Cursor2EntityConvert.a(paramList);
-          if ((paramList != null) && ((paramList instanceof MessageForShortVideo)))
-          {
-            MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramList;
-            paramList = SVUtils.a(localMessageForShortVideo, "mp4");
-            if (TextUtils.isEmpty(paramList))
-            {
-              paramList = ShortVideoUtils.getVideoTmpPath(localMessageForShortVideo);
-              break label297;
-            }
-            break label297;
-          }
-        }
-        else if (MessageTypeUtils.c(i))
-        {
-          paramList = Cursor2EntityConvert.a(paramList);
-          if (paramList != null)
-          {
-            paramList = QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface, paramList);
-            break label297;
-          }
-        }
-        else if (MessageTypeUtils.d(i))
-        {
-          paramList = Cursor2EntityConvert.a(paramList);
-          if ((paramList != null) && ((paramList instanceof MessageForMixedMsg))) {
-            b(paramString, ((MessageForMixedMsg)paramList).getPicMsgList());
-          }
-        }
-        else if (MessageTypeUtils.e(i))
-        {
-          paramList = Cursor2EntityConvert.a(paramList);
-          if ((paramList != null) && ((paramList instanceof MessageForStructing)) && (MultiMsgUtil.a((MessageForStructing)paramList))) {
-            b(paramString, this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.c(MessageRecord.class, "select * from mr_multimessage where msgseq=?", "mr_multimessage", "msgseq=?", new String[] { String.valueOf(paramList.uniseq) }));
-          }
-        }
-        paramList = "";
-        label297:
-        if ((!TextUtils.isEmpty(paramList)) && (!localArrayList.contains(paramList))) {
-          localArrayList.add(new File(paramList).getName());
-        }
-      }
-      return new Pair(paramString, localArrayList);
-    }
-    return new Pair(paramString, localArrayList);
-  }
-  
-  private Pair<Integer, List<MessageRecord>> a(List<MessageRecord> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord instanceof MessageForText)) {
-          i += 1;
-        } else {
-          localArrayList.add(localMessageRecord);
-        }
-      }
-      return new Pair(Integer.valueOf(i), localArrayList);
-    }
-    return null;
   }
   
   private String a(MessageRecord paramMessageRecord)
@@ -206,33 +117,33 @@ public class MessageCleanManager
     Object localObject2 = localObject1;
     if (paramMessageRecord != null)
     {
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      HashMap localHashMap = this.m;
       localObject2 = localObject1;
       if (localHashMap != null)
       {
         if (localHashMap.isEmpty()) {
           return "";
         }
-        int i = paramMessageRecord.istroop;
-        if (i != 0)
+        int i1 = paramMessageRecord.istroop;
+        if (i1 != 0)
         {
-          if (i != 1)
+          if (i1 != 1)
           {
-            if (i != 1000)
+            if (i1 != 1000)
             {
-              if (i != 1004)
+              if (i1 != 1004)
               {
-                if (i == 3000) {
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(paramMessageRecord.frienduin);
+                if (i1 == 3000) {
+                  localObject1 = this.b.a(paramMessageRecord.frienduin);
                 }
               }
               else {
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(paramMessageRecord.senderuin, paramMessageRecord.frienduin);
+                localObject1 = this.b.a(paramMessageRecord.senderuin, paramMessageRecord.frienduin);
               }
             }
             else
             {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
+              localObject2 = this.j;
               if (localObject2 != null) {
                 localObject1 = ((IAIOImageProvider)localObject2).a(paramMessageRecord.senderuin, paramMessageRecord.frienduin);
               }
@@ -240,7 +151,7 @@ public class MessageCleanManager
           }
           else
           {
-            localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+            localObject1 = this.m;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append(paramMessageRecord.frienduin);
             ((StringBuilder)localObject2).append(1);
@@ -249,7 +160,7 @@ public class MessageCleanManager
         }
         else
         {
-          localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+          localObject1 = this.m;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramMessageRecord.frienduin);
           ((StringBuilder)localObject2).append(0);
@@ -264,41 +175,97 @@ public class MessageCleanManager
     return localObject2;
   }
   
-  private void a(String paramString)
+  private void a(String paramString, int paramInt)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      HashMap localHashMap = this.n;
+      if (localHashMap != null)
+      {
+        if (localHashMap.containsKey(paramString))
+        {
+          int i1 = ((Integer)this.n.get(paramString)).intValue();
+          this.n.put(paramString, Integer.valueOf(i1 + paramInt));
+          return;
+        }
+        this.n.put(paramString, Integer.valueOf(paramInt));
+      }
+    }
+  }
+  
+  private boolean a(CleanMessageItemInfo paramCleanMessageItemInfo)
+  {
+    if (paramCleanMessageItemInfo != null)
+    {
+      if (this.j == null) {
+        return true;
+      }
+      String str = MessageRecord.getTableName(paramCleanMessageItemInfo.a, paramCleanMessageItemInfo.c);
+      if (!TextUtils.isEmpty(str))
+      {
+        c(str);
+        IAIOImageProvider localIAIOImageProvider = this.j;
+        if (localIAIOImageProvider != null) {
+          localIAIOImageProvider.b(paramCleanMessageItemInfo.a, paramCleanMessageItemInfo.c);
+        }
+        b(str);
+      }
+    }
+    return true;
+  }
+  
+  private Pair<Integer, List<MessageRecord>> b(List<MessageRecord> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i1 = 0;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord instanceof MessageForText)) {
+          i1 += 1;
+        } else {
+          localArrayList.add(localMessageRecord);
+        }
+      }
+      return new Pair(Integer.valueOf(i1), localArrayList);
+    }
+    return null;
+  }
+  
+  private void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      ConcurrentHashMap localConcurrentHashMap = this.d;
       if (localConcurrentHashMap != null) {
         localConcurrentHashMap.remove(paramString);
       }
     }
   }
   
-  private void a(String paramString, int paramInt)
+  private void b(String paramString, List<MessageRecord> paramList)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if ((!TextUtils.isEmpty(paramString)) && (paramList != null))
     {
-      HashMap localHashMap = this.jdField_b_of_type_JavaUtilHashMap;
-      if (localHashMap != null)
+      if (paramList.isEmpty()) {
+        return;
+      }
+      paramList = b(paramList);
+      if (paramList != null)
       {
-        if (localHashMap.containsKey(paramString))
-        {
-          int i = ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i + paramInt));
-          return;
+        a(paramString, ((Integer)paramList.first).intValue());
+        paramString = c(paramString, (List)paramList.second);
+        if (paramString != null) {
+          d((String)paramString.first, (List)paramString.second);
         }
-        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
       }
     }
   }
   
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c);
-  }
-  
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -324,39 +291,87 @@ public class MessageCleanManager
     return bool1;
   }
   
-  private boolean a(CleanMessageItemInfo paramCleanMessageItemInfo)
+  private Pair<String, List<String>> c(String paramString, List<MessageRecord> paramList)
   {
-    if (paramCleanMessageItemInfo != null)
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null) {
-        return true;
-      }
-      String str = MessageRecord.getTableName(paramCleanMessageItemInfo.jdField_a_of_type_JavaLangString, paramCleanMessageItemInfo.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(str))
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        b(str);
-        IAIOImageProvider localIAIOImageProvider = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
-        if (localIAIOImageProvider != null) {
-          localIAIOImageProvider.b(paramCleanMessageItemInfo.jdField_a_of_type_JavaLangString, paramCleanMessageItemInfo.jdField_a_of_type_Int);
+        paramList = (MessageRecord)localIterator.next();
+        int i1 = paramList.msgtype;
+        if (MessageTypeUtils.a(i1))
+        {
+          paramList = Cursor2EntityConvert.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForPic)))
+          {
+            paramList = (MessageForPic)paramList;
+            paramList = ((IPicHelper)QRoute.api(IPicHelper.class)).getBiggestFilePath(paramList);
+            break label302;
+          }
         }
-        a(str);
+        else if (MessageTypeUtils.b(i1))
+        {
+          paramList = Cursor2EntityConvert.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForShortVideo)))
+          {
+            MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramList;
+            paramList = SVUtils.a(localMessageForShortVideo, "mp4");
+            if (TextUtils.isEmpty(paramList))
+            {
+              paramList = ShortVideoUtils.getVideoTmpPath(localMessageForShortVideo);
+              break label302;
+            }
+            break label302;
+          }
+        }
+        else if (MessageTypeUtils.c(i1))
+        {
+          paramList = Cursor2EntityConvert.a(paramList);
+          if (paramList != null)
+          {
+            paramList = QFileUtils.a(this.a, paramList);
+            break label302;
+          }
+        }
+        else if (MessageTypeUtils.d(i1))
+        {
+          paramList = Cursor2EntityConvert.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForMixedMsg))) {
+            b(paramString, ((MessageForMixedMsg)paramList).getPicMsgList());
+          }
+        }
+        else if (MessageTypeUtils.e(i1))
+        {
+          paramList = Cursor2EntityConvert.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForStructing)) && (MultiMsgUtil.a((MessageForStructing)paramList))) {
+            b(paramString, this.b.c(MessageRecord.class, "select * from mr_multimessage where msgseq=?", "mr_multimessage", "msgseq=?", new String[] { String.valueOf(paramList.uniseq) }));
+          }
+        }
+        paramList = "";
+        label302:
+        if ((!TextUtils.isEmpty(paramList)) && (!localArrayList.contains(paramList))) {
+          localArrayList.add(new File(paramList).getName());
+        }
       }
+      return new Pair(paramString, localArrayList);
     }
-    return true;
+    return new Pair(paramString, localArrayList);
   }
   
-  private void b(String paramString)
+  private void c(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      ConcurrentHashMap localConcurrentHashMap = this.d;
       if (localConcurrentHashMap != null)
       {
         Object localObject = (List)localConcurrentHashMap.get(paramString);
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           paramString = new ArrayList();
-          localConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a();
+          localConcurrentHashMap = this.c.c();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
@@ -364,150 +379,96 @@ public class MessageCleanManager
             FileInfo localFileInfo = (FileInfo)localConcurrentHashMap.get(str1);
             if (localFileInfo != null)
             {
-              localFileInfo.b -= 1;
-              if (localFileInfo.b == 0)
+              localFileInfo.d -= 1;
+              if (localFileInfo.d == 0)
               {
-                String str2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a(localFileInfo);
+                String str2 = this.c.a(localFileInfo);
                 if (!TextUtils.isEmpty(str2))
                 {
-                  this.jdField_a_of_type_Long += localFileInfo.jdField_a_of_type_Long;
+                  this.o += localFileInfo.b;
                   paramString.add(str2);
                 }
-                this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a(str1);
+                this.c.a(str1);
               }
               else
               {
-                this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a(str1, localFileInfo);
+                this.c.a(str1, localFileInfo);
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a(paramString);
+          this.c.a(paramString);
         }
       }
-    }
-  }
-  
-  private void b(String paramString, List<MessageRecord> paramList)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramList != null))
-    {
-      if (paramList.isEmpty()) {
-        return;
-      }
-      paramList = a(paramList);
-      if (paramList != null)
-      {
-        a(paramString, ((Integer)paramList.first).intValue());
-        paramString = a(paramString, (List)paramList.second);
-        if (paramString != null) {
-          c((String)paramString.first, (List)paramString.second);
-        }
-      }
-    }
-  }
-  
-  private boolean b()
-  {
-    FileCleanManager localFileCleanManager = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager;
-    return (localFileCleanManager != null) && (localFileCleanManager.a());
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager = new MessageDataManager();
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a();
-    if ((localAppInterface instanceof PeakAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)localAppInterface);
-    }
-  }
-  
-  private void c(String paramString, List<String> paramList)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramList != null))
-    {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-      if (localObject == null) {
-        return;
-      }
-      if (((ConcurrentHashMap)localObject).containsKey(paramString))
-      {
-        localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        int j = paramList.size();
-        int i = 0;
-        while (i < j)
-        {
-          String str = (String)paramList.get(i);
-          if (!((List)localObject).contains(str)) {
-            ((List)localObject).add(str);
-          }
-          i += 1;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramList);
     }
   }
   
   private void d()
   {
-    this.d = false;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager = new FileCleanManager(this);
+    this.b = new MessageDataManager();
+    AppInterface localAppInterface = this.b.a();
+    if ((localAppInterface instanceof PeakAppInterface)) {
+      this.a = ((PeakAppInterface)localAppInterface);
+    }
+  }
+  
+  private void d(String paramString, List<String> paramList)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramList != null))
+    {
+      Object localObject = this.d;
+      if (localObject == null) {
+        return;
+      }
+      if (((ConcurrentHashMap)localObject).containsKey(paramString))
+      {
+        localObject = (List)this.d.get(paramString);
+        int i2 = paramList.size();
+        int i1 = 0;
+        while (i1 < i2)
+        {
+          String str = (String)paramList.get(i1);
+          if (!((List)localObject).contains(str)) {
+            ((List)localObject).add(str);
+          }
+          i1 += 1;
+        }
+        this.d.put(paramString, localObject);
+        return;
+      }
+      this.d.put(paramString, paramList);
+    }
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(0, this.jdField_a_of_type_JavaUtilHashMap);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.b(1, this.jdField_a_of_type_JavaUtilHashMap);
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("MessageCleanManager", 2, "loadNameList finish");
-    }
-    h();
+    this.i = false;
+    this.d = new ConcurrentHashMap();
+    this.e = new ConcurrentHashMap();
+    this.k = new ArrayList();
+    this.m = new HashMap();
+    this.n = new HashMap();
+    this.o = 0L;
+    this.b.a(this);
+    this.c = new FileCleanManager(this);
   }
   
   private void f()
   {
+    this.b.a(0, this.m);
+    this.b.b(1, this.m);
+    this.f = true;
     if (QLog.isColorLevel()) {
-      QLog.e("MessageCleanManager", 2, "loadMessageRecord");
+      QLog.e("MessageCleanManager", 2, "loadNameList finish");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a();
-    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = String.format("select * from %s", new Object[] { str1 });
-        b(str1, this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(MessageRecord.class, str2, str1, null, null));
-      }
-      this.jdField_b_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageCleanManager", 2, "loadMessageRecord finish");
-      }
-      h();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("MessageCleanManager", 2, "loadMessageRecord tableNames is empty");
-    }
-    this.jdField_b_of_type_Boolean = true;
-    h();
+    k();
   }
   
   private void g()
   {
     if (QLog.isColorLevel()) {
-      QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord");
+      QLog.e("MessageCleanManager", 2, "loadMessageRecord");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.b();
+    Object localObject = this.b.b();
     if ((localObject != null) && (((ArrayList)localObject).size() != 0))
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -515,151 +476,186 @@ public class MessageCleanManager
       {
         String str1 = (String)((Iterator)localObject).next();
         String str2 = String.format("select * from %s", new Object[] { str1 });
-        b(str1, this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.b(MessageRecord.class, str2, str1, null, null));
+        b(str1, this.b.a(MessageRecord.class, str2, str1, null, null));
       }
-      this.c = true;
+      this.g = true;
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageCleanManager", 2, "loadMessageRecord finish");
+      }
+      k();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadMessageRecord tableNames is empty");
+    }
+    this.g = true;
+    k();
+  }
+  
+  private void h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord");
+    }
+    Object localObject = this.b.c();
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = String.format("select * from %s", new Object[] { str1 });
+        b(str1, this.b.b(MessageRecord.class, str2, str1, null, null));
+      }
+      this.h = true;
       if (QLog.isColorLevel()) {
         QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord finish");
       }
-      h();
+      k();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord tableNames is empty");
     }
-    this.c = true;
-    h();
+    this.h = true;
+    k();
   }
   
-  private void h()
+  private boolean i()
   {
-    if ((a()) && (b()))
+    return (this.f) && (this.g) && (this.h);
+  }
+  
+  private boolean j()
+  {
+    FileCleanManager localFileCleanManager = this.c;
+    return (localFileCleanManager != null) && (localFileCleanManager.b());
+  }
+  
+  private void k()
+  {
+    if ((i()) && (j()))
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+      if (this.d != null)
       {
-        Object localObject1 = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+        Object localObject1 = this.e;
         if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).size() > 0))
         {
-          localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+          localObject1 = this.d.keySet().iterator();
           while (((Iterator)localObject1).hasNext())
           {
             Object localObject2 = (String)((Iterator)localObject1).next();
             CleanMessageItemInfo localCleanMessageItemInfo = new CleanMessageItemInfo();
-            localObject2 = (MessageRecord)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
-            if ((localObject2 != null) && (a(((MessageRecord)localObject2).istroop)))
+            localObject2 = (MessageRecord)this.e.get(localObject2);
+            if ((localObject2 != null) && (b(((MessageRecord)localObject2).istroop)))
             {
-              localCleanMessageItemInfo.jdField_a_of_type_JavaLangString = ((MessageRecord)localObject2).frienduin;
-              localCleanMessageItemInfo.jdField_b_of_type_JavaLangString = a((MessageRecord)localObject2);
-              localCleanMessageItemInfo.jdField_a_of_type_Int = ((MessageRecord)localObject2).istroop;
-              localCleanMessageItemInfo.jdField_b_of_type_Long = ((MessageRecord)localObject2).time;
-              localCleanMessageItemInfo.jdField_a_of_type_Long = a(MessageRecord.getTableName(localCleanMessageItemInfo.jdField_a_of_type_JavaLangString, ((MessageRecord)localObject2).istroop));
-              if ((localCleanMessageItemInfo.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_JavaUtilList != null))
+              localCleanMessageItemInfo.a = ((MessageRecord)localObject2).frienduin;
+              localCleanMessageItemInfo.b = a((MessageRecord)localObject2);
+              localCleanMessageItemInfo.c = ((MessageRecord)localObject2).istroop;
+              localCleanMessageItemInfo.f = ((MessageRecord)localObject2).time;
+              localCleanMessageItemInfo.d = a(MessageRecord.getTableName(localCleanMessageItemInfo.a, ((MessageRecord)localObject2).istroop));
+              if ((localCleanMessageItemInfo.d > 0L) && (this.k != null))
               {
-                localCleanMessageItemInfo.c = FileCleanUtils.a(localCleanMessageItemInfo.jdField_a_of_type_Long);
-                this.jdField_a_of_type_JavaUtilList.add(localCleanMessageItemInfo);
+                localCleanMessageItemInfo.e = FileCleanUtils.a(localCleanMessageItemInfo.d);
+                this.k.add(localCleanMessageItemInfo);
               }
             }
           }
-          localObject1 = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+          localObject1 = this.e;
           if (localObject1 != null) {
             ((ConcurrentHashMap)localObject1).clear();
           }
-          localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+          localObject1 = this.m;
           if (localObject1 != null) {
             ((HashMap)localObject1).clear();
           }
-          localObject1 = this.jdField_b_of_type_JavaUtilHashMap;
+          localObject1 = this.n;
           if (localObject1 != null) {
             ((HashMap)localObject1).clear();
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener == null) {
+          if (this.l == null) {
             break label317;
           }
           a(1);
           if (QLog.isColorLevel()) {
             QLog.e("MessageCleanManager", 2, "conformAllData onLoadFinish");
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener.a(this.jdField_a_of_type_JavaUtilList);
+          this.l.a(this.k);
           break label317;
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener != null)
+      if (this.l != null)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MessageCleanManager", 2, "conformAllData onLoadFinish cleanMessageList is empty");
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener.a(this.jdField_a_of_type_JavaUtilList);
+        this.l.a(this.k);
       }
       label317:
-      this.e = false;
+      this.p = false;
     }
   }
   
-  private void i()
+  private void l()
   {
-    this.e = false;
-    this.d = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    this.p = false;
+    this.i = true;
+    this.g = false;
+    this.h = false;
+    this.f = false;
+    this.o = 0L;
+    Object localObject = this.k;
     if (localObject != null)
     {
       ((List)localObject).clear();
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.k = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    localObject = this.d;
     if (localObject != null)
     {
       ((ConcurrentHashMap)localObject).clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+      this.d = null;
     }
-    localObject = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    localObject = this.e;
     if (localObject != null)
     {
       ((ConcurrentHashMap)localObject).clear();
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+      this.e = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject = this.m;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.m = null;
     }
-    localObject = this.jdField_b_of_type_JavaUtilHashMap;
+    localObject = this.n;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.jdField_b_of_type_JavaUtilHashMap = null;
+      this.n = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager;
+    localObject = this.b;
     if (localObject != null) {
-      ((MessageDataManager)localObject).a();
+      ((MessageDataManager)localObject).d();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager;
+    localObject = this.c;
     if (localObject != null) {
-      ((FileCleanManager)localObject).b();
+      ((FileCleanManager)localObject).d();
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
   }
   
   public List<CleanMessageItemInfo> a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.k;
     if (localList != null) {
       Collections.sort(localList, new CleanMessageComparator(paramInt));
     }
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.k;
   }
   
   public List<CleanMessageItemInfo> a(List<CleanMessageItemInfo> paramList)
   {
-    if ((paramList != null) && (!paramList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider != null))
+    if ((paramList != null) && (!paramList.isEmpty()) && (this.j != null))
     {
       if (QLog.isColorLevel()) {
         QLog.e("MessageCleanManager", 2, "deleteMessages");
@@ -669,14 +665,14 @@ public class MessageCleanManager
       while (paramList.hasNext())
       {
         CleanMessageItemInfo localCleanMessageItemInfo = (CleanMessageItemInfo)paramList.next();
-        List localList = this.jdField_a_of_type_JavaUtilList;
+        List localList = this.k;
         if (localList != null) {
           localList.remove(localCleanMessageItemInfo);
         }
       }
-      return this.jdField_a_of_type_JavaUtilList;
+      return this.k;
     }
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.k;
   }
   
   public void a()
@@ -684,17 +680,17 @@ public class MessageCleanManager
     if (QLog.isColorLevel()) {
       QLog.e("MessageCleanManager", 2, "onScanFinish");
     }
-    h();
+    k();
   }
   
   public void a(IAIOImageProvider paramIAIOImageProvider)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = paramIAIOImageProvider;
+    this.j = paramIAIOImageProvider;
   }
   
   public void a(IMessageLoadListener paramIMessageLoadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener = paramIMessageLoadListener;
+    this.l = paramIMessageLoadListener;
   }
   
   public void a(String paramString, Entity paramEntity)
@@ -703,7 +699,7 @@ public class MessageCleanManager
     {
       if ((paramEntity instanceof MessageRecord))
       {
-        ConcurrentHashMap localConcurrentHashMap = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+        ConcurrentHashMap localConcurrentHashMap = this.e;
         if (localConcurrentHashMap != null) {
           localConcurrentHashMap.put(paramString, (MessageRecord)paramEntity);
         }
@@ -734,31 +730,31 @@ public class MessageCleanManager
     if (QLog.isColorLevel()) {
       QLog.e("MessageCleanManager", 2, "loadAllMessageRecord");
     }
-    if (this.e)
+    if (this.p)
     {
       if (QLog.isColorLevel()) {
         QLog.e("MessageCleanManager", 2, "loadAllMessageRecord isLoadingData");
       }
       return;
     }
-    IMessageLoadListener localIMessageLoadListener = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener;
+    IMessageLoadListener localIMessageLoadListener = this.l;
     if (localIMessageLoadListener != null) {
       localIMessageLoadListener.a();
     }
-    i();
-    d();
+    l();
+    e();
     try
     {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanFileCleanManager.a();
+      this.p = true;
+      this.c.a();
       ThreadManager.getSubThreadHandler().post(new MessageCleanManager.1(this));
-      ThreadManager.getFileThreadHandler().post(new MessageCleanManager.2(this));
-      ThreadManager.getFileThreadHandler().post(new MessageCleanManager.3(this));
+      ThreadManagerV2.excute(new MessageCleanManager.2(this), 64, null, true);
+      ThreadManagerV2.excute(new MessageCleanManager.3(this), 64, null, true);
       return;
     }
     catch (Exception localException)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener == null) {
+      if (this.l == null) {
         break label221;
       }
       if (!QLog.isColorLevel()) {
@@ -768,7 +764,7 @@ public class MessageCleanManager
       localStringBuilder.append("loadAllMessageRecord exception = ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("MessageCleanManager", 2, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener.a(this.jdField_a_of_type_JavaUtilList);
+      this.l.a(this.k);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -776,26 +772,31 @@ public class MessageCleanManager
       label121:
       break label121;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener != null)
+    if (this.l != null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("MessageCleanManager", 2, "loadAllMessageRecord OutOfMemoryError");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener.a(this.jdField_a_of_type_JavaUtilList);
+      this.l.a(this.k);
       return;
     }
   }
   
+  public long c()
+  {
+    return this.o;
+  }
+  
   public void onDestroy()
   {
-    i();
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIMessageLoadListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = null;
+    l();
+    this.l = null;
+    this.j = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.MessageCleanManager
  * JD-Core Version:    0.7.0.1
  */

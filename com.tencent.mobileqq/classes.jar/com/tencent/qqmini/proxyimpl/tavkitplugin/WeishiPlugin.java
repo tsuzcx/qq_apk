@@ -4,41 +4,44 @@ import android.util.Log;
 import com.tencent.aelight.camera.download.api.AEResInfo;
 import com.tencent.aelight.camera.download.api.IAEResUtil;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qcircle.tavcut.TAVCut;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.BaseTavApiProxy;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavProxyManager;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import com.tencent.tav.decoder.logger.Logger;
-import com.tencent.tavcut.TAVCut;
 import org.json.JSONObject;
 
 @JsPlugin(secondary=true)
 public class WeishiPlugin
   extends BaseJsPlugin
 {
-  public static MiniAppFileManager a;
-  private IMiniAppContext jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
-  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
-  private boolean jdField_a_of_type_Boolean;
-  private MiniAppFileManager b;
+  public static IMiniAppFileManager a;
+  private IMiniAppContext b;
+  private boolean c;
+  private RequestEvent d;
+  private IMiniAppFileManager e;
   
   static {}
   
-  private void a()
+  private String a()
   {
-    Logger.d("WS_WeishiPlugin", "initSo() called");
-    TAVCut.initTAVCut(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getContext(), ((IAEResUtil)QRoute.api(IAEResUtil.class)).getUnzipAEResPath(AEResInfo.AE_RES_BASE_PACKAGE), ((IAEResUtil)QRoute.api(IAEResUtil.class)).getUnzipAEResPath(AEResInfo.LIGHT_RES_BASE_PACKAGE), new WeishiPlugin.MyCallback(this, null));
+    return null;
   }
   
   private void a(RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
-    a();
+    String str = a();
+    if (str == null)
+    {
+      paramRequestEvent.ok();
+      return;
+    }
+    paramRequestEvent.fail(str);
   }
   
   private void a(RequestEvent paramRequestEvent, BaseTavEvent paramBaseTavEvent)
@@ -52,8 +55,8 @@ public class WeishiPlugin
       paramRequestEvent.fail(((StringBuilder)localObject).toString());
       return;
     }
-    ((BaseTavApiProxy)localObject).a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext);
     ((BaseTavApiProxy)localObject).a(this.b);
+    ((BaseTavApiProxy)localObject).a(this.e);
     try
     {
       ((BaseTavApiProxy)localObject).a(paramRequestEvent, paramBaseTavEvent);
@@ -87,11 +90,23 @@ public class WeishiPlugin
       return;
     }
     paramJSONObject = paramJSONObject.getString("identifier");
-    TavObjPool.a().a(paramJSONObject);
+    TavObjPool.a().b(paramJSONObject);
     paramRequestEvent.ok();
   }
   
+  private void b()
+  {
+    Logger.d("WS_WeishiPlugin", "initSo() called");
+    TAVCut.initTAVCut(this.b.getContext(), ((IAEResUtil)QRoute.api(IAEResUtil.class)).getUnzipAEResPath(AEResInfo.AE_RES_BASE_PACKAGE), ((IAEResUtil)QRoute.api(IAEResUtil.class)).getUnzipAEResPath(AEResInfo.LIGHT_RES_BASE_PACKAGE), new WeishiPlugin.MyCallback(this, null));
+  }
+  
   private void b(RequestEvent paramRequestEvent)
+  {
+    this.d = paramRequestEvent;
+    b();
+  }
+  
+  private void c(RequestEvent paramRequestEvent)
   {
     Object localObject = new JSONObject(paramRequestEvent.jsonParams).getJSONObject("data");
     if ("tav_createObject".equals(paramRequestEvent.event))
@@ -116,7 +131,7 @@ public class WeishiPlugin
     paramRequestEvent.fail("没有覆盖的事件");
   }
   
-  @JsEvent({"tav_createObject", "tav_sendMsgToObject", "tav_releaseObject"})
+  @JsEvent({"tav_createObject", "tav_sendMsgToObject", "tav_releaseObject", "tav_checkInit"})
   public void dispatchEvent(RequestEvent paramRequestEvent)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -124,14 +139,19 @@ public class WeishiPlugin
     localStringBuilder.append(paramRequestEvent.jsonParams);
     localStringBuilder.append("]");
     Logger.d("WS_WeishiPlugin", localStringBuilder.toString());
-    if (!this.jdField_a_of_type_Boolean)
+    if ("tav_checkInit".equals(paramRequestEvent.event))
     {
       a(paramRequestEvent);
       return;
     }
-    try
+    if (!this.c)
     {
       b(paramRequestEvent);
+      return;
+    }
+    try
+    {
+      c(paramRequestEvent);
       return;
     }
     catch (Exception paramRequestEvent)
@@ -143,16 +163,16 @@ public class WeishiPlugin
   public void onCreate(IMiniAppContext paramIMiniAppContext)
   {
     super.onCreate(paramIMiniAppContext);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
-    ((IAEResUtil)QRoute.api(IAEResUtil.class)).peakRequestAEBaseRes();
-    paramIMiniAppContext = MiniAppFileManager.getMiniAppFileManager(paramIMiniAppContext.getMiniAppInfo().apkgInfo);
     this.b = paramIMiniAppContext;
-    jdField_a_of_type_ComTencentQqminiSdkCoreManagerMiniAppFileManager = paramIMiniAppContext;
+    ((IAEResUtil)QRoute.api(IAEResUtil.class)).peakRequestAEBaseRes();
+    paramIMiniAppContext = (IMiniAppFileManager)paramIMiniAppContext.getManager(IMiniAppFileManager.class);
+    this.e = paramIMiniAppContext;
+    a = paramIMiniAppContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.WeishiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -41,9 +41,9 @@ class ServiceAccountFolderActivityNew$1
         Object localObject = new Intent();
         ((Intent)localObject).putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
         ((Intent)localObject).putExtra("sourceFrom", 2);
-        if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
+        if ((ServiceAccountFolderActivityNew.b(this.a) != null) && (ServiceAccountFolderActivityNew.b(this.a).user.youZhan.size() > 0))
         {
-          if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1) {
+          if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.b(this.a).user.youZhan.get(0)).type.get() > 1) {
             bool = true;
           } else {
             bool = false;
@@ -51,8 +51,8 @@ class ServiceAccountFolderActivityNew$1
           ((Intent)localObject).putExtra("has_shop", bool);
         }
         QZoneHelper.forwardToQQPublicAccountPublishPage(this.a.getActivity(), (Intent)localObject, 0);
-        String str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
-        if (ServiceAccountFolderActivityNew.a(this.a) == 0) {
+        String str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.b(this.a).user.get()).id.get();
+        if (ServiceAccountFolderActivityNew.c(this.a) == 0) {
           localObject = "auth_follow";
         } else {
           localObject = "auth_discover";
@@ -65,7 +65,7 @@ class ServiceAccountFolderActivityNew$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.1
  * JD-Core Version:    0.7.0.1
  */

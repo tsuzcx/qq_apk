@@ -14,25 +14,25 @@ import mqq.util.WeakReference;
 
 public class VideoFrameCheckHelper
 {
-  private long jdField_a_of_type_Long;
-  private volatile Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoFrameCheckHelper");
-  private final String jdField_a_of_type_JavaLangString = "VideoFrameCheckHelper";
+  private final String a = "VideoFrameCheckHelper";
   private final Handler b;
+  private final Handler c;
+  private final HandlerThread d = new HandlerThread("VideoFrameCheckHelper");
+  private volatile Bitmap e;
+  private long f;
   
   public VideoFrameCheckHelper()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.b = new Handler(Looper.getMainLooper());
+    this.d.start();
+    this.b = new Handler(this.d.getLooper());
+    this.c = new Handler(Looper.getMainLooper());
   }
   
   private void a(TextureView paramTextureView, VideoFrameCheckHelper.DarkFrameCheckListener paramDarkFrameCheckListener)
   {
     paramDarkFrameCheckListener = new WeakReference(paramDarkFrameCheckListener);
     paramTextureView = new WeakReference(paramTextureView);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideoFrameCheckHelper.1(this, paramDarkFrameCheckListener, paramTextureView), 40L);
+    this.b.postDelayed(new VideoFrameCheckHelper.1(this, paramDarkFrameCheckListener, paramTextureView), 40L);
   }
   
   private boolean a(TextureView paramTextureView)
@@ -42,22 +42,22 @@ public class VideoFrameCheckHelper
       boolean bool = paramTextureView.isAvailable();
       if (bool)
       {
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        if ((this.e != null) && (!this.e.isRecycled()))
         {
-          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+          this.e.recycle();
+          this.e = null;
         }
         int i = paramTextureView.getWidth() / 16;
         int j = paramTextureView.getHeight() / 16;
         if ((i > 0) && (j > 0))
         {
           if (Build.VERSION.SDK_INT >= 17) {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);
+            this.e = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);
           } else {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+            this.e = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
           }
-          this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-          if (StoryPlayerTest.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16))
+          this.e = paramTextureView.getBitmap(this.e);
+          if (StoryPlayerTest.a(this.e, 4, 16))
           {
             SLog.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
             return true;

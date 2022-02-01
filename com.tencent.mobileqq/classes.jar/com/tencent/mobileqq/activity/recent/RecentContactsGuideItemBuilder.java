@@ -24,12 +24,11 @@ import com.tencent.widget.ThemeImageWrapper;
 public class RecentContactsGuideItemBuilder
   extends RecentItemBaseBuilder
 {
-  View.OnTouchListener a;
   protected String a;
+  View.OnTouchListener b = new RecentContactsGuideItemBuilder.1(this);
   
   RecentContactsGuideItemBuilder()
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new RecentContactsGuideItemBuilder.1(this);
     if (QLog.isColorLevel()) {
       QLog.d("RecentContactsGuideItemBuilder", 0, "RecentContactsGuideItemBuilder constructed");
     }
@@ -47,9 +46,9 @@ public class RecentContactsGuideItemBuilder
     if (paramRecentFaceDecoder == null)
     {
       paramView = new RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder();
-      paramViewGroup = a(paramContext, 2131558939, paramView);
-      paramView.a = ((ThemeImageView)paramViewGroup.findViewById(2131365174));
-      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      paramViewGroup = a(paramContext, 2131624570, paramView);
+      paramView.a = ((ThemeImageView)paramViewGroup.findViewById(2131431327));
+      paramViewGroup.setOnTouchListener(this.b);
       paramRecentFaceDecoder = paramView.a.getLayoutParams();
       int i = TakeVideoUtils.a(BaseApplicationImpl.getApplication().getResources());
       double d = i;
@@ -67,17 +66,17 @@ public class RecentContactsGuideItemBuilder
       if ((paramObject.mUser != null) && ((paramObject.mUser.extraInfo instanceof LoginWelcomeManager.ContactsGuideRecenUserObj)))
       {
         paramObject = (LoginWelcomeManager.ContactsGuideRecenUserObj)paramObject.mUser.extraInfo;
-        if (paramObject.a != null)
+        if (paramObject.b != null)
         {
-          paramView.a.setImageDrawable(paramObject.a);
-          paramObject.a.setURLDrawableListener(null);
+          paramView.a.setImageDrawable(paramObject.b);
+          paramObject.b.setURLDrawableListener(null);
         }
-        LoginWelcomeManager.a += 1;
+        LoginWelcomeManager.j += 1;
       }
     }
-    this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-    if (AppSetting.d) {
-      paramViewGroup.setContentDescription(HardCodeUtil.a(2131713082));
+    this.a = ThemeUtil.curThemeId;
+    if (AppSetting.e) {
+      paramViewGroup.setContentDescription(HardCodeUtil.a(2131910641));
     }
     paramViewGroup.setOnClickListener(paramOnClickListener);
     paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
@@ -87,7 +86,7 @@ public class RecentContactsGuideItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentContactsGuideItemBuilder
  * JD-Core Version:    0.7.0.1
  */

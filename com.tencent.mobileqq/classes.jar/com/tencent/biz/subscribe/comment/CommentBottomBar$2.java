@@ -15,7 +15,7 @@ class CommentBottomBar$2
   public void onClick(View paramView)
   {
     if (!NetworkUtil.isNetworkAvailable(this.a.getContext())) {
-      QQToast.a(this.a.getContext(), HardCodeUtil.a(2131694427), 0).a();
+      QQToast.makeText(this.a.getContext(), HardCodeUtil.a(2131892107), 0).show();
     }
     this.a.a();
     EventCollector.getInstance().onViewClicked(paramView);

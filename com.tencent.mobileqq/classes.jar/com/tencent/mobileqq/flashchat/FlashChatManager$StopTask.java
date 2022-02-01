@@ -7,12 +7,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public final class FlashChatManager$StopTask
   implements Runnable
 {
-  public Long a;
   public CopyOnWriteArrayList<MessageForArkFlashChat> a;
+  public Long b;
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -20,7 +20,7 @@ public final class FlashChatManager$StopTask
     while (((Iterator)localObject).hasNext())
     {
       MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)((Iterator)localObject).next();
-      Long localLong = this.jdField_a_of_type_JavaLangLong;
+      Long localLong = this.b;
       if ((localLong == null) || (localLong.longValue() != localMessageForArkFlashChat.uniseq)) {
         localMessageForArkFlashChat.stopAnim();
       }
@@ -29,7 +29,7 @@ public final class FlashChatManager$StopTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatManager.StopTask
  * JD-Core Version:    0.7.0.1
  */

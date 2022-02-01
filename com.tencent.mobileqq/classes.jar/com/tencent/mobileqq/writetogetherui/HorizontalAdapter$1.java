@@ -13,27 +13,27 @@ class HorizontalAdapter$1
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter$HorizontalViewHolder.getAdapterPosition();
-    if (i != HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter))
+    int i = this.a.getAdapterPosition();
+    if (i != HorizontalAdapter.a(this.b))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter.a())
+      if (this.b.a())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter.a(paramView, i);
+        this.b.a(paramView, i);
       }
       else
       {
-        HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter).a(HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter)[i].b);
-        HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter, i);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter.notifyDataSetChanged();
+        HorizontalAdapter.c(this.b).a(HorizontalAdapter.b(this.b)[i].c);
+        HorizontalAdapter.a(this.b, i);
+        this.b.notifyDataSetChanged();
       }
-      ReportController.b(null, "dc00898", "", "", "0X800B355", "0X800B355", HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter)[i].a, 0, String.valueOf(HorizontalAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiHorizontalAdapter)), "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B355", "0X800B355", HorizontalAdapter.b(this.b)[i].a, 0, String.valueOf(HorizontalAdapter.d(this.b)), "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.HorizontalAdapter.1
  * JD-Core Version:    0.7.0.1
  */

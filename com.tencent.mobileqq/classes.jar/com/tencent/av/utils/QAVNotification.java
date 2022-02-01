@@ -28,34 +28,35 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import mqq.app.MobileQQ;
+import mqq.util.LogUtil;
 
 public class QAVNotification
 {
-  static QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification;
-  int jdField_a_of_type_Int = 0;
-  Notification jdField_a_of_type_AndroidAppNotification = null;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  RemoteViews jdField_a_of_type_AndroidWidgetRemoteViews = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  NotificationStyleDiscover jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover;
-  QAVNotification.NotifyData jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData = null;
-  QQNotificationManager jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = null;
-  Map<String, QAVNotification.NotifyData> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-  boolean jdField_a_of_type_Boolean = false;
-  final QAVNotification.NotifyData b = new QAVNotification.NotifyData(this, null);
+  static QAVNotification l;
+  Notification a = null;
+  QQNotificationManager b = null;
+  NotificationStyleDiscover c;
+  RemoteViews d = null;
+  VideoAppInterface e = null;
+  Context f = null;
+  boolean g = false;
+  QAVNotification.NotifyData h = null;
+  Map<String, QAVNotification.NotifyData> i = new LinkedHashMap();
+  final QAVNotification.NotifyData j = new QAVNotification.NotifyData(this, null);
+  int k = 0;
   
   private QAVNotification(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext();
+    this.e = paramVideoAppInterface;
+    if (this.f == null) {
+      this.f = this.e.getApplication().getApplicationContext();
     }
-    this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover = new NotificationStyleDiscover(this.jdField_a_of_type_AndroidContentContext);
+    this.c = new NotificationStyleDiscover(this.f);
   }
   
   private Notification a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt, Bitmap paramBitmap, PendingIntent paramPendingIntent, List<QAVNotification.NotificationAction> paramList)
   {
-    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(this.jdField_a_of_type_AndroidContentContext);
+    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(this.f);
     localBuilder.setSmallIcon(paramInt);
     localBuilder.setContentTitle(paramString1);
     localBuilder.setContentText(paramString2);
@@ -68,14 +69,14 @@ public class QAVNotification
       while (paramString1.hasNext())
       {
         paramString2 = (QAVNotification.NotificationAction)paramString1.next();
-        localBuilder.addAction(paramString2.jdField_a_of_type_Int, paramString2.jdField_a_of_type_JavaLangString, paramString2.jdField_a_of_type_AndroidAppPendingIntent);
+        localBuilder.addAction(paramString2.a, paramString2.b, paramString2.c);
       }
     }
     if (paramBoolean2)
     {
       localBuilder.setPriority(2);
       localBuilder.setFullScreenIntent(paramPendingIntent, true);
-      localBuilder.setVibrate(TraeHelper.a);
+      localBuilder.setVibrate(TraeHelper.p);
     }
     else
     {
@@ -83,39 +84,39 @@ public class QAVNotification
       localBuilder.setFullScreenIntent(null, false);
       localBuilder.setVibrate(null);
     }
-    this.jdField_a_of_type_AndroidAppNotification = localBuilder.build();
-    paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+    this.a = localBuilder.build();
+    paramString1 = this.a;
     paramString1.flags |= 0x2;
-    paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+    paramString1 = this.a;
     paramString1.flags |= 0x20;
     if ((AVUtil.b()) && (paramBoolean2))
     {
-      paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+      paramString1 = this.a;
       paramString1.flags &= 0xFFFFFFF7;
-      paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+      paramString1 = this.a;
       paramString1.flags |= 0x4;
-      paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+      paramString1 = this.a;
       paramString1.flags = (0x1 | paramString1.flags);
     }
     else
     {
-      paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+      paramString1 = this.a;
       paramString1.flags |= 0x8;
-      paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+      paramString1 = this.a;
       paramString1.flags &= 0xFFFFFFFB;
-      paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+      paramString1 = this.a;
       paramString1.flags &= 0xFFFFFFFE;
     }
     if (Build.VERSION.SDK_INT >= 21) {
       if (paramBoolean2)
       {
-        paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+        paramString1 = this.a;
         paramString1.category = "call";
         paramString1.flags |= 0x80;
       }
       else
       {
-        paramString1 = this.jdField_a_of_type_AndroidAppNotification;
+        paramString1 = this.a;
         paramString1.category = null;
         paramString1.flags &= 0xFFFFFF7F;
       }
@@ -124,87 +125,24 @@ public class QAVNotification
     {
       paramString1 = new StringBuilder();
       paramString1.append("useDefaultStyle flags: ");
-      paramString1.append(this.jdField_a_of_type_AndroidAppNotification.flags);
+      paramString1.append(this.a.flags);
       QLog.i("QAVNotification", 2, paramString1.toString());
     }
-    return this.jdField_a_of_type_AndroidAppNotification;
-  }
-  
-  private QAVNotification.NotifyData a(String paramString, int paramInt)
-  {
-    SessionInfo localSessionInfo = SessionMgr.a().c(paramString);
-    Object localObject;
-    if (localSessionInfo != null)
-    {
-      localObject = new QAVNotification.NotifyData(this, null);
-      ((QAVNotification.NotifyData)localObject).jdField_a_of_type_JavaLangString = paramString;
-      ((QAVNotification.NotifyData)localObject).jdField_c_of_type_Int = paramInt;
-      if ((localSessionInfo.d != 1) && (localSessionInfo.d != 2))
-      {
-        String str;
-        if (localSessionInfo.y)
-        {
-          str = String.valueOf(localSessionInfo.f);
-          ((QAVNotification.NotifyData)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localSessionInfo.k, str, null);
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localSessionInfo.k, str, null, true, true);
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = 48;
-        }
-        else
-        {
-          str = String.valueOf(localSessionInfo.f);
-          ((QAVNotification.NotifyData)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localSessionInfo.k, str, null);
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localSessionInfo.k, str, null, true, true);
-          if (localSessionInfo.d == 3) {
-            ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = 62;
-          } else {
-            ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = 63;
-          }
-        }
-      }
-      else
-      {
-        ((QAVNotification.NotifyData)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localSessionInfo.k, localSessionInfo.jdField_c_of_type_JavaLangString, localSessionInfo.e);
-        ((QAVNotification.NotifyData)localObject).jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localSessionInfo.k, localSessionInfo.jdField_c_of_type_JavaLangString, null, true, true);
-        if (localSessionInfo.d == 1) {
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = 47;
-        } else {
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = 42;
-        }
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("createNotifyData, we create one data, data[");
-        paramString.append(localObject);
-        paramString.append("]");
-        QLog.i("QAVNotification", 2, paramString.toString());
-      }
-      return localObject;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("createNotifyData, no sessionInfo, id[");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("QAVNotification", 2, ((StringBuilder)localObject).toString());
-    }
-    return null;
+    return this.a;
   }
   
   public static QAVNotification a(VideoAppInterface paramVideoAppInterface)
   {
-    if ((jdField_a_of_type_ComTencentAvUtilsQAVNotification == null) && (paramVideoAppInterface != null)) {
+    if ((l == null) && (paramVideoAppInterface != null)) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvUtilsQAVNotification == null) {
-          jdField_a_of_type_ComTencentAvUtilsQAVNotification = new QAVNotification(paramVideoAppInterface);
+        if (l == null) {
+          l = new QAVNotification(paramVideoAppInterface);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvUtilsQAVNotification;
+    return l;
   }
   
   private String a(String paramString, int paramInt)
@@ -249,9 +187,9 @@ public class QAVNotification
       if (paramIntent == null) {
         return null;
       }
-      int i = paramNotifyData.jdField_a_of_type_Int;
-      if ((i != 40) && (i != 45) && (i != 61)) {
-        switch (i)
+      int m = paramNotifyData.f;
+      if ((m != 40) && (m != 45) && (m != 61)) {
+        switch (m)
         {
         default: 
           return null;
@@ -260,14 +198,14 @@ public class QAVNotification
       localArrayList = new ArrayList(2);
       paramIntent = new Intent(paramIntent);
       paramIntent.setAction("com.tencent.qav.notify.accept");
-      paramIntent.putExtra("session_id", paramNotifyData.jdField_a_of_type_JavaLangString);
-      localArrayList.add(new QAVNotification.NotificationAction(2130842185, HardCodeUtil.a(2131708926), PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, paramIntent, 134217728)));
+      paramIntent.putExtra("session_id", paramNotifyData.a);
+      localArrayList.add(new QAVNotification.NotificationAction(2130843120, HardCodeUtil.a(2131906694), PendingIntent.getActivity(this.f, 0, paramIntent, 134217728)));
       paramIntent = new Intent("com.tencent.qav.notify.refuse");
-      paramIntent.putExtra("uin", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-      paramIntent.putExtra("session_id", paramNotifyData.jdField_a_of_type_JavaLangString);
-      paramIntent.putExtra("notify_type", paramNotifyData.jdField_a_of_type_Int);
-      paramIntent.putExtra("uinType", paramNotifyData.jdField_b_of_type_Int);
-      localArrayList.add(new QAVNotification.NotificationAction(2130842187, HardCodeUtil.a(2131708925), PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, 0, paramIntent, 134217728)));
+      paramIntent.putExtra("uin", this.e.getCurrentAccountUin());
+      paramIntent.putExtra("session_id", paramNotifyData.a);
+      paramIntent.putExtra("notify_type", paramNotifyData.f);
+      paramIntent.putExtra("uinType", paramNotifyData.g);
+      localArrayList.add(new QAVNotification.NotificationAction(2130843122, HardCodeUtil.a(2131906693), PendingIntent.getBroadcast(this.f, 0, paramIntent, 134217728)));
     }
     return localArrayList;
   }
@@ -292,8 +230,8 @@ public class QAVNotification
   
   private void a(QAVNotification.NotifyData paramNotifyData, boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    boolean bool1 = e(paramNotifyData.jdField_a_of_type_JavaLangString);
-    boolean bool2 = d(paramNotifyData.jdField_a_of_type_JavaLangString);
+    boolean bool1 = f(paramNotifyData.a);
+    boolean bool2 = e(paramNotifyData.a);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder(200);
@@ -317,7 +255,7 @@ public class QAVNotification
     if (!TextUtils.isEmpty(paramString)) {
       a(paramNotifyData);
     }
-    paramBoolean2 = AVUtil.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    paramBoolean2 = AVUtil.b(this.e.getCurrentAccountUin());
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -326,7 +264,7 @@ public class QAVNotification
       ((StringBuilder)localObject1).append("]");
       QLog.w("QAVNotification", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((!paramBoolean2) && (TextUtils.isEmpty(paramString)) && (!a(paramNotifyData))) {
+    if ((!paramBoolean2) && (TextUtils.isEmpty(paramString)) && (!b(paramNotifyData))) {
       return;
     }
     paramBoolean2 = TraeHelper.a(BaseApplicationImpl.getContext());
@@ -338,129 +276,129 @@ public class QAVNotification
       ((StringBuilder)localObject1).append("]");
       QLog.w("QAVNotification", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((!paramBoolean2) && (TextUtils.isEmpty(paramString)) && (!a(paramNotifyData))) {
+    if ((!paramBoolean2) && (TextUtils.isEmpty(paramString)) && (!b(paramNotifyData))) {
       return;
     }
-    int j = paramNotifyData.jdField_a_of_type_Int;
-    int i = 2130842201;
-    switch (j)
+    int n = paramNotifyData.f;
+    int m = 2130843136;
+    switch (n)
     {
     default: 
-      switch (j)
+      switch (n)
       {
       default: 
-        switch (j)
+        switch (n)
         {
         default: 
           localObject1 = "";
           localObject2 = null;
-          i = 0;
+          m = 0;
           paramString = "";
           localObject3 = null;
           break;
         case 63: 
-          paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-          paramString.putExtra("GroupId", paramNotifyData.jdField_c_of_type_JavaLangString);
+          paramString = new Intent(this.f, AVActivity.class);
+          paramString.putExtra("GroupId", paramNotifyData.d);
           paramString.putExtra("Type", 2);
           paramString.putExtra("sessionType", 3);
-          paramString.putExtra("uinType", paramNotifyData.jdField_b_of_type_Int);
-          paramString.putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-          localObject1 = paramNotifyData.jdField_b_of_type_JavaLangString;
-          localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695698);
-          localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+          paramString.putExtra("uinType", paramNotifyData.g);
+          paramString.putExtra("sessionType", paramNotifyData.h);
+          localObject1 = paramNotifyData.b;
+          localObject2 = this.f.getString(2131893457);
+          localObject3 = paramNotifyData.c;
           break;
         case 62: 
-          paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-          paramString.putExtra("GroupId", paramNotifyData.jdField_c_of_type_JavaLangString);
+          paramString = new Intent(this.f, AVActivity.class);
+          paramString.putExtra("GroupId", paramNotifyData.d);
           paramString.putExtra("Type", 2);
           paramString.putExtra("sessionType", 3);
-          paramString.putExtra("uinType", paramNotifyData.jdField_b_of_type_Int);
-          paramString.putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-          localObject1 = paramNotifyData.jdField_b_of_type_JavaLangString;
-          localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695692);
-          localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+          paramString.putExtra("uinType", paramNotifyData.g);
+          paramString.putExtra("sessionType", paramNotifyData.h);
+          localObject1 = paramNotifyData.b;
+          localObject2 = this.f.getString(2131893451);
+          localObject3 = paramNotifyData.c;
           break;
         case 61: 
-          localObject2 = QAVNotificationUtil.a(this.jdField_a_of_type_AndroidContentContext, paramNotifyData.jdField_a_of_type_JavaLangString);
-          paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-          if (TextUtils.isEmpty(paramNotifyData.d)) {
-            localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695668);
+          localObject2 = QAVNotificationUtil.a(this.f, paramNotifyData.a);
+          paramString = paramNotifyData.b;
+          if (TextUtils.isEmpty(paramNotifyData.e)) {
+            localObject1 = this.f.getString(2131893427);
           } else {
-            localObject1 = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131695669), new Object[] { a(paramNotifyData.d, 7) });
+            localObject1 = String.format(this.f.getString(2131893428), new Object[] { a(paramNotifyData.e, 7) });
           }
-          localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+          localObject3 = paramNotifyData.c;
         }
         break;
       case 57: 
-        localObject2 = QAVNotificationUtil.b(this.jdField_a_of_type_AndroidContentContext, paramNotifyData.jdField_a_of_type_JavaLangString);
-        paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-        if (TextUtils.isEmpty(paramNotifyData.d)) {
-          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695668);
+        localObject2 = QAVNotificationUtil.b(this.f, paramNotifyData.a);
+        paramString = paramNotifyData.b;
+        if (TextUtils.isEmpty(paramNotifyData.e)) {
+          localObject1 = this.f.getString(2131893427);
         } else {
-          localObject1 = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131695669), new Object[] { a(paramNotifyData.d, 7) });
+          localObject1 = String.format(this.f.getString(2131893428), new Object[] { a(paramNotifyData.e, 7) });
         }
-        localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+        localObject3 = paramNotifyData.c;
         break;
       case 56: 
-        localObject2 = QAVNotificationUtil.b(this.jdField_a_of_type_AndroidContentContext, paramNotifyData.jdField_a_of_type_JavaLangString);
-        paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131720251);
-        localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+        localObject2 = QAVNotificationUtil.b(this.f, paramNotifyData.a);
+        paramString = paramNotifyData.b;
+        localObject1 = this.f.getString(2131917886);
+        localObject3 = paramNotifyData.c;
         break;
       case 55: 
-        localObject2 = QAVNotificationUtil.b(this.jdField_a_of_type_AndroidContentContext, paramNotifyData.jdField_a_of_type_JavaLangString);
-        paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131690206);
-        localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+        localObject2 = QAVNotificationUtil.b(this.f, paramNotifyData.a);
+        paramString = paramNotifyData.b;
+        localObject1 = this.f.getString(2131887106);
+        localObject3 = paramNotifyData.c;
       }
       break;
     case 48: 
-      localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
+      localObject3 = new Intent(this.f, AVActivity.class);
       ((Intent)localObject3).putExtra("isDoubleVideoMeeting", true);
-      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      ((Intent)localObject3).putExtra("GroupId", paramNotifyData.jdField_c_of_type_JavaLangString);
-      paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-      if (paramNotifyData.jdField_c_of_type_Int == 4) {
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695698);
+      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.h);
+      ((Intent)localObject3).putExtra("GroupId", paramNotifyData.d);
+      paramString = paramNotifyData.b;
+      if (paramNotifyData.h == 4) {
+        localObject1 = this.f.getString(2131893457);
       } else {
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695692);
+        localObject1 = this.f.getString(2131893451);
       }
-      localObject2 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      localObject2 = paramNotifyData.c;
       break;
     case 47: 
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-      paramString.putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      paramString.putExtra("GroupId", paramNotifyData.jdField_c_of_type_JavaLangString);
-      localObject1 = paramNotifyData.jdField_b_of_type_JavaLangString;
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695692);
-      localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramString = new Intent(this.f, AVActivity.class);
+      paramString.putExtra("sessionType", paramNotifyData.h);
+      paramString.putExtra("GroupId", paramNotifyData.d);
+      localObject1 = paramNotifyData.b;
+      localObject2 = this.f.getString(2131893451);
+      localObject3 = paramNotifyData.c;
       break;
     case 46: 
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-      paramString.putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      paramString.putExtra("GroupId", paramNotifyData.jdField_c_of_type_JavaLangString);
-      localObject1 = paramNotifyData.jdField_b_of_type_JavaLangString;
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695367);
-      localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramString = new Intent(this.f, AVActivity.class);
+      paramString.putExtra("sessionType", paramNotifyData.h);
+      paramString.putExtra("GroupId", paramNotifyData.d);
+      localObject1 = paramNotifyData.b;
+      localObject2 = this.f.getString(2131893108);
+      localObject3 = paramNotifyData.c;
       break;
     case 45: 
-      localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, VideoInviteActivity.class);
+      localObject2 = new Intent(this.f, VideoInviteActivity.class);
       ((Intent)localObject2).addFlags(4194304);
       ((Intent)localObject2).addFlags(262144);
-      paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695697);
-      localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramString = paramNotifyData.b;
+      localObject1 = this.f.getString(2131893456);
+      localObject3 = paramNotifyData.c;
       break;
     case 44: 
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-      paramString.putExtra("GroupId", paramNotifyData.jdField_c_of_type_JavaLangString);
+      paramString = new Intent(this.f, AVActivity.class);
+      paramString.putExtra("GroupId", paramNotifyData.d);
       paramString.putExtra("Type", 2);
       paramString.putExtra("sessionType", 3);
-      paramString.putExtra("uinType", paramNotifyData.jdField_b_of_type_Int);
-      paramString.putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      localObject1 = paramNotifyData.jdField_b_of_type_JavaLangString;
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695559);
-      localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramString.putExtra("uinType", paramNotifyData.g);
+      paramString.putExtra("sessionType", paramNotifyData.h);
+      localObject1 = paramNotifyData.b;
+      localObject2 = this.f.getString(2131893318);
+      localObject3 = paramNotifyData.c;
       localObject4 = localObject3;
       localObject3 = paramString;
       paramString = (String)localObject1;
@@ -468,70 +406,70 @@ public class QAVNotification
       localObject2 = localObject4;
       break;
     case 43: 
-      localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, GaInviteDialogActivity.class);
-      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      ((Intent)localObject3).putExtra("uinType", paramNotifyData.jdField_b_of_type_Int);
+      localObject3 = new Intent(this.f, GaInviteDialogActivity.class);
+      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.h);
+      ((Intent)localObject3).putExtra("uinType", paramNotifyData.g);
       BaseGaInvite.a((Intent)localObject3, "updateNotification");
-      localObject4 = paramNotifyData.jdField_b_of_type_JavaLangString;
-      if (TextUtils.isEmpty(paramNotifyData.d)) {
-        paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131695668);
+      localObject4 = paramNotifyData.b;
+      if (TextUtils.isEmpty(paramNotifyData.e)) {
+        paramString = this.f.getString(2131893427);
       } else {
-        paramString = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131695669), new Object[] { a(paramNotifyData.d, 7) });
+        paramString = String.format(this.f.getString(2131893428), new Object[] { a(paramNotifyData.e, 7) });
       }
-      localObject2 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      localObject2 = paramNotifyData.c;
       localObject1 = paramString;
       paramString = (String)localObject4;
       break;
     case 42: 
-      localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      ((Intent)localObject3).putExtra("uin", paramNotifyData.jdField_c_of_type_JavaLangString);
-      paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695698);
-      localObject2 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
+      localObject3 = new Intent(this.f, AVActivity.class);
+      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.h);
+      ((Intent)localObject3).putExtra("uin", paramNotifyData.d);
+      paramString = paramNotifyData.b;
+      localObject1 = this.f.getString(2131893457);
+      localObject2 = paramNotifyData.c;
       break;
     case 41: 
-      localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.jdField_c_of_type_Int);
-      ((Intent)localObject3).putExtra("uin", paramNotifyData.jdField_c_of_type_JavaLangString);
-      paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131695367);
-      localObject2 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
-      i = 2130842375;
+      localObject3 = new Intent(this.f, AVActivity.class);
+      ((Intent)localObject3).putExtra("sessionType", paramNotifyData.h);
+      ((Intent)localObject3).putExtra("uin", paramNotifyData.d);
+      paramString = paramNotifyData.b;
+      localObject1 = this.f.getString(2131893108);
+      localObject2 = paramNotifyData.c;
+      m = 2130843321;
       break;
     }
-    Object localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, VideoInviteActivity.class);
-    paramString = paramNotifyData.jdField_b_of_type_JavaLangString;
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131720251);
-    Object localObject3 = paramNotifyData.jdField_a_of_type_AndroidGraphicsBitmap;
-    i = 2130842375;
+    Object localObject2 = new Intent(this.f, VideoInviteActivity.class);
+    paramString = paramNotifyData.b;
+    Object localObject1 = this.f.getString(2131917886);
+    Object localObject3 = paramNotifyData.c;
+    m = 2130843321;
     Object localObject4 = localObject2;
     localObject2 = localObject3;
     localObject3 = localObject4;
-    j = SessionInfo.i;
+    n = SessionInfo.n;
     if (localObject3 != null)
     {
-      ((Intent)localObject3).putExtra("MultiAVType", j);
+      ((Intent)localObject3).putExtra("MultiAVType", n);
       ((Intent)localObject3).putExtra("Fromwhere", "AVNotification");
       ((Intent)localObject3).addFlags(4194304);
       ((Intent)localObject3).addFlags(262144);
       ((Intent)localObject3).putExtra("param_notifyid", 235);
       ((Intent)localObject3).putExtra("fullscreen", paramBoolean3);
-      if ((paramNotifyData.jdField_a_of_type_Int != 40) && (paramNotifyData.jdField_a_of_type_Int != 45) && (paramNotifyData.jdField_a_of_type_Int != 43)) {
+      if ((paramNotifyData.f != 40) && (paramNotifyData.f != 45) && (paramNotifyData.f != 43)) {
         ((Intent)localObject3).addFlags(268435456);
       }
-      localObject4 = PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, (Intent)localObject3, 134217728);
+      localObject4 = PendingIntent.getActivity(this.f, 0, (Intent)localObject3, 134217728);
     }
     else
     {
       localObject4 = null;
     }
     String str = paramString;
-    if (j == 2) {
-      str = paramString.replace(this.jdField_a_of_type_AndroidContentContext.getString(2131719735), this.jdField_a_of_type_AndroidContentContext.getString(2131719736));
+    if (n == 2) {
+      str = paramString.replace(this.f.getString(2131917338), this.f.getString(2131917339));
     }
-    if (j == 2) {
-      paramString = ((String)localObject1).replace(this.jdField_a_of_type_AndroidContentContext.getString(2131719735), this.jdField_a_of_type_AndroidContentContext.getString(2131719736));
+    if (n == 2) {
+      paramString = ((String)localObject1).replace(this.f.getString(2131917338), this.f.getString(2131917339));
     } else {
       paramString = (String)localObject1;
     }
@@ -544,15 +482,15 @@ public class QAVNotification
       localStringBuilder.append(", state: ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", id: ");
-      localStringBuilder.append(paramNotifyData.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(paramNotifyData.d);
       localStringBuilder.append(", sessionId: ");
-      localStringBuilder.append(paramNotifyData.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramNotifyData.a);
       localStringBuilder.append(", name: ");
-      localStringBuilder.append(paramNotifyData.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramNotifyData.b);
       localStringBuilder.append(", type: ");
-      localStringBuilder.append(paramNotifyData.jdField_a_of_type_Int);
+      localStringBuilder.append(paramNotifyData.f);
       localStringBuilder.append(", avType: ");
-      localStringBuilder.append(j);
+      localStringBuilder.append(n);
       localStringBuilder.append(", actions: ");
       if (localObject3 == null) {
         localObject1 = "null";
@@ -566,21 +504,21 @@ public class QAVNotification
     }
     try
     {
-      paramString = a(paramBoolean1, paramBoolean3, str, paramString, i, (Bitmap)localObject2, (PendingIntent)localObject4, (List)localObject3);
+      paramString = a(paramBoolean1, paramBoolean3, str, paramString, m, (Bitmap)localObject2, (PendingIntent)localObject4, (List)localObject3);
       if (Build.VERSION.SDK_INT >= 26) {
         QQNotificationManager.addChannelIfNeed(paramString, "CHANNEL_ID_SHOW_BADGE");
       }
       if (paramBoolean1) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(true, paramString);
+        this.e.a(true, paramString);
       }
-      if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
+      if (this.b == null) {
+        this.b = QQNotificationManager.getInstance();
       }
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("QAVNotification", 235, paramString);
-      paramNotifyData.jdField_a_of_type_Boolean = false;
-      QAVNotification.NotifyData.a(this.b, paramNotifyData);
-      this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData = paramNotifyData;
-      this.jdField_a_of_type_Boolean = true;
+      this.b.notify("QAVNotification", 235, paramString);
+      paramNotifyData.i = false;
+      QAVNotification.NotifyData.b(this.j, paramNotifyData);
+      this.h = paramNotifyData;
+      this.g = true;
       return;
     }
     catch (Throwable paramNotifyData)
@@ -589,10 +527,73 @@ public class QAVNotification
     }
   }
   
-  private boolean a(QAVNotification.NotifyData paramNotifyData)
+  private QAVNotification.NotifyData b(String paramString, int paramInt)
+  {
+    SessionInfo localSessionInfo = SessionMgr.a().d(paramString);
+    Object localObject;
+    if (localSessionInfo != null)
+    {
+      localObject = new QAVNotification.NotifyData(this, null);
+      ((QAVNotification.NotifyData)localObject).a = paramString;
+      ((QAVNotification.NotifyData)localObject).h = paramInt;
+      if ((localSessionInfo.g != 1) && (localSessionInfo.g != 2))
+      {
+        String str;
+        if (localSessionInfo.am)
+        {
+          str = String.valueOf(localSessionInfo.aN);
+          ((QAVNotification.NotifyData)localObject).b = this.e.a(localSessionInfo.p, str, null);
+          ((QAVNotification.NotifyData)localObject).c = this.e.a(localSessionInfo.p, str, null, true, true);
+          ((QAVNotification.NotifyData)localObject).f = 48;
+        }
+        else
+        {
+          str = String.valueOf(localSessionInfo.aN);
+          ((QAVNotification.NotifyData)localObject).b = this.e.a(localSessionInfo.p, str, null);
+          ((QAVNotification.NotifyData)localObject).c = this.e.a(localSessionInfo.p, str, null, true, true);
+          if (localSessionInfo.g == 3) {
+            ((QAVNotification.NotifyData)localObject).f = 62;
+          } else {
+            ((QAVNotification.NotifyData)localObject).f = 63;
+          }
+        }
+      }
+      else
+      {
+        ((QAVNotification.NotifyData)localObject).b = this.e.a(localSessionInfo.p, localSessionInfo.s, localSessionInfo.u);
+        ((QAVNotification.NotifyData)localObject).c = this.e.a(localSessionInfo.p, localSessionInfo.s, null, true, true);
+        if (localSessionInfo.g == 1) {
+          ((QAVNotification.NotifyData)localObject).f = 47;
+        } else {
+          ((QAVNotification.NotifyData)localObject).f = 42;
+        }
+      }
+      this.i.put(paramString, localObject);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("createNotifyData, we create one data, data[");
+        paramString.append(localObject);
+        paramString.append("]");
+        QLog.i("QAVNotification", 2, paramString.toString());
+      }
+      return localObject;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createNotifyData, no sessionInfo, id[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("QAVNotification", 2, ((StringBuilder)localObject).toString());
+    }
+    return null;
+  }
+  
+  private boolean b(QAVNotification.NotifyData paramNotifyData)
   {
     boolean bool;
-    if (((this.jdField_a_of_type_Int == 2) && (!a())) || ((a()) && (QAVNotification.NotifyData.a(this.b, paramNotifyData)))) {
+    if (((this.k == 2) && (!a())) || ((a()) && (QAVNotification.NotifyData.a(this.j, paramNotifyData)))) {
       bool = true;
     } else {
       bool = false;
@@ -601,13 +602,13 @@ public class QAVNotification
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isNeedNotificationAnyWay, flag[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.k);
       localStringBuilder.append("], active[");
       localStringBuilder.append(a());
       localStringBuilder.append("], come[");
       localStringBuilder.append(paramNotifyData);
       localStringBuilder.append("], last[");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.j);
       localStringBuilder.append("], need[");
       localStringBuilder.append(bool);
       localStringBuilder.append("]");
@@ -616,33 +617,33 @@ public class QAVNotification
     return bool;
   }
   
-  private boolean c(String paramString)
+  private boolean d(String paramString)
   {
-    QAVNotification.NotifyData localNotifyData = this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData;
+    QAVNotification.NotifyData localNotifyData = this.h;
     if (localNotifyData != null)
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.g) {
         return false;
       }
-      if (TextUtils.equals(paramString, localNotifyData.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.equals(paramString, localNotifyData.a)) {
         return true;
       }
     }
     return false;
   }
   
-  private boolean d(String paramString)
+  private boolean e(String paramString)
   {
-    paramString = SessionMgr.a().c(paramString);
+    paramString = SessionMgr.a().d(paramString);
     if (paramString != null) {
-      return paramString.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface) ^ true;
+      return paramString.a(this.e) ^ true;
     }
     return false;
   }
   
-  private boolean e(String paramString)
+  private boolean f(String paramString)
   {
-    paramString = SessionMgr.a().c(paramString);
+    paramString = SessionMgr.a().d(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString != null)
@@ -651,44 +652,15 @@ public class QAVNotification
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("isSessionIdVisible sessionInfo.sessionStatus = ");
-        localStringBuilder.append(paramString.jdField_c_of_type_Int);
+        localStringBuilder.append(paramString.e);
         QLog.d("QAVNotification", 2, localStringBuilder.toString());
       }
       bool1 = bool2;
-      if (paramString.jdField_c_of_type_Int != 3) {
+      if (paramString.e != 3) {
         bool1 = true;
       }
     }
     return bool1;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("cancelNotificationEx mIsActive: ");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
-        QLog.d("QAVNotification", 2, localStringBuilder.toString(), new Throwable());
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("QAVNotification", 235);
-        }
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(false, null);
-        this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData = null;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = null;
-        this.jdField_a_of_type_AndroidAppNotification = null;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews = null;
-      }
-      return;
-    }
-    finally {}
   }
   
   public void a(int paramInt)
@@ -701,7 +673,7 @@ public class QAVNotification
       localStringBuilder.append("]");
       QLog.i("QAVNotification", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.k = paramInt;
   }
   
   public void a(QAVNotification.NotifyData paramNotifyData)
@@ -709,56 +681,56 @@ public class QAVNotification
     if (paramNotifyData == null) {
       return;
     }
-    SessionInfo localSessionInfo = SessionMgr.a().c(paramNotifyData.jdField_a_of_type_JavaLangString);
+    SessionInfo localSessionInfo = SessionMgr.a().d(paramNotifyData.a);
     if (localSessionInfo == null) {
       return;
     }
-    int i = paramNotifyData.jdField_a_of_type_Int;
-    if (localSessionInfo.y)
+    int m = paramNotifyData.f;
+    if (localSessionInfo.am)
     {
       if (localSessionInfo.l()) {}
       for (;;)
       {
-        i = 48;
+        m = 48;
         break;
         if (!localSessionInfo.k()) {
           break;
         }
-        paramNotifyData.jdField_c_of_type_Int = localSessionInfo.d;
+        paramNotifyData.h = localSessionInfo.g;
       }
     }
     if (localSessionInfo.p())
     {
       if (localSessionInfo.k()) {
-        if (localSessionInfo.d == 3) {
-          i = 62;
+        if (localSessionInfo.g == 3) {
+          m = 62;
         } else {
-          i = 63;
+          m = 63;
         }
       }
     }
     else if (localSessionInfo.j()) {
-      if (localSessionInfo.d == 1) {
-        i = 47;
+      if (localSessionInfo.g == 1) {
+        m = 47;
       } else {
-        i = 42;
+        m = 42;
       }
     }
-    if (paramNotifyData.jdField_a_of_type_Int != i)
+    if (paramNotifyData.f != m)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("checkAndUpdateNotifyData, pre[");
-        localStringBuilder.append(paramNotifyData.jdField_a_of_type_Int);
+        localStringBuilder.append(paramNotifyData.f);
         localStringBuilder.append("], cur[");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         localStringBuilder.append("], info[");
         localStringBuilder.append(localSessionInfo);
         localStringBuilder.append("]");
         QLog.i("QAVNotification", 2, localStringBuilder.toString());
       }
-      paramNotifyData.jdField_a_of_type_Int = i;
+      paramNotifyData.f = m;
     }
   }
   
@@ -770,23 +742,23 @@ public class QAVNotification
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("cancelNotification mIsActive: ");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.g);
         localStringBuilder.append(", sessionId:");
         localStringBuilder.append(paramString);
         QLog.d("QAVNotification", 2, localStringBuilder.toString(), new Throwable());
       }
-      if (c(paramString))
+      if (d(paramString))
       {
-        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("QAVNotification", 235);
+        if (this.b != null) {
+          this.b.cancel("QAVNotification", 235);
         }
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData = null;
-        this.jdField_a_of_type_Boolean = false;
-        QAVNotification.NotifyData.a(this.b, null);
-        if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
+        this.i.remove(paramString);
+        this.h = null;
+        this.g = false;
+        QAVNotification.NotifyData.b(this.j, null);
+        if (!this.i.isEmpty())
         {
-          paramString = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+          paramString = this.i.values().iterator();
           if (paramString.hasNext()) {
             a((QAVNotification.NotifyData)paramString.next(), true);
           }
@@ -794,12 +766,12 @@ public class QAVNotification
         else
         {
           a(0);
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(false, null);
+          this.e.a(false, null);
         }
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        this.i.remove(paramString);
       }
       return;
     }
@@ -810,17 +782,17 @@ public class QAVNotification
   {
     try
     {
-      Object localObject3 = (QAVNotification.NotifyData)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+      Object localObject3 = (QAVNotification.NotifyData)this.i.get(paramString1);
       Object localObject1 = localObject3;
       Object localObject2;
       if (localObject3 == null)
       {
-        int i = this.jdField_a_of_type_Int;
+        int m = this.k;
         localObject1 = localObject3;
-        if (i == 2) {
+        if (m == 2) {
           try
           {
-            localObject1 = a(paramString1, paramInt);
+            localObject1 = b(paramString1, paramInt);
           }
           catch (Throwable localThrowable)
           {
@@ -830,16 +802,16 @@ public class QAVNotification
           }
         }
       }
-      boolean bool1 = e(paramString1);
-      boolean bool2 = c(paramString1);
-      boolean bool3 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().c();
+      boolean bool1 = f(paramString1);
+      boolean bool2 = d(paramString1);
+      boolean bool3 = this.e.b().g();
       if (QLog.isColorLevel())
       {
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("updateNotification, sessionId[");
         ((StringBuilder)localObject3).append(paramString1);
         ((StringBuilder)localObject3).append("], mIsActive[");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject3).append(this.g);
         ((StringBuilder)localObject3).append("], SessionType[");
         ((StringBuilder)localObject3).append(paramInt);
         ((StringBuilder)localObject3).append("], isSessionIdVisible[");
@@ -857,7 +829,7 @@ public class QAVNotification
       }
       if (bool3)
       {
-        bool3 = a(localObject2);
+        bool3 = b(localObject2);
         if (!bool3) {
           return;
         }
@@ -866,12 +838,12 @@ public class QAVNotification
       {
         if (!bool2)
         {
-          bool1 = a(localObject2);
+          bool1 = b(localObject2);
           if (!bool1) {
             return;
           }
         }
-        if (((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppNotification != null)) || (a(localObject2))) {
+        if (((this.g) && (this.a != null)) || (b(localObject2))) {
           a(localObject2, true, paramString2, false);
         }
         return;
@@ -899,9 +871,9 @@ public class QAVNotification
   {
     try
     {
-      boolean bool1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().h();
-      boolean bool2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().c();
-      boolean bool3 = c(paramString1);
+      boolean bool1 = this.e.b().k().h();
+      boolean bool2 = this.e.b().g();
+      boolean bool3 = d(paramString1);
       Object localObject;
       if (QLog.isColorLevel())
       {
@@ -933,21 +905,21 @@ public class QAVNotification
       if (!TextUtils.isEmpty(paramString1)) {
         if (bool3)
         {
-          localObject = this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData;
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = paramInt1;
-          ((QAVNotification.NotifyData)localObject).jdField_c_of_type_JavaLangString = paramString3;
-          ((QAVNotification.NotifyData)localObject).jdField_b_of_type_JavaLangString = paramString2;
-          ((QAVNotification.NotifyData)localObject).jdField_b_of_type_Int = paramInt2;
-          ((QAVNotification.NotifyData)localObject).jdField_c_of_type_Int = paramInt3;
-          ((QAVNotification.NotifyData)localObject).d = paramString4;
+          localObject = this.h;
+          ((QAVNotification.NotifyData)localObject).a = paramString1;
+          ((QAVNotification.NotifyData)localObject).c = paramBitmap;
+          ((QAVNotification.NotifyData)localObject).f = paramInt1;
+          ((QAVNotification.NotifyData)localObject).d = paramString3;
+          ((QAVNotification.NotifyData)localObject).b = paramString2;
+          ((QAVNotification.NotifyData)localObject).g = paramInt2;
+          ((QAVNotification.NotifyData)localObject).h = paramInt3;
+          ((QAVNotification.NotifyData)localObject).e = paramString4;
           a((QAVNotification.NotifyData)localObject, false);
         }
         else
         {
           paramString2 = new QAVNotification.NotifyData(this, paramString1, paramString2, paramBitmap, paramString3, paramInt1, paramInt2, paramInt3, null);
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+          this.i.put(paramString1, paramString2);
           a(paramString2, true);
         }
       }
@@ -960,11 +932,11 @@ public class QAVNotification
   {
     try
     {
-      boolean bool1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().c();
-      boolean bool2 = c(paramString1);
+      boolean bool1 = this.e.b().g();
+      boolean bool2 = d(paramString1);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("addInviteNotification, sessionId[");
-      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(LogUtil.getSafePrintUin(paramString1));
       ((StringBuilder)localObject).append("], name[");
       ((StringBuilder)localObject).append(paramString2);
       ((StringBuilder)localObject).append("], id[");
@@ -987,15 +959,15 @@ public class QAVNotification
       if (!TextUtils.isEmpty(paramString1)) {
         if (bool2)
         {
-          localObject = this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData;
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-          ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = paramInt1;
-          ((QAVNotification.NotifyData)localObject).jdField_c_of_type_JavaLangString = paramString3;
-          ((QAVNotification.NotifyData)localObject).jdField_b_of_type_Int = paramInt2;
-          ((QAVNotification.NotifyData)localObject).jdField_c_of_type_Int = paramInt3;
-          ((QAVNotification.NotifyData)localObject).jdField_b_of_type_JavaLangString = paramString2;
-          ((QAVNotification.NotifyData)localObject).d = null;
+          localObject = this.h;
+          ((QAVNotification.NotifyData)localObject).a = paramString1;
+          ((QAVNotification.NotifyData)localObject).c = paramBitmap;
+          ((QAVNotification.NotifyData)localObject).f = paramInt1;
+          ((QAVNotification.NotifyData)localObject).d = paramString3;
+          ((QAVNotification.NotifyData)localObject).g = paramInt2;
+          ((QAVNotification.NotifyData)localObject).h = paramInt3;
+          ((QAVNotification.NotifyData)localObject).b = paramString2;
+          ((QAVNotification.NotifyData)localObject).e = null;
           if (paramBoolean) {
             a((QAVNotification.NotifyData)localObject, true, null, true);
           } else {
@@ -1005,7 +977,7 @@ public class QAVNotification
         else
         {
           paramString2 = new QAVNotification.NotifyData(this, paramString1, paramString2, paramBitmap, paramString3, paramInt1, paramInt2, paramInt3, null);
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+          this.i.put(paramString1, paramString2);
           a(paramString2, true, null, true);
         }
       }
@@ -1021,8 +993,8 @@ public class QAVNotification
       boolean bool2;
       try
       {
-        boolean bool3 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().c();
-        boolean bool4 = c(paramString1);
+        boolean bool3 = this.e.b().g();
+        boolean bool4 = d(paramString1);
         bool1 = true;
         QLog.d("QAVNotification", 1, String.format("addFullScreenInviteNotification isGameMode=%s isActiveSession=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4) }));
         bool2 = bool3 ^ true;
@@ -1044,15 +1016,15 @@ public class QAVNotification
           if ((bool1) && (!TextUtils.isEmpty(paramString1))) {
             if (bool4)
             {
-              localObject = this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData;
-              ((QAVNotification.NotifyData)localObject).jdField_a_of_type_JavaLangString = paramString1;
-              ((QAVNotification.NotifyData)localObject).jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-              ((QAVNotification.NotifyData)localObject).jdField_a_of_type_Int = paramInt1;
-              ((QAVNotification.NotifyData)localObject).jdField_c_of_type_JavaLangString = paramString3;
-              ((QAVNotification.NotifyData)localObject).jdField_b_of_type_Int = paramInt2;
-              ((QAVNotification.NotifyData)localObject).jdField_c_of_type_Int = paramInt3;
-              ((QAVNotification.NotifyData)localObject).jdField_b_of_type_JavaLangString = paramString2;
-              ((QAVNotification.NotifyData)localObject).d = paramString4;
+              localObject = this.h;
+              ((QAVNotification.NotifyData)localObject).a = paramString1;
+              ((QAVNotification.NotifyData)localObject).c = paramBitmap;
+              ((QAVNotification.NotifyData)localObject).f = paramInt1;
+              ((QAVNotification.NotifyData)localObject).d = paramString3;
+              ((QAVNotification.NotifyData)localObject).g = paramInt2;
+              ((QAVNotification.NotifyData)localObject).h = paramInt3;
+              ((QAVNotification.NotifyData)localObject).b = paramString2;
+              ((QAVNotification.NotifyData)localObject).e = paramString4;
               if (paramBoolean) {
                 a((QAVNotification.NotifyData)localObject, true, null, true, true);
               } else {
@@ -1062,7 +1034,7 @@ public class QAVNotification
             else
             {
               paramString2 = new QAVNotification.NotifyData(this, paramString1, paramString2, paramBitmap, paramString3, paramInt1, paramInt2, paramInt3, paramString4);
-              this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+              this.i.put(paramString1, paramString2);
               a(paramString2, true, null, true, true);
             }
           }
@@ -1076,33 +1048,34 @@ public class QAVNotification
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.g;
   }
   
-  public boolean a(String paramString)
+  public void b()
   {
     try
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("hideNotification mIsActive: ");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
-        localStringBuilder.append(", sessionId:");
-        localStringBuilder.append(paramString);
-        QLog.d("QAVNotification", 2, localStringBuilder.toString());
+        localStringBuilder.append("cancelNotificationEx mIsActive: ");
+        localStringBuilder.append(this.g);
+        QLog.d("QAVNotification", 2, localStringBuilder.toString(), new Throwable());
       }
-      if (c(paramString))
+      if (this.g)
       {
-        this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
-          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("QAVNotification", 235);
+        if (this.b != null) {
+          this.b.cancel("QAVNotification", 235);
         }
-        this.jdField_a_of_type_ComTencentAvUtilsQAVNotification$NotifyData = null;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
+        this.e.a(false, null);
+        this.h = null;
+        this.g = false;
+        this.i.clear();
+        this.b = null;
+        this.a = null;
+        this.d = null;
       }
-      return false;
+      return;
     }
     finally {}
   }
@@ -1111,20 +1084,48 @@ public class QAVNotification
   {
     try
     {
-      QAVNotification.NotifyData localNotifyData = (QAVNotification.NotifyData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hideNotification mIsActive: ");
+        localStringBuilder.append(this.g);
+        localStringBuilder.append(", sessionId:");
+        localStringBuilder.append(paramString);
+        QLog.d("QAVNotification", 2, localStringBuilder.toString());
+      }
+      if (d(paramString))
+      {
+        this.h.i = true;
+        if (this.b != null) {
+          this.b.cancel("QAVNotification", 235);
+        }
+        this.h = null;
+        this.g = false;
+        return true;
+      }
+      return false;
+    }
+    finally {}
+  }
+  
+  public boolean c(String paramString)
+  {
+    try
+    {
+      QAVNotification.NotifyData localNotifyData = (QAVNotification.NotifyData)this.i.get(paramString);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("reshowNotification, sessionId[");
         localStringBuilder.append(paramString);
         localStringBuilder.append("], mIsActive[");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.g);
         localStringBuilder.append("], data[");
         localStringBuilder.append(localNotifyData);
         localStringBuilder.append("]");
         QLog.w("QAVNotification", 1, localStringBuilder.toString());
       }
-      if ((localNotifyData != null) && (localNotifyData.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+      if ((localNotifyData != null) && (localNotifyData.i) && (!this.g))
       {
         a(localNotifyData, true);
         return true;

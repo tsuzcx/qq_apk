@@ -12,8 +12,8 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 class VisitorsActivity$ListViewScrollListener
   implements AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = true;
+  int a = 0;
+  boolean b = true;
   
   VisitorsActivity$ListViewScrollListener(VisitorsActivity paramVisitorsActivity) {}
   
@@ -24,9 +24,9 @@ class VisitorsActivity$ListViewScrollListener
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("mLastTop=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(",mHeaderVisible=");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(",firstVi=");
       localStringBuilder.append(paramInt1);
       QLog.d("VisitorsActivity", 2, localStringBuilder.toString());
@@ -34,63 +34,63 @@ class VisitorsActivity$ListViewScrollListener
     paramAbsListView = paramAbsListView.getChildAt(0);
     if ((paramAbsListView != null) && (paramInt1 == 0))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.getVisibility() == 0) {
-        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.getHeight() + 0;
+      if (this.c.x.getVisibility() == 0) {
+        paramInt1 = this.c.x.getHeight() + 0;
       } else {
         paramInt1 = 0;
       }
-      paramInt1 = (int)(paramInt1 + VisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity) * 77.0F);
-      paramInt2 = paramInt1 - this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f;
+      paramInt1 = (int)(paramInt1 + VisitorsActivity.d(this.c) * 77.0F);
+      paramInt2 = paramInt1 - this.c.R;
       paramInt3 = Math.abs(paramAbsListView.getTop());
       if (QLog.isColorLevel())
       {
         boolean bool;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.getVisibility() == 8) {
+        if (this.c.b.getVisibility() == 8) {
           bool = true;
         } else {
           bool = false;
         }
         QLog.d("VisitorsActivity", 2, String.format("sumH=%d top=%d offset=%d tabBarShow=%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt2), Boolean.valueOf(bool) }));
       }
-      if ((paramInt3 > this.jdField_a_of_type_Int) && (paramInt3 >= paramInt1) && (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.getVisibility() == 8))
+      if ((paramInt3 > this.a) && (paramInt3 >= paramInt1) && (this.c.b.getVisibility() == 8))
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(0);
+        this.b = false;
+        this.c.b.setVisibility(0);
       }
-      else if ((paramInt3 < this.jdField_a_of_type_Int) && (paramInt3 <= paramInt1) && (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.getVisibility() == 0))
+      else if ((paramInt3 < this.a) && (paramInt3 <= paramInt1) && (this.c.b.getVisibility() == 0))
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(8);
+        this.b = true;
+        this.c.b.setVisibility(8);
       }
       localStringBuilder = null;
-      CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.centerView.getText();
-      if ((paramInt3 > this.jdField_a_of_type_Int) && (paramInt3 >= paramInt2) && ("".equals(localCharSequence)))
+      CharSequence localCharSequence = this.c.centerView.getText();
+      if ((paramInt3 > this.a) && (paramInt3 >= paramInt2) && ("".equals(localCharSequence)))
       {
-        paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
+        paramAbsListView = this.c.V;
       }
       else
       {
         paramAbsListView = localStringBuilder;
-        if (paramInt3 < this.jdField_a_of_type_Int)
+        if (paramInt3 < this.a)
         {
           paramAbsListView = localStringBuilder;
           if (paramInt3 <= paramInt2)
           {
             paramAbsListView = localStringBuilder;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaLangString.equals(localCharSequence)) {
-              paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
+            if (this.c.S.equals(localCharSequence)) {
+              paramAbsListView = this.c.W;
             }
           }
         }
       }
-      if ((paramAbsListView != null) && (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.centerView.getAnimation()))
+      if ((paramAbsListView != null) && (paramAbsListView != this.c.centerView.getAnimation()))
       {
         paramAbsListView.reset();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.d) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.centerView.startAnimation(paramAbsListView);
+        if (this.c.t) {
+          this.c.centerView.startAnimation(paramAbsListView);
         }
       }
-      this.jdField_a_of_type_Int = paramInt3;
+      this.a = paramInt3;
     }
   }
   
@@ -98,7 +98,7 @@ class VisitorsActivity$ListViewScrollListener
   {
     if (VersionUtils.m())
     {
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getCurrentFocus();
+      paramAbsListView = this.c.getCurrentFocus();
       if (paramAbsListView != null) {
         paramAbsListView.clearFocus();
       }
@@ -107,7 +107,7 @@ class VisitorsActivity$ListViewScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.ListViewScrollListener
  * JD-Core Version:    0.7.0.1
  */

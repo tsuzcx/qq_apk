@@ -18,12 +18,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class HippyEngineManagerImpl$HippyEngineContextImpl
   implements HippyEngineContext
 {
-  private a mBridgeManager;
-  private DomManager mDomManager;
+  private final a mBridgeManager;
+  private final DomManager mDomManager;
   volatile CopyOnWriteArrayList<HippyEngineLifecycleEventListener> mEngineLifecycleEventListeners;
   volatile CopyOnWriteArrayList<HippyInstanceLifecycleEventListener> mInstanceLifecycleEventListeners;
-  private HippyModuleManager mModuleManager;
-  RenderManager mRenderManager;
+  private final HippyModuleManager mModuleManager;
+  final RenderManager mRenderManager;
   
   public HippyEngineManagerImpl$HippyEngineContextImpl(HippyEngineManagerImpl paramHippyEngineManagerImpl, boolean paramBoolean, String paramString)
   {
@@ -184,7 +184,7 @@ public class HippyEngineManagerImpl$HippyEngineContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl.HippyEngineContextImpl
  * JD-Core Version:    0.7.0.1
  */

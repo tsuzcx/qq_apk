@@ -132,7 +132,7 @@ public class ChatActivity
     paramIntent = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     if (paramIntent != null)
     {
-      paramIntent.d();
+      paramIntent.l();
       if (!paramIntent.isVisible())
       {
         FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -165,7 +165,7 @@ public class ChatActivity
     {
       ChatFragment localChatFragment = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
       if (localChatFragment != null) {
-        localChatFragment.b(2);
+        localChatFragment.c(2);
       }
     }
   }
@@ -193,7 +193,7 @@ public class ChatActivity
       if (localIntent.getIntExtra("entrance", 0) == 9) {
         setResult(0, localIntent);
       }
-      return localChatFragment.a();
+      return localChatFragment.i();
     }
     return false;
   }
@@ -209,7 +209,7 @@ public class ChatActivity
   {
     ChatFragment localChatFragment = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     if (localChatFragment != null) {
-      localChatFragment.a(paramInt);
+      localChatFragment.b(paramInt);
     }
     return null;
   }
@@ -220,11 +220,11 @@ public class ChatActivity
     Object localObject = getSupportFragmentManager();
     Fragment localFragment = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
     if (localFragment != null) {
-      ((MainFragment)localFragment).h();
+      ((MainFragment)localFragment).k();
     }
     localObject = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
     if (localObject != null) {
-      ((ChatFragment)localObject).e();
+      ((ChatFragment)localObject).n();
     }
   }
   
@@ -233,7 +233,7 @@ public class ChatActivity
     super.onPreThemeChanged();
     Fragment localFragment = getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     if (localFragment != null) {
-      ((ChatFragment)localFragment).f();
+      ((ChatFragment)localFragment).o();
     }
   }
   
@@ -254,10 +254,10 @@ public class ChatActivity
   public boolean showPreview()
   {
     SetSplash.a(this, null, true);
-    getWindow().setFeatureInt(7, 2131558998);
+    getWindow().setFeatureInt(7, 2131624631);
     try
     {
-      this.mTitleView = ((View)findViewById(2131366900).getParent());
+      this.mTitleView = ((View)findViewById(2131433232).getParent());
       this.mTitleView.setVisibility(8);
       return true;
     }
@@ -284,7 +284,7 @@ public class ChatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivity
  * JD-Core Version:    0.7.0.1
  */

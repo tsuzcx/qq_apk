@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import com.qflutter.qqface.data.QQFaceNativeData;
 import com.qflutter.qqface.data.QQFaceParam;
 import com.qflutter.qqface.loader.QQFaceInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.flutter.download.QFlutterInstaller;
 import com.tencent.qphone.base.util.QLog;
@@ -13,12 +12,11 @@ import com.tencent.util.Pair;
 public class QFlutterFace
   implements QQFaceInterface
 {
-  private QFlutterFaceLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader$FaceObserver = new QFlutterFace.1(this);
-  private QFlutterFaceLoader jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader = new QFlutterFaceLoader(BaseApplicationImpl.getContext());
+  private QFlutterFaceLoader.FaceObserver a = new QFlutterFace.1(this);
   
   public QFlutterFace()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader.a(this.jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader$FaceObserver);
+    QFlutterFaceLoader.a().a(this.a);
   }
   
   public void clearCache()
@@ -26,13 +24,13 @@ public class QFlutterFace
     if (QLog.isColorLevel()) {
       QLog.d("QFlutterFace", 2, "clearCache");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader.a();
+    QFlutterFaceLoader.a().b();
   }
   
   public QQFaceNativeData getFaceData(QQFaceParam paramQQFaceParam)
   {
     paramQQFaceParam = new DecodeRequest(paramQQFaceParam.faceType, paramQQFaceParam.account, paramQQFaceParam.faceShape);
-    paramQQFaceParam = this.jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader.a(paramQQFaceParam);
+    paramQQFaceParam = QFlutterFaceLoader.a().a(paramQQFaceParam);
     QQFaceNativeData localQQFaceNativeData = new QQFaceNativeData();
     localQQFaceNativeData.setBitmap((Bitmap)paramQQFaceParam.first);
     localQQFaceNativeData.isDefaultFace = ((Boolean)paramQQFaceParam.second).booleanValue();
@@ -48,7 +46,7 @@ public class QFlutterFace
       localStringBuilder.append("getLibPath: ");
       localStringBuilder.append(str);
       localStringBuilder.append(", isExist: ");
-      localStringBuilder.append(FileUtil.b(str));
+      localStringBuilder.append(FileUtil.d(str));
       QLog.d("QFlutterFace", 2, localStringBuilder.toString());
     }
     return str;
@@ -56,12 +54,12 @@ public class QFlutterFace
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFlutterQqfaceQFlutterFaceLoader.b();
+    QFlutterFaceLoader.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFace
  * JD-Core Version:    0.7.0.1
  */

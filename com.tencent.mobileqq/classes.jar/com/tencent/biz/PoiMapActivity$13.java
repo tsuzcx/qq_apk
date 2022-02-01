@@ -16,22 +16,22 @@ class PoiMapActivity$13
     {
       Object localObject = this.a;
       PoiMapActivity.TabView localTabView = (PoiMapActivity.TabView)paramView;
-      ((PoiMapActivity)localObject).a(localTabView.a);
-      this.a.e();
+      ((PoiMapActivity)localObject).a(localTabView.d);
+      this.a.f();
       if (QLog.isDevelopLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("mTabClickListener");
-        ((StringBuilder)localObject).append(localTabView.a);
+        ((StringBuilder)localObject).append(localTabView.d);
         QLog.i("PoiMapActivity", 4, ((StringBuilder)localObject).toString());
       }
       StringBuilder localStringBuilder;
-      if (PoiMapActivity.a(this.a))
+      if (PoiMapActivity.g(this.a))
       {
         localObject = this.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("click_tab");
-        localStringBuilder.append(localTabView.a + 1);
+        localStringBuilder.append(localTabView.d + 1);
         ((PoiMapActivity)localObject).a("share_locate", localStringBuilder.toString(), "", "", "", "");
       }
       else
@@ -39,8 +39,8 @@ class PoiMapActivity$13
         localObject = this.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("click_tab");
-        localStringBuilder.append(localTabView.a + 1);
-        ((PoiMapActivity)localObject).a("share_locate", localStringBuilder.toString(), this.a.f, this.a.e, "", "");
+        localStringBuilder.append(localTabView.d + 1);
+        ((PoiMapActivity)localObject).a("share_locate", localStringBuilder.toString(), this.a.ac, this.a.ab, "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

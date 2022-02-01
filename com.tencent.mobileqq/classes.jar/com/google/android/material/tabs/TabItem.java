@@ -10,9 +10,9 @@ import com.google.android.material.R.styleable;
 public class TabItem
   extends View
 {
-  public final int a;
-  public final Drawable a;
   public final CharSequence a;
+  public final Drawable b;
+  public final int c;
   
   public TabItem(Context paramContext)
   {
@@ -22,16 +22,16 @@ public class TabItem
   public TabItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.ax);
-    this.jdField_a_of_type_JavaLangCharSequence = paramContext.getText(R.styleable.eS);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(R.styleable.eQ);
-    this.jdField_a_of_type_Int = paramContext.getResourceId(R.styleable.eR, 0);
+    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.hg);
+    this.a = paramContext.getText(R.styleable.hj);
+    this.b = paramContext.getDrawable(R.styleable.hh);
+    this.c = paramContext.getResourceId(R.styleable.hi, 0);
     paramContext.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabItem
  * JD-Core Version:    0.7.0.1
  */

@@ -35,13 +35,13 @@ public class MarketFaceMsgDecoder
         paramMessage.msg = paramAppRuntime.toString();
         return;
       }
-      paramMessage.msg = paramAppRuntime.getApp().getString(2131691922);
+      paramMessage.msg = paramAppRuntime.getApp().getString(2131888889);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.MarketFaceMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

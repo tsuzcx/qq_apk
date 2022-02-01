@@ -27,7 +27,7 @@ class IliveReportModule$3
         VasStatisticCollector.b("lite_exit_sso", new Pair[0]);
         LiveRoomInfo localLiveRoomInfo = new LiveRoomInfo();
         localLiveRoomInfo.roomId = this.a;
-        RoomDataServer.requestExitRoom(((IliveCustomRoomService)localObject).a(), localLiveRoomInfo);
+        RoomDataServer.requestExitRoom(((IliveCustomRoomService)localObject).i(), localLiveRoomInfo);
         return;
       }
     }
@@ -40,7 +40,7 @@ class IliveReportModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveReportModule.3
  * JD-Core Version:    0.7.0.1
  */

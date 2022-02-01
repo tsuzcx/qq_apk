@@ -1,26 +1,26 @@
 package com.tencent.turingfd.sdk.xq;
 
 public final class Lynx
-  extends case
+  extends else
 {
-  public String ra = "";
-  public String sa = "";
+  public String a = "";
+  public String b = "";
   
-  public void a(byte parambyte)
+  public void a(case paramcase)
   {
-    parambyte.b(this.ra, 0);
-    parambyte.b(this.sa, 1);
+    paramcase.a(this.a, 0);
+    paramcase.a(this.b, 1);
   }
   
   public void a(try paramtry)
   {
-    this.ra = paramtry.a(0, true);
-    this.sa = paramtry.a(1, true);
+    this.a = paramtry.b(0, true);
+    this.b = paramtry.b(1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Lynx
  * JD-Core Version:    0.7.0.1
  */

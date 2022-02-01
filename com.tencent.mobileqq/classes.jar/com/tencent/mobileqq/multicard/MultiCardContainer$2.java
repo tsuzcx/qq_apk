@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.multicard;
 
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator.OnTabListener;
+import com.tencent.mobileqq.widget.AbsSlidingIndicator.OnTabListener;
 
 class MultiCardContainer$2
-  implements SimpleSlidingIndicator.OnTabListener
+  implements AbsSlidingIndicator.OnTabListener
 {
   MultiCardContainer$2(MultiCardContainer paramMultiCardContainer) {}
   
@@ -15,7 +15,7 @@ class MultiCardContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardContainer.2
  * JD-Core Version:    0.7.0.1
  */

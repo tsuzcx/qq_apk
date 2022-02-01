@@ -8,24 +8,24 @@ public class ImageInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ImageInfo> CREATOR = new ImageInfo.1();
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private String a;
+  private String b;
+  private long c;
+  private long d;
+  private String e;
   
   private ImageInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.c = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readString();
   }
   
   private boolean a(ImageInfo paramImageInfo)
   {
-    return (this.jdField_b_of_type_JavaLangString.equals(paramImageInfo.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Long == paramImageInfo.jdField_a_of_type_Long) && (this.jdField_b_of_type_Long == paramImageInfo.jdField_b_of_type_Long) && (this.jdField_a_of_type_JavaLangString.equals(paramImageInfo.jdField_a_of_type_JavaLangString));
+    return (this.b.equals(paramImageInfo.b)) && (this.c == paramImageInfo.c) && (this.d == paramImageInfo.d) && (this.a.equals(paramImageInfo.a));
   }
   
   public int describeContents()
@@ -47,19 +47,19 @@ public class ImageInfo
   public int hashCode()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString().hashCode();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 

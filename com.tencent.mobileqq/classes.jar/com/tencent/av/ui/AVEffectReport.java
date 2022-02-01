@@ -12,12 +12,12 @@ import com.tencent.mobileqq.statistics.ReportController;
 
 public class AVEffectReport
 {
-  static void a()
+  public static void a()
   {
     ReportController.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
   }
   
-  static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
+  public static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
   {
     int i = 2;
     if ((paramInt1 != 1) && (paramInt1 != 2)) {
@@ -51,14 +51,28 @@ public class AVEffectReport
     }
   }
   
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    int i = 2;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      paramInt = 0;
+    } else {
+      paramInt = 1;
+    }
+    if (paramInt != 0) {
+      i = 1;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800BB5B", "0X800BB5B", 0, 0, "", String.valueOf(i), paramString1, paramString2);
+  }
+  
   static void a(long paramLong, boolean paramBoolean)
   {
-    Object localObject = DoodleLogic.a();
+    Object localObject = DoodleLogic.b();
     if (!DoodleUtils.a()) {
       localObject = "0X80077BF";
-    } else if (!((DoodleLogic)localObject).a()) {
+    } else if (!((DoodleLogic)localObject).g()) {
       localObject = "0X80077C0";
-    } else if (!((DoodleLogic)localObject).b) {
+    } else if (!((DoodleLogic)localObject).k) {
       localObject = "0X80077BE";
     } else {
       localObject = "0X80077BD";
@@ -112,7 +126,7 @@ public class AVEffectReport
   {
     if (paramVideoAppInterface != null)
     {
-      paramVideoAppInterface = (EffectSupportManager)paramVideoAppInterface.a(5);
+      paramVideoAppInterface = (EffectSupportManager)paramVideoAppInterface.c(5);
       boolean bool = paramVideoAppInterface.a(3, "normal");
       if (paramVideoAppInterface.a(3, "interact")) {
         paramVideoAppInterface = "0X8008023";
@@ -144,7 +158,7 @@ public class AVEffectReport
     ReportController.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
   }
   
-  static void b(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
+  public static void b(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
   {
     int i = 2;
     if ((paramInt1 != 1) && (paramInt1 != 2)) {
@@ -158,6 +172,20 @@ public class AVEffectReport
     ReportController.b(null, "dc00898", "", "", "0X8008395", "0X8008395", paramInt2, 0, String.valueOf(paramInt3), String.valueOf(i), String.valueOf(paramLong), paramString);
   }
   
+  public static void b(int paramInt, String paramString1, String paramString2)
+  {
+    int i = 2;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      paramInt = 0;
+    } else {
+      paramInt = 1;
+    }
+    if (paramInt != 0) {
+      i = 1;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X8008395", "0X8008395", 0, 0, "", String.valueOf(i), paramString1, paramString2);
+  }
+  
   static void b(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
   {
     int j = 0;
@@ -168,7 +196,7 @@ public class AVEffectReport
       if (EffectFilterTools.a(paramContext))
       {
         i = j;
-        if (GestureMgr.a().c()) {
+        if (GestureMgr.e().d()) {
           i = 1;
         }
       }

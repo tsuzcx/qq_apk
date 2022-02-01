@@ -13,24 +13,24 @@ class FileBrowserActivity$6
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 1)
     {
-      ReportController.b(null, "dc00898", "", "", "0X800A745", "0X800A745", QBrowserUtils.b(FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileBrowserActivity).a()), 0, "", "", "", "");
-      if (FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileBrowserActivity)) {
-        this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileBrowserActivity.finish();
+      ReportController.b(null, "dc00898", "", "", "0X800A745", "0X800A745", QBrowserUtils.b(FileBrowserActivity.d(this.b).d()), 0, "", "", "", "");
+      if (FileBrowserActivity.e(this.b)) {
+        this.b.finish();
       }
     }
     else if (i == 2)
     {
-      FileBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileBrowserActivity);
+      FileBrowserActivity.f(this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.FileBrowserActivity.6
  * JD-Core Version:    0.7.0.1
  */

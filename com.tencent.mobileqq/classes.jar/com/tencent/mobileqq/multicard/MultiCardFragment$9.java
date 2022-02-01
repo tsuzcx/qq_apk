@@ -19,21 +19,21 @@ class MultiCardFragment$9
       localStringBuilder.append("]");
       QLog.d("MultiCardFragment", 2, localStringBuilder.toString());
     }
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(true);
+    if (MultiCardFragment.b(this.a) != null) {
+      MultiCardFragment.b(this.a).setViewPagerBusy(true);
     }
-    if (MultiCardFragment.a(this.a) != null)
+    if (MultiCardFragment.g(this.a) != null)
     {
-      MultiCardFragment.a(this.a).c(paramInt);
-      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      MultiCardFragment.g(this.a).e(paramInt);
+      if ((MultiCardFragment.g(this.a).getScrollState() == 0) && (MultiCardFragment.b(this.a) != null)) {
+        MultiCardFragment.b(this.a).setViewPagerBusy(false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.9
  * JD-Core Version:    0.7.0.1
  */

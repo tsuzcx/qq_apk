@@ -63,19 +63,19 @@ public class SearchInfo
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.userNum);
-      localStringBuilder.append(HardCodeUtil.a(2131694171));
+      localStringBuilder.append(HardCodeUtil.a(2131891801));
       return localStringBuilder.toString();
     }
     if (i >= 100000000)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.userNum / 100000000);
-      localStringBuilder.append(HardCodeUtil.a(2131694170));
+      localStringBuilder.append(HardCodeUtil.a(2131891800));
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.userNum / 10000);
-    localStringBuilder.append(HardCodeUtil.a(2131694172));
+    localStringBuilder.append(HardCodeUtil.a(2131891802));
     return localStringBuilder.toString();
   }
   
@@ -91,7 +91,7 @@ public class SearchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.comm.SearchInfo
  * JD-Core Version:    0.7.0.1
  */

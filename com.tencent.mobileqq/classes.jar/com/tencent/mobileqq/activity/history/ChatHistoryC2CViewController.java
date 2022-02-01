@@ -5,27 +5,27 @@ import com.tencent.mobileqq.app.BaseActivity;
 public class ChatHistoryC2CViewController
   extends ChatHistoryCommonViewController
 {
-  public static final int[] a = { 2131690808, 2131690813, 2131690810, 2131690811, 2131690815, 2131690812, 2131690809 };
-  public static final int[] b = { 2131364495, 2131364500, 2131364497, 2131364498, 2131364501, 2131364499, 2131364496 };
+  public static final int[] e = { 2131887738, 2131887743, 2131887740, 2131887741, 2131887745, 2131887742, 2131887739 };
+  public static final int[] f = { 2131430552, 2131430557, 2131430554, 2131430555, 2131430558, 2131430556, 2131430553 };
   
   public ChatHistoryC2CViewController(BaseActivity paramBaseActivity)
   {
     super(paramBaseActivity);
   }
   
-  protected int[] a()
+  protected int[] k()
   {
-    return b;
+    return f;
   }
   
-  protected int[] b()
+  protected int[] l()
   {
-    return a;
+    return e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CViewController
  * JD-Core Version:    0.7.0.1
  */

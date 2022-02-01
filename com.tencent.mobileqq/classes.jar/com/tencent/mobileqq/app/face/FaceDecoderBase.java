@@ -71,12 +71,12 @@ public abstract class FaceDecoderBase
         QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
       }
     }
-    if (paramFaceInfo.b) {
+    if (paramFaceInfo.h) {
       this.mReadyRequests.addLast(paramFaceInfo);
     } else {
       this.mReadyRequests.addFirst(paramFaceInfo);
     }
-    paramFaceInfo.a(FaceInfo.k);
+    paramFaceInfo.a(FaceInfo.w);
     if ((this.iRunningRequests < this.maxDecodingTask) && (!this.mPause)) {
       runNextTask();
     }
@@ -147,7 +147,7 @@ public abstract class FaceDecoderBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderBase
  * JD-Core Version:    0.7.0.1
  */

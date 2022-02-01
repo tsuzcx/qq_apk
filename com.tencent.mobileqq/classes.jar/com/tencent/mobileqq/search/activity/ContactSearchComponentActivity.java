@@ -27,14 +27,14 @@ public class ContactSearchComponentActivity
   public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1500L)
+    if (l - a < 1500L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ContactSearchComponentActivity", 2, "ContactSearchComponentActivity launch failed! Too frequently.");
       }
       return;
     }
-    jdField_a_of_type_Long = l;
+    a = l;
     Intent localIntent = new Intent(paramActivity, ContactSearchComponentActivity.class);
     localIntent.putExtra("keyword", paramString);
     localIntent.putExtra("fromType", paramInt1);
@@ -49,14 +49,14 @@ public class ContactSearchComponentActivity
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1500L)
+    if (l - a < 1500L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ContactSearchComponentActivity", 2, "ContactSearchComponentActivity launch failed! Too frequently.");
       }
       return;
     }
-    jdField_a_of_type_Long = l;
+    a = l;
     Intent localIntent = new Intent(paramActivity, ContactSearchComponentActivity.class);
     localIntent.putExtra("keyword", paramString1);
     localIntent.putExtra("fromType", paramInt1);
@@ -69,14 +69,14 @@ public class ContactSearchComponentActivity
     paramActivity.overridePendingTransition(0, 0);
   }
   
-  protected BaseSearchFragment a()
+  protected BaseSearchFragment c()
   {
     int i = getIntent().getIntExtra("fromType", -1);
-    int j = getIntent().getIntExtra("contactSearchSource", 197437);
+    int j = getIntent().getIntExtra("contactSearchSource", 33751869);
     String str = getIntent().getStringExtra("specifiedTroopUin");
     ArrayList localArrayList = new ArrayList();
     if ((i != 7) && (i != 6) && (i != 23)) {
-      return super.a();
+      return super.c();
     }
     localArrayList.add(AppConstants.BABY_Q_UIN);
     return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
@@ -94,8 +94,8 @@ public class ContactSearchComponentActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131377051).setOnTouchListener(new ContactSearchComponentActivity.1(this));
+    this.g.setVisibility(8);
+    findViewById(2131445417).setOnTouchListener(new ContactSearchComponentActivity.1(this));
     return true;
   }
   
@@ -114,7 +114,7 @@ public class ContactSearchComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchComponentActivity
  * JD-Core Version:    0.7.0.1
  */

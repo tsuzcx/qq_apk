@@ -39,78 +39,23 @@ import org.json.JSONObject;
 class WebRecordApiPlugin$AudioApiHelper
   implements IQQRecorder.OnQQRecorderListener, VoicePlayer.VoicePlayerListener
 {
-  private double jdField_a_of_type_Double;
-  int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new WebRecordApiPlugin.AudioApiHelper.1(this, Looper.getMainLooper());
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  protected WebRecordApiPlugin.AudioUploadTask a;
-  private IQQRecorder jdField_a_of_type_ComTencentMobileqqPttIQQRecorder;
-  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 1;
-  private int c = 60000;
+  QBaseActivity a;
+  protected WebRecordApiPlugin.AudioUploadTask b = null;
+  int c = 0;
+  private IQQRecorder e;
+  private AppInterface f;
+  private int g = 1;
+  private int h = 60000;
+  private boolean i = true;
+  private VoicePlayer j;
+  private double k;
+  private String l;
+  private Handler m = new WebRecordApiPlugin.AudioApiHelper.1(this, Looper.getMainLooper());
   
   public WebRecordApiPlugin$AudioApiHelper(WebRecordApiPlugin paramWebRecordApiPlugin, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioUploadTask = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-  }
-  
-  private int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  /* Error */
-  private String a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: lconst_1
-    //   3: invokestatic 71	java/lang/Thread:sleep	(J)V
-    //   6: goto +12 -> 18
-    //   9: astore_3
-    //   10: goto +37 -> 47
-    //   13: astore_3
-    //   14: aload_3
-    //   15: invokevirtual 74	java/lang/InterruptedException:printStackTrace	()V
-    //   18: invokestatic 80	java/lang/System:currentTimeMillis	()J
-    //   21: lstore_1
-    //   22: new 82	java/text/SimpleDateFormat
-    //   25: dup
-    //   26: ldc 84
-    //   28: invokespecial 87	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
-    //   31: new 89	java/util/Date
-    //   34: dup
-    //   35: lload_1
-    //   36: invokespecial 91	java/util/Date:<init>	(J)V
-    //   39: invokevirtual 95	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
-    //   42: astore_3
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_3
-    //   46: areturn
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_3
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	AudioApiHelper
-    //   21	15	1	l	long
-    //   9	1	3	localObject	Object
-    //   13	2	3	localInterruptedException	java.lang.InterruptedException
-    //   42	8	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	6	9	finally
-    //   14	18	9	finally
-    //   18	43	9	finally
-    //   2	6	13	java/lang/InterruptedException
+    this.f = paramAppInterface;
+    this.a = paramQBaseActivity;
   }
   
   private String a(int paramInt, boolean paramBoolean)
@@ -137,7 +82,7 @@ class WebRecordApiPlugin$AudioApiHelper
       ((StringBuilder)localObject3).append((String)localObject2);
       QLog.d("WebRecordApiPlugin", 2, ((StringBuilder)localObject3).toString());
     }
-    Object localObject3 = a();
+    Object localObject3 = c();
     Object localObject4 = new File((String)localObject2);
     if (!((File)localObject4).exists()) {
       ((File)localObject4).mkdirs();
@@ -167,9 +112,63 @@ class WebRecordApiPlugin$AudioApiHelper
     return ((File)localObject1).getAbsoluteFile().toString();
   }
   
+  private int b()
+  {
+    return this.c;
+  }
+  
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
+  }
+  
+  /* Error */
+  private String c()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: lconst_1
+    //   3: invokestatic 142	java/lang/Thread:sleep	(J)V
+    //   6: goto +12 -> 18
+    //   9: astore_3
+    //   10: goto +37 -> 47
+    //   13: astore_3
+    //   14: aload_3
+    //   15: invokevirtual 145	java/lang/InterruptedException:printStackTrace	()V
+    //   18: invokestatic 151	java/lang/System:currentTimeMillis	()J
+    //   21: lstore_1
+    //   22: new 153	java/text/SimpleDateFormat
+    //   25: dup
+    //   26: ldc 155
+    //   28: invokespecial 156	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
+    //   31: new 158	java/util/Date
+    //   34: dup
+    //   35: lload_1
+    //   36: invokespecial 160	java/util/Date:<init>	(J)V
+    //   39: invokevirtual 164	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   42: astore_3
+    //   43: aload_0
+    //   44: monitorexit
+    //   45: aload_3
+    //   46: areturn
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_3
+    //   50: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	this	AudioApiHelper
+    //   21	15	1	l1	long
+    //   9	1	3	localObject	Object
+    //   13	2	3	localInterruptedException	java.lang.InterruptedException
+    //   42	8	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	6	9	finally
+    //   14	18	9	finally
+    //   18	43	9	finally
+    //   2	6	13	java/lang/InterruptedException
   }
   
   private void d(String paramString)
@@ -179,7 +178,7 @@ class WebRecordApiPlugin$AudioApiHelper
     if (((Time)localObject).hour < 3) {
       return;
     }
-    localObject = SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, "LAST_DELETE_TIME");
+    localObject = SharePreferenceUtils.a(this.a, "LAST_DELETE_TIME");
     String str = new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis()));
     if ((localObject != null) && (str.equals(localObject))) {
       return;
@@ -189,12 +188,12 @@ class WebRecordApiPlugin$AudioApiHelper
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder;
-    if ((localObject != null) && (!((IQQRecorder)localObject).b()) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(16711686)))
+    Object localObject = this.e;
+    if ((localObject != null) && (!((IQQRecorder)localObject).b()) && (!this.m.hasMessages(16711686)))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(16711688);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(16711686);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(16711687);
+      this.m.removeMessages(16711688);
+      this.m.removeMessages(16711686);
+      this.m.removeMessages(16711687);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -202,11 +201,11 @@ class WebRecordApiPlugin$AudioApiHelper
         ((StringBuilder)localObject).append(System.currentTimeMillis());
         QLog.d("WebRecordApiPlugin", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder != null)
+      this.c = paramInt;
+      if (this.e != null)
       {
-        localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(16711686);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, 200L);
+        localObject = this.m.obtainMessage(16711686);
+        this.m.sendMessageDelayed((Message)localObject, 200L);
       }
     }
   }
@@ -214,19 +213,19 @@ class WebRecordApiPlugin$AudioApiHelper
   public void a(int paramInt1, int paramInt2)
   {
     if ((paramInt1 == 1) || (paramInt1 == 0)) {
-      this.b = paramInt1;
+      this.g = paramInt1;
     }
     if (paramInt2 > 0)
     {
       paramInt1 = paramInt2 * 1000;
-      if (paramInt1 < this.c) {
-        this.c = paramInt1;
+      if (paramInt1 < this.h) {
+        this.h = paramInt1;
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder;
+    Object localObject = this.e;
     if ((localObject != null) && (((IQQRecorder)localObject).a()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+      localObject = this.d;
       ((WebRecordApiPlugin)localObject).callJs(WebRecordApiPlugin.b((WebRecordApiPlugin)localObject), new String[] { "{'code':-1,'recordID':'-1','msg':'is recording now'}" });
       return;
     }
@@ -243,18 +242,18 @@ class WebRecordApiPlugin$AudioApiHelper
     }
     if (paramInt1 != 0)
     {
-      localObject = DeviceInfoUtil.b();
+      localObject = DeviceInfoUtil.q();
       if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
       {
-        if (AudioUtil.a(1))
+        if (AudioUtil.b(1))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+          localObject = this.d;
           str = WebRecordApiPlugin.b((WebRecordApiPlugin)localObject);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("{'code':-1,'recordID':'-1','msg':'");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698521));
+          localStringBuilder.append(this.a.getString(2131896467));
           localStringBuilder.append(",");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698522));
+          localStringBuilder.append(this.a.getString(2131896468));
           localStringBuilder.append("'}");
           ((WebRecordApiPlugin)localObject).callJs(str, new String[] { localStringBuilder.toString() });
           return;
@@ -262,51 +261,51 @@ class WebRecordApiPlugin$AudioApiHelper
         if (QLog.isColorLevel()) {
           QLog.d("WebRecordApiPlugin", 2, "startRecord() is called");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder == null) {
-          this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).createQQRecorder(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+        if (this.e == null) {
+          this.e = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).createQQRecorder(this.a);
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
         ((StringBuilder)localObject).append("webrecord/");
         d(((StringBuilder)localObject).toString());
-        if (this.b == 0)
+        if (this.g == 0)
         {
-          localObject = new RecordParams.RecorderParam(RecordParams.jdField_a_of_type_Int, 0, 0);
-          this.jdField_a_of_type_JavaLangString = a(2, true);
+          localObject = new RecordParams.RecorderParam(RecordParams.a, 0, 0);
+          this.l = a(2, true);
         }
         else
         {
           localObject = new RecordParams.RecorderParam(RecordParams.b, 16000, 1);
-          this.jdField_a_of_type_JavaLangString = a(25, true);
+          this.l = a(25, true);
         }
-        this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder.a((RecordParams.RecorderParam)localObject);
+        this.e.a((RecordParams.RecorderParam)localObject);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("path: ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.l);
           QLog.i("QQRecorder", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder.a(this);
-        QQAudioUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, true);
-        this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder.b(this.jdField_a_of_type_JavaLangString);
+        this.e.a(this);
+        QQAudioUtils.a(this.a, true);
+        this.e.b(this.l);
         b(0);
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+      localObject = this.d;
       str = WebRecordApiPlugin.b((WebRecordApiPlugin)localObject);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("{'code':-1,'recordID':'-1','msg':'");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131718577));
+      localStringBuilder.append(this.a.getString(2131916078));
       localStringBuilder.append("'}");
       ((WebRecordApiPlugin)localObject).callJs(str, new String[] { localStringBuilder.toString() });
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    localObject = this.d;
     String str = WebRecordApiPlugin.b((WebRecordApiPlugin)localObject);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{'code':-1,'recordID':'-1','msg':'");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131694487));
+    localStringBuilder.append(this.a.getString(2131892169));
     localStringBuilder.append("'}");
     ((WebRecordApiPlugin)localObject).callJs(str, new String[] { localStringBuilder.toString() });
   }
@@ -319,30 +318,30 @@ class WebRecordApiPlugin$AudioApiHelper
   public void a(String paramString)
   {
     Object localObject1 = new File(paramString);
-    if ((((File)localObject1).exists()) && (SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramString) != null))
+    if ((((File)localObject1).exists()) && (SharePreferenceUtils.a(this.a, paramString) != null))
     {
-      double d = Double.valueOf(SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramString)).doubleValue();
-      long l;
+      double d1 = Double.valueOf(SharePreferenceUtils.a(this.a, paramString)).doubleValue();
+      long l1;
       if (((File)localObject1).exists()) {
-        l = ((File)localObject1).length();
+        l1 = ((File)localObject1).length();
       } else {
-        l = 0L;
+        l1 = 0L;
       }
-      localObject1 = new AudioInfo(paramString, (int)d, l);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
+      localObject1 = new AudioInfo(paramString, (int)d1, l1);
+      localObject2 = this.j;
       if (localObject2 == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(((AudioInfo)localObject1).path, new Handler(), ((AudioInfo)localObject1).getAudioType());
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
+        this.j = new VoicePlayer(((AudioInfo)localObject1).path, new Handler(), ((AudioInfo)localObject1).getAudioType());
+        this.j.a(this.a);
+        this.j.h();
+        this.j.a(this);
+        this.j.c();
       }
       else
       {
-        ((VoicePlayer)localObject2).c();
+        ((VoicePlayer)localObject2).d();
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+      localObject1 = this.d;
       localObject2 = WebRecordApiPlugin.c((WebRecordApiPlugin)localObject1);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("{'code':0,'recordID':'");
@@ -351,7 +350,7 @@ class WebRecordApiPlugin$AudioApiHelper
       ((WebRecordApiPlugin)localObject1).callJs((String)localObject2, new String[] { localStringBuilder.toString() });
       return;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    localObject1 = this.d;
     Object localObject2 = WebRecordApiPlugin.c((WebRecordApiPlugin)localObject1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{'code':3,'recordID':'");
@@ -364,29 +363,29 @@ class WebRecordApiPlugin$AudioApiHelper
   
   public void a(JSONArray paramJSONArray, String paramString1, String paramString2)
   {
-    int i = 0;
-    while (i < paramJSONArray.length())
+    int n = 0;
+    while (n < paramJSONArray.length())
     {
-      Object localObject1 = paramJSONArray.optString(i, "");
+      Object localObject1 = paramJSONArray.optString(n, "");
       Object localObject2 = new File((String)localObject1);
-      String str = SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (String)localObject1);
+      String str = SharePreferenceUtils.a(this.a, (String)localObject1);
       if ((((File)localObject2).exists()) && (!TextUtils.isEmpty(str)))
       {
-        double d = Double.valueOf(str).doubleValue();
+        double d1 = Double.valueOf(str).doubleValue();
         localObject2 = new File((String)localObject1);
-        long l;
+        long l1;
         if (((File)localObject2).exists()) {
-          l = ((File)localObject2).length();
+          l1 = ((File)localObject2).length();
         } else {
-          l = 0L;
+          l1 = 0L;
         }
-        localObject1 = new AudioInfo((String)localObject1, (int)d, l);
-        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioUploadTask = new WebRecordApiPlugin.AudioUploadTask(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_AndroidOsHandler, paramString1, paramString2, (AudioInfo)localObject1);
-        ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioUploadTask, 5, null, true);
+        localObject1 = new AudioInfo((String)localObject1, (int)d1, l1);
+        this.b = new WebRecordApiPlugin.AudioUploadTask(this.d, this.a, this.m, paramString1, paramString2, (AudioInfo)localObject1);
+        ThreadManager.post(this.b, 5, null, true);
       }
       else
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+        localObject2 = this.d;
         str = WebRecordApiPlugin.a((WebRecordApiPlugin)localObject2);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("{'code':1,'recordID':'");
@@ -394,24 +393,24 @@ class WebRecordApiPlugin$AudioApiHelper
         localStringBuilder.append("','msg':'record not found or its duration is 0'}");
         ((WebRecordApiPlugin)localObject2).callJs(str, new String[] { localStringBuilder.toString() });
       }
-      i += 1;
+      n += 1;
     }
   }
   
   public boolean a()
   {
-    IQQRecorder localIQQRecorder = this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder;
+    IQQRecorder localIQQRecorder = this.e;
     return (localIQQRecorder != null) && (localIQQRecorder.a());
   }
   
   public void b(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
+    Object localObject = this.j;
     if (localObject != null)
     {
-      ((VoicePlayer)localObject).e();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+      ((VoicePlayer)localObject).f();
+      this.j = null;
+      localObject = this.d;
       String str = WebRecordApiPlugin.c((WebRecordApiPlugin)localObject);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("{'code':2,'recordID':'");
@@ -425,11 +424,11 @@ class WebRecordApiPlugin$AudioApiHelper
   
   public void c(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
+    Object localObject = this.j;
     if (localObject != null)
     {
-      ((VoicePlayer)localObject).d();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+      ((VoicePlayer)localObject).e();
+      localObject = this.d;
       String str = WebRecordApiPlugin.c((WebRecordApiPlugin)localObject);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("{'code':1,'recordID':'");
@@ -444,9 +443,9 @@ class WebRecordApiPlugin$AudioApiHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onBeginReceiveData() is called");
     }
-    this.c -= 200;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16711687, this.c);
-    return this.c + 200;
+    this.h -= 200;
+    this.m.sendEmptyMessageDelayed(16711687, this.h);
+    return this.h + 200;
   }
   
   public void onInitFailed(String paramString, RecordParams.RecorderParam paramRecorderParam)
@@ -454,7 +453,7 @@ class WebRecordApiPlugin$AudioApiHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onInitFailed() is called");
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    paramString = this.d;
     paramString.callJs(WebRecordApiPlugin.b(paramString), new String[] { "{'code':-1,'recordID':'-1','msg':'onInitFailed is called'}" });
   }
   
@@ -470,7 +469,7 @@ class WebRecordApiPlugin$AudioApiHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderAbnormal() is called");
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    paramString = this.d;
     paramString.callJs(WebRecordApiPlugin.b(paramString), new String[] { "{'code':-1,'recordID':'-1','msg':'onRecorderAbnormal is called'}" });
   }
   
@@ -479,25 +478,25 @@ class WebRecordApiPlugin$AudioApiHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderEnd() is called");
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.i = false;
+      this.m.removeMessages(1);
     }
-    int i = a();
+    int n = b();
     if (QLog.isColorLevel())
     {
       paramRecorderParam = new StringBuilder();
       paramRecorderParam.append("fateOfRecorder is:");
-      paramRecorderParam.append(i);
+      paramRecorderParam.append(n);
       QLog.d("AIOAudioPanel", 2, paramRecorderParam.toString());
     }
     byte[] arrayOfByte;
     Object localObject;
-    if (i == 0)
+    if (n == 0)
     {
       ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(paramString);
-      SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaLangString, Double.toString(this.jdField_a_of_type_Double));
+      SharePreferenceUtils.a(this.a, this.l, Double.toString(this.k));
       arrayOfByte = FileUtils.readFile(paramString);
       localObject = null;
       paramRecorderParam = (RecordParams.RecorderParam)localObject;
@@ -529,10 +528,10 @@ class WebRecordApiPlugin$AudioApiHelper
         paramRecorderParam.append(paramString);
         QLog.d("WebRecordApiPlugin", 2, paramRecorderParam.toString());
       }
-      paramRecorderParam = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+      paramRecorderParam = this.d;
       paramRecorderParam.callJs(WebRecordApiPlugin.b(paramRecorderParam), new String[] { paramString });
       return;
-      if (i == 1) {
+      if (n == 1) {
         ((IPttBuffer)QRoute.api(IPttBuffer.class)).cancelBufferTask(paramString);
       }
       return;
@@ -552,8 +551,8 @@ class WebRecordApiPlugin$AudioApiHelper
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderError() is called");
     }
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).cancelBufferTask(paramString1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    this.m.removeMessages(1);
+    paramString1 = this.d;
     paramString1.callJs(WebRecordApiPlugin.b(paramString1), new String[] { "{'code':-1,'recordID':'-1','msg':'onRecorderError is called'}" });
   }
   
@@ -566,7 +565,7 @@ class WebRecordApiPlugin$AudioApiHelper
       localStringBuilder.append(paramString);
       QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    paramString = this.d;
     paramString.callJs(WebRecordApiPlugin.b(paramString), new String[] { "{'code':-1,'recordID':'-1','msg':'onRecorderNotReady is called'}" });
   }
   
@@ -575,10 +574,10 @@ class WebRecordApiPlugin$AudioApiHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderPrepare() is called");
     }
-    paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+    paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.a);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).createBufferTask(paramString);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString, paramRecorderParam, paramRecorderParam.length);
-    AudioUtil.b(2131230749, false);
+    AudioUtil.b(2131230817, false);
   }
   
   public void onRecorderSilceEnd(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, RecordParams.RecorderParam paramRecorderParam)
@@ -591,12 +590,12 @@ class WebRecordApiPlugin$AudioApiHelper
       QLog.d("AIOAudioPanel", 2, paramRecorderParam.toString());
     }
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString, paramArrayOfByte, paramInt1);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.i = false;
+      this.m.removeMessages(1);
     }
-    this.jdField_a_of_type_Double = paramDouble;
+    this.k = paramDouble;
   }
   
   public int onRecorderStart()
@@ -604,14 +603,14 @@ class WebRecordApiPlugin$AudioApiHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderStart() is called");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
-    this.jdField_a_of_type_Boolean = true;
-    WebRecordApiPlugin localWebRecordApiPlugin = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
+    this.m.removeMessages(1);
+    this.m.sendEmptyMessageDelayed(1, 2000L);
+    this.i = true;
+    WebRecordApiPlugin localWebRecordApiPlugin = this.d;
     String str = WebRecordApiPlugin.b(localWebRecordApiPlugin);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{'code':0,'recordID':'");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.l);
     localStringBuilder.append("','msg':''}");
     localWebRecordApiPlugin.callJs(str, new String[] { localStringBuilder.toString() });
     return 250;
@@ -626,7 +625,7 @@ class WebRecordApiPlugin$AudioApiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebRecordApiPlugin.AudioApiHelper
  * JD-Core Version:    0.7.0.1
  */

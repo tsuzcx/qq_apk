@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import com.tencent.tkd.comment.publisher.qq.util.QQViewCallback;
+import org.json.JSONObject;
 
 public abstract interface QQViewBridge
 {
@@ -21,6 +22,8 @@ public abstract interface QQViewBridge
   public abstract void bindTopic(View paramView);
   
   public abstract void deleteGif();
+  
+  public abstract String getCommentString(Editable paramEditable);
   
   public abstract Editable.Factory getEditFactory();
   
@@ -38,13 +41,13 @@ public abstract interface QQViewBridge
   
   public abstract void onDeliever(String paramString);
   
-  public abstract void onDelieverBiu(String paramString);
-  
   public abstract void openLink(ViewGroup paramViewGroup);
+  
+  public abstract void packageDataInfo(JSONObject paramJSONObject, Editable paramEditable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.bridge.QQViewBridge
  * JD-Core Version:    0.7.0.1
  */

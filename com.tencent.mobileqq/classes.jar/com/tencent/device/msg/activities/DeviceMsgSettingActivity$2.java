@@ -18,16 +18,16 @@ class DeviceMsgSettingActivity$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.a.f.dismiss();
     if (!paramBoolean)
     {
-      ToastUtil.a().a(this.a.getString(2131692919));
+      ToastUtil.a().a(this.a.getString(2131890030));
       DeviceMsgSettingActivity.b(this.a);
       return;
     }
     if (paramBundle.getInt("cgiResultCode", -1) != 0)
     {
-      ToastUtil.a().a(this.a.getString(2131692919));
+      ToastUtil.a().a(this.a.getString(2131890030));
       return;
     }
     for (;;)
@@ -37,14 +37,14 @@ class DeviceMsgSettingActivity$2
         paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
         if (paramBundle.optInt("ret", -1) != 0)
         {
-          ToastUtil.a().a(this.a.getString(2131692919));
+          ToastUtil.a().a(this.a.getString(2131890030));
           continue;
         }
         paramBundle = paramBundle.optJSONArray("data");
         if (paramBundle != null) {
           continue;
         }
-        ToastUtil.a().a(this.a.getString(2131694481));
+        ToastUtil.a().a(this.a.getString(2131892163));
         DeviceMsgSettingActivity.b(this.a);
         return;
       }
@@ -61,20 +61,20 @@ class DeviceMsgSettingActivity$2
       }
       localJSONObject = paramBundle.getJSONObject(paramInt);
       localDeviceMsgSetting = new DeviceMsgSettingActivity.DeviceMsgSetting(this.a, null);
-      localDeviceMsgSetting.jdField_a_of_type_Int = localJSONObject.getInt("id");
-      localDeviceMsgSetting.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-      localDeviceMsgSetting.b = localJSONObject.getInt("enable");
-      this.a.jdField_a_of_type_JavaUtilArrayList.add(localDeviceMsgSetting);
+      localDeviceMsgSetting.a = localJSONObject.getInt("id");
+      localDeviceMsgSetting.b = localJSONObject.getString("name");
+      localDeviceMsgSetting.c = localJSONObject.getInt("enable");
+      this.a.e.add(localDeviceMsgSetting);
       paramInt += 1;
     }
     LogUtility.e("DeviceMsgSettingActivity", "get msg setting json format faild!");
-    ToastUtil.a().a(this.a.getString(2131692919));
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new DeviceMsgSettingActivity.2.1(this));
+    ToastUtil.a().a(this.a.getString(2131890030));
+    this.a.h.post(new DeviceMsgSettingActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceMsgSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

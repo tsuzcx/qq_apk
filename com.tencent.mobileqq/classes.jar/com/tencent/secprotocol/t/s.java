@@ -22,17 +22,11 @@ public class s
 {
   public static volatile int QSEC_FRAMEWORK_NATIVER_VER = -1;
   
-  public static String IntVer2DotString(int paramInt)
-  {
-    return String.format("%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24), Integer.valueOf((0xFF0000 & paramInt) >> 16), Integer.valueOf((paramInt & 0xFF00) >> 8) });
-  }
-  
   public static int a(Context paramContext)
   {
-    paramContext = b(paramContext);
     try
     {
-      paramContext = paramContext.split("\\.");
+      paramContext = b(paramContext).split("\\.");
       int i;
       if (paramContext.length == 2) {
         i = Integer.parseInt(paramContext[0]) << 16 | 0x0;
@@ -55,10 +49,9 @@ public class s
   
   public static String b(Context paramContext)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
     try
     {
-      paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0);
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0);
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
@@ -80,8 +73,7 @@ public class s
     }
     catch (Exception paramContext)
     {
-      label16:
-      break label16;
+      paramContext.printStackTrace();
     }
     return null;
   }
@@ -120,12 +112,11 @@ public class s
   
   public static int e(Context paramContext)
   {
-    Object localObject = paramContext.getPackageManager();
     try
     {
-      localObject = ((PackageManager)localObject).getPackageInfo(paramContext.getPackageName(), 0).packageName;
+      String str = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).packageName;
       paramContext = paramContext.getApplicationInfo();
-      if (paramContext.packageName.equals(localObject))
+      if (paramContext.packageName.equals(str))
       {
         int i = Integer.valueOf((int)new File(paramContext.publicSourceDir).length()).intValue();
         return i;
@@ -193,7 +184,7 @@ public class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.secprotocol.t.s
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,21 @@ public final class ActionSheetPrivacySelectAdapter$PrivacyHolder
   extends RecyclerView.ViewHolder
 {
   @NotNull
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView a;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
   public ActionSheetPrivacySelectAdapter$PrivacyHolder(@NotNull View paramView)
   {
     super(paramView);
-    View localView = paramView.findViewById(2131378884);
+    View localView = paramView.findViewById(2131447585);
     if (localView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-      paramView = paramView.findViewById(2131364605);
+      this.a = ((TextView)localView);
+      paramView = paramView.findViewById(2131430677);
       if (paramView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView);
+        this.b = ((ImageView)paramView);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.widget.ImageView");
@@ -36,20 +36,20 @@ public final class ActionSheetPrivacySelectAdapter$PrivacyHolder
   }
   
   @NotNull
-  public final ImageView a()
+  public final TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    return this.a;
   }
   
   @NotNull
-  public final TextView a()
+  public final ImageView b()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ActionSheetPrivacySelectAdapter.PrivacyHolder
  * JD-Core Version:    0.7.0.1
  */

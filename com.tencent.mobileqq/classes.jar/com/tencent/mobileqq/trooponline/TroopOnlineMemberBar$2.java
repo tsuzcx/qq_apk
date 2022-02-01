@@ -17,11 +17,11 @@ class TroopOnlineMemberBar$2
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if ((paramValueAnimator.intValue() >= this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168)) && (AppSetting.d) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() > 0))
+    ((RelativeLayout.LayoutParams)this.a.d.getLayoutParams()).topMargin = paramValueAnimator.intValue();
+    this.a.d.requestLayout();
+    if ((paramValueAnimator.intValue() >= this.a.c.getResources().getDimensionPixelSize(2131299920)) && (AppSetting.e) && (this.a.d.getChildCount() > 0))
     {
-      paramValueAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(0);
+      paramValueAnimator = this.a.d.getChildAt(0);
       if (paramValueAnimator != null) {
         paramValueAnimator.requestFocusFromTouch();
       }
@@ -30,7 +30,7 @@ class TroopOnlineMemberBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberBar.2
  * JD-Core Version:    0.7.0.1
  */

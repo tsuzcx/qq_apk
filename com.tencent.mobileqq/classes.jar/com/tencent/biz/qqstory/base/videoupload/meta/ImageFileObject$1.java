@@ -23,27 +23,27 @@ class ImageFileObject$1
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    if (paramSendResult.jdField_b_of_type_Int == 0)
+    if (paramSendResult.b == 0)
     {
-      this.a.jdField_b_of_type_JavaLangString = paramSendResult.jdField_b_of_type_JavaLangString;
+      this.a.b = paramSendResult.d;
       this.a.b();
       ImageFileObject.a(this.a, new ErrorMessage());
       return;
     }
-    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.a.getAndIncrement() < 2))
+    if ((paramSendResult.b == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.g.getAndIncrement() < 2))
     {
       ImageFileObject.a(this.a);
       SLog.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
       return;
     }
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    paramSendResult = new ErrorMessage(paramSendResult.b, paramSendResult.c);
     paramSendResult.extraMsg = "upload";
     ImageFileObject.a(this.a, paramSendResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject.1
  * JD-Core Version:    0.7.0.1
  */

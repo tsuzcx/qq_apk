@@ -16,17 +16,17 @@ class ForwardBaseOption$8
   
   public void a(int paramInt, PicResult paramPicResult)
   {
-    paramPicResult = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption$IPicDownloadCallback;
+    paramPicResult = this.a;
     if (paramPicResult != null) {
       paramPicResult.b();
     }
-    AbsDownloader.getFilePath(URLDrawableHelper.getURL(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
+    AbsDownloader.getFilePath(URLDrawableHelper.getURL(this.b, 1, null).toString().toString());
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
     }
-    paramPicResult = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+    paramPicResult = this.b;
     if (paramPicResult != null) {
-      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, AIOGalleryUtils.a(paramPicResult), this.jdField_a_of_type_JavaLangString);
+      ForwardBaseOption.a(this.d, AIOGalleryUtils.a(paramPicResult), this.c);
     }
   }
   
@@ -34,7 +34,7 @@ class ForwardBaseOption$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.8
  * JD-Core Version:    0.7.0.1
  */

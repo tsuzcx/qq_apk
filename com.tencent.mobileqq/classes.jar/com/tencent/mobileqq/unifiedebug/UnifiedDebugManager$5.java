@@ -11,17 +11,17 @@ class UnifiedDebugManager$5
   
   public void run()
   {
-    synchronized (this.this$0.a)
+    synchronized (this.this$0.d)
     {
-      Object localObject1 = (UnifiedDebugManager.Command)this.this$0.a.peek();
-      if ((localObject1 != null) && (((UnifiedDebugManager.Command)localObject1).jdField_b_of_type_Long == this.jdField_a_of_type_Long))
+      Object localObject1 = (UnifiedDebugManager.Command)this.this$0.d.peek();
+      if ((localObject1 != null) && (((UnifiedDebugManager.Command)localObject1).c == this.a))
       {
-        this.this$0.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
+        this.this$0.b(this.b, this.c, this.d, this.e, this.a, this.f);
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("start debug(retry): seq=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject1).append(this.a);
           QLog.d("UnifiedDebugManager", 2, ((StringBuilder)localObject1).toString());
         }
       }
@@ -31,7 +31,7 @@ class UnifiedDebugManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugManager.5
  * JD-Core Version:    0.7.0.1
  */

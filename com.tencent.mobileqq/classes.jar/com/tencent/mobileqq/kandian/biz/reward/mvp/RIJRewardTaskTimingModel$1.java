@@ -11,9 +11,9 @@ class RIJRewardTaskTimingModel$1
   
   public void a()
   {
-    int i = RIJRewardTaskLocalRepo.b().a();
-    RIJRewardTaskLocalRepo.b().a(i + 1);
-    RIJRewardTaskRemoteRepo.IReportTaskProgressCallback localIReportTaskProgressCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTaskRemoteRepo$IReportTaskProgressCallback;
+    int i = RIJRewardTaskLocalRepo.f().c();
+    RIJRewardTaskLocalRepo.f().a(i + 1);
+    RIJRewardTaskRemoteRepo.IReportTaskProgressCallback localIReportTaskProgressCallback = this.a;
     if (localIReportTaskProgressCallback != null) {
       localIReportTaskProgressCallback.a();
     }
@@ -21,7 +21,7 @@ class RIJRewardTaskTimingModel$1
   
   public void a(int paramInt, @Nullable String paramString)
   {
-    RIJRewardTaskRemoteRepo.IReportTaskProgressCallback localIReportTaskProgressCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTaskRemoteRepo$IReportTaskProgressCallback;
+    RIJRewardTaskRemoteRepo.IReportTaskProgressCallback localIReportTaskProgressCallback = this.a;
     if (localIReportTaskProgressCallback != null) {
       localIReportTaskProgressCallback.a(paramInt, paramString);
     }
@@ -29,7 +29,7 @@ class RIJRewardTaskTimingModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.mvp.RIJRewardTaskTimingModel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,19 +28,19 @@ class DragonKingEggsPlayer$1
     boolean bool1 = bool2;
     if (paramList != null)
     {
-      int i = 0;
+      int j = 0;
       for (;;)
       {
         bool1 = bool2;
-        if (i >= paramList.size()) {
+        if (j >= paramList.size()) {
           break;
         }
-        if (((TroopHonor)paramList.get(i)).jdField_a_of_type_Int == 1)
+        if (((TroopHonor)paramList.get(j)).a == 1)
         {
           bool1 = true;
           break;
         }
-        i += 1;
+        j += 1;
       }
     }
     if (QLog.isColorLevel())
@@ -49,16 +49,16 @@ class DragonKingEggsPlayer$1
       paramList.append("bIsDragonKing : ");
       paramList.append(bool1);
       paramList.append(" curTroopUin : ");
-      paramList.append(this.jdField_a_of_type_JavaLangString);
+      paramList.append(this.a);
       QLog.d("DragonKingEggsPlayer", 2, paramList.toString());
     }
     if (bool1)
     {
-      Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      Object localObject2 = (TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER);
       Object localObject1 = "";
       paramList = null;
       if (localObject2 != null) {
-        paramList = ((TroopManager)localObject2).b(this.jdField_a_of_type_JavaLangString);
+        paramList = ((TroopManager)localObject2).f(this.a);
       }
       if (paramList != null)
       {
@@ -67,27 +67,27 @@ class DragonKingEggsPlayer$1
         ((StringBuilder)localObject1).append(paramList.dwGroupClassExt);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin))
+      if (this.b.getCurrentAccountUin().equals(this.c.senderuin))
       {
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("report 0X800AF7C curTroopUin : ");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.a);
           QLog.d("DragonKingEggsPlayer", 2, ((StringBuilder)localObject2).toString());
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        ReportController.b((AppRuntime)localObject2, "dc00898", "", ((QQAppInterface)localObject2).getCurrentAccountUin(), "0X800AF7C", "0X800AF7C", this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.b, 0, this.jdField_a_of_type_JavaLangString, (String)localObject1, "", "");
+        localObject2 = this.b;
+        ReportController.b((AppRuntime)localObject2, "dc00898", "", ((QQAppInterface)localObject2).getCurrentAccountUin(), "0X800AF7C", "0X800AF7C", this.d.b, 0, this.a, (String)localObject1, "", "");
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage.e;
-      paramList = new LottieAnimationInfo(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramList);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DragonKingEggsPlayer.1.1(this, (String)localObject1, paramList), this.jdField_a_of_type_Int);
+      localObject1 = this.e.h;
+      paramList = new LottieAnimationInfo(1, this.b.getCurrentAccountUin(), paramList);
+      this.f.postDelayed(new DragonKingEggsPlayer.1.1(this, (String)localObject1, paramList), this.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.DragonKingEggsPlayer.1
  * JD-Core Version:    0.7.0.1
  */

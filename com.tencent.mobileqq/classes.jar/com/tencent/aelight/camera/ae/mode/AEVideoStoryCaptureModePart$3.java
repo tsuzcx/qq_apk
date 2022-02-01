@@ -14,9 +14,9 @@ class AEVideoStoryCaptureModePart$3
     if (paramBoolean == null) {
       return;
     }
-    if (AEVideoStoryCaptureModePart.b(this.a))
+    if (AEVideoStoryCaptureModePart.g(this.a))
     {
-      View localView = AEVideoStoryCaptureModePart.a(this.a);
+      View localView = AEVideoStoryCaptureModePart.h(this.a);
       int i;
       if (paramBoolean.booleanValue()) {
         i = 0;
@@ -29,7 +29,7 @@ class AEVideoStoryCaptureModePart$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModePart.3
  * JD-Core Version:    0.7.0.1
  */

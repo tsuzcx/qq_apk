@@ -14,17 +14,17 @@ class AutoRemarkActivity$4
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.this$0.a)) {
+    if (TextUtils.isEmpty(this.this$0.b)) {
       return;
     }
-    if (((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.a) == null) {
-      ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(this.this$0.a);
+    if (((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.this$0.b) == null) {
+      ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(this.this$0.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoRemarkActivity.4
  * JD-Core Version:    0.7.0.1
  */

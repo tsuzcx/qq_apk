@@ -16,8 +16,8 @@ public class NearbyHelperProvider
   private void a(NearbyChatPie paramNearbyChatPie)
   {
     a(42, new AIOPushDialogHelper(paramNearbyChatPie));
-    a(109, new NearbyTipsHelper(paramNearbyChatPie.b()));
-    NearbyAddFriendHelper localNearbyAddFriendHelper = new NearbyAddFriendHelper(paramNearbyChatPie.b());
+    a(109, new NearbyTipsHelper(paramNearbyChatPie.bv()));
+    NearbyAddFriendHelper localNearbyAddFriendHelper = new NearbyAddFriendHelper(paramNearbyChatPie.bv());
     a(113, localNearbyAddFriendHelper);
     a(localNearbyAddFriendHelper);
     a(136, new NearByGiftPanelHelper(paramNearbyChatPie));
@@ -31,7 +31,7 @@ public class NearbyHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearbyHelperProvider
  * JD-Core Version:    0.7.0.1
  */

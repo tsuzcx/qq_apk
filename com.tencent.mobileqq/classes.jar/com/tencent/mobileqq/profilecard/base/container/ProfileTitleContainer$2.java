@@ -23,7 +23,7 @@ class ProfileTitleContainer$2
         if (localObject != null)
         {
           ProfileTitleContainer localProfileTitleContainer = this.this$0;
-          ProfileTitleContainer.access$502(localProfileTitleContainer, new RedTouch(ProfileTitleContainer.access$800(localProfileTitleContainer), (View)localObject).b(53).e(5).a());
+          ProfileTitleContainer.access$502(localProfileTitleContainer, new RedTouch(ProfileTitleContainer.access$800(localProfileTitleContainer), (View)localObject).c(53).c(5.0F).a());
         }
       }
       if (ProfileTitleContainer.access$500(this.this$0) != null) {
@@ -35,7 +35,7 @@ class ProfileTitleContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileTitleContainer.2
  * JD-Core Version:    0.7.0.1
  */

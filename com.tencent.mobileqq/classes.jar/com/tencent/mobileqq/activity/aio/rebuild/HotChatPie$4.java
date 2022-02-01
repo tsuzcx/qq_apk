@@ -14,9 +14,9 @@ class HotChatPie$4
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
     HotChatPie.a(this.a).setPullType(0);
-    HotChatPie.a(this.a).c(HotChatPie.c);
+    HotChatPie.a(this.a).c(HotChatPie.cj);
     paramView = this.a;
-    HotChatPie.a(paramView, 0, paramView.a.getLastPullUpEndIndex());
+    HotChatPie.a(paramView, 0, paramView.cl.getLastPullUpEndIndex());
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
@@ -30,7 +30,7 @@ class HotChatPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.4
  * JD-Core Version:    0.7.0.1
  */

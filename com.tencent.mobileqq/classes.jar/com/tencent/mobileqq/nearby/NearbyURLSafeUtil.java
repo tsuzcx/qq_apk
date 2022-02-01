@@ -6,14 +6,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class NearbyURLSafeUtil
 {
-  public static String a(String paramString)
+  public static boolean a(String paramString)
+  {
+    if (paramString != null) {
+      return paramString.startsWith("*S1*");
+    }
+    throw new NullPointerException("isBase64 src should not be null");
+  }
+  
+  public static String b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("*S1*");
-    ((StringBuilder)localObject).append(Baze64.a(paramString.getBytes(), 11));
+    ((StringBuilder)localObject).append(Baze64.b(paramString.getBytes(), 11));
     localObject = ((StringBuilder)localObject).toString();
     if (QLog.isDevelopLevel())
     {
@@ -27,15 +35,7 @@ public class NearbyURLSafeUtil
     return localObject;
   }
   
-  public static boolean a(String paramString)
-  {
-    if (paramString != null) {
-      return paramString.startsWith("*S1*");
-    }
-    throw new NullPointerException("isBase64 src should not be null");
-  }
-  
-  public static String b(String paramString)
+  public static String c(String paramString)
   {
     if (paramString != null)
     {
@@ -66,7 +66,7 @@ public class NearbyURLSafeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyURLSafeUtil
  * JD-Core Version:    0.7.0.1
  */

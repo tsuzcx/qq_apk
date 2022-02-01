@@ -8,27 +8,27 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AECameraErrorDialog
 {
-  private static final String jdField_a_of_type_JavaLangString = "AECameraErrorDialog";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private static final String a = "AECameraErrorDialog";
+  private Activity b;
+  private QQCustomDialog c;
   
   public AECameraErrorDialog(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramActivity;
   }
   
   private void b(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+    if (this.c != null) {
       return;
     }
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131699201);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131693890), new AECameraErrorDialog.1(this, paramRunnable));
+    String str = this.b.getString(2131897217);
+    this.c = DialogUtil.a(this.b, 230).setMessage(str).setPositiveButton(this.b.getString(2131891511), new AECameraErrorDialog.1(this, paramRunnable));
   }
   
   public void a()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.c;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.hide();
     }
@@ -39,24 +39,24 @@ public class AECameraErrorDialog
     try
     {
       b(paramRunnable);
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())
+      if (!this.c.isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.c.setCancelable(false);
+        this.c.show();
         return;
       }
     }
     catch (WindowManager.BadTokenException paramRunnable)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "", paramRunnable);
+        QLog.i(a, 2, "", paramRunnable);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECameraErrorDialog
  * JD-Core Version:    0.7.0.1
  */

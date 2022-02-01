@@ -10,7 +10,7 @@ class VistaImageProcessor$6
   
   public void a(TextureRecord paramTextureRecord)
   {
-    TextureRecord localTextureRecord = (TextureRecord)VistaImageProcessor.access$200(this.jdField_a_of_type_ComQflutterVistaimageVistaImageProcessor).get(Long.valueOf(this.jdField_a_of_type_Long));
+    TextureRecord localTextureRecord = (TextureRecord)VistaImageProcessor.access$100(this.a).get(Long.valueOf(this.b));
     if (localTextureRecord == null) {}
     try
     {
@@ -28,7 +28,7 @@ class VistaImageProcessor$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImageProcessor.6
  * JD-Core Version:    0.7.0.1
  */

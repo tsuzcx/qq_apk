@@ -21,12 +21,12 @@ class QWalletIPCModule$1$1
     }
     paramBundle = new EIPCResult();
     paramBundle.data = localBundle;
-    this.a.this$0.callbackResult(this.a.a, paramBundle);
+    this.a.this$0.callbackResult(this.a.b, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCModule.1.1
  * JD-Core Version:    0.7.0.1
  */

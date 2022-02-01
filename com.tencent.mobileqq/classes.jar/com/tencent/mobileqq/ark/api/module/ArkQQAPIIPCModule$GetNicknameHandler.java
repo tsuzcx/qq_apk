@@ -14,7 +14,7 @@ public class ArkQQAPIIPCModule$GetNicknameHandler
 {
   public EIPCResult a(Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.a();
+    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.d();
     if (localQQAppInterface == null)
     {
       QLog.e("ArkApp.GetNicknameHandler", 1, "Handler_GetNickName.onCall, qq app is null");
@@ -22,8 +22,8 @@ public class ArkQQAPIIPCModule$GetNicknameHandler
     }
     String str = paramBundle.getString("Uin", localQQAppInterface.getCurrentAccountUin());
     Object localObject = null;
-    if (!TextUtils.isEmpty(ArkAppContainer.a)) {
-      localObject = ContactUtils.b(localQQAppInterface, ArkAppContainer.a, str);
+    if (!TextUtils.isEmpty(ArkAppContainer.e)) {
+      localObject = ContactUtils.b(localQQAppInterface, ArkAppContainer.e, str);
     }
     if (localObject != null)
     {
@@ -32,7 +32,7 @@ public class ArkQQAPIIPCModule$GetNicknameHandler
     }
     else
     {
-      localObject = ContactUtils.g(localQQAppInterface, str);
+      localObject = ContactUtils.h(localQQAppInterface, str);
       paramBundle = (Bundle)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         paramBundle = ContactUtils.a(localQQAppInterface, str, 0);
@@ -58,7 +58,7 @@ public class ArkQQAPIIPCModule$GetNicknameHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetNicknameHandler
  * JD-Core Version:    0.7.0.1
  */

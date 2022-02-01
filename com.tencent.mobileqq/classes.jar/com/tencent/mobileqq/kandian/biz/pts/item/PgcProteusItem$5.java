@@ -17,7 +17,7 @@ class PgcProteusItem$5
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a;
+    Object localObject = this.a.k().mSocialFeedInfo.t;
     ArrayList localArrayList = ((PGCFeedsInfo)localObject).a;
     if (localArrayList != null)
     {
@@ -25,13 +25,13 @@ class PgcProteusItem$5
         return;
       }
       localObject = (PGCPicInfo)((PGCFeedsInfo)localObject).a.get(paramInt);
-      PgcProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcProteusItem, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), (int)((PGCPicInfo)localObject).a, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
+      PgcProteusItem.a(this.d, this.b.getContext(), this.a.k(), (int)((PGCPicInfo)localObject).h, this.a.k().innerUniqueID, this.c, paramInt, (ReadInJoyBaseAdapter)this.a.u());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcProteusItem.5
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ final class WeatherView$1
   public final void onClick(View paramView)
   {
     this.a.dismiss();
-    this.a.a.a(1030);
+    this.a.n.a(1030);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView.1
  * JD-Core Version:    0.7.0.1
  */

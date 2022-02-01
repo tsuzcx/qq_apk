@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 class EffectFilterPanel$MyOnEffectFilterChangeListener
   implements EffectFilterTextPager.OnEffectFilterChangeListener
 {
-  EffectFilterTextPager.OnEffectFilterChangeListener jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$OnEffectFilterChangeListener;
+  EffectFilterTextPager.OnEffectFilterChangeListener a;
   
   EffectFilterPanel$MyOnEffectFilterChangeListener(EffectFilterPanel paramEffectFilterPanel, EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
@@ -21,7 +21,7 @@ class EffectFilterPanel$MyOnEffectFilterChangeListener
   
   public void a(long paramLong, int paramInt, String paramString)
   {
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("OnItemSelected, id[");
@@ -31,38 +31,38 @@ class EffectFilterPanel$MyOnEffectFilterChangeListener
       localStringBuilder.append("], seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("], Visibility[");
-      localStringBuilder.append(EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility());
+      localStringBuilder.append(EffectFilterPanel.a(this.b).getVisibility());
       localStringBuilder.append("], mlistener[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$OnEffectFilterChangeListener);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.w("EffectFilterPanel", 1, localStringBuilder.toString());
     }
-    if (EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() == 0)
+    if (EffectFilterPanel.a(this.b).getVisibility() == 0)
     {
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).removeCallbacks(EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel));
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).clearAnimation();
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).setVisibility(8);
+      EffectFilterPanel.c(this.b).removeCallbacks(EffectFilterPanel.b(this.b));
+      EffectFilterPanel.a(this.b).clearAnimation();
+      EffectFilterPanel.a(this.b).setVisibility(8);
     }
-    paramString = (FilterItem)EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramString);
-    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
+    paramString = (FilterItem)EffectFilterPanel.d(this.b).b(paramString);
+    EffectFilterPanel.d(this.b).a(paramLong, paramString);
     if (paramString != null)
     {
       if (!paramString.isUsable()) {
-        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
+        EffectFilterPanel.d(this.b).b(paramLong, paramString);
       }
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel.b();
+      this.b.b();
       if ((paramString.getId() != null) && (paramString.getId().compareToIgnoreCase("MANHUA") == 0))
       {
-        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().e(51, paramString.getId());
+        EffectFilterPanel.e(this.b).b().f(51, paramString.getId());
         return;
       }
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().e(0, paramString.getId());
+      EffectFilterPanel.e(this.b).b().f(0, paramString.getId());
     }
   }
   
   public void a(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$OnEffectFilterChangeListener = paramOnEffectFilterChangeListener;
+    this.a = paramOnEffectFilterChangeListener;
   }
 }
 

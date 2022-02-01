@@ -21,7 +21,7 @@ public class NoticeReceiver
       String str2 = paramIntent.getStringExtra("processName");
       if (!TextUtils.isEmpty(str2))
       {
-        if (!str2.equalsIgnoreCase(Common.r())) {
+        if (!str2.equalsIgnoreCase(Common.x())) {
           return;
         }
         String str1 = paramIntent.getAction();
@@ -36,7 +36,7 @@ public class NoticeReceiver
         localStringBuilder.append(paramIntent);
         if (localStringBuilder.toString().equals(str1))
         {
-          AppUtil.a(paramContext, ((NoticeParam)localObject).d);
+          AppUtil.c(paramContext, ((NoticeParam)localObject).d);
           return;
         }
         localStringBuilder = new StringBuilder();
@@ -57,7 +57,7 @@ public class NoticeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.notice.NoticeReceiver
  * JD-Core Version:    0.7.0.1
  */

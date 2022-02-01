@@ -474,6 +474,12 @@ public class VideoMaterial
     return false;
   }
   
+  private boolean needReal3DMM()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.3dmm"));
+  }
+  
   public static boolean needRenderStar(StarParam paramStarParam)
   {
     return (paramStarParam != null) && (paramStarParam.starStrength >= 0.0F);
@@ -811,12 +817,24 @@ public class VideoMaterial
   
   public boolean need3DMM()
   {
-    return (isSticker3DMaterial()) || (isFace3DMaterial()) || (needPout());
+    return (isSticker3DMaterial()) || (isFace3DMaterial()) || (needPout()) || (needReal3DMM());
   }
   
   public boolean needAce3D()
   {
     return isSticker3DMaterial();
+  }
+  
+  public boolean needAvatar2D()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.isAvatar2D"));
+  }
+  
+  public boolean needBody3D()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.body3d"));
   }
   
   public boolean needBodyDetect()
@@ -843,10 +861,22 @@ public class VideoMaterial
     return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.gender"));
   }
   
+  public boolean needEmotion()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.emotion"));
+  }
+  
   public boolean needFaceInfo()
   {
     LightAsset localLightAsset = this.lightAsset;
     return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.face"));
+  }
+  
+  public boolean needGazeDetect()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.viewPoint"));
   }
   
   public boolean needHairSegment()
@@ -903,11 +933,6 @@ public class VideoMaterial
     return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.voiceChange"));
   }
   
-  public LightAsset reloadLightAsset()
-  {
-    return LightAsset.Load(this.dataPath, 0);
-  }
-  
   public void setDataPath(String paramString)
   {
     this.dataPath = paramString;
@@ -957,7 +982,7 @@ public class VideoMaterial
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.VideoMaterial
  * JD-Core Version:    0.7.0.1
  */

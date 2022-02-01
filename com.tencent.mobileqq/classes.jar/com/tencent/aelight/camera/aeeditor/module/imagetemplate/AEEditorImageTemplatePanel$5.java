@@ -15,7 +15,7 @@ class AEEditorImageTemplatePanel$5
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(ImageTemplateMaterialExKt.a(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial));
+      JSONObject localJSONObject = new JSONObject(ImageTemplateMaterialExKt.c(this.a));
       ThreadManager.getUIHandler().post(new AEEditorImageTemplatePanel.5.1(this, localJSONObject));
       return;
     }
@@ -28,7 +28,7 @@ class AEEditorImageTemplatePanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.AEEditorImageTemplatePanel.5
  * JD-Core Version:    0.7.0.1
  */

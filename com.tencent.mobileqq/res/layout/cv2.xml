@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/nil" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-</merge>
+    <ImageView android:id="@id/o41" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:includeFontPadding="false" android:layout_centerVertical="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/o40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/o41" android:layout_centerVertical="true" />
+</RelativeLayout>

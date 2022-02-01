@@ -49,16 +49,16 @@ public class RIJUserDeviceInfoReport
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_uin", paramQQAppInterface.getAccount());
-    localHashMap.put("param_cpu", String.valueOf(DeviceInfoUtil.b()));
+    localHashMap.put("param_cpu", String.valueOf(DeviceInfoUtil.h()));
     localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
-    localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
-    localHashMap.put("param_version", "8.7.0");
+    localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.r()));
+    localHashMap.put("param_version", "8.8.17");
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actUserDeviceInfoReport", true, 100L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJUserDeviceInfoReport
  * JD-Core Version:    0.7.0.1
  */

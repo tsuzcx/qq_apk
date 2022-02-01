@@ -9,35 +9,35 @@ import mqq.app.AppRuntime;
 
 public class LocationShareServiceHolder
 {
-  private static volatile IFloatMapService jdField_a_of_type_ComTencentMobileqqLocationApiIFloatMapService;
-  private static volatile ILocationShareService jdField_a_of_type_ComTencentMobileqqLocationApiILocationShareService;
-  
-  public static IFloatMapService a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = (IFloatMapService)paramAppRuntime.getRuntimeService(IFloatMapService.class, "");
-    if (jdField_a_of_type_ComTencentMobileqqLocationApiIFloatMapService != paramAppRuntime)
-    {
-      paramAppRuntime.addFloatMapCallback(new FloatMapCallback());
-      jdField_a_of_type_ComTencentMobileqqLocationApiIFloatMapService = paramAppRuntime;
-    }
-    return paramAppRuntime;
-  }
+  private static volatile ILocationShareService a;
+  private static volatile IFloatMapService b;
   
   public static ILocationShareService a(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = (ILocationShareService)paramAppRuntime.getRuntimeService(ILocationShareService.class, "");
-    if (jdField_a_of_type_ComTencentMobileqqLocationApiILocationShareService != paramAppRuntime)
+    if (a != paramAppRuntime)
     {
       paramAppRuntime.addErrorShareStateCallback(new AioCallback());
       paramAppRuntime.addErrorShareStateCallback(new ConversationCallback());
-      jdField_a_of_type_ComTencentMobileqqLocationApiILocationShareService = paramAppRuntime;
+      a = paramAppRuntime;
+    }
+    return paramAppRuntime;
+  }
+  
+  public static IFloatMapService b(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = (IFloatMapService)paramAppRuntime.getRuntimeService(IFloatMapService.class, "");
+    if (b != paramAppRuntime)
+    {
+      paramAppRuntime.addFloatMapCallback(new FloatMapCallback());
+      b = paramAppRuntime;
     }
     return paramAppRuntime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationShareServiceHolder
  * JD-Core Version:    0.7.0.1
  */

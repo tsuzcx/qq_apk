@@ -34,10 +34,10 @@ public class ControllerManager
   implements HippyInstanceLifecycleEventListener
 {
   private static int e = -1;
-  HippyEngineContext a;
-  b b;
-  c<HippyViewController, View> c;
-  SparseArray<View> d = new SparseArray();
+  final HippyEngineContext a;
+  final b b;
+  final c<HippyViewController, View> c;
+  final SparseArray<View> d = new SparseArray();
   
   public ControllerManager(HippyEngineContext paramHippyEngineContext, List<HippyAPIProvider> paramList)
   {
@@ -274,7 +274,6 @@ public class ControllerManager
       Object localObject1 = localObject2;
       if ((str instanceof String))
       {
-        str = (String)str;
         localObject1 = localObject2;
         if (!TextUtils.isEmpty(str))
         {
@@ -312,13 +311,11 @@ public class ControllerManager
       localObject1 = HippyTag.getClassName(paramViewGroup);
       if ((localObject1 instanceof String))
       {
-        localObject1 = (String)localObject1;
         if (this.b.a((String)localObject1) != null) {
           this.b.b((String)localObject1).deleteChild(paramViewGroup, paramView, paramInt);
         }
       }
-      else
-      {
+      else {
         paramViewGroup.removeView(paramView);
       }
       this.b.d(paramView.getId());
@@ -524,7 +521,7 @@ public class ControllerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.ControllerManager
  * JD-Core Version:    0.7.0.1
  */

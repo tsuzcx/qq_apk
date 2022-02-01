@@ -19,8 +19,9 @@ public class ArkHeaderView
   extends ArkAppView
   implements IHeaderView
 {
-  private ArkAppContainer jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
-  private String jdField_a_of_type_JavaLangString;
+  private String c;
+  private ArkAppContainer d;
+  private String e;
   
   public ArkHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,7 +30,7 @@ public class ArkHeaderView
   
   public void a()
   {
-    ArkAppContainer localArkAppContainer = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
+    ArkAppContainer localArkAppContainer = this.d;
     if (localArkAppContainer != null) {
       localArkAppContainer.doOnEvent(1);
     }
@@ -37,20 +38,20 @@ public class ArkHeaderView
   
   public void a(QQGameMsgInfo paramQQGameMsgInfo, Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer = new ArkAppContainer();
+    this.d = new ArkAppContainer();
     paramString = new SessionInfo();
-    paramString.jdField_a_of_type_JavaLangString = "2747277822";
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramContext.getResources().getDisplayMetrics().scaledDensity, paramString);
+    paramString.b = "2747277822";
+    this.d.a(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramContext.getResources().getDisplayMetrics().scaledDensity, paramString);
     paramInt = AIOUtils.b(350.0F, paramContext.getResources());
     int i = ArkAppCenterUtil.d;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMaxSize(i, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setFixSize(i, paramInt);
+    this.d.setMaxSize(i, paramInt);
+    this.d.setFixSize(i, paramInt);
     setClipRadius(5.0F);
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer, null);
+    a(this.d, null);
     setVisibility(0);
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.gameAppId;
+      this.c = paramQQGameMsgInfo.gameAppId;
       return;
     }
     catch (Throwable paramQQGameMsgInfo)
@@ -64,7 +65,7 @@ public class ArkHeaderView
   
   public void b()
   {
-    ArkAppContainer localArkAppContainer = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
+    ArkAppContainer localArkAppContainer = this.d;
     if (localArkAppContainer != null) {
       localArkAppContainer.doOnEvent(0);
     }
@@ -74,15 +75,20 @@ public class ArkHeaderView
   
   public void d()
   {
-    ArkAppContainer localArkAppContainer = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
+    ArkAppContainer localArkAppContainer = this.d;
     if (localArkAppContainer != null) {
       localArkAppContainer.doOnEvent(2);
     }
   }
+  
+  public String getAppName()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ArkHeaderView
  * JD-Core Version:    0.7.0.1
  */

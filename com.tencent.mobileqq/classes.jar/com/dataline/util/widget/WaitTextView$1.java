@@ -10,10 +10,10 @@ class WaitTextView$1
   public void run()
   {
     WaitTextView.a(this.this$0);
-    if (WaitTextView.a(this.this$0) != null) {
-      WaitTextView.a(this.this$0).a();
+    if (WaitTextView.b(this.this$0) != null) {
+      WaitTextView.b(this.this$0).a();
     }
-    WaitTextView.a(this.this$0).postDelayed(this, 500L);
+    WaitTextView.c(this.this$0).postDelayed(this, 500L);
   }
 }
 

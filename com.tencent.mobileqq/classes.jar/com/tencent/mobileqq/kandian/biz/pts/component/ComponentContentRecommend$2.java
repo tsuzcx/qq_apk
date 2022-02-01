@@ -33,12 +33,12 @@ class ComponentContentRecommend$2
   
   public int getCount()
   {
-    return ComponentContentRecommend.a(this.a).size();
+    return ComponentContentRecommend.d(this.a).size();
   }
   
   public Object getItem(int paramInt)
   {
-    return ComponentContentRecommend.a(this.a).get(paramInt);
+    return ComponentContentRecommend.d(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -48,19 +48,19 @@ class ComponentContentRecommend$2
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)ComponentContentRecommend.a(this.a).get(paramInt);
-    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
+    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)ComponentContentRecommend.d(this.a).get(paramInt);
+    ComponentContentRecommend.b(this.a).mRecommendFollowInfos.h.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562704, null, false);
+      paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131629135, null, false);
       paramView = new ComponentContentRecommend.FollowHolder(this.a);
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131368066));
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRingAvatarView = ((RingAvatarView)paramViewGroup.findViewById(2131375988));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368119));
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131378884));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365534));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131363938));
-      paramView.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131365759);
+      paramView.a = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131434916));
+      paramView.b = ((RingAvatarView)paramViewGroup.findViewById(2131444175));
+      paramView.c = ((ImageView)paramViewGroup.findViewById(2131434973));
+      paramView.d = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131447585));
+      paramView.e = ((TextView)paramViewGroup.findViewById(2131431753));
+      paramView.f = ((TextView)paramViewGroup.findViewById(2131429893));
+      paramView.g = paramViewGroup.findViewById(2131432003);
       paramViewGroup.setTag(paramView);
     }
     else
@@ -73,7 +73,7 @@ class ComponentContentRecommend$2
     {
       try
       {
-        paramView.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setImage(new URL(localRecommendFollowInfo.headUrl));
+        paramView.a.setImage(new URL(localRecommendFollowInfo.headUrl));
       }
       catch (MalformedURLException localMalformedURLException)
       {
@@ -87,36 +87,36 @@ class ComponentContentRecommend$2
         localMalformedURLException.printStackTrace();
       }
       ComponentContentRecommend.2.1 local1 = new ComponentContentRecommend.2.1(this, localRecommendFollowInfo);
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setOnClickListener(local1);
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setOnClickListener(local1);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(local1);
+      paramView.a.setOnClickListener(local1);
+      paramView.d.setOnClickListener(local1);
+      paramView.e.setOnClickListener(local1);
       if (localRecommendFollowInfo.isStar) {
-        paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRingAvatarView.showStarRing();
+        paramView.b.showStarRing();
       } else {
-        paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRingAvatarView.showNormal();
+        paramView.b.showNormal();
       }
       if (localRecommendFollowInfo.isVip) {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramView.c.setVisibility(0);
       } else {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramView.c.setVisibility(8);
       }
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setText(localRecommendFollowInfo.nickName);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
+      paramView.d.setText(localRecommendFollowInfo.nickName);
+      paramView.e.setText(localRecommendFollowInfo.recommendReason);
       if (localRecommendFollowInfo.isFollowed)
       {
-        paramView.b.setText(HardCodeUtil.a(2131702534));
-        paramView.b.setTextColor(Color.parseColor("#777777"));
-        paramView.b.setBackgroundResource(2130849733);
+        paramView.f.setText(HardCodeUtil.a(2131900527));
+        paramView.f.setTextColor(Color.parseColor("#777777"));
+        paramView.f.setBackgroundResource(2130851442);
       }
       else
       {
-        paramView.b.setText(HardCodeUtil.a(2131702485));
-        paramView.b.setTextColor(-1);
-        paramView.b.setBackgroundResource(2130849689);
-        paramView.b.setCompoundDrawablePadding(AIOUtils.b(3.0F, this.a.getResources()));
+        paramView.f.setText(HardCodeUtil.a(2131899712));
+        paramView.f.setTextColor(-1);
+        paramView.f.setBackgroundResource(2130851394);
+        paramView.f.setCompoundDrawablePadding(AIOUtils.b(3.0F, this.a.getResources()));
       }
-      paramView.b.setOnClickListener(new ComponentContentRecommend.2.2(this, localRecommendFollowInfo));
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramView.f.setOnClickListener(new ComponentContentRecommend.2.2(this, localRecommendFollowInfo));
+      paramView.g.setVisibility(8);
     }
     return paramViewGroup;
   }
@@ -128,7 +128,7 @@ class ComponentContentRecommend$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommend.2
  * JD-Core Version:    0.7.0.1
  */

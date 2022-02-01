@@ -19,8 +19,6 @@ import java.util.List;
 
 public abstract class MiniAppProxy
 {
-  public abstract boolean VerifyFile(int paramInt, String paramString);
-  
   public abstract boolean addShortcut(Context paramContext, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult);
   
   public abstract boolean chooseLocation(Context paramContext, AsyncResult paramAsyncResult);
@@ -108,10 +106,12 @@ public abstract class MiniAppProxy
   public abstract void setDrawableCallback(Drawable paramDrawable, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack);
   
   public abstract boolean startBrowserActivity(Context paramContext, Intent paramIntent);
+  
+  public abstract boolean verifyFile(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy
  * JD-Core Version:    0.7.0.1
  */

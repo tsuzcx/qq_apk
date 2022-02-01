@@ -17,20 +17,20 @@ class JdTipHelper$1
   {
     try
     {
-      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
+      if ((this.a.e != null) && (this.a.a != null) && (paramAnimation == this.a.d))
       {
-        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772305);
+        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772397);
         paramAnimation.setInterpolator(new LinearInterpolator());
-        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367040));
-        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367041));
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        this.a.g = ((ImageView)this.a.a.findViewById(2131433488));
+        this.a.h = ((ImageView)this.a.a.findViewById(2131433489));
+        this.a.a.clearAnimation();
+        this.a.a.startAnimation(this.a.e);
+        this.a.g.startAnimation(paramAnimation);
+        this.a.h.startAnimation(paramAnimation);
         return;
       }
-      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1)) {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      if ((paramAnimation == this.a.f) && (this.a.c != null) && (this.a.a != null) && (this.a.c.indexOfChild(this.a.a) != -1)) {
+        this.a.c.removeView(this.a.a);
       }
       return;
     }
@@ -43,7 +43,7 @@ class JdTipHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.JdTipHelper.1
  * JD-Core Version:    0.7.0.1
  */

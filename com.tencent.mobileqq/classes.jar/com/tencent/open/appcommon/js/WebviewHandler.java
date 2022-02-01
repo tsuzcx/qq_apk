@@ -13,10 +13,10 @@ public class WebviewHandler
       return;
     }
     paramMessage = (WebViewJS)paramMessage.obj;
-    if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (paramMessage.jdField_a_of_type_JavaLangString != null)) {
+    if ((paramMessage != null) && (paramMessage.a != null) && (paramMessage.b != null)) {
       try
       {
-        paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
+        paramMessage.a.loadUrl(paramMessage.b);
         return;
       }
       catch (Exception paramMessage)
@@ -28,7 +28,7 @@ public class WebviewHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.WebviewHandler
  * JD-Core Version:    0.7.0.1
  */

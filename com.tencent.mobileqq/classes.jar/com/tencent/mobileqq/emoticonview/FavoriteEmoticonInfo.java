@@ -52,7 +52,7 @@ public class FavoriteEmoticonInfo
       int i = (int)(paramFloat * 100.0F);
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130846453);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130847926);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
@@ -86,7 +86,7 @@ public class FavoriteEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramInt1;
       localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130846453);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130847926);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
@@ -123,10 +123,10 @@ public class FavoriteEmoticonInfo
       localObject4 = paramContext.getResources();
       localObject1 = localObject3;
       localObject2 = localObject3;
-      paramContext = ((Resources)localObject4).getDrawable(2130846447);
+      paramContext = ((Resources)localObject4).getDrawable(2130847920);
       localObject1 = paramContext;
       localObject2 = paramContext;
-      localObject3 = ((Resources)localObject4).getDrawable(2130846453);
+      localObject3 = ((Resources)localObject4).getDrawable(2130847926);
       localObject1 = localObject3;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -228,10 +228,10 @@ public class FavoriteEmoticonInfo
       localObject4 = paramContext.getResources();
       localObject1 = localObject3;
       localObject2 = localObject3;
-      paramContext = ((Resources)localObject4).getDrawable(2130846447);
+      paramContext = ((Resources)localObject4).getDrawable(2130847920);
       localObject1 = paramContext;
       localObject2 = paramContext;
-      localObject3 = ((Resources)localObject4).getDrawable(2130846453);
+      localObject3 = ((Resources)localObject4).getDrawable(2130847926);
       localObject1 = localObject3;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -320,7 +320,7 @@ public class FavoriteEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -52,11 +52,11 @@ public class ProfileCardMessageProcessor
           j = 1;
         }
       }
-      if (this.a != null)
+      if (this.q != null)
       {
-        paramMsgInfo = (IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "");
+        paramMsgInfo = (IQQAvatarHandlerService)this.q.getRuntimeService(IQQAvatarHandlerService.class, "");
         if (j != 0) {
-          paramMsgInfo.getCustomHead(this.a.getAccount());
+          paramMsgInfo.getCustomHead(this.q.getAccount());
         }
         if (i != 0) {
           BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
@@ -83,7 +83,7 @@ public class ProfileCardMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.ProfileCardMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

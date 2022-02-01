@@ -9,12 +9,12 @@ class TabPageIndicator$1
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$MultiAIOHolder, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData);
+    this.this$0.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.TabPageIndicator.1
  * JD-Core Version:    0.7.0.1
  */

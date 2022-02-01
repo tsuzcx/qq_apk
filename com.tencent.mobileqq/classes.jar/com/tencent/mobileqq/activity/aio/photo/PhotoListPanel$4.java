@@ -10,12 +10,12 @@ class PhotoListPanel$4
   
   public void run()
   {
-    this.this$0.a.edit().putBoolean(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean).commit();
+    this.this$0.aq.edit().putBoolean(this.a, this.b).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.4
  * JD-Core Version:    0.7.0.1
  */

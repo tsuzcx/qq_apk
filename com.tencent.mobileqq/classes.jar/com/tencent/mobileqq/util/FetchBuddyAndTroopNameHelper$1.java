@@ -39,14 +39,14 @@ class FetchBuddyAndTroopNameHelper$1
       while (paramList.hasNext())
       {
         FetchInfoReq localFetchInfoReq = (FetchInfoReq)paramList.next();
-        if ((localFetchInfoReq != null) && (localFetchInfoReq.jdField_a_of_type_Int == 1) && (localFetchInfoReq.a()))
+        if ((localFetchInfoReq != null) && (localFetchInfoReq.a == 1) && (localFetchInfoReq.a()))
         {
-          if ((localFetchInfoReq.jdField_a_of_type_JavaLangString != null) && (localFetchInfoReq.jdField_a_of_type_JavaLangString.length() > 0)) {
-            localArrayList.add(localFetchInfoReq.jdField_a_of_type_JavaLangString);
+          if ((localFetchInfoReq.b != null) && (localFetchInfoReq.b.length() > 0)) {
+            localArrayList.add(localFetchInfoReq.b);
           }
           if (localStringBuilder != null)
           {
-            localStringBuilder.append(localFetchInfoReq.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(localFetchInfoReq.b);
             localStringBuilder.append(",");
           }
         }
@@ -71,44 +71,44 @@ class FetchBuddyAndTroopNameHelper$1
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("FetchBuddyAndTroopNameHelper", 2, StringUtil.a(new Object[] { "fetchInfo()", paramFetchInfoReq.toString() }));
+        QLog.d("FetchBuddyAndTroopNameHelper", 2, StringUtil.makeLogMsg(new Object[] { "fetchInfo()", paramFetchInfoReq.toString() }));
       }
       Object localObject;
-      if (paramFetchInfoReq.jdField_a_of_type_Int == 2)
+      if (paramFetchInfoReq.a == 2)
       {
         localObject = (ITroopMngHandler)FetchBuddyAndTroopNameHelper.a(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
         if (localObject != null) {
-          ((ITroopMngHandler)localObject).c(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
+          ((ITroopMngHandler)localObject).c(paramFetchInfoReq.b);
         }
       }
-      else if (paramFetchInfoReq.jdField_a_of_type_Int == 1)
+      else if (paramFetchInfoReq.a == 1)
       {
         localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
         if (localObject != null) {
-          ((FriendListHandler)localObject).getFriendInfo(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
+          ((FriendListHandler)localObject).getFriendInfo(paramFetchInfoReq.b);
         }
       }
-      else if (paramFetchInfoReq.jdField_a_of_type_Int == 3)
+      else if (paramFetchInfoReq.a == 3)
       {
         localObject = (ITroopMemberInfoHandler)FetchBuddyAndTroopNameHelper.a(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER);
         ITroopMemberCardHandler localITroopMemberCardHandler = (ITroopMemberCardHandler)FetchBuddyAndTroopNameHelper.a(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
         if ((localObject != null) && (localITroopMemberCardHandler != null))
         {
           ArrayList localArrayList = new ArrayList();
-          localArrayList.add(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-          if ((paramFetchInfoReq.jdField_a_of_type_AndroidOsBundle != null) && (paramFetchInfoReq.jdField_a_of_type_AndroidOsBundle.getInt(ContactUtils.jdField_a_of_type_JavaLangString) == ContactUtils.b))
+          localArrayList.add(paramFetchInfoReq.b);
+          if ((paramFetchInfoReq.e != null) && (paramFetchInfoReq.e.getInt(ContactUtils.a) == ContactUtils.c))
           {
-            ((ITroopMemberInfoHandler)localObject).a(paramFetchInfoReq.b, localArrayList, false, paramFetchInfoReq.jdField_a_of_type_AndroidOsBundle);
+            ((ITroopMemberInfoHandler)localObject).a(paramFetchInfoReq.c, localArrayList, false, paramFetchInfoReq.e);
             return;
           }
-          localITroopMemberCardHandler.a(paramFetchInfoReq.b, (String)paramFetchInfoReq.jdField_a_of_type_JavaLangObject, localArrayList);
+          localITroopMemberCardHandler.a(paramFetchInfoReq.c, (String)paramFetchInfoReq.d, localArrayList);
         }
       }
-      else if (paramFetchInfoReq.jdField_a_of_type_Int == 4)
+      else if (paramFetchInfoReq.a == 4)
       {
         localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
         if (localObject != null) {
-          ((FriendListHandler)localObject).getFriendInfo(paramFetchInfoReq.jdField_a_of_type_JavaLangString, true);
+          ((FriendListHandler)localObject).getFriendInfo(paramFetchInfoReq.b, true);
         }
       }
     }
@@ -116,7 +116,7 @@ class FetchBuddyAndTroopNameHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,19 +29,19 @@ public class UtilApiImpl
     AppIntefaceReportWrap.a(paramAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
-  public boolean a()
-  {
-    return RichMediaUtil.isActiveReporting();
-  }
-  
   public String b()
   {
     return PhoneUtil.a(BaseApplicationImpl.sApplication, QBaseActivity.sTopActivity);
   }
+  
+  public boolean c()
+  {
+    return RichMediaUtil.isActiveReporting();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.UtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

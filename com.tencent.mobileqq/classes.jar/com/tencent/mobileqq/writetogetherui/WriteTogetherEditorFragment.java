@@ -87,41 +87,104 @@ public class WriteTogetherEditorFragment
   extends QIphoneTitleBarFragment
   implements IWriteTogetherObserver, IOnChangesetCommit, UserStateController.OnCharacterOverSizeListener, UserStateController.OnUserNewInfoListener, DocRefresher, EditableModifier, ITemplateWhenCreating, WriteTogetherEditorView.OnEditorClickEventListener
 {
-  private static boolean jdField_d_of_type_Boolean = false;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ChangesetTracker jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private WriteTogetherOidbObserver jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver;
-  private ChangesetClient jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient;
-  private EditorController jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController;
-  private UserStateController jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
-  private DocMetaData jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData;
-  private IEditorModel jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel;
-  private OpenDocParam jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam;
-  private CreatingStateMachineController jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController;
-  EditorStateMachineController jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController;
-  private UserStateBar jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar;
-  private WriteTogetherEditorView jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new WriteTogetherEditorFragment.5(this);
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private boolean jdField_c_of_type_Boolean = true;
-  private View jdField_d_of_type_AndroidViewView;
-  private View jdField_e_of_type_AndroidViewView;
-  private boolean jdField_e_of_type_Boolean;
-  private View jdField_f_of_type_AndroidViewView;
-  private boolean jdField_f_of_type_Boolean;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
-  private boolean jdField_g_of_type_Boolean;
-  private TextView jdField_h_of_type_AndroidWidgetTextView;
-  private boolean jdField_h_of_type_Boolean = true;
-  private boolean i;
-  private boolean j;
+  private static boolean P = false;
+  private CreatingStateMachineController A;
+  private OpenDocParam B;
+  private DocMetaData C;
+  private int D = 0;
+  private View E;
+  private TextView F;
+  private View G;
+  private UserStateBar H;
+  private TextView I;
+  private RecyclerView J;
+  private View K;
+  private ImageView L;
+  private View M;
+  private boolean N;
+  private boolean O = true;
+  private boolean Q;
+  private boolean R;
+  private boolean S;
+  private boolean T = true;
+  private boolean U;
+  private boolean V;
+  private INetInfoHandler W;
+  private Runnable X = new WriteTogetherEditorFragment.5(this);
+  EditorStateMachineController a;
+  QQProgressDialog b;
+  private Context c;
+  private AppInterface d;
+  private WriteTogetherEditorView e;
+  private EditorController f;
+  private ChangesetClient g;
+  private IEditorModel w;
+  private WriteTogetherOidbObserver x;
+  private ChangesetTracker y;
+  private UserStateController z;
+  
+  private void A()
+  {
+    if (this.b == null)
+    {
+      this.b = new QQProgressDialog(this.c, 0, 2131627607, 17);
+      this.b.setContentView(2131629210);
+      this.b.a("正在发送");
+      this.b.setCancelable(true);
+    }
+    if (this.b.isShowing()) {
+      this.b.dismiss();
+    }
+    this.b.show();
+    n_(false);
+  }
+  
+  private void B()
+  {
+    QQProgressDialog localQQProgressDialog = this.b;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
+      this.b.dismiss();
+    }
+    if ((!this.R) && (this.T)) {
+      n_(true);
+    }
+  }
+  
+  private void C()
+  {
+    Object localObject = this.f;
+    if ((localObject != null) && (((EditorController)localObject).c()))
+    {
+      localObject = new WriteTogetherEditorFragment.11(this);
+      WriteTogetherEditorFragment.12 local12 = new WriteTogetherEditorFragment.12(this);
+      WriteTogetherUtils.a(getQBaseActivity(), (DialogInterface.OnClickListener)localObject, local12);
+    }
+    else
+    {
+      getQBaseActivity().finish();
+      D();
+    }
+    int i = WriteTogetherUtils.b(this.d, this.B.u);
+    if (TextUtils.isEmpty(this.B.f)) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800AF32", "0X800AF32", i, 0, (String)localObject, "", "", "");
+  }
+  
+  private void D()
+  {
+    OpenDocParam localOpenDocParam = this.B;
+    if ((localOpenDocParam != null) && (WriteTogetherUtils.b(localOpenDocParam.t))) {
+      getQBaseActivity().overridePendingTransition(2130772013, 2130772018);
+    }
+  }
+  
+  private void E()
+  {
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.16(this), 100L);
+  }
   
   @NonNull
   private Intent a(Object[] paramArrayOfObject)
@@ -136,44 +199,23 @@ public class WriteTogetherEditorFragment
       localIntent1.putExtra("KEY_WRITE_TOGETHER_MSG_SEQ", (Long)paramArrayOfObject[2]);
       localIntent1.putExtra("KEY_WRITE_TOGETHER_MSG_RANDOM", (Integer)paramArrayOfObject[3]);
     }
-    localIntent1.putExtra("KEY_WRITE_TOGETHER_GROUPUIN", this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k);
+    localIntent1.putExtra("KEY_WRITE_TOGETHER_GROUPUIN", this.B.u);
     return localIntent1;
-  }
-  
-  private WriteTogetherOidbObserver a()
-  {
-    return new WriteTogetherEditorFragment.3(this);
   }
   
   private UserEditInfo a(AppRuntime paramAppRuntime, EditText paramEditText)
   {
     UserEditInfo localUserEditInfo = new UserEditInfo();
-    localUserEditInfo.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localUserEditInfo.jdField_a_of_type_Boolean = false;
-    localUserEditInfo.c = paramEditText.getSelectionStart();
-    localUserEditInfo.d = paramEditText.getSelectionEnd();
+    localUserEditInfo.a = paramAppRuntime.getAccount();
+    localUserEditInfo.e = false;
+    localUserEditInfo.f = paramEditText.getSelectionStart();
+    localUserEditInfo.g = paramEditText.getSelectionEnd();
     return localUserEditInfo;
-  }
-  
-  private String a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam;
-    if ((localObject != null) && (WriteTogetherUtils.a(((OpenDocParam)localObject).jdField_f_of_type_Int)))
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a() == CreatingState.TEMPLATE_SHOW_ENTRANCE) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.b() != CreatingState.TEMPLATE_SHOW_LAYER)) {
-        return "1000";
-      }
-      localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-      if ((localObject != null) && (((RecyclerView)localObject).getAdapter() != null)) {
-        return String.valueOf(((HorizontalAdapter)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter()).a());
-      }
-    }
-    return "";
   }
   
   public static void a(Activity paramActivity, Class<? extends WriteTogetherEditorFragment> paramClass, Bundle paramBundle, int paramInt)
   {
-    if (jdField_d_of_type_Boolean) {
+    if (P) {
       return;
     }
     Object localObject;
@@ -184,7 +226,7 @@ public class WriteTogetherEditorFragment
         ((Intent)localObject).putExtras(paramBundle);
       }
       QPublicFragmentActivity.Launcher.a(paramActivity, (Intent)localObject, QPublicFragmentActivity.class, paramClass, paramInt);
-      jdField_d_of_type_Boolean = true;
+      P = true;
       ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.2(), 1000L);
       if (QLog.isColorLevel())
       {
@@ -217,7 +259,7 @@ public class WriteTogetherEditorFragment
   
   public static void a(Context paramContext, Class<? extends WriteTogetherEditorFragment> paramClass, Bundle paramBundle)
   {
-    if (jdField_d_of_type_Boolean) {
+    if (P) {
       return;
     }
     Object localObject;
@@ -231,7 +273,7 @@ public class WriteTogetherEditorFragment
         ((Intent)localObject).putExtras(paramBundle);
       }
       QPublicFragmentActivity.Launcher.a(paramContext, (Intent)localObject, QPublicFragmentActivity.class, paramClass);
-      jdField_d_of_type_Boolean = true;
+      P = true;
       ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.1(), 1000L);
       if (QLog.isColorLevel())
       {
@@ -272,7 +314,7 @@ public class WriteTogetherEditorFragment
   private void a(EditorController paramEditorController)
   {
     paramEditorController.a(new WriteTogetherEditorFragment.8(this));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setOnEditorClickEventListener(this);
+    this.e.setOnEditorClickEventListener(this);
   }
   
   private void a(EditorController paramEditorController, IEditorModel paramIEditorModel, UserEditInfo paramUserEditInfo, List<UserEditInfo> paramList)
@@ -284,91 +326,91 @@ public class WriteTogetherEditorFragment
   
   private void a(OpenDocParam paramOpenDocParam)
   {
-    int k = paramOpenDocParam.h;
+    int i = paramOpenDocParam.w;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[doOpenFailed] errno: ");
-      localStringBuilder.append(k);
+      localStringBuilder.append(i);
       QLog.d("WriteTogetherEditorFragment", 2, localStringBuilder.toString());
     }
-    if (k == 154)
+    if (i == 154)
     {
       c(paramOpenDocParam);
       return;
     }
-    if (k == 1281)
+    if (i == 1281)
     {
-      h();
+      q();
       return;
     }
-    if (k == 1282)
+    if (i == 1282)
     {
-      h();
+      q();
       return;
     }
-    if (k == 1283)
+    if (i == 1283)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.LIMITED);
+      this.a.a(EditorState.LIMITED);
       return;
     }
-    if (k == 1284)
+    if (i == 1284)
     {
-      h();
+      q();
       return;
     }
-    if (k == 1285)
+    if (i == 1285)
     {
-      a(this.jdField_a_of_type_AndroidContentContext.getString(2131720458), this.jdField_a_of_type_AndroidContentContext.getString(2131720469));
+      a(this.c.getString(2131918134), this.c.getString(2131918145));
       return;
     }
-    if (k == 1286)
+    if (i == 1286)
     {
-      h();
+      q();
       return;
     }
-    if (k == 1287)
+    if (i == 1287)
     {
-      a(this.jdField_a_of_type_AndroidContentContext.getString(2131720468), this.jdField_a_of_type_AndroidContentContext.getString(2131720466));
+      a(this.c.getString(2131918144), this.c.getString(2131918142));
       return;
     }
-    h();
+    q();
     paramOpenDocParam = new StringBuilder();
     paramOpenDocParam.append("[doOpenFailed] error code unhandled: ");
-    paramOpenDocParam.append(k);
+    paramOpenDocParam.append(i);
     QLog.e("WriteTogetherEditorFragment", 1, paramOpenDocParam.toString());
   }
   
   private void a(OpenDocParam paramOpenDocParam, int paramInt)
   {
-    if (WriteTogetherUtils.a(paramInt))
+    if (WriteTogetherUtils.b(paramInt))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.CREATING);
+      this.a.a(EditorState.CREATING);
       return;
     }
-    ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).openDoc(paramOpenDocParam.jdField_f_of_type_JavaLangString, paramOpenDocParam.k);
-    ThreadManagerV2.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).openDoc(paramOpenDocParam.f, paramOpenDocParam.u);
+    ThreadManagerV2.getUIHandlerV2().postDelayed(this.X, 10000L);
   }
   
   private void a(String paramString1, String paramString2)
   {
-    WriteTogetherUtils.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, new WriteTogetherEditorFragment.4(this));
+    WriteTogetherUtils.a(this.c, paramString1, paramString2, new WriteTogetherEditorFragment.4(this));
   }
   
   private void a(boolean paramBoolean, CreateDocParam paramCreateDocParam)
   {
     if (!paramBoolean)
     {
-      this.j = false;
-      p();
-      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      if (paramCreateDocParam.jdField_a_of_type_Int == 1286)
+      this.V = false;
+      B();
+      Resources localResources = this.c.getResources();
+      if (paramCreateDocParam.b == 1286)
       {
-        WriteTogetherUtils.a(this.jdField_a_of_type_AndroidContentContext, localResources.getString(2131720461), localResources.getString(2131720469), null);
-        i_(false);
+        WriteTogetherUtils.a(this.c, localResources.getString(2131918137), localResources.getString(2131918145), null);
+        n_(false);
         return;
       }
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, localResources.getString(2131720474), 0).a();
+      QQToast.makeText(this.c, localResources.getString(2131918150), 0).show();
     }
   }
   
@@ -379,75 +421,69 @@ public class WriteTogetherEditorFragment
     } else {
       a(paramOpenDocParam);
     }
-    if (!WriteTogetherConfBean.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k)) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.LIMITED);
+    if (!WriteTogetherConfBean.a(this.d, this.B.u)) {
+      this.a.a(EditorState.LIMITED);
     }
   }
   
   public static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    return ((ITroopGagService)paramAppRuntime.getRuntimeService(ITroopGagService.class, "")).getSelfGagInfo(paramString, true).jdField_a_of_type_Boolean;
+    return ((ITroopGagService)paramAppRuntime.getRuntimeService(ITroopGagService.class, "")).getSelfGagInfo(paramString, true).b;
   }
   
   private void b(int paramInt)
   {
-    if (WriteTogetherUtils.a(paramInt)) {
+    if (WriteTogetherUtils.b(paramInt)) {
       ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.6(this), 1000L);
     }
   }
   
   private void b(OpenDocParam paramOpenDocParam)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.N)
     {
       QLog.w("WriteTogetherEditorFragment", 1, "doc is opened already");
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a(paramOpenDocParam.jdField_a_of_type_JavaLangString, paramOpenDocParam.jdField_b_of_type_JavaLangString, paramOpenDocParam.c);
-    String str = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k;
-    int k = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_Int;
-    int m = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.g;
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam = paramOpenDocParam;
-    OpenDocParam localOpenDocParam = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam;
-    localOpenDocParam.k = str;
-    localOpenDocParam.jdField_f_of_type_Int = k;
-    localOpenDocParam.g = m;
+    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.X);
+    this.f.a(paramOpenDocParam.a, paramOpenDocParam.b, paramOpenDocParam.c);
+    String str = this.B.u;
+    int i = this.B.t;
+    int j = this.B.v;
+    this.B = paramOpenDocParam;
+    OpenDocParam localOpenDocParam = this.B;
+    localOpenDocParam.u = str;
+    localOpenDocParam.t = i;
+    localOpenDocParam.v = j;
     d(paramOpenDocParam);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData = WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.i);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.e);
-    WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.e);
+    this.z.a(this.B.q);
+    this.C = WriteTogetherUtils.b(this.B.l);
+    this.w.a(this.C);
+    this.w.a(this.B.s);
+    WriteTogetherUtils.a(this.B.s);
     if (WriteTogetherUtils.a()) {
-      l();
+      w();
     }
-  }
-  
-  private boolean b()
-  {
-    DocMetaData localDocMetaData = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData;
-    return (localDocMetaData != null) && (!TextUtils.isEmpty(localDocMetaData.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()));
   }
   
   private void c(int paramInt)
   {
-    WriteTogetherTemplateConfBean.Template[] arrayOfTemplate = WriteTogetherTemplateConfProcessor.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k);
+    WriteTogetherTemplateConfBean.Template[] arrayOfTemplate = WriteTogetherTemplateConfProcessor.a(this.d, this.B.u);
     if ((arrayOfTemplate != null) && (arrayOfTemplate.length != 0))
     {
-      if ((WriteTogetherUtils.a(paramInt)) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a() == CreatingState.TEMPLATE_NO))
+      if ((WriteTogetherUtils.b(paramInt)) && (this.A.a() == CreatingState.TEMPLATE_NO))
       {
         if (WriteTogetherUtils.a())
         {
-          this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a(CreatingState.TEMPLATE_FIRST_USE);
+          this.A.a(CreatingState.TEMPLATE_FIRST_USE);
           return;
         }
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.a()))
+        if (TextUtils.isEmpty(this.e.getEditorText()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a(CreatingState.TEMPLATE_SHOW_LAYER);
+          this.A.a(CreatingState.TEMPLATE_SHOW_LAYER);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a(CreatingState.TEMPLATE_SHOW_ENTRANCE);
+        this.A.a(CreatingState.TEMPLATE_SHOW_ENTRANCE);
       }
     }
     else {
@@ -457,302 +493,261 @@ public class WriteTogetherEditorFragment
   
   private void c(OpenDocParam paramOpenDocParam)
   {
-    ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).openDoc(paramOpenDocParam.jdField_f_of_type_JavaLangString, paramOpenDocParam.k);
+    ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).openDoc(paramOpenDocParam.f, paramOpenDocParam.u);
     if (QLog.isColorLevel())
     {
       paramOpenDocParam = new StringBuilder();
       paramOpenDocParam.append("retry times: ");
-      paramOpenDocParam.append(this.jdField_a_of_type_Int);
+      paramOpenDocParam.append(this.D);
       QLog.d("WriteTogetherEditorFragment", 2, paramOpenDocParam.toString());
     }
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  private boolean c()
-  {
-    OpenDocParam localOpenDocParam = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam;
-    return (localOpenDocParam != null) && (!TextUtils.isEmpty(localOpenDocParam.jdField_f_of_type_JavaLangString));
+    this.D += 1;
   }
   
   private void d(OpenDocParam paramOpenDocParam)
   {
-    IQQWriteTogetherService localIQQWriteTogetherService = (IQQWriteTogetherService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQWriteTogetherService.class, "");
-    ChangesetClient localChangesetClient = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient;
+    IQQWriteTogetherService localIQQWriteTogetherService = (IQQWriteTogetherService)this.d.getRuntimeService(IQQWriteTogetherService.class, "");
+    ChangesetClient localChangesetClient = this.g;
     if (localChangesetClient == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient = new ChangesetClient(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k);
-      this.jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient.a(new ChangesetScheduler());
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient.a(this);
+      this.g = new ChangesetClient(this.d, this.y, this.B.f, this.B.j, this.B.u);
+      this.y.a(this.g);
+      this.g.a(new ChangesetScheduler());
+      this.g.a(this);
       localIQQWriteTogetherService.addObservers(this);
-      localIQQWriteTogetherService.init(paramOpenDocParam.jdField_f_of_type_JavaLangString, paramOpenDocParam.k, paramOpenDocParam.jdField_b_of_type_Int);
+      localIQQWriteTogetherService.init(paramOpenDocParam.f, paramOpenDocParam.u, paramOpenDocParam.j);
       return;
     }
-    localChangesetClient.a(paramOpenDocParam.jdField_b_of_type_Int);
-    localIQQWriteTogetherService.updateRev(paramOpenDocParam.jdField_b_of_type_Int);
+    localChangesetClient.a(paramOpenDocParam.j);
+    localIQQWriteTogetherService.updateRev(paramOpenDocParam.j);
   }
   
-  private void h()
+  private WriteTogetherOidbObserver p()
   {
-    a(this.jdField_a_of_type_AndroidContentContext.getString(2131720467), this.jdField_a_of_type_AndroidContentContext.getString(2131720466));
+    return new WriteTogetherEditorFragment.3(this);
   }
   
-  private void i()
+  private void q()
   {
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    if (!WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_Int)) {
-      this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
+    a(this.c.getString(2131918143), this.c.getString(2131918142));
+  }
+  
+  private void r()
+  {
+    this.E.setVisibility(8);
+    if (!WriteTogetherUtils.b(this.B.t)) {
+      this.F.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setVisibility(0);
+    this.e.setVisibility(0);
   }
   
-  private void j()
+  private void s()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.a())) && (this.jdField_h_of_type_Boolean))
+    if ((!TextUtils.isEmpty(this.e.getEditorText())) && (this.T))
     {
-      i_(true);
+      n_(true);
       return;
     }
-    i_(false);
+    n_(false);
   }
   
-  private void k()
+  private boolean t()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.c();
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.e();
-    ReportController.b(null, "dc00898", "", "", "0X800AF31", "0X800AF31", WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k), 0, "1", "", this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString, "");
+    DocMetaData localDocMetaData = this.C;
+    return (localDocMetaData != null) && (!TextUtils.isEmpty(localDocMetaData.a)) && (!this.C.a.equals(this.d.getAccount()));
   }
   
-  private void l()
+  private boolean u()
+  {
+    OpenDocParam localOpenDocParam = this.B;
+    return (localOpenDocParam != null) && (!TextUtils.isEmpty(localOpenDocParam.f));
+  }
+  
+  private void v()
+  {
+    this.e.c();
+    this.z.e();
+    ReportController.b(null, "dc00898", "", "", "0X800AF31", "0X800AF31", WriteTogetherUtils.b(this.d, this.B.u), 0, "1", "", this.B.f, "");
+  }
+  
+  private void w()
   {
     QBaseActivity localQBaseActivity = getQBaseActivity();
     if (localQBaseActivity != null)
     {
       WriteTogetherUtils.a(localQBaseActivity, new WriteTogetherEditorFragment.7(this));
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.f();
+      this.z.f();
     }
   }
   
-  private void m()
+  private void x()
   {
-    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)c().findViewById(2131378880));
-    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053);
-    this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(k);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView = ((WriteTogetherEditorView)this.b.findViewById(2131366320));
-    k = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167118);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setTextColor(k);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setEnabled(false);
-    a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView);
-    b(getResources().getString(2131720452), new WriteTogetherEditorFragment.9(this));
+    this.I = ((TextView)m().findViewById(2131447581));
+    int i = this.c.getResources().getColor(2131167990);
+    this.I.setTextColor(i);
+    this.e = ((WriteTogetherEditorView)this.t.findViewById(2131432620));
+    i = this.c.getResources().getColor(2131168096);
+    this.e.setTextColor(i);
+    this.e.setEnabled(false);
+    a(this.e);
+    b(getResources().getString(2131918128), new WriteTogetherEditorFragment.9(this));
     Object localObject = getArguments();
     if (localObject != null)
     {
       localObject = ((Bundle)localObject).getString("KEY_CANCEL_OR_BACK");
       if ((localObject != null) && (((String)localObject).equals("VALUE_CANCEL"))) {
-        a(2131720417, new WriteTogetherEditorFragment.10(this));
+        a(2131918093, new WriteTogetherEditorFragment.10(this));
       }
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.requestLayout();
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131381266));
-    this.jdField_c_of_type_AndroidViewView = this.b.findViewById(2131370343);
-    this.jdField_d_of_type_AndroidViewView = a(HardCodeUtil.a(2131720451), 2131563069);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar = new UserStateBar(this.jdField_a_of_type_AndroidContentContext, this.jdField_d_of_type_AndroidViewView, this.jdField_g_of_type_AndroidWidgetTextView);
+    this.k.setBackgroundResource(0);
+    this.k.requestLayout();
+    this.F = ((TextView)this.t.findViewById(2131450314));
+    this.E = this.t.findViewById(2131437602);
+    this.G = a(HardCodeUtil.a(2131918127), 2131629707);
+    this.H = new UserStateBar(this.c, this.G, this.F);
   }
   
-  private void n()
+  private void y()
   {
     WriteTogetherOidbHandlerImpl localWriteTogetherOidbHandlerImpl = (WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam;
-    int m = 0;
-    int k;
+    Object localObject = this.B;
+    int j = 0;
+    int i;
     if (localObject != null)
     {
-      localObject = ((OpenDocParam)localObject).k;
-      k = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_Int;
+      localObject = ((OpenDocParam)localObject).u;
+      i = this.B.t;
     }
     else
     {
       localObject = "";
-      k = 0;
+      i = 0;
     }
     TextUtils.isEmpty((CharSequence)localObject);
-    if (WriteTogetherUtils.a(k))
+    if (WriteTogetherUtils.b(i))
     {
-      k = 1;
-      localWriteTogetherOidbHandlerImpl.createDoc(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(), (String)localObject);
+      i = 1;
+      localWriteTogetherOidbHandlerImpl.createDoc(this.w.e(), (String)localObject);
     }
     else
     {
-      DocMetaData localDocMetaData = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a();
-      k = m;
+      DocMetaData localDocMetaData = this.w.g();
+      i = j;
       if (localDocMetaData != null)
       {
-        TextUtils.isEmpty(localDocMetaData.jdField_b_of_type_JavaLangString);
-        localWriteTogetherOidbHandlerImpl.sendWtMessage(localDocMetaData.jdField_b_of_type_JavaLangString, "", 0, (String)localObject);
-        k = m;
+        TextUtils.isEmpty(localDocMetaData.c);
+        localWriteTogetherOidbHandlerImpl.sendWtMessage(localDocMetaData.c, "", 0, (String)localObject);
+        i = j;
       }
     }
-    m = WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject);
-    if (k != 0) {
+    j = WriteTogetherUtils.b(this.d, (String)localObject);
+    if (i != 0) {
       localObject = "1";
     } else {
       localObject = "2";
     }
-    ReportController.b(null, "dc00898", "", "", "0X800AF33", "0X800AF33", m, 0, (String)localObject, a(), "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800AF33", "0X800AF33", j, 0, (String)localObject, z(), "", "");
   }
   
-  private void o()
+  private String z()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    Object localObject = this.B;
+    if ((localObject != null) && (WriteTogetherUtils.b(((OpenDocParam)localObject).t)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, 0, 2131561251, 17);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setContentView(2131562765);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在发送");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(true);
+      if ((this.A.a() == CreatingState.TEMPLATE_SHOW_ENTRANCE) && (this.A.b() != CreatingState.TEMPLATE_SHOW_LAYER)) {
+        return "1000";
+      }
+      localObject = this.J;
+      if ((localObject != null) && (((RecyclerView)localObject).getAdapter() != null)) {
+        return String.valueOf(((HorizontalAdapter)this.J.getAdapter()).b());
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    i_(false);
-  }
-  
-  private void p()
-  {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if ((!this.jdField_f_of_type_Boolean) && (this.jdField_h_of_type_Boolean)) {
-      i_(true);
-    }
-  }
-  
-  private void q()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController;
-    if ((localObject != null) && (((EditorController)localObject).b()))
-    {
-      localObject = new WriteTogetherEditorFragment.11(this);
-      WriteTogetherEditorFragment.12 local12 = new WriteTogetherEditorFragment.12(this);
-      WriteTogetherUtils.a(getQBaseActivity(), (DialogInterface.OnClickListener)localObject, local12);
-    }
-    else
-    {
-      getQBaseActivity().finish();
-      r();
-    }
-    int k = WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString)) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(null, "dc00898", "", "", "0X800AF32", "0X800AF32", k, 0, (String)localObject, "", "", "");
-  }
-  
-  private void r()
-  {
-    OpenDocParam localOpenDocParam = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam;
-    if ((localOpenDocParam != null) && (WriteTogetherUtils.a(localOpenDocParam.jdField_f_of_type_Int))) {
-      getQBaseActivity().overridePendingTransition(2130772010, 2130772015);
-    }
-  }
-  
-  private void s()
-  {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.16(this), 100L);
+    return "";
   }
   
   protected int a()
   {
-    return 2131560954;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a();
+    return 2131627295;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.b(paramInt);
-    if (!this.jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a();
+    this.z.a(paramInt);
+    this.w.b(paramInt);
+    if (!this.y.b()) {
+      this.f.d();
     }
-    if ((this.j) && (!this.jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker.a())) {
-      n();
+    if ((this.V) && (!this.y.b())) {
+      y();
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(paramInt, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(paramInt, paramString);
-    if (this.j)
+    this.a.a(paramInt, paramString);
+    this.z.a(paramInt, paramString);
+    if (this.V)
     {
-      this.j = false;
-      p();
-      paramString = this.jdField_a_of_type_AndroidContentContext;
-      QQToast.a(paramString, paramString.getResources().getString(2131720474), 0).a();
+      this.V = false;
+      B();
+      paramString = this.c;
+      QQToast.makeText(paramString, paramString.getResources().getString(2131918150), 0).show();
     }
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    m();
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController = new EditorController(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController);
+    x();
+    this.f = new EditorController(this.d);
+    a(this.f);
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {
       OpenDocParam localOpenDocParam = (OpenDocParam)paramLayoutInflater.get("KEY_LAUNCH_EDITOR_PARAM");
       if (localOpenDocParam != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(localOpenDocParam.k);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a(localOpenDocParam.jdField_f_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam = localOpenDocParam;
-        g();
-        paramViewGroup = localOpenDocParam.jdField_a_of_type_JavaLangString;
+        this.a.a(localOpenDocParam.u);
+        this.f.a(localOpenDocParam.t);
+        this.B = localOpenDocParam;
+        h();
+        paramViewGroup = localOpenDocParam.a;
         paramLayoutInflater = paramViewGroup;
         if (paramViewGroup == null) {
           paramLayoutInflater = "";
         }
-        a(localOpenDocParam, localOpenDocParam.jdField_f_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.b(paramLayoutInflater);
-        j();
+        a(localOpenDocParam, localOpenDocParam.t);
+        this.e.b(paramLayoutInflater);
+        s();
         paramBundle = new AttribPool();
-        if (TextUtils.isEmpty(localOpenDocParam.jdField_b_of_type_JavaLangString)) {
-          paramLayoutInflater = Changeset.a(paramLayoutInflater, Arrays.asList(new Pair[] { new Pair("author", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()) }), paramBundle);
+        if (TextUtils.isEmpty(localOpenDocParam.b)) {
+          paramLayoutInflater = Changeset.a(paramLayoutInflater, Arrays.asList(new Pair[] { new Pair("author", this.d.getAccount()) }), paramBundle);
         } else {
-          paramLayoutInflater = Changeset.a(paramLayoutInflater, localOpenDocParam.jdField_b_of_type_JavaLangString);
+          paramLayoutInflater = Changeset.b(paramLayoutInflater, localOpenDocParam.b);
         }
-        if (!"0".equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount())) {
-          paramViewGroup = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+        if (!"0".equals(this.d.getAccount())) {
+          paramViewGroup = this.d.getAccount();
         } else {
           paramViewGroup = "";
         }
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel = new EditorModel(paramLayoutInflater, paramBundle, paramViewGroup, "");
-        this.jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker = new ChangesetTracker(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(), this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setClient(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2ChangesetTracker);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController = new UserStateController(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_Int, getQBaseActivity());
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "");
-        paramLayoutInflater = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView);
-        a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel, paramLayoutInflater, new ArrayList());
-        this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new WriteTogetherEditorFragment.MyNetInfoHandler(this, null);
-        AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-        c(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_Int);
+        this.w = new EditorModel(paramLayoutInflater, paramBundle, paramViewGroup, "");
+        this.y = new ChangesetTracker(this.w.d(), this.f);
+        this.f.a(this.e);
+        this.e.setClient(this.f);
+        this.f.a(this.w);
+        this.w.a(this.f);
+        this.f.a(this.y);
+        this.z = new UserStateController(this.d, this.H, this.w, this.B.t, getQBaseActivity());
+        this.z.a(this);
+        this.z.a(this);
+        this.w.a(this.z);
+        this.w.a(this.z);
+        this.w.a(this.B.u, this.d.getAccount(), "");
+        paramLayoutInflater = a(this.d, this.e);
+        a(this.f, this.w, paramLayoutInflater, new ArrayList());
+        this.W = new WriteTogetherEditorFragment.MyNetInfoHandler(this, null);
+        AppNetConnInfo.registerConnectionChangeReceiver(this.d.getApplication(), this.W);
+        c(this.B.t);
       }
     }
   }
@@ -764,61 +759,61 @@ public class WriteTogetherEditorFragment
       paramType = ((OnPostWrapper)((ClientReadyRespMsg)paramObject).body).onpost;
       if ((paramType.result != 0) && (paramType.result != 60009))
       {
-        this.jdField_c_of_type_Boolean = false;
+        this.O = false;
         a(paramType.result, paramType.errMsg);
         return;
       }
-      this.jdField_c_of_type_Boolean = true;
+      this.O = true;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.i = paramBoolean;
-    if ((!paramBoolean) && (this.jdField_h_of_type_Boolean))
+    this.U = paramBoolean;
+    if ((!paramBoolean) && (this.T))
     {
-      if (this.jdField_d_of_type_AndroidWidgetTextView.isEnabled()) {
-        i_(true);
+      if (this.k.isEnabled()) {
+        n_(true);
       }
     }
     else {
-      i_(false);
+      n_(false);
     }
   }
   
   public void a(boolean paramBoolean, UserNewInfoMsg paramUserNewInfoMsg)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    if ((!this.N) && (this.O))
     {
-      if (this.jdField_g_of_type_Boolean) {
+      if (this.S) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.N = true;
       if (paramBoolean)
       {
-        if (((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k)) {
-          this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.GAG_OR_ANONYMOUS_ON_ENTER, getString(2131720454));
-        } else if (a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k)) {
-          this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.GAG_OR_ANONYMOUS_ON_ENTER, getString(2131720464));
+        if (((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(this.B.u)) {
+          this.a.a(EditorState.GAG_OR_ANONYMOUS_ON_ENTER, getString(2131918130));
+        } else if (a(this.d, this.B.u)) {
+          this.a.a(EditorState.GAG_OR_ANONYMOUS_ON_ENTER, getString(2131918140));
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.READY);
+          this.a.a(EditorState.READY);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.LIMITED);
+        this.a.a(EditorState.LIMITED);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.d();
-      i();
+      this.z.d();
+      r();
       if (paramBoolean)
       {
-        ChangesetClient localChangesetClient = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient;
+        ChangesetClient localChangesetClient = this.g;
         if (localChangesetClient != null) {
           localChangesetClient.a(((UserNewInfoMsg.Header)paramUserNewInfoMsg.header).uuId);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k, ((UserNewInfoMsg.Header)paramUserNewInfoMsg.header).uid, ((UserNewInfoMsg.Header)paramUserNewInfoMsg.header).uuId);
-      if (!WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k)) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.CLOSED_BY_ADMIN, getString(2131720455));
+      this.w.a(this.B.u, ((UserNewInfoMsg.Header)paramUserNewInfoMsg.header).uid, ((UserNewInfoMsg.Header)paramUserNewInfoMsg.header).uuId);
+      if (!WriteTogetherUtils.a(this.d, this.B.u)) {
+        this.a.a(EditorState.CLOSED_BY_ADMIN, getString(2131918131));
       }
     }
   }
@@ -827,146 +822,146 @@ public class WriteTogetherEditorFragment
   {
     if (paramBoolean2)
     {
-      j();
+      s();
       return;
     }
-    i_(paramBoolean1);
+    n_(paramBoolean1);
   }
   
-  public void aU_()
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam == null)
-    {
-      QLog.w("WriteTogetherEditorFragment", 1, "refresh failed, param is null");
-      return;
-    }
-    ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).openDoc(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k);
+    this.z.b();
   }
   
   public void c()
   {
-    i();
+    if (this.B == null)
+    {
+      QLog.w("WriteTogetherEditorFragment", 1, "refresh failed, param is null");
+      return;
+    }
+    ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).openDoc(this.B.f, this.B.u);
   }
   
   public void c(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setEnabled(true);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setFocusable(true);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setCursorVisible(true);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.requestFocus();
-      this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_f_of_type_AndroidViewView.setVisibility(0);
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.getContext().getSystemService("input_method");
+      this.e.setEnabled(true);
+      this.e.setFocusable(true);
+      this.e.setCursorVisible(true);
+      this.e.requestFocus();
+      this.K.setVisibility(8);
+      this.M.setVisibility(0);
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.e.getContext().getSystemService("input_method");
       if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView, 0);
+        localInputMethodManager.showSoftInput(this.e, 0);
       }
     }
     else
     {
       ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.17(this), 100L);
-      this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_f_of_type_AndroidViewView.setVisibility(0);
+      this.K.setVisibility(8);
+      this.M.setVisibility(0);
     }
   }
   
   public void d()
   {
-    Object localObject = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.getContext().getSystemService("input_method");
+    r();
+  }
+  
+  public void e()
+  {
+    Object localObject = (InputMethodManager)this.e.getContext().getSystemService("input_method");
     if (localObject != null) {
-      ((InputMethodManager)localObject).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.getWindowToken(), 0);
+      ((InputMethodManager)localObject).hideSoftInputFromWindow(this.e.getWindowToken(), 0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setFocusable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.setCursorVisible(false);
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter() != null)
+    this.e.setFocusable(false);
+    this.e.setCursorVisible(false);
+    if (this.J.getAdapter() != null)
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
-      localObject = (HorizontalAdapter)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter();
-      ((HorizontalAdapter)localObject).a(TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView.getText()) ^ true);
+      this.J.smoothScrollToPosition(0);
+      localObject = (HorizontalAdapter)this.J.getAdapter();
+      ((HorizontalAdapter)localObject).a(TextUtils.isEmpty(this.e.getText()) ^ true);
       ((HorizontalAdapter)localObject).a(0);
     }
-    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    this.M.setVisibility(8);
     localObject = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
     ((TranslateAnimation)localObject).setDuration(300L);
     ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.18(this, (TranslateAnimation)localObject), 100L);
   }
   
-  public void e()
+  public void f()
   {
     QBaseActivity localQBaseActivity = getQBaseActivity();
     if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing()))
     {
       WriteTogetherUtils.a(localQBaseActivity, new WriteTogetherEditorFragment.15(this));
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.f();
+      this.z.f();
     }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a() == CreatingState.TEMPLATE_SHOW_LAYER)
-    {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter() != null) {
-        ReportController.b(null, "dc00898", "", "", "0X800B356", "0X800B356", ((HorizontalAdapter)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter()).a(), 0, String.valueOf(WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k)), "", "", "");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a(CreatingState.TEMPLATE_SHOW_ENTRANCE);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(0);
-    UserStateController localUserStateController = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
-    if (localUserStateController != null) {
-      localUserStateController.e();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a() == EditorState.READY)
-    {
-      if (!this.jdField_e_of_type_Boolean) {
-        ReportController.b(null, "dc00898", "", "", "0X800AF31", "0X800AF31", WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k), 0, "2", "", this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString, "");
-      }
-      this.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(EditorState.ACTIVATED);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(true);
   }
   
   public void g()
   {
-    this.jdField_e_of_type_AndroidViewView = this.b.findViewById(2131370080);
-    this.jdField_f_of_type_AndroidViewView = this.b.findViewById(2131370081);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.b.findViewById(2131368571));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnTouchListener(new WriteTogetherEditorFragment.13(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new WriteTogetherEditorFragment.14(this));
-    HorizontalAdapter localHorizontalAdapter = new HorizontalAdapter(getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView, WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k));
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getQBaseActivity());
-    localLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.b.findViewById(2131376310));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(localHorizontalAdapter);
-    localHorizontalAdapter.a(WriteTogetherTemplateConfProcessor.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k));
+    if (this.A.a() == CreatingState.TEMPLATE_SHOW_LAYER)
+    {
+      if (this.J.getAdapter() != null) {
+        ReportController.b(null, "dc00898", "", "", "0X800B356", "0X800B356", ((HorizontalAdapter)this.J.getAdapter()).b(), 0, String.valueOf(WriteTogetherUtils.b(this.d, this.B.u)), "", "", "");
+      }
+      this.A.a(CreatingState.TEMPLATE_SHOW_ENTRANCE);
+    }
+    this.a.a(0);
+    UserStateController localUserStateController = this.z;
+    if (localUserStateController != null) {
+      localUserStateController.e();
+    }
+    if (this.a.a() == EditorState.READY)
+    {
+      if (!this.Q) {
+        ReportController.b(null, "dc00898", "", "", "0X800AF31", "0X800AF31", WriteTogetherUtils.b(this.d, this.B.u), 0, "2", "", this.B.f, "");
+      }
+      this.Q = true;
+      this.a.a(EditorState.ACTIVATED);
+      this.f.d();
+    }
+    this.w.a(true);
   }
   
-  public void k_(boolean paramBoolean)
+  public void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController.a(paramBoolean);
+    this.K = this.t.findViewById(2131437242);
+    this.M = this.t.findViewById(2131437243);
+    this.L = ((ImageView)this.t.findViewById(2131435480));
+    this.L.setOnTouchListener(new WriteTogetherEditorFragment.13(this));
+    this.L.setOnClickListener(new WriteTogetherEditorFragment.14(this));
+    HorizontalAdapter localHorizontalAdapter = new HorizontalAdapter(getQBaseActivity(), this.e, WriteTogetherUtils.b(this.d, this.B.u));
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getQBaseActivity());
+    localLinearLayoutManager.setOrientation(0);
+    this.J = ((RecyclerView)this.t.findViewById(2131444521));
+    this.J.setLayoutManager(localLinearLayoutManager);
+    this.J.setAdapter(localHorizontalAdapter);
+    localHorizontalAdapter.a(WriteTogetherTemplateConfProcessor.a(this.d, this.B.u));
   }
   
   public boolean onBackEvent()
   {
-    q();
+    C();
     return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidContentContext = getQBaseActivity();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)getQBaseActivity().getAppRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver = a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController = new EditorStateMachineController(this.jdField_a_of_type_ComTencentCommonAppAppInterface, getQBaseActivity(), this);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.a();
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController = new CreatingStateMachineController(this);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCreatingStateMachineController.a();
+    this.c = getQBaseActivity();
+    this.d = ((AppInterface)getQBaseActivity().getAppRuntime());
+    this.x = p();
+    this.d.addObserver(this.x);
+    this.a = new EditorStateMachineController(this.d, getQBaseActivity(), this);
+    this.a.a(this);
+    this.a.b();
+    this.A = new CreatingStateMachineController(this);
+    this.A.c();
     paramBundle = getQBaseActivity();
     if ((paramBundle != null) && (paramBundle.getWindow() != null)) {
       paramBundle.getWindow().setSoftInputMode(16);
@@ -975,8 +970,8 @@ public class WriteTogetherEditorFragment
     if (paramBundle != null)
     {
       paramBundle = (OpenDocParam)paramBundle.get("KEY_LAUNCH_EDITOR_PARAM");
-      if ((paramBundle != null) && (WriteTogetherUtils.a(paramBundle.jdField_f_of_type_Int))) {
-        getQBaseActivity().overridePendingTransition(2130772011, 2130772014);
+      if ((paramBundle != null) && (WriteTogetherUtils.b(paramBundle.t))) {
+        getQBaseActivity().overridePendingTransition(2130772014, 2130772017);
       }
     }
   }
@@ -984,31 +979,31 @@ public class WriteTogetherEditorFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if ((c()) && (b()))
+    if ((u()) && (t()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController;
-      if ((localObject != null) && (((EditorController)localObject).c()) && (NetworkUtil.isNetworkAvailable())) {
-        ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).sendGrayTip(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString);
+      localObject = this.f;
+      if ((localObject != null) && (((EditorController)localObject).g()) && (NetworkUtil.isNetworkAvailable())) {
+        ((WriteTogetherOidbHandlerImpl)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME)).sendGrayTip(this.d.getAccount(), this.B.u, this.B.f);
       }
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientEditorController;
+    this.d.removeObserver(this.x);
+    Object localObject = this.f;
     if (localObject != null) {
-      ((EditorController)localObject).b();
+      ((EditorController)localObject).e();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineEditorStateMachineController.b();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientChangesetClient;
+    this.a.c();
+    localObject = this.g;
     if (localObject != null) {
-      ((ChangesetClient)localObject).c();
+      ((ChangesetClient)localObject).d();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
+    localObject = this.z;
     if (localObject != null) {
       ((UserStateController)localObject).c();
     }
-    localObject = (IQQWriteTogetherService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQWriteTogetherService.class, "");
+    localObject = (IQQWriteTogetherService)this.d.getRuntimeService(IQQWriteTogetherService.class, "");
     ((IQQWriteTogetherService)localObject).removeObserver(this);
     ((IQQWriteTogetherService)localObject).stop();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+    localObject = this.W;
     if (localObject != null) {
       AppNetConnInfo.unregisterNetInfoHandler((INetInfoHandler)localObject);
     }
@@ -1022,22 +1017,27 @@ public class WriteTogetherEditorFragment
   public void onResume()
   {
     super.onResume();
-    int k = WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.k);
+    int i = WriteTogetherUtils.b(this.d, this.B.u);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(WriteTogetherUtils.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_Int));
+    ((StringBuilder)localObject).append(WriteTogetherUtils.c(this.B.t));
     String str = ((StringBuilder)localObject).toString();
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString == null) {
+    if (this.B.f == null) {
       localObject = "";
     } else {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataOpenDocParam.jdField_f_of_type_JavaLangString;
+      localObject = this.B.f;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800AF30", "0X800AF30", k, 0, str, "", (String)localObject, "");
+    ReportController.b(null, "dc00898", "", "", "0X800AF30", "0X800AF30", i, 0, str, "", (String)localObject, "");
+  }
+  
+  public void p_(boolean paramBoolean)
+  {
+    this.f.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment
  * JD-Core Version:    0.7.0.1
  */

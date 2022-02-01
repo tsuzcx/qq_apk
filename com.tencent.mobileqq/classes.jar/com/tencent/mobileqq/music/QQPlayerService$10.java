@@ -10,43 +10,6 @@ class QQPlayerService$10
 {
   QQPlayerService$10(QQPlayerService paramQQPlayerService) {}
   
-  public int a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public Intent a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public Bundle a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public SongInfo a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
-    }
-    return QQPlayerService.b();
-  }
-  
-  public String a()
-  {
-    return QQPlayerService.a();
-  }
-  
   public String a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel())
@@ -66,7 +29,7 @@ class QQPlayerService$10
     if (QLog.isColorLevel()) {
       QLog.d("QQPlayerService", 2, "AIDL : pause");
     }
-    QQPlayerService.a(this.a);
+    QQPlayerService.c(this.a);
   }
   
   public void a(int paramInt)
@@ -74,7 +37,7 @@ class QQPlayerService$10
     if (QLog.isColorLevel()) {
       QLog.d("QQPlayerService", 2, "AIDL : setPlayMode");
     }
-    QQPlayerService.a(paramInt);
+    QQPlayerService.b(paramInt);
   }
   
   public void a(Intent paramIntent)
@@ -105,16 +68,16 @@ class QQPlayerService$10
     if (paramIQQPlayerCallback == null) {
       return;
     }
-    if (QQPlayerService.a(this.a) == null) {
+    if (QQPlayerService.e(this.a) == null) {
       try
       {
-        if (QQPlayerService.a(this.a) == null) {
+        if (QQPlayerService.e(this.a) == null) {
           QQPlayerService.a(this.a, new RemoteCallbackList());
         }
       }
       finally {}
     }
-    QQPlayerService.a(this.a).register(paramIQQPlayerCallback);
+    QQPlayerService.e(this.a).register(paramIQQPlayerCallback);
   }
   
   public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
@@ -123,22 +86,17 @@ class QQPlayerService$10
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("AIDL : startPlay sCallback = ");
-      localStringBuilder.append(QQPlayerService.a());
+      localStringBuilder.append(QQPlayerService.x());
       localStringBuilder.append(",startIndex");
       localStringBuilder.append(paramInt);
       QLog.d("QQPlayerService", 2, localStringBuilder.toString());
     }
-    if (QQPlayerService.a() != null)
+    if (QQPlayerService.x() != null)
     {
-      QQPlayerService.a(QQPlayerService.a());
+      QQPlayerService.a(QQPlayerService.x());
       QQPlayerService.b(null);
     }
     QQPlayerService.a(this.a, paramString, paramArrayOfSongInfo, paramInt);
-  }
-  
-  public boolean a()
-  {
-    return QQPlayerService.a();
   }
   
   public boolean a(String paramString)
@@ -153,36 +111,12 @@ class QQPlayerService$10
     return QQPlayerService.a(paramString);
   }
   
-  public SongInfo[] a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
-    }
-    return QQPlayerService.b();
-  }
-  
-  public SongInfo b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getNextSong");
-    }
-    return QQPlayerService.d();
-  }
-  
   public void b()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQPlayerService", 2, "AIDL : resume");
     }
-    QQPlayerService.b(this.a);
+    QQPlayerService.d(this.a);
   }
   
   public void b(int paramInt)
@@ -194,7 +128,7 @@ class QQPlayerService$10
       localStringBuilder.append(paramInt);
       QLog.d("QQPlayerService", 2, localStringBuilder.toString());
     }
-    QQPlayerService.b(paramInt);
+    QQPlayerService.c(paramInt);
   }
   
   public void b(IQQPlayerCallback paramIQQPlayerCallback)
@@ -202,17 +136,9 @@ class QQPlayerService$10
     if (QLog.isColorLevel()) {
       QLog.d("QQPlayerService", 2, "AIDL : unRegisterCallback");
     }
-    if ((paramIQQPlayerCallback != null) && (QQPlayerService.a(this.a) != null)) {
-      QQPlayerService.a(this.a).unregister(paramIQQPlayerCallback);
+    if ((paramIQQPlayerCallback != null) && (QQPlayerService.e(this.a) != null)) {
+      QQPlayerService.e(this.a).unregister(paramIQQPlayerCallback);
     }
-  }
-  
-  public int c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
-    }
-    return QQPlayerService.d();
   }
   
   public void c()
@@ -220,15 +146,7 @@ class QQPlayerService$10
     if (QLog.isColorLevel()) {
       QLog.d("QQPlayerService", 2, "AIDL : stop");
     }
-    QQPlayerService.c(this.a);
-  }
-  
-  public int d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
-    }
-    return QQPlayerService.e();
+    QQPlayerService.e(this.a);
   }
   
   public void d()
@@ -239,14 +157,6 @@ class QQPlayerService$10
     QQPlayerService.b(this.a);
   }
   
-  public int e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
-    }
-    return QQPlayerService.g();
-  }
-  
   public void e()
   {
     if (QLog.isColorLevel()) {
@@ -255,25 +165,115 @@ class QQPlayerService$10
     QQPlayerService.a(this.a);
   }
   
-  public int f()
+  public boolean f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
-    }
-    return QQPlayerService.c();
+    return QQPlayerService.b();
   }
   
   public int g()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentPlayPosition");
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public int h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
+    }
+    return QQPlayerService.d();
+  }
+  
+  public int i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
+    }
+    return QQPlayerService.i();
+  }
+  
+  public int j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
+    }
+    return QQPlayerService.j();
+  }
+  
+  public SongInfo k()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
+    }
+    return QQPlayerService.g();
+  }
+  
+  public SongInfo l()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getNextSong");
+    }
+    return QQPlayerService.q();
+  }
+  
+  public int m()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
+    }
+    return QQPlayerService.l();
+  }
+  
+  public int n()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
     }
     return QQPlayerService.f();
+  }
+  
+  public SongInfo[] o()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
+    }
+    return QQPlayerService.e();
+  }
+  
+  public Intent p()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
+    }
+    return QQPlayerService.m();
+  }
+  
+  public Bundle q()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
+    }
+    return QQPlayerService.n();
+  }
+  
+  public String r()
+  {
+    return QQPlayerService.o();
+  }
+  
+  public int s()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentPlayPosition");
+    }
+    return QQPlayerService.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.10
  * JD-Core Version:    0.7.0.1
  */

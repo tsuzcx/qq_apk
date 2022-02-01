@@ -16,24 +16,24 @@ public class TroopMemberGradeLevelExtender
     super(paramContext);
   }
   
-  private BaseChatItemLayoutViewBasicAbility a()
-  {
-    return new TroopMemberGradeLevelExtender.1(this, this.a);
-  }
-  
   private void a()
   {
     if (this.a == null)
     {
       this.a = new TroopMemberGradeLevelView(this.mContext);
-      this.a.setId(2131364558);
+      this.a.setId(2131430617);
     }
+  }
+  
+  private BaseChatItemLayoutViewBasicAbility b()
+  {
+    return new TroopMemberGradeLevelExtender.1(this, this.a);
   }
   
   public BaseChatItemLayoutViewBasicAbility getBasicAbility()
   {
     if (this.ability == null) {
-      this.ability = a();
+      this.ability = b();
     }
     return this.ability;
   }
@@ -46,7 +46,7 @@ public class TroopMemberGradeLevelExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.TroopMemberGradeLevelExtender
  * JD-Core Version:    0.7.0.1
  */

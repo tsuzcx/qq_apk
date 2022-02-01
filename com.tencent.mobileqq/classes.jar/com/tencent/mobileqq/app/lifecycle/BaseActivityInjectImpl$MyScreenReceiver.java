@@ -38,7 +38,7 @@ class BaseActivityInjectImpl$MyScreenReceiver
       QBaseActivity.isUnLockSuccess = false;
       if (QBaseActivity.getShakeListener() != null)
       {
-        if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694975), "qqsetting_screenshot_key", false)) {
+        if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131892702), "qqsetting_screenshot_key", false)) {
           i = 0;
         }
         if (i != 0) {
@@ -49,7 +49,7 @@ class BaseActivityInjectImpl$MyScreenReceiver
     else if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (QBaseActivity.getShakeListener() == null))
     {
       i = j;
-      if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694975), "qqsetting_screenshot_key", false)) {
+      if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131892702), "qqsetting_screenshot_key", false)) {
         i = 0;
       }
       if (i != 0) {
@@ -60,7 +60,7 @@ class BaseActivityInjectImpl$MyScreenReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityInjectImpl.MyScreenReceiver
  * JD-Core Version:    0.7.0.1
  */

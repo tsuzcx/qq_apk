@@ -13,19 +13,9 @@ public class TroopAppShortCutBarService
 {
   private TroopAppShortcutBarHelper a;
   
-  public int a()
-  {
-    return 2;
-  }
-  
   public View a()
   {
-    return this.a.a();
-  }
-  
-  public ViewGroup.LayoutParams a()
-  {
-    return this.a.a();
+    return this.a.b();
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -41,24 +31,34 @@ public class TroopAppShortCutBarService
     this.a = new TroopAppShortcutBarHelper(paramIAIOShortcutBarLogic);
   }
   
-  public boolean a()
-  {
-    return this.a.c();
-  }
-  
   public boolean a(MotionEvent paramMotionEvent)
   {
     return this.a.a(paramMotionEvent);
   }
   
-  public int b()
+  public ViewGroup.LayoutParams b()
   {
-    return ViewUtils.a(39.0F);
+    return this.a.c();
+  }
+  
+  public int c()
+  {
+    return 2;
+  }
+  
+  public int d()
+  {
+    return ViewUtils.dip2px(39.0F);
+  }
+  
+  public boolean e()
+  {
+    return this.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAppShortCutBarService
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ final class ReadInJoyPTSCostHelper$1
   {
     synchronized ()
     {
-      Iterator localIterator = new ArrayList(ReadInJoyPTSCostHelper.a()).iterator();
+      Iterator localIterator = new ArrayList(ReadInJoyPTSCostHelper.d()).iterator();
       while (localIterator.hasNext()) {
         ReadInJoyPTSCostHelper.a((String)localIterator.next());
       }
-      ReadInJoyPTSCostHelper.a().clear();
+      ReadInJoyPTSCostHelper.d().clear();
       return;
     }
     for (;;)
@@ -26,7 +26,7 @@ final class ReadInJoyPTSCostHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.network.ReadInJoyPTSCostHelper.1
  * JD-Core Version:    0.7.0.1
  */

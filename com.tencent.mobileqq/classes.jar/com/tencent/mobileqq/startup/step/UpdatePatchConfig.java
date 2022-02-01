@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.kingkong.Utils;
 import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -66,7 +65,7 @@ public class UpdatePatchConfig
     SharedPreferences localSharedPreferences = localContext.getSharedPreferences("sp_update_version", 0);
     String str = localSharedPreferences.getString("key_cur_version", "");
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ApkUtils.a(localContext));
+    ((StringBuilder)localObject).append(ApkUtils.b(localContext));
     ((StringBuilder)localObject).append(".");
     ((StringBuilder)localObject).append(ApkUtils.a(localContext));
     localObject = ((StringBuilder)localObject).toString();
@@ -80,14 +79,13 @@ public class UpdatePatchConfig
     {
       a(localContext);
       localSharedPreferences.edit().putString("key_cur_version", (String)localObject).commit();
-      Utils.a(localContext);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.UpdatePatchConfig
  * JD-Core Version:    0.7.0.1
  */

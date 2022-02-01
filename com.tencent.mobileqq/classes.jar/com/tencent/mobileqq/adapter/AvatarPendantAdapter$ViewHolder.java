@@ -9,24 +9,24 @@ import com.tencent.widget.GridView;
 
 public class AvatarPendantAdapter$ViewHolder
 {
-  public int a;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  GridView jdField_a_of_type_ComTencentWidgetGridView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  RelativeLayout a;
+  ImageView b;
+  TextView c;
+  ImageView d;
+  GridView e;
+  TextView f;
+  ImageView g;
+  LinearLayout h;
+  TextView i;
+  TextView j;
+  View k;
+  public int l;
   
   public AvatarPendantAdapter$ViewHolder(AvatarPendantAdapter paramAvatarPendantAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

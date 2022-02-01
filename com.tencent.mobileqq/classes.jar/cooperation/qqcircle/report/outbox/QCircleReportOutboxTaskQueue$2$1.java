@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report.outbox;
 
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 
 class QCircleReportOutboxTaskQueue$2$1
   implements QCircleNetDetectHelper.DetectListener
@@ -12,7 +12,7 @@ class QCircleReportOutboxTaskQueue$2$1
   {
     if (paramBoolean)
     {
-      RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "detectQCirclenNetConnection available,resumeOutboxTasks");
+      QLog.d("QCircleReportOutboxTaskQueue", 1, "detectQCirclenNetConnection available,resumeOutboxTasks");
       if (QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0) != null)
       {
         QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).removeCallbacks(QCircleReportOutboxTaskQueue.access$200(this.this$1.this$0));
@@ -26,19 +26,18 @@ class QCircleReportOutboxTaskQueue$2$1
         QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).removeCallbacks(QCircleReportOutboxTaskQueue.access$300(this.this$1.this$0));
         QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).postDelayed(QCircleReportOutboxTaskQueue.access$300(this.this$1.this$0), 10000L);
       }
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("detectQCirclenNetConnection blocked,retry again!retCode:");
       localStringBuilder.append(paramLong);
       localStringBuilder.append(",errMsg:");
       localStringBuilder.append(paramString);
-      RFLog.d("QCircleReportOutboxTaskQueue", i, localStringBuilder.toString());
+      QLog.d("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue.2.1
  * JD-Core Version:    0.7.0.1
  */

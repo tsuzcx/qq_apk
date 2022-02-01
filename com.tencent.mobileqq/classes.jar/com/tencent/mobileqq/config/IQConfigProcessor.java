@@ -68,11 +68,11 @@ public abstract class IQConfigProcessor<T>
   
   public String tabExperimentId()
   {
-    if (ABTestController.a().a())
+    if (ABTestController.a().b())
     {
       ExpEntityInfo localExpEntityInfo = ABTestController.a().a(type());
-      if ((localExpEntityInfo.c()) && (!localExpEntityInfo.b()) && (ABTestUtil.a(localExpEntityInfo.getExpName()))) {
-        return localExpEntityInfo.getExpName();
+      if ((localExpEntityInfo.i()) && (!localExpEntityInfo.g()) && (ABTestUtil.a(localExpEntityInfo.c()))) {
+        return localExpEntityInfo.c();
       }
     }
     return "";
@@ -80,11 +80,11 @@ public abstract class IQConfigProcessor<T>
   
   public String tabGroupId()
   {
-    if (ABTestController.a().a())
+    if (ABTestController.a().b())
     {
       ExpEntityInfo localExpEntityInfo = ABTestController.a().a(type());
-      if ((localExpEntityInfo.c()) && (!localExpEntityInfo.b()) && (ABTestUtil.a(localExpEntityInfo.getAssignment()))) {
-        return localExpEntityInfo.getAssignment();
+      if ((localExpEntityInfo.i()) && (!localExpEntityInfo.g()) && (ABTestUtil.a(localExpEntityInfo.d()))) {
+        return localExpEntityInfo.d();
       }
     }
     return "";
@@ -94,7 +94,7 @@ public abstract class IQConfigProcessor<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.IQConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

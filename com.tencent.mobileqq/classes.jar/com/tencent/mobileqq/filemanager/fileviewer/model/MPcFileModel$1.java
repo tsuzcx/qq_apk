@@ -17,13 +17,13 @@ class MPcFileModel$1
       if (QLog.isColorLevel()) {
         QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
       }
-      QQToast.a(this.a.a, 2131694236, 0).a();
+      QQToast.makeText(this.a.i, 2131891874, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel.1
  * JD-Core Version:    0.7.0.1
  */

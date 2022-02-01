@@ -25,9 +25,9 @@ class FriendProfileCardActivity$1
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     if (paramInt == 0) {
-      DropFrameMonitor.a().a("vas_profilecard_list", false);
+      DropFrameMonitor.b().a("vas_profilecard_list", false);
     } else {
-      DropFrameMonitor.a().a("vas_profilecard_list");
+      DropFrameMonitor.b().a("vas_profilecard_list");
     }
     if (FriendProfileCardActivity.access$000(this.this$0) != null)
     {
@@ -40,7 +40,7 @@ class FriendProfileCardActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.activity.FriendProfileCardActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class ShortVideoProcessUtil
     }
     if (QLog.isColorLevel())
     {
-      String str2 = jdField_a_of_type_JavaLangString;
+      String str2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getBundle templateId:");
       localStringBuilder.append(str1);
@@ -54,25 +54,25 @@ public class ShortVideoProcessUtil
     if ((paramActivity != null) && (paramIntent != null) && (paramICameraEntrance != null))
     {
       paramActivity.getIntent().putExtra("forward_source_from_shoot_quick", true);
-      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
-      if ((localPublishParam != null) && (localPublishParam.i == 1))
+      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
+      if ((localPublishParam != null) && (localPublishParam.s == 1))
       {
         Object localObject1 = localPublishParam.c;
         paramActivity.getIntent().putExtra("ab_test_send_btn_click_time", SystemClock.uptimeMillis());
         if (QLog.isColorLevel())
         {
-          localObject2 = jdField_a_of_type_JavaLangString;
+          localObject2 = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("hwEncodeVideo videoMergeThumbPath =");
           localStringBuilder.append((String)localObject1);
           QLog.d((String)localObject2, 2, localStringBuilder.toString());
-          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject1 = a;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("publishParam =");
           ((StringBuilder)localObject2).append(localPublishParam.toString());
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
-        PtvFilterUtils.a(new File(localPublishParam.j).getParent(), localPublishParam.b);
+        PtvFilterUtils.a(new File(localPublishParam.t).getParent(), localPublishParam.b);
         Object localObject2 = a(paramIntent);
         localObject1 = (SessionInfo)paramIntent.getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
         boolean bool = paramIntent.getBooleanExtra("gotoAIO", false);
@@ -80,9 +80,9 @@ public class ShortVideoProcessUtil
         if ((localObject1 != null) && (bool))
         {
           paramIntent = AIOUtils.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
-          paramIntent.putExtra("uin", ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString);
-          paramIntent.putExtra("uintype", ((SessionInfo)localObject1).jdField_a_of_type_Int);
-          paramIntent.putExtra("troop_uin", ((SessionInfo)localObject1).b);
+          paramIntent.putExtra("uin", ((SessionInfo)localObject1).b);
+          paramIntent.putExtra("uintype", ((SessionInfo)localObject1).a);
+          paramIntent.putExtra("troop_uin", ((SessionInfo)localObject1).c);
           paramActivity.startActivity(paramIntent);
           return;
         }
@@ -93,7 +93,7 @@ public class ShortVideoProcessUtil
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVideoFromEditVideoActivity params are wrong");
+      QLog.d(a, 2, "handleVideoFromEditVideoActivity params are wrong");
     }
   }
   
@@ -106,15 +106,15 @@ public class ShortVideoProcessUtil
   {
     VideoSendPublicParam localVideoSendPublicParam = new VideoSendPublicParam();
     localVideoSendPublicParam.mContext = paramActivity;
-    localVideoSendPublicParam.mVideoCacheDir = new File(paramPublishParam.j).getParent();
+    localVideoSendPublicParam.mVideoCacheDir = new File(paramPublishParam.t).getParent();
     int i;
-    if (paramPublishParam.f <= 5) {
-      i = paramPublishParam.f;
+    if (paramPublishParam.n <= 5) {
+      i = paramPublishParam.n;
     } else {
       i = 0;
     }
     localVideoSendPublicParam.mEncodeMode = i;
-    localVideoSendPublicParam.mVideoFilePath = paramPublishParam.j;
+    localVideoSendPublicParam.mVideoFilePath = paramPublishParam.t;
     localVideoSendPublicParam.mThumbFilePath = paramPublishParam.c;
     localVideoSendPublicParam.mThumbWidth = 0;
     localVideoSendPublicParam.mThumbHeight = 0;
@@ -131,9 +131,9 @@ public class ShortVideoProcessUtil
     paramActivity = "";
     if (paramSessionInfo != null)
     {
-      paramActivity = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      paramInt = paramSessionInfo.jdField_a_of_type_Int;
-      paramSessionInfo = paramSessionInfo.b;
+      paramActivity = paramSessionInfo.b;
+      paramInt = paramSessionInfo.a;
+      paramSessionInfo = paramSessionInfo.c;
     }
     else
     {
@@ -148,7 +148,7 @@ public class ShortVideoProcessUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.ShortVideoProcessUtil
  * JD-Core Version:    0.7.0.1
  */

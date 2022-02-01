@@ -13,7 +13,7 @@ class TroopEssenceMsgManager$13
   public void run()
   {
     long l = System.currentTimeMillis();
-    HashMap localHashMap = this.this$0.a(this.a);
+    HashMap localHashMap = this.this$0.c(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -26,7 +26,7 @@ class TroopEssenceMsgManager$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.13
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
@@ -34,35 +34,35 @@ public class PopupCardDialog
   extends PopupWindow
   implements View.OnClickListener, Animation.AnimationListener, AtPanelTouchController.AtPanelTouchListener, SoftPanelStatus.AtPanelStatusListener
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private PopupCardDialog.Listener jdField_a_of_type_ComTencentMobileqqTroopQuickatUiPopupCardDialog$Listener;
-  private SoftPanelStatus jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus;
-  private Drawable b;
+  private QBaseActivity a;
+  private Animation b;
+  private SoftPanelStatus c;
+  private View d;
+  private LayerDrawable e;
+  private Drawable f;
+  private Drawable g;
+  private PopupCardDialog.Listener h;
   
-  private PopupCardDialog(BaseActivity paramBaseActivity, View paramView, int paramInt1, int paramInt2)
+  private PopupCardDialog(QBaseActivity paramQBaseActivity, View paramView, int paramInt1, int paramInt2)
   {
     super(paramView, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus = new SoftPanelStatus(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramBaseActivity = (LayerDrawable)paramBaseActivity.getResources().getDrawable(2130837918);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
-    this.b = paramBaseActivity.getDrawable(1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)paramBaseActivity.mutate());
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369735, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
+    this.a = paramQBaseActivity;
+    this.c = new SoftPanelStatus(this.a);
+    paramQBaseActivity = (LayerDrawable)paramQBaseActivity.getResources().getDrawable(2130837942);
+    this.f = new ColorDrawable();
+    this.g = paramQBaseActivity.getDrawable(1);
+    this.e = ((LayerDrawable)paramQBaseActivity.mutate());
+    this.e.setDrawableByLayerId(2131436853, this.f);
+    setBackgroundDrawable(this.e);
   }
   
   private static View a(PopupCardDialog paramPopupCardDialog, Activity paramActivity, int paramInt)
   {
     View localView = paramPopupCardDialog.getContentView();
-    AtPanelTouchController localAtPanelTouchController = (AtPanelTouchController)localView.findViewById(2131365169);
+    AtPanelTouchController localAtPanelTouchController = (AtPanelTouchController)localView.findViewById(2131431322);
     int i = AIOUtils.b(60.0F, paramActivity.getResources());
-    IndexBar localIndexBar = (IndexBar)localView.findViewById(2131368761);
-    XListView localXListView = (XListView)localView.findViewById(2131379297);
+    IndexBar localIndexBar = (IndexBar)localView.findViewById(2131435678);
+    XListView localXListView = (XListView)localView.findViewById(2131448034);
     ViewGroup.LayoutParams localLayoutParams = localXListView.getLayoutParams();
     localXListView.setOverScrollMode(2);
     if (paramInt == 1)
@@ -88,20 +88,20 @@ public class PopupCardDialog
     return localView;
   }
   
-  public static PopupCardDialog a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2)
+  public static PopupCardDialog a(QBaseActivity paramQBaseActivity, int paramInt1, int paramInt2)
   {
-    View localView = LayoutInflater.from(paramBaseActivity).inflate(2131558567, null);
-    PopupCardDialog localPopupCardDialog = new PopupCardDialog(paramBaseActivity, localView, paramInt1, paramInt2);
-    a(localPopupCardDialog, paramBaseActivity, 1);
+    View localView = LayoutInflater.from(paramQBaseActivity).inflate(2131624124, null);
+    PopupCardDialog localPopupCardDialog = new PopupCardDialog(paramQBaseActivity, localView, paramInt1, paramInt2);
+    a(localPopupCardDialog, paramQBaseActivity, 1);
     localPopupCardDialog.setFocusable(false);
     localView.setOnClickListener(localPopupCardDialog);
-    ((TextView)localView.findViewById(2131363018)).setOnClickListener(localPopupCardDialog);
-    ((RelativeLayout)localView.findViewById(2131363019)).setOnClickListener(localPopupCardDialog);
+    ((TextView)localView.findViewById(2131428826)).setOnClickListener(localPopupCardDialog);
+    ((RelativeLayout)localView.findViewById(2131428827)).setOnClickListener(localPopupCardDialog);
     localPopupCardDialog.setInputMethodMode(32);
     localPopupCardDialog.setInputMethodMode(1);
     localPopupCardDialog.setClippingEnabled(false);
     localPopupCardDialog.setOutsideTouchable(true);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       a(localPopupCardDialog);
     }
     return localPopupCardDialog;
@@ -109,7 +109,7 @@ public class PopupCardDialog
   
   public static void a(PopupWindow paramPopupWindow)
   {
-    if (!AppSetting.d) {
+    if (!AppSetting.e) {
       return;
     }
     Method[] arrayOfMethod = PopupWindow.class.getMethods();
@@ -136,13 +136,8 @@ public class PopupCardDialog
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    if (localObject != null)
-    {
-      localObject = (InputMethodManager)((BaseActivity)localObject).getSystemService("input_method");
-      if (localObject != null) {
-        ((InputMethodManager)localObject).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
-      }
+    if (!isShowing()) {
+      getContentView().scrollTo(0, -1000);
     }
   }
   
@@ -153,53 +148,53 @@ public class PopupCardDialog
   
   public void a(int paramInt1, int paramInt2)
   {
-    View localView = getContentView().findViewById(2131362423);
+    View localView = getContentView().findViewById(2131428031);
     if (localView == null) {
       return;
     }
     localView.setVisibility(paramInt1);
-    ((TextView)localView.findViewById(2131370392)).setText(localView.getResources().getText(paramInt2));
-    if (paramInt2 != 2131689828) {
+    ((TextView)localView.findViewById(2131437659)).setText(localView.getResources().getText(paramInt2));
+    if (paramInt2 != 2131886469) {
       paramInt1 = 0;
     } else {
       paramInt1 = 8;
     }
-    getContentView().findViewById(2131362330).setVisibility(paramInt1);
+    getContentView().findViewById(2131427930).setVisibility(paramInt1);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = getHeight();
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView == null) {
       paramInt3 = 0;
     } else {
       paramInt3 = localView.getHeight();
     }
     int i;
-    if (SoftPanelStatus.a) {
+    if (SoftPanelStatus.b) {
       i = 0;
     } else {
-      i = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      i = ImmersiveUtils.getStatusBarHeight(this.a);
     }
     paramInt2 = paramInt2 - paramInt3 + i;
     if (paramInt2 != j) {
       update(0, 0, -1, paramInt2);
     }
-    a(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramInt1);
+    a(this, this.a, paramInt1);
   }
   
   public void a(PopupCardDialog.Listener paramListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiPopupCardDialog$Listener = paramListener;
+    this.h = paramListener;
   }
   
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369735, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.e.setDrawableByLayerId(2131436853, this.f);
     } else {
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369735, this.b);
+      this.e.setDrawableByLayerId(2131436853, this.g);
     }
     if (QLog.isColorLevel())
     {
@@ -210,24 +205,29 @@ public class PopupCardDialog
     }
   }
   
-  public void b()
-  {
-    if (!isShowing()) {
-      getContentView().scrollTo(0, -1000);
-    }
-  }
-  
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
     a(paramInt1, paramInt2, -1);
   }
   
+  public void d()
+  {
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      localObject = (InputMethodManager)((QBaseActivity)localObject).getSystemService("input_method");
+      if (localObject != null) {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+      }
+    }
+  }
+  
   @TargetApi(16)
   public void dismiss()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus.a(null);
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.c.a();
+    this.c.a(null);
+    this.d = null;
     if (Build.VERSION.SDK_INT >= 11)
     {
       super.dismiss();
@@ -235,16 +235,16 @@ public class PopupCardDialog
     }
     if (isShowing())
     {
-      Animation localAnimation = this.jdField_a_of_type_AndroidViewAnimationAnimation;
+      Animation localAnimation = this.b;
       if ((localAnimation != null) && (!localAnimation.hasEnded())) {
         return;
       }
-      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772372);
-        this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+        this.b = AnimationUtils.loadAnimation(this.a, 2130772464);
+        this.b.setAnimationListener(this);
       }
-      getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      getContentView().startAnimation(this.b);
     }
   }
   
@@ -267,14 +267,14 @@ public class PopupCardDialog
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363018)
+    if (paramView.getId() == 2131428826)
     {
-      PopupCardDialog.Listener localListener = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiPopupCardDialog$Listener;
+      PopupCardDialog.Listener localListener = this.h;
       if (localListener != null) {
         localListener.a(paramView);
       }
     }
-    else if (paramView.getId() != 2131363019)
+    else if (paramView.getId() != 2131428827)
     {
       dismiss();
     }
@@ -283,15 +283,15 @@ public class PopupCardDialog
   
   public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.d = paramView;
     super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus.a(this.jdField_a_of_type_AndroidViewView);
+    this.c.a(this);
+    this.c.a(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.PopupCardDialog
  * JD-Core Version:    0.7.0.1
  */

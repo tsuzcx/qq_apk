@@ -16,37 +16,37 @@ class MultiVideoEnterPageActivity$MyVideoObserver
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    if ((this.b.u != null) && (this.b.t != null))
     {
-      if (paramLong != this.a.jdField_a_of_type_Long)
+      if (paramLong != this.b.k)
       {
-        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
+        QLog.w(this.b.a, 1, "onKickOutResult, ignore");
         return;
       }
       if (paramBoolean)
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
-        this.a.b(paramInt2);
+        this.b.u.n.a(this.b.t.getLongAccountUin(), paramLong, this.b.D);
+        this.b.b(paramInt2);
         return;
       }
       if (paramInt3 == -5)
       {
-        if (this.a.jdField_a_of_type_Boolean)
+        if (this.b.z)
         {
-          if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
-            this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+          if ((this.b.c != null) && (this.b.c.length > 1) && (this.b.c[1] != null)) {
+            this.b.c[1].x.setVisibility(8);
           }
         }
         else {
-          this.a.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity$MainUI.b.setVisibility(8);
+          this.b.b.b.setVisibility(8);
         }
-        QQToast.a(this.a, 2131693104, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131299168));
+        QQToast.makeText(this.b, 2131890643, 1).show(MultiVideoEnterPageActivity.c(this.b).getDimensionPixelSize(2131299920));
         return;
       }
-      QQToast.a(this.a, 2131693103, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.b, 2131890642, 1).show(MultiVideoEnterPageActivity.d(this.b).getDimensionPixelSize(2131299920));
       return;
     }
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
+    QLog.w(this.b.a, 1, "onKickOutResult, empty");
   }
   
   protected void c(long paramLong)
@@ -54,20 +54,20 @@ class MultiVideoEnterPageActivity$MyVideoObserver
     super.c(paramLong);
     if (QLog.isColorLevel())
     {
-      String str = this.a.jdField_a_of_type_JavaLangString;
+      String str = this.b.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:");
       localStringBuilder.append(paramLong);
       localStringBuilder.append(", mRelationId = ");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.k);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
+    if ((paramLong != 0L) && (paramLong == this.b.k))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
+        QLog.d(this.b.a, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
       }
-      this.a.finish();
+      this.b.finish();
     }
   }
 }

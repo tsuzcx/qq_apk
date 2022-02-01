@@ -15,7 +15,7 @@ final class VipComicJumpActivity$6
   
   public void run()
   {
-    AppRuntime localAppRuntime = (AppRuntime)this.a.get();
+    AppRuntime localAppRuntime = (AppRuntime)this.b.get();
     if (localAppRuntime == null) {
       return;
     }
@@ -45,7 +45,7 @@ final class VipComicJumpActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicJumpActivity.6
  * JD-Core Version:    0.7.0.1
  */

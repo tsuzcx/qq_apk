@@ -293,7 +293,7 @@ public abstract class AbsWebView
       if (localObject != null)
       {
         ((WebViewPluginEngine)localObject).a(this.mWebview.getUrl(), 8589934596L, null);
-        ((WebViewPluginEngine)localObject).b();
+        ((WebViewPluginEngine)localObject).d();
       }
     }
     try
@@ -435,13 +435,13 @@ public abstract class AbsWebView
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "preInitPluginEngine");
     }
-    if ((this.mPluginEngine == null) && (WebViewPluginEngine.a != null))
+    if ((this.mPluginEngine == null) && (WebViewPluginEngine.f != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AbsWebView", 2, "use preloaded web engine!");
       }
-      this.mPluginEngine = WebViewPluginEngine.a;
-      WebViewPluginEngine.a = null;
+      this.mPluginEngine = WebViewPluginEngine.f;
+      WebViewPluginEngine.f = null;
       bindAllJavaScript();
       this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
       return;
@@ -507,7 +507,7 @@ public abstract class AbsWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView
  * JD-Core Version:    0.7.0.1
  */

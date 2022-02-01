@@ -24,8 +24,8 @@ class EditInfoActivity$3
       if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
         EditInfoActivity.access$000(this.a).setCursorVisible(false);
       }
-      this.a.mSwitchButton.setImageResource(2130838033);
-      this.a.mSwitchButton.setContentDescription(HardCodeUtil.a(2131703794));
+      this.a.mSwitchButton.setImageResource(2130838075);
+      this.a.mSwitchButton.setContentDescription(HardCodeUtil.a(2131901740));
       if (this.a.mEmojLayout != null) {
         this.a.mEmojLayout.setVisibility(0);
       }
@@ -36,8 +36,8 @@ class EditInfoActivity$3
       if (this.a.mEmojLayout != null) {
         this.a.mEmojLayout.setVisibility(8);
       }
-      this.a.mSwitchButton.setImageResource(2130848134);
-      this.a.mSwitchButton.setContentDescription(HardCodeUtil.a(2131703784));
+      this.a.mSwitchButton.setImageResource(2130849798);
+      this.a.mSwitchButton.setContentDescription(HardCodeUtil.a(2131901730));
       this.a.showInputMethod();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -45,7 +45,7 @@ class EditInfoActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editinfo.EditInfoActivity.3
  * JD-Core Version:    0.7.0.1
  */

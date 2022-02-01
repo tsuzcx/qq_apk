@@ -13,14 +13,14 @@ final class QQFileManagerUtilImpl$4
   {
     try
     {
-      long l = QQFileManagerUtilImpl.a(this.jdField_a_of_type_JavaLangString);
-      if (Utils.b() < l)
+      long l = QQFileManagerUtilImpl.j(this.a);
+      if (Utils.c() < l)
       {
-        FMToastUtil.a(HardCodeUtil.a(2131704630));
+        FMToastUtil.a(HardCodeUtil.a(2131902534));
         return;
       }
-      FilePathUtil.a(this.jdField_a_of_type_JavaLangString);
-      FMToastUtil.a(this.jdField_a_of_type_AndroidContentContext, 2, 2131692740);
+      FilePathUtil.a(this.a);
+      FMToastUtil.a(this.b, 2, 2131889811);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -33,14 +33,14 @@ final class QQFileManagerUtilImpl$4
       label55:
       break label44;
     }
-    FMToastUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131692739);
+    FMToastUtil.a(this.b, 0, 2131889810);
     return;
-    FMToastUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131704630);
+    FMToastUtil.a(this.b, 0, 2131902534);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.4
  * JD-Core Version:    0.7.0.1
  */

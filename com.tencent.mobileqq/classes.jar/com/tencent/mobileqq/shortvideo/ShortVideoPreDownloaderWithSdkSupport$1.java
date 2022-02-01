@@ -9,12 +9,12 @@ class ShortVideoPreDownloaderWithSdkSupport$1
   
   public void onSDKInited(boolean paramBoolean)
   {
-    ShortVideoPreDownloaderWithSdkSupport.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
+    ShortVideoPreDownloaderWithSdkSupport.b(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPreDownloaderWithSdkSupport.1
  * JD-Core Version:    0.7.0.1
  */

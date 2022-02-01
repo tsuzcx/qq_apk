@@ -13,20 +13,20 @@ class BaseChatPie$31
 {
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a());
-    ((SimpleUIAIOHelper)this.a.a(29)).a(2);
+    DialogUtil.a(this.a.aX());
+    ((SimpleUIAIOHelper)this.a.q(29)).f(2);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AudioTransitionAnimManager.a().a(this.a.jdField_a_of_type_AndroidContentContext);
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
-    AIOPanelUtiles.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    AudioTransitionAnimManager.a().a(this.a.e);
+    this.a.n.a(2);
+    AIOPanelUtiles.a(this.a.d, "0X8005CAC", this.a.ah.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.31
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.av.utils.download;
 
 public class DownloadResult
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
   public byte[] a;
-  public int b;
   public long b;
+  public long c;
+  public int d;
+  public String e;
+  public boolean f;
+  public int g;
 }
 
 

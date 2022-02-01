@@ -9,16 +9,16 @@ class DownloadManagerV2$18
   public void run()
   {
     if (UpdateManager.a()) {
-      UpdateManager.a().a();
+      UpdateManager.b().c();
     }
-    if (MyAppApi.d()) {
-      MyAppApi.a().j();
+    if (MyAppApi.r()) {
+      MyAppApi.l().s();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.18
  * JD-Core Version:    0.7.0.1
  */

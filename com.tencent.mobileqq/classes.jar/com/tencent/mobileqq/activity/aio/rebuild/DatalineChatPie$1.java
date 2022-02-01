@@ -14,8 +14,8 @@ class DatalineChatPie$1
   public boolean a(PhotoListPanel paramPhotoListPanel)
   {
     ArrayList localArrayList;
-    if (!paramPhotoListPanel.a.isEmpty()) {
-      localArrayList = new ArrayList(paramPhotoListPanel.a);
+    if (!paramPhotoListPanel.d.isEmpty()) {
+      localArrayList = new ArrayList(paramPhotoListPanel.d);
     } else {
       localArrayList = null;
     }
@@ -25,13 +25,13 @@ class DatalineChatPie$1
   
   public boolean b(PhotoListPanel paramPhotoListPanel)
   {
-    DatalineDeviceChooseModel.a(new ArrayList(paramPhotoListPanel.a)).a(this.a.a(), this.a.a, new DatalineChatPie.1.1(this, paramPhotoListPanel, paramPhotoListPanel));
+    DatalineDeviceChooseModel.a(new ArrayList(paramPhotoListPanel.d)).a(this.a.aX(), this.a.d, new DatalineChatPie.1.1(this, paramPhotoListPanel, paramPhotoListPanel));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.1
  * JD-Core Version:    0.7.0.1
  */

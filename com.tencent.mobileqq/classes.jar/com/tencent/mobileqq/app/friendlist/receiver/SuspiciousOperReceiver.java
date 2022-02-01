@@ -105,7 +105,7 @@ public class SuspiciousOperReceiver
     Object localObject = Integer.valueOf(0);
     int j = ((Integer)paramToServiceMsg.getAttribute("cmd", localObject)).intValue();
     oidb_cmd0xd69.RspBody localRspBody = new oidb_cmd0xd69.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+    FriendListHandler localFriendListHandler = this.b;
     int k = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     int m = localRspBody.cmd_type.get();
     paramFromServiceMsg = new StringBuilder(1024);
@@ -113,7 +113,7 @@ public class SuspiciousOperReceiver
     long l;
     if (k == 0)
     {
-      localObject = (INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class);
+      localObject = (INewFriendService)this.a.getRuntimeService(INewFriendService.class);
       if (m == 2)
       {
         int i;
@@ -212,7 +212,7 @@ public class SuspiciousOperReceiver
         QLog.i("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
       }
       paramToServiceMsg = new oidb_cmd0xd72.RspBody();
-      FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+      FriendListHandler localFriendListHandler = this.b;
       int i = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
       if (i == 0)
       {
@@ -223,7 +223,7 @@ public class SuspiciousOperReceiver
           paramToServiceMsg.append(l);
           QLog.i("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
         }
-        ((INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class)).deleteSysSuspiciousMsg(l);
+        ((INewFriendService)this.a.getRuntimeService(INewFriendService.class)).deleteSysSuspiciousMsg(l);
         a(126, true, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
         return;
       }
@@ -240,7 +240,7 @@ public class SuspiciousOperReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.SuspiciousOperReceiver
  * JD-Core Version:    0.7.0.1
  */

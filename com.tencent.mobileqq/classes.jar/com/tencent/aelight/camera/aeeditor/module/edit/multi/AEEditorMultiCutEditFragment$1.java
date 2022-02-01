@@ -18,8 +18,8 @@ import com.tencent.aelight.camera.aeeditor.view.reorder.ReorderTransition;
 import com.tencent.aelight.camera.aeeditor.view.timeline.ScaleScrollLayout;
 import com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.weishi.module.edit.cut.CutExtKt;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.weishi.module.edit.cut.CutExtKt;
 import java.util.LinkedList;
 
 class AEEditorMultiCutEditFragment$1
@@ -30,30 +30,30 @@ class AEEditorMultiCutEditFragment$1
   @RequiresApi(api=16)
   public void a(@NonNull String paramString, int paramInt)
   {
-    if (AEEditorMultiCutEditFragment.a(this.a) != null) {
-      AEEditorMultiCutEditFragment.a(this.a).setVisibility(4);
+    if (AEEditorMultiCutEditFragment.c(this.a) != null) {
+      AEEditorMultiCutEditFragment.c(this.a).setVisibility(4);
     }
-    if (AEEditorMultiCutEditFragment.a(this.a) != null)
+    if (AEEditorMultiCutEditFragment.d(this.a) != null)
     {
-      AEEditorMultiCutEditFragment.a(this.a).setVisibility(0);
-      AEEditorMultiCutEditFragment.a(this.a).setHandleView(null);
+      AEEditorMultiCutEditFragment.d(this.a).setVisibility(0);
+      AEEditorMultiCutEditFragment.d(this.a).setHandleView(null);
     }
     if (AEEditorMultiCutEditFragment.a(this.a) != null) {
       AEEditorMultiCutEditFragment.a(this.a).setVisibility(0);
     }
-    if (AEEditorMultiCutEditFragment.a(this.a) != null) {
-      AEEditorMultiCutEditFragment.a(this.a).setVisibility(0);
+    if (AEEditorMultiCutEditFragment.b(this.a) != null) {
+      AEEditorMultiCutEditFragment.b(this.a).setVisibility(0);
     }
     AEEditorMultiCutEditFragment.a(this.a, true);
-    if ((AEEditorMultiCutEditFragment.a(this.a) != null) && (!paramString.isEmpty()) && (paramInt != -1))
+    if ((AEEditorMultiCutEditFragment.e(this.a) != null) && (!paramString.isEmpty()) && (paramInt != -1))
     {
-      long l = CutExtKt.calculateReorderSeek(AEEditorMultiCutEditFragment.a(this.a), new LinkedList(), paramString, paramInt);
+      long l = CutExtKt.calculateReorderSeek(AEEditorMultiCutEditFragment.f(this.a), new LinkedList(), paramString, paramInt);
       if (l >= 0L) {
         AEEditorMultiCutEditFragment.a(this.a, l);
       }
-      AEEditorMultiCutEditFragment.a(this.a).a.postValue(ActionFactory.a(paramString, paramInt, AEEditorMultiCutEditFragment.a(this.a), AEEditorMultiCutEditFragment.a(this.a).getMediaModel()));
-      AEBaseDataReporter.a().H();
-      AEReportUtils.r();
+      AEEditorMultiCutEditFragment.e(this.a).a.postValue(ActionFactory.a(paramString, paramInt, AEEditorMultiCutEditFragment.f(this.a), AEEditorMultiCutEditFragment.g(this.a).getMediaModel()));
+      AEBaseDataReporter.a().I();
+      AEReportUtils.q();
     }
   }
   
@@ -61,11 +61,11 @@ class AEEditorMultiCutEditFragment$1
   public void a(@NonNull String paramString, @NonNull Point paramPoint)
   {
     AEEditorMultiCutEditFragment.a(this.a).setVisibility(8);
-    AEEditorMultiCutEditFragment.a(this.a).setVisibility(8);
+    AEEditorMultiCutEditFragment.b(this.a).setVisibility(8);
     AEEditorMultiCutEditFragment.a(this.a, false);
     int i;
-    if (AEEditorMultiCutEditFragment.a(this.a) != null) {
-      i = AEEditorMultiCutEditFragment.a(this.a).a(paramString, paramPoint);
+    if (AEEditorMultiCutEditFragment.c(this.a) != null) {
+      i = AEEditorMultiCutEditFragment.c(this.a).a(paramString, paramPoint);
     } else {
       i = -1;
     }
@@ -75,12 +75,12 @@ class AEEditorMultiCutEditFragment$1
     AEQLog.b("AEEditorMultiCutEditFragment", paramString.toString());
     if (i != -1)
     {
-      int j = this.a.getResources().getDimensionPixelSize(2063990826);
+      int j = this.a.getResources().getDimensionPixelSize(2063859753);
       int k = paramPoint.x;
-      int m = this.a.getResources().getDimensionPixelSize(2063990850);
-      paramString = ReorderTransition.a(this.a.a.a(), i, k - m, j);
+      int m = this.a.getResources().getDimensionPixelSize(2063859777);
+      paramString = ReorderTransition.a(this.a.h.getContentView(), i, k - m, j);
       paramString.setDuration(200L);
-      AEEditorMultiCutEditFragment.a(this.a).a();
+      AEEditorMultiCutEditFragment.d(this.a).a();
       paramString.addListener(new AEEditorMultiCutEditFragment.1.1(this, i));
       paramString.start();
     }
@@ -88,7 +88,7 @@ class AEEditorMultiCutEditFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

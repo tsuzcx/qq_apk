@@ -21,31 +21,31 @@ class AEPhotoListLogicDefault$7$1
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    localMessage.obj = this.a.jdField_a_of_type_JavaLangString;
+    localMessage.obj = this.a.b;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
     try
     {
-      localLocalMediaInfo.path = this.a.jdField_a_of_type_JavaLangString;
+      localLocalMediaInfo.path = this.a.b;
       localLocalMediaInfo.mMimeType = "video/mp4";
       localLocalMediaInfo.addedDate = System.currentTimeMillis();
       localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-      localLocalMediaInfo.thumbnailPath = this.a.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath;
-      localLocalMediaInfo.mDuration = this.a.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoDuration;
-      localLocalMediaInfo.fileSize = new File(this.a.jdField_a_of_type_JavaLangString).length();
+      localLocalMediaInfo.thumbnailPath = this.a.c.thumbPath;
+      localLocalMediaInfo.mDuration = this.a.c.videoDuration;
+      localLocalMediaInfo.fileSize = new File(this.a.b).length();
       localLocalMediaInfo.isSystemMeidaStore = false;
     }
     catch (Exception localException)
     {
       QZLog.e("QQAlbum", 2, new Object[] { "get new video info exception", localException });
     }
-    PhotoListBaseData.a.put(this.a.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
-    ((AENewPhotoListFragment)this.a.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicDefault.a.get()).a.sendMessage(localMessage);
-    FileUtils.deleteDirectory(this.a.b);
+    PhotoListBaseData.x.put(this.a.b, localLocalMediaInfo);
+    ((AENewPhotoListFragment)this.a.e.b.get()).C.sendMessage(localMessage);
+    FileUtils.deleteDirectory(this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicDefault.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,7 @@ import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.onlinestatus.model.OnlineStatusData;
 import com.tencent.mobileqq.onlinestatus.model.OnlineStatusMood;
 import com.tencent.mobileqq.onlinestatus.model.SubAccountMsg;
+import com.tencent.mobileqq.onlinestatus.olympic.model.OlympicMedalEventInfo;
 import com.tencent.mobileqq.onlinestatus.repository.AccountPanelRepository;
 import com.tencent.mobileqq.onlinestatus.utils.AlbumCleanUtil;
 import com.tencent.mobileqq.onlinestatus.utils.UiRouteUtils;
@@ -46,100 +47,111 @@ import mqq.os.MqqHandler;
 public class AccountPanelViewModel
   extends BaseViewModel<AccountPanelRepository>
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = -1L;
-  public Handler a;
-  private MutableLiveData<Boolean> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private IAccountPanel.OnlineStatusChangedListener jdField_a_of_type_ComTencentMobileqqOnlinestatusIAccountPanel$OnlineStatusChangedListener;
-  private SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private MutableLiveData<Integer> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private boolean jdField_b_of_type_Boolean = false;
-  private MutableLiveData<String> jdField_c_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private boolean jdField_c_of_type_Boolean = true;
-  private MutableLiveData<String> jdField_d_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private boolean jdField_d_of_type_Boolean = true;
-  private MutableLiveData<List<Object>> e = new MutableLiveData();
-  private MutableLiveData<SubAccountMsg> f = new MutableLiveData();
-  private MutableLiveData<OnlineStatusData> g = new MutableLiveData();
-  private MutableLiveData<SimpleAccount> h = new MutableLiveData();
-  private MutableLiveData<Boolean> i = new MutableLiveData();
-  private MutableLiveData<OnlineStatusMood> j = new MutableLiveData();
+  public Handler a = new Handler(ThreadManager.getSubThreadLooper());
+  private SimpleAccount b;
+  private MutableLiveData<Boolean> c = new MutableLiveData();
+  private MutableLiveData<Integer> d = new MutableLiveData();
+  private MutableLiveData<String> e = new MutableLiveData();
+  private MutableLiveData<String> f = new MutableLiveData();
+  private MutableLiveData<List<Object>> g = new MutableLiveData();
+  private MutableLiveData<SubAccountMsg> h = new MutableLiveData();
+  private MutableLiveData<OnlineStatusData> i = new MutableLiveData();
+  private MutableLiveData<SimpleAccount> j = new MutableLiveData();
+  private MutableLiveData<Boolean> k = new MutableLiveData();
+  private MutableLiveData<OnlineStatusMood> l = new MutableLiveData();
+  private MutableLiveData<Boolean> m = new MutableLiveData();
+  private MutableLiveData<Boolean> n = new MutableLiveData();
+  private long o = -1L;
+  private IAccountPanel.OnlineStatusChangedListener p;
+  private String q;
+  private int r = 0;
+  private boolean s = false;
+  private boolean t = false;
+  private boolean u = true;
+  private boolean v = true;
   
   public AccountPanelViewModel(AccountPanelRepository paramAccountPanelRepository)
   {
     super(paramAccountPanelRepository);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
   private int a(AppInterface paramAppInterface)
   {
-    int m = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getAllSubAccountInfo().size();
+    int i2 = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getAllSubAccountInfo().size();
     paramAppInterface = paramAppInterface.getApplication().getAllAccounts();
-    int k = m;
+    int i1 = i2;
     if (paramAppInterface != null)
     {
-      k = m;
+      i1 = i2;
       if (paramAppInterface.size() > 0) {
-        k = m + 1;
+        i1 = i2 + 1;
       }
     }
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("getRequestNum: ");
-      paramAppInterface.append(k);
+      paramAppInterface.append(i1);
       QLog.d("AccountPanelViewModel", 2, paramAppInterface.toString());
     }
-    return k;
+    return i1;
   }
   
-  private boolean a(long paramLong)
+  private void a(Intent paramIntent)
   {
-    boolean bool1 = OnLineStatusHelper.a(AppRuntime.Status.online, this.jdField_a_of_type_Long);
-    boolean bool2 = OnLineStatusHelper.a(AppRuntime.Status.online, paramLong);
+    QLog.d("AccountPanelViewModel", 2, "handleAddAccount AccountPanelViewModel-addAccountFrom2");
+    paramIntent.putExtra("fromWhereExactly", 2);
+  }
+  
+  private void a(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    QLog.d("AccountPanelViewModel", 2, localStringBuilder.toString());
+    ReportController.b(paramAppInterface, "dc00898", "", "", "0X800BDED", "0X800BDED", 0, 0, paramString2, "0", "", "");
+  }
+  
+  private boolean b(long paramLong)
+  {
+    boolean bool1 = OnLineStatusHelper.c(AppRuntime.Status.online, this.o);
+    boolean bool2 = OnLineStatusHelper.c(AppRuntime.Status.online, paramLong);
     if (QLog.isColorLevel()) {
-      QLog.d("AccountPanelViewModel", 2, new Object[] { "refreshPanelWhenMoodChange last=", Long.valueOf(this.jdField_a_of_type_Long), " curExtID=", Long.valueOf(paramLong) });
+      QLog.d("AccountPanelViewModel", 2, new Object[] { "refreshPanelWhenMoodChange last=", Long.valueOf(this.o), " curExtID=", Long.valueOf(paramLong) });
     }
-    OnlineStatusData localOnlineStatusData = (OnlineStatusData)this.g.getValue();
-    if ((paramLong == localOnlineStatusData.jdField_a_of_type_Long) && (AppRuntime.Status.online == localOnlineStatusData.jdField_a_of_type_MqqAppAppRuntime$Status) && (bool2))
+    OnlineStatusData localOnlineStatusData = (OnlineStatusData)this.i.getValue();
+    if ((paramLong == localOnlineStatusData.b) && (AppRuntime.Status.online == localOnlineStatusData.a) && (bool2))
     {
       QLog.d("AccountPanelViewModel", 2, "refreshPanelWhenMoodChange curStatus is equal");
       return true;
     }
-    this.j.setValue(new OnlineStatusMood(bool2, bool1));
+    this.l.setValue(new OnlineStatusMood(bool2, bool1));
     if (!bool2) {
       return bool1;
     }
     return true;
   }
   
+  private boolean c(long paramLong)
+  {
+    return paramLong == 1080L;
+  }
+  
   public MutableLiveData<Boolean> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    ((AccountPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    return this.c;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.o = paramLong;
   }
   
   public void a(QBaseActivity paramQBaseActivity, AppInterface paramAppInterface)
   {
-    if (Utils.c())
+    if (Utils.e())
     {
-      QQToast.a(paramQBaseActivity, 2131693846, 0).a();
+      QQToast.makeText(paramQBaseActivity, 2131891426, 0).show();
       return;
     }
     if (((IPwdSetUtilApi)QRoute.api(IPwdSetUtilApi.class)).checkHasNotSetPwd(paramQBaseActivity)) {
@@ -147,8 +159,8 @@ public class AccountPanelViewModel
     }
     Intent localIntent = new Intent();
     localIntent.addFlags(536870912);
+    a(localIntent);
     UiRouteUtils.a(paramQBaseActivity, localIntent, "/base/addAccount");
-    paramQBaseActivity.overridePendingTransition(2130772011, 2130771991);
     ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).doSomethingAfterSwitchAccountSuccess(paramAppInterface, paramQBaseActivity);
     ReportController.b(paramAppInterface, "CliOper", "", "", "0X80072D4", "0X80072D4", 0, 0, "", "", "", "");
     ReportHelperKt.a("0X800AF3B");
@@ -158,7 +170,7 @@ public class AccountPanelViewModel
   {
     if (!NetworkUtil.isNetSupportHw(BaseApplication.getContext()))
     {
-      QQToast.a(paramQBaseActivity, paramQBaseActivity.getString(2131692183), 0).b(paramQBaseActivity.getTitleBarHeight());
+      QQToast.makeText(paramQBaseActivity, paramQBaseActivity.getString(2131889169), 0).show(paramQBaseActivity.getTitleBarHeight());
       return;
     }
     if (QLog.isColorLevel())
@@ -168,8 +180,8 @@ public class AccountPanelViewModel
       localStringBuilder.append(paramSimpleAccount);
       QLog.d("AccountPanelViewModel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(Boolean.valueOf(true));
-    this.jdField_a_of_type_JavaLangString = paramSimpleAccount.getUin();
+    this.c.setValue(Boolean.valueOf(true));
+    this.q = paramSimpleAccount.getUin();
     paramQBaseActivity.sendBroadcast(new Intent("before_account_change"));
     MobileQQ.sMobileQQ.peekAppRuntime().switchAccount(paramSimpleAccount, null);
     ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).doSomethingAfterSwitchAccountSuccess((AppInterface)MobileQQ.sMobileQQ.peekAppRuntime(), paramQBaseActivity);
@@ -178,17 +190,18 @@ public class AccountPanelViewModel
   
   public void a(QBaseActivity paramQBaseActivity, SimpleAccount paramSimpleAccount, AppInterface paramAppInterface)
   {
-    a(paramQBaseActivity, paramSimpleAccount, paramAppInterface);
+    b(paramQBaseActivity, paramSimpleAccount, paramAppInterface);
     ReportController.b(paramAppInterface, "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
     ReportController.b(paramAppInterface, "CliOper", "", "", "0X80072D3", "0X80072D3", 0, 0, "", "", "", "");
     ReportHelperKt.a("0X800AF3A");
+    a(paramAppInterface, "handleThirdAccountClick AccountPanelViewModel-thirdAccountClick ", "2");
   }
   
   public void a(QBaseActivity paramQBaseActivity, SimpleAccount paramSimpleAccount, AppRuntime paramAppRuntime)
   {
     ISubAccountApi.SubAccountUnReadItemProxy localSubAccountUnReadItemProxy = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getUnreadCount(paramSimpleAccount.getUin());
-    if ((localSubAccountUnReadItemProxy.a() > 0) && (!localSubAccountUnReadItemProxy.a())) {
-      this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
+    if ((localSubAccountUnReadItemProxy.a() > 0) && (!localSubAccountUnReadItemProxy.b())) {
+      this.b = paramSimpleAccount;
     } else {
       a(paramQBaseActivity, paramSimpleAccount);
     }
@@ -199,7 +212,15 @@ public class AccountPanelViewModel
   
   public void a(IAccountPanel.OnlineStatusChangedListener paramOnlineStatusChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusIAccountPanel$OnlineStatusChangedListener = paramOnlineStatusChangedListener;
+    this.p = paramOnlineStatusChangedListener;
+  }
+  
+  public void a(OlympicMedalEventInfo paramOlympicMedalEventInfo)
+  {
+    paramOlympicMedalEventInfo = this.k;
+    Boolean localBoolean = Boolean.valueOf(true);
+    paramOlympicMedalEventInfo.setValue(localBoolean);
+    this.n.setValue(localBoolean);
   }
   
   public void a(ISubAccountApi.SubAccountInfoProxy paramSubAccountInfoProxy, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
@@ -217,7 +238,7 @@ public class AccountPanelViewModel
         while (((Iterator)localObject2).hasNext())
         {
           localObject1 = (SimpleAccount)((Iterator)localObject2).next();
-          if (TextUtils.equals(((SimpleAccount)localObject1).getUin(), paramSubAccountInfoProxy.a())) {
+          if (TextUtils.equals(((SimpleAccount)localObject1).getUin(), paramSubAccountInfoProxy.b())) {
             break label101;
           }
         }
@@ -233,23 +254,24 @@ public class AccountPanelViewModel
     {
       paramQBaseActivity.sendBroadcast(new Intent("before_account_change"));
       localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("subAccount", paramSubAccountInfoProxy.a());
+      ((Intent)localObject1).putExtra("subAccount", paramSubAccountInfoProxy.b());
       paramQBaseActivity.startActivity((Intent)localObject1);
       UiRouteUtils.a(paramQBaseActivity, (Intent)localObject1, "/base/subAccount/ug");
     }
     ReportController.b(paramAppInterface, "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
     ReportController.b(paramAppInterface, "CliOper", "", "", "0X80072D2", "0X80072D2", 0, 0, "", "", "", "");
     ReportHelperKt.a("0X800AF3A");
+    a(paramAppInterface, "handleSubAccountClick AccountPanelViewModel-subAccountClick ", "1");
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.q = paramString;
   }
   
   public void a(AppRuntime.Status paramStatus)
   {
-    IAccountPanel.OnlineStatusChangedListener localOnlineStatusChangedListener = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusIAccountPanel$OnlineStatusChangedListener;
+    IAccountPanel.OnlineStatusChangedListener localOnlineStatusChangedListener = this.p;
     if (localOnlineStatusChangedListener != null) {
       localOnlineStatusChangedListener.a(paramStatus);
     }
@@ -257,17 +279,17 @@ public class AccountPanelViewModel
   
   public void a(AppRuntime.Status paramStatus, long paramLong)
   {
-    if (!a(paramLong)) {
-      this.i.setValue(Boolean.valueOf(true));
+    if (!b(paramLong)) {
+      this.k.setValue(Boolean.valueOf(true));
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.o = paramLong;
   }
   
   public void a(AppRuntime.Status paramStatus, long paramLong, boolean paramBoolean)
   {
     if (paramStatus != null)
     {
-      this.g.setValue(new OnlineStatusData(paramStatus, paramLong));
+      this.i.setValue(new OnlineStatusData(paramStatus, paramLong));
       if (paramBoolean) {
         ((IOnlineStatusService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(paramStatus, paramLong);
       }
@@ -280,52 +302,52 @@ public class AccountPanelViewModel
   
   public void a(boolean paramBoolean)
   {
-    ((AccountPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramBoolean);
+    ((AccountPanelRepository)this.z).a(paramBoolean);
   }
   
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = this.jdField_d_of_type_Boolean;
+    boolean bool = this.v;
     Boolean localBoolean = Boolean.valueOf(true);
     if ((bool) && (paramBundle != null))
     {
       bool = paramBundle.getBoolean("param_need_switch_online_status", false);
-      int k;
+      int i1;
       if ((paramBoolean) && (paramBundle != null))
       {
-        k = paramBundle.getInt("StatusId", 0);
-        a(AppRuntime.Status.online, k, false);
+        i1 = paramBundle.getInt("StatusId", 0);
+        a(AppRuntime.Status.online, i1, false);
         if (!bool)
         {
-          QQToast.a(MobileQQ.sMobileQQ, 2, 2131691334, 1).a();
-          this.i.setValue(localBoolean);
+          QQToast.makeText(MobileQQ.sMobileQQ, 2, 2131888289, 1).show();
+          this.k.setValue(localBoolean);
         }
       }
       else
       {
         if (bool) {
-          k = 2131698496;
+          i1 = 2131896438;
         } else {
-          k = 2131691335;
+          i1 = 2131888290;
         }
-        QQToast.a(MobileQQ.sMobileQQ, 1, k, 1).a();
-        this.i.setValue(localBoolean);
+        QQToast.makeText(MobileQQ.sMobileQQ, 1, i1, 1).show();
+        this.k.setValue(localBoolean);
       }
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("AccountPanelViewModel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(this.jdField_d_of_type_Boolean) });
+      QLog.d("AccountPanelViewModel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(this.v) });
     }
   }
   
   public void a(boolean paramBoolean, Bundle paramBundle, AppInterface paramAppInterface)
   {
     paramBundle = ((IOnlineStatusService)paramAppInterface.getRuntimeService(IOnlineStatusService.class, "")).getOnlineStatus();
-    long l = OnLineStatusHelper.a().a(paramAppInterface);
-    if ((paramBoolean) && (paramBundle == AppRuntime.Status.online) && (l == 1030L))
+    long l1 = OnLineStatusHelper.a().a(paramAppInterface);
+    if ((paramBoolean) && (paramBundle == AppRuntime.Status.online) && (l1 == 1030L))
     {
       a(paramBundle);
-      this.i.setValue(Boolean.valueOf(true));
+      this.k.setValue(Boolean.valueOf(true));
     }
   }
   
@@ -343,7 +365,7 @@ public class AccountPanelViewModel
   {
     if (!TextUtils.isEmpty(paramString1))
     {
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount == null) {
+      if (this.b == null) {
         return;
       }
       if (QLog.isColorLevel())
@@ -359,42 +381,104 @@ public class AccountPanelViewModel
         localStringBuilder.append(paramString2);
         QLog.d("AccountPanelViewModel", 2, localStringBuilder.toString());
       }
-      if (paramString1.equals(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin())) {
-        this.h.setValue(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
+      if (paramString1.equals(this.b.getUin())) {
+        this.j.setValue(this.b);
       }
-      this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = null;
+      this.b = null;
     }
   }
   
   public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.s)
     {
       if (paramBoolean1) {
-        this.jdField_b_of_type_Boolean = true;
+        this.t = true;
       }
-      int k = this.jdField_a_of_type_Int;
-      if (k > 0) {
-        this.jdField_a_of_type_Int = (k - 1);
+      int i1 = this.r;
+      if (i1 > 0) {
+        this.r = (i1 - 1);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("AccountPanelViewModel", 2, new Object[] { " mRequestNum=", Integer.valueOf(this.jdField_a_of_type_Int), " subAccountMsgComing=", Boolean.valueOf(paramBoolean2) });
+        QLog.d("AccountPanelViewModel", 2, new Object[] { " mRequestNum=", Integer.valueOf(this.r), " subAccountMsgComing=", Boolean.valueOf(paramBoolean2) });
       }
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.r == 0)
       {
-        this.jdField_a_of_type_Boolean = false;
-        if (this.jdField_b_of_type_Boolean) {
-          b();
+        this.s = false;
+        if (this.t) {
+          o();
         }
       }
     }
     else if (paramBoolean1)
     {
-      this.f.setValue(new SubAccountMsg(paramBoolean1, paramString, paramBoolean2));
+      this.h.setValue(new SubAccountMsg(paramBoolean1, paramString, paramBoolean2));
     }
   }
   
-  public boolean a(QBaseActivity paramQBaseActivity, SimpleAccount paramSimpleAccount, AppRuntime paramAppRuntime)
+  public MutableLiveData<Integer> b()
+  {
+    return this.d;
+  }
+  
+  public void b(QBaseActivity paramQBaseActivity, AppInterface paramAppInterface)
+  {
+    this.a.post(new AccountPanelViewModel.2(this, paramQBaseActivity, paramAppInterface));
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.v = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (!this.v)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanelViewModel", 2, "onSetExtInfo: no needShowOnlineStatusToast ");
+      }
+      return;
+    }
+    boolean bool1 = paramBundle.getBoolean("from_register", false);
+    boolean bool2 = paramBundle.getBoolean("from_modify", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanelViewModel", 2, new Object[] { "onSetExtInfo: invoked. ", " isFromRegister: ", Boolean.valueOf(bool1), " isFromModify=", Boolean.valueOf(bool2) });
+    }
+    int i1;
+    if (paramBoolean)
+    {
+      i1 = paramBundle.getInt("StatusId");
+      a(AppRuntime.Status.online, i1, false);
+      if (bool2)
+      {
+        QQToast.makeText(MobileQQ.sMobileQQ, 2, 2131888289, 1).show();
+        this.k.setValue(Boolean.valueOf(true));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanelViewModel", 2, new Object[] { "onSetExtInfo: invoked. ", " statusId: ", Integer.valueOf(i1) });
+      }
+    }
+    else
+    {
+      if (bool1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanelViewModel", 2, "onSetExtInfo: invoked. isFromRegister ");
+        }
+        return;
+      }
+      if (bool2) {
+        i1 = 2131888290;
+      } else {
+        i1 = 2131896438;
+      }
+      QQToast.makeText(MobileQQ.sMobileQQ, 1, i1, 1).show();
+      this.k.setValue(Boolean.valueOf(true));
+    }
+  }
+  
+  public boolean b(QBaseActivity paramQBaseActivity, SimpleAccount paramSimpleAccount, AppRuntime paramAppRuntime)
   {
     if ((paramSimpleAccount != null) && (((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).cleanThirdQQUnreadMsgNum((AppInterface)paramAppRuntime, paramSimpleAccount)))
     {
@@ -404,12 +488,81 @@ public class AccountPanelViewModel
     return false;
   }
   
-  public MutableLiveData<Integer> b()
+  public MutableLiveData<String> c()
   {
-    return this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    return this.e;
   }
   
-  public void b()
+  public void c(boolean paramBoolean)
+  {
+    this.u = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      paramBundle = (OnlineStatusData)this.i.getValue();
+      a(paramBundle.a, paramBundle.b, false);
+    }
+  }
+  
+  public MutableLiveData<String> d()
+  {
+    return this.f;
+  }
+  
+  public MutableLiveData<List<Object>> e()
+  {
+    return this.g;
+  }
+  
+  public MutableLiveData<SubAccountMsg> f()
+  {
+    return this.h;
+  }
+  
+  public MutableLiveData<OnlineStatusData> g()
+  {
+    return this.i;
+  }
+  
+  public MutableLiveData<SimpleAccount> h()
+  {
+    return this.j;
+  }
+  
+  public MutableLiveData<Boolean> i()
+  {
+    return this.k;
+  }
+  
+  public MutableLiveData<OnlineStatusMood> j()
+  {
+    return this.l;
+  }
+  
+  public MutableLiveData<Boolean> k()
+  {
+    return this.m;
+  }
+  
+  public MutableLiveData<Boolean> l()
+  {
+    return this.n;
+  }
+  
+  public String m()
+  {
+    return this.q;
+  }
+  
+  public void n()
+  {
+    ((AccountPanelRepository)this.z).a();
+  }
+  
+  public void o()
   {
     ArrayList localArrayList1 = new ArrayList();
     List localList = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getAllSubAccountInfo();
@@ -420,12 +573,12 @@ public class AccountPanelViewModel
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ISubAccountApi.SubAccountInfoProxy)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((ISubAccountApi.SubAccountInfoProxy)localObject2).a())))
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((ISubAccountApi.SubAccountInfoProxy)localObject2).b())))
         {
           localArrayList1.add(localObject2);
-          localArrayList2.add(((ISubAccountApi.SubAccountInfoProxy)localObject2).a());
+          localArrayList2.add(((ISubAccountApi.SubAccountInfoProxy)localObject2).b());
           if (QLog.isColorLevel()) {
-            QLog.d("AccountPanelViewModel", 2, String.format("prepareContentViews, add sub account uin: %s", new Object[] { ((ISubAccountApi.SubAccountInfoProxy)localObject2).a() }));
+            QLog.d("AccountPanelViewModel", 2, String.format("prepareContentViews, add sub account uin: %s", new Object[] { ((ISubAccountApi.SubAccountInfoProxy)localObject2).b() }));
           }
         }
       }
@@ -436,7 +589,7 @@ public class AccountPanelViewModel
     if (localObject2 != null) {
       ((List)localObject1).addAll((Collection)localObject2);
     }
-    int k;
+    int i1;
     if (((List)localObject1).size() > 0)
     {
       localObject2 = ((List)localObject1).iterator();
@@ -457,13 +610,13 @@ public class AccountPanelViewModel
             String str = (String)localIterator.next();
             if (localSimpleAccount.getUin().equals(str))
             {
-              k = 1;
+              i1 = 1;
               break label345;
             }
           }
-          k = 0;
+          i1 = 0;
           label345:
-          if (k == 0)
+          if (i1 == 0)
           {
             localArrayList1.add(localSimpleAccount);
             if (QLog.isColorLevel()) {
@@ -474,134 +627,23 @@ public class AccountPanelViewModel
       }
     }
     QLog.d("AccountPanelViewModel", 1, "localAccountList is empty");
-    this.e.setValue(localArrayList1);
+    this.g.setValue(localArrayList1);
     if (QLog.isColorLevel())
     {
-      int m = ((List)localObject1).size();
+      int i2 = ((List)localObject1).size();
       if (localList != null) {
-        k = localList.size();
+        i1 = localList.size();
       } else {
-        k = 0;
+        i1 = 0;
       }
-      QLog.d("AccountPanelViewModel", 2, String.format("prepareContentViews, account size: %s, sub account size: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(k) }));
+      QLog.d("AccountPanelViewModel", 2, String.format("prepareContentViews, account size: %s, sub account size: %s", new Object[] { Integer.valueOf(i2), Integer.valueOf(i1) }));
     }
-  }
-  
-  public void b(QBaseActivity paramQBaseActivity, AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AccountPanelViewModel.2(this, paramQBaseActivity, paramAppInterface));
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanelViewModel", 2, "onSetExtInfo: no needShowOnlineStatusToast ");
-      }
-      return;
-    }
-    boolean bool1 = paramBundle.getBoolean("from_register", false);
-    boolean bool2 = paramBundle.getBoolean("from_modify", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanelViewModel", 2, new Object[] { "onSetExtInfo: invoked. ", " isFromRegister: ", Boolean.valueOf(bool1), " isFromModify=", Boolean.valueOf(bool2) });
-    }
-    int k;
-    if (paramBoolean)
-    {
-      k = paramBundle.getInt("StatusId");
-      a(AppRuntime.Status.online, k, false);
-      if (bool2)
-      {
-        QQToast.a(MobileQQ.sMobileQQ, 2, 2131691334, 1).a();
-        this.i.setValue(Boolean.valueOf(true));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanelViewModel", 2, new Object[] { "onSetExtInfo: invoked. ", " statusId: ", Integer.valueOf(k) });
-      }
-    }
-    else
-    {
-      if (bool1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanelViewModel", 2, "onSetExtInfo: invoked. isFromRegister ");
-        }
-        return;
-      }
-      if (bool2) {
-        k = 2131691335;
-      } else {
-        k = 2131698496;
-      }
-      QQToast.a(MobileQQ.sMobileQQ, 1, k, 1).a();
-      this.i.setValue(Boolean.valueOf(true));
-    }
-  }
-  
-  public MutableLiveData<String> c()
-  {
-    return this.jdField_c_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = (OnlineStatusData)this.g.getValue();
-      a(paramBundle.jdField_a_of_type_MqqAppAppRuntime$Status, paramBundle.jdField_a_of_type_Long, false);
-    }
-  }
-  
-  public MutableLiveData<String> d()
-  {
-    return this.jdField_d_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public MutableLiveData<List<Object>> e()
-  {
-    return this.e;
-  }
-  
-  public MutableLiveData<SubAccountMsg> f()
-  {
-    return this.f;
-  }
-  
-  public MutableLiveData<OnlineStatusData> g()
-  {
-    return this.g;
-  }
-  
-  public MutableLiveData<SimpleAccount> h()
-  {
-    return this.h;
-  }
-  
-  public MutableLiveData<Boolean> i()
-  {
-    return this.i;
-  }
-  
-  public MutableLiveData<OnlineStatusMood> j()
-  {
-    return this.j;
   }
   
   protected void onCleared()
   {
     super.onCleared();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -609,7 +651,7 @@ public class AccountPanelViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.viewmodel.AccountPanelViewModel
  * JD-Core Version:    0.7.0.1
  */

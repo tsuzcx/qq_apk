@@ -33,7 +33,7 @@ class ApolloJsPluginImpl$ApolloReceiver
     while (i < this.a.size())
     {
       localObject = (ApolloJsPluginImpl)((WeakReference)this.a.get(i)).get();
-      if ((localObject != null) && (((ApolloJsPluginImpl)localObject).mRuntime != null) && (paramApolloJsPluginImpl.mRuntime != null) && (((ApolloJsPluginImpl)localObject).mRuntime.a() == paramApolloJsPluginImpl.mRuntime.a()))
+      if ((localObject != null) && (((ApolloJsPluginImpl)localObject).mRuntime != null) && (paramApolloJsPluginImpl.mRuntime != null) && (((ApolloJsPluginImpl)localObject).mRuntime.d() == paramApolloJsPluginImpl.mRuntime.d()))
       {
         i = 1;
         break label130;
@@ -95,9 +95,7 @@ class ApolloJsPluginImpl$ApolloReceiver
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloJsPlugin", 2, new Object[] { "[onReceive] action=", paramContext });
     }
-    Object localObject;
-    if ("action_apollo_game_event_notify".equals(paramContext))
-    {
+    if ("action_apollo_game_event_notify".equals(paramContext)) {
       try
       {
         paramIntent = paramIntent.getStringExtra("data");
@@ -112,51 +110,33 @@ class ApolloJsPluginImpl$ApolloReceiver
         int i = this.a.size() - 1;
         while (i >= 0)
         {
-          localObject = (ApolloJsPluginImpl)((WeakReference)this.a.get(i)).get();
-          if ((localObject != null) && (((ApolloJsPluginImpl)localObject).mRuntime != null))
+          ApolloJsPluginImpl localApolloJsPluginImpl = (ApolloJsPluginImpl)((WeakReference)this.a.get(i)).get();
+          if ((localApolloJsPluginImpl != null) && (localApolloJsPluginImpl.mRuntime != null))
           {
-            CustomWebView localCustomWebView = ((ApolloJsPluginImpl)localObject).mRuntime.a();
+            CustomWebView localCustomWebView = localApolloJsPluginImpl.mRuntime.a();
             if ((localCustomWebView != null) && (!paramIntent.contains(localCustomWebView)))
             {
-              ((ApolloJsPluginImpl)localObject).dispatchJsEvent("apolloGameWebMessage", paramContext, null);
+              localApolloJsPluginImpl.dispatchJsEvent("apolloGameWebMessage", paramContext, null);
               paramIntent.add(localCustomWebView);
               if (QLog.isColorLevel()) {
-                QLog.d("[cmshow]ApolloJsPlugin", 2, new Object[] { "jsPlugin.dispatchJsEvent, jsPlugin:", localObject, "webview:", localCustomWebView });
+                QLog.d("[cmshow]ApolloJsPlugin", 2, new Object[] { "jsPlugin.dispatchJsEvent, jsPlugin:", localApolloJsPluginImpl, "webview:", localCustomWebView });
               }
             }
           }
           i -= 1;
         }
-        if (!"action_apollo_cmshow_content_update".equals(paramContext)) {
-          return;
-        }
+        return;
       }
       catch (Exception paramContext)
       {
         QLog.e("[cmshow]ApolloJsPlugin", 1, "[onReceive] exception=", paramContext);
-        return;
       }
-    }
-    else
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("rscContent_ApolloRscCacheManager onReceive action:");
-        ((StringBuilder)localObject).append(paramContext);
-        QLog.i("[cmshow]ApolloJsPlugin", 2, ((StringBuilder)localObject).toString());
-      }
-      paramContext = paramIntent.getStringExtra("key_content_update_zip_name");
-      paramIntent = new StringBuilder();
-      paramIntent.append("rscContent_ApolloRscCacheManager onReceive zipName:");
-      paramIntent.append(paramContext);
-      QLog.i("[cmshow]ApolloJsPlugin", 1, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.api.impl.ApolloJsPluginImpl.ApolloReceiver
  * JD-Core Version:    0.7.0.1
  */

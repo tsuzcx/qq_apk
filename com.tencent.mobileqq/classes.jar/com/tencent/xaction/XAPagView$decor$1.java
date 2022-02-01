@@ -26,18 +26,18 @@ public final class XAPagView$decor$1
   
   public void a()
   {
-    if (a() != null)
+    if (e() != null)
     {
-      if (a() == null) {
+      if (d() == null) {
         return;
       }
-      Object localObject = a();
+      Object localObject = e();
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
       if (((ViewData)localObject).getExts() != null)
       {
-        localObject = a();
+        localObject = e();
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
@@ -54,10 +54,10 @@ public final class XAPagView$decor$1
           }
           XAEngine.Companion.a().execute((Runnable)new XAPagView.decor.1.bindData.1(this, (String)localObject));
           localObject = XAEmptyView.a;
-          IXAEngine localIXAEngine = a();
+          IXAEngine localIXAEngine = d();
           if (localIXAEngine != null)
           {
-            ((XAEmptyView.Companion)localObject).b((XAEngine)localIXAEngine, (IView)this.a, a());
+            ((XAEmptyView.Companion)localObject).b((XAEngine)localIXAEngine, (IView)this.a, e());
             return;
           }
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.impl.XAEngine");
@@ -69,7 +69,7 @@ public final class XAPagView$decor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XAPagView.decor.1
  * JD-Core Version:    0.7.0.1
  */

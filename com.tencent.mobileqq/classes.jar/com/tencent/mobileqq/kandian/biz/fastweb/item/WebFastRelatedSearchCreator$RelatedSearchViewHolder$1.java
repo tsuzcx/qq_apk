@@ -25,30 +25,30 @@ class WebFastRelatedSearchCreator$RelatedSearchViewHolder$1
   public void onClick(View paramView)
   {
     int i = 0;
-    QLog.d("WebFastRelatedSearchCreator", 1, new Object[] { "click search word, position = ", Integer.valueOf(this.jdField_a_of_type_Int), ", word = ", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebEntityRelatedSearchData$SearchWord.a, ", jumpUrl = ", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebEntityRelatedSearchData$SearchWord.b });
+    QLog.d("WebFastRelatedSearchCreator", 1, new Object[] { "click search word, position = ", Integer.valueOf(this.a), ", word = ", this.b.a, ", jumpUrl = ", this.b.b });
     try
     {
-      paramView = new RIJTransMergeKanDianReport.ReportR5Builder().addRowkey(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.a.j).addRelatedSearch(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebEntityRelatedSearchData$SearchWord, this.jdField_a_of_type_Int).addTitle(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData.a.c);
+      paramView = new RIJTransMergeKanDianReport.ReportR5Builder().addRowkey(this.c.aR.q).addRelatedSearch(this.b, this.a).addTitle(this.c.aR.j);
       if (RIJArticleInteractBarAladdinConfig.b()) {
         i = 1;
       }
-      WebFastRelatedSearchCreator.a("0X800983F", paramView.addAdRelativePos(i).addSid(((RelatedSearchData)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData).a).build());
+      WebFastRelatedSearchCreator.a("0X800983F", paramView.addAdRelativePos(i).addSid(((RelatedSearchData)this.c).b).build());
     }
     catch (JSONException paramView)
     {
       paramView.printStackTrace();
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebEntityRelatedSearchData$SearchWord.b))
+    if (!TextUtils.isEmpty(this.b.b))
     {
-      paramView = new Intent(WebFastRelatedSearchCreator.RelatedSearchViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebFastRelatedSearchCreator$RelatedSearchViewHolder), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountBrowser.class));
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebEntityRelatedSearchData$SearchWord.b);
-      WebFastRelatedSearchCreator.RelatedSearchViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebFastRelatedSearchCreator$RelatedSearchViewHolder).startActivity(paramView);
+      paramView = new Intent(WebFastRelatedSearchCreator.RelatedSearchViewHolder.a(this.d), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountBrowser.class));
+      paramView.putExtra("url", this.b.b);
+      WebFastRelatedSearchCreator.RelatedSearchViewHolder.a(this.d).startActivity(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastRelatedSearchCreator.RelatedSearchViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

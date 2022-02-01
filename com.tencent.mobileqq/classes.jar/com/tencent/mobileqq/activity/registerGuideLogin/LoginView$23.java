@@ -10,13 +10,13 @@ class LoginView$23
   
   public void run()
   {
-    Object localObject = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    this.this$0.a.runOnUiThread(new LoginView.23.1(this, localObject));
+    Object localObject = this.this$0.a(this.a, this.b);
+    this.this$0.b.runOnUiThread(new LoginView.23.1(this, localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.23
  * JD-Core Version:    0.7.0.1
  */

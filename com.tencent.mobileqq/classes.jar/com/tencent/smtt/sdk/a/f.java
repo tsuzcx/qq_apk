@@ -296,21 +296,12 @@ public class f
       a();
       return;
     }
-    catch (IOException localIOException)
-    {
-      String str = a;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Failed to release process lock file: ");
-      localStringBuilder.append(this.b.getAbsolutePath());
-      localStringBuilder.append(" error: ");
-      localStringBuilder.append(localIOException);
-      TbsLog.e(str, localStringBuilder.toString());
-    }
+    catch (IOException localIOException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.f
  * JD-Core Version:    0.7.0.1
  */

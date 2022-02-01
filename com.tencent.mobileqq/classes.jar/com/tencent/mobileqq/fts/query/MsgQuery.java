@@ -21,22 +21,22 @@ public class MsgQuery
   
   private FTSQueryArgs a(FTSQueryArgs paramFTSQueryArgs, QueryArgs paramQueryArgs)
   {
-    if (paramQueryArgs.jdField_a_of_type_JavaLangClass != null)
+    if (paramQueryArgs.d != null)
     {
-      paramFTSQueryArgs.jdField_b_of_type_Int = paramQueryArgs.d;
-      paramFTSQueryArgs.jdField_b_of_type_JavaLangString = paramQueryArgs.jdField_b_of_type_JavaLangString;
+      paramFTSQueryArgs.f = paramQueryArgs.k;
+      paramFTSQueryArgs.g = paramQueryArgs.l;
       return paramFTSQueryArgs;
     }
-    paramQueryArgs = FTSArgsFactory.a(FTSMessage.class, String.valueOf(paramQueryArgs.jdField_b_of_type_Long));
-    paramFTSQueryArgs.jdField_a_of_type_JavaLangString = paramQueryArgs.jdField_a_of_type_JavaLangString;
-    paramFTSQueryArgs.jdField_a_of_type_ArrayOfJavaLangString = paramQueryArgs.jdField_a_of_type_ArrayOfJavaLangString;
+    paramQueryArgs = FTSArgsFactory.a(FTSMessage.class, String.valueOf(paramQueryArgs.j));
+    paramFTSQueryArgs.a = paramQueryArgs.a;
+    paramFTSQueryArgs.b = paramQueryArgs.b;
     return paramFTSQueryArgs;
   }
   
   private String[] a(String paramString)
   {
     long l1 = System.nanoTime();
-    paramString = FTSUtils.a(paramString.trim().toLowerCase());
+    paramString = FTSUtils.b(paramString.trim().toLowerCase());
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -63,28 +63,28 @@ public class MsgQuery
   
   private <T> List<T> b(QueryArgs paramQueryArgs)
   {
-    if (paramQueryArgs.jdField_a_of_type_JavaLangString != null)
+    if (paramQueryArgs.c != null)
     {
-      if (TextUtils.isEmpty(paramQueryArgs.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramQueryArgs.c)) {
         return null;
       }
-      FTSMsgOperator localFTSMsgOperator = (FTSMsgOperator)((FTSDBRuntimeServiceImpl)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(1);
+      FTSMsgOperator localFTSMsgOperator = (FTSMsgOperator)((FTSDBRuntimeServiceImpl)this.a.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(1);
       if (localFTSMsgOperator == null) {
         return null;
       }
-      Object localObject = a(paramQueryArgs.jdField_a_of_type_JavaLangString);
+      Object localObject = a(paramQueryArgs.c);
       if (localObject == null) {
         return null;
       }
-      ArrayList localArrayList = FTSUtils.a(paramQueryArgs.jdField_a_of_type_JavaLangString);
-      localObject = FTSArgsFactory.a((String[])localObject, (String[])localArrayList.toArray(new String[localArrayList.size()]), paramQueryArgs.jdField_a_of_type_JavaLangClass, paramQueryArgs.jdField_a_of_type_Boolean);
-      ((FTSQueryArgs)localObject).jdField_b_of_type_Boolean = paramQueryArgs.jdField_b_of_type_Boolean;
-      ((FTSQueryArgs)localObject).c = paramQueryArgs.c;
-      if (paramQueryArgs.jdField_b_of_type_Long != -1L) {
-        return localFTSMsgOperator.a(a((FTSQueryArgs)localObject, paramQueryArgs), paramQueryArgs.jdField_a_of_type_AndroidUtilPair);
+      ArrayList localArrayList = FTSUtils.c(paramQueryArgs.c);
+      localObject = FTSArgsFactory.a((String[])localObject, (String[])localArrayList.toArray(new String[localArrayList.size()]), paramQueryArgs.d, paramQueryArgs.e);
+      ((FTSQueryArgs)localObject).d = paramQueryArgs.f;
+      ((FTSQueryArgs)localObject).i = paramQueryArgs.i;
+      if (paramQueryArgs.j != -1L) {
+        return localFTSMsgOperator.a(a((FTSQueryArgs)localObject, paramQueryArgs), paramQueryArgs.m);
       }
-      ((FTSQueryArgs)localObject).jdField_b_of_type_Int = paramQueryArgs.d;
-      ((FTSQueryArgs)localObject).jdField_b_of_type_JavaLangString = paramQueryArgs.jdField_b_of_type_JavaLangString;
+      ((FTSQueryArgs)localObject).f = paramQueryArgs.k;
+      ((FTSQueryArgs)localObject).g = paramQueryArgs.l;
       return localFTSMsgOperator.a((FTSQueryArgs)localObject);
     }
     return null;
@@ -92,13 +92,13 @@ public class MsgQuery
   
   public <T> List<T> a(QueryArgs paramQueryArgs)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramQueryArgs.jdField_a_of_type_MqqAppAppRuntime;
+    this.a = paramQueryArgs.a;
     return b(paramQueryArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.query.MsgQuery
  * JD-Core Version:    0.7.0.1
  */

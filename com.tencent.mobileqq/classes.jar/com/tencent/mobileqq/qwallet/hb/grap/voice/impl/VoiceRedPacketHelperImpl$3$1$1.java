@@ -24,21 +24,21 @@ class VoiceRedPacketHelperImpl$3$1$1
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_Long;
-    Object localObject2 = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.onVoiceRedPacketListenerRef.get();
+    long l2 = this.d.a;
+    Object localObject2 = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.d.b.l.onVoiceRedPacketListenerRef.get();
     int i;
     if (localObject2 != null) {
       i = localObject2.hashCode();
     } else {
       i = 0;
     }
-    Object localObject1 = QWalletTools.a();
-    if (!this.jdField_a_of_type_Boolean) {
-      VoiceRedPacketHelperImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl, 3, l1 - l2, 1, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.b);
+    Object localObject1 = QWalletTools.b();
+    if (!this.a) {
+      VoiceRedPacketHelperImpl.access$100(this.d.b.l, 3, l1 - l2, 1, this.d.b.h);
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_Int == 21) && (localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg != null) && (localObject2 != null) && (!((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject2).d()) && (!this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.isCancel) && (i == this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.identify))
+    if ((this.a) && (this.b != null) && (this.c == 21) && (localObject1 != null) && (this.d.b.a != null) && (localObject2 != null) && (!((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject2).p()) && (!this.d.b.l.isCancel) && (i == this.d.b.l.identify))
     {
-      SongRedPackMatchRsp localSongRedPackMatchRsp = (SongRedPackMatchRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
+      SongRedPackMatchRsp localSongRedPackMatchRsp = (SongRedPackMatchRsp)this.b.getSerializable("rsp");
       Object localObject3;
       if (QLog.isColorLevel())
       {
@@ -47,7 +47,7 @@ class VoiceRedPacketHelperImpl$3$1$1
         ((StringBuilder)localObject3).append(localSongRedPackMatchRsp);
         QLog.d("VoiceRedPacketHelperImpl", 2, ((StringBuilder)localObject3).toString());
       }
-      if ((localSongRedPackMatchRsp != null) && (localSongRedPackMatchRsp.grabUin == ((BaseQQAppInterface)localObject1).getLongAccountUin()) && (localSongRedPackMatchRsp.billno != null) && (localSongRedPackMatchRsp.billno.equals(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
+      if ((localSongRedPackMatchRsp != null) && (localSongRedPackMatchRsp.grabUin == ((BaseQQAppInterface)localObject1).getLongAccountUin()) && (localSongRedPackMatchRsp.billno != null) && (localSongRedPackMatchRsp.billno.equals(this.d.b.a.mQQWalletRedPacketMsg.redPacketId)))
       {
         if (QLog.isColorLevel())
         {
@@ -56,7 +56,7 @@ class VoiceRedPacketHelperImpl$3$1$1
           ((StringBuilder)localObject3).append(localSongRedPackMatchRsp.status);
           QLog.d("VoiceRedPacketHelperImpl", 2, ((StringBuilder)localObject3).toString());
         }
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl;
+        localObject3 = this.d.b.l;
         ((VoiceRedPacketHelperImpl)localObject3).serverTryTime += 1;
         i = localSongRedPackMatchRsp.status;
         if (i != 0)
@@ -78,33 +78,33 @@ class VoiceRedPacketHelperImpl$3$1$1
                 ((StringBuilder)localObject1).append((String)localObject2);
                 QLog.d("VoiceRedPacketHelperImpl", 2, ((StringBuilder)localObject1).toString());
               }
-              VoiceRedPacketHelperImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl, (String)localObject2);
+              VoiceRedPacketHelperImpl.access$300(this.d.b.l, (String)localObject2);
             }
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.syncVoiceScoreIdToMr(localSongRedPackMatchRsp.degree, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.saveVoiceScoreId(localSongRedPackMatchRsp.degree, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+            this.d.b.l.syncVoiceScoreIdToMr(localSongRedPackMatchRsp.degree, this.d.b.i, this.d.b.j);
+            this.d.b.l.saveVoiceScoreId(localSongRedPackMatchRsp.degree, this.d.b.a);
             ((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject2).a(true, localSongRedPackMatchRsp.degree);
-            ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).QQAppInterface$getMessageFacade$addAndSendMessage((AppRuntime)localObject1, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqAppBaseMessageObserver);
+            ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).QQAppInterface$getMessageFacade$addAndSendMessage((AppRuntime)localObject1, this.d.b.i, this.d.b.k);
           }
         }
         else {
           ((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject2).a(false, "");
         }
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.redPacketCacheMap.remove(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.mix2RecordMap.remove(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+        this.d.b.l.redPacketCacheMap.remove(this.d.b.i);
+        this.d.b.l.mix2RecordMap.remove(this.d.b.i);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.onError("rsp is null");
+      this.d.b.l.onError("rsp is null");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3$1.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$3.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.onError("onReceive SongRedPackMatchRsp erorr");
+    this.d.b.l.onError("onReceive SongRedPackMatchRsp erorr");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.VoiceRedPacketHelperImpl.3.1.1
  * JD-Core Version:    0.7.0.1
  */

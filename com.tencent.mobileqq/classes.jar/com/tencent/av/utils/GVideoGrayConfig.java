@@ -20,27 +20,22 @@ import java.util.Map;
 
 public class GVideoGrayConfig
 {
-  private static GVideoGrayConfig jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig = new GVideoGrayConfig();
-  public int a;
-  private long jdField_a_of_type_Long;
-  private GVideoGrayConfig.GVideoPreDownloadListener jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener;
-  private GVideoObserver jdField_a_of_type_ComTencentMobileqqAppGVideoObserver = new GVideoGrayConfig.1(this);
-  private LongSparseArray<GVideoGrayConfig.GVideoGrayConfigListener> jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray();
-  private Map<String, GVideoGrayConfig.Record> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  private GVideoGrayConfig()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  private static GVideoGrayConfig b = new GVideoGrayConfig();
+  public int a = -1;
+  private Map<String, GVideoGrayConfig.Record> c = new HashMap();
+  private GVideoGrayConfig.GVideoPreDownloadListener d;
+  private long e;
+  private LongSparseArray<GVideoGrayConfig.GVideoGrayConfigListener> f = new LongSparseArray();
+  private GVideoObserver g = new GVideoGrayConfig.1(this);
   
   public static GVideoGrayConfig a()
   {
-    return jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig;
+    return b;
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131695611, 2131695613, new GVideoGrayConfig.2(paramContext), paramOnClickListener).show();
+    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131893370, 2131893372, new GVideoGrayConfig.2(paramContext), paramOnClickListener).show();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
@@ -62,25 +57,20 @@ public class GVideoGrayConfig
     paramContext.startActivity(localIntent);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener = null;
-  }
-  
   public void a(AppInterface paramAppInterface, String paramString, GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener)
   {
-    Object localObject = (GVideoGrayConfig.Record)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localObject != null) && (SystemClock.elapsedRealtime() - ((GVideoGrayConfig.Record)localObject).jdField_a_of_type_Long < 60000L))
+    Object localObject = (GVideoGrayConfig.Record)this.c.get(paramString);
+    if ((localObject != null) && (SystemClock.elapsedRealtime() - ((GVideoGrayConfig.Record)localObject).a < 60000L))
     {
-      paramGVideoGrayConfigListener.a(((GVideoGrayConfig.Record)localObject).jdField_a_of_type_Int, (GVideoGrayConfig.Record)localObject, 1000);
+      paramGVideoGrayConfigListener.a(((GVideoGrayConfig.Record)localObject).b, (GVideoGrayConfig.Record)localObject, 1000);
       return;
     }
     localObject = (GVideoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
     if (localObject != null)
     {
-      paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+      paramAppInterface.addObserver(this.g);
       long l = ((GVideoHandler)localObject).a(TroopMemberUtil.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
-      this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(l, paramGVideoGrayConfigListener);
+      this.f.b(l, paramGVideoGrayConfigListener);
       return;
     }
     paramGVideoGrayConfigListener.a(-1, null, -1);
@@ -91,24 +81,29 @@ public class GVideoGrayConfig
   
   public void a(AppInterface paramAppInterface, String paramString, GVideoGrayConfig.GVideoPreDownloadListener paramGVideoPreDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener = paramGVideoPreDownloadListener;
-    if ((this.jdField_a_of_type_Int != -1) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 7200000L))
+    this.d = paramGVideoPreDownloadListener;
+    if ((this.a != -1) && (SystemClock.elapsedRealtime() - this.e < 7200000L))
     {
-      paramGVideoPreDownloadListener.a(this.jdField_a_of_type_Int);
+      paramGVideoPreDownloadListener.a(this.a);
       return;
     }
     paramGVideoPreDownloadListener = (GVideoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
     if (paramGVideoPreDownloadListener != null)
     {
-      paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+      paramAppInterface.addObserver(this.g);
       paramGVideoPreDownloadListener.a(TroopMemberUtil.b(paramAppInterface, paramAppInterface.getCurrentAccountUin(), paramString), Long.parseLong(paramString));
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener = null;
-    this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
+    this.d = null;
+  }
+  
+  public void c()
+  {
+    this.d = null;
+    this.f.c();
   }
 }
 

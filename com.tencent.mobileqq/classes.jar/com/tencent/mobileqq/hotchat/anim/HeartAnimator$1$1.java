@@ -9,12 +9,12 @@ class HeartAnimator$1$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.a.removeView(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.anim.HeartAnimator.1.1
  * JD-Core Version:    0.7.0.1
  */

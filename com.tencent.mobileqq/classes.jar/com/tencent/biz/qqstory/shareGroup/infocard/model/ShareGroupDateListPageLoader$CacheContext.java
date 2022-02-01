@@ -7,14 +7,13 @@ import com.tencent.biz.qqstory.model.SuperManager;
 
 public class ShareGroupDateListPageLoader$CacheContext
 {
-  public int a;
   public long a;
-  public String a;
+  public String b = "";
+  public int c;
   
   public ShareGroupDateListPageLoader$CacheContext(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramShareGroupDateListPageLoader = ((MemoryManager)SuperManager.a(19)).a(paramString);
+    paramShareGroupDateListPageLoader = ((MemoryManager)SuperManager.a(19)).c(paramString);
     if (paramShareGroupDateListPageLoader != null) {
       a(paramShareGroupDateListPageLoader);
     }
@@ -22,9 +21,9 @@ public class ShareGroupDateListPageLoader$CacheContext
   
   public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
   {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    this.a = paramMemoryInfoEntry.seq;
+    this.b = paramMemoryInfoEntry.cookie;
+    this.c = paramMemoryInfoEntry.timeZone;
   }
 }
 

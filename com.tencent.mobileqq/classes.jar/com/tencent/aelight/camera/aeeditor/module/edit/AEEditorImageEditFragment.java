@@ -66,8 +66,8 @@ import com.tencent.aelight.camera.aeeditor.module.aifilter.ComicsFilterResult;
 import com.tencent.aelight.camera.aeeditor.module.aifilter.SilentBatchImageAIFilterProxy;
 import com.tencent.aelight.camera.aeeditor.module.aifilter.SingleImageAIFilterProxy;
 import com.tencent.aelight.camera.aeeditor.module.aifilter.SingleImageAIFilterResult;
-import com.tencent.aelight.camera.aeeditor.module.clip.image.AEEditorCropperPanel;
-import com.tencent.aelight.camera.aeeditor.module.clip.image.AEImageCropperContainer;
+import com.tencent.aelight.camera.aeeditor.module.clip.image.AEEditorClipContainer;
+import com.tencent.aelight.camera.aeeditor.module.clip.image.AEEditorClipPanel;
 import com.tencent.aelight.camera.aeeditor.module.clip.image.EditorPicInfo;
 import com.tencent.aelight.camera.aeeditor.module.edit.widgets.AEEditorCheckGroupView;
 import com.tencent.aelight.camera.aeeditor.module.filter.AEEditorFilterControlPanel;
@@ -121,35 +121,36 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.bean.Size;
+import com.tencent.qcircle.tavcut.exporter.ImageExportConfig;
+import com.tencent.qcircle.tavcut.exporter.ImageExporter;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.tavcut.session.TAVCutSession;
+import com.tencent.qcircle.tavcut.session.config.SessionConfig;
+import com.tencent.qcircle.tavcut.session.config.StickerEditViewIconConfig;
+import com.tencent.qcircle.tavcut.util.BitmapUtil;
+import com.tencent.qcircle.tavcut.util.Logger;
+import com.tencent.qcircle.tavcut.util.Util;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.effect.StickerModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaClipModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaResourceModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tavcut.bean.CropConfig;
-import com.tencent.tavcut.bean.Size;
-import com.tencent.tavcut.exporter.ImageExportConfig;
-import com.tencent.tavcut.exporter.ImageExporter;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.tavcut.session.TAVCutSession;
-import com.tencent.tavcut.session.config.SessionConfig;
-import com.tencent.tavcut.session.config.StickerEditViewIconConfig;
-import com.tencent.tavcut.util.BitmapUtil;
-import com.tencent.tavcut.util.Logger;
-import com.tencent.tavcut.util.Util;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.effect.StickerModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import common.config.service.QzoneConfig;
 import feedcloud.FeedCloudCommon.Entry;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -163,295 +164,85 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class AEEditorImageEditFragment
   extends AEEditorCommonEditFragment
   implements Handler.Callback, ViewPager.OnPageChangeListener, AEEditorFilterControlPanel.ImageFilterControlListener, ImageTemplateControlListener
 {
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private Observer<List<MetaCategory>> jdField_a_of_type_AndroidxLifecycleObserver;
-  AEEditorAIFilterManager.AIFilterObserver jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager$AIFilterObserver = new AEEditorImageEditFragment.20(this);
-  private AIFilterDataCache jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterDataCache = new AIFilterDataCache();
-  private BatchImageAIFilterResult jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterBatchImageAIFilterResult;
-  private AEEditorCropperPanel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipImageAEEditorCropperPanel;
-  private AEEditorImagePagerAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter;
-  private AEEditorImageViewPager jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager;
-  private AEVideoEditViewModel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEVideoEditViewModel;
-  private ImageFilterInfoCache jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache = new ImageFilterInfoCache();
-  private AEEditorFramePanel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel;
-  private AEEditorImageTemplatePanel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel;
-  private ImageParamStrategy jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy = ParamFactory.a();
-  private NumberIndicator jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator;
-  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  private ImageExporter jdField_a_of_type_ComTencentTavcutExporterImageExporter;
-  private TAVCutImageSession jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private HashMap<String, ArrayList<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<AEEditorImageInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, ComicsFilterResult> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private long jdField_b_of_type_Long;
-  private SparseArray<List<ImageMainColorData>> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  private Observer<List<MetaCategory>> jdField_b_of_type_AndroidxLifecycleObserver;
-  AEEditorAIFilterManager.AIFilterObserver jdField_b_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager$AIFilterObserver = new AEEditorImageEditFragment.21(this);
-  private String jdField_b_of_type_JavaLangString = "";
-  private StringBuilder jdField_b_of_type_JavaLangStringBuilder;
-  private ArrayList<String> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long;
-  private SparseArray<List<ImageMainColorData>> jdField_c_of_type_AndroidUtilSparseArray = new SparseArray();
-  private FrameLayout jdField_c_of_type_AndroidWidgetFrameLayout;
-  private StringBuilder jdField_c_of_type_JavaLangStringBuilder;
-  private ArrayList<String> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  private SparseArray<String> jdField_d_of_type_AndroidUtilSparseArray = new SparseArray();
-  private StringBuilder jdField_d_of_type_JavaLangStringBuilder;
-  private ArrayList<String> jdField_d_of_type_JavaUtilArrayList;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = -1;
-  private StringBuilder jdField_e_of_type_JavaLangStringBuilder;
-  private boolean jdField_e_of_type_Boolean = false;
-  private boolean f = true;
-  private boolean g = true;
+  AEEditorAIFilterManager.AIFilterObserver A = new AEEditorImageEditFragment.20(this);
+  AEEditorAIFilterManager.AIFilterObserver B = new AEEditorImageEditFragment.21(this);
+  private long C;
+  private AEEditorImageViewPager D;
+  private AEEditorImagePagerAdapter E;
+  private NumberIndicator F;
+  private FrameLayout G;
+  private TAVCutImageSession H;
+  private int I = 0;
+  private ArrayList<String> J = new ArrayList();
+  private ArrayList<String> K = new ArrayList();
+  private ArrayList<String> L;
+  private List<AEEditorImageInfo> M = new ArrayList();
+  private AIFilterDataCache N = new AIFilterDataCache();
+  private HashMap<String, ArrayList<String>> O = new HashMap();
+  private ImageFilterInfoCache P = new ImageFilterInfoCache();
+  private Map<String, ComicsFilterResult> Q = new HashMap();
+  private HttpNetReq R;
+  private SparseArray<List<ImageMainColorData>> S = new SparseArray();
+  private SparseArray<List<ImageMainColorData>> T = new SparseArray();
+  private SparseArray<String> U = new SparseArray();
+  private ImageExporter V;
+  private int W;
+  private long X;
+  private long Y;
+  private boolean Z = false;
+  private String aa = "";
+  private boolean ab = false;
+  private ImageParamStrategy ac = ParamFactory.a();
+  private boolean ad = true;
+  private FrameLayout ae;
+  private AEEditorClipPanel af;
+  private ImageView ag;
+  private AEEditorImageTemplatePanel ah;
+  private AEEditorFramePanel ai;
+  private StringBuilder aj;
+  private StringBuilder ak;
+  private StringBuilder al;
+  private StringBuilder am;
+  private StringBuilder an;
+  private boolean ao = true;
+  private AEVideoEditViewModel ap;
+  private int aq = -1;
+  private Observer<List<MetaCategory>> ar;
+  private Observer<List<MetaCategory>> as;
+  private View at;
+  private volatile boolean au = false;
+  boolean z = false;
   
-  private void H()
+  private void Y()
   {
     QLog.d("AEEditorImageEditFragment", 1, "registerObserverData...");
-    this.jdField_a_of_type_AndroidxLifecycleObserver = new AEEditorImageEditFragment.1(this);
-    AEEditorResourceManager.a().c().observeForever(this.jdField_a_of_type_AndroidxLifecycleObserver);
-    this.jdField_b_of_type_AndroidxLifecycleObserver = new AEEditorImageEditFragment.2(this);
-    AEEditorResourceManager.a().b().observe(getViewLifecycleOwner(), this.jdField_b_of_type_AndroidxLifecycleObserver);
+    this.ar = new AEEditorImageEditFragment.1(this);
+    AEEditorResourceManager.a().f().observeForever(this.ar);
+    this.as = new AEEditorImageEditFragment.2(this);
+    AEEditorResourceManager.a().e().observe(getViewLifecycleOwner(), this.as);
   }
   
-  private void I()
+  private void Z()
   {
     AEQLog.b("AEEditorImageEditFragment", "showImages");
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter = new AEEditorImagePagerAdapter(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilList, this.jdField_d_of_type_AndroidUtilSparseArray, new AEEditorImageEditFragment.9(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator.setTotalCount(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter.getCount());
-    NumberIndicator localNumberIndicator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator;
+    this.E = new AEEditorImagePagerAdapter(this.H, this.J, this.M, this.U, new AEEditorImageEditFragment.9(this));
+    this.F.setTotalCount(this.E.getCount());
+    NumberIndicator localNumberIndicator = this.F;
     int i;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter.getCount() > 0) {
+    if (this.E.getCount() > 0) {
       i = 1;
     } else {
       i = 0;
     }
     localNumberIndicator.setCurrentIndex(i);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.post(new AEEditorImageEditFragment.10(this));
-  }
-  
-  private void J()
-  {
-    if (!TextUtils.isEmpty(d()))
-    {
-      AEQLog.b("AEEditorImageEditFragment", "psKey not empty.");
-      return;
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject).getManager(2);
-    localObject = ((AppRuntime)localObject).getAccount();
-    AEEditorImageEditFragment.11 local11 = new AEEditorImageEditFragment.11(this);
-    localTicketManager.getPskey((String)localObject, 16L, new String[] { "shadowai.qq.com" }, local11);
-  }
-  
-  private void K()
-  {
-    AEQLog.b("AEEditorImageEditFragment", "initTAVCutSession");
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = new TAVCutImageSession();
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.initSingleLightNode();
-    SessionConfig localSessionConfig = new SessionConfig();
-    localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
-    localSessionConfig.setMinIntermediateRenderSize(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.a());
-    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.b());
-    localSessionConfig.setMaxImageDecodeSize(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.c());
-    Object localObject = new StickerEditViewIconConfig();
-    ((StickerEditViewIconConfig)localObject).setDeleteIconResId(2064056472);
-    ((StickerEditViewIconConfig)localObject).setEditIconResId(2064056471);
-    ((StickerEditViewIconConfig)localObject).setZoomIconResId(2064056473);
-    localSessionConfig.setStickerEditViewIconConfig((StickerEditViewIconConfig)localObject);
-    localObject = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((List)localObject).add(((AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_ComTencentTavcutBeanCropConfig);
-      i += 1;
-    }
-    localSessionConfig.setImageInitCropConfigs((List)localObject);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setSessionConfig(localSessionConfig);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setImagePaths(this.jdField_b_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setStickerOperationCallback(new AEEditorImageEditFragment.12(this));
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.init(getActivity());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEVideoEditViewModel.a(this.jdField_b_of_type_JavaUtilArrayList);
-  }
-  
-  private void L()
-  {
-    l();
-    n();
-    o();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.setScrollable(true);
-  }
-  
-  private void M()
-  {
-    a(2064122258, "SP_KEY_RED_POINT_TIME_STAMP", false);
-    a(2064122255, "SP_KEY_RED_POINT_TIME_STAMP", false);
-    a(2064122257, "SP_KEY_RED_POINT_TIME_STAMP", false);
-    a(2064122259, "SP_KEY_RED_POINT_TIME_STAMP", false);
-    a(2064122256, "SP_KEY_RED_POINT_TIME_STAMP", false);
-  }
-  
-  private void N()
-  {
-    AEEditorApplyAllLoadingView localAEEditorApplyAllLoadingView = new AEEditorApplyAllLoadingView(getActivity());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localAEEditorApplyAllLoadingView);
-  }
-  
-  private void O()
-  {
-    boolean bool = AECameraPrefsUtil.a().a("ae_editor_tool_bar_red_dot_text", false, 0);
-    if (!bool) {
-      AECameraPrefsUtil.a().a("ae_editor_tool_bar_red_dot_text", true, 0);
-    }
-    AEBaseReportParam.a().a().i = (bool ^ true);
-    AEBaseDataReporter.a().q();
-  }
-  
-  private void P()
-  {
-    AEEditorImageRecord.a().a(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_c_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.a, this.jdField_a_of_type_JavaUtilList, 2);
-    Intent localIntent = new Intent();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    int j = 0;
-    int i = j;
-    if (localObject != null)
-    {
-      i = j;
-      if (((List)localObject).get(0) != null) {
-        i = ((AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_c_of_type_Int;
-      }
-    }
-    localObject = AEImageCropperContainer.a(i);
-    HashMap localHashMap = a(this.jdField_c_of_type_JavaUtilArrayList);
-    localIntent.putExtra("key_image_sucai_info", new AEEditorImageEditFragment.27(this, (String)localObject));
-    localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", localHashMap);
-    AEEditorImageRecord.a().a(localIntent, this.jdField_c_of_type_JavaUtilArrayList);
-    localIntent.putExtra("PhotoConst.PHOTO_PATHS", this.jdField_c_of_type_JavaUtilArrayList);
-    if ((getActivity() != null) && (getActivity().getIntent() != null)) {
-      i = getActivity().getIntent().getIntExtra("editorFrom", -1);
-    } else {
-      i = -1;
-    }
-    localIntent.putExtra("editorFrom", i);
-    getActivity().setResult(-1, localIntent);
-    getActivity().finish();
-  }
-  
-  private void Q()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (AECommonUtil.a(getActivity(), "AEEditorImageEditFragment"))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2064056429);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837758);
-  }
-  
-  private void R()
-  {
-    if (QzoneConfig.isOpenFunctionSavePicToVideo())
-    {
-      S();
-      return;
-    }
-    T();
-  }
-  
-  private void S()
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.mediaChanged())
-    {
-      f(false);
-      return;
-    }
-    V();
-    W();
-  }
-  
-  private void T()
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.mediaChanged())
-    {
-      U();
-      return;
-    }
-    W();
-  }
-  
-  private void U()
-  {
-    Object localObject = getActivity();
-    localObject = DialogUtil.a((Context)localObject, 230).setTitle(HardCodeUtil.a(2064515163)).setMessage(((Context)localObject).getString(2064515162)).setPositiveButton(((Context)localObject).getString(2064515119), new AEEditorImageEditFragment.30(this)).setNegativeButton(((Context)localObject).getString(2064515117), new AEEditorImageEditFragment.29(this));
-    if (localObject != null) {}
-    try
-    {
-      if (((QQCustomDialog)localObject).isShowing()) {
-        break label88;
-      }
-      ((QQCustomDialog)localObject).show();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      label84:
-      break label84;
-    }
-    W();
-    label88:
-  }
-  
-  private void V()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
-    {
-      QLog.w("AEEditorImageEditFragment", 1, "resetMediaModel... mediaModels == null");
-      return;
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((AEAlbumMediaBaseModel)this.jdField_a_of_type_JavaUtilArrayList.get(i)).setPath(((AEAlbumMediaBaseModel)this.jdField_a_of_type_JavaUtilArrayList.get(i)).getOriginPath());
-      i += 1;
-    }
-  }
-  
-  private void W()
-  {
-    Bundle localBundle = getArguments();
-    a(localBundle);
-    a().b("AEEditorImageEdit", localBundle);
-  }
-  
-  private void X()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession != null)
-      {
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setBasePicActive(false);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.D.setAdapter(this.E);
+    this.D.post(new AEEditorImageEditFragment.10(this));
   }
   
   private Bitmap a(Bitmap paramBitmap, int paramInt)
@@ -463,12 +254,12 @@ public class AEEditorImageEditFragment
     paramInt = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
     int k = Math.max(paramInt, j);
-    float f1 = 1.0F;
+    float f = 1.0F;
     if (k > i) {
-      f1 = i * 1.0F / k;
+      f = i * 1.0F / k;
     }
     Matrix localMatrix = new Matrix();
-    localMatrix.postScale(f1, f1);
+    localMatrix.postScale(f, f);
     return Bitmap.createBitmap(paramBitmap, 0, 0, paramInt, j, localMatrix, true);
   }
   
@@ -478,7 +269,7 @@ public class AEEditorImageEditFragment
     try
     {
       localObject = BitmapUtil.getImageSize(paramString, false);
-      Size localSize = Util.constrainMaxSize((Size)localObject, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.c());
+      Size localSize = Util.constrainMaxSize((Size)localObject, this.ac.c());
       j = ((Size)localObject).getWidth() / localSize.getWidth();
       if (((Size)localObject).getWidth() % localSize.getWidth() != 0) {
         break label293;
@@ -533,15 +324,6 @@ public class AEEditorImageEditFragment
     }
   }
   
-  private String a(int paramInt, MetaMaterial paramMetaMaterial)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramMetaMaterial.id);
-    return localStringBuilder.toString();
-  }
-  
   private String a(int paramInt, byte[] paramArrayOfByte, long paramLong, MetaMaterial paramMetaMaterial)
   {
     Object localObject = new AEPbData.ImageStylizeResponse();
@@ -580,7 +362,7 @@ public class AEEditorImageEditFragment
         ((StringBuilder)localObject).append(".jpg");
         paramMetaMaterial = ((StringBuilder)localObject).toString();
         com.tencent.qapmsdk.common.util.FileUtil.createFile(paramMetaMaterial);
-        BitmapUtil.saveBitmap(paramArrayOfByte, 100, paramMetaMaterial);
+        BitmapUtil.saveBitmap(paramArrayOfByte, Bitmap.CompressFormat.PNG, 100, paramMetaMaterial, null);
         BitmapUtils.recycle(paramArrayOfByte);
         return paramMetaMaterial;
       }
@@ -595,18 +377,18 @@ public class AEEditorImageEditFragment
   @Nullable
   private ArrayList<String> a(@Nullable BatchImageAIFilterResult paramBatchImageAIFilterResult, int paramInt)
   {
-    if ((paramBatchImageAIFilterResult != null) && (!CollectionUtils.isEmpty(paramBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList)) && (paramInt >= 0))
+    if ((paramBatchImageAIFilterResult != null) && (!CollectionUtils.isEmpty(paramBatchImageAIFilterResult.b)) && (paramInt >= 0))
     {
-      if (paramBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
+      if (paramBatchImageAIFilterResult.b.size() <= paramInt) {
         return null;
       }
-      paramBatchImageAIFilterResult = (SingleImageAIFilterResult)new LinkedList(paramBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList).get(paramInt);
+      paramBatchImageAIFilterResult = (SingleImageAIFilterResult)new LinkedList(paramBatchImageAIFilterResult.b).get(paramInt);
       if (paramBatchImageAIFilterResult != null)
       {
-        if (CollectionUtils.isEmpty(paramBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList)) {
+        if (CollectionUtils.isEmpty(paramBatchImageAIFilterResult.c)) {
           return null;
         }
-        Object localObject = new LinkedList(paramBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList);
+        Object localObject = new LinkedList(paramBatchImageAIFilterResult.c);
         if ((((List)localObject).size() > 0) && (((List)localObject).get(0) != null)) {
           paramBatchImageAIFilterResult = ((YoutuResultItem)((List)localObject).get(0)).Label;
         } else {
@@ -642,117 +424,80 @@ public class AEEditorImageEditFragment
     return (ArrayList)paramHashMap.get(paramString);
   }
   
-  private HashMap<String, LocalMediaInfo> a(ArrayList<String> paramArrayList)
-  {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramArrayList.iterator();
-    Object localObject1 = "";
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      Object localObject2 = AELocalMediaInfoUtil.a(str);
-      Object localObject3 = ((MediaClipModel)((MediaModel)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels().get(i)).getMediaResourceModel().getVideos().get(0)).getResource().getPath();
-      Object localObject4 = BitmapUtil.getImageSize((String)localObject3);
-      ((LocalMediaInfo)localObject2).mediaOriginHeight = ((Size)localObject4).getHeight();
-      ((LocalMediaInfo)localObject2).mediaOriginWidth = ((Size)localObject4).getWidth();
-      ((LocalMediaInfo)localObject2).mediaOriginSize = com.tencent.mobileqq.filemanager.util.FileUtil.a((String)localObject3);
-      AEBaseDataReporter.a().b((LocalMediaInfo)localObject2);
-      localObject3 = AELocalMediaInfoUtil.a((LocalMediaInfo)localObject2, getArguments().getString("material_id"), getArguments().getString("material_topic"), getArguments().getString("key_camera_material_name"), getArguments().getInt("ae_editor_is_show_take_same"), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b(i));
-      localObject2 = a(this.jdField_a_of_type_JavaUtilHashMap, str);
-      int j = paramArrayList.indexOf(str);
-      localObject4 = a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterBatchImageAIFilterResult, j);
-      if ((localObject2 != null) && (!CollectionUtils.isEmpty((Collection)localObject2))) {
-        ((LocalMediaInfo)localObject3).aiTextLabel = ((ArrayList)localObject2);
-      } else if ((localObject4 != null) && (!CollectionUtils.isEmpty((Collection)localObject4))) {
-        ((LocalMediaInfo)localObject3).aiTextLabel = ((ArrayList)localObject4);
-      }
-      a((LocalMediaInfo)localObject3, ((MediaModel)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels().get(i)).getMediaEffectModel().getStickerModelList());
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject1 = a(i);
-        localObject2 = localObject1;
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject2 = localObject1;
-          if (!((LocalMediaInfo)localObject3).mHashTagList.contains(localObject1))
-          {
-            ((LocalMediaInfo)localObject3).mHashTagList.add(localObject1);
-            localObject2 = localObject1;
-          }
-        }
-      }
-      localHashMap.put(str, localObject3);
-      i += 1;
-      localObject1 = localObject2;
-    }
-    return localHashMap;
-  }
-  
   private void a(int paramInt1, ComicsFilterResult paramComicsFilterResult, int paramInt2, MetaMaterial paramMetaMaterial)
   {
     ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.19(this, paramInt2, paramInt1, paramComicsFilterResult, paramMetaMaterial));
   }
   
-  private void a(Bitmap paramBitmap, int paramInt1, int paramInt2, MetaMaterial paramMetaMaterial)
+  private void a(Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt1, int paramInt2, MetaMaterial paramMetaMaterial)
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = new AEEditorImageEditFragment.18(this, paramInt1, paramMetaMaterial, paramInt2);
     localHttpNetReq.mReqUrl = "https://api.shadowai.qq.com/trpc.mobile_qq_http.mobile_qq_http_cgi.MobileQQHttpCgi/ImageStylize";
     localHttpNetReq.mHttpMethod = 1;
     localHttpNetReq.mExcuteTimeLimit = 30000L;
-    localHttpNetReq.mSendData = a(paramBitmap, paramMetaMaterial);
+    localHttpNetReq.mSendData = a(paramBitmap1, paramBitmap2, paramMetaMaterial);
     localHttpNetReq.mPrioty = 0;
     localHttpNetReq.mReqProperties.put("Content-Type", "application/proto; charset=UTF-8");
     localHttpNetReq.mReqProperties.put("Accept", "application/proto");
-    paramBitmap = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramBitmap == null)
+    paramBitmap1 = BaseApplicationImpl.getApplication().getRuntime();
+    if (paramBitmap1 == null)
     {
       QLog.e("AEEditorImageEditFragment", 1, "app is null");
       return;
     }
-    Object localObject = (TicketManager)paramBitmap.getManager(2);
-    paramBitmap = paramBitmap.getAccount();
-    paramMetaMaterial = ((TicketManager)localObject).getSkey(paramBitmap);
-    localObject = ((TicketManager)localObject).getPskey(paramBitmap, "shadowai.qq.com");
+    paramMetaMaterial = (TicketManager)paramBitmap1.getManager(2);
+    paramBitmap1 = paramBitmap1.getAccount();
+    paramBitmap2 = paramMetaMaterial.getSkey(paramBitmap1);
+    paramMetaMaterial = paramMetaMaterial.getPskey(paramBitmap1, "shadowai.qq.com");
     StringBuilder localStringBuilder;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (!TextUtils.isEmpty(paramMetaMaterial))
     {
+      paramBitmap2 = localHttpNetReq.mReqProperties;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin=");
+      localStringBuilder.append(paramBitmap1);
+      localStringBuilder.append(";pskey=");
+      localStringBuilder.append(paramMetaMaterial);
+      localStringBuilder.append(";qqversion=");
+      localStringBuilder.append("8.8.17");
+      localStringBuilder.append(";aekitversion=");
+      localStringBuilder.append("2.6.0.23");
+      localStringBuilder.append(";platform=");
+      localStringBuilder.append("Android");
+      paramBitmap2.put("Cookie", localStringBuilder.toString());
+    }
+    else
+    {
+      aa();
       paramMetaMaterial = localHttpNetReq.mReqProperties;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("uin=");
-      localStringBuilder.append(paramBitmap);
-      localStringBuilder.append(";pskey=");
-      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(paramBitmap1);
+      localStringBuilder.append(";skey=");
+      localStringBuilder.append(paramBitmap2);
       localStringBuilder.append(";qqversion=");
-      localStringBuilder.append("8.7.0");
+      localStringBuilder.append("8.8.17");
       localStringBuilder.append(";aekitversion=");
-      localStringBuilder.append("2.2.6.40");
+      localStringBuilder.append("2.6.0.23");
       localStringBuilder.append(";platform=");
       localStringBuilder.append("Android");
       paramMetaMaterial.put("Cookie", localStringBuilder.toString());
     }
-    else
-    {
-      J();
-      localObject = localHttpNetReq.mReqProperties;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("uin=");
-      localStringBuilder.append(paramBitmap);
-      localStringBuilder.append(";skey=");
-      localStringBuilder.append(paramMetaMaterial);
-      localStringBuilder.append(";qqversion=");
-      localStringBuilder.append("8.7.0");
-      localStringBuilder.append(";aekitversion=");
-      localStringBuilder.append("2.2.6.40");
-      localStringBuilder.append(";platform=");
-      localStringBuilder.append("Android");
-      ((HashMap)localObject).put("Cookie", localStringBuilder.toString());
-    }
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     ((IHttpEngineService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
+    this.R = localHttpNetReq;
+  }
+  
+  private void a(AEPbData.ImageStylizeRequest paramImageStylizeRequest, Bitmap paramBitmap, int paramInt)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    Bitmap localBitmap = a(paramBitmap, paramInt);
+    BitmapUtils.recycle(paramBitmap);
+    localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, localByteArrayOutputStream);
+    paramBitmap = localByteArrayOutputStream.toByteArray();
+    paramImageStylizeRequest.imgInfo.imageMask.set(ByteStringMicro.copyFrom(paramBitmap), true);
+    BitmapUtils.recycle(localBitmap);
   }
   
   private void a(ImageExportConfig paramImageExportConfig)
@@ -779,53 +524,53 @@ public class AEEditorImageEditFragment
     if (paramHashMap == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangStringBuilder.length() == 0)
+    if (this.aj.length() == 0)
     {
-      this.jdField_a_of_type_JavaLangStringBuilder.append((String)paramHashMap.get("filter_id"));
+      this.aj.append((String)paramHashMap.get("filter_id"));
     }
     else
     {
-      localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+      localStringBuilder = this.aj;
       localStringBuilder.append(",");
       localStringBuilder.append((String)paramHashMap.get("filter_id"));
     }
-    if (this.jdField_b_of_type_JavaLangStringBuilder.length() == 0)
+    if (this.ak.length() == 0)
     {
-      this.jdField_b_of_type_JavaLangStringBuilder.append((String)paramHashMap.get("text_item_id"));
+      this.ak.append((String)paramHashMap.get("text_item_id"));
     }
     else
     {
-      localStringBuilder = this.jdField_b_of_type_JavaLangStringBuilder;
+      localStringBuilder = this.ak;
       localStringBuilder.append(",");
       localStringBuilder.append((String)paramHashMap.get("text_item_id"));
     }
-    if (this.jdField_c_of_type_JavaLangStringBuilder.length() == 0)
+    if (this.al.length() == 0)
     {
-      this.jdField_c_of_type_JavaLangStringBuilder.append((String)paramHashMap.get("ai_color_frame_states"));
+      this.al.append((String)paramHashMap.get("ai_color_frame_states"));
     }
     else
     {
-      localStringBuilder = this.jdField_c_of_type_JavaLangStringBuilder;
+      localStringBuilder = this.al;
       localStringBuilder.append(",");
       localStringBuilder.append((String)paramHashMap.get("ai_color_frame_states"));
     }
-    paramHashMap = AEBaseReportParam.a().b(this.jdField_c_of_type_JavaUtilArrayList.size());
-    if (this.jdField_d_of_type_JavaLangStringBuilder.length() == 0)
+    paramHashMap = AEBaseReportParam.a().k(this.K.size());
+    if (this.am.length() == 0)
     {
-      this.jdField_d_of_type_JavaLangStringBuilder.append((String)paramHashMap.get("template_id"));
+      this.am.append((String)paramHashMap.get("template_id"));
     }
     else
     {
-      localStringBuilder = this.jdField_d_of_type_JavaLangStringBuilder;
+      localStringBuilder = this.am;
       localStringBuilder.append(",");
       localStringBuilder.append((String)paramHashMap.get("template_id"));
     }
-    if (this.jdField_e_of_type_JavaLangStringBuilder.length() == 0)
+    if (this.an.length() == 0)
     {
-      this.jdField_e_of_type_JavaLangStringBuilder.append((String)paramHashMap.get("text_id"));
+      this.an.append((String)paramHashMap.get("text_id"));
       return;
     }
-    StringBuilder localStringBuilder = this.jdField_e_of_type_JavaLangStringBuilder;
+    StringBuilder localStringBuilder = this.an;
     localStringBuilder.append(",");
     localStringBuilder.append((String)paramHashMap.get("text_id"));
   }
@@ -835,160 +580,189 @@ public class AEEditorImageEditFragment
     return (paramBitmap != null) && (!paramBitmap.isRecycled());
   }
   
-  private byte[] a(Bitmap paramBitmap, MetaMaterial paramMetaMaterial)
+  private byte[] a(Bitmap paramBitmap1, Bitmap paramBitmap2, MetaMaterial paramMetaMaterial)
   {
     Object localObject2 = new ByteArrayOutputStream();
-    int i = FilterMetaMaterialKt.c(paramMetaMaterial);
+    int k = FilterMetaMaterialKt.k(paramMetaMaterial);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("before: ");
     ((StringBuilder)localObject1).append(System.currentTimeMillis());
     ((StringBuilder)localObject1).append(", uploadMaxSize=");
-    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(k);
     ((StringBuilder)localObject1).append(", src bitmap size=[");
-    ((StringBuilder)localObject1).append(paramBitmap.getWidth());
+    ((StringBuilder)localObject1).append(paramBitmap1.getWidth());
     ((StringBuilder)localObject1).append(", ");
-    ((StringBuilder)localObject1).append(paramBitmap.getHeight());
+    ((StringBuilder)localObject1).append(paramBitmap1.getHeight());
     ((StringBuilder)localObject1).append("]");
     AEQLog.b("AEEditorImageEditFragment", ((StringBuilder)localObject1).toString());
-    localObject1 = a(paramBitmap, i);
-    BitmapUtils.recycle(paramBitmap);
+    localObject1 = a(paramBitmap1, k);
+    BitmapUtils.recycle(paramBitmap1);
     ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 90, (OutputStream)localObject2);
-    paramBitmap = new StringBuilder();
-    paramBitmap.append("after: ");
-    paramBitmap.append(System.currentTimeMillis());
-    paramBitmap.append(", scaled bitmap size=[");
-    paramBitmap.append(((Bitmap)localObject1).getWidth());
-    paramBitmap.append(", ");
-    paramBitmap.append(((Bitmap)localObject1).getHeight());
-    paramBitmap.append("]");
-    AEQLog.b("AEEditorImageEditFragment", paramBitmap.toString());
+    paramBitmap1 = new StringBuilder();
+    paramBitmap1.append("after: ");
+    paramBitmap1.append(System.currentTimeMillis());
+    paramBitmap1.append(", scaled bitmap size=[");
+    paramBitmap1.append(((Bitmap)localObject1).getWidth());
+    paramBitmap1.append(", ");
+    paramBitmap1.append(((Bitmap)localObject1).getHeight());
+    paramBitmap1.append("]");
+    AEQLog.b("AEEditorImageEditFragment", paramBitmap1.toString());
     localObject2 = ((ByteArrayOutputStream)localObject2).toByteArray();
-    paramBitmap = new AEPbData.ImageStylizeRequest();
-    int j = FilterMetaMaterialKt.d(paramMetaMaterial);
-    i = j;
+    paramBitmap1 = new AEPbData.ImageStylizeRequest();
+    int j = FilterMetaMaterialKt.l(paramMetaMaterial);
+    int i = j;
     if (j == 0) {
       i = 1;
     }
-    paramBitmap.stylizeType.set(i, true);
-    paramBitmap.imgInfo.setHasFlag(true);
-    paramBitmap.imgInfo.imgWidth.set(((Bitmap)localObject1).getWidth());
-    paramBitmap.imgInfo.imgHeight.set(((Bitmap)localObject1).getHeight());
-    paramBitmap.imgInfo.imageRawData.set(ByteStringMicro.copyFrom((byte[])localObject2), true);
-    paramMetaMaterial = FaceChangeUtils.detectFaceOrigin((Bitmap)localObject1);
+    paramBitmap1.stylizeType.set(i, true);
+    paramBitmap1.imgInfo.setHasFlag(true);
+    paramBitmap1.imgInfo.imgWidth.set(((Bitmap)localObject1).getWidth());
+    paramBitmap1.imgInfo.imgHeight.set(((Bitmap)localObject1).getHeight());
+    paramBitmap1.imgInfo.imageRawData.set(ByteStringMicro.copyFrom((byte[])localObject2), true);
+    if (paramBitmap2 != null) {
+      a(paramBitmap1, paramBitmap2, k);
+    }
+    paramBitmap2 = FaceChangeUtils.detectFaceOrigin((Bitmap)localObject1);
     BitmapUtils.recycle((Bitmap)localObject1);
     boolean bool = false;
-    if ((paramMetaMaterial != null) && (paramMetaMaterial.getAllFacePoints() != null) && (!paramMetaMaterial.getAllFacePoints().isEmpty()))
+    if ((paramBitmap2 != null) && (paramBitmap2.getAllFacePoints() != null) && (!paramBitmap2.getAllFacePoints().isEmpty()))
     {
-      paramMetaMaterial = paramMetaMaterial.getAllFacePoints().iterator();
-      while (paramMetaMaterial.hasNext())
+      paramBitmap2 = paramBitmap2.getAllFacePoints().iterator();
+      while (paramBitmap2.hasNext())
       {
-        localObject1 = (List)paramMetaMaterial.next();
-        if (localObject1 != null)
+        paramMetaMaterial = (List)paramBitmap2.next();
+        if (paramMetaMaterial != null)
         {
-          localObject2 = new AEPbData.FaceInfo();
-          ((AEPbData.FaceInfo)localObject2).setHasFlag(true);
+          localObject1 = new AEPbData.FaceInfo();
+          ((AEPbData.FaceInfo)localObject1).setHasFlag(true);
           i = 0;
-          while (i < ((List)localObject1).size())
+          while (i < paramMetaMaterial.size())
           {
-            ((AEPbData.FaceInfo)localObject2).pos.add(Float.valueOf(((PointF)((List)localObject1).get(i)).x));
-            ((AEPbData.FaceInfo)localObject2).pos.add(Float.valueOf(((PointF)((List)localObject1).get(i)).y));
+            ((AEPbData.FaceInfo)localObject1).pos.add(Float.valueOf(((PointF)paramMetaMaterial.get(i)).x));
+            ((AEPbData.FaceInfo)localObject1).pos.add(Float.valueOf(((PointF)paramMetaMaterial.get(i)).y));
             i += 1;
           }
-          paramBitmap.imgInfo.faceInfos.add((MessageMicro)localObject2);
+          paramBitmap1.imgInfo.faceInfos.add((MessageMicro)localObject1);
         }
       }
-      i = paramBitmap.imgInfo.faceInfos.size();
-      paramMetaMaterial = paramBitmap.imgInfo.hasFace;
+      i = paramBitmap1.imgInfo.faceInfos.size();
+      paramBitmap2 = paramBitmap1.imgInfo.hasFace;
       if (i > 0) {
         bool = true;
       }
-      paramMetaMaterial.set(bool);
-      paramBitmap.imgInfo.faceNum.set(i);
+      paramBitmap2.set(bool);
+      paramBitmap1.imgInfo.faceNum.set(i);
     }
     else
     {
-      paramBitmap.imgInfo.hasFace.set(false);
+      paramBitmap1.imgInfo.hasFace.set(false);
     }
-    paramBitmap.setHasFlag(true);
-    return paramBitmap.toByteArray();
+    paramBitmap1.setHasFlag(true);
+    return paramBitmap1.toByteArray();
   }
   
-  private void b(int paramInt)
+  private void aa()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.c(paramInt))
+    if (!TextUtils.isEmpty(af()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.d(paramInt);
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.clearAEKitModel(paramInt);
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt);
-      if (!CollectionUtils.indexOutOfBounds(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a(), i))
-      {
-        MetaMaterial localMetaMaterial = (MetaMaterial)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a().get(i);
-        if (paramInt == this.jdField_c_of_type_Int) {
-          a(i, localMetaMaterial);
-        }
-      }
-    }
-  }
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  private void b(View paramView)
-  {
-    AEQLog.b("AEEditorImageEditFragment", "initViews");
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager = ((AEEditorImageViewPager)paramView.findViewById(2064122838));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator = ((NumberIndicator)paramView.findViewById(2064122461));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064122202));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064121984);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.setOnPageChangeListener(this);
-    this.jdField_b_of_type_AndroidWidgetFrameLayout.setOnClickListener(new AEEditorImageEditFragment.3(this));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new AEEditorImageEditFragment.4(this));
-    this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064122078));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipImageAEEditorCropperPanel = ((AEEditorCropperPanel)paramView.findViewById(2064121886));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipImageAEEditorCropperPanel.setCropChangeCallBack(new AEEditorImageEditFragment.5(this));
-    this.jdField_c_of_type_AndroidWidgetFrameLayout.setOnClickListener(new AEEditorImageEditFragment.6(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122155));
-    Q();
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new AEEditorImageEditFragment.7(this));
-    g(this.g);
-    c(paramView);
-    d(paramView);
-  }
-  
-  private void b(List<ImageMainColorData> paramList)
-  {
-    if (CollectionUtil.isEmptyList(paramList)) {
+      AEQLog.b("AEEditorImageEditFragment", "psKey not empty.");
       return;
     }
-    Collections.sort(paramList, new AEEditorImageEditFragment.14(this));
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject).getManager(2);
+    localObject = ((AppRuntime)localObject).getAccount();
+    AEEditorImageEditFragment.11 local11 = new AEEditorImageEditFragment.11(this);
+    localTicketManager.getPskey((String)localObject, 16L, new String[] { "shadowai.qq.com" }, local11);
   }
   
-  private int c()
+  private void ab()
   {
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
+    AEQLog.b("AEEditorImageEditFragment", "initTAVCutSession");
+    this.H = new TAVCutImageSession();
+    this.H.initSingleLightNode();
+    SessionConfig localSessionConfig = new SessionConfig();
+    localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
+    localSessionConfig.setMinIntermediateRenderSize(this.ac.a());
+    localSessionConfig.setMaxIntermediateRenderSize(this.ac.b());
+    localSessionConfig.setMaxImageDecodeSize(this.ac.c());
+    Object localObject = new StickerEditViewIconConfig();
+    ((StickerEditViewIconConfig)localObject).setDeleteIconResId(2063925440);
+    ((StickerEditViewIconConfig)localObject).setEditIconResId(2063925439);
+    ((StickerEditViewIconConfig)localObject).setZoomIconResId(2063925441);
+    localSessionConfig.setStickerEditViewIconConfig((StickerEditViewIconConfig)localObject);
+    localObject = new ArrayList();
+    int i = 0;
+    while (i < this.M.size())
+    {
+      ((List)localObject).add(((AEEditorImageInfo)this.M.get(i)).d);
+      i += 1;
+    }
+    localSessionConfig.setImageInitCropConfigs((List)localObject);
+    this.H.setSessionConfig(localSessionConfig);
+    this.H.setImagePaths(this.J);
+    this.H.setStickerOperationCallback(new AEEditorImageEditFragment.12(this));
+    this.H.init(getActivity());
+    this.ap.a(this.J);
   }
   
-  private void c(int paramInt)
+  private void ac()
   {
-    List localList = AEExtractColorUtil.a((List)this.jdField_c_of_type_AndroidUtilSparseArray.get(paramInt), 6);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.a(localList);
+    v();
+    x();
+    y();
+    this.D.setScrollable(true);
   }
   
-  private void c(View paramView)
+  private void ad()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel = ((AEEditorImageTemplatePanel)paramView.findViewById(2064122262));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.setTavCutImageSession(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.setControlListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.setImageInfos(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.setTextViewModel(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.setToastValidListener(this);
+    a(2063991132, "SP_KEY_RED_POINT_TIME_STAMP", false);
+    a(2063991129, "SP_KEY_RED_POINT_TIME_STAMP", false);
+    a(2063991131, "SP_KEY_RED_POINT_TIME_STAMP", false);
+    a(2063991133, "SP_KEY_RED_POINT_TIME_STAMP", false);
+    a(2063991130, "SP_KEY_RED_POINT_TIME_STAMP", false);
   }
   
-  private int d()
+  @NotNull
+  private HashMap<String, ArrayList<String>> ae()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.d();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onResponseBack... isGoBack:");
+    ((StringBuilder)localObject1).append(this.au);
+    AEQLog.b("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject1).toString());
+    localObject1 = new HashMap();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[onResponseBack], imageOutPaths=");
+    ((StringBuilder)localObject2).append(this.K);
+    AEQLog.b("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject2).toString());
+    localObject2 = this.K.iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      String str = (String)((Iterator)localObject2).next();
+      ArrayList localArrayList = a(this.O, str);
+      int i = this.K.indexOf(str);
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("[onResponseBack], pathIndex=");
+      ((StringBuilder)localObject3).append(i);
+      AEQLog.b("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject3).toString());
+      localObject3 = a(AEEditorAIFilterManager.a().b.f(), i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onResponseBack], path=");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" silentTextList:");
+      localStringBuilder.append(localObject3);
+      localStringBuilder.append(" cachedTextList:");
+      localStringBuilder.append(localArrayList);
+      AEQLog.b("[QcirclePublish]AEEditorImageEditFragment", localStringBuilder.toString());
+      if ((localArrayList != null) && (!CollectionUtils.isEmpty(localArrayList))) {
+        ((HashMap)localObject1).put(str, localArrayList);
+      } else if ((localObject3 != null) && (!CollectionUtils.isEmpty((Collection)localObject3))) {
+        ((HashMap)localObject1).put(str, localObject3);
+      }
+    }
+    return localObject1;
   }
   
-  private String d()
+  private String af()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime == null)
@@ -1000,203 +774,81 @@ public class AEEditorImageEditFragment
     return ((TicketManager)localAppRuntime.getManager(2)).getPskey(str, "shadowai.qq.com");
   }
   
-  private void d(int paramInt)
+  private void ag()
   {
-    ThreadManager.getFileThreadHandler().post(new AEEditorImageEditFragment.13(this, paramInt));
+    AEEditorApplyAllLoadingView localAEEditorApplyAllLoadingView = new AEEditorApplyAllLoadingView(getActivity());
+    this.i.addView(localAEEditorApplyAllLoadingView);
   }
   
-  private void d(View paramView)
+  private void ah()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel = ((AEEditorFramePanel)paramView.findViewById(2064122229));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.setTavCutImageSession(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.setControlListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.setToastValidListener(this);
+    boolean bool = AECameraPrefsUtil.a().b("ae_editor_tool_bar_red_dot_text", false, 0);
+    if (!bool) {
+      AECameraPrefsUtil.a().a("ae_editor_tool_bar_red_dot_text", true, 0);
+    }
+    AEBaseReportParam.a().n().F = (bool ^ true);
+    AEBaseDataReporter.a().r();
   }
   
-  private void e(int paramInt)
+  private int ai()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("updateImageFilterByIndex: ");
-    localStringBuilder.append(paramInt);
-    AEQLog.b("AEEditorImageEditFragment", localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b(paramInt) == -1) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt) == -1))
+    return this.J.size();
+  }
+  
+  private void aj()
+  {
+    AEEditorImageRecord.a().a(this.J, this.K, this.P, this.ah.b, this.M, 2);
+    Intent localIntent = new Intent();
+    Object localObject1 = this.M;
+    int j = 0;
+    int i = j;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.render(paramInt, new AEEditorImageEditFragment.15(this, paramInt));
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b(paramInt))
-    {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAEKitModelForAI(paramInt, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt).b(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt).a(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt).a(), (int)(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt).b() * 100.0F), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt).c());
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.c(paramInt))
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt) != null)
-      {
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setOverlayImage(paramInt, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt).a());
-        return;
-      }
-      paramInt = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt);
-      if (!CollectionUtils.indexOutOfBounds(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a(), paramInt)) {
-        a(paramInt, (MetaMaterial)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a().get(paramInt));
+      i = j;
+      if (((List)localObject1).get(0) != null) {
+        i = ((AEEditorImageInfo)this.M.get(0)).e;
       }
     }
-    else
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt))
-      {
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAEKitModel(paramInt, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt));
-        return;
-      }
-      f(paramInt);
+    localObject1 = AEEditorClipContainer.a(i);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("exportFinishActivity: before imageOutPaths:");
+    ((StringBuilder)localObject2).append(this.K);
+    AEQLog.a("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject2).toString());
+    AEEditorImageRecord.a().a(localIntent, this.K);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("exportFinishActivity: imageOutPaths:");
+    ((StringBuilder)localObject2).append(this.K);
+    AEQLog.a("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject2).toString());
+    localObject2 = b(this.K);
+    localIntent.putExtra("key_image_sucai_info", new AEEditorImageEditFragment.27(this, (String)localObject1));
+    localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", (Serializable)localObject2);
+    localIntent.putExtra("PhotoConst.PHOTO_PATHS", this.K);
+    if ((getActivity() != null) && (getActivity().getIntent() != null)) {
+      i = getActivity().getIntent().getIntExtra("editorFrom", -1);
+    } else {
+      i = -1;
     }
+    localIntent.putExtra("editorFrom", i);
+    getActivity().setResult(-1, localIntent);
+    getActivity().finish();
   }
   
-  private void f(int paramInt)
+  private void ak()
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a() != null))
-    {
-      Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a();
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt);
-      if (!CollectionUtils.indexOutOfBounds((Collection)localObject1, i))
-      {
-        Object localObject2 = (MetaMaterial)((List)localObject1).get(i);
-        float f1 = FilterMetaMaterialKt.b((MetaMaterial)localObject2);
-        localObject1 = FilterMetaMaterialKt.a((MetaMaterial)localObject2);
-        localObject2 = AEEditorResourceManager.a().d((MetaMaterial)localObject2);
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAEKitModel(paramInt, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt), f1, (Map)localObject1, (String)localObject2);
-      }
+    if (this.ag == null) {
       return;
     }
-    AEQLog.d("AEEditorImageEditFragment", "filter list null.");
+    if (AECommonUtil.a(getActivity(), "AEEditorImageEditFragment"))
+    {
+      this.ag.setImageResource(2063925398);
+      return;
+    }
+    this.ag.setImageResource(2130837921);
   }
   
-  private void f(boolean paramBoolean)
+  private boolean al()
   {
-    AEQLog.b("AEEditorImageEditFragment", "exportImages");
-    if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession == null)
-    {
-      AEQLog.d("AEEditorImageEditFragment", "exportImages error: session is null");
-      return;
-    }
-    if (!g())
-    {
-      QQToast.a(getActivity(), "图片不存在或被删除", 0).a();
-      return;
-    }
-    if (this.jdField_c_of_type_Int + 1 < this.jdField_b_of_type_JavaUtilArrayList.size()) {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.releaseTAVCutWithoutView(this.jdField_c_of_type_Int + 1);
-    }
-    int i = this.jdField_c_of_type_Int;
-    if ((i - 1 >= 0) && (i - 1 < this.jdField_b_of_type_JavaUtilArrayList.size())) {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.releaseTAVCutWithoutView(this.jdField_c_of_type_Int - 1);
-    }
-    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.25(this, paramBoolean));
-    Object localObject1 = AEEditorPath.EDITOR.FILES.d;
-    Object localObject2 = new File((String)localObject1);
-    if (!((File)localObject2).exists()) {
-      ((File)localObject2).mkdirs();
-    }
-    localObject2 = this.jdField_d_of_type_JavaUtilArrayList;
-    if (localObject2 != null)
-    {
-      ((ArrayList)localObject2).clear();
-      this.jdField_d_of_type_JavaUtilArrayList = null;
-      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    else
-    {
-      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    i = 0;
-    while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
-    {
-      localObject2 = new File((String)this.jdField_b_of_type_JavaUtilArrayList.get(i));
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append((String)localObject1);
-      ((StringBuilder)localObject3).append(File.separator);
-      ((StringBuilder)localObject3).append("output_");
-      ((StringBuilder)localObject3).append(i);
-      ((StringBuilder)localObject3).append("_");
-      ((StringBuilder)localObject3).append(System.currentTimeMillis());
-      ((StringBuilder)localObject3).append("_");
-      ((StringBuilder)localObject3).append(VideoFilterTools.a(((File)localObject2).getName()));
-      ((StringBuilder)localObject3).append(".jpg");
-      localObject2 = ((StringBuilder)localObject3).toString();
-      this.jdField_d_of_type_JavaUtilArrayList.add(localObject2);
-      localObject3 = this.jdField_a_of_type_JavaUtilHashMap;
-      if (localObject3 != null)
-      {
-        localObject3 = (ArrayList)((HashMap)localObject3).get(String.valueOf(i));
-        if (localObject3 != null)
-        {
-          this.jdField_a_of_type_JavaUtilHashMap.remove(String.valueOf(i));
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localObject3);
-        }
-      }
-      i += 1;
-    }
-    localObject1 = new ImageExportConfig();
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.applyCurrentSticker(this.jdField_c_of_type_Int);
-    L();
-    if (this.jdField_d_of_type_Int == 0) {
-      this.jdField_d_of_type_Int = d();
-    }
-    ((ImageExportConfig)localObject1).setMaxExportSize(d());
-    ((ImageExportConfig)localObject1).setMinIntermediateRenderSize(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.a());
-    ((ImageExportConfig)localObject1).setMaxIntermediateRenderSize(d());
-    ((ImageExportConfig)localObject1).setQuality(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.e());
-    ((ImageExportConfig)localObject1).setOutputPath(this.jdField_d_of_type_JavaUtilArrayList);
-    ((ImageExportConfig)localObject1).setScreenSize(new CGSize(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.getWidth(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.getHeight()));
-    a((ImageExportConfig)localObject1);
-    this.jdField_a_of_type_ComTencentTavcutExporterImageExporter = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getExporter((ImageExportConfig)localObject1);
-    this.jdField_c_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_c_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_d_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_e_of_type_JavaLangStringBuilder = new StringBuilder();
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_EXPORT_START(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), "pic"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT2(), this.jdField_b_of_type_JavaUtilArrayList.toString()), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), this.jdField_d_of_type_JavaUtilArrayList.toString()), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), "0") }));
-    this.jdField_a_of_type_ComTencentTavcutExporterImageExporter.export(new AEEditorImageEditFragment.26(this, paramBoolean), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getEglContext(), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getImageProcessThread(), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getRenderContext(), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getAeFilterManager());
-  }
-  
-  private void g(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a() != null))
-    {
-      Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a();
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt);
-      if (!CollectionUtils.indexOutOfBounds((Collection)localObject1, i))
-      {
-        Object localObject2 = (MetaMaterial)((List)localObject1).get(i);
-        float f1 = FilterMetaMaterialKt.b((MetaMaterial)localObject2);
-        localObject1 = FilterMetaMaterialKt.a((MetaMaterial)localObject2);
-        localObject2 = AEEditorResourceManager.a().d((MetaMaterial)localObject2);
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAllAeKitModelWithOutRender(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt), f1, (Map)localObject1, (String)localObject2);
-      }
-      return;
-    }
-    AEQLog.d("AEEditorImageEditFragment", "filter list null.");
-  }
-  
-  private void g(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localImageView == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      localImageView.setVisibility(0);
-      return;
-    }
-    localImageView.setVisibility(8);
-  }
-  
-  private boolean g()
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+    Object localObject = this.J;
     if (localObject == null) {
       return false;
     }
@@ -1209,17 +861,463 @@ public class AEEditorImageEditFragment
     return true;
   }
   
-  private void h(int paramInt)
+  private int am()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel == null) {
+    return this.ac.d();
+  }
+  
+  private void an()
+  {
+    if (QzoneConfig.isOpenFunctionSavePicToVideo())
+    {
+      ao();
       return;
     }
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() > 1)
+    ap();
+  }
+  
+  private void ao()
+  {
+    if (this.H.mediaChanged())
     {
-      List localList = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a();
+      f(false);
+      return;
+    }
+    ar();
+    as();
+  }
+  
+  private void ap()
+  {
+    if (this.H.mediaChanged())
+    {
+      aq();
+      return;
+    }
+    as();
+  }
+  
+  private void aq()
+  {
+    Object localObject = getActivity();
+    localObject = DialogUtil.a((Context)localObject, 230).setTitle(HardCodeUtil.a(2064187505)).setMessage(((Context)localObject).getString(2064187504)).setPositiveButton(((Context)localObject).getString(2064187461), new AEEditorImageEditFragment.30(this)).setNegativeButton(((Context)localObject).getString(2064187459), new AEEditorImageEditFragment.29(this));
+    if (localObject != null) {}
+    try
+    {
+      if (((QQCustomDialog)localObject).isShowing()) {
+        break label88;
+      }
+      ((QQCustomDialog)localObject).show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      label84:
+      break label84;
+    }
+    as();
+    label88:
+  }
+  
+  private void ar()
+  {
+    if (this.x == null)
+    {
+      QLog.w("AEEditorImageEditFragment", 1, "resetMediaModel... mediaModels == null");
+      return;
+    }
+    int i = 0;
+    while (i < this.x.size())
+    {
+      ((AEAlbumMediaBaseModel)this.x.get(i)).setPath(((AEAlbumMediaBaseModel)this.x.get(i)).getOriginPath());
+      i += 1;
+    }
+  }
+  
+  private void as()
+  {
+    Bundle localBundle = getArguments();
+    a(localBundle);
+    b().b("AEEditorImageEdit", localBundle);
+  }
+  
+  private void at()
+  {
+    try
+    {
+      if (this.H != null)
+      {
+        this.H.setBasePicActive(false);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private HashMap<String, LocalMediaInfo> b(ArrayList<String> paramArrayList)
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramArrayList.iterator();
+    Object localObject1 = "";
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject2 = AELocalMediaInfoUtil.a(str);
+      Object localObject3 = ((MediaClipModel)((MediaModel)this.H.getMediaModels().get(i)).getMediaResourceModel().getVideos().get(0)).getResource().getPath();
+      Object localObject4 = BitmapUtil.getImageSize((String)localObject3);
+      ((LocalMediaInfo)localObject2).mediaOriginHeight = ((Size)localObject4).getHeight();
+      ((LocalMediaInfo)localObject2).mediaOriginWidth = ((Size)localObject4).getWidth();
+      ((LocalMediaInfo)localObject2).mediaOriginSize = com.tencent.mobileqq.filemanager.util.FileUtil.f((String)localObject3);
+      AEBaseDataReporter.a().b((LocalMediaInfo)localObject2);
+      localObject3 = AELocalMediaInfoUtil.a((LocalMediaInfo)localObject2, getArguments().getString("material_id"), getArguments().getString("material_topic"), getArguments().getString("key_camera_material_name"), getArguments().getInt("ae_editor_is_show_take_same"), this.P.j(i));
+      if (AEEditorAIFilterManager.a().b == null)
+      {
+        AEQLog.b("[QcirclePublish]AEEditorImageEditFragment", "[getImageInfo], silentBatchImageAIFilterProxy == null");
+        localObject2 = a(this.O, str);
+        if ((localObject2 != null) && (!CollectionUtils.isEmpty((Collection)localObject2)))
+        {
+          ((LocalMediaInfo)localObject3).aiTextLabel = ((ArrayList)localObject2);
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("[getImageInfo], cachedTextList=");
+          ((StringBuilder)localObject4).append(localObject2);
+          AEQLog.a("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject4).toString());
+        }
+      }
+      else
+      {
+        localObject2 = a(this.O, str);
+        int j = paramArrayList.indexOf(str);
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("[getImageInfo], index=");
+        ((StringBuilder)localObject4).append(i);
+        ((StringBuilder)localObject4).append(" path:");
+        ((StringBuilder)localObject4).append(str);
+        AEQLog.a("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject4).toString());
+        localObject4 = a(AEEditorAIFilterManager.a().b.f(), j);
+        if ((localObject2 != null) && (!CollectionUtils.isEmpty((Collection)localObject2)))
+        {
+          ((LocalMediaInfo)localObject3).aiTextLabel = ((ArrayList)localObject2);
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("[getImageInfo], cachedTextList=");
+          ((StringBuilder)localObject4).append(localObject2);
+          AEQLog.a("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject4).toString());
+        }
+        else if ((localObject4 != null) && (!CollectionUtils.isEmpty((Collection)localObject4)))
+        {
+          ((LocalMediaInfo)localObject3).aiTextLabel = ((ArrayList)localObject4);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[getImageInfo], silentTextList=");
+          ((StringBuilder)localObject2).append(localObject4);
+          AEQLog.a("[QcirclePublish]AEEditorImageEditFragment", ((StringBuilder)localObject2).toString());
+        }
+        this.au = true;
+      }
+      a((LocalMediaInfo)localObject3, ((MediaModel)this.H.getMediaModels().get(i)).getMediaEffectModel().getStickerModelList());
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = d(i);
+        localObject2 = localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject2 = localObject1;
+          if (!((LocalMediaInfo)localObject3).mHashTagList.contains(localObject1))
+          {
+            ((LocalMediaInfo)localObject3).mHashTagList.add(localObject1);
+            localObject2 = localObject1;
+          }
+        }
+      }
+      localHashMap.put(str, localObject3);
+      i += 1;
+      localObject1 = localObject2;
+    }
+    return localHashMap;
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  private void b(View paramView)
+  {
+    AEQLog.b("AEEditorImageEditFragment", "initViews");
+    this.D = ((AEEditorImageViewPager)paramView.findViewById(2063991611));
+    this.F = ((NumberIndicator)paramView.findViewById(2063991287));
+    this.G = ((FrameLayout)paramView.findViewById(2063991081));
+    this.at = paramView.findViewById(2063990910);
+    this.D.setOnPageChangeListener(this);
+    this.G.setOnClickListener(new AEEditorImageEditFragment.3(this));
+    this.at.setOnTouchListener(new AEEditorImageEditFragment.4(this));
+    this.ae = ((FrameLayout)paramView.findViewById(2063990992));
+    this.af = ((AEEditorClipPanel)paramView.findViewById(2063990813));
+    this.af.setCropChangeCallBack(new AEEditorImageEditFragment.5(this));
+    this.ae.setOnClickListener(new AEEditorImageEditFragment.6(this));
+    this.ag = ((ImageView)paramView.findViewById(2063991045));
+    ak();
+    this.ag.setOnClickListener(new AEEditorImageEditFragment.7(this));
+    g(this.ao);
+    c(paramView);
+    d(paramView);
+  }
+  
+  private void b(List<ImageMainColorData> paramList)
+  {
+    if (CollectionUtil.isEmptyList(paramList)) {
+      return;
+    }
+    Collections.sort(paramList, new AEEditorImageEditFragment.14(this));
+  }
+  
+  private void c(View paramView)
+  {
+    this.ah = ((AEEditorImageTemplatePanel)paramView.findViewById(2063991137));
+    this.ah.setTavCutImageSession(this.H);
+    this.ah.setControlListener(this);
+    this.ah.setImageInfos(this.M);
+    this.ah.setTextViewModel(this.w, this.v);
+    this.ah.setToastValidListener(this);
+  }
+  
+  private String d(int paramInt, MetaMaterial paramMetaMaterial)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramMetaMaterial.id);
+    return localStringBuilder.toString();
+  }
+  
+  private void d(View paramView)
+  {
+    this.ai = ((AEEditorFramePanel)paramView.findViewById(2063991111));
+    this.ai.setTavCutImageSession(this.H);
+    this.ai.setControlListener(this);
+    this.ai.setToastValidListener(this);
+  }
+  
+  private void e(int paramInt)
+  {
+    this.Q.clear();
+    if (this.P.m(paramInt))
+    {
+      this.P.n(paramInt);
+      this.H.clearAEKitModel(paramInt);
+      int i = this.P.b(paramInt);
+      if (!CollectionUtils.indexOutOfBounds(this.g.getFilterMaterials(), i))
+      {
+        MetaMaterial localMetaMaterial = (MetaMaterial)this.g.getFilterMaterials().get(i);
+        if (paramInt == this.I) {
+          b(i, localMetaMaterial);
+        }
+      }
+    }
+  }
+  
+  private void f(int paramInt)
+  {
+    List localList = AEExtractColorUtil.a((List)this.T.get(paramInt), 6);
+    this.ai.a(localList);
+  }
+  
+  private void f(boolean paramBoolean)
+  {
+    AEQLog.b("AEEditorImageEditFragment", "exportImages");
+    if (this.H == null)
+    {
+      AEQLog.d("AEEditorImageEditFragment", "exportImages error: session is null");
+      return;
+    }
+    if (!al())
+    {
+      QQToast.makeText(getActivity(), "图片不存在或被删除", 0).show();
+      return;
+    }
+    if (this.I + 1 < this.J.size()) {
+      this.H.releaseTAVCutWithoutView(this.I + 1);
+    }
+    int i = this.I;
+    if ((i - 1 >= 0) && (i - 1 < this.J.size())) {
+      this.H.releaseTAVCutWithoutView(this.I - 1);
+    }
+    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.25(this, paramBoolean));
+    Object localObject1 = AEEditorPath.EDITOR.FILES.d;
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdirs();
+    }
+    localObject2 = this.L;
+    if (localObject2 != null)
+    {
+      ((ArrayList)localObject2).clear();
+      this.L = null;
+      this.L = new ArrayList();
+    }
+    else
+    {
+      this.L = new ArrayList();
+    }
+    i = 0;
+    while (i < this.J.size())
+    {
+      localObject2 = new File((String)this.J.get(i));
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(File.separator);
+      ((StringBuilder)localObject3).append("output_");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append("_");
+      ((StringBuilder)localObject3).append(System.currentTimeMillis());
+      ((StringBuilder)localObject3).append("_");
+      ((StringBuilder)localObject3).append(VideoFilterTools.d(((File)localObject2).getName()));
+      ((StringBuilder)localObject3).append(".jpg");
+      localObject2 = ((StringBuilder)localObject3).toString();
+      this.L.add(localObject2);
+      localObject3 = this.O;
+      if (localObject3 != null)
+      {
+        localObject3 = (ArrayList)((HashMap)localObject3).get(String.valueOf(i));
+        if (localObject3 != null)
+        {
+          this.O.remove(String.valueOf(i));
+          this.O.put(localObject2, localObject3);
+        }
+      }
+      i += 1;
+    }
+    localObject1 = new ImageExportConfig();
+    this.H.applyCurrentSticker(this.I);
+    ac();
+    if (this.W == 0) {
+      this.W = am();
+    }
+    ((ImageExportConfig)localObject1).setMaxExportSize(am());
+    ((ImageExportConfig)localObject1).setMinIntermediateRenderSize(this.ac.a());
+    ((ImageExportConfig)localObject1).setMaxIntermediateRenderSize(am());
+    ((ImageExportConfig)localObject1).setQuality(this.ac.e());
+    ((ImageExportConfig)localObject1).setOutputPath(this.L);
+    ((ImageExportConfig)localObject1).setScreenSize(new CGSize(this.D.getWidth(), this.D.getHeight()));
+    a((ImageExportConfig)localObject1);
+    this.V = this.H.getExporter((ImageExportConfig)localObject1);
+    this.K.clear();
+    this.X = System.currentTimeMillis();
+    this.aj = new StringBuilder();
+    this.ak = new StringBuilder();
+    this.al = new StringBuilder();
+    this.am = new StringBuilder();
+    this.an = new StringBuilder();
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pExportStart(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), "pic"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext2(), this.J.toString()), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), this.L.toString()), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), "0") }));
+    this.V.export(new AEEditorImageEditFragment.26(this, paramBoolean), this.H.getEglContext(), this.H.getImageProcessThread(), this.H.getRenderContext(), this.H.getAeFilterManager());
+  }
+  
+  private void g(int paramInt)
+  {
+    ThreadManager.getFileThreadHandler().post(new AEEditorImageEditFragment.13(this, paramInt));
+  }
+  
+  private void g(boolean paramBoolean)
+  {
+    ImageView localImageView = this.ag;
+    if (localImageView == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      localImageView.setVisibility(0);
+      return;
+    }
+    localImageView.setVisibility(8);
+  }
+  
+  private void h(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateImageFilterByIndex: ");
+    localStringBuilder.append(paramInt);
+    AEQLog.b("AEEditorImageEditFragment", localStringBuilder.toString());
+    if ((this.P.c(paramInt) == -1) && (this.P.b(paramInt) == -1))
+    {
+      this.H.render(paramInt, new AEEditorImageEditFragment.15(this, paramInt));
+      return;
+    }
+    if (this.P.l(paramInt))
+    {
+      this.H.resetAEKitModelForAI(paramInt, this.P.f(paramInt).b(), this.P.f(paramInt).c(), this.P.f(paramInt).d(), (int)(this.P.f(paramInt).e() * 100.0F), this.P.f(paramInt).f());
+      return;
+    }
+    if (this.P.m(paramInt))
+    {
+      if (this.P.g(paramInt) != null)
+      {
+        this.H.setOverlayImage(paramInt, this.P.g(paramInt).a());
+        return;
+      }
+      paramInt = this.P.b(paramInt);
+      if (!CollectionUtils.indexOutOfBounds(this.g.getFilterMaterials(), paramInt)) {
+        b(paramInt, (MetaMaterial)this.g.getFilterMaterials().get(paramInt));
+      }
+    }
+    else
+    {
+      if (this.P.k(paramInt))
+      {
+        this.H.resetAEKitModel(paramInt, this.P.d(paramInt), this.P.e(paramInt));
+        return;
+      }
+      i(paramInt);
+    }
+  }
+  
+  private void i(int paramInt)
+  {
+    if ((this.g != null) && (this.g.getFilterMaterials() != null))
+    {
+      Object localObject1 = this.g.getFilterMaterials();
+      int i = this.P.b(paramInt);
+      if (!CollectionUtils.indexOutOfBounds((Collection)localObject1, i))
+      {
+        Object localObject2 = (MetaMaterial)((List)localObject1).get(i);
+        float f = FilterMetaMaterialKt.n((MetaMaterial)localObject2);
+        localObject1 = FilterMetaMaterialKt.p((MetaMaterial)localObject2);
+        localObject2 = AEEditorResourceManager.a().e((MetaMaterial)localObject2);
+        this.H.resetAEKitModel(paramInt, this.P.e(paramInt), this.P.d(paramInt), f, (Map)localObject1, (String)localObject2);
+      }
+      return;
+    }
+    AEQLog.d("AEEditorImageEditFragment", "filter list null.");
+  }
+  
+  private void j(int paramInt)
+  {
+    if ((this.g != null) && (this.g.getFilterMaterials() != null))
+    {
+      Object localObject1 = this.g.getFilterMaterials();
+      int i = this.P.b(paramInt);
+      if (!CollectionUtils.indexOutOfBounds((Collection)localObject1, i))
+      {
+        Object localObject2 = (MetaMaterial)((List)localObject1).get(i);
+        float f = FilterMetaMaterialKt.n((MetaMaterial)localObject2);
+        localObject1 = FilterMetaMaterialKt.p((MetaMaterial)localObject2);
+        localObject2 = AEEditorResourceManager.a().e((MetaMaterial)localObject2);
+        this.H.resetAllAeKitModelWithOutRender(this.P.e(paramInt), this.P.d(paramInt), f, (Map)localObject1, (String)localObject2);
+      }
+      return;
+    }
+    AEQLog.d("AEEditorImageEditFragment", "filter list null.");
+  }
+  
+  private void k(int paramInt)
+  {
+    if (this.g == null) {
+      return;
+    }
+    if (this.J.size() > 1)
+    {
+      List localList = this.g.getFilterMaterials();
       if (!CollectionUtils.indexOutOfBounds(localList, paramInt))
       {
-        bool = FilterMetaMaterialKt.c((MetaMaterial)localList.get(paramInt));
+        bool = FilterMetaMaterialKt.d((MetaMaterial)localList.get(paramInt));
         break label54;
       }
     }
@@ -1227,196 +1325,230 @@ public class AEEditorImageEditFragment
     label54:
     if (bool) {
       b(true);
-    } else if (!this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.b()) {
+    } else if (!this.g.c()) {
       b(false);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.b(bool);
+    this.g.b(bool);
   }
   
-  private void i(int paramInt)
+  private void l(int paramInt)
   {
     if (paramInt >= 1) {
-      e(paramInt - 1);
+      h(paramInt - 1);
     }
-    if (paramInt < c() - 1) {
-      e(paramInt + 1);
+    if (paramInt < ai() - 1) {
+      h(paramInt + 1);
     }
   }
   
-  private void j(int paramInt)
+  private void m(int paramInt)
   {
     AEQLog.a("AEEditorImageEditFragment", "update all data.");
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b(paramInt))
+    if (this.P.l(paramInt))
     {
       int i = 0;
-      while (i < c())
+      while (i < ai())
       {
         if (paramInt != i) {
-          this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAEKitNodeForAIWithoutRender(i, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(i).b(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(i).a(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(i).a(), (int)(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(i).b() * 100.0F), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(i).c());
+          this.H.resetAEKitNodeForAIWithoutRender(i, this.P.f(i).b(), this.P.f(i).c(), this.P.f(i).d(), (int)(this.P.f(i).e() * 100.0F), this.P.f(i).f());
         }
         i += 1;
       }
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.c(paramInt)) {
+    if (this.P.m(paramInt)) {
       return;
     }
-    g(paramInt);
+    j(paramInt);
   }
   
-  public void A()
-  {
-    s();
-    a(-1);
-    h(-1);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.clearAEKitModel(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.c(this.jdField_c_of_type_Int);
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 0);
-    AEBaseReportParam.a().a().jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_c_of_type_Int), "none");
-    AEBaseReportParam.a().a().b.put(Integer.valueOf(this.jdField_c_of_type_Int), Float.valueOf(-1.0F));
-  }
-  
-  public void B()
-  {
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 4);
-  }
-  
-  public void C()
-  {
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 0);
-  }
-  
-  public void D() {}
-  
-  public void E()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSelectedIndex(-1, true);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.c(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.a();
-  }
-  
-  public void F()
-  {
-    Object localObject = (AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int);
-    if ((((AEEditorImageInfo)localObject).b != 0) && (((AEEditorImageInfo)localObject).jdField_a_of_type_Int != 0))
-    {
-      double d1 = ((AEEditorImageInfo)localObject).jdField_a_of_type_Int * 1.0F / ((AEEditorImageInfo)localObject).b;
-      if (d1 <= 0.333333343267441D) {
-        localObject = new CropConfig(0.0F, (((AEEditorImageInfo)localObject).b - ((AEEditorImageInfo)localObject).jdField_a_of_type_Int / 0.3333333F) * 1.0F / 2.0F / ((AEEditorImageInfo)localObject).b, 1.0F, ((AEEditorImageInfo)localObject).jdField_a_of_type_Int / 0.3333333F * 1.0F / ((AEEditorImageInfo)localObject).b);
-      } else if (d1 >= 1.777777791023254D) {
-        localObject = new CropConfig((((AEEditorImageInfo)localObject).jdField_a_of_type_Int - ((AEEditorImageInfo)localObject).b * 1.777778F) * 1.0F / 2.0F / ((AEEditorImageInfo)localObject).jdField_a_of_type_Int, 0.0F, ((AEEditorImageInfo)localObject).b * 1.777778F * 1.0F / ((AEEditorImageInfo)localObject).jdField_a_of_type_Int, 1.0F);
-      } else {
-        localObject = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
-      }
-      ((AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int)).a((CropConfig)localObject);
-      ((AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int)).a(0);
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.updateTemplateCrop(this.jdField_c_of_type_Int, (CropConfig)localObject);
-    }
-  }
-  
-  public void G()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public int a()
-  {
-    return 2064318568;
-  }
-  
-  protected AEEditorFilterControlPanel.FilterControlListener a()
-  {
-    return this;
-  }
-  
-  protected FilterChangedComparator a()
+  protected FilterChangedComparator C()
   {
     return new AEEditorImageEditFragment.28(this);
   }
   
-  protected AEEditorStickerPart.AEEditorTextDialogListener a()
+  public void E()
   {
-    return new AEEditorImageEditFragment.24(this);
+    at();
+    super.E();
   }
   
-  protected TAVCutSession a()
+  public void F()
   {
-    return this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
+    at();
+    super.F();
+  }
+  
+  public void G()
+  {
+    AEEditorImageRecord.a().b();
+  }
+  
+  public void N()
+  {
+    new Handler(Looper.getMainLooper()).postDelayed(new AEEditorImageEditFragment.8(this), 100L);
+  }
+  
+  protected void O()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSilentAIFilterRequest... imagePaths:");
+    localStringBuilder.append(this.J);
+    AEQLog.c("[QcirclePublish]AEEditorImageEditFragment", localStringBuilder.toString());
+    AEEditorAIFilterManager.a().a(getActivity(), this.J, this.M, new AEEditorImageEditFragment.16(this));
+  }
+  
+  public void P()
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onApplyAll current position = ");
+    ((StringBuilder)localObject1).append(this.I);
+    AEQLog.b("AEEditorImageEditFragment", ((StringBuilder)localObject1).toString());
+    AEBaseDataReporter.a().t();
+    if (this.g.d())
+    {
+      localObject1 = this.J.iterator();
+      int j;
+      Object localObject2;
+      do
+      {
+        boolean bool = ((Iterator)localObject1).hasNext();
+        j = 0;
+        if (!bool) {
+          break label134;
+        }
+        localObject2 = (String)((Iterator)localObject1).next();
+        localObject2 = this.N.a((String)localObject2);
+        if ((localObject2 == null) || (!(localObject2 instanceof SingleImageAIFilterResult))) {
+          break;
+        }
+        AEQLog.b("AEEditorImageEditFragment", "onAIFilterRequest: has cache");
+      } while (!((AIFilterResult)localObject2).a);
+      int i = 1;
+      break label136;
+      label134:
+      i = 0;
+      label136:
+      if (i != 0)
+      {
+        A();
+        localObject1 = this.J;
+        localObject2 = this.M;
+        i = this.I;
+        localObject1 = new BatchImageAIFilterProxy((List)localObject1, (List)localObject2, i, this.N.a((String)((ArrayList)localObject1).get(i)));
+        ((BatchImageAIFilterProxy)localObject1).a(this.B);
+        AEEditorAIFilterManager.a().a(getActivity(), (AIFilterProxyBase)localObject1);
+        return;
+      }
+      a(AEEditorFilterControlPanel.a);
+      this.g.setSelectedIndex(this.g.getSelectedIndex(), true);
+      localObject1 = new StringBuilder();
+      i = j;
+      while (i < ai())
+      {
+        localObject2 = (SingleImageAIFilterResult)this.N.a((String)this.J.get(i));
+        this.P.a(i, (AIFilterResult)localObject2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((SingleImageAIFilterResult)localObject2).a());
+        localStringBuilder.append("|");
+        ((StringBuilder)localObject1).append(localStringBuilder.toString());
+        i += 1;
+      }
+      a("智能滤镜label", ((StringBuilder)localObject1).toString());
+      h(this.I);
+      l(this.I);
+      m(this.I);
+      ag();
+      return;
+    }
+    if (this.g.e())
+    {
+      this.P.a();
+      l(this.I);
+      m(this.I);
+      ag();
+      return;
+    }
+    if (I()) {
+      return;
+    }
+    this.P.h(this.I);
+    l(this.I);
+    m(this.I);
+    ag();
+  }
+  
+  public void Q()
+  {
+    D();
+    a(-1);
+    k(-1);
+    this.H.clearAEKitModel(this.I);
+    this.P.i(this.I);
+    ViewUtils.setVisible(this.F, 0);
+    AEBaseReportParam.a().n().e.put(Integer.valueOf(this.I), "none");
+    AEBaseReportParam.a().n().f.put(Integer.valueOf(this.I), Float.valueOf(-1.0F));
+  }
+  
+  public void R()
+  {
+    ViewUtils.setVisible(this.F, 4);
+  }
+  
+  public void S()
+  {
+    ViewUtils.setVisible(this.F, 0);
+  }
+  
+  public void T() {}
+  
+  public boolean U()
+  {
+    List localList = ((MediaModel)this.H.getMediaModels().get(this.H.getCurrentIndex())).getMediaEffectModel().getStickerModelList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((StickerModel)localList.get(i)).getInteractive() > 0) && (((StickerModel)localList.get(i)).getMaterialId().startsWith("qiukuolie"))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public void V()
+  {
+    this.g.setSelectedIndex(-1, true);
+    this.P.i(this.I);
+    this.ai.a();
+  }
+  
+  public void W()
+  {
+    Object localObject = (AEEditorImageInfo)this.M.get(this.I);
+    if ((((AEEditorImageInfo)localObject).c != 0) && (((AEEditorImageInfo)localObject).b != 0))
+    {
+      double d = ((AEEditorImageInfo)localObject).b * 1.0F / ((AEEditorImageInfo)localObject).c;
+      if (d <= 0.333333343267441D) {
+        localObject = new CropConfig(0.0F, (((AEEditorImageInfo)localObject).c - ((AEEditorImageInfo)localObject).b / 0.3333333F) * 1.0F / 2.0F / ((AEEditorImageInfo)localObject).c, 1.0F, ((AEEditorImageInfo)localObject).b / 0.3333333F * 1.0F / ((AEEditorImageInfo)localObject).c);
+      } else if (d >= 1.777777791023254D) {
+        localObject = new CropConfig((((AEEditorImageInfo)localObject).b - ((AEEditorImageInfo)localObject).c * 1.777778F) * 1.0F / 2.0F / ((AEEditorImageInfo)localObject).b, 0.0F, ((AEEditorImageInfo)localObject).c * 1.777778F * 1.0F / ((AEEditorImageInfo)localObject).b, 1.0F);
+      } else {
+        localObject = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
+      }
+      ((AEEditorImageInfo)this.M.get(this.I)).a((CropConfig)localObject);
+      ((AEEditorImageInfo)this.M.get(this.I)).a(0);
+      this.H.updateTemplateCrop(this.I, (CropConfig)localObject);
+    }
+  }
+  
+  public void X()
+  {
+    this.Q.clear();
   }
   
   public String a()
   {
     return "AEEditorImageEdit";
-  }
-  
-  protected String a(int paramInt)
-  {
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    Object localObject3;
-    if (TextUtils.isEmpty(""))
-    {
-      localObject3 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel;
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = a(((AEEditorImageTemplatePanel)localObject3).a(paramInt), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.a());
-      }
-    }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel != null)
-      {
-        localObject3 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels();
-        localObject2 = localObject1;
-        if (paramInt >= 0)
-        {
-          localObject2 = localObject1;
-          if (paramInt < ((List)localObject3).size()) {
-            localObject2 = a(((MediaModel)((List)localObject3).get(paramInt)).getMediaEffectModel().getStickerModelList(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel.a());
-          }
-        }
-      }
-    }
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel != null)
-      {
-        localObject3 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels();
-        localObject1 = localObject2;
-        if (paramInt >= 0)
-        {
-          localObject1 = localObject2;
-          if (paramInt < ((List)localObject3).size()) {
-            localObject1 = a(((MediaModel)((List)localObject3).get(paramInt)).getMediaEffectModel().getStickerModelList(), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a());
-          }
-        }
-      }
-    }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject3 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel;
-      localObject2 = localObject1;
-      if (localObject3 != null) {
-        localObject2 = a(((AEEditorFramePanel)localObject3).a(paramInt), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.a());
-      }
-    }
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel != null)
-      {
-        localObject1 = localObject2;
-        if (!this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(paramInt)) {
-          localObject1 = a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b(paramInt), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a());
-        }
-      }
-    }
-    return localObject1;
   }
   
   protected String a(ArrayList<String> paramArrayList)
@@ -1432,7 +1564,7 @@ public class AEEditorImageEditFragment
         if (i >= paramArrayList.size()) {
           break;
         }
-        str1 = a(i);
+        str1 = d(i);
         if (!TextUtils.isEmpty(str1)) {
           return str1;
         }
@@ -1442,28 +1574,26 @@ public class AEEditorImageEditFragment
     return str2;
   }
   
-  public void a() {}
-  
   public void a(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setEffectStrength(this.jdField_c_of_type_Int, paramFloat);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, paramFloat);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, paramInt, paramFloat);
-    AEBaseReportParam.a().a().b.put(Integer.valueOf(this.jdField_c_of_type_Int), Float.valueOf(paramFloat));
+    this.H.setEffectStrength(this.I, paramFloat);
+    this.P.a(this.I, paramFloat);
+    this.P.a(this.I, paramInt, paramFloat);
+    AEBaseReportParam.a().n().f.put(Integer.valueOf(this.I), Float.valueOf(paramFloat));
   }
   
   public void a(int paramInt, @Nullable MetaMaterial paramMetaMaterial)
   {
     a(paramInt);
-    float f1 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSeekBarValue(f1);
+    float f = this.P.e(this.I);
+    this.g.setSeekBarValue(f);
   }
   
   public void a(Bundle paramBundle)
   {
     if (paramBundle != null)
     {
-      paramBundle.putString("key_image_to_multi_video_hashtag", a(this.jdField_c_of_type_JavaUtilArrayList));
+      paramBundle.putString("key_image_to_multi_video_hashtag", a(this.K));
       paramBundle.putInt("ae_video_editor_entrance_id", 3);
     }
   }
@@ -1484,152 +1614,155 @@ public class AEEditorImageEditFragment
           super.a(paramPair);
           return;
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.a(str)) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView.a(2064122556);
+        if (this.ai.a(str)) {
+          this.l.a(2063991373);
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.a(str))
+      else if (this.ah.a(str))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView.a(2064122348);
+        this.l.a(2063991221);
       }
     }
   }
   
-  public void a(CropConfig paramCropConfig, int paramInt)
+  public void a(CropConfig paramCropConfig, int paramInt, Matrix paramMatrix)
   {
-    int i = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex();
-    ((AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramCropConfig);
-    ((AEEditorImageInfo)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramInt);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.updateTemplateCrop(i, paramCropConfig);
+    int i = this.H.getCurrentIndex();
+    ((AEEditorImageInfo)this.M.get(i)).a(paramCropConfig);
+    ((AEEditorImageInfo)this.M.get(i)).a(paramInt);
+    ((AEEditorImageInfo)this.M.get(i)).a(paramMatrix);
+    this.H.updateTemplateCrop(i, paramCropConfig);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel != null)
+    if (this.ah != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onTemplateSet, materialId=");
       localStringBuilder.append(paramString);
       AEQLog.b("AEEditorImageEditFragment", localStringBuilder.toString());
-      if (!this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.a(paramString, false)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.setSelectedIndex(-1);
+      if (!this.ah.a(paramString, false)) {
+        this.ah.setSelectedIndex(-1);
       }
     }
   }
   
   public void a(String paramString1, String paramString2, float paramFloat)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a(paramString1);
+    int i = this.g.a(paramString1);
     if (i == -1)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.c(this.jdField_c_of_type_Int);
+      this.P.i(this.I);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, paramString2, paramFloat, i);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, paramString1);
+    this.P.a(this.I, paramString2, paramFloat, i);
+    this.P.a(this.I, paramString1);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_c_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+      this.ae.setVisibility(4);
       g(false);
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    g(this.g);
-    AEReportUtils.h();
+    this.ae.setVisibility(0);
+    g(this.ao);
+    AEReportUtils.g();
   }
   
   protected void a(boolean paramBoolean, int paramInt)
   {
-    X();
-    switch (this.jdField_e_of_type_Int)
+    at();
+    switch (this.aq)
     {
     default: 
       break;
-    case 2064122562: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel, 8);
+    case 2063991380: 
+      ViewUtils.setVisible(this.h, 8);
       break;
-    case 2064122556: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel, 8);
+    case 2063991373: 
+      ViewUtils.setVisible(this.ai, 8);
       break;
-    case 2064122555: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel, 8);
+    case 2063991372: 
+      ViewUtils.setVisible(this.g, 8);
       break;
-    case 2064122349: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel, 8);
+    case 2063991222: 
+      ViewUtils.setVisible(this.k, 8);
       break;
-    case 2064122348: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel, 8);
+    case 2063991221: 
+      ViewUtils.setVisible(this.ah, 8);
     }
     switch (paramInt)
     {
     default: 
       break;
-    case 2064122562: 
+    case 2063991380: 
       if (!paramBoolean) {
-        n();
+        x();
       }
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel, 0);
-      AEReportUtils.d(true);
-      a(2064122257, "SP_KEY_RED_POINT_TIME_STAMP", true);
-      break;
-    case 2064122556: 
-      l();
-      n();
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel, 0);
-      AEReportUtils.k();
-      a(2064122256, "SP_KEY_RED_POINT_TIME_STAMP", true);
-      break;
-    case 2064122555: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel, 0);
-      l();
-      n();
+      ViewUtils.setVisible(this.h, 0);
       AEReportUtils.c(true);
-      a(2064122255, "SP_KEY_RED_POINT_TIME_STAMP", true);
+      a(2063991131, "SP_KEY_RED_POINT_TIME_STAMP", true);
       break;
-    case 2064122349: 
-      if (!paramBoolean) {
-        l();
-      }
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel, 0);
-      a(2064122259, "SP_KEY_RED_POINT_TIME_STAMP", true);
-      break;
-    case 2064122348: 
-      ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel, 0);
-      l();
-      n();
+    case 2063991373: 
+      v();
+      x();
+      ViewUtils.setVisible(this.ai, 0);
       AEReportUtils.j();
-      a(2064122258, "SP_KEY_RED_POINT_TIME_STAMP", true);
+      a(2063991130, "SP_KEY_RED_POINT_TIME_STAMP", true);
+      break;
+    case 2063991372: 
+      ViewUtils.setVisible(this.g, 0);
+      v();
+      x();
+      AEReportUtils.b(true);
+      a(2063991129, "SP_KEY_RED_POINT_TIME_STAMP", true);
+      break;
+    case 2063991222: 
+      if (!paramBoolean) {
+        v();
+      }
+      ViewUtils.setVisible(this.k, 0);
+      a(2063991133, "SP_KEY_RED_POINT_TIME_STAMP", true);
+      break;
+    case 2063991221: 
+      ViewUtils.setVisible(this.ah, 0);
+      v();
+      x();
+      AEReportUtils.i();
+      a(2063991132, "SP_KEY_RED_POINT_TIME_STAMP", true);
     }
-    this.jdField_e_of_type_Int = paramInt;
+    this.aq = paramInt;
   }
   
-  public boolean a()
+  public void b(String paramString1, String paramString2)
   {
-    if (!this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.mediaChanged())
-    {
-      AEEditorImageRecord.a().a();
-      return false;
-    }
-    return super.a();
+    this.ai.setSelectedIndex(paramString1, paramString2);
+    this.ai.a(paramString1, paramString2);
   }
   
-  public boolean a(int paramInt)
+  protected void b(boolean paramBoolean)
   {
-    AEEditorImageTemplatePanel localAEEditorImageTemplatePanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel;
+    super.b(paramBoolean);
+    a(paramBoolean);
+  }
+  
+  public boolean b(int paramInt)
+  {
+    AEEditorImageTemplatePanel localAEEditorImageTemplatePanel = this.ah;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localAEEditorImageTemplatePanel != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel != null) {
-        if (!localAEEditorImageTemplatePanel.a(paramInt))
+      if (this.ai != null) {
+        if (!localAEEditorImageTemplatePanel.b(paramInt))
         {
           bool1 = bool2;
-          if (!this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.a(paramInt)) {}
+          if (!this.ai.c(paramInt)) {}
         }
         else
         {
@@ -1640,19 +1773,19 @@ public class AEEditorImageEditFragment
     return bool1;
   }
   
-  public boolean a(int paramInt, MetaMaterial paramMetaMaterial)
+  public boolean b(int paramInt, MetaMaterial paramMetaMaterial)
   {
-    int i = this.jdField_c_of_type_Int;
-    ComicsFilterResult localComicsFilterResult = (ComicsFilterResult)this.jdField_a_of_type_JavaUtilMap.get(a(i, paramMetaMaterial));
+    int i = this.I;
+    ComicsFilterResult localComicsFilterResult = (ComicsFilterResult)this.Q.get(d(i, paramMetaMaterial));
     if (localComicsFilterResult == null)
     {
       if (!NetworkUtil.isNetworkAvailable())
       {
-        QQToast.a(getActivity(), getActivity().getResources().getString(2064515301), 1).a();
+        QQToast.makeText(getActivity(), getActivity().getResources().getString(2064187646), 1).show();
         return false;
       }
-      this.jdField_d_of_type_Boolean = false;
-      r();
+      this.Z = false;
+      B();
       FaceChangeUtils.runInGLThread(new AEEditorImageEditFragment.17(this, i, paramInt, paramMetaMaterial), false, "GLThread-changeFaceSingle");
       return false;
     }
@@ -1663,73 +1796,62 @@ public class AEEditorImageEditFragment
     } else {
       str = "";
     }
-    localAEQCircleReport.a(str, "", QCircleConstants.KEY_CACHE, "0");
+    localAEQCircleReport.a(str, "", QCircleConstants.z, "0");
     a(i, localComicsFilterResult, paramInt, paramMetaMaterial);
     return true;
   }
   
-  protected int b()
+  public void c(int paramInt, MetaMaterial paramMetaMaterial)
   {
-    return -1;
-  }
-  
-  public String b()
-  {
-    return HardCodeUtil.a(2064515153);
-  }
-  
-  public void b(int paramInt, MetaMaterial paramMetaMaterial)
-  {
-    s();
-    String str1 = AEEditorResourceManager.a().b(paramMetaMaterial);
-    float f1 = FilterMetaMaterialKt.a(paramMetaMaterial);
+    D();
+    String str1 = AEEditorResourceManager.a().c(paramMetaMaterial);
+    float f1 = FilterMetaMaterialKt.j(paramMetaMaterial);
     a(paramInt);
-    h(paramInt);
-    float f2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, paramInt, f1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSeekBarValue(f2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, str1, f2, paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, paramMetaMaterial.id);
-    float f3 = FilterMetaMaterialKt.b(paramMetaMaterial);
-    Object localObject = FilterMetaMaterialKt.a(paramMetaMaterial);
-    String str2 = AEEditorResourceManager.a().d(paramMetaMaterial);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAEKitModel(this.jdField_c_of_type_Int, f2, str1, f3, (Map)localObject, str2);
+    k(paramInt);
+    float f2 = this.P.b(this.I, paramInt, f1);
+    this.g.setSeekBarValue(f2);
+    this.P.a(this.I, str1, f2, paramInt);
+    this.P.a(this.I, paramMetaMaterial.id);
+    float f3 = FilterMetaMaterialKt.n(paramMetaMaterial);
+    Object localObject = FilterMetaMaterialKt.p(paramMetaMaterial);
+    String str2 = AEEditorResourceManager.a().e(paramMetaMaterial);
+    this.H.resetAEKitModel(this.I, f2, str1, f3, (Map)localObject, str2);
     localObject = AEQCircleReport.a();
     if (paramMetaMaterial == null) {
       str1 = "";
     } else {
       str1 = paramMetaMaterial.id;
     }
-    ((AEQCircleReport)localObject).a(str1, QCircleConstants.KEY_PIC, "0");
-    AEBaseReportParam.a().a().jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_c_of_type_Int), paramMetaMaterial.id);
-    AEBaseReportParam.a().a().b.put(Integer.valueOf(this.jdField_c_of_type_Int), Float.valueOf(f1));
+    ((AEQCircleReport)localObject).a(str1, QCircleConstants.y, "0");
+    AEBaseReportParam.a().n().e.put(Integer.valueOf(this.I), paramMetaMaterial.id);
+    AEBaseReportParam.a().n().f.put(Integer.valueOf(this.I), Float.valueOf(f1));
   }
   
-  public void b(String paramString1, String paramString2)
+  public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.setSelectedIndex(paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.a(paramString1, paramString2);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
     a(paramBoolean);
   }
   
-  protected boolean b()
+  public boolean c()
   {
-    return true;
+    if (!this.H.mediaChanged())
+    {
+      AEEditorImageRecord.a().b();
+      H();
+      return false;
+    }
+    return super.c();
   }
   
-  public boolean b(int paramInt)
+  public boolean c(int paramInt)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterDataCache.a((String)this.jdField_b_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int));
+    this.C = System.currentTimeMillis();
+    Object localObject = this.N.a((String)this.J.get(this.I));
     boolean bool1;
     if ((localObject instanceof SingleImageAIFilterResult))
     {
       AEQLog.b("AEEditorImageEditFragment", "onAIFilterRequest: has cache");
-      bool1 = ((SingleImageAIFilterResult)localObject).jdField_a_of_type_Boolean;
+      bool1 = ((SingleImageAIFilterResult)localObject).a;
     }
     else
     {
@@ -1742,20 +1864,20 @@ public class AEEditorImageEditFragment
     boolean bool2 = false;
     if (bool1)
     {
-      q();
-      localObject = new SingleImageAIFilterProxy((String)this.jdField_b_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int), this.jdField_a_of_type_JavaUtilList, this.jdField_c_of_type_Int);
-      ((SingleImageAIFilterProxy)localObject).a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager$AIFilterObserver);
+      A();
+      localObject = new SingleImageAIFilterProxy((String)this.J.get(this.I), this.M, this.I);
+      ((SingleImageAIFilterProxy)localObject).a(this.A);
       AEEditorAIFilterManager.a().a(getActivity(), (AIFilterProxyBase)localObject);
     }
     else
     {
       a(paramInt);
-      h(paramInt);
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSelectedIndex(paramInt, true);
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int, (AIFilterResult)localObject);
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.resetAEKitModelForAI(this.jdField_c_of_type_Int, ((AIFilterResult)localObject).b(), ((AIFilterResult)localObject).a(), ((AIFilterResult)localObject).a(), (int)(((AIFilterResult)localObject).b() * 100.0F), ((AIFilterResult)localObject).c());
+      k(paramInt);
+      this.g.setSelectedIndex(paramInt, true);
+      this.P.a(this.I, (AIFilterResult)localObject);
+      this.H.resetAEKitModelForAI(this.I, ((AIFilterResult)localObject).b(), ((AIFilterResult)localObject).c(), ((AIFilterResult)localObject).d(), (int)(((AIFilterResult)localObject).e() * 100.0F), ((AIFilterResult)localObject).f());
       a(new String[] { "智能滤镜label", ((AIFilterResult)localObject).a(), "智能滤镜errCode", "0" });
-      AEQCircleReport.a().a(QCircleConstants.KEY_AIPHOTOCONFIG, QCircleConstants.KEY_PIC, QCircleConstants.KEY_CACHE, "0");
+      AEQCircleReport.a().a(QCircleConstants.B, QCircleConstants.y, QCircleConstants.z, "0");
     }
     if (!bool1) {
       bool2 = true;
@@ -1763,62 +1885,93 @@ public class AEEditorImageEditFragment
     return bool2;
   }
   
-  protected void c()
+  protected String d(int paramInt)
   {
-    AEQLog.b("AEEditorImageEditFragment", "initImageInfos");
-    Object localObject1 = new ArrayList();
-    Object localObject2 = getArguments();
-    if (((Bundle)localObject2).containsKey("AEEditorConstants_CLIPPED_PIC_INFOS")) {
-      localObject1 = (List)((Bundle)localObject2).getSerializable("AEEditorConstants_CLIPPED_PIC_INFOS");
-    } else {
-      AEQLog.d("AEEditorImageEditFragment", "no image crop infos");
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)getArguments().getSerializable("ae_album_selected_media_models"));
-    this.g = ((Bundle)localObject2).getBoolean("BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO", true);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    Object localObject3;
+    if (TextUtils.isEmpty(""))
     {
-      localObject2 = (EditorPicInfo)((Iterator)localObject1).next();
-      CropConfig localCropConfig = new CropConfig((float)((EditorPicInfo)localObject2).x, (float)((EditorPicInfo)localObject2).y, (float)Math.min(((EditorPicInfo)localObject2).w, 1.0D), (float)((EditorPicInfo)localObject2).h);
-      this.jdField_b_of_type_JavaUtilArrayList.add(((EditorPicInfo)localObject2).picPath);
-      this.jdField_a_of_type_JavaUtilList.add(new AEEditorImageInfo(((EditorPicInfo)localObject2).picPath, (int)((EditorPicInfo)localObject2).originPicWidth, (int)((EditorPicInfo)localObject2).originPicHeight, localCropConfig));
+      localObject3 = this.ah;
+      localObject1 = localObject2;
+      if (localObject3 != null) {
+        localObject1 = a(((AEEditorImageTemplatePanel)localObject3).c(paramInt), this.ah.getTemplateMaterials());
+      }
     }
-    this.jdField_d_of_type_Int = d();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_b_of_type_JavaUtilArrayList.size());
-    this.jdField_e_of_type_Boolean = AEThemeUtil.a();
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = localObject1;
+      if (this.h != null)
+      {
+        localObject3 = this.H.getMediaModels();
+        localObject2 = localObject1;
+        if (paramInt >= 0)
+        {
+          localObject2 = localObject1;
+          if (paramInt < ((List)localObject3).size()) {
+            localObject2 = a(((MediaModel)((List)localObject3).get(paramInt)).getMediaEffectModel().getStickerModelList(), this.h.getStickerMaterials());
+          }
+        }
+      }
+    }
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject1 = localObject2;
+      if (this.k != null)
+      {
+        localObject3 = this.H.getMediaModels();
+        localObject1 = localObject2;
+        if (paramInt >= 0)
+        {
+          localObject1 = localObject2;
+          if (paramInt < ((List)localObject3).size()) {
+            localObject1 = a(((MediaModel)((List)localObject3).get(paramInt)).getMediaEffectModel().getStickerModelList(), this.w.j());
+          }
+        }
+      }
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject3 = this.ai;
+      localObject2 = localObject1;
+      if (localObject3 != null) {
+        localObject2 = a(((AEEditorFramePanel)localObject3).a(paramInt), this.ai.getFrameMaterials());
+      }
+    }
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject1 = localObject2;
+      if (this.g != null)
+      {
+        localObject1 = localObject2;
+        if (!this.P.k(paramInt)) {
+          localObject1 = a(this.P.j(paramInt), this.g.getFilterMaterials());
+        }
+      }
+    }
+    return localObject1;
   }
   
-  public void c(boolean paramBoolean)
-  {
-    a(paramBoolean);
-  }
-  
-  protected void d()
-  {
-    AEEditorAIFilterManager.a().a();
-  }
+  public void d() {}
   
   public void d(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
+      if (this.i == null) {
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView = new AEEditorLoadingView(getActivity());
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView.setLoadingListener(new AEEditorImageEditFragment.31(this));
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView.a(3);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView);
+      this.i.removeAllViews();
+      this.j = new AEEditorLoadingView(getActivity());
+      this.j.setLoadingListener(new AEEditorImageEditFragment.31(this));
+      this.j.a(3);
+      this.i.addView(this.j);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.setScrollable(false);
-  }
-  
-  protected void e()
-  {
-    this.jdField_d_of_type_Boolean = true;
+    this.D.setScrollable(false);
   }
   
   public void e(boolean paramBoolean)
@@ -1828,96 +1981,105 @@ public class AEEditorImageEditFragment
   
   protected void f()
   {
-    k();
-    Boolean localBoolean = a();
-    NumberIndicator localNumberIndicator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator;
-    int i;
-    if ((localBoolean != null) && (localBoolean.booleanValue())) {
-      i = 4;
+    AEQLog.b("AEEditorImageEditFragment", "initImageInfos");
+    Object localObject1 = new ArrayList();
+    Object localObject2 = getArguments();
+    if (((Bundle)localObject2).containsKey("AEEditorConstants_CLIPPED_PIC_INFOS")) {
+      localObject1 = (List)((Bundle)localObject2).getSerializable("AEEditorConstants_CLIPPED_PIC_INFOS");
     } else {
-      i = 0;
+      AEQLog.d("AEEditorImageEditFragment", "no image crop infos");
     }
-    ViewUtils.b(localNumberIndicator, i);
-    O();
-  }
-  
-  public boolean f()
-  {
-    List localList = ((MediaModel)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels().get(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex())).getMediaEffectModel().getStickerModelList();
-    int i = 0;
-    while (i < localList.size())
+    this.x = ((ArrayList)getArguments().getSerializable("ae_album_selected_media_models"));
+    this.ao = ((Bundle)localObject2).getBoolean("BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO", true);
+    this.M = new ArrayList();
+    this.J = new ArrayList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      if ((((StickerModel)localList.get(i)).getInteractive() > 0) && (((StickerModel)localList.get(i)).getMaterialId().startsWith("qiukuolie"))) {
-        return true;
-      }
-      i += 1;
+      localObject2 = (EditorPicInfo)((Iterator)localObject1).next();
+      CropConfig localCropConfig = new CropConfig((float)((EditorPicInfo)localObject2).x, (float)((EditorPicInfo)localObject2).y, (float)Math.min(((EditorPicInfo)localObject2).w, 1.0D), (float)((EditorPicInfo)localObject2).h);
+      this.J.add(((EditorPicInfo)localObject2).picPath);
+      this.M.add(new AEEditorImageInfo(((EditorPicInfo)localObject2).picPath, (int)((EditorPicInfo)localObject2).originPicWidth, (int)((EditorPicInfo)localObject2).originPicHeight, localCropConfig));
     }
-    return false;
+    this.W = am();
+    this.P.a(this.J.size());
+    this.ab = AEThemeUtil.b();
   }
   
-  protected void g()
+  public int g()
   {
-    m();
-    Boolean localBoolean = a();
-    NumberIndicator localNumberIndicator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator;
+    return 2064056440;
+  }
+  
+  public String h()
+  {
+    return HardCodeUtil.a(2064187495);
+  }
+  
+  protected AEEditorFilterControlPanel.FilterControlListener i()
+  {
+    return this;
+  }
+  
+  protected AEEditorStickerPart.AEEditorTextDialogListener j()
+  {
+    return new AEEditorImageEditFragment.24(this);
+  }
+  
+  protected void k()
+  {
+    AEEditorAIFilterManager.a().b();
+  }
+  
+  protected void l()
+  {
+    this.Z = true;
+  }
+  
+  protected void m()
+  {
+    u();
+    Boolean localBoolean = L();
+    NumberIndicator localNumberIndicator = this.F;
     int i;
     if ((localBoolean != null) && (localBoolean.booleanValue())) {
       i = 4;
     } else {
       i = 0;
     }
-    ViewUtils.b(localNumberIndicator, i);
-    O();
+    ViewUtils.setVisible(localNumberIndicator, i);
+    ah();
   }
   
-  protected void h()
+  protected void n()
   {
-    TAVCutImageSession localTAVCutImageSession = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-    if (localTAVCutImageSession != null) {
-      localTAVCutImageSession.applyCurrentSticker(this.jdField_c_of_type_Int);
+    w();
+    Boolean localBoolean = L();
+    NumberIndicator localNumberIndicator = this.F;
+    int i;
+    if ((localBoolean != null) && (localBoolean.booleanValue())) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    ViewUtils.setVisible(localNumberIndicator, i);
+    ah();
   }
   
-  public void i()
+  protected void o()
   {
-    f(true);
-  }
-  
-  public void k()
-  {
-    super.k();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.setScrollable(false);
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 4);
-  }
-  
-  public void l()
-  {
-    super.l();
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 0);
-    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.22(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel.a();
-  }
-  
-  public void m()
-  {
-    super.m();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageViewPager.setScrollable(false);
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 4);
-  }
-  
-  public void n()
-  {
-    super.n();
-    ViewUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator, 0);
-    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.23(this));
+    TAVCutImageSession localTAVCutImageSession = this.H;
+    if (localTAVCutImageSession != null) {
+      localTAVCutImageSession.applyCurrentSticker(this.I);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AEQLog.b("AEEditorImageEditFragment", "onCreate");
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEVideoEditViewModel = ((AEVideoEditViewModel)AEViewModelProviders.a(getActivity()).get(AEVideoEditViewModel.class));
-    J();
+    this.ap = ((AEVideoEditViewModel)AEViewModelProviders.a(getActivity()).get(AEVideoEditViewModel.class));
+    aa();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -1936,48 +2098,48 @@ public class AEEditorImageEditFragment
   {
     AEQLog.b("AEEditorImageEditFragment", "onDestroyView");
     super.onDestroyView();
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null) {
-      ((IHttpEngineService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IHttpEngineService.class, "all")).cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    if (this.R != null) {
+      ((IHttpEngineService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IHttpEngineService.class, "all")).cancelReq(this.R);
     }
-    AEEditorResourceManager.a().c().removeObserver(this.jdField_a_of_type_AndroidxLifecycleObserver);
-    AEEditorResourceManager.a().b().removeObserver(this.jdField_b_of_type_AndroidxLifecycleObserver);
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter = null;
-    TAVCutImageSession localTAVCutImageSession = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
+    AEEditorResourceManager.a().f().removeObserver(this.ar);
+    AEEditorResourceManager.a().e().removeObserver(this.as);
+    this.I = 0;
+    this.E.a();
+    this.E = null;
+    TAVCutImageSession localTAVCutImageSession = this.H;
     if (localTAVCutImageSession != null)
     {
       localTAVCutImageSession.release();
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = null;
+      this.H = null;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.b();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameAEEditorFramePanel.b();
-    M();
+    this.P.b();
+    this.J.clear();
+    this.M.clear();
+    this.ah.c();
+    this.ai.b();
+    ad();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    AEEditorImageRecord.a().b();
     AEEditorImageRecord.a().c();
+    AEEditorImageRecord.a().d();
   }
   
   public void onHiddenChanged(boolean paramBoolean)
   {
     super.onHiddenChanged(paramBoolean);
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.z = paramBoolean;
   }
   
   public void onPageScrollStateChanged(int paramInt)
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.applyCurrentSticker(this.jdField_c_of_type_Int);
-      l();
-      n();
+      this.H.applyCurrentSticker(this.I);
+      v();
+      x();
     }
   }
   
@@ -1989,23 +2151,26 @@ public class AEEditorImageEditFragment
     localStringBuilder.append("onPageSelected: ");
     localStringBuilder.append(paramInt);
     AEQLog.b("AEEditorImageEditFragment", localStringBuilder.toString());
-    this.jdField_c_of_type_Int = paramInt;
-    d(paramInt);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setCurrentIndex(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewNumberIndicator.setCurrentIndex(paramInt + 1);
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSelectedIndex(i);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSeekBarValue(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.a(paramInt);
-    e(paramInt);
+    this.I = paramInt;
+    g(paramInt);
+    this.H.setCurrentIndex(this.I);
+    this.F.setCurrentIndex(paramInt + 1);
+    int i = this.P.b(this.I);
+    this.g.setSelectedIndex(i);
+    this.g.setSeekBarValue(this.P.e(this.I));
+    if (i == -1) {
+      this.g.a(false);
+    }
+    this.ah.a(paramInt);
+    h(paramInt);
   }
   
   public void onSaveInstanceState(@NonNull Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    paramBundle = a().a();
+    paramBundle = b().a();
     if ((paramBundle != null) && (paramBundle == this)) {
-      AEEditorImageRecord.a().a(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_c_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel.a, this.jdField_a_of_type_JavaUtilList, 1);
+      AEEditorImageRecord.a().a(this.J, this.K, this.P, this.ah.b, this.M, 1);
     }
   }
   
@@ -2014,141 +2179,81 @@ public class AEEditorImageEditFragment
     AEQLog.b("AEEditorImageEditFragment", "onViewCreated");
     super.onViewCreated(paramView, paramBundle);
     AEQLog.b("AEEditorImageEditFragment", "init");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler = new CustomHandler(Looper.getMainLooper(), this);
-    K();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b();
+    this.r = new CustomHandler(Looper.getMainLooper(), this);
+    ab();
+    this.P.b();
     b(paramView);
-    H();
-    I();
-    d(0);
-    if (AEEditorResourceManager.a().b()) {
-      y();
+    Y();
+    Z();
+    g(0);
+    if (AEEditorResourceManager.a().m()) {
+      O();
     }
-    AEEditorImageRecord.a().a(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession, getArguments(), this.jdField_b_of_type_JavaUtilArrayList);
+    AEEditorImageRecord.a().a(this.H, getArguments(), this.J, this.w, this.v);
     paramView = ParamsUtil.a();
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.a();
-    int j = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.b();
+    int i = this.ac.a();
+    int j = this.ac.b();
     paramBundle = new StringBuilder();
-    paramBundle.append(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleParamsImageParamStrategy.e());
+    paramBundle.append(this.ac.e());
     paramBundle.append("%");
-    a(new String[] { "设备级别", paramView, "图片最小预览尺寸", String.valueOf(i), "图片最大预览尺寸", String.valueOf(j), "图片导出质量", paramBundle.toString(), "图片最大导出尺寸", String.valueOf(this.jdField_d_of_type_Int) });
-    AEReportUtils.u();
+    a(new String[] { "设备级别", paramView, "图片最小预览尺寸", String.valueOf(i), "图片最大预览尺寸", String.valueOf(j), "图片导出质量", paramBundle.toString(), "图片最大导出尺寸", String.valueOf(this.W) });
+    AEReportUtils.t();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean) {}
   
-  public void t()
+  protected TAVCutSession p()
   {
-    X();
-    super.t();
+    return this.H;
+  }
+  
+  protected int q()
+  {
+    return -1;
+  }
+  
+  public void r()
+  {
+    f(true);
+  }
+  
+  protected boolean s()
+  {
+    return true;
   }
   
   public void u()
   {
-    X();
     super.u();
+    this.D.setScrollable(false);
+    ViewUtils.setVisible(this.F, 4);
   }
   
   public void v()
   {
-    AEEditorImageRecord.a().a();
+    super.v();
+    ViewUtils.setVisible(this.F, 0);
+    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.22(this));
+    this.h.a();
+  }
+  
+  public void w()
+  {
+    super.w();
+    this.D.setScrollable(false);
+    ViewUtils.setVisible(this.F, 4);
   }
   
   public void x()
   {
-    new Handler(Looper.getMainLooper()).postDelayed(new AEEditorImageEditFragment.8(this), 100L);
-  }
-  
-  protected void y()
-  {
-    SilentBatchImageAIFilterProxy localSilentBatchImageAIFilterProxy = new SilentBatchImageAIFilterProxy(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilList);
-    localSilentBatchImageAIFilterProxy.a(new AEEditorImageEditFragment.16(this));
-    AEEditorAIFilterManager.a().a(getActivity(), localSilentBatchImageAIFilterProxy);
-  }
-  
-  public void z()
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("onApplyAll current position = ");
-    ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
-    AEQLog.b("AEEditorImageEditFragment", ((StringBuilder)localObject1).toString());
-    AEBaseDataReporter.a().s();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.c())
-    {
-      localObject1 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      int j;
-      Object localObject2;
-      do
-      {
-        boolean bool = ((Iterator)localObject1).hasNext();
-        j = 0;
-        if (!bool) {
-          break label134;
-        }
-        localObject2 = (String)((Iterator)localObject1).next();
-        localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterDataCache.a((String)localObject2);
-        if ((localObject2 == null) || (!(localObject2 instanceof SingleImageAIFilterResult))) {
-          break;
-        }
-        AEQLog.b("AEEditorImageEditFragment", "onAIFilterRequest: has cache");
-      } while (!((AIFilterResult)localObject2).jdField_a_of_type_Boolean);
-      int i = 1;
-      break label136;
-      label134:
-      i = 0;
-      label136:
-      if (i != 0)
-      {
-        q();
-        localObject1 = this.jdField_b_of_type_JavaUtilArrayList;
-        localObject2 = this.jdField_a_of_type_JavaUtilList;
-        i = this.jdField_c_of_type_Int;
-        localObject1 = new BatchImageAIFilterProxy((List)localObject1, (List)localObject2, i, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterDataCache.a((String)((ArrayList)localObject1).get(i)));
-        ((BatchImageAIFilterProxy)localObject1).a(this.jdField_b_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager$AIFilterObserver);
-        AEEditorAIFilterManager.a().a(getActivity(), (AIFilterProxyBase)localObject1);
-        return;
-      }
-      a(AEEditorFilterControlPanel.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setSelectedIndex(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.a(), true);
-      localObject1 = new StringBuilder();
-      i = j;
-      while (i < c())
-      {
-        localObject2 = (SingleImageAIFilterResult)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterDataCache.a((String)this.jdField_b_of_type_JavaUtilArrayList.get(i));
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a(i, (AIFilterResult)localObject2);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(((SingleImageAIFilterResult)localObject2).a());
-        localStringBuilder.append("|");
-        ((StringBuilder)localObject1).append(localStringBuilder.toString());
-        i += 1;
-      }
-      a("智能滤镜label", ((StringBuilder)localObject1).toString());
-      e(this.jdField_c_of_type_Int);
-      i(this.jdField_c_of_type_Int);
-      j(this.jdField_c_of_type_Int);
-      N();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.d())
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.a();
-      i(this.jdField_c_of_type_Int);
-      j(this.jdField_c_of_type_Int);
-      N();
-      return;
-    }
-    if (c()) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterImageFilterInfoCache.b(this.jdField_c_of_type_Int);
-    i(this.jdField_c_of_type_Int);
-    j(this.jdField_c_of_type_Int);
-    N();
+    super.x();
+    ViewUtils.setVisible(this.F, 0);
+    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.23(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment
  * JD-Core Version:    0.7.0.1
  */

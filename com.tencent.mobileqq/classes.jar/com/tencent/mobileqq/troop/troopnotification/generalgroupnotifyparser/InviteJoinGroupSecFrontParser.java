@@ -11,7 +11,7 @@ public class InviteJoinGroupSecFrontParser
   {
     InviteJoinGroupSecFrontParser.InviteJoinGroupSecFrontInfo localInviteJoinGroupSecFrontInfo = new InviteJoinGroupSecFrontParser.InviteJoinGroupSecFrontInfo();
     int i = paramGroupNotify.opt_uint32_msg_type.get();
-    localInviteJoinGroupSecFrontInfo.b = i;
+    localInviteJoinGroupSecFrontInfo.l = i;
     if ((i == 2) && (paramGroupNotify.opt_st_sec_front_info.has()))
     {
       paramGroupNotify = (general_group_notify.InviteJoinGroupSecFront)paramGroupNotify.opt_st_sec_front_info.get();
@@ -24,7 +24,7 @@ public class InviteJoinGroupSecFrontParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.generalgroupnotifyparser.InviteJoinGroupSecFrontParser
  * JD-Core Version:    0.7.0.1
  */

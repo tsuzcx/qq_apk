@@ -11,16 +11,16 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
   
   public void run()
   {
-    Iterator localIterator = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment$CheckAccountFollowedRunnable.this$0).iterator();
+    Iterator localIterator = VideoFeedsRecommendFragment.e(this.b.this$0).iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (VideoInfo)localIterator.next();
-      boolean bool = i | VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment$CheckAccountFollowedRunnable, (VideoInfo)localObject, this.jdField_a_of_type_Boolean);
+      boolean bool = i | VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.b, (VideoInfo)localObject, this.a);
       i = bool;
-      if (((VideoInfo)localObject).c != null)
+      if (((VideoInfo)localObject).aH != null)
       {
-        localObject = ((VideoInfo)localObject).c.iterator();
+        localObject = ((VideoInfo)localObject).aH.iterator();
         for (;;)
         {
           i = bool;
@@ -28,18 +28,18 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
             break;
           }
           VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject).next();
-          bool |= VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment$CheckAccountFollowedRunnable, localVideoInfo, this.jdField_a_of_type_Boolean);
+          bool |= VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.b, localVideoInfo, this.a);
         }
       }
     }
-    if ((i != 0) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment$CheckAccountFollowedRunnable.this$0) != null)) {
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment$CheckAccountFollowedRunnable.this$0).b(VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment$CheckAccountFollowedRunnable).j);
+    if ((i != 0) && (VideoFeedsRecommendFragment.d(this.b.this$0) != null)) {
+      VideoFeedsRecommendFragment.d(this.b.this$0).d(VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.b).q);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.1
  * JD-Core Version:    0.7.0.1
  */

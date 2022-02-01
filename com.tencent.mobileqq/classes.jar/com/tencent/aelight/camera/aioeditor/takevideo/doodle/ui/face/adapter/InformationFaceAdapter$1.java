@@ -16,9 +16,9 @@ class InformationFaceAdapter$1
   {
     paramThrowable = new StringBuilder();
     paramThrowable.append("applyNormalPaster onLoadFialed path:");
-    paramThrowable.append(this.jdField_a_of_type_JavaLangString);
+    paramThrowable.append(this.a);
     SLog.b("InformationFaceAdapter", paramThrowable.toString());
-    InformationFaceAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter, this.jdField_a_of_type_JavaLangString);
+    InformationFaceAdapter.a(this.c, this.a);
     paramURLDrawable.setURLDrawableListener(null);
   }
   
@@ -28,17 +28,17 @@ class InformationFaceAdapter$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("applyNormalPaster onLoadSuccessed path:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     SLog.b("InformationFaceAdapter", localStringBuilder.toString());
     paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    InformationFaceAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    InformationFaceAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter, paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item.b, 1);
+    InformationFaceAdapter.a(this.c).a(this.a, paramURLDrawable);
+    InformationFaceAdapter.a(this.c, paramURLDrawable, this.a, this.b.b, 1);
     paramURLDrawable.setURLDrawableListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.1
  * JD-Core Version:    0.7.0.1
  */

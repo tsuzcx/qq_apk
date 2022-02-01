@@ -7,18 +7,18 @@ import android.graphics.PointF;
 
 public class QavPanelWave
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  Path jdField_a_of_type_AndroidGraphicsPath;
-  PointF jdField_a_of_type_AndroidGraphicsPointF;
-  boolean jdField_a_of_type_Boolean;
+  int a;
   float b;
   float c;
-  float d = 0.0F;
-  final float e = 0.5F;
-  final float f = 0.05F;
-  float g;
+  float d;
+  float e = 0.0F;
+  final float f = 0.5F;
+  final float g = 0.05F;
+  Paint h;
+  Path i;
+  boolean j;
+  PointF k;
+  float l;
   
   public QavPanelWave(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, Paint paramPaint, PointF paramPointF, boolean paramBoolean)
   {
@@ -28,31 +28,20 @@ public class QavPanelWave
     if (paramPointF == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.g = 0.0F;
-    this.d = 0.0F;
+    this.a = paramInt;
+    this.b = paramFloat1;
+    this.c = paramFloat2;
+    this.d = paramFloat3;
+    this.h = paramPaint;
+    this.k = paramPointF;
+    this.j = paramBoolean;
+    this.i = new Path();
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.g = paramFloat1;
-    float f1 = this.d;
+    this.l = paramFloat1;
+    float f1 = this.e;
     getClass();
     if (f1 - paramFloat2 > 0.1F)
     {
@@ -70,7 +59,7 @@ public class QavPanelWave
       }
     }
     getClass();
-    this.d = Math.min(paramFloat1, 0.5F);
+    this.e = Math.min(paramFloat1, 0.5F);
   }
   
   public void a(Canvas paramCanvas)
@@ -78,29 +67,29 @@ public class QavPanelWave
     if (!a()) {
       return;
     }
-    float f7 = this.b * 0.5F;
-    float f4 = this.jdField_a_of_type_Float;
+    float f7 = this.c * 0.5F;
+    float f4 = this.b;
     float f8 = f4 * 0.5F;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.j)
     {
-      i = this.jdField_a_of_type_Int;
-      f1 = new float[] { 1.0F, 0.714F, 0.429F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F }[i];
+      m = this.a;
+      f1 = new float[] { 1.0F, 0.714F, 0.429F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F }[m];
     }
     else
     {
-      f1 = (1.0F - this.jdField_a_of_type_Int / 3.0F) * 1.5F - 0.5F;
+      f1 = (1.0F - this.a / 3.0F) * 1.5F - 0.5F;
     }
-    float f3 = this.d;
+    float f3 = this.e;
     float f2;
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.j) {
       f2 = f7 - 4.0F;
     } else {
       f2 = f8 / 6.0F;
     }
-    this.jdField_a_of_type_AndroidGraphicsPath.rewind();
+    this.i.rewind();
     double d1 = f4;
     Double.isNaN(d1);
-    int i = (int)(d1 * 0.01D);
+    int m = (int)(d1 * 0.01D);
     d1 = f2;
     Double.isNaN(d1);
     double d2 = f1 * f3;
@@ -109,19 +98,19 @@ public class QavPanelWave
     Double.isNaN(d1);
     Double.isNaN(d2);
     float f9 = (float)(d1 * 1.0D * d2);
-    d1 = this.c;
+    d1 = this.d;
     Double.isNaN(d1);
     float f10 = (float)(d1 * 6.283185307179586D) / f4;
-    float f11 = this.jdField_a_of_type_Int + this.g;
+    float f11 = this.a + this.l;
     float f12;
     for (float f1 = 0.0F;; f1 += f12)
     {
-      f12 = i;
+      f12 = m;
       if (f1 >= f4 + f12) {
         break;
       }
       float f5;
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.j)
       {
         d1 = f3;
         d2 = Math.sin(f1 * f10 + f11);
@@ -135,13 +124,13 @@ public class QavPanelWave
         Double.isNaN(d1);
         f5 = (float)(d1 * d2);
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.j)
       {
         f5 += f7;
         if (f1 == 0.0F) {
-          this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, f5);
+          this.i.moveTo(f1, f5);
         } else {
-          this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1, f5);
+          this.i.lineTo(f1, f5);
         }
       }
       else
@@ -162,34 +151,45 @@ public class QavPanelWave
         Double.isNaN(d3);
         float f13 = (float)(d1 * d2 + d3);
         if (f6 == 0.0F) {
-          this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f5, f13);
+          this.i.moveTo(f5, f13);
         } else {
-          this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f5, f13);
+          this.i.lineTo(f5, f13);
         }
       }
     }
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.i, this.h);
   }
   
   boolean a()
   {
-    if (this.jdField_a_of_type_Float > 0.0F)
+    if (this.b > 0.0F)
     {
-      if (this.b <= 0.0F) {
-        return false;
-      }
       if (this.c <= 0.0F) {
         return false;
       }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
+      if (this.d <= 0.0F) {
         return false;
       }
-      if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+      if (this.h == null) {
         return false;
       }
-      return this.jdField_a_of_type_AndroidGraphicsPointF != null;
+      if (this.i == null) {
+        return false;
+      }
+      return this.k != null;
     }
     return false;
+  }
+  
+  public void b()
+  {
+    this.l = 0.0F;
+    this.e = 0.0F;
+  }
+  
+  public Paint c()
+  {
+    return this.h;
   }
 }
 

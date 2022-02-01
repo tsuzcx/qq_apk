@@ -15,8 +15,8 @@ public class MediaCodecManager
 {
   public static final boolean PRINT_STACK = false;
   private static final String TAG = "MediaCodecManager";
-  private static HashMap<String, List<MediaCodec>> codecListMap = new HashMap();
-  private static HashMap<MediaCodec, String> stackMap = new HashMap();
+  private static final HashMap<String, List<MediaCodec>> codecListMap = new HashMap();
+  private static final HashMap<MediaCodec, String> stackMap = new HashMap();
   
   @NotNull
   public static MediaCodec createDecoderByType(String paramString)
@@ -53,6 +53,25 @@ public class MediaCodecManager
       codecListMap.put(paramString, localObject);
     }
     return localObject;
+  }
+  
+  public static String getCodecCountInfo()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = codecListMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      List localList = (List)codecListMap.get(str);
+      if (localList != null)
+      {
+        localStringBuilder.append(str);
+        localStringBuilder.append("-");
+        localStringBuilder.append(localList.size());
+        localStringBuilder.append(";");
+      }
+    }
+    return localStringBuilder.toString();
   }
   
   private static void logCodecMapInfo(String paramString, boolean paramBoolean)
@@ -132,7 +151,7 @@ public class MediaCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.MediaCodecManager
  * JD-Core Version:    0.7.0.1
  */

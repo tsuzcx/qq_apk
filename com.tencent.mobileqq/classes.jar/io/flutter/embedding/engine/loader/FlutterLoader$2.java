@@ -1,6 +1,5 @@
 package io.flutter.embedding.engine.loader;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -9,8 +8,6 @@ import java.util.concurrent.Future;
 class FlutterLoader$2
   implements Runnable
 {
-  FlutterLoader$2(FlutterLoader paramFlutterLoader, Context paramContext, String[] paramArrayOfString, Handler paramHandler, Runnable paramRunnable) {}
-  
   public void run()
   {
     try
@@ -28,7 +25,7 @@ class FlutterLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.FlutterLoader.2
  * JD-Core Version:    0.7.0.1
  */

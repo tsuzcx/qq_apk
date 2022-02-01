@@ -41,22 +41,11 @@ import org.json.JSONObject;
 
 public class RecentDanceConfigMgr
 {
-  private static AtomicReference<RecentDanceConfigMgr> a;
-  private static volatile boolean b = false;
-  private static boolean c = false;
-  public HashMap<String, RecentDanceConfigMgr.DItemInfo> a;
-  public boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
-  }
-  
-  public RecentDanceConfigMgr()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static AtomicReference<RecentDanceConfigMgr> c = new AtomicReference(null);
+  private static volatile boolean d = false;
+  private static boolean e = false;
+  public boolean a = false;
+  public HashMap<String, RecentDanceConfigMgr.DItemInfo> b = new HashMap();
   
   public static int a()
   {
@@ -116,7 +105,7 @@ public class RecentDanceConfigMgr
           {
             paramQQAppInterface = paramQQAppInterface.content.get().toStringUtf8();
           }
-          i = a(paramQQAppInterface, m);
+          i = b(paramQQAppInterface, m);
         }
         else
         {
@@ -150,7 +139,7 @@ public class RecentDanceConfigMgr
     if (i != 0) {
       if (paramConfig.content_list.size() > 0)
       {
-        i = a((String)paramConfig.content_list.get(0), m);
+        i = b((String)paramConfig.content_list.get(0), m);
         j = i;
         if (QLog.isColorLevel())
         {
@@ -181,7 +170,31 @@ public class RecentDanceConfigMgr
     return j;
   }
   
-  private static int a(String paramString, int paramInt)
+  private static String a(String paramString, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramDItemInfo.icon_md5);
+    localStringBuilder.append(".png");
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_stage_name_cfg", 4).edit();
+    localEditor.putString("video_dance_stage_name_key", paramString);
+    return localEditor.commit();
+  }
+  
+  private static boolean a(String paramString, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_filter_cfg", 4).edit();
+    localEditor.putString("video_dance_content_key", paramString);
+    localEditor.putInt("video_dance_version_key", paramInt);
+    return localEditor.commit();
+  }
+  
+  private static int b(String paramString, int paramInt)
   {
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -226,71 +239,55 @@ public class RecentDanceConfigMgr
       }
     }
     if (i == 0) {
-      a(paramString);
+      e(paramString);
     }
     return i;
   }
   
-  private static String a()
+  private static void b(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
-    Object localObject1 = new StringBuilder(AppConstants.SDCARD_PATH);
-    ((StringBuilder)localObject1).append("sv_config_icon");
-    ((StringBuilder)localObject1).append(File.separator);
-    localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = new File((String)localObject1);
-    if (!((File)localObject2).exists()) {
-      ((File)localObject2).mkdirs();
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append(".nomedia");
-    localObject2 = new File(((StringBuilder)localObject2).toString());
-    if (!((File)localObject2).exists()) {}
     try
     {
-      ((File)localObject2).createNewFile();
-      return localObject1;
+      paramString = BitmapFactory.decodeFile(paramString);
     }
-    catch (IOException localIOException) {}
-    return localObject1;
+    catch (OutOfMemoryError paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RecentDanceConfigMgr", 2, "genBitmapDrawable: oomError=", paramString);
+      }
+      paramString = null;
+    }
+    if (paramString != null) {
+      paramDItemInfo.drawable = new BitmapDrawable(paramString);
+    }
   }
   
-  private static String a(String paramString, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
+  private static void c(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(paramDItemInfo.icon_md5);
-    localStringBuilder.append(".png");
-    return localStringBuilder.toString();
+    Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
+    if (localObject != null)
+    {
+      FileUtils.writeFile((byte[])localObject, paramString);
+      if (new File(paramString).exists())
+      {
+        localObject = f(paramString);
+        if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5)))
+        {
+          b(paramDItemInfo, paramString);
+          return;
+        }
+        FileUtils.deleteFile(paramString);
+      }
+    }
   }
   
-  private static void a(String paramString)
-  {
-    ThreadManager.post(new RecentDanceConfigMgr.1(paramString), 5, null, true);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_stage_name_cfg", 4).edit();
-    localEditor.putString("video_dance_stage_name_key", paramString);
-    return localEditor.commit();
-  }
-  
-  private static boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_filter_cfg", 4).edit();
-    localEditor.putString("video_dance_content_key", paramString);
-    localEditor.putInt("video_dance_version_key", paramInt);
-    return localEditor.commit();
-  }
-  
-  private static RecentDanceConfigMgr b(String paramString)
+  private static RecentDanceConfigMgr d(String paramString)
   {
     localRecentDanceConfigMgr = new RecentDanceConfigMgr();
     try
     {
       paramString = new JSONObject(paramString);
-      localRecentDanceConfigMgr.jdField_a_of_type_Boolean = paramString.optBoolean("showEntrance", false);
+      localRecentDanceConfigMgr.a = paramString.optBoolean("showEntrance", false);
       paramString = paramString.getJSONArray("ItemsInfo");
       if ((paramString != null) && (paramString.length() > 0))
       {
@@ -303,7 +300,7 @@ public class RecentDanceConfigMgr
             Object localObject = localDItemInfo.icon_url;
             if ((localObject != null) && (!"".equals(localDItemInfo.icon_url)))
             {
-              localObject = a(a(), localDItemInfo);
+              localObject = a(d(), localDItemInfo);
               if (!new File((String)localObject).exists())
               {
                 if (localDItemInfo.isContent) {
@@ -317,10 +314,10 @@ public class RecentDanceConfigMgr
               }
             }
             localDItemInfo.forceRefresh = false;
-            localObject = (RecentDanceConfigMgr)jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+            localObject = (RecentDanceConfigMgr)c.get();
             if (localObject != null)
             {
-              localObject = ((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap;
+              localObject = ((RecentDanceConfigMgr)localObject).b;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("");
               localStringBuilder.append(localDItemInfo.name);
@@ -358,7 +355,7 @@ public class RecentDanceConfigMgr
                 QLog.d("RecentDanceConfigMgr", 2, "loadRecentDanceConfigMgr oldItem=null");
               }
             }
-            localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.put(localDItemInfo.name, localDItemInfo);
+            localRecentDanceConfigMgr.b.put(localDItemInfo.name, localDItemInfo);
           }
           i += 1;
         }
@@ -370,75 +367,32 @@ public class RecentDanceConfigMgr
       if (QLog.isColorLevel()) {
         QLog.d("RecentDanceConfigMgr", 2, "loadRecentDanceConfigMgr[JSONException]", paramString);
       }
-      localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.clear();
+      localRecentDanceConfigMgr.b.clear();
     }
   }
   
-  private static String b(String paramString)
+  private static String d()
   {
+    Object localObject1 = new StringBuilder(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject1).append("sv_config_icon");
+    ((StringBuilder)localObject1).append(File.separator);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdirs();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(".nomedia");
+    localObject2 = new File(((StringBuilder)localObject2).toString());
+    if (!((File)localObject2).exists()) {}
     try
     {
-      String str = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      return str;
+      ((File)localObject2).createNewFile();
+      return localObject1;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      label10:
-      label24:
-      break label10;
-    }
-    try
-    {
-      paramString = MD5FileUtil.a(new File(paramString));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      break label24;
-    }
-    return null;
-  }
-  
-  private static void b(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
-  {
-    try
-    {
-      paramString = BitmapFactory.decodeFile(paramString);
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "genBitmapDrawable: oomError=", paramString);
-      }
-      paramString = null;
-    }
-    if (paramString != null) {
-      paramDItemInfo.drawable = new BitmapDrawable(paramString);
-    }
-  }
-  
-  private static boolean b()
-  {
-    return new File(CapturePtvTemplateManager.a, "ptv_template_new.cfg").exists();
-  }
-  
-  private static void c(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
-  {
-    Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
-    if (localObject != null)
-    {
-      FileUtils.writeFile((byte[])localObject, paramString);
-      if (new File(paramString).exists())
-      {
-        localObject = b(paramString);
-        if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5)))
-        {
-          b(paramDItemInfo, paramString);
-          return;
-        }
-        FileUtils.deleteFile(paramString);
-      }
-    }
+    catch (IOException localIOException) {}
+    return localObject1;
   }
   
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
@@ -479,10 +433,45 @@ public class RecentDanceConfigMgr
       }
     }
   }
+  
+  private static void e(String paramString)
+  {
+    ThreadManager.post(new RecentDanceConfigMgr.1(paramString), 5, null, true);
+  }
+  
+  private static boolean e()
+  {
+    return new File(CapturePtvTemplateManager.d, "ptv_template_new.cfg").exists();
+  }
+  
+  private static String f(String paramString)
+  {
+    try
+    {
+      String str = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      return str;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      label10:
+      label24:
+      break label10;
+    }
+    try
+    {
+      paramString = MD5FileUtil.a(new File(paramString));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      break label24;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -65,18 +65,18 @@ public class OnlinePushPbPushTransMsg
         }
         else
         {
-          paramMessageHandler.a().a(3, 1, false);
+          paramMessageHandler.B().a(3, 1, false);
           long l1;
           long l2;
           if (((OnlinePushTrans.PbMsgInfo)localObject).msg_type.get() == 34)
           {
-            paramToServiceMsg = (TroopGagMgr)paramMessageHandler.a.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
+            paramToServiceMsg = (TroopGagMgr)paramMessageHandler.n.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
             paramToServiceMsg = ((OnlinePushTrans.PbMsgInfo)localObject).msg_data.get().toByteArray();
             l1 = PkgTools.getLongData(paramToServiceMsg, 0);
             i = paramToServiceMsg[4];
             l2 = PkgTools.getLongData(paramToServiceMsg, 5);
             ((OnlinePushTrans.PbMsgInfo)localObject).from_uin.get();
-            ((TroopManager)paramMessageHandler.a.getManager(QQManagerFactory.TROOP_MANAGER)).a(String.valueOf(l1), String.valueOf(l2), i);
+            ((TroopManager)paramMessageHandler.n.getManager(QQManagerFactory.TROOP_MANAGER)).a(String.valueOf(l1), String.valueOf(l2), i);
             paramToServiceMsg = (OnlinePushTrans.ExtGroupKeyInfo)((OnlinePushTrans.PbMsgInfo)localObject).ext_group_key_info.get();
             if (paramToServiceMsg != null)
             {
@@ -112,7 +112,7 @@ public class OnlinePushPbPushTransMsg
             if (QLog.isColorLevel()) {
               QLog.d(".troop.push_msg", 2, new Object[] { "GroupCode: ", Long.valueOf(l3) });
             }
-            AIOUtils.a(".troop.push_msg", paramMessageHandler.a, 86, 0, 0, Arrays.asList(new Long[] { Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2) }), 500);
+            AIOUtils.a(".troop.push_msg", paramMessageHandler.n, 86, 0, 0, Arrays.asList(new Long[] { Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2) }), 500);
           }
         }
       }
@@ -123,7 +123,7 @@ public class OnlinePushPbPushTransMsg
         paramToServiceMsg.extraData.putInt("svrip", ((OnlinePushTrans.PbMsgInfo)localObject).svr_ip.get());
         paramToServiceMsg.extraData.putInt("seq", i);
       }
-      paramToServiceMsg.extraData.putLong("lUin", Long.parseLong(paramMessageHandler.a.getCurrentAccountUin()));
+      paramToServiceMsg.extraData.putLong("lUin", Long.parseLong(paramMessageHandler.n.getCurrentAccountUin()));
       paramToServiceMsg.setNeedCallback(false);
       paramMessageHandler.send(paramToServiceMsg);
     }
@@ -131,7 +131,7 @@ public class OnlinePushPbPushTransMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.OnlinePushPbPushTransMsg
  * JD-Core Version:    0.7.0.1
  */

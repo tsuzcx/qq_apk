@@ -25,9 +25,9 @@ import java.util.Set;
 class ContactsInnerFrame$ContactsListAdapter
   extends CharDividedFacePreloadBaseAdapter
 {
-  private LinkedHashMap<String, List<PhoneContact>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private LinkedHashMap<String, List<PhoneContact>> b = new LinkedHashMap();
+  private int[] c = new int[0];
+  private String[] d = new String[0];
   
   public ContactsInnerFrame$ContactsListAdapter(ContactsInnerFrame paramContactsInnerFrame, Context paramContext, AppInterface paramAppInterface, XListView paramXListView, boolean paramBoolean)
   {
@@ -35,19 +35,19 @@ class ContactsInnerFrame$ContactsListAdapter
   }
   
   @SuppressLint({"DefaultLocale"})
-  private void b()
+  private void c()
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_JavaUtilList == null) {
+    this.b.clear();
+    if (this.a.b == null) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_JavaUtilList.iterator();
-    char c;
+    Iterator localIterator = this.a.b.iterator();
+    char c1;
     int j;
     for (;;)
     {
       boolean bool = localIterator.hasNext();
-      c = 'A';
+      c1 = 'A';
       j = 0;
       String str = "#";
       if (!bool) {
@@ -73,28 +73,28 @@ class ContactsInnerFrame$ContactsListAdapter
       {
         localObject2 = ((String)localObject1).toUpperCase();
       }
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2) == null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject2, new ArrayList());
+      if (this.b.get(localObject2) == null) {
+        this.b.put(localObject2, new ArrayList());
       }
-      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2)).add(localPhoneContact);
+      ((List)this.b.get(localObject2)).add(localPhoneContact);
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    while (c <= 'Z')
+    Object localObject1 = this.b;
+    this.b = new LinkedHashMap();
+    while (c1 <= 'Z')
     {
-      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
+      if (((LinkedHashMap)localObject1).get(String.valueOf(c1)) != null) {
+        this.b.put(String.valueOf(c1), ((LinkedHashMap)localObject1).get(String.valueOf(c1)));
       }
-      c = (char)(c + '\001');
+      c1 = (char)(c1 + '\001');
     }
     if (((LinkedHashMap)localObject1).get("#") != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
+      this.b.put("#", ((LinkedHashMap)localObject1).get("#"));
     }
     ((LinkedHashMap)localObject1).clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    Object localObject2 = this.jdField_a_of_type_ArrayOfInt;
+    this.c = new int[this.b.keySet().size()];
+    this.d = new String[this.c.length];
+    localObject1 = this.b.keySet().iterator();
+    Object localObject2 = this.c;
     if (localObject2.length == 0) {
       return;
     }
@@ -102,38 +102,63 @@ class ContactsInnerFrame$ContactsListAdapter
     int i = 1;
     for (;;)
     {
-      localObject2 = this.jdField_a_of_type_ArrayOfInt;
+      localObject2 = this.c;
       if (i >= localObject2.length) {
         break;
       }
-      localObject2[i] += localObject2[(i - 1)] + ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + 1;
+      localObject2[i] += localObject2[(i - 1)] + ((List)this.b.get(((Iterator)localObject1).next())).size() + 1;
       i += 1;
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    localObject1 = this.b.keySet().iterator();
     i = j;
     while (((Iterator)localObject1).hasNext())
     {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
+      this.d[i] = ((String)((Iterator)localObject1).next());
       i += 1;
     }
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0) {
-      return 2131559309;
+    if (this.d.length > 0) {
+      return 2131625258;
     }
     return 0;
   }
   
-  public int a(String paramString)
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    Arrays.binarySearch(this.c, paramInt);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return Arrays.binarySearch(this.c, paramInt) >= 0;
+  }
+  
+  protected boolean a(FacePreloadHolder.ViewHolder paramViewHolder)
+  {
+    boolean bool2 = super.a(paramViewHolder);
+    boolean bool1 = bool2;
+    if ((paramViewHolder instanceof SelectActivityViewHolder))
+    {
+      paramViewHolder = (SelectActivityViewHolder)paramViewHolder;
+      if ((bool2) && (!paramViewHolder.d)) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
+  }
+  
+  public int b(String paramString)
+  {
+    if (this.d != null)
     {
       int i = 0;
       for (;;)
       {
-        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = this.d;
         if (i >= arrayOfString.length) {
           break;
         }
@@ -145,63 +170,38 @@ class ContactsInnerFrame$ContactsListAdapter
       i = -1;
       label42:
       if (i >= 0) {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+        return this.c[i];
       }
     }
     return -1;
   }
   
-  public void a()
+  public void b()
   {
-    b();
+    c();
     super.notifyDataSetChanged();
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  protected boolean a(FacePreloadHolder.ViewHolder paramViewHolder)
-  {
-    boolean bool2 = super.a(paramViewHolder);
-    boolean bool1 = bool2;
-    if ((paramViewHolder instanceof SelectActivityViewHolder))
-    {
-      paramViewHolder = (SelectActivityViewHolder)paramViewHolder;
-      if ((bool2) && (!paramViewHolder.jdField_a_of_type_Boolean)) {
-        return true;
-      }
-      bool1 = false;
-    }
-    return bool1;
   }
   
   public int getCount()
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = this.c;
     if (localObject.length == 0) {
       return 0;
     }
     int i = localObject[(localObject.length - 1)];
-    localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    localObject = this.b;
+    String[] arrayOfString = this.d;
     return i + ((List)((LinkedHashMap)localObject).get(arrayOfString[(arrayOfString.length - 1)])).size() + 1;
   }
   
   public Object getItem(int paramInt)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i = Arrays.binarySearch(this.c, paramInt);
     if (i >= 0) {
       return null;
     }
     i = -(i + 1) - 1;
-    return (PhoneContact)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+    return (PhoneContact)((List)this.b.get(this.d[i])).get(paramInt - this.c[i] - 1);
   }
   
   public long getItemId(int paramInt)
@@ -211,17 +211,17 @@ class ContactsInnerFrame$ContactsListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i = Arrays.binarySearch(this.c, paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = SelectActivityViewHolder.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_AndroidViewLayoutInflater, 2131562820);
+      localView = SelectActivityViewHolder.a(paramViewGroup, this.a.i, 2131629265);
     }
     SelectActivityViewHolder localSelectActivityViewHolder = (SelectActivityViewHolder)localView.getTag();
     if (i < 0)
     {
       i = -(i + 1) - 1;
-      List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      i = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
+      List localList = (List)this.b.get(this.d[i]);
+      i = paramInt - this.c[i] - 1;
       PhoneContact localPhoneContact2 = (PhoneContact)localList.get(i);
       SelectActivityViewHolder.a(this, localSelectActivityViewHolder, localPhoneContact2);
       int j = i - 1;
@@ -237,50 +237,50 @@ class ContactsInnerFrame$ContactsListAdapter
       }
       if (((paramView != null) && (paramView.contactID == localPhoneContact2.contactID)) || ((localPhoneContact1 != null) && (localPhoneContact1.contactID == localPhoneContact2.contactID)))
       {
-        localSelectActivityViewHolder.b.setVisibility(0);
-        localSelectActivityViewHolder.b.setText(localPhoneContact2.mobileNo);
+        localSelectActivityViewHolder.e.setVisibility(0);
+        localSelectActivityViewHolder.e.setText(localPhoneContact2.mobileNo);
       }
       else
       {
-        localSelectActivityViewHolder.b.setVisibility(8);
+        localSelectActivityViewHolder.e.setVisibility(8);
       }
-      localSelectActivityViewHolder.d.setText(localPhoneContact2.name);
-      if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.isResultListContainFriend(localSelectActivityViewHolder.jdField_a_of_type_JavaLangString)) {
-        localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      localSelectActivityViewHolder.i.setText(localPhoneContact2.name);
+      if (this.a.f.isResultListContainFriend(localSelectActivityViewHolder.y)) {
+        localSelectActivityViewHolder.a.setChecked(true);
       } else {
-        localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+        localSelectActivityViewHolder.a.setChecked(false);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mUinsSelectedDefault != null) && (this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mUinsSelectedDefault.contains(localPhoneContact2.uin))) {
-        localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+      if ((this.a.f.mUinsSelectedDefault != null) && (this.a.f.mUinsSelectedDefault.contains(localPhoneContact2.uin))) {
+        localSelectActivityViewHolder.a.setEnabled(false);
       } else {
-        localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+        localSelectActivityViewHolder.a.setEnabled(true);
       }
-      if ((AppSetting.d) && (localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())) {
-        if (localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())
+      if ((AppSetting.e) && (localSelectActivityViewHolder.a.isEnabled())) {
+        if (localSelectActivityViewHolder.a.isChecked())
         {
           paramView = new StringBuilder();
           paramView.append(localPhoneContact2.name);
-          paramView.append(HardCodeUtil.a(2131702729));
+          paramView.append(HardCodeUtil.a(2131900719));
           localView.setContentDescription(paramView.toString());
         }
         else
         {
           paramView = new StringBuilder();
           paramView.append(localPhoneContact2.name);
-          paramView.append(HardCodeUtil.a(2131702700));
+          paramView.append(HardCodeUtil.a(2131900690));
           localView.setContentDescription(paramView.toString());
         }
       }
-      localSelectActivityViewHolder.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = localPhoneContact2;
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame);
+      localSelectActivityViewHolder.b = localPhoneContact2;
+      localView.setOnClickListener(this.a);
     }
     else
     {
-      localSelectActivityViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      localSelectActivityViewHolder.c.setVisibility(0);
-      paramView = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      localSelectActivityViewHolder.c.setText(paramView);
-      localSelectActivityViewHolder.c.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqSelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getString(2131691806), new Object[] { paramView.toLowerCase() }));
+      localSelectActivityViewHolder.g.setVisibility(8);
+      localSelectActivityViewHolder.h.setVisibility(0);
+      paramView = String.valueOf(this.d[i]);
+      localSelectActivityViewHolder.h.setText(paramView);
+      localSelectActivityViewHolder.h.setContentDescription(String.format(this.a.f.getString(2131888769), new Object[] { paramView.toLowerCase() }));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -288,7 +288,7 @@ class ContactsInnerFrame$ContactsListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.ContactsInnerFrame.ContactsListAdapter
  * JD-Core Version:    0.7.0.1
  */

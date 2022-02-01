@@ -16,19 +16,19 @@ class ContactSearchResultPresenter$2
   public void onClick(View paramView)
   {
     Object localObject = paramView.getContext();
-    String str = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a();
+    String str = this.a.c();
     if ((localObject instanceof QBaseActivity))
     {
       SearchUtils.a("all_result", "clk_result_join", new String[0]);
       localObject = (QBaseActivity)localObject;
-      ContactSearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter, (Activity)localObject, str);
+      ContactSearchResultPresenter.a(this.b, (Activity)localObject, str);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultPresenter.2
  * JD-Core Version:    0.7.0.1
  */

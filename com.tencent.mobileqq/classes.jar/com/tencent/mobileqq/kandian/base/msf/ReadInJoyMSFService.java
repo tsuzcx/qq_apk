@@ -108,7 +108,7 @@ public class ReadInJoyMSFService
         paramFromServiceMsg = BaseActivity.sTopActivity;
         paramToServiceMsg = paramFromServiceMsg;
         if (paramFromServiceMsg == null) {
-          paramToServiceMsg = RIJQQAppInterfaceUtil.a().getApplication();
+          paramToServiceMsg = RIJQQAppInterfaceUtil.e().getApplication();
         }
         paramFromServiceMsg = new Intent();
         paramFromServiceMsg.setFlags(872415232);
@@ -222,7 +222,7 @@ public class ReadInJoyMSFService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService
  * JD-Core Version:    0.7.0.1
  */

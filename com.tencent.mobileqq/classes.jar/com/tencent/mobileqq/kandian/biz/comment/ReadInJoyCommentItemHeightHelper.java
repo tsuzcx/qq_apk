@@ -14,22 +14,22 @@ import java.util.List;
 public class ReadInJoyCommentItemHeightHelper
   implements ReadinjoyCommentListBaseAdapter.OnGetViewListener
 {
-  private ReadInJoyCommentListView jdField_a_of_type_ComTencentMobileqqKandianBizHippyTuwenViewReadInJoyCommentListView;
-  private List<CommentViewItem> jdField_a_of_type_JavaUtilList;
+  private ReadInJoyCommentListView a;
+  private List<CommentViewItem> b;
   
   public ReadInJoyCommentItemHeightHelper(ReadInJoyCommentListView paramReadInJoyCommentListView, List<CommentViewItem> paramList, ReadinjoyCommentListBaseAdapter paramReadinjoyCommentListBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyTuwenViewReadInJoyCommentListView = paramReadInJoyCommentListView;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramReadInJoyCommentListView;
+    this.b = paramList;
     paramReadinjoyCommentListBaseAdapter.a(this);
   }
   
   private ReadinjoyCommentListBaseAdapter a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyTuwenViewReadInJoyCommentListView;
+    Object localObject = this.a;
     if ((localObject != null) && ((((ReadInJoyCommentListView)localObject).getAdapter() instanceof HeaderViewListAdapter)))
     {
-      localObject = (HeaderViewListAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyTuwenViewReadInJoyCommentListView.getAdapter();
+      localObject = (HeaderViewListAdapter)this.a.getAdapter();
       if ((((HeaderViewListAdapter)localObject).getWrappedAdapter() instanceof ReadinjoyCommentListBaseAdapter)) {
         return (ReadinjoyCommentListBaseAdapter)((HeaderViewListAdapter)localObject).getWrappedAdapter();
       }
@@ -39,10 +39,10 @@ public class ReadInJoyCommentItemHeightHelper
   
   private void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (paramInt1 < ((List)localObject).size()) && (this.jdField_a_of_type_JavaUtilList.get(paramInt1) != null))
+    Object localObject = this.b;
+    if ((localObject != null) && (paramInt1 < ((List)localObject).size()) && (this.b.get(paramInt1) != null))
     {
-      ((CommentViewItem)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).c = paramInt2;
+      ((CommentViewItem)this.b.get(paramInt1)).j = paramInt2;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setHeight | postion ");
       ((StringBuilder)localObject).append(paramInt1);
@@ -54,7 +54,7 @@ public class ReadInJoyCommentItemHeightHelper
   
   private int b(int paramInt)
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyTuwenViewReadInJoyCommentListView.getWidth();
+    int j = this.a.getWidth();
     int i = Utils.dp2px(300.0D);
     j = View.MeasureSpec.makeMeasureSpec(j, -2147483648);
     if ((Build.VERSION.SDK_INT <= 19) && (paramInt == 0)) {
@@ -66,7 +66,7 @@ public class ReadInJoyCommentItemHeightHelper
     }
     try
     {
-      localObject = ((ReadinjoyCommentListBaseAdapter)localObject).a(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyTuwenViewReadInJoyCommentListView, true);
+      localObject = ((ReadinjoyCommentListBaseAdapter)localObject).a(paramInt, null, this.a, true);
       ((View)localObject).measure(j, 0);
       j = ((View)localObject).getMeasuredHeight();
       localObject = new StringBuilder();
@@ -91,15 +91,15 @@ public class ReadInJoyCommentItemHeightHelper
   {
     if (paramInt >= 0)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.b;
       if ((localObject == null) || (((List)localObject).size() > paramInt))
       {
-        localObject = (CommentViewItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if (((CommentViewItem)localObject).c > 0) {
-          return ((CommentViewItem)localObject).c;
+        localObject = (CommentViewItem)this.b.get(paramInt);
+        if (((CommentViewItem)localObject).j > 0) {
+          return ((CommentViewItem)localObject).j;
         }
-        ((CommentViewItem)localObject).c = b(paramInt);
-        return ((CommentViewItem)localObject).c;
+        ((CommentViewItem)localObject).j = b(paramInt);
+        return ((CommentViewItem)localObject).j;
       }
     }
     return -1;
@@ -120,7 +120,7 @@ public class ReadInJoyCommentItemHeightHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentItemHeightHelper
  * JD-Core Version:    0.7.0.1
  */

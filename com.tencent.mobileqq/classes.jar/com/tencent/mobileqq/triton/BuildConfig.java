@@ -10,11 +10,11 @@ public final class BuildConfig
   public static final String LIBRARY_PACKAGE_NAME = "com.tencent.mobileqq.triton";
   public static final int VERSION_CODE = 8;
   public static final String VERSION_NAME = "1.1.2";
-  public static final long buildVersion = 1609833458180L;
+  public static final long buildVersion = 1625553030748L;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

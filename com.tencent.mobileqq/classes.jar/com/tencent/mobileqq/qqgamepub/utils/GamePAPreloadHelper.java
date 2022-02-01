@@ -13,58 +13,36 @@ import org.json.JSONObject;
 
 public class GamePAPreloadHelper
 {
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString;
-  private static WeakReference<GamePAPreloadHelper.OnPreloadFeedsListener> jdField_a_of_type_MqqUtilWeakReference;
+  private static String a;
   private static long b;
   private static long c;
-  
-  public static long a()
-  {
-    return c;
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
+  private static long d;
+  private static WeakReference<GamePAPreloadHelper.OnPreloadFeedsListener> e;
   
   public static void a()
   {
-    jdField_a_of_type_Long = System.currentTimeMillis();
+    b = System.currentTimeMillis();
     ThreadManagerV2.excute(new GamePAPreloadHelper.1(), 32, null, true);
   }
   
   public static void a(long paramLong)
   {
-    c = paramLong;
+    d = paramLong;
   }
   
   public static void a(GamePAPreloadHelper.OnPreloadFeedsListener paramOnPreloadFeedsListener)
   {
-    jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnPreloadFeedsListener);
+    e = new WeakReference(paramOnPreloadFeedsListener);
   }
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    a = paramString;
   }
   
-  public static long b()
+  public static String b()
   {
-    return jdField_a_of_type_Long;
-  }
-  
-  private static long b(String paramString)
-  {
-    int j = 5381;
-    int i = 0;
-    while (i < paramString.length())
-    {
-      j += (j << 5) + Character.codePointAt(paramString, i);
-      i += 1;
-    }
-    return 0x7FFFFFFF & j;
+    return a;
   }
   
   private static String b(int paramInt, String paramString)
@@ -82,15 +60,6 @@ public class GamePAPreloadHelper
     return localJSONObject.toString();
   }
   
-  public static void b()
-  {
-    jdField_a_of_type_JavaLangString = null;
-    jdField_a_of_type_Long = 0L;
-    b = 0L;
-    c = 0L;
-    jdField_a_of_type_MqqUtilWeakReference = null;
-  }
-  
   private static void b(Bundle paramBundle1, Bundle paramBundle2, String paramString, JSONArray paramJSONArray)
   {
     ThreadManagerV2.excute(new GamePAPreloadHelper.2(paramBundle1, paramString, paramBundle2, paramJSONArray), 128, null, true);
@@ -101,20 +70,20 @@ public class GamePAPreloadHelper
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(25), paramString);
     paramString = new StringBuilder();
-    paramString.append(Math.max(c() - b(), 0L));
+    paramString.append(Math.max(e() - d(), 0L));
     paramString.append("");
     localHashMap.put(Integer.valueOf(26), paramString.toString());
     paramString = new StringBuilder();
-    paramString.append(Math.max(a() - b(), 0L));
+    paramString.append(Math.max(c() - d(), 0L));
     paramString.append("");
     localHashMap.put(Integer.valueOf(27), paramString.toString());
     paramString = new StringBuilder();
-    paramString.append(Math.max(System.currentTimeMillis() - b(), 0L));
+    paramString.append(Math.max(System.currentTimeMillis() - d(), 0L));
     paramString.append("");
     localHashMap.put(Integer.valueOf(28), paramString.toString());
     try
     {
-      paramString = new JSONObject(jdField_a_of_type_JavaLangString);
+      paramString = new JSONObject(a);
       localHashMap.put(Integer.valueOf(29), paramString.optString("code"));
       localHashMap.put(Integer.valueOf(30), paramString.optString("message"));
     }
@@ -127,12 +96,43 @@ public class GamePAPreloadHelper
   
   public static long c()
   {
+    return d;
+  }
+  
+  public static long d()
+  {
     return b;
+  }
+  
+  private static long d(String paramString)
+  {
+    int j = 5381;
+    int i = 0;
+    while (i < paramString.length())
+    {
+      j += (j << 5) + Character.codePointAt(paramString, i);
+      i += 1;
+    }
+    return 0x7FFFFFFF & j;
+  }
+  
+  public static long e()
+  {
+    return c;
+  }
+  
+  public static void f()
+  {
+    a = null;
+    b = 0L;
+    c = 0L;
+    d = 0L;
+    e = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.GamePAPreloadHelper
  * JD-Core Version:    0.7.0.1
  */

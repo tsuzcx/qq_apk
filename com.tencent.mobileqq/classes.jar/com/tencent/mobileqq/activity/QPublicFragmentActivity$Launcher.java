@@ -31,6 +31,22 @@ public class QPublicFragmentActivity$Launcher
     paramContext.startActivity(localIntent);
   }
   
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends QPublicFragmentActivity> paramClass, Class<? extends QPublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Context paramContext, Class<? extends QPublicFragmentActivity> paramClass, Class<? extends QPublicBaseFragment> paramClass1)
+  {
+    a(paramContext, null, paramClass, paramClass1);
+  }
+  
   public static void a(Intent paramIntent, Class<? extends QPublicFragmentActivity> paramClass, Class<? extends QPublicBaseFragment> paramClass1)
   {
     Intent localIntent = paramIntent;
@@ -56,7 +72,7 @@ public class QPublicFragmentActivity$Launcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher
  * JD-Core Version:    0.7.0.1
  */

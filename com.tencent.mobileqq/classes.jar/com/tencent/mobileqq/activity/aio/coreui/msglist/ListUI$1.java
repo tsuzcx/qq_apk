@@ -10,22 +10,27 @@ class ListUI$1
   
   public void run()
   {
-    if (this.a.e)
+    if (this.a.g)
     {
-      if (this.a.g)
+      if (this.a.i)
       {
-        this.this$0.a.a(131079);
+        this.this$0.b.c(131080);
         return;
       }
-      this.this$0.a.a(131078);
+      this.this$0.b.c(131079);
       return;
     }
-    this.this$0.a.a(131076);
+    if (this.a.k)
+    {
+      this.this$0.b.c(131077);
+      return;
+    }
+    this.this$0.b.c(131076);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.ListUI.1
  * JD-Core Version:    0.7.0.1
  */

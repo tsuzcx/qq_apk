@@ -11,20 +11,20 @@ class QzoneHuangzuanVipIconShow$2
   
   public void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable)
   {
-    QzoneHuangzuanVipIconShow.access$000(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, paramInt, paramDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable, this.jdField_b_of_type_Int);
+    QzoneHuangzuanVipIconShow.access$000(this.k, paramInt, paramDrawable, this.b, this.c, this.d);
     if (this.mCount <= 0)
     {
-      QzoneHuangzuanVipIconShow.access$100(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_Boolean, this.e);
-      paramString1 = this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener;
+      QzoneHuangzuanVipIconShow.access$100(this.k, this.c, this.e, this.b, this.d, this.f, this.g, this.h, this.i, this.j);
+      paramString1 = this.a;
       if (paramString1 != null) {
-        paramString1.onLoaded(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable);
+        paramString1.onLoaded(this.c);
       }
     }
   }
   
   public void onFailed(String paramString1, int paramInt, String paramString2)
   {
-    paramString1 = this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener;
+    paramString1 = this.a;
     if (paramString1 != null) {
       paramString1.onFailed();
     }
@@ -32,7 +32,7 @@ class QzoneHuangzuanVipIconShow$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow.2
  * JD-Core Version:    0.7.0.1
  */

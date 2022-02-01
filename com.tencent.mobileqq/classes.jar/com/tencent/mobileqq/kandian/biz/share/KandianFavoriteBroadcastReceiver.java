@@ -16,19 +16,19 @@ public class KandianFavoriteBroadcastReceiver
   extends BroadcastReceiver
 {
   public static final String a;
-  private ReadInJoyAtlasManager.AtlasCallback a;
+  private ReadInJoyAtlasManager.AtlasCallback b;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.readinjoy.atlas..");
     localStringBuilder.append(KandianFavoriteBroadcastReceiver.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public KandianFavoriteBroadcastReceiver(ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback = paramAtlasCallback;
+    this.b = paramAtlasCallback;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -50,7 +50,7 @@ public class KandianFavoriteBroadcastReceiver
         paramIntent = ((FavoriteCKVData.KandianFavoriteBizData)localObject).bytes_rowkey.get().toStringUtf8();
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("BroadcastReceiver.onReceive  operation == ");
           localStringBuilder.append(i);
@@ -60,9 +60,9 @@ public class KandianFavoriteBroadcastReceiver
           localStringBuilder.append(paramContext);
           QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback.a(bool, paramIntent, i, paramContext);
+          this.b.a(bool, paramIntent, i, paramContext);
           return;
         }
       }
@@ -75,7 +75,7 @@ public class KandianFavoriteBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.KandianFavoriteBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

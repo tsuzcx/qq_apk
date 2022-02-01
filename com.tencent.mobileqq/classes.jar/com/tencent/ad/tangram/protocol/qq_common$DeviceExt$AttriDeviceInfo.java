@@ -2,11 +2,13 @@ package com.tencent.ad.tangram.protocol;
 
 public final class qq_common$DeviceExt$AttriDeviceInfo
 {
+  public String app_bundle_id;
   public qq_common.DeviceExt.IdInfo[] id_info;
   public String iv;
   public String sid_h;
   public String ua;
   public qq_common.DeviceExt.UUID uuid = new qq_common.DeviceExt.UUID();
+  public String wifi_name;
   public String wm_h;
 }
 

@@ -17,7 +17,7 @@ class SogouEmoji$1
       paramBundle = paramBundle.getBundle("jsonReqParams");
       if (paramBundle != null)
       {
-        paramInt = paramBundle.getInt(SogouEmoji.jdField_a_of_type_JavaLangString);
+        paramInt = paramBundle.getInt(SogouEmoji.a);
         paramBundle = paramBundle.getString(SogouEmoji.b);
         if (QLog.isColorLevel())
         {
@@ -28,7 +28,7 @@ class SogouEmoji$1
           localStringBuilder.append(paramEmoticonPackage.epId);
           QLog.d("SogouEmoji", 2, localStringBuilder.toString());
         }
-        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.a(paramInt);
+        boolean bool = this.a.h.b(paramInt);
         if (bool) {
           this.a.a(paramEmoticonPackage.epId, paramBundle, false);
         }
@@ -45,7 +45,7 @@ class SogouEmoji$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmoji.1
  * JD-Core Version:    0.7.0.1
  */

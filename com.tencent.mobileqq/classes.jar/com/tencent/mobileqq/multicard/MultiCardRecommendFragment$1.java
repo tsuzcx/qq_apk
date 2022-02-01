@@ -14,22 +14,22 @@ class MultiCardRecommendFragment$1
     {
       if ((paramInt != 0) && (paramInt != 1))
       {
-        MultiCardRecommendFragment.a(this.a);
+        MultiCardRecommendFragment.b(this.a);
       }
       else
       {
-        MultiCardRecommendFragment.b(this.a);
         MultiCardRecommendFragment.c(this.a);
+        MultiCardRecommendFragment.d(this.a);
       }
       if (paramInt == 0) {
-        MultiCardRecommendFragment.d(this.a);
+        MultiCardRecommendFragment.e(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRecommendFragment.1
  * JD-Core Version:    0.7.0.1
  */

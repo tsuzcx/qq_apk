@@ -35,16 +35,9 @@ public class AEOldShortVideoPortraitResourceManager
     return "Portrait000_0";
   }
   
-  public static void a() {}
-  
-  static boolean a()
-  {
-    return FeatureManager.Features.LIGHT_SDK.isFunctionReady();
-  }
-  
   static boolean a(AppInterface paramAppInterface, AEOldShortVideoResManager.SVConfigItem paramSVConfigItem)
   {
-    return PtvFilterSoLoad.e();
+    return PtvFilterSoLoad.h();
   }
   
   static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
@@ -117,7 +110,7 @@ public class AEOldShortVideoPortraitResourceManager
               bool1 = true;
             }
           }
-          a();
+          d();
         }
       }
       catch (Exception paramQQAppInterface)
@@ -153,10 +146,17 @@ public class AEOldShortVideoPortraitResourceManager
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
+  
+  static boolean c()
+  {
+    return FeatureManager.Features.LIGHT_SDK.isFunctionReady();
+  }
+  
+  public static void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoPortraitResourceManager
  * JD-Core Version:    0.7.0.1
  */

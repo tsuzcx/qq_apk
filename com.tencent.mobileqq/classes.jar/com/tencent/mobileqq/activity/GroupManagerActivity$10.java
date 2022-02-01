@@ -11,37 +11,37 @@ class GroupManagerActivity$10
 {
   GroupManagerActivity$10(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
+    this.b.c();
     if (paramInt == 0)
     {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity;
-      GroupManagerActivity.a(paramView, paramView.a(this.jdField_a_of_type_Byte));
+      GroupManagerActivity.h(this.b).setDragEnabled(true);
+      paramView = this.b;
+      GroupManagerActivity.a(paramView, paramView.a(this.a));
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("DeleteFriendGroup :");
-        paramView.append(this.jdField_a_of_type_Byte);
+        paramView.append(this.a);
         paramView.append(", ");
-        paramView.append(GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
+        paramView.append(GroupManagerActivity.f(this.b));
         QLog.d("GroupManagerActivity", 2, paramView.toString());
       }
-      if (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity))
+      if (GroupManagerActivity.f(this.b))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131693096);
+        this.b.a(2131890210);
         return;
       }
-      if (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) != null) {
-        GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
+      if (GroupManagerActivity.g(this.b) != null) {
+        GroupManagerActivity.g(this.b).notifyDataSetChanged();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity.10
  * JD-Core Version:    0.7.0.1
  */

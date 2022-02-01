@@ -13,12 +13,12 @@ class DataLineDecoder$1
   
   public void run()
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    ((DataLineHandler)this.a.n.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DataLineDecoder.1
  * JD-Core Version:    0.7.0.1
  */

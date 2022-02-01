@@ -21,10 +21,10 @@ class QavPanel$CustomHandler
     {
     default: 
     case 261: 
-      if (QavPanel.a(this.a) != null)
+      if (QavPanel.b(this.a) != null)
       {
-        QavPanel.a(this.a).a();
-        QavPanel.a(this.a).sendEmptyMessageDelayed(261, 4000L);
+        QavPanel.b(this.a).c();
+        QavPanel.e(this.a).sendEmptyMessageDelayed(261, 4000L);
         return;
       }
       break;
@@ -32,38 +32,38 @@ class QavPanel$CustomHandler
       this.a.a("MSG_TRY_CLEAN_TIPS", 1);
       return;
     case 259: 
-      if ((!UITools.a(true)) && (this.a.h != null) && (this.a.h.isShown()))
+      if ((!UITools.a(true)) && (this.a.J != null) && (this.a.J.isShown()))
       {
-        if (!QavPanel.a(this.a).a()) {
+        if (!QavPanel.b(this.a).a()) {
           return;
         }
         paramMessage = this.a;
-        paramMessage.a(paramMessage.getResources().getString(2131692834));
-        QavPanel.a(this.a).a();
-        QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
-        UITools.a(true);
+        paramMessage.a(paramMessage.getResources().getString(2131889942));
+        QavPanel.b(this.a).c();
+        QavPanel.e(this.a).sendEmptyMessageDelayed(260, 5000L);
+        UITools.b(true);
         return;
       }
       return;
     case 258: 
-      if ((!UITools.a(false)) && (this.a.h != null))
+      if ((!UITools.a(false)) && (this.a.J != null))
       {
-        if (!this.a.h.isShown()) {
+        if (!this.a.J.isShown()) {
           return;
         }
         paramMessage = this.a;
-        paramMessage.a(paramMessage.getResources().getString(2131692833));
-        UITools.a(false);
-        QavPanel.a(this.a).a();
-        QavPanel.a(this.a).sendEmptyMessageDelayed(260, 5000L);
+        paramMessage.a(paramMessage.getResources().getString(2131889941));
+        UITools.b(false);
+        QavPanel.b(this.a).c();
+        QavPanel.e(this.a).sendEmptyMessageDelayed(260, 5000L);
         return;
       }
       return;
     case 257: 
-      QavPanel.b(this.a);
+      QavPanel.j(this.a);
       return;
     case 256: 
-      QavPanel.a(this.a);
+      QavPanel.i(this.a);
     }
   }
 }

@@ -12,13 +12,13 @@ public class TroopReplyClearInputCallback
 {
   public void a(AIOContext paramAIOContext)
   {
-    paramAIOContext.a().a().a().a(2131373876, null);
+    paramAIOContext.p().d().f().a(2131441550, null);
     ((ReplyHelper)paramAIOContext.a(119)).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.clearinput.TroopReplyClearInputCallback
  * JD-Core Version:    0.7.0.1
  */

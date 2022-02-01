@@ -39,7 +39,7 @@ public class C2CShortcutBarSwitcher
       QLog.d("C2CShortcutBarSwitcher", 2, new Object[] { "saveC2CSwitcherStatus() isChecked = ", Boolean.valueOf(paramBoolean), " friendUin = ", paramString });
     }
     FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    ExtensionInfo localExtensionInfo = localFriendsManager.a(paramString, true);
+    ExtensionInfo localExtensionInfo = localFriendsManager.d(paramString, true);
     paramQQAppInterface = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -83,7 +83,7 @@ public class C2CShortcutBarSwitcher
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString, true);
+    paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramString, true);
     boolean bool;
     if (paramQQAppInterface != null)
     {
@@ -174,7 +174,7 @@ public class C2CShortcutBarSwitcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarSwitcher
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ class UFTUploadCbWrapper$3
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {
+    if (this.this$0.e) {
       return;
     }
     this.this$0.a(true);
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback.a(this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCompleteInfo);
+    if (this.this$0.a != null) {
+      this.this$0.a.a(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTUploadCbWrapper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import org.json.JSONObject;
 
 public class CmshowWebReqParam
 {
-  public Activity a;
-  public String a;
   public JSONObject a;
   public String b;
-  public String c;
+  public Activity c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.CmshowWebReqParam
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,14 @@ public class PubAccountQQText
   {
     Object localObject = paramObject;
     if ((paramObject instanceof LinkSpan)) {
-      localObject = new PubAccountQQText.PubAccountLinkSpan(this, ((LinkSpan)paramObject).a);
+      localObject = new PubAccountQQText.PubAccountLinkSpan(this, ((LinkSpan)paramObject).b);
     }
     super.addSpan(localObject, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.PubAccountQQText
  * JD-Core Version:    0.7.0.1
  */

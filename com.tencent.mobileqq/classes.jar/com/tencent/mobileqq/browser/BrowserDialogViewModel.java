@@ -23,28 +23,20 @@ import com.tencent.widget.XListView;
 public class BrowserDialogViewModel
   implements View.OnClickListener
 {
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private final DraggablePopup jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup;
-  private final RecommendBrowserAdapter jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter;
-  private final String jdField_a_of_type_JavaLangString;
+  private final DraggablePopup a;
+  private final Activity b;
+  private final String c;
+  private final RecommendBrowserAdapter d;
   
   private BrowserDialogViewModel(Activity paramActivity, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter = new RecommendBrowserAdapter(paramActivity);
+    this.b = paramActivity;
+    this.d = new RecommendBrowserAdapter(paramActivity);
     paramActivity = BrowserUtilKt.a(paramActivity, BrowserOpenConfProcessorKt.a());
-    this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.a(paramActivity);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup = DraggablePopup.a(this.jdField_a_of_type_AndroidAppActivity, -1, -1);
+    this.d.a(paramActivity);
+    this.c = paramString;
+    this.a = DraggablePopup.a(this.b, -1, -1);
     c();
-  }
-  
-  private static int a(BrowserItem paramBrowserItem)
-  {
-    if (paramBrowserItem.a()) {
-      return 2;
-    }
-    return 1;
   }
   
   public static String a(String paramString)
@@ -63,7 +55,7 @@ public class BrowserDialogViewModel
     if (!TextUtils.isEmpty(str))
     {
       paramString2 = str;
-      if (!PackageUtil.a(BaseApplication.context, str))
+      if (!PackageUtil.d(BaseApplication.context, str))
       {
         a(BrowserUtilKt.a(), "");
         paramString2 = "";
@@ -82,8 +74,8 @@ public class BrowserDialogViewModel
     Object localObject = BaseApplication.context.getResources();
     BrowserDialogViewModel.1 local1 = new BrowserDialogViewModel.1(this, paramBrowserItem);
     BrowserDialogViewModel.2 local2 = new BrowserDialogViewModel.2(this);
-    localObject = String.format(((Resources)localObject).getString(2131690699), new Object[] { paramBrowserItem.a() });
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, (String)localObject, local1, local2).show();
+    localObject = String.format(((Resources)localObject).getString(2131887618), new Object[] { paramBrowserItem.a() });
+    DialogUtil.a(this.b, 230, null, (String)localObject, local1, local2).show();
     if (QLog.isColorLevel()) {
       QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, new Object[] { "[dialog] showDownloadBrowserConfirmDialog: invoked. ", " browser: ", paramBrowserItem });
     }
@@ -98,36 +90,44 @@ public class BrowserDialogViewModel
     }
   }
   
+  private static int b(BrowserItem paramBrowserItem)
+  {
+    if (paramBrowserItem.f()) {
+      return 2;
+    }
+    return 1;
+  }
+  
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.getCount() <= 0)
+    if (this.d.getCount() <= 0)
     {
-      QRUtils.a(1, 2131695222);
+      QRUtils.a(1, 2131892956);
       if (QLog.isColorLevel()) {
         QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, "[error] showPopupWindow: invoked. [没有任何浏览器时，对齐旧的错误toast]");
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.a();
+    Object localObject = this.a.a();
     if (localObject != null) {
-      ((XListView)localObject).setAdapter(this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter);
+      ((XListView)localObject).setAdapter(this.d);
     }
-    localObject = this.jdField_a_of_type_AndroidAppActivity.getWindow();
+    localObject = this.b.getWindow();
     if (localObject != null)
     {
       ((Window)localObject).setDimAmount(0.5F);
-      this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.showAtLocation(((Window)localObject).getDecorView(), 80, 0, 0);
+      this.a.showAtLocation(((Window)localObject).getDecorView(), 80, 0, 0);
     }
     ReportHelperKt.a("0X800ADEA");
   }
   
   private void c()
   {
-    Button localButton = this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.a();
+    Button localButton = this.a.b();
     if (localButton != null) {
       localButton.setOnClickListener(this);
     }
-    localButton = this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.b();
+    localButton = this.a.c();
     if (localButton != null) {
       localButton.setOnClickListener(this);
     }
@@ -136,25 +136,25 @@ public class BrowserDialogViewModel
   private void d()
   {
     e();
-    BrowserItem localBrowserItem = this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.a();
+    BrowserItem localBrowserItem = this.d.a();
     if (localBrowserItem != null)
     {
       a(BrowserUtilKt.a(), localBrowserItem.e());
-      ReportHelperKt.a("0X800ADED", a(localBrowserItem), "", localBrowserItem.a());
+      ReportHelperKt.a("0X800ADED", b(localBrowserItem), "", localBrowserItem.a());
     }
   }
   
   private void e()
   {
     a();
-    BrowserItem localBrowserItem = this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.a();
+    BrowserItem localBrowserItem = this.d.a();
     if (localBrowserItem == null) {
       return;
     }
-    if (localBrowserItem.a()) {
-      BrowserUtilKt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localBrowserItem.e());
-    } else if (PackageUtil.a(BaseApplication.context, localBrowserItem.e())) {
-      BrowserUtilKt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localBrowserItem.e());
+    if (localBrowserItem.f()) {
+      BrowserUtilKt.a(this.b, this.c, localBrowserItem.e());
+    } else if (PackageUtil.d(BaseApplication.context, localBrowserItem.e())) {
+      BrowserUtilKt.a(this.b, this.c, localBrowserItem.e());
     } else {
       a(localBrowserItem);
     }
@@ -164,35 +164,35 @@ public class BrowserDialogViewModel
   private void f()
   {
     e();
-    BrowserItem localBrowserItem = this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.a();
+    BrowserItem localBrowserItem = this.d.a();
     if (localBrowserItem != null) {
-      ReportHelperKt.a("0X800ADEC", a(localBrowserItem), "", localBrowserItem.a());
+      ReportHelperKt.a("0X800ADEC", b(localBrowserItem), "", localBrowserItem.a());
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.isShowing()) {
+    if (this.a.isShowing()) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.dismiss();
+        this.a.dismiss();
       }
       catch (Exception localException)
       {
         QLog.e("[BrowserOpt] BrowserDialogViewModel", 1, "dismissPopupWindow: failed. ", localException);
       }
     }
-    RecommendBrowserAdapter localRecommendBrowserAdapter = this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter;
+    RecommendBrowserAdapter localRecommendBrowserAdapter = this.d;
     if (localRecommendBrowserAdapter != null) {
-      localRecommendBrowserAdapter.a();
+      localRecommendBrowserAdapter.b();
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362668) {
+    if (paramView.getId() == 2131428293) {
       d();
-    } else if (paramView.getId() == 2131372089) {
+    } else if (paramView.getId() == 2131439555) {
       f();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -200,7 +200,7 @@ public class BrowserDialogViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserDialogViewModel
  * JD-Core Version:    0.7.0.1
  */

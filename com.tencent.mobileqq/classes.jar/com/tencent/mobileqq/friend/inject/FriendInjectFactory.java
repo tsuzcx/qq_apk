@@ -8,19 +8,19 @@ import java.util.ArrayList;
 
 public class FriendInjectFactory
 {
-  private static IContactFacadeInjectService jdField_a_of_type_ComTencentMobileqqFriendInjectIContactFacadeInjectService;
-  private static IPhoneContactInjectService jdField_a_of_type_ComTencentMobileqqFriendInjectIPhoneContactInjectService;
-  private static IPubAccountInjectService jdField_a_of_type_ComTencentMobileqqFriendInjectIPubAccountInjectService;
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_PhoneContactService.yml", version=1)
-  private static ArrayList<Class<? extends IPhoneContactInjectService>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<Class<? extends IPhoneContactInjectService>> a = new ArrayList();
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_ContactFacadeService.yml", version=1)
   private static ArrayList<Class<? extends IContactFacadeInjectService>> b;
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_PubAccountService.yml", version=1)
   private static ArrayList<Class<? extends IPubAccountInjectService>> c;
+  private static IContactFacadeInjectService d;
+  private static IPhoneContactInjectService e;
+  private static IPubAccountInjectService f;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(PhoneContactService.class);
+    a.add(PhoneContactService.class);
     b = new ArrayList();
     c = new ArrayList();
     c.add(PubAccountService.class);
@@ -28,14 +28,18 @@ public class FriendInjectFactory
   
   public static IContactFacadeInjectService a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFriendInjectIContactFacadeInjectService == null) {
+    if (d == null) {
       try
       {
-        IContactFacadeInjectService localIContactFacadeInjectService = jdField_a_of_type_ComTencentMobileqqFriendInjectIContactFacadeInjectService;
+        IContactFacadeInjectService localIContactFacadeInjectService = d;
         if (localIContactFacadeInjectService == null) {
           try
           {
-            jdField_a_of_type_ComTencentMobileqqFriendInjectIContactFacadeInjectService = (IContactFacadeInjectService)((Class)b.get(0)).newInstance();
+            int i = b.size();
+            if (i == 0) {
+              return null;
+            }
+            d = (IContactFacadeInjectService)((Class)b.get(0)).newInstance();
           }
           catch (Exception localException)
           {
@@ -45,19 +49,23 @@ public class FriendInjectFactory
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFriendInjectIContactFacadeInjectService;
+    return d;
   }
   
-  public static IPhoneContactInjectService a()
+  public static IPhoneContactInjectService b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFriendInjectIPhoneContactInjectService == null) {
+    if (e == null) {
       try
       {
-        IPhoneContactInjectService localIPhoneContactInjectService = jdField_a_of_type_ComTencentMobileqqFriendInjectIPhoneContactInjectService;
+        IPhoneContactInjectService localIPhoneContactInjectService = e;
         if (localIPhoneContactInjectService == null) {
           try
           {
-            jdField_a_of_type_ComTencentMobileqqFriendInjectIPhoneContactInjectService = (IPhoneContactInjectService)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+            int i = a.size();
+            if (i == 0) {
+              return null;
+            }
+            e = (IPhoneContactInjectService)((Class)a.get(0)).newInstance();
           }
           catch (Exception localException)
           {
@@ -67,19 +75,23 @@ public class FriendInjectFactory
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFriendInjectIPhoneContactInjectService;
+    return e;
   }
   
-  public static IPubAccountInjectService a()
+  public static IPubAccountInjectService c()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFriendInjectIPubAccountInjectService == null) {
+    if (f == null) {
       try
       {
-        IPubAccountInjectService localIPubAccountInjectService = jdField_a_of_type_ComTencentMobileqqFriendInjectIPubAccountInjectService;
+        IPubAccountInjectService localIPubAccountInjectService = f;
         if (localIPubAccountInjectService == null) {
           try
           {
-            jdField_a_of_type_ComTencentMobileqqFriendInjectIPubAccountInjectService = (IPubAccountInjectService)((Class)c.get(0)).newInstance();
+            int i = c.size();
+            if (i == 0) {
+              return null;
+            }
+            f = (IPubAccountInjectService)((Class)c.get(0)).newInstance();
           }
           catch (Exception localException)
           {
@@ -89,12 +101,12 @@ public class FriendInjectFactory
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFriendInjectIPubAccountInjectService;
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.inject.FriendInjectFactory
  * JD-Core Version:    0.7.0.1
  */

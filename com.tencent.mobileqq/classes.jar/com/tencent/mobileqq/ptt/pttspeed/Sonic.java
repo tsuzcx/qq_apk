@@ -55,16 +55,6 @@ public class Sonic
   
   private native void setVolumeNative(long paramLong, float paramFloat);
   
-  public int a()
-  {
-    return availableBytesNative(this.a);
-  }
-  
-  public int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return receiveBytesNative(this.a, paramArrayOfByte, paramInt);
-  }
-  
   public void a()
   {
     long l = this.a;
@@ -85,9 +75,19 @@ public class Sonic
     return putBytesNative(this.a, paramArrayOfByte, paramInt);
   }
   
+  public int b(byte[] paramArrayOfByte, int paramInt)
+  {
+    return receiveBytesNative(this.a, paramArrayOfByte, paramInt);
+  }
+  
   public void b()
   {
     flushNative(this.a);
+  }
+  
+  public int c()
+  {
+    return availableBytesNative(this.a);
   }
   
   protected void finalize()
@@ -97,7 +97,7 @@ public class Sonic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.pttspeed.Sonic
  * JD-Core Version:    0.7.0.1
  */

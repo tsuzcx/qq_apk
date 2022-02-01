@@ -10,17 +10,17 @@ class QWalletTempImpl$2
   
   public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComQwalletTempAsyncBackTemp.a(paramString, paramInt);
+    this.a.a(paramString, paramInt);
   }
   
   public void progress(int paramInt)
   {
-    this.jdField_a_of_type_ComQwalletTempAsyncBackTemp.a(paramInt);
+    this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.QWalletTempImpl.2
  * JD-Core Version:    0.7.0.1
  */

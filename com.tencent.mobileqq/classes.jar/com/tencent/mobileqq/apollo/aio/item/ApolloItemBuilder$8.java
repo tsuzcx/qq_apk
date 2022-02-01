@@ -28,37 +28,37 @@ class ApolloItemBuilder$8
   
   public void onClick(View paramView)
   {
-    if (this.a.a()) {
+    if (this.a.c()) {
       return;
     }
-    ApolloItemBuilder.Holder localHolder = (ApolloItemBuilder.Holder)AIOUtils.a(paramView);
-    if ((localHolder != null) && (localHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
+    ApolloItemBuilder.Holder localHolder = (ApolloItemBuilder.Holder)AIOUtils.b(paramView);
+    if ((localHolder != null) && (localHolder.q != null))
     {
-      if (localHolder.jdField_a_of_type_ComTencentImageURLImageView == null) {
+      if (localHolder.t == null) {
         return;
       }
-      int i = localHolder.e;
+      int i = localHolder.a;
       boolean bool = paramView instanceof TextView;
       Object localObject1 = "1";
       Object localObject2;
       Object localObject3;
       if (bool)
       {
-        localObject2 = (IApolloManagerService)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-        if (((IApolloManagerService)localObject2).isApolloSupport(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
+        localObject2 = (IApolloManagerService)this.a.d.getRuntimeService(IApolloManagerService.class, "all");
+        if (((IApolloManagerService)localObject2).isApolloSupport(this.a.d.getApplication()))
         {
-          ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(paramView.getContext(), null, "aio", ApolloConstant.z, null);
+          ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(paramView.getContext(), null, "aio", ApolloConstant.H, null);
         }
         else
         {
-          if (!ApolloHardWareTester.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
+          if (!ApolloHardWareTester.a(this.a.d.getApplication()))
           {
-            localObject1 = ApolloConstant.m;
+            localObject1 = ApolloConstant.u;
           }
           else
           {
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(ApolloConstant.n);
+            ((StringBuilder)localObject1).append(ApolloConstant.v);
             ((StringBuilder)localObject1).append(i);
             localObject1 = ((StringBuilder)localObject1).toString();
           }
@@ -67,17 +67,18 @@ class ApolloItemBuilder$8
           VasWebviewUtil.a(paramView.getContext(), (String)localObject1, -1L, (Intent)localObject3, false, -1);
           localObject1 = "0";
         }
-        ApolloAioBubbleReportUtil.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHolder, (String)localObject1, (IApolloManagerService)localObject2);
+        ApolloAioBubbleReportUtil.a.a(this.a.d, localHolder, (String)localObject1, (IApolloManagerService)localObject2);
         return;
       }
       if (new File(ApolloGifDownloaderImpl.getApolloGifFilePath(i)).exists())
       {
-        ApolloItemBuilder.a(this.a.jdField_a_of_type_AndroidContentContext, localHolder.jdField_a_of_type_ComTencentImageURLImageView, (MessageForApollo)localHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        paramView = this.a;
+        ApolloItemBuilder.a(paramView, paramView.e, localHolder.t, (MessageForApollo)localHolder.q, this.a.f);
         localObject2 = "0";
       }
       else
       {
-        localObject3 = localHolder.jdField_a_of_type_ComTencentImageURLImageView.getDrawable();
+        localObject3 = localHolder.t.getDrawable();
         localObject2 = localObject1;
         if (localObject3 != null)
         {
@@ -100,13 +101,13 @@ class ApolloItemBuilder$8
           }
         }
       }
-      ApolloAioBubbleReportUtil.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHolder, i, (String)localObject2);
+      ApolloAioBubbleReportUtil.a.a(this.a.d, localHolder, i, (String)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

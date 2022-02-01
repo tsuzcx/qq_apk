@@ -8,12 +8,10 @@ public class Escapers
   static
   {
     String[] arrayOfString1 = { "&", "&amp;" };
-    String[] arrayOfString2 = { "'", "&#39;" };
-    String[] arrayOfString3 = { "\"", "&quot;" };
-    String[] arrayOfString4 = { ">", "&gt;" };
-    String[] arrayOfString5 = { "`", "&#x60;" };
-    String[] arrayOfString6 = { "=", "&#x3D;" };
-    HTML = simple(new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { "<", "&lt;" }, arrayOfString4, arrayOfString5, arrayOfString6 });
+    String[] arrayOfString2 = { "\"", "&quot;" };
+    String[] arrayOfString3 = { "<", "&lt;" };
+    String[] arrayOfString4 = { "`", "&#x60;" };
+    HTML = simple(new String[][] { arrayOfString1, { "'", "&#39;" }, arrayOfString2, arrayOfString3, { ">", "&gt;" }, arrayOfString4, { "=", "&#x3D;" } });
   }
   
   public static Mustache.Escaper simple(String[]... paramVarArgs)

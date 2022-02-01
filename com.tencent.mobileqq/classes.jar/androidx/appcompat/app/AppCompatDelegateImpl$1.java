@@ -1,8 +1,9 @@
 package androidx.appcompat.app;
 
 import android.content.res.Resources.NotFoundException;
+import androidx.annotation.NonNull;
 
-final class AppCompatDelegateImpl$1
+class AppCompatDelegateImpl$1
   implements Thread.UncaughtExceptionHandler
 {
   AppCompatDelegateImpl$1(Thread.UncaughtExceptionHandler paramUncaughtExceptionHandler) {}
@@ -31,7 +32,7 @@ final class AppCompatDelegateImpl$1
     return bool1;
   }
   
-  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
+  public void uncaughtException(@NonNull Thread paramThread, @NonNull Throwable paramThrowable)
   {
     if (shouldWrapException(paramThrowable))
     {

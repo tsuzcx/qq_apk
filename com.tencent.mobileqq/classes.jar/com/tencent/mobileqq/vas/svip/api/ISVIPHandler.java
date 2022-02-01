@@ -10,8 +10,6 @@ import java.util.Map;
 
 public abstract interface ISVIPHandler
 {
-  public abstract int a(MessageRecord paramMessageRecord);
-  
   public abstract int a(String paramString);
   
   public abstract void a();
@@ -38,21 +36,19 @@ public abstract interface ISVIPHandler
   
   public abstract void a(String paramString, int paramInt);
   
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
-  
   public abstract void a(ArrayList<Hamlet> paramArrayList, BusinessObserver paramBusinessObserver, boolean paramBoolean);
   
   public abstract void a(Map<String, Integer> paramMap);
   
-  public abstract boolean a(GetRoamToastRsp paramGetRoamToastRsp);
-  
-  public abstract int b();
-  
-  public abstract void b();
+  public abstract int b(MessageRecord paramMessageRecord);
   
   public abstract void b(int paramInt);
   
   public abstract void b(int paramInt, boolean paramBoolean);
+  
+  public abstract boolean b(GetRoamToastRsp paramGetRoamToastRsp);
+  
+  public abstract void c();
   
   public abstract void c(int paramInt);
   
@@ -60,17 +56,9 @@ public abstract interface ISVIPHandler
   
   public abstract int d();
   
-  public abstract void d();
-  
   public abstract void d(int paramInt);
   
-  public abstract int e();
-  
-  public abstract void e();
-  
   public abstract int f();
-  
-  public abstract void f();
   
   public abstract void f(int paramInt);
   
@@ -78,15 +66,25 @@ public abstract interface ISVIPHandler
   
   public abstract void g(int paramInt);
   
+  public abstract int h();
+  
   public abstract void h(int paramInt);
   
   public abstract void i(int paramInt);
+  
+  public abstract int j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
   
   public abstract void notifyUI(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.svip.api.ISVIPHandler
  * JD-Core Version:    0.7.0.1
  */

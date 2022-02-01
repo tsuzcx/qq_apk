@@ -20,9 +20,9 @@ class HiddenChatFragment$1
   
   public void run()
   {
-    Object localObject1 = HiddenChatFragment.a(this.this$0).getProxyManager().a().a();
-    HiddenChatFragment.a(this.this$0).a((List)localObject1);
-    Object localObject2 = HiddenChatFragment.a((List)localObject1, TroopAssistantManager.a().c(HiddenChatFragment.a(this.this$0)));
+    Object localObject1 = HiddenChatFragment.a(this.this$0).getProxyManager().g().c();
+    HiddenChatFragment.b(this.this$0).a((List)localObject1);
+    Object localObject2 = HiddenChatFragment.a((List)localObject1, TroopAssistantManager.a().o(HiddenChatFragment.a(this.this$0)));
     localObject1 = new ArrayList(((List)localObject2).size());
     ConversationDataFactory.a((List)localObject2, HiddenChatFragment.a(this.this$0), this.this$0.getBaseActivity(), (List)localObject1, ((List)localObject2).size());
     if (QLog.isColorLevel())
@@ -34,7 +34,7 @@ class HiddenChatFragment$1
     }
     try
     {
-      Collections.sort((List)localObject1, HiddenChatFragment.a(this.this$0));
+      Collections.sort((List)localObject1, HiddenChatFragment.b(this.this$0));
     }
     catch (Exception localException)
     {
@@ -42,18 +42,18 @@ class HiddenChatFragment$1
         QLog.d(RecentDataListManager.a, 2, "Comparator Exception: ", localException);
       }
     }
-    if (HiddenChatFragment.a(this.this$0) != null)
+    if (HiddenChatFragment.c(this.this$0) != null)
     {
-      Message localMessage = HiddenChatFragment.a(this.this$0).obtainMessage(2);
+      Message localMessage = HiddenChatFragment.c(this.this$0).obtainMessage(2);
       localMessage.obj = localObject1;
-      HiddenChatFragment.a(this.this$0).removeMessages(2);
-      HiddenChatFragment.a(this.this$0).sendMessage(localMessage);
+      HiddenChatFragment.c(this.this$0).removeMessages(2);
+      HiddenChatFragment.c(this.this$0).sendMessage(localMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment.1
  * JD-Core Version:    0.7.0.1
  */

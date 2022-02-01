@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.utils.ApolloHttpResponseCallback;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResDownloader.OnApolloDownLoadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,19 +24,19 @@ final class ApolloHttpUtil$1
     }
     if (paramBoolean)
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      paramArrayOfInt = new File(this.a);
       if (paramArrayOfInt.exists()) {
         try
         {
-          paramString = ApolloHttpUtil.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (ApolloHttpUtil.a(this.jdField_a_of_type_JavaLangString))
+          paramString = ApolloHttpUtil.a(this.b);
+          if (ApolloHttpUtil.a(this.a))
           {
             paramArrayOfInt = ApolloHttpUtil.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(0, paramString, paramArrayOfInt);
+            this.c.a(0, paramString, paramArrayOfInt);
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(0, paramString, ApolloHttpUtil.a(new FileInputStream(paramArrayOfInt)));
+            this.c.a(0, paramString, ApolloHttpUtil.a(new FileInputStream(paramArrayOfInt)));
           }
           if (!QLog.isColorLevel()) {
             return;
@@ -49,18 +50,18 @@ final class ApolloHttpUtil$1
           return;
         }
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(-1, null, null);
+        this.c.a(-1, null, null);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(-1, null, null);
+      this.c.a(-1, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloHttpUtil.1
  * JD-Core Version:    0.7.0.1
  */

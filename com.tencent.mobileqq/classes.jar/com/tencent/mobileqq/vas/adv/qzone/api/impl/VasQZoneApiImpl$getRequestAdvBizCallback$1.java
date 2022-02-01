@@ -27,7 +27,7 @@ public final class VasQZoneApiImpl$getRequestAdvBizCallback$1
   {
     Intrinsics.checkParameterIsNotNull(paramVasAdvServiceCode, "code");
     Intrinsics.checkParameterIsNotNull(paramString, "errMsg");
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneCallbackVasAdMetaCallback.onGetAdInfoResponse(paramVasAdvServiceCode, paramString, null);
+    this.b.onGetAdInfoResponse(paramVasAdvServiceCode, paramString, null);
   }
   
   public void a(@NotNull vac_adv_get.VacAdvRsp paramVacAdvRsp)
@@ -46,7 +46,7 @@ public final class VasQZoneApiImpl$getRequestAdvBizCallback$1
           Intrinsics.checkExpressionValueIsNotNull(localAlumBasicData, "AlumBasicData.createFromPb(sigleMsg)");
           localList.add(localAlumBasicData);
         }
-        paramVacAdvRsp = VasQZoneApiImpl.access$getCurrentCallback$p(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneApiImplVasQZoneApiImpl);
+        paramVacAdvRsp = VasQZoneApiImpl.access$getCurrentCallback$p(this.a);
         if (paramVacAdvRsp != null)
         {
           paramVacAdvRsp = (VasAdMetaCallback)paramVacAdvRsp.get();
@@ -72,7 +72,7 @@ public final class VasQZoneApiImpl$getRequestAdvBizCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.api.impl.VasQZoneApiImpl.getRequestAdvBizCallback.1
  * JD-Core Version:    0.7.0.1
  */

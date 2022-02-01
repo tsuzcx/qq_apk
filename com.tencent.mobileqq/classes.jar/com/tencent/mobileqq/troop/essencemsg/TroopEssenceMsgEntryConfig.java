@@ -11,16 +11,9 @@ import org.json.JSONObject;
 
 public class TroopEssenceMsgEntryConfig
 {
-  public int a;
-  public ArrayList<String> a;
-  public boolean a;
-  
-  public TroopEssenceMsgEntryConfig()
-  {
-    this.jdField_a_of_type_Int = 20;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public int a = 20;
+  public ArrayList<String> b = new ArrayList();
+  public boolean c = true;
   
   public static TroopEssenceMsgEntryConfig a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -29,7 +22,7 @@ public class TroopEssenceMsgEntryConfig
     Object localObject;
     if (i < paramArrayOfQConfItem.length)
     {
-      localObject = paramArrayOfQConfItem[i].a;
+      localObject = paramArrayOfQConfItem[i].b;
       if (TextUtils.isEmpty((CharSequence)localObject)) {}
     }
     for (;;)
@@ -44,19 +37,19 @@ public class TroopEssenceMsgEntryConfig
           localStringBuilder.append(((JSONObject)localObject).toString());
           QLog.i("TroopEssenceMsgEntryConfig", 2, localStringBuilder.toString());
         }
-        localTroopEssenceMsgEntryConfig.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("limitMemberNum", 0);
+        localTroopEssenceMsgEntryConfig.a = ((JSONObject)localObject).optInt("limitMemberNum", 0);
         if (((JSONObject)localObject).optInt("globalOpenWithNoCheckGrayUin", 0) <= 0) {
           break label243;
         }
         bool = true;
-        localTroopEssenceMsgEntryConfig.jdField_a_of_type_Boolean = bool;
+        localTroopEssenceMsgEntryConfig.c = bool;
         localObject = ((JSONObject)localObject).optJSONArray("grayQunUin");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0))
         {
           int j = 0;
           if (j < ((JSONArray)localObject).length())
           {
-            localTroopEssenceMsgEntryConfig.jdField_a_of_type_JavaUtilArrayList.add(String.valueOf(((JSONArray)localObject).get(j)));
+            localTroopEssenceMsgEntryConfig.b.add(String.valueOf(((JSONArray)localObject).get(j)));
             j += 1;
             continue;
           }
@@ -83,19 +76,19 @@ public class TroopEssenceMsgEntryConfig
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return true;
     }
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     int i = paramString.length();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -110,20 +103,20 @@ public class TroopEssenceMsgEntryConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mLimitMemberNum:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mGlobalOpenWithNoCheckGrayUin:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mGrayTroopTailUins:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.toArray());
+    localStringBuilder.append(this.b.toArray());
     localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgEntryConfig
  * JD-Core Version:    0.7.0.1
  */

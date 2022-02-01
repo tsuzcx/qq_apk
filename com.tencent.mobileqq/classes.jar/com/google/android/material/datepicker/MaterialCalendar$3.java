@@ -12,23 +12,23 @@ class MaterialCalendar$3
   
   public void a(long paramLong)
   {
-    if (MaterialCalendar.a(this.a).a().a(paramLong))
+    if (MaterialCalendar.b(this.a).a().a(paramLong))
     {
-      MaterialCalendar.a(this.a).a(paramLong);
-      Iterator localIterator = this.a.a.iterator();
+      MaterialCalendar.c(this.a).a(paramLong);
+      Iterator localIterator = this.a.e.iterator();
       while (localIterator.hasNext()) {
-        ((OnSelectionChangedListener)localIterator.next()).a(MaterialCalendar.a(this.a).a());
+        ((OnSelectionChangedListener)localIterator.next()).a(MaterialCalendar.c(this.a).a());
       }
       MaterialCalendar.a(this.a).getAdapter().notifyDataSetChanged();
-      if (MaterialCalendar.b(this.a) != null) {
-        MaterialCalendar.b(this.a).getAdapter().notifyDataSetChanged();
+      if (MaterialCalendar.d(this.a) != null) {
+        MaterialCalendar.d(this.a).getAdapter().notifyDataSetChanged();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.MaterialCalendar.3
  * JD-Core Version:    0.7.0.1
  */

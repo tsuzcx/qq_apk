@@ -12,12 +12,12 @@ import com.tencent.mobileqq.app.WeishiManager;
 public class WSH5BrowserBiz
   extends WSBasePushBiz<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  private int a;
+  private int b;
   
   public WSH5BrowserBiz(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
     super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
@@ -29,23 +29,23 @@ public class WSH5BrowserBiz
     if (!bool)
     {
       WeishiActivityHelper.a(paramContext, paramWSPushStrategyInfo.mScheme);
-      paramContext = WeishiUtils.a();
+      paramContext = WeishiUtils.d();
       if (paramContext != null) {
         paramContext.a(null);
       }
-      WeishiUtils.b();
+      WeishiUtils.k();
     }
-    int j = this.jdField_a_of_type_Int;
+    int j = this.b;
     int i = 2;
     if (j == 2)
     {
       if (!bool) {
         i = 1;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg == null) {
+      if (this.a == null) {
         paramContext = "";
       } else {
-        paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg).mFeedIds;
+        paramContext = ((WSRedDotPushMsg)this.a).mFeedIds;
       }
       WSReportDc00898.a(i, 1, paramContext);
     }
@@ -61,7 +61,7 @@ public class WSH5BrowserBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.biz.WSH5BrowserBiz
  * JD-Core Version:    0.7.0.1
  */

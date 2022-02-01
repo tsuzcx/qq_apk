@@ -27,22 +27,22 @@ class AssociatedAccountManageActivity$2
     if (paramBoolean)
     {
       if (bool) {
-        i = 2131699317;
+        i = 2131897334;
       } else {
-        i = 2131699316;
+        i = 2131897333;
       }
     }
     else if (bool) {
-      i = 2131719315;
+      i = 2131916867;
     } else {
-      i = 2131719314;
+      i = 2131916866;
     }
     localMessage.arg2 = i;
     AssociatedAccountManageActivity.access$300(this.a).sendMessage(localMessage);
     if (paramBoolean)
     {
       AssociatedAccountManageActivity.access$400(this.a);
-      SubAccountControllUtil.a(this.a.app, bool);
+      SubAccountControllUtil.d(this.a.app, bool);
       return;
     }
     AssociatedAccountManageActivity.access$500(this.a, bool ^ true);
@@ -50,7 +50,7 @@ class AssociatedAccountManageActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.2
  * JD-Core Version:    0.7.0.1
  */

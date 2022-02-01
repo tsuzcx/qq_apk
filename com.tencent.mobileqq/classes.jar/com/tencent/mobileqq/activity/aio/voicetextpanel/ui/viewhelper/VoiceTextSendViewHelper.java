@@ -19,53 +19,40 @@ import mqq.app.AppRuntime;
 public class VoiceTextSendViewHelper
   extends VoiceTextBaseViewHelpr
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new VoiceTextSendViewHelper.1(this);
-  private Button b;
+  private Button e;
+  private Button f;
+  private CheckBox g;
+  private SharedPreferences h;
+  private CompoundButton.OnCheckedChangeListener i = new VoiceTextSendViewHelper.1(this);
   
   public VoiceTextSendViewHelper(VoiceTextStateModel paramVoiceTextStateModel, AppRuntime paramAppRuntime, SharedPreferences paramSharedPreferences)
   {
     super(paramAppRuntime, paramVoiceTextStateModel);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
+    this.h = paramSharedPreferences;
   }
   
   private void b(boolean paramBoolean)
   {
-    a().d(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(paramBoolean);
-  }
-  
-  private boolean b()
-  {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-    if (localSharedPreferences != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("businessinfo_ptt_vt_send_type_");
-      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-      return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
-    }
-    return false;
+    e().d(paramBoolean);
+    this.g.setEnabled(paramBoolean);
   }
   
   private void c(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    Object localObject = this.h;
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("businessinfo_ptt_vt_send_type_");
-      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append(this.a.getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), paramBoolean).commit();
     }
   }
   
-  private void e()
+  private void i()
   {
-    if (a().a())
+    if (e().a())
     {
       ReportUtils.a("0X800A1D8", 2, 0);
       return;
@@ -73,9 +60,9 @@ public class VoiceTextSendViewHelper
     ReportUtils.a("0X800A1D8", 1, 0);
   }
   
-  private void f()
+  private void j()
   {
-    if (a().a())
+    if (e().a())
     {
       ReportUtils.a("0X800A1D9", 2, 0);
       return;
@@ -83,76 +70,89 @@ public class VoiceTextSendViewHelper
     ReportUtils.a("0X800A1D9", 1, 0);
   }
   
-  private void g()
+  private boolean k()
   {
-    if (QQTheme.a()) {
-      this.b.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167089));
+    SharedPreferences localSharedPreferences = this.h;
+    if (localSharedPreferences != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("businessinfo_ptt_vt_send_type_");
+      localStringBuilder.append(this.a.getCurrentAccountUin());
+      return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
+    }
+    return false;
+  }
+  
+  private void l()
+  {
+    if (QQTheme.isNowThemeIsNight()) {
+      this.f.setTextColor(this.b.getResources().getColor(2131168041));
     }
   }
   
-  private void h()
+  private void m()
   {
-    View localView = (View)this.jdField_a_of_type_AndroidWidgetCheckBox.getParent();
+    View localView = (View)this.g.getParent();
     localView.post(new VoiceTextSendViewHelper.4(this, ScreenUtil.dip2px(8.0F), localView));
   }
   
   public void a()
   {
     b(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718762);
+    this.e.setText(2131916268);
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
     super.a(paramVoiceTextPanel);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramVoiceTextPanel.findViewById(2131377187));
-    this.b = ((Button)paramVoiceTextPanel.findViewById(2131364259));
-    this.b.setOnClickListener(new VoiceTextSendViewHelper.2(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new VoiceTextSendViewHelper.3(this));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramVoiceTextPanel.findViewById(2131364613));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    h();
-    g();
+    this.e = ((Button)paramVoiceTextPanel.findViewById(2131445568));
+    this.f = ((Button)paramVoiceTextPanel.findViewById(2131430272));
+    this.f.setOnClickListener(new VoiceTextSendViewHelper.2(this));
+    this.e.setOnClickListener(new VoiceTextSendViewHelper.3(this));
+    this.g = ((CheckBox)paramVoiceTextPanel.findViewById(2131430688));
+    this.g.setOnCheckedChangeListener(this.i);
+    m();
+    l();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
+    this.e.setEnabled(paramBoolean);
   }
   
-  public boolean a()
+  public void f()
   {
-    return this.jdField_a_of_type_AndroidWidgetButton.isEnabled();
-  }
-  
-  public void c()
-  {
-    boolean bool = b();
+    boolean bool = k();
     b(true);
     if (bool)
     {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      a().c(true);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718764);
+      this.g.setChecked(true);
+      e().c(true);
+      this.e.setText(2131916270);
       a(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    a().c(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718762);
+    this.g.setChecked(false);
+    e().c(false);
+    this.e.setText(2131916268);
     a(false);
   }
   
-  public void d()
+  public boolean g()
+  {
+    return this.e.isEnabled();
+  }
+  
+  public void h()
   {
     a(true);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-    a().c(true);
+    this.g.setChecked(true);
+    e().c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSendViewHelper
  * JD-Core Version:    0.7.0.1
  */

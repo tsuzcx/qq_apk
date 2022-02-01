@@ -20,7 +20,10 @@ public final class XAPagView$decor$1$bindData$1$1
     this.a.this$0.a("end", (View)this.a.this$0.a);
   }
   
-  public void onAnimationRepeat(@Nullable PAGView paramPAGView) {}
+  public void onAnimationRepeat(@Nullable PAGView paramPAGView)
+  {
+    this.a.this$0.a("repeat", (View)this.a.this$0.a);
+  }
   
   public void onAnimationStart(@Nullable PAGView paramPAGView)
   {
@@ -29,7 +32,7 @@ public final class XAPagView$decor$1$bindData$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XAPagView.decor.1.bindData.1.1
  * JD-Core Version:    0.7.0.1
  */

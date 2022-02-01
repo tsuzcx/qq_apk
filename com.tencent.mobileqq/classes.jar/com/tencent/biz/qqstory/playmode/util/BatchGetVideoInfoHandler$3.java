@@ -8,21 +8,21 @@ class BatchGetVideoInfoHandler$3
 {
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    BatchGetVideoInfoHandler localBatchGetVideoInfoHandler = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler;
-    localBatchGetVideoInfoHandler.a(localBatchGetVideoInfoHandler.d);
+    this.a.a();
+    BatchGetVideoInfoHandler localBatchGetVideoInfoHandler = this.b;
+    localBatchGetVideoInfoHandler.a(localBatchGetVideoInfoHandler.e);
   }
   
   public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    BatchGetVideoInfoHandler localBatchGetVideoInfoHandler = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler;
-    localBatchGetVideoInfoHandler.a(localBatchGetVideoInfoHandler.d, paramArrayList);
+    this.a.a();
+    BatchGetVideoInfoHandler localBatchGetVideoInfoHandler = this.b;
+    localBatchGetVideoInfoHandler.a(localBatchGetVideoInfoHandler.e, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.3
  * JD-Core Version:    0.7.0.1
  */

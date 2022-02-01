@@ -49,10 +49,10 @@ public class FeedUtils
       return;
     }
     FeedUtils.1 local1 = new FeedUtils.1();
-    local1.jdField_b_of_type_JavaLangString = paramString;
-    local1.c = paramInt;
-    local1.jdField_b_of_type_Long = paramLong;
-    local1.d = 1;
+    local1.f = paramString;
+    local1.g = paramInt;
+    local1.i = paramLong;
+    local1.h = 1;
     CmdTaskManger.a().a(local1, null);
   }
 }

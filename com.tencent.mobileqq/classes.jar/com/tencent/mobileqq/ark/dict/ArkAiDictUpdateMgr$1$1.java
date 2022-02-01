@@ -13,23 +13,23 @@ class ArkAiDictUpdateMgr$1$1
   {
     if (!paramBoolean)
     {
-      QLog.i("ArkDict.Update", 1, String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { ArkAiDictUpdateMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkDictDictConfig) }));
-      this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState.jdField_a_of_type_Boolean = false;
+      QLog.i("ArkDict.Update", 1, String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { ArkAiDictUpdateMgr.c(this.a) }));
+      this.b.b = false;
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState)
+    synchronized (this.b)
     {
-      ArkAiDictUpdateMgr.UpdateState localUpdateState2 = this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState;
-      int i = localUpdateState2.jdField_a_of_type_Int - 1;
-      localUpdateState2.jdField_a_of_type_Int = i;
+      ArkAiDictUpdateMgr.UpdateState localUpdateState2 = this.b;
+      int i = localUpdateState2.a - 1;
+      localUpdateState2.a = i;
       if (i != 0) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState.jdField_a_of_type_Boolean)
+      if (this.b.b)
       {
         QLog.i("ArkDict.Update", 1, "updateWordDict, all success");
-        ArkAiDictUpdateMgr.a(this.b);
-        ArkAiDictUpdateMgr.b(this.b);
-        ArkAiDictMgr.b(ArkAiDictUpdateMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$1.this$0));
+        ArkAiDictUpdateMgr.b(this.c);
+        ArkAiDictUpdateMgr.d(this.c);
+        ArkAiDictMgr.b(ArkAiDictUpdateMgr.a(this.d.this$0));
       }
       else
       {
@@ -37,10 +37,10 @@ class ArkAiDictUpdateMgr$1$1
       }
       try
       {
-        ArkAiDictUpdateMgr.b(this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$1.this$0, false);
-        if (ArkAiDictUpdateMgr.b(this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$1.this$0))
+        ArkAiDictUpdateMgr.b(this.d.this$0, false);
+        if (ArkAiDictUpdateMgr.c(this.d.this$0))
         {
-          ArkAiDictUpdateMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$1.this$0, false);
+          ArkAiDictUpdateMgr.a(this.d.this$0, false);
           QLog.i("ArkDict.Update", 1, "updateWordDict, pending update task exists, wait 5 second and update");
           ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThreadDelay(new ArkAiDictUpdateMgr.1.1.1(this), 5000);
         }
@@ -52,7 +52,7 @@ class ArkAiDictUpdateMgr$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/gq8" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/mmj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/mmi" android:layout="@layout/cjl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/mr1" android:layout="@layout/cjm" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_alignParentTop="true" />
-    <ViewStub android:id="@id/ni2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <LinearLayout android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.navbar.NavBarCommon android:gravity="center_vertical" android:id="@id/oo4" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/n9p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/nw3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

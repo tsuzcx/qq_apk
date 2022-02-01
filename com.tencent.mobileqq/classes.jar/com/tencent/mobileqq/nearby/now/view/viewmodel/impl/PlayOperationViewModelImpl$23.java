@@ -12,16 +12,16 @@ class PlayOperationViewModelImpl$23
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if ((paramMotionEvent.getAction() != 0) && (paramMotionEvent.getAction() != 2)) {
-      this.a.mBinding.findViewById(2131364939).setAlpha(1.0F);
+      this.a.mBinding.findViewById(2131431063).setAlpha(1.0F);
     } else {
-      this.a.mBinding.findViewById(2131364939).setAlpha(0.5F);
+      this.a.mBinding.findViewById(2131431063).setAlpha(0.5F);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.23
  * JD-Core Version:    0.7.0.1
  */

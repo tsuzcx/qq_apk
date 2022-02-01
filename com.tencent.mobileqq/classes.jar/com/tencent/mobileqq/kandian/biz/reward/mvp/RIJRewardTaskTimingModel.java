@@ -10,35 +10,25 @@ import org.jetbrains.annotations.NotNull;
 public class RIJRewardTaskTimingModel
   implements IRIJRewardTaskTimingContract.IModel
 {
-  public int a()
-  {
-    return RIJRewardTaskLocalRepo.b().a();
-  }
-  
   public int a(boolean paramBoolean)
   {
-    return RIJRewardTaskLocalRepo.b().a(paramBoolean);
+    return RIJRewardTaskLocalRepo.f().a(paramBoolean);
   }
   
   @Nullable
   public RIJRewardTask a()
   {
-    return RIJRewardTaskLocalRepo.b().a();
+    return RIJRewardTaskLocalRepo.f().a();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    RIJRewardTaskLocalRepo.b().a(paramInt, paramBoolean);
+    RIJRewardTaskLocalRepo.f().a(paramInt, paramBoolean);
   }
   
   public void a(RIJRewardTask paramRIJRewardTask)
   {
-    RIJRewardTaskLocalRepo.b().a(paramRIJRewardTask);
-  }
-  
-  public void a(@NotNull String paramString)
-  {
-    RIJRewardTaskLocalRepo.b().a(paramString);
+    RIJRewardTaskLocalRepo.f().a(paramRIJRewardTask);
   }
   
   public void a(String paramString, int paramInt, RIJRewardTaskRemoteRepo.IReportTaskProgressCallback paramIReportTaskProgressCallback)
@@ -48,23 +38,33 @@ public class RIJRewardTaskTimingModel
   
   public boolean a(@NotNull String paramString)
   {
-    return RIJRewardTaskLocalRepo.b().a(paramString);
+    return RIJRewardTaskLocalRepo.f().a(paramString);
   }
   
   @Nullable
   public RIJRewardTask b()
   {
-    return RIJRewardTaskLocalRepo.b().b();
+    return RIJRewardTaskLocalRepo.f().b();
   }
   
   public void b(RIJRewardTask paramRIJRewardTask)
   {
-    RIJRewardTaskLocalRepo.b().b(paramRIJRewardTask);
+    RIJRewardTaskLocalRepo.f().b(paramRIJRewardTask);
+  }
+  
+  public void b(@NotNull String paramString)
+  {
+    RIJRewardTaskLocalRepo.f().b(paramString);
+  }
+  
+  public int c()
+  {
+    return RIJRewardTaskLocalRepo.f().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.mvp.RIJRewardTaskTimingModel
  * JD-Core Version:    0.7.0.1
  */

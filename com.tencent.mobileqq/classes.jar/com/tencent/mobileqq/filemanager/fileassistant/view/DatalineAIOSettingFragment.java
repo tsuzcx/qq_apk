@@ -42,8 +42,8 @@ public class DatalineAIOSettingFragment
 {
   private void a()
   {
-    boolean bool = ((DataLineHandler)getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).c();
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131365383);
+    boolean bool = ((DataLineHandler)getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).k();
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131431583);
     localFormSwitchItem.setChecked(bool);
     localFormSwitchItem.setOnCheckedChangeListener(new DatalineAIOSettingFragment.1(this));
   }
@@ -66,9 +66,9 @@ public class DatalineAIOSettingFragment
   private void b()
   {
     Object localObject = (DataLineHandler)getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    boolean bool1 = ((DataLineHandler)localObject).a();
-    boolean bool2 = ((DataLineHandler)localObject).b();
-    localObject = (FormSwitchItem)this.mContentView.findViewById(2131365386);
+    boolean bool1 = ((DataLineHandler)localObject).i();
+    boolean bool2 = ((DataLineHandler)localObject).j();
+    localObject = (FormSwitchItem)this.mContentView.findViewById(2131431586);
     if ((!bool1) && (!bool2)) {
       bool1 = false;
     } else {
@@ -88,7 +88,7 @@ public class DatalineAIOSettingFragment
   
   private void c()
   {
-    String str3 = QFileAssistantUtils.a(getBaseActivity().app);
+    String str3 = QFileAssistantUtils.b(getBaseActivity().app);
     String str2 = ContactUtils.a(getBaseActivity().app, str3);
     String str1;
     if (!TextUtils.isEmpty(str2))
@@ -98,9 +98,9 @@ public class DatalineAIOSettingFragment
     }
     else
     {
-      str1 = getBaseActivity().getString(2131698288);
+      str1 = getBaseActivity().getString(2131896189);
     }
-    ((TextView)this.mContentView.findViewById(2131368773)).setText(str1);
+    ((TextView)this.mContentView.findViewById(2131435692)).setText(str1);
   }
   
   private void c(boolean paramBoolean)
@@ -110,9 +110,9 @@ public class DatalineAIOSettingFragment
   
   private void d()
   {
-    Object localObject = QFileAssistantUtils.a(getBaseActivity().app);
+    Object localObject = QFileAssistantUtils.b(getBaseActivity().app);
     boolean bool = FriendsStatusUtil.a(getBaseActivity().app, (String)localObject, 0);
-    localObject = (FormSwitchItem)this.mContentView.findViewById(2131365388);
+    localObject = (FormSwitchItem)this.mContentView.findViewById(2131431588);
     ((FormSwitchItem)localObject).setChecked(bool);
     ((FormSwitchItem)localObject).setOnCheckedChangeListener(new DatalineAIOSettingFragment.3(this));
   }
@@ -121,7 +121,7 @@ public class DatalineAIOSettingFragment
   {
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
-      FMToastUtil.a(2131719713);
+      FMToastUtil.a(2131917316);
       return;
     }
     try
@@ -143,19 +143,19 @@ public class DatalineAIOSettingFragment
   
   private void g()
   {
-    getString(2131698273);
-    if (FileManagerUtil.a(getBaseActivity(), getString(2131698288)))
+    getString(2131896174);
+    if (FileManagerUtil.d(getBaseActivity(), getString(2131896189)))
     {
-      getString(2131692087);
+      getString(2131889065);
       return;
     }
-    FileManagerUtil.a(getBaseActivity().app, getBaseActivity(), "jump_shortcut_dataline", getString(2131698288), 2130844282);
+    FileManagerUtil.a(getBaseActivity().app, getBaseActivity(), "jump_shortcut_dataline", getString(2131896189), 2130845599);
     DataLineReportUtil.q(getBaseActivity().app);
   }
   
   private void h()
   {
-    String str = QFileAssistantUtils.a(getBaseActivity().app);
+    String str = QFileAssistantUtils.b(getBaseActivity().app);
     a(getBaseActivity().app, getBaseActivity(), str, 0, new DatalineAIOSettingFragment.4(this), 2);
   }
   
@@ -163,10 +163,10 @@ public class DatalineAIOSettingFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     c();
-    this.mContentView.findViewById(2131365385).setOnClickListener(this);
-    this.mContentView.findViewById(2131365387).setOnClickListener(this);
-    this.mContentView.findViewById(2131365384).setOnClickListener(this);
-    this.mContentView.findViewById(2131380860).setOnClickListener(this);
+    this.mContentView.findViewById(2131431585).setOnClickListener(this);
+    this.mContentView.findViewById(2131431587).setOnClickListener(this);
+    this.mContentView.findViewById(2131431584).setOnClickListener(this);
+    this.mContentView.findViewById(2131449841).setOnClickListener(this);
     d();
     b();
     a();
@@ -174,7 +174,7 @@ public class DatalineAIOSettingFragment
   
   protected int getContentLayoutId()
   {
-    return 2131560810;
+    return 2131627068;
   }
   
   public void onClick(View paramView)
@@ -183,17 +183,17 @@ public class DatalineAIOSettingFragment
     {
     default: 
       break;
-    case 2131380860: 
+    case 2131449841: 
       StatisticAssist.a(getBaseActivity().app.getApplication().getApplicationContext(), getBaseActivity().app.getCurrentAccountUin(), "dl_ckviewrecvfile");
       e();
       break;
-    case 2131365387: 
+    case 2131431587: 
       g();
       break;
-    case 2131365385: 
+    case 2131431585: 
       f();
       break;
-    case 2131365384: 
+    case 2131431584: 
       h();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -201,7 +201,7 @@ public class DatalineAIOSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.view.DatalineAIOSettingFragment
  * JD-Core Version:    0.7.0.1
  */

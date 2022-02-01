@@ -11,9 +11,9 @@ public class QQNotifySettingParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QQNotifySettingAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qqnotify";
-    paramBaseQQAppInterface.c = paramJumpParserResult.c();
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qqnotify";
+    paramBaseQQAppInterface.e = paramJumpParserResult.c();
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class QQNotifySettingParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQNotifySettingParser
  * JD-Core Version:    0.7.0.1
  */

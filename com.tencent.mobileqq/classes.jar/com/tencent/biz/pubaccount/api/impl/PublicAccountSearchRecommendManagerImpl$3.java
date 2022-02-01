@@ -27,13 +27,13 @@ class PublicAccountSearchRecommendManagerImpl$3
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    this.a.setObserver(null);
     if (!paramBoolean)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl), 2, "OnReceiveGetRecommendPubAccountResponse failed!");
+        QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.d), 2, "OnReceiveGetRecommendPubAccountResponse failed!");
       }
-      PublicAccountSearchRecommendManagerImpl.access$700(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountSearchRecommendManager$GetRecommendListListener);
+      PublicAccountSearchRecommendManagerImpl.access$700(this.d, this.b, this.c);
       return;
     }
     for (;;)
@@ -44,7 +44,7 @@ class PublicAccountSearchRecommendManagerImpl$3
         ((ArticleComment.GetRecommendPubAccountResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
         if (QLog.isColorLevel())
         {
-          paramBundle = PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl);
+          paramBundle = PublicAccountSearchRecommendManagerImpl.access$500(this.d);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("OnReceiveGetRecommendPubAccountResponse->retCode:");
           localStringBuilder.append(((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get());
@@ -57,61 +57,61 @@ class PublicAccountSearchRecommendManagerImpl$3
         if (!((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.has())
         {
           if (QLog.isColorLevel()) {
-            QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl), 2, "OnReceiveGetRecommendPubAccountResponse failed!(no ret)");
+            QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.d), 2, "OnReceiveGetRecommendPubAccountResponse failed!(no ret)");
           }
-          PublicAccountSearchRecommendManagerImpl.access$700(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountSearchRecommendManager$GetRecommendListListener);
+          PublicAccountSearchRecommendManagerImpl.access$700(this.d, this.b, this.c);
           return;
         }
         paramInt = ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get();
         if (paramInt == -1)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl), 2, "OnReceiveGetRecommendPubAccountResponse forbidden!");
+            QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.d), 2, "OnReceiveGetRecommendPubAccountResponse forbidden!");
           }
-          PublicAccountSearchRecommendManagerImpl.access$402(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, true);
-          this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountSearchRecommendManager$GetRecommendListListener.a(new ArrayList(), null, true);
+          PublicAccountSearchRecommendManagerImpl.access$402(this.d, true);
+          this.c.a(new ArrayList(), null, true);
           return;
         }
-        PublicAccountSearchRecommendManagerImpl.access$402(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, false);
+        PublicAccountSearchRecommendManagerImpl.access$402(this.d, false);
         if (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.has())
         {
           paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get().toStringUtf8();
           if ((paramInt == 0) && (!TextUtils.isEmpty(paramBundle)) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.has()) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size() > 0))
           {
             if (QLog.isColorLevel()) {
-              QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl), 2, "OnReceiveGetRecommendPubAccountResponse update cache!");
+              QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.d), 2, "OnReceiveGetRecommendPubAccountResponse update cache!");
             }
-            PublicAccountSearchRecommendManagerImpl.access$102(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, paramBundle);
-            PublicAccountSearchRecommendManagerImpl.access$000(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl).clear();
+            PublicAccountSearchRecommendManagerImpl.access$102(this.d, paramBundle);
+            PublicAccountSearchRecommendManagerImpl.access$000(this.d).clear();
             paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().iterator();
             if (paramBundle.hasNext())
             {
               localObject = (ArticleComment.Record)paramBundle.next();
-              PublicAccountSearchRecommendManagerImpl.access$000(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl).add(new IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem(((ArticleComment.Record)localObject).puin.get().toStringUtf8(), ((ArticleComment.Record)localObject).name.get().toStringUtf8(), true));
+              PublicAccountSearchRecommendManagerImpl.access$000(this.d).add(new IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem(((ArticleComment.Record)localObject).puin.get().toStringUtf8(), ((ArticleComment.Record)localObject).name.get().toStringUtf8(), true));
               continue;
             }
-            PublicAccountSearchRecommendManagerImpl.access$202(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, NetConnInfoCenter.getServerTimeMillis());
-            PublicAccountSearchRecommendManagerImpl.access$800(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+            PublicAccountSearchRecommendManagerImpl.access$202(this.d, NetConnInfoCenter.getServerTimeMillis());
+            PublicAccountSearchRecommendManagerImpl.access$800(this.d, this.b);
           }
-          PublicAccountSearchRecommendManagerImpl.access$700(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountSearchRecommendManager$GetRecommendListListener);
+          PublicAccountSearchRecommendManagerImpl.access$700(this.d, this.b, this.c);
           if (QLog.isColorLevel())
           {
-            paramBundle = PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl);
+            paramBundle = PublicAccountSearchRecommendManagerImpl.access$500(this.d);
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("OnReceiveGetRecommendPubAccountResponse update UI->title:");
-            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$100(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl));
+            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$100(this.d));
             ((StringBuilder)localObject).append(", cacheTime:");
-            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$200(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl));
+            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$200(this.d));
             ((StringBuilder)localObject).append(", isFobidden:");
-            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$400(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl));
+            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$400(this.d));
             ((StringBuilder)localObject).append(", recommendSize:");
-            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$000(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl).size());
+            ((StringBuilder)localObject).append(PublicAccountSearchRecommendManagerImpl.access$000(this.d).size());
             QLog.d(paramBundle, 2, ((StringBuilder)localObject).toString());
-            paramBundle = PublicAccountSearchRecommendManagerImpl.access$000(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl).iterator();
+            paramBundle = PublicAccountSearchRecommendManagerImpl.access$000(this.d).iterator();
             if (paramBundle.hasNext())
             {
               localObject = (IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)paramBundle.next();
-              QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl), 2, ((IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)localObject).toString());
+              QLog.d(PublicAccountSearchRecommendManagerImpl.access$500(this.d), 2, ((IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)localObject).toString());
               continue;
             }
           }
@@ -124,13 +124,13 @@ class PublicAccountSearchRecommendManagerImpl$3
         StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
-          localObject = PublicAccountSearchRecommendManagerImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl);
+          localObject = PublicAccountSearchRecommendManagerImpl.access$500(this.d);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("OnReceiveGetRecommendPubAccountResponse exception:");
           localStringBuilder.append(paramBundle);
           QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
-        PublicAccountSearchRecommendManagerImpl.access$700(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountSearchRecommendManagerImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountSearchRecommendManager$GetRecommendListListener);
+        PublicAccountSearchRecommendManagerImpl.access$700(this.d, this.b, this.c);
         return;
       }
       paramBundle = "";
@@ -139,7 +139,7 @@ class PublicAccountSearchRecommendManagerImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountSearchRecommendManagerImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class ReadInJoyFeedsHeaderViewController$5
   
   public void a()
   {
-    ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController).setImageDrawable(ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo, false));
+    ReadInJoyFeedsHeaderViewController.a(this.b).setImageDrawable(ReadInJoyFeedsHeaderViewController.a(this.b, this.a, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController.5
  * JD-Core Version:    0.7.0.1
  */

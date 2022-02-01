@@ -34,15 +34,15 @@ import mqq.app.MobileQQ;
 
 public class QFileMsgForwardManager
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, QFileMsgForwardManager.QFileUploadRequest> jdField_a_of_type_JavaUtilHashMap;
+  private QQAppInterface a;
+  private Handler b;
+  private HashMap<String, QFileMsgForwardManager.QFileUploadRequest> c;
   
   public QFileMsgForwardManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a = paramQQAppInterface;
+    this.b = new Handler(ThreadManager.getSubThreadLooper());
+    this.c = new HashMap();
   }
   
   private QFileMsgForwardManager.FileUploadTask a(String paramString1, int paramInt, String paramString2, MessageRecord paramMessageRecord)
@@ -61,7 +61,7 @@ public class QFileMsgForwardManager
     }
     paramString2 = new QFileMsgForwardManager.FileUploadTask(this, paramString2, paramString1, paramInt, paramMessageRecord);
     String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    if ((!a(str)) && (!b(paramMessageRecord)))
+    if ((!c(str)) && (!b(paramMessageRecord)))
     {
       try
       {
@@ -152,7 +152,7 @@ public class QFileMsgForwardManager
       }
     }
     label372:
-    paramString2.a = paramString1;
+    paramString2.b = paramString1;
     return paramString2;
   }
   
@@ -168,7 +168,7 @@ public class QFileMsgForwardManager
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new QFileMsgForwardManager.2(this, paramString));
+    this.b.post(new QFileMsgForwardManager.2(this, paramString));
   }
   
   private boolean a(MessageRecord paramMessageRecord)
@@ -177,51 +177,22 @@ public class QFileMsgForwardManager
     if (!TextUtils.isEmpty(paramMessageRecord))
     {
       long l = Long.parseLong(paramMessageRecord);
-      if (MessageCache.a() - l < 86400L) {
+      if (MessageCache.c() - l < 86400L) {
         return false;
       }
     }
     return true;
   }
   
-  private boolean a(String paramString)
-  {
-    boolean bool2 = FileUtils.fileExistsAndNotEmpty(paramString);
-    boolean bool1 = false;
-    if (!bool2)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("filePath[");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("] file is not existed");
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
-      }
-      return false;
-    }
-    if (FileManagerUtil.a(paramString) <= 10485760L) {
-      bool1 = true;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("file is isSmall:");
-      paramString.append(bool1);
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
-    }
-    return bool1;
-  }
-  
   private static String b(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692413);
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131889401);
     }
     if (paramLong > 10485760L) {
-      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692415);
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131889403);
     }
-    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692454);
+    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131889442);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, QFileMsgForwardManager.OnUploadCallback paramOnUploadCallback)
@@ -251,17 +222,46 @@ public class QFileMsgForwardManager
     paramMessageRecord.removeExtInfoToExtStr("_m_ForwardFileIdCrc");
     a(paramMessageRecord, paramBundle);
     paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "1");
-    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardLasSuccess", String.valueOf(MessageCache.a()));
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardLasSuccess", String.valueOf(MessageCache.c()));
   }
   
   private void b(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new QFileMsgForwardManager.3(this, paramString));
+    this.b.post(new QFileMsgForwardManager.3(this, paramString));
   }
   
   private boolean b(MessageRecord paramMessageRecord)
   {
     return (paramMessageRecord instanceof MessageForDLFile);
+  }
+  
+  private boolean c(String paramString)
+  {
+    boolean bool2 = FileUtils.fileExistsAndNotEmpty(paramString);
+    boolean bool1 = false;
+    if (!bool2)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("filePath[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("] file is not existed");
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
+      }
+      return false;
+    }
+    if (FileManagerUtil.h(paramString) <= 10485760L) {
+      bool1 = true;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("file is isSmall:");
+      paramString.append(bool1);
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
+    }
+    return bool1;
   }
   
   public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
@@ -284,13 +284,13 @@ public class QFileMsgForwardManager
       {
         if (i == 3)
         {
-          paramMessageRecord1 = (MessageForTroopFile)FileManagerUtil.a((ChatMessage)paramMessageRecord1);
-          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord1).a);
+          paramMessageRecord1 = (MessageForTroopFile)FileManagerUtil.b((ChatMessage)paramMessageRecord1);
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", TroopFileUtils.a(this.a, paramMessageRecord1).k);
         }
       }
       else
       {
-        paramMessageRecord1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
+        paramMessageRecord1 = this.a.getFileManagerDataCenter().a(paramMessageRecord1.uniseq, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
         if (paramMessageRecord1 != null) {
           paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", paramMessageRecord1.getFilePath());
         }
@@ -303,7 +303,7 @@ public class QFileMsgForwardManager
       if ((paramMessageRecord1 instanceof MessageForFile))
       {
         l = paramMessageRecord1.uniseq;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
+        localObject = this.a.getFileManagerDataCenter().a(l, paramMessageRecord1.frienduin, paramMessageRecord1.istroop);
         if (localObject != null)
         {
           paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileName", ((FileManagerEntity)localObject).fileName);
@@ -356,18 +356,18 @@ public class QFileMsgForwardManager
         paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardBusType", String.valueOf(paramMessageRecord1.bisID));
         paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardUuid", paramMessageRecord1.url);
         paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileName", paramMessageRecord1.fileName);
-        localObject = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord1);
+        localObject = TroopFileUtils.a(this.a, paramMessageRecord1);
         if (localObject != null)
         {
-          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_750_", ((TroopFileStatusInfo)localObject).c);
-          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_384_", ((TroopFileStatusInfo)localObject).d);
-          if (((paramMessageRecord1.width == 0) || (paramMessageRecord1.height == 0)) && (((TroopFileStatusInfo)localObject).e > 0) && (((TroopFileStatusInfo)localObject).f > 0))
+          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_750_", ((TroopFileStatusInfo)localObject).m);
+          paramMessageRecord2.saveExtInfoToExtStr("_f_thumb_path_384_", ((TroopFileStatusInfo)localObject).n);
+          if (((paramMessageRecord1.width == 0) || (paramMessageRecord1.height == 0)) && (((TroopFileStatusInfo)localObject).o > 0) && (((TroopFileStatusInfo)localObject).p > 0))
           {
             paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(paramMessageRecord1.width));
             paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(paramMessageRecord1.height));
           }
-          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", ((TroopFileStatusInfo)localObject).a);
-          if ((((TroopFileStatusInfo)localObject).b == 2) || (((TroopFileStatusInfo)localObject).b == 3)) {
+          paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", ((TroopFileStatusInfo)localObject).k);
+          if ((((TroopFileStatusInfo)localObject).e == 2) || (((TroopFileStatusInfo)localObject).e == 3)) {
             paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardStatusPaused", "1");
           }
         }
@@ -381,13 +381,13 @@ public class QFileMsgForwardManager
         paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileName", paramMessageRecord1.fileName);
         i = paramMessageRecord1.deviceType;
         l = paramMessageRecord1.associatedId;
-        paramMessageRecord1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
+        paramMessageRecord1 = this.a.getMessageFacade().d(i).a(l);
         if (paramMessageRecord1 != null) {
           paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFilePath", paramMessageRecord1.path);
         }
       }
     }
-    paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSenderUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardSenderUin", this.a.getCurrentAccountUin());
     paramMessageRecord2.saveExtInfoToExtStr("_m_ForwardFileStatus", "4");
     paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardFaildReason");
     paramMessageRecord2.removeExtInfoToExtStr("_m_ForwardLasSuccess");
@@ -398,12 +398,12 @@ public class QFileMsgForwardManager
     if ((paramHashMap == null) || (paramHashMap.size() <= 0)) {
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, "addMultiFileUploadRequest: file message record list is null");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new QFileMsgForwardManager.1(this, paramQFileMsgForwardRequest));
+    this.b.post(new QFileMsgForwardManager.1(this, paramQFileMsgForwardRequest));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager
  * JD-Core Version:    0.7.0.1
  */

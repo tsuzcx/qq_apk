@@ -15,69 +15,69 @@ import java.util.List;
 
 public class PngsCreator
 {
-  private static String jdField_a_of_type_JavaLangString = "PngsCreator";
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private GifFilterProcess jdField_a_of_type_ComTencentAelightCameraAeGifFilterGifFilterProcess = new GifFilterProcess();
-  private PngsCreator.Callback jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreator$Callback;
-  private RepeatVideoDecoder jdField_a_of_type_ComTencentAelightCameraAeGifVideoRepeatVideoDecoder;
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
-  private List<PTFaceAttr> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString;
+  private static String a = "PngsCreator";
+  private Handler b;
+  private RepeatVideoDecoder c;
+  private BaseFilter d = new SurfaceTextureFilter();
+  private GifFilterProcess e = new GifFilterProcess();
+  private Frame f = new Frame();
+  private int g = 0;
+  private SurfaceTexture h = null;
+  private PngsCreator.Callback i;
+  private int j = 0;
+  private String k;
+  private List<PTFaceAttr> l;
+  private long m = 0L;
   
   public PngsCreator(String paramString, List<PTFaceAttr> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.l = paramList;
     paramList = new HandlerThread("PngCreatorHT");
     paramList.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramList.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.1(this, paramString));
+    this.b = new Handler(paramList.getLooper());
+    this.b.post(new PngsCreator.1(this, paramString));
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.5(this));
+    this.j = 0;
+    this.b.post(new PngsCreator.5(this));
   }
   
   public void a(PngsCreator.Callback paramCallback)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.m = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEPath.GIF.CACHE.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEPath.GIF.CACHE.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(System.currentTimeMillis());
-    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    this.k = localStringBuilder.toString();
     try
     {
-      new File(this.jdField_b_of_type_JavaLangString).mkdirs();
+      new File(this.k).mkdirs();
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "pngDir = ", this.jdField_b_of_type_JavaLangString });
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreator$Callback = paramCallback;
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.2(this));
+    QLog.d(a, 4, new Object[] { "pngDir = ", this.k });
+    this.i = paramCallback;
+    this.b.post(new PngsCreator.2(this));
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.3(this, paramString));
+    this.b.post(new PngsCreator.3(this, paramString));
   }
   
   public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
+    this.b.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreator
  * JD-Core Version:    0.7.0.1
  */

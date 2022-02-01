@@ -54,9 +54,8 @@ public class JsApiUpdateManager
     Object localObject = olderMiniAppInfo;
     if ((localObject != null) && (newerMiniAppInfo != null) && (((MiniAppInfo)localObject).launchParam != null) && (newerMiniAppInfo.launchParam != null))
     {
-      localObject = newerMiniAppInfo;
-      ((MiniAppInfo)localObject).forceReroad = 3;
-      ((MiniAppInfo)localObject).launchParam.scene = olderMiniAppInfo.launchParam.scene;
+      newerMiniAppInfo.launchParam.forceReload = 3;
+      newerMiniAppInfo.launchParam.scene = olderMiniAppInfo.launchParam.scene;
       localObject = new Bundle();
       ((Bundle)localObject).putParcelable("key_app_info", newerMiniAppInfo);
       AppBrandCmdProxy.g().sendCmd("cmd_update_app_for_mini_game", (Bundle)localObject, null);
@@ -113,7 +112,7 @@ public class JsApiUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.JsApiUpdateManager
  * JD-Core Version:    0.7.0.1
  */

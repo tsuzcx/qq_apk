@@ -11,17 +11,17 @@ final class AnimatorFactory$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener;
+    paramAnimator = this.a;
     if (paramAnimator != null) {
-      paramAnimator.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+      paramAnimator.d(this.b);
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener;
+    paramAnimator = this.a;
     if (paramAnimator != null) {
-      paramAnimator.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+      paramAnimator.c(this.b);
     }
   }
   
@@ -29,15 +29,15 @@ final class AnimatorFactory$2
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener;
+    paramAnimator = this.a;
     if (paramAnimator != null) {
-      paramAnimator.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+      paramAnimator.b(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.animation.AnimatorFactory.2
  * JD-Core Version:    0.7.0.1
  */

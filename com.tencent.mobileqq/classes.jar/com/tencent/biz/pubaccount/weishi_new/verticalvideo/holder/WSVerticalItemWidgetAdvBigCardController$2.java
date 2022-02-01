@@ -7,39 +7,39 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 class WSVerticalItemWidgetAdvBigCardController$2
   extends AnimatorListenerAdapter
 {
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean d = false;
   
   WSVerticalItemWidgetAdvBigCardController$2(WSVerticalItemWidgetAdvBigCardController paramWSVerticalItemWidgetAdvBigCardController, int paramInt1, int paramInt2) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     paramAnimator = new StringBuilder();
     paramAnimator.append("ease-out onAnimationEnd, from:");
-    paramAnimator.append(this.jdField_a_of_type_Int);
+    paramAnimator.append(this.a);
     paramAnimator.append(" to:");
     paramAnimator.append(this.b);
     paramAnimator.append(", isCancel:");
-    paramAnimator.append(this.jdField_a_of_type_Boolean);
+    paramAnimator.append(this.d);
     WSLog.a("WSAdvBigCardController", paramAnimator.toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       return;
     }
-    WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController);
-    if (WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController) != null) {
-      WSVerticalItemWidgetAdvBigCardController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController).b();
+    WSVerticalItemWidgetAdvBigCardController.e(this.c);
+    if (WSVerticalItemWidgetAdvBigCardController.b(this.c) != null) {
+      WSVerticalItemWidgetAdvBigCardController.b(this.c).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemWidgetAdvBigCardController.2
  * JD-Core Version:    0.7.0.1
  */

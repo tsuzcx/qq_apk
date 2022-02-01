@@ -18,25 +18,25 @@ class UncommonlyUsedContactsActivity$6
   {
     if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatActivity.class);
+      ((FriendListHandler)this.b.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.a, (byte)2);
+      paramDialogInterface = this.b.app.getHandler(ChatActivity.class);
       if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.a));
       }
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatSettingActivity.class);
+      paramDialogInterface = this.b.app.getHandler(ChatSettingActivity.class);
       if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.a));
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694476, 0);
+      this.b.a(2131892158, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.6
  * JD-Core Version:    0.7.0.1
  */

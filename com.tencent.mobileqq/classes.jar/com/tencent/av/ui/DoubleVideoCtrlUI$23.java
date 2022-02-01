@@ -1,18 +1,29 @@
 package com.tencent.av.ui;
 
+import android.content.res.Resources;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.wtogether.WTogetherRealNameVideoProcessHelper;
+import com.tencent.av.wtogether.callback.RealNameAuthCallback;
+
 class DoubleVideoCtrlUI$23
-  implements Runnable
+  implements RealNameAuthCallback
 {
-  DoubleVideoCtrlUI$23(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  DoubleVideoCtrlUI$23(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, SessionInfo paramSessionInfo, WTogetherRealNameVideoProcessHelper paramWTogetherRealNameVideoProcessHelper) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if ((!this.this$0.h) && (DoubleVideoCtrlUI.a(this.this$0)))
+    if (paramBoolean)
     {
-      this.this$0.e(0);
-      this.this$0.C(this.a);
-      DoubleVideoCtrlUI.a(this.this$0);
+      DoubleVideoCtrlUI.a(this.d, this.a, this.b);
     }
+    else
+    {
+      int i = this.d.aj.getDimensionPixelSize(2131299920);
+      this.d.a(2131893773, 0, i);
+    }
+    this.c.a(null);
   }
 }
 

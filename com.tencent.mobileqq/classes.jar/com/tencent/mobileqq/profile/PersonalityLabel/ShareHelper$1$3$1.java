@@ -12,26 +12,26 @@ class ShareHelper$1$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.b.b.a.e.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.b.b.a.g.a(false);
+    if (TextUtils.isEmpty(this.a))
     {
-      QRUtils.a(1, 2131696479);
+      QRUtils.a(1, 2131894251);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Long == 2L)
+    if (this.b.a == 2L)
     {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
+      WXShareHelper.a().a(this.a, this.b.b.a.f, 0);
       return;
     }
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
+    WXShareHelper.a().a(this.a, this.b.b.a.f, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3.1
  * JD-Core Version:    0.7.0.1
  */

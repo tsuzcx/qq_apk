@@ -7,31 +7,31 @@ class QQARSession$19
 {
   public void run()
   {
-    if ((QQARSession.a(this.this$0) != null) && (!QQARSession.a(this.this$0).d()))
+    if ((QQARSession.l(this.this$0) != null) && (!QQARSession.l(this.this$0).d()))
     {
-      if (QQARSession.a(this.this$0).j()) {
-        QQARSession.c(this.this$0);
+      if (QQARSession.l(this.this$0).j()) {
+        QQARSession.m(this.this$0);
       }
-      if (QQARSession.a(this.this$0) == 1L)
+      if (QQARSession.n(this.this$0) == 1L)
       {
         this.this$0.b(1L);
-        QQARSession.b(this.this$0);
+        QQARSession.j(this.this$0);
       }
-      else if (QQARSession.a(this.this$0) == 2L)
+      else if (QQARSession.n(this.this$0) == 2L)
       {
-        this.this$0.o();
+        this.this$0.B();
       }
-      else if (QQARSession.a(this.this$0) == 2048L)
+      else if (QQARSession.n(this.this$0) == 2048L)
       {
-        this.this$0.q();
+        this.this$0.D();
       }
-      this.this$0.m();
+      this.this$0.x();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.19
  * JD-Core Version:    0.7.0.1
  */

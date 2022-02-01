@@ -9,18 +9,18 @@ public abstract class GridListView$GridListAdapter
   
   public abstract int a();
   
-  public abstract int a(int paramInt);
-  
   void a(int paramInt)
   {
     this.a = paramInt;
   }
   
   public abstract int b(int paramInt);
+  
+  public abstract int c(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GridListView.GridListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class CommonAdapter$1
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public void a(ViewHolder paramViewHolder, T paramT, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterCommonAdapter.a(paramViewHolder, paramT, paramInt);
+    this.b.a(paramViewHolder, paramT, paramInt);
   }
   
   public boolean a(T paramT, int paramInt)
@@ -25,7 +25,7 @@ class CommonAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.CommonAdapter.1
  * JD-Core Version:    0.7.0.1
  */

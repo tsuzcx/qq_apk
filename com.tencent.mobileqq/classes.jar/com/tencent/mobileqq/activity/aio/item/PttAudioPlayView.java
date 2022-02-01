@@ -11,10 +11,10 @@ public class PttAudioPlayView
   extends PttThemeBaseView
 {
   Bitmap a;
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private boolean jdField_b_of_type_Boolean = false;
-  private final int j = 12;
-  private int k = 2130838157;
+  Bitmap b;
+  private final int v = 12;
+  private boolean w = false;
+  private int x = 2130838203;
   
   public PttAudioPlayView(Context paramContext)
   {
@@ -46,71 +46,71 @@ public class PttAudioPlayView
     a(paramInt2);
   }
   
-  public void a()
-  {
-    super.a();
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-      this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-  }
-  
   protected void a(int paramInt)
   {
     super.a(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.k);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838158);
+    this.a = BitmapFactory.decodeResource(getResources(), this.x);
+    this.b = BitmapFactory.decodeResource(getResources(), 2130838204);
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.w)
     {
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.b, null, this.g, this.q);
       return;
     }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.a, null, this.g, this.q);
   }
   
   protected boolean a()
   {
-    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.b;
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      if ((localBitmap != null) && (!localBitmap.isRecycled()) && (this.c != null) && (!this.c.isRecycled())) {
+      localBitmap = this.a;
+      if ((localBitmap != null) && (!localBitmap.isRecycled()) && (this.k != null) && (!this.k.isRecycled())) {
         return true;
       }
     }
     return false;
   }
   
-  public boolean b()
+  public void b()
   {
-    return this.jdField_b_of_type_Boolean;
+    super.b();
+    Bitmap localBitmap = this.a;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      this.a.recycle();
+    }
+    localBitmap = this.b;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      this.b.recycle();
+    }
+    this.a = null;
+    this.b = null;
+  }
+  
+  public boolean getPlayState()
+  {
+    return this.w;
   }
   
   public void setPlayState(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Boolean = true;
+    this.w = paramBoolean;
+    this.u = true;
     invalidate();
   }
   
   public void setPttPauseOrStopDrawable(@DrawableRes int paramInt)
   {
-    this.k = paramInt;
+    this.x = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioPlayView
  * JD-Core Version:    0.7.0.1
  */

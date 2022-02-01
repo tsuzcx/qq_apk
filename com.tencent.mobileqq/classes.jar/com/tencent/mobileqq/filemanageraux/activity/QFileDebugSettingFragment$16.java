@@ -13,13 +13,13 @@ class QFileDebugSettingFragment$16
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FileIPv6StrateyController.a().debugSetLocalConfigEnableDatalineIPv6(paramBoolean);
+    FileIPv6StrateyController.b().debugSetLocalConfigEnableDatalineIPv6(paramBoolean);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment.16
  * JD-Core Version:    0.7.0.1
  */

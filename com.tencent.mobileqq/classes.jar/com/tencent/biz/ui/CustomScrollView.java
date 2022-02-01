@@ -17,22 +17,20 @@ public class CustomScrollView
   extends RelativeLayout
   implements TouchWebView.OnOverScrollHandler
 {
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  public MutableLiveData<Integer> a;
-  private OverScroller jdField_a_of_type_ComTencentWidgetOverScroller;
-  private boolean jdField_a_of_type_Boolean = true;
+  DisplayMetrics a;
+  public MutableLiveData<Integer> b = new MutableLiveData();
+  private OverScroller c;
+  private boolean d = true;
   
   public CustomScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
     a(paramContext, paramAttributeSet);
   }
   
   public CustomScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
     a(paramContext, paramAttributeSet);
   }
   
@@ -45,7 +43,7 @@ public class CustomScrollView
       localStringBuilder.append(paramInt);
       QLog.d("CustomScrollView", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentWidgetOverScroller.springBack(getScrollX(), getScrollY(), 0, 0, -paramInt, 0)) {
+    if (this.c.springBack(getScrollX(), getScrollY(), 0, 0, -paramInt, 0)) {
       invalidate();
     }
   }
@@ -55,11 +53,11 @@ public class CustomScrollView
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(0);
     }
-    this.jdField_a_of_type_ComTencentWidgetOverScroller = new OverScroller(getContext());
+    this.c = new OverScroller(getContext());
     try
     {
-      this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-      ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+      this.a = new DisplayMetrics();
+      ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.a);
       return;
     }
     catch (Throwable paramContext) {}
@@ -67,7 +65,7 @@ public class CustomScrollView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   protected boolean a()
@@ -80,13 +78,13 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, " computeScroll:");
     }
-    OverScroller localOverScroller = this.jdField_a_of_type_ComTencentWidgetOverScroller;
+    OverScroller localOverScroller = this.c;
     if ((localOverScroller != null) && (localOverScroller.computeScrollOffset()))
     {
       int i = getScrollX();
       int j = getScrollY();
-      int k = this.jdField_a_of_type_ComTencentWidgetOverScroller.getCurrX();
-      int m = this.jdField_a_of_type_ComTencentWidgetOverScroller.getCurrY();
+      int k = this.c.getCurrX();
+      int m = this.c.getCurrY();
       if (((i != k) || (j != m)) && (Build.VERSION.SDK_INT >= 9)) {
         overScrollBy(k - i, m - j, i, j, 0, 0, 0, 5000, false);
       }
@@ -99,7 +97,7 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, "onBack:");
     }
-    if (this.jdField_a_of_type_ComTencentWidgetOverScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0, 0)) {
+    if (this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, 0)) {
       invalidate();
     }
   }
@@ -113,7 +111,7 @@ public class CustomScrollView
       localStringBuilder.append(paramInt);
       QLog.d("CustomScrollView", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_Boolean) && (Build.VERSION.SDK_INT >= 9))
+    if ((this.d) && (Build.VERSION.SDK_INT >= 9))
     {
       int i = paramInt;
       if (getScrollY() + paramInt > 0) {
@@ -130,12 +128,12 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, " onOverScrolled");
     }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(paramInt2));
-    if (!this.jdField_a_of_type_ComTencentWidgetOverScroller.isFinished())
+    this.b.postValue(Integer.valueOf(paramInt2));
+    if (!this.c.isFinished())
     {
       super.scrollTo(paramInt1, paramInt2);
       if ((paramBoolean1) || (paramBoolean2)) {
-        this.jdField_a_of_type_ComTencentWidgetOverScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0, 0);
+        this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, 0);
       }
     }
     else
@@ -147,7 +145,7 @@ public class CustomScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.CustomScrollView
  * JD-Core Version:    0.7.0.1
  */

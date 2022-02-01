@@ -16,7 +16,7 @@ class ReceiptMessageDetailFragment$5
     if (QLog.isColorLevel()) {
       QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
     }
-    int i = ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_Int;
+    int i = ReceiptMessageDetailFragment.c(this.this$0).a;
     if (i != 0)
     {
       if (i != 1)
@@ -24,23 +24,23 @@ class ReceiptMessageDetailFragment$5
         if (i != 3000) {
           return;
         }
-        ReceiptMessageDetailFragment.e(this.this$0);
+        ReceiptMessageDetailFragment.n(this.this$0);
         return;
       }
-      ReceiptMessageDetailFragment.f(this.this$0);
+      ReceiptMessageDetailFragment.p(this.this$0);
       return;
     }
-    ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.b(this.this$0), false);
+    ReceiptMessageDetailFragment.j(this.this$0).addObserver(ReceiptMessageDetailFragment.o(this.this$0), false);
     ReceiptMessageDetailFragment localReceiptMessageDetailFragment1 = this.this$0;
-    MessageHandler localMessageHandler = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment1).getMsgHandler();
-    long l = ReceiptMessageDetailFragment.a(this.this$0);
+    MessageHandler localMessageHandler = ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment1).getMsgHandler();
+    long l = ReceiptMessageDetailFragment.k(this.this$0);
     ReceiptMessageDetailFragment localReceiptMessageDetailFragment2 = this.this$0;
-    ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment1, localMessageHandler.b(l, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment2, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment2).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.this$0), MessageUtils.a(ReceiptMessageDetailFragment.b(this.this$0))));
+    ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment1, localMessageHandler.b(l, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment2, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment2).b), ReceiptMessageDetailFragment.l(this.this$0), MessageUtils.a(ReceiptMessageDetailFragment.m(this.this$0))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.5
  * JD-Core Version:    0.7.0.1
  */

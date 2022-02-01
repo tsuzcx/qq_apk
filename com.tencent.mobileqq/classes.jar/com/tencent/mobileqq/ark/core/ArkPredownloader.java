@@ -12,7 +12,7 @@ public class ArkPredownloader
   public static ArkPredownloader.Task a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
     ArkPredownloader.Task localTask = new ArkPredownloader.Task();
-    localTask.jdField_a_of_type_JavaLangString = paramString2;
+    localTask.a = paramString2;
     localTask.b = paramString1;
     if ((SysUtil.a()) && ((paramAppRuntime instanceof BaseQQAppInterface)))
     {
@@ -22,8 +22,8 @@ public class ArkPredownloader
         QLog.i("ArkApp.PredownloadImpl", 1, String.format("requestDownload, not use pre-download, name=%s, URL=%s.", new Object[] { paramString1, paramString2 }));
         return localTask;
       }
-      localTask.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = ((BaseQQAppInterface)paramAppRuntime);
-      localTask.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localIPreDownloadController);
+      localTask.c = ((BaseQQAppInterface)paramAppRuntime);
+      localTask.d = new WeakReference(localIPreDownloadController);
       return localTask;
     }
     QLog.i("ArkApp.PredownloadImpl", 1, "requestDownload, not in main process");
@@ -32,7 +32,7 @@ public class ArkPredownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkPredownloader
  * JD-Core Version:    0.7.0.1
  */

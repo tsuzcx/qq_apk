@@ -2,8 +2,7 @@ package com.tencent.mobileqq.kandian.biz.share;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import com.tencent.mobileqq.kandian.biz.fastweb.api.IScreenShotImageUtil;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.fastweb.util.ScreenShotImageUtil;
 import com.tencent.util.WeakReferenceHandler;
 import kotlin.Metadata;
 
@@ -15,7 +14,7 @@ final class ReadInJoyShareHelperV2$doScreenshot$1
   
   public final void run()
   {
-    String str = ((IScreenShotImageUtil)QRoute.api(IScreenShotImageUtil.class)).saveBitmapToPublicAccountFileFolder(this.a, "ShotCache_");
+    String str = ScreenShotImageUtil.a(this.a, "ShotCache_");
     Message localMessage = Message.obtain();
     localMessage.what = 101;
     localMessage.obj = str;
@@ -24,7 +23,7 @@ final class ReadInJoyShareHelperV2$doScreenshot$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ReadInJoyShareHelperV2.doScreenshot.1
  * JD-Core Version:    0.7.0.1
  */

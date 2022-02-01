@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 class SubscribeCommentInputPopupWindow$8
   implements TextWatcher
 {
-  private int jdField_a_of_type_Int = 0;
   private int b = 0;
+  private int c = 0;
   
   SubscribeCommentInputPopupWindow$8(SubscribeCommentInputPopupWindow paramSubscribeCommentInputPopupWindow) {}
   
@@ -23,11 +23,11 @@ class SubscribeCommentInputPopupWindow$8
     if (paramEditable == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a.removeTextChangedListener(this);
+    this.a.b.removeTextChangedListener(this);
     RichTextParser.TextImageSpanConfig localTextImageSpanConfig = null;
     Object localObject = paramEditable.toString();
-    int i = this.jdField_a_of_type_Int;
-    String str = ((String)localObject).substring(i, this.b + i);
+    int i = this.b;
+    String str = ((String)localObject).substring(i, this.c + i);
     i = str.indexOf('/');
     localObject = localTextImageSpanConfig;
     if (i >= 0)
@@ -39,30 +39,30 @@ class SubscribeCommentInputPopupWindow$8
         localTextImageSpanConfig = new RichTextParser.TextImageSpanConfig();
         double d = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
         Double.isNaN(d);
-        localTextImageSpanConfig.jdField_a_of_type_Float = ((int)(d * 22.0D + 0.5D));
-        localTextImageSpanConfig.jdField_a_of_type_Int = 0;
-        localTextImageSpanConfig.jdField_a_of_type_JavaLangCharSequence = paramEditable.toString();
+        localTextImageSpanConfig.a = ((int)(d * 22.0D + 0.5D));
+        localTextImageSpanConfig.b = 0;
+        localTextImageSpanConfig.c = paramEditable.toString();
         RichTextParser.a(localTextImageSpanConfig, str, null, (RichTextParser.RichSpannableStringBuilder)localObject, null, false);
       }
     }
     if (localObject != null) {
-      i = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a.getSelectionEnd();
+      i = this.a.b.getSelectionEnd();
     }
     try
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a.setText((CharSequence)localObject);
+      this.a.b.setText((CharSequence)localObject);
     }
     catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
     {
       label197:
       break label197;
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a.setText(paramEditable.toString());
+    this.a.b.setText(paramEditable.toString());
     i = paramEditable.toString().length();
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a.setSelection(i);
+    this.a.b.setSelection(i);
+    this.c = 0;
     this.b = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a.addTextChangedListener(this);
+    this.a.b.addTextChangedListener(this);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -72,8 +72,8 @@ class SubscribeCommentInputPopupWindow$8
     if (paramCharSequence == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt3;
+    this.b = paramInt1;
+    this.c = paramInt3;
   }
 }
 

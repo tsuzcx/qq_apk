@@ -17,35 +17,8 @@ import org.json.JSONObject;
 
 public class MediaCodecChipConfigInfo
 {
-  public static final long[] a;
-  public final ArrayList<MediaCodecChipConfigInfo.ChipAbilityInfo> a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfLong = new long[] { 2L, 1L, 8L, 4L };
-  }
-  
-  public MediaCodecChipConfigInfo()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  private static long a(String paramString)
-  {
-    if ("h264_encode".equalsIgnoreCase(paramString)) {
-      return 1L;
-    }
-    if ("h265_encode".equalsIgnoreCase(paramString)) {
-      return 4L;
-    }
-    if ("h264_decode".equalsIgnoreCase(paramString)) {
-      return 2L;
-    }
-    if ("h265_decode".equalsIgnoreCase(paramString)) {
-      return 8L;
-    }
-    return 0L;
-  }
+  public static final long[] a = { 2L, 1L, 8L, 4L };
+  public final ArrayList<MediaCodecChipConfigInfo.ChipAbilityInfo> b = new ArrayList();
   
   public static MediaCodecChipConfigInfo a(HardWareCodecSSO.ConfigRsp paramConfigRsp)
   {
@@ -55,14 +28,14 @@ public class MediaCodecChipConfigInfo
     {
       HardWareCodecSSO.PowerInfo localPowerInfo = (HardWareCodecSSO.PowerInfo)paramConfigRsp.next();
       MediaCodecChipConfigInfo.ChipAbilityInfo localChipAbilityInfo = new MediaCodecChipConfigInfo.ChipAbilityInfo();
-      localChipAbilityInfo.jdField_a_of_type_Boolean = localPowerInfo.support.get();
-      localChipAbilityInfo.jdField_a_of_type_Long = localPowerInfo.mark.get();
-      localChipAbilityInfo.b = ((int)localPowerInfo.max_height.get());
-      localChipAbilityInfo.jdField_a_of_type_Int = ((int)localPowerInfo.max_width.get());
-      localMediaCodecChipConfigInfo.a(localChipAbilityInfo);
+      localChipAbilityInfo.c = localPowerInfo.support.get();
+      localChipAbilityInfo.b = localPowerInfo.mark.get();
+      localChipAbilityInfo.e = ((int)localPowerInfo.max_height.get());
+      localChipAbilityInfo.d = ((int)localPowerInfo.max_width.get());
+      localMediaCodecChipConfigInfo.b(localChipAbilityInfo);
     }
     if (localMediaCodecChipConfigInfo.a().isEmpty()) {
-      localMediaCodecChipConfigInfo.a(MediaCodecChipConfigInfo.ChipAbilityInfo.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo$ChipAbilityInfo);
+      localMediaCodecChipConfigInfo.b(MediaCodecChipConfigInfo.ChipAbilityInfo.a);
     }
     return localMediaCodecChipConfigInfo;
   }
@@ -88,18 +61,18 @@ public class MediaCodecChipConfigInfo
             Object localObject2 = localJSONArray.getJSONObject(i);
             localObject1 = new MediaCodecChipConfigInfo.ChipAbilityInfo();
             if (((JSONObject)localObject2).has("descriptionName")) {
-              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).jdField_a_of_type_Long = a(((JSONObject)localObject2).optString("descriptionName"));
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).b = b(((JSONObject)localObject2).optString("descriptionName"));
             }
             if (((JSONObject)localObject2).has("support")) {
-              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optBoolean("support");
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).c = ((JSONObject)localObject2).optBoolean("support");
             }
             if (((JSONObject)localObject2).has("max_width")) {
-              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("max_width");
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).d = ((JSONObject)localObject2).optInt("max_width");
             }
             if (((JSONObject)localObject2).has("max_height")) {
-              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).b = ((JSONObject)localObject2).optInt("max_height");
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).e = ((JSONObject)localObject2).optInt("max_height");
             }
-            paramString.a((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1);
+            paramString.b((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1);
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
@@ -127,10 +100,10 @@ public class MediaCodecChipConfigInfo
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("descriptionName", b(paramChipAbilityInfo.jdField_a_of_type_Long));
-      localJSONObject.put("support", paramChipAbilityInfo.jdField_a_of_type_Boolean);
-      localJSONObject.put("max_width", paramChipAbilityInfo.jdField_a_of_type_Int);
-      localJSONObject.put("max_height", paramChipAbilityInfo.b);
+      localJSONObject.put("descriptionName", b(paramChipAbilityInfo.b));
+      localJSONObject.put("support", paramChipAbilityInfo.c);
+      localJSONObject.put("max_width", paramChipAbilityInfo.d);
+      localJSONObject.put("max_height", paramChipAbilityInfo.e);
       return localJSONObject;
     }
     catch (JSONException paramChipAbilityInfo)
@@ -140,21 +113,21 @@ public class MediaCodecChipConfigInfo
     return null;
   }
   
-  private void a(MediaCodecChipConfigInfo.ChipAbilityInfo paramChipAbilityInfo)
+  private static long b(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MediaCodecChipConfigInfo.ChipAbilityInfo localChipAbilityInfo = (MediaCodecChipConfigInfo.ChipAbilityInfo)localIterator.next();
-      if (localChipAbilityInfo.jdField_a_of_type_Long == paramChipAbilityInfo.jdField_a_of_type_Long)
-      {
-        localChipAbilityInfo.jdField_a_of_type_Boolean = paramChipAbilityInfo.jdField_a_of_type_Boolean;
-        localChipAbilityInfo.b = paramChipAbilityInfo.b;
-        localChipAbilityInfo.jdField_a_of_type_Int = paramChipAbilityInfo.jdField_a_of_type_Int;
-        return;
-      }
+    if ("h264_encode".equalsIgnoreCase(paramString)) {
+      return 1L;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramChipAbilityInfo);
+    if ("h265_encode".equalsIgnoreCase(paramString)) {
+      return 4L;
+    }
+    if ("h264_decode".equalsIgnoreCase(paramString)) {
+      return 2L;
+    }
+    if ("h265_decode".equalsIgnoreCase(paramString)) {
+      return 8L;
+    }
+    return 0L;
   }
   
   private static String b(long paramLong)
@@ -174,11 +147,33 @@ public class MediaCodecChipConfigInfo
     return "";
   }
   
-  public String a()
+  private void b(MediaCodecChipConfigInfo.ChipAbilityInfo paramChipAbilityInfo)
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      MediaCodecChipConfigInfo.ChipAbilityInfo localChipAbilityInfo = (MediaCodecChipConfigInfo.ChipAbilityInfo)localIterator.next();
+      if (localChipAbilityInfo.b == paramChipAbilityInfo.b)
+      {
+        localChipAbilityInfo.c = paramChipAbilityInfo.c;
+        localChipAbilityInfo.e = paramChipAbilityInfo.e;
+        localChipAbilityInfo.d = paramChipAbilityInfo.d;
+        return;
+      }
+    }
+    this.b.add(paramChipAbilityInfo);
+  }
+  
+  public ArrayList<MediaCodecChipConfigInfo.ChipAbilityInfo> a()
+  {
+    return this.b;
+  }
+  
+  public String b()
   {
     JSONObject localJSONObject = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       localJSONArray.put(a((MediaCodecChipConfigInfo.ChipAbilityInfo)localIterator.next()));
     }
@@ -194,16 +189,11 @@ public class MediaCodecChipConfigInfo
     return null;
   }
   
-  public ArrayList<MediaCodecChipConfigInfo.ChipAbilityInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("MediaCodecChipConfigInfo{");
     localStringBuffer.append("content = '");
-    localStringBuffer.append(Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
+    localStringBuffer.append(Arrays.toString(this.b.toArray()));
     localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();

@@ -26,13 +26,13 @@ public class MultiChannelReportProcessor
     Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      MultiChannelReportBean localMultiChannelReportBean = MultiChannelReportBean.a(paramArrayOfQConfItem[0].a);
+      MultiChannelReportBean localMultiChannelReportBean = MultiChannelReportBean.a(paramArrayOfQConfItem[0].b);
       localObject = localMultiChannelReportBean;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onParsed ");
-        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].b);
         QLog.d("MultiChannelReportProcessor", 2, ((StringBuilder)localObject).toString());
         return localMultiChannelReportBean;
       }
@@ -113,7 +113,7 @@ public class MultiChannelReportProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MultiChannelReportProcessor
  * JD-Core Version:    0.7.0.1
  */

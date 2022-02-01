@@ -16,8 +16,8 @@ import tencent.im.troop_search_searchtab.searchtab.TitleBar;
 public class TroopCardGroup
   extends BaseTroopCardView
 {
-  protected List<searchtab.Item1> a;
-  protected searchtab.Card a;
+  protected searchtab.Card d;
+  protected List<searchtab.Item1> e;
   
   private void a(searchtab.Item1 paramItem1)
   {
@@ -28,7 +28,7 @@ public class TroopCardGroup
     {
       String str = paramItem1.str_transfer_url.get();
       Object localObject;
-      if (this.a.title_bar.str_desc.get().contains(HardCodeUtil.a(2131715038)))
+      if (this.d.title_bar.str_desc.get().contains(HardCodeUtil.a(2131912528)))
       {
         paramItem1 = new StringBuilder();
         paramItem1.append(str);
@@ -39,7 +39,7 @@ public class TroopCardGroup
       else
       {
         localObject = str;
-        if (this.a.title_bar.str_desc.get().contains(HardCodeUtil.a(2131715037)))
+        if (this.d.title_bar.str_desc.get().contains(HardCodeUtil.a(2131912527)))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(str);

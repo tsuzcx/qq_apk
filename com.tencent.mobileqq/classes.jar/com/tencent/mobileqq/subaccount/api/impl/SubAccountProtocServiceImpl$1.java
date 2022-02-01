@@ -29,7 +29,7 @@ class SubAccountProtocServiceImpl$1
       if (paramSubAccountBackProtocData == null) {
         ??? = "data is null";
       } else {
-        ??? = paramSubAccountBackProtocData.c;
+        ??? = paramSubAccountBackProtocData.d;
       }
       ((StringBuilder)localObject2).append((String)???);
       QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject2).toString());
@@ -40,11 +40,11 @@ class SubAccountProtocServiceImpl$1
     if (paramSubAccountBackProtocData != null)
     {
       if (paramSubAccountBackProtocData.a()) {
-        SubAccountControllUtil.a(SubAccountProtocServiceImpl.access$600(this.a), paramSubAccountBackProtocData.a(), 2);
+        SubAccountControllUtil.a(SubAccountProtocServiceImpl.access$600(this.a), paramSubAccountBackProtocData.b(), 2);
       }
-      if (paramSubAccountBackProtocData.b())
+      if (paramSubAccountBackProtocData.c())
       {
-        ??? = paramSubAccountBackProtocData.b();
+        ??? = paramSubAccountBackProtocData.d();
         if (??? != null)
         {
           ??? = ((ArrayList)???).iterator();
@@ -55,17 +55,17 @@ class SubAccountProtocServiceImpl$1
           }
         }
       }
-      paramSubAccountBackProtocData.a();
+      paramSubAccountBackProtocData.g();
     }
     synchronized (SubAccountProtocServiceImpl.access$700())
     {
       SubAccountProtocServiceImpl.access$802(this.a, false);
       SubAccountProtocServiceImpl.access$402(this.a, true);
-      if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.b))
+      if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.k))
       {
-        SubAccountControllUtil.a(SubAccountProtocServiceImpl.access$600(this.a), paramSubAccountBackProtocData.c, false);
+        SubAccountControllUtil.b(SubAccountProtocServiceImpl.access$600(this.a), paramSubAccountBackProtocData.d, false);
         if (!((ISubAccountConfigApi)QRoute.api(ISubAccountConfigApi.class)).getIsHideSubAccountTroopMsg()) {
-          ((ISubAccountServlet)QRoute.api(ISubAccountServlet.class)).fetchOneTroopNewMsg(SubAccountProtocServiceImpl.access$600(this.a), paramSubAccountBackProtocData.c);
+          ((ISubAccountServlet)QRoute.api(ISubAccountServlet.class)).fetchOneTroopNewMsg(SubAccountProtocServiceImpl.access$600(this.a), paramSubAccountBackProtocData.d);
         }
       }
       return;
@@ -96,7 +96,7 @@ class SubAccountProtocServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountProtocServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

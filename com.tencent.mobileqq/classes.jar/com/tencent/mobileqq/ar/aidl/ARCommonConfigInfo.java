@@ -594,27 +594,27 @@ public class ARCommonConfigInfo
           String str1 = ((XmlPullParser)localObject1).getName();
           if (str1.equalsIgnoreCase("EntryType"))
           {
-            ((ARScanAR)localObject2).jdField_a_of_type_Int = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+            ((ARScanAR)localObject2).a = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
           }
           else if (str1.equalsIgnoreCase("Begin"))
           {
-            ((ARScanAR)localObject2).jdField_a_of_type_Long = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            ((ARScanAR)localObject2).b = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
           }
           else if (str1.equalsIgnoreCase("End"))
           {
-            ((ARScanAR)localObject2).jdField_b_of_type_Long = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            ((ARScanAR)localObject2).c = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
           }
           else if (str1.equalsIgnoreCase("UserGuideBeginTime"))
           {
-            ((ARScanAR)localObject2).jdField_c_of_type_Long = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            ((ARScanAR)localObject2).d = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
           }
           else if (str1.equalsIgnoreCase("UserGuideEndTime"))
           {
-            ((ARScanAR)localObject2).jdField_d_of_type_Long = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            ((ARScanAR)localObject2).e = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
           }
           else if (str1.equalsIgnoreCase("ActType"))
           {
-            ((ARScanAR)localObject2).jdField_b_of_type_Int = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+            ((ARScanAR)localObject2).f = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
           }
           else
           {
@@ -623,11 +623,11 @@ public class ARCommonConfigInfo
             {
               try
               {
-                ((ARScanAR)localObject2).jdField_c_of_type_Int = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+                ((ARScanAR)localObject2).g = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
               }
               catch (Exception localException8)
               {
-                ((ARScanAR)localObject2).jdField_c_of_type_Int = 0;
+                ((ARScanAR)localObject2).g = 0;
                 if (!QLog.isColorLevel()) {
                   continue;
                 }
@@ -636,51 +636,51 @@ public class ARCommonConfigInfo
             }
             else if (localException8.equalsIgnoreCase("ScanIconImg"))
             {
-              ((ARScanAR)localObject2).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).h = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("ScanIconMd5"))
             {
-              ((ARScanAR)localObject2).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).i = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("ScanIconPressed"))
             {
-              ((ARScanAR)localObject2).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).j = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("ScanIconPressedMd5"))
             {
-              ((ARScanAR)localObject2).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).k = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("ScanIconText"))
             {
-              ((ARScanAR)localObject2).e = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).l = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("Scan_Line1"))
             {
-              ((ARScanAR)localObject2).f = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).m = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("Scan_Line2"))
             {
-              ((ARScanAR)localObject2).g = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).n = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("Scan_Line3"))
             {
-              ((ARScanAR)localObject2).h = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).o = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("Scan_Line3_URL"))
             {
-              ((ARScanAR)localObject2).i = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).p = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("What2ScanURL"))
             {
-              ((ARScanAR)localObject2).j = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).q = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("UserGuideWording"))
             {
-              ((ARScanAR)localObject2).k = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).r = ((XmlPullParser)localObject1).nextText();
             }
             else if (localException8.equalsIgnoreCase("UserGuideType"))
             {
-              ((ARScanAR)localObject2).l = ((XmlPullParser)localObject1).nextText();
+              ((ARScanAR)localObject2).s = ((XmlPullParser)localObject1).nextText();
             }
           }
         }
@@ -710,7 +710,7 @@ public class ARCommonConfigInfo
             String str2 = ((XmlPullParser)localObject1).getName();
             if (str2.equalsIgnoreCase("Type"))
             {
-              ((ARRecognition)localObject2).jdField_a_of_type_Long = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+              ((ARRecognition)localObject2).a = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
             }
             else
             {
@@ -719,12 +719,12 @@ public class ARCommonConfigInfo
               {
                 try
                 {
-                  ((ARRecognition)localObject2).jdField_a_of_type_Int = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+                  ((ARRecognition)localObject2).b = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
                 }
                 catch (Exception localException9)
                 {
                   localException9.printStackTrace();
-                  ((ARRecognition)localObject2).jdField_a_of_type_Int = 1;
+                  ((ARRecognition)localObject2).b = 1;
                 }
               }
               else
@@ -734,12 +734,12 @@ public class ARCommonConfigInfo
                 {
                   try
                   {
-                    ((ARRecognition)localObject2).jdField_b_of_type_Int = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+                    ((ARRecognition)localObject2).c = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
                   }
                   catch (Exception localException10)
                   {
                     localException10.printStackTrace();
-                    ((ARRecognition)localObject2).jdField_b_of_type_Int = 1;
+                    ((ARRecognition)localObject2).c = 1;
                   }
                 }
                 else
@@ -749,12 +749,12 @@ public class ARCommonConfigInfo
                   {
                     try
                     {
-                      ((ARRecognition)localObject2).jdField_c_of_type_Int = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+                      ((ARRecognition)localObject2).d = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
                     }
                     catch (Exception localException11)
                     {
                       localException11.printStackTrace();
-                      ((ARRecognition)localObject2).jdField_c_of_type_Int = 5;
+                      ((ARRecognition)localObject2).d = 5;
                     }
                   }
                   else
@@ -763,19 +763,19 @@ public class ARCommonConfigInfo
                     if (bool) {
                       try
                       {
-                        ((ARRecognition)localObject2).jdField_b_of_type_Long = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
+                        ((ARRecognition)localObject2).e = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
                       }
                       catch (Exception localException12)
                       {
                         localException12.printStackTrace();
-                        ((ARRecognition)localObject2).jdField_b_of_type_Long = 3000L;
+                        ((ARRecognition)localObject2).e = 3000L;
                       }
                     } else if (localException12.equalsIgnoreCase("ImagePreprocess")) {
                       for (i = ((XmlPullParser)localObject1).next(); i != 1; i = ((XmlPullParser)localObject1).next()) {
                         if (i == 2)
                         {
                           if (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Open")) {
-                            ((ARRecognition)localObject2).d = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
+                            ((ARRecognition)localObject2).f = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
                           }
                         }
                         else {
@@ -897,22 +897,22 @@ public class ARCommonConfigInfo
             String str3 = ((XmlPullParser)localObject1).getName();
             if (str3.equalsIgnoreCase("Name"))
             {
-              ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARCommonConfigInfo.NativeSoRes)localObject2).a = ((XmlPullParser)localObject1).nextText();
               break label2333;
             }
             if (str3.equalsIgnoreCase("Version"))
             {
-              ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARCommonConfigInfo.NativeSoRes)localObject2).b = ((XmlPullParser)localObject1).nextText();
               break label2333;
             }
             if (str3.equalsIgnoreCase("Url"))
             {
-              ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARCommonConfigInfo.NativeSoRes)localObject2).c = ((XmlPullParser)localObject1).nextText();
               break label2333;
             }
             if (str3.equalsIgnoreCase("Md5"))
             {
-              ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARCommonConfigInfo.NativeSoRes)localObject2).d = ((XmlPullParser)localObject1).nextText();
               break label2333;
             }
             bool = str3.equalsIgnoreCase("Size");
@@ -921,12 +921,12 @@ public class ARCommonConfigInfo
             }
             try
             {
-              ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_Long = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
+              ((ARCommonConfigInfo.NativeSoRes)localObject2).e = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
             }
             catch (Exception localException13)
             {
               localException13.printStackTrace();
-              ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_Long = 0L;
+              ((ARCommonConfigInfo.NativeSoRes)localObject2).e = 0L;
               continue;
             }
           }
@@ -949,22 +949,22 @@ public class ARCommonConfigInfo
             str4 = ((XmlPullParser)localObject1).getName();
             if (str4.equalsIgnoreCase("AIOMsgSourceName"))
             {
-              ((ARRelationShipAIOMsg)localObject2).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARRelationShipAIOMsg)localObject2).a = ((XmlPullParser)localObject1).nextText();
               break label2336;
             }
             if (str4.equalsIgnoreCase("AIOMsgSourceIconUrl"))
             {
-              ((ARRelationShipAIOMsg)localObject2).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARRelationShipAIOMsg)localObject2).b = ((XmlPullParser)localObject1).nextText();
               break label2336;
             }
             if (str4.equalsIgnoreCase("AIOMsgSourceAction"))
             {
-              ((ARRelationShipAIOMsg)localObject2).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARRelationShipAIOMsg)localObject2).c = ((XmlPullParser)localObject1).nextText();
               break label2336;
             }
             if (str4.equalsIgnoreCase("AIOMsgSourceActionData"))
             {
-              ((ARRelationShipAIOMsg)localObject2).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ARRelationShipAIOMsg)localObject2).d = ((XmlPullParser)localObject1).nextText();
               break label2336;
             }
             if (!str4.equalsIgnoreCase("AIOMsgSourceUrl")) {
@@ -1043,7 +1043,7 @@ public class ARCommonConfigInfo
     //   10: invokespecial 169	java/lang/StringBuilder:<init>	()V
     //   13: astore 4
     //   15: aload 4
-    //   17: ldc_w 533
+    //   17: ldc_w 548
     //   20: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 4
@@ -1094,7 +1094,7 @@ public class ARCommonConfigInfo
     //   112: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: pop
     //   116: aload 4
-    //   118: ldc_w 535
+    //   118: ldc_w 550
     //   121: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: pop
     //   125: new 194	java/io/File
@@ -1109,22 +1109,22 @@ public class ARCommonConfigInfo
     //   143: astore 5
     //   145: aload_0
     //   146: ldc 253
-    //   148: invokevirtual 538	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   148: invokevirtual 553	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   151: astore_0
     //   152: aload_0
     //   153: astore 5
     //   155: goto +8 -> 163
     //   158: astore_0
     //   159: aload_0
-    //   160: invokevirtual 539	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   160: invokevirtual 554	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   163: aload 7
-    //   165: invokevirtual 542	java/io/File:getParentFile	()Ljava/io/File;
+    //   165: invokevirtual 557	java/io/File:getParentFile	()Ljava/io/File;
     //   168: astore_0
     //   169: aload_0
     //   170: invokevirtual 218	java/io/File:exists	()Z
     //   173: ifne +8 -> 181
     //   176: aload_0
-    //   177: invokevirtual 545	java/io/File:mkdir	()Z
+    //   177: invokevirtual 560	java/io/File:mkdir	()Z
     //   180: pop
     //   181: aload 8
     //   183: invokevirtual 218	java/io/File:exists	()Z
@@ -1138,37 +1138,37 @@ public class ARCommonConfigInfo
     //   198: astore_1
     //   199: aconst_null
     //   200: astore 6
-    //   202: new 547	java/io/FileOutputStream
+    //   202: new 562	java/io/FileOutputStream
     //   205: dup
     //   206: aload 8
-    //   208: invokespecial 548	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   208: invokespecial 563	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   211: astore_0
     //   212: aload_2
     //   213: astore_1
     //   214: aload_0
     //   215: astore_2
-    //   216: new 550	java/io/BufferedOutputStream
+    //   216: new 565	java/io/BufferedOutputStream
     //   219: dup
     //   220: aload_0
-    //   221: invokespecial 553	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   221: invokespecial 568	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   224: astore 4
     //   226: aload 4
     //   228: aload 5
-    //   230: invokevirtual 556	java/io/BufferedOutputStream:write	([B)V
+    //   230: invokevirtual 571	java/io/BufferedOutputStream:write	([B)V
     //   233: aload 4
-    //   235: invokevirtual 559	java/io/BufferedOutputStream:flush	()V
+    //   235: invokevirtual 574	java/io/BufferedOutputStream:flush	()V
     //   238: aload 8
     //   240: aload 7
-    //   242: invokestatic 565	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   242: invokestatic 580	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   245: istore_3
     //   246: aload 4
-    //   248: invokevirtual 566	java/io/BufferedOutputStream:close	()V
+    //   248: invokevirtual 581	java/io/BufferedOutputStream:close	()V
     //   251: goto +8 -> 259
     //   254: astore_1
     //   255: aload_1
     //   256: invokevirtual 267	java/io/IOException:printStackTrace	()V
     //   259: aload_0
-    //   260: invokevirtual 567	java/io/FileOutputStream:close	()V
+    //   260: invokevirtual 582	java/io/FileOutputStream:close	()V
     //   263: iload_3
     //   264: ireturn
     //   265: astore_0
@@ -1204,7 +1204,7 @@ public class ARCommonConfigInfo
     //   317: aload 4
     //   319: ifnull +16 -> 335
     //   322: aload 4
-    //   324: invokevirtual 566	java/io/BufferedOutputStream:close	()V
+    //   324: invokevirtual 581	java/io/BufferedOutputStream:close	()V
     //   327: goto +8 -> 335
     //   330: astore_1
     //   331: aload_1
@@ -1212,7 +1212,7 @@ public class ARCommonConfigInfo
     //   335: aload_0
     //   336: ifnull +14 -> 350
     //   339: aload_0
-    //   340: invokevirtual 567	java/io/FileOutputStream:close	()V
+    //   340: invokevirtual 582	java/io/FileOutputStream:close	()V
     //   343: iconst_0
     //   344: ireturn
     //   345: astore_0
@@ -1228,7 +1228,7 @@ public class ARCommonConfigInfo
     //   359: aload_1
     //   360: ifnull +15 -> 375
     //   363: aload_1
-    //   364: invokevirtual 566	java/io/BufferedOutputStream:close	()V
+    //   364: invokevirtual 581	java/io/BufferedOutputStream:close	()V
     //   367: goto +8 -> 375
     //   370: astore_1
     //   371: aload_1
@@ -1236,7 +1236,7 @@ public class ARCommonConfigInfo
     //   375: aload_0
     //   376: ifnull +15 -> 391
     //   379: aload_0
-    //   380: invokevirtual 567	java/io/FileOutputStream:close	()V
+    //   380: invokevirtual 582	java/io/FileOutputStream:close	()V
     //   383: goto +8 -> 391
     //   386: astore_0
     //   387: aload_0
@@ -1304,7 +1304,7 @@ public class ARCommonConfigInfo
             if (i >= this.recognitions.size()) {
               break;
             }
-            if (((ARRecognition)this.recognitions.get(i)).jdField_a_of_type_Int != 0)
+            if (((ARRecognition)this.recognitions.get(i)).b != 0)
             {
               bool1 = true;
               break;
@@ -1390,7 +1390,7 @@ public class ARCommonConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo
  * JD-Core Version:    0.7.0.1
  */

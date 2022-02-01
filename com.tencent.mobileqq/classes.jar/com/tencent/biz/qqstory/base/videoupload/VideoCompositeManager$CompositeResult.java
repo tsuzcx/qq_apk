@@ -14,10 +14,10 @@ public class VideoCompositeManager$CompositeResult
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CompositeVideoEvent{vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", errorInfo='");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", videoUrl='");
     localStringBuilder.append(this.b);
@@ -28,7 +28,7 @@ public class VideoCompositeManager$CompositeResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.CompositeResult
  * JD-Core Version:    0.7.0.1
  */

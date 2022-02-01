@@ -55,8 +55,8 @@ class AVPreloadSwitch$1
         ((StringBuilder)localObject).append("switchConfig parse finished result = ");
         ((StringBuilder)localObject).append(bool);
         paramJSONObject.e("AVPreloadSwitch", ((StringBuilder)localObject).toString(), new Object[0]);
-        if (AVPreloadSwitch.a(this.a) != null) {
-          AVPreloadSwitch.a(this.a).d();
+        if (AVPreloadSwitch.b(this.a) != null) {
+          AVPreloadSwitch.b(this.a).d();
         }
       }
       else
@@ -73,7 +73,7 @@ class AVPreloadSwitch$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadSwitch.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class AIOGalleryScene$10
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.h) {
+    if (this.a.U) {
       VasWebviewUtil.a("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.10
  * JD-Core Version:    0.7.0.1
  */

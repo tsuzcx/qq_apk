@@ -10,12 +10,12 @@ class UserOperationModule$6
   
   public void run()
   {
-    RIJPushNotifyManager.Companion.a().showPushNotifyDialog(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    RIJPushNotifyManager.Companion.a().showPushNotifyDialog(this.a, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule.6
  * JD-Core Version:    0.7.0.1
  */

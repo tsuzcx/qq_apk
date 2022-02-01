@@ -21,53 +21,53 @@ class GameRoomChatPie$5
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager != null)
+    if (this.a.bC != null)
     {
-      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+      Object localObject = this.a.bC.c();
       if (localObject != null)
       {
-        HashMap localHashMap = ((WerewolvesPluginInterface)localObject).b();
-        localObject = ((WerewolvesPluginInterface)localObject).a();
-        if (paramView == this.a.l)
+        HashMap localHashMap = ((WerewolvesPluginInterface)localObject).j();
+        localObject = ((WerewolvesPluginInterface)localObject).i();
+        if (paramView == this.a.bs)
         {
-          if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() != 0)
+          if (this.a.Y.getVisibility() != 0)
           {
             if (localHashMap != null) {
-              this.a.l.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+              this.a.bs.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
             }
-            this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-            this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
-            this.a.h.setVisibility(4);
+            this.a.Y.setVisibility(0);
+            this.a.Z.setVisibility(0);
+            this.a.bu.setVisibility(4);
             GameRoomChatPie.a(this.a).a(25);
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel != null) && (localObject != null)) {
-              this.a.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
+            if ((this.a.bJ != null) && (localObject != null)) {
+              this.a.bJ.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
             }
           }
           else
           {
             if (localHashMap != null) {
-              this.a.l.setImageDrawable((Drawable)localHashMap.get("textIcon"));
+              this.a.bs.setImageDrawable((Drawable)localHashMap.get("textIcon"));
             }
-            this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
-            this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(4);
-            this.a.h.setVisibility(0);
-            this.a.ad();
+            this.a.Y.setVisibility(4);
+            this.a.Z.setVisibility(4);
+            this.a.bu.setVisibility(0);
+            this.a.aQ();
           }
         }
-        else if (paramView == this.a.m) {
-          if (GameRoomChatPie.b(this.a).a() != 3)
+        else if (paramView == this.a.bt) {
+          if (GameRoomChatPie.b(this.a).getCurrentPanel() != 3)
           {
             this.a.a(3);
             if (localHashMap != null) {
-              this.a.l.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+              this.a.bs.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
             }
-            this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-            this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
-            this.a.h.setVisibility(4);
+            this.a.Y.setVisibility(0);
+            this.a.Z.setVisibility(0);
+            this.a.bu.setVisibility(4);
           }
           else
           {
-            this.a.ad();
+            this.a.aQ();
           }
         }
       }
@@ -77,7 +77,7 @@ class GameRoomChatPie$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.5
  * JD-Core Version:    0.7.0.1
  */

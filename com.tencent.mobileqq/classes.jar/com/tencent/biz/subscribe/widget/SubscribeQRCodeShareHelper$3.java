@@ -15,31 +15,31 @@ class SubscribeQRCodeShareHelper$3
   public void run()
   {
     SubscribeQRCodeShareHelper.a(this.this$0, false);
-    int j = SubscribeQRCodeShareHelper.a(this.this$0).getActionSheetPanelViewHeight();
+    int j = SubscribeQRCodeShareHelper.g(this.this$0).getActionSheetPanelViewHeight();
     int i;
-    if (!ScreenUtil.checkDeviceHasNavigationBar(SubscribeQRCodeShareHelper.a(this.this$0))) {
-      i = ScreenUtil.getRealHeight(SubscribeQRCodeShareHelper.a(this.this$0));
+    if (!ScreenUtil.checkDeviceHasNavigationBar(SubscribeQRCodeShareHelper.c(this.this$0))) {
+      i = ScreenUtil.getRealHeight(SubscribeQRCodeShareHelper.c(this.this$0));
     } else {
       i = ScreenUtil.SCREEN_HIGHT;
     }
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, i - LiuHaiUtils.a(SubscribeQRCodeShareHelper.a(this.this$0)) - j);
-    SubscribeQRCodeShareHelper.a(this.this$0).setAdvBgColor(0);
-    RelativeLayout localRelativeLayout = new RelativeLayout(SubscribeQRCodeShareHelper.a(this.this$0));
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, i - LiuHaiUtils.b(SubscribeQRCodeShareHelper.c(this.this$0)) - j);
+    SubscribeQRCodeShareHelper.g(this.this$0).setAdvBgColor(0);
+    RelativeLayout localRelativeLayout = new RelativeLayout(SubscribeQRCodeShareHelper.c(this.this$0));
     localRelativeLayout.setLayoutParams(localLayoutParams1);
     localRelativeLayout.setBackgroundColor(0);
     localRelativeLayout.setOnClickListener(new SubscribeQRCodeShareHelper.3.1(this));
-    ImageView localImageView = new ImageView(SubscribeQRCodeShareHelper.a(this.this$0));
+    ImageView localImageView = new ImageView(SubscribeQRCodeShareHelper.c(this.this$0));
     localImageView.setOnClickListener(new SubscribeQRCodeShareHelper.3.2(this));
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(ScreenUtil.dip2px(225.0F), ScreenUtil.dip2px(420.0F));
     localLayoutParams2.addRule(13);
     localRelativeLayout.addView(localImageView, localLayoutParams2);
-    localImageView.setImageBitmap(this.a.a());
-    SubscribeQRCodeShareHelper.a(this.this$0).setAdvView(localRelativeLayout, localLayoutParams1);
+    localImageView.setImageBitmap(this.a.getSharedBitmap());
+    SubscribeQRCodeShareHelper.g(this.this$0).setAdvView(localRelativeLayout, localLayoutParams1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

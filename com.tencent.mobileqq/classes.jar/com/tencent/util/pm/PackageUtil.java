@@ -11,16 +11,16 @@ public final class PackageUtil
 {
   public static int a(Context paramContext, String paramString)
   {
-    return a(paramContext, paramString).versionCode;
+    return b(paramContext, paramString).versionCode;
   }
   
-  public static PackageInfo a(Context paramContext, String paramString)
+  public static PackageInfo b(Context paramContext, String paramString)
   {
     return paramContext.getPackageManager().getPackageInfo(paramString, 0);
   }
   
   @Nullable
-  public static String a(Context paramContext, String paramString)
+  public static String c(Context paramContext, String paramString)
   {
     try
     {
@@ -35,11 +35,11 @@ public final class PackageUtil
     return null;
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public static boolean d(Context paramContext, String paramString)
   {
     try
     {
-      a(paramContext, paramString);
+      b(paramContext, paramString);
       return true;
     }
     catch (PackageManager.NameNotFoundException paramContext)
@@ -52,7 +52,7 @@ public final class PackageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.pm.PackageUtil
  * JD-Core Version:    0.7.0.1
  */

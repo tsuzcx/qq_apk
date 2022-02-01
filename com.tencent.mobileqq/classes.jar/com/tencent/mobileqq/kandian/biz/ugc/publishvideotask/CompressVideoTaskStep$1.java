@@ -20,13 +20,13 @@ class CompressVideoTaskStep$1
       localStringBuilder.append(paramFloat);
       QLog.i("RIJUGC.CompressVideoTaskStep", 2, localStringBuilder.toString());
     }
-    if (!CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep))
+    if (!CompressVideoTaskStep.a(this.b))
     {
-      if (paramFloat > this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressProgress) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressProgress = ((int)paramFloat);
+      if (paramFloat > this.a.compressProgress) {
+        this.a.compressProgress = ((int)paramFloat);
       }
-      if (CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep) != null) {
-        CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep).a(1, true, false, null);
+      if (CompressVideoTaskStep.c(this.b) != null) {
+        CompressVideoTaskStep.c(this.b).a(1, true, false, null);
       }
     }
   }
@@ -38,7 +38,7 @@ class CompressVideoTaskStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.CompressVideoTaskStep.1
  * JD-Core Version:    0.7.0.1
  */

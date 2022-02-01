@@ -11,7 +11,7 @@ public class ActivityDAUReport
     // Byte code:
     //   0: aload_0
     //   1: getfield 17	com/tencent/mobileqq/app/automator/step/ActivityDAUReport:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   4: getfield 23	com/tencent/mobileqq/app/automator/Automator:a	Lcom/tencent/common/app/AppInterface;
+    //   4: getfield 23	com/tencent/mobileqq/app/automator/Automator:l	Lcom/tencent/common/app/AppInterface;
     //   7: invokevirtual 29	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
     //   10: invokevirtual 35	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   13: astore 4
@@ -252,7 +252,7 @@ public class ActivityDAUReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ActivityDAUReport
  * JD-Core Version:    0.7.0.1
  */

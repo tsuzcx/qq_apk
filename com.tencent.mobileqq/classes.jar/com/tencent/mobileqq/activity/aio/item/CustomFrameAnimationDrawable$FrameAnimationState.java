@@ -11,23 +11,17 @@ import java.util.ArrayList;
 public final class CustomFrameAnimationDrawable$FrameAnimationState
   extends Drawable.ConstantState
 {
-  int jdField_a_of_type_Int = -1;
-  final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  public ArrayList<CustomFrameAnimationDrawable.OneFrame> a;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 160;
-  public ArrayList<Bitmap> b;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  boolean jdField_c_of_type_Boolean = true;
-  int jdField_d_of_type_Int = 0;
-  boolean jdField_d_of_type_Boolean = false;
-  
-  public CustomFrameAnimationDrawable$FrameAnimationState()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  final Paint a = new Paint(6);
+  public ArrayList<CustomFrameAnimationDrawable.OneFrame> b = new ArrayList();
+  int c = -1;
+  boolean d = false;
+  int e = 160;
+  public ArrayList<Bitmap> f = new ArrayList();
+  boolean g = false;
+  boolean h = true;
+  boolean i = false;
+  int j = 0;
+  int k = 0;
   
   public int getChangingConfigurations()
   {
@@ -47,7 +41,7 @@ public final class CustomFrameAnimationDrawable$FrameAnimationState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameAnimationState
  * JD-Core Version:    0.7.0.1
  */

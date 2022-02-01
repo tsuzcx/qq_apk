@@ -7,9 +7,9 @@ import com.tencent.biz.pubaccount.imagecollection.api.IPublicAccountImageCollect
 import com.tencent.biz.pubaccount.util.PreloadManager;
 import com.tencent.biz.webviewplugin.PubAccountPreloadPlugin;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.image.ImageManager;
 import com.tencent.mobileqq.kandian.base.image.ImageRequest;
 import com.tencent.mobileqq.kandian.base.image.RIJImageTypeOptHelper;
-import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.ReadInJoyDisplayUtils;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager;
@@ -36,9 +36,10 @@ import java.util.List;
 
 public class RIJPreloadImage
 {
-  private static int jdField_a_of_type_Int = 10;
+  private static int a = 10;
   private static int b = 10;
-  private long jdField_a_of_type_Long = 0L;
+  private long c = 0L;
+  private int d = 0;
   
   private List<PreloadImgInfo> a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
@@ -49,9 +50,9 @@ public class RIJPreloadImage
     } else if (paramAbsBaseArticleInfo.mSinglePicture != null) {
       localURL = paramAbsBaseArticleInfo.mSinglePicture;
     } else {
-      localURL = RIJConvertString2URL.a(paramAbsBaseArticleInfo.mFirstPagePicUrl);
+      localURL = RIJConvertString2URL.b(paramAbsBaseArticleInfo.mFirstPagePicUrl);
     }
-    localArrayList.add(PreloadImgInfo.a(localURL, ReadInJoyDisplayUtils.g()));
+    localArrayList.add(PreloadImgInfo.a(localURL, ReadInJoyDisplayUtils.h()));
     if ((paramAbsBaseArticleInfo.mSubArticleList != null) && (paramAbsBaseArticleInfo.mSubArticleList.size() > 0))
     {
       paramAbsBaseArticleInfo = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0);
@@ -60,9 +61,9 @@ public class RIJPreloadImage
       } else if (paramAbsBaseArticleInfo.mSinglePicture != null) {
         paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSinglePicture;
       } else {
-        paramAbsBaseArticleInfo = RIJConvertString2URL.a(paramAbsBaseArticleInfo.mFirstPagePicUrl);
+        paramAbsBaseArticleInfo = RIJConvertString2URL.b(paramAbsBaseArticleInfo.mFirstPagePicUrl);
       }
-      localArrayList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo, ReadInJoyDisplayUtils.g()));
+      localArrayList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo, ReadInJoyDisplayUtils.h()));
     }
     return localArrayList;
   }
@@ -73,19 +74,19 @@ public class RIJPreloadImage
     while (paramList.hasNext())
     {
       PreloadImgInfo localPreloadImgInfo = (PreloadImgInfo)paramList.next();
-      if ((localPreloadImgInfo != null) && (localPreloadImgInfo.jdField_a_of_type_JavaNetURL != null))
+      if ((localPreloadImgInfo != null) && (localPreloadImgInfo.a != null))
       {
-        if (TextUtils.equals("pubaccountimage", localPreloadImgInfo.jdField_a_of_type_JavaNetURL.getProtocol())) {
-          localPreloadImgInfo.jdField_a_of_type_JavaNetURL = RIJConvertString2URL.a(localPreloadImgInfo.jdField_a_of_type_JavaNetURL.getFile(), false);
+        if (TextUtils.equals("pubaccountimage", localPreloadImgInfo.a.getProtocol())) {
+          localPreloadImgInfo.a = RIJConvertString2URL.a(localPreloadImgInfo.a.getFile(), false);
         }
-        if (localPreloadImgInfo.jdField_a_of_type_JavaNetURL != null)
+        if (localPreloadImgInfo.a != null)
         {
           ImageRequest localImageRequest = new ImageRequest();
-          RIJImageTypeOptHelper.a.a(localImageRequest, localPreloadImgInfo.jdField_a_of_type_JavaNetURL.toString());
-          localImageRequest.jdField_a_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localImageRequest.jdField_b_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.second).intValue();
-          localImageRequest.jdField_b_of_type_Boolean = true;
-          ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, null);
+          RIJImageTypeOptHelper.a.a(localImageRequest, localPreloadImgInfo.a.toString());
+          localImageRequest.b = ((Integer)localPreloadImgInfo.b.first).intValue();
+          localImageRequest.c = ((Integer)localPreloadImgInfo.b.second).intValue();
+          localImageRequest.e = true;
+          ImageManager.get().loadImage(localImageRequest, null);
         }
       }
     }
@@ -101,7 +102,7 @@ public class RIJPreloadImage
       int i = 0;
       while (i < j)
       {
-        localArrayList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo[i], ReadInJoyDisplayUtils.a()));
+        localArrayList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo[i], ReadInJoyDisplayUtils.b()));
         i += 1;
       }
     }
@@ -110,30 +111,7 @@ public class RIJPreloadImage
   
   public int a()
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("cpu:");
-      localStringBuilder.append(DeviceInfoUtil.b());
-      localStringBuilder.append(" mem:");
-      localStringBuilder.append(DeviceInfoUtil.a());
-      localStringBuilder.append(" fre:");
-      localStringBuilder.append(DeviceInfoUtil.b());
-      QLog.d("RIJPreloadImage", 2, localStringBuilder.toString());
-    }
-    int i = DeviceInfoUtil.b();
-    long l = DeviceInfoUtil.a();
-    if ((i >= 4) && (l >= 1610612736.0D))
-    {
-      jdField_a_of_type_Int = 6;
-      return;
-    }
-    jdField_a_of_type_Int = 4;
+    return a;
   }
   
   public void a(int paramInt1, int paramInt2, RIJDataManager paramRIJDataManager)
@@ -148,31 +126,31 @@ public class RIJPreloadImage
       QLog.d("RIJPreloadImage", 2, ((StringBuilder)localObject).toString());
     }
     long l = System.currentTimeMillis();
-    if (!NetworkUtil.isWifiConnected(paramRIJDataManager.a().a())) {
+    if (!NetworkUtil.isWifiConnected(paramRIJDataManager.a().A())) {
       return;
     }
-    Object localObject = new ArrayList(paramRIJDataManager.a());
-    ThreadManager.post(new RIJPreloadImage.1(this, this.jdField_a_of_type_Long, (List)localObject, paramInt1, paramInt2, paramRIJDataManager, l), 5, null, true);
+    Object localObject = new ArrayList(paramRIJDataManager.b());
+    ThreadManager.post(new RIJPreloadImage.1(this, this.c, (List)localObject, paramInt1, paramInt2, paramRIJDataManager, l), 5, null, true);
   }
   
   public void a(int paramInt1, int paramInt2, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if (!PreloadManager.a().a()) {
+    if (!PreloadManager.a().f()) {
       return;
     }
-    PreloadManager.a().e();
-    int i = paramReadInJoyBaseAdapter.a();
+    PreloadManager.a().h();
+    int i = paramReadInJoyBaseAdapter.c();
     while (paramInt1 <= paramInt2)
     {
       Object localObject = paramReadInJoyBaseAdapter.getItem(paramInt1);
       if ((localObject instanceof BaseArticleInfo))
       {
         localObject = (AbsBaseArticleInfo)localObject;
-        if ((!RIJFeedsType.a(((AbsBaseArticleInfo)localObject).mArticleContentUrl, ((AbsBaseArticleInfo)localObject).mChannelID, (AbsBaseArticleInfo)localObject)) && (!RIJFeedsType.a((AbsBaseArticleInfo)localObject)) && (!paramReadInJoyBaseAdapter.a(i, ((AbsBaseArticleInfo)localObject).mArticleID)))
+        if ((!RIJFeedsType.a(((AbsBaseArticleInfo)localObject).mArticleContentUrl, ((AbsBaseArticleInfo)localObject).mChannelID, (AbsBaseArticleInfo)localObject)) && (!RIJFeedsType.a((AbsBaseArticleInfo)localObject)) && (!paramReadInJoyBaseAdapter.b(i, ((AbsBaseArticleInfo)localObject).mArticleID)))
         {
           localObject = ((AbsBaseArticleInfo)localObject).mArticleContentUrl;
           if (PubAccountPreloadPlugin.a((String)localObject)) {
-            PreloadManager.a().a((String)localObject);
+            PreloadManager.a().b((String)localObject);
           }
         }
       }
@@ -182,13 +160,13 @@ public class RIJPreloadImage
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   @VisibleForTesting
   void a(List<PreloadImgInfo> paramList, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJDataManager paramRIJDataManager)
   {
-    paramInt = paramRIJDataManager.a().a().getItemViewType(paramInt);
+    paramInt = paramRIJDataManager.a().v().getItemViewType(paramInt);
     if (paramInt == 4)
     {
       if (paramAbsBaseArticleInfo.mVideoCoverUrl != null) {
@@ -196,9 +174,9 @@ public class RIJPreloadImage
       } else if (paramAbsBaseArticleInfo.mSinglePicture != null) {
         paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSinglePicture;
       } else {
-        paramAbsBaseArticleInfo = RIJConvertString2URL.a(paramAbsBaseArticleInfo.mFirstPagePicUrl);
+        paramAbsBaseArticleInfo = RIJConvertString2URL.b(paramAbsBaseArticleInfo.mFirstPagePicUrl);
       }
-      paramList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo, ReadInJoyDisplayUtils.f()));
+      paramList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo, ReadInJoyDisplayUtils.g()));
       return;
     }
     if ((paramInt != 70) && (paramInt != 46))
@@ -208,11 +186,11 @@ public class RIJPreloadImage
         if ((paramInt != 2) && (paramInt != 6) && (paramInt != 66) && (paramInt != 115))
         {
           if ((paramInt == 1) || (paramInt == 5) || (paramInt == 104) || (paramInt == 106)) {
-            paramList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo.mSinglePicture, ReadInJoyDisplayUtils.a()));
+            paramList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo.mSinglePicture, ReadInJoyDisplayUtils.b()));
           }
         }
         else {
-          paramList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo.mSinglePicture, ReadInJoyDisplayUtils.e()));
+          paramList.add(PreloadImgInfo.a(paramAbsBaseArticleInfo.mSinglePicture, ReadInJoyDisplayUtils.f()));
         }
       }
       else {
@@ -226,22 +204,45 @@ public class RIJPreloadImage
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, PrefetchListener paramPrefetchListener, RIJDataManager paramRIJDataManager)
   {
-    ((IImageManager)QRoute.api(IImageManager.class)).resume();
+    ImageManager.get().resume();
     if (QLog.isColorLevel()) {
       QLog.d("RIJPreloadImage", 2, "resume image onScrollStateChanged idle");
     }
     if (paramBoolean)
     {
-      a(paramInt2, jdField_a_of_type_Int, paramRIJDataManager);
+      a(paramInt2, a, paramRIJDataManager);
     }
     else
     {
-      int i = jdField_a_of_type_Int;
+      int i = a;
       a(paramInt2 - i, i, paramRIJDataManager);
     }
-    if ((paramInt1 - paramInt2 < jdField_b_of_type_Int) && (paramPrefetchListener != null)) {
+    if ((paramInt1 - paramInt2 <= this.d) && (paramPrefetchListener != null)) {
       paramPrefetchListener.a();
     }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cpu:");
+      localStringBuilder.append(DeviceInfoUtil.h());
+      localStringBuilder.append(" mem:");
+      localStringBuilder.append(DeviceInfoUtil.a());
+      localStringBuilder.append(" fre:");
+      localStringBuilder.append(DeviceInfoUtil.k());
+      QLog.d("RIJPreloadImage", 2, localStringBuilder.toString());
+    }
+    int i = DeviceInfoUtil.h();
+    long l = DeviceInfoUtil.a();
+    if ((i >= 4) && (l >= 1610612736.0D))
+    {
+      a = 6;
+      return;
+    }
+    a = 4;
   }
   
   public void b(int paramInt1, int paramInt2, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
@@ -256,7 +257,7 @@ public class RIJPreloadImage
       if (localObject != null)
       {
         localObject = (AbsBaseArticleInfo)localObject;
-        int i = paramReadInJoyBaseAdapter.a(paramInt1);
+        int i = paramReadInJoyBaseAdapter.c(paramInt1);
         if ((i == 8) || (i == 7)) {
           ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).addTask(String.valueOf(((AbsBaseArticleInfo)localObject).innerUniqueID));
         }
@@ -269,7 +270,7 @@ public class RIJPreloadImage
   {
     if (FeedsSPUtils.a(RIJQQAppInterfaceUtil.b()))
     {
-      if (!ReadInJoyHelper.D(RIJQQAppInterfaceUtil.b())) {
+      if (!ReadInJoyHelper.ap(RIJQQAppInterfaceUtil.b())) {
         return;
       }
       ArrayList localArrayList = new ArrayList();
@@ -285,13 +286,13 @@ public class RIJPreloadImage
         }
         paramInt1 += 1;
       }
-      ReadInJoyLogicEngine.a().a().a(localArrayList);
+      ReadInJoyLogicEngine.a().d().a(localArrayList);
     }
   }
   
   public void d(int paramInt1, int paramInt2, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if (!RIJWebArticleUtil.a.a()) {
+    if (!RIJWebArticleUtil.a.b()) {
       return;
     }
     while (paramInt1 <= paramInt2)
@@ -310,7 +311,7 @@ public class RIJPreloadImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJPreloadImage
  * JD-Core Version:    0.7.0.1
  */

@@ -32,7 +32,7 @@ public final class vac_adv_get$VacFeedsAdvReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.common.pb.vac_adv_get.VacFeedsAdvReq
  * JD-Core Version:    0.7.0.1
  */

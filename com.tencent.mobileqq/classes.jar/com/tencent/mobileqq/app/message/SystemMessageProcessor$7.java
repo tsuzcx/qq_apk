@@ -13,17 +13,17 @@ class SystemMessageProcessor$7
   
   public ToServiceMsg a()
   {
-    ToServiceMsg localToServiceMsg = SystemMessageProcessor.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
+    ToServiceMsg localToServiceMsg = SystemMessageProcessor.c(this.c).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.a);
     localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.putWupBuffer(this.b.toByteArray());
     localToServiceMsg.setEnableFastResend(true);
     return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.7
  * JD-Core Version:    0.7.0.1
  */

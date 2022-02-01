@@ -12,15 +12,15 @@ class CardContainer$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.k.getLayoutParams();
     paramValueAnimator.topMargin = i;
-    this.a.a.setLayoutParams(paramValueAnimator);
+    this.a.k.setLayoutParams(paramValueAnimator);
     this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CardContainer.1
  * JD-Core Version:    0.7.0.1
  */

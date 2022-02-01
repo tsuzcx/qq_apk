@@ -31,23 +31,23 @@ class EditFriendRemarkService$1
       paramView = ((QQText)localObject).toString();
       localObject = ((QQText)localObject).trim();
       if (TextUtils.isEmpty(paramView)) {
-        QQToast.a(EditFriendRemarkService.a(this.a), EditFriendRemarkService.a(this.a).getString(2131693298), 0).a();
+        QQToast.makeText(EditFriendRemarkService.b(this.a), EditFriendRemarkService.b(this.a).getString(2131890846), 0).show();
       }
-      if (((String)localObject).equals(EditFriendRemarkService.a(this.a)))
+      if (((String)localObject).equals(EditFriendRemarkService.c(this.a)))
       {
         EditFriendRemarkService.a(this.a).onFinish();
         return;
       }
-      if (!NetworkUtil.isNetSupport(EditFriendRemarkService.a(this.a).getApplication().getApplicationContext()))
+      if (!NetworkUtil.isNetSupport(EditFriendRemarkService.d(this.a).getApplication().getApplicationContext()))
       {
-        QQToast.a(EditFriendRemarkService.a(this.a).getContext(), 1, 2131694424, 0).a();
+        QQToast.makeText(EditFriendRemarkService.a(this.a).getContext(), 1, 2131892104, 0).show();
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("EditFriendRemarkService", 2, String.format("edit friend remark, uin: %s, result: %s", new Object[] { EditFriendRemarkService.b(this.a), localObject }));
+        QLog.d("EditFriendRemarkService", 2, String.format("edit friend remark, uin: %s, result: %s", new Object[] { EditFriendRemarkService.e(this.a), localObject }));
       }
       EditFriendRemarkService.a(this.a).loadingProgress(true);
-      ((FriendListHandler)((QQAppInterface)EditFriendRemarkService.a(this.a)).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).setFriendComment(EditFriendRemarkService.b(this.a), (String)localObject, false);
+      ((FriendListHandler)((QQAppInterface)EditFriendRemarkService.d(this.a)).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).setFriendComment(EditFriendRemarkService.e(this.a), (String)localObject, false);
       EditFriendRemarkService.a(this.a, Boolean.valueOf(true));
       return;
     }
@@ -56,7 +56,7 @@ class EditFriendRemarkService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditFriendRemarkService.1
  * JD-Core Version:    0.7.0.1
  */

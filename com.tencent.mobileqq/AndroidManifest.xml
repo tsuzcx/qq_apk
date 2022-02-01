@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="com.tencent.msf.permission.account.sync"/>
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" android:required="true"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -65,7 +65,7 @@
     <uses-permission android:name="com.lge.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="org.adw.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="telecom.mdesk.permission.READ_SETTINGS"/>
-    <uses-feature android:glEsVersion="0x00020000" android:required="false"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
     <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
     <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
     <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
@@ -85,11 +85,11 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
     <uses-permission android:name="android.permission.READ_CALENDAR"/>
     <permission android:name="com.tencent.msf.service.permission" android:protectionLevel="signature"/>
-    <permission android:label="@string/yi3" android:name="com.tencent.msf.permission.account.sync" android:permissionGroup="android.permission-group.SYSTEM_TOOLS" android:protectionLevel="normal"/>
+    <permission android:label="@string/ze_" android:name="com.tencent.msf.permission.account.sync" android:permissionGroup="android.permission-group.SYSTEM_TOOLS" android:protectionLevel="normal"/>
     <permission android:name="com.tencent.mobileqq.permission.MM_MESSAGE" android:protectionLevel="signature"/>
     <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
     <uses-permission android:name="android.permission.NFC"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
     <uses-feature android:name="android.hardware.location" android:required="false"/>
     <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
@@ -132,19 +132,24 @@
     <permission android:name="com.tencent.smartdevice.permission.broadcast" android:protectionLevel="signature"/>
     <uses-permission android:name="com.tencent.smartdevice.permission.broadcast"/>
     <permission android:name="com.huawei.hwmultidisplay.permission.WINDOW_CAST_MODE" android:protectionLevel="normal"/>
+    <uses-permission android:name="android.permission.ALARM_LOCK"/>
+    <permission android:name="com.tencent.mobileqq.voiceassist.permission.READ" android:protectionLevel="normal"/>
+    <permission android:name="com.tencent.mobileqq.voiceassist.permission.WRITE" android:protectionLevel="normal"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.REORDER_TASKS"/>
     <permission android:name="com.tencent.mobileqq.permission.PROCESS_PUSH_MSG" android:protectionLevel="signatureOrSystem"/>
     <permission android:name="com.tencent.mobileqq.permission.PUSH_PROVIDER" android:protectionLevel="signatureOrSystem"/>
     <permission android:name="com.tencent.mobileqq.permission.PUSH_WRITE_PROVIDER" android:protectionLevel="signatureOrSystem"/>
     <uses-permission android:name="com.tencent.mobileqq.permission.PROCESS_PUSH_MSG"/>
     <uses-permission android:name="com.tencent.mobileqq.permission.PUSH_PROVIDER"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/pb" android:name="com.tencent.common.app.QFixApplicationImpl" android:networkSecurityConfig="@xml/f" android:resizeableActivity="true" android:supportsRtl="true" android:theme="@style/d1" android:usesCleartextTraffic="true" android:vmSafeMode="false">
+    <uses-permission android:name="com.coloros.mcs.permission.RECIEVE_MCS_MESSAGE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/pb" android:name="com.tencent.common.app.QFixApplicationImpl" android:networkSecurityConfig="@xml/f" android:persistent="false" android:resizeableActivity="true" android:supportsRtl="true" android:theme="@style/d1" android:usesCleartextTraffic="true" android:vmSafeMode="false">
         <meta-data android:name="BUGLY_APP_BUILD_NO" android:value=""/>
         <meta-data android:name="com.huawei.hms.client.appid" android:value="1009319"/>
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="5295_74"/>
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="5295_74"/>
-        <meta-data android:name="com.tencent.qapm.uuid" android:value="f49d9e3d-fdcf-4b41-9ace-058785f6aed5"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="5770_122"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="5770_122"/>
+        <meta-data android:name="com.tencent.qapm.uuid" android:value="3b962be8-8170-4814-8d44-4fc04a1d954c"/>
         <meta-data android:name="TencentOpenAbility" android:value="login_1,logout_1,newmsg_1,msgread_1,msgsend_1,querymsg_1,queryface_1,querynick_1,reg_1,sendmsg_1,setread_1,openaio_1"/>
         <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
         <meta-data android:name="TencentGeoLocationSDK" android:value="QQ2013,LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ"/>
@@ -159,7 +164,7 @@
         <meta-data android:name="android.max_aspect" android:value="2.4"/>
         <meta-data android:name="android.min_aspect" android:value="1.0"/>
         <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true"/>
-        <meta-data android:name="AppSetting_params" android:value="537068060#3D1F959C68327FAA#2002#YingYongBao#ffffffffffffffffffffffffff"/>
+        <meta-data android:name="AppSetting_params" android:value="537084869#26A41186EB207572#2002#YingYongBao#ffffffffffffffffffffffffff"/>
         <meta-data android:name="com.huawei.ar.engine" android:value="optional"/>
         <meta-data android:name="ABTestSDK_appKey" android:value="1505_0c9ebb2ded806d7ffda75cd0b95eb70c"/>
         <meta-data android:name="ABTestSDK_appId" android:value="1505"/>
@@ -294,7 +299,7 @@
         <activity android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.database.corrupt.DBFixConfigActivity"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.InstallActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.LoginActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
-        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.AddAccountActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.AddAccountActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.LoginPhoneNumActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.QQLSActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Wallpaper.NoTitleBar" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.QQLSUnlockActivity" android:screenOrientation="portrait" android:theme="@style/jk"/>
@@ -325,7 +330,7 @@
         <activity android:exported="false" android:name="com.tencent.mobileqq.activity.springfestival.HBEntryShareActivity" android:screenOrientation="portrait" android:theme="@style/a7"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountUgActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountBindActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
-        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.SubLoginActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.SubLoginActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AssociatedAccountActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AssociatedAccountManageActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ChatActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden">
@@ -403,7 +408,7 @@
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.search.activity.FunctionSearchActivity" android:screenOrientation="portrait" android:theme="@style/jd" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity" android:screenOrientation="portrait" android:theme="@style/jd" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.search.activity.ContactSearchComponentActivity" android:screenOrientation="portrait" android:theme="@style/jd" android:windowSoftInputMode="adjustPan|stateVisible"/>
-        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="@string/x61" android:launchMode="singleTop" android:name="com.tencent.mobileqq.search.activity.PublicAcntSearchActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="@string/xpb" android:launchMode="singleTop" android:name="com.tencent.mobileqq.search.activity.PublicAcntSearchActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="cooperation.qqfav.globalsearch.FavoriteSearchActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.search.activity.UniteSearchActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
@@ -427,7 +432,7 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.statistics.battery.BatteryStatsDetailActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.grayversion.ShareAppLogActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.tencent.mobileqq.debug.ShareDumpMemoryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.troopcard.TroopInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.troopcard.ui.TroopInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopClassChoiceActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.editinfo.EditInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:label="@string/pb" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysVisible"/>
@@ -476,19 +481,11 @@
                 <action android:name="com.qzone.action.SYSTEM_CLEAR_PUSH"/>
             </intent-filter>
         </receiver>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.NotifyPushSettingActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SoundAndVibrateActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize|uiMode" android:exported="false" android:name="com.tencent.mobileqq.activity.GeneralSettingActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.AssistantSettingActivity" android:screenOrientation="portrait" android:theme="@style/d1">
-            <intent-filter>
-                <action android:name="com.tencent.mobileqq.msf.qqwifi.settings"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.ark.setting.ArkAppListActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.debug.PredownloadTest" android:screenOrientation="portrait" android:theme="@style/d1"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PermisionPrivacyActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PhoneUnityIntroductionActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PhoneUnityChangeActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
@@ -500,7 +497,6 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevRenameActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SecurityProtectActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RecentLoginDevActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
-        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevUgActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevOpenUgActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevConfirmPhoneNoActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity" android:screenOrientation="portrait" android:theme="@style/d1"/>
@@ -586,7 +582,7 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="false" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.apollo.store.ApolloDiyTextActivity" android:process=":tool" android:screenOrientation="portrait" android:taskAffinity="com.tencent.cmshow.game" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:name="com.tencent.mobileqq.apollo.store.ApolloFloatActivity" android:process=":tool" android:theme="@style/d9" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="false" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.apollo.store.ApolloGameActivity" android:process=":tool" android:taskAffinity="com.tencent.cmshow.game" android:theme="@style/db" android:windowSoftInputMode="adjustResize"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.apollo.game.ApolloWebGameActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@style/d9" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.apollo.game.CmIslandActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@style/d9" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="false" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.apollo.game.ai.ApolloAIActivity" android:process=":tool" android:screenOrientation="portrait" android:taskAffinity="com.tencent.cmshow.game.box" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity" android:screenOrientation="portrait" android:theme="@style/d9" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity" android:process=":tool" android:screenOrientation="portrait"/>
@@ -854,6 +850,16 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="mqqaudioassistant"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqguild"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.third.push"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity android:configChanges="keyboardHidden|locale|orientation" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.activity.ContactSyncJumpActivity" android:theme="@android:style/Theme.Translucent">
             <intent-filter>
@@ -936,7 +942,7 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.MediaPreviewActivity" android:screenOrientation="portrait" android:theme="@style/uc"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity" android:screenOrientation="portrait" android:theme="@style/uc"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopTagViewActivity" android:process=":tool" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity" android:screenOrientation="portrait" android:theme="@style/d9"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.kandian.biz.publisher.TroopBarPublishLocationSelectActivity" android:screenOrientation="portrait" android:theme="@style/d9"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity" android:screenOrientation="portrait"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ForwardFriendListActivity" android:screenOrientation="portrait" android:theme="@style/d5" android:windowSoftInputMode="adjustPan"/>
@@ -1019,7 +1025,7 @@
         <activity android:exported="false" android:label="@string/pb" android:name="com.tencent.qqconnect.wtlogin.Login" android:process=":openSdk" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateVisible"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.agent.BindGroupActivity" android:screenOrientation="portrait" android:theme="@style/d1" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.agent.BindGroupConfirmActivity" android:screenOrientation="portrait" android:theme="@style/d1" android:windowSoftInputMode="adjustPan"/>
-        <activity android:exported="false" android:label="@string/pb" android:name="com.tencent.qqconnect.wtlogin.AuthDevUgActivity2" android:process=":openSdk" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqconnect.wtlogin">
+        <activity android:exported="false" android:label="@string/pb" android:launchMode="singleTask" android:name="com.tencent.qqconnect.wtlogin.NewOpenAuthDevUgActivity" android:process=":openSdk" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqconnect.wtlogin">
             <intent-filter>
                 <action android:name="mqq.opensdk.intent.action.ACTION_VERYFY_LOCK_CODE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -1485,7 +1491,10 @@
         <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qcircleshadow.local.activity.QCircleDefaultProxyActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qcircleshadow.local.activity.QCircleTransProxyActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
         <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.biz.qcircleshadow.local.activity.QCirclePublishSingleTaskProxyActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.auto.engine.enter.pps.FlashShowShadowService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qcircleshadow.local.activity.FSDefaultProxyActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
         <activity android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.aelight.camera.aeeditor.AEEditorActivity" android:process=":peak" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.guild.live.QQGuildLiveRoomActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <receiver android:exported="false" android:name="com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver5" android:process=":mini5"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5" android:process=":mini5"/>
         <receiver android:exported="false" android:name="com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver7" android:process=":mini7"/>
@@ -1502,24 +1511,123 @@
         <provider android:authorities="com.tencent.mobileqq.eipcmobileqq" android:enabled="true" android:exported="false" android:name="eipc.EIPCContentProvider"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.listentogether.player.QQMusicPlayService"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService"/>
+        <service android:enabled="true" android:exported="true" android:name="com.tencent.mobileqq.guild.audio.TRTCAudioRoomService" android:process=":guild_audio"/>
         <uses-library android:name="soterkeystore" android:required="false"/>
         <service android:exported="true" android:name="com.tencent.mobileqq.vas.wallpaper.VipWallpaperService" android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService"/>
             </intent-filter>
-            <meta-data android:name="android.service.wallpaper" android:resource="@xml/q"/>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/s"/>
         </service>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filebrowser.FileBrowserActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+        <meta-data android:name="com.vivo.push.api_key" android:value="d8887f9c9ca2b27bf6d2f9ead40b208f"/>
+        <meta-data android:name="com.vivo.push.app_id" android:value="100017339"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.pushnotice.proxy.VivoPushProcessor$VivoPushMsgReceiverImpl">
+            <intent-filter>
+                <action android:name="com.vivo.pushclient.action.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name="com.vivo.push.sdk.service.CommandClientService" android:permission="com.push.permission.UPSTAGESERVICE"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_OWNER" android:value="tummyhuang"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_HOSTNAME" android:value="VM_72_210_centos"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_TIME" android:value="2021-06-22 15:37:22"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_REV" android:value="897a5c67ab7684eb5b9d8eba155ed3fc26c6dded"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_SDK_VERSION" android:value="1.5.1"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_SDK_VERSION_INT" android:value="0x21050101"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_UPSTREAM_CLIENT_VERSION" android:value="0x27001430"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_WEBGL_MAP_COMP" android:value="true"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_SUPPORT_GAME" android:value="true"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_USE_MINIFIED_LITEAV_SDK" android:value="false"/>
+        <meta-data android:name="com.tencent.wmpf.BuildInfo.BUILD_PIPELINE_NUM" android:value="1221"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxa.standalone_open_runtime.ui.WxaProfileActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxaapi.internal.ui.WxaScanResultDelegateActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxa.standalone_open_runtime.container.WxaContainerActivity0" android:process=":wxa_container0" android:screenOrientation="behind" android:theme="@style/aax"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxa.standalone_open_runtime.container.WxaContainerActivity1" android:process=":wxa_container1" android:screenOrientation="behind" android:theme="@style/aax"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxa.standalone_open_runtime.container.WxaContainerActivity2" android:process=":wxa_container2" android:screenOrientation="behind" android:theme="@style/aax"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxa.standalone_open_runtime.container.WxaContainerActivity3" android:process=":wxa_container3" android:screenOrientation="behind" android:theme="@style/aax"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.wxa.standalone_open_runtime.container.WxaContainerActivity4" android:process=":wxa_container4" android:screenOrientation="behind" android:theme="@style/aax"/>
+        <service android:exported="false" android:name="com.tencent.luggage.wxa.standalone_open_runtime.app.WxaIPCMainService"/>
+        <service android:exported="false" android:name="com.tencent.luggage.wxa.standalone_open_runtime.app.WxaIPCContainerService0" android:process=":wxa_container0"/>
+        <service android:exported="false" android:name="com.tencent.luggage.wxa.standalone_open_runtime.app.WxaIPCContainerService1" android:process=":wxa_container1"/>
+        <service android:exported="false" android:name="com.tencent.luggage.wxa.standalone_open_runtime.app.WxaIPCContainerService2" android:process=":wxa_container2"/>
+        <service android:exported="false" android:name="com.tencent.luggage.wxa.standalone_open_runtime.app.WxaIPCContainerService3" android:process=":wxa_container3"/>
+        <service android:exported="false" android:name="com.tencent.luggage.wxa.standalone_open_runtime.app.WxaIPCContainerService4" android:process=":wxa_container4"/>
+        <service android:exported="false" android:name="com.tencent.ilinkservice.IlinkService" android:process="com.tencent.ilink.ServiceProcess">
+            <intent-filter>
+                <action android:name="com.tencent.ilinkservice.StartIlinkService"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.ui.AlertActivity" android:theme="@style/a66"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.tencent.image_picker.imagepicker.features.TencentImagePickerActivity" android:theme="@style/ad9"/>
+        <provider android:authorities="com.tencent.mobileqq.wmpf.imagepicker.provider" android:exported="false" android:grantUriPermissions="true" android:name="com.tencent.image_picker.imagepicker.helper.TencentImagePickerFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/z"/>
+        </provider>
+        <meta-data android:name="use_xweb_camera" android:value="true"/>
+        <meta-data android:name="use_cpu_crop" android:value="false"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.tencent.luggage.ui.OpenSDKBridgedActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.tencent.mobileqq.wxa_critical_content" android:exported="false" android:name="com.tencent.luggage.storage.StandaloneCriticalDataProvider"/>
+        <provider android:authorities="com.tencent.mobileqq.openapidata" android:exported="false" android:grantUriPermissions="true" android:name="com.tencent.luggage.opensdk.OpenSDKApiContentProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/r"/>
+        </provider>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.ui.WxaSimpleWebViewActivity"/>
+        <activity android:name="com.tencent.luggage.setting.ui.WxaSettingActivity" android:theme="@style/a66"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.ui.WxaAlertActivity" android:theme="@style/a30"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.luggage.setting.ui.WmpfAuthorizeDetailUI" android:theme="@style/a63"/>
+        <activity android:name="com.tencent.luggage.setting.ui.AppBrandUserInfoAuthorizeUI" android:theme="@style/a63"/>
+        <activity android:name="com.tencent.luggage.setting.ui.BizSubscribeMsgManagerUI" android:theme="@style/adb"/>
+        <activity android:name="com.tencent.luggage.ui.WxaMusicActivity" android:theme="@style/a63"/>
+        <activity android:name="com.tencent.luggage.ui.PhoneNumberVerifyCodeUI" android:theme="@style/a66" android:windowSoftInputMode="stateHidden"/>
+        <provider android:authorities="com.tencent.mobileqq.shareFileProvide" android:exported="false" android:grantUriPermissions="true" android:name="com.tencent.luggage.jsapi.file.LuggageOpenDocFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/t"/>
+        </provider>
+        <activity android:name="com.tencent.luggage.scanner.scanner.ui.BaseScanUI" android:screenOrientation="portrait" android:theme="@style/a2c"/>
+        <activity android:name="com.tencent.luggage.ui.WxaLaunchProxyActivity" android:theme="@style/a66" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.tencent.luggage.ui.WxaPreviewImageUI" android:theme="@style/a66"/>
+        <service android:exported="true" android:name="com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCEService" android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.nfc.cardemulation.host_apdu_service" android:resource="@xml/b"/>
+        </service>
+        <service android:name="com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.appbrand.keylogger.KeyStepAnalyserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.appbrand.keylogger.KeyStepAnalyserDetailActivity"/>
+        <provider android:authorities="com.tencent.mobileqq.sdk.xweb.XWebCoreProvider" android:exported="true" android:name="com.tencent.xweb.XWebCoreContentProvider" android:process=":sandbox"/>
+        <activity android:launchMode="singleTask" android:name="com.tencent.luggage.sdk.customize.impl.FullSdkExternalToolsHelper$SimpleWebViewActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberAddUI"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberManagerUI"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.selectmember.SelectMemberActivity" android:screenOrientation="portrait" android:theme="@style/d8" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.newfriend.ui.activity.NewFriendMoreSysMsgActivity" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboard|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.vashealth.HealthReplyCommentActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@style/a6m" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"/>
+        <activity android:configChanges="keyboard|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.vashealth.HealthReplyCommentActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@style/a5q" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.vashealth.PathTraceService" android:process=":tool"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.vashealth.PathTraceService$KernelService" android:process=":tool"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.tencent.timi.game.team.impl.TeamActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.timi.game.web.business.impl.common.TimiBrowserActivity" android:process=":tool" android:theme="@style/d9" android:windowSoftInputMode="adjustResize"/>
+        <service android:enabled="true" android:exported="true" android:name="com.tencent.timi.game.tgpa.service.TgpaInterProcessService">
+            <intent-filter>
+                <action android:name="com.ihoc.mgpa.ACTION_DATAFORWARD"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filebrowser.FileBrowserActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.qrscan.activity.ScannerActivity" android:screenOrientation="portrait" android:theme="@style/d9"/>
         <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.qrscan.activity.QRCardActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.qrscan.activity.QRJumpActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.mediabrowser.impl.MediaBrowserActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.profilecard.activity.FriendProfileCardActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="false" android:name="com.tencent.rtmp.video.TXScreenCapture$TXScreenCaptureAssistantActivity" android:process=":tool" android:theme="@android:style/Theme.Translucent"/>
+        <service android:enabled="true" android:exported="false" android:name="com.tencent.mobileqq.qqlive.trtc.ipc.TRTCPreloadService" android:process=":tool"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.qqlive.verified.FaceVerifyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="qqlive.faceverify"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.qqgift.webview.QQGiftHalfTranslucentBrowserActivity" android:process=":tool" android:theme="@style/d9" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.wink.QQWinkActivity" android:process=":peak" android:resizeableActivity="true" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.wink.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.leba.mgr.list.LebaListMgrActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.QPublicFragmentActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.QPublicTransFragmentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
@@ -1539,6 +1647,23 @@
         <activity android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.mobileqq.qshadow.runtime.activity.ExpandDefaultProxyActivity" android:process=":plugins" android:screenOrientation="portrait"/>
         <activity android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.qshadow.runtime.activity.ExpandSingleInstanceProxyActivity" android:process=":plugins" android:screenOrientation="portrait" android:theme="@style/x4"/>
         <activity android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.qshadow.runtime.activity.ExpandSingleTaskProxyActivity" android:process=":plugins" android:screenOrientation="portrait" android:theme="@style/x4"/>
+        <service android:exported="false" android:name="com.tencent.rmonitor.fd.analysis.heap.FdHeapAnalyzeService" android:process=":rmonitor"/>
+        <service android:name="com.tencent.rmonitor.fd.analysis.heap.FdHeapAnalyzeJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:process=":rmonitor"/>
+        <receiver android:name="com.tencent.rmonitor.natmem.NatMemReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.rmonitor.natmem.USAGE_DUMP"/>
+                <action android:name="com.tencent.rmonitor.natmem.LEAK_DUMP"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.biz.qqcircle.activity.QCircleFolderActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.biz.qqcircle.activity.QCircleSingleTaskActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qqcircle.activity.QCircleFragmentActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qqcircle.activity.QCircleTransFragmentActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="false" android:name="com.tencent.biz.qqcircle.publish.service.video.QzoneVideoPluginService" android:process=":qzonevideo"/>
+        <service android:name="com.tencent.qcircle.activity.QCirclePreloadService"/>
+        <meta-data android:name="test_meta" android:value="test_value"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.winkpublish.service.video.PublishVideoPluginService" android:process=":qzonevideo"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.richframework.activity.CompatPublicActivity" android:resizeableActivity="true" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize" android:hardwareAccelerated="true" android:multiprocess="true" android:name="com.tencent.ilive.pages.room.RoomActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="fontScale|layoutDirection|orientation|screenSize|uiMode" android:hardwareAccelerated="true" android:launchMode="singleTop" android:multiprocess="true" android:name="com.tencent.ilive.audiencepages.room.AudienceRoomActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="fontScale|layoutDirection|orientation|screenSize|uiMode" android:hardwareAccelerated="true" android:launchMode="standard" android:multiprocess="true" android:name="com.tencent.ilive.audiencepages.room.MultiAudienceRoomActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
@@ -1554,15 +1679,15 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.sina.weibo.sdk.share.ShareChatActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qqmini.sdk.launcher.ui.MiniFragmentActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qqmini.sdk.launcher.ui.MiniTranslucentFragmentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.InternalMiniActivity" android:process=":mini_internal" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/a6c" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.InternalMiniActivity" android:process=":mini_internal" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/a2w" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver" android:process=":mini_internal"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity1" android:process=":mini1" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini1" android:theme="@style/a6c" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity1" android:process=":mini1" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini1" android:theme="@style/a2w" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1" android:process=":mini1"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity2" android:process=":mini2" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini2" android:theme="@style/a6c" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity2" android:process=":mini2" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini2" android:theme="@style/a2w" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2" android:process=":mini2"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity3" android:process=":mini3" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini3" android:theme="@style/a6c" android:windowSoftInputMode="adjustPan"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity4" android:process=":mini4" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini4" android:theme="@style/a3h" android:windowSoftInputMode="adjustPan"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity5" android:process=":mini5" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini5" android:theme="@style/a3h" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.qqmini.sdk.ui.MiniActivity3" android:process=":mini3" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini3" android:theme="@style/a2w" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity4" android:process=":mini4" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini4" android:theme="@style/7d" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.qqmini.sdk.ui.MiniActivity5" android:process=":mini5" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity=".mini5" android:theme="@style/7d" android:windowSoftInputMode="adjustPan"/>
         <receiver android:exported="false" android:name="com.tencent.qqmini.miniapp.receiver.WebProcessReceiver"/>
         <receiver android:directBootAware="true" android:name="com.huawei.hms.support.api.push.PushMsgReceiver" android:permission="com.tencent.mobileqq.permission.PROCESS_PUSH_MSG">
             <intent-filter>
@@ -1585,6 +1710,18 @@
         <provider android:authorities="com.tencent.mobileqq.huawei.push.provider" android:exported="true" android:name="com.huawei.hms.support.api.push.PushProvider" android:permission="com.tencent.mobileqq.permission.PUSH_PROVIDER" android:readPermission="com.tencent.mobileqq.permission.PUSH_PROVIDER" android:writePermission="com.tencent.mobileqq.permission.PUSH_WRITE_PROVIDER"/>
         <meta-data android:name="com.huawei.hms.client.service.name:push" android:value="push:5.1.1.300"/>
         <meta-data android:name="com.huawei.hms.min_api_level:push:push" android:value="1"/>
+        <service android:name="com.heytap.msp.push.service.CompatibleDataMessageCallbackService" android:permission="com.coloros.mcs.permission.SEND_MCS_MESSAGE">
+            <intent-filter>
+                <action android:name="com.coloros.mcs.action.RECEIVE_MCS_MESSAGE"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.heytap.msp.push.service.DataMessageCallbackService" android:permission="com.heytap.mcs.permission.SEND_PUSH_MESSAGE">
+            <intent-filter>
+                <action android:name="com.heytap.mcs.action.RECEIVE_MCS_MESSAGE"/>
+                <action android:name="com.heytap.msp.push.RECEIVE_MCS_MESSAGE"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="sdk_version_vivo" android:value="480"/>
         <provider android:authorities="com.tencent.mobileqq.aaidinitprovider" android:exported="false" android:initOrder="500" android:name="com.huawei.hms.aaid.InitProvider"/>
         <meta-data android:name="com.huawei.hms.client.service.name:opendevice" android:value="opendevice:5.1.1.300"/>
         <meta-data android:name="com.huawei.hms.min_api_level:opendevice:push" android:value="1"/>
@@ -1611,12 +1748,12 @@
         <service android:exported="false" android:name="cooperation.qzone.video.QZoneLiveVideoPluginProxyService" android:process=":qzonelive"/>
         <service android:exported="false" android:name="cooperation.qzone.video.QZoneLiveVideoPluginScreenRecordProxyService" android:process=":qzonelive"/>
         <service android:exported="false" android:name="cooperation.qzone.video.QzoneVideoPluginProxyService" android:process=":qzonevideo"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.aelight.camera.aebase.QIMFlashShowCaptureActivity" android:process=":peak" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.aelight.camera.education.api.impl.AnswerSearchEditPictureActivity" android:process=":peak" android:resizeableActivity="false" android:screenOrientation="portrait" android:theme="@style/u1"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.comic.VipComicProxyActivity" android:process=":tool" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.comic.VipComicProxyActivity$SingleTop" android:process=":tool" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.comic.VipComicPortraitReaderProxyActivity" android:process=":tool" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="VipComicReaderProxyActivity" android:launchMode="singleTop" android:name="com.tencent.comic.VipComicLandReaderProxyActivity" android:process=":tool" android:screenOrientation="landscape"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="VipComicPlayProxyActivity" android:name="com.tencent.comic.VipComicPlayProxyActivity" android:process=":tool" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.comic.VipComicPreReadProxyActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@style/a8w"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.comic.VipComicPreReadProxyActivity" android:process=":tool" android:screenOrientation="portrait" android:theme="@style/ab5"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.comic.VipComicJumpActivity" android:screenOrientation="portrait"/>
         <receiver android:exported="false" android:name="com.tencent.comic.VipProxyPreLoadComicProcess" android:process=":tool"/>
         <service android:exported="false" android:name="com.tencent.live.sixgodcontainer.proxyactivitys.PluginDefaultProxyService" android:process=":live" android:screenOrientation="portrait"/>
@@ -1626,10 +1763,11 @@
         <activity android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.live.sixgodcontainer.proxyactivitys.PluginSingleTask5ProxyActivity" android:process=":live" android:screenOrientation="portrait"/>
         <activity android:exported="false" android:name="com.tencent.mobileqq.studyroom.ui.ShareToQQActivity" android:screenOrientation="portrait" android:theme="@style/x4"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.studyroom.QTProxyService" android:process=":live"/>
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.wxmini.impl.wxapi.WXEntryActivity"/>
         <meta-data android:name="PLUGIN_LIFE_CLASS" android:value="com.qzone.app.QzonePluginLife"/>
         <activity android:name="com.tencent.mobileqq.sample_feature.FeatureSampleActivity"/>
         <service android:name="com.tencent.mobileqq.sample_feature.FeatureSampleService"/>
-        <meta-data android:name="shadow.bundletool.com.android.dynamic.apk.fused.modules" android:value="aelight_impl,base,cmshow_impl,kandian_ad_feature_impl,kandian_feature_impl,qq_comic_impl,qq_qzonehub_impl,qqexpand_impl,qqmini_impl,qqnearby_impl,qqpay_temp_impl,qqpubaccount_impl,qqrtc_feature_impl,qqstudyroom_impl,qqweishi_impl"/>
-        <meta-data android:name="shadow.bundletool.com.android.vending.splits" android:resource="@1895890944"/>
+        <meta-data android:name="shadow.bundletool.com.android.dynamic.apk.fused.modules" android:value="aelight_impl,base,cmshow_impl,kandian_ad_feature_impl,kandian_feature_impl,qq_comic_impl,qq_qzonehub_impl,qqexpand_impl,qqguild_df_impl,qqmini_impl,qqnearby_impl,qqpay_temp_impl,qqpubaccount_impl,qqrtc_feature_impl,qqstudyroom_impl,qqweishi_impl,wxmini_impl"/>
+        <meta-data android:name="shadow.bundletool.com.android.vending.splits" android:resource="@1862664192"/>
     </application>
 </manifest>

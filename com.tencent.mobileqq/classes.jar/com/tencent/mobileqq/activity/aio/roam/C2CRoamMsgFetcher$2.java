@@ -28,18 +28,18 @@ class C2CRoamMsgFetcher$2
       }
       paramWUserSigInfo.append(bool);
       paramWUserSigInfo.append(", cost: ");
-      paramWUserSigInfo.append(l - this.jdField_a_of_type_Long);
+      paramWUserSigInfo.append(l - this.a);
       paramWUserSigInfo.append("ms");
       QLog.d("C2CMsgRoamProxy", 2, paramWUserSigInfo.toString());
     }
-    this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
-    this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
-    C2CRoamMsgFetcher.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRoamC2CRoamMsgFetcher).b();
+    this.b[0] = paramInt;
+    this.c[0] = paramDevlockInfo;
+    C2CRoamMsgFetcher.b(this.d).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.2
  * JD-Core Version:    0.7.0.1
  */

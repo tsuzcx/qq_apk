@@ -16,7 +16,7 @@ class KandianVideoUploadController$1
   
   public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
-    this.a.c = false;
+    this.a.f = false;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("receive 83e requestUUID:");
     ((StringBuilder)localObject).append(paramString1);
@@ -30,10 +30,10 @@ class KandianVideoUploadController$1
       }
       if (paramInt1 == 0)
       {
-        KanDianVideoUploadUtils.b(KandianVideoUploadController.a(this.a));
+        KanDianVideoUploadUtils.b(KandianVideoUploadController.b(this.a));
         paramString1 = this.a;
-        paramString1.b = true;
-        if (KandianVideoUploadController.a(paramString1)) {
+        paramString1.e = true;
+        if (KandianVideoUploadController.c(paramString1)) {
           ThreadManager.post(new KandianVideoUploadController.1.1(this), 5, null, false);
         }
       }
@@ -65,9 +65,9 @@ class KandianVideoUploadController$1
     ((JSONObject)localObject).put("type", 5);
     paramString1 = paramString3;
     paramString3 = paramString1;
-    KandianVideoUploadController.a(this.a, KandianVideoUploadController.a(this.a).getLong("arg_video_duration", 0L));
+    KandianVideoUploadController.a(this.a, KandianVideoUploadController.b(this.a).getLong("arg_video_duration", 0L));
     paramString3 = paramString1;
-    KandianVideoUploadController.a(this.a, KandianVideoUploadController.a(this.a).getInt("arg_video_width", 0));
+    KandianVideoUploadController.a(this.a, KandianVideoUploadController.b(this.a).getInt("arg_video_width", 0));
     paramString3 = paramString1;
     ((JSONObject)localObject).put("comment", new String(Base64Util.encode(paramString1.getBytes(), 0)));
     paramString3 = paramString1;
@@ -75,8 +75,8 @@ class KandianVideoUploadController$1
     try
     {
       ((JSONObject)localObject).put("status", paramInt2);
-      ((JSONObject)localObject).put("ugcVideoCoverUrl", KandianVideoUploadController.b(this.a));
-      ((JSONObject)localObject).put("ugcVideoDuration", KandianVideoUploadController.a(this.a));
+      ((JSONObject)localObject).put("ugcVideoCoverUrl", KandianVideoUploadController.d(this.a));
+      ((JSONObject)localObject).put("ugcVideoDuration", KandianVideoUploadController.e(this.a));
     }
     catch (Exception paramString3)
     {
@@ -87,16 +87,16 @@ class KandianVideoUploadController$1
     try
     {
       ((JSONObject)localObject).put("ugcVideoRowkey", paramString2);
-      ((JSONObject)localObject).put("ugcVideoWidth", KandianVideoUploadController.a(this.a));
-      ((JSONObject)localObject).put("ugcVideoHeight", KandianVideoUploadController.b(this.a));
-      i = KandianVideoUploadController.c(this.a);
+      ((JSONObject)localObject).put("ugcVideoWidth", KandianVideoUploadController.f(this.a));
+      ((JSONObject)localObject).put("ugcVideoHeight", KandianVideoUploadController.g(this.a));
+      i = KandianVideoUploadController.h(this.a);
       if (i == 12) {
         ((JSONObject)localObject).put("feedsType", 4);
-      } else if (KandianVideoUploadController.c(this.a) == 13) {
+      } else if (KandianVideoUploadController.h(this.a) == 13) {
         ((JSONObject)localObject).put("feedsType", 5);
       }
       localObject = ((JSONObject)localObject).toString();
-      KandianVideoUploadController.a(this.a).putString("arg_result_json", (String)localObject);
+      KandianVideoUploadController.b(this.a).putString("arg_result_json", (String)localObject);
       paramString3 = paramString1;
       if (!QLog.isColorLevel()) {
         break label488;
@@ -115,7 +115,7 @@ class KandianVideoUploadController$1
     paramString3 = paramString1;
     label488:
     this.a.a(0);
-    ReadInJoyHelper.A(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    ReadInJoyHelper.C(this.a.b, 1);
     break label539;
     if (paramInt1 == 33) {
       this.a.a(1006);
@@ -123,16 +123,16 @@ class KandianVideoUploadController$1
       this.a.a(1006);
     }
     label539:
-    if (KandianVideoUploadController.a(this.a) != null) {
-      KandianVideoUploadController.a(this.a).a(this.a.jdField_a_of_type_JavaLangString, paramInt1, paramLong, paramString2, paramInt2, paramString3, paramString4);
+    if (KandianVideoUploadController.i(this.a) != null) {
+      KandianVideoUploadController.i(this.a).a(this.a.g, paramInt1, paramLong, paramString2, paramInt2, paramString3, paramString4);
     }
-    KandianVideoUploadController.a(this.a, paramInt1);
     KandianVideoUploadController.b(this.a, paramInt1);
+    KandianVideoUploadController.c(this.a, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.KandianVideoUploadController.1
  * JD-Core Version:    0.7.0.1
  */

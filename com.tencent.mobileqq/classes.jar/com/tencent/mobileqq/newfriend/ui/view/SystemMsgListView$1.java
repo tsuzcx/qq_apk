@@ -20,20 +20,20 @@ class SystemMsgListView$1
       if (i != 1016) {
         return;
       }
-      paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131719409);
-      QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+      paramMessage = SystemMsgListView.b(this.a).getResources().getString(2131916968);
+      QQToast.makeText(SystemMsgListView.b(this.a), 1, paramMessage, 0).show(this.a.getTitleBarHeight());
       return;
     }
     if (SystemMsgListView.a(this.a) != null)
     {
-      this.a.i();
+      this.a.j();
       SystemMsgListView.a(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.view.SystemMsgListView.1
  * JD-Core Version:    0.7.0.1
  */

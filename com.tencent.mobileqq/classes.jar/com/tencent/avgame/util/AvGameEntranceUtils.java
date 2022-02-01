@@ -27,7 +27,7 @@ public class AvGameEntranceUtils
   
   public static boolean a()
   {
-    if (StudyModeManager.a())
+    if (StudyModeManager.h())
     {
       QLog.e(a, 2, "getStudyModeSwitch  ");
       return false;
@@ -199,7 +199,7 @@ public class AvGameEntranceUtils
         }
         if (((QQAppInterface)paramQBaseActivity.getAppRuntime()).getAVNotifyCenter().b(paramQBaseActivity, paramString))
         {
-          QQToast.a(paramQBaseActivity, 2131690404, 1).b(paramQBaseActivity.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(paramQBaseActivity, 2131887315, 1).show(paramQBaseActivity.getResources().getDimensionPixelSize(2131299920));
           return true;
         }
         localObject = ((ITroopInfoService)localObject).findTroopInfoInUI(paramString);
@@ -211,7 +211,7 @@ public class AvGameEntranceUtils
           if (localIAvGameManager.isOnlyAllowManagerCreateAVGame(paramString))
           {
             paramString = DialogUtil.a(paramQBaseActivity, 230);
-            paramString.setMessage(paramQBaseActivity.getString(2131690317)).setPositiveButton(paramQBaseActivity.getString(2131690499), new AvGameEntranceUtils.1());
+            paramString.setMessage(paramQBaseActivity.getString(2131887228)).setPositiveButton(paramQBaseActivity.getString(2131887410), new AvGameEntranceUtils.1());
             paramString.show();
             return true;
           }

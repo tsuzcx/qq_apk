@@ -19,27 +19,27 @@ import com.tencent.qphone.base.util.QLog;
 @SuppressLint({"ClickableViewAccessibility"})
 public class PagerSnapHelper
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private OrientationHelper jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper;
-  private PagerSnapHelper.OnLayoutChangedListenerImpl jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutChangedListenerImpl;
-  private PagerSnapHelper.OnLayoutSizeChangedListener jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutSizeChangedListener;
-  private PagerSnapHelper.PagerEventListener jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener;
-  private PagerSnapHelper.TouchEventProcessor jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$TouchEventProcessor;
-  private RecyclerViewCompat jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private OrientationHelper jdField_b_of_type_AndroidSupportV7WidgetOrientationHelper;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int = -1;
-  private boolean jdField_f_of_type_Boolean;
+  private RecyclerViewCompat a;
+  private LinearLayoutManager b;
+  private PagerSnapHelper.PagerEventListener c;
+  private PagerSnapHelper.TouchEventProcessor d;
+  private PagerSnapHelper.OnLayoutChangedListenerImpl e;
+  private PagerSnapHelper.OnLayoutSizeChangedListener f;
+  private OrientationHelper g;
+  private OrientationHelper h;
+  private int i;
+  private int j;
+  private int k;
+  private boolean l;
+  private boolean m;
+  private int n;
+  private int o;
+  private boolean p;
+  private boolean q;
+  private float r;
+  private boolean s;
+  private boolean t;
+  private int u = -1;
   
   public PagerSnapHelper()
   {
@@ -49,43 +49,38 @@ public class PagerSnapHelper
   public PagerSnapHelper(int paramInt, float paramFloat)
   {
     a();
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  private int a()
-  {
-    return ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getContext()).getScaledTouchSlop();
+    this.n = paramInt;
+    this.r = paramFloat;
   }
   
   private int a(int paramInt)
   {
-    int i = c();
-    int j = a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    if (paramInt < i) {
-      return i;
+    int i1 = n();
+    int i2 = a(this.b);
+    if (paramInt < i1) {
+      return i1;
     }
-    i = paramInt;
-    if (paramInt > j) {
-      i = j;
+    i1 = paramInt;
+    if (paramInt > i2) {
+      i1 = i2;
     }
-    return i;
+    return i1;
   }
   
   private int a(LinearLayoutManager paramLinearLayoutManager, OrientationHelper paramOrientationHelper)
   {
-    int i;
+    int i1;
     if (paramLinearLayoutManager.getClipToPadding()) {
-      i = paramOrientationHelper.getStartAfterPadding() + paramOrientationHelper.getTotalSpace() / 2;
+      i1 = paramOrientationHelper.getStartAfterPadding() + paramOrientationHelper.getTotalSpace() / 2;
     } else {
-      i = paramOrientationHelper.getEnd() / 2;
+      i1 = paramOrientationHelper.getEnd() / 2;
     }
-    return i + this.jdField_e_of_type_Int;
+    return i1 + this.o;
   }
   
   private int a(@NonNull LinearLayoutManager paramLinearLayoutManager, @NonNull View paramView, OrientationHelper paramOrientationHelper)
   {
-    if (this.jdField_d_of_type_Int != 1) {
+    if (this.n != 1) {
       return c(paramLinearLayoutManager, paramView, paramOrientationHelper);
     }
     return b(paramLinearLayoutManager, paramView, paramOrientationHelper);
@@ -93,25 +88,25 @@ public class PagerSnapHelper
   
   private int a(OrientationHelper paramOrientationHelper)
   {
-    return paramOrientationHelper.getStartAfterPadding() + this.jdField_e_of_type_Int;
+    return paramOrientationHelper.getStartAfterPadding() + this.o;
   }
   
   private int a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    return paramLayoutManager.getItemCount() - this.jdField_a_of_type_Int - 1;
+    return paramLayoutManager.getItemCount() - this.i - 1;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
+    this.i = 0;
+    this.j = 0;
+    this.k = -1;
+    this.l = false;
+    this.m = false;
+    this.t = false;
+    this.s = true;
+    this.p = true;
+    this.q = true;
   }
   
   private void a(RecyclerView paramRecyclerView)
@@ -130,48 +125,48 @@ public class PagerSnapHelper
   {
     if (paramView != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null))
+      Object localObject = this.a;
+      if ((localObject != null) && (this.b != null))
       {
         localObject = ((RecyclerViewCompat)localObject).getChildViewHolder(paramView);
-        int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getPosition(paramView);
+        int i1 = this.b.getPosition(paramView);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("dispatchPagerChanged: position=");
-          localStringBuilder.append(i);
+          localStringBuilder.append(i1);
           localStringBuilder.append(", centerPosition=");
-          localStringBuilder.append(this.jdField_c_of_type_Int);
+          localStringBuilder.append(this.k);
           localStringBuilder.append(", reset=");
           localStringBuilder.append(paramBoolean);
           localStringBuilder.append(", isRealIdle=");
-          localStringBuilder.append(this.jdField_e_of_type_Boolean);
+          localStringBuilder.append(this.s);
           localStringBuilder.append(", isNeedCallPageIdle=");
-          localStringBuilder.append(this.jdField_f_of_type_Boolean);
+          localStringBuilder.append(this.t);
           QLog.d("PagerSnapHelper", 2, localStringBuilder.toString());
         }
-        if ((localObject != null) && (i != -1))
+        if ((localObject != null) && (i1 != -1))
         {
-          if ((i != this.jdField_c_of_type_Int) || (paramBoolean))
+          if ((i1 != this.k) || (paramBoolean))
           {
-            if (a(i, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager)) {
+            if (a(i1, this.b)) {
               return;
             }
-            this.jdField_c_of_type_Int = i;
-            this.jdField_f_of_type_Boolean = true;
-            if (this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener != null)
+            this.k = i1;
+            this.t = true;
+            if (this.c != null)
             {
               TraceCompat.beginSection("onPagerChanged");
-              this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener.a((RecyclerView.ViewHolder)localObject);
+              this.c.a((RecyclerView.ViewHolder)localObject);
               TraceCompat.endSection();
             }
           }
-          if ((this.jdField_e_of_type_Boolean) && (this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener != null))
+          if ((this.s) && (this.t) && (this.c != null))
           {
-            this.jdField_f_of_type_Boolean = false;
-            paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getChildViewHolder(paramView);
+            this.t = false;
+            paramView = this.a.getChildViewHolder(paramView);
             TraceCompat.beginSection("onPagerIdle");
-            this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener.b(paramView);
+            this.c.b(paramView);
             TraceCompat.endSection();
           }
         }
@@ -181,8 +176,8 @@ public class PagerSnapHelper
   
   private boolean a(int paramInt, RecyclerView.LayoutManager paramLayoutManager)
   {
-    int i = a(paramLayoutManager);
-    return (paramInt < c()) || (paramInt > i);
+    int i1 = a(paramLayoutManager);
+    return (paramInt < n()) || (paramInt > i1);
   }
   
   private boolean a(@NonNull LinearLayoutManager paramLinearLayoutManager, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt)
@@ -194,31 +189,31 @@ public class PagerSnapHelper
     if (localView == null) {
       return false;
     }
-    int i = paramLinearLayoutManager.getPosition(localView);
-    if (i == -1) {
+    int i1 = paramLinearLayoutManager.getPosition(localView);
+    if (i1 == -1) {
       return false;
     }
-    int j = a(i);
-    int k = a();
+    int i2 = a(i1);
+    int i3 = m();
     boolean bool = paramLinearLayoutManager.canScrollHorizontally();
-    i = 1;
+    i1 = 1;
     if (bool)
     {
-      if (Math.abs(paramFloat1) > k ? paramFloat1 > 0.0F : paramFloat3 > 0.0F) {}
+      if (Math.abs(paramFloat1) > i3 ? paramFloat1 > 0.0F : paramFloat3 > 0.0F) {}
     }
     else {
-      while (Math.abs(paramFloat2) > k ? paramFloat2 <= 0.0F : paramFloat4 <= 0.0F)
+      while (Math.abs(paramFloat2) > i3 ? paramFloat2 <= 0.0F : paramFloat4 <= 0.0F)
       {
-        i = 0;
+        i1 = 0;
         break;
       }
     }
-    if ((paramInt != -1) && (j != paramInt)) {
-      paramInt = j;
-    } else if (i != 0) {
-      paramInt = j + 1;
+    if ((paramInt != -1) && (i2 != paramInt)) {
+      paramInt = i2;
+    } else if (i1 != 0) {
+      paramInt = i2 + 1;
     } else {
-      paramInt = j - 1;
+      paramInt = i2 - 1;
     }
     if (paramInt == -1) {
       return false;
@@ -231,7 +226,7 @@ public class PagerSnapHelper
       paramLinearLayoutManager.append(paramInt);
       QLog.d("PagerSnapHelper", 2, paramLinearLayoutManager.toString());
     }
-    return a(paramInt);
+    return c(paramInt);
   }
   
   @NonNull
@@ -239,17 +234,25 @@ public class PagerSnapHelper
   {
     int[] arrayOfInt = new int[2];
     if (paramLinearLayoutManager.canScrollHorizontally()) {
-      arrayOfInt[0] = a(paramLinearLayoutManager, paramView, a(paramLinearLayoutManager));
+      arrayOfInt[0] = a(paramLinearLayoutManager, paramView, b(paramLinearLayoutManager));
     } else {
       arrayOfInt[0] = 0;
     }
     if (paramLinearLayoutManager.canScrollVertically())
     {
-      arrayOfInt[1] = a(paramLinearLayoutManager, paramView, a(paramLinearLayoutManager));
+      arrayOfInt[1] = a(paramLinearLayoutManager, paramView, b(paramLinearLayoutManager));
       return arrayOfInt;
     }
     arrayOfInt[1] = 0;
     return arrayOfInt;
+  }
+  
+  private int b(LinearLayoutManager paramLinearLayoutManager, OrientationHelper paramOrientationHelper)
+  {
+    if (this.n != 1) {
+      return a(paramLinearLayoutManager, paramOrientationHelper);
+    }
+    return a(paramOrientationHelper);
   }
   
   private int b(@NonNull LinearLayoutManager paramLinearLayoutManager, @NonNull View paramView, OrientationHelper paramOrientationHelper)
@@ -259,19 +262,14 @@ public class PagerSnapHelper
   
   private void b()
   {
-    PagerSnapHelper.PagerEventListener localPagerEventListener = this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener;
+    PagerSnapHelper.PagerEventListener localPagerEventListener = this.c;
     if (localPagerEventListener != null)
     {
-      localPagerEventListener.a();
+      localPagerEventListener.d();
       if (QLog.isColorLevel()) {
         QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: onFooterRebound");
       }
     }
-  }
-  
-  private int c()
-  {
-    return this.jdField_b_of_type_Int;
   }
   
   private int c(@NonNull LinearLayoutManager paramLinearLayoutManager, @NonNull View paramView, OrientationHelper paramOrientationHelper)
@@ -279,163 +277,177 @@ public class PagerSnapHelper
     return paramOrientationHelper.getDecoratedStart(paramView) + paramOrientationHelper.getDecoratedMeasurement(paramView) / 2 - a(paramLinearLayoutManager, paramOrientationHelper);
   }
   
-  private void d()
+  private void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: onHeaderRebound");
     }
   }
   
-  private void e()
+  private void k()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getOnFlingListener() == null)
+    if (this.a.getOnFlingListener() == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$TouchEventProcessor = new PagerSnapHelper.TouchEventProcessor(this, null);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutChangedListenerImpl = new PagerSnapHelper.OnLayoutChangedListenerImpl(this, null);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutSizeChangedListener = new PagerSnapHelper.OnLayoutSizeChangedListener(this, null);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.setOnTouchListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$TouchEventProcessor);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.addOnScrollListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$TouchEventProcessor);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.setOnFlingListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$TouchEventProcessor);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.addOnLayoutChangeListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutChangedListenerImpl);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.addOnLayoutChangeListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutSizeChangedListener);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getAdapter().registerAdapterDataObserver(new PagerSnapHelper.1(this));
+      this.d = new PagerSnapHelper.TouchEventProcessor(this, null);
+      this.e = new PagerSnapHelper.OnLayoutChangedListenerImpl(this, null);
+      this.f = new PagerSnapHelper.OnLayoutSizeChangedListener(this, null);
+      this.a.setOnTouchListener(this.d);
+      this.a.addOnScrollListener(this.d);
+      this.a.setOnFlingListener(this.d);
+      this.a.addOnLayoutChangeListener(this.e);
+      this.a.addOnLayoutChangeListener(this.f);
+      this.a.getAdapter().registerAdapterDataObserver(new PagerSnapHelper.1(this));
       return;
     }
     throw new IllegalStateException("An instance of OnFlingListener already set.");
   }
   
-  private void f()
+  private void l()
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.removeOnScrollListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$TouchEventProcessor);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.setOnFlingListener(null);
+    this.a.removeOnScrollListener(this.d);
+    this.a.setOnFlingListener(null);
   }
   
-  protected LinearSmoothScroller a(LinearLayoutManager paramLinearLayoutManager)
+  private int m()
   {
-    return new PagerSnapHelper.2(this, this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getContext(), paramLinearLayoutManager);
+    return ViewConfiguration.get(this.a.getContext()).getScaledTouchSlop();
   }
   
-  @NonNull
-  protected OrientationHelper a(LinearLayoutManager paramLinearLayoutManager)
+  private int n()
   {
-    if (paramLinearLayoutManager.canScrollVertically())
-    {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper == null) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper = OrientationHelper.createOrientationHelper(paramLinearLayoutManager, 1);
-      }
-      return this.jdField_a_of_type_AndroidSupportV7WidgetOrientationHelper;
-    }
-    if (this.jdField_b_of_type_AndroidSupportV7WidgetOrientationHelper == null) {
-      this.jdField_b_of_type_AndroidSupportV7WidgetOrientationHelper = OrientationHelper.createOrientationHelper(paramLinearLayoutManager, 0);
-    }
-    return this.jdField_b_of_type_AndroidSupportV7WidgetOrientationHelper;
+    return this.j;
   }
   
   @Nullable
   public View a(LinearLayoutManager paramLinearLayoutManager)
   {
-    int n = paramLinearLayoutManager.getChildCount();
+    int i5 = paramLinearLayoutManager.getChildCount();
     Object localObject = null;
-    if (n == 0) {
+    if (i5 == 0) {
       return null;
     }
-    OrientationHelper localOrientationHelper = a(paramLinearLayoutManager);
-    int j = 2147483647;
-    int i = 0;
-    while (i < n)
+    OrientationHelper localOrientationHelper = b(paramLinearLayoutManager);
+    int i2 = 2147483647;
+    int i1 = 0;
+    while (i1 < i5)
     {
-      View localView = paramLinearLayoutManager.getChildAt(i);
-      int m = Math.abs(a(paramLinearLayoutManager, localView, localOrientationHelper));
-      int k = j;
-      if (m < j)
+      View localView = paramLinearLayoutManager.getChildAt(i1);
+      int i4 = Math.abs(a(paramLinearLayoutManager, localView, localOrientationHelper));
+      int i3 = i2;
+      if (i4 < i2)
       {
         localObject = localView;
-        k = m;
+        i3 = i4;
       }
-      i += 1;
-      j = k;
+      i1 += 1;
+      i2 = i3;
     }
     return localObject;
   }
   
-  public void a(View paramView)
+  public void a(PagerSnapHelper.PagerEventListener paramPagerEventListener)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat != null)
+    this.c = paramPagerEventListener;
+  }
+  
+  public void a(@Nullable RecyclerViewCompat paramRecyclerViewCompat)
+  {
+    RecyclerViewCompat localRecyclerViewCompat = this.a;
+    if (localRecyclerViewCompat == paramRecyclerViewCompat) {
+      return;
+    }
+    if (localRecyclerViewCompat != null) {
+      l();
+    }
+    this.a = paramRecyclerViewCompat;
+    paramRecyclerViewCompat = this.a;
+    if (paramRecyclerViewCompat != null)
     {
-      LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+      a(paramRecyclerViewCompat);
+      this.b = ((LinearLayoutManager)this.a.getLayoutManager());
+      k();
+      f();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.m = paramBoolean;
+  }
+  
+  public boolean a(View paramView)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    int i1 = this.b.getPosition(paramView);
+    if (i1 == -1) {
+      return false;
+    }
+    return c(a(i1));
+  }
+  
+  @NonNull
+  protected OrientationHelper b(LinearLayoutManager paramLinearLayoutManager)
+  {
+    if (paramLinearLayoutManager.canScrollVertically())
+    {
+      if (this.g == null) {
+        this.g = OrientationHelper.createOrientationHelper(paramLinearLayoutManager, 1);
+      }
+      return this.g;
+    }
+    if (this.h == null) {
+      this.h = OrientationHelper.createOrientationHelper(paramLinearLayoutManager, 0);
+    }
+    return this.h;
+  }
+  
+  public void b(View paramView)
+  {
+    if (this.a != null)
+    {
+      LinearLayoutManager localLinearLayoutManager = this.b;
       if (localLinearLayoutManager == null) {
         return;
       }
       if (paramView == null) {
         return;
       }
-      if (a(localLinearLayoutManager.getPosition(paramView), this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager)) {
+      if (a(localLinearLayoutManager.getPosition(paramView), this.b)) {
         return;
       }
       if (paramView != null)
       {
-        paramView = a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
+        paramView = a(this.b, paramView);
         if ((paramView[0] != 0) || (paramView[1] != 0)) {
-          this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.scrollBy(paramView[0], paramView[1]);
+          this.a.scrollBy(paramView[0], paramView[1]);
         }
       }
     }
   }
   
-  public void a(PagerSnapHelper.PagerEventListener paramPagerEventListener)
+  public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$PagerEventListener = paramPagerEventListener;
+    this.p = paramBoolean;
   }
   
-  public void a(@Nullable RecyclerViewCompat paramRecyclerViewCompat)
+  protected LinearSmoothScroller c(LinearLayoutManager paramLinearLayoutManager)
   {
-    RecyclerViewCompat localRecyclerViewCompat = this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-    if (localRecyclerViewCompat == paramRecyclerViewCompat) {
-      return;
-    }
-    if (localRecyclerViewCompat != null) {
-      f();
-    }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat = paramRecyclerViewCompat;
-    paramRecyclerViewCompat = this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-    if (paramRecyclerViewCompat != null)
-    {
-      a(paramRecyclerViewCompat);
-      this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = ((LinearLayoutManager)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getLayoutManager());
-      e();
-      c();
-    }
+    return new PagerSnapHelper.2(this, this.a.getContext(), paramLinearLayoutManager);
   }
   
-  public void a(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.q = paramBoolean;
   }
   
-  public boolean a()
+  public boolean c(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat != null)
-    {
-      LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-      if (localLinearLayoutManager == null) {
-        return false;
-      }
-      int i = this.jdField_c_of_type_Int + 1;
-      if (a(i, localLinearLayoutManager)) {
-        return false;
-      }
-      a(i);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (a(paramInt, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager)) {
+    if (a(paramInt, this.b)) {
       return false;
     }
-    View localView = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(paramInt);
+    View localView = this.b.findViewByPosition(paramInt);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -447,94 +459,90 @@ public class PagerSnapHelper
     }
     if (localView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.smoothScrollToPosition(paramInt);
-      this.jdField_a_of_type_Boolean = true;
+      this.a.smoothScrollToPosition(paramInt);
+      this.l = true;
       return true;
     }
-    Object localObject = a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, localView);
-    int i = localObject[0];
-    int j = localObject[1];
-    if ((i == 0) && (j == 0)) {
+    Object localObject = a(this.b, localView);
+    int i1 = localObject[0];
+    int i2 = localObject[1];
+    if ((i1 == 0) && (i2 == 0)) {
       return false;
     }
-    localObject = a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    localObject = c(this.b);
     ((RecyclerView.SmoothScroller)localObject).setTargetPosition(paramInt);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.startSmoothScroll((RecyclerView.SmoothScroller)localObject);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_b_of_type_Boolean) {
+    this.b.startSmoothScroll((RecyclerView.SmoothScroller)localObject);
+    this.l = true;
+    if (this.m) {
       a(localView, false);
     }
-    if ((paramInt == a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager)) && ((i < 0) || (j < 0)))
+    if ((paramInt == a(this.b)) && ((i1 < 0) || (i2 < 0)))
     {
       b();
       return true;
     }
-    if ((paramInt == c()) && ((i > 0) || (j > 0))) {
-      d();
+    if ((paramInt == n()) && ((i1 > 0) || (i2 > 0))) {
+      c();
     }
     return true;
   }
   
-  public boolean a(View paramView)
+  public void d(int paramInt)
   {
-    if (paramView == null) {
-      return false;
-    }
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getPosition(paramView);
-    if (i == -1) {
-      return false;
-    }
-    return a(a(i));
+    this.i = paramInt;
   }
   
-  public int b()
+  public boolean d()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat != null)
+    if (this.a != null)
     {
-      LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+      LinearLayoutManager localLinearLayoutManager = this.b;
       if (localLinearLayoutManager == null) {
         return false;
       }
-      int i = this.jdField_c_of_type_Int - 1;
-      if (a(i, localLinearLayoutManager)) {
+      int i1 = this.k + 1;
+      if (a(i1, localLinearLayoutManager)) {
         return false;
       }
-      a(i);
+      c(i1);
       return true;
     }
     return false;
   }
   
-  public void c()
+  public void e(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.addOnLayoutChangeListener(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper$OnLayoutChangedListenerImpl);
+    this.j = paramInt;
   }
   
-  public void c(int paramInt)
+  public boolean e()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat != null)
+    if (this.a != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+      LinearLayoutManager localLinearLayoutManager = this.b;
+      if (localLinearLayoutManager == null) {
+        return false;
+      }
+      int i1 = this.k - 1;
+      if (a(i1, localLinearLayoutManager)) {
+        return false;
+      }
+      c(i1);
+      return true;
+    }
+    return false;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.o = paramInt;
+  }
+  
+  public boolean f()
+  {
+    if (this.a != null)
+    {
+      Object localObject = this.b;
       if (localObject == null) {
         return false;
       }
@@ -546,7 +554,7 @@ public class PagerSnapHelper
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("snapToCenterPosition: findCenterView=");
-        localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getPosition((View)localObject));
+        localStringBuilder.append(this.b.getPosition((View)localObject));
         QLog.d("PagerSnapHelper", 2, localStringBuilder.toString());
       }
       return a((View)localObject);
@@ -554,36 +562,42 @@ public class PagerSnapHelper
     return false;
   }
   
-  public void d(int paramInt)
+  public void g()
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.a.addOnLayoutChangeListener(this.e);
   }
   
-  public boolean d()
+  public void g(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void f(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat != null)
+    if (this.a != null)
     {
-      LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+      LinearLayoutManager localLinearLayoutManager = this.b;
       if (localLinearLayoutManager == null) {
         return;
       }
-      a(localLinearLayoutManager.findViewByPosition(paramInt));
+      b(localLinearLayoutManager.findViewByPosition(paramInt));
     }
+  }
+  
+  public int h()
+  {
+    LinearLayoutManager localLinearLayoutManager = this.b;
+    return b(localLinearLayoutManager, b(localLinearLayoutManager));
+  }
+  
+  public int i()
+  {
+    return this.k;
+  }
+  
+  public boolean j()
+  {
+    return this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.PagerSnapHelper
  * JD-Core Version:    0.7.0.1
  */

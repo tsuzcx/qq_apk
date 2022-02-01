@@ -15,14 +15,14 @@ class LoginUserPrivateHelper$2
       this.a.b();
       return;
     }
-    if (LoginUserPrivateHelper.a(this.a) != null) {
-      LoginUserPrivateHelper.a(this.a).b();
+    if (LoginUserPrivateHelper.b(this.a) != null) {
+      LoginUserPrivateHelper.b(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginUserPrivateHelper.2
  * JD-Core Version:    0.7.0.1
  */

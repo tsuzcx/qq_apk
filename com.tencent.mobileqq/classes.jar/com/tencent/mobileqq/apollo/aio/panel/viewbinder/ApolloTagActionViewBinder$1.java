@@ -11,12 +11,12 @@ class ApolloTagActionViewBinder$1
   
   public void run()
   {
-    ((ApolloDaoManagerServiceImpl)this.this$0.a.getRuntimeService(IApolloDaoManagerService.class, "all")).getTagListByPkgId(this.this$0.d, new ApolloTagActionViewBinder.1.1(this));
+    ((ApolloDaoManagerServiceImpl)this.this$0.j.getRuntimeService(IApolloDaoManagerService.class, "all")).getTagListByPkgId(this.this$0.n, new ApolloTagActionViewBinder.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinder.1
  * JD-Core Version:    0.7.0.1
  */

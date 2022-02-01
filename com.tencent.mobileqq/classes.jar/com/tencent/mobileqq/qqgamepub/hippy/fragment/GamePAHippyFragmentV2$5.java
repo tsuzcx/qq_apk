@@ -1,30 +1,22 @@
 package com.tencent.mobileqq.qqgamepub.hippy.fragment;
 
+import com.tencent.mobileqq.qqgamepub.view.GamePubNav;
+
 class GamePAHippyFragmentV2$5
   implements Runnable
 {
-  GamePAHippyFragmentV2$5(GamePAHippyFragmentV2 paramGamePAHippyFragmentV2, int paramInt, String paramString) {}
+  GamePAHippyFragmentV2$5(GamePAHippyFragmentV2 paramGamePAHippyFragmentV2) {}
   
   public void run()
   {
-    try
-    {
-      GamePAHippyFragmentV2 localGamePAHippyFragmentV2 = this.this$0;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append("");
-      localGamePAHippyFragmentV2.a(localStringBuilder.toString(), this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    if ((this.this$0.getActivity() != null) && (GamePAHippyFragmentV2.a(this.this$0) != null) && (GamePAHippyFragmentV2.a(this.this$0).a())) {
+      GamePAHippyFragmentV2.a(this.this$0).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragmentV2.5
  * JD-Core Version:    0.7.0.1
  */

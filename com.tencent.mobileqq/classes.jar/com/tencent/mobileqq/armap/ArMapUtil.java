@@ -12,8 +12,8 @@ import mqq.app.MobileQQ;
 public class ArMapUtil
 {
   static SimpleDateFormat a;
-  public static boolean a = false;
   static SimpleDateFormat b;
+  public static boolean c = false;
   
   public static long a(String paramString)
   {
@@ -60,7 +60,7 @@ public class ArMapUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil
  * JD-Core Version:    0.7.0.1
  */

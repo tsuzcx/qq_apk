@@ -15,17 +15,17 @@ public abstract interface DoodleLayout$DoodleEventListener
   
   public abstract void b(int paramInt, Object paramObject);
   
-  public abstract boolean b();
-  
-  public abstract void k();
-  
-  public abstract void l();
-  
   public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract boolean p();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener
  * JD-Core Version:    0.7.0.1
  */

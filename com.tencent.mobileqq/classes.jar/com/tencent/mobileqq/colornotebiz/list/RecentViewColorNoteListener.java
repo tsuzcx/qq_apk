@@ -84,7 +84,7 @@ public class RecentViewColorNoteListener
       localObject1 = (ColorNote)paramList.next();
       if (((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUpcomingColorNote((ColorNote)localObject1))
       {
-        localObject2 = UpComingMsgUtil.a((ColorNote)localObject1);
+        localObject2 = UpComingMsgUtil.b((ColorNote)localObject1);
         if (((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isNeedNowNotify((ColorNote)localObject1)) {
           i = 1;
         } else {
@@ -106,7 +106,7 @@ public class RecentViewColorNoteListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornotebiz.list.RecentViewColorNoteListener
  * JD-Core Version:    0.7.0.1
  */

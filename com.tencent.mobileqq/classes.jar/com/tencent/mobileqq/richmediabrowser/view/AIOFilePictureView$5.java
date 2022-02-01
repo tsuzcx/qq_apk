@@ -16,28 +16,28 @@ class AIOFilePictureView$5
   
   public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.b.setVisibility(8);
+    this.e.t.setVisibility(8);
     if (paramBoolean)
     {
-      AIOFilePictureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      AIOFilePictureView.a(this.e, this.a, this.b, this.c, paramInt);
       return;
     }
-    AIOFilePictureView localAIOFilePictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView;
-    if (!AIOFilePictureView.a(localAIOFilePictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, localAIOFilePictureView.a.imageView))
+    AIOFilePictureView localAIOFilePictureView = this.e;
+    if (!AIOFilePictureView.a(localAIOFilePictureView, this.d, localAIOFilePictureView.l.imageView))
     {
-      localAIOFilePictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView;
-      if (!AIOFilePictureView.b(localAIOFilePictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, localAIOFilePictureView.a.imageView))
+      localAIOFilePictureView = this.e;
+      if (!AIOFilePictureView.b(localAIOFilePictureView, this.d, localAIOFilePictureView.l.imageView))
       {
-        localAIOFilePictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView;
-        AIOFilePictureView.a(localAIOFilePictureView, localAIOFilePictureView.a.imageView);
+        localAIOFilePictureView = this.e;
+        AIOFilePictureView.a(localAIOFilePictureView, localAIOFilePictureView.l.imageView);
       }
     }
-    AIOFilePictureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 18);
+    AIOFilePictureView.a(this.e, this.d.a, this.d.b, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFilePictureView.5
  * JD-Core Version:    0.7.0.1
  */

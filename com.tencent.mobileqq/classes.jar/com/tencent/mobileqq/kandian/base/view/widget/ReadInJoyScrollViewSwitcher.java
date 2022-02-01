@@ -28,12 +28,12 @@ import java.util.ArrayList;
 public class ReadInJoyScrollViewSwitcher
   extends ViewSwitcher
 {
-  private int jdField_a_of_type_Int = 400;
-  private ReadInJoyScrollViewSwitcher.MyHandler jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$MyHandler;
-  ReadInJoyScrollViewSwitcher.OnClickItemListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$OnClickItemListener;
-  private ArrayList<ReadInJoyScrollViewSwitcher.ScrollItem> jdField_a_of_type_JavaUtilArrayList;
-  private int b;
+  ReadInJoyScrollViewSwitcher.OnClickItemListener a;
+  private int b = 400;
   private int c;
+  private int d;
+  private ReadInJoyScrollViewSwitcher.MyHandler e;
+  private ArrayList<ReadInJoyScrollViewSwitcher.ScrollItem> f;
   
   public ReadInJoyScrollViewSwitcher(Context paramContext)
   {
@@ -49,16 +49,16 @@ public class ReadInJoyScrollViewSwitcher
   
   private void a(ReadInJoyScrollViewSwitcher.ScrollItem paramScrollItem, View paramView, int paramInt)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131378460);
-    localTextView.setText(paramScrollItem.jdField_a_of_type_JavaLangString);
-    paramView = (CornerImageView)paramView.findViewById(2131368343);
+    TextView localTextView = (TextView)paramView.findViewById(2131447062);
+    localTextView.setText(paramScrollItem.a);
+    paramView = (CornerImageView)paramView.findViewById(2131435219);
     paramView.setRadius(AIOUtils.b(2.0F, getResources()));
     RelativeLayout.LayoutParams localLayoutParams;
     if (TextUtils.isEmpty(paramScrollItem.b))
     {
-      if (paramScrollItem.jdField_a_of_type_Int > 0)
+      if (paramScrollItem.c > 0)
       {
-        paramView.setImageDrawable(getResources().getDrawable(paramScrollItem.jdField_a_of_type_Int));
+        paramView.setImageDrawable(getResources().getDrawable(paramScrollItem.c));
         localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
         localLayoutParams.rightMargin = AIOUtils.b(32.0F, getResources());
         localTextView.setLayoutParams(localLayoutParams);
@@ -85,8 +85,8 @@ public class ReadInJoyScrollViewSwitcher
   
   private void c()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$MyHandler = new ReadInJoyScrollViewSwitcher.MyHandler(this);
+    this.f = new ArrayList();
+    this.e = new ReadInJoyScrollViewSwitcher.MyHandler(this);
     setAnimateFirstView(false);
   }
   
@@ -94,11 +94,11 @@ public class ReadInJoyScrollViewSwitcher
   {
     AnimationSet localAnimationSet = new AnimationSet(true);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setDuration(this.jdField_a_of_type_Int);
+    localTranslateAnimation.setDuration(this.b);
     localTranslateAnimation.setInterpolator(new LinearInterpolator());
     localTranslateAnimation.setFillAfter(true);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(this.jdField_a_of_type_Int);
+    localAlphaAnimation.setDuration(this.b);
     localAlphaAnimation.setInterpolator(new LinearInterpolator());
     localAlphaAnimation.setFillAfter(true);
     localAnimationSet.addAnimation(localTranslateAnimation);
@@ -106,11 +106,11 @@ public class ReadInJoyScrollViewSwitcher
     setInAnimation(localAnimationSet);
     localAnimationSet = new AnimationSet(true);
     localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
-    localTranslateAnimation.setDuration(this.jdField_a_of_type_Int);
+    localTranslateAnimation.setDuration(this.b);
     localTranslateAnimation.setInterpolator(new LinearInterpolator());
     localTranslateAnimation.setFillAfter(false);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(this.jdField_a_of_type_Int);
+    localAlphaAnimation.setDuration(this.b);
     localAlphaAnimation.setInterpolator(new LinearInterpolator());
     localAlphaAnimation.setFillAfter(true);
     localAnimationSet.addAnimation(localTranslateAnimation);
@@ -120,17 +120,17 @@ public class ReadInJoyScrollViewSwitcher
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 1) {
+    if (this.f.size() < 1) {
       return;
     }
     int i;
-    if (this.b == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+    if (this.c == this.f.size() - 1) {
       i = 0;
     } else {
-      i = this.b + 1;
+      i = this.c + 1;
     }
-    this.b = i;
-    a((ReadInJoyScrollViewSwitcher.ScrollItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.b), getNextView(), this.b);
+    this.c = i;
+    a((ReadInJoyScrollViewSwitcher.ScrollItem)this.f.get(this.c), getNextView(), this.c);
     showNext();
   }
   
@@ -162,31 +162,31 @@ public class ReadInJoyScrollViewSwitcher
   
   public void b()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.f;
     if (localArrayList != null)
     {
       if (localArrayList.size() < 2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$MyHandler.removeMessages(0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$MyHandler.sendEmptyMessageDelayed(0, this.c);
+      this.e.removeMessages(0);
+      this.e.sendEmptyMessageDelayed(0, this.d);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$MyHandler.removeCallbacksAndMessages(null);
+    this.e.removeCallbacksAndMessages(null);
   }
   
   public void setOnClickListener(ReadInJoyScrollViewSwitcher.OnClickItemListener paramOnClickItemListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$OnClickItemListener = paramOnClickItemListener;
+    this.a = paramOnClickItemListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyScrollViewSwitcher
  * JD-Core Version:    0.7.0.1
  */

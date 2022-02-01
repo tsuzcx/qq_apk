@@ -18,106 +18,106 @@ import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
 public class TroopEffectHelper
   implements IMsgSendListener, ILifeCycleHelper
 {
-  private final TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopEnterEffectController jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController;
   protected TroopPicEffectsController a;
+  private final TroopChatPie b;
+  private final QQAppInterface c;
+  private TroopEnterEffectController d;
   
   public TroopEffectHelper(TroopChatPie paramTroopChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController = a();
-    ITroopEnterEffectService localITroopEnterEffectService = (ITroopEnterEffectService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopEnterEffectService.class, "all");
-    localITroopEnterEffectService.setMode(0);
-    localITroopEnterEffectService.setSvipLevel(0);
-    localITroopEnterEffectService.setSvipType(0);
-    localITroopEnterEffectService.setGroupLevel(0);
-    if (!SimpleUIUtil.a()) {
-      localITroopEnterEffectService.notifyEnterTroop(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    }
-  }
-  
-  private void b()
-  {
-    TroopEnterEffectController localTroopEnterEffectController = this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController;
-    if (localTroopEnterEffectController != null) {
-      localTroopEnterEffectController.e();
-    }
-    f();
+    this.b = paramTroopChatPie;
+    this.c = paramTroopChatPie.d;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController = a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.c();
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.d = b();
+    ITroopEnterEffectService localITroopEnterEffectService = (ITroopEnterEffectService)this.c.getRuntimeService(ITroopEnterEffectService.class, "all");
+    localITroopEnterEffectService.setMode(0);
+    localITroopEnterEffectService.setSvipLevel(0);
+    localITroopEnterEffectService.setSvipType(0);
+    localITroopEnterEffectService.setGroupLevel(0);
+    if (!SimpleUIUtil.e()) {
+      localITroopEnterEffectService.notifyEnterTroop(this.b.ah.b);
+    }
   }
   
   private void d()
   {
-    Object localObject = (ITroopEnterEffectService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopEnterEffectService.class, "all");
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a();
-    if ((((ITroopEnterEffectService)localObject).getMode() != 0) && (!AnonymousChatHelper.a().a(localSessionInfo.a)) && (!SimpleUIUtil.a()))
-    {
-      ((ITroopEnterEffectService)localObject).addTroopEnterEffectData(new TroopEnterEffectData(((ITroopEnterEffectService)localObject).getEffectId(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localSessionInfo.a, ((ITroopEnterEffectService)localObject).getSvipLevel(), ((ITroopEnterEffectService)localObject).getSvipType(), ((ITroopEnterEffectService)localObject).getGroupLevel(), ((ITroopEnterEffectService)localObject).getMode()));
-      localObject = a();
-      ((TroopEnterEffectController)localObject).a(localSessionInfo.a);
-      ((TroopEnterEffectController)localObject).a();
+    TroopEnterEffectController localTroopEnterEffectController = this.d;
+    if (localTroopEnterEffectController != null) {
+      localTroopEnterEffectController.g();
     }
+    h();
   }
   
   private void e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController;
+    this.d = b();
+    this.d.e();
+    this.d.a(this.b.ah.b);
+  }
+  
+  private void f()
+  {
+    Object localObject = (ITroopEnterEffectService)this.c.getRuntimeService(ITroopEnterEffectService.class, "all");
+    SessionInfo localSessionInfo = this.b.aE();
+    if ((((ITroopEnterEffectService)localObject).getMode() != 0) && (!AnonymousChatHelper.a().a(localSessionInfo.b)) && (!SimpleUIUtil.e()))
+    {
+      ((ITroopEnterEffectService)localObject).addTroopEnterEffectData(new TroopEnterEffectData(((ITroopEnterEffectService)localObject).getEffectId(), this.c.getCurrentAccountUin(), localSessionInfo.b, ((ITroopEnterEffectService)localObject).getSvipLevel(), ((ITroopEnterEffectService)localObject).getSvipType(), ((ITroopEnterEffectService)localObject).getGroupLevel(), ((ITroopEnterEffectService)localObject).getMode()));
+      localObject = b();
+      ((TroopEnterEffectController)localObject).a(localSessionInfo.b);
+      ((TroopEnterEffectController)localObject).a();
+    }
+  }
+  
+  private void g()
+  {
+    Object localObject = this.a;
     if (localObject != null) {
       ((TroopPicEffectsController)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController = a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.d();
-    localObject = (ITroopEnterEffectService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopEnterEffectService.class, "all");
+    this.d = b();
+    this.d.f();
+    localObject = (ITroopEnterEffectService)this.c.getRuntimeService(ITroopEnterEffectService.class, "all");
     ((ITroopEnterEffectService)localObject).setMode(0);
     ((ITroopEnterEffectService)localObject).setSvipLevel(0);
     ((ITroopEnterEffectService)localObject).setSvipType(0);
     ((ITroopEnterEffectService)localObject).setGroupLevel(0);
   }
   
-  private void f()
+  private void h()
   {
-    TroopPicEffectsController localTroopPicEffectsController = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController;
+    TroopPicEffectsController localTroopPicEffectsController = this.a;
     if (localTroopPicEffectsController != null)
     {
       localTroopPicEffectsController.b();
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController = null;
+      this.a = null;
     }
-  }
-  
-  public TroopEnterEffectController a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController = new TroopEnterEffectController(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c.findViewById(2131364485));
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController;
   }
   
   public TroopPicEffectsController a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController = new TroopPicEffectsController(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if (this.a == null) {
+      this.a = new TroopPicEffectsController(this.b.bG);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController;
+    return this.a;
   }
-  
-  public void a(AIOContext paramAIOContext) {}
   
   public boolean a(AIOContext paramAIOContext)
   {
     return false;
   }
+  
+  public TroopEnterEffectController b()
+  {
+    if (this.d == null) {
+      this.d = new TroopEnterEffectController(this.c, (RelativeLayout)this.b.aZ.findViewById(2131430542));
+    }
+    return this.d;
+  }
+  
+  public void b(AIOContext paramAIOContext) {}
   
   @NonNull
   public String getTag()
@@ -143,24 +143,24 @@ public class TroopEffectHelper
             if (paramInt != 15) {
               return;
             }
-            b();
+            d();
             return;
           }
-          e();
+          g();
           return;
         }
-        d();
+        f();
         return;
       }
-      a();
+      c();
       return;
     }
-    c();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopEffectHelper
  * JD-Core Version:    0.7.0.1
  */

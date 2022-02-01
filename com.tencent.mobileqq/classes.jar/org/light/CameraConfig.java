@@ -2,6 +2,7 @@ package org.light;
 
 import android.util.Log;
 import org.light.listener.AIDataListener;
+import org.light.listener.LightAIDataListener;
 import org.light.listener.LightAssetListener;
 import org.light.listener.TipsListener;
 
@@ -20,6 +21,8 @@ public class CameraConfig
   public native void clearLightAssetListener();
   
   public native void clearTipsListener();
+  
+  public native boolean hasCertainRenderComponent(int paramInt);
   
   public native void needSyncInitProcessor(boolean paramBoolean, String paramString);
   
@@ -83,6 +86,8 @@ public class CameraConfig
   
   public native void setCameraTexture(int paramInt1, int paramInt2, int paramInt3, CameraConfig.DeviceCameraOrientation paramDeviceCameraOrientation, CameraConfig.ImageOrigin paramImageOrigin);
   
+  public native void setLightAIDataListener(LightAIDataListener paramLightAIDataListener);
+  
   public native void setLightAssetListener(LightAssetListener paramLightAssetListener);
   
   public native void setLightSDKEnvironment(String paramString);
@@ -95,7 +100,7 @@ public class CameraConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.CameraConfig
  * JD-Core Version:    0.7.0.1
  */

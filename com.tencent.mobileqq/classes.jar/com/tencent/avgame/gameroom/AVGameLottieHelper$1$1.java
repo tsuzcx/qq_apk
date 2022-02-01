@@ -22,66 +22,66 @@ class AVGameLottieHelper$1$1
     //   13: aload_3
     //   14: aload_0
     //   15: getfield 12	com/tencent/avgame/gameroom/AVGameLottieHelper$1$1:a	Lcom/tencent/avgame/gameroom/AVGameLottieHelper$1;
-    //   18: getfield 35	com/tencent/avgame/gameroom/AVGameLottieHelper$1:a	Ljava/lang/String;
-    //   21: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: getfield 36	com/tencent/avgame/gameroom/AVGameLottieHelper$1:c	Ljava/lang/String;
+    //   21: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: pop
     //   25: aload_3
     //   26: aload_1
-    //   27: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload_3
-    //   32: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   35: astore_1
-    //   36: new 44	java/io/File
+    //   36: new 45	java/io/File
     //   39: dup
     //   40: aload_1
-    //   41: invokespecial 47	java/io/File:<init>	(Ljava/lang/String;)V
-    //   44: invokevirtual 51	java/io/File:exists	()Z
+    //   41: invokespecial 48	java/io/File:<init>	(Ljava/lang/String;)V
+    //   44: invokevirtual 52	java/io/File:exists	()Z
     //   47: istore_2
     //   48: iload_2
     //   49: ifne +55 -> 104
-    //   52: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   52: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   55: ifeq +74 -> 129
     //   58: new 29	java/lang/StringBuilder
     //   61: dup
     //   62: invokespecial 30	java/lang/StringBuilder:<init>	()V
     //   65: astore_3
     //   66: aload_3
-    //   67: ldc 58
-    //   69: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc 59
+    //   69: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload_3
     //   74: iload_2
-    //   75: invokevirtual 61	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 62	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   78: pop
     //   79: aload_3
-    //   80: ldc 63
-    //   82: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: ldc 64
+    //   82: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: aload_3
     //   87: aload_1
-    //   88: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: pop
-    //   92: ldc 65
+    //   92: ldc 66
     //   94: iconst_2
     //   95: aload_3
-    //   96: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   96: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   99: invokestatic 70	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   102: aconst_null
     //   103: areturn
     //   104: aload_1
-    //   105: invokestatic 74	com/tencent/avgame/gameroom/AVGameLottieHelper:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   105: invokestatic 75	com/tencent/avgame/gameroom/AVGameLottieHelper:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   108: astore_1
     //   109: aload_1
     //   110: areturn
     //   111: astore_1
     //   112: goto +15 -> 127
     //   115: astore_1
-    //   116: ldc 65
+    //   116: ldc 66
     //   118: iconst_2
-    //   119: ldc 76
+    //   119: ldc 77
     //   121: aload_1
-    //   122: invokestatic 80	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   122: invokestatic 81	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   125: aconst_null
     //   126: areturn
     //   127: aload_1

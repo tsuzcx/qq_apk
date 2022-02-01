@@ -25,35 +25,35 @@ import java.util.HashMap;
 public class VideoUploadController
   extends FileUploadController
 {
-  private long jdField_a_of_type_Long;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new VideoUploadController.2(this);
-  private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString = null;
-  private String c = null;
-  private String d = null;
-  private String e = null;
+  TransProcessorHandler d = new VideoUploadController.2(this);
+  private TransferRequest e = null;
+  private String f = null;
+  private String g = null;
+  private String h = null;
+  private String i = null;
+  private String j = null;
+  private long k;
+  private long l;
   
   public VideoUploadController(Context paramContext, QQAppInterface paramQQAppInterface, FileUploadController.FileUploadListener paramFileUploadListener, String paramString)
   {
     super(paramContext, paramQQAppInterface, paramFileUploadListener);
-    this.d = paramString;
+    this.i = paramString;
   }
   
   private void a(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = RIJQQAppInterfaceUtil.a();
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.a);
+    String str = RIJQQAppInterfaceUtil.d();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoUploadVideo", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoUploadVideo", bool, this.l - this.k, 0L, localHashMap, "");
   }
   
   private void a(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -64,10 +64,10 @@ public class VideoUploadController
     localStringBuilder.append(" fileUrl : ");
     localStringBuilder.append(paramString1);
     QLog.d("VideoUploadController", 2, localStringBuilder.toString());
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.l = System.currentTimeMillis();
     a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener.a(paramInt, paramString1, paramString2, paramString3);
+    if (this.c != null) {
+      this.c.a(paramInt, paramString1, paramString2, paramString3);
     }
   }
   
@@ -77,17 +77,17 @@ public class VideoUploadController
     if (QLog.isColorLevel()) {
       QLog.d("VideoUploadController", 2, "cancelUploadVideo");
     }
-    Object localObject = (ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class);
+    Object localObject = (ITransFileController)this.b.getRuntimeService(ITransFileController.class);
     if (localObject != null)
     {
-      TransferRequest localTransferRequest = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+      TransferRequest localTransferRequest = this.e;
       if (localTransferRequest != null)
       {
-        localObject = (BaseTransProcessor)((ITransFileController)localObject).findProcessor(localTransferRequest.mPeerUin, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mUniseq);
+        localObject = (BaseTransProcessor)((ITransFileController)localObject).findProcessor(localTransferRequest.mPeerUin, this.e.mUniseq);
         if (localObject != null)
         {
           ((BaseTransProcessor)localObject).cancel();
-          this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = null;
+          this.e = null;
         }
       }
     }
@@ -102,26 +102,26 @@ public class VideoUploadController
     try
     {
       ((bigFileUpload.BigFileExtRsp)localObject).mergeFrom(paramFileMsg.bdhExtendInfo);
-      i = ((bigFileUpload.BigFileExtRsp)localObject).int32_retcode.get();
+      m = ((bigFileUpload.BigFileExtRsp)localObject).int32_retcode.get();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mVideoTransProcessorHandler rsp.errorCode:");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         QLog.d("VideoUploadController", 2, localStringBuilder.toString());
       }
-      if (i == 0)
+      if (m == 0)
       {
-        this.jdField_a_of_type_JavaLangString = paramFileMsg.fileMd5;
+        this.f = paramFileMsg.fileMd5;
         if (((bigFileUpload.BigFileExtRsp)localObject).bytes_download_url.has()) {
-          this.c = ((bigFileUpload.BigFileExtRsp)localObject).bytes_download_url.get().toStringUtf8();
+          this.h = ((bigFileUpload.BigFileExtRsp)localObject).bytes_download_url.get().toStringUtf8();
         }
         if (((bigFileUpload.BigFileExtRsp)localObject).bytes_file_name.has()) {
-          this.jdField_b_of_type_JavaLangString = ((bigFileUpload.BigFileExtRsp)localObject).bytes_file_name.get().toStringUtf8();
+          this.g = ((bigFileUpload.BigFileExtRsp)localObject).bytes_file_name.get().toStringUtf8();
         }
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c)))
+        if ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
         {
-          i = 1;
+          m = 1;
           break label277;
         }
       }
@@ -143,23 +143,23 @@ public class VideoUploadController
         QLog.e("VideoUploadController", 2, ((StringBuilder)localObject).toString());
       }
     }
-    int i = 0;
+    int m = 0;
     label277:
-    if (i != 0)
+    if (m != 0)
     {
-      a(0, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      a(0, this.h, this.f, this.g);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send finish with error!");
     }
     a(1004, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = null;
+    this.e = null;
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    this.e = paramString;
+    this.j = paramString;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -187,49 +187,49 @@ public class VideoUploadController
       a(1002, null, null, null);
       return;
     }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.a))
     {
       QLog.d("VideoUploadController", 2, "upload: network not available");
       a(1003, null, null, null);
       return;
     }
-    if ((!paramBoolean) && (!NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!paramBoolean) && (!NetworkUtil.isWifiConnected(this.a)))
     {
       QLog.d("VideoUploadController", 2, "upload: wifi not connected and not upload with mobile");
       return;
     }
-    Object localObject = (ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class);
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.getFilter().size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    Object localObject = (ITransFileController)this.b.getRuntimeService(ITransFileController.class);
+    if (this.d.getFilter().size() == 0) {
+      this.d.addFilter(new Class[] { BDHCommonUploadProcessor.class });
     }
-    ((ITransFileController)localObject).addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest == null)
+    ((ITransFileController)localObject).addHandle(this.d);
+    if (this.e == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = new TransferRequest();
-      TransferRequest localTransferRequest = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+      this.e = new TransferRequest();
+      TransferRequest localTransferRequest = this.e;
       localTransferRequest.mIsUp = true;
       localTransferRequest.mCommandId = 54;
       localTransferRequest.mLocalPath = paramString;
       localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      paramString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+      paramString = this.e;
       paramString.mPeerUin = "0";
-      paramString.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      paramString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+      paramString.mSelfUin = this.b.getCurrentAccountUin();
+      paramString = this.e;
       paramString.mFileType = 24;
       paramString.mRichTag = "KandianUGCVideoUpload";
     }
-    ((ITransFileController)localObject).transferAsync(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
+    ((ITransFileController)localObject).transferAsync(this.e);
   }
   
   public void b()
   {
-    ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).removeHandle(this.d);
     ThreadManager.executeOnFileThread(new VideoUploadController.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.VideoUploadController
  * JD-Core Version:    0.7.0.1
  */

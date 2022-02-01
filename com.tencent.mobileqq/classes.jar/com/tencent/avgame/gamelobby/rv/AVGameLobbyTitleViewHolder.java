@@ -9,15 +9,15 @@ import com.tencent.avgame.gamelobby.data.AVGameLobbyTitleContentInfo;
 public class AVGameLobbyTitleViewHolder
   extends BaseViewHolder<AVGameLobbyTitleContentInfo>
 {
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gamelobby.rv.AVGameLobbyTitleViewHolder";
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private static final String d = "com.tencent.avgame.gamelobby.rv.AVGameLobbyTitleViewHolder";
+  private TextView e;
+  private Context f = null;
   
   public AVGameLobbyTitleViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363227));
+    this.f = paramView.getContext();
+    this.e = ((TextView)paramView.findViewById(2131429101));
   }
   
   protected void a()
@@ -31,7 +31,7 @@ public class AVGameLobbyTitleViewHolder
     if (paramAVGameLobbyTitleContentInfo == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAVGameLobbyTitleContentInfo.a(this.jdField_a_of_type_AndroidContentContext, paramAVGameLobbyTitleContentInfo.c()));
+    this.e.setText(paramAVGameLobbyTitleContentInfo.a(this.f, paramAVGameLobbyTitleContentInfo.b()));
   }
 }
 

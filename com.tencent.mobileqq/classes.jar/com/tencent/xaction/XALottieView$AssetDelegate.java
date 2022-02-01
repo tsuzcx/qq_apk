@@ -19,7 +19,7 @@ public final class XALottieView$AssetDelegate
   public Bitmap fetchBitmap(@NotNull LottieImageAsset paramLottieImageAsset)
   {
     Intrinsics.checkParameterIsNotNull(paramLottieImageAsset, "lottieImageAsset");
-    IMemoryLruCache localIMemoryLruCache = XAEngine.Companion.a();
+    IMemoryLruCache localIMemoryLruCache = XAEngine.Companion.e();
     paramLottieImageAsset = paramLottieImageAsset.getKey();
     Intrinsics.checkExpressionValueIsNotNull(paramLottieImageAsset, "lottieImageAsset.key");
     return localIMemoryLruCache.a(paramLottieImageAsset);
@@ -27,7 +27,7 @@ public final class XALottieView$AssetDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XALottieView.AssetDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class RecommendTroopListWrapper$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper$2.a.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper$2.a.a.a(this.jdField_a_of_type_JavaLangString);
+    if (this.b.a.m != null) {
+      this.b.a.m.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.RecommendTroopListWrapper.2.1
  * JD-Core Version:    0.7.0.1
  */

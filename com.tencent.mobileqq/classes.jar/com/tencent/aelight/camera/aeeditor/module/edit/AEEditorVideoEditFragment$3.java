@@ -15,14 +15,14 @@ class AEEditorVideoEditFragment$3
   {
     if ((paramBoolean != null) && (paramBoolean.booleanValue()))
     {
-      AEEditorVideoEditFragment.a(this.a).b().postValue(Boolean.valueOf(false));
+      AEEditorVideoEditFragment.h(this.a).getRecommendReloadLiveData().postValue(Boolean.valueOf(false));
       ThreadManager.excute(new AEEditorVideoEditFragment.3.1(this), 16, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.3
  * JD-Core Version:    0.7.0.1
  */

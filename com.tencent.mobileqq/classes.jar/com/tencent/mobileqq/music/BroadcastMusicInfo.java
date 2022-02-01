@@ -17,47 +17,37 @@ public class BroadcastMusicInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new BroadcastMusicInfo.1();
-  public BroadcastAudio a;
-  public String a;
-  public ArrayList<BroadcastOneShow> a;
-  public String b;
+  public String a = "";
+  public String b = "";
   public String c = "";
+  public BroadcastAudio d = null;
+  public ArrayList<BroadcastOneShow> e = null;
   
-  public BroadcastMusicInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
+  public BroadcastMusicInfo() {}
   
   public BroadcastMusicInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio = ((BroadcastAudio)paramParcel.readParcelable(BroadcastAudio.class.getClassLoader()));
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(BroadcastOneShow.class.getClassLoader());
+    this.d = ((BroadcastAudio)paramParcel.readParcelable(BroadcastAudio.class.getClassLoader()));
+    this.e = paramParcel.readArrayList(BroadcastOneShow.class.getClassLoader());
   }
   
   public static BroadcastMusicInfo a(BroadcastForQzone paramBroadcastForQzone)
   {
     BroadcastMusicInfo localBroadcastMusicInfo = new BroadcastMusicInfo();
-    localBroadcastMusicInfo.jdField_a_of_type_JavaLangString = paramBroadcastForQzone.broadcastID;
-    localBroadcastMusicInfo.jdField_b_of_type_JavaLangString = paramBroadcastForQzone.broadcastName;
-    localBroadcastMusicInfo.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio = BroadcastAudio.a(paramBroadcastForQzone.broadcastAudioUrl);
-    localBroadcastMusicInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    localBroadcastMusicInfo.a = paramBroadcastForQzone.broadcastID;
+    localBroadcastMusicInfo.b = paramBroadcastForQzone.broadcastName;
+    localBroadcastMusicInfo.d = BroadcastAudio.a(paramBroadcastForQzone.broadcastAudioUrl);
+    localBroadcastMusicInfo.e = new ArrayList();
     if (paramBroadcastForQzone.showList != null)
     {
       paramBroadcastForQzone = paramBroadcastForQzone.showList.iterator();
       while (paramBroadcastForQzone.hasNext())
       {
         BroadcastOneShow localBroadcastOneShow = BroadcastOneShow.a((NS_NEXTRADIO_QZONEBGMUSIC.BroadcastOneShow)paramBroadcastForQzone.next());
-        localBroadcastMusicInfo.jdField_a_of_type_JavaUtilArrayList.add(localBroadcastOneShow);
+        localBroadcastMusicInfo.e.add(localBroadcastOneShow);
       }
     }
     return localBroadcastMusicInfo;
@@ -69,17 +59,17 @@ public class BroadcastMusicInfo
     try
     {
       paramString = new JSONObject(paramString);
-      localBroadcastMusicInfo.jdField_a_of_type_JavaLangString = paramString.optString("broadcastID");
-      localBroadcastMusicInfo.jdField_b_of_type_JavaLangString = paramString.optString("broadcastName");
+      localBroadcastMusicInfo.a = paramString.optString("broadcastID");
+      localBroadcastMusicInfo.b = paramString.optString("broadcastName");
       localBroadcastMusicInfo.c = paramString.optString("detailUrl");
-      localBroadcastMusicInfo.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio = BroadcastAudio.a(paramString.getString("broadcastAudioUrl"));
+      localBroadcastMusicInfo.d = BroadcastAudio.a(paramString.getString("broadcastAudioUrl"));
       paramString = paramString.getJSONArray("showList");
-      localBroadcastMusicInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      localBroadcastMusicInfo.e = new ArrayList();
       int i = 0;
       while (i < paramString.length())
       {
         BroadcastOneShow localBroadcastOneShow = BroadcastOneShow.a(paramString.optString(i));
-        localBroadcastMusicInfo.jdField_a_of_type_JavaUtilArrayList.add(localBroadcastOneShow);
+        localBroadcastMusicInfo.e.add(localBroadcastOneShow);
         i += 1;
       }
       return localBroadcastMusicInfo;
@@ -109,18 +99,18 @@ public class BroadcastMusicInfo
   public long a()
   {
     long l = System.currentTimeMillis() / 1000L;
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.e;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         BroadcastOneShow localBroadcastOneShow = (BroadcastOneShow)((Iterator)localObject).next();
-        if (localBroadcastOneShow.jdField_a_of_type_Long > l) {
-          return localBroadcastOneShow.jdField_a_of_type_Long;
+        if (localBroadcastOneShow.c > l) {
+          return localBroadcastOneShow.c;
         }
-        if (localBroadcastOneShow.jdField_b_of_type_Long > l) {
-          return localBroadcastOneShow.jdField_b_of_type_Long;
+        if (localBroadcastOneShow.d > l) {
+          return localBroadcastOneShow.d;
         }
       }
     }
@@ -132,12 +122,12 @@ public class BroadcastMusicInfo
     SongInfo localSongInfo = new SongInfo();
     try
     {
-      localSongInfo.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      localSongInfo.c = a();
-      localSongInfo.jdField_b_of_type_Int = 9;
-      localSongInfo.f = this.c;
-      localSongInfo.jdField_b_of_type_JavaLangString = a(paramBoolean);
-      localSongInfo.jdField_a_of_type_ComTencentMobileqqMusicBroadcastMusicInfo = this;
+      localSongInfo.a = Long.parseLong(this.a);
+      localSongInfo.e = b();
+      localSongInfo.m = 9;
+      localSongInfo.h = this.c;
+      localSongInfo.d = b(paramBoolean);
+      localSongInfo.o = this;
       return localSongInfo;
     }
     catch (Exception localException)
@@ -148,22 +138,22 @@ public class BroadcastMusicInfo
     return null;
   }
   
-  public String a()
+  public String b()
   {
     long l = System.currentTimeMillis() / 1000L;
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.e;
     if (localObject1 != null)
     {
       localObject2 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject1 = (BroadcastOneShow)((Iterator)localObject2).next();
-        if ((((BroadcastOneShow)localObject1).jdField_a_of_type_Long <= l) && (((BroadcastOneShow)localObject1).jdField_b_of_type_Long > l))
+        if ((((BroadcastOneShow)localObject1).c <= l) && (((BroadcastOneShow)localObject1).d > l))
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.b);
           ((StringBuilder)localObject2).append("：");
-          ((StringBuilder)localObject2).append(((BroadcastOneShow)localObject1).jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(((BroadcastOneShow)localObject1).b);
           localObject1 = ((StringBuilder)localObject2).toString();
           break label111;
         }
@@ -173,17 +163,17 @@ public class BroadcastMusicInfo
     label111:
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = HardCodeUtil.a(2131701425);
+      localObject2 = HardCodeUtil.a(2131899450);
     }
     return localObject2;
   }
   
-  public String a(boolean paramBoolean)
+  public String b(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return (String)this.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio.a.a.get(Byte.valueOf((byte)0));
+      return (String)this.d.a.a.get(Byte.valueOf((byte)0));
     }
-    return (String)this.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio.a.a.get(Byte.valueOf((byte)1));
+    return (String)this.d.a.a.get(Byte.valueOf((byte)1));
   }
   
   public int describeContents()
@@ -193,16 +183,16 @@ public class BroadcastMusicInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqMusicBroadcastAudio, paramInt);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
+    paramParcel.writeParcelable(this.d, paramInt);
+    paramParcel.writeList(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.BroadcastMusicInfo
  * JD-Core Version:    0.7.0.1
  */

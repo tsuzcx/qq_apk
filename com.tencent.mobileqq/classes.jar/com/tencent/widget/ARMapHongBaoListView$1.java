@@ -32,7 +32,7 @@ class ARMapHongBaoListView$1
           if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
             ARMapHongBaoListView.a(this.a, paramMessage.what);
           }
-          ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+          ARMapHongBaoListView.b(this.a).sendEmptyMessageDelayed(5, 300L);
           if (ARMapHongBaoListView.a(this.a) != null)
           {
             ARMapHongBaoListView.a(this.a).a(false);
@@ -42,17 +42,17 @@ class ARMapHongBaoListView$1
         else
         {
           this.a.setIsShowingPreguide(true);
-          i = this.a.e;
+          i = this.a.C;
           if (paramMessage.arg1 != 0) {
             i = paramMessage.arg1;
           }
           if (this.a.a != null) {
-            this.a.a.a(this.a.e / 3, 300L);
+            this.a.a.a(this.a.C / 3, 300L);
           }
-          Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
+          Message localMessage = Message.obtain(ARMapHongBaoListView.b(this.a), 4);
           localMessage.obj = paramMessage.obj;
-          ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
-          if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b))
+          ARMapHongBaoListView.b(this.a).sendMessageDelayed(localMessage, 2000L);
+          if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.c))
           {
             ARMapHongBaoListView.a(this.a).b(false);
             return false;
@@ -68,7 +68,7 @@ class ARMapHongBaoListView$1
           ARMapHongBaoListView.a(this.a).a(false);
         }
         ARMapHongBaoListView.a(this.a, paramMessage.what);
-        ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+        ARMapHongBaoListView.b(this.a).sendEmptyMessageDelayed(5, 300L);
         return false;
       }
     }
@@ -92,7 +92,7 @@ class ARMapHongBaoListView$1
         paramMessage.append(j);
         QLog.d("ARMapHongBaoListView", 2, paramMessage.toString());
       }
-      if ((bool1) && (bool2) && (ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
+      if ((bool1) && (bool2) && (ARMapHongBaoListView.a(this.a) != null) && (this.a.c)) {
         ARMapHongBaoListView.a(this.a).b(false);
       }
       i = j;
@@ -103,24 +103,24 @@ class ARMapHongBaoListView$1
         {
           float f = j * 1.0F / 6.0F;
           if (this.a.a != null) {
-            this.a.a.a((int)(this.a.e * f), j * 300L);
+            this.a.a.a((int)(this.a.C * f), j * 300L);
           }
           i = j - 1;
           if (i > 0)
           {
-            paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
+            paramMessage = Message.obtain(ARMapHongBaoListView.b(this.a), 1);
             paramMessage.getData().putBoolean("isFirstCall", false);
             paramMessage.getData().putBoolean("isListViewSpring", false);
             paramMessage.getData().putBoolean("isPendantBounce", bool3);
             paramMessage.getData().putInt("pendantBountCnt", i);
-            ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
+            ARMapHongBaoListView.b(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
           }
         }
       }
       if (i == 0)
       {
-        paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 2);
-        ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, 1200L);
+        paramMessage = Message.obtain(ARMapHongBaoListView.b(this.a), 2);
+        ARMapHongBaoListView.b(this.a).sendMessageDelayed(paramMessage, 1200L);
       }
       this.a.invalidate();
     }
@@ -129,7 +129,7 @@ class ARMapHongBaoListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ARMapHongBaoListView.1
  * JD-Core Version:    0.7.0.1
  */

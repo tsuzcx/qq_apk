@@ -52,12 +52,12 @@ public class AppUpdate
         {
           i = 1;
           Bundle localBundle = new Bundle();
-          localBundle.putString("platform", CommonDataAdapter.a().g());
-          localBundle.putString("keystr", CommonDataAdapter.a().a());
+          localBundle.putString("platform", CommonDataAdapter.a().m());
+          localBundle.putString("keystr", CommonDataAdapter.a().e());
           localBundle.putString("uin", paramString2);
           localBundle.putString("resolution", MobileInfoUtil.getResolution());
           localBundle.putString("keytype", "256");
-          if (!AppUtil.a(paramContext)) {
+          if (!AppUtil.c(paramContext)) {
             break label674;
           }
           paramString1 = "1";
@@ -93,7 +93,7 @@ public class AppUpdate
           }
           if (!paramBoolean)
           {
-            paramString2 = AppUtil.a(paramContext);
+            paramString2 = AppUtil.d(paramContext);
             if ((paramString2 != null) && (paramString2.size() > 0))
             {
               paramString1 = new StringBuilder();
@@ -164,7 +164,7 @@ public class AppUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppUpdate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.cmshow.crossengine;
 
 import com.tencent.mobileqq.cmshow.engine.EngineContext;
+import com.tencent.mobileqq.cmshow.engine.EngineType;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.resource.IResourceService;
 import com.tencent.mobileqq.cmshow.engine.resource.exception.ScriptNotFoundException;
 import com.tencent.mobileqq.cmshow.engine.script.Script;
@@ -17,56 +20,57 @@ import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/CEResourceService;", "Lcom/tencent/mobileqq/cmshow/engine/resource/IResourceService;", "engineContext", "Lcom/tencent/mobileqq/cmshow/engine/EngineContext;", "(Lcom/tencent/mobileqq/cmshow/engine/EngineContext;)V", "TAG", "", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "scriptMap", "", "", "Lcom/tencent/mobileqq/cmshow/engine/script/Script;", "destroy", "", "getResourcePath", "type", "id", "getResourceUrl", "getScriptById", "businessId", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/CEResourceService;", "Lcom/tencent/mobileqq/cmshow/engine/resource/IResourceService;", "engineContext", "Lcom/tencent/mobileqq/cmshow/engine/EngineContext;", "(Lcom/tencent/mobileqq/cmshow/engine/EngineContext;)V", "TAG", "", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "scriptMap", "", "", "Lcom/tencent/mobileqq/cmshow/engine/script/Script;", "destroy", "", "getResourceManager", "Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;", "getResourcePath", "type", "id", "getResourceUrl", "getScriptById", "businessId", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CEResourceService
   implements IResourceService
 {
-  public static final CEResourceService.Companion a;
-  private final EngineContext jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext;
-  private final String jdField_a_of_type_JavaLangString;
-  private final Map<Integer, Script> jdField_a_of_type_JavaUtilMap;
-  private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEResourceService$Companion = new CEResourceService.Companion(null);
-  }
+  public static final CEResourceService.Companion a = new CEResourceService.Companion(null);
+  private final String b;
+  private final ReentrantLock c;
+  private final Map<Integer, Script> d;
+  private final EngineContext e;
   
   public CEResourceService(@NotNull EngineContext paramEngineContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext = paramEngineContext;
+    this.e = paramEngineContext;
     paramEngineContext = new StringBuilder();
     paramEngineContext.append("[cmshow][CECMShowOffscreenEngine][CEResourceService][");
-    paramEngineContext.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    paramEngineContext.append(this.e.k());
     paramEngineContext.append(']');
-    this.jdField_a_of_type_JavaLangString = paramEngineContext.toString();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-    this.jdField_a_of_type_JavaUtilMap = ((Map)new LinkedHashMap());
-    paramEngineContext = this.jdField_a_of_type_JavaLangString;
+    this.b = paramEngineContext.toString();
+    this.c = new ReentrantLock();
+    this.d = ((Map)new LinkedHashMap());
+    paramEngineContext = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("create ");
     localStringBuilder.append(this);
     localStringBuilder.append(" for ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    localStringBuilder.append(this.e.k());
     QLog.i(paramEngineContext, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a((IResourceService)this);
+    this.e.a((IResourceService)this);
+  }
+  
+  @NotNull
+  public IApolloResManager a()
+  {
+    return ApolloResManagerFacade.a.a(EngineType.CE);
   }
   
   @NotNull
   public Script a(int paramInt)
   {
     Object localObject1 = (Script)null;
-    localObject1 = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+    localObject1 = (Lock)this.c;
     ((Lock)localObject1).lock();
     try
     {
-      Object localObject2 = (Script)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      Object localObject2 = (Script)this.d.get(Integer.valueOf(paramInt));
       Unit localUnit = Unit.INSTANCE;
       ((Lock)localObject1).unlock();
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = CEResourceService.Companion.a(jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEResourceService$Companion, paramInt);
+        localObject1 = CEResourceService.Companion.a(a, paramInt);
         localObject2 = new File((String)localObject1);
         if (((File)localObject2).exists())
         {
@@ -81,18 +85,18 @@ public final class CEResourceService
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("ce.Level.LoadScript('");
-            ((StringBuilder)localObject1).append(CEResourceService.Companion.b(jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEResourceService$Companion, paramInt));
+            ((StringBuilder)localObject1).append(CEResourceService.Companion.b(a, paramInt));
             ((StringBuilder)localObject1).append("');");
             localObject1 = ((StringBuilder)localObject1).toString();
           }
           localObject1 = new Script((String)localObject1);
           ((Script)localObject1).a(paramInt);
-          localObject2 = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+          localObject2 = (Lock)this.c;
           ((Lock)localObject2).lock();
         }
         try
         {
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject1);
+          this.d.put(Integer.valueOf(paramInt), localObject1);
           localUnit = Unit.INSTANCE;
           ((Lock)localObject2).unlock();
         }
@@ -118,21 +122,21 @@ public final class CEResourceService
     }
   }
   
-  public final void a()
+  public final void b()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("destroy ");
     localStringBuilder.append(this);
     localStringBuilder.append(" for ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    localStringBuilder.append(this.e.k());
     QLog.i(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.d.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CEResourceService
  * JD-Core Version:    0.7.0.1
  */

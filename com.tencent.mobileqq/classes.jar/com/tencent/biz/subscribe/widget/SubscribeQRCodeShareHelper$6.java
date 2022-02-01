@@ -12,7 +12,7 @@ class SubscribeQRCodeShareHelper$6
   
   public void run()
   {
-    if (SubscribeQRCodeShareHelper.a(this.this$0))
+    if (SubscribeQRCodeShareHelper.k(this.this$0))
     {
       Object localObject = this.this$0;
       localObject = SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject, SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject));
@@ -30,13 +30,13 @@ class SubscribeQRCodeShareHelper$6
       localIntent.putExtra("filePath", (String)localObject);
       localIntent.putExtra("shareQQType", 13);
       localIntent.putExtra("reqType", 1);
-      ForwardBaseOption.a(SubscribeQRCodeShareHelper.a(this.this$0), localIntent, 21);
+      ForwardBaseOption.a(SubscribeQRCodeShareHelper.c(this.this$0), localIntent, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

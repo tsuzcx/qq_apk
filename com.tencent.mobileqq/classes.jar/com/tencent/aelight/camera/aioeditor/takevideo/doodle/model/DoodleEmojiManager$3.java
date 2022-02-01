@@ -15,17 +15,17 @@ class DoodleEmojiManager$3
   {
     super.onResult(???);
     SLog.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a.c)
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
+      this.a.e = null;
+      this.a.b();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.model.DoodleEmojiManager.3
  * JD-Core Version:    0.7.0.1
  */

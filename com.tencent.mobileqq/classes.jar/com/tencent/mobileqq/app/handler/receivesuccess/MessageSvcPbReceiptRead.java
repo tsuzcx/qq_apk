@@ -81,8 +81,8 @@ public class MessageSvcPbReceiptRead
     Object localObject = paramFromServiceMsg.extraData;
     long l2 = i;
     ((Bundle)localObject).putLong("ServerReplyCode", l2);
-    paramMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    paramFromServiceMsg = paramMessageHandler.a(l1);
+    paramMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+    paramFromServiceMsg = paramMessageHandler.b(l1);
     if (paramFromServiceMsg == null)
     {
       if (QLog.isColorLevel()) {
@@ -112,7 +112,7 @@ public class MessageSvcPbReceiptRead
     {
       paramMessageHandler.a(6015, true, new Long[] { Long.valueOf(k), Long.valueOf(l1), Long.valueOf(paramObject.receipt_resp.receipt_info.uint64_read_time.get()) });
     }
-    paramMessageHandler.a(l1);
+    paramMessageHandler.c(l1);
   }
   
   public static void a(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, String paramString)
@@ -124,7 +124,7 @@ public class MessageSvcPbReceiptRead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcPbReceiptRead
  * JD-Core Version:    0.7.0.1
  */

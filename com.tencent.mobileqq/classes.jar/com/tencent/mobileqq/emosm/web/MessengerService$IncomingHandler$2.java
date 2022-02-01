@@ -16,16 +16,16 @@ class MessengerService$IncomingHandler$2
     if (QLog.isColorLevel())
     {
       QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
+      MessengerService.a((MessengerService)this.a.b.get());
+      MessengerService.b((MessengerService)this.a.b.get());
     }
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
-      MessengerService localMessengerService = (MessengerService)this.a.a.get();
-      if ((localMessengerService != null) && (localMessengerService.a != null)) {
+      MessengerService localMessengerService = (MessengerService)this.a.b.get();
+      if ((localMessengerService != null) && (localMessengerService.b != null)) {
         try
         {
-          localMessengerService.a.getBinder().unlinkToDeath(MessengerService.IncomingHandler.a(this.a), 0);
+          localMessengerService.b.getBinder().unlinkToDeath(MessengerService.IncomingHandler.a(this.a), 0);
           return;
         }
         catch (Exception localException)
@@ -41,7 +41,7 @@ class MessengerService$IncomingHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.2
  * JD-Core Version:    0.7.0.1
  */

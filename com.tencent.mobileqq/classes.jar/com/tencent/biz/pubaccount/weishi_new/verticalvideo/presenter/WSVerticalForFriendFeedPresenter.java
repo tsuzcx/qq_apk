@@ -17,7 +17,7 @@ import java.util.List;
 public class WSVerticalForFriendFeedPresenter
   extends AbsWSVerticalPagePresenter
 {
-  private int b;
+  private int a;
   
   public WSVerticalForFriendFeedPresenter(WSVerticalPageContract.View paramView)
   {
@@ -27,13 +27,13 @@ public class WSVerticalForFriendFeedPresenter
   public List<WSVerticalItemData> a(ArrayList paramArrayList)
   {
     paramArrayList = new ArrayList();
-    Iterator localIterator = WeiShiCacheManager.a().a().iterator();
+    Iterator localIterator = WeiShiCacheManager.a().e().iterator();
     while (localIterator.hasNext()) {
-      paramArrayList.addAll((Collection)((WSFriendItemData)localIterator.next()).a());
+      paramArrayList.addAll((Collection)((WSFriendItemData)localIterator.next()).b());
     }
     paramArrayList = WSVerticalUtils.a(paramArrayList);
     if (paramArrayList != null) {
-      this.b = paramArrayList.size();
+      this.a = paramArrayList.size();
     }
     return paramArrayList;
   }
@@ -41,10 +41,10 @@ public class WSVerticalForFriendFeedPresenter
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
-    paramViewHolder = WeiShiCacheManager.a().a();
-    if (a() != null)
+    paramViewHolder = WeiShiCacheManager.a().e();
+    if (z() != null)
     {
-      int j = this.b;
+      int j = this.a;
       int i = paramInt;
       if (paramInt >= j) {
         i = j - 1;
@@ -53,10 +53,10 @@ public class WSVerticalForFriendFeedPresenter
       while (paramInt < paramViewHolder.size())
       {
         WSFriendItemData localWSFriendItemData = (WSFriendItemData)paramViewHolder.get(paramInt);
-        if ((localWSFriendItemData.b() <= i) && (localWSFriendItemData.b() + localWSFriendItemData.a() > i))
+        if ((localWSFriendItemData.e() <= i) && (localWSFriendItemData.e() + localWSFriendItemData.d() > i))
         {
           localWSFriendItemData.a(true);
-          paramViewHolder = new WSFriendFeedExposureEvent(a(i), paramInt);
+          paramViewHolder = new WSFriendFeedExposureEvent(c(i), paramInt);
           WSSimpleEventBus.a().a(paramViewHolder);
           return;
         }
@@ -65,21 +65,21 @@ public class WSVerticalForFriendFeedPresenter
     }
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public boolean b(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     WSFriendFeedDataManager.a().a(paramBoolean2, paramBoolean1, this);
     return true;
   }
   
-  public void b()
+  public void destroy()
   {
-    super.b();
-    WSFriendFeedDataManager.a().a();
+    super.destroy();
+    WSFriendFeedDataManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForFriendFeedPresenter
  * JD-Core Version:    0.7.0.1
  */

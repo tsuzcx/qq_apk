@@ -6,13 +6,13 @@ import org.json.JSONObject;
 public class JSONResult
 {
   public int a;
-  public String a;
-  private JSONObject a;
+  public String b;
+  private JSONObject c;
   
   public JSONResult(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public String a()
@@ -20,9 +20,9 @@ public class JSONResult
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("result", this.jdField_a_of_type_Int);
-      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      localJSONObject.put("result", this.a);
+      localJSONObject.put("message", this.b);
+      localJSONObject.put("data", this.c);
     }
     catch (JSONException localJSONException)
     {
@@ -33,7 +33,7 @@ public class JSONResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.JSONResult
  * JD-Core Version:    0.7.0.1
  */

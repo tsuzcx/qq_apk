@@ -7,15 +7,15 @@ class GalleryManager$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = true;
+    this.this$0.e.e = true;
     GalleryManager localGalleryManager = this.this$0;
-    GalleryManager.a(localGalleryManager, localGalleryManager.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene);
+    GalleryManager.a(localGalleryManager, localGalleryManager.c);
     GalleryManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryManager.1
  * JD-Core Version:    0.7.0.1
  */

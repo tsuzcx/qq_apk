@@ -13,22 +13,22 @@ import com.tencent.widget.pull2refresh.anim.IAnimManager.PullRefreshComplete;
 public abstract class ReadInJoyAnimBaseManager
   implements ReadInJoyXListView.IPullRefreshAnim, IAnimManager
 {
-  private static final String a = "ReadInJoyAnimBaseManager";
-  protected int a;
+  private static final String g = "ReadInJoyAnimBaseManager";
   protected Context a;
-  protected SlideActiveAnimController a;
-  protected IPullRefreshHeader a;
-  protected IAnimManager.OnRefreshPullDistanceListener a;
-  protected IAnimManager.PullRefreshComplete a;
+  protected IPullRefreshHeader b;
+  protected IAnimManager.PullRefreshComplete c;
+  protected SlideActiveAnimController d;
+  protected int e;
+  protected IAnimManager.OnRefreshPullDistanceListener f;
   
   public ReadInJoyAnimBaseManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void a(SlideActiveAnimController paramSlideActiveAnimController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController = paramSlideActiveAnimController;
+    this.d = paramSlideActiveAnimController;
   }
   
   public void endOfRefresh() {}
@@ -44,7 +44,7 @@ public abstract class ReadInJoyAnimBaseManager
   
   public void onPullRefreshComplete(boolean paramBoolean)
   {
-    IAnimManager.PullRefreshComplete localPullRefreshComplete = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$PullRefreshComplete;
+    IAnimManager.PullRefreshComplete localPullRefreshComplete = this.c;
     if (localPullRefreshComplete != null) {
       localPullRefreshComplete.pullRefreshComplete(paramBoolean);
     }
@@ -54,7 +54,7 @@ public abstract class ReadInJoyAnimBaseManager
   {
     if (QLog.isDebugVersion())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPullRefreshing percent:");
       localStringBuilder.append(paramInt);
@@ -71,8 +71,8 @@ public abstract class ReadInJoyAnimBaseManager
   
   public void onTouchPullDistance(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    IAnimManager.OnRefreshPullDistanceListener localOnRefreshPullDistanceListener = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$OnRefreshPullDistanceListener;
+    this.e = paramInt1;
+    IAnimManager.OnRefreshPullDistanceListener localOnRefreshPullDistanceListener = this.f;
     if (localOnRefreshPullDistanceListener != null) {
       localOnRefreshPullDistanceListener.onPullDistance(paramInt1, paramInt2);
     }
@@ -80,17 +80,17 @@ public abstract class ReadInJoyAnimBaseManager
   
   public void registerRefreshCompleteListener(IAnimManager.PullRefreshComplete paramPullRefreshComplete)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$PullRefreshComplete = paramPullRefreshComplete;
+    this.c = paramPullRefreshComplete;
   }
   
   public void setRefreshPullDistanceListener(IAnimManager.OnRefreshPullDistanceListener paramOnRefreshPullDistanceListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$OnRefreshPullDistanceListener = paramOnRefreshPullDistanceListener;
+    this.f = paramOnRefreshPullDistanceListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pullrefresh.ReadInJoyAnimBaseManager
  * JD-Core Version:    0.7.0.1
  */

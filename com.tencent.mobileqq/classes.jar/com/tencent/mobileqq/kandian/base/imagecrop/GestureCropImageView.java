@@ -9,14 +9,14 @@ import android.view.ScaleGestureDetector;
 public class GestureCropImageView
   extends CropImageView
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 5;
-  private boolean jdField_c_of_type_Boolean = true;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean = true;
-  private boolean e = true;
+  private ScaleGestureDetector k;
+  private GestureDetector l;
+  private float m;
+  private float n;
+  private boolean o = true;
+  private boolean p = true;
+  private boolean q = true;
+  private int r = 5;
   
   public GestureCropImageView(Context paramContext)
   {
@@ -33,21 +33,26 @@ public class GestureCropImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void d()
+  private void e()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new GestureCropImageView.GestureListener(this, null), null, true);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(getContext(), new GestureCropImageView.ScaleListener(this, null));
+    this.l = new GestureDetector(getContext(), new GestureCropImageView.GestureListener(this, null), null, true);
+    this.k = new ScaleGestureDetector(getContext(), new GestureCropImageView.ScaleListener(this, null));
   }
   
-  protected float c()
+  protected void d()
   {
-    return d() * (float)Math.pow(a() / b(), 1.0F / this.jdField_c_of_type_Int);
+    super.d();
+    e();
   }
   
-  protected void c()
+  public int getDoubleTapScaleSteps()
   {
-    super.c();
-    d();
+    return this.r;
+  }
+  
+  protected float getDoubleTapTargetScale()
+  {
+    return getCurrentScale() * (float)Math.pow(getMaxScale() / getMinScale(), 1.0F / this.r);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -57,12 +62,12 @@ public class GestureCropImageView
     }
     if (paramMotionEvent.getPointerCount() > 1)
     {
-      this.jdField_c_of_type_Float = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
-      this.jdField_d_of_type_Float = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
+      this.m = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
+      this.n = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if (this.jdField_d_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+    this.l.onTouchEvent(paramMotionEvent);
+    if (this.p) {
+      this.k.onTouchEvent(paramMotionEvent);
     }
     if ((paramMotionEvent.getAction() & 0xFF) == 1)
     {
@@ -75,27 +80,27 @@ public class GestureCropImageView
   
   public void setDoubleTapScaleSteps(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.r = paramInt;
   }
   
   public void setIsDoubleTapEnabled(boolean paramBoolean)
   {
-    this.e = paramBoolean;
+    this.q = paramBoolean;
   }
   
   public void setRotateEnabled(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
   }
   
   public void setScaleEnabled(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.GestureCropImageView
  * JD-Core Version:    0.7.0.1
  */

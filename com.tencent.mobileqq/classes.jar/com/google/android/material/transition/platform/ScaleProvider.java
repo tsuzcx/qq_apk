@@ -13,12 +13,12 @@ import androidx.annotation.RequiresApi;
 public final class ScaleProvider
   implements VisibilityAnimatorProvider
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 1.1F;
-  private boolean jdField_b_of_type_Boolean = true;
+  private float a = 1.0F;
+  private float b = 1.1F;
   private float c = 0.8F;
   private float d = 1.0F;
+  private boolean e;
+  private boolean f = true;
   
   public ScaleProvider()
   {
@@ -27,7 +27,7 @@ public final class ScaleProvider
   
   public ScaleProvider(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   private static Animator a(View paramView, float paramFloat1, float paramFloat2)
@@ -42,10 +42,10 @@ public final class ScaleProvider
   @Nullable
   public Animator a(@NonNull ViewGroup paramViewGroup, @NonNull View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return a(paramView, this.c, this.d);
     }
-    return a(paramView, this.jdField_b_of_type_Float, this.jdField_a_of_type_Float);
+    return a(paramView, this.b, this.a);
   }
   
   public void a(float paramFloat)
@@ -55,24 +55,24 @@ public final class ScaleProvider
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   @Nullable
   public Animator b(@NonNull ViewGroup paramViewGroup, @NonNull View paramView)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       return null;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      return a(paramView, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    if (this.e) {
+      return a(paramView, this.a, this.b);
     }
     return a(paramView, this.d, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.ScaleProvider
  * JD-Core Version:    0.7.0.1
  */

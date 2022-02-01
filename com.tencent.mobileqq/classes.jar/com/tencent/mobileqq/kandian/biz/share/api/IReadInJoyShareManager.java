@@ -10,18 +10,22 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @QAPI(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/share/api/IReadInJoyShareManager;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "KEY_SAHRE_DATA", "", "getKEY_SAHRE_DATA", "()Ljava/lang/String;", "jumpToReadInJoyShare", "", "context", "Landroid/content/Context;", "params", "Landroid/os/Bundle;", "dismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "requestCode", "", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/share/api/IReadInJoyShareManager;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "KEY_SAHRE_DATA", "", "getKEY_SAHRE_DATA", "()Ljava/lang/String;", "addShareCallBack", "", "shareCallBack", "Lcom/tencent/mobileqq/kandian/biz/share/api/ShareCallBack;", "jumpToReadInJoyShare", "", "context", "Landroid/content/Context;", "params", "Landroid/os/Bundle;", "dismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "requestCode", "", "removeShareCallBack", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IReadInJoyShareManager
   extends QRouteApi
 {
+  public abstract void addShareCallBack(@NotNull ShareCallBack paramShareCallBack);
+  
   @NotNull
   public abstract String getKEY_SAHRE_DATA();
   
   public abstract boolean jumpToReadInJoyShare(@Nullable Context paramContext, @Nullable Bundle paramBundle, @Nullable DialogInterface.OnDismissListener paramOnDismissListener, int paramInt);
+  
+  public abstract void removeShareCallBack(@NotNull ShareCallBack paramShareCallBack);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.api.IReadInJoyShareManager
  * JD-Core Version:    0.7.0.1
  */

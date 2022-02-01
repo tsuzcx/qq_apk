@@ -9,13 +9,13 @@ class ShieldFriendsListFragment$1$1
   
   public void run()
   {
-    ShieldFriendsListFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentShieldFriendsListFragment$1.this$0).a(this.jdField_a_of_type_JavaUtilArrayList);
-    ShieldFriendsListFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentShieldFriendsListFragment$1.this$0);
+    ShieldFriendsListFragment.a(this.b.this$0).a(this.a);
+    ShieldFriendsListFragment.b(this.b.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.ShieldFriendsListFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

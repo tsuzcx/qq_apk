@@ -18,13 +18,13 @@ class DeleteFaceFragment$2
     ReportController.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
     Intent localIntent = new Intent();
     localIntent.putExtra("url", "https://accounts.qq.com/face/delete");
-    RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, localIntent, "/base/browser", 1001);
+    RouteUtils.a(this.a, localIntent, "/base/browser", 1001);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.DeleteFaceFragment.2
  * JD-Core Version:    0.7.0.1
  */

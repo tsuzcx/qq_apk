@@ -57,8 +57,8 @@ public class QQGAudioCtrl
     String str = SDKConfigInfo.getDeviceInfo(new AVSoProxyImpl(BaseApplication.getContext()));
     this.mSysInfo = new VcSystemInfo();
     initEngine(this.mSysInfo, this, str);
-    if (AudioDump.a()) {
-      AudioDump.a();
+    if (AudioDump.c()) {
+      AudioDump.b();
     }
   }
   
@@ -129,7 +129,7 @@ public class QQGAudioCtrl
   {
     if (sQQGAudioCtrl == null)
     {
-      if (!AVSoUtils.c()) {
+      if (!AVSoUtils.m()) {
         return null;
       }
       sQQGAudioCtrl = new QQGAudioCtrl();
@@ -142,23 +142,23 @@ public class QQGAudioCtrl
     if (paramSessionInfo == null) {
       return null;
     }
-    boolean bool = paramSessionInfo.y;
+    boolean bool = paramSessionInfo.am;
     int i = 8;
     long l;
     int j;
     if (bool)
     {
-      l = Long.parseLong(paramSessionInfo.c);
+      l = Long.parseLong(paramSessionInfo.s);
       j = 3;
     }
     else
     {
-      j = paramSessionInfo.E;
-      l = paramSessionInfo.f;
+      j = paramSessionInfo.aQ;
+      l = paramSessionInfo.aN;
       if (j == 2) {
         i = 1;
       } else if (j == 1) {
-        i = paramSessionInfo.j;
+        i = paramSessionInfo.o;
       } else if (j != 3) {
         i = 0;
       }
@@ -168,7 +168,7 @@ public class QQGAudioCtrl
   
   public int accept(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = QAVConfigUtils.a();
+    int i = QAVConfigUtils.b();
     if (i <= 0) {
       i = 5;
     }
@@ -203,7 +203,7 @@ public class QQGAudioCtrl
           paramInt4 += 1;
         }
       }
-      paramInt4 = QAVConfigUtils.a();
+      paramInt4 = QAVConfigUtils.b();
       if (paramInt4 <= 0) {
         paramInt4 = 5;
       }
@@ -419,15 +419,15 @@ public class QQGAudioCtrl
   
   public void init(Context paramContext, long paramLong, int paramInt, boolean paramBoolean)
   {
-    String str2 = ResMgr.a();
+    String str2 = ResMgr.c();
     String str1;
     if (paramBoolean) {
-      str1 = ResMgr.b();
+      str1 = ResMgr.e();
     } else {
       str1 = null;
     }
-    String str3 = QavSdkConfigHelper.a();
-    super.init(paramContext, paramLong, paramInt, "8.7.0", new SDKConfigInfoBuilder().a(), str2, str1, str3);
+    String str3 = QavSdkConfigHelper.b();
+    super.init(paramContext, paramLong, paramInt, "8.8.17", new SDKConfigInfoBuilder().a(), str2, str1, str3, QAVConfigUtils.o());
   }
   
   public int inviteUser(long[] paramArrayOfLong, int paramInt)
@@ -645,7 +645,7 @@ public class QQGAudioCtrl
     if (localQQGAudioCtrlCallback != null)
     {
       localQQGAudioCtrlCallback.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (AudioDump.a()) {
+      if (AudioDump.c()) {
         AudioDump.a().onReceiveAudioFrame(paramArrayOfByte, paramInt4, paramArrayOfByte.length);
       }
     }
@@ -673,15 +673,15 @@ public class QQGAudioCtrl
   
   public int quitRoom(int paramInt)
   {
-    if (AudioDump.a()) {
-      AudioDump.a().c();
+    if (AudioDump.c()) {
+      AudioDump.a().e();
     }
     return super.quitRoom(paramInt);
   }
   
   public int request(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int i = QAVConfigUtils.a();
+    int i = QAVConfigUtils.b();
     if (i <= 0) {
       i = 5;
     }
@@ -761,7 +761,7 @@ public class QQGAudioCtrl
       while (i < paramArrayList.size())
       {
         int k = i * 3;
-        arrayOfLong[k] = ((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Long;
+        arrayOfLong[k] = ((VideoViewInfo)paramArrayList.get(i)).a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append("uin=");
@@ -769,14 +769,14 @@ public class QQGAudioCtrl
         localStringBuilder.append(" ,");
         str = localStringBuilder.toString();
         int m = k + 1;
-        arrayOfLong[m] = ((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Int;
+        arrayOfLong[m] = ((VideoViewInfo)paramArrayList.get(i)).b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append("videoSrcType=");
         localStringBuilder.append(arrayOfLong[m]);
         localStringBuilder.append(" ,");
         str = localStringBuilder.toString();
-        if (((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Boolean) {
+        if (((VideoViewInfo)paramArrayList.get(i)).c) {
           arrayOfLong[(k + 2)] = 1L;
         } else {
           arrayOfLong[(k + 2)] = 0L;
@@ -810,7 +810,7 @@ public class QQGAudioCtrl
   {
     if ((paramInt1 == 11) && (paramInt2 == 14) && (paramInt3 == 1))
     {
-      int i = QAVConfigUtils.a();
+      int i = QAVConfigUtils.b();
       if (i <= 0) {
         i = 5;
       }
@@ -896,7 +896,7 @@ public class QQGAudioCtrl
         i += 1;
       }
     }
-    int i = QAVConfigUtils.a();
+    int i = QAVConfigUtils.b();
     if (i <= 0) {
       i = 5;
     }
@@ -982,7 +982,7 @@ public class QQGAudioCtrl
       while (i < paramArrayList.size())
       {
         int k = i * 3;
-        arrayOfLong[k] = ((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Long;
+        arrayOfLong[k] = ((VideoViewInfo)paramArrayList.get(i)).a;
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
         ((StringBuilder)localObject).append("uin=");
@@ -990,7 +990,7 @@ public class QQGAudioCtrl
         ((StringBuilder)localObject).append(" ,");
         str = ((StringBuilder)localObject).toString();
         int m = k + 1;
-        arrayOfLong[m] = ((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Int;
+        arrayOfLong[m] = ((VideoViewInfo)paramArrayList.get(i)).b;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
         ((StringBuilder)localObject).append("videoSrcType=");
@@ -1003,13 +1003,13 @@ public class QQGAudioCtrl
           if (localObject == null) {
             return 0;
           }
-          if (((QQGAudioCtrlCallback)localObject).a(((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Long, i)) {
+          if (((QQGAudioCtrlCallback)localObject).b(((VideoViewInfo)paramArrayList.get(i)).a, i)) {
             arrayOfLong[(k + 2)] = 1L;
           } else {
             arrayOfLong[(k + 2)] = 0L;
           }
         }
-        else if (((VideoViewInfo)paramArrayList.get(i)).jdField_a_of_type_Boolean)
+        else if (((VideoViewInfo)paramArrayList.get(i)).c)
         {
           arrayOfLong[(k + 2)] = 1L;
         }

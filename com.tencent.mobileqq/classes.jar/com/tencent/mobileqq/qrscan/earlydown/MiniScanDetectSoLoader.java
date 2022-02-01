@@ -11,23 +11,8 @@ import org.xmlpull.v1.XmlPullParser;
 public class MiniScanDetectSoLoader
   extends BaseQRScanResLoader
 {
-  private static final Object a;
   public static boolean a = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static byte a(String paramString)
-  {
-    return a(1, paramString);
-  }
-  
-  public static Object a()
-  {
-    return jdField_a_of_type_JavaLangObject;
-  }
+  private static final Object b = new Object();
   
   public static String a()
   {
@@ -65,18 +50,7 @@ public class MiniScanDetectSoLoader
   
   protected static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if ((a(1, jdField_a_of_type_Boolean, "QMCF_qr")) && (a(1, jdField_a_of_type_Boolean, "yuvutil"))) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
-    }
-    return false;
+    a = paramBoolean;
   }
   
   public static boolean a(String paramString, HashMap<String, String> paramHashMap)
@@ -129,11 +103,6 @@ public class MiniScanDetectSoLoader
     }
   }
   
-  public static byte b(String paramString)
-  {
-    return a(1, jdField_a_of_type_Boolean, paramString);
-  }
-  
   public static String b(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -143,14 +112,40 @@ public class MiniScanDetectSoLoader
     return localStringBuilder.toString();
   }
   
+  public static boolean b()
+  {
+    if ((a(1, a, "QMCF_qr")) && (a(1, a, "yuvutil"))) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
+    }
+    return false;
+  }
+  
+  public static Object c()
+  {
+    return b;
+  }
+  
   public static String c(String paramString)
   {
     return a(1, paramString);
   }
+  
+  public static byte d(String paramString)
+  {
+    return d(1, paramString);
+  }
+  
+  public static byte e(String paramString)
+  {
+    return b(1, a, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.MiniScanDetectSoLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -55,13 +55,13 @@ public class RIJGetMoreBiuHandler
       if (localIterator.hasNext())
       {
         ExtraBiuBriefInfo.BiuBriefInfoItem localBiuBriefInfoItem = (ExtraBiuBriefInfo.BiuBriefInfoItem)localIterator.next();
-        if (localAbsBaseArticleInfo.mFeedId != localBiuBriefInfoItem.jdField_a_of_type_Long) {
+        if (localAbsBaseArticleInfo.mFeedId != localBiuBriefInfoItem.a) {
           break;
         }
-        localAbsBaseArticleInfo.mRecommendSeq = localBiuBriefInfoItem.c;
-        localAbsBaseArticleInfo.mFeedType = localBiuBriefInfoItem.jdField_a_of_type_Int;
-        localAbsBaseArticleInfo.mAlgorithmID = localBiuBriefInfoItem.jdField_b_of_type_Long;
-        localAbsBaseArticleInfo.mStrategyId = localBiuBriefInfoItem.jdField_b_of_type_Int;
+        localAbsBaseArticleInfo.mRecommendSeq = localBiuBriefInfoItem.e;
+        localAbsBaseArticleInfo.mFeedType = localBiuBriefInfoItem.b;
+        localAbsBaseArticleInfo.mAlgorithmID = localBiuBriefInfoItem.c;
+        localAbsBaseArticleInfo.mStrategyId = localBiuBriefInfoItem.d;
       }
     }
   }
@@ -69,7 +69,7 @@ public class RIJGetMoreBiuHandler
   public void a(ExtraBiuBriefInfo paramExtraBiuBriefInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Object localObject = new oidb_cmd0xbbd.ReqBody();
-    long l = Long.valueOf(RIJQQAppInterfaceUtil.a()).longValue();
+    long l = Long.valueOf(RIJQQAppInterfaceUtil.d()).longValue();
     ((oidb_cmd0xbbd.ReqBody)localObject).uint64_uin.set(l);
     ((oidb_cmd0xbbd.ReqBody)localObject).uint32_network_type.set(ArticleInfoModuleUtils.a());
     oidb_cmd0xbbd.ReqPara localReqPara = new oidb_cmd0xbbd.ReqPara();
@@ -79,8 +79,8 @@ public class RIJGetMoreBiuHandler
     {
       ExtraBiuBriefInfo.BiuBriefInfoItem localBiuBriefInfoItem = (ExtraBiuBriefInfo.BiuBriefInfoItem)localIterator.next();
       oidb_cmd0xbbd.ReqFeedsInfo localReqFeedsInfo = new oidb_cmd0xbbd.ReqFeedsInfo();
-      localReqFeedsInfo.uint64_feeds_id.set(localBiuBriefInfoItem.jdField_a_of_type_Long);
-      localReqFeedsInfo.uint32_feeds_type.set(localBiuBriefInfoItem.jdField_a_of_type_Int);
+      localReqFeedsInfo.uint64_feeds_id.set(localBiuBriefInfoItem.a);
+      localReqFeedsInfo.uint32_feeds_type.set(localBiuBriefInfoItem.b);
       localArrayList.add(localReqFeedsInfo);
     }
     localReqPara.rpt_req_feeds_info.set(localArrayList);
@@ -88,7 +88,7 @@ public class RIJGetMoreBiuHandler
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xbbd", 3005, 0, ((oidb_cmd0xbbd.ReqBody)localObject).toByteArray());
     ((ToServiceMsg)localObject).getAttributes().put("NotifyType", Integer.valueOf(15));
     ((ToServiceMsg)localObject).getAttributes().put("channelID", Integer.valueOf(70));
-    ((ToServiceMsg)localObject).getAttributes().put("BeginSeq", Long.valueOf(((ExtraBiuBriefInfo.BiuBriefInfoItem)paramExtraBiuBriefInfo.a.get(0)).c));
+    ((ToServiceMsg)localObject).getAttributes().put("BeginSeq", Long.valueOf(((ExtraBiuBriefInfo.BiuBriefInfoItem)paramExtraBiuBriefInfo.a.get(0)).e));
     ((ToServiceMsg)localObject).getAttributes().put("EndSeq", Integer.valueOf(-1));
     ((ToServiceMsg)localObject).getAttributes().put("ArticleInfo", paramAbsBaseArticleInfo);
     this.a.sendPbReq((ToServiceMsg)localObject);
@@ -123,7 +123,7 @@ public class RIJGetMoreBiuHandler
         localObject1 = (Integer)paramToServiceMsg.getAttribute("channelID");
         Object localObject2 = (Long)paramToServiceMsg.getAttribute("BeginSeq");
         paramObject.isExtraBiuExpanded = true;
-        this.a.a().a((Integer)localObject1, paramObject, true);
+        this.a.i().a((Integer)localObject1, paramObject, true);
         this.a.a(true, ((Integer)localObject1).intValue(), false, paramFromServiceMsg, ((Long)localObject2).longValue(), -1L, null, null, paramToServiceMsg);
       }
     }
@@ -138,7 +138,7 @@ public class RIJGetMoreBiuHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJGetMoreBiuHandler
  * JD-Core Version:    0.7.0.1
  */

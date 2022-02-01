@@ -19,7 +19,7 @@ class HongbaoShowerActivity$4
       this.a.overridePendingTransition(0, 0);
       QQAppInterface localQQAppInterface = this.a.app;
       String str;
-      if (HongbaoShowerActivity.a(this.a) == 0) {
+      if (HongbaoShowerActivity.c(this.a) == 0) {
         str = "1";
       } else {
         str = "2";
@@ -31,7 +31,7 @@ class HongbaoShowerActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.HongbaoShowerActivity.4
  * JD-Core Version:    0.7.0.1
  */

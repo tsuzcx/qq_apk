@@ -11,19 +11,19 @@ class AddFriendHelper$2
   
   public void run()
   {
-    if (ChatActivityUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
+    if (ChatActivityUtils.a(this.this$0.b, this.this$0.e.a, this.a, this.this$0.e.f))
     {
-      this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new AddFriendHelper.2.1(this));
+      this.this$0.c.runOnUiThread(new AddFriendHelper.2.1(this));
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new AddFriendHelper.2.2(this));
+    if (!this.b) {
+      this.this$0.c.runOnUiThread(new AddFriendHelper.2.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AddFriendHelper.2
  * JD-Core Version:    0.7.0.1
  */

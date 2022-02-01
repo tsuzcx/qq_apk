@@ -17,8 +17,8 @@ class BottomVideoInfoWidget$6
   
   public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    paramString = FileCacheUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, false);
+    this.a.c(false);
+    paramString = FileCacheUtils.a(this.b.mVid, 0, false, false);
     if (paramString != null)
     {
       paramString = paramString.getPath();
@@ -28,13 +28,13 @@ class BottomVideoInfoWidget$6
   
   public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    this.a.c(false);
     ThreadManager.getUIHandlerV2().post(new BottomVideoInfoWidget.6.3(this));
   }
   
   public void b(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    this.a.c(false);
     ThreadManager.getUIHandlerV2().post(new BottomVideoInfoWidget.6.2(this));
   }
 }

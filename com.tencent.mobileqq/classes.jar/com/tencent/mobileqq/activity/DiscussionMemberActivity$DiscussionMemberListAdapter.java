@@ -19,26 +19,26 @@ import java.util.Set;
 class DiscussionMemberActivity$DiscussionMemberListAdapter
   extends CharDividedFacePreloadBaseAdapter
 {
-  private LinkedHashMap<String, List<DiscussionMemberActivity.DiscussionMember>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private LinkedHashMap<String, List<DiscussionMemberActivity.DiscussionMember>> b = new LinkedHashMap();
+  private int[] c = new int[0];
+  private String[] d = new String[0];
   
   public DiscussionMemberActivity$DiscussionMemberListAdapter(DiscussionMemberActivity paramDiscussionMemberActivity)
   {
-    super(paramDiscussionMemberActivity, paramDiscussionMemberActivity.app, paramDiscussionMemberActivity.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, true);
-    a();
+    super(paramDiscussionMemberActivity, paramDiscussionMemberActivity.app, paramDiscussionMemberActivity.a, true);
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.jdField_a_of_type_JavaUtilList.iterator();
-    char c;
+    this.b.clear();
+    Iterator localIterator = this.a.b.iterator();
+    char c1;
     int j;
     for (;;)
     {
       boolean bool = localIterator.hasNext();
-      c = 'A';
+      c1 = 'A';
       j = 0;
       String str = "#";
       if (!bool) {
@@ -64,28 +64,28 @@ class DiscussionMemberActivity$DiscussionMemberListAdapter
       {
         localObject2 = ((String)localObject1).toUpperCase();
       }
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2) == null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject2, new ArrayList());
+      if (this.b.get(localObject2) == null) {
+        this.b.put(localObject2, new ArrayList());
       }
-      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2)).add(localDiscussionMember);
+      ((List)this.b.get(localObject2)).add(localDiscussionMember);
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    while (c <= 'Z')
+    Object localObject1 = this.b;
+    this.b = new LinkedHashMap();
+    while (c1 <= 'Z')
     {
-      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
+      if (((LinkedHashMap)localObject1).get(String.valueOf(c1)) != null) {
+        this.b.put(String.valueOf(c1), ((LinkedHashMap)localObject1).get(String.valueOf(c1)));
       }
-      c = (char)(c + '\001');
+      c1 = (char)(c1 + '\001');
     }
     if (((LinkedHashMap)localObject1).get("#") != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
+      this.b.put("#", ((LinkedHashMap)localObject1).get("#"));
     }
     ((LinkedHashMap)localObject1).clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    Object localObject2 = this.jdField_a_of_type_ArrayOfInt;
+    this.c = new int[this.b.keySet().size()];
+    this.d = new String[this.c.length];
+    localObject1 = this.b.keySet().iterator();
+    Object localObject2 = this.c;
     if (localObject2.length == 0) {
       return;
     }
@@ -93,35 +93,50 @@ class DiscussionMemberActivity$DiscussionMemberListAdapter
     int i = 1;
     for (;;)
     {
-      localObject2 = this.jdField_a_of_type_ArrayOfInt;
+      localObject2 = this.c;
       if (i >= localObject2.length) {
         break;
       }
-      localObject2[i] += localObject2[(i - 1)] + ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + 1;
+      localObject2[i] += localObject2[(i - 1)] + ((List)this.b.get(((Iterator)localObject1).next())).size() + 1;
       i += 1;
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    localObject1 = this.b.keySet().iterator();
     i = j;
     while (((Iterator)localObject1).hasNext())
     {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
+      this.d[i] = ((String)((Iterator)localObject1).next());
       i += 1;
     }
   }
   
   public int a()
   {
-    return 2131559309;
+    return 2131625258;
   }
   
-  public int a(String paramString)
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    int i = Arrays.binarySearch(this.c, paramInt);
+    paramInt = i;
+    if (i < 0) {
+      paramInt = -(i + 1) - 1;
+    }
+    ((TextView)paramView).setText(this.d[paramInt]);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return Arrays.binarySearch(this.c, paramInt) >= 0;
+  }
+  
+  public int e_(String paramString)
+  {
+    if (this.d != null)
     {
       int i = 0;
       for (;;)
       {
-        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = this.d;
         if (i >= arrayOfString.length) {
           break;
         }
@@ -133,47 +148,32 @@ class DiscussionMemberActivity$DiscussionMemberListAdapter
       i = -1;
       label42:
       if (i >= 0) {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+        return this.c[i];
       }
     }
     return -1;
   }
   
-  public void a(View paramView, int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
-    }
-    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
   public int getCount()
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = this.c;
     if (localObject.length == 0) {
       return 0;
     }
     int i = localObject[(localObject.length - 1)];
-    localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    localObject = this.b;
+    String[] arrayOfString = this.d;
     return i + ((List)((LinkedHashMap)localObject).get(arrayOfString[(arrayOfString.length - 1)])).size() + 1;
   }
   
   public Object getItem(int paramInt)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i = Arrays.binarySearch(this.c, paramInt);
     if (i >= 0) {
       return null;
     }
     i = -(i + 1) - 1;
-    return (DiscussionMemberActivity.DiscussionMember)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+    return (DiscussionMemberActivity.DiscussionMember)((List)this.b.get(this.d[i])).get(paramInt - this.c[i] - 1);
   }
   
   public long getItemId(int paramInt)
@@ -183,34 +183,34 @@ class DiscussionMemberActivity$DiscussionMemberListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i = Arrays.binarySearch(this.c, paramInt);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2131559069, paramViewGroup, false);
+      localView = this.a.getLayoutInflater().inflate(2131624729, paramViewGroup, false);
       paramView = new TroopMemberList.ViewHolder();
       localView.setTag(paramView);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376702));
-      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379732));
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369373));
-      paramView.d = ((TextView)localView.findViewById(2131379778));
+      paramView.g = ((RelativeLayout)localView.findViewById(2131444983));
+      paramView.h = ((TextView)localView.findViewById(2131448537));
+      paramView.A = ((ImageView)localView.findViewById(2131436404));
+      paramView.i = ((TextView)localView.findViewById(2131448598));
     }
     paramView = (TroopMemberList.ViewHolder)localView.getTag();
     if (i < 0)
     {
       i = -(i + 1) - 1;
-      DiscussionMemberActivity.DiscussionMember localDiscussionMember = (DiscussionMemberActivity.DiscussionMember)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(localDiscussionMember.jdField_a_of_type_JavaLangString, 1));
-      paramView.d.setText(localDiscussionMember.b);
-      paramView.jdField_a_of_type_JavaLangString = localDiscussionMember.jdField_a_of_type_JavaLangString;
+      DiscussionMemberActivity.DiscussionMember localDiscussionMember = (DiscussionMemberActivity.DiscussionMember)((List)this.b.get(this.d[i])).get(paramInt - this.c[i] - 1);
+      paramView.g.setVisibility(0);
+      paramView.h.setVisibility(8);
+      paramView.A.setImageBitmap(a(localDiscussionMember.a, 1));
+      paramView.i.setText(localDiscussionMember.b);
+      paramView.y = localDiscussionMember.a;
     }
     else
     {
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]));
+      paramView.g.setVisibility(8);
+      paramView.h.setVisibility(0);
+      paramView.h.setText(String.valueOf(this.d[i]));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -218,13 +218,13 @@ class DiscussionMemberActivity$DiscussionMemberListAdapter
   
   public void notifyDataSetChanged()
   {
-    a();
+    b();
     super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionMemberActivity.DiscussionMemberListAdapter
  * JD-Core Version:    0.7.0.1
  */

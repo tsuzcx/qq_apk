@@ -10,20 +10,19 @@ import mqq.app.MobileQQ;
 public class QQAssistantGuiderUtil
 {
   public static final String a;
-  private static boolean a;
+  private static boolean b = true;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
     localStringBuilder.append("/tencent/MobileQQ/HelloQQCache/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Boolean = true;
+    a = localStringBuilder.toString();
   }
   
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    b = paramBoolean;
     try
     {
       SharedPreferences.Editor localEditor = MobileQQ.sMobileQQ.getSharedPreferences("qq_assistant_sp_key", 0).edit();
@@ -38,17 +37,17 @@ public class QQAssistantGuiderUtil
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setNeedOpenGuide:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(b);
       QLog.d("WakeManager", 2, localStringBuilder.toString());
     }
   }
   
   public static boolean a()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (b) {
       try
       {
-        jdField_a_of_type_Boolean = MobileQQ.sMobileQQ.getSharedPreferences("qq_assistant_sp_key", 0).getBoolean("need_open_guider", true);
+        b = MobileQQ.sMobileQQ.getSharedPreferences("qq_assistant_sp_key", 0).getBoolean("need_open_guider", true);
       }
       catch (Exception localException)
       {
@@ -59,15 +58,15 @@ public class QQAssistantGuiderUtil
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getNeedOpenGuide:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(b);
       QLog.d("WakeManager", 2, localStringBuilder.toString());
     }
-    return jdField_a_of_type_Boolean;
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuiderUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -46,50 +46,45 @@ public class AioLimitColdPalaceHelper
   extends ExpandObserver
   implements ILifeCycleHelper, IColdPalaceBanish
 {
-  public static final AioLimitColdPalaceHelper.Companion a;
-  private volatile int jdField_a_of_type_Int;
+  public static final AioLimitColdPalaceHelper.Companion a = new AioLimitColdPalaceHelper.Companion(null);
+  @NotNull
+  private final BaseChatPie b;
+  @NotNull
+  private final QQAppInterface c;
+  @NotNull
+  private BaseActivity d;
   @Nullable
-  private Dialog jdField_a_of_type_AndroidAppDialog;
+  private Dialog e;
   @NotNull
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  @NotNull
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  @NotNull
-  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
-  @NotNull
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile int jdField_b_of_type_Int;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private volatile boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandChatAioLimitColdPalaceHelper$Companion = new AioLimitColdPalaceHelper.Companion(null);
-  }
+  private final MessageObserver f;
+  private volatile boolean g;
+  private volatile int h;
+  private volatile boolean i;
+  private volatile boolean j;
+  private volatile int k;
   
   public AioLimitColdPalaceHelper(@NotNull BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.b = paramBaseChatPie;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     Intrinsics.checkExpressionValueIsNotNull(localQQAppInterface, "chatPie.app");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = localQQAppInterface;
-    paramBaseChatPie = paramBaseChatPie.a();
+    this.c = localQQAppInterface;
+    paramBaseChatPie = paramBaseChatPie.aX();
     Intrinsics.checkExpressionValueIsNotNull(paramBaseChatPie, "chatPie.activity");
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie;
-    this.c = true;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = ((MessageObserver)new AioLimitColdPalaceHelper.1(this));
+    this.d = paramBaseChatPie;
+    this.j = true;
+    this.k = 1;
+    this.f = ((MessageObserver)new AioLimitColdPalaceHelper.1(this));
   }
   
   private final void a(String paramString, int paramInt)
   {
     Object localObject2 = (AioLimitColdPalaceHelper)this;
-    Object localObject1 = ((AioLimitColdPalaceHelper)localObject2).a();
-    localObject2 = QQEntityManagerFactoryProxy.a(((AioLimitColdPalaceHelper)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject1 = ((AioLimitColdPalaceHelper)localObject2).p();
+    localObject2 = QQEntityManagerFactoryProxy.a(((AioLimitColdPalaceHelper)localObject2).c);
     Object localObject3 = StringCompanionObject.INSTANCE;
     localObject3 = new Object[2];
-    int i = 0;
+    int m = 0;
     localObject3[0] = Long.valueOf(9223372036854775807L);
     localObject3[1] = localObject1;
     localObject1 = String.format("time < %d and issend = 0 and msgtype %s", Arrays.copyOf((Object[])localObject3, localObject3.length));
@@ -114,72 +109,67 @@ public class AioLimitColdPalaceHelper
     {
       paramString = null;
     }
-    paramInt = i;
+    paramInt = m;
     if (paramString != null) {
       paramInt = paramString.size();
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
+    this.h = paramInt;
+    this.g = true;
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("initLimitMatchFriendMsgCount: mHasInsertColdPalaceGrayTip = ");
-      paramString.append(this.c);
+      paramString.append(this.j);
       paramString.append(" mLimitMatchFriendMsgCount = ");
-      paramString.append(this.jdField_a_of_type_Int);
+      paramString.append(this.h);
       paramString.append(" mHasInitInsertGrayTip = ");
-      paramString.append(this.jdField_b_of_type_Boolean);
+      paramString.append(this.i);
       paramString.append(" mColdPalaceGrayTipPosition = ");
-      paramString.append(this.jdField_b_of_type_Int);
+      paramString.append(this.k);
       QLog.i("AioLimitColdPalaceHelper", 2, paramString.toString());
     }
-    if ((this.jdField_b_of_type_Boolean) && (!this.c) && (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int)) {
-      f();
+    if ((this.i) && (!this.j) && (this.h >= this.k)) {
+      o();
     }
   }
   
-  private final boolean c()
-  {
-    return (this.jdField_b_of_type_Int > 0) && (ColdPalaceHelper.a.a((BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a());
-  }
-  
-  private final void h()
+  private final void r()
   {
     if (QLog.isColorLevel()) {
       QLog.i("AioLimitColdPalaceHelper", 2, "initHasInsertColdPalaceGrayTip");
     }
     Object localObject1;
     Object localObject2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((this.c.getMessageFacade() != null) && (this.b.ah != null))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+      localObject1 = this.c.getMessageFacade();
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+        localObject2 = this.b.ah;
         if (localObject2 == null) {
           Intrinsics.throwNpe();
         }
-        localObject2 = ((SessionInfo)localObject2).jdField_a_of_type_JavaLangString;
-        SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+        localObject2 = ((SessionInfo)localObject2).b;
+        SessionInfo localSessionInfo = this.b.ah;
         if (localSessionInfo == null) {
           Intrinsics.throwNpe();
         }
-        localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, localSessionInfo.jdField_a_of_type_Int, new int[] { -5020 });
+        localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, localSessionInfo.a, new int[] { -5020 });
       }
       else
       {
         localObject1 = null;
       }
-      this.c = false;
-      int i;
+      this.j = false;
+      int m;
       if (localObject1 != null) {
-        i = ((List)localObject1).size();
+        m = ((List)localObject1).size();
       } else {
-        i = 0;
+        m = 0;
       }
-      if (i <= 0)
+      if (m <= 0)
       {
-        this.c = false;
+        this.j = false;
       }
       else
       {
@@ -194,203 +184,97 @@ public class AioLimitColdPalaceHelper
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if (((localObject2 instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localObject2).tipParam.jdField_b_of_type_Int == 459802))
+        if (((localObject2 instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localObject2).tipParam.i == 459802))
         {
-          this.c = true;
+          this.j = true;
           break;
-          this.c = true;
+          this.j = true;
         }
       }
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.i = true;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("initHasInsertColdPalaceGrayTip: mHasInsertColdPalaceGrayTip = ");
-      ((StringBuilder)localObject1).append(this.c);
+      ((StringBuilder)localObject1).append(this.j);
       ((StringBuilder)localObject1).append(" mLimitMatchFriendMsgCount = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.h);
       ((StringBuilder)localObject1).append(" mColdPalaceGrayTipPosition = ");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject1).append(this.k);
       QLog.i("AioLimitColdPalaceHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((!this.c) && (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int)) {
-      f();
+    if ((!this.j) && (this.h >= this.k)) {
+      o();
     }
   }
   
-  public int a()
+  private final boolean s()
   {
-    return 1;
-  }
-  
-  @Nullable
-  public Dialog a()
-  {
-    return this.jdField_a_of_type_AndroidAppDialog;
+    return (this.k > 0) && (ColdPalaceHelper.f.a((BaseQQAppInterface)this.c).f());
   }
   
   @NotNull
   public final BaseChatPie a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  }
-  
-  @NotNull
-  public final BaseActivity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  }
-  
-  @NotNull
-  public final QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(UinTypeUtil.b.length * 8);
-    localStringBuilder.append("not in (");
-    int[] arrayOfInt = UinTypeUtil.b;
-    Intrinsics.checkExpressionValueIsNotNull(arrayOfInt, "UinTypeUtil.MSGTYPE_HISTORY_INVISIBLE");
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(UinTypeUtil.b[i]);
-      localStringBuilder.append(",");
-      i += 1;
-    }
-    localStringBuilder.append(-5020);
-    localStringBuilder.append(")");
-    return localStringBuilder.toString();
-  }
-  
-  public final void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "doOnCreate");
-    }
-    Manager localManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-    if (localManager != null)
-    {
-      this.jdField_b_of_type_Int = ((IExpandManager)localManager).g();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)this);
-      return;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.manager.IExpandManager");
+    return this.b;
   }
   
   public void a(@Nullable Dialog paramDialog)
   {
-    this.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    this.e = paramDialog;
   }
   
   protected void a(boolean paramBoolean1, @NotNull String paramString, int paramInt, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    if (StringsKt.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true)) {
-      jdField_a_of_type_ComTencentMobileqqQqexpandChatAioLimitColdPalaceHelper$Companion.a((BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBoolean1, paramInt, paramString, paramBoolean2, (IColdPalaceBanish)this);
+    if (StringsKt.equals(paramString, this.b.ah.b, true)) {
+      a.a((BaseQQAppInterface)this.c, (Context)this.d, paramBoolean1, paramInt, paramString, paramBoolean2, (IColdPalaceBanish)this);
     }
   }
   
-  public final boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final void b()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doOnShowFirst mColdPalaceGrayTipPosition = ");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-      QLog.i("AioLimitColdPalaceHelper", 2, localStringBuilder.toString());
-    }
-    if (!c()) {
-      return;
-    }
-    ThreadManager.executeOnSubThread((Runnable)new AioLimitColdPalaceHelper.doOnShowFirst.1(this));
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final boolean b()
+  @NotNull
+  public final QQAppInterface b()
   {
     return this.c;
   }
   
-  public final int c()
+  public final void b(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    this.h = paramInt;
   }
   
-  public void c()
+  @Nullable
+  public Dialog c()
   {
-    AioLimitColdPalaceHelper.Companion localCompanion = jdField_a_of_type_ComTencentMobileqqQqexpandChatAioLimitColdPalaceHelper$Companion;
-    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Activity localActivity = (Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    Intrinsics.checkExpressionValueIsNotNull(str, "mChatPie.sessionInfo.curFriendUin");
-    localCompanion.a(localBaseQQAppInterface, localActivity, i, str, (IColdPalaceBanish)this);
+    return this.e;
   }
   
   public void d()
   {
-    jdField_a_of_type_ComTencentMobileqqQqexpandChatAioLimitColdPalaceHelper$Companion.a((IColdPalaceBanish)this);
+    AioLimitColdPalaceHelper.Companion localCompanion = a;
+    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.c;
+    Activity localActivity = (Activity)this.d;
+    int m = this.b.ah.a;
+    String str = this.b.ah.b;
+    Intrinsics.checkExpressionValueIsNotNull(str, "mChatPie.sessionInfo.curFriendUin");
+    localCompanion.a(localBaseQQAppInterface, localActivity, m, str, (IColdPalaceBanish)this);
   }
   
-  public final void e()
+  public void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "doOnDestroy");
-    }
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
-    if ((localDialog != null) && (localDialog.isShowing())) {
-      localDialog.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this);
+    a.a((IColdPalaceBanish)this);
   }
   
-  public final void f()
+  public int f()
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("addBanishColdPalaceGrayTip: ");
-      localStringBuilder.append(this.c);
-      QLog.i("AioLimitColdPalaceHelper", 2, localStringBuilder.toString());
-    }
-    if (!this.c)
-    {
-      this.c = true;
-      ThreadManager.executeOnSubThread((Runnable)new AioLimitColdPalaceHelper.addJubaoGrayTip.1(this));
-    }
+    return 1;
   }
   
-  public final void g()
+  @NotNull
+  public final BaseActivity g()
   {
-    URLDrawable localURLDrawable = URLDrawable.getDrawable("https://downv6.qq.com/qq_relation/cold_palace/aio_limit_chat_cold_palace.png", null);
-    Intrinsics.checkExpressionValueIsNotNull(localURLDrawable, "URLDrawable.getDrawable(…D_PALACE_IMAGE_URL, null)");
-    if (1 != localURLDrawable.getStatus())
-    {
-      localURLDrawable.setAutoDownload(true);
-      localURLDrawable.startDownload(true);
-    }
+    return this.d;
   }
   
   @NotNull
@@ -399,10 +283,90 @@ public class AioLimitColdPalaceHelper
     return "AioLimitColdPalaceHelper";
   }
   
+  public final int h()
+  {
+    return this.h;
+  }
+  
+  public final boolean i()
+  {
+    return this.i;
+  }
+  
   @NotNull
   public int[] interestedIn()
   {
     return new int[] { 4, 9, 15 };
+  }
+  
+  public final boolean j()
+  {
+    return this.j;
+  }
+  
+  public final int k()
+  {
+    return this.k;
+  }
+  
+  public final void l()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AioLimitColdPalaceHelper", 2, "doOnCreate");
+    }
+    Manager localManager = this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    if (localManager != null)
+    {
+      this.k = ((IExpandManager)localManager).Q();
+      this.c.addObserver((BusinessObserver)this.f);
+      this.c.addObserver((BusinessObserver)this);
+      return;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.manager.IExpandManager");
+  }
+  
+  public final void m()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doOnShowFirst mColdPalaceGrayTipPosition = ");
+      localStringBuilder.append(this.k);
+      QLog.i("AioLimitColdPalaceHelper", 2, localStringBuilder.toString());
+    }
+    if (!s()) {
+      return;
+    }
+    ThreadManager.executeOnSubThread((Runnable)new AioLimitColdPalaceHelper.doOnShowFirst.1(this));
+  }
+  
+  public final void n()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AioLimitColdPalaceHelper", 2, "doOnDestroy");
+    }
+    Dialog localDialog = this.e;
+    if ((localDialog != null) && (localDialog.isShowing())) {
+      localDialog.dismiss();
+    }
+    this.c.removeObserver((BusinessObserver)this.f);
+    this.c.removeObserver((BusinessObserver)this);
+  }
+  
+  public final void o()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addBanishColdPalaceGrayTip: ");
+      localStringBuilder.append(this.j);
+      QLog.i("AioLimitColdPalaceHelper", 2, localStringBuilder.toString());
+    }
+    if (!this.j)
+    {
+      this.j = true;
+      ThreadManager.executeOnSubThread((Runnable)new AioLimitColdPalaceHelper.addJubaoGrayTip.1(this));
+    }
   }
   
   public void onMoveToState(int paramInt)
@@ -414,18 +378,49 @@ public class AioLimitColdPalaceHelper
         if (paramInt != 15) {
           return;
         }
-        e();
+        n();
         return;
       }
-      b();
+      m();
       return;
     }
-    a();
+    l();
+  }
+  
+  @Nullable
+  public String p()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(UinTypeUtil.b.length * 8);
+    localStringBuilder.append("not in (");
+    int[] arrayOfInt = UinTypeUtil.b;
+    Intrinsics.checkExpressionValueIsNotNull(arrayOfInt, "UinTypeUtil.MSGTYPE_HISTORY_INVISIBLE");
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
+    {
+      localStringBuilder.append(UinTypeUtil.b[m]);
+      localStringBuilder.append(",");
+      m += 1;
+    }
+    localStringBuilder.append(-5020);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
+  }
+  
+  public final void q()
+  {
+    URLDrawable localURLDrawable = URLDrawable.getDrawable("https://downv6.qq.com/qq_relation/cold_palace/aio_limit_chat_cold_palace.png", null);
+    Intrinsics.checkExpressionValueIsNotNull(localURLDrawable, "URLDrawable.getDrawable(…D_PALACE_IMAGE_URL, null)");
+    if (1 != localURLDrawable.getStatus())
+    {
+      localURLDrawable.setAutoDownload(true);
+      localURLDrawable.startDownload(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.AioLimitColdPalaceHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ class DataLineMsgProxy$13$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     int k = 0;
     int i = 0;
     int j = k;
     if (localObject != null)
     {
       j = k;
-      if (DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
+      if (DataLineMsgProxy.a(this.b.this$0) != null)
       {
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject = this.a.iterator();
         for (;;)
         {
           j = i;
@@ -29,20 +29,20 @@ class DataLineMsgProxy$13$1
             break;
           }
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          if (DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
+          if (DataLineMsgProxy.a(this.b.this$0).insertFrontToList(localDataLineMsgRecord)) {
             i += 1;
           }
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.a.a(j);
+    if (this.b.c != null) {
+      this.b.c.a(j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.13.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ class AVSchema$6
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (paramDialogInterface == this.a.f) {
+      this.a.f = null;
     }
-    this.a.b();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.6
  * JD-Core Version:    0.7.0.1
  */

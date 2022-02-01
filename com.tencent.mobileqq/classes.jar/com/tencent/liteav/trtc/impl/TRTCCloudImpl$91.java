@@ -1,26 +1,35 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.audio.TXCLiveBGMPlayer;
+import com.tencent.trtc.TRTCCloudListener.TRTCVideoRenderListener;
+import java.util.HashMap;
 
 class TRTCCloudImpl$91
   implements Runnable
 {
-  TRTCCloudImpl$91(TRTCCloudImpl paramTRTCCloudImpl, int paramInt) {}
+  TRTCCloudImpl$91(TRTCCloudImpl paramTRTCCloudImpl, String paramString, int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener) {}
   
   public void run()
   {
-    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setBGMVolume ");
-    localStringBuilder.append(this.val$volume);
-    localTRTCCloudImpl.apiLog(localStringBuilder.toString());
-    float f = this.val$volume / 100.0F;
-    TXCLiveBGMPlayer.getInstance().setVolume(f);
+    this.this$0.apiLog(String.format("setRemoteVideoRenderListener userid:%s pixelFormat:%d bufferType:%d", new Object[] { this.val$userId, Integer.valueOf(this.val$pixelFormat), Integer.valueOf(this.val$bufferType) }));
+    if (this.val$listener == null)
+    {
+      this.this$0.mRenderListenerMap.remove(this.val$userId);
+    }
+    else
+    {
+      TRTCCloudImpl.RenderListenerAdapter localRenderListenerAdapter = new TRTCCloudImpl.RenderListenerAdapter();
+      localRenderListenerAdapter.bufferType = this.val$bufferType;
+      localRenderListenerAdapter.pixelFormat = this.val$pixelFormat;
+      localRenderListenerAdapter.listener = this.val$listener;
+      this.this$0.mRenderListenerMap.put(this.val$userId, localRenderListenerAdapter);
+      TRTCCloudImpl.access$7902(this.this$0, true);
+    }
+    this.this$0.mRoomInfo.forEachUser(new TRTCCloudImpl.91.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.91
  * JD-Core Version:    0.7.0.1
  */

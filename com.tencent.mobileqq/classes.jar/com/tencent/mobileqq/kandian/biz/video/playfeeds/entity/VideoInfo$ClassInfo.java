@@ -8,37 +8,23 @@ public class VideoInfo$ClassInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ClassInfo> CREATOR = new VideoInfo.ClassInfo.1();
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  public long a = 0L;
+  public String b = "";
+  public long c = 0L;
+  public String d = "";
+  public long e = 0L;
+  public String f = "";
   
-  public VideoInfo$ClassInfo()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public VideoInfo$ClassInfo() {}
   
   protected VideoInfo$ClassInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readLong();
+    this.f = paramParcel.readString();
   }
   
   public int describeContents()
@@ -48,17 +34,17 @@ public class VideoInfo$ClassInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.ClassInfo
  * JD-Core Version:    0.7.0.1
  */

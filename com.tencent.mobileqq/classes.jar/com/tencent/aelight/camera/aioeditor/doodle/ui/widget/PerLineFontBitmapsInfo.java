@@ -14,30 +14,29 @@ import java.util.Random;
 
 public class PerLineFontBitmapsInfo
 {
-  public int a;
-  public TextPaint a;
-  public ArrayList<FontBitmapInfo> a;
+  public TextPaint a = new TextPaint();
   public int b;
   public int c;
   public int d;
   public int e;
-  public int f = 0;
+  public int f;
+  public ArrayList<FontBitmapInfo> g;
+  public int h = 0;
   
   public PerLineFontBitmapsInfo(int paramInt1, int paramInt2, Typeface paramTypeface, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.a.setAntiAlias(true);
     if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      this.a.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
+    this.a.setDither(true);
+    this.a.setTextSize(paramInt1);
+    this.a.setColor(paramInt2);
+    this.a.setTypeface(paramTypeface);
+    this.b = paramInt3;
+    this.c = paramInt4;
+    this.d = paramInt5;
+    this.e = paramInt6;
   }
   
   public static int a()
@@ -49,7 +48,7 @@ public class PerLineFontBitmapsInfo
   public static PerLineFontBitmapsInfo a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, AnimStateTypeEvaluator paramAnimStateTypeEvaluator)
   {
     paramTypeface = new PerLineFontBitmapsInfo(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
-    paramTypeface.f = 1;
+    paramTypeface.h = 1;
     paramTypeface.a(paramCharSequence, paramAnimStateTypeEvaluator);
     return paramTypeface;
   }
@@ -74,10 +73,10 @@ public class PerLineFontBitmapsInfo
   
   public void a(CharSequence paramCharSequence, AnimStateTypeEvaluator paramAnimStateTypeEvaluator, int paramInt)
   {
-    this.e = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length()));
+    this.f = ((int)this.a.measureText(paramCharSequence, 0, paramCharSequence.length()));
     if (paramInt != 0)
     {
-      j = this.e;
+      j = this.f;
       if (paramInt > j)
       {
         j = (paramInt - j) / (paramCharSequence.length() - 1);
@@ -86,7 +85,7 @@ public class PerLineFontBitmapsInfo
     }
     int j = 0;
     label57:
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.g = new ArrayList();
     int k = 0;
     paramInt = 0;
     while (k < paramCharSequence.length())
@@ -94,37 +93,37 @@ public class PerLineFontBitmapsInfo
       int i = paramCharSequence.charAt(k);
       if (i == 32)
       {
-        paramInt += (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("0", 0, 1);
+        paramInt += (int)this.a.measureText("0", 0, 1);
       }
       else
       {
         FontBitmapInfo localFontBitmapInfo = new FontBitmapInfo();
         String str = new String(new char[] { i });
-        int m = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str, 0, str.length());
-        Object localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+        int m = (int)this.a.measureText(str, 0, str.length());
+        Object localObject = this.a.getFontMetrics();
         float f1 = ((Paint.FontMetrics)localObject).bottom;
         float f2 = ((Paint.FontMetrics)localObject).top;
         float f3 = Math.abs(((Paint.FontMetrics)localObject).ascent);
         localObject = Bitmap.createBitmap(m, (int)(f1 - f2), Bitmap.Config.ARGB_8888);
-        new Canvas((Bitmap)localObject).drawText(str, 0.0F, f3, this.jdField_a_of_type_AndroidTextTextPaint);
-        if (this.f == 0) {
-          localFontBitmapInfo.b = paramAnimStateTypeEvaluator.a("", this.c + a(), this.d, 0, 255, new LinearInterpolator());
+        new Canvas((Bitmap)localObject).drawText(str, 0.0F, f3, this.a);
+        if (this.h == 0) {
+          localFontBitmapInfo.c = paramAnimStateTypeEvaluator.a("", this.d + a(), this.e, 0, 255, new LinearInterpolator());
         } else {
-          localFontBitmapInfo.b = paramAnimStateTypeEvaluator.a("", this.c + this.d * k / paramCharSequence.length(), this.d, 0, 255, new LinearInterpolator());
+          localFontBitmapInfo.c = paramAnimStateTypeEvaluator.a("", this.d + this.e * k / paramCharSequence.length(), this.e, 0, 255, new LinearInterpolator());
         }
-        localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+        localFontBitmapInfo.a = ((Bitmap)localObject);
         if (k == 0)
         {
-          localFontBitmapInfo.jdField_a_of_type_Int = paramInt;
-          m = localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+          localFontBitmapInfo.b = paramInt;
+          m = localFontBitmapInfo.a.getWidth();
         }
         else
         {
-          localFontBitmapInfo.jdField_a_of_type_Int = (paramInt + j);
-          m = localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j;
+          localFontBitmapInfo.b = (paramInt + j);
+          m = localFontBitmapInfo.a.getWidth() + j;
         }
         paramInt += m;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localFontBitmapInfo);
+        this.g.add(localFontBitmapInfo);
       }
       k += 1;
     }
@@ -132,7 +131,7 @@ public class PerLineFontBitmapsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.PerLineFontBitmapsInfo
  * JD-Core Version:    0.7.0.1
  */

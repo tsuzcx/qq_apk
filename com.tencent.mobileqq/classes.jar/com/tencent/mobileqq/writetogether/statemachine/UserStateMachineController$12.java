@@ -15,12 +15,12 @@ class UserStateMachineController$12
   public void a(UserState paramUserState)
   {
     super.a(paramUserState);
-    UserStateMachineController.a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController).b(this.jdField_a_of_type_JavaLangString);
+    UserStateMachineController.c(this.a).b(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.12
  * JD-Core Version:    0.7.0.1
  */

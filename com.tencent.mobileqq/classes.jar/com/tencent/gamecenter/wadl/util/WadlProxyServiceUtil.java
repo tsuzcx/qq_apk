@@ -2,35 +2,35 @@ package com.tencent.gamecenter.wadl.util;
 
 public class WadlProxyServiceUtil
 {
-  private static WadlProxyServiceWrap a;
   public static String a = "WadlProxyServiceUtil";
+  private static WadlProxyServiceWrap b;
   
   public static WadlProxyServiceWrap a()
   {
-    if (jdField_a_of_type_ComTencentGamecenterWadlUtilWadlProxyServiceWrap == null) {
-      synchronized (jdField_a_of_type_JavaLangString)
+    if (b == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_ComTencentGamecenterWadlUtilWadlProxyServiceWrap == null) {
-          jdField_a_of_type_ComTencentGamecenterWadlUtilWadlProxyServiceWrap = new WadlProxyServiceWrap();
+        if (b == null) {
+          b = new WadlProxyServiceWrap();
         }
       }
     }
-    return jdField_a_of_type_ComTencentGamecenterWadlUtilWadlProxyServiceWrap;
+    return b;
   }
   
-  public static void a()
+  public static void b()
   {
-    WadlProxyServiceWrap localWadlProxyServiceWrap = jdField_a_of_type_ComTencentGamecenterWadlUtilWadlProxyServiceWrap;
+    WadlProxyServiceWrap localWadlProxyServiceWrap = b;
     if (localWadlProxyServiceWrap != null)
     {
       localWadlProxyServiceWrap.c();
-      jdField_a_of_type_ComTencentGamecenterWadlUtilWadlProxyServiceWrap = null;
+      b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil
  * JD-Core Version:    0.7.0.1
  */

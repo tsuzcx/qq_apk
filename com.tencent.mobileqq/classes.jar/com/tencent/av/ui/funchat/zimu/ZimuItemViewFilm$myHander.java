@@ -8,25 +8,25 @@ import java.lang.ref.WeakReference;
 class ZimuItemViewFilm$myHander
   extends Handler
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<ZimuItemViewFilm> jdField_a_of_type_JavaLangRefWeakReference;
+  final String a;
+  WeakReference<ZimuItemViewFilm> b;
   
   ZimuItemViewFilm$myHander(String paramString, ZimuItemViewFilm paramZimuItemViewFilm)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramZimuItemViewFilm);
+    this.a = paramString;
+    this.b = new WeakReference(paramZimuItemViewFilm);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.b.get();
     if (localZimuItemViewFilm != null)
     {
       if (paramMessage.what != 0) {
         return;
       }
       ZimuItemViewFilm.a(localZimuItemViewFilm);
-      AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
+      AVLog.printColorLog(this.a, "ITEM_DISPEAR");
     }
   }
 }

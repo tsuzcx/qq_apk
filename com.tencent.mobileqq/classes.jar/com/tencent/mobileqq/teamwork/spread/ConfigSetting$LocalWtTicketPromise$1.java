@@ -11,13 +11,13 @@ class ConfigSetting$LocalWtTicketPromise$1
   {
     ConfigSetting localConfigSetting = (ConfigSetting)ConfigSetting.LocalWtTicketPromise.a(this.this$0).get();
     if (localConfigSetting != null) {
-      ConfigSetting.a(localConfigSetting, ConfigSetting.LocalWtTicketPromise.a(this.this$0));
+      ConfigSetting.a(localConfigSetting, ConfigSetting.LocalWtTicketPromise.b(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1
  * JD-Core Version:    0.7.0.1
  */

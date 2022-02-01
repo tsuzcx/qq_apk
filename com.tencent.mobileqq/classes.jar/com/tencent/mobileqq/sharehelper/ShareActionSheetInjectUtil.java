@@ -11,24 +11,23 @@ import java.util.HashMap;
 public class ShareActionSheetInjectUtil
 {
   @ConfigInject(configPath="Business/qqactionsheet/src/main/resources/Inject_actionsheet_share_config.yml", version=1)
-  public static ArrayList<Class<? extends IShareActionInterface>> a;
+  public static HashMap<String, Class<? extends IShareBusinessInterface>> a = new HashMap();
   @ConfigInject(configPath="Business/qqactionsheet/src/main/resources/Inject_actionsheet_share_config.yml", version=1)
-  public static HashMap<String, Class<? extends IShareBusinessInterface>> a;
+  public static ArrayList<Class<? extends IShareActionInterface>> b;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("avShareResultPic", AVGameShareResultPic.class);
-    jdField_a_of_type_JavaUtilHashMap.put("avShareResultLink", AVGameShareResultLink.class);
-    jdField_a_of_type_JavaUtilHashMap.put("avShareH5Entry", AVGameShareH5Entry.class);
-    jdField_a_of_type_JavaUtilHashMap.put("avShareEntry", AVGameShareEntry.class);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(ShareActionSheetInject.class);
+    a.put("avShareResultPic", AVGameShareResultPic.class);
+    a.put("avShareResultLink", AVGameShareResultLink.class);
+    a.put("avShareH5Entry", AVGameShareH5Entry.class);
+    a.put("avShareEntry", AVGameShareEntry.class);
+    b = new ArrayList();
+    b.add(ShareActionSheetInject.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.ShareActionSheetInjectUtil
  * JD-Core Version:    0.7.0.1
  */

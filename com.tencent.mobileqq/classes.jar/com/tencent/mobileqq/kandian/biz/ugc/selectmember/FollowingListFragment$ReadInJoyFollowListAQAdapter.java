@@ -17,14 +17,14 @@ class FollowingListFragment$ReadInJoyFollowListAQAdapter
   
   protected void a(View paramView, ResultRecord paramResultRecord)
   {
-    if ((paramView != null) && (FollowingListFragment.a(this.b) != null) && (FollowingListFragment.a(this.b).a() != null))
+    if ((paramView != null) && (FollowingListFragment.c(this.b) != null) && (FollowingListFragment.c(this.b).c() != null))
     {
-      if (FollowingListFragment.a(this.b).a().isEmpty()) {
+      if (FollowingListFragment.c(this.b).c().isEmpty()) {
         return;
       }
-      paramView = (CheckBox)paramView.findViewById(2131364613);
-      paramView.setBackgroundResource(2130849695);
-      if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
+      paramView = (CheckBox)paramView.findViewById(2131430688);
+      paramView.setBackgroundResource(2130851400);
+      if (FollowingListFragment.c(this.b).c().contains(paramResultRecord.a()))
       {
         paramView.setEnabled(false);
         return;
@@ -35,7 +35,7 @@ class FollowingListFragment$ReadInJoyFollowListAQAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.FollowingListFragment.ReadInJoyFollowListAQAdapter
  * JD-Core Version:    0.7.0.1
  */

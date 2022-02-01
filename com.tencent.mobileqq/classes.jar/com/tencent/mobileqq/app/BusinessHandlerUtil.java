@@ -24,7 +24,7 @@ public class BusinessHandlerUtil
         QLog.d("msgCmdFilter", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131701481));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131899505));
       ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
       localObject = ((StringBuilder)localObject).toString();
       ReportCenter.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), paramString, 1000277, (String)localObject, true);
@@ -166,7 +166,7 @@ public class BusinessHandlerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BusinessHandlerUtil
  * JD-Core Version:    0.7.0.1
  */

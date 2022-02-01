@@ -22,9 +22,9 @@ class DownloadDependRes$2
     QLog.w(str, 1, localStringBuilder.toString());
     try
     {
-      this.a.a = IArConfigManager.Stub.a(paramIBinder);
-      this.a.a.a(DownloadDependRes.a(this.a));
-      this.a.a.c();
+      this.a.c = IArConfigManager.Stub.a(paramIBinder);
+      this.a.c.a(DownloadDependRes.a(this.a));
+      this.a.c.h();
       return;
     }
     catch (Exception paramComponentName)
@@ -46,7 +46,7 @@ class DownloadDependRes$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.DownloadDependRes.2
  * JD-Core Version:    0.7.0.1
  */

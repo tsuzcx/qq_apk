@@ -22,13 +22,13 @@ public class CustomViewPager
   extends ViewPager
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  public float a;
   public GestureDetector.SimpleOnGestureListener a;
-  public BetterGestureDetector a;
-  public boolean a;
-  public float b;
+  public BetterGestureDetector b = new BetterGestureDetector(paramContext, this);
   public float c;
   public float d;
+  public float e;
+  public float f;
+  public boolean g = true;
   
   public CustomViewPager(Context paramContext)
   {
@@ -38,9 +38,7 @@ public class CustomViewPager
   public CustomViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsBetterGestureDetector = new BetterGestureDetector(paramContext, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsBetterGestureDetector.a(this);
+    this.b.a(this);
   }
   
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
@@ -81,7 +79,7 @@ public class CustomViewPager
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onDoubleTap(paramMotionEvent);
     }
@@ -90,7 +88,7 @@ public class CustomViewPager
   
   public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onDoubleTapEvent(paramMotionEvent);
     }
@@ -99,7 +97,7 @@ public class CustomViewPager
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onDown(paramMotionEvent);
     }
@@ -108,7 +106,7 @@ public class CustomViewPager
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
@@ -117,7 +115,7 @@ public class CustomViewPager
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return false;
     }
     try
@@ -138,7 +136,7 @@ public class CustomViewPager
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       localSimpleOnGestureListener.onLongPress(paramMotionEvent);
     }
@@ -146,7 +144,7 @@ public class CustomViewPager
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
@@ -155,7 +153,7 @@ public class CustomViewPager
   
   public void onShowPress(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       localSimpleOnGestureListener.onShowPress(paramMotionEvent);
     }
@@ -163,7 +161,7 @@ public class CustomViewPager
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onSingleTapConfirmed(paramMotionEvent);
     }
@@ -172,7 +170,7 @@ public class CustomViewPager
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
     if (localSimpleOnGestureListener != null) {
       return localSimpleOnGestureListener.onSingleTapUp(paramMotionEvent);
     }
@@ -181,8 +179,8 @@ public class CustomViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryUtilsBetterGestureDetector.a(paramMotionEvent);
-    if (!this.jdField_a_of_type_Boolean) {
+    boolean bool = this.b.a(paramMotionEvent);
+    if (!this.g) {
       return bool;
     }
     int i = paramMotionEvent.getAction();
@@ -192,11 +190,11 @@ public class CustomViewPager
       {
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        this.jdField_a_of_type_Float += Math.abs(f1 - this.c);
-        this.b += Math.abs(f2 - this.d);
-        this.c = f1;
-        this.d = f2;
-        if (this.jdField_a_of_type_Float <= this.b)
+        this.c += Math.abs(f1 - this.e);
+        this.d += Math.abs(f2 - this.f);
+        this.e = f1;
+        this.f = f2;
+        if (this.c <= this.d)
         {
           getParent().requestDisallowInterceptTouchEvent(false);
           return false;
@@ -205,10 +203,10 @@ public class CustomViewPager
     }
     else
     {
-      this.b = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
-      this.c = paramMotionEvent.getX();
-      this.d = paramMotionEvent.getY();
+      this.d = 0.0F;
+      this.c = 0.0F;
+      this.e = paramMotionEvent.getX();
+      this.f = paramMotionEvent.getY();
     }
     try
     {
@@ -233,12 +231,12 @@ public class CustomViewPager
   
   public void setGestureListener(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = paramSimpleOnGestureListener;
+    this.a = paramSimpleOnGestureListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

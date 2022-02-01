@@ -11,17 +11,17 @@ class PasswordToggleEndIconDelegate$2
   
   public void a(@NonNull TextInputLayout paramTextInputLayout)
   {
-    EditText localEditText = paramTextInputLayout.a();
+    EditText localEditText = paramTextInputLayout.getEditText();
     paramTextInputLayout.setEndIconVisible(true);
     paramTextInputLayout.setEndIconCheckable(true);
-    this.a.a.setChecked(true ^ PasswordToggleEndIconDelegate.a(this.a));
-    localEditText.removeTextChangedListener(PasswordToggleEndIconDelegate.a(this.a));
-    localEditText.addTextChangedListener(PasswordToggleEndIconDelegate.a(this.a));
+    this.a.c.setChecked(true ^ PasswordToggleEndIconDelegate.a(this.a));
+    localEditText.removeTextChangedListener(PasswordToggleEndIconDelegate.b(this.a));
+    localEditText.addTextChangedListener(PasswordToggleEndIconDelegate.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.PasswordToggleEndIconDelegate.2
  * JD-Core Version:    0.7.0.1
  */

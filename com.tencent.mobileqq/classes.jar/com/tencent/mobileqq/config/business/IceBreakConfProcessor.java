@@ -19,7 +19,7 @@ public class IceBreakConfProcessor
   public IceBreakConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return IceBreakConfBean.a(paramArrayOfQConfItem[0].a);
+      return IceBreakConfBean.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -73,7 +73,7 @@ public class IceBreakConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.IceBreakConfProcessor
  * JD-Core Version:    0.7.0.1
  */

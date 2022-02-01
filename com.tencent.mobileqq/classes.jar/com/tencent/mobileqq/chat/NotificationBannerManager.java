@@ -55,10 +55,10 @@ public class NotificationBannerManager
     ReportController.a(this.a, "dc00898", "", "", "0X8009EDE", "0X8009EDE", 23, 0, "", "", "", "");
   }
   
-  private boolean c()
+  private boolean d()
   {
-    long l = SharedPreUtils.c(this.a.getCurrentUin());
-    return System.currentTimeMillis() - l < NotificationBannerConfProcessor.a().a();
+    long l = SharedPreUtils.o(this.a.getCurrentUin());
+    return System.currentTimeMillis() - l < NotificationBannerConfProcessor.a().d();
   }
   
   public void a()
@@ -74,7 +74,7 @@ public class NotificationBannerManager
   
   public void a(BannerManager paramBannerManager, Message paramMessage)
   {
-    if (b())
+    if (c())
     {
       b(paramBannerManager, paramMessage);
       return;
@@ -86,7 +86,7 @@ public class NotificationBannerManager
   {
     paramView = (TipsBar)paramView;
     a(paramBannerManager, null, paramView);
-    if (b())
+    if (c())
     {
       paramView.setVisibility(0);
       return;
@@ -96,17 +96,17 @@ public class NotificationBannerManager
   
   public void a(BannerManager paramBannerManager, BaseActivity paramBaseActivity, TipsBar paramTipsBar)
   {
-    String str1 = NotificationBannerConfProcessor.a().a();
-    String str2 = NotificationBannerConfProcessor.a().b();
-    paramTipsBar.setTipsIcon(this.a.getApp().getResources().getDrawable(2130841360));
+    String str1 = NotificationBannerConfProcessor.a().b();
+    String str2 = NotificationBannerConfProcessor.a().c();
+    paramTipsBar.setTipsIcon(this.a.getApp().getResources().getDrawable(2130842161));
     paramTipsBar.setTipsText(str1);
-    paramTipsBar.a().setClickable(false);
+    paramTipsBar.getButton().setClickable(false);
     paramTipsBar.setButtonText(str2);
     paramTipsBar.b(true);
     if ((paramTipsBar instanceof AdvancedTipsBar)) {
-      ((AdvancedTipsBar)paramTipsBar).d();
+      ((AdvancedTipsBar)paramTipsBar).f();
     }
-    paramTipsBar.a().setBackgroundResource(0);
+    paramTipsBar.getButton().setBackgroundResource(0);
     paramTipsBar.setCloseListener(new NotificationBannerManager.1(this, paramBannerManager));
     if (paramBaseActivity != null) {
       paramTipsBar.setOriginalOnClickListener(new NotificationBannerManager.2(this, paramBaseActivity));
@@ -114,7 +114,7 @@ public class NotificationBannerManager
     paramTipsBar.setVisibility(8);
   }
   
-  public boolean a()
+  public boolean b()
   {
     boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
     if (QLog.isColorLevel()) {
@@ -123,11 +123,11 @@ public class NotificationBannerManager
     return bool;
   }
   
-  public boolean b()
+  public boolean c()
   {
     boolean bool1 = NotificationBannerConfProcessor.a().a();
-    boolean bool2 = a();
-    boolean bool3 = c();
+    boolean bool2 = b();
+    boolean bool3 = d();
     if (QLog.isColorLevel()) {
       QLog.d("NotificationBannerManager", 2, new Object[] { "bannerVisible: invoked. ", " confVisible: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(bool2), " limitedByDuration: ", Boolean.valueOf(bool3) });
     }
@@ -138,7 +138,7 @@ public class NotificationBannerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.chat.NotificationBannerManager
  * JD-Core Version:    0.7.0.1
  */

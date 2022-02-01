@@ -21,14 +21,14 @@ class QZoneMsgFragment$6
       i = 0;
     }
     localObject = (RelativeLayout.LayoutParams)QZoneMsgFragment.access$500(this.this$0).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.b(i);
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.dpToPx(i);
     QZoneMsgFragment.access$500(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
     QZoneMsgFragment.access$600(this.this$0).updateData(this.val$datas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.6
  * JD-Core Version:    0.7.0.1
  */

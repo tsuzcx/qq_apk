@@ -128,8 +128,8 @@ public class EmoticonPanelSettingHelper
   public void initBefore()
   {
     EmoticonMainPanel localEmoticonMainPanel = ((EmoticonPanelController)this.mPanelController).getPanel();
-    this.mMoreEmoticonButton = ((ImageView)localEmoticonMainPanel.findViewById(2131363975));
-    this.mEmoticonSettingBtn = ((ImageView)localEmoticonMainPanel.findViewById(2131364064));
+    this.mMoreEmoticonButton = ((ImageView)localEmoticonMainPanel.findViewById(2131429934));
+    this.mEmoticonSettingBtn = ((ImageView)localEmoticonMainPanel.findViewById(2131430022));
     this.mMoreEmoticonButton.setOnClickListener(this);
     this.mEmoticonSettingBtn.setOnClickListener(this);
     if ((((EmoticonPanelController)this.mPanelController).getBusinessType() == 3) || (this.mHideSettingButton) || (((EmoticonPanelController)this.mPanelController).getBasePanelView().mHideAllSettingTabs)) {
@@ -285,13 +285,13 @@ public class EmoticonPanelSettingHelper
         else
         {
           this.mMoreEmoticonButton.setVisibility(0);
-          this.mMoreEmoticonButton.setImageResource(2130847370);
+          this.mMoreEmoticonButton.setImageResource(2130849021);
         }
       }
       else if ((!((EmoticonPanelExtendHelper)((EmoticonPanelController)this.mPanelController).getHelper(1)).isShowExtendPanel()) && (this.mBtnStatus == 2) && (!localEmoticonPanelParams.disableMoreEmotionButton))
       {
         this.mMoreEmoticonButton.setVisibility(0);
-        this.mMoreEmoticonButton.setImageResource(2130847359);
+        this.mMoreEmoticonButton.setImageResource(2130849010);
         this.mMoreEmoticonButton.setPadding((int)(((EmoticonPanelController)this.mPanelController).getBasePanelView().density * 10.0F), 0, 0, 0);
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelSettingHelper", 2, "onPageSelected, show del pic");
@@ -327,14 +327,14 @@ public class EmoticonPanelSettingHelper
         else
         {
           this.mMoreEmoticonButton.setVisibility(0);
-          this.mMoreEmoticonButton.setImageResource(2130847370);
+          this.mMoreEmoticonButton.setImageResource(2130849021);
           this.mMoreEmoticonButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
       }
       else if ((!((EmoticonPanelExtendHelper)((EmoticonPanelController)this.mPanelController).getHelper(1)).isShowExtendPanel()) && (this.mBtnStatus == 2) && (!localEmoticonPanelParams.disableMoreEmotionButton))
       {
         this.mMoreEmoticonButton.setVisibility(0);
-        this.mMoreEmoticonButton.setImageResource(2130847359);
+        this.mMoreEmoticonButton.setImageResource(2130849010);
         this.mMoreEmoticonButton.setScaleType(ImageView.ScaleType.CENTER);
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelSettingHelper", 2, "onPageSelected, show del pic");
@@ -352,7 +352,7 @@ public class EmoticonPanelSettingHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSettingHelper
  * JD-Core Version:    0.7.0.1
  */

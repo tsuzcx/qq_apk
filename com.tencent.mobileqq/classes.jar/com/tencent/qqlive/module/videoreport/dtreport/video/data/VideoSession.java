@@ -10,9 +10,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VideoSession
 {
   private static final long INVALID_PLAY_TIME = -1L;
+  private ActionRecorder actionRecorder = new ActionRecorder();
   private String contentId;
   private int contentType;
-  private Object curPage;
+  private Map<String, Object> curPage;
   private Map<String, Object> customParamsMap = new ConcurrentHashMap();
   private boolean isBizReady;
   private boolean isForceReportStart;
@@ -76,6 +77,8 @@ public class VideoSession
       this.playEndPosition = paramLong;
       this.playEndReason = paramInt;
       this.videoEndTime = System.currentTimeMillis();
+      this.actionRecorder.end(paramLong);
+      VideoPlayRecorder.dealSumPlayDuration(this);
       return;
     }
     finally {}
@@ -91,7 +94,7 @@ public class VideoSession
     return this.contentType;
   }
   
-  public Object getCurPage()
+  public Map<String, Object> getCurPage()
   {
     return this.curPage;
   }
@@ -124,6 +127,16 @@ public class VideoSession
   public String getPlayedTime()
   {
     return String.valueOf(this.playedTime);
+  }
+  
+  public String getSeekRecord()
+  {
+    return this.actionRecorder.getSeekRecord();
+  }
+  
+  public String getSpeedRatioRecord()
+  {
+    return this.actionRecorder.getSpeedRatioRecord();
   }
   
   public Map<String, Object> getStartParams()
@@ -186,14 +199,19 @@ public class VideoSession
     return this.videoEntity.isIgnoreReport;
   }
   
+  public void seekTo(long paramLong1, long paramLong2)
+  {
+    this.actionRecorder.seekTo(paramLong1, paramLong2);
+  }
+  
   public void setContentType(int paramInt)
   {
     this.contentType = paramInt;
   }
   
-  public void setCurPage(Object paramObject)
+  public void setCurPage(Map<String, Object> paramMap)
   {
-    this.curPage = paramObject;
+    this.curPage = paramMap;
   }
   
   public void setForceReportStart(boolean paramBoolean)
@@ -226,6 +244,11 @@ public class VideoSession
     this.videoStartTime = paramLong;
   }
   
+  public void speedRatioPlay(float paramFloat, long paramLong)
+  {
+    this.actionRecorder.speedRatioPlay(paramFloat, paramLong);
+  }
+  
   public void stagingEnd(long paramLong, int paramInt)
   {
     try
@@ -251,6 +274,8 @@ public class VideoSession
     this.playedTime = 0L;
     this.playType = paramInt2;
     this.videoStartTime = System.currentTimeMillis();
+    this.actionRecorder.start();
+    VideoPlayRecorder.dealVideoIndex(this);
   }
   
   public void updateVideoEntity(VideoBaseEntity paramVideoBaseEntity)
@@ -262,7 +287,7 @@ public class VideoSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoSession
  * JD-Core Version:    0.7.0.1
  */

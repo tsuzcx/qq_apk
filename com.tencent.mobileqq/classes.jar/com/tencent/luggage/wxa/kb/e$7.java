@@ -1,0 +1,25 @@
+package com.tencent.luggage.wxa.kb;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mm.plugin.appbrand.page.u;
+
+class e$7
+  implements DialogInterface.OnClickListener
+{
+  e$7(e parame, com.tencent.luggage.wxa.qw.o paramo, u paramu, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    com.tencent.luggage.wxa.qz.o.d("MicroMsg.JsApiRequestAuthUserAutoFillData", "do not accept the auto fill data protocol");
+    this.a.c = false;
+    this.b.a(this.c, this.d.b("cancel"));
+    e.a(this.d, this.b, this.a);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.kb.e.7
+ * JD-Core Version:    0.7.0.1
+ */

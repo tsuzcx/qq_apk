@@ -17,7 +17,7 @@ class AIOEmoticonUIHelper$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    BaseChatPie localBaseChatPie = this.a.a();
+    BaseChatPie localBaseChatPie = this.a.b();
     if ((paramInt != 6) && (paramInt != 7)) {
       if (paramInt != 9)
       {
@@ -32,8 +32,8 @@ class AIOEmoticonUIHelper$1
     if (localBaseChatPie == null) {
       return;
     }
-    if ((localBaseChatPie.a != null) && (localBaseChatPie.a.isShowing())) {
-      localBaseChatPie.a.dismiss();
+    if ((localBaseChatPie.af != null) && (localBaseChatPie.af.isShowing())) {
+      localBaseChatPie.af.dismiss();
     }
     if (paramObject == null) {
       return;
@@ -46,13 +46,13 @@ class AIOEmoticonUIHelper$1
       if ((localEmoticonResp.keySeq != null) && (!localEmoticonResp.keySeq.equals(""))) {
         paramObject = localEmoticonResp.keySeq;
       } else {
-        paramObject = HardCodeUtil.a(2131701206);
+        paramObject = HardCodeUtil.a(2131899218);
       }
     }
     else
     {
       i = -404;
-      paramObject = HardCodeUtil.a(2131701191);
+      paramObject = HardCodeUtil.a(2131899206);
     }
     if (TextUtils.isEmpty(localEmoticonResp.emoticonId))
     {
@@ -61,12 +61,12 @@ class AIOEmoticonUIHelper$1
       }
       return;
     }
-    ((IEmoticonManagerService)localBaseChatPie.a().getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new AIOEmoticonUIHelper.1.1(this, paramInt, i, paramObject));
+    ((IEmoticonManagerService)localBaseChatPie.i().getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new AIOEmoticonUIHelper.1.1(this, paramInt, i, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.AIOEmoticonUIHelper.1
  * JD-Core Version:    0.7.0.1
  */

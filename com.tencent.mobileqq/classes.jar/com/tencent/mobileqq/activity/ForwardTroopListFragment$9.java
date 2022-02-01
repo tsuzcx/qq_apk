@@ -14,14 +14,14 @@ class ForwardTroopListFragment$9
   public void onClick(View paramView)
   {
     if (!this.a.getBaseActivity().isFinishing()) {
-      ForwardTroopListFragment.a(this.a).dismiss();
+      ForwardTroopListFragment.f(this.a).dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.9
  * JD-Core Version:    0.7.0.1
  */

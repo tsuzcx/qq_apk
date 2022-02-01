@@ -26,55 +26,55 @@ import cooperation.qzone.mobilereport.MobileReportManager;
 public class RelativeLiveFeedsAdapter$RelativeLiveVH
   extends RecyclerView.ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundImageView jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView jdField_d_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  ImageView jdField_e_of_type_AndroidWidgetImageView;
-  TextView jdField_e_of_type_AndroidWidgetTextView;
-  TextView f;
+  RelativeLayout a;
+  RelativeLayout b;
+  RoundImageView c;
+  ImageView d;
+  TextView e;
+  RelativeLayout f;
+  ImageView g;
+  ImageView h;
+  TextView i;
+  TextView j;
+  RelativeLayout k;
+  ImageView l;
+  TextView m;
+  TextView n;
+  ImageView o;
+  TextView p;
   
   public RelativeLiveFeedsAdapter$RelativeLiveVH(RelativeLiveFeedsAdapter paramRelativeLiveFeedsAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370190));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370194));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131370182));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(ImmersiveUtils.dpToPx(8.0F), false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370202));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363022));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363799));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367754));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367755));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367753));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367756));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367757));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367758));
-    this.jdField_d_of_type_AndroidWidgetImageView.setColorFilter(1291845632);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367759));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370200));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368075));
-    this.f = ((TextView)paramView.findViewById(2131371871));
-    this.f.setTextColor(-6775116);
+    this.a = ((RelativeLayout)paramView.findViewById(2131437362));
+    this.b = ((RelativeLayout)paramView.findViewById(2131437366));
+    this.c = ((RoundImageView)paramView.findViewById(2131437353));
+    this.c.setmRadius(ImmersiveUtils.dpToPx(8.0F), false);
+    this.d = ((ImageView)paramView.findViewById(2131437384));
+    this.e = ((TextView)paramView.findViewById(2131428830));
+    this.f = ((RelativeLayout)paramView.findViewById(2131429732));
+    this.g = ((ImageView)paramView.findViewById(2131434321));
+    this.h = ((ImageView)paramView.findViewById(2131434322));
+    this.i = ((TextView)paramView.findViewById(2131434320));
+    this.j = ((TextView)paramView.findViewById(2131434323));
+    this.k = ((RelativeLayout)paramView.findViewById(2131434324));
+    this.l = ((ImageView)paramView.findViewById(2131434325));
+    this.l.setColorFilter(1291845632);
+    this.m = ((TextView)paramView.findViewById(2131434326));
+    this.n = ((TextView)paramView.findViewById(2131437379));
+    this.o = ((ImageView)paramView.findViewById(2131434925));
+    this.p = ((TextView)paramView.findViewById(2131439312));
+    this.p.setTextColor(-6775116);
   }
   
   private void a()
   {
-    if (RelativeLiveFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeLiveFeedsAdapter))
+    if (RelativeLiveFeedsAdapter.a(this.q))
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setAlpha(0.7F);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-16777216);
-      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.f.setTextColor(-6775116);
+      this.b.setAlpha(0.7F);
+      this.b.setBackgroundColor(-16777216);
+      this.n.setTextColor(-1);
+      this.p.setTextColor(-6775116);
     }
   }
   
@@ -85,17 +85,17 @@ public class RelativeLiveFeedsAdapter$RelativeLiveVH
     }
     if (TextUtils.isEmpty(paramRoomItem.icon_info.icon_url.get()))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.d.setVisibility(8);
     }
     else
     {
       localObject1 = paramRoomItem.icon_info.icon_url.get();
       localObject2 = URLDrawableHelperConstants.a;
       localObject1 = VasApngUtil.getApngURLDrawable((String)localObject1, new int[] { 2 }, (Drawable)localObject2, null, null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.d.setImageDrawable((Drawable)localObject1);
+      this.d.setVisibility(0);
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject1 = this.e;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("人气");
     ((StringBuilder)localObject2).append(a(paramRoomItem.icon_info.audience_num.get()));
@@ -115,7 +115,7 @@ public class RelativeLiveFeedsAdapter$RelativeLiveVH
       String str = (String)paramImageView.getTag();
       if ((TextUtils.isEmpty(str)) || (!str.equals(paramString)))
       {
-        paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, RelativeLiveFeedsAdapter.a(), RelativeLiveFeedsAdapter.a()));
+        paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, RelativeLiveFeedsAdapter.e(), RelativeLiveFeedsAdapter.e()));
         paramImageView.setTag(paramString);
       }
     }
@@ -129,68 +129,68 @@ public class RelativeLiveFeedsAdapter$RelativeLiveVH
   private void b(CertifiedAccountRead.GetPortalRsp.RoomItem paramRoomItem)
   {
     paramRoomItem = paramRoomItem.good_info;
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.f.setVisibility(8);
+    this.k.setVisibility(8);
     if (paramRoomItem.has_good.get() == 0)
     {
       QLog.d("RelativeFeedsAdapter", 1, "current display has no goods message");
       return;
     }
-    a(this.jdField_b_of_type_AndroidWidgetImageView, paramRoomItem.pic_url.get());
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramRoomItem.name.get());
+    a(this.g, paramRoomItem.pic_url.get());
+    this.i.setText(paramRoomItem.name.get());
     Object localObject;
     if (!TextUtils.isEmpty(paramRoomItem.price.get()))
     {
       localObject = a(Float.valueOf(paramRoomItem.price.get()));
-      this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.j.setText((CharSequence)localObject);
+      this.f.setVisibility(0);
     }
     if (paramRoomItem.goods_num.get() > 0L)
     {
       if (!TextUtils.isEmpty(paramRoomItem.recomm_url.get())) {
-        a(this.jdField_d_of_type_AndroidWidgetImageView, paramRoomItem.recomm_url.get());
+        a(this.l, paramRoomItem.recomm_url.get());
       } else {
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(new ColorDrawable(1291845632));
+        this.l.setImageDrawable(new ColorDrawable(1291845632));
       }
-      localObject = this.jdField_d_of_type_AndroidWidgetTextView;
+      localObject = this.m;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramRoomItem.goods_num.get());
       localStringBuilder.append("\n好物");
       ((TextView)localObject).setText(localStringBuilder.toString());
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.k.setVisibility(0);
     }
   }
   
   public String a(long paramLong)
   {
-    int i;
+    int i1;
     if ((10000L <= paramLong) && (paramLong < 1000000L))
     {
-      i = (int)(paramLong / 1000L % 10L);
-      int j = (int)(paramLong / 10000L);
-      if (i == 0)
+      i1 = (int)(paramLong / 1000L % 10L);
+      int i2 = (int)(paramLong / 10000L);
+      if (i1 == 0)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
       }
       else
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(".");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
       }
       localStringBuilder.append("w");
       return localStringBuilder.toString();
     }
     if (paramLong >= 1000000L)
     {
-      i = (int)(paramLong / 10000L);
+      i1 = (int)(paramLong / 10000L);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append("w");
       return localStringBuilder.toString();
     }
@@ -202,29 +202,29 @@ public class RelativeLiveFeedsAdapter$RelativeLiveVH
   
   public String a(Float paramFloat)
   {
-    int i;
-    int j;
+    int i1;
+    int i2;
     if ((10000.0F <= paramFloat.floatValue()) && (paramFloat.floatValue() < 1.0E+008F))
     {
-      i = (int)(paramFloat.floatValue() / 100.0F % 100.0F);
-      j = (int)(paramFloat.floatValue() / 10000.0F);
+      i1 = (int)(paramFloat.floatValue() / 100.0F % 100.0F);
+      i2 = (int)(paramFloat.floatValue() / 10000.0F);
       paramFloat = new StringBuilder();
       paramFloat.append("");
-      paramFloat.append(j);
+      paramFloat.append(i2);
       paramFloat.append(".");
-      paramFloat.append(i);
+      paramFloat.append(i1);
       paramFloat.append("万");
       return paramFloat.toString();
     }
     if (paramFloat.floatValue() >= 1.0E+008F)
     {
-      i = (int)(paramFloat.floatValue() / 10000000.0F % 100.0F);
-      j = (int)(paramFloat.floatValue() / 1.0E+008F);
+      i1 = (int)(paramFloat.floatValue() / 10000000.0F % 100.0F);
+      i2 = (int)(paramFloat.floatValue() / 1.0E+008F);
       paramFloat = new StringBuilder();
       paramFloat.append("");
-      paramFloat.append(j);
+      paramFloat.append(i2);
       paramFloat.append(".");
-      paramFloat.append(i);
+      paramFloat.append(i1);
       paramFloat.append("亿");
       return paramFloat.toString();
     }
@@ -236,39 +236,39 @@ public class RelativeLiveFeedsAdapter$RelativeLiveVH
   
   public void a(FeedsItemInfo paramFeedsItemInfo)
   {
-    CertifiedAccountRead.GetPortalRsp.RoomItem localRoomItem = paramFeedsItemInfo.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetPortalRsp$RoomItem;
+    CertifiedAccountRead.GetPortalRsp.RoomItem localRoomItem = paramFeedsItemInfo.b;
     if (localRoomItem == null) {
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView, localRoomItem.pic_url.get());
+    a(this.c, localRoomItem.pic_url.get());
     a();
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(localRoomItem.title.get());
+    this.n.setText(localRoomItem.title.get());
     if (!a(localRoomItem.portrait.get())) {
       return;
     }
-    this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(localRoomItem.portrait.get()));
-    this.f.setText(localRoomItem.nick.get());
+    this.o.setImageDrawable(URLDrawable.getDrawable(localRoomItem.portrait.get()));
+    this.p.setText(localRoomItem.nick.get());
     a(localRoomItem);
     b(localRoomItem);
     if (localRoomItem.room_id.has())
     {
       Object localObject;
-      long l;
+      long l1;
       StringBuilder localStringBuilder;
-      if (RelativeLiveFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeLiveFeedsAdapter) == 0)
+      if (RelativeLiveFeedsAdapter.b(this.q) == 0)
       {
-        if (paramFeedsItemInfo.jdField_a_of_type_Boolean)
+        if (paramFeedsItemInfo.c)
         {
           paramFeedsItemInfo = MobileReportManager.getInstance();
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(localRoomItem.room_id.get());
           ((StringBuilder)localObject).append("");
           localObject = ((StringBuilder)localObject).toString();
-          l = System.currentTimeMillis();
+          l1 = System.currentTimeMillis();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(localRoomItem.room_id.get());
           localStringBuilder.append("");
-          paramFeedsItemInfo.reportActionLive((String)localObject, "25", "qq_live", "tab_page", "subscribe", 101, 1, l, localStringBuilder.toString());
+          paramFeedsItemInfo.reportActionLive((String)localObject, "25", "qq_live", "tab_page", "subscribe", 101, 1, l1, localStringBuilder.toString());
           return;
         }
         paramFeedsItemInfo = MobileReportManager.getInstance();
@@ -276,25 +276,25 @@ public class RelativeLiveFeedsAdapter$RelativeLiveVH
         ((StringBuilder)localObject).append(localRoomItem.room_id.get());
         ((StringBuilder)localObject).append("");
         localObject = ((StringBuilder)localObject).toString();
-        l = System.currentTimeMillis();
+        l1 = System.currentTimeMillis();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(localRoomItem.room_id.get());
         localStringBuilder.append("");
-        paramFeedsItemInfo.reportActionLive((String)localObject, "25", "qq_live", "tab_page", "recommend_room", 101, 1, l, localStringBuilder.toString());
+        paramFeedsItemInfo.reportActionLive((String)localObject, "25", "qq_live", "tab_page", "recommend_room", 101, 1, l1, localStringBuilder.toString());
         return;
       }
-      if (RelativeLiveFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeLiveFeedsAdapter) == 1)
+      if (RelativeLiveFeedsAdapter.b(this.q) == 1)
       {
         paramFeedsItemInfo = MobileReportManager.getInstance();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(localRoomItem.room_id.get());
         ((StringBuilder)localObject).append("");
         localObject = ((StringBuilder)localObject).toString();
-        l = System.currentTimeMillis();
+        l1 = System.currentTimeMillis();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(localRoomItem.room_id.get());
         localStringBuilder.append("");
-        paramFeedsItemInfo.reportActionLive((String)localObject, "25", "qq_live", "find_page", "hot_push", 101, 1, l, localStringBuilder.toString());
+        paramFeedsItemInfo.reportActionLive((String)localObject, "25", "qq_live", "find_page", "hot_push", 101, 1, l1, localStringBuilder.toString());
       }
     }
   }

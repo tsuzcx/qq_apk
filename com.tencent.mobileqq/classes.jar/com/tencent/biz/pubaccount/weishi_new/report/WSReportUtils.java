@@ -7,76 +7,102 @@ import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 
 public class WSReportUtils
 {
-  private static SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 1, 2, 9, 12, 10007 };
-  private static String b = "";
+  private static final int[] a = { 1, 2, 9, 12, 10007 };
+  private static SparseArray<String> b = new SparseArray();
+  private static String c = "";
+  private static String d = "";
+  
+  public static int a(boolean paramBoolean)
+  {
+    int j = WSReportEventConstants.d;
+    int i = 3;
+    if ((j != 1) && (WSReportEventConstants.e != 1) && (!paramBoolean) && (!WSReportEventConstants.c))
+    {
+      if ((WSReportEventConstants.d != 2) && (WSReportEventConstants.e != 2))
+      {
+        if (WSReportEventConstants.d != 3)
+        {
+          if (WSReportEventConstants.e == 3) {
+            return 3;
+          }
+          return 0;
+        }
+      }
+      else {
+        return 2;
+      }
+    }
+    else {
+      i = 1;
+    }
+    return i;
+  }
   
   public static String a()
   {
-    return b;
+    return d;
   }
   
   public static String a(int paramInt)
   {
-    String str = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    String str = (String)b.get(paramInt);
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
     return "";
   }
   
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = c();
-    }
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = WSExpABTestManager.a().d();
-    }
-    return paramString;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_AndroidUtilSparseArray.clear();
-  }
-  
   public static void a(int paramInt, String paramString)
   {
-    jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramString);
+    b.put(paramInt, paramString);
   }
   
   public static void a(String paramString)
   {
-    b = paramString;
+    d = paramString;
   }
   
-  public static boolean a(String paramString)
+  public static String b(String paramString)
   {
-    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "collection_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen"));
-  }
-  
-  public static String b()
-  {
-    return jdField_a_of_type_JavaLangString;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = e();
+    }
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = WSExpABTestManager.a().A();
+    }
+    return paramString;
   }
   
   public static void b()
   {
-    jdField_a_of_type_JavaLangString = "";
+    b.clear();
   }
   
-  public static void b(String paramString)
+  public static String c()
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    return c;
   }
   
-  private static String c()
+  public static void c(String paramString)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    c = paramString;
+  }
+  
+  public static void d()
+  {
+    c = "";
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "collection_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen"));
+  }
+  
+  private static String e()
+  {
+    int[] arrayOfInt = a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -92,7 +118,7 @@ public class WSReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSReportUtils
  * JD-Core Version:    0.7.0.1
  */

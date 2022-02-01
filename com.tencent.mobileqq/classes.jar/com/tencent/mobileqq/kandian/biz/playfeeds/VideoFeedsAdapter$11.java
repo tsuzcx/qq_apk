@@ -14,27 +14,9 @@ class VideoFeedsAdapter$11
 {
   VideoFeedsAdapter$11(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  protected VideoPlayerWrapper a()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      return (VideoPlayerWrapper)this.a.a.a.a;
-    }
-    return null;
-  }
-  
   protected VideoPreDownloadMgr.VideoPreDownloadParam a(VideoInfo paramVideoInfo)
   {
-    return new VideoPreDownloadMgr.VideoPreDownloadParam(paramVideoInfo.jdField_a_of_type_JavaLangString, paramVideoInfo.g, paramVideoInfo.jdField_a_of_type_Int, paramVideoInfo.d);
-  }
-  
-  protected String a()
-  {
-    return "video_feeds";
-  }
-  
-  protected List<VideoInfo> a()
-  {
-    return VideoFeedsAdapter.a(this.a);
+    return new VideoPreDownloadMgr.VideoPreDownloadParam(paramVideoInfo.b, paramVideoInfo.l, paramVideoInfo.a, paramVideoInfo.e);
   }
   
   public List<VideoPreDownloadMgr.VideoPreDownloadParam> a(int paramInt, boolean paramBoolean)
@@ -42,16 +24,34 @@ class VideoFeedsAdapter$11
     ArrayList localArrayList = new ArrayList();
     if (paramInt >= 0)
     {
-      List localList = VideoFeedsAdapter.a(this.a);
+      List localList = VideoFeedsAdapter.p(this.a);
       a(paramInt, paramBoolean, localList, localArrayList);
       b(paramInt - 1, paramBoolean, localList, localArrayList);
     }
     return localArrayList;
   }
+  
+  protected VideoPlayerWrapper b()
+  {
+    if ((this.a.h != null) && (this.a.h.az != null)) {
+      return (VideoPlayerWrapper)this.a.h.az.h;
+    }
+    return null;
+  }
+  
+  protected String c()
+  {
+    return "video_feeds";
+  }
+  
+  protected List<VideoInfo> d()
+  {
+    return VideoFeedsAdapter.p(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.11
  * JD-Core Version:    0.7.0.1
  */

@@ -29,16 +29,16 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject = this.a.a();
+    Object localObject = this.a.o();
     if (localObject != null)
     {
-      if (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.equals(localObject)) {
+      if (!this.a.e.equals(localObject)) {
         return;
       }
       if (paramInt1 == this.a.hashCode())
       {
-        SLog.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        SLog.b(this.a.i, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.d()).r();
         if (localObject != null) {
           ((VideoViewVideoHolder)localObject).c(false);
         }
@@ -49,44 +49,44 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
       if ((paramInt1 == 10002) && (paramInt2 == -1))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.a.b);
+        ((StringBuilder)localObject).append(this.a.i);
         ((StringBuilder)localObject).append(" onActivityResult");
         StoryVideoUploadManager.b(((StringBuilder)localObject).toString());
-        QQToast.a(this.a.b(), this.a.b().getString(2131719035), 1).a();
+        QQToast.makeText(this.a.y(), this.a.y().getString(2131916571), 1).show();
       }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (BottomVideoInfoWidget.a(this.a) != null)) {
-        BottomVideoInfoWidget.a(this.a).a();
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (BottomVideoInfoWidget.g(this.a) != null)) {
+        BottomVideoInfoWidget.g(this.a).a();
       }
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+        QLog.d(this.a.i, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
       }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(paramInt1, paramInt2, paramIntent);
+      if (this.a.s != null) {
+        this.a.s.a(paramInt1, paramInt2, paramIntent);
       }
     }
   }
   
-  public void d()
+  public void e()
   {
-    super.d();
-    if ((LiuHaiUtils.a) && (!ScreenUtil.checkDeviceHasNavigationBar(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (BottomVideoInfoWidget.a(this.a) - UIUtils.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
+    super.e();
+    if ((LiuHaiUtils.b) && (!ScreenUtil.checkDeviceHasNavigationBar(this.a.b.getContext())) && (BottomVideoInfoWidget.h(this.a) - UIUtils.a(this.a.b.getContext(), 9.0F) > 0))
     {
-      Object localObject = BottomVideoInfoWidget.a(this.a).getBackground();
+      Object localObject = BottomVideoInfoWidget.i(this.a).getBackground();
       if ((localObject instanceof StateListDrawable))
       {
         localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
         if (localObject != null) {
-          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167400));
+          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.b.getResources().getColor(2131168476));
         }
       }
     }
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
-    if (BottomVideoInfoWidget.a(this.a) != null) {
-      BottomVideoInfoWidget.a(this.a).a();
+    super.h();
+    if (BottomVideoInfoWidget.f(this.a) != null) {
+      BottomVideoInfoWidget.f(this.a).a();
     }
   }
 }

@@ -16,31 +16,29 @@ import java.util.HashMap;
 public class AVGameShareCreateRoomAction
   extends JumpAction
 {
-  private Activity a;
+  private Activity H = null;
   
   public AVGameShareCreateRoomAction(BaseQQAppInterface paramBaseQQAppInterface, Activity paramActivity)
   {
     super(paramBaseQQAppInterface, paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.H = paramActivity;
   }
   
   public AVGameShareCreateRoomAction(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
     super(paramBaseQQAppInterface, paramContext);
-    this.jdField_a_of_type_AndroidAppActivity = null;
   }
   
-  private void g(String paramString)
+  private void i(String paramString)
   {
-    Intent localIntent = AVGameShareUtil.a().a(this.jdField_a_of_type_AndroidContentContext);
+    Intent localIntent = AVGameShareUtil.a().a(this.b);
     if (localIntent == null)
     {
       QLog.e("AVGameShareCreateRoomAction", 1, "doAction error: intent is null");
       return;
     }
     localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_create_room");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gameType");
+    String str2 = (String)this.f.get("gameType");
     String str1 = str2;
     if ("0".equals(str2)) {
       str1 = String.valueOf(1);
@@ -51,28 +49,28 @@ public class AVGameShareCreateRoomAction
       i = Integer.valueOf(paramString).intValue();
     }
     localIntent.putExtra("avgame_from_type_key", i);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    this.b.startActivity(localIntent);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {
+    if (this.H == null) {
       return;
     }
     int i = 4;
     if (!TextUtils.isEmpty(paramString)) {
       i = Integer.valueOf(paramString).intValue();
     }
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gameType");
+    Object localObject = (String)this.f.get("gameType");
     paramString = (String)localObject;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       paramString = "0";
     }
-    localObject = (IAvGameManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IAvGameManager.class, "");
+    localObject = (IAvGameManager)this.a.getRuntimeService(IAvGameManager.class, "");
     if (localObject != null) {}
     try
     {
-      ((IAvGameManager)localObject).createAvGameRoom(this.jdField_a_of_type_AndroidAppActivity, i, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin(), Integer.parseInt(paramString));
+      ((IAvGameManager)localObject).createAvGameRoom(this.H, i, this.a.getCurrentAccountUin(), Integer.parseInt(paramString));
       return;
     }
     catch (NumberFormatException paramString)
@@ -84,7 +82,7 @@ public class AVGameShareCreateRoomAction
     {
       QLog.d(AVGameRoomCenterFragment.a, 2, " gameType or fromType NumberFormatException");
       return;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131690493, 0).a();
+      QQToast.makeText(this.H, 2, 2131887404, 0).show();
     }
   }
   
@@ -92,14 +90,14 @@ public class AVGameShareCreateRoomAction
   {
     try
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("startFrom");
-      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromType");
+      String str = (String)this.f.get("startFrom");
+      localObject = (String)this.f.get("fromType");
       if ("1".equals(str))
       {
         a((String)localObject);
         return true;
       }
-      g((String)localObject);
+      i((String)localObject);
       return true;
     }
     catch (Exception localException)
@@ -108,14 +106,14 @@ public class AVGameShareCreateRoomAction
       ((StringBuilder)localObject).append("doAction error: ");
       ((StringBuilder)localObject).append(localException.getMessage());
       QLog.e("AVGameShareCreateRoomAction", 1, ((StringBuilder)localObject).toString());
-      b_("AVGameShareCreateRoomAction");
+      h_("AVGameShareCreateRoomAction");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AVGameShareCreateRoomAction
  * JD-Core Version:    0.7.0.1
  */

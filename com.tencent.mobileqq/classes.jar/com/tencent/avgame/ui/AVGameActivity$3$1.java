@@ -12,7 +12,7 @@ class AVGameActivity$3$1
   
   public void run()
   {
-    boolean bool = AVGameBusinessCtrl.b().c();
+    boolean bool = AVGameBusinessCtrl.b().g();
     AVGamePerfReporter localAVGamePerfReporter = AVGamePerfReporter.a();
     int i;
     if (bool) {
@@ -20,7 +20,7 @@ class AVGameActivity$3$1
     } else {
       i = 2;
     }
-    localAVGamePerfReporter.a(i, GameEngine.a().a().a(), GameEngine.a().a().b(), System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    localAVGamePerfReporter.a(i, GameEngine.a().s().i(), GameEngine.a().s().n(), System.currentTimeMillis() - this.a);
   }
 }
 

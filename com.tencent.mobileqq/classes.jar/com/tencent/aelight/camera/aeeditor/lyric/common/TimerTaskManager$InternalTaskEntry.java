@@ -4,16 +4,16 @@ import java.util.concurrent.ScheduledFuture;
 
 class TimerTaskManager$InternalTaskEntry
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentAelightCameraAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
-  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
+  private Runnable a = new TimerTaskManager.InternalTaskEntry.1(this);
+  private long b = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable c;
+  private ScheduledFuture<?> d;
   
   public String toString()
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     boolean bool2 = false;
-    TimerTaskManager.TimerTaskRunnable localTimerTaskRunnable = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable;
+    TimerTaskManager.TimerTaskRunnable localTimerTaskRunnable = this.c;
     boolean bool1 = bool2;
     if (localTimerTaskRunnable != null)
     {
@@ -27,7 +27,7 @@ class TimerTaskManager$InternalTaskEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.common.TimerTaskManager.InternalTaskEntry
  * JD-Core Version:    0.7.0.1
  */

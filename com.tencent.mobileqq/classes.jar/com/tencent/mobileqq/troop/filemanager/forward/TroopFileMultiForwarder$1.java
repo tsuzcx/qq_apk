@@ -13,7 +13,7 @@ class TroopFileMultiForwarder$1
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {
+    if (paramBundle.getLong("troopUin") != this.a.a) {
       return;
     }
     paramBundle = paramBundle.getString("itemKey");
@@ -21,7 +21,7 @@ class TroopFileMultiForwarder$1
       return;
     }
     paramBundle = UUID.fromString(paramBundle);
-    paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+    paramBundle = (TroopFileTransferManager.Item)this.a.b.get(paramBundle);
     if (paramBundle == null) {
       return;
     }
@@ -30,7 +30,7 @@ class TroopFileMultiForwarder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileMultiForwarder.1
  * JD-Core Version:    0.7.0.1
  */

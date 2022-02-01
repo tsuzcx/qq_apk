@@ -13,6 +13,7 @@ import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
 import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONObject;
 
 public class KdLottieView
   extends DiniFlyAnimationView
@@ -21,6 +22,11 @@ public class KdLottieView
   public KdLottieView(Context paramContext)
   {
     super(paramContext);
+  }
+  
+  private void a(JSONObject paramJSONObject, String paramString)
+  {
+    LottieComposition.Factory.fromJson(getContext().getResources(), paramJSONObject, new KdLottieView.3(this, paramString));
   }
   
   public void a(String paramString, VLottie.IVLottieLoadListener paramIVLottieLoadListener)
@@ -34,7 +40,7 @@ public class KdLottieView
     localHttpRequset.paramMap = ((Map)localObject);
     localObject = ViolaSDKManager.getInstance().getHttpAdapter();
     if (localObject != null) {
-      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new KdLottieView.2(this, paramString, paramIVLottieLoadListener), true);
+      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new KdLottieView.4(this, paramString, paramIVLottieLoadListener), true);
     }
   }
   
@@ -82,7 +88,7 @@ public class KdLottieView
     {
       try
       {
-        LottieComposition.Factory.fromJsonString(paramString, new KdLottieView.1(this, paramIVLottieLoadListener));
+        LottieComposition.Factory.fromJsonString(paramString, new KdLottieView.2(this, paramIVLottieLoadListener));
         return;
       }
       catch (Exception paramString)
@@ -95,13 +101,13 @@ public class KdLottieView
     }
     else
     {
-      a(paramString, paramIVLottieLoadListener);
+      ViolaSDKManager.getInstance().postOnThreadPool(new KdLottieView.1(this, paramString, paramIVLottieLoadListener));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.lottie.KdLottieView
  * JD-Core Version:    0.7.0.1
  */

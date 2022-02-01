@@ -13,13 +13,13 @@ class ActivateFriendView$2
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
+    while (i < ActivateFriendView.e(this.a).size())
     {
-      String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
+      String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.e(this.a).get(i)).uin);
       if (paramString.equals(str))
       {
-        paramString = ContactUtils.a(ActivateFriendView.a(this.a), str, false);
-        ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
+        paramString = ContactUtils.a(ActivateFriendView.f(this.a), str, false);
+        ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setNickName(paramString);
         return;
       }
       i += 1;
@@ -29,17 +29,17 @@ class ActivateFriendView$2
   protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
+    while (i < ActivateFriendView.e(this.a).size())
     {
-      String str = ContactUtils.d(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
-      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
+      String str = ContactUtils.d(ActivateFriendView.f(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.e(this.a).get(i)).uin));
+      ((ActivateFriendViewItem)ActivateFriendView.g(this.a).get(i)).setNickName(str);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendView.2
  * JD-Core Version:    0.7.0.1
  */

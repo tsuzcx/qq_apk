@@ -5,18 +5,12 @@ import com.tencent.common.app.AppInterface;
 
 public abstract class PromotionUtils$BasePromotionInfo
 {
-  public long a;
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
-  public String g = "0";
+  public long g = 0L;
   public String h = "0";
-  
-  public PromotionUtils$BasePromotionInfo()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public String i = "0";
+  public boolean j = true;
+  public boolean k = true;
+  public boolean l = false;
   
   public abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
   
@@ -25,18 +19,18 @@ public abstract class PromotionUtils$BasePromotionInfo
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Long = paramBundle.getLong("RecoglizeMask", 0L);
-    this.g = paramBundle.getString("H5Source", "0");
-    this.h = paramBundle.getString("version", "0");
-    this.jdField_a_of_type_Boolean = (paramBundle.getBoolean("disablecloud", false) ^ true);
-    this.c = paramBundle.getBoolean("is_from_h5_entry", false);
-    this.b = false;
+    this.g = paramBundle.getLong("RecoglizeMask", 0L);
+    this.h = paramBundle.getString("H5Source", "0");
+    this.i = paramBundle.getString("version", "0");
+    this.j = (paramBundle.getBoolean("disablecloud", false) ^ true);
+    this.l = paramBundle.getBoolean("is_from_h5_entry", false);
+    this.k = false;
     a(paramAppInterface, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.utils.PromotionUtils.BasePromotionInfo
  * JD-Core Version:    0.7.0.1
  */

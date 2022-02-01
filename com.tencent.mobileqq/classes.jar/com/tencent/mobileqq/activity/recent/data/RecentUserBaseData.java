@@ -29,29 +29,19 @@ public abstract class RecentUserBaseData
     throw new NullPointerException("RecentUser is null");
   }
   
-  public RecentUser a()
-  {
-    return this.mUser;
-  }
-  
-  public String a()
-  {
-    return this.mUser.troopUin;
-  }
-  
   public void a(RecentUser paramRecentUser)
   {
     this.mUser = paramRecentUser;
   }
   
-  protected boolean a()
+  protected boolean b()
   {
     return false;
   }
   
-  public final void b()
+  public final void d()
   {
-    if ((isUnreadMsgNumInTabNum()) && (a()))
+    if ((isUnreadMsgNumInTabNum()) && (b()))
     {
       this.mMenuFlag &= 0xFFF0FFFF;
       if (this.mUnreadNum != 0)
@@ -61,6 +51,21 @@ public abstract class RecentUserBaseData
       }
       this.mMenuFlag |= 0x20000;
     }
+  }
+  
+  public RecentUser e()
+  {
+    return this.mUser;
+  }
+  
+  public int f()
+  {
+    return this.mUser.msgType;
+  }
+  
+  public String g()
+  {
+    return this.mUser.troopUin;
   }
   
   public long getLastDraftTime()
@@ -106,12 +111,12 @@ public abstract class RecentUserBaseData
       paramContext.clear();
     }
     this.mMsgExtroInfo = "";
-    RecentBaseDataConfig.a().a(paramBaseQQAppInterface, this);
+    RecentBaseDataConfig.b().a(paramBaseQQAppInterface, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentUserBaseData
  * JD-Core Version:    0.7.0.1
  */

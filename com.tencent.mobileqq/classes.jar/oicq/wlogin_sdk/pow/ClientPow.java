@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import oicq.wlogin_sdk.report.event.b;
+import oicq.wlogin_sdk.report.event.c;
 import oicq.wlogin_sdk.tools.util;
 
 public class ClientPow
@@ -186,7 +187,7 @@ public class ClientPow
           localStringBuilder.append(util.LOG_TAG_POW);
           localStringBuilder.append("nativeGetPow");
           util.printThrowable(localException, localStringBuilder.toString());
-          b.a(new oicq.wlogin_sdk.report.event.a("wtlogin_pow_error", "c_error", Log.getStackTraceString(localException)));
+          c.a(new b("wtlogin_pow_error", "c_error", Log.getStackTraceString(localException)));
           localObject2 = localObject3;
         }
         localStringBuffer.append(",native=");
@@ -210,7 +211,7 @@ public class ClientPow
           ((StringBuilder)localObject3).append(util.LOG_TAG_POW);
           ((StringBuilder)localObject3).append("calPowJavaImpl");
           util.printThrowable(paramArrayOfByte, ((StringBuilder)localObject3).toString());
-          b.a(new oicq.wlogin_sdk.report.event.a("wtlogin_pow_error", "java_error", Log.getStackTraceString(paramArrayOfByte)));
+          c.a(new b("wtlogin_pow_error", "java_error", Log.getStackTraceString(paramArrayOfByte)));
         }
         localStringBuffer.append(",java=");
         localStringBuffer.append(util.getByteLength((byte[])localObject2));
@@ -285,7 +286,7 @@ public class ClientPow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.pow.ClientPow
  * JD-Core Version:    0.7.0.1
  */

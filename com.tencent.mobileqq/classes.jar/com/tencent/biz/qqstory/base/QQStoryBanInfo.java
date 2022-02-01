@@ -17,22 +17,20 @@ import java.util.List;
 
 public class QQStoryBanInfo
 {
-  public int a;
-  public List<QQUserUIItem> a;
-  public List<Long> b = null;
+  public int a = -1;
+  public List<QQUserUIItem> b = null;
+  public List<Long> c = null;
   
   public QQStoryBanInfo(AppInterface paramAppInterface, qqstory_struct.VideoReaderConf paramVideoReaderConf)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Int = paramVideoReaderConf.ban_type.get();
+    this.a = paramVideoReaderConf.ban_type.get();
     List localList = paramVideoReaderConf.user_list.get();
     paramVideoReaderConf = paramVideoReaderConf.user_unionid_list.get();
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     if ((localList != null) && (!localList.isEmpty()) && (paramVideoReaderConf != null) && (!paramVideoReaderConf.isEmpty()) && (localList.size() == paramVideoReaderConf.size()))
     {
       int j = localList.size();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
+      this.b = new ArrayList(j);
       int i = 0;
       while (i < j)
       {
@@ -41,7 +39,7 @@ public class QQStoryBanInfo
         localUserManager.a((String)localObject, str);
         localObject = a(paramAppInterface, (String)localObject, str, false);
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          this.b.add(localObject);
         }
         if (QLog.isColorLevel())
         {
@@ -64,7 +62,7 @@ public class QQStoryBanInfo
     QQUserUIItem localQQUserUIItem = new QQUserUIItem();
     localQQUserUIItem.qq = paramString2;
     localQQUserUIItem.uid = paramString1;
-    paramAppInterface = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(paramString2));
+    paramAppInterface = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(String.valueOf(paramString2));
     if (paramAppInterface == null) {
       return null;
     }
@@ -77,9 +75,9 @@ public class QQStoryBanInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QQStoryBanInfo banType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", uinSize = ");
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     int j = 0;
     int i;
     if (localList == null) {
@@ -89,7 +87,7 @@ public class QQStoryBanInfo
     }
     localStringBuilder.append(i);
     localStringBuilder.append(", grouplistSize =");
-    localList = this.b;
+    localList = this.c;
     if (localList == null) {
       i = j;
     } else {
@@ -101,7 +99,7 @@ public class QQStoryBanInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryBanInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,91 +16,91 @@ final class ImageInfo$1
     } else {
       bool1 = true;
     }
-    localImageInfo.jdField_a_of_type_Boolean = bool1;
+    localImageInfo.a = bool1;
     if (paramParcel.readInt() == 0) {
       bool1 = false;
     } else {
       bool1 = true;
     }
-    localImageInfo.jdField_b_of_type_Boolean = bool1;
-    localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localImageInfo.b = bool1;
+    localImageInfo.c = paramParcel.readString();
     if (paramParcel.readInt() == 0) {
       bool1 = false;
     } else {
       bool1 = true;
     }
-    localImageInfo.jdField_c_of_type_Boolean = bool1;
+    localImageInfo.d = bool1;
     if (paramParcel.readInt() == 0) {
       bool1 = false;
     } else {
       bool1 = true;
     }
-    localImageInfo.jdField_d_of_type_Boolean = bool1;
-    localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 0) {
-      bool1 = false;
-    } else {
-      bool1 = true;
-    }
-    localImageInfo.jdField_e_of_type_Boolean = bool1;
-    localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 0) {
-      bool1 = false;
-    } else {
-      bool1 = true;
-    }
-    localImageInfo.jdField_f_of_type_Boolean = bool1;
-    localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readInt() == 0) {
-      bool1 = false;
-    } else {
-      bool1 = true;
-    }
-    localImageInfo.jdField_h_of_type_Boolean = bool1;
-    if (paramParcel.readInt() == 0) {
-      bool1 = false;
-    } else {
-      bool1 = true;
-    }
-    localImageInfo.jdField_i_of_type_Boolean = bool1;
-    localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localImageInfo.e = bool1;
+    localImageInfo.f = paramParcel.readString();
     localImageInfo.g = paramParcel.readString();
-    localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
-    localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 1) {
-      bool1 = true;
-    } else {
+    localImageInfo.h = paramParcel.readInt();
+    if (paramParcel.readInt() == 0) {
       bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    localImageInfo.i = bool1;
+    localImageInfo.j = paramParcel.readString();
+    localImageInfo.k = paramParcel.readInt();
+    localImageInfo.l = paramParcel.readString();
+    localImageInfo.m = paramParcel.readInt();
+    localImageInfo.n = paramParcel.readInt();
+    if (paramParcel.readInt() == 0) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
     localImageInfo.o = bool1;
+    localImageInfo.p = paramParcel.readLong();
+    if (paramParcel.readInt() == 0) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    localImageInfo.r = bool1;
+    if (paramParcel.readInt() == 0) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    localImageInfo.s = bool1;
+    localImageInfo.t = paramParcel.readString();
+    localImageInfo.u = paramParcel.readLong();
+    localImageInfo.v = paramParcel.readString();
+    localImageInfo.w = paramParcel.readLong();
+    localImageInfo.x = paramParcel.readString();
+    localImageInfo.z = paramParcel.readInt();
+    localImageInfo.z = paramParcel.readInt();
+    localImageInfo.B = paramParcel.readInt();
+    localImageInfo.C = paramParcel.readString();
+    localImageInfo.M = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    localImageInfo.n = bool1;
+    localImageInfo.J = bool1;
+    if (paramParcel.readInt() == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    localImageInfo.I = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     }
-    localImageInfo.q = bool1;
-    localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localImageInfo.j = paramParcel.readString();
-    localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
-    localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
+    localImageInfo.R = bool1;
+    localImageInfo.N = paramParcel.readLong();
+    localImageInfo.O = paramParcel.readString();
+    localImageInfo.P = paramParcel.readString();
+    localImageInfo.Q = paramParcel.readString();
+    localImageInfo.S = paramParcel.readInt();
     return localImageInfo;
   }
   
@@ -111,7 +111,7 @@ final class ImageInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ImageInfo.1
  * JD-Core Version:    0.7.0.1
  */

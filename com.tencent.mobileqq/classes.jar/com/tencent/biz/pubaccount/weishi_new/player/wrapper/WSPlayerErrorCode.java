@@ -9,7 +9,7 @@ public class WSPlayerErrorCode
     if (paramInt1 == 4000)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715987));
+      localStringBuilder.append(HardCodeUtil.a(2131913439));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -19,7 +19,7 @@ public class WSPlayerErrorCode
     if (paramInt2 == 1300080)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715918));
+      localStringBuilder.append(HardCodeUtil.a(2131913373));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -27,7 +27,7 @@ public class WSPlayerErrorCode
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131715944));
+    localStringBuilder.append(HardCodeUtil.a(2131913399));
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
     localStringBuilder.append(paramInt2);
@@ -50,7 +50,7 @@ public class WSPlayerErrorCode
       if (paramInt2 == 103)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131715987));
+        localStringBuilder.append(HardCodeUtil.a(2131913439));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
@@ -58,7 +58,7 @@ public class WSPlayerErrorCode
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715974));
+      localStringBuilder.append(HardCodeUtil.a(2131913428));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -70,7 +70,7 @@ public class WSPlayerErrorCode
       if (paramInt2 == 204)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131715951));
+        localStringBuilder.append(HardCodeUtil.a(2131913406));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
@@ -80,7 +80,7 @@ public class WSPlayerErrorCode
       if (paramInt2 == 202)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131715891));
+        localStringBuilder.append(HardCodeUtil.a(2131913347));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
@@ -88,7 +88,7 @@ public class WSPlayerErrorCode
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715989));
+      localStringBuilder.append(HardCodeUtil.a(2131913441));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -100,7 +100,7 @@ public class WSPlayerErrorCode
       if (paramInt2 == 80)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131715918));
+        localStringBuilder.append(HardCodeUtil.a(2131913373));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
@@ -108,7 +108,7 @@ public class WSPlayerErrorCode
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715920));
+      localStringBuilder.append(HardCodeUtil.a(2131913375));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -116,7 +116,7 @@ public class WSPlayerErrorCode
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131715944));
+    localStringBuilder.append(HardCodeUtil.a(2131913399));
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
     localStringBuilder.append(paramInt2);
@@ -126,7 +126,7 @@ public class WSPlayerErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.WSPlayerErrorCode
  * JD-Core Version:    0.7.0.1
  */

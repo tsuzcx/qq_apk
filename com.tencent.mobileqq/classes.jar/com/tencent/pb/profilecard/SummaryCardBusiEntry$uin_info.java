@@ -20,7 +20,7 @@ public final class SummaryCardBusiEntry$uin_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.profilecard.SummaryCardBusiEntry.uin_info
  * JD-Core Version:    0.7.0.1
  */

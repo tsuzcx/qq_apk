@@ -111,7 +111,7 @@ public class TroopShowExternalHandler
     paramObject[1] = Integer.valueOf(paramFromServiceMsg.getResultCode());
     paramObject[2] = Integer.valueOf(-1);
     if ((!paramBoolean) || (paramOIDBSSOPkg == null)) {
-      notifyUI(TroopShowExternalObserver.c, false, paramObject);
+      notifyUI(TroopShowExternalObserver.e, false, paramObject);
     }
     if (!"getShowEternalStatus".equals(paramToServiceMsg.extraData.getString("0x8d4_cmd_key"))) {
       return;
@@ -123,7 +123,7 @@ public class TroopShowExternalHandler
       if ((!paramFromServiceMsg.isSuccess()) || (paramToServiceMsg.uint32_result.get() != 0)) {
         break label203;
       }
-      notifyUI(TroopShowExternalObserver.c, true, new Object[] { str, Integer.valueOf(paramToServiceMsg.uint32_result.get()), Integer.valueOf(paramToServiceMsg.uint32_flag.get()) });
+      notifyUI(TroopShowExternalObserver.e, true, new Object[] { str, Integer.valueOf(paramToServiceMsg.uint32_result.get()), Integer.valueOf(paramToServiceMsg.uint32_flag.get()) });
       if (paramToServiceMsg.uint32_flag.get() != 1) {
         break label229;
       }
@@ -140,9 +140,9 @@ public class TroopShowExternalHandler
     a(null, str, paramBoolean, true);
     return;
     label203:
-    notifyUI(TroopShowExternalObserver.c, false, paramObject);
+    notifyUI(TroopShowExternalObserver.e, false, paramObject);
     return;
-    notifyUI(TroopShowExternalObserver.c, false, paramObject);
+    notifyUI(TroopShowExternalObserver.e, false, paramObject);
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -190,7 +190,7 @@ public class TroopShowExternalHandler
       localObject[3] = Integer.valueOf(i);
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopShowExternalObserver.b, false, localObject);
+        notifyUI(TroopShowExternalObserver.d, false, localObject);
         return;
       }
       localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
@@ -222,18 +222,18 @@ public class TroopShowExternalHandler
         paramToServiceMsg.removeShowExternalTroop(str);
       }
       i = paramFromServiceMsg.getResultCode();
-      notifyUI(TroopShowExternalObserver.b, true, new Object[] { str, Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(j) });
+      notifyUI(TroopShowExternalObserver.d, true, new Object[] { str, Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(j) });
       return;
     }
     catch (InvalidProtocolBufferMicroException paramToServiceMsg)
     {
       break label449;
     }
-    notifyUI(TroopShowExternalObserver.b, false, localObject);
+    notifyUI(TroopShowExternalObserver.d, false, localObject);
     return;
-    notifyUI(TroopShowExternalObserver.b, false, localObject);
+    notifyUI(TroopShowExternalObserver.d, false, localObject);
     return;
-    notifyUI(TroopShowExternalObserver.b, false, localObject);
+    notifyUI(TroopShowExternalObserver.d, false, localObject);
   }
   
   private void b(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg, Object paramObject)
@@ -270,7 +270,7 @@ public class TroopShowExternalHandler
     }
     localObject[3] = Integer.valueOf(i);
     if ((!paramBoolean) || (paramOIDBSSOPkg == null)) {
-      notifyUI(TroopShowExternalObserver.b, false, localObject);
+      notifyUI(TroopShowExternalObserver.d, false, localObject);
     }
     if (!"setShowExternalStatus0x8d4".equals(paramToServiceMsg.extraData.getString("0x8d4_cmd_key"))) {
       return;
@@ -281,10 +281,10 @@ public class TroopShowExternalHandler
       paramToServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
       if ((paramFromServiceMsg.isSuccess()) && (paramToServiceMsg.uint32_result.get() == 0))
       {
-        notifyUI(TroopShowExternalObserver.b, true, new Object[] { paramObject, Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(paramToServiceMsg.uint32_flag.get()) });
+        notifyUI(TroopShowExternalObserver.d, true, new Object[] { paramObject, Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(paramToServiceMsg.uint32_flag.get()) });
         return;
       }
-      notifyUI(TroopShowExternalObserver.b, false, localObject);
+      notifyUI(TroopShowExternalObserver.d, false, localObject);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramToServiceMsg)
@@ -292,7 +292,7 @@ public class TroopShowExternalHandler
       label351:
       break label351;
     }
-    notifyUI(TroopShowExternalObserver.b, false, localObject);
+    notifyUI(TroopShowExternalObserver.d, false, localObject);
   }
   
   private void c(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg, Object paramObject)
@@ -318,7 +318,7 @@ public class TroopShowExternalHandler
       {
         if (!((cmd0x8b4.RspBody)localObject1).rpt_group_info.has())
         {
-          notifyUI(TroopShowExternalObserver.a, paramBoolean, paramOIDBSSOPkg);
+          notifyUI(TroopShowExternalObserver.c, paramBoolean, paramOIDBSSOPkg);
           return;
         }
         paramOIDBSSOPkg = new ArrayList();
@@ -344,11 +344,11 @@ public class TroopShowExternalHandler
           ((List)localObject2).add(((ByteStringMicro)((List)localObject1).get(i)).toStringUtf8());
           i += 1;
         }
-        notifyUI(TroopShowExternalObserver.a, paramBoolean, new Object[] { Integer.valueOf(0), paramOIDBSSOPkg, localObject2 });
+        notifyUI(TroopShowExternalObserver.c, paramBoolean, new Object[] { Integer.valueOf(0), paramOIDBSSOPkg, localObject2 });
       }
       else
       {
-        notifyUI(TroopShowExternalObserver.a, paramBoolean, paramOIDBSSOPkg);
+        notifyUI(TroopShowExternalObserver.c, paramBoolean, paramOIDBSSOPkg);
       }
     }
     catch (InvalidProtocolBufferMicroException paramOIDBSSOPkg)
@@ -360,10 +360,10 @@ public class TroopShowExternalHandler
       label396:
       break label396;
     }
-    notifyUI(TroopShowExternalObserver.a, paramBoolean, null);
+    notifyUI(TroopShowExternalObserver.c, paramBoolean, null);
     break label417;
     label408:
-    notifyUI(TroopShowExternalObserver.a, paramBoolean, null);
+    notifyUI(TroopShowExternalObserver.c, paramBoolean, null);
     label417:
     if (QLog.isColorLevel())
     {
@@ -379,12 +379,7 @@ public class TroopShowExternalHandler
       QLog.d("TroopShowExternalHandler.troop.get_show_external_troop_list", 2, paramOIDBSSOPkg.toString());
     }
     return;
-    notifyUI(TroopShowExternalObserver.a, paramBoolean, null);
-  }
-  
-  protected String a()
-  {
-    return "TroopShowExternalHandler";
+    notifyUI(TroopShowExternalObserver.c, paramBoolean, null);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -569,6 +564,11 @@ public class TroopShowExternalHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopShowExternalHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -601,7 +601,7 @@ public class TroopShowExternalHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -629,7 +629,7 @@ public class TroopShowExternalHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.showexternal.api.impl.TroopShowExternalHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class FastWebActivity$13
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131364710) {
+    if (paramView.getId() != 2131430816) {
       return;
     }
     this.a.a(false, null, null);
@@ -20,7 +20,7 @@ class FastWebActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -90,7 +90,7 @@ class GamePredownloaderImpl
     if (paramCombinationInfo.predownFilePath == null) {
       return GamePredownloader.CombinationError.PredownFilePathIsNULL;
     }
-    if (!d.a(paramCombinationInfo.predownFilePath)) {
+    if (!d.b(paramCombinationInfo.predownFilePath)) {
       return GamePredownloader.CombinationError.PredownFilePathNotExsit;
     }
     com.tencent.tgpa.vendorpd.a.a locala = new com.tencent.tgpa.vendorpd.a.a(paramCombinationInfo);
@@ -178,7 +178,7 @@ class GamePredownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.GamePredownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

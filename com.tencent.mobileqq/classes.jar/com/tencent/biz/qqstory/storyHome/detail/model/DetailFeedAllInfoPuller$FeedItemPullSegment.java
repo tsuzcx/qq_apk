@@ -12,18 +12,18 @@ import java.util.List;
 public class DetailFeedAllInfoPuller$FeedItemPullSegment
   extends JobSegment<String, DetailFeedItem>
 {
-  private BatchGetFriendStoryFeedInfoRequest jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest = new BatchGetFriendStoryFeedInfoRequest();
+  private BatchGetFriendStoryFeedInfoRequest b = new BatchGetFriendStoryFeedInfoRequest();
   
   public DetailFeedAllInfoPuller$FeedItemPullSegment(DetailFeedAllInfoPuller paramDetailFeedAllInfoPuller, @NonNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest.a = new ArrayList();
+    this.b.f = new ArrayList();
     paramDetailFeedAllInfoPuller = new FeedIdListSeqInfo(paramString, 0, "", "");
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest.a.add(paramDetailFeedAllInfoPuller);
+    this.b.f.add(paramDetailFeedAllInfoPuller);
   }
   
   protected void a(JobContext paramJobContext, String paramString)
   {
-    CmdTaskManger.a().a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest, new DetailFeedAllInfoPuller.FeedItemPullSegment.1(this, paramJobContext));
+    CmdTaskManger.a().a(this.b, new DetailFeedAllInfoPuller.FeedItemPullSegment.1(this, paramJobContext));
   }
 }
 

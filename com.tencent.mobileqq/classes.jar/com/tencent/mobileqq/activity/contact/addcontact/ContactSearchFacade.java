@@ -11,65 +11,55 @@ import com.tencent.qphone.base.util.QLog;
 public class ContactSearchFacade
 {
   public static final String a = "com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade";
-  public static int[] a;
-  private static int[] jdField_b_of_type_ArrayOfInt = { 80000000 };
-  private static int[] jdField_c_of_type_ArrayOfInt = { 80000002 };
-  private static int[] d = { 80000003 };
-  private static int[] e = { 80000000, 80000001, 80000002, 80000004, 80000003 };
-  private static int[] f = { 80000002, 80000003 };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private ContactSearchFacade.ISearchListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ContactSearchFacade.1(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = null;
-  private String jdField_c_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 80000001 };
-  }
+  public static int[] b = { 80000001 };
+  private static int[] g = { 80000000 };
+  private static int[] h = { 80000002 };
+  private static int[] i = { 80000003 };
+  private static int[] j = { 80000000, 80000001, 80000002, 80000004, 80000003 };
+  private static int[] k = { 80000002, 80000003 };
+  String c = null;
+  FriendListObserver d = new ContactSearchFacade.1(this);
+  private ContactSearchFacade.ISearchListener e;
+  private long f = 0L;
+  private QQAppInterface l;
+  private String m;
+  private int n;
+  private int o;
   
   public ContactSearchFacade(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_c_of_type_JavaLangString = PhoneCodeUtils.a(paramQQAppInterface.getApplication());
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.l = paramQQAppInterface;
+    this.m = PhoneCodeUtils.a(paramQQAppInterface.getApplication());
   }
   
   final void a()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.l;
     if (localQQAppInterface != null) {
-      localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
+      localQQAppInterface.addObserver(this.d, true);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.n = paramInt;
   }
   
   public void a(ContactSearchFacade.ISearchListener paramISearchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = paramISearchListener;
+    this.e = paramISearchListener;
   }
   
   public void a(String paramString, int[] paramArrayOfInt, double paramDouble1, double paramDouble2, boolean paramBoolean, int paramInt)
   {
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).searchFriend(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, paramArrayOfInt, paramDouble1, paramDouble2, paramBoolean, paramInt, this.jdField_a_of_type_Long);
+    ((FriendListHandler)this.l.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).searchFriend(paramString, this.m, 3, this.n, paramArrayOfInt, paramDouble1, paramDouble2, paramBoolean, paramInt, this.f);
   }
   
   public boolean a(String paramString, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2)
   {
     a();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramString;
+    this.o = paramInt1;
     Object localObject;
     switch (paramInt1)
     {
@@ -80,23 +70,23 @@ public class ContactSearchFacade
     for (;;)
     {
       break;
-      localObject = f;
+      localObject = k;
       continue;
-      localObject = e;
+      localObject = j;
       continue;
-      localObject = d;
+      localObject = i;
       continue;
-      localObject = jdField_c_of_type_ArrayOfInt;
+      localObject = h;
       continue;
-      localObject = jdField_a_of_type_ArrayOfInt;
+      localObject = b;
       continue;
-      localObject = jdField_b_of_type_ArrayOfInt;
+      localObject = g;
     }
     if (localObject == null)
     {
       if (QLog.isColorLevel())
       {
-        paramString = jdField_a_of_type_JavaLangString;
+        paramString = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("warning! wrong request type = ");
         ((StringBuilder)localObject).append(paramInt1);
@@ -104,13 +94,13 @@ public class ContactSearchFacade
       }
       return false;
     }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).searchFriend(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, (int[])localObject, paramDouble1, paramDouble2, true, paramInt2, this.jdField_a_of_type_Long);
+    ((FriendListHandler)this.l.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).searchFriend(paramString, this.m, 3, this.n, (int[])localObject, paramDouble1, paramDouble2, true, paramInt2, this.f);
     if (QLog.isColorLevel())
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("searchFriend nextPage = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.n);
       QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
     }
     return true;
@@ -118,29 +108,34 @@ public class ContactSearchFacade
   
   final void b()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.l;
     if (localQQAppInterface != null) {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      localQQAppInterface.removeObserver(this.d);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    this.n = 0;
+    this.f = SystemClock.uptimeMillis();
   }
   
-  public void d()
+  public int d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = null;
-    this.jdField_a_of_type_Int = 0;
+    return this.n;
+  }
+  
+  public void e()
+  {
+    this.e = null;
+    this.n = 0;
     b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.l = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade
  * JD-Core Version:    0.7.0.1
  */

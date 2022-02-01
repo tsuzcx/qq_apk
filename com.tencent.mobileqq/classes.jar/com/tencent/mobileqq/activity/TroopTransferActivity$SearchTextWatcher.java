@@ -11,7 +11,7 @@ class TroopTransferActivity$SearchTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.a.getText().toString().trim();
+    paramEditable = this.a.j.getText().toString().trim();
     this.a.a(paramEditable);
   }
   
@@ -21,7 +21,7 @@ class TroopTransferActivity$SearchTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.SearchTextWatcher
  * JD-Core Version:    0.7.0.1
  */

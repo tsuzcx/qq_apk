@@ -24,7 +24,7 @@ public final class StudyRoomQShadowLauncher$installPlugin$3
   
   public void onInstallDownloadProgress(@Nullable String paramString, int paramInt1, int paramInt2)
   {
-    StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher).post((Runnable)new StudyRoomQShadowLauncher.installPlugin.3.onInstallDownloadProgress.1(this, paramInt1, paramInt2));
+    StudyRoomQShadowLauncher.i(this.a).post((Runnable)new StudyRoomQShadowLauncher.installPlugin.3.onInstallDownloadProgress.1(this, paramInt1, paramInt2));
   }
   
   public void onInstallError(@Nullable String paramString, int paramInt)
@@ -35,10 +35,10 @@ public final class StudyRoomQShadowLauncher$installPlugin$3
     localStringBuilder.append(", ");
     localStringBuilder.append(paramInt);
     QLog.i("studyroom.QShadowLauncher", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element = Boolean.valueOf(false);
-    StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher, 4, "加载失败，请重试!", "请检查网络设置后重试", "重新加载", null, 16, null);
-    StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher, 3);
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.b.element = Boolean.valueOf(false);
+    StudyRoomQShadowLauncher.a(this.a, 4, "加载失败，请重试!", "请检查网络设置后重试", "重新加载", null, 16, null);
+    StudyRoomQShadowLauncher.a(this.a, 3);
+    this.c.countDown();
   }
   
   public void onInstallFinish(@Nullable String paramString)
@@ -47,13 +47,13 @@ public final class StudyRoomQShadowLauncher$installPlugin$3
     localStringBuilder.append("onInstallFinish ");
     localStringBuilder.append(paramString);
     QLog.i("studyroom.QShadowLauncher", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element = Boolean.valueOf(true);
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.b.element = Boolean.valueOf(true);
+    this.c.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.installPlugin.3
  * JD-Core Version:    0.7.0.1
  */

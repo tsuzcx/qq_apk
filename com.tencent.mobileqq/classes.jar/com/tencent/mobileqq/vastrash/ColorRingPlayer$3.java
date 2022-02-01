@@ -13,18 +13,18 @@ class ColorRingPlayer$3
   {
     for (;;)
     {
-      Object localObject1 = this.this$0.jdField_a_of_type_JavaLangObject;
+      Object localObject1 = this.this$0.b;
       boolean bool = false;
       try
       {
-        if (this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-          bool = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
+        if (this.this$0.c != null) {
+          bool = this.this$0.c.isPlaying();
         }
-        if ((this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (bool))
+        if ((this.this$0.c != null) && (bool))
         {
-          int i = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-          int j = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-          this.this$0.jdField_a_of_type_AndroidOsHandler.post(new ColorRingPlayer.3.1(this, j, i));
+          int i = this.this$0.c.getDuration();
+          int j = this.this$0.c.getCurrentPosition();
+          this.this$0.f.post(new ColorRingPlayer.3.1(this, j, i));
           break label121;
         }
         return;
@@ -34,8 +34,8 @@ class ColorRingPlayer$3
         label121:
         break;
       }
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
+      this.this$0.c = null;
+      this.this$0.c = new ReportMediaPlayer();
       try
       {
         Thread.sleep(50L);
@@ -54,7 +54,7 @@ class ColorRingPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.3
  * JD-Core Version:    0.7.0.1
  */

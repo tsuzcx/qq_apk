@@ -25,11 +25,11 @@ class DownloadUrlManager$4
   {
     try
     {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).lock();
-      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).remove(paramJobContext);
-      paramJobContext = QQStoryContext.a().a().createEntityManager();
-      paramVarArgs = StoryManager.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+      DownloadUrlManager.a(this.c).lock();
+      paramJobContext = DownloadingUrlEntry.makeKey(this.a, this.b);
+      DownloadUrlManager.b(this.c).remove(paramJobContext);
+      paramJobContext = QQStoryContext.a().d().createEntityManager();
+      paramVarArgs = StoryManager.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.a, this.b) });
       if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
       {
         paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
@@ -41,13 +41,13 @@ class DownloadUrlManager$4
     }
     finally
     {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).unlock();
+      DownloadUrlManager.a(this.c).unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -67,7 +67,7 @@ public class VideoView
   private void handlePlayError(int paramInt1, int paramInt2, VideoPlayParam paramVideoPlayParam)
   {
     if (paramInt2 == 14011001) {
-      paramVideoPlayParam = this.mContext.getString(2131720215);
+      paramVideoPlayParam = this.mContext.getString(2131917848);
     } else {
       paramVideoPlayParam = null;
     }
@@ -75,7 +75,7 @@ public class VideoView
     if (localVideoData != null)
     {
       if (paramVideoPlayParam == null) {
-        paramVideoPlayParam = this.mContext.getString(2131720253);
+        paramVideoPlayParam = this.mContext.getString(2131917888);
       }
       localVideoData.errorDescription = paramVideoPlayParam;
     }
@@ -164,11 +164,11 @@ public class VideoView
   {
     this.coverView.setOnClickListener(this);
     this.coverView.setOnLongClickListener(this);
-    this.mVideoView.setID(2131380795);
-    this.mVideoView.setId(2131380795);
+    this.mVideoView.setID(2131449765);
+    this.mVideoView.setId(2131449765);
     this.mVideoView.setOnClickListener(this);
     this.mVideoView.setOnLongClickListener(this);
-    this.mBrowserItemView.setContentDescription(this.mContext.getString(2131720194));
+    this.mBrowserItemView.setContentDescription(this.mContext.getString(2131917824));
     Object localObject = this.videoPresenter.getItem(paramInt);
     if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null) && (((RichMediaBrowserInfo)localObject).baseData.getType() == 2))
     {
@@ -205,12 +205,12 @@ public class VideoView
     }
     else
     {
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131563021, paramViewGroup, false));
-      this.coverView = ((GalleryUrlImageView)this.mBrowserItemView.findViewById(2131373043));
-      this.mVideoView = ((BaseVideoView)this.mBrowserItemView.findViewById(2131380795));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131629631, paramViewGroup, false));
+      this.coverView = ((GalleryUrlImageView)this.mBrowserItemView.findViewById(2131440625));
+      this.mVideoView = ((BaseVideoView)this.mBrowserItemView.findViewById(2131449765));
       if (!this.isPlayPanelDecorator)
       {
-        ((ViewStub)this.mBrowserItemView.findViewById(2131380699)).inflate();
+        ((ViewStub)this.mBrowserItemView.findViewById(2131449659)).inflate();
         initContentView(this.mBrowserItemView);
       }
     }
@@ -222,22 +222,22 @@ public class VideoView
   {
     if (this.mBrowserItemView != null)
     {
-      this.videoControlContainer = ((RelativeLayout)this.mBrowserItemView.findViewById(2131380556));
-      this.playPanel = paramView.findViewById(2131371936);
-      this.playBar = ((SeekBar)this.playPanel.findViewById(2131377124));
-      this.playButton = ((ImageView)this.playPanel.findViewById(2131372192));
-      this.progressTime = ((TextView)this.playPanel.findViewById(2131373130));
-      this.totalTime = ((TextView)this.playPanel.findViewById(2131379063));
+      this.videoControlContainer = ((RelativeLayout)this.mBrowserItemView.findViewById(2131449513));
+      this.playPanel = paramView.findViewById(2131439381);
+      this.playBar = ((SeekBar)this.playPanel.findViewById(2131445496));
+      this.playButton = ((ImageView)this.playPanel.findViewById(2131439679));
+      this.progressTime = ((TextView)this.playPanel.findViewById(2131440735));
+      this.totalTime = ((TextView)this.playPanel.findViewById(2131447787));
       this.playButton.setOnClickListener(this);
       this.playBar.setMax(10000);
       this.playBar.setOnSeekBarChangeListener(this);
       this.playPanel.setOnTouchListener(new VideoView.1(this));
-      this.bufferPanel = ((RelativeLayout)this.mBrowserItemView.findViewById(2131364130));
-      this.rateText = ((TextView)this.mBrowserItemView.findViewById(2131375985));
-      this.mCenterPlayBtn = ((ImageView)this.mBrowserItemView.findViewById(2131373042));
+      this.bufferPanel = ((RelativeLayout)this.mBrowserItemView.findViewById(2131430097));
+      this.rateText = ((TextView)this.mBrowserItemView.findViewById(2131444171));
+      this.mCenterPlayBtn = ((ImageView)this.mBrowserItemView.findViewById(2131440624));
       this.mCenterPlayBtn.bringToFront();
       this.mCenterPlayBtn.setOnClickListener(this);
-      this.mErrLayout = ((LinearLayout)this.mBrowserItemView.findViewById(2131373044));
+      this.mErrLayout = ((LinearLayout)this.mBrowserItemView.findViewById(2131440626));
     }
   }
   
@@ -264,12 +264,12 @@ public class VideoView
   {
     int i = paramView.getId();
     Object localObject;
-    if (i == 2131372192)
+    if (i == 2131439679)
     {
       localObject = this.videoViewClickEvent;
       if (localObject != null)
       {
-        ((IVideoViewClickEvent)localObject).n();
+        ((IVideoViewClickEvent)localObject).p();
       }
       else
       {
@@ -281,14 +281,14 @@ public class VideoView
         }
       }
     }
-    else if ((i != 2131373043) && (i != 2131380795))
+    else if ((i != 2131440625) && (i != 2131449765))
     {
-      if (i == 2131373042)
+      if (i == 2131440624)
       {
         BrowserLogHelper.getInstance().getGalleryLog().d("VideoView", 2, "onItemClick, play button click.");
         localObject = this.videoViewClickEvent;
         if (localObject != null) {
-          ((IVideoViewClickEvent)localObject).p();
+          ((IVideoViewClickEvent)localObject).r();
         } else if (this.videoPresenter.getCurrentVideoData() != null) {
           tryPlayVideo(this.videoPresenter.getCurrentPosition(), false);
         }
@@ -298,7 +298,7 @@ public class VideoView
     {
       localObject = this.videoViewClickEvent;
       if (localObject != null) {
-        ((IVideoViewClickEvent)localObject).o();
+        ((IVideoViewClickEvent)localObject).q();
       } else if (this.itemClickEventListener != null) {
         onClickEvent();
       } else {
@@ -508,14 +508,14 @@ public class VideoView
                 this.bufferPanel.setVisibility(8);
                 this.mErrLayout.setVisibility(0);
                 this.mCenterPlayBtn.setVisibility(8);
-                this.playButton.setImageResource(2130846308);
-                localObject2 = (TextView)this.mErrLayout.findViewById(2131366307);
+                this.playButton.setImageResource(2130847779);
+                localObject2 = (TextView)this.mErrLayout.findViewById(2131432606);
                 if (localObject2 != null)
                 {
                   if (!TextUtils.isEmpty(((VideoData)localObject1).errorDescription)) {
                     localObject1 = ((VideoData)localObject1).errorDescription;
                   } else {
-                    localObject1 = this.mContext.getString(2131720253);
+                    localObject1 = this.mContext.getString(2131917888);
                   }
                   ((TextView)localObject2).setText((CharSequence)localObject1);
                 }
@@ -528,7 +528,7 @@ public class VideoView
                 this.bufferPanel.setVisibility(8);
                 this.mErrLayout.setVisibility(8);
                 this.mCenterPlayBtn.setVisibility(0);
-                this.playButton.setImageResource(2130846308);
+                this.playButton.setImageResource(2130847779);
               }
             }
             else
@@ -539,7 +539,7 @@ public class VideoView
               this.bufferPanel.setVisibility(8);
               this.mErrLayout.setVisibility(8);
               this.mCenterPlayBtn.setVisibility(8);
-              this.playButton.setImageResource(2130846309);
+              this.playButton.setImageResource(2130847780);
               localObject1 = this.mVideoView;
               if (localObject1 != null)
               {
@@ -592,7 +592,7 @@ public class VideoView
           i = 0;
         }
         ((ImageView)localObject2).setVisibility(i);
-        this.playButton.setImageResource(2130846308);
+        this.playButton.setImageResource(2130847779);
         localObject1 = this.mVideoView;
         if (localObject1 != null)
         {
@@ -636,7 +636,7 @@ public class VideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.video.VideoView
  * JD-Core Version:    0.7.0.1
  */

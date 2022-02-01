@@ -17,23 +17,23 @@ class PublicAccountUtilImpl$4
   
   public void a(Object paramObject)
   {
-    paramObject = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver;
+    paramObject = this.a;
     if (paramObject != null) {
-      paramObject.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+      paramObject.onUpdate(101, true, this.b);
     }
-    PublicAccountUtilImpl.access$200(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    PublicAccountUtilImpl.access$200(this.c, this.d, this.b, this.e);
   }
   
   public void a(boolean paramBoolean, Object paramObject) {}
   
   public void b(Object paramObject)
   {
-    paramObject = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver;
+    paramObject = this.a;
     if (paramObject != null) {
-      paramObject.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      paramObject.onUpdate(101, false, this.b);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+    if (this.f) {
+      PublicAccountUtilImpl.access$300(this.d, 2131892951);
     }
   }
   
@@ -41,7 +41,7 @@ class PublicAccountUtilImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.4
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class AdExpandCardProteusItem
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
     paramContainer = paramContainer.getVirtualView();
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (ReadInJoyAdUtils.p(paramIReadInJoyModel.a())))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null) && (ReadInJoyAdUtils.r(paramIReadInJoyModel.k())))
     {
       paramContainer = paramContainer.findViewBaseByName("id_ad_expand_view");
       if ((paramContainer instanceof ReadInJoyAdExpandCardPic)) {
@@ -43,7 +43,7 @@ public class AdExpandCardProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdExpandCardProteusItem
  * JD-Core Version:    0.7.0.1
  */

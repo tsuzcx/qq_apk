@@ -24,7 +24,7 @@ public class StoryDetailPresenter$WatchVideoReceiver
     while (localIterator.hasNext()) {
       if (((StoryVideoItem)localIterator.next()).mVid.equals(paramWatchVideoEvent.a))
       {
-        StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramWatchVideoEvent.a);
+        StoryDetailPresenter.e(paramStoryDetailPresenter).a(paramWatchVideoEvent.a);
         SLog.a(this.TAG, "find watched video. vid = %s.", paramWatchVideoEvent.a);
       }
     }

@@ -30,13 +30,13 @@ public class HomeWorkTroopSelectorFragment
   extends QIphoneTitleBarFragment
   implements Runnable
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = null;
-  private HomeWorkTroopSelectorFragment.HwTroopAdapter jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter = null;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<String> jdField_a_of_type_JavaUtilList = null;
-  private boolean jdField_a_of_type_Boolean;
+  private ListView a;
+  private AppInterface b;
+  private boolean c;
+  private String d = "";
+  private List<String> e = null;
+  private TroopInfo f = null;
+  private HomeWorkTroopSelectorFragment.HwTroopAdapter g = null;
   
   public static void a(Activity paramActivity, String paramString, ArrayList<String> paramArrayList)
   {
@@ -52,48 +52,48 @@ public class HomeWorkTroopSelectorFragment
   
   private void a(List<TroopInfo> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetListView != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter = new HomeWorkTroopSelectorFragment.HwTroopAdapter(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter);
+      this.g = new HomeWorkTroopSelectorFragment.HwTroopAdapter(getActivity(), paramList, this.f, this.e);
+      this.a.setAdapter(this.g);
     }
   }
   
   protected int a()
   {
-    return 2131560670;
+    return 2131626715;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.b.findViewById(2131368235));
-    this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
+    this.a = ((ListView)this.t.findViewById(2131435103));
+    this.a.setDivider(null);
+    this.a.setDividerHeight(0);
     if (getActivity() == null) {
       paramLayoutInflater = null;
     } else {
       paramLayoutInflater = (AppInterface)getQBaseActivity().getAppRuntime();
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramLayoutInflater;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null)
+    this.b = paramLayoutInflater;
+    if (this.b == null)
     {
       getActivity().finish();
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    c(2131697455, new HomeWorkTroopSelectorFragment.1(this));
-    a(HardCodeUtil.a(2131705603));
+    this.c = true;
+    c(2131895228, new HomeWorkTroopSelectorFragment.1(this));
+    a(HardCodeUtil.a(2131903489));
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramLayoutInflater.getString("HomeWorkTroopSelectorFragment:my_troop_uin");
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_JavaLangString = "";
+      this.d = paramLayoutInflater.getString("HomeWorkTroopSelectorFragment:my_troop_uin");
+      if (this.d == null) {
+        this.d = "";
       }
-      this.jdField_a_of_type_JavaUtilList = paramLayoutInflater.getStringArrayList("HomeWorkTroopSelectorFragment:select_troop_uin");
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.e = paramLayoutInflater.getStringArrayList("HomeWorkTroopSelectorFragment:select_troop_uin");
+      if (this.e == null) {
+        this.e = new ArrayList();
       }
     }
     ThreadManager.postImmediately(this, null, true);
@@ -101,25 +101,25 @@ public class HomeWorkTroopSelectorFragment
   
   public boolean onBackEvent()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     return super.onBackEvent();
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+    if (this.b == null) {
       return;
     }
-    Object localObject1 = ((ITroopHWApi)QRoute.api(ITroopHWApi.class)).getTroopListUin(this.jdField_a_of_type_ComTencentCommonAppAppInterface, -2);
+    Object localObject1 = ((ITroopHWApi)QRoute.api(ITroopHWApi.class)).getTroopListUin(this.b, -2);
     if (localObject1 != null)
     {
       localObject1 = (String[])((HashMap)localObject1).get(Integer.valueOf(-2));
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_JavaLangString = "";
+      if (this.d == null) {
+        this.d = "";
       }
-      ITroopInfoService localITroopInfoService = (ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localITroopInfoService.findTroopInfo(this.jdField_a_of_type_JavaLangString);
+      ITroopInfoService localITroopInfoService = (ITroopInfoService)this.b.getRuntimeService(ITroopInfoService.class, "");
+      if (!TextUtils.isEmpty(this.d)) {
+        this.f = localITroopInfoService.findTroopInfo(this.d);
       }
       if (localObject1 != null)
       {
@@ -129,7 +129,7 @@ public class HomeWorkTroopSelectorFragment
         while (i < j)
         {
           Object localObject2 = localObject1[i];
-          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!this.jdField_a_of_type_JavaLangString.equals(localObject2)))
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!this.d.equals(localObject2)))
           {
             localObject2 = localITroopInfoService.findTroopInfo((String)localObject2);
             if ((localObject2 != null) && (((((TroopInfo)localObject2).dwAdditionalFlag & 1L) == 1L) || ((((TroopInfo)localObject2).dwCmdUinUinFlag & 1L) == 1L))) {
@@ -145,7 +145,7 @@ public class HomeWorkTroopSelectorFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment
  * JD-Core Version:    0.7.0.1
  */

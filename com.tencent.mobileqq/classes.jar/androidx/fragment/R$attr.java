@@ -2,18 +2,18 @@ package androidx.fragment;
 
 public final class R$attr
 {
-  public static final int alpha = 2131034189;
-  public static final int font = 2131034596;
-  public static final int fontProviderAuthority = 2131034598;
-  public static final int fontProviderCerts = 2131034599;
-  public static final int fontProviderFetchStrategy = 2131034600;
-  public static final int fontProviderFetchTimeout = 2131034601;
-  public static final int fontProviderPackage = 2131034602;
-  public static final int fontProviderQuery = 2131034603;
-  public static final int fontStyle = 2131034604;
-  public static final int fontVariationSettings = 2131034605;
-  public static final int fontWeight = 2131034606;
-  public static final int ttcIndex = 2131035423;
+  public static final int alpha = 2131034239;
+  public static final int font = 2131034942;
+  public static final int fontProviderAuthority = 2131034944;
+  public static final int fontProviderCerts = 2131034945;
+  public static final int fontProviderFetchStrategy = 2131034946;
+  public static final int fontProviderFetchTimeout = 2131034947;
+  public static final int fontProviderPackage = 2131034948;
+  public static final int fontProviderQuery = 2131034949;
+  public static final int fontStyle = 2131034950;
+  public static final int fontVariationSettings = 2131034951;
+  public static final int fontWeight = 2131034952;
+  public static final int ttcIndex = 2131036303;
 }
 
 

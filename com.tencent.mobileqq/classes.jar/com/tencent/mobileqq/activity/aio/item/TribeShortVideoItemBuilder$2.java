@@ -15,20 +15,20 @@ class TribeShortVideoItemBuilder$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("itemBuilder handleGetVideo 2: fileName = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("TribeShortVideoItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder;
-    ((TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)localObject).jdField_a_of_type_Boolean = true;
-    ((TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)localObject).jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
+    Object localObject = this.b;
+    ((TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)localObject).s = true;
+    ((TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)localObject).c.b();
+    this.b.c.setVisibility(8);
     localObject = this.this$0;
-    ((TribeShortVideoItemBuilder)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder, this.jdField_a_of_type_Long, ((TribeShortVideoItemBuilder)localObject).a, this.this$0.d, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, this.jdField_a_of_type_JavaLangString);
+    ((TribeShortVideoItemBuilder)localObject).a(this.b, this.c, ((TribeShortVideoItemBuilder)localObject).z, this.this$0.A, this.d.coverImgUrl, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

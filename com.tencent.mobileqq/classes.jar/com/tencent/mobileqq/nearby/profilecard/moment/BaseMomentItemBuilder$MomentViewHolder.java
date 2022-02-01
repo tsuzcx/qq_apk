@@ -9,30 +9,30 @@ import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
 
 public class BaseMomentItemBuilder$MomentViewHolder
 {
-  public Activity a;
-  public View a;
-  public ImageView a;
-  public ListView a;
-  public TextView a;
-  public CommentsAdapter a;
   public MomentFeedInfo a;
-  public View b;
-  public ImageView b;
-  public TextView b;
+  public Activity b;
   public View c;
-  public ImageView c;
-  public TextView c;
   public View d;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
+  public ImageView e;
   public TextView f;
+  public ImageView g;
+  public TextView h;
+  public TextView i;
+  public View j;
+  public ImageView k;
+  public TextView l;
+  public ImageView m;
+  public TextView n;
+  public ListView o;
+  public CommentsAdapter p;
+  public TextView q;
+  public View r;
   
   public BaseMomentItemBuilder$MomentViewHolder(BaseMomentItemBuilder paramBaseMomentItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.MomentViewHolder
  * JD-Core Version:    0.7.0.1
  */

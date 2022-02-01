@@ -3,7 +3,7 @@ package com.tencent.hippy.qq.module;
 import android.app.Activity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.hippy.qq.app.HippyQQEngine;
-import com.tencent.hippy.qq.utils.HippyReporter;
+import com.tencent.hippy.qq.utils.HippyUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -39,7 +39,7 @@ public class QQBaseModule
   
   protected AppInterface getAppInterface()
   {
-    return HippyReporter.getAppInterface();
+    return HippyUtils.getAppInterface();
   }
   
   protected QBaseActivity getBaseActivity()
@@ -79,7 +79,7 @@ public class QQBaseModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBaseModule
  * JD-Core Version:    0.7.0.1
  */

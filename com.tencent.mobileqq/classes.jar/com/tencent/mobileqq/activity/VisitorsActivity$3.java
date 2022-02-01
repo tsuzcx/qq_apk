@@ -11,11 +11,11 @@ class VisitorsActivity$3
   
   public void run()
   {
-    RedTouchItem localRedTouchItem = this.this$0.a.a(100601);
+    RedTouchItem localRedTouchItem = this.this$0.q.a(100601);
     if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (localRedTouchItem.passThroughLevel > 0))
     {
       localRedTouchItem.passThroughLevel = 0;
-      this.this$0.a.c();
+      this.this$0.q.e();
       ReportController.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
       return;
     }
@@ -24,7 +24,7 @@ class VisitorsActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.3
  * JD-Core Version:    0.7.0.1
  */

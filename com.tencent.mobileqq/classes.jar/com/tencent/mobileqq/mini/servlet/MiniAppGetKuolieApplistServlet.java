@@ -60,9 +60,9 @@ public class MiniAppGetKuolieApplistServlet
           {
             MiniAppInfo localMiniAppInfo = MiniAppInfo.from(paramArrayOfByte);
             MiniAppRecommInfo.MiniApp localMiniApp = new MiniAppRecommInfo.MiniApp();
-            localMiniApp.jdField_a_of_type_ArrayOfByte = paramArrayOfByte.toByteArray();
-            localMiniApp.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StApiAppInfo = paramArrayOfByte;
-            localMiniApp.jdField_a_of_type_JavaLangString = localMiniAppInfo.appId;
+            localMiniApp.d = paramArrayOfByte.toByteArray();
+            localMiniApp.e = paramArrayOfByte;
+            localMiniApp.a = localMiniAppInfo.appId;
             if (!TextUtils.isEmpty(localStExpandItem.icon.get())) {
               paramArrayOfByte = localStExpandItem.icon.get();
             } else {
@@ -75,7 +75,7 @@ public class MiniAppGetKuolieApplistServlet
               paramArrayOfByte = localMiniAppInfo.name;
             }
             localMiniApp.b = paramArrayOfByte;
-            localMiniApp.jdField_a_of_type_Int = localStExpandItem.adId.get();
+            localMiniApp.f = localStExpandItem.adId.get();
             localMiniAppRecommInfo.appInfoList.add(localMiniApp);
           }
         }
@@ -123,7 +123,7 @@ public class MiniAppGetKuolieApplistServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetKuolieApplistServlet
  * JD-Core Version:    0.7.0.1
  */

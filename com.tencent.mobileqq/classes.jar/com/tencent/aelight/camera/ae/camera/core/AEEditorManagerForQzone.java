@@ -70,6 +70,12 @@ public class AEEditorManagerForQzone
     sendBroadCast("AEEDITOR_ORDER_CANCEL", paramString);
   }
   
+  public void cancelQFSMission(String paramString)
+  {
+    AEQLog.b("AEEditorManagerForQzone", "[cancel]");
+    sendBroadCast("AEEDITOR_ORDER_QFS_CANCEL", paramString);
+  }
+  
   public void clean()
   {
     AEQLog.b("AEEditorManagerForQzone", "[clean]");
@@ -81,7 +87,7 @@ public class AEEditorManagerForQzone
   {
     Iterator localIterator = this.mUICallBackListener.iterator();
     while (localIterator.hasNext()) {
-      ((IAEEditorUICallbackListener)localIterator.next()).a(paramInt);
+      ((IAEEditorUICallbackListener)localIterator.next()).deleteMedia(paramInt);
     }
   }
   
@@ -212,6 +218,15 @@ public class AEEditorManagerForQzone
     BaseApplicationImpl.getApplication().startService(localIntent);
   }
   
+  public void retryQFSMission(String paramString)
+  {
+    AEQLog.b("AEEditorManagerForQzone", "[retry]retryQFSMission");
+    Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), PeakService.class);
+    localIntent.putExtra("ServiceAction", 7);
+    localIntent.putExtra("generate_mission", paramString);
+    BaseApplicationImpl.getApplication().startService(localIntent);
+  }
+  
   public void saveMission(String paramString)
   {
     AEQLog.b("AEEditorManagerForQzone", "[save]");
@@ -220,7 +235,7 @@ public class AEEditorManagerForQzone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AEEditorManagerForQzone
  * JD-Core Version:    0.7.0.1
  */

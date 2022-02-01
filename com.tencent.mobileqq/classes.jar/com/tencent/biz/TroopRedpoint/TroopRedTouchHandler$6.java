@@ -88,7 +88,7 @@ class TroopRedTouchHandler$6
       paramInt = 0;
       i = -1;
     }
-    paramBundle = (TroopRedTouchManager)TroopRedTouchHandler.a(this.a).getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
+    paramBundle = (TroopRedTouchManager)TroopRedTouchHandler.b(this.a).getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();

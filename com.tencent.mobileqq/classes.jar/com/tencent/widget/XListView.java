@@ -51,11 +51,11 @@ public class XListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.mOverscrollDistance = 2147483647;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cc);
-    setMaxHeight(localTypedArray.getDimensionPixelSize(R.styleable.cB, -1));
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fR);
+    setMaxHeight(localTypedArray.getDimensionPixelSize(R.styleable.fS, -1));
     localTypedArray.recycle();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bT);
-    boolean bool = paramContext.getBoolean(R.styleable.cl, false);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fs);
+    boolean bool = paramContext.getBoolean(R.styleable.ft, false);
     paramContext.recycle();
     setEdgeEffectEnabled(bool);
     this.mRoundPath = new Path();
@@ -293,7 +293,7 @@ public class XListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XListView
  * JD-Core Version:    0.7.0.1
  */

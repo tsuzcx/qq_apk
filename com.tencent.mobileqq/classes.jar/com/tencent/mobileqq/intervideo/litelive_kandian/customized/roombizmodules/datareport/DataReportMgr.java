@@ -10,95 +10,16 @@ import java.util.Map;
 
 public class DataReportMgr
 {
-  private static DataReportMgr jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportDataReportMgr = new DataReportMgr();
-  private long jdField_a_of_type_Long = 0L;
-  private OnGetRoomExtInfoListener jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener;
-  private String jdField_a_of_type_JavaLangString;
+  private static DataReportMgr a = new DataReportMgr();
   private String b;
   private String c;
+  private String d;
+  private long e = 0L;
+  private OnGetRoomExtInfoListener f;
   
   public static DataReportMgr a()
   {
-    return jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportDataReportMgr;
-  }
-  
-  public Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localHashMap.put("roomid", localObject);
-    str = this.b;
-    localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localHashMap.put("program_id", localObject);
-    str = this.c;
-    localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localHashMap.put("ab_token", localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener;
-    if ((localObject != null) && (((OnGetRoomExtInfoListener)localObject).a() != null))
-    {
-      localHashMap.put("zt_int4", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().followStatus);
-      localHashMap.put("zt_int5", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType);
-      localHashMap.put("state", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().state);
-      if ("1".equals(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType)) {
-        localHashMap.put("program_id", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().programId);
-      }
-      localHashMap.put("anchor", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().anchorUid);
-    }
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Object localObject2 = new HashMap();
-    Object localObject1;
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)))
-    {
-      localObject1 = localObject2;
-      if (BusinessManager.a.a() != null)
-      {
-        ((Map)localObject2).put("roomid", String.valueOf(BusinessManager.a.a().roomId));
-        if (BusinessManager.a.a().videoId == null) {
-          localObject1 = "";
-        } else {
-          localObject1 = BusinessManager.a.a().videoId;
-        }
-        ((Map)localObject2).put("program_id", localObject1);
-        localObject1 = localObject2;
-      }
-    }
-    else
-    {
-      localObject1 = a();
-    }
-    ((Map)localObject1).put("zt_str2", BusinessManager.a.c());
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("reportEnterSdk roomId = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("roomid"));
-    ((StringBuilder)localObject2).append(", program_id = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("program_id"));
-    ((StringBuilder)localObject2).append(", state = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("state"));
-    ((StringBuilder)localObject2).append(", zt_int4 = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("zt_int4"));
-    ((StringBuilder)localObject2).append(", zt_int5 = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("zt_int5"));
-    ((StringBuilder)localObject2).append(", anchor = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("anchor"));
-    ((StringBuilder)localObject2).append(", zt_str2 = ");
-    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("zt_str2"));
-    QLog.i("DataReportMgr", 1, ((StringBuilder)localObject2).toString());
-    DataReportUtil.a("room_page", "房间", "room", "房间", "start_sdk", "启动SDK", (Map)localObject1);
+    return a;
   }
   
   public void a(long paramLong, Map<String, String> paramMap)
@@ -125,7 +46,7 @@ public class DataReportMgr
   
   public void a(RoomExtInfo paramRoomExtInfo)
   {
-    Map localMap = a();
+    Map localMap = d();
     if (paramRoomExtInfo != null)
     {
       localMap.put("zt_int4", paramRoomExtInfo.followStatus);
@@ -155,10 +76,10 @@ public class DataReportMgr
   
   public void a(String paramString1, String paramString2, String paramString3, OnGetRoomExtInfoListener paramOnGetRoomExtInfoListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener = paramOnGetRoomExtInfoListener;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.f = paramOnGetRoomExtInfoListener;
     paramString3 = new StringBuilder();
     paramString3.append("setCurrentRoomInfo roomId = ");
     paramString3.append(paramString1);
@@ -207,33 +128,46 @@ public class DataReportMgr
   
   public void b()
   {
-    long l;
-    if (this.jdField_a_of_type_Long > 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    } else {
-      l = 0L;
+    this.e = System.currentTimeMillis();
+    Object localObject2 = new HashMap();
+    Object localObject1;
+    if ((TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)))
+    {
+      localObject1 = localObject2;
+      if (BusinessManager.a.c() != null)
+      {
+        ((Map)localObject2).put("roomid", String.valueOf(BusinessManager.a.c().roomId));
+        if (BusinessManager.a.c().videoId == null) {
+          localObject1 = "";
+        } else {
+          localObject1 = BusinessManager.a.c().videoId;
+        }
+        ((Map)localObject2).put("program_id", localObject1);
+        localObject1 = localObject2;
+      }
     }
-    this.jdField_a_of_type_Long = 0L;
-    Map localMap = a();
-    localMap.put("timelong", String.valueOf(l));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("reportQuitSdk roomId = ");
-    localStringBuilder.append((String)localMap.get("roomid"));
-    localStringBuilder.append(", program_id = ");
-    localStringBuilder.append((String)localMap.get("program_id"));
-    localStringBuilder.append(", timelong = ");
-    localStringBuilder.append(l);
-    localStringBuilder.append(", state = ");
-    localStringBuilder.append((String)localMap.get("state"));
-    localStringBuilder.append(", zt_int4 = ");
-    localStringBuilder.append((String)localMap.get("zt_int4"));
-    localStringBuilder.append(", zt_int5 = ");
-    localStringBuilder.append((String)localMap.get("zt_int5"));
-    localStringBuilder.append(", anchor = ");
-    localStringBuilder.append((String)localMap.get("anchor"));
-    QLog.i("DataReportMgr", 1, localStringBuilder.toString());
-    DataReportUtil.a("room_page", "房间", "room", "房间", "quit_sdk", "退出SDK", localMap);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener = null;
+    else
+    {
+      localObject1 = d();
+    }
+    ((Map)localObject1).put("zt_str2", BusinessManager.a.h());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("reportEnterSdk roomId = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("roomid"));
+    ((StringBuilder)localObject2).append(", program_id = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("program_id"));
+    ((StringBuilder)localObject2).append(", state = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("state"));
+    ((StringBuilder)localObject2).append(", zt_int4 = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("zt_int4"));
+    ((StringBuilder)localObject2).append(", zt_int5 = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("zt_int5"));
+    ((StringBuilder)localObject2).append(", anchor = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("anchor"));
+    ((StringBuilder)localObject2).append(", zt_str2 = ");
+    ((StringBuilder)localObject2).append((String)((Map)localObject1).get("zt_str2"));
+    QLog.i("DataReportMgr", 1, ((StringBuilder)localObject2).toString());
+    DataReportUtil.a("room_page", "房间", "room", "房间", "start_sdk", "启动SDK", (Map)localObject1);
   }
   
   public void b(boolean paramBoolean, Map<String, String> paramMap)
@@ -262,10 +196,76 @@ public class DataReportMgr
     QLog.i("DataReportMgr", 1, ((StringBuilder)localObject).toString());
     DataReportUtil.a("room_page", "房间", "room", "房间", "slide", "上下滑切房", paramMap);
   }
+  
+  public void c()
+  {
+    long l;
+    if (this.e > 0L) {
+      l = System.currentTimeMillis() - this.e;
+    } else {
+      l = 0L;
+    }
+    this.e = 0L;
+    Map localMap = d();
+    localMap.put("timelong", String.valueOf(l));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportQuitSdk roomId = ");
+    localStringBuilder.append((String)localMap.get("roomid"));
+    localStringBuilder.append(", program_id = ");
+    localStringBuilder.append((String)localMap.get("program_id"));
+    localStringBuilder.append(", timelong = ");
+    localStringBuilder.append(l);
+    localStringBuilder.append(", state = ");
+    localStringBuilder.append((String)localMap.get("state"));
+    localStringBuilder.append(", zt_int4 = ");
+    localStringBuilder.append((String)localMap.get("zt_int4"));
+    localStringBuilder.append(", zt_int5 = ");
+    localStringBuilder.append((String)localMap.get("zt_int5"));
+    localStringBuilder.append(", anchor = ");
+    localStringBuilder.append((String)localMap.get("anchor"));
+    QLog.i("DataReportMgr", 1, localStringBuilder.toString());
+    DataReportUtil.a("room_page", "房间", "room", "房间", "quit_sdk", "退出SDK", localMap);
+    this.f = null;
+  }
+  
+  public Map<String, String> d()
+  {
+    HashMap localHashMap = new HashMap();
+    String str = this.b;
+    Object localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localHashMap.put("roomid", localObject);
+    str = this.c;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localHashMap.put("program_id", localObject);
+    str = this.d;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localHashMap.put("ab_token", localObject);
+    localObject = this.f;
+    if ((localObject != null) && (((OnGetRoomExtInfoListener)localObject).c() != null))
+    {
+      localHashMap.put("zt_int4", this.f.c().followStatus);
+      localHashMap.put("zt_int5", this.f.c().liveType);
+      localHashMap.put("state", this.f.c().state);
+      if ("1".equals(this.f.c().liveType)) {
+        localHashMap.put("program_id", this.f.c().programId);
+      }
+      localHashMap.put("anchor", this.f.c().anchorUid);
+    }
+    return localHashMap;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.DataReportMgr
  * JD-Core Version:    0.7.0.1
  */

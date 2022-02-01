@@ -14,18 +14,37 @@ import java.util.List<Lcom.tencent.featuretoggle.models.FeatureTriggerEvent;>;
 
 public class DBManager
 {
-  private static volatile DBManager jdField_a_of_type_ComTencentFeaturetoggleDbDBManager;
-  private DBOpenHelper jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper = null;
+  private static volatile DBManager b;
+  private DBOpenHelper a = null;
   
   private DBManager()
   {
-    if (ToggleSetting.a() == null) {
+    if (ToggleSetting.j() == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper = new DBOpenHelper(ToggleSetting.a());
+    this.a = new DBOpenHelper(ToggleSetting.j());
   }
   
-  private ContentValues a(FeatureTriggerEvent paramFeatureTriggerEvent)
+  public static DBManager a()
+  {
+    try
+    {
+      if (b == null) {
+        try
+        {
+          if (b == null) {
+            b = new DBManager();
+          }
+        }
+        finally {}
+      }
+      DBManager localDBManager = b;
+      return localDBManager;
+    }
+    finally {}
+  }
+  
+  private ContentValues b(FeatureTriggerEvent paramFeatureTriggerEvent)
   {
     if (paramFeatureTriggerEvent != null)
     {
@@ -56,33 +75,14 @@ public class DBManager
     return null;
   }
   
-  public static DBManager a()
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentFeaturetoggleDbDBManager == null) {
-        try
-        {
-          if (jdField_a_of_type_ComTencentFeaturetoggleDbDBManager == null) {
-            jdField_a_of_type_ComTencentFeaturetoggleDbDBManager = new DBManager();
-          }
-        }
-        finally {}
-      }
-      DBManager localDBManager = jdField_a_of_type_ComTencentFeaturetoggleDbDBManager;
-      return localDBManager;
-    }
-    finally {}
-  }
-  
   public int a(List<FeatureTriggerEvent> paramList)
   {
     if (paramList != null) {
       try
       {
-        if ((!paramList.isEmpty()) && (this.jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper != null))
+        if ((!paramList.isEmpty()) && (this.a != null))
         {
-          SQLiteDatabase localSQLiteDatabase = this.jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper.getWritableDatabase();
+          SQLiteDatabase localSQLiteDatabase = this.a.getWritableDatabase();
           if (localSQLiteDatabase == null) {
             return -1;
           }
@@ -123,7 +123,7 @@ public class DBManager
           try
           {
             int i = localSQLiteDatabase.delete("t_f_e", paramList, null);
-            LogUtils.c("[Database] deleted table %s data ,count %d", new Object[] { "t_f_e", Integer.valueOf(i) });
+            LogUtils.e("[Database] deleted table %s data ,count %d", new Object[] { "t_f_e", Integer.valueOf(i) });
             return i;
           }
           catch (Throwable paramList)
@@ -140,159 +140,43 @@ public class DBManager
     return -1;
   }
   
-  /* Error */
-  public long a()
+  public boolean a(FeatureTriggerEvent paramFeatureTriggerEvent)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	com/tencent/featuretoggle/db/DBManager:jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper	Lcom/tencent/featuretoggle/db/DBOpenHelper;
-    //   6: astore 8
-    //   8: lconst_0
-    //   9: lstore_3
-    //   10: aload 8
-    //   12: ifnonnull +7 -> 19
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: lconst_0
-    //   18: lreturn
-    //   19: aload_0
-    //   20: getfield 15	com/tencent/featuretoggle/db/DBManager:jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper	Lcom/tencent/featuretoggle/db/DBOpenHelper;
-    //   23: invokevirtual 121	com/tencent/featuretoggle/db/DBOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   26: astore 10
-    //   28: aload 10
-    //   30: ifnonnull +7 -> 37
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: lconst_0
-    //   36: lreturn
-    //   37: aconst_null
-    //   38: astore 8
-    //   40: aconst_null
-    //   41: astore 9
-    //   43: aload 10
-    //   45: ldc 193
-    //   47: aconst_null
-    //   48: invokevirtual 197	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   51: astore 10
-    //   53: aload 10
-    //   55: astore 9
-    //   57: aload 10
-    //   59: astore 8
-    //   61: aload 10
-    //   63: invokeinterface 202 1 0
-    //   68: pop
-    //   69: aload 10
-    //   71: astore 9
-    //   73: aload 10
-    //   75: astore 8
-    //   77: aload 10
-    //   79: iconst_0
-    //   80: invokeinterface 206 2 0
-    //   85: lstore 5
-    //   87: lload 5
-    //   89: lstore_1
-    //   90: aload 10
-    //   92: ifnull +89 -> 181
-    //   95: lload 5
-    //   97: lstore_1
-    //   98: aload 10
-    //   100: invokeinterface 209 1 0
-    //   105: ifne +76 -> 181
-    //   108: aload 10
-    //   110: astore 8
-    //   112: lload 5
-    //   114: lstore_1
-    //   115: aload 8
-    //   117: invokeinterface 212 1 0
-    //   122: goto +59 -> 181
-    //   125: astore 8
-    //   127: goto +58 -> 185
-    //   130: astore 10
-    //   132: aload 8
-    //   134: astore 9
-    //   136: aload 10
-    //   138: invokestatic 103	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
-    //   141: ifne +12 -> 153
-    //   144: aload 8
-    //   146: astore 9
-    //   148: aload 10
-    //   150: invokevirtual 106	java/lang/Throwable:printStackTrace	()V
-    //   153: lload_3
-    //   154: lstore_1
-    //   155: aload 8
-    //   157: ifnull +24 -> 181
-    //   160: aload 8
-    //   162: invokeinterface 209 1 0
-    //   167: istore 7
-    //   169: lload_3
-    //   170: lstore_1
-    //   171: iload 7
-    //   173: ifne +8 -> 181
-    //   176: lload_3
-    //   177: lstore_1
-    //   178: goto -63 -> 115
-    //   181: aload_0
-    //   182: monitorexit
-    //   183: lload_1
-    //   184: lreturn
-    //   185: aload 9
-    //   187: ifnull +20 -> 207
-    //   190: aload 9
-    //   192: invokeinterface 209 1 0
-    //   197: ifne +10 -> 207
-    //   200: aload 9
-    //   202: invokeinterface 212 1 0
-    //   207: aload 8
-    //   209: athrow
-    //   210: astore 8
-    //   212: aload_0
-    //   213: monitorexit
-    //   214: goto +6 -> 220
-    //   217: aload 8
-    //   219: athrow
-    //   220: goto -3 -> 217
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	223	0	this	DBManager
-    //   89	95	1	l1	long
-    //   9	168	3	l2	long
-    //   85	28	5	l3	long
-    //   167	5	7	bool	boolean
-    //   6	110	8	localObject1	Object
-    //   125	83	8	localObject2	Object
-    //   210	8	8	localObject3	Object
-    //   41	160	9	localObject4	Object
-    //   26	83	10	localObject5	Object
-    //   130	19	10	localThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   43	53	125	finally
-    //   61	69	125	finally
-    //   77	87	125	finally
-    //   136	144	125	finally
-    //   148	153	125	finally
-    //   43	53	130	java/lang/Throwable
-    //   61	69	130	java/lang/Throwable
-    //   77	87	130	java/lang/Throwable
-    //   2	8	210	finally
-    //   19	28	210	finally
-    //   98	108	210	finally
-    //   115	122	210	finally
-    //   160	169	210	finally
-    //   190	207	210	finally
-    //   207	210	210	finally
+    if (paramFeatureTriggerEvent != null) {
+      try
+      {
+        if (this.a != null)
+        {
+          SQLiteDatabase localSQLiteDatabase = this.a.getWritableDatabase();
+          if (localSQLiteDatabase == null) {
+            return false;
+          }
+          paramFeatureTriggerEvent = b(paramFeatureTriggerEvent);
+          if (paramFeatureTriggerEvent != null)
+          {
+            if (localSQLiteDatabase.replace("t_f_e", "_sn", paramFeatureTriggerEvent) >= 0L)
+            {
+              LogUtils.e("Insert table %s success!", new Object[] { "t_f_e" });
+              return true;
+            }
+            return false;
+          }
+          return false;
+        }
+      }
+      finally {}
+    }
+    return false;
   }
   
   /* Error */
-  public java.util.ArrayList<FeatureTriggerEvent> a()
+  public java.util.ArrayList<FeatureTriggerEvent> b()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 15	com/tencent/featuretoggle/db/DBManager:jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper	Lcom/tencent/featuretoggle/db/DBOpenHelper;
+    //   3: getfield 16	com/tencent/featuretoggle/db/DBManager:a	Lcom/tencent/featuretoggle/db/DBOpenHelper;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnonnull +7 -> 15
@@ -301,8 +185,8 @@ public class DBManager
     //   13: aconst_null
     //   14: areturn
     //   15: aload_0
-    //   16: getfield 15	com/tencent/featuretoggle/db/DBManager:jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper	Lcom/tencent/featuretoggle/db/DBOpenHelper;
-    //   19: invokevirtual 121	com/tencent/featuretoggle/db/DBOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   16: getfield 16	com/tencent/featuretoggle/db/DBManager:a	Lcom/tencent/featuretoggle/db/DBOpenHelper;
+    //   19: invokevirtual 123	com/tencent/featuretoggle/db/DBOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   22: astore_3
     //   23: aload_3
     //   24: ifnonnull +7 -> 31
@@ -311,54 +195,54 @@ public class DBManager
     //   29: aconst_null
     //   30: areturn
     //   31: aload_3
-    //   32: ldc 215
+    //   32: ldc 204
     //   34: aconst_null
-    //   35: invokevirtual 197	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   35: invokevirtual 208	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   38: astore_2
     //   39: aload_2
     //   40: ifnonnull +26 -> 66
     //   43: aload_2
     //   44: ifnull +18 -> 62
     //   47: aload_2
-    //   48: invokeinterface 209 1 0
+    //   48: invokeinterface 213 1 0
     //   53: ifne +9 -> 62
     //   56: aload_2
-    //   57: invokeinterface 212 1 0
+    //   57: invokeinterface 216 1 0
     //   62: aload_0
     //   63: monitorexit
     //   64: aconst_null
     //   65: areturn
     //   66: aload_2
     //   67: astore_1
-    //   68: new 123	java/lang/StringBuilder
+    //   68: new 125	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   72: invokespecial 126	java/lang/StringBuilder:<init>	()V
     //   75: astore 5
     //   77: aload_2
     //   78: astore_1
-    //   79: new 217	java/util/ArrayList
+    //   79: new 218	java/util/ArrayList
     //   82: dup
-    //   83: invokespecial 218	java/util/ArrayList:<init>	()V
+    //   83: invokespecial 219	java/util/ArrayList:<init>	()V
     //   86: astore 4
     //   88: aload_2
     //   89: astore_1
     //   90: aload_2
-    //   91: invokeinterface 221 1 0
+    //   91: invokeinterface 222 1 0
     //   96: ifeq +604 -> 700
     //   99: aload_2
     //   100: astore_1
-    //   101: new 30	com/tencent/featuretoggle/models/FeatureTriggerEvent
+    //   101: new 36	com/tencent/featuretoggle/models/FeatureTriggerEvent
     //   104: dup
-    //   105: invokespecial 222	com/tencent/featuretoggle/models/FeatureTriggerEvent:<init>	()V
+    //   105: invokespecial 223	com/tencent/featuretoggle/models/FeatureTriggerEvent:<init>	()V
     //   108: astore 6
     //   110: aload_2
     //   111: astore_1
     //   112: aload 6
     //   114: aload_2
     //   115: aload_2
-    //   116: ldc 44
-    //   118: invokeinterface 226 2 0
-    //   123: invokeinterface 229 2 0
+    //   116: ldc 50
+    //   118: invokeinterface 227 2 0
+    //   123: invokeinterface 230 2 0
     //   128: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   131: invokevirtual 236	com/tencent/featuretoggle/models/FeatureTriggerEvent:setSn	(Ljava/lang/String;)V
     //   134: aload_2
@@ -366,9 +250,9 @@ public class DBManager
     //   136: aload 6
     //   138: aload_2
     //   139: aload_2
-    //   140: ldc 59
-    //   142: invokeinterface 226 2 0
-    //   147: invokeinterface 229 2 0
+    //   140: ldc 65
+    //   142: invokeinterface 227 2 0
+    //   147: invokeinterface 230 2 0
     //   152: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   155: invokevirtual 239	com/tencent/featuretoggle/models/FeatureTriggerEvent:setFeatureVersionId	(Ljava/lang/String;)V
     //   158: aload_2
@@ -376,9 +260,9 @@ public class DBManager
     //   160: aload 6
     //   162: aload_2
     //   163: aload_2
-    //   164: ldc 64
-    //   166: invokeinterface 226 2 0
-    //   171: invokeinterface 229 2 0
+    //   164: ldc 70
+    //   166: invokeinterface 227 2 0
+    //   171: invokeinterface 230 2 0
     //   176: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   179: invokevirtual 242	com/tencent/featuretoggle/models/FeatureTriggerEvent:setFeatureName	(Ljava/lang/String;)V
     //   182: aload_2
@@ -386,9 +270,9 @@ public class DBManager
     //   184: aload 6
     //   186: aload_2
     //   187: aload_2
-    //   188: ldc 69
-    //   190: invokeinterface 226 2 0
-    //   195: invokeinterface 229 2 0
+    //   188: ldc 75
+    //   190: invokeinterface 227 2 0
+    //   195: invokeinterface 230 2 0
     //   200: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   203: invokevirtual 245	com/tencent/featuretoggle/models/FeatureTriggerEvent:setFeatureValue	(Ljava/lang/String;)V
     //   206: aload_2
@@ -396,9 +280,9 @@ public class DBManager
     //   208: aload 6
     //   210: aload_2
     //   211: aload_2
-    //   212: ldc 74
-    //   214: invokeinterface 226 2 0
-    //   219: invokeinterface 229 2 0
+    //   212: ldc 80
+    //   214: invokeinterface 227 2 0
+    //   219: invokeinterface 230 2 0
     //   224: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   227: invokevirtual 248	com/tencent/featuretoggle/models/FeatureTriggerEvent:setUserId	(Ljava/lang/String;)V
     //   230: aload_2
@@ -406,9 +290,9 @@ public class DBManager
     //   232: aload 6
     //   234: aload_2
     //   235: aload_2
-    //   236: ldc 79
-    //   238: invokeinterface 226 2 0
-    //   243: invokeinterface 229 2 0
+    //   236: ldc 85
+    //   238: invokeinterface 227 2 0
+    //   243: invokeinterface 230 2 0
     //   248: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   251: invokevirtual 251	com/tencent/featuretoggle/models/FeatureTriggerEvent:setAbTestId	(Ljava/lang/String;)V
     //   254: aload_2
@@ -416,9 +300,9 @@ public class DBManager
     //   256: aload 6
     //   258: aload_2
     //   259: aload_2
-    //   260: ldc 84
-    //   262: invokeinterface 226 2 0
-    //   267: invokeinterface 229 2 0
+    //   260: ldc 90
+    //   262: invokeinterface 227 2 0
+    //   267: invokeinterface 230 2 0
     //   272: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   275: invokevirtual 254	com/tencent/featuretoggle/models/FeatureTriggerEvent:setDatasetID	(Ljava/lang/String;)V
     //   278: aload_2
@@ -426,9 +310,9 @@ public class DBManager
     //   280: aload 6
     //   282: aload_2
     //   283: aload_2
-    //   284: ldc 89
-    //   286: invokeinterface 226 2 0
-    //   291: invokeinterface 229 2 0
+    //   284: ldc 95
+    //   286: invokeinterface 227 2 0
+    //   291: invokeinterface 230 2 0
     //   296: invokestatic 232	com/tencent/featuretoggle/utils/AESHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   299: invokevirtual 257	com/tencent/featuretoggle/models/FeatureTriggerEvent:setVersionID	(Ljava/lang/String;)V
     //   302: aload_2
@@ -442,8 +326,8 @@ public class DBManager
     //   317: aload_2
     //   318: astore_1
     //   319: aload 6
-    //   321: invokevirtual 82	com/tencent/featuretoggle/models/FeatureTriggerEvent:getAbTestId	()Ljava/lang/String;
-    //   324: invokestatic 39	com/tencent/featuretoggle/utils/Utils:a	(Ljava/lang/String;)Z
+    //   321: invokevirtual 88	com/tencent/featuretoggle/models/FeatureTriggerEvent:getAbTestId	()Ljava/lang/String;
+    //   324: invokestatic 45	com/tencent/featuretoggle/utils/Utils:a	(Ljava/lang/String;)Z
     //   327: ifeq +13 -> 340
     //   330: aload_2
     //   331: astore_1
@@ -462,173 +346,173 @@ public class DBManager
     //   356: astore_1
     //   357: aload_2
     //   358: aload_2
-    //   359: ldc 59
-    //   361: invokeinterface 226 2 0
-    //   366: invokeinterface 229 2 0
+    //   359: ldc 65
+    //   361: invokeinterface 227 2 0
+    //   366: invokeinterface 230 2 0
     //   371: astore 7
     //   373: aload_2
     //   374: astore_1
     //   375: aload_2
     //   376: aload_2
-    //   377: ldc 64
-    //   379: invokeinterface 226 2 0
-    //   384: invokeinterface 229 2 0
+    //   377: ldc 70
+    //   379: invokeinterface 227 2 0
+    //   384: invokeinterface 230 2 0
     //   389: astore 8
     //   391: aload_2
     //   392: astore_1
     //   393: aload_2
     //   394: aload_2
-    //   395: ldc 69
-    //   397: invokeinterface 226 2 0
-    //   402: invokeinterface 229 2 0
+    //   395: ldc 75
+    //   397: invokeinterface 227 2 0
+    //   402: invokeinterface 230 2 0
     //   407: astore 9
     //   409: aload_2
     //   410: astore_1
     //   411: aload_2
     //   412: aload_2
-    //   413: ldc 74
-    //   415: invokeinterface 226 2 0
-    //   420: invokeinterface 229 2 0
+    //   413: ldc 80
+    //   415: invokeinterface 227 2 0
+    //   420: invokeinterface 230 2 0
     //   425: astore 10
     //   427: aload_2
     //   428: astore_1
     //   429: aload_2
     //   430: aload_2
-    //   431: ldc 79
-    //   433: invokeinterface 226 2 0
-    //   438: invokeinterface 229 2 0
+    //   431: ldc 85
+    //   433: invokeinterface 227 2 0
+    //   438: invokeinterface 230 2 0
     //   443: astore 11
     //   445: aload_2
     //   446: astore_1
     //   447: aload 5
-    //   449: ldc 139
-    //   451: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: ldc 141
+    //   451: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   454: pop
     //   455: aload_2
     //   456: astore_1
     //   457: aload 5
-    //   459: ldc 145
-    //   461: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   459: ldc 147
+    //   461: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   464: pop
     //   465: aload_2
     //   466: astore_1
     //   467: aload 5
-    //   469: ldc 59
-    //   471: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   469: ldc 65
+    //   471: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: pop
     //   475: aload_2
     //   476: astore_1
     //   477: aload 5
-    //   479: ldc 147
-    //   481: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   479: ldc 149
+    //   481: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   484: pop
     //   485: aload_2
     //   486: astore_1
     //   487: aload 5
     //   489: aload 7
-    //   491: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   491: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   494: pop
     //   495: aload_2
     //   496: astore_1
     //   497: aload 5
-    //   499: ldc 149
-    //   501: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: ldc 151
+    //   501: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   504: pop
     //   505: aload_2
     //   506: astore_1
     //   507: aload 5
-    //   509: ldc 64
-    //   511: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: ldc 70
+    //   511: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   514: pop
     //   515: aload_2
     //   516: astore_1
     //   517: aload 5
-    //   519: ldc 147
-    //   521: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   519: ldc 149
+    //   521: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   524: pop
     //   525: aload_2
     //   526: astore_1
     //   527: aload 5
     //   529: aload 8
-    //   531: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   534: pop
     //   535: aload_2
     //   536: astore_1
     //   537: aload 5
-    //   539: ldc 149
-    //   541: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   539: ldc 151
+    //   541: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   544: pop
     //   545: aload_2
     //   546: astore_1
     //   547: aload 5
-    //   549: ldc 69
-    //   551: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   549: ldc 75
+    //   551: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   554: pop
     //   555: aload_2
     //   556: astore_1
     //   557: aload 5
-    //   559: ldc 147
-    //   561: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   559: ldc 149
+    //   561: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: pop
     //   565: aload_2
     //   566: astore_1
     //   567: aload 5
     //   569: aload 9
-    //   571: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   571: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   574: pop
     //   575: aload_2
     //   576: astore_1
     //   577: aload 5
-    //   579: ldc 149
-    //   581: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   579: ldc 151
+    //   581: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   584: pop
     //   585: aload_2
     //   586: astore_1
     //   587: aload 5
-    //   589: ldc 74
-    //   591: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   589: ldc 80
+    //   591: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   594: pop
     //   595: aload_2
     //   596: astore_1
     //   597: aload 5
-    //   599: ldc 147
-    //   601: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   599: ldc 149
+    //   601: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   604: pop
     //   605: aload_2
     //   606: astore_1
     //   607: aload 5
     //   609: aload 10
-    //   611: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   611: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   614: pop
     //   615: aload_2
     //   616: astore_1
     //   617: aload 5
-    //   619: ldc 149
-    //   621: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   619: ldc 151
+    //   621: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   624: pop
     //   625: aload_2
     //   626: astore_1
     //   627: aload 5
-    //   629: ldc 79
-    //   631: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   629: ldc 85
+    //   631: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   634: pop
     //   635: aload_2
     //   636: astore_1
     //   637: aload 5
-    //   639: ldc 147
-    //   641: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   639: ldc 149
+    //   641: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   644: pop
     //   645: aload_2
     //   646: astore_1
     //   647: aload 5
     //   649: aload 11
-    //   651: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   651: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   654: pop
     //   655: aload_2
     //   656: astore_1
     //   657: aload 5
-    //   659: ldc 151
-    //   661: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: ldc 153
+    //   661: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   664: pop
     //   665: goto +15 -> 680
     //   668: aload_2
@@ -636,26 +520,26 @@ public class DBManager
     //   670: ldc_w 273
     //   673: iconst_0
     //   674: anewarray 4	java/lang/Object
-    //   677: invokestatic 188	com/tencent/featuretoggle/utils/LogUtils:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   677: invokestatic 190	com/tencent/featuretoggle/utils/LogUtils:e	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   680: aload_2
     //   681: astore_1
     //   682: aload 6
-    //   684: invokestatic 103	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
+    //   684: invokestatic 109	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
     //   687: ifne -599 -> 88
     //   690: aload_2
     //   691: astore_1
     //   692: aload 6
-    //   694: invokevirtual 106	java/lang/Throwable:printStackTrace	()V
+    //   694: invokevirtual 112	java/lang/Throwable:printStackTrace	()V
     //   697: goto -609 -> 88
     //   700: aload_2
     //   701: astore_1
     //   702: aload 5
-    //   704: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   704: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   707: astore 5
     //   709: aload_2
     //   710: astore_1
     //   711: aload 5
-    //   713: invokevirtual 160	java/lang/String:length	()I
+    //   713: invokevirtual 162	java/lang/String:length	()I
     //   716: ifle +39 -> 755
     //   719: aload_2
     //   720: astore_1
@@ -664,27 +548,27 @@ public class DBManager
     //   725: anewarray 4	java/lang/Object
     //   728: dup
     //   729: iconst_0
-    //   730: ldc 170
+    //   730: ldc 172
     //   732: aastore
     //   733: dup
     //   734: iconst_1
     //   735: aload_3
-    //   736: ldc 170
+    //   736: ldc 172
     //   738: aload 5
     //   740: iconst_4
-    //   741: invokevirtual 164	java/lang/String:substring	(I)Ljava/lang/String;
+    //   741: invokevirtual 166	java/lang/String:substring	(I)Ljava/lang/String;
     //   744: aconst_null
-    //   745: invokevirtual 176	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   748: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   745: invokevirtual 178	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   748: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   751: aastore
-    //   752: invokestatic 188	com/tencent/featuretoggle/utils/LogUtils:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   752: invokestatic 190	com/tencent/featuretoggle/utils/LogUtils:e	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   755: aload_2
     //   756: ifnull +18 -> 774
     //   759: aload_2
-    //   760: invokeinterface 209 1 0
+    //   760: invokeinterface 213 1 0
     //   765: ifne +9 -> 774
     //   768: aload_2
-    //   769: invokeinterface 212 1 0
+    //   769: invokeinterface 216 1 0
     //   774: aload_0
     //   775: monitorexit
     //   776: aload 4
@@ -701,19 +585,19 @@ public class DBManager
     //   792: aload_2
     //   793: astore_1
     //   794: aload_3
-    //   795: invokestatic 103	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
+    //   795: invokestatic 109	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
     //   798: ifne +9 -> 807
     //   801: aload_2
     //   802: astore_1
     //   803: aload_3
-    //   804: invokevirtual 106	java/lang/Throwable:printStackTrace	()V
+    //   804: invokevirtual 112	java/lang/Throwable:printStackTrace	()V
     //   807: aload_2
     //   808: ifnull +18 -> 826
     //   811: aload_2
-    //   812: invokeinterface 209 1 0
+    //   812: invokeinterface 213 1 0
     //   817: ifne +9 -> 826
     //   820: aload_2
-    //   821: invokeinterface 212 1 0
+    //   821: invokeinterface 216 1 0
     //   826: aload_0
     //   827: monitorexit
     //   828: aconst_null
@@ -726,10 +610,10 @@ public class DBManager
     //   835: aload_2
     //   836: ifnull +18 -> 854
     //   839: aload_2
-    //   840: invokeinterface 209 1 0
+    //   840: invokeinterface 213 1 0
     //   845: ifne +9 -> 854
     //   848: aload_2
-    //   849: invokeinterface 212 1 0
+    //   849: invokeinterface 216 1 0
     //   854: aload_1
     //   855: athrow
     //   856: astore_1
@@ -876,38 +760,154 @@ public class DBManager
     //   657	665	867	java/lang/Throwable
   }
   
-  public boolean a(FeatureTriggerEvent paramFeatureTriggerEvent)
+  /* Error */
+  public long c()
   {
-    if (paramFeatureTriggerEvent != null) {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper != null)
-        {
-          SQLiteDatabase localSQLiteDatabase = this.jdField_a_of_type_ComTencentFeaturetoggleDbDBOpenHelper.getWritableDatabase();
-          if (localSQLiteDatabase == null) {
-            return false;
-          }
-          paramFeatureTriggerEvent = a(paramFeatureTriggerEvent);
-          if (paramFeatureTriggerEvent != null)
-          {
-            if (localSQLiteDatabase.replace("t_f_e", "_sn", paramFeatureTriggerEvent) >= 0L)
-            {
-              LogUtils.c("Insert table %s success!", new Object[] { "t_f_e" });
-              return true;
-            }
-            return false;
-          }
-          return false;
-        }
-      }
-      finally {}
-    }
-    return false;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 16	com/tencent/featuretoggle/db/DBManager:a	Lcom/tencent/featuretoggle/db/DBOpenHelper;
+    //   6: astore 8
+    //   8: lconst_0
+    //   9: lstore_3
+    //   10: aload 8
+    //   12: ifnonnull +7 -> 19
+    //   15: aload_0
+    //   16: monitorexit
+    //   17: lconst_0
+    //   18: lreturn
+    //   19: aload_0
+    //   20: getfield 16	com/tencent/featuretoggle/db/DBManager:a	Lcom/tencent/featuretoggle/db/DBOpenHelper;
+    //   23: invokevirtual 123	com/tencent/featuretoggle/db/DBOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   26: astore 10
+    //   28: aload 10
+    //   30: ifnonnull +7 -> 37
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: lconst_0
+    //   36: lreturn
+    //   37: aconst_null
+    //   38: astore 8
+    //   40: aconst_null
+    //   41: astore 9
+    //   43: aload 10
+    //   45: ldc_w 280
+    //   48: aconst_null
+    //   49: invokevirtual 208	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   52: astore 10
+    //   54: aload 10
+    //   56: astore 9
+    //   58: aload 10
+    //   60: astore 8
+    //   62: aload 10
+    //   64: invokeinterface 283 1 0
+    //   69: pop
+    //   70: aload 10
+    //   72: astore 9
+    //   74: aload 10
+    //   76: astore 8
+    //   78: aload 10
+    //   80: iconst_0
+    //   81: invokeinterface 287 2 0
+    //   86: lstore 5
+    //   88: lload 5
+    //   90: lstore_1
+    //   91: aload 10
+    //   93: ifnull +89 -> 182
+    //   96: lload 5
+    //   98: lstore_1
+    //   99: aload 10
+    //   101: invokeinterface 213 1 0
+    //   106: ifne +76 -> 182
+    //   109: aload 10
+    //   111: astore 8
+    //   113: lload 5
+    //   115: lstore_1
+    //   116: aload 8
+    //   118: invokeinterface 216 1 0
+    //   123: goto +59 -> 182
+    //   126: astore 8
+    //   128: goto +58 -> 186
+    //   131: astore 10
+    //   133: aload 8
+    //   135: astore 9
+    //   137: aload 10
+    //   139: invokestatic 109	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
+    //   142: ifne +12 -> 154
+    //   145: aload 8
+    //   147: astore 9
+    //   149: aload 10
+    //   151: invokevirtual 112	java/lang/Throwable:printStackTrace	()V
+    //   154: lload_3
+    //   155: lstore_1
+    //   156: aload 8
+    //   158: ifnull +24 -> 182
+    //   161: aload 8
+    //   163: invokeinterface 213 1 0
+    //   168: istore 7
+    //   170: lload_3
+    //   171: lstore_1
+    //   172: iload 7
+    //   174: ifne +8 -> 182
+    //   177: lload_3
+    //   178: lstore_1
+    //   179: goto -63 -> 116
+    //   182: aload_0
+    //   183: monitorexit
+    //   184: lload_1
+    //   185: lreturn
+    //   186: aload 9
+    //   188: ifnull +20 -> 208
+    //   191: aload 9
+    //   193: invokeinterface 213 1 0
+    //   198: ifne +10 -> 208
+    //   201: aload 9
+    //   203: invokeinterface 216 1 0
+    //   208: aload 8
+    //   210: athrow
+    //   211: astore 8
+    //   213: aload_0
+    //   214: monitorexit
+    //   215: goto +6 -> 221
+    //   218: aload 8
+    //   220: athrow
+    //   221: goto -3 -> 218
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	224	0	this	DBManager
+    //   90	95	1	l1	long
+    //   9	169	3	l2	long
+    //   86	28	5	l3	long
+    //   168	5	7	bool	boolean
+    //   6	111	8	localObject1	Object
+    //   126	83	8	localObject2	Object
+    //   211	8	8	localObject3	Object
+    //   41	161	9	localObject4	Object
+    //   26	84	10	localObject5	Object
+    //   131	19	10	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   43	54	126	finally
+    //   62	70	126	finally
+    //   78	88	126	finally
+    //   137	145	126	finally
+    //   149	154	126	finally
+    //   43	54	131	java/lang/Throwable
+    //   62	70	131	java/lang/Throwable
+    //   78	88	131	java/lang/Throwable
+    //   2	8	211	finally
+    //   19	28	211	finally
+    //   99	109	211	finally
+    //   116	123	211	finally
+    //   161	170	211	finally
+    //   191	208	211	finally
+    //   208	211	211	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.db.DBManager
  * JD-Core Version:    0.7.0.1
  */

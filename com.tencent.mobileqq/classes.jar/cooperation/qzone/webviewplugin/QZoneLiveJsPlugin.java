@@ -63,7 +63,7 @@ public class QZoneLiveJsPlugin
           {
             if (!TextUtils.isEmpty(paramJsBridgeListener))
             {
-              paramString2 = this.parentPlugin.mRuntime.a();
+              paramString2 = this.parentPlugin.mRuntime.d();
               if (paramString2 == null)
               {
                 paramString1.put("isInstalled", false);
@@ -100,7 +100,7 @@ public class QZoneLiveJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneLiveJsPlugin
  * JD-Core Version:    0.7.0.1
  */

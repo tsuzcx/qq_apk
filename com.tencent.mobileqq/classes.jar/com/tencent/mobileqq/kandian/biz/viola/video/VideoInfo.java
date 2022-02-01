@@ -8,66 +8,62 @@ import org.json.JSONObject;
 public class VideoInfo
 {
   public int a;
-  public long a;
-  public String a;
-  public Map<String, Object> a;
-  public boolean a;
-  public int b;
   public String b;
   public int c;
-  public String c;
   public int d;
-  public String d;
   public int e;
-  public String e;
-  public int f;
+  public String f;
+  public String g;
+  public long h;
+  public String i;
+  public int j;
+  public String k;
+  public int l;
+  public boolean m;
+  public Map<String, Object> n = new HashMap();
   
-  public VideoInfo()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public VideoInfo() {}
   
   public VideoInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
     if (paramJSONObject == null) {
       return;
     }
     if (paramJSONObject.has("busiType")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
+      this.a = paramJSONObject.getInt("busiType");
     }
     if (paramJSONObject.has("vid")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
+      this.b = paramJSONObject.getString("vid");
     }
     if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+      this.c = paramJSONObject.getInt("width");
     }
     if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+      this.d = paramJSONObject.getInt("height");
     }
     if (paramJSONObject.has("duration")) {
-      this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
+      this.e = paramJSONObject.getInt("duration");
     }
     if (paramJSONObject.has("poster")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
+      this.f = paramJSONObject.getString("poster");
     }
     if (paramJSONObject.has("title")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
+      this.g = paramJSONObject.getString("title");
     }
     if (paramJSONObject.has("xgFileSize")) {
-      this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
+      this.h = paramJSONObject.getLong("xgFileSize");
     }
     if (paramJSONObject.has("videoUrl")) {
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
+      this.i = paramJSONObject.getString("videoUrl");
     }
     if (paramJSONObject.has("fromType")) {
-      this.jdField_e_of_type_Int = paramJSONObject.getInt("fromType");
+      this.j = paramJSONObject.getInt("fromType");
     }
     if (paramJSONObject.has("dt_pgid")) {
-      this.f = paramJSONObject.optInt("dt_pgid");
+      this.l = paramJSONObject.optInt("dt_pgid");
     }
     if (paramJSONObject.has("isAd")) {
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isAd");
+      this.m = paramJSONObject.optBoolean("isAd");
     }
     if (paramJSONObject.has("dt_extraParams"))
     {
@@ -78,9 +74,9 @@ public class VideoInfo
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          this.jdField_a_of_type_JavaUtilMap.put(str, paramJSONObject.optString(str));
+          this.n.put(str, paramJSONObject.optString(str));
         }
-        this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("rowkey");
+        this.k = paramJSONObject.optString("rowkey");
       }
     }
   }
@@ -89,26 +85,26 @@ public class VideoInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoInfo{busiType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", width=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", height=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", duration=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", coverUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", title='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", xgFileSize=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", videoUrl='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -116,7 +112,7 @@ public class VideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.video.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

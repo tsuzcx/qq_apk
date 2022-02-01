@@ -9,8 +9,8 @@ class TroopStoryMainActivity$1
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.isFinishing())) {
-      this.this$0.a.b();
+    if ((this.this$0.d != null) && (!this.this$0.isFinishing())) {
+      this.this$0.d.b();
     }
   }
 }

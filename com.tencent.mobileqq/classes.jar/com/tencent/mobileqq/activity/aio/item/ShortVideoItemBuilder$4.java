@@ -12,18 +12,18 @@ class ShortVideoItemBuilder$4
   {
     if (paramInt == 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      com.tencent.mobileqq.shortvideo.SVBusiUtil.jdField_a_of_type_Boolean = true;
+      this.d.b(this.a, this.b, this.c);
+      com.tencent.mobileqq.shortvideo.SVBusiUtil.b = true;
       return;
     }
     if ((paramInt == 3) || (paramInt == 1)) {
-      com.tencent.mobileqq.shortvideo.SVBusiUtil.jdField_a_of_type_Long = 0L;
+      com.tencent.mobileqq.shortvideo.SVBusiUtil.a = 0L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

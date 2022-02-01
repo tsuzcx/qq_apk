@@ -13,12 +13,12 @@ import mqq.util.WeakReference;
 class ScreenShareCtrl$ScreenShareListener
   implements EGLScreenCaptureThread.onVideoFrameAvailableListener, ScreenRecordHelper.OnMediaProjectionReadyListener
 {
-  private final ScreenShareCtrl.ShareDataInfo jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareDataInfo = new ScreenShareCtrl.ShareDataInfo();
-  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
+  private final ScreenShareCtrl.ShareDataInfo a = new ScreenShareCtrl.ShareDataInfo();
+  private final WeakReference<ScreenShareCtrl> b;
   
   public ScreenShareCtrl$ScreenShareListener(ScreenShareCtrl paramScreenShareCtrl)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
+    this.b = new WeakReference(paramScreenShareCtrl);
   }
   
   @TargetApi(21)
@@ -33,7 +33,7 @@ class ScreenShareCtrl$ScreenShareListener
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("AVShare", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (ScreenShareCtrl)this.b.get();
     if (localObject == null) {
       return;
     }
@@ -44,7 +44,7 @@ class ScreenShareCtrl$ScreenShareListener
       } else {
         paramInt = 3;
       }
-      ScreenShareCtrl.a(paramInt);
+      ScreenShareCtrl.b(paramInt);
     }
   }
   
@@ -52,7 +52,7 @@ class ScreenShareCtrl$ScreenShareListener
   
   public void a(Bitmap paramBitmap, RecordParam paramRecordParam)
   {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.b.get();
     if (localScreenShareCtrl != null) {
       localScreenShareCtrl.a(paramBitmap, paramRecordParam);
     }
@@ -61,27 +61,27 @@ class ScreenShareCtrl$ScreenShareListener
   @TargetApi(21)
   public void a(RecordParam paramRecordParam, int paramInt1, int paramInt2)
   {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.b.get();
     if (localScreenShareCtrl == null) {
       return;
     }
     localScreenShareCtrl.a(paramRecordParam, paramInt1, paramInt2);
     if (localScreenShareCtrl.a(1) == 1)
     {
-      ScreenShareCtrl.a(4);
+      ScreenShareCtrl.b(4);
       return;
     }
-    ScreenShareCtrl.a(6);
-    paramRecordParam = VideoController.a().a();
+    ScreenShareCtrl.b(6);
+    paramRecordParam = VideoController.f().aE();
     if (paramRecordParam != null) {
-      paramRecordParam.a(1);
+      paramRecordParam.b(1);
     }
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, RecordParam paramRecordParam)
   {
-    this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareDataInfo.a(1, paramArrayOfByte, paramInt1, paramInt2, paramRecordParam);
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    this.a.a(1, paramArrayOfByte, paramInt1, paramInt2, paramRecordParam);
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.b.get();
     if (localScreenShareCtrl != null) {
       localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, paramRecordParam);
     }

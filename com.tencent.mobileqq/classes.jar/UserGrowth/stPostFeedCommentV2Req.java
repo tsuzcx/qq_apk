@@ -9,8 +9,10 @@ import java.util.ArrayList;
 public final class stPostFeedCommentV2Req
   extends JceStruct
 {
+  static ArrayList<String> cache_atUserQQ;
   static stSimpleMetaComment cache_comment = new stSimpleMetaComment();
   static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
+  public ArrayList<String> atUserQQ = null;
   public stSimpleMetaComment comment = null;
   public ArrayList<stMetaReportDataItem> data = null;
   public String feed_id = "";
@@ -20,6 +22,8 @@ public final class stPostFeedCommentV2Req
   {
     stMetaReportDataItem localstMetaReportDataItem = new stMetaReportDataItem();
     cache_data.add(localstMetaReportDataItem);
+    cache_atUserQQ = new ArrayList();
+    cache_atUserQQ.add("");
   }
   
   public stPostFeedCommentV2Req() {}
@@ -30,12 +34,13 @@ public final class stPostFeedCommentV2Req
     this.comment = paramstSimpleMetaComment;
   }
   
-  public stPostFeedCommentV2Req(String paramString, stSimpleMetaComment paramstSimpleMetaComment, ArrayList<stMetaReportDataItem> paramArrayList, int paramInt)
+  public stPostFeedCommentV2Req(String paramString, stSimpleMetaComment paramstSimpleMetaComment, ArrayList<stMetaReportDataItem> paramArrayList, int paramInt, ArrayList<String> paramArrayList1)
   {
     this.feed_id = paramString;
     this.comment = paramstSimpleMetaComment;
     this.data = paramArrayList;
     this.hadMancheked = paramInt;
+    this.atUserQQ = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -44,6 +49,7 @@ public final class stPostFeedCommentV2Req
     this.comment = ((stSimpleMetaComment)paramJceInputStream.read(cache_comment, 1, true));
     this.data = ((ArrayList)paramJceInputStream.read(cache_data, 2, false));
     this.hadMancheked = paramJceInputStream.read(this.hadMancheked, 3, false);
+    this.atUserQQ = ((ArrayList)paramJceInputStream.read(cache_atUserQQ, 4, false));
   }
   
   public String toString()
@@ -58,6 +64,8 @@ public final class stPostFeedCommentV2Req
     localStringBuilder.append(this.data);
     localStringBuilder.append(", hadMancheked=");
     localStringBuilder.append(this.hadMancheked);
+    localStringBuilder.append(", atUserQQ=");
+    localStringBuilder.append(this.atUserQQ.toString());
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -71,6 +79,10 @@ public final class stPostFeedCommentV2Req
       paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.hadMancheked, 3);
+    localArrayList = this.atUserQQ;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
+    }
   }
 }
 

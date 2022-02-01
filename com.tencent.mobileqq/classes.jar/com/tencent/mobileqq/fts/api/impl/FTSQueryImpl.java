@@ -21,12 +21,12 @@ public class FTSQueryImpl
   
   public <T> List<T> query(QueryArgs paramQueryArgs)
   {
-    return QueryFactory.a(paramQueryArgs.a).a(paramQueryArgs);
+    return QueryFactory.a(paramQueryArgs.b).a(paramQueryArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.api.impl.FTSQueryImpl
  * JD-Core Version:    0.7.0.1
  */

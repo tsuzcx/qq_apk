@@ -13,12 +13,12 @@ class MsfChannelService$2
   public void onCallback(EIPCResult paramEIPCResult)
   {
     paramEIPCResult = paramEIPCResult.data.getByteArray("rspBytes");
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback.onRecv(paramEIPCResult);
+    this.a.onRecv(paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.MsfChannelService.2
  * JD-Core Version:    0.7.0.1
  */

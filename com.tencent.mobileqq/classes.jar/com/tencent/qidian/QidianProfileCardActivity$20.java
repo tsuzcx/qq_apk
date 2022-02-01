@@ -14,18 +14,18 @@ class QidianProfileCardActivity$20
     this.a.a();
     if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
     {
-      this.a.a.card = ((Card)paramObject);
-      if (QidianProfileCardActivity.b(this.a))
+      this.a.e.card = ((Card)paramObject);
+      if (QidianProfileCardActivity.c(this.a))
       {
         paramObject = this.a;
-        paramObject.a(paramObject.a.card.vQzoneCoverInfo);
+        paramObject.a(paramObject.e.card.vQzoneCoverInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.20
  * JD-Core Version:    0.7.0.1
  */

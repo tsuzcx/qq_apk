@@ -27,7 +27,7 @@ class QFileMultiControlManager$1
     localObject1 = QFileMultiControlManager.a(this.a).getFileManagerDataCenter().a(paramLong2, paramLong1, paramString, paramInt);
     if ((localObject2 != null) && (localObject1 != null))
     {
-      localObject2 = ((QFileControlReq)localObject2).a();
+      localObject2 = ((QFileControlReq)localObject2).b();
       if (localObject2 != null) {
         ((QFileControlCallback)localObject2).a(0, paramInt, paramString, (int)(((FileManagerEntity)localObject1).fProgress * 100.0F), new Bundle());
       }
@@ -53,8 +53,8 @@ class QFileMultiControlManager$1
     localStringBuilder.append(paramLong2);
     localStringBuilder.append("]");
     QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
-    if ((paramString2 != null) && (localObject != null) && (paramString2.a() != null)) {
-      paramString2.a().a(paramBoolean, paramInt1, paramString1, new Bundle());
+    if ((paramString2 != null) && (localObject != null) && (paramString2.b() != null)) {
+      paramString2.b().a(paramBoolean, paramInt1, paramString1, new Bundle());
     }
     if (paramString2 != null) {
       this.a.b(paramString2);
@@ -63,7 +63,7 @@ class QFileMultiControlManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMultiControlManager.1
  * JD-Core Version:    0.7.0.1
  */

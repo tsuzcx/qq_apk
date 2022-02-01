@@ -16,9 +16,9 @@ class SubscribePersonalBottomOpusFragment$2
   
   public void a(LoadInfo paramLoadInfo, RelativeFeedsAdapter paramRelativeFeedsAdapter)
   {
-    if ((paramLoadInfo.e()) && (this.a.a != null) && (this.a.a.a != null))
+    if ((paramLoadInfo.e()) && (this.a.c != null) && (this.a.c.e != null))
     {
-      paramLoadInfo = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramLoadInfo.b());
+      paramLoadInfo = new SubscribePersonalDetailRequest(this.a.c.e.poster.id.get(), paramLoadInfo.g());
       VSNetworkHelper.getInstance().sendRequest(paramLoadInfo, new SubscribePersonalBottomOpusFragment.2.1(this, paramRelativeFeedsAdapter));
     }
   }

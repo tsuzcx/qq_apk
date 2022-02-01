@@ -39,7 +39,7 @@ class PublicAccountChatPie$47
     }
     if (QLog.isColorLevel())
     {
-      paramSosoLbsInfo = this.a.b;
+      paramSosoLbsInfo = this.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLocationUpdate() latitude=");
       localStringBuilder.append(d1);
@@ -49,19 +49,19 @@ class PublicAccountChatPie$47
       localStringBuilder.append(str);
       QLog.d(paramSosoLbsInfo, 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler == null)
+    if (this.a.bo == null)
     {
       paramSosoLbsInfo = this.a;
-      paramSosoLbsInfo.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler = ((IPublicAccountHandler)paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT));
+      paramSosoLbsInfo.bo = ((IPublicAccountHandler)paramSosoLbsInfo.d.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT));
     }
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler.sendLBSInfo(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, d1, d2, str);
+    if (this.a.bo != null) {
+      this.a.bo.sendLBSInfo(this.a.ah.b, d1, d2, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.47
  * JD-Core Version:    0.7.0.1
  */

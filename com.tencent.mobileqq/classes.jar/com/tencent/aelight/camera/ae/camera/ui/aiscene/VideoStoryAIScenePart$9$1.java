@@ -9,14 +9,14 @@ class VideoStoryAIScenePart$9$1
   
   public void run()
   {
-    if (VideoStoryAIScenePart.b(this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart) != null) {
-      VideoStoryAIScenePart.b(this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    if (VideoStoryAIScenePart.k(this.a.b) != null) {
+      VideoStoryAIScenePart.j(this.a.b).startAnimation(this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.9.1
  * JD-Core Version:    0.7.0.1
  */

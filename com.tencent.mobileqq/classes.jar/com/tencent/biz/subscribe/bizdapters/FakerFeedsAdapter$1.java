@@ -10,9 +10,9 @@ class FakerFeedsAdapter$1
   
   public void run()
   {
-    this.this$0.b().add(0, this.a.mSingleFakeFeed);
+    this.this$0.N().add(0, this.a.mSingleFakeFeed);
     this.this$0.notifyDataSetChanged();
-    this.this$0.b();
+    this.this$0.d();
   }
 }
 

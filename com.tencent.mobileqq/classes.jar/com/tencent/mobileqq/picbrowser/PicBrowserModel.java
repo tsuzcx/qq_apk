@@ -10,25 +10,25 @@ import java.util.List;
 public class PicBrowserModel
   implements AbstractImageListModel
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<PicBrowserImage> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<PicBrowserImage> a = new ArrayList();
+  private int b;
+  private Context c;
   
   public PicBrowserModel(Context paramContext, List<PicInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       int i = 0;
       while (i < paramList.size())
       {
         paramContext = (PicInfo)paramList.get(i);
-        if ((ShortVideoUtils.isVideoSoLibLoaded()) && ((!TextUtils.isEmpty(paramContext.d)) || (!TextUtils.isEmpty(paramContext.e)))) {
-          paramContext = new GalleryItemVideo(this.jdField_a_of_type_AndroidContentContext, paramContext);
+        if ((ShortVideoUtils.isVideoSoLibLoaded()) && ((!TextUtils.isEmpty(paramContext.e)) || (!TextUtils.isEmpty(paramContext.f)))) {
+          paramContext = new GalleryItemVideo(this.c, paramContext);
         } else {
-          paramContext = new GalleryItemImage(this.jdField_a_of_type_AndroidContentContext, paramContext);
+          paramContext = new GalleryItemImage(this.c, paramContext);
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+        this.a.add(paramContext);
         i += 1;
       }
     }
@@ -36,53 +36,29 @@ public class PicBrowserModel
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public PicBrowserImage a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (PicBrowserImage)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-    }
-    return null;
+    return this.a.size();
   }
   
   public PicBrowserImage a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (PicBrowserImage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (PicBrowserImage)this.a.get(paramInt);
     }
     return null;
   }
   
-  public ArrayList<PicInfo> a()
+  public int b()
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((PicBrowserImage)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a);
-      i += 1;
-    }
-    return localArrayList;
+    return this.b;
   }
   
-  public void a()
+  public void b(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      ((PicBrowserImage)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      PicBrowserImage localPicBrowserImage = (PicBrowserImage)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      PicBrowserImage localPicBrowserImage = (PicBrowserImage)this.a.get(i);
       boolean bool;
       if (paramInt == i) {
         bool = true;
@@ -94,23 +70,47 @@ public class PicBrowserModel
     }
   }
   
-  public int b()
+  public PicBrowserImage c()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public PicBrowserImage b(int paramInt)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
-      return (PicBrowserImage)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
+    int i = this.b;
+    if ((i >= 0) && (i < this.a.size())) {
+      return (PicBrowserImage)this.a.get(this.b);
     }
     return null;
+  }
+  
+  public PicBrowserImage d(int paramInt)
+  {
+    ArrayList localArrayList = this.a;
+    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
+      return (PicBrowserImage)this.a.remove(paramInt);
+    }
+    return null;
+  }
+  
+  public void e()
+  {
+    int i = this.b;
+    if ((i >= 0) && (i < this.a.size())) {
+      ((PicBrowserImage)this.a.get(this.b)).c();
+    }
+  }
+  
+  public ArrayList<PicInfo> f()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.size())
+    {
+      localArrayList.add(((PicBrowserImage)this.a.get(i)).k);
+      i += 1;
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserModel
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,16 @@ import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class QQFilterRenderManagerHolder
 {
-  public static int a;
-  private static QQFilterRenderManager a;
-  public static int b;
-  private static QQFilterRenderManager b;
+  public static int a = 0;
+  public static int b = 1;
   public static int c = 2;
+  private static QQFilterRenderManager d;
+  private static QQFilterRenderManager e;
   
   static
   {
     ((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).init();
     ((ICaptureUtil)QRoute.api(ICaptureUtil.class)).loadEffectSo();
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
   }
   
   public static QQFilterRenderManager a()
@@ -29,27 +27,27 @@ public class QQFilterRenderManagerHolder
   public static QQFilterRenderManager a(int paramInt)
   {
     if (paramInt == c) {
-      return jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+      return d;
     }
     return null;
   }
   
   public static void a(QQFilterRenderManager paramQQFilterRenderManager)
   {
-    jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = paramQQFilterRenderManager;
+    d = paramQQFilterRenderManager;
   }
   
   public static QQFilterRenderManager b()
   {
     try
     {
-      if ((jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.isSurfaceDestroyed())) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
+      if ((e != null) && (e.isSurfaceDestroyed())) {
+        e = null;
       }
-      if (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = a();
+      if (e == null) {
+        e = a();
       }
-      QQFilterRenderManager localQQFilterRenderManager = jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+      QQFilterRenderManager localQQFilterRenderManager = e;
       return localQQFilterRenderManager;
     }
     finally {}
@@ -57,7 +55,7 @@ public class QQFilterRenderManagerHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filter.QQFilterRenderManagerHolder
  * JD-Core Version:    0.7.0.1
  */

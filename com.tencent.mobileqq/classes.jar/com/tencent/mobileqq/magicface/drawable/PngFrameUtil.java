@@ -20,7 +20,72 @@ public class PngFrameUtil
     return Math.abs(new Random().nextInt(paramInt));
   }
   
-  public static int a(String paramString)
+  private PngPlayParam a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    localPngPlayParam = new PngPlayParam();
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      if (paramString1.has("num")) {
+        localPngPlayParam.a = paramString1.getInt("num");
+      }
+      boolean bool = paramString1.has("process_frame");
+      int j = 0;
+      Object localObject1;
+      int i;
+      Object localObject2;
+      if (bool)
+      {
+        localObject1 = paramString1.getJSONObject("process_frame");
+        if (((JSONObject)localObject1).has("repeat")) {
+          localPngPlayParam.b = ((JSONObject)localObject1).getInt("repeat");
+        }
+        if (((JSONObject)localObject1).has("frame_delay")) {
+          localPngPlayParam.c = ((JSONObject)localObject1).getInt("frame_delay");
+        }
+        localObject1 = ((JSONObject)localObject1).getJSONArray("seq_array");
+        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+        {
+          localPngPlayParam.e = new String[((JSONArray)localObject1).length()];
+          i = 0;
+          while (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = localPngPlayParam.e;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString2));
+            localStringBuilder.append(((JSONArray)localObject1).getString(i));
+            localObject2[i] = localStringBuilder.toString();
+            i += 1;
+          }
+        }
+      }
+      paramString1 = paramString1.getJSONArray("result_frame");
+      if ((paramString1 != null) && (paramString1.length() > 0))
+      {
+        localPngPlayParam.f = new String[paramString1.length()];
+        i = j;
+        while (i < paramString1.length())
+        {
+          localObject1 = localPngPlayParam.f;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString2));
+          ((StringBuilder)localObject2).append(paramString1.getString(i));
+          localObject1[i] = ((StringBuilder)localObject2).toString();
+          i += 1;
+        }
+      }
+      return localPngPlayParam;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public static int b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return -1;
@@ -46,84 +111,32 @@ public class PngFrameUtil
     return -1;
   }
   
-  private PngPlayParam a(String paramString1, String paramString2)
+  public static int c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
     }
-    localPngPlayParam = new PngPlayParam();
-    try
+    if (paramString.contains("value"))
     {
-      paramString1 = new JSONObject(paramString1);
-      if (paramString1.has("num")) {
-        localPngPlayParam.jdField_a_of_type_Int = paramString1.getInt("num");
-      }
-      boolean bool = paramString1.has("process_frame");
-      int j = 0;
-      Object localObject1;
-      int i;
-      Object localObject2;
-      if (bool)
+      int i = paramString.indexOf("value") + 5 + 1;
+      if (i < paramString.length())
       {
-        localObject1 = paramString1.getJSONObject("process_frame");
-        if (((JSONObject)localObject1).has("repeat")) {
-          localPngPlayParam.jdField_b_of_type_Int = ((JSONObject)localObject1).getInt("repeat");
-        }
-        if (((JSONObject)localObject1).has("frame_delay")) {
-          localPngPlayParam.c = ((JSONObject)localObject1).getInt("frame_delay");
-        }
-        localObject1 = ((JSONObject)localObject1).getJSONArray("seq_array");
-        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+        paramString = paramString.substring(i);
+        try
         {
-          localPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString = new String[((JSONArray)localObject1).length()];
-          i = 0;
-          while (i < ((JSONArray)localObject1).length())
-          {
-            localObject2 = localPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString;
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString2));
-            localStringBuilder.append(((JSONArray)localObject1).getString(i));
-            localObject2[i] = localStringBuilder.toString();
-            i += 1;
-          }
+          i = Integer.parseInt(paramString);
+          return i;
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
         }
       }
-      paramString1 = paramString1.getJSONArray("result_frame");
-      if ((paramString1 != null) && (paramString1.length() > 0))
-      {
-        localPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString = new String[paramString1.length()];
-        i = j;
-        while (i < paramString1.length())
-        {
-          localObject1 = localPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString;
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString2));
-          ((StringBuilder)localObject2).append(paramString1.getString(i));
-          localObject1[i] = ((StringBuilder)localObject2).toString();
-          i += 1;
-        }
-      }
-      return localPngPlayParam;
     }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
+    return 0;
   }
   
-  private String a(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
-    localStringBuffer.append("config.json");
-    paramString = new File(localStringBuffer.toString());
-    if (!paramString.exists()) {
-      return null;
-    }
-    return FileUtils.readFileContent(paramString);
-  }
-  
-  public static boolean a(String paramString)
+  public static boolean d(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return false;
@@ -228,29 +241,16 @@ public class PngFrameUtil
     }
   }
   
-  public static int b(String paramString)
+  private String e(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
+    localStringBuffer.append("config.json");
+    paramString = new File(localStringBuffer.toString());
+    if (!paramString.exists()) {
+      return null;
     }
-    if (paramString.contains("value"))
-    {
-      int i = paramString.indexOf("value") + 5 + 1;
-      if (i < paramString.length())
-      {
-        paramString = paramString.substring(i);
-        try
-        {
-          i = Integer.parseInt(paramString);
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
-    return 0;
+    return FileUtils.readFileContent(paramString);
   }
   
   public int a(File paramFile)
@@ -284,12 +284,12 @@ public class PngFrameUtil
   
   public PngPlayParam a(String paramString)
   {
-    return a(a(paramString), paramString);
+    return a(e(paramString), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameUtil
  * JD-Core Version:    0.7.0.1
  */

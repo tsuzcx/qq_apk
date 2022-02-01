@@ -20,7 +20,7 @@ public final class qq_lbs_share$C2CRelationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.location.qq_lbs_share.C2CRelationInfo
  * JD-Core Version:    0.7.0.1
  */

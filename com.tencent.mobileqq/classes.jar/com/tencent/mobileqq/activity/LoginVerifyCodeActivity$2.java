@@ -54,7 +54,7 @@ class LoginVerifyCodeActivity$2
       if ((!paramArrayOfByte.getBooleanExtra("login_from_account_change", false)) && (!"fromLogin".equals(paramErrMsg)))
       {
         paramString = (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
-        paramString = LoginUtils.a(LoginVerifyCodeActivity.c(this.a), paramString.getLoginPhoneNumActivityClass());
+        paramString = LoginUtils.a(LoginVerifyCodeActivity.j(this.a), paramString.getLoginPhoneNumActivityClass());
         if (paramString != null) {
           paramString.sendEmptyMessage(2015);
         }
@@ -65,7 +65,7 @@ class LoginVerifyCodeActivity$2
         paramArrayOfByte.putExtra("last_account", paramString);
         this.a.setResult(-1, paramArrayOfByte);
       }
-      ReportController.a(LoginVerifyCodeActivity.d(this.a), "dc00898", "", LoginVerifyCodeActivity.a(this.a), "0X800B10C", "0X800B10C", LoginVerifyCodeActivity.c(this.a), 0, "", "", "", "");
+      ReportController.a(LoginVerifyCodeActivity.k(this.a), "dc00898", "", LoginVerifyCodeActivity.e(this.a), "0X800B10C", "0X800B10C", LoginVerifyCodeActivity.f(this.a), 0, "", "", "", "");
       this.a.finish();
       return;
     }
@@ -76,7 +76,7 @@ class LoginVerifyCodeActivity$2
     }
     if (paramInt2 == 2008)
     {
-      this.a.notifyToast(2131692995, 0);
+      this.a.notifyToast(2131890109, 0);
       this.a.finish();
       return;
     }
@@ -128,15 +128,15 @@ class LoginVerifyCodeActivity$2
       return;
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      this.a.notifyToast(2131718220, 1);
+      this.a.notifyToast(2131915702, 1);
     } else {
       this.a.notifyToast((String)localObject1, 0);
     }
     paramString = (String)localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramString = this.a.getString(2131718220);
+      paramString = this.a.getString(2131915702);
     }
-    ReportController.a(LoginVerifyCodeActivity.e(this.a), "dc00898", "", LoginVerifyCodeActivity.a(this.a), "0X800B10B", "0X800B10B", LoginVerifyCodeActivity.c(this.a), 0, "", "", paramString, "");
+    ReportController.a(LoginVerifyCodeActivity.l(this.a), "dc00898", "", LoginVerifyCodeActivity.e(this.a), "0X800B10B", "0X800B10B", LoginVerifyCodeActivity.f(this.a), 0, "", "", paramString, "");
     if (paramInt2 == 155) {
       this.a.finish();
     }
@@ -145,7 +145,7 @@ class LoginVerifyCodeActivity$2
   public void onGetSubaccountStViaSMSVerifyLogin(String paramString1, String paramString2, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
   {
     paramString1 = new SubSmsLoginErrorInfo(paramString1, paramString2, paramLong1, paramInt1, paramLong2, paramInt2, paramErrMsg);
-    paramString2 = LoginVerifyCodeActivity.a(this.a);
+    paramString2 = LoginVerifyCodeActivity.m(this.a);
     paramErrMsg = this.a;
     paramString2.a(paramErrMsg, paramString1, paramErrMsg);
   }
@@ -185,7 +185,7 @@ class LoginVerifyCodeActivity$2
         paramString1 = paramErrMsg.getMessage();
       }
       if (TextUtils.isEmpty(paramString1)) {
-        this.a.notifyToast(2131718220, 1);
+        this.a.notifyToast(2131915702, 1);
       } else {
         this.a.notifyToast(paramString1, 0);
       }
@@ -194,9 +194,9 @@ class LoginVerifyCodeActivity$2
       }
       paramString2 = paramString1;
       if (TextUtils.isEmpty(paramString1)) {
-        paramString2 = this.a.getString(2131718220);
+        paramString2 = this.a.getString(2131915702);
       }
-      ReportController.a(LoginVerifyCodeActivity.a(this.a), "dc00898", "", LoginVerifyCodeActivity.a(this.a), "0X800B10B", "0X800B10B", LoginVerifyCodeActivity.c(this.a), 0, "", "", paramString2, "");
+      ReportController.a(LoginVerifyCodeActivity.d(this.a), "dc00898", "", LoginVerifyCodeActivity.e(this.a), "0X800B10B", "0X800B10B", LoginVerifyCodeActivity.f(this.a), 0, "", "", paramString2, "");
       return;
     }
     LoginVerifyCodeActivity.a(this.a, 60);
@@ -232,9 +232,9 @@ class LoginVerifyCodeActivity$2
       if (paramErrMsg != null) {
         paramString1 = paramErrMsg.getMessage();
       }
-      LoginVerifyCodeActivity.a(this.a).a();
+      LoginVerifyCodeActivity.g(this.a).a();
       if (TextUtils.isEmpty(paramString1)) {
-        this.a.notifyToast(2131718220, 1);
+        this.a.notifyToast(2131915702, 1);
       } else {
         this.a.notifyToast(paramString1, 1);
       }
@@ -243,14 +243,14 @@ class LoginVerifyCodeActivity$2
       }
       paramString2 = paramString1;
       if (TextUtils.isEmpty(paramString1)) {
-        paramString2 = this.a.getString(2131718220);
+        paramString2 = this.a.getString(2131915702);
       }
-      ReportController.a(LoginVerifyCodeActivity.b(this.a), "dc00898", "", LoginVerifyCodeActivity.a(this.a), "0X800B10B", "0X800B10B", LoginVerifyCodeActivity.c(this.a), 0, "", "", paramString2, "");
+      ReportController.a(LoginVerifyCodeActivity.h(this.a), "dc00898", "", LoginVerifyCodeActivity.e(this.a), "0X800B10B", "0X800B10B", LoginVerifyCodeActivity.f(this.a), 0, "", "", paramString2, "");
       return;
     }
     if (LoginVerifyCodeActivity.a(this.a, paramWUserSigInfo))
     {
-      LoginVerifyCodeActivity.a(this.a);
+      LoginVerifyCodeActivity.i(this.a);
       return;
     }
     paramString1 = new Intent();
@@ -261,7 +261,7 @@ class LoginVerifyCodeActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.2
  * JD-Core Version:    0.7.0.1
  */

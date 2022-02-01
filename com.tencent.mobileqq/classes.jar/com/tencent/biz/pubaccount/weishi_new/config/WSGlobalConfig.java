@@ -18,17 +18,8 @@ import java.util.ArrayList;
 
 public class WSGlobalConfig
 {
-  private stGlobalConfig jdField_a_of_type_UserGrowthStGlobalConfig;
-  private SparseArray<stGlobalConfig> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  
-  private stPopWindowsConfig a(int paramInt)
-  {
-    stGlobalConfig localstGlobalConfig = a(paramInt);
-    if ((localstGlobalConfig != null) && (localstGlobalConfig.windows_config != null) && (localstGlobalConfig.windows_config.size() > 0)) {
-      return (stPopWindowsConfig)localstGlobalConfig.windows_config.get(0);
-    }
-    return null;
-  }
+  private stGlobalConfig a;
+  private SparseArray<stGlobalConfig> b = new SparseArray();
   
   public static WSGlobalConfig a()
   {
@@ -65,80 +56,35 @@ public class WSGlobalConfig
     WSLog.d("WSGlobalConfigLog", localStringBuilder.toString());
   }
   
-  private boolean b(int paramInt)
+  private boolean g(int paramInt)
   {
     return (a(paramInt) == null) || (a(paramInt).linkConfig == null);
   }
   
-  private boolean d()
-  {
-    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
-    return (localstGlobalConfig == null) || (localstGlobalConfig.download == null);
-  }
-  
-  @Deprecated
-  public int a()
-  {
-    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
-    if (localstGlobalConfig != null) {
-      return localstGlobalConfig.link_strategy_type;
-    }
-    return 1;
-  }
-  
-  public int a(int paramInt)
+  private stPopWindowsConfig h(int paramInt)
   {
     stGlobalConfig localstGlobalConfig = a(paramInt);
-    if (localstGlobalConfig != null) {
-      return localstGlobalConfig.link_strategy_type;
-    }
-    return 1;
-  }
-  
-  public stCallInfo a()
-  {
-    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
-    if (localstGlobalConfig == null) {
-      return null;
-    }
-    return localstGlobalConfig.callinfo;
-  }
-  
-  public stGlobalConfig a(int paramInt)
-  {
-    return (stGlobalConfig)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public stJumpInfo a(int paramInt)
-  {
-    stGlobalConfig localstGlobalConfig = a(paramInt);
-    if (localstGlobalConfig != null) {
-      return localstGlobalConfig.jumpinfo;
+    if ((localstGlobalConfig != null) && (localstGlobalConfig.windows_config != null) && (localstGlobalConfig.windows_config.size() > 0)) {
+      return (stPopWindowsConfig)localstGlobalConfig.windows_config.get(0);
     }
     return null;
   }
   
-  public stUserAuth a()
+  private boolean q()
   {
-    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
-    if (localstGlobalConfig == null) {
-      return null;
-    }
-    return localstGlobalConfig.user_auth;
+    stGlobalConfig localstGlobalConfig = this.a;
+    return (localstGlobalConfig == null) || (localstGlobalConfig.download == null);
   }
   
-  public String a()
+  public stGlobalConfig a(int paramInt)
   {
-    if (!d()) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.packageName;
-    }
-    return "";
+    return (stGlobalConfig)this.b.get(paramInt);
   }
   
   public void a(int paramInt, stGlobalConfig paramstGlobalConfig)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramstGlobalConfig);
-    this.jdField_a_of_type_UserGrowthStGlobalConfig = paramstGlobalConfig;
+    this.b.put(paramInt, paramstGlobalConfig);
+    this.a = paramstGlobalConfig;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("initGlobalConfig globalConfig:");
     localStringBuilder.append(paramstGlobalConfig);
@@ -146,23 +92,9 @@ public class WSGlobalConfig
     a(paramstGlobalConfig);
   }
   
-  public boolean a()
-  {
-    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
-    return (localstGlobalConfig == null) || (localstGlobalConfig.open_4g_autodownload != 0);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (!b(paramInt)) {
-      return a(paramInt).linkConfig.isOpenVideoPage;
-    }
-    return true;
-  }
-  
   public boolean a(int paramInt1, int paramInt2)
   {
-    stJumpInfo localstJumpInfo = a(paramInt2);
+    stJumpInfo localstJumpInfo = f(paramInt2);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localstJumpInfo != null)
@@ -189,65 +121,160 @@ public class WSGlobalConfig
     return bool1;
   }
   
-  public int b()
-  {
-    if (!d()) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.vendorId;
-    }
-    return 0;
-  }
-  
   public int b(int paramInt)
   {
-    if (!b(paramInt)) {
+    stGlobalConfig localstGlobalConfig = a(paramInt);
+    if (localstGlobalConfig != null) {
+      return localstGlobalConfig.link_strategy_type;
+    }
+    return 1;
+  }
+  
+  public stCallInfo b()
+  {
+    stGlobalConfig localstGlobalConfig = this.a;
+    if (localstGlobalConfig == null) {
+      return null;
+    }
+    return localstGlobalConfig.callinfo;
+  }
+  
+  public int c(int paramInt)
+  {
+    if (!g(paramInt)) {
       return a(paramInt).linkConfig.callCount;
     }
     return 10000;
   }
   
-  public String b()
+  public stUserAuth c()
   {
-    if (!d()) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.downloadUrl;
+    stGlobalConfig localstGlobalConfig = this.a;
+    if (localstGlobalConfig == null) {
+      return null;
+    }
+    return localstGlobalConfig.user_auth;
+  }
+  
+  @Deprecated
+  public int d()
+  {
+    stGlobalConfig localstGlobalConfig = this.a;
+    if (localstGlobalConfig != null) {
+      return localstGlobalConfig.link_strategy_type;
+    }
+    return 1;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    if (!g(paramInt)) {
+      return a(paramInt).linkConfig.isOpenVideoPage;
+    }
+    return true;
+  }
+  
+  public int e(int paramInt)
+  {
+    stPopWindowsConfig localstPopWindowsConfig = h(paramInt);
+    if (localstPopWindowsConfig != null) {
+      return localstPopWindowsConfig.index;
+    }
+    return -1;
+  }
+  
+  public boolean e()
+  {
+    stGlobalConfig localstGlobalConfig = this.a;
+    return (localstGlobalConfig == null) || (localstGlobalConfig.open_4g_autodownload != 0);
+  }
+  
+  public stJumpInfo f(int paramInt)
+  {
+    stGlobalConfig localstGlobalConfig = a(paramInt);
+    if (localstGlobalConfig != null) {
+      return localstGlobalConfig.jumpinfo;
+    }
+    return null;
+  }
+  
+  public boolean f()
+  {
+    return (!q()) && (this.a.download.appStoreSwitch);
+  }
+  
+  public boolean g()
+  {
+    return (!q()) && (this.a.download.enableRock);
+  }
+  
+  public String h()
+  {
+    if (!q()) {
+      return this.a.download.packageName;
     }
     return "";
   }
   
-  public boolean b()
+  public int i()
   {
-    return (!d()) && (this.jdField_a_of_type_UserGrowthStGlobalConfig.download.appStoreSwitch);
-  }
-  
-  public int c()
-  {
-    if (!d()) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.versionCode;
+    if (!q()) {
+      return this.a.download.vendorId;
     }
     return 0;
   }
   
-  public int c(int paramInt)
+  public String j()
   {
-    if (!b(paramInt)) {
-      return a(paramInt).linkConfig.downloadCount;
-    }
-    return 10000;
-  }
-  
-  public String c()
-  {
-    if (!d()) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.preloadDownloadUrl;
+    if (!q()) {
+      return this.a.download.downloadUrl;
     }
     return "";
   }
   
-  public boolean c()
+  public String k()
   {
-    return (!d()) && (this.jdField_a_of_type_UserGrowthStGlobalConfig.download.enableRock);
+    if (!q()) {
+      return this.a.download.preloadDownloadUrl;
+    }
+    return "";
   }
   
-  public int d()
+  public String l()
+  {
+    if (!q())
+    {
+      if (TextUtils.isEmpty(this.a.download.qqDownloadUrl))
+      {
+        localObject = this.a.download;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(WeishiDownloadUtil.b());
+        localStringBuilder.append("&versioncode=");
+        localStringBuilder.append(m());
+        ((downloadConfig)localObject).qqDownloadUrl = localStringBuilder.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("服务器下发QQDownloadUrl失败，使用默认的:");
+        ((StringBuilder)localObject).append(this.a.download.qqDownloadUrl);
+        WSLog.c("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("服务器下发QQDownloadUrl: ");
+      ((StringBuilder)localObject).append(this.a.download.qqDownloadUrl);
+      WSLog.d("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
+      return this.a.download.qqDownloadUrl;
+    }
+    return WeishiDownloadUtil.b();
+  }
+  
+  public int m()
+  {
+    if (!q()) {
+      return this.a.download.versionCode;
+    }
+    return 0;
+  }
+  
+  public int n()
   {
     stGlobalConfig localstGlobalConfig = a(1);
     if (localstGlobalConfig != null) {
@@ -256,53 +283,18 @@ public class WSGlobalConfig
     return 14;
   }
   
-  public int d(int paramInt)
-  {
-    stPopWindowsConfig localstPopWindowsConfig = a(paramInt);
-    if (localstPopWindowsConfig != null) {
-      return localstPopWindowsConfig.index;
-    }
-    return -1;
-  }
-  
-  public String d()
-  {
-    if (!d())
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl))
-      {
-        localObject = this.jdField_a_of_type_UserGrowthStGlobalConfig.download;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(WeishiDownloadUtil.a());
-        localStringBuilder.append("&versioncode=");
-        localStringBuilder.append(c());
-        ((downloadConfig)localObject).qqDownloadUrl = localStringBuilder.toString();
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("服务器下发QQDownloadUrl失败，使用默认的:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl);
-        WSLog.c("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
-      }
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("服务器下发QQDownloadUrl: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl);
-      WSLog.d("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl;
-    }
-    return WeishiDownloadUtil.a();
-  }
-  
-  public String e()
+  public String o()
   {
     if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
     {
-      localObject = WSSharePreferencesUtil.a("encryptedDeviceId", "");
+      localObject = WSSharePreferencesUtil.b("encryptedDeviceId", "");
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("WSSharePreferencesUtil load encrypted_deviceid:");
       localStringBuilder.append((String)localObject);
       WSLog.a("WSGlobalConfigLog", localStringBuilder.toString());
       return localObject;
     }
-    Object localObject = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((stGlobalConfig)localObject).encrypted_deviceid;
@@ -316,7 +308,7 @@ public class WSGlobalConfig
         return localObject;
       }
     }
-    localObject = WSSharePreferencesUtil.a("encryptedDeviceId", "");
+    localObject = WSSharePreferencesUtil.b("encryptedDeviceId", "");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WSSharePreferencesUtil load encrypted_deviceid:");
     localStringBuilder.append((String)localObject);
@@ -324,18 +316,18 @@ public class WSGlobalConfig
     return localObject;
   }
   
-  public String f()
+  public String p()
   {
-    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    stGlobalConfig localstGlobalConfig = this.a;
     if ((localstGlobalConfig != null) && (localstGlobalConfig.commentConfig != null)) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.commentConfig.guideText;
+      return this.a.commentConfig.guideText;
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

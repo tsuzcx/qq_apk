@@ -12,22 +12,22 @@ class AIOGalleryScene$15
   
   public void run()
   {
-    if (ZhuoXusManager.a().b()) {
+    if (ZhuoXusManager.a().c()) {
       return;
     }
-    if ((this.this$0.g != null) && (this.this$0.g.equals(this.jdField_a_of_type_JavaIoFile.getPath())))
+    if ((this.this$0.ae != null) && (this.this$0.ae.equals(this.a.getPath())))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("file://");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      ((StringBuilder)localObject).append(this.a.getAbsolutePath());
       localObject = Uri.parse(((StringBuilder)localObject).toString());
-      AIOGalleryScene.a(this.this$0, (Uri)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+      AIOGalleryScene.a(this.this$0, (Uri)localObject, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.15
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class VideoPlayRecommendHandler$1
   
   public void run()
   {
-    VideoPlayRecommendHandler.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoDbStructWeishiRedDotInfo, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, null, 0, 0, this.jdField_d_of_type_Int, 0, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle, this.e);
+    VideoPlayRecommendHandler.a(this.this$0, this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, null, 0, 0, this.p, 0, this.q, this.r, this.s);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoPlayRecommendHandler.1
  * JD-Core Version:    0.7.0.1
  */

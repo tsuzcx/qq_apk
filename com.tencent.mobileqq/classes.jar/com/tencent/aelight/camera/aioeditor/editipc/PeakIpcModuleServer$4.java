@@ -41,12 +41,12 @@ class PeakIpcModuleServer$4
         default: 
           return;
         case 1005: 
-          this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.removeHandle(this);
-          QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.jdField_a_of_type_JavaLangString, "action_upload_ark_video_fail", localBundle, null);
+          this.a.removeHandle(this);
+          QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.b, "action_upload_ark_video_fail", localBundle, null);
           return;
         case 1004: 
-          this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.removeHandle(this);
-          QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.jdField_a_of_type_JavaLangString, "action_upload_ark_video_cancel", localBundle, null);
+          this.a.removeHandle(this);
+          QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.b, "action_upload_ark_video_cancel", localBundle, null);
           return;
         case 1002: 
           double d1 = ((FileMsg)localObject2).transferedSize;
@@ -54,11 +54,11 @@ class PeakIpcModuleServer$4
           double d2 = ((FileMsg)localObject2).fileSize;
           Double.isNaN(d2);
           localBundle.putInt("key_upload_ark_video_progress", (int)(d1 * 1.0D / d2 * 100.0D));
-          QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.jdField_a_of_type_JavaLangString, "action_upload_ark_video_progress_update", localBundle, null);
+          QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.b, "action_upload_ark_video_progress_update", localBundle, null);
           return;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.removeHandle(this);
+      this.a.removeHandle(this);
       localObject1 = null;
       Bdh_extinfo.UploadPicExtInfo localUploadPicExtInfo = new Bdh_extinfo.UploadPicExtInfo();
       paramMessage = (Message)localObject1;
@@ -84,16 +84,16 @@ class PeakIpcModuleServer$4
       if (!TextUtils.isEmpty(paramMessage))
       {
         localBundle.putString("key_upload_ark_video_download_url", paramMessage);
-        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.jdField_a_of_type_JavaLangString, "action_upload_ark_video_success", localBundle, null);
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.b, "action_upload_ark_video_success", localBundle, null);
         return;
       }
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.jdField_a_of_type_JavaLangString, "action_upload_ark_video_fail", localBundle, null);
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", this.b, "action_upload_ark_video_fail", localBundle, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.editipc.PeakIpcModuleServer.4
  * JD-Core Version:    0.7.0.1
  */

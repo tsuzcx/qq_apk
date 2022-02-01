@@ -46,7 +46,7 @@ public class NearbyImgDownloader
     if (paramString != null)
     {
       long l = SystemClock.elapsedRealtime();
-      boolean bool = HeadDpcCfg.a().a();
+      boolean bool = HeadDpcCfg.a().c();
       int k = NetConnInfoCenter.getActiveNetIpFamily(true);
       int i = 28;
       Object localObject;
@@ -251,11 +251,11 @@ public class NearbyImgDownloader
   private boolean writeToFile(java.io.InputStream paramInputStream, long paramLong, DiskCache.Editor paramEditor, URLDrawableHandler paramURLDrawableHandler)
   {
     // Byte code:
-    //   0: new 292	java/io/BufferedInputStream
+    //   0: new 293	java/io/BufferedInputStream
     //   3: dup
     //   4: aload_1
     //   5: ldc 7
-    //   7: invokespecial 295	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   7: invokespecial 296	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   10: astore 16
     //   12: iconst_0
     //   13: istore 12
@@ -274,16 +274,16 @@ public class NearbyImgDownloader
     //   34: lstore 8
     //   36: aload 15
     //   38: astore_1
-    //   39: new 297	java/io/FileOutputStream
+    //   39: new 298	java/io/FileOutputStream
     //   42: dup
     //   43: aload 4
-    //   45: getfield 303	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   45: getfield 304	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
     //   48: iconst_0
-    //   49: invokespecial 306	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   49: invokespecial 307	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   52: astore 4
     //   54: aload 16
     //   56: aload 17
-    //   58: invokevirtual 312	java/io/InputStream:read	([B)I
+    //   58: invokevirtual 313	java/io/InputStream:read	([B)I
     //   61: istore 6
     //   63: iload 6
     //   65: iconst_m1
@@ -292,7 +292,7 @@ public class NearbyImgDownloader
     //   71: aload 17
     //   73: iconst_0
     //   74: iload 6
-    //   76: invokevirtual 316	java/io/FileOutputStream:write	([BII)V
+    //   76: invokevirtual 317	java/io/FileOutputStream:write	([BII)V
     //   79: lload 8
     //   81: iload 6
     //   83: i2l
@@ -303,67 +303,67 @@ public class NearbyImgDownloader
     //   90: lload_2
     //   91: l2f
     //   92: fdiv
-    //   93: ldc_w 317
+    //   93: ldc_w 318
     //   96: fmul
     //   97: f2i
     //   98: istore 7
     //   100: aload 5
     //   102: iload 7
-    //   104: invokeinterface 322 2 0
+    //   104: invokeinterface 323 2 0
     //   109: lload 10
     //   111: lstore 8
-    //   113: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   113: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   116: ifeq -62 -> 54
-    //   119: new 119	java/lang/StringBuilder
+    //   119: new 120	java/lang/StringBuilder
     //   122: dup
-    //   123: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   123: invokespecial 121	java/lang/StringBuilder:<init>	()V
     //   126: astore_1
     //   127: aload_1
-    //   128: ldc_w 324
-    //   131: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: ldc_w 325
+    //   131: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload_1
     //   136: iload 7
-    //   138: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   141: pop
     //   142: aload_1
-    //   143: ldc_w 326
-    //   146: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: ldc_w 327
+    //   146: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: pop
     //   150: aload_1
     //   151: iload 6
-    //   153: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: ldc 19
     //   159: iconst_2
     //   160: aload_1
-    //   161: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: invokestatic 162	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   161: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokestatic 163	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   167: lload 10
     //   169: lstore 8
     //   171: goto -117 -> 54
     //   174: aload 4
-    //   176: invokevirtual 329	java/io/FileOutputStream:flush	()V
+    //   176: invokevirtual 330	java/io/FileOutputStream:flush	()V
     //   179: iconst_1
     //   180: istore 12
     //   182: iconst_1
     //   183: istore 13
     //   185: aload 16
-    //   187: invokevirtual 332	java/io/InputStream:close	()V
+    //   187: invokevirtual 333	java/io/InputStream:close	()V
     //   190: aload 4
-    //   192: invokevirtual 333	java/io/FileOutputStream:close	()V
+    //   192: invokevirtual 334	java/io/FileOutputStream:close	()V
     //   195: iconst_1
     //   196: ireturn
     //   197: astore_1
-    //   198: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   198: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   201: ifeq +95 -> 296
     //   204: iload 13
     //   206: istore 12
     //   208: ldc 19
     //   210: iconst_2
     //   211: aload_1
-    //   212: invokevirtual 334	java/lang/Exception:toString	()Ljava/lang/String;
-    //   215: invokestatic 281	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   212: invokevirtual 335	java/lang/Exception:toString	()Ljava/lang/String;
+    //   215: invokestatic 282	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   218: iload 12
     //   220: ireturn
     //   221: astore_1
@@ -381,23 +381,23 @@ public class NearbyImgDownloader
     //   245: astore 4
     //   247: aload 4
     //   249: astore_1
-    //   250: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   250: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   253: ifeq +17 -> 270
     //   256: aload 4
     //   258: astore_1
     //   259: ldc 19
     //   261: iconst_2
     //   262: aload 5
-    //   264: invokevirtual 335	java/io/IOException:toString	()Ljava/lang/String;
-    //   267: invokestatic 281	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   264: invokevirtual 336	java/io/IOException:toString	()Ljava/lang/String;
+    //   267: invokestatic 282	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   270: aload 16
-    //   272: invokevirtual 332	java/io/InputStream:close	()V
+    //   272: invokevirtual 333	java/io/InputStream:close	()V
     //   275: aload 4
-    //   277: invokevirtual 333	java/io/FileOutputStream:close	()V
+    //   277: invokevirtual 334	java/io/FileOutputStream:close	()V
     //   280: iconst_0
     //   281: ireturn
     //   282: astore_1
-    //   283: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   283: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   286: ifeq +10 -> 296
     //   289: iload 13
     //   291: istore 12
@@ -405,18 +405,18 @@ public class NearbyImgDownloader
     //   296: iload 12
     //   298: ireturn
     //   299: aload 16
-    //   301: invokevirtual 332	java/io/InputStream:close	()V
+    //   301: invokevirtual 333	java/io/InputStream:close	()V
     //   304: aload 4
-    //   306: invokevirtual 333	java/io/FileOutputStream:close	()V
+    //   306: invokevirtual 334	java/io/FileOutputStream:close	()V
     //   309: goto +22 -> 331
     //   312: astore 4
-    //   314: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   314: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   317: ifeq +14 -> 331
     //   320: ldc 19
     //   322: iconst_2
     //   323: aload 4
-    //   325: invokevirtual 334	java/lang/Exception:toString	()Ljava/lang/String;
-    //   328: invokestatic 281	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   325: invokevirtual 335	java/lang/Exception:toString	()Ljava/lang/String;
+    //   328: invokestatic 282	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   331: goto +5 -> 336
     //   334: aload_1
     //   335: athrow
@@ -542,7 +542,7 @@ public class NearbyImgDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyImgDownloader
  * JD-Core Version:    0.7.0.1
  */

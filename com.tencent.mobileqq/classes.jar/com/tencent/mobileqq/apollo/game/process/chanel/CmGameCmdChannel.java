@@ -20,19 +20,19 @@ import mqq.app.AppRuntime;
 
 public class CmGameCmdChannel
 {
-  private static CmGameCmdChannel jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel;
-  private CmGameAccountHandler jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameAccountHandler;
-  private ApolloRenderRunner jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRenderRunner;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  final List<CmGameCmdChannel.IRequestHandler> jdField_a_of_type_JavaUtilList;
+  private static CmGameCmdChannel b;
+  final List<CmGameCmdChannel.IRequestHandler> a;
+  private ApolloRenderRunner c;
+  private WeakReferenceHandler d;
+  private CmGameAccountHandler e;
+  private WeakReference<AppInterface> f;
   
   private CmGameCmdChannel(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRenderRunner = new ApolloRenderRunner();
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameAccountHandler = new CmGameAccountHandler(paramAppInterface);
+    this.f = new WeakReference(paramAppInterface);
+    this.a = new ArrayList();
+    this.c = new ApolloRenderRunner();
+    this.e = new CmGameAccountHandler(paramAppInterface);
     b();
   }
   
@@ -40,28 +40,28 @@ public class CmGameCmdChannel
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel == null)
+      if (b == null)
       {
-        jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel = new CmGameCmdChannel(paramAppInterface);
+        b = new CmGameCmdChannel(paramAppInterface);
       }
       else
       {
-        Object localObject = (AppRuntime)jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel.jdField_a_of_type_JavaLangRefWeakReference.get();
+        Object localObject = (AppRuntime)b.f.get();
         if (localObject != paramAppInterface)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("old App:");
           localStringBuilder.append(localObject);
           QLog.i("apollochannel_ApolloDataChannel", 1, localStringBuilder.toString());
-          jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel.a();
-          jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel = new CmGameCmdChannel(paramAppInterface);
+          b.a();
+          b = new CmGameCmdChannel(paramAppInterface);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("create new cmdChannel App:");
           ((StringBuilder)localObject).append(paramAppInterface);
           QLog.d("apollochannel_ApolloDataChannel", 1, ((StringBuilder)localObject).toString());
         }
       }
-      paramAppInterface = jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameCmdChannel;
+      paramAppInterface = b;
       return paramAppInterface;
     }
     finally {}
@@ -78,10 +78,10 @@ public class CmGameCmdChannel
     else if (QLog.isColorLevel()) {
       QLog.d("apollochannel_ApolloDataChannel", 2, "new ApolloCmdChannel ApolloEngine.isEngineReady() false");
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), null);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    this.d = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), null);
+    synchronized (this.a)
     {
-      Collections.sort(this.jdField_a_of_type_JavaUtilList, new CmGameCmdChannel.1(this));
+      Collections.sort(this.a, new CmGameCmdChannel.1(this));
       return;
     }
   }
@@ -104,23 +104,23 @@ public class CmGameCmdChannel
     }
     ??? = paramString1.trim();
     Object localObject2 = new CmGameCmdChannel.RequestRunnable(this, (String)???, paramString2, paramInt1, paramInt2);
-    if ((!"cs.close_room.local".equals(???)) && (!"cs.make_room_min.local".equals(???)) && (!"cs.share_game_result.local".equals(???)) && (!"cs.send_b2c_redpacket.local".equals(paramString1)) && (!"cs.first_frame_drawn.local".equals(paramString1)) && (!"cs.qta_notify_test_result.local".equals(paramString1)) && (!"cs.share_pic.local".equals(paramString1)))
+    if ((!"cs.close_room.local".equals(???)) && (!"cs.first_frame_drawn.local".equals(paramString1)) && (!"cs.qta_notify_test_result.local".equals(paramString1)))
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post((Runnable)localObject2);
+        this.d.post((Runnable)localObject2);
       } else {
-        synchronized (this.jdField_a_of_type_JavaUtilList)
+        synchronized (this.a)
         {
-          localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+          localObject2 = this.a.iterator();
           while (((Iterator)localObject2).hasNext())
           {
             HandleResult localHandleResult = ((CmGameCmdChannel.IRequestHandler)((Iterator)localObject2).next()).a(paramString1, paramString2, paramInt1, paramInt2);
             if (localHandleResult != null)
             {
-              if (localHandleResult.jdField_a_of_type_Boolean) {
+              if (localHandleResult.b) {
                 ((Iterator)localObject2).remove();
               }
-              paramString1 = localHandleResult.jdField_a_of_type_JavaLangString;
+              paramString1 = localHandleResult.a;
               return paramString1;
             }
           }
@@ -137,39 +137,28 @@ public class CmGameCmdChannel
   {
     ??? = new StringBuilder();
     ((StringBuilder)???).append("onDestroy app:");
-    ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    ((StringBuilder)???).append(this.f.get());
     QLog.i("apollochannel_ApolloDataChannel", 1, ((StringBuilder)???).toString());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRenderRunner.a();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    this.c.b();
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((CmGameCmdChannel.IRequestHandler)localIterator.next()).a();
+        ((CmGameCmdChannel.IRequestHandler)localIterator.next()).b();
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
-      ??? = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameAccountHandler;
+      this.a.clear();
+      this.d.removeCallbacksAndMessages(null);
+      ??? = this.e;
       if (??? != null)
       {
         ((CmGameAccountHandler)???).a();
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameAccountHandler = null;
+        this.e = null;
       }
       return;
     }
     for (;;)
     {
       throw localObject2;
-    }
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return;
-    }
-    CmGameAccountHandler localCmGameAccountHandler = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameAccountHandler;
-    if (localCmGameAccountHandler != null) {
-      localCmGameAccountHandler.a(paramInt1, paramString, paramInt2);
     }
   }
   
@@ -190,22 +179,22 @@ public class CmGameCmdChannel
     ((Bundle)localObject).putString("cmd", paramString1);
     ((Bundle)localObject).putString("respData", paramString2);
     paramString1 = EIPCResult.createResult(paramInt1, (Bundle)localObject);
-    CmGameServerQIPCModule.a().callbackResult(paramInt2, paramString1);
+    CmGameServerQIPCModule.b().callbackResult(paramInt2, paramString1);
   }
   
   public void a(CmGameCmdChannel.IRequestHandler paramIRequestHandler)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramIRequestHandler);
-      this.jdField_a_of_type_JavaUtilList.add(paramIRequestHandler);
+      this.a.remove(paramIRequestHandler);
+      this.a.add(paramIRequestHandler);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("addCmdHandler class:");
         ((StringBuilder)???).append(paramIRequestHandler.getClass().getName());
         ((StringBuilder)???).append(", size: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)???).append(this.a.size());
         QLog.d("apollochannel_ApolloDataChannel", 2, ((StringBuilder)???).toString());
       }
       return;
@@ -217,16 +206,16 @@ public class CmGameCmdChannel
     if (paramIRequestHandler == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramIRequestHandler);
+      this.a.remove(paramIRequestHandler);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("removeCmdHandler class:");
         ((StringBuilder)???).append(paramIRequestHandler.getClass().getName());
         ((StringBuilder)???).append(", size: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)???).append(this.a.size());
         QLog.d("apollochannel_ApolloDataChannel", 2, ((StringBuilder)???).toString());
       }
       return;
@@ -235,7 +224,7 @@ public class CmGameCmdChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.CmGameCmdChannel
  * JD-Core Version:    0.7.0.1
  */

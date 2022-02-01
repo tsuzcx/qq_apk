@@ -9,14 +9,14 @@ class ProgressVideoViewWrapper$OnInfoListenerWrapper
   
   public boolean a(IVideoView paramIVideoView, int paramInt, Object paramObject)
   {
-    if (ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper) != null) {
+    if (ProgressVideoViewWrapper.a(this.b) != null) {
       if (paramInt == 2) {
-        ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper).c(ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper));
+        ProgressVideoViewWrapper.a(this.b).c(ProgressVideoViewWrapper.b(this.b));
       } else if (paramInt == 3) {
-        ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper).b(ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper));
+        ProgressVideoViewWrapper.a(this.b).b(ProgressVideoViewWrapper.b(this.b));
       }
     }
-    IVideoView.OnInfoListener localOnInfoListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnInfoListener;
+    IVideoView.OnInfoListener localOnInfoListener = this.a;
     if (localOnInfoListener != null) {
       return localOnInfoListener.a(paramIVideoView, paramInt, paramObject);
     }
@@ -25,7 +25,7 @@ class ProgressVideoViewWrapper$OnInfoListenerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ProgressVideoViewWrapper.OnInfoListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

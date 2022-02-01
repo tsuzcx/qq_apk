@@ -1,58 +1,43 @@
 package com.tencent.mobileqq.vas.updatesystem.business;
 
-import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
+import com.tencent.mobileqq.vas.updatesystem.callback.RemoteVasUpdateListener;
+import com.tencent.mobileqq.vas.util.QQVasUpdateBusinessUtil;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.callback.listener.IUpdateListener;
 import com.tencent.vas.update.entity.BusinessItemInfo;
+import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import java.io.File;
-import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public abstract class QQVasUpdateBusiness<T extends BaseUpdateBusiness>
   extends BaseUpdateBusiness
 {
-  private static final String a;
+  public static final String a;
+  private IUpdateListener b;
+  private RemoteVasUpdateListener c = new QQVasUpdateBusiness.1(this);
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(MobileQQ.getContext().getFilesDir());
     localStringBuilder.append(File.separator);
-    localStringBuilder.append("vas_material_folder");
+    localStringBuilder.append("vas_material_folder/");
     a = localStringBuilder.toString();
-  }
-  
-  public static <T extends QQVasUpdateBusiness> T a(Class<T> paramClass)
-  {
-    return (QQVasUpdateBusiness)((IVasQuickUpdateService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IVasQuickUpdateService.class, "")).getBusinessCallback(paramClass);
   }
   
   protected abstract String a();
   
-  public String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append(paramInt);
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a);
-    localStringBuilder.append(a());
-    return new File(localStringBuilder.toString(), paramString).getAbsolutePath();
-  }
-  
   public void a(int paramInt)
   {
-    startDownload(a(paramInt));
+    startDownload(b(paramInt));
   }
   
-  public boolean a(int paramInt)
+  public void addUpdateListener(IUpdateListener paramIUpdateListener)
   {
-    return new File(b(paramInt)).exists();
+    super.addUpdateListener(paramIUpdateListener);
+    this.b = paramIUpdateListener;
   }
   
   protected String b()
@@ -62,25 +47,68 @@ public abstract class QQVasUpdateBusiness<T extends BaseUpdateBusiness>
   
   public String b(int paramInt)
   {
-    return b(a(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
-  public String b(String paramString)
+  public String c(int paramInt)
   {
-    return a(paramString);
+    return e(b(paramInt));
+  }
+  
+  public boolean c(String paramString)
+  {
+    BusinessItemInfo localBusinessItemInfo = new BusinessItemInfo();
+    localBusinessItemInfo.mSavePath = e(paramString);
+    return isFileExist(null, localBusinessItemInfo);
+  }
+  
+  public String d(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append(a());
+    return new File(localStringBuilder.toString(), paramString).getAbsolutePath();
+  }
+  
+  public boolean d(int paramInt)
+  {
+    return new File(c(paramInt)).exists();
+  }
+  
+  public String e(String paramString)
+  {
+    return d(paramString);
   }
   
   public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
   {
     BusinessItemInfo localBusinessItemInfo = new BusinessItemInfo();
     localBusinessItemInfo.mSaveInDir = true;
-    localBusinessItemInfo.mSavePath = b(paramString);
+    localBusinessItemInfo.mSavePath = e(paramString);
     return localBusinessItemInfo;
+  }
+  
+  public void startDownload(String paramString)
+  {
+    if (!QQVasUpdateBusinessUtil.a())
+    {
+      QQVasUpdateBusinessUtil.a(getClass(), paramString, this.c);
+      return;
+    }
+    if (VasUpdateWrapper.getLog() == null)
+    {
+      QLog.e("VasUpdate_ QQBusiness", 1, "update system hasn't init");
+      return;
+    }
+    super.startDownload(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.QQVasUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

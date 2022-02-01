@@ -16,18 +16,6 @@ public class StatisticAssist
 {
   private static List<MessageReportData> a;
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(paramString2);
-    paramString2 = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("statistic");
-    return paramContext.getSharedPreferences(localStringBuilder.toString(), 0).getInt(paramString2, 0);
-  }
-  
   public static List<MessageReportData> a(QQAppInterface paramQQAppInterface)
   {
     paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
@@ -130,10 +118,22 @@ public class StatisticAssist
       }
     }
   }
+  
+  public static int b(Context paramContext, String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    paramString2 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("statistic");
+    return paramContext.getSharedPreferences(localStringBuilder.toString(), 0).getInt(paramString2, 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.StatisticAssist
  * JD-Core Version:    0.7.0.1
  */

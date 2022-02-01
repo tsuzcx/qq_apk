@@ -15,18 +15,18 @@ class SecurePhoneBannerManager$1
   
   public void onClick(View paramView)
   {
-    Dialog localDialog = SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+    Dialog localDialog = SecurePhoneBannerManager.a(this.c, this.a, this.b);
     localDialog.show();
-    SecurePhoneBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager, this.jdField_a_of_type_AndroidContentContext, localDialog);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C4", "0X800B0C4", 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C5", "0X800B0C5", 0, 0, "", "", "", "");
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 24, 0, "", "", "", "");
+    SecurePhoneBannerManager.a(this.c, this.b, localDialog);
+    ReportController.b(this.a, "dc00898", "", "", "0X800B0C4", "0X800B0C4", 0, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800B0C5", "0X800B0C5", 0, 0, "", "", "", "");
+    ReportController.a(this.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 24, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SecurePhoneBannerManager.1
  * JD-Core Version:    0.7.0.1
  */

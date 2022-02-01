@@ -7,47 +7,40 @@ import java.util.HashMap;
 
 public final class ProxyParcel
 {
-  public static final Parcelable.Creator<String> a;
-  private static final HashMap<ClassLoader, HashMap<String, Parcelable.Creator<?>>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static final ProxyParcel[] jdField_a_of_type_ArrayOfComTencentRobolectricProxyParcel;
-  private static final ProxyParcel[] jdField_b_of_type_ArrayOfComTencentRobolectricProxyParcel;
-  private long jdField_a_of_type_Long;
-  private ProxyParcel.ReadWriteHelper jdField_a_of_type_ComTencentRobolectricProxyParcel$ReadWriteHelper;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  
-  static
-  {
-    jdField_a_of_type_AndroidOsParcelable$Creator = new ProxyParcel.1();
-    jdField_a_of_type_ArrayOfComTencentRobolectricProxyParcel = new ProxyParcel[6];
-    jdField_b_of_type_ArrayOfComTencentRobolectricProxyParcel = new ProxyParcel[6];
-  }
+  public static final Parcelable.Creator<String> a = new ProxyParcel.1();
+  private static final ProxyParcel[] b = new ProxyParcel[6];
+  private static final ProxyParcel[] c = new ProxyParcel[6];
+  private static final HashMap<ClassLoader, HashMap<String, Parcelable.Creator<?>>> d = new HashMap();
+  private long e;
+  private boolean f;
+  private long g;
+  private ProxyParcel.ReadWriteHelper h;
   
   private void a()
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.e;
     if (l != 0L)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.f)
       {
         nativeDestroy(l);
         a(0L);
       }
-      this.jdField_a_of_type_Long = 0L;
+      this.e = 0L;
     }
-    this.jdField_a_of_type_ComTencentRobolectricProxyParcel$ReadWriteHelper = null;
+    this.h = null;
   }
   
   private void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       long l = paramLong;
       if (paramLong > 2147483647L) {
         l = 2147483647L;
       }
-      if (l != this.jdField_b_of_type_Long) {
-        this.jdField_b_of_type_Long = l;
+      if (l != this.g) {
+        this.g = l;
       }
     }
   }
@@ -126,7 +119,7 @@ public final class ProxyParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.robolectric.ProxyParcel
  * JD-Core Version:    0.7.0.1
  */

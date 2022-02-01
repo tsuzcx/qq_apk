@@ -17,7 +17,7 @@ public class CircularRevealWidget$CircularRevealProperty
   @Nullable
   public CircularRevealWidget.RevealInfo a(@NonNull CircularRevealWidget paramCircularRevealWidget)
   {
-    return paramCircularRevealWidget.a();
+    return paramCircularRevealWidget.getRevealInfo();
   }
   
   public void a(@NonNull CircularRevealWidget paramCircularRevealWidget, @Nullable CircularRevealWidget.RevealInfo paramRevealInfo)
@@ -27,7 +27,7 @@ public class CircularRevealWidget$CircularRevealProperty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.circularreveal.CircularRevealWidget.CircularRevealProperty
  * JD-Core Version:    0.7.0.1
  */

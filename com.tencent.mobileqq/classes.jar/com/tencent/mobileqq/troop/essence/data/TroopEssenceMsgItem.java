@@ -34,17 +34,17 @@ public class TroopEssenceMsgItem
   {
     if (paramTroopEssenceMsgItemKey != null)
     {
-      this.troopUin = paramTroopEssenceMsgItemKey.jdField_a_of_type_Long;
-      this.msgSeq = paramTroopEssenceMsgItemKey.jdField_b_of_type_Long;
-      this.msgRandom = paramTroopEssenceMsgItemKey.jdField_a_of_type_Int;
+      this.troopUin = paramTroopEssenceMsgItemKey.a;
+      this.msgSeq = paramTroopEssenceMsgItemKey.b;
+      this.msgRandom = paramTroopEssenceMsgItemKey.c;
     }
     if (paramTroopEssenceMsgItemValue != null)
     {
-      this.opType = paramTroopEssenceMsgItemValue.jdField_a_of_type_Int;
-      this.msgSenderUin = paramTroopEssenceMsgItemValue.jdField_a_of_type_JavaLangString;
-      this.opUin = paramTroopEssenceMsgItemValue.jdField_b_of_type_JavaLangString;
-      this.opTime = paramTroopEssenceMsgItemValue.jdField_a_of_type_Long;
-      this.graytipuniseq = paramTroopEssenceMsgItemValue.jdField_b_of_type_Long;
+      this.opType = paramTroopEssenceMsgItemValue.a;
+      this.msgSenderUin = paramTroopEssenceMsgItemValue.b;
+      this.opUin = paramTroopEssenceMsgItemValue.c;
+      this.opTime = paramTroopEssenceMsgItemValue.d;
+      this.graytipuniseq = paramTroopEssenceMsgItemValue.e;
     }
   }
   
@@ -80,7 +80,7 @@ public class TroopEssenceMsgItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem
  * JD-Core Version:    0.7.0.1
  */

@@ -135,10 +135,10 @@ public class LocalDataJsPlugin
       QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight SwiftBrowserStatistics = null");
       return false;
     }
-    if (((SwiftBrowserStatistics)localObject).a.size() > 0) {
-      localObject = (String)((SwiftBrowserStatistics)localObject).a.get(((SwiftBrowserStatistics)localObject).a.size() - 1);
+    if (((SwiftBrowserStatistics)localObject).aK.size() > 0) {
+      localObject = (String)((SwiftBrowserStatistics)localObject).aK.get(((SwiftBrowserStatistics)localObject).aK.size() - 1);
     } else {
-      localObject = ((SwiftBrowserStatistics)localObject).c;
+      localObject = ((SwiftBrowserStatistics)localObject).aw;
     }
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -352,7 +352,7 @@ public class LocalDataJsPlugin
   
   protected void onCreate()
   {
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if ((localAppInterface instanceof BrowserAppInterface))
     {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
@@ -365,7 +365,7 @@ public class LocalDataJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.LocalDataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

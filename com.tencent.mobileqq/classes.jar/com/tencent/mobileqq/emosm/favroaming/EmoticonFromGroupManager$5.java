@@ -20,8 +20,8 @@ class EmoticonFromGroupManager$5
   
   public void run()
   {
-    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)EmoticonFromGroupManager.a(this.this$0).getRuntimeService(IFavroamingDBManagerService.class);
-    IFavroamingManagerService localIFavroamingManagerService = (IFavroamingManagerService)EmoticonFromGroupManager.a(this.this$0).getRuntimeService(IFavroamingManagerService.class);
+    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)EmoticonFromGroupManager.c(this.this$0).getRuntimeService(IFavroamingDBManagerService.class);
+    IFavroamingManagerService localIFavroamingManagerService = (IFavroamingManagerService)EmoticonFromGroupManager.c(this.this$0).getRuntimeService(IFavroamingManagerService.class);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Manager", 2, "Call getEmoticonDataList from onUploadPic.");
     }
@@ -53,7 +53,7 @@ class EmoticonFromGroupManager$5
         break;
       }
       localObject1 = new CustomEmotionData();
-      ((CustomEmotionData)localObject1).uin = EmoticonFromGroupManager.a(this.this$0).getCurrentUin();
+      ((CustomEmotionData)localObject1).uin = EmoticonFromGroupManager.c(this.this$0).getCurrentUin();
       j += 1;
       ((CustomEmotionData)localObject1).emoId = j;
       localArrayList.add(localObject1);
@@ -74,13 +74,13 @@ class EmoticonFromGroupManager$5
       }
       else if (1 != localURLDrawable.getStatus())
       {
-        EmoticonFromGroupManager.a(this.this$0).getUploadDrawableList().add(localURLDrawable);
+        EmoticonFromGroupManager.b(this.this$0).getUploadDrawableList().add(localURLDrawable);
         localURLDrawable.setURLDrawableListener(new EmoticonFromGroupManager.5.1(this, localURLDrawable, (CustomEmotionData)localObject1, localIFavroamingManagerService, localIFavroamingDBManagerService));
         localURLDrawable.startDownload();
       }
       else
       {
-        localObject2 = this.this$0.a(localURLDrawable.getURL().toString());
+        localObject2 = this.this$0.d(localURLDrawable.getURL().toString());
         if (this.this$0.a((String)localObject2)) {
           return;
         }
@@ -117,7 +117,7 @@ class EmoticonFromGroupManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5
  * JD-Core Version:    0.7.0.1
  */

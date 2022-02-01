@@ -15,156 +15,161 @@ import androidx.core.view.ViewCompat;
 class TabLayoutCompat$SlidingTabStrip
   extends LinearLayout
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = -1;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b;
-  private int c = -1;
-  private int d = -1;
-  private int e = -1;
-  private int f;
-  private int g;
-  private int h;
+  int a = -1;
+  float b;
+  private int d;
+  private final Paint e;
+  private int f = -1;
+  private int g = -1;
+  private int h = -1;
+  private ValueAnimator i;
+  private int j;
+  private int k;
+  private int l;
   
   TabLayoutCompat$SlidingTabStrip(TabLayoutCompat paramTabLayoutCompat, Context paramContext)
   {
     super(paramContext);
     setWillNotDraw(false);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.e = new Paint();
   }
   
-  private void a()
+  private void c()
   {
-    View localView = getChildAt(this.jdField_a_of_type_Int);
-    int i;
-    int j;
+    View localView = getChildAt(this.a);
+    int m;
+    int n;
     if ((localView != null) && (localView.getWidth() > 0))
     {
-      int m = localView.getLeft();
-      int k = localView.getRight();
-      i = k;
-      j = m;
-      if (this.jdField_a_of_type_Float > 0.0F)
+      int i2 = localView.getLeft();
+      int i1 = localView.getRight();
+      m = i1;
+      n = i2;
+      if (this.b > 0.0F)
       {
-        i = k;
-        j = m;
-        if (this.jdField_a_of_type_Int < getChildCount() - 1)
+        m = i1;
+        n = i2;
+        if (this.a < getChildCount() - 1)
         {
-          localView = getChildAt(this.jdField_a_of_type_Int + 1);
-          float f1 = this.jdField_a_of_type_Float;
+          localView = getChildAt(this.a + 1);
+          float f1 = this.b;
           float f2 = localView.getLeft();
-          float f3 = this.jdField_a_of_type_Float;
-          j = (int)(f1 * f2 + (1.0F - f3) * m);
-          i = (int)(f3 * localView.getRight() + (1.0F - this.jdField_a_of_type_Float) * k);
+          float f3 = this.b;
+          n = (int)(f1 * f2 + (1.0F - f3) * i2);
+          m = (int)(f3 * localView.getRight() + (1.0F - this.b) * i1);
         }
       }
     }
     else
     {
-      j = -1;
-      i = -1;
+      n = -1;
+      m = -1;
     }
-    a(j, i);
+    a(n, m);
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint.getColor() != paramInt)
+    if (this.e.getColor() != paramInt)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+      this.e.setColor(paramInt);
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
   void a(int paramInt, float paramFloat)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.i;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.i.cancel();
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat;
-    a();
+    this.a = paramInt;
+    this.b = paramFloat;
+    c();
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.d) || (paramInt2 != this.e))
+    if ((paramInt1 != this.g) || (paramInt2 != this.h))
     {
-      this.d = paramInt1;
-      this.e = paramInt2;
+      this.g = paramInt1;
+      this.h = paramInt2;
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
   boolean a()
   {
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int n = getChildCount();
+    int m = 0;
+    while (m < n)
     {
-      if (getChildAt(i).getWidth() <= 0) {
+      if (getChildAt(m).getWidth() <= 0) {
         return true;
       }
-      i += 1;
+      m += 1;
     }
     return false;
   }
   
+  float b()
+  {
+    return this.a + this.b;
+  }
+  
   void b(int paramInt)
   {
-    if (this.b != paramInt)
+    if (this.d != paramInt)
     {
-      this.b = paramInt;
+      this.d = paramInt;
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
   void b(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    Object localObject = this.i;
     if ((localObject != null) && (((ValueAnimator)localObject).isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.i.cancel();
     }
-    int i;
+    int m;
     if (ViewCompat.getLayoutDirection(this) == 1) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
     localObject = getChildAt(paramInt1);
     if (localObject == null)
     {
-      a();
+      c();
       return;
     }
-    int k = ((View)localObject).getLeft();
-    int m = ((View)localObject).getRight();
-    int j;
-    if (Math.abs(paramInt1 - this.jdField_a_of_type_Int) <= 1)
+    int i1 = ((View)localObject).getLeft();
+    int i2 = ((View)localObject).getRight();
+    int n;
+    if (Math.abs(paramInt1 - this.a) <= 1)
     {
-      i = this.d;
-      j = this.e;
+      m = this.g;
+      n = this.h;
     }
     else
     {
-      j = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.a(24);
-      if (paramInt1 < this.jdField_a_of_type_Int ? i == 0 : i != 0) {
-        i = j + m;
+      n = this.c.c(24);
+      if (paramInt1 < this.a ? m == 0 : m != 0) {
+        m = n + i2;
       } else {
-        i = k - j;
+        m = i1 - n;
       }
-      j = i;
+      n = m;
     }
-    if ((i != k) || (j != m))
+    if ((m != i1) || (n != i2))
     {
       localObject = new ValueAnimator();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ((ValueAnimator)localObject);
+      this.i = ((ValueAnimator)localObject);
       ((ValueAnimator)localObject).setInterpolator(new FastOutSlowInInterpolator());
       ((ValueAnimator)localObject).setDuration(paramInt2);
       ((ValueAnimator)localObject).setFloatValues(new float[] { 0.0F, 1.0F });
-      ((ValueAnimator)localObject).addUpdateListener(new TabLayoutCompat.SlidingTabStrip.1(this, i, k, j, m));
+      ((ValueAnimator)localObject).addUpdateListener(new TabLayoutCompat.SlidingTabStrip.1(this, m, i1, n, i2));
       ((ValueAnimator)localObject).addListener(new TabLayoutCompat.SlidingTabStrip.2(this, paramInt1));
       ((ValueAnimator)localObject).start();
     }
@@ -172,18 +177,18 @@ class TabLayoutCompat$SlidingTabStrip
   
   void c(int paramInt)
   {
-    if (this.f != paramInt)
+    if (this.j != paramInt)
     {
-      this.f = paramInt;
+      this.j = paramInt;
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
   public void d(int paramInt)
   {
-    if (this.g != paramInt)
+    if (this.k != paramInt)
     {
-      this.g = paramInt;
+      this.k = paramInt;
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
@@ -191,17 +196,17 @@ class TabLayoutCompat$SlidingTabStrip
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    int i = this.d;
-    if ((i >= 0) && (this.e > i)) {
-      paramCanvas.drawRect(i + this.f, getHeight() - this.b - this.h, this.e - this.g, getHeight() - this.h, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int m = this.g;
+    if ((m >= 0) && (this.h > m)) {
+      paramCanvas.drawRect(m + this.j, getHeight() - this.d - this.l, this.h - this.k, getHeight() - this.l, this.e);
     }
   }
   
   public void e(int paramInt)
   {
-    if (this.h != paramInt)
+    if (this.l != paramInt)
     {
-      this.h = paramInt;
+      this.l = paramInt;
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
@@ -209,15 +214,15 @@ class TabLayoutCompat$SlidingTabStrip
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.i;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning()))
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      long l = this.jdField_a_of_type_AndroidAnimationValueAnimator.getDuration();
-      b(this.jdField_a_of_type_Int, Math.round((1.0F - this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedFraction()) * (float)l));
+      this.i.cancel();
+      long l1 = this.i.getDuration();
+      b(this.a, Math.round((1.0F - this.i.getAnimatedFraction()) * (float)l1));
       return;
     }
-    a();
+    c();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -226,52 +231,52 @@ class TabLayoutCompat$SlidingTabStrip
     if (View.MeasureSpec.getMode(paramInt1) != 1073741824) {
       return;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.i;
-    int n = 1;
-    if ((i == 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.h == 1))
+    int m = this.c.l;
+    int i3 = 1;
+    if ((m == 1) && (this.c.k == 1))
     {
-      int i1 = getChildCount();
-      int m = 0;
-      i = 0;
+      int i4 = getChildCount();
+      int i2 = 0;
+      m = 0;
       Object localObject;
-      int k;
-      for (int j = 0; i < i1; j = k)
+      int i1;
+      for (int n = 0; m < i4; n = i1)
       {
-        localObject = getChildAt(i);
-        k = j;
+        localObject = getChildAt(m);
+        i1 = n;
         if (((View)localObject).getVisibility() == 0) {
-          k = Math.max(j, ((View)localObject).getMeasuredWidth());
+          i1 = Math.max(n, ((View)localObject).getMeasuredWidth());
         }
-        i += 1;
+        m += 1;
       }
-      if (j <= 0) {
+      if (n <= 0) {
         return;
       }
-      i = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat.a(16);
-      if (j * i1 <= getMeasuredWidth() - i * 2)
+      m = this.c.c(16);
+      if (n * i4 <= getMeasuredWidth() - m * 2)
       {
-        i = 0;
-        k = m;
-        while (k < i1)
+        m = 0;
+        i1 = i2;
+        while (i1 < i4)
         {
-          localObject = (LinearLayout.LayoutParams)getChildAt(k).getLayoutParams();
-          if ((((LinearLayout.LayoutParams)localObject).width != j) || (((LinearLayout.LayoutParams)localObject).weight != 0.0F))
+          localObject = (LinearLayout.LayoutParams)getChildAt(i1).getLayoutParams();
+          if ((((LinearLayout.LayoutParams)localObject).width != n) || (((LinearLayout.LayoutParams)localObject).weight != 0.0F))
           {
-            ((LinearLayout.LayoutParams)localObject).width = j;
+            ((LinearLayout.LayoutParams)localObject).width = n;
             ((LinearLayout.LayoutParams)localObject).weight = 0.0F;
-            i = 1;
+            m = 1;
           }
-          k += 1;
+          i1 += 1;
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat;
-        ((TabLayoutCompat)localObject).h = 0;
+        localObject = this.c;
+        ((TabLayoutCompat)localObject).k = 0;
         ((TabLayoutCompat)localObject).c(false);
-        i = n;
+        m = i3;
       }
-      if (i != 0) {
+      if (m != 0) {
         super.onMeasure(paramInt1, paramInt2);
       }
     }
@@ -280,16 +285,16 @@ class TabLayoutCompat$SlidingTabStrip
   public void onRtlPropertiesChanged(int paramInt)
   {
     super.onRtlPropertiesChanged(paramInt);
-    if ((Build.VERSION.SDK_INT < 23) && (this.c != paramInt))
+    if ((Build.VERSION.SDK_INT < 23) && (this.f != paramInt))
     {
       requestLayout();
-      this.c = paramInt;
+      this.f = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabLayoutCompat.SlidingTabStrip
  * JD-Core Version:    0.7.0.1
  */

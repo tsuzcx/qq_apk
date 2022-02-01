@@ -168,7 +168,7 @@ public class NotificationActivity
       gotoPay((String)localObject, "mvip.p.lh.pay_over", bool, false);
       return;
     }
-    QQToast.a(this, HardCodeUtil.a(2131707639), 0).a();
+    QQToast.makeText(this, HardCodeUtil.a(2131905454), 0).show();
     finish();
   }
   
@@ -197,16 +197,16 @@ public class NotificationActivity
     AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
-    ((Window)localObject).setContentView(2131559511);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131365659);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131365658);
-    localObject = (TextView)((Window)localObject).findViewById(2131365680);
+    ((Window)localObject).setContentView(2131625533);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131431892);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131431891);
+    localObject = (TextView)((Window)localObject).findViewById(2131431914);
     if ((localButton1 != null) && (localObject != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getString(2131698452));
-      localStringBuilder.append("8.7.0");
-      localStringBuilder.append(getString(2131698451));
+      localStringBuilder.append(getString(2131896386));
+      localStringBuilder.append("8.8.17");
+      localStringBuilder.append(getString(2131896385));
       ((TextView)localObject).setText(localStringBuilder.toString());
       localButton1.setOnClickListener(new NotificationActivity.33(this));
       localButton2.setOnClickListener(new NotificationActivity.34(this));
@@ -221,8 +221,8 @@ public class NotificationActivity
     if (paramString == null) {
       localObject1 = "";
     }
-    Object localObject2 = getString(2131698970);
-    paramString = getString(2131693856);
+    Object localObject2 = getString(2131896962);
+    paramString = getString(2131891437);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append((String)localObject2);
     ((StringBuilder)localObject3).append(paramString);
@@ -269,7 +269,7 @@ public class NotificationActivity
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unit", HardCodeUtil.a(2131707629));
+      localJSONObject.put("unit", HardCodeUtil.a(2131905444));
       localJSONObject.put("userId", this.loginAlias);
       localJSONObject.put("openMonth", paramString1);
       localJSONObject.put("offerId", "1450000833");
@@ -354,16 +354,16 @@ public class NotificationActivity
         localObject = this.msg;
       }
       if (isIMBlock()) {
-        str1 = getString(2131693855);
+        str1 = getString(2131891436);
       } else {
-        str1 = getString(2131693857);
+        str1 = getString(2131891438);
       }
       if (isIMBlock()) {
-        str2 = getString(2131693858);
+        str2 = getString(2131891439);
       } else {
-        str2 = getString(2131693856);
+        str2 = getString(2131891437);
       }
-      this.dialog = DialogUtil.a(this, 0, str3, (CharSequence)localObject, str1, str2, getString(2131693859), new NotificationActivity.26(this), new NotificationActivity.27(this), new NotificationActivity.28(this));
+      this.dialog = DialogUtil.a(this, 0, str3, (CharSequence)localObject, str1, str2, getString(2131891440), new NotificationActivity.26(this), new NotificationActivity.27(this), new NotificationActivity.28(this));
     }
     else
     {
@@ -374,16 +374,16 @@ public class NotificationActivity
         localObject = this.msg;
       }
       if (isIMBlock()) {
-        str1 = getString(2131693855);
+        str1 = getString(2131891436);
       } else {
-        str1 = getString(2131693860);
+        str1 = getString(2131891441);
       }
       if (isIMBlock()) {
-        str2 = getString(2131693858);
+        str2 = getString(2131891439);
       } else {
-        str2 = getString(2131693856);
+        str2 = getString(2131891437);
       }
-      this.dialog = DialogUtil.a(this, 0, str3, (CharSequence)localObject, str1, str2, getString(2131693859), new NotificationActivity.29(this), new NotificationActivity.30(this), new NotificationActivity.31(this));
+      this.dialog = DialogUtil.a(this, 0, str3, (CharSequence)localObject, str1, str2, getString(2131891440), new NotificationActivity.29(this), new NotificationActivity.30(this), new NotificationActivity.31(this));
     }
     setDialogTextColor((QQCustomDialog)this.dialog);
     if (isIMBlock())
@@ -405,8 +405,8 @@ public class NotificationActivity
     if (this.mUnifyFrozenScene == 2) {
       this.mMiniAppScene = 2201;
     }
-    i = FrozenNotifyDlgHelper.a().a(this.mUnifyFrozenScene);
-    this.dialog = DialogUtil.a(this, 230, this.mErrorTitle, (CharSequence)localObject, 2131690728, i, new NotificationActivity.24(this), new NotificationActivity.25(this));
+    i = FrozenNotifyDlgHelper.a().b(this.mUnifyFrozenScene);
+    this.dialog = DialogUtil.a(this, 230, this.mErrorTitle, (CharSequence)localObject, 2131887648, i, new NotificationActivity.24(this), new NotificationActivity.25(this));
   }
   
   private void hideProgressDialog()
@@ -463,7 +463,7 @@ public class NotificationActivity
       getAppRuntime().updateSubAccountLogin(getAppRuntime().getCurrentAccountUin(), false);
       getAppRuntime().getApplication().refreAccountList();
     }
-    Object localObject2 = sSecControllerInjectInterface.a((BaseQQAppInterface)getAppRuntime());
+    Object localObject2 = sSecControllerInjectInterface.b((BaseQQAppInterface)getAppRuntime());
     if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
     {
       localObject2 = ((ArrayList)localObject2).iterator();
@@ -540,15 +540,15 @@ public class NotificationActivity
         localException1.printStackTrace();
       }
     case 10: 
-      localObject2 = getResources().getString(2131693901);
-      localObject3 = getResources().getString(2131693900);
-      str2 = getResources().getString(2131693897);
-      str3 = getResources().getString(2131693899);
-      localObject5 = getResources().getString(2131693898);
+      localObject2 = getResources().getString(2131891523);
+      localObject3 = getResources().getString(2131891522);
+      str2 = getResources().getString(2131891519);
+      str3 = getResources().getString(2131891521);
+      localObject5 = getResources().getString(2131891520);
       localObject4 = new CheckBox(this);
       ((CheckBox)localObject4).setText((CharSequence)localObject5);
-      ((CheckBox)localObject4).setTextSize(getResources().getInteger(2131427340));
-      ((CheckBox)localObject4).setTextColor(getResources().getColor(2131165473));
+      ((CheckBox)localObject4).setTextSize(getResources().getInteger(2131492883));
+      ((CheckBox)localObject4).setTextColor(getResources().getColor(2131165794));
       localObject5 = getAppRuntime().getApp().getSharedPreferences(getAppRuntime().getAccount(), 0);
       boolean bool = ((SharedPreferences)localObject5).getBoolean("MemoryAlertAutoClear", false);
       ((CheckBox)localObject4).setChecked(bool);
@@ -577,20 +577,20 @@ public class NotificationActivity
       }
       else if ((paramInt != 41) && (paramInt != 116))
       {
-        this.dialog = DialogUtil.b(this, 230).setMessageWithUrl(this.msg).setTitle(getString(2131699208)).setPositiveButton(17039370, new NotificationActivity.17(this));
+        this.dialog = DialogUtil.b(this, 230).setMessageWithUrl(this.msg).setTitle(getString(2131897224)).setPositiveButton(17039370, new NotificationActivity.17(this));
       }
       else
       {
         localObject2 = (Long)LhHelper.a.get(this.loginAlias);
         if ((localObject2 != null) && (System.currentTimeMillis() - ((Long)localObject2).longValue() < 30000L)) {
-          this.dialog = DialogUtil.a(this, 230).setTitle(HardCodeUtil.a(2131707628)).setMessage(HardCodeUtil.a(2131707626)).setNegativeButton(HardCodeUtil.a(2131707635), new NotificationActivity.16(this));
+          this.dialog = DialogUtil.a(this, 230).setTitle(HardCodeUtil.a(2131905443)).setMessage(HardCodeUtil.a(2131905441)).setNegativeButton(HardCodeUtil.a(2131905450), new NotificationActivity.16(this));
         } else {
           handleLhExpire();
         }
       }
       break;
     case 7: 
-      this.dialog = DialogUtil.a(this, 230).setTitle(getString(2131693853)).setMessage(getString(2131718686)).setPositiveButton(getString(2131718688), new NotificationActivity.15(this)).setNegativeButton(getString(2131718685), new NotificationActivity.14(this));
+      this.dialog = DialogUtil.a(this, 230).setTitle(getString(2131891434)).setMessage(getString(2131916187)).setPositiveButton(getString(2131916189), new NotificationActivity.15(this)).setNegativeButton(getString(2131916186), new NotificationActivity.14(this));
       break;
     case 6: 
       this.dialog = DialogUtil.a(this, 230).setTitle(this.title).setMessage(this.msg).setPositiveButton(17039370, new NotificationActivity.12(this));
@@ -608,9 +608,9 @@ public class NotificationActivity
       }
       sSecControllerInjectInterface.a(this, true, true);
       if (this.mReason != Constants.LogoutReason.kicked) {
-        i = 2131694506;
+        i = 2131892189;
       } else {
-        i = 2131694583;
+        i = 2131892267;
       }
       if (FrozenNotifyDlgHelper.a().a(this.msg))
       {
@@ -627,7 +627,7 @@ public class NotificationActivity
         paramInt = 4;
       }
       localObject2 = FrozenNotifyDlgHelper.a().a(this.msg, this, paramInt);
-      this.dialog = DialogUtil.a(this, 230, this.title, (CharSequence)localObject2, i, 2131694583, null, new NotificationActivity.10(this));
+      this.dialog = DialogUtil.a(this, 230, this.title, (CharSequence)localObject2, i, 2131892267, null, new NotificationActivity.10(this));
       if (this.mReason != Constants.LogoutReason.kicked) {
         if ((getIntent() != null) && (getIntent().getBooleanExtra("isSameDevice", false)) && (!isInMultiWindow()))
         {
@@ -636,7 +636,7 @@ public class NotificationActivity
         }
         else
         {
-          ((QQCustomDialog)this.dialog).setPositiveButton(2131692641, new NotificationActivity.11(this));
+          ((QQCustomDialog)this.dialog).setPositiveButton(2131889665, new NotificationActivity.11(this));
           localObject2 = new Intent("com.tencent.tim.kickedLogin.otherDevice");
           ((Intent)localObject2).putExtra("kickedUin", getAppRuntime().getAccount());
           ((Intent)localObject2).putExtra("msg", this.msg);
@@ -664,15 +664,15 @@ public class NotificationActivity
     Object localObject2 = new TextView(this);
     ((TextView)localObject2).setLinksClickable(true);
     ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
-    ((TextView)localObject2).setTextSize(getResources().getInteger(2131427340));
-    ((TextView)localObject2).setTextColor(getResources().getColor(2131165473));
+    ((TextView)localObject2).setTextSize(getResources().getInteger(2131492883));
+    ((TextView)localObject2).setTextColor(getResources().getColor(2131165794));
     Object localObject3 = this.title;
     if ((localObject3 != null) && (((String)localObject3).equals("true"))) {
       try
       {
         localObject3 = getPackageName();
         ((TextView)localObject2).setText(this.msg);
-        this.dialog = DialogUtil.a(this, 230).setMessage(this.msg).addView((View)localObject2).setPositiveButton(2131699830, new NotificationActivity.8(this, (String)localObject3), false);
+        this.dialog = DialogUtil.a(this, 230).setMessage(this.msg).addView((View)localObject2).setPositiveButton(2131897875, new NotificationActivity.8(this, (String)localObject3), false);
         paramInt = i;
       }
       catch (Exception localException3)
@@ -687,13 +687,13 @@ public class NotificationActivity
       if (!TextUtils.isEmpty(this.msg)) {
         ((TextView)localObject2).setText(Html.fromHtml(this.msg));
       } else {
-        ((TextView)localObject2).setText(Html.fromHtml(getString(2131692996)));
+        ((TextView)localObject2).setText(Html.fromHtml(getString(2131890110)));
       }
-      this.dialog = DialogUtil.a(this, 230).setMessage(this.msg).addView((View)localObject2).setPositiveButton(2131692081, new NotificationActivity.9(this));
+      this.dialog = DialogUtil.a(this, 230).setMessage(this.msg).addView((View)localObject2).setPositiveButton(2131889053, new NotificationActivity.9(this));
       break label1833;
       ReportController.a(null, "dc00898", "", "", "0X800B42F", "0X800B42F", 0, 0, "", "", "", "");
-      this.title = getString(2131719311);
-      this.msg = getString(2131719310);
+      this.title = getString(2131916863);
+      this.msg = getString(2131916862);
       this.dialog = DialogUtil.a(this, 230).setTitle(this.title).setMessage(this.msg).setPositiveButton(17039370, new NotificationActivity.7(this));
     }
     label1833:
@@ -728,7 +728,7 @@ public class NotificationActivity
     this.mIsLoginWithMask = paramIntent.getBooleanExtra("is_need_login_with_mask", false);
     this.mUnifyFrozenStyle = FrozenNotifyDlgHelper.a().a(paramIntent.getByteArrayExtra("tlverror"));
     this.mErrorTitle = paramIntent.getStringExtra("errortitle");
-    this.mUnifyFrozenScene = FrozenNotifyDlgHelper.a().a(paramIntent.getByteArrayExtra("tlverror"));
+    this.mUnifyFrozenScene = FrozenNotifyDlgHelper.a().b(paramIntent.getByteArrayExtra("tlverror"));
     if (!TextUtils.isEmpty(this.mErrorUrl)) {
       handleMiniAppFeature();
     }
@@ -786,7 +786,7 @@ public class NotificationActivity
     TextView localTextView2 = paramQQCustomDialog.getMessageTextView();
     TextView localTextView3 = paramQQCustomDialog.getBtnLeft();
     TextView localTextView4 = paramQQCustomDialog.getBtnight();
-    paramQQCustomDialog = (TextView)paramQQCustomDialog.findViewById(2131365623);
+    paramQQCustomDialog = (TextView)paramQQCustomDialog.findViewById(2131431854);
     try
     {
       int i = Color.parseColor("#FFFFFF");
@@ -861,7 +861,7 @@ public class NotificationActivity
     }
     if (!this.mLoadingDialog.isShowing())
     {
-      this.mLoadingDialog.a(HardCodeUtil.a(2131707630));
+      this.mLoadingDialog.a(HardCodeUtil.a(2131905445));
       this.mLoadingDialog.show();
     }
   }
@@ -898,7 +898,7 @@ public class NotificationActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559505);
+    super.setContentView(2131625527);
     Object localObject = "";
     paramBundle = (Bundle)localObject;
     try
@@ -1094,7 +1094,7 @@ public class NotificationActivity
     {
       Dialog localDialog = this.dialog;
       if ((localDialog != null) && (localDialog.isShowing())) {
-        ((QQCustomDialog)this.dialog).setPositiveButton(2131699829, new NotificationActivity.1(this));
+        ((QQCustomDialog)this.dialog).setPositiveButton(2131897874, new NotificationActivity.1(this));
       }
     }
     if ((this.mJumpLoginBackFromFund) && (this.dlgType == 5))
@@ -1147,12 +1147,12 @@ public class NotificationActivity
       return true;
     case 6: 
       hideProgressDialog();
-      QQToast.a(this, 1, HardCodeUtil.a(2131707632), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, 1, HardCodeUtil.a(2131905447), 0).show(getTitleBarHeight());
       finish();
       return true;
     case 5: 
       hideProgressDialog();
-      QQToast.a(this, 2, HardCodeUtil.a(2131707633), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, 2, HardCodeUtil.a(2131905448), 0).show(getTitleBarHeight());
       LhHelper.a.put(this.loginAlias, Long.valueOf(System.currentTimeMillis()));
       finish();
       return true;
@@ -1162,22 +1162,22 @@ public class NotificationActivity
     case 3: 
       int i;
       if (this.loginRet == 41) {
-        i = 2131694992;
+        i = 2131892719;
       } else {
-        i = 2131694991;
+        i = 2131892718;
       }
       paramMessage = getString(i);
-      String str = getString(2131694990);
-      this.dialog = DialogUtil.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131694989, new NotificationActivity.38(this)).setPositiveButton(2131694988, new NotificationActivity.37(this));
+      String str = getString(2131892717);
+      this.dialog = DialogUtil.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131892716, new NotificationActivity.38(this)).setPositiveButton(2131892715, new NotificationActivity.37(this));
       this.dialog.setCancelable(false);
       this.dialog.show();
       return true;
     case 2: 
-      this.dialog = DialogUtil.a(this, getResources().getString(2131693613), getResources().getString(2131693602), getResources().getString(2131693600), this.renewalClickListener, getResources().getString(2131693598), this.renewalClickListener, this.myClickListener);
+      this.dialog = DialogUtil.a(this, getResources().getString(2131891188), getResources().getString(2131891177), getResources().getString(2131891175), this.renewalClickListener, getResources().getString(2131891173), this.renewalClickListener, this.myClickListener);
       this.dialog.show();
       return true;
     }
-    this.dialog = DialogUtil.a(this, getResources().getString(2131693613), getResources().getString(2131693603), getResources().getString(2131693599), this.receiveClickListener, HardCodeUtil.a(2131707638), this.receiveClickListener, this.myClickListener);
+    this.dialog = DialogUtil.a(this, getResources().getString(2131891188), getResources().getString(2131891178), getResources().getString(2131891174), this.receiveClickListener, HardCodeUtil.a(2131905453), this.receiveClickListener, this.myClickListener);
     this.dialog.show();
     return true;
   }
@@ -1199,7 +1199,7 @@ public class NotificationActivity
       getAppRuntime().updateSubAccountLogin(getAppRuntime().getCurrentAccountUin(), false);
       getAppRuntime().getApplication().refreAccountList();
     }
-    Object localObject = sSecControllerInjectInterface.a((BaseQQAppInterface)getAppRuntime());
+    Object localObject = sSecControllerInjectInterface.b((BaseQQAppInterface)getAppRuntime());
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -1233,7 +1233,7 @@ public class NotificationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity
  * JD-Core Version:    0.7.0.1
  */

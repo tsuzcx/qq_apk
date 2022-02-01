@@ -16,10 +16,10 @@ class ScreenShareCtrl$2
     if (QLog.isColorLevel()) {
       QLog.d("AVShare", 2, "SetTimeOut_Double2Meeting timeOut ");
     }
-    long l = AudioHelper.b();
-    String str = ScreenShareCtrl.a(this.this$0).a().c;
-    ScreenShareCtrl.a(this.this$0).a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(2), str, Long.valueOf(l) });
-    ScreenShareCtrl.a(this.this$0).a.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
+    long l = AudioHelper.c();
+    String str = ScreenShareCtrl.a(this.this$0).k().s;
+    ScreenShareCtrl.a(this.this$0).e.a(new Object[] { Integer.valueOf(14), Integer.valueOf(2), str, Long.valueOf(l) });
+    ScreenShareCtrl.a(this.this$0).e.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
     ScreenShareCtrl.a(this.this$0).a(str, 202);
     ScreenShareCtrl.a(this.this$0).b(str, 2);
   }

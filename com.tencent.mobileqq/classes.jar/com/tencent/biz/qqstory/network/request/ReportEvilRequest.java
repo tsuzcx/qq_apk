@@ -15,11 +15,11 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class ReportEvilRequest
   extends NetworkRequest<ReportEvilResponse>
 {
-  public static final String a = StoryApi.a("StorySvc.video_report_evil");
-  public long b;
-  public String b;
-  public final int c;
-  public String c;
+  public static final String e = StoryApi.a("StorySvc.video_report_evil");
+  public String f;
+  public String g;
+  public long h;
+  public final int i;
   
   public ReportEvilResponse a(byte[] paramArrayOfByte)
   {
@@ -38,22 +38,22 @@ public class ReportEvilRequest
   
   public String a()
   {
-    return a;
+    return e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.f)) {
+      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.f));
     }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
+    if (this.h != 0L) {
+      localReqReportEvil.tuin.set(this.h);
     }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.g)) {
+      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.g));
     }
-    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
+    localReqReportEvil.type.set(this.i);
     return localReqReportEvil.toByteArray();
   }
   
@@ -61,9 +61,9 @@ public class ReportEvilRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReportEvilRequest{impeachType=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", vid='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -71,7 +71,7 @@ public class ReportEvilRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.ReportEvilRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -8,49 +8,49 @@ import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 class BusinessCardEditActivity$MaxBytesTextWatcher
   implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = true;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
+  boolean a = true;
+  int b;
+  EditText c;
+  boolean d = false;
+  int e;
+  String f = "";
   
   public BusinessCardEditActivity$MaxBytesTextWatcher(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = 0;
+    this.b = paramInt;
+    this.c = paramEditText;
+    this.e = 0;
   }
   
   public BusinessCardEditActivity$MaxBytesTextWatcher(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.b = paramInt1;
+    this.c = paramEditText;
+    this.e = paramInt2;
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
+    if ((this.e == 1) && (!this.f.equals(paramEditable.toString())))
     {
       boolean bool;
-      if (this.jdField_a_of_type_Boolean) {
-        bool = this.jdField_b_of_type_Boolean;
+      if (this.a) {
+        bool = this.d;
       } else {
         bool = true;
       }
-      this.jdField_b_of_type_Boolean = bool;
+      this.d = bool;
     }
-    this.jdField_a_of_type_Boolean = false;
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText;
+    this.a = false;
+    paramEditable = this.c;
     if ((paramEditable instanceof ClearEllipsisEditText)) {
-      paramEditable = ((ClearEllipsisEditText)paramEditable).a();
+      paramEditable = ((ClearEllipsisEditText)paramEditable).getTotalText();
     } else {
       paramEditable = paramEditable.getText().toString();
     }
     int i = paramEditable.length();
     int j;
-    if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() != null) && (((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name")))
+    if ((this.c.getTag() != null) && (((String)this.c.getTag()).equals("name")))
     {
       i = paramEditable.getBytes().length;
       j = 1;
@@ -59,9 +59,9 @@ class BusinessCardEditActivity$MaxBytesTextWatcher
     {
       j = 0;
     }
-    if (i > this.jdField_a_of_type_Int)
+    if (i > this.b)
     {
-      while (i > this.jdField_a_of_type_Int)
+      while (i > this.b)
       {
         paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
         if (j != 0) {
@@ -70,21 +70,21 @@ class BusinessCardEditActivity$MaxBytesTextWatcher
           i = paramEditable.length();
         }
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
+      this.c.setText(paramEditable);
+      this.c.setSelection(paramEditable.length());
     }
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+    this.f = paramCharSequence.toString();
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.MaxBytesTextWatcher
  * JD-Core Version:    0.7.0.1
  */

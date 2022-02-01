@@ -11,15 +11,15 @@ class ApolloVoiceDIYHelper$1
   
   public void run()
   {
-    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTextureView.getRender();
+    ApolloRender localApolloRender = this.a.getRender();
     if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null)) {
-      localApolloRender.getSavaWrapper().drawSpecialFrame(this.jdField_a_of_type_Double);
+      localApolloRender.getSavaWrapper().drawSpecialFrame(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1
  * JD-Core Version:    0.7.0.1
  */

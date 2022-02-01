@@ -16,8 +16,8 @@ class AntiphingHandler$1
     if (QLog.isColorLevel()) {
       QLog.d(AntiphingHandler.a(this.a), 2, "On Click Left Button! ");
     }
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().finish();
+    if (this.a.mRuntime.d() != null) {
+      this.a.mRuntime.d().finish();
     } else if (QLog.isDevelopLevel()) {
       QLog.d(AntiphingHandler.a(this.a), 4, "Call back object is null!");
     }
@@ -26,7 +26,7 @@ class AntiphingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphingHandler.1
  * JD-Core Version:    0.7.0.1
  */

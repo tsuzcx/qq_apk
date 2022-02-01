@@ -14,18 +14,18 @@ class ExtendFriendLimitChatManager$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_AndroidContentContext;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       try
       {
         paramDialogInterface = new Intent(paramDialogInterface, QQBrowserActivity.class);
-        paramDialogInterface.putExtra("url", ExtendFriendLimitChatManager.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+        paramDialogInterface.putExtra("url", ExtendFriendLimitChatManager.c(this.b));
+        this.a.startActivity(paramDialogInterface);
         if (QLog.isColorLevel())
         {
           paramDialogInterface = new StringBuilder();
           paramDialogInterface.append("showRealNameAuthDialog click confirm ");
-          paramDialogInterface.append(ExtendFriendLimitChatManager.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager));
+          paramDialogInterface.append(ExtendFriendLimitChatManager.c(this.b));
           QLog.i("ExtendFriendLimitChatManager", 2, paramDialogInterface.toString());
           return;
         }
@@ -39,7 +39,7 @@ class ExtendFriendLimitChatManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExtendFriendLimitChatManager.3
  * JD-Core Version:    0.7.0.1
  */

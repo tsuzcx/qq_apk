@@ -27,7 +27,85 @@ public final class AudioRoomJumpActionDispatcher
 {
   public static final AudioRoomJumpActionDispatcher INSTANCE = new AudioRoomJumpActionDispatcher();
   
-  private final Map<String, String> a(String paramString)
+  private final void a()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setClass((Context)MobileQQ.context, PublicFragmentActivity.class);
+    localIntent.putExtra("public_fragment_class", VoiceRoomDebugFragment.class.getName());
+    localIntent.addFlags(268435456);
+    MobileQQ.context.startActivity(localIntent);
+  }
+  
+  private final boolean a(String paramString)
+  {
+    return StringsKt.startsWith$default(paramString, "https", false, 2, null);
+  }
+  
+  private final void b(String paramString)
+  {
+    Object localObject = (String)e(paramString).get("uin");
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openStrangerAIO fail: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.w("AudioRoomJumpActionDispatcher", 2, ((StringBuilder)localObject).toString());
+      return;
+    }
+    paramString = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
+    paramString = paramString.getBaseContext();
+    Intent localIntent = new Intent(paramString, ChatActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("uin", (String)localObject);
+    localIntent.putExtra("uintype", 10010);
+    paramString.startActivity(localIntent);
+  }
+  
+  private final void c(String paramString)
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    localObject = new Intent(((BaseApplicationImpl)localObject).getBaseContext(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramString);
+    ((Intent)localObject).addFlags(268435456);
+    paramString = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
+    paramString.getBaseContext().startActivity((Intent)localObject);
+  }
+  
+  private final void d(String paramString)
+  {
+    paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
+    paramString.setFlags(268435456);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localBaseApplicationImpl, "BaseApplicationImpl.getApplication()");
+    localBaseApplicationImpl.getBaseContext().startActivity(paramString);
+  }
+  
+  @JvmStatic
+  public static final void dispatch(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "scheme");
+    if (StringsKt.startsWith$default(paramString, "openStrangerAIO", false, 2, null))
+    {
+      INSTANCE.b(paramString);
+      return;
+    }
+    if (StringsKt.startsWith$default(paramString, "openVoiceDebug", false, 2, null))
+    {
+      INSTANCE.a();
+      return;
+    }
+    if (INSTANCE.a(paramString))
+    {
+      INSTANCE.c(paramString);
+      return;
+    }
+    INSTANCE.d(paramString);
+  }
+  
+  private final Map<String, String> e(String paramString)
   {
     Map localMap = (Map)new LinkedHashMap();
     int i = StringsKt.indexOf$default((CharSequence)paramString, "?", 0, false, 6, null);
@@ -50,88 +128,10 @@ public final class AudioRoomJumpActionDispatcher
     }
     return localMap;
   }
-  
-  private final void a()
-  {
-    Intent localIntent = new Intent();
-    localIntent.setClass((Context)MobileQQ.context, PublicFragmentActivity.class);
-    localIntent.putExtra("public_fragment_class", VoiceRoomDebugFragment.class.getName());
-    localIntent.addFlags(268435456);
-    MobileQQ.context.startActivity(localIntent);
-  }
-  
-  private final void a(String paramString)
-  {
-    Object localObject = (String)a(paramString).get("uin");
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("openStrangerAIO fail: ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.w("AudioRoomJumpActionDispatcher", 2, ((StringBuilder)localObject).toString());
-      return;
-    }
-    paramString = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
-    paramString = paramString.getBaseContext();
-    Intent localIntent = new Intent(paramString, ChatActivity.class);
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("uin", (String)localObject);
-    localIntent.putExtra("uintype", 10010);
-    paramString.startActivity(localIntent);
-  }
-  
-  private final boolean a(String paramString)
-  {
-    return StringsKt.startsWith$default(paramString, "https", false, 2, null);
-  }
-  
-  private final void b(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = new Intent(((BaseApplicationImpl)localObject).getBaseContext(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramString);
-    ((Intent)localObject).addFlags(268435456);
-    paramString = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
-    paramString.getBaseContext().startActivity((Intent)localObject);
-  }
-  
-  private final void c(String paramString)
-  {
-    paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-    paramString.setFlags(268435456);
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localBaseApplicationImpl, "BaseApplicationImpl.getApplication()");
-    localBaseApplicationImpl.getBaseContext().startActivity(paramString);
-  }
-  
-  @JvmStatic
-  public static final void dispatch(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "scheme");
-    if (StringsKt.startsWith$default(paramString, "openStrangerAIO", false, 2, null))
-    {
-      INSTANCE.a(paramString);
-      return;
-    }
-    if (StringsKt.startsWith$default(paramString, "openVoiceDebug", false, 2, null))
-    {
-      INSTANCE.a();
-      return;
-    }
-    if (INSTANCE.a(paramString))
-    {
-      INSTANCE.b(paramString);
-      return;
-    }
-    INSTANCE.c(paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.pluginimpl.AudioRoomJumpActionDispatcher
  * JD-Core Version:    0.7.0.1
  */

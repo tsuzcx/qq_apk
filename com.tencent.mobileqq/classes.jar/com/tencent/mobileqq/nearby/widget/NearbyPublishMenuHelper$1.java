@@ -20,7 +20,7 @@ final class NearbyPublishMenuHelper$1
     if (QLog.isColorLevel()) {
       QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
     }
-    DialogUtil.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.c, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -30,8 +30,8 @@ final class NearbyPublishMenuHelper$1
     }
     try
     {
-      NearbyPublishMenuHelper.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
-      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
+      NearbyPublishMenuHelper.c(this.a).edit().putString("camera_photo_path", this.b).commit();
+      this.c.startActivityForResult(this.d, 1001);
       if (QLog.isColorLevel())
       {
         QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
@@ -41,13 +41,13 @@ final class NearbyPublishMenuHelper$1
     catch (Exception paramArrayOfString)
     {
       QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690725, 0).a();
+      QQToast.makeText(this.a, 2131887645, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper.1
  * JD-Core Version:    0.7.0.1
  */

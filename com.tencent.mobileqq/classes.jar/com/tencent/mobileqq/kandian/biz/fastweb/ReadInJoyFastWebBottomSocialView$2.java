@@ -15,12 +15,12 @@ class ReadInJoyFastWebBottomSocialView$2
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
-    ImageView localImageView = ReadInJoyFastWebBottomSocialView.a(this.a);
+    ImageView localImageView = ReadInJoyFastWebBottomSocialView.b(this.a);
     int i;
-    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {
-      i = 2130842975;
+    if (ReadInJoyFastWebBottomSocialView.a(this.a).h) {
+      i = 2130843931;
     } else {
-      i = 2130842977;
+      i = 2130843933;
     }
     localImageView.setImageResource(i);
     paramAnimation.setInterpolator(new AnticipateInterpolator());
@@ -30,7 +30,7 @@ class ReadInJoyFastWebBottomSocialView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialView.2
  * JD-Core Version:    0.7.0.1
  */

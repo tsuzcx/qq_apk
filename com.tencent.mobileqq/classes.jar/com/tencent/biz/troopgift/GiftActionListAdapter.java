@@ -21,16 +21,16 @@ import java.util.ArrayList;
 public class GiftActionListAdapter
   extends BaseAdapter
 {
-  protected int a;
-  protected Context a;
-  protected ColorDrawable a;
   protected ArrayList<GiftConfigManager.ImgEntryItem> a;
-  protected int b;
+  protected Context b;
+  protected ColorDrawable c;
+  protected int d;
+  protected int e;
   
   protected void a(ImageView paramImageView, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#f4f4f4"));
+    if (this.c == null) {
+      this.c = new ColorDrawable(Color.parseColor("#f4f4f4"));
     }
     Object localObject1;
     if (QLog.isColorLevel())
@@ -46,10 +46,10 @@ public class GiftActionListAdapter
       if (!TextUtils.isEmpty(paramString))
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.b;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.e;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.d;
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.c;
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.c;
         localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
       }
       else
@@ -76,19 +76,19 @@ public class GiftActionListAdapter
     }
     paramString = (String)localObject1;
     if (localObject1 == null) {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      paramString = this.c;
     }
     paramImageView.setBackgroundDrawable(paramString);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -101,11 +101,11 @@ public class GiftActionListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560654, paramViewGroup, false);
-      ((RoundRelativeLayout)localView.findViewById(2131376843)).setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
+      localView = LayoutInflater.from(this.b).inflate(2131626699, paramViewGroup, false);
+      ((RoundRelativeLayout)localView.findViewById(2131445175)).setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
       localObject = localView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
-      ((ViewGroup.LayoutParams)localObject).height = this.b;
+      ((ViewGroup.LayoutParams)localObject).width = this.d;
+      ((ViewGroup.LayoutParams)localObject).height = this.e;
       localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     else
@@ -113,14 +113,14 @@ public class GiftActionListAdapter
       localView = paramView;
     }
     Object localObject = (GiftConfigManager.ImgEntryItem)getItem(paramInt);
-    a((ImageView)localView.findViewById(2131368591), ((GiftConfigManager.ImgEntryItem)localObject).a);
+    a((ImageView)localView.findViewById(2131435503), ((GiftConfigManager.ImgEntryItem)localObject).a);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.GiftActionListAdapter
  * JD-Core Version:    0.7.0.1
  */

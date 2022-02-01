@@ -66,7 +66,7 @@ public class LpReport_ShuoshuoBehavior_dc02478
     }
     localHashMap.put("uin", str);
     if (TextUtils.isEmpty(this.version)) {
-      str = "8.7.0";
+      str = "8.8.17";
     } else {
       str = this.version;
     }
@@ -123,7 +123,7 @@ public class LpReport_ShuoshuoBehavior_dc02478
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_ShuoshuoBehavior_dc02478
  * JD-Core Version:    0.7.0.1
  */

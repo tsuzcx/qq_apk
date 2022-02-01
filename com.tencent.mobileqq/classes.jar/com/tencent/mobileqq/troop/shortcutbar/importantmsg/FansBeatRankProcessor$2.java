@@ -21,15 +21,15 @@ class FansBeatRankProcessor$2
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if ((TextUtils.equals(FansBeatRankProcessor.a(this.a), paramString)) && (FansTroopUtils.a(FansBeatRankProcessor.a(this.a), paramString, paramTroopInfoExt))) {
-        FansBeatRankProcessor.a(this.a);
+      if ((TextUtils.equals(FansBeatRankProcessor.a(this.a), paramString)) && (FansTroopUtils.a(FansBeatRankProcessor.c(this.a), paramString, paramTroopInfoExt))) {
+        FansBeatRankProcessor.b(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.FansBeatRankProcessor.2
  * JD-Core Version:    0.7.0.1
  */

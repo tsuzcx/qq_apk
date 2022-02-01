@@ -28,47 +28,42 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class PersonalityOperator
   implements DoodleOperator
 {
-  protected double a;
+  boolean A = false;
+  public boolean B = false;
+  public int C = this.a;
   protected int a;
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  DoodleLineListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
-  PersonalityLinePath jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath = null;
-  BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  VideoMaterial jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
-  HashMap<String, VideoFilterBase> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  boolean jdField_a_of_type_Boolean = false;
-  protected int[] a;
   protected int b;
-  Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  boolean jdField_b_of_type_Boolean = false;
-  int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  int jdField_c_of_type_Int = 320;
-  Frame jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  boolean jdField_c_of_type_Boolean = false;
-  int[] jdField_c_of_type_ArrayOfInt = new int[1];
-  int jdField_d_of_type_Int = 480;
-  Frame jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  public boolean d;
-  int[] jdField_d_of_type_ArrayOfInt = new int[1];
-  int jdField_e_of_type_Int = 0;
-  boolean jdField_e_of_type_Boolean = true;
-  int jdField_f_of_type_Int = 0;
-  boolean jdField_f_of_type_Boolean = false;
-  public int g;
-  public boolean g;
+  int c = 320;
+  int d = 480;
+  protected double e = 0.75D;
+  protected int[] f = new int[2];
+  VideoMaterial g;
+  HashMap<String, VideoFilterBase> h = new HashMap();
+  int[] i = new int[1];
+  int[] j = new int[1];
+  Frame k = new Frame();
+  BaseFilter l = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  int[] m = new int[1];
+  Frame n = new Frame();
+  BaseFilter o = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  Frame p = new Frame();
+  Frame q = new Frame();
+  PersonalityLinePath r = null;
+  DoodleLineListener s;
+  int t = 0;
+  boolean u = false;
+  boolean v = false;
+  boolean w = false;
+  public boolean x = false;
+  boolean y = true;
+  int z = 0;
   
   public PersonalityOperator(DoodleLineListener paramDoodleLineListener)
   {
-    this.jdField_a_of_type_Double = 0.75D;
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_g_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener = paramDoodleLineListener;
+    this.s = paramDoodleLineListener;
   }
   
-  public static VideoFilterBase a(VideoMaterial paramVideoMaterial)
+  public static VideoFilterBase b(VideoMaterial paramVideoMaterial)
   {
     VideoFilterBase localVideoFilterBase = null;
     if (paramVideoMaterial == null) {
@@ -78,18 +73,18 @@ public class PersonalityOperator
       QLog.w("PersonalityOperator", 2, "material.getDoodleItem is null!");
     }
     if (paramVideoMaterial.getShaderType() == 13) {
-      return b(paramVideoMaterial);
-    }
-    if (paramVideoMaterial.getShaderType() == 15) {
       return c(paramVideoMaterial);
     }
+    if (paramVideoMaterial.getShaderType() == 15) {
+      return d(paramVideoMaterial);
+    }
     if (paramVideoMaterial.getShaderType() == 14) {
-      localVideoFilterBase = d(paramVideoMaterial);
+      localVideoFilterBase = e(paramVideoMaterial);
     }
     return localVideoFilterBase;
   }
   
-  static VideoFilterBase b(VideoMaterial paramVideoMaterial)
+  static VideoFilterBase c(VideoMaterial paramVideoMaterial)
   {
     if (paramVideoMaterial != null)
     {
@@ -101,12 +96,12 @@ public class PersonalityOperator
     return null;
   }
   
-  static VideoFilterBase c(VideoMaterial paramVideoMaterial)
+  static VideoFilterBase d(VideoMaterial paramVideoMaterial)
   {
     return new PersonalityFireworksFilter();
   }
   
-  static VideoFilterBase d(VideoMaterial paramVideoMaterial)
+  static VideoFilterBase e(VideoMaterial paramVideoMaterial)
   {
     return new PersonalityGlareFilter(paramVideoMaterial.getDoodleItem(), paramVideoMaterial.getDataPath());
   }
@@ -114,34 +109,34 @@ public class PersonalityOperator
   public void a()
   {
     c();
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.f;
     GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_b_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+    this.o.apply();
+    this.l.apply();
+    arrayOfInt = this.i;
     GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+    arrayOfInt = this.j;
     GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    arrayOfInt = this.jdField_d_of_type_ArrayOfInt;
+    arrayOfInt = this.m;
     GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
     PointF localPointF = new PointF(paramFloat1, paramFloat2);
-    paramFloat1 = this.jdField_a_of_type_Int / this.jdField_c_of_type_Int;
+    paramFloat1 = this.a / this.c;
     localPointF.x *= paramFloat1;
     localPointF.y *= paramFloat1;
-    localPointF = new PointF(localPointF.x - this.jdField_a_of_type_Int * 0.5F, localPointF.y - this.jdField_b_of_type_Int * 0.5F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localPointF);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath.jdField_d_of_type_Boolean = paramBoolean;
+    localPointF = new PointF(localPointF.x - this.a * 0.5F, localPointF.y - this.b * 0.5F);
+    this.r.c.add(localPointF);
+    this.r.i = paramBoolean;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_g_of_type_Int = paramInt;
-    DoodleLineListener localDoodleLineListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+    this.B = true;
+    this.C = paramInt;
+    DoodleLineListener localDoodleLineListener = this.s;
     if (localDoodleLineListener != null) {
       localDoodleLineListener.a();
     }
@@ -150,14 +145,14 @@ public class PersonalityOperator
   public void a(int paramInt1, int paramInt2)
   {
     float f1 = Math.min(720.0F / Math.min(paramInt1, paramInt2), 1.0F);
-    this.jdField_a_of_type_Int = ((int)(paramInt1 * f1));
-    this.jdField_b_of_type_Int = ((int)(paramInt2 * f1));
-    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
-      a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
+    this.a = ((int)(paramInt1 * f1));
+    this.b = ((int)(paramInt2 * f1));
+    if (!this.h.isEmpty()) {
+      a(this.a, this.b, 1.0D);
     }
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    if (this.jdField_c_of_type_Boolean) {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.w) {
       a(true);
     }
   }
@@ -179,15 +174,15 @@ public class PersonalityOperator
       Double.isNaN(d1);
       paramInt1 = (int)(d1 * 0.75D);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+    if (this.h.isEmpty()) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.h.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((VideoFilterBase)((Map.Entry)localIterator.next()).getValue()).updateVideoSize(paramInt1, paramInt2, paramDouble);
     }
     GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
+    GLES20.glBindTexture(3553, this.i[0]);
     GLES20.glTexImage2D(3553, 0, 6402, paramInt1, paramInt2, 0, 6402, 5123, null);
     GLES20.glTexParameteri(3553, 10242, 33071);
     GLES20.glTexParameteri(3553, 10243, 33071);
@@ -197,7 +192,7 @@ public class PersonalityOperator
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.h;
     if (localObject != null)
     {
       if (((HashMap)localObject).size() < 1) {
@@ -207,33 +202,33 @@ public class PersonalityOperator
       GlUtil.setBlendMode(true);
       GLES20.glBindFramebuffer(36160, paramInt1);
       GLES20.glViewport(0, 0, paramInt3, paramInt4);
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt3, paramInt4, 1.0D);
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt3, paramInt4, paramInt2, 1.0D, (Frame)localObject);
+      this.k.bindFrame(this.j[0], paramInt3, paramInt4, 1.0D);
+      this.l.RenderProcess(this.k.getTextureId(), paramInt3, paramInt4, paramInt2, 1.0D, (Frame)localObject);
       GlUtil.setBlendMode(false);
     }
   }
   
   public void a(int paramInt1, int paramInt2, PersonalityLinePath paramPersonalityLinePath)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.h;
     if (localObject != null)
     {
       if (((HashMap)localObject).size() < 1) {
         return;
       }
-      localObject = new Frame(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO(), this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2);
+      localObject = new Frame(this.k.getFBO(), this.k.getTextureId(), paramInt1, paramInt2);
       GlUtil.setBlendMode(true);
-      GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+      GLES20.glBindFramebuffer(36160, this.k.getFBO());
       GLES20.glViewport(0, 0, paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(paramPersonalityLinePath.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), 1.0D, (Frame)localObject);
+      this.l.RenderProcess(paramPersonalityLinePath.k.getTextureId(), paramInt1, paramInt2, this.k.getTextureId(), 1.0D, (Frame)localObject);
       GlUtil.setBlendMode(false);
-      paramPersonalityLinePath.jdField_a_of_type_Boolean = true;
+      paramPersonalityLinePath.f = true;
     }
   }
   
   public void a(Frame paramFrame, int paramInt1, int paramInt2, PersonalityLinePath paramPersonalityLinePath)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = this.h;
     if (localObject1 != null)
     {
       if (((HashMap)localObject1).size() < 1) {
@@ -242,9 +237,9 @@ public class PersonalityOperator
       GlUtil.setBlendMode(true);
       GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
       localObject1 = new ArrayList();
-      boolean bool = paramPersonalityLinePath.jdField_d_of_type_Boolean;
-      ((List)localObject1).addAll(paramPersonalityLinePath.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-      Object localObject2 = (VideoFilterBase)this.jdField_a_of_type_JavaUtilHashMap.get(paramPersonalityLinePath.jdField_a_of_type_JavaLangString);
+      boolean bool = paramPersonalityLinePath.i;
+      ((List)localObject1).addAll(paramPersonalityLinePath.c);
+      Object localObject2 = (VideoFilterBase)this.h.get(paramPersonalityLinePath.b);
       if ((localObject2 instanceof PersonalityImageFilter))
       {
         localObject2 = (PersonalityImageFilter)localObject2;
@@ -252,11 +247,11 @@ public class PersonalityOperator
         ((PersonalityImageFilter)localObject2).renderTexture(paramFrame.getTextureId(), paramInt1, paramInt2);
         if (bool)
         {
-          this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt1, paramInt2, 1.0D);
-          GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+          this.k.bindFrame(this.j[0], paramInt1, paramInt2, 1.0D);
+          GLES20.glBindFramebuffer(36160, this.k.getFBO());
           GLES20.glViewport(0, 0, paramInt1, paramInt2);
-          ((PersonalityImageFilter)localObject2).a(paramPersonalityLinePath.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-          ((PersonalityImageFilter)localObject2).renderTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), paramInt1, paramInt2);
+          ((PersonalityImageFilter)localObject2).a(paramPersonalityLinePath.c);
+          ((PersonalityImageFilter)localObject2).renderTexture(this.k.getTextureId(), paramInt1, paramInt2);
           paramPersonalityLinePath.b();
         }
       }
@@ -270,10 +265,10 @@ public class PersonalityOperator
         ((PersonalityFireworksFilter)localObject2).renderTexture(paramFrame.getTextureId(), paramInt1, paramInt2);
         if (bool)
         {
-          this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt1, paramInt2, 1.0D);
-          GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+          this.k.bindFrame(this.j[0], paramInt1, paramInt2, 1.0D);
+          GLES20.glBindFramebuffer(36160, this.k.getFBO());
           GLES20.glViewport(0, 0, paramInt1, paramInt2);
-          ((PersonalityFireworksFilter)localObject2).a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId());
+          ((PersonalityFireworksFilter)localObject2).a(this.k.getTextureId());
           paramPersonalityLinePath.b();
         }
       }
@@ -281,19 +276,19 @@ public class PersonalityOperator
       {
         localObject2 = (PersonalityGlareFilter)localObject2;
         ((PersonalityGlareFilter)localObject2).a((List)localObject1);
-        PersonalityUtils.a(this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_d_of_type_ArrayOfInt[0], paramInt1, paramInt2, true);
+        PersonalityUtils.a(this.n, this.m[0], paramInt1, paramInt2, true);
         ((PersonalityGlareFilter)localObject2).a();
-        PersonalityUtils.a(this.jdField_a_of_type_ComTencentFilterBaseFilter, paramFrame, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_d_of_type_ArrayOfInt[0], paramInt1, paramInt2);
+        PersonalityUtils.a(this.l, paramFrame, this.n, this.m[0], paramInt1, paramInt2);
         if (bool)
         {
-          ((PersonalityGlareFilter)localObject2).a(paramPersonalityLinePath.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-          this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], paramInt1, paramInt2, 1.0D);
-          PersonalityUtils.a(this.jdField_a_of_type_ComTencentFilterBaseFilter, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_d_of_type_ArrayOfInt[0], paramInt1, paramInt2);
+          ((PersonalityGlareFilter)localObject2).a(paramPersonalityLinePath.c);
+          this.k.bindFrame(this.j[0], paramInt1, paramInt2, 1.0D);
+          PersonalityUtils.a(this.l, this.k, this.n, this.m[0], paramInt1, paramInt2);
           paramPersonalityLinePath.b();
         }
       }
       GlUtil.setBlendMode(false);
-      if ((paramPersonalityLinePath.jdField_d_of_type_Boolean) && (paramPersonalityLinePath.jdField_c_of_type_Boolean))
+      if ((paramPersonalityLinePath.i) && (paramPersonalityLinePath.h))
       {
         paramFrame = paramPersonalityLinePath.a(paramInt1, paramInt2);
         a(paramFrame.getFBO(), paramFrame.getTextureId(), paramInt1, paramInt2);
@@ -303,22 +298,22 @@ public class PersonalityOperator
   
   public void a(PersonalityLinePath paramPersonalityLinePath)
   {
-    if ((paramPersonalityLinePath.jdField_d_of_type_Boolean) && (paramPersonalityLinePath.jdField_a_of_type_Boolean)) {
+    if ((paramPersonalityLinePath.i) && (paramPersonalityLinePath.f)) {
       return;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.v) {
       return;
     }
-    if ((!paramPersonalityLinePath.jdField_a_of_type_Boolean) && (paramPersonalityLinePath.jdField_b_of_type_Boolean))
+    if ((!paramPersonalityLinePath.f) && (paramPersonalityLinePath.g))
     {
-      if (paramPersonalityLinePath.jdField_c_of_type_Boolean) {
-        a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramPersonalityLinePath);
+      if (paramPersonalityLinePath.h) {
+        a(this.a, this.b, paramPersonalityLinePath);
       }
-      this.jdField_f_of_type_Boolean = true;
+      this.A = true;
       return;
     }
-    if (paramPersonalityLinePath.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 1) {
-      a(this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramPersonalityLinePath);
+    if (paramPersonalityLinePath.c.size() > 1) {
+      a(this.q, this.a, this.b, paramPersonalityLinePath);
     }
   }
   
@@ -326,16 +321,16 @@ public class PersonalityOperator
   {
     if (paramVideoMaterial != null)
     {
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramVideoMaterial.getId()))
+      if (!this.h.containsKey(paramVideoMaterial.getId()))
       {
-        localObject = a(paramVideoMaterial);
+        localObject = b(paramVideoMaterial);
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramVideoMaterial.getId(), localObject);
+          this.h.put(paramVideoMaterial.getId(), localObject);
         }
       }
-      this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = paramVideoMaterial;
+      this.g = paramVideoMaterial;
       paramVideoMaterial = new PersonalityOperator.1(this, paramVideoMaterial);
-      Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+      Object localObject = this.s;
       if (localObject != null) {
         ((DoodleLineListener)localObject).a(paramVideoMaterial);
       }
@@ -348,20 +343,20 @@ public class PersonalityOperator
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+    if (this.h.isEmpty()) {
       return;
     }
-    paramString = (VideoFilterBase)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (VideoFilterBase)this.h.get(paramString);
     paramString.ApplyGLSLFilter();
     paramString.setRenderMode(1);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = (paramBoolean ^ true);
-    DoodleLineListener localDoodleLineListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+    this.v = false;
+    this.u = true;
+    this.w = (paramBoolean ^ true);
+    DoodleLineListener localDoodleLineListener = this.s;
     if (localDoodleLineListener != null) {
       localDoodleLineListener.a();
     }
@@ -369,7 +364,7 @@ public class PersonalityOperator
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    if (this.h.isEmpty())
     {
       if ((QLog.isColorLevel()) && (paramMotionEvent.getAction() == 0)) {
         QLog.w("PersonalityOperator", 2, "onTouch filterMap is empty");
@@ -377,63 +372,63 @@ public class PersonalityOperator
       return true;
     }
     Object localObject;
-    if (this.jdField_f_of_type_Int + 1 > 50)
+    if (this.z + 1 > 50)
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath;
-      if ((localObject != null) && (((PersonalityLinePath)localObject).jdField_d_of_type_Boolean))
+      localObject = this.r;
+      if ((localObject != null) && (((PersonalityLinePath)localObject).i))
       {
         if (paramMotionEvent.getAction() == 0)
         {
           QQStoryContext.a();
-          QQToast.a(QQStoryContext.a().getApp(), HardCodeUtil.a(2131707958), 0).a();
+          QQToast.makeText(QQStoryContext.k().getApp(), HardCodeUtil.a(2131905768), 0).show();
         }
         return true;
       }
     }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    int i;
+    int i1;
     if (paramMotionEvent.getAction() == 2)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath != null)
+      if (this.r != null)
       {
         a(f1, f2, false);
-        i = this.jdField_e_of_type_Int + 1;
-        this.jdField_e_of_type_Int = i;
-        this.jdField_e_of_type_Int = (i % 4);
-        i = this.jdField_e_of_type_Int;
+        i1 = this.t + 1;
+        this.t = i1;
+        this.t = (i1 % 4);
+        i1 = this.t;
       }
     }
     else if (paramMotionEvent.getAction() == 0)
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
+      paramMotionEvent = this.g;
       if ((paramMotionEvent != null) && (!TextUtils.isEmpty(paramMotionEvent.getId())))
       {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId();
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+        paramMotionEvent = this.g.getId();
+        localObject = this.s;
         if (localObject != null) {
-          i = ((DoodleLineListener)localObject).a();
+          i1 = ((DoodleLineListener)localObject).b();
         } else {
-          i = 0;
+          i1 = 0;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath = new PersonalityLinePath(102, paramMotionEvent, i);
-        this.jdField_f_of_type_Int += 1;
-        paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath;
-        paramMotionEvent.jdField_c_of_type_Boolean = true;
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+        this.r = new PersonalityLinePath(102, paramMotionEvent, i1);
+        this.z += 1;
+        paramMotionEvent = this.r;
+        paramMotionEvent.h = true;
+        localObject = this.s;
         if (localObject != null) {
           ((DoodleLineListener)localObject).a(paramMotionEvent);
         }
         a(f1, f2, false);
-        this.jdField_e_of_type_Int = 0;
+        this.t = 0;
       }
     }
-    else if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodlePersonalityLinePath != null))
+    else if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.r != null))
     {
       a(f1, f2, true);
     }
-    this.jdField_d_of_type_Boolean = true;
-    paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+    this.x = true;
+    paramMotionEvent = this.s;
     if (paramMotionEvent != null) {
       paramMotionEvent.a();
     }
@@ -442,35 +437,35 @@ public class PersonalityOperator
   
   public void b()
   {
-    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    this.q.clear();
+    int[] arrayOfInt = this.f;
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void c()
   {
-    this.jdField_f_of_type_Int = 0;
+    this.z = 0;
     try
     {
-      this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      this.jdField_b_of_type_ComTencentFilterBaseFilter.clearGLSL();
-      if (this.jdField_e_of_type_Boolean)
+      this.p.clear();
+      this.o.clearGLSL();
+      if (this.y)
       {
-        this.jdField_e_of_type_Boolean = false;
-        if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+        this.y = false;
+        if (!this.h.isEmpty())
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          Iterator localIterator = this.h.entrySet().iterator();
           while (localIterator.hasNext()) {
             ((VideoFilterBase)((Map.Entry)localIterator.next()).getValue()).clearGLSLSelf();
           }
-          this.jdField_a_of_type_JavaUtilHashMap.clear();
+          this.h.clear();
         }
       }
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSL();
-      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
-      GLES20.glDeleteTextures(this.jdField_c_of_type_ArrayOfInt.length, this.jdField_c_of_type_ArrayOfInt, 0);
-      GLES20.glDeleteTextures(this.jdField_d_of_type_ArrayOfInt.length, this.jdField_d_of_type_ArrayOfInt, 0);
+      this.k.clear();
+      this.l.clearGLSL();
+      GLES20.glDeleteTextures(this.i.length, this.i, 0);
+      GLES20.glDeleteTextures(this.j.length, this.j, 0);
+      GLES20.glDeleteTextures(this.m.length, this.m, 0);
       return;
     }
     catch (Throwable localThrowable)
@@ -487,26 +482,26 @@ public class PersonalityOperator
   
   public void d()
   {
-    this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Double);
+    this.q.bindFrame(this.f[0], this.a, this.b, this.e);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16640);
     GLES20.glFlush();
     if (Build.VERSION.SDK_INT < 30) {
-      this.jdField_b_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, this.jdField_a_of_type_Double, this.jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame);
+      this.o.RenderProcess(this.q.getTextureId(), this.a, this.b, 0, this.e, this.p);
     }
-    if (!this.jdField_b_of_type_Boolean) {
-      if (this.jdField_a_of_type_Boolean)
+    if (!this.v) {
+      if (this.u)
       {
-        this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
+        this.k.bindFrame(this.j[0], this.a, this.b, 1.0D);
         PersonalityUtils.a();
-        this.jdField_a_of_type_Boolean = false;
+        this.u = false;
       }
       else
       {
-        a(this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO(), this.jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        a(this.q.getFBO(), this.q.getTextureId(), this.a, this.b);
       }
     }
-    this.jdField_f_of_type_Boolean = false;
+    this.A = false;
   }
   
   /* Error */
@@ -514,52 +509,52 @@ public class PersonalityOperator
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 90	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_f_of_type_Boolean	Z
+    //   1: getfield 112	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:A	Z
     //   4: ifeq +29 -> 33
     //   7: aload_0
     //   8: aload_0
-    //   9: getfield 72	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
-    //   12: invokevirtual 293	com/tencent/aekit/openrender/internal/Frame:getFBO	()I
+    //   9: getfield 94	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:q	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   12: invokevirtual 313	com/tencent/aekit/openrender/internal/Frame:getFBO	()I
     //   15: aload_0
-    //   16: getfield 72	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
-    //   19: invokevirtual 285	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
+    //   16: getfield 94	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:q	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   19: invokevirtual 305	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
     //   22: aload_0
-    //   23: getfield 94	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_Int	I
+    //   23: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:a	I
     //   26: aload_0
-    //   27: getfield 172	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_b_of_type_Int	I
-    //   30: invokevirtual 345	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:a	(IIII)V
+    //   27: getfield 191	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:b	I
+    //   30: invokevirtual 367	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:a	(IIII)V
     //   33: aload_0
-    //   34: getfield 68	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_b_of_type_ComTencentFilterBaseFilter	Lcom/tencent/filter/BaseFilter;
+    //   34: getfield 90	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:o	Lcom/tencent/filter/BaseFilter;
     //   37: aload_0
-    //   38: getfield 72	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
-    //   41: invokevirtual 285	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
+    //   38: getfield 94	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:q	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   41: invokevirtual 305	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
     //   44: aload_0
-    //   45: getfield 31	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_c_of_type_Int	I
+    //   45: getfield 53	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:c	I
     //   48: aload_0
-    //   49: getfield 33	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_Int	I
+    //   49: getfield 55	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:d	I
     //   52: iconst_0
     //   53: aload_0
-    //   54: getfield 37	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_Double	D
+    //   54: getfield 59	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:e	D
     //   57: aload_0
-    //   58: getfield 70	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_c_of_type_ComTencentAekitOpenrenderInternalFrame	Lcom/tencent/aekit/openrender/internal/Frame;
-    //   61: invokevirtual 289	com/tencent/filter/BaseFilter:RenderProcess	(IIIIDLcom/tencent/aekit/openrender/internal/Frame;)V
+    //   58: getfield 92	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:p	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   61: invokevirtual 309	com/tencent/filter/BaseFilter:RenderProcess	(IIIIDLcom/tencent/aekit/openrender/internal/Frame;)V
     //   64: aload_0
-    //   65: getfield 98	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
+    //   65: getfield 120	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:s	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
     //   68: astore 6
     //   70: aload 6
     //   72: ifnull +19 -> 91
     //   75: aload 6
-    //   77: instanceof 499
+    //   77: instanceof 524
     //   80: ifeq +11 -> 91
     //   83: aload 6
-    //   85: checkcast 499	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleOpController
-    //   88: invokevirtual 501	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleOpController:f	()V
+    //   85: checkcast 524	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleOpController
+    //   88: invokevirtual 526	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleOpController:j	()V
     //   91: aload_0
-    //   92: getfield 92	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_g_of_type_Boolean	Z
+    //   92: getfield 114	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:B	Z
     //   95: ifeq +547 -> 642
     //   98: aload_0
     //   99: iconst_0
-    //   100: putfield 92	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_g_of_type_Boolean	Z
+    //   100: putfield 114	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:B	Z
     //   103: aconst_null
     //   104: astore 10
     //   106: aconst_null
@@ -568,13 +563,13 @@ public class PersonalityOperator
     //   110: astore 12
     //   112: aconst_null
     //   113: astore 6
-    //   115: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   115: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   118: ifeq +12 -> 130
-    //   121: ldc 114
+    //   121: ldc 136
     //   123: iconst_2
-    //   124: ldc_w 503
-    //   127: invokestatic 505	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   130: invokestatic 511	java/lang/System:currentTimeMillis	()J
+    //   124: ldc_w 528
+    //   127: invokestatic 530	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   130: invokestatic 536	java/lang/System:currentTimeMillis	()J
     //   133: lstore_2
     //   134: aload 10
     //   136: astore 7
@@ -583,11 +578,11 @@ public class PersonalityOperator
     //   142: aload 12
     //   144: astore 9
     //   146: aload_0
-    //   147: getfield 31	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_c_of_type_Int	I
+    //   147: getfield 53	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:c	I
     //   150: aload_0
-    //   151: getfield 33	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_Int	I
+    //   151: getfield 55	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:d	I
     //   154: imul
-    //   155: invokestatic 517	java/nio/IntBuffer:allocate	(I)Ljava/nio/IntBuffer;
+    //   155: invokestatic 542	java/nio/IntBuffer:allocate	(I)Ljava/nio/IntBuffer;
     //   158: astore 13
     //   160: aload 10
     //   162: astore 7
@@ -598,13 +593,13 @@ public class PersonalityOperator
     //   172: iconst_0
     //   173: iconst_0
     //   174: aload_0
-    //   175: getfield 31	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_c_of_type_Int	I
+    //   175: getfield 53	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:c	I
     //   178: aload_0
-    //   179: getfield 33	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_Int	I
+    //   179: getfield 55	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:d	I
     //   182: sipush 6408
     //   185: sipush 5121
     //   188: aload 13
-    //   190: invokestatic 521	android/opengl/GLES20:glReadPixels	(IIIIIILjava/nio/Buffer;)V
+    //   190: invokestatic 546	android/opengl/GLES20:glReadPixels	(IIIIIILjava/nio/Buffer;)V
     //   193: aload 10
     //   195: astore 7
     //   197: aload 11
@@ -612,7 +607,7 @@ public class PersonalityOperator
     //   201: aload 12
     //   203: astore 9
     //   205: aload 13
-    //   207: invokevirtual 525	java/nio/IntBuffer:array	()[I
+    //   207: invokevirtual 550	java/nio/IntBuffer:array	()[I
     //   210: astore 14
     //   212: aload 10
     //   214: astore 7
@@ -621,11 +616,11 @@ public class PersonalityOperator
     //   220: aload 12
     //   222: astore 9
     //   224: aload_0
-    //   225: getfield 31	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_c_of_type_Int	I
+    //   225: getfield 53	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:c	I
     //   228: aload_0
-    //   229: getfield 33	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_Int	I
-    //   232: getstatic 531	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   235: invokestatic 537	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   229: getfield 55	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:d	I
+    //   232: getstatic 556	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   235: invokestatic 562	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   238: astore 13
     //   240: aload 10
     //   242: astore 7
@@ -635,8 +630,8 @@ public class PersonalityOperator
     //   250: astore 9
     //   252: aload 13
     //   254: aload 14
-    //   256: invokestatic 541	java/nio/IntBuffer:wrap	([I)Ljava/nio/IntBuffer;
-    //   259: invokevirtual 545	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
+    //   256: invokestatic 566	java/nio/IntBuffer:wrap	([I)Ljava/nio/IntBuffer;
+    //   259: invokevirtual 570	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
     //   262: aload 13
     //   264: ifnull +131 -> 395
     //   267: aload 10
@@ -646,12 +641,12 @@ public class PersonalityOperator
     //   275: aload 12
     //   277: astore 9
     //   279: aload_0
-    //   280: getfield 96	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_g_of_type_Int	I
+    //   280: getfield 118	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:C	I
     //   283: i2f
     //   284: fconst_1
     //   285: fmul
     //   286: aload_0
-    //   287: getfield 31	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_c_of_type_Int	I
+    //   287: getfield 53	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:c	I
     //   290: i2f
     //   291: fdiv
     //   292: fstore_1
@@ -661,9 +656,9 @@ public class PersonalityOperator
     //   299: astore 8
     //   301: aload 12
     //   303: astore 9
-    //   305: new 547	android/graphics/Matrix
+    //   305: new 572	android/graphics/Matrix
     //   308: dup
-    //   309: invokespecial 548	android/graphics/Matrix:<init>	()V
+    //   309: invokespecial 573	android/graphics/Matrix:<init>	()V
     //   312: astore 6
     //   314: aload 10
     //   316: astore 7
@@ -672,8 +667,8 @@ public class PersonalityOperator
     //   322: aload 12
     //   324: astore 9
     //   326: aload 6
-    //   328: ldc_w 549
-    //   331: invokevirtual 553	android/graphics/Matrix:postRotate	(F)Z
+    //   328: ldc_w 574
+    //   331: invokevirtual 578	android/graphics/Matrix:postRotate	(F)Z
     //   334: pop
     //   335: aload 10
     //   337: astore 7
@@ -682,13 +677,13 @@ public class PersonalityOperator
     //   343: aload 12
     //   345: astore 9
     //   347: aload 6
-    //   349: ldc_w 554
+    //   349: ldc_w 579
     //   352: fload_1
     //   353: fmul
     //   354: fload_1
     //   355: fconst_1
     //   356: fmul
-    //   357: invokevirtual 558	android/graphics/Matrix:postScale	(FF)Z
+    //   357: invokevirtual 583	android/graphics/Matrix:postScale	(FF)Z
     //   360: pop
     //   361: aload 10
     //   363: astore 7
@@ -700,12 +695,12 @@ public class PersonalityOperator
     //   375: iconst_0
     //   376: iconst_0
     //   377: aload 13
-    //   379: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
+    //   379: invokevirtual 586	android/graphics/Bitmap:getWidth	()I
     //   382: aload 13
-    //   384: invokevirtual 564	android/graphics/Bitmap:getHeight	()I
+    //   384: invokevirtual 589	android/graphics/Bitmap:getHeight	()I
     //   387: aload 6
     //   389: iconst_0
-    //   390: invokestatic 567	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   390: invokestatic 592	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   393: astore 6
     //   395: aload 6
     //   397: astore 7
@@ -715,9 +710,9 @@ public class PersonalityOperator
     //   405: astore 9
     //   407: aload_0
     //   408: iconst_0
-    //   409: putfield 84	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_d_of_type_Boolean	Z
+    //   409: putfield 106	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:x	Z
     //   412: aload_0
-    //   413: getfield 98	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
+    //   413: getfield 120	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:s	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
     //   416: astore 7
     //   418: aload 7
     //   420: ifnull +148 -> 568
@@ -727,35 +722,35 @@ public class PersonalityOperator
     //   431: astore 6
     //   433: aload 8
     //   435: astore 7
-    //   437: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   437: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   440: ifeq +57 -> 497
     //   443: aload 8
     //   445: astore 7
-    //   447: new 464	java/lang/StringBuilder
+    //   447: new 489	java/lang/StringBuilder
     //   450: dup
-    //   451: invokespecial 465	java/lang/StringBuilder:<init>	()V
+    //   451: invokespecial 490	java/lang/StringBuilder:<init>	()V
     //   454: astore 9
     //   456: aload 8
     //   458: astore 7
     //   460: aload 9
-    //   462: ldc_w 569
-    //   465: invokevirtual 471	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: ldc_w 594
+    //   465: invokevirtual 496	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   468: pop
     //   469: aload 8
     //   471: astore 7
     //   473: aload 9
     //   475: aload 6
-    //   477: invokevirtual 572	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   477: invokevirtual 597	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   480: pop
     //   481: aload 8
     //   483: astore 7
-    //   485: ldc_w 574
+    //   485: ldc_w 599
     //   488: iconst_2
     //   489: aload 9
-    //   491: invokevirtual 475	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   494: invokestatic 477	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   491: invokevirtual 500	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   494: invokestatic 502	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   497: aload_0
-    //   498: getfield 98	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
+    //   498: getfield 120	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:s	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
     //   501: astore 7
     //   503: aload 7
     //   505: ifnull +63 -> 568
@@ -765,18 +760,18 @@ public class PersonalityOperator
     //   515: astore 6
     //   517: aload 9
     //   519: astore 7
-    //   521: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   521: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   524: ifeq +20 -> 544
     //   527: aload 9
     //   529: astore 7
-    //   531: ldc_w 574
+    //   531: ldc_w 599
     //   534: iconst_2
     //   535: aload 6
     //   537: iconst_0
     //   538: anewarray 4	java/lang/Object
-    //   541: invokestatic 577	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   541: invokestatic 602	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   544: aload_0
-    //   545: getfield 98	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
+    //   545: getfield 120	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:s	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
     //   548: astore 7
     //   550: aload 7
     //   552: ifnull +16 -> 568
@@ -784,39 +779,39 @@ public class PersonalityOperator
     //   557: astore 6
     //   559: aload 7
     //   561: aload 6
-    //   563: invokeinterface 580 2 0
-    //   568: invokestatic 511	java/lang/System:currentTimeMillis	()J
+    //   563: invokeinterface 605 2 0
+    //   568: invokestatic 536	java/lang/System:currentTimeMillis	()J
     //   571: lstore 4
-    //   573: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   573: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   576: ifeq +66 -> 642
-    //   579: new 464	java/lang/StringBuilder
+    //   579: new 489	java/lang/StringBuilder
     //   582: dup
-    //   583: invokespecial 465	java/lang/StringBuilder:<init>	()V
+    //   583: invokespecial 490	java/lang/StringBuilder:<init>	()V
     //   586: astore 6
     //   588: aload 6
-    //   590: ldc_w 582
-    //   593: invokevirtual 471	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   590: ldc_w 607
+    //   593: invokevirtual 496	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   596: pop
     //   597: aload 6
     //   599: lload 4
     //   601: lload_2
     //   602: lsub
-    //   603: invokevirtual 585	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   603: invokevirtual 610	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   606: pop
-    //   607: ldc 114
+    //   607: ldc 136
     //   609: iconst_2
     //   610: aload 6
-    //   612: invokevirtual 475	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   615: invokestatic 505	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   612: invokevirtual 500	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 530	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   618: return
     //   619: aload_0
-    //   620: getfield 98	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
+    //   620: getfield 120	com/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/PersonalityOperator:s	Lcom/tencent/aelight/camera/aioeditor/takevideo/doodle/ui/doodle/DoodleLineListener;
     //   623: astore 8
     //   625: aload 8
     //   627: ifnull +12 -> 639
     //   630: aload 8
     //   632: aload 7
-    //   634: invokeinterface 580 2 0
+    //   634: invokeinterface 605 2 0
     //   639: aload 6
     //   641: athrow
     //   642: return
@@ -886,9 +881,9 @@ public class PersonalityOperator
   
   public void f()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_f_of_type_Int -= 1;
-    DoodleLineListener localDoodleLineListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+    this.u = true;
+    this.z -= 1;
+    DoodleLineListener localDoodleLineListener = this.s;
     if (localDoodleLineListener != null) {
       localDoodleLineListener.a();
     }
@@ -896,9 +891,9 @@ public class PersonalityOperator
   
   public void g()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_f_of_type_Int = 0;
-    DoodleLineListener localDoodleLineListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+    this.u = true;
+    this.z = 0;
+    DoodleLineListener localDoodleLineListener = this.s;
     if (localDoodleLineListener != null) {
       localDoodleLineListener.a();
     }
@@ -906,8 +901,8 @@ public class PersonalityOperator
   
   public void h()
   {
-    this.jdField_b_of_type_Boolean = true;
-    DoodleLineListener localDoodleLineListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLineListener;
+    this.v = true;
+    DoodleLineListener localDoodleLineListener = this.s;
     if (localDoodleLineListener != null) {
       localDoodleLineListener.a();
     }
@@ -915,7 +910,7 @@ public class PersonalityOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.PersonalityOperator
  * JD-Core Version:    0.7.0.1
  */

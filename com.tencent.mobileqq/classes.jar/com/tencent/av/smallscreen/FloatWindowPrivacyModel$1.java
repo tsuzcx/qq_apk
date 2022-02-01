@@ -20,8 +20,8 @@ class FloatWindowPrivacyModel$1
     {
       int i = paramIntent.getIntExtra("SmallScreenState", -1);
       long l = SeqUtil.a(paramIntent);
-      boolean bool = SmallScreenUtils.c(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp());
-      if ((AudioHelper.b()) || (bool))
+      boolean bool = SmallScreenUtils.c(this.a.b.getApp());
+      if ((AudioHelper.e()) || (bool))
       {
         paramContext = new StringBuilder();
         paramContext.append("Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[");
@@ -34,7 +34,7 @@ class FloatWindowPrivacyModel$1
         QLog.w("FloatWindowPrivacyModel", 1, paramContext.toString());
       }
       if (bool) {
-        this.a.jdField_a_of_type_MqqAppBaseActivity.finish();
+        this.a.a.finish();
       }
     }
   }

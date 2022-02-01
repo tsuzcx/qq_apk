@@ -14,29 +14,21 @@ import org.json.JSONObject;
 
 public class MutualMarkInfo
 {
-  public float a;
   public long a;
-  public String a;
-  public boolean a;
   public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
+  public float c;
   public long d;
   public long e;
   public long f;
   public long g;
   public long h;
   public long i;
-  
-  public MutualMarkInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public boolean m = false;
+  public boolean n;
+  public long o;
   
   private static MutualMarkInfo a(JSONObject paramJSONObject)
   {
@@ -44,20 +36,20 @@ public class MutualMarkInfo
       return null;
     }
     MutualMarkInfo localMutualMarkInfo = new MutualMarkInfo();
-    localMutualMarkInfo.jdField_a_of_type_Long = paramJSONObject.optLong("type");
-    localMutualMarkInfo.jdField_b_of_type_Long = paramJSONObject.optLong("level");
-    localMutualMarkInfo.jdField_a_of_type_Float = ((float)paramJSONObject.optDouble("count", 0.0D));
-    localMutualMarkInfo.jdField_c_of_type_Long = paramJSONObject.optLong("continue_days");
-    localMutualMarkInfo.jdField_d_of_type_Long = paramJSONObject.optLong("last_action_time");
-    localMutualMarkInfo.e = paramJSONObject.optLong("last_change_time");
-    localMutualMarkInfo.f = paramJSONObject.optLong("icon_status");
-    localMutualMarkInfo.jdField_g_of_type_Long = paramJSONObject.optLong("icon_status_end_time");
-    localMutualMarkInfo.h = paramJSONObject.optLong("sub_level");
-    localMutualMarkInfo.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("hasRemindInContact");
-    localMutualMarkInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("icon_static_url");
-    localMutualMarkInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_dynamic_url");
-    localMutualMarkInfo.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_name");
-    localMutualMarkInfo.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("user_close_flag");
+    localMutualMarkInfo.a = paramJSONObject.optLong("type");
+    localMutualMarkInfo.b = paramJSONObject.optLong("level");
+    localMutualMarkInfo.c = ((float)paramJSONObject.optDouble("count", 0.0D));
+    localMutualMarkInfo.d = paramJSONObject.optLong("continue_days");
+    localMutualMarkInfo.e = paramJSONObject.optLong("last_action_time");
+    localMutualMarkInfo.f = paramJSONObject.optLong("last_change_time");
+    localMutualMarkInfo.g = paramJSONObject.optLong("icon_status");
+    localMutualMarkInfo.h = paramJSONObject.optLong("icon_status_end_time");
+    localMutualMarkInfo.i = paramJSONObject.optLong("sub_level");
+    localMutualMarkInfo.n = paramJSONObject.optBoolean("hasRemindInContact");
+    localMutualMarkInfo.j = paramJSONObject.optString("icon_static_url");
+    localMutualMarkInfo.k = paramJSONObject.optString("icon_dynamic_url");
+    localMutualMarkInfo.l = paramJSONObject.optString("icon_name");
+    localMutualMarkInfo.m = paramJSONObject.optBoolean("user_close_flag");
     return localMutualMarkInfo;
   }
   
@@ -91,15 +83,15 @@ public class MutualMarkInfo
     try
     {
       paramString = new JSONArray(paramString);
-      int j = 0;
+      int i1 = 0;
       Object localObject2;
-      while (j < paramString.length())
+      while (i1 < paramString.length())
       {
-        localObject2 = a(paramString.getJSONObject(j));
+        localObject2 = a(paramString.getJSONObject(i1));
         if (localObject2 != null) {
-          ((ConcurrentHashMap)localObject1).put(Long.valueOf(((MutualMarkInfo)localObject2).jdField_a_of_type_Long), localObject2);
+          ((ConcurrentHashMap)localObject1).put(Long.valueOf(((MutualMarkInfo)localObject2).a), localObject2);
         }
-        j += 1;
+        i1 += 1;
       }
       return localObject1;
     }
@@ -117,20 +109,20 @@ public class MutualMarkInfo
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("type", this.jdField_a_of_type_Long);
-      localJSONObject.put("level", this.jdField_b_of_type_Long);
-      localJSONObject.put("count", this.jdField_a_of_type_Float);
-      localJSONObject.put("continue_days", this.jdField_c_of_type_Long);
-      localJSONObject.put("last_action_time", this.jdField_d_of_type_Long);
-      localJSONObject.put("last_change_time", this.e);
-      localJSONObject.put("icon_status", this.f);
-      localJSONObject.put("icon_status_end_time", this.jdField_g_of_type_Long);
-      localJSONObject.put("sub_level", this.h);
-      localJSONObject.put("hasRemindInContact", this.jdField_b_of_type_Boolean);
-      localJSONObject.put("icon_static_url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("icon_dynamic_url", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("icon_name", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("user_close_flag", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("type", this.a);
+      localJSONObject.put("level", this.b);
+      localJSONObject.put("count", this.c);
+      localJSONObject.put("continue_days", this.d);
+      localJSONObject.put("last_action_time", this.e);
+      localJSONObject.put("last_change_time", this.f);
+      localJSONObject.put("icon_status", this.g);
+      localJSONObject.put("icon_status_end_time", this.h);
+      localJSONObject.put("sub_level", this.i);
+      localJSONObject.put("hasRemindInContact", this.n);
+      localJSONObject.put("icon_static_url", this.j);
+      localJSONObject.put("icon_dynamic_url", this.k);
+      localJSONObject.put("icon_name", this.l);
+      localJSONObject.put("user_close_flag", this.m);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -145,42 +137,42 @@ public class MutualMarkInfo
   
   public boolean a(ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo paramRelationalChainPushInfo, long paramLong)
   {
-    Object localObject = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo;
+    Object localObject = paramRelationalChainPushInfo.b;
     boolean bool = false;
     if (localObject != null)
     {
-      if (((paramLong == 11002L) || (paramLong == 11001L)) && (this.jdField_d_of_type_Long > 0L) && (paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long < this.jdField_d_of_type_Long))
+      if (((paramLong == 11002L) || (paramLong == 11001L)) && (this.e > 0L) && (paramRelationalChainPushInfo.b.c < this.e))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("ignore mergeFrom now.last_action_time:");
-        ((StringBuilder)localObject).append(paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long);
+        ((StringBuilder)localObject).append(paramRelationalChainPushInfo.b.c);
         ((StringBuilder)localObject).append(" last_action_time:");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_Long);
+        ((StringBuilder)localObject).append(this.e);
         QLog.i("MutualMarkInfo", 1, ((StringBuilder)localObject).toString());
         return false;
       }
-      this.jdField_a_of_type_Long = paramRelationalChainPushInfo.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Long = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_b_of_type_Long;
-      if (paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long > 0L) {
-        this.jdField_d_of_type_Long = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_Long;
+      this.a = paramRelationalChainPushInfo.a;
+      this.b = paramRelationalChainPushInfo.b.b;
+      if (paramRelationalChainPushInfo.b.c > 0L) {
+        this.e = paramRelationalChainPushInfo.b.c;
       }
-      if (paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_d_of_type_Long > 0L) {
-        this.e = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_d_of_type_Long;
+      if (paramRelationalChainPushInfo.b.d > 0L) {
+        this.f = paramRelationalChainPushInfo.b.d;
       }
-      this.jdField_c_of_type_Long = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_Int;
-      this.f = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.f;
+      this.d = paramRelationalChainPushInfo.b.e;
+      this.g = paramRelationalChainPushInfo.b.i;
       if (paramLong == 11002L) {
-        this.jdField_g_of_type_Long = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_g_of_type_Long;
+        this.h = paramRelationalChainPushInfo.b.j;
       }
-      if (this.f != 2L) {
-        this.jdField_g_of_type_Long = 0L;
+      if (this.g != 2L) {
+        this.h = 0L;
       }
-      this.h = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.h;
-      this.jdField_a_of_type_JavaLangString = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_c_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_d_of_type_JavaLangString;
-      this.jdField_c_of_type_JavaLangString = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_g_of_type_JavaLangString;
-      this.jdField_a_of_type_Boolean = paramRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_Boolean;
-      if ((this.jdField_a_of_type_Long == 17L) && (this.jdField_b_of_type_Long > 0L) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      this.i = paramRelationalChainPushInfo.b.k;
+      this.j = paramRelationalChainPushInfo.b.m;
+      this.k = paramRelationalChainPushInfo.b.n;
+      this.l = paramRelationalChainPushInfo.b.q;
+      this.m = paramRelationalChainPushInfo.b.r;
+      if ((this.a == 17L) && (this.b > 0L) && (TextUtils.isEmpty(this.j)))
       {
         paramRelationalChainPushInfo = new StringBuilder();
         paramRelationalChainPushInfo.append("mergeFrom push info resource invalid: ");
@@ -194,19 +186,19 @@ public class MutualMarkInfo
   
   public boolean a(MutualMarkPullInfo paramMutualMarkPullInfo)
   {
-    this.jdField_a_of_type_Long = paramMutualMarkPullInfo.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = paramMutualMarkPullInfo.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Float = paramMutualMarkPullInfo.jdField_a_of_type_Float;
-    this.jdField_c_of_type_Long = paramMutualMarkPullInfo.jdField_c_of_type_Long;
-    this.jdField_d_of_type_Long = paramMutualMarkPullInfo.jdField_d_of_type_Long;
-    this.f = paramMutualMarkPullInfo.f;
-    this.jdField_g_of_type_Long = paramMutualMarkPullInfo.jdField_g_of_type_Long;
+    this.a = paramMutualMarkPullInfo.a;
+    this.b = paramMutualMarkPullInfo.b;
+    this.c = paramMutualMarkPullInfo.c;
+    this.d = paramMutualMarkPullInfo.d;
+    this.e = paramMutualMarkPullInfo.e;
+    this.g = paramMutualMarkPullInfo.g;
     this.h = paramMutualMarkPullInfo.h;
-    this.jdField_a_of_type_JavaLangString = paramMutualMarkPullInfo.jdField_c_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramMutualMarkPullInfo.jdField_d_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramMutualMarkPullInfo.jdField_g_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramMutualMarkPullInfo.jdField_a_of_type_Boolean;
-    if ((this.jdField_a_of_type_Long == 17L) && (this.jdField_b_of_type_Long > 0L) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    this.i = paramMutualMarkPullInfo.i;
+    this.j = paramMutualMarkPullInfo.l;
+    this.k = paramMutualMarkPullInfo.m;
+    this.l = paramMutualMarkPullInfo.p;
+    this.m = paramMutualMarkPullInfo.q;
+    if ((this.a == 17L) && (this.b > 0L) && (TextUtils.isEmpty(this.j)))
     {
       paramMutualMarkPullInfo = new StringBuilder();
       paramMutualMarkPullInfo.append("mergeFrom pull info resource invalid: ");
@@ -221,45 +213,45 @@ public class MutualMarkInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MutualMarkInfo{");
     localStringBuilder.append("type=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", level=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", count=");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", continue_days=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", last_action_time=");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(", last_change_time=");
     localStringBuilder.append(this.e);
-    localStringBuilder.append(", icon_status=");
+    localStringBuilder.append(", last_change_time=");
     localStringBuilder.append(this.f);
+    localStringBuilder.append(", icon_status=");
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", icon_status_end_time=");
-    localStringBuilder.append(this.jdField_g_of_type_Long);
-    localStringBuilder.append(", sub_level=");
     localStringBuilder.append(this.h);
-    localStringBuilder.append(", hasRemindInContact=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", remindAnimStartTime=");
+    localStringBuilder.append(", sub_level=");
     localStringBuilder.append(this.i);
+    localStringBuilder.append(", hasRemindInContact=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", remindAnimStartTime=");
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", icon_static_url='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("'");
     localStringBuilder.append(", icon_dynamic_url='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("'");
     localStringBuilder.append(", icon_name='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.l);
     localStringBuilder.append("'");
     localStringBuilder.append(", user_close_flag=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.MutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

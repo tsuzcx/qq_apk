@@ -37,139 +37,138 @@ public class FaceListPage
   implements View.OnClickListener
 {
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IFaceSelectedListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener;
-  private FacePackage jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-  private FaceListPage.FacePackagePageEventListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener;
-  private BaseFaceListAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter;
-  private InformationFaceAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter;
-  private LocationFaceAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterLocationFaceAdapter;
-  private NormalFaceAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterNormalFaceAdapter;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private ViewGroup c;
-  private ViewGroup d;
+  public boolean b = false;
+  private ImageView c;
+  private TextView d;
+  private ProgressBar e;
+  private ListView f;
+  private ViewGroup g;
+  private ViewGroup h;
+  private ViewGroup i;
+  private ViewGroup j;
+  private TextView k;
+  private BaseFaceListAdapter l;
+  private NormalFaceAdapter m;
+  private LocationFaceAdapter n;
+  private InformationFaceAdapter o;
+  private FacePackage p;
+  private FaceListPage.FacePackagePageEventListener q;
+  private IFaceSelectedListener r;
+  private int s;
+  private Handler t = new Handler(Looper.getMainLooper());
+  private boolean u;
   
   public FaceListPage(Context paramContext, IFaceSelectedListener paramIFaceSelectedListener, FaceListPage.FacePackagePageEventListener paramFacePackagePageEventListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener = paramFacePackagePageEventListener;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener = paramIFaceSelectedListener;
-    e();
-  }
-  
-  private boolean a()
-  {
-    return Looper.myLooper() == Looper.getMainLooper();
-  }
-  
-  private void b()
-  {
-    SLog.b("FaceListPage", "FacePackage is InformationFacePackage");
-    FacePackage localFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-    if (!(localFacePackage instanceof InformationFacePackage)) {
-      return;
-    }
-    if (!((InformationFacePackage)localFacePackage).jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.notifyDataSetChanged();
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.c.setVisibility(0);
-    this.d.setVisibility(4);
+    this.q = paramFacePackagePageEventListener;
+    this.r = paramIFaceSelectedListener;
+    f();
   }
   
   private void b(FacePackage paramFacePackage)
   {
     if ((paramFacePackage instanceof NormalFacePackage))
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterNormalFaceAdapter == null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterNormalFaceAdapter = new NormalFaceAdapter(super.getContext(), this);
+      if (this.m == null) {
+        this.m = new NormalFaceAdapter(super.getContext(), this);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterNormalFaceAdapter;
+      this.l = this.m;
     }
     else if ((paramFacePackage instanceof LocationFacePackage))
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterLocationFaceAdapter == null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterLocationFaceAdapter = new LocationFaceAdapter(super.getContext(), this);
+      if (this.n == null) {
+        this.n = new LocationFaceAdapter(super.getContext(), this);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterLocationFaceAdapter;
+      this.l = this.n;
     }
     else if ((paramFacePackage instanceof InformationFacePackage))
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter == null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter = new InformationFaceAdapter(super.getContext(), this);
+      if (this.o == null) {
+        this.o = new InformationFaceAdapter(super.getContext(), this);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter;
+      this.l = this.o;
     }
     else
     {
       SLog.e("FaceListPage", "FacePackage is illegal.");
     }
-    BaseFaceListAdapter localBaseFaceListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter;
+    BaseFaceListAdapter localBaseFaceListAdapter = this.l;
     if (localBaseFaceListAdapter != null)
     {
-      localBaseFaceListAdapter.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localBaseFaceListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.a(paramFacePackage);
-      this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter);
+      localBaseFaceListAdapter.d = this.a;
+      localBaseFaceListAdapter.a(this.r);
+      this.l.a(paramFacePackage);
+      this.f.setAdapter(this.l);
     }
+  }
+  
+  private boolean b()
+  {
+    return Looper.myLooper() == Looper.getMainLooper();
   }
   
   private void c()
   {
-    SLog.b("FaceListPage", "FacePackage is LocationFacePackage");
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-    if (!(localObject instanceof LocationFacePackage)) {
+    SLog.b("FaceListPage", "FacePackage is InformationFacePackage");
+    FacePackage localFacePackage = this.p;
+    if (!(localFacePackage instanceof InformationFacePackage)) {
       return;
     }
-    localObject = (LocationFacePackage)localObject;
-    if (!((LocationFacePackage)localObject).jdField_a_of_type_JavaUtilList.isEmpty())
+    if (!((InformationFacePackage)localFacePackage).l.isEmpty())
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.notifyDataSetChanged();
+      this.g.setVisibility(4);
+      this.h.setVisibility(4);
+      this.f.setVisibility(0);
+      this.l.notifyDataSetChanged();
       return;
     }
-    if (((LocationFacePackage)localObject).jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
-      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.c.setVisibility(4);
-      this.d.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.c.setVisibility(0);
-    this.d.setVisibility(4);
+    this.g.setVisibility(4);
+    this.f.setVisibility(4);
+    this.h.setVisibility(0);
+    this.i.setVisibility(0);
+    this.j.setVisibility(4);
   }
   
   private void d()
   {
+    SLog.b("FaceListPage", "FacePackage is LocationFacePackage");
+    Object localObject = this.p;
+    if (!(localObject instanceof LocationFacePackage)) {
+      return;
+    }
+    localObject = (LocationFacePackage)localObject;
+    if (!((LocationFacePackage)localObject).k.isEmpty())
+    {
+      this.g.setVisibility(4);
+      this.h.setVisibility(4);
+      this.f.setVisibility(0);
+      this.l.notifyDataSetChanged();
+      return;
+    }
+    if (((LocationFacePackage)localObject).l)
+    {
+      this.g.setVisibility(4);
+      this.f.setVisibility(4);
+      this.h.setVisibility(0);
+      this.i.setVisibility(4);
+      this.j.setVisibility(0);
+      return;
+    }
+    this.g.setVisibility(4);
+    this.f.setVisibility(4);
+    this.h.setVisibility(0);
+    this.i.setVisibility(0);
+    this.j.setVisibility(4);
+  }
+  
+  private void e()
+  {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("FacePackage is NormalFacePackage ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage);
+    ((StringBuilder)localObject).append(this.p);
     SLog.b("FaceListPage", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
+    localObject = this.p;
     if (localObject == null) {
       return;
     }
@@ -178,7 +177,7 @@ public class FaceListPage
     }
     NormalFacePackage localNormalFacePackage = (NormalFacePackage)localObject;
     boolean bool;
-    if ((localNormalFacePackage.jdField_a_of_type_JavaUtilList != null) && (!localNormalFacePackage.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((localNormalFacePackage.m != null) && (!localNormalFacePackage.m.isEmpty()))
     {
       SLog.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
       bool = true;
@@ -187,10 +186,10 @@ public class FaceListPage
     {
       bool = false;
     }
-    if ((!bool) && (!TextUtils.isEmpty(localNormalFacePackage.g)))
+    if ((!bool) && (!TextUtils.isEmpty(localNormalFacePackage.l)))
     {
       SLog.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
-      localObject = localNormalFacePackage.a();
+      localObject = localNormalFacePackage.e();
       if ((localObject != null) && (!((List)localObject).isEmpty())) {
         bool = true;
       } else {
@@ -204,51 +203,51 @@ public class FaceListPage
     ThreadManager.getUIHandler().post(new FaceListPage.2(this, localNormalFacePackage, (List)localObject, bool));
   }
   
-  private void e()
+  private void f()
   {
-    this.jdField_b_of_type_Int = AIOUtils.b(130.0F, super.getContext().getResources());
-    LayoutInflater.from(super.getContext()).inflate(2131561655, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366434));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366435));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131373123));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131366421));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131366415));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131370417));
-    this.c = ((LinearLayout)super.findViewById(2131370422));
-    this.d = ((LinearLayout)super.findViewById(2131370413));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365828));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c.setOnClickListener(this);
+    this.s = AIOUtils.b(130.0F, super.getContext().getResources());
+    LayoutInflater.from(super.getContext()).inflate(2131628034, this);
+    this.c = ((ImageView)super.findViewById(2131432750));
+    this.d = ((TextView)super.findViewById(2131432751));
+    this.e = ((ProgressBar)super.findViewById(2131440726));
+    this.f = ((ListView)super.findViewById(2131432734));
+    this.g = ((RelativeLayout)super.findViewById(2131432728));
+    this.h = ((RelativeLayout)super.findViewById(2131437685));
+    this.i = ((LinearLayout)super.findViewById(2131437690));
+    this.j = ((LinearLayout)super.findViewById(2131437681));
+    this.k = ((TextView)findViewById(2131432086));
+    this.k.setOnClickListener(this);
+    this.i.setOnClickListener(this);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
+    Object localObject = this.p;
     if (localObject == null)
     {
       SLog.b("FaceListPage", "onShow : FacePackage is null.");
       return;
     }
-    if ("LocationFacePackage".equals(((FacePackage)localObject).a()))
+    if ("LocationFacePackage".equals(((FacePackage)localObject).c()))
     {
-      localObject = (LocationFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-      if ((((LocationFacePackage)localObject).jdField_a_of_type_JavaUtilList.isEmpty()) && (!((LocationFacePackage)localObject).jdField_b_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      localObject = (LocationFacePackage)this.p;
+      if ((((LocationFacePackage)localObject).k.isEmpty()) && (!((LocationFacePackage)localObject).l) && (!this.u))
       {
         if (NetworkUtil.isNetworkAvailable(super.getContext())) {
           StoryReportor.a("video_shoot", "fail_poi", 0, 0, new String[] { "1" });
         } else {
           StoryReportor.a("video_shoot", "fail_poi", 0, 0, new String[] { "2" });
         }
-        this.jdField_b_of_type_Boolean = true;
+        this.u = true;
       }
     }
-    else if ("NormalFacePackage".equals(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.a()))
+    else if ("NormalFacePackage".equals(this.p.c()))
     {
-      localObject = (NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-      if ((NetworkUtil.isWifiEnabled(getContext())) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener != null) && (!((NormalFacePackage)localObject).jdField_b_of_type_Boolean) && (((NormalFacePackage)localObject).jdField_a_of_type_JavaUtilList.isEmpty()))
+      localObject = (NormalFacePackage)this.p;
+      if ((NetworkUtil.isWifiEnabled(getContext())) && (this.q != null) && (!((NormalFacePackage)localObject).n) && (((NormalFacePackage)localObject).m.isEmpty()))
       {
         SLog.a("FaceListPage", "network is wifi. download automatically : %s .", localObject);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.a(((NormalFacePackage)localObject).jdField_a_of_type_JavaLangString);
+        this.q.a(((NormalFacePackage)localObject).a);
         StoryReportor.a("video_edit", "auto_down_sticker", 0, 0, new String[0]);
       }
     }
@@ -256,9 +255,9 @@ public class FaceListPage
   
   public void a(FacePackage paramFacePackage)
   {
-    if (!a())
+    if (!b())
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new FaceListPage.1(this, paramFacePackage));
+      this.t.post(new FaceListPage.1(this, paramFacePackage));
       return;
     }
     if (paramFacePackage != null)
@@ -267,55 +266,55 @@ public class FaceListPage
       ((StringBuilder)localObject).append("onChange,FacePkgInfo:");
       ((StringBuilder)localObject).append(paramFacePackage.toString());
       SLog.b("FaceListPage", ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-      if ((localObject == null) || (!((FacePackage)localObject).a().equals(paramFacePackage.a()))) {
+      localObject = this.p;
+      if ((localObject == null) || (!((FacePackage)localObject).c().equals(paramFacePackage.c()))) {
         b(paramFacePackage);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage = paramFacePackage;
-      if ("NormalFacePackage".equals(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.a()))
+      this.p = paramFacePackage;
+      if ("NormalFacePackage".equals(this.p.c()))
+      {
+        e();
+        return;
+      }
+      if ("LocationFacePackage".equals(this.p.c()))
       {
         d();
         return;
       }
-      if ("LocationFacePackage".equals(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.a()))
-      {
+      if ("InformationFacePackage".equals(this.p.c())) {
         c();
-        return;
-      }
-      if ("InformationFacePackage".equals(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.a())) {
-        b();
       }
     }
     else
     {
       SLog.b("FaceListPage", "onChange, null.");
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage = null;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.a(null);
-      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
+      this.p = null;
+      this.l.a(null);
+      this.f.setVisibility(4);
+      this.g.setVisibility(4);
+      this.h.setVisibility(4);
+      this.d.setText("");
+      this.e.setMax(1);
+      this.e.setProgress(0);
     }
   }
   
   public void a(String paramString)
   {
-    FacePackage localFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-    int k = 0;
-    int j = k;
+    FacePackage localFacePackage = this.p;
+    int i3 = 0;
+    int i2 = i3;
     if (localFacePackage != null)
     {
-      int m = localFacePackage.a();
-      int i = 0;
+      int i4 = localFacePackage.a();
+      int i1 = 0;
       for (;;)
       {
-        j = k;
-        if (i >= localFacePackage.b()) {
+        i2 = i3;
+        if (i1 >= localFacePackage.d()) {
           break;
         }
-        String str = localFacePackage.a(i);
+        String str = localFacePackage.a(i1);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("selectByName : ");
         localStringBuilder.append(paramString);
@@ -323,46 +322,46 @@ public class FaceListPage
         SLog.b("FaceListPage", localStringBuilder.toString());
         if ((str != null) && (str.contains(paramString)))
         {
-          j = i / m;
+          i2 = i1 / i4;
           break;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    this.jdField_a_of_type_AndroidWidgetListView.setSelection(j);
+    this.f.setSelection(i2);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_b_of_type_AndroidWidgetTextView)
+    if (paramView == this.k)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener != null)
+      if (this.q != null)
       {
-        if (!((NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).jdField_b_of_type_Boolean)
+        if (!((NormalFacePackage)this.p).n)
         {
           paramView = new StringBuilder();
           paramView.append("Download pkg:");
-          paramView.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.jdField_a_of_type_JavaLangString);
+          paramView.append(this.p.a);
           SLog.b("FaceListPage", paramView.toString());
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.jdField_a_of_type_JavaLangString);
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131704412));
+          this.q.a(this.p.a);
+          this.k.setText(HardCodeUtil.a(2131902325));
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.jdField_a_of_type_JavaLangString);
+        this.q.b(this.p.a);
       }
     }
-    else if ((paramView == this.c) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener != null))
+    else if ((paramView == this.i) && (this.q != null))
     {
-      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.c.setVisibility(4);
-      this.d.setVisibility(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.a();
+      this.h.setVisibility(0);
+      this.i.setVisibility(4);
+      this.j.setVisibility(0);
+      this.q.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.FaceListPage
  * JD-Core Version:    0.7.0.1
  */

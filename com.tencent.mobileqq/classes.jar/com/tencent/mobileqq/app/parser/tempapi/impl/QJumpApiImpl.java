@@ -33,7 +33,7 @@ public class QJumpApiImpl
   
   public boolean backToFileScheme()
   {
-    return ForwardUtils.a();
+    return ForwardUtils.b();
   }
   
   public void buildMapActivityProxy(String paramString)
@@ -92,7 +92,7 @@ public class QJumpApiImpl
     if (paramAppRuntime == null) {
       return "-1";
     }
-    return paramAppRuntime.c;
+    return paramAppRuntime.e;
   }
   
   public String parseJumpServerName(AppRuntime paramAppRuntime, Context paramContext, String paramString)
@@ -101,12 +101,12 @@ public class QJumpApiImpl
     if (paramAppRuntime == null) {
       return "-1";
     }
-    return paramAppRuntime.b;
+    return paramAppRuntime.d;
   }
   
   public Boolean qserIsOn()
   {
-    return QSecFramework.a().a(1003);
+    return QSecFramework.c().a(1003);
   }
   
   public void qzoneLaunchForPreview(Context paramContext, Bundle paramBundle)
@@ -128,7 +128,7 @@ public class QJumpApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.tempapi.impl.QJumpApiImpl
  * JD-Core Version:    0.7.0.1
  */

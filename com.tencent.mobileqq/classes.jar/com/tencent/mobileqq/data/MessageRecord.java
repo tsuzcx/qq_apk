@@ -84,6 +84,7 @@ public class MessageRecord
   public static final int MSG_TYPE_GRAY_TIPS = -5000;
   public static final int MSG_TYPE_GRAY_TIPS_TAB_VISIBLE = -5001;
   public static final int MSG_TYPE_GROUPDISC_FILE = -2014;
+  public static final int MSG_TYPE_GUILD_WELCOME_TIPS = -4028;
   public static final int MSG_TYPE_HIBOOM = -5014;
   public static final int MSG_TYPE_HOMEWORK_PRAISE = -2043;
   public static final int MSG_TYPE_HONGBAO_KEYWORDS_TIPS = -1045;
@@ -140,6 +141,7 @@ public class MessageRecord
   public static final int MSG_TYPE_PSTN_CALL = -2046;
   public static final int MSG_TYPE_PTT_QSECRETARY = -1031;
   public static final int MSG_TYPE_PUBLIC_ACCOUNT = -3006;
+  public static final int MSG_TYPE_PUSH_REMINDER = -7090;
   public static final int MSG_TYPE_QCIRCLE_NEWEST_FEED = -2077;
   public static final int MSG_TYPE_QLINK_AP_CREATE_SUC_TIPS = -3011;
   public static final int MSG_TYPE_QLINK_FILE_TIPS = -3009;
@@ -436,16 +438,22 @@ public class MessageRecord
               {
                 if (paramInt != 10007)
                 {
-                  if (paramInt != 1033)
+                  if (paramInt != 10014)
                   {
-                    if (paramInt != 1034) {
-                      str = "friend";
-                    } else {
-                      str = "confess_b";
+                    if (paramInt != 1033)
+                    {
+                      if (paramInt != 1034) {
+                        str = "friend";
+                      } else {
+                        str = "confess_b";
+                      }
+                    }
+                    else {
+                      str = "confess_a";
                     }
                   }
                   else {
-                    str = "confess_a";
+                    str = "guild";
                   }
                 }
                 else {
@@ -513,6 +521,9 @@ public class MessageRecord
     }
     if (paramString.startsWith("mr_confess_b")) {
       return 1034;
+    }
+    if (paramString.startsWith("mr_guild")) {
+      return 10014;
     }
     return 0;
   }
@@ -726,7 +737,7 @@ public class MessageRecord
   
   public String getTableName()
   {
-    return sCallback.a(this);
+    return sCallback.b(this);
   }
   
   public long getTime()
@@ -780,7 +791,7 @@ public class MessageRecord
   
   public boolean isSelf()
   {
-    return MessageRecordInfo.a(this.issend);
+    return MessageRecordInfo.b(this.issend);
   }
   
   public boolean isSelfConfessor()
@@ -795,12 +806,12 @@ public class MessageRecord
   
   public boolean isSendFromLocal()
   {
-    return MessageRecordInfo.b(this.issend);
+    return MessageRecordInfo.c(this.issend);
   }
   
   public boolean isSendFromOtherTerminal()
   {
-    return MessageRecordInfo.c(this.issend);
+    return MessageRecordInfo.d(this.issend);
   }
   
   public boolean isSupportFTS()
@@ -845,14 +856,10 @@ public class MessageRecord
                         bool1 = bool2;
                         if (i != 1020)
                         {
-                          bool1 = bool2;
-                          if (i != 10008)
-                          {
-                            if (i == 10009) {
-                              return true;
-                            }
-                            bool1 = false;
+                          if (i == 10008) {
+                            return true;
                           }
+                          bool1 = false;
                         }
                       }
                     }
@@ -1072,7 +1079,7 @@ public class MessageRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -23,11 +23,11 @@ final class MiniAppConfig$1
         try
         {
           ((MiniAppConfig)localObject).launchParam = localLaunchParam;
-          ((MiniAppConfig)localObject).forceReroad = i;
+          MiniAppConfig.access$102((MiniAppConfig)localObject, i);
           i = paramParcel.readInt();
           boolean bool2 = false;
           if (i != 1) {
-            break label174;
+            break label175;
           }
           bool1 = true;
           ((MiniAppConfig)localObject).isFromShowInfo = bool1;
@@ -53,7 +53,7 @@ final class MiniAppConfig$1
         paramParcel = null;
       }
       return paramParcel;
-      label174:
+      label175:
       boolean bool1 = false;
     }
   }
@@ -65,7 +65,7 @@ final class MiniAppConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppConfig.1
  * JD-Core Version:    0.7.0.1
  */

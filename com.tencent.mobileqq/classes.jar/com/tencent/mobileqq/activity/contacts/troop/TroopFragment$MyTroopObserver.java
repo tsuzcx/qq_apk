@@ -23,14 +23,14 @@ public class TroopFragment$MyTroopObserver
   protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
-      this.a.h();
+      this.a.j();
     }
   }
   
   protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
-      this.a.h();
+      this.a.j();
     }
   }
   
@@ -44,12 +44,12 @@ public class TroopFragment$MyTroopObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("contacts.fragment.TroopFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.d)
+    if (this.a.j)
     {
       localObject = this.a;
-      ((TroopFragment)localObject).d = false;
+      ((TroopFragment)localObject).j = false;
       if (TroopFragment.a((TroopFragment)localObject) != null) {
-        TroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+        TroopFragment.b(this.a).a(this.a.i(), paramBoolean, null);
       }
     }
     ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
@@ -58,13 +58,13 @@ public class TroopFragment$MyTroopObserver
   protected void onUpdateTroopNickname(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.a.h();
+      this.a.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

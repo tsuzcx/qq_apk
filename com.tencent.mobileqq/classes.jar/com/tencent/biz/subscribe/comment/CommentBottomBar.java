@@ -40,20 +40,20 @@ public class CommentBottomBar
   implements SimpleEventReceiver
 {
   public static final String a = "CommentBottomBar";
-  private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private CertifiedAccountMeta.StReply jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CommentPresenter jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-  private boolean jdField_a_of_type_Boolean = true;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean;
+  private ImageView b;
+  private ImageView c;
+  private ImageView d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private CommentPresenter h;
+  private CertifiedAccountMeta.StFeed i;
+  private CertifiedAccountMeta.StComment j;
+  private CertifiedAccountMeta.StReply k;
+  private boolean l = true;
+  private View.OnClickListener m;
+  private boolean n;
+  private boolean o;
   
   public CommentBottomBar(Context paramContext)
   {
@@ -68,8 +68,8 @@ public class CommentBottomBar
   public CommentBottomBar(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    f();
-    g();
+    j();
+    k();
   }
   
   private String a(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
@@ -78,7 +78,7 @@ public class CommentBottomBar
     {
       if (paramStReply.postUser != null)
       {
-        paramStReply = String.format(getContext().getString(2131692245), new Object[] { paramStReply.postUser.nick.get() });
+        paramStReply = String.format(getContext().getString(2131889232), new Object[] { paramStReply.postUser.nick.get() });
         paramStComment = paramStReply;
         if (paramStReply.length() > 10)
         {
@@ -93,7 +93,7 @@ public class CommentBottomBar
     }
     else if ((paramStComment != null) && (paramStComment.postUser != null))
     {
-      paramStReply = String.format(getContext().getString(2131692245), new Object[] { paramStComment.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131889232), new Object[] { paramStComment.postUser.nick.get() });
       paramStComment = paramStReply;
       if (paramStReply.length() > 10)
       {
@@ -110,11 +110,11 @@ public class CommentBottomBar
   
   private void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    ((ImageView)localObject).setBackgroundResource(2130839035);
+    ((ImageView)localObject).setBackgroundResource(2130839189);
     if (paramBoolean) {
       localObject = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     } else {
@@ -124,7 +124,7 @@ public class CommentBottomBar
     ((ScaleAnimation)localObject).setFillAfter(true);
     ((ScaleAnimation)localObject).setRepeatCount(0);
     ((ScaleAnimation)localObject).setAnimationListener(new CommentBottomBar.6(this, paramBoolean));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+    this.b.startAnimation((Animation)localObject);
   }
   
   private void c(int paramInt)
@@ -133,99 +133,94 @@ public class CommentBottomBar
     if (paramInt != 1) {
       bool = false;
     }
-    this.jdField_c_of_type_Boolean = bool;
-    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+    this.o = bool;
+    ImageView localImageView = this.c;
     if (paramInt == 0) {
-      paramInt = 2130839026;
+      paramInt = 2130839180;
     } else {
-      paramInt = 2130839027;
+      paramInt = 2130839181;
     }
     localImageView.setBackgroundResource(paramInt);
   }
   
-  private void f()
+  private void j()
   {
     setClickable(true);
-    int i = 0;
+    int i1 = 0;
     setOrientation(0);
     setBackgroundColor(-1);
     setGravity(16);
-    LayoutInflater.from(getContext()).inflate(2131558775, this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369445));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379506));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369494));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369328));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369327));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369447));
-    this.jdField_b_of_type_Boolean = ((String)VSConfigManager.a().a("is_open_sharing", "1")).equals("1");
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (!this.jdField_b_of_type_Boolean) {
-      i = 8;
+    LayoutInflater.from(getContext()).inflate(2131624395, this);
+    this.c = ((ImageView)findViewById(2131436501));
+    this.e = ((TextView)findViewById(2131448254));
+    this.b = ((ImageView)findViewById(2131436572));
+    this.d = ((ImageView)findViewById(2131436329));
+    this.f = ((TextView)findViewById(2131436328));
+    this.g = ((TextView)findViewById(2131436503));
+    this.n = ((String)VSConfigManager.a().a("is_open_sharing", "1")).equals("1");
+    ImageView localImageView = this.b;
+    if (!this.n) {
+      i1 = 8;
     }
-    localImageView.setVisibility(i);
+    localImageView.setVisibility(i1);
   }
   
-  private void g()
+  private void k()
   {
     SimpleEventBus.getInstance().registerReceiver(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new CommentBottomBar.1(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new CommentBottomBar.2(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new CommentBottomBar.3(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new CommentBottomBar.4(this));
+    this.c.setOnClickListener(new CommentBottomBar.1(this));
+    this.d.setOnClickListener(new CommentBottomBar.2(this));
+    this.b.setOnClickListener(new CommentBottomBar.3(this));
+    this.e.setOnClickListener(new CommentBottomBar.4(this));
   }
   
-  private void h()
+  private void l()
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = null;
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply = null;
-    a(getContext().getString(2131701707));
+    this.j = null;
+    this.k = null;
+    a(getContext().getString(2131899728));
   }
   
-  private void i()
+  private void m()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130847752);
+    this.b.setBackgroundResource(2130849413);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.8F, 1.0F, 0.8F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(600L);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setRepeatMode(2);
     localScaleAnimation.setRepeatCount(5);
     localScaleAnimation.setAnimationListener(new CommentBottomBar.7(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
-  }
-  
-  public CommentPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
+    this.b.startAnimation(localScaleAnimation);
   }
   
   public void a()
   {
-    CommentPresenter localCommentPresenter = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
+    CommentPresenter localCommentPresenter = this.h;
     if (localCommentPresenter != null) {
-      localCommentPresenter.h();
+      localCommentPresenter.q();
     }
   }
   
   @SuppressLint({"DefaultLocale", "SetTextI18n"})
   public void a(int paramInt)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.f;
     if (localTextView == null) {
       return;
     }
     if (paramInt > 0)
     {
       localTextView.setText(Formatter.a(paramInt));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.f.setVisibility(0);
       return;
     }
     localTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.f.setVisibility(8);
   }
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    CommentPresenter localCommentPresenter = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
+    CommentPresenter localCommentPresenter = this.h;
     if (localCommentPresenter != null) {
       localCommentPresenter.a(paramStFeed);
     }
@@ -238,35 +233,30 @@ public class CommentBottomBar
   
   public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, CommentPresenter.GetFeedResponseListener paramGetFeedResponseListener, ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter = new CommentPresenter(paramActivity, false, paramStFeed, paramGetFeedResponseListener, paramExtraTypeInfo);
+    this.h = new CommentPresenter(paramActivity, false, paramStFeed, paramGetFeedResponseListener, paramExtraTypeInfo);
   }
   
   public void a(String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.e;
     if (localTextView == null) {
       return;
     }
     localTextView.setText(paramString);
   }
   
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    Object localObject = this.i;
     if (localObject == null) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.l)
     {
-      QQToast.a(getContext(), HardCodeUtil.a(2131702360), 0).a();
+      QQToast.makeText(getContext(), HardCodeUtil.a(2131900364), 0).show();
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.l = false;
     localObject = new DoLikeRequest((CertifiedAccountMeta.StFeed)localObject);
     VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject, new CommentBottomBar.5(this));
   }
@@ -274,59 +264,57 @@ public class CommentBottomBar
   @SuppressLint({"DefaultLocale", "SetTextI18n"})
   public void b(int paramInt)
   {
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.g;
     if (localTextView == null) {
       return;
     }
     if (paramInt > 0)
     {
       localTextView.setText(Formatter.a(paramInt));
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.g.setVisibility(0);
       return;
     }
     localTextView.setText("");
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public boolean b()
-  {
-    CommentPresenter localCommentPresenter = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-    if (localCommentPresenter != null) {
-      return localCommentPresenter.b();
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    CommentPresenter localCommentPresenter = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-    if (localCommentPresenter != null) {
-      localCommentPresenter.f();
-    }
-    SimpleEventBus.getInstance().unRegisterReceiver(this);
+    this.g.setVisibility(8);
   }
   
   public boolean c()
   {
-    CommentPresenter localCommentPresenter = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-    return (localCommentPresenter != null) && (localCommentPresenter.c());
+    return this.o;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839035);
+    CommentPresenter localCommentPresenter = this.h;
+    if (localCommentPresenter != null) {
+      localCommentPresenter.h();
+    }
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
   
-  public boolean d()
+  public boolean e()
   {
-    CommentPresenter localCommentPresenter = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-    return (localCommentPresenter != null) && (localCommentPresenter.d());
+    CommentPresenter localCommentPresenter = this.h;
+    if (localCommentPresenter != null) {
+      return localCommentPresenter.n();
+    }
+    return false;
   }
   
-  public void e()
+  public void f()
+  {
+    this.b.clearAnimation();
+    this.b.setBackgroundResource(2130839189);
+  }
+  
+  public void g()
   {
     a(false);
+  }
+  
+  public CommentPresenter getCommentPresenter()
+  {
+    return this.h;
   }
   
   public ArrayList<Class> getEventClass()
@@ -337,16 +325,28 @@ public class CommentBottomBar
     return localArrayList;
   }
   
+  public boolean h()
+  {
+    CommentPresenter localCommentPresenter = this.h;
+    return (localCommentPresenter != null) && (localCommentPresenter.o());
+  }
+  
+  public boolean i()
+  {
+    CommentPresenter localCommentPresenter = this.h;
+    return (localCommentPresenter != null) && (localCommentPresenter.p());
+  }
+  
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    Object localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    Object localObject = this.i;
     if ((localObject != null) && ((paramSimpleBaseEvent instanceof PraisedUpdateEvents)))
     {
       localObject = ((CertifiedAccountMeta.StFeed)localObject).id.get();
       PraisedUpdateEvents localPraisedUpdateEvents = (PraisedUpdateEvents)paramSimpleBaseEvent;
       if (((String)localObject).equals(localPraisedUpdateEvents.mTargetFeedId))
       {
-        if (this.jdField_b_of_type_AndroidWidgetImageView == null) {
+        if (this.c == null) {
           return;
         }
         c(localPraisedUpdateEvents.mPraisedStatus);
@@ -363,30 +363,30 @@ public class CommentBottomBar
   
   public void setCurrentFeed(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.i = paramStFeed;
     c(paramStFeed.likeInfo.status.get());
     a(paramStFeed.commentCount.get());
     b(paramStFeed.likeInfo.count.get());
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.b != null)
     {
-      if ((this.jdField_b_of_type_Boolean) && (SubscribeUtils.a(paramStFeed.status.get())))
+      if ((this.n) && (SubscribeUtils.a(paramStFeed.status.get())))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.b.setVisibility(0);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.b.setVisibility(8);
     }
   }
   
   public void setShareClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.m = paramOnClickListener;
   }
   
   public void setTargetCommentAndReply(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = paramStComment;
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply = paramStReply;
+    this.j = paramStComment;
+    this.k = paramStReply;
     paramStComment = a(paramStComment, paramStReply);
     if (!TextUtils.isEmpty(paramStComment)) {
       a(paramStComment);

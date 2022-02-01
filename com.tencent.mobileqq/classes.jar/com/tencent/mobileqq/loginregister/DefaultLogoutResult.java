@@ -19,7 +19,7 @@ public class DefaultLogoutResult
     if ((paramAppRuntime instanceof QQAppInterface)) {
       ThemeUiPlugin.destroy((QQAppInterface)paramAppRuntime);
     }
-    ChatBackgroundManager.b();
+    ChatBackgroundManager.j();
     if (GlobalImageCache.a != null) {
       try
       {
@@ -30,7 +30,7 @@ public class DefaultLogoutResult
         QLog.e("DefaultLogoutResult", 1, "sImageCache.evictAll error : ", paramAppRuntime);
       }
     }
-    if (QQPlayerService.a())
+    if (QQPlayerService.b())
     {
       paramAppRuntime = new Intent();
       paramAppRuntime.setAction("qqplayer_exit_action");
@@ -40,7 +40,7 @@ public class DefaultLogoutResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DefaultLogoutResult
  * JD-Core Version:    0.7.0.1
  */

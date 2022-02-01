@@ -11,7 +11,7 @@ class RIJArticleInfoRepo$8
   
   public void run()
   {
-    if (!RIJArticleInfoRepo.a(this.this$0).remove(this.a))
+    if (!RIJArticleInfoRepo.b(this.this$0).remove(this.a))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("delete article fail ! title : ");
@@ -24,7 +24,7 @@ class RIJArticleInfoRepo$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJArticleInfoRepo.8
  * JD-Core Version:    0.7.0.1
  */

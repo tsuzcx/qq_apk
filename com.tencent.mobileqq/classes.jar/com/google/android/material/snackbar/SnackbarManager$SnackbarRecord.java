@@ -6,10 +6,10 @@ import java.lang.ref.WeakReference;
 
 class SnackbarManager$SnackbarRecord
 {
-  int jdField_a_of_type_Int;
   @NonNull
-  final WeakReference<SnackbarManager.Callback> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
+  final WeakReference<SnackbarManager.Callback> a;
+  int b;
+  boolean c;
   
   boolean a(@Nullable SnackbarManager.Callback paramCallback)
   {
@@ -18,7 +18,7 @@ class SnackbarManager$SnackbarRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.SnackbarManager.SnackbarRecord
  * JD-Core Version:    0.7.0.1
  */

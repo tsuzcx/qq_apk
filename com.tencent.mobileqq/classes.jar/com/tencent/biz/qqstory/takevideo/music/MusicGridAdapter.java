@@ -27,102 +27,96 @@ import java.util.ArrayList;
 public class MusicGridAdapter
   extends BaseAdapter
 {
-  protected static int a;
-  protected static int b;
-  protected static int c;
-  protected Context a;
-  protected GridView a;
-  protected QQStoryMusicInfo a;
-  protected ArrayList<QQStoryMusicInfo> a;
-  protected boolean a;
-  protected ArrayList<QQStoryMusicInfo> b;
+  protected static int g;
+  protected static int h;
+  protected static int i;
+  protected Context a = null;
+  protected ArrayList<QQStoryMusicInfo> b = null;
+  protected ArrayList<QQStoryMusicInfo> c = null;
+  protected QQStoryMusicInfo d = null;
+  protected GridView e = null;
+  protected boolean f = false;
   
   public MusicGridAdapter(Context paramContext, GridView paramGridView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = null;
-    this.jdField_a_of_type_AndroidWidgetGridView = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetGridView = paramGridView;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    jdField_a_of_type_Int = AIOUtils.b(80.0F, paramContext);
-    jdField_b_of_type_Int = AIOUtils.b(10.0F, paramContext);
-    c = AIOUtils.b(5.0F, paramContext);
-    this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(jdField_a_of_type_Int);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList.add(QQStoryMusicInfo.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo);
+    this.a = paramContext;
+    this.e = paramGridView;
+    this.f = paramBoolean1;
+    paramContext = this.a.getResources();
+    g = AIOUtils.b(80.0F, paramContext);
+    h = AIOUtils.b(10.0F, paramContext);
+    i = AIOUtils.b(5.0F, paramContext);
+    this.e.setColumnWidth(g);
+    this.c = new ArrayList();
+    this.c.add(QQStoryMusicInfo.a);
     if (!paramBoolean1) {
-      this.jdField_b_of_type_JavaUtilArrayList.add(QQStoryMusicInfo.jdField_b_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo);
+      this.c.add(QQStoryMusicInfo.b);
     }
     if (paramBoolean2) {
-      this.jdField_b_of_type_JavaUtilArrayList.add(QQStoryMusicInfo.c);
+      this.c.add(QQStoryMusicInfo.c);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(QQStoryMusicInfo paramQQStoryMusicInfo)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null) {
-      return localArrayList.indexOf(paramQQStoryMusicInfo);
-    }
-    return -1;
-  }
-  
-  public QQStoryMusicInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
   }
   
   public void a()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    int i;
+    ArrayList localArrayList = this.b;
+    int j;
     if ((localArrayList != null) && (localArrayList.contains(QQStoryMusicInfo.c)))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(QQStoryMusicInfo.c);
-      this.jdField_b_of_type_JavaUtilArrayList.remove(QQStoryMusicInfo.c);
-      i = 1;
+      this.b.remove(QQStoryMusicInfo.c);
+      this.c.remove(QQStoryMusicInfo.c);
+      j = 1;
     }
     else
     {
-      i = 0;
+      j = 0;
     }
-    if (i != 0) {
+    if (j != 0) {
       notifyDataSetChanged();
     }
   }
   
   public void a(QQStoryMusicInfo paramQQStoryMusicInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = paramQQStoryMusicInfo;
+    this.d = paramQQStoryMusicInfo;
   }
   
   public void a(ArrayList<QQStoryMusicInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = new ArrayList();
     if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.b.addAll(paramArrayList);
     }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(0, this.jdField_b_of_type_JavaUtilArrayList);
-    int i = getCount();
-    this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(i);
-    paramArrayList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
-    paramArrayList.width = (jdField_a_of_type_Int * i + (i - 1) * jdField_b_of_type_Int + this.jdField_a_of_type_AndroidWidgetGridView.getPaddingLeft() + this.jdField_a_of_type_AndroidWidgetGridView.getPaddingRight());
-    this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams(paramArrayList);
+    this.b.addAll(0, this.c);
+    int j = getCount();
+    this.e.setNumColumns(j);
+    paramArrayList = (LinearLayout.LayoutParams)this.e.getLayoutParams();
+    paramArrayList.width = (g * j + (j - 1) * h + this.e.getPaddingLeft() + this.e.getPaddingRight());
+    this.e.setLayoutParams(paramArrayList);
+  }
+  
+  public int b()
+  {
+    return this.c.size();
+  }
+  
+  public int b(QQStoryMusicInfo paramQQStoryMusicInfo)
+  {
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      return localArrayList.indexOf(paramQQStoryMusicInfo);
+    }
+    return -1;
+  }
+  
+  public QQStoryMusicInfo c()
+  {
+    return this.d;
   }
   
   public int getCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return 0;
     }
@@ -131,7 +125,7 @@ public class MusicGridAdapter
   
   public Object getItem(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList != null) {
       return localArrayList.get(paramInt);
     }
@@ -147,7 +141,7 @@ public class MusicGridAdapter
   {
     QQStoryMusicInfo localQQStoryMusicInfo = (QQStoryMusicInfo)getItem(paramInt);
     View localView = null;
-    int i;
+    int j;
     Object localObject2;
     Resources localResources;
     if (localQQStoryMusicInfo == null)
@@ -158,14 +152,14 @@ public class MusicGridAdapter
     {
       if (paramView == null)
       {
-        paramView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+        paramView = new TextView(this.a);
         paramView.setGravity(17);
         paramView.setSingleLine();
         paramView.setTextSize(12.0F);
-        i = jdField_a_of_type_Int;
-        paramView.setLayoutParams(new AbsListView.LayoutParams(i, i));
-        i = c;
-        paramView.setPadding(i, jdField_b_of_type_Int, i, 0);
+        j = g;
+        paramView.setLayoutParams(new AbsListView.LayoutParams(j, j));
+        j = i;
+        paramView.setPadding(j, h, j, 0);
         paramView.setEllipsize(TextUtils.TruncateAt.END);
         localView = paramView;
         localObject2 = paramView;
@@ -175,50 +169,50 @@ public class MusicGridAdapter
         localObject2 = (TextView)paramView;
         localView = paramView;
       }
-      ((TextView)localObject2).setText(localQQStoryMusicInfo.jdField_b_of_type_JavaLangString);
-      if (localQQStoryMusicInfo.jdField_b_of_type_Int == 0)
+      ((TextView)localObject2).setText(localQQStoryMusicInfo.e);
+      if (localQQStoryMusicInfo.k == 0)
       {
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130846888, 0, 0);
-        if (localQQStoryMusicInfo.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo)) {
-          localObject2.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166522), PorterDuff.Mode.MULTIPLY);
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130848440, 0, 0);
+        if (localQQStoryMusicInfo.equals(this.d)) {
+          localObject2.getCompoundDrawables()[1].setColorFilter(this.a.getResources().getColor(2131167379), PorterDuff.Mode.MULTIPLY);
         }
         ((TextView)localObject2).setTag(null);
       }
-      else if (localQQStoryMusicInfo.jdField_b_of_type_Int == 1)
+      else if (localQQStoryMusicInfo.k == 1)
       {
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130846892, 0, 0);
-        if (localQQStoryMusicInfo.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo)) {
-          localObject2.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166522), PorterDuff.Mode.MULTIPLY);
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130848444, 0, 0);
+        if (localQQStoryMusicInfo.equals(this.d)) {
+          localObject2.getCompoundDrawables()[1].setColorFilter(this.a.getResources().getColor(2131167379), PorterDuff.Mode.MULTIPLY);
         }
         ((TextView)localObject2).setTag(null);
       }
-      else if (localQQStoryMusicInfo.jdField_b_of_type_Int == 2)
+      else if (localQQStoryMusicInfo.k == 2)
       {
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130846885, 0, 0);
-        paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-        if ((paramView != null) && (paramView.jdField_b_of_type_Int == 2)) {
-          localObject2.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166522), PorterDuff.Mode.MULTIPLY);
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130848437, 0, 0);
+        paramView = this.d;
+        if ((paramView != null) && (paramView.k == 2)) {
+          localObject2.getCompoundDrawables()[1].setColorFilter(this.a.getResources().getColor(2131167379), PorterDuff.Mode.MULTIPLY);
         }
         ((TextView)localObject2).setTag(null);
       }
-      else if (localQQStoryMusicInfo.jdField_b_of_type_Int == 4)
+      else if (localQQStoryMusicInfo.k == 4)
       {
-        i = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 36.0F);
-        if (localQQStoryMusicInfo.jdField_a_of_type_Int > 0)
+        j = (int)DisplayUtils.a(this.a, 36.0F);
+        if (localQQStoryMusicInfo.j > 0)
         {
-          paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(localQQStoryMusicInfo.jdField_a_of_type_Int);
-          paramView.setBounds(0, 0, i, i);
+          paramView = this.a.getResources().getDrawable(localQQStoryMusicInfo.j);
+          paramView.setBounds(0, 0, j, j);
           ((TextView)localObject2).setCompoundDrawables(null, paramView, null, null);
         }
         else
         {
-          localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+          localResources = this.a.getResources();
         }
       }
     }
     try
     {
-      paramView = localQQStoryMusicInfo.g;
+      paramView = localQQStoryMusicInfo.m;
       if (TextUtils.isEmpty(paramView)) {
         break label609;
       }
@@ -259,8 +253,8 @@ public class MusicGridAdapter
     if (localObject1 == null)
     {
       paramView = URLDrawable.URLDrawableOptions.obtain();
-      paramView.mFailedDrawable = localResources.getDrawable(2130847706);
-      paramView.mLoadingDrawable = localResources.getDrawable(2130847706);
+      paramView.mFailedDrawable = localResources.getDrawable(2130849366);
+      paramView.mLoadingDrawable = localResources.getDrawable(2130849366);
       paramView = URLDrawable.getDrawable(localFile, paramView);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("drawable not null: ");
@@ -272,40 +266,40 @@ public class MusicGridAdapter
       QLog.e("blessVoiceIcon", 1, new Object[] { Boolean.valueOf(bool) });
       break label630;
       label597:
-      paramView = localResources.getDrawable(2130847706);
+      paramView = localResources.getDrawable(2130849366);
       break label630;
       label609:
-      paramView = localResources.getDrawable(2130847706);
+      paramView = localResources.getDrawable(2130849366);
       break label630;
-      paramView = localResources.getDrawable(2130847706);
+      paramView = localResources.getDrawable(2130849366);
     }
     label630:
-    paramView.setBounds(0, 0, i, i);
+    paramView.setBounds(0, 0, j, j);
     ((TextView)localObject2).setCompoundDrawables(null, paramView, null, null);
-    if (localQQStoryMusicInfo.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo))
+    if (localQQStoryMusicInfo.equals(this.d))
     {
-      localObject2.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166523), PorterDuff.Mode.SRC_ATOP);
+      localObject2.getCompoundDrawables()[1].setColorFilter(this.a.getResources().getColor(2131167380), PorterDuff.Mode.SRC_ATOP);
       break label734;
-      if (localQQStoryMusicInfo.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo)) {
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130846887, 0, 0);
+      if (localQQStoryMusicInfo.equals(this.d)) {
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130848439, 0, 0);
       } else {
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130846886, 0, 0);
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 2130848438, 0, 0);
       }
       ((TextView)localObject2).setTag(localQQStoryMusicInfo);
     }
     label734:
-    if (localQQStoryMusicInfo.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo))
+    if (localQQStoryMusicInfo.equals(this.d))
     {
-      ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166522));
+      ((TextView)localObject2).setTextColor(this.a.getResources().getColor(2131167379));
     }
     else
     {
-      if (localQQStoryMusicInfo.jdField_b_of_type_Int == 2)
+      if (localQQStoryMusicInfo.k == 2)
       {
-        paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-        if ((paramView != null) && (paramView.jdField_b_of_type_Int == 2))
+        paramView = this.d;
+        if ((paramView != null) && (paramView.k == 2))
         {
-          ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166522));
+          ((TextView)localObject2).setTextColor(this.a.getResources().getColor(2131167379));
           break label828;
         }
       }

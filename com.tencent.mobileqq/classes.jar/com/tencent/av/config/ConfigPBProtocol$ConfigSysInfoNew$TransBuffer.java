@@ -2,8 +2,8 @@ package com.tencent.av.config;
 
 class ConfigPBProtocol$ConfigSysInfoNew$TransBuffer
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
+  int a = 0;
+  String b = "";
   
   ConfigPBProtocol$ConfigSysInfoNew$TransBuffer(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew) {}
 }

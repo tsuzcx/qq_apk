@@ -6,7 +6,7 @@ import android.view.View;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager.Builder;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler;
 import com.tencent.mobileqq.kandian.glue.video.VideoPlayManager;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
@@ -34,7 +34,7 @@ class RIJFrameworkHandleClick$2
     if ((str1 != null) && (!localAbsBaseArticleInfo.unowned))
     {
       localObject = this.a;
-      RIJFrameworkHandleClick.a((RIJFrameworkHandleClick)localObject, str1, RIJFrameworkHandleClick.a((RIJFrameworkHandleClick)localObject).a().a());
+      RIJFrameworkHandleClick.a((RIJFrameworkHandleClick)localObject, str1, RIJFrameworkHandleClick.a((RIJFrameworkHandleClick)localObject).a().A());
     }
     else if (QLog.isColorLevel())
     {
@@ -46,29 +46,28 @@ class RIJFrameworkHandleClick$2
     Object localObject = localAbsBaseArticleInfo.mVideoVid;
     String str2 = String.valueOf(localAbsBaseArticleInfo.innerUniqueID);
     long l;
-    if (RIJFrameworkHandleClick.a(this.a).a().a() == null) {
+    if (RIJFrameworkHandleClick.a(this.a).a().z() == null) {
       l = 0L;
     } else {
-      l = RIJFrameworkHandleClick.a(this.a).a().a().b();
+      l = RIJFrameworkHandleClick.a(this.a).a().z().f();
     }
-    str2 = new VideoR5.Builder(null, str1, (String)localObject, str2, l, localAbsBaseArticleInfo.mVideoDuration * 1000).a(RIJFrameworkHandleClick.a(this.a).a().b()).a().a();
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    str2 = new VideoR5.Builder(null, str1, (String)localObject, str2, l, localAbsBaseArticleInfo.mVideoDuration * 1000).a(RIJFrameworkHandleClick.a(this.a).a().B()).b().a();
     if (!TextUtils.isEmpty(localAbsBaseArticleInfo.innerUniqueID)) {
       localObject = String.valueOf(localAbsBaseArticleInfo.innerUniqueID);
     } else {
       localObject = "0";
     }
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str1, "0X8007410", "0X8007410", 0, 0, "2", "", (String)localObject, str2, false);
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).setAdapterMonitorClickAdParams(RIJFrameworkHandleClick.a(this.a).a().a(), localAbsBaseArticleInfo, RIJFrameworkHandleClick.a(this.a).a().a(), 56);
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)RIJFrameworkHandleClick.a(this.a).a().a(), localAbsBaseArticleInfo, RIJFrameworkHandleClick.a(this.a).a().a(), 56, false, null);
-    if (paramView.getId() == 2131361884) {
-      VideoHandler.a(paramView);
+    PublicAccountReportUtils.a(null, str1, "0X8007410", "0X8007410", 0, 0, "2", "", (String)localObject, str2, false);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).setAdapterMonitorClickAdParams(RIJFrameworkHandleClick.a(this.a).a().A(), localAbsBaseArticleInfo, RIJFrameworkHandleClick.a(this.a).a().v(), 56);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)RIJFrameworkHandleClick.a(this.a).a().A(), localAbsBaseArticleInfo, RIJFrameworkHandleClick.a(this.a).a().v(), 56, false, null);
+    if (paramView.getId() == 2131427438) {
+      VideoHandler.b(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.click.RIJFrameworkHandleClick.2
  * JD-Core Version:    0.7.0.1
  */

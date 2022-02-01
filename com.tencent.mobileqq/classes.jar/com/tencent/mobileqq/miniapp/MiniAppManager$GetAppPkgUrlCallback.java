@@ -15,19 +15,19 @@ class MiniAppManager$GetAppPkgUrlCallback
     }
     if (paramBoolean)
     {
-      IDownloader localIDownloader = paramMiniAppManager.a(paramMiniAppInfo.f);
+      IDownloader localIDownloader = paramMiniAppManager.a(paramMiniAppInfo.j);
       if (localIDownloader != null)
       {
         MiniAppManager.a(paramMiniAppManager).a(paramMiniAppInfo, localIDownloader);
         return;
       }
     }
-    MiniAppManager.a(paramMiniAppManager, paramMiniAppInfo.jdField_a_of_type_JavaLangString, paramMiniAppInfo.jdField_a_of_type_Int, 1002);
+    MiniAppManager.a(paramMiniAppManager, paramMiniAppInfo.a, paramMiniAppInfo.b, 1002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppManager.GetAppPkgUrlCallback
  * JD-Core Version:    0.7.0.1
  */

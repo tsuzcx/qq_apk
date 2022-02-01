@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.tkd.R.string;
 import com.tencent.tkd.topicsdk.bean.Media;
+import com.tencent.tkd.topicsdk.common.FormatUtils;
 import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import java.util.Arrays;
 import kotlin.Metadata;
@@ -28,19 +29,15 @@ final class BottomSelectorLayout$addMediaPanel$5
   {
     Intrinsics.checkParameterIsNotNull(paramMedia, "it");
     Object[] arrayOfObject;
-    long l1;
-    long l2;
     if (this.$panelType == PanelType.PHOTO)
     {
       paramMedia = StringCompanionObject.INSTANCE;
       paramMedia = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context");
-      paramMedia = paramMedia.getResources().getString(R.string.E);
-      Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context.resources.getStr…photo_reach_max_size_tip)");
+      paramMedia = paramMedia.getResources().getString(R.string.r);
+      Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context.resources.getStr…g.image_limit_size_toast)");
       arrayOfObject = new Object[1];
-      l1 = this.$maxMediaSize;
-      l2 = 1024;
-      arrayOfObject[0] = Long.valueOf(l1 / l2 / l2);
+      arrayOfObject[0] = FormatUtils.a.b(this.$maxSizeInByte);
       paramMedia = String.format(paramMedia, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "java.lang.String.format(format, *args)");
       TopicSDKHelperKt.a(paramMedia, false, null, 6, null);
@@ -51,12 +48,10 @@ final class BottomSelectorLayout$addMediaPanel$5
       paramMedia = StringCompanionObject.INSTANCE;
       paramMedia = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context");
-      paramMedia = paramMedia.getResources().getString(R.string.am);
+      paramMedia = paramMedia.getResources().getString(R.string.Y);
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context.resources.getStr…g.video_limit_size_toast)");
       arrayOfObject = new Object[1];
-      l1 = this.$maxMediaSize;
-      l2 = 1024;
-      arrayOfObject[0] = Long.valueOf(l1 / l2 / l2);
+      arrayOfObject[0] = FormatUtils.a.b(this.$maxSizeInByte);
       paramMedia = String.format(paramMedia, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "java.lang.String.format(format, *args)");
       TopicSDKHelperKt.a(paramMedia, false, null, 6, null);
@@ -65,7 +60,7 @@ final class BottomSelectorLayout$addMediaPanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addMediaPanel.5
  * JD-Core Version:    0.7.0.1
  */

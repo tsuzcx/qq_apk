@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings.Secure;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -68,7 +69,7 @@ public class AVDeviceHelper
       if (paramContext == null) {
         break label68;
       }
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
     }
     catch (Exception paramContext)
     {

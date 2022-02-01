@@ -10,10 +10,10 @@ public class QavSoDownloadHandler
 {
   public QavSoDownloadHandler(QQAppInterface paramQQAppInterface)
   {
-    super(e(), paramQQAppInterface);
+    super(w(), paramQQAppInterface);
   }
   
-  public static String e()
+  public static String w()
   {
     if (VcSystemInfo.getCpuArchitecture() <= 2) {
       return "qq.android.qav.so_665";
@@ -26,14 +26,14 @@ public class QavSoDownloadHandler
     return QavSoData.class;
   }
   
-  public String b()
+  public String d()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

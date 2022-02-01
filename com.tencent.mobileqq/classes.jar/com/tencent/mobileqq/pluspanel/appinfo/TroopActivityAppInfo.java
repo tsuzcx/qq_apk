@@ -15,7 +15,7 @@ public class TroopActivityAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842540;
+    return 2130843493;
   }
   
   public int getAppID()
@@ -28,23 +28,23 @@ public class TroopActivityAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131689489);
+    return BaseApplicationImpl.getContext().getString(2131886097);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     paramPlusPanelViewModel = new Bundle();
-    paramPlusPanelViewModel.putString("troop_uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramPlusPanelViewModel.putString("troop_uin", paramSessionInfo.b);
     paramPlusPanelViewModel.putBoolean("hide_operation_bar", true);
     paramPlusPanelViewModel.putBoolean("hide_more_button", true);
     paramPlusPanelViewModel.putBoolean("isScreenOrientationPortrait", true);
-    TroopUtils.a(paramBaseChatPie.a, paramBaseChatPie.a(), paramPlusPanelViewModel);
-    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8005CB8", paramSessionInfo.jdField_a_of_type_Int);
+    TroopUtils.a(paramBaseChatPie.d, paramBaseChatPie.aX(), paramPlusPanelViewModel);
+    AIOPanelUtiles.a(paramBaseChatPie.d, "0X8005CB8", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopActivityAppInfo
  * JD-Core Version:    0.7.0.1
  */

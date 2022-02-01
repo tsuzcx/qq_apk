@@ -7,6 +7,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.AIOTipsController;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -20,76 +21,39 @@ import mqq.os.MqqHandler;
 public class TipsManager
   implements Handler.Callback, TipsConstants
 {
-  private AIOTipsController jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  TipsBarTask jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XPanelContainer jdField_a_of_type_ComTencentWidgetXPanelContainer;
-  private ArrayList<TipsTask> jdField_a_of_type_JavaUtilArrayList;
-  private Observer jdField_a_of_type_JavaUtilObserver;
-  protected final MqqHandler a;
+  TipsBarTask b;
+  protected final MqqHandler c = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+  private final AIOContext d;
+  private QQAppInterface e;
+  private BaseSessionInfo f;
+  private AIOTipsController g;
+  private XPanelContainer h;
+  private ArrayList<TipsTask> i;
+  private Observer j;
   
-  public TipsManager(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, AIOTipsController paramAIOTipsController, XPanelContainer paramXPanelContainer)
+  public TipsManager(AIOContext paramAIOContext, QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, AIOTipsController paramAIOTipsController, XPanelContainer paramXPanelContainer)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController = paramAIOTipsController;
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
-  }
-  
-  public int a()
-  {
-    TipsBarTask localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask;
-    if (localTipsBarTask != null) {
-      return localTipsBarTask.b();
-    }
-    return -1;
+    this.e = paramQQAppInterface;
+    this.f = paramBaseSessionInfo;
+    this.g = paramAIOTipsController;
+    this.h = paramXPanelContainer;
+    this.d = paramAIOContext;
   }
   
   public TipsBarTask a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask;
-  }
-  
-  public void a()
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController;
-      if (localObject != null) {
-        ((AIOTipsController)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask = null;
-      a(2000, new Object[0]);
-      return;
-    }
-    Object localObject = new TipsManager.2(this);
-    this.jdField_a_of_type_MqqOsMqqHandler.post((Runnable)localObject);
+    return this.b;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.i;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         ((TipsTask)((Iterator)localObject).next()).a(paramInt, paramVarArgs);
       }
-    }
-  }
-  
-  public void a(TipsTask paramTipsTask)
-  {
-    if (paramTipsTask == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramTipsTask)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramTipsTask);
     }
   }
   
@@ -104,10 +68,10 @@ public class TipsManager
         }
         return false;
       }
-      paramVarArgs = paramGrayTipsTask.a(paramVarArgs);
+      paramVarArgs = paramGrayTipsTask.a_(paramVarArgs);
       if (paramVarArgs != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramVarArgs, paramVarArgs.selfuin);
+        this.e.getMessageFacade().a(paramVarArgs, paramVarArgs.selfuin);
         if (QLog.isColorLevel())
         {
           paramVarArgs = new StringBuilder();
@@ -145,13 +109,13 @@ public class TipsManager
       if (Thread.currentThread() == Looper.getMainLooper().getThread())
       {
         paramVarArgs = paramTipsBarTask.a(paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController.a(paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask, paramTipsBarTask);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask = paramTipsBarTask;
+        this.g.a(paramVarArgs, this.b, paramTipsBarTask);
+        this.b = paramTipsBarTask;
       }
       else
       {
         paramVarArgs = new TipsManager.1(this, paramTipsBarTask, paramVarArgs);
-        this.jdField_a_of_type_MqqOsMqqHandler.post(paramVarArgs);
+        this.c.post(paramVarArgs);
       }
       if (QLog.isColorLevel())
       {
@@ -174,38 +138,38 @@ public class TipsManager
     ((StringBuilder)localObject1).append(paramTipsTask.b());
     ((StringBuilder)localObject1).append("");
     Object localObject2 = ((StringBuilder)localObject1).toString();
-    Object localObject3 = paramTipsTask.a();
+    Object localObject3 = paramTipsTask.c();
     boolean bool1 = true;
     boolean bool2 = true;
-    int i = -1;
+    int k = -1;
     localObject1 = localObject2;
-    int j = i;
+    int m = k;
     if (localObject3 != null)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask;
+      localObject1 = this.b;
       if (localObject1 != null) {
-        i = ((TipsBarTask)localObject1).b();
+        k = ((TipsBarTask)localObject1).b();
       }
       localObject1 = localObject2;
-      j = 0;
+      m = 0;
       bool1 = bool2;
-      while (j < localObject3.length)
+      while (m < localObject3.length)
       {
         localObject2 = localObject1;
-        if (i == localObject3[j])
+        if (k == localObject3[m])
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append(", not allowed by excludeType: ");
-          ((StringBuilder)localObject2).append(localObject3[j]);
+          ((StringBuilder)localObject2).append(localObject3[m]);
           ((StringBuilder)localObject2).append(" ");
           localObject2 = ((StringBuilder)localObject2).toString();
           bool1 = false;
         }
-        j += 1;
+        m += 1;
         localObject1 = localObject2;
       }
-      j = i;
+      m = k;
     }
     localObject2 = localObject1;
     bool2 = bool1;
@@ -215,7 +179,7 @@ public class TipsManager
       bool2 = bool1;
       if ((paramTipsTask instanceof TipsBarTask))
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask;
+        localObject3 = this.b;
         localObject2 = localObject1;
         bool2 = bool1;
         if (localObject3 != null)
@@ -241,25 +205,63 @@ public class TipsManager
       paramTipsTask.append(" | ");
       paramTipsTask.append((String)localObject2);
       paramTipsTask.append("|curTipsBarType");
-      paramTipsTask.append(j);
+      paramTipsTask.append(m);
       QLog.d("TipsManager", 2, paramTipsTask.toString());
     }
     return bool2;
   }
   
-  public void b()
+  public int b()
+  {
+    TipsBarTask localTipsBarTask = this.b;
+    if (localTipsBarTask != null) {
+      return localTipsBarTask.b();
+    }
+    return -1;
+  }
+  
+  public void b(TipsTask paramTipsTask)
+  {
+    if (paramTipsTask == null) {
+      return;
+    }
+    if (this.i == null) {
+      this.i = new ArrayList();
+    }
+    if (!this.i.contains(paramTipsTask)) {
+      this.i.add(paramTipsTask);
+    }
+  }
+  
+  public void c()
+  {
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      localObject = this.g;
+      if (localObject != null) {
+        ((AIOTipsController)localObject).a(this.b);
+      }
+      this.b = null;
+      a(2000, new Object[0]);
+      return;
+    }
+    Object localObject = new TipsManager.2(this);
+    this.c.post((Runnable)localObject);
+  }
+  
+  public void d()
   {
     a(1004, new Object[0]);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.i;
     if (localObject != null) {
       ((ArrayList)localObject).clear();
     }
-    a();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController;
+    c();
+    localObject = this.g;
     if (localObject != null) {
-      ((AIOTipsController)localObject).a();
+      ((AIOTipsController)localObject).b();
     }
-    localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    localObject = this.c;
     if (localObject != null) {
       ((MqqHandler)localObject).removeCallbacksAndMessages(null);
     }
@@ -272,7 +274,7 @@ public class TipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TipsManager
  * JD-Core Version:    0.7.0.1
  */

@@ -47,58 +47,32 @@ public class HealthReplyCommentActivity
   extends QIphoneTitleBarActivity
   implements TextWatcher, View.OnClickListener, EmoticonCallback, InputMethodRelativeLayout.onSizeChangedListenner
 {
-  public static Editable.Factory a;
-  public static final HashMap<String, HealthReplyCommentActivity.PublishDataCacheEntity> a;
-  protected int a;
-  protected long a;
-  protected ViewGroup a;
-  protected Button a;
-  protected EditText a;
-  protected FrameLayout a;
-  protected ImageButton a;
-  protected InputMethodRelativeLayout a;
-  protected Boolean a;
-  protected String a;
-  protected boolean a;
-  protected int b;
-  protected String b;
-  protected boolean b;
-  protected int c;
-  protected String c;
-  protected int d;
-  protected String d;
-  protected String e = null;
-  protected String f = "";
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_AndroidTextEditable$Factory = new HealthReplyCommentActivity.3();
-  }
-  
-  public HealthReplyCommentActivity()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetImageButton = null;
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidWidgetEditText = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public static final HashMap<String, HealthReplyCommentActivity.PublishDataCacheEntity> a = new HashMap();
+  public static Editable.Factory v = new HealthReplyCommentActivity.3();
+  protected String b = null;
+  protected String c = null;
+  protected InputMethodRelativeLayout d = null;
+  protected ImageButton e = null;
+  protected Button f = null;
+  protected FrameLayout g = null;
+  protected ViewGroup h = null;
+  protected EditText i = null;
+  protected boolean j = false;
+  protected int k = 0;
+  protected int l = 0;
+  protected String m = null;
+  protected String n = null;
+  protected String o = null;
+  protected long p = 0L;
+  protected int q;
+  protected int r;
+  protected String s = "";
+  protected Boolean t = Boolean.valueOf(false);
+  protected boolean u = false;
   
   public static IEmoticonMainPanel a(QBaseActivity paramQBaseActivity, ViewGroup paramViewGroup, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
   {
-    paramEditText.setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
+    paramEditText.setEditableFactory(v);
     paramEditText = ((IEmoticonMainPanelService)paramQBaseActivity.getAppRuntime().getRuntimeService(IEmoticonMainPanelService.class, "tool")).newBuilder(paramQBaseActivity, 1008).setCallBack(paramEmoticonCallback).setOnlySysAndEmoji(true).setToastOffset(paramQBaseActivity.getTitleBarHeight()).create();
     paramEditText.hideAllTabs();
     paramEditText.setOnlySysEmotionEnable(true);
@@ -107,74 +81,19 @@ public class HealthReplyCommentActivity
     return paramEditText;
   }
   
-  public static String a(EditText paramEditText)
-  {
-    if (paramEditText == null) {
-      return null;
-    }
-    if ((paramEditText.getEditableText() instanceof QQTextBuilder))
-    {
-      QQTextBuilder localQQTextBuilder = (QQTextBuilder)paramEditText.getEditableText();
-      if (localQQTextBuilder != null)
-      {
-        int j = localQQTextBuilder.length();
-        Object localObject1 = new char[j];
-        int i = 0;
-        localQQTextBuilder.getChars(0, j, (char[])localObject1, 0);
-        paramEditText = new StringBuilder();
-        paramEditText.append((char[])localObject1);
-        localObject1 = (EmoticonSpan[])localQQTextBuilder.getSpans(0, j, EmoticonSpan.class);
-        if (((localQQTextBuilder instanceof Spanned)) && (Build.VERSION.SDK_INT >= 24)) {
-          Arrays.sort((Object[])localObject1, new HealthReplyCommentActivity.2(localQQTextBuilder));
-        }
-        int i1 = localObject1.length;
-        int k;
-        for (j = 0; i < i1; j = k)
-        {
-          Object localObject2 = localObject1[i];
-          int m;
-          int n;
-          if (((EmoticonSpan)localObject2).emojiType == 1)
-          {
-            m = localQQTextBuilder.getSpanStart(localObject2);
-            n = localQQTextBuilder.getSpanEnd(localObject2);
-            localObject2 = QQSysFaceUtil.getFaceDescription(((EmoticonSpan)localObject2).index & 0x7FFFFFFF);
-            paramEditText.replace(m + j, n + j, (String)localObject2);
-          }
-          for (k = ((String)localObject2).length();; k = ((String)localObject2).length())
-          {
-            k = j + (k - (n - m));
-            break;
-            k = j;
-            if (((EmoticonSpan)localObject2).emojiType != 2) {
-              break;
-            }
-            m = localQQTextBuilder.getSpanStart(localObject2);
-            n = localQQTextBuilder.getSpanEnd(localObject2);
-            localObject2 = ((EmoticonSpan)localObject2).getDescription();
-            paramEditText.replace(m + j, n + j, (String)localObject2);
-          }
-          i += 1;
-        }
-        return paramEditText.toString();
-      }
-    }
-    return paramEditText.getEditableText().toString();
-  }
-  
   public static void a(EditText paramEditText)
   {
     try
     {
       Editable localEditable = paramEditText.getText();
-      int j = paramEditText.getSelectionStart();
-      int i = 0;
-      if (j > 1) {
-        i = TextUtils.getOffsetBefore(paramEditText.getText(), j);
+      int i2 = paramEditText.getSelectionStart();
+      int i1 = 0;
+      if (i2 > 1) {
+        i1 = TextUtils.getOffsetBefore(paramEditText.getText(), i2);
       }
-      if (j != i)
+      if (i2 != i1)
       {
-        localEditable.delete(Math.min(j, i), Math.max(j, i));
+        localEditable.delete(Math.min(i2, i1), Math.max(i2, i1));
         return;
       }
     }
@@ -188,23 +107,78 @@ public class HealthReplyCommentActivity
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837969);
-      InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(true);
+      this.g.setBackgroundResource(2130837993);
+      InputMethodUtil.b(this.i);
+      this.h.setVisibility(0);
+      this.e.setSelected(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
+    this.g.setBackgroundColor(0);
+    this.h.setVisibility(8);
+    this.e.setSelected(false);
+  }
+  
+  public static String b(EditText paramEditText)
+  {
+    if (paramEditText == null) {
+      return null;
+    }
+    if ((paramEditText.getEditableText() instanceof QQTextBuilder))
+    {
+      QQTextBuilder localQQTextBuilder = (QQTextBuilder)paramEditText.getEditableText();
+      if (localQQTextBuilder != null)
+      {
+        int i2 = localQQTextBuilder.length();
+        Object localObject1 = new char[i2];
+        int i1 = 0;
+        localQQTextBuilder.getChars(0, i2, (char[])localObject1, 0);
+        paramEditText = new StringBuilder();
+        paramEditText.append((char[])localObject1);
+        localObject1 = (EmoticonSpan[])localQQTextBuilder.getSpans(0, i2, EmoticonSpan.class);
+        if (((localQQTextBuilder instanceof Spanned)) && (Build.VERSION.SDK_INT >= 24)) {
+          Arrays.sort((Object[])localObject1, new HealthReplyCommentActivity.2(localQQTextBuilder));
+        }
+        int i6 = localObject1.length;
+        int i3;
+        for (i2 = 0; i1 < i6; i2 = i3)
+        {
+          Object localObject2 = localObject1[i1];
+          int i4;
+          int i5;
+          if (((EmoticonSpan)localObject2).emojiType == 1)
+          {
+            i4 = localQQTextBuilder.getSpanStart(localObject2);
+            i5 = localQQTextBuilder.getSpanEnd(localObject2);
+            localObject2 = QQSysFaceUtil.getFaceDescription(((EmoticonSpan)localObject2).index & 0x7FFFFFFF);
+            paramEditText.replace(i4 + i2, i5 + i2, (String)localObject2);
+          }
+          for (i3 = ((String)localObject2).length();; i3 = ((String)localObject2).length())
+          {
+            i3 = i2 + (i3 - (i5 - i4));
+            break;
+            i3 = i2;
+            if (((EmoticonSpan)localObject2).emojiType != 2) {
+              break;
+            }
+            i4 = localQQTextBuilder.getSpanStart(localObject2);
+            i5 = localQQTextBuilder.getSpanEnd(localObject2);
+            localObject2 = ((EmoticonSpan)localObject2).getDescription();
+            paramEditText.replace(i4 + i2, i5 + i2, (String)localObject2);
+          }
+          i1 += 1;
+        }
+        return paramEditText.toString();
+      }
+    }
+    return paramEditText.getEditableText().toString();
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.u)
     {
-      String str = a(this.jdField_a_of_type_AndroidWidgetEditText).replace("\n", " ");
-      this.jdField_a_of_type_Boolean = true;
+      String str = b(this.i).replace("\n", " ");
+      this.j = true;
       Intent localIntent = new Intent();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("\"");
@@ -218,15 +192,15 @@ public class HealthReplyCommentActivity
   
   protected void a(JSONObject paramJSONObject)
   {
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("bid", "");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("pid", "");
+    this.c = paramJSONObject.optString("bid", "");
+    this.b = paramJSONObject.optString("pid", "");
     paramJSONObject = new StringBuilder();
     paramJSONObject.append(getAppRuntime().getCurrentAccountUin());
     paramJSONObject.append("-");
-    paramJSONObject.append(this.jdField_b_of_type_JavaLangString);
+    paramJSONObject.append(this.c);
     paramJSONObject.append("-");
-    paramJSONObject.append(this.jdField_a_of_type_JavaLangString);
-    this.e = paramJSONObject.toString();
+    paramJSONObject.append(this.b);
+    this.o = paramJSONObject.toString();
   }
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
@@ -238,70 +212,70 @@ public class HealthReplyCommentActivity
   
   public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    String str = a(this.jdField_a_of_type_AndroidWidgetEditText);
-    int i;
+    this.q = this.i.getSelectionStart();
+    this.r = this.i.getSelectionEnd();
+    String str = b(this.i);
+    int i1;
     if (str == null) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = str.length();
+      i1 = str.length();
     }
-    int j = this.jdField_b_of_type_Int;
-    if ((j > 0) && (i > j))
+    int i2 = this.l;
+    if ((i2 > 0) && (i1 > i2))
     {
-      j = i - j;
-      paramEditable.delete(this.jdField_c_of_type_Int - j, this.jdField_d_of_type_Int);
-      this.jdField_c_of_type_Int -= j;
-      this.jdField_d_of_type_Int -= j;
-      i = j;
-      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue())
+      i2 = i1 - i2;
+      paramEditable.delete(this.q - i2, this.r);
+      this.q -= i2;
+      this.r -= i2;
+      i1 = i2;
+      if (!this.t.booleanValue())
       {
-        QQToast.a(this, this.f, 0).b(getTitleBarHeight());
-        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-        i = j;
+        QQToast.makeText(this, this.s, 0).show(getTitleBarHeight());
+        this.t = Boolean.valueOf(true);
+        i1 = i2;
       }
     }
     else
     {
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-      i = 0;
+      this.t = Boolean.valueOf(false);
+      i1 = 0;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_c_of_type_Int + i);
+    this.i.setSelection(this.q + i1);
   }
   
   protected void b()
   {
     try
     {
-      setContentView(2131558480);
+      setContentView(2131624024);
       hideTitleBar();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)findViewById(2131376818));
-      findViewById(2131379111).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368596));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366318));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377197));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369784));
-      this.jdField_a_of_type_AndroidViewViewGroup = a(this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetEditText, this).getView();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.setOnSizeChangedListenner(this);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton.setSelected(true);
-      this.jdField_a_of_type_AndroidWidgetButton.setPressed(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0))
+      this.d = ((InputMethodRelativeLayout)findViewById(2131445148));
+      findViewById(2131447846).setOnClickListener(this);
+      this.e = ((ImageButton)findViewById(2131435508));
+      this.i = ((EditText)findViewById(2131432618));
+      this.f = ((Button)findViewById(2131445580));
+      this.g = ((FrameLayout)findViewById(2131436914));
+      this.h = a(this, this.g, this.i, this).getView();
+      this.d.setOnSizeChangedListenner(this);
+      this.e.setOnClickListener(this);
+      this.f.setSelected(true);
+      this.f.setPressed(false);
+      this.f.setOnClickListener(this);
+      this.i.addTextChangedListener(this);
+      if ((TextUtils.isEmpty(this.m)) || (this.k <= 0) || (this.l <= 0))
       {
-        this.jdField_a_of_type_Int = 3;
-        this.jdField_b_of_type_Int = 700;
-        this.jdField_c_of_type_JavaLangString = getString(2131696243, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) });
+        this.k = 3;
+        this.l = 700;
+        this.m = getString(2131894009, new Object[] { Integer.valueOf(this.k), Integer.valueOf(this.l) });
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_c_of_type_JavaLangString);
-      if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)
+      this.i.setHint(this.m);
+      if (this.i.getText().length() <= 0)
       {
-        EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+        EditText localEditText = this.i;
         String str;
-        if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-          str = this.jdField_d_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(this.n)) {
+          str = this.n;
         } else {
           str = null;
         }
@@ -324,23 +298,23 @@ public class HealthReplyCommentActivity
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reply save key = ");
-      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(this.o);
       QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty(this.e)) {
+    if (TextUtils.isEmpty(this.o)) {
       return;
     }
     Object localObject = new HealthReplyCommentActivity.PublishDataCacheEntity();
-    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-    jdField_a_of_type_JavaUtilHashMap.put(this.e, localObject);
+    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).a = this.k;
+    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).b = this.l;
+    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).c = this.m;
+    ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).d = this.i.getEditableText().toString();
+    a.put(this.o, localObject);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reply save key = ");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.o);
       localStringBuilder.append(", data = ");
       localStringBuilder.append(localObject);
       QLog.d("IphoneTitleBarActivity", 2, localStringBuilder.toString());
@@ -353,35 +327,35 @@ public class HealthReplyCommentActivity
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("repky restore key = ");
-      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(this.o);
       QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty(this.e)) {
+    if (TextUtils.isEmpty(this.o)) {
       return;
     }
-    Object localObject = (HealthReplyCommentActivity.PublishDataCacheEntity)jdField_a_of_type_JavaUtilHashMap.get(this.e);
+    Object localObject = (HealthReplyCommentActivity.PublishDataCacheEntity)a.get(this.o);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reply restore key = ");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.o);
       localStringBuilder.append(", replyData = ");
       localStringBuilder.append(localObject);
       QLog.d("IphoneTitleBarActivity", 2, localStringBuilder.toString());
     }
-    jdField_a_of_type_JavaUtilHashMap.clear();
+    a.clear();
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_Int = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_b_of_type_Int;
-    this.jdField_c_of_type_JavaLangString = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_a_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).jdField_b_of_type_JavaLangString;
+    this.k = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).a;
+    this.l = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).b;
+    this.m = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).c;
+    this.n = ((HealthReplyCommentActivity.PublishDataCacheEntity)localObject).d;
   }
   
   public void delete()
   {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.i;
     if (localEditText != null) {
       a(localEditText);
     }
@@ -404,7 +378,7 @@ public class HealthReplyCommentActivity
     paramBundle = getIntent().getExtras();
     if (paramBundle == null)
     {
-      QQToast.a(this, 1, getString(2131696273, new Object[] { Integer.valueOf(990) }), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, 1, getString(2131894039, new Object[] { Integer.valueOf(990) }), 0).show(getTitleBarHeight());
       finish();
       return false;
     }
@@ -420,12 +394,12 @@ public class HealthReplyCommentActivity
     try
     {
       paramBundle = new JSONObject(paramBundle);
-      this.jdField_a_of_type_Int = paramBundle.optInt("minContentLength", 3);
-      this.jdField_b_of_type_Int = paramBundle.optInt("maxContentLength", 700);
-      this.jdField_c_of_type_JavaLangString = paramBundle.optString("contentPlaceholder", this.jdField_c_of_type_JavaLangString);
-      this.e = paramBundle.optString("cacheKey");
-      this.f = getString(2131696242, new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) });
-      this.jdField_b_of_type_Boolean = paramBundle.optBoolean("content_to_web", false);
+      this.k = paramBundle.optInt("minContentLength", 3);
+      this.l = paramBundle.optInt("maxContentLength", 700);
+      this.m = paramBundle.optString("contentPlaceholder", this.m);
+      this.o = paramBundle.optString("cacheKey");
+      this.s = getString(2131894008, new Object[] { Integer.valueOf(this.l) });
+      this.u = paramBundle.optBoolean("content_to_web", false);
       a(paramBundle);
       d();
       try
@@ -451,7 +425,7 @@ public class HealthReplyCommentActivity
       label295:
       break label295;
     }
-    QQToast.a(this, 1, getString(2131696273, new Object[] { Integer.valueOf(999) }), 0).b(getTitleBarHeight());
+    QQToast.makeText(this, 1, getString(2131894039, new Object[] { Integer.valueOf(999) }), 0).show(getTitleBarHeight());
     finish();
     return false;
   }
@@ -459,10 +433,10 @@ public class HealthReplyCommentActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.j) {
       c();
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+    Object localObject = this.i;
     if (localObject != null) {
       ((EditText)localObject).removeTextChangedListener(this);
     }
@@ -494,11 +468,11 @@ public class HealthReplyCommentActivity
   public void finish()
   {
     super.finish();
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.i;
     if (localEditText != null) {
       InputMethodUtil.b(localEditText);
     }
-    overridePendingTransition(0, 2130771992);
+    overridePendingTransition(0, 2130771995);
   }
   
   protected boolean isWrapContent()
@@ -508,28 +482,28 @@ public class HealthReplyCommentActivity
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131379111) {
+    int i1 = paramView.getId();
+    if (i1 == 2131447846) {
       finish();
-    } else if (i == 2131368596)
+    } else if (i1 == 2131435508)
     {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
+      if (System.currentTimeMillis() - this.p >= 500L)
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 0)
+        this.p = System.currentTimeMillis();
+        if (this.h.getVisibility() == 0)
         {
-          this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-          InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
-          this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
+          this.h.setVisibility(8);
+          InputMethodUtil.a(this.i);
+          this.e.setSelected(false);
         }
         else
         {
-          InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-          this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new HealthReplyCommentActivity.1(this), 200L);
+          InputMethodUtil.b(this.i);
+          this.i.postDelayed(new HealthReplyCommentActivity.1(this), 200L);
         }
       }
     }
-    else if (i == 2131377197) {
+    else if (i1 == 2131445580) {
       a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -562,8 +536,8 @@ public class HealthReplyCommentActivity
   
   public void send(EmoticonInfo paramEmoticonInfo)
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.jdField_a_of_type_AndroidWidgetEditText != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(getAppRuntime(), this, this.jdField_a_of_type_AndroidWidgetEditText, null);
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.i != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(getAppRuntime(), this, this.i, null);
     }
   }
   
@@ -571,7 +545,7 @@ public class HealthReplyCommentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthReplyCommentActivity
  * JD-Core Version:    0.7.0.1
  */

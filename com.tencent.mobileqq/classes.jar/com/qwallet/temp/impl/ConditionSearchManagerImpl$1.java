@@ -10,7 +10,7 @@ class ConditionSearchManagerImpl$1
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    IConditionSearchManager.IConfigListenerProxy localIConfigListenerProxy = this.jdField_a_of_type_ComQwalletTempIConditionSearchManager$IConfigListenerProxy;
+    IConditionSearchManager.IConfigListenerProxy localIConfigListenerProxy = this.a;
     if (localIConfigListenerProxy != null) {
       localIConfigListenerProxy.a(paramInt, paramBoolean);
     }
@@ -18,7 +18,7 @@ class ConditionSearchManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.ConditionSearchManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

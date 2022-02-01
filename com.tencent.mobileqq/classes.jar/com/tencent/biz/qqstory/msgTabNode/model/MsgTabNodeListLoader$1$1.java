@@ -13,22 +13,22 @@ class MsgTabNodeListLoader$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader$1.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    if (this.a.a != null) {
+      this.b.a.a(this.a.a);
     }
     Object localObject2;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null)
+    if (this.a.b != null)
     {
-      ??? = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+      ??? = this.a.b.iterator();
       while (((Iterator)???).hasNext())
       {
         localObject2 = (QQUserUIItem)((Iterator)???).next();
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader$1.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+        this.b.a.a(this.a.a);
       }
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader$1.a.d)
+    synchronized (this.b.a.j)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader$1.a.d.iterator();
+      localObject2 = this.b.a.j.iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)((Iterator)localObject2).next()).a();
       }
@@ -42,7 +42,7 @@ class MsgTabNodeListLoader$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class QQAnonymousDialog$1
   {
     if (paramMessage.what == 291)
     {
-      int i = this.a.jdField_a_of_type_Int;
+      int i = this.a.d;
       if (i != 0)
       {
         if (i != 1)
@@ -26,27 +26,27 @@ class QQAnonymousDialog$1
             if (i != 3) {
               i = 0;
             } else {
-              i = 2131696054;
+              i = 2131893816;
             }
           }
           else {
-            i = 2131696053;
+            i = 2131893815;
           }
         }
         else {
-          i = 2131696052;
+          i = 2131893814;
         }
       }
       else {
-        i = 2131696051;
+        i = 2131893813;
       }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
+      this.a.c.setText(this.a.e.getResources().getString(i));
       paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Int += 1;
-      if (this.a.jdField_a_of_type_Int == 4) {
-        this.a.jdField_a_of_type_Int = 0;
+      paramMessage.d += 1;
+      if (this.a.d == 4) {
+        this.a.d = 0;
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
+      this.a.g.sendEmptyMessageDelayed(291, 1000L);
     }
     return false;
   }

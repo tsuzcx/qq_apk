@@ -17,9 +17,9 @@ class ARTransferPromotionRenderable$17
   
   public void run()
   {
-    float f = ARTransferPromotionRenderable.a(this.this$0).getRotateDegree();
-    boolean bool = ARTransferPromotionRenderable.a(this.this$0).a.isEmpty();
-    ARTransferPromotionRenderable.e(this.this$0);
+    float f = ARTransferPromotionRenderable.c(this.this$0).getRotateDegree();
+    boolean bool = ARTransferPromotionRenderable.e(this.this$0).m.isEmpty();
+    ARTransferPromotionRenderable.w(this.this$0);
     if (this.this$0.b != 4)
     {
       localObject = new StringBuilder();
@@ -32,23 +32,23 @@ class ARTransferPromotionRenderable$17
     ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.17.1(this, f));
     if (bool)
     {
-      if (ARTransferPromotionRenderable.a(this.this$0) != null) {
-        ARTransferPromotionRenderable.a(this.this$0).b(2, 0);
+      if (ARTransferPromotionRenderable.d(this.this$0) != null) {
+        ARTransferPromotionRenderable.d(this.this$0).b(2, 0);
       }
       return;
     }
-    Object localObject = ARTransferPromotionRenderable.a(this.this$0).a((int)f);
+    Object localObject = ARTransferPromotionRenderable.e(this.this$0).b((int)f);
     if ((localObject != null) && (!TextUtils.isEmpty(((ARTransferDoorConfigInfo.FragmentInfo)localObject).c)))
     {
-      if (ARTransferPromotionRenderable.a(this.this$0) != 6) {
+      if (ARTransferPromotionRenderable.b(this.this$0) != 6) {
         return;
       }
-      if (ARTransferPromotionRenderable.a(this.this$0).a()) {
+      if (ARTransferPromotionRenderable.a(this.this$0).c()) {
         ARTransferPromotionRenderable.a(this.this$0).b();
       }
       ARTransferPromotionRenderable.a(this.this$0, (ARTransferDoorConfigInfo.FragmentInfo)localObject);
       ARTransferPromotionRenderable.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
-      ARTransferPromotionRenderable.a(this.this$0);
+      ARTransferPromotionRenderable.p(this.this$0);
       ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.17.3(this));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER fit current degree:");
@@ -65,7 +65,7 @@ class ARTransferPromotionRenderable$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.17
  * JD-Core Version:    0.7.0.1
  */

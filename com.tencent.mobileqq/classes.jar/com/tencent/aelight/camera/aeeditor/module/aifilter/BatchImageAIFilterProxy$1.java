@@ -11,14 +11,14 @@ class BatchImageAIFilterProxy$1
   public void run()
   {
     BatchImageAIFilterProxy localBatchImageAIFilterProxy = this.this$0;
-    localBatchImageAIFilterProxy.b = AIFilterProxyBase.a(this.jdField_a_of_type_JavaUtilList, BatchImageAIFilterProxy.a(localBatchImageAIFilterProxy));
+    localBatchImageAIFilterProxy.c = AIFilterProxyBase.a(this.a, BatchImageAIFilterProxy.a(localBatchImageAIFilterProxy));
     localBatchImageAIFilterProxy = this.this$0;
-    localBatchImageAIFilterProxy.a(this.jdField_a_of_type_AndroidContentContext, localBatchImageAIFilterProxy.b, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterProxyBase$AIFilterProxyCallback);
+    localBatchImageAIFilterProxy.a(this.b, localBatchImageAIFilterProxy.c, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.BatchImageAIFilterProxy.1
  * JD-Core Version:    0.7.0.1
  */

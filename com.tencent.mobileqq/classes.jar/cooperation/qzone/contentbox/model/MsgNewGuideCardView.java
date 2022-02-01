@@ -35,7 +35,7 @@ public class MsgNewGuideCardView
   private static final int AVATAR_GAP;
   private static final int BKG_COLOR = Color.parseColor("#FFFFFF");
   private static final int BKG_COLOR_NIGHTMODE = Color.parseColor("#171717");
-  private static final int CARD_RADIUS = ViewUtils.b(8.0F);
+  private static final int CARD_RADIUS = ViewUtils.dpToPx(8.0F);
   private static final int PUBLISH_BUTTON_COLOR = Color.parseColor("#00CAFC");
   private static final int PUBLISH_BUTTON_COLOR_DARKMODE = Color.parseColor("#0071FF");
   private static final String TAG = "MsgNewGuideCardView";
@@ -65,7 +65,7 @@ public class MsgNewGuideCardView
   
   static
   {
-    AVATAR_GAP = ViewUtils.b(12.0F);
+    AVATAR_GAP = ViewUtils.dpToPx(12.0F);
     TEXT_COLOR = Color.parseColor("#000000");
     TEXT_COLOR_NIGHTMODE = Color.parseColor("#FFFFFF");
   }
@@ -75,23 +75,23 @@ public class MsgNewGuideCardView
     super(paramContext);
     this.mContext = paramContext;
     this.app = paramQQAppInterface;
-    LayoutInflater.from(this.mContext).inflate(2131562388, this);
-    this.dateCom = ((TextView)findViewById(2131365414));
-    this.backgroundCom = ((RoundCornerImageView)findViewById(2131363355));
-    this.leftImageCom = ((RoundCornerImageView)findViewById(2131369954));
-    this.singleAvatarCom = ((FrameLayout)findViewById(2131377620));
-    this.doubleAvatarCom = ((RelativeLayout)findViewById(2131365815));
-    this.firstLineCom = ((RelativeLayout)findViewById(2131366874));
-    this.secondLineCom = ((TextView)findViewById(2131377107));
-    this.avatarLayoutLeft = ((FrameLayout)findViewById(2131366867));
-    this.avatarLayoutRight = ((FrameLayout)findViewById(2131377101));
-    this.firstLineIcon = ((FrameLayout)findViewById(2131366875));
-    this.firstLineAvatar = ((FrameLayout)findViewById(2131366873));
-    this.firstLineText = ((TextView)findViewById(2131366876));
-    this.firstAvatarText = ((TextView)findViewById(2131366862));
-    this.pubBtnCom = ((RelativeLayout)findViewById(2131373239));
-    this.pubBtnText = ((TextView)findViewById(2131373240));
-    this.closeBtn = ((ImageView)findViewById(2131364716));
+    LayoutInflater.from(this.mContext).inflate(2131628819, this);
+    this.dateCom = ((TextView)findViewById(2131431618));
+    this.backgroundCom = ((RoundCornerImageView)findViewById(2131429244));
+    this.leftImageCom = ((RoundCornerImageView)findViewById(2131437104));
+    this.singleAvatarCom = ((FrameLayout)findViewById(2131446029));
+    this.doubleAvatarCom = ((RelativeLayout)findViewById(2131432073));
+    this.firstLineCom = ((RelativeLayout)findViewById(2131433203));
+    this.secondLineCom = ((TextView)findViewById(2131445478));
+    this.avatarLayoutLeft = ((FrameLayout)findViewById(2131433196));
+    this.avatarLayoutRight = ((FrameLayout)findViewById(2131445472));
+    this.firstLineIcon = ((FrameLayout)findViewById(2131433204));
+    this.firstLineAvatar = ((FrameLayout)findViewById(2131433202));
+    this.firstLineText = ((TextView)findViewById(2131433205));
+    this.firstAvatarText = ((TextView)findViewById(2131433191));
+    this.pubBtnCom = ((RelativeLayout)findViewById(2131440848));
+    this.pubBtnText = ((TextView)findViewById(2131440849));
+    this.closeBtn = ((ImageView)findViewById(2131430822));
     this.isNightMode = false;
   }
   
@@ -204,7 +204,7 @@ public class MsgNewGuideCardView
         int i;
         if (!TextUtils.isEmpty(paramMQMsg.icon))
         {
-          i = ViewUtils.b(20.0F);
+          i = ViewUtils.dpToPx(20.0F);
           URLImageView localURLImageView = new URLImageView(this.mContext);
           localURLImageView.setImageDrawable(getUrlDrawable(paramMQMsg.icon));
           FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
@@ -261,7 +261,7 @@ public class MsgNewGuideCardView
       if ((paramMQMsg.bottom != null) && (!TextUtils.isEmpty(paramMQMsg.bottom.content)))
       {
         this.pubBtnText.setText(paramMQMsg.bottom.content);
-        paramMQMsg = ContextCompat.getDrawable(this.mContext, 2130848751);
+        paramMQMsg = ContextCompat.getDrawable(this.mContext, 2130850418);
         if (paramMQMsg != null) {
           if (!this.isNightMode) {
             paramMQMsg.setColorFilter(PUBLISH_BUTTON_COLOR, PorterDuff.Mode.SRC_ATOP);
@@ -278,10 +278,10 @@ public class MsgNewGuideCardView
       }
       if (!this.isNightMode)
       {
-        this.closeBtn.setBackgroundResource(2130848759);
+        this.closeBtn.setBackgroundResource(2130850426);
         return;
       }
-      this.closeBtn.setBackgroundResource(2130848760);
+      this.closeBtn.setBackgroundResource(2130850427);
     }
   }
   
@@ -342,7 +342,7 @@ public class MsgNewGuideCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MsgNewGuideCardView
  * JD-Core Version:    0.7.0.1
  */

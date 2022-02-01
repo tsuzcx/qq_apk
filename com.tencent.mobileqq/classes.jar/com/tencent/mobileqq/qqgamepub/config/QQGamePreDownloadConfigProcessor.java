@@ -16,7 +16,7 @@ public class QQGamePreDownloadConfigProcessor
     Object localObject;
     try
     {
-      QQGamePreDownloadConfigBean localQQGamePreDownloadConfigBean = (QQGamePreDownloadConfigBean)QConfigManager.a().a(739);
+      QQGamePreDownloadConfigBean localQQGamePreDownloadConfigBean = (QQGamePreDownloadConfigBean)QConfigManager.b().b(739);
     }
     catch (Throwable localThrowable)
     {
@@ -117,7 +117,7 @@ public class QQGamePreDownloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.config.QQGamePreDownloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

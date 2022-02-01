@@ -23,10 +23,10 @@ class ReadInJoyBaseAdapter$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReadInJoyBaseAdapter.Viewtype ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     TraceUtils.traceBegin(localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(this.jdField_a_of_type_Int)) {
-      if ((ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.c != 56))
+    if (this.f.f(this.a)) {
+      if ((ProteusSupportUtil.b(this.f.F(), this.a, this.b)) && (this.f.c != 56))
       {
         if ((paramIBaseHandler instanceof FrameworkHandler)) {}
       }
@@ -34,10 +34,10 @@ class ReadInJoyBaseAdapter$1
         return;
       }
     }
-    if (paramIBaseHandler.a(this.jdField_a_of_type_Int))
+    if (paramIBaseHandler.d(this.a))
     {
       long l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_JavaLangObject = paramIBaseHandler.a(this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+      this.g = paramIBaseHandler.a(this.c, this.d, this.e);
       long l2 = System.currentTimeMillis();
       if (FluencyOptUtils.a.a()) {
         ThreadManager.excute(new ReadInJoyBaseAdapter.1.1(this, l2 - l1, paramIBaseHandler), 128, null, true);
@@ -48,7 +48,7 @@ class ReadInJoyBaseAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter.1
  * JD-Core Version:    0.7.0.1
  */

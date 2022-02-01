@@ -34,8 +34,8 @@ class TroopMemberApiService$5
     }
     paramTroopInfo = new Bundle();
     paramTroopInfo.putBoolean("isSuccess", paramBoolean);
-    paramTroopInfo.putInt("seq", this.a.g);
-    paramTroopInfo.putString("callback", this.a.c);
+    paramTroopInfo.putInt("seq", this.a.t);
+    paramTroopInfo.putString("callback", this.a.s);
     this.a.a(112, paramTroopInfo);
   }
   
@@ -110,7 +110,7 @@ class TroopMemberApiService$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.5
  * JD-Core Version:    0.7.0.1
  */

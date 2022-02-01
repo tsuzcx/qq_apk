@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import androidx.annotation.AnimRes;
 import androidx.annotation.NonNull;
 import androidx.core.os.CancellationSignal;
+import androidx.fragment.R.anim;
+import androidx.fragment.R.id;
 
 class FragmentAnim
 {
@@ -45,8 +47,8 @@ class FragmentAnim
     j = 0;
     paramFragment.setNextAnim(0);
     paramFragmentContainer = paramFragmentContainer.onFindViewById(paramFragment.mContainerId);
-    if ((paramFragmentContainer != null) && (paramFragmentContainer.getTag(2131380961) != null)) {
-      paramFragmentContainer.setTag(2131380961, null);
+    if ((paramFragmentContainer != null) && (paramFragmentContainer.getTag(R.id.visible_removing_fragment_view_tag) != null)) {
+      paramFragmentContainer.setTag(R.id.visible_removing_fragment_view_tag, null);
     }
     if ((paramFragment.mContainer != null) && (paramFragment.mContainer.getLayoutTransition() != null)) {
       return null;
@@ -136,19 +138,19 @@ class FragmentAnim
           return -1;
         }
         if (paramBoolean) {
-          return 2130772076;
+          return R.anim.fragment_close_enter;
         }
-        return 2130772077;
+        return R.anim.fragment_close_exit;
       }
       if (paramBoolean) {
-        return 2130772080;
+        return R.anim.fragment_fade_enter;
       }
-      return 2130772081;
+      return R.anim.fragment_fade_exit;
     }
     if (paramBoolean) {
-      return 2130772085;
+      return R.anim.fragment_open_enter;
     }
-    return 2130772086;
+    return R.anim.fragment_open_exit;
   }
 }
 

@@ -16,19 +16,19 @@ class AVGroupFileSelectFragment$1
   {
     paramDialogInterface = new StringBuilder();
     paramDialogInterface.append("enter video ");
-    paramDialogInterface.append(this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+    paramDialogInterface.append(this.a);
     QLog.d("AVGroupFileSelectFragment", 1, paramDialogInterface.toString());
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("watch_together_uinType", AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment));
-    paramDialogInterface.putExtra("watch_together_uin", AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment));
-    paramDialogInterface.putExtra("ChooseFileInfo", this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).setResult(-1, paramDialogInterface);
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).superFinish();
+    paramDialogInterface.putExtra("watch_together_uinType", AVGroupFileSelectFragment.a(this.b));
+    paramDialogInterface.putExtra("watch_together_uin", AVGroupFileSelectFragment.b(this.b));
+    paramDialogInterface.putExtra("ChooseFileInfo", this.a);
+    AVGroupFileSelectFragment.c(this.b).setResult(-1, paramDialogInterface);
+    AVGroupFileSelectFragment.c(this.b).superFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment.1
  * JD-Core Version:    0.7.0.1
  */

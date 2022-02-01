@@ -17,10 +17,10 @@ class HttpsUtil$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    paramCall = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+    paramCall = HttpsUtil.a(this.c);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("url = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", onFailure e = ");
     localStringBuilder.append(paramIOException);
     paramCall.c("HttpsUtil", localStringBuilder.toString());
@@ -29,17 +29,17 @@ class HttpsUtil$1
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    paramCall = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+    paramCall = HttpsUtil.a(this.c);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("url = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(", onResponse code = ");
     ((StringBuilder)localObject).append(paramResponse.code());
     paramCall.c("HttpsUtil", ((StringBuilder)localObject).toString());
     if (paramResponse.body() != null)
     {
       paramCall = paramResponse.body().string();
-      paramResponse = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+      paramResponse = HttpsUtil.a(this.c);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onResponse result = ");
       ((StringBuilder)localObject).append(paramCall);
@@ -49,7 +49,7 @@ class HttpsUtil$1
     {
       paramCall = "";
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsInterface$CallBack != null)
+    if (this.b != null)
     {
       paramResponse = null;
       try
@@ -58,7 +58,7 @@ class HttpsUtil$1
       }
       catch (JSONException paramCall)
       {
-        localObject = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+        localObject = HttpsUtil.a(this.c);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onResponse JSONException e = ");
         localStringBuilder.append(paramCall);
@@ -71,7 +71,7 @@ class HttpsUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.https.HttpsUtil.1
  * JD-Core Version:    0.7.0.1
  */

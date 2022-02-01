@@ -65,9 +65,9 @@ class FaceSmsVerifyImpl$FaceSmsVerifyObserver
     }
     localICommonSmsView.clearWrongCode();
     if (paramInt == -1) {
-      paramString2 = paramString1.getString(2131716609);
+      paramString2 = paramString1.getString(2131914072);
     }
-    QQToast.a(paramString1, 1, paramString2, 0).a();
+    QQToast.makeText(paramString1, 1, paramString2, 0).show();
   }
   
   public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
@@ -113,7 +113,7 @@ class FaceSmsVerifyImpl$FaceSmsVerifyObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.FaceSmsVerifyImpl.FaceSmsVerifyObserver
  * JD-Core Version:    0.7.0.1
  */

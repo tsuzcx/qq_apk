@@ -16,9 +16,6 @@ public final class RIJPushComponentExtData
   public String a;
   @JvmField
   @NotNull
-  public byte[] a;
-  @JvmField
-  @NotNull
   public String b;
   @JvmField
   @NotNull
@@ -29,6 +26,9 @@ public final class RIJPushComponentExtData
   @JvmField
   @NotNull
   public String e;
+  @JvmField
+  @NotNull
+  public byte[] f;
   
   public RIJPushComponentExtData()
   {
@@ -37,12 +37,12 @@ public final class RIJPushComponentExtData
   
   public RIJPushComponentExtData(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @NotNull byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.d = paramString4;
     this.e = paramString5;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.f = paramArrayOfByte;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -63,7 +63,7 @@ public final class RIJPushComponentExtData
     if (paramObject != null)
     {
       paramObject = (RIJPushComponentExtData)paramObject;
-      if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString) ^ true)) {
+      if ((Intrinsics.areEqual(this.a, paramObject.a) ^ true)) {
         return false;
       }
       if ((Intrinsics.areEqual(this.b, paramObject.b) ^ true)) {
@@ -78,14 +78,14 @@ public final class RIJPushComponentExtData
       if ((Intrinsics.areEqual(this.e, paramObject.e) ^ true)) {
         return false;
       }
-      return Arrays.equals(this.jdField_a_of_type_ArrayOfByte, paramObject.jdField_a_of_type_ArrayOfByte);
+      return Arrays.equals(this.f, paramObject.f);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.push.component.RIJPushComponentExtData");
   }
   
   public int hashCode()
   {
-    return ((((this.jdField_a_of_type_JavaLangString.hashCode() * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode()) * 31 + this.e.hashCode()) * 31 + Arrays.hashCode(this.jdField_a_of_type_ArrayOfByte);
+    return ((((this.a.hashCode() * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode()) * 31 + this.e.hashCode()) * 31 + Arrays.hashCode(this.f);
   }
   
   @NotNull
@@ -93,7 +93,7 @@ public final class RIJPushComponentExtData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJPushComponentExtData(articleIds=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", foldStatus=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", algorithmId=");
@@ -103,14 +103,14 @@ public final class RIJPushComponentExtData
     localStringBuilder.append(", subscripts=");
     localStringBuilder.append(this.e);
     localStringBuilder.append(", pushExtData=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(Arrays.toString(this.f));
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.component.RIJPushComponentExtData
  * JD-Core Version:    0.7.0.1
  */

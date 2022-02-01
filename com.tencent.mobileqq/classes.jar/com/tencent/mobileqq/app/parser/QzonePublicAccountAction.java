@@ -17,10 +17,10 @@ public class QzonePublicAccountAction
   
   private boolean c()
   {
-    if (this.a == null) {
+    if (this.b == null) {
       return false;
     }
-    ((IQzoneMsgApi)QRoute.api(IQzoneMsgApi.class)).openContentBox(this.a);
+    ((IQzoneMsgApi)QRoute.api(IQzoneMsgApi.class)).openContentBox(this.b);
     return true;
   }
   
@@ -37,14 +37,14 @@ public class QzonePublicAccountAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QzonePublicAccountAction", 1, localStringBuilder.toString());
-      b_("QzonePublicAccountAction");
+      h_("QzonePublicAccountAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzonePublicAccountAction
  * JD-Core Version:    0.7.0.1
  */

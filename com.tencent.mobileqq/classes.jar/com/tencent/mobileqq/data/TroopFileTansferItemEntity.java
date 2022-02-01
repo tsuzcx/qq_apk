@@ -91,13 +91,13 @@ public class TroopFileTansferItemEntity
   
   protected void prewrite()
   {
-    this._sStatus = TroopFileInfo.FileStatus.a(this.Status);
+    this._sStatus = TroopFileInfo.FileStatus.c(this.Status);
     this._sId = this.Id.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileTansferItemEntity
  * JD-Core Version:    0.7.0.1
  */

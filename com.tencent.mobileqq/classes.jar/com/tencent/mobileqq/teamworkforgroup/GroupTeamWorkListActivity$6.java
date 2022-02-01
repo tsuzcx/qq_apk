@@ -14,16 +14,16 @@ class GroupTeamWorkListActivity$6
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
-    GroupTeamWorkListActivity localGroupTeamWorkListActivity = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity;
+    this.a.setVisibility(8);
+    GroupTeamWorkListActivity.c(this.b).notifyDataSetChanged();
+    GroupTeamWorkListActivity localGroupTeamWorkListActivity = this.b;
     SharedPreUtils.a(localGroupTeamWorkListActivity, localGroupTeamWorkListActivity.app.getCurrentUin(), 1, false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.6
  * JD-Core Version:    0.7.0.1
  */

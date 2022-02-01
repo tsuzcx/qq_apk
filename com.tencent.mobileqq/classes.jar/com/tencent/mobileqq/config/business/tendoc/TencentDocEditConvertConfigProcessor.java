@@ -11,7 +11,7 @@ public class TencentDocEditConvertConfigProcessor
 {
   public static TencentDocEditConvertConfigBean a()
   {
-    return (TencentDocEditConvertConfigBean)QConfigManager.a().a(429);
+    return (TencentDocEditConvertConfigBean)QConfigManager.b().b(429);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class TencentDocEditConvertConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

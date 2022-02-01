@@ -29,16 +29,16 @@ public class ContactAddAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("ContactAddAction", 1, localStringBuilder.toString());
-      b_("ContactAddAction");
+      h_("ContactAddAction");
     }
     return false;
   }
   
   public boolean b()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
+    Intent localIntent = new Intent(this.b, AddContactsActivity.class);
     localIntent.setFlags(67108864);
-    int j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("des_type"));
+    int j = Integer.parseInt((String)this.f.get("des_type"));
     int i = j;
     if (j != 0)
     {
@@ -52,13 +52,13 @@ public class ContactAddAction
       }
     }
     localIntent.putExtra("tab_index_key", i);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    this.b.startActivity(localIntent);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ContactAddAction
  * JD-Core Version:    0.7.0.1
  */

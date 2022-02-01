@@ -45,7 +45,7 @@ public class GifAntishakeModule
   public static GifAntishakeModule mInstance;
   private static boolean mNativeLibLoaded = false;
   private static int pathCount;
-  private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(DeviceInfoUtil.b(), DeviceInfoUtil.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
+  private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(DeviceInfoUtil.h(), DeviceInfoUtil.h() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
   private String NO_MEDIA_FILE_NAME;
   private String SDCARD_ANTISHAKEGIF_SAVE;
   private long antishakeMaxFrameGapTime;
@@ -618,9 +618,9 @@ public class GifAntishakeModule
                   {
                     localObject = new StringBuilder();
                     ((StringBuilder)localObject).append("DeviceInfoUtil.getMemoryClass() = ");
-                    ((StringBuilder)localObject).append(DeviceInfoUtil.f() / 1048576L);
+                    ((StringBuilder)localObject).append(DeviceInfoUtil.s() / 1048576L);
                     ((StringBuilder)localObject).append("M, DeviceInfoUtil.getSystemAvaialbeMemory() = ");
-                    ((StringBuilder)localObject).append(DeviceInfoUtil.e() / 1048576L);
+                    ((StringBuilder)localObject).append(DeviceInfoUtil.r() / 1048576L);
                     ((StringBuilder)localObject).append("M");
                     QLog.d("QzoneVision", 2, ((StringBuilder)localObject).toString());
                   }
@@ -722,7 +722,7 @@ public class GifAntishakeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.util.GifAntishakeModule
  * JD-Core Version:    0.7.0.1
  */

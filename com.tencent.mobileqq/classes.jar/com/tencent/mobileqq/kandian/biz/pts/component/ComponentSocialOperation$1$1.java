@@ -13,45 +13,45 @@ class ComponentSocialOperation$1$1
   public void run()
   {
     StringBuilder localStringBuilder;
-    if (this.a.a.jdField_a_of_type_Boolean)
+    if (this.a.a.i)
     {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846610);
-      if (this.a.a.jdField_a_of_type_Int > 0)
+      this.a.a.e.setImageResource(2130848162);
+      if (this.a.a.j > 0)
       {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
+        this.a.a.c.setText(ComponentSocialOperation.a(this.a.a.j));
+        this.a.a.c.setTextColor(Color.parseColor("#07D0B0"));
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("revert upvote to true, set num:");
-          localStringBuilder.append(ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
+          localStringBuilder.append(ComponentSocialOperation.a(this.a.a.j));
           QLog.d("ComponentSocialOperation", 2, localStringBuilder.toString());
         }
       }
     }
     else
     {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846613);
-      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
-      if (this.a.a.jdField_a_of_type_Int > 0) {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
+      this.a.a.e.setImageResource(2130848165);
+      this.a.a.c.setTextColor(Color.parseColor("#777777"));
+      if (this.a.a.j > 0) {
+        this.a.a.c.setText(ComponentSocialOperation.a(this.a.a.j));
       } else {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131718091);
+        this.a.a.c.setText(2131915569);
       }
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("revert upvote to false, set num:");
-        localStringBuilder.append(ComponentSocialOperation.a(this.a.a.jdField_a_of_type_Int));
+        localStringBuilder.append(ComponentSocialOperation.a(this.a.a.j));
         QLog.d("ComponentSocialOperation", 2, localStringBuilder.toString());
       }
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.a.a.jdField_b_of_type_AndroidViewAnimationScaleAnimation);
+    this.a.a.e.startAnimation(this.a.a.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentSocialOperation.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class NearbyProfileDisplayTribePanel$13$1
   
   public void run()
   {
-    NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).setOnClickListener(new NearbyProfileDisplayTribePanel.13.1.1(this));
+    NearbyProfileDisplayTribePanel.l(this.b.this$0).setOnClickListener(new NearbyProfileDisplayTribePanel.13.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,8 @@ public class WSDramaPlayerStatusListenerImpl
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSDramaPlayerStatusListenerImpl.java][onVideoStop] title:");
-    if (paramWSPlayerParam.a != null) {
-      localObject = paramWSPlayerParam.a.d;
+    if (paramWSPlayerParam.c != null) {
+      localObject = paramWSPlayerParam.c.g;
     } else {
       localObject = "";
     }
@@ -46,8 +46,8 @@ public class WSDramaPlayerStatusListenerImpl
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSDramaPlayerStatusListenerImpl.java][onVideoStart] title:");
-    if (paramWSPlayerParam.a != null) {
-      localObject = paramWSPlayerParam.a.d;
+    if (paramWSPlayerParam.c != null) {
+      localObject = paramWSPlayerParam.c.g;
     } else {
       localObject = "";
     }
@@ -56,7 +56,7 @@ public class WSDramaPlayerStatusListenerImpl
     Object localObject = (WSDramaPageContract.View)this.a.get();
     if (localObject != null)
     {
-      WSDramaUtils.a((WSDramaPageContract.View)localObject, paramWSPlayerParam, ((WSDramaPageContract.View)localObject).g_());
+      WSDramaUtils.a((WSDramaPageContract.View)localObject, paramWSPlayerParam, ((WSDramaPageContract.View)localObject).aL_());
       ((WSDramaPageContract.View)localObject).a(paramWSPlayerParam);
     }
   }
@@ -65,8 +65,8 @@ public class WSDramaPlayerStatusListenerImpl
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSDramaPlayerStatusListenerImpl.java][onCompletion] title:");
-    if (paramWSPlayerParam.a != null) {
-      localObject = paramWSPlayerParam.a.d;
+    if (paramWSPlayerParam.c != null) {
+      localObject = paramWSPlayerParam.c.g;
     } else {
       localObject = "";
     }
@@ -88,7 +88,7 @@ public class WSDramaPlayerStatusListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaPlayerStatusListenerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class Luban$1
     try
     {
       Luban.a(this.this$0).sendMessage(Luban.a(this.this$0).obtainMessage(1));
-      File localFile = Luban.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider);
+      File localFile = Luban.a(this.this$0, this.a, this.b);
       Luban.a(this.this$0).sendMessage(Luban.a(this.this$0).obtainMessage(0, localFile));
       return;
     }
@@ -27,7 +27,7 @@ class Luban$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.Luban.1
  * JD-Core Version:    0.7.0.1
  */

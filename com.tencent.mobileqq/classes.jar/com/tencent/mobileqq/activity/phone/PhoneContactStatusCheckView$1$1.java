@@ -10,14 +10,14 @@ class PhoneContactStatusCheckView$1$1
   
   public void run()
   {
-    if ((PhoneContactStatusCheckView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView$1.this$0) != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-      PhoneContactStatusCheckView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView$1.this$0).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((PhoneContactStatusCheckView.a(this.b.this$0) != null) && (this.a != null)) {
+      PhoneContactStatusCheckView.a(this.b.this$0).setImageBitmap(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView.1.1
  * JD-Core Version:    0.7.0.1
  */

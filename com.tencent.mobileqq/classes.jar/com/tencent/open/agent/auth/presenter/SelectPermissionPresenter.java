@@ -27,45 +27,45 @@ import mqq.app.MobileQQ;
 public class SelectPermissionPresenter
   implements ISelectPermissionContract.Presenter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ISelectPermissionContract.View jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$View;
-  private ILocalDataSource jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource;
-  private AuthCallback jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback = new SelectPermissionPresenter.3(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<Permission> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
-  private long c;
-  private long d;
-  private long e;
+  private AppRuntime a;
+  private ILocalDataSource b;
+  private ISelectPermissionContract.View c;
+  private int d;
+  private List<Permission> e = new ArrayList();
   private long f;
+  private long g;
+  private long h;
+  private long i;
+  private long j;
+  private long k;
+  private String l;
+  private boolean m;
+  private Activity n;
+  private AuthCallback o = new SelectPermissionPresenter.3(this);
   
   public SelectPermissionPresenter(ISelectPermissionContract.View paramView, ILocalDataSource paramILocalDataSource)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$View = paramView;
-    this.jdField_a_of_type_AndroidAppActivity = paramView.a();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource = paramILocalDataSource;
-    this.jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    this.c = paramView;
+    this.n = paramView.c();
+    this.b = paramILocalDataSource;
+    this.a = MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
   
   private void a(int paramInt)
   {
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a(b());
-    AccountManage.a().a(localAccountInfo.jdField_a_of_type_JavaLangString, b(), paramInt, new SelectPermissionPresenter.4(this));
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d(g());
+    AccountManage.a().a(localAccountInfo.a, g(), paramInt, new SelectPermissionPresenter.4(this));
   }
   
   private void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = AuthMemoryCache.a().a(b());
+    Object localObject = AuthMemoryCache.a().d(g());
     AuthReporter.a(paramInt, (AccountInfo)localObject);
-    String str = b();
+    String str = g();
     if (localObject == null) {
       localObject = "";
     } else {
-      localObject = ((AccountInfo)localObject).jdField_a_of_type_JavaLangString;
+      localObject = ((AccountInfo)localObject).a;
     }
     AuthReporter.a(paramInt, str, (String)localObject);
     localObject = new Intent();
@@ -75,55 +75,29 @@ public class SelectPermissionPresenter
     ((Intent)localObject).putExtra("key_error_detail", paramString3);
     ((Intent)localObject).putExtra("key_response", paramString1);
     SSOLog.a("SelectPermissionPresenter", new Object[] { "OpenVirtual.setSdkResult, error: ", Integer.valueOf(paramInt), ", msg:", paramString2, ", detail:", paramString3 });
-    this.jdField_a_of_type_AndroidAppActivity.setResult(102, (Intent)localObject);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$View.b();
+    this.n.setResult(102, (Intent)localObject);
+    this.n.finish();
+    this.c.b();
   }
   
   private void a(String paramString1, String paramString2)
   {
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a(paramString2);
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d(paramString2);
     if (localAccountInfo != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource.a(paramString1, paramString2, localAccountInfo.jdField_a_of_type_JavaLangString);
+      this.b.a(paramString1, paramString2, localAccountInfo.a);
     }
-  }
-  
-  private boolean a()
-  {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    return (localActivity == null) || (localActivity.isFinishing());
-  }
-  
-  private String b()
-  {
-    long l2 = this.b;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = this.jdField_a_of_type_Long;
-    }
-    return String.valueOf(l1);
-  }
-  
-  private void b()
-  {
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a(b());
-    AuthReporter.a("KEY_LOGIN_STAGE_2_NEW_TOTAL", localAccountInfo);
-    AuthReporter.a("KEY_LOGIN_STAGE_2_2_NEW_TOTAL", localAccountInfo);
-    AuthReporter.a("KEY_LOGIN_STAGE_3_TOTAL");
-    this.jdField_a_of_type_ComTencentOpenAgentAuthISelectPermissionContract$View.a();
-    ThreadManager.executeOnNetWorkThread(new SelectPermissionPresenter.2(this));
   }
   
   private void b(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource.a(paramString1, paramString2);
+    this.b.a(paramString1, paramString2);
   }
   
   private void b(boolean paramBoolean)
   {
-    AccountInfo localAccountInfo = AuthMemoryCache.a().a(b());
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d(g());
     AuthReporter.a("KEY_AUTHORIZE_REQUEST", localAccountInfo, paramBoolean);
-    if ((localAccountInfo != null) && (localAccountInfo.jdField_a_of_type_JavaLangString != null))
+    if ((localAccountInfo != null) && (localAccountInfo.a != null))
     {
       String str;
       if (paramBoolean) {
@@ -131,22 +105,27 @@ public class SelectPermissionPresenter
       } else {
         str = "0X800B65F";
       }
-      AuthReporter.a(localAccountInfo.jdField_a_of_type_JavaLangString, str);
+      AuthReporter.a(localAccountInfo.a, str);
     }
     if (paramBoolean) {
-      AuthorityUtil.a("0X800BA80");
+      AuthorityUtil.e("0X800BA80");
     }
   }
   
-  private String c()
+  private void d()
   {
-    return String.valueOf(this.jdField_a_of_type_Long);
+    AccountInfo localAccountInfo = AuthMemoryCache.a().d(g());
+    AuthReporter.a("KEY_LOGIN_STAGE_2_NEW_TOTAL", localAccountInfo);
+    AuthReporter.a("KEY_LOGIN_STAGE_2_2_NEW_TOTAL", localAccountInfo);
+    AuthReporter.a("KEY_LOGIN_STAGE_3_TOTAL");
+    this.c.a();
+    ThreadManager.executeOnNetWorkThread(new SelectPermissionPresenter.2(this));
   }
   
-  private void c()
+  private void e()
   {
-    AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131707855), false);
-    if (a())
+    AuthUIUtil.a(this.n, HardCodeUtil.a(2131905669), false);
+    if (f())
     {
       SSOLog.a("SelectPermissionPresenter", new Object[] { "finishAndToLogin but Activity isFinishing" });
       return;
@@ -154,25 +133,34 @@ public class SelectPermissionPresenter
     SSOLog.a("SelectPermissionPresenter", new Object[] { "finishAndToLogin" });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_need_login", 1);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(102, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.n.setResult(102, localIntent);
+    this.n.finish();
   }
   
-  public String a()
+  private boolean f()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      localStringBuilder.append(((Permission)localIterator.next()).jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ");
+    Activity localActivity = this.n;
+    return (localActivity == null) || (localActivity.isFinishing());
+  }
+  
+  private String g()
+  {
+    long l2 = this.g;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = this.f;
     }
-    return localStringBuilder.toString();
+    return String.valueOf(l1);
+  }
+  
+  private String h()
+  {
+    return String.valueOf(this.f);
   }
   
   public List<Permission> a()
   {
-    Object localObject = AuthMemoryCache.a().a(b());
+    Object localObject = AuthMemoryCache.a().e(g());
     if (localObject == null) {
       return null;
     }
@@ -181,44 +169,37 @@ public class SelectPermissionPresenter
     {
       Permission localPermission1 = (Permission)((Iterator)localObject).next();
       Permission localPermission2 = new Permission();
-      localPermission2.jdField_a_of_type_Int = localPermission1.jdField_a_of_type_Int;
-      if ((localPermission2.jdField_a_of_type_Int == 2) || (localPermission2.jdField_a_of_type_Int == 3))
+      localPermission2.a = localPermission1.a;
+      if ((localPermission2.a == 2) || (localPermission2.a == 3))
       {
-        localPermission2.jdField_b_of_type_JavaLangString = localPermission1.jdField_b_of_type_JavaLangString;
-        localPermission2.jdField_b_of_type_Int = localPermission1.jdField_b_of_type_Int;
-        localPermission2.jdField_a_of_type_Boolean = localPermission1.jdField_a_of_type_Boolean;
-        localPermission2.jdField_a_of_type_JavaLangString = localPermission1.jdField_a_of_type_JavaLangString;
+        localPermission2.d = localPermission1.d;
+        localPermission2.e = localPermission1.e;
+        localPermission2.c = localPermission1.c;
+        localPermission2.b = localPermission1.b;
         boolean bool;
-        if (localPermission2.jdField_a_of_type_Int == 2) {
+        if (localPermission2.a == 2) {
           bool = true;
         } else {
           bool = false;
         }
-        localPermission2.jdField_b_of_type_Boolean = bool;
-        this.jdField_a_of_type_JavaUtilList.add(localPermission2);
+        localPermission2.f = bool;
+        this.e.add(localPermission2);
       }
     }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    SSOLog.a("SelectPermissionPresenter", new Object[] { "doAuth" });
-    this.jdField_a_of_type_Int = 0;
-    b();
+    return this.e;
   }
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pkg_name");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("is_from_qr_login", false);
-    this.f = paramIntent.getLongExtra("vid", 0L);
-    this.jdField_a_of_type_Long = ParseUtil.a(paramIntent.getStringExtra("appId"));
-    this.b = ParseUtil.a(paramIntent.getStringExtra("key_proxy_appid"));
-    this.e = paramIntent.getLongExtra("login_cost", 0L);
-    this.d = paramIntent.getLongExtra("authListCostTime", 0L);
-    this.c = paramIntent.getLongExtra("authStartTime", SystemClock.elapsedRealtime());
-    SSOLog.a("SelectPermissionPresenter", new Object[] { "onCreateView3 mCurrentAppId=", Long.valueOf(this.jdField_a_of_type_Long), ", mProxyCurrentAppId=", Long.valueOf(this.b), ", mIsFromQrLogin=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    this.l = paramIntent.getStringExtra("pkg_name");
+    this.m = paramIntent.getBooleanExtra("is_from_qr_login", false);
+    this.k = paramIntent.getLongExtra("vid", 0L);
+    this.f = ParseUtil.a(paramIntent.getStringExtra("appId"));
+    this.g = ParseUtil.a(paramIntent.getStringExtra("key_proxy_appid"));
+    this.j = paramIntent.getLongExtra("login_cost", 0L);
+    this.i = paramIntent.getLongExtra("authListCostTime", 0L);
+    this.h = paramIntent.getLongExtra("authStartTime", SystemClock.elapsedRealtime());
+    SSOLog.a("SelectPermissionPresenter", new Object[] { "onCreateView3 mCurrentAppId=", Long.valueOf(this.f), ", mProxyCurrentAppId=", Long.valueOf(this.g), ", mIsFromQrLogin=", Boolean.valueOf(this.m) });
   }
   
   public void a(boolean paramBoolean)
@@ -228,10 +209,29 @@ public class SelectPermissionPresenter
     }
     ThreadManager.executeOnFileThread(new SelectPermissionPresenter.1(this));
   }
+  
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.e.iterator();
+    while (localIterator.hasNext())
+    {
+      localStringBuilder.append(((Permission)localIterator.next()).b);
+      localStringBuilder.append(" ");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void c()
+  {
+    SSOLog.a("SelectPermissionPresenter", new Object[] { "doAuth" });
+    this.d = 0;
+    d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.SelectPermissionPresenter
  * JD-Core Version:    0.7.0.1
  */

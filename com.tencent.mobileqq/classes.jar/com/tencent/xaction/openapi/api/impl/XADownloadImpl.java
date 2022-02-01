@@ -12,7 +12,11 @@ public class XADownloadImpl
 {
   public File getDownloadPath()
   {
-    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath(), "XA_865.zip");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(SCID);
+    ((StringBuilder)localObject).append(".zip");
+    localObject = ((StringBuilder)localObject).toString();
+    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath(), (String)localObject);
   }
   
   public File getInstallRoot()
@@ -31,7 +35,7 @@ public class XADownloadImpl
   {
     try
     {
-      ((IVasQuickUpdateService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "XA_865", "xaction");
+      ((IVasQuickUpdateService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, SCID, "xaction");
       return;
     }
     finally
@@ -43,7 +47,7 @@ public class XADownloadImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.openapi.api.impl.XADownloadImpl
  * JD-Core Version:    0.7.0.1
  */

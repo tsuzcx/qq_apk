@@ -50,7 +50,7 @@ class OfflinePreviewController$1
     break label307;
     paramString5 = null;
     paramString4 = paramString5;
-    if (((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsDownload4C2C(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsDownload4C2C(this.a.b))
     {
       paramString4 = paramString5;
       if (paramBundle != null)
@@ -85,8 +85,8 @@ class OfflinePreviewController$1
         paramString5.putString("ipv6domain", paramBundle);
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback.a(paramBoolean, paramString6, str1, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString, paramString5);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramString6, str1, paramInt1, paramString1, paramString3, paramString2, this.a.c, paramString5);
     } else if (QLog.isColorLevel()) {
       QLog.e("OfflinePreviewController<FileAssistant>", 2, " callback is null");
     }
@@ -94,7 +94,7 @@ class OfflinePreviewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflinePreviewController.1
  * JD-Core Version:    0.7.0.1
  */

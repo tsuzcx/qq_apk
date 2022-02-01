@@ -8,6 +8,7 @@ import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig.SimpleMiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.model.MiniProgramSearchResultModel;
+import com.tencent.mobileqq.search.util.SearchReportUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SearchTemplatePresenter$2
@@ -17,22 +18,23 @@ class SearchTemplatePresenter$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelMiniProgramSearchResultModel.a(paramView);
+    this.a.a(paramView);
     Object localObject = new SimpleMiniAppConfig.SimpleMiniAppInfo();
-    ((SimpleMiniAppConfig.SimpleMiniAppInfo)localObject).appId = this.jdField_a_of_type_ComTencentMobileqqSearchModelMiniProgramSearchResultModel.a.appId;
+    ((SimpleMiniAppConfig.SimpleMiniAppInfo)localObject).appId = this.a.a.appId;
     SimpleMiniAppConfig localSimpleMiniAppConfig = new SimpleMiniAppConfig((SimpleMiniAppConfig.SimpleMiniAppInfo)localObject);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchModelMiniProgramSearchResultModel.a.showMask == 1) {
+    if (this.a.a.showMask == 1) {
       localObject = "used";
     } else {
       localObject = "unused";
     }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async(localSimpleMiniAppConfig, "search", "result_click", (String)localObject, this.jdField_a_of_type_ComTencentMobileqqSearchModelMiniProgramSearchResultModel.b());
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async(localSimpleMiniAppConfig, "search", "result_click", (String)localObject, this.a.g());
+    SearchReportUtil.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchTemplatePresenter.2
  * JD-Core Version:    0.7.0.1
  */

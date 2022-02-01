@@ -15,6 +15,7 @@ import com.tencent.viola.module.JSTimerModule;
 import com.tencent.viola.module.ModuleSimpleHolder;
 import com.tencent.viola.module.MonitorModule;
 import com.tencent.viola.module.RouterModule;
+import com.tencent.viola.module.V8JSTimerModule;
 import com.tencent.viola.module.ViolaModuleManager;
 import com.tencent.viola.module.WebSocketModule;
 import com.tencent.viola.ui.animation.AnimationModule;
@@ -49,7 +50,7 @@ import com.tencent.viola.ui.component.VText;
 import com.tencent.viola.ui.component.VTransform;
 import com.tencent.viola.ui.component.image.VImage2;
 import com.tencent.viola.utils.ViolaLogUtils;
-import com.tencent.viola.vinstance.VInstance;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -79,6 +80,11 @@ public class ViolaSDKEngine
       ViolaLogUtils.e("ViolaSDKEngine", " doInitInternal application is null");
     }
     ViolaBridgeManager.getInstance().post(new ViolaSDKEngine.1(paramInitConfig, paramInitCallback, paramString));
+  }
+  
+  public static void forceBaseRegisterInit()
+  {
+    baseRegisterInit = true;
   }
   
   public static void initialize(Application paramApplication, InitConfig paramInitConfig, @NonNull ViolaSDKEngine.InitCallback paramInitCallback)
@@ -156,8 +162,12 @@ public class ViolaSDKEngine
       registerComponent(VSeekBar.class, false, new String[] { "seek-bar" });
       registerComponent(VTransform.class, false, new String[] { "transform" });
       registerComponent(VLottie.class, false, new String[] { "vlottie" });
-      registerComponent(VInstance.class, false, new String[] { "instance" });
-      registerModule("jsTimer", JSTimerModule.class, true);
+      boolean bool = ViolaUtils.useV8Engine();
+      if (bool) {
+        registerModule("jsTimer", V8JSTimerModule.class, true);
+      } else {
+        registerModule("jsTimer", JSTimerModule.class, true);
+      }
       registerModule("http", HttpModule.class, true);
       registerModule("event", EventModule.class, true);
       registerModule("animation", AnimationModule.class, false);
@@ -248,7 +258,7 @@ public class ViolaSDKEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKEngine
  * JD-Core Version:    0.7.0.1
  */

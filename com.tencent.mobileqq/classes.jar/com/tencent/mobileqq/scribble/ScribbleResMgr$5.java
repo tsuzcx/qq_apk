@@ -14,23 +14,23 @@ class ScribbleResMgr$5
   
   public void run()
   {
-    ScribbleResMgr.b(this.this$0, this.jdField_a_of_type_Int, 0, true);
+    ScribbleResMgr.b(this.this$0, this.a, 0, true);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = new ScribbleResMgr.5.1(this);
     localHttpNetReq.mReqUrl = "";
     localHttpNetReq.mHttpMethod = 0;
-    if (this.jdField_a_of_type_Int == 3)
-    {
-      localHttpNetReq.mReqUrl = ScribbleResMgr.e(this.this$0);
-      localHttpNetReq.mOutPath = ScribbleResMgr.a(this.this$0);
-    }
-    if (this.jdField_a_of_type_Int == 4)
+    if (this.a == 3)
     {
       localHttpNetReq.mReqUrl = ScribbleResMgr.f(this.this$0);
-      localHttpNetReq.mOutPath = ScribbleResMgr.c(this.this$0);
+      localHttpNetReq.mOutPath = ScribbleResMgr.b(this.this$0);
+    }
+    if (this.a == 4)
+    {
+      localHttpNetReq.mReqUrl = ScribbleResMgr.g(this.this$0);
+      localHttpNetReq.mOutPath = ScribbleResMgr.d(this.this$0);
     }
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
-    ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
+    ((IHttpEngineService)this.b.getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -42,7 +42,7 @@ class ScribbleResMgr$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.5
  * JD-Core Version:    0.7.0.1
  */

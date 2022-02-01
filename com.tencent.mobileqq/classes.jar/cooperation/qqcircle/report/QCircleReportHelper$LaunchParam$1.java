@@ -2,7 +2,7 @@ package cooperation.qqcircle.report;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 final class QCircleReportHelper$LaunchParam$1
@@ -17,7 +17,7 @@ final class QCircleReportHelper$LaunchParam$1
     }
     catch (Throwable paramParcel)
     {
-      RFLog.e("QCircleReportHelper", RFLog.USR, new Object[] { paramParcel });
+      QLog.e("QCircleReportHelper", 1, paramParcel, new Object[0]);
     }
     return null;
   }
@@ -29,7 +29,7 @@ final class QCircleReportHelper$LaunchParam$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReportHelper.LaunchParam.1
  * JD-Core Version:    0.7.0.1
  */

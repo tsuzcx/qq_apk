@@ -1,7 +1,7 @@
 package com.tencent.av.opengl.effects;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.light.listener.LightAssetListener;
@@ -9,70 +9,34 @@ import org.light.listener.LightAssetListener;
 class AEFilterAVWrapperImpl$MyLightAssetListener
   implements LightAssetListener
 {
-  private static String a(int paramInt)
+  private boolean a(int paramInt)
   {
-    if (paramInt != -800)
+    return paramInt != 0;
+  }
+  
+  private static String b(int paramInt)
+  {
+    if (paramInt != -200)
     {
-      if (paramInt != -700)
+      if (paramInt != -100)
       {
-        if (paramInt != -600)
-        {
-          if (paramInt != -500)
-          {
-            if (paramInt != -400)
-            {
-              if (paramInt != -300)
-              {
-                if (paramInt != -200)
-                {
-                  if (paramInt != -100)
-                  {
-                    if (paramInt != 0) {
-                      paramInt = 2131689752;
-                    } else {
-                      paramInt = 0;
-                    }
-                  }
-                  else {
-                    paramInt = 2131689744;
-                  }
-                }
-                else {
-                  paramInt = 2131689746;
-                }
-              }
-              else {
-                paramInt = 2131689745;
-              }
-            }
-            else {
-              paramInt = 2131689751;
-            }
-          }
-          else {
-            paramInt = 2131689750;
-          }
-        }
-        else {
-          paramInt = 2131689747;
+        if (paramInt != 0) {
+          paramInt = 2131893214;
+        } else {
+          paramInt = 0;
         }
       }
       else {
-        paramInt = 2131689749;
+        paramInt = 2131893221;
       }
     }
     else {
-      paramInt = 2131689748;
+      paramInt = 2131893213;
     }
     if (paramInt != 0) {
       return HardCodeUtil.a(paramInt);
     }
     return null;
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return paramInt != 0;
   }
   
   public void OnAssetProcessing(HashMap<String, String> paramHashMap)
@@ -84,13 +48,19 @@ class AEFilterAVWrapperImpl$MyLightAssetListener
   {
     if (a(paramInt))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OnLoadAssetError: errorCode = ");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(" error reason is ");
-      localStringBuilder.append(a(paramInt));
-      QLog.i("AEFilterAVWrapperImpl", 1, localStringBuilder.toString());
-      TipsInfo.a().b(BaseApplication.getContext().getString(2131695460));
+      String str = b(paramInt);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OnLoadAssetError: errorCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" error tips is ");
+      ((StringBuilder)localObject).append(str);
+      QLog.i("AEFilterAVWrapperImpl", 1, ((StringBuilder)localObject).toString());
+      TipsInfo localTipsInfo = TipsInfo.a();
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = "";
+      }
+      localTipsInfo.b((String)localObject);
       TipsInfo.a().a(1500);
     }
   }

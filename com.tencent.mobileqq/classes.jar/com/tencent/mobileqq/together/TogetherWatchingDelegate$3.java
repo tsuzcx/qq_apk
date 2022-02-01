@@ -10,10 +10,10 @@ class TogetherWatchingDelegate$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TogetherWatchingDelegate localTogetherWatchingDelegate = this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate;
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    TogetherWatchingDelegate localTogetherWatchingDelegate = this.c;
+    String str2 = this.a;
     String str1;
-    if (this.jdField_a_of_type_Int == 8) {
+    if (this.b == 8) {
       str1 = "clk_openframe_cancel";
     } else {
       str1 = "clk_joinbar_cancel";
@@ -24,7 +24,7 @@ class TogetherWatchingDelegate$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.3
  * JD-Core Version:    0.7.0.1
  */

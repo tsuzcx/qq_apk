@@ -59,39 +59,8 @@ import mqq.os.MqqHandler;
 
 public class CrmUtils
 {
-  public static final Pattern a;
-  public static final boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("QQ语音");
-    jdField_a_of_type_Boolean = a();
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    Object localObject = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-    if (localObject != null)
-    {
-      localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramString);
-      if (localObject == null)
-      {
-        paramQQAppInterface = (EqqDetailDataManager)paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = paramQQAppInterface.a(paramString);
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.certifiedGrade > 0)) {
-            return 2130841838;
-          }
-        }
-      }
-      else if (((PublicAccountInfo)localObject).certifiedGrade > 0L)
-      {
-        return 2130841838;
-      }
-    }
-    return 0;
-  }
+  public static final Pattern a = Pattern.compile("QQ语音");
+  public static final boolean b = a();
   
   public static int a(String paramString)
   {
@@ -132,7 +101,7 @@ public class CrmUtils
     int i = 0;
     try
     {
-      boolean bool = ((QidianManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QIDIAN_MANAGER)).c(paramString, false);
+      boolean bool = ((QidianManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QIDIAN_MANAGER)).d(paramString, false);
       i = bool;
     }
     catch (Exception localException)
@@ -182,7 +151,7 @@ public class CrmUtils
         ((Activity)paramContext).startActivityForResult(paramIntent, paramInt2);
       }
       if ((paramContext instanceof Activity)) {
-        ((Activity)paramContext).overridePendingTransition(2130772006, 2130772007);
+        ((Activity)paramContext).overridePendingTransition(2130772009, 2130772010);
       }
     }
     return paramIntent;
@@ -193,58 +162,6 @@ public class CrmUtils
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
     return new ByteArrayInputStream(localByteArrayOutputStream.toByteArray());
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QidianManager.a(paramQQAppInterface, paramString))
-      {
-        paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
-        if (paramQQAppInterface != null) {
-          return paramQQAppInterface.getFriendName();
-        }
-      }
-      else
-      {
-        Object localObject = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-        if (localObject != null)
-        {
-          localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramString);
-          if (localObject != null) {
-            return ((PublicAccountInfo)localObject).name;
-          }
-          paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
-          if (paramQQAppInterface != null)
-          {
-            paramQQAppInterface = ((EqqDetailDataManager)paramQQAppInterface).a(paramString);
-            if (paramQQAppInterface != null) {
-              return paramQQAppInterface.name;
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
-              return "";
-            }
-          }
-          else if (QLog.isColorLevel())
-          {
-            QLog.e("CrmUtils", 2, "Get EqqDetailDataManager error");
-            return "";
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.e("CrmUtils", 2, "Get PublicAccountDataManager error");
-          return "";
-        }
-      }
-    }
-    else if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "We can't get name, because uin is null");
-    }
-    return "";
   }
   
   private static void a(int paramInt, QQProgressDialog paramQQProgressDialog)
@@ -277,7 +194,7 @@ public class CrmUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!b)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("IVR_TS_CrmUtils", 4, "Don't support sharp");
@@ -287,8 +204,8 @@ public class CrmUtils
     if (VcSystemInfo.isSupportSharpAudio())
     {
       ActionSheet localActionSheet = ActionSheet.create(paramContext);
-      localActionSheet.addButton(2131719732);
-      localActionSheet.addCancelButton(2131690728);
+      localActionSheet.addButton(2131917335);
+      localActionSheet.addCancelButton(2131887648);
       localActionSheet.setOnButtonClickListener(new CrmUtils.4(localActionSheet, paramQQAppInterface, paramContext, paramSessionInfo));
       localActionSheet.show();
       return;
@@ -307,7 +224,7 @@ public class CrmUtils
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("IVR_TS_CrmUtils", 4, ((StringBuilder)localObject).toString());
     }
-    if (QidianManager.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString))
+    if (QidianManager.a(paramQQAppInterface, paramSessionInfo.b))
     {
       c(paramQQAppInterface, paramContext, paramSessionInfo, paramString);
       return;
@@ -317,13 +234,13 @@ public class CrmUtils
     mobileqq_mp.GetEqqDetailInfoRequest localGetEqqDetailInfoRequest;
     if (localObject != null)
     {
-      localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramSessionInfo.b);
       if (localObject == null)
       {
         localObject = (EqqDetailDataManager)paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
         if (localObject != null)
         {
-          localObject = ((EqqDetailDataManager)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+          localObject = ((EqqDetailDataManager)localObject).a(paramSessionInfo.b);
           if (localObject == null)
           {
             if (QLog.isDevelopLevel())
@@ -335,7 +252,7 @@ public class CrmUtils
             }
             localObject = null;
             if ((paramContext instanceof Activity)) {
-              localObject = new QQProgressDialog(paramContext, paramContext.getResources().getDimensionPixelSize(2131299168));
+              localObject = new QQProgressDialog(paramContext, paramContext.getResources().getDimensionPixelSize(2131299920));
             }
             if (localObject != null) {
               ((QQProgressDialog)localObject).setCanceledOnTouchOutside(true);
@@ -354,7 +271,7 @@ public class CrmUtils
     }
     try
     {
-      localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
+      localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramSessionInfo.b));
       localNewIntent.putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
       localNewIntent.setObserver(new CrmUtils.2(paramContext, paramQQAppInterface, (QQProgressDialog)localObject, paramSessionInfo, paramString));
       paramQQAppInterface.startServlet(localNewIntent);
@@ -367,16 +284,16 @@ public class CrmUtils
         {
           if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing()))
           {
-            a(2131695275, (QQProgressDialog)localObject);
+            a(2131893010, (QQProgressDialog)localObject);
             return;
             b(paramQQAppInterface, paramContext, paramSessionInfo, null, (EqqDetail)localObject, paramString);
             return;
-            a(paramContext, 2131695217);
+            a(paramContext, 2131892951);
             ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
             return;
             b(paramQQAppInterface, paramContext, paramSessionInfo, (PublicAccountInfo)localObject, null, paramString);
             return;
-            a(paramContext, 2131695217);
+            a(paramContext, 2131892951);
             ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
           }
           return;
@@ -415,7 +332,7 @@ public class CrmUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!b)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("IVR_TS_CrmUtils", 4, "Don't support sharp");
@@ -423,9 +340,9 @@ public class CrmUtils
       return;
     }
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = 1024;
-    localSessionInfo.d = paramString2;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
+    localSessionInfo.a = 1024;
+    localSessionInfo.e = paramString2;
+    localSessionInfo.b = paramString1;
     a(paramQQAppInterface, paramContext, localSessionInfo);
   }
   
@@ -439,9 +356,9 @@ public class CrmUtils
       QLog.d("IVR_TS_CrmUtils", 4, ((StringBuilder)localObject).toString());
     }
     Object localObject = new SessionInfo();
-    ((SessionInfo)localObject).jdField_a_of_type_Int = 1024;
-    ((SessionInfo)localObject).d = paramString1;
-    ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
+    ((SessionInfo)localObject).a = 1024;
+    ((SessionInfo)localObject).e = paramString1;
+    ((SessionInfo)localObject).b = paramString2;
     a(paramQQAppInterface, paramContext, (SessionInfo)localObject, paramString3);
   }
   
@@ -487,7 +404,7 @@ public class CrmUtils
     if (!bool1) {
       return false;
     }
-    paramBaseQQAppInterface = ((FriendsManager)paramBaseQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+    paramBaseQQAppInterface = ((FriendsManager)paramBaseQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
     bool1 = bool2;
     if (paramBaseQQAppInterface != null)
     {
@@ -522,7 +439,7 @@ public class CrmUtils
           if (localObject != null)
           {
             if (((PublicAccountInfo)localObject).extendType != 2) {
-              break label157;
+              break label159;
             }
             if (QLog.isColorLevel()) {
               QLog.d("CrmUtils", 2, "isQiye PublicAccountInfo is eqq");
@@ -531,7 +448,7 @@ public class CrmUtils
           for (;;)
           {
             bool1 = true;
-            break label159;
+            break label161;
             localObject = paramBaseQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
             if ((localObject == null) || (((EqqDetailDataManager)localObject).a(paramString) == null)) {
               break;
@@ -542,9 +459,9 @@ public class CrmUtils
           }
         }
       }
-      label157:
-      bool1 = false;
       label159:
+      bool1 = false;
+      label161:
       if ((!bool1) && (paramInt == 0))
       {
         bool1 = a(paramBaseQQAppInterface, paramString);
@@ -614,7 +531,7 @@ public class CrmUtils
           if (localObject != null)
           {
             bool = ((PublicAccountInfo)localObject).hasIvrAbility();
-            break label273;
+            break label275;
           }
           if (QLog.isColorLevel()) {
             QLog.d("CrmUtils", 2, String.format("We cant find %s in public account cache", new Object[] { paramString }));
@@ -626,7 +543,7 @@ public class CrmUtils
             if (paramQQAppInterface != null)
             {
               bool = paramQQAppInterface.hasIvrAbility();
-              break label273;
+              break label275;
             }
             if (QLog.isColorLevel()) {
               QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
@@ -647,7 +564,7 @@ public class CrmUtils
         QLog.d("CrmUtils", 2, String.format("uin %s isn't crmqq or now session type isn't crm", new Object[] { paramString }));
       }
       boolean bool = false;
-      label273:
+      label275:
       if (QLog.isColorLevel()) {
         QLog.d("CrmUtils", 2, String.format("Check %s hasIvrAbility end, the result is %b", new Object[] { paramString, Boolean.valueOf(bool) }));
       }
@@ -666,57 +583,6 @@ public class CrmUtils
       QLog.d("CrmUtils", 2, "app is null or uin is empty");
     }
     return false;
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface != null) && (BmqqSegmentUtil.a(paramString)) && (BmqqSegmentUtil.c(paramString)))
-    {
-      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramString))) {
-        return 0;
-      }
-      return 1025;
-    }
-    return 1024;
-  }
-  
-  public static String b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QidianManager.a(paramQQAppInterface, paramString)) {
-        return QidianManager.a(paramQQAppInterface, paramString);
-      }
-      Object localObject = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-      str = paramString;
-      if (localObject != null)
-      {
-        localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramString);
-        if (localObject != null)
-        {
-          str = paramString;
-          if (((PublicAccountInfo)localObject).extendType == 2) {
-            return ((PublicAccountInfo)localObject).name;
-          }
-        }
-        else
-        {
-          paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
-          str = paramString;
-          if (paramQQAppInterface != null)
-          {
-            paramQQAppInterface = ((EqqDetailDataManager)paramQQAppInterface).a(paramString);
-            str = paramString;
-            if (paramQQAppInterface != null) {
-              str = paramQQAppInterface.name;
-            }
-          }
-        }
-      }
-    }
-    return str;
   }
   
   private static void b(int paramInt, QQProgressDialog paramQQProgressDialog)
@@ -764,7 +630,7 @@ public class CrmUtils
         }
         paramPublicAccountInfo = null;
         if ((paramContext instanceof Activity)) {
-          paramPublicAccountInfo = new QQProgressDialog(paramContext, paramContext.getResources().getDimensionPixelSize(2131299168));
+          paramPublicAccountInfo = new QQProgressDialog(paramContext, paramContext.getResources().getDimensionPixelSize(2131299920));
         }
         if (paramPublicAccountInfo != null) {
           paramPublicAccountInfo.setCanceledOnTouchOutside(true);
@@ -782,7 +648,7 @@ public class CrmUtils
     try
     {
       if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-        a(2131695275, paramPublicAccountInfo);
+        a(2131893010, paramPublicAccountInfo);
       }
       label313:
       if (QLog.isColorLevel())
@@ -829,7 +695,7 @@ public class CrmUtils
       paramContext.startActivity(paramString2);
       return;
     }
-    new QQToastNotifier(paramContext).a(2131693334, paramContext.getResources().getDimensionPixelSize(2131299168), 0, 1);
+    new QQToastNotifier(paramContext).notifyUser(2131890882, paramContext.getResources().getDimensionPixelSize(2131299920), 0, 1);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, EqqDetail paramEqqDetail)
@@ -899,20 +765,20 @@ public class CrmUtils
             }
             paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
             if (paramQQAppInterface == null) {
-              break label141;
+              break label143;
             }
             if (((EqqDetailDataManager)paramQQAppInterface).a(paramString) == null) {}
           }
           else
           {
             bool = true;
-            break label208;
+            break label210;
           }
           if (QLog.isColorLevel())
           {
             QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
-            break label206;
-            label141:
+            break label208;
+            label143:
             if (QLog.isColorLevel()) {
               QLog.e("CrmUtils", 2, "Get EqqDetailDataManager error");
             }
@@ -927,9 +793,9 @@ public class CrmUtils
       {
         QLog.d("CrmUtils", 2, String.format("uin %s isn't crmqq or now session type isn't crm", new Object[] { paramString }));
       }
-      label206:
-      boolean bool = false;
       label208:
+      boolean bool = false;
+      label210:
       if (QLog.isColorLevel()) {
         QLog.d("CrmUtils", 2, String.format("Check %s isContainUinInfo end, the result is %b", new Object[] { paramString, Boolean.valueOf(bool) }));
       }
@@ -941,6 +807,58 @@ public class CrmUtils
     return false;
   }
   
+  public static String c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QidianManager.a(paramQQAppInterface, paramString))
+      {
+        paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
+        if (paramQQAppInterface != null) {
+          return paramQQAppInterface.getFriendName();
+        }
+      }
+      else
+      {
+        Object localObject = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+        if (localObject != null)
+        {
+          localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramString);
+          if (localObject != null) {
+            return ((PublicAccountInfo)localObject).name;
+          }
+          paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
+          if (paramQQAppInterface != null)
+          {
+            paramQQAppInterface = ((EqqDetailDataManager)paramQQAppInterface).a(paramString);
+            if (paramQQAppInterface != null) {
+              return paramQQAppInterface.name;
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
+              return "";
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.e("CrmUtils", 2, "Get EqqDetailDataManager error");
+            return "";
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.e("CrmUtils", 2, "Get PublicAccountDataManager error");
+          return "";
+        }
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "We can't get name, because uin is null");
+    }
+    return "";
+  }
+  
   private static void c(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString)
   {
     if (QLog.isDevelopLevel())
@@ -950,9 +868,9 @@ public class CrmUtils
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("IVR_TS_CrmUtils", 4, ((StringBuilder)localObject).toString());
     }
-    Object localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    Object localObject = paramSessionInfo.b;
     int i;
-    if ((paramQQAppInterface.isVideoChatting()) && (localObject != null) && (((String)localObject).equals(paramQQAppInterface.getAVNotifyCenter().c()))) {
+    if ((paramQQAppInterface.isVideoChatting()) && (localObject != null) && (((String)localObject).equals(paramQQAppInterface.getAVNotifyCenter().v()))) {
       i = 1;
     } else {
       i = 0;
@@ -960,15 +878,15 @@ public class CrmUtils
     if (i == 0) {
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004628", "0X8004628", 0, 0, "", "", "", "");
     }
-    if (paramSessionInfo.jdField_a_of_type_Int != 1008) {
-      paramSessionInfo.jdField_a_of_type_Int = 1024;
+    if (paramSessionInfo.a != 1008) {
+      paramSessionInfo.a = 1024;
     }
     PlusPanelUtils.a(paramQQAppInterface, paramContext, paramSessionInfo, true, paramString, null);
   }
   
   public static void c(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
   {
-    if (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2)) {
+    if (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString2)) {
       return;
     }
     try
@@ -992,10 +910,86 @@ public class CrmUtils
       paramQQAppInterface.printStackTrace();
     }
   }
+  
+  public static int d(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    if (localObject != null)
+    {
+      localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramString);
+      if (localObject == null)
+      {
+        paramQQAppInterface = (EqqDetailDataManager)paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface = paramQQAppInterface.a(paramString);
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.certifiedGrade > 0)) {
+            return 2130842755;
+          }
+        }
+      }
+      else if (((PublicAccountInfo)localObject).certifiedGrade > 0L)
+      {
+        return 2130842755;
+      }
+    }
+    return 0;
+  }
+  
+  public static String e(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QidianManager.a(paramQQAppInterface, paramString)) {
+        return QidianManager.c(paramQQAppInterface, paramString);
+      }
+      Object localObject = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+      str = paramString;
+      if (localObject != null)
+      {
+        localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfoCache(paramString);
+        if (localObject != null)
+        {
+          str = paramString;
+          if (((PublicAccountInfo)localObject).extendType == 2) {
+            return ((PublicAccountInfo)localObject).name;
+          }
+        }
+        else
+        {
+          paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
+          str = paramString;
+          if (paramQQAppInterface != null)
+          {
+            paramQQAppInterface = ((EqqDetailDataManager)paramQQAppInterface).a(paramString);
+            str = paramString;
+            if (paramQQAppInterface != null) {
+              str = paramQQAppInterface.name;
+            }
+          }
+        }
+      }
+    }
+    return str;
+  }
+  
+  public static int f(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (BmqqSegmentUtil.a(paramString)) && (BmqqSegmentUtil.c(paramString)))
+    {
+      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.n(paramString))) {
+        return 0;
+      }
+      return 1025;
+    }
+    return 1024;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.eqq.CrmUtils
  * JD-Core Version:    0.7.0.1
  */

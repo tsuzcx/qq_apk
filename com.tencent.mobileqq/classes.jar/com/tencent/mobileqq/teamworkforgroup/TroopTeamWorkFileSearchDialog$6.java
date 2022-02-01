@@ -16,9 +16,9 @@ class TroopTeamWorkFileSearchDialog$6
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.a.d)
+    if (this.a.s)
     {
-      this.a.d = false;
+      this.a.s = false;
       return;
     }
     if (paramEditable == null) {
@@ -28,31 +28,31 @@ class TroopTeamWorkFileSearchDialog$6
     }
     if (paramEditable.trim().equals(""))
     {
-      this.a.c();
+      this.a.d();
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidAppActivity))
+    this.a.g.setVisibility(0);
+    if (!NetworkUtil.isNetworkAvailable(this.a.l))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask != null)
+      if (this.a.n != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask.b();
-        this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
+        this.a.n.b();
+        this.a.n = null;
       }
       this.a.b();
       return;
     }
     paramEditable = this.a;
-    paramEditable.c = false;
-    if (paramEditable.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask == null)
+    paramEditable.r = false;
+    if (paramEditable.n == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = new CountdownTimeTask(new TroopTeamWorkFileSearchDialog.6.1(this), 800);
-      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask, 5, null, true);
+      this.a.n = new CountdownTimeTask(new TroopTeamWorkFileSearchDialog.6.1(this), 800);
+      ThreadManager.post(this.a.n, 5, null, true);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask.a() > 0L)
+    if (this.a.n.c() > 0L)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask.a();
+      this.a.n.a();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -64,17 +64,17 @@ class TroopTeamWorkFileSearchDialog$6
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.a.d) && ((!this.a.d) || (this.a.jdField_b_of_type_Int > 0)))
+    if ((this.a.s) && ((!this.a.s) || (this.a.w > 0)))
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.e.setVisibility(0);
       return;
     }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.e.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.6
  * JD-Core Version:    0.7.0.1
  */

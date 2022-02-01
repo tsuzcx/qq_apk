@@ -12,30 +12,30 @@ final class CommandUtils$3
   
   public void a(int paramInt)
   {
-    CommandUtils.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidAppActivity);
+    CommandUtils.a(this.a, this.b);
   }
   
   public void a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       localArrayList.addAll(localList);
     }
     if (paramString != null) {
       localArrayList.add(paramString);
     }
-    CommandUtils.a(localArrayList, this.jdField_a_of_type_AndroidAppActivity);
+    CommandUtils.a(localArrayList, this.b);
   }
   
   public void b(int paramInt)
   {
-    CommandUtils.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidAppActivity);
+    CommandUtils.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.CommandUtils.3
  * JD-Core Version:    0.7.0.1
  */

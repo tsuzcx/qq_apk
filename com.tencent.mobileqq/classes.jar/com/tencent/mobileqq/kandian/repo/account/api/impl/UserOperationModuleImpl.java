@@ -6,6 +6,7 @@ import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
 import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
 import java.util.List;
 import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.Nullable;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
@@ -13,6 +14,13 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 public final class UserOperationModuleImpl
   implements IUserOperationModule
 {
+  public UserOperationModuleImpl()
+  {
+    UserOperationModule localUserOperationModule = UserOperationModule.getInstance();
+    Intrinsics.checkExpressionValueIsNotNull(localUserOperationModule, "UserOperationModule.getInstance()");
+    this.$$delegate_0 = localUserOperationModule;
+  }
+  
   public void getKandianTopFromServer(@Nullable String paramString)
   {
     this.$$delegate_0.getKandianTopFromServer(paramString);
@@ -50,7 +58,7 @@ public final class UserOperationModuleImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.account.api.impl.UserOperationModuleImpl
  * JD-Core Version:    0.7.0.1
  */

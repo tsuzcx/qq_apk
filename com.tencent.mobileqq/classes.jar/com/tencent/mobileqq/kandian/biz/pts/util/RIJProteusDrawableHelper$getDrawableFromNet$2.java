@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public final class RIJProteusDrawableHelper$getDrawableFromNet$2
   implements URLDrawable.URLDrawableListener
 {
-  private int jdField_a_of_type_Int;
+  private int c;
   
   RIJProteusDrawableHelper$getDrawableFromNet$2(String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack) {}
   
@@ -26,18 +26,18 @@ public final class RIJProteusDrawableHelper$getDrawableFromNet$2
   {
     Intrinsics.checkParameterIsNotNull(paramURLDrawable, "drawable");
     Intrinsics.checkParameterIsNotNull(paramThrowable, "cause");
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    int i = this.c;
+    this.c = (i + 1);
     if (i < 3) {
       paramURLDrawable.restartDownload();
     } else {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, (Drawable)paramURLDrawable);
+      this.b.onCallBack(false, (Drawable)paramURLDrawable);
     }
     paramURLDrawable = new StringBuilder();
     paramURLDrawable.append("getDrawable: onFileDownloadFailed :");
-    paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable.append(this.a);
     paramURLDrawable.append("  reTry: ");
-    paramURLDrawable.append(this.jdField_a_of_type_Int);
+    paramURLDrawable.append(this.c);
     QLog.i("Q.readinjoy.proteus", 1, paramURLDrawable.toString());
   }
   
@@ -51,14 +51,14 @@ public final class RIJProteusDrawableHelper$getDrawableFromNet$2
     Intrinsics.checkParameterIsNotNull(paramURLDrawable, "drawable");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDrawable: onLoadSuccessed :");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     QLog.i("Q.readinjoy.proteus", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)paramURLDrawable);
+    this.b.onCallBack(true, (Drawable)paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.RIJProteusDrawableHelper.getDrawableFromNet.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.PointF;
 import android.graphics.Shader;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -189,6 +190,10 @@ public abstract class VComponent<T extends View>
       if (!paramJSONObject1.has(paramString)) {
         return;
       }
+      ViolaInstance localViolaInstance = getInstance();
+      if (localViolaInstance == null) {
+        return;
+      }
       paramJSONObject1 = paramJSONObject1.optJSONObject(paramString);
       Iterator localIterator = paramJSONObject1.keys();
       JSONObject localJSONObject = new JSONObject();
@@ -196,7 +201,7 @@ public abstract class VComponent<T extends View>
       {
         String str = (String)localIterator.next();
         Object localObject = paramJSONObject1.optString(str);
-        localObject = ViolaBridgeManager.getInstance().execJSFuncByNameWithResult((String)localObject, paramList);
+        localObject = ViolaBridgeManager.getInstance().execJSFuncByNameWithResult(localViolaInstance.getRuntimeName(), (String)localObject, paramList);
         if ((localObject != null) && (((JSParam)localObject).data != null)) {
           localJSONObject.put(str, ((JSParam)localObject).data);
         }
@@ -344,45 +349,6 @@ public abstract class VComponent<T extends View>
     }
   }
   
-  private void internalApplyEvents()
-  {
-    int j = this.mDomObj.getEvents().size();
-    int i = 0;
-    while (i < j)
-    {
-      addEvent((String)this.mDomObj.getEvents().get(i));
-      i += 1;
-    }
-    addClickEvent();
-  }
-  
-  private void internalApplyLayout()
-  {
-    if (isLazy()) {
-      return;
-    }
-    DomObject localDomObject = this.mDomObj;
-    synchronized (DomObject.LOCK)
-    {
-      int i = (int)localDomObject.getLayoutX();
-      int j = (int)localDomObject.getStyle().getMarginRight(750);
-      int k = (int)localDomObject.getLayoutY();
-      int m = (int)localDomObject.getStyle().getMarginBottom(750);
-      int n = (int)localDomObject.getLayoutWidth();
-      int i1 = (int)localDomObject.getLayoutHeight();
-      if ((this.mPreRealWidth == n) && (this.mPreRealHeight == i1) && (this.mPreRealLeft == i) && (this.mPreRealTop == k)) {
-        return;
-      }
-      this.mPreRealWidth = n;
-      this.mPreRealHeight = i1;
-      this.mPreRealLeft = i;
-      this.mPreRealTop = k;
-      setHostLayoutParams(this.mHost, n, i1, i, j, k, m);
-      calFrameXY(localDomObject);
-      return;
-    }
-  }
-  
   private void internalCreateViewImpl()
   {
     if (this.mContext == null)
@@ -513,9 +479,12 @@ public abstract class VComponent<T extends View>
   private void resetBackground()
   {
     this.mBackgroundDrawable = null;
-    if (this.mHost != null) {
-      setBackgroundDrawable();
+    if (ViolaUtils.isBindDataOpmOpen())
+    {
+      setBackgroundCompat(this.mBackgroundDrawable);
+      return;
     }
+    setBackgroundDrawable();
   }
   
   private void resetBackgroundImage()
@@ -530,6 +499,27 @@ public abstract class VComponent<T extends View>
       localView.setBackgroundDrawable(null);
     }
     this.mBackgroundDrawable = null;
+  }
+  
+  private void resetChipChild()
+  {
+    if ((this.mHost != null) && (Build.VERSION.SDK_INT >= 21))
+    {
+      this.mHost.setOutlineProvider(null);
+      this.mHost.setClipToOutline(false);
+    }
+  }
+  
+  private void resetClipChildLegacy()
+  {
+    if ((this.mHost != null) && (Build.VERSION.SDK_INT >= 21))
+    {
+      if ((getHostView().getOutlineProvider() instanceof CornerViewOutlineProvider)) {
+        ((CornerViewOutlineProvider)getHostView().getOutlineProvider()).setRadius(0.0F);
+      }
+      getHostView().setOutlineProvider(null);
+      getHostView().setClipToOutline(false);
+    }
   }
   
   private void resetTransform()
@@ -549,6 +539,16 @@ public abstract class VComponent<T extends View>
     }
     localView.setPivotX(0.0F);
     localView.setPivotY(0.0F);
+  }
+  
+  private void setBackgroundCompat(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      getHostView().setBackground(paramDrawable);
+      return;
+    }
+    getHostView().setBackgroundDrawable(paramDrawable);
   }
   
   private void setBorderStyle(int paramInt, String paramString)
@@ -795,12 +795,9 @@ public abstract class VComponent<T extends View>
       try
       {
         paramJSONObject2.put("styles", paramJSONObject1);
-        if (paramJSONObject2 != null)
-        {
-          paramJSONObject1 = new MethodAnimation(this.mDomObj.getRef(), paramJSONObject2, paramString);
-          ViolaSDKManager.getInstance().getDomManager().postActionDelay(this.mInstance.getInstanceId(), paramJSONObject1, false, 16L);
-          return;
-        }
+        paramJSONObject1 = new MethodAnimation(this.mDomObj.getRef(), paramJSONObject2, paramString);
+        ViolaSDKManager.getInstance().getDomManager().postActionDelay(this.mInstance.getInstanceId(), paramJSONObject1, false, 16L);
+        return;
       }
       catch (JSONException paramJSONObject1)
       {
@@ -814,12 +811,24 @@ public abstract class VComponent<T extends View>
   
   public void applyEvents()
   {
-    internalApplyEvents();
+    applyEventsWithoutRecurse();
+  }
+  
+  public void applyEventsWithoutRecurse()
+  {
+    int j = this.mDomObj.getEvents().size();
+    int i = 0;
+    while (i < j)
+    {
+      addEvent((String)this.mDomObj.getEvents().get(i));
+      i += 1;
+    }
+    addClickEvent();
   }
   
   public void applyLayout()
   {
-    internalApplyLayout();
+    applyLayoutWithoutRecurse();
   }
   
   public final void applyLayout(DomObject paramDomObject)
@@ -833,32 +842,71 @@ public abstract class VComponent<T extends View>
   
   public void applyLayoutAndEvent()
   {
-    this.mDomObj.applyDrawLayoutStyle();
     applyLayout();
     applyEvents();
+  }
+  
+  public void applyLayoutWithoutRecurse()
+  {
+    if (isLazy()) {
+      return;
+    }
+    DomObject localDomObject = this.mDomObj;
+    synchronized (DomObject.LOCK)
+    {
+      int i = (int)localDomObject.getLayoutX();
+      int j = (int)localDomObject.getStyle().getMarginRight(750);
+      int k = (int)localDomObject.getLayoutY();
+      int m = (int)localDomObject.getStyle().getMarginBottom(750);
+      int n = (int)localDomObject.getLayoutWidth();
+      int i1 = (int)localDomObject.getLayoutHeight();
+      if ((this.mPreRealWidth == n) && (this.mPreRealHeight == i1) && (this.mPreRealLeft == i) && (this.mPreRealTop == k)) {
+        return;
+      }
+      this.mPreRealWidth = n;
+      this.mPreRealHeight = i1;
+      this.mPreRealLeft = i;
+      this.mPreRealTop = k;
+      setHostLayoutParams(this.mHost, n, i1, i, j, k, m);
+      calFrameXY(localDomObject);
+      return;
+    }
   }
   
   public void beforeBringToRootByAnim() {}
   
   public void bindData()
   {
+    bindDataWithoutRecurse();
+  }
+  
+  public void bindData(DomObject paramDomObject)
+  {
+    if (this.mDomObj != paramDomObject)
+    {
+      ViolaLogUtils.e("VComponent", "update dom not equal");
+      return;
+    }
+    this.mDomObj = paramDomObject;
+    initLifeCycle(paramDomObject);
+    bindData();
+  }
+  
+  public void bindDataWithoutRecurse()
+  {
     if (!isLazy())
     {
       updateStyle(this.mDomObj.getStyle(), false);
       updateAttrs(this.mDomObj.getAttributes());
       updateExtra(this.mDomObj.getExtra());
-      setBackgroundDrawable();
-      checkClipChild();
+      if (!ViolaUtils.isBindDataOpmOpen())
+      {
+        setBackgroundDrawable();
+        checkClipChild();
+      }
       checkDisAppearEventFromDomobject();
       updateLifeCycle("mounted");
     }
-  }
-  
-  public void bindData(DomObject paramDomObject)
-  {
-    this.mDomObj = paramDomObject;
-    initLifeCycle(paramDomObject);
-    bindData();
   }
   
   public void bindDomobj(DomObject paramDomObject)
@@ -1424,7 +1472,9 @@ public abstract class VComponent<T extends View>
     if (this.mBackgroundDrawable == null)
     {
       this.mBackgroundDrawable = new BorderDrawable();
-      View localView = this.mHost;
+      if (ViolaUtils.isBindDataOpmOpen()) {
+        setBackgroundCompat(this.mBackgroundDrawable);
+      }
     }
     return this.mBackgroundDrawable;
   }
@@ -1774,11 +1824,11 @@ public abstract class VComponent<T extends View>
     return (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("disableTouchPenetrate")) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("disableTouchPenetrate")));
   }
   
-  public void notifyChange()
+  public void notifyChange(int paramInt)
   {
     VComponentContainer localVComponentContainer = this.mParent;
     if (localVComponentContainer != null) {
-      localVComponentContainer.notifyChange();
+      localVComponentContainer.notifyChange(paramInt);
     }
   }
   
@@ -1867,83 +1917,38 @@ public abstract class VComponent<T extends View>
   
   public boolean onActivityBack()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityBack ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
     return false;
   }
   
   @Deprecated
-  public void onActivityCreate()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityCreate ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-  }
+  public void onActivityCreate() {}
   
-  public void onActivityDestroy()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityDestroy ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-  }
+  public void onActivityDestroy() {}
   
-  public void onActivityPause()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityPause ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-  }
+  public void onActivityPause() {}
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    paramIntent = new StringBuilder();
-    paramIntent.append("life onActivityResult : requestCode:");
-    paramIntent.append(paramInt1);
-    paramIntent.append("; resultCode :");
-    paramIntent.append(paramInt2);
-    ViolaLogUtils.d("VComponent", paramIntent.toString());
-  }
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void onActivityResume()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityResume ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-  }
+  public void onActivityResume() {}
   
-  public void onActivityStart()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityStart ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-  }
+  public void onActivityStart() {}
   
-  public void onActivityStop()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("life onActivityStop ref:");
-    localStringBuilder.append(getRef());
-    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-  }
+  public void onActivityStop() {}
   
   public void onBindData(DomObject paramDomObject)
   {
     this.mDomObj = paramDomObject;
     initLifeCycle(paramDomObject);
-    internalApplyEvents();
-    internalApplyLayout();
+    applyEventsWithoutRecurse();
+    applyLayoutWithoutRecurse();
     updateStyle(this.mDomObj.getStyle(), false);
     updateAttrs(this.mDomObj.getAttributes());
     updateExtra(this.mDomObj.getExtra());
-    setBackgroundDrawable();
-    checkClipChild();
+    if (!ViolaUtils.isBindDataOpmOpen())
+    {
+      setBackgroundDrawable();
+      checkClipChild();
+    }
     updateLifeCycle("mounted");
   }
   
@@ -2077,14 +2082,12 @@ public abstract class VComponent<T extends View>
     localStringBuilder.append("resetAttr: ");
     localStringBuilder.append(paramString);
     ViolaLogUtils.d("VComponent", localStringBuilder.toString());
-    if (("clipChild".equals(paramString)) && (this.mHost != null) && (Build.VERSION.SDK_INT >= 21))
-    {
-      if ((getHostView().getOutlineProvider() instanceof CornerViewOutlineProvider)) {
-        ((CornerViewOutlineProvider)getHostView().getOutlineProvider()).setRadius(0.0F);
+    if ("clipChild".equals(paramString)) {
+      if (ViolaUtils.isBindDataOpmOpen()) {
+        resetChipChild();
+      } else {
+        resetClipChildLegacy();
       }
-      getHostView().setOutlineProvider(null);
-      getHostView().setClipToOutline(false);
-      return true;
     }
     return false;
   }
@@ -2505,6 +2508,31 @@ public abstract class VComponent<T extends View>
     getOrCreateBorder().setBorderWidth(paramInt, paramFloat);
   }
   
+  protected void setClipChild()
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (getHostView() != null) && (isSetBorderRadius()))
+    {
+      float[] arrayOfFloat = getOrCreateBorder().getBorderRadiusArray();
+      if (arrayOfFloat[0] != 0.0F)
+      {
+        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[0], getContentHeight(), 0));
+        getHostView().setClipToOutline(true);
+        return;
+      }
+      if ((arrayOfFloat[1] != 0.0F) && (arrayOfFloat[1] == arrayOfFloat[2]) && (arrayOfFloat[1] != arrayOfFloat[4]))
+      {
+        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[1], getContentHeight(), 1));
+        getHostView().setClipToOutline(true);
+        return;
+      }
+      if ((arrayOfFloat[3] != 0.0F) && (arrayOfFloat[3] == arrayOfFloat[4]) && (arrayOfFloat[3] != arrayOfFloat[1]))
+      {
+        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[3], getContentHeight(), 2));
+        getHostView().setClipToOutline(true);
+      }
+    }
+  }
+  
   public void setContentHeight(int paramInt)
   {
     this.mContentHeight = paramInt;
@@ -2743,6 +2771,11 @@ public abstract class VComponent<T extends View>
         i = 8;
       }
       break;
+    case -1629228116: 
+      if (paramString.equals("clipChild")) {
+        i = 33;
+      }
+      break;
     case -1717142839: 
       if (paramString.equals("fromTransformOpacity")) {
         i = 31;
@@ -2769,9 +2802,14 @@ public abstract class VComponent<T extends View>
     {
     default: 
       return false;
+    case 33: 
+      if (ViolaUtils.isBindDataOpmOpen()) {
+        setClipChild();
+      }
+      return true;
     case 32: 
       setVRElementId();
-      return false;
+      return true;
     case 31: 
       setOpacityCompat(ViolaUtils.getFloat(this.mDomObj.getStyle().get("opacity"), Float.valueOf(1.0F)));
       return true;
@@ -3237,7 +3275,7 @@ public abstract class VComponent<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponent
  * JD-Core Version:    0.7.0.1
  */

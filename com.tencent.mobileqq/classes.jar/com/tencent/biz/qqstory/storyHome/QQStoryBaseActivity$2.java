@@ -22,20 +22,20 @@ class QQStoryBaseActivity$2
     }
     if (this.this$0.mLoadingDialog == null)
     {
-      this.this$0.mLoadingView = new QQStoryBaseActivity.ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.mLoadingDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext);
+      this.this$0.mLoadingView = new QQStoryBaseActivity.ProgressView(this.a);
+      this.this$0.mLoadingDialog = new ReportDialog(this.a);
       this.this$0.mLoadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       this.this$0.mLoadingDialog.setCanceledOnTouchOutside(false);
       this.this$0.mLoadingDialog.requestWindowFeature(1);
       this.this$0.mLoadingDialog.setContentView(this.this$0.mLoadingView);
-      this.this$0.mLoadingDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+      this.this$0.mLoadingDialog.setOnDismissListener(this.b);
     }
     else
     {
       this.this$0.mLoadingDialog.dismiss();
     }
-    this.this$0.mLoadingDialog.setCancelable(this.jdField_a_of_type_Boolean);
-    this.this$0.mLoadingView.a(this.jdField_a_of_type_JavaLangCharSequence);
+    this.this$0.mLoadingDialog.setCancelable(this.c);
+    this.this$0.mLoadingView.a(this.d);
     this.this$0.mLoadingDialog.show();
   }
 }

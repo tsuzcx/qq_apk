@@ -35,12 +35,12 @@ public class WebViewPlugin
   public static final int TARGET_LEFT_VIEW = 1;
   public static final int TARGET_NAV_BACK = 2;
   public static final int TARGET_SYS_BACK = 3;
-  public final String TAG = getClass().getSimpleName();
   AtomicBoolean inited = new AtomicBoolean(false);
   public boolean isDestroy = false;
   public HashMap<String, JsBridgeListener> mOpenApiListeners;
   public String mPluginNameSpace = "";
   public WebViewPlugin.PluginRuntime mRuntime;
+  public final String mTAG = getClass().getSimpleName();
   public long pluginEventFlag = 0L;
   
   public static JSONObject getJsonFromJSBridge(String paramString)
@@ -71,7 +71,7 @@ public class WebViewPlugin
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("window.mqq && mqq.execEventCallback && mqq.execEventCallback(");
-    localStringBuilder.append(Util.a(paramString));
+    localStringBuilder.append(Util.c(paramString));
     localStringBuilder.append(",");
     localStringBuilder.append(String.valueOf(paramJSONObject1));
     localStringBuilder.append(",");
@@ -82,7 +82,7 @@ public class WebViewPlugin
   
   public void addOpenApiListenerIfNeeded(String paramString, JsBridgeListener paramJsBridgeListener)
   {
-    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a))
+    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.c))
     {
       if (this.mOpenApiListeners == null) {
         this.mOpenApiListeners = new HashMap();
@@ -167,7 +167,7 @@ public class WebViewPlugin
     if (QLog.isColorLevel())
     {
       paramObject = new StringBuilder();
-      paramObject.append(this.TAG);
+      paramObject.append(this.mTAG);
       paramObject.append(".troop.openapi");
       paramObject = paramObject.toString();
       localObject = new StringBuilder();
@@ -195,7 +195,7 @@ public class WebViewPlugin
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
-      paramString2.append(this.TAG);
+      paramString2.append(this.mTAG);
       paramString2.append(".troop.openapi");
       paramString2 = paramString2.toString();
       localObject = new StringBuilder();
@@ -217,12 +217,12 @@ public class WebViewPlugin
     Object localObject = this.mRuntime;
     if (localObject != null)
     {
-      localObject = ((WebViewPlugin.PluginRuntime)localObject).a();
+      localObject = ((WebViewPlugin.PluginRuntime)localObject).f();
       if (localObject != null) {
         return ((WebViewProvider)localObject).getComponentProvider().a(paramInt);
       }
-      if ((this.mRuntime.a() instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)) {
-        return ((SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)this.mRuntime.a()).getComponentProvider().a(paramInt);
+      if ((this.mRuntime.d() instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)) {
+        return ((SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)this.mRuntime.d()).getComponentProvider().a(paramInt);
       }
     }
     return null;
@@ -232,7 +232,7 @@ public class WebViewPlugin
   {
     Object localObject = this.mRuntime;
     if (localObject != null) {
-      localObject = ((WebViewPlugin.PluginRuntime)localObject).a(((WebViewPlugin.PluginRuntime)localObject).a());
+      localObject = ((WebViewPlugin.PluginRuntime)localObject).a(((WebViewPlugin.PluginRuntime)localObject).d());
     } else {
       localObject = null;
     }
@@ -240,7 +240,7 @@ public class WebViewPlugin
       return ((WebViewPluginContainer)localObject).switchRequestCode(this, paramByte);
     }
     if (QLog.isDevelopLevel()) {
-      QLog.d(this.TAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
+      QLog.d(this.mTAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
     }
     return -1;
   }
@@ -339,13 +339,13 @@ public class WebViewPlugin
     Object localObject = this.mRuntime;
     Activity localActivity = null;
     if (localObject != null) {
-      localObject = ((WebViewPlugin.PluginRuntime)localObject).a(((WebViewPlugin.PluginRuntime)localObject).a());
+      localObject = ((WebViewPlugin.PluginRuntime)localObject).a(((WebViewPlugin.PluginRuntime)localObject).d());
     } else {
       localObject = null;
     }
     WebViewPlugin.PluginRuntime localPluginRuntime = this.mRuntime;
     if (localPluginRuntime != null) {
-      localActivity = localPluginRuntime.a();
+      localActivity = localPluginRuntime.d();
     }
     if ((localObject instanceof WebViewPluginContainer))
     {
@@ -358,13 +358,13 @@ public class WebViewPlugin
       return;
     }
     if (QLog.isDevelopLevel()) {
-      QLog.d(this.TAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
+      QLog.d(this.mTAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

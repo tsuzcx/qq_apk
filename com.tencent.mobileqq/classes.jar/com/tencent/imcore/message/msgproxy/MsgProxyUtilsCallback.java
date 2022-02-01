@@ -58,17 +58,17 @@ public class MsgProxyUtilsCallback
   
   public boolean a(int paramInt)
   {
-    return MessageUtils.a(paramInt);
+    return MessageUtils.b(paramInt);
   }
   
   public boolean a(MessageRecord paramMessageRecord)
   {
-    return AnonymousChatHelper.b(paramMessageRecord);
+    return AnonymousChatHelper.f(paramMessageRecord);
   }
   
   public boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return ((paramMessageRecord2 instanceof MessageForUniteGrayTip)) && ((paramMessageRecord1 instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)paramMessageRecord2).tipParam.d > ((MessageForUniteGrayTip)paramMessageRecord1).tipParam.d);
+    return ((paramMessageRecord2 instanceof MessageForUniteGrayTip)) && ((paramMessageRecord1 instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)paramMessageRecord2).tipParam.n > ((MessageForUniteGrayTip)paramMessageRecord1).tipParam.n);
   }
   
   public boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString1, String paramString2)
@@ -133,7 +133,7 @@ public class MsgProxyUtilsCallback
                 paramString1 = paramMessageRecord2[(paramMessageRecord2.length - 1)].split("\\.")[0];
                 paramMessageRecord2 = MD5.toMD5(paramMessageRecord1[4]);
                 if (!paramMessageRecord2.equals(paramString1)) {
-                  break label1314;
+                  break label1346;
                 }
                 if (QLog.isColorLevel())
                 {
@@ -181,6 +181,9 @@ public class MsgProxyUtilsCallback
     else
     {
       if ((paramMessageRecord2.msgtype == -2007) && (paramMessageRecord1.msgtype == -2007)) {
+        return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
+      }
+      if ((paramMessageRecord2.msgtype == -8018) && (paramMessageRecord1.msgtype == -8018)) {
         return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
       }
       if ((paramMessageRecord2.msgtype == -2058) && (paramMessageRecord1.msgtype == -2058))
@@ -241,7 +244,7 @@ public class MsgProxyUtilsCallback
           return ((MessageForPLNews)paramMessageRecord2).msgEquals((MessageForPLNews)paramMessageRecord1);
         }
         if ((paramMessageRecord2.msgtype == -2065) || (paramMessageRecord2.msgtype == -2062) || (paramMessageRecord2.msgtype == -4023) || (paramMessageRecord2.msgtype == -2066) || (paramMessageRecord2.msgtype == -7009) || (paramMessageRecord2.msgtype == -7010) || (paramMessageRecord2.msgtype == -7011) || (paramMessageRecord2.msgtype == -7012) || (paramMessageRecord2.msgtype == -7013) || (paramMessageRecord2.msgtype == -7015)) {
-          break label1316;
+          break label1348;
         }
         if (paramMessageRecord2.msgtype == -2005)
         {
@@ -301,9 +304,9 @@ public class MsgProxyUtilsCallback
         }
       }
     }
-    label1314:
+    label1346:
     return false;
-    label1316:
+    label1348:
     bool1 = bool7;
     if (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq) {
       bool1 = true;
@@ -327,7 +330,7 @@ public class MsgProxyUtilsCallback
     {
       paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
       if (paramMessageRecord.tipParam != null) {
-        return paramMessageRecord.tipParam.f;
+        return paramMessageRecord.tipParam.q;
       }
     }
     return false;
@@ -335,7 +338,7 @@ public class MsgProxyUtilsCallback
   
   public boolean d(MessageRecord paramMessageRecord)
   {
-    return UniteGrayTipMsgUtil.a(paramMessageRecord);
+    return UniteGrayTipMsgUtil.b(paramMessageRecord);
   }
 }
 

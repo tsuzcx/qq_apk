@@ -18,6 +18,7 @@ public class GdtVideoCeilingData
   private int mStyle = -2147483648;
   private GdtVideoData videoData;
   private String webUrl;
+  private String widthHeightRatio;
   
   private boolean a()
   {
@@ -71,6 +72,11 @@ public class GdtVideoCeilingData
     return this.webUrl;
   }
   
+  public String getWidthHeightRatio()
+  {
+    return this.widthHeightRatio;
+  }
+  
   public boolean isValid()
   {
     GdtVideoData localGdtVideoData = this.videoData;
@@ -111,10 +117,15 @@ public class GdtVideoCeilingData
   {
     this.webUrl = paramString;
   }
+  
+  public void setWidthHeightRatio(String paramString)
+  {
+    this.widthHeightRatio = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData
  * JD-Core Version:    0.7.0.1
  */

@@ -20,48 +20,44 @@ import java.util.Set;
 public abstract class ArkAppModuleBase
   implements ark.ModuleCallbackWrapper
 {
-  public static boolean a = true;
-  protected int a;
-  private long jdField_a_of_type_Long = 1L;
-  protected ark.Application a;
-  private final HashMap<Long, ark.VariantWrapper> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final Map<String, Set<TokenBucket>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  protected String b;
-  private final HashMap<String, ArkModuleMethod> b;
-  protected String c = null;
-  protected String d = null;
+  public static boolean j = true;
+  private long a = 1L;
+  private final HashMap<Long, ark.VariantWrapper> b = new HashMap();
+  private final Map<String, Set<TokenBucket>> c = new HashMap();
+  private final HashMap<String, ArkModuleMethod> d = new HashMap();
+  protected int e = 0;
+  protected String f = null;
+  protected String g = null;
+  protected String h = null;
+  protected ark.Application i = null;
   
   protected ArkAppModuleBase(ark.Application paramApplication, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentArkArk$Application = null;
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentArkArk$Application = paramApplication;
-    this.jdField_b_of_type_JavaLangString = paramApplication.GetSpecific("appName");
-    this.d = paramApplication.GetSpecific("appPath");
-    this.c = paramApplication.GetID();
-    this.jdField_a_of_type_Int = paramInt;
-    a();
+    this.i = paramApplication;
+    this.f = paramApplication.GetSpecific("appName");
+    this.h = paramApplication.GetSpecific("appPath");
+    this.g = paramApplication.GetID();
+    this.e = paramInt;
+    d();
   }
   
-  private void a()
+  private void d()
   {
     ArkModuleMethod[] arrayOfArkModuleMethod = a();
     if (arrayOfArkModuleMethod != null)
     {
-      int j = arrayOfArkModuleMethod.length;
-      int i = 0;
-      while (i < j)
+      int m = arrayOfArkModuleMethod.length;
+      int k = 0;
+      while (k < m)
       {
-        ArkModuleMethod localArkModuleMethod = arrayOfArkModuleMethod[i];
-        this.jdField_b_of_type_JavaUtilHashMap.put(localArkModuleMethod.a(), localArkModuleMethod);
-        i += 1;
+        ArkModuleMethod localArkModuleMethod = arrayOfArkModuleMethod[k];
+        this.d.put(localArkModuleMethod.a(), localArkModuleMethod);
+        k += 1;
       }
     }
   }
   
-  public static Activity b()
+  public static Activity h()
   {
     if (QBaseActivity.sTopActivity != null) {
       return QBaseActivity.sTopActivity;
@@ -71,11 +67,11 @@ public abstract class ArkAppModuleBase
   
   public void Destruct()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((ark.VariantWrapper)((Map.Entry)localIterator.next()).getValue()).Reset();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b.clear();
   }
   
   public String GetTypeName()
@@ -85,7 +81,7 @@ public abstract class ArkAppModuleBase
   
   public boolean HasMethod(String paramString)
   {
-    paramString = (ArkModuleMethod)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (ArkModuleMethod)this.d.get(paramString);
     if (paramString == null) {
       return false;
     }
@@ -111,7 +107,7 @@ public abstract class ArkAppModuleBase
   
   public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    ArkModuleMethod localArkModuleMethod = (ArkModuleMethod)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    ArkModuleMethod localArkModuleMethod = (ArkModuleMethod)this.d.get(paramString);
     if (localArkModuleMethod == null) {
       return false;
     }
@@ -131,7 +127,7 @@ public abstract class ArkAppModuleBase
       QLog.i("ArkApp.ArkAppModuleBase", 1, paramArrayOfVariantWrapper.toString());
       return false;
     }
-    if ((!c()) && (!localArkModuleMethod.a()))
+    if ((!g()) && (!localArkModuleMethod.b()))
     {
       paramString = new StringBuilder();
       paramString.append("Invoke, method not support multiprocess, method=");
@@ -151,20 +147,20 @@ public abstract class ArkAppModuleBase
       if (!paramVariantWrapper.IsFunction()) {
         return 0L;
       }
-      this.jdField_a_of_type_Long += 1L;
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = 1L;
+      this.a += 1L;
+      if (this.a == 0L) {
+        this.a = 1L;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), paramVariantWrapper);
-      l = this.jdField_a_of_type_Long;
+      this.b.put(Long.valueOf(this.a), paramVariantWrapper);
+      l = this.a;
     }
     return l;
   }
   
   protected ark.VariantWrapper a(long paramLong)
   {
-    ark.VariantWrapper localVariantWrapper = (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    ark.VariantWrapper localVariantWrapper = (ark.VariantWrapper)this.b.get(Long.valueOf(paramLong));
+    this.b.remove(Long.valueOf(paramLong));
     return localVariantWrapper;
   }
   
@@ -175,12 +171,12 @@ public abstract class ArkAppModuleBase
       if (QLog.isColorLevel()) {
         QLog.i("ArkApp", 2, String.format("ModuleBase.addTokenBucket.api:%s,times:%d,period:%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
       }
-      Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      Set localSet = (Set)this.c.get(paramString);
       Object localObject = localSet;
       if (localSet == null)
       {
         localObject = new HashSet();
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+        this.c.put(paramString, localObject);
       }
       ((Set)localObject).add(new TokenBucket(paramLong1, paramLong2));
     }
@@ -194,19 +190,17 @@ public abstract class ArkAppModuleBase
       while (paramList.hasNext())
       {
         ApiFrequencyConfig localApiFrequencyConfig = (ApiFrequencyConfig)paramList.next();
-        a(localApiFrequencyConfig.jdField_a_of_type_JavaLangString, localApiFrequencyConfig.jdField_a_of_type_Long, localApiFrequencyConfig.b);
+        a(localApiFrequencyConfig.a, localApiFrequencyConfig.b, localApiFrequencyConfig.c);
       }
     }
   }
   
-  public abstract boolean a();
-  
   boolean a(ArkModuleMethod paramArkModuleMethod)
   {
-    if (paramArkModuleMethod.b()) {
+    if (paramArkModuleMethod.d()) {
       return true;
     }
-    return this.jdField_a_of_type_Int == 0;
+    return this.e == 0;
   }
   
   protected boolean a(String paramString)
@@ -215,7 +209,7 @@ public abstract class ArkAppModuleBase
     boolean bool2 = true;
     if (!bool1)
     {
-      Object localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      Object localObject = (Set)this.c.get(paramString);
       if (localObject == null) {
         return true;
       }
@@ -239,32 +233,34 @@ public abstract class ArkAppModuleBase
   
   protected ark.VariantWrapper b(long paramLong)
   {
-    return (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    return (ark.VariantWrapper)this.b.get(Long.valueOf(paramLong));
   }
   
   public abstract boolean b();
   
   boolean b(ArkModuleMethod paramArkModuleMethod)
   {
-    if (c()) {
+    if (g()) {
       return true;
     }
-    return paramArkModuleMethod.a();
+    return paramArkModuleMethod.b();
   }
   
-  boolean c()
-  {
-    return SysUtil.a();
-  }
+  public abstract boolean c();
   
   boolean c(ArkModuleMethod paramArkModuleMethod)
   {
-    return ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, paramArkModuleMethod.b());
+    return ArkAPIPermission.a(this.f, this.e, this.i, paramArkModuleMethod.c());
+  }
+  
+  boolean g()
+  {
+    return SysUtil.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppModuleBase
  * JD-Core Version:    0.7.0.1
  */

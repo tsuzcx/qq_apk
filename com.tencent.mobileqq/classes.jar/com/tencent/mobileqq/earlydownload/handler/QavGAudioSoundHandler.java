@@ -16,19 +16,9 @@ public class QavGAudioSoundHandler
     super("qq.android.qav.muteaudio", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10046;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return QavGAudioSoundData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadGAudioSoundDuration";
   }
   
   public void a(String paramString)
@@ -53,7 +43,7 @@ public class QavGAudioSoundHandler
   
   public void a(boolean paramBoolean)
   {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)h();
     if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
     {
       localQavGAudioSoundData.autoDownload = true;
@@ -62,28 +52,38 @@ public class QavGAudioSoundHandler
     super.a(paramBoolean);
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "qavDownloadGAudioSoundDuration";
   }
   
-  public String b()
+  public int c()
+  {
+    return 10046;
+  }
+  
+  public String d()
   {
     return null;
   }
   
-  public boolean h()
+  public boolean e()
   {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    return true;
+  }
+  
+  public boolean v()
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)h();
     if (localQavGAudioSoundData == null) {
-      return super.h();
+      return super.v();
     }
     return localQavGAudioSoundData.autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QavGAudioSoundHandler
  * JD-Core Version:    0.7.0.1
  */

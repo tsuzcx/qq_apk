@@ -8,56 +8,92 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class SerialStepExecutor
   extends SimpleStepExector
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  protected Handler a;
   protected Step a;
-  protected Object a;
-  private String jdField_a_of_type_JavaLangString = "SerialStepExecutor";
-  private ConcurrentLinkedQueue<Step> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  protected Handler b;
+  protected Object c;
+  private ConcurrentLinkedQueue<Step> d = new ConcurrentLinkedQueue();
+  private String e = "SerialStepExecutor";
+  private volatile int f = 0;
   
   public SerialStepExecutor(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.b = paramHandler;
   }
   
-  private void e()
+  private void g()
   {
-    if (this.jdField_a_of_type_Int == 2) {
+    if (this.f == 2) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SerialStepExecutor.1(this));
+    this.b.post(new SerialStepExecutor.1(this));
   }
   
   public SerialStepExecutor a(SimpleStepExector.CompletedHandler paramCompletedHandler)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler = paramCompletedHandler;
+    this.h = paramCompletedHandler;
     return this;
   }
   
   public SerialStepExecutor a(SimpleStepExector.ErrorHandler paramErrorHandler)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler = paramErrorHandler;
+    this.g = paramErrorHandler;
     return this;
   }
   
   public SerialStepExecutor a(Step paramStep)
   {
-    SLog.a("Q.qqstory.home.SerialStepExecutor", "add Step:%s", paramStep.a());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramStep);
+    SLog.a("Q.qqstory.home.SerialStepExecutor", "add Step:%s", paramStep.c());
+    this.d.offer(paramStep);
     return this;
   }
   
-  public String a()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.g != null) {
+      this.g.a(paramErrorMessage);
+    }
+    if (this.a.d())
+    {
+      this.c = this.a.a();
+      if (this.c == null)
+      {
+        paramErrorMessage = new StringBuilder();
+        paramErrorMessage.append("error step:");
+        paramErrorMessage.append(this.a.c());
+        paramErrorMessage.append(",return null result");
+        SLog.e("Q.qqstory.home.SerialStepExecutor", paramErrorMessage.toString());
+      }
+      g();
+      return;
+    }
+    f();
   }
   
-  public void a()
+  public void a(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_Int = 1;
-      e();
+      this.c = this.a.a();
+      if (this.c == null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("done step:");
+        paramString.append(this.a.c());
+        paramString.append(",return null result");
+        SLog.e("Q.qqstory.home.SerialStepExecutor", paramString.toString());
+      }
+      g();
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.f = 1;
+      g();
       return;
     }
     finally
@@ -67,65 +103,29 @@ public class SerialStepExecutor
     }
   }
   
-  public void a(ErrorMessage paramErrorMessage)
+  public String c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler.a(paramErrorMessage);
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a())
-    {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a();
-      if (this.jdField_a_of_type_JavaLangObject == null)
-      {
-        paramErrorMessage = new StringBuilder();
-        paramErrorMessage.append("error step:");
-        paramErrorMessage.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a());
-        paramErrorMessage.append(",return null result");
-        SLog.e("Q.qqstory.home.SerialStepExecutor", paramErrorMessage.toString());
-      }
-      e();
-      return;
-    }
-    c();
+    return this.e;
   }
   
-  public void a(String paramString)
+  public void e() {}
+  
+  public void f()
   {
     try
     {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a();
-      if (this.jdField_a_of_type_JavaLangObject == null)
-      {
-        paramString = new StringBuilder();
-        paramString.append("done step:");
-        paramString.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a());
-        paramString.append(",return null result");
-        SLog.e("Q.qqstory.home.SerialStepExecutor", paramString.toString());
-      }
-      e();
-      return;
-    }
-    finally {}
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = 2;
+      this.f = 2;
       SLog.b("Q.qqstory.home.SerialStepExecutor", "reset");
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.c();
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(null);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(null);
+        this.a.f();
+        this.a.a(null);
+        this.a.a(null);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler = null;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler = null;
+      this.d.clear();
+      this.b.removeCallbacksAndMessages(null);
+      this.g = null;
+      this.h = null;
       return;
     }
     finally {}

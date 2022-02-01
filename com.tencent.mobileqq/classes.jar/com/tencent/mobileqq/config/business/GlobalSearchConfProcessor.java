@@ -20,12 +20,12 @@ public class GlobalSearchConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      GlobalSearchConfBean localGlobalSearchConfBean = GlobalSearchConfBean.a(paramArrayOfQConfItem[0].a);
+      GlobalSearchConfBean localGlobalSearchConfBean = GlobalSearchConfBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("GlobalSearchConfProcessor", 2, localStringBuilder.toString());
       }
       return localGlobalSearchConfBean;
@@ -79,7 +79,7 @@ public class GlobalSearchConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.GlobalSearchConfProcessor
  * JD-Core Version:    0.7.0.1
  */

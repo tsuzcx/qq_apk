@@ -11,12 +11,12 @@ class StickerBubbleTouchDelegateCallbackForAIO$1
   
   public void run()
   {
-    ChatActivityFacade.a(StickerBubbleTouchDelegateCallbackForAIO.a(this.this$0).a(), StickerBubbleTouchDelegateCallbackForAIO.a(this.this$0).a(), (SessionInfo)StickerBubbleTouchDelegateCallbackForAIO.a(this.this$0).a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
+    ChatActivityFacade.a(StickerBubbleTouchDelegateCallbackForAIO.a(this.this$0).a(), StickerBubbleTouchDelegateCallbackForAIO.a(this.this$0).b(), (SessionInfo)StickerBubbleTouchDelegateCallbackForAIO.a(this.this$0).O(), this.a.a, this.b, "test");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegateCallbackForAIO.1
  * JD-Core Version:    0.7.0.1
  */

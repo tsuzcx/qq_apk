@@ -15,11 +15,11 @@ class PhotoListPanel$13
   
   public void run()
   {
-    Object localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694885);
+    Object localObject1 = this.this$0.k.getResources().getString(2131892588);
     if (PhotoListPanel.a(this.this$0)) {
-      localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694887);
+      localObject1 = this.this$0.k.getResources().getString(2131892590);
     }
-    int i = this.this$0.jdField_a_of_type_JavaUtilLinkedList.size();
+    int i = this.this$0.d.size();
     boolean bool2 = false;
     boolean bool1;
     if (i > 0) {
@@ -30,47 +30,47 @@ class PhotoListPanel$13
     Object localObject2 = localObject1;
     if (bool1)
     {
-      localObject2 = this.this$0.c;
+      localObject2 = this.this$0.Q;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(this.this$0.jdField_a_of_type_JavaUtilLinkedList.size());
-      localStringBuilder.append(HardCodeUtil.a(2131708103));
+      localStringBuilder.append(this.this$0.d.size());
+      localStringBuilder.append(HardCodeUtil.a(2131905901));
       ((Button)localObject2).setContentDescription(localStringBuilder.toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("(");
-      ((StringBuilder)localObject2).append(this.this$0.jdField_a_of_type_JavaUtilLinkedList.size());
+      ((StringBuilder)localObject2).append(this.this$0.d.size());
       ((StringBuilder)localObject2).append(")");
       localObject2 = ((StringBuilder)localObject2).toString();
     }
-    this.this$0.c.setText((CharSequence)localObject2);
-    this.this$0.c.setEnabled(bool1);
+    this.this$0.Q.setText((CharSequence)localObject2);
+    this.this$0.Q.setEnabled(bool1);
     if (!bool1)
     {
-      this.this$0.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
-      this.this$0.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
-      this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.this$0.k();
+      this.this$0.J.setEnabled(false);
+      this.this$0.K.setEnabled(true);
+      this.this$0.L.setEnabled(true);
+      this.this$0.M.setEnabled(true);
+      this.this$0.I.setEnabled(true);
+      this.this$0.o();
     }
     else
     {
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a((String)this.this$0.jdField_a_of_type_JavaUtilLinkedList.peek()) == 1)
+      if (this.this$0.f.a((String)this.this$0.d.peek()) == 1)
       {
-        this.this$0.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
-        if (!this.this$0.h) {
-          this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.this$0.J.setEnabled(false);
+        if (!this.this$0.D) {
+          this.this$0.I.setEnabled(false);
         }
       }
       else
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
-        localObject1 = this.this$0.jdField_b_of_type_AndroidWidgetButton;
+        this.this$0.K.setEnabled(true);
+        this.this$0.L.setEnabled(true);
+        this.this$0.M.setEnabled(true);
+        localObject1 = this.this$0.J;
         bool1 = bool2;
-        if (this.this$0.jdField_a_of_type_JavaUtilLinkedList.size() == 1)
+        if (this.this$0.d.size() == 1)
         {
           bool1 = bool2;
           if (!PhotoListPanel.a(this.this$0)) {
@@ -79,16 +79,16 @@ class PhotoListPanel$13
         }
         ((Button)localObject1).setEnabled(bool1);
       }
-      this.this$0.k();
+      this.this$0.o();
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$ImageCountChangedListener != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$ImageCountChangedListener.a(this.this$0.d());
+    if (this.this$0.V != null) {
+      this.this$0.V.a(this.this$0.getSelectedMediaCount());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.13
  * JD-Core Version:    0.7.0.1
  */

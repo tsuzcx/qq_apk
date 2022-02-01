@@ -21,70 +21,70 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TraceReportInstance
   implements Handler.Callback, ITraceReport
 {
-  private long jdField_a_of_type_Long = 0L;
-  private TraceConfig jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig;
-  private TraceReportControl jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-  private ConcurrentHashMap<Integer, TraceStateControl> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
-  private Set<Integer> jdField_b_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-  private ConcurrentHashMap<String, FeatureKeyData> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, TraceStateControl> a = new ConcurrentHashMap();
+  private Set<Integer> b = new CopyOnWriteArraySet();
+  private Set<Integer> c = new CopyOnWriteArraySet();
+  private ConcurrentHashMap<String, FeatureKeyData> d = new ConcurrentHashMap();
+  private TraceConfig e;
+  private TraceReportControl f;
+  private MqqWeakReferenceHandler g = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+  private AtomicInteger h = new AtomicInteger(-1);
+  private long i = 0L;
   
   public static TraceReportInstance a()
   {
     return TraceReportInstance.SingletonHolder.a();
   }
   
-  public static boolean a()
-  {
-    return ApolloConfigUtils.a;
-  }
-  
   private void b(int paramInt, Bundle paramBundle)
   {
-    TraceStateControl localTraceStateControl = (TraceStateControl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    TraceStateControl localTraceStateControl = (TraceStateControl)this.a.get(Integer.valueOf(paramInt));
     if (localTraceStateControl != null)
     {
       localTraceStateControl.a();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt), localTraceStateControl);
+      this.a.remove(Integer.valueOf(paramInt), localTraceStateControl);
     }
     localTraceStateControl = new TraceStateControl(paramInt);
     paramBundle.putBoolean("isSampleFocus", a(paramInt));
     localTraceStateControl.a(paramBundle);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localTraceStateControl);
+    this.a.put(Integer.valueOf(paramInt), localTraceStateControl);
   }
   
   private void c(int paramInt, Bundle paramBundle)
   {
-    TraceStateControl localTraceStateControl = (TraceStateControl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    TraceStateControl localTraceStateControl = (TraceStateControl)this.a.get(Integer.valueOf(paramInt));
     if (localTraceStateControl == null)
     {
       paramBundle = new StringBuilder();
       paramBundle.append("[cmshow][TraceReport]");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a(paramInt));
+      paramBundle.append(this.e.a(paramInt));
       QLog.e(paramBundle.toString(), 1, new Object[] { "already end the trace, featureId:", Integer.valueOf(paramInt) });
       return;
     }
     localTraceStateControl.c(paramBundle);
     paramBundle = paramBundle.getString("featureKey");
     a().a(paramBundle);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt), localTraceStateControl);
-    this.jdField_b_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+    this.a.remove(Integer.valueOf(paramInt), localTraceStateControl);
+    this.c.add(Integer.valueOf(paramInt));
   }
   
   private void d(int paramInt, Bundle paramBundle)
   {
-    TraceStateControl localTraceStateControl = (TraceStateControl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    TraceStateControl localTraceStateControl = (TraceStateControl)this.a.get(Integer.valueOf(paramInt));
     if (localTraceStateControl == null) {
       return;
     }
     localTraceStateControl.b(paramBundle);
   }
   
+  public static boolean d()
+  {
+    return ApolloConfigUtils.g;
+  }
+  
   private void e(int paramInt, Bundle paramBundle)
   {
-    TraceStateControl localTraceStateControl = (TraceStateControl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    TraceStateControl localTraceStateControl = (TraceStateControl)this.a.get(Integer.valueOf(paramInt));
     if (localTraceStateControl == null) {
       return;
     }
@@ -98,9 +98,9 @@ public class TraceReportInstance
     }
     try
     {
-      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      if (this.d.containsKey(paramString))
       {
-        paramInt = ((FeatureKeyData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).a;
+        paramInt = ((FeatureKeyData)this.d.get(paramString)).a;
         return paramInt;
       }
       return paramInt;
@@ -115,22 +115,22 @@ public class TraceReportInstance
     }
     try
     {
-      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      if (this.d.containsKey(paramString))
       {
-        paramInt = ((FeatureKeyData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).b;
+        paramInt = ((FeatureKeyData)this.d.get(paramString)).b;
         return paramInt;
       }
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= -2147483648) {
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
+        if (this.h.get() <= -2147483648) {
+          this.h.set(-1);
         }
-        int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-        FeatureKeyData localFeatureKeyData = new FeatureKeyData(paramInt, i);
+        int j = this.h.decrementAndGet();
+        FeatureKeyData localFeatureKeyData = new FeatureKeyData(paramInt, j);
         try
         {
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localFeatureKeyData);
-          return i;
+          this.d.put(paramString, localFeatureKeyData);
+          return j;
         }
         finally {}
       }
@@ -139,86 +139,67 @@ public class TraceReportInstance
     finally {}
   }
   
-  public TraceConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(4);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
-    this.jdField_b_of_type_JavaUtilSet.clear();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    TraceConfig localTraceConfig = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig;
-    if (localTraceConfig != null) {
-      localTraceConfig.a().a();
-    }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(6);
-  }
-  
   public void a(int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       return;
     }
     paramBundle.putInt("featureId", a(paramInt, paramBundle.getString("featureKey"), false));
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(5, paramBundle).sendToTarget();
+    this.g.obtainMessage(5, paramBundle).sendToTarget();
   }
   
   public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       a(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       return;
     }
-    int i = a(paramInt, paramString, true);
-    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i))) {
+    int j = a(paramInt, paramString, true);
+    if (this.b.contains(Integer.valueOf(j))) {
       return;
     }
-    this.jdField_b_of_type_JavaUtilSet.remove(Integer.valueOf(i));
-    paramBundle.putInt("featureId", i);
+    this.c.remove(Integer.valueOf(j));
+    paramBundle.putInt("featureId", j);
     if (a(paramInt))
     {
       paramBundle.putInt("initJavaHeap", TraceUtil.c());
       paramBundle.putInt("initNativeHeap", TraceUtil.d());
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(1, paramBundle).sendToTarget();
+    this.g.obtainMessage(1, paramBundle).sendToTarget();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       return;
     }
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+      this.b.add(Integer.valueOf(paramInt));
       return;
     }
-    this.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    this.b.remove(Integer.valueOf(paramInt));
   }
   
   public void a(TraceData paramTraceData)
   {
-    if (a())
+    if (d())
     {
       if (paramTraceData.featureId < 0) {
         return;
       }
-      TraceReportControl localTraceReportControl = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl;
-      if ((localTraceReportControl != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig != null))
+      TraceReportControl localTraceReportControl = this.f;
+      if ((localTraceReportControl != null) && (this.e != null))
       {
         if (localTraceReportControl.a(paramTraceData))
         {
-          this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(6);
-          this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(6, TraceReportControl.a);
+          this.g.removeMessages(6);
+          this.g.sendEmptyMessageDelayed(6, TraceReportControl.a);
           return;
         }
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(6);
+        this.g.removeMessages(6);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -232,18 +213,18 @@ public class TraceReportInstance
     TraceConfig localTraceConfig = paramTraceConfig;
     if (paramTraceConfig == null)
     {
-      localTraceConfig = TraceUtil.a();
+      localTraceConfig = TraceUtil.e();
       QLog.e("[cmshow][TraceReport]", 1, "init error, outside not init config");
     }
     if (localTraceConfig == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig = localTraceConfig;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl = new TraceReportControl();
+    this.e = localTraceConfig;
+    if (this.f == null) {
+      this.f = new TraceReportControl();
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl.a(localTraceConfig);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(0);
+    this.f.a(localTraceConfig);
+    this.g.sendEmptyMessage(0);
   }
   
   public void a(String paramString)
@@ -253,7 +234,7 @@ public class TraceReportInstance
     }
     try
     {
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      this.d.remove(paramString);
       return;
     }
     finally {}
@@ -261,63 +242,82 @@ public class TraceReportInstance
   
   public boolean a(int paramInt)
   {
-    TraceConfig localTraceConfig = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig;
+    TraceConfig localTraceConfig = this.e;
     if (localTraceConfig == null) {
       return false;
     }
-    return localTraceConfig.a(paramInt);
+    return localTraceConfig.b(paramInt);
+  }
+  
+  public TraceConfig b()
+  {
+    return this.e;
   }
   
   public void b(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       a(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       return;
     }
-    int i = a(paramInt, paramString, false);
-    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i))) {
+    int j = a(paramInt, paramString, false);
+    if (this.b.contains(Integer.valueOf(j))) {
       return;
     }
-    paramBundle.putInt("featureId", i);
+    paramBundle.putInt("featureId", j);
     if (a(paramInt))
     {
       paramBundle.putInt("endJavaHeap", TraceUtil.c());
       paramBundle.putInt("endNativeHeap", TraceUtil.d());
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, paramBundle).sendToTarget();
+    this.g.obtainMessage(2, paramBundle).sendToTarget();
+  }
+  
+  public void c()
+  {
+    this.g.sendEmptyMessage(4);
+    this.a.clear();
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    TraceConfig localTraceConfig = this.e;
+    if (localTraceConfig != null) {
+      localTraceConfig.e().a();
+    }
+    this.g.removeMessages(6);
   }
   
   public void c(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       a(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig == null) {
+    if (this.e == null) {
       return;
     }
     paramInt = a(paramInt, paramString, false);
-    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+    if (this.b.contains(Integer.valueOf(paramInt))) {
       return;
     }
-    if (this.jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+    if (this.c.contains(Integer.valueOf(paramInt))) {
       return;
     }
     paramBundle.putInt("featureId", paramInt);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(3, paramBundle).sendToTarget();
+    this.g.obtainMessage(3, paramBundle).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
+    int j = paramMessage.what;
     paramMessage = (Bundle)paramMessage.obj;
-    switch (i)
+    switch (j)
     {
     default: 
       break;
     case 6: 
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl;
+      paramMessage = this.f;
       if (paramMessage != null) {
         paramMessage.b();
       }
@@ -326,7 +326,7 @@ public class TraceReportInstance
       e(paramMessage.getInt("featureId"), paramMessage);
       break;
     case 4: 
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl;
+      paramMessage = this.f;
       if (paramMessage != null) {
         paramMessage.c();
       }
@@ -341,7 +341,7 @@ public class TraceReportInstance
       b(paramMessage.getInt("featureId"), paramMessage);
       break;
     case 0: 
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkReportTraceReportControl;
+      paramMessage = this.f;
       if (paramMessage != null) {
         paramMessage.a();
       }
@@ -352,7 +352,7 @@ public class TraceReportInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceReportInstance
  * JD-Core Version:    0.7.0.1
  */

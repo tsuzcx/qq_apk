@@ -88,7 +88,7 @@ public class WebViewFragment
   
   public void activityFinish()
   {
-    this.webViewSurface.e();
+    this.webViewSurface.g();
   }
   
   public SwiftBrowserComponentsProvider createComponentsProvider()
@@ -126,7 +126,7 @@ public class WebViewFragment
   public void doOnBackEvent()
   {
     this.mStatistics.c("state_back");
-    this.webViewKernel.f();
+    this.webViewKernel.g();
     if (TextUtils.isEmpty(this.mUrl))
     {
       localObject1 = this.webView;
@@ -137,16 +137,16 @@ public class WebViewFragment
     this.mStatistics.b(getIntent(), this.mUrl);
     this.mStatistics.a(BaseApplication.getContext(), this.mUrl, this.intent);
     BaseOpenWebMonitor.c(this.intent);
-    if (this.webViewSurface.a()) {
+    if (this.webViewSurface.d()) {
       return;
     }
-    this.webViewKernel.g();
+    this.webViewKernel.h();
     Object localObject1 = new HashMap(1);
     ((Map)localObject1).put("target", Integer.valueOf(3));
     if (this.webViewKernel.a(8589934601L, (Map)localObject1)) {
       return;
     }
-    if ((!this.mUIStyle.g) && ((this.mUIStyle.jdField_a_of_type_Long & 0x4) == 0L))
+    if ((!this.mUIStyle.n) && ((this.mUIStyle.c & 0x4) == 0L))
     {
       Object localObject2 = this.webView;
       if ((localObject2 != null) && (((TouchWebView)localObject2).canGoBack()))
@@ -182,19 +182,19 @@ public class WebViewFragment
     preInitData();
     this.mStatistics.c("state_activity_create");
     this.mStatistics.a(this.intent, this.mUrl);
-    Util.a("Web_qqbrowser_dooncreate");
+    Util.f("Web_qqbrowser_dooncreate");
     StatisticCollector.getInstance(BaseApplication.getContext(), 10000L);
-    this.mStatistics.O = System.currentTimeMillis();
+    this.mStatistics.V = System.currentTimeMillis();
     this.mNightMode = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
     localObject = this.mStatistics;
     this.isDestroyed = false;
-    ((SwiftBrowserStatistics)localObject).k = false;
-    ((SwiftBrowserStatistics)localObject).P = System.currentTimeMillis();
-    this.webViewKernel.a(paramBundle);
+    ((SwiftBrowserStatistics)localObject).av = false;
+    ((SwiftBrowserStatistics)localObject).W = System.currentTimeMillis();
+    this.webViewKernel.g(paramBundle);
     this.webViewSurface.a(paramBundle);
-    this.mStatistics.jdField_s_of_type_Long = (System.currentTimeMillis() - this.mStatistics.c);
-    Util.b("Web_qqbrowser_dooncreate");
-    this.mStatistics.T = System.currentTimeMillis();
+    this.mStatistics.v = (System.currentTimeMillis() - this.mStatistics.d);
+    Util.g("Web_qqbrowser_dooncreate");
+    this.mStatistics.aa = System.currentTimeMillis();
     return true;
   }
   
@@ -234,7 +234,7 @@ public class WebViewFragment
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.mUIStyle.jdField_a_of_type_Boolean))
+    if ((paramBoolean) && (this.mUIStyle.a))
     {
       WebViewUIUtils.b(super.getActivity());
       WebViewUIUtils.a(super.getActivity());
@@ -326,7 +326,7 @@ public class WebViewFragment
     if (localWebViewKernel == null) {
       return "";
     }
-    return localWebViewKernel.a();
+    return localWebViewKernel.f();
   }
   
   public Resources getResource()
@@ -504,8 +504,8 @@ public class WebViewFragment
     this.webViewSurface = new WebViewSurface(this);
     this.mStatistics = ((SwiftBrowserStatistics)this.mComponentsProvider.a(-2));
     this.mUIStyleHandler = ((SwiftBrowserUIStyleHandler)this.mComponentsProvider.a(2));
-    this.mUIStyle = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle;
-    this.mSwiftTitleUI = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI;
+    this.mUIStyle = this.mUIStyleHandler.f;
+    this.mSwiftTitleUI = this.mUIStyleHandler.g;
     this.webViewKernel = new WebViewKernel(this, getWebViewKernelCallBack(), this.mUIStyle);
   }
   
@@ -515,7 +515,7 @@ public class WebViewFragment
     {
       this.contentView = ((WebBrowserViewContainer)WebAccelerateHelper.preloadBrowserView);
       WebAccelerateHelper.preloadBrowserView = null;
-      this.mStatistics.jdField_s_of_type_Boolean = true;
+      this.mStatistics.aG = true;
     }
     else
     {
@@ -536,7 +536,7 @@ public class WebViewFragment
     }
     Object localObject = this.mStatistics;
     this.isDestroyed = true;
-    ((SwiftBrowserStatistics)localObject).k = true;
+    ((SwiftBrowserStatistics)localObject).av = true;
     localObject = this.share;
     if (localObject != null) {
       ((WebUiUtils.WebShareInterface)localObject).destroy();
@@ -563,8 +563,8 @@ public class WebViewFragment
   {
     try
     {
-      if ((SwiftBrowserStatistics.u) && (this.mStatistics != null) && (this.mStatistics.c > 0L)) {
-        ReportController.b(null, "dc00899", "WV_Analysis", "", "memory_consumption", SwiftBrowserStatistics.a(this.mUrl), this.mStatistics.jdField_e_of_type_Int, 0, "", this.mStatistics.f, this.mStatistics.jdField_e_of_type_JavaLangString, "");
+      if ((SwiftBrowserStatistics.aL) && (this.mStatistics != null) && (this.mStatistics.d > 0L)) {
+        ReportController.b(null, "dc00899", "WV_Analysis", "", "memory_consumption", SwiftBrowserStatistics.f(this.mUrl), this.mStatistics.aQ, 0, "", this.mStatistics.aR, this.mStatistics.aP, "");
       }
       label76:
       super.onLowMemory();
@@ -593,18 +593,18 @@ public class WebViewFragment
       this.mNightMode = ThemeUtil.isInNightMode(getAppRuntime());
       this.webViewKernel.a(8589934604L, null);
     }
-    this.webViewSurface.d();
+    this.webViewSurface.e();
   }
   
   public void onResume()
   {
-    Util.a("Web_qqbrowser_doonresume");
+    Util.f("Web_qqbrowser_doonresume");
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onResume");
     }
     this.webViewKernel.c();
-    this.webViewSurface.a(this.webViewKernel.a());
-    Util.b("Web_qqbrowser_doonresume");
+    this.webViewSurface.a(this.webViewKernel.j());
+    Util.g("Web_qqbrowser_doonresume");
     super.onResume();
   }
   
@@ -635,15 +635,15 @@ public class WebViewFragment
   {
     this.mUrl = getUrlFromIntent();
     this.mUIStyleHandler.a(this.mUrl);
-    if (this.mUIStyle.jdField_a_of_type_Long != 4L)
+    if (this.mUIStyle.c != 4L)
     {
-      if ((this.mUIStyle.jdField_a_of_type_Long & 0x2) != 0L) {
+      if ((this.mUIStyle.c & 0x2) != 0L) {
         this.intent.putExtra("hide_more_button", true);
       }
-      if ((this.mUIStyle.jdField_a_of_type_Long & 1L) != 0L) {
+      if ((this.mUIStyle.c & 1L) != 0L) {
         this.intent.putExtra("webStyle", "noBottomBar");
       }
-      if ((this.mUIStyle.jdField_a_of_type_Long & 0x100000) > 0L) {
+      if ((this.mUIStyle.c & 0x100000) > 0L) {
         this.intent.putExtra("ignoreLoginWeb", true);
       }
     }
@@ -687,7 +687,7 @@ public class WebViewFragment
   public void showActionSheet()
   {
     SwiftBrowserComponentsProvider.SwiftBrowserComponent localSwiftBrowserComponent = (SwiftBrowserComponentsProvider.SwiftBrowserComponent)this.mComponentsProvider.a(4);
-    ((IWebviewApi)QRoute.api(IWebviewApi.class)).showActionSheet(this.mUIStyle.jdField_a_of_type_Long, localSwiftBrowserComponent, ensureShare());
+    ((IWebviewApi)QRoute.api(IWebviewApi.class)).showActionSheet(this.mUIStyle.c, localSwiftBrowserComponent, ensureShare());
   }
   
   public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
@@ -723,7 +723,7 @@ public class WebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment
  * JD-Core Version:    0.7.0.1
  */

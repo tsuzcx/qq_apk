@@ -2,13 +2,13 @@ package com.tencent.mobileqq.facetoface;
 
 public abstract class Face2FaceUserData
 {
-  public int a = 1;
-  public String e;
+  public int e = 1;
+  public String f;
   
   public Face2FaceUserData(int paramInt, String paramString)
   {
-    this.a = paramInt;
-    this.e = paramString;
+    this.e = paramInt;
+    this.f = paramString;
   }
   
   public boolean equals(Object paramObject)
@@ -20,24 +20,24 @@ public abstract class Face2FaceUserData
     if (bool4)
     {
       paramObject = (Face2FaceUserData)paramObject;
-      String str = this.e;
+      String str = this.f;
       if (str == null)
       {
         bool1 = bool2;
-        if (this.a == paramObject.a)
+        if (this.e == paramObject.e)
         {
           bool1 = bool2;
-          if (paramObject.e == null) {
+          if (paramObject.f == null) {
             bool1 = true;
           }
         }
         return bool1;
       }
       bool1 = bool3;
-      if (this.a == paramObject.a)
+      if (this.e == paramObject.e)
       {
         bool1 = bool3;
-        if (str.equals(paramObject.e)) {
+        if (str.equals(paramObject.f)) {
           bool1 = true;
         }
       }
@@ -47,12 +47,12 @@ public abstract class Face2FaceUserData
   
   public String toString()
   {
-    return this.e;
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceUserData
  * JD-Core Version:    0.7.0.1
  */

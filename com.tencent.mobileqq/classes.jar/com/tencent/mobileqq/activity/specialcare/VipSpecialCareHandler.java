@@ -18,13 +18,13 @@ public class VipSpecialCareHandler
   extends QvipSpecialCareObserver
   implements IPCConstants
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private Bundle jdField_a_of_type_AndroidOsBundle = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = null;
-  private final int jdField_b_of_type_Int = 1;
-  private Bundle jdField_b_of_type_AndroidOsBundle = null;
-  private final int c = 90000;
+  private Bundle b = null;
+  private Bundle c = null;
+  private volatile int d = 0;
+  private HandlerThread e = null;
+  private Handler f = null;
+  private final int g = 1;
+  private final int h = 90000;
   
   public VipSpecialCareHandler()
   {
@@ -33,27 +33,27 @@ public class VipSpecialCareHandler
   
   private final void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int - 1;
-    this.jdField_a_of_type_Int = i;
+    int i = this.d - 1;
+    this.d = i;
     Object localObject;
     if (i != 0)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("-->warning:special care set,uncorrect state,seq=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.d);
       a(((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
     }
     try
     {
-      localObject = this.jdField_b_of_type_AndroidOsBundle;
+      localObject = this.c;
       i = paramInt;
       if (paramInt == 0) {
         i = 0;
       }
       ((Bundle)localObject).putInt("error", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", this.jdField_b_of_type_AndroidOsBundle);
-      a(this.jdField_a_of_type_AndroidOsBundle);
+      this.b.putBundle("response", this.c);
+      a(this.b);
       return;
     }
     catch (NullPointerException localNullPointerException)
@@ -71,11 +71,11 @@ public class VipSpecialCareHandler
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.f;
     if (localObject != null) {
       ((Handler)localObject).removeMessages(1);
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    localObject = this.e;
     if (localObject != null) {
       ((HandlerThread)localObject).quit();
     }
@@ -85,13 +85,13 @@ public class VipSpecialCareHandler
   
   public final void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle1;
-    this.jdField_b_of_type_AndroidOsBundle = paramBundle2;
+    this.b = paramBundle1;
+    this.c = paramBundle2;
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle1, Bundle paramBundle2)
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.d != 0)
     {
       a("-->current request is ongoing,can't do request yet");
       paramBundle2.putInt("error", -1);
@@ -99,10 +99,10 @@ public class VipSpecialCareHandler
       a(paramBundle1);
       return;
     }
-    this.jdField_a_of_type_Int += 1;
+    this.d += 1;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("-->do request,seq=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.d);
     a(((StringBuilder)localObject).toString());
     try
     {
@@ -121,8 +121,8 @@ public class VipSpecialCareHandler
         paramBundle2.add(paramBundle1);
         localObject = new ArrayList();
         ((List)localObject).add(String.valueOf(i));
-        if (this.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 90000L);
+        if (this.f != null) {
+          this.f.sendEmptyMessageDelayed(1, 90000L);
         }
         if ("special_care_set_ring".equals(paramString))
         {
@@ -146,7 +146,7 @@ public class VipSpecialCareHandler
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
     }
   }
   
@@ -171,7 +171,7 @@ public class VipSpecialCareHandler
         a("-->method_type_open_switch");
       }
     }
-    paramObject = this.jdField_a_of_type_AndroidOsHandler;
+    paramObject = this.f;
     if (paramObject != null) {
       paramObject.removeMessages(1);
     }
@@ -200,7 +200,7 @@ public class VipSpecialCareHandler
     {
       i = -1;
     }
-    paramObject = this.jdField_a_of_type_AndroidOsHandler;
+    paramObject = this.f;
     if (paramObject != null) {
       paramObject.removeMessages(1);
     }
@@ -209,7 +209,7 @@ public class VipSpecialCareHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler
  * JD-Core Version:    0.7.0.1
  */

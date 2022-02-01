@@ -11,48 +11,48 @@ import java.lang.reflect.Constructor;
 public class FeedItemCellTypeRecommendFollow<T extends View>
   extends FeedItemCell
 {
-  private Class<T> a;
+  private Class<T> G;
   
   public FeedItemCellTypeRecommendFollow(Context paramContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, Class<T> paramClass)
   {
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.G = paramClass;
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
+    this.h = true;
+    return i().n().p();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    LinearLayout localLinearLayout = new LinearLayout(this.e);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView.getClass().equals(this.jdField_a_of_type_JavaLangClass))) {
-      localLinearLayout.addView((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+    if ((this.l != null) && (this.l.getClass().equals(this.G))) {
+      localLinearLayout.addView((View)this.l);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+    if (this.r != null) {
+      localLinearLayout.addView(this.r);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+    if (this.t != null) {
+      localLinearLayout.addView(this.t);
     }
     a(localLinearLayout);
     return this;
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return this;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = ((ComponentView)this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidContentContext }));
+      this.l = ((ComponentView)this.G.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.e }));
       return this;
     }
     catch (Exception localException)
@@ -62,15 +62,15 @@ public class FeedItemCellTypeRecommendFollow<T extends View>
     return this;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    super.o();
+    super.q();
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeRecommendFollow
  * JD-Core Version:    0.7.0.1
  */

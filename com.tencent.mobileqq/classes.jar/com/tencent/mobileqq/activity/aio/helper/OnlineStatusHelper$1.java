@@ -12,7 +12,7 @@ class OnlineStatusHelper$1
   
   protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if (TextUtils.equals(paramString, this.a.a.a)) {
+    if (TextUtils.equals(paramString, this.a.c.b)) {
       this.a.b();
     }
   }
@@ -24,7 +24,7 @@ class OnlineStatusHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.OnlineStatusHelper.1
  * JD-Core Version:    0.7.0.1
  */

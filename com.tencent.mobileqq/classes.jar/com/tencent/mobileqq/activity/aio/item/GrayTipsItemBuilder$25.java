@@ -20,12 +20,12 @@ class GrayTipsItemBuilder$25
       localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(QQManagerFactory.MGR_MSG_FACADE);
       if (localObject != null)
       {
-        MessageRecord localMessageRecord = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if ((localMessageRecord != null) && (!TextUtils.equals(localMessageRecord.getExtInfoFromExtStr("sens_msg_original_text"), this.b)))
+        MessageRecord localMessageRecord = ((QQMessageFacade)localObject).a(this.a, this.b, this.c);
+        if ((localMessageRecord != null) && (!TextUtils.equals(localMessageRecord.getExtInfoFromExtStr("sens_msg_original_text"), this.d)))
         {
-          localMessageRecord.saveExtInfoToExtStr("sens_msg_original_text", this.b);
-          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extLong", Integer.valueOf(localMessageRecord.extLong));
-          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
+          localMessageRecord.saveExtInfoToExtStr("sens_msg_original_text", this.d);
+          ((QQMessageFacade)localObject).a(this.a, this.b, this.c, "extLong", Integer.valueOf(localMessageRecord.extLong));
+          ((QQMessageFacade)localObject).a(this.a, this.b, this.c, "extStr", localMessageRecord.extStr);
           ((QQMessageFacade)localObject).a(localMessageRecord);
         }
       }
@@ -34,7 +34,7 @@ class GrayTipsItemBuilder$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.25
  * JD-Core Version:    0.7.0.1
  */

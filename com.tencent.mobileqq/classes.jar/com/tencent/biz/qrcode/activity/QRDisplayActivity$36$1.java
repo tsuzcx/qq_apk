@@ -7,7 +7,7 @@ class QRDisplayActivity$36$1
   
   public void run()
   {
-    QRDisplayActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$36.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    QRDisplayActivity.a(this.c.a, this.a, this.b);
   }
 }
 

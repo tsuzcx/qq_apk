@@ -15,18 +15,18 @@ class ForwardSDKB77AIOHelper$1
   {
     if (paramInt == 1)
     {
-      ForwardShareByServerHelper.a(ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper), "shareToQQ", ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      Util.a(ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper), 0, "", "");
-      if (ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper) != null) {
-        ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper).b(1);
+      ForwardShareByServerHelper.a(ForwardSDKB77AIOHelper.a(this.c), "shareToQQ", ForwardSDKB77AIOHelper.b(this.c), this.a, this.b);
+      Util.a(ForwardSDKB77AIOHelper.a(this.c), 0, "", "");
+      if (ForwardSDKB77AIOHelper.c(this.c) != null) {
+        ForwardSDKB77AIOHelper.c(this.c).f(1);
       }
-      ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper).moveTaskToBack(true);
+      ForwardSDKB77AIOHelper.a(this.c).moveTaskToBack(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77AIOHelper.1
  * JD-Core Version:    0.7.0.1
  */

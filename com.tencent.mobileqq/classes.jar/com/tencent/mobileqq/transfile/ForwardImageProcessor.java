@@ -77,7 +77,7 @@ public class ForwardImageProcessor
     {
       long l;
       if (this.targetUinType == 1001) {
-        l = AppSetting.c;
+        l = AppSetting.l;
       } else {
         l = ((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit();
       }
@@ -131,7 +131,7 @@ public class ForwardImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardImageProcessor
  * JD-Core Version:    0.7.0.1
  */

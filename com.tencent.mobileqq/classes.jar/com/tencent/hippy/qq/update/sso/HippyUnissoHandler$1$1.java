@@ -12,7 +12,7 @@ class HippyUnissoHandler$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.update.sso.HippyUnissoHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

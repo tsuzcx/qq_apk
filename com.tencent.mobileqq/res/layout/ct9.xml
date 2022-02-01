@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:background="@drawable/f8e" android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nfo">
-            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/nh9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-                <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
-                <TextView android:id="@id/or3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yr3" />
-            </LinearLayout>
-            <com.tencent.widget.AutoBgTextView android:textSize="@dimen/bir" android:textColor="@color/skin_color_wt_participants" android:gravity="center_vertical" android:id="@id/or9" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <com.tencent.mobileqq.writetogetherui.WriteTogetherEditorView android:textColor="@color/skin_black" android:textColorHighlight="#ff00cafc" android:gravity="start" android:id="@id/mz0" android:background="@drawable/f8e" android:focusable="false" android:visibility="gone" android:nextFocusLeft="@id/mz0" android:nextFocusUp="@id/mz0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minLines="10" android:inputType="textMultiLine" android:textSelectHandle="@drawable/h57" android:textCursorDrawable="@drawable/fkx" />
-            <LinearLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="0.0dip" />
-        </LinearLayout>
-        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/nfo" android:background="@drawable/f8f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <View android:background="@drawable/fl1" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/n8_" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/skin_wt_template_entrance" android:contentDescription="@string/yri" />
-        </LinearLayout>
-    </RelativeLayout>
-    <com.tencent.mobileqq.writetogetherui.TemplateLinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/nfn" android:background="@drawable/f8g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="@drawable/i3l" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-        <ImageView android:layout_gravity="center" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hzl" />
-        <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_black" android:paddingLeft="16.0dip" android:paddingTop="3.0dip" android:paddingRight="16.0dip" android:paddingBottom="3.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/yrj" />
-        <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/o3_" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mobileqq.writetogetherui.TemplateLinearLayout>
-</FrameLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/n_d" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="351.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/n_f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <LinearLayout android:paddingRight="10.0dip" android:paddingBottom="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/4l" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:lines="1" />
+    </LinearLayout>
+    <com.tencent.image.URLImageView android:id="@id/e3" android:layout_width="45.0dip" android:layout_height="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqg" android:background="@drawable/bg2" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/aqp" android:background="@drawable/bx9" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqa" android:background="@drawable/bg1" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqk" android:background="@drawable/bx8" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

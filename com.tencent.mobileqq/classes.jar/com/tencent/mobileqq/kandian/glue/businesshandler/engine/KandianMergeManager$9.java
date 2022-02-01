@@ -1,34 +1,77 @@
 package com.tencent.mobileqq.kandian.glue.businesshandler.engine;
 
-import android.os.Parcel;
-import com.tencent.mobileqq.kandian.glue.report.task.TaskManager;
-import com.tencent.mobileqq.kandian.repo.aladdin.config.AladdinListener;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.mobileqq.kandian.ad.api.IRIJMiniGameService;
+import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
+import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
+import com.tencent.mobileqq.kandian.glue.report.ReadInJoyGlobalReporter;
+import com.tencent.mobileqq.mini.notify.MiniAppNotify.IMiniAppNotifyListener;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
 
 class KandianMergeManager$9
-  implements AladdinListener
+  implements MiniAppNotify.IMiniAppNotifyListener
 {
   KandianMergeManager$9(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a()
+  public void onNotify(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
   {
-    if (TaskManager.a())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("appid: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" scene: ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" via: ");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(" event: ");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(" timestamp: ");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.d("KandianMergeManager", 1, ((StringBuilder)localObject).toString());
+    localObject = Arrays.asList(Aladdin.getConfig(329).getString("scene", "").split("\\|"));
+    List localList = Arrays.asList(Aladdin.getConfig(329).getString("via", "").split("\\|"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("miniapp config: ");
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(localList);
+    QLog.d("KandianMergeManager", 1, localStringBuilder.toString());
+    if ("onResume".equals(paramString3))
     {
-      TaskManager.a().a();
+      if (localObject != null)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(paramInt);
+        paramString1.append("");
+        if ((((List)localObject).contains(paramString1.toString())) && (localList != null) && (localList.contains(paramString2)))
+        {
+          paramInt = RIJAppSetting.b();
+          int i = RIJKanDianFolderStatus.reportFolderStatus;
+          KandianMergeManager.e(this.a).a(KandianMergeManager.c(this.a), NetConnInfoCenter.getServerTimeMillis(), paramInt, i);
+        }
+      }
+      ((IRIJMiniGameService)QRoute.api(IRIJMiniGameService.class)).setEnterTime(Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
       return;
     }
-    TaskManager.a().c();
+    if ("onPause".equals(paramString3))
+    {
+      paramString3 = new StringBuilder();
+      paramString3.append(paramInt);
+      paramString3.append("");
+      if ((((List)localObject).contains(paramString3.toString())) && (localList != null) && (localList.contains(paramString2)) && (KandianMergeManager.e(this.a).g() > 0L)) {
+        KandianMergeManager.e(this.a).a();
+      }
+      ((IRIJMiniGameService)QRoute.api(IRIJMiniGameService.class)).notifySmallGameView(paramString1);
+    }
   }
-  
-  public int describeContents()
-  {
-    return 0;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.9
  * JD-Core Version:    0.7.0.1
  */

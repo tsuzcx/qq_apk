@@ -31,20 +31,20 @@ class GameCenterActivity$GameCenterFragment$2
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    if ((this.a.jdField_b_of_type_Boolean) && (!this.a.isDestroyed()))
+    if ((this.a.g) && (!this.a.isDestroyed()))
     {
-      if ((GameCenterActivity.GameCenterFragment.a(this.a) != null) && (GameCenterActivity.GameCenterFragment.b(this.a).canGoBack()) && (this.a.getSwiftTitleUI().a != null)) {
-        this.a.getSwiftTitleUI().a.setText(2131690529);
+      if ((GameCenterActivity.GameCenterFragment.b(this.a) != null) && (GameCenterActivity.GameCenterFragment.c(this.a).canGoBack()) && (this.a.getSwiftTitleUI().d != null)) {
+        this.a.getSwiftTitleUI().d.setText(2131887440);
       } else {
-        this.a.getSwiftTitleUI().a(GameCenterActivity.GameCenterFragment.a(this.a));
+        this.a.getSwiftTitleUI().a(GameCenterActivity.GameCenterFragment.d(this.a));
       }
       this.a.a(paramString);
-      this.a.jdField_b_of_type_Boolean = false;
+      this.a.g = false;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (GameCenterActivity.GameCenterFragment.a(this.a, paramString)) && (ScreenshotManager.a().a()))
+    if ((!TextUtils.isEmpty(paramString)) && (GameCenterActivity.GameCenterFragment.a(this.a, paramString)) && (ScreenshotManager.a().d()))
     {
       ScreenshotManager.a().a(paramWebView, new GameCenterActivity.GameCenterFragment.2.1(this));
-      ScreenshotManager.a().b();
+      ScreenshotManager.a().c();
     }
   }
   
@@ -52,7 +52,7 @@ class GameCenterActivity$GameCenterFragment$2
   {
     if ((!GameCenterActivity.GameCenterFragment.a(this.a)) && (!TextUtils.isEmpty(paramString)) && (GameCenterActivity.GameCenterFragment.a(this.a, paramString)))
     {
-      GameCenterActivity.GameCenterFragment.jdField_b_of_type_Long = System.currentTimeMillis();
+      GameCenterActivity.GameCenterFragment.e = System.currentTimeMillis();
       GameCenterActivity.GameCenterFragment.a(this.a, paramWebView);
     }
     super.onPageStarted(paramWebView, paramString, paramBitmap);
@@ -60,7 +60,7 @@ class GameCenterActivity$GameCenterFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment.2
  * JD-Core Version:    0.7.0.1
  */

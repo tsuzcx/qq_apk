@@ -71,7 +71,7 @@ public class MiniAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public com.tencent.mobileqq.microapp.app.a getAuthorizeCenter(String paramString)
@@ -146,7 +146,7 @@ public class MiniAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.MiniAppInterface
  * JD-Core Version:    0.7.0.1
  */

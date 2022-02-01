@@ -10,43 +10,38 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class AdapterWrapper
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private SparseArrayCompat<View> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private RecyclerView.Adapter a;
   private SparseArrayCompat<View> b = new SparseArrayCompat();
+  private SparseArrayCompat<View> c = new SparseArrayCompat();
   
   public AdapterWrapper(RecyclerView.Adapter paramAdapter)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
+    this.a = paramAdapter;
   }
   
   private boolean a(int paramInt)
   {
-    return paramInt < a();
+    return paramInt < b();
   }
   
   private boolean b(int paramInt)
   {
-    return paramInt >= a() + c();
+    return paramInt >= b() + d();
   }
   
-  private int c()
+  private int d()
   {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
+    return this.a.getItemCount();
   }
   
   public RecyclerView.Adapter a()
   {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+    return this.a;
   }
   
   public void a(View paramView)
   {
-    SparseArrayCompat localSparseArrayCompat = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+    SparseArrayCompat localSparseArrayCompat = this.b;
     localSparseArrayCompat.put(localSparseArrayCompat.size() + 100000, paramView);
   }
   
@@ -57,48 +52,53 @@ public class AdapterWrapper
   
   public void b(View paramView)
   {
-    SparseArrayCompat localSparseArrayCompat = this.b;
+    SparseArrayCompat localSparseArrayCompat = this.c;
     localSparseArrayCompat.put(localSparseArrayCompat.size() + 200000, paramView);
+  }
+  
+  public int c()
+  {
+    return this.c.size();
   }
   
   public int getItemCount()
   {
-    return a() + c() + b();
+    return b() + d() + c();
   }
   
   public int getItemViewType(int paramInt)
   {
     if (a(paramInt)) {
-      return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(paramInt);
+      return this.b.keyAt(paramInt);
     }
     if (b(paramInt)) {
-      return this.b.keyAt(paramInt - a() - c());
+      return this.c.keyAt(paramInt - b() - d());
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - a());
+    return this.a.getItemViewType(paramInt - b());
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     if ((!a(paramInt)) && (!b(paramInt))) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
+      this.a.onBindViewHolder(paramViewHolder, paramInt - b());
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
-      return new AdapterWrapper.ViewHolder((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
-    }
     if (this.b.get(paramInt) != null) {
       return new AdapterWrapper.ViewHolder((View)this.b.get(paramInt));
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    if (this.c.get(paramInt) != null) {
+      return new AdapterWrapper.ViewHolder((View)this.c.get(paramInt));
+    }
+    return this.a.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.widget.AdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

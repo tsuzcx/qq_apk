@@ -16,87 +16,44 @@ import java.net.URL;
 public class DefaultImageInfo
   implements FileBrowserModelBase.ImageFileInfo
 {
-  protected int a;
   protected IFileViewerAdapter a;
-  protected String a;
   protected int b;
-  protected String b;
   protected int c;
+  protected String d;
+  protected String e;
+  protected int f;
   
   public DefaultImageInfo(IFileViewerAdapter paramIFileViewerAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter = paramIFileViewerAdapter;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.c = -1;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public IFileViewerAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public URL a()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f();
-    if (TextUtils.isEmpty(str))
-    {
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.h();
-      if (str == null)
-      {
-        a(1);
-        return null;
-      }
-      this.jdField_a_of_type_Int = 2;
-    }
-    else
-    {
-      this.jdField_a_of_type_Int = 1;
-    }
-    if (FileUtil.a(str))
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        return AsyncImageView.a(str);
-      }
-      return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
-    }
-    a(1);
-    return null;
+    this.a = paramIFileViewerAdapter;
+    this.b = 0;
+    this.c = 0;
+    this.f = -1;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(paramString);
+      this.d = paramString;
+      this.a.a(paramString);
     }
   }
   
   public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter;
+    Object localObject = this.a;
     boolean bool2 = false;
     boolean bool1 = false;
     if (localObject == null) {
       return false;
     }
-    localObject = ((IFileViewerAdapter)localObject).a();
+    localObject = ((IFileViewerAdapter)localObject).r();
     if (localObject == null) {
       return false;
     }
@@ -108,68 +65,45 @@ public class DefaultImageInfo
       return bool1;
     }
     bool1 = bool2;
-    if (this.jdField_b_of_type_Int == 1) {
+    if (this.c == 1) {
       bool1 = true;
     }
     return bool1;
   }
   
-  public boolean a(String paramString)
+  public URL b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().isZipInnerFile)) {
-      return paramString.equalsIgnoreCase(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
-    }
-    return (paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c())) || (paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.e()));
-  }
-  
-  public int b()
-  {
-    if (this.c == -1) {}
-    try
+    String str = this.a.l();
+    if (TextUtils.isEmpty(str))
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f();
-      if (FileUtil.a(str))
+      str = this.a.p();
+      if (str == null)
       {
-        this.c = JpegExifReader.readOrientation(str);
-        break label43;
+        a(1);
+        return null;
       }
-      return 1;
-    }
-    catch (Exception localException)
-    {
-      label38:
-      label43:
-      break label38;
-    }
-    this.c = 0;
-    return this.c;
-  }
-  
-  public String b()
-  {
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f();
-    String str1;
-    if (str2 != null)
-    {
-      str1 = str2;
-      if (!str2.equals("")) {}
+      this.b = 2;
     }
     else
     {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.h();
-      if (str1 == null) {
-        return "";
-      }
-      this.jdField_a_of_type_Int = 2;
+      this.b = 1;
     }
-    return str1;
+    if (FileUtil.b(str))
+    {
+      if (this.b == 1) {
+        return AsyncImageView.a(str);
+      }
+      return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
+    }
+    a(1);
+    return null;
   }
   
   public void b(String paramString)
   {
-    if (FileUtil.a(paramString))
+    if (FileUtil.b(paramString))
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.e = paramString;
       return;
     }
     if (QLog.isColorLevel())
@@ -181,14 +115,80 @@ public class DefaultImageInfo
     }
   }
   
-  public boolean b()
+  public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.b() < ((IFMConfig)QRoute.api(IFMConfig.class)).getMaxCreateThumbFileSize();
+    return this.e;
+  }
+  
+  public boolean c(String paramString)
+  {
+    if ((this.a.r() != null) && (this.a.r().isZipInnerFile)) {
+      return paramString.equalsIgnoreCase(String.valueOf(this.a.a()));
+    }
+    return (paramString.equalsIgnoreCase(this.a.h())) || (paramString.equalsIgnoreCase(this.a.j()));
+  }
+  
+  public int d()
+  {
+    return this.b;
+  }
+  
+  public int e()
+  {
+    if (this.f == -1) {}
+    try
+    {
+      String str = this.a.l();
+      if (FileUtil.b(str))
+      {
+        this.f = JpegExifReader.readOrientation(str);
+        break label43;
+      }
+      return 1;
+    }
+    catch (Exception localException)
+    {
+      label38:
+      label43:
+      break label38;
+    }
+    this.f = 0;
+    return this.f;
+  }
+  
+  public boolean f()
+  {
+    return this.a.c() < ((IFMConfig)QRoute.api(IFMConfig.class)).getMaxCreateThumbFileSize();
+  }
+  
+  public String g()
+  {
+    String str2 = this.a.l();
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (!str2.equals("")) {}
+    }
+    else
+    {
+      str1 = this.a.p();
+      if (str1 == null) {
+        return "";
+      }
+      this.b = 2;
+    }
+    return str1;
+  }
+  
+  public IFileViewerAdapter h()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.DefaultImageInfo
  * JD-Core Version:    0.7.0.1
  */

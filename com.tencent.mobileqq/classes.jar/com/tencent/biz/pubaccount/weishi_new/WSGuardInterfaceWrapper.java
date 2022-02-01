@@ -8,15 +8,12 @@ public class WSGuardInterfaceWrapper
 {
   private String a;
   
-  public void G_()
+  public void a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[onApplicationForeground] mPageId:");
-    localStringBuilder.append(this.a);
-    WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
+    this.a = paramString;
   }
   
-  public void H_()
+  public void onApplicationBackground()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onApplicationBackground] mPageId:");
@@ -24,7 +21,15 @@ public class WSGuardInterfaceWrapper
     WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
   }
   
-  public void a(long paramLong)
+  public void onApplicationForeground()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onApplicationForeground] mPageId:");
+    localStringBuilder.append(this.a);
+    WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
+  }
+  
+  public void onBackgroundTimeTick(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onBackgroundTimeTick] mPageId:");
@@ -34,22 +39,17 @@ public class WSGuardInterfaceWrapper
     WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
   }
   
-  public void a(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
+  public void onBackgroundUnguardTimeTick(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[onScreensStateChanged] mPageId:");
+    localStringBuilder.append("[onBackgroundUnGuardTimeTick] mPageId:");
     localStringBuilder.append(this.a);
-    localStringBuilder.append(", isEnabled:");
-    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", tick:");
+    localStringBuilder.append(paramLong);
     WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
   }
   
-  public void b(long paramLong)
+  public void onLiteTimeTick(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onLiteTimeTick] mPageId:");
@@ -59,19 +59,19 @@ public class WSGuardInterfaceWrapper
     WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
   }
   
-  public void c(long paramLong)
+  public void onScreensStateChanged(boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[onBackgroundUnGuardTimeTick] mPageId:");
+    localStringBuilder.append("[onScreensStateChanged] mPageId:");
     localStringBuilder.append(this.a);
-    localStringBuilder.append(", tick:");
-    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", isEnabled:");
+    localStringBuilder.append(paramBoolean);
     WSLog.e("WSGuardInterfaceWrapper", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSGuardInterfaceWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -922,7 +922,7 @@ public class EngineInstaller
           {
             Object localObject3 = new JSONObject(paramBaseLibInfo.baseLibDesc);
             Object localObject2 = new EngineVersion(paramBaseLibInfo.baseLibVersion);
-            long l = ((JSONObject)localObject3).optLong("file_length");
+            long l = ((JSONObject)localObject3).optLong("file_length", -1L);
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("[MiniEng] installWithCallback ");
             ((StringBuilder)localObject3).append(paramBaseLibInfo);
@@ -1010,7 +1010,7 @@ public class EngineInstaller
             if (bool1)
             {
               paramCallback = new StringBuilder();
-              paramCallback.append(HardCodeUtil.a(2131704243));
+              paramCallback.append(HardCodeUtil.a(2131902161));
               paramCallback.append(paramBaseLibInfo.baseLibVersion);
               paramCallback.append(")");
               updateMessage(0.0F, paramCallback.toString());
@@ -1018,7 +1018,7 @@ public class EngineInstaller
             else
             {
               paramCallback = new StringBuilder();
-              paramCallback.append(HardCodeUtil.a(2131704248));
+              paramCallback.append(HardCodeUtil.a(2131902166));
               paramCallback.append(paramBaseLibInfo.baseLibVersion);
               paramCallback.append(")");
               updateMessage(0.0F, paramCallback.toString());
@@ -1038,7 +1038,7 @@ public class EngineInstaller
             }
             paramCallback = null;
             if (paramBaseLibInfo.baseLibType != 2) {
-              break label1356;
+              break label1359;
             }
             bool2 = paramBaseLibInfo.baseLibUrl.startsWith("assets://");
             paramBaseLibInfo.baseLibUrl.replace("assets://", "");
@@ -1047,7 +1047,7 @@ public class EngineInstaller
             if (bool2) {
               try
               {
-                updateMessage(0.0F, HardCodeUtil.a(2131704244));
+                updateMessage(0.0F, HardCodeUtil.a(2131902162));
                 paramBaseLibInfo = getInstallLibDir(localFile, (EngineVersion)localObject2);
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append("[MiniEng] installLocalEngine start url=");
@@ -1057,7 +1057,7 @@ public class EngineInstaller
                 QLog.i("EngineInstaller", 1, ((StringBuilder)localObject2).toString());
                 if (TextUtils.isEmpty(paramBaseLibInfo))
                 {
-                  updateMessage(0.0F, HardCodeUtil.a(2131704255));
+                  updateMessage(0.0F, HardCodeUtil.a(2131902173));
                   paramCallback = new StringBuilder();
                   paramCallback.append("[MiniEng] installLocalEngine failed installBasePath=");
                   paramCallback.append(paramBaseLibInfo);
@@ -1068,7 +1068,7 @@ public class EngineInstaller
                 localObject1 = new File(paramBaseLibInfo);
                 if ((!((File)localObject1).exists()) && (!((File)localObject1).mkdir()))
                 {
-                  updateMessage(0.0F, HardCodeUtil.a(2131704247));
+                  updateMessage(0.0F, HardCodeUtil.a(2131902165));
                   paramBaseLibInfo = new StringBuilder();
                   paramBaseLibInfo.append("[MiniEng] installLocalEngine failed targetPath=");
                   paramBaseLibInfo.append(localObject1);
@@ -1085,13 +1085,13 @@ public class EngineInstaller
                 QLog.i("EngineInstaller", 1, ((StringBuilder)localObject1).toString());
                 if ((paramCallback[0] != l) && (l >= 0L))
                 {
-                  updateMessage(0.0F, HardCodeUtil.a(2131704253));
+                  updateMessage(0.0F, HardCodeUtil.a(2131902171));
                 }
                 else
                 {
                   getSp().edit().putBoolean(paramBaseLibInfo, true).commit();
                   updateInstalledEngine();
-                  updateMessage(1.0F, HardCodeUtil.a(2131704242));
+                  updateMessage(1.0F, HardCodeUtil.a(2131902160));
                 }
                 workFinish();
               }
@@ -1126,7 +1126,7 @@ public class EngineInstaller
         }
       }
       finally {}
-      label1356:
+      label1359:
       boolean bool2 = false;
     }
   }
@@ -1161,7 +1161,7 @@ public class EngineInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineInstaller
  * JD-Core Version:    0.7.0.1
  */

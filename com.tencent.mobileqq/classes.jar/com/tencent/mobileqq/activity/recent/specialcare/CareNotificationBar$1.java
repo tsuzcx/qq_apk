@@ -9,17 +9,17 @@ class CareNotificationBar$1
   
   public void a(int paramInt)
   {
-    this.a.b();
+    this.a.d();
   }
   
   public void b(int paramInt)
   {
-    this.a.b();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,34 +20,34 @@ public class WSExpDataModule
   private void b(WeishiTask paramWeishiTask, String paramString, IGetExperimentListener paramIGetExperimentListener, long paramLong)
   {
     paramLong = SystemClock.uptimeMillis() - paramLong;
-    WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "", false);
-    if (!paramWeishiTask.a())
+    WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, "", false);
+    if (!paramWeishiTask.b())
     {
       paramString = new StringBuilder();
       paramString.append("[WSExpDataModule.java][handleOnSubThread] failCode:");
-      paramString.append(paramWeishiTask.jdField_a_of_type_Int);
+      paramString.append(paramWeishiTask.d);
       paramString.append(", failMsg:");
-      paramString.append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+      paramString.append(paramWeishiTask.c);
       WSLog.d("WSExpDataModule", paramString.toString());
-      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, paramWeishiTask.d, paramWeishiTask.c);
       if (paramIGetExperimentListener != null) {
-        paramIGetExperimentListener.a(paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+        paramIGetExperimentListener.a(paramWeishiTask.d, paramWeishiTask.c);
       }
       return;
     }
-    if (!(paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stGetAllABTestPolicyRsp))
+    if (!(paramWeishiTask.m instanceof stGetAllABTestPolicyRsp))
     {
       paramString = new StringBuilder();
       paramString.append("[WSExpDataModule.java][handleOnSubThread] task.mResultBean instanceof stGetAllABTestPolicyRsp: false! task.mResultBean:");
-      paramString.append(paramWeishiTask.jdField_a_of_type_JavaLangObject);
+      paramString.append(paramWeishiTask.m);
       WSLog.d("WSExpDataModule", paramString.toString());
-      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, -1, "数据无法解析或为空");
       if (paramIGetExperimentListener != null) {
         paramIGetExperimentListener.a(-1, "数据无法解析或为空");
       }
       return;
     }
-    paramWeishiTask = (stGetAllABTestPolicyRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
+    paramWeishiTask = (stGetAllABTestPolicyRsp)paramWeishiTask.m;
     if (paramIGetExperimentListener != null) {
       paramIGetExperimentListener.a(new WSExpPolicyEntities(paramString, paramWeishiTask));
     }
@@ -71,7 +71,7 @@ public class WSExpDataModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpDataModule
  * JD-Core Version:    0.7.0.1
  */

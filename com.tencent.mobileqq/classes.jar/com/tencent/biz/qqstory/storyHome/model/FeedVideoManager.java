@@ -17,7 +17,7 @@ public class FeedVideoManager
 {
   private OneObjectCacheList<String, FeedVideoInfo> a = new OneObjectCacheList(300);
   
-  private String a(String paramString, int paramInt)
+  private String b(String paramString, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
@@ -48,7 +48,7 @@ public class FeedVideoManager
     }
     try
     {
-      localFeedVideoInfo = (FeedVideoInfo)this.a.a(a(paramString1, paramInt3));
+      localFeedVideoInfo = (FeedVideoInfo)this.a.a(b(paramString1, paramInt3));
       if (SLog.a())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -83,7 +83,7 @@ public class FeedVideoManager
       paramList.mVideoNextCookie = paramString2;
       paramList.mIsVideoEnd = paramBoolean1;
       paramList.mVideoPullType = paramInt3;
-      this.a.a(a(paramString1, paramInt3), paramList);
+      this.a.a(b(paramString1, paramInt3), paramList);
       if (!paramBoolean1) {
         break label401;
       }
@@ -104,7 +104,7 @@ public class FeedVideoManager
         paramInt2 = 0;
       }
     }
-    localFeedVideoInfo = (FeedVideoInfo)this.a.a(a(paramString1, paramInt2));
+    localFeedVideoInfo = (FeedVideoInfo)this.a.a(b(paramString1, paramInt2));
     paramString2 = localFeedVideoInfo;
     if (localFeedVideoInfo == null) {
       paramString2 = new FeedVideoInfo();
@@ -118,7 +118,7 @@ public class FeedVideoManager
       paramString2.mVideoItemList.add(paramList.mVideoItemList.get(paramInt3 - 1));
       paramInt3 -= 1;
     }
-    this.a.a(a(paramString1, paramInt2), paramString2);
+    this.a.a(b(paramString1, paramInt2), paramString2);
     label401:
     paramString1 = new FeedVideoManager.FeedVideoInfoUpdate(paramString1, paramInt1);
     StoryDispatcher.a().dispatch(paramString1);
@@ -133,7 +133,7 @@ public class FeedVideoManager
   {
     try
     {
-      paramString = (FeedVideoInfo)this.a.a(a(paramString, paramInt));
+      paramString = (FeedVideoInfo)this.a.a(b(paramString, paramInt));
       if (paramString == null) {
         return paramString;
       }
@@ -173,7 +173,7 @@ public class FeedVideoManager
       if (paramStoryVideoItem == null) {
         return;
       }
-      paramString = (FeedVideoInfo)this.a.a(a(paramString, paramInt));
+      paramString = (FeedVideoInfo)this.a.a(b(paramString, paramInt));
       if ((paramString != null) && (paramString.mVideoItemList != null)) {
         paramString.mVideoItemList.remove(paramStoryVideoItem);
       }

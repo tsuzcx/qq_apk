@@ -11,12 +11,12 @@ class AEGIFChunkPreviewFragment$2
   
   public void onClick(View paramView)
   {
-    AEGIFChunkPreviewFragment.a(this.a).finish();
+    AEGIFChunkPreviewFragment.c(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.2
  * JD-Core Version:    0.7.0.1
  */

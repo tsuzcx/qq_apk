@@ -24,10 +24,10 @@ final class ViolaAccessHelper$3
           ViolaAccessHelper.a((String)((JSONArray)localObject2).get(i), null);
           i += 1;
         }
-        ViolaAccessHelper.jdField_a_of_type_JavaLangString = RIJQQAppInterfaceUtil.a();
-        ViolaAccessHelper.jdField_a_of_type_Long = System.currentTimeMillis();
+        ViolaAccessHelper.c = RIJQQAppInterfaceUtil.d();
+        ViolaAccessHelper.b = System.currentTimeMillis();
         if (((JSONObject)localObject1).has("use_main")) {
-          ViolaAccessHelper.jdField_a_of_type_Boolean = ((Boolean)((JSONObject)localObject1).get("use_main")).booleanValue();
+          ViolaAccessHelper.d = ((Boolean)((JSONObject)localObject1).get("use_main")).booleanValue();
         }
         if (!QLog.isColorLevel()) {
           return;
@@ -45,7 +45,7 @@ final class ViolaAccessHelper$3
           ((StringBuilder)localObject2).append(localException.getMessage());
           QLog.e("ViolaAccessHelper", 2, ((StringBuilder)localObject2).toString());
         }
-        ViolaAccessHelper.b();
+        ViolaAccessHelper.d();
         return;
       }
     }
@@ -54,7 +54,7 @@ final class ViolaAccessHelper$3
       if (QLog.isColorLevel()) {
         QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is empty!");
       }
-      ViolaAccessHelper.b();
+      ViolaAccessHelper.d();
     }
   }
   
@@ -64,7 +64,7 @@ final class ViolaAccessHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.3
  * JD-Core Version:    0.7.0.1
  */

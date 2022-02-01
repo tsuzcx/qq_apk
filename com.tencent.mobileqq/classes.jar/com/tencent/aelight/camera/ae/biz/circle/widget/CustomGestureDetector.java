@@ -8,32 +8,32 @@ import android.view.ViewConfiguration;
 
 class CustomGestureDetector
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private final ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private OnGestureListener jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetOnGestureListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 0;
-  private final float c;
-  private final float d;
+  private int a = -1;
+  private int b = 0;
+  private final ScaleGestureDetector c;
+  private VelocityTracker d;
+  private boolean e;
+  private float f;
+  private float g;
+  private final float h;
+  private final float i;
+  private OnGestureListener j;
   
   CustomGestureDetector(Context paramContext, OnGestureListener paramOnGestureListener)
   {
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
-    this.d = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.c = localViewConfiguration.getScaledTouchSlop();
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetOnGestureListener = paramOnGestureListener;
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new CustomGestureDetector.1(this));
+    this.i = localViewConfiguration.getScaledMinimumFlingVelocity();
+    this.h = localViewConfiguration.getScaledTouchSlop();
+    this.j = paramOnGestureListener;
+    this.c = new ScaleGestureDetector(paramContext, new CustomGestureDetector.1(this));
   }
   
-  private float a(MotionEvent paramMotionEvent)
+  private float b(MotionEvent paramMotionEvent)
   {
     try
     {
-      float f = paramMotionEvent.getX(this.jdField_b_of_type_Int);
-      return f;
+      float f1 = paramMotionEvent.getX(this.b);
+      return f1;
     }
     catch (Exception localException)
     {
@@ -43,12 +43,12 @@ class CustomGestureDetector
     return paramMotionEvent.getX();
   }
   
-  private float b(MotionEvent paramMotionEvent)
+  private float c(MotionEvent paramMotionEvent)
   {
     try
     {
-      float f = paramMotionEvent.getY(this.jdField_b_of_type_Int);
-      return f;
+      float f1 = paramMotionEvent.getY(this.b);
+      return f1;
     }
     catch (Exception localException)
     {
@@ -58,72 +58,72 @@ class CustomGestureDetector
     return paramMotionEvent.getY();
   }
   
-  private boolean b(MotionEvent paramMotionEvent)
+  private boolean d(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction() & 0xFF;
+    int k = paramMotionEvent.getAction() & 0xFF;
     VelocityTracker localVelocityTracker;
-    if (i != 0)
+    if (k != 0)
     {
       float f1;
       float f2;
-      if (i != 1)
+      if (k != 1)
       {
-        if (i != 2)
+        if (k != 2)
         {
-          if (i != 3)
+          if (k != 3)
           {
-            if (i == 6)
+            if (k == 6)
             {
-              i = Util.a(paramMotionEvent.getAction());
-              if (paramMotionEvent.getPointerId(i) == this.jdField_a_of_type_Int)
+              k = Util.a(paramMotionEvent.getAction());
+              if (paramMotionEvent.getPointerId(k) == this.a)
               {
-                if (i == 0) {
-                  i = 1;
+                if (k == 0) {
+                  k = 1;
                 } else {
-                  i = 0;
+                  k = 0;
                 }
-                this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(i);
-                this.jdField_a_of_type_Float = paramMotionEvent.getX(i);
-                this.jdField_b_of_type_Float = paramMotionEvent.getY(i);
+                this.a = paramMotionEvent.getPointerId(k);
+                this.f = paramMotionEvent.getX(k);
+                this.g = paramMotionEvent.getY(k);
               }
             }
           }
           else
           {
-            this.jdField_a_of_type_Int = -1;
-            localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+            this.a = -1;
+            localVelocityTracker = this.d;
             if (localVelocityTracker != null)
             {
               localVelocityTracker.recycle();
-              this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+              this.d = null;
             }
           }
         }
         else
         {
-          f1 = a(paramMotionEvent);
-          f2 = b(paramMotionEvent);
-          i = paramMotionEvent.getPointerCount();
-          float f3 = f1 - this.jdField_a_of_type_Float;
-          float f4 = f2 - this.jdField_b_of_type_Float;
-          if (!this.jdField_a_of_type_Boolean)
+          f1 = b(paramMotionEvent);
+          f2 = c(paramMotionEvent);
+          k = paramMotionEvent.getPointerCount();
+          float f3 = f1 - this.f;
+          float f4 = f2 - this.g;
+          if (!this.e)
           {
             boolean bool;
-            if (Math.sqrt(f3 * f3 + f4 * f4) >= this.c) {
+            if (Math.sqrt(f3 * f3 + f4 * f4) >= this.h) {
               bool = true;
             } else {
               bool = false;
             }
-            this.jdField_a_of_type_Boolean = bool;
+            this.e = bool;
           }
-          if (i > 1) {
-            this.jdField_a_of_type_Boolean = false;
+          if (k > 1) {
+            this.e = false;
           }
-          if (this.jdField_a_of_type_Boolean)
+          if (this.e)
           {
-            this.jdField_a_of_type_Float = f1;
-            this.jdField_b_of_type_Float = f2;
-            localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+            this.f = f1;
+            this.g = f2;
+            localVelocityTracker = this.d;
             if (localVelocityTracker != null) {
               localVelocityTracker.addMovement(paramMotionEvent);
             }
@@ -132,50 +132,50 @@ class CustomGestureDetector
       }
       else
       {
-        this.jdField_a_of_type_Int = -1;
-        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
+        this.a = -1;
+        if ((this.e) && (this.d != null))
         {
-          this.jdField_a_of_type_Float = a(paramMotionEvent);
-          this.jdField_b_of_type_Float = b(paramMotionEvent);
-          this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-          this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-          f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-          f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
-          if (Math.max(Math.abs(f1), Math.abs(f2)) >= this.d) {
-            this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetOnGestureListener.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, -f1, -f2);
+          this.f = b(paramMotionEvent);
+          this.g = c(paramMotionEvent);
+          this.d.addMovement(paramMotionEvent);
+          this.d.computeCurrentVelocity(1000);
+          f1 = this.d.getXVelocity();
+          f2 = this.d.getYVelocity();
+          if (Math.max(Math.abs(f1), Math.abs(f2)) >= this.i) {
+            this.j.a(this.f, this.g, -f1, -f2);
           }
         }
-        localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        localVelocityTracker = this.d;
         if (localVelocityTracker != null)
         {
           localVelocityTracker.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+          this.d = null;
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+      this.a = paramMotionEvent.getPointerId(0);
+      this.d = VelocityTracker.obtain();
+      localVelocityTracker = this.d;
       if (localVelocityTracker != null) {
         localVelocityTracker.addMovement(paramMotionEvent);
       }
-      this.jdField_a_of_type_Float = a(paramMotionEvent);
-      this.jdField_b_of_type_Float = b(paramMotionEvent);
-      this.jdField_a_of_type_Boolean = false;
+      this.f = b(paramMotionEvent);
+      this.g = c(paramMotionEvent);
+      this.e = false;
     }
-    i = this.jdField_a_of_type_Int;
-    if (i == -1) {
-      i = 0;
+    k = this.a;
+    if (k == -1) {
+      k = 0;
     }
-    this.jdField_b_of_type_Int = paramMotionEvent.findPointerIndex(i);
+    this.b = paramMotionEvent.findPointerIndex(k);
     return true;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress();
+    return this.c.isInProgress();
   }
   
   public boolean a(MotionEvent paramMotionEvent)
@@ -183,8 +183,8 @@ class CustomGestureDetector
     boolean bool2 = false;
     try
     {
-      boolean bool3 = this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
-      boolean bool4 = b(paramMotionEvent);
+      boolean bool3 = this.c.onTouchEvent(paramMotionEvent);
+      boolean bool4 = d(paramMotionEvent);
       boolean bool1 = bool2;
       if (bool3)
       {
@@ -201,12 +201,12 @@ class CustomGestureDetector
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.CustomGestureDetector
  * JD-Core Version:    0.7.0.1
  */

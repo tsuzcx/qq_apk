@@ -35,11 +35,11 @@ import java.text.SimpleDateFormat;
 public class QQStoryFeedItemBuilder
   extends AbstractChatItemBuilder
 {
-  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new QQStoryFeedItemBuilder.1(this);
-  private QQStoryFeedItemBuilder.FeedViewHolder jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder;
-  private MessageForQQStoryFeed jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed;
-  private boolean jdField_a_of_type_Boolean;
+  private static SimpleDateFormat h;
+  private MessageForQQStoryFeed e;
+  private QQStoryFeedItemBuilder.FeedViewHolder f;
+  private boolean g;
+  private View.OnTouchListener i = new QQStoryFeedItemBuilder.1(this);
   
   public QQStoryFeedItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -51,31 +51,31 @@ public class QQStoryFeedItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558822, null);
-      paramFeedViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369789));
-      paramFeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131369508));
-      paramFeedViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369510));
-      paramFeedViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379767));
-      paramFeedViewHolder.c = ((TextView)paramView.findViewById(2131379674));
-      paramFeedViewHolder.d = ((TextView)paramView.findViewById(2131379664));
-      paramFeedViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369355));
-      b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(b());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.c.setText(a());
-      a();
-      a(paramView);
+      paramView = LayoutInflater.from(this.c).inflate(2131624442, null);
+      paramFeedViewHolder.d = ((ViewGroup)paramView.findViewById(2131436919));
+      paramFeedViewHolder.e = ((CornerImageView)paramView.findViewById(2131436595));
+      paramFeedViewHolder.f = ((ImageView)paramView.findViewById(2131436597));
+      paramFeedViewHolder.g = ((TextView)paramView.findViewById(2131448576));
+      paramFeedViewHolder.h = ((TextView)paramView.findViewById(2131448454));
+      paramFeedViewHolder.i = ((TextView)paramView.findViewById(2131448443));
+      paramFeedViewHolder.j = ((ImageView)paramView.findViewById(2131436372));
+      f();
+      this.f.d.setOnTouchListener(this.i);
+      this.f.g.setText(d());
+      this.f.h.setText(c());
+      e();
+      b(paramView);
       localView = paramView;
-      if (e)
+      if (v)
       {
-        paramFeedViewHolder.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        paramFeedViewHolder.r = new StringBuilder();
         localView = paramView;
       }
     }
-    if (e)
+    if (v)
     {
       localView.setContentDescription(null);
-      paramFeedViewHolder.jdField_b_of_type_JavaLangStringBuilder.setLength(0);
+      paramFeedViewHolder.r.setLength(0);
     }
     return localView;
   }
@@ -85,54 +85,26 @@ public class QQStoryFeedItemBuilder
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    int i = AIOUtils.b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131299053), this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131299057), this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.b(this.c.getResources().getDimension(2131299781), this.c.getResources());
+    int k = AIOUtils.b(this.c.getResources().getDimension(2131299785), this.c.getResources());
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = j;
-    localURLDrawableOptions.mRequestHeight = i;
+    localURLDrawableOptions.mRequestWidth = k;
+    localURLDrawableOptions.mRequestHeight = j;
     return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-  }
-  
-  private CharSequence a()
-  {
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedTime;
-    return a(this.jdField_a_of_type_AndroidContentContext, l * 1000L);
   }
   
   public static CharSequence a(Context paramContext, long paramLong)
   {
-    if (jdField_a_of_type_JavaTextSimpleDateFormat == null) {
-      jdField_a_of_type_JavaTextSimpleDateFormat = (SimpleDateFormat)DateFormat.getDateFormat(paramContext);
+    if (h == null) {
+      h = (SimpleDateFormat)DateFormat.getDateFormat(paramContext);
     }
-    jdField_a_of_type_JavaTextSimpleDateFormat.applyPattern(String.format("M%sd%s HH:mm", new Object[] { paramContext.getString(2131694201), paramContext.getString(2131691450) }));
-    return DateFormat.format(jdField_a_of_type_JavaTextSimpleDateFormat.toLocalizedPattern(), paramLong);
-  }
-  
-  private String a()
-  {
-    String str = Utils.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedAddress, 10);
-    if (!TextUtils.isEmpty(str))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.d.setText(str);
-      return str;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.d.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    return str;
-  }
-  
-  private void a(View paramView)
-  {
-    if (e)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_b_of_type_AndroidWidgetTextView.getText());
-      paramView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_b_of_type_JavaLangStringBuilder.toString());
-    }
+    h.applyPattern(String.format("M%sd%s HH:mm", new Object[] { paramContext.getString(2131891839), paramContext.getString(2131888405) }));
+    return DateFormat.format(h.toLocalizedPattern(), paramLong);
   }
   
   private boolean a(View paramView, MessageForQQStoryFeed paramMessageForQQStoryFeed)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.isEmpty())
+    if (this.e.isEmpty())
     {
       if (QLog.isColorLevel()) {
         QLog.i("QQStoryFeedItemBuilder", 2, "setFeedViewVisibility invoked. info: empty msg. ");
@@ -142,14 +114,50 @@ public class QQStoryFeedItemBuilder
     return true;
   }
   
-  private CharSequence b()
+  private void b(View paramView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mMainText;
+    if (v)
+    {
+      this.f.r.append(this.f.g.getText());
+      paramView.setContentDescription(this.f.r.toString());
+    }
   }
   
-  private void b()
+  private CharSequence c()
   {
-    URLDrawable localURLDrawable = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mCoverUrl);
+    long l = this.e.mFeedTime;
+    return a(this.c, l * 1000L);
+  }
+  
+  private void c(View paramView)
+  {
+    paramView = this.e.mUnionId;
+    String str = this.e.mFeedId;
+    StoryReportor.a("aio_msg", "aio_clk", 0, 0, new String[] { this.e.frienduin });
+    StoryPlayerLauncher.a(BaseActivity.sTopActivity, paramView, str, 1, 109, 1, this.f.e);
+  }
+  
+  private CharSequence d()
+  {
+    return this.e.mMainText;
+  }
+  
+  private String e()
+  {
+    String str = Utils.b(this.e.mFeedAddress, 10);
+    if (!TextUtils.isEmpty(str))
+    {
+      this.f.i.setText(str);
+      return str;
+    }
+    this.f.i.setVisibility(4);
+    this.f.j.setVisibility(4);
+    return str;
+  }
+  
+  private void f()
+  {
+    URLDrawable localURLDrawable = a(this.e.mCoverUrl);
     Object localObject;
     if (localURLDrawable == null)
     {
@@ -163,21 +171,13 @@ public class QQStoryFeedItemBuilder
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
-      int i = AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-      float f = i;
-      ((CornerImageView)localObject).setRadius(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(localURLDrawable);
+      this.f.e.setPressMask(true);
+      int j = AIOUtils.b(10.0F, this.c.getResources());
+      localObject = this.f.e;
+      float f1 = j;
+      ((CornerImageView)localObject).setRadius(new float[] { f1, f1, f1, f1, 0.0F, 0.0F, 0.0F, 0.0F });
+      this.f.e.setImageDrawable(localURLDrawable);
     }
-  }
-  
-  private void b(View paramView)
-  {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mUnionId;
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedId;
-    StoryReportor.a("aio_msg", "aio_clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.frienduin });
-    StoryPlayerLauncher.a(BaseActivity.sTopActivity, paramView, str, 1, 109, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -190,15 +190,15 @@ public class QQStoryFeedItemBuilder
       return paramView;
     }
     paramMessageRecord = (MessageForQQStoryFeed)MessageForQQStoryFeed.class.cast(paramMessageRecord);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed = new MessageForQQStoryFeed(paramMessageRecord);
+    if (this.e == null) {
+      this.e = new MessageForQQStoryFeed(paramMessageRecord);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder = ((QQStoryFeedItemBuilder.FeedViewHolder)QQStoryFeedItemBuilder.FeedViewHolder.class.cast(paramViewHolder));
+    if (this.f == null) {
+      this.f = ((QQStoryFeedItemBuilder.FeedViewHolder)QQStoryFeedItemBuilder.FeedViewHolder.class.cast(paramViewHolder));
     }
-    paramMessageRecord = a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder);
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = a(paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed);
+    paramMessageRecord = a(paramView, this.f);
+    if (!this.g) {
+      this.g = a(paramMessageRecord, this.e);
     }
     return paramMessageRecord;
   }
@@ -217,7 +217,7 @@ public class QQStoryFeedItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder
  * JD-Core Version:    0.7.0.1
  */

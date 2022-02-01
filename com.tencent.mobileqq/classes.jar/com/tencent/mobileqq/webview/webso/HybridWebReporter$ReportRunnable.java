@@ -24,36 +24,36 @@ import org.json.JSONObject;
 class HybridWebReporter$ReportRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<HybridWebReporter.HybridWebReportInfo> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
+  boolean a = false;
+  boolean b = false;
+  int c = 0;
+  int d = 0;
+  ArrayList<HybridWebReporter.HybridWebReportInfo> e;
+  String f;
   
   public HybridWebReporter$ReportRunnable(ArrayList<HybridWebReporter.HybridWebReportInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.e = paramArrayList;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (this.e.isEmpty())
     {
       QLog.e("HybridWebReporter", 1, "listToSend is empty.");
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject2 = this.e;
     Object localObject1 = new JSONObject();
     try
     {
       JSONArray localJSONArray = new JSONArray();
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        localJSONArray.put(((HybridWebReporter.HybridWebReportInfo)((Iterator)localObject2).next()).a());
+        localJSONArray.put(((HybridWebReporter.HybridWebReportInfo)((Iterator)localObject2).next()).b());
       }
       ((JSONObject)localObject1).put("data", localJSONArray);
     }
@@ -63,16 +63,16 @@ class HybridWebReporter$ReportRunnable
       QLog.w("HybridWebReporter", 1, localException.toString());
     }
     if (localObject1 != null) {
-      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+      this.f = ((JSONObject)localObject1).toString();
     }
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("json : ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.f);
       QLog.i("HybridWebReporter", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   private void a(String paramString)
@@ -82,12 +82,12 @@ class HybridWebReporter$ReportRunnable
       int i;
       try
       {
-        paramString = VasUtil.a().websoExecuteHttpPost(BaseApplication.getContext(), paramString, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+        paramString = VasUtil.b().websoExecuteHttpPost(BaseApplication.getContext(), paramString, new StringEntity(this.f, "UTF-8"));
         Object localObject;
         if (paramString.getStatusLine().getStatusCode() == 200)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_b_of_type_Boolean = true;
+          this.e.clear();
+          this.b = true;
           QLog.d("HybridWebReporter", 4, "report success.");
           try
           {
@@ -123,8 +123,8 @@ class HybridWebReporter$ReportRunnable
             if (!(paramString.opt("urlPrefixConfig") instanceof JSONArray)) {
               break label319;
             }
-            HybridWebReporter.jdField_a_of_type_JavaLangString = paramString.toString();
-            LocalMultiProcConfig.putString("urlPrefixConfig", HybridWebReporter.jdField_a_of_type_JavaLangString);
+            HybridWebReporter.a = paramString.toString();
+            LocalMultiProcConfig.putString("urlPrefixConfig", HybridWebReporter.a);
             return;
           }
           catch (Throwable paramString)
@@ -139,13 +139,13 @@ class HybridWebReporter$ReportRunnable
           ((StringBuilder)localObject).append("HttpStatus error when report : ");
           ((StringBuilder)localObject).append(paramString.getStatusLine().getStatusCode());
           QLog.e("HybridWebReporter", 1, ((StringBuilder)localObject).toString());
-          this.jdField_a_of_type_Int += 1;
+          this.c += 1;
           return;
         }
       }
       catch (Throwable paramString)
       {
-        this.jdField_a_of_type_Int += 1;
+        this.c += 1;
         QLog.w("HybridWebReporter", 1, "exception when report", paramString);
       }
       label319:
@@ -161,24 +161,24 @@ class HybridWebReporter$ReportRunnable
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("?uin=");
-    localStringBuilder.append(WebSoUtils.a());
+    localStringBuilder.append(WebSoUtils.c());
     str = localStringBuilder.toString();
     a();
     if (!TextUtils.isEmpty(str))
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.f)) {
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("HybridWebReporter", 2, "start report thread.");
       }
-      while ((!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int <= 1))
+      while ((!this.b) && (this.d <= 1))
       {
-        if (this.jdField_a_of_type_Int > 1)
+        if (this.c > 1)
         {
           new Handler(ThreadManager.getSubThreadLooper()).postDelayed(this, 300000L);
-          this.jdField_b_of_type_Int += 1;
-          this.jdField_a_of_type_Int = 0;
+          this.d += 1;
+          this.c = 0;
           return;
         }
         a(str);
@@ -188,7 +188,7 @@ class HybridWebReporter$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

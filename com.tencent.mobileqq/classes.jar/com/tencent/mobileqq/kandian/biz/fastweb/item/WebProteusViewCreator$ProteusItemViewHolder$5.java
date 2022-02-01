@@ -20,36 +20,36 @@ class WebProteusViewCreator$ProteusItemViewHolder$5
     if ((paramProteusItemData instanceof AuthorData))
     {
       paramViewBase = (AuthorData)paramProteusItemData;
-      if (TextUtils.isEmpty(paramViewBase.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramViewBase.a)) {
         return;
       }
-      if (paramViewBase.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
+      if (paramViewBase.g != null)
       {
-        paramContext = paramViewBase.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-        com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramContext;
+        paramContext = paramViewBase.g;
+        com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = paramContext;
         paramProteusItemData = paramViewBase.c;
-        FastWebPTSUtils.a(this.a.a.getContext(), paramContext, paramProteusItemData, paramViewBase.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, 0);
+        FastWebPTSUtils.a(this.a.f.getContext(), paramContext, paramProteusItemData, paramViewBase.aR, 0);
       }
     }
     else if ((paramProteusItemData instanceof ProteusRecommendItemData))
     {
-      paramViewBase = (AuthorData)paramProteusItemData.c.opt("author_data");
-      if (TextUtils.isEmpty(paramViewBase.jdField_a_of_type_JavaLangString)) {
+      paramViewBase = (AuthorData)paramProteusItemData.bb.opt("author_data");
+      if (TextUtils.isEmpty(paramViewBase.a)) {
         return;
       }
-      if (paramViewBase.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
+      if (paramViewBase.g != null)
       {
-        paramContext = paramViewBase.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-        com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramContext;
+        paramContext = paramViewBase.g;
+        com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = paramContext;
         paramProteusItemData = paramViewBase.c;
-        FastWebPTSUtils.a(this.a.a.getContext(), paramContext, paramProteusItemData, paramViewBase.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, 3);
+        FastWebPTSUtils.a(this.a.f.getContext(), paramContext, paramProteusItemData, paramViewBase.aR, 3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.5
  * JD-Core Version:    0.7.0.1
  */

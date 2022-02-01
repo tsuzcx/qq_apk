@@ -23,7 +23,7 @@ class BaseUIProxy$5
     ((StringBuilder)localObject).append(paramBoolean);
     QMLog.i("MiniLoadingAdManager", ((StringBuilder)localObject).toString());
     long l1 = System.currentTimeMillis() - this.val$loadingAdSelectStartTime;
-    if (!this.this$0.hasCompletedLoading)
+    if (this.this$0.isAbleToShowAd())
     {
       if (paramBoolean)
       {
@@ -57,7 +57,7 @@ class BaseUIProxy$5
   public void onDownloadAdEnd(String paramString, long paramLong)
   {
     long l = System.currentTimeMillis() - this.val$loadingAdSelectStartTime;
-    if (!this.this$0.hasCompletedLoading)
+    if (this.this$0.isAbleToShowAd())
     {
       if ((paramString != null) && (paramLong != -1L))
       {
@@ -80,7 +80,7 @@ class BaseUIProxy$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.BaseUIProxy.5
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ final class CmShowLauncher$1
   
   public void run()
   {
-    QQToast.a(this.a, 1, 2131690071, 0).a();
+    QQToast.makeText(this.a, 1, 2131886722, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.CmShowLauncher.1
  * JD-Core Version:    0.7.0.1
  */

@@ -45,7 +45,7 @@ public final class GetAutoInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetAutoInfoResp
  * JD-Core Version:    0.7.0.1
  */

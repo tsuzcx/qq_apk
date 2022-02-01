@@ -93,10 +93,10 @@ public class ProfileCardBusinessApiImpl
   
   public Intent getBabyQProfileCardIntent(Context paramContext, AllInOne paramAllInOne)
   {
-    if ((Utils.b(paramAllInOne.uin)) && (!TextUtils.isEmpty(Utils.b)))
+    if ((Utils.c(paramAllInOne.uin)) && (!TextUtils.isEmpty(Utils.d)))
     {
       paramContext = new Intent(paramContext, QQBrowserActivity.class);
-      paramContext.putExtra("url", Utils.b);
+      paramContext.putExtra("url", Utils.d);
       return paramContext;
     }
     return null;
@@ -104,17 +104,17 @@ public class ProfileCardBusinessApiImpl
   
   public String getConstellation(int paramInt)
   {
-    return NearbyProfileUtil.c(paramInt);
+    return NearbyProfileUtil.e(paramInt);
   }
   
   public String getJob(int paramInt)
   {
-    return NearbyProfileUtil.e(paramInt);
+    return NearbyProfileUtil.h(paramInt);
   }
   
   public String getJobTag(int paramInt)
   {
-    return NearbyProfileUtil.d(paramInt);
+    return NearbyProfileUtil.f(paramInt);
   }
   
   public Intent getKPLProfileCardIntent(Context paramContext)
@@ -221,7 +221,7 @@ public class ProfileCardBusinessApiImpl
   
   public boolean isEuropeAndAmerica()
   {
-    return ProfileCardUtil.a();
+    return ProfileCardUtil.c();
   }
   
   public void jumpProfileOpenDetails(ProfileCardInfo paramProfileCardInfo, AppInterface paramAppInterface, Activity paramActivity)
@@ -241,14 +241,14 @@ public class ProfileCardBusinessApiImpl
   
   public byte needReqMedalWall(Context paramContext, AppRuntime paramAppRuntime)
   {
-    return (byte)SharedPreUtils.U(paramContext, paramAppRuntime.getCurrentAccountUin());
+    return (byte)SharedPreUtils.am(paramContext, paramAppRuntime.getCurrentAccountUin());
   }
   
   public boolean needReqOCRCard(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = (BusinessCardManager)paramAppRuntime.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
     if (paramAppRuntime != null) {
-      return paramAppRuntime.a(1);
+      return paramAppRuntime.b(1);
     }
     return false;
   }
@@ -279,7 +279,7 @@ public class ProfileCardBusinessApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.api.impl.ProfileCardBusinessApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,12 @@ import android.content.Context;
 import android.os.Process;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.api.IVasService;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKConfig;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.TreasureCardConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.TreasureCardProcessor;
+import com.tencent.mobileqq.vas.treasurecard.api.IVasFTManager;
 import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -18,56 +22,24 @@ import mqq.os.MqqHandler;
 
 public class TMSManager
 {
-  protected static final String[] a;
-  private KCWraper a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "tmsdualcore", "tmsdualcore785", "tmsdualcore790", "tmsdualcore7901" };
-  }
-  
-  public TMSManager()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVipKCWraper = null;
-  }
-  
-  public static TMSManager.DynamicLoadHelper a()
-  {
-    return TMSManager.DynamicLoadInstance.a();
-  }
+  protected static final String[] a = { "tmsdualcore", "tmsdualcore785", "tmsdualcore790", "tmsdualcore7901" };
+  private KCWraper b = null;
   
   public static TMSManager a()
   {
-    if (TMSManager.SingletonInstance.a().jdField_a_of_type_ComTencentMobileqqVipKCWraper == null) {
+    if (TMSManager.SingletonInstance.a().b == null) {
       synchronized (TMSManager.SingletonInstance.a())
       {
-        if (TMSManager.SingletonInstance.a().jdField_a_of_type_ComTencentMobileqqVipKCWraper == null) {
-          TMSManager.SingletonInstance.a().a();
+        if (TMSManager.SingletonInstance.a().b == null)
+        {
+          TMSManager.SingletonInstance.a().f();
+          if (TreasureCardProcessor.e().d == 1) {
+            VasUtil.a().getVasFtManager().init();
+          }
         }
       }
     }
     return TMSManager.SingletonInstance.a();
-  }
-  
-  private void a()
-  {
-    int i = QVipSDKProcessor.c().a;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("KingCardConfig : ");
-    localStringBuilder.append(i);
-    QLog.d("KC.TMSManager", 1, localStringBuilder.toString());
-    if (i != -1) {
-      if (i != 2) {
-        this.jdField_a_of_type_ComTencentMobileqqVipKCWraper = new KCWraper();
-      } else if (a(VasUtil.a().getApplicationContext())) {
-        this.jdField_a_of_type_ComTencentMobileqqVipKCWraper = new KCWraperV2();
-      } else if (KCWraper.c()) {
-        this.jdField_a_of_type_ComTencentMobileqqVipKCWraper = new KCWraperV2InOtherProcess();
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVipKCWraper != null) {
-      b();
-    }
   }
   
   protected static boolean a(Context paramContext)
@@ -93,9 +65,35 @@ public class TMSManager
     return paramContext.getPackageName().equals(localObject);
   }
   
-  private void b()
+  public static TMSManager.DynamicLoadHelper b()
   {
-    KCWraper localKCWraper = this.jdField_a_of_type_ComTencentMobileqqVipKCWraper;
+    return TMSManager.DynamicLoadInstance.a();
+  }
+  
+  private void f()
+  {
+    int i = QVipSDKProcessor.e().a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KingCardConfig : ");
+    localStringBuilder.append(i);
+    QLog.d("KC.TMSManager", 1, localStringBuilder.toString());
+    if (i != -1) {
+      if (i != 2) {
+        this.b = new KCWraper();
+      } else if (a(VasUtil.c().getApplicationContext())) {
+        this.b = new KCWraperV2();
+      } else if (KCWraper.e()) {
+        this.b = new KCWraperV2InOtherProcess();
+      }
+    }
+    if (this.b != null) {
+      g();
+    }
+  }
+  
+  private void g()
+  {
+    KCWraper localKCWraper = this.b;
     if (localKCWraper != null) {
       localKCWraper.a(new TMSManager.2(this));
     }
@@ -103,18 +101,18 @@ public class TMSManager
   
   void a(ViewGroup paramViewGroup)
   {
-    KCWraper localKCWraper = this.jdField_a_of_type_ComTencentMobileqqVipKCWraper;
-    if ((localKCWraper != null) && (localKCWraper.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqVipKCWraper.a(paramViewGroup);
+    KCWraper localKCWraper = this.b;
+    if ((localKCWraper != null) && (localKCWraper.b())) {
+      this.b.a(paramViewGroup);
     }
   }
   
   public void a(TMSManager.Callback paramCallback, boolean paramBoolean)
   {
-    KCWraper localKCWraper = this.jdField_a_of_type_ComTencentMobileqqVipKCWraper;
-    if ((localKCWraper != null) && (localKCWraper.a()))
+    KCWraper localKCWraper = this.b;
+    if ((localKCWraper != null) && (localKCWraper.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqVipKCWraper.a(paramCallback, paramBoolean);
+      this.b.a(paramCallback, paramBoolean);
       return;
     }
     if (paramCallback != null)
@@ -128,13 +126,22 @@ public class TMSManager
     }
   }
   
-  public boolean a()
+  public boolean a(Activity paramActivity)
+  {
+    KCWraper localKCWraper = this.b;
+    if ((localKCWraper != null) && (localKCWraper.b())) {
+      return this.b.a(paramActivity);
+    }
+    return false;
+  }
+  
+  public boolean c()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipKCWraper != null)
+      if (this.b != null)
       {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqVipKCWraper.a();
+        boolean bool = this.b.b();
         if (bool) {
           return true;
         }
@@ -148,32 +155,23 @@ public class TMSManager
     }
   }
   
-  public boolean a(Activity paramActivity)
-  {
-    KCWraper localKCWraper = this.jdField_a_of_type_ComTencentMobileqqVipKCWraper;
-    if ((localKCWraper != null) && (localKCWraper.a())) {
-      return this.jdField_a_of_type_ComTencentMobileqqVipKCWraper.a(paramActivity);
-    }
-    return false;
-  }
-  
-  public boolean b()
+  public boolean d()
   {
     return CUKingCardUtils.a() > 0;
   }
   
-  public boolean c()
+  public boolean e()
   {
-    KCWraper localKCWraper = this.jdField_a_of_type_ComTencentMobileqqVipKCWraper;
-    if ((localKCWraper != null) && (localKCWraper.a())) {
-      return this.jdField_a_of_type_ComTencentMobileqqVipKCWraper.b();
+    KCWraper localKCWraper = this.b;
+    if ((localKCWraper != null) && (localKCWraper.b())) {
+      return this.b.c();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.TMSManager
  * JD-Core Version:    0.7.0.1
  */

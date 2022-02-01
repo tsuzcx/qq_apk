@@ -22,8 +22,8 @@ class TroopMemberHistoryFragment$LoadMsgThread
     if (!this.this$0.isDetached())
     {
       long l1 = System.currentTimeMillis();
-      Object localObject = this.this$0.a();
-      Message localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localObject);
+      Object localObject = this.this$0.c();
+      Message localMessage = this.this$0.p.obtainMessage(0, localObject);
       localMessage.arg1 = this.a;
       if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
@@ -31,7 +31,7 @@ class TroopMemberHistoryFragment$LoadMsgThread
         if (QLog.isColorLevel())
         {
           long l2 = System.currentTimeMillis();
-          localObject = TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString;
+          localObject = TroopMemberHistoryFragment.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("More messages loaded. Costs ");
           localStringBuilder.append(l2 - l1);
@@ -43,13 +43,13 @@ class TroopMemberHistoryFragment$LoadMsgThread
       {
         localMessage.arg2 = 11;
       }
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      this.this$0.p.sendMessage(localMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.LoadMsgThread
  * JD-Core Version:    0.7.0.1
  */

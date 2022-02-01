@@ -15,30 +15,30 @@ import java.util.List;
 public class ExtendFriendSearchHistoryManager
   implements Handler.Callback
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getFileThreadLooper(), this);
-  WeakReference<BaseQQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private static final Object e = new Object();
+  WeakReference<BaseQQAppInterface> a;
   WeakReference<ExtendFriendSearchHistoryManager.HistoryTagChangeListener> b;
+  List<String> c = new ArrayList();
+  private int d;
+  private boolean f;
+  private MqqWeakReferenceHandler g = new MqqWeakReferenceHandler(ThreadManager.getFileThreadLooper(), this);
   
   public ExtendFriendSearchHistoryManager(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramBaseQQAppInterface);
+    this.d = paramInt;
     ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
   }
   
-  private void b()
+  private void c()
   {
-    ??? = (BaseQQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ??? = (BaseQQAppInterface)this.a.get();
     if (??? == null) {
       return;
     }
     int i = 0;
-    Object localObject4 = FileUtils.readObject(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), ((BaseQQAppInterface)???).getCurrentAccountUin() }));
-    if (this.jdField_a_of_type_Boolean) {
+    Object localObject4 = FileUtils.readObject(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.d), ((BaseQQAppInterface)???).getCurrentAccountUin() }));
+    if (this.f) {
       return;
     }
     Object localObject2 = null;
@@ -54,22 +54,22 @@ public class ExtendFriendSearchHistoryManager
     if (??? == null) {
       localObject2 = new ArrayList();
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (e)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.f)
       {
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
-        while (this.jdField_a_of_type_JavaUtilList.size() > 10) {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        this.c.addAll((Collection)localObject2);
+        while (this.c.size() > 10) {
+          this.c.remove(this.c.size() - 1);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
         i = 1;
       }
       if (i != 0)
       {
         ??? = this.b;
         if ((??? != null) && (((WeakReference)???).get() != null)) {
-          ((ExtendFriendSearchHistoryManager.HistoryTagChangeListener)this.b.get()).aM_();
+          ((ExtendFriendSearchHistoryManager.HistoryTagChangeListener)this.b.get()).dh_();
         }
       }
       return;
@@ -80,35 +80,18 @@ public class ExtendFriendSearchHistoryManager
     }
   }
   
-  private void c()
+  private void d()
   {
-    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.a.get();
     if (localBaseQQAppInterface == null) {
       return;
     }
-    FileUtils.writeObject(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), localBaseQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
+    FileUtils.writeObject(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.d), localBaseQQAppInterface.getCurrentAccountUin() }), this.c);
   }
   
   public List<String> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Boolean = true;
-      ??? = this.b;
-      if ((??? != null) && (((WeakReference)???).get() != null)) {
-        ((ExtendFriendSearchHistoryManager.HistoryTagChangeListener)this.b.get()).aM_();
-      }
-      if (!this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(0)) {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(0, 300L);
-      }
-      return;
-    }
+    return this.c;
   }
   
   public void a(ExtendFriendSearchHistoryManager.HistoryTagChangeListener paramHistoryTagChangeListener)
@@ -126,24 +109,41 @@ public class ExtendFriendSearchHistoryManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      b();
+    if (!this.f) {
+      c();
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (e)
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramString);
+      if (this.c.contains(paramString)) {
+        this.c.remove(paramString);
       }
-      this.jdField_a_of_type_JavaUtilList.add(0, paramString);
-      if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      this.c.add(0, paramString);
+      if (this.c.size() > 10) {
+        this.c.remove(this.c.size() - 1);
       }
       paramString = this.b;
       if ((paramString != null) && (paramString.get() != null)) {
-        ((ExtendFriendSearchHistoryManager.HistoryTagChangeListener)this.b.get()).aM_();
+        ((ExtendFriendSearchHistoryManager.HistoryTagChangeListener)this.b.get()).dh_();
       }
-      if (!this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(0)) {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(0, 300L);
+      if (!this.g.hasMessages(0)) {
+        this.g.sendEmptyMessageDelayed(0, 300L);
+      }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    synchronized (e)
+    {
+      this.c.clear();
+      this.f = true;
+      ??? = this.b;
+      if ((??? != null) && (((WeakReference)???).get() != null)) {
+        ((ExtendFriendSearchHistoryManager.HistoryTagChangeListener)this.b.get()).dh_();
+      }
+      if (!this.g.hasMessages(0)) {
+        this.g.sendEmptyMessageDelayed(0, 300L);
       }
       return;
     }
@@ -152,14 +152,14 @@ public class ExtendFriendSearchHistoryManager
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 0) {
-      c();
+      d();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExtendFriendSearchHistoryManager
  * JD-Core Version:    0.7.0.1
  */

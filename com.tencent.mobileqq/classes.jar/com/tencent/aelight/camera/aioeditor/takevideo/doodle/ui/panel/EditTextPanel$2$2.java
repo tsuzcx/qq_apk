@@ -10,25 +10,25 @@ class EditTextPanel$2$2
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     if (!bool)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView$EditTextHolder.a(bool);
-      ToastUtil.a().a(2131698349);
+      this.b.a(bool);
+      ToastUtil.a().a(2131896273);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView$EditTextHolder.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))
+    if (this.c.a(this.b.b))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView$EditTextHolder.a(this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView$EditTextHolder.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.c) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.a(-1, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.c);
+      this.b.a(this.a);
+      if (this.b.j == this.d.a.g) {
+        this.d.a.b(-1, this.d.a.g);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextPanel.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -41,9 +41,9 @@ class GroupManagerActivity$8
       if (b == 0)
       {
         localObject = new QQToast(this.a);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131719712);
-        ((QQToast)localObject).a();
+        ((QQToast)localObject).setDuration(2000);
+        ((QQToast)localObject).setToastMsg(2131917315);
+        ((QQToast)localObject).show();
         return;
       }
       GroupManagerActivity.a(this.a, b);
@@ -53,7 +53,7 @@ class GroupManagerActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity.8
  * JD-Core Version:    0.7.0.1
  */

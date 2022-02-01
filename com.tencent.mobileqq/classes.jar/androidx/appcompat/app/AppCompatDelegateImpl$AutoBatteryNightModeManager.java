@@ -14,7 +14,7 @@ class AppCompatDelegateImpl$AutoBatteryNightModeManager
   AppCompatDelegateImpl$AutoBatteryNightModeManager(AppCompatDelegateImpl paramAppCompatDelegateImpl, @NonNull Context paramContext)
   {
     super(paramAppCompatDelegateImpl);
-    this.mPowerManager = ((PowerManager)paramContext.getSystemService("power"));
+    this.mPowerManager = ((PowerManager)paramContext.getApplicationContext().getSystemService("power"));
   }
   
   IntentFilter createIntentFilterForBroadcastReceiver()

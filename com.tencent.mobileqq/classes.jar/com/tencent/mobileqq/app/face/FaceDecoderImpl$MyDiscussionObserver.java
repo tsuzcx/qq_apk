@@ -20,9 +20,9 @@ class FaceDecoderImpl$MyDiscussionObserver
     {
       int i = 101;
       String str;
-      if (AvatarUtil.a(paramString))
+      if (AvatarUtil.b(paramString))
       {
-        str = AvatarUtil.b(paramString);
+        str = AvatarUtil.c(paramString);
         i = 1001;
       }
       else
@@ -59,7 +59,7 @@ class FaceDecoderImpl$MyDiscussionObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderImpl.MyDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

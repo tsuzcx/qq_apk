@@ -12,12 +12,12 @@ class VideoFeedsAdapter$5
   
   public void a(UserLevelInfo paramUserLevelInfo)
   {
-    VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAdapter, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewholderBaseItemHolder, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo);
+    VideoFeedsAdapter.a(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.5
  * JD-Core Version:    0.7.0.1
  */

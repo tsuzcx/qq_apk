@@ -13,13 +13,13 @@ final class IPluginManager$8
   
   public void run()
   {
-    LoadCompactDynamicFeature.a().a(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, (Application)this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+    LoadCompactDynamicFeature.a().b(this.a.d, (Application)this.b.getApplicationContext());
     ThreadManager.getUIHandler().post(new IPluginManager.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.8
  * JD-Core Version:    0.7.0.1
  */

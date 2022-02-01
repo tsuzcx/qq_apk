@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class ImageCache
 {
-  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
-  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private CustomLruCache<String, Drawable> a;
+  private final HashMap<String, WeakReference<Drawable>> b = new HashMap();
   
   public ImageCache(int paramInt)
   {
@@ -21,28 +21,28 @@ public class ImageCache
       localStringBuilder.append("MB");
       QLog.d("ImageCache", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new ImageCache.1(this, paramInt * 1024 * 1024);
+    this.a = new ImageCache.1(this, paramInt * 1024 * 1024);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.a.evictAll();
+    this.b.clear();
   }
   
   public void a(String paramString, Drawable paramDrawable)
   {
-    CustomLruCache localCustomLruCache = this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
+    CustomLruCache localCustomLruCache = this.a;
     if ((localCustomLruCache != null) && (localCustomLruCache.get(paramString) == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
+      this.a.put(paramString, paramDrawable);
+      this.b.put(paramString, new WeakReference(paramDrawable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageCache
  * JD-Core Version:    0.7.0.1
  */

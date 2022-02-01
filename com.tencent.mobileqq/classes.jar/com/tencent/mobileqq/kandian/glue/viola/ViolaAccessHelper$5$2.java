@@ -11,23 +11,23 @@ class ViolaAccessHelper$5$2
   
   public void a()
   {
-    ViolaAccessHelper.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterViolaReportDelegate, this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$SDKInitCallback);
+    ViolaAccessHelper.a(this.a.a, this.a.d, this.a.c, this.a.b);
   }
   
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      ViolaAccessHelper.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterViolaReportDelegate, this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$SDKInitCallback);
+      ViolaAccessHelper.a(this.a.a, paramString, this.a.c, this.a.b);
       ThreadManager.post(new ViolaAccessHelper.5.2.1(this, paramString), 8, null, true);
       return;
     }
-    ViolaAccessHelper.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterViolaReportDelegate, this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$SDKInitCallback);
+    ViolaAccessHelper.a(this.a.a, this.a.d, this.a.c, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.5.2
  * JD-Core Version:    0.7.0.1
  */

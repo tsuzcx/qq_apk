@@ -19,51 +19,45 @@ import mqq.os.MqqHandler;
 
 class SwipeUpAndDragListener$GestureHandler
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  PhotoListPanel.PhotoPanelAdapter.RecyclerHolder jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder;
-  RoundRectImageView jdField_a_of_type_ComTencentWidgetRoundRectImageView;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  AlphaAnimation jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  Runnable jdField_b_of_type_JavaLangRunnable;
-  int[] jdField_b_of_type_ArrayOfInt;
-  RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  int[] jdField_c_of_type_ArrayOfInt;
-  RelativeLayout.LayoutParams jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
-  RelativeLayout.LayoutParams e;
-  int g;
+  RelativeLayout A;
+  RoundRectImageView B;
+  Animation.AnimationListener C;
+  Runnable D;
+  Runnable E;
+  AlphaAnimation F;
+  Context p;
+  ViewGroup q;
+  int[] r;
+  RelativeLayout s;
+  RelativeLayout.LayoutParams t;
+  RelativeLayout u;
+  RelativeLayout.LayoutParams v;
+  PhotoListPanel.PhotoPanelAdapter.RecyclerHolder w;
+  int[] x;
+  int y;
+  AlphaAnimation z;
   
   public SwipeUpAndDragListener$GestureHandler(SwipeUpAndDragListener paramSwipeUpAndDragListener, Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_b_of_type_ArrayOfInt = new int[2];
-    this.jdField_c_of_type_ArrayOfInt = new int[2];
-    paramViewGroup.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramContext);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(17170445);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new SwipeUpAndDragListener.GestureHandler.1(this, paramSwipeUpAndDragListener));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = paramSwipeUpAndDragListener.c;
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramContext);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(637534208);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = new RoundRectImageView(paramContext);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new SwipeUpAndDragListener.GestureHandler.2(this, paramSwipeUpAndDragListener);
-    this.jdField_a_of_type_JavaLangRunnable = new SwipeUpAndDragListener.GestureHandler.3(this, paramSwipeUpAndDragListener);
-    this.jdField_b_of_type_JavaLangRunnable = new SwipeUpAndDragListener.GestureHandler.4(this, paramSwipeUpAndDragListener);
-  }
-  
-  boolean a()
-  {
-    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    return (localRelativeLayout != null) && (this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(localRelativeLayout) != -1);
+    this.p = paramContext;
+    this.q = paramViewGroup;
+    this.r = new int[2];
+    this.x = new int[2];
+    paramViewGroup.getLocationInWindow(this.r);
+    this.s = new RelativeLayout(paramContext);
+    this.s.setBackgroundResource(17170445);
+    this.s.setOnTouchListener(new SwipeUpAndDragListener.GestureHandler.1(this, paramSwipeUpAndDragListener));
+    this.t = new RelativeLayout.LayoutParams(-1, -1);
+    this.t.topMargin = paramSwipeUpAndDragListener.h;
+    this.u = new RelativeLayout(paramContext);
+    this.u.setBackgroundColor(637534208);
+    this.B = new RoundRectImageView(paramContext);
+    this.z = new AlphaAnimation(1.0F, 0.0F);
+    this.z.setFillAfter(true);
+    this.F = new AlphaAnimation(0.0F, 1.0F);
+    this.C = new SwipeUpAndDragListener.GestureHandler.2(this, paramSwipeUpAndDragListener);
+    this.D = new SwipeUpAndDragListener.GestureHandler.3(this, paramSwipeUpAndDragListener);
+    this.E = new SwipeUpAndDragListener.GestureHandler.4(this, paramSwipeUpAndDragListener);
   }
   
   boolean a(MotionEvent paramMotionEvent)
@@ -73,40 +67,16 @@ class SwipeUpAndDragListener$GestureHandler
   
   boolean a(PhotoListPanel.PhotoPanelAdapter.RecyclerHolder paramRecyclerHolder, int paramInt)
   {
-    SwipeUpAndDragListener localSwipeUpAndDragListener = this.jdField_b_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener;
-    localSwipeUpAndDragListener.jdField_a_of_type_Boolean = true;
-    localSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().setMotionEventSplittingEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder = paramRecyclerHolder;
-    this.g = paramInt;
-    paramRecyclerHolder.itemView.getLocationInWindow(this.jdField_c_of_type_ArrayOfInt);
-    paramRecyclerHolder = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.a.getDrawable();
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setImageDrawable(paramRecyclerHolder);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    SwipeUpAndDragListener localSwipeUpAndDragListener = this.G;
+    localSwipeUpAndDragListener.f = true;
+    localSwipeUpAndDragListener.z.r().setMotionEventSplittingEnabled(false);
+    this.w = paramRecyclerHolder;
+    this.y = paramInt;
+    paramRecyclerHolder.itemView.getLocationInWindow(this.x);
+    paramRecyclerHolder = this.w.b.getDrawable();
+    this.B.setImageDrawable(paramRecyclerHolder);
+    this.B.setScaleType(ImageView.ScaleType.CENTER_CROP);
     return true;
-  }
-  
-  void b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("handler = ");
-    localStringBuilder.append(this);
-    QLog.d("PhotoListPanel", 1, new Object[] { "clear", localStringBuilder.toString() });
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.clearAnimation();
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      localNullPointerException.printStackTrace();
-    }
-    if (this.jdField_d_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 50L);
-      return;
-    }
-    ThreadManager.getUIHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 100L);
   }
   
   boolean b(MotionEvent paramMotionEvent)
@@ -114,14 +84,44 @@ class SwipeUpAndDragListener$GestureHandler
     return false;
   }
   
+  void c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handler = ");
+    localStringBuilder.append(this);
+    QLog.d("PhotoListPanel", 1, new Object[] { "clear", localStringBuilder.toString() });
+    try
+    {
+      this.w.itemView.clearAnimation();
+      this.s.removeAllViews();
+      this.q.removeView(this.s);
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      localNullPointerException.printStackTrace();
+    }
+    if (this.A != null)
+    {
+      ThreadManager.getUIHandler().postDelayed(this.D, 50L);
+      return;
+    }
+    ThreadManager.getUIHandler().postDelayed(this.E, 100L);
+  }
+  
   boolean c(MotionEvent paramMotionEvent)
   {
     return false;
   }
+  
+  boolean d()
+  {
+    RelativeLayout localRelativeLayout = this.s;
+    return (localRelativeLayout != null) && (this.q.indexOfChild(localRelativeLayout) != -1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SwipeUpAndDragListener.GestureHandler
  * JD-Core Version:    0.7.0.1
  */

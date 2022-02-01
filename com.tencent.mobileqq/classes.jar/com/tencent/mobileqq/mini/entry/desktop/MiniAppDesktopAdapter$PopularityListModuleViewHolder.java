@@ -49,19 +49,19 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
   public MiniAppDesktopAdapter$PopularityListModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.rootView = paramView.findViewById(2131371177);
-    this.titleIconImg = ((ImageView)paramView.findViewById(2131371185));
-    this.titleTv = ((TextView)paramView.findViewById(2131371184));
-    this.moreAppImg = ((ImageView)paramView.findViewById(2131371176));
-    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131371173));
-    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131371178));
-    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131371181));
-    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131371175));
-    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131371180));
-    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131371183));
-    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131371174));
-    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131371179));
-    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131371182));
+    this.rootView = paramView.findViewById(2131438519);
+    this.titleIconImg = ((ImageView)paramView.findViewById(2131438527));
+    this.titleTv = ((TextView)paramView.findViewById(2131438526));
+    this.moreAppImg = ((ImageView)paramView.findViewById(2131438518));
+    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131438515));
+    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131438520));
+    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131438523));
+    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131438517));
+    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131438522));
+    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131438525));
+    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131438516));
+    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131438521));
+    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131438524));
     this.firstAppIconImg.setOnClickListener(this);
     this.secondAppIconImg.setOnClickListener(this);
     this.thirdAppIconImg.setOnClickListener(this);
@@ -76,12 +76,12 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
     Object localObject;
     switch (paramView.getId())
     {
-    case 2131371175: 
-    case 2131371177: 
-    case 2131371180: 
+    case 2131438517: 
+    case 2131438519: 
+    case 2131438522: 
     default: 
-    case 2131371181: 
-    case 2131371182: 
+    case 2131438523: 
+    case 2131438524: 
       try
       {
         if (this.popularModuleInfo.popularAppList.size() > 2)
@@ -109,8 +109,8 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
         QLog.e("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject).toString());
         return;
       }
-    case 2131371178: 
-    case 2131371179: 
+    case 2131438520: 
+    case 2131438521: 
       try
       {
         if (this.popularModuleInfo.popularAppList.size() > 2)
@@ -138,7 +138,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
         QLog.e("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject).toString());
         return;
       }
-    case 2131371176: 
+    case 2131438518: 
       paramView = (Activity)this.activityWeakRef.get();
       if (paramView != null)
       {
@@ -150,8 +150,8 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
         }
       }
       break;
-    case 2131371173: 
-    case 2131371174: 
+    case 2131438515: 
+    case 2131438516: 
       try
       {
         if (this.popularModuleInfo.popularAppList.size() > 2)
@@ -192,7 +192,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       this.titleTv.setText(paramDesktopPopularModuleInfo.title);
     }
     paramActivity = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = this.itemView.getContext().getResources().getDrawable(2130848646);
+    Object localObject = this.itemView.getContext().getResources().getDrawable(2130850311);
     paramActivity.mFailedDrawable = ((Drawable)localObject);
     paramActivity.mLoadingDrawable = ((Drawable)localObject);
     int i = 0;
@@ -238,7 +238,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.PopularityListModuleViewHolder
  * JD-Core Version:    0.7.0.1
  */

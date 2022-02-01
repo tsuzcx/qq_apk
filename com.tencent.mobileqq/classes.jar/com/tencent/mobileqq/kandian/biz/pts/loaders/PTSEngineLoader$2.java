@@ -9,7 +9,7 @@ class PTSEngineLoader$2
   
   public void run()
   {
-    if (!PTSSwitchManager.a.c()) {
+    if (!PTSSwitchManager.a.d()) {
       return;
     }
     PTSEngineLoader.a(this.this$0);
@@ -18,7 +18,7 @@ class PTSEngineLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSEngineLoader.2
  * JD-Core Version:    0.7.0.1
  */

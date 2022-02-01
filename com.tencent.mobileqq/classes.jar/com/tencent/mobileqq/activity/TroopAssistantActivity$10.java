@@ -32,18 +32,18 @@ class TroopAssistantActivity$10
           return;
         }
         int i;
-        if (("batch_setting".equals(this.a.b)) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService != null))
+        if (("batch_setting".equals(this.a.h)) && (this.a.i != null) && (this.a.i.size() > 0) && (this.a.j != null))
         {
           i = 0;
-          while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+          while (i < this.a.i.size())
           {
-            paramString = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-            if (((Boolean)this.a.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService.getMapRequest().get(paramString)).booleanValue()) {
+            paramString = String.valueOf(this.a.i.get(i));
+            if (((Boolean)this.a.j.getMapRequest().get(paramString)).booleanValue()) {
               return;
             }
             i += 1;
           }
-          QQToast.a(this.a.app.getApp(), 2, HardCodeUtil.a(2131714986), 0).b(this.a.getTitleBarHeight());
+          QQToast.makeText(this.a.app.getApp(), 2, HardCodeUtil.a(2131912481), 0).show(this.a.getTitleBarHeight());
           TroopAssistantActivity.a(this.a);
           return;
         }
@@ -67,10 +67,10 @@ class TroopAssistantActivity$10
         {
           if (paramBoolean)
           {
-            QQToast.a(this.a.app.getApp(), 2, this.a.getString(2131719976), 0).b(this.a.getTitleBarHeight());
+            QQToast.makeText(this.a.app.getApp(), 2, this.a.getString(2131917581), 0).show(this.a.getTitleBarHeight());
             return;
           }
-          QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719975), 0).b(this.a.getTitleBarHeight());
+          QQToast.makeText(this.a.app.getApp(), 1, this.a.getString(2131917580), 0).show(this.a.getTitleBarHeight());
         }
       }
     }
@@ -78,7 +78,7 @@ class TroopAssistantActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class ForwardMultServerShare$2
   
   public void run()
   {
-    StructMsgForImageShare.sendAndUploadImageShare(ForwardMultServerShare.a(this.this$0), (StructMsgForImageShare)ForwardMultServerShare.a(this.this$0), this.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord.uin, this.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord.uinType, null, 0, new ForwardMultServerShare.2.1(this), true);
+    StructMsgForImageShare.sendAndUploadImageShare(ForwardMultServerShare.d(this.this$0), (StructMsgForImageShare)ForwardMultServerShare.e(this.this$0), this.a.uin, this.a.uinType, null, 0, new ForwardMultServerShare.2.1(this), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMultServerShare.2
  * JD-Core Version:    0.7.0.1
  */

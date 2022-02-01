@@ -13,10 +13,10 @@ class LinearIndeterminateDisjointAnimatorDelegate$1
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    if (LinearIndeterminateDisjointAnimatorDelegate.a(this.a))
+    if (LinearIndeterminateDisjointAnimatorDelegate.c(this.a))
     {
-      LinearIndeterminateDisjointAnimatorDelegate.a(this.a).setRepeatCount(-1);
-      this.a.jdField_a_of_type_AndroidxVectordrawableGraphicsDrawableAnimatable2Compat$AnimationCallback.onAnimationEnd(this.a.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable);
+      LinearIndeterminateDisjointAnimatorDelegate.d(this.a).setRepeatCount(-1);
+      this.a.a.onAnimationEnd(this.a.b);
       LinearIndeterminateDisjointAnimatorDelegate.b(this.a, false);
     }
   }
@@ -25,13 +25,13 @@ class LinearIndeterminateDisjointAnimatorDelegate$1
   {
     super.onAnimationRepeat(paramAnimator);
     paramAnimator = this.a;
-    LinearIndeterminateDisjointAnimatorDelegate.a(paramAnimator, (LinearIndeterminateDisjointAnimatorDelegate.a(paramAnimator) + 1) % LinearIndeterminateDisjointAnimatorDelegate.a(this.a).a.length);
+    LinearIndeterminateDisjointAnimatorDelegate.a(paramAnimator, (LinearIndeterminateDisjointAnimatorDelegate.a(paramAnimator) + 1) % LinearIndeterminateDisjointAnimatorDelegate.b(this.a).c.length);
     LinearIndeterminateDisjointAnimatorDelegate.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.LinearIndeterminateDisjointAnimatorDelegate.1
  * JD-Core Version:    0.7.0.1
  */

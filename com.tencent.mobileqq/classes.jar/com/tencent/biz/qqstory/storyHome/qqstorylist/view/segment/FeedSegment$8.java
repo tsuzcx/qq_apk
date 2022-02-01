@@ -18,7 +18,7 @@ class FeedSegment$8
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     TVKPreloader.a();
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    paramJobContext = this.a.toArray();
     int j = paramJobContext.length;
     int i = 0;
     while (i < j)

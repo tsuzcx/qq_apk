@@ -28,17 +28,17 @@ import tencent.im.oidb.qqshop.qqshop.SQQSHPClientReq;
 
 public class EcshopCacheTool
 {
-  public static final String a;
-  public EcshopReportHandler a;
-  ShopWebViewFragment jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-  EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new EcshopCacheTool.1(this);
-  Map<String, Friends> jdField_a_of_type_JavaUtilMap;
-  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new EcshopCacheTool.2(this);
-  public boolean a;
-  Map<String, Bitmap> b;
-  public Map<String, Integer> c;
-  public Map<String, String> d;
+  public static final String i;
+  EntityManager a;
+  Map<String, Friends> b;
+  Map<String, Bitmap> c;
+  public Map<String, Integer> d;
+  public Map<String, String> e;
+  public EcshopReportHandler f;
+  public boolean g;
+  ShopWebViewFragment h;
+  Runnable j = new EcshopCacheTool.1(this);
+  BusinessObserver k = new EcshopCacheTool.2(this);
   
   static
   {
@@ -46,54 +46,25 @@ public class EcshopCacheTool
     localStringBuilder.append(BaseApplication.getContext().getFilesDir());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("shop_assit_banner_json.txt");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    i = localStringBuilder.toString();
   }
   
   public EcshopCacheTool(AppInterface paramAppInterface, ShopWebViewFragment paramShopWebViewFragment)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = paramShopWebViewFragment;
-    this.c = new ConcurrentHashMap();
+    this.h = paramShopWebViewFragment;
     this.d = new ConcurrentHashMap();
-    this.b = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler = ((EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.jdField_a_of_type_JavaLangString));
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    synchronized (this.b)
-    {
-      paramString = (Bitmap)this.b.get(paramString);
-      return paramString;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Map localMap = this.jdField_a_of_type_JavaUtilMap;
-      if (localMap == null) {
-        return "";
-      }
-      paramString = (Friends)localMap.get(paramString);
-      if (paramString != null) {
-        return paramString.getFriendNick();
-      }
-    }
-    return "";
+    this.e = new ConcurrentHashMap();
+    this.c = new ConcurrentHashMap();
+    this.a = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    this.f = ((EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.m));
+    ThreadManager.post(this.j, 5, null, true);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = null;
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler = null;
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
-    if (localMap != null) {
-      localMap.clear();
-    }
-    localMap = this.b;
+    this.h = null;
+    this.f = null;
+    Map localMap = this.b;
     if (localMap != null) {
       localMap.clear();
     }
@@ -102,6 +73,10 @@ public class EcshopCacheTool
       localMap.clear();
     }
     localMap = this.d;
+    if (localMap != null) {
+      localMap.clear();
+    }
+    localMap = this.e;
     if (localMap != null) {
       localMap.clear();
     }
@@ -116,9 +91,9 @@ public class EcshopCacheTool
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    synchronized (this.b)
+    synchronized (this.c)
     {
-      this.b.put(paramString, paramBitmap);
+      this.c.put(paramString, paramBitmap);
       return;
     }
   }
@@ -131,7 +106,7 @@ public class EcshopCacheTool
     localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetFolderInfo");
     localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
     localNewIntent.putExtra("extra_timeout", 30000L);
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    localNewIntent.setObserver(this.k);
     paramAppRuntime.startServlet(localNewIntent);
   }
   
@@ -154,7 +129,7 @@ public class EcshopCacheTool
     localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetShopBindUin");
     localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
     localNewIntent.putExtra("extra_timeout", 30000L);
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    localNewIntent.setObserver(this.k);
     paramAppRuntime.startServlet(localNewIntent);
   }
   
@@ -162,13 +137,29 @@ public class EcshopCacheTool
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Map localMap = this.jdField_a_of_type_JavaUtilMap;
+      Map localMap = this.b;
       if (localMap == null) {
         return false;
       }
       return (Friends)localMap.get(paramString) != null;
     }
     return false;
+  }
+  
+  public String b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Map localMap = this.b;
+      if (localMap == null) {
+        return "";
+      }
+      paramString = (Friends)localMap.get(paramString);
+      if (paramString != null) {
+        return paramString.getFriendNick();
+      }
+    }
+    return "";
   }
   
   public void b(Context paramContext, String paramString)
@@ -178,10 +169,19 @@ public class EcshopCacheTool
     localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
     paramContext.startActivity(localIntent);
   }
+  
+  public Bitmap c(String paramString)
+  {
+    synchronized (this.c)
+    {
+      paramString = (Bitmap)this.c.get(paramString);
+      return paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool
  * JD-Core Version:    0.7.0.1
  */

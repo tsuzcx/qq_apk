@@ -17,18 +17,18 @@ final class WeatherView$bindTextView$$inlined$apply$lambda$1
   
   public final void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       ReportHelperKt.a("0X800AF49", 2, null, null, 12, null);
     } else {
       ReportHelperKt.a("0X800AF49", 1, null, null, 12, null);
     }
-    StatusVisibleFragment.a((Activity)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewWeatherView.a(), WeatherView.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewWeatherView), 2, 1030);
+    StatusVisibleFragment.a((Activity)this.a.c(), WeatherView.b(this.a), 2, 1030);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView.bindTextView..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

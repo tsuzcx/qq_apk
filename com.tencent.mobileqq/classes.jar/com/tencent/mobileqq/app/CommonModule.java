@@ -97,11 +97,11 @@ public class CommonModule
         paramBundle = new Intent();
         paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
         paramBundle.putExtra("param_callback_id", paramInt);
-        paramString = ProfileCardUtil.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
-        if (paramString.jdField_a_of_type_Int != 0)
+        paramString = ProfileCardUtil.b((QQAppInterface)localAppRuntime, paramString, paramBundle);
+        if (paramString.a != 0)
         {
-          localBundle.putInt("param_result_code", paramString.jdField_a_of_type_Int);
-          localBundle.putString("param_result_desc", paramString.jdField_a_of_type_JavaLangString);
+          localBundle.putInt("param_result_code", paramString.a);
+          localBundle.putString("param_result_desc", paramString.b);
           localBundle.putString("param_action", "set_avatar");
           callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
         }
@@ -134,7 +134,7 @@ public class CommonModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CommonModule
  * JD-Core Version:    0.7.0.1
  */

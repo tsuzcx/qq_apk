@@ -16,19 +16,19 @@ class ComponentHeaderUgc$2
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.a.a(), 4, false, 7, false);
-    RIJFrameworkReportManager.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.a.c());
+    RIJJumpUtils.a(this.b.getContext(), this.b.a.a.k(), 4, false, 7, false);
+    RIJFrameworkReportManager.b(this.a, this.b.a.a.m());
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.getResources()));
+    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.b.getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderUgc.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QQStoryFriendSettings
   extends IphoneTitleBarActivity
 {
-  protected ActivityDelegate<QQStoryFriendSettings> a = StoryApi.a(QQStoryFriendSettingDelegate.class, NullableObjectFactoryImplement.a(ActivityDelegate.class), new Object[0]);
+  protected ActivityDelegate<QQStoryFriendSettings> a = StoryApi.a(QQStoryFriendSettingDelegate.class, NullableObjectFactoryImplement.b(ActivityDelegate.class), new Object[0]);
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

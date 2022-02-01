@@ -25,8 +25,8 @@ class RecommendADVideoFeedsManager$1
     paramMessage = this.a.a(false);
     if (paramMessage != null)
     {
-      RecommendADVideoFeedsManager.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      RecommendADVideoFeedsManager.a(this.a).remove(Integer.valueOf(paramMessage.e));
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.D;
       if (localAdvertisementInfo != null) {
         localAdvertisementInfo.isShowingGuide = false;
       }
@@ -36,7 +36,7 @@ class RecommendADVideoFeedsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.RecommendADVideoFeedsManager.1
  * JD-Core Version:    0.7.0.1
  */

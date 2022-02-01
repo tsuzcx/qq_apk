@@ -28,24 +28,24 @@ import java.util.List;
 public class PublicAccountSearchEngine
   implements ISearchEngine<PublicAccountSearchResultModel>, Runnable
 {
-  private static final Comparator<PublicAccountSearchResultModel> jdField_a_of_type_JavaUtilComparator = new PublicAccountSearchEngine.2();
-  private static final Comparator<PublicAccountSearchResultModel> b = new PublicAccountSearchEngine.3();
-  private int jdField_a_of_type_Int = -1;
-  private IPublicAccountDataManager jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static final Comparator<PublicAccountSearchResultModel> d = new PublicAccountSearchEngine.2();
+  private static final Comparator<PublicAccountSearchResultModel> e = new PublicAccountSearchEngine.3();
+  private IPublicAccountDataManager a;
+  private final QQAppInterface b;
+  private int c = -1;
   
   public PublicAccountSearchEngine(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager = ((IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all"));
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramQQAppInterface;
+    this.a = ((IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all"));
+    this.c = paramInt;
   }
   
   private static int b(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
     int i;
-    if ((paramIContactSearchModel2.b() != null) && (paramIContactSearchModel1.b() != null)) {
-      i = paramIContactSearchModel1.b().toString().compareTo(paramIContactSearchModel2.b().toString());
+    if ((paramIContactSearchModel2.d() != null) && (paramIContactSearchModel1.d() != null)) {
+      i = paramIContactSearchModel1.d().toString().compareTo(paramIContactSearchModel2.d().toString());
     } else {
       i = 0;
     }
@@ -53,11 +53,11 @@ public class PublicAccountSearchEngine
     if (i == 0)
     {
       j = i;
-      if (paramIContactSearchModel2.c() != null)
+      if (paramIContactSearchModel2.e() != null)
       {
         j = i;
-        if (paramIContactSearchModel1.c() != null) {
-          j = paramIContactSearchModel1.c().toString().compareTo(paramIContactSearchModel2.c().toString());
+        if (paramIContactSearchModel1.e() != null) {
+          j = paramIContactSearchModel1.e().toString().compareTo(paramIContactSearchModel2.e().toString());
         }
       }
     }
@@ -67,9 +67,9 @@ public class PublicAccountSearchEngine
   public List<PublicAccountSearchResultModel> a(SearchRequest paramSearchRequest)
   {
     long l1 = System.currentTimeMillis();
-    while (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager.isBuildingList()) {}
+    while (this.a.isBuildingList()) {}
     long l2 = System.currentTimeMillis();
-    Object localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager.getPublicAccountList();
+    Object localObject3 = this.a.getPublicAccountList();
     if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
     {
       Object localObject1 = new ArrayList();
@@ -82,22 +82,22 @@ public class PublicAccountSearchEngine
         Object localObject4 = (Entity)((List)localObject3).get(i);
         if ((localObject4 != null) && ((localObject4 instanceof PublicAccountInfo)))
         {
-          Object localObject5 = (QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
-          if ((localObject5 == null) || (!((QidianManager)localObject5).f(((PublicAccountInfo)localObject4).getUin())))
+          Object localObject5 = (QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER);
+          if ((localObject5 == null) || (!((QidianManager)localObject5).m(((PublicAccountInfo)localObject4).getUin())))
           {
             localObject4 = (PublicAccountInfo)localObject4;
-            if ((!TextUtils.equals(((PublicAccountInfo)localObject4).getUin(), "2173223560")) && ((this.jdField_a_of_type_Int != 12) || (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isMediaAndOtherSubscript(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((PublicAccountInfo)localObject4).getUin()))))
+            if ((!TextUtils.equals(((PublicAccountInfo)localObject4).getUin(), "2173223560")) && ((this.c != 12) || (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isMediaAndOtherSubscript(this.b, ((PublicAccountInfo)localObject4).getUin()))))
             {
-              localObject5 = new PublicAccountSearchResultModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (PublicAccountInfo)localObject4, this.jdField_a_of_type_Int);
-              ((PublicAccountSearchResultModel)localObject5).b(paramSearchRequest.a);
-              if (((PublicAccountSearchResultModel)localObject5).b() != -9223372036854775808L)
+              localObject5 = new PublicAccountSearchResultModel(this.b, (PublicAccountInfo)localObject4, this.c);
+              ((PublicAccountSearchResultModel)localObject5).d(paramSearchRequest.a);
+              if (((PublicAccountSearchResultModel)localObject5).u() != -9223372036854775808L)
               {
-                PublicAccountSearchResultModel localPublicAccountSearchResultModel = (PublicAccountSearchResultModel)((HashMap)localObject2).get(((PublicAccountSearchResultModel)localObject5).a());
-                if ((localPublicAccountSearchResultModel == null) || (localPublicAccountSearchResultModel.b() < ((PublicAccountSearchResultModel)localObject5).b())) {
-                  ((HashMap)localObject2).put(((PublicAccountSearchResultModel)localObject5).a(), localObject5);
+                PublicAccountSearchResultModel localPublicAccountSearchResultModel = (PublicAccountSearchResultModel)((HashMap)localObject2).get(((PublicAccountSearchResultModel)localObject5).i());
+                if ((localPublicAccountSearchResultModel == null) || (localPublicAccountSearchResultModel.u() < ((PublicAccountSearchResultModel)localObject5).u())) {
+                  ((HashMap)localObject2).put(((PublicAccountSearchResultModel)localObject5).i(), localObject5);
                 }
               }
-              if ((localObject4 != null) && (((PublicAccountInfo)localObject4).displayNumber != null) && (((PublicAccountInfo)localObject4).displayNumber.equalsIgnoreCase(((PublicAccountSearchResultModel)localObject5).b()))) {
+              if ((localObject4 != null) && (((PublicAccountInfo)localObject4).displayNumber != null) && (((PublicAccountInfo)localObject4).displayNumber.equalsIgnoreCase(((PublicAccountSearchResultModel)localObject5).g()))) {
                 ((List)localObject1).add(localObject5);
               }
             }
@@ -107,10 +107,10 @@ public class PublicAccountSearchEngine
       }
       localObject3 = new ArrayList();
       ((List)localObject3).addAll(((HashMap)localObject2).values());
-      Collections.sort((List)localObject3, jdField_a_of_type_JavaUtilComparator);
+      Collections.sort((List)localObject3, d);
       i = Math.min(((List)localObject3).size(), 30);
       localObject2 = ((List)localObject3).subList(0, i);
-      Collections.sort((List)localObject2, b);
+      Collections.sort((List)localObject2, e);
       paramSearchRequest = new ArrayList();
       paramSearchRequest.addAll((Collection)localObject2);
       paramSearchRequest.addAll(((List)localObject3).subList(i, ((List)localObject3).size()));
@@ -144,7 +144,7 @@ public class PublicAccountSearchEngine
   
   public void a()
   {
-    IPublicAccountDataManager localIPublicAccountDataManager = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager;
+    IPublicAccountDataManager localIPublicAccountDataManager = this.a;
     if (localIPublicAccountDataManager == null) {
       return;
     }
@@ -157,7 +157,7 @@ public class PublicAccountSearchEngine
   {
     ThreadManager.postImmediately(new PublicAccountSearchEngine.1(this, paramSearchRequest, paramISearchListener), null, true);
     if (!TextUtils.isEmpty(paramSearchRequest.a)) {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1D", "0X8005D1D", 0, 0, "", "", paramSearchRequest.a, "", false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.b, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1D", "0X8005D1D", 0, 0, "", "", paramSearchRequest.a, "", false);
     }
   }
   
@@ -171,12 +171,12 @@ public class PublicAccountSearchEngine
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDataManager.initPublicAccountDataManager();
+    this.a.initPublicAccountDataManager();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -12,68 +12,68 @@ public class AlbumPreviewBuilder
   implements IBrowserBuilder
 {
   public PhotoPreviewCustomization<? extends OtherCommonData> a;
-  private PreviewModel jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewModelPreviewModel;
-  private PreviewPresenter jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter;
-  private PreviewScene jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene;
-  private BrowserParamsBuilder jdField_a_of_type_ComTencentRichmediabrowserApiBrowserParamsBuilder;
+  private PreviewPresenter b;
+  private PreviewScene c;
+  private PreviewModel d;
+  private BrowserParamsBuilder e;
   
   public AlbumPreviewBuilder(PhotoPreviewCustomization<? extends OtherCommonData> paramPhotoPreviewCustomization)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPhotoPreviewCustomization = paramPhotoPreviewCustomization;
+    this.a = paramPhotoPreviewCustomization;
   }
   
   public PreviewPresenter a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter;
+    return this.b;
   }
   
   public void a(BrowserParamsBuilder paramBrowserParamsBuilder)
   {
-    this.jdField_a_of_type_ComTencentRichmediabrowserApiBrowserParamsBuilder = paramBrowserParamsBuilder;
+    this.e = paramBrowserParamsBuilder;
   }
   
   public void buildComplete()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.buildComplete();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene.buildComplete();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewModelPreviewModel.buildComplete();
+    this.b.buildComplete();
+    this.c.buildComplete();
+    this.d.buildComplete();
   }
   
   public void buildModel()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewModelPreviewModel.buildModel();
+    this.d.buildModel();
   }
   
   public void buildParams(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.buildParams(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene.buildParams(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewModelPreviewModel.buildParams(paramIntent);
+    this.b.buildParams(paramIntent);
+    this.c.buildParams(paramIntent);
+    this.d.buildParams(paramIntent);
   }
   
   public void buildPresenter()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter = new PreviewPresenter();
-    PhotoPreviewCustomization localPhotoPreviewCustomization = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPhotoPreviewCustomization;
-    PreviewPresenter localPreviewPresenter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter;
-    localPhotoPreviewCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter = localPreviewPresenter;
+    this.b = new PreviewPresenter();
+    PhotoPreviewCustomization localPhotoPreviewCustomization = this.a;
+    PreviewPresenter localPreviewPresenter = this.b;
+    localPhotoPreviewCustomization.i = localPreviewPresenter;
     localPreviewPresenter.a(localPhotoPreviewCustomization);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.setParamsBuilder(this.jdField_a_of_type_ComTencentRichmediabrowserApiBrowserParamsBuilder);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene = new PreviewScene(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPhotoPreviewCustomization.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPhotoPreviewCustomization);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewModelPreviewModel = new PreviewModel(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewModelPreviewModel);
+    this.b.setParamsBuilder(this.e);
+    this.c = new PreviewScene(this.a.e, this.b);
+    this.c.a(this.a);
+    this.b.a(this.c);
+    this.d = new PreviewModel(this.b);
+    this.b.a(this.d);
   }
   
   public void buildView()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewScene.buildView();
+    this.c.buildView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.AlbumPreviewBuilder
  * JD-Core Version:    0.7.0.1
  */

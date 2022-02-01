@@ -17,14 +17,14 @@ class FavEmosmViewPage$4
     if (paramList == null) {
       localObject = new ArrayList();
     }
-    if (FavEmosmViewPage.a(this.a) != null) {
-      FavEmosmViewPage.a(this.a).obtainMessage(206, localObject).sendToTarget();
+    if (FavEmosmViewPage.c(this.a) != null) {
+      FavEmosmViewPage.c(this.a).obtainMessage(206, localObject).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.4
  * JD-Core Version:    0.7.0.1
  */

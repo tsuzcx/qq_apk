@@ -4,38 +4,38 @@ import com.tencent.biz.qqstory.channel.CmdTaskManger;
 
 public class DetailLikeListLoader
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  private String a;
+  private boolean b = true;
+  private int c = -1;
+  private boolean d;
   
   public DetailLikeListLoader(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString;
+    this.b = paramBoolean;
   }
   
   public DetailLikeListLoader(String paramString, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramBoolean;
+    this.c = paramInt;
   }
   
   private boolean a()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
-    return (bool) && ((!bool) || (this.jdField_a_of_type_Int != 0));
+    boolean bool = this.b;
+    return (bool) && ((!bool) || (this.c != 0));
   }
   
   public void a(boolean paramBoolean)
   {
     DetailLikeListLoader.GetLikeListRequest localGetLikeListRequest = new DetailLikeListLoader.GetLikeListRequest();
-    localGetLikeListRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localGetLikeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    int i = this.jdField_a_of_type_Int;
+    localGetLikeListRequest.e = this.a;
+    localGetLikeListRequest.f = this.b;
+    int i = this.c;
     if (i != -1) {
-      localGetLikeListRequest.c = i;
+      localGetLikeListRequest.g = i;
     }
     CmdTaskManger.a().a(localGetLikeListRequest, new DetailLikeListLoader.2(this, paramBoolean));
   }

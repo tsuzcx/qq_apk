@@ -9,9 +9,9 @@ class VideoLayerUI$4
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.o(true);
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(-1044L, this.jdField_a_of_type_Boolean);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiGLVideoView, this.jdField_a_of_type_Boolean);
+    this.a.p(true);
+    this.a.a(-1044L, this.b);
+    VideoLayerUI.a(this.c, this.a, this.b);
   }
 }
 

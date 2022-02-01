@@ -31,35 +31,20 @@ import com.tencent.util.QQDeviceInfo;
 import cooperation.qzone.QUA;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import mqq.app.AppRuntime;
 
 public class UserActionReportPresenter
   implements IWeishiServiceListener
 {
-  private static WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
-  private static String jdField_a_of_type_JavaLangString;
+  private static String a;
   private static String b;
   private static String c = "";
+  private static WifiManager d;
   
   static
   {
-    a();
-  }
-  
-  public static int a(Context paramContext)
-  {
-    if (jdField_a_of_type_AndroidNetWifiWifiManager == null) {
-      jdField_a_of_type_AndroidNetWifiWifiManager = (WifiManager)paramContext.getSystemService("wifi");
-    }
-    paramContext = jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
-    WSLog.b("wifiInfo", paramContext.toString());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(paramContext.getIpAddress());
-    WSLog.b("SSID", localStringBuilder.toString());
-    return paramContext.getIpAddress();
+    b();
   }
   
   public static stReportItem a()
@@ -73,19 +58,19 @@ public class UserActionReportPresenter
       l = NumberUtils.a((String)localObject, 0L);
     }
     localstReportItem.uin = l;
-    localstReportItem.network_type = WSDeviceUtils.g().toLowerCase();
+    localstReportItem.network_type = WSDeviceUtils.k().toLowerCase();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("android");
-    ((StringBuilder)localObject).append(WSDeviceUtils.c());
+    ((StringBuilder)localObject).append(WSDeviceUtils.d());
     ((StringBuilder)localObject).append(" - ");
-    ((StringBuilder)localObject).append(WSDeviceUtils.b());
+    ((StringBuilder)localObject).append(WSDeviceUtils.c());
     localstReportItem.os = ((StringBuilder)localObject).toString();
-    localstReportItem.city = a();
-    localstReportItem.ip = WSDeviceUtils.a();
+    localstReportItem.city = b();
+    localstReportItem.ip = WSDeviceUtils.b();
     localstReportItem.qua = QUA.getQUA3();
-    localstReportItem.vendor = DeviceInfoUtil.h();
+    localstReportItem.vendor = DeviceInfoUtil.t();
     localObject = new stDevice();
-    ((stDevice)localObject).encrypted_deviceid = WSGlobalConfig.a().e();
+    ((stDevice)localObject).encrypted_deviceid = WSGlobalConfig.a().o();
     ((stDevice)localObject).imei = a(BaseApplicationImpl.getContext());
     ((stDevice)localObject).qimei = b(BaseApplicationImpl.getContext());
     localstReportItem.device = ((stDevice)localObject);
@@ -141,19 +126,6 @@ public class UserActionReportPresenter
     return localstReportItem;
   }
   
-  private static String a()
-  {
-    if (TextUtils.isEmpty(c)) {
-      c = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCity();
-    }
-    if ((c.endsWith(HardCodeUtil.a(2131715742))) && (c.length() > 1))
-    {
-      String str = c;
-      c = str.substring(0, str.length() - 1);
-    }
-    return c;
-  }
-  
   private static String a(int paramInt1, int paramInt2)
   {
     String str;
@@ -175,82 +147,82 @@ public class UserActionReportPresenter
                 str = "";
                 break;
               case 139: 
-                str = HardCodeUtil.a(2131715715);
+                str = HardCodeUtil.a(2131913178);
                 break;
               case 138: 
-                str = HardCodeUtil.a(2131715738);
+                str = HardCodeUtil.a(2131913201);
                 break;
               case 137: 
-                str = HardCodeUtil.a(2131715725);
+                str = HardCodeUtil.a(2131913188);
               }
               break;
             case 133: 
-              str = HardCodeUtil.a(2131715717);
+              str = HardCodeUtil.a(2131913180);
               break;
             case 132: 
-              str = HardCodeUtil.a(2131715712);
+              str = HardCodeUtil.a(2131913175);
               break;
             case 131: 
-              str = HardCodeUtil.a(2131715709);
+              str = HardCodeUtil.a(2131913172);
               break;
             case 130: 
-              str = HardCodeUtil.a(2131715741);
+              str = HardCodeUtil.a(2131913204);
               break;
             case 129: 
-              str = HardCodeUtil.a(2131715726);
+              str = HardCodeUtil.a(2131913189);
               break;
             case 128: 
-              str = HardCodeUtil.a(2131715722);
+              str = HardCodeUtil.a(2131913185);
               break;
             case 127: 
-              str = HardCodeUtil.a(2131715732);
+              str = HardCodeUtil.a(2131913195);
             }
             break;
           case 121: 
-            str = HardCodeUtil.a(2131715718);
+            str = HardCodeUtil.a(2131913181);
             break;
           case 120: 
-            str = HardCodeUtil.a(2131715736);
+            str = HardCodeUtil.a(2131913199);
             break;
           case 119: 
-            str = HardCodeUtil.a(2131715734);
+            str = HardCodeUtil.a(2131913197);
             break;
           case 118: 
-            str = HardCodeUtil.a(2131715743);
+            str = HardCodeUtil.a(2131913206);
             break;
           case 117: 
-            str = HardCodeUtil.a(2131715728);
+            str = HardCodeUtil.a(2131913191);
             if (paramInt2 != 12) {
               break;
             }
-            str = HardCodeUtil.a(2131715704);
+            str = HardCodeUtil.a(2131913168);
             break;
           case 116: 
-            str = HardCodeUtil.a(2131715737);
+            str = HardCodeUtil.a(2131913200);
             break;
           case 115: 
-            str = HardCodeUtil.a(2131715713);
+            str = HardCodeUtil.a(2131913176);
             if (paramInt2 != 12) {
               break;
             }
-            str = HardCodeUtil.a(2131715721);
+            str = HardCodeUtil.a(2131913184);
             break;
           case 114: 
-            str = HardCodeUtil.a(2131715731);
+            str = HardCodeUtil.a(2131913194);
             if (paramInt2 != 12) {
               break;
             }
-            str = HardCodeUtil.a(2131715719);
+            str = HardCodeUtil.a(2131913182);
             break;
           case 113: 
-            str = HardCodeUtil.a(2131715711);
+            str = HardCodeUtil.a(2131913174);
             break;
           case 112: 
-            str = HardCodeUtil.a(2131715720);
+            str = HardCodeUtil.a(2131913183);
             if (paramInt2 != 9)
             {
               if (paramInt2 == 12) {
-                str = HardCodeUtil.a(2131715735);
+                str = HardCodeUtil.a(2131913198);
               }
             }
             else {
@@ -260,13 +232,13 @@ public class UserActionReportPresenter
           }
           break;
         case 8: 
-          str = HardCodeUtil.a(2131715716);
+          str = HardCodeUtil.a(2131913179);
           break;
         case 7: 
-          str = HardCodeUtil.a(2131715727);
+          str = HardCodeUtil.a(2131913190);
           break;
         case 6: 
-          str = HardCodeUtil.a(2131715730);
+          str = HardCodeUtil.a(2131913193);
           if (paramInt2 != 2)
           {
             if (paramInt2 != 6)
@@ -274,51 +246,51 @@ public class UserActionReportPresenter
               if (paramInt2 != 12)
               {
                 if (paramInt2 == 14) {
-                  str = HardCodeUtil.a(2131715710);
+                  str = HardCodeUtil.a(2131913173);
                 }
               }
               else {
-                str = HardCodeUtil.a(2131715706);
+                str = HardCodeUtil.a(2131913170);
               }
             }
             else {
-              str = HardCodeUtil.a(2131715714);
+              str = HardCodeUtil.a(2131913177);
             }
           }
           else {
-            str = HardCodeUtil.a(2131715733);
+            str = HardCodeUtil.a(2131913196);
           }
           break;
         case 5: 
-          str = HardCodeUtil.a(2131715707);
+          str = HardCodeUtil.a(2131899712);
           break;
         case 4: 
-          str = HardCodeUtil.a(2131715723);
+          str = HardCodeUtil.a(2131913186);
           if (paramInt2 != 2)
           {
             if (paramInt2 == 6) {
-              str = HardCodeUtil.a(2131715729);
+              str = HardCodeUtil.a(2131913192);
             }
           }
           else {
-            str = HardCodeUtil.a(2131715740);
+            str = HardCodeUtil.a(2131913203);
           }
           break;
         case 3: 
-          str = HardCodeUtil.a(2131715705);
+          str = HardCodeUtil.a(2131913169);
           break;
         }
       } else {
-        str = HardCodeUtil.a(2131715708);
+        str = HardCodeUtil.a(2131913171);
       }
     }
     else {
-      str = HardCodeUtil.a(2131715739);
+      str = HardCodeUtil.a(2131913202);
     }
     if (paramInt2 != 3) {
       return str;
     }
-    return HardCodeUtil.a(2131715724);
+    return HardCodeUtil.a(2131913187);
   }
   
   public static String a(Context paramContext)
@@ -326,10 +298,10 @@ public class UserActionReportPresenter
     if (paramContext == null) {
       return "";
     }
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(a)) {
       try
       {
-        jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("1d76c6");
+        a = QQDeviceInfo.getIMEI("1d76c6");
       }
       catch (Throwable paramContext)
       {
@@ -339,7 +311,7 @@ public class UserActionReportPresenter
         WSLog.d("weishi-810", localStringBuilder.toString());
       }
     }
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   private static Map<String, String> a(String paramString)
@@ -416,26 +388,25 @@ public class UserActionReportPresenter
   {
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      localObject = a(((stReportItem)paramArrayList.get(0)).optype, ((stReportItem)paramArrayList.get(0)).pagetype);
-      Iterator localIterator = paramArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        stReportItem localstReportItem = (stReportItem)localIterator.next();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("report ");
-        localStringBuilder.append((String)localObject);
-        localStringBuilder.append(" stReportItem:");
-        localStringBuilder.append(localstReportItem.toString());
-        WSLog.b("weishi-report", localStringBuilder.toString());
-      }
-      paramArrayList = new WeishiTask(new ReportRequest(paramArrayList), null, new UserActionReportPresenter.1((String)localObject), 2001);
+      String str = a(((stReportItem)paramArrayList.get(0)).optype, ((stReportItem)paramArrayList.get(0)).pagetype);
+      paramArrayList = new WeishiTask(new ReportRequest(paramArrayList), null, new UserActionReportPresenter.1(str), 2001);
       WeishiBusinessLooper.a().a(paramArrayList);
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("report error items: ");
-    ((StringBuilder)localObject).append(paramArrayList);
-    WSLog.d("weishi-report", ((StringBuilder)localObject).toString());
+    WSLog.d("weishi-report", "[UserActionReportPresenter.java][doReport] report error items!");
+  }
+  
+  private static String b()
+  {
+    if (TextUtils.isEmpty(c)) {
+      c = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCity();
+    }
+    if ((c.endsWith(HardCodeUtil.a(2131913205))) && (c.length() > 1))
+    {
+      String str = c;
+      c = str.substring(0, str.length() - 1);
+    }
+    return c;
   }
   
   public static String b(Context paramContext)
@@ -464,19 +435,33 @@ public class UserActionReportPresenter
   
   public static String c(Context paramContext)
   {
-    if (jdField_a_of_type_AndroidNetWifiWifiManager == null) {
-      jdField_a_of_type_AndroidNetWifiWifiManager = (WifiManager)paramContext.getSystemService("wifi");
+    if (d == null) {
+      d = (WifiManager)paramContext.getSystemService("wifi");
     }
-    paramContext = jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+    paramContext = d.getConnectionInfo();
     WSLog.b("wifiInfo", paramContext.toString());
     return paramContext.getSSID().replace("\"", "");
+  }
+  
+  public static int d(Context paramContext)
+  {
+    if (d == null) {
+      d = (WifiManager)paramContext.getSystemService("wifi");
+    }
+    paramContext = d.getConnectionInfo();
+    WSLog.b("wifiInfo", paramContext.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramContext.getIpAddress());
+    WSLog.b("SSID", localStringBuilder.toString());
+    return paramContext.getIpAddress();
   }
   
   public void a(WeishiTask paramWeishiTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter
  * JD-Core Version:    0.7.0.1
  */

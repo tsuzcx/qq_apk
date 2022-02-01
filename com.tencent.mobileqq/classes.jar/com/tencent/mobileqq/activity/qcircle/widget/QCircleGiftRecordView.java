@@ -19,12 +19,12 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QCircleGiftRecordView
   extends LinearLayout
 {
-  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private String jdField_a_of_type_JavaLangString;
+  private ViewGroup a;
+  private FrameLayout b;
+  private URLImageView c;
+  private TextView d;
+  private String e;
+  private GradientDrawable f;
   
   public QCircleGiftRecordView(Context paramContext)
   {
@@ -44,14 +44,14 @@ public class QCircleGiftRecordView
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560713, this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366902));
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-986894);
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(ImmersiveUtils.dpToPx(9.0F));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369369));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379702));
+    this.a = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131626845, this));
+    this.b = ((FrameLayout)this.a.findViewById(2131433236));
+    this.f = new GradientDrawable();
+    this.f.setColor(-986894);
+    this.f.setCornerRadius(ImmersiveUtils.dpToPx(9.0F));
+    this.b.setBackgroundDrawable(this.f);
+    this.c = ((URLImageView)this.a.findViewById(2131436394));
+    this.d = ((TextView)this.a.findViewById(2131448491));
   }
   
   public void setGiftCount(int paramInt, boolean paramBoolean)
@@ -59,17 +59,17 @@ public class QCircleGiftRecordView
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("x");
     localStringBuilder.append(paramInt);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    this.e = localStringBuilder.toString();
+    if (this.d != null)
     {
-      ((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).setNumberTypeface(this.jdField_a_of_type_AndroidWidgetTextView, paramBoolean);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      ((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).setNumberTypeface(this.d, paramBoolean);
+      this.d.setText(this.e);
     }
   }
   
   public void setIconUrl(String paramString)
   {
-    URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+    URLImageView localURLImageView = this.c;
     if (localURLImageView != null) {
       localURLImageView.setImageURL(paramString);
     }
@@ -79,13 +79,13 @@ public class QCircleGiftRecordView
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramString1));
+      if (this.d != null) {
+        this.d.setTextColor(Color.parseColor(paramString1));
       }
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable == null) {
+      if (this.f == null) {
         break label65;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString2));
+      this.f.setColor(Color.parseColor(paramString2));
       return;
     }
     catch (Exception localException)
@@ -99,7 +99,7 @@ public class QCircleGiftRecordView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleGiftRecordView
  * JD-Core Version:    0.7.0.1
  */

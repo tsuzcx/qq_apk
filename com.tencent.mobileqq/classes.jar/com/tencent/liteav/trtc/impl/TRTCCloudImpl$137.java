@@ -1,27 +1,19 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.trtc.TRTCCloudListener;
-import java.lang.ref.WeakReference;
-
 class TRTCCloudImpl$137
   implements Runnable
 {
-  TRTCCloudImpl$137(TRTCCloudImpl paramTRTCCloudImpl, WeakReference paramWeakReference, String paramString) {}
+  TRTCCloudImpl$137(TRTCCloudImpl paramTRTCCloudImpl, long paramLong, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if ((TRTCCloudImpl)this.val$weakSelf.get() == null) {
-      return;
-    }
-    TRTCCloudListener localTRTCCloudListener = this.this$0.mTRTCListener;
-    if (localTRTCCloudListener != null) {
-      localTRTCCloudListener.onRemoteUserEnterRoom(this.val$userID);
-    }
+    this.this$0.mRoomInfo.setTinyId(String.valueOf(this.val$tinyID));
+    this.this$0.mRoomInfo.setToken(this.this$0.mContext, this.val$token);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.137
  * JD-Core Version:    0.7.0.1
  */

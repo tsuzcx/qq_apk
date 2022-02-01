@@ -21,7 +21,7 @@ final class BaseEntryViewController$removeEntryView$1
   
   public final void invoke()
   {
-    Object localObject = (View)BaseEntryViewController.a(this.this$0).remove(this.$viewId);
+    Object localObject = (View)BaseEntryViewController.b(this.this$0).remove(this.$viewId);
     if (localObject != null)
     {
       BaseEntryViewController.a(this.this$0).a((View)localObject);
@@ -34,7 +34,7 @@ final class BaseEntryViewController$removeEntryView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.controller.BaseEntryViewController.removeEntryView.1
  * JD-Core Version:    0.7.0.1
  */

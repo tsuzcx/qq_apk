@@ -16,7 +16,7 @@ public class QVipSimpleThemeConfig
     if (TextUtils.isEmpty(paramString)) {
       return localQVipSimpleThemeConfig;
     }
-    a(paramString);
+    b(paramString);
     return localQVipSimpleThemeConfig;
   }
   
@@ -25,7 +25,7 @@ public class QVipSimpleThemeConfig
     return a;
   }
   
-  private static void a(String paramString)
+  private static void b(String paramString)
   {
     try
     {
@@ -40,7 +40,7 @@ public class QVipSimpleThemeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipSimpleThemeConfig
  * JD-Core Version:    0.7.0.1
  */

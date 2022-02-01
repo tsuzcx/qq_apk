@@ -7,17 +7,17 @@ class AEEditorLyricPanelDialog$3
   
   public void a()
   {
-    AEEditorLyricPanelDialog.a(this.a);
+    AEEditorLyricPanelDialog.c(this.a);
   }
   
   public void b()
   {
-    AEEditorLyricPanelDialog.b(this.a);
+    AEEditorLyricPanelDialog.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorLyricPanelDialog.3
  * JD-Core Version:    0.7.0.1
  */

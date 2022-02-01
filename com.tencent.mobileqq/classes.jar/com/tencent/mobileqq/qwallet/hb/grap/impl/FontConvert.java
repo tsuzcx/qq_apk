@@ -11,22 +11,13 @@ import mqq.app.AppRuntime;
 
 public class FontConvert
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private String b;
+  private String c;
   
   public static FontConvert a()
   {
     return FontConvert.FontConvertHolder.a;
-  }
-  
-  public String a()
-  {
-    ResourceInfo localResourceInfo = ((IPreloadService)QWalletHelperImpl.getAppRuntime().getRuntimeService(IPreloadService.class, "")).getResInfoByResId("text_translate");
-    if (localResourceInfo == null) {
-      return null;
-    }
-    return localResourceInfo.folderPath;
   }
   
   public String a(String paramString)
@@ -34,21 +25,21 @@ public class FontConvert
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.a) && (!TextUtils.isEmpty(this.b)))
     {
-      if (TextUtils.isEmpty(this.b)) {
+      if (TextUtils.isEmpty(this.c)) {
         return paramString;
       }
       Object localObject = new StringBuilder();
       int i = 0;
       while (i < paramString.length())
       {
-        char c = paramString.charAt(i);
-        int j = this.jdField_a_of_type_JavaLangString.indexOf(c);
+        char c1 = paramString.charAt(i);
+        int j = this.b.indexOf(c1);
         if (j != -1) {
-          ((StringBuilder)localObject).append(this.b.charAt(j));
+          ((StringBuilder)localObject).append(this.c.charAt(j));
         } else {
-          ((StringBuilder)localObject).append(c);
+          ((StringBuilder)localObject).append(c1);
         }
         i += 1;
       }
@@ -67,11 +58,11 @@ public class FontConvert
     return paramString;
   }
   
-  public void a()
+  public void b()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.a;
       if (bool) {
         return;
       }
@@ -80,10 +71,19 @@ public class FontConvert
     }
     finally {}
   }
+  
+  public String c()
+  {
+    ResourceInfo localResourceInfo = ((IPreloadService)QWalletHelperImpl.getAppRuntime().getRuntimeService(IPreloadService.class, "")).getResInfoByResId("text_translate");
+    if (localResourceInfo == null) {
+      return null;
+    }
+    return localResourceInfo.folderPath;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.FontConvert
  * JD-Core Version:    0.7.0.1
  */

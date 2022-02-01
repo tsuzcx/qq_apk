@@ -8,21 +8,21 @@ import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
 public class GroupViewHolder
   extends RecyclerView.ViewHolder
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
+  RoundImageView a;
   TextView b;
+  TextView c;
   
   GroupViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)paramView.findViewById(2131363135));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
-    this.b = ((TextView)paramView.findViewById(2131369576));
+    this.a = ((RoundImageView)paramView.findViewById(2131428988));
+    this.b = ((TextView)paramView.findViewById(2131439121));
+    this.c = ((TextView)paramView.findViewById(2131436680));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupViewHolder
  * JD-Core Version:    0.7.0.1
  */

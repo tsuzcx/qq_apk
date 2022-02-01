@@ -11,66 +11,66 @@ public class Sprite
   extends Node
   implements ISprite<SpriteNativeView>
 {
-  private Bitmap a;
-  protected ImageView a;
+  private Bitmap s;
+  protected ImageView v;
   
   public Sprite(SpriteNativeView paramSpriteNativeView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
-    this.jdField_a_of_type_AndroidWidgetImageView = a();
-  }
-  
-  protected ImageView a()
-  {
-    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+    this.t = paramSpriteNativeView;
+    this.v = dt_();
   }
   
   public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+    this.s = paramBitmap;
+    paramSpriteNativeView = new FrameLayout.LayoutParams(this.s.getWidth(), this.s.getHeight());
+    this.v.setImageBitmap(this.s);
+    this.v.setLayoutParams(paramSpriteNativeView);
+    this.v.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.v.setPivotX(this.s.getWidth() / 2);
+    this.v.setPivotY(this.s.getHeight() / 2);
   }
   
-  public boolean c()
+  protected ImageView dt_()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    return new ImageView(this.t.getContext());
+  }
+  
+  public boolean k()
+  {
+    if (this.v.getVisibility() != 0) {
+      this.v.setVisibility(0);
     }
-    boolean bool = super.c();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    boolean bool = super.k();
+    if (this.s != null)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint);
-      float f1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.a;
-      float f2 = b();
-      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      float f4 = this.f;
-      float f5 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.b;
-      float f6 = b();
-      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
+      a(this.u);
+      float f1 = this.u.a;
+      float f2 = d();
+      float f3 = this.s.getWidth() / 2;
+      float f4 = this.r;
+      float f5 = this.u.b;
+      float f6 = d();
+      float f7 = this.s.getHeight() / 2;
+      this.v.setX(f1 * f2 - f3);
+      this.v.setY(f4 - f5 * f6 - f7);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
-    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    this.v.setScaleX(this.f * d());
+    this.v.setScaleY(this.f * d());
+    this.v.setRotation(this.h);
+    this.v.setAlpha(this.i * (e() / 255.0F) / 255.0F);
     return bool;
   }
   
-  public void d()
+  public void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.t.addView(this.v);
+    this.v.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.nv.Sprite
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ class GiftPkgSelectDialog$1$1
   {
     try
     {
-      GiftServiceBean localGiftServiceBean = (GiftServiceBean)GiftPkgSelectDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$1.a).get(this.jdField_a_of_type_Int);
-      if (GiftPkgSelectDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$1.a) != null) {
-        GiftPkgSelectDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$1.a).a(localGiftServiceBean);
+      GiftServiceBean localGiftServiceBean = (GiftServiceBean)GiftPkgSelectDialog.b(this.b.a).get(this.a);
+      if (GiftPkgSelectDialog.c(this.b.a) != null) {
+        GiftPkgSelectDialog.c(this.b.a).a(localGiftServiceBean);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog$1.a.dismiss();
+      this.b.a.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -24,7 +24,7 @@ class GiftPkgSelectDialog$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog.1.1
  * JD-Core Version:    0.7.0.1
  */

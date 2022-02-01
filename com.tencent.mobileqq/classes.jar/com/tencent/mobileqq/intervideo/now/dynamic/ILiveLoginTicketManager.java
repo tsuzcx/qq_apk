@@ -15,25 +15,14 @@ import java.lang.ref.WeakReference;
 
 public class ILiveLoginTicketManager
 {
-  private DoraemonAPIManager jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
+  private DoraemonAPIManager a;
+  private QQAppInterface b;
+  private String c = "";
+  private String d = "";
   
   public ILiveLoginTicketManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.b = paramQQAppInterface;
   }
   
   public void a(Activity paramActivity, APICallback paramAPICallback)
@@ -54,10 +43,10 @@ public class ILiveLoginTicketManager
     {
       localObject = (IDoraemonService)QRoute.api(IDoraemonService.class);
       ((IDoraemonService)localObject).prepare();
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "key_nearby_now_qq_connect_auth_time", Long.valueOf(System.currentTimeMillis()));
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = ((IDoraemonService)localObject).createAPIManager(paramActivity, 6, "101490787");
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.b.getAccount(), "key_nearby_now_qq_connect_auth_time", Long.valueOf(System.currentTimeMillis()));
+      this.a = ((IDoraemonService)localObject).createAPIManager(paramActivity, 6, "101490787");
     }
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+    paramActivity = this.a;
     if (paramActivity == null)
     {
       QLog.e("ILiveLoginTicketManager", 1, "requestHostTicketByDoraemon:  doraemonAPIManager is null ");
@@ -69,13 +58,13 @@ public class ILiveLoginTicketManager
   public boolean a()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "key_nearby_now_qq_connect_auth_time", Long.valueOf(0L))).longValue();
+    long l2 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.b.getAccount(), "key_nearby_now_qq_connect_auth_time", Long.valueOf(0L))).longValue();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("now qq connect auth time diff = ");
     l1 -= l2;
     localStringBuilder.append(l1 / 1000L);
     QLog.d("ILiveLoginTicketManager", 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager != null) && (l1 <= 1728000000L) && (!StringUtil.a(this.jdField_a_of_type_JavaLangString)) && (!StringUtil.a(this.b)))
+    if ((this.a != null) && (l1 <= 1728000000L) && (!StringUtil.isEmpty(this.c)) && (!StringUtil.isEmpty(this.d)))
     {
       QLog.i("ILiveLoginTicketManager", 1, "isNeedUpdateTicket----No Need request Ticket");
       return false;
@@ -84,14 +73,25 @@ public class ILiveLoginTicketManager
     return true;
   }
   
-  public String b()
+  public void b()
   {
-    return this.b;
+    this.a = null;
+    this.b = null;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.ILiveLoginTicketManager
  * JD-Core Version:    0.7.0.1
  */

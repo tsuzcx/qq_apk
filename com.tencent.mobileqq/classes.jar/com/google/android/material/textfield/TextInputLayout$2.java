@@ -9,13 +9,13 @@ class TextInputLayout$2
   
   public void run()
   {
-    TextInputLayout.a(this.this$0).performClick();
-    TextInputLayout.a(this.this$0).jumpDrawablesToCurrentState();
+    TextInputLayout.c(this.this$0).performClick();
+    TextInputLayout.c(this.this$0).jumpDrawablesToCurrentState();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.TextInputLayout.2
  * JD-Core Version:    0.7.0.1
  */

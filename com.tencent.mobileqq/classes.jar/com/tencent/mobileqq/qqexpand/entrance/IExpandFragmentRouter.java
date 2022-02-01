@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @QAPI(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/qqexpand/entrance/IExpandFragmentRouter;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "launchExpandEditFragment", "", "activity", "Landroid/app/Activity;", "intent", "Landroid/content/Intent;", "launchExpandEditFragmentForResult", "requestCode", "", "Companion", "qqexpand-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/qqexpand/entrance/IExpandFragmentRouter;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "launchExpandEditFragment", "", "activity", "Landroid/app/Activity;", "intent", "Landroid/content/Intent;", "launchExpandEditFragmentForResult", "requestCode", "", "launchNewEditFragmentForResult", "Companion", "qqexpand-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IExpandFragmentRouter
   extends QRouteApi
 {
@@ -64,10 +64,12 @@ public abstract interface IExpandFragmentRouter
   public abstract void launchExpandEditFragment(@NotNull Activity paramActivity, @Nullable Intent paramIntent);
   
   public abstract void launchExpandEditFragmentForResult(@NotNull Activity paramActivity, @Nullable Intent paramIntent, int paramInt);
+  
+  public abstract void launchNewEditFragmentForResult(@NotNull Activity paramActivity, @Nullable Intent paramIntent, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.IExpandFragmentRouter
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class WSDramaHistoryHolder$1
     if (WSDramaHistoryHolder.a(this.a) == null) {
       return;
     }
-    WSDramaUtils.b(WSDramaHistoryHolder.a(this.a), WSDramaHistoryHolder.a(this.a).a(), WSDramaHistoryHolder.a(this.a).b(), WSDramaUtils.c);
-    WSDramaHistoryHolder.a(this.a);
+    WSDramaUtils.b(WSDramaHistoryHolder.b(this.a), WSDramaHistoryHolder.a(this.a).b(), WSDramaHistoryHolder.a(this.a).c(), WSDramaUtils.c);
+    WSDramaHistoryHolder.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryHolder.1
  * JD-Core Version:    0.7.0.1
  */

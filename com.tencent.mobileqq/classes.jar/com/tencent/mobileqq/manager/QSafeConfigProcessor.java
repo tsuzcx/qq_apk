@@ -18,26 +18,24 @@ public class QSafeConfigProcessor
   extends IQConfigProcessor<QSafeManagerBean>
 {
   @ConfigInject(configPath="Business/qqsafeblock-api/src/main/resources/Inject_SecurityBlockConfig.yml", version=1)
-  protected static ArrayList<Class<? extends IQSafeConfigCallback>> a;
-  private List<IQSafeConfigCallback> a;
+  protected static ArrayList<Class<? extends IQSafeConfigCallback>> a = new ArrayList();
+  private List<IQSafeConfigCallback> b = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(ZipConfigCallback.class);
-    jdField_a_of_type_JavaUtilArrayList.add(LoginInfoSafeEntrance.class);
+    a.add(ZipConfigCallback.class);
+    a.add(LoginInfoSafeEntrance.class);
   }
   
   public QSafeConfigProcessor()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     try
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = a.iterator();
       while (localIterator.hasNext())
       {
         IQSafeConfigCallback localIQSafeConfigCallback = (IQSafeConfigCallback)((Class)localIterator.next()).newInstance();
-        this.jdField_a_of_type_JavaUtilList.add(localIQSafeConfigCallback);
+        this.b.add(localIQSafeConfigCallback);
       }
       return;
     }
@@ -53,7 +51,7 @@ public class QSafeConfigProcessor
     QLog.d("QSafeConfigProcessor", 1, "migrateOldOrDefaultContent");
     QSafeManagerBean localQSafeManagerBean = new QSafeManagerBean();
     localQSafeManagerBean.b(-1);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((IQSafeConfigCallback)localIterator.next()).a(localQSafeManagerBean);
     }
@@ -67,10 +65,10 @@ public class QSafeConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
       Object localObject = paramArrayOfQConfItem[0];
-      paramArrayOfQConfItem = ((QConfItem)localObject).jdField_a_of_type_JavaLangString;
+      paramArrayOfQConfItem = ((QConfItem)localObject).b;
       QSafeManagerBean localQSafeManagerBean = new QSafeManagerBean();
-      localQSafeManagerBean.b(((QConfItem)localObject).jdField_a_of_type_Int);
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localQSafeManagerBean.b(((QConfItem)localObject).a);
+      localObject = this.b.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((IQSafeConfigCallback)((Iterator)localObject).next()).a(localQSafeManagerBean, paramArrayOfQConfItem);
       }
@@ -110,7 +108,7 @@ public class QSafeConfigProcessor
   public void onReqFailed(int paramInt)
   {
     QLog.d("QSafeConfigProcessor", 1, "onReqFailed");
-    QSafeManagerBean localQSafeManagerBean = (QSafeManagerBean)QConfigManager.a().a(732);
+    QSafeManagerBean localQSafeManagerBean = (QSafeManagerBean)QConfigManager.b().b(732);
     QSafeConfigManager.a().a(localQSafeManagerBean);
   }
   
@@ -127,7 +125,7 @@ public class QSafeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.manager.QSafeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

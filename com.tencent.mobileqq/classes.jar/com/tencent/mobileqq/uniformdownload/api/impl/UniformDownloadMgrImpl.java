@@ -15,17 +15,17 @@ public class UniformDownloadMgrImpl
   
   public AppRuntime getApp()
   {
-    return UniformDownloadMgr.a().a();
+    return UniformDownloadMgr.a().b();
   }
   
   public boolean isExistedDownloadOfUrl(String paramString)
   {
-    return UniformDownloadMgr.a().a(paramString);
+    return UniformDownloadMgr.a().b(paramString);
   }
   
   public void onActiveAccount()
   {
-    UniformDownloadMgr.a().b();
+    UniformDownloadMgr.a().f();
   }
   
   public void onAppInit(AppRuntime paramAppRuntime)
@@ -46,12 +46,12 @@ public class UniformDownloadMgrImpl
   
   public void onDestroy()
   {
-    UniformDownloadMgr.a().a();
+    UniformDownloadMgr.a().e();
   }
   
   public void onQQProcessExit()
   {
-    UniformDownloadMgr.a().c();
+    UniformDownloadMgr.a().g();
   }
   
   public void removeOuterListenner(String paramString)
@@ -76,7 +76,7 @@ public class UniformDownloadMgrImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.api.impl.UniformDownloadMgrImpl
  * JD-Core Version:    0.7.0.1
  */

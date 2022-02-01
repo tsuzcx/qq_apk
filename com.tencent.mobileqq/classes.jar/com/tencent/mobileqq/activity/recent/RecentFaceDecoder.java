@@ -21,6 +21,8 @@ import com.tencent.mobileqq.activity.bless.BlessManager;
 import com.tencent.mobileqq.activity.recent.data.RecentCallItem;
 import com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsg;
 import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.data.GameBoxRecentUser;
 import com.tencent.mobileqq.activity.recent.msgbox.api.ITempChatPluginManager;
 import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxService;
 import com.tencent.mobileqq.activity.recent.msgbox.tempchat.AbstractTempChatPlugin;
@@ -40,6 +42,7 @@ import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.api.IKandianSubscribeManager;
 import com.tencent.mobileqq.nearby.api.INearbyCardManagerUtils;
+import com.tencent.mobileqq.newnearby.INearbyMsgbox;
 import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.qcall.OpenSDKUtils;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -57,29 +60,27 @@ import java.util.List;
 
 public class RecentFaceDecoder
 {
-  private static HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static List<Integer> jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(10004), Integer.valueOf(1020), Integer.valueOf(1003), Integer.valueOf(1005), Integer.valueOf(1004), Integer.valueOf(1008), Integer.valueOf(10005), Integer.valueOf(1009), Integer.valueOf(1021), Integer.valueOf(1022), Integer.valueOf(1023), Integer.valueOf(1024), Integer.valueOf(1025), Integer.valueOf(7400), Integer.valueOf(8112), Integer.valueOf(10008), Integer.valueOf(10010), Integer.valueOf(10009) });
-  private static HashMap<Integer, Integer> jdField_b_of_type_JavaUtilHashMap;
-  private static List<Integer> jdField_b_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(1001), Integer.valueOf(1010), Integer.valueOf(10002) });
-  protected QQAppInterface a;
+  private static List<Integer> c = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(10004), Integer.valueOf(1020), Integer.valueOf(1003), Integer.valueOf(1005), Integer.valueOf(1004), Integer.valueOf(1008), Integer.valueOf(10005), Integer.valueOf(1009), Integer.valueOf(1021), Integer.valueOf(1022), Integer.valueOf(1023), Integer.valueOf(1024), Integer.valueOf(1025), Integer.valueOf(7400), Integer.valueOf(8112), Integer.valueOf(10008), Integer.valueOf(10010), Integer.valueOf(10013) });
+  private static List<Integer> d = Arrays.asList(new Integer[] { Integer.valueOf(1001), Integer.valueOf(1010), Integer.valueOf(10002) });
+  private static HashMap<Integer, Integer> e = new HashMap();
+  private static HashMap<Integer, Integer> f = new HashMap();
   public IFaceDecoder a;
-  private DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  protected QQAppInterface b;
+  private boolean g;
+  private DecodeTaskCompletionListener h;
+  private boolean i = false;
+  private boolean j = false;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    c();
     d();
+    e();
   }
   
   public RecentFaceDecoder(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.g = true;
+    this.b = paramQQAppInterface;
   }
   
   public RecentFaceDecoder(QQAppInterface paramQQAppInterface, DecodeTaskCompletionListener paramDecodeTaskCompletionListener)
@@ -89,11 +90,11 @@ public class RecentFaceDecoder
   
   public RecentFaceDecoder(QQAppInterface paramQQAppInterface, DecodeTaskCompletionListener paramDecodeTaskCompletionListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(paramDecodeTaskCompletionListener);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = paramDecodeTaskCompletionListener;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.a = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
+    this.a.setDecodeTaskCompletionListener(paramDecodeTaskCompletionListener);
+    this.h = paramDecodeTaskCompletionListener;
+    this.b = paramQQAppInterface;
+    this.i = paramBoolean;
   }
   
   private Drawable a(int paramInt)
@@ -118,40 +119,40 @@ public class RecentFaceDecoder
                 default: 
                   return null;
                 case 103: 
-                  return ImageUtil.b();
+                  return ImageUtil.d();
                 case 102: 
-                  return ImageUtil.b(102);
+                  return ImageUtil.d(102);
                   return Util.a(6);
                   return ImageUtil.a(true);
                 }
               }
-              return ImageUtil.d();
+              return ImageUtil.h();
             }
-            return ImageUtil.b(107);
+            return ImageUtil.d(107);
           }
-          return ImageUtil.e();
+          return ImageUtil.j();
         }
-        return ImageUtil.e();
+        return ImageUtil.j();
       }
-      return ImageUtil.c();
+      return ImageUtil.f();
     }
-    return ImageUtil.e();
+    return ImageUtil.j();
   }
   
   public static Pair<Integer, Integer> a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    boolean bool = jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt));
+    boolean bool = e.containsKey(Integer.valueOf(paramInt));
     Integer localInteger = Integer.valueOf(-2147483648);
     if (bool) {
-      return new Pair(jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)), localInteger);
+      return new Pair(e.get(Integer.valueOf(paramInt)), localInteger);
     }
-    if (jdField_b_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      return new Pair(localInteger, jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
+    if (f.containsKey(Integer.valueOf(paramInt))) {
+      return new Pair(localInteger, f.get(Integer.valueOf(paramInt)));
     }
-    if (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt))) {
+    if (c.contains(Integer.valueOf(paramInt))) {
       return b(paramString);
     }
-    if (jdField_b_of_type_JavaUtilList.contains(Integer.valueOf(paramInt))) {
+    if (d.contains(Integer.valueOf(paramInt))) {
       return a(paramString);
     }
     return b(paramQQAppInterface, paramInt, paramString);
@@ -160,55 +161,47 @@ public class RecentFaceDecoder
   private static Pair<Integer, Integer> a(String paramString)
   {
     boolean bool = String.valueOf(AppConstants.LBS_HELLO_UIN).equals(paramString);
-    int j = -2147483648;
-    int i;
+    int m = -2147483648;
+    int k;
     if (bool)
     {
-      i = 2130840421;
+      k = 2130841177;
     }
     else if (AppConstants.MSG_BOX_INTERACT_UIN.equals(paramString))
     {
-      i = 2130845657;
+      k = 2130847121;
     }
     else if (AppConstants.MSG_BOX_FOLLOW_UIN.equals(paramString))
     {
-      i = 2130845656;
+      k = 2130847120;
     }
     else if (AppConstants.MSG_BOX_MYMOMMENT_UIN.equals(paramString))
     {
-      i = 2130845658;
+      if (((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).isNewNearby()) {
+        k = 2130847123;
+      } else {
+        k = 2130847122;
+      }
     }
     else if (AppConstants.MSG_BOX_DAREN_ASSISTANT_UIN.equals(paramString))
     {
-      i = 2130845655;
+      k = 2130847119;
     }
     else if (AppConstants.MSG_BOX_YANZHI_UIN.equals(paramString))
     {
-      i = 2130845659;
+      k = 2130847124;
     }
     else
     {
-      i = -2147483648;
-      j = 32;
+      k = -2147483648;
+      m = 32;
     }
-    return Pair.create(Integer.valueOf(j), Integer.valueOf(i));
+    return Pair.create(Integer.valueOf(m), Integer.valueOf(k));
   }
   
   public static boolean a(int paramInt, RecentBaseData paramRecentBaseData)
   {
     return (paramInt == 10005) && ((paramRecentBaseData instanceof RecentItemImaxADData)) && (!TextUtils.isEmpty(((RecentItemImaxADData)paramRecentBaseData).mHeaderUrl));
-  }
-  
-  private Drawable b(int paramInt, String paramString)
-  {
-    if (((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getTempUinTypeList().contains(Integer.valueOf(paramInt)))
-    {
-      AbstractTempChatPlugin localAbstractTempChatPlugin = ((ITempChatPluginManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(paramInt);
-      if (localAbstractTempChatPlugin != null) {
-        return localAbstractTempChatPlugin.a(paramString, TempChatSource.SOURCE_FROM_MAG_TAB);
-      }
-    }
-    return null;
   }
   
   private Drawable b(String paramString, int paramInt)
@@ -218,17 +211,17 @@ public class RecentFaceDecoder
     }
     if (paramInt == 105)
     {
-      paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getFolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), 1);
-      if ((paramString != null) && (paramString.a() != null)) {
-        return paramString.a();
+      paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getFolder(this.b, BaseApplication.getContext(), 1);
+      if ((paramString != null) && (paramString.c() != null)) {
+        return paramString.c();
       }
       return ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getDefaultDrawable(BaseApplication.getContext(), 1);
     }
     if (paramInt == 111)
     {
-      paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getFolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), 3);
-      if ((paramString != null) && (paramString.a() != null)) {
-        paramString = paramString.a();
+      paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getFolder(this.b, BaseApplication.getContext(), 3);
+      if ((paramString != null) && (paramString.c() != null)) {
+        paramString = paramString.c();
       } else {
         paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getDefaultDrawable(BaseApplication.getContext(), 3);
       }
@@ -238,29 +231,29 @@ public class RecentFaceDecoder
       return EcShopAssistantManager.a(BaseApplication.getContext());
     }
     if (paramInt == 108) {
-      return ((BlessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
+      return ((BlessManager)this.b.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).A();
     }
     if (paramInt == 110)
     {
-      paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getFolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), 2);
-      if ((paramString != null) && (paramString.a() != null)) {
-        return paramString.a();
+      paramString = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getFolder(this.b, BaseApplication.getContext(), 2);
+      if ((paramString != null) && (paramString.c() != null)) {
+        return paramString.c();
       }
       return ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getDefaultDrawable(BaseApplication.getContext(), 2);
     }
     if (paramInt == 112) {
-      return BaseApplicationImpl.sApplication.getResources().getDrawable(ServiceAccountFolderManager.a());
+      return BaseApplicationImpl.sApplication.getResources().getDrawable(ServiceAccountFolderManager.g());
     }
     if (paramInt == 116) {
-      return Util.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      return Util.a(this.b, paramString);
     }
     return null;
   }
   
   private static Pair<Integer, Integer> b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    int i = 2130844994;
-    int j = -2147483648;
+    int k = 2130846430;
+    int m = -2147483648;
     if (paramInt != 1)
     {
       if (paramInt != 1032)
@@ -273,55 +266,63 @@ public class RecentFaceDecoder
             {
               if (paramInt != 9501)
               {
-                paramInt = -2147483648;
-                i = j;
+                if (paramInt != 10015)
+                {
+                  paramInt = -2147483648;
+                  k = m;
+                }
+                else
+                {
+                  paramInt = 2130846694;
+                  k = m;
+                }
               }
               else
               {
-                i = 104;
-                paramInt = 2130839564;
+                k = 104;
+                paramInt = 2130839777;
               }
             }
             else
             {
               if (TextUtils.isEmpty(((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getServiceAccountFolderIcon())) {
-                paramInt = ServiceAccountFolderManager.a();
+                paramInt = ServiceAccountFolderManager.g();
               } else {
                 paramInt = 2147483647;
               }
-              i = 112;
+              k = 112;
             }
           }
           else
           {
-            i = 106;
-            paramInt = 2130847270;
+            k = 106;
+            paramInt = 2130848921;
           }
         }
         else if (AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(paramString))
         {
-          paramInt = 2130840427;
-          i = j;
+          paramInt = 2130841183;
+          k = m;
         }
         else
         {
           paramInt = -2147483648;
-          i = 103;
+          k = 103;
         }
       }
       else if (TextUtils.equals(paramString, AppConstants.CONFESS_UIN))
       {
-        paramInt = i;
-        i = j;
+        paramInt = k;
+        k = m;
       }
       else
       {
-        paramInt = i;
-        i = j;
+        paramInt = k;
+        k = m;
         if (TextUtils.equals(paramString, AppConstants.CONFESS_FRD_REC_UIN))
         {
-          paramInt = 2130844995;
-          i = j;
+          paramInt = 2130846431;
+          k = m;
         }
       }
     }
@@ -331,83 +332,95 @@ public class RecentFaceDecoder
       if ((localHotChatManager != null) && (localHotChatManager.b(paramString)))
       {
         paramInt = HotChatManager.a(paramString, paramQQAppInterface);
-        i = j;
+        k = m;
       }
-      else if (TroopUtils.a(paramString))
+      else if (TroopUtils.b(paramString))
       {
         paramInt = -2147483648;
-        i = 4;
+        k = 4;
       }
       else
       {
         paramInt = -2147483648;
-        i = 113;
+        k = 113;
       }
     }
-    return Pair.create(Integer.valueOf(i), Integer.valueOf(paramInt));
+    return Pair.create(Integer.valueOf(k), Integer.valueOf(paramInt));
   }
   
   private static Pair<Integer, Integer> b(String paramString)
   {
     boolean bool = String.valueOf(AppConstants.SYSTEM_MSG_UIN).equals(paramString);
-    int i = 2130840428;
-    int j = -2147483648;
+    int k = 2130841184;
+    int m = -2147483648;
     if ((!bool) && (!String.valueOf(AppConstants.QQBROADCAST_MSG_UIN).equals(paramString))) {
       if (String.valueOf(AppConstants.SAME_STATE_BOX_UIN).equals(paramString))
       {
-        i = 2130840431;
+        k = 2130841187;
       }
       else if (AppConstants.VOTE_MSG_UIN.equals(paramString))
       {
-        i = 2130840586;
+        k = 2130841358;
       }
       else if (AppConstants.NEW_KANDIAN_UIN.equals(paramString))
       {
-        i = -2147483648;
-        j = 110;
+        k = -2147483648;
+        m = 110;
       }
       else
       {
-        i = -2147483648;
-        j = 1;
+        k = -2147483648;
+        m = 1;
       }
     }
-    return Pair.create(Integer.valueOf(j), Integer.valueOf(i));
+    return Pair.create(Integer.valueOf(m), Integer.valueOf(k));
   }
   
-  private static void c()
+  private Drawable c(int paramInt, String paramString)
   {
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(6002), Integer.valueOf(104));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1006), Integer.valueOf(11));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3000), Integer.valueOf(101));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3002), Integer.valueOf(1001));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(8113), Integer.valueOf(4));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(9003), Integer.valueOf(108));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(7210), Integer.valueOf(105));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(7220), Integer.valueOf(111));
-    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
-    Integer localInteger = Integer.valueOf(1);
-    localHashMap.put(Integer.valueOf(1033), localInteger);
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1044), localInteger);
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1045), localInteger);
+    if (((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getTempUinTypeList().contains(Integer.valueOf(paramInt)))
+    {
+      AbstractTempChatPlugin localAbstractTempChatPlugin = ((ITempChatPluginManager)this.b.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(paramInt);
+      if (localAbstractTempChatPlugin != null) {
+        return localAbstractTempChatPlugin.a(paramString, TempChatSource.SOURCE_FROM_MAG_TAB);
+      }
+    }
+    return null;
   }
   
   private static void d()
   {
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(6000), Integer.valueOf(2130844282));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(6003), Integer.valueOf(2130844277));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(4000), Integer.valueOf(2130840417));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(9002), Integer.valueOf(2130844725));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(5000), Integer.valueOf(2130840429));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(5001), Integer.valueOf(2130842647));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(7200), Integer.valueOf(2130840424));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(9000), Integer.valueOf(2130840428));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(9503), Integer.valueOf(2130840425));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(9999), Integer.valueOf(2130839593));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(1031), Integer.valueOf(2130840405));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(6004), Integer.valueOf(2130850946));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(10011), Integer.valueOf(2130850944));
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(10012), Integer.valueOf(2130840131));
+    e.put(Integer.valueOf(6002), Integer.valueOf(104));
+    e.put(Integer.valueOf(1006), Integer.valueOf(11));
+    e.put(Integer.valueOf(3000), Integer.valueOf(101));
+    e.put(Integer.valueOf(3002), Integer.valueOf(1001));
+    e.put(Integer.valueOf(8113), Integer.valueOf(4));
+    e.put(Integer.valueOf(9003), Integer.valueOf(108));
+    e.put(Integer.valueOf(7210), Integer.valueOf(105));
+    e.put(Integer.valueOf(7220), Integer.valueOf(111));
+    HashMap localHashMap = e;
+    Integer localInteger = Integer.valueOf(1);
+    localHashMap.put(Integer.valueOf(1033), localInteger);
+    e.put(Integer.valueOf(1044), localInteger);
+    e.put(Integer.valueOf(1045), localInteger);
+  }
+  
+  private static void e()
+  {
+    f.put(Integer.valueOf(6000), Integer.valueOf(2130845599));
+    f.put(Integer.valueOf(6003), Integer.valueOf(2130845594));
+    f.put(Integer.valueOf(4000), Integer.valueOf(2130841172));
+    f.put(Integer.valueOf(9002), Integer.valueOf(2130846157));
+    f.put(Integer.valueOf(5000), Integer.valueOf(2130841185));
+    f.put(Integer.valueOf(5001), Integer.valueOf(2130843600));
+    f.put(Integer.valueOf(7200), Integer.valueOf(2130841180));
+    f.put(Integer.valueOf(9000), Integer.valueOf(2130841184));
+    f.put(Integer.valueOf(9503), Integer.valueOf(2130841181));
+    f.put(Integer.valueOf(9999), Integer.valueOf(2130840058));
+    f.put(Integer.valueOf(1031), Integer.valueOf(2130841158));
+    f.put(Integer.valueOf(6004), Integer.valueOf(2130852798));
+    f.put(Integer.valueOf(10011), Integer.valueOf(2130852796));
+    f.put(Integer.valueOf(10012), Integer.valueOf(2130840356));
   }
   
   public Drawable a(int paramInt, String paramString)
@@ -417,13 +430,13 @@ public class RecentFaceDecoder
   
   public Drawable a(int paramInt, String paramString, boolean paramBoolean)
   {
-    Drawable localDrawable = b(paramInt, paramString);
+    Drawable localDrawable = c(paramInt, paramString);
     if (localDrawable != null) {
       return localDrawable;
     }
-    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, paramString);
-    int i = ((Integer)((Pair)localObject).first).intValue();
-    int j = ((Integer)((Pair)localObject).second).intValue();
+    Object localObject = a(this.b, paramInt, paramString);
+    int k = ((Integer)((Pair)localObject).first).intValue();
+    int m = ((Integer)((Pair)localObject).second).intValue();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -434,15 +447,15 @@ public class RecentFaceDecoder
       ((StringBuilder)localObject).append(", isGetResFace = ");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append(", faceType = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(k);
       ((StringBuilder)localObject).append(", faceResId = ");
-      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(m);
       QLog.d("RecentFaceDecoder", 2, ((StringBuilder)localObject).toString());
     }
-    if (j == 2147483647) {}
+    if (m == 2147483647) {}
     try
     {
-      paramString = a(i, paramString);
+      paramString = b(k, paramString);
     }
     catch (Exception paramString)
     {
@@ -450,13 +463,13 @@ public class RecentFaceDecoder
       label232:
       break label225;
     }
-    if (i != -2147483648)
+    if (k != -2147483648)
     {
-      paramString = a(paramString, i);
+      paramString = a(paramString, k);
     }
-    else if ((j != -2147483648) && (paramBoolean))
+    else if ((m != -2147483648) && (paramBoolean))
     {
-      paramString = BaseApplication.getContext().getResources().getDrawable(j);
+      paramString = BaseApplication.getContext().getResources().getDrawable(m);
       break label232;
       paramString.printStackTrace();
     }
@@ -472,100 +485,105 @@ public class RecentFaceDecoder
     if (QLog.isColorLevel()) {
       QLog.d("RecentFaceDecoder", 2, "getFaceDrawable start");
     }
-    int j = paramRecentBaseData.getRecentUserType();
-    int i;
+    int m = paramRecentBaseData.getRecentUserType();
+    int k;
     Object localObject;
     if (paramRecentBaseData.getRecentUserType() == 8)
     {
-      i = paramRecentBaseData.mExtraType;
+      k = paramRecentBaseData.mExtraType;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("getFaceDrawable type = ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(k);
         QLog.i("Q.recent", 2, ((StringBuilder)localObject).toString());
       }
-      if (i != 0)
+      if (k != 0)
       {
-        if (i == 25)
+        if (k == 25)
         {
-          IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+          IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "");
           localObject = null;
           if (localIPhoneContactService != null) {
             localObject = localIPhoneContactService.queryContactByCodeNumber(paramRecentBaseData.mPhoneNumber);
           }
           if (localObject != null)
           {
-            localObject = FaceDrawable.getMobileFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.mPhoneNumber, (byte)3);
+            localObject = FaceDrawable.getMobileFaceDrawable(this.b, paramRecentBaseData.mPhoneNumber, (byte)3);
             paramRecentBaseData = (RecentBaseData)localObject;
             if (localObject != null) {
-              break label423;
+              break label484;
             }
-            paramRecentBaseData = ImageUtil.e();
-            break label423;
+            paramRecentBaseData = ImageUtil.j();
+            break label484;
           }
-          paramRecentBaseData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(16, paramRecentBaseData.getRecentUserUin(), (byte)3, true, 16);
+          paramRecentBaseData = this.b.getFaceBitmap(16, paramRecentBaseData.getRecentUserUin(), (byte)3, true, 16);
           if (paramRecentBaseData == null)
           {
-            paramRecentBaseData = ImageUtil.e();
-            break label423;
+            paramRecentBaseData = ImageUtil.j();
+            break label484;
           }
         }
         for (paramRecentBaseData = new BitmapDrawable(paramRecentBaseData);; paramRecentBaseData = new BitmapDrawable(paramRecentBaseData))
         {
           break;
-          paramRecentBaseData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramRecentBaseData.getRecentUserUin(), (byte)3, true);
+          paramRecentBaseData = this.b.getFaceBitmap(paramRecentBaseData.getRecentUserUin(), (byte)3, true);
           if (paramRecentBaseData == null)
           {
-            paramRecentBaseData = ImageUtil.e();
+            paramRecentBaseData = ImageUtil.j();
             break;
           }
         }
       }
       else
       {
-        paramRecentBaseData = a(i, paramRecentBaseData.getRecentUserUin());
+        paramRecentBaseData = a(k, paramRecentBaseData.getRecentUserUin());
       }
     }
-    else if (j == 26)
+    else if (m == 26)
     {
-      paramRecentBaseData = OpenSDKUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.getRecentUserUin());
+      paramRecentBaseData = OpenSDKUtils.d(this.b, paramRecentBaseData.getRecentUserUin());
     }
-    else if (j == 1034)
+    else if (m == 1034)
     {
-      j = 2130844976;
-      i = j;
+      m = 2130846412;
+      k = m;
       if ((paramRecentBaseData instanceof RecentItemConfessMsg))
       {
-        i = j;
+        k = m;
         if (((RecentItemConfessMsg)paramRecentBaseData).mConfessInfo.confessorSex == 1) {
-          i = 2130844977;
+          k = 2130846413;
         }
       }
-      paramRecentBaseData = BaseApplication.getContext().getResources().getDrawable(i);
+      paramRecentBaseData = BaseApplication.getContext().getResources().getDrawable(k);
     }
-    else if (a(j, paramRecentBaseData))
+    else if (a(m, paramRecentBaseData))
     {
-      paramRecentBaseData = a(114, ((RecentItemImaxADData)paramRecentBaseData).mHeaderUrl);
+      paramRecentBaseData = b(114, ((RecentItemImaxADData)paramRecentBaseData).mHeaderUrl);
     }
-    else if (j == 10007)
+    else if (m == 10007)
     {
-      paramRecentBaseData = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getRecentGameMsgDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.getRecentUserUin());
+      localObject = ((IGameMsgBoxManager)this.b.getRuntimeService(IGameMsgBoxManager.class, "")).findGameBoxRecentUserInfo(paramRecentBaseData.getRecentUserUin());
+      if (localObject != null) {
+        paramRecentBaseData = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getGameUsrDrawable(BaseApplication.getContext(), this.b, ((GameBoxRecentUser)localObject).mToRoleId);
+      } else {
+        paramRecentBaseData = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getRecentGameMsgDrawable(this.b, paramRecentBaseData.getRecentUserUin());
+      }
     }
     else
     {
       localObject = paramRecentBaseData.getRecentUserUin();
-      i = j;
+      k = m;
       if ((paramRecentBaseData instanceof RecentCallItem))
       {
-        i = j;
+        k = m;
         if (((RecentCallItem)paramRecentBaseData).a()) {
-          i = 3002;
+          k = 3002;
         }
       }
-      paramRecentBaseData = a(i, (String)localObject);
+      paramRecentBaseData = a(k, (String)localObject);
     }
-    label423:
+    label484:
     if (QLog.isColorLevel()) {
       QLog.d("RecentFaceDecoder", 2, "getFaceDrawable end");
     }
@@ -587,38 +605,38 @@ public class RecentFaceDecoder
     if (localObject1 != null) {
       return localObject1;
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.g;
     localObject1 = null;
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramInt, paramString, false, 0);
+      this.b.getFaceBitmap(paramInt, paramString, false, 0);
       return null;
     }
-    if ((this.jdField_b_of_type_Boolean) && (!this.c))
+    if ((this.i) && (!this.j))
     {
       if (QLog.isColorLevel()) {
         QLog.d("RecentFaceDecoder", 2, "getFaceDrawable getDefaultFaceDrawable 1");
       }
       return a(paramInt);
     }
-    int i;
+    int k;
     if (paramInt == 103) {
-      i = 1;
+      k = 1;
     } else {
-      i = paramInt;
+      k = paramInt;
     }
-    int j;
+    int m;
     if (((INearbyCardManagerUtils)QRoute.api(INearbyCardManagerUtils.class)).isTinyId(paramString)) {
-      j = 202;
+      m = 202;
     } else {
-      j = 200;
+      m = 200;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    Object localObject2 = this.a;
     if (localObject2 != null) {
       if (paramInt == 32) {
-        localObject1 = ((IFaceDecoder)localObject2).getBitmapFromCache(i, paramString, j);
+        localObject1 = ((IFaceDecoder)localObject2).getBitmapFromCache(k, paramString, m);
       } else {
-        localObject1 = ((IFaceDecoder)localObject2).getBitmapFromCache(i, paramString);
+        localObject1 = ((IFaceDecoder)localObject2).getBitmapFromCache(k, paramString);
       }
     }
     if (QLog.isDevelopLevel())
@@ -631,7 +649,7 @@ public class RecentFaceDecoder
       localStringBuilder.append(",");
       localStringBuilder.append(localObject1);
       localStringBuilder.append("], isPausing=");
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+      localObject2 = this.a;
       if (localObject2 == null) {
         localObject2 = "null";
       } else {
@@ -642,17 +660,17 @@ public class RecentFaceDecoder
     }
     if (localObject1 == null)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+      localObject1 = this.a;
       if ((localObject1 != null) && (!((IFaceDecoder)localObject1).isPausing())) {
-        if (i == 32)
+        if (k == 32)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeStrangeFace(paramString, j, true, false);
+          this.a.requestDecodeStrangeFace(paramString, m, true, false);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, i, true, (byte)0);
-          if ((i == 1001) && (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(101, paramString) == null)) {
-            this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 101, true, (byte)0);
+          this.a.requestDecodeFace(paramString, k, true, (byte)0);
+          if ((k == 1001) && (this.a.getBitmapFromCache(101, paramString) == null)) {
+            this.a.requestDecodeFace(paramString, 101, true, (byte)0);
           }
         }
       }
@@ -663,7 +681,7 @@ public class RecentFaceDecoder
     }
     if (paramInt == 103)
     {
-      localObject2 = BaseApplication.getContext().getResources().getDrawable(2130840412);
+      localObject2 = BaseApplication.getContext().getResources().getDrawable(2130841165);
       if ((localObject2 instanceof SkinnableBitmapDrawable)) {
         ((SkinnableBitmapDrawable)localObject2).setGravity(81);
       }
@@ -678,14 +696,14 @@ public class RecentFaceDecoder
       localObject1 = new BitmapDrawable(BaseApplication.getContext().getResources(), (Bitmap)localObject1);
     }
     if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(paramString)) {
-      return ((IKandianSubscribeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IKandianSubscribeManager.class)).getAggregateAvate((Drawable)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return ((IKandianSubscribeManager)this.b.getRuntimeService(IKandianSubscribeManager.class)).getAggregateAvate((Drawable)localObject1, this.b);
     }
     return localObject1;
   }
   
   public Drawable a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    paramString1 = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, (byte)3);
+    paramString1 = FaceDrawable.getUserFaceDrawable(this.b, paramString1, (byte)3);
     label298:
     try
     {
@@ -700,11 +718,11 @@ public class RecentFaceDecoder
       ((StringBuilder)localObject).append(paramString3);
       QLog.d("RecentFaceDecoder", 2, ((StringBuilder)localObject).toString());
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(paramInt1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources());
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(paramInt2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(paramInt1, this.b.getApp().getApplicationContext().getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(paramInt2, this.b.getApp().getApplicationContext().getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramString1;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramString1;
-      if (QQTheme.f())
+      if (QQTheme.isNowSimpleUI())
       {
         if (TextUtils.isEmpty(paramString3)) {
           break label298;
@@ -712,7 +730,7 @@ public class RecentFaceDecoder
         paramInt1 = Math.min(((URLDrawable.URLDrawableOptions)localObject).mRequestWidth, ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight);
         paramString3 = URLDrawable.getDrawable(paramString3, (URLDrawable.URLDrawableOptions)localObject);
         paramString3.setTag(new int[] { paramInt1, paramInt1, (int)(paramInt1 * 0.07142858F) });
-        paramString3.setDecodeHandler(URLDrawableDecodeHandler.i);
+        paramString3.setDecodeHandler(URLDrawableDecodeHandler.j);
         return paramString3;
       }
       if (TextUtils.isEmpty(paramString2)) {
@@ -736,7 +754,23 @@ public class RecentFaceDecoder
     return paramString1;
   }
   
-  public URLDrawable a(int paramInt, String paramString)
+  public QQAppInterface a()
+  {
+    return this.b;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    IFaceDecoder localIFaceDecoder = this.a;
+    if (localIFaceDecoder != null)
+    {
+      localIFaceDecoder.setAppRuntime(paramQQAppInterface);
+      this.a.setDecodeTaskCompletionListener(this.h);
+    }
+    this.b = paramQQAppInterface;
+  }
+  
+  public URLDrawable b(int paramInt, String paramString)
   {
     if (paramInt != 112)
     {
@@ -745,55 +779,39 @@ public class RecentFaceDecoder
         if (paramInt != 1000) {
           return null;
         }
-        paramString = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString);
-        localDrawable = ImageUtil.c();
+        paramString = ((HotChatManager)this.b.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramString);
+        localDrawable = ImageUtil.f();
         return URLDrawable.getDrawable(paramString.iconUrl, localDrawable, localDrawable);
       }
-      Drawable localDrawable = ImageUtil.e();
+      Drawable localDrawable = ImageUtil.j();
       paramString = URLDrawable.getDrawable(paramString, localDrawable, localDrawable);
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.a);
+      paramString.setDecodeHandler(URLDrawableDecodeHandler.b);
       return paramString;
     }
-    paramString = BaseApplicationImpl.sApplication.getResources().getDrawable(ServiceAccountFolderManager.a());
+    paramString = BaseApplicationImpl.sApplication.getResources().getDrawable(ServiceAccountFolderManager.g());
     return URLDrawable.getDrawable(((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getServiceAccountFolderIcon(), paramString, paramString);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public void a()
-  {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-    if (localIFaceDecoder != null)
-    {
-      localIFaceDecoder.destory();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-    if (localIFaceDecoder != null)
-    {
-      localIFaceDecoder.setAppRuntime(paramQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public void b()
   {
-    this.c = true;
+    IFaceDecoder localIFaceDecoder = this.a;
+    if (localIFaceDecoder != null)
+    {
+      localIFaceDecoder.destory();
+      this.a = null;
+    }
+    this.h = null;
+    this.b = null;
+  }
+  
+  public void c()
+  {
+    this.j = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentFaceDecoder
  * JD-Core Version:    0.7.0.1
  */

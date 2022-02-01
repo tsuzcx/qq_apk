@@ -23,12 +23,12 @@ class ReadInJoyNativeAdAppVideoView$2$1
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
     }
-    ReadInJoyNativeAdAppVideoView.a(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
+    ReadInJoyNativeAdAppVideoView.d(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1
  * JD-Core Version:    0.7.0.1
  */

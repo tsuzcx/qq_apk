@@ -51,6 +51,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,7 +87,7 @@ public class VasCommonJsPlugin
       try
       {
         Object localObject2 = new JSONObject(paramString);
-        paramString = ((JSONObject)localObject2).optString("title", HardCodeUtil.a(2131715788));
+        paramString = ((JSONObject)localObject2).optString("title", HardCodeUtil.a(2131913246));
         int i = ((JSONObject)localObject2).optInt("type", 0);
         if (QLog.isColorLevel())
         {
@@ -234,7 +235,7 @@ public class VasCommonJsPlugin
       try
       {
         paramString = new JSONObject(paramString);
-        str1 = paramString.optString("title", HardCodeUtil.a(2131715789));
+        str1 = paramString.optString("title", HardCodeUtil.a(2131913247));
         str2 = paramString.optString("dialog_sub_title", "");
         str3 = paramString.optString("dialog_input", "");
         i = paramString.optInt("type", 0);
@@ -494,7 +495,7 @@ public class VasCommonJsPlugin
   
   private Context getCurrentContext()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
@@ -506,7 +507,7 @@ public class VasCommonJsPlugin
     //   1: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
     //   4: aload_0
     //   5: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   8: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   8: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
     //   11: invokevirtual 547	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	(Landroid/app/Activity;)Lcom/tencent/mobileqq/webview/swift/WebUiBaseInterface;
     //   14: astore 49
     //   16: new 128	java/lang/StringBuilder
@@ -534,34 +535,34 @@ public class VasCommonJsPlugin
     //   64: astore 48
     //   66: aload_0
     //   67: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   70: invokevirtual 552	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   73: instanceof 554
+    //   70: invokevirtual 553	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
+    //   73: instanceof 555
     //   76: ifeq +62 -> 138
     //   79: ldc 25
     //   81: iconst_2
-    //   82: ldc_w 556
+    //   82: ldc_w 557
     //   85: invokestatic 365	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   88: aload_0
     //   89: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   92: invokevirtual 552	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   95: checkcast 554	cooperation/qwallet/QwJsInterface
+    //   92: invokevirtual 553	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
+    //   95: checkcast 555	cooperation/qwallet/QwJsInterface
     //   98: astore 50
     //   100: aload 49
     //   102: astore 48
     //   104: aload 50
-    //   106: invokeinterface 558 1 0
-    //   111: instanceof 560
+    //   106: invokeinterface 560 1 0
+    //   111: instanceof 562
     //   114: ifeq +24 -> 138
     //   117: ldc 25
     //   119: iconst_2
-    //   120: ldc_w 562
+    //   120: ldc_w 564
     //   123: invokestatic 365	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   126: aload 50
-    //   128: invokeinterface 558 1 0
-    //   133: checkcast 560	com/tencent/mobileqq/webview/swift/WebUiBaseInterface
+    //   128: invokeinterface 560 1 0
+    //   133: checkcast 562	com/tencent/mobileqq/webview/swift/WebUiBaseInterface
     //   136: astore 48
     //   138: aload_0
-    //   139: getfield 564	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:uiInterface	Lcom/tencent/mobileqq/webview/swift/WebUiBaseInterface;
+    //   139: getfield 566	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:uiInterface	Lcom/tencent/mobileqq/webview/swift/WebUiBaseInterface;
     //   142: astore 50
     //   144: aload 50
     //   146: ifnull +6 -> 152
@@ -571,75 +572,75 @@ public class VasCommonJsPlugin
     //   156: aload 50
     //   158: ifnull +781 -> 939
     //   161: aload 50
-    //   163: instanceof 566
+    //   163: instanceof 568
     //   166: ifeq +773 -> 939
     //   169: aload 50
-    //   171: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   174: invokeinterface 570 1 0
+    //   171: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   174: invokeinterface 572 1 0
     //   179: lstore 16
     //   181: aload 50
-    //   183: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   186: invokeinterface 573 1 0
+    //   183: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   186: invokeinterface 575 1 0
     //   191: istore 44
     //   193: aload 50
-    //   195: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   198: invokeinterface 576 1 0
+    //   195: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   198: invokeinterface 578 1 0
     //   203: istore 42
     //   205: aload 50
-    //   207: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   210: invokeinterface 579 1 0
+    //   207: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   210: invokeinterface 581 1 0
     //   215: istore 43
     //   217: aload 50
-    //   219: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   222: invokeinterface 582 1 0
+    //   219: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   222: invokeinterface 584 1 0
     //   227: lstore 4
     //   229: aload 50
-    //   231: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   234: invokeinterface 585 1 0
+    //   231: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   234: invokeinterface 587 1 0
     //   239: lstore 6
     //   241: aload 50
-    //   243: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   246: invokeinterface 588 1 0
+    //   243: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   246: invokeinterface 590 1 0
     //   251: lstore 8
     //   253: aload 50
-    //   255: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   258: invokeinterface 591 1 0
+    //   255: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   258: invokeinterface 593 1 0
     //   263: lstore 18
     //   265: aload 50
-    //   267: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   270: invokeinterface 594 1 0
+    //   267: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   270: invokeinterface 596 1 0
     //   275: lstore 10
     //   277: aload 50
-    //   279: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   282: invokeinterface 597 1 0
+    //   279: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   282: invokeinterface 599 1 0
     //   287: lstore 12
     //   289: aload 50
-    //   291: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   294: invokeinterface 600 1 0
+    //   291: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   294: invokeinterface 602 1 0
     //   299: lstore 14
     //   301: aload 50
-    //   303: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   306: invokeinterface 603 1 0
+    //   303: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   306: invokeinterface 605 1 0
     //   311: lstore 20
     //   313: aload 50
-    //   315: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   318: invokeinterface 606 1 0
+    //   315: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   318: invokeinterface 608 1 0
     //   323: lstore 22
     //   325: aload 50
-    //   327: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   330: invokeinterface 609 1 0
+    //   327: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   330: invokeinterface 611 1 0
     //   335: lstore 34
     //   337: aload 50
-    //   339: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   342: invokeinterface 612 1 0
+    //   339: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   342: invokeinterface 614 1 0
     //   347: lstore 32
     //   349: aload 50
-    //   351: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   354: invokeinterface 615 1 0
+    //   351: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   354: invokeinterface 617 1 0
     //   359: lstore 30
     //   361: aload 50
-    //   363: checkcast 566	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
-    //   366: invokeinterface 618 1 0
+    //   363: checkcast 568	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportSpeedInterface
+    //   366: invokeinterface 620 1 0
     //   371: istore 45
     //   373: iload 42
     //   375: istore 46
@@ -647,7 +648,7 @@ public class VasCommonJsPlugin
     //   379: istore 42
     //   381: lconst_0
     //   382: lstore 38
-    //   384: ldc2_w 619
+    //   384: ldc2_w 621
     //   387: lstore 36
     //   389: lload 22
     //   391: lstore 24
@@ -685,27 +686,27 @@ public class VasCommonJsPlugin
     //   455: lstore 28
     //   457: goto +10 -> 467
     //   460: astore 48
-    //   462: ldc2_w 619
+    //   462: ldc2_w 621
     //   465: lstore 28
     //   467: lload 32
     //   469: lstore 26
     //   471: goto +15 -> 486
     //   474: astore 48
-    //   476: ldc2_w 619
+    //   476: ldc2_w 621
     //   479: lstore 26
-    //   481: ldc2_w 619
+    //   481: ldc2_w 621
     //   484: lstore 28
     //   486: lload 34
     //   488: lstore 24
     //   490: goto +20 -> 510
     //   493: astore 48
-    //   495: ldc2_w 619
+    //   495: ldc2_w 621
     //   498: lstore 24
-    //   500: ldc2_w 619
+    //   500: ldc2_w 621
     //   503: lstore 26
-    //   505: ldc2_w 619
+    //   505: ldc2_w 621
     //   508: lstore 28
-    //   510: ldc2_w 619
+    //   510: ldc2_w 621
     //   513: lstore 34
     //   515: lconst_0
     //   516: lstore 36
@@ -765,9 +766,9 @@ public class VasCommonJsPlugin
     //   624: lstore 12
     //   626: goto +46 -> 672
     //   629: astore 48
-    //   631: ldc2_w 619
+    //   631: ldc2_w 621
     //   634: lstore 22
-    //   636: ldc2_w 619
+    //   636: ldc2_w 621
     //   639: lstore 14
     //   641: lload 10
     //   643: lstore 20
@@ -779,11 +780,11 @@ public class VasCommonJsPlugin
     //   655: lstore 10
     //   657: goto +53 -> 710
     //   660: astore 48
-    //   662: ldc2_w 619
+    //   662: ldc2_w 621
     //   665: lstore 14
-    //   667: ldc2_w 619
+    //   667: ldc2_w 621
     //   670: lstore 12
-    //   672: ldc2_w 619
+    //   672: ldc2_w 621
     //   675: lstore 22
     //   677: lload 10
     //   679: lstore 20
@@ -791,13 +792,13 @@ public class VasCommonJsPlugin
     //   683: lstore 10
     //   685: goto +29 -> 714
     //   688: astore 48
-    //   690: ldc2_w 619
+    //   690: ldc2_w 621
     //   693: lstore 20
-    //   695: ldc2_w 619
+    //   695: ldc2_w 621
     //   698: lstore 24
-    //   700: ldc2_w 619
+    //   700: ldc2_w 621
     //   703: lstore 12
-    //   705: ldc2_w 619
+    //   705: ldc2_w 621
     //   708: lstore 10
     //   710: lload 24
     //   712: lstore 14
@@ -819,7 +820,7 @@ public class VasCommonJsPlugin
     //   745: astore 48
     //   747: goto +10 -> 757
     //   750: astore 48
-    //   752: ldc2_w 619
+    //   752: ldc2_w 621
     //   755: lstore 8
     //   757: lload 4
     //   759: lstore 24
@@ -843,7 +844,7 @@ public class VasCommonJsPlugin
     //   798: istore 42
     //   800: iconst_0
     //   801: istore 43
-    //   803: ldc2_w 619
+    //   803: ldc2_w 621
     //   806: lstore 24
     //   808: goto +19 -> 827
     //   811: astore 48
@@ -851,25 +852,25 @@ public class VasCommonJsPlugin
     //   814: istore 42
     //   816: iconst_0
     //   817: istore 43
-    //   819: ldc2_w 619
+    //   819: ldc2_w 621
     //   822: lstore 24
     //   824: iconst_0
     //   825: istore 44
-    //   827: ldc2_w 619
+    //   827: ldc2_w 621
     //   830: lstore 4
-    //   832: ldc2_w 619
+    //   832: ldc2_w 621
     //   835: lstore 8
     //   837: iload 42
     //   839: istore 45
-    //   841: ldc2_w 619
+    //   841: ldc2_w 621
     //   844: lstore 6
-    //   846: ldc2_w 619
+    //   846: ldc2_w 621
     //   849: lstore 26
-    //   851: ldc2_w 619
+    //   851: ldc2_w 621
     //   854: lstore 14
-    //   856: ldc2_w 619
+    //   856: ldc2_w 621
     //   859: lstore 12
-    //   861: ldc2_w 619
+    //   861: ldc2_w 621
     //   864: lstore 10
     //   866: iload 43
     //   868: istore 42
@@ -887,17 +888,17 @@ public class VasCommonJsPlugin
     //   891: lstore 12
     //   893: iconst_0
     //   894: istore 46
-    //   896: ldc2_w 619
+    //   896: ldc2_w 621
     //   899: lstore 32
     //   901: lconst_0
     //   902: lstore 30
-    //   904: ldc2_w 619
+    //   904: ldc2_w 621
     //   907: lstore 28
-    //   909: ldc2_w 619
+    //   909: ldc2_w 621
     //   912: lstore 26
-    //   914: ldc2_w 619
+    //   914: ldc2_w 621
     //   917: lstore 34
-    //   919: ldc2_w 619
+    //   919: ldc2_w 621
     //   922: lstore 16
     //   924: lload 4
     //   926: lstore 10
@@ -908,57 +909,57 @@ public class VasCommonJsPlugin
     //   936: goto +1053 -> 1989
     //   939: aload_0
     //   940: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   943: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   946: instanceof 622
+    //   943: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   946: instanceof 624
     //   949: ifeq +783 -> 1732
     //   952: aload_0
     //   953: bipush 254
-    //   955: invokespecial 625	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:getBrowserComponent	(I)Ljava/lang/Object;
-    //   958: checkcast 627	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics
+    //   955: invokespecial 627	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:getBrowserComponent	(I)Ljava/lang/Object;
+    //   958: checkcast 629	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics
     //   961: astore 51
     //   963: aload_0
     //   964: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   967: invokevirtual 630	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   967: invokevirtual 632	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
     //   970: ifnull +2012 -> 2982
     //   973: aload_0
     //   974: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   977: invokevirtual 630	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   980: invokevirtual 636	com/tencent/biz/pubaccount/CustomWebView:getPluginEngine	()Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   983: ldc_w 638
-    //   986: invokevirtual 643	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
+    //   977: invokevirtual 632	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   980: invokevirtual 638	com/tencent/biz/pubaccount/CustomWebView:getPluginEngine	()Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
+    //   983: ldc_w 640
+    //   986: invokevirtual 645	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
     //   989: astore 48
     //   991: aload 48
     //   993: ifnull +1983 -> 2976
     //   996: aload 48
-    //   998: instanceof 645
+    //   998: instanceof 647
     //   1001: ifeq +1975 -> 2976
     //   1004: aload 48
-    //   1006: checkcast 645	com/tencent/biz/webviewplugin/OfflinePlugin
+    //   1006: checkcast 647	com/tencent/biz/webviewplugin/OfflinePlugin
     //   1009: astore 48
     //   1011: goto +3 -> 1014
     //   1014: aload_0
     //   1015: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   1018: invokevirtual 630	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   1021: invokevirtual 649	com/tencent/biz/pubaccount/CustomWebView:getSonicClient	()Lcom/tencent/mobileqq/webview/sonic/SonicClientImpl;
+    //   1018: invokevirtual 632	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   1021: invokevirtual 651	com/tencent/biz/pubaccount/CustomWebView:getSonicClient	()Lcom/tencent/mobileqq/webview/sonic/SonicClientImpl;
     //   1024: astore 52
     //   1026: aload 48
     //   1028: astore 49
     //   1030: aload 52
     //   1032: ifnull +1953 -> 2985
     //   1035: aload 52
-    //   1037: invokevirtual 655	com/tencent/mobileqq/webview/sonic/SonicClientImpl:getSession	()Lcom/tencent/sonic/sdk/SonicSession;
+    //   1037: invokevirtual 657	com/tencent/mobileqq/webview/sonic/SonicClientImpl:getSession	()Lcom/tencent/sonic/sdk/SonicSession;
     //   1040: astore 52
     //   1042: aload 48
     //   1044: astore 49
     //   1046: aload 52
     //   1048: ifnull +1937 -> 2985
     //   1051: aload 52
-    //   1053: invokevirtual 661	com/tencent/sonic/sdk/SonicSession:getStatistics	()Lcom/tencent/sonic/sdk/SonicSessionStatistics;
+    //   1053: invokevirtual 663	com/tencent/sonic/sdk/SonicSession:getStatistics	()Lcom/tencent/sonic/sdk/SonicSessionStatistics;
     //   1056: astore 49
     //   1058: aload 49
     //   1060: ifnull +21 -> 1081
     //   1063: aload 49
-    //   1065: getfield 666	com/tencent/sonic/sdk/SonicSessionStatistics:isDirectAddress	Z
+    //   1065: getfield 668	com/tencent/sonic/sdk/SonicSessionStatistics:isDirectAddress	Z
     //   1068: istore 42
     //   1070: iload 42
     //   1072: ifeq +9 -> 1081
@@ -984,14 +985,14 @@ public class VasCommonJsPlugin
     //   1115: iload 42
     //   1117: istore 44
     //   1119: aload 49
-    //   1121: ldc_w 668
+    //   1121: ldc_w 670
     //   1124: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1127: pop
     //   1128: iload 42
     //   1130: istore 44
     //   1132: aload 49
     //   1134: iload 42
-    //   1136: invokevirtual 671	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1136: invokevirtual 673	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   1139: pop
     //   1140: iload 42
     //   1142: istore 44
@@ -1010,12 +1011,12 @@ public class VasCommonJsPlugin
     //   1171: iload 43
     //   1173: istore 44
     //   1175: aload 51
-    //   1177: getfield 675	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:c	J
+    //   1177: getfield 676	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:d	J
     //   1180: lstore 12
     //   1182: aload 49
     //   1184: ifnull +29 -> 1213
     //   1187: aload 49
-    //   1189: getfield 678	com/tencent/biz/webviewplugin/OfflinePlugin:f	Z
+    //   1189: getfield 679	com/tencent/biz/webviewplugin/OfflinePlugin:v	Z
     //   1192: istore 42
     //   1194: iload 42
     //   1196: ifeq +17 -> 1213
@@ -1029,59 +1030,59 @@ public class VasCommonJsPlugin
     //   1213: iconst_0
     //   1214: istore 44
     //   1216: aload 51
-    //   1218: getfield 681	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:g	Z
+    //   1218: getfield 682	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:aq	Z
     //   1221: istore 46
     //   1223: aload 51
-    //   1225: getfield 684	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:jdField_t_of_type_Boolean	Z
+    //   1225: getfield 685	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:aH	Z
     //   1228: istore 42
     //   1230: aload 51
-    //   1232: getfield 687	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:b	J
+    //   1232: getfield 687	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:c	J
     //   1235: lstore 4
     //   1237: aload 51
-    //   1239: getfield 690	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:r	J
+    //   1239: getfield 690	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:u	J
     //   1242: lstore 6
     //   1244: lload 12
     //   1246: lstore 26
     //   1248: aload 51
-    //   1250: getfield 693	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:s	J
+    //   1250: getfield 692	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:v	J
     //   1253: lstore 10
     //   1255: lload 6
     //   1257: lstore 8
     //   1259: aload 51
-    //   1261: getfield 695	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:jdField_t_of_type_Long	J
+    //   1261: getfield 695	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:w	J
     //   1264: lstore 14
     //   1266: lload 14
     //   1268: lstore 6
     //   1270: aload 51
-    //   1272: getfield 698	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:m	J
+    //   1272: getfield 698	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:p	J
     //   1275: lstore 14
     //   1277: aload 51
-    //   1279: getfield 701	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:n	J
+    //   1279: getfield 701	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:q	J
     //   1282: lstore 18
     //   1284: aload 51
-    //   1286: getfield 704	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:o	J
+    //   1286: getfield 704	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:r	J
     //   1289: lstore 22
     //   1291: aload 51
-    //   1293: getfield 707	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:jdField_q_of_type_Long	J
+    //   1293: getfield 707	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:t	J
     //   1296: lstore 36
     //   1298: aload 49
     //   1300: ifnull +87 -> 1387
     //   1303: aload 49
-    //   1305: getfield 709	com/tencent/biz/webviewplugin/OfflinePlugin:a	J
+    //   1305: getfield 710	com/tencent/biz/webviewplugin/OfflinePlugin:o	J
     //   1308: lstore 16
     //   1310: goto +80 -> 1390
     //   1313: astore 48
-    //   1315: ldc2_w 619
+    //   1315: ldc2_w 621
     //   1318: lstore 16
-    //   1320: ldc2_w 619
+    //   1320: ldc2_w 621
     //   1323: lstore 12
     //   1325: iconst_0
     //   1326: istore 45
-    //   1328: ldc2_w 619
+    //   1328: ldc2_w 621
     //   1331: lstore 20
     //   1333: lconst_0
     //   1334: lstore 30
-    //   1336: ldc2_w 619
+    //   1336: ldc2_w 621
     //   1339: lstore 32
     //   1341: lload 20
     //   1343: lstore 28
@@ -1115,7 +1116,7 @@ public class VasCommonJsPlugin
     //   1399: lload 16
     //   1401: lstore 12
     //   1403: aload 49
-    //   1405: getfield 710	com/tencent/biz/webviewplugin/OfflinePlugin:b	J
+    //   1405: getfield 711	com/tencent/biz/webviewplugin/OfflinePlugin:p	J
     //   1408: lstore 20
     //   1410: lload 20
     //   1412: lstore 12
@@ -1127,12 +1128,12 @@ public class VasCommonJsPlugin
     //   1426: lconst_0
     //   1427: lstore 12
     //   1429: aload 51
-    //   1431: getfield 713	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:u	J
+    //   1431: getfield 714	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:x	J
     //   1434: lstore 20
     //   1436: aload 49
     //   1438: ifnull +29 -> 1467
     //   1441: aload 49
-    //   1443: getfield 716	com/tencent/biz/webviewplugin/OfflinePlugin:e	Z
+    //   1443: getfield 717	com/tencent/biz/webviewplugin/OfflinePlugin:n	Z
     //   1446: istore 45
     //   1448: iload 45
     //   1450: ifeq +17 -> 1467
@@ -1146,30 +1147,30 @@ public class VasCommonJsPlugin
     //   1467: iconst_0
     //   1468: istore 45
     //   1470: aload 51
-    //   1472: getfield 719	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:v	J
+    //   1472: getfield 720	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:y	J
     //   1475: lstore 30
     //   1477: aload 51
-    //   1479: getfield 721	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:e	J
+    //   1479: getfield 723	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:h	J
     //   1482: lstore 24
     //   1484: new 128	java/lang/StringBuilder
     //   1487: dup
     //   1488: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   1491: astore 48
     //   1493: aload 48
-    //   1495: ldc_w 723
+    //   1495: ldc_w 725
     //   1498: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1501: pop
     //   1502: aload 48
     //   1504: iload 42
-    //   1506: invokevirtual 671	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1506: invokevirtual 673	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   1509: pop
     //   1510: aload 48
-    //   1512: ldc_w 725
+    //   1512: ldc_w 727
     //   1515: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1518: pop
     //   1519: aload 48
-    //   1521: getstatic 728	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:p	Z
-    //   1524: invokevirtual 671	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1521: getstatic 730	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:aD	Z
+    //   1524: invokevirtual 673	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   1527: pop
     //   1528: aload 48
     //   1530: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1218,7 +1219,7 @@ public class VasCommonJsPlugin
     //   1626: astore 48
     //   1628: goto +10 -> 1638
     //   1631: astore 48
-    //   1633: ldc2_w 619
+    //   1633: ldc2_w 621
     //   1636: lstore 10
     //   1638: lload 6
     //   1640: lstore 8
@@ -1230,25 +1231,25 @@ public class VasCommonJsPlugin
     //   1655: astore 48
     //   1657: iconst_0
     //   1658: istore 42
-    //   1660: ldc2_w 619
+    //   1660: ldc2_w 621
     //   1663: lstore 4
-    //   1665: ldc2_w 619
+    //   1665: ldc2_w 621
     //   1668: lstore 10
-    //   1670: ldc2_w 619
+    //   1670: ldc2_w 621
     //   1673: lstore 8
-    //   1675: ldc2_w 619
+    //   1675: ldc2_w 621
     //   1678: lstore 6
-    //   1680: ldc2_w 619
+    //   1680: ldc2_w 621
     //   1683: lstore 14
-    //   1685: ldc2_w 619
+    //   1685: ldc2_w 621
     //   1688: lstore 18
-    //   1690: ldc2_w 619
+    //   1690: ldc2_w 621
     //   1693: lstore 20
     //   1695: lload 4
     //   1697: lstore 24
     //   1699: iload 46
     //   1701: istore 45
-    //   1703: ldc2_w 619
+    //   1703: ldc2_w 621
     //   1706: lstore 22
     //   1708: lload 10
     //   1710: lstore 4
@@ -1262,43 +1263,43 @@ public class VasCommonJsPlugin
     //   1729: goto +6 -> 1735
     //   1732: iconst_0
     //   1733: istore 43
-    //   1735: ldc2_w 619
+    //   1735: ldc2_w 621
     //   1738: lstore 4
     //   1740: iconst_0
     //   1741: istore 42
     //   1743: iconst_0
     //   1744: istore 45
-    //   1746: ldc2_w 619
+    //   1746: ldc2_w 621
     //   1749: lstore 10
-    //   1751: ldc2_w 619
+    //   1751: ldc2_w 621
     //   1754: lstore 24
     //   1756: iconst_1
     //   1757: istore 46
     //   1759: iconst_0
     //   1760: istore 44
-    //   1762: ldc2_w 619
+    //   1762: ldc2_w 621
     //   1765: lstore 26
-    //   1767: ldc2_w 619
+    //   1767: ldc2_w 621
     //   1770: lstore 8
-    //   1772: ldc2_w 619
+    //   1772: ldc2_w 621
     //   1775: lstore 6
-    //   1777: ldc2_w 619
+    //   1777: ldc2_w 621
     //   1780: lstore 14
-    //   1782: ldc2_w 619
+    //   1782: ldc2_w 621
     //   1785: lstore 18
-    //   1787: ldc2_w 619
+    //   1787: ldc2_w 621
     //   1790: lstore 22
-    //   1792: ldc2_w 619
+    //   1792: ldc2_w 621
     //   1795: lstore 28
-    //   1797: ldc2_w 619
+    //   1797: ldc2_w 621
     //   1800: lstore 16
-    //   1802: ldc2_w 619
+    //   1802: ldc2_w 621
     //   1805: lstore 12
-    //   1807: ldc2_w 619
+    //   1807: ldc2_w 621
     //   1810: lstore 20
     //   1812: lconst_0
     //   1813: lstore 30
-    //   1815: ldc2_w 619
+    //   1815: ldc2_w 621
     //   1818: lstore 32
     //   1820: iload 46
     //   1822: istore 47
@@ -1344,41 +1345,41 @@ public class VasCommonJsPlugin
     //   1902: istore 43
     //   1904: iconst_0
     //   1905: istore 44
-    //   1907: ldc2_w 619
+    //   1907: ldc2_w 621
     //   1910: lstore 12
-    //   1912: ldc2_w 619
+    //   1912: ldc2_w 621
     //   1915: lstore 4
     //   1917: iconst_0
     //   1918: istore 42
     //   1920: iconst_0
     //   1921: istore 46
-    //   1923: ldc2_w 619
+    //   1923: ldc2_w 621
     //   1926: lstore 10
-    //   1928: ldc2_w 619
+    //   1928: ldc2_w 621
     //   1931: lstore 16
     //   1933: iconst_1
     //   1934: istore 45
-    //   1936: ldc2_w 619
+    //   1936: ldc2_w 621
     //   1939: lstore 8
-    //   1941: ldc2_w 619
+    //   1941: ldc2_w 621
     //   1944: lstore 6
-    //   1946: ldc2_w 619
+    //   1946: ldc2_w 621
     //   1949: lstore 14
-    //   1951: ldc2_w 619
+    //   1951: ldc2_w 621
     //   1954: lstore 18
-    //   1956: ldc2_w 619
+    //   1956: ldc2_w 621
     //   1959: lstore 20
-    //   1961: ldc2_w 619
+    //   1961: ldc2_w 621
     //   1964: lstore 22
-    //   1966: ldc2_w 619
+    //   1966: ldc2_w 621
     //   1969: lstore 24
-    //   1971: ldc2_w 619
+    //   1971: ldc2_w 621
     //   1974: lstore 26
-    //   1976: ldc2_w 619
+    //   1976: ldc2_w 621
     //   1979: lstore 28
     //   1981: lconst_0
     //   1982: lstore 30
-    //   1984: ldc2_w 619
+    //   1984: ldc2_w 621
     //   1987: lstore 32
     //   1989: aload 48
     //   1991: invokevirtual 287	java/lang/Exception:printStackTrace	()V
@@ -1416,34 +1417,34 @@ public class VasCommonJsPlugin
     //   2056: lstore 6
     //   2058: aload_0
     //   2059: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2062: invokevirtual 630	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   2062: invokevirtual 632	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
     //   2065: ifnull +100 -> 2165
     //   2068: aload_0
     //   2069: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2072: invokevirtual 630	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   2075: invokevirtual 636	com/tencent/biz/pubaccount/CustomWebView:getPluginEngine	()Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
+    //   2072: invokevirtual 632	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   2075: invokevirtual 638	com/tencent/biz/pubaccount/CustomWebView:getPluginEngine	()Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
     //   2078: ifnull +87 -> 2165
     //   2081: aload_0
     //   2082: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2085: invokevirtual 630	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   2088: invokevirtual 636	com/tencent/biz/pubaccount/CustomWebView:getPluginEngine	()Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   2091: ldc_w 730
-    //   2094: invokevirtual 643	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
+    //   2085: invokevirtual 632	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   2088: invokevirtual 638	com/tencent/biz/pubaccount/CustomWebView:getPluginEngine	()Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
+    //   2091: ldc_w 732
+    //   2094: invokevirtual 645	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
     //   2097: astore 49
     //   2099: aload 49
-    //   2101: instanceof 732
+    //   2101: instanceof 734
     //   2104: ifeq +61 -> 2165
     //   2107: aload_0
     //   2108: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2111: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   2111: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
     //   2114: ifnull +31 -> 2145
     //   2117: aload_0
     //   2118: getfield 532	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2121: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   2124: invokevirtual 738	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   2127: invokevirtual 743	java/lang/Class:getName	()Ljava/lang/String;
-    //   2130: ldc_w 745
-    //   2133: invokevirtual 749	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   2121: invokevirtual 537	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   2124: invokevirtual 740	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   2127: invokevirtual 745	java/lang/Class:getName	()Ljava/lang/String;
+    //   2130: ldc_w 747
+    //   2133: invokevirtual 751	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   2136: ifeq +9 -> 2145
     //   2139: iconst_1
     //   2140: istore 47
@@ -1451,24 +1452,24 @@ public class VasCommonJsPlugin
     //   2145: iconst_0
     //   2146: istore 47
     //   2148: aload 49
-    //   2150: checkcast 732	com/tencent/mobileqq/apollo/web/api/IApolloJsPlugin
+    //   2150: checkcast 734	com/tencent/mobileqq/apollo/web/api/IApolloJsPlugin
     //   2153: iload 47
-    //   2155: invokeinterface 753 2 0
+    //   2155: invokeinterface 755 2 0
     //   2160: astore 49
     //   2162: goto +6 -> 2168
     //   2165: aconst_null
     //   2166: astore 49
     //   2168: aload 50
-    //   2170: instanceof 755
+    //   2170: instanceof 757
     //   2173: ifeq +30 -> 2203
     //   2176: aload 50
-    //   2178: checkcast 755	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportProcessInterface
+    //   2178: checkcast 757	com/tencent/mobileqq/webviewplugin/WebUiUtils$WebviewReportProcessInterface
     //   2181: astore 50
     //   2183: aload 50
-    //   2185: invokeinterface 757 1 0
+    //   2185: invokeinterface 760 1 0
     //   2190: istore_3
     //   2191: aload 50
-    //   2193: invokeinterface 759 1 0
+    //   2193: invokeinterface 763 1 0
     //   2198: istore 47
     //   2200: goto +8 -> 2208
     //   2203: iconst_0
@@ -1476,137 +1477,137 @@ public class VasCommonJsPlugin
     //   2205: iconst_0
     //   2206: istore 47
     //   2208: lload 8
-    //   2210: ldc2_w 619
+    //   2210: ldc2_w 621
     //   2213: lcmp
     //   2214: ifne +12 -> 2226
     //   2217: aload_0
-    //   2218: getfield 762	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:onPageStartedTime	J
+    //   2218: getfield 766	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:onPageStartedTime	J
     //   2221: lstore 8
     //   2223: goto +3 -> 2226
     //   2226: aload_1
-    //   2227: ldc_w 764
+    //   2227: ldc_w 768
     //   2230: lload 4
-    //   2232: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2232: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2235: pop
     //   2236: aload_1
-    //   2237: ldc_w 769
+    //   2237: ldc_w 773
     //   2240: lload 8
-    //   2242: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2242: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2245: pop
     //   2246: aload_1
-    //   2247: ldc_w 771
+    //   2247: ldc_w 775
     //   2250: aload_0
-    //   2251: getfield 774	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:onPageFinishedTime	J
-    //   2254: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2251: getfield 778	com/tencent/mobileqq/vaswebviewplugin/VasCommonJsPlugin:onPageFinishedTime	J
+    //   2254: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2257: pop
     //   2258: aload_1
-    //   2259: ldc_w 776
+    //   2259: ldc_w 780
     //   2262: lload 6
-    //   2264: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2264: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2267: pop
     //   2268: aload_1
-    //   2269: ldc_w 778
+    //   2269: ldc_w 782
     //   2272: iload 44
-    //   2274: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2274: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2277: pop
     //   2278: aload_1
-    //   2279: ldc_w 783
-    //   2282: getstatic 787	com/tencent/biz/common/offline/HtmlOffline:a	I
-    //   2285: invokevirtual 790	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   2279: ldc_w 787
+    //   2282: getstatic 791	com/tencent/biz/common/offline/HtmlOffline:c	I
+    //   2285: invokevirtual 794	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2288: pop
     //   2289: aload_1
-    //   2290: ldc_w 792
+    //   2290: ldc_w 796
     //   2293: iload 45
-    //   2295: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2295: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2298: pop
     //   2299: aload_1
-    //   2300: ldc_w 794
-    //   2303: getstatic 728	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:p	Z
-    //   2306: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2300: ldc_w 798
+    //   2303: getstatic 730	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:aD	Z
+    //   2306: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2309: pop
     //   2310: aload_1
-    //   2311: ldc_w 796
-    //   2314: getstatic 798	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:jdField_q_of_type_Boolean	Z
-    //   2317: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2311: ldc_w 800
+    //   2314: getstatic 803	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:aE	Z
+    //   2317: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2320: pop
     //   2321: aload_1
-    //   2322: ldc_w 800
+    //   2322: ldc_w 805
     //   2325: iload 42
-    //   2327: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2327: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2330: pop
     //   2331: aload_1
-    //   2332: ldc_w 802
+    //   2332: ldc_w 807
     //   2335: lload 10
-    //   2337: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2337: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2340: pop
     //   2341: aload_1
-    //   2342: ldc_w 804
+    //   2342: ldc_w 809
     //   2345: lload 12
-    //   2347: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2347: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2350: pop
     //   2351: aload_1
-    //   2352: ldc_w 806
+    //   2352: ldc_w 811
     //   2355: lload 14
-    //   2357: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2357: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2360: pop
     //   2361: aload_1
-    //   2362: ldc_w 808
+    //   2362: ldc_w 813
     //   2365: lload 16
-    //   2367: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2367: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2370: pop
     //   2371: aload_1
-    //   2372: ldc_w 810
+    //   2372: ldc_w 815
     //   2375: lload 18
-    //   2377: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2377: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2380: pop
     //   2381: aload_1
-    //   2382: ldc_w 812
+    //   2382: ldc_w 817
     //   2385: lload 20
-    //   2387: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2387: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2390: pop
     //   2391: aload_1
-    //   2392: ldc_w 814
+    //   2392: ldc_w 819
     //   2395: lload 24
-    //   2397: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2397: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2400: pop
     //   2401: aload_1
-    //   2402: ldc_w 816
+    //   2402: ldc_w 821
     //   2405: lload 22
-    //   2407: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2407: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2410: pop
     //   2411: aload 49
     //   2413: ifnull +13 -> 2426
     //   2416: aload_1
-    //   2417: ldc_w 818
+    //   2417: ldc_w 823
     //   2420: aload 49
     //   2422: invokevirtual 522	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   2425: pop
     //   2426: aload_1
-    //   2427: ldc_w 820
+    //   2427: ldc_w 825
     //   2430: lload 26
-    //   2432: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2432: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2435: pop
     //   2436: aload_1
-    //   2437: ldc_w 821
+    //   2437: ldc_w 826
     //   2440: iload 43
-    //   2442: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2442: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2445: pop
     //   2446: new 128	java/lang/StringBuilder
     //   2449: dup
-    //   2450: ldc_w 823
-    //   2453: invokespecial 824	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2450: ldc_w 828
+    //   2453: invokespecial 829	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   2456: astore 49
     //   2458: new 128	java/lang/StringBuilder
     //   2461: dup
     //   2462: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2465: astore 50
     //   2467: aload 50
-    //   2469: ldc_w 826
+    //   2469: ldc_w 831
     //   2472: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2475: pop
     //   2476: aload 50
     //   2478: lload 4
-    //   2480: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2480: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2483: pop
     //   2484: aload 49
     //   2486: aload 50
@@ -1618,12 +1619,12 @@ public class VasCommonJsPlugin
     //   2499: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2502: astore 50
     //   2504: aload 50
-    //   2506: ldc_w 831
+    //   2506: ldc_w 836
     //   2509: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2512: pop
     //   2513: aload 50
     //   2515: lload 6
-    //   2517: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2517: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2520: pop
     //   2521: aload 49
     //   2523: aload 50
@@ -1635,12 +1636,12 @@ public class VasCommonJsPlugin
     //   2536: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2539: astore 50
     //   2541: aload 50
-    //   2543: ldc_w 833
+    //   2543: ldc_w 838
     //   2546: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2549: pop
     //   2550: aload 50
     //   2552: lload 8
-    //   2554: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2554: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2557: pop
     //   2558: aload 49
     //   2560: aload 50
@@ -1652,14 +1653,14 @@ public class VasCommonJsPlugin
     //   2573: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2576: astore 50
     //   2578: aload 50
-    //   2580: ldc_w 835
+    //   2580: ldc_w 840
     //   2583: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2586: pop
     //   2587: aload 50
     //   2589: lload 6
     //   2591: lload 4
     //   2593: lsub
-    //   2594: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2594: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2597: pop
     //   2598: aload 49
     //   2600: aload 50
@@ -1671,14 +1672,14 @@ public class VasCommonJsPlugin
     //   2613: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2616: astore 50
     //   2618: aload 50
-    //   2620: ldc_w 837
+    //   2620: ldc_w 842
     //   2623: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2626: pop
     //   2627: aload 50
     //   2629: lload 8
     //   2631: lload 6
     //   2633: lsub
-    //   2634: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2634: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2637: pop
     //   2638: aload 49
     //   2640: aload 50
@@ -1695,39 +1696,39 @@ public class VasCommonJsPlugin
     //   2663: lcmp
     //   2664: ifle +13 -> 2677
     //   2667: aload_1
-    //   2668: ldc_w 839
+    //   2668: ldc_w 844
     //   2671: lload 28
-    //   2673: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2673: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2676: pop
     //   2677: lload 30
     //   2679: lconst_0
     //   2680: lcmp
     //   2681: ifle +13 -> 2694
     //   2684: aload_1
-    //   2685: ldc_w 841
+    //   2685: ldc_w 846
     //   2688: lload 30
-    //   2690: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2690: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2693: pop
     //   2694: lload 32
     //   2696: lconst_0
     //   2697: lcmp
     //   2698: ifle +13 -> 2711
     //   2701: aload_1
-    //   2702: ldc_w 843
+    //   2702: ldc_w 848
     //   2705: lload 32
-    //   2707: invokevirtual 767	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   2707: invokevirtual 771	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   2710: pop
     //   2711: aload_1
-    //   2712: ldc_w 845
+    //   2712: ldc_w 850
     //   2715: iload 46
-    //   2717: invokevirtual 781	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   2717: invokevirtual 785	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
     //   2720: pop
     //   2721: iload_3
     //   2722: ifle +33 -> 2755
     //   2725: aload_1
-    //   2726: ldc_w 847
+    //   2726: ldc_w 852
     //   2729: iload_3
-    //   2730: invokevirtual 790	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   2730: invokevirtual 794	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2733: pop
     //   2734: iload 47
     //   2736: ifeq +8 -> 2744
@@ -1737,22 +1738,22 @@ public class VasCommonJsPlugin
     //   2744: iconst_1
     //   2745: istore_3
     //   2746: aload_1
-    //   2747: ldc_w 849
+    //   2747: ldc_w 854
     //   2750: iload_3
-    //   2751: invokevirtual 790	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   2751: invokevirtual 794	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2754: pop
     //   2755: aload_2
     //   2756: ifnull +29 -> 2785
     //   2759: aload_2
-    //   2760: invokevirtual 853	com/tencent/smtt/sdk/WebView:getX5WebViewExtension	()Lcom/tencent/smtt/export/external/extension/interfaces/IX5WebViewExtension;
+    //   2760: invokevirtual 858	com/tencent/smtt/sdk/WebView:getX5WebViewExtension	()Lcom/tencent/smtt/export/external/extension/interfaces/IX5WebViewExtension;
     //   2763: ifnonnull +9 -> 2772
     //   2766: ldc 159
     //   2768: astore_2
     //   2769: goto +7 -> 2776
-    //   2772: ldc_w 855
+    //   2772: ldc_w 860
     //   2775: astore_2
     //   2776: aload_1
-    //   2777: ldc_w 857
+    //   2777: ldc_w 862
     //   2780: aload_2
     //   2781: invokevirtual 522	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   2784: pop
@@ -1780,14 +1781,14 @@ public class VasCommonJsPlugin
     //   2828: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2831: astore_1
     //   2832: aload_1
-    //   2833: ldc_w 859
+    //   2833: ldc_w 864
     //   2836: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2839: pop
     //   2840: aload_1
     //   2841: lload 32
     //   2843: lload 8
     //   2845: lsub
-    //   2846: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2846: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2849: pop
     //   2850: aload_1
     //   2851: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1808,14 +1809,14 @@ public class VasCommonJsPlugin
     //   2879: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2882: astore_1
     //   2883: aload_1
-    //   2884: ldc_w 861
+    //   2884: ldc_w 866
     //   2887: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2890: pop
     //   2891: aload_1
     //   2892: lload 28
     //   2894: lload 8
     //   2896: lsub
-    //   2897: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2897: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2900: pop
     //   2901: aload_1
     //   2902: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1836,14 +1837,14 @@ public class VasCommonJsPlugin
     //   2929: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   2932: astore_1
     //   2933: aload_1
-    //   2934: ldc_w 863
+    //   2934: ldc_w 868
     //   2937: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2940: pop
     //   2941: aload_1
     //   2942: lload 30
     //   2944: lload 8
     //   2946: lsub
-    //   2947: invokevirtual 829	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2947: invokevirtual 834	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2950: pop
     //   2951: aload_1
     //   2952: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1852,7 +1853,7 @@ public class VasCommonJsPlugin
     //   2958: aload_1
     //   2959: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2962: pop
-    //   2963: ldc_w 865
+    //   2963: ldc_w 870
     //   2966: iconst_2
     //   2967: aload 48
     //   2969: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1997,7 +1998,7 @@ public class VasCommonJsPlugin
   
   private void getPerformanceFromX5(JSONObject paramJSONObject)
   {
-    Object localObject = this.mRuntime.a(this.mRuntime.a());
+    Object localObject = this.mRuntime.a(this.mRuntime.d());
     if (localObject != null) {}
     for (;;)
     {
@@ -2012,14 +2013,14 @@ public class VasCommonJsPlugin
         }
         else
         {
-          if (!(this.mRuntime.a() instanceof SwiftWebViewFragmentSupporter)) {
+          if (!(this.mRuntime.d() instanceof SwiftWebViewFragmentSupporter)) {
             break label435;
           }
           localObject = (SwiftBrowserStatistics)super.getBrowserComponent(-2);
           if (localObject == null) {
             break label435;
           }
-          localObject = ((SwiftBrowserStatistics)localObject).jdField_a_of_type_OrgJsonJSONObject;
+          localObject = ((SwiftBrowserStatistics)localObject).aI;
         }
         if (localObject != null)
         {
@@ -2116,27 +2117,27 @@ public class VasCommonJsPlugin
     localStringBuilder.append("|");
     localStringBuilder.append("ANDROID");
     localStringBuilder.append("|");
-    localStringBuilder.append("8.7.0.5295");
+    localStringBuilder.append("8.8.17.5770");
     localStringBuilder.append("|");
-    localStringBuilder.append(DeviceInfoUtil.e());
+    localStringBuilder.append(DeviceInfoUtil.g());
     localStringBuilder.append("|");
-    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(MobileQQ.getShortUinStr(paramAppInterface.getCurrentAccountUin()));
     localStringBuilder.append("|");
     localStringBuilder.append(Build.MODEL);
     localStringBuilder.append("|");
-    boolean bool = TextUtils.isEmpty(DeviceInfoUtil.a(paramActivity).c);
+    boolean bool = TextUtils.isEmpty(DeviceInfoUtil.f(paramActivity).c);
     paramString1 = "未知";
     if (bool) {
       paramAppInterface = "未知";
     } else {
-      paramAppInterface = DeviceInfoUtil.a(paramActivity).c;
+      paramAppInterface = DeviceInfoUtil.f(paramActivity).c;
     }
     localStringBuilder.append(paramAppInterface);
     localStringBuilder.append("|");
-    if (TextUtils.isEmpty(DeviceInfoUtil.a(paramActivity).jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(DeviceInfoUtil.f(paramActivity).a)) {
       paramAppInterface = paramString1;
     } else {
-      paramAppInterface = DeviceInfoUtil.a(paramActivity).jdField_a_of_type_JavaLangString;
+      paramAppInterface = DeviceInfoUtil.f(paramActivity).a;
     }
     localStringBuilder.append(paramAppInterface);
     if (paramBoolean)
@@ -2296,7 +2297,7 @@ public class VasCommonJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      AppInterface localAppInterface = this.mRuntime.a();
+      AppInterface localAppInterface = this.mRuntime.b();
       if (localAppInterface != null)
       {
         localJSONObject.put("density", ThemeUtil.getThemeDensity(localAppInterface.getApplication()));
@@ -2538,7 +2539,7 @@ public class VasCommonJsPlugin
               return true;
             }
             if (this.deBugDialog == null) {
-              this.deBugDialog = new VasCommonJsPlugin.JsDebugDialog(this, this.mRuntime.a());
+              this.deBugDialog = new VasCommonJsPlugin.JsDebugDialog(this, this.mRuntime.d());
             }
             if (new JSONObject(paramVarArgs[0]).getBoolean("flag")) {
               this.logShowTag = true;
@@ -2598,7 +2599,7 @@ public class VasCommonJsPlugin
                 paramString1 = new JSONObject(paramVarArgs[0]).optString("pageId", "");
                 paramString2 = (SwiftBrowserStatistics)super.getBrowserComponent(-2);
                 if (paramString2 != null) {
-                  paramString2.jdField_a_of_type_JavaLangString = paramString1;
+                  paramString2.g = paramString1;
                 }
                 VasBaseWebviewUtil.reportX5SpeedData(paramString2);
               }
@@ -2626,7 +2627,7 @@ public class VasCommonJsPlugin
             {
               if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
               {
-                ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(this.mRuntime.a().getApplicationContext());
+                ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(this.mRuntime.d().getApplicationContext());
                 return true;
               }
             }
@@ -2634,7 +2635,7 @@ public class VasCommonJsPlugin
             {
               if ("stopIpcService".equals(paramString3))
               {
-                ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doUnbindService(this.mRuntime.a().getApplicationContext());
+                ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doUnbindService(this.mRuntime.d().getApplicationContext());
                 return true;
               }
               if ("isIpcStarted".equals(paramString3))
@@ -2695,7 +2696,7 @@ public class VasCommonJsPlugin
               if ("detailLog".equals(paramString3))
               {
                 paramString1 = new JSONObject(paramVarArgs[0]);
-                webLog(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+                webLog(this.mRuntime.b(), this.mRuntime.d(), paramString1);
                 return true;
               }
               if ("selectedFriendInfo".equals(paramString3))
@@ -2712,7 +2713,7 @@ public class VasCommonJsPlugin
               {
                 if ((!TextUtils.isEmpty(paramVarArgs[0])) && (paramVarArgs[0].contains("flag")))
                 {
-                  paramString1 = this.mRuntime.a();
+                  paramString1 = this.mRuntime.d();
                   if ((paramString1 != null) && (!this.isDestroy) && (!paramString1.isFinishing()))
                   {
                     int i = new JSONObject(paramVarArgs[0]).optInt("flag");
@@ -2752,7 +2753,7 @@ public class VasCommonJsPlugin
                   bool1 = paramString2 instanceof CustomWebChromeClient;
                   if (bool1)
                   {
-                    ((CustomWebChromeClient)paramString2).a = true;
+                    ((CustomWebChromeClient)paramString2).b = true;
                     paramString3.put("code", 0);
                   }
                   else
@@ -2881,7 +2882,7 @@ public class VasCommonJsPlugin
       }
       if (arrayOfString.length >= 1)
       {
-        paramJSONObject = DialogUtil.a(this.mRuntime.a(), 230);
+        paramJSONObject = DialogUtil.c(this.mRuntime.d(), 230);
         paramJSONObject.a(str);
         paramJSONObject.b((String)localObject);
         paramJSONObject.a(arrayOfString[0], new VasCommonJsPlugin.1(this, paramJsBridgeListener));
@@ -2923,7 +2924,7 @@ public class VasCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

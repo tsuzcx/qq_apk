@@ -20,9 +20,9 @@ public class FullScreenEmptyView
     super(paramContext, paramAttributeSet);
   }
   
-  public int a()
+  public int getViewHeight()
   {
-    return UIUtils.d(super.getContext()) - AIOUtils.b(55.0F, super.getResources()) - UIUtils.e(super.getContext());
+    return UIUtils.e(super.getContext()) - AIOUtils.b(55.0F, super.getResources()) - UIUtils.f(super.getContext());
   }
 }
 

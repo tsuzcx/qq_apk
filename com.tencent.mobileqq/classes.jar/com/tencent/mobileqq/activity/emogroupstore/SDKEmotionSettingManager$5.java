@@ -20,15 +20,15 @@ class SDKEmotionSettingManager$5
     if ((!SDKEmotionSettingManager.a(this.a).isFinishing()) && (!this.a.a))
     {
       this.a.d();
-      if (SDKEmotionSettingManager.a(this.a) != null) {
-        SDKEmotionSettingManager.a(this.a).removeCallbacks(SDKEmotionSettingManager.b(this.a));
+      if (SDKEmotionSettingManager.e(this.a) != null) {
+        SDKEmotionSettingManager.e(this.a).removeCallbacks(SDKEmotionSettingManager.i(this.a));
       }
       if (paramInt == 16)
       {
         this.a.e();
         return;
       }
-      SDKEmotionSettingManager.c(this.a);
+      SDKEmotionSettingManager.j(this.a);
       return;
     }
     QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction activity finishing or timeout");
@@ -36,7 +36,7 @@ class SDKEmotionSettingManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.5
  * JD-Core Version:    0.7.0.1
  */

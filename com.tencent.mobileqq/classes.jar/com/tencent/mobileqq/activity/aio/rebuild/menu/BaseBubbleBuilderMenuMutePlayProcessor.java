@@ -21,7 +21,7 @@ public class BaseBubbleBuilderMenuMutePlayProcessor
   
   protected void a(QQCustomMenu paramQQCustomMenu)
   {
-    paramQQCustomMenu.a(2131371660, HardCodeUtil.a(2131701165), 2130838922);
+    paramQQCustomMenu.a(2131439081, HardCodeUtil.a(2131899181), 2130839076);
   }
   
   public void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, ChatMessage paramChatMessage, Bundle paramBundle)
@@ -31,12 +31,12 @@ public class BaseBubbleBuilderMenuMutePlayProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131371660;
+    return paramInt == 2131439081;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuMutePlayProcessor
  * JD-Core Version:    0.7.0.1
  */

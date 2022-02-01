@@ -30,8 +30,8 @@ class GdtTangramModule$GdtTangramModuleAdLoaderListener
     JSONObject localJSONObject;
     if ((paramGdtAdLoader != null) && (paramGdtAdLoader.a() != null))
     {
-      Object localObject = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-      paramGdtAdLoader = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+      Object localObject = GdtJsonPbUtil.a(paramGdtAdLoader.a().a);
+      paramGdtAdLoader = GdtJsonPbUtil.a(paramGdtAdLoader.a().b);
       AdLog.i("GdtTangramModule", "loadAd onResponse");
       localJSONObject = new JSONObject();
       try
@@ -75,7 +75,7 @@ class GdtTangramModule$GdtTangramModuleAdLoaderListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.hippy.GdtTangramModule.GdtTangramModuleAdLoaderListener
  * JD-Core Version:    0.7.0.1
  */

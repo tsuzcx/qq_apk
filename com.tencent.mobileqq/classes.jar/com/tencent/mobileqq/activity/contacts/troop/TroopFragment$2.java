@@ -15,16 +15,16 @@ class TroopFragment$2
   {
     if (paramInt2 == 0)
     {
-      this.a.h();
+      this.a.j();
       if (this.a.isResumed())
       {
         if (paramInt1 == 0)
         {
-          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131715164), 0).a();
+          QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131912652), 0).show();
           return;
         }
         if (paramInt1 == 1) {
-          QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131715163), 0).a();
+          QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131912651), 0).show();
         }
       }
     }
@@ -32,15 +32,15 @@ class TroopFragment$2
     {
       paramString1 = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = this.a.getResources().getString(2131694666);
+        paramString1 = this.a.getResources().getString(2131892358);
       }
-      QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+      QQToast.makeText(this.a.getActivity(), 1, paramString1, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.2
  * JD-Core Version:    0.7.0.1
  */

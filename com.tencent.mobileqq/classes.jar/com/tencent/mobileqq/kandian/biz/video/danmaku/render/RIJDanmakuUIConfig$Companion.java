@@ -8,108 +8,108 @@ public final class RIJDanmakuUIConfig$Companion
 {
   public final float a()
   {
-    return RIJDanmakuUIConfig.b();
-  }
-  
-  public final int a()
-  {
-    return RIJDanmakuUIConfig.c();
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return RIJDanmakuUIConfig.a();
-  }
-  
-  public final float b()
-  {
-    return RIJDanmakuUIConfig.c();
+    return RIJDanmakuUIConfig.d();
   }
   
   public final int b()
   {
-    return RIJDanmakuUIConfig.d();
-  }
-  
-  public final float c()
-  {
-    return RIJDanmakuUIConfig.d();
+    return RIJDanmakuUIConfig.e();
   }
   
   public final int c()
   {
-    return RIJDanmakuUIConfig.e();
+    return RIJDanmakuUIConfig.f();
   }
   
   public final float d()
   {
-    return RIJDanmakuUIConfig.e();
-  }
-  
-  public final int d()
-  {
-    return RIJDanmakuUIConfig.f();
-  }
-  
-  public final float e()
-  {
-    return RIJDanmakuUIConfig.f();
+    return RIJDanmakuUIConfig.g();
   }
   
   public final int e()
   {
-    return RIJDanmakuUIConfig.g();
+    return RIJDanmakuUIConfig.h();
   }
   
   public final float f()
   {
-    return RIJDanmakuUIConfig.g();
-  }
-  
-  public final int f()
-  {
-    return RIJDanmakuUIConfig.h();
-  }
-  
-  public final float g()
-  {
-    return RIJDanmakuUIConfig.h();
+    return RIJDanmakuUIConfig.i();
   }
   
   public final int g()
   {
-    return RIJDanmakuUIConfig.i();
-  }
-  
-  public final int h()
-  {
     return RIJDanmakuUIConfig.j();
   }
   
-  public final int i()
+  public final float h()
   {
     return RIJDanmakuUIConfig.k();
   }
   
-  public final int j()
+  public final int i()
   {
     return RIJDanmakuUIConfig.l();
   }
   
-  public final int k()
+  @NotNull
+  public final String j()
   {
     return RIJDanmakuUIConfig.m();
   }
   
-  public final int l()
+  public final float k()
   {
     return RIJDanmakuUIConfig.n();
+  }
+  
+  public final int l()
+  {
+    return RIJDanmakuUIConfig.o();
+  }
+  
+  public final int m()
+  {
+    return RIJDanmakuUIConfig.p();
+  }
+  
+  public final float n()
+  {
+    return RIJDanmakuUIConfig.q();
+  }
+  
+  public final int o()
+  {
+    return RIJDanmakuUIConfig.r();
+  }
+  
+  public final int p()
+  {
+    return RIJDanmakuUIConfig.s();
+  }
+  
+  public final int q()
+  {
+    return RIJDanmakuUIConfig.t();
+  }
+  
+  public final float r()
+  {
+    return RIJDanmakuUIConfig.u();
+  }
+  
+  public final int s()
+  {
+    return RIJDanmakuUIConfig.v();
+  }
+  
+  public final int t()
+  {
+    return RIJDanmakuUIConfig.w();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuUIConfig.Companion
  * JD-Core Version:    0.7.0.1
  */

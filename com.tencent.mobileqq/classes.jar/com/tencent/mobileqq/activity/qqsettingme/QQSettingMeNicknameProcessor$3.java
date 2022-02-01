@@ -10,14 +10,14 @@ class QQSettingMeNicknameProcessor$3
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      ((IQQSettingMeApi)QRoute.api(IQQSettingMeApi.class)).checkAndGetSelfNickName(this.this$0.a);
+    if (this.this$0.c != null) {
+      ((IQQSettingMeApi)QRoute.api(IQQSettingMeApi.class)).checkAndGetSelfNickName(this.this$0.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeNicknameProcessor.3
  * JD-Core Version:    0.7.0.1
  */

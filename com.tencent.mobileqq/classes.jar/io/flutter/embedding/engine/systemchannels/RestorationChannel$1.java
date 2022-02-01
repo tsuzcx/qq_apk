@@ -6,8 +6,6 @@ import io.flutter.plugin.common.MethodChannel.Result;
 class RestorationChannel$1
   implements MethodChannel.Result
 {
-  RestorationChannel$1(RestorationChannel paramRestorationChannel, byte[] paramArrayOfByte) {}
-  
   public void error(String paramString1, String paramString2, Object paramObject)
   {
     paramObject = new StringBuilder();
@@ -27,7 +25,7 @@ class RestorationChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.RestorationChannel.1
  * JD-Core Version:    0.7.0.1
  */

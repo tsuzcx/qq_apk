@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.ViewUtils;
 
 class ChatHistoryMenuItemView$CategoryItem
@@ -15,9 +16,13 @@ class ChatHistoryMenuItemView$CategoryItem
   {
     super(paramContext);
     setTextSize(2, 16.0F);
-    setTextColor(getResources().getColor(2131167190));
+    if (QQTheme.isNowSimpleUI()) {
+      setTextColor(getResources().getColor(2131168190));
+    } else {
+      setTextColor(getResources().getColor(2131168175));
+    }
     paramContext = new LinearLayout.LayoutParams(-2, -2);
-    paramContext.setMargins(0, 0, 0, ViewUtils.a(28.0F));
+    paramContext.setMargins(0, 0, 0, ViewUtils.dip2px(28.0F));
     setLayoutParams(paramContext);
     setText(paramString);
     setOnClickListener(paramOnClickListener);
@@ -40,7 +45,7 @@ class ChatHistoryMenuItemView$CategoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ChatHistoryMenuItemView.CategoryItem
  * JD-Core Version:    0.7.0.1
  */

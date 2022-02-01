@@ -40,7 +40,7 @@ final class SelectTweetTopicPopupModel$getObjectFromInput$1
       paramString.put(str, paramList);
       return;
     }
-    paramString = new TweetTopicItem(null, null, null, 0L, null, 31, null);
+    paramString = new TweetTopicItem(null, null, null, 0L, null, 0L, null, 127, null);
     paramList = new StringBuilder();
     paramList.append('#');
     paramList.append(this.$wording);
@@ -51,7 +51,7 @@ final class SelectTweetTopicPopupModel$getObjectFromInput$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectTweetTopicPopupModel.getObjectFromInput.1
  * JD-Core Version:    0.7.0.1
  */

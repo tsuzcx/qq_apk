@@ -19,13 +19,13 @@ class OverlayView$3
       {
         paramLottieDrawable = new StringBuilder();
         paramLottieDrawable.append("loadLottieAnim success needRecoverFriendHeadCheerLottie = ");
-        paramLottieDrawable.append(OverlayView.b(this.a));
+        paramLottieDrawable.append(OverlayView.e(this.a));
         QLog.d("OverlayView", 2, paramLottieDrawable.toString());
       }
-      if (OverlayView.b(this.a))
+      if (OverlayView.e(this.a))
       {
-        OverlayView.b(this.a).setImageDrawable(OverlayView.b(this.a));
-        OverlayView.b(this.a).playAnimation();
+        OverlayView.g(this.a).setImageDrawable(OverlayView.f(this.a));
+        OverlayView.f(this.a).playAnimation();
         OverlayView.c(this.a, false);
       }
     }

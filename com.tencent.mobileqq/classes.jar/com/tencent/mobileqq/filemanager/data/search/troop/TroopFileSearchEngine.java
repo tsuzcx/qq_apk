@@ -33,35 +33,34 @@ import tencent.im.cs.cmd0x383.cmd0x383.ReqBody;
 public class TroopFileSearchEngine
   implements SearchTask.SearchTaskCallBack, ISearchEngine<TroopFileSearchResultModel>
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected BizTroopObserver a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ISearchViewBinder jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchISearchViewBinder;
-  private SearchTask jdField_a_of_type_ComTencentMobileqqSearchSearchTask;
-  private ISearchListener<TroopFileSearchResultModel> jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
-  private String jdField_a_of_type_JavaLangString = "";
   protected List<Long> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long = 0L;
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<IContactSearchable> jdField_b_of_type_JavaUtilList;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private List<TroopFileSearchItemData> jdField_c_of_type_JavaUtilList;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
-  private volatile boolean e = true;
+  protected BizTroopObserver b = new TroopFileSearchEngine.4(this);
+  private int c = 0;
+  private QQAppInterface d;
+  private Context e;
+  private long f;
+  private List<IContactSearchable> g;
+  private SearchTask h;
+  private boolean i = false;
+  private volatile boolean j = false;
+  private boolean k = false;
+  private boolean l = false;
+  private long m = 0L;
+  private String n = "";
+  private String o = "";
+  private List<TroopFileSearchItemData> p;
+  private volatile boolean q = true;
+  private ISearchViewBinder r;
+  private ISearchListener<TroopFileSearchResultModel> s;
+  private int t = 1;
   
   public TroopFileSearchEngine(QQAppInterface paramQQAppInterface, Context paramContext, long paramLong, int paramInt, ISearchViewBinder paramISearchViewBinder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopFileSearchEngine.4(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchISearchViewBinder = paramISearchViewBinder;
+    this.d = paramQQAppInterface;
+    this.e = paramContext;
+    this.c = paramInt;
+    this.f = paramLong;
+    this.r = paramISearchViewBinder;
   }
   
   private void a(QQAppInterface paramQQAppInterface, long paramLong, List<Long> paramList, String paramString1, String paramString2)
@@ -69,7 +68,7 @@ public class TroopFileSearchEngine
     try
     {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "doReqTroopFileSearch.");
-      boolean bool = this.e;
+      boolean bool = this.q;
       if (!bool) {
         return;
       }
@@ -79,8 +78,8 @@ public class TroopFileSearchEngine
       }
       else
       {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        this.e = false;
+        this.m = System.currentTimeMillis();
+        this.q = false;
         Object localObject = new cmd0x383.ApplyFileSearchReqBody();
         ((cmd0x383.ApplyFileSearchReqBody)localObject).bytes_key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
         if (paramList != null) {
@@ -121,7 +120,7 @@ public class TroopFileSearchEngine
     ThreadManagerV2.getUIHandlerV2().post(new TroopFileSearchEngine.3(this, paramBoolean, paramList));
   }
   
-  private void b(String paramString)
+  private void c(String paramString)
   {
     try
     {
@@ -130,24 +129,24 @@ public class TroopFileSearchEngine
       localStringBuilder.append(paramString);
       localStringBuilder.append("]");
       QLog.i("TroopFileSearchEngine<QFile>", 4, localStringBuilder.toString());
-      boolean bool = this.jdField_c_of_type_Boolean;
+      boolean bool = this.k;
       if (bool) {
         return;
       }
-      if (this.jdField_b_of_type_JavaUtilList == null)
+      if (this.g == null)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.j = true;
         QLog.i("TroopFileSearchEngine<QFile>", 4, "execSearch. friend set is null. wait");
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask != null)
+      if (this.h != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.cancel(true);
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask = null;
+        this.h.cancel(true);
+        this.h = null;
       }
       QLog.i("TroopFileSearchEngine<QFile>", 4, "execSearch. success.");
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask = new SearchTask(paramString, paramString, this.jdField_b_of_type_JavaUtilList, this);
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.a();
+      this.h = new SearchTask(paramString, paramString, this.g, this);
+      this.h.a();
       return;
     }
     finally {}
@@ -155,17 +154,17 @@ public class TroopFileSearchEngine
   
   private void f()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.e = true;
-    List localList = this.jdField_c_of_type_JavaUtilList;
+    this.j = false;
+    this.k = false;
+    this.l = false;
+    this.n = "";
+    this.o = "";
+    this.q = true;
+    List localList = this.p;
     if (localList != null)
     {
       localList.clear();
-      this.jdField_c_of_type_JavaUtilList = null;
+      this.p = null;
     }
   }
   
@@ -189,7 +188,7 @@ public class TroopFileSearchEngine
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void a(int paramInt, List<? extends ISearchable> paramList)
@@ -200,13 +199,13 @@ public class TroopFileSearchEngine
   
   public void a(SearchRequest paramSearchRequest, ISearchListener<TroopFileSearchResultModel> paramISearchListener)
   {
-    if ((paramSearchRequest != null) && (paramSearchRequest.jdField_a_of_type_JavaLangString != null))
+    if ((paramSearchRequest != null) && (paramSearchRequest.a != null))
     {
-      if (TextUtils.isEmpty(paramSearchRequest.jdField_a_of_type_JavaLangString.trim())) {
+      if (TextUtils.isEmpty(paramSearchRequest.a.trim())) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = paramISearchListener;
+      if (this.s == null) {
+        this.s = paramISearchListener;
       }
       ThreadManagerV2.getUIHandlerV2().postDelayed(new TroopFileSearchEngine.1(this), 800L);
     }
@@ -214,9 +213,9 @@ public class TroopFileSearchEngine
   
   public void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_b_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.o)))
     {
-      if (!this.e)
+      if (!this.q)
       {
         QLog.i("TroopFileSearchEngine<QFile>", 1, "loadMoreSearchData. but last search is not finish.");
         return;
@@ -225,27 +224,19 @@ public class TroopFileSearchEngine
       localStringBuilder.append("loadMoreSearchData. but last search is not finish. keyWord[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("] lastKeyWord[");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.o);
       localStringBuilder.append("]");
       QLog.i("TroopFileSearchEngine<QFile>", 1, localStringBuilder.toString());
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      a(this.d, this.f, this.a, this.o, this.n);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loadMoreSearchData. keyword is not match keyWord[");
     localStringBuilder.append(paramString);
     localStringBuilder.append("] lastKeyWord[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.o);
     localStringBuilder.append("]");
     QLog.i("TroopFileSearchEngine<QFile>", 1, localStringBuilder.toString());
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.d;
-    }
-    return true;
   }
   
   public void b()
@@ -256,35 +247,43 @@ public class TroopFileSearchEngine
     f();
   }
   
+  public boolean b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.o))) {
+      return this.l;
+    }
+    return true;
+  }
+  
   public void c()
   {
-    BizTroopObserver localBizTroopObserver = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+    BizTroopObserver localBizTroopObserver = this.b;
     if (localBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localBizTroopObserver);
+      this.d.removeObserver(localBizTroopObserver);
     }
   }
   
   public void d()
   {
-    BizTroopObserver localBizTroopObserver = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+    BizTroopObserver localBizTroopObserver = this.b;
     if (localBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(localBizTroopObserver);
+      this.d.addObserver(localBizTroopObserver);
     }
   }
   
   public void e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+    Object localObject = this.b;
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject);
+      this.d.removeObserver((BusinessObserver)localObject);
     }
-    localObject = this.jdField_b_of_type_JavaUtilList;
+    localObject = this.g;
     if (localObject != null)
     {
       ((List)localObject).clear();
-      this.jdField_b_of_type_JavaUtilList = null;
+      this.g = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask;
+    localObject = this.h;
     if (localObject != null) {
       ((SearchTask)localObject).cancel(true);
     }
@@ -292,7 +291,7 @@ public class TroopFileSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 
 public class Face2FaceFriendInfo
 {
-  public int a;
   public String a;
   public String b;
+  public int c;
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int != 1;
+    return this.c != 1;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -19,7 +19,7 @@ public class Face2FaceFriendInfo
     if ((paramObject instanceof Face2FaceFriendInfo))
     {
       paramObject = (Face2FaceFriendInfo)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      return this.a.equals(paramObject.a);
     }
     return super.equals(paramObject);
   }
@@ -29,17 +29,17 @@ public class Face2FaceFriendInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Face2FaceFriendInfo uin:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" nick:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(" type:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceFriendInfo
  * JD-Core Version:    0.7.0.1
  */

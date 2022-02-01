@@ -45,12 +45,12 @@ final class CrmUtils$3
       paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
       if (paramInt == 0)
       {
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail;
+        paramBundle = this.d;
         paramBundle.followType = 1;
-        CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-        paramBundle = (IPublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
+        CrmUtils.a(this.b, paramBundle);
+        paramBundle = (IPublicAccountHandler)this.b.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
         if (paramBundle != null) {
-          paramBundle.onFollowPublicAccount(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          paramBundle.onFollowPublicAccount(this.d);
         }
         if (QLog.isDevelopLevel())
         {
@@ -59,26 +59,26 @@ final class CrmUtils$3
           paramBundle.append(System.currentTimeMillis());
           QLog.d("IVR_TS_CrmUtils", 4, paramBundle.toString());
         }
-        CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-        EnterpriseQQManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+        CrmUtils.b(this.b, this.a, this.e, this.f);
+        EnterpriseQQManager.a(this.b).a(this.b, this.d.uin, true);
       }
       else if (paramInt == 58)
       {
-        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695212);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
+        CrmUtils.a(this.a, 2131892946);
+        ReportController.b(this.b, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
       }
       else if (paramInt == 65)
       {
-        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695185);
+        CrmUtils.a(this.a, 2131892918);
       }
       else if (paramInt == 20)
       {
-        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695186);
+        CrmUtils.a(this.a, 2131892919);
       }
       else
       {
-        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        CrmUtils.a(this.a, 2131892951);
+        ReportController.b(this.b, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
       }
     }
     catch (InvalidProtocolBufferMicroException paramBundle)
@@ -86,22 +86,22 @@ final class CrmUtils$3
       label346:
       break label346;
     }
-    CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    CrmUtils.a(this.a, 2131892951);
+    ReportController.b(this.b, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+    CrmUtils.a(this.c);
     return;
-    CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+    CrmUtils.a(this.a, 2131892951);
+    ReportController.b(this.b, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
     break label465;
-    CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131695217);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+    CrmUtils.a(this.a, 2131892951);
+    ReportController.b(this.b, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
     label465:
-    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    CrmUtils.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.eqq.CrmUtils.3
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ public class OverloadTipsActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559505);
+    super.setContentView(2131625527);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {
       paramBundle = getIntent().getExtras().getString("msg");
     } else {
@@ -43,8 +43,8 @@ public class OverloadTipsActivity
     }
     this.a = null;
     this.a = DialogUtil.a(this, 230);
-    this.a.setContentView(2131558954);
-    this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694674, new OverloadTipsActivity.1(this));
+    this.a.setContentView(2131624587);
+    this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131892366, new OverloadTipsActivity.1(this));
     this.a.setTextContentDescription(paramBundle);
     this.a.setOnKeyListener(new OverloadTipsActivity.2(this));
     this.a.show();
@@ -72,7 +72,7 @@ public class OverloadTipsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.OverloadTipsActivity
  * JD-Core Version:    0.7.0.1
  */

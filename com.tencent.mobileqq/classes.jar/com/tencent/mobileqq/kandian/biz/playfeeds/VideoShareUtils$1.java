@@ -14,7 +14,7 @@ final class VideoShareUtils$1
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null)
     {
       if (!str.equals(paramBaseResp.transaction)) {
@@ -27,17 +27,17 @@ final class VideoShareUtils$1
       if (i != -2) {
         if (i != 0)
         {
-          QRUtils.b(1, 2131719009);
+          QRUtils.b(1, 2131916544);
           bool1 = bool2;
         }
         else
         {
-          QRUtils.b(2, 2131719027);
+          QRUtils.b(2, 2131916563);
           bool1 = true;
         }
       }
       WXShareHelper.a().b(this);
-      paramBaseResp = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareShareResultCallback;
+      paramBaseResp = this.b;
       if (paramBaseResp != null) {
         paramBaseResp.a(bool1);
       }
@@ -46,7 +46,7 @@ final class VideoShareUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoShareUtils.1
  * JD-Core Version:    0.7.0.1
  */

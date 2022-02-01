@@ -17,21 +17,21 @@ import java.util.List;
 public class ItemHeightHelper
   implements FastWebMergeAdapter.OnGetViewListener
 {
-  private final XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private final List<BaseData> jdField_a_of_type_JavaUtilList;
+  private final XListView a;
+  private final List<BaseData> b;
   
   public ItemHeightHelper(XListView paramXListView, List<BaseData> paramList, FastWebMergeAdapter paramFastWebMergeAdapter)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramXListView;
+    this.b = paramList;
     paramFastWebMergeAdapter.a(this);
   }
   
-  private FastWebMergeAdapter a()
+  private FastWebMergeAdapter b()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof HeaderViewListAdapter))
+    if ((this.a.getAdapter() instanceof HeaderViewListAdapter))
     {
-      HeaderViewListAdapter localHeaderViewListAdapter = (HeaderViewListAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+      HeaderViewListAdapter localHeaderViewListAdapter = (HeaderViewListAdapter)this.a.getAdapter();
       if ((localHeaderViewListAdapter.getWrappedAdapter() instanceof FastWebMergeAdapter)) {
         return (FastWebMergeAdapter)localHeaderViewListAdapter.getWrappedAdapter();
       }
@@ -39,20 +39,20 @@ public class ItemHeightHelper
     return null;
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt < this.b.size())
     {
       if (paramInt < 0) {
         return true;
       }
-      if ((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt) == null)
+      if ((BaseData)this.b.get(paramInt) == null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(" data == null index: ");
         localStringBuilder.append(paramInt);
         localStringBuilder.append("   itemArrayList.size() :");
-        localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+        localStringBuilder.append(this.b.size());
         AIOUtils.a("ItemHeightHelper", "", new IllegalArgumentException(localStringBuilder.toString()));
         return true;
       }
@@ -61,21 +61,21 @@ public class ItemHeightHelper
     return true;
   }
   
-  private int b(int paramInt)
+  private int c(int paramInt)
   {
-    int j = this.jdField_a_of_type_ComTencentWidgetXListView.getWidth();
+    int j = this.a.getWidth();
     int i = Utils.dp2px(300.0D);
     j = View.MeasureSpec.makeMeasureSpec(j, -2147483648);
     if ((Build.VERSION.SDK_INT <= 19) && (paramInt == 0)) {
       return i;
     }
-    Object localObject = a();
+    Object localObject = b();
     if (localObject == null) {
       return i;
     }
     try
     {
-      localObject = ((FastWebMergeAdapter)localObject).a(paramInt, null, this.jdField_a_of_type_ComTencentWidgetXListView, true);
+      localObject = ((FastWebMergeAdapter)localObject).a(paramInt, null, this.a, true);
       ((View)localObject).measure(j, 0);
       j = ((View)localObject).getMeasuredHeight();
       localObject = new StringBuilder();
@@ -98,28 +98,28 @@ public class ItemHeightHelper
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public int a(int paramInt)
   {
-    if (a(paramInt)) {
+    if (b(paramInt)) {
       return -1;
     }
-    BaseData localBaseData = (BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localBaseData.y > 0) {
-      return localBaseData.y;
+    BaseData localBaseData = (BaseData)this.b.get(paramInt);
+    if (localBaseData.aY > 0) {
+      return localBaseData.aY;
     }
-    localBaseData.y = b(paramInt);
-    return localBaseData.y;
+    localBaseData.aY = c(paramInt);
+    return localBaseData.aY;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (a(paramInt1)) {
+    if (b(paramInt1)) {
       return;
     }
-    ((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).y = paramInt2;
+    ((BaseData)this.b.get(paramInt1)).aY = paramInt2;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" index : ");
     localStringBuilder.append(paramInt1);
@@ -130,17 +130,17 @@ public class ItemHeightHelper
   
   public void a(int paramInt, View paramView)
   {
-    if (a(paramInt)) {
+    if (b(paramInt)) {
       return;
     }
-    if (((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt)).y <= 0) {
+    if (((BaseData)this.b.get(paramInt)).aY <= 0) {
       paramView.getViewTreeObserver().addOnGlobalLayoutListener(new ItemHeightHelper.1(this, paramInt, paramView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.event.ItemHeightHelper
  * JD-Core Version:    0.7.0.1
  */

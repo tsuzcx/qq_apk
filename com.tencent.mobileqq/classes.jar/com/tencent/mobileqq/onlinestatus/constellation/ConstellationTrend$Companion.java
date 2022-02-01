@@ -7,17 +7,17 @@ public final class ConstellationTrend$Companion
 {
   public final int a()
   {
-    return ConstellationTrend.a();
+    return ConstellationTrend.b();
   }
   
   public final int b()
   {
-    return ConstellationTrend.b();
+    return ConstellationTrend.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.constellation.ConstellationTrend.Companion
  * JD-Core Version:    0.7.0.1
  */

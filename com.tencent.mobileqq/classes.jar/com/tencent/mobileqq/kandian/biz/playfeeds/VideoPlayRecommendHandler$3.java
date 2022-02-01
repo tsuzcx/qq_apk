@@ -19,22 +19,22 @@ class VideoPlayRecommendHandler$3
   public void run()
   {
     Object localObject = new oidb_0x6cf.ReqBody();
-    ((oidb_0x6cf.ReqBody)localObject).uint64_uin.set(this.jdField_a_of_type_Long);
-    ((oidb_0x6cf.ReqBody)localObject).uint32_req_source.set(this.jdField_a_of_type_Int);
+    ((oidb_0x6cf.ReqBody)localObject).uint64_uin.set(this.a);
+    ((oidb_0x6cf.ReqBody)localObject).uint32_req_source.set(this.b);
     ((oidb_0x6cf.ReqBody)localObject).uint32_req_sub_source.set(6);
     ((oidb_0x6cf.ReqBody)localObject).uint32_req_sim_type.set(RIJCUKingCardUtils.a());
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ((oidb_0x6cf.ReqBody)localObject).bytes_req_range_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.c)) {
+      ((oidb_0x6cf.ReqBody)localObject).bytes_req_range_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
     }
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0x6cf", 1743, 3, ((oidb_0x6cf.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver.hashCode()));
-    ((ToServiceMsg)localObject).addAttribute("VALUE_REQUEST_VIDEO_ARTICLE_ID", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.g);
+    ((ToServiceMsg)localObject).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.d.hashCode()));
+    ((ToServiceMsg)localObject).addAttribute("VALUE_REQUEST_VIDEO_ARTICLE_ID", this.e.l);
     this.this$0.sendPbReq((ToServiceMsg)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoPlayRecommendHandler.3
  * JD-Core Version:    0.7.0.1
  */

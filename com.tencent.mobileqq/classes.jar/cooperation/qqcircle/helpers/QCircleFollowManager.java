@@ -1,6 +1,6 @@
 package cooperation.qqcircle.helpers;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class QCircleFollowManager
@@ -26,7 +26,7 @@ public class QCircleFollowManager
   
   public void clearAll()
   {
-    RFLog.i(TAG, RFLog.USR, "clear all");
+    QLog.i(TAG, 1, "clear all");
     ConcurrentHashMap localConcurrentHashMap = this.mUinFollowMap;
     if (localConcurrentHashMap != null) {
       localConcurrentHashMap.clear();
@@ -100,7 +100,7 @@ public class QCircleFollowManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.helpers.QCircleFollowManager
  * JD-Core Version:    0.7.0.1
  */

@@ -96,7 +96,7 @@ public class ReportPlugin
     return str1;
   }
   
-  @JsEvent({"api_report"})
+  @JsEvent(isSync=false, value={"api_report"})
   public void apiReport(RequestEvent paramRequestEvent)
   {
     for (;;)
@@ -152,13 +152,13 @@ public class ReportPlugin
     return "";
   }
   
-  @JsEvent({"reportDC"})
+  @JsEvent(isSync=false, value={"reportDC"})
   public void reportDC(RequestEvent paramRequestEvent)
   {
     ThreadManager.getSubThreadHandler().post(new ReportPlugin.1(this, paramRequestEvent));
   }
   
-  @JsEvent({"reportDataToDC"})
+  @JsEvent(isSync=false, value={"reportDataToDC"})
   public void reportDataToDC(RequestEvent paramRequestEvent)
   {
     try
@@ -264,7 +264,7 @@ public class ReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ReportPlugin
  * JD-Core Version:    0.7.0.1
  */

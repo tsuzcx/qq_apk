@@ -14,7 +14,7 @@ class NotifyPushSettingFragment$2
   
   public void onClick(View paramView)
   {
-    ReportController.a(NotifyPushSettingFragment.a(this.a), "0X800B848");
+    ReportController.a(NotifyPushSettingFragment.c(this.a), "0X800B848");
     Intent localIntent = new Intent(this.a.getBaseActivity(), SoundAndVibrateActivity.class);
     this.a.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class NotifyPushSettingFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class ArkAppDownloadModule$9
   
   public void run()
   {
-    DialogUtil.a(BaseActivity.sTopActivity, 230, null, this.jdField_a_of_type_AndroidContentContext.getString(2131690148), null, this.jdField_a_of_type_AndroidContentContext.getString(2131690152), new ArkAppDownloadModule.9.1(this), null).show();
-    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "5", "", this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.a, "");
+    DialogUtil.a(BaseActivity.sTopActivity, 230, null, this.a.getString(2131887047), null, this.a.getString(2131887051), new ArkAppDownloadModule.9.1(this), null).show();
+    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "5", "", this.b.e, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.9
  * JD-Core Version:    0.7.0.1
  */

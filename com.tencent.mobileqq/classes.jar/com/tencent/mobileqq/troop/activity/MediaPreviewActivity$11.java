@@ -7,12 +7,12 @@ class MediaPreviewActivity$11
   
   public void run()
   {
-    this.this$0.b = false;
+    this.this$0.k = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.11
  * JD-Core Version:    0.7.0.1
  */

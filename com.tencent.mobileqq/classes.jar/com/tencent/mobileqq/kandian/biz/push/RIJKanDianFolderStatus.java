@@ -54,7 +54,7 @@ public class RIJKanDianFolderStatus
   public static String getFolderStatus(int paramInt)
   {
     Object localObject;
-    if (paramInt == ChannelCoverInfoModule.a())
+    if (paramInt == ChannelCoverInfoModule.g())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(reportFolderStatus);
@@ -67,7 +67,7 @@ public class RIJKanDianFolderStatus
       {
         if (DailyModeConfigHandler.c(paramInt))
         {
-          localObject = KandianDailyReportUtils.a();
+          localObject = KandianDailyReportUtils.e();
         }
         else
         {
@@ -79,8 +79,8 @@ public class RIJKanDianFolderStatus
       }
       else
       {
-        localObject = KandianSubscribeReportUtils.a();
-        if (RIJTransMergeKanDianReport.a() == 6)
+        localObject = KandianSubscribeReportUtils.c();
+        if (RIJTransMergeKanDianReport.b() == 6)
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(reportFolderStatus);
@@ -110,7 +110,7 @@ public class RIJKanDianFolderStatus
   
   public static String getLastMsgStrategyID(QQAppInterface paramQQAppInterface)
   {
-    return RED_PNT_INFO_FOR_REPORT.jdField_b_of_type_JavaLangString;
+    return RED_PNT_INFO_FOR_REPORT.c;
   }
   
   public static MessageRecord getMessageRecordFormLastMsgForMsgTab(QQAppInterface paramQQAppInterface)
@@ -119,16 +119,16 @@ public class RIJKanDianFolderStatus
     if (paramQQAppInterface == null) {
       return null;
     }
-    MessageRecord localMessageRecord = paramQQAppInterface.b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+    MessageRecord localMessageRecord = paramQQAppInterface.r(AppConstants.KANDIAN_MERGE_UIN, 7220);
     if (localMessageRecord == null) {
       return null;
     }
     paramQQAppInterface = localMessageRecord;
-    if (RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+    if (RED_PNT_INFO_FOR_REPORT.e != null)
     {
       paramQQAppInterface = localMessageRecord;
-      if (RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time >= localMessageRecord.time) {
-        paramQQAppInterface = RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      if (RED_PNT_INFO_FOR_REPORT.e.time >= localMessageRecord.time) {
+        paramQQAppInterface = RED_PNT_INFO_FOR_REPORT.e;
       }
     }
     return paramQQAppInterface;
@@ -142,10 +142,10 @@ public class RIJKanDianFolderStatus
       try
       {
         localJSONObject.put("folder_status", reportFolderStatus);
-        localJSONObject.put("kandian_mode", String.valueOf(RIJAppSetting.a()));
-        localJSONObject.put("tab_source", RIJTransMergeKanDianReport.a());
+        localJSONObject.put("kandian_mode", String.valueOf(RIJAppSetting.b()));
+        localJSONObject.put("tab_source", RIJTransMergeKanDianReport.b());
         i = -1;
-        int j = paramPolymericInfo.jdField_a_of_type_Int;
+        int j = paramPolymericInfo.e;
         if (j == 6) {
           break label142;
         }
@@ -157,12 +157,12 @@ public class RIJKanDianFolderStatus
           localJSONObject.put("use_type", i);
           long l;
           if (i == 2) {
-            l = paramPolymericInfo.jdField_b_of_type_Long;
-          } else {
             l = paramPolymericInfo.f;
+          } else {
+            l = paramPolymericInfo.m;
           }
           localJSONObject.put("type_id", l);
-          localJSONObject.put("algorithm_id", paramPolymericInfo.e);
+          localJSONObject.put("algorithm_id", paramPolymericInfo.l);
           return localJSONObject;
         }
       }
@@ -198,7 +198,7 @@ public class RIJKanDianFolderStatus
           localObject = ((QQAppInterface)localObject).getMessageFacade();
           if (localObject != null)
           {
-            localObject = ((QQMessageFacade)localObject).b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+            localObject = ((QQMessageFacade)localObject).r(AppConstants.KANDIAN_MERGE_UIN, 7220);
             int j = 0;
             i = j;
             if (localObject != null)
@@ -281,8 +281,8 @@ public class RIJKanDianFolderStatus
   
   public static void setLastKandianMsgRead()
   {
-    if (RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-      RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isread = true;
+    if (RED_PNT_INFO_FOR_REPORT.e != null) {
+      RED_PNT_INFO_FOR_REPORT.e.isread = true;
     }
   }
   
@@ -298,14 +298,14 @@ public class RIJKanDianFolderStatus
     //   0: iconst_m1
     //   1: putstatic 27	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:reportLastRedPntPosition	I
     //   4: aload_0
-    //   5: getstatic 258	com/tencent/mobileqq/app/QQManagerFactory:KANDIAN_MERGE_MANAGER	I
-    //   8: invokevirtual 262	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   11: checkcast 264	com/tencent/mobileqq/kandian/glue/businesshandler/engine/KandianMergeManager
+    //   5: getstatic 264	com/tencent/mobileqq/app/QQManagerFactory:KANDIAN_MERGE_MANAGER	I
+    //   8: invokevirtual 268	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   11: checkcast 270	com/tencent/mobileqq/kandian/glue/businesshandler/engine/KandianMergeManager
     //   14: astore_0
     //   15: aload_1
     //   16: ifnull +599 -> 615
     //   19: aload_1
-    //   20: getfield 185	com/tencent/mobileqq/data/MessageRecord:isread	Z
+    //   20: getfield 191	com/tencent/mobileqq/data/MessageRecord:isread	Z
     //   23: istore_3
     //   24: bipush 6
     //   26: istore_2
@@ -321,25 +321,25 @@ public class RIJKanDianFolderStatus
     //   43: istore_2
     //   44: goto +438 -> 482
     //   47: aload_1
-    //   48: getfield 188	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   48: getfield 194	com/tencent/mobileqq/data/MessageRecord:extInt	I
     //   51: iconst_1
     //   52: if_icmpeq +185 -> 237
     //   55: aload_1
-    //   56: getfield 188	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   56: getfield 194	com/tencent/mobileqq/data/MessageRecord:extInt	I
     //   59: iconst_3
     //   60: if_icmpne +6 -> 66
     //   63: goto +174 -> 237
     //   66: aload_1
-    //   67: getfield 188	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   67: getfield 194	com/tencent/mobileqq/data/MessageRecord:extInt	I
     //   70: iconst_2
     //   71: if_icmpeq +154 -> 225
     //   74: aload_1
-    //   75: getfield 188	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   75: getfield 194	com/tencent/mobileqq/data/MessageRecord:extInt	I
     //   78: iconst_4
     //   79: if_icmpne +6 -> 85
     //   82: goto +143 -> 225
     //   85: aload_1
-    //   86: getfield 188	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   86: getfield 194	com/tencent/mobileqq/data/MessageRecord:extInt	I
     //   89: iconst_5
     //   90: if_icmpne +13 -> 103
     //   93: ldc 29
@@ -348,30 +348,30 @@ public class RIJKanDianFolderStatus
     //   99: astore_0
     //   100: goto +382 -> 482
     //   103: aload_1
-    //   104: getfield 188	com/tencent/mobileqq/data/MessageRecord:extInt	I
+    //   104: getfield 194	com/tencent/mobileqq/data/MessageRecord:extInt	I
     //   107: bipush 6
     //   109: if_icmpne +104 -> 213
     //   112: new 39	org/json/JSONObject
     //   115: dup
     //   116: aload_1
-    //   117: getfield 267	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
-    //   120: invokespecial 270	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   117: getfield 273	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   120: invokespecial 276	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   123: astore 8
     //   125: aload 8
     //   127: ldc 48
-    //   129: invokevirtual 273	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   129: invokevirtual 279	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   132: istore_2
     //   133: aload 8
-    //   135: ldc_w 275
-    //   138: invokevirtual 278	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: ldc_w 281
+    //   138: invokevirtual 284	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   141: astore 6
     //   143: aload 8
-    //   145: ldc 176
-    //   147: invokevirtual 278	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: ldc 182
+    //   147: invokevirtual 284	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   150: astore_0
     //   151: aload 8
-    //   153: ldc_w 280
-    //   156: invokevirtual 278	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   153: ldc_w 286
+    //   156: invokevirtual 284	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   159: astore 8
     //   161: aload 8
     //   163: astore 7
@@ -388,7 +388,7 @@ public class RIJKanDianFolderStatus
     //   187: aload 6
     //   189: astore_0
     //   190: aload 8
-    //   192: invokevirtual 222	java/lang/Exception:printStackTrace	()V
+    //   192: invokevirtual 228	java/lang/Exception:printStackTrace	()V
     //   195: bipush 10
     //   197: istore_2
     //   198: aload 7
@@ -416,7 +416,7 @@ public class RIJKanDianFolderStatus
     //   238: ifnull +24 -> 262
     //   241: aload_0
     //   242: aload_1
-    //   243: invokevirtual 283	com/tencent/mobileqq/kandian/glue/businesshandler/engine/KandianMergeManager:b	(Lcom/tencent/mobileqq/data/MessageRecord;)I
+    //   243: invokevirtual 290	com/tencent/mobileqq/kandian/glue/businesshandler/engine/KandianMergeManager:i	(Lcom/tencent/mobileqq/data/MessageRecord;)I
     //   246: iconst_1
     //   247: if_icmpne +15 -> 262
     //   250: ldc 29
@@ -427,26 +427,26 @@ public class RIJKanDianFolderStatus
     //   258: istore_2
     //   259: goto +223 -> 482
     //   262: aload_1
-    //   263: instanceof 206
+    //   263: instanceof 212
     //   266: ifeq +207 -> 473
     //   269: aload_1
-    //   270: checkcast 206	com/tencent/mobileqq/data/MessageForStructing
+    //   270: checkcast 212	com/tencent/mobileqq/data/MessageForStructing
     //   273: astore 8
     //   275: aload 8
-    //   277: invokevirtual 286	com/tencent/mobileqq/data/MessageForStructing:parse	()V
+    //   277: invokevirtual 293	com/tencent/mobileqq/data/MessageForStructing:parse	()V
     //   280: aload 8
-    //   282: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   282: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
     //   285: ifnull +166 -> 451
     //   288: aload 8
-    //   290: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   293: getfield 289	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
-    //   296: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   290: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   293: getfield 296	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
+    //   296: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   299: ifne +23 -> 322
     //   302: aload 8
-    //   304: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   307: getfield 289	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
-    //   310: ldc_w 291
-    //   313: invokevirtual 295	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   304: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   307: getfield 296	com/tencent/mobileqq/structmsg/AbsStructMsg:mStrategyIds	Ljava/lang/String;
+    //   310: ldc_w 298
+    //   313: invokevirtual 302	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   316: iconst_0
     //   317: aaload
     //   318: astore_0
@@ -454,15 +454,15 @@ public class RIJKanDianFolderStatus
     //   322: ldc 29
     //   324: astore_0
     //   325: aload 8
-    //   327: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   330: getfield 298	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
-    //   333: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   327: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   330: getfield 305	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
+    //   333: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   336: ifne +24 -> 360
     //   339: aload 8
-    //   341: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   344: getfield 298	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
-    //   347: ldc_w 291
-    //   350: invokevirtual 295	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   341: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   344: getfield 305	com/tencent/mobileqq/structmsg/AbsStructMsg:mAlgorithmIds	Ljava/lang/String;
+    //   347: ldc_w 298
+    //   350: invokevirtual 302	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   353: iconst_0
     //   354: aaload
     //   355: astore 6
@@ -470,32 +470,32 @@ public class RIJKanDianFolderStatus
     //   360: ldc 29
     //   362: astore 6
     //   364: aload 8
-    //   366: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   369: getfield 301	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
-    //   372: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   366: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   369: getfield 308	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
+    //   372: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   375: ifne +21 -> 396
     //   378: aload 8
-    //   380: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   383: getfield 301	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
-    //   386: ldc_w 291
-    //   389: invokevirtual 295	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   380: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   383: getfield 308	com/tencent/mobileqq/structmsg/AbsStructMsg:mArticleIds	Ljava/lang/String;
+    //   386: ldc_w 298
+    //   389: invokevirtual 302	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   392: iconst_0
     //   393: aaload
     //   394: astore 7
     //   396: aload 8
-    //   398: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   401: getfield 215	com/tencent/mobileqq/structmsg/AbsStructMsg:reportEventFolderStatusValue	Ljava/lang/String;
-    //   404: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   398: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   401: getfield 221	com/tencent/mobileqq/structmsg/AbsStructMsg:reportEventFolderStatusValue	Ljava/lang/String;
+    //   404: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   407: ifne +25 -> 432
     //   410: aload 8
-    //   412: getfield 210	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   415: getfield 215	com/tencent/mobileqq/structmsg/AbsStructMsg:reportEventFolderStatusValue	Ljava/lang/String;
-    //   418: invokestatic 103	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   412: getfield 216	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   415: getfield 221	com/tencent/mobileqq/structmsg/AbsStructMsg:reportEventFolderStatusValue	Ljava/lang/String;
+    //   418: invokestatic 107	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   421: istore_2
     //   422: goto +12 -> 434
     //   425: astore 8
     //   427: aload 8
-    //   429: invokevirtual 222	java/lang/Exception:printStackTrace	()V
+    //   429: invokevirtual 228	java/lang/Exception:printStackTrace	()V
     //   432: iconst_3
     //   433: istore_2
     //   434: aload 7
@@ -527,44 +527,44 @@ public class RIJKanDianFolderStatus
     //   480: iconst_3
     //   481: istore_2
     //   482: iload_2
-    //   483: invokestatic 305	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:updateMergeKandianFolderStatus	(I)V
+    //   483: invokestatic 312	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:updateMergeKandianFolderStatus	(I)V
     //   486: getstatic 25	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:RED_PNT_INFO_FOR_REPORT	Lcom/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport;
     //   489: astore 8
     //   491: aload 8
     //   493: iload_2
-    //   494: putfield 306	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_a_of_type_Int	I
+    //   494: putfield 314	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:a	I
     //   497: aload 8
     //   499: aload 7
-    //   501: putfield 308	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   501: putfield 316	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:b	Ljava/lang/String;
     //   504: aload 8
     //   506: aload_0
-    //   507: putfield 117	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   507: putfield 121	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:c	Ljava/lang/String;
     //   510: aload 8
     //   512: aload 6
-    //   514: putfield 310	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:c	Ljava/lang/String;
+    //   514: putfield 318	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:d	Ljava/lang/String;
     //   517: aload_1
-    //   518: getfield 267	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
-    //   521: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   518: getfield 273	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   521: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   524: ifne +74 -> 598
     //   527: aload_1
-    //   528: getfield 185	com/tencent/mobileqq/data/MessageRecord:isread	Z
+    //   528: getfield 191	com/tencent/mobileqq/data/MessageRecord:isread	Z
     //   531: ifne +67 -> 598
     //   534: new 39	org/json/JSONObject
     //   537: dup
     //   538: aload_1
-    //   539: getfield 267	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
-    //   542: invokespecial 270	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   539: getfield 273	com/tencent/mobileqq/data/MessageRecord:extStr	Ljava/lang/String;
+    //   542: invokespecial 276	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   545: astore_0
     //   546: getstatic 25	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:RED_PNT_INFO_FOR_REPORT	Lcom/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport;
     //   549: aload_0
-    //   550: ldc_w 312
+    //   550: ldc_w 320
     //   553: lconst_0
-    //   554: invokevirtual 316	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   557: putfield 318	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_a_of_type_Long	J
+    //   554: invokevirtual 324	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   557: putfield 325	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:f	J
     //   560: aload_0
-    //   561: ldc_w 320
-    //   564: ldc2_w 321
-    //   567: invokevirtual 316	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   561: ldc_w 327
+    //   564: ldc2_w 328
+    //   567: invokevirtual 324	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
     //   570: lstore 4
     //   572: lload 4
     //   574: lconst_0
@@ -572,19 +572,19 @@ public class RIJKanDianFolderStatus
     //   576: ifle +29 -> 605
     //   579: getstatic 25	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:RED_PNT_INFO_FOR_REPORT	Lcom/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport;
     //   582: lload 4
-    //   584: putfield 318	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_a_of_type_Long	J
+    //   584: putfield 325	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:f	J
     //   587: goto +18 -> 605
     //   590: astore_0
     //   591: aload_0
-    //   592: invokevirtual 222	java/lang/Exception:printStackTrace	()V
+    //   592: invokevirtual 228	java/lang/Exception:printStackTrace	()V
     //   595: goto +10 -> 605
     //   598: getstatic 25	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:RED_PNT_INFO_FOR_REPORT	Lcom/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport;
     //   601: lconst_0
-    //   602: putfield 318	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_a_of_type_Long	J
+    //   602: putfield 325	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:f	J
     //   605: getstatic 25	com/tencent/mobileqq/kandian/biz/push/RIJKanDianFolderStatus:RED_PNT_INFO_FOR_REPORT	Lcom/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport;
     //   608: aload_1
-    //   609: getfield 144	com/tencent/mobileqq/data/MessageRecord:time	J
-    //   612: putfield 323	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:jdField_b_of_type_Long	J
+    //   609: getfield 149	com/tencent/mobileqq/data/MessageRecord:time	J
+    //   612: putfield 331	com/tencent/mobileqq/kandian/biz/feeds/entity/RedPntInfoForReport:g	J
     //   615: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -614,13 +614,13 @@ public class RIJKanDianFolderStatus
   
   public static void updateLastKandianMsgRecord(MessageRecord paramMessageRecord)
   {
-    RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    RED_PNT_INFO_FOR_REPORT.e = paramMessageRecord;
   }
   
   public static void updateMergeKandianFolderStatus(int paramInt)
   {
     reportFolderStatus = paramInt;
-    RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int = reportFolderStatus;
+    RED_PNT_INFO_FOR_REPORT.a = reportFolderStatus;
     SPEventReportSwitch.a(paramInt);
     QLog.d("RIJKanDianFolderStatus", 1, new Object[] { "update fs : ", Integer.valueOf(paramInt) });
   }
@@ -654,7 +654,7 @@ public class RIJKanDianFolderStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus
  * JD-Core Version:    0.7.0.1
  */

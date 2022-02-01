@@ -10,7 +10,7 @@ public final class VasAdvSupport$Companion
 {
   private final VasAdvSupport b()
   {
-    Lazy localLazy = VasAdvSupport.a();
+    Lazy localLazy = VasAdvSupport.g();
     Companion localCompanion = VasAdvSupport.a;
     return (VasAdvSupport)localLazy.getValue();
   }
@@ -24,7 +24,7 @@ public final class VasAdvSupport$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.VasAdvSupport.Companion
  * JD-Core Version:    0.7.0.1
  */

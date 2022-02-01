@@ -13,29 +13,29 @@ import java.util.List;
 public class ApolloPanelAdapter
   extends PagerAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   public BaseChatPie a;
-  private List<ApolloViewBinder> jdField_a_of_type_JavaUtilList;
+  Context b;
+  SessionInfo c;
+  private List<ApolloViewBinder> d;
   
   public ApolloPanelAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public void a(SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.c = paramSessionInfo;
   }
   
   public void a(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public void a(List<ApolloViewBinder> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
     super.notifyDataSetChanged();
   }
   
@@ -52,7 +52,7 @@ public class ApolloPanelAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if (localList != null) {
       return localList.size();
     }
@@ -78,11 +78,11 @@ public class ApolloPanelAdapter
     if (paramInt >= 0)
     {
       localObject = localApolloViewBinder;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+      if (paramInt < this.d.size())
       {
-        localApolloViewBinder = (ApolloViewBinder)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localObject = localApolloViewBinder.c();
-        localApolloViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+        localApolloViewBinder = (ApolloViewBinder)this.d.get(paramInt);
+        localObject = localApolloViewBinder.i();
+        localApolloViewBinder.a(this.a);
       }
     }
     if ((localObject != null) && (((View)localObject).getParent() != paramViewGroup) && (paramInt < getCount())) {
@@ -98,7 +98,7 @@ public class ApolloPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

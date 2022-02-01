@@ -6,12 +6,12 @@ import org.json.JSONObject;
 
 public class TencentDocLocalCooperationBean$ViewOrEditInfo
 {
-  public String a;
-  public boolean a;
   public String[] a;
   public String b;
-  public boolean b;
   public String c;
+  public String d;
+  public boolean e;
+  public boolean f;
   
   public TencentDocLocalCooperationBean$ViewOrEditInfo(JSONObject paramJSONObject)
   {
@@ -19,11 +19,11 @@ public class TencentDocLocalCooperationBean$ViewOrEditInfo
     {
       String str = paramJSONObject.getString("extension");
       if (str != null) {
-        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
+        this.a = str.split("\\|");
       }
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
-      this.b = paramJSONObject.getString("tShow");
-      this.c = paramJSONObject.getString("tPress");
+      this.b = paramJSONObject.getString("text");
+      this.c = paramJSONObject.getString("tShow");
+      this.d = paramJSONObject.getString("tPress");
       return;
     }
     catch (JSONException paramJSONObject)
@@ -34,12 +34,12 @@ public class TencentDocLocalCooperationBean$ViewOrEditInfo
   
   public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (paramString != null))
+    if ((this.a != null) && (paramString != null))
     {
       int i = 0;
       for (;;)
       {
-        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = this.a;
         if (i >= arrayOfString.length) {
           break;
         }
@@ -54,7 +54,7 @@ public class TencentDocLocalCooperationBean$ViewOrEditInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocLocalCooperationBean.ViewOrEditInfo
  * JD-Core Version:    0.7.0.1
  */

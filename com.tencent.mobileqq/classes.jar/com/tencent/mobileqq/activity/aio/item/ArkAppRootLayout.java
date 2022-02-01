@@ -10,9 +10,9 @@ import android.widget.RelativeLayout;
 public class ArkAppRootLayout
   extends RelativeLayout
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private ArkAppRootLayout.ArkSearchReportCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout$ArkSearchReportCallback;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private GestureDetector b;
+  private ArkAppRootLayout.ArkSearchReportCallback c;
   
   public ArkAppRootLayout(Context paramContext)
   {
@@ -34,12 +34,12 @@ public class ArkAppRootLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ArkAppRootLayout.1(this));
+    this.b = new GestureDetector(paramContext, new ArkAppRootLayout.1(this));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    GestureDetector localGestureDetector = this.b;
     if (localGestureDetector != null) {
       localGestureDetector.onTouchEvent(paramMotionEvent);
     }
@@ -48,7 +48,7 @@ public class ArkAppRootLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       int i = paramMotionEvent.getActionMasked();
       if (i == 0) {
@@ -62,17 +62,17 @@ public class ArkAppRootLayout
   
   public void setCallback(ArkAppRootLayout.ArkSearchReportCallback paramArkSearchReportCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout$ArkSearchReportCallback = paramArkSearchReportCallback;
+    this.c = paramArkSearchReportCallback;
   }
   
   public void setDisableParentReturn(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout
  * JD-Core Version:    0.7.0.1
  */

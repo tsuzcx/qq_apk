@@ -14,16 +14,16 @@ class TroopSettingRedPointHelper$1
   {
     if (TroopSettingRedPointHelper.a(this.a) != null)
     {
-      TroopSettingRedPointHelper.a(this.a).k();
-      if ((TroopSettingRedPointHelper.a(this.a) != null) && (TroopSettingRedPointHelper.a(this.a).getVisibility() == 0) && (TroopSettingRedPointHelper.a(this.a) != null)) {
-        TroopSettingRedPointHelper.a(this.a).c();
+      TroopSettingRedPointHelper.a(this.a).B();
+      if ((TroopSettingRedPointHelper.b(this.a) != null) && (TroopSettingRedPointHelper.b(this.a).getVisibility() == 0) && (TroopSettingRedPointHelper.c(this.a) != null)) {
+        TroopSettingRedPointHelper.c(this.a).c();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopSettingRedPointHelper.1
  * JD-Core Version:    0.7.0.1
  */

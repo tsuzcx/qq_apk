@@ -37,12 +37,12 @@ class PublicAccountUtilImpl$6
     }
     if (!paramBoolean)
     {
-      paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver;
+      paramBundle = this.a;
       if (paramBundle != null) {
-        paramBundle.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+        paramBundle.onUpdate(102, false, this.b);
       }
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+      if (this.c) {
+        PublicAccountUtilImpl.access$300(this.d, 2131892951);
       }
     }
     else if (!paramBoolean) {}
@@ -55,49 +55,49 @@ class PublicAccountUtilImpl$6
         ((mobileqq_mp.UnFollowResponse)localObject).mergeFrom(paramBundle);
         if (((mobileqq_mp.RetInfo)((mobileqq_mp.UnFollowResponse)localObject).ret_info.get()).ret_code.get() == 0)
         {
-          if (this.jdField_a_of_type_JavaLangObject != null)
+          if (this.e != null)
           {
-            paramBundle = (PublicAccountHandlerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
+            paramBundle = (PublicAccountHandlerImpl)this.f.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
             if (paramBundle != null) {
-              paramBundle.onFollowPublicAccount(this.jdField_a_of_type_JavaLangObject);
+              paramBundle.onFollowPublicAccount(this.e);
             }
           }
           else
           {
-            paramBundle = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-            paramBundle.delPublicAccountInfo(this.jdField_a_of_type_JavaLangString);
-            paramBundle.delAccountDetailInfoCache(this.jdField_a_of_type_JavaLangString);
-            StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
-            TroopBarAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)paramBundle.getPublicAccountEqqInfoList());
-            ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            paramBundle = (EcShopAssistantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+            paramBundle = (IPublicAccountDataManager)this.f.getRuntimeService(IPublicAccountDataManager.class, "all");
+            paramBundle.delPublicAccountInfo(this.b);
+            paramBundle.delAccountDetailInfoCache(this.b);
+            StructLongMessageDownloadProcessor.deleteTask(this.f, this.b);
+            this.f.getMessageFacade().c(this.b, 1008);
+            TroopBarAssistantManager.a().a(this.f, (List)paramBundle.getPublicAccountEqqInfoList());
+            ServiceAccountFolderManager.a().c(this.f, this.b);
+            paramBundle = (EcShopAssistantManager)this.f.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
             if (paramBundle != null) {
-              paramBundle.a(this.jdField_a_of_type_JavaLangString, "unfollow");
+              paramBundle.a(this.b, "unfollow");
             }
           }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver == null) {
+          if (this.a == null) {
             break label481;
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
+          this.a.onUpdate(102, true, this.b);
           return;
         }
-        if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+        if (this.a != null) {
+          this.a.onUpdate(102, false, this.b);
         }
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.c) {
           break label481;
         }
-        PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+        PublicAccountUtilImpl.access$300(this.d, 2131892951);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+      if (this.a != null) {
+        this.a.onUpdate(102, false, this.b);
       }
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.c) {
         break label481;
       }
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+      PublicAccountUtilImpl.access$300(this.d, 2131892951);
       return;
     }
     catch (Exception paramBundle)
@@ -106,26 +106,26 @@ class PublicAccountUtilImpl$6
       label481:
       break label443;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+    if (this.a != null) {
+      this.a.onUpdate(102, false, this.b);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+      PublicAccountUtilImpl.access$300(this.d, 2131892951);
       return;
-      paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver;
+      paramBundle = this.a;
       if (paramBundle != null) {
-        paramBundle.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+        paramBundle.onUpdate(102, false, this.b);
       }
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+      if (this.c) {
+        PublicAccountUtilImpl.access$300(this.d, 2131892951);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.6
  * JD-Core Version:    0.7.0.1
  */

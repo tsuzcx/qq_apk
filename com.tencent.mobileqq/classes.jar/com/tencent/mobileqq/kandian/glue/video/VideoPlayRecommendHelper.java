@@ -12,7 +12,7 @@ public final class VideoPlayRecommendHelper
   @JvmStatic
   public static final int a()
   {
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return 8193;
     }
     return 1;
@@ -20,7 +20,7 @@ public final class VideoPlayRecommendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPlayRecommendHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 
 class SecurityUtile
 {
@@ -25,7 +27,7 @@ class SecurityUtile
     localObject2 = null;
     try
     {
-      String str = ((TelephonyManager)paramContext.getApplicationContext().getSystemService("phone")).getDeviceId();
+      String str = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getApplicationContext().getSystemService("phone"));
       if (str != null)
       {
         localObject1 = str;
@@ -35,7 +37,7 @@ class SecurityUtile
       else
       {
         localObject2 = str;
-        localObject1 = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
+        localObject1 = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi")).getMacAddress();
       }
     }
     catch (Exception paramContext)
@@ -91,7 +93,7 @@ class SecurityUtile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq.database.SecurityUtile
  * JD-Core Version:    0.7.0.1
  */

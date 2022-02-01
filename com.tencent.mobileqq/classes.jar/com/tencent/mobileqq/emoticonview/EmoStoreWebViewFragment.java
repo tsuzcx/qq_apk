@@ -35,9 +35,9 @@ public class EmoStoreWebViewFragment
   {
     if (checkURLIsEmoStore())
     {
-      getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(new ColorDrawable(-1));
+      getSwiftTitleUI().o.setBackgroundDrawable(new ColorDrawable(-1));
       getSwiftTitleUI().d(-16777216);
-      getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      getSwiftTitleUI().d.setTextColor(-16777216);
       getWebTitleBarInterface().a("my_emoji_clk", "", "black", false, 18, 0, new EmoStoreWebViewFragment.2(this), null);
     }
   }
@@ -54,7 +54,7 @@ public class EmoStoreWebViewFragment
   public void doOnEmoStorePageFinshed(Activity paramActivity)
   {
     if ((checkURLIsEmoStore()) && (paramActivity != null)) {
-      paramActivity.overridePendingTransition(2130772011, 2130772015);
+      paramActivity.overridePendingTransition(2130772014, 2130772018);
     }
   }
   
@@ -84,7 +84,7 @@ public class EmoStoreWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoStoreWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

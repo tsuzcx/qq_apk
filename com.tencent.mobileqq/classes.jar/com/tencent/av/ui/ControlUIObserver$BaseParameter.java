@@ -5,31 +5,31 @@ import com.tencent.av.utils.AudioHelper;
 
 public class ControlUIObserver$BaseParameter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
+  String a = null;
+  private long b = 0L;
+  private int c;
   
   ControlUIObserver$BaseParameter(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public long a()
   {
-    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.a()))
+    if ((this.b == 0L) && (AudioHelper.a()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("seq未初始化:");
       localStringBuilder.append(getClass().getSimpleName());
       throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    return this.jdField_a_of_type_Long;
+    return this.b;
   }
   
   public void a(long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramLong;
+    this.a = paramString;
   }
   
   public void a(VideoAppInterface paramVideoAppInterface)
@@ -37,7 +37,7 @@ public class ControlUIObserver$BaseParameter
     if (paramVideoAppInterface == null) {
       return;
     }
-    paramVideoAppInterface.a(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this });
+    paramVideoAppInterface.a(new Object[] { Integer.valueOf(this.c), this });
   }
 }
 

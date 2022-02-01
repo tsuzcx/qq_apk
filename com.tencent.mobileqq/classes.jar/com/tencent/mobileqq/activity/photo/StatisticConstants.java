@@ -225,7 +225,7 @@ public class StatisticConstants
       i = 1001;
     }
     int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    int k = DeviceInfoUtil.f();
+    int k = DeviceInfoUtil.O();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(j);
     localStringBuilder.append("");
@@ -262,7 +262,7 @@ public class StatisticConstants
       i = 1001;
     }
     int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    int k = DeviceInfoUtil.f();
+    int k = DeviceInfoUtil.O();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(j);
     localStringBuilder.append("");
@@ -301,7 +301,7 @@ public class StatisticConstants
     if ((paramLong != 0L) && (paramInt != 0) && (paramLong <= 86400000L))
     {
       long l = paramLong / paramInt;
-      int j = DeviceInfoUtil.f();
+      int j = DeviceInfoUtil.O();
       int i;
       if (((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCAccountNames.picpredownload_whitelist.name())) {
         i = 1002;
@@ -547,30 +547,30 @@ public class StatisticConstants
     //   19: aload_2
     //   20: ifnull +21 -> 41
     //   23: aload_2
-    //   24: invokeinterface 369 1 0
+    //   24: invokeinterface 370 1 0
     //   29: istore 4
     //   31: aload_2
-    //   32: invokeinterface 372 1 0
+    //   32: invokeinterface 373 1 0
     //   37: istore_3
     //   38: goto +5 -> 43
     //   41: iconst_m1
     //   42: istore_3
-    //   43: new 374	android/graphics/BitmapFactory$Options
+    //   43: new 375	android/graphics/BitmapFactory$Options
     //   46: dup
-    //   47: invokespecial 375	android/graphics/BitmapFactory$Options:<init>	()V
+    //   47: invokespecial 376	android/graphics/BitmapFactory$Options:<init>	()V
     //   50: astore_2
     //   51: aload_2
     //   52: iconst_1
-    //   53: putfield 379	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   53: putfield 380	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   56: aload_0
     //   57: aload_2
-    //   58: invokestatic 384	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   58: invokestatic 385	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   61: pop
     //   62: aload_2
-    //   63: getfield 387	android/graphics/BitmapFactory$Options:outWidth	I
+    //   63: getfield 388	android/graphics/BitmapFactory$Options:outWidth	I
     //   66: istore 6
     //   68: aload_2
-    //   69: getfield 390	android/graphics/BitmapFactory$Options:outHeight	I
+    //   69: getfield 391	android/graphics/BitmapFactory$Options:outHeight	I
     //   72: istore 7
     //   74: iload_1
     //   75: ifeq +20 -> 95
@@ -587,58 +587,58 @@ public class StatisticConstants
     //   96: astore 17
     //   98: aconst_null
     //   99: astore 18
-    //   101: new 392	java/io/FileInputStream
+    //   101: new 393	java/io/FileInputStream
     //   104: dup
     //   105: aload_0
-    //   106: invokespecial 394	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   106: invokespecial 395	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   109: astore 15
     //   111: aload 15
-    //   113: new 396	java/io/File
+    //   113: new 397	java/io/File
     //   116: dup
     //   117: aload_0
-    //   118: invokespecial 397	java/io/File:<init>	(Ljava/lang/String;)V
-    //   121: invokevirtual 400	java/io/File:length	()J
-    //   124: invokestatic 406	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   118: invokespecial 398	java/io/File:<init>	(Ljava/lang/String;)V
+    //   121: invokevirtual 401	java/io/File:length	()J
+    //   124: invokestatic 407	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   127: astore_2
     //   128: goto +52 -> 180
     //   131: astore_0
     //   132: goto +82 -> 214
     //   135: goto +102 -> 237
-    //   138: new 396	java/io/File
+    //   138: new 397	java/io/File
     //   141: dup
     //   142: aload_0
-    //   143: invokespecial 397	java/io/File:<init>	(Ljava/lang/String;)V
+    //   143: invokespecial 398	java/io/File:<init>	(Ljava/lang/String;)V
     //   146: astore_2
     //   147: aload_2
-    //   148: invokevirtual 409	java/io/File:exists	()Z
+    //   148: invokevirtual 410	java/io/File:exists	()Z
     //   151: istore 10
     //   153: iload 10
     //   155: ifeq +23 -> 178
     //   158: aload_2
-    //   159: invokestatic 414	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
+    //   159: invokestatic 415	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
     //   162: astore_2
     //   163: aload_2
     //   164: ifnull +930 -> 1094
     //   167: goto +3 -> 170
     //   170: aload_2
-    //   171: invokestatic 420	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   171: invokestatic 421	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   174: astore_2
     //   175: goto +5 -> 180
     //   178: aconst_null
     //   179: astore_2
     //   180: aload_2
-    //   181: invokestatic 424	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   181: invokestatic 425	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   184: astore 16
     //   186: aload 16
     //   188: astore_2
     //   189: aload 15
-    //   191: invokevirtual 427	java/io/FileInputStream:close	()V
+    //   191: invokevirtual 428	java/io/FileInputStream:close	()V
     //   194: aload 16
     //   196: astore_2
     //   197: goto +59 -> 256
     //   200: astore 15
     //   202: aload 15
-    //   204: invokevirtual 430	java/io/IOException:printStackTrace	()V
+    //   204: invokevirtual 431	java/io/IOException:printStackTrace	()V
     //   207: goto +49 -> 256
     //   210: astore_0
     //   211: aconst_null
@@ -646,11 +646,11 @@ public class StatisticConstants
     //   214: aload 15
     //   216: ifnull +16 -> 232
     //   219: aload 15
-    //   221: invokevirtual 427	java/io/FileInputStream:close	()V
+    //   221: invokevirtual 428	java/io/FileInputStream:close	()V
     //   224: goto +8 -> 232
     //   227: astore_2
     //   228: aload_2
-    //   229: invokevirtual 430	java/io/IOException:printStackTrace	()V
+    //   229: invokevirtual 431	java/io/IOException:printStackTrace	()V
     //   232: aload_0
     //   233: athrow
     //   234: aconst_null
@@ -662,22 +662,22 @@ public class StatisticConstants
     //   245: aload 18
     //   247: astore_2
     //   248: aload 15
-    //   250: invokevirtual 427	java/io/FileInputStream:close	()V
+    //   250: invokevirtual 428	java/io/FileInputStream:close	()V
     //   253: aload 17
     //   255: astore_2
     //   256: aload_0
-    //   257: invokestatic 436	com/tencent/mobileqq/utils/FileUtils:estimateFileType	(Ljava/lang/String;)Ljava/lang/String;
+    //   257: invokestatic 437	com/tencent/mobileqq/utils/FileUtils:estimateFileType	(Ljava/lang/String;)Ljava/lang/String;
     //   260: astore 15
     //   262: aload 15
-    //   264: invokevirtual 441	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   267: ldc_w 443
-    //   270: invokevirtual 447	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   264: invokevirtual 442	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   267: ldc_w 444
+    //   270: invokevirtual 448	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   273: iconst_1
     //   274: ixor
     //   275: istore 8
-    //   277: invokestatic 452	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   277: invokestatic 453	java/util/Calendar:getInstance	()Ljava/util/Calendar;
     //   280: bipush 11
-    //   282: invokevirtual 456	java/util/Calendar:get	(I)I
+    //   282: invokevirtual 457	java/util/Calendar:get	(I)I
     //   285: istore 9
     //   287: ldc 208
     //   289: invokestatic 214	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
@@ -698,7 +698,7 @@ public class StatisticConstants
     //   332: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   335: astore 16
     //   337: aload 16
-    //   339: ldc_w 458
+    //   339: ldc_w 459
     //   342: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: pop
     //   346: aload 16
@@ -706,7 +706,7 @@ public class StatisticConstants
     //   349: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   352: pop
     //   353: aload 16
-    //   355: ldc_w 460
+    //   355: ldc_w 461
     //   358: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   361: pop
     //   362: aload 16
@@ -714,7 +714,7 @@ public class StatisticConstants
     //   365: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   368: pop
     //   369: aload 16
-    //   371: ldc_w 462
+    //   371: ldc_w 463
     //   374: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   377: pop
     //   378: aload 16
@@ -730,7 +730,7 @@ public class StatisticConstants
     //   397: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   400: pop
     //   401: aload 16
-    //   403: ldc_w 464
+    //   403: ldc_w 465
     //   406: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   409: pop
     //   410: aload 16
@@ -738,7 +738,7 @@ public class StatisticConstants
     //   414: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   417: pop
     //   418: aload 16
-    //   420: ldc_w 466
+    //   420: ldc_w 467
     //   423: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   426: pop
     //   427: aload 16
@@ -746,7 +746,7 @@ public class StatisticConstants
     //   430: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   433: pop
     //   434: aload 16
-    //   436: ldc_w 468
+    //   436: ldc_w 469
     //   439: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   442: pop
     //   443: aload 16
@@ -754,7 +754,7 @@ public class StatisticConstants
     //   447: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   450: pop
     //   451: aload 16
-    //   453: ldc_w 470
+    //   453: ldc_w 471
     //   456: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   459: pop
     //   460: aload 16
@@ -762,16 +762,16 @@ public class StatisticConstants
     //   464: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   467: pop
     //   468: aload 16
-    //   470: ldc_w 472
+    //   470: ldc_w 473
     //   473: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   476: pop
     //   477: aload 16
     //   479: aload_0
-    //   480: invokestatic 475	com/tencent/qphone/base/util/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   480: invokestatic 476	com/tencent/qphone/base/util/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
     //   483: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: pop
     //   487: aload 16
-    //   489: ldc_w 477
+    //   489: ldc_w 478
     //   492: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   495: pop
     //   496: aload 16
@@ -779,7 +779,7 @@ public class StatisticConstants
     //   500: invokevirtual 62	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   503: pop
     //   504: aload 16
-    //   506: ldc_w 479
+    //   506: ldc_w 480
     //   509: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   512: pop
     //   513: aload 16
@@ -816,7 +816,7 @@ public class StatisticConstants
     //   576: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   579: pop
     //   580: aload_0
-    //   581: ldc_w 481
+    //   581: ldc_w 482
     //   584: aload 15
     //   586: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   589: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -876,7 +876,7 @@ public class StatisticConstants
     //   699: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   702: pop
     //   703: aload_0
-    //   704: ldc_w 483
+    //   704: ldc_w 484
     //   707: aload_2
     //   708: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   711: pop
@@ -893,7 +893,7 @@ public class StatisticConstants
     //   730: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   733: pop
     //   734: aload_0
-    //   735: ldc_w 485
+    //   735: ldc_w 486
     //   738: aload_2
     //   739: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   742: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -911,7 +911,7 @@ public class StatisticConstants
     //   764: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   767: pop
     //   768: aload_0
-    //   769: ldc_w 487
+    //   769: ldc_w 488
     //   772: aload_2
     //   773: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   776: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -919,7 +919,7 @@ public class StatisticConstants
     //   780: invokestatic 16	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   783: invokestatic 114	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   786: aconst_null
-    //   787: ldc_w 489
+    //   787: ldc_w 490
     //   790: iconst_0
     //   791: lconst_0
     //   792: lconst_0
@@ -931,14 +931,14 @@ public class StatisticConstants
     //   803: invokestatic 22	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   806: astore_0
     //   807: aload_0
-    //   808: ldc_w 491
+    //   808: ldc_w 492
     //   811: lconst_0
     //   812: invokeinterface 82 4 0
     //   817: lstore 11
     //   819: invokestatic 88	java/lang/System:currentTimeMillis	()J
     //   822: lstore 13
     //   824: aload_0
-    //   825: ldc_w 493
+    //   825: ldc_w 494
     //   828: iconst_0
     //   829: invokeinterface 30 3 0
     //   834: iconst_1
@@ -1021,7 +1021,7 @@ public class StatisticConstants
     //   987: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   990: pop
     //   991: aload_2
-    //   992: ldc_w 495
+    //   992: ldc_w 496
     //   995: aload 15
     //   997: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1000: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -1029,7 +1029,7 @@ public class StatisticConstants
     //   1004: invokestatic 16	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   1007: invokestatic 114	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   1010: aconst_null
-    //   1011: ldc_w 497
+    //   1011: ldc_w 498
     //   1014: iconst_0
     //   1015: lconst_0
     //   1016: lconst_0
@@ -1039,10 +1039,10 @@ public class StatisticConstants
     //   1021: invokevirtual 120	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   1024: aload_0
     //   1025: invokeinterface 34 1 0
-    //   1030: ldc_w 491
+    //   1030: ldc_w 492
     //   1033: lload 13
     //   1035: invokeinterface 124 4 0
-    //   1040: ldc_w 493
+    //   1040: ldc_w 494
     //   1043: iconst_0
     //   1044: invokeinterface 40 3 0
     //   1049: invokeinterface 44 1 0
@@ -1050,7 +1050,7 @@ public class StatisticConstants
     //   1055: return
     //   1056: aload_0
     //   1057: invokeinterface 34 1 0
-    //   1062: ldc_w 493
+    //   1062: ldc_w 494
     //   1065: iload_1
     //   1066: invokeinterface 40 3 0
     //   1071: invokeinterface 44 1 0
@@ -1322,8 +1322,8 @@ public class StatisticConstants
     int i11;
     if (paramQQAppInterface != null)
     {
-      i10 = paramQQAppInterface.a();
-      i11 = paramQQAppInterface.b();
+      i10 = paramQQAppInterface.b();
+      i11 = paramQQAppInterface.c();
     }
     else
     {
@@ -1359,7 +1359,7 @@ public class StatisticConstants
       if (str2 != null)
       {
         str1 = str2.toLowerCase(Locale.US);
-        str3 = FileUtil.b(str1);
+        str3 = FileUtil.c(str1);
         paramQQAppInterface = null;
       }
       try
@@ -1497,9 +1497,9 @@ public class StatisticConstants
         for (;;)
         {
           break label985;
-          if ((!str3.contains("screenshot")) && (!str3.contains(HardCodeUtil.a(2131714158))) && (!str3.contains(HardCodeUtil.a(2131714161))) && (!str3.equals("screen_cap")) && (!str3.equals("ScreenCapture")))
+          if ((!str3.contains("screenshot")) && (!str3.contains(HardCodeUtil.a(2131911686))) && (!str3.contains(HardCodeUtil.a(2131911689))) && (!str3.equals("screen_cap")) && (!str3.equals("ScreenCapture")))
           {
-            if ((!paramQQAppInterface.contains("camera")) && (!paramQQAppInterface.equals("dcim")) && (!paramQQAppInterface.equals("100MEDIA")) && (!paramQQAppInterface.equals("100ANDRO")) && (!paramQQAppInterface.contains(HardCodeUtil.a(2131714157))) && (!paramQQAppInterface.contains(HardCodeUtil.a(2131714160))) && (!paramQQAppInterface.contains(HardCodeUtil.a(2131714159))))
+            if ((!paramQQAppInterface.contains("camera")) && (!paramQQAppInterface.equals("dcim")) && (!paramQQAppInterface.equals("100MEDIA")) && (!paramQQAppInterface.equals("100ANDRO")) && (!paramQQAppInterface.contains(HardCodeUtil.a(2131911685))) && (!paramQQAppInterface.contains(HardCodeUtil.a(2131911688))) && (!paramQQAppInterface.contains(HardCodeUtil.a(2131911687))))
             {
               if (str3.contains("/sogou/.expression/"))
               {
@@ -1682,7 +1682,7 @@ public class StatisticConstants
       i = 1001;
     }
     int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    int k = DeviceInfoUtil.f();
+    int k = DeviceInfoUtil.O();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(j);
     localStringBuilder.append("");
@@ -1703,7 +1703,7 @@ public class StatisticConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.StatisticConstants
  * JD-Core Version:    0.7.0.1
  */

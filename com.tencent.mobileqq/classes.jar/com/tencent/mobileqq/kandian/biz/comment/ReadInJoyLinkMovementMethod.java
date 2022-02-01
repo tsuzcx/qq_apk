@@ -15,15 +15,15 @@ import android.widget.TextView;
 public class ReadInJoyLinkMovementMethod
   extends LinkMovementMethod
 {
-  private static ReadInJoyLinkMovementMethod jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyLinkMovementMethod;
-  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+  private static ReadInJoyLinkMovementMethod b;
+  private BackgroundColorSpan a;
   
   public static ReadInJoyLinkMovementMethod a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyLinkMovementMethod == null) {
-      jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyLinkMovementMethod = new ReadInJoyLinkMovementMethod();
+    if (b == null) {
+      b = new ReadInJoyLinkMovementMethod();
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyLinkMovementMethod;
+    return b;
   }
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
@@ -44,7 +44,7 @@ public class ReadInJoyLinkMovementMethod
       {
         if (i == 1)
         {
-          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+          paramSpannable.removeSpan(this.a);
           paramSpannable.setSpan(new BackgroundColorSpan(0), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
           Selection.removeSelection(paramSpannable);
           localObject[0].onClick(paramTextView);
@@ -52,18 +52,18 @@ public class ReadInJoyLinkMovementMethod
         }
         if (i == 0)
         {
-          this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(Color.parseColor("#DBE5EF"));
-          paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          this.a = new BackgroundColorSpan(Color.parseColor("#DBE5EF"));
+          paramSpannable.setSpan(this.a, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
           return true;
         }
         if ((i == 3) || (i == 2))
         {
-          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+          paramSpannable.removeSpan(this.a);
           paramSpannable.setSpan(new BackgroundColorSpan(0), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
         }
         return true;
       }
-      if ((paramTextView.getTag(2131376117) != null) && ((paramTextView.getTag(2131376117) instanceof Boolean)) && (((Boolean)paramTextView.getTag(2131376117)).booleanValue()))
+      if ((paramTextView.getTag(2131444320) != null) && ((paramTextView.getTag(2131444320) instanceof Boolean)) && (((Boolean)paramTextView.getTag(2131444320)).booleanValue()))
       {
         i = paramMotionEvent.getAction();
         if (i != 0)
@@ -71,10 +71,10 @@ public class ReadInJoyLinkMovementMethod
           if ((i != 1) && (i != 3)) {
             return true;
           }
-          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130849657));
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130851362));
           return true;
         }
-        ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130849653));
+        ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130851358));
         return true;
       }
     }
@@ -83,7 +83,7 @@ public class ReadInJoyLinkMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

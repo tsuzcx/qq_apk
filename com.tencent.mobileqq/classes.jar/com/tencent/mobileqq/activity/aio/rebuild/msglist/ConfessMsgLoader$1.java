@@ -12,13 +12,13 @@ class ConfessMsgLoader$1
   
   public void run()
   {
-    BaseSessionInfo localBaseSessionInfo = this.a.a();
-    this.a.a().getMessageFacade().a(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int, localBaseSessionInfo.e, 8);
+    BaseSessionInfo localBaseSessionInfo = this.a.O();
+    this.a.a().getMessageFacade().a(localBaseSessionInfo.b, localBaseSessionInfo.a, localBaseSessionInfo.v, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ConfessMsgLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ class InnerListView$2
   
   public boolean onLongClick(View paramView)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    if ((InnerListView.c(this.b) != null) && (InnerListView.b(this.b) != null)) {
+      return InnerListView.c(this.b).b(this.b, paramView, this.a);
     }
     return false;
   }

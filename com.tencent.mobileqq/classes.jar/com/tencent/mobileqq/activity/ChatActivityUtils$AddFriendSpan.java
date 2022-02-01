@@ -23,8 +23,8 @@ class ChatActivityUtils$AddFriendSpan
     if (((paramView instanceof SplashActivity)) || ((paramView instanceof ChatActivity)))
     {
       paramView = (BaseActivity)paramView;
-      if ((paramView.getChatFragment().a() instanceof StrangerChatPie)) {
-        ((StrangerChatPie)paramView.getChatFragment().a()).ap();
+      if ((paramView.getChatFragment().k() instanceof StrangerChatPie)) {
+        ((StrangerChatPie)paramView.getChatFragment().k()).bM();
       }
     }
   }
@@ -36,7 +36,7 @@ class ChatActivityUtils$AddFriendSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.AddFriendSpan
  * JD-Core Version:    0.7.0.1
  */

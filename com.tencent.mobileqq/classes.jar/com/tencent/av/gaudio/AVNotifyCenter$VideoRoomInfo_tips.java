@@ -2,24 +2,21 @@ package com.tencent.av.gaudio;
 
 public class AVNotifyCenter$VideoRoomInfo_tips
 {
-  public int a;
   public long a;
-  public boolean a;
+  public boolean b;
+  public int c = 0;
   
-  public AVNotifyCenter$VideoRoomInfo_tips(AVNotifyCenter paramAVNotifyCenter)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public AVNotifyCenter$VideoRoomInfo_tips(AVNotifyCenter paramAVNotifyCenter) {}
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("relationId[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], isOffLine[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], avType[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

@@ -1,64 +1,30 @@
 package com.tencent.av.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.utils.SeqUtil;
 
 class AVActivity$21
-  implements View.OnClickListener
+  extends Handler
 {
   AVActivity$21(AVActivity paramAVActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.isDestroyed())
+    if (paramMessage.what != 272)
     {
-      Object localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (!((SessionInfo)localObject1).w)
-      {
-        int i = ((SessionInfo)localObject1).d;
-        long l = AudioHelper.b();
-        String str = this.a.b;
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("onMsgClick, sessionType[");
-        ((StringBuilder)localObject2).append(i);
-        ((StringBuilder)localObject2).append("], state[");
-        ((StringBuilder)localObject2).append(((SessionInfo)localObject1).jdField_f_of_type_Int);
-        ((StringBuilder)localObject2).append("], seq[");
-        ((StringBuilder)localObject2).append(l);
-        ((StringBuilder)localObject2).append("]");
-        QLog.w(str, 1, ((StringBuilder)localObject2).toString());
-        if ((i != 1) && (i != 2))
-        {
-          if ((i == 3) || (i == 4))
-          {
-            localObject1 = String.valueOf(((SessionInfo)localObject1).jdField_f_of_type_Long);
-            str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.d, (String)localObject1, null);
-            localObject2 = this.a;
-            ((AVActivity)localObject2).a(l, (String)localObject1, ((AVActivity)localObject2).d, str);
-          }
-        }
-        else
-        {
-          if (((SessionInfo)localObject1).m()) {
-            break label273;
-          }
-          localObject1 = this.a;
-          ((AVActivity)localObject1).a(l, ((AVActivity)localObject1).c, this.a.d, this.a.k);
-        }
-        if (AVActivity.a(this.a) != null) {
-          AVActivity.a(this.a).a();
-        }
-      }
+      super.handleMessage(paramMessage);
+      return;
     }
-    label273:
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l = SeqUtil.a(paramMessage.obj);
+    this.a.a(l, "handleMessage", true);
+    if (this.a.ad != null) {
+      this.a.ad.E();
+    }
+    if (this.a.L != null) {
+      this.a.L.o(this.a.ad.e);
+    }
+    this.a.h(-1031L);
   }
 }
 

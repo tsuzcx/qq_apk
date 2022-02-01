@@ -38,41 +38,35 @@ import mqq.os.MqqHandler;
 public class EquipmentLockImpl
   implements EquipmentLockInterface
 {
-  private static EquipmentLockImpl jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipmentLockImpl;
-  public static boolean a;
-  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
-  private int jdField_a_of_type_Int = -1;
-  Runnable jdField_a_of_type_JavaLangRunnable = new EquipmentLockImpl.1(this);
-  String jdField_a_of_type_JavaLangString = null;
-  private ArrayList<DeviceLockItemInfo> jdField_a_of_type_JavaUtilArrayList = null;
-  private Map<Integer, Handler> jdField_a_of_type_JavaUtilMap = new HashMap();
-  byte[] jdField_a_of_type_ArrayOfByte = null;
-  String jdField_b_of_type_JavaLangString = null;
-  private boolean jdField_b_of_type_Boolean = true;
-  String jdField_c_of_type_JavaLangString = null;
-  private boolean jdField_c_of_type_Boolean = true;
-  private String jdField_d_of_type_JavaLangString = null;
-  private boolean jdField_d_of_type_Boolean = false;
-  private String e = null;
-  private String f = "Manually";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipmentLockImpl = null;
-    jdField_a_of_type_Boolean = false;
-  }
+  public static boolean a = false;
+  private static byte[] h = new byte[0];
+  private static EquipmentLockImpl i = null;
+  String b = null;
+  String c = null;
+  String d = null;
+  byte[] e = null;
+  Runnable f = new EquipmentLockImpl.1(this);
+  private Map<Integer, Handler> g = new HashMap();
+  private boolean j = true;
+  private int k = -1;
+  private String l = null;
+  private String m = null;
+  private boolean n = true;
+  private boolean o = false;
+  private String p = "Manually";
+  private ArrayList<DeviceLockItemInfo> q = null;
   
   public static EquipmentLockImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipmentLockImpl == null) {
-      synchronized (jdField_b_of_type_ArrayOfByte)
+    if (i == null) {
+      synchronized (h)
       {
-        if (jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipmentLockImpl == null) {
-          jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipmentLockImpl = new EquipmentLockImpl();
+        if (i == null) {
+          i = new EquipmentLockImpl();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipmentLockImpl;
+    return i;
   }
   
   public int a(String paramString)
@@ -80,7 +74,7 @@ public class EquipmentLockImpl
     if (TextUtils.isEmpty(paramString)) {
       return -1;
     }
-    this.e = paramString;
+    this.m = paramString;
     return 0;
   }
   
@@ -95,14 +89,14 @@ public class EquipmentLockImpl
       if (TextUtils.isEmpty(paramAppRuntime)) {
         return -1;
       }
-      if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramAppRuntime)))
+      if ((!TextUtils.isEmpty(this.l)) && (!this.l.equalsIgnoreCase(paramAppRuntime)))
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = -1;
+        this.j = true;
+        this.k = -1;
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.j)
       {
-        this.jdField_b_of_type_Boolean = false;
+        this.j = false;
         paramContext = paramContext.getSharedPreferences("devlock_sharedpref", 0);
         if (paramContext == null) {
           return -1;
@@ -110,10 +104,10 @@ public class EquipmentLockImpl
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("devlock_status");
         localStringBuilder.append(paramAppRuntime);
-        this.jdField_a_of_type_Int = paramContext.getInt(localStringBuilder.toString(), -1);
+        this.k = paramContext.getInt(localStringBuilder.toString(), -1);
       }
-      this.jdField_d_of_type_JavaLangString = paramAppRuntime;
-      return this.jdField_a_of_type_Int;
+      this.l = paramAppRuntime;
+      return this.k;
     }
     return -1;
   }
@@ -143,7 +137,7 @@ public class EquipmentLockImpl
         paramContext.putInt(localStringBuilder.toString(), 0).commit();
         if (paramString.equalsIgnoreCase(paramAppRuntime))
         {
-          this.jdField_a_of_type_Int = 0;
+          this.k = 0;
           return 0;
         }
       }
@@ -155,7 +149,7 @@ public class EquipmentLockImpl
         localStringBuilder.append(paramString);
         paramContext.putInt(localStringBuilder.toString(), 1).commit();
         if (paramString.equalsIgnoreCase(paramAppRuntime)) {
-          this.jdField_a_of_type_Int = 1;
+          this.k = 1;
         }
       }
       return 0;
@@ -174,7 +168,7 @@ public class EquipmentLockImpl
       if (paramAppRuntime == null) {
         return -1;
       }
-      return paramAppRuntime.checkDevLockSms(paramString1, AppSetting.a(), paramString2, paramArrayOfByte, paramWtloginObserver);
+      return paramAppRuntime.checkDevLockSms(paramString1, AppSetting.d(), paramString2, paramArrayOfByte, paramWtloginObserver);
     }
     return -1;
   }
@@ -186,12 +180,12 @@ public class EquipmentLockImpl
       if (TextUtils.isEmpty(paramString)) {
         return -1;
       }
-      int i = AppSetting.a();
+      int i1 = AppSetting.d();
       paramAppRuntime = (WtloginManager)paramAppRuntime.getManager(1);
       if (paramAppRuntime == null) {
         return -1;
       }
-      return paramAppRuntime.checkDevLockStatus(paramString, i, paramWtloginObserver);
+      return paramAppRuntime.checkDevLockStatus(paramString, i1, paramWtloginObserver);
     }
     return -1;
   }
@@ -261,42 +255,9 @@ public class EquipmentLockImpl
     return 0;
   }
   
-  public String a()
-  {
-    return this.e;
-  }
-  
-  public ArrayList<DeviceLockItemInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.getContext(), DevlockQuickLoginActivity.class);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("qrcode", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("maintip", this.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("smalltip", this.jdField_c_of_type_JavaLangString);
-      localIntent.putExtra("loginConfig", this.jdField_a_of_type_ArrayOfByte);
-      BaseApplicationImpl.getContext().startActivity(localIntent);
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_c_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ArrayOfByte = null;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.f = paramString;
-  }
-  
   public void a(ArrayList<DeviceLockItemInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.q = paramArrayList;
   }
   
   public void a(AppRuntime paramAppRuntime, int paramInt)
@@ -320,7 +281,7 @@ public class EquipmentLockImpl
         str = paramAppRuntime.getCurrentAccountUin();
       }
     }
-    ReportController.b(paramAppRuntime, "P_CliOper", "Safe_DeviceLock", str, "UserBehavior", this.f, 0, paramInt, "", "", "", "");
+    ReportController.b(paramAppRuntime, "P_CliOper", "Safe_DeviceLock", str, "UserBehavior", this.p, 0, paramInt, "", "", "", "");
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
@@ -349,22 +310,22 @@ public class EquipmentLockImpl
     if (bool)
     {
       paramAppRuntime = BaseApplicationImpl.getContext();
-      localObject1 = paramAppRuntime.getString(2131692034);
-      Object localObject2 = paramAppRuntime.getString(2131692034);
+      localObject1 = paramAppRuntime.getString(2131889001);
+      Object localObject2 = paramAppRuntime.getString(2131889001);
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramString2);
       ((StringBuilder)localObject3).append("\n");
       ((StringBuilder)localObject3).append(paramString3);
       String str = ((StringBuilder)localObject3).toString();
-      localObject3 = BitmapManager.a(paramAppRuntime.getResources(), 2130844282);
+      localObject3 = BitmapManager.a(paramAppRuntime.getResources(), 2130845599);
       localObject1 = new NotificationCompat.Builder(paramAppRuntime).setContentTitle((CharSequence)localObject2).setContentText(str).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker((CharSequence)localObject1).setWhen(System.currentTimeMillis());
       if (localObject3 != null) {
         ((NotificationCompat.Builder)localObject1).setLargeIcon((Bitmap)localObject3);
       } else {
-        ((NotificationCompat.Builder)localObject1).setLargeIcon(BitmapManager.a(paramAppRuntime.getResources(), 2130844282));
+        ((NotificationCompat.Builder)localObject1).setLargeIcon(BitmapManager.a(paramAppRuntime.getResources(), 2130845599));
       }
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130844282);
+        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130845599);
       }
       localObject2 = new Intent(paramAppRuntime, DevlockQuickLoginActivity.class);
       ((Intent)localObject2).addFlags(268435456);
@@ -382,15 +343,15 @@ public class EquipmentLockImpl
       if (localObject1 != null)
       {
         ((QQNotificationManager)localObject1).cancel("EquipmentLockImpl", 276);
-        jdField_a_of_type_Boolean = true;
+        a = true;
         ((QQNotificationManager)localObject1).notify("EquipmentLockImpl", 276, paramAppRuntime);
-        this.jdField_a_of_type_JavaLangString = paramString1;
-        this.jdField_b_of_type_JavaLangString = paramString2;
-        this.jdField_c_of_type_JavaLangString = paramString3;
-        this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
-        System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
-        ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 120000L);
+        this.b = paramString1;
+        this.c = paramString2;
+        this.d = paramString3;
+        this.e = new byte[paramArrayOfByte.length];
+        System.arraycopy(paramArrayOfByte, 0, this.e, 0, paramArrayOfByte.length);
+        ThreadManager.getUIHandler().removeCallbacks(this.f);
+        ThreadManager.getUIHandler().postDelayed(this.f, 120000L);
         return;
       }
       return;
@@ -406,13 +367,7 @@ public class EquipmentLockImpl
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    return (localArrayList != null) && (localArrayList.size() > 0);
+    this.o = paramBoolean;
   }
   
   public boolean a(AppRuntime paramAppRuntime)
@@ -420,9 +375,9 @@ public class EquipmentLockImpl
     if (paramAppRuntime == null) {
       return false;
     }
-    long l = Long.parseLong(paramAppRuntime.getAccount());
+    long l1 = Long.parseLong(paramAppRuntime.getAccount());
     String str = null;
-    int i = AppSetting.a();
+    int i1 = AppSetting.d();
     paramAppRuntime.getApplication();
     Object localObject = MobileQQ.getContext();
     if (localObject != null) {
@@ -443,7 +398,7 @@ public class EquipmentLockImpl
     paramAppRuntime = (FriendListHandler)((AppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if (paramAppRuntime != null)
     {
-      paramAppRuntime.getRecommandAuthDeviceList(l, (String)localObject, i);
+      paramAppRuntime.getRecommandAuthDeviceList(l1, (String)localObject, i1);
       return true;
     }
     return false;
@@ -521,9 +476,9 @@ public class EquipmentLockImpl
       if (paramArrayList == null) {
         return false;
       }
-      long l = Long.parseLong(paramAppRuntime.getAccount());
+      long l1 = Long.parseLong(paramAppRuntime.getAccount());
       String str = null;
-      int i = AppSetting.a();
+      int i1 = AppSetting.d();
       paramAppRuntime.getApplication();
       Object localObject = MobileQQ.getContext();
       if (localObject != null) {
@@ -544,7 +499,7 @@ public class EquipmentLockImpl
       paramAppRuntime = (FriendListHandler)((AppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
       if (paramAppRuntime != null)
       {
-        paramAppRuntime.updateTrustDeviceList(l, i, (String)localObject, 1000, paramArrayList);
+        paramAppRuntime.updateTrustDeviceList(l1, i1, (String)localObject, 1000, paramArrayList);
         return true;
       }
     }
@@ -562,32 +517,32 @@ public class EquipmentLockImpl
       if (paramAppRuntime == null) {
         return -1;
       }
-      return paramAppRuntime.closeDevLock(paramString, AppSetting.a(), paramWtloginObserver);
+      return paramAppRuntime.closeDevLock(paramString, AppSetting.d(), paramWtloginObserver);
     }
     return -1;
   }
   
   public void b()
   {
-    BaseApplicationImpl.getContext();
-    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-    if (localQQNotificationManager != null) {}
-    try
+    if (this.b != null)
     {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      localQQNotificationManager.cancel("EquipmentLockImpl", 276);
-      jdField_a_of_type_Boolean = false;
-      label36:
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_c_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ArrayOfByte = null;
-      return;
+      Intent localIntent = new Intent(BaseApplicationImpl.getContext(), DevlockQuickLoginActivity.class);
+      localIntent.addFlags(268435456);
+      localIntent.putExtra("qrcode", this.b);
+      localIntent.putExtra("maintip", this.c);
+      localIntent.putExtra("smalltip", this.d);
+      localIntent.putExtra("loginConfig", this.e);
+      BaseApplicationImpl.getContext().startActivity(localIntent);
+      this.b = null;
+      this.c = null;
+      this.d = null;
+      this.e = null;
     }
-    catch (Throwable localThrowable)
-    {
-      break label36;
-    }
+  }
+  
+  public void b(String paramString)
+  {
+    this.p = paramString;
   }
   
   public void b(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -601,11 +556,6 @@ public class EquipmentLockImpl
       }
     }
     ReportController.b(paramAppRuntime, "dc00899", "Safe_DeviceLock", str, "H5UserBehavior", "H5_Manually", 0, paramInt, "", "", "", "");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Boolean;
   }
   
   public boolean b(AppRuntime paramAppRuntime, String paramString, long paramLong)
@@ -640,12 +590,25 @@ public class EquipmentLockImpl
   
   public void c()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_d_of_type_Boolean;
+    BaseApplicationImpl.getContext();
+    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+    if (localQQNotificationManager != null) {}
+    try
+    {
+      ThreadManager.getUIHandler().removeCallbacks(this.f);
+      localQQNotificationManager.cancel("EquipmentLockImpl", 276);
+      a = false;
+      label36:
+      this.b = null;
+      this.c = null;
+      this.d = null;
+      this.e = null;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label36;
+    }
   }
   
   public boolean c(AppRuntime paramAppRuntime, String paramString, long paramLong)
@@ -664,10 +627,41 @@ public class EquipmentLockImpl
     }
     return false;
   }
+  
+  public ArrayList<DeviceLockItemInfo> d()
+  {
+    return this.q;
+  }
+  
+  public void e()
+  {
+    this.q = null;
+  }
+  
+  public boolean f()
+  {
+    ArrayList localArrayList = this.q;
+    return (localArrayList != null) && (localArrayList.size() > 0);
+  }
+  
+  public String g()
+  {
+    return this.m;
+  }
+  
+  public boolean h()
+  {
+    return this.n;
+  }
+  
+  public boolean i()
+  {
+    return this.o;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipmentLockImpl
  * JD-Core Version:    0.7.0.1
  */

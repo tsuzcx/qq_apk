@@ -11,21 +11,7 @@ public abstract class StoryPlayerContext
 {
   public abstract Activity a();
   
-  public abstract IDataProvider.GroupId a();
-  
-  public abstract IDataProvider.StartInfo a();
-  
-  public abstract OpenPlayerBuilder.Data a();
-  
-  public abstract PlayerStrategy a();
-  
-  public abstract StoryPlayerObjectRecycler a();
-  
-  public abstract XViewPager a();
-  
   public abstract String a(String paramString);
-  
-  public abstract void a();
   
   public abstract void a(Intent paramIntent);
   
@@ -35,17 +21,31 @@ public abstract class StoryPlayerContext
   
   public abstract void a(VideoHolderBase paramVideoHolderBase);
   
-  public abstract boolean a();
-  
   public abstract void b(QQStoryObserver paramQQStoryObserver);
   
   public abstract void b(ActivityLifeCycle paramActivityLifeCycle);
   
   public abstract boolean b();
+  
+  public abstract XViewPager c();
+  
+  public abstract OpenPlayerBuilder.Data i();
+  
+  public abstract PlayerStrategy j();
+  
+  public abstract StoryPlayerObjectRecycler k();
+  
+  public abstract boolean l();
+  
+  public abstract IDataProvider.StartInfo m();
+  
+  public abstract void n();
+  
+  public abstract IDataProvider.GroupId o();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerContext
  * JD-Core Version:    0.7.0.1
  */

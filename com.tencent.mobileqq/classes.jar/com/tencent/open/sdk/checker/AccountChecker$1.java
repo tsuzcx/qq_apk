@@ -17,20 +17,20 @@ class AccountChecker$1
     QLog.d("AccountChecker", 1, paramArrayOfByte.toString());
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentOpenSdkCheckerBaseAccountChecker$IAccountCheckCallback.a(true);
+      this.a.a(true);
       return;
     }
     if (paramInt == 16)
     {
-      this.jdField_a_of_type_ComTencentOpenSdkCheckerBaseAccountChecker$IAccountCheckCallback.a(false);
+      this.a.a(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenSdkCheckerBaseAccountChecker$IAccountCheckCallback.a(paramInt, "");
+    this.a.a(paramInt, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.sdk.checker.AccountChecker.1
  * JD-Core Version:    0.7.0.1
  */

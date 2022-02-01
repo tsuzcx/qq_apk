@@ -22,7 +22,7 @@ class ReadInJoyChannelViewPagerController$4
   {
     super.a(paramFloat, paramInt);
     paramFloat /= paramInt;
-    ReadInJoyChannelViewPagerController.a(this.a).setY((1.0F - paramFloat) * ReadInJoyChannelViewPagerController.a(this.a).getHeight() * 0.03F);
+    ReadInJoyChannelViewPagerController.f(this.a).setY((1.0F - paramFloat) * ReadInJoyChannelViewPagerController.f(this.a).getHeight() * 0.03F);
   }
   
   public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
@@ -33,12 +33,12 @@ class ReadInJoyChannelViewPagerController$4
       QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onChannelTabSelected, channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), ", channelName = ", paramTabChannelCoverInfo.mChannelCoverName });
       RIJChannelViewpagerEnterPathHelper.a().put(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), Integer.valueOf(1));
       this.a.c(paramTabChannelCoverInfo.mChannelCoverId);
-      ReadInJoyChannelViewPagerController.a(this.a);
-      if (ReadInJoyHelper.y())
+      ReadInJoyChannelViewPagerController.d(this.a);
+      if (ReadInJoyHelper.S())
       {
         ReadInJoyChannelViewPagerController.b(this.a, paramTabChannelCoverInfo);
         ReadInJoyChannelViewPagerController localReadInJoyChannelViewPagerController = this.a;
-        ReadInJoyChannelViewPagerController.b(localReadInJoyChannelViewPagerController, ReadInJoyChannelViewPagerController.a(localReadInJoyChannelViewPagerController, ReadInJoyChannelViewPagerController.a(localReadInJoyChannelViewPagerController)));
+        ReadInJoyChannelViewPagerController.c(localReadInJoyChannelViewPagerController, ReadInJoyChannelViewPagerController.b(localReadInJoyChannelViewPagerController, ReadInJoyChannelViewPagerController.e(localReadInJoyChannelViewPagerController)));
       }
       RIJChannelReporter.a(paramTabChannelCoverInfo.mChannelCoverId, "303");
     }
@@ -47,9 +47,9 @@ class ReadInJoyChannelViewPagerController$4
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
     super.a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    paramInt = this.a.c();
-    ReadInJoyChannelViewPagerController.a(this.a, paramInt);
-    ReadInJoyChannelViewPagerController.a(this.a).a();
+    paramInt = this.a.j();
+    ReadInJoyChannelViewPagerController.b(this.a, paramInt);
+    ReadInJoyChannelViewPagerController.g(this.a).a();
   }
   
   public void b(boolean paramBoolean)
@@ -59,19 +59,19 @@ class ReadInJoyChannelViewPagerController$4
     int i = 8;
     if (!bool)
     {
-      ImageView localImageView = ReadInJoyChannelViewPagerController.a(this.a);
+      ImageView localImageView = ReadInJoyChannelViewPagerController.c(this.a);
       if (paramBoolean) {
         i = 0;
       }
       localImageView.setVisibility(i);
       return;
     }
-    ReadInJoyChannelViewPagerController.a(this.a).setVisibility(8);
+    ReadInJoyChannelViewPagerController.c(this.a).setVisibility(8);
   }
   
-  public void c()
+  public void cE_()
   {
-    super.c();
+    super.cE_();
   }
   
   public void e(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
@@ -88,7 +88,7 @@ class ReadInJoyChannelViewPagerController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.4
  * JD-Core Version:    0.7.0.1
  */

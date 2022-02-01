@@ -12,10 +12,10 @@ public class NetSearchTemplateTitleItem
 {
   public static final String a = "NetSearchTemplateTitleItem";
   public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
   public NetSearchTemplateTitleItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -27,16 +27,16 @@ public class NetSearchTemplateTitleItem
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a(String paramString)
+  public void o_(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString);
       this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
+      this.c = paramString.optString("firstTitle");
+      this.d = paramString.optString("secondTitle");
+      this.e = paramString.optString("moreText");
+      this.f = paramString.optString("jumpUrl");
       return;
     }
     catch (JSONException paramString)
@@ -49,7 +49,7 @@ public class NetSearchTemplateTitleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateTitleItem
  * JD-Core Version:    0.7.0.1
  */

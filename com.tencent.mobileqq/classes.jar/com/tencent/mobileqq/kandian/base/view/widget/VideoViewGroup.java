@@ -11,9 +11,9 @@ import com.tencent.mobileqq.R.styleable;
 public class VideoViewGroup
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean a = true;
   private float b = 0.0F;
+  private float c = 0.0F;
   
   public VideoViewGroup(Context paramContext)
   {
@@ -34,14 +34,14 @@ public class VideoViewGroup
   private void a(AttributeSet paramAttributeSet)
   {
     paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.VideoViewGroup);
-    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(1, 0.0F);
-    this.b = paramAttributeSet.getFloat(0, 0.0F);
+    this.b = paramAttributeSet.getFloat(1, 0.0F);
+    this.c = paramAttributeSet.getFloat(0, 0.0F);
     paramAttributeSet.recycle();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     requestLayout();
   }
   
@@ -56,11 +56,11 @@ public class VideoViewGroup
     int j = View.MeasureSpec.getSize(paramInt2);
     View.MeasureSpec.getMode(paramInt1);
     View.MeasureSpec.getMode(paramInt2);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      if (this.jdField_a_of_type_Float == 1.0F)
+      if (this.b == 1.0F)
       {
-        f = this.b;
+        f = this.c;
         if (f != 1.0F)
         {
           paramInt2 = (int)(i * f);
@@ -69,17 +69,17 @@ public class VideoViewGroup
           return;
         }
       }
-      float f = this.jdField_a_of_type_Float;
-      if ((f != 1.0F) && (this.b == 1.0F))
+      float f = this.b;
+      if ((f != 1.0F) && (this.c == 1.0F))
       {
         i = (int)(j * f);
         super.onMeasure(paramInt1, paramInt2);
         setMeasuredDimension(i, j);
         return;
       }
-      if (this.jdField_a_of_type_Float == 1.0F)
+      if (this.b == 1.0F)
       {
-        f = this.b;
+        f = this.c;
         if (f == 1.0F)
         {
           paramInt2 = (int)(i * f);
@@ -96,14 +96,14 @@ public class VideoViewGroup
   
   public void setCustomSize(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    this.b = paramFloat1;
+    this.c = paramFloat2;
     requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.VideoViewGroup
  * JD-Core Version:    0.7.0.1
  */

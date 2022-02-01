@@ -13,14 +13,14 @@ class ArkAppModule$1
     {
       ArkAppModule.ArkAppModuleEvent localArkAppModuleEvent = (ArkAppModule.ArkAppModuleEvent)ArkAppModule.a(this.this$0).get();
       if (localArkAppModuleEvent != null) {
-        localArkAppModuleEvent.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+        localArkAppModuleEvent.a(this.a, this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppModule.1
  * JD-Core Version:    0.7.0.1
  */

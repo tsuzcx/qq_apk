@@ -64,7 +64,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.a, null, null);
+      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.b, null, null);
       return;
     }
     catch (Exception localException)
@@ -83,7 +83,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.b, null, null);
+      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.c, null, null);
       return;
     }
     catch (Exception localException)
@@ -102,7 +102,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.f, null, null);
+      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
       return;
     }
     catch (Exception localException)
@@ -121,7 +121,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.e, null, null);
+      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.f, null, null);
       return;
     }
     catch (Exception localException)
@@ -145,7 +145,7 @@ public class QZConfigProviderUtilProxyImpl
       }
       try
       {
-        int i = BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.e, "key=?", new String[] { paramString });
+        int i = BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.f, "key=?", new String[] { paramString });
         return i;
       }
       catch (Exception paramString)
@@ -176,7 +176,7 @@ public class QZConfigProviderUtilProxyImpl
         }
         try
         {
-          int i = BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.a, "main_key=? and second_key=? ", new String[] { paramString1, paramString2 });
+          int i = BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.b, "main_key=? and second_key=? ", new String[] { paramString1, paramString2 });
           return i;
         }
         catch (Exception paramString1)
@@ -203,15 +203,15 @@ public class QZConfigProviderUtilProxyImpl
     //   8: aload_0
     //   9: ifnull +202 -> 211
     //   12: aload_0
-    //   13: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   13: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   16: ifgt +5 -> 21
     //   19: aconst_null
     //   20: areturn
     //   21: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   24: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   27: getstatic 144	com/tencent/common/config/provider/QZoneConfigProvider:e	Landroid/net/Uri;
+    //   27: getstatic 145	com/tencent/common/config/provider/QZoneConfigProvider:f	Landroid/net/Uri;
     //   30: aconst_null
-    //   31: ldc 156
+    //   31: ldc 157
     //   33: iconst_1
     //   34: anewarray 27	java/lang/String
     //   37: dup
@@ -219,7 +219,7 @@ public class QZConfigProviderUtilProxyImpl
     //   39: aload_0
     //   40: aastore
     //   41: aconst_null
-    //   42: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   42: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   45: astore_1
     //   46: aload_2
     //   47: astore_0
@@ -230,7 +230,7 @@ public class QZConfigProviderUtilProxyImpl
     //   54: aload_1
     //   55: astore_2
     //   56: aload_1
-    //   57: invokeinterface 181 1 0
+    //   57: invokeinterface 182 1 0
     //   62: ifeq +41 -> 103
     //   65: aload_1
     //   66: astore_2
@@ -238,12 +238,12 @@ public class QZConfigProviderUtilProxyImpl
     //   70: dup
     //   71: aload_1
     //   72: aload_1
-    //   73: ldc 183
-    //   75: invokeinterface 186 2 0
-    //   80: invokeinterface 190 2 0
-    //   85: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   88: ldc 196
-    //   90: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   73: ldc 184
+    //   75: invokeinterface 187 2 0
+    //   80: invokeinterface 191 2 0
+    //   85: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   88: ldc 197
+    //   90: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   93: astore_0
     //   94: goto +9 -> 103
     //   97: astore_3
@@ -259,7 +259,7 @@ public class QZConfigProviderUtilProxyImpl
     //   111: aload_0
     //   112: astore_1
     //   113: aload_2
-    //   114: invokeinterface 202 1 0
+    //   114: invokeinterface 203 1 0
     //   119: aload_1
     //   120: areturn
     //   121: astore_0
@@ -282,7 +282,7 @@ public class QZConfigProviderUtilProxyImpl
     //   148: aload_0
     //   149: astore_2
     //   150: aload_1
-    //   151: ldc 204
+    //   151: ldc 205
     //   153: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: aload_0
@@ -315,7 +315,7 @@ public class QZConfigProviderUtilProxyImpl
     //   199: aload_2
     //   200: ifnull +9 -> 209
     //   203: aload_2
-    //   204: invokeinterface 202 1 0
+    //   204: invokeinterface 203 1 0
     //   209: aload_0
     //   210: athrow
     //   211: aconst_null
@@ -357,7 +357,7 @@ public class QZConfigProviderUtilProxyImpl
     //   8: aload_0
     //   9: ifnull +451 -> 460
     //   12: aload_0
-    //   13: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   13: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   16: ifgt +5 -> 21
     //   19: aconst_null
     //   20: areturn
@@ -369,9 +369,9 @@ public class QZConfigProviderUtilProxyImpl
     //   32: aconst_null
     //   33: areturn
     //   34: aload_0
-    //   35: ldc 208
-    //   37: ldc 210
-    //   39: invokevirtual 214	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   35: ldc 209
+    //   37: ldc 211
+    //   39: invokevirtual 215	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   42: astore_0
     //   43: new 112	java/lang/StringBuilder
     //   46: dup
@@ -382,12 +382,12 @@ public class QZConfigProviderUtilProxyImpl
     //   53: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload_3
-    //   58: ldc 216
+    //   58: ldc 217
     //   60: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: pop
     //   64: aload_3
     //   65: iload_1
-    //   66: invokestatic 219	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   66: invokestatic 220	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   69: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload_3
@@ -395,9 +395,9 @@ public class QZConfigProviderUtilProxyImpl
     //   77: astore_0
     //   78: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   81: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   84: getstatic 222	com/tencent/common/config/provider/QZoneConfigProvider:g	Landroid/net/Uri;
+    //   84: getstatic 223	com/tencent/common/config/provider/QZoneConfigProvider:h	Landroid/net/Uri;
     //   87: aconst_null
-    //   88: ldc 224
+    //   88: ldc 225
     //   90: iconst_1
     //   91: anewarray 27	java/lang/String
     //   94: dup
@@ -405,7 +405,7 @@ public class QZConfigProviderUtilProxyImpl
     //   96: aload_0
     //   97: aastore
     //   98: aconst_null
-    //   99: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   99: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   102: astore_3
     //   103: aload_2
     //   104: astore_0
@@ -416,85 +416,85 @@ public class QZConfigProviderUtilProxyImpl
     //   111: aload_3
     //   112: astore_2
     //   113: aload_3
-    //   114: invokeinterface 181 1 0
+    //   114: invokeinterface 182 1 0
     //   119: ifeq +212 -> 331
     //   122: aload_3
     //   123: astore_2
-    //   124: new 226	NS_UNDEAL_COUNT/entrance_cfg
+    //   124: new 227	NS_UNDEAL_COUNT/entrance_cfg
     //   127: dup
     //   128: aload_3
     //   129: aload_3
-    //   130: ldc 228
-    //   132: invokeinterface 186 2 0
-    //   137: invokeinterface 232 2 0
+    //   130: ldc 229
+    //   132: invokeinterface 187 2 0
+    //   137: invokeinterface 233 2 0
     //   142: new 27	java/lang/String
     //   145: dup
     //   146: aload_3
     //   147: aload_3
-    //   148: ldc 234
-    //   150: invokeinterface 186 2 0
-    //   155: invokeinterface 190 2 0
-    //   160: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   163: ldc 196
-    //   165: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   148: ldc 235
+    //   150: invokeinterface 187 2 0
+    //   155: invokeinterface 191 2 0
+    //   160: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   163: ldc 197
+    //   165: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   168: new 27	java/lang/String
     //   171: dup
     //   172: aload_3
     //   173: aload_3
-    //   174: ldc 236
-    //   176: invokeinterface 186 2 0
-    //   181: invokeinterface 190 2 0
-    //   186: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   189: ldc 196
-    //   191: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   174: ldc 237
+    //   176: invokeinterface 187 2 0
+    //   181: invokeinterface 191 2 0
+    //   186: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   189: ldc 197
+    //   191: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   194: new 27	java/lang/String
     //   197: dup
     //   198: aload_3
     //   199: aload_3
-    //   200: ldc 238
-    //   202: invokeinterface 186 2 0
-    //   207: invokeinterface 190 2 0
-    //   212: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   215: ldc 196
-    //   217: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   200: ldc 239
+    //   202: invokeinterface 187 2 0
+    //   207: invokeinterface 191 2 0
+    //   212: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   215: ldc 197
+    //   217: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   220: aload_3
     //   221: aload_3
-    //   222: ldc 240
-    //   224: invokeinterface 186 2 0
-    //   229: invokeinterface 232 2 0
+    //   222: ldc 241
+    //   224: invokeinterface 187 2 0
+    //   229: invokeinterface 233 2 0
     //   234: aload_3
     //   235: aload_3
-    //   236: ldc 242
-    //   238: invokeinterface 186 2 0
-    //   243: invokeinterface 232 2 0
+    //   236: ldc 243
+    //   238: invokeinterface 187 2 0
+    //   243: invokeinterface 233 2 0
     //   248: new 27	java/lang/String
     //   251: dup
     //   252: aload_3
     //   253: aload_3
-    //   254: ldc 244
-    //   256: invokeinterface 186 2 0
-    //   261: invokeinterface 190 2 0
-    //   266: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   269: ldc 196
-    //   271: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   254: ldc 245
+    //   256: invokeinterface 187 2 0
+    //   261: invokeinterface 191 2 0
+    //   266: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   269: ldc 197
+    //   271: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   274: new 27	java/lang/String
     //   277: dup
     //   278: aload_3
     //   279: aload_3
-    //   280: ldc 246
-    //   282: invokeinterface 186 2 0
-    //   287: invokeinterface 190 2 0
-    //   292: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   295: ldc 196
-    //   297: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   280: ldc 247
+    //   282: invokeinterface 187 2 0
+    //   287: invokeinterface 191 2 0
+    //   292: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   295: ldc 197
+    //   297: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   300: iconst_0
     //   301: aconst_null
     //   302: aload_3
     //   303: aload_3
-    //   304: ldc 248
-    //   306: invokeinterface 186 2 0
-    //   311: invokeinterface 232 2 0
-    //   316: invokespecial 251	NS_UNDEAL_COUNT/entrance_cfg:<init>	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ILNS_UNDEAL_COUNT/st_report_info;I)V
+    //   304: ldc 249
+    //   306: invokeinterface 187 2 0
+    //   311: invokeinterface 233 2 0
+    //   316: invokespecial 252	NS_UNDEAL_COUNT/entrance_cfg:<init>	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ILNS_UNDEAL_COUNT/st_report_info;I)V
     //   319: astore_0
     //   320: goto +11 -> 331
     //   323: astore_2
@@ -510,12 +510,12 @@ public class QZConfigProviderUtilProxyImpl
     //   337: aload_0
     //   338: astore_2
     //   339: aload_3
-    //   340: invokeinterface 202 1 0
+    //   340: invokeinterface 203 1 0
     //   345: aload_0
     //   346: areturn
     //   347: astore_0
     //   348: aload_0
-    //   349: invokevirtual 254	java/lang/Exception:printStackTrace	()V
+    //   349: invokevirtual 255	java/lang/Exception:printStackTrace	()V
     //   352: aload_2
     //   353: areturn
     //   354: astore_0
@@ -538,7 +538,7 @@ public class QZConfigProviderUtilProxyImpl
     //   382: aload_0
     //   383: astore_2
     //   384: aload 6
-    //   386: ldc_w 256
+    //   386: ldc_w 257
     //   389: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: pop
     //   393: aload_0
@@ -554,7 +554,7 @@ public class QZConfigProviderUtilProxyImpl
     //   409: iconst_2
     //   410: aload 6
     //   412: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   415: invokestatic 161	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   415: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   418: aload 4
     //   420: astore_2
     //   421: aload_0
@@ -562,7 +562,7 @@ public class QZConfigProviderUtilProxyImpl
     //   425: aload 5
     //   427: astore_2
     //   428: aload_0
-    //   429: invokeinterface 202 1 0
+    //   429: invokeinterface 203 1 0
     //   434: aload 4
     //   436: astore_2
     //   437: aload_2
@@ -571,11 +571,11 @@ public class QZConfigProviderUtilProxyImpl
     //   440: aload_2
     //   441: ifnull +17 -> 458
     //   444: aload_2
-    //   445: invokeinterface 202 1 0
+    //   445: invokeinterface 203 1 0
     //   450: goto +8 -> 458
     //   453: astore_2
     //   454: aload_2
-    //   455: invokevirtual 254	java/lang/Exception:printStackTrace	()V
+    //   455: invokevirtual 255	java/lang/Exception:printStackTrace	()V
     //   458: aload_0
     //   459: athrow
     //   460: aconst_null
@@ -615,7 +615,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().bulkInsert(QZoneConfigProvider.g, paramArrayOfContentValues);
+      BaseApplication.getContext().getContentResolver().bulkInsert(QZoneConfigProvider.h, paramArrayOfContentValues);
       return true;
     }
     catch (Exception paramArrayOfContentValues)
@@ -650,37 +650,37 @@ public class QZConfigProviderUtilProxyImpl
     //   0: aload_0
     //   1: ifnull +176 -> 177
     //   4: aload_0
-    //   5: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   5: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   8: ifgt +5 -> 13
     //   11: iconst_0
     //   12: ireturn
     //   13: aload_1
     //   14: ifnull +163 -> 177
     //   17: aload_1
-    //   18: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   18: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   21: ifgt +5 -> 26
     //   24: iconst_0
     //   25: ireturn
-    //   26: new 271	android/content/ContentValues
+    //   26: new 272	android/content/ContentValues
     //   29: dup
-    //   30: invokespecial 272	android/content/ContentValues:<init>	()V
+    //   30: invokespecial 273	android/content/ContentValues:<init>	()V
     //   33: astore_2
     //   34: aload_2
-    //   35: ldc_w 274
+    //   35: ldc_w 275
     //   38: aload_0
-    //   39: invokevirtual 278	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   39: invokevirtual 279	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   42: aload_2
-    //   43: ldc 183
+    //   43: ldc 184
     //   45: aload_1
-    //   46: invokevirtual 278	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokevirtual 279	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   49: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   52: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   55: getstatic 144	com/tencent/common/config/provider/QZoneConfigProvider:e	Landroid/net/Uri;
+    //   55: getstatic 145	com/tencent/common/config/provider/QZoneConfigProvider:f	Landroid/net/Uri;
     //   58: aload_2
-    //   59: invokevirtual 282	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   59: invokevirtual 283	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
     //   62: pop
     //   63: aload_2
-    //   64: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   64: invokevirtual 286	android/content/ContentValues:clear	()V
     //   67: iconst_1
     //   68: ireturn
     //   69: astore_0
@@ -693,7 +693,7 @@ public class QZConfigProviderUtilProxyImpl
     //   84: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   87: astore_1
     //   88: aload_1
-    //   89: ldc_w 287
+    //   89: ldc_w 288
     //   92: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   95: pop
     //   96: aload_1
@@ -708,7 +708,7 @@ public class QZConfigProviderUtilProxyImpl
     //   112: aload_0
     //   113: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   116: aload_2
-    //   117: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   117: invokevirtual 286	android/content/ContentValues:clear	()V
     //   120: iconst_0
     //   121: ireturn
     //   122: astore_0
@@ -719,12 +719,12 @@ public class QZConfigProviderUtilProxyImpl
     //   133: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   136: astore_1
     //   137: aload_1
-    //   138: ldc_w 287
+    //   138: ldc_w 288
     //   141: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: aload_1
     //   146: aload_0
-    //   147: invokevirtual 267	android/database/SQLException:getMessage	()Ljava/lang/String;
+    //   147: invokevirtual 268	android/database/SQLException:getMessage	()Ljava/lang/String;
     //   150: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: pop
     //   154: ldc 10
@@ -734,11 +734,11 @@ public class QZConfigProviderUtilProxyImpl
     //   161: aload_0
     //   162: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   165: aload_2
-    //   166: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   166: invokevirtual 286	android/content/ContentValues:clear	()V
     //   169: iconst_0
     //   170: ireturn
     //   171: aload_2
-    //   172: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   172: invokevirtual 286	android/content/ContentValues:clear	()V
     //   175: aload_0
     //   176: athrow
     //   177: iconst_0
@@ -767,14 +767,14 @@ public class QZConfigProviderUtilProxyImpl
     //   4: astore_3
     //   5: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   8: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   11: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:a	Landroid/net/Uri;
+    //   11: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:b	Landroid/net/Uri;
     //   14: iconst_1
     //   15: anewarray 27	java/lang/String
     //   18: dup
     //   19: iconst_0
-    //   20: ldc_w 291
+    //   20: ldc_w 292
     //   23: aastore
-    //   24: ldc_w 293
+    //   24: ldc_w 294
     //   27: iconst_1
     //   28: anewarray 27	java/lang/String
     //   31: dup
@@ -782,7 +782,7 @@ public class QZConfigProviderUtilProxyImpl
     //   33: aload_0
     //   34: aastore
     //   35: aconst_null
-    //   36: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   36: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   39: astore 5
     //   41: aload 5
     //   43: ifnull +57 -> 100
@@ -791,7 +791,7 @@ public class QZConfigProviderUtilProxyImpl
     //   49: aload 5
     //   51: astore 4
     //   53: aload 5
-    //   55: invokeinterface 297 1 0
+    //   55: invokeinterface 298 1 0
     //   60: ifne +6 -> 66
     //   63: goto +37 -> 100
     //   66: aload 5
@@ -799,7 +799,7 @@ public class QZConfigProviderUtilProxyImpl
     //   69: aload 5
     //   71: astore 4
     //   73: aload 5
-    //   75: invokeinterface 181 1 0
+    //   75: invokeinterface 182 1 0
     //   80: pop
     //   81: aload 5
     //   83: astore_3
@@ -807,7 +807,7 @@ public class QZConfigProviderUtilProxyImpl
     //   86: astore 4
     //   88: aload 5
     //   90: iconst_0
-    //   91: invokeinterface 232 2 0
+    //   91: invokeinterface 233 2 0
     //   96: istore_1
     //   97: goto +5 -> 102
     //   100: iconst_0
@@ -817,7 +817,7 @@ public class QZConfigProviderUtilProxyImpl
     //   104: aload 5
     //   106: ifnull +120 -> 226
     //   109: aload 5
-    //   111: invokeinterface 202 1 0
+    //   111: invokeinterface 203 1 0
     //   116: iload_1
     //   117: istore_2
     //   118: goto +108 -> 226
@@ -837,7 +837,7 @@ public class QZConfigProviderUtilProxyImpl
     //   148: aload 4
     //   150: astore_3
     //   151: aload 6
-    //   153: ldc_w 299
+    //   153: ldc_w 300
     //   156: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload 4
@@ -849,7 +849,7 @@ public class QZConfigProviderUtilProxyImpl
     //   170: aload 4
     //   172: astore_3
     //   173: aload 6
-    //   175: ldc_w 301
+    //   175: ldc_w 302
     //   178: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: pop
     //   182: aload 4
@@ -870,7 +870,7 @@ public class QZConfigProviderUtilProxyImpl
     //   212: aload 4
     //   214: ifnull +10 -> 224
     //   217: aload 4
-    //   219: invokeinterface 202 1 0
+    //   219: invokeinterface 203 1 0
     //   224: iconst_0
     //   225: istore_2
     //   226: iload_2
@@ -882,7 +882,7 @@ public class QZConfigProviderUtilProxyImpl
     //   234: aload_3
     //   235: ifnull +9 -> 244
     //   238: aload_3
-    //   239: invokeinterface 202 1 0
+    //   239: invokeinterface 203 1 0
     //   244: aload_0
     //   245: athrow
     // Local variable table:
@@ -923,12 +923,12 @@ public class QZConfigProviderUtilProxyImpl
     //   4: iconst_0
     //   5: ireturn
     //   6: aload_1
-    //   7: invokeinterface 308 1 0
+    //   7: invokeinterface 309 1 0
     //   12: ifeq +5 -> 17
     //   15: iconst_0
     //   16: ireturn
     //   17: aload_1
-    //   18: invokeinterface 312 1 0
+    //   18: invokeinterface 313 1 0
     //   23: astore_2
     //   24: ldc 10
     //   26: iconst_1
@@ -936,33 +936,33 @@ public class QZConfigProviderUtilProxyImpl
     //   28: anewarray 4	java/lang/Object
     //   31: dup
     //   32: iconst_0
-    //   33: ldc_w 314
+    //   33: ldc_w 315
     //   36: aastore
     //   37: dup
     //   38: iconst_1
     //   39: aload_2
-    //   40: invokeinterface 317 1 0
-    //   45: invokestatic 322	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   40: invokeinterface 318 1 0
+    //   45: invokestatic 323	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   48: aastore
-    //   49: invokestatic 328	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   52: new 330	java/util/ArrayList
+    //   49: invokestatic 329	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   52: new 331	java/util/ArrayList
     //   55: dup
-    //   56: invokespecial 331	java/util/ArrayList:<init>	()V
+    //   56: invokespecial 332	java/util/ArrayList:<init>	()V
     //   59: astore_3
     //   60: aload_2
-    //   61: invokeinterface 335 1 0
+    //   61: invokeinterface 336 1 0
     //   66: astore 4
     //   68: aload 4
-    //   70: invokeinterface 340 1 0
+    //   70: invokeinterface 341 1 0
     //   75: ifeq +359 -> 434
     //   78: aload 4
-    //   80: invokeinterface 344 1 0
+    //   80: invokeinterface 345 1 0
     //   85: checkcast 27	java/lang/String
     //   88: astore_2
     //   89: aload_1
     //   90: aload_2
-    //   91: invokeinterface 348 2 0
-    //   96: checkcast 350	[B
+    //   91: invokeinterface 349 2 0
+    //   96: checkcast 351	[B
     //   99: astore 6
     //   101: aload_2
     //   102: ifnull +329 -> 431
@@ -977,40 +977,40 @@ public class QZConfigProviderUtilProxyImpl
     //   120: anewarray 4	java/lang/Object
     //   123: dup
     //   124: iconst_0
-    //   125: ldc_w 352
+    //   125: ldc_w 353
     //   128: aastore
     //   129: dup
     //   130: iconst_1
     //   131: aload_2
     //   132: aastore
-    //   133: invokestatic 328	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   136: invokestatic 358	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
+    //   133: invokestatic 329	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   136: invokestatic 359	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
     //   139: aload_2
-    //   140: invokevirtual 362	common/config/service/QzoneConfig:deleteConfigs	(Ljava/lang/String;)V
-    //   143: new 364	com/qq/jce/wup/UniAttribute
+    //   140: invokevirtual 363	common/config/service/QzoneConfig:deleteConfigs	(Ljava/lang/String;)V
+    //   143: new 365	com/qq/jce/wup/UniAttribute
     //   146: dup
-    //   147: invokespecial 365	com/qq/jce/wup/UniAttribute:<init>	()V
+    //   147: invokespecial 366	com/qq/jce/wup/UniAttribute:<init>	()V
     //   150: astore 5
     //   152: aload 5
-    //   154: ldc 196
-    //   156: invokevirtual 368	com/qq/jce/wup/UniAttribute:setEncodeName	(Ljava/lang/String;)V
+    //   154: ldc 197
+    //   156: invokevirtual 369	com/qq/jce/wup/UniAttribute:setEncodeName	(Ljava/lang/String;)V
     //   159: aload 5
     //   161: aload 6
-    //   163: invokevirtual 372	com/qq/jce/wup/UniAttribute:decode	([B)V
+    //   163: invokevirtual 373	com/qq/jce/wup/UniAttribute:decode	([B)V
     //   166: aload 5
-    //   168: invokevirtual 375	com/qq/jce/wup/UniAttribute:getKeySet	()Ljava/util/Set;
-    //   171: invokeinterface 335 1 0
+    //   168: invokevirtual 376	com/qq/jce/wup/UniAttribute:getKeySet	()Ljava/util/Set;
+    //   171: invokeinterface 336 1 0
     //   176: astore 6
     //   178: aload 6
-    //   180: invokeinterface 340 1 0
+    //   180: invokeinterface 341 1 0
     //   185: ifeq +172 -> 357
     //   188: aload 6
-    //   190: invokeinterface 344 1 0
+    //   190: invokeinterface 345 1 0
     //   195: checkcast 27	java/lang/String
     //   198: astore 8
     //   200: aload 5
     //   202: aload 8
-    //   204: invokevirtual 378	com/qq/jce/wup/UniAttribute:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   204: invokevirtual 379	com/qq/jce/wup/UniAttribute:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   207: checkcast 27	java/lang/String
     //   210: astore 7
     //   212: aload 8
@@ -1023,7 +1023,7 @@ public class QZConfigProviderUtilProxyImpl
     //   228: anewarray 4	java/lang/Object
     //   231: dup
     //   232: iconst_0
-    //   233: ldc_w 380
+    //   233: ldc_w 381
     //   236: aastore
     //   237: dup
     //   238: iconst_1
@@ -1031,7 +1031,7 @@ public class QZConfigProviderUtilProxyImpl
     //   240: aastore
     //   241: dup
     //   242: iconst_2
-    //   243: ldc_w 382
+    //   243: ldc_w 383
     //   246: aastore
     //   247: dup
     //   248: iconst_3
@@ -1039,60 +1039,60 @@ public class QZConfigProviderUtilProxyImpl
     //   251: aastore
     //   252: dup
     //   253: iconst_4
-    //   254: ldc_w 384
+    //   254: ldc_w 385
     //   257: aastore
     //   258: dup
     //   259: iconst_5
     //   260: aload 7
     //   262: aastore
-    //   263: invokestatic 328	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   263: invokestatic 329	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   266: aload_2
     //   267: invokevirtual 31	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   270: astore_2
     //   271: aload 8
     //   273: invokevirtual 31	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   276: astore 8
-    //   278: new 271	android/content/ContentValues
+    //   278: new 272	android/content/ContentValues
     //   281: dup
-    //   282: invokespecial 272	android/content/ContentValues:<init>	()V
+    //   282: invokespecial 273	android/content/ContentValues:<init>	()V
     //   285: astore 9
     //   287: aload 9
-    //   289: ldc_w 386
+    //   289: ldc_w 387
     //   292: aload_2
-    //   293: invokevirtual 278	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   293: invokevirtual 279	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   296: aload 9
-    //   298: ldc_w 388
+    //   298: ldc_w 389
     //   301: aload 8
-    //   303: invokevirtual 278	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   303: invokevirtual 279	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   306: aload 9
-    //   308: ldc 183
+    //   308: ldc 184
     //   310: aload 7
-    //   312: invokevirtual 278	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   315: invokestatic 358	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
+    //   312: invokevirtual 279	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   315: invokestatic 359	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
     //   318: aload_2
     //   319: aload 8
     //   321: aload 7
     //   323: iconst_0
-    //   324: invokevirtual 392	common/config/service/QzoneConfig:updateOneConfig	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   324: invokevirtual 393	common/config/service/QzoneConfig:updateOneConfig	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
     //   327: aload_3
     //   328: aload 9
-    //   330: invokevirtual 393	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   330: invokevirtual 394	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   333: pop
     //   334: aload_2
     //   335: aload 8
     //   337: aload 7
-    //   339: invokestatic 397	com/tencent/qzonehub/api/impl/QZConfigProviderUtilProxyImpl:saveMiniAppConfig	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   339: invokestatic 398	com/tencent/qzonehub/api/impl/QZConfigProviderUtilProxyImpl:saveMiniAppConfig	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   342: aload_0
     //   343: aload_2
     //   344: aload 8
     //   346: aload 7
-    //   348: invokevirtual 400	com/tencent/qzonehub/api/impl/QZConfigProviderUtilProxyImpl:saveHighPriorityConfig	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   348: invokevirtual 401	com/tencent/qzonehub/api/impl/QZConfigProviderUtilProxyImpl:saveHighPriorityConfig	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   351: goto -173 -> 178
     //   354: goto -176 -> 178
     //   357: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   360: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   363: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:a	Landroid/net/Uri;
-    //   366: ldc_w 402
+    //   363: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:b	Landroid/net/Uri;
+    //   366: ldc_w 403
     //   369: iconst_1
     //   370: anewarray 27	java/lang/String
     //   373: dup
@@ -1109,13 +1109,13 @@ public class QZConfigProviderUtilProxyImpl
     //   391: anewarray 4	java/lang/Object
     //   394: dup
     //   395: iconst_0
-    //   396: ldc_w 404
+    //   396: ldc_w 405
     //   399: aastore
     //   400: dup
     //   401: iconst_1
     //   402: aload_2
     //   403: aastore
-    //   404: invokestatic 328	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   404: invokestatic 329	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   407: goto -339 -> 68
     //   410: astore_2
     //   411: ldc 10
@@ -1125,25 +1125,25 @@ public class QZConfigProviderUtilProxyImpl
     //   416: anewarray 4	java/lang/Object
     //   419: dup
     //   420: iconst_0
-    //   421: ldc_w 406
+    //   421: ldc_w 407
     //   424: aastore
-    //   425: invokestatic 407	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   425: invokestatic 408	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   428: goto -360 -> 68
     //   431: goto -363 -> 68
     //   434: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   437: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   440: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:a	Landroid/net/Uri;
+    //   440: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:b	Landroid/net/Uri;
     //   443: aload_3
     //   444: aload_3
-    //   445: invokevirtual 408	java/util/ArrayList:size	()I
-    //   448: anewarray 271	android/content/ContentValues
-    //   451: invokevirtual 412	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   454: checkcast 414	[Landroid/content/ContentValues;
-    //   457: checkcast 414	[Landroid/content/ContentValues;
-    //   460: invokevirtual 264	android/content/ContentResolver:bulkInsert	(Landroid/net/Uri;[Landroid/content/ContentValues;)I
+    //   445: invokevirtual 409	java/util/ArrayList:size	()I
+    //   448: anewarray 272	android/content/ContentValues
+    //   451: invokevirtual 413	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   454: checkcast 415	[Landroid/content/ContentValues;
+    //   457: checkcast 415	[Landroid/content/ContentValues;
+    //   460: invokevirtual 265	android/content/ContentResolver:bulkInsert	(Landroid/net/Uri;[Landroid/content/ContentValues;)I
     //   463: pop
     //   464: aload_3
-    //   465: invokevirtual 415	java/util/ArrayList:clear	()V
+    //   465: invokevirtual 416	java/util/ArrayList:clear	()V
     //   468: iconst_1
     //   469: ireturn
     //   470: astore_1
@@ -1156,9 +1156,9 @@ public class QZConfigProviderUtilProxyImpl
     //   480: anewarray 4	java/lang/Object
     //   483: dup
     //   484: iconst_0
-    //   485: ldc_w 417
+    //   485: ldc_w 418
     //   488: aastore
-    //   489: invokestatic 407	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   489: invokestatic 408	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   492: goto +21 -> 513
     //   495: astore_1
     //   496: ldc 10
@@ -1168,15 +1168,15 @@ public class QZConfigProviderUtilProxyImpl
     //   501: anewarray 4	java/lang/Object
     //   504: dup
     //   505: iconst_0
-    //   506: ldc_w 417
+    //   506: ldc_w 418
     //   509: aastore
-    //   510: invokestatic 407	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   510: invokestatic 408	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   513: aload_3
-    //   514: invokevirtual 415	java/util/ArrayList:clear	()V
+    //   514: invokevirtual 416	java/util/ArrayList:clear	()V
     //   517: iconst_0
     //   518: ireturn
     //   519: aload_3
-    //   520: invokevirtual 415	java/util/ArrayList:clear	()V
+    //   520: invokevirtual 416	java/util/ArrayList:clear	()V
     //   523: goto +5 -> 528
     //   526: aload_1
     //   527: athrow
@@ -1420,7 +1420,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.d, null, null);
+      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.e, null, null);
       return;
     }
     catch (Exception localException)
@@ -1480,7 +1480,7 @@ public class QZConfigProviderUtilProxyImpl
   {
     try
     {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.c, null, null);
+      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.d, null, null);
       return;
     }
     catch (Exception localException)
@@ -1505,12 +1505,12 @@ public class QZConfigProviderUtilProxyImpl
     //   3: astore_2
     //   4: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   7: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   10: getstatic 133	com/tencent/common/config/provider/QZoneConfigProvider:b	Landroid/net/Uri;
+    //   10: getstatic 133	com/tencent/common/config/provider/QZoneConfigProvider:c	Landroid/net/Uri;
     //   13: aconst_null
     //   14: aconst_null
     //   15: aconst_null
     //   16: aconst_null
-    //   17: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   17: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   20: astore_3
     //   21: aload_3
     //   22: ifnull +62 -> 84
@@ -1519,7 +1519,7 @@ public class QZConfigProviderUtilProxyImpl
     //   27: aload_3
     //   28: astore_1
     //   29: aload_3
-    //   30: invokeinterface 181 1 0
+    //   30: invokeinterface 182 1 0
     //   35: ifeq +49 -> 84
     //   38: aload_3
     //   39: astore_2
@@ -1530,16 +1530,16 @@ public class QZConfigProviderUtilProxyImpl
     //   46: aload_3
     //   47: aload_3
     //   48: ldc_w 593
-    //   51: invokeinterface 186 2 0
-    //   56: invokeinterface 190 2 0
-    //   61: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   64: ldc 196
-    //   66: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   51: invokeinterface 187 2 0
+    //   56: invokeinterface 191 2 0
+    //   61: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   64: ldc 197
+    //   66: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   69: astore 4
     //   71: aload_3
     //   72: ifnull +9 -> 81
     //   75: aload_3
-    //   76: invokeinterface 202 1 0
+    //   76: invokeinterface 203 1 0
     //   81: aload 4
     //   83: areturn
     //   84: aload_3
@@ -1584,13 +1584,13 @@ public class QZConfigProviderUtilProxyImpl
     //   154: aload_1
     //   155: ifnull +9 -> 164
     //   158: aload_1
-    //   159: invokeinterface 202 1 0
-    //   164: ldc 210
+    //   159: invokeinterface 203 1 0
+    //   164: ldc 211
     //   166: areturn
     //   167: aload_2
     //   168: ifnull +9 -> 177
     //   171: aload_2
-    //   172: invokeinterface 202 1 0
+    //   172: invokeinterface 203 1 0
     //   177: aload_1
     //   178: athrow
     // Local variable table:
@@ -1679,12 +1679,12 @@ public class QZConfigProviderUtilProxyImpl
     //   3: astore 4
     //   5: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   8: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   11: getstatic 139	com/tencent/common/config/provider/QZoneConfigProvider:f	Landroid/net/Uri;
+    //   11: getstatic 139	com/tencent/common/config/provider/QZoneConfigProvider:g	Landroid/net/Uri;
     //   14: aconst_null
     //   15: aconst_null
     //   16: aconst_null
     //   17: aconst_null
-    //   18: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   18: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   21: astore 5
     //   23: aload 5
     //   25: ifnull +59 -> 84
@@ -1693,7 +1693,7 @@ public class QZConfigProviderUtilProxyImpl
     //   32: aload 5
     //   34: astore_3
     //   35: aload 5
-    //   37: invokeinterface 181 1 0
+    //   37: invokeinterface 182 1 0
     //   42: ifeq +42 -> 84
     //   45: aload 5
     //   47: astore 4
@@ -1702,13 +1702,13 @@ public class QZConfigProviderUtilProxyImpl
     //   52: aload 5
     //   54: aload 5
     //   56: ldc_w 622
-    //   59: invokeinterface 186 2 0
+    //   59: invokeinterface 187 2 0
     //   64: invokeinterface 626 2 0
     //   69: lstore_1
     //   70: aload 5
     //   72: ifnull +10 -> 82
     //   75: aload 5
-    //   77: invokeinterface 202 1 0
+    //   77: invokeinterface 203 1 0
     //   82: lload_1
     //   83: lreturn
     //   84: aload 5
@@ -1753,13 +1753,13 @@ public class QZConfigProviderUtilProxyImpl
     //   164: aload_3
     //   165: ifnull +9 -> 174
     //   168: aload_3
-    //   169: invokeinterface 202 1 0
+    //   169: invokeinterface 203 1 0
     //   174: lconst_0
     //   175: lreturn
     //   176: aload 4
     //   178: ifnull +10 -> 188
     //   181: aload 4
-    //   183: invokeinterface 202 1 0
+    //   183: invokeinterface 203 1 0
     //   188: aload_3
     //   189: athrow
     // Local variable table:
@@ -1791,7 +1791,7 @@ public class QZConfigProviderUtilProxyImpl
   public String getLastUpdate()
   {
     // Byte code:
-    //   0: ldc 210
+    //   0: ldc 211
     //   2: astore_3
     //   3: aconst_null
     //   4: astore_1
@@ -1799,12 +1799,12 @@ public class QZConfigProviderUtilProxyImpl
     //   6: astore 4
     //   8: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   11: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   14: getstatic 588	com/tencent/common/config/provider/QZoneConfigProvider:c	Landroid/net/Uri;
+    //   14: getstatic 588	com/tencent/common/config/provider/QZoneConfigProvider:d	Landroid/net/Uri;
     //   17: aconst_null
     //   18: aconst_null
     //   19: aconst_null
     //   20: aconst_null
-    //   21: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   21: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   24: astore 5
     //   26: aload_3
     //   27: astore_2
@@ -1817,7 +1817,7 @@ public class QZConfigProviderUtilProxyImpl
     //   39: aload 5
     //   41: astore_1
     //   42: aload 5
-    //   44: invokeinterface 181 1 0
+    //   44: invokeinterface 182 1 0
     //   49: ifeq +28 -> 77
     //   52: aload 5
     //   54: astore 4
@@ -1826,8 +1826,8 @@ public class QZConfigProviderUtilProxyImpl
     //   59: aload 5
     //   61: aload 5
     //   63: ldc_w 631
-    //   66: invokeinterface 186 2 0
-    //   71: invokeinterface 190 2 0
+    //   66: invokeinterface 187 2 0
+    //   71: invokeinterface 191 2 0
     //   76: astore_2
     //   77: aload_2
     //   78: astore 4
@@ -1836,7 +1836,7 @@ public class QZConfigProviderUtilProxyImpl
     //   85: aload 5
     //   87: astore_1
     //   88: aload_1
-    //   89: invokeinterface 202 1 0
+    //   89: invokeinterface 203 1 0
     //   94: aload_2
     //   95: areturn
     //   96: astore_1
@@ -1885,7 +1885,7 @@ public class QZConfigProviderUtilProxyImpl
     //   177: aload 4
     //   179: ifnull +10 -> 189
     //   182: aload 4
-    //   184: invokeinterface 202 1 0
+    //   184: invokeinterface 203 1 0
     //   189: goto +5 -> 194
     //   192: aload_1
     //   193: athrow
@@ -1923,7 +1923,7 @@ public class QZConfigProviderUtilProxyImpl
     //   0: aload_1
     //   1: ifnull +467 -> 468
     //   4: aload_1
-    //   5: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   5: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   8: ifgt +5 -> 13
     //   11: iconst_0
     //   12: ireturn
@@ -1932,11 +1932,11 @@ public class QZConfigProviderUtilProxyImpl
     //   17: iconst_0
     //   18: ireturn
     //   19: aload_2
-    //   20: invokevirtual 415	java/util/ArrayList:clear	()V
+    //   20: invokevirtual 416	java/util/ArrayList:clear	()V
     //   23: aload_1
-    //   24: ldc 208
-    //   26: ldc 210
-    //   28: invokevirtual 214	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   24: ldc 209
+    //   26: ldc 211
+    //   28: invokevirtual 215	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   31: astore_1
     //   32: new 112	java/lang/StringBuilder
     //   35: dup
@@ -1963,12 +1963,12 @@ public class QZConfigProviderUtilProxyImpl
     //   76: astore 4
     //   78: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   81: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   84: getstatic 222	com/tencent/common/config/provider/QZoneConfigProvider:g	Landroid/net/Uri;
+    //   84: getstatic 223	com/tencent/common/config/provider/QZoneConfigProvider:h	Landroid/net/Uri;
     //   87: aconst_null
     //   88: aload 5
     //   90: aconst_null
     //   91: aconst_null
-    //   92: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   92: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   95: astore 5
     //   97: aload 5
     //   99: ifnull +264 -> 363
@@ -1977,89 +1977,89 @@ public class QZConfigProviderUtilProxyImpl
     //   106: aload 5
     //   108: astore_1
     //   109: aload 5
-    //   111: invokeinterface 181 1 0
+    //   111: invokeinterface 182 1 0
     //   116: ifeq +247 -> 363
     //   119: aload 5
     //   121: astore 4
     //   123: aload 5
     //   125: astore_1
     //   126: aload_2
-    //   127: new 226	NS_UNDEAL_COUNT/entrance_cfg
+    //   127: new 227	NS_UNDEAL_COUNT/entrance_cfg
     //   130: dup
     //   131: aload 5
     //   133: aload 5
-    //   135: ldc 228
-    //   137: invokeinterface 186 2 0
-    //   142: invokeinterface 232 2 0
+    //   135: ldc 229
+    //   137: invokeinterface 187 2 0
+    //   142: invokeinterface 233 2 0
     //   147: new 27	java/lang/String
     //   150: dup
     //   151: aload 5
     //   153: aload 5
-    //   155: ldc 234
-    //   157: invokeinterface 186 2 0
-    //   162: invokeinterface 190 2 0
-    //   167: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   170: ldc 196
-    //   172: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   155: ldc 235
+    //   157: invokeinterface 187 2 0
+    //   162: invokeinterface 191 2 0
+    //   167: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   170: ldc 197
+    //   172: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   175: new 27	java/lang/String
     //   178: dup
     //   179: aload 5
     //   181: aload 5
-    //   183: ldc 236
-    //   185: invokeinterface 186 2 0
-    //   190: invokeinterface 190 2 0
-    //   195: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   198: ldc 196
-    //   200: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   183: ldc 237
+    //   185: invokeinterface 187 2 0
+    //   190: invokeinterface 191 2 0
+    //   195: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   198: ldc 197
+    //   200: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   203: new 27	java/lang/String
     //   206: dup
     //   207: aload 5
     //   209: aload 5
-    //   211: ldc 238
-    //   213: invokeinterface 186 2 0
-    //   218: invokeinterface 190 2 0
-    //   223: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   226: ldc 196
-    //   228: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   211: ldc 239
+    //   213: invokeinterface 187 2 0
+    //   218: invokeinterface 191 2 0
+    //   223: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   226: ldc 197
+    //   228: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   231: aload 5
     //   233: aload 5
-    //   235: ldc 240
-    //   237: invokeinterface 186 2 0
-    //   242: invokeinterface 232 2 0
+    //   235: ldc 241
+    //   237: invokeinterface 187 2 0
+    //   242: invokeinterface 233 2 0
     //   247: aload 5
     //   249: aload 5
-    //   251: ldc 242
-    //   253: invokeinterface 186 2 0
-    //   258: invokeinterface 232 2 0
+    //   251: ldc 243
+    //   253: invokeinterface 187 2 0
+    //   258: invokeinterface 233 2 0
     //   263: new 27	java/lang/String
     //   266: dup
     //   267: aload 5
     //   269: aload 5
-    //   271: ldc 244
-    //   273: invokeinterface 186 2 0
-    //   278: invokeinterface 190 2 0
-    //   283: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   286: ldc 196
-    //   288: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   271: ldc 245
+    //   273: invokeinterface 187 2 0
+    //   278: invokeinterface 191 2 0
+    //   283: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   286: ldc 197
+    //   288: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   291: new 27	java/lang/String
     //   294: dup
     //   295: aload 5
     //   297: aload 5
-    //   299: ldc 246
-    //   301: invokeinterface 186 2 0
-    //   306: invokeinterface 190 2 0
-    //   311: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   314: ldc 196
-    //   316: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   299: ldc 247
+    //   301: invokeinterface 187 2 0
+    //   306: invokeinterface 191 2 0
+    //   311: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   314: ldc 197
+    //   316: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   319: iconst_0
     //   320: aconst_null
     //   321: aload 5
     //   323: aload 5
-    //   325: ldc 248
-    //   327: invokeinterface 186 2 0
-    //   332: invokeinterface 232 2 0
-    //   337: invokespecial 251	NS_UNDEAL_COUNT/entrance_cfg:<init>	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ILNS_UNDEAL_COUNT/st_report_info;I)V
-    //   340: invokevirtual 393	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   325: ldc 249
+    //   327: invokeinterface 187 2 0
+    //   332: invokeinterface 233 2 0
+    //   337: invokespecial 252	NS_UNDEAL_COUNT/entrance_cfg:<init>	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ILNS_UNDEAL_COUNT/st_report_info;I)V
+    //   340: invokevirtual 394	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   343: pop
     //   344: aload 5
     //   346: astore 4
@@ -2075,7 +2075,7 @@ public class QZConfigProviderUtilProxyImpl
     //   368: aload 5
     //   370: astore_1
     //   371: aload_1
-    //   372: invokeinterface 202 1 0
+    //   372: invokeinterface 203 1 0
     //   377: iconst_0
     //   378: ireturn
     //   379: astore_1
@@ -2120,7 +2120,7 @@ public class QZConfigProviderUtilProxyImpl
     //   454: aload 4
     //   456: ifnull +10 -> 466
     //   459: aload 4
-    //   461: invokeinterface 202 1 0
+    //   461: invokeinterface 203 1 0
     //   466: aload_1
     //   467: athrow
     //   468: iconst_0
@@ -2163,20 +2163,20 @@ public class QZConfigProviderUtilProxyImpl
     //   9: aload_1
     //   10: ifnull +206 -> 216
     //   13: aload_1
-    //   14: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   14: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   17: ifgt +5 -> 22
     //   20: aconst_null
     //   21: areturn
     //   22: aload_2
     //   23: ifnull +193 -> 216
     //   26: aload_2
-    //   27: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   27: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   30: ifgt +5 -> 35
     //   33: aconst_null
     //   34: areturn
     //   35: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   38: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   41: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:a	Landroid/net/Uri;
+    //   41: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:b	Landroid/net/Uri;
     //   44: aconst_null
     //   45: ldc_w 648
     //   48: iconst_2
@@ -2190,7 +2190,7 @@ public class QZConfigProviderUtilProxyImpl
     //   58: aload_2
     //   59: aastore
     //   60: aconst_null
-    //   61: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   61: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   64: astore_3
     //   65: aload 4
     //   67: astore_1
@@ -2201,15 +2201,15 @@ public class QZConfigProviderUtilProxyImpl
     //   75: aload_3
     //   76: astore_2
     //   77: aload_3
-    //   78: invokeinterface 181 1 0
+    //   78: invokeinterface 182 1 0
     //   83: ifeq +30 -> 113
     //   86: aload_3
     //   87: astore_2
     //   88: aload_3
     //   89: aload_3
-    //   90: ldc 183
-    //   92: invokeinterface 186 2 0
-    //   97: invokeinterface 190 2 0
+    //   90: ldc 184
+    //   92: invokeinterface 187 2 0
+    //   97: invokeinterface 191 2 0
     //   102: astore_1
     //   103: goto +10 -> 113
     //   106: astore 4
@@ -2223,12 +2223,12 @@ public class QZConfigProviderUtilProxyImpl
     //   119: aload_1
     //   120: astore_2
     //   121: aload_3
-    //   122: invokeinterface 202 1 0
+    //   122: invokeinterface 203 1 0
     //   127: aload_1
     //   128: areturn
     //   129: astore_1
     //   130: aload_1
-    //   131: invokevirtual 254	java/lang/Exception:printStackTrace	()V
+    //   131: invokevirtual 255	java/lang/Exception:printStackTrace	()V
     //   134: aload_2
     //   135: areturn
     //   136: astore_1
@@ -2253,7 +2253,7 @@ public class QZConfigProviderUtilProxyImpl
     //   166: iconst_0
     //   167: ldc_w 650
     //   170: aastore
-    //   171: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   171: invokestatic 171	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   174: aload 5
     //   176: astore_2
     //   177: aload_1
@@ -2261,7 +2261,7 @@ public class QZConfigProviderUtilProxyImpl
     //   181: aload 6
     //   183: astore_2
     //   184: aload_1
-    //   185: invokeinterface 202 1 0
+    //   185: invokeinterface 203 1 0
     //   190: aload 5
     //   192: astore_2
     //   193: aload_2
@@ -2270,11 +2270,11 @@ public class QZConfigProviderUtilProxyImpl
     //   196: aload_2
     //   197: ifnull +17 -> 214
     //   200: aload_2
-    //   201: invokeinterface 202 1 0
+    //   201: invokeinterface 203 1 0
     //   206: goto +8 -> 214
     //   209: astore_2
     //   210: aload_2
-    //   211: invokevirtual 254	java/lang/Exception:printStackTrace	()V
+    //   211: invokevirtual 255	java/lang/Exception:printStackTrace	()V
     //   214: aload_1
     //   215: athrow
     //   216: aconst_null
@@ -2343,19 +2343,19 @@ public class QZConfigProviderUtilProxyImpl
     //   10: aload 7
     //   12: astore 5
     //   14: aload_1
-    //   15: invokeinterface 667 1 0
+    //   15: invokeinterface 668 1 0
     //   20: aload 6
     //   22: astore 4
     //   24: aload 7
     //   26: astore 5
     //   28: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   31: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   34: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:a	Landroid/net/Uri;
+    //   34: getstatic 98	com/tencent/common/config/provider/QZoneConfigProvider:b	Landroid/net/Uri;
     //   37: aconst_null
     //   38: aconst_null
     //   39: aconst_null
     //   40: aconst_null
-    //   41: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   41: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   44: astore 6
     //   46: aload 6
     //   48: ifnull +182 -> 230
@@ -2372,7 +2372,7 @@ public class QZConfigProviderUtilProxyImpl
     //   75: astore 5
     //   77: aload 6
     //   79: iconst_0
-    //   80: invokeinterface 190 2 0
+    //   80: invokeinterface 191 2 0
     //   85: astore 9
     //   87: aload 6
     //   89: astore 4
@@ -2380,7 +2380,7 @@ public class QZConfigProviderUtilProxyImpl
     //   93: astore 5
     //   95: aload 6
     //   97: iconst_1
-    //   98: invokeinterface 190 2 0
+    //   98: invokeinterface 191 2 0
     //   103: astore 10
     //   105: aload 9
     //   107: ifnull -56 -> 51
@@ -2392,7 +2392,7 @@ public class QZConfigProviderUtilProxyImpl
     //   121: astore 5
     //   123: aload 6
     //   125: iconst_2
-    //   126: invokeinterface 190 2 0
+    //   126: invokeinterface 191 2 0
     //   131: astore 11
     //   133: aload 6
     //   135: astore 4
@@ -2400,8 +2400,8 @@ public class QZConfigProviderUtilProxyImpl
     //   139: astore 5
     //   141: aload_1
     //   142: aload 9
-    //   144: invokeinterface 348 2 0
-    //   149: checkcast 669	java/util/concurrent/ConcurrentHashMap
+    //   144: invokeinterface 349 2 0
+    //   149: checkcast 670	java/util/concurrent/ConcurrentHashMap
     //   152: astore 8
     //   154: aload 8
     //   156: astore 7
@@ -2411,9 +2411,9 @@ public class QZConfigProviderUtilProxyImpl
     //   165: astore 4
     //   167: aload 6
     //   169: astore 5
-    //   171: new 669	java/util/concurrent/ConcurrentHashMap
+    //   171: new 670	java/util/concurrent/ConcurrentHashMap
     //   174: dup
-    //   175: invokespecial 670	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   175: invokespecial 671	java/util/concurrent/ConcurrentHashMap:<init>	()V
     //   178: astore 7
     //   180: aload 6
     //   182: astore 4
@@ -2422,7 +2422,7 @@ public class QZConfigProviderUtilProxyImpl
     //   188: aload_1
     //   189: aload 9
     //   191: aload 7
-    //   193: invokeinterface 673 3 0
+    //   193: invokeinterface 674 3 0
     //   198: pop
     //   199: aload 7
     //   201: ifnull -150 -> 51
@@ -2433,7 +2433,7 @@ public class QZConfigProviderUtilProxyImpl
     //   212: aload 7
     //   214: aload 10
     //   216: aload 11
-    //   218: invokevirtual 674	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   218: invokevirtual 675	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   221: pop
     //   222: goto -171 -> 51
     //   225: iconst_1
@@ -2446,7 +2446,7 @@ public class QZConfigProviderUtilProxyImpl
     //   234: aload 6
     //   236: ifnull +117 -> 353
     //   239: aload 6
-    //   241: invokeinterface 202 1 0
+    //   241: invokeinterface 203 1 0
     //   246: iload_2
     //   247: ireturn
     //   248: astore_1
@@ -2461,9 +2461,9 @@ public class QZConfigProviderUtilProxyImpl
     //   262: anewarray 4	java/lang/Object
     //   265: dup
     //   266: iconst_0
-    //   267: ldc_w 676
+    //   267: ldc_w 677
     //   270: aastore
-    //   271: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   271: invokestatic 171	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   274: iload_2
     //   275: ireturn
     //   276: astore_1
@@ -2482,13 +2482,13 @@ public class QZConfigProviderUtilProxyImpl
     //   300: anewarray 4	java/lang/Object
     //   303: dup
     //   304: iconst_0
-    //   305: ldc_w 676
+    //   305: ldc_w 677
     //   308: aastore
-    //   309: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   309: invokestatic 171	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   312: aload 5
     //   314: ifnull +37 -> 351
     //   317: aload 5
-    //   319: invokeinterface 202 1 0
+    //   319: invokeinterface 203 1 0
     //   324: goto +27 -> 351
     //   327: astore_1
     //   328: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -2500,9 +2500,9 @@ public class QZConfigProviderUtilProxyImpl
     //   339: anewarray 4	java/lang/Object
     //   342: dup
     //   343: iconst_0
-    //   344: ldc_w 676
+    //   344: ldc_w 677
     //   347: aastore
-    //   348: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   348: invokestatic 171	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   351: iconst_0
     //   352: istore_3
     //   353: iload_3
@@ -2510,7 +2510,7 @@ public class QZConfigProviderUtilProxyImpl
     //   355: aload 4
     //   357: ifnull +39 -> 396
     //   360: aload 4
-    //   362: invokeinterface 202 1 0
+    //   362: invokeinterface 203 1 0
     //   367: goto +29 -> 396
     //   370: astore 4
     //   372: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -2522,9 +2522,9 @@ public class QZConfigProviderUtilProxyImpl
     //   384: anewarray 4	java/lang/Object
     //   387: dup
     //   388: iconst_0
-    //   389: ldc_w 676
+    //   389: ldc_w 677
     //   392: aastore
-    //   393: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   393: invokestatic 171	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   396: goto +5 -> 401
     //   399: aload_1
     //   400: athrow
@@ -2577,25 +2577,25 @@ public class QZConfigProviderUtilProxyImpl
   public Map<String, String> loadIspConfigs()
   {
     // Byte code:
-    //   0: new 681	java/util/HashMap
+    //   0: new 682	java/util/HashMap
     //   3: dup
-    //   4: invokespecial 682	java/util/HashMap:<init>	()V
+    //   4: invokespecial 683	java/util/HashMap:<init>	()V
     //   7: astore 4
     //   9: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   12: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   15: getstatic 144	com/tencent/common/config/provider/QZoneConfigProvider:e	Landroid/net/Uri;
+    //   15: getstatic 145	com/tencent/common/config/provider/QZoneConfigProvider:f	Landroid/net/Uri;
     //   18: aconst_null
     //   19: aconst_null
     //   20: aconst_null
     //   21: aconst_null
-    //   22: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   22: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   25: astore_3
     //   26: aload_3
     //   27: ifnull +98 -> 125
     //   30: aload_3
     //   31: astore_2
     //   32: aload_3
-    //   33: invokeinterface 181 1 0
+    //   33: invokeinterface 182 1 0
     //   38: ifeq +87 -> 125
     //   41: aload_3
     //   42: astore_2
@@ -2604,23 +2604,23 @@ public class QZConfigProviderUtilProxyImpl
     //   48: dup
     //   49: aload_3
     //   50: aload_3
-    //   51: ldc_w 274
-    //   54: invokeinterface 186 2 0
-    //   59: invokeinterface 190 2 0
-    //   64: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   67: ldc 196
-    //   69: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   51: ldc_w 275
+    //   54: invokeinterface 187 2 0
+    //   59: invokeinterface 191 2 0
+    //   64: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   67: ldc 197
+    //   69: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
     //   72: new 27	java/lang/String
     //   75: dup
     //   76: aload_3
     //   77: aload_3
-    //   78: ldc 183
-    //   80: invokeinterface 186 2 0
-    //   85: invokeinterface 190 2 0
-    //   90: invokevirtual 194	java/lang/String:getBytes	()[B
-    //   93: ldc 196
-    //   95: invokespecial 199	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   98: invokeinterface 673 3 0
+    //   78: ldc 184
+    //   80: invokeinterface 187 2 0
+    //   85: invokeinterface 191 2 0
+    //   90: invokevirtual 195	java/lang/String:getBytes	()[B
+    //   93: ldc 197
+    //   95: invokespecial 200	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   98: invokeinterface 674 3 0
     //   103: pop
     //   104: aload_3
     //   105: astore_2
@@ -2635,7 +2635,7 @@ public class QZConfigProviderUtilProxyImpl
     //   125: aload_3
     //   126: ifnull +9 -> 135
     //   129: aload_3
-    //   130: invokeinterface 202 1 0
+    //   130: invokeinterface 203 1 0
     //   135: aload 4
     //   137: areturn
     //   138: astore_2
@@ -2658,7 +2658,7 @@ public class QZConfigProviderUtilProxyImpl
     //   167: aload_3
     //   168: astore_2
     //   169: aload 5
-    //   171: ldc_w 684
+    //   171: ldc_w 685
     //   174: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload_3
@@ -2679,7 +2679,7 @@ public class QZConfigProviderUtilProxyImpl
     //   206: aload_3
     //   207: ifnull +9 -> 216
     //   210: aload_3
-    //   211: invokeinterface 202 1 0
+    //   211: invokeinterface 203 1 0
     //   216: aconst_null
     //   217: areturn
     //   218: astore 4
@@ -2690,7 +2690,7 @@ public class QZConfigProviderUtilProxyImpl
     //   225: aload_3
     //   226: ifnull +9 -> 235
     //   229: aload_3
-    //   230: invokeinterface 202 1 0
+    //   230: invokeinterface 203 1 0
     //   235: goto +5 -> 240
     //   238: aload_2
     //   239: athrow
@@ -2732,26 +2732,26 @@ public class QZConfigProviderUtilProxyImpl
     //   0: aload_1
     //   1: ifnull +156 -> 157
     //   4: aload_1
-    //   5: invokestatic 154	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
+    //   5: invokestatic 155	android/text/TextUtils:getTrimmedLength	(Ljava/lang/CharSequence;)I
     //   8: ifgt +5 -> 13
     //   11: iconst_0
     //   12: ireturn
-    //   13: new 271	android/content/ContentValues
+    //   13: new 272	android/content/ContentValues
     //   16: dup
-    //   17: invokespecial 272	android/content/ContentValues:<init>	()V
+    //   17: invokespecial 273	android/content/ContentValues:<init>	()V
     //   20: astore_2
     //   21: aload_2
     //   22: ldc_w 631
     //   25: aload_1
-    //   26: invokevirtual 278	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: invokevirtual 279	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: invokestatic 88	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   32: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   35: getstatic 588	com/tencent/common/config/provider/QZoneConfigProvider:c	Landroid/net/Uri;
+    //   35: getstatic 588	com/tencent/common/config/provider/QZoneConfigProvider:d	Landroid/net/Uri;
     //   38: aload_2
-    //   39: invokevirtual 282	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   39: invokevirtual 283	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
     //   42: pop
     //   43: aload_2
-    //   44: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   44: invokevirtual 286	android/content/ContentValues:clear	()V
     //   47: iconst_1
     //   48: ireturn
     //   49: astore_1
@@ -2764,7 +2764,7 @@ public class QZConfigProviderUtilProxyImpl
     //   64: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   67: astore_3
     //   68: aload_3
-    //   69: ldc_w 688
+    //   69: ldc_w 689
     //   72: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: pop
     //   76: aload_3
@@ -2779,7 +2779,7 @@ public class QZConfigProviderUtilProxyImpl
     //   92: aload_1
     //   93: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   96: aload_2
-    //   97: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   97: invokevirtual 286	android/content/ContentValues:clear	()V
     //   100: iconst_0
     //   101: ireturn
     //   102: astore_1
@@ -2790,12 +2790,12 @@ public class QZConfigProviderUtilProxyImpl
     //   113: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   116: astore_3
     //   117: aload_3
-    //   118: ldc_w 688
+    //   118: ldc_w 689
     //   121: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: pop
     //   125: aload_3
     //   126: aload_1
-    //   127: invokevirtual 267	android/database/SQLException:getMessage	()Ljava/lang/String;
+    //   127: invokevirtual 268	android/database/SQLException:getMessage	()Ljava/lang/String;
     //   130: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: pop
     //   134: ldc 10
@@ -2805,11 +2805,11 @@ public class QZConfigProviderUtilProxyImpl
     //   141: aload_1
     //   142: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   145: aload_2
-    //   146: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   146: invokevirtual 286	android/content/ContentValues:clear	()V
     //   149: iconst_0
     //   150: ireturn
     //   151: aload_2
-    //   152: invokevirtual 285	android/content/ContentValues:clear	()V
+    //   152: invokevirtual 286	android/content/ContentValues:clear	()V
     //   155: aload_1
     //   156: athrow
     //   157: iconst_0
@@ -2844,7 +2844,7 @@ public class QZConfigProviderUtilProxyImpl
     QLog.i("ConfigProvider", 1, ((StringBuilder)localObject).toString());
     try
     {
-      paramString = BaseApplication.getContext().getContentResolver().insert(QZoneConfigProvider.b, localContentValues);
+      paramString = BaseApplication.getContext().getContentResolver().insert(QZoneConfigProvider.c, localContentValues);
       if (paramString != null)
       {
         localObject = new StringBuilder();
@@ -2921,7 +2921,7 @@ public class QZConfigProviderUtilProxyImpl
     }
     try
     {
-      BaseApplication.getContext().getContentResolver().insert(QZoneConfigProvider.f, localContentValues);
+      BaseApplication.getContext().getContentResolver().insert(QZoneConfigProvider.g, localContentValues);
     }
     catch (Exception localException)
     {
@@ -3019,7 +3019,7 @@ public class QZConfigProviderUtilProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QZConfigProviderUtilProxyImpl
  * JD-Core Version:    0.7.0.1
  */

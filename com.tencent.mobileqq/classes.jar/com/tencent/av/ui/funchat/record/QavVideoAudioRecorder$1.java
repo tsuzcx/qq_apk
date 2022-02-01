@@ -13,7 +13,7 @@ class QavVideoAudioRecorder$1
   
   public void run()
   {
-    EncodeInputSurface localEncodeInputSurface = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface;
+    EncodeInputSurface localEncodeInputSurface = this.a;
     if (localEncodeInputSurface != null) {
       localEncodeInputSurface.a();
     }
@@ -21,11 +21,11 @@ class QavVideoAudioRecorder$1
     {
       if (VersionUtils.h())
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quitSafely();
+        this.b.getLooper().quitSafely();
         QLog.i("QavVideoAudioRecorder", 1, "onDestroy quitSafely");
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
+      this.b.getLooper().quit();
       QLog.i("QavVideoAudioRecorder", 1, "onDestroy quit");
       return;
     }

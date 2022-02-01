@@ -48,96 +48,89 @@ public class TeamWorkTransparentShareActivity
   extends BaseActivity
   implements Handler.Callback, IShareUtils.SharePanelListener
 {
-  public int a;
-  public long a;
-  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private IShareUtils jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils;
-  private SharePolicyInfo jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo;
-  private ITeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler;
-  WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
   public String a;
-  private ArrayList<TeamWorkAuthorizeUinListAdapter.ItemData> jdField_a_of_type_JavaUtilArrayList;
-  Map<String, TeamWorkAuthorizeUinListAdapter.ItemData> jdField_a_of_type_JavaUtilMap = new HashMap();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean = false;
   public int b;
-  public String b;
-  private final MqqHandler b;
   public int c;
-  public String c;
-  private int d;
-  public String d;
-  private int e;
-  protected String e;
-  protected String f = null;
-  protected String g = null;
-  private String h;
-  private String i;
-  
-  public TeamWorkTransparentShareActivity()
-  {
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_b_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-  }
+  Map<String, TeamWorkAuthorizeUinListAdapter.ItemData> d = new HashMap();
+  public long e;
+  public int f;
+  public String g;
+  public String h;
+  public String i;
+  protected String j = null;
+  protected String k = null;
+  protected String l = null;
+  WXShareHelper.WXShareListener m;
+  MqqHandler n;
+  private int o;
+  private ArrayList<TeamWorkAuthorizeUinListAdapter.ItemData> p;
+  private IShareUtils q;
+  private ITeamWorkHandler r;
+  private String s;
+  private boolean t = false;
+  private String u;
+  private int v = -1;
+  private SharePolicyInfo w;
+  private final MqqHandler x = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private ResultReceiver y;
   
   private void b()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler();
-    this.app.setHandler(getClass(), this.jdField_b_of_type_MqqOsMqqHandler);
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils = ((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getShareUtils(this, this.app);
+    this.n = new MqqHandler();
+    this.app.setHandler(getClass(), this.x);
+    if (this.q == null) {
+      this.q = ((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getShareUtils(this, this.app);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+      if (TextUtils.isEmpty(this.j))
       {
-        this.jdField_e_of_type_JavaLangString = getString(2131719567);
-        if (this.jdField_b_of_type_Int == 2) {
-          this.jdField_e_of_type_JavaLangString = getString(2131719568);
+        this.j = getString(2131917130);
+        if (this.c == 2) {
+          this.j = getString(2131917131);
         }
       }
       String str;
-      if (TextUtils.isEmpty(this.f))
+      if (TextUtils.isEmpty(this.k))
       {
-        this.f = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
-        str = TeamWorkManager.a();
+        this.k = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
+        str = TeamWorkManager.b();
         if (!TextUtils.isEmpty(str)) {
-          this.f = str;
+          this.k = str;
         }
-        if (this.jdField_b_of_type_Int == 2)
+        if (this.c == 2)
         {
-          this.f = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
-          str = TeamWorkManager.b();
+          this.k = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
+          str = TeamWorkManager.c();
           if (!TextUtils.isEmpty(str)) {
-            this.f = str;
+            this.k = str;
           }
         }
       }
-      if (TextUtils.isEmpty(this.g))
+      if (TextUtils.isEmpty(this.l))
       {
-        this.g = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
-        str = TeamWorkManager.c();
+        this.l = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
+        str = TeamWorkManager.d();
         if (!TextUtils.isEmpty(str)) {
-          this.g = str;
+          this.l = str;
         }
-        if (this.jdField_b_of_type_Int == 2)
+        if (this.c == 2)
         {
-          this.g = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
-          str = TeamWorkManager.d();
+          this.l = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
+          str = TeamWorkManager.e();
           if (!TextUtils.isEmpty(str)) {
-            this.g = str;
+            this.l = str;
           }
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils.a(this.jdField_a_of_type_JavaLangString, this.h, this.jdField_e_of_type_JavaLangString, "", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils.a(false);
+      this.q.a(this.a, this.s, this.j, "", this.c);
+      if (this.t) {
+        this.q.a(false);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils.a(true);
+        this.q.a(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils.b();
+      this.q.a(this);
+      this.q.b();
       return;
     }
     finish();
@@ -146,31 +139,31 @@ public class TeamWorkTransparentShareActivity
   private void c()
   {
     Intent localIntent = getIntent();
-    this.h = localIntent.getStringExtra(TeamWorkConstants.jdField_a_of_type_JavaLangString);
-    this.jdField_e_of_type_JavaLangString = localIntent.getStringExtra(TeamWorkConstants.jdField_b_of_type_JavaLangString);
-    this.f = localIntent.getStringExtra(TeamWorkConstants.jdField_c_of_type_JavaLangString);
-    this.g = localIntent.getStringExtra(TeamWorkConstants.jdField_d_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("team_work_pad_url");
-    this.jdField_a_of_type_Int = localIntent.getIntExtra("team_work_pad_list_type", -1);
-    this.jdField_b_of_type_Int = localIntent.getIntExtra("team_work_pad_type", -1);
-    this.jdField_d_of_type_Int = localIntent.getIntExtra("team_policy", -1);
-    this.jdField_a_of_type_Long = localIntent.getLongExtra("key_group_team_work_doc_group_uin", 0L);
-    this.jdField_c_of_type_Int = localIntent.getIntExtra("key_group_team_work_doc_domain_id", 0);
-    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("key_group_team_work_doc_pad_id");
-    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("key_team_work_title");
-    this.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("troop_name");
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("team_is_my_document", false);
-    this.i = localIntent.getStringExtra("from_activity");
-    this.jdField_e_of_type_Int = localIntent.getIntExtra("select_type", -1);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo = ((SharePolicyInfo)getIntent().getParcelableExtra("team_work_auth_info"));
-    if ((this.jdField_d_of_type_Int == -1) && (QLog.isColorLevel())) {
+    this.s = localIntent.getStringExtra(TeamWorkConstants.a);
+    this.j = localIntent.getStringExtra(TeamWorkConstants.b);
+    this.k = localIntent.getStringExtra(TeamWorkConstants.c);
+    this.l = localIntent.getStringExtra(TeamWorkConstants.d);
+    this.a = localIntent.getStringExtra("team_work_pad_url");
+    this.b = localIntent.getIntExtra("team_work_pad_list_type", -1);
+    this.c = localIntent.getIntExtra("team_work_pad_type", -1);
+    this.o = localIntent.getIntExtra("team_policy", -1);
+    this.e = localIntent.getLongExtra("key_group_team_work_doc_group_uin", 0L);
+    this.f = localIntent.getIntExtra("key_group_team_work_doc_domain_id", 0);
+    this.g = localIntent.getStringExtra("key_group_team_work_doc_pad_id");
+    this.h = localIntent.getStringExtra("key_team_work_title");
+    this.i = localIntent.getStringExtra("troop_name");
+    this.p = new ArrayList();
+    this.t = localIntent.getBooleanExtra("team_is_my_document", false);
+    this.u = localIntent.getStringExtra("from_activity");
+    this.v = localIntent.getIntExtra("select_type", -1);
+    this.w = ((SharePolicyInfo)getIntent().getParcelableExtra("team_work_auth_info"));
+    if ((this.o == -1) && (QLog.isColorLevel())) {
       QLog.i("TeamWorkTransparentShareActivity", 2, "padInfo policy cannot be -1");
     }
-    if ((this.jdField_a_of_type_Int == -1) && (QLog.isColorLevel())) {
+    if ((this.b == -1) && (QLog.isColorLevel())) {
       QLog.i("TeamWorkTransparentShareActivity", 2, "padInfo mPadListType cannot be -1");
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)getIntent().getParcelableExtra("key_result_receiver"));
+    this.y = ((ResultReceiver)getIntent().getParcelableExtra("key_result_receiver"));
   }
   
   public void a()
@@ -180,26 +173,26 @@ public class TeamWorkTransparentShareActivity
   
   public void a(int paramInt)
   {
-    String str1 = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getNoParamUrl(this.jdField_a_of_type_JavaLangString);
+    String str1 = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getNoParamUrl(this.a);
     Object localObject2 = null;
     Object localObject3 = null;
     Object localObject4;
     String str2;
     if (paramInt == 2)
     {
-      localObject4 = getString(2131719569);
-      if (TextUtils.isEmpty(this.f)) {
+      localObject4 = getString(2131917132);
+      if (TextUtils.isEmpty(this.k)) {
         localObject2 = localObject3;
       } else {
-        localObject2 = this.f;
+        localObject2 = this.k;
       }
-      str2 = this.h;
-      if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      str2 = this.s;
+      if (TextUtils.isEmpty(this.j)) {
         localObject3 = str1;
       } else {
-        localObject3 = this.jdField_e_of_type_JavaLangString;
+        localObject3 = this.j;
       }
-      ShareMsgHelper.a(this, 1001, 95, "web_share", "", (String)localObject2, str2, (String)localObject3, getString(2131696401, new Object[] { this.h }), str1, "web", null, null, null, "web", null, null, null, "https://docs.qq.com/desktop/favicon.ico", (String)localObject4, "", null, -1, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
+      ShareMsgHelper.a(this, 1001, 95, "web_share", "", (String)localObject2, str2, (String)localObject3, getString(2131894173, new Object[] { this.s }), str1, "web", null, null, null, "web", null, null, null, "https://docs.qq.com/desktop/favicon.ico", (String)localObject4, "", null, -1, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
       finish();
       return;
     }
@@ -207,9 +200,9 @@ public class TeamWorkTransparentShareActivity
     {
       if (paramInt == 12)
       {
-        localObject3 = this.h;
-        localObject2 = this.f;
-        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
+        localObject3 = this.s;
+        localObject2 = this.k;
+        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append((String)localObject3);
@@ -244,7 +237,7 @@ public class TeamWorkTransparentShareActivity
           }
           catch (Exception localException)
           {
-            QQToast.a(getApplicationContext(), 1, 2131718871, 0).b(getResources().getDimensionPixelSize(2131299168));
+            QQToast.makeText(getApplicationContext(), 1, 2131916404, 0).show(getResources().getDimensionPixelSize(2131299920));
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append(" ==== share to weibo exp: ");
             ((StringBuilder)localObject2).append(localException.toString());
@@ -253,7 +246,7 @@ public class TeamWorkTransparentShareActivity
         }
         else
         {
-          QQToast.a(getApplicationContext(), 1, 2131718871, 0).b(getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(getApplicationContext(), 1, 2131916404, 0).show(getResources().getDimensionPixelSize(2131299920));
         }
         finish();
         return;
@@ -264,15 +257,15 @@ public class TeamWorkTransparentShareActivity
     }
     try
     {
-      localObject1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "UTF-8");
+      localObject1 = URLEncoder.encode(this.a, "UTF-8");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
       Object localObject1;
-      label590:
-      int j;
+      label591:
+      int i1;
       Bitmap localBitmap;
-      break label590;
+      break label591;
     }
     localObject1 = localObject2;
     if (QLog.isColorLevel())
@@ -298,12 +291,12 @@ public class TeamWorkTransparentShareActivity
       localObject2 = (ClipboardManager)getSystemService("clipboard");
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("我分享了腾讯文档 “");
-      ((StringBuilder)localObject3).append(this.h);
+      ((StringBuilder)localObject3).append(this.s);
       ((StringBuilder)localObject3).append("”，点击查看：\n");
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(" ");
       ((ClipboardManager)localObject2).setText((CharSequence)localObject3);
-      QRUtils.a(2, 2131691296);
+      QRUtils.a(2, 2131888247);
       finish();
       return;
     }
@@ -320,54 +313,54 @@ public class TeamWorkTransparentShareActivity
       startActivity((Intent)localObject2);
       finish();
       return;
-      if (!WXShareHelper.a().a()) {
-        j = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        j = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        i1 = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        i1 = 2131918155;
       } else {
-        j = -1;
+        i1 = -1;
       }
-      if (j != -1)
+      if (i1 != -1)
       {
-        QRUtils.a(0, j);
+        QRUtils.a(0, i1);
       }
       else
       {
         localObject3 = String.valueOf(System.currentTimeMillis());
-        if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null) {
-          this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new TeamWorkTransparentShareActivity.1(this, (String)localObject3);
+        if (this.m == null) {
+          this.m = new TeamWorkTransparentShareActivity.1(this, (String)localObject3);
         }
         if (paramInt == 9)
         {
-          WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+          WXShareHelper.a().a(this.m);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("pages/detail/detail?url=");
           ((StringBuilder)localObject2).append((String)localObject1);
           localObject2 = ((StringBuilder)localObject2).toString();
-          if (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isBase64ImgFormatData(this.g))
+          if (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isBase64ImgFormatData(this.l))
           {
-            localObject3 = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getShareBitMapBase64(this.g);
+            localObject3 = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getShareBitMapBase64(this.l);
             if (localObject3 != null) {
-              WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", (Bitmap)localObject3, this.h, this.jdField_e_of_type_JavaLangString, (String)localObject1);
+              WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", (Bitmap)localObject3, this.s, this.j, (String)localObject1);
             } else {
-              WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTeamWorkForShareBitMap(this.jdField_b_of_type_Int), this.h, this.jdField_e_of_type_JavaLangString, (String)localObject1);
+              WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTeamWorkForShareBitMap(this.c), this.s, this.j, (String)localObject1);
             }
           }
           else
           {
-            WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTeamWorkForShareBitMap(this.jdField_b_of_type_Int), this.h, this.jdField_e_of_type_JavaLangString, (String)localObject1);
+            WXShareHelper.a().a((String)localObject2, "gh_252c5f06840b", ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTeamWorkForShareBitMap(this.c), this.s, this.j, (String)localObject1);
           }
         }
         else if (paramInt == 10)
         {
-          WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+          WXShareHelper.a().a(this.m);
           localObject4 = WXShareHelper.a();
-          str2 = this.h;
-          localBitmap = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTeamWorkForShareBitMap(this.jdField_b_of_type_Int);
-          if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+          str2 = this.s;
+          localBitmap = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTeamWorkForShareBitMap(this.c);
+          if (TextUtils.isEmpty(this.j)) {
             localObject2 = localObject1;
           } else {
-            localObject2 = this.jdField_e_of_type_JavaLangString;
+            localObject2 = this.j;
           }
           if (paramInt == 9) {
             paramInt = 0;
@@ -393,7 +386,7 @@ public class TeamWorkTransparentShareActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562924);
+    setContentView(2131629384);
     c();
     b();
     return true;
@@ -402,13 +395,13 @@ public class TeamWorkTransparentShareActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils.c();
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null)
+    this.q.c();
+    if (this.m != null)
     {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
+      WXShareHelper.a().b(this.m);
+      this.m = null;
     }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    MqqHandler localMqqHandler = this.n;
     if (localMqqHandler != null) {
       localMqqHandler.removeCallbacksAndMessages(null);
     }
@@ -416,13 +409,13 @@ public class TeamWorkTransparentShareActivity
   
   protected void doOnStart()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkSharePolicyInfo;
-    if ((localObject != null) && (((SharePolicyInfo)localObject).jdField_a_of_type_Boolean))
+    Object localObject = this.w;
+    if ((localObject != null) && (((SharePolicyInfo)localObject).d))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler = ((ITeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER));
+      this.r = ((ITeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER));
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils;
+    localObject = this.q;
     if (localObject != null) {
       ((IShareUtils)localObject).a();
     }
@@ -448,7 +441,7 @@ public class TeamWorkTransparentShareActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity
  * JD-Core Version:    0.7.0.1
  */

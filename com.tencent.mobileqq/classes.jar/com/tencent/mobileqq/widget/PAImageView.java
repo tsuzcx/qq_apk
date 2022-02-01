@@ -22,19 +22,19 @@ import com.tencent.util.VersionUtils;
 public class PAImageView
   extends AnyScaleTypeImageView
 {
-  float jdField_a_of_type_Float = 10.0F;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  Path jdField_a_of_type_AndroidGraphicsPath;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean = false;
-  float[] jdField_a_of_type_ArrayOfFloat;
+  float B = 10.0F;
+  Paint C;
+  float[] D;
+  Path E;
+  RectF F;
+  private int a;
   private int b;
-  private int jdField_c_of_type_Int;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
+  private int c;
+  private Bitmap d;
+  private Canvas e;
+  private BitmapShader f;
+  private Paint g;
+  private boolean h = false;
   
   public PAImageView(Context paramContext)
   {
@@ -49,50 +49,50 @@ public class PAImageView
   public PAImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    f();
+    g();
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+    this.F.set(0.0F, 0.0F, paramFloat1, paramFloat2);
+    this.E.addRoundRect(this.F, this.D, Path.Direction.CW);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
       super.draw(paramCanvas);
       return;
     }
-    this.jdField_a_of_type_Int = getWidth();
+    this.a = getWidth();
     this.b = getHeight();
-    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+    if ((this.a > 0) && (this.b > 0))
     {
-      i = this.jdField_c_of_type_Int;
+      i = this.c;
       if (i == 1)
       {
         i = paramCanvas.getSaveCount();
         paramCanvas.save();
         super.draw(paramCanvas);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawPath(this.E, this.C);
         paramCanvas.restoreToCount(i);
         return;
       }
       if (i == 2)
       {
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        if ((localObject != null) && ((((Bitmap)localObject).getWidth() != this.jdField_a_of_type_Int) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != this.b)))
+        localObject = this.d;
+        if ((localObject != null) && ((((Bitmap)localObject).getWidth() != this.a) || (this.d.getHeight() != this.b)))
         {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-          this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
+          this.d = null;
+          this.f = null;
         }
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
+        if (this.d != null) {}
       }
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.RGB_565);
+      this.d = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.RGB_565);
     }
     catch (OutOfMemoryError localOutOfMemoryError1)
     {
@@ -103,7 +103,7 @@ public class PAImageView
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.RGB_565);
+      this.d = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.RGB_565);
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
@@ -112,89 +112,89 @@ public class PAImageView
     URLDrawable.clearMemoryCache();
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.RGB_565);
+      this.d = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.RGB_565);
     }
     catch (OutOfMemoryError localOutOfMemoryError3)
     {
-      float f;
+      float f1;
       break label214;
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsCanvas;
+    Object localObject = this.e;
     if (localObject != null) {
-      ((Canvas)localObject).setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      ((Canvas)localObject).setBitmap(this.d);
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localObject = this.d;
     if (localObject == null)
     {
       super.draw(paramCanvas);
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsCanvas == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas((Bitmap)localObject);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.e = new Canvas((Bitmap)localObject);
+      this.e.setBitmap(this.d);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
+      this.f = new BitmapShader(this.d, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+      this.g.setShader(this.f);
     }
-    super.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-    localObject = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.b + this.jdField_a_of_type_Float * 2.0F);
+    super.draw(this.e);
+    localObject = new RectF(0.0F, 0.0F, this.a, this.b + this.B * 2.0F);
     int i = paramCanvas.save();
-    f = this.jdField_a_of_type_Float;
-    paramCanvas.drawRoundRect((RectF)localObject, f, f, this.jdField_c_of_type_AndroidGraphicsPaint);
+    f1 = this.B;
+    paramCanvas.drawRoundRect((RectF)localObject, f1, f1, this.g);
     paramCanvas.restoreToCount(i);
     return;
     super.draw(paramCanvas);
   }
   
   @TargetApi(11)
-  public void f()
+  public void g()
   {
     if (VersionUtils.e()) {
-      this.jdField_c_of_type_Int = 2;
+      this.c = 2;
     } else {
-      this.jdField_c_of_type_Int = 2;
+      this.c = 2;
     }
-    int i = this.jdField_c_of_type_Int;
+    int i = this.c;
     if (i == 1)
     {
       if (Build.VERSION.SDK_INT >= 11) {
         setLayerType(2, null);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-      this.jdField_a_of_type_ArrayOfFloat = new float[8];
+      this.C = new Paint();
+      this.C.setStyle(Paint.Style.FILL);
+      this.C.setAntiAlias(true);
+      this.C.setFilterBitmap(true);
+      this.C.setColor(-16777216);
+      this.C.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      this.E = new Path();
+      this.F = new RectF();
+      this.D = new float[8];
       return;
     }
     if (i == 2)
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+      this.g = new Paint();
+      this.g.setAntiAlias(true);
+      this.g.setFilterBitmap(true);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (this.jdField_c_of_type_Int == 1)) {
+    if ((paramBoolean) && (this.c == 1)) {
       a(getWidth(), getHeight());
     }
   }
   
   public void setUseRadiusRound(boolean paramBoolean, float paramFloat)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramFloat;
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    this.h = paramBoolean;
+    this.B = paramFloat;
+    float[] arrayOfFloat = this.D;
     if (arrayOfFloat != null)
     {
       arrayOfFloat[3] = paramFloat;
@@ -210,7 +210,7 @@ public class PAImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAImageView
  * JD-Core Version:    0.7.0.1
  */

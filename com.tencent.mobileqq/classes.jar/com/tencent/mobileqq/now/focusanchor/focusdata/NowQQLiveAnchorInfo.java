@@ -2,101 +2,101 @@ package com.tencent.mobileqq.now.focusanchor.focusdata;
 
 public class NowQQLiveAnchorInfo
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  private int a;
+  private int b;
+  private int c;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
+  private int h;
+  private int i;
+  private String j;
+  private long k;
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.k;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.k = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.j = paramString;
   }
   
-  public String b()
+  public int b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.a;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public String c()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.d;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.e = paramString;
+  }
+  
+  public String d()
+  {
+    return this.e;
   }
   
   public void d(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void d(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.f = paramString;
+  }
+  
+  public String e()
+  {
+    return this.f;
   }
   
   public void e(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void e(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.focusdata.NowQQLiveAnchorInfo
  * JD-Core Version:    0.7.0.1
  */

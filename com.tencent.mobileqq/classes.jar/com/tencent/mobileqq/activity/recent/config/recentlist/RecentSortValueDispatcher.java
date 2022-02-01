@@ -11,11 +11,11 @@ public class RecentSortValueDispatcher
 {
   public int a(BaseQQAppInterface paramBaseQQAppInterface, RecentUserBaseData paramRecentUserBaseData, int paramInt)
   {
-    Object localObject = jdField_a_of_type_JavaLangObject;
+    Object localObject = a;
     int i = 0;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         IRecentSortValueProcessor localIRecentSortValueProcessor = (IRecentSortValueProcessor)localIterator.next();
@@ -34,7 +34,7 @@ public class RecentSortValueDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentSortValueDispatcher
  * JD-Core Version:    0.7.0.1
  */

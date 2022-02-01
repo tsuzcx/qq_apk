@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<TextView android:gravity="start|bottom|center" android:layout_gravity="start|center|top" android:id="@id/osb" android:layout_width="fill_parent" android:layout_height="wrap_content" app:firstBaselineToTopHeight="@dimen/bj3" style="?aa2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

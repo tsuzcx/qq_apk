@@ -20,9 +20,9 @@ import org.json.JSONObject;
 public class VipComicEmoticonJsPlugin
   extends VasWebviewJsPlugin
 {
-  Activity jdField_a_of_type_AndroidAppActivity = null;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  BrowserAppInterface jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
+  Context a = null;
+  BrowserAppInterface b = null;
+  Activity c = null;
   
   public VipComicEmoticonJsPlugin()
   {
@@ -79,7 +79,7 @@ public class VipComicEmoticonJsPlugin
           if ("setComicEmoji".equals(paramString3))
           {
             paramString2 = new JSONObject();
-            if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+            if (!NetworkUtil.isNetworkAvailable(this.c))
             {
               paramString2.put("code", -2);
               paramString2.put("message", "no network");
@@ -145,19 +145,19 @@ public class VipComicEmoticonJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    if ((this.mRuntime.a() != null) && ((this.mRuntime.a() instanceof BrowserAppInterface))) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = ((BrowserAppInterface)this.mRuntime.a());
+    if ((this.mRuntime.b() != null) && ((this.mRuntime.b() instanceof BrowserAppInterface))) {
+      this.b = ((BrowserAppInterface)this.mRuntime.b());
     }
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
-    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
+    this.c = this.mRuntime.d();
+    this.a = this.mRuntime.d().getApplicationContext();
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
+    this.a = null;
+    this.c = null;
+    this.b = null;
   }
   
   protected void onResponse(Bundle paramBundle)
@@ -211,7 +211,7 @@ public class VipComicEmoticonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.comic.VipComicEmoticonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

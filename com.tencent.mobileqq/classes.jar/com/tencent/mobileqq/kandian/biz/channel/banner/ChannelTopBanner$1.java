@@ -19,21 +19,21 @@ class ChannelTopBanner$1
       if (!ChannelTopBanner.b(this.a)) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.getCount() > 1)
+      if (this.a.d.getCount() > 1)
       {
         paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
+        paramMessage.j += 1;
         paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int %= this.a.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.getCount();
-        this.a.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setCurrentItem(this.a.jdField_a_of_type_Int, true);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+        paramMessage.j %= this.a.d.getCount();
+        this.a.b.setCurrentItem(this.a.j, true);
+        this.a.l.sendMessageDelayed(this.a.l.obtainMessage(), 4000L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.banner.ChannelTopBanner.1
  * JD-Core Version:    0.7.0.1
  */

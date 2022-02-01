@@ -12,8 +12,8 @@ public class SystemOrNoEntityInterceptor
   
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    String str = a(paramChain);
-    if ((!ArrayUtils.a(this.a, str)) && (!ArrayUtils.a(this.b, str))) {
+    String str = b(paramChain);
+    if ((!ArrayUtils.contains(this.a, str)) && (!ArrayUtils.contains(this.b, str))) {
       return (Class)paramChain.proceed();
     }
     if (QLog.isColorLevel())
@@ -29,7 +29,7 @@ public class SystemOrNoEntityInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.SystemOrNoEntityInterceptor
  * JD-Core Version:    0.7.0.1
  */

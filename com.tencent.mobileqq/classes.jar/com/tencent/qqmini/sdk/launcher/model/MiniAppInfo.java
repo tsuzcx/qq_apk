@@ -58,8 +58,6 @@ public class MiniAppInfo
   public static final String ENV_VERSION_DEVELOP = "develop";
   public static final String ENV_VERSION_RELEASE = "release";
   public static final String ENV_VERSION_TRIAL = "trial";
-  public static final int FLAG_NEED_KILL = 2;
-  public static final int FLAG_NEED_NEW_PROCESS = 1;
   public static final String NATIVE_MINI_APP_ID_CHECKIN = "1108164955";
   public static final String TAG = "MiniAppInfo";
   public static final String TAG_DB = "miniapp-db";
@@ -73,7 +71,8 @@ public class MiniAppInfo
   public ArrayList<ExtConfigInfo> extConfigInfoList;
   public String extendData;
   public String extraData;
-  public int forceReroad;
+  @Deprecated
+  private int forceReroad;
   public String friendMessageQuery = "";
   public int gameAdsTotalTime;
   public String gameApprovalNumber;
@@ -1549,7 +1548,7 @@ public class MiniAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

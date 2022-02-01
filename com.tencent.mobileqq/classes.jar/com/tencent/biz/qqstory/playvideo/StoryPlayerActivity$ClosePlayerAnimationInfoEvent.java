@@ -7,17 +7,17 @@ public class StoryPlayerActivity$ClosePlayerAnimationInfoEvent
   implements Dispatcher.Event
 {
   public final AnimationParam a;
-  public final String a;
+  public final String b;
   
   public StoryPlayerActivity$ClosePlayerAnimationInfoEvent(AnimationParam paramAnimationParam, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramAnimationParam;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerActivity.ClosePlayerAnimationInfoEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ public class RichTextPanelEmoticonSearchLayoutHelper
   extends EmoticonPanelHotPicSearchHelper
   implements IEmoticonSearchHelper, IRichTextPanelEmoticonSearchLayoutHelper
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQEmoticonMainPanelApp jdField_a_of_type_ComTencentMobileqqEmoticonviewIpcQQEmoticonMainPanelApp = new QQEmoticonMainPanelApp();
-  private IRichTextPanelExtendHelper jdField_a_of_type_ComTencentMobileqqHiboomIRichTextPanelExtendHelper;
-  private String jdField_a_of_type_JavaLangString;
+  private QQEmoticonMainPanelApp a = new QQEmoticonMainPanelApp();
+  private Context b;
+  private String c;
+  private IRichTextPanelExtendHelper d;
   
   public RichTextPanelEmoticonSearchLayoutHelper(IPanelInteractionListener paramIPanelInteractionListener, Context paramContext, IRichTextPanelExtendHelper paramIRichTextPanelExtendHelper)
   {
     super(paramIPanelInteractionListener);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomIRichTextPanelExtendHelper = paramIRichTextPanelExtendHelper;
+    this.b = paramContext;
+    this.d = paramIRichTextPanelExtendHelper;
   }
   
   public void a(ViewGroup paramViewGroup, IEmotionHotPicSearchAdapter paramIEmotionHotPicSearchAdapter)
@@ -39,17 +39,17 @@ public class RichTextPanelEmoticonSearchLayoutHelper
   
   public void clearSearchWords()
   {
-    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
   }
   
   public QQEmoticonMainPanelApp getApp()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIpcQQEmoticonMainPanelApp;
+    return this.a;
   }
   
   public Context getContext()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    return this.b;
   }
   
   public int getPageType()
@@ -59,7 +59,7 @@ public class RichTextPanelEmoticonSearchLayoutHelper
   
   public String getSearchWord()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
   
   public String getTag()
@@ -69,19 +69,19 @@ public class RichTextPanelEmoticonSearchLayoutHelper
   
   public void onPullDown()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHiboomIRichTextPanelExtendHelper.onPullDown();
+    this.d.onPullDown();
   }
   
   public void onPullUp() {}
   
   public void setSearchWords(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.emosearch.RichTextPanelEmoticonSearchLayoutHelper
  * JD-Core Version:    0.7.0.1
  */

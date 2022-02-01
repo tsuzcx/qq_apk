@@ -34,29 +34,29 @@ final class ShortVideoShareUtil$1
               }
             }
             else {
-              ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, false, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+              ShortVideoShareUtil.a(this.a, this.b, this.c, this.d, this.e, this.f, false, paramActionSheetItem.uinType, paramActionSheetItem.uin);
             }
           }
           else {
-            ShortVideoShareUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.f, new ShortVideoShareUtil.1.2(this));
+            ShortVideoShareUtil.b(this.a, this.b, this.c, this.d, this.e, this.g, new ShortVideoShareUtil.1.2(this));
           }
         }
         else {
-          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.f, new ShortVideoShareUtil.1.1(this));
+          ShortVideoShareUtil.a(this.a, this.b, this.c, this.d, this.e, this.g, new ShortVideoShareUtil.1.1(this));
         }
       }
       else
       {
-        ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e);
+        ShortVideoShareUtil.a(this.a, this.b, this.c, this.d, this.e, this.f);
         return;
       }
     }
-    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, false);
+    ShortVideoShareUtil.a(this.a, this.b, this.c, this.d, this.e, this.f, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

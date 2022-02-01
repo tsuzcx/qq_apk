@@ -194,7 +194,7 @@ public class MiniAppReportManager
       Object localObject1 = localObject3;
       try
       {
-        long l = CommonDataAdapter.a().a();
+        long l = CommonDataAdapter.a().c();
         localObject1 = localObject3;
         String str2 = paramMiniAppReportEntity.appId;
         localObject1 = localObject3;
@@ -305,7 +305,7 @@ public class MiniAppReportManager
     //   4: aload_0
     //   5: ifnull +168 -> 173
     //   8: aload_0
-    //   9: invokeinterface 385 1 0
+    //   9: invokeinterface 386 1 0
     //   14: ifeq +159 -> 173
     //   17: aload_1
     //   18: instanceof 212
@@ -318,67 +318,67 @@ public class MiniAppReportManager
     //   35: aload_2
     //   36: ifnull +136 -> 172
     //   39: aload_2
-    //   40: invokevirtual 389	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   40: invokevirtual 390	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   43: astore_1
     //   44: aload_1
-    //   45: invokevirtual 394	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   45: invokevirtual 395	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   48: aload_0
-    //   49: invokeinterface 398 1 0
+    //   49: invokeinterface 399 1 0
     //   54: astore_0
     //   55: aload_0
-    //   56: invokeinterface 403 1 0
+    //   56: invokeinterface 404 1 0
     //   61: ifeq +67 -> 128
     //   64: aload_0
-    //   65: invokeinterface 407 1 0
-    //   70: checkcast 332	com/tencent/mobileqq/mini/report/MiniAppReportEntity
+    //   65: invokeinterface 408 1 0
+    //   70: checkcast 333	com/tencent/mobileqq/mini/report/MiniAppReportEntity
     //   73: astore_3
     //   74: aload_2
     //   75: aload_3
-    //   76: invokestatic 411	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   76: invokestatic 412	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   79: pop
-    //   80: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   80: invokestatic 347	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   83: ifeq -28 -> 55
     //   86: new 295	java/lang/StringBuilder
     //   89: dup
     //   90: invokespecial 296	java/lang/StringBuilder:<init>	()V
     //   93: astore 4
     //   95: aload 4
-    //   97: ldc_w 413
+    //   97: ldc_w 414
     //   100: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload 4
     //   106: aload_3
-    //   107: invokevirtual 414	com/tencent/mobileqq/mini/report/MiniAppReportEntity:toString	()Ljava/lang/String;
+    //   107: invokevirtual 415	com/tencent/mobileqq/mini/report/MiniAppReportEntity:toString	()Ljava/lang/String;
     //   110: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: pop
     //   114: ldc 45
     //   116: iconst_2
     //   117: aload 4
     //   119: invokevirtual 311	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokestatic 353	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   122: invokestatic 354	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   125: goto -70 -> 55
     //   128: aload_1
-    //   129: invokevirtual 417	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   129: invokevirtual 418	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   132: aload_1
-    //   133: invokevirtual 420	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   133: invokevirtual 421	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   136: return
     //   137: astore_0
     //   138: goto +17 -> 155
     //   141: astore_0
     //   142: ldc 45
     //   144: iconst_1
-    //   145: ldc_w 422
+    //   145: ldc_w 423
     //   148: aload_0
     //   149: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   152: goto -20 -> 132
     //   155: aload_1
-    //   156: invokevirtual 420	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   156: invokevirtual 421	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   159: aload_0
     //   160: athrow
     //   161: astore_0
     //   162: ldc 45
     //   164: iconst_1
-    //   165: ldc_w 424
+    //   165: ldc_w 425
     //   168: aload_0
     //   169: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   172: return
@@ -387,12 +387,12 @@ public class MiniAppReportManager
     //   177: invokespecial 296	java/lang/StringBuilder:<init>	()V
     //   180: astore_0
     //   181: aload_0
-    //   182: ldc_w 426
+    //   182: ldc_w 427
     //   185: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: pop
     //   189: aload_0
     //   190: aload_1
-    //   191: invokevirtual 429	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 430	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   194: pop
     //   195: ldc 45
     //   197: iconst_1
@@ -895,7 +895,7 @@ public class MiniAppReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager
  * JD-Core Version:    0.7.0.1
  */

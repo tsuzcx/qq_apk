@@ -72,13 +72,13 @@ public class TroopIndex
     if (TextUtils.isEmpty(this.ext2)) {
       this.ext3 = "";
     } else {
-      this.ext3 = FTSV2FieldUtils.a(this.ext2);
+      this.ext3 = FTSV2FieldUtils.b(this.ext2);
     }
     this.ext4 = this.mMemberCard;
     if (TextUtils.isEmpty(this.ext4)) {
       this.ext5 = "";
     } else {
-      this.ext5 = FTSV2FieldUtils.a(this.ext4);
+      this.ext5 = FTSV2FieldUtils.b(this.ext4);
     }
     this.ext6 = this.mMemberUin;
     this.ext7 = this.mMemberNick;
@@ -87,7 +87,7 @@ public class TroopIndex
       this.ext8 = "";
       return;
     }
-    this.ext8 = FTSV2FieldUtils.a(this.ext7);
+    this.ext8 = FTSV2FieldUtils.b(this.ext7);
   }
   
   public boolean needCompress()
@@ -118,7 +118,7 @@ public class TroopIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.data.troop.TroopIndex
  * JD-Core Version:    0.7.0.1
  */

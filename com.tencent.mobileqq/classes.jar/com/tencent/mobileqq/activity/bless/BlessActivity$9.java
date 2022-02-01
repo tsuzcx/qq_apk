@@ -13,7 +13,7 @@ class BlessActivity$9
   {
     if (QLog.isColorLevel())
     {
-      paramMediaPlayer = BlessActivity.a(this.a);
+      paramMediaPlayer = BlessActivity.f(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("videoview onError what=");
       localStringBuilder.append(paramInt1);
@@ -27,7 +27,7 @@ class BlessActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.9
  * JD-Core Version:    0.7.0.1
  */

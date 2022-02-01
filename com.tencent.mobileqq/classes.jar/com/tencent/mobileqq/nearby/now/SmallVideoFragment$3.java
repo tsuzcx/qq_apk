@@ -16,11 +16,11 @@ class SmallVideoFragment$3
   {
     ReportTask localReportTask = new ReportTask(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_time").e(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getAnchorUin());
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.a);
     String str1 = "";
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
-    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyCardManager.b();
+    int i = this.b.c();
     String str2 = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom();
     if (TextUtils.equals(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom(), "2")) {
       str1 = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFeedId();
@@ -30,7 +30,7 @@ class SmallVideoFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.SmallVideoFragment.3
  * JD-Core Version:    0.7.0.1
  */

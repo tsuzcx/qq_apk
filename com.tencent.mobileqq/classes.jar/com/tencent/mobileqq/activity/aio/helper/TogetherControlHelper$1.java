@@ -18,7 +18,7 @@ class TogetherControlHelper$1
   
   protected void a(boolean paramBoolean, TogetherSession paramTogetherSession, int paramInt, String paramString)
   {
-    if (!TogetherControlHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramTogetherSession.jdField_e_of_type_JavaLangString))
+    if (!TogetherControlHelper.a(this.a).ah.b.equals(paramTogetherSession.n))
     {
       super.a(paramBoolean, paramTogetherSession, paramInt, paramString);
       return;
@@ -26,14 +26,14 @@ class TogetherControlHelper$1
     int i = 0;
     if (paramBoolean)
     {
-      TogetherControlHelper.a(this.a).setTogetherSession(paramTogetherSession);
-      if (paramTogetherSession.h == 3)
+      TogetherControlHelper.b(this.a).setTogetherSession(paramTogetherSession);
+      if (paramTogetherSession.p == 3)
       {
-        this.a.b();
+        this.a.c();
       }
       else
       {
-        paramInt = paramTogetherSession.i;
+        paramInt = paramTogetherSession.q;
         if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3)) {
           break label95;
         }
@@ -44,29 +44,29 @@ class TogetherControlHelper$1
       paramBoolean = true;
       label97:
       if (QLog.isColorLevel()) {
-        QLog.d("TogetherControlHelper.helper", 2, new Object[] { "onGetPlayState success, session.serviceType=", Integer.valueOf(paramTogetherSession.jdField_e_of_type_Int), " session.userState=", Integer.valueOf(paramTogetherSession.i), " needPanel=", Boolean.valueOf(paramBoolean) });
+        QLog.d("TogetherControlHelper.helper", 2, new Object[] { "onGetPlayState success, session.serviceType=", Integer.valueOf(paramTogetherSession.l), " session.userState=", Integer.valueOf(paramTogetherSession.q), " needPanel=", Boolean.valueOf(paramBoolean) });
       }
       if (paramBoolean)
       {
         paramInt = i;
-        if (TogetherUtils.a(TogetherControlHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTogetherSession))
+        if (TogetherUtils.a(TogetherControlHelper.a(this.a).d, paramTogetherSession))
         {
           paramInt = i;
-          if (!TogetherWatchFloatingUtil.a(paramTogetherSession.jdField_e_of_type_Int, paramTogetherSession.jdField_e_of_type_JavaLangString, paramTogetherSession.f))
+          if (!TogetherWatchFloatingUtil.a(paramTogetherSession.l, paramTogetherSession.n, paramTogetherSession.m))
           {
             paramInt = i;
-            if (!this.a.e()) {
+            if (!this.a.j()) {
               paramInt = 1;
             }
           }
         }
         if (paramInt == 0) {
-          this.a.b();
+          this.a.c();
         } else {
-          TogetherControlHelper.a(this.a);
+          TogetherControlHelper.c(this.a);
         }
       }
-      TogetherControlHelper.a(this.a);
+      TogetherControlHelper.d(this.a);
       TogetherControlHelper.a(this.a, paramTogetherSession);
       return;
     }
@@ -79,8 +79,8 @@ class TogetherControlHelper$1
   {
     if (paramInt == 2)
     {
-      if (((paramObject instanceof TroopUnreadMsgInfo)) && (TogetherControlHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(((TroopUnreadMsgInfo)paramObject).a)) && (TogetherControlHelper.a(this.a) != null)) {
-        TogetherControlHelper.a(this.a).a(1000, new Object[0]);
+      if (((paramObject instanceof TroopUnreadMsgInfo)) && (TogetherControlHelper.a(this.a).ah.b.equals(((TroopUnreadMsgInfo)paramObject).b)) && (TogetherControlHelper.e(this.a) != null)) {
+        TogetherControlHelper.e(this.a).a(1000, new Object[0]);
       }
     }
     else {
@@ -90,7 +90,7 @@ class TogetherControlHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper.1
  * JD-Core Version:    0.7.0.1
  */

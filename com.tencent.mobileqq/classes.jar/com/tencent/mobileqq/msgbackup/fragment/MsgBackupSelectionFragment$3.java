@@ -12,17 +12,17 @@ class MsgBackupSelectionFragment$3
   public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
     if (paramBoolean) {
-      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
+      MsgBackupSelectionFragment.d(this.a).h.add(paramRecentBaseData);
     } else {
-      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
+      MsgBackupSelectionFragment.d(this.a).h.remove(paramRecentBaseData);
     }
-    int i = MsgBackupSelectionFragment.a(this.a).a.size();
+    int i = MsgBackupSelectionFragment.d(this.a).h.size();
     MsgBackupSelectionFragment.a(this.a, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment.3
  * JD-Core Version:    0.7.0.1
  */

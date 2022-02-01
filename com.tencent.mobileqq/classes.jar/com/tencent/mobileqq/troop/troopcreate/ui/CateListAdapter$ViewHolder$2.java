@@ -10,13 +10,13 @@ class CateListAdapter$ViewHolder$2
   public void a(boolean paramBoolean, int paramInt)
   {
     if ((paramBoolean) && (paramInt > 0)) {
-      this.a.a.a.a.smoothScrollBy(paramInt, 200);
+      this.a.a.e.c.smoothScrollBy(paramInt, 200);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.CateListAdapter.ViewHolder.2
  * JD-Core Version:    0.7.0.1
  */

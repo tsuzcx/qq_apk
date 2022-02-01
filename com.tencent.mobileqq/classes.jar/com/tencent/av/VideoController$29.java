@@ -9,10 +9,10 @@ class VideoController$29
   {
     VideoController localVideoController = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("_");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localVideoController.a(localStringBuilder.toString(), this.jdField_a_of_type_Boolean, this.b);
+    localStringBuilder.append(this.b);
+    localVideoController.a(localStringBuilder.toString(), this.c, this.d);
   }
 }
 

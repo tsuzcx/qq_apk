@@ -28,7 +28,7 @@ public class TroopBizTroopMngProcessor
     if ((paramAppInterface instanceof QQAppInterface))
     {
       paramAppInterface = (QQAppInterface)paramAppInterface;
-      paramAppInterface.getMessageFacade().a(paramString, 1);
+      paramAppInterface.getMessageFacade().c(paramString, 1);
       ((IBizTroopDBUtilsApi)QRoute.api(IBizTroopDBUtilsApi.class)).removeToopMsgFilter(paramAppInterface, paramString, paramAppInterface.getCurrentAccountUin(), paramAppInterface.getApp());
     }
   }
@@ -47,11 +47,11 @@ public class TroopBizTroopMngProcessor
         if (localTroopManager != null)
         {
           localTroopManager.d(paramTroopInfo);
-          localTroopManager.e(localTroopManager.b(paramTroopInfo.troopuin));
+          localTroopManager.e(localTroopManager.f(paramTroopInfo.troopuin));
         }
         paramAppInterface = (DiscussionManager)paramAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-        paramAppInterface.jdField_a_of_type_JavaUtilMap.put(paramString2, new String[] { paramString1, localQQAppInterface.getCurrentAccountUin() });
-        paramAppInterface.jdField_a_of_type_JavaUtilSet.add(paramString1);
+        paramAppInterface.a.put(paramString2, new String[] { paramString1, localQQAppInterface.getCurrentAccountUin() });
+        paramAppInterface.b.add(paramString1);
       }
     }
   }
@@ -89,7 +89,7 @@ public class TroopBizTroopMngProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopBizTroopMngProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ class DoubleVideoMeetingCtrlUI$3
   
   public void onClick(View paramView)
   {
-    QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
-    this.a.e();
-    this.a.a.a().ag = true;
+    QLog.d(this.a.X, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.s();
+    this.a.am.k().bA = true;
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

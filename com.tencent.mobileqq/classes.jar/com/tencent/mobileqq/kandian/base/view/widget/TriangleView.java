@@ -10,39 +10,39 @@ import android.view.View;
 public class TriangleView
   extends View
 {
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Path jdField_a_of_type_AndroidGraphicsPath;
-  Paint b;
+  Paint a = new Paint();
+  Path b;
+  Paint c;
   
   public TriangleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2013265920);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.b = new Paint();
-    this.b.setColor(-2013265920);
-    this.b.setStrokeWidth(1.0F);
+    this.a.setColor(-2013265920);
+    this.b = new Path();
+    this.c = new Paint();
+    this.c.setColor(-2013265920);
+    this.c.setStrokeWidth(1.0F);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getMeasuredHeight();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i + 0, i);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i * 2 + 0, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.b.moveTo(0, 0.0F);
+    this.b.lineTo(i + 0, i);
+    this.b.lineTo(i * 2 + 0, 0.0F);
+    this.b.close();
+    paramCanvas.drawPath(this.b, this.a);
   }
   
   public void setColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.a.setColor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

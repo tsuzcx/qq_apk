@@ -10,20 +10,15 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/TLog;", "", "()V", "mLogger", "Lcom/tencent/tkd/topicsdk/interfaces/ILogger;", "d", "", "tag", "", "msg", "throwable", "", "e", "i", "init", "logger", "w", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
 public final class TLog
 {
-  public static final TLog a;
-  private static ILogger a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkTLog = new TLog();
-  }
+  public static final TLog a = new TLog();
+  private static ILogger b;
   
   @JvmStatic
   public static final void a(@NotNull String paramString1, @NotNull String paramString2)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -35,7 +30,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -47,7 +42,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString, "tag");
     Intrinsics.checkParameterIsNotNull(paramThrowable, "throwable");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -59,7 +54,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -71,7 +66,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -83,7 +78,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString, "tag");
     Intrinsics.checkParameterIsNotNull(paramThrowable, "throwable");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -95,7 +90,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -107,7 +102,7 @@ public final class TLog
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    ILogger localILogger = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    ILogger localILogger = b;
     if (localILogger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mLogger");
     }
@@ -117,12 +112,12 @@ public final class TLog
   public final void a(@NotNull ILogger paramILogger)
   {
     Intrinsics.checkParameterIsNotNull(paramILogger, "logger");
-    jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger = paramILogger;
+    b = paramILogger;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.TLog
  * JD-Core Version:    0.7.0.1
  */

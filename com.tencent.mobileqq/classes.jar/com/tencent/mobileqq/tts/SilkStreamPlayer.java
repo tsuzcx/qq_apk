@@ -23,19 +23,19 @@ import org.json.JSONObject;
 
 public class SilkStreamPlayer
 {
-  private static long jdField_a_of_type_Long;
-  private SilkStreamPlayer.SilkStreamPlayerThread jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c = "0";
+  private static long a;
+  private SilkStreamPlayer.SilkStreamPlayerThread b;
+  private String c;
   private String d;
+  private String e = "0";
+  private String f;
   
   public SilkStreamPlayer(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramString1).replaceAll("/", " ");
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.d = paramString3;
+    this.c = ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramString1).replaceAll("/", " ");
+    this.c = paramString1;
+    this.d = paramString2;
+    this.f = paramString3;
   }
   
   private InputStream a(HttpsURLConnection paramHttpsURLConnection, int paramInt)
@@ -45,9 +45,9 @@ public class SilkStreamPlayer
     paramHttpsURLConnection.setRequestProperty("Accept", "application/json");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("uin=");
-    ((StringBuilder)localObject).append(this.b);
-    ((StringBuilder)localObject).append(";skey=");
     ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(";skey=");
+    ((StringBuilder)localObject).append(this.f);
     paramHttpsURLConnection.setRequestProperty("Cookie", ((StringBuilder)localObject).toString());
     paramHttpsURLConnection.setDoOutput(true);
     paramHttpsURLConnection.setDoInput(true);
@@ -67,18 +67,18 @@ public class SilkStreamPlayer
     try
     {
       localJSONObject.put("appid", "201908021016");
-      localJSONObject.put("uin", Long.valueOf(this.b));
-      localJSONObject.put("sendUin", Long.valueOf(this.c));
-      localJSONObject.put("text", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("textmd5", MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString));
-      long l = jdField_a_of_type_Long;
-      jdField_a_of_type_Long = 1L + l;
+      localJSONObject.put("uin", Long.valueOf(this.d));
+      localJSONObject.put("sendUin", Long.valueOf(this.e));
+      localJSONObject.put("text", this.c);
+      localJSONObject.put("textmd5", MD5Utils.toMD5(this.c));
+      long l = a;
+      a = 1L + l;
       localJSONObject.put("seq", l);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("AND_");
-      localStringBuilder.append(AppSetting.a());
+      localStringBuilder.append(AppSetting.d());
       localStringBuilder.append("_");
-      localStringBuilder.append("8.7.0");
+      localStringBuilder.append("8.8.17");
       localJSONObject.put("clientVersion", localStringBuilder.toString());
       localJSONObject.put("net", HttpUtil.getNetWorkType());
       localJSONObject.put("businessID", paramInt);
@@ -149,55 +149,55 @@ public class SilkStreamPlayer
   
   public void a()
   {
-    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
+    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.b;
     if (localSilkStreamPlayerThread != null)
     {
       SilkStreamPlayer.SilkStreamPlayerThread.a(localSilkStreamPlayerThread, false);
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = null;
+      this.b = null;
     }
   }
   
   public void a(SilkStreamPlayer.OnSilkStreamPlay paramOnSilkStreamPlay, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = new SilkStreamPlayer.SilkStreamPlayerThread(this, MobileQQ.sMobileQQ, paramOnSilkStreamPlay, paramInt1, paramInt2);
+    if (this.b == null) {
+      this.b = new SilkStreamPlayer.SilkStreamPlayerThread(this, MobileQQ.sMobileQQ, paramOnSilkStreamPlay, paramInt1, paramInt2);
     }
-    ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, 128, null, true);
+    ThreadManagerV2.excute(this.b, 128, null, true);
   }
   
   public void a(String paramString)
   {
-    this.b = paramString;
+    this.d = paramString;
   }
   
-  public boolean a()
+  public void b(String paramString)
   {
-    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
+    this.f = paramString;
+  }
+  
+  public boolean b()
+  {
+    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.b;
     return (localSilkStreamPlayerThread != null) && (SilkStreamPlayer.SilkStreamPlayerThread.a(localSilkStreamPlayerThread));
   }
   
-  public void b()
+  public void c()
   {
-    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
+    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.b;
     if (localSilkStreamPlayerThread != null) {
       SilkStreamPlayer.SilkStreamPlayerThread.a(localSilkStreamPlayerThread, false);
     }
   }
   
-  public void b(String paramString)
-  {
-    this.d = paramString;
-  }
-  
   public void c(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramString).replaceAll("/", " ");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramString).replaceAll("/", " ");
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.SilkStreamPlayer
  * JD-Core Version:    0.7.0.1
  */

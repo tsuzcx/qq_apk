@@ -20,26 +20,26 @@ final class CardFlipTrigger$springFlip$2
     if (paramValueAnimator != null)
     {
       float f = ((Float)paramValueAnimator).floatValue();
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        paramValueAnimator = CardFlipTrigger.a(this.jdField_a_of_type_ComTencentXactionTriggerCardFlipTrigger);
+        paramValueAnimator = CardFlipTrigger.f(this.a);
         if (paramValueAnimator == null) {
           Intrinsics.throwNpe();
         }
         paramValueAnimator.setRotationX(f);
-        paramValueAnimator = CardFlipTrigger.b(this.jdField_a_of_type_ComTencentXactionTriggerCardFlipTrigger);
+        paramValueAnimator = CardFlipTrigger.g(this.a);
         if (paramValueAnimator == null) {
           Intrinsics.throwNpe();
         }
         paramValueAnimator.setRotationX(f + '´');
         return;
       }
-      paramValueAnimator = CardFlipTrigger.a(this.jdField_a_of_type_ComTencentXactionTriggerCardFlipTrigger);
+      paramValueAnimator = CardFlipTrigger.f(this.a);
       if (paramValueAnimator == null) {
         Intrinsics.throwNpe();
       }
       paramValueAnimator.setRotationY(f);
-      paramValueAnimator = CardFlipTrigger.b(this.jdField_a_of_type_ComTencentXactionTriggerCardFlipTrigger);
+      paramValueAnimator = CardFlipTrigger.g(this.a);
       if (paramValueAnimator == null) {
         Intrinsics.throwNpe();
       }
@@ -51,7 +51,7 @@ final class CardFlipTrigger$springFlip$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.CardFlipTrigger.springFlip.2
  * JD-Core Version:    0.7.0.1
  */

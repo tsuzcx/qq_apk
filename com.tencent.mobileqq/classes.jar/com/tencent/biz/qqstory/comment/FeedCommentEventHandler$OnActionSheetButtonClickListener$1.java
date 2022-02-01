@@ -7,12 +7,12 @@ class FeedCommentEventHandler$OnActionSheetButtonClickListener$1
   
   public void run()
   {
-    FeedCommentEventHandler.a(this.a.a, FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a), FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a));
+    FeedCommentEventHandler.a(this.a.a, FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a), FeedCommentEventHandler.OnActionSheetButtonClickListener.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener.1
  * JD-Core Version:    0.7.0.1
  */

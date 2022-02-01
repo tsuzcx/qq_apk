@@ -11,7 +11,7 @@ class AIOGalleryScene$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.a;
     if (paramInt != 1)
     {
       if (paramInt != 3)
@@ -20,35 +20,35 @@ class AIOGalleryScene$13
         {
           paramDialogInterface = new StringBuilder();
           paramDialogInterface.append("showSaveFileTips type = ");
-          paramDialogInterface.append(this.jdField_a_of_type_Int);
+          paramDialogInterface.append(this.a);
           QLog.d("AIOGalleryScene", 2, paramDialogInterface.toString());
         }
       }
       else
       {
-        paramDialogInterface = this.jdField_a_of_type_JavaLangObject;
+        paramDialogInterface = this.b;
         if ((paramDialogInterface instanceof AIOShortVideoData))
         {
-          AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (AIOShortVideoData)paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.a = true;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.u();
+          AIOGalleryScene.a(this.d, (AIOShortVideoData)paramDialogInterface, this.c);
+          this.c.d.b = true;
+          this.d.E();
         }
       }
     }
     else
     {
-      paramDialogInterface = this.jdField_a_of_type_JavaLangObject;
+      paramDialogInterface = this.b;
       if ((paramDialogInterface instanceof AIOImageData))
       {
-        AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (AIOImageData)paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.u();
+        AIOGalleryScene.a(this.d, (AIOImageData)paramDialogInterface, this.c);
+        this.d.E();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.13
  * JD-Core Version:    0.7.0.1
  */

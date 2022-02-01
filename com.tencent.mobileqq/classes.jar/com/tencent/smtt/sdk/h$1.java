@@ -12,14 +12,14 @@ class h$1
   {
     WebView localWebView = this.a.getWebView();
     if (localWebView != null) {
-      ((IX5WebViewBase.WebViewTransport)this.b.obj).setWebView(localWebView.c());
+      ((IX5WebViewBase.WebViewTransport)this.b.obj).setWebView(localWebView.b());
     }
     this.b.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.h.1
  * JD-Core Version:    0.7.0.1
  */

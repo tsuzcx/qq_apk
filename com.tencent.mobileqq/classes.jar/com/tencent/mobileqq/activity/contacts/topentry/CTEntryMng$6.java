@@ -11,19 +11,19 @@ class CTEntryMng$6
   
   protected void a(boolean paramBoolean)
   {
-    CTEntry localCTEntry = this.a.a(2);
-    localCTEntry.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
-    if ((localCTEntry.c) && (paramBoolean)) {
-      CTEntryMng.a(this.a);
+    CTEntry localCTEntry = this.a.c(2);
+    localCTEntry.n = Boolean.valueOf(paramBoolean);
+    if ((localCTEntry.k) && (paramBoolean)) {
+      CTEntryMng.d(this.a);
     }
     if (QLog.isColorLevel()) {
-      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localCTEntry.jdField_a_of_type_Int), Boolean.valueOf(localCTEntry.c), Boolean.valueOf(paramBoolean) }));
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localCTEntry.a), Boolean.valueOf(localCTEntry.k), Boolean.valueOf(paramBoolean) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.6
  * JD-Core Version:    0.7.0.1
  */

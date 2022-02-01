@@ -5,13 +5,13 @@ import java.util.zip.ZipFile;
 
 class ApkLibraryInstaller$ZipFileInZipEntry
 {
-  public ZipEntry a;
   public ZipFile a;
+  public ZipEntry b;
   
   public ApkLibraryInstaller$ZipFileInZipEntry(ZipFile paramZipFile, ZipEntry paramZipEntry)
   {
-    this.jdField_a_of_type_JavaUtilZipZipFile = paramZipFile;
-    this.jdField_a_of_type_JavaUtilZipZipEntry = paramZipEntry;
+    this.a = paramZipFile;
+    this.b = paramZipEntry;
   }
 }
 

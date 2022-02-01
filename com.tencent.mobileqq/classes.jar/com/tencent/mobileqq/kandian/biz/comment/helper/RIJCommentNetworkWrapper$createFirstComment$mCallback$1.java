@@ -14,17 +14,17 @@ public final class RIJCommentNetworkWrapper$createFirstComment$mCallback$1
   
   public void a()
   {
-    RIJCommentNetworkWrapper.INSTANCE.createFirstComment(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityFirstCommentCreateData, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUtilApiIRIJCommentNetworkHelper$RIJCreateCommentObserver, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.b);
+    RIJCommentNetworkWrapper.INSTANCE.createFirstComment(this.a, this.b, this.c, this.d, this.e, this.f);
   }
   
   public void b()
   {
-    ReadInJoyCommentEntrance.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityFirstCommentCreateData.a());
+    ReadInJoyCommentEntrance.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkWrapper.createFirstComment.mCallback.1
  * JD-Core Version:    0.7.0.1
  */

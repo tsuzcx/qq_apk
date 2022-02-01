@@ -27,15 +27,15 @@ public class DiscussionUpdateDecoder
       int i = paramMsg[4];
       if (i == 25)
       {
-        if (!paramDecodeProtoPkgContext.d) {
-          DiscMessageProcessor.a(paramMessageHandler.a, paramMsg, 5, null, false);
+        if (!paramDecodeProtoPkgContext.j) {
+          DiscMessageProcessor.a(paramMessageHandler.n, paramMsg, 5, null, false);
         }
       }
       else if (i == 35)
       {
         QLog.i("ApolloPushManager", 1, "[discuss.OffLine]");
-        if (!paramDecodeProtoPkgContext.d) {
-          DiscMessageProcessor.b(paramMessageHandler.a, paramMsg, 5, null, false);
+        if (!paramDecodeProtoPkgContext.j) {
+          DiscMessageProcessor.b(paramMessageHandler.n, paramMsg, 5, null, false);
         }
       }
     }
@@ -43,7 +43,7 @@ public class DiscussionUpdateDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.DiscussionUpdateDecoder
  * JD-Core Version:    0.7.0.1
  */

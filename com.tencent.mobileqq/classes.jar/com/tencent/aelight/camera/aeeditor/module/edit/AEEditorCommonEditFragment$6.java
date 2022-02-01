@@ -18,32 +18,32 @@ class AEEditorCommonEditFragment$6
     {
     default: 
       break;
-    case 2064122562: 
-      this.a.f();
+    case 2063991380: 
+      this.a.m();
       break;
-    case 2064122558: 
+    case 2063991375: 
       paramAEEditorCheckGroupView = this.a;
       if ((paramAEEditorCheckGroupView instanceof VideoEditToolBar.VideoToolBarListener)) {
-        ((VideoEditToolBar.VideoToolBarListener)paramAEEditorCheckGroupView).E();
+        ((VideoEditToolBar.VideoToolBarListener)paramAEEditorCheckGroupView).W();
       }
       break;
-    case 2064122555: 
+    case 2063991372: 
       paramAEEditorCheckGroupView = this.a;
       if ((paramAEEditorCheckGroupView instanceof AEEditorImageEditFragment)) {
-        paramAEEditorCheckGroupView.a.setTitle(HardCodeUtil.a(2064515153));
+        paramAEEditorCheckGroupView.f.setTitle(HardCodeUtil.a(2064187495));
       } else {
-        paramAEEditorCheckGroupView.a.setTitle(HardCodeUtil.a(2064515154));
+        paramAEEditorCheckGroupView.f.setTitle(HardCodeUtil.a(2064187496));
       }
       break;
-    case 2064122551: 
-      this.a.a.setTitle(HardCodeUtil.a(2064515154));
+    case 2063991368: 
+      this.a.f.setTitle(HardCodeUtil.a(2064187496));
       paramAEEditorCheckGroupView = this.a;
       if ((paramAEEditorCheckGroupView instanceof VideoEditToolBar.VideoToolBarListener)) {
-        ((VideoEditToolBar.VideoToolBarListener)paramAEEditorCheckGroupView).z();
+        ((VideoEditToolBar.VideoToolBarListener)paramAEEditorCheckGroupView).V();
       }
       break;
-    case 2064122349: 
-      this.a.g();
+    case 2063991222: 
+      this.a.n();
     }
     this.a.a(paramBoolean, paramInt);
     return true;
@@ -51,7 +51,7 @@ class AEEditorCommonEditFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorCommonEditFragment.6
  * JD-Core Version:    0.7.0.1
  */

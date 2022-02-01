@@ -9,47 +9,47 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class TroopCreateBaseActivity$TopBarBtnClickListener
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
-  String jdField_a_of_type_JavaLangString;
+  int a = 0;
+  String b;
+  TroopCreateBaseActivity c = null;
   
   public TroopCreateBaseActivity$TopBarBtnClickListener(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramTroopCreateBaseActivity;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity != null)
+    if (this.c != null)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(this.b))
       {
-        int i = this.jdField_a_of_type_Int;
+        int i = this.a;
         if (i == 0) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
+          this.c.b();
         } else if (i == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+          this.c.c();
         } else if (i == 2) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
+          this.c.d();
         }
       }
       else
       {
-        CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
+        CustomWebView localCustomWebView = this.c.c;
         if (localCustomWebView != null) {
-          localCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+          localCustomWebView.callJs(this.b, new String[] { "" });
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
+      this.c.a(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity.TopBarBtnClickListener
  * JD-Core Version:    0.7.0.1
  */

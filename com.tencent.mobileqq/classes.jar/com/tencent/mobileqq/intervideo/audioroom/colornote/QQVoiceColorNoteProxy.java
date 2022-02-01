@@ -11,12 +11,12 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QQVoiceColorNoteProxy
 {
-  private IColorNoteController jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController = (IColorNoteController)QRoute.api(IColorNoteController.class);
-  private IQQVoiceServiceInfo jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomColornoteIQQVoiceServiceInfo;
+  private IColorNoteController a = (IColorNoteController)QRoute.api(IColorNoteController.class);
+  private IQQVoiceServiceInfo b;
   
   public QQVoiceColorNoteProxy(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.init(BaseApplication.getContext(), paramBoolean1, paramBoolean2);
+    this.a.init(BaseApplication.getContext(), paramBoolean1, paramBoolean2);
   }
   
   public static void showColorNote(boolean paramBoolean)
@@ -26,101 +26,101 @@ public class QQVoiceColorNoteProxy
   
   public void addHistoryNote()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.addHistoryNote();
+    this.a.addHistoryNote();
   }
   
   public void addToRecentNote()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.addToRecentNote();
+    this.a.addToRecentNote();
   }
   
   public void attachToActivity(ContextWrapper paramContextWrapper)
   {
     paramContextWrapper = QQVoiceUtil.getActFromShadowContext(paramContextWrapper);
     if (paramContextWrapper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.attachToActivity(paramContextWrapper);
+      this.a.attachToActivity(paramContextWrapper);
     }
     QLog.d("QQVoiceColorNoteProxy", 1, "QQVoiceColorNoteProxy attachToActivity");
   }
   
   public boolean canAddColorNote()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.canAddColorNote();
+    return this.a.canAddColorNote();
   }
   
   public void deleteColorNote()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.deleteColorNote();
+    this.a.deleteColorNote();
   }
   
   public void exitAnimation()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.exitAnimation();
+    this.a.exitAnimation();
   }
   
   public IQQVoiceServiceInfo getServiceInfo()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomColornoteIQQVoiceServiceInfo;
+    return this.b;
   }
   
   public void insertColorNote()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.insertColorNote();
+    this.a.insertColorNote();
   }
   
   public boolean isColorNoteExist()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.isColorNoteExist();
+    return this.a.isColorNoteExist();
   }
   
   public void onCannotAdd()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.onCannotAdd();
+    this.a.onCannotAdd();
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.onDestroy();
+    this.a.onDestroy();
   }
   
   public void onPause()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.onPause();
+    this.a.onPause();
     QLog.d("QQVoiceColorNoteProxy", 1, "QQVoiceColorNoteProxy onResume");
   }
   
   public void onResume()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.shouldDisplayColorNote()) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.onResume();
+    if (this.a.shouldDisplayColorNote()) {
+      this.a.onResume();
     }
     QLog.d("QQVoiceColorNoteProxy", 1, "QQVoiceColorNoteProxy onResume");
   }
   
   public void setColorNoteAnimFinishCallback(OnColorNoteAnimFinish paramOnColorNoteAnimFinish)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnColorNoteAnimFinishListener(new QQVoiceColorNoteProxy.1(this, paramOnColorNoteAnimFinish));
+    this.a.setOnColorNoteAnimFinishListener(new QQVoiceColorNoteProxy.1(this, paramOnColorNoteAnimFinish));
   }
   
   public void setServiceInfo(IQQVoiceServiceInfo paramIQQVoiceServiceInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomColornoteIQQVoiceServiceInfo = paramIQQVoiceServiceInfo;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setServiceInfo(new QQVoiceColorNoteProxy.2(this, paramIQQVoiceServiceInfo));
+    this.b = paramIQQVoiceServiceInfo;
+    this.a.setServiceInfo(new QQVoiceColorNoteProxy.2(this, paramIQQVoiceServiceInfo));
   }
   
   public boolean shouldDisplayColorNote()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.shouldDisplayColorNote();
+    return this.a.shouldDisplayColorNote();
   }
   
   public void updateColorNote(QQVoiceColorNote paramQQVoiceColorNote)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.updateColorNote(paramQQVoiceColorNote.mColorNote);
+    this.a.updateColorNote(paramQQVoiceColorNote.mColorNote);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.colornote.QQVoiceColorNoteProxy
  * JD-Core Version:    0.7.0.1
  */

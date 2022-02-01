@@ -34,7 +34,7 @@ public class ApprovalMsgBuilder
   extends BaseBubbleBuilder
   implements Callback
 {
-  Handler b = new Handler();
+  Handler a = new Handler();
   
   public ApprovalMsgBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
@@ -43,24 +43,24 @@ public class ApprovalMsgBuilder
   
   private void a(ApprovalMsgBuilder.Holder paramHolder, MessageForApproval paramMessageForApproval, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramHolder.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramHolder.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramHolder.a.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramHolder.b.getLayoutParams();
     if (paramMessageForApproval.isSend())
     {
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-      localLayoutParams1.leftMargin = ((int)(this.jdField_a_of_type_Float * 16.0F));
+      localLayoutParams.rightMargin = ((int)(this.k * 6.0F));
+      localLayoutParams1.leftMargin = ((int)(this.k * 16.0F));
     }
     else
     {
-      localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
+      localLayoutParams.leftMargin = ((int)(this.k * 6.0F));
       localLayoutParams.rightMargin = 0;
-      localLayoutParams1.leftMargin = ((int)(this.jdField_a_of_type_Float * 24.0F));
+      localLayoutParams1.leftMargin = ((int)(this.k * 24.0F));
     }
-    paramHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-    paramHolder.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
-    paramHolder.jdField_a_of_type_AndroidWidgetLinearLayout.invalidate();
-    paramHolder.jdField_a_of_type_AndroidWidgetTextView.invalidate();
+    paramHolder.a.setLayoutParams(localLayoutParams);
+    paramHolder.b.setLayoutParams(localLayoutParams1);
+    paramHolder.a.invalidate();
+    paramHolder.b.invalidate();
     paramView.setOnLongClickListener(paramOnLongClickAndTouchListener);
     paramView.setOnTouchListener(paramOnLongClickAndTouchListener);
     paramView.setOnClickListener(this);
@@ -76,15 +76,15 @@ public class ApprovalMsgBuilder
       Object localObject6;
       try
       {
-        paramHolder.d.setText(paramMessageForApproval.summary);
+        paramHolder.e.setText(paramMessageForApproval.summary);
         String[] arrayOfString = paramMessageForApproval.title.split("\002");
         if (arrayOfString.length == 1)
         {
-          paramHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageForApproval.title.substring(3));
-          paramHolder.c.setVisibility(8);
+          paramHolder.c.setText(paramMessageForApproval.title.substring(3));
+          paramHolder.d.setVisibility(8);
           return;
         }
-        localObject2 = HardCodeUtil.a(2131700848);
+        localObject2 = HardCodeUtil.a(2131898872);
         int j = arrayOfString.length;
         i = 0;
         Object localObject3 = "";
@@ -135,11 +135,11 @@ public class ApprovalMsgBuilder
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append(paramMessageForApproval);
-            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131700845));
+            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131898869));
             localObject4 = ((StringBuilder)localObject3).toString();
           }
-          paramHolder.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-          paramMessageForApproval = paramHolder.c;
+          paramHolder.c.setText((CharSequence)localObject2);
+          paramMessageForApproval = paramHolder.d;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append((String)localObject4);
@@ -151,8 +151,8 @@ public class ApprovalMsgBuilder
       {
         if (QLog.isDevelopLevel())
         {
-          paramHolder.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700849));
-          paramHolder.c.setText(HardCodeUtil.a(2131700846));
+          paramHolder.c.setText(HardCodeUtil.a(2131898873));
+          paramHolder.d.setText(HardCodeUtil.a(2131898870));
         }
         QLog.e("ApprovalMsgBuilder", 1, paramMessageForApproval.toString());
         return;
@@ -164,28 +164,23 @@ public class ApprovalMsgBuilder
     }
   }
   
-  private void c(View paramView)
+  private void e(View paramView)
   {
     paramView = (MessageForApproval)AIOUtils.a(paramView);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
   }
   
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramChatMessage = (ViewGroup)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
     paramView = (ApprovalMsgBuilder.Holder)paramChatMessage.getTag();
-    paramView.jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.e;
-    if (e) {}
+    paramView.h.getLayoutParams().width = BaseChatItemLayout.e;
+    if (v) {}
     try
     {
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.jdField_b_of_type_AndroidWidgetTextView.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.c.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append("审批");
-      paramChatMessage.setContentDescription(paramView.jdField_b_of_type_JavaLangStringBuilder.toString());
+      paramView.r.append(paramView.c.getText());
+      paramView.r.append(paramView.d.getText());
+      paramView.r.append("审批");
+      paramChatMessage.setContentDescription(paramView.r.toString());
       return paramChatMessage;
     }
     catch (Exception paramView) {}
@@ -200,12 +195,12 @@ public class ApprovalMsgBuilder
     paramChatMessage = paramView;
     if (paramView == null)
     {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558796, null);
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131370651));
-      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131378114));
-      paramViewHolder.d = ((TextView)paramChatMessage.findViewById(2131378120));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramChatMessage.findViewById(2131371580));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131369179));
+      paramChatMessage = LayoutInflater.from(this.e).inflate(2131624416, null);
+      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131437927));
+      paramViewHolder.d = ((TextView)paramChatMessage.findViewById(2131446620));
+      paramViewHolder.e = ((TextView)paramChatMessage.findViewById(2131446627));
+      paramViewHolder.a = ((LinearLayout)paramChatMessage.findViewById(2131438961));
+      paramViewHolder.b = ((TextView)paramChatMessage.findViewById(2131436153));
     }
     a(paramViewHolder, paramBaseChatItemLayout, paramChatMessage, paramOnLongClickAndTouchListener);
     a(paramBaseChatItemLayout, paramViewHolder);
@@ -217,47 +212,52 @@ public class ApprovalMsgBuilder
     return new ApprovalMsgBuilder.Holder(this);
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    if (MessageRecordInfo.a(paramChatMessage.issend)) {
-      return HardCodeUtil.a(2131700847);
-    }
-    return HardCodeUtil.a(2131700850);
-  }
-  
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131365480) {
+    if (paramInt != 2131431695) {
       return;
     }
-    ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    ChatActivityFacade.b(this.e, this.d, paramChatMessage);
   }
-  
-  protected void a(View paramView) {}
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return paramView.a();
+    ChatActivityFacade.a(paramView, this.e, this.f.a);
+    super.a(paramView, this.e, 2131439015, null, null);
+    super.a(paramView, this.e, 2131428089, null, null);
+    return paramView.d();
+  }
+  
+  protected void b(View paramView) {}
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    if (MessageRecordInfo.b(paramChatMessage.issend)) {
+      return HardCodeUtil.a(2131898871);
+    }
+    return HardCodeUtil.a(2131898874);
   }
   
   public void handleMessage(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    paramView = (ApprovalMsgBuilder.Holder)AIOUtils.a(paramView);
-    a((MessageForApproval)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView);
+    paramView = (ApprovalMsgBuilder.Holder)AIOUtils.b(paramView);
+    a((MessageForApproval)paramView.q, paramView);
   }
   
   public void onClick(View paramView)
   {
-    AIOUtils.o = true;
-    if (!super.a())
+    AIOUtils.q = true;
+    if (!super.c())
     {
       super.onClick(paramView);
-      if (paramView.getId() == 2131364521) {
-        c(paramView);
+      if (paramView.getId() == 2131430578) {
+        e(paramView);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -265,7 +265,7 @@ public class ApprovalMsgBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ApprovalMsgBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -19,16 +19,16 @@ final class WeatherPreloadHelper$preloadWebProcess$1
     } else {
       localObject = "new_folder_prestart_fail";
     }
-    WeatherDCReportHelper.a().a((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime, (String)localObject);
+    WeatherDCReportHelper.a().a((AppInterface)this.a, (String)localObject);
     Object localObject = WeatherPreloadHelper.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preloadWebProcess isSuccess ");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(" isWebProcessExist ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     WeatherPreloadHelper.a((WeatherPreloadHelper)localObject, localStringBuilder.toString());
     if (paramBoolean) {
-      WeatherPreloadHelper.a(WeatherPreloadHelper.a, (AppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+      WeatherPreloadHelper.a(WeatherPreloadHelper.a, (AppInterface)this.a);
     }
     int i;
     if (paramBoolean) {
@@ -40,16 +40,16 @@ final class WeatherPreloadHelper$preloadWebProcess$1
     if (i == -4001)
     {
       j = i;
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         j = -4000;
       }
     }
-    WeatherPreloadHelper.a(WeatherPreloadHelper.a, (AppInterface)this.jdField_a_of_type_MqqAppAppRuntime, j);
+    WeatherPreloadHelper.a(WeatherPreloadHelper.a, (AppInterface)this.a, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherPreloadHelper.preloadWebProcess.1
  * JD-Core Version:    0.7.0.1
  */

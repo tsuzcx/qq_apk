@@ -20,21 +20,16 @@ import java.util.List;
 public class StickerBubbleTouchDelegateCallbackForAIO
   implements StickerBubbleAnimationViewHolder.AnimationViewCallback, StickerBubbleSendCallback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private PEItemData jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData;
-  private StickerBubbleTouchDelegate jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate;
+  private Context a;
+  private AIOContext b;
+  private PEItemData c;
+  private StickerBubbleTouchDelegate d;
   
   public StickerBubbleTouchDelegateCallbackForAIO(Context paramContext, AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    StickerBubbleAnimationViewHolder.a().b(this);
-  }
-  
-  public int a()
-  {
-    return PokeItemHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), 10);
+    this.a = paramContext;
+    this.b = paramAIOContext;
+    StickerBubbleAnimationViewHolder.b().b(this);
   }
   
   public int a(float paramFloat1, float paramFloat2)
@@ -44,76 +39,81 @@ public class StickerBubbleTouchDelegateCallbackForAIO
   
   public void a() {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
   public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData = PEPanelHelper.b(StickerBubbleAnimationHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getCurrentUin()));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData;
+    this.c = PEPanelHelper.e(StickerBubbleAnimationHelper.a(this.b.a().getCurrentUin()));
+    Object localObject = this.c;
     if (localObject == null) {
       return;
     }
-    localObject = ((PEItemData)localObject).jdField_a_of_type_JavaLangString;
+    localObject = ((PEItemData)localObject).b;
     if (localObject == null) {
       return;
     }
-    StickerBubbleAnimationViewHolder.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_AndroidContentContext).a(StickerBubbleAnimationHelper.b(new Point((int)paramFloat1, (int)paramFloat2), (String)localObject, paramInt2));
+    StickerBubbleAnimationViewHolder.b().a(this.b.r(), this.a).a(StickerBubbleAnimationHelper.b(new Point((int)paramFloat1, (int)paramFloat2), (String)localObject, paramInt2));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    StickerBubbleAnimationViewHolder.a().d(this.jdField_a_of_type_AndroidContentContext).d();
-    PEItemData localPEItemData = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData;
+    StickerBubbleAnimationViewHolder.b().d(this.a).d();
+    PEItemData localPEItemData = this.c;
     if (localPEItemData != null)
     {
-      StickerBubbleAnimationHelper.a(localPEItemData, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getCurrentUin());
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().i().iterator();
+      StickerBubbleAnimationHelper.a(localPEItemData, this.b.a().getCurrentUin());
+      Iterator localIterator = this.b.p().c().j().iterator();
       while (localIterator.hasNext())
       {
         IEditTextChangeCallback localIEditTextChangeCallback = (IEditTextChangeCallback)localIterator.next();
         if ((localIEditTextChangeCallback instanceof ZhituTextChangeCallback)) {
-          ((ZhituTextChangeCallback)localIEditTextChangeCallback).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, null);
+          ((ZhituTextChangeCallback)localIEditTextChangeCallback).a(this.b, null);
         }
       }
       ThreadManager.post(new StickerBubbleTouchDelegateCallbackForAIO.1(this, localPEItemData, paramInt2), 10, null, false);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString, "0X80091A5", "0X80091A5", localPEItemData.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
+      ReportController.b(this.b.a(), "dc00898", "", this.b.O().b, "0X80091A5", "0X80091A5", localPEItemData.a, 0, Integer.toString(paramInt2), "", "", "");
     }
   }
   
   public void a(StickerBubbleTouchDelegate paramStickerBubbleTouchDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate = paramStickerBubbleTouchDelegate;
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a(paramFloat1, paramFloat2);
+    this.d = paramStickerBubbleTouchDelegate;
   }
   
   public void b()
   {
     d();
-    StickerBubbleTouchDelegate localStickerBubbleTouchDelegate = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate;
+    StickerBubbleTouchDelegate localStickerBubbleTouchDelegate = this.d;
     if (localStickerBubbleTouchDelegate != null) {
       localStickerBubbleTouchDelegate.c();
     }
   }
   
+  public void b(float paramFloat1, float paramFloat2) {}
+  
   public void c()
   {
-    StickerBubbleAnimationHelper.b(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+    StickerBubbleAnimationHelper.b(this, this.b.r());
+  }
+  
+  public boolean c(float paramFloat1, float paramFloat2)
+  {
+    return this.b.p().d().c().a(paramFloat1, paramFloat2);
   }
   
   public void d()
   {
-    StickerBubbleAnimationHelper.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+    StickerBubbleAnimationHelper.a(this, this.b.r());
   }
   
   public void e() {}
+  
+  public int getMaxSendCount()
+  {
+    return PokeItemHelper.b(this.b.a(), 10);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegateCallbackForAIO
  * JD-Core Version:    0.7.0.1
  */

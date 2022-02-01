@@ -14,15 +14,15 @@ class PhoneContactFragment$MyContactObserver
     if (QLog.isColorLevel()) {
       QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    if (this.a.d)
+    if (this.a.g)
     {
-      if (PhoneContactFragment.a(this.a) != null) {
-        PhoneContactFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+      if (PhoneContactFragment.i(this.a) != null) {
+        PhoneContactFragment.j(this.a).a(this.a.i(), paramBoolean, null);
       }
       if (paramBoolean) {
         this.a.c();
       }
-      this.a.d = false;
+      this.a.g = false;
     }
   }
   
@@ -44,7 +44,7 @@ class PhoneContactFragment$MyContactObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment.MyContactObserver
  * JD-Core Version:    0.7.0.1
  */

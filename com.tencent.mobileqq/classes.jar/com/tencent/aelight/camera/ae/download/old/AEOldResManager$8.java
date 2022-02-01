@@ -15,16 +15,16 @@ class AEOldResManager$8
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[startPreDownLoad], preDownloadTask.run(), aeResInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo);
+    localStringBuilder.append(this.a);
     AEQLog.b("AEOldResManager", localStringBuilder.toString());
-    AEOldResManager.a(this.this$0).put(this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, Integer.valueOf(3));
-    AEOldResManager.b(this.this$0).put(this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, Long.valueOf(System.currentTimeMillis()));
-    AEOldResDownload.a(this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource);
+    AEOldResManager.a(this.this$0).put(this.a, Integer.valueOf(3));
+    AEOldResManager.b(this.this$0).put(this.a, Long.valueOf(System.currentTimeMillis()));
+    AEOldResDownload.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldResManager.8
  * JD-Core Version:    0.7.0.1
  */

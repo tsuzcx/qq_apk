@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.HippyRootLayout android:id="@id/c9k" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/h4c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/g1o" android:layout_width="fill_parent" android:layout_height="3.0dip" />
-</com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.HippyRootLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/owl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/1z" android:layout_marginRight="@dimen/1z">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/owj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/1w" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/owm" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/1w" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/owp" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/1w" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/1z" android:layout_marginBottom="@dimen/22">
+        <Button android:textColor="@color/7a" android:id="@id/aou" android:layout_width="@dimen/1l" android:layout_height="@dimen/25" android:text="@string/xd" style="@style/6v" />
+        <Button android:id="@id/fcw" android:layout_width="@dimen/1l" android:layout_height="@dimen/25" android:layout_marginLeft="@dimen/1w" android:text="@string/xe" style="@style/6n" />
+        <Button android:id="@id/mpq" android:visibility="gone" android:layout_width="@dimen/1s" android:layout_height="@dimen/25" android:text="@string/xe" style="@style/6m" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/owk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-24.0dip" />
+</LinearLayout>

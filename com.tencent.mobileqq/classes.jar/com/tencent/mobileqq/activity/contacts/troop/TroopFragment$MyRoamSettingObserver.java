@@ -16,20 +16,20 @@ public class TroopFragment$MyRoamSettingObserver
       if (!paramString.startsWith("message.group.policy.")) {
         return;
       }
-      this.a.h();
+      this.a.j();
     }
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1) {
-      this.a.h();
+      this.a.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyRoamSettingObserver
  * JD-Core Version:    0.7.0.1
  */

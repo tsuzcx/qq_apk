@@ -24,23 +24,6 @@ public class CJPreloadConfProcessor
     return new CJPreloadConfBean();
   }
   
-  protected CJPreloadConfBean a(QConfItem[] paramArrayOfQConfItem)
-  {
-    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
-    {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem);
-        QLog.i("springHb_CJPreloadConfProcessor", 2, localStringBuilder.toString());
-      }
-      return CJPreloadConfBean.a(paramArrayOfQConfItem);
-    }
-    return null;
-  }
-  
   public void a(CJPreloadConfBean paramCJPreloadConfBean)
   {
     Object localObject2 = new StringBuilder();
@@ -69,7 +52,7 @@ public class CJPreloadConfProcessor
         CJPreloadMonitorReporter.a();
         if ((paramCJPreloadConfBean.a != null) && (paramCJPreloadConfBean.a.length() > 0))
         {
-          CJPreloadMonitorReporter.a((AppInterface)localObject1, 1, 0, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject1).getCurrentAccountUin()), true, CJPreloadMonitorReporter.a(type()));
+          CJPreloadMonitorReporter.a((AppInterface)localObject1, 1, 0, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject1).getCurrentAccountUin()), true, CJPreloadMonitorReporter.b(type()));
           return;
         }
       }
@@ -80,8 +63,25 @@ public class CJPreloadConfProcessor
     }
   }
   
+  protected CJPreloadConfBean b(QConfItem[] paramArrayOfQConfItem)
+  {
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
+    {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.i("springHb_CJPreloadConfProcessor", 2, localStringBuilder.toString());
+      }
+      return CJPreloadConfBean.a(paramArrayOfQConfItem);
+    }
+    return null;
+  }
+  
   @Nullable
-  public CJPreloadConfBean b(QConfItem[] paramArrayOfQConfItem)
+  public CJPreloadConfBean c(QConfItem[] paramArrayOfQConfItem)
   {
     return (CJPreloadConfBean)super.onParsed(paramArrayOfQConfItem);
   }
@@ -119,7 +119,7 @@ public class CJPreloadConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.CJPreloadConfProcessor
  * JD-Core Version:    0.7.0.1
  */

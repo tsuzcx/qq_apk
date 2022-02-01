@@ -12,9 +12,9 @@ final class VideoSocketReconnectReporter$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("policy_type", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("policy_type", String.valueOf(this.a));
     localHashMap.put("net_type", String.valueOf(this.b));
-    localHashMap.put("time_cost", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("time_cost", String.valueOf(this.c));
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_socket_recon_result2", true, 0L, 0L, localHashMap, "");
   }
 }

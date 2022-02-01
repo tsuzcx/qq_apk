@@ -12,27 +12,27 @@ import java.io.IOException;
 @TargetApi(18)
 public class QavVideoAudioRecorder
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("recode_thread");
-  private QavRecordEncoder jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder;
   protected QavRecordListener a;
-  private QavVideoAudioRecorder.RecodeHandler jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler;
-  private EncodeConfig jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig;
-  private EncodeInputSurface jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface;
-  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = null;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private long b;
-  private long c = 0L;
+  private QavRecordEncoder b;
+  private QavVideoAudioRecorder.RecodeHandler c;
+  private HandlerThread d = new HandlerThread("recode_thread");
+  private String e;
+  private volatile boolean f = false;
+  private EncodeConfig g;
+  private EncodeInputSurface h;
+  private long i;
+  private long j;
+  private ByteArrayOutputStream k = null;
+  private int l = 0;
+  private long m = 0L;
   
   public QavVideoAudioRecorder()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandlerThread.setPriority(10);
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler = new QavVideoAudioRecorder.RecodeHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder = new QavRecordEncoder(this);
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface = new EncodeInputSurface();
+    this.d.start();
+    this.d.setPriority(10);
+    this.c = new QavVideoAudioRecorder.RecodeHandler(this, this.d.getLooper(), this);
+    this.b = new QavRecordEncoder(this);
+    this.h = new EncodeInputSurface();
   }
   
   private void a(EncodeConfig paramEncodeConfig)
@@ -44,23 +44,23 @@ public class QavVideoAudioRecorder
       localStringBuilder1.append(paramEncodeConfig.a());
       QLog.w("QavVideoAudioRecorder", 2, localStringBuilder1.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
-      c();
+    if (this.f) {
+      e();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = -1L;
-    this.b = -1L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig = paramEncodeConfig;
-    this.jdField_a_of_type_JavaLangString = paramEncodeConfig.jdField_a_of_type_JavaLangString;
+    this.f = true;
+    this.i = -1L;
+    this.j = -1L;
+    this.l = 0;
+    this.k.reset();
+    this.g = paramEncodeConfig;
+    this.e = paramEncodeConfig.b;
     try
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.a(paramEncodeConfig);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a(paramEncodeConfig, this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.a());
-      paramEncodeConfig = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      this.b.a(paramEncodeConfig);
+      this.h.a(paramEncodeConfig, this.b.d());
+      paramEncodeConfig = this.a;
       if (paramEncodeConfig != null) {
-        paramEncodeConfig.g();
+        paramEncodeConfig.q();
       }
       return;
     }
@@ -74,11 +74,11 @@ public class QavVideoAudioRecorder
         localStringBuilder2.append(paramEncodeConfig);
         QLog.w("QavVideoAudioRecorder", 2, localStringBuilder2.toString());
       }
-      paramEncodeConfig = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      paramEncodeConfig = this.a;
       if (paramEncodeConfig != null) {
         paramEncodeConfig.a(1, localThrowable);
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
     }
   }
   
@@ -93,39 +93,39 @@ public class QavVideoAudioRecorder
       localStringBuilder.append(paramInt2);
       QLog.d("QavVideoAudioRecorder", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
       if (QLog.isColorLevel())
       {
         paramArrayOfFloat1 = new StringBuilder();
         paramArrayOfFloat1.append("handleVideoFrameAvailable mIsRecording = ");
-        paramArrayOfFloat1.append(this.jdField_a_of_type_Boolean);
+        paramArrayOfFloat1.append(this.f);
         QLog.d("QavVideoAudioRecorder", 2, paramArrayOfFloat1.toString());
       }
       return;
     }
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = paramLong;
+    if (this.i < 0L) {
+      this.i = paramLong;
     }
     QavRecordReporter.c();
-    if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.c) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.a()))
+    if ((this.b.a) && (!this.b.c) && (this.b.e()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QavVideoAudioRecorder", 2, "handleVideoFrameAvailable video track ready but muxer not start");
       }
-      paramArrayOfFloat1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      paramArrayOfFloat1 = this.a;
       if (paramArrayOfFloat1 != null) {
-        paramArrayOfFloat1.o();
+        paramArrayOfFloat1.F();
       }
       return;
     }
     try
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.a();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong - this.jdField_a_of_type_Long);
-      paramArrayOfFloat1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      this.b.a();
+      this.h.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong - this.i);
+      paramArrayOfFloat1 = this.a;
       if (paramArrayOfFloat1 != null) {
-        paramArrayOfFloat1.h();
+        paramArrayOfFloat1.r();
       }
       return;
     }
@@ -135,44 +135,44 @@ public class QavVideoAudioRecorder
       {
         paramArrayOfFloat2 = new StringBuilder();
         paramArrayOfFloat2.append("videoFrameAvailable: exception. config = ");
-        paramArrayOfFloat2.append(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig);
+        paramArrayOfFloat2.append(this.g);
         QLog.e("QavVideoAudioRecorder", 2, paramArrayOfFloat2.toString());
       }
-      paramArrayOfFloat2 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      paramArrayOfFloat2 = this.a;
       if (paramArrayOfFloat2 != null) {
         paramArrayOfFloat2.a(2, paramArrayOfFloat1);
       }
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.c();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a();
-      this.jdField_a_of_type_Boolean = false;
+      this.b.c();
+      this.h.a();
+      this.f = false;
     }
   }
   
-  private void c()
+  private void e()
   {
     Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("handleStopRecording, mPts[");
-      ((StringBuilder)localObject1).append(this.c);
+      ((StringBuilder)localObject1).append(this.m);
       ((StringBuilder)localObject1).append("]");
       QLog.w("QavVideoAudioRecorder", 1, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       try
       {
-        b(this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray(), this.c);
-        this.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.b();
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a();
-        this.jdField_a_of_type_Boolean = false;
-        localObject1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+        b(this.k.toByteArray(), this.m);
+        this.k.reset();
+        this.b.b();
+        this.h.a();
+        this.f = false;
+        localObject1 = this.a;
         if (localObject1 == null) {
           return;
         }
-        ((QavRecordListener)localObject1).a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener = null;
+        ((QavRecordListener)localObject1).a(this.e);
+        this.a = null;
         return;
       }
       catch (Exception localException)
@@ -181,16 +181,16 @@ public class QavVideoAudioRecorder
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("handleStopRecording: exception. config = ");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig);
+          ((StringBuilder)localObject2).append(this.g);
           QLog.e("QavVideoAudioRecorder", 2, ((StringBuilder)localObject2).toString());
         }
-        Object localObject2 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+        Object localObject2 = this.a;
         if (localObject2 != null) {
           ((QavRecordListener)localObject2).a(4, localException);
         }
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.c();
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a();
-        this.jdField_a_of_type_Boolean = false;
+        this.b.c();
+        this.h.a();
+        this.f = false;
         return;
       }
     } else if (QLog.isColorLevel()) {
@@ -202,16 +202,16 @@ public class QavVideoAudioRecorder
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler.sendMessage(localMessage);
+    this.c.sendMessage(localMessage);
   }
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler.removeMessages(2);
+    this.c.removeMessages(2);
     Message localMessage = Message.obtain();
     localMessage.what = 2;
     localMessage.obj = new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayOfFloat1, paramArrayOfFloat2, Long.valueOf(paramLong) };
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler.sendMessage(localMessage);
+    this.c.sendMessage(localMessage);
   }
   
   public void a(EncodeConfig paramEncodeConfig, QavRecordListener paramQavRecordListener)
@@ -225,35 +225,35 @@ public class QavVideoAudioRecorder
       localStringBuilder.append(paramEncodeConfig);
       QLog.w("QavVideoAudioRecorder", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener = paramQavRecordListener;
+    this.a = paramQavRecordListener;
     paramQavRecordListener = Message.obtain();
     paramQavRecordListener.obj = paramEncodeConfig;
     paramQavRecordListener.what = 0;
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler.sendMessage(paramQavRecordListener);
+    this.c.sendMessage(paramQavRecordListener);
   }
   
   public void a(byte[] paramArrayOfByte, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.b) && (!this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.c))
+      if ((this.b.b) && (!this.b.c))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QavVideoAudioRecorder", 2, "audioFrameAvailable audio track ready but muxer not start");
         }
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.c)
+      if (!this.b.c)
       {
         Message localMessage = Message.obtain();
         localMessage.what = 3;
         localMessage.obj = new Object[] { paramArrayOfByte, Long.valueOf(paramLong) };
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler.sendMessage(localMessage);
+        this.c.sendMessage(localMessage);
         return;
       }
       try
       {
-        this.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte);
+        this.k.write(paramArrayOfByte);
       }
       catch (IOException paramArrayOfByte)
       {
@@ -261,41 +261,19 @@ public class QavVideoAudioRecorder
           QLog.e("QavVideoAudioRecorder", 2, "audioFrameAvailable ", paramArrayOfByte);
         }
       }
-      if (this.jdField_a_of_type_Int == 0) {
-        this.c = paramLong;
+      if (this.l == 0) {
+        this.m = paramLong;
       }
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int >= 5)
+      this.l += 1;
+      if (this.l >= 5)
       {
-        this.jdField_a_of_type_Int = 0;
+        this.l = 0;
         paramArrayOfByte = Message.obtain();
         paramArrayOfByte.what = 3;
-        paramArrayOfByte.obj = new Object[] { this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray(), Long.valueOf(this.c) };
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler.sendMessage(paramArrayOfByte);
-        this.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+        paramArrayOfByte.obj = new Object[] { this.k.toByteArray(), Long.valueOf(this.m) };
+        this.c.sendMessage(paramArrayOfByte);
+        this.k.reset();
       }
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QavRecordEncoder localQavRecordEncoder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder;
-      if ((localQavRecordEncoder != null) && (localQavRecordEncoder.b)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    QavVideoAudioRecorder.RecodeHandler localRecodeHandler = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder$RecodeHandler;
-    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
-    EncodeInputSurface localEncodeInputSurface = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface;
-    if (localHandlerThread != null) {
-      localRecodeHandler.post(new QavVideoAudioRecorder.1(this, localEncodeInputSurface, localHandlerThread));
     }
   }
   
@@ -303,25 +281,25 @@ public class QavVideoAudioRecorder
   {
     try
     {
-      if (this.b < 0L)
+      if (this.j < 0L)
       {
-        this.b = paramLong;
+        this.j = paramLong;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("handleAudioFrameAvailable, begin, mStartAudioPts[");
-        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(this.j);
         ((StringBuilder)localObject).append("]");
         QLog.w("QavVideoAudioRecorder", 1, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder.a(paramArrayOfByte, paramLong - this.b);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      this.b.a(paramArrayOfByte, paramLong - this.j);
+      paramArrayOfByte = this.a;
       if (paramArrayOfByte != null) {
-        paramArrayOfByte.i();
+        paramArrayOfByte.s();
       }
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordListener;
+      Object localObject = this.a;
       if (localObject != null) {
         ((QavRecordListener)localObject).a(3, paramArrayOfByte);
       }
@@ -331,14 +309,36 @@ public class QavVideoAudioRecorder
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      QavRecordEncoder localQavRecordEncoder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder;
-      if ((localQavRecordEncoder != null) && (localQavRecordEncoder.jdField_a_of_type_Boolean)) {
+      QavRecordEncoder localQavRecordEncoder = this.b;
+      if ((localQavRecordEncoder != null) && (localQavRecordEncoder.b)) {
         return true;
       }
     }
     return false;
+  }
+  
+  public boolean c()
+  {
+    if (this.f)
+    {
+      QavRecordEncoder localQavRecordEncoder = this.b;
+      if ((localQavRecordEncoder != null) && (localQavRecordEncoder.a)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void d()
+  {
+    QavVideoAudioRecorder.RecodeHandler localRecodeHandler = this.c;
+    HandlerThread localHandlerThread = this.d;
+    EncodeInputSurface localEncodeInputSurface = this.h;
+    if (localHandlerThread != null) {
+      localRecodeHandler.post(new QavVideoAudioRecorder.1(this, localEncodeInputSurface, localHandlerThread));
+    }
   }
 }
 

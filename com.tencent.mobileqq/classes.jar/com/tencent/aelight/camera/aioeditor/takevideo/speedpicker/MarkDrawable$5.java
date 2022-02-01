@@ -15,20 +15,20 @@ class MarkDrawable$5
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationCancel: mState:");
-      paramAnimator.append(MarkDrawable.c(this.a));
+      paramAnimator.append(MarkDrawable.d(this.a));
       paramAnimator.append(" isrun:");
-      paramAnimator.append(MarkDrawable.a(this.a));
+      paramAnimator.append(MarkDrawable.e(this.a));
       QLog.d("MarkDrawable", 2, paramAnimator.toString());
     }
     if (this.a.isRunning())
     {
       paramAnimator = this.a;
-      MarkDrawable.e(paramAnimator, MarkDrawable.c(paramAnimator));
-      if (MarkDrawable.c(this.a) == 2) {
+      MarkDrawable.f(paramAnimator, MarkDrawable.d(paramAnimator));
+      if (MarkDrawable.d(this.a) == 2) {
         this.a.a(3);
-      } else if (MarkDrawable.c(this.a) == 4) {
+      } else if (MarkDrawable.d(this.a) == 4) {
         this.a.a(5);
-      } else if (MarkDrawable.c(this.a) == 5) {
+      } else if (MarkDrawable.d(this.a) == 5) {
         this.a.a(1);
       }
       MarkDrawable.a(this.a, false);
@@ -41,29 +41,29 @@ class MarkDrawable$5
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationEnd: mState:");
-      paramAnimator.append(MarkDrawable.c(this.a));
+      paramAnimator.append(MarkDrawable.d(this.a));
       paramAnimator.append(" isrun:");
-      paramAnimator.append(MarkDrawable.a(this.a));
+      paramAnimator.append(MarkDrawable.e(this.a));
       QLog.d("MarkDrawable", 2, paramAnimator.toString());
     }
     if (this.a.isRunning())
     {
       paramAnimator = this.a;
-      MarkDrawable.d(paramAnimator, MarkDrawable.c(paramAnimator));
-      if (MarkDrawable.c(this.a) == 2)
+      MarkDrawable.d(paramAnimator, MarkDrawable.d(paramAnimator));
+      if (MarkDrawable.d(this.a) == 2)
       {
         this.a.a(3);
       }
-      else if (MarkDrawable.c(this.a) == 4)
+      else if (MarkDrawable.d(this.a) == 4)
       {
         this.a.a(0);
       }
-      else if (MarkDrawable.c(this.a) == 5)
+      else if (MarkDrawable.d(this.a) == 5)
       {
         this.a.a(1);
-        MarkDrawable.a(this.a, 0);
+        MarkDrawable.e(this.a, 0);
       }
-      else if (MarkDrawable.c(this.a) == 6)
+      else if (MarkDrawable.d(this.a) == 6)
       {
         this.a.a(2);
       }
@@ -79,21 +79,21 @@ class MarkDrawable$5
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationStart: mState:");
-      paramAnimator.append(MarkDrawable.c(this.a));
+      paramAnimator.append(MarkDrawable.d(this.a));
       paramAnimator.append(" isrun:");
-      paramAnimator.append(MarkDrawable.a(this.a));
+      paramAnimator.append(MarkDrawable.e(this.a));
       QLog.d("MarkDrawable", 2, paramAnimator.toString());
     }
     if (this.a.isRunning())
     {
       paramAnimator = this.a;
-      MarkDrawable.c(paramAnimator, MarkDrawable.c(paramAnimator));
+      MarkDrawable.c(paramAnimator, MarkDrawable.d(paramAnimator));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.MarkDrawable.5
  * JD-Core Version:    0.7.0.1
  */

@@ -14,36 +14,36 @@ class MultiVideoCtrlLayerUI4NewGroupChat$2
   
   public void a()
   {
-    MultiVideoCtrlLayerUI4NewGroupChat localMultiVideoCtrlLayerUI4NewGroupChat = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat;
-    localMultiVideoCtrlLayerUI4NewGroupChat.j = true;
-    localMultiVideoCtrlLayerUI4NewGroupChat.O();
+    MultiVideoCtrlLayerUI4NewGroupChat localMultiVideoCtrlLayerUI4NewGroupChat = this.b;
+    localMultiVideoCtrlLayerUI4NewGroupChat.aU = true;
+    localMultiVideoCtrlLayerUI4NewGroupChat.aj();
   }
   
   public void b()
   {
     ReportController.b(null, "CliOper", "", "", "0X800592D", "0X800592D", 0, 0, "", "", "", "");
-    if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c() != -1) && (((VideoViewInfo)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c.get(0)).a == 1)) {
+    if (((this.b.l == 90) || (this.b.l == 270)) && (this.b.am.k().B() != -1) && (((VideoViewInfo)this.b.am.k().bi.get(0)).b == 1)) {
       ReportController.b(null, "CliOper", "", "", "0X800594D", "0X800594D", 0, 0, "", "", "", "");
-    } else if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c() != -1) && (((VideoViewInfo)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a().c.get(0)).a == 2)) {
+    } else if (((this.b.l == 90) || (this.b.l == 270)) && (this.b.am.k().B() != -1) && (((VideoViewInfo)this.b.am.k().bi.get(0)).b == 2)) {
       ReportController.b(null, "CliOper", "", "", "0X800594E", "0X800594E", 0, 0, "", "", "", "");
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.a.a();
+    SessionInfo localSessionInfo = this.b.am.k();
     if (localSessionInfo != null)
     {
-      String str = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" TYPE_NOTIFY_CAMERA_CLOSE: ");
-      localStringBuilder.append(localSessionInfo.j);
+      localStringBuilder.append(localSessionInfo.H);
       localStringBuilder.append("|");
-      localStringBuilder.append(localSessionInfo.d);
+      localStringBuilder.append(localSessionInfo.g);
       AVLog.printAllUserLog(str, localStringBuilder.toString());
-      if (localSessionInfo.j) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      if (localSessionInfo.H) {
+        this.b.ao.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.a) });
       }
     }
-    MultiVideoCtrlLayerUI4NewGroupChat.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat, this.jdField_a_of_type_Long);
-    MultiVideoCtrlLayerUI4NewGroupChat.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat, true);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4NewGroupChat.j = false;
+    MultiVideoCtrlLayerUI4NewGroupChat.a(this.b, this.a);
+    MultiVideoCtrlLayerUI4NewGroupChat.a(this.b, true);
+    this.b.aU = false;
   }
 }
 

@@ -16,7 +16,7 @@ public class ReadInJoyDraftboxActivity
   extends IphoneTitleBarActivity
 {
   protected QQAppInterface a;
-  protected ReadInJoyDraftboxFragment a;
+  protected ReadInJoyDraftboxFragment b;
   
   private void a()
   {
@@ -24,24 +24,24 @@ public class ReadInJoyDraftboxActivity
     if (this.app == null) {
       return;
     }
-    ReadInJoyWebDataManager.a().d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    setContentView(2131558488);
-    setTitle(HardCodeUtil.a(2131712834));
-    this.leftView.setText(HardCodeUtil.a(2131712824));
+    ReadInJoyWebDataManager.a().d(this.a.getCurrentAccountUin());
+    setContentView(2131624037);
+    setTitle(HardCodeUtil.a(2131910406));
+    this.leftView.setText(HardCodeUtil.a(2131901576));
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new TopEdgeGestureLayout(this));
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxFragment = new ReadInJoyDraftboxFragment();
-    localFragmentTransaction.add(2131367211, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxFragment);
-    localFragmentTransaction.show(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxFragment);
+    this.b = new ReadInJoyDraftboxFragment();
+    localFragmentTransaction.add(2131433667, this.b);
+    localFragmentTransaction.show(this.b);
     localFragmentTransaction.commit();
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
+    this.a = ((QQAppInterface)ReadInJoyUtils.b());
     a();
     return true;
   }
@@ -53,7 +53,7 @@ public class ReadInJoyDraftboxActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDraftboxActivity
  * JD-Core Version:    0.7.0.1
  */

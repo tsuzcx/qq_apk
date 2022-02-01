@@ -15,41 +15,41 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class ShortVideoItemBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public VideoProgressView a;
   public CropBubbleVideoView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public URLDrawable b;
+  public VideoProgressView c;
+  public RelativeLayout d;
   public TextView e;
+  public TextView f;
+  public TextView g;
+  public ProgressBar s;
+  public TextView t;
+  public TextView u;
+  public ImageView v;
   
   public ShortVideoItemBuilder$Holder(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView;
+    Object localObject = this.a;
     if (localObject != null)
     {
       long l = ((CropBubbleVideoView)localObject).getCurPlayingPos();
       if (l > 0L)
       {
-        localObject = AIOSingleReporter.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        localObject = AIOSingleReporter.a().b(Integer.valueOf(this.a.getId()));
         if (localObject != null) {
-          ShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder, (MessageForShortVideo)localObject, l);
+          ShortVideoItemBuilder.a(this.w, (MessageForShortVideo)localObject, l);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
-      ShortVideoItemBuilder.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
+      this.a.releasePlayer(true);
+      ShortVideoItemBuilder.k().remove(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

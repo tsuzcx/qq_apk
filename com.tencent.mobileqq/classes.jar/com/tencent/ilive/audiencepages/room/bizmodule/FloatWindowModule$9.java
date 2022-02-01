@@ -68,14 +68,14 @@ class FloatWindowModule$9
     {
       localObject = BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager();
       ((FloatRoomManager)localObject).a((FloatRoomManager.Room)FloatWindowModule.access$2400(this.this$0));
-      ((FloatRoomManager)localObject).d();
-      this.this$0.roomControl = ((FloatRoomManager)localObject).a();
+      ((FloatRoomManager)localObject).e();
+      this.this$0.roomControl = ((FloatRoomManager)localObject).h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.9
  * JD-Core Version:    0.7.0.1
  */

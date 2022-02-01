@@ -12,15 +12,15 @@ class ChatHistoryTroopFileFragment$5
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (((i == 2131379132) || (i == 2131379134)) && (ChatHistoryTroopFileFragment.a(this.a) != null)) {
-      ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
+    if (((i == 2131447868) || (i == 2131447870)) && (ChatHistoryTroopFileFragment.d(this.a) != null)) {
+      ChatHistoryTroopFileFragment.d(this.a).setVisibility(8);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.5
  * JD-Core Version:    0.7.0.1
  */

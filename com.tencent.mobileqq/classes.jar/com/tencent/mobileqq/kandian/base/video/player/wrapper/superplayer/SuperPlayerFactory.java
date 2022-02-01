@@ -21,7 +21,7 @@ public final class SuperPlayerFactory
   @NotNull
   public IPlayer a(@Nullable IVideoView paramIVideoView)
   {
-    if (QQVideoPlaySDKManager.a()) {
+    if (QQVideoPlaySDKManager.isSDKReady()) {
       return (IPlayer)new SuperPlayer(com.tencent.superplayer.api.SuperPlayerFactory.createMediaPlayer((Context)BaseApplicationImpl.getContext(), 104, null));
     }
     return (IPlayer)new SuperPlayer(null);
@@ -42,7 +42,7 @@ public final class SuperPlayerFactory
   public IVideoView a(@NotNull Context paramContext, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    if (QQVideoPlaySDKManager.a()) {
+    if (QQVideoPlaySDKManager.isSDKReady()) {
       return (IVideoView)new SuperPlayerVideoView(com.tencent.superplayer.api.SuperPlayerFactory.createPlayerVideoView(paramContext));
     }
     return (IVideoView)new SuperPlayerVideoView(null);
@@ -51,7 +51,7 @@ public final class SuperPlayerFactory
   @NotNull
   public IPlayerPreloader a()
   {
-    if (QQVideoPlaySDKManager.a()) {
+    if (QQVideoPlaySDKManager.isSDKReady()) {
       return (IPlayerPreloader)new SuperPlayerPreloader(com.tencent.superplayer.api.SuperPlayerFactory.createPreDownloader((Context)BaseApplicationImpl.getContext(), 104));
     }
     return (IPlayerPreloader)new SuperPlayerPreloader(null);
@@ -59,7 +59,7 @@ public final class SuperPlayerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.wrapper.superplayer.SuperPlayerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -18,64 +18,10 @@ public class MsgProcessPicImport
     super(paramMsgBackupResEntity);
   }
   
-  public ResDownloadObject a()
-  {
-    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    ResDownloadObject localResDownloadObject = new ResDownloadObject();
-    String str1 = b(localMsgBackupResEntity);
-    boolean bool2 = false;
-    if (str1 == null)
-    {
-      a("getResDownloadObject realPath is null");
-      localResDownloadObject.jdField_a_of_type_Boolean = false;
-      return localResDownloadObject;
-    }
-    String str2 = a(str1);
-    boolean bool3 = a(str2);
-    boolean bool4 = a(str1);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getResDownloadObject,entity:");
-      localStringBuilder.append(localMsgBackupResEntity.toLogString());
-      localStringBuilder.append(" tempPath:");
-      localStringBuilder.append(str2);
-      localStringBuilder.append(" exist:");
-      localStringBuilder.append(bool3);
-      localStringBuilder.append(" realPath:");
-      localStringBuilder.append(str1);
-      localStringBuilder.append(" exist:");
-      localStringBuilder.append(bool4);
-      a(localStringBuilder.toString());
-    }
-    boolean bool1 = bool2;
-    if (!bool3)
-    {
-      bool1 = bool2;
-      if (!bool4) {
-        bool1 = true;
-      }
-    }
-    localResDownloadObject.jdField_a_of_type_Boolean = bool1;
-    localResDownloadObject.jdField_a_of_type_JavaLangString = str2;
-    return localResDownloadObject;
-  }
-  
-  public String a()
-  {
-    String str = b(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity);
-    if (TextUtils.isEmpty(str))
-    {
-      a("getTempPath realPath is null");
-      return null;
-    }
-    return a(str);
-  }
-  
   public String a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilMap.get("isOriginal");
+    String str1 = (String)this.b.get("md5");
+    String str2 = (String)this.b.get("isOriginal");
     boolean bool;
     if (str2 != null) {
       bool = str2.equals("0") ^ true;
@@ -112,13 +58,77 @@ public class MsgProcessPicImport
     return null;
   }
   
-  public String a(String paramString)
+  public ResDownloadObject b()
+  {
+    MsgBackupResEntity localMsgBackupResEntity = this.c;
+    ResDownloadObject localResDownloadObject = new ResDownloadObject();
+    String str1 = b(localMsgBackupResEntity);
+    boolean bool2 = false;
+    if (str1 == null)
+    {
+      b("getResDownloadObject realPath is null");
+      localResDownloadObject.a = false;
+      return localResDownloadObject;
+    }
+    String str2 = d(str1);
+    boolean bool3 = a(str2);
+    boolean bool4 = a(str1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getResDownloadObject,entity:");
+      localStringBuilder.append(localMsgBackupResEntity.toLogString());
+      localStringBuilder.append(" tempPath:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" exist:");
+      localStringBuilder.append(bool3);
+      localStringBuilder.append(" realPath:");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" exist:");
+      localStringBuilder.append(bool4);
+      b(localStringBuilder.toString());
+    }
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!bool4) {
+        bool1 = true;
+      }
+    }
+    localResDownloadObject.a = bool1;
+    localResDownloadObject.b = str2;
+    return localResDownloadObject;
+  }
+  
+  public String b(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return a(paramMsgBackupResEntity);
+  }
+  
+  public String c()
+  {
+    String str = b(this.c);
+    if (TextUtils.isEmpty(str))
+    {
+      b("getTempPath realPath is null");
+      return null;
+    }
+    return d(str);
+  }
+  
+  public String d()
+  {
+    return a(this.c);
+  }
+  
+  public String d(String paramString)
   {
     try
     {
       paramString = paramString.substring(a());
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(MsgBackupConstant.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(MsgBackupConstant.a);
       localStringBuilder.append(paramString);
       paramString = localStringBuilder.toString();
       return paramString;
@@ -129,20 +139,10 @@ public class MsgProcessPicImport
     }
     return null;
   }
-  
-  public String b()
-  {
-    return a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity);
-  }
-  
-  public String b(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return a(paramMsgBackupResEntity);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessPicImport
  * JD-Core Version:    0.7.0.1
  */

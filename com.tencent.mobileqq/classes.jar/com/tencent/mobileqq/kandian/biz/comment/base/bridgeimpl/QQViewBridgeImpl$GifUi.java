@@ -11,32 +11,32 @@ import org.json.JSONObject;
 
 class QQViewBridgeImpl$GifUi
 {
-  HotPicData jdField_a_of_type_ComTencentMobileqqHotpicHotPicData;
-  private final PublicAccountGifListener jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountGifListener = new QQViewBridgeImpl.GifUi.1(this);
-  private PublicAccountHotPicPanel jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
+  HotPicData a;
+  private PublicAccountHotPicPanel c;
+  private final PublicAccountGifListener d = new QQViewBridgeImpl.GifUi.1(this);
   
   private QQViewBridgeImpl$GifUi(QQViewBridgeImpl paramQQViewBridgeImpl) {}
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData = null;
+    this.a = null;
   }
   
   View a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(paramContext, 2131559604, null));
-      this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseBridgeimplQQViewBridgeImpl.a(), (BaseActivity)paramContext, null, null);
-      this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.setPublicAccountGifListener(this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountGifListener);
+      this.c = ((PublicAccountHotPicPanel)View.inflate(paramContext, 2131625633, null));
+      this.c.a(this.b.a(), (BaseActivity)paramContext, null, null);
+      this.c.setPublicAccountGifListener(this.d);
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.f();
-    return this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
+    this.c.g();
+    return this.c;
   }
   
   void a()
   {
-    PublicAccountHotPicPanel localPublicAccountHotPicPanel = this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
+    PublicAccountHotPicPanel localPublicAccountHotPicPanel = this.c;
     if (localPublicAccountHotPicPanel != null) {
       localPublicAccountHotPicPanel.setPublicAccountGifListener(null);
     }
@@ -44,18 +44,18 @@ class QQViewBridgeImpl$GifUi
   
   void a(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null)
+    if (this.a != null)
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("picType", 3);
-      localJSONObject.put("url", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.originalUrl);
-      localJSONObject.put("md5", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.originalMD5);
-      localJSONObject.put("width", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.originalWidth);
-      localJSONObject.put("height", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.originalHeight);
-      localJSONObject.put("thumbnail_url", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.url);
-      localJSONObject.put("thumbnail_md5", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.md5);
-      localJSONObject.put("thumbnail_width", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.width);
-      localJSONObject.put("thumbnail_height", this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData.height);
+      localJSONObject.put("url", this.a.originalUrl);
+      localJSONObject.put("md5", this.a.originalMD5);
+      localJSONObject.put("width", this.a.originalWidth);
+      localJSONObject.put("height", this.a.originalHeight);
+      localJSONObject.put("thumbnail_url", this.a.url);
+      localJSONObject.put("thumbnail_md5", this.a.md5);
+      localJSONObject.put("thumbnail_width", this.a.width);
+      localJSONObject.put("thumbnail_height", this.a.height);
       JSONArray localJSONArray = new JSONArray();
       localJSONArray.put(localJSONObject);
       paramJSONObject.put("picInfoList", localJSONArray);
@@ -64,7 +64,7 @@ class QQViewBridgeImpl$GifUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.bridgeimpl.QQViewBridgeImpl.GifUi
  * JD-Core Version:    0.7.0.1
  */

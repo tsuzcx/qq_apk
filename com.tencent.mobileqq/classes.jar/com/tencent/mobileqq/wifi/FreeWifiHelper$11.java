@@ -14,9 +14,9 @@ final class FreeWifiHelper$11
   {
     if (paramInt == 3)
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.a;
       if (localQQAppInterface != null) {
-        localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver);
+        localQQAppInterface.removeObserver(this.b);
       }
     }
   }
@@ -25,7 +25,7 @@ final class FreeWifiHelper$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.11
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ class OnlineFileSessionCenter$UploadProgressMakeEvtPump$1
     }
     Message localMessage = new Message();
     localMessage.what = 1;
-    this.a.a.a.sendMessage(localMessage);
+    this.a.a.c.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.UploadProgressMakeEvtPump.1
  * JD-Core Version:    0.7.0.1
  */

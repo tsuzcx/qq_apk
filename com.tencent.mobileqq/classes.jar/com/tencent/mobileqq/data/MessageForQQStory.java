@@ -58,22 +58,22 @@ public class MessageForQQStory
     {
       paramString1 = new StringBuilder();
       paramString1.append(paramString2);
-      paramString1.append(HardCodeUtil.a(2131706652));
+      paramString1.append(HardCodeUtil.a(2131904503));
       paramString1.append(paramString3);
-      paramString1.append(HardCodeUtil.a(2131706648));
+      paramString1.append(HardCodeUtil.a(2131904499));
       paramString1.append("QQ");
-      paramString1.append(HardCodeUtil.a(2131706620));
+      paramString1.append(HardCodeUtil.a(2131904471));
       return paramString1.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append("-");
     localStringBuilder.append(paramString2);
-    localStringBuilder.append(HardCodeUtil.a(2131706631));
+    localStringBuilder.append(HardCodeUtil.a(2131904482));
     localStringBuilder.append(paramString3);
-    localStringBuilder.append(HardCodeUtil.a(2131706646));
+    localStringBuilder.append(HardCodeUtil.a(2131904497));
     localStringBuilder.append("QQ");
-    localStringBuilder.append(HardCodeUtil.a(2131706615));
+    localStringBuilder.append(HardCodeUtil.a(2131904466));
     return localStringBuilder.toString();
   }
   
@@ -194,7 +194,7 @@ public class MessageForQQStory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQStory
  * JD-Core Version:    0.7.0.1
  */

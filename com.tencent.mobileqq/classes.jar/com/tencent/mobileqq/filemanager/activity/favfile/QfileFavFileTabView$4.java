@@ -11,20 +11,20 @@ class QfileFavFileTabView$4
   
   public void onGroupExpand(int paramInt)
   {
-    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    if ((paramInt == this.a.e.getGroupCount() - 1) && (this.a.r != null))
     {
-      if (!this.a.b())
+      if (!this.a.q())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+        this.a.r.setVisible();
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+      this.a.r.setGone();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ class LocalPhoneModule$6
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule$MaskPhoneCallback.a(paramInt, new Exception(paramString));
+    this.a.a(paramInt, new Exception(paramString));
   }
   
   public void a(String paramString)
   {
-    paramString = LocalPhoneModule.b(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule, paramString);
+    paramString = LocalPhoneModule.d(this.b, paramString);
     if (paramString == null)
     {
       QLog.e("LocalPhoneModule", 1, "get mask phone success, but parse url rsp error");
@@ -32,9 +32,9 @@ class LocalPhoneModule$6
     if (i == 0)
     {
       paramString = (GetLocalPhone.MaskPhoneData)paramString.msg_get_phone_rsp_body.msg_mask_phone_data.get();
-      LocalPhoneModule.b(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule, paramString.str_process_cookies.get());
-      LocalPhoneModule.c(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule, paramString.str_mask_phone.get());
-      this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule$MaskPhoneCallback.a(paramString);
+      LocalPhoneModule.e(this.b, paramString.str_process_cookies.get());
+      LocalPhoneModule.f(this.b, paramString.str_mask_phone.get());
+      this.a.a(paramString);
       return;
     }
     a(i, paramString.msg_head.str_err_msg.get());
@@ -42,7 +42,7 @@ class LocalPhoneModule$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.LocalPhoneModule.6
  * JD-Core Version:    0.7.0.1
  */

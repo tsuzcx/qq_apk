@@ -24,13 +24,13 @@ class SpringPopBanner$4
       QLog.d("shua2021_SpringPopBanner", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
-      SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner).a().runOnUiThread(new SpringPopBanner.4.1(this, paramPathResult));
+      SpringPopBanner.e(this.c).P().runOnUiThread(new SpringPopBanner.4.1(this, paramPathResult));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ui.SpringPopBanner.4
  * JD-Core Version:    0.7.0.1
  */

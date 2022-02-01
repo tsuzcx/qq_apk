@@ -3,20 +3,20 @@ package com.tencent.mobileqq.util;
 class Baze64$Encoder
   extends Baze64.Coder
 {
-  private static final byte[] jdField_b_of_type_ArrayOfByte = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
-  private static final byte[] jdField_c_of_type_ArrayOfByte = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 45, 95 };
-  private static final byte[] jdField_d_of_type_ArrayOfByte = { 110, 76, 95, 101, 54, 114, 89, 117, 45, 73, 120, 112, 111, 55, 78, 68, 118, 97, 48, 75, 52, 50, 57, 104, 67, 81, 72, 79, 83, 86, 85, 74, 99, 109, 106, 119, 69, 49, 84, 56, 116, 51, 121, 98, 103, 90, 71, 66, 122, 53, 65, 105, 80, 107, 115, 108, 70, 113, 82, 102, 87, 77, 100, 88 };
-  public final boolean a;
-  int jdField_b_of_type_Int;
-  public final boolean b;
-  private int jdField_c_of_type_Int;
-  public final boolean c;
-  private final byte[] e;
-  private final byte[] f;
+  private static final byte[] h = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
+  private static final byte[] i = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 45, 95 };
+  private static final byte[] j = { 110, 76, 95, 101, 54, 114, 89, 117, 45, 73, 120, 112, 111, 55, 78, 68, 118, 97, 48, 75, 52, 50, 57, 104, 67, 81, 72, 79, 83, 86, 85, 74, 99, 109, 106, 119, 69, 49, 84, 56, 116, 51, 121, 98, 103, 90, 71, 66, 122, 53, 65, 105, 80, 107, 115, 108, 70, 113, 82, 102, 87, 77, 100, 88 };
+  int c;
+  public final boolean d;
+  public final boolean e;
+  public final boolean f;
+  private final byte[] k;
+  private int l;
+  private final byte[] m;
   
   public Baze64$Encoder(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.a = paramArrayOfByte;
     boolean bool2 = true;
     boolean bool1;
     if ((paramInt & 0x1) == 0) {
@@ -24,77 +24,77 @@ class Baze64$Encoder
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.d = bool1;
     if ((paramInt & 0x2) == 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.e = bool1;
     if ((paramInt & 0x4) != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.jdField_c_of_type_Boolean = bool1;
+    this.f = bool1;
     if ((paramInt & 0x8) == 0) {
-      paramArrayOfByte = jdField_b_of_type_ArrayOfByte;
+      paramArrayOfByte = h;
     } else {
-      paramArrayOfByte = jdField_d_of_type_ArrayOfByte;
+      paramArrayOfByte = j;
     }
-    this.f = paramArrayOfByte;
-    this.e = new byte[2];
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_b_of_type_Boolean) {
+    this.m = paramArrayOfByte;
+    this.k = new byte[2];
+    this.c = 0;
+    if (this.e) {
       paramInt = 19;
     } else {
       paramInt = -1;
     }
-    this.jdField_c_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    byte[] arrayOfByte1 = this.f;
-    byte[] arrayOfByte2 = this.jdField_a_of_type_ArrayOfByte;
-    int j = this.jdField_c_of_type_Int;
-    int i1 = paramInt2 + paramInt1;
-    paramInt2 = this.jdField_b_of_type_Int;
-    int n = 0;
-    int m = 0;
-    int k;
+    byte[] arrayOfByte1 = this.m;
+    byte[] arrayOfByte2 = this.a;
+    int i1 = this.l;
+    int i5 = paramInt2 + paramInt1;
+    paramInt2 = this.c;
+    int i4 = 0;
+    int i3 = 0;
+    int i2;
     if (paramInt2 != 0) {
       if (paramInt2 != 1)
       {
         if (paramInt2 == 2)
         {
           paramInt2 = paramInt1 + 1;
-          if (paramInt2 <= i1)
+          if (paramInt2 <= i5)
           {
-            byte[] arrayOfByte3 = this.e;
-            i = arrayOfByte3[0];
-            k = arrayOfByte3[1];
+            byte[] arrayOfByte3 = this.k;
+            n = arrayOfByte3[0];
+            i2 = arrayOfByte3[1];
             paramInt1 = paramArrayOfByte[paramInt1];
-            this.jdField_b_of_type_Int = 0;
-            paramInt1 = (k & 0xFF) << 8 | (i & 0xFF) << 16 | paramInt1 & 0xFF;
+            this.c = 0;
+            paramInt1 = (i2 & 0xFF) << 8 | (n & 0xFF) << 16 | paramInt1 & 0xFF;
             break label191;
           }
         }
       }
-      else if (paramInt1 + 2 <= i1)
+      else if (paramInt1 + 2 <= i5)
       {
-        i = this.e[0];
-        k = paramInt1 + 1;
+        n = this.k[0];
+        i2 = paramInt1 + 1;
         paramInt1 = paramArrayOfByte[paramInt1];
-        paramInt2 = k + 1;
-        paramInt1 = (i & 0xFF) << 16 | (paramInt1 & 0xFF) << 8 | paramArrayOfByte[k] & 0xFF;
-        this.jdField_b_of_type_Int = 0;
+        paramInt2 = i2 + 1;
+        paramInt1 = (n & 0xFF) << 16 | (paramInt1 & 0xFF) << 8 | paramArrayOfByte[i2] & 0xFF;
+        this.c = 0;
         break label191;
       }
     }
-    int i = -1;
+    int n = -1;
     paramInt2 = paramInt1;
-    paramInt1 = i;
+    paramInt1 = n;
     label191:
     if (paramInt1 != -1)
     {
@@ -102,10 +102,10 @@ class Baze64$Encoder
       arrayOfByte2[1] = arrayOfByte1[(paramInt1 >> 12 & 0x3F)];
       arrayOfByte2[2] = arrayOfByte1[(paramInt1 >> 6 & 0x3F)];
       arrayOfByte2[3] = arrayOfByte1[(paramInt1 & 0x3F)];
-      j -= 1;
-      if (j == 0)
+      i1 -= 1;
+      if (i1 == 0)
       {
-        if (this.jdField_c_of_type_Boolean)
+        if (this.f)
         {
           paramInt1 = 5;
           arrayOfByte2[4] = 13;
@@ -114,10 +114,10 @@ class Baze64$Encoder
         {
           paramInt1 = 4;
         }
-        i = paramInt1 + 1;
+        n = paramInt1 + 1;
         arrayOfByte2[paramInt1] = 10;
-        paramInt1 = i;
-        j = 19;
+        paramInt1 = n;
+        i1 = 19;
       }
       else
       {
@@ -130,204 +130,204 @@ class Baze64$Encoder
     }
     for (;;)
     {
-      i = paramInt2 + 3;
-      if (i > i1) {
+      n = paramInt2 + 3;
+      if (n > i5) {
         break label480;
       }
-      k = paramArrayOfByte[paramInt2];
-      paramInt2 = (paramArrayOfByte[(paramInt2 + 1)] & 0xFF) << 8 | (k & 0xFF) << 16 | paramArrayOfByte[(paramInt2 + 2)] & 0xFF;
+      i2 = paramArrayOfByte[paramInt2];
+      paramInt2 = (paramArrayOfByte[(paramInt2 + 1)] & 0xFF) << 8 | (i2 & 0xFF) << 16 | paramArrayOfByte[(paramInt2 + 2)] & 0xFF;
       arrayOfByte2[paramInt1] = arrayOfByte1[(paramInt2 >> 18 & 0x3F)];
       arrayOfByte2[(paramInt1 + 1)] = arrayOfByte1[(paramInt2 >> 12 & 0x3F)];
       arrayOfByte2[(paramInt1 + 2)] = arrayOfByte1[(paramInt2 >> 6 & 0x3F)];
       arrayOfByte2[(paramInt1 + 3)] = arrayOfByte1[(paramInt2 & 0x3F)];
       paramInt1 += 4;
-      j -= 1;
-      if (j == 0)
+      i1 -= 1;
+      if (i1 == 0)
       {
-        if (this.jdField_c_of_type_Boolean)
+        if (this.f)
         {
           paramInt2 = paramInt1 + 1;
           arrayOfByte2[paramInt1] = 13;
           paramInt1 = paramInt2;
         }
-        j = paramInt1 + 1;
+        i1 = paramInt1 + 1;
         arrayOfByte2[paramInt1] = 10;
-        paramInt2 = i;
-        paramInt1 = j;
+        paramInt2 = n;
+        paramInt1 = i1;
         break;
       }
-      paramInt2 = i;
+      paramInt2 = n;
     }
     label480:
     if (paramBoolean)
     {
-      i = this.jdField_b_of_type_Int;
-      if (paramInt2 - i == i1 - 1)
+      n = this.c;
+      if (paramInt2 - n == i5 - 1)
       {
-        if (i > 0)
+        if (n > 0)
         {
-          k = this.e[0];
-          i = 1;
+          i2 = this.k[0];
+          n = 1;
         }
         else
         {
-          k = paramArrayOfByte[paramInt2];
+          i2 = paramArrayOfByte[paramInt2];
           paramInt2 += 1;
-          i = m;
+          n = i3;
         }
-        k = (k & 0xFF) << 4;
-        this.jdField_b_of_type_Int -= i;
-        m = paramInt1 + 1;
-        arrayOfByte2[paramInt1] = arrayOfByte1[(k >> 6 & 0x3F)];
-        i = m + 1;
-        arrayOfByte2[m] = arrayOfByte1[(k & 0x3F)];
-        paramInt1 = i;
-        if (this.jdField_a_of_type_Boolean)
+        i2 = (i2 & 0xFF) << 4;
+        this.c -= n;
+        i3 = paramInt1 + 1;
+        arrayOfByte2[paramInt1] = arrayOfByte1[(i2 >> 6 & 0x3F)];
+        n = i3 + 1;
+        arrayOfByte2[i3] = arrayOfByte1[(i2 & 0x3F)];
+        paramInt1 = n;
+        if (this.d)
         {
-          k = i + 1;
-          arrayOfByte2[i] = 61;
-          paramInt1 = k + 1;
-          arrayOfByte2[k] = 61;
+          i2 = n + 1;
+          arrayOfByte2[n] = 61;
+          paramInt1 = i2 + 1;
+          arrayOfByte2[i2] = 61;
         }
-        i = paramInt1;
-        k = paramInt2;
-        if (this.jdField_b_of_type_Boolean)
+        n = paramInt1;
+        i2 = paramInt2;
+        if (this.e)
         {
-          if (this.jdField_c_of_type_Boolean)
+          if (this.f)
           {
-            i = paramInt1 + 1;
+            n = paramInt1 + 1;
             arrayOfByte2[paramInt1] = 13;
-            paramInt1 = i;
+            paramInt1 = n;
           }
-          i = paramInt1 + 1;
+          n = paramInt1 + 1;
           arrayOfByte2[paramInt1] = 10;
-          k = paramInt2;
+          i2 = paramInt2;
         }
       }
-      else if (paramInt2 - i == i1 - 2)
+      else if (paramInt2 - n == i5 - 2)
       {
-        if (i > 1)
+        if (n > 1)
         {
-          k = this.e[0];
-          i = 1;
+          i2 = this.k[0];
+          n = 1;
         }
         else
         {
-          k = paramArrayOfByte[paramInt2];
+          i2 = paramArrayOfByte[paramInt2];
           paramInt2 += 1;
-          i = n;
+          n = i4;
         }
-        if (this.jdField_b_of_type_Int > 0)
+        if (this.c > 0)
         {
-          paramArrayOfByte = this.e;
-          n = i + 1;
-          m = paramArrayOfByte[i];
-          i = n;
+          paramArrayOfByte = this.k;
+          i4 = n + 1;
+          i3 = paramArrayOfByte[n];
+          n = i4;
         }
         else
         {
-          n = paramInt2 + 1;
-          m = paramArrayOfByte[paramInt2];
-          paramInt2 = n;
+          i4 = paramInt2 + 1;
+          i3 = paramArrayOfByte[paramInt2];
+          paramInt2 = i4;
         }
-        k = (k & 0xFF) << 10 | (m & 0xFF) << 2;
-        this.jdField_b_of_type_Int -= i;
-        i = paramInt1 + 1;
-        arrayOfByte2[paramInt1] = arrayOfByte1[(k >> 12 & 0x3F)];
-        m = i + 1;
-        arrayOfByte2[i] = arrayOfByte1[(k >> 6 & 0x3F)];
-        paramInt1 = m + 1;
-        arrayOfByte2[m] = arrayOfByte1[(k & 0x3F)];
-        if (this.jdField_a_of_type_Boolean)
+        i2 = (i2 & 0xFF) << 10 | (i3 & 0xFF) << 2;
+        this.c -= n;
+        n = paramInt1 + 1;
+        arrayOfByte2[paramInt1] = arrayOfByte1[(i2 >> 12 & 0x3F)];
+        i3 = n + 1;
+        arrayOfByte2[n] = arrayOfByte1[(i2 >> 6 & 0x3F)];
+        paramInt1 = i3 + 1;
+        arrayOfByte2[i3] = arrayOfByte1[(i2 & 0x3F)];
+        if (this.d)
         {
-          i = paramInt1 + 1;
+          n = paramInt1 + 1;
           arrayOfByte2[paramInt1] = 61;
-          paramInt1 = i;
+          paramInt1 = n;
         }
-        i = paramInt1;
-        if (this.jdField_b_of_type_Boolean)
+        n = paramInt1;
+        if (this.e)
         {
-          i = paramInt1;
-          if (this.jdField_c_of_type_Boolean)
+          n = paramInt1;
+          if (this.f)
           {
             arrayOfByte2[paramInt1] = 13;
-            i = paramInt1 + 1;
+            n = paramInt1 + 1;
           }
-          arrayOfByte2[i] = 10;
-          i += 1;
+          arrayOfByte2[n] = 10;
+          n += 1;
         }
-        k = paramInt2;
+        i2 = paramInt2;
       }
       else
       {
-        i = paramInt1;
-        k = paramInt2;
-        if (this.jdField_b_of_type_Boolean)
+        n = paramInt1;
+        i2 = paramInt2;
+        if (this.e)
         {
-          i = paramInt1;
-          k = paramInt2;
+          n = paramInt1;
+          i2 = paramInt2;
           if (paramInt1 > 0)
           {
-            i = paramInt1;
-            k = paramInt2;
-            if (j != 19)
+            n = paramInt1;
+            i2 = paramInt2;
+            if (i1 != 19)
             {
-              if (this.jdField_c_of_type_Boolean)
+              if (this.f)
               {
-                i = paramInt1 + 1;
+                n = paramInt1 + 1;
                 arrayOfByte2[paramInt1] = 13;
-                paramInt1 = i;
+                paramInt1 = n;
               }
-              i = paramInt1 + 1;
+              n = paramInt1 + 1;
               arrayOfByte2[paramInt1] = 10;
-              k = paramInt2;
+              i2 = paramInt2;
             }
           }
         }
       }
-      if ((!jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int != 0)) {
+      if ((!g) && (this.c != 0)) {
         throw new AssertionError();
       }
-      m = i;
-      if (!jdField_d_of_type_Boolean) {
-        if (k == i1) {
-          m = i;
+      i3 = n;
+      if (!g) {
+        if (i2 == i5) {
+          i3 = n;
         } else {
           throw new AssertionError();
         }
       }
     }
-    else if (paramInt2 == i1 - 1)
+    else if (paramInt2 == i5 - 1)
     {
-      arrayOfByte1 = this.e;
-      i = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (i + 1);
-      arrayOfByte1[i] = paramArrayOfByte[paramInt2];
-      m = paramInt1;
+      arrayOfByte1 = this.k;
+      n = this.c;
+      this.c = (n + 1);
+      arrayOfByte1[n] = paramArrayOfByte[paramInt2];
+      i3 = paramInt1;
     }
     else
     {
-      m = paramInt1;
-      if (paramInt2 == i1 - 2)
+      i3 = paramInt1;
+      if (paramInt2 == i5 - 2)
       {
-        arrayOfByte1 = this.e;
-        i = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = (i + 1);
-        arrayOfByte1[i] = paramArrayOfByte[paramInt2];
-        i = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = (i + 1);
-        arrayOfByte1[i] = paramArrayOfByte[(paramInt2 + 1)];
-        m = paramInt1;
+        arrayOfByte1 = this.k;
+        n = this.c;
+        this.c = (n + 1);
+        arrayOfByte1[n] = paramArrayOfByte[paramInt2];
+        n = this.c;
+        this.c = (n + 1);
+        arrayOfByte1[n] = paramArrayOfByte[(paramInt2 + 1)];
+        i3 = paramInt1;
       }
     }
-    this.jdField_a_of_type_Int = m;
-    this.jdField_c_of_type_Int = j;
+    this.b = i3;
+    this.l = i1;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.Baze64.Encoder
  * JD-Core Version:    0.7.0.1
  */

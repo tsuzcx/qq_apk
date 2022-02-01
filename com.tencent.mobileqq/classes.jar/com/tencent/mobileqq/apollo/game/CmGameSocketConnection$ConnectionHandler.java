@@ -54,8 +54,8 @@ class CmGameSocketConnection$ConnectionHandler
         if (bool)
         {
           super.removeMessages(2);
-          if (ApolloConfigUtils.a > 0L) {
-            l = ApolloConfigUtils.a;
+          if (ApolloConfigUtils.e > 0L) {
+            l = ApolloConfigUtils.e;
           }
           super.sendEmptyMessageDelayed(2, l);
           if (CmGameSocketConnection.d((CmGameSocketConnection)localObject))
@@ -77,8 +77,8 @@ class CmGameSocketConnection$ConnectionHandler
           if ((paramMessage.obj != null) && (((Boolean)paramMessage.obj).booleanValue())) {
             ((CmGameSocketConnection)localObject).c();
           }
-          if (ApolloConfigUtils.a > 0L) {
-            l = ApolloConfigUtils.a;
+          if (ApolloConfigUtils.e > 0L) {
+            l = ApolloConfigUtils.e;
           }
           super.sendEmptyMessageDelayed(2, l);
           return;
@@ -90,11 +90,11 @@ class CmGameSocketConnection$ConnectionHandler
     {
       bool = CmGameSocketConnection.a((CmGameSocketConnection)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]CmGameConnection.ConnectionHandler", 2, new Object[] { "[handleMessage] conn result=", Boolean.valueOf(bool), ", connected=", Boolean.valueOf(((CmGameSocketConnection)localObject).a()) });
+        QLog.d("[cmshow]CmGameConnection.ConnectionHandler", 2, new Object[] { "[handleMessage] conn result=", Boolean.valueOf(bool), ", connected=", Boolean.valueOf(((CmGameSocketConnection)localObject).b()) });
       }
       if (!bool)
       {
-        if (!((CmGameSocketConnection)localObject).a()) {
+        if (!((CmGameSocketConnection)localObject).b()) {
           ((CmGameSocketConnection)localObject).d();
         }
       }
@@ -110,7 +110,7 @@ class CmGameSocketConnection$ConnectionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.CmGameSocketConnection.ConnectionHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,16 @@ public class AspectRatio
   implements Parcelable
 {
   public static final Parcelable.Creator<AspectRatio> CREATOR = new AspectRatio.1();
-  private final float jdField_a_of_type_Float;
   @Nullable
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
   private final float b;
+  private final float c;
   
   protected AspectRatio(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readFloat();
+    this.c = paramParcel.readFloat();
   }
   
   public int describeContents()
@@ -28,14 +28,14 @@ public class AspectRatio
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
+    paramParcel.writeString(this.a);
     paramParcel.writeFloat(this.b);
+    paramParcel.writeFloat(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.model.AspectRatio
  * JD-Core Version:    0.7.0.1
  */

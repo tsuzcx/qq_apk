@@ -25,7 +25,7 @@ class HotChatFlashPicActivity$1
       localStringBuilder.append(paramInt3);
       QLog.d("Q.hotchat", 4, localStringBuilder.toString());
     }
-    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong1) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1)) {
+    if ((HotChatFlashPicActivity.a(this.a).L == paramLong1) && (HotChatFlashPicActivity.a(this.a).M == paramInt1)) {
       HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
     }
   }
@@ -45,31 +45,31 @@ class HotChatFlashPicActivity$1
       localStringBuilder.append(paramBoolean);
       QLog.d("Q.hotchat", 4, localStringBuilder.toString());
     }
-    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1) && (paramInt2 == 2))
+    if ((HotChatFlashPicActivity.a(this.a).L == paramLong) && (HotChatFlashPicActivity.a(this.a).M == paramInt1) && (paramInt2 == 2))
     {
       HotChatFlashPicActivity.a(this.a, false);
       if (paramInt3 == 1)
       {
-        HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
-        HotChatFlashPicActivity.a(this.a).d = paramBoolean;
-        HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
+        HotChatFlashPicActivity.a(this.a).b = paramString;
+        HotChatFlashPicActivity.a(this.a).h = paramBoolean;
+        HotChatFlashPicActivity.a(this.a).f = false;
       }
       else
       {
-        HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
+        HotChatFlashPicActivity.a(this.a).f = true;
       }
       paramString = this.a;
-      HotChatFlashPicActivity.a(paramString, HotChatFlashPicActivity.a(paramString));
-      if ((HotChatFlashPicActivity.b(this.a) != null) && (!HotChatFlashPicActivity.b(this.a).equals("I:E")))
+      HotChatFlashPicActivity.a(paramString, HotChatFlashPicActivity.b(paramString));
+      if ((HotChatFlashPicActivity.c(this.a) != null) && (!HotChatFlashPicActivity.c(this.a).equals("I:E")))
       {
-        DESUtil.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
+        DESUtil.b(HotChatFlashPicActivity.c(this.a), HotChatFlashPicActivity.d(this.a));
         HotChatFlashPicActivity.b(this.a, true);
         paramString = this.a;
-        HotChatFlashPicActivity.a(paramString, HotChatFlashPicActivity.b(paramString));
+        HotChatFlashPicActivity.b(paramString, HotChatFlashPicActivity.c(paramString));
         return;
       }
-      if (HotChatFlashPicActivity.b(this.a) != null) {
-        HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
+      if (HotChatFlashPicActivity.c(this.a) != null) {
+        HotChatFlashPicActivity.e(this.a).sendEmptyMessage(1);
       }
     }
   }
@@ -80,7 +80,7 @@ class HotChatFlashPicActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.1
  * JD-Core Version:    0.7.0.1
  */

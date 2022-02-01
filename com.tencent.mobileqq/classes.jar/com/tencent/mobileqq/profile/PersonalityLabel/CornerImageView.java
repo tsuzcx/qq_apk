@@ -16,16 +16,11 @@ import com.tencent.util.VersionUtils;
 public class CornerImageView
   extends URLImageView
 {
-  public static ColorFilter a;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(637534208, PorterDuff.Mode.SRC_ATOP);
-  }
+  public static ColorFilter b = new PorterDuffColorFilter(637534208, PorterDuff.Mode.SRC_ATOP);
+  boolean a = false;
+  private float[] c = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+  private Path d;
+  private RectF e = new RectF();
   
   public CornerImageView(Context paramContext)
   {
@@ -56,7 +51,7 @@ public class CornerImageView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
     Object localObject = getDrawableState();
@@ -81,7 +76,7 @@ public class CornerImageView
       localObject = getDrawable();
       if (localObject != null)
       {
-        ((Drawable)localObject).setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+        ((Drawable)localObject).setColorFilter(b);
         ((Drawable)localObject).invalidateSelf();
       }
     }
@@ -98,19 +93,19 @@ public class CornerImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    if (this.d == null) {
+      this.d = new Path();
     }
     int i = paramCanvas.save();
     try
     {
       try
       {
-        Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        Path localPath = this.d;
+        RectF localRectF = this.e;
         localRectF.set(0.0F, 0.0F, getWidth(), getHeight());
         localPath.reset();
-        localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+        localPath.addRoundRect(localRectF, this.c, Path.Direction.CW);
         paramCanvas.clipPath(localPath);
         a(paramCanvas);
         super.onDraw(paramCanvas);
@@ -136,24 +131,24 @@ public class CornerImageView
   
   public void setPressMask(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
+    this.c = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
     a();
   }
   
   public void setRadius(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.c = paramArrayOfFloat;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView
  * JD-Core Version:    0.7.0.1
  */

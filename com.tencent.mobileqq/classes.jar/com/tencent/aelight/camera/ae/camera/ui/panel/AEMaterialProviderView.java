@@ -1,8 +1,10 @@
 package com.tencent.aelight.camera.ae.camera.ui.panel;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
@@ -34,34 +36,34 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
 
+@SuppressLint({"ViewConstructor"})
 public class AEMaterialProviderView
   extends FrameLayout
   implements ViewTreeObserver.OnScrollChangedListener, ViewPager.OnPageChangeListener, QIMSlidingTabView.IOnTabCheckListener, Observer
 {
-  private int jdField_a_of_type_Int = 1;
-  private AEMaterialPanel.AEMaterialPanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener;
-  private AEMaterialTabAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  public CaptureConfigUpdateObserver a;
-  private QIMSlidingTabView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = AECaptureContext.a();
-  private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-  private List<AEMaterialCategory> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = true;
-  private boolean c = false;
+  public CaptureConfigUpdateObserver a = new AEMaterialProviderView.1(this);
+  private AppInterface b = AECaptureContext.a();
+  private QIMSlidingTabView c;
+  private List<AEMaterialCategory> d = new CopyOnWriteArrayList();
+  private QQViewPager e;
+  private AEMaterialTabAdapter f;
+  private AEMaterialManager g;
+  private AEMaterialPanel.AEMaterialPanelListener h;
+  private boolean i = false;
+  private boolean j = true;
+  private boolean k = false;
+  private int l = 1;
   
   public AEMaterialProviderView(Context paramContext, AEMaterialPanel.AEMaterialPanelListener paramAEMaterialPanelListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicCaptureConfigUpdateObserver = new AEMaterialProviderView.1(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener = paramAEMaterialPanelListener;
+    this.h = paramAEMaterialPanelListener;
     c();
   }
   
   private AEMaterialCategory a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.d != null)
     {
       if (TextUtils.isEmpty(paramString)) {
         return null;
@@ -70,7 +72,7 @@ public class AEMaterialProviderView
       AEMaterialMetaData localAEMaterialMetaData;
       do
       {
-        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator1 = this.d.iterator();
         Iterator localIterator2;
         while (!localIterator2.hasNext())
         {
@@ -80,38 +82,35 @@ public class AEMaterialProviderView
               break;
             }
             localAEMaterialCategory = (AEMaterialCategory)localIterator1.next();
-          } while ((localAEMaterialCategory == null) || (localAEMaterialCategory.jdField_a_of_type_JavaUtilList == null));
-          localIterator2 = localAEMaterialCategory.jdField_a_of_type_JavaUtilList.iterator();
+          } while ((localAEMaterialCategory == null) || (localAEMaterialCategory.a == null));
+          localIterator2 = localAEMaterialCategory.a.iterator();
         }
         localAEMaterialMetaData = (AEMaterialMetaData)localIterator2.next();
-      } while ((localAEMaterialMetaData == null) || (!paramString.equals(localAEMaterialMetaData.k)));
+      } while ((localAEMaterialMetaData == null) || (!paramString.equals(localAEMaterialMetaData.m)));
       return localAEMaterialCategory;
     }
     return null;
   }
   
-  private ArrayList<QIMSlidingTabView.TabIcon> a()
+  private void c()
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localAEMaterialCategory != null)
-      {
-        if (-1 == localAEMaterialCategory.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_Int = i;
-        }
-        QIMSlidingTabView.TabIcon localTabIcon = new QIMSlidingTabView.TabIcon();
-        localTabIcon.a = localAEMaterialCategory.b;
-        localArrayList.add(localTabIcon);
-      }
-      i += 1;
-    }
-    return localArrayList;
+    LayoutInflater.from(getContext()).inflate(2064056374, this);
+    this.c = ((QIMSlidingTabView)findViewById(2063991500));
+    this.c.setIndicateColor(getContext().getResources().getColor(2131167113));
+    this.c.setTabCheckListener(this);
+    this.c.getViewTreeObserver().addOnScrollChangedListener(this);
+    this.e = ((QQViewPager)findViewById(2063991610));
+    this.f = new AEMaterialTabAdapter(getContext(), this.h);
+    this.g = ((AEMaterialManager)AEQIMManager.a(1));
+    this.g.b(false);
+    this.f.a(new ArrayList());
+    this.e.setOnPageChangeListener(this);
+    this.e.setAdapter(this.f);
+    this.b.registObserver(this.a);
+    a(true);
   }
   
-  private boolean a()
+  private boolean d()
   {
     boolean bool3 = getContext() instanceof QIMCameraCaptureActivity;
     boolean bool2 = false;
@@ -123,7 +122,7 @@ public class AEMaterialProviderView
       if (localQIMCameraCaptureActivity != null)
       {
         bool1 = bool2;
-        if (AECameraEntryManager.k(localQIMCameraCaptureActivity.getIntent())) {
+        if (AECameraEntryManager.o(localQIMCameraCaptureActivity.getIntent())) {
           bool1 = true;
         }
       }
@@ -131,50 +130,49 @@ public class AEMaterialProviderView
     return bool1;
   }
   
-  private void c()
+  private ArrayList<QIMSlidingTabView.TabIcon> getTabNameList()
   {
-    LayoutInflater.from(getContext()).inflate(2064318507, this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)findViewById(2064122720));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.setTabCheckListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.getViewTreeObserver().addOnScrollChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2064122836));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a(1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter.a(new ArrayList());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicCaptureConfigUpdateObserver);
-    a(true);
-  }
-  
-  public String a()
-  {
-    return "AEMaterialProviderView";
+    ArrayList localArrayList = new ArrayList();
+    int m = 0;
+    while (m < this.d.size())
+    {
+      AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)this.d.get(m);
+      if (localAEMaterialCategory != null)
+      {
+        if (-1 == localAEMaterialCategory.b) {
+          this.l = m;
+        }
+        QIMSlidingTabView.TabIcon localTabIcon = new QIMSlidingTabView.TabIcon();
+        localTabIcon.a = localAEMaterialCategory.d;
+        localArrayList.add(localTabIcon);
+      }
+      m += 1;
+    }
+    return localArrayList;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager != null)
+    if (this.g != null)
     {
-      if (((getContext() instanceof Activity)) && (AECameraEntryManager.k(((Activity)getContext()).getIntent())))
+      if (((getContext() instanceof Activity)) && (AECameraEntryManager.o(((Activity)getContext()).getIntent())))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.e();
+        this.g.i();
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.d();
+      this.g.h();
     }
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView != null))
+    if ((this.e != null) && (this.c != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("locatePage: ");
       localStringBuilder.append(paramInt);
       AEQLog.b("AEMaterialProviderView", localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
+      this.e.setCurrentItem(paramInt);
     }
   }
   
@@ -189,185 +187,195 @@ public class AEMaterialProviderView
       ((StringBuilder)localObject1).append(", itemId=");
       ((StringBuilder)localObject1).append(paramString2);
       ((StringBuilder)localObject1).append(", mTabListSize=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject1).append(this.d.size());
       QLog.d("AEMaterialProviderView", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+    if (this.d.isEmpty()) {
       a(true);
     }
     boolean bool = TextUtils.isEmpty(paramString1);
     Object localObject2 = null;
-    int m = 0;
-    int i;
+    int i2 = 0;
+    int m;
     if (bool)
     {
       paramString1 = a(paramString2);
-      i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString1);
+      m = this.d.indexOf(paramString1);
     }
     else
     {
-      i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      m = 0;
+      while (m < this.d.size())
       {
-        if ((paramString1 != null) && (paramString1.equals(((AEMaterialCategory)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
+        if ((paramString1 != null) && (paramString1.equals(((AEMaterialCategory)this.d.get(m)).d)))
         {
-          paramString1 = (AEMaterialCategory)this.jdField_a_of_type_JavaUtilList.get(i);
-          break label209;
+          paramString1 = (AEMaterialCategory)this.d.get(m);
+          break label210;
         }
-        i += 1;
+        m += 1;
       }
       paramString1 = null;
-      i = 0;
+      m = 0;
     }
-    label209:
+    label210:
     if (paramString1 == null) {
       return;
     }
-    int j = 0;
-    int k;
+    int n = 0;
+    int i1;
     for (;;)
     {
       localObject1 = localObject2;
-      k = m;
-      if (j >= paramString1.jdField_a_of_type_JavaUtilList.size()) {
+      i1 = i2;
+      if (n >= paramString1.a.size()) {
         break;
       }
-      localObject1 = (AEMaterialMetaData)paramString1.jdField_a_of_type_JavaUtilList.get(j);
-      if (((AEMaterialMetaData)localObject1).k.equals(paramString2))
+      localObject1 = (AEMaterialMetaData)paramString1.a.get(n);
+      if (((AEMaterialMetaData)localObject1).m.equals(paramString2))
       {
-        k = j;
+        i1 = n;
         break;
       }
-      j += 1;
+      n += 1;
     }
-    ThreadManager.getUIHandler().post(new AEMaterialProviderView.2(this, i));
+    ThreadManager.getUIHandler().post(new AEMaterialProviderView.2(this, m));
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder();
       paramString1.append("itemInfo= ");
       paramString1.append(localObject1);
       paramString1.append(",index=");
-      paramString1.append(i);
+      paramString1.append(m);
       paramString1.append(",pos=");
-      paramString1.append(k);
+      paramString1.append(i1);
       QLog.d("AEMaterialProviderView", 2, paramString1.toString());
     }
     if (localObject1 != null)
     {
-      this.c = true;
+      this.k = true;
       if (((AEMaterialMetaData)localObject1).a())
       {
         WeishiGuideUtils.a(getContext(), localObject1, 1);
         return;
       }
-      postDelayed(new AEMaterialProviderView.3(this, i, (AEMaterialMetaData)localObject1), 200L);
+      postDelayed(new AEMaterialProviderView.3(this, m, (AEMaterialMetaData)localObject1), 200L);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (a()) {
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a();
+    if (d()) {
+      localObject1 = this.g.c();
     } else {
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramBoolean);
+      localObject1 = this.g.c(paramBoolean);
     }
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("### updateData: fromCircle = ");
-    ((StringBuilder)localObject2).append(a());
+    ((StringBuilder)localObject2).append(d());
     ((StringBuilder)localObject2).append(" | totalList = ");
     ((StringBuilder)localObject2).append(localObject1.toString());
     AEQLog.a("AEMaterialProviderView", ((StringBuilder)localObject2).toString());
-    this.jdField_a_of_type_JavaUtilList = new ArrayList((Collection)localObject1);
-    int k = this.jdField_a_of_type_Int;
-    int j = k;
+    this.d = new ArrayList((Collection)localObject1);
+    int i1 = this.l;
+    int n = i1;
     if (!paramBoolean)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-      j = k;
+      localObject1 = this.e;
+      n = i1;
       if (localObject1 != null)
       {
-        j = k;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter != null)
+        n = i1;
+        if (this.f != null)
         {
-          j = k;
-          if (!this.b)
+          n = i1;
+          if (!this.j)
           {
-            i = ((QQViewPager)localObject1).getCurrentItem();
-            localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter.a(i);
-            j = k;
+            m = ((QQViewPager)localObject1).getCurrentItem();
+            localObject1 = this.f.a(m);
+            n = i1;
             if (localObject1 != null)
             {
-              i = 0;
+              m = 0;
               for (;;)
               {
-                j = k;
-                if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+                n = i1;
+                if (m >= this.d.size()) {
                   break;
                 }
-                localObject2 = (AEMaterialCategory)this.jdField_a_of_type_JavaUtilList.get(i);
-                if ((localObject2 != null) && (!TextUtils.isEmpty(((AEMaterialCategory)localObject2).b)) && (((AEMaterialCategory)localObject2).b.equals(((AEMaterialCategory)localObject1).b)))
+                localObject2 = (AEMaterialCategory)this.d.get(m);
+                if ((localObject2 != null) && (!TextUtils.isEmpty(((AEMaterialCategory)localObject2).d)) && (((AEMaterialCategory)localObject2).d.equals(((AEMaterialCategory)localObject1).d)))
                 {
-                  j = i;
+                  n = m;
                   break;
                 }
-                i += 1;
+                m += 1;
               }
             }
           }
-          this.b = false;
+          this.j = false;
         }
       }
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter;
+    Object localObject1 = this.f;
     if (localObject1 != null)
     {
-      ((AEMaterialTabAdapter)localObject1).a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter.notifyDataSetChanged();
+      ((AEMaterialTabAdapter)localObject1).a(this.d);
+      this.f.notifyDataSetChanged();
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
+    localObject1 = this.e;
     if (localObject1 != null) {
-      ((QQViewPager)localObject1).setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialTabAdapter);
+      ((QQViewPager)localObject1).setAdapter(this.f);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView;
+    localObject1 = this.c;
     if (localObject1 != null)
     {
-      ((QIMSlidingTabView)localObject1).initTabItemsWithRedDot(a());
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.setTabCheckListener(this);
+      ((QIMSlidingTabView)localObject1).initTabItemsWithRedDot(getTabNameList());
+      this.c.setTabCheckListener(this);
     }
-    int i = j;
-    if (j >= this.jdField_a_of_type_JavaUtilList.size())
+    int m = n;
+    if (n >= this.d.size())
     {
-      i = j;
+      m = n;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("resetPos ");
-        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append(n);
         ((StringBuilder)localObject1).append(" not exist, mTabList size = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject1).append(this.d.size());
         QLog.d("AEMaterialProviderView", 2, ((StringBuilder)localObject1).toString());
-        i = 0;
+        m = 0;
       }
     }
-    if ((!this.c) && (this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView != null)) {
-      a(i);
+    if ((!this.k) && (this.d.size() > 0) && (this.e != null) && (this.c != null)) {
+      a(m);
     }
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
+    Object localObject = this.g;
     if (localObject != null)
     {
-      ((AEMaterialManager)localObject).f();
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(111);
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(113);
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(112);
+      ((AEMaterialManager)localObject).k();
+      this.g.a(111);
+      this.g.a(113);
+      this.g.a(112);
     }
-    localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    localObject = this.b;
     if (localObject != null) {
-      ((AppInterface)localObject).unRegistObserver(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicCaptureConfigUpdateObserver);
+      ((AppInterface)localObject).unRegistObserver(this.a);
     }
+  }
+  
+  public AEMaterialManager getManager()
+  {
+    return this.g;
+  }
+  
+  public String getTag()
+  {
+    return "AEMaterialProviderView";
   }
   
   public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
@@ -381,7 +389,11 @@ public class AEMaterialProviderView
   
   public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.onTabChecked(paramInt);
+    this.c.onTabChecked(paramInt);
+    AEMaterialTabAdapter localAEMaterialTabAdapter = this.f;
+    if (localAEMaterialTabAdapter != null) {
+      localAEMaterialTabAdapter.b(paramInt);
+    }
   }
   
   public void onScrollChanged() {}
@@ -389,7 +401,7 @@ public class AEMaterialProviderView
   @TargetApi(9)
   public void onTabChecked(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
+    this.e.setCurrentItem(paramInt);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -399,7 +411,7 @@ public class AEMaterialProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialProviderView
  * JD-Core Version:    0.7.0.1
  */

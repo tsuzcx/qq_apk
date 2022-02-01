@@ -12,37 +12,17 @@ import java.util.List;
 
 public class AIOInputState
 {
-  private int jdField_a_of_type_Int = 0;
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+  private AIOContext a;
+  private int b = 0;
   
   public AIOInputState(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.a = paramAIOContext;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @TargetApi(11)
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a() == null) {
-      return;
-    }
-    if (((EditTextUI)localObject).a() == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-    ((EditTextUI)localObject).a(8);
-    ((EditTextUI)localObject).a(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().b(false);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().e().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((IInputStateChangeCallback)((Iterator)localObject).next()).a(2, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    }
+    return this.b;
   }
   
   @TargetApi(11)
@@ -55,21 +35,21 @@ public class AIOInputState
       ((StringBuilder)localObject).append(" setInputStat start stat = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" mInputStat= ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(" currenttime:");
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("AIOInputState", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt != this.jdField_a_of_type_Int)
+    if (paramInt != this.b)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+      this.b = paramInt;
+      localObject = this.a.p().d().f();
       ((EditTextUI)localObject).a(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().c();
-      ((EditTextUI)localObject).a(true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().e().iterator();
+      this.a.p().d().d().c();
+      ((EditTextUI)localObject).b(true);
+      localObject = this.a.p().c().f().iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((IInputStateChangeCallback)((Iterator)localObject).next()).a(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
+        ((IInputStateChangeCallback)((Iterator)localObject).next()).a(0, this.a);
       }
     }
     if (QLog.isColorLevel())
@@ -80,10 +60,30 @@ public class AIOInputState
       QLog.d("AIOInputState", 2, ((StringBuilder)localObject).toString());
     }
   }
+  
+  @TargetApi(11)
+  public void b()
+  {
+    Object localObject = this.a.p().d().f();
+    if (this.a.a().getMessageFacade().l() == null) {
+      return;
+    }
+    if (((EditTextUI)localObject).b() == null) {
+      return;
+    }
+    this.b = 2;
+    ((EditTextUI)localObject).a(8);
+    ((EditTextUI)localObject).b(false);
+    this.a.p().d().d().c(false);
+    localObject = this.a.p().c().f().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IInputStateChangeCallback)((Iterator)localObject).next()).a(2, this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.input.AIOInputState
  * JD-Core Version:    0.7.0.1
  */

@@ -224,7 +224,7 @@ public abstract class MiniGamePAHippyBaseFragment
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
-    localObject = ((ViewGroup)localObject).findViewById(2131368190);
+    localObject = ((ViewGroup)localObject).findViewById(2131435055);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "rootView.findViewById(R.id.hippy_container)");
     this.hippyContainer = ((ViewGroup)localObject);
   }
@@ -351,7 +351,7 @@ public abstract class MiniGamePAHippyBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.hippy.MiniGamePAHippyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

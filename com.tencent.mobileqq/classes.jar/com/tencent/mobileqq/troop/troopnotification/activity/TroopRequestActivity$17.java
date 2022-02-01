@@ -22,12 +22,12 @@ class TroopRequestActivity$17
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c <= 0L) || (l - TroopRequestActivity.c >= 800L))
+    if ((l - TroopRequestActivity.an <= 0L) || (l - TroopRequestActivity.an >= 800L))
     {
-      TroopRequestActivity.c = l;
-      Bundle localBundle = TroopInfoUIUtil.a(this.a.jdField_a_of_type_JavaLangString, 4);
+      TroopRequestActivity.an = l;
+      Bundle localBundle = TroopInfoUIUtil.a(this.a.c, 4);
       localBundle.putInt("t_s_f", 1001);
-      int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
+      int i = this.a.W.msg.group_msg_type.get();
       if ((i != 2) && (i != 10) && (i != 12)) {
         i = 0;
       } else {
@@ -35,7 +35,7 @@ class TroopRequestActivity$17
       }
       AppInterface localAppInterface = TroopRequestActivity.a(this.a);
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
+      ((StringBuilder)localObject).append(this.a.W.msg.group_code.get());
       ((StringBuilder)localObject).append("");
       String str = ((StringBuilder)localObject).toString();
       if (i != 0) {
@@ -51,7 +51,7 @@ class TroopRequestActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.17
  * JD-Core Version:    0.7.0.1
  */

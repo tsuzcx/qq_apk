@@ -18,44 +18,44 @@ class VideoViewVideoHolder$DoodleSegment
   extends JobSegment<StoryVideoItem, StoryVideoItem>
   implements StorySingleFileDownloader.FileDownloadListener
 {
-  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-  private VideoViewVideoHolder.SingleFileDownloaderHolder jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder;
+  private StoryVideoItem b;
+  private VideoViewVideoHolder.SingleFileDownloaderHolder c;
   
   public VideoViewVideoHolder$DoodleSegment(VideoViewVideoHolder paramVideoViewVideoHolder, VideoViewVideoHolder.SingleFileDownloaderHolder paramSingleFileDownloaderHolder)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder = paramSingleFileDownloaderHolder;
+    this.c = paramSingleFileDownloaderHolder;
   }
   
   protected void a(StoryVideoItem paramStoryVideoItem)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 4);
+    VideoViewVideoHolder.d(this.a, 4);
     super.notifyResult(paramStoryVideoItem);
   }
   
   protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    VideoViewVideoHolder.d(this.a, 3);
+    this.b = paramStoryVideoItem;
     int i = paramStoryVideoItem.isMaskDownloaded();
     if (i == 0)
     {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 4);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(8);
-      SLog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display ... %s", paramStoryVideoItem.getDownloadMaskUrl());
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, HardCodeUtil.a(2131716173));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder.a().a(paramStoryVideoItem.mVid, 1, true, this);
+      VideoViewVideoHolder.a(this.a, 4);
+      this.a.t.setVisibility(8);
+      this.a.p.a(8);
+      SLog.a(this.a.a, "wait doodle download and display ... %s", paramStoryVideoItem.getDownloadMaskUrl());
+      VideoViewVideoHolder.a(this.a, HardCodeUtil.a(2131913622));
+      this.c.a().a(paramStoryVideoItem.mVid, 1, true, this);
       return;
     }
     if (i == 1)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(0);
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b, paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder));
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, HardCodeUtil.a(2131716168));
+      this.a.r.setVisibility(0);
+      PlayModeUtils.a(this.a.r, paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.d(this.a));
+      VideoViewVideoHolder.a(this.a, HardCodeUtil.a(2131913617));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(8);
+      this.a.r.setVisibility(8);
     }
     a(paramStoryVideoItem);
   }
@@ -64,55 +64,55 @@ class VideoViewVideoHolder$DoodleSegment
   {
     if (!isCanceled())
     {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "DD", SystemClock.uptimeMillis());
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(0);
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder));
-      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      VideoViewVideoHolder.a(this.a, "DD", SystemClock.uptimeMillis());
+      this.a.r.setVisibility(0);
+      PlayModeUtils.a(this.a.r, this.b.mLocalMaskPath, this.b.getDownloadMaskUrl(), VideoViewVideoHolder.d(this.a));
+      a(this.b);
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display onSuccess. stream canceled.");
+    SLog.d(this.a.a, "wait doodle download and display onSuccess. stream canceled.");
   }
   
   public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
     if (!isCanceled())
     {
-      SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display error. vid :%s, error=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramErrorMessage });
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 2);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "doodle download failed"));
+      SLog.d(this.a.a, "wait doodle download and display error. vid :%s, error=%s", new Object[] { this.b.mVid, paramErrorMessage });
+      VideoViewVideoHolder.c(this.a, 2);
+      VideoViewVideoHolder.a(this.a, false);
+      VideoViewVideoHolder.b(this.a, paramErrorMessage.errorCode);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.c(this.a), "doodle download failed"));
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display error. stream canceled.");
+    SLog.d(this.a.a, "wait doodle download and display error. stream canceled.");
   }
   
   public void b(String paramString, int paramInt)
   {
     if (!isCanceled())
     {
-      SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display cancel. vid :%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 2);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "doodle download cancel"));
+      SLog.d(this.a.a, "wait doodle download and display cancel. vid :%s", new Object[] { this.b.mVid });
+      VideoViewVideoHolder.c(this.a, 2);
+      VideoViewVideoHolder.a(this.a, false);
+      VideoViewVideoHolder.b(this.a, 1234);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.c(this.a), "doodle download cancel"));
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display cancel. stream canceled.");
+    SLog.d(this.a.a, "wait doodle download and display cancel. stream canceled.");
   }
   
   protected void onCancel()
   {
     super.onCancel();
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "DoodleSegment onCancel");
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 1);
+    SLog.b(this.a.a, "DoodleSegment onCancel");
+    if (this.b != null) {
+      this.c.a().a(this.b.mVid, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.DoodleSegment
  * JD-Core Version:    0.7.0.1
  */

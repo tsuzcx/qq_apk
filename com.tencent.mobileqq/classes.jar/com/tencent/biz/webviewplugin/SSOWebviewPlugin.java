@@ -42,24 +42,21 @@ import org.json.JSONObject;
 public class SSOWebviewPlugin
   extends WebViewPlugin
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
   protected Activity a;
-  private OnRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver = new SSOWebviewPlugin.1(this);
-  private CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager;
-  public HashMap<String, Long> a;
-  NewIntent jdField_a_of_type_MqqAppNewIntent;
-  int b;
-  public HashMap<String, Long> b;
-  public HashMap<String, Long> c = new HashMap();
-  HashMap<String, Pair<Long, Integer>> d = new HashMap();
-  HashMap<String, Integer> e = new HashMap();
+  NewIntent b;
+  long c = 0L;
+  int d = 0;
+  int e = 204800;
+  public HashMap<String, Long> f = new HashMap();
+  public HashMap<String, Long> g = new HashMap();
+  public HashMap<String, Long> h = new HashMap();
+  HashMap<String, Pair<Long, Integer>> i = new HashMap();
+  HashMap<String, Integer> j = new HashMap();
+  private CookieManager k;
+  private OnRemoteRespObserver l = new SSOWebviewPlugin.1(this);
   
   public SSOWebviewPlugin()
   {
-    this.jdField_b_of_type_Int = 204800;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.mPluginNameSpace = "sso";
   }
   
@@ -96,8 +93,8 @@ public class SSOWebviewPlugin
     try
     {
       WebSSOAgentServlet.d = System.currentTimeMillis();
-      long l1 = WebSSOAgentServlet.d - WebSSOAgentServlet.jdField_a_of_type_Long;
-      long l2 = WebSSOAgentServlet.b - WebSSOAgentServlet.jdField_a_of_type_Long;
+      long l1 = WebSSOAgentServlet.d - WebSSOAgentServlet.a;
+      long l2 = WebSSOAgentServlet.b - WebSSOAgentServlet.a;
       long l3 = WebSSOAgentServlet.c - WebSSOAgentServlet.b;
       long l4 = WebSSOAgentServlet.d - WebSSOAgentServlet.c;
       if (QLog.isColorLevel())
@@ -173,7 +170,7 @@ public class SSOWebviewPlugin
         paramString1 = paramAppInterface.getCurrentAccountUin();
         paramAppInterface = StatisticCollector.getInstance(paramAppInterface.getApplicationContext());
         if (0L != l6) {
-          break label358;
+          break label359;
         }
         bool = true;
         paramAppInterface.collectPerformance(paramString1, paramString2, bool, l1, 0L, paramJSONObject1, "", false);
@@ -190,7 +187,7 @@ public class SSOWebviewPlugin
         }
       }
       return;
-      label358:
+      label359:
       boolean bool = false;
     }
   }
@@ -276,7 +273,7 @@ public class SSOWebviewPlugin
             paramString1 = new JSONObject();
             paramString1.put("ssoRet", 255);
             paramString1.put("businessRet", 0);
-            paramString1.put("msg", HardCodeUtil.a(2131714146));
+            paramString1.put("msg", HardCodeUtil.a(2131911674));
             super.callJs((String)localObject1, new String[] { paramString1.toString() });
             if (!QLog.isColorLevel()) {
               break label1466;
@@ -298,8 +295,8 @@ public class SSOWebviewPlugin
             return;
           }
           long l2 = 10240L;
-          if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString2)) {
-            l2 = ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString2)).longValue();
+          if (this.g.containsKey(paramString2)) {
+            l2 = ((Long)this.g.get(paramString2)).longValue();
           }
           if (l2 <= 0L) {
             break label1469;
@@ -310,7 +307,7 @@ public class SSOWebviewPlugin
             paramString1 = new JSONObject();
             paramString1.put("ssoRet", 101);
             paramString1.put("businessRet", 0);
-            paramString1.put("msg", HardCodeUtil.a(2131714154));
+            paramString1.put("msg", HardCodeUtil.a(2131911682));
             super.callJs((String)localObject1, new String[] { paramString1.toString() });
             if (!QLog.isColorLevel()) {
               break label1468;
@@ -324,27 +321,27 @@ public class SSOWebviewPlugin
             return;
           }
           l2 = System.currentTimeMillis() / 1000L;
-          if (this.d.containsKey(paramString2))
+          if (this.i.containsKey(paramString2))
           {
-            localObject2 = (Pair)this.d.get(paramString2);
-            if (!this.e.containsKey(paramString2)) {
+            localObject2 = (Pair)this.i.get(paramString2);
+            if (!this.j.containsKey(paramString2)) {
               break label1472;
             }
-            i = ((Integer)this.e.get(paramString2)).intValue();
+            m = ((Integer)this.j.get(paramString2)).intValue();
             if (((Long)((Pair)localObject2).first).longValue() != l2)
             {
-              this.d.put(paramString2, new Pair(Long.valueOf(l2), Integer.valueOf(0)));
+              this.i.put(paramString2, new Pair(Long.valueOf(l2), Integer.valueOf(0)));
             }
-            else if (((Integer)((Pair)localObject2).second).intValue() + 1 <= i)
+            else if (((Integer)((Pair)localObject2).second).intValue() + 1 <= m)
             {
-              this.d.put(paramString2, new Pair(Long.valueOf(l2), Integer.valueOf(((Integer)((Pair)localObject2).second).intValue() + 1)));
+              this.i.put(paramString2, new Pair(Long.valueOf(l2), Integer.valueOf(((Integer)((Pair)localObject2).second).intValue() + 1)));
             }
             else
             {
               paramString1 = new JSONObject();
               paramString1.put("ssoRet", 102);
               paramString1.put("businessRet", 0);
-              paramString1.put("msg", HardCodeUtil.a(2131714143));
+              paramString1.put("msg", HardCodeUtil.a(2131911671));
               super.callJs((String)localObject1, new String[] { paramString1.toString() });
               if (!QLog.isColorLevel()) {
                 break;
@@ -353,25 +350,25 @@ public class SSOWebviewPlugin
               paramString1.append("uniAgent, req aborted, reason: requests too frequently, cmd: ");
               paramString1.append(paramString2);
               paramString1.append(", freq: ");
-              paramString1.append(i);
+              paramString1.append(m);
               QLog.d("SSOWebviewPlugin", 2, paramString1.toString());
             }
           }
           else
           {
-            this.d.put(paramString2, new Pair(Long.valueOf(l2), Integer.valueOf(0)));
+            this.i.put(paramString2, new Pair(Long.valueOf(l2), Integer.valueOf(0)));
           }
           if (localJSONObject.has("needCookie"))
           {
-            i = localJSONObject.getInt("needCookie");
+            m = localJSONObject.getInt("needCookie");
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("uniAgent, req, needCookie=");
-              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(m);
               QLog.d("SSOWebviewPlugin", 2, ((StringBuilder)localObject2).toString());
             }
-            if (i == 1)
+            if (m == 1)
             {
               localObject2 = this.mRuntime.a();
               if (localObject2 != null)
@@ -379,12 +376,12 @@ public class SSOWebviewPlugin
                 localObject2 = ((CustomWebView)localObject2).getUrl();
                 if (!TextUtils.isEmpty((CharSequence)localObject2))
                 {
-                  if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager == null)
+                  if (this.k == null)
                   {
-                    this.jdField_a_of_type_ComTencentSmttSdkCookieManager = CookieManager.getInstance();
-                    this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(true);
+                    this.k = CookieManager.getInstance();
+                    this.k.setAcceptCookie(true);
                   }
-                  String str = this.jdField_a_of_type_ComTencentSmttSdkCookieManager.getCookie((String)localObject2);
+                  String str = this.k.getCookie((String)localObject2);
                   if (!TextUtils.isEmpty(str))
                   {
                     if (str.indexOf(',') != -1) {
@@ -405,7 +402,7 @@ public class SSOWebviewPlugin
               }
             }
           }
-          if ((this.mRuntime.a() != null) && (((IApolloWebDataHandler)QRoute.api(IApolloWebDataHandler.class)).doInterceptApolloCmd(this.mRuntime.a().getUrl(), paramString1, this.mRuntime.a(), this)))
+          if ((this.mRuntime.a() != null) && (((IApolloWebDataHandler)QRoute.api(IApolloWebDataHandler.class)).doInterceptApolloCmd(this.mRuntime.a().getUrl(), paramString1, this.mRuntime.b(), this)))
           {
             if (QLog.isColorLevel())
             {
@@ -421,13 +418,13 @@ public class SSOWebviewPlugin
             localObject2 = new WebSSOAgent.UniSsoServerReqComm();
             ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
             ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-            ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
+            ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
             paramString1 = new WebSSOAgent.UniSsoServerReq();
             paramString1.comm.set((MessageMicro)localObject2);
             a(localJSONObject);
             localJSONObject.put("option", a());
             paramString1.reqdata.set(localJSONObject.toString());
-            localObject2 = new NewIntent(this.mRuntime.a().getApplicationContext(), WebSSOAgentServlet.class);
+            localObject2 = new NewIntent(this.mRuntime.d().getApplicationContext(), WebSSOAgentServlet.class);
             ((NewIntent)localObject2).putExtra("extra_cmd", paramString2);
             ((NewIntent)localObject2).putExtra("extra_data", paramString1.toByteArray());
             ((NewIntent)localObject2).putExtra("extra_callbackid", (String)localObject1);
@@ -445,7 +442,7 @@ public class SSOWebviewPlugin
             if (QLog.isColorLevel()) {
               QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, send request to msf");
             }
-            this.mRuntime.a().startServlet((NewIntent)localObject2);
+            this.mRuntime.b().startServlet((NewIntent)localObject2);
           }
           return;
         }
@@ -467,7 +464,7 @@ public class SSOWebviewPlugin
       label1469:
       continue;
       label1472:
-      int i = 10;
+      int m = 10;
     }
   }
   
@@ -482,7 +479,7 @@ public class SSOWebviewPlugin
     }
     for (;;)
     {
-      int i;
+      int m;
       try
       {
         paramString2 = Uri.parse(paramString2).getHost().split("\\.");
@@ -491,12 +488,12 @@ public class SSOWebviewPlugin
         String str3 = paramString1.getString("cmd");
         c(str3, str2);
         String str1 = paramString1.getString("callback");
-        if (this.jdField_a_of_type_Long != 0L)
+        if (this.c != 0L)
         {
           long l1 = System.currentTimeMillis();
-          long l2 = this.jdField_a_of_type_Long;
+          long l2 = this.c;
           l1 -= l2;
-          if ((l1 >= 0L) && (l1 < this.jdField_a_of_type_Int * 1000))
+          if ((l1 >= 0L) && (l1 < this.d * 1000))
           {
             paramString1 = new JSONObject();
             paramString1.put("cret", 1);
@@ -504,10 +501,10 @@ public class SSOWebviewPlugin
             if (!QLog.isColorLevel()) {
               break label516;
             }
-            QLog.d("SSOWebviewPlugin", 2, new Object[] { "limit frequency duration: ", Long.valueOf(l1), " minDuration:", Integer.valueOf(this.jdField_a_of_type_Int), " preTime:", Long.valueOf(this.jdField_a_of_type_Long) });
+            QLog.d("SSOWebviewPlugin", 2, new Object[] { "limit frequency duration: ", Long.valueOf(l1), " minDuration:", Integer.valueOf(this.d), " preTime:", Long.valueOf(this.c) });
             return;
           }
-          if (str2.getBytes().length > this.jdField_b_of_type_Int)
+          if (str2.getBytes().length > this.e)
           {
             paramString1 = new JSONObject();
             paramString1.put("cret", 2);
@@ -516,18 +513,18 @@ public class SSOWebviewPlugin
         }
         else
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.c = System.currentTimeMillis();
         }
         paramString1 = "";
-        i = paramString2.length - 1;
-        if (i >= 0)
+        m = paramString2.length - 1;
+        if (m >= 0)
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramString1);
-          ((StringBuilder)localObject).append(paramString2[i]);
+          ((StringBuilder)localObject).append(paramString2[m]);
           localObject = ((StringBuilder)localObject).toString();
           paramString1 = (String)localObject;
-          if (i == 0) {
+          if (m == 0) {
             break label517;
           }
           paramString1 = new StringBuilder();
@@ -536,7 +533,7 @@ public class SSOWebviewPlugin
           paramString1 = paramString1.toString();
           break label517;
         }
-        paramString2 = new NewIntent(this.mRuntime.a().getApplicationContext(), ProtoServlet.class);
+        paramString2 = new NewIntent(this.mRuntime.d().getApplicationContext(), ProtoServlet.class);
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("MQUpdateSvc_");
         ((StringBuilder)localObject).append(paramString1);
@@ -548,7 +545,7 @@ public class SSOWebviewPlugin
         paramString1.data.set(str2);
         paramString2.putExtra("data", paramString1.toByteArray());
         paramString2.setObserver(new SSOWebviewPlugin.3(this, str1, str3));
-        this.mRuntime.a().startServlet(paramString2);
+        this.mRuntime.b().startServlet(paramString2);
         return;
       }
       catch (Exception paramString1)
@@ -562,7 +559,7 @@ public class SSOWebviewPlugin
       label516:
       return;
       label517:
-      i -= 1;
+      m -= 1;
     }
   }
   
@@ -585,7 +582,7 @@ public class SSOWebviewPlugin
     {
       if (paramVarArgs.length > 0)
       {
-        WebSSOAgentServlet.jdField_a_of_type_Long = System.currentTimeMillis();
+        WebSSOAgentServlet.a = System.currentTimeMillis();
         b(paramVarArgs[0], paramString1);
         return true;
       }
@@ -614,7 +611,7 @@ public class SSOWebviewPlugin
         paramString2.putBoolean("isFollow", bool1);
         paramString2.putString("uin", paramJsBridgeListener);
         paramString2.putString("callback", paramString1);
-        paramJsBridgeListener = DataFactory.a("ipc_cmd_certified_account_web_plugin_follow", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString2);
+        paramJsBridgeListener = DataFactory.a("ipc_cmd_certified_account_web_plugin_follow", null, this.l.key, paramString2);
         ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
         return false;
       }
@@ -634,49 +631,49 @@ public class SSOWebviewPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
+    this.a = this.mRuntime.d();
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.l);
   }
   
   protected void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_MqqAppNewIntent;
+    Object localObject = this.b;
     if (localObject != null) {
       ((NewIntent)localObject).setObserver(null);
     }
-    this.jdField_a_of_type_ComTencentSmttSdkCookieManager = null;
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    this.k = null;
+    localObject = this.f;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.f = null;
     }
-    localObject = this.jdField_b_of_type_JavaUtilHashMap;
+    localObject = this.g;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.jdField_b_of_type_JavaUtilHashMap = null;
+      this.g = null;
     }
-    localObject = this.c;
+    localObject = this.h;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.c = null;
+      this.h = null;
     }
-    localObject = this.d;
+    localObject = this.i;
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
-    localObject = this.e;
+    localObject = this.j;
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.SSOWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

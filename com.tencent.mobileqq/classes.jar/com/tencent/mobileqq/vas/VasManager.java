@@ -40,7 +40,7 @@ public class VasManager<V>
       if (i >= 0)
       {
         VasManager.ListenerHolder localListenerHolder = (VasManager.ListenerHolder)this.a.get(i);
-        if (paramString.equals(localListenerHolder.jdField_a_of_type_JavaLangString))
+        if (paramString.equals(localListenerHolder.b))
         {
           this.a.remove(i);
           localArrayList.add(localListenerHolder);
@@ -52,7 +52,7 @@ public class VasManager<V>
         while (paramString.hasNext())
         {
           ??? = (VasManager.ListenerHolder)paramString.next();
-          ((VasManager.ListenerHolder)???).jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener.onComplete(paramV, ((VasManager.ListenerHolder)???).jdField_a_of_type_JavaLangObject);
+          ((VasManager.ListenerHolder)???).a.onComplete(paramV, ((VasManager.ListenerHolder)???).c);
         }
         return;
       }
@@ -70,7 +70,7 @@ public class VasManager<V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasManager
  * JD-Core Version:    0.7.0.1
  */

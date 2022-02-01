@@ -20,21 +20,21 @@ import java.util.Date;
 public class KSongProsBar
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private KSHelper.Config jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint();
+  private Paint a = new Paint();
+  private Paint b = new Paint();
+  private Paint c = new Paint();
   private int d;
   private int e;
   private int f;
-  private int g = 3;
-  private int h = 10;
+  private int g;
+  private int h;
+  private String i;
+  private String j;
+  private int k;
+  private KSHelper.Config l;
+  private RectF m = new RectF();
+  private int n = 3;
+  private int o = 10;
   
   public KSongProsBar(Context paramContext)
   {
@@ -53,12 +53,6 @@ public class KSongProsBar
     a(paramContext, paramAttributeSet, paramInt);
   }
   
-  private String a(long paramLong)
-  {
-    Date localDate = new Date(paramLong);
-    return new SimpleDateFormat("mm:ss").format(localDate);
-  }
-  
   private void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     paramContext.getResources();
@@ -67,13 +61,13 @@ public class KSongProsBar
     paramContext.setStrokeJoin(Paint.Join.ROUND);
     paramContext.setStrokeCap(Paint.Cap.ROUND);
     paramContext.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(paramContext);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(paramContext);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt3);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(a(10.0F));
+    this.c = new Paint(paramContext);
+    this.c.setColor(paramInt1);
+    this.a = new Paint(paramContext);
+    this.a.setColor(paramInt2);
+    this.b = new Paint(paramContext);
+    this.b.setColor(paramInt3);
+    this.b.setTextSize(a(10.0F));
   }
   
   /* Error */
@@ -82,43 +76,43 @@ public class KSongProsBar
     // Byte code:
     //   0: aload_1
     //   1: aload_2
-    //   2: getstatic 131	com/tencent/mobileqq/qqpay/ui/R$styleable:aO	[I
+    //   2: getstatic 121	com/tencent/mobileqq/qqpay/ui/R$styleable:aT	[I
     //   5: iload_3
     //   6: iconst_0
-    //   7: invokevirtual 135	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   7: invokevirtual 125	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
     //   10: astore_2
     //   11: aload_0
     //   12: aload_1
     //   13: aload_2
-    //   14: getstatic 137	com/tencent/mobileqq/qqpay/ui/R$styleable:jdField_b_of_type_Int	I
+    //   14: getstatic 128	com/tencent/mobileqq/qqpay/ui/R$styleable:aV	I
     //   17: sipush -256
-    //   20: invokevirtual 143	android/content/res/TypedArray:getColor	(II)I
+    //   20: invokevirtual 134	android/content/res/TypedArray:getColor	(II)I
     //   23: aload_2
-    //   24: getstatic 145	com/tencent/mobileqq/qqpay/ui/R$styleable:jdField_a_of_type_Int	I
+    //   24: getstatic 137	com/tencent/mobileqq/qqpay/ui/R$styleable:aU	I
     //   27: iconst_m1
-    //   28: invokevirtual 143	android/content/res/TypedArray:getColor	(II)I
+    //   28: invokevirtual 134	android/content/res/TypedArray:getColor	(II)I
     //   31: aload_2
-    //   32: getstatic 147	com/tencent/mobileqq/qqpay/ui/R$styleable:jdField_c_of_type_Int	I
+    //   32: getstatic 140	com/tencent/mobileqq/qqpay/ui/R$styleable:aW	I
     //   35: sipush -256
-    //   38: invokevirtual 143	android/content/res/TypedArray:getColor	(II)I
-    //   41: invokespecial 149	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:a	(Landroid/content/Context;III)V
+    //   38: invokevirtual 134	android/content/res/TypedArray:getColor	(II)I
+    //   41: invokespecial 142	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:a	(Landroid/content/Context;III)V
     //   44: aload_0
     //   45: aload_0
-    //   46: getfield 46	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:g	I
-    //   49: putfield 150	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:jdField_c_of_type_Int	I
+    //   46: getfield 53	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:n	I
+    //   49: putfield 144	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:f	I
     //   52: aload_0
     //   53: aload_0
-    //   54: ldc 151
-    //   56: invokevirtual 119	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:a	(F)I
-    //   59: putfield 153	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:d	I
+    //   54: ldc 145
+    //   56: invokevirtual 109	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:a	(F)I
+    //   59: putfield 147	com/tencent/mobileqq/qwallet/hb/grap/voice/impl/KSongProsBar:g	I
     //   62: goto +10 -> 72
     //   65: astore_1
     //   66: aload_2
-    //   67: invokevirtual 156	android/content/res/TypedArray:recycle	()V
+    //   67: invokevirtual 150	android/content/res/TypedArray:recycle	()V
     //   70: aload_1
     //   71: athrow
     //   72: aload_2
-    //   73: invokevirtual 156	android/content/res/TypedArray:recycle	()V
+    //   73: invokevirtual 150	android/content/res/TypedArray:recycle	()V
     //   76: return
     //   77: astore_1
     //   78: goto -6 -> 72
@@ -134,6 +128,12 @@ public class KSongProsBar
     //   11	62	77	java/lang/Exception
   }
   
+  private String b(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return new SimpleDateFormat("mm:ss").format(localDate);
+  }
+  
   protected final int a(float paramFloat)
   {
     return DisplayUtil.a(getContext(), paramFloat);
@@ -141,11 +141,11 @@ public class KSongProsBar
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config != null))
+    if ((this.d > 0) && (this.l != null))
     {
-      this.jdField_a_of_type_JavaLangString = a(paramLong);
-      float f1 = (float)paramLong / (float)this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.e;
-      this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
+      this.i = b(paramLong);
+      float f1 = (float)paramLong / (float)this.l.g;
+      this.f = ((int)(this.d * f1));
       postInvalidate();
       return;
     }
@@ -157,59 +157,59 @@ public class KSongProsBar
     if (paramConfig == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config = paramConfig;
-    this.jdField_b_of_type_JavaLangString = a(paramConfig.e);
-    this.jdField_a_of_type_JavaLangString = a(0L);
+    this.l = paramConfig;
+    this.j = b(paramConfig.g);
+    this.i = b(0L);
     postInvalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    int i = this.e;
-    localRectF.set(0.0F, i, this.jdField_a_of_type_Int, i + this.h);
-    localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    i = this.g;
-    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-    localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    i = this.e;
-    localRectF.set(0.0F, i, this.jdField_c_of_type_Int, i + this.h);
-    localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    i = this.g;
-    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_c_of_type_AndroidGraphicsPaint);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, 0.0F, this.e + this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+    RectF localRectF = this.m;
+    int i1 = this.h;
+    localRectF.set(0.0F, i1, this.d, i1 + this.o);
+    localRectF = this.m;
+    i1 = this.n;
+    paramCanvas.drawRoundRect(localRectF, i1, i1, this.a);
+    localRectF = this.m;
+    i1 = this.h;
+    localRectF.set(0.0F, i1, this.f, i1 + this.o);
+    localRectF = this.m;
+    i1 = this.n;
+    paramCanvas.drawRoundRect(localRectF, i1, i1, this.c);
+    if (!TextUtils.isEmpty(this.i)) {
+      paramCanvas.drawText(this.i, 0.0F, this.h + this.g, this.b);
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int - this.f, this.e + this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+    if (!TextUtils.isEmpty(this.j)) {
+      paramCanvas.drawText(this.j, this.d - this.k, this.h + this.g, this.b);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_a_of_type_Int = getMeasuredWidth();
+    this.d = getMeasuredWidth();
     paramInt1 = getMeasuredHeight();
-    this.jdField_b_of_type_Int = paramInt1;
-    this.e = (paramInt1 / 3);
+    this.e = paramInt1;
+    this.h = (paramInt1 / 3);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("w = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append(" h = ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.e);
     QLog.i("KSongProsBar", 2, ((StringBuilder)localObject).toString());
-    if ((this.jdField_a_of_type_Int > 0) || (this.jdField_b_of_type_Int > 0))
+    if ((this.d > 0) || (this.e > 0))
     {
       localObject = new Rect();
-      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds("00:00", 0, 5, (Rect)localObject);
-      this.f = ((Rect)localObject).width();
+      this.b.getTextBounds("00:00", 0, 5, (Rect)localObject);
+      this.k = ((Rect)localObject).width();
       postInvalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongProsBar
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ class GameController$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    EngineData localEngineData = (EngineData)GameController.a(this.a).a();
+    EngineData localEngineData = (EngineData)GameController.a(this.a).H();
     if (localEngineData.a((ITopic)paramMessage.obj)) {
-      GameController.a(this.a).a(localEngineData, "");
+      GameController.b(this.a).a(localEngineData, "");
     }
     return false;
   }

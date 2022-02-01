@@ -47,14 +47,14 @@ public class PressScaleTextView
       if (i == 1) {}
     }
     else {
-      this.a.a();
+      this.a.b();
     }
     return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.PressScaleTextView
  * JD-Core Version:    0.7.0.1
  */

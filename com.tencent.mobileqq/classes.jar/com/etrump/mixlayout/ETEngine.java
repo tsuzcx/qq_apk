@@ -180,7 +180,7 @@ public class ETEngine
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(".png");
-    return ETDIYConfig.a(new File(((StringBuilder)localObject).toString()));
+    return ETDIYConfig.b(new File(((StringBuilder)localObject).toString()));
   }
   
   public boolean initEngine(int paramInt1, int paramInt2)

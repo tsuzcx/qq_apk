@@ -19,7 +19,7 @@ public final class SelectPopupController$Companion
     Intrinsics.checkParameterIsNotNull(paramRichEditText, "text");
     Intrinsics.checkParameterIsNotNull(paramISelectPopupModel, "model");
     SelectPopupController localSelectPopupController = new SelectPopupController(paramActivity, null);
-    paramRichEditText.setOnSelectionChangeListener(SelectPopupController.a(localSelectPopupController));
+    paramRichEditText.setOnSelectionChangeListener(SelectPopupController.h(localSelectPopupController));
     paramRichEditText.addTextChangedListener((TextWatcher)new SelectPopupController.InnerTextWatcher(localSelectPopupController, (Context)paramActivity));
     SelectPopupController.a(localSelectPopupController, paramRichEditText);
     SelectPopupController.a(localSelectPopupController, paramISelectPopupModel);
@@ -34,7 +34,7 @@ public final class SelectPopupController$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupController.Companion
  * JD-Core Version:    0.7.0.1
  */

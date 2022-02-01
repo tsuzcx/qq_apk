@@ -18,38 +18,38 @@ import org.jetbrains.annotations.NotNull;
 public final class QQShopConfigUtil
 {
   public static final QQShopConfigUtil a;
-  private static final ArrayList<Integer> a;
+  private static final ArrayList<Integer> b;
   
   static
   {
     QQShopConfigUtil localQQShopConfigUtil = new QQShopConfigUtil();
-    jdField_a_of_type_ComTencentMobileqqEcshopConfQQShopConfigUtil = localQQShopConfigUtil;
-    jdField_a_of_type_JavaUtilArrayList = (ArrayList)new QQShopConfigUtil.mNativePageIds.1(localQQShopConfigUtil);
+    a = localQQShopConfigUtil;
+    b = (ArrayList)new QQShopConfigUtil.mNativePageIds.1(localQQShopConfigUtil);
   }
   
   private final boolean a(EcshopConfBean.TabConfBean paramTabConfBean)
   {
-    if (AppSetting.a(paramTabConfBean.g) < 0)
+    if (AppSetting.b(paramTabConfBean.j) < 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ConfigVerifyUtil", 2, "current qq version not support this tab item");
       }
       return false;
     }
-    if ((paramTabConfBean.jdField_b_of_type_Int == 1) && (!jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramTabConfBean.jdField_a_of_type_Int))))
+    if ((paramTabConfBean.i == 1) && (!b.contains(Integer.valueOf(paramTabConfBean.b))))
     {
       QLog.i("ConfigVerifyUtil", 2, "native tab item illegal!");
       return false;
     }
-    if (paramTabConfBean.jdField_b_of_type_Int == 0)
+    if (paramTabConfBean.i == 0)
     {
-      if (!StringUtil.a(paramTabConfBean.jdField_b_of_type_JavaLangString))
+      if (!StringUtil.isEmpty(paramTabConfBean.d))
       {
-        str = paramTabConfBean.jdField_b_of_type_JavaLangString;
+        str = paramTabConfBean.d;
         Intrinsics.checkExpressionValueIsNotNull(str, "tabConfBean.jumpUrl");
         if (StringsKt.startsWith$default(str, "http", false, 2, null))
         {
-          str = paramTabConfBean.jdField_b_of_type_JavaLangString;
+          str = paramTabConfBean.d;
           Intrinsics.checkExpressionValueIsNotNull(str, "tabConfBean.jumpUrl");
           if (StringsKt.startsWith$default(str, "https", false, 2, null)) {
             break label133;
@@ -60,22 +60,22 @@ public final class QQShopConfigUtil
       return false;
     }
     label133:
-    if ((paramTabConfBean.jdField_b_of_type_Int == 2) && (!((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramTabConfBean.jdField_b_of_type_JavaLangString)))
+    if ((paramTabConfBean.i == 2) && (!((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramTabConfBean.d)))
     {
       QLog.i("ConfigVerifyUtil", 2, "miniapp tab item illegal!");
       return false;
     }
-    String str = paramTabConfBean.e;
+    String str = paramTabConfBean.g;
     Intrinsics.checkExpressionValueIsNotNull(str, "tabConfBean.textcolorNormal");
     if (StringsKt.startsWith$default(str, "#", false, 2, null))
     {
-      str = paramTabConfBean.f;
+      str = paramTabConfBean.h;
       Intrinsics.checkExpressionValueIsNotNull(str, "tabConfBean.textcolorSelected");
       if (StringsKt.startsWith$default(str, "#", false, 2, null))
       {
-        if (!StringUtil.a(paramTabConfBean.jdField_a_of_type_JavaLangString))
+        if (!StringUtil.isEmpty(paramTabConfBean.c))
         {
-          paramTabConfBean = paramTabConfBean.jdField_a_of_type_JavaLangString;
+          paramTabConfBean = paramTabConfBean.c;
           Intrinsics.checkExpressionValueIsNotNull(paramTabConfBean, "tabConfBean.name");
           if (paramTabConfBean != null)
           {
@@ -106,7 +106,7 @@ public final class QQShopConfigUtil
   public static final boolean a(@NotNull EcshopConfBean paramEcshopConfBean)
   {
     Intrinsics.checkParameterIsNotNull(paramEcshopConfBean, "ecshopConfBean");
-    Object localObject = paramEcshopConfBean.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = paramEcshopConfBean.k;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ecshopConfBean.tabConfs");
     ArrayList localArrayList = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
@@ -115,7 +115,7 @@ public final class QQShopConfigUtil
       EcshopConfBean.TabConfBean localTabConfBean = (EcshopConfBean.TabConfBean)((Iterator)localObject).next();
       try
       {
-        QQShopConfigUtil localQQShopConfigUtil = jdField_a_of_type_ComTencentMobileqqEcshopConfQQShopConfigUtil;
+        QQShopConfigUtil localQQShopConfigUtil = a;
         Intrinsics.checkExpressionValueIsNotNull(localTabConfBean, "tabConfBean");
         if (localQQShopConfigUtil.a(localTabConfBean)) {
           localArrayList.add(localTabConfBean);
@@ -125,7 +125,7 @@ public final class QQShopConfigUtil
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("verify tabConfBean is wrong tabId = ");
-        localStringBuilder.append(localTabConfBean.jdField_a_of_type_Int);
+        localStringBuilder.append(localTabConfBean.b);
         QLog.e("ConfigVerifyUtil", 1, localStringBuilder.toString(), (Throwable)localException);
       }
     }
@@ -134,13 +134,13 @@ public final class QQShopConfigUtil
       QLog.i("ConfigVerifyUtil", 2, "[initView] config is empty!");
       return false;
     }
-    paramEcshopConfBean.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    paramEcshopConfBean.k = localArrayList;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.conf.QQShopConfigUtil
  * JD-Core Version:    0.7.0.1
  */

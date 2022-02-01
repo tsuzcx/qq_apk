@@ -12,7 +12,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.studymode.KidModeServlet;
 import com.tencent.mobileqq.studymode.ModeSwitchManager;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.vas.adapter.ThemeFontAdapter;
@@ -33,23 +32,23 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class SimpleUIHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-2147483648);
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  volatile boolean jdField_a_of_type_Boolean = true;
-  private final AtomicInteger b = new AtomicInteger(-2147483648);
+  volatile boolean a = true;
+  private AtomicLong b = new AtomicLong(0L);
   private final AtomicInteger c = new AtomicInteger(-2147483648);
+  private final AtomicInteger d = new AtomicInteger(-2147483648);
+  private final AtomicInteger e = new AtomicInteger(-2147483648);
+  private QQAppInterface f;
   
   public SimpleUIHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.f = paramQQAppInterface;
     ThemeFontAdapter.c();
   }
   
   private int a(AtomicInteger paramAtomicInteger)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+    synchronized (this.c)
     {
       int i = paramAtomicInteger.get();
       return i;
@@ -65,7 +64,7 @@ public class SimpleUIHandler
       i = 0;
     }
     String str = paramToServiceMsg.extraData.getString("uin", "");
-    int j = SimpleUIUtil.f();
+    int j = SimpleUIUtil.i();
     StringBuilder localStringBuilder = null;
     if (QLog.isColorLevel()) {
       localStringBuilder = new StringBuilder(1024);
@@ -120,7 +119,7 @@ public class SimpleUIHandler
             } else {
               bool3 = false;
             }
-            i = SimpleUIUtil.f();
+            i = SimpleUIUtil.i();
             if ((bool3) && (bool1))
             {
               QLog.e("SimpleUILog.SimpleUIHandler", 1, "[KidMode] both true");
@@ -129,7 +128,7 @@ public class SimpleUIHandler
             }
             SimpleUIProtocolUtil.a(str, bool3, 2);
             SimpleUIProtocolUtil.a(str, i, 2);
-            StudyModeManager.a(bool1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            StudyModeManager.a(bool1, this.f);
             bool2 = true;
           }
           else
@@ -190,7 +189,7 @@ public class SimpleUIHandler
   
   private void a(AtomicInteger paramAtomicInteger1, int paramInt1, AtomicInteger paramAtomicInteger2, int paramInt2, AtomicInteger paramAtomicInteger3, int paramInt3)
   {
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    AtomicInteger localAtomicInteger = this.c;
     if (paramAtomicInteger1 != null) {}
     try
     {
@@ -238,8 +237,8 @@ public class SimpleUIHandler
   
   private boolean a(boolean paramBoolean, String paramString)
   {
-    boolean bool = ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null);
-    String str = ThemeUtil.getUserCurrentThemeId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    boolean bool = ThemeUtil.isNowThemeIsSimple(this.f, true, null);
+    String str = ThemeUtil.getUserCurrentThemeId(this.f);
     if (bool != paramBoolean) {
       return true;
     }
@@ -262,14 +261,8 @@ public class SimpleUIHandler
     int i = paramToServiceMsg.extraData.getInt("pref");
     boolean bool4 = paramToServiceMsg.extraData.getBoolean("switchElsePref");
     long l = paramToServiceMsg.extraData.getLong("reqTs");
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel()) {
-      localStringBuilder = new StringBuilder(1024);
-    } else {
-      localStringBuilder = null;
-    }
-    KidModeServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "", 0, null);
+    String str = this.f.getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder(1024);
     boolean bool2;
     if (bool1)
     {
@@ -288,24 +281,20 @@ public class SimpleUIHandler
       {
         if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
         {
-          if (localStringBuilder != null) {
-            localStringBuilder.append(String.format("suc=%b bSwitch=%b bPref=%d [%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Integer.valueOf(i), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }));
-          }
+          localStringBuilder.append(String.format("suc=%b bSwitch=%b bPref=%d [%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Integer.valueOf(i), this.f.getCurrentAccountUin() }));
           bool2 = bool1;
           if (!bool1) {
-            break label396;
+            break label356;
           }
-          StudyModeManager.a(bool5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          SimpleUIProtocolUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), bool3, 3);
-          SimpleUIProtocolUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i, 3);
+          StudyModeManager.a(bool5, this.f);
+          SimpleUIProtocolUtil.a(this.f.getCurrentAccountUin(), bool3, 3);
+          SimpleUIProtocolUtil.a(this.f.getCurrentAccountUin(), i, 3);
           bool2 = bool1;
-          break label396;
+          break label356;
         }
-        if (localStringBuilder != null) {
-          localStringBuilder.append("fail pkg.bytes is null");
-        }
+        localStringBuilder.append("fail pkg.bytes is null");
       }
-      else if (localStringBuilder != null)
+      else
       {
         if (paramToServiceMsg == null) {
           paramToServiceMsg = "pkg=null";
@@ -317,29 +306,26 @@ public class SimpleUIHandler
         localStringBuilder.append(String.format("fail %s", new Object[] { paramToServiceMsg }));
       }
       bool2 = false;
-      label396:
+      label356:
       bool1 = bool2;
     }
     else
     {
-      if (localStringBuilder != null) {
-        localStringBuilder.append(String.format("fail resultCode=%d", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
-      }
+      localStringBuilder.append(String.format("fail resultCode=%d", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
       bool1 = false;
     }
-    if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
-      QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("handleReqSetSimpleUISwitch %s", new Object[] { localStringBuilder.toString() }));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "handleReqSetSimpleUISwitch: ts:", Long.valueOf(l), ", mReqTs: ", Long.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get()) });
-    }
-    if (l == this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get())
+    localStringBuilder.append(",ts=");
+    localStringBuilder.append(l);
+    localStringBuilder.append(", mReqTs:=");
+    localStringBuilder.append(this.b.get());
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("handleReqSetSimpleUISwitch %s", new Object[] { localStringBuilder.toString() }));
+    if (l == this.b.get())
     {
       if (!bool1)
       {
-        bool2 = a(false, "211", SimpleUIUtil.a(), true, SimpleUIUtil.a(SimpleUIUtil.f()));
+        bool2 = a(false, "211", SimpleUIUtil.e(), true, SimpleUIUtil.a(SimpleUIUtil.i()));
         if (!bool2) {
-          a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, this.c, -2147483648);
+          a(this.c, -2147483648, this.d, -2147483648, this.e, -2147483648);
         }
         if (QLog.isColorLevel()) {
           QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("handleReqSetSimpleUISwitch revert theme bStartSwtich=%b", new Object[] { Boolean.valueOf(bool2) }));
@@ -347,7 +333,7 @@ public class SimpleUIHandler
       }
       else
       {
-        a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, this.c, -2147483648);
+        a(this.c, -2147483648, this.d, -2147483648, this.e, -2147483648);
       }
       notifyUI(3, bool1, new Object[] { Boolean.valueOf(true), Boolean.valueOf(bool4), Integer.valueOf(5) });
     }
@@ -358,9 +344,16 @@ public class SimpleUIHandler
   
   public long a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUILog.SimpleUIHandler", 2, new Object[] { "sendSwitchAndSetSimpleUI switch:", Boolean.valueOf(paramBoolean1), " prefId:", Integer.valueOf(paramInt), " bSwitchElsePref:", Boolean.valueOf(paramBoolean2), " bStudyModeSwitch", Boolean.valueOf(paramBoolean3) });
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendSwitchAndSetSimpleUI switch=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(",prefId=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",bSwitchElsePref=");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append(",bStudyModeSwitch=");
+    localStringBuilder.append(paramBoolean3);
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, localStringBuilder.toString());
     long l = System.currentTimeMillis();
     a(paramBoolean1, paramInt, new SimpleUIHandler.2(this, paramBoolean1, paramInt, paramBoolean2, paramBoolean3, l));
     return l;
@@ -373,14 +366,14 @@ public class SimpleUIHandler
   
   public void a()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.f.getCurrentAccountUin();
     if (QLog.isColorLevel()) {
       QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("reqGetSimpleUISwitch uin=%s", new Object[] { str }));
     }
     Object localObject = new oidb_0x5eb.ReqBody();
     try
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      long l = Long.parseLong(this.f.getCurrentAccountUin());
       ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.add(Long.valueOf(l));
     }
     catch (Exception localException)
@@ -398,7 +391,7 @@ public class SimpleUIHandler
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(paramLong);
+    this.b.set(paramLong);
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
@@ -413,19 +406,14 @@ public class SimpleUIHandler
   
   public boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    return a(paramBoolean1, paramInt, paramBoolean2, false);
-  }
-  
-  public boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    return b(paramBoolean1, paramInt, paramBoolean2, false);
   }
   
   protected boolean a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, boolean paramBoolean3, String paramString2)
   {
-    boolean bool = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null);
-    String str = ThemeUtil.getUserCurrentThemeId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject1 = ThemeSwitchUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getString("themeID");
+    boolean bool = ThemeUtil.isNowThemeIsNight(this.f, true, null);
+    String str = ThemeUtil.getUserCurrentThemeId(this.f);
+    Object localObject1 = ThemeSwitchUtil.a(this.f).getString("themeID");
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       localObject2 = "1000";
@@ -454,7 +442,7 @@ public class SimpleUIHandler
     if (str.equals(localObject1)) {
       return false;
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = this.f;
     if (paramBoolean1) {
       paramString2 = new SimpleUIHandler.SimpleUIThemeSwitchCallback(this);
     } else {
@@ -466,19 +454,24 @@ public class SimpleUIHandler
   public void b()
   {
     long l = System.currentTimeMillis();
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    int i = this.c.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    a(bool, this.b.get(), new SimpleUIHandler.1(this, l));
+    a(bool, this.d.get(), new SimpleUIHandler.1(this, l));
+  }
+  
+  public boolean b(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void c()
   {
-    a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-    boolean bool1 = ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
-    boolean bool2 = SimpleUIUtil.a();
+    a(this.c);
+    boolean bool1 = ThemeUtil.isNowThemeIsSimple(this.f, false, null);
+    boolean bool2 = SimpleUIUtil.e();
     if (QLog.isColorLevel()) {
       QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("onPostThemeChanged bSimpleSwitch=%b isSimpleMode=%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
     }
@@ -495,7 +488,7 @@ public class SimpleUIHandler
   public void onDestroy()
   {
     super.onDestroy();
-    SimpleUIUtil.a();
+    SimpleUIUtil.k();
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -512,7 +505,7 @@ public class SimpleUIHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -36,11 +36,11 @@ import org.json.JSONObject;
 public class PubAccountPreloadPlugin
   extends WebViewPlugin
 {
-  PubAccountWebViewHttpBridge jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge = new PubAccountWebViewHttpBridge();
-  String jdField_a_of_type_JavaLangString = "";
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean;
-  String b = "";
+  PubAccountWebViewHttpBridge a = new PubAccountWebViewHttpBridge();
+  List<String> b = new ArrayList();
+  String c = "";
+  String d = "";
+  boolean e;
   
   public PubAccountPreloadPlugin()
   {
@@ -51,11 +51,11 @@ public class PubAccountPreloadPlugin
       localObject = (AppInterface)((AppRuntime)localObject).getAppRuntime("modular_web");
       if (localObject != null)
       {
-        this.b = ((AppInterface)localObject).getCurrentAccountUin();
+        this.d = ((AppInterface)localObject).getCurrentAccountUin();
         localObject = BaseApplicationImpl.getContext();
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("sp_public_account_with_cuin_");
-        localStringBuilder2.append(this.b);
+        localStringBuilder2.append(this.d);
         localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder2.toString(), 4);
         if (localObject != null)
         {
@@ -75,7 +75,7 @@ public class PubAccountPreloadPlugin
             ((JSONObject)localObject).put("readInJoyPreload2G", bool5);
             ((JSONObject)localObject).put("readInJoyImgPreload", bool6);
             ((JSONObject)localObject).put("platform", "android");
-            this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).toString();
+            this.c = ((JSONObject)localObject).toString();
           }
           catch (JSONException localJSONException)
           {
@@ -85,7 +85,7 @@ public class PubAccountPreloadPlugin
           {
             StringBuilder localStringBuilder1 = new StringBuilder();
             localStringBuilder1.append("reportJson");
-            localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+            localStringBuilder1.append(this.c);
             QLog.i("PubAccountPreloadPlugin", 2, localStringBuilder1.toString());
           }
         }
@@ -93,25 +93,29 @@ public class PubAccountPreloadPlugin
     }
   }
   
-  private int a(String paramString)
+  public static boolean a(String paramString)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (localList.size() > 0))
+    try
     {
-      int j = this.jdField_a_of_type_JavaUtilList.size();
-      int i = 0;
-      while (i < j)
+      Object localObject = new URL(paramString);
+      paramString = ((URL)localObject).getHost();
+      localObject = ((URL)localObject).getPath();
+      if (("post.mp.qq.com".equalsIgnoreCase(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
       {
-        if (((String)this.jdField_a_of_type_JavaUtilList.get(i)).startsWith(paramString)) {
-          return i;
+        boolean bool = ((String)localObject).endsWith(".html");
+        if (bool) {
+          return true;
         }
-        i += 1;
       }
     }
-    return -1;
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
   
-  private WebResourceResponse a(String paramString1, String paramString2)
+  private WebResourceResponse b(String paramString1, String paramString2)
   {
     long l2 = System.currentTimeMillis();
     Object localObject1;
@@ -124,11 +128,11 @@ public class PubAccountPreloadPlugin
     }
     if (this.mRuntime != null)
     {
-      Object localObject2 = this.mRuntime.a();
+      Object localObject2 = this.mRuntime.d();
       if ((localObject2 != null) && ((localObject2 instanceof IReadInJoyArticleDetailActivity)))
       {
         int i = NetUtil.a(null);
-        localObject1 = PreloadManager.a(paramString2);
+        localObject1 = PreloadManager.d(paramString2);
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject1 != null))
         {
           localObject2 = (IReadInJoyArticleDetailActivity)localObject2;
@@ -142,7 +146,7 @@ public class PubAccountPreloadPlugin
               QLog.d("PubAccountPreloadPlugin", 2, ((StringBuilder)localObject1).toString());
             }
             long l1 = System.currentTimeMillis();
-            localObject1 = ((IReadInJoyArticleDetailActivity)localObject2).a();
+            localObject1 = ((IReadInJoyArticleDetailActivity)localObject2).b();
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
@@ -173,7 +177,7 @@ public class PubAccountPreloadPlugin
                 ((StringBuilder)localObject2).append(System.currentTimeMillis());
                 QLog.d("PubAccountPreloadPlugin", 2, ((StringBuilder)localObject2).toString());
               }
-              this.jdField_a_of_type_JavaUtilList = a(new String((byte[])localObject1), paramString2);
+              this.b = a(new String((byte[])localObject1), paramString2);
               if (QLog.isColorLevel())
               {
                 paramString2 = new StringBuilder();
@@ -187,7 +191,7 @@ public class PubAccountPreloadPlugin
               ((StringBuilder)localObject1).append("");
               ((StringBuilder)localObject1).append(i);
               localObject1 = ((StringBuilder)localObject1).toString();
-              localObject2 = this.jdField_a_of_type_JavaLangString;
+              localObject2 = this.c;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("");
               localStringBuilder.append(l2 - l1);
@@ -201,7 +205,7 @@ public class PubAccountPreloadPlugin
             paramString2 = new StringBuilder();
             paramString2.append("");
             paramString2.append(i);
-            paramString1.publicAccountReportClickEvent(null, "", "0X8007621", "0X8007621", 0, 0, "0", paramString2.toString(), this.jdField_a_of_type_JavaLangString, "0");
+            paramString1.publicAccountReportClickEvent(null, "", "0X8007621", "0X8007621", 0, 0, "0", paramString2.toString(), this.c, "0");
             return null;
           }
         }
@@ -211,7 +215,7 @@ public class PubAccountPreloadPlugin
           paramString2 = new StringBuilder();
           paramString2.append("");
           paramString2.append(i);
-          paramString1.publicAccountReportClickEvent(null, "", "0X8007621", "0X8007621", 0, 0, "0", paramString2.toString(), this.jdField_a_of_type_JavaLangString, "0");
+          paramString1.publicAccountReportClickEvent(null, "", "0X8007621", "0X8007621", 0, 0, "0", paramString2.toString(), this.c, "0");
           return null;
         }
       }
@@ -223,7 +227,7 @@ public class PubAccountPreloadPlugin
     return null;
   }
   
-  private String a(String paramString, boolean paramBoolean)
+  private String b(String paramString, boolean paramBoolean)
   {
     if (paramString == null) {
       return null;
@@ -249,44 +253,22 @@ public class PubAccountPreloadPlugin
     return localObject;
   }
   
-  public static boolean a(String paramString)
+  private WebResourceResponse c(String paramString1, String paramString2)
   {
-    try
-    {
-      Object localObject = new URL(paramString);
-      paramString = ((URL)localObject).getHost();
-      localObject = ((URL)localObject).getPath();
-      if (("post.mp.qq.com".equalsIgnoreCase(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-      {
-        boolean bool = ((String)localObject).endsWith(".html");
-        if (bool) {
-          return true;
-        }
-      }
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  private WebResourceResponse b(String paramString1, String paramString2)
-  {
-    int i = a(paramString2);
+    int i = e(paramString2);
     int j = NetUtil.a(null);
     Object localObject1;
     Object localObject2;
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge.a(paramString2, i);
+      if (this.a != null) {
+        localObject1 = this.a.a(paramString2, i);
       } else {
         localObject1 = null;
       }
       localObject2 = localObject1;
       if (localObject1 == null) {
-        break label182;
+        break label183;
       }
       try
       {
@@ -297,7 +279,7 @@ public class PubAccountPreloadPlugin
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append(j);
         localStringBuilder2.append("");
-        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X8007622", "0X8007622", 0, 0, "1", localStringBuilder2.toString(), this.jdField_a_of_type_JavaLangString, ((JSONObject)localObject2).toString());
+        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X8007622", "0X8007622", 0, 0, "1", localStringBuilder2.toString(), this.c, ((JSONObject)localObject2).toString());
         return localObject1;
       }
       catch (Exception localException1) {}
@@ -312,7 +294,7 @@ public class PubAccountPreloadPlugin
       QLog.e("PubAccountPreloadPlugin", 2, "shouldInterceptRequest got exception!", localException2);
       localObject2 = localObject1;
     }
-    label182:
+    label183:
     long l1 = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
@@ -358,7 +340,7 @@ public class PubAccountPreloadPlugin
           localObject2 = ((StringBuilder)localObject2).toString();
           StringBuilder localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("");
-          localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder1.append(this.c);
           paramString2.publicAccountReportClickEvent(null, "", "0X8007622", "0X8007622", 0, 0, "1", (String)localObject2, localStringBuilder1.toString(), ((JSONObject)localObject1).toString());
           return paramString1;
         }
@@ -378,7 +360,7 @@ public class PubAccountPreloadPlugin
         paramString2 = paramString2.toString();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.c);
         paramString1.publicAccountReportClickEvent(null, "", "0X8007622", "0X8007622", 0, 0, "0", paramString2, ((StringBuilder)localObject2).toString(), ((JSONObject)localObject1).toString());
         return null;
       }
@@ -389,92 +371,110 @@ public class PubAccountPreloadPlugin
     return localObject2;
   }
   
+  private int e(String paramString)
+  {
+    List localList = this.b;
+    if ((localList != null) && (localList.size() > 0))
+    {
+      int j = this.b.size();
+      int i = 0;
+      while (i < j)
+      {
+        if (((String)this.b.get(i)).startsWith(paramString)) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
+  }
+  
   /* Error */
   public WebResourceResponse a(File paramFile, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +41 -> 44
-    //   6: new 68	java/lang/StringBuilder
+    //   6: new 71	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 72	java/lang/StringBuilder:<init>	()V
     //   13: astore 4
     //   15: aload 4
-    //   17: ldc_w 359
-    //   20: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc_w 360
+    //   20: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 4
-    //   26: invokestatic 171	java/lang/System:currentTimeMillis	()J
-    //   29: invokevirtual 176	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   26: invokestatic 190	java/lang/System:currentTimeMillis	()J
+    //   29: invokevirtual 195	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   32: pop
-    //   33: ldc 142
+    //   33: ldc 145
     //   35: iconst_2
     //   36: aload 4
-    //   38: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: aconst_null
     //   45: astore 5
     //   47: aconst_null
     //   48: astore 6
     //   50: aconst_null
     //   51: astore 4
-    //   53: new 361	java/io/FileInputStream
+    //   53: new 362	java/io/FileInputStream
     //   56: dup
     //   57: aload_1
-    //   58: invokespecial 364	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   58: invokespecial 365	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   61: astore_1
     //   62: aload_1
-    //   63: invokevirtual 367	java/io/FileInputStream:available	()I
+    //   63: invokevirtual 368	java/io/FileInputStream:available	()I
     //   66: newarray byte
     //   68: astore 4
     //   70: aload_1
     //   71: aload 4
-    //   73: invokevirtual 371	java/io/FileInputStream:read	([B)I
+    //   73: invokevirtual 372	java/io/FileInputStream:read	([B)I
     //   76: pop
-    //   77: new 217	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   77: new 229	com/tencent/smtt/export/external/interfaces/WebResourceResponse
     //   80: dup
     //   81: aload_3
-    //   82: ldc 219
-    //   84: new 221	java/io/BufferedInputStream
+    //   82: ldc 231
+    //   84: new 233	java/io/BufferedInputStream
     //   87: dup
-    //   88: new 223	java/io/ByteArrayInputStream
+    //   88: new 235	java/io/ByteArrayInputStream
     //   91: dup
     //   92: aload 4
-    //   94: invokespecial 226	java/io/ByteArrayInputStream:<init>	([B)V
-    //   97: invokespecial 229	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   100: invokespecial 232	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   94: invokespecial 238	java/io/ByteArrayInputStream:<init>	([B)V
+    //   97: invokespecial 241	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   100: invokespecial 244	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
     //   103: astore_3
-    //   104: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   104: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   107: ifeq +57 -> 164
-    //   110: new 68	java/lang/StringBuilder
+    //   110: new 71	java/lang/StringBuilder
     //   113: dup
-    //   114: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   114: invokespecial 72	java/lang/StringBuilder:<init>	()V
     //   117: astore 4
     //   119: aload 4
-    //   121: ldc_w 373
-    //   124: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: ldc_w 374
+    //   124: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: pop
     //   128: aload 4
     //   130: aload_2
-    //   131: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload 4
-    //   137: ldc_w 375
-    //   140: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: ldc_w 376
+    //   140: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: pop
     //   144: aload 4
-    //   146: invokestatic 171	java/lang/System:currentTimeMillis	()J
-    //   149: invokevirtual 176	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   146: invokestatic 190	java/lang/System:currentTimeMillis	()J
+    //   149: invokevirtual 195	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   152: pop
-    //   153: ldc 142
+    //   153: ldc 145
     //   155: iconst_2
     //   156: aload 4
-    //   158: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   158: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   161: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   164: aload_3
     //   165: astore 4
     //   167: aload_1
-    //   168: invokevirtual 378	java/io/FileInputStream:close	()V
+    //   168: invokevirtual 379	java/io/FileInputStream:close	()V
     //   171: aload_3
     //   172: areturn
     //   173: astore 4
@@ -515,7 +515,7 @@ public class PubAccountPreloadPlugin
     //   227: aload_1
     //   228: astore 4
     //   230: aload_3
-    //   231: invokevirtual 379	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   231: invokevirtual 380	java/lang/OutOfMemoryError:printStackTrace	()V
     //   234: aload_2
     //   235: astore_3
     //   236: aload_1
@@ -525,7 +525,7 @@ public class PubAccountPreloadPlugin
     //   242: aload_2
     //   243: astore 4
     //   245: aload_3
-    //   246: invokevirtual 378	java/io/FileInputStream:close	()V
+    //   246: invokevirtual 379	java/io/FileInputStream:close	()V
     //   249: aload_2
     //   250: areturn
     //   251: astore_3
@@ -536,7 +536,7 @@ public class PubAccountPreloadPlugin
     //   257: aload_2
     //   258: astore 4
     //   260: aload_3
-    //   261: invokevirtual 380	java/io/IOException:printStackTrace	()V
+    //   261: invokevirtual 381	java/io/IOException:printStackTrace	()V
     //   264: aload_1
     //   265: astore_3
     //   266: aload_2
@@ -551,7 +551,7 @@ public class PubAccountPreloadPlugin
     //   279: aload_1
     //   280: ifnull +7 -> 287
     //   283: aload_1
-    //   284: invokevirtual 378	java/io/FileInputStream:close	()V
+    //   284: invokevirtual 379	java/io/FileInputStream:close	()V
     //   287: goto +5 -> 292
     //   290: aload_2
     //   291: athrow
@@ -637,7 +637,7 @@ public class PubAccountPreloadPlugin
           }
           if (k > j)
           {
-            String str = a(paramString1.substring(j, k), bool);
+            String str = b(paramString1.substring(j, k), bool);
             if (str != null)
             {
               paramString2.add(str);
@@ -661,7 +661,7 @@ public class PubAccountPreloadPlugin
   
   public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge.a(paramString, paramBoolean);
+    this.a.a(paramString, paramBoolean);
   }
   
   public boolean b(String paramString)
@@ -703,7 +703,7 @@ public class PubAccountPreloadPlugin
   
   public boolean d(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -751,20 +751,20 @@ public class PubAccountPreloadPlugin
         if (localObject != null) {
           return localObject;
         }
-        return a("text/html", paramString);
+        return b("text/html", paramString);
       }
       if (this.mRuntime != null) {
-        localObject = this.mRuntime.a();
+        localObject = this.mRuntime.d();
       } else {
         localObject = null;
       }
-      if ((localObject != null) && ((localObject instanceof IReadInJoyArticleDetailActivity)) && (!this.jdField_a_of_type_Boolean))
+      if ((localObject != null) && ((localObject instanceof IReadInJoyArticleDetailActivity)) && (!this.e))
       {
-        ((IReadInJoyArticleDetailActivity)localObject).b();
-        this.jdField_a_of_type_Boolean = true;
+        ((IReadInJoyArticleDetailActivity)localObject).c();
+        this.e = true;
       }
       if ((b(paramString)) && (c(paramString))) {
-        return b("image/*", paramString);
+        return c("image/*", paramString);
       }
       paramString = ((IRIJWebResourceUtil)QRoute.api(IRIJWebResourceUtil.class)).getWebResourceResponse(paramString);
       if (paramString != null) {
@@ -776,17 +776,17 @@ public class PubAccountPreloadPlugin
   
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (((paramLong == 8589934595L) || (paramLong == 8589934594L)) && (!this.jdField_a_of_type_Boolean))
+    if (((paramLong == 8589934595L) || (paramLong == 8589934594L)) && (!this.e))
     {
       if (this.mRuntime != null) {
-        paramString = this.mRuntime.a();
+        paramString = this.mRuntime.d();
       } else {
         paramString = null;
       }
       if ((paramString != null) && ((paramString instanceof IReadInJoyArticleDetailActivity)))
       {
-        ((IReadInJoyArticleDetailActivity)paramString).b();
-        this.jdField_a_of_type_Boolean = true;
+        ((IReadInJoyArticleDetailActivity)paramString).c();
+        this.e = true;
         return true;
       }
     }
@@ -795,13 +795,13 @@ public class PubAccountPreloadPlugin
   
   protected void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge.a();
+    this.a.b();
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountPreloadPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -22,40 +22,40 @@ import com.tencent.widget.XListView;
 public abstract class AEAbstractAlbumListFragment
   extends Fragment
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  public AEAlbumListAdapter a;
   public AEAbstractAlbumListFragment.IAlbumListBack a;
-  public AEAlbumListLogic a;
-  AlbumListBaseData jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData;
-  XFrameLayout jdField_a_of_type_ComTencentWidgetXFrameLayout;
-  public XListView a;
+  public AEAlbumListLogic b;
+  AlbumListBaseData c;
+  FrameLayout d;
+  public AEAlbumListAdapter e;
+  public XListView f;
+  XFrameLayout g;
   
   @TargetApi(14)
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2064122346));
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2064121941));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new AEAbstractAlbumListFragment.AlbumListItemClickListener(this, null));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064121944));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new AEAbstractAlbumListFragment.1(this));
-    paramView.findViewById(2064121943).setVisibility(8);
+    this.g = ((XFrameLayout)paramView.findViewById(2063991219));
+    this.g.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
+    this.f = ((XListView)paramView.findViewById(2063990876));
+    this.f.setWrapByScroll(true);
+    this.f.setAdapter(this.e);
+    this.f.setOnItemClickListener(new AEAbstractAlbumListFragment.AlbumListItemClickListener(this, null));
+    this.f.setOverScrollMode(2);
+    this.f.setDivider(null);
+    this.f.setVerticalScrollBarEnabled(false);
+    this.d = ((FrameLayout)paramView.findViewById(2063990879));
+    this.d.setOnClickListener(new AEAbstractAlbumListFragment.1(this));
+    paramView.findViewById(2063990878).setVisibility(8);
     int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
     Looper.myQueue().addIdleHandler(new AEAbstractAlbumListFragment.2(this, i, j));
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic.b();
+    this.b.b();
   }
   
   protected abstract AEAlbumListLogic a();
   
   public void a(AEAbstractAlbumListFragment.IAlbumListBack paramIAlbumListBack)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractAlbumListFragment$IAlbumListBack = paramIAlbumListBack;
+    this.a = paramIAlbumListBack;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -70,11 +70,11 @@ public abstract class AEAbstractAlbumListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560957, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic = a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131627298, paramViewGroup, false);
+    this.b = a();
+    this.c = this.b.c;
     paramViewGroup = getActivity().getIntent();
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic.a(paramViewGroup);
+    this.b.a(paramViewGroup);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -87,15 +87,15 @@ public abstract class AEAbstractAlbumListFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    AEAlbumListLogic localAEAlbumListLogic = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic;
+    AEAlbumListLogic localAEAlbumListLogic = this.b;
     if (localAEAlbumListLogic != null) {
-      localAEAlbumListLogic.a();
+      localAEAlbumListLogic.ai_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AEAbstractAlbumListFragment
  * JD-Core Version:    0.7.0.1
  */

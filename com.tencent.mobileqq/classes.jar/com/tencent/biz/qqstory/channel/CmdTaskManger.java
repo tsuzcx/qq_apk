@@ -29,14 +29,14 @@ public class CmdTaskManger
   public <Request extends NetworkRequest, Respond extends BaseResponse> void a(Request paramRequest, CmdTaskManger.CommandCallback<Request, Respond> paramCommandCallback)
   {
     paramRequest = new CmdTaskManger.Command(paramRequest);
-    paramRequest.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = paramCommandCallback;
-    paramRequest.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a(paramRequest);
-    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
+    paramRequest.c = paramCommandCallback;
+    paramRequest.a.a(paramRequest);
+    QQStoryContext.a().f().a(paramRequest.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.CmdTaskManger
  * JD-Core Version:    0.7.0.1
  */

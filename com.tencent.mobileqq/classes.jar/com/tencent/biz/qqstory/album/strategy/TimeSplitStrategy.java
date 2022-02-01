@@ -17,32 +17,14 @@ import java.util.List;
 public class TimeSplitStrategy
   extends AbstractSplitStrategy<SplitConfig.TimeSplitConfig>
 {
-  protected List<StoryAlbum.PicInfo> a()
-  {
-    Object localObject = super.a();
-    if (localObject == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)((Iterator)localObject).next();
-      if ((localPicInfo.jdField_b_of_type_Long >= ((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Long) && (localPicInfo.jdField_b_of_type_Long <= ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Long)) {
-        localArrayList.add(localPicInfo);
-      }
-    }
-    return localArrayList;
-  }
-  
   protected List<StoryAlbum> a(@NonNull List<StoryAlbum.PicInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    paramList = new StoryAlbum(((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Int, paramList);
-    paramList.a(((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Long, ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Long);
+    paramList = new StoryAlbum(((SplitConfig.TimeSplitConfig)a()).a, paramList);
+    paramList.a(((SplitConfig.TimeSplitConfig)a()).g, ((SplitConfig.TimeSplitConfig)a()).h);
     paramList.a(a());
-    paramList.b = ((SplitConfig.TimeSplitConfig)a()).c;
-    Object localObject1 = StoryManager.a(QQStoryContext.a().a().createEntityManager(), StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "albumType=1 or albumType=6", null);
+    paramList.f = ((SplitConfig.TimeSplitConfig)a()).i;
+    Object localObject1 = StoryManager.a(QQStoryContext.a().d().createEntityManager(), StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "albumType=1 or albumType=6", null);
     if (localObject1 != null)
     {
       Object localObject2 = new StringBuilder();
@@ -53,7 +35,7 @@ public class TimeSplitStrategy
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (StoryAlbumEntry)((Iterator)localObject1).next();
-        if ((TextUtils.equals(((StoryAlbumEntry)localObject2).albumName, paramList.b)) && (((StoryAlbumEntry)localObject2).startTime >= ((SplitConfig.TimeSplitConfig)a()).jdField_a_of_type_Long) && (((StoryAlbumEntry)localObject2).startTime <= ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Long)) {
+        if ((TextUtils.equals(((StoryAlbumEntry)localObject2).albumName, paramList.f)) && (((StoryAlbumEntry)localObject2).startTime >= ((SplitConfig.TimeSplitConfig)a()).g) && (((StoryAlbumEntry)localObject2).startTime <= ((SplitConfig.TimeSplitConfig)a()).h)) {
           try
           {
             paramList.b(StoryAlbum.a((StoryAlbumEntry)localObject2));
@@ -74,16 +56,34 @@ public class TimeSplitStrategy
     localStringBuilder1.append("time album  :");
     localStringBuilder1.append(paramList);
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", localStringBuilder1.toString());
-    if (paramList.b() < ((SplitConfig.TimeSplitConfig)a()).jdField_b_of_type_Int) {
+    if (paramList.c() < ((SplitConfig.TimeSplitConfig)a()).b) {
       return null;
     }
     localArrayList.add(paramList);
     return localArrayList;
   }
   
-  public List<StoryAlbum> b()
+  protected List<StoryAlbum.PicInfo> b()
   {
-    List localList = a();
+    Object localObject = super.b();
+    if (localObject == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)((Iterator)localObject).next();
+      if ((localPicInfo.g >= ((SplitConfig.TimeSplitConfig)a()).g) && (localPicInfo.g <= ((SplitConfig.TimeSplitConfig)a()).h)) {
+        localArrayList.add(localPicInfo);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<StoryAlbum> c()
+  {
+    List localList = b();
     if ((localList != null) && (localList.size() != 0)) {
       return a(localList);
     }
@@ -93,7 +93,7 @@ public class TimeSplitStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.TimeSplitStrategy
  * JD-Core Version:    0.7.0.1
  */

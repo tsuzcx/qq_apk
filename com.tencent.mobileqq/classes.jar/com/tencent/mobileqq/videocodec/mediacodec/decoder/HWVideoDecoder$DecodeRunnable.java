@@ -18,49 +18,49 @@ import java.util.concurrent.atomic.AtomicLong;
 class HWVideoDecoder$DecodeRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = System.currentTimeMillis();
-  MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private final DecodeConfig jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig;
+  ByteBuffer[] a;
+  ByteBuffer[] b;
+  MediaCodec.BufferInfo c;
+  boolean d = false;
+  long e = System.currentTimeMillis();
+  public final long f;
+  private String g = "HWVideoDecoder.DecodeRunnable";
+  private MediaExtractor h;
+  private MediaCodec i;
+  private Surface j;
+  private int k;
+  private int l;
   @NonNull
-  private final HWDecodeListener jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = "HWVideoDecoder.DecodeRunnable";
-  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(-1L);
-  boolean jdField_a_of_type_Boolean = false;
-  ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
-  private int jdField_b_of_type_Int;
-  public final long b;
-  private final DecodeConfig jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig;
-  private final String jdField_b_of_type_JavaLangString;
-  private final AtomicLong jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(-1L);
-  private boolean jdField_b_of_type_Boolean = false;
-  ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
-  private long jdField_c_of_type_Long = 0L;
-  private boolean jdField_c_of_type_Boolean = false;
-  private long jdField_d_of_type_Long = 0L;
-  private boolean jdField_d_of_type_Boolean = false;
-  private volatile boolean e = false;
+  private final HWDecodeListener m;
+  private boolean n = false;
+  private boolean o = false;
+  private long p = 0L;
+  private long q = 0L;
+  private final AtomicLong r = new AtomicLong(-1L);
+  private final AtomicLong s = new AtomicLong(-1L);
+  private boolean t = false;
+  private final DecodeConfig u;
+  private final DecodeConfig v;
+  private volatile boolean w = false;
+  private final Object x = new Object();
+  private final String y;
   
   public HWVideoDecoder$DecodeRunnable(@NonNull String paramString, Surface paramSurface, HWDecodeListener paramHWDecodeListener)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("HWVideoDecoder.DecodeRunnable.");
     localStringBuilder.append(hashCode());
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.g = localStringBuilder.toString();
     SLog.b("HWVideoDecoder.DecodeRunnable", "create DecodeRunnable filePath: %s", paramString);
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    this.j = paramSurface;
     if (paramHWDecodeListener == null) {
       paramHWDecodeListener = new EmptyHWDecodeListener();
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener = paramHWDecodeListener;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = CompositeUtil.a(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig = new DecodeConfig(paramString, 0, true, false, 0L, this.jdField_b_of_type_Long);
-    this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig = new DecodeConfig(paramString, 0, true, false, 0L, this.jdField_b_of_type_Long);
+    this.m = paramHWDecodeListener;
+    this.y = paramString;
+    this.f = CompositeUtil.a(paramString);
+    this.u = new DecodeConfig(paramString, 0, true, false, 0L, this.f);
+    this.v = new DecodeConfig(paramString, 0, true, false, 0L, this.f);
   }
   
   private long a(int paramInt, long paramLong1, long paramLong2)
@@ -81,13 +81,63 @@ class HWVideoDecoder$DecodeRunnable
     }
   }
   
-  private long a(long paramLong)
+  private boolean a(boolean paramBoolean, long paramLong)
+  {
+    if (!this.t) {
+      return paramBoolean;
+    }
+    if (!paramBoolean) {
+      return paramBoolean;
+    }
+    if (this.o) {
+      return false;
+    }
+    long l1 = this.s.get();
+    if (l1 <= 0L) {
+      return paramBoolean;
+    }
+    StringBuilder localStringBuilder;
+    if ((l1 > this.v.e) && (l1 < this.v.f))
+    {
+      if (l1 > paramLong)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkToRender, do not render, renderpos:");
+          localStringBuilder.append(l1);
+          localStringBuilder.append(" sampletime:");
+          localStringBuilder.append(paramLong);
+          QLog.d("HWVideoDecoder.DecodeRunnable", 2, localStringBuilder.toString());
+        }
+        return false;
+      }
+      this.s.compareAndSet(l1, -1L);
+      return paramBoolean;
+    }
+    this.s.compareAndSet(l1, -1L);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkToRender, not in playrange, pos:");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(": [");
+      localStringBuilder.append(this.v.e);
+      localStringBuilder.append("-");
+      localStringBuilder.append(this.v.f);
+      localStringBuilder.append("]");
+      QLog.d("HWVideoDecoder.DecodeRunnable", 2, localStringBuilder.toString());
+    }
+    return paramBoolean;
+  }
+  
+  private long b(long paramLong)
   {
     long l1 = System.currentTimeMillis();
     StringBuilder localStringBuilder;
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
+      this.i.flush();
     }
     catch (RuntimeException localRuntimeException)
     {
@@ -96,20 +146,20 @@ class HWVideoDecoder$DecodeRunnable
       localStringBuilder.append(localRuntimeException.toString());
       QLog.e("HWVideoDecoder.DecodeRunnable", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 0);
-    long l2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.b(l2 / 1000L);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.h.seekTo(paramLong, 0);
+    long l2 = this.h.getSampleTime();
+    this.m.b(l2 / 1000L);
+    this.e = System.currentTimeMillis();
+    this.n = false;
+    this.o = false;
     if (l2 == -1L) {
-      a();
+      e();
     }
-    this.jdField_c_of_type_Long = l2;
-    this.jdField_d_of_type_Long = 0L;
+    this.p = l2;
+    this.q = 0L;
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.g;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("end seekTo seekTime=");
       localStringBuilder.append(0);
@@ -124,45 +174,45 @@ class HWVideoDecoder$DecodeRunnable
     return l2;
   }
   
-  private void a()
+  private void c(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)
-    {
-      this.jdField_c_of_type_Long = (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L);
-      return;
+    if (!this.n) {
+      f();
     }
-    this.jdField_c_of_type_Long = 0L;
+    if (!this.o) {
+      d(paramBoolean);
+    }
   }
   
-  private boolean a()
+  private boolean c()
   {
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+    this.h = new MediaExtractor();
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_b_of_type_JavaLangString);
-      int i = 0;
-      while (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount()) {
+      this.h.setDataSource(this.y);
+      int i1 = 0;
+      while (i1 < this.h.getTrackCount()) {
         try
         {
-          MediaFormat localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+          MediaFormat localMediaFormat = this.h.getTrackFormat(i1);
           localObject = localMediaFormat.getString("mime");
           if (((String)localObject).startsWith("video/"))
           {
-            this.jdField_a_of_type_Int = localMediaFormat.getInteger("width");
-            this.jdField_b_of_type_Int = localMediaFormat.getInteger("height");
-            this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-            if (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_c_of_type_Boolean) {
-              i = this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Int;
+            this.k = localMediaFormat.getInteger("width");
+            this.l = localMediaFormat.getInteger("height");
+            this.h.selectTrack(i1);
+            if (this.v.h) {
+              i1 = this.v.g;
             } else {
-              i = 0;
+              i1 = 0;
             }
-            localMediaFormat.setInteger("rotation-degrees", i);
+            localMediaFormat.setInteger("rotation-degrees", i1);
             try
             {
-              this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType((String)localObject);
-              if (this.jdField_a_of_type_AndroidViewSurface.isValid())
+              this.i = MediaCodec.createDecoderByType((String)localObject);
+              if (this.j.isValid())
               {
-                this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
+                this.i.configure(localMediaFormat, this.j, null, 0);
                 return true;
               }
               throw new RuntimeException("surface is not valid.");
@@ -171,29 +221,29 @@ class HWVideoDecoder$DecodeRunnable
             {
               if (Thread.interrupted())
               {
-                QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Thread is interrupted.", localThrowable);
+                QLog.e(this.g, 2, "Thread is interrupted.", localThrowable);
                 return false;
               }
               localObject = new RuntimeException(localThrowable);
-              if (!this.jdField_a_of_type_Boolean) {
-                this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a(1, (Throwable)localObject);
+              if (!this.d) {
+                this.m.a(1, (Throwable)localObject);
               }
-              QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode configure error", localThrowable);
+              QLog.e(this.g, 2, "decode configure error", localThrowable);
               return false;
             }
           }
-          i += 1;
+          i1 += 1;
         }
         catch (IllegalArgumentException localIllegalArgumentException)
         {
           if (Thread.interrupted())
           {
-            QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Thread is interrupted.", localIllegalArgumentException);
+            QLog.e(this.g, 2, "Thread is interrupted.", localIllegalArgumentException);
             return false;
           }
           Object localObject = new RuntimeException(localIllegalArgumentException);
-          this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a(1, (Throwable)localObject);
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode configure getTrackFormat error", localIllegalArgumentException);
+          this.m.a(1, (Throwable)localObject);
+          QLog.e(this.g, 2, "decode configure getTrackFormat error", localIllegalArgumentException);
           return false;
         }
       }
@@ -206,175 +256,34 @@ class HWVideoDecoder$DecodeRunnable
     return false;
   }
   
-  private boolean a(boolean paramBoolean)
+  private boolean d()
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-    if (i != -3)
+    if (this.i == null)
     {
-      StringBuilder localStringBuilder;
-      if (i != -2)
-      {
-        if (i != -1)
-        {
-          if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "output EOS");
-            }
-            this.jdField_c_of_type_Boolean = true;
-          }
-          paramBoolean = a(paramBoolean, this.jdField_c_of_type_Long / 1000L);
-          if (QLog.isColorLevel())
-          {
-            String str1 = this.jdField_a_of_type_JavaLangString;
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("checkToRender, render :");
-            localStringBuilder.append(paramBoolean);
-            localStringBuilder.append(" info.presentationTimeUs:");
-            localStringBuilder.append(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L);
-            localStringBuilder.append(" - ");
-            localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-            QLog.d(str1, 2, localStringBuilder.toString());
-          }
-          if ((!this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Boolean) && (paramBoolean)) {
-            while (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L > System.currentTimeMillis() - this.jdField_a_of_type_Long) {
-              try
-              {
-                Thread.sleep(10L);
-              }
-              catch (InterruptedException localInterruptedException1)
-              {
-                localInterruptedException1.printStackTrace();
-                this.jdField_a_of_type_Boolean = true;
-              }
-            }
-          }
-          if ((paramBoolean) && (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0)) {
-            paramBoolean = true;
-          } else {
-            paramBoolean = false;
-          }
-          this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, paramBoolean);
-          if (!paramBoolean) {
-            break label403;
-          }
-          try
-          {
-            this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L);
-            return true;
-          }
-          catch (InterruptedException localInterruptedException2)
-          {
-            localInterruptedException2.printStackTrace();
-            this.jdField_a_of_type_Boolean = true;
-            return true;
-          }
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "dequeueOutputBuffer timed out!");
-          return true;
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        String str2 = this.jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("New format ");
-        localStringBuilder.append(this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
-        QLog.d(str2, 2, localStringBuilder.toString());
-        return true;
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
-      }
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-    }
-    label403:
-    return true;
-  }
-  
-  private boolean a(boolean paramBoolean, long paramLong)
-  {
-    if (!this.jdField_d_of_type_Boolean) {
-      return paramBoolean;
-    }
-    if (!paramBoolean) {
-      return paramBoolean;
-    }
-    if (this.jdField_c_of_type_Boolean) {
+      QLog.e(this.g, 2, "Can't find video info!");
       return false;
     }
-    long l = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-    if (l <= 0L) {
-      return paramBoolean;
-    }
-    StringBuilder localStringBuilder;
-    if ((l > this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long))
-    {
-      if (l > paramLong)
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("checkToRender, do not render, renderpos:");
-          localStringBuilder.append(l);
-          localStringBuilder.append(" sampletime:");
-          localStringBuilder.append(paramLong);
-          QLog.d("HWVideoDecoder.DecodeRunnable", 2, localStringBuilder.toString());
-        }
-        return false;
-      }
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong.compareAndSet(l, -1L);
-      return paramBoolean;
-    }
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong.compareAndSet(l, -1L);
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkToRender, not in playrange, pos:");
-      localStringBuilder.append(l);
-      localStringBuilder.append(": [");
-      localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Long);
-      localStringBuilder.append("-");
-      localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long);
-      localStringBuilder.append("]");
-      QLog.d("HWVideoDecoder.DecodeRunnable", 2, localStringBuilder.toString());
-    }
-    return paramBoolean;
-  }
-  
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec == null)
-    {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Can't find video info!");
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a();
+    this.m.a();
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      this.i.start();
       try
       {
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3) {
-          this.jdField_c_of_type_Long = (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L);
+        this.a = this.i.getInputBuffers();
+        this.b = this.i.getOutputBuffers();
+        this.c = new MediaCodec.BufferInfo();
+        this.e = System.currentTimeMillis();
+        if (this.v.b == 3) {
+          this.p = (this.v.f * 1000L);
         }
         return true;
       }
       catch (Exception localException)
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a(2, localException);
+        if (!this.d) {
+          this.m.a(2, localException);
         }
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode start error2", localException);
+        QLog.e(this.g, 2, "decode start error2", localException);
         return false;
       }
       RuntimeException localRuntimeException;
@@ -384,42 +293,133 @@ class HWVideoDecoder$DecodeRunnable
     {
       if (Thread.interrupted())
       {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Thread is interrupted.", localThrowable);
+        QLog.e(this.g, 2, "Thread is interrupted.", localThrowable);
         return false;
       }
       localRuntimeException = new RuntimeException(localThrowable);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a(2, localRuntimeException);
+      if (!this.d) {
+        this.m.a(2, localRuntimeException);
       }
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode start error", localThrowable);
+      QLog.e(this.g, 2, "decode start error", localThrowable);
     }
   }
   
-  private void c(boolean paramBoolean)
+  private boolean d(boolean paramBoolean)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      c();
+    int i1 = this.i.dequeueOutputBuffer(this.c, 10000L);
+    if (i1 != -3)
+    {
+      StringBuilder localStringBuilder;
+      if (i1 != -2)
+      {
+        if (i1 != -1)
+        {
+          if ((this.c.flags & 0x4) != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.g, 2, "output EOS");
+            }
+            this.o = true;
+          }
+          paramBoolean = a(paramBoolean, this.p / 1000L);
+          if (QLog.isColorLevel())
+          {
+            String str1 = this.g;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("checkToRender, render :");
+            localStringBuilder.append(paramBoolean);
+            localStringBuilder.append(" info.presentationTimeUs:");
+            localStringBuilder.append(this.c.presentationTimeUs / 1000L);
+            localStringBuilder.append(" - ");
+            localStringBuilder.append(System.currentTimeMillis() - this.e);
+            QLog.d(str1, 2, localStringBuilder.toString());
+          }
+          if ((!this.v.c) && (paramBoolean)) {
+            while (this.c.presentationTimeUs / 1000L > System.currentTimeMillis() - this.e) {
+              try
+              {
+                Thread.sleep(10L);
+              }
+              catch (InterruptedException localInterruptedException1)
+              {
+                localInterruptedException1.printStackTrace();
+                this.d = true;
+              }
+            }
+          }
+          if ((paramBoolean) && (this.c.size != 0)) {
+            paramBoolean = true;
+          } else {
+            paramBoolean = false;
+          }
+          this.i.releaseOutputBuffer(i1, paramBoolean);
+          if (!paramBoolean) {
+            break label403;
+          }
+          try
+          {
+            this.m.a(this.c.presentationTimeUs * 1000L);
+            return true;
+          }
+          catch (InterruptedException localInterruptedException2)
+          {
+            localInterruptedException2.printStackTrace();
+            this.d = true;
+            return true;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d(this.g, 2, "dequeueOutputBuffer timed out!");
+          return true;
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        String str2 = this.g;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("New format ");
+        localStringBuilder.append(this.i.getOutputFormat());
+        QLog.d(str2, 2, localStringBuilder.toString());
+        return true;
+      }
     }
-    if (!this.jdField_c_of_type_Boolean) {
-      a(paramBoolean);
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.g, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
+      }
+      this.b = this.i.getOutputBuffers();
     }
+    label403:
+    return true;
   }
   
-  private boolean c()
+  private void e()
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+    if (this.v.b == 3)
+    {
+      this.p = (this.v.f * 1000L);
+      return;
+    }
+    this.p = 0L;
+  }
+  
+  private boolean f()
+  {
+    int i1 = this.i.dequeueInputBuffer(10000L);
     Object localObject1;
     Object localObject2;
-    if (i >= 0)
+    if (i1 >= 0)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
+      localObject1 = this.a[i1];
       long l1;
-      if (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)
+      if (this.v.b == 3)
       {
-        l1 = this.jdField_c_of_type_Long - 1000;
+        l1 = this.p - 1000;
         if (("xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) && ("MI 6".equalsIgnoreCase(Build.MODEL)))
         {
-          localObject2 = this.jdField_a_of_type_AndroidMediaMediaExtractor;
+          localObject2 = this.h;
           l2 = l1;
           if (l1 < 0L) {
             l2 = 0L;
@@ -428,7 +428,7 @@ class HWVideoDecoder$DecodeRunnable
         }
         else
         {
-          localObject2 = this.jdField_a_of_type_AndroidMediaMediaExtractor;
+          localObject2 = this.h;
           l2 = l1;
           if (l1 < 0L) {
             l2 = 0L;
@@ -436,23 +436,23 @@ class HWVideoDecoder$DecodeRunnable
           ((MediaExtractor)localObject2).seekTo(l2, 0);
         }
       }
-      int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject1, 0);
-      long l3 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-      long l2 = this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Long * 1000L;
-      long l4 = this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L;
+      int i2 = this.h.readSampleData((ByteBuffer)localObject1, 0);
+      long l3 = this.h.getSampleTime();
+      long l2 = this.v.e * 1000L;
+      long l4 = this.v.f * 1000L;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("intput sampleTime = ");
         ((StringBuilder)localObject1).append(l3);
         ((StringBuilder)localObject1).append(" sampleSize = ");
-        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append(i2);
         ((StringBuilder)localObject1).append(" endTime = ");
         ((StringBuilder)localObject1).append(l4);
         QLog.d("HWVideoDecoder.DecodeRunnable", 2, ((StringBuilder)localObject1).toString());
       }
-      if ((j >= 0) && ((l4 <= 0L) || (l3 <= l4))) {
-        if (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)
+      if ((i2 >= 0) && ((l4 <= 0L) || (l3 <= l4))) {
+        if (this.v.b == 3)
         {
           if (l2 > 0L) {
             l1 = l2;
@@ -463,17 +463,17 @@ class HWVideoDecoder$DecodeRunnable
         }
         else
         {
-          l1 = this.jdField_c_of_type_Long;
-          this.jdField_c_of_type_Long = l3;
-          this.jdField_d_of_type_Long = a(this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int, this.jdField_d_of_type_Long, l3 - l1);
-          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.jdField_d_of_type_Long, 0);
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+          l1 = this.p;
+          this.p = l3;
+          this.q = a(this.v.b, this.q, l3 - l1);
+          this.i.queueInputBuffer(i1, 0, i2, this.q, 0);
+          this.h.advance();
           return true;
         }
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.g;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("InputBuffer BUFFER_FLAG_END_OF_STREAM sampleTime=");
         ((StringBuilder)localObject2).append(l3);
@@ -482,19 +482,19 @@ class HWVideoDecoder$DecodeRunnable
         ((StringBuilder)localObject2).append(" startTime=");
         ((StringBuilder)localObject2).append(l2);
         ((StringBuilder)localObject2).append(" sampleSize=");
-        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(i2);
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
-      this.jdField_b_of_type_Boolean = true;
+      this.i.queueInputBuffer(i1, 0, 0, 0L, 4);
+      this.n = true;
       return true;
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.g;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("queueSampleToCodec inIndex = ");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(i1);
       QLog.w((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     return false;
@@ -502,17 +502,17 @@ class HWVideoDecoder$DecodeRunnable
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.k;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int = paramInt;
+    this.u.b = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(paramLong * 1000L);
+    this.r.set(paramLong * 1000L);
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -521,10 +521,10 @@ class HWVideoDecoder$DecodeRunnable
     {
       if (paramLong2 >= paramLong1)
       {
-        long l2 = this.jdField_b_of_type_Long;
+        long l2 = this.f;
         if (paramLong1 >= l2)
         {
-          SLog.e("HWVideoDecoder.DecodeRunnable", "setPlayRange ignore, startTimeMs=%d, videoDuration=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.jdField_b_of_type_Long) });
+          SLog.e("HWVideoDecoder.DecodeRunnable", "setPlayRange ignore, startTimeMs=%d, videoDuration=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.f) });
           return;
         }
         long l1 = paramLong2;
@@ -533,17 +533,17 @@ class HWVideoDecoder$DecodeRunnable
         }
         paramLong2 = l1;
         if (l1 == 0L) {
-          paramLong2 = this.jdField_b_of_type_Long;
+          paramLong2 = this.f;
         }
-        if ((paramLong1 == this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Long) && (paramLong2 == this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long))
+        if ((paramLong1 == this.u.e) && (paramLong2 == this.u.f))
         {
           SLog.d("HWVideoDecoder.DecodeRunnable", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
           return;
         }
-        DecodeConfig localDecodeConfig = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig;
-        localDecodeConfig.jdField_a_of_type_Long = paramLong1;
-        localDecodeConfig.jdField_b_of_type_Long = paramLong2;
-        if (localDecodeConfig.jdField_a_of_type_Int == 3)
+        DecodeConfig localDecodeConfig = this.u;
+        localDecodeConfig.e = paramLong1;
+        localDecodeConfig.f = paramLong2;
+        if (localDecodeConfig.b == 3)
         {
           a(paramLong2);
           return;
@@ -558,46 +558,46 @@ class HWVideoDecoder$DecodeRunnable
   
   public void a(@NonNull DecodeConfig paramDecodeConfig)
   {
-    if (!TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramDecodeConfig.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(this.y, paramDecodeConfig.a)) {
       SLog.d("HWVideoDecoder.DecodeRunnable", "DecodeRunnable does not support changing the file");
     }
-    a(paramDecodeConfig.jdField_a_of_type_Int);
-    a(paramDecodeConfig.jdField_a_of_type_Long, paramDecodeConfig.jdField_b_of_type_Long);
-    b(paramDecodeConfig.jdField_b_of_type_Boolean);
-    a(paramDecodeConfig.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Int = paramDecodeConfig.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_c_of_type_Boolean = paramDecodeConfig.jdField_c_of_type_Boolean;
+    a(paramDecodeConfig.b);
+    a(paramDecodeConfig.e, paramDecodeConfig.f);
+    b(paramDecodeConfig.d);
+    a(paramDecodeConfig.c);
+    this.u.g = paramDecodeConfig.g;
+    this.u.h = paramDecodeConfig.h;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Boolean = paramBoolean;
+    this.u.c = paramBoolean;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.l;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Boolean = paramBoolean;
+    this.u.d = paramBoolean;
   }
   
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig);
-    if (!a()) {
+    this.v.a(this.u);
+    if (!c()) {
       return;
     }
-    if (!b()) {
+    if (!d()) {
       return;
     }
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.g;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("decode ready time cost=");
       localStringBuilder.append(System.currentTimeMillis() - l1);
@@ -605,32 +605,32 @@ class HWVideoDecoder$DecodeRunnable
     }
     for (;;)
     {
-      if ((Thread.interrupted()) || (this.jdField_a_of_type_Boolean)) {
+      if ((Thread.interrupted()) || (this.d)) {
         break label514;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int != this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)) {
-        this.jdField_c_of_type_Long = (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L);
+      if ((this.u.b != this.v.b) && (this.u.b == 3)) {
+        this.p = (this.v.f * 1000L);
       }
-      this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig);
-      l1 = this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Long * 1000L;
-      long l2 = this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L;
-      int j = 0;
-      long l3 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-      int i = j;
+      this.v.a(this.u);
+      l1 = this.v.e * 1000L;
+      long l2 = this.v.f * 1000L;
+      int i2 = 0;
+      long l3 = this.r.get();
+      int i1 = i2;
       if (l3 >= 0L)
       {
-        i = j;
+        i1 = i2;
         if (l3 >= l1)
         {
-          i = j;
+          i1 = i2;
           if (l3 <= l2)
           {
-            a(l3);
-            i = 1;
+            b(l3);
+            i1 = 1;
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.compareAndSet(l3, -1L);
+      this.r.compareAndSet(l3, -1L);
       l3 = System.currentTimeMillis();
       try
       {
@@ -642,60 +642,60 @@ class HWVideoDecoder$DecodeRunnable
           break label470;
         }
       }
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Thread is interrupted.", localThrowable);
-      if ((i != 0) && (QLog.isColorLevel()))
+      QLog.e(this.g, 2, "Thread is interrupted.", localThrowable);
+      if ((i1 != 0) && (QLog.isColorLevel()))
       {
-        ??? = this.jdField_a_of_type_JavaLangString;
+        ??? = this.g;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("decode ready time cost=");
         localStringBuilder.append(System.currentTimeMillis() - l3);
         QLog.d((String)???, 2, localStringBuilder.toString());
       }
-      if (this.jdField_c_of_type_Boolean)
+      if (this.o)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "OutputBuffer BUFFER_FLAG_END_OF_STREAM");
+          QLog.d(this.g, 2, "OutputBuffer BUFFER_FLAG_END_OF_STREAM");
         }
-        if (!this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_b_of_type_Boolean) {
+        if (!this.v.d) {
           break label514;
         }
-        if (this.jdField_b_of_type_ComTencentMobileqqVideocodecMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3) {
+        if (this.v.b == 3) {
           l1 = l2;
         }
-        a(l1);
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.d();
+        b(l1);
+        this.m.d();
       }
-      if (this.e) {
+      if (this.w) {
         try
         {
-          synchronized (this.jdField_a_of_type_JavaLangObject)
+          synchronized (this.x)
           {
-            if (!this.jdField_a_of_type_Boolean) {
-              this.jdField_a_of_type_JavaLangObject.wait();
+            if (!this.d) {
+              this.x.wait();
             }
-            this.jdField_a_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L);
+            this.e = (System.currentTimeMillis() - this.c.presentationTimeUs / 1000L);
           }
         }
         catch (InterruptedException localInterruptedException)
         {
           localInterruptedException.printStackTrace();
-          this.jdField_a_of_type_Boolean = true;
+          this.d = true;
         }
       }
     }
     label470:
     Object localObject3 = new RuntimeException(localInterruptedException);
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.a(3, (Throwable)localObject3);
+    if (!this.d) {
+      this.m.a(3, (Throwable)localObject3);
     }
-    QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode configure error", localInterruptedException);
+    QLog.e(this.g, 2, "decode configure error", localInterruptedException);
     return;
     try
     {
       label514:
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.i.stop();
+      this.i.release();
+      this.h.release();
     }
     catch (Exception localException)
     {
@@ -704,17 +704,17 @@ class HWVideoDecoder$DecodeRunnable
       ((StringBuilder)localObject3).append(localException.toString());
       QLog.e("HWVideoDecoder.DecodeRunnable", 1, ((StringBuilder)localObject3).toString());
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.o)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.b();
+      this.m.b();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecDecoderHWDecodeListener.c();
+    this.m.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.decoder.HWVideoDecoder.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

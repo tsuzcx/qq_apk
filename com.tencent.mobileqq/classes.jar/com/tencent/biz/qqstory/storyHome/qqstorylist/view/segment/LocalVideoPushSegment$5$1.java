@@ -9,7 +9,7 @@ class LocalVideoPushSegment$5$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentLocalVideoPushSegment$5.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+    this.b.b.a(this.a);
   }
 }
 

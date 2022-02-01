@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.MessageHandlerConstants.MsgSendCostParams;
 import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.utils.SendMessageHandler;
@@ -13,6 +15,17 @@ class MiniPieHelper$1
   {
     if (MiniPieHelper.a(this.a) != null) {
       MiniPieHelper.a(this.a).a(paramString);
+    }
+  }
+  
+  protected void onRecvEmoticonRandomResult(String paramString, long paramLong)
+  {
+    if ((MiniPieHelper.a(this.a) != null) && (TextUtils.equals(MiniPieHelper.a(this.a).g, paramString)))
+    {
+      paramString = new Bundle();
+      paramString.putLong("messageUniseq", paramLong);
+      paramString.putInt("refreshType", 0);
+      MiniPieHelper.a(this.a).a(131073, 0L, 9, paramString);
     }
   }
   
@@ -37,7 +50,7 @@ class MiniPieHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPieHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,15 @@ public class ReadInJoyStaticGridView
   public ReadInJoyStaticGridView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b();
+    d();
   }
   
-  private void b()
+  private void d()
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(4);
-    setHorizontalSpacing(ViewUtils.a(0.0F));
-    setVerticalSpacing(ViewUtils.a(0.0F));
+    setHorizontalSpacing(ViewUtils.dip2px(0.0F));
+    setVerticalSpacing(ViewUtils.dip2px(0.0F));
     setSelector(17170445);
     setClipChildren(false);
   }
@@ -45,7 +45,7 @@ public class ReadInJoyStaticGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyStaticGridView
  * JD-Core Version:    0.7.0.1
  */

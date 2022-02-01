@@ -14,10 +14,10 @@ class VideoSprite$2$1
   {
     try
     {
-      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.this$0.g = true;
-      if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnProgressChangedListener != null) {
-        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
+      this.a.this$0.ac.start();
+      this.a.this$0.ah = true;
+      if (this.a.this$0.L != null) {
+        this.a.this$0.ak.postDelayed(this.a.this$0, 33L);
       }
       return;
     }
@@ -35,7 +35,7 @@ class VideoSprite$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2.1
  * JD-Core Version:    0.7.0.1
  */

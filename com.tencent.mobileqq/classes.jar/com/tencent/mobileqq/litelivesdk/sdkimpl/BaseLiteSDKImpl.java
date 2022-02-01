@@ -108,29 +108,19 @@ public abstract class BaseLiteSDKImpl
   
   private void a(String paramString)
   {
-    CustomizedServiceManager.a.a(paramString);
-    LoginManager.a.c();
+    CustomizedServiceManager.c.c(paramString);
+    LoginManager.c.e();
     BusinessManager.a.a(false);
     BusinessManager.a.a(null);
-    BusinessManager.a.a();
+    BusinessManager.a.k();
     LiveSDK.unInit();
     QLog.e("EnterInitQuestion", 1, "switchBusiness LiveSDK uninit");
   }
   
-  public BusinessConfig a()
-  {
-    return BusinessManager.a.a();
-  }
-  
-  public LoginResult a()
-  {
-    return LoginManager.a.a();
-  }
-  
   public void a()
   {
-    CustomizedServiceManager.a.a();
-    LoginManager.a.b();
+    CustomizedServiceManager.c.a();
+    LoginManager.c.b();
     BusinessManager.a.a(false);
     BusinessManager.a.a(null);
     LiveSDK.unInit();
@@ -141,7 +131,7 @@ public abstract class BaseLiteSDKImpl
   {
     if (BusinessManager.a.a())
     {
-      if (BusinessManager.a.a().jdField_a_of_type_JavaLangString.equals(paramBusinessConfig.jdField_a_of_type_JavaLangString))
+      if (BusinessManager.a.b().a.equals(paramBusinessConfig.a))
       {
         LogFactory.a().e("BaseLiteSDKImpl", "--------Already Init, will Return");
         return;
@@ -149,11 +139,11 @@ public abstract class BaseLiteSDKImpl
       localObject1 = LogFactory.a();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("--------Other Business already Init, will Switch Biz, oldAppid = ");
-      ((StringBuilder)localObject2).append(BusinessManager.a.a().jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(BusinessManager.a.b().a);
       ((StringBuilder)localObject2).append(", newAppid = ");
-      ((StringBuilder)localObject2).append(paramBusinessConfig.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramBusinessConfig.a);
       ((LogInterface)localObject1).e("BaseLiteSDKImpl", ((StringBuilder)localObject2).toString());
-      a(BusinessManager.a.a().jdField_a_of_type_JavaLangString);
+      a(BusinessManager.a.b().a);
     }
     IliveLiteMonitorUtil.a("live_init_sdk");
     LogFactory.a().a("BaseLiteSDKImpl", "initLiveSDK------will Init New Biz");
@@ -161,22 +151,22 @@ public abstract class BaseLiteSDKImpl
     CrashVersionUtils.a();
     BusinessManager.a.a(paramBusinessConfig);
     Object localObject1 = new LiveConfig();
-    ((LiveConfig)localObject1).appid = paramBusinessConfig.jdField_a_of_type_JavaLangString;
-    ((LiveConfig)localObject1).versionName = paramBusinessConfig.jdField_b_of_type_JavaLangString;
-    ((LiveConfig)localObject1).versionCode = paramBusinessConfig.jdField_a_of_type_Int;
-    ((LiveConfig)localObject1).clientType = paramBusinessConfig.d;
-    ((LiveConfig)localObject1).wns_appid = paramBusinessConfig.jdField_c_of_type_Int;
-    ((LiveConfig)localObject1).opensdk_appid = paramBusinessConfig.jdField_b_of_type_Int;
+    ((LiveConfig)localObject1).appid = paramBusinessConfig.a;
+    ((LiveConfig)localObject1).versionName = paramBusinessConfig.b;
+    ((LiveConfig)localObject1).versionCode = paramBusinessConfig.c;
+    ((LiveConfig)localObject1).clientType = paramBusinessConfig.f;
+    ((LiveConfig)localObject1).wns_appid = paramBusinessConfig.e;
+    ((LiveConfig)localObject1).opensdk_appid = paramBusinessConfig.d;
     ((LiveConfig)localObject1).sdkType = paramBusinessConfig.a();
-    ((LiveConfig)localObject1).channelID = paramBusinessConfig.jdField_c_of_type_JavaLangString;
+    ((LiveConfig)localObject1).channelID = paramBusinessConfig.g;
     ((LiveConfig)localObject1).liteSdk = true;
     paramBusinessConfig = a((LiveConfig)localObject1);
-    CustomizedServiceManager.a.a(paramBusinessConfig.appid, paramBusinessConfig.serviceConfig.get());
+    CustomizedServiceManager.c.a(paramBusinessConfig.appid, paramBusinessConfig.serviceConfig.get());
     localObject1 = new BizModulesConfig();
-    Object localObject2 = CustomizedServiceManager.a.a(paramBusinessConfig.appid);
+    Object localObject2 = CustomizedServiceManager.c.a(paramBusinessConfig.appid);
     if ((localObject2 != null) && (((Map)localObject2).size() != 0))
     {
-      CustomizedServiceManager.a.b(paramBusinessConfig.appid, ((BizModulesConfig)localObject1).get());
+      CustomizedServiceManager.c.b(paramBusinessConfig.appid, ((BizModulesConfig)localObject1).get());
       paramBusinessConfig.uiConfig.addModulesTempConfig(((Integer)((BizModulesConfig)localObject1).get().keySet().iterator().next()).intValue(), (BizModulesConfig)localObject1);
     }
     else
@@ -212,12 +202,12 @@ public abstract class BaseLiteSDKImpl
   
   public void a(BizLoginRequest paramBizLoginRequest)
   {
-    LoginManager.a.a(LoginManager.a(paramBizLoginRequest));
+    LoginManager.c.a(LoginManager.a(paramBizLoginRequest));
   }
   
   public void a(String paramString, int paramInt, Class<? extends BaseSDKPageBizBootModules> paramClass)
   {
-    CustomizedServiceManager.a.a(paramString, paramInt, paramClass);
+    CustomizedServiceManager.c.a(paramString, paramInt, paramClass);
   }
   
   public void a(String paramString, IBusinessExpireObserver paramIBusinessExpireObserver)
@@ -227,32 +217,42 @@ public abstract class BaseLiteSDKImpl
   
   public void a(String paramString, ILiveLoginTicketListener paramILiveLoginTicketListener)
   {
-    LoginManager.a.a(paramString, paramILiveLoginTicketListener);
+    LoginManager.c.a(paramString, paramILiveLoginTicketListener);
   }
   
   public void a(String paramString, Class<? extends ServiceBaseInterface> paramClass, Class<? extends BaseServiceBuilder> paramClass1)
   {
-    CustomizedServiceManager.a.a(paramString, paramClass, paramClass1);
+    CustomizedServiceManager.c.a(paramString, paramClass, paramClass1);
   }
   
-  public boolean a()
+  public BusinessConfig b()
   {
-    return BusinessManager.a.a();
-  }
-  
-  public void b()
-  {
-    LoginManager.a.c();
+    return BusinessManager.a.b();
   }
   
   public void b(BusinessConfig paramBusinessConfig)
   {
     BusinessManager.a.a(paramBusinessConfig);
   }
+  
+  public boolean c()
+  {
+    return BusinessManager.a.a();
+  }
+  
+  public LoginResult d()
+  {
+    return LoginManager.c.c();
+  }
+  
+  public void e()
+  {
+    LoginManager.c.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.BaseLiteSDKImpl
  * JD-Core Version:    0.7.0.1
  */

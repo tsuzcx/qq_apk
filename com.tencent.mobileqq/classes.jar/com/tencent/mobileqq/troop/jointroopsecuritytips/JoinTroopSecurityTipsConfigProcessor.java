@@ -26,7 +26,7 @@ public class JoinTroopSecurityTipsConfigProcessor
       QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "onParsed");
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return JoinTroopSecurityTipsConfig.a(paramArrayOfQConfItem[0].a);
+      return JoinTroopSecurityTipsConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -68,7 +68,7 @@ public class JoinTroopSecurityTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

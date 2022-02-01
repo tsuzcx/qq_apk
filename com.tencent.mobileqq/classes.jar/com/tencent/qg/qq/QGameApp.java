@@ -24,8 +24,8 @@ public class QGameApp
   extends IApp
   implements IEventReceiver
 {
-  public static volatile boolean a;
-  private QGameApp.QGameLibsDownloadReceiver a;
+  public static volatile boolean c;
+  private QGameApp.QGameLibsDownloadReceiver d;
   
   public QGameApp(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
@@ -103,8 +103,8 @@ public class QGameApp
   {
     QLog.e("QGameApp", 1, new Object[] { "dispatchAppInitFailed. errorCode=", Integer.valueOf(paramInt) });
     MiniAppEvent localMiniAppEvent = new MiniAppEvent();
-    localMiniAppEvent.jdField_a_of_type_Int = 4;
-    localMiniAppEvent.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo;
+    localMiniAppEvent.c = 4;
+    localMiniAppEvent.a = this.b;
     StoryDispatcher.a().dispatch("MiniAppManager", localMiniAppEvent);
   }
   
@@ -113,11 +113,11 @@ public class QGameApp
     ThreadManagerV2.excute(new QGameApp.3(this, paramBoolean, paramString), 64, null, true);
   }
   
-  private boolean a(boolean paramBoolean, String paramString)
+  private boolean b(boolean paramBoolean, String paramString)
   {
     if (!paramBoolean)
     {
-      str = a(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
+      str = a(a(this.a, "qgamelibs", "libsconfig.json"));
       localObject = a(a(paramString, "", "libsconfig.json"));
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(str))) {
         return true;
@@ -125,22 +125,27 @@ public class QGameApp
     }
     String str = a(paramString, "qgamelibs", "");
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
+    ((StringBuilder)localObject).append(a(this.a, "qgamelibs"));
     ((StringBuilder)localObject).append(File.separator);
     localObject = ((StringBuilder)localObject).toString();
     FileUtils.deleteFilesInDirectory((String)localObject);
     if (FileUtils.copyDirectory(str, (String)localObject, false) >= 0) {
-      return FileUtils.copyFile(a(paramString, "", "libsconfig.json"), a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
+      return FileUtils.copyFile(a(paramString, "", "libsconfig.json"), a(this.a, "qgamelibs", "libsconfig.json"));
     }
     return false;
   }
   
-  private String[] a()
+  private void e()
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.a.getString("unzipped_path");
-    String str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "ejecta.js");
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new QGameApp.1(this), 1000L);
+  }
+  
+  private String[] f()
+  {
+    String str1 = this.b.q.getString("unzipped_path");
+    String str2 = a(this.a, "qgamelibs", "ejecta.js");
     if (!TextUtils.isEmpty(str1)) {
-      str1 = a(str1, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.h, "index.js");
+      str1 = a(str1, this.b.p, "index.js");
     } else {
       str1 = null;
     }
@@ -148,11 +153,11 @@ public class QGameApp
   }
   
   @SuppressLint({"UnsafeDynamicallyLoadedCode"})
-  private boolean b()
+  private boolean g()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!c)
     {
-      Object localObject = new File(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
+      Object localObject = new File(a(this.a, "qgamelibs"));
       boolean bool = ((File)localObject).isDirectory();
       int i = 0;
       if (!bool) {
@@ -170,7 +175,7 @@ public class QGameApp
           System.load(localObject[i].getAbsolutePath());
           i += 1;
         }
-        jdField_a_of_type_Boolean = true;
+        c = true;
         return true;
       }
       return false;
@@ -178,41 +183,36 @@ public class QGameApp
     return true;
   }
   
-  private void d()
-  {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new QGameApp.1(this), 1000L);
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentQgQqQGameApp$QGameLibsDownloadReceiver = new QGameApp.QGameLibsDownloadReceiver(this);
-      StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentQgQqQGameApp$QGameLibsDownloadReceiver);
+      this.d = new QGameApp.QGameLibsDownloadReceiver(this);
+      StoryDispatcher.a().registerSubscriber(this.d);
       IDownloader localIDownloader = MiniAppManager.a().a("ak:3214");
       if (localIDownloader != null) {
-        localIDownloader.a("ak:3214", "QGameApp", this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.h);
+        localIDownloader.a("ak:3214", "QGameApp", this.b.p);
       }
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null;
-  }
-  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.finish();
+    if (this.a != null) {
+      this.a.finish();
     }
   }
   
-  public void c()
+  public boolean c()
   {
-    super.c();
-    if (this.jdField_a_of_type_ComTencentQgQqQGameApp$QGameLibsDownloadReceiver != null) {
-      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentQgQqQGameApp$QGameLibsDownloadReceiver);
+    return this.a != null;
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (this.d != null) {
+      StoryDispatcher.a().unRegisterSubscriber(this.d);
     }
   }
   
@@ -223,7 +223,7 @@ public class QGameApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.qq.QGameApp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,37 +4,37 @@ import com.tencent.biz.common.util.HttpUtil;
 
 class WebViewProgressBarController$DurationGenerator
 {
-  private static DurationGenerator jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator;
-  private static DurationGenerator jdField_b_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private int[] jdField_a_of_type_ArrayOfInt = null;
-  private int jdField_b_of_type_Int = 0;
-  private int c = 9000;
-  private int d = 1800;
-  private int e;
+  private static DurationGenerator b;
+  private static DurationGenerator c;
+  private int[] a = null;
+  private int d = 0;
+  private int e = 0;
+  private int f = 9000;
+  private int g = 1800;
+  private long h;
+  private int i;
   
   public WebViewProgressBarController$DurationGenerator(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int == 0)
+    this.d = paramInt;
+    this.e = 0;
+    if (this.d == 0)
     {
-      this.c = 9000;
-      this.d = 1800;
+      this.f = 9000;
+      this.g = 1800;
     }
     else
     {
-      this.c = 6000;
-      this.d = 1200;
+      this.f = 6000;
+      this.g = 1200;
     }
-    this.jdField_a_of_type_Long = 0L;
-    this.e = 0;
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
+    this.h = 0L;
+    this.i = 0;
+    this.a = new int[3];
     paramInt = 0;
     while (paramInt < 3)
     {
-      this.jdField_a_of_type_ArrayOfInt[paramInt] = 0;
+      this.a[paramInt] = 0;
       paramInt += 1;
     }
   }
@@ -43,124 +43,124 @@ class WebViewProgressBarController$DurationGenerator
   {
     if (paramInt == 0)
     {
-      if (jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator == null) {
-        jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator = new DurationGenerator(0);
+      if (b == null) {
+        b = new DurationGenerator(0);
       }
-      return jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator;
+      return b;
     }
-    if (jdField_b_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator == null) {
-      jdField_b_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator = new DurationGenerator(1);
+    if (c == null) {
+      c = new DurationGenerator(1);
     }
-    return jdField_b_of_type_ComTencentMobileqqWidgetWebViewProgressBarController$DurationGenerator;
+    return c;
   }
   
-  private void b()
+  private int d()
   {
-    int i = 0;
-    while (i < 3)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      i += 1;
-    }
-    this.e = 0;
-  }
-  
-  private int c()
-  {
-    int i1 = 0;
-    int j = 0;
+    int i2 = 0;
     int k = 0;
-    int m;
-    for (int i = 0; j < 3; i = m)
+    int m = 0;
+    int n;
+    for (int j = 0; k < 3; j = n)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      int n = k;
-      m = i;
-      if (arrayOfInt[j] > 0)
+      int[] arrayOfInt = this.a;
+      int i1 = m;
+      n = j;
+      if (arrayOfInt[k] > 0)
       {
-        n = k + 1;
-        m = i + arrayOfInt[j];
+        i1 = m + 1;
+        n = j + arrayOfInt[k];
       }
+      k += 1;
+      m = i1;
+    }
+    k = i2;
+    if (m > 0) {
+      k = j / m;
+    }
+    return k;
+  }
+  
+  private void e()
+  {
+    int j = 0;
+    while (j < 3)
+    {
+      this.a[j] = 0;
       j += 1;
-      k = n;
     }
-    j = i1;
-    if (k > 0) {
-      j = i / k;
-    }
-    return j;
+    this.i = 0;
   }
   
   public int a()
   {
-    if (2 == this.jdField_b_of_type_Int) {
-      return this.c;
+    if (2 == this.e) {
+      return this.f;
     }
-    return this.d;
-  }
-  
-  public void a()
-  {
-    int j = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    int k = c();
-    int i;
-    if (this.jdField_b_of_type_Int == 2) {
-      i = this.c;
-    } else {
-      i = this.d;
-    }
-    if (k == 0) {
-      i *= 3;
-    } else {
-      i = k * 3;
-    }
-    if (j > 100)
-    {
-      if (j <= i) {
-        i = j;
-      }
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      j = this.e;
-      arrayOfInt[j] = ((int)(i * 1.2F));
-      i = j + 1;
-      this.e = i;
-      this.e = (i % 3);
-    }
+    return this.g;
   }
   
   public int b()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    int k = HttpUtil.getNetWorkType();
-    int i = this.jdField_b_of_type_Int;
-    int j = 0;
-    if (i != k) {
-      i = 1;
+    this.h = System.currentTimeMillis();
+    int m = HttpUtil.getNetWorkType();
+    int j = this.e;
+    int k = 0;
+    if (j != m) {
+      j = 1;
     } else {
-      i = 0;
+      j = 0;
     }
-    this.jdField_b_of_type_Int = k;
-    if (i != 0)
+    this.e = m;
+    if (j != 0)
     {
-      if (this.jdField_b_of_type_Int == 2) {
-        i = this.c;
+      if (this.e == 2) {
+        j = this.f;
       } else {
-        i = this.d;
+        j = this.g;
       }
-      b();
-      return i;
+      e();
+      return j;
     }
-    k = c();
-    i = j;
-    if (k > 0) {
-      i = k;
+    m = d();
+    j = k;
+    if (m > 0) {
+      j = m;
     }
-    return i;
+    return j;
+  }
+  
+  public void c()
+  {
+    int k = (int)(System.currentTimeMillis() - this.h);
+    int m = d();
+    int j;
+    if (this.e == 2) {
+      j = this.f;
+    } else {
+      j = this.g;
+    }
+    if (m == 0) {
+      j *= 3;
+    } else {
+      j = m * 3;
+    }
+    if (k > 100)
+    {
+      if (k <= j) {
+        j = k;
+      }
+      int[] arrayOfInt = this.a;
+      k = this.i;
+      arrayOfInt[k] = ((int)(j * 1.2F));
+      j = k + 1;
+      this.i = j;
+      this.i = (j % 3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WebViewProgressBarController.DurationGenerator
  * JD-Core Version:    0.7.0.1
  */

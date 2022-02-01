@@ -16,14 +16,14 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class HomeworkTroopClassInfoTipsBar
   implements View.OnClickListener, TipsBarTask
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  View a;
+  private Activity b;
+  private SessionInfo c;
   
   public HomeworkTroopClassInfoTipsBar(Activity paramActivity, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.b = paramActivity;
+    this.c = paramSessionInfo;
   }
   
   public int a()
@@ -33,16 +33,16 @@ public class HomeworkTroopClassInfoTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560671, null);
-      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368333);
+      this.a = LayoutInflater.from(this.b).inflate(2131626716, null);
+      paramVarArgs = (TextView)this.a.findViewById(2131435208);
       if (paramVarArgs != null) {
-        paramVarArgs.setText(2131693236);
+        paramVarArgs.setText(2131890782);
       }
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      this.a.setOnClickListener(this);
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
   
   public void a(int paramInt, Object... paramVarArgs) {}
@@ -58,26 +58,21 @@ public class HomeworkTroopClassInfoTipsBar
       if (!bool)
       {
         paramTipsManager.a(this, new Object[0]);
-        TroopReportor.a("Grp_edu", "Grp_AIO", "classinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
+        TroopReportor.a("Grp_edu", "Grp_AIO", "classinfotopGuidebar_Show", 0, 0, new String[] { this.c.b });
       }
     }
     else if (bool) {
-      paramTipsManager.a();
+      paramTipsManager.c();
     }
   }
   
   public boolean a(@NonNull TipsManager paramTipsManager)
   {
-    int i = paramTipsManager.a();
+    int i = paramTipsManager.b();
     if (QLog.isColorLevel()) {
       QLog.d("HomeworkTroopClassInfoTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
     }
     return i == b();
-  }
-  
-  public int[] a()
-  {
-    return null;
   }
   
   public int b()
@@ -85,19 +80,24 @@ public class HomeworkTroopClassInfoTipsBar
     return 27;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
       QLog.d("HomeworkTroopClassInfoTipsBar", 2, "click tips, jump to web");
     }
-    HWTroopUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, HWTroopUtils.c);
-    ReportController.b(null, "dc00898", "", "", "0X800B280", "0X800B280", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    HWTroopUtils.a(this.b, this.c.b, HWTroopUtils.c);
+    ReportController.b(null, "dc00898", "", "", "0X800B280", "0X800B280", 0, 0, this.c.b, "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HomeworkTroopClassInfoTipsBar
  * JD-Core Version:    0.7.0.1
  */

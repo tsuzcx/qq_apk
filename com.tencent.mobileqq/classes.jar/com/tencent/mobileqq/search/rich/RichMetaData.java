@@ -7,9 +7,9 @@ import org.json.JSONObject;
 
 public class RichMetaData
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
+  private int a = 1;
   private String b = "";
+  private String c = "";
   
   public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
@@ -55,10 +55,10 @@ public class RichMetaData
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
-      localJSONObject2.put("state", this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(this.b)) {
-        localJSONObject2.put("extradata", new JSONObject(this.b));
+      localJSONObject2.put("serverdata", new JSONObject(this.b));
+      localJSONObject2.put("state", this.a);
+      if (!TextUtils.isEmpty(this.c)) {
+        localJSONObject2.put("extradata", new JSONObject(this.c));
       }
       localJSONObject1.put("data", localJSONObject2);
     }
@@ -74,27 +74,27 @@ public class RichMetaData
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Int = 1;
+      this.a = 1;
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichMetaData
  * JD-Core Version:    0.7.0.1
  */

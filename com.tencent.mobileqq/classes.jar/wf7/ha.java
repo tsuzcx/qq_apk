@@ -6,6 +6,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -154,7 +155,7 @@ public class ha
   {
     try
     {
-      WifiInfo localWifiInfo = sD.getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo(sD);
       return localWifiInfo;
     }
     catch (Throwable localThrowable)
@@ -234,7 +235,7 @@ public class ha
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ha
  * JD-Core Version:    0.7.0.1
  */

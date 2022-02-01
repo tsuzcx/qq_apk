@@ -14,7 +14,7 @@ class AVGameActivity$5
     if (this.this$0.isFinishing()) {
       return;
     }
-    String str = this.this$0.getString(2131690280);
+    String str = this.this$0.getString(2131887191);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showDialogTip content:");
     localStringBuilder.append(this.a);

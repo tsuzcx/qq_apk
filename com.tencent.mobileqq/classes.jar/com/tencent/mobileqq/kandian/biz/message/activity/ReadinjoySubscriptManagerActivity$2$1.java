@@ -9,12 +9,12 @@ class ReadinjoySubscriptManagerActivity$2$1
   
   public void run()
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity$2.this$0, this.jdField_a_of_type_JavaUtilArrayList);
+    ReadinjoySubscriptManagerActivity.a(this.b.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.activity.ReadinjoySubscriptManagerActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

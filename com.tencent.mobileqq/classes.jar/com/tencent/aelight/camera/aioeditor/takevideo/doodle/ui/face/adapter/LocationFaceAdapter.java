@@ -26,28 +26,28 @@ public class LocationFaceAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage == null) {
+    if (this.b == null) {
       return paramView;
     }
     if (paramView == null) {
-      paramView = new LocationFaceAdapter.LocationItemLayout(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).a(), this);
+      paramView = new LocationFaceAdapter.LocationItemLayout(this.a, paramViewGroup.getWidth(), ((LocationFacePackage)this.b).a(), ((LocationFacePackage)this.b).b(), this);
     } else {
       paramView = (LocationFaceAdapter.LocationItemLayout)paramView;
     }
-    paramView.a((LocationFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage, paramInt, getCount(), a());
+    paramView.a((LocationFacePackage)this.b, paramInt, getCount(), a());
     return paramView;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject1 = (ImageView)paramView.findViewById(2131370424);
-    int i = ((Integer)((ImageView)localObject1).getTag(2131378301)).intValue();
-    paramView = (LocationFacePackage.Item)((LocationFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i);
-    Object localObject2 = (Boolean)((ImageView)localObject1).getTag(2131378280);
+    Object localObject1 = (ImageView)paramView.findViewById(2131437692);
+    int i = ((Integer)((ImageView)localObject1).getTag(2131446820)).intValue();
+    paramView = (LocationFacePackage.Item)((LocationFacePackage)this.b).k.get(i);
+    Object localObject2 = (Boolean)((ImageView)localObject1).getTag(2131446799);
     if ((localObject2 != null) && (((Boolean)localObject2).booleanValue()))
     {
-      paramView.a = ((ImageView)localObject1).getDrawable();
-      localObject2 = paramView.a;
+      paramView.e = ((ImageView)localObject1).getDrawable();
+      localObject2 = paramView.e;
       if (localObject2 != null)
       {
         ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
@@ -60,11 +60,11 @@ public class LocationFaceAdapter
           f = i - ((i - j) / 2 + k) * 2;
         }
         double d1 = f / i;
-        double d2 = ((LocationFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).jdField_a_of_type_Double;
+        double d2 = ((LocationFacePackage)this.b).h;
         Double.isNaN(d1);
         float f = (float)(d1 * d2);
         localObject1 = PasterUtil.a();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener.a(paramView, ((PasterUtil.Position)localObject1).a, ((PasterUtil.Position)localObject1).b, f);
+        this.c.a(paramView, ((PasterUtil.Position)localObject1).a, ((PasterUtil.Position)localObject1).b, f);
       }
     }
     else
@@ -75,7 +75,7 @@ public class LocationFaceAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.LocationFaceAdapter
  * JD-Core Version:    0.7.0.1
  */

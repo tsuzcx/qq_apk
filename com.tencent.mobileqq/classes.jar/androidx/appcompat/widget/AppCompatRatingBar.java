@@ -5,25 +5,30 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RatingBar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.R.attr;
 
 public class AppCompatRatingBar
   extends RatingBar
 {
-  private final AppCompatProgressBarHelper mAppCompatProgressBarHelper = new AppCompatProgressBarHelper(this);
+  private final AppCompatProgressBarHelper mAppCompatProgressBarHelper;
   
-  public AppCompatRatingBar(Context paramContext)
+  public AppCompatRatingBar(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatRatingBar(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatRatingBar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035058);
+    this(paramContext, paramAttributeSet, R.attr.ratingBarStyle);
   }
   
-  public AppCompatRatingBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatRatingBar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mAppCompatProgressBarHelper = new AppCompatProgressBarHelper(this);
     this.mAppCompatProgressBarHelper.loadFromAttributes(paramAttributeSet, paramInt);
   }
   

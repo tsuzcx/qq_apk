@@ -15,21 +15,21 @@ class LocationPickFragment$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).setOnDismissListener(new LocationPickFragment.1.1(this));
-    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getIntent();
+    DialogUtil.a(this.a).setOnDismissListener(new LocationPickFragment.1.1(this));
+    paramArrayOfString = this.a.getIntent();
     paramArrayOfInt = paramArrayOfString.getStringExtra("uin");
     paramInt = paramArrayOfString.getIntExtra("uintype", -1);
-    LocationShareRoomManager.a().a(paramInt, paramArrayOfInt, LocationHandler.a().a(), 1);
+    LocationShareRoomManager.a().a(paramInt, paramArrayOfInt, LocationHandler.a().b(), 1);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+    LocationPickFragment.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.1
  * JD-Core Version:    0.7.0.1
  */

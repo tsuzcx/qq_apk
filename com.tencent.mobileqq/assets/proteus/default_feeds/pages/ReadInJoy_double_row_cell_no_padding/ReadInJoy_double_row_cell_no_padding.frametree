@@ -60,7 +60,7 @@
                                 "display": "flex",
                                 "box-sizing": "border-box",
                                 "position": "relative",
-                                "height": "224rpx",
+                                "height": "272rpx",
                                 "color": "rgb(229, 229, 229)"
                             },
                             "children": [
@@ -486,6 +486,7 @@
                                                 "padding-right": "8rpx",
                                                 "margin-right": "12rpx",
                                                 "height": "32rpx",
+                                                "max-width": "220rpx",
                                                 "flex-shrink": "0",
                                                 "align-items": "center",
                                                 "background-color": "{{left_mark_backgroundcolor}}"
@@ -521,7 +522,8 @@
                                             "styles": {
                                                 "height": "24rpx",
                                                 "width": "24rpx",
-                                                "margin-right": "4rpx"
+                                                "margin-right": "4rpx",
+                                                "flex-shrink": "0"
                                             },
                                             "children": []
                                         },
@@ -538,6 +540,7 @@
                                                 "overflow": "hidden",
                                                 "font-size": "22rpx",
                                                 "margin-right": "4rpx",
+                                                "min-width": "22rpx",
                                                 "color": "rgb(176, 179, 191)",
                                                 "-webkit-line-clamp": "1"
                                             },
@@ -734,6 +737,7 @@
                                                 "padding-right": "8rpx",
                                                 "margin-right": "12rpx",
                                                 "height": "32rpx",
+                                                "max-width": "220rpx",
                                                 "flex-shrink": "0",
                                                 "align-items": "center",
                                                 "background-color": "{{right_mark_backgroundcolor}}"
@@ -769,7 +773,8 @@
                                             "styles": {
                                                 "height": "24rpx",
                                                 "width": "24rpx",
-                                                "margin-right": "4rpx"
+                                                "margin-right": "4rpx",
+                                                "flex-shrink": "0"
                                             },
                                             "children": []
                                         },
@@ -786,6 +791,7 @@
                                                 "overflow": "hidden",
                                                 "font-size": "22rpx",
                                                 "margin-right": "4rpx",
+                                                "min-width": "22rpx",
                                                 "color": "rgb(176, 179, 191)",
                                                 "-webkit-line-clamp": "1"
                                             },

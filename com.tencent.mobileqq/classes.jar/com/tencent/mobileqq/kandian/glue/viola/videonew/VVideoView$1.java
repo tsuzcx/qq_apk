@@ -13,7 +13,7 @@ class VVideoView$1
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((VVideoView.a(this.a)) && (this.a.a() != null) && (paramView != null) && (paramView.getWidth() >= paramView.getHeight()))
+    if ((VVideoView.a(this.a)) && (this.a.getComponent() != null) && (paramView != null) && (paramView.getWidth() >= paramView.getHeight()))
     {
       JSONObject localJSONObject = new JSONObject();
       try
@@ -56,7 +56,7 @@ class VVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VVideoView.1
  * JD-Core Version:    0.7.0.1
  */

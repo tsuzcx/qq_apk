@@ -3,6 +3,7 @@ package com.tencent.mobileqq.transfile;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.aelight.camera.qqstory.api.IPeakIpcController;
 import com.tencent.common.app.AppInterface;
@@ -13,7 +14,6 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForRichText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.data.SigInfo;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 import com.tencent.mobileqq.highway.transaction.Transaction;
@@ -23,7 +23,6 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
@@ -47,7 +46,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
@@ -62,14 +60,14 @@ public class GroupPicUploadProcessor
   extends BasePicUploadProcessor
 {
   public static final String TAG = "GroupPicUploadProcessor";
-  private boolean isStoryPhoto = false;
+  protected boolean isStoryPhoto = false;
   BaseTransFileController mController;
   long mFileID;
   boolean mHasVirtualStarted = false;
   boolean mIsGroup = true;
   MediaMessageObserver messageObserver = new GroupPicUploadProcessor.5(this);
-  private MessageForPic picMsg;
-  private long startTime = -1L;
+  protected MessageForPic picMsg;
+  protected long startTime = -1L;
   
   public GroupPicUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
@@ -135,108 +133,41 @@ public class GroupPicUploadProcessor
     Object localObject1;
     try
     {
-      Object localObject3 = new im_msg_body.CustomFace();
-      ((im_msg_body.CustomFace)localObject3).uint32_file_id.set((int)this.mFileID);
-      localObject1 = this.mIpList;
-      int i = 0;
-      if ((localObject1 != null) && (this.mIpList.size() > 0))
-      {
-        localObject1 = (ServerAddr)this.mIpList.get(0);
-        ((im_msg_body.CustomFace)localObject3).uint32_server_ip.set(ipToLong(((ServerAddr)localObject1).mIp));
-        ((im_msg_body.CustomFace)localObject3).uint32_server_port.set(((ServerAddr)localObject1).port);
-      }
-      changeRichText();
-      ((im_msg_body.CustomFace)localObject3).uint32_file_type.set(Integer.valueOf(66).intValue());
-      ((im_msg_body.CustomFace)localObject3).uint32_useful.set(1);
-      SigInfo.fillCustomFaceSessionKey(this.app, (im_msg_body.CustomFace)localObject3);
-      ((im_msg_body.CustomFace)localObject3).bytes_md5.set(ByteStringMicro.copyFrom(this.mLocalMd5));
-      ((im_msg_body.CustomFace)localObject3).str_file_path.set(this.mFileName);
-      localObject1 = ((im_msg_body.CustomFace)localObject3).uint32_origin;
-      if (this.mIsRawPic) {
-        i = 1;
-      }
-      ((PBUInt32Field)localObject1).set(i);
       Object localObject4 = this.mUiRequest.mRec;
-      Object localObject5;
-      if (MessageForPic.class.isInstance(localObject4))
-      {
-        localObject5 = (MessageForPic)localObject4;
-        ((im_msg_body.CustomFace)localObject3).uint32_show_len.set(((MessageForPic)localObject5).mShowLength);
-        ((im_msg_body.CustomFace)localObject3).uint32_download_len.set(((MessageForPic)localObject5).mDownloadLength);
-        ((im_msg_body.CustomFace)localObject3).image_type.set(((MessageForPic)localObject5).imageType);
-        localObject1 = ((MessageForPic)localObject5).picExtraData;
-        if (localObject1 != null)
-        {
-          localObject2 = ((MessageForPic)localObject5).picExtraData.getCustomFaceResvAttr();
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("imageBizType: ");
-            ((StringBuilder)localObject1).append(((MessageForPic)localObject5).picExtraData.imageBizType);
-            QLog.d("picExtra", 4, ((StringBuilder)localObject1).toString());
-            localObject1 = localObject2;
-          }
-        }
-        else
-        {
-          localObject2 = new CustomFaceExtPb.ResvAttr();
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("picExtra", 4, "imageBizType: 0");
-            localObject1 = localObject2;
-          }
-        }
-        i = getPicSourceReport((MessageForPic)localObject5, this.mUiRequest.mPicSendSource);
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("source: ");
-          ((StringBuilder)localObject2).append(i);
-          QLog.d("picExtra", 4, ((StringBuilder)localObject2).toString());
-        }
-        ((CustomFaceExtPb.ResvAttr)localObject1).uint32_source.set(i);
-        ((im_msg_body.CustomFace)localObject3).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((CustomFaceExtPb.ResvAttr)((CustomFaceExtPb.ResvAttr)localObject1).get()).toByteArray()), true);
-      }
-      ((im_msg_body.CustomFace)localObject3).biz_type.set(getReportBizType());
-      ((im_msg_body.CustomFace)localObject3).uint32_width.set(this.mWidth);
-      ((im_msg_body.CustomFace)localObject3).uint32_height.set(this.mHeight);
-      ((im_msg_body.CustomFace)localObject3).uint32_size.set((int)this.mFileSize);
-      ((im_msg_body.CustomFace)localObject3).uint32_source.set(getReportSource());
+      localObject1 = getCustomFace((MessageRecord)localObject4);
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("uiBusiType:");
-        ((StringBuilder)localObject1).append(this.mUiRequest.mBusiType);
-        ((StringBuilder)localObject1).append(" protoBusiType:");
-        ((StringBuilder)localObject1).append(((im_msg_body.CustomFace)localObject3).biz_type.get());
-        logRichMediaEvent("busiTypeStat", ((StringBuilder)localObject1).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("uiBusiType:");
+        ((StringBuilder)localObject2).append(this.mUiRequest.mBusiType);
+        ((StringBuilder)localObject2).append(" protoBusiType:");
+        ((StringBuilder)localObject2).append(((im_msg_body.CustomFace)localObject1).biz_type.get());
+        logRichMediaEvent("busiTypeStat", ((StringBuilder)localObject2).toString());
       }
       Object localObject2 = new im_msg_body.RichText();
-      localObject1 = new im_msg_body.Elem();
+      Object localObject3 = new im_msg_body.Elem();
       if (FlashPicHelper.a((MessageRecord)localObject4))
       {
         localObject4 = new im_msg_body.CommonElem();
         ((im_msg_body.CommonElem)localObject4).uint32_service_type.set(3);
-        localObject5 = new hummer_commelem.MsgElemInfo_servtype3();
-        ((hummer_commelem.MsgElemInfo_servtype3)localObject5).flash_troop_pic.set((MessageMicro)localObject3);
-        ((im_msg_body.CommonElem)localObject4).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype3)localObject5).toByteArray()));
-        ((im_msg_body.Elem)localObject1).common_elem.set((MessageMicro)localObject4);
-        ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
+        hummer_commelem.MsgElemInfo_servtype3 localMsgElemInfo_servtype3 = new hummer_commelem.MsgElemInfo_servtype3();
+        localMsgElemInfo_servtype3.flash_troop_pic.set((MessageMicro)localObject1);
+        ((im_msg_body.CommonElem)localObject4).bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype3.toByteArray()));
+        ((im_msg_body.Elem)localObject3).common_elem.set((MessageMicro)localObject4);
+        ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject3);
         if (QLog.isColorLevel()) {
           QLog.d("flash", 2, "GroupPicUploadProcessor constructPicRichText send flash");
         }
         localObject1 = new im_msg_body.Text();
-        ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131701512)));
+        ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131899535)));
         localObject3 = new im_msg_body.Elem();
         ((im_msg_body.Elem)localObject3).text.set((MessageMicro)localObject1);
         ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject3);
       }
       else
       {
-        ((im_msg_body.Elem)localObject1).custom_face.set((MessageMicro)localObject3);
-        ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
+        ((im_msg_body.Elem)localObject3).custom_face.set((MessageMicro)localObject1);
+        ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject3);
       }
       localObject3 = ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       localObject1 = localObject2;
@@ -255,6 +186,46 @@ public class GroupPicUploadProcessor
       localException.printStackTrace();
     }
     return localObject1;
+  }
+  
+  @NonNull
+  protected CustomFaceExtPb.ResvAttr constructResvAttr(MessageForPic paramMessageForPic)
+  {
+    CustomFaceExtPb.ResvAttr localResvAttr;
+    Object localObject;
+    if (paramMessageForPic.picExtraData != null)
+    {
+      localResvAttr = paramMessageForPic.picExtraData.getCustomFaceResvAttr();
+      localObject = localResvAttr;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("imageBizType: ");
+        ((StringBuilder)localObject).append(paramMessageForPic.picExtraData.imageBizType);
+        QLog.d("picExtra", 4, ((StringBuilder)localObject).toString());
+        localObject = localResvAttr;
+      }
+    }
+    else
+    {
+      localResvAttr = new CustomFaceExtPb.ResvAttr();
+      localObject = localResvAttr;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("picExtra", 4, "imageBizType: 0");
+        localObject = localResvAttr;
+      }
+    }
+    int i = getPicSourceReport(paramMessageForPic, this.mUiRequest.mPicSendSource);
+    if (QLog.isColorLevel())
+    {
+      paramMessageForPic = new StringBuilder();
+      paramMessageForPic.append("source: ");
+      paramMessageForPic.append(i);
+      QLog.d("picExtra", 4, paramMessageForPic.toString());
+    }
+    ((CustomFaceExtPb.ResvAttr)localObject).uint32_source.set(i);
+    return localObject;
   }
   
   protected int doCheckParam()
@@ -460,6 +431,24 @@ public class GroupPicUploadProcessor
     sendRequest();
   }
   
+  protected void fillMessageRecord(im_msg_body.RichText paramRichText, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForPic))
+    {
+      MessageForPic localMessageForPic = (MessageForPic)paramMessageRecord;
+      localMessageForPic.richText = paramRichText;
+      localMessageForPic.size = this.mFileSize;
+    }
+    if (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing(paramMessageRecord)) {
+      ((MessageForRichText)paramMessageRecord).richText = paramRichText;
+    }
+  }
+  
+  protected im_msg_body.CustomFace getCustomFace(MessageRecord paramMessageRecord)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
   protected String getReportTAG()
   {
     if (this.mIsGroup)
@@ -473,6 +462,20 @@ public class GroupPicUploadProcessor
       return "actDiscussPicUploadV2";
     }
     return "actDiscussPicUpload";
+  }
+  
+  protected UpCallBack.SendResult getSendResult()
+  {
+    UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+    localSendResult.e = this.mFileSize;
+    localSendResult.g = this.mMd5Str;
+    localSendResult.f = this.mFileName;
+    localSendResult.d = this.mUiRequest.mLocalPath;
+    localSendResult.h = this.mFileID;
+    if (this.mUiRequest.isShareImageByServer) {
+      localSendResult.l = getImageInfo();
+    }
+    return localSendResult;
   }
   
   void inter_retry()
@@ -514,9 +517,9 @@ public class GroupPicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = -1;
-      localSendResult.jdField_b_of_type_Int = this.mProcessorReport.errCode;
-      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      localSendResult.a = -1;
+      localSendResult.b = this.mProcessorReport.errCode;
+      localSendResult.c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -598,21 +601,9 @@ public class GroupPicUploadProcessor
   void onSuccess()
   {
     super.onSuccess();
-    if (this.mUiRequest.mUpCallBack != null)
-    {
-      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Long = this.mFileSize;
-      localSendResult.d = this.mMd5Str;
-      localSendResult.c = this.mFileName;
-      localSendResult.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
-      localSendResult.jdField_b_of_type_Long = this.mFileID;
-      if (this.mUiRequest.isShareImageByServer) {
-        localSendResult.jdField_a_of_type_JavaLangObject = getImageInfo();
-      }
-      this.mUiRequest.mUpCallBack.b(localSendResult);
-    }
-    else
-    {
+    if (this.mUiRequest.mUpCallBack != null) {
+      this.mUiRequest.mUpCallBack.b(getSendResult());
+    } else {
       updateMessageDataBaseContent(true);
     }
     sendMessageToUpdate(1003);
@@ -766,25 +757,12 @@ public class GroupPicUploadProcessor
       } else {
         localObject1 = ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       }
-      Object localObject3;
-      if (localObject1 != null)
+      if ((localObject1 != null) && (((localObject1 instanceof MessageForPic)) || (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing((MessageRecord)localObject1))))
       {
-        boolean bool = localObject1 instanceof MessageForPic;
-        if ((bool) || (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing((MessageRecord)localObject1)))
-        {
-          if (bool)
-          {
-            localObject3 = (MessageForPic)localObject1;
-            ((MessageForPic)localObject3).richText = ((im_msg_body.RichText)localObject2);
-            ((MessageForPic)localObject3).size = this.mFileSize;
-          }
-          if (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing((MessageRecord)localObject1)) {
-            ((MessageForRichText)localObject1).richText = ((im_msg_body.RichText)localObject2);
-          }
-          addInfoToMsg();
-          ((IOrderMediaMsgService)this.app.getRuntimeService(IOrderMediaMsgService.class, "")).sendOrderMsg((MessageRecord)localObject1, this.messageObserver, this);
-          return;
-        }
+        fillMessageRecord((im_msg_body.RichText)localObject2, (MessageRecord)localObject1);
+        addInfoToMsg();
+        ((IOrderMediaMsgService)this.app.getRuntimeService(IOrderMediaMsgService.class, "")).sendOrderMsg((MessageRecord)localObject1, this.messageObserver, this);
+        return;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("Mr_");
@@ -794,10 +772,10 @@ public class GroupPicUploadProcessor
       }
       else
       {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(((MessageRecord)localObject1).msgtype);
-        localObject1 = ((StringBuilder)localObject3).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(((MessageRecord)localObject1).msgtype);
+        localObject1 = localStringBuilder.toString();
       }
       ((StringBuilder)localObject2).append((String)localObject1);
       setError(9368, "msgtypeError", ((StringBuilder)localObject2).toString(), this.mProcessorReport.mStepMsg);
@@ -973,7 +951,7 @@ public class GroupPicUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

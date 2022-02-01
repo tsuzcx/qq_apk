@@ -3,15 +3,15 @@ package com.tencent.mobileqq.emosm.control;
 public class EmoCaptureAsyncStepFactory$CaptureEmoParallGroup
   extends EmoParallGroup
 {
-  public EmoAsyncStep a()
+  public EmoAsyncStep c()
   {
-    if (this.e < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+    if (this.m < this.n.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep[this.e] = EmoCaptureAsyncStepFactory.a(this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep[this.e].jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      EmoAsyncStep[] arrayOfEmoAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep;
-      int i = this.e;
-      this.e = (i + 1);
+      this.k[this.m] = EmoCaptureAsyncStepFactory.a(this.f, this.n[this.m]);
+      this.k[this.m].j = this.j;
+      EmoAsyncStep[] arrayOfEmoAsyncStep = this.k;
+      int i = this.m;
+      this.m = (i + 1);
       return arrayOfEmoAsyncStep[i];
     }
     return null;
@@ -19,7 +19,7 @@ public class EmoCaptureAsyncStepFactory$CaptureEmoParallGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoCaptureAsyncStepFactory.CaptureEmoParallGroup
  * JD-Core Version:    0.7.0.1
  */

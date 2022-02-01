@@ -17,37 +17,37 @@ class GdtInterstitialFragmentForJS$4
   
   public void onClick(View paramView)
   {
-    GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS).a = GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS.getBaseActivity());
-    GdtAdLoader localGdtAdLoader = GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS);
+    GdtInterstitialFragmentForJS.d(this.b).e = GdtInterstitialFragmentForJS.a(this.b.getBaseActivity());
+    GdtAdLoader localGdtAdLoader = GdtInterstitialFragmentForJS.a(this.b);
     String str = "ad is not loaded";
     if (localGdtAdLoader == null)
     {
-      Toast.makeText(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS.getBaseActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      Toast.makeText(this.b.getBaseActivity().getApplicationContext(), "ad is not loaded", 0).show();
     }
-    else if (GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS) == null)
+    else if (GdtInterstitialFragmentForJS.e(this.b) == null)
     {
       str = "ad is loading";
     }
-    else if (GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS).a() != 0)
+    else if (GdtInterstitialFragmentForJS.e(this.b).a() != 0)
     {
-      str = GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS).a();
+      str = GdtInterstitialFragmentForJS.e(this.b).b();
     }
     else
     {
-      GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS).a(this.jdField_a_of_type_OrgJsonJSONObject);
-      if (GdtInterstitialFragmentForJS.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS).a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS.getBaseActivity())) {
+      GdtInterstitialFragmentForJS.f(this.b).a(this.a);
+      if (GdtInterstitialFragmentForJS.f(this.b).a(this.b.getBaseActivity())) {
         str = "正在打开插屏";
       } else {
         str = "打开插屏错误";
       }
     }
-    Toast.makeText(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialFragmentForJS.getBaseActivity().getApplicationContext(), str, 0).show();
+    Toast.makeText(this.b.getBaseActivity().getApplicationContext(), str, 0).show();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.4
  * JD-Core Version:    0.7.0.1
  */

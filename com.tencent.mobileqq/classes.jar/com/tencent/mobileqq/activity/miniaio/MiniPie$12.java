@@ -9,13 +9,13 @@ class MiniPie$12
   
   public void run()
   {
-    this.this$0.s();
-    this.this$0.a.requestFocus();
+    this.this$0.u();
+    this.this$0.t.requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.12
  * JD-Core Version:    0.7.0.1
  */

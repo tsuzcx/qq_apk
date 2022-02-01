@@ -65,7 +65,7 @@ public class GameRoomUtilsDelegateImpl
     ((EntityManager)localObject2).update((Entity)localObject1);
     ((EntityManager)localObject2).close();
     localObject2 = (HotChatManager)paramObject.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    List localList = ((HotChatManager)localObject2).a();
+    List localList = ((HotChatManager)localObject2).c();
     if ((localList != null) && (!localList.contains(localObject1))) {
       localList.add(localObject1);
     }
@@ -86,7 +86,7 @@ public class GameRoomUtilsDelegateImpl
     paramString1.addFlags(268435456);
     paramContext.startActivity(paramString1);
     SharedPreUtils.a(paramContext, paramObject.getCurrentAccountUin(), false, System.currentTimeMillis());
-    SharedPreUtils.f(paramContext, paramObject.getCurrentAccountUin(), true);
+    SharedPreUtils.e(paramContext, paramObject.getCurrentAccountUin(), true);
   }
   
   public QQCustomDialog showConfirmDialog(Context paramContext, String paramString1, String paramString2)
@@ -96,7 +96,7 @@ public class GameRoomUtilsDelegateImpl
       paramContext = DialogUtil.a(paramContext, 230);
       paramContext.setTitle(paramString1);
       paramContext.setMessage(paramString2);
-      paramContext.setPositiveButton(2131694583, new GameRoomUtilsDelegateImpl.3(this));
+      paramContext.setPositiveButton(2131892267, new GameRoomUtilsDelegateImpl.3(this));
       paramContext.show();
       return paramContext;
     }
@@ -115,8 +115,8 @@ public class GameRoomUtilsDelegateImpl
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
-    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131705181), new GameRoomUtilsDelegateImpl.4(this));
-    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131705166), new GameRoomUtilsDelegateImpl.5(this, paramActivity));
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131901576), new GameRoomUtilsDelegateImpl.4(this));
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131903056), new GameRoomUtilsDelegateImpl.5(this, paramActivity));
     if (!paramActivity.isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -125,7 +125,7 @@ public class GameRoomUtilsDelegateImpl
   
   public final void showErrorCodeDialog(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
-    QQToast.a(paramContext, 1, HardCodeUtil.a(2131705222), 1).a();
+    QQToast.makeText(paramContext, 1, HardCodeUtil.a(2131903108), 1).show();
   }
   
   public QQCustomDialog showMyInviteDialog(Activity paramActivity, String paramString, int paramInt)
@@ -135,7 +135,7 @@ public class GameRoomUtilsDelegateImpl
   
   public QQCustomDialog showMyInviteDialog(Activity paramActivity, String paramString, int paramInt, long paramLong)
   {
-    paramString = DialogUtil.a(paramActivity, 230, null, HardCodeUtil.a(2131705241), HardCodeUtil.a(2131705247), HardCodeUtil.a(2131705172), new GameRoomUtilsDelegateImpl.6(this, paramActivity, paramString, paramInt, paramLong), new GameRoomUtilsDelegateImpl.7(this));
+    paramString = DialogUtil.a(paramActivity, 230, null, HardCodeUtil.a(2131903126), HardCodeUtil.a(2131901576), HardCodeUtil.a(2131903062), new GameRoomUtilsDelegateImpl.6(this, paramActivity, paramString, paramInt, paramLong), new GameRoomUtilsDelegateImpl.7(this));
     if (!paramActivity.isFinishing()) {
       paramString.show();
     }
@@ -149,8 +149,8 @@ public class GameRoomUtilsDelegateImpl
       QQCustomDialog localQQCustomDialog = DialogUtil.a(paramContext, 230);
       localQQCustomDialog.setTitle(paramString1);
       localQQCustomDialog.setMessage(paramString2);
-      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131705185), new GameRoomUtilsDelegateImpl.1(this));
-      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131705173), new GameRoomUtilsDelegateImpl.2(this, paramContext, paramString3, paramInt));
+      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131901576), new GameRoomUtilsDelegateImpl.1(this));
+      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131903063), new GameRoomUtilsDelegateImpl.2(this, paramContext, paramString3, paramInt));
       localQQCustomDialog.show();
       return localQQCustomDialog;
     }
@@ -163,7 +163,7 @@ public class GameRoomUtilsDelegateImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.impl.GameRoomUtilsDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

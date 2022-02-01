@@ -23,7 +23,7 @@ class StatModule$1
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(localf.A());
     ((StringBuilder)localObject2).append("m");
-    localObject1 = ((BeaconEvent.Builder)localObject1).withParams("A15", ((StringBuilder)localObject2).toString()).withParams("A16", localf.i()).withParams("A17", localf.B()).withParams("A18", "").withParams("A20", localf.J()).withParams("A22", localf.L());
+    localObject1 = ((BeaconEvent.Builder)localObject1).withParams("A15", ((StringBuilder)localObject2).toString()).withParams("A16", localf.i()).withParams("A17", localf.B()).withParams("A18", "").withParams("A20", localf.I()).withParams("A22", localf.K());
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(localf.E());
     ((StringBuilder)localObject2).append("m");
@@ -41,7 +41,7 @@ class StatModule$1
     ((StringBuilder)localObject2).append("");
     ((StringBuilder)localObject2).append(localf.x());
     BeaconEvent.Builder localBuilder = ((BeaconEvent.Builder)localObject1).withParams("A54", ((StringBuilder)localObject2).toString()).withParams("A55", localf.g());
-    boolean bool = localf.N();
+    boolean bool = localf.M();
     localObject2 = "Y";
     if (bool) {
       localObject1 = "Y";
@@ -58,7 +58,7 @@ class StatModule$1
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(localf.l());
     ((StringBuilder)localObject2).append("m");
-    localObject1 = ((BeaconEvent.Builder)localObject1).withParams("A59", ((StringBuilder)localObject2).toString()).withParams("A69", localf.K()).withParams("A82", localf.C()).withType(EventType.REALTIME).withCode("rqd_model").build();
+    localObject1 = ((BeaconEvent.Builder)localObject1).withParams("A59", ((StringBuilder)localObject2).toString()).withParams("A69", localf.J()).withParams("A82", localf.C()).withType(EventType.REALTIME).withCode("rqd_model").build();
     BeaconReport.getInstance().report((BeaconEvent)localObject1);
   }
 }

@@ -3245,7 +3245,7 @@ public class AudioDeviceInterface
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 2, "uninitTRAEAudioManager , stopService");
       }
-      TraeAudioManager.a().a();
+      TraeAudioManager.a().b();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -3354,7 +3354,7 @@ public class AudioDeviceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.AudioDeviceInterface
  * JD-Core Version:    0.7.0.1
  */

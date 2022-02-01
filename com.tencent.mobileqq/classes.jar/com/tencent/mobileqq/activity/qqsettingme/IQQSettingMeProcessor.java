@@ -8,10 +8,6 @@ import mqq.app.AppRuntime;
 
 public abstract interface IQQSettingMeProcessor
 {
-  public abstract String a();
-  
-  public abstract void a();
-  
   public abstract void a(QQSettingMe paramQQSettingMe);
   
   public abstract void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean);
@@ -24,7 +20,7 @@ public abstract interface IQQSettingMeProcessor
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void b();
+  public abstract String b();
   
   public abstract void c();
   
@@ -40,11 +36,15 @@ public abstract interface IQQSettingMeProcessor
   
   public abstract void i();
   
+  public abstract void j();
+  
+  public abstract void k();
+  
   public abstract void onClick(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.IQQSettingMeProcessor
  * JD-Core Version:    0.7.0.1
  */

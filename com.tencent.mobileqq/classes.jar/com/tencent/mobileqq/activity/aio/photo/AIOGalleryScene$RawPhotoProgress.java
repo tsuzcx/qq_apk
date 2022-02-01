@@ -10,9 +10,9 @@ import com.tencent.widget.Gallery;
 final class AIOGalleryScene$RawPhotoProgress
   implements URLDrawable.URLDrawableListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  long a;
+  int b;
+  URLDrawable c;
   
   AIOGalleryScene$RawPhotoProgress(AIOGalleryScene paramAIOGalleryScene) {}
   
@@ -25,8 +25,8 @@ final class AIOGalleryScene$RawPhotoProgress
       localStringBuilder.append(paramURLDrawable.getURL());
       QLog.d("AIOGalleryScene", 2, localStringBuilder.toString());
     }
-    this.a.c(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
+    this.d.c(false);
+    this.d.J = null;
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
@@ -38,10 +38,10 @@ final class AIOGalleryScene$RawPhotoProgress
       paramThrowable.append(paramURLDrawable.getURL());
       QLog.d("AIOGalleryScene", 2, paramThrowable.toString());
     }
-    QQToast.a(AIOGalleryScene.b(this.a), AIOGalleryScene.c(this.a).getString(2131694998), 0).a();
-    this.a.d(true);
-    this.a.c(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
+    QQToast.makeText(AIOGalleryScene.e(this.d), AIOGalleryScene.f(this.d).getString(2131892726), 0).show();
+    this.d.d(true);
+    this.d.c(false);
+    this.d.J = null;
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -55,18 +55,18 @@ final class AIOGalleryScene$RawPhotoProgress
       localStringBuilder.append(paramURLDrawable.getURL());
       QLog.d("AIOGalleryScene", 2, localStringBuilder.toString());
     }
-    this.a.d(false);
-    this.a.c(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b.b = paramURLDrawable.getExifOrientation();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, AIOGalleryScene.c(this.a).getSelectedItemPosition());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
-    AIOGalleryScene.d(this.a).reset();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
+    this.d.d(false);
+    this.d.c(false);
+    this.d.c.b.c = paramURLDrawable.getExifOrientation();
+    this.d.a.a(paramURLDrawable, AIOGalleryScene.g(this.d).getSelectedItemPosition());
+    this.d.a.notifyDataSetChanged();
+    AIOGalleryScene.h(this.d).reset();
+    this.d.J = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.RawPhotoProgress
  * JD-Core Version:    0.7.0.1
  */

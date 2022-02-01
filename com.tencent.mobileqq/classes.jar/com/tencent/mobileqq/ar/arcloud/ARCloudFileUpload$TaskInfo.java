@@ -5,14 +5,14 @@ import com.tencent.mobileqq.highway.transaction.Transaction;
 
 class ARCloudFileUpload$TaskInfo
 {
-  ARCloudFileUpload.ARCloudFileUploadCallback jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = null;
-  ARCloudReqInfo jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo;
-  Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-  String jdField_a_of_type_JavaLangString = "";
+  String a = "";
+  ARCloudReqInfo b;
+  Transaction c = null;
+  ARCloudFileUpload.ARCloudFileUploadCallback d = null;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.TaskInfo
  * JD-Core Version:    0.7.0.1
  */

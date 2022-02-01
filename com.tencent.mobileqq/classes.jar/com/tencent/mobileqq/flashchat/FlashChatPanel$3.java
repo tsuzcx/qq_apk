@@ -23,15 +23,15 @@ class FlashChatPanel$3
   {
     FlashChatTextEffectView localFlashChatTextEffectView;
     if (paramInt == 0) {
-      localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[0];
+      localFlashChatTextEffectView = this.a.p[0];
     } else if (paramInt == 1) {
-      localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[1];
+      localFlashChatTextEffectView = this.a.p[1];
     } else {
       localFlashChatTextEffectView = null;
     }
     if (localFlashChatTextEffectView != null)
     {
-      ViewParent localViewParent = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getParent();
+      ViewParent localViewParent = this.a.a.getParent();
       if (localViewParent != null) {
         ((ViewGroup)localViewParent).removeView(localFlashChatTextEffectView);
       }
@@ -48,7 +48,7 @@ class FlashChatPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatPanel.3
  * JD-Core Version:    0.7.0.1
  */

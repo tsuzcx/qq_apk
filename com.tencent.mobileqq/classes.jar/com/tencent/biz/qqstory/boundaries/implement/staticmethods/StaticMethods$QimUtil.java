@@ -10,7 +10,7 @@ public class StaticMethods$QimUtil
 {
   public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    paramQQUserUIItem = PlayModeUtils.a();
+    paramQQUserUIItem = PlayModeUtils.b();
     MobileQQ localMobileQQ = paramQQUserUIItem.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("public_account_qq_mail_");
@@ -20,7 +20,7 @@ public class StaticMethods$QimUtil
   
   public static String b(QQUserUIItem paramQQUserUIItem)
   {
-    paramQQUserUIItem = PlayModeUtils.a();
+    paramQQUserUIItem = PlayModeUtils.b();
     MobileQQ localMobileQQ = paramQQUserUIItem.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("public_account_qq_mail_");
@@ -30,7 +30,7 @@ public class StaticMethods$QimUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.staticmethods.StaticMethods.QimUtil
  * JD-Core Version:    0.7.0.1
  */

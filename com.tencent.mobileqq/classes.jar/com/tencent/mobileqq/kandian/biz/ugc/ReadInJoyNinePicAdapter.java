@@ -23,8 +23,8 @@ public class ReadInJoyNinePicAdapter
   extends ReadInJoyNinePicDeliverDynamicGridView.BaseDynamicGridAdapter
   implements View.OnTouchListener
 {
-  private ReadInJoyNinePicAdapter.OnDeleteClickListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyNinePicAdapter$OnDeleteClickListener;
-  private ReadInJoyNinePicAdapter.OnPicTouchListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyNinePicAdapter$OnPicTouchListener;
+  private ReadInJoyNinePicAdapter.OnDeleteClickListener d;
+  private ReadInJoyNinePicAdapter.OnPicTouchListener e;
   
   ReadInJoyNinePicAdapter(Context paramContext, int paramInt)
   {
@@ -39,12 +39,12 @@ public class ReadInJoyNinePicAdapter
       if (localFile.exists())
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mPlayGifImage = BaseImageUtil.b(paramString);
+        localURLDrawableOptions.mPlayGifImage = BaseImageUtil.c(paramString);
         localURLDrawableOptions.mLoadingDrawable = ReadInJoyDeliverUGCActivity.a;
         localURLDrawableOptions.mFailedDrawable = ReadInJoyDeliverUGCActivity.a;
         localURLDrawableOptions.mUseAutoScaleParams = false;
-        localURLDrawableOptions.mRequestWidth = ViewUtils.b(114.0F);
-        localURLDrawableOptions.mRequestHeight = ViewUtils.b(114.0F);
+        localURLDrawableOptions.mRequestWidth = ViewUtils.dpToPx(114.0F);
+        localURLDrawableOptions.mRequestHeight = ViewUtils.dpToPx(114.0F);
         return URLDrawable.getDrawable(localFile, localURLDrawableOptions);
       }
     }
@@ -53,32 +53,32 @@ public class ReadInJoyNinePicAdapter
   
   void a(ReadInJoyNinePicAdapter.OnDeleteClickListener paramOnDeleteClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyNinePicAdapter$OnDeleteClickListener = paramOnDeleteClickListener;
+    this.d = paramOnDeleteClickListener;
   }
   
   void a(ReadInJoyNinePicAdapter.OnPicTouchListener paramOnPicTouchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyNinePicAdapter$OnPicTouchListener = paramOnPicTouchListener;
+    this.e = paramOnPicTouchListener;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560303, null);
+      paramView = LayoutInflater.from(this.a).inflate(2131626349, null);
       paramViewGroup = new ReadInJoyNinePicAdapter.NinePicViewHolder(this, null);
-      paramViewGroup.a = ((ImageView)paramView.findViewById(2131380118));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131380115));
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131449032));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131449029));
       paramView.setTag(paramViewGroup);
     }
     else
     {
       paramViewGroup = (ReadInJoyNinePicAdapter.NinePicViewHolder)paramView.getTag();
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject = this.b.get(paramInt);
     if ((localObject instanceof HotPicData))
     {
-      localObject = ReadInJoyDeliverUGCActivity.a((HotPicData)localObject);
+      localObject = ReadInJoyDeliverUGCActivity.b((HotPicData)localObject);
       if (localObject != null)
       {
         paramViewGroup.b.setImageDrawable((Drawable)localObject);
@@ -88,7 +88,7 @@ public class ReadInJoyNinePicAdapter
     }
     else if ("".equals(localObject))
     {
-      paramViewGroup.b.setImageResource(2130841790);
+      paramViewGroup.b.setImageResource(2130842707);
       paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER);
       paramViewGroup.a.setVisibility(8);
     }
@@ -111,7 +111,7 @@ public class ReadInJoyNinePicAdapter
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyNinePicAdapter.OnPicTouchListener localOnPicTouchListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyNinePicAdapter$OnPicTouchListener;
+    ReadInJoyNinePicAdapter.OnPicTouchListener localOnPicTouchListener = this.e;
     if (localOnPicTouchListener != null) {
       return localOnPicTouchListener.a(paramView, paramMotionEvent);
     }
@@ -120,7 +120,7 @@ public class ReadInJoyNinePicAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyNinePicAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,16 @@ class AnswerProteusItem$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    paramViewBase = this.a.k();
+    String str = paramViewBase.mSocialFeedInfo.x.i;
+    RIJJumpUtils.a(this.b.getContext(), str, null);
     RIJFrameworkReportManager.b(paramViewBase, (int)paramViewBase.mChannelID);
-    ReadinjoyReportUtils.a(paramViewBase);
+    ReadinjoyReportUtils.b(paramViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.AnswerProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

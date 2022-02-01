@@ -46,7 +46,7 @@ class QRLoginAuthActivity$1
     }
     paramArrayOfByte1.setData(paramWUserSigInfo);
     paramArrayOfByte1.what = 2;
-    this.a.a.sendMessage(paramArrayOfByte1);
+    this.a.z.sendMessage(paramArrayOfByte1);
   }
   
   public void onException(String paramString, int paramInt)
@@ -60,7 +60,7 @@ class QRLoginAuthActivity$1
     }
     paramString = new Message();
     paramString.what = 3;
-    this.a.a.sendMessage(paramString);
+    this.a.z.sendMessage(paramString);
   }
   
   public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
@@ -110,7 +110,7 @@ class QRLoginAuthActivity$1
     paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
     paramArrayList.setData(paramErrMsg);
     paramArrayList.what = 1;
-    this.a.a.sendMessage(paramArrayList);
+    this.a.z.sendMessage(paramArrayList);
   }
 }
 

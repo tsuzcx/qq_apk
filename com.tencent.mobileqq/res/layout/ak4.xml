@@ -3,9 +3,9 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/b9t" android:layout_width="250.0dip" android:layout_height="90.0dip" android:layout_centerInParent="true">
         <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true">
-            <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/j1c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TestTestTest" />
+            <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/black" android:id="@id/j1c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TestTestTest" />
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/j1b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TestTestTestTest~" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:id="@id/j1b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TestTestTestTest~" />
                 <ImageView android:id="@id/j1a" android:layout_width="wrap_content" android:layout_height="14.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/e6b" />
             </LinearLayout>
         </LinearLayout>

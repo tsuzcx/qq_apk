@@ -7,38 +7,14 @@ import com.tencent.av.business.manager.BusinessManager;
 public class EffectSupportManager
   extends BusinessManager
 {
-  private SupportDefault jdField_a_of_type_ComTencentAvBusinessManagerSupportSupportDefault;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private SupportBase[] jdField_a_of_type_ArrayOfComTencentAvBusinessManagerSupportSupportBase = new SupportBase[18];
+  private Object d = new Object();
+  private SupportBase[] e = new SupportBase[19];
+  private SupportDefault f;
   
   public EffectSupportManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerSupportSupportDefault = new SupportDefault(paramVideoAppInterface);
-  }
-  
-  private SupportBase a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerSupportSupportBase[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      SupportBase localSupportBase = this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerSupportSupportBase[paramInt];
-      localObject1 = localSupportBase;
-      if (localSupportBase == null)
-      {
-        localSupportBase = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = localSupportBase;
-        if (localSupportBase != null)
-        {
-          this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerSupportSupportBase[paramInt] = localSupportBase;
-          localObject1 = localSupportBase;
-        }
-      }
-      return localObject1;
-    }
+    this.f = new SupportDefault(paramVideoAppInterface);
   }
   
   private SupportBase a(VideoAppInterface paramVideoAppInterface, int paramInt)
@@ -51,7 +27,7 @@ public class EffectSupportManager
           if (paramInt == 3) {}
         }
       }
-      for (paramVideoAppInterface = this.jdField_a_of_type_ComTencentAvBusinessManagerSupportSupportDefault;; paramVideoAppInterface = null)
+      for (paramVideoAppInterface = this.f;; paramVideoAppInterface = null)
       {
         break;
         paramVideoAppInterface = new SupportFace(paramVideoAppInterface);
@@ -72,13 +48,28 @@ public class EffectSupportManager
     return paramVideoAppInterface;
   }
   
-  public int a(int paramInt, String paramString)
+  private SupportBase b(int paramInt)
   {
-    SupportBase localSupportBase = a(paramInt);
-    if (localSupportBase != null) {
-      return localSupportBase.a(paramString);
+    Object localObject1 = this.e[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
     }
-    return 1;
+    synchronized (this.d)
+    {
+      SupportBase localSupportBase = this.e[paramInt];
+      localObject1 = localSupportBase;
+      if (localSupportBase == null)
+      {
+        localSupportBase = a(this.c, paramInt);
+        localObject1 = localSupportBase;
+        if (localSupportBase != null)
+        {
+          this.e[paramInt] = localSupportBase;
+          localObject1 = localSupportBase;
+        }
+      }
+      return localObject1;
+    }
   }
   
   protected void a() {}
@@ -86,11 +77,11 @@ public class EffectSupportManager
   public void a(int paramInt)
   {
     int i = 0;
-    while (i < 18)
+    while (i < 19)
     {
       if ((paramInt == 255) || (paramInt == i))
       {
-        SupportBase localSupportBase = a(i);
+        SupportBase localSupportBase = b(i);
         if (localSupportBase != null) {
           localSupportBase.b();
         }
@@ -118,7 +109,7 @@ public class EffectSupportManager
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
   {
-    SupportBase localSupportBase = a(paramInt1);
+    SupportBase localSupportBase = b(paramInt1);
     if (localSupportBase != null) {
       return localSupportBase.a(paramInt2, paramString);
     }
@@ -127,7 +118,7 @@ public class EffectSupportManager
   
   public boolean a(int paramInt, String paramString)
   {
-    SupportBase localSupportBase = a(paramInt);
+    SupportBase localSupportBase = b(paramInt);
     if (localSupportBase != null) {
       return localSupportBase.a(paramString);
     }
@@ -139,12 +130,21 @@ public class EffectSupportManager
     return true;
   }
   
+  public int b(int paramInt, String paramString)
+  {
+    SupportBase localSupportBase = b(paramInt);
+    if (localSupportBase != null) {
+      return localSupportBase.b(paramString);
+    }
+    return 1;
+  }
+  
   public void b()
   {
     int i = 0;
-    while (i < 18)
+    while (i < 19)
     {
-      SupportBase localSupportBase = a(i);
+      SupportBase localSupportBase = b(i);
       if (localSupportBase != null) {
         localSupportBase.c();
       }

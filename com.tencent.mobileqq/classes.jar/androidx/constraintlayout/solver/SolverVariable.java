@@ -29,12 +29,15 @@ public class SolverVariable
   public boolean inGoal;
   HashSet<ArrayRow> inRows = null;
   public boolean isFinalValue = false;
+  boolean isSynonym = false;
   ArrayRow[] mClientEquations = new ArrayRow[16];
   int mClientEquationsCount = 0;
   private String mName;
   SolverVariable.Type mType;
   public int strength = 0;
   float[] strengthVector = new float[9];
+  int synonym = -1;
+  float synonymDelta = 0.0F;
   public int usageInRowCount = 0;
   
   public SolverVariable(SolverVariable.Type paramType, String paramString)
@@ -182,6 +185,9 @@ public class SolverVariable
     this.definitionId = -1;
     this.computedValue = 0.0F;
     this.isFinalValue = false;
+    this.isSynonym = false;
+    this.synonym = -1;
+    this.synonymDelta = 0.0F;
     int j = this.mClientEquationsCount;
     int i = 0;
     while (i < j)
@@ -199,7 +205,11 @@ public class SolverVariable
   {
     this.computedValue = paramFloat;
     this.isFinalValue = true;
+    this.isSynonym = false;
+    this.synonym = -1;
+    this.synonymDelta = 0.0F;
     int j = this.mClientEquationsCount;
+    this.definitionId = -1;
     int i = 0;
     while (i < j)
     {
@@ -212,6 +222,23 @@ public class SolverVariable
   public void setName(String paramString)
   {
     this.mName = paramString;
+  }
+  
+  public void setSynonym(LinearSystem paramLinearSystem, SolverVariable paramSolverVariable, float paramFloat)
+  {
+    this.isSynonym = true;
+    this.synonym = paramSolverVariable.id;
+    this.synonymDelta = paramFloat;
+    int j = this.mClientEquationsCount;
+    this.definitionId = -1;
+    int i = 0;
+    while (i < j)
+    {
+      this.mClientEquations[i].updateFromSynonymVariable(paramLinearSystem, this, false);
+      i += 1;
+    }
+    this.mClientEquationsCount = 0;
+    paramLinearSystem.displayReadableRows();
   }
   
   public void setType(SolverVariable.Type paramType, String paramString)
@@ -293,13 +320,13 @@ public class SolverVariable
     return localStringBuilder.toString();
   }
   
-  public final void updateReferencesWithNewDefinition(ArrayRow paramArrayRow)
+  public final void updateReferencesWithNewDefinition(LinearSystem paramLinearSystem, ArrayRow paramArrayRow)
   {
     int j = this.mClientEquationsCount;
     int i = 0;
     while (i < j)
     {
-      this.mClientEquations[i].updateFromRow(paramArrayRow, false);
+      this.mClientEquations[i].updateFromRow(paramLinearSystem, paramArrayRow, false);
       i += 1;
     }
     this.mClientEquationsCount = 0;
@@ -307,7 +334,7 @@ public class SolverVariable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.SolverVariable
  * JD-Core Version:    0.7.0.1
  */

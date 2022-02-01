@@ -15,21 +15,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class SurvivalSeatBgPresenterImp
   implements ISurvivalSeatBgPresenter
 {
-  private SurvivalMemberDataSource jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
-  private SurvivalSeatBgGridAdapter jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter;
-  private List<Animator> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  
-  private boolean a()
-  {
-    Random localRandom = new Random();
-    int i = localRandom.nextInt(50);
-    int j = localRandom.nextInt(100);
-    boolean bool = false;
-    if (j % 101 + 0 < i % 31 + 20) {
-      bool = true;
-    }
-    return bool;
-  }
+  private SurvivalMemberDataSource a;
+  private SurvivalSeatBgGridAdapter b;
+  private List<Animator> c = new CopyOnWriteArrayList();
   
   private void b(View paramView)
   {
@@ -43,21 +31,33 @@ public class SurvivalSeatBgPresenterImp
     localAnimatorSet.start();
   }
   
+  private boolean c()
+  {
+    Random localRandom = new Random();
+    int i = localRandom.nextInt(50);
+    int j = localRandom.nextInt(100);
+    boolean bool = false;
+    if (j % 101 + 0 < i % 31 + 20) {
+      bool = true;
+    }
+    return bool;
+  }
+  
   public void a()
   {
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("cancelAllAnimation ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.c.size());
       QLog.d("SurvivalSeatBgPresenterImp", 4, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.c.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Animator localAnimator = (Animator)((Iterator)localObject).next();
       localAnimator.cancel();
-      this.jdField_a_of_type_JavaUtilList.remove(localAnimator);
+      this.c.remove(localAnimator);
     }
   }
   
@@ -83,38 +83,38 @@ public class SurvivalSeatBgPresenterImp
   
   public void a(BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter = ((SurvivalSeatBgGridAdapter)paramBaseAdapter);
+    this.b = ((SurvivalSeatBgGridAdapter)paramBaseAdapter);
   }
   
   public void a(SurvivalMemberDataSource paramSurvivalMemberDataSource)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource = paramSurvivalMemberDataSource;
+    this.a = paramSurvivalMemberDataSource;
   }
   
   public void a(List<Long> paramList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter == null) {
+      if (this.b == null) {
         return;
       }
       paramList = ((SurvivalMemberDataSource)localObject).a(paramList).iterator();
       while (paramList.hasNext())
       {
         localObject = (Integer)paramList.next();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.a(((Integer)localObject).intValue());
+        this.b.a(((Integer)localObject).intValue());
       }
     }
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    Object localObject = this.a;
     if (localObject != null) {
       ((SurvivalMemberDataSource)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter;
+    localObject = this.b;
     if (localObject != null) {
       ((SurvivalSeatBgGridAdapter)localObject).notifyDataSetChanged();
     }
@@ -134,17 +134,17 @@ public class SurvivalSeatBgPresenterImp
   
   public void b(List<Long> paramList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter == null) {
+      if (this.b == null) {
         return;
       }
       paramList = ((SurvivalMemberDataSource)localObject).b(paramList).iterator();
       while (paramList.hasNext())
       {
         localObject = (Integer)paramList.next();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.a(((Integer)localObject).intValue());
+        this.b.a(((Integer)localObject).intValue());
       }
     }
   }

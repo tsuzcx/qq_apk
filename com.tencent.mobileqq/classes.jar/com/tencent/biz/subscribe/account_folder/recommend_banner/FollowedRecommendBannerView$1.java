@@ -13,7 +13,7 @@ class FollowedRecommendBannerView$1
     if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
       return;
     }
-    VSReporter.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
+    VSReporter.a(FollowedRecommendBannerView.b(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
   }
 }
 

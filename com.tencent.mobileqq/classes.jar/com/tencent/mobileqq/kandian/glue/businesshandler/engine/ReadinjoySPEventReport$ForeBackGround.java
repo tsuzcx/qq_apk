@@ -10,29 +10,28 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ReadinjoySPEventReport$ForeBackGround
 {
   public static int a = 0;
-  public static long a = 0L;
-  private static List<IForeBackGroundCallback> jdField_a_of_type_JavaUtilList;
-  private static Map<Integer, IForeBackGroundCallback> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static int b = -1;
-  public static long b;
-  public static long c;
-  public static long d;
+  public static long b = 0L;
+  public static long c = 0L;
+  public static long d = 0L;
+  public static long e = 0L;
+  private static int f = -1;
+  private static Map<Integer, IForeBackGroundCallback> g = new ConcurrentHashMap();
+  private static List<IForeBackGroundCallback> h = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    jdField_a_of_type_Int = 2;
-    d();
+    a = 2;
+    e();
   }
   
   public static void a()
   {
-    jdField_b_of_type_Int = -1;
+    f = -1;
   }
   
   public static void a(int paramInt)
   {
-    jdField_b_of_type_Int = paramInt;
+    f = paramInt;
     if (paramInt != 2)
     {
       if (paramInt != 3)
@@ -42,16 +41,16 @@ public class ReadinjoySPEventReport$ForeBackGround
           if (paramInt != 25) {
             return;
           }
-          c = System.currentTimeMillis();
+          d = System.currentTimeMillis();
           return;
         }
-        d = System.currentTimeMillis();
+        e = System.currentTimeMillis();
         return;
       }
-      jdField_b_of_type_Long = System.currentTimeMillis();
+      c = System.currentTimeMillis();
       return;
     }
-    jdField_a_of_type_Long = System.currentTimeMillis();
+    b = System.currentTimeMillis();
   }
   
   public static void a(IForeBackGroundCallback paramIForeBackGroundCallback)
@@ -61,8 +60,8 @@ public class ReadinjoySPEventReport$ForeBackGround
     }
     try
     {
-      if (!jdField_a_of_type_JavaUtilList.contains(paramIForeBackGroundCallback)) {
-        jdField_a_of_type_JavaUtilList.add(paramIForeBackGroundCallback);
+      if (!h.contains(paramIForeBackGroundCallback)) {
+        h.add(paramIForeBackGroundCallback);
       }
       return;
     }
@@ -73,26 +72,20 @@ public class ReadinjoySPEventReport$ForeBackGround
     }
   }
   
-  private static boolean a()
-  {
-    int i = jdField_b_of_type_Int;
-    return (i > 0) && ((i == 2) || (i == 3) || (i == 4) || (i == 25));
-  }
-  
   public static void b()
   {
     try
     {
-      jdField_a_of_type_Int = 1;
-      ReadinjoySPEventReport.e(System.currentTimeMillis());
-      if (a())
+      a = 1;
+      ReadinjoySPEventReport.g(System.currentTimeMillis());
+      if (d())
       {
-        localObject1 = (IForeBackGroundCallback)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
+        localObject1 = (IForeBackGroundCallback)g.get(Integer.valueOf(f));
         if (localObject1 != null) {
           ((IForeBackGroundCallback)localObject1).a();
         }
       }
-      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject1 = h.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         IForeBackGroundCallback localIForeBackGroundCallback = (IForeBackGroundCallback)((Iterator)localObject1).next();
@@ -114,7 +107,7 @@ public class ReadinjoySPEventReport$ForeBackGround
     if (paramIForeBackGroundCallback != null) {}
     try
     {
-      jdField_a_of_type_JavaUtilList.remove(paramIForeBackGroundCallback);
+      h.remove(paramIForeBackGroundCallback);
     }
     finally {}
   }
@@ -123,20 +116,20 @@ public class ReadinjoySPEventReport$ForeBackGround
   {
     try
     {
-      jdField_a_of_type_Int = 2;
-      if (a())
+      a = 2;
+      if (d())
       {
-        localObject1 = (IForeBackGroundCallback)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
+        localObject1 = (IForeBackGroundCallback)g.get(Integer.valueOf(f));
         if (localObject1 != null) {
-          ((IForeBackGroundCallback)localObject1).ax_();
+          ((IForeBackGroundCallback)localObject1).cU_();
         }
       }
-      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject1 = h.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         IForeBackGroundCallback localIForeBackGroundCallback = (IForeBackGroundCallback)((Iterator)localObject1).next();
         if (localIForeBackGroundCallback != null) {
-          localIForeBackGroundCallback.ax_();
+          localIForeBackGroundCallback.cU_();
         }
       }
       return;
@@ -148,17 +141,23 @@ public class ReadinjoySPEventReport$ForeBackGround
     }
   }
   
-  private static void d()
+  private static boolean d()
   {
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), new ReadinjoySPEventReport.ForeBackGround.1());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), new ReadinjoySPEventReport.ForeBackGround.2());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(25), new ReadinjoySPEventReport.ForeBackGround.3());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), new ReadinjoySPEventReport.ForeBackGround.4());
+    int i = f;
+    return (i > 0) && ((i == 2) || (i == 3) || (i == 4) || (i == 25));
+  }
+  
+  private static void e()
+  {
+    g.put(Integer.valueOf(2), new ReadinjoySPEventReport.ForeBackGround.1());
+    g.put(Integer.valueOf(3), new ReadinjoySPEventReport.ForeBackGround.2());
+    g.put(Integer.valueOf(25), new ReadinjoySPEventReport.ForeBackGround.3());
+    g.put(Integer.valueOf(4), new ReadinjoySPEventReport.ForeBackGround.4());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ForeBackGround
  * JD-Core Version:    0.7.0.1
  */

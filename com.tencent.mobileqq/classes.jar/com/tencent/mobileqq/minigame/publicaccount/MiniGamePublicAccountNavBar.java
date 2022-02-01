@@ -28,7 +28,7 @@ public class MiniGamePublicAccountNavBar
   public TextView getTitleTextView()
   {
     if (this.mTitleTv == null) {
-      this.mTitleTv = ((TextView)findViewById(2131369249));
+      this.mTitleTv = ((TextView)findViewById(2131436227));
     }
     if (this.mTitleTv == null) {
       this.mTitleTv = new TextView(getContext());
@@ -38,12 +38,12 @@ public class MiniGamePublicAccountNavBar
   
   public void setTitleBarTransparent()
   {
-    setBackgroundResource(2131167333);
+    setBackgroundResource(2131168376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountNavBar
  * JD-Core Version:    0.7.0.1
  */

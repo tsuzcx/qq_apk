@@ -44,7 +44,7 @@ public final class WeatherPreloadHelper
     if (!a((AppRuntime)paramAppInterface)) {
       return -3004;
     }
-    if (DeviceInfoUtils.b())
+    if (DeviceInfoUtils.isLowPerfDevice())
     {
       WeatherDCReportHelper.a().a(paramAppInterface, "new_folder_noprestart_lowsystem");
       return -3003;
@@ -57,10 +57,10 @@ public final class WeatherPreloadHelper
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("lastOpenTime unable lastOpenTime ：");
       paramAppInterface.append(paramContext);
-      a(paramAppInterface.toString());
+      b(paramAppInterface.toString());
       return -3002;
     }
-    if (b(paramAppInterface) >= 3) {
+    if (c(paramAppInterface) >= 3) {
       return -3005;
     }
     return 0;
@@ -71,7 +71,7 @@ public final class WeatherPreloadHelper
     Object localObject3 = MobileQQ.context;
     if (localObject3 == null)
     {
-      a("preloadWebProcess context error");
+      b("preloadWebProcess context error");
       return;
     }
     Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -79,7 +79,7 @@ public final class WeatherPreloadHelper
     {
       if (!((BaseToolAppInterface)localObject1).isLogin())
       {
-        a("preloadWebProcess not login");
+        b("preloadWebProcess not login");
         return;
       }
       Object localObject2 = ((AppRuntime)localObject1).getRuntimeService(IWebProcessManagerService.class, "");
@@ -95,19 +95,19 @@ public final class WeatherPreloadHelper
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("preloadWebProcess no need result ");
           ((StringBuilder)localObject1).append(i);
-          a(((StringBuilder)localObject1).toString());
+          b(((StringBuilder)localObject1).toString());
           a((AppInterface)localObject3, i);
           return;
         }
-        a("preloadWebProcess");
+        b("preloadWebProcess");
         ((IWebProcessManagerService)localObject2).startWebProcess(-1, (WebProcessStartListener)new WeatherPreloadHelper.preloadWebProcess.1((AppRuntime)localObject1, ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist()));
         return;
       }
-      a("preloadWebProcess wpm error");
+      b("preloadWebProcess wpm error");
       a((AppInterface)localObject1, -2000);
       return;
     }
-    a("preloadWebProcess app error");
+    b("preloadWebProcess app error");
   }
   
   @JvmStatic
@@ -117,7 +117,7 @@ public final class WeatherPreloadHelper
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preloadWebProcessAsync from = ");
     localStringBuilder.append(paramInt);
-    localWeatherPreloadHelper.a(localStringBuilder.toString());
+    localWeatherPreloadHelper.b(localStringBuilder.toString());
     ThreadManager.excute((Runnable)WeatherPreloadHelper.preloadWebProcessAsync.1.a, 128, null, false);
   }
   
@@ -133,22 +133,6 @@ public final class WeatherPreloadHelper
     QLog.i("WeatherStep", 1, localStringBuilder.toString());
   }
   
-  private final void a(AppInterface paramAppInterface)
-  {
-    Object localObject = MobileQQ.sMobileQQ;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "MobileQQ.sMobileQQ");
-    ((MobileQQ)localObject).getAllAccounts();
-    int i = b(paramAppInterface);
-    localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
-    Context localContext = (Context)MobileQQ.context;
-    paramAppInterface = paramAppInterface.getCurrentAccountUin();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((SimpleDateFormat)localObject).format(new Date()));
-    localStringBuilder.append('|');
-    localStringBuilder.append(i + 1);
-    BaseSharedPreUtil.a(localContext, paramAppInterface, true, "key_last_preload_web_process", localStringBuilder.toString());
-  }
-  
   private final void a(AppInterface paramAppInterface, int paramInt)
   {
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
@@ -162,11 +146,6 @@ public final class WeatherPreloadHelper
     if ((paramInt == -2000) || (paramInt == -3005) || (paramInt == -4001)) {
       WeatherDCReportHelper.a().a(paramAppInterface, "new_folder_prestart_fail_others", Integer.valueOf(paramInt));
     }
-  }
-  
-  private final void a(String paramString)
-  {
-    QLog.i("WeatherPreloadHelper", 1, paramString);
   }
   
   @JvmStatic
@@ -239,13 +218,34 @@ public final class WeatherPreloadHelper
     return false;
   }
   
-  private final int b(AppInterface paramAppInterface)
+  private final void b(AppInterface paramAppInterface)
+  {
+    Object localObject = MobileQQ.sMobileQQ;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "MobileQQ.sMobileQQ");
+    ((MobileQQ)localObject).getAllAccounts();
+    int i = c(paramAppInterface);
+    localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+    Context localContext = (Context)MobileQQ.context;
+    paramAppInterface = paramAppInterface.getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((SimpleDateFormat)localObject).format(new Date()));
+    localStringBuilder.append('|');
+    localStringBuilder.append(i + 1);
+    BaseSharedPreUtil.a(localContext, paramAppInterface, true, "key_last_preload_web_process", localStringBuilder.toString());
+  }
+  
+  private final void b(String paramString)
+  {
+    QLog.i("WeatherPreloadHelper", 1, paramString);
+  }
+  
+  private final int c(AppInterface paramAppInterface)
   {
     paramAppInterface = (String)BaseSharedPreUtil.b((Context)MobileQQ.context, paramAppInterface.getCurrentAccountUin(), "key_last_preload_web_process", "");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getTodayPreInfoTimes ：");
     ((StringBuilder)localObject).append(paramAppInterface);
-    a(((StringBuilder)localObject).toString());
+    b(((StringBuilder)localObject).toString());
     localObject = (CharSequence)paramAppInterface;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return 0;
@@ -287,7 +287,7 @@ public final class WeatherPreloadHelper
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getTodayLastPreloadResult ：");
     ((StringBuilder)localObject).append(paramAppInterface);
-    a(((StringBuilder)localObject).toString());
+    b(((StringBuilder)localObject).toString());
     localObject = (CharSequence)paramAppInterface;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return -1000;
@@ -322,7 +322,7 @@ public final class WeatherPreloadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherPreloadHelper
  * JD-Core Version:    0.7.0.1
  */

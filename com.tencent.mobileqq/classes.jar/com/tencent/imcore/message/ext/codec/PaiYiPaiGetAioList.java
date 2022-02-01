@@ -42,15 +42,15 @@ public class PaiYiPaiGetAioList
       ((StringBuilder)localObject1).append("]");
       QLog.d("PaiYiPaiGetAioList", 2, ((StringBuilder)localObject1).toString());
     }
-    paramQQMessageFacade = paramQQMessageFacade.a();
-    Object localObject1 = paramQQMessageFacade.getApp().getString(2131694683);
-    Object localObject2 = paramQQMessageFacade.getApp().getString(2131694682);
+    paramQQMessageFacade = paramQQMessageFacade.g();
+    Object localObject1 = paramQQMessageFacade.getApp().getString(2131892375);
+    Object localObject2 = paramQQMessageFacade.getApp().getString(2131892374);
     Object localObject3 = paramMessageForUniteGrayTip.frienduin;
     String str = paramMessageForUniteGrayTip.senderuin;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append((String)localObject2);
-    localObject2 = new UniteGrayTipParam((String)localObject3, str, localStringBuilder.toString(), paramMessageForUniteGrayTip.istroop, -5020, 656396, MessageCache.a());
+    localObject2 = new UniteGrayTipParam((String)localObject3, str, localStringBuilder.toString(), paramMessageForUniteGrayTip.istroop, -5020, 656396, MessageCache.c());
     localObject3 = new Bundle();
     ((Bundle)localObject3).putInt("key_action", 64);
     ((UniteGrayTipParam)localObject2).a(0, ((String)localObject1).length(), (Bundle)localObject3);
@@ -64,7 +64,7 @@ public class PaiYiPaiGetAioList
   {
     try
     {
-      paramQQMessageFacade = paramQQMessageFacade.a();
+      paramQQMessageFacade = paramQQMessageFacade.g();
       boolean bool = ((PaiYiPaiManager)paramQQMessageFacade.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).a();
       if (bool) {
         return false;
@@ -124,13 +124,13 @@ public class PaiYiPaiGetAioList
       paramAppRuntime = (MessageRecord)paramList.next();
       if ((paramAppRuntime instanceof MessageForUniteGrayTip))
       {
-        paramAppRuntime = (MessageForUniteGrayTip)paramAppRuntime;
-        if ((TextUtils.equals(paramAppRuntime.getExtInfoFromExtStr("uint64_busi_type"), "12")) && (TextUtils.equals(paramAppRuntime.getExtInfoFromExtStr("uint64_busi_id"), "1061")) && (a(paramString)))
+        MessageForUniteGrayTip localMessageForUniteGrayTip = (MessageForUniteGrayTip)paramAppRuntime;
+        if ((TextUtils.equals(localMessageForUniteGrayTip.getExtInfoFromExtStr("uint64_busi_type"), "12")) && (TextUtils.equals(localMessageForUniteGrayTip.getExtInfoFromExtStr("uint64_busi_id"), "1061")) && (!TextUtils.equals(paramAppRuntime.getExtInfoFromExtStr("pai_yi_pai_online_status"), "1")) && (a(paramString)))
         {
-          a(paramAppRuntime, paramString);
-          if (paramAppRuntime.istroop == 0) {
+          a(localMessageForUniteGrayTip, paramString);
+          if (localMessageForUniteGrayTip.istroop == 0) {
             paramInt1 = 1;
-          } else if (paramAppRuntime.istroop == 1) {
+          } else if (localMessageForUniteGrayTip.istroop == 1) {
             paramInt1 = 2;
           } else {
             paramInt1 = 10;
@@ -143,7 +143,7 @@ public class PaiYiPaiGetAioList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.PaiYiPaiGetAioList
  * JD-Core Version:    0.7.0.1
  */

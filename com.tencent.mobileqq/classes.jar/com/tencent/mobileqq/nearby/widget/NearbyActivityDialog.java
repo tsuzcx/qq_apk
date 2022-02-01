@@ -33,65 +33,64 @@ public class NearbyActivityDialog
   extends Dialog
   implements View.OnClickListener
 {
-  protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected Handler a;
-  protected Button a;
-  protected ImageView a;
-  protected AppInterface a;
-  protected RoundRelativeLayout a;
-  protected String a;
-  protected int b;
-  protected ImageView b;
-  protected RoundRelativeLayout b;
+  protected String a = "";
+  protected Context b;
   protected RoundRelativeLayout c;
+  protected RoundRelativeLayout d;
+  protected Button e;
+  protected ImageView f;
+  protected ImageView g;
+  protected RoundRelativeLayout h;
+  protected Drawable i;
+  protected int j;
+  protected int k;
+  protected AppInterface l;
+  protected Handler m;
   
   public NearbyActivityDialog(AppInterface paramAppInterface, Context paramContext)
   {
-    super(paramContext, 2131756189);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    super(paramContext, 2131953338);
+    this.b = paramContext;
+    this.l = paramAppInterface;
+    this.m = new Handler(Looper.getMainLooper());
     a();
   }
   
   private void a()
   {
-    setContentView(2131558970);
-    this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout = ((RoundRelativeLayout)findViewById(2131368630));
-    this.jdField_b_of_type_ComTencentWidgetRoundRelativeLayout = ((RoundRelativeLayout)findViewById(2131363900));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363840));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368631));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368624));
-    this.c = ((RoundRelativeLayout)findViewById(2131370373));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
-    this.jdField_b_of_type_ComTencentWidgetRoundRelativeLayout.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
+    setContentView(2131624603);
+    this.c = ((RoundRelativeLayout)findViewById(2131435542));
+    this.d = ((RoundRelativeLayout)findViewById(2131429850));
+    this.e = ((Button)findViewById(2131429786));
+    this.f = ((ImageView)findViewById(2131435543));
+    this.g = ((ImageView)findViewById(2131435536));
+    this.h = ((RoundRelativeLayout)findViewById(2131437635));
+    this.g.setOnClickListener(this);
+    this.e.setOnClickListener(this);
     this.c.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
-    this.jdField_a_of_type_Int = (ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(28.0F) * 2);
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * 5 / 4);
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
-    ((ViewGroup.LayoutParams)localObject).height = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.d.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
+    this.h.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
+    this.j = (ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(28.0F) * 2);
+    this.k = (this.j * 5 / 4);
+    Object localObject = this.c.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = this.j;
+    ((ViewGroup.LayoutParams)localObject).height = this.k;
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("init, w=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.j);
       ((StringBuilder)localObject).append(", h=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.k);
       QLog.d("NearbyActivityDialog", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(ImageView paramImageView, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f2f2f2"));
+    if (this.i == null) {
+      this.i = new ColorDrawable(Color.parseColor("#f2f2f2"));
     }
     Object localObject2 = null;
     URLDrawable localURLDrawable2 = null;
@@ -101,13 +100,13 @@ public class NearbyActivityDialog
     {
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_b_of_type_Int;
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.k;
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Int;
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.j;
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.i;
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.i;
       localURLDrawable1 = localURLDrawable2;
       if (!TextUtils.isEmpty(paramString))
       {
@@ -134,9 +133,9 @@ public class NearbyActivityDialog
         if (localURLDrawable2.getStatus() != 1)
         {
           localURLDrawable1 = localURLDrawable2;
-          this.c.setVisibility(0);
+          this.h.setVisibility(0);
           localURLDrawable1 = localURLDrawable2;
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyActivityDialog.1(this), 2500L);
+          this.m.postDelayed(new NearbyActivityDialog.1(this), 2500L);
           localURLDrawable1 = localURLDrawable2;
           localURLDrawable2.setDownloadListener(new NearbyActivityDialog.2(this));
           localURLDrawable1 = localURLDrawable2;
@@ -170,7 +169,7 @@ public class NearbyActivityDialog
     }
     paramString = (String)localObject1;
     if (localObject1 == null) {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramString = this.i;
     }
     paramImageView.setImageDrawable(paramString);
   }
@@ -189,15 +188,15 @@ public class NearbyActivityDialog
     {
       paramString = new JSONObject(paramString);
       localObject = paramString.optJSONObject("pic").optString("pic_url");
-      a(this.jdField_a_of_type_AndroidWidgetImageView, (String)localObject);
+      a(this.f, (String)localObject);
       paramString = paramString.optJSONObject("jump_button");
       localObject = paramString.optString("text");
-      int i = paramString.optInt("text_color");
-      int j = paramString.optInt("bg_color");
-      this.jdField_a_of_type_JavaLangString = paramString.optString("jump_url");
-      this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(i);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(j);
+      int n = paramString.optInt("text_color");
+      int i1 = paramString.optInt("bg_color");
+      this.a = paramString.optString("jump_url");
+      this.e.setText((CharSequence)localObject);
+      this.e.setTextColor(n);
+      this.e.setBackgroundColor(i1);
       return true;
     }
     catch (Exception paramString)
@@ -212,37 +211,37 @@ public class NearbyActivityDialog
   public void onClick(View paramView)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+    ((StringBuilder)localObject).append((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.l.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
-    int i = paramView.getId();
-    if (i == 2131368624)
+    int n = paramView.getId();
+    if (n == 2131435536)
     {
       dismiss();
       ReportController.b(null, "dc00899", "grp_lbs", "", "home", "pop_clk_close", 0, 0, (String)localObject, "", "", "");
       return;
     }
-    if (i == 2131363840)
+    if (n == 2131429786)
     {
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("onClick, mJumpUrl=");
-        paramView.append(this.jdField_a_of_type_JavaLangString);
+        paramView.append(this.a);
         QLog.d("NearbyActivityDialog", 2, paramView.toString());
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (this.jdField_a_of_type_JavaLangString.startsWith("http"))
+      if (!TextUtils.isEmpty(this.a)) {
+        if (this.a.startsWith("http"))
         {
-          paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(paramView, this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+          paramView = new Intent(this.b, QQBrowserActivity.class);
+          paramView.putExtra("url", this.a);
+          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(paramView, this.a);
+          this.b.startActivity(paramView);
         }
-        else if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi"))
+        else if (this.a.startsWith("mqqapi"))
         {
-          paramView = this.jdField_a_of_type_AndroidContentContext;
-          paramView.startActivity(new Intent(paramView, JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
+          paramView = this.b;
+          paramView.startActivity(new Intent(paramView, JumpActivity.class).setData(Uri.parse(this.a)));
         }
       }
       dismiss();
@@ -252,7 +251,7 @@ public class NearbyActivityDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyActivityDialog
  * JD-Core Version:    0.7.0.1
  */

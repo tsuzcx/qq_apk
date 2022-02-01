@@ -17,7 +17,7 @@ final class RecentUtil$6
   
   public void run()
   {
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, 1008);
+    Message localMessage = this.a.getMessageFacade().getLastMessage(this.b, 1008);
     String str2 = "0";
     if (localMessage != null)
     {
@@ -49,12 +49,12 @@ final class RecentUtil$6
     }
     label90:
     localObject = localMessage.getExtInfoFromExtStr("pa_msgId");
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.c == 1) {
       str2 = "0X8005C36";
     } else {
       str2 = "0X8005C39";
     }
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(localMessage.frienduin);
@@ -63,7 +63,7 @@ final class RecentUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.6
  * JD-Core Version:    0.7.0.1
  */

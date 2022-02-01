@@ -23,19 +23,19 @@ public class TabJumpHelper$WebActivityPlugin
   {
     int i = paramIntent.getIntExtra("uintype", -1);
     paramIntent = paramIntent.getStringExtra("url");
-    Intent localIntent = new Intent(paramFrameFragment.a(), QQBrowserActivity.class);
+    Intent localIntent = new Intent(paramFrameFragment.C(), QQBrowserActivity.class);
     Object localObject;
     if (i != -1)
     {
       localIntent.putExtra("uintype", i);
-      if ((i == 1030) && (((QQAppInterface)paramFrameFragment.a).isCreateManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)))
+      if ((i == 1030) && (((QQAppInterface)paramFrameFragment.A).isCreateManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)))
       {
         localObject = new PushReportController.PushReportItem();
         ((PushReportController.PushReportItem)localObject).e = "0X8009241";
         ((PushReportController.PushReportItem)localObject).d = "点击业务Push";
         PushReportController.a(paramIntent, (PushReportController.PushReportItem)localObject);
-        PushReportController.a((QQAppInterface)paramFrameFragment.a, (PushReportController.PushReportItem)localObject);
-        ((CampusNoticeManager)paramFrameFragment.a.getManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)).a(null);
+        PushReportController.a((QQAppInterface)paramFrameFragment.A, (PushReportController.PushReportItem)localObject);
+        ((CampusNoticeManager)paramFrameFragment.A.getManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)).a(null);
         if (QLog.isColorLevel()) {
           QLog.d("CampusNoticeManager", 2, "remove campus notice");
         }
@@ -54,7 +54,7 @@ public class TabJumpHelper$WebActivityPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.framejumpentry.TabJumpHelper.WebActivityPlugin
  * JD-Core Version:    0.7.0.1
  */

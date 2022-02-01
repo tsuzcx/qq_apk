@@ -10,8 +10,8 @@ class GameActivityCenterCtrl$RefreshEntryTask
   public void run()
   {
     Object localObject = GameActivityCenterCtrl.a();
-    Activity localActivity = GameActivityCenterCtrl.a((GameActivityCenterCtrl)localObject);
-    localObject = GameActivityCenterCtrl.a((GameActivityCenterCtrl)localObject);
+    Activity localActivity = GameActivityCenterCtrl.c((GameActivityCenterCtrl)localObject);
+    localObject = GameActivityCenterCtrl.b((GameActivityCenterCtrl)localObject);
     if (((localActivity instanceof IAVGameRootContainer)) && (!localActivity.isFinishing())) {
       ((IAVGameRootContainer)localActivity).refreshActivityCenter((GameActivityCenterEntry)localObject);
     }

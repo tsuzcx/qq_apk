@@ -1,14 +1,20 @@
 package com.dataline.activities;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
-final class LiteActivity$50
-  implements DialogInterface.OnClickListener
+class LiteActivity$50
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  LiteActivity$50(LiteActivity paramLiteActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    if (LiteActivity.j(this.a))
+    {
+      LiteActivity.b(this.a, false);
+      this.a.finish();
+    }
   }
 }
 

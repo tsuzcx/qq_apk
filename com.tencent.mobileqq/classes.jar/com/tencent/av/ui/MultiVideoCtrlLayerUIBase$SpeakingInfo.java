@@ -2,15 +2,13 @@ package com.tencent.av.ui;
 
 public class MultiVideoCtrlLayerUIBase$SpeakingInfo
 {
-  public int a;
-  public String a;
+  public String a = "";
+  public int b = 0;
   
   public MultiVideoCtrlLayerUIBase$SpeakingInfo(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
 }
 

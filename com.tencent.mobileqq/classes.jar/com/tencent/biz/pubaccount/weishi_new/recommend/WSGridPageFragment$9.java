@@ -13,20 +13,20 @@ class WSGridPageFragment$9
   
   public void a(@NonNull BaseViewHolder<WSFollowDramaItemData> paramBaseViewHolder)
   {
-    if (WSGridPageFragment.b(this.a)) {
+    if (WSGridPageFragment.j(this.a)) {
       return;
     }
     int i = paramBaseViewHolder.getAdapterPosition();
-    paramBaseViewHolder = (WSFollowDramaItemData)WSGridPageFragment.a(this.a).getItem(i);
+    paramBaseViewHolder = (WSFollowDramaItemData)WSGridPageFragment.i(this.a).getItem(i);
     if (paramBaseViewHolder == null) {
       return;
     }
-    WSGridBeaconReport.a(WSGridPageFragment.a(this.a), i, paramBaseViewHolder.a(), paramBaseViewHolder.a());
+    WSGridBeaconReport.a(WSGridPageFragment.b(this.a), i, paramBaseViewHolder.a(), paramBaseViewHolder.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment.9
  * JD-Core Version:    0.7.0.1
  */

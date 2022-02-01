@@ -28,8 +28,8 @@ public class JumpProfilePlugin
   {
     if (paramString2.equalsIgnoreCase("historicalSig"))
     {
-      paramString1 = this.mRuntime.a().getAccount();
-      paramJsBridgeListener = this.mRuntime.a();
+      paramString1 = this.mRuntime.b().getAccount();
+      paramJsBridgeListener = this.mRuntime.d();
       if (paramString3.equalsIgnoreCase("historicalSiglist"))
       {
         try
@@ -48,7 +48,7 @@ public class JumpProfilePlugin
             }
             PublicFragmentActivity.Launcher.a(paramJsBridgeListener, paramString3, PublicFragmentActivity.class, SignatureHistoryFragment.class);
           }
-          QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", StringUtil.e(paramString2) });
+          QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", StringUtil.getSimpleUinForPrint(paramString2) });
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -69,7 +69,7 @@ public class JumpProfilePlugin
           paramString2 = paramString2.optString("fromUin");
           if (ChatActivityUtils.a(paramString2))
           {
-            paramString3 = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
+            paramString3 = new Intent(this.mRuntime.d(), PersonalityLabelGalleryActivity.class);
             paramString3.putExtra("uin", paramString2);
             if (paramString1.equalsIgnoreCase("1")) {
               paramString3.putExtra("fromType", 4);
@@ -77,7 +77,7 @@ public class JumpProfilePlugin
             paramJsBridgeListener.startActivity(paramString3);
             paramJsBridgeListener.finish();
           }
-          QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", StringUtil.e(paramString2) });
+          QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", StringUtil.getSimpleUinForPrint(paramString2) });
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -107,7 +107,7 @@ public class JumpProfilePlugin
             paramJsBridgeListener.startActivity(paramString1);
             paramJsBridgeListener.finish();
           }
-          QLog.d("JumpProfilePlugin", 1, new Object[] { "zanlist", "fromType=", paramString2, " fromUin", StringUtil.e(paramString3) });
+          QLog.d("JumpProfilePlugin", 1, new Object[] { "zanlist", "fromType=", paramString2, " fromUin", StringUtil.getSimpleUinForPrint(paramString3) });
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -125,7 +125,7 @@ public class JumpProfilePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.JumpProfilePlugin
  * JD-Core Version:    0.7.0.1
  */

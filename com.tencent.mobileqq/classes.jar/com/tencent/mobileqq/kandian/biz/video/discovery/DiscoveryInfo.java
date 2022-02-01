@@ -9,43 +9,39 @@ public class DiscoveryInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new DiscoveryInfo.1();
-  public int a;
   public long a;
-  public String a;
-  public ArrayList<DiscoveryInfo.TopicVideoCard> a;
-  public boolean a;
-  public int[] a;
-  public int b;
   public String b;
   public String c;
   public String d;
   public String e;
   public String f;
+  public boolean g;
+  public int h;
+  public int i;
+  public String j;
+  public ArrayList<DiscoveryInfo.TopicVideoCard> k;
+  public int[] l = new int[2];
   
-  public DiscoveryInfo()
-  {
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-  }
+  public DiscoveryInfo() {}
   
   protected DiscoveryInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
-    int i = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    int m = paramParcel.readInt();
     boolean bool = true;
-    if (i != 1) {
+    if (m != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(DiscoveryInfo.TopicVideoCard.CREATOR);
-    this.f = paramParcel.readString();
+    this.g = bool;
+    this.h = paramParcel.readInt();
+    this.i = paramParcel.readInt();
+    this.k = paramParcel.createTypedArrayList(DiscoveryInfo.TopicVideoCard.CREATOR);
+    this.j = paramParcel.readString();
   }
   
   public int describeContents()
@@ -57,58 +53,58 @@ public class DiscoveryInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DiscoveryInfo{topicId=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", title='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", coverUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", subtitle='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", playCounts=");
+    localStringBuilder.append(", subtitle='");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", playCounts=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", hasRecomment=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", effectiveTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", expiationTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", commonData=");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", topicVideoCards=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
-    if (this.jdField_a_of_type_Boolean) {
+    paramParcel.writeString(this.f);
+    if (this.g) {
       paramInt = 1;
     } else {
       paramInt = 2;
     }
     paramParcel.writeInt(paramInt);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeString(this.f);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeInt(this.i);
+    paramParcel.writeTypedList(this.k);
+    paramParcel.writeString(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.DiscoveryInfo
  * JD-Core Version:    0.7.0.1
  */

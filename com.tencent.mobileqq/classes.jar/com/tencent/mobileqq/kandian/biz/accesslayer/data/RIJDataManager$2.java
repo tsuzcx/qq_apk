@@ -20,17 +20,17 @@ class RIJDataManager$2
     }
     else
     {
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = this.a.a().a();
-      this.a.a().a().a(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
-      this.a.a().a().b(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
-      this.a.a().a().c(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
-      this.a.a().a().d(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = this.a.a().v();
+      this.a.a().h().a(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
+      this.a.a().h().b(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
+      this.a.a().h().c(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
+      this.a.a().h().d(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localReadInJoyBaseAdapter);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager.2
  * JD-Core Version:    0.7.0.1
  */

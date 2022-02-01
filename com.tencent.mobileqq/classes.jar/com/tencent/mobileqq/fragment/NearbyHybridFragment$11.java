@@ -36,19 +36,19 @@ class NearbyHybridFragment$11
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131366275)
+    if (i == 2131432575)
     {
       paramView = NearbyPublishMenuHelper.a();
-      paramView = new NearbyPublishMenu(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, paramView);
-      paramView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyPublishMenu$OnItemClickListener);
-      paramView.a(DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 18.0F), DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 67.0F) + this.a.jdField_a_of_type_AndroidViewView.getHeight(), 0.2F);
-      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app).a("dc00899").b("grp_lbs").c("home").d("pub_download_exp").a();
-      NearbyUtils.b((AppInterface)this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface, "clk_pub", 1);
+      paramView = new NearbyPublishMenu(this.a.ag, paramView);
+      paramView.a(this.a.X);
+      paramView.a(DisplayUtil.a(this.a.ag, 18.0F), DisplayUtil.a(this.a.ag, 67.0F) + this.a.f.getHeight(), 0.2F);
+      new ReportTask(this.a.ag.app).a("dc00899").b("grp_lbs").c("home").d("pub_download_exp").a();
+      NearbyUtils.b((AppInterface)this.a.k, "clk_pub", 1);
       return;
     }
-    if (i == 2131374285)
+    if (i == 2131442448)
     {
-      INearbyProcManager localINearbyProcManager = this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getNearbyProcManager();
+      INearbyProcManager localINearbyProcManager = this.a.k.getNearbyProcManager();
       paramView = localINearbyProcManager.a(10);
       Object localObject = (INearbyRedDotCustomInfo)QRoute.api(INearbyRedDotCustomInfo.class);
       if (paramView != null) {
@@ -77,10 +77,10 @@ class NearbyHybridFragment$11
       paramView.append(" redTopicId = ");
       paramView.append(((INearbyRedDotCustomInfo)localObject).getTopicId());
       QLog.d("nearby.redpoint", 1, paramView.toString());
-      paramView = localINearbyProcManager.a();
+      paramView = localINearbyProcManager.e();
       if ((paramView != null) && (paramView.b == i))
       {
-        Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
+        Intent localIntent = new Intent(this.a.ag, QQBrowserActivity.class);
         if (i == 1)
         {
           if (((INearbyRedDotCustomInfo)localObject).getContentType() == 2)
@@ -119,25 +119,25 @@ class NearbyHybridFragment$11
         ((StringBuilder)localObject).append("click OfficialNotify, url");
         ((StringBuilder)localObject).append(paramView);
         QLog.d("nearby.redpoint", 1, ((StringBuilder)localObject).toString());
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.startActivity(localIntent);
+        this.a.ag.startActivity(localIntent);
       }
       else
       {
-        paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
+        paramView = new Intent(this.a.ag, QQBrowserActivity.class);
         paramView.putExtra("url", "https://nearby.qq.com/nearby-index/my_msg.html?_wv=1031&_bid=3027");
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.startActivity(paramView);
+        this.a.ag.startActivity(paramView);
       }
-      ((INearbyOfficalReportHelper)QRoute.api(INearbyOfficalReportHelper.class)).reportNearByRedDotEvent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface, "home", "news_slip_click");
-      localINearbyProcManager.a(38);
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyHybridFragment.11.1(this), 500L);
-      NearbyUtils.b((AppInterface)this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface, "clk_msg", 0);
-      ReportController.b(null, "dc00899", "grp_lbs", "", "home", "push_red_click", 0, 0, String.valueOf(((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue()), "", "", "");
+      ((INearbyOfficalReportHelper)QRoute.api(INearbyOfficalReportHelper.class)).reportNearByRedDotEvent(this.a.k, "home", "news_slip_click");
+      localINearbyProcManager.b(38);
+      this.a.l.postDelayed(new NearbyHybridFragment.11.1(this), 500L);
+      NearbyUtils.b((AppInterface)this.a.k, "clk_msg", 0);
+      ReportController.b(null, "dc00899", "grp_lbs", "", "home", "push_red_click", 0, 0, String.valueOf(((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.k.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue()), "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.11
  * JD-Core Version:    0.7.0.1
  */

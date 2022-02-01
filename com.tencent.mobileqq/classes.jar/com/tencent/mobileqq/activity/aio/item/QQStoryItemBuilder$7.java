@@ -16,23 +16,23 @@ class QQStoryItemBuilder$7
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("QQStoryItemBuilder handleGetVideo 3: fileName = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("QQStoryItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder;
-    ((QQStoryItemBuilder.QQStoryMsgHolder)localObject).jdField_a_of_type_Boolean = true;
-    ((QQStoryItemBuilder.QQStoryMsgHolder)localObject).jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-    PlayModeUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOriginalMaskPicUrl, false, this.this$0.a, this.this$0.d);
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, this.jdField_a_of_type_JavaLangString);
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Boolean);
-    this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Boolean);
-    QQStoryItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    Object localObject = this.b;
+    ((QQStoryItemBuilder.QQStoryMsgHolder)localObject).C = true;
+    ((QQStoryItemBuilder.QQStoryMsgHolder)localObject).x.b();
+    this.b.x.setVisibility(8);
+    PlayModeUtils.a(this.b.d, this.c.mLocalMaskPath, this.c.mOriginalMaskPicUrl, false, this.this$0.z, this.this$0.A);
+    this.this$0.a(this.b, this.d, this.c.mVideoWidth, this.c.mVideoHeight, this.c.mVideoThumbnailUrl, this.a);
+    this.this$0.b(this.b, this.d, this.c, this.e);
+    this.this$0.c(this.b, this.d, this.c, this.e);
+    QQStoryItemBuilder.a(this.this$0, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

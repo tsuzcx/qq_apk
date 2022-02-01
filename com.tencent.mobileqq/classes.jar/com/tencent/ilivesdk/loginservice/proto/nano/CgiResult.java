@@ -8,16 +8,16 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class CgiResult
   extends MessageNano
 {
-  public int a;
   public long a;
-  public ConfigKeyValue a;
-  public String a;
-  public int b;
-  public long b;
   public String b;
-  public int c;
-  public String c;
+  public long c;
   public String d;
+  public String e;
+  public int f;
+  public String g;
+  public ConfigKeyValue h;
+  public int i;
+  public int j;
   
   public CgiResult()
   {
@@ -26,16 +26,16 @@ public final class CgiResult
   
   public CgiResult a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0L;
+    this.b = "";
+    this.c = 0L;
     this.d = "";
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
+    this.e = "";
+    this.f = 0;
+    this.g = "";
+    this.h = null;
+    this.i = 0;
+    this.j = 0;
     this.cachedSize = -1;
     return this;
   }
@@ -44,46 +44,46 @@ public final class CgiResult
   {
     for (;;)
     {
-      int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      int k = paramCodedInputByteBufferNano.readTag();
+      switch (k)
       {
       default: 
-        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, k)) {
           return this;
         }
         break;
       case 80: 
-        this.jdField_c_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.j = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 72: 
-        this.jdField_b_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.i = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 66: 
-        if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue == null) {
-          this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue = new ConfigKeyValue();
+        if (this.h == null) {
+          this.h = new ConfigKeyValue();
         }
-        paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+        paramCodedInputByteBufferNano.readMessage(this.h);
         break;
       case 58: 
-        this.d = paramCodedInputByteBufferNano.readString();
+        this.g = paramCodedInputByteBufferNano.readString();
         break;
       case 48: 
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.f = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 42: 
-        this.jdField_c_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.e = paramCodedInputByteBufferNano.readString();
         break;
       case 34: 
-        this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.d = paramCodedInputByteBufferNano.readString();
         break;
       case 24: 
-        this.jdField_b_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.c = paramCodedInputByteBufferNano.readUInt64();
         break;
       case 18: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.b = paramCodedInputByteBufferNano.readString();
         break;
       case 8: 
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.a = paramCodedInputByteBufferNano.readUInt64();
       }
     }
     return this;
@@ -91,100 +91,100 @@ public final class CgiResult
   
   protected int computeSerializedSize()
   {
-    int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
-    int i = j;
+    int m = super.computeSerializedSize();
+    long l = this.a;
+    int k = m;
     if (l != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
+      k = m + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
-    j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    m = k;
+    if (!this.b.equals("")) {
+      m = k + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
-    l = this.jdField_b_of_type_Long;
-    i = j;
+    l = this.c;
+    k = m;
     if (l != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
+      k = m + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
-    j = i;
-    if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(4, this.jdField_b_of_type_JavaLangString);
-    }
-    i = j;
-    if (!this.jdField_c_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(5, this.jdField_c_of_type_JavaLangString);
-    }
-    int k = this.jdField_a_of_type_Int;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(6, k);
-    }
-    i = j;
+    m = k;
     if (!this.d.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(7, this.d);
+      m = k + CodedOutputByteBufferNano.computeStringSize(4, this.d);
     }
-    ConfigKeyValue localConfigKeyValue = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue;
-    j = i;
+    k = m;
+    if (!this.e.equals("")) {
+      k = m + CodedOutputByteBufferNano.computeStringSize(5, this.e);
+    }
+    int n = this.f;
+    m = k;
+    if (n != 0) {
+      m = k + CodedOutputByteBufferNano.computeUInt32Size(6, n);
+    }
+    k = m;
+    if (!this.g.equals("")) {
+      k = m + CodedOutputByteBufferNano.computeStringSize(7, this.g);
+    }
+    ConfigKeyValue localConfigKeyValue = this.h;
+    m = k;
     if (localConfigKeyValue != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(8, localConfigKeyValue);
+      m = k + CodedOutputByteBufferNano.computeMessageSize(8, localConfigKeyValue);
     }
-    k = this.jdField_b_of_type_Int;
-    i = j;
-    if (k != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(9, k);
+    n = this.i;
+    k = m;
+    if (n != 0) {
+      k = m + CodedOutputByteBufferNano.computeUInt32Size(9, n);
     }
-    k = this.jdField_c_of_type_Int;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(10, k);
+    n = this.j;
+    m = k;
+    if (n != 0) {
+      m = k + CodedOutputByteBufferNano.computeUInt32Size(10, n);
     }
-    return j;
+    return m;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
-    l = this.jdField_b_of_type_Long;
+    l = this.c;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
-    if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(4, this.jdField_b_of_type_JavaLangString);
-    }
-    if (!this.jdField_c_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(5, this.jdField_c_of_type_JavaLangString);
-    }
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(6, i);
-    }
     if (!this.d.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(7, this.d);
+      paramCodedOutputByteBufferNano.writeString(4, this.d);
     }
-    ConfigKeyValue localConfigKeyValue = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue;
+    if (!this.e.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(5, this.e);
+    }
+    int k = this.f;
+    if (k != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(6, k);
+    }
+    if (!this.g.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(7, this.g);
+    }
+    ConfigKeyValue localConfigKeyValue = this.h;
     if (localConfigKeyValue != null) {
       paramCodedOutputByteBufferNano.writeMessage(8, localConfigKeyValue);
     }
-    i = this.jdField_b_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(9, i);
+    k = this.i;
+    if (k != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(9, k);
     }
-    i = this.jdField_c_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(10, i);
+    k = this.j;
+    if (k != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(10, k);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.CgiResult
  * JD-Core Version:    0.7.0.1
  */

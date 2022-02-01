@@ -15,8 +15,8 @@ import com.tencent.pts.utils.PTSDeviceUtil;
 import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 
-public abstract class PTSNodeTextBase<T extends TextView>
-  extends PTSNodeVirtual<T>
+public abstract class PTSNodeTextBase
+  extends PTSNodeVirtual
 {
   public static final String STYLE_ITALIC = "italic";
   public static final String TAG = "PTSNodeTextBase";
@@ -36,9 +36,9 @@ public abstract class PTSNodeTextBase<T extends TextView>
   private String textAlign = "left";
   private int textColor = -16777216;
   
-  public PTSNodeTextBase(PTSAppInstance paramPTSAppInstance)
+  public PTSNodeTextBase(PTSAppInstance paramPTSAppInstance, String paramString1, String paramString2)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, paramString1, paramString2);
   }
   
   public static float getHeightOffset(float paramFloat, int paramInt)
@@ -55,30 +55,7 @@ public abstract class PTSNodeTextBase<T extends TextView>
       localTextPaint = new TextPaint();
     }
     localTextPaint.setTextSize(PTSDeviceUtil.dp2px(paramFloat2));
-    float f1 = PTSDeviceUtil.dp2px(paramFloat1);
-    float f2 = f1 - localTextPaint.getFontMetricsInt(null);
-    if (PTSLog.isDebug())
-    {
-      paramTextPaint = new StringBuilder();
-      paramTextPaint.append("[getLineSpacing], ");
-      paramTextPaint.append("lineSpacing = ");
-      paramTextPaint.append(f2);
-      paramTextPaint.append(" px, ");
-      paramTextPaint.append("lineHeight = ");
-      paramTextPaint.append(paramFloat1);
-      paramTextPaint.append(" dp, ");
-      paramTextPaint.append("fontSize = ");
-      paramTextPaint.append(paramFloat2);
-      paramTextPaint.append(" sp, ");
-      paramTextPaint.append("lineHeightPx = ");
-      paramTextPaint.append(f1);
-      paramTextPaint.append(" px, ");
-      paramTextPaint.append("fontSizePx = ");
-      paramTextPaint.append(PTSDeviceUtil.dp2px(paramFloat2));
-      paramTextPaint.append(" px, ");
-      PTSLog.i("PTSNodeTextBase", paramTextPaint.toString());
-    }
-    return f2;
+    return PTSDeviceUtil.dp2px(paramFloat1) - localTextPaint.getFontMetricsInt(null);
   }
   
   public static float getWidthOffset(float paramFloat, int paramInt)
@@ -239,7 +216,7 @@ public abstract class PTSNodeTextBase<T extends TextView>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeTextBase
  * JD-Core Version:    0.7.0.1
  */

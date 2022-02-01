@@ -15,22 +15,22 @@ class VideoController$36
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    long l = AudioHelper.a() / 1000L;
-    Iterator localIterator = VideoController.a(this.this$0).iterator();
+    long l = AudioHelper.b() / 1000L;
+    Iterator localIterator = VideoController.d(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       VideoController.GAudioFriends localGAudioFriends = (VideoController.GAudioFriends)localIterator.next();
-      if ((localGAudioFriends.h) || (localGAudioFriends.e + 60L > l)) {
+      if ((localGAudioFriends.w) || (localGAudioFriends.x + 60L > l)) {
         localArrayList.add(localGAudioFriends);
       }
     }
-    if (localArrayList.size() != VideoController.a(this.this$0).size())
+    if (localArrayList.size() != VideoController.d(this.this$0).size())
     {
       VideoController.a(this.this$0, localArrayList);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(1L), Long.valueOf(1L), VideoController.a(this.this$0) });
+      this.this$0.e.a(new Object[] { Integer.valueOf(708), Long.valueOf(1L), Long.valueOf(1L), VideoController.d(this.this$0) });
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(VideoController.b(this.this$0), 10000L);
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList call mRemoveUnAttenedMember");
+    this.this$0.e.a().postDelayed(VideoController.e(this.this$0), 10000L);
+    QLog.d(VideoController.a, 1, "InviteMemberList call mRemoveUnAttenedMember");
   }
 }
 

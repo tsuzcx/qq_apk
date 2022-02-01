@@ -12,7 +12,7 @@ public class TriangleView
   extends View
 {
   private int direction;
-  private int drawColor = getResources().getColor(2131165528);
+  private int drawColor = getResources().getColor(2131165855);
   
   public TriangleView(Context paramContext, int paramInt1, int paramInt2)
   {
@@ -52,7 +52,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

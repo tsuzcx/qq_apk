@@ -27,53 +27,48 @@ import com.tencent.qphone.base.util.QLog;
 public class ChatDrawerHelper
   implements OnFinishListener, ILifeCycleHelper, OnActivityResultCallback, PanelListener
 {
-  private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  public BaseChatDrawer a;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public DrawerFrame a;
+  public BaseChatDrawer b;
+  private final SessionInfo c;
+  private final AIOContext d;
+  private final QQAppInterface e;
   
   public ChatDrawerHelper(AIOContext paramAIOContext)
   {
-    CoreHelperProvider localCoreHelperProvider = paramAIOContext.a();
+    CoreHelperProvider localCoreHelperProvider = paramAIOContext.d();
     localCoreHelperProvider.a(this);
     localCoreHelperProvider.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)paramAIOContext.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-  }
-  
-  public int a()
-  {
-    return 0;
+    this.e = paramAIOContext.a();
+    this.c = ((SessionInfo)paramAIOContext.O());
+    this.d = paramAIOContext;
   }
   
   public BaseChatDrawer a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    Object localObject = this.d;
     if ((!(localObject instanceof FriendAIOContext)) && (!(localObject instanceof RobotContext))) {
       return null;
     }
-    if (!AIODrawerDpc.a())
+    if (!AIODrawerDpc.b())
     {
       QLog.d("intimate_relationship", 1, "createChatDrawer, not support!");
       return null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).a)))
+    localObject = this.c;
+    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).b)))
     {
-      if ((((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equalsIgnoreCase(String.valueOf(66600000L))))
+      if ((((FriendsManager)this.e.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(this.c.b)) && (!this.c.b.equalsIgnoreCase(this.e.getCurrentAccountUin())) && (!this.c.b.equalsIgnoreCase(String.valueOf(66600000L))))
       {
-        if (!FriendIntimateRelationshipHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()))
+        if (!FriendIntimateRelationshipHelper.a(this.e.getCurrentUin()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("intimate_relationship", 2, "aio intimate is close");
           }
           return null;
         }
-        return new IntimateInfoChatDrawer(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+        return new IntimateInfoChatDrawer(this.d.n());
       }
-      QLog.d("intimate_relationship", 1, String.format("createChatDrawer, not friendUin: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }));
+      QLog.d("intimate_relationship", 1, String.format("createChatDrawer, not friendUin: %s", new Object[] { this.c.b }));
       return null;
     }
     QLog.d("intimate_relationship", 1, "createChatDrawer, sessionInfo == null or friendUin is empty");
@@ -83,42 +78,8 @@ public class ChatDrawerHelper
   public void a(DrawerFrame.TouchEventConsumer paramTouchEventConsumer)
   {
     if (paramTouchEventConsumer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(paramTouchEventConsumer);
+      this.a.a(paramTouchEventConsumer);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    BaseChatDrawer localBaseChatDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
-    if (localBaseChatDrawer != null) {
-      localBaseChatDrawer.c(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      BaseChatDrawer localBaseChatDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
-      if ((localBaseChatDrawer != null) && (localBaseChatDrawer.a()))
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.b()) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.a(true);
-        }
-        return true;
-      }
-    }
-    return false;
   }
   
   public boolean a(boolean paramBoolean)
@@ -129,11 +90,50 @@ public class ChatDrawerHelper
   public void b(DrawerFrame.TouchEventConsumer paramTouchEventConsumer)
   {
     if (paramTouchEventConsumer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.b(paramTouchEventConsumer);
+      this.a.b(paramTouchEventConsumer);
     }
   }
   
-  public void d(int paramInt) {}
+  public void b(boolean paramBoolean)
+  {
+    BaseChatDrawer localBaseChatDrawer = this.b;
+    if (localBaseChatDrawer != null) {
+      localBaseChatDrawer.c(paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.a != null)
+    {
+      this.b.a();
+      return true;
+    }
+    return false;
+  }
+  
+  public int bM_()
+  {
+    return 0;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      BaseChatDrawer localBaseChatDrawer = this.b;
+      if ((localBaseChatDrawer != null) && (localBaseChatDrawer.d()))
+      {
+        if (!this.b.h()) {
+          this.b.a(true);
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void e(int paramInt) {}
   
   @NonNull
   public String getTag()
@@ -148,9 +148,9 @@ public class ChatDrawerHelper
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    BaseChatDrawer localBaseChatDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
-    if ((localBaseChatDrawer != null) && (localBaseChatDrawer.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.a(paramInt1, paramInt2, paramIntent);
+    BaseChatDrawer localBaseChatDrawer = this.b;
+    if ((localBaseChatDrawer != null) && (localBaseChatDrawer.d())) {
+      this.b.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -170,43 +170,43 @@ public class ChatDrawerHelper
             if (paramInt != 15) {
               return;
             }
-            localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
+            localObject = this.b;
             if (localObject != null)
             {
-              ((BaseChatDrawer)localObject).e();
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer = null;
+              ((BaseChatDrawer)localObject).g();
+              this.b = null;
             }
           }
           else
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
+            localObject = this.b;
             if (localObject != null) {
-              ((BaseChatDrawer)localObject).d();
+              ((BaseChatDrawer)localObject).f();
             }
           }
         }
         else
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
+          localObject = this.b;
           if (localObject != null) {
-            ((BaseChatDrawer)localObject).c();
+            ((BaseChatDrawer)localObject).e();
           }
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer = a();
+        this.b = a();
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.b();
+      localObject = this.d.s();
       if ((((ViewGroup)localObject).getParent() instanceof DrawerFrame))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = ((DrawerFrame)((ViewGroup)localObject).getParent());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
+        this.a = ((DrawerFrame)((ViewGroup)localObject).getParent());
+        this.a.a();
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = new DrawerFrame(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), (ViewGroup)localObject);
+      this.a = new DrawerFrame(this.d.b(), (ViewGroup)localObject);
     }
   }
   
@@ -215,16 +215,16 @@ public class ChatDrawerHelper
     Object localObject;
     if (paramInt2 == 1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer;
+      localObject = this.b;
       if (localObject != null) {
         ((BaseChatDrawer)localObject).c(false);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer != null)
+    else if (this.b != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-      if ((((PanelManager)localObject).a() == null) || (!(((PanelManager)localObject).a() instanceof BaseVoicetoTextView))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.c(true);
+      localObject = this.d.q();
+      if ((((PanelManager)localObject).c() == null) || (!(((PanelManager)localObject).c() instanceof BaseVoicetoTextView))) {
+        this.b.c(true);
       }
     }
   }
@@ -235,7 +235,7 @@ public class ChatDrawerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ChatDrawerHelper
  * JD-Core Version:    0.7.0.1
  */

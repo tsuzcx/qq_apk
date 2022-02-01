@@ -10,13 +10,13 @@ class GameGrowthGuardianManager$GuardInstructionDialogSkippedRealNameAuthenticat
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.this$0.dismissInner();
     this.this$0.performReport("later_click");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,9 @@ class TroopFileManager$3
     if (paramBundle == null) {
       return;
     }
-    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299168);
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920);
     paramBundle = paramBundle.getString("fileId");
-    int j = TroopFileTransferUtil.Log.a;
+    int j = TroopFileTransferUtil.Log.b;
     paramString1 = new StringBuilder();
     paramString1.append("delete onActionResult: fileId:");
     paramString1.append(paramBundle);
@@ -31,29 +31,29 @@ class TroopFileManager$3
     TroopFileTransferUtil.Log.c("TroopFileManager", j, paramString1.toString());
     if (paramBoolean)
     {
-      this.a.b(paramBundle);
+      this.a.d(paramBundle);
       return;
     }
     if ((paramInt != -302) && (paramInt != -301)) {
       if (paramInt != -121)
       {
         if (paramInt != -103) {
-          QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715146), 0).b(i);
+          QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131912634), 0).show(i);
         }
       }
       else
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715127), 0).b(i);
+        QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131912615), 0).show(i);
         return;
       }
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715143), 0).b(i);
-    this.a.a(paramBundle);
+    QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131912631), 0).show(i);
+    this.a.c(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.3
  * JD-Core Version:    0.7.0.1
  */

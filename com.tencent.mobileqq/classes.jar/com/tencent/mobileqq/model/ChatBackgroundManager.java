@@ -73,36 +73,36 @@ import org.json.JSONObject;
 public class ChatBackgroundManager
   implements Manager
 {
-  public static int a;
-  static Handler jdField_a_of_type_AndroidOsHandler = new ChatBackgroundManager.ReportChatBgHandler(BaseApplication.getContext().getMainLooper());
-  public static int b;
-  public static final String b;
-  static int jdField_c_of_type_Int = 0;
-  static String jdField_c_of_type_JavaLangString;
-  LruCache<String, Vector<Integer>> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
-  String jdField_a_of_type_JavaLangString;
-  Map<String, IPCDownloadListener> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  boolean jdField_a_of_type_Boolean;
-  Map<String, VasDownloadInfo> b;
+  public static final String d;
+  public static int e;
+  public static int f;
+  static String i;
+  static int j = 0;
+  static Handler k;
+  QQAppInterface a = null;
+  String b;
+  Map<String, IPCDownloadListener> c = new ConcurrentHashMap();
+  LruCache<String, Vector<Integer>> g;
+  boolean h;
+  Map<String, VasDownloadInfo> l = new ConcurrentHashMap();
+  private DownloaderFactory m = null;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.PATH_SYSTEM_BACKGROUND_RESOURCE);
     localStringBuilder.append("ChatBgJson.txt");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 0;
+    d = localStringBuilder.toString();
+    e = 1;
+    f = 0;
+    k = new ChatBackgroundManager.ReportChatBgHandler(BaseApplication.getContext().getMainLooper());
   }
   
   public ChatBackgroundManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getAccount();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
+    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface.getAccount();
+    this.m = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
   }
   
   public static int a()
@@ -114,37 +114,25 @@ public class ChatBackgroundManager
       if (localObject.length >= 6)
       {
         boolean bool = "1".equals(localObject[4]);
-        int i = 0;
+        int n = 0;
         if ("1".equals(localObject[5])) {
-          i = 2;
+          n = 2;
         }
-        i = bool | false | i;
+        n = bool | false | n;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("dynamic background DPC value = ");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(n);
           QLog.d("ChatBackground", 2, ((StringBuilder)localObject).toString());
         }
-        return i;
+        return n;
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d("ChatBackground", 2, "dynamic background DPC default value = 3");
     }
     return 3;
-  }
-  
-  public static int a(Context paramContext, String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("chat_background_path_");
-    localStringBuilder.append(paramString1);
-    paramContext = paramContext.getSharedPreferences(localStringBuilder.toString(), 4);
-    if (TextUtils.isEmpty(paramString2)) {
-      return paramContext.getInt("_chat_bg_effect", 0);
-    }
-    return a(paramContext, paramString2);
   }
   
   public static int a(SharedPreferences paramSharedPreferences, String paramString)
@@ -155,25 +143,19 @@ public class ChatBackgroundManager
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("_chat_bg_effect");
-    int i = paramSharedPreferences.getInt(localStringBuilder.toString(), -1);
-    if (i == -1) {
+    int n = paramSharedPreferences.getInt(localStringBuilder.toString(), -1);
+    if (n == -1) {
       return paramSharedPreferences.getInt("_chat_bg_effect", 0);
     }
-    return i;
-  }
-  
-  public static long a()
-  {
-    Runtime localRuntime = Runtime.getRuntime();
-    return localRuntime.maxMemory() - localRuntime.totalMemory() + localRuntime.freeMemory();
+    return n;
   }
   
   private Vector<Integer> a(Context paramContext, SessionInfo paramSessionInfo, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilLruCache;
+    Object localObject = this.g;
     if (localObject == null)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+      this.g = new LruCache(20);
     }
     else
     {
@@ -182,14 +164,14 @@ public class ChatBackgroundManager
         return localObject;
       }
     }
-    if (paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+    if (paramSessionInfo.H.c == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("ChatBackgroundManager", 4, "SessionInfo.chatBg.img == null");
       }
       return null;
     }
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, new Vector(5));
+    this.g.put(paramString, new Vector(5));
     localObject = new ChatBackgroundManager.3(this, paramContext);
     if (QLog.isColorLevel())
     {
@@ -199,30 +181,30 @@ public class ChatBackgroundManager
       paramContext.append(", start extract background theme color.");
       QLog.d("ChatBackgroundManager", 2, paramContext.toString());
     }
-    if (paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (paramSessionInfo.H.c != null)
     {
-      if ((paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))
+      if ((paramSessionInfo.H.c instanceof BitmapDrawable))
       {
-        paramContext = ((BitmapDrawable)paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
+        paramContext = ((BitmapDrawable)paramSessionInfo.H.c).getBitmap();
         if (QLog.isDevelopLevel()) {
           QLog.d("ChatBackgroundManager", 4, "SessionInfo.chatBg.img is BitmapDrawable");
         }
       }
       else
       {
-        paramContext = ImageUtil.c(paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramContext = ImageUtil.c(paramSessionInfo.H.c);
         if (QLog.isDevelopLevel()) {
           QLog.d("ChatBackgroundManager", 4, "SessionInfo.chatBg.img is not BitmapDrawable");
         }
         bool = true;
-        break label235;
+        break label234;
       }
     }
     else {
       paramContext = null;
     }
     boolean bool = false;
-    label235:
+    label234:
     ThreadManager.executeOnFileThread(new ChatBackgroundManager.BgColorExtractJob(this, paramString, paramContext, bool, (ChatBackgroundManager.BgThemeColorExtractListener)localObject));
     return null;
   }
@@ -230,12 +212,12 @@ public class ChatBackgroundManager
   static void a(QQAppInterface paramQQAppInterface, String paramString, StatisticCollector paramStatisticCollector)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put(jdField_c_of_type_JavaLangString, Integer.valueOf(1));
+    localHashMap.put(i, Integer.valueOf(1));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initCurrChatBgNameForReport is:");
-      localStringBuilder.append(jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(i);
       QLog.d("ThemeDownloadTrace", 2, localStringBuilder.toString());
     }
     try
@@ -267,48 +249,6 @@ public class ChatBackgroundManager
     VasMonitorDT.a("individual_v2_background_play_fail", paramString.toString());
   }
   
-  private void a(String paramString1, String paramString2)
-  {
-    boolean bool = paramString1.equals(ThemeBackground.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "theme_bg_setting_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    int i = 1;
-    if ((!bool) && (!paramString1.equals(ThemeBackground.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "theme_bg_aio_path", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))) {
-      i = 0;
-    }
-    if (i != 0) {
-      GlobalImageCache.a.evictAll();
-    }
-    Object localObject = ThemeBackground.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "theme_bg_message_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if ((ThemeUtil.isNowThemeIsDIY()) && (paramString1.equals(localObject)))
-    {
-      localObject = new ThemeDIYData(2130847698, "theme_bg_message_path", 2131166623, "theme_bg_message_path_png", 50, 1);
-      ((ThemeDIYData)localObject).b = new ResData();
-      ResSuitData localResSuitData = new ResSuitData();
-      localResSuitData.jdField_b_of_type_JavaLangString = paramString1;
-      localResSuitData.jdField_c_of_type_JavaLangString = "";
-      localResSuitData.e = "item";
-      localResSuitData.d = "chatBg";
-      paramString1 = DIYThemeUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localResSuitData, 116, localResSuitData.jdField_c_of_type_JavaLangString);
-      new ThemeDiyStyleLogic.DarkBrightnessTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1.jdField_c_of_type_JavaLangString, (ThemeDIYData)localObject, null, new ChatBackgroundManager.4(this)).execute(new Object[0]);
-    }
-  }
-  
-  public static boolean a()
-  {
-    if ((a() & 0x1) != 0)
-    {
-      long l = a();
-      if ((l > 10485760L) && (!DeviceInfoUtils.b())) {
-        return true;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("availableMemory is ");
-      localStringBuilder.append(l);
-      localStringBuilder.append(", too low to play dynamic background");
-      QLog.d("ChatBackground", 1, localStringBuilder.toString());
-    }
-    return false;
-  }
-  
   public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
     paramContext = ChatBackgroundUtil.a(paramContext, paramString1, paramString2);
@@ -322,12 +262,12 @@ public class ChatBackgroundManager
   {
     if ((b(paramFile)) && ((a() & 0x1) != 0))
     {
-      long l = a();
-      if (l <= 10485760L)
+      long l1 = c();
+      if (l1 <= 10485760L)
       {
         paramFile = new StringBuilder();
         paramFile.append("availableMemory is ");
-        paramFile.append(l);
+        paramFile.append(l1);
         paramFile.append(", too low to play dynamic background");
         QLog.d("ChatBackground", 1, paramFile.toString());
         return false;
@@ -337,14 +277,58 @@ public class ChatBackgroundManager
     return false;
   }
   
-  public static void b()
+  public static int b(Context paramContext, String paramString1, String paramString2)
   {
-    jdField_c_of_type_JavaLangString = null;
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDownloadTrace", 2, "ChatBackground destroy() is called");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("chat_background_path_");
+    localStringBuilder.append(paramString1);
+    paramContext = paramContext.getSharedPreferences(localStringBuilder.toString(), 4);
+    if (TextUtils.isEmpty(paramString2)) {
+      return paramContext.getInt("_chat_bg_effect", 0);
     }
+    return a(paramContext, paramString2);
+  }
+  
+  private void b(String paramString1, String paramString2)
+  {
+    boolean bool = paramString1.equals(ThemeBackground.c(this.a.getApp(), "theme_bg_setting_path_png", this.a.getCurrentAccountUin()));
+    int n = 1;
+    if ((!bool) && (!paramString1.equals(ThemeBackground.c(this.a.getApp(), "theme_bg_aio_path", this.a.getCurrentAccountUin())))) {
+      n = 0;
+    }
+    if (n != 0) {
+      GlobalImageCache.a.evictAll();
+    }
+    Object localObject = ThemeBackground.c(this.a.getApp(), "theme_bg_message_path_png", this.a.getCurrentAccountUin());
+    if ((ThemeUtil.isNowThemeIsDIY()) && (paramString1.equals(localObject)))
+    {
+      localObject = new ThemeDIYData(2130849358, "theme_bg_message_path", 2131167543, "theme_bg_message_path_png", 50, 1);
+      ((ThemeDIYData)localObject).i = new ResData();
+      ResSuitData localResSuitData = new ResSuitData();
+      localResSuitData.b = paramString1;
+      localResSuitData.d = "";
+      localResSuitData.g = "item";
+      localResSuitData.f = "chatBg";
+      paramString1 = DIYThemeUtils.a(this.a, localResSuitData, 116, localResSuitData.d);
+      new ThemeDiyStyleLogic.DarkBrightnessTask(this.a.getApp(), this.a, paramString2, paramString1.d, (ThemeDIYData)localObject, null, new ChatBackgroundManager.4(this)).execute(new Object[0]);
+    }
+  }
+  
+  public static boolean b()
+  {
+    if ((a() & 0x1) != 0)
+    {
+      long l1 = c();
+      if ((l1 > 10485760L) && (!DeviceInfoUtils.isLowPerfDevice())) {
+        return true;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("availableMemory is ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(", too low to play dynamic background");
+      QLog.d("ChatBackground", 1, localStringBuilder.toString());
+    }
+    return false;
   }
   
   /* Error */
@@ -357,39 +341,39 @@ public class ChatBackgroundManager
     //   6: aload 5
     //   8: dup
     //   9: iconst_0
-    //   10: ldc_w 482
+    //   10: ldc_w 473
     //   13: bastore
     //   14: dup
     //   15: iconst_1
-    //   16: ldc_w 483
+    //   16: ldc_w 474
     //   19: bastore
     //   20: dup
     //   21: iconst_2
-    //   22: ldc_w 484
+    //   22: ldc_w 475
     //   25: bastore
     //   26: dup
     //   27: iconst_3
-    //   28: ldc_w 485
+    //   28: ldc_w 476
     //   31: bastore
     //   32: dup
     //   33: iconst_4
-    //   34: ldc_w 486
+    //   34: ldc_w 477
     //   37: bastore
     //   38: dup
     //   39: iconst_5
-    //   40: ldc_w 487
+    //   40: ldc_w 478
     //   43: bastore
     //   44: dup
     //   45: bipush 6
-    //   47: ldc_w 488
+    //   47: ldc_w 479
     //   50: bastore
     //   51: dup
     //   52: bipush 7
-    //   54: ldc_w 487
+    //   54: ldc_w 478
     //   57: bastore
     //   58: pop
     //   59: aload_0
-    //   60: invokevirtual 469	java/io/File:exists	()Z
+    //   60: invokevirtual 357	java/io/File:exists	()Z
     //   63: ifne +5 -> 68
     //   66: iconst_0
     //   67: ireturn
@@ -397,11 +381,11 @@ public class ChatBackgroundManager
     //   69: astore 6
     //   71: aconst_null
     //   72: astore 4
-    //   74: new 490	java/io/RandomAccessFile
+    //   74: new 481	java/io/RandomAccessFile
     //   77: dup
     //   78: aload_0
-    //   79: ldc_w 492
-    //   82: invokespecial 495	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   79: ldc_w 483
+    //   82: invokespecial 486	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   85: astore_0
     //   86: aload 5
     //   88: arraylength
@@ -409,7 +393,7 @@ public class ChatBackgroundManager
     //   91: astore 4
     //   93: aload_0
     //   94: aload 4
-    //   96: invokevirtual 499	java/io/RandomAccessFile:read	([B)I
+    //   96: invokevirtual 490	java/io/RandomAccessFile:read	([B)I
     //   99: pop
     //   100: iconst_0
     //   101: istore_1
@@ -429,15 +413,15 @@ public class ChatBackgroundManager
     //   120: iload_3
     //   121: if_icmpeq +22 -> 143
     //   124: aload_0
-    //   125: invokevirtual 502	java/io/RandomAccessFile:close	()V
+    //   125: invokevirtual 493	java/io/RandomAccessFile:close	()V
     //   128: iconst_0
     //   129: ireturn
     //   130: astore_0
-    //   131: ldc 154
+    //   131: ldc 164
     //   133: iconst_1
-    //   134: ldc_w 402
+    //   134: ldc_w 436
     //   137: aload_0
-    //   138: invokestatic 505	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   138: invokestatic 496	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   141: iconst_0
     //   142: ireturn
     //   143: iload_1
@@ -446,15 +430,15 @@ public class ChatBackgroundManager
     //   146: istore_1
     //   147: goto -45 -> 102
     //   150: aload_0
-    //   151: invokevirtual 502	java/io/RandomAccessFile:close	()V
+    //   151: invokevirtual 493	java/io/RandomAccessFile:close	()V
     //   154: iconst_1
     //   155: ireturn
     //   156: astore_0
-    //   157: ldc 154
+    //   157: ldc 164
     //   159: iconst_1
-    //   160: ldc_w 402
+    //   160: ldc_w 436
     //   163: aload_0
-    //   164: invokestatic 505	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   164: invokestatic 496	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   167: iconst_1
     //   168: ireturn
     //   169: astore 4
@@ -472,36 +456,36 @@ public class ChatBackgroundManager
     //   195: astore_0
     //   196: aload_0
     //   197: astore 4
-    //   199: ldc 154
+    //   199: ldc 164
     //   201: iconst_1
-    //   202: ldc_w 402
+    //   202: ldc_w 436
     //   205: aload 5
-    //   207: invokestatic 505	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   207: invokestatic 496	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   210: aload_0
     //   211: ifnull +20 -> 231
     //   214: aload_0
-    //   215: invokevirtual 502	java/io/RandomAccessFile:close	()V
+    //   215: invokevirtual 493	java/io/RandomAccessFile:close	()V
     //   218: iconst_0
     //   219: ireturn
     //   220: astore_0
-    //   221: ldc 154
+    //   221: ldc 164
     //   223: iconst_1
-    //   224: ldc_w 402
+    //   224: ldc_w 436
     //   227: aload_0
-    //   228: invokestatic 505	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   228: invokestatic 496	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   231: iconst_0
     //   232: ireturn
     //   233: aload_0
     //   234: ifnull +21 -> 255
     //   237: aload_0
-    //   238: invokevirtual 502	java/io/RandomAccessFile:close	()V
+    //   238: invokevirtual 493	java/io/RandomAccessFile:close	()V
     //   241: goto +14 -> 255
     //   244: astore_0
-    //   245: ldc 154
+    //   245: ldc 164
     //   247: iconst_1
-    //   248: ldc_w 402
+    //   248: ldc_w 436
     //   251: aload_0
-    //   252: invokestatic 505	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   252: invokestatic 496	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   255: goto +6 -> 261
     //   258: aload 4
     //   260: athrow
@@ -509,9 +493,9 @@ public class ChatBackgroundManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	264	0	paramFile	File
-    //   101	46	1	i	int
-    //   113	9	2	j	int
-    //   118	4	3	k	int
+    //   101	46	1	n	int
+    //   113	9	2	i1	int
+    //   118	4	3	i2	int
     //   72	38	4	arrayOfByte1	byte[]
     //   169	13	4	localObject1	Object
     //   186	73	4	localObject2	Object
@@ -535,11 +519,27 @@ public class ChatBackgroundManager
     //   237	241	244	java/io/IOException
   }
   
+  public static long c()
+  {
+    Runtime localRuntime = Runtime.getRuntime();
+    return localRuntime.maxMemory() - localRuntime.totalMemory() + localRuntime.freeMemory();
+  }
+  
+  public static void j()
+  {
+    i = null;
+    j = 0;
+    k.removeMessages(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "ChatBackground destroy() is called");
+    }
+  }
+  
   public int a(Context paramContext, SessionInfo paramSessionInfo, int paramInt, double paramDouble)
   {
-    if ((paramSessionInfo != null) && (paramSessionInfo.a != null) && (paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if ((paramSessionInfo != null) && (paramSessionInfo.H != null) && (paramSessionInfo.H.c != null))
     {
-      Object localObject2 = paramSessionInfo.a.jdField_a_of_type_JavaLangString;
+      Object localObject2 = paramSessionInfo.H.a;
       Object localObject1;
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!"null".equals(localObject2)))
       {
@@ -575,7 +575,7 @@ public class ChatBackgroundManager
         return -1;
       }
       boolean bool = paramContext.isEmpty();
-      int i = 0;
+      int n = 0;
       if (bool)
       {
         if (QLog.isDevelopLevel())
@@ -588,9 +588,9 @@ public class ChatBackgroundManager
         }
         return 0;
       }
-      while (i < paramContext.size())
+      while (n < paramContext.size())
       {
-        if (a(((Integer)paramContext.get(i)).intValue(), paramInt, paramDouble))
+        if (a(((Integer)paramContext.get(n)).intValue(), paramInt, paramDouble))
         {
           if (QLog.isColorLevel())
           {
@@ -602,7 +602,7 @@ public class ChatBackgroundManager
           }
           return 1;
         }
-        i += 1;
+        n += 1;
       }
       if (QLog.isDevelopLevel())
       {
@@ -619,16 +619,6 @@ public class ChatBackgroundManager
       QLog.d("ChatBackgroundManager", 4, "No Chat Background.");
     }
     return 2;
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("mobileQQ", 4).getInt(d(paramString), 0);
-  }
-  
-  public Bundle a(String paramString)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public ChatBackgroundInfo a(Context paramContext, String paramString)
@@ -676,77 +666,9 @@ public class ChatBackgroundManager
     return null;
   }
   
-  public String a(Context paramContext, String paramString)
-  {
-    ChatBackgroundInfo localChatBackgroundInfo = a(paramContext, paramString);
-    paramContext = "none";
-    if (localChatBackgroundInfo != null)
-    {
-      paramString = localChatBackgroundInfo.thumbUrl;
-      paramContext = paramString;
-      if (paramString != null)
-      {
-        paramContext = paramString;
-        if (!"none".equals(paramString))
-        {
-          paramContext = new StringBuilder();
-          paramContext.append(paramString);
-          paramContext.append("&isOldVersion=");
-          paramContext.append(jdField_b_of_type_Int);
-          return paramContext.toString();
-        }
-      }
-    }
-    do
-    {
-      return paramContext;
-      if (!new File(jdField_b_of_type_JavaLangString).exists()) {
-        break;
-      }
-      paramString = a(paramString);
-      paramContext = paramString;
-    } while ("none".equals(paramString));
-    paramContext = new StringBuilder();
-    paramContext.append(paramString);
-    paramContext.append("?isOldVersion=");
-    paramContext.append(jdField_a_of_type_Int);
-    paramContext = paramContext.toString();
-    return paramContext;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      Object localObject = FileUtils.readFileContent(new File(jdField_b_of_type_JavaLangString));
-      JSONArray localJSONArray = new JSONObject((String)((String)localObject).subSequence(((String)localObject).indexOf("{"), ((String)localObject).length() - 1)).getJSONObject("data").getJSONArray("chatBackground");
-      int j = localJSONArray.length();
-      int i = 0;
-      while (i < j)
-      {
-        localObject = localJSONArray.getJSONObject(i);
-        if (((JSONObject)localObject).getString("id").equals(paramString))
-        {
-          paramString = new StringBuilder();
-          paramString.append("https://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/");
-          paramString.append(((JSONObject)localObject).getString("thumbnail"));
-          paramString = paramString.toString();
-          return paramString;
-        }
-        i += 1;
-      }
-      return "none";
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
   public String a(String paramString1, String paramString2)
   {
-    SharedPreferences localSharedPreferences = ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString1, 4);
+    SharedPreferences localSharedPreferences = ChatBackgroundUtil.a(this.a.getApp(), paramString1, 4);
     if (TextUtils.isEmpty(paramString2))
     {
       paramString1 = localSharedPreferences.getString("chat_uniform_bg", null);
@@ -767,74 +689,19 @@ public class ChatBackgroundManager
     return ChatBackgroundUtil.b(paramString1);
   }
   
-  public HashMap<String, Integer> a()
-  {
-    Object localObject1 = ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = ((SharedPreferences)localObject1).getAll().keySet().iterator();
-    Object localObject2;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (Pattern.compile("[0-9]*").matcher(str).matches())
-      {
-        localObject2 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString(str, "null"));
-        if ((localObject2 != null) && (!((String)localObject2).equals("null")) && (!((String)localObject2).equals("custom"))) {
-          try
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append(str);
-            localStringBuilder.append("_uinType");
-            int i = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), -1);
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append(str);
-            localStringBuilder.append("_");
-            localStringBuilder.append(i);
-            localHashMap.put(localStringBuilder.toString(), Integer.valueOf((String)localObject2));
-          }
-          catch (NumberFormatException localNumberFormatException2)
-          {
-            localNumberFormatException2.printStackTrace();
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("getAllBgId id not number bgId:");
-            localStringBuilder.append((String)localObject2);
-            QLog.e("ChatBackgroundManager", 2, localStringBuilder.toString(), localNumberFormatException2);
-          }
-        }
-      }
-    }
-    localObject1 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString("chat_uniform_bg", "null"));
-    if ((localObject1 != null) && (!((String)localObject1).equals("null")) && (!((String)localObject1).equals("custom"))) {
-      try
-      {
-        localHashMap.put("null", Integer.valueOf((String)localObject1));
-        return localHashMap;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        localNumberFormatException1.printStackTrace();
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("getAllBgId id not number bgId:");
-        ((StringBuilder)localObject2).append((String)localObject1);
-        QLog.e("ChatBackgroundManager", 2, ((StringBuilder)localObject2).toString(), localNumberFormatException1);
-      }
-    }
-    return localHashMap;
-  }
-  
   public Vector<Integer> a(Bitmap paramBitmap)
   {
     Object localObject = VasPalette.a(paramBitmap);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       paramBitmap = ((List)localObject).iterator();
-      int j = 0;
-      int i = 0;
+      int i1 = 0;
+      int n = 0;
       while (paramBitmap.hasNext()) {
-        i += ((VasPalette.OcNode)paramBitmap.next()).jdField_a_of_type_Int;
+        n += ((VasPalette.OcNode)paramBitmap.next()).d;
       }
       paramBitmap = new Vector();
-      float f = ((VasPalette.OcNode)((List)localObject).get(0)).a();
+      float f1 = ((VasPalette.OcNode)((List)localObject).get(0)).b();
       localObject = ((List)localObject).iterator();
       double d1;
       double d2;
@@ -844,48 +711,19 @@ public class ChatBackgroundManager
           break;
         }
         VasPalette.OcNode localOcNode = (VasPalette.OcNode)((Iterator)localObject).next();
-        if (localOcNode.a() / f <= 0.2F) {
+        if (localOcNode.b() / f1 <= 0.2F) {
           break;
         }
-        paramBitmap.add(Integer.valueOf(localOcNode.a()));
-        j += localOcNode.jdField_a_of_type_Int;
-        d1 = j;
-        d2 = i;
+        paramBitmap.add(Integer.valueOf(localOcNode.b()));
+        i1 += localOcNode.d;
+        d1 = i1;
+        d2 = n;
         Double.isNaN(d1);
         Double.isNaN(d2);
       } while (d1 / d2 <= 0.800000011920929D);
       return paramBitmap;
     }
     return null;
-  }
-  
-  public void a()
-  {
-    Object localObject1 = ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-    new HashMap();
-    Iterator localIterator = ((SharedPreferences)localObject1).getAll().keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (Pattern.compile("[0-9]*").matcher(str).matches())
-      {
-        Object localObject2 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString(str, "null"));
-        if ((localObject2 != null) && (!((String)localObject2).equals("null")) && (!((String)localObject2).equals("custom")))
-        {
-          localEditor.remove(str);
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(str);
-          ((StringBuilder)localObject2).append("_uinType");
-          localEditor.remove(((StringBuilder)localObject2).toString());
-        }
-      }
-    }
-    localObject1 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString("chat_uniform_bg", "null"));
-    if ((localObject1 != null) && (!((String)localObject1).equals("null")) && (!((String)localObject1).equals("custom"))) {
-      localEditor.remove("chat_uniform_bg");
-    }
-    localEditor.commit();
   }
   
   public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3)
@@ -904,7 +742,7 @@ public class ChatBackgroundManager
     QLog.d("ChatBackgroundManager", 1, ((StringBuilder)localObject1).toString());
     if ("99".equals(String.valueOf(paramInt1)))
     {
-      ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1), paramInt2, paramInt3);
+      ChatBackgroundUtil.a(this.a.getApp().getApplicationContext(), this.a.getCurrentUin(), paramString1, ChatBackgroundUtil.a(this.a.getApp().getApplicationContext(), this.a.getCurrentUin(), paramString1), paramInt2, paramInt3);
       return;
     }
     if ((!"100".equals(String.valueOf(paramInt1))) && (!"0".equals(String.valueOf(paramInt1))))
@@ -917,7 +755,7 @@ public class ChatBackgroundManager
       Object localObject2 = ChatBackgroundUtil.a(true, String.valueOf(paramInt1));
       if (new File((String)localObject2).exists())
       {
-        ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, (String)localObject2, paramInt2, paramInt3);
+        ChatBackgroundUtil.a(this.a.getApp().getApplicationContext(), this.a.getCurrentUin(), paramString1, (String)localObject2, paramInt2, paramInt3);
         return;
       }
       ((ChatBackgroundInfo)localObject1).id = String.valueOf(paramInt1);
@@ -926,10 +764,10 @@ public class ChatBackgroundManager
       ((StringBuilder)localObject2).append("_");
       ((StringBuilder)localObject2).append(paramInt1);
       a(((StringBuilder)localObject2).toString(), new ChatBackgroundManager.1(this, paramString1, paramInt2, paramInt3));
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatBackgroundInfo)localObject1, paramString2);
+      a(this.a, (ChatBackgroundInfo)localObject1, paramString2);
       return;
     }
-    ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, "null", paramInt2, paramInt3);
+    ChatBackgroundUtil.a(this.a.getApp().getApplicationContext(), this.a.getCurrentUin(), paramString1, "null", paramInt2, paramInt3);
   }
   
   void a(int paramInt, String paramString, long paramLong)
@@ -943,10 +781,10 @@ public class ChatBackgroundManager
       localStringBuilder.append(paramString);
       QLog.i("ChatBackgroundManager", 2, localStringBuilder.toString());
     }
-    int i = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    int n = NetworkUtil.getSystemNetwork(this.a.getApp().getApplicationContext());
+    paramString = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
+    localStringBuilder.append(n);
     localStringBuilder.append("");
     ReportController.b(paramString, "CliOper", "", "", "chatbackground", "BjIDXiazai", 0, paramInt, "0", "0", localStringBuilder.toString(), String.valueOf(paramLong));
   }
@@ -954,52 +792,52 @@ public class ChatBackgroundManager
   public void a(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     String str = paramString1.substring(7, paramString1.length());
-    paramString2 = (VasDownloadInfo)this.jdField_b_of_type_JavaUtilMap.get(str);
+    paramString2 = (VasDownloadInfo)this.l.get(str);
     paramString1 = paramString2;
     if (paramString2 == null)
     {
       paramString1 = new VasDownloadInfo();
-      paramString1.jdField_a_of_type_JavaLangString = str;
+      paramString1.a = str;
     }
-    paramString1.jdField_b_of_type_JavaLangString = paramString3;
+    paramString1.b = paramString3;
     boolean bool;
     if (paramInt1 == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    paramString1.jdField_a_of_type_Boolean = bool;
-    paramString1.jdField_b_of_type_Int = paramInt1;
-    paramString1.jdField_b_of_type_Long = System.currentTimeMillis();
-    paramInt2 = paramString1.jdField_a_of_type_Boolean ^ true;
-    paramLong = paramString1.jdField_b_of_type_Long;
-    long l = paramString1.jdField_a_of_type_Long;
+    paramString1.d = bool;
+    paramString1.e = paramInt1;
+    paramString1.h = System.currentTimeMillis();
+    paramInt2 = paramString1.d ^ true;
+    paramLong = paramString1.h;
+    long l1 = paramString1.g;
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
       paramString2.append("endDownload  id=");
-      paramString2.append(paramString1.jdField_a_of_type_Boolean);
+      paramString2.append(paramString1.d);
       paramString2.append("result =");
       paramString2.append(paramInt2);
       QLog.d("ChatBackgroundManager", 2, paramString2.toString());
     }
-    if (paramString1.jdField_a_of_type_Boolean)
+    if (paramString1.d)
     {
-      a(0, paramString1.jdField_a_of_type_JavaLangString, paramLong - l);
+      a(0, paramString1.a, paramLong - l1);
     }
     else
     {
-      a(1, paramString1.jdField_a_of_type_JavaLangString, 0L);
+      a(1, paramString1.a, 0L);
       paramString2 = new StringBuilder();
       paramString2.append("chatbg downloadfail:id = ");
-      paramString2.append(paramString1.jdField_a_of_type_JavaLangString);
+      paramString2.append(paramString1.a);
       paramString2.append(";result =");
       paramString2.append(paramInt2);
       QLog.d("ChatBackgroundManager", 1, paramString2.toString());
     }
     if (paramInt1 == 0)
     {
-      paramString3 = e(str);
+      paramString3 = g(str);
       paramString2 = ChatBackgroundUtil.a(str);
       File localFile = new File(paramString3);
       if (!localFile.exists())
@@ -1015,7 +853,7 @@ public class ChatBackgroundManager
         {
           FileUtils.uncompressZip(localFile.getAbsolutePath(), paramString2, false);
           VasUpdateUtil.a(localFile);
-          a(str, ChatBackgroundUtil.a(true, str));
+          b(str, ChatBackgroundUtil.a(true, str));
         }
         catch (Throwable localThrowable)
         {
@@ -1053,19 +891,19 @@ public class ChatBackgroundManager
       paramString2.append(paramInt1);
       QLog.d("ChatBackgroundManager", 2, paramString2.toString());
     }
-    if ((!this.jdField_a_of_type_JavaUtilMap.isEmpty()) && (paramString1.jdField_a_of_type_AndroidOsBundle != null) && (paramString1.jdField_a_of_type_AndroidOsBundle.containsKey("callbackId")))
+    if ((!this.c.isEmpty()) && (paramString1.i != null) && (paramString1.i.containsKey("callbackId")))
     {
       paramString2 = new StringBuilder();
-      paramString2.append(paramString1.jdField_a_of_type_AndroidOsBundle.getString("callbackId"));
+      paramString2.append(paramString1.i.getString("callbackId"));
       paramString2.append("_");
-      paramString2.append(paramString1.jdField_a_of_type_AndroidOsBundle.getInt("id"));
+      paramString2.append(paramString1.i.getInt("id"));
       paramString2 = paramString2.toString();
-      paramString2 = (IPCDownloadListener)this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
+      paramString2 = (IPCDownloadListener)this.c.remove(paramString2);
       if (paramString2 == null) {}
     }
     try
     {
-      paramString2.a(Integer.valueOf(str).intValue(), paramInt2, paramString1.jdField_a_of_type_AndroidOsBundle);
+      paramString2.a(Integer.valueOf(str).intValue(), paramInt2, paramString1.i);
       return;
     }
     catch (NumberFormatException paramString1)
@@ -1079,56 +917,24 @@ public class ChatBackgroundManager
     QLog.e("ChatBackgroundManager", 2, paramString1.toString());
   }
   
-  public void a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 4);
-    if ((paramString != null) && (paramString.trim().length() != 0))
-    {
-      paramString = d(paramString);
-      int i = paramContext.getInt(paramString, 0);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("oldCount is:");
-        localStringBuilder.append(i);
-        QLog.d("ChatBackgroundManager", 2, localStringBuilder.toString());
-      }
-      paramContext = paramContext.edit();
-      i += 1;
-      paramContext.putInt(paramString, i);
-      paramContext.commit();
-      if (QLog.isColorLevel())
-      {
-        paramContext = new StringBuilder();
-        paramContext.append("save count is:");
-        paramContext.append(i);
-        QLog.d("ChatBackgroundManager", 2, paramContext.toString());
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ChatBackgroundManager", 2, "uin is empty,not save switch bg times");
-    }
-  }
-  
   public void a(Intent paramIntent)
   {
     Object localObject = paramIntent.getExtras();
     if (localObject != null)
     {
-      paramIntent = ChatActivityUtils.b(((Bundle)localObject).getInt("uintype", 999));
-      int i = ((Bundle)localObject).getInt("bg_replace_entrance", 999);
+      paramIntent = ChatActivityUtils.c(((Bundle)localObject).getInt("uintype", 999));
+      int n = ((Bundle)localObject).getInt("bg_replace_entrance", 999);
       if (QLog.isDevelopLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(" uin_type : ");
         ((StringBuilder)localObject).append(paramIntent);
         ((StringBuilder)localObject).append(" entrance_type ： ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(n);
         QLog.d("reportEvent", 4, ((StringBuilder)localObject).toString());
       }
-      if (i != 999) {
-        ReportController.b(null, "CliOper", "", "", "background", "bkground_replace", i, 0, "0", "0", "", "");
+      if (n != 999) {
+        ReportController.b(null, "CliOper", "", "", "background", "bkground_replace", n, 0, "0", "0", "", "");
       }
     }
   }
@@ -1136,20 +942,20 @@ public class ChatBackgroundManager
   public void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt)
   {
     String str = paramString.substring(7, paramString.length());
-    paramString = (VasDownloadInfo)this.jdField_b_of_type_JavaUtilMap.get(str);
+    paramString = (VasDownloadInfo)this.l.get(str);
     paramQQAppInterface = paramString;
     if (paramString == null)
     {
       paramQQAppInterface = new VasDownloadInfo();
-      paramQQAppInterface.jdField_a_of_type_JavaLangString = str;
-      this.jdField_b_of_type_JavaUtilMap.put(str, paramQQAppInterface);
+      paramQQAppInterface.a = str;
+      this.l.put(str, paramQQAppInterface);
     }
-    paramQQAppInterface.jdField_a_of_type_Int = paramInt;
+    paramQQAppInterface.c = paramInt;
   }
   
   public void a(QQAppInterface paramQQAppInterface, ChatBackgroundInfo paramChatBackgroundInfo, String paramString)
   {
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramQQAppInterface = this.a;
     if ((paramQQAppInterface != null) && ((paramString != null) || (DownloaderFactory.a(paramQQAppInterface.getApp().getApplicationContext()))) && (paramChatBackgroundInfo != null))
     {
       paramQQAppInterface = paramChatBackgroundInfo.id;
@@ -1171,77 +977,74 @@ public class ChatBackgroundManager
     paramString.append("startDownload parse id faild, id = ");
     paramString.append(paramQQAppInterface);
     QLog.e("ChatBackgroundManager", 2, paramString.toString());
-    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), paramChatBackgroundInfo.id) == null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), paramChatBackgroundInfo);
+    if (a(this.a.getApplication().getApplicationContext(), paramChatBackgroundInfo.id) == null) {
+      a(this.a.getApplication().getApplicationContext(), paramChatBackgroundInfo);
     }
     ((Bundle)localObject).putSerializable("chatbgInfo", paramChatBackgroundInfo);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
-      this.jdField_a_of_type_Boolean = VipFunCallUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), "ChatBackgroundManager", false);
-      if ((QLog.isColorLevel()) || (!this.jdField_a_of_type_Boolean))
+      this.h = VipFunCallUtil.a(this.a.getApplication(), "ChatBackgroundManager", false);
+      if ((QLog.isColorLevel()) || (!this.h))
       {
         paramString = new StringBuilder();
         paramString.append("startDownload mhaveSDCard:");
-        paramString.append(this.jdField_a_of_type_Boolean);
+        paramString.append(this.h);
         QLog.d("ChatBackgroundManager", 2, paramString.toString());
       }
     }
     paramString = new VasDownloadInfo();
-    paramString.jdField_a_of_type_JavaLangString = paramQQAppInterface;
-    paramString.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramString.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    this.jdField_b_of_type_JavaUtilMap.put(paramChatBackgroundInfo.id, paramString);
-    paramString = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+    paramString.a = paramQQAppInterface;
+    paramString.g = System.currentTimeMillis();
+    paramString.i = ((Bundle)localObject);
+    this.l.put(paramChatBackgroundInfo.id, paramString);
+    paramString = (IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("chatbg.");
     ((StringBuilder)localObject).append(paramChatBackgroundInfo.id);
     paramString.downloadItem(8L, ((StringBuilder)localObject).toString(), "ChatBackgroundRes");
-    if (QLog.isColorLevel())
-    {
-      paramChatBackgroundInfo = new StringBuilder();
-      paramChatBackgroundInfo.append("startDownload  id=");
-      paramChatBackgroundInfo.append(paramQQAppInterface);
-      QLog.d("ChatBackgroundManager", 2, paramChatBackgroundInfo.toString());
-    }
+    paramChatBackgroundInfo = new StringBuilder();
+    paramChatBackgroundInfo.append("startDownload  id=");
+    paramChatBackgroundInfo.append(paramQQAppInterface);
+    QLog.d("ChatBackgroundManager", 1, paramChatBackgroundInfo.toString());
     return;
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append("startDownload error mApp=");
-    paramQQAppInterface.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramQQAppInterface.append(this.a);
     QLog.d("ChatBackgroundManager", 2, paramQQAppInterface.toString());
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    jdField_c_of_type_JavaLangString = null;
+    j = 0;
+    k.removeMessages(1);
+    i = null;
     paramQQAppInterface.execute(new ChatBackgroundManager.2(this, paramString, paramQQAppInterface));
   }
   
   public void a(String paramString, IPCDownloadListener paramIPCDownloadListener)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramIPCDownloadListener);
+    this.c.put(paramString, paramIPCDownloadListener);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramString1, paramString2, paramString3, paramInt);
+    ChatBackgroundUtil.a(this.a.getApp().getApplicationContext(), paramString1, paramString2, paramString3, paramInt);
     ReportController.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "0", "0", "", ChatBackgroundUtil.b(paramString3));
   }
   
   public boolean a(int paramInt1, int paramInt2, double paramDouble)
   {
-    int i = Color.red(paramInt1);
-    int j = Color.green(paramInt1);
-    int k = Color.blue(paramInt1);
-    int m = Color.red(paramInt2);
-    int n = Color.green(paramInt2);
-    int i1 = Color.blue(paramInt2);
-    double d1 = Math.abs(i * i - m * m);
+    int n = Color.red(paramInt1);
+    int i1 = Color.green(paramInt1);
+    int i2 = Color.blue(paramInt1);
+    int i3 = Color.red(paramInt2);
+    int i4 = Color.green(paramInt2);
+    int i5 = Color.blue(paramInt2);
+    double d1 = Math.abs(n * n - i3 * i3);
     Double.isNaN(d1);
-    double d2 = Math.abs(j * j - n * n);
+    double d2 = Math.abs(i1 * i1 - i4 * i4);
     Double.isNaN(d2);
-    double d3 = Math.abs(k * k - i1 * i1);
+    double d3 = Math.abs(i2 * i2 - i5 * i5);
     Double.isNaN(d3);
     d1 = d1 * 0.299D + d2 * 0.587D + d3 * 0.114D;
     if (QLog.isDevelopLevel())
@@ -1320,24 +1123,226 @@ public class ChatBackgroundManager
     return false;
   }
   
-  public boolean a(String paramString)
+  public String b(Context paramContext, String paramString)
   {
-    paramString = new File(ChatBackgroundUtil.a(paramString));
-    if (!paramString.exists()) {
-      paramString.mkdirs();
+    ChatBackgroundInfo localChatBackgroundInfo = a(paramContext, paramString);
+    paramContext = "none";
+    if (localChatBackgroundInfo != null)
+    {
+      paramString = localChatBackgroundInfo.thumbUrl;
+      paramContext = paramString;
+      if (paramString != null)
+      {
+        paramContext = paramString;
+        if (!"none".equals(paramString))
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(paramString);
+          paramContext.append("&isOldVersion=");
+          paramContext.append(f);
+          return paramContext.toString();
+        }
+      }
     }
-    return new File(paramString.getAbsoluteFile(), "aioImage").exists();
+    do
+    {
+      return paramContext;
+      if (!new File(d).exists()) {
+        break;
+      }
+      paramString = b(paramString);
+      paramContext = paramString;
+    } while ("none".equals(paramString));
+    paramContext = new StringBuilder();
+    paramContext.append(paramString);
+    paramContext.append("?isOldVersion=");
+    paramContext.append(e);
+    paramContext = paramContext.toString();
+    return paramContext;
   }
   
   public String b(String paramString)
   {
-    return ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, paramString);
+    try
+    {
+      Object localObject = FileUtils.readFileContent(new File(d));
+      JSONArray localJSONArray = new JSONObject((String)((String)localObject).subSequence(((String)localObject).indexOf("{"), ((String)localObject).length() - 1)).getJSONObject("data").getJSONArray("chatBackground");
+      int i1 = localJSONArray.length();
+      int n = 0;
+      while (n < i1)
+      {
+        localObject = localJSONArray.getJSONObject(n);
+        if (((JSONObject)localObject).getString("id").equals(paramString))
+        {
+          paramString = new StringBuilder();
+          paramString.append("https://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/");
+          paramString.append(((JSONObject)localObject).getString("thumbnail"));
+          paramString = paramString.toString();
+          return paramString;
+        }
+        n += 1;
+      }
+      return "none";
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public HashMap<String, Integer> b()
+  public String c(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return ChatBackgroundUtil.a(this.a.getApp(), this.b, paramString);
+  }
+  
+  public void c(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 4);
+    if ((paramString != null) && (paramString.trim().length() != 0))
+    {
+      paramString = e(paramString);
+      int n = paramContext.getInt(paramString, 0);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("oldCount is:");
+        localStringBuilder.append(n);
+        QLog.d("ChatBackgroundManager", 2, localStringBuilder.toString());
+      }
+      paramContext = paramContext.edit();
+      n += 1;
+      paramContext.putInt(paramString, n);
+      paramContext.commit();
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("save count is:");
+        paramContext.append(n);
+        QLog.d("ChatBackgroundManager", 2, paramContext.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ChatBackgroundManager", 2, "uin is empty,not save switch bg times");
+    }
+  }
+  
+  public int d(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("mobileQQ", 4).getInt(e(paramString), 0);
+  }
+  
+  public String d(String paramString)
+  {
+    return a(this.b, paramString);
+  }
+  
+  public HashMap<String, Integer> d()
+  {
+    Object localObject1 = ChatBackgroundUtil.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), 4);
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = ((SharedPreferences)localObject1).getAll().keySet().iterator();
+    Object localObject2;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (Pattern.compile("[0-9]*").matcher(str).matches())
+      {
+        localObject2 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString(str, "null"));
+        if ((localObject2 != null) && (!((String)localObject2).equals("null")) && (!((String)localObject2).equals("custom"))) {
+          try
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str);
+            localStringBuilder.append("_uinType");
+            int n = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), -1);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str);
+            localStringBuilder.append("_");
+            localStringBuilder.append(n);
+            localHashMap.put(localStringBuilder.toString(), Integer.valueOf((String)localObject2));
+          }
+          catch (NumberFormatException localNumberFormatException2)
+          {
+            localNumberFormatException2.printStackTrace();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getAllBgId id not number bgId:");
+            localStringBuilder.append((String)localObject2);
+            QLog.e("ChatBackgroundManager", 2, localStringBuilder.toString(), localNumberFormatException2);
+          }
+        }
+      }
+    }
+    localObject1 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString("chat_uniform_bg", "null"));
+    if ((localObject1 != null) && (!((String)localObject1).equals("null")) && (!((String)localObject1).equals("custom"))) {
+      try
+      {
+        localHashMap.put("null", Integer.valueOf((String)localObject1));
+        return localHashMap;
+      }
+      catch (NumberFormatException localNumberFormatException1)
+      {
+        localNumberFormatException1.printStackTrace();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getAllBgId id not number bgId:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.e("ChatBackgroundManager", 2, ((StringBuilder)localObject2).toString(), localNumberFormatException1);
+      }
+    }
+    return localHashMap;
+  }
+  
+  public String e(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("chat_background_switch_times_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public void e()
+  {
+    Object localObject1 = ChatBackgroundUtil.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), 4);
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+    new HashMap();
+    Iterator localIterator = ((SharedPreferences)localObject1).getAll().keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (Pattern.compile("[0-9]*").matcher(str).matches())
+      {
+        Object localObject2 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString(str, "null"));
+        if ((localObject2 != null) && (!((String)localObject2).equals("null")) && (!((String)localObject2).equals("custom")))
+        {
+          localEditor.remove(str);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append("_uinType");
+          localEditor.remove(((StringBuilder)localObject2).toString());
+        }
+      }
+    }
+    localObject1 = ChatBackgroundUtil.b(((SharedPreferences)localObject1).getString("chat_uniform_bg", "null"));
+    if ((localObject1 != null) && (!((String)localObject1).equals("null")) && (!((String)localObject1).equals("custom"))) {
+      localEditor.remove("chat_uniform_bg");
+    }
+    localEditor.commit();
+  }
+  
+  public void e(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 4);
+    paramString = e(paramString);
+    paramContext = paramContext.edit();
+    paramContext.putInt(paramString, 0);
+    paramContext.commit();
+  }
+  
+  public HashMap<String, Integer> f()
+  {
+    Object localObject1 = this.a.getApplication().getApplicationContext();
+    Object localObject2 = this.a.getCurrentAccountUin();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("chat_background_path_");
     ((StringBuilder)localObject3).append((String)localObject2);
@@ -1366,24 +1371,29 @@ public class ChatBackgroundManager
     return localObject2;
   }
   
-  public void b(Context paramContext, String paramString)
+  public boolean f(String paramString)
   {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 4);
-    paramString = d(paramString);
-    paramContext = paramContext.edit();
-    paramContext.putInt(paramString, 0);
-    paramContext.commit();
+    paramString = new File(ChatBackgroundUtil.a(paramString));
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+    return new File(paramString.getAbsoluteFile(), "aioImage").exists();
   }
   
-  public String c(String paramString)
+  public String g(String paramString)
   {
-    return a(this.jdField_a_of_type_JavaLangString, paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ChatBackgroundUtil.a(paramString));
+    localStringBuilder.append(File.separatorChar);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
-  public HashMap<String, Integer> c()
+  public HashMap<String, Integer> g()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = this.a.getApplication().getApplicationContext();
+    Object localObject2 = this.a.getCurrentAccountUin();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("chat_background_path_");
     ((StringBuilder)localObject3).append((String)localObject2);
@@ -1395,39 +1405,36 @@ public class ChatBackgroundManager
       String str = (String)((Iterator)localObject3).next();
       if (Pattern.compile("[0-9]*").matcher(str).matches())
       {
-        i = a((SharedPreferences)localObject1, str);
-        if (i > 0)
+        n = a((SharedPreferences)localObject1, str);
+        if (n > 0)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append("_uinType");
-          int j = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), -1);
+          int i1 = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), -1);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append("_");
-          localStringBuilder.append(j);
-          ((HashMap)localObject2).put(localStringBuilder.toString(), Integer.valueOf(i));
+          localStringBuilder.append(i1);
+          ((HashMap)localObject2).put(localStringBuilder.toString(), Integer.valueOf(n));
         }
       }
     }
-    int i = a((SharedPreferences)localObject1, "");
-    if (i > 0) {
-      ((HashMap)localObject2).put("null", Integer.valueOf(i));
+    int n = a((SharedPreferences)localObject1, "");
+    if (n > 0) {
+      ((HashMap)localObject2).put("null", Integer.valueOf(n));
     }
     return localObject2;
   }
   
-  public String d(String paramString)
+  public Bundle h(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("chat_background_switch_times_");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public HashMap<String, String> d()
+  public HashMap<String, String> h()
   {
-    SharedPreferences localSharedPreferences = ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
+    SharedPreferences localSharedPreferences = ChatBackgroundUtil.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), 4);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = localSharedPreferences.getAll().keySet().iterator();
     while (localIterator.hasNext())
@@ -1441,20 +1448,10 @@ public class ChatBackgroundManager
     return localHashMap;
   }
   
-  public String e(String paramString)
+  public HashMap<String, Integer> i()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ChatBackgroundUtil.a(paramString));
-    localStringBuilder.append(File.separatorChar);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".zip");
-    return localStringBuilder.toString();
-  }
-  
-  public HashMap<String, Integer> e()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = this.a.getApplication().getApplicationContext();
+    Object localObject2 = this.a.getCurrentAccountUin();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("chat_background_path_");
     ((StringBuilder)localObject3).append((String)localObject2);
@@ -1465,10 +1462,10 @@ public class ChatBackgroundManager
     {
       localObject3 = (String)((Iterator)localObject2).next();
       if (Pattern.compile("[0-9]*").matcher((CharSequence)localObject3).matches()) {
-        ((HashMap)localObject1).put(localObject3, Integer.valueOf(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, (String)localObject3)));
+        ((HashMap)localObject1).put(localObject3, Integer.valueOf(b(this.a.getApp(), this.b, (String)localObject3)));
       }
     }
-    ((HashMap)localObject1).put("_chat_bg_effect", Integer.valueOf(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, "")));
+    ((HashMap)localObject1).put("_chat_bg_effect", Integer.valueOf(b(this.a.getApp(), this.b, "")));
     return localObject1;
   }
   
@@ -1476,7 +1473,7 @@ public class ChatBackgroundManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager
  * JD-Core Version:    0.7.0.1
  */

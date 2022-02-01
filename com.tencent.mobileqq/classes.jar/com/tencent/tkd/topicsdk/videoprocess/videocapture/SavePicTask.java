@@ -14,15 +14,15 @@ import org.jetbrains.annotations.Nullable;
 public final class SavePicTask
   extends AsyncTask<Void, Void, Boolean>
 {
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   @Nullable
-  private SavePicTask.DownloadListener jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener;
-  private final String jdField_a_of_type_JavaLangString;
+  private SavePicTask.DownloadListener a;
+  private final Bitmap b;
+  private final String c;
   
   public SavePicTask(@NotNull Bitmap paramBitmap, @NotNull String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramBitmap;
+    this.c = paramString;
   }
   
   @NotNull
@@ -30,7 +30,7 @@ public final class SavePicTask
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "voids");
     boolean bool;
-    if (CompressUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString, null, 0, 12, null) == 0) {
+    if (CompressUtils.a(this.b, this.c, null, 0, 12, null) == 0) {
       bool = true;
     } else {
       bool = false;
@@ -45,13 +45,13 @@ public final class SavePicTask
   
   public final void a(@Nullable SavePicTask.DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener = paramDownloadListener;
+    this.a = paramDownloadListener;
   }
   
   protected void a(boolean paramBoolean)
   {
     super.onPostExecute(Boolean.valueOf(paramBoolean));
-    SavePicTask.DownloadListener localDownloadListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener;
+    SavePicTask.DownloadListener localDownloadListener = this.a;
     if (localDownloadListener == null) {
       return;
     }
@@ -69,7 +69,7 @@ public final class SavePicTask
   protected void onPreExecute()
   {
     super.onPreExecute();
-    SavePicTask.DownloadListener localDownloadListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener;
+    SavePicTask.DownloadListener localDownloadListener = this.a;
     if (localDownloadListener != null) {
       localDownloadListener.a();
     }
@@ -77,7 +77,7 @@ public final class SavePicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.SavePicTask
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ class MyMemoriesListView$1
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.getState() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.getState() != 1))
+    if ((this.a.b.getState() != 4) && (this.a.b.getState() != 1))
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.setState(1);
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnRefreshListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnRefreshListener.c();
+      this.a.b.setState(1);
+      if (this.a.c != null) {
+        this.a.c.c();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

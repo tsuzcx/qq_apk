@@ -13,14 +13,14 @@ class AEEditorFilterControlPanel$3
   
   public void b(int paramInt, @Nullable MetaMaterial paramMetaMaterial)
   {
-    if ((AEEditorFilterControlPanel.a(this.a).a() == paramInt) && (AEEditorFilterControlPanel.a(this.a) != null)) {
-      AEEditorFilterControlPanel.a(this.a).a(paramInt, paramMetaMaterial);
+    if ((AEEditorFilterControlPanel.c(this.a).c() == paramInt) && (AEEditorFilterControlPanel.b(this.a) != null)) {
+      AEEditorFilterControlPanel.b(this.a).a(paramInt, paramMetaMaterial);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorFilterControlPanel.3
  * JD-Core Version:    0.7.0.1
  */

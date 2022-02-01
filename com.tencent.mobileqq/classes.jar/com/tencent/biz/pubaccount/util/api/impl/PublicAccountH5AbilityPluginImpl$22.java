@@ -17,11 +17,11 @@ class PublicAccountH5AbilityPluginImpl$22
   {
     if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.activity != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.cancleProgressDailog();
+      if (this.c.activity != null) {
+        this.c.cancleProgressDailog();
       }
       String str = paramBundle.getString("pic_server_id");
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startNextUploadTask(paramBundle);
+      this.c.startNextUploadTask(paramBundle);
       if ("-1".equals(str))
       {
         paramBundle = new JSONObject();
@@ -34,8 +34,8 @@ class PublicAccountH5AbilityPluginImpl$22
         {
           localJSONException.printStackTrace();
         }
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        if (this.jdField_a_of_type_Boolean)
+        this.c.callJs(this.a, new String[] { paramBundle.toString() });
+        if (this.b)
         {
           ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
           return;
@@ -43,13 +43,13 @@ class PublicAccountH5AbilityPluginImpl$22
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.sendUuidForMediaIdRequest(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+      this.c.sendUuidForMediaIdRequest(localJSONException, this.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.22
  * JD-Core Version:    0.7.0.1
  */

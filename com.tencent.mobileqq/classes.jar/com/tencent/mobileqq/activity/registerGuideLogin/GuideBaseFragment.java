@@ -12,19 +12,19 @@ import mqq.app.AppRuntime;
 public class GuideBaseFragment
   extends QBaseFragment
 {
-  protected LoginUserPrivateHelper a;
-  protected GuideBaseFragment.GuideCallBack a;
-  protected QBaseActivity a;
-  protected String a;
   protected AppRuntime a;
+  protected QBaseActivity b;
+  protected GuideBaseFragment.GuideCallBack c;
+  protected String d;
+  protected LoginUserPrivateHelper e;
   
   public GuideBaseFragment() {}
   
   @SuppressLint({"ValidFragment"})
   public GuideBaseFragment(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginUserPrivateHelper = new LoginUserPrivateHelper();
+    this.a = paramAppRuntime;
+    this.e = new LoginUserPrivateHelper();
   }
   
   public Dialog a(int paramInt)
@@ -34,7 +34,7 @@ public class GuideBaseFragment
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
   
   public void a(int paramInt, Dialog paramDialog) {}
@@ -43,13 +43,13 @@ public class GuideBaseFragment
   
   public void a(GuideBaseFragment.GuideCallBack paramGuideCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack = paramGuideCallBack;
+    this.c = paramGuideCallBack;
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getQBaseActivity();
+    this.b = getQBaseActivity();
   }
   
   public void onDetach()
@@ -61,7 +61,7 @@ public class GuideBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment
  * JD-Core Version:    0.7.0.1
  */

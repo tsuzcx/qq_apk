@@ -20,18 +20,18 @@ class CapturePtvTemplateManager$5
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResp url: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl);
+      localStringBuilder.append(this.a.resurl);
       localStringBuilder.append(" resultcode: ");
       localStringBuilder.append(paramNetResp.mHttpCode);
       QLog.i("CapturePtvTemplateManager", 2, localStringBuilder.toString());
     }
-    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-    paramNetResp.usable = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(paramNetResp);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)
+    paramNetResp = this.a;
+    paramNetResp.usable = this.b.a(paramNetResp);
+    if (this.a.usable)
     {
       try
       {
-        ZipUtils.unZipFile(new File(CapturePtvTemplateManager.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+        ZipUtils.unZipFile(new File(CapturePtvTemplateManager.e, this.a.md5), CapturePtvTemplateManager.a(this.a.md5));
       }
       catch (IOException paramNetResp)
       {
@@ -39,8 +39,8 @@ class CapturePtvTemplateManager$5
           paramNetResp.printStackTrace();
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a.a();
+      if (this.b.l != null) {
+        this.b.l.a();
       }
     }
   }
@@ -49,7 +49,7 @@ class CapturePtvTemplateManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

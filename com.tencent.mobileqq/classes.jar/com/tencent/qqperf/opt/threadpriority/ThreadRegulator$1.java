@@ -21,11 +21,11 @@ class ThreadRegulator$1
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramMessage.jdField_a_of_type_Int);
+        localStringBuilder.append(paramMessage.a);
         localStringBuilder.append(" cost ");
-        localStringBuilder.append(paramMessage.b - paramMessage.jdField_a_of_type_Long);
+        localStringBuilder.append(paramMessage.c - paramMessage.b);
         localStringBuilder.append(", paused ");
-        localStringBuilder.append(paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+        localStringBuilder.append(paramMessage.d);
         QLog.d("ThreadManager.Regulaotr", 2, localStringBuilder.toString());
       }
       paramMessage.recycle();
@@ -34,7 +34,7 @@ class ThreadRegulator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadRegulator.1
  * JD-Core Version:    0.7.0.1
  */

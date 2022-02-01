@@ -11,7 +11,7 @@ class VideoFeedsShareGuideController$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoFeedsShareGuideController.a(this.a).setVisibility(8);
+    VideoFeedsShareGuideController.b(this.a).setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class VideoFeedsShareGuideController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareGuideController.3
  * JD-Core Version:    0.7.0.1
  */

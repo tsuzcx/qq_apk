@@ -12,11 +12,11 @@ import java.util.List;
 public class TopicLabelListView
   extends LinearLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new TopicLabelListView.1(this);
-  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private final String a = "TopicLabelListView";
+  private Context b;
+  private HorizontalListView c;
+  private List<String> d;
+  private BaseAdapter e = new TopicLabelListView.1(this);
   
   public TopicLabelListView(Context paramContext)
   {
@@ -38,22 +38,22 @@ public class TopicLabelListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(paramContext, 5.0F));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
+    this.b = paramContext;
+    this.c = new HorizontalListView(paramContext);
+    this.c.setDividerWidth((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(paramContext, 5.0F));
+    this.c.setAdapter(this.e);
+    addView(this.c, -1, -1);
   }
   
   public void setData(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+    this.d = paramList;
+    this.e.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView
  * JD-Core Version:    0.7.0.1
  */

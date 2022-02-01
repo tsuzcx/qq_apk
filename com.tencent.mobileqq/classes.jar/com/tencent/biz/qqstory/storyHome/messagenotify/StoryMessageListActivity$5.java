@@ -12,7 +12,7 @@ class StoryMessageListActivity$5
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    StoryReportor.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
+    StoryReportor.a(this.a.e(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 

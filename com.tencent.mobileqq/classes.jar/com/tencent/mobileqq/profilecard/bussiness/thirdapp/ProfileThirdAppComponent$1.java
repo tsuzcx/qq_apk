@@ -32,7 +32,7 @@ class ProfileThirdAppComponent$1
         try
         {
           paramDialogInterface = paramDialogInterface.getStringExtra("extra");
-          ForwardSdkShareOption.a(ProfileThirdAppComponent.access$100(this.this$0), true, "action_game_make_friend", Long.parseLong(paramDialogInterface), -1, HardCodeUtil.a(2131705013));
+          ForwardSdkShareOption.a(ProfileThirdAppComponent.access$100(this.this$0), true, "action_game_make_friend", Long.parseLong(paramDialogInterface), -1, HardCodeUtil.a(2131902904));
         }
         catch (Exception paramDialogInterface)
         {
@@ -45,12 +45,12 @@ class ProfileThirdAppComponent$1
       ProfileThirdAppComponent.access$200(this.this$0).moveTaskToBack(true);
     }
     ProfileThirdAppComponent.access$300(this.this$0).dismiss();
-    com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
+    com.tencent.mobileqq.activity.AddFriendLogicActivity.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.thirdapp.ProfileThirdAppComponent.1
  * JD-Core Version:    0.7.0.1
  */

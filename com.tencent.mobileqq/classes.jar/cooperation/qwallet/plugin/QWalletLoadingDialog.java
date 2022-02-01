@@ -109,7 +109,7 @@ public class QWalletLoadingDialog
               localObject = localLayoutParams1;
               getWindow().setStatusBarColor(0);
               localObject = localLayoutParams1;
-              getWindow().getDecorView().setSystemUiVisibility(1280);
+              getWindow().getDecorView().setSystemUiVisibility(9216);
               break label187;
             }
           }
@@ -119,11 +119,11 @@ public class QWalletLoadingDialog
       }
       label187:
       localObject = localLayoutParams1;
-      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.y, null);
+      paramContext = LayoutInflater.from(paramContext).inflate(R.layout.B, null);
       localObject = paramContext;
       setContentView(paramContext);
       localObject = paramContext;
-      paramContext.findViewById(R.id.bX).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
+      paramContext.findViewById(R.id.ck).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
       localObject = paramContext;
       paramContext.setFitsSystemWindows(false);
       if (localWindow != null)
@@ -147,20 +147,20 @@ public class QWalletLoadingDialog
         paramContext = (Context)localObject;
       }
     }
-    this.mCenterView = ((TextView)paramContext.findViewById(R.id.aw));
+    this.mCenterView = ((TextView)paramContext.findViewById(R.id.aE));
     localObject = this.mCenterView;
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      this.mCenterView.setText(R.string.do);
+      this.mCenterView.setText(R.string.dr);
     }
-    paramContext = (ImageView)paramContext.findViewById(R.id.au);
+    paramContext = (ImageView)paramContext.findViewById(R.id.aC);
     if (paramContext != null)
     {
       paramContext.setVisibility(0);
-      paramContext.setImageResource(R.drawable.Y);
+      paramContext.setImageResource(R.drawable.Z);
     }
-    paramContext = (ImageView)super.findViewById(R.id.be);
+    paramContext = (ImageView)super.findViewById(R.id.bo);
     localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
     ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
     ((TranslateAnimation)localObject).setDuration(800L);
@@ -187,7 +187,7 @@ public class QWalletLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

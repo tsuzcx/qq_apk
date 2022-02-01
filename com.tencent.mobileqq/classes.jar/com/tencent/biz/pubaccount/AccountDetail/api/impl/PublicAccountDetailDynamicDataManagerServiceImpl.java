@@ -127,10 +127,10 @@ public class PublicAccountDetailDynamicDataManagerServiceImpl
     try
     {
       AccountDetailDynamicInfo localAccountDetailDynamicInfo1 = new AccountDetailDynamicInfo();
-      localAccountDetailDynamicInfo1.jdField_a_of_type_Long = paramLong1;
+      localAccountDetailDynamicInfo1.a = paramLong1;
       localAccountDetailDynamicInfo1.c = paramLong3;
       localAccountDetailDynamicInfo1.b = paramLong2;
-      localAccountDetailDynamicInfo1.jdField_a_of_type_Boolean = paramBoolean1;
+      localAccountDetailDynamicInfo1.d = paramBoolean1;
       AccountDetailDynamicInfo localAccountDetailDynamicInfo2 = (AccountDetailDynamicInfo)this.mPuin2AccountDetailDynamicInfoCache.get(Long.valueOf(paramLong1));
       if (localAccountDetailDynamicInfo2 != null)
       {
@@ -195,7 +195,7 @@ public class PublicAccountDetailDynamicDataManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailDynamicDataManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

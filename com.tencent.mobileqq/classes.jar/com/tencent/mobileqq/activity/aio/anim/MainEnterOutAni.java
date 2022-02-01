@@ -20,7 +20,7 @@ public class MainEnterOutAni
   
   public boolean getTransformation(long paramLong, Transformation paramTransformation)
   {
-    if (!AIOEnterInAni.a) {
+    if (!AIOEnterInAni.b) {
       setStartTime(paramLong);
     }
     return super.getTransformation(paramLong, paramTransformation);
@@ -28,7 +28,7 @@ public class MainEnterOutAni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.MainEnterOutAni
  * JD-Core Version:    0.7.0.1
  */

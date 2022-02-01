@@ -10,37 +10,37 @@ import java.io.File;
 
 public class PreferenceUtil
 {
-  private static volatile PreferenceUtil jdField_a_of_type_ComTencentFeaturetoggleUtilsPreferenceUtil;
-  private MMKVPersitence jdField_a_of_type_ComTencentFeaturetoggleMmkvMMKVPersitence = null;
+  private static volatile PreferenceUtil a;
   private MMKVPersitence b = null;
+  private MMKVPersitence c = null;
   
   public PreferenceUtil()
   {
-    a(ToggleSetting.a());
-    if (this.jdField_a_of_type_ComTencentFeaturetoggleMmkvMMKVPersitence == null)
-    {
-      this.jdField_a_of_type_ComTencentFeaturetoggleMmkvMMKVPersitence = new MMKVPersitence();
-      this.jdField_a_of_type_ComTencentFeaturetoggleMmkvMMKVPersitence.a(ToggleSetting.a(), SpManager.a);
-    }
+    a(ToggleSetting.j());
     if (this.b == null)
     {
       this.b = new MMKVPersitence();
-      this.b.a(ToggleSetting.a(), SpManager.b);
+      this.b.a(ToggleSetting.j(), SpManager.a);
+    }
+    if (this.c == null)
+    {
+      this.c = new MMKVPersitence();
+      this.c.a(ToggleSetting.j(), SpManager.b);
     }
   }
   
   public static PreferenceUtil a()
   {
-    if (jdField_a_of_type_ComTencentFeaturetoggleUtilsPreferenceUtil == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentFeaturetoggleUtilsPreferenceUtil == null) {
-          jdField_a_of_type_ComTencentFeaturetoggleUtilsPreferenceUtil = new PreferenceUtil();
+        if (a == null) {
+          a = new PreferenceUtil();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentFeaturetoggleUtilsPreferenceUtil;
+    return a;
   }
   
   private void a(Context paramContext)
@@ -65,7 +65,7 @@ public class PreferenceUtil
     }
   }
   
-  private boolean a(String paramString, Context paramContext)
+  private boolean b(String paramString, Context paramContext)
   {
     paramString = a(paramString, paramContext);
     if (paramString == null) {
@@ -78,12 +78,12 @@ public class PreferenceUtil
   {
     if ((paramContext != null) && (!Utils.a(paramString2)))
     {
-      if (a(paramString1, paramContext)) {
+      if (b(paramString1, paramContext)) {
         return paramLong;
       }
       try
       {
-        long l = a(paramString1, paramContext).a(paramString2, paramLong);
+        long l = a(paramString1, paramContext).b(paramString2, paramLong);
         return l;
       }
       catch (Throwable paramContext)
@@ -101,9 +101,9 @@ public class PreferenceUtil
     if ((!TextUtils.isEmpty(paramString)) && (paramContext != null))
     {
       if (SpManager.a.equals(paramString)) {
-        return this.jdField_a_of_type_ComTencentFeaturetoggleMmkvMMKVPersitence;
+        return this.b;
       }
-      return this.b;
+      return this.c;
     }
     return null;
   }
@@ -112,12 +112,12 @@ public class PreferenceUtil
   {
     if ((paramContext != null) && (!Utils.a(paramString2)))
     {
-      if (a(paramString1, paramContext)) {
+      if (b(paramString1, paramContext)) {
         return paramString3;
       }
       try
       {
-        paramContext = a(paramString1, paramContext).a(paramString2, paramString3);
+        paramContext = a(paramString1, paramContext).b(paramString2, paramString3);
         return paramContext;
       }
       catch (Throwable paramContext)
@@ -134,12 +134,12 @@ public class PreferenceUtil
   {
     if ((paramContext != null) && (!Utils.a(paramString2)))
     {
-      if (a(paramString1, paramContext)) {
+      if (b(paramString1, paramContext)) {
         return false;
       }
       try
       {
-        boolean bool = a(paramString1, paramContext).a(paramString2);
+        boolean bool = a(paramString1, paramContext).b(paramString2);
         return bool;
       }
       catch (Throwable paramContext)
@@ -152,9 +152,31 @@ public class PreferenceUtil
     return false;
   }
   
-  public boolean a(Context paramContext, String paramString1, String paramString2, long paramLong)
+  public String[] a(Context paramContext, String paramString)
   {
-    if ((paramContext != null) && (!Utils.a(paramString2)) && (!a(paramString1, paramContext)))
+    if (paramContext != null)
+    {
+      if (b(paramString, paramContext)) {
+        return null;
+      }
+      try
+      {
+        paramContext = a(paramString, paramContext).c();
+        return paramContext;
+      }
+      catch (Throwable paramContext)
+      {
+        if (!LogUtils.a(paramContext)) {
+          paramContext.printStackTrace();
+        }
+      }
+    }
+    return null;
+  }
+  
+  public boolean b(Context paramContext, String paramString1, String paramString2, long paramLong)
+  {
+    if ((paramContext != null) && (!Utils.a(paramString2)) && (!b(paramString1, paramContext)))
     {
       try
       {
@@ -171,9 +193,9 @@ public class PreferenceUtil
     return false;
   }
   
-  public boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public boolean b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if ((paramContext != null) && (!Utils.a(paramString2)) && (!a(paramString1, paramContext)))
+    if ((paramContext != null) && (!Utils.a(paramString2)) && (!b(paramString1, paramContext)))
     {
       try
       {
@@ -189,32 +211,10 @@ public class PreferenceUtil
     }
     return false;
   }
-  
-  public String[] a(Context paramContext, String paramString)
-  {
-    if (paramContext != null)
-    {
-      if (a(paramString, paramContext)) {
-        return null;
-      }
-      try
-      {
-        paramContext = a(paramString, paramContext).a();
-        return paramContext;
-      }
-      catch (Throwable paramContext)
-      {
-        if (!LogUtils.a(paramContext)) {
-          paramContext.printStackTrace();
-        }
-      }
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.PreferenceUtil
  * JD-Core Version:    0.7.0.1
  */

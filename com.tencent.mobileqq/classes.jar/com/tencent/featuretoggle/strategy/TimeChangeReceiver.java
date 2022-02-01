@@ -32,7 +32,7 @@ public class TimeChangeReceiver
     //   2: ldc 23
     //   4: iconst_0
     //   5: anewarray 25	java/lang/Object
-    //   8: invokestatic 31	com/tencent/featuretoggle/utils/LogUtils:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   8: invokestatic 31	com/tencent/featuretoggle/utils/LogUtils:e	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   11: new 33	android/content/IntentFilter
     //   14: dup
     //   15: invokespecial 34	android/content/IntentFilter:<init>	()V
@@ -78,7 +78,7 @@ public class TimeChangeReceiver
   
   public void b(Context paramContext)
   {
-    if (DeviceUtils.c(paramContext) == null) {
+    if (DeviceUtils.a(paramContext) == null) {
       return;
     }
     ReportController.a().a(2007);
@@ -109,17 +109,17 @@ public class TimeChangeReceiver
           return;
         }
         b(paramContext);
-        LogUtils.c("system time zone changed", new Object[0]);
+        LogUtils.e("system time zone changed", new Object[0]);
         return;
       }
       b(paramContext);
-      LogUtils.c("system time changed", new Object[0]);
+      LogUtils.e("system time changed", new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.strategy.TimeChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

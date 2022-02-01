@@ -35,7 +35,7 @@ public class PicBrowserActivity
   
   public void doOnBackPressed()
   {
-    if (!this.mGalleryManager.b()) {
+    if (!this.mGalleryManager.i()) {
       super.doOnBackPressed();
     }
   }
@@ -45,17 +45,17 @@ public class PicBrowserActivity
     this.mActNeedImmersive = false;
     this.mNeedStatusTrans = true;
     super.doOnCreate(paramBundle);
-    setContentView(2131561218);
+    setContentView(2131627572);
     initViews();
     initData();
-    this.mGalleryManager.a(this);
+    this.mGalleryManager.b(this);
     return true;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.mGalleryManager.c(this);
+    this.mGalleryManager.d(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -69,20 +69,20 @@ public class PicBrowserActivity
   protected void doOnPause()
   {
     AbstractVideoImage.pauseAll();
-    this.mGalleryManager.b();
+    this.mGalleryManager.j();
   }
   
   protected void doOnResume()
   {
     AbstractVideoImage.resumeAll();
-    this.mGalleryManager.c();
+    this.mGalleryManager.k();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.mGalleryManager.b(this);
+      this.mGalleryManager.c(this);
     }
   }
   
@@ -100,10 +100,10 @@ public class PicBrowserActivity
   
   protected void initViews()
   {
-    this.mImmersiveTitleBar = ((ImmersiveTitleBar2)findViewById(2131378881));
+    this.mImmersiveTitleBar = ((ImmersiveTitleBar2)findViewById(2131447582));
     this.mImmersiveTitleBar.setVisibility(0);
     ImmersiveUtils.setStatusBarDarkMode(getWindow(), ThemeUtil.isNowThemeIsDefault(this.app, false, null));
-    this.mImmersiveTitleBar.setBackgroundColor(getResources().getColor(2131165327));
+    this.mImmersiveTitleBar.setBackgroundColor(getResources().getColor(2131165564));
   }
   
   protected boolean isWrapContent()
@@ -120,7 +120,7 @@ public class PicBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

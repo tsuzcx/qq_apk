@@ -7,12 +7,12 @@ class AioFriendTitleHelper$1$1
   
   public void run()
   {
-    AioFriendTitleHelper.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusAioFriendTitleHelper$1.this$0, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+    AioFriendTitleHelper.a(this.b.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.AioFriendTitleHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ import java.util.Map;
 
 public class TogetherControlManager$EntryBannerInfo
 {
-  public TianShuAccess.AdItem a;
   public String a;
   public String b;
   public String c;
+  public TianShuAccess.AdItem d;
   
   public static EntryBannerInfo a(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
@@ -68,10 +68,10 @@ public class TogetherControlManager$EntryBannerInfo
           }
         }
         localObject1 = new EntryBannerInfo();
-        ((EntryBannerInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
+        ((EntryBannerInfo)localObject1).a = ((String)localHashMap.get("type"));
         ((EntryBannerInfo)localObject1).c = ((String)localHashMap.get("pic"));
         ((EntryBannerInfo)localObject1).b = ((String)localHashMap.get("url"));
-        ((EntryBannerInfo)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
+        ((EntryBannerInfo)localObject1).d = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
         if (TextUtils.isEmpty(((EntryBannerInfo)localObject1).c)) {
           return null;
         }
@@ -104,10 +104,10 @@ public class TogetherControlManager$EntryBannerInfo
         }
       }
       localObject2 = new EntryBannerInfo();
-      ((EntryBannerInfo)localObject2).jdField_a_of_type_JavaLangString = ((String)((Map)localObject1).get("type"));
+      ((EntryBannerInfo)localObject2).a = ((String)((Map)localObject1).get("type"));
       ((EntryBannerInfo)localObject2).c = ((String)((Map)localObject1).get("pic"));
       ((EntryBannerInfo)localObject2).b = ((String)((Map)localObject1).get("url"));
-      ((EntryBannerInfo)localObject2).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(paramInt));
+      ((EntryBannerInfo)localObject2).d = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(paramInt));
       if (TextUtils.isEmpty(((EntryBannerInfo)localObject2).c)) {
         return localArrayList;
       }
@@ -121,7 +121,7 @@ public class TogetherControlManager$EntryBannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherControlManager.EntryBannerInfo
  * JD-Core Version:    0.7.0.1
  */

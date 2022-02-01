@@ -10,12 +10,12 @@ class StoryAlbumResourceDownloader$3
 {
   public void run()
   {
-    new HtmlOffline.TransUrl(QQStoryContext.a().getApp().getBaseContext(), "https://3408?_bid=3408", new StoryAlbumResourceDownloader.3.1(this)).a();
+    new HtmlOffline.TransUrl(QQStoryContext.k().getApp().getBaseContext(), "https://3408?_bid=3408", new StoryAlbumResourceDownloader.3.1(this)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3
  * JD-Core Version:    0.7.0.1
  */

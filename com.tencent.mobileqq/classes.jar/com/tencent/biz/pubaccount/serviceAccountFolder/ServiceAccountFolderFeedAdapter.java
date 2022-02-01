@@ -64,30 +64,30 @@ public class ServiceAccountFolderFeedAdapter
   extends BaseAdapter
   implements View.OnClickListener, DecodeTaskCompletionListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private ServiceAccountFolderActivity jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity;
-  private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
-  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final String jdField_a_of_type_JavaLangString = "ServiceAccountFolderFeedAdapter";
-  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<ServiceAccountFolderFeed> jdField_a_of_type_JavaUtilList;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private float b = 0.0F;
-  private float c = 0.0F;
+  private final String a = "ServiceAccountFolderFeedAdapter";
+  private QQAppInterface b;
+  private ServiceAccountFolderActivity c;
+  private SwipListView d;
+  private DragFrameLayout e;
+  private RecentFaceDecoder f;
+  private final Object g = new Object();
+  private List<ServiceAccountFolderFeed> h;
+  private HashMap<String, Bitmap> i = new HashMap();
+  private float j = 0.0F;
+  private float k = 0.0F;
+  private float l = 0.0F;
+  private Set<Integer> m = new HashSet();
   
   public ServiceAccountFolderFeedAdapter(QQAppInterface paramQQAppInterface, ServiceAccountFolderActivity paramServiceAccountFolderActivity, SwipListView paramSwipListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity = paramServiceAccountFolderActivity;
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = paramSwipListView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramQQAppInterface, this, false);
-    this.jdField_a_of_type_Float = paramServiceAccountFolderActivity.getResources().getDimension(2131298065);
-    this.b = paramServiceAccountFolderActivity.getResources().getDimension(2131298063);
-    this.c = (this.jdField_a_of_type_Float + this.b);
+    this.b = paramQQAppInterface;
+    this.c = paramServiceAccountFolderActivity;
+    this.d = paramSwipListView;
+    this.h = new ArrayList();
+    this.f = new RecentFaceDecoder(paramQQAppInterface, this, false);
+    this.j = paramServiceAccountFolderActivity.getResources().getDimension(2131298741);
+    this.k = paramServiceAccountFolderActivity.getResources().getDimension(2131298739);
+    this.l = (this.j + this.k);
   }
   
   private void a(ServiceAccountFolderFeed paramServiceAccountFolderFeed)
@@ -96,51 +96,51 @@ public class ServiceAccountFolderFeedAdapter
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("unfollow->uin:");
-      ((StringBuilder)localObject1).append(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramServiceAccountFolderFeed.b);
       QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.b(true);
+    this.c.b(true);
     Object localObject1 = null;
-    Object localObject2 = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    Object localObject2 = (IPublicAccountDataManager)this.b.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject2 != null) {
-      localObject1 = ((IPublicAccountDataManager)localObject2).findAccountDetailInfo(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      localObject1 = ((IPublicAccountDataManager)localObject2).findAccountDetailInfo(paramServiceAccountFolderFeed.b);
     }
     if ((localObject1 != null) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(((IPublicAccountDetail)localObject1).getAccountFlag()) == -4))
     {
-      localObject1 = new NewIntent(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
+      localObject1 = new NewIntent(this.c, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
       ((NewIntent)localObject1).putExtra("cmd", "unfollow");
       localObject2 = new mobileqq_mp.UnFollowRequest();
-      ((mobileqq_mp.UnFollowRequest)localObject2).uin.set((int)Long.parseLong(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString));
+      ((mobileqq_mp.UnFollowRequest)localObject2).uin.set((int)Long.parseLong(paramServiceAccountFolderFeed.b));
       ((NewIntent)localObject1).putExtra("data", ((mobileqq_mp.UnFollowRequest)localObject2).toByteArray());
       ((NewIntent)localObject1).putExtra("source", 25);
       ((NewIntent)localObject1).setObserver(new ServiceAccountFolderFeedAdapter.5(this, paramServiceAccountFolderFeed));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject1);
+      this.b.startServlet((NewIntent)localObject1);
     }
     else
     {
-      localObject1 = new NewPublicAccountObserver(new ServiceAccountFolderFeedAdapter.6(this, paramServiceAccountFolderFeed), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)localObject1);
-      PublicAccountStateReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 0);
+      localObject1 = new NewPublicAccountObserver(new ServiceAccountFolderFeedAdapter.6(this, paramServiceAccountFolderFeed), this.b);
+      this.b.removeObserver((BusinessObserver)localObject1);
+      this.b.addObserver((BusinessObserver)localObject1);
+      PublicAccountStateReporter.a(this.b, false, paramServiceAccountFolderFeed.b, 0);
     }
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).removeLbsUin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).removeLbsUin(this.b, paramServiceAccountFolderFeed.b);
   }
   
   private void a(ServiceAccountFolderFeed paramServiceAccountFolderFeed, int paramInt)
   {
-    Object localObject = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity, null);
-    ((ActionSheet)localObject).setMainTitle(String.format(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.getResources().getString(2131696510), new Object[] { paramServiceAccountFolderFeed.jdField_c_of_type_JavaLangString }));
-    ((ActionSheet)localObject).addButton(2131696446, 3);
-    ((ActionSheet)localObject).addCancelButton(2131690728);
+    Object localObject = (ActionSheet)ActionSheetHelper.b(this.c, null);
+    ((ActionSheet)localObject).setMainTitle(String.format(this.c.getResources().getString(2131894284), new Object[] { paramServiceAccountFolderFeed.h }));
+    ((ActionSheet)localObject).addButton(2131894218, 3);
+    ((ActionSheet)localObject).addCancelButton(2131887648);
     ((ActionSheet)localObject).setOnButtonClickListener(new ServiceAccountFolderFeedAdapter.4(this, paramServiceAccountFolderFeed, paramInt, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("showActionSheet->uin:");
-      ((StringBuilder)localObject).append(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramServiceAccountFolderFeed.b);
       ((StringBuilder)localObject).append(", name:");
-      ((StringBuilder)localObject).append(paramServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramServiceAccountFolderFeed.h);
       QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -151,41 +151,41 @@ public class ServiceAccountFolderFeedAdapter
     if (localServiceAccountFolderFeed == null) {
       return;
     }
-    boolean bool = a(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+    boolean bool = a(localServiceAccountFolderFeed.b);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("updateItemContent->uin:");
-      ((StringBuilder)localObject1).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(localServiceAccountFolderFeed.b);
       ((StringBuilder)localObject1).append(", isFollow:");
       ((StringBuilder)localObject1).append(bool);
       QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     if (bool)
     {
-      paramServiceAccountFolderFeedHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      paramView.setTag(-3, Integer.valueOf((int)this.c));
+      paramServiceAccountFolderFeedHolder.g.setVisibility(0);
+      paramView.setTag(-3, Integer.valueOf((int)this.l));
     }
     else
     {
-      paramServiceAccountFolderFeedHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      paramView.setTag(-3, Integer.valueOf((int)this.b));
+      paramServiceAccountFolderFeedHolder.g.setVisibility(8);
+      paramView.setTag(-3, Integer.valueOf((int)this.k));
     }
-    paramServiceAccountFolderFeedHolder.jdField_a_of_type_JavaLangString = localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder != null) {
-      a(paramServiceAccountFolderFeedHolder, localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+    paramServiceAccountFolderFeedHolder.a = localServiceAccountFolderFeed.b;
+    if (this.f != null) {
+      a(paramServiceAccountFolderFeedHolder, localServiceAccountFolderFeed.b);
     }
-    paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, localServiceAccountFolderFeed.jdField_c_of_type_Int);
-    paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
-    paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(localServiceAccountFolderFeed.jdField_b_of_type_JavaLangString, 0);
-    if (localServiceAccountFolderFeed.e == 4) {
-      i = 2130839534;
+    paramServiceAccountFolderFeedHolder.d.setCompoundDrawablesWithIntrinsicBounds(0, localServiceAccountFolderFeed.e);
+    paramServiceAccountFolderFeedHolder.d.setText(localServiceAccountFolderFeed.h);
+    paramServiceAccountFolderFeedHolder.d.setExtendText(localServiceAccountFolderFeed.g, 0);
+    if (localServiceAccountFolderFeed.p == 4) {
+      n = 2130839732;
     } else {
-      i = 0;
+      n = 0;
     }
-    paramServiceAccountFolderFeedHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0);
-    int i = localServiceAccountFolderFeed.jdField_d_of_type_Int;
-    Object localObject2 = localServiceAccountFolderFeed.jdField_d_of_type_JavaLangString;
+    paramServiceAccountFolderFeedHolder.e.setCompoundDrawablesWithIntrinsicBounds(n, 0);
+    int n = localServiceAccountFolderFeed.k;
+    Object localObject2 = localServiceAccountFolderFeed.l;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
@@ -202,92 +202,92 @@ public class ServiceAccountFolderFeedAdapter
         localObject2 = ((StringBuilder)localObject2).toString();
       }
     }
-    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (i != 0)) {
-      paramServiceAccountFolderFeedHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(ColorStateList.valueOf(i), 1);
+    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (n != 0)) {
+      paramServiceAccountFolderFeedHolder.e.setExtendTextColor(ColorStateList.valueOf(n), 1);
     }
-    paramServiceAccountFolderFeedHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText((String)localObject2, 1);
+    paramServiceAccountFolderFeedHolder.e.setExtendText((String)localObject2, 1);
     try
     {
-      paramServiceAccountFolderFeedHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(new QQText(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence, 3, 16));
+      paramServiceAccountFolderFeedHolder.e.setText(new QQText(localServiceAccountFolderFeed.i, 3, 16));
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      SingleLineTextView localSingleLineTextView = paramServiceAccountFolderFeedHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView;
+      SingleLineTextView localSingleLineTextView = paramServiceAccountFolderFeedHolder.e;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence);
+      ((StringBuilder)localObject2).append(localServiceAccountFolderFeed.i);
       ((StringBuilder)localObject2).append(" ");
       localSingleLineTextView.setText(((StringBuilder)localObject2).toString());
     }
-    i = localServiceAccountFolderFeed.jdField_b_of_type_Int;
-    int j = localServiceAccountFolderFeed.jdField_a_of_type_Int;
-    if (i > 0) {
-      if (j == 0)
+    n = localServiceAccountFolderFeed.d;
+    int i1 = localServiceAccountFolderFeed.c;
+    if (n > 0) {
+      if (i1 == 0)
       {
-        paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-        paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        paramServiceAccountFolderFeedHolder.f.setDragViewType(-1, paramView);
+        paramServiceAccountFolderFeedHolder.f.setOnModeChangeListener(null);
       }
       else
       {
-        if (j == 2)
+        if (i1 == 2)
         {
-          paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-          paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
-          i = 1;
+          paramServiceAccountFolderFeedHolder.f.setDragViewType(-1, paramView);
+          paramServiceAccountFolderFeedHolder.f.setOnModeChangeListener(null);
+          n = 1;
           break label577;
         }
-        paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
-        paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-        if (b(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString)) {
-          VSReporter.a(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "auth_page", "new_exp", 0, 0, new String[0]);
+        paramServiceAccountFolderFeedHolder.f.setDragViewType(0, paramView);
+        paramServiceAccountFolderFeedHolder.f.setOnModeChangeListener(this.e);
+        if (b(localServiceAccountFolderFeed.b)) {
+          VSReporter.a(localServiceAccountFolderFeed.b, "auth_page", "new_exp", 0, 0, new String[0]);
         }
-        j = 3;
-        k = 2130850770;
+        i1 = 3;
+        i2 = 2130852592;
         break label591;
       }
     }
-    i = 0;
+    n = 0;
     label577:
-    int m = 0;
-    int k = 0;
-    j = i;
-    i = m;
+    int i3 = 0;
+    int i2 = 0;
+    i1 = n;
+    n = i3;
     label591:
-    if (b(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString))
+    if (b(localServiceAccountFolderFeed.b))
     {
-      paramView = this.jdField_a_of_type_JavaUtilSet;
+      paramView = this.m;
       if ((paramView != null) && (!paramView.contains(Integer.valueOf(paramInt))))
       {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
-        VSReporter.b(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "auth_page", "new_msg_exp", 0, 0, new String[0]);
+        this.m.add(Integer.valueOf(paramInt));
+        VSReporter.b(localServiceAccountFolderFeed.b, "auth_page", "new_msg_exp", 0, 0, new String[0]);
       }
     }
-    CustomWidgetUtil.a(paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, i, k, 99, null);
-    if (AppSetting.d)
+    CustomWidgetUtil.a(paramServiceAccountFolderFeedHolder.f, i1, n, i2, 99, null);
+    if (AppSetting.e)
     {
       paramView = new StringBuilder();
-      paramView.append(paramServiceAccountFolderFeedHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText());
+      paramView.append(paramServiceAccountFolderFeedHolder.d.getText());
       paramView.append(",");
-      if (i != 0) {
-        if (i == 1)
+      if (n != 0) {
+        if (n == 1)
         {
           paramView.append("有一条未读,");
         }
-        else if (i == 2)
+        else if (n == 2)
         {
           paramView.append("有两条未读,");
         }
-        else if (i > 0)
+        else if (n > 0)
         {
           paramView.append("有");
-          paramView.append(i);
+          paramView.append(n);
           paramView.append("条未读,");
         }
       }
-      paramView.append(paramServiceAccountFolderFeedHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.getText());
+      paramView.append(paramServiceAccountFolderFeedHolder.e.getText());
       paramView.append(",");
-      paramView.append(localServiceAccountFolderFeed.jdField_b_of_type_JavaLangString);
-      paramServiceAccountFolderFeedHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(paramView);
+      paramView.append(localServiceAccountFolderFeed.g);
+      paramServiceAccountFolderFeedHolder.b.setContentDescription(paramView);
     }
   }
   
@@ -300,13 +300,13 @@ public class ServiceAccountFolderFeedAdapter
       ((StringBuilder)localObject).append(paramString);
       QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Object localObject = (Bitmap)this.i.get(paramString);
     if (localObject == null)
     {
-      paramServiceAccountFolderFeedHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a(1008, paramString));
+      paramServiceAccountFolderFeedHolder.c.setImageDrawable(this.f.a(1008, paramString));
       return;
     }
-    paramServiceAccountFolderFeedHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+    paramServiceAccountFolderFeedHolder.c.setImageBitmap((Bitmap)localObject);
   }
   
   private boolean a(String paramString)
@@ -314,7 +314,7 @@ public class ServiceAccountFolderFeedAdapter
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.b.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localIPublicAccountDataManager != null)
     {
       IPublicAccountDetail localIPublicAccountDetail = localIPublicAccountDataManager.findAccountDetailInfoCache(paramString);
@@ -339,12 +339,12 @@ public class ServiceAccountFolderFeedAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ServiceAccountFolderFeedAdapter", 2, "showNetworkErrorToast");
     }
-    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131695217, 0).show();
+    Toast.makeText(this.b.getApplication(), 2131892951, 0).show();
   }
   
   private void b(ServiceAccountFolderFeed paramServiceAccountFolderFeed)
   {
-    String str = paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString;
+    String str = paramServiceAccountFolderFeed.b;
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder();
@@ -352,16 +352,16 @@ public class ServiceAccountFolderFeedAdapter
       ((StringBuilder)???).append(str);
       QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.g)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramServiceAccountFolderFeed);
+      this.h.remove(paramServiceAccountFolderFeed);
       notifyDataSetChanged();
       ThreadManager.executeOnSubThread(new ServiceAccountFolderFeedAdapter.7(this, paramServiceAccountFolderFeed));
       if (getCount() == 0)
       {
-        ??? = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity;
+        ??? = this.c;
         if ((??? != null) && (((ServiceAccountFolderActivity)???).isResume())) {
-          this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.a(true);
+          this.c.a(true);
         }
       }
       ThreadManager.getSubThreadHandler().postDelayed(new ServiceAccountFolderFeedAdapter.8(this, str, paramServiceAccountFolderFeed), 10L);
@@ -371,7 +371,7 @@ public class ServiceAccountFolderFeedAdapter
   
   private boolean b(String paramString)
   {
-    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.b.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localIPublicAccountDataManager != null)
     {
       paramString = (PublicAccountInfo)localIPublicAccountDataManager.findPublicAccountInfo(paramString);
@@ -384,28 +384,28 @@ public class ServiceAccountFolderFeedAdapter
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.f.b();
+    this.i.clear();
+    this.m.clear();
+    synchronized (this.g)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.h.clear();
       return;
     }
   }
   
   public void a(DragFrameLayout paramDragFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = paramDragFrameLayout;
+    this.e = paramDragFrameLayout;
   }
   
   public void a(List<ServiceAccountFolderFeed> paramList)
   {
     if (paramList != null) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.g)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        this.h.clear();
+        this.h.addAll(paramList);
         notifyDataSetChanged();
         if (QLog.isColorLevel())
         {
@@ -421,21 +421,21 @@ public class ServiceAccountFolderFeedAdapter
   
   public int getCount()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.g)
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
+      int n = this.h.size();
+      return n;
     }
   }
   
   public Object getItem(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.g)
     {
       if (paramInt >= getCount()) {
         return null;
       }
-      Object localObject2 = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = this.h.get(paramInt);
       return localObject2;
     }
   }
@@ -457,39 +457,39 @@ public class ServiceAccountFolderFeedAdapter
     if (localObject1 == null)
     {
       localObject2 = new ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder(this);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity).inflate(2131559630, null);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366531));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131378784));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131365536));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380210));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370820));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370802));
-      Object localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.getResources();
-      float f = DeviceInfoUtil.a();
-      localObject1 = ((Resources)localObject3).getColorStateList(2131167142);
-      localObject3 = ((Resources)localObject3).getColorStateList(2131167063);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject3);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(17.0F);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject1, 0);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject1, 2);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextSize(14.0F);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(f * 2.0F), 1);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(14.0F, 1);
-      ((ThemeImageView)((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView).setSupportMaskView(true);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+      paramView = LayoutInflater.from(this.c).inflate(2131625659, null);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).b = ((RelativeLayout)paramView.findViewById(2131432850));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).c = ((ImageView)paramView.findViewById(2131435219));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d = ((SingleLineTextView)paramView.findViewById(2131447463));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).e = ((SingleLineTextView)paramView.findViewById(2131431757));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).f = ((DragTextView)paramView.findViewById(2131449128));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).g = ((Button)paramView.findViewById(2131438143));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).h = ((Button)paramView.findViewById(2131438112));
+      Object localObject3 = this.c.getResources();
+      float f1 = DeviceInfoUtil.A();
+      localObject1 = ((Resources)localObject3).getColorStateList(2131168122);
+      localObject3 = ((Resources)localObject3).getColorStateList(2131168001);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setTextColor((ColorStateList)localObject3);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setTextSize(17.0F);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setExtendTextColor((ColorStateList)localObject1, 0);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setExtendTextSize(12.0F, 0);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setCompoundDrawablePadding((int)(3.0F * f1));
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setExtendTextPadding((int)(5.0F * f1), 2);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setExtendTextColor((ColorStateList)localObject1, 2);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).d.setExtendTextSize(17.0F, 2);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).e.setTextSize(14.0F);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).e.setExtendTextPadding((int)(f1 * 2.0F), 1);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).e.setExtendTextSize(14.0F, 1);
+      ((ThemeImageView)((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).c).setSupportMaskView(true);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).b.setOnClickListener(this);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).g.setOnClickListener(this);
+      ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).h.setOnClickListener(this);
       paramView.setTag(localObject2);
     }
-    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(paramInt));
-    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_b_of_type_AndroidWidgetButton.setTag(Integer.valueOf(paramInt));
-    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).b.setTag(Integer.valueOf(paramInt));
+    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).g.setTag(Integer.valueOf(paramInt));
+    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).h.setTag(Integer.valueOf(paramInt));
+    ((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2).f.setTag(Integer.valueOf(paramInt));
     a((ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)localObject2, paramInt, paramView);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -497,64 +497,63 @@ public class ServiceAccountFolderFeedAdapter
   
   public void onClick(View paramView)
   {
-    int k = ((Integer)paramView.getTag()).intValue();
-    ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)getItem(k);
+    int i2 = ((Integer)paramView.getTag()).intValue();
+    ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)getItem(i2);
     if (localServiceAccountFolderFeed != null)
     {
-      int i = localServiceAccountFolderFeed.jdField_b_of_type_Int;
-      int m = localServiceAccountFolderFeed.jdField_a_of_type_Int;
-      int j = 0;
-      if (m != 1) {
-        i = 0;
+      int n = localServiceAccountFolderFeed.d;
+      int i3 = localServiceAccountFolderFeed.c;
+      int i1 = 0;
+      if (i3 != 1) {
+        n = 0;
       }
-      long l = ServiceAccountFolderManager.a().a(localServiceAccountFolderFeed);
-      ??? = localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      long l1 = ServiceAccountFolderManager.a().a(localServiceAccountFolderFeed);
+      Object localObject4 = localServiceAccountFolderFeed.j;
       Object localObject2;
       Object localObject3;
-      Object localObject4;
-      if (??? != null)
+      if (localObject4 != null)
       {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(localServiceAccountFolderFeed.d);
+        ((StringBuilder)???).append("");
+        ??? = ((StringBuilder)???).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(localServiceAccountFolderFeed.jdField_b_of_type_Int);
+        ((StringBuilder)localObject2).append(((MessageRecord)localObject4).msgseq);
         ((StringBuilder)localObject2).append("");
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(((MessageRecord)???).msgseq);
+        ((StringBuilder)localObject3).append(((MessageRecord)localObject4).msgBackupMsgRandom);
         ((StringBuilder)localObject3).append("");
-        localObject3 = ((StringBuilder)localObject3).toString();
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(((MessageRecord)???).msgBackupMsgRandom);
-        ((StringBuilder)localObject4).append("");
-        localObject2 = PublicAccountEventReport.a((String)localObject2, (String)localObject3, ((StringBuilder)localObject4).toString());
+        localObject2 = PublicAccountEventReport.a((String)???, (String)localObject2, ((StringBuilder)localObject3).toString());
       }
       else
       {
         localObject2 = "";
       }
-      if ((localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject != null)) {
-        localObject3 = localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend", "");
+      if ((localServiceAccountFolderFeed.j != null) && (localServiceAccountFolderFeed.j.mExJsonObject != null)) {
+        localObject3 = localServiceAccountFolderFeed.j.mExJsonObject.optString("report_key_bytes_oac_msg_extend", "");
       } else {
         localObject3 = "";
       }
-      int n = paramView.getId();
+      int i4 = paramView.getId();
       Object localObject5;
       Object localObject6;
-      if (n != 2131366531)
+      if (i4 != 2131432850)
       {
-        if (n != 2131370802)
+        if (i4 != 2131438112)
         {
-          if (n == 2131370820)
+          if (i4 == 2131438143)
           {
             if (QLog.isColorLevel())
             {
               ??? = new StringBuilder();
               ((StringBuilder)???).append("onClickMenuUnfollow->uin:");
-              ((StringBuilder)???).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)???).append(localServiceAccountFolderFeed.b);
               ((StringBuilder)???).append(", name:");
-              ((StringBuilder)???).append(localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
+              ((StringBuilder)???).append(localServiceAccountFolderFeed.h);
               QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)???).toString());
             }
-            a(localServiceAccountFolderFeed, k);
+            a(localServiceAccountFolderFeed, i2);
             ThreadManager.executeOnSubThread(new ServiceAccountFolderFeedAdapter.1(this, localServiceAccountFolderFeed));
           }
         }
@@ -564,120 +563,120 @@ public class ServiceAccountFolderFeedAdapter
           {
             ??? = new StringBuilder();
             ((StringBuilder)???).append("onClickMenuDelete->uin:");
-            ((StringBuilder)???).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)???).append(localServiceAccountFolderFeed.b);
             ((StringBuilder)???).append(", name:");
-            ((StringBuilder)???).append(localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)???).append(localServiceAccountFolderFeed.h);
             QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)???).toString());
           }
-          synchronized (this.jdField_a_of_type_JavaLangObject)
+          synchronized (this.g)
           {
-            this.jdField_a_of_type_JavaUtilList.remove(localServiceAccountFolderFeed);
+            this.h.remove(localServiceAccountFolderFeed);
             notifyDataSetChanged();
             ThreadManager.executeOnSubThread(new ServiceAccountFolderFeedAdapter.2(this, localServiceAccountFolderFeed));
             if (getCount() == 0)
             {
-              ??? = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity;
+              ??? = this.c;
               if ((??? != null) && (((ServiceAccountFolderActivity)???).isResume())) {
-                this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.a(true);
+                this.c.a(true);
               }
             }
-            if (m == 2) {
-              j = 1;
+            if (i3 == 2) {
+              i1 = 1;
             }
-            ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            ??? = this.b;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("");
-            ((StringBuilder)localObject2).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(localServiceAccountFolderFeed.b);
             localObject2 = ((StringBuilder)localObject2).toString();
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("");
-            ((StringBuilder)localObject3).append(j);
+            ((StringBuilder)localObject3).append(i1);
             localObject3 = ((StringBuilder)localObject3).toString();
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("");
-            ((StringBuilder)localObject4).append(i);
+            ((StringBuilder)localObject4).append(n);
             localObject4 = ((StringBuilder)localObject4).toString();
             localObject5 = new StringBuilder();
             ((StringBuilder)localObject5).append("");
-            ((StringBuilder)localObject5).append(k + 1);
+            ((StringBuilder)localObject5).append(i2 + 1);
             localObject5 = ((StringBuilder)localObject5).toString();
             localObject6 = new StringBuilder();
             ((StringBuilder)localObject6).append("");
-            ((StringBuilder)localObject6).append(l);
+            ((StringBuilder)localObject6).append(l1);
             ReportController.b((AppRuntime)???, "dc01160", "Pb_account_lifeservice", (String)localObject2, "0X80067F3", "0X80067F3", 0, 0, (String)localObject3, (String)localObject4, (String)localObject5, ((StringBuilder)localObject6).toString());
-            RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, localServiceAccountFolderFeed.jdField_a_of_type_Int, localServiceAccountFolderFeed.jdField_b_of_type_Int, 2, localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
+            RecentPubAccHelper.a(this.b, localServiceAccountFolderFeed.b, localServiceAccountFolderFeed.c, localServiceAccountFolderFeed.d, 2, localServiceAccountFolderFeed.h, false);
             ThreadManager.executeOnSubThread(new ServiceAccountFolderFeedAdapter.3(this, localServiceAccountFolderFeed));
           }
         }
       }
       else
       {
-        ??? = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity, ChatActivity.class);
+        ??? = new Intent(this.c, ChatActivity.class);
         ((Intent)???).putExtra("uintype", 1008);
-        ((Intent)???).putExtra("uin", localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
-        ((Intent)???).putExtra("uinname", localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
+        ((Intent)???).putExtra("uin", localServiceAccountFolderFeed.b);
+        ((Intent)???).putExtra("uinname", localServiceAccountFolderFeed.h);
         ((Intent)???).putExtra("start_time", System.currentTimeMillis());
-        ((Intent)???).putExtra("red_hot_count", localServiceAccountFolderFeed.jdField_b_of_type_Int);
+        ((Intent)???).putExtra("red_hot_count", localServiceAccountFolderFeed.d);
         ((Intent)???).putExtra("INTENT_KEY_FROM", 2);
-        this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.startActivity((Intent)???);
+        this.c.startActivity((Intent)???);
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder();
           ((StringBuilder)???).append("onClickFeedItem->uin:");
-          ((StringBuilder)???).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)???).append(localServiceAccountFolderFeed.b);
           ((StringBuilder)???).append(", name:");
-          ((StringBuilder)???).append(localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)???).append(localServiceAccountFolderFeed.h);
           QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)???).toString());
         }
-        if (m == 1) {
+        if (i3 == 1) {
           ??? = "0X80067EF";
-        } else if (m == 2) {
+        } else if (i3 == 2) {
           ??? = "0X80067F0";
         } else {
           ??? = "0X80067F1";
         }
-        localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject5 = new StringBuilder();
-        ((StringBuilder)localObject5).append("");
-        ((StringBuilder)localObject5).append(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
-        localObject5 = ((StringBuilder)localObject5).toString();
+        localObject5 = this.b;
         localObject6 = new StringBuilder();
         ((StringBuilder)localObject6).append("");
-        ((StringBuilder)localObject6).append(m);
+        ((StringBuilder)localObject6).append(localServiceAccountFolderFeed.b);
         localObject6 = ((StringBuilder)localObject6).toString();
         Object localObject7 = new StringBuilder();
         ((StringBuilder)localObject7).append("");
-        ((StringBuilder)localObject7).append(l);
+        ((StringBuilder)localObject7).append(i3);
         localObject7 = ((StringBuilder)localObject7).toString();
         Object localObject8 = new StringBuilder();
         ((StringBuilder)localObject8).append("");
-        ((StringBuilder)localObject8).append(k + 1);
+        ((StringBuilder)localObject8).append(l1);
         localObject8 = ((StringBuilder)localObject8).toString();
+        Object localObject9 = new StringBuilder();
+        ((StringBuilder)localObject9).append("");
+        ((StringBuilder)localObject9).append(i2 + 1);
+        localObject9 = ((StringBuilder)localObject9).toString();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(i);
-        ReportController.b((AppRuntime)localObject4, "dc01160", "Pb_account_lifeservice", (String)localObject5, (String)???, (String)???, 0, 0, (String)localObject6, (String)localObject7, (String)localObject8, localStringBuilder.toString());
-        RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, localServiceAccountFolderFeed.jdField_a_of_type_Int, localServiceAccountFolderFeed.jdField_b_of_type_Int, 2, localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString);
-        localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject5 = localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString;
-        i = localServiceAccountFolderFeed.jdField_a_of_type_Int;
-        j = localServiceAccountFolderFeed.jdField_b_of_type_Int;
-        if (localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
+        localStringBuilder.append(n);
+        ReportController.b((AppRuntime)localObject5, "dc01160", "Pb_account_lifeservice", (String)localObject6, (String)???, (String)???, 0, 0, (String)localObject7, (String)localObject8, (String)localObject9, localStringBuilder.toString());
+        RecentPubAccHelper.a(this.b, localServiceAccountFolderFeed.b, localServiceAccountFolderFeed.c, localServiceAccountFolderFeed.d, 2, localServiceAccountFolderFeed.h);
+        localObject5 = this.b;
+        localObject6 = localServiceAccountFolderFeed.b;
+        n = localServiceAccountFolderFeed.c;
+        i1 = localServiceAccountFolderFeed.d;
+        if (localServiceAccountFolderFeed.j == null) {
           ??? = "";
         } else {
-          ??? = localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
+          ??? = localServiceAccountFolderFeed.j.msg;
         }
-        localObject6 = new StringBuilder();
-        ((StringBuilder)localObject6).append(k);
-        ((StringBuilder)localObject6).append("");
-        PublicAccountEventReport.b((QQAppInterface)localObject4, (String)localObject5, i, j, (String)???, (String)localObject3, (String)localObject2, ((StringBuilder)localObject6).toString());
-        if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "weather_public_account", "", "weather_public_account", "brief_weather_click", 0, 0, "", "", "8.7.0", "");
+        localObject7 = new StringBuilder();
+        ((StringBuilder)localObject7).append(i2);
+        ((StringBuilder)localObject7).append("");
+        PublicAccountEventReport.b((QQAppInterface)localObject5, (MessageRecord)localObject4, (String)localObject6, n, i1, (String)???, (String)localObject3, (String)localObject2, ((StringBuilder)localObject7).toString());
+        if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA(localServiceAccountFolderFeed.b)) {
+          ReportController.b(this.b, "P_CliOper", "weather_public_account", "", "weather_public_account", "brief_weather_click", 0, 0, "", "", "8.8.17", "");
         }
-        if (b(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString))
+        if (b(localServiceAccountFolderFeed.b))
         {
-          VSReporter.a(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "auth_page", "clk_content", 0, 0, new String[] { "", "1", localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString, localServiceAccountFolderFeed.jdField_d_of_type_JavaLangString });
-          VSReporter.b(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "auth_page", "new_msg_clk", 0, 0, new String[0]);
+          VSReporter.a(localServiceAccountFolderFeed.b, "auth_page", "clk_content", 0, 0, new String[] { "", "1", localServiceAccountFolderFeed.h, localServiceAccountFolderFeed.l });
+          VSReporter.b(localServiceAccountFolderFeed.b, "auth_page", "new_msg_clk", 0, 0, new String[0]);
         }
         PublicTracker.a(null, "SUBSCRIPT_AIO_COST");
       }
@@ -692,16 +691,16 @@ public class ServiceAccountFolderFeedAdapter
       if (paramString.length() == 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
-      paramInt2 = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildCount();
+      this.i.put(paramString, paramBitmap);
+      paramInt2 = this.d.getChildCount();
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
       {
-        paramBitmap = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(paramInt1).getTag();
+        paramBitmap = this.d.getChildAt(paramInt1).getTag();
         if ((paramBitmap != null) && ((paramBitmap instanceof ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)))
         {
           paramBitmap = (ServiceAccountFolderFeedAdapter.ServiceAccountFolderFeedHolder)paramBitmap;
-          if (paramString.equals(paramBitmap.jdField_a_of_type_JavaLangString)) {
+          if (paramString.equals(paramBitmap.a)) {
             a(paramBitmap, paramString);
           }
         }
@@ -719,7 +718,7 @@ public class ServiceAccountFolderFeedAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter
  * JD-Core Version:    0.7.0.1
  */

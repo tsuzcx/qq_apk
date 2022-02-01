@@ -24,7 +24,7 @@ public class WSDramaBeaconReport
   
   private static WSStatisticsReporter.Builder a()
   {
-    return new WSStatisticsReporter.Builder().setSopName("drama_preview").setTestId(WeishiUtils.a(10012)).setPushId(WSInitializeHelper.a().a()).setFlush(true);
+    return new WSStatisticsReporter.Builder().setSopName("drama_preview").setTestId(WeishiUtils.a(10012)).setPushId(WSInitializeHelper.a().f()).setFlush(true);
   }
   
   private static WSStatisticsReporter.Builder a(String paramString1, String paramString2, String paramString3)
@@ -37,52 +37,12 @@ public class WSDramaBeaconReport
     return a().addParams("position", paramString1).addParams("feed_id", paramString2).addParams("owner_id", paramString3).addParams("action_id", String.valueOf(paramInt));
   }
   
-  private static String a(String paramString)
-  {
-    int i = paramString.hashCode();
-    if (i != -1282366045)
-    {
-      if (i != -763476863)
-      {
-        if ((i == 836791522) && (paramString.equals("grid_drama_follow")))
-        {
-          i = 2;
-          break label70;
-        }
-      }
-      else if (paramString.equals("grid_drama_card"))
-      {
-        i = 0;
-        break label70;
-      }
-    }
-    else if (paramString.equals("aio_red_dot"))
-    {
-      i = 1;
-      break label70;
-    }
-    i = -1;
-    label70:
-    if (i != 0)
-    {
-      if (i != 1)
-      {
-        if (i != 2) {
-          return "";
-        }
-        return "feeds_history";
-      }
-      return "direct";
-    }
-    return "feeds";
-  }
-  
   public static void a(int paramInt, WSDramaVideoPlayReportParams paramWSDramaVideoPlayReportParams)
   {
-    Object localObject = paramWSDramaVideoPlayReportParams.a();
+    Object localObject = paramWSDramaVideoPlayReportParams.b();
     if (localObject != null)
     {
-      WSVideoInfo localWSVideoInfo = ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
+      WSVideoInfo localWSVideoInfo = ((WSPlayerParam)localObject).c;
       if (localWSVideoInfo == null) {
         return;
       }
@@ -92,33 +52,33 @@ public class WSDramaBeaconReport
       HashMap localHashMap = new HashMap();
       localHashMap.put("event_type", String.valueOf(paramInt));
       localHashMap.put("feed_id", localWSVideoInfo.a);
-      localHashMap.put("owner_id", localWSVideoInfo.e);
-      localHashMap.put("video_length", String.valueOf(localWSVideoInfo.c));
+      localHashMap.put("owner_id", localWSVideoInfo.j);
+      localHashMap.put("video_length", String.valueOf(localWSVideoInfo.d));
       localHashMap.put("recommend_id", "");
       if (paramInt == 2)
       {
-        localObject = ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
+        localObject = ((WSPlayerParam)localObject).d;
         long l2 = 0L;
         long l1;
         if (localObject != null) {
-          l1 = ((WSPlayerWrapper)localObject).a();
+          l1 = ((WSPlayerWrapper)localObject).m();
         } else {
           l1 = 0L;
         }
         if (localObject != null) {
-          l2 = ((WSPlayerWrapper)localObject).a(paramWSDramaVideoPlayReportParams.a());
+          l2 = ((WSPlayerWrapper)localObject).c(paramWSDramaVideoPlayReportParams.c());
         }
         localHashMap.put("duration", String.valueOf(l2));
         localHashMap.put("last_location", String.valueOf(l1));
       }
       localObject = new HashMap();
-      ((Map)localObject).put("micro_drama_id", paramWSDramaVideoPlayReportParams.b());
-      ((Map)localObject).put("micro_drama_num", String.valueOf(paramWSDramaVideoPlayReportParams.a()));
-      ((Map)localObject).put("play_scene", a(paramWSDramaVideoPlayReportParams.a()));
-      ((Map)localObject).put("poolType", String.valueOf(localWSVideoInfo.d));
+      ((Map)localObject).put("micro_drama_id", paramWSDramaVideoPlayReportParams.d());
+      ((Map)localObject).put("micro_drama_num", String.valueOf(paramWSDramaVideoPlayReportParams.e()));
+      ((Map)localObject).put("play_scene", c(paramWSDramaVideoPlayReportParams.a()));
+      ((Map)localObject).put("poolType", String.valueOf(localWSVideoInfo.h));
       if (paramInt == 1)
       {
-        if (paramWSDramaVideoPlayReportParams.b()) {
+        if (paramWSDramaVideoPlayReportParams.f()) {
           paramWSDramaVideoPlayReportParams = "0";
         } else {
           paramWSDramaVideoPlayReportParams = "1";
@@ -134,13 +94,13 @@ public class WSDramaBeaconReport
     if (paramWSDramaItemData == null) {
       return;
     }
-    Object localObject = WSDramaDataManager.a().a();
+    Object localObject = WSDramaDataManager.a().c();
     int i = 0;
     String str;
     if (localObject != null)
     {
-      str = ((WSDramaItemData)localObject).a();
-      i = ((WSDramaItemData)localObject).c();
+      str = ((WSDramaItemData)localObject).b();
+      i = ((WSDramaItemData)localObject).l();
     }
     else
     {
@@ -149,9 +109,9 @@ public class WSDramaBeaconReport
     localObject = new HashMap();
     ((Map)localObject).put("micro_drama_id", str);
     ((Map)localObject).put("micro_drama_num", String.valueOf(i));
-    ((Map)localObject).put("cover_drama_id", paramWSDramaItemData.a());
-    ((Map)localObject).put("cover_drama_num", String.valueOf(paramWSDramaItemData.b()));
-    ((Map)localObject).put("play_scene", a(paramString));
+    ((Map)localObject).put("cover_drama_id", paramWSDramaItemData.b());
+    ((Map)localObject).put("cover_drama_num", String.valueOf(paramWSDramaItemData.k()));
+    ((Map)localObject).put("play_scene", c(paramString));
     ((Map)localObject).put("play_type", String.valueOf(paramInt2));
     if (paramBoolean) {
       paramString = "2";
@@ -162,7 +122,7 @@ public class WSDramaBeaconReport
     paramString = new StringBuilder();
     paramString.append("drama_list_video");
     paramString.append(paramInt1 + 1);
-    a(a(paramString.toString(), paramWSDramaItemData.b(), paramWSDramaItemData.c(), 1000001).addExtParams((Map)localObject), "gzh_click");
+    a(a(paramString.toString(), paramWSDramaItemData.d(), paramWSDramaItemData.e(), 1000001).addExtParams((Map)localObject), "gzh_click");
   }
   
   public static void a(WSDramaItemData paramWSDramaItemData, int paramInt, String paramString)
@@ -170,13 +130,13 @@ public class WSDramaBeaconReport
     if (paramWSDramaItemData == null) {
       return;
     }
-    Object localObject = WSDramaDataManager.a().a();
+    Object localObject = WSDramaDataManager.a().c();
     int i = 0;
     String str;
     if (localObject != null)
     {
-      str = ((WSDramaItemData)localObject).a();
-      i = ((WSDramaItemData)localObject).c();
+      str = ((WSDramaItemData)localObject).b();
+      i = ((WSDramaItemData)localObject).l();
     }
     else
     {
@@ -185,13 +145,13 @@ public class WSDramaBeaconReport
     localObject = new HashMap();
     ((Map)localObject).put("micro_drama_id", str);
     ((Map)localObject).put("micro_drama_num", String.valueOf(i));
-    ((Map)localObject).put("cover_drama_id", paramWSDramaItemData.a());
-    ((Map)localObject).put("cover_drama_num", String.valueOf(paramWSDramaItemData.b()));
-    ((Map)localObject).put("play_scene", a(paramString));
+    ((Map)localObject).put("cover_drama_id", paramWSDramaItemData.b());
+    ((Map)localObject).put("cover_drama_num", String.valueOf(paramWSDramaItemData.k()));
+    ((Map)localObject).put("play_scene", c(paramString));
     paramString = new StringBuilder();
     paramString.append("drama_list_video");
     paramString.append(paramInt + 1);
-    a(a(paramString.toString(), paramWSDramaItemData.b(), paramWSDramaItemData.c()).addExtParams((Map)localObject), "gzh_exposure");
+    a(a(paramString.toString(), paramWSDramaItemData.d(), paramWSDramaItemData.e()).addExtParams((Map)localObject), "gzh_exposure");
   }
   
   public static void a(WSEpisodeItemData paramWSEpisodeItemData, int paramInt, long paramLong, String paramString)
@@ -199,15 +159,15 @@ public class WSDramaBeaconReport
     if (paramWSEpisodeItemData == null) {
       return;
     }
-    Object localObject = WSDramaDataManager.a().a();
+    Object localObject = WSDramaDataManager.a().c();
     String str2 = "";
     String str1;
     int i;
     if (localObject != null)
     {
-      str2 = ((WSDramaItemData)localObject).a();
-      str1 = ((WSDramaItemData)localObject).c();
-      i = ((WSDramaItemData)localObject).c();
+      str2 = ((WSDramaItemData)localObject).b();
+      str1 = ((WSDramaItemData)localObject).e();
+      i = ((WSDramaItemData)localObject).l();
     }
     else
     {
@@ -217,10 +177,10 @@ public class WSDramaBeaconReport
     localObject = new HashMap();
     ((Map)localObject).put("micro_drama_id", str2);
     ((Map)localObject).put("micro_drama_num", String.valueOf(i));
-    ((Map)localObject).put("play_scene", a(paramString));
+    ((Map)localObject).put("play_scene", c(paramString));
     ((Map)localObject).put("max_drama_num", String.valueOf(paramInt));
     ((Map)localObject).put("max_drama_times", String.valueOf(paramLong));
-    a(a("drama_list_btn", paramWSEpisodeItemData.a(), str1).addExtParams((Map)localObject), "gzh_exposure");
+    a(a("drama_list_btn", paramWSEpisodeItemData.b(), str1).addExtParams((Map)localObject), "gzh_exposure");
   }
   
   public static void a(WSEpisodeItemData paramWSEpisodeItemData, int paramInt, String paramString)
@@ -228,13 +188,13 @@ public class WSDramaBeaconReport
     if (paramWSEpisodeItemData == null) {
       return;
     }
-    Object localObject = WSDramaDataManager.a().a();
+    Object localObject = WSDramaDataManager.a().c();
     int i = 0;
     String str;
     if (localObject != null)
     {
-      str = ((WSDramaItemData)localObject).a();
-      i = ((WSDramaItemData)localObject).a();
+      str = ((WSDramaItemData)localObject).b();
+      i = ((WSDramaItemData)localObject).c();
     }
     else
     {
@@ -243,10 +203,10 @@ public class WSDramaBeaconReport
     localObject = new HashMap();
     ((Map)localObject).put("micro_drama_id", str);
     ((Map)localObject).put("micro_drama_num", String.valueOf(i));
-    ((Map)localObject).put("play_scene", a(paramString));
+    ((Map)localObject).put("play_scene", c(paramString));
     ((Map)localObject).put("play_type", String.valueOf(paramInt));
-    ((Map)localObject).put("num", String.valueOf(paramWSEpisodeItemData.a()));
-    a(a("drama_list_btn", paramWSEpisodeItemData.a(), paramWSEpisodeItemData.b(), 1000001).addExtParams((Map)localObject), "gzh_click");
+    ((Map)localObject).put("num", String.valueOf(paramWSEpisodeItemData.c()));
+    a(a("drama_list_btn", paramWSEpisodeItemData.b(), paramWSEpisodeItemData.d(), 1000001).addExtParams((Map)localObject), "gzh_click");
   }
   
   public static void a(WSDramaVideoPlayReportParams paramWSDramaVideoPlayReportParams)
@@ -262,7 +222,7 @@ public class WSDramaBeaconReport
   public static void a(String paramString)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("play_scene", a(paramString));
+    localHashMap.put("play_scene", c(paramString));
     WSPublicAccReport.getInstance().reportPageVisitEnter("drama_preview", localHashMap);
   }
   
@@ -274,9 +234,9 @@ public class WSDramaBeaconReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("micro_drama_id", paramString3);
     localHashMap.put("micro_drama_num", String.valueOf(paramInt1));
-    localHashMap.put("play_scene", a(paramString4));
-    localHashMap.put("cover_drama_id", paramWSDramaHistoryData.a());
-    localHashMap.put("cover_drama_num", String.valueOf(paramWSDramaHistoryData.a()));
+    localHashMap.put("play_scene", c(paramString4));
+    localHashMap.put("cover_drama_id", paramWSDramaHistoryData.b());
+    localHashMap.put("cover_drama_num", String.valueOf(paramWSDramaHistoryData.d()));
     boolean bool = paramWSDramaHistoryData.a();
     paramString4 = "1";
     if (bool) {
@@ -286,12 +246,12 @@ public class WSDramaBeaconReport
     }
     localHashMap.put("is_play", paramString3);
     paramString3 = paramString4;
-    if (paramWSDramaHistoryData.b()) {
+    if (paramWSDramaHistoryData.e()) {
       paramString3 = "0";
     }
     localHashMap.put("is_update", paramString3);
-    localHashMap.put("update_num", String.valueOf(paramWSDramaHistoryData.a()));
-    localHashMap.put("play_num", String.valueOf(paramWSDramaHistoryData.b()));
+    localHashMap.put("update_num", String.valueOf(paramWSDramaHistoryData.d()));
+    localHashMap.put("play_num", String.valueOf(paramWSDramaHistoryData.f()));
     a(a(localStringBuilder.toString(), paramString1, paramString2, 1000001).addExtParams(localHashMap), "gzh_click");
   }
   
@@ -305,7 +265,7 @@ public class WSDramaBeaconReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("micro_drama_id", paramString3);
     localHashMap.put("micro_drama_num", String.valueOf(paramInt1));
-    localHashMap.put("play_scene", a(paramString4));
+    localHashMap.put("play_scene", c(paramString4));
     localHashMap.put("poolType", String.valueOf(paramInt2));
     a(a("drama_videoplay_video", paramString1, paramString2).addExtParams(localHashMap), "gzh_exposure");
   }
@@ -317,7 +277,7 @@ public class WSDramaBeaconReport
     localHashMap.put("micro_drama_num", String.valueOf(paramInt1));
     localHashMap.put("status", String.valueOf(paramInt2));
     localHashMap.put("data_status", String.valueOf(paramInt3));
-    localHashMap.put("play_scene", a(paramString4));
+    localHashMap.put("play_scene", c(paramString4));
     a(a("drama_more", paramString1, paramString2, 1000001).addExtParams(localHashMap), "gzh_click");
   }
   
@@ -326,7 +286,7 @@ public class WSDramaBeaconReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("micro_drama_id", paramString3);
     localHashMap.put("micro_drama_num", String.valueOf(paramInt));
-    localHashMap.put("play_scene", a(paramString5));
+    localHashMap.put("play_scene", c(paramString5));
     a(a(paramString4, paramString1, paramString2, 1000001).addExtParams(localHashMap), "gzh_click");
   }
   
@@ -338,7 +298,7 @@ public class WSDramaBeaconReport
   public static void b(String paramString)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("play_scene", a(paramString));
+    localHashMap.put("play_scene", c(paramString));
     WSPublicAccReport.getInstance().reportPageVisitExit("drama_preview", localHashMap);
   }
   
@@ -350,9 +310,9 @@ public class WSDramaBeaconReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("micro_drama_id", paramString3);
     localHashMap.put("micro_drama_num", String.valueOf(paramInt1));
-    localHashMap.put("play_scene", a(paramString4));
-    localHashMap.put("cover_drama_id", paramWSDramaHistoryData.a());
-    localHashMap.put("cover_drama_num", String.valueOf(paramWSDramaHistoryData.a()));
+    localHashMap.put("play_scene", c(paramString4));
+    localHashMap.put("cover_drama_id", paramWSDramaHistoryData.b());
+    localHashMap.put("cover_drama_num", String.valueOf(paramWSDramaHistoryData.d()));
     boolean bool = paramWSDramaHistoryData.a();
     paramString4 = "1";
     if (bool) {
@@ -362,12 +322,12 @@ public class WSDramaBeaconReport
     }
     localHashMap.put("is_play", paramString3);
     paramString3 = paramString4;
-    if (paramWSDramaHistoryData.b()) {
+    if (paramWSDramaHistoryData.e()) {
       paramString3 = "0";
     }
     localHashMap.put("is_update", paramString3);
-    localHashMap.put("update_num", String.valueOf(paramWSDramaHistoryData.a()));
-    localHashMap.put("play_num", String.valueOf(paramWSDramaHistoryData.b()));
+    localHashMap.put("update_num", String.valueOf(paramWSDramaHistoryData.d()));
+    localHashMap.put("play_num", String.valueOf(paramWSDramaHistoryData.f()));
     a(a(localStringBuilder.toString(), paramString1, paramString2).addExtParams(localHashMap), "gzh_exposure");
   }
   
@@ -376,18 +336,58 @@ public class WSDramaBeaconReport
     a(paramString1, paramString2, paramString3, paramInt, "drama_fullscreen", paramString4);
   }
   
+  private static String c(String paramString)
+  {
+    int i = paramString.hashCode();
+    if (i != -1282366045)
+    {
+      if (i != -763476863)
+      {
+        if ((i == 836791522) && (paramString.equals("grid_drama_follow")))
+        {
+          i = 2;
+          break label76;
+        }
+      }
+      else if (paramString.equals("grid_drama_card"))
+      {
+        i = 0;
+        break label76;
+      }
+    }
+    else if (paramString.equals("aio_red_dot"))
+    {
+      i = 1;
+      break label76;
+    }
+    i = -1;
+    label76:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return "";
+        }
+        return "feeds_history";
+      }
+      return "direct";
+    }
+    return "feeds";
+  }
+  
   public static void c(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("micro_drama_id", paramString3);
     localHashMap.put("micro_drama_num", String.valueOf(paramInt));
-    localHashMap.put("play_scene", a(paramString4));
+    localHashMap.put("play_scene", c(paramString4));
     a(a("drama_close", paramString1, paramString2, 1000001).addExtParams(localHashMap), "gzh_click");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.report.WSDramaBeaconReport
  * JD-Core Version:    0.7.0.1
  */

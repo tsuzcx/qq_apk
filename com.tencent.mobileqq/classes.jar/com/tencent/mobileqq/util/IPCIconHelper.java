@@ -11,12 +11,12 @@ import java.util.Iterator;
 
 public class IPCIconHelper
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
+  QQAppInterface a;
+  StatusManager b;
   
   public IPCIconHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public Bundle a(Bundle paramBundle)
@@ -29,10 +29,10 @@ public class IPCIconHelper
       if (paramBundle.size() == 0) {
         return localBundle;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
+      if (this.b == null) {
+        this.b = ((StatusManager)this.a.getManager(QQManagerFactory.STATUS_MANAGER));
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null) {
+      if (this.b == null) {
         return localBundle;
       }
       ArrayList localArrayList = new ArrayList(paramBundle.size());
@@ -61,13 +61,13 @@ public class IPCIconHelper
               if (j == 1)
               {
                 j = Integer.parseInt(str3);
-                localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(j);
+                localObject = this.b.a(j);
                 paramBundle = str1;
                 if (localObject != null) {
                   if (i == 201) {
-                    paramBundle = ((ActionInfo)localObject).a;
+                    paramBundle = ((ActionInfo)localObject).c;
                   } else {
-                    paramBundle = ((ActionInfo)localObject).b;
+                    paramBundle = ((ActionInfo)localObject).d;
                   }
                 }
               }
@@ -89,7 +89,7 @@ public class IPCIconHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.IPCIconHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -125,7 +125,7 @@ public class PraiseJsPlugin
       Object localObject1 = paramBundle.getString("callbackid");
       Object localObject2 = paramBundle.getBundle("response");
       if (localObject2 != null) {
-        ((Bundle)localObject2).setClassLoader(this.mRuntime.a().getClassLoader());
+        ((Bundle)localObject2).setClassLoader(this.mRuntime.d().getClassLoader());
       }
       Object localObject3;
       if (QLog.isColorLevel())
@@ -213,7 +213,7 @@ public class PraiseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.PraiseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

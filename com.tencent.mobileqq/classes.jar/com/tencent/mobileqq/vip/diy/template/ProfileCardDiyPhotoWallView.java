@@ -17,9 +17,9 @@ import java.util.LinkedList;
 public class ProfileCardDiyPhotoWallView
   extends ProfileCardNewPhotoWallView
 {
-  private int jdField_a_of_type_Int = -16777216;
-  private String jdField_a_of_type_JavaLangString;
+  private int a = -16777216;
   private int b = 10;
+  private String c;
   
   public ProfileCardDiyPhotoWallView(Context paramContext)
   {
@@ -53,18 +53,18 @@ public class ProfileCardDiyPhotoWallView
   public ViewGroup getImageView(int paramInt1, int paramInt2, int paramInt3)
   {
     ViewGroup localViewGroup = super.getImageView(paramInt1, paramInt2, paramInt3);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.startsWith("http")))
+    if ((!TextUtils.isEmpty(this.c)) && (this.c.startsWith("http")))
     {
-      localViewGroup.setBackgroundDrawable(a(this.jdField_a_of_type_JavaLangString, new ProfileTemplateBase.NinePatchDecoderHandler(paramInt1 * 2, paramInt2 * 2)));
+      localViewGroup.setBackgroundDrawable(a(this.c, new ProfileTemplateBase.NinePatchDecoderHandler(paramInt1 * 2, paramInt2 * 2)));
       return localViewGroup;
     }
-    localViewGroup.setBackgroundColor(this.jdField_a_of_type_Int);
+    localViewGroup.setBackgroundColor(this.a);
     return localViewGroup;
   }
   
   protected View getImageViewLayout()
   {
-    View localView = this.mLayoutInflater.inflate(2131562034, null);
+    View localView = this.mLayoutInflater.inflate(2131628460, null);
     int i = this.b;
     localView.setPadding(i, i, i, i);
     return localView;
@@ -72,7 +72,7 @@ public class ProfileCardDiyPhotoWallView
   
   public void setBorderImgUrl(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void setBorderWidth(int paramInt)
@@ -82,7 +82,7 @@ public class ProfileCardDiyPhotoWallView
   
   public void setItemViewBorderColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void setMargin(int paramInt)
@@ -92,7 +92,7 @@ public class ProfileCardDiyPhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.ProfileCardDiyPhotoWallView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.ad.api.IRIJMiniGameService;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyImageView;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.CoreReport;
@@ -25,19 +25,19 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 public class OnSmallGameCardClickListener
   implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IReadInJoyModel jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  private int b;
+  private IReadInJoyModel a;
+  private Context b;
   private int c;
+  private int d;
+  private int e;
   
   public OnSmallGameCardClickListener(IReadInJoyModel paramIReadInJoyModel, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    this.a = paramIReadInJoyModel;
+    this.b = paramContext;
+    this.e = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
   private int a(int paramInt)
@@ -56,8 +56,8 @@ public class OnSmallGameCardClickListener
   
   public void a()
   {
-    int j = this.jdField_a_of_type_Int;
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    int j = this.c;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a.k();
     if (localAbsBaseArticleInfo != null)
     {
       int i;
@@ -67,22 +67,22 @@ public class OnSmallGameCardClickListener
         i = 0;
       }
       boolean bool = TextUtils.isEmpty(localAbsBaseArticleInfo.mArticleFriendLikeText);
-      String str = RIJFeedsType.c(localAbsBaseArticleInfo);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", localAbsBaseArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localAbsBaseArticleInfo.mFeedId), Long.toString(localAbsBaseArticleInfo.mArticleID), Integer.toString(localAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(localAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(localAbsBaseArticleInfo), j, i, bool ^ true, NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext), str, localAbsBaseArticleInfo.mStrCircleId, localAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(localAbsBaseArticleInfo), localAbsBaseArticleInfo), false);
+      String str = RIJFeedsType.k(localAbsBaseArticleInfo);
+      PublicAccountReportUtils.a(null, "CliOper", "", localAbsBaseArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localAbsBaseArticleInfo.mFeedId), Long.toString(localAbsBaseArticleInfo.mArticleID), Integer.toString(localAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(localAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(localAbsBaseArticleInfo), j, i, bool ^ true, NetworkUtil.isWifiConnected(this.b), str, localAbsBaseArticleInfo.mStrCircleId, localAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(localAbsBaseArticleInfo), localAbsBaseArticleInfo), false);
       ReadinjoyReportUtils.CoreReport.a(localAbsBaseArticleInfo, j);
     }
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-    if ((localObject1 != null) && (((IReadInJoyModel)localObject1).a() != null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((IReadInJoyModel)localObject1).k() != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo == null) {
+      if (this.a.k().mSmallMiniGameInfo == null) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
-      int i = this.c;
+      localObject1 = this.a.k();
+      int i = this.e;
       Object localObject2 = "";
       switch (i)
       {
@@ -95,40 +95,40 @@ public class OnSmallGameCardClickListener
         } else {
           paramViewBase = "2";
         }
-        paramViewBase = localBuilder.h(paramViewBase).i(String.valueOf(this.b)).a();
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameAd(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-        RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.a);
+        paramViewBase = localBuilder.h(paramViewBase).i(String.valueOf(this.d)).a();
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameAd(this.b, paramViewBase);
+        RIJJumpUtils.c(this.b, ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.a);
         break;
       case 1119: 
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).jumpToMiniGame((AbsBaseArticleInfo)localObject1, this.jdField_a_of_type_AndroidContentContext, this.b);
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).jumpToMiniGame((AbsBaseArticleInfo)localObject1, this.b, this.d);
         return;
       case 1118: 
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo.t))
+        if (!TextUtils.isEmpty(this.a.k().mSmallMiniGameInfo.w))
         {
-          ReadInJoyUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo.t);
-          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameGuideFollow(this.jdField_a_of_type_AndroidContentContext, (AbsBaseArticleInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.g(), 5040702, true);
+          ReadInJoyUtils.a(this.b, this.a.k().mSmallMiniGameInfo.w);
+          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameGuideFollow(this.b, (AbsBaseArticleInfo)localObject1, this.a.r(), 5040702, true);
         }
         return;
       case 1117: 
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameGuideFollow(this.jdField_a_of_type_AndroidContentContext, (AbsBaseArticleInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.g(), 5040703, true);
-        ((IRIJMiniGameService)QRoute.api(IRIJMiniGameService.class)).followMiniGameAccount(((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.j);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo.r))
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameGuideFollow(this.b, (AbsBaseArticleInfo)localObject1, this.a.r(), 5040703, true);
+        ((IRIJMiniGameService)QRoute.api(IRIJMiniGameService.class)).followMiniGameAccount(((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.m);
+        if (!TextUtils.isEmpty(this.a.k().mSmallMiniGameInfo.u))
         {
           paramViewBase = (ReadInjoyImageView)paramViewBase;
-          paramViewBase.mSrc = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo.r;
-          paramViewBase.loadImage(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo.r);
+          paramViewBase.mSrc = this.a.k().mSmallMiniGameInfo.u;
+          paramViewBase.loadImage(this.a.k().mSmallMiniGameInfo.u);
         }
         return;
       case 1116: 
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(this.jdField_a_of_type_AndroidContentContext, (AbsBaseArticleInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.g(), this.b, 1);
-        paramViewBase = ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.b(this.b);
-        localObject1 = ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.a(this.b);
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(this.b, (AbsBaseArticleInfo)localObject1, this.a.r(), this.d, 1);
+        paramViewBase = ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.b(this.d);
+        localObject1 = ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.a(this.d);
         break;
       case 1113: 
       case 1114: 
       case 1115: 
         i = a(i);
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(this.jdField_a_of_type_AndroidContentContext, (AbsBaseArticleInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.g(), i, 1);
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromRecommendCard(this.b, (AbsBaseArticleInfo)localObject1, this.a.r(), i, 1);
         paramViewBase = ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.b(i);
         localObject1 = ((AbsBaseArticleInfo)localObject1).mSmallMiniGameInfo.a(i);
       }
@@ -136,7 +136,7 @@ public class OnSmallGameCardClickListener
       localObject1 = "";
       paramViewBase = (ViewBase)localObject2;
       label545:
-      if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
+      if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.b, paramViewBase, 2103, null)))
       {
         if (QLog.isColorLevel())
         {
@@ -145,7 +145,7 @@ public class OnSmallGameCardClickListener
           ((StringBuilder)localObject2).append(paramViewBase);
           QLog.d("OnSmallGameCardClickListener", 0, ((StringBuilder)localObject2).toString());
         }
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, null, null, null, null, 2103, null);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(this.b, (String)localObject1, null, null, null, null, 2103, null);
       }
       a();
     }
@@ -153,7 +153,7 @@ public class OnSmallGameCardClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnSmallGameCardClickListener
  * JD-Core Version:    0.7.0.1
  */

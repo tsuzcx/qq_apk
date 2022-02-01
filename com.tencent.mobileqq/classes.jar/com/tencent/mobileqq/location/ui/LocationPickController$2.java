@@ -12,16 +12,16 @@ class LocationPickController$2
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController, true);
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+    LocationPickController.a(this.b, true);
+    LocationPickController.b(this.b).b(paramInt);
+    if (this.a.h()) {
       ReportController.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.2
  * JD-Core Version:    0.7.0.1
  */

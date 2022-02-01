@@ -9,7 +9,7 @@ class AccountDetailVideoManager$1$1$1
   
   public void run()
   {
-    if (this.a.a.a.a != null)
+    if (this.a.a.a.k != null)
     {
       if (QLog.isColorLevel())
       {
@@ -18,13 +18,13 @@ class AccountDetailVideoManager$1$1$1
         localStringBuilder.append(System.currentTimeMillis());
         QLog.d("AccountDetailVideoManager", 2, localStringBuilder.toString());
       }
-      this.a.a.a.a.f();
+      this.a.a.a.k.m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.1.1.1
  * JD-Core Version:    0.7.0.1
  */

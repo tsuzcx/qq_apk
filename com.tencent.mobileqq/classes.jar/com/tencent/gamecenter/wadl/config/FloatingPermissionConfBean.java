@@ -10,15 +10,9 @@ import org.json.JSONObject;
 
 public class FloatingPermissionConfBean
 {
-  public int a;
-  public List<String> a;
+  public int a = 0;
   public int b = 0;
-  
-  public FloatingPermissionConfBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<String> c = new ArrayList();
   
   public static FloatingPermissionConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -29,16 +23,16 @@ public class FloatingPermissionConfBean
       Object localObject1;
       while (i < paramArrayOfQConfItem.length)
       {
-        localObject1 = new JSONObject(paramArrayOfQConfItem[i].a);
+        localObject1 = new JSONObject(paramArrayOfQConfItem[i].b);
         Object localObject2;
         if (((JSONObject)localObject1).has("isNeedfloatingPermission"))
         {
-          localFloatingPermissionConfBean.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("isNeedfloatingPermission");
+          localFloatingPermissionConfBean.a = ((JSONObject)localObject1).optInt("isNeedfloatingPermission");
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("onParsed isNeedfloatingPermission=");
-            ((StringBuilder)localObject2).append(localFloatingPermissionConfBean.jdField_a_of_type_Int);
+            ((StringBuilder)localObject2).append(localFloatingPermissionConfBean.a);
             QLog.d("Wadl_FloatingPermissionConfBean", 1, ((StringBuilder)localObject2).toString());
           }
         }
@@ -63,7 +57,7 @@ public class FloatingPermissionConfBean
             {
               localObject2 = ((JSONArray)localObject1).getString(j);
               if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-                localFloatingPermissionConfBean.jdField_a_of_type_JavaUtilList.add(localObject2);
+                localFloatingPermissionConfBean.c.add(localObject2);
               }
               j += 1;
             }
@@ -86,18 +80,18 @@ public class FloatingPermissionConfBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FloatingPermissionConfBean{isNeedfloatingPermission=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", isNeedInstallPermission=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", needPermissionAddids=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.config.FloatingPermissionConfBean
  * JD-Core Version:    0.7.0.1
  */

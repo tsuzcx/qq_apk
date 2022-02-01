@@ -25,18 +25,18 @@ final class PeakIpcController$2
       paramEIPCResult.append("cancelSendVideoOrPhoto result:");
       paramEIPCResult.append(bool);
       paramEIPCResult.append(", uinseq:");
-      paramEIPCResult.append(this.a.a);
+      paramEIPCResult.append(this.a.o);
       paramEIPCResult.append(", status:");
-      paramEIPCResult.append(this.a.b);
+      paramEIPCResult.append(this.a.e);
       paramEIPCResult.append(", progress:");
-      paramEIPCResult.append(this.a.c);
+      paramEIPCResult.append(this.a.f);
       QLog.d("PeakIpcController", 2, paramEIPCResult.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.editipc.PeakIpcController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class TavPlayer$1
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    this.a.a();
+    this.a.b();
     return false;
   }
   
@@ -28,7 +28,7 @@ class TavPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayer.1
  * JD-Core Version:    0.7.0.1
  */

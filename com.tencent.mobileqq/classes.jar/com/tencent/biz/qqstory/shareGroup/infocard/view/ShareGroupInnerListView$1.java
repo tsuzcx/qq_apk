@@ -8,19 +8,19 @@ class ShareGroupInnerListView$1
 {
   ShareGroupInnerListView$1(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
-  public void a()
-  {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
   public boolean a(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) {
-      return this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.d != null) {
+      return this.a.d.b(this.a.a);
     }
     return false;
+  }
+  
+  public void bx_()
+  {
+    if ((this.a.d != null) && (!TextUtils.isEmpty(this.a.a))) {
+      this.a.d.b(this.a.a);
+    }
   }
 }
 

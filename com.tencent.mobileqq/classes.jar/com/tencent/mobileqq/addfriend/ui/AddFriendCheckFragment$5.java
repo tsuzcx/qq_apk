@@ -11,7 +11,7 @@ class AddFriendCheckFragment$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AddFriendCheckFragment.a(this.a)) {
+    if (AddFriendCheckFragment.b(this.a)) {
       return;
     }
     this.a.getActivity().finish();
@@ -19,7 +19,7 @@ class AddFriendCheckFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendCheckFragment.5
  * JD-Core Version:    0.7.0.1
  */

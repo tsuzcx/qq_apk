@@ -15,7 +15,7 @@ public class RecentBlankItemBuilder
   {
     paramObject = paramView;
     if (paramView == null) {
-      paramObject = LayoutInflater.from(paramContext).inflate(2131558896, null);
+      paramObject = LayoutInflater.from(paramContext).inflate(2131624518, null);
     }
     paramObject.setOnClickListener(paramOnClickListener);
     paramObject.setOnLongClickListener(paramOnLongClickListener);
@@ -25,7 +25,7 @@ public class RecentBlankItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentBlankItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -9,26 +9,21 @@ import com.tencent.mobileqq.widget.QQProgressNotifier;
 public class DatingBaseActivity
   extends NearbyTitleBarActivity
 {
-  public static final boolean a;
-  protected int a;
-  protected QQProgressNotifier a;
-  public boolean b = false;
-  public boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = AppSetting.d;
-  }
+  public static final boolean a = AppSetting.e;
+  protected QQProgressNotifier b;
+  protected int c;
+  public boolean d = false;
+  public boolean e = false;
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Int = getTitleBarHeight();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
-    this.b = getIntent().getBooleanExtra("abp_flag", false);
-    this.c = getIntent().getBooleanExtra("is_from_web", false);
-    if ((this.c) && (!this.b)) {
-      setLeftViewName(2131690529);
+    this.c = getTitleBarHeight();
+    this.b = new QQProgressNotifier(this);
+    this.d = getIntent().getBooleanExtra("abp_flag", false);
+    this.e = getIntent().getBooleanExtra("is_from_web", false);
+    if ((this.e) && (!this.d)) {
+      setLeftViewName(2131887440);
     }
     return true;
   }
@@ -36,7 +31,7 @@ public class DatingBaseActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    QQProgressNotifier localQQProgressNotifier = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier;
+    QQProgressNotifier localQQProgressNotifier = this.b;
     if (localQQProgressNotifier != null) {
       localQQProgressNotifier.b();
     }
@@ -45,14 +40,14 @@ public class DatingBaseActivity
   public void finish()
   {
     super.finish();
-    if (this.b) {
-      overridePendingTransition(2130772002, 2130772003);
+    if (this.d) {
+      overridePendingTransition(2130772005, 2130772006);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingBaseActivity
  * JD-Core Version:    0.7.0.1
  */

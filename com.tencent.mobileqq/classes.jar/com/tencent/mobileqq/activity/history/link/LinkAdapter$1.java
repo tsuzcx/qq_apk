@@ -12,14 +12,14 @@ class LinkAdapter$1
   
   public void onClick(View paramView)
   {
-    String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter$DividerViewHolder.a.getText());
-    LinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter, str);
+    String str = String.valueOf(this.a.a.getText());
+    LinkAdapter.a(this.b, str);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.LinkAdapter.1
  * JD-Core Version:    0.7.0.1
  */

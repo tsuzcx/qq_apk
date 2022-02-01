@@ -13,17 +13,17 @@ class QIMPtvTemplateManager$5
   
   public void run()
   {
-    List localList = this.this$0.a(this.a);
+    List localList = this.this$0.b(this.a);
     if (QLog.isColorLevel()) {
       QLog.i("QIMPtvTemplateManager", 2, String.format("rebuildTemplateInfos, templateInfos[%s]", new Object[] { localList }));
     }
     if (localList != null) {
-      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+      synchronized (this.this$0.g)
       {
-        this.this$0.jdField_a_of_type_JavaUtilList.clear();
-        this.this$0.jdField_a_of_type_JavaUtilList.addAll(localList);
-        if (this.this$0.a() != null) {
-          this.this$0.a().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
+        this.this$0.f.clear();
+        this.this$0.f.addAll(localList);
+        if (this.this$0.g() != null) {
+          this.this$0.g().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
         }
       }
     }
@@ -34,7 +34,7 @@ class QIMPtvTemplateManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

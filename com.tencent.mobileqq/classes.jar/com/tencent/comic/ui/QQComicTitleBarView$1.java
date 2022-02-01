@@ -12,14 +12,14 @@ class QQComicTitleBarView$1
   
   public void onClick(View paramView)
   {
-    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
-      this.a.a.a.finish();
+    if ((this.a.a.i != null) && (!this.a.a.i.isFinishing())) {
+      this.a.a.i.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTitleBarView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,9 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloMessageUtilImpl;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -49,24 +51,24 @@ public class ApolloMainInfo
         paramString = BaseApplication.getContext().getResources();
         if (paramString != null)
         {
-          Bitmap localBitmap1 = (Bitmap)GlobalImageCache.a.get("apolloMainInfoDef");
-          Bitmap localBitmap2 = (Bitmap)GlobalImageCache.a.get("apolloMainInfoFail");
+          Bitmap localBitmap1 = (Bitmap)GlobalImageCache.b.get("apolloMainInfoDef");
+          Bitmap localBitmap2 = (Bitmap)GlobalImageCache.b.get("apolloMainInfoFail");
           if (localBitmap1 != null)
           {
             this.a = new BitmapDrawable(localBitmap1);
           }
           else
           {
-            this.a = paramString.getDrawable(2130837970);
-            GlobalImageCache.a.put("apolloMainInfoDef", BitmapFactory.decodeResource(paramString, 2130837970));
+            this.a = paramString.getDrawable(2130837994);
+            GlobalImageCache.b.put("apolloMainInfoDef", BitmapFactory.decodeResource(paramString, 2130837994));
           }
           if (localBitmap2 != null)
           {
             this.b = new BitmapDrawable(localBitmap2);
             return;
           }
-          this.b = paramString.getDrawable(2130843910);
-          GlobalImageCache.a.put("apolloMainInfoFail", BitmapFactory.decodeResource(paramString, 2130843910));
+          this.b = paramString.getDrawable(2130844865);
+          GlobalImageCache.b.put("apolloMainInfoFail", BitmapFactory.decodeResource(paramString, 2130844865));
           return;
         }
       }
@@ -154,8 +156,9 @@ public class ApolloMainInfo
     {
       if (this.mAction.isForPlayerAction == 1)
       {
-        paramContext = CMGetResPathUtil.a(this.mAction, 10);
-        localObject1 = CMGetResPathUtil.a(this.mAction, 0);
+        localObject1 = ApolloResManagerFacade.a.a(Scene.AIO);
+        paramContext = ((IApolloResManager)localObject1).a(this.mAction, 10);
+        localObject1 = ((IApolloResManager)localObject1).a(this.mAction, 0);
         if ((!TextUtils.isEmpty(paramContext)) && (new File(paramContext).exists()))
         {
           long l = new File(paramContext).lastModified();
@@ -300,7 +303,7 @@ public class ApolloMainInfo
       else if ((paramString2.isSupported(paramInt, 2)) && (this.mAction.personNum == 0))
       {
         i = Integer.parseInt(paramAppRuntime);
-        j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramInt);
+        j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramInt);
         paramString2 = new StringBuilder();
         paramString2.append("");
         paramString2.append(this.mAction.actionId);
@@ -316,15 +319,15 @@ public class ApolloMainInfo
       }
       if (this.mPackageId == 9) {
         if (this.mSendSrc == 3) {
-          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "y_gjcbq_success", paramString1, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramInt), 0, new String[] { String.valueOf(this.mAction.personNum), String.valueOf(this.mAction.actionId), this.mAction.actionName });
+          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "y_gjcbq_success", paramString1, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramInt), 0, new String[] { String.valueOf(this.mAction.personNum), String.valueOf(this.mAction.actionId), this.mAction.actionName });
         } else {
-          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "y_bqsuccess", paramString1, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramInt), 0, new String[] { String.valueOf(this.mAction.personNum), String.valueOf(this.mAction.actionId) });
+          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "y_bqsuccess", paramString1, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramInt), 0, new String[] { String.valueOf(this.mAction.personNum), String.valueOf(this.mAction.actionId) });
         }
       }
       if (((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(localQQAppInterface.getCurrentUin(), localQQAppInterface) == 0)
       {
         j = Integer.parseInt(paramAppRuntime);
-        int k = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramInt);
+        int k = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramInt);
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("");
         paramAppRuntime.append(this.mAction.actionId);
@@ -332,17 +335,17 @@ public class ApolloMainInfo
         i = 1;
         VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "exp_panelnewuser_send_action", paramString1, j, k, new String[] { paramAppRuntime, "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
         paramAppRuntime = new DtReportParamsBuilder();
-        if (this.mAction.actionId <= ApolloConstant.a) {
+        if (this.mAction.actionId <= ApolloConstant.f) {
           i = 0;
         }
-        ApolloDtReportUtil.a("panel", "new_user_panel", "click", paramAppRuntime.a(i).b(ApolloDtReportUtil.a(paramInt)).c(String.valueOf(this.mAction.actionId)).b(paramString1).a());
+        ApolloDtReportUtil.a("panel", "new_user_panel", "click", paramAppRuntime.a(i).b(ApolloDtReportUtil.a(paramInt)).f(String.valueOf(this.mAction.actionId)).c(paramString1).a());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloMainInfo
  * JD-Core Version:    0.7.0.1
  */

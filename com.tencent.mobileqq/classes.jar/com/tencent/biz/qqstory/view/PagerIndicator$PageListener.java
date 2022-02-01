@@ -14,7 +14,7 @@ class PagerIndicator$PageListener
   {
     Log.d("PagerIndicator", "onChanged");
     PagerIndicator localPagerIndicator = this.a;
-    localPagerIndicator.a(localPagerIndicator.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    localPagerIndicator.a(localPagerIndicator.b.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.b.getAdapter());
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -28,7 +28,7 @@ class PagerIndicator$PageListener
     ((StringBuilder)localObject).append(paramInt);
     Log.d("PagerIndicator", ((StringBuilder)localObject).toString());
     localObject = this.a;
-    ((PagerIndicator)localObject).a(((PagerIndicator)localObject).a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    ((PagerIndicator)localObject).a(((PagerIndicator)localObject).b.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.b.getAdapter());
   }
 }
 

@@ -26,19 +26,19 @@ class VipFunCallManagerImpl$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onDone, status=");
-      ((StringBuilder)localObject1).append(paramDownloadTask.a());
+      ((StringBuilder)localObject1).append(paramDownloadTask.e());
       ((StringBuilder)localObject1).append(", task.errCode:");
-      ((StringBuilder)localObject1).append(paramDownloadTask.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(paramDownloadTask.c);
       ((StringBuilder)localObject1).append(", key=");
-      ((StringBuilder)localObject1).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramDownloadTask.b);
       QLog.d("VipFunCallManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = paramDownloadTask.a();
+    Object localObject1 = paramDownloadTask.b();
     if (localObject1 == null)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("mDownloadListener onDone Err0, key:");
-      ((StringBuilder)localObject1).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramDownloadTask.b);
       QLog.e("VipFunCallManager", 1, ((StringBuilder)localObject1).toString());
       return;
     }
@@ -72,9 +72,9 @@ class VipFunCallManagerImpl$1
       ((Bundle)localObject2).putInt("srcType", ((Bundle)localObject1).getInt("srcType"));
       ((Bundle)localObject2).putBoolean("result_boo", bool);
       ((Bundle)localObject2).putInt("resourceType", j);
-      VipFunCallManagerImpl.a(this.a).a(i, paramDownloadTask.a(), (Bundle)localObject2);
+      VipFunCallManagerImpl.a(this.a).a(i, paramDownloadTask.e(), (Bundle)localObject2);
     }
-    if (9 == VipFunCallUtil.a())
+    if (9 == VipFunCallUtil.c())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VipFunCallManager", 2, "sendBroadcast :tencent.video.q2v.AnnimateDownloadFinish");
@@ -92,32 +92,32 @@ class VipFunCallManagerImpl$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onProgress, loaded=");
-      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      ((StringBuilder)localObject).append(paramDownloadTask.k);
       ((StringBuilder)localObject).append("percent=");
-      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_Float);
+      ((StringBuilder)localObject).append(paramDownloadTask.l);
       ((StringBuilder)localObject).append(", key=");
-      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
       QLog.d("VipFunCallManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = paramDownloadTask.a();
+    Object localObject = paramDownloadTask.b();
     if (localObject == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mDownloadListener onProgress Err0, key:");
-      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
       QLog.e("VipFunCallManager", 1, ((StringBuilder)localObject).toString());
       return;
     }
     if (((Bundle)localObject).getInt("dealType") == 0) {
       return;
     }
-    if ((paramDownloadTask.a().getBoolean("isIPC")) && (VipFunCallManagerImpl.a(this.a) != null))
+    if ((paramDownloadTask.b().getBoolean("isIPC")) && (VipFunCallManagerImpl.a(this.a) != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("fcStatus", 2);
       localBundle.putInt("callId", ((Bundle)localObject).getInt("callId"));
       localBundle.putInt("srcType", ((Bundle)localObject).getInt("srcType"));
-      localBundle.putInt("progress", (int)paramDownloadTask.jdField_a_of_type_Float);
+      localBundle.putInt("progress", (int)paramDownloadTask.l);
       localBundle.putInt("resourceType", ((Bundle)localObject).getInt("resourceType"));
       VipFunCallManagerImpl.a(this.a).a(localBundle);
     }
@@ -125,12 +125,12 @@ class VipFunCallManagerImpl$1
   
   public boolean onStart(DownloadTask paramDownloadTask)
   {
-    Object localObject = paramDownloadTask.a();
+    Object localObject = paramDownloadTask.b();
     if (localObject == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mDownloadListener onStart Err0, key:");
-      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
       QLog.e("VipFunCallManager", 1, ((StringBuilder)localObject).toString());
       return true;
     }
@@ -143,9 +143,9 @@ class VipFunCallManagerImpl$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStart, loaded=");
-      localStringBuilder.append(paramDownloadTask.b);
+      localStringBuilder.append(paramDownloadTask.k);
       localStringBuilder.append(", percent=");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Float);
+      localStringBuilder.append(paramDownloadTask.l);
       localStringBuilder.append(", resType=");
       localStringBuilder.append(i);
       localStringBuilder.append(", isIPC=");
@@ -166,7 +166,7 @@ class VipFunCallManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

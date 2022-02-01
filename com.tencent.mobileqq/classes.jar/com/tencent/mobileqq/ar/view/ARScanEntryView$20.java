@@ -12,20 +12,20 @@ class ARScanEntryView$20
   
   public void run()
   {
-    ARScanEntryView.c(this.this$0);
-    ARScanEntryView.d(this.this$0);
-    ARScanEntryView.g(this.this$0);
-    ARScanEntryView.a(this.this$0, false);
-    if (((!ARVideoRecordUIControllerImpl.a().a()) || (ARVideoRecordUIControllerImpl.a().b())) && (!this.a.a.a()) && (!this.a.a.b()))
+    ARScanEntryView.m(this.this$0);
+    ARScanEntryView.n(this.this$0);
+    ARScanEntryView.t(this.this$0);
+    ARScanEntryView.c(this.this$0, false);
+    if (((!ARVideoRecordUIControllerImpl.a().g()) || (ARVideoRecordUIControllerImpl.a().h())) && (!this.a.a.a()) && (!this.a.a.b()))
     {
-      ARVideoRecordUIControllerImpl.a().b();
       ARVideoRecordUIControllerImpl.a().d();
+      ARVideoRecordUIControllerImpl.a().f();
       QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl isVideoRecordRunning false");
       return;
     }
     if (this.a.a.a())
     {
-      ARVideoRecordUIControllerImpl.a().c();
+      ARVideoRecordUIControllerImpl.a().e();
       QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl bin hai not show");
       return;
     }
@@ -34,7 +34,7 @@ class ARScanEntryView$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.20
  * JD-Core Version:    0.7.0.1
  */

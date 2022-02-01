@@ -16,10 +16,10 @@ class OfflineFileMultiOperate$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
-    } else if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-      OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
+    if (this.a.size() == 1) {
+      OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a((MessageRecord)this.a.get(0), false);
+    } else if (this.a.size() > 1) {
+      OfflineFileMultiOperate.a(this.this$0).getMessageFacade().a(this.a, false);
     }
     Object localObject = this.b;
     if ((localObject != null) && (((List)localObject).size() > 0))
@@ -38,10 +38,10 @@ class OfflineFileMultiOperate$1
           localStringBuilder.append(localFileManagerEntity.nSessionId);
           QLog.d("OfflineFileMultiOperate", 1, localStringBuilder.toString());
         }
-        OfflineFileMultiOperate.a(this.this$0).getFileManagerEngine().b(localFileManagerEntity.nSessionId);
+        OfflineFileMultiOperate.a(this.this$0).getFileManagerEngine().c(localFileManagerEntity.nSessionId);
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    localObject = this.c;
     if (localObject != null) {
       ((QFileMultiOperateCallback)localObject).a(3, 0);
     }
@@ -49,7 +49,7 @@ class OfflineFileMultiOperate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.1
  * JD-Core Version:    0.7.0.1
  */

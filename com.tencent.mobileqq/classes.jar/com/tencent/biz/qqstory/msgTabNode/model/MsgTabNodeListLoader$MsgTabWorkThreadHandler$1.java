@@ -10,9 +10,9 @@ class MsgTabNodeListLoader$MsgTabWorkThreadHandler$1
   
   public void run()
   {
-    synchronized (this.a.a.d)
+    synchronized (this.a.a.j)
     {
-      Iterator localIterator = this.a.a.d.iterator();
+      Iterator localIterator = this.a.a.j.iterator();
       while (localIterator.hasNext()) {
         ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a();
       }
@@ -26,7 +26,7 @@ class MsgTabNodeListLoader$MsgTabWorkThreadHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1
  * JD-Core Version:    0.7.0.1
  */

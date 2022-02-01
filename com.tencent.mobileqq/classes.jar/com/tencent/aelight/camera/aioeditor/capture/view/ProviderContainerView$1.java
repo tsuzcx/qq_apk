@@ -14,7 +14,7 @@ class ProviderContainerView$1
     int i = ((Integer)paramView.getTag()).intValue();
     int j = ProviderContainerView.a(this.a).c(i);
     if (j == 102) {
-      ProviderContainerView.a(this.a).b();
+      ProviderContainerView.b(this.a).b();
     } else {
       this.a.a(i);
     }
@@ -30,7 +30,7 @@ class ProviderContainerView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.ProviderContainerView.1
  * JD-Core Version:    0.7.0.1
  */

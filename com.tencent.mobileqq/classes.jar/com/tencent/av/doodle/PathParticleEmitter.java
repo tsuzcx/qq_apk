@@ -9,80 +9,68 @@ import java.io.IOException;
 
 public class PathParticleEmitter
 {
-  public float a;
-  private int jdField_a_of_type_Int;
-  private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure = null;
-  private PathParticleEmitter.GradientColorValue jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$GradientColorValue = new PathParticleEmitter.GradientColorValue();
-  private PathParticleEmitter.RangedNumericValue jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue = new PathParticleEmitter.RangedNumericValue();
-  private PathParticleEmitter.ScaledNumericValue jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private PathParticleEmitter.SpawnShapeValue jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$SpawnShapeValue = new PathParticleEmitter.SpawnShapeValue();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  float[] jdField_a_of_type_ArrayOfFloat = new float[2];
-  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  private PathParticleEmitter.Particle[] jdField_a_of_type_ArrayOfComTencentAvDoodlePathParticleEmitter$Particle;
-  private boolean[] jdField_a_of_type_ArrayOfBoolean;
+  private int A = 4;
+  private String B;
+  private int C;
+  private boolean[] D;
+  private boolean E;
+  private int F;
+  private boolean G;
+  private int H;
+  private int I;
+  private int J;
+  private int K;
+  private int L;
+  private int M;
+  private int N;
+  private float O;
+  private float P;
+  private float Q;
+  private float R;
+  private float S;
+  private float T;
+  private boolean U;
+  private boolean V;
+  private boolean W;
+  private boolean X;
+  private boolean Y = true;
+  private PathMeasure Z = null;
+  public float a = 1.0F;
   public float b;
-  private int jdField_b_of_type_Int = 4;
-  private PathParticleEmitter.RangedNumericValue jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue = new PathParticleEmitter.RangedNumericValue();
-  private PathParticleEmitter.ScaledNumericValue jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private boolean jdField_b_of_type_Boolean;
-  float[] jdField_b_of_type_ArrayOfFloat = new float[2];
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private PathParticleEmitter.RangedNumericValue jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private PathParticleEmitter.ScaledNumericValue jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private PathParticleEmitter.RangedNumericValue jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private PathParticleEmitter.ScaledNumericValue jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private boolean jdField_e_of_type_Boolean;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private boolean jdField_f_of_type_Boolean;
-  private float jdField_g_of_type_Float;
-  private int jdField_g_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private boolean jdField_g_of_type_Boolean = true;
-  private float jdField_h_of_type_Float;
-  private int jdField_h_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private float jdField_i_of_type_Float;
-  private int jdField_i_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private int jdField_j_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_j_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
-  private int jdField_k_of_type_Int;
-  private PathParticleEmitter.ScaledNumericValue jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue = new PathParticleEmitter.ScaledNumericValue();
+  float[] c = new float[2];
+  float[] d = new float[2];
+  private PathParticleEmitter.RangedNumericValue e = new PathParticleEmitter.RangedNumericValue();
+  private PathParticleEmitter.ScaledNumericValue f = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.RangedNumericValue g = new PathParticleEmitter.RangedNumericValue();
+  private PathParticleEmitter.ScaledNumericValue h = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue i = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue j = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue k = new PathParticleEmitter.ScaledNumericValue();
   private PathParticleEmitter.ScaledNumericValue l = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue m = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue n = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue o = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue p = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.GradientColorValue q = new PathParticleEmitter.GradientColorValue();
+  private PathParticleEmitter.RangedNumericValue r = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.RangedNumericValue s = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue t = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.ScaledNumericValue u = new PathParticleEmitter.ScaledNumericValue();
+  private PathParticleEmitter.SpawnShapeValue v = new PathParticleEmitter.SpawnShapeValue();
+  private float w;
+  private BitmapDrawable[] x;
+  private PathParticleEmitter.Particle[] y;
+  private int z;
   
   public PathParticleEmitter()
   {
-    this.jdField_a_of_type_Float = 1.0F;
     b();
   }
   
   public PathParticleEmitter(BufferedReader paramBufferedReader)
   {
-    this.jdField_a_of_type_Float = 1.0F;
     b();
     a(paramBufferedReader);
-  }
-  
-  static float a(BufferedReader paramBufferedReader, String paramString)
-  {
-    return Float.parseFloat(a(paramBufferedReader, paramString));
-  }
-  
-  static int a(BufferedReader paramBufferedReader, String paramString)
-  {
-    return Integer.parseInt(a(paramBufferedReader, paramString));
   }
   
   static String a(BufferedReader paramBufferedReader, String paramString)
@@ -99,7 +87,7 @@ public class PathParticleEmitter
   
   private void a(PathParticleEmitter.Particle paramParticle, float paramFloat1, float paramFloat2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPathMeasure;
+    Object localObject = this.Z;
     float f2 = 3.4028235E+38F;
     if (localObject != null)
     {
@@ -107,8 +95,8 @@ public class PathParticleEmitter
       if (f1 > 0.0F)
       {
         f1 = MathUtils.c(f1);
-        this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f1, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-        localObject = this.jdField_a_of_type_ArrayOfFloat;
+        this.Z.getPosTan(f1, this.c, this.d);
+        localObject = this.c;
         f2 = localObject[0];
         f1 = localObject[1];
         break label79;
@@ -117,31 +105,31 @@ public class PathParticleEmitter
     float f1 = 3.4028235E+38F;
     label79:
     float f3 = f2;
-    if (this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.jdField_a_of_type_Boolean) {
-      f3 = f2 + this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a();
+    if (this.r.b) {
+      f3 = f2 + this.r.a();
     }
     f2 = f1;
-    if (this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.jdField_a_of_type_Boolean) {
-      f2 = f1 + this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a();
+    if (this.s.b) {
+      f2 = f1 + this.s.a();
     }
-    int m = this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$SpawnShapeValue.jdField_a_of_type_Int;
+    int i1 = this.v.a;
     float f4;
     float f5;
-    if (m != 1)
+    if (i1 != 1)
     {
-      if (m != 2)
+      if (i1 != 2)
       {
-        if (m != 3)
+        if (i1 != 3)
         {
           paramFloat1 = f2;
           f1 = f3;
         }
         else
         {
-          f4 = this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramFloat1);
-          f1 = this.jdField_f_of_type_Float;
-          float f6 = this.jdField_g_of_type_Float;
-          paramFloat1 = this.l.a(paramFloat1);
+          f4 = this.O + this.P * this.t.a(paramFloat1);
+          f1 = this.Q;
+          float f6 = this.R;
+          paramFloat1 = this.u.a(paramFloat1);
           f5 = f4 / 2.0F;
           f6 = (f1 + f6 * paramFloat1) / 2.0F;
           paramFloat1 = f2;
@@ -155,12 +143,12 @@ public class PathParticleEmitter
             else
             {
               paramFloat1 = f5 / f6;
-              if (this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$SpawnShapeValue.jdField_c_of_type_Boolean)
+              if (this.v.d)
               {
-                m = this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$SpawnShapeValue.jdField_b_of_type_Int;
-                if (m != 1)
+                i1 = this.v.e;
+                if (i1 != 1)
                 {
-                  if (m != 2) {
+                  if (i1 != 2) {
                     f4 = MathUtils.c(360.0F);
                   } else {
                     f4 = MathUtils.c(179.0F);
@@ -175,11 +163,11 @@ public class PathParticleEmitter
                 f2 += f5 * f7 / paramFloat1;
                 paramFloat1 = f2;
                 f1 = f3;
-                if ((this.jdField_d_of_type_Int & 0x2) == 0)
+                if ((this.F & 0x2) == 0)
                 {
-                  paramParticle.jdField_g_of_type_Float = f4;
-                  paramParticle.jdField_i_of_type_Float = f6;
-                  paramParticle.j = f7;
+                  paramParticle.i = f4;
+                  paramParticle.k = f6;
+                  paramParticle.l = f7;
                   paramFloat1 = f2;
                   f1 = f3;
                 }
@@ -200,8 +188,8 @@ public class PathParticleEmitter
       }
       else
       {
-        f1 = this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramFloat1);
-        paramFloat1 = this.jdField_f_of_type_Float + this.jdField_g_of_type_Float * this.l.a(paramFloat1);
+        f1 = this.O + this.P * this.t.a(paramFloat1);
+        paramFloat1 = this.Q + this.R * this.u.a(paramFloat1);
         f1 = f3 + (MathUtils.c(f1) - f1 / 2.0F);
       }
     }
@@ -211,8 +199,8 @@ public class PathParticleEmitter
       {
         paramFloat1 = f2 + paramFloat1;
         break label616;
-        f4 = this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramFloat1);
-        paramFloat1 = this.jdField_f_of_type_Float + this.jdField_g_of_type_Float * this.l.a(paramFloat1);
+        f4 = this.O + this.P * this.t.a(paramFloat1);
+        paramFloat1 = this.Q + this.R * this.u.a(paramFloat1);
         if (f4 == 0.0F) {
           break;
         }
@@ -229,32 +217,32 @@ public class PathParticleEmitter
   
   private boolean a(PathParticleEmitter.Particle paramParticle, float paramFloat, int paramInt)
   {
-    paramInt = paramParticle.jdField_b_of_type_Int - paramInt;
+    paramInt = paramParticle.b - paramInt;
     if (paramInt <= 0) {
       return false;
     }
-    paramParticle.jdField_b_of_type_Int = paramInt;
-    float f5 = 1.0F - paramParticle.jdField_b_of_type_Int / paramParticle.jdField_a_of_type_Int;
-    paramInt = this.jdField_d_of_type_Int;
+    paramParticle.b = paramInt;
+    float f5 = 1.0F - paramParticle.b / paramParticle.a;
+    paramInt = this.F;
     if ((paramInt & 0x1) != 0) {
-      paramParticle.b(paramParticle.jdField_a_of_type_Float + paramParticle.jdField_b_of_type_Float * this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5));
+      paramParticle.b(paramParticle.c + paramParticle.d * this.j.a(f5));
     }
     if ((paramInt & 0x8) != 0)
     {
-      float f1 = (paramParticle.jdField_e_of_type_Float + paramParticle.jdField_f_of_type_Float * this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5)) * paramFloat;
+      float f1 = (paramParticle.g + paramParticle.h * this.l.a(f5)) * paramFloat;
       float f4;
       if ((paramInt & 0x2) != 0)
       {
-        float f6 = paramParticle.jdField_g_of_type_Float + paramParticle.jdField_h_of_type_Float * this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5);
+        float f6 = paramParticle.i + paramParticle.j * this.m.a(f5);
         f3 = MathUtils.b(f6) * f1;
         f4 = f1 * MathUtils.a(f6);
         f1 = f4;
         f2 = f3;
         if ((paramInt & 0x4) != 0)
         {
-          f2 = paramParticle.jdField_c_of_type_Float + paramParticle.jdField_d_of_type_Float * this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5);
+          f2 = paramParticle.e + paramParticle.f * this.k.a(f5);
           f1 = f2;
-          if (this.jdField_e_of_type_Boolean) {
+          if (this.W) {
             f1 = f2 + f6;
           }
           paramParticle.a(f1);
@@ -264,9 +252,9 @@ public class PathParticleEmitter
       }
       else
       {
-        f3 = f1 * paramParticle.jdField_i_of_type_Float;
-        f4 = f1 * paramParticle.j;
-        if (!this.jdField_e_of_type_Boolean)
+        f3 = f1 * paramParticle.k;
+        f4 = f1 * paramParticle.l;
+        if (!this.W)
         {
           f1 = f4;
           f2 = f3;
@@ -274,10 +262,10 @@ public class PathParticleEmitter
         }
         else
         {
-          f2 = paramParticle.jdField_c_of_type_Float + paramParticle.jdField_d_of_type_Float * this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5);
+          f2 = paramParticle.e + paramParticle.f * this.k.a(f5);
           f1 = f2;
-          if (this.jdField_e_of_type_Boolean) {
-            f1 = f2 + paramParticle.jdField_g_of_type_Float;
+          if (this.W) {
+            f1 = f2 + paramParticle.i;
           }
           paramParticle.a(f1);
           f2 = f3;
@@ -286,210 +274,220 @@ public class PathParticleEmitter
       }
       float f3 = f2;
       if ((paramInt & 0x10) != 0) {
-        f3 = f2 + (paramParticle.m + paramParticle.n * this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5)) * paramFloat;
+        f3 = f2 + (paramParticle.o + paramParticle.p * this.n.a(f5)) * paramFloat;
       }
       float f2 = f1;
       if ((paramInt & 0x20) != 0) {
-        f2 = f1 + (paramParticle.o + paramParticle.p * this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5)) * paramFloat;
+        f2 = f1 + (paramParticle.q + paramParticle.r * this.o.a(f5)) * paramFloat;
       }
       paramParticle.a(f3, f2);
     }
     else if ((paramInt & 0x4) != 0)
     {
-      paramParticle.a(paramParticle.jdField_c_of_type_Float + paramParticle.jdField_d_of_type_Float * this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5));
+      paramParticle.a(paramParticle.e + paramParticle.f * this.k.a(f5));
     }
     float[] arrayOfFloat;
     if ((paramInt & 0x40) != 0) {
-      arrayOfFloat = this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$GradientColorValue.a(f5);
+      arrayOfFloat = this.q.a(f5);
     } else {
-      arrayOfFloat = paramParticle.jdField_a_of_type_ArrayOfFloat;
+      arrayOfFloat = paramParticle.s;
     }
-    paramParticle.b(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], paramParticle.k + paramParticle.l * this.jdField_j_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f5));
+    paramParticle.b(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], paramParticle.m + paramParticle.n * this.p.a(f5));
     return true;
-  }
-  
-  static boolean a(BufferedReader paramBufferedReader, String paramString)
-  {
-    return Boolean.parseBoolean(a(paramBufferedReader, paramString));
   }
   
   private void b()
   {
-    this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a(true);
-    this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(true);
-    this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(true);
-    this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(true);
-    this.jdField_j_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(true);
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$SpawnShapeValue.a(true);
-    this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(true);
-    this.l.a(true);
+    this.g.a(true);
+    this.i.a(true);
+    this.h.a(true);
+    this.j.a(true);
+    this.p.a(true);
+    this.v.a(true);
+    this.t.a(true);
+    this.u.a(true);
+  }
+  
+  static boolean b(BufferedReader paramBufferedReader, String paramString)
+  {
+    return Boolean.parseBoolean(a(paramBufferedReader, paramString));
+  }
+  
+  static int c(BufferedReader paramBufferedReader, String paramString)
+  {
+    return Integer.parseInt(a(paramBufferedReader, paramString));
   }
   
   private void c()
   {
     float f1;
-    if (this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.jdField_a_of_type_Boolean) {
-      f1 = this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a();
+    if (this.e.b) {
+      f1 = this.e.a();
     } else {
       f1 = 0.0F;
     }
-    this.jdField_h_of_type_Float = f1;
-    this.jdField_i_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float -= this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Float = this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a();
-    this.jdField_e_of_type_Int = ((int)this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a());
-    this.jdField_f_of_type_Int = ((int)this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b());
-    if (!this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-      this.jdField_f_of_type_Int -= this.jdField_e_of_type_Int;
+    this.S = f1;
+    this.T = 0.0F;
+    this.b -= this.a;
+    this.a = this.g.a();
+    this.H = ((int)this.i.a());
+    this.I = ((int)this.i.b());
+    if (!this.i.c()) {
+      this.I -= this.H;
     }
-    this.jdField_j_of_type_Int = ((int)this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a());
-    this.jdField_k_of_type_Int = ((int)this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b());
-    if (!this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-      this.jdField_k_of_type_Int -= this.jdField_j_of_type_Int;
+    this.M = ((int)this.h.a());
+    this.N = ((int)this.h.b());
+    if (!this.h.c()) {
+      this.N -= this.M;
     }
-    int m;
-    if (this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean) {
-      m = (int)this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
+    int i1;
+    if (this.f.b) {
+      i1 = (int)this.f.a();
     } else {
-      m = 0;
+      i1 = 0;
     }
-    this.jdField_h_of_type_Int = m;
-    this.jdField_i_of_type_Int = ((int)this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b());
-    if (!this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-      this.jdField_i_of_type_Int -= this.jdField_h_of_type_Int;
+    this.K = i1;
+    this.L = ((int)this.f.b());
+    if (!this.f.c()) {
+      this.L -= this.K;
     }
-    this.jdField_d_of_type_Float = this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-    this.jdField_e_of_type_Float = this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b();
-    if (!this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-      this.jdField_e_of_type_Float -= this.jdField_d_of_type_Float;
+    this.O = this.t.a();
+    this.P = this.t.b();
+    if (!this.t.c()) {
+      this.P -= this.O;
     }
-    this.jdField_f_of_type_Float = this.l.a();
-    this.jdField_g_of_type_Float = this.l.b();
-    if (!this.l.a()) {
-      this.jdField_g_of_type_Float -= this.jdField_f_of_type_Float;
+    this.Q = this.u.a();
+    this.R = this.u.b();
+    if (!this.u.c()) {
+      this.R -= this.Q;
     }
-    this.jdField_d_of_type_Int = 0;
-    if ((this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean) && (this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_ArrayOfFloat.length > 1)) {
-      this.jdField_d_of_type_Int |= 0x2;
+    this.F = 0;
+    if ((this.m.b) && (this.m.a.length > 1)) {
+      this.F |= 0x2;
     }
-    if (this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean) {
-      this.jdField_d_of_type_Int |= 0x8;
+    if (this.l.b) {
+      this.F |= 0x8;
     }
-    if (this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_ArrayOfFloat.length > 1) {
-      this.jdField_d_of_type_Int |= 0x1;
+    if (this.j.a.length > 1) {
+      this.F |= 0x1;
     }
-    if ((this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean) && (this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_ArrayOfFloat.length > 1)) {
-      this.jdField_d_of_type_Int |= 0x4;
+    if ((this.k.b) && (this.k.a.length > 1)) {
+      this.F |= 0x4;
     }
-    if (this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean) {
-      this.jdField_d_of_type_Int |= 0x10;
+    if (this.n.b) {
+      this.F |= 0x10;
     }
-    if (this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean) {
-      this.jdField_d_of_type_Int |= 0x20;
+    if (this.o.b) {
+      this.F |= 0x20;
     }
-    if (this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$GradientColorValue.jdField_a_of_type_ArrayOfFloat.length > 1) {
-      this.jdField_d_of_type_Int |= 0x40;
+    if (this.q.a.length > 1) {
+      this.F |= 0x40;
     }
+  }
+  
+  static float d(BufferedReader paramBufferedReader, String paramString)
+  {
+    return Float.parseFloat(a(paramBufferedReader, paramString));
   }
   
   private void d(int paramInt)
   {
-    Object localObject3 = this.jdField_a_of_type_ArrayOfComTencentAvDoodlePathParticleEmitter$Particle;
+    Object localObject3 = this.y;
     Object localObject2 = localObject3[paramInt];
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+      localObject1 = this.x;
       localObject1 = a(localObject1[MathUtils.a(localObject1.length - 1)]);
       localObject3[paramInt] = localObject1;
     }
-    float f4 = this.jdField_b_of_type_Float / this.jdField_a_of_type_Float;
-    paramInt = this.jdField_d_of_type_Int;
-    int m = this.jdField_j_of_type_Int + (int)(this.jdField_k_of_type_Int * this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f4));
-    ((PathParticleEmitter.Particle)localObject1).jdField_a_of_type_Int = m;
-    ((PathParticleEmitter.Particle)localObject1).jdField_b_of_type_Int = m;
-    if (this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean)
+    float f4 = this.b / this.a;
+    paramInt = this.F;
+    int i1 = this.M + (int)(this.N * this.h.a(f4));
+    ((PathParticleEmitter.Particle)localObject1).a = i1;
+    ((PathParticleEmitter.Particle)localObject1).b = i1;
+    if (this.l.b)
     {
-      ((PathParticleEmitter.Particle)localObject1).jdField_e_of_type_Float = this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-      ((PathParticleEmitter.Particle)localObject1).jdField_f_of_type_Float = this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b();
-      if (!this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-        ((PathParticleEmitter.Particle)localObject1).jdField_f_of_type_Float -= ((PathParticleEmitter.Particle)localObject1).jdField_e_of_type_Float;
+      ((PathParticleEmitter.Particle)localObject1).g = this.l.a();
+      ((PathParticleEmitter.Particle)localObject1).h = this.l.b();
+      if (!this.l.c()) {
+        ((PathParticleEmitter.Particle)localObject1).h -= ((PathParticleEmitter.Particle)localObject1).g;
       }
     }
-    ((PathParticleEmitter.Particle)localObject1).jdField_g_of_type_Float = this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-    ((PathParticleEmitter.Particle)localObject1).jdField_h_of_type_Float = this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b();
-    if (!this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-      ((PathParticleEmitter.Particle)localObject1).jdField_h_of_type_Float -= ((PathParticleEmitter.Particle)localObject1).jdField_g_of_type_Float;
+    ((PathParticleEmitter.Particle)localObject1).i = this.m.a();
+    ((PathParticleEmitter.Particle)localObject1).j = this.m.b();
+    if (!this.m.c()) {
+      ((PathParticleEmitter.Particle)localObject1).j -= ((PathParticleEmitter.Particle)localObject1).i;
     }
     float f1;
     if ((paramInt & 0x2) == 0)
     {
-      f1 = ((PathParticleEmitter.Particle)localObject1).jdField_g_of_type_Float + ((PathParticleEmitter.Particle)localObject1).jdField_h_of_type_Float * this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(0.0F);
-      ((PathParticleEmitter.Particle)localObject1).jdField_g_of_type_Float = f1;
-      ((PathParticleEmitter.Particle)localObject1).jdField_i_of_type_Float = MathUtils.b(f1);
-      ((PathParticleEmitter.Particle)localObject1).j = MathUtils.a(f1);
+      f1 = ((PathParticleEmitter.Particle)localObject1).i + ((PathParticleEmitter.Particle)localObject1).j * this.m.a(0.0F);
+      ((PathParticleEmitter.Particle)localObject1).i = f1;
+      ((PathParticleEmitter.Particle)localObject1).k = MathUtils.b(f1);
+      ((PathParticleEmitter.Particle)localObject1).l = MathUtils.a(f1);
     }
     else
     {
       f1 = 0.0F;
     }
     float f5 = ((PathParticleEmitter.Particle)localObject1).getBitmap().getWidth();
-    ((PathParticleEmitter.Particle)localObject1).jdField_a_of_type_Float = (this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a() / f5);
-    ((PathParticleEmitter.Particle)localObject1).jdField_b_of_type_Float = (this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b() / f5);
-    if (!this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-      ((PathParticleEmitter.Particle)localObject1).jdField_b_of_type_Float -= ((PathParticleEmitter.Particle)localObject1).jdField_a_of_type_Float;
+    ((PathParticleEmitter.Particle)localObject1).c = (this.j.a() / f5);
+    ((PathParticleEmitter.Particle)localObject1).d = (this.j.b() / f5);
+    if (!this.j.c()) {
+      ((PathParticleEmitter.Particle)localObject1).d -= ((PathParticleEmitter.Particle)localObject1).c;
     }
-    ((PathParticleEmitter.Particle)localObject1).b(((PathParticleEmitter.Particle)localObject1).jdField_a_of_type_Float + ((PathParticleEmitter.Particle)localObject1).jdField_b_of_type_Float * this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(0.0F));
-    if (this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean)
+    ((PathParticleEmitter.Particle)localObject1).b(((PathParticleEmitter.Particle)localObject1).c + ((PathParticleEmitter.Particle)localObject1).d * this.j.a(0.0F));
+    if (this.k.b)
     {
-      ((PathParticleEmitter.Particle)localObject1).jdField_c_of_type_Float = this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-      ((PathParticleEmitter.Particle)localObject1).jdField_d_of_type_Float = this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b();
-      if (!this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-        ((PathParticleEmitter.Particle)localObject1).jdField_d_of_type_Float -= ((PathParticleEmitter.Particle)localObject1).jdField_c_of_type_Float;
+      ((PathParticleEmitter.Particle)localObject1).e = this.k.a();
+      ((PathParticleEmitter.Particle)localObject1).f = this.k.b();
+      if (!this.k.c()) {
+        ((PathParticleEmitter.Particle)localObject1).f -= ((PathParticleEmitter.Particle)localObject1).e;
       }
-      float f3 = ((PathParticleEmitter.Particle)localObject1).jdField_c_of_type_Float + ((PathParticleEmitter.Particle)localObject1).jdField_d_of_type_Float * this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(0.0F);
+      float f3 = ((PathParticleEmitter.Particle)localObject1).e + ((PathParticleEmitter.Particle)localObject1).f * this.k.a(0.0F);
       float f2 = f3;
-      if (this.jdField_e_of_type_Boolean) {
+      if (this.W) {
         f2 = f3 + f1;
       }
       ((PathParticleEmitter.Particle)localObject1).a(f2);
     }
-    if (this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean)
+    if (this.n.b)
     {
-      ((PathParticleEmitter.Particle)localObject1).m = this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-      ((PathParticleEmitter.Particle)localObject1).n = this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b();
-      if (!this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
-        ((PathParticleEmitter.Particle)localObject1).n -= ((PathParticleEmitter.Particle)localObject1).m;
-      }
-    }
-    if (this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.jdField_a_of_type_Boolean)
-    {
-      ((PathParticleEmitter.Particle)localObject1).o = this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-      ((PathParticleEmitter.Particle)localObject1).p = this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b();
-      if (!this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a()) {
+      ((PathParticleEmitter.Particle)localObject1).o = this.n.a();
+      ((PathParticleEmitter.Particle)localObject1).p = this.n.b();
+      if (!this.n.c()) {
         ((PathParticleEmitter.Particle)localObject1).p -= ((PathParticleEmitter.Particle)localObject1).o;
       }
     }
-    localObject3 = ((PathParticleEmitter.Particle)localObject1).jdField_a_of_type_ArrayOfFloat;
+    if (this.o.b)
+    {
+      ((PathParticleEmitter.Particle)localObject1).q = this.o.a();
+      ((PathParticleEmitter.Particle)localObject1).r = this.o.b();
+      if (!this.o.c()) {
+        ((PathParticleEmitter.Particle)localObject1).r -= ((PathParticleEmitter.Particle)localObject1).q;
+      }
+    }
+    localObject3 = ((PathParticleEmitter.Particle)localObject1).s;
     localObject2 = localObject3;
     if (localObject3 == null)
     {
       localObject2 = new float[3];
-      ((PathParticleEmitter.Particle)localObject1).jdField_a_of_type_ArrayOfFloat = ((float[])localObject2);
+      ((PathParticleEmitter.Particle)localObject1).s = ((float[])localObject2);
     }
-    localObject3 = this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$GradientColorValue.a(0.0F);
+    localObject3 = this.q.a(0.0F);
     localObject2[0] = localObject3[0];
     localObject2[1] = localObject3[1];
     localObject2[2] = localObject3[2];
-    ((PathParticleEmitter.Particle)localObject1).k = this.jdField_j_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a();
-    ((PathParticleEmitter.Particle)localObject1).l = (this.jdField_j_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.b() - ((PathParticleEmitter.Particle)localObject1).k);
+    ((PathParticleEmitter.Particle)localObject1).m = this.p.a();
+    ((PathParticleEmitter.Particle)localObject1).n = (this.p.b() - ((PathParticleEmitter.Particle)localObject1).m);
     a((PathParticleEmitter.Particle)localObject1, f4, f5);
-    m = (int)(this.jdField_h_of_type_Int + this.jdField_i_of_type_Int * this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(f4));
-    if (m > 0)
+    i1 = (int)(this.K + this.L * this.f.a(f4));
+    if (i1 > 0)
     {
-      paramInt = m;
-      if (m >= ((PathParticleEmitter.Particle)localObject1).jdField_b_of_type_Int) {
-        paramInt = ((PathParticleEmitter.Particle)localObject1).jdField_b_of_type_Int - 1;
+      paramInt = i1;
+      if (i1 >= ((PathParticleEmitter.Particle)localObject1).b) {
+        paramInt = ((PathParticleEmitter.Particle)localObject1).b - 1;
       }
       a((PathParticleEmitter.Particle)localObject1, paramInt / 1000.0F, paramInt);
     }
@@ -502,236 +500,236 @@ public class PathParticleEmitter
   
   public void a()
   {
-    int n = this.jdField_c_of_type_Int;
-    if (n == this.jdField_b_of_type_Int) {
+    int i2 = this.C;
+    if (i2 == this.A) {
       return;
     }
-    boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
-    int m = 0;
-    int i1 = arrayOfBoolean.length;
-    while (m < i1)
+    boolean[] arrayOfBoolean = this.D;
+    int i1 = 0;
+    int i3 = arrayOfBoolean.length;
+    while (i1 < i3)
     {
-      if (arrayOfBoolean[m] == 0)
+      if (arrayOfBoolean[i1] == 0)
       {
-        d(m);
-        arrayOfBoolean[m] = true;
-        this.jdField_c_of_type_Int = (n + 1);
+        d(i1);
+        arrayOfBoolean[i1] = true;
+        this.C = (i2 + 1);
         return;
       }
-      m += 1;
+      i1 += 1;
     }
   }
   
   public void a(float paramFloat)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+    Object localObject = this.x;
     if (localObject != null)
     {
       if (localObject.length <= 0) {
         return;
       }
-      this.jdField_c_of_type_Float += paramFloat * 1000.0F;
-      float f2 = this.jdField_c_of_type_Float;
+      this.w += paramFloat * 1000.0F;
+      float f2 = this.w;
       if (f2 < 1.0F) {
         return;
       }
-      int i2 = (int)f2;
-      float f1 = i2;
-      this.jdField_c_of_type_Float = (f2 - f1);
-      f2 = this.jdField_i_of_type_Float;
-      if (f2 < this.jdField_h_of_type_Float)
+      int i4 = (int)f2;
+      float f1 = i4;
+      this.w = (f2 - f1);
+      f2 = this.T;
+      if (f2 < this.S)
       {
-        this.jdField_i_of_type_Float = (f2 + f1);
+        this.T = (f2 + f1);
       }
       else
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.E)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.E = false;
           a();
         }
-        f2 = this.jdField_b_of_type_Float;
-        if (f2 < this.jdField_a_of_type_Float)
+        f2 = this.b;
+        if (f2 < this.a)
         {
-          this.jdField_b_of_type_Float = (f2 + f1);
+          this.b = (f2 + f1);
         }
         else
         {
-          if ((!this.jdField_d_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {
+          if ((!this.V) || (this.G)) {
             break label150;
           }
           c();
         }
-        m = 0;
+        i1 = 0;
         break label153;
         label150:
-        m = 1;
+        i1 = 1;
         label153:
-        if (m == 0)
+        if (i1 == 0)
         {
-          this.jdField_g_of_type_Int += i2;
-          f1 = this.jdField_e_of_type_Int + this.jdField_f_of_type_Int * this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(this.jdField_b_of_type_Float / this.jdField_a_of_type_Float);
+          this.J += i4;
+          f1 = this.H + this.I * this.i.a(this.b / this.a);
           if (f1 > 0.0F)
           {
             f1 = 1000.0F / f1;
-            m = this.jdField_g_of_type_Int;
-            if (m >= f1)
+            i1 = this.J;
+            if (i1 >= f1)
             {
-              m = Math.min((int)(m / f1), this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
-              this.jdField_g_of_type_Int = ((int)(this.jdField_g_of_type_Int - m * f1));
-              this.jdField_g_of_type_Int = ((int)(this.jdField_g_of_type_Int % f1));
-              b(m);
+              i1 = Math.min((int)(i1 / f1), this.A - this.C);
+              this.J = ((int)(this.J - i1 * f1));
+              this.J = ((int)(this.J % f1));
+              b(i1);
             }
           }
-          m = this.jdField_c_of_type_Int;
-          n = this.jdField_a_of_type_Int;
-          if (m < n) {
-            b(n - m);
+          i1 = this.C;
+          i2 = this.z;
+          if (i1 < i2) {
+            b(i2 - i1);
           }
         }
       }
-      localObject = this.jdField_a_of_type_ArrayOfBoolean;
-      int n = this.jdField_c_of_type_Int;
-      PathParticleEmitter.Particle[] arrayOfParticle = this.jdField_a_of_type_ArrayOfComTencentAvDoodlePathParticleEmitter$Particle;
-      int i3 = localObject.length;
-      int m = 0;
-      while (m < i3)
+      localObject = this.D;
+      int i2 = this.C;
+      PathParticleEmitter.Particle[] arrayOfParticle = this.y;
+      int i5 = localObject.length;
+      int i1 = 0;
+      while (i1 < i5)
       {
-        int i1 = n;
-        if (localObject[m] != 0)
+        int i3 = i2;
+        if (localObject[i1] != 0)
         {
-          i1 = n;
-          if (!a(arrayOfParticle[m], paramFloat, i2))
+          i3 = i2;
+          if (!a(arrayOfParticle[i1], paramFloat, i4))
           {
-            localObject[m] = 0;
-            i1 = n - 1;
+            localObject[i1] = 0;
+            i3 = i2 - 1;
           }
         }
-        m += 1;
-        n = i1;
+        i1 += 1;
+        i2 = i3;
       }
-      this.jdField_c_of_type_Int = n;
+      this.C = i2;
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfBoolean = new boolean[paramInt];
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfComTencentAvDoodlePathParticleEmitter$Particle = new PathParticleEmitter.Particle[paramInt];
+    this.A = paramInt;
+    this.D = new boolean[paramInt];
+    this.C = 0;
+    this.y = new PathParticleEmitter.Particle[paramInt];
   }
   
   public void a(Canvas paramCanvas)
   {
-    PathParticleEmitter.Particle[] arrayOfParticle = this.jdField_a_of_type_ArrayOfComTencentAvDoodlePathParticleEmitter$Particle;
-    boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
-    int n = arrayOfBoolean.length;
-    int m = 0;
-    while (m < n)
+    PathParticleEmitter.Particle[] arrayOfParticle = this.y;
+    boolean[] arrayOfBoolean = this.D;
+    int i2 = arrayOfBoolean.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfBoolean[m] != 0) {
-        arrayOfParticle[m].draw(paramCanvas);
+      if (arrayOfBoolean[i1] != 0) {
+        arrayOfParticle[i1].draw(paramCanvas);
       }
-      m += 1;
+      i1 += 1;
     }
   }
   
   public void a(PathMeasure paramPathMeasure)
   {
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = paramPathMeasure;
+    this.Z = paramPathMeasure;
   }
   
   public void a(BufferedReader paramBufferedReader)
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = a(paramBufferedReader, "name");
+      this.B = a(paramBufferedReader, "name");
       paramBufferedReader.readLine();
-      this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a(paramBufferedReader);
+      this.e.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a(paramBufferedReader);
+      this.g.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      c(a(paramBufferedReader, "minParticleCount"));
-      a(a(paramBufferedReader, "maxParticleCount"));
+      c(c(paramBufferedReader, "minParticleCount"));
+      a(c(paramBufferedReader, "maxParticleCount"));
       paramBufferedReader.readLine();
-      this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.i.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_b_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.h.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.f.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_c_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a(paramBufferedReader);
+      this.r.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$RangedNumericValue.a(paramBufferedReader);
+      this.s.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$SpawnShapeValue.a(paramBufferedReader);
+      this.v.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_k_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.t.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.u.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.j.a(paramBufferedReader);
       paramBufferedReader.readLine();
       this.l.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_d_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.m.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_f_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.k.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_g_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.n.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_e_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.o.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_h_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.q.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_i_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
+      this.p.a(paramBufferedReader);
       paramBufferedReader.readLine();
-      this.jdField_a_of_type_ComTencentAvDoodlePathParticleEmitter$GradientColorValue.a(paramBufferedReader);
-      paramBufferedReader.readLine();
-      this.jdField_j_of_type_ComTencentAvDoodlePathParticleEmitter$ScaledNumericValue.a(paramBufferedReader);
-      paramBufferedReader.readLine();
-      this.jdField_c_of_type_Boolean = a(paramBufferedReader, "attached");
-      this.jdField_d_of_type_Boolean = a(paramBufferedReader, "continuous");
-      this.jdField_e_of_type_Boolean = a(paramBufferedReader, "aligned");
-      this.jdField_g_of_type_Boolean = a(paramBufferedReader, "additive");
-      this.jdField_f_of_type_Boolean = a(paramBufferedReader, "behind");
+      this.U = b(paramBufferedReader, "attached");
+      this.V = b(paramBufferedReader, "continuous");
+      this.W = b(paramBufferedReader, "aligned");
+      this.Y = b(paramBufferedReader, "additive");
+      this.X = b(paramBufferedReader, "behind");
       return;
     }
     catch (RuntimeException paramBufferedReader)
     {
-      if (this.jdField_a_of_type_JavaLangString == null) {
+      if (this.B == null) {
         throw paramBufferedReader;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Error parsing emitter: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.B);
       throw new RuntimeException(localStringBuilder.toString(), paramBufferedReader);
     }
   }
   
   public void a(BitmapDrawable[] paramArrayOfBitmapDrawable)
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
+    this.x = paramArrayOfBitmapDrawable;
   }
   
   public void b(int paramInt)
   {
-    int n = Math.min(paramInt, this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
-    if (n == 0) {
+    int i2 = Math.min(paramInt, this.A - this.C);
+    if (i2 == 0) {
       return;
     }
-    boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
-    int i1 = arrayOfBoolean.length;
-    int m = 0;
+    boolean[] arrayOfBoolean = this.D;
+    int i3 = arrayOfBoolean.length;
+    int i1 = 0;
     paramInt = 0;
-    if (m < n) {
+    if (i1 < i2) {
       for (;;)
       {
-        if (paramInt >= i1) {
+        if (paramInt >= i3) {
           break label80;
         }
         if (arrayOfBoolean[paramInt] == 0)
         {
           d(paramInt);
           arrayOfBoolean[paramInt] = true;
-          m += 1;
+          i1 += 1;
           paramInt += 1;
           break;
         }
@@ -739,12 +737,12 @@ public class PathParticleEmitter
       }
     }
     label80:
-    this.jdField_c_of_type_Int += n;
+    this.C += i2;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.z = paramInt;
   }
 }
 

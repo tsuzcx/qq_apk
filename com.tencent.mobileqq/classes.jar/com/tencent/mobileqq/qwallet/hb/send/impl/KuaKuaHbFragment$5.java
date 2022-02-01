@@ -12,13 +12,13 @@ class KuaKuaHbFragment$5
   public void onClick(View paramView)
   {
     if ((paramView instanceof TextView)) {
-      KuaKuaHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      KuaKuaHbFragment.b(this.a).setText(((TextView)paramView).getText().toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.KuaKuaHbFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class LimitChatPie$18
   
   public void run()
   {
-    ((IExpandMsgSendHelper)QRoute.api(IExpandMsgSendHelper.class)).handleUnLimitMatchUserInfo(this.this$0.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanMatchMatchInfo);
+    ((IExpandMsgSendHelper)QRoute.api(IExpandMsgSendHelper.class)).handleUnLimitMatchUserInfo(this.this$0.d, this.a, this.b);
     ThreadManager.getUIHandler().post(new LimitChatPie.18.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.18
  * JD-Core Version:    0.7.0.1
  */

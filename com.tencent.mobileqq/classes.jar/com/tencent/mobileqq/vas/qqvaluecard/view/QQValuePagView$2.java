@@ -7,16 +7,16 @@ class QQValuePagView$2
   
   public void run()
   {
-    if (QQValuePagView.b(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+    if (QQValuePagView.d(this.this$0).equals(this.a))
     {
       QQValuePagView localQQValuePagView = this.this$0;
-      localQQValuePagView.a(this.jdField_a_of_type_JavaLangString, QQValuePagView.c(localQQValuePagView), this.jdField_a_of_type_Boolean);
+      localQQValuePagView.a(this.a, QQValuePagView.e(localQQValuePagView), this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -178,7 +178,7 @@ public class QZoneFacadeJsHandleLogic
     //   98: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   101: ifne +124 -> 225
     //   104: aload_0
-    //   105: invokevirtual 161	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   105: invokevirtual 161	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
     //   108: ifnull +117 -> 225
     //   111: new 163	android/content/Intent
     //   114: dup
@@ -230,7 +230,7 @@ public class QZoneFacadeJsHandleLogic
     //   207: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   210: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   213: aload_0
-    //   214: invokevirtual 161	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   214: invokevirtual 161	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
     //   217: invokestatic 194	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
     //   220: aload 4
     //   222: invokestatic 200	cooperation/qzone/QZoneHelper:forwardToQzoneTransluentActivity	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;Landroid/content/Intent;)V
@@ -259,12 +259,12 @@ public class QZoneFacadeJsHandleLogic
     if (QLog.isColorLevel()) {
       QLog.d("QZoneFacadeJsHandleLogic", 2, "handleSetFacadeFinish");
     }
-    if (paramPluginRuntime.a() != null)
+    if (paramPluginRuntime.b() != null)
     {
-      if (paramPluginRuntime.a() == null) {
+      if (paramPluginRuntime.d() == null) {
         return;
       }
-      LocalMultiProcConfig.putInt4Uin("key_personalize_prefix_19", 0, Long.valueOf(paramPluginRuntime.a().getCurrentAccountUin()).longValue());
+      LocalMultiProcConfig.putInt4Uin("key_personalize_prefix_19", 0, Long.valueOf(paramPluginRuntime.b().getCurrentAccountUin()).longValue());
       Object localObject1 = new Intent("action_facade_js2qzone");
       Object localObject2 = new Bundle();
       ((Bundle)localObject2).putString("cmd", "setAvatar");
@@ -276,7 +276,7 @@ public class QZoneFacadeJsHandleLogic
         ((StringBuilder)localObject2).append(((Intent)localObject1).getAction());
         QLog.d("QZoneFacadeJsHandleLogic", 2, ((StringBuilder)localObject2).toString());
       }
-      QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), (Intent)localObject1);
+      QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.d(), QZoneHelper.UserInfo.getInstance(), (Intent)localObject1);
       int j = 1;
       int i = j;
       if (paramVarArgs != null)
@@ -309,14 +309,14 @@ public class QZoneFacadeJsHandleLogic
         }
       }
       if (i != 0) {
-        paramPluginRuntime.a().finish();
+        paramPluginRuntime.d().finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneFacadeJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

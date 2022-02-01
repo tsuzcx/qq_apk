@@ -80,7 +80,7 @@ public class ChatBackgroundAuth
           i = Integer.parseInt(localObject2[1]);
           if (i > -1) {
             i = b(i);
-          } else if (paramFriendsManager.b(str)) {
+          } else if (paramFriendsManager.n(str)) {
             i = 2;
           } else {
             i = 3;
@@ -91,7 +91,7 @@ public class ChatBackgroundAuth
           i = j;
           if ("null".equals(localObject2))
           {
-            str = this.mAutomator.a.getCurrentUin();
+            str = this.mAutomator.k.getCurrentUin();
             i = j;
           }
         }
@@ -134,17 +134,17 @@ public class ChatBackgroundAuth
   
   protected int doStep()
   {
-    SharedPreferences localSharedPreferences = this.mAutomator.a.getApp().getSharedPreferences("mobileQQ", 0);
+    SharedPreferences localSharedPreferences = this.mAutomator.k.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("lastChabgAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "doStep start auth");
       }
-      Object localObject = (ChatBackgroundManager)this.mAutomator.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
-      HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
-      localObject = ((ChatBackgroundManager)localObject).c();
-      ((ISVIPHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (FriendsManager)this.mAutomator.a.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new ChatBackgroundAuth.ChatBgAuthBusinessObserver(this.mAutomator.a), true);
+      Object localObject = (ChatBackgroundManager)this.mAutomator.k.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
+      HashMap localHashMap = ((ChatBackgroundManager)localObject).d();
+      localObject = ((ChatBackgroundManager)localObject).g();
+      ((ISVIPHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (FriendsManager)this.mAutomator.k.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new ChatBackgroundAuth.ChatBgAuthBusinessObserver(this.mAutomator.k), true);
       localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
     }
     if (!VipIconCallback.sInstance.isFileExists("namePlate_UrlConfig")) {
@@ -155,7 +155,7 @@ public class ChatBackgroundAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth
  * JD-Core Version:    0.7.0.1
  */

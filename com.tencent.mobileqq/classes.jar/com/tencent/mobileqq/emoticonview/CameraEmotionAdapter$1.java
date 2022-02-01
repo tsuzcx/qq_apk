@@ -62,8 +62,8 @@ class CameraEmotionAdapter$1
             }
             return true;
           }
-          localObject = (URLImageView)paramView.findViewById(2131378202);
-          ImageView localImageView = (ImageView)paramView.findViewById(2131374391);
+          localObject = (URLImageView)paramView.findViewById(2131446720);
+          ImageView localImageView = (ImageView)paramView.findViewById(2131442557);
           if (!(((URLImageView)localObject).getBackground() instanceof URLDrawable)) {
             return false;
           }
@@ -95,7 +95,7 @@ class CameraEmotionAdapter$1
             localImageView.setVisibility(0);
             localURLDrawable.restartDownload();
             if (!(localImageView.getDrawable() instanceof Animatable)) {
-              localImageView.setImageDrawable((Drawable)paramView.getContext().getResources().getDrawable(2130846461));
+              localImageView.setImageDrawable((Drawable)paramView.getContext().getResources().getDrawable(2130847934));
             }
             ((Animatable)localImageView.getDrawable()).start();
           }
@@ -111,7 +111,7 @@ class CameraEmotionAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

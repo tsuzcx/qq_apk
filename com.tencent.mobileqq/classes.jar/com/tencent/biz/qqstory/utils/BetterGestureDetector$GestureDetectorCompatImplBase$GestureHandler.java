@@ -24,14 +24,14 @@ class BetterGestureDetector$GestureDetectorCompatImplBase$GestureHandler
       {
         if (i == 3)
         {
-          if (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
+          if (this.a.b != null)
           {
-            if (!this.a.jdField_a_of_type_Boolean)
+            if (!this.a.c)
             {
-              this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+              this.a.b.onSingleTapConfirmed(this.a.e);
               return;
             }
-            this.a.b = true;
+            this.a.d = true;
           }
         }
         else
@@ -47,7 +47,7 @@ class BetterGestureDetector$GestureDetectorCompatImplBase$GestureHandler
       }
     }
     else {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      this.a.a.onShowPress(this.a.e);
     }
   }
 }

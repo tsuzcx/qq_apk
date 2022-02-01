@@ -11,15 +11,15 @@ class DrawRedpacketPannelPreviewFragment$3
   
   public boolean onLongClick(View paramView)
   {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).show();
+    if ((DrawRedpacketPannelPreviewFragment.i(this.a) != null) && (DrawRedpacketPannelPreviewFragment.i(this.a).b(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.j(this.a) != null)) {
+      DrawRedpacketPannelPreviewFragment.j(this.a).show();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.3
  * JD-Core Version:    0.7.0.1
  */

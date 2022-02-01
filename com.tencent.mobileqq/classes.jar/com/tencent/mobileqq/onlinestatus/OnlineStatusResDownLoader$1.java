@@ -14,34 +14,34 @@ class OnlineStatusResDownLoader$1
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)localIterator.next();
-      if ((!TextUtils.isEmpty(localOnlineStatusItem.f)) && (!TextUtils.isEmpty(localOnlineStatusItem.g)))
+      if ((!TextUtils.isEmpty(localOnlineStatusItem.k)) && (!TextUtils.isEmpty(localOnlineStatusItem.l)))
       {
-        String[] arrayOfString = OnlineStatusResDownLoader.a(localOnlineStatusItem.a);
+        String[] arrayOfString = OnlineStatusResDownLoader.a(localOnlineStatusItem.b);
         OnlineStatusResDownLoader.a(this.this$0);
-        if (ZipResourcesDownloader.a(localOnlineStatusItem.f, localOnlineStatusItem.g, arrayOfString))
+        if (ZipResourcesDownloader.a(localOnlineStatusItem.k, localOnlineStatusItem.l, arrayOfString))
         {
-          QLog.d("OnlineStatusResDownLoader", 2, new Object[] { "[OnlineStatus] downloadRes itemRes is ready item.id=", Long.valueOf(localOnlineStatusItem.a) });
+          QLog.d("OnlineStatusResDownLoader", 2, new Object[] { "[OnlineStatus] downloadRes itemRes is ready item.id=", Long.valueOf(localOnlineStatusItem.b) });
         }
         else
         {
-          QLog.d("OnlineStatusResDownLoader", 2, new Object[] { "[OnlineStatus] downloadRes itemRes need download item.id=", Long.valueOf(localOnlineStatusItem.a) });
-          OnlineStatusResDownLoader.a(this.this$0).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 10096, "prd", localOnlineStatusItem.f, localOnlineStatusItem.g, arrayOfString, null);
+          QLog.d("OnlineStatusResDownLoader", 2, new Object[] { "[OnlineStatus] downloadRes itemRes need download item.id=", Long.valueOf(localOnlineStatusItem.b) });
+          OnlineStatusResDownLoader.a(this.this$0).a(this.b, 10096, "prd", localOnlineStatusItem.k, localOnlineStatusItem.l, arrayOfString, null);
         }
       }
       else
       {
-        QLog.d("OnlineStatusResDownLoader", 2, new Object[] { "[OnlineStatus] downloadRes paramError item.id=", Long.valueOf(localOnlineStatusItem.a), " item.resUrl=", localOnlineStatusItem.f, " item.md5=", localOnlineStatusItem.g });
+        QLog.d("OnlineStatusResDownLoader", 2, new Object[] { "[OnlineStatus] downloadRes paramError item.id=", Long.valueOf(localOnlineStatusItem.b), " item.resUrl=", localOnlineStatusItem.k, " item.md5=", localOnlineStatusItem.l });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusResDownLoader.1
  * JD-Core Version:    0.7.0.1
  */

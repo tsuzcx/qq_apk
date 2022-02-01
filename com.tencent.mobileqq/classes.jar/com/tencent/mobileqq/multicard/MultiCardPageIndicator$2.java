@@ -19,7 +19,7 @@ class MultiCardPageIndicator$2
       localStringBuilder.append("]");
       QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
     }
-    if (MultiCardPageIndicator.a(this.a) != null) {
+    if (MultiCardPageIndicator.d(this.a) != null) {
       this.a.performClick();
     }
     return super.onSingleTapConfirmed(paramMotionEvent);
@@ -27,7 +27,7 @@ class MultiCardPageIndicator$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPageIndicator.2
  * JD-Core Version:    0.7.0.1
  */

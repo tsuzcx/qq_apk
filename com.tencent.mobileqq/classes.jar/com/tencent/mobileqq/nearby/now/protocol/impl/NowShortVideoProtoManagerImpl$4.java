@@ -20,10 +20,10 @@ class NowShortVideoProtoManagerImpl$4
       ((StringBuilder)localObject).append(", data=");
       ((StringBuilder)localObject).append(paramArrayOfByte);
       ((StringBuilder)localObject).append(", mQueryString=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       QLog.i("getMediaDetailInfo", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolINowShortVideoProtoManager$Callback;
+    Object localObject = this.c;
     if (localObject != null) {
       ((INowShortVideoProtoManager.Callback)localObject).a(paramInt, paramArrayOfByte, paramBundle);
     }
@@ -31,7 +31,7 @@ class NowShortVideoProtoManagerImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.impl.NowShortVideoProtoManagerImpl.4
  * JD-Core Version:    0.7.0.1
  */

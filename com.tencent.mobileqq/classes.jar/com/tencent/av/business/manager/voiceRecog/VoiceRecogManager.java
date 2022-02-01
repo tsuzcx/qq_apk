@@ -17,12 +17,11 @@ import java.util.Iterator;
 public class VoiceRecogManager
   extends BusinessManager
 {
-  VoiceRecogTips a;
+  VoiceRecogTips d = null;
   
   public VoiceRecogManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
   }
   
   public static SharedPreferences a(AppInterface paramAppInterface)
@@ -32,21 +31,6 @@ public class VoiceRecogManager
     localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
     localStringBuilder.append("qav_voicerecog");
     return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
-  }
-  
-  public static EffectFaceManager.BlessingTips a(VideoAppInterface paramVideoAppInterface)
-  {
-    paramVideoAppInterface = ((EffectFaceManager)paramVideoAppInterface.a(3)).a();
-    long l = MessageCache.a();
-    paramVideoAppInterface = paramVideoAppInterface.iterator();
-    while (paramVideoAppInterface.hasNext())
-    {
-      EffectFaceManager.BlessingTips localBlessingTips = (EffectFaceManager.BlessingTips)paramVideoAppInterface.next();
-      if (a(l * 1000L, localBlessingTips.a, localBlessingTips.b)) {
-        return localBlessingTips;
-      }
-    }
-    return null;
   }
   
   public static boolean a(long paramLong1, long paramLong2, long paramLong3)
@@ -61,7 +45,22 @@ public class VoiceRecogManager
   
   public static boolean b(VideoAppInterface paramVideoAppInterface)
   {
-    return ((EffectSupportManager)paramVideoAppInterface.a(5)).a(3, "normal");
+    return ((EffectSupportManager)paramVideoAppInterface.c(5)).a(3, "normal");
+  }
+  
+  public static EffectFaceManager.BlessingTips c(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = ((EffectFaceManager)paramVideoAppInterface.c(3)).l();
+    long l = MessageCache.c();
+    paramVideoAppInterface = paramVideoAppInterface.iterator();
+    while (paramVideoAppInterface.hasNext())
+    {
+      EffectFaceManager.BlessingTips localBlessingTips = (EffectFaceManager.BlessingTips)paramVideoAppInterface.next();
+      if (a(l * 1000L, localBlessingTips.b, localBlessingTips.c)) {
+        return localBlessingTips;
+      }
+    }
+    return null;
   }
   
   protected void a() {}
@@ -90,31 +89,31 @@ public class VoiceRecogManager
   
   void b()
   {
-    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
+    if (!a(this.c)) {
       return;
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    SessionInfo localSessionInfo = this.c.b().k();
     if (localSessionInfo == null) {
       return;
     }
-    EffectFaceManager.BlessingTips localBlessingTips = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    EffectFaceManager.BlessingTips localBlessingTips = c(this.c);
     if (localBlessingTips == null) {
       return;
     }
-    VoiceRecogTips localVoiceRecogTips = this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips;
+    VoiceRecogTips localVoiceRecogTips = this.d;
     if (localVoiceRecogTips != null) {
-      localVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      localVoiceRecogTips.c(this.c);
     }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localSessionInfo.c, localBlessingTips);
+    this.d = new VoiceRecogTips(this.c, localSessionInfo.s, localBlessingTips);
   }
   
   void c()
   {
-    VoiceRecogTips localVoiceRecogTips = this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips;
+    VoiceRecogTips localVoiceRecogTips = this.d;
     if (localVoiceRecogTips != null)
     {
-      localVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
+      localVoiceRecogTips.c(this.c);
+      this.d = null;
     }
   }
 }

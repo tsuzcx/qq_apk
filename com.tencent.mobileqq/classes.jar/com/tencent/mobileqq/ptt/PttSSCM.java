@@ -10,9 +10,9 @@ public class PttSSCM
 {
   protected int a(long paramLong)
   {
-    if (!this.a)
+    if (!this.j)
     {
-      int i = this.b;
+      int i = this.c;
       if (i != 1)
       {
         if (i != 2)
@@ -20,41 +20,41 @@ public class PttSSCM
           if (i != 3)
           {
             if (i != 4) {
-              this.c = 4096;
+              this.g = 4096;
             } else {
-              this.c = 32768;
+              this.g = 32768;
             }
           }
           else {
-            this.c = 16384;
+            this.g = 16384;
           }
         }
         else {
-          this.c = 8192;
+          this.g = 8192;
         }
       }
       else {
-        this.c = 32768;
+        this.g = 32768;
       }
     }
     if (paramLong < 102400L) {
-      this.c *= 4;
+      this.g *= 4;
     }
-    if (paramLong - this.c <= this.c / 2) {
-      this.c = ((int)paramLong);
+    if (paramLong - this.g <= this.g / 2) {
+      this.g = ((int)paramLong);
     }
-    return this.c;
+    return this.g;
   }
   
   public int a(Context paramContext, long paramLong)
   {
-    this.b = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    this.c = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
     return a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.PttSSCM
  * JD-Core Version:    0.7.0.1
  */

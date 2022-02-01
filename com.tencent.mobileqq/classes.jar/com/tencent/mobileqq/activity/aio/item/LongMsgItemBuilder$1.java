@@ -10,12 +10,12 @@ class LongMsgItemBuilder$1
   
   public void a(View paramView)
   {
-    LongMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder, paramView, this.jdField_a_of_type_Boolean);
+    LongMsgItemBuilder.a(this.b, paramView, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

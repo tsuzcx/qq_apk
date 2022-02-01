@@ -12,23 +12,23 @@ class IntimateInfoShareHelper$6$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("file://");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localIntent.setData(Uri.parse(localStringBuilder.toString()));
-      IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).sendBroadcast(localIntent);
-      QQToast.a(IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0), 2, IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getString(2131694913), 1).b(IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getTitleBarHeight());
+      IntimateInfoShareHelper.e(this.c.this$0).sendBroadcast(localIntent);
+      QQToast.makeText(IntimateInfoShareHelper.e(this.c.this$0), 2, IntimateInfoShareHelper.e(this.c.this$0).getString(2131892639), 1).show(IntimateInfoShareHelper.e(this.c.this$0).getTitleBarHeight());
       return;
     }
-    QQToast.a(IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0), 1, IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getString(2131694912), 1).b(IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getTitleBarHeight());
+    QQToast.makeText(IntimateInfoShareHelper.e(this.c.this$0), 1, IntimateInfoShareHelper.e(this.c.this$0).getString(2131892638), 1).show(IntimateInfoShareHelper.e(this.c.this$0).getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.6.1
  * JD-Core Version:    0.7.0.1
  */

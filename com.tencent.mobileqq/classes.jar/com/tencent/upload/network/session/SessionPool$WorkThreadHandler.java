@@ -3,6 +3,7 @@ package com.tencent.upload.network.session;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.upload.utils.Const.UploadRetCode;
 import com.tencent.upload.utils.UploadLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -53,6 +54,19 @@ class SessionPool$WorkThreadHandler
           sendMessageDelayed(paramMessage, (1 << i) * 1000);
           return;
         }
+        paramMessage = this.mRef;
+        if ((paramMessage != null) && (paramMessage.get() != null))
+        {
+          paramMessage = (SessionPool)this.mRef.get();
+          if (SessionPool.access$500(paramMessage) != null) {
+            SessionPool.access$500(paramMessage).onNetWorkConnectFail(paramMessage, Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode());
+          }
+        }
+        else
+        {
+          UploadLog.w("SessionPool", "mRef == null or mRef.get() == null");
+          return;
+        }
       }
       break;
     case 110000: 
@@ -68,7 +82,7 @@ class SessionPool$WorkThreadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.session.SessionPool.WorkThreadHandler
  * JD-Core Version:    0.7.0.1
  */

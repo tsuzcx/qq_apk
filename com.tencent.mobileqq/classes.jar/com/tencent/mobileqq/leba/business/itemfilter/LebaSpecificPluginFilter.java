@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.leba.business.itemfilter;
 
 import com.tencent.biz.now.NowLiveManager;
-import com.tencent.biz.qqstory.base.QQStoryManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -14,7 +13,6 @@ import com.tencent.mobileqq.leba.entity.LebaViewItem;
 import com.tencent.mobileqq.qqexpand.manager.IExpandManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class LebaSpecificPluginFilter
   implements ILebaItemFilter
@@ -22,11 +20,6 @@ public class LebaSpecificPluginFilter
   public boolean a()
   {
     return ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return paramLong == NowLiveManager.jdField_a_of_type_Int;
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -44,7 +37,7 @@ public class LebaSpecificPluginFilter
       if (paramQQAppInterface == null) {
         break label75;
       }
-      if (paramQQAppInterface.i < 1) {
+      if (paramQQAppInterface.A < 1) {
         return true;
       }
     }
@@ -56,10 +49,10 @@ public class LebaSpecificPluginFilter
   public boolean a(LebaViewItem paramLebaViewItem)
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == 905L) {
+    if (paramLebaViewItem.b.uiResId == 905L) {
       return true;
     }
-    if (paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == NowLiveManager.jdField_a_of_type_Int)
+    if (paramLebaViewItem.b.uiResId == NowLiveManager.a)
     {
       boolean bool;
       if ((localObject instanceof QQAppInterface)) {
@@ -71,20 +64,20 @@ public class LebaSpecificPluginFilter
         return true;
       }
     }
-    if ((paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == 1130L) && (a()))
+    if ((paramLebaViewItem.b.uiResId == 1130L) && (a()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.lebatab.mgr", 2, "getLebaMgrList hide leba kandian");
       }
       return true;
     }
-    if (((localObject instanceof QQAppInterface)) && (a((QQAppInterface)localObject, paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId)))
+    if (((localObject instanceof QQAppInterface)) && (a((QQAppInterface)localObject, paramLebaViewItem.b.uiResId)))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("getLebaMgrList, ");
-        ((StringBuilder)localObject).append(paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId);
+        ((StringBuilder)localObject).append(paramLebaViewItem.b.uiResId);
         ((StringBuilder)localObject).append(" is filtered");
         QLog.d("Q.lebatab.mgr", 2, ((StringBuilder)localObject).toString());
       }
@@ -92,47 +85,10 @@ public class LebaSpecificPluginFilter
     }
     return false;
   }
-  
-  public boolean a(AppRuntime paramAppRuntime, StringBuffer paramStringBuffer, LebaViewItem paramLebaViewItem)
-  {
-    if (paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == 905L) {
-      return true;
-    }
-    if ((paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == 1130L) && (a()))
-    {
-      paramStringBuffer.append("hide leba kandian,");
-      return true;
-    }
-    if ((paramAppRuntime instanceof QQAppInterface))
-    {
-      paramAppRuntime = (QQAppInterface)paramAppRuntime;
-      if (a(paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId))
-      {
-        paramStringBuffer.append("isNowTabAdded");
-        paramAppRuntime.getNowLiveManager();
-        paramStringBuffer.append(NowLiveManager.c);
-        paramStringBuffer.append("  isNowTabShow:");
-        paramStringBuffer.append(paramAppRuntime.getNowLiveManager().jdField_a_of_type_Boolean);
-        paramStringBuffer.append("  isSDKAPISupportStory:");
-        paramStringBuffer.append(QQStoryManager.i());
-        paramStringBuffer.append(",");
-        if ((!paramAppRuntime.getNowLiveManager().a()) || (paramLebaViewItem.jdField_a_of_type_Byte == 1)) {
-          return true;
-        }
-      }
-      if (a(paramAppRuntime, paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId))
-      {
-        paramStringBuffer.append(paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId);
-        paramStringBuffer.append(" is filtered");
-        return true;
-      }
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.itemfilter.LebaSpecificPluginFilter
  * JD-Core Version:    0.7.0.1
  */

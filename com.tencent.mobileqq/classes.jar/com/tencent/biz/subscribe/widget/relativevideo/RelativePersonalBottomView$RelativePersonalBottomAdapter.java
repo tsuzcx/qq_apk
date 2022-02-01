@@ -15,15 +15,15 @@ class RelativePersonalBottomView$RelativePersonalBottomAdapter
   
   public BaseFragment a(int paramInt)
   {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (BaseFragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    if (paramInt < RelativePersonalBottomView.e(this.a).size()) {
+      return (BaseFragment)RelativePersonalBottomView.e(this.a).get(paramInt);
     }
     return null;
   }
   
   public int getCount()
   {
-    return RelativePersonalBottomView.a(this.a).size();
+    return RelativePersonalBottomView.e(this.a).size();
   }
   
   public int getItemPosition(Object paramObject)
@@ -33,7 +33,7 @@ class RelativePersonalBottomView$RelativePersonalBottomAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.RelativePersonalBottomAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ final class QualityReporter$1
   {
     HashMap localHashMap = new HashMap();
     String str;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       str = "1";
     } else {
       str = "0";
     }
     localHashMap.put("report_key_param_suc", str);
-    localHashMap.put("report_key_snapshot_from", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("report_key_snapshot_from", String.valueOf(this.b));
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actAVGameSnapshotFromReport", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, String.format("reportSnapshotFrom [suc,from]=[%b,%d]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.i("QualityReporter", 2, String.format("reportSnapshotFrom [suc,from]=[%b,%d]", new Object[] { Boolean.valueOf(this.a), Integer.valueOf(this.b) }));
     }
   }
 }

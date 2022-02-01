@@ -23,12 +23,12 @@ class QShareUtils$3
       if (i != -2) {
         if (i != 0)
         {
-          QRUtils.a(1, 2131719009);
+          QRUtils.a(1, 2131916544);
           bool1 = bool2;
         }
         else
         {
-          QRUtils.a(2, 2131719027);
+          QRUtils.a(2, 2131916563);
           bool1 = true;
         }
       }
@@ -38,7 +38,7 @@ class QShareUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.QShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

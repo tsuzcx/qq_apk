@@ -35,18 +35,18 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class AEOldResManager
   implements AEOldShortVideoResManager.INet_ShortVideoResource, AEOldShortVideoResStatus.ISVConfig, AEOldShortVideoResStatus.ISVConfig_V2
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("AEOldResManagerHandlerThread", 0);
-  private List<AEOldShortVideoResManager.SVConfigItem> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Map<AEOldResInfo, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Queue<AEOldResInfo> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private List<AEOldDownloadCallBack> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<AEOldResInfo, Long> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private List<AEOldShortVideoResManager.SVConfigItem> a = new LinkedList();
+  private Map<AEOldResInfo, Integer> b = new ConcurrentHashMap();
+  private List<AEOldDownloadCallBack> c = new CopyOnWriteArrayList();
+  private Queue<AEOldResInfo> d = new ArrayDeque();
+  private HandlerThread e = ThreadManager.newFreeHandlerThread("AEOldResManagerHandlerThread", 0);
+  private Handler f;
+  private Map<AEOldResInfo, Long> g = new ConcurrentHashMap();
   
   private AEOldResManager()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.e.start();
+    this.f = new Handler(this.e.getLooper());
   }
   
   public static AEOldResManager a()
@@ -79,9 +79,9 @@ public class AEOldResManager
     if (paramAEOldDownloadCallBack == null) {
       return;
     }
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (!localList.contains(paramAEOldDownloadCallBack))) {
-      this.jdField_b_of_type_JavaUtilList.add(paramAEOldDownloadCallBack);
+      this.c.add(paramAEOldDownloadCallBack);
     }
   }
   
@@ -89,12 +89,12 @@ public class AEOldResManager
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadWithoutLoginInternal] - BEGIN -, packageIndex=");
-    ((StringBuilder)localObject).append(paramAEOldResInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramAEOldResInfo.e);
     AEQLog.b("AEOldResManager", ((StringBuilder)localObject).toString());
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramAEOldResInfo)) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEOldResInfo, Integer.valueOf(0));
+    if (!this.b.containsKey(paramAEOldResInfo)) {
+      this.b.put(paramAEOldResInfo, Integer.valueOf(0));
     }
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramAEOldResInfo)).intValue();
+    int i = ((Integer)this.b.get(paramAEOldResInfo)).intValue();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadWithoutLoginInternal], status=");
     ((StringBuilder)localObject).append(a(i));
@@ -102,11 +102,11 @@ public class AEOldResManager
     localObject = null;
     if (i == 4)
     {
-      i = AEOldResUtil.a(paramAEOldResInfo.jdField_a_of_type_Int);
+      i = AEOldResUtil.a(paramAEOldResInfo.e);
       if (i != 0)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramAEOldResInfo.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramAEOldResInfo.g);
         ((StringBuilder)localObject).append(i);
         localObject = AEOldResUtil.a(((StringBuilder)localObject).toString());
       }
@@ -115,12 +115,12 @@ public class AEOldResManager
       }
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal], packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       paramAEOldDownloadCallBack.append(", downloadStatus=DOWNLOAD_STATUS_READY");
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal] - END -, packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       return;
     }
@@ -129,12 +129,12 @@ public class AEOldResManager
       a(paramAEOldDownloadCallBack);
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal], packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       paramAEOldDownloadCallBack.append(", downloadStatus=DOWNLOAD_STATUS_DOWNLOADING");
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal] - END -, packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       return;
     }
@@ -145,38 +145,38 @@ public class AEOldResManager
       }
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal], packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       paramAEOldDownloadCallBack.append(", networkStatus=UNUSABLE");
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal] - END -, packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadWithoutLoginInternal], packageIndex=");
-    ((StringBuilder)localObject).append(paramAEOldResInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramAEOldResInfo.e);
     ((StringBuilder)localObject).append(", networkStatus=USABLE");
     AEQLog.b("AEOldResManager", ((StringBuilder)localObject).toString());
     a(paramAEOldDownloadCallBack);
-    if (!this.jdField_a_of_type_JavaUtilQueue.contains(paramAEOldResInfo))
+    if (!this.d.contains(paramAEOldResInfo))
     {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramAEOldResInfo);
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEOldResInfo, Integer.valueOf(1));
+      this.d.add(paramAEOldResInfo);
+      this.b.put(paramAEOldResInfo, Integer.valueOf(1));
     }
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo))
+    if (!this.b.containsKey(AEOldResInfo.a))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, Integer.valueOf(3));
+      this.b.put(AEOldResInfo.a, Integer.valueOf(3));
       AEOldShortVideoResDownload.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this);
     }
-    else if ((this.jdField_a_of_type_JavaUtilMap.get(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo) != null) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo)).intValue() == 4))
+    else if ((this.b.get(AEOldResInfo.a) != null) && (((Integer)this.b.get(AEOldResInfo.a)).intValue() == 4))
     {
       b(1, 0);
     }
     paramAEOldDownloadCallBack = new StringBuilder();
     paramAEOldDownloadCallBack.append("[requestDownloadWithoutLoginInternal] - END -, packageIndex=");
-    paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+    paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
     AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
   }
   
@@ -184,12 +184,12 @@ public class AEOldResManager
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadInternal] - BEGIN -, packageIndex=");
-    ((StringBuilder)localObject).append(paramAEOldResInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramAEOldResInfo.e);
     AEQLog.b("AEOldResManager", ((StringBuilder)localObject).toString());
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramAEOldResInfo)) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEOldResInfo, Integer.valueOf(0));
+    if (!this.b.containsKey(paramAEOldResInfo)) {
+      this.b.put(paramAEOldResInfo, Integer.valueOf(0));
     }
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramAEOldResInfo)).intValue();
+    int i = ((Integer)this.b.get(paramAEOldResInfo)).intValue();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadInternal], status=");
     ((StringBuilder)localObject).append(a(i));
@@ -197,11 +197,11 @@ public class AEOldResManager
     localObject = null;
     if (i == 4)
     {
-      i = AEOldResUtil.a(paramAEOldResInfo.jdField_a_of_type_Int);
+      i = AEOldResUtil.a(paramAEOldResInfo.e);
       if (i != 0)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramAEOldResInfo.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramAEOldResInfo.g);
         ((StringBuilder)localObject).append(i);
         localObject = AEOldResUtil.a(((StringBuilder)localObject).toString());
       }
@@ -211,12 +211,12 @@ public class AEOldResManager
       AEOldResUtil.a(paramAEOldResInfo, (String)localObject);
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal], packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       paramAEOldDownloadCallBack.append(", downloadStatus=DOWNLOAD_STATUS_READY");
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal] - END -, packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       return;
     }
@@ -225,12 +225,12 @@ public class AEOldResManager
       a(paramAEOldDownloadCallBack);
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal], packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       paramAEOldDownloadCallBack.append(", downloadStatus=DOWNLOAD_STATUS_DOWNLOADING");
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal] - END -, packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       return;
     }
@@ -246,52 +246,52 @@ public class AEOldResManager
       }
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal], packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       paramAEOldDownloadCallBack.append(", networkStatus=UNUSABLE");
       AEQLog.d("AEOldResManager", paramAEOldDownloadCallBack.toString());
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal] - END -, packageIndex=");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadInternal], packageIndex=");
-    ((StringBuilder)localObject).append(paramAEOldResInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramAEOldResInfo.e);
     ((StringBuilder)localObject).append(", networkStatus=USABLE");
     AEQLog.b("AEOldResManager", ((StringBuilder)localObject).toString());
     a(paramAEOldDownloadCallBack);
-    if (!this.jdField_a_of_type_JavaUtilQueue.contains(paramAEOldResInfo))
+    if (!this.d.contains(paramAEOldResInfo))
     {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramAEOldResInfo);
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEOldResInfo, Integer.valueOf(1));
+      this.d.add(paramAEOldResInfo);
+      this.b.put(paramAEOldResInfo, Integer.valueOf(1));
     }
-    if ((paramAEOldResInfo.jdField_b_of_type_Boolean) && (paramBoolean2)) {
+    if ((paramAEOldResInfo.k) && (paramBoolean2)) {
       paramBoolean1 = true;
     } else {
       paramBoolean1 = false;
     }
-    paramAEOldResInfo.jdField_b_of_type_Boolean = paramBoolean1;
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo))
+    paramAEOldResInfo.k = paramBoolean1;
+    if (!this.b.containsKey(AEOldResInfo.a))
     {
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal] 强制拉取配置列表");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
-      this.jdField_a_of_type_JavaUtilMap.put(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, Integer.valueOf(3));
+      this.b.put(AEOldResInfo.a, Integer.valueOf(3));
       AEOldShortVideoResManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this);
     }
-    else if ((this.jdField_a_of_type_JavaUtilMap.get(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo) != null) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo)).intValue() == 4))
+    else if ((this.b.get(AEOldResInfo.a) != null) && (((Integer)this.b.get(AEOldResInfo.a)).intValue() == 4))
     {
       paramAEOldDownloadCallBack = new StringBuilder();
       paramAEOldDownloadCallBack.append("[requestDownloadInternal] 配置列表已经存在, packageIndex = ");
-      paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+      paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
       AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
       a(1, 0);
     }
     paramAEOldDownloadCallBack = new StringBuilder();
     paramAEOldDownloadCallBack.append("[requestDownloadInternal] - END -, packageIndex=");
-    paramAEOldDownloadCallBack.append(paramAEOldResInfo.jdField_a_of_type_Int);
+    paramAEOldDownloadCallBack.append(paramAEOldResInfo.e);
     AEQLog.b("AEOldResManager", paramAEOldDownloadCallBack.toString());
   }
   
@@ -306,7 +306,7 @@ public class AEOldResManager
     while (((Iterator)localObject).hasNext())
     {
       paramList = (AEOldShortVideoResManager.SVConfigItem)((Iterator)localObject).next();
-      if (paramList.name.startsWith(paramAEOldResInfo.jdField_b_of_type_JavaLangString))
+      if (paramList.name.startsWith(paramAEOldResInfo.g))
       {
         AEQLog.b("AEOldResManager", "[cancelPreDownLoad], chosenConfigItem matched");
         break label102;
@@ -335,22 +335,22 @@ public class AEOldResManager
   private void a(@NonNull List<AEOldShortVideoResManager.SVConfigItem> paramList, @NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     AEQLog.b("AEOldResManager", "[startDownLoad] + BEGIN");
-    if (CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilQueue))
+    if (CollectionUtils.isEmpty(this.d))
     {
       AEQLog.d("AEOldResManager", "[startDownLoad], mDownLoadTaskQueue is empty");
       AEQLog.b("AEOldResManager", "[startDownLoad] - END -");
       return;
     }
-    AEOldResInfo localAEOldResInfo = (AEOldResInfo)this.jdField_a_of_type_JavaUtilQueue.peek();
+    AEOldResInfo localAEOldResInfo = (AEOldResInfo)this.d.peek();
     if (localAEOldResInfo == null)
     {
       AEQLog.d("AEOldResManager", "[startDownLoad], mDownLoadTaskQueue top element is null");
       AEQLog.b("AEOldResManager", "[startDownLoad] + END");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(localAEOldResInfo))
+    if (this.b.containsKey(localAEOldResInfo))
     {
-      int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localAEOldResInfo)).intValue();
+      int i = ((Integer)this.b.get(localAEOldResInfo)).intValue();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[startDownLoad], resNeedDownload=");
       localStringBuilder.append(localAEOldResInfo);
@@ -359,7 +359,7 @@ public class AEOldResManager
       localStringBuilder.append("[startDownLoad], status=");
       localStringBuilder.append(a(i));
       AEQLog.a("AEOldResManager", localStringBuilder.toString());
-      if ((!paramBoolean) && (localAEOldResInfo.jdField_b_of_type_Boolean))
+      if ((!paramBoolean) && (localAEOldResInfo.k))
       {
         AEQLog.b("AEOldResManager", "[startDownLoad], isDownLoadImmediately=false");
         if (i != 3)
@@ -370,15 +370,15 @@ public class AEOldResManager
           if (!a(paramList, this, paramQQAppInterface, localAEOldResInfo))
           {
             a(paramList, paramQQAppInterface, localAEOldResInfo);
-            localAEOldResInfo.jdField_b_of_type_Boolean = false;
-            this.jdField_b_of_type_JavaUtilMap.put(localAEOldResInfo, Long.valueOf(System.currentTimeMillis()));
+            localAEOldResInfo.k = false;
+            this.g.put(localAEOldResInfo, Long.valueOf(System.currentTimeMillis()));
             AEQLog.b("AEOldResManager", "[startDownLoad], realDownloadResource()");
-            this.jdField_a_of_type_JavaUtilMap.put(localAEOldResInfo, Integer.valueOf(3));
+            this.b.put(localAEOldResInfo, Integer.valueOf(3));
             AEOldResDownload.a(localAEOldResInfo, paramList, this);
           }
           else
           {
-            this.jdField_a_of_type_JavaUtilMap.put(localAEOldResInfo, Integer.valueOf(2));
+            this.b.put(localAEOldResInfo, Integer.valueOf(2));
           }
         }
       }
@@ -387,11 +387,11 @@ public class AEOldResManager
         AEQLog.b("AEOldResManager", "[startDownLoad], isDownLoadImmediately=true");
         if (i != 3)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(localAEOldResInfo, Integer.valueOf(3));
+          this.b.put(localAEOldResInfo, Integer.valueOf(3));
           if (i == 2) {
             a(paramList, paramQQAppInterface, localAEOldResInfo);
           }
-          this.jdField_b_of_type_JavaUtilMap.put(localAEOldResInfo, Long.valueOf(System.currentTimeMillis()));
+          this.g.put(localAEOldResInfo, Long.valueOf(System.currentTimeMillis()));
           AEQLog.b("AEOldResManager", "[startDownLoad], realDownloadResource()");
           AEOldResDownload.a(localAEOldResInfo, paramList, this);
         }
@@ -408,10 +408,10 @@ public class AEOldResManager
     AEQLog.b("AEOldResManager", "[onConfigResultInternal] ++++++ BEGIN");
     int i;
     Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 1)
+    if (this.a.size() < 1)
     {
       AEQLog.b("AEOldResManager", "[onConfigResultInternal] 内存中'还没有'列表信息，开始生成配置列表");
-      i = AEOldShortVideoResManager.a(null, this.jdField_a_of_type_JavaUtilList);
+      i = AEOldShortVideoResManager.a(null, this.a);
     }
     else
     {
@@ -424,8 +424,8 @@ public class AEOldResManager
       AEQLog.b("AEOldResManager", ((StringBuilder)localObject2).toString());
       if ((i == 0) && (((List)localObject1).size() > 0))
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
+        this.a.clear();
+        this.a.addAll((Collection)localObject1);
       }
     }
     Object localObject1 = new StringBuilder();
@@ -434,31 +434,31 @@ public class AEOldResManager
     AEQLog.b("AEOldResManager", ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[onConfigResultInternal] 内存中'当前的'配置列表信息，size = ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+    ((StringBuilder)localObject1).append(this.a.size());
     AEQLog.b("AEOldResManager", ((StringBuilder)localObject1).toString());
     int j = i;
     if (i == 0) {
-      j = AEOldResUtil.a(this.jdField_a_of_type_JavaUtilList);
+      j = AEOldResUtil.a(this.a);
     }
     localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     if (j == 0)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, Integer.valueOf(4));
+      this.b.put(AEOldResInfo.a, Integer.valueOf(4));
       AEQLog.b("AEOldResManager", "[onConfigResultInternal] 配置列表拉取成功，开始进行ZIP包下载");
-      a(new LinkedList(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1, paramBoolean ^ true);
+      a(new LinkedList(this.a), (QQAppInterface)localObject1, paramBoolean ^ true);
     }
     else
     {
       AEQLog.b("AEOldResManager", "[onConfigResultInternal] 配置列表拉取失败，尝试构造内置列表进行下载");
-      localObject2 = AEOldLocalConfig.jdField_a_of_type_JavaUtilList;
+      localObject2 = AEOldLocalConfig.a;
       if (((List)localObject2).size() > 0)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        this.a.clear();
+        this.a.addAll((Collection)localObject2);
       }
-      this.jdField_a_of_type_JavaUtilMap.put(AEOldResInfo.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, Integer.valueOf(4));
+      this.b.put(AEOldResInfo.a, Integer.valueOf(4));
       AEQLog.b("AEOldResManager", "[onConfigResultInternal] 构造内置列表成功，开始下载");
-      a(new LinkedList(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1, paramBoolean ^ true);
+      a(new LinkedList(this.a), (QQAppInterface)localObject1, paramBoolean ^ true);
     }
     AEQLog.b("AEOldResManager", "[onConfigResultInternal] ++++++ END");
   }
@@ -474,7 +474,7 @@ public class AEOldResManager
     while (localIterator.hasNext())
     {
       localObject = (AEOldShortVideoResManager.SVConfigItem)localIterator.next();
-      if (((AEOldShortVideoResManager.SVConfigItem)localObject).name.startsWith(paramAEOldResInfo.jdField_b_of_type_JavaLangString))
+      if (((AEOldShortVideoResManager.SVConfigItem)localObject).name.startsWith(paramAEOldResInfo.g))
       {
         AEQLog.b("AEOldResManager", "[startPreDownLoad], chosenConfigItem matched");
         break label108;
@@ -538,13 +538,13 @@ public class AEOldResManager
     } else {
       i = 0;
     }
-    Object localObject2 = AEOldResInfo.jdField_b_of_type_ArrayOfComTencentAelightCameraDownloadOldApiAEOldResInfo;
+    Object localObject2 = AEOldResInfo.d;
     int k = localObject2.length;
     int j = 0;
     while (j < k)
     {
       paramString1 = localObject2[j];
-      if (((String)localObject1).startsWith(paramString1.jdField_b_of_type_JavaLangString))
+      if (((String)localObject1).startsWith(paramString1.g))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[onDownloadFinishInternal], matched aeResInfo=");
@@ -552,18 +552,18 @@ public class AEOldResManager
         AEQLog.b("AEOldResManager", ((StringBuilder)localObject2).toString());
         if (i == 0)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, Integer.valueOf(4));
-          this.jdField_a_of_type_JavaUtilQueue.remove(paramString1);
+          this.b.put(paramString1, Integer.valueOf(4));
+          this.d.remove(paramString1);
           AEOldResUtil.a(paramString1, paramString2);
-          j = Integer.valueOf(((String)localObject1).substring(paramString1.jdField_b_of_type_JavaLangString.length())).intValue();
-          AEOldResUtil.a(paramString1.jdField_a_of_type_Int, j);
+          j = Integer.valueOf(((String)localObject1).substring(paramString1.g.length())).intValue();
+          AEOldResUtil.a(paramString1.e, j);
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, Integer.valueOf(0));
-          this.jdField_a_of_type_JavaUtilQueue.remove(paramString1);
+          this.b.put(paramString1, Integer.valueOf(0));
+          this.d.remove(paramString1);
         }
-        localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
+        localObject1 = this.c.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (AEOldDownloadCallBack)((Iterator)localObject1).next();
@@ -575,14 +575,14 @@ public class AEOldResManager
           }
           ((AEOldDownloadCallBack)localObject2).a(paramString1, paramString2, bool, i);
         }
-        if ((paramInt != 1) && (this.jdField_b_of_type_JavaUtilMap.get(paramString1) != null))
+        if ((paramInt != 1) && (this.g.get(paramString1) != null))
         {
           System.currentTimeMillis();
-          ((Long)this.jdField_b_of_type_JavaUtilMap.get(paramString1)).longValue();
+          ((Long)this.g.get(paramString1)).longValue();
         }
         AEQLog.b("AEOldResManager", "[onDownloadFinishInternal], start download next package");
         paramString1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        a(new LinkedList(this.jdField_a_of_type_JavaUtilList), paramString1, true);
+        a(new LinkedList(this.a), paramString1, true);
         break;
       }
       j += 1;
@@ -595,28 +595,22 @@ public class AEOldResManager
     if (paramString == null) {
       paramString = "";
     }
-    AEOldResInfo[] arrayOfAEOldResInfo = AEOldResInfo.jdField_b_of_type_ArrayOfComTencentAelightCameraDownloadOldApiAEOldResInfo;
+    AEOldResInfo[] arrayOfAEOldResInfo = AEOldResInfo.d;
     int j = arrayOfAEOldResInfo.length;
     int i = 0;
     while (i < j)
     {
       AEOldResInfo localAEOldResInfo = arrayOfAEOldResInfo[i];
-      if (paramString.startsWith(localAEOldResInfo.jdField_b_of_type_JavaLangString))
+      if (paramString.startsWith(localAEOldResInfo.g))
       {
-        this.jdField_a_of_type_JavaUtilMap.put(localAEOldResInfo, Integer.valueOf(3));
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        this.b.put(localAEOldResInfo, Integer.valueOf(3));
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext()) {
           ((AEOldDownloadCallBack)localIterator.next()).a(localAEOldResInfo, paramLong1, paramLong2);
         }
       }
       i += 1;
     }
-  }
-  
-  public void a()
-  {
-    AEQLog.d("AEOldResManager", HardCodeUtil.a(2131700225));
-    ShortVideoErrorReport.a(3, -1500);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -627,7 +621,7 @@ public class AEOldResManager
     localStringBuilder.append(", serverError=");
     localStringBuilder.append(paramInt2);
     AEQLog.b("AEOldResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEOldResManager.4(this));
+    this.f.post(new AEOldResManager.4(this));
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onConfigResult] - END -, result=");
     localStringBuilder.append(paramInt1);
@@ -642,7 +636,7 @@ public class AEOldResManager
     localStringBuilder.append("[requestDownload] - BEGIN -, aeResInfo=");
     localStringBuilder.append(paramAEOldResInfo);
     AEQLog.b("AEOldResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEOldResManager.1(this, paramAEOldResInfo, paramAEOldDownloadCallBack, paramBoolean));
+    this.f.post(new AEOldResManager.1(this, paramAEOldResInfo, paramAEOldDownloadCallBack, paramBoolean));
     paramAEOldDownloadCallBack = new StringBuilder();
     paramAEOldDownloadCallBack.append("[requestDownload] - END -, aeResInfo=");
     paramAEOldDownloadCallBack.append(paramAEOldResInfo);
@@ -659,13 +653,19 @@ public class AEOldResManager
     localStringBuilder.append(", filePath=");
     localStringBuilder.append(paramString2);
     AEQLog.b("AEOldResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEOldResManager.6(this, paramString1, paramInt, paramString2));
+    this.f.post(new AEOldResManager.6(this, paramString1, paramInt, paramString2));
     AEQLog.b("AEOldResManager", "[onDownloadFinish] - END -");
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEOldResManager.7(this, paramString, paramLong1, paramLong2));
+    this.f.post(new AEOldResManager.7(this, paramString, paramLong1, paramLong2));
+  }
+  
+  public void b()
+  {
+    AEQLog.d("AEOldResManager", HardCodeUtil.a(2131898268));
+    ShortVideoErrorReport.a(3, -1500);
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -676,7 +676,7 @@ public class AEOldResManager
     localStringBuilder.append(", serverError=");
     localStringBuilder.append(paramInt2);
     AEQLog.b("AEOldResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEOldResManager.5(this));
+    this.f.post(new AEOldResManager.5(this));
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onConfigResultWithoutLogin] - END -, result=");
     localStringBuilder.append(paramInt1);
@@ -691,7 +691,7 @@ public class AEOldResManager
     localStringBuilder.append("[requestDownload] - BEGIN -, AEOldResInfo=");
     localStringBuilder.append(paramAEOldResInfo);
     AEQLog.b("AEOldResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEOldResManager.3(this, paramAEOldResInfo, paramAEOldDownloadCallBack, paramBoolean));
+    this.f.post(new AEOldResManager.3(this, paramAEOldResInfo, paramAEOldDownloadCallBack, paramBoolean));
     paramAEOldDownloadCallBack = new StringBuilder();
     paramAEOldDownloadCallBack.append("[requestDownload] - END -, AEOldResInfo=");
     paramAEOldDownloadCallBack.append(paramAEOldResInfo);
@@ -700,7 +700,7 @@ public class AEOldResManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldResManager
  * JD-Core Version:    0.7.0.1
  */

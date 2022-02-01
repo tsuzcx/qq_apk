@@ -12,12 +12,12 @@ public class MultiLineLayout
   extends ViewGroup
 {
   public static boolean a = true;
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private int b;
+  int b;
   private int c;
-  private int d = 0;
-  private int e = -1;
+  private int d;
+  private int e = 0;
+  private int f = -1;
+  private float g;
   
   public MultiLineLayout(Context paramContext)
   {
@@ -38,8 +38,18 @@ public class MultiLineLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 5.0F));
+    this.g = paramContext.getResources().getDisplayMetrics().density;
+    this.b = ((int)(this.g * 5.0F));
+  }
+  
+  public int getLineCount()
+  {
+    return this.e;
+  }
+  
+  public int getShowLine()
+  {
+    return this.f;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -50,7 +60,7 @@ public class MultiLineLayout
     } else {
       paramInt1 = 0;
     }
-    this.d = paramInt1;
+    this.e = paramInt1;
     paramInt3 = 0;
     paramInt1 = 0;
     paramInt2 = 0;
@@ -58,28 +68,28 @@ public class MultiLineLayout
     while (paramInt3 < j)
     {
       View localView = getChildAt(paramInt3);
-      int i = this.e;
-      if (((i == -1) || (this.d <= i)) && (localView.getVisibility() != 8))
+      int i = this.f;
+      if (((i == -1) || (this.e <= i)) && (localView.getVisibility() != 8))
       {
         localView.setVisibility(0);
         int m = localView.getMeasuredWidth();
         int k = localView.getMeasuredHeight();
         int n = paramInt4 + m;
-        i = this.jdField_a_of_type_Int + n;
-        float f;
-        if (i <= this.b)
+        i = this.b + n;
+        float f1;
+        if (i <= this.c)
         {
           localView.layout(paramInt4, paramInt1, n, paramInt1 + k);
-          f = Math.max(paramInt2, k + this.jdField_a_of_type_Float * 5.0F);
+          f1 = Math.max(paramInt2, k + this.g * 5.0F);
           paramInt2 = i;
         }
         for (;;)
         {
-          i = (int)f;
+          i = (int)f1;
           break;
-          this.d += 1;
-          paramInt4 = this.e;
-          if ((paramInt4 != -1) && (this.d > paramInt4))
+          this.e += 1;
+          paramInt4 = this.f;
+          if ((paramInt4 != -1) && (this.e > paramInt4))
           {
             localView.setVisibility(8);
           }
@@ -88,8 +98,8 @@ public class MultiLineLayout
             paramInt1 += paramInt2;
             localView.layout(0, paramInt1, m, paramInt1 + k);
           }
-          paramInt2 = this.jdField_a_of_type_Int + m;
-          f = k + this.jdField_a_of_type_Float * 5.0F;
+          paramInt2 = this.b + m;
+          f1 = k + this.g * 5.0F;
         }
         paramInt4 = paramInt2;
         paramInt2 = i;
@@ -100,12 +110,12 @@ public class MultiLineLayout
       }
       paramInt3 += 1;
     }
-    this.c = (paramInt1 + paramInt2);
+    this.d = (paramInt1 + paramInt2);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.b = View.MeasureSpec.getSize(paramInt1);
+    this.c = View.MeasureSpec.getSize(paramInt1);
     measureChildren(paramInt1, paramInt2);
     int i1 = getChildCount();
     int k = 0;
@@ -114,7 +124,7 @@ public class MultiLineLayout
     } else {
       paramInt1 = 0;
     }
-    this.d = paramInt1;
+    this.e = paramInt1;
     paramInt1 = 0;
     int j = 0;
     paramInt2 = 0;
@@ -125,33 +135,33 @@ public class MultiLineLayout
       if (localView.getVisibility() != 8)
       {
         int m = localView.getMeasuredHeight();
-        int n = this.e;
-        if ((n != -1) && (this.d > n)) {
+        int n = this.f;
+        if ((n != -1) && (this.e > n)) {
           break;
         }
         j = localView.getMeasuredWidth();
-        n = paramInt2 + j + this.jdField_a_of_type_Int;
-        if (n <= this.b)
+        n = paramInt2 + j + this.b;
+        if (n <= this.c)
         {
-          i = (int)Math.max(i, m + this.jdField_a_of_type_Float * 5.0F);
+          i = (int)Math.max(i, m + this.g * 5.0F);
           j = paramInt1;
           paramInt2 = paramInt1;
           paramInt1 = n;
         }
         else
         {
-          this.d += 1;
-          n = this.e;
+          this.e += 1;
+          n = this.f;
           if (n != -1)
           {
             paramInt2 = paramInt1;
-            if (this.d > n) {}
+            if (this.e > n) {}
           }
           else
           {
             paramInt2 = paramInt1 + i;
           }
-          paramInt1 = this.jdField_a_of_type_Int + j;
+          paramInt1 = this.b + j;
           j = paramInt2;
           i = m;
         }
@@ -163,17 +173,17 @@ public class MultiLineLayout
       }
       k += 1;
     }
-    setMeasuredDimension(this.b, j);
+    setMeasuredDimension(this.c, j);
   }
   
   public void setShowLine(int paramInt)
   {
-    this.e = paramInt;
+    this.f = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.MultiLineLayout
  * JD-Core Version:    0.7.0.1
  */

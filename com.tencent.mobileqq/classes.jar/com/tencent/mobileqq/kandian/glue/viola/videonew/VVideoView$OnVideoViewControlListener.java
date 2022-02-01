@@ -27,8 +27,6 @@ public abstract interface VVideoView$OnVideoViewControlListener
   
   public abstract void a(String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
   
-  public abstract boolean a();
-  
   public abstract void b();
   
   public abstract void b(VVideoView paramVVideoView);
@@ -65,13 +63,9 @@ public abstract interface VVideoView$OnVideoViewControlListener
   
   public abstract void f(VVideoView paramVVideoView);
   
-  public abstract void f_(boolean paramBoolean);
-  
-  public abstract void g();
-  
   public abstract void g(VVideoView paramVVideoView);
   
-  public abstract void g_(boolean paramBoolean);
+  public abstract boolean g();
   
   public abstract void h();
   
@@ -79,11 +73,17 @@ public abstract interface VVideoView$OnVideoViewControlListener
   
   public abstract void j();
   
-  public abstract void l_(int paramInt);
+  public abstract void k();
+  
+  public abstract void k_(boolean paramBoolean);
+  
+  public abstract void l_(boolean paramBoolean);
+  
+  public abstract void r_(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VVideoView.OnVideoViewControlListener
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,13 @@ class KandianCustomDataReportModule$1
     }
     KandianCustomDataReportModule.a(this.a, System.currentTimeMillis() - KandianCustomDataReportModule.a(this.a));
     paramPlayerStateEvent = this.a;
-    KandianCustomDataReportModule.a(paramPlayerStateEvent, KandianCustomDataReportModule.b(paramPlayerStateEvent));
+    KandianCustomDataReportModule.b(paramPlayerStateEvent, KandianCustomDataReportModule.b(paramPlayerStateEvent));
     QLog.i("DataReportMgr", 1, "FIRST_FRAME_READY");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.KandianCustomDataReportModule.1
  * JD-Core Version:    0.7.0.1
  */

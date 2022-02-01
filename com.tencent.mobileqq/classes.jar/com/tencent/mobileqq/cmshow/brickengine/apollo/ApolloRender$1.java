@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.cmshow.brickengine.apollo;
 
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloRender$1
@@ -17,12 +16,12 @@ class ApolloRender$1
   {
     this.this$0.onDestroy();
     ApolloRender.access$002(this.this$0, true);
-    QLog.i("[cmshow]sava_ApolloRender", 1, "queueDestroy disposeDirector");
+    QLog.i("[cmshow][ApolloRender]", 1, "queueDestroy disposeDirector");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender.1
  * JD-Core Version:    0.7.0.1
  */

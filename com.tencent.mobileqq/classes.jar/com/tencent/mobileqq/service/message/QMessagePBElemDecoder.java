@@ -31,7 +31,7 @@ import tencent.im.msg.im_msg_body.Text;
 
 public class QMessagePBElemDecoder
 {
-  protected AppRuntime a = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  protected AppRuntime c = MobileQQ.sMobileQQ.waitAppRuntime(null);
   
   private long a(msg_comm.Msg paramMsg, long paramLong, int paramInt)
   {
@@ -55,26 +55,6 @@ public class QMessagePBElemDecoder
     return l;
   }
   
-  public static String a(byte[] paramArrayOfByte)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-    {
-      int i = 0;
-      while (i < paramArrayOfByte.length)
-      {
-        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-        if (str.length() < 2) {
-          localStringBuilder.append(0);
-        }
-        localStringBuilder.append(str);
-        i += 1;
-      }
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
   @NonNull
   private StringBuilder a(StringBuilder paramStringBuilder)
   {
@@ -82,20 +62,6 @@ public class QMessagePBElemDecoder
       return new StringBuilder(paramStringBuilder);
     }
     return new StringBuilder();
-  }
-  
-  private im_msg_body.RichMsg a(List<im_msg_body.Elem> paramList)
-  {
-    Iterator localIterator = paramList.iterator();
-    paramList = null;
-    while (localIterator.hasNext())
-    {
-      im_msg_body.Elem localElem = (im_msg_body.Elem)localIterator.next();
-      if (localElem.rich_msg.has()) {
-        paramList = (im_msg_body.RichMsg)localElem.rich_msg.get();
-      }
-    }
-    return paramList;
   }
   
   private im_msg_body.Text a(List<im_msg_body.Elem> paramList)
@@ -114,7 +80,7 @@ public class QMessagePBElemDecoder
   
   private void a(ResultBox paramResultBox, AtTroopMemberInfo paramAtTroopMemberInfo, byte[] paramArrayOfByte)
   {
-    paramResultBox = paramResultBox.jdField_a_of_type_JavaUtilArrayList;
+    paramResultBox = paramResultBox.a;
     if (paramResultBox != null)
     {
       if ((paramAtTroopMemberInfo == null) && (paramArrayOfByte == null)) {
@@ -161,7 +127,27 @@ public class QMessagePBElemDecoder
     return bool;
   }
   
-  private im_msg_body.GeneralFlags b(List<im_msg_body.Elem> paramList)
+  public static String b(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("");
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+        if (str.length() < 2) {
+          localStringBuilder.append(0);
+        }
+        localStringBuilder.append(str);
+        i += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  private im_msg_body.GeneralFlags c(List<im_msg_body.Elem> paramList)
   {
     Iterator localIterator = paramList.iterator();
     paramList = null;
@@ -170,6 +156,20 @@ public class QMessagePBElemDecoder
       im_msg_body.Elem localElem = (im_msg_body.Elem)localIterator.next();
       if (localElem.general_flags.has()) {
         paramList = (im_msg_body.GeneralFlags)localElem.general_flags.get();
+      }
+    }
+    return paramList;
+  }
+  
+  private im_msg_body.RichMsg d(List<im_msg_body.Elem> paramList)
+  {
+    Iterator localIterator = paramList.iterator();
+    paramList = null;
+    while (localIterator.hasNext())
+    {
+      im_msg_body.Elem localElem = (im_msg_body.Elem)localIterator.next();
+      if (localElem.rich_msg.has()) {
+        paramList = (im_msg_body.RichMsg)localElem.rich_msg.get();
       }
     }
     return paramList;
@@ -201,7 +201,7 @@ public class QMessagePBElemDecoder
   
   protected QParsePBMsgElemsDefaultTextElem a(StringBuilder paramStringBuilder1, long paramLong, MessageInfo paramMessageInfo, ArrayList<AtTroopMemberInfo> paramArrayList, AtTroopMemberInfo paramAtTroopMemberInfo1, AtTroopMemberInfo paramAtTroopMemberInfo2, byte[] paramArrayOfByte, StringBuilder paramStringBuilder2, boolean paramBoolean, im_msg_body.Elem paramElem)
   {
-    return new QParsePBMsgElemsDefaultTextElem(this.a, paramStringBuilder1, paramLong, paramMessageInfo, paramArrayList, paramAtTroopMemberInfo1, paramAtTroopMemberInfo2, paramArrayOfByte, paramStringBuilder2, paramBoolean, paramElem);
+    return new QParsePBMsgElemsDefaultTextElem(this.c, paramStringBuilder1, paramLong, paramMessageInfo, paramArrayList, paramAtTroopMemberInfo1, paramAtTroopMemberInfo2, paramArrayOfByte, paramStringBuilder2, paramBoolean, paramElem);
   }
   
   protected String a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, boolean paramBoolean)
@@ -247,38 +247,23 @@ public class QMessagePBElemDecoder
     if (paramResultBox == null) {
       paramResultBox = new ResultBox();
     }
-    Object localObject = paramResultBox.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo;
+    Object localObject = paramResultBox.b;
     StringBuilder localStringBuilder = a(paramStringBuilder1);
     Iterator localIterator = paramList.iterator();
     paramList = (List<im_msg_body.Elem>)localObject;
     paramStringBuilder1 = null;
     localObject = paramStringBuilder1;
     QParsePBMsgElemsDefaultTextElem localQParsePBMsgElemsDefaultTextElem;
-    for (boolean bool = false; localIterator.hasNext(); bool = localQParsePBMsgElemsDefaultTextElem.a())
+    for (boolean bool = false; localIterator.hasNext(); bool = localQParsePBMsgElemsDefaultTextElem.e())
     {
-      localQParsePBMsgElemsDefaultTextElem = a(paramStringBuilder2, paramLong, paramMessageInfo, paramArrayList, paramStringBuilder1, paramList, (byte[])localObject, localStringBuilder, bool, (im_msg_body.Elem)localIterator.next()).a();
-      paramStringBuilder1 = localQParsePBMsgElemsDefaultTextElem.a();
-      paramList = localQParsePBMsgElemsDefaultTextElem.b();
-      localObject = localQParsePBMsgElemsDefaultTextElem.a();
+      localQParsePBMsgElemsDefaultTextElem = a(paramStringBuilder2, paramLong, paramMessageInfo, paramArrayList, paramStringBuilder1, paramList, (byte[])localObject, localStringBuilder, bool, (im_msg_body.Elem)localIterator.next()).f();
+      paramStringBuilder1 = localQParsePBMsgElemsDefaultTextElem.b();
+      paramList = localQParsePBMsgElemsDefaultTextElem.c();
+      localObject = localQParsePBMsgElemsDefaultTextElem.d();
     }
-    paramResultBox.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo = paramList;
+    paramResultBox.b = paramList;
     a(paramResultBox, paramStringBuilder1, (byte[])localObject);
     return localStringBuilder;
-  }
-  
-  @Nullable
-  protected im_msg_body.GeneralFlags a(List<im_msg_body.Elem> paramList)
-  {
-    Iterator localIterator = paramList.iterator();
-    paramList = null;
-    while (localIterator.hasNext())
-    {
-      im_msg_body.Elem localElem = (im_msg_body.Elem)localIterator.next();
-      if (localElem.general_flags.has()) {
-        paramList = (im_msg_body.GeneralFlags)localElem.general_flags.get();
-      }
-    }
-    return paramList;
   }
   
   protected void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, MessageInfo paramMessageInfo, im_msg_body.GeneralFlags paramGeneralFlags, boolean paramBoolean, MessageRecord paramMessageRecord)
@@ -294,7 +279,7 @@ public class QMessagePBElemDecoder
     if (paramMsg.msg_head.from_uin.has())
     {
       long l = paramMsg.msg_head.from_uin.get();
-      if (TextUtils.equals(this.a.getCurrentAccountUin(), Long.toString(l)))
+      if (TextUtils.equals(this.c.getCurrentAccountUin(), Long.toString(l)))
       {
         i = 1;
         break label52;
@@ -312,10 +297,25 @@ public class QMessagePBElemDecoder
     return false;
   }
   
+  @Nullable
+  protected im_msg_body.GeneralFlags b(List<im_msg_body.Elem> paramList)
+  {
+    Iterator localIterator = paramList.iterator();
+    paramList = null;
+    while (localIterator.hasNext())
+    {
+      im_msg_body.Elem localElem = (im_msg_body.Elem)localIterator.next();
+      if (localElem.general_flags.has()) {
+        paramList = (im_msg_body.GeneralFlags)localElem.general_flags.get();
+      }
+    }
+    return paramList;
+  }
+  
   public void h(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, MessageInfo paramMessageInfo)
   {
     ResultBox localResultBox = new ResultBox();
-    ArrayList localArrayList1 = localResultBox.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList1 = localResultBox.a;
     ArrayList localArrayList2 = new ArrayList(2);
     paramStringBuilder = a(null, paramList, paramStringBuilder, paramMsg.msg_head.msg_seq.get(), paramMessageInfo, localResultBox, localArrayList2);
     if (paramStringBuilder.length() == 0) {
@@ -331,8 +331,8 @@ public class QMessagePBElemDecoder
     if (QLog.isColorLevel()) {
       QLog.d("QMessagePBElemDecoder", 2, "begin decodePBMsgElems_RichMsg");
     }
-    Object localObject = a(paramList);
-    im_msg_body.GeneralFlags localGeneralFlags = b(paramList);
+    Object localObject = d(paramList);
+    im_msg_body.GeneralFlags localGeneralFlags = c(paramList);
     im_msg_body.Text localText = a(paramList);
     if (localObject == null)
     {
@@ -355,16 +355,16 @@ public class QMessagePBElemDecoder
     int i = paramMsg.msg_head.msg_type.get();
     l2 = a(paramMsg, l2, i);
     localObject = a((im_msg_body.RichMsg)localObject, paramList, paramMsg, localGeneralFlags);
-    if (a(paramList, paramList1, paramMsg, localGeneralFlags, localText, ((MsgDecoderWrapper)localObject).jdField_a_of_type_ArrayOfByte, l1, ((MsgDecoderWrapper)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord, l2, i)) {
+    if (a(paramList, paramList1, paramMsg, localGeneralFlags, localText, ((MsgDecoderWrapper)localObject).b, l1, ((MsgDecoderWrapper)localObject).a, l2, i)) {
       return;
     }
-    ((MsgDecoderWrapper)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg = "richMsg";
-    a(paramList, paramList1, paramStringBuilder, paramMsg, paramMessageInfo, localGeneralFlags, bool, ((MsgDecoderWrapper)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    ((MsgDecoderWrapper)localObject).a.msg = "richMsg";
+    a(paramList, paramList1, paramStringBuilder, paramMsg, paramMessageInfo, localGeneralFlags, bool, ((MsgDecoderWrapper)localObject).a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.QMessagePBElemDecoder
  * JD-Core Version:    0.7.0.1
  */

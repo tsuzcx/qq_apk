@@ -13,19 +13,19 @@ final class RIJ3ClickUtils$showToast$$inlined$let$lambda$1
   
   public final void run()
   {
-    Context localContext = (Context)this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    Context localContext = (Context)this.b;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       i = 2;
     } else {
       i = 1;
     }
-    QQToast.a(localContext, i, (CharSequence)this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(localContext, i, (CharSequence)this.a, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJ3ClickUtils.showToast..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

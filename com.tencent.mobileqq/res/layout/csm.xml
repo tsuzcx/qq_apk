@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:id="@id/mzm" android:background="@drawable/a8e" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n8d" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/c2q" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <com.tencent.mobileqq.activity.aio.item.PttAudioWaveView android:id="@id/ox" android:layout_width="130.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_toRightOf="@id/n8d" android:layout_centerVertical="true" />
-    <TextView android:textColor="@color/al3" android:id="@id/of4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_toRightOf="@id/ox" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ayn" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/qtp" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+</LinearLayout>

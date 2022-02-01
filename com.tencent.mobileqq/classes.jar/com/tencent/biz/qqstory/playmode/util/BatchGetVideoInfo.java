@@ -16,28 +16,25 @@ import java.util.List;
 
 public class BatchGetVideoInfo
 {
-  public int a;
-  public BatchGetVideoInfo.IBatchGetVideoInfoCallback a;
-  public BatchGetVideoInfo.VideoLocalCacheFilter a;
-  public ArrayList<String> a;
+  public ArrayList<String> a = new ArrayList();
+  public BatchGetVideoInfo.IBatchGetVideoInfoCallback b;
+  public int c = 0;
+  public BatchGetVideoInfo.VideoLocalCacheFilter d = new BatchGetVideoInfo.1(this);
   
   public BatchGetVideoInfo(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter = new BatchGetVideoInfo.1(this);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.a.addAll(paramList);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback = null;
+    this.a.clear();
+    this.b = null;
   }
   
   public void a(BatchGetVideoInfo.IBatchGetVideoInfoCallback paramIBatchGetVideoInfoCallback)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback = paramIBatchGetVideoInfoCallback;
+    this.b = paramIBatchGetVideoInfoCallback;
   }
   
   public void a(List<String> paramList)
@@ -55,20 +52,20 @@ public class BatchGetVideoInfo
   
   public void b()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
     {
       Object localObject2 = new ArrayList();
       localObject1 = new ArrayList();
       StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         Object localObject3 = localStoryManager.a(str);
         if (localObject3 != null)
         {
-          BatchGetVideoInfo.VideoLocalCacheFilter localVideoLocalCacheFilter = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter;
+          BatchGetVideoInfo.VideoLocalCacheFilter localVideoLocalCacheFilter = this.d;
           if ((localVideoLocalCacheFilter != null) && (localVideoLocalCacheFilter.a((StoryVideoItem)localObject3)))
           {
             if (QLog.isColorLevel())
@@ -99,7 +96,7 @@ public class BatchGetVideoInfo
       }
       if (((ArrayList)localObject2).isEmpty())
       {
-        localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+        localObject2 = this.b;
         if (localObject2 != null) {
           ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject2).a((ArrayList)localObject1);
         }
@@ -113,7 +110,7 @@ public class BatchGetVideoInfo
     if (QLog.isColorLevel()) {
       QLog.e("BatchGetVideoInfo", 2, "doBatchGetVideoInfo, vidList ==  null || vidList.isEmpty()");
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+    localObject1 = this.b;
     if (localObject1 != null) {
       ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject1).a();
     }
@@ -126,7 +123,7 @@ public class BatchGetVideoInfo
     StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Object localObject3 = (String)localIterator.next();
@@ -168,26 +165,26 @@ public class BatchGetVideoInfo
       if (QLog.isColorLevel()) {
         QLog.e("BatchGetVideoInfo", 2, "handleVidInfoBack, vid can't find storyvideoitem.");
       }
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
+      int i = this.c;
+      this.c = (i + 1);
       if (i < 3)
       {
         a((List)localObject2);
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject1).a();
       }
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.c = 0;
     if (!localArrayList2.isEmpty()) {
       localStoryManager.a(localArrayList2);
     }
     if (localArrayList1.isEmpty())
     {
-      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+      localObject2 = this.b;
       if (localObject2 != null) {
         ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject2).a((ArrayList)localObject1);
       }
@@ -206,7 +203,7 @@ public class BatchGetVideoInfo
     ArrayList localArrayList1 = new ArrayList();
     Object localObject1 = (StoryManager)SuperManager.a(5);
     ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       StoryVideoItem localStoryVideoItem = ((StoryManager)localObject1).a((String)localIterator.next());
@@ -241,7 +238,7 @@ public class BatchGetVideoInfo
     if (!localArrayList2.isEmpty()) {
       ((StoryManager)localObject1).a(localArrayList2);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$IBatchGetVideoInfoCallback;
+    localObject1 = this.b;
     if (localObject1 != null) {
       ((BatchGetVideoInfo.IBatchGetVideoInfoCallback)localObject1).a(localArrayList1);
     }
@@ -249,7 +246,7 @@ public class BatchGetVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo
  * JD-Core Version:    0.7.0.1
  */

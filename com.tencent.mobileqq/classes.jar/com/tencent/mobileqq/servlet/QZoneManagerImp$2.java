@@ -21,9 +21,9 @@ class QZoneManagerImp$2
     }
     ((QZoneManagerImp)localObject).b(bool);
     QZoneTitleTabManager.a(this.a.getCurrentAccountUin());
-    QZoneManagerImp.a(this.this$0);
+    QZoneManagerImp.b(this.this$0);
     localObject = this.this$0;
-    QZoneManagerImp.a((QZoneManagerImp)localObject, QZoneManagerImp.b((QZoneManagerImp)localObject));
+    QZoneManagerImp.a((QZoneManagerImp)localObject, QZoneManagerImp.c((QZoneManagerImp)localObject));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -35,7 +35,7 @@ class QZoneManagerImp$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.2
  * JD-Core Version:    0.7.0.1
  */

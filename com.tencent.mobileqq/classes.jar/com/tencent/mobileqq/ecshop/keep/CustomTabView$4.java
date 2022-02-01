@@ -16,43 +16,43 @@ class CustomTabView$4
 {
   public void run()
   {
-    QQShopRedPointUtil.a(this.jdField_a_of_type_ComTencentMobileqqEcshopRedpointRedPointInfo.mTabId);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEcshopRedpointRedPointInfo.mRedUrl;
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqEcshopRedpointRedPointInfo.mTashId));
-    if (StringUtil.a((String)localObject))
+    QQShopRedPointUtil.b(this.a.mTabId);
+    Object localObject = this.a.mRedUrl;
+    this.b.setVisibility(0);
+    this.b.setTag(Integer.valueOf(this.a.mTashId));
+    if (StringUtil.isEmpty((String)localObject))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843664);
-      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
-      ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).leftMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 8.0F));
+      this.b.setImageResource(2130844618);
+      this.b.getLayoutParams().width = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
+      this.b.getLayoutParams().height = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
+      ((RelativeLayout.LayoutParams)this.b.getLayoutParams()).leftMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 8.0F));
       return;
     }
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      if (this.jdField_a_of_type_ComTencentMobileqqEcshopRedpointRedPointInfo.mRedType == 1)
+      if (this.a.mRedType == 1)
       {
-        this.this$0.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = DisplayUtil.a(CustomTabView.a(this.this$0), 63.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = DisplayUtil.a(CustomTabView.a(this.this$0), 18.0F);
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).topMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 3.0F));
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).leftMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 10.0F));
+        this.this$0.a(this.c);
+        this.b.getLayoutParams().width = DisplayUtil.a(CustomTabView.a(this.this$0), 63.0F);
+        this.b.getLayoutParams().height = DisplayUtil.a(CustomTabView.a(this.this$0), 18.0F);
+        ((RelativeLayout.LayoutParams)this.b.getLayoutParams()).topMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 3.0F));
+        ((RelativeLayout.LayoutParams)this.b.getLayoutParams()).leftMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 10.0F));
         localURLDrawableOptions.mRequestWidth = DisplayUtil.a(CustomTabView.a(this.this$0), 63.0F);
         localURLDrawableOptions.mRequestHeight = DisplayUtil.a(CustomTabView.a(this.this$0), 20.0F);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).leftMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 8.0F));
+        this.b.getLayoutParams().width = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
+        this.b.getLayoutParams().height = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
+        ((RelativeLayout.LayoutParams)this.b.getLayoutParams()).leftMargin = (-DisplayUtil.a(CustomTabView.a(this.this$0), 8.0F));
         localURLDrawableOptions.mRequestWidth = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
         localURLDrawableOptions.mRequestHeight = DisplayUtil.a(CustomTabView.a(this.this$0), 9.0F);
       }
       localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
       if (localObject != null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        this.b.setImageDrawable((Drawable)localObject);
         return;
       }
     }
@@ -64,7 +64,7 @@ class CustomTabView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.keep.CustomTabView.4
  * JD-Core Version:    0.7.0.1
  */

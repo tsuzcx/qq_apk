@@ -14,18 +14,18 @@ final class RIJUgcUtils$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       paramDialogInterface = "https://viola.qq.com/js/ugcLevelProfile.js?_rij_violaUrl=1&v_tid=6&v_bundleName=ugcLevelProfile&hideNav=1&v_nav_immer=1&entry=1";
     } else {
-      paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      paramDialogInterface = this.a;
     }
-    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface);
+    ReadInJoyUtils.a(this.b, paramDialogInterface);
     ThreadManager.executeOnSubThread(new RIJUgcUtils.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils.4
  * JD-Core Version:    0.7.0.1
  */

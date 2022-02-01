@@ -12,26 +12,26 @@ class ForwardSdkBaseOption$8$1
   
   public void run()
   {
-    this.a.this$0.a(1004, ForwardAbility.ForwardAbilityType.b.intValue());
+    this.a.this$0.a(1004, ForwardAbility.ForwardAbilityType.c.intValue());
     Bundle localBundle = new Bundle();
     localBundle.putString("report_type", "102");
     localBundle.putString("act_type", "84");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(ReportDef.RepUtil.a(this.a.this$0.e));
+    localStringBuilder.append(ReportDef.RepUtil.a(this.a.this$0.ar));
     localBundle.putString("intext_1", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(ReportDef.RepUtil.a(this.a.this$0.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.a.this$0.jdField_a_of_type_AndroidOsBundle.getString("uin")));
+    localStringBuilder.append(ReportDef.RepUtil.a(this.a.this$0.t.getInt("uintype"), this.a.this$0.t.getString("uin")));
     localBundle.putString("intext_2", localStringBuilder.toString());
     localBundle.putString("intext_3", "0");
     localBundle.putString("intext_4", "5");
-    ReportCenter.a().a(localBundle, "", this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.a.this$0.c);
+    ReportCenter.a().a(localBundle, "", this.a.this$0.q.getCurrentAccountUin(), false, this.a.this$0.F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.8.1
  * JD-Core Version:    0.7.0.1
  */

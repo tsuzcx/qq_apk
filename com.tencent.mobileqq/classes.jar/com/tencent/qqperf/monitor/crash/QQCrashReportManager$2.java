@@ -12,14 +12,14 @@ class QQCrashReportManager$2
   public void run()
   {
     SharedPreferences localSharedPreferences = this.a.getSharedPreferences("pref_safemode_not_exit", 4);
-    if ((!QQCrashReportManager.c) && (localSharedPreferences.getBoolean("key_not_exit_enable", false))) {
+    if ((!QQCrashReportManager.i) && (localSharedPreferences.getBoolean("key_not_exit_enable", false))) {
       localSharedPreferences.edit().clear().commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.QQCrashReportManager.2
  * JD-Core Version:    0.7.0.1
  */

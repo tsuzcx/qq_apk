@@ -1,6 +1,6 @@
 package com.tencent.liteav.beauty;
 
-import com.tencent.liteav.basic.c.a;
+import com.tencent.liteav.basic.opengl.a;
 
 class d$c
 {
@@ -17,7 +17,7 @@ class d$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.d.c
  * JD-Core Version:    0.7.0.1
  */

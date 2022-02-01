@@ -21,23 +21,18 @@ public abstract class TroopBaseHandler
   
   private void b(ToServiceMsg paramToServiceMsg) {}
   
-  protected String a()
-  {
-    return "";
-  }
-  
   public void a(ToServiceMsg paramToServiceMsg)
   {
     if (paramToServiceMsg == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(a(), 2, "sendPbRequest. request is null.");
+        QLog.d(dv_(), 2, "sendPbRequest. request is null.");
       }
       return;
     }
     if (QLog.isColorLevel())
     {
-      String str = a();
+      String str = dv_();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("sendPbRequest. cmd=");
       localStringBuilder.append(paramToServiceMsg.getServiceCmd());
@@ -46,10 +41,15 @@ public abstract class TroopBaseHandler
     sendPbReq(paramToServiceMsg);
   }
   
+  protected String dv_()
+  {
+    return "";
+  }
+  
   public void send(ToServiceMsg paramToServiceMsg)
   {
-    if (!TextUtils.isEmpty(a())) {
-      paramToServiceMsg.extraData.putString("REQ_TAG", a());
+    if (!TextUtils.isEmpty(dv_())) {
+      paramToServiceMsg.extraData.putString("REQ_TAG", dv_());
     }
     super.send(paramToServiceMsg);
     b(paramToServiceMsg);
@@ -57,8 +57,8 @@ public abstract class TroopBaseHandler
   
   public void sendPbReq(ToServiceMsg paramToServiceMsg)
   {
-    if (!TextUtils.isEmpty(a())) {
-      paramToServiceMsg.extraData.putString("REQ_TAG", a());
+    if (!TextUtils.isEmpty(dv_())) {
+      paramToServiceMsg.extraData.putString("REQ_TAG", dv_());
     }
     super.sendPbReq(paramToServiceMsg);
     b(paramToServiceMsg);
@@ -66,7 +66,7 @@ public abstract class TroopBaseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopBaseHandler
  * JD-Core Version:    0.7.0.1
  */

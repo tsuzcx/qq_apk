@@ -55,8 +55,8 @@ public class StoryMemoriesListView
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setOnTouchListener(this);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a().setInputViewHideListener(this);
+    if (this.a.g != null) {
+      this.a.g.h().setInputViewHideListener(this);
     }
   }
   
@@ -64,15 +64,15 @@ public class StoryMemoriesListView
   
   public void b()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.g();
+    if (this.a.g != null) {
+      this.a.g.j();
     }
   }
   
   public void c()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.h();
+    if (this.a.g != null) {
+      this.a.g.k();
     }
   }
   
@@ -95,17 +95,17 @@ public class StoryMemoriesListView
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView == null) {
+    if (this.a.g == null) {
       return false;
     }
-    paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a();
+    paramView = this.a.g.h();
     if (paramView.getVisibility() == 0)
     {
-      ((InputMethodManager)this.a.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      ((InputMethodManager)this.a.d.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       paramView.clearFocus();
       paramView.setVisibility(8);
       b();
-      paramView = paramView.a.a;
+      paramView = paramView.p.g;
       int i = StoryReportor.a(paramView.getOwner());
       if (paramView.getOwner().isMe()) {
         paramView = "1";
@@ -125,12 +125,12 @@ public class StoryMemoriesListView
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    MemoriesFeedSegment localMemoriesFeedSegment = (MemoriesFeedSegment)a("FeedSegment");
-    if ((localMemoriesFeedSegment != null) && (localMemoriesFeedSegment.a() != 0) && (localMemoriesFeedSegment.c()))
+    MemoriesFeedSegment localMemoriesFeedSegment = (MemoriesFeedSegment)b("FeedSegment");
+    if ((localMemoriesFeedSegment != null) && (localMemoriesFeedSegment.a() != 0) && (localMemoriesFeedSegment.t()))
     {
-      localMemoriesFeedSegment.c(1);
+      localMemoriesFeedSegment.e(1);
       boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-      localMemoriesFeedSegment.c(0);
+      localMemoriesFeedSegment.e(0);
       return bool;
     }
     return super.trackMotionScroll(paramInt1, paramInt2);

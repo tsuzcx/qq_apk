@@ -6,30 +6,25 @@ import com.tencent.widget.pull2refresh.BaseViewHolder;
 public abstract class WSAbsCheckableHolder<M extends Checkable>
   extends BaseViewHolder<M>
 {
-  private M a;
   protected OnCheckedListener<M> a;
+  private M b;
   
   public WSAbsCheckableHolder(ViewGroup paramViewGroup, int paramInt, OnCheckedListener<M> paramOnCheckedListener)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableOnCheckedListener = paramOnCheckedListener;
+    this.a = paramOnCheckedListener;
   }
   
   private void b(M paramM)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableCheckable = paramM;
-  }
-  
-  protected M a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableCheckable;
+    this.b = paramM;
   }
   
   protected void a()
   {
-    OnCheckedListener localOnCheckedListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableOnCheckedListener;
+    OnCheckedListener localOnCheckedListener = this.a;
     if (localOnCheckedListener != null) {
-      localOnCheckedListener.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCheckableCheckable, getAdapterPosition());
+      localOnCheckedListener.b(this.b, getAdapterPosition());
     }
   }
   
@@ -40,10 +35,15 @@ public abstract class WSAbsCheckableHolder<M extends Checkable>
   }
   
   protected abstract void a(boolean paramBoolean);
+  
+  protected M b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.checkable.WSAbsCheckableHolder
  * JD-Core Version:    0.7.0.1
  */

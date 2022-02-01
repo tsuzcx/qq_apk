@@ -39,7 +39,6 @@ class DrawableContainer
   private boolean mHasAlpha;
   private Rect mHotspotBounds;
   private Drawable mLastDrawable;
-  private int mLastIndex = -1;
   private boolean mMutated;
   
   private void initializeDrawableForDisplay(Drawable paramDrawable)
@@ -146,7 +145,6 @@ class DrawableContainer
         {
           localDrawable.setVisible(false, false);
           this.mLastDrawable = null;
-          this.mLastIndex = -1;
           this.mExitAnimationEnd = 0L;
         }
         else
@@ -373,7 +371,6 @@ class DrawableContainer
     {
       localDrawable.jumpToCurrentState();
       this.mLastDrawable = null;
-      this.mLastIndex = -1;
       i = 1;
     }
     else
@@ -483,13 +480,11 @@ class DrawableContainer
       if (localObject != null)
       {
         this.mLastDrawable = ((Drawable)localObject);
-        this.mLastIndex = this.mCurIndex;
         this.mExitAnimationEnd = (this.mDrawableContainerState.mExitFadeDuration + l);
       }
       else
       {
         this.mLastDrawable = null;
-        this.mLastIndex = -1;
         this.mExitAnimationEnd = 0L;
       }
     }
@@ -590,7 +585,6 @@ class DrawableContainer
         initializeDrawableForDisplay(paramDrawableContainerState);
       }
     }
-    this.mLastIndex = -1;
     this.mLastDrawable = null;
   }
   

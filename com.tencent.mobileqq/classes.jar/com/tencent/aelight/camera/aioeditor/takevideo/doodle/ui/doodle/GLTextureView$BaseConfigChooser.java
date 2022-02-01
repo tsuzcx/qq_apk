@@ -7,16 +7,13 @@ import javax.microedition.khronos.egl.EGLDisplay;
 abstract class GLTextureView$BaseConfigChooser
   implements GLTextureView.EGLConfigChooser
 {
-  protected int[] a;
+  protected int[] a = a(paramArrayOfInt);
   
-  public GLTextureView$BaseConfigChooser(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
-  }
+  public GLTextureView$BaseConfigChooser(GLTextureView paramGLTextureView, int[] paramArrayOfInt) {}
   
   private int[] a(int[] paramArrayOfInt)
   {
-    if ((GLTextureView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView) != 3)) {
+    if ((GLTextureView.c(this.b) != 2) && (GLTextureView.c(this.b) != 3)) {
       return paramArrayOfInt;
     }
     int i = paramArrayOfInt.length;
@@ -24,7 +21,7 @@ abstract class GLTextureView$BaseConfigChooser
     int j = i - 1;
     System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, j);
     arrayOfInt[j] = 12352;
-    if (GLTextureView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView) == 2) {
+    if (GLTextureView.c(this.b) == 2) {
       arrayOfInt[i] = 4;
     } else {
       arrayOfInt[i] = 64;
@@ -36,13 +33,13 @@ abstract class GLTextureView$BaseConfigChooser
   public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
     int[] arrayOfInt = new int[1];
-    if (paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt))
+    if (paramEGL10.eglChooseConfig(paramEGLDisplay, this.a, null, 0, arrayOfInt))
     {
       int i = arrayOfInt[0];
       if (i > 0)
       {
         EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-        if (paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt))
+        if (paramEGL10.eglChooseConfig(paramEGLDisplay, this.a, arrayOfEGLConfig, i, arrayOfInt))
         {
           paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
           if (paramEGL10 != null) {
@@ -61,7 +58,7 @@ abstract class GLTextureView$BaseConfigChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.GLTextureView.BaseConfigChooser
  * JD-Core Version:    0.7.0.1
  */

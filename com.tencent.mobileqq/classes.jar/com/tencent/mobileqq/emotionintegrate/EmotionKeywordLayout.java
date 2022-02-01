@@ -19,17 +19,16 @@ import com.tencent.qphone.base.util.QLog;
 public class EmotionKeywordLayout
   extends RelativeLayout
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
-  public boolean a;
-  public boolean b = false;
+  BaseAIOContext a;
+  ViewGroup b;
+  public boolean c = false;
+  public boolean d = false;
   
   public EmotionKeywordLayout(Context paramContext, BaseAIOContext paramBaseAIOContext, ViewGroup paramViewGroup)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.a = paramBaseAIOContext;
+    this.b = paramViewGroup;
   }
   
   protected void onAttachedToWindow()
@@ -39,8 +38,8 @@ public class EmotionKeywordLayout
     if ((localObject instanceof IStickerView))
     {
       localObject = (IStickerView)localObject;
-      IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)((IStickerView)localObject).a().a();
-      if ((localIStickerRecEmoticon != null) && (localIStickerRecEmoticon.c())) {
+      IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)((IStickerView)localObject).d().a();
+      if ((localIStickerRecEmoticon != null) && (localIStickerRecEmoticon.g())) {
         localIStickerRecEmoticon.a(System.currentTimeMillis());
       }
       if (((localObject instanceof ApolloStickerRecView)) && (StickerRecDataUtils.a(localIStickerRecEmoticon))) {
@@ -56,8 +55,8 @@ public class EmotionKeywordLayout
     if ((localObject instanceof IStickerView))
     {
       localObject = (IStickerView)localObject;
-      IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)((IStickerView)localObject).a().a();
-      if ((localIStickerRecEmoticon != null) && (localIStickerRecEmoticon.c())) {
+      IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)((IStickerView)localObject).d().a();
+      if ((localIStickerRecEmoticon != null) && (localIStickerRecEmoticon.g())) {
         localIStickerRecEmoticon.b(System.currentTimeMillis());
       }
       if (((localObject instanceof ApolloStickerRecView)) && (StickerRecDataUtils.a(localIStickerRecEmoticon))) {
@@ -78,12 +77,12 @@ public class EmotionKeywordLayout
           if (QLog.isColorLevel()) {
             QLog.i("EmotionKeywordLayout", 2, "EmotionKeywordLayout.onTouchEvent ACTION_MOVE");
           }
-          if (this.jdField_a_of_type_Boolean)
+          if (this.c)
           {
-            Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+            Object localObject = this.b;
             if (localObject != null)
             {
-              if ((!this.b) && ((localObject instanceof TopGestureLayout)))
+              if ((!this.d) && ((localObject instanceof TopGestureLayout)))
               {
                 localObject = ((TopGestureLayout)localObject).getGestureDetector();
                 if ((localObject instanceof IStickerGestureDetector))
@@ -91,10 +90,10 @@ public class EmotionKeywordLayout
                   localObject = (IStickerGestureDetector)localObject;
                   ((IStickerGestureDetector)localObject).setLastX(paramMotionEvent.getRawX());
                   ((IStickerGestureDetector)localObject).setLastY(paramMotionEvent.getRawY());
-                  this.b = true;
+                  this.d = true;
                 }
               }
-              this.jdField_a_of_type_AndroidViewViewGroup.onTouchEvent(paramMotionEvent);
+              this.b.onTouchEvent(paramMotionEvent);
               return true;
             }
           }
@@ -105,16 +104,16 @@ public class EmotionKeywordLayout
         if (QLog.isColorLevel()) {
           QLog.i("EmotionKeywordLayout", 2, "EmotionKeywordLayout.onTouchEvent ACTION_UP");
         }
-        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+        if ((this.c) && (this.b != null))
         {
-          ((IRecommendEmotionService)QRoute.api(IRecommendEmotionService.class)).onEmotionKeywordDimiss(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
-          this.jdField_a_of_type_Boolean = false;
-          this.b = false;
-          this.jdField_a_of_type_AndroidViewViewGroup.onTouchEvent(paramMotionEvent);
+          ((IRecommendEmotionService)QRoute.api(IRecommendEmotionService.class)).onEmotionKeywordDimiss(this.a);
+          this.c = false;
+          this.d = false;
+          this.b.onTouchEvent(paramMotionEvent);
           return true;
         }
-        this.jdField_a_of_type_Boolean = false;
-        this.b = false;
+        this.c = false;
+        this.d = false;
       }
     }
     else
@@ -122,15 +121,15 @@ public class EmotionKeywordLayout
       if (QLog.isColorLevel()) {
         QLog.i("EmotionKeywordLayout", 2, "EmotionKeywordLayout.onTouchEvent ACTION_DOWN");
       }
-      this.b = false;
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
+      this.c = false;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

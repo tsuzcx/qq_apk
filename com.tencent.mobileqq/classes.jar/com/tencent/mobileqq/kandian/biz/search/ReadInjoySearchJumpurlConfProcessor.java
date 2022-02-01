@@ -6,8 +6,6 @@ import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.kandian.biz.config.IReadInJoySearchJumpUrlConfBean;
-import com.tencent.mobileqq.kandian.biz.config.api.IReadInJoySearchJumpUrlConfBeanFactory;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class ReadInjoySearchJumpurlConfProcessor
@@ -15,13 +13,13 @@ public class ReadInjoySearchJumpurlConfProcessor
 {
   public static IReadInJoySearchJumpUrlConfBean a()
   {
-    return (IReadInJoySearchJumpUrlConfBean)QConfigManager.a().a(292);
+    return (IReadInJoySearchJumpUrlConfBean)QConfigManager.b().b(292);
   }
   
   @NonNull
   public IReadInJoySearchJumpUrlConfBean a(int paramInt)
   {
-    return ((IReadInJoySearchJumpUrlConfBeanFactory)QRoute.api(IReadInJoySearchJumpUrlConfBeanFactory.class)).createConfBean();
+    return new ReadInjoySearchJumpurlConfBean();
   }
   
   @Nullable
@@ -41,10 +39,10 @@ public class ReadInjoySearchJumpurlConfProcessor
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[onParsed] confFiles[0].content= ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, localStringBuilder.toString());
       }
-      return ((IReadInJoySearchJumpUrlConfBeanFactory)QRoute.api(IReadInJoySearchJumpUrlConfBeanFactory.class)).parse(paramArrayOfQConfItem[0].a);
+      return new ReadInjoySearchJumpurlConfBean().e(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -80,7 +78,7 @@ public class ReadInjoySearchJumpurlConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.search.ReadInjoySearchJumpurlConfProcessor
  * JD-Core Version:    0.7.0.1
  */

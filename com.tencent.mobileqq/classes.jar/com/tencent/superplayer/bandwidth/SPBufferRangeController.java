@@ -177,7 +177,8 @@ public class SPBufferRangeController
       while (localIterator.hasNext())
       {
         Integer[] arrayOfInteger = (Integer[])localIterator.next();
-        if (paramLong > arrayOfInteger[0].intValue() * paramInt / 8) {
+        int j = paramInt / 8;
+        if (paramLong > arrayOfInteger[0].intValue() * j) {
           return arrayOfInteger[1].intValue();
         }
       }
@@ -199,6 +200,11 @@ public class SPBufferRangeController
     return paramArrayOfInteger2[0].intValue() - paramArrayOfInteger1[0].intValue();
   }
   
+  public void setupBufferRange(ISuperPlayer paramISuperPlayer)
+  {
+    setupBufferRange(paramISuperPlayer, (int)(paramISuperPlayer.getDurationMs() / 1000L), paramISuperPlayer.getFileSizeBytes());
+  }
+  
   public void setupBufferRange(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong)
   {
     ThreadUtil.runOnUiThread(new SPBufferRangeController.1(this, paramISuperPlayer, computeBufferange(paramInt, paramLong), CommonUtil.a((String)this.configMap.get("emergency_time_for_preplay"), 3)));
@@ -206,7 +212,7 @@ public class SPBufferRangeController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBufferRangeController
  * JD-Core Version:    0.7.0.1
  */

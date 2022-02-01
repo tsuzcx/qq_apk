@@ -11,8 +11,8 @@ class AbsEmptyView$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.b.a(3);
+    this.a.onClick(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

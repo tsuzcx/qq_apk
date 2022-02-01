@@ -17,8 +17,8 @@ class FrameworkHandler$8
     {
       paramView = new Intent();
       paramView.setAction("com.tencent.mobileqq.kandian.biz.gifvideo.VideoMaskController.ACTION_DOWN_AUDIO_BUTTON");
-      if (this.a.a() != null) {
-        this.a.a().sendBroadcast(paramView);
+      if (this.a.i() != null) {
+        this.a.i().sendBroadcast(paramView);
       }
     }
     return false;
@@ -26,7 +26,7 @@ class FrameworkHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.FrameworkHandler.8
  * JD-Core Version:    0.7.0.1
  */

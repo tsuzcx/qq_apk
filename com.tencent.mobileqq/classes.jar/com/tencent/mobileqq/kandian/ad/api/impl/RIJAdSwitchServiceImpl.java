@@ -53,7 +53,7 @@ public class RIJAdSwitchServiceImpl
   
   public boolean isTelephoneComponent(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdSwitchUtil.e(paramAdvertisementInfo);
+    return ReadInJoyAdSwitchUtil.i(paramAdvertisementInfo);
   }
   
   public boolean isTelephoneComponentForDetail(AdData paramAdData)
@@ -68,7 +68,7 @@ public class RIJAdSwitchServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdSwitchServiceImpl
  * JD-Core Version:    0.7.0.1
  */

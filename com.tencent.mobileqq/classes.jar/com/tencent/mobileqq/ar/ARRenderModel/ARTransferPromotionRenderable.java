@@ -41,125 +41,76 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable
   implements Handler.Callback, View.OnTouchListener, ARNativeBridge.ARWorldCupCallback, ARPromotionMediaPlayerWrapper.OnPlayMediaStatusListener, ARTransferDoorLogicManager.RenderProxy, ARBaseRender
 {
-  volatile int jdField_a_of_type_Int = 0;
-  volatile long jdField_a_of_type_Long = -1L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-  private ARPromotionMediaPlayerWrapper jdField_a_of_type_ComTencentMobileqqArARPromotionARPromotionMediaPlayerWrapper = new ARPromotionMediaPlayerWrapper(this, 1);
-  private ARPromotionSoundPlayer jdField_a_of_type_ComTencentMobileqqArARPromotionARPromotionSoundPlayer;
-  private ARTransferDoorConfigInfo.FragmentInfo jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo$FragmentInfo;
-  private ARTransferDoorLogicManager jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager;
-  private ARTransferDoorVideoInfo jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorVideoInfo;
-  private ARRenderMangerInnerCallback jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
-  private ARTransferResourceInfo jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo;
-  private IARCoreBridge jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge = null;
-  private ARSensorManager jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
-  private SimpleSensorChangeListener jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener = new ARTransferPromotionRenderable.2(this);
-  private ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-  MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ARTransferPromotionRenderable.1(this);
-  private ArrayList<Runnable> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  volatile int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  private volatile int jdField_d_of_type_Int;
-  private volatile boolean jdField_d_of_type_Boolean = false;
-  private volatile int jdField_e_of_type_Int;
-  private volatile boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean = false;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean = false;
-  private int h = -1;
+  private int A = -1;
+  private SimpleSensorChangeListener B = new ARTransferPromotionRenderable.2(this);
+  private int C;
+  private IARCoreBridge D = null;
+  private TextView E;
+  private volatile boolean F = false;
+  private volatile int G = 0;
+  private boolean H = false;
+  private int I = 0;
+  private boolean J = false;
+  volatile int a = 0;
+  volatile int b = 0;
+  MqqWeakReferenceHandler c;
+  volatile long d = -1L;
+  private Context e;
+  private ARRenderMangerInnerCallback f;
+  private ARTransferResourceInfo g;
+  private ARNativeBridge h;
   private int i;
-  private volatile int j = 0;
-  private int k = 0;
+  private boolean j = false;
+  private ARSensorManager k;
+  private volatile int l;
+  private volatile int m;
+  private int n;
+  private int o;
+  private boolean p;
+  private boolean q = true;
+  private volatile boolean r = false;
+  private ARTransferDoorVideoInfo s;
+  private ARTransferDoorConfigInfo.FragmentInfo t;
+  private ARPromotionSoundPlayer u;
+  private ARPromotionMediaPlayerWrapper v = new ARPromotionMediaPlayerWrapper(this, 1);
+  private ArrayList<Runnable> w = new ArrayList();
+  private final Runnable x = new ARTransferPromotionRenderable.1(this);
+  private ARTransferDoorLogicManager y;
+  private ISPlayerPreDownloader z;
   
   public ARTransferPromotionRenderable(ARRenderMangerInnerCallback paramARRenderMangerInnerCallback, ARTransferResourceInfo paramARTransferResourceInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback = paramARRenderMangerInnerCallback;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo = paramARTransferResourceInfo;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a();
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = ((ARNativeBridge)paramARRenderMangerInnerCallback.a(0));
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager = ((ARTransferDoorLogicManager)paramARRenderMangerInnerCallback.a(8));
+    this.f = paramARRenderMangerInnerCallback;
+    this.g = paramARTransferResourceInfo;
+    this.e = this.f.a();
+    this.h = ((ARNativeBridge)paramARRenderMangerInnerCallback.a(0));
+    this.y = ((ARTransferDoorLogicManager)paramARRenderMangerInnerCallback.a(8));
     boolean bool = SensorTrackManager.a();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
-      paramARRenderMangerInnerCallback = this.jdField_a_of_type_AndroidContentContext;
-      int m;
+      paramARRenderMangerInnerCallback = this.e;
+      int i1;
       if (bool) {
-        m = 5;
+        i1 = 5;
       } else {
-        m = 4;
+        i1 = 4;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(paramARRenderMangerInnerCallback, m);
+      this.k = new ARSensorManager(paramARRenderMangerInnerCallback, i1);
     }
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_c_of_type_Boolean = SensorTrackManager.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 108);
-    paramARRenderMangerInnerCallback = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.a();
+    this.l = 1;
+    this.c = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.q = SensorTrackManager.b;
+    this.z = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 108);
+    paramARRenderMangerInnerCallback = this.g.b();
     if (!TextUtils.isEmpty(paramARRenderMangerInnerCallback))
     {
       paramARRenderMangerInnerCallback = SuperPlayerFactory.createVideoInfoForUrl(paramARRenderMangerInnerCallback, 101, MD5Utils.toMD5(paramARRenderMangerInnerCallback));
-      this.h = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.startPreDownload(paramARRenderMangerInnerCallback, 3000L, 1000L);
+      this.A = this.z.startPreDownload(paramARRenderMangerInnerCallback, 3000L, 1000L);
     }
     ThreadManager.post(new ARTransferPromotionRenderable.3(this), 8, null, true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3) {}
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransferPromotionRenderable", 2, String.format("setNativeState mCurrentState=%s state=%s", new Object[] { Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(paramInt) }));
-    }
-    this.jdField_d_of_type_Int = paramInt;
-    switch (this.jdField_d_of_type_Int)
-    {
-    default: 
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_d_of_type_Int = 1;
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new ARTransferPromotionRenderable.11(this));
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ARTransferPromotionRenderable", 2, "enter STATE_ENGINE_DRAW status");
-        return;
-      }
-      break;
-    case 4: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.jdField_c_of_type_Int);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.jdField_c_of_type_Int);
-      a(5);
-      this.jdField_e_of_type_Int = 0;
-      return;
-    case 2: 
-      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
-      ARNativeBridge localARNativeBridge = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-      long l = this.jdField_c_of_type_Int;
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      localARNativeBridge.nativeCreateEngineBusiness(l, "test.scene", localContext, localContext.getAssets(), this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_b_of_type_JavaLangString, this.jdField_f_of_type_Int, this.jdField_g_of_type_Int, 88);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.native_setARWorldCupCallBack(this);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setPreLoadTransferDoorFlags();
-      if (this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setARCoreSupport(1);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setARCoreSupport(0);
-      }
-      a(3);
-    }
-  }
   
   private void a(int paramInt1, String paramString, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
@@ -169,73 +120,73 @@ public class ARTransferPromotionRenderable
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(paramString);
     localObject = ((StringBuilder)localObject).toString();
-    int n = 1;
+    int i2 = 1;
     QLog.d("ARTransferPromotionRenderable", 1, (String)localObject);
     localObject = new File(paramString);
     if (!TextUtils.isEmpty(paramString))
     {
-      m = n;
+      i1 = i2;
       if (paramString.startsWith("http")) {
-        break label110;
+        break label111;
       }
       if (paramString.startsWith("https"))
       {
-        m = n;
-        break label110;
+        i1 = i2;
+        break label111;
       }
     }
-    int m = 0;
-    label110:
-    if ((((File)localObject).exists()) || (m != 0))
+    int i1 = 0;
+    label111:
+    if ((((File)localObject).exists()) || (i1 != 0))
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPromotionMediaPlayerWrapper.a(paramString, 123456L, paramBoolean1, paramInt2, paramBoolean2);
+      this.a = paramInt1;
+      this.v.a(paramString, 123456L, paramBoolean1, paramInt2, paramBoolean2);
     }
   }
   
   private void a(float[] arg1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4, float[] paramArrayOfFloat5)
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (paramArrayOfFloat5 != null) && (this.jdField_b_of_type_Int < 6)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge == null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.native_setARWorldCupQuaternion(paramArrayOfFloat5[0], paramArrayOfFloat5[1], paramArrayOfFloat5[2], paramArrayOfFloat5[3]);
+    if ((this.q) && (this.r) && (paramArrayOfFloat5 != null) && (this.b < 6)) {
+      if (this.D == null) {
+        this.h.native_setARWorldCupQuaternion(paramArrayOfFloat5[0], paramArrayOfFloat5[1], paramArrayOfFloat5[2], paramArrayOfFloat5[3]);
       } else {
         a(paramArrayOfFloat5);
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.w)
     {
-      while (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      while (!this.w.isEmpty())
       {
-        paramArrayOfFloat3 = (Runnable)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        paramArrayOfFloat3 = (Runnable)this.w.remove(0);
         if (paramArrayOfFloat3 != null)
         {
-          long l = System.currentTimeMillis();
+          long l1 = System.currentTimeMillis();
           paramArrayOfFloat3.run();
-          l = System.currentTimeMillis() - l;
-          if (l >= 200L)
+          l1 = System.currentTimeMillis() - l1;
+          if (l1 >= 200L)
           {
             paramArrayOfFloat3 = new StringBuilder();
             paramArrayOfFloat3.append("event queue cost too long: ");
-            paramArrayOfFloat3.append(l);
+            paramArrayOfFloat3.append(l1);
             QLog.d("ARTransferPromotionRenderable", 1, paramArrayOfFloat3.toString());
           }
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.jdField_c_of_type_Int, paramArrayOfFloat2, paramArrayOfFloat4);
-      this.jdField_d_of_type_Boolean = true;
-      if (this.jdField_e_of_type_Boolean)
+      this.h.nativeOnDrawFrame(this.i, paramArrayOfFloat2, paramArrayOfFloat4);
+      this.r = true;
+      if (this.F)
       {
-        int m = this.j + 1;
-        this.j = m;
-        if (m >= 1)
+        int i1 = this.G + 1;
+        this.G = i1;
+        if (i1 >= 1)
         {
           ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.9(this));
-          this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.b(true);
-          ??? = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager;
+          this.y.b(true);
+          ??? = this.y;
           ???.getClass();
           ???.c(6);
           ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.10(this));
-          this.jdField_e_of_type_Boolean = false;
+          this.F = false;
         }
       }
       return;
@@ -248,28 +199,28 @@ public class ARTransferPromotionRenderable
   
   private boolean a(float[] paramArrayOfFloat)
   {
-    paramArrayOfFloat = this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge;
+    paramArrayOfFloat = this.D;
     if (paramArrayOfFloat == null) {
       return false;
     }
-    if (!paramArrayOfFloat.a()) {
+    if (!paramArrayOfFloat.b()) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a() == null) {
+    if (this.f.d() == null) {
       return false;
     }
     paramArrayOfFloat = new float[4];
     float[] arrayOfFloat = new float[3];
-    int m = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().a();
-    FloatBuffer localFloatBuffer = this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge.a(m, paramArrayOfFloat, arrayOfFloat);
-    if ((m != -1) && (localFloatBuffer != null))
+    int i1 = this.f.d().i();
+    FloatBuffer localFloatBuffer = this.D.a(i1, paramArrayOfFloat, arrayOfFloat);
+    if ((i1 != -1) && (localFloatBuffer != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().a(m);
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().a(localFloatBuffer, this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge.a());
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.native_setARWorldCupQuaternion(paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]);
-      if ((this.jdField_b_of_type_Int <= 5) && (this.jdField_b_of_type_Int >= 3))
+      this.f.d().b(i1);
+      this.f.d().a(localFloatBuffer, this.D.a());
+      this.h.native_setARWorldCupQuaternion(paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]);
+      if ((this.b <= 5) && (this.b >= 3))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.updateCameraTranslate(arrayOfFloat, paramArrayOfFloat);
+        this.h.updateCameraTranslate(arrayOfFloat, paramArrayOfFloat);
         a(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2]);
       }
       return true;
@@ -278,75 +229,116 @@ public class ARTransferPromotionRenderable
     return false;
   }
   
+  private void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransferPromotionRenderable", 2, String.format("setNativeState mCurrentState=%s state=%s", new Object[] { Integer.valueOf(this.l), Integer.valueOf(paramInt) }));
+    }
+    this.l = paramInt;
+    switch (this.l)
+    {
+    default: 
+    case 7: 
+      this.h.nativeDestroyCertainEngine(this.i);
+      this.h.setupActionCallback(null);
+      this.i = 0;
+      this.l = 1;
+      return;
+    case 6: 
+      this.f.a(new ARTransferPromotionRenderable.11(this));
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ARTransferPromotionRenderable", 2, "enter STATE_ENGINE_DRAW status");
+        return;
+      }
+      break;
+    case 4: 
+      this.h.nativePause(this.i);
+      return;
+    case 3: 
+      this.h.nativeResume(this.i);
+      b(5);
+      this.m = 0;
+      return;
+    case 2: 
+      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
+      this.i = this.h.getIndentification();
+      ARNativeBridge localARNativeBridge = this.h;
+      long l1 = this.i;
+      Context localContext = this.e;
+      localARNativeBridge.nativeCreateEngineBusiness(l1, "test.scene", localContext, localContext.getAssets(), this.g.n, this.n, this.o, 88);
+      this.h.native_setARWorldCupCallBack(this);
+      this.h.setPreLoadTransferDoorFlags();
+      if (this.D != null) {
+        this.h.setARCoreSupport(1);
+      } else {
+        this.h.setARCoreSupport(0);
+      }
+      b(3);
+    }
+  }
+  
   private void b(Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.w)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramRunnable);
+      this.w.add(paramRunnable);
       return;
     }
   }
   
-  private int d()
+  private void s()
   {
-    ARNativeBridge localARNativeBridge = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-    if (localARNativeBridge != null) {
-      this.jdField_b_of_type_Int = localARNativeBridge.native_getNativeGameStatus();
-    }
-    return this.jdField_b_of_type_Int;
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge != null)
+    if (this.D != null)
     {
       QLog.d("ARTransferPromotionRenderable", 1, "tryCreatARCore ");
       b(new ARTransferPromotionRenderable.15(this));
     }
   }
   
-  private void i()
+  private void t()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge != null)
+    if (this.D != null)
     {
       QLog.d("ARTransferPromotionRenderable", 1, "checkAndStartARCore ");
-      CameraProxy.a().e();
-      this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge.a(this.jdField_f_of_type_Int, this.jdField_g_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge.c();
+      CameraProxy.a().k();
+      this.D.a(this.n, this.o);
+      this.D.e();
     }
   }
   
-  private void j()
+  private int u()
   {
-    MqqWeakReferenceHandler localMqqWeakReferenceHandler = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+    ARNativeBridge localARNativeBridge = this.h;
+    if (localARNativeBridge != null) {
+      this.b = localARNativeBridge.native_getNativeGameStatus();
+    }
+    return this.b;
+  }
+  
+  private void v()
+  {
+    MqqWeakReferenceHandler localMqqWeakReferenceHandler = this.c;
     if ((localMqqWeakReferenceHandler != null) && (!localMqqWeakReferenceHandler.hasMessages(1105))) {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1105, 200L);
+      this.c.sendEmptyMessageDelayed(1105, 200L);
     }
     QLog.d("ARTransferPromotionRenderable", 2, "startMediaTimeListener ");
   }
   
-  private void k()
+  private void w()
   {
-    MqqWeakReferenceHandler localMqqWeakReferenceHandler = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+    MqqWeakReferenceHandler localMqqWeakReferenceHandler = this.c;
     if (localMqqWeakReferenceHandler != null)
     {
       localMqqWeakReferenceHandler.removeMessages(1105);
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.a(false, "");
+      this.y.a(false, "");
     }
     QLog.d("ARTransferPromotionRenderable", 2, "stopMediaTimeListener ");
   }
   
-  public int a()
-  {
-    if (this.jdField_d_of_type_Int != 6) {
-      return 0;
-    }
-    return this.jdField_b_of_type_Int;
-  }
-  
   public int a(int paramInt)
   {
-    if (this.jdField_b_of_type_Int == paramInt) {
+    if (this.b == paramInt) {
       return 0;
     }
     if (QLog.isColorLevel())
@@ -360,27 +352,11 @@ public class ARTransferPromotionRenderable
     return 0;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransferPromotionRenderable", 2, "directlyEnterTransferDoor");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.f();
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.a(false, "");
-    ReportController.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_a_of_type_JavaLangString, "0", "0", "");
-    b(new ARTransferPromotionRenderable.12(this));
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_f_of_type_Int = paramInt1;
-    this.jdField_g_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArArcoreIARCoreBridge != null) {
+    this.n = paramInt1;
+    this.o = paramInt2;
+    if (this.D != null) {
       b(new ARTransferPromotionRenderable.8(this));
     }
   }
@@ -389,11 +365,11 @@ public class ARTransferPromotionRenderable
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onMediaPlayerStatusChange mCurrentPrePareChangeStatus ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|status");
     localStringBuilder.append(paramInt2);
     QLog.d("ARTransferPromotionRenderable", 1, localStringBuilder.toString());
@@ -421,7 +397,7 @@ public class ARTransferPromotionRenderable
   
   public void a(Runnable paramRunnable)
   {
-    ARRenderMangerInnerCallback localARRenderMangerInnerCallback = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    ARRenderMangerInnerCallback localARRenderMangerInnerCallback = this.f;
     if (localARRenderMangerInnerCallback != null) {
       localARRenderMangerInnerCallback.a(paramRunnable);
     }
@@ -434,117 +410,51 @@ public class ARTransferPromotionRenderable
   
   public boolean a()
   {
-    return (this.jdField_d_of_type_Int == 6) && (this.jdField_c_of_type_Int != 0);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.c;
-  }
-  
-  public void b()
-  {
-    b(new ARTransferPromotionRenderable.21(this));
+    return (this.l == 6) && (this.i != 0);
   }
   
   public boolean b()
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_b_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("init test start +");
-    ((StringBuilder)localObject).append(this);
-    QLog.d("ARTransferPromotionRenderable", 2, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_Long = Thread.currentThread().getId();
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.a(this);
-    if (!this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.e();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
-    if ((localObject != null) && (this.jdField_a_of_type_Boolean)) {
-      QLog.d("ARTransferPromotionRenderable", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(((ARSensorManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener)) }));
-    }
+    return this.r;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferResourceInfo.jdField_a_of_type_JavaLangBoolean.booleanValue() ^ true;
+    return this.g.i.booleanValue() ^ true;
   }
   
-  public void d()
+  public String d()
   {
-    QLog.d("ARTransferPromotionRenderable", 2, "start from this cluase second");
-    if (1 == this.jdField_d_of_type_Int) {
-      a(2);
-    }
+    return this.g.a;
   }
   
-  public boolean d()
+  public String e()
   {
-    return (this.jdField_d_of_type_Int == 6) && (this.jdField_c_of_type_Int != 0);
-  }
-  
-  public void e()
-  {
-    if (this.jdField_d_of_type_Int == 5)
-    {
-      int m = this.jdField_e_of_type_Int + 1;
-      this.jdField_e_of_type_Int = m;
-      if (m >= 2) {
-        a(6);
-      }
-    }
-  }
-  
-  public boolean e()
-  {
-    return false;
+    return this.g.o;
   }
   
   public void f()
   {
-    QLog.d("ARTransferPromotionRenderable", 2, String.format("onDestroy mCurrentState=%s mCallDestroyFromPause=%s", new Object[] { Integer.valueOf(this.jdField_d_of_type_Int), Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
-    Object localObject = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-    if (localObject != null) {
-      ((MqqWeakReferenceHandler)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransferPromotionRenderable", 2, "directlyEnterTransferDoor");
     }
-    ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.6(this));
-    localObject = new ARTransferPromotionRenderable.7(this);
-    if (this.jdField_a_of_type_Long == Thread.currentThread().getId())
-    {
-      ((Runnable)localObject).run();
-      QLog.e("ARTransferPromotionRenderable", 1, "onDestroy in GLThread.");
-      return;
-    }
-    ARRenderMangerInnerCallback localARRenderMangerInnerCallback = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
-    if (localARRenderMangerInnerCallback != null) {
-      localARRenderMangerInnerCallback.a((Runnable)localObject);
-    }
-    QLog.e("ARTransferPromotionRenderable", 1, "onDestroy not in GLThread.");
+    this.y.h();
+    this.y.a(false, "");
+    ReportController.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, this.g.a, "0", "0", "");
+    b(new ARTransferPromotionRenderable.12(this));
   }
   
-  public void g()
+  public int g()
   {
-    QLog.d("ARTransferPromotionRenderable", 2, "startCameraAniamtion ");
-    b(new ARTransferPromotionRenderable.18(this));
+    if (this.l != 6) {
+      return 0;
+    }
+    return this.b;
+  }
+  
+  public void h()
+  {
+    b(new ARTransferPromotionRenderable.21(this));
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -552,19 +462,88 @@ public class ARTransferPromotionRenderable
     if (paramMessage.what != 1105) {
       return false;
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPromotionMediaPlayerWrapper;
-    if ((paramMessage != null) && (paramMessage.a()) && (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorVideoInfo != null))
+    paramMessage = this.v;
+    if ((paramMessage != null) && (paramMessage.c()) && (this.s != null))
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPromotionMediaPlayerWrapper.a();
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorVideoInfo.a(l);
+      long l1 = this.v.e();
+      paramMessage = this.s.a(l1);
       if (paramMessage == null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.a(false, "");
+        this.y.a(false, "");
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.a(true, paramMessage.jdField_a_of_type_JavaLangString);
+        this.y.a(true, paramMessage.c);
       }
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1105, 200L);
+    this.c.sendEmptyMessageDelayed(1105, 200L);
     return false;
+  }
+  
+  public void i()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init test start +");
+    ((StringBuilder)localObject).append(this);
+    QLog.d("ARTransferPromotionRenderable", 2, ((StringBuilder)localObject).toString());
+    this.d = Thread.currentThread().getId();
+    this.y.a(this);
+    if (!this.g.i.booleanValue()) {
+      this.y.g();
+    }
+    localObject = this.k;
+    if ((localObject != null) && (this.j)) {
+      QLog.d("ARTransferPromotionRenderable", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(((ARSensorManager)localObject).a(this.B)) }));
+    }
+  }
+  
+  public void j()
+  {
+    QLog.d("ARTransferPromotionRenderable", 2, "start from this cluase second");
+    if (1 == this.l) {
+      b(2);
+    }
+  }
+  
+  public void k()
+  {
+    if (this.l == 5)
+    {
+      int i1 = this.m + 1;
+      this.m = i1;
+      if (i1 >= 2) {
+        b(6);
+      }
+    }
+  }
+  
+  public void l()
+  {
+    QLog.d("ARTransferPromotionRenderable", 2, String.format("onDestroy mCurrentState=%s mCallDestroyFromPause=%s", new Object[] { Integer.valueOf(this.l), Boolean.valueOf(this.p) }));
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((MqqWeakReferenceHandler)localObject).removeCallbacks(this.x);
+    }
+    ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.6(this));
+    localObject = new ARTransferPromotionRenderable.7(this);
+    if (this.d == Thread.currentThread().getId())
+    {
+      ((Runnable)localObject).run();
+      QLog.e("ARTransferPromotionRenderable", 1, "onDestroy in GLThread.");
+      return;
+    }
+    ARRenderMangerInnerCallback localARRenderMangerInnerCallback = this.f;
+    if (localARRenderMangerInnerCallback != null) {
+      localARRenderMangerInnerCallback.a((Runnable)localObject);
+    }
+    QLog.e("ARTransferPromotionRenderable", 1, "onDestroy not in GLThread.");
+  }
+  
+  public int m()
+  {
+    return this.g.b;
+  }
+  
+  public String n()
+  {
+    return this.g.a;
   }
   
   public void nativeCallBack(int paramInt1, int paramInt2, int paramInt3)
@@ -578,31 +557,36 @@ public class ARTransferPromotionRenderable
     b(new ARTransferPromotionRenderable.16(this, paramInt1));
   }
   
+  public boolean o()
+  {
+    return (this.l == 6) && (this.i != 0);
+  }
+  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("ARTransferPromotionRenderable", 2, String.format("onTouch mNativeGameStatus=%d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }));
+    QLog.d("ARTransferPromotionRenderable", 2, String.format("onTouch mNativeGameStatus=%d", new Object[] { Integer.valueOf(this.b) }));
     paramView.getWidth();
     new PointF(paramMotionEvent.getX(), paramMotionEvent.getY());
     if (paramMotionEvent.getAction() != 0) {
       return false;
     }
-    if (this.jdField_b_of_type_Int == 3)
+    if (this.b == 3)
     {
-      g();
+      r();
       paramView.setVisibility(8);
       QLog.d("ARTransferPromotionRenderable", 2, "start cameraAnimation here");
       return false;
     }
-    if (this.jdField_b_of_type_Int == 4)
+    if (this.b == 4)
     {
-      if (this.jdField_g_of_type_Boolean)
+      if (this.J)
       {
         QLog.d("ARTransferPromotionRenderable", 2, "onTouch event not deal ready");
         return false;
       }
-      this.jdField_g_of_type_Boolean = true;
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
-      if ((paramMotionEvent != null) && (this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge != null)) {
+      this.J = true;
+      paramMotionEvent = this.f;
+      if ((paramMotionEvent != null) && (this.h != null)) {
         paramMotionEvent.a(new ARTransferPromotionRenderable.17(this, paramView));
       }
       QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER click operation");
@@ -611,10 +595,26 @@ public class ARTransferPromotionRenderable
     QLog.d("ARTransferPromotionRenderable", 1, "onTouch doNothing");
     return false;
   }
+  
+  public boolean p()
+  {
+    return false;
+  }
+  
+  public int q()
+  {
+    return this.g.d;
+  }
+  
+  public void r()
+  {
+    QLog.d("ARTransferPromotionRenderable", 2, "startCameraAniamtion ");
+    b(new ARTransferPromotionRenderable.18(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable
  * JD-Core Version:    0.7.0.1
  */

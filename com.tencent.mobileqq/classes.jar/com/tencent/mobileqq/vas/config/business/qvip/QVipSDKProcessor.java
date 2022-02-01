@@ -9,12 +9,12 @@ public class QVipSDKProcessor
   extends BaseQVipConfigProcessor<QVipSDKConfig>
 {
   @NonNull
-  public static QVipSDKConfig c()
+  public static QVipSDKConfig e()
   {
-    QVipSDKConfig localQVipSDKConfig2 = (QVipSDKConfig)QConfigManager.a().a(562);
+    QVipSDKConfig localQVipSDKConfig2 = (QVipSDKConfig)QConfigManager.b().b(562);
     QVipSDKConfig localQVipSDKConfig1 = localQVipSDKConfig2;
     if (localQVipSDKConfig2 == null) {
-      localQVipSDKConfig1 = QVipSDKConfig.a();
+      localQVipSDKConfig1 = QVipSDKConfig.n();
     }
     return localQVipSDKConfig1;
   }
@@ -22,22 +22,22 @@ public class QVipSDKProcessor
   @NonNull
   public QVipSDKConfig a()
   {
-    return QVipSDKConfig.a();
+    return QVipSDKConfig.n();
   }
   
   @NonNull
   public QVipSDKConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfQConfItem[0].b);
     }
-    return QVipSDKConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipSDKConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
   public QVipSDKConfig b()
   {
-    return QVipSDKConfig.a();
+    return QVipSDKConfig.n();
   }
   
   public Class<QVipSDKConfig> clazz()
@@ -52,7 +52,7 @@ public class QVipSDKProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor
  * JD-Core Version:    0.7.0.1
  */

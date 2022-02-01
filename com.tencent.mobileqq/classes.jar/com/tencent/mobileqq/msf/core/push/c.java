@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.quicksend.b;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.service.e;
@@ -71,7 +71,7 @@ public class c
           bool = false;
         }
         if (this.m.getStatReporter() != null) {
-          this.m.getStatReporter().a("dim.Msf.PCActiveEcho", bool, l1, 0L, null, false, false);
+          this.m.getStatReporter().a("dim_Msf_PCActiveEcho", bool, l1, 0L, null, false, false);
         }
       }
       else
@@ -155,11 +155,11 @@ public class c
                 if (this.m.getStatReporter() == null) {
                   return;
                 }
-                this.m.getStatReporter().a("dim.Msf.PCActiveSuccResult", true, 0L, 0L, paramToServiceMsg, false, false);
+                this.m.getStatReporter().a("dim_Msf_PCActiveSuccResult", true, 0L, 0L, paramToServiceMsg, false, false);
                 return;
               }
               if (this.m.getStatReporter() != null) {
-                this.m.getStatReporter().a("dim.Msf.PCActiveSuccResult", false, 0L, 0L, paramToServiceMsg, false, false);
+                this.m.getStatReporter().a("dim_Msf_PCActiveSuccResult", false, 0L, 0L, paramToServiceMsg, false, false);
               }
               QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need active, ToServiceMsg's RequestEcho Flag is false");
               return;
@@ -232,7 +232,7 @@ public class c
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("account", paramString);
-        this.m.getStatReporter().a("dim.Msf.PCActiveDidStartEvent", true, 0L, 0L, localHashMap, false, false);
+        this.m.getStatReporter().a("dim_Msf_PCActiveDidStartEvent", true, 0L, 0L, localHashMap, false, false);
         return;
       }
       QLog.d("msfCore", 1, "stop try report PCActiveDidStartEvent by reporter null");
@@ -298,7 +298,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.c
  * JD-Core Version:    0.7.0.1
  */

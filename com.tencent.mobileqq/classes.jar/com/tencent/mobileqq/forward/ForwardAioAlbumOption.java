@@ -21,7 +21,7 @@ public class ForwardAioAlbumOption
   public ForwardAioAlbumOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.b = true;
+    this.E = true;
   }
   
   public List<RecentUser> a(List<RecentUser> paramList)
@@ -31,7 +31,7 @@ public class ForwardAioAlbumOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!Utils.b(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!c(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.i))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.q, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.E))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -40,7 +40,7 @@ public class ForwardAioAlbumOption
   
   protected void a(Intent paramIntent)
   {
-    ArrayList localArrayList4 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
+    ArrayList localArrayList4 = this.t.getParcelableArrayList("fileinfo_array");
     localArrayList3 = null;
     ArrayList localArrayList1 = localArrayList3;
     if (localArrayList4 != null) {}
@@ -55,8 +55,8 @@ public class ForwardAioAlbumOption
         ArrayList localArrayList2 = localArrayList3;
       }
     }
-    localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
-    localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
+    localArrayList3 = (ArrayList)this.t.get("android.intent.extra.STREAM");
+    localArrayList3 = (ArrayList)this.t.get("PhotoConst.PHOTO_PATHS");
     paramIntent.putExtra("dataline_forward_type", 101);
     paramIntent.putExtra("sendMultiple", true);
     if (localArrayList1 == null) {
@@ -69,37 +69,37 @@ public class ForwardAioAlbumOption
     if (paramBoolean)
     {
       URLDrawable localURLDrawable = (URLDrawable)paramDrawable;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        URLDrawableHelper.decodeLocalImage(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      if (this.u != null) {
+        URLDrawableHelper.decodeLocalImage(localURLDrawable, this.q.getCurrentAccountUin(), false);
       } else {
-        URLDrawableHelper.decodeLocalImage(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+        URLDrawableHelper.decodeLocalImage(localURLDrawable, this.q.getCurrentAccountUin(), true);
       }
     }
     if (paramDrawable == null) {
       return;
     }
-    paramDrawable.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
+    paramDrawable.setBounds(0, 0, D, D);
   }
   
-  public void b()
+  public void c()
   {
-    super.b();
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_dataline", true))
+    super.c();
+    if (this.r.getBooleanExtra("k_dataline", true))
     {
-      this.jdField_a_of_type_JavaUtilSet.add(f);
-      this.jdField_a_of_type_JavaUtilSet.add(k);
+      this.C.add(g);
+      this.C.add(l);
     }
   }
   
-  protected void c()
+  protected void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(null);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageCount(this.jdField_a_of_type_JavaLangString);
+    this.A.setMessage(null);
+    this.A.setMessageCount(this.u);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardAioAlbumOption
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
 package com.tencent.mobileqq.settings.message;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.multiaio.MultiAIOHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 class AssistantSettingFragment$16
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
   AssistantSettingFragment$16(AssistantSettingFragment paramAssistantSettingFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    MultiAIOHelper.a(paramBoolean);
-    ReportClickEventHelper.a(AssistantSettingFragment.a(this.a), "0X800B887", paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    AssistantSettingFragment.k(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.16
  * JD-Core Version:    0.7.0.1
  */

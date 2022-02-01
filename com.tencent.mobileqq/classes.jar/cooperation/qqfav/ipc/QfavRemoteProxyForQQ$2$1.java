@@ -9,9 +9,9 @@ class QfavRemoteProxyForQQ$2$1
   
   public void run()
   {
-    while (!this.a.a.a.isEmpty())
+    while (!this.a.a.e.isEmpty())
     {
-      QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper localQfavRemoteProxyCallWrapper = (QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper)this.a.a.a.poll();
+      QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper localQfavRemoteProxyCallWrapper = (QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper)this.a.a.e.poll();
       if (localQfavRemoteProxyCallWrapper != null) {
         QfavRemoteProxyForQQ.a(this.a.a, localQfavRemoteProxyCallWrapper);
       }
@@ -20,7 +20,7 @@ class QfavRemoteProxyForQQ$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ final class ToService$1
   public ToService a(Parcel paramParcel)
   {
     ToService localToService = new ToService();
-    localToService.jdField_a_of_type_Int = paramParcel.readInt();
+    localToService.a = paramParcel.readInt();
     localToService.b = paramParcel.readInt();
     localToService.c = paramParcel.readInt();
     localToService.d = paramParcel.readInt();
-    localToService.jdField_a_of_type_Long = paramParcel.readLong();
-    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    localToService.e = paramParcel.readLong();
+    localToService.f = paramParcel.readString();
+    localToService.g = paramParcel.readBundle();
     return localToService;
   }
   

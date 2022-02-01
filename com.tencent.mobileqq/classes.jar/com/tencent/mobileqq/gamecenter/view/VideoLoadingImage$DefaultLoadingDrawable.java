@@ -14,41 +14,41 @@ import androidx.annotation.Nullable;
 class VideoLoadingImage$DefaultLoadingDrawable
   extends Drawable
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_b_of_type_Int = 0;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private Rect c = new Rect();
-  private Rect d = new Rect();
+  private Bitmap a;
+  private Bitmap b;
+  private int c = 0;
+  private int d = 0;
+  private float e = 0.0F;
+  private Rect f = new Rect();
+  private Rect g = new Rect();
+  private Rect h = new Rect();
+  private Rect i = new Rect();
   
   VideoLoadingImage$DefaultLoadingDrawable(@NonNull Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, 2130840220);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.a = BitmapFactory.decodeResource(paramResources, 2130840532);
+    Bitmap localBitmap = this.a;
     if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      this.f.set(0, 0, localBitmap.getWidth(), this.a.getHeight());
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, 2130840221);
-    paramResources = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    this.b = BitmapFactory.decodeResource(paramResources, 2130840533);
+    paramResources = this.b;
     if (paramResources != null) {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, paramResources.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+      this.g.set(0, 0, paramResources.getWidth(), this.b.getHeight());
     }
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != null))
+    if ((this.a != null) && (this.b != null))
     {
-      this.jdField_a_of_type_Float += 2.5F;
+      this.e += 2.5F;
       paramCanvas.save();
-      paramCanvas.rotate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Int >> 1, this.jdField_a_of_type_Int >> 1);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.c, null);
+      paramCanvas.rotate(this.e, this.d >> 1, this.c >> 1);
+      paramCanvas.drawBitmap(this.a, this.f, this.h, null);
       paramCanvas.restore();
-      paramCanvas.rotate(-this.jdField_a_of_type_Float, this.jdField_b_of_type_Int >> 1, this.jdField_a_of_type_Int >> 1);
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsRect, this.d, null);
+      paramCanvas.rotate(-this.e, this.d >> 1, this.c >> 1);
+      paramCanvas.drawBitmap(this.b, this.g, this.i, null);
       paramCanvas = getCallback();
       if (paramCanvas != null) {
         paramCanvas.invalidateDrawable(this);
@@ -63,13 +63,13 @@ class VideoLoadingImage$DefaultLoadingDrawable
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_b_of_type_Int = paramRect.width();
-    this.jdField_a_of_type_Int = paramRect.height();
-    this.c.set(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-    paramRect = this.d;
-    int i = this.jdField_b_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    paramRect.set(i >> 2, j >> 2, i * 3 / 4, j * 3 / 4);
+    this.d = paramRect.width();
+    this.c = paramRect.height();
+    this.h.set(0, 0, this.d, this.c);
+    paramRect = this.i;
+    int j = this.d;
+    int k = this.c;
+    paramRect.set(j >> 2, k >> 2, j * 3 / 4, k * 3 / 4);
   }
   
   public void setAlpha(int paramInt) {}
@@ -78,7 +78,7 @@ class VideoLoadingImage$DefaultLoadingDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.VideoLoadingImage.DefaultLoadingDrawable
  * JD-Core Version:    0.7.0.1
  */

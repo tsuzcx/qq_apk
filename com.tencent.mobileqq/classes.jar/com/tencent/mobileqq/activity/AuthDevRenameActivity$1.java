@@ -6,7 +6,7 @@ import android.text.Spanned;
 class AuthDevRenameActivity$1
   implements InputFilter
 {
-  private int jdField_a_of_type_Int = 32;
+  private int b = 32;
   
   AuthDevRenameActivity$1(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
@@ -52,7 +52,7 @@ class AuthDevRenameActivity$1
       label164:
       k += 1;
     }
-    int i = this.jdField_a_of_type_Int - m;
+    int i = this.b - m;
     if (i <= 0) {
       return "";
     }
@@ -81,7 +81,7 @@ class AuthDevRenameActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.1
  * JD-Core Version:    0.7.0.1
  */

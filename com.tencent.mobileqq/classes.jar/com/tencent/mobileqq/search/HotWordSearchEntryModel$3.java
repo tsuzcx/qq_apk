@@ -21,15 +21,15 @@ class HotWordSearchEntryModel$3
     String str = localSharedPreferences.getString("HotWordSearchEntryModel.psk_hot_search_try_id", "");
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     UniteSearchHandler localUniteSearchHandler = new UniteSearchHandler(localQQAppInterface);
-    if (!TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID))
+    if (!TextUtils.equals(str, this.a.hotSearchGifID))
     {
-      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_try_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
+      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_try_id", this.a.hotSearchGifID).apply();
       localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", 1).apply();
-      localUniteSearchHandler.a(localQQAppInterface, "gif_sta_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+      localUniteSearchHandler.a(localQQAppInterface, "gif_sta_first", null, null, this.a.hotSearchGifID);
       return;
     }
     localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", i + 1).apply();
-    localUniteSearchHandler.a(localQQAppInterface, "gif_sta_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+    localUniteSearchHandler.a(localQQAppInterface, "gif_sta_second", null, null, this.a.hotSearchGifID);
   }
   
   public void b()
@@ -39,16 +39,16 @@ class HotWordSearchEntryModel$3
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     UniteSearchHandler localUniteSearchHandler = new UniteSearchHandler(localQQAppInterface);
     if (i == 1) {
-      localUniteSearchHandler.a(localQQAppInterface, "gif_suc_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+      localUniteSearchHandler.a(localQQAppInterface, "gif_suc_first", null, null, this.a.hotSearchGifID);
     } else {
-      localUniteSearchHandler.a(localQQAppInterface, "gif_suc_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+      localUniteSearchHandler.a(localQQAppInterface, "gif_suc_second", null, null, this.a.hotSearchGifID);
     }
-    localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
+    localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.a.hotSearchGifID).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.3
  * JD-Core Version:    0.7.0.1
  */

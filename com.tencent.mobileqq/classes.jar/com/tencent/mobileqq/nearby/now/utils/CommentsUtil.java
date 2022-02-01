@@ -122,19 +122,19 @@ public class CommentsUtil
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramLong / 60L / 1000L + 1L);
-      localStringBuilder.append(HardCodeUtil.a(2131702394));
+      localStringBuilder.append(HardCodeUtil.a(2131900398));
       return localStringBuilder.toString();
     }
     if (paramLong < 86400000L)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramLong / 60L / 60L / 1000L);
-      localStringBuilder.append(HardCodeUtil.a(2131702401));
+      localStringBuilder.append(HardCodeUtil.a(2131900405));
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong / 24L / 60L / 60L / 1000L);
-    localStringBuilder.append(HardCodeUtil.a(2131702393));
+    localStringBuilder.append(HardCodeUtil.a(2131900397));
     return localStringBuilder.toString();
   }
   
@@ -221,7 +221,7 @@ public class CommentsUtil
       return a(localCalendar1.get(11), localCalendar1.get(12));
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) + 1 == localCalendar2.get(6))) {
-      return HardCodeUtil.a(2131702391);
+      return HardCodeUtil.a(2131900395);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {
       switch (localCalendar1.get(7))
@@ -229,19 +229,19 @@ public class CommentsUtil
       default: 
         break;
       case 7: 
-        return HardCodeUtil.a(2131702397);
+        return HardCodeUtil.a(2131900401);
       case 6: 
-        return HardCodeUtil.a(2131702392);
+        return HardCodeUtil.a(2131900396);
       case 5: 
-        return HardCodeUtil.a(2131702398);
+        return HardCodeUtil.a(2131900402);
       case 4: 
-        return HardCodeUtil.a(2131702400);
+        return HardCodeUtil.a(2131900404);
       case 3: 
-        return HardCodeUtil.a(2131702395);
+        return HardCodeUtil.a(2131900399);
       case 2: 
-        return HardCodeUtil.a(2131702396);
+        return HardCodeUtil.a(2131900400);
       case 1: 
-        return HardCodeUtil.a(2131702399);
+        return HardCodeUtil.a(2131900403);
       }
     }
     return new SimpleDateFormat("yy/MM/dd").format(localDate);
@@ -276,7 +276,7 @@ public class CommentsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.utils.CommentsUtil
  * JD-Core Version:    0.7.0.1
  */

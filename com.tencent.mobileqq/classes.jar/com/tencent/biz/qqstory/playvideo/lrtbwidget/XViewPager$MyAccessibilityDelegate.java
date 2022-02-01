@@ -15,7 +15,7 @@ class XViewPager$MyAccessibilityDelegate
   
   private boolean a()
   {
-    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
+    return (XViewPager.b(this.a) != null) && (XViewPager.b(this.a).getCount() > 1);
   }
   
   public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
@@ -24,11 +24,11 @@ class XViewPager$MyAccessibilityDelegate
     paramAccessibilityEvent.setClassName(XViewPager.class.getName());
     paramView = AccessibilityRecordCompat.obtain();
     paramView.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.b(this.a) != null))
     {
-      paramView.setItemCount(XViewPager.a(this.a).getCount());
-      paramView.setFromIndex(XViewPager.a(this.a));
-      paramView.setToIndex(XViewPager.a(this.a));
+      paramView.setItemCount(XViewPager.b(this.a).getCount());
+      paramView.setFromIndex(XViewPager.c(this.a));
+      paramView.setToIndex(XViewPager.c(this.a));
     }
   }
   
@@ -58,7 +58,7 @@ class XViewPager$MyAccessibilityDelegate
       if (this.a.canScrollHorizontally(-1))
       {
         paramView = this.a;
-        paramView.setCurrentItem(XViewPager.a(paramView) - 1);
+        paramView.setCurrentItem(XViewPager.c(paramView) - 1);
         return true;
       }
       return false;
@@ -66,7 +66,7 @@ class XViewPager$MyAccessibilityDelegate
     if (this.a.canScrollHorizontally(1))
     {
       paramView = this.a;
-      paramView.setCurrentItem(XViewPager.a(paramView) + 1);
+      paramView.setCurrentItem(XViewPager.c(paramView) + 1);
       return true;
     }
     return false;
@@ -74,7 +74,7 @@ class XViewPager$MyAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.MyAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

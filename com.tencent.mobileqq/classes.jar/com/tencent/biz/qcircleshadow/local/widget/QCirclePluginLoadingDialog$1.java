@@ -14,15 +14,15 @@ class QCirclePluginLoadingDialog$1
     if ((paramBoolean) && (paramQQAnimationDrawable != null))
     {
       QCirclePluginLoadingDialog.a(this.a, paramQQAnimationDrawable);
-      QCirclePluginLoadingDialog.a(this.a).post(new QCirclePluginLoadingDialog.1.1(this));
+      QCirclePluginLoadingDialog.b(this.a).post(new QCirclePluginLoadingDialog.1.1(this));
       return;
     }
-    QCirclePluginLoadingDialog.a(this.a).post(new QCirclePluginLoadingDialog.1.2(this));
+    QCirclePluginLoadingDialog.b(this.a).post(new QCirclePluginLoadingDialog.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.widget.QCirclePluginLoadingDialog.1
  * JD-Core Version:    0.7.0.1
  */

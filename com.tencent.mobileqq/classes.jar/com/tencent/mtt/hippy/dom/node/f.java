@@ -18,22 +18,20 @@ public class f
   private static final int c = ;
   private static final int d = ViewConfiguration.getTapTimeout();
   boolean a = false;
-  int b;
-  private ArrayList<String> e = null;
+  final int b;
+  private ArrayList<String> e;
   private int f = 0;
   private int g = 0;
-  private int h = 0;
-  private int i = 0;
-  private int j;
-  private g k;
-  private Handler l;
-  private HippyEngineContext m;
-  private boolean n;
+  private int h;
+  private g i;
+  private Handler j;
+  private HippyEngineContext k;
+  private final boolean l;
   
   f(int paramInt, boolean paramBoolean)
   {
     this.b = paramInt;
-    this.n = paramBoolean;
+    this.l = paramBoolean;
     this.e = new ArrayList();
   }
   
@@ -44,57 +42,57 @@ public class f
   
   public boolean a()
   {
-    return this.n;
+    return this.l;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.k == null) {
-      this.k = new g(this);
+    if (this.i == null) {
+      this.i = new g(this);
     }
-    this.j = paramView.getId();
-    return this.k.a(paramMotionEvent);
+    this.h = paramView.getId();
+    return this.i.a(paramMotionEvent);
   }
   
   public boolean b(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.m == null) && ((paramView.getContext() instanceof HippyInstanceContext))) {
-      this.m = ((HippyInstanceContext)paramView.getContext()).getEngineContext();
+    if ((this.k == null) && ((paramView.getContext() instanceof HippyInstanceContext))) {
+      this.k = ((HippyInstanceContext)paramView.getContext()).getEngineContext();
     }
-    this.j = paramView.getId();
-    int i1 = paramMotionEvent.getAction();
-    int i2 = (int)paramMotionEvent.getX();
-    int i3 = (int)paramMotionEvent.getY();
+    this.h = paramView.getId();
+    int m = paramMotionEvent.getAction();
+    int n = (int)paramMotionEvent.getX();
+    int i1 = (int)paramMotionEvent.getY();
     boolean bool2 = false;
     boolean bool3 = true;
     boolean bool1;
-    if (i1 != 0)
+    if (m != 0)
     {
-      if (i1 != 1)
+      if (m != 1)
       {
-        if (i1 != 2)
+        if (m != 2)
         {
-          if ((i1 == 3) || (i1 == 4))
+          if ((m == 3) || (m == 4))
           {
-            paramView = this.l;
+            paramView = this.j;
             if (paramView != null) {
               paramView.removeMessages(3);
             }
             bool1 = bool3;
             if (this.e.contains("onClick")) {
-              break label422;
+              break label410;
             }
             if (this.e.contains("onLongClick"))
             {
               bool1 = bool3;
-              break label422;
+              break label410;
             }
           }
         }
-        else if (((this.e.contains("onClick")) || (this.e.contains("onLongClick"))) && (Math.abs(i2 - this.h) < ViewConfiguration.getTouchSlop()) && (Math.abs(i3 - this.i) < ViewConfiguration.getTouchSlop()))
+        else if (((this.e.contains("onClick")) || (this.e.contains("onLongClick"))) && (Math.abs(n - this.f) < ViewConfiguration.getTouchSlop()) && (Math.abs(i1 - this.g) < ViewConfiguration.getTouchSlop()))
         {
           bool1 = bool3;
-          break label422;
+          break label410;
         }
         bool1 = false;
       }
@@ -108,21 +106,21 @@ public class f
         else
         {
           bool1 = bool2;
-          if (Math.abs(i2 - this.h) < ViewConfiguration.getTouchSlop())
+          if (Math.abs(n - this.f) < ViewConfiguration.getTouchSlop())
           {
             bool1 = bool2;
-            if (Math.abs(i3 - this.i) < ViewConfiguration.getTouchSlop())
+            if (Math.abs(i1 - this.g) < ViewConfiguration.getTouchSlop())
             {
               if ((this.e.contains("onLongClick")) && (this.a)) {
-                NativeGestureDispatcher.handleLongClick(this.m, this.b);
+                NativeGestureDispatcher.handleLongClick(this.k, this.b);
               } else {
-                NativeGestureDispatcher.handleClick(paramView, this.m, this.b, true);
+                NativeGestureDispatcher.handleClick(paramView, this.k, this.b, true);
               }
               bool1 = true;
             }
           }
         }
-        paramView = this.l;
+        paramView = this.j;
         if (paramView != null) {
           paramView.removeMessages(3);
         }
@@ -130,22 +128,20 @@ public class f
     }
     else
     {
-      this.f = i2;
-      this.g = i3;
       this.a = false;
       bool1 = bool3;
       if (this.e.contains("onLongClick"))
       {
-        if (this.l == null) {
-          this.l = new f.a(this);
+        if (this.j == null) {
+          this.j = new f.a(this);
         }
-        this.l.sendEmptyMessageAtTime(3, paramMotionEvent.getDownTime() + d + c);
+        this.j.sendEmptyMessageAtTime(3, paramMotionEvent.getDownTime() + d + c);
         bool1 = bool3;
       }
     }
-    label422:
-    this.h = i2;
-    this.i = i3;
+    label410:
+    this.f = n;
+    this.g = i1;
     return bool1;
   }
   
@@ -153,31 +149,31 @@ public class f
   {
     if (TextUtils.equals(paramString, "onPressIn"))
     {
-      NativeGestureDispatcher.handlePressIn(this.m, this.b);
+      NativeGestureDispatcher.handlePressIn(this.k, this.b);
       return;
     }
     if (TextUtils.equals(paramString, "onPressOut"))
     {
-      NativeGestureDispatcher.handlePressOut(this.m, this.b);
+      NativeGestureDispatcher.handlePressOut(this.k, this.b);
       return;
     }
     if (TextUtils.equals(paramString, "onTouchDown"))
     {
-      NativeGestureDispatcher.handleTouchDown(this.m, this.b, paramFloat1, paramFloat2, this.j);
+      NativeGestureDispatcher.handleTouchDown(this.k, this.b, paramFloat1, paramFloat2, this.h);
       return;
     }
     if (TextUtils.equals(paramString, "onTouchMove"))
     {
-      NativeGestureDispatcher.handleTouchMove(this.m, this.b, paramFloat1, paramFloat2, this.j);
+      NativeGestureDispatcher.handleTouchMove(this.k, this.b, paramFloat1, paramFloat2, this.h);
       return;
     }
     if (TextUtils.equals(paramString, "onTouchEnd"))
     {
-      NativeGestureDispatcher.handleTouchEnd(this.m, this.b, paramFloat1, paramFloat2, this.j);
+      NativeGestureDispatcher.handleTouchEnd(this.k, this.b, paramFloat1, paramFloat2, this.h);
       return;
     }
     if (TextUtils.equals(paramString, "onTouchCancel")) {
-      NativeGestureDispatcher.handleTouchCancel(this.m, this.b, paramFloat1, paramFloat2, this.j);
+      NativeGestureDispatcher.handleTouchCancel(this.k, this.b, paramFloat1, paramFloat2, this.h);
     }
   }
   
@@ -192,7 +188,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.f
  * JD-Core Version:    0.7.0.1
  */

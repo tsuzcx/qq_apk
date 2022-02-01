@@ -15,24 +15,24 @@ class QQReminderJumpFragment$1$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQReminderJumpFragment$1.this$0.getQBaseActivity();
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.b.this$0.getQBaseActivity();
+      List localList = this.a;
       QQNotifyUtils.a((Activity)localObject, (CalendarEntity)localList.get(localList.size() - 1));
     }
     else
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQReminderJumpFragment$1.this$0.getQBaseActivity(), 1, HardCodeUtil.a(2131699838), 0).a();
-      QLog.e("QQReminderJumpFragment", 1, new Object[] { "get msgid: ", this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQReminderJumpFragment$1.a, " res is null" });
+      QQToast.makeText(this.b.this$0.getQBaseActivity(), 1, HardCodeUtil.a(2131897887), 0).show();
+      QLog.e("QQReminderJumpFragment", 1, new Object[] { "get msgid: ", this.b.a, " res is null" });
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQReminderJumpFragment$1.this$0.getQBaseActivity().finish();
+    this.b.this$0.getQBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQReminderJumpFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

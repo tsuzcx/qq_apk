@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.R.id;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,12 +23,12 @@ class ViewCompat$UnhandledKeyEventManager
   
   static UnhandledKeyEventManager at(View paramView)
   {
-    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378312);
+    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(R.id.tag_unhandled_key_event_manager);
     UnhandledKeyEventManager localUnhandledKeyEventManager1 = localUnhandledKeyEventManager2;
     if (localUnhandledKeyEventManager2 == null)
     {
       localUnhandledKeyEventManager1 = new UnhandledKeyEventManager();
-      paramView.setTag(2131378312, localUnhandledKeyEventManager1);
+      paramView.setTag(R.id.tag_unhandled_key_event_manager, localUnhandledKeyEventManager1);
     }
     return localUnhandledKeyEventManager1;
   }
@@ -71,7 +72,7 @@ class ViewCompat$UnhandledKeyEventManager
   
   private boolean onUnhandledKeyEvent(@NonNull View paramView, @NonNull KeyEvent paramKeyEvent)
   {
-    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378313);
+    ArrayList localArrayList = (ArrayList)paramView.getTag(R.id.tag_unhandled_key_listeners);
     if (localArrayList != null)
     {
       int i = localArrayList.size() - 1;

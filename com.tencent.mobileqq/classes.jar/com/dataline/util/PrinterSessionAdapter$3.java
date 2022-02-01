@@ -17,12 +17,12 @@ class PrinterSessionAdapter$3
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131365489 == paramView.getId())
+    if (2131431703 == paramView.getId())
     {
       PrinterSessionAdapter.3.1 local1 = new PrinterSessionAdapter.3.1(this);
       PrinterSessionAdapter.3.2 local2 = new PrinterSessionAdapter.3.2(this);
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      DialogUtil.a(localContext, 230, localContext.getString(2131693728), this.jdField_a_of_type_AndroidContentContext.getString(2131693706), 2131690728, 2131693747, local1, local2).show();
+      Context localContext = this.b;
+      DialogUtil.a(localContext, 230, localContext.getString(2131891303), this.b.getString(2131891281), 2131887648, 2131891322, local1, local2).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

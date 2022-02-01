@@ -27,10 +27,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ApolloSoLoaderImpl
   implements IApolloSoLoader
 {
-  public static final String APNG_SO = "apng_encoder";
-  public static final String BRICK_SO = "sava";
-  public static final String[] LIBS_4_CORE = { "tinyskia", "sava" };
-  public static final String LIBS_4_JSC = "jsc";
+  private static final String APNG_SO = "apng_encoder";
+  private static final String BRICK_SO = "sava";
+  private static final String[] LIBS_4_CORE = { "tinyskia", "sava" };
+  private static final String LIBS_4_JSC = "jsc";
   public static final int LIB_TYPE_JSC = 0;
   public static final int LIB_TYPE_SAVA = 1;
   private static final String LOCAL_SO_DIR = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/soTest/";
@@ -107,7 +107,7 @@ public class ApolloSoLoaderImpl
       int i;
       try
       {
-        if (ApolloHardWareTester.a())
+        if (ApolloHardWareTester.b())
         {
           QLog.i("[cmshow]ApolloSoLoader", 1, "[loadAllSo], Aborting! arch=x86");
           if (sIsReportTrace)
@@ -121,7 +121,7 @@ public class ApolloSoLoaderImpl
           if (!((INativeLibLoader)QRoute.api(INativeLibLoader.class)).loadPNGLibrary(BaseApplicationImpl.getContext()))
           {
             if (!sIsReportTrace) {
-              break label467;
+              break label468;
             }
             TraceReportUtil.a(10, 300, 1003, new Object[] { "png-armeabi-v7a load failed" });
             sIsBeginTrace = true;
@@ -147,7 +147,7 @@ public class ApolloSoLoaderImpl
               return false;
             }
             TraceReportUtil.a(10, 299);
-            if (!AVSoUtils.a())
+            if (!AVSoUtils.g())
             {
               QLog.e("[cmshow]ApolloSoLoader", 1, "[loadAllSo] sharpp load error");
               TraceReportUtil.a(10, 299, 1005, new Object[] { "sharpp load fail" });
@@ -165,7 +165,7 @@ public class ApolloSoLoaderImpl
           if (i < j)
           {
             if (loadNativeLibrary(localObject1[i])) {
-              break label469;
+              break label470;
             }
             return false;
           }
@@ -195,16 +195,16 @@ public class ApolloSoLoaderImpl
         return false;
       }
       return false;
-      label467:
+      label468:
       return false;
-      label469:
+      label470:
       i += 1;
     }
   }
   
   private static boolean loadFromLocalIfAsanTest(String paramString)
   {
-    if (!AppSetting.h) {
+    if (!AppSetting.i) {
       return false;
     }
     if (!"sava".equals(paramString)) {
@@ -398,7 +398,7 @@ public class ApolloSoLoaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.ApolloSoLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

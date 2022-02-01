@@ -1,27 +1,25 @@
 package com.tencent.qqconnect.wtlogin;
 
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.login.ui.AddAccountBaseUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class Login$2
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
   Login$2(Login paramLogin) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 6)
-    {
-      this.a.doLogin();
-      return true;
-    }
-    return false;
+    this.a.mBaseUI.t();
+    Login.access$100(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.2
  * JD-Core Version:    0.7.0.1
  */

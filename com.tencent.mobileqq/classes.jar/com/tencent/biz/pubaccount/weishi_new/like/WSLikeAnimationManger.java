@@ -18,33 +18,9 @@ public class WSLikeAnimationManger
   private Map<String, WsSingleClickLikeAnimation> a = new HashMap();
   private Map<String, WSDoubleLikeAnimation> b = new HashMap();
   
-  private WSDoubleLikeAnimation a(String paramString)
-  {
-    WSDoubleLikeAnimation localWSDoubleLikeAnimation2 = (WSDoubleLikeAnimation)this.b.get(paramString);
-    WSDoubleLikeAnimation localWSDoubleLikeAnimation1 = localWSDoubleLikeAnimation2;
-    if (localWSDoubleLikeAnimation2 == null)
-    {
-      localWSDoubleLikeAnimation1 = new WSDoubleLikeAnimation();
-      this.b.put(paramString, localWSDoubleLikeAnimation1);
-    }
-    return localWSDoubleLikeAnimation1;
-  }
-  
   public static WSLikeAnimationManger a()
   {
     return WSLikeAnimationManger.SingletonHolder.a();
-  }
-  
-  private WsSingleClickLikeAnimation a(String paramString)
-  {
-    WsSingleClickLikeAnimation localWsSingleClickLikeAnimation2 = (WsSingleClickLikeAnimation)this.a.get(paramString);
-    WsSingleClickLikeAnimation localWsSingleClickLikeAnimation1 = localWsSingleClickLikeAnimation2;
-    if (localWsSingleClickLikeAnimation2 == null)
-    {
-      localWsSingleClickLikeAnimation1 = new WsSingleClickLikeAnimation();
-      this.a.put(paramString, localWsSingleClickLikeAnimation1);
-    }
-    return localWsSingleClickLikeAnimation1;
   }
   
   private void a(stSimpleMetaFeed paramstSimpleMetaFeed, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, TextView paramTextView, View paramView1, View paramView2)
@@ -59,17 +35,9 @@ public class WSLikeAnimationManger
       return;
     }
     if ((paramView1 != null) && (paramView2 != null)) {
-      a(paramString).a(paramstSimpleMetaFeed, paramView1, paramView2, paramTextView, paramInt1, paramBoolean);
+      b(paramString).a(paramstSimpleMetaFeed, paramView1, paramView2, paramTextView, paramInt1, paramBoolean);
     }
-    a(paramString, paramBoolean, paramInt2);
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2)
-  {
-    paramString = new LikeRspEvent(paramString, paramInt1);
-    paramString.setRpsStatus(4301);
-    paramString.setRspIsDing(paramInt2);
-    WSSimpleEventBus.a().a(paramString);
+    a(paramstSimpleMetaFeed.poster_id, paramString, paramBoolean, paramInt2);
   }
   
   private void a(String paramString, LikeRspEvent paramLikeRspEvent, int paramInt)
@@ -81,7 +49,7 @@ public class WSLikeAnimationManger
       {
         paramString = (WsSingleClickLikeAnimation)this.a.get(paramString);
         if (paramString != null) {
-          a(paramString.a(), paramString.a(), paramString.a(), paramString.b());
+          a(paramString.a(), paramString.c(), paramString.b(), paramString.d());
         }
       }
     }
@@ -89,21 +57,41 @@ public class WSLikeAnimationManger
     paramLikeRspEvent.setRspIsDing(paramInt);
   }
   
-  private void a(String paramString, boolean paramBoolean, int paramInt)
+  private void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    paramString1 = new LikeRspEvent(paramString1, paramString2, paramInt1);
+    paramString1.setRpsStatus(4301);
+    paramString1.setRspIsDing(paramInt2);
+    WSSimpleEventBus.a().a(paramString1);
+  }
+  
+  private void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void a()
+  private WsSingleClickLikeAnimation b(String paramString)
   {
-    Map localMap = this.a;
-    if (localMap != null) {
-      localMap.clear();
+    WsSingleClickLikeAnimation localWsSingleClickLikeAnimation2 = (WsSingleClickLikeAnimation)this.a.get(paramString);
+    WsSingleClickLikeAnimation localWsSingleClickLikeAnimation1 = localWsSingleClickLikeAnimation2;
+    if (localWsSingleClickLikeAnimation2 == null)
+    {
+      localWsSingleClickLikeAnimation1 = new WsSingleClickLikeAnimation();
+      this.a.put(paramString, localWsSingleClickLikeAnimation1);
     }
-    localMap = this.b;
-    if (localMap != null) {
-      localMap.clear();
+    return localWsSingleClickLikeAnimation1;
+  }
+  
+  private WSDoubleLikeAnimation c(String paramString)
+  {
+    WSDoubleLikeAnimation localWSDoubleLikeAnimation2 = (WSDoubleLikeAnimation)this.b.get(paramString);
+    WSDoubleLikeAnimation localWSDoubleLikeAnimation1 = localWSDoubleLikeAnimation2;
+    if (localWSDoubleLikeAnimation2 == null)
+    {
+      localWSDoubleLikeAnimation1 = new WSDoubleLikeAnimation();
+      this.b.put(paramString, localWSDoubleLikeAnimation1);
     }
+    return localWSDoubleLikeAnimation1;
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2, int paramInt3, TextView paramTextView, View paramView1, View paramView2, ViewGroup paramViewGroup)
@@ -131,7 +119,7 @@ public class WSLikeAnimationManger
       paramstSimpleMetaFeed.is_ding = 1;
     }
     if (paramViewGroup != null) {
-      a(str).a(paramViewGroup, paramInt2, paramInt3);
+      c(str).a(paramViewGroup, paramInt2, paramInt3);
     }
     if (i == 0) {
       a(paramstSimpleMetaFeed, str, true, paramstSimpleMetaFeed.ding_count, paramInt1, paramTextView, paramView1, paramView2);
@@ -161,7 +149,7 @@ public class WSLikeAnimationManger
     a(paramstSimpleMetaFeed, paramstSimpleMetaFeed.id, bool, paramstSimpleMetaFeed.ding_count, paramInt, paramTextView, paramView1, paramView2);
     if ((bool) && (paramViewGroup != null))
     {
-      a(paramstSimpleMetaFeed.id).a(paramViewGroup, paramViewGroup.getMeasuredWidth() / 2, paramViewGroup.getMeasuredHeight() / 2);
+      c(paramstSimpleMetaFeed.id).a(paramViewGroup, paramViewGroup.getMeasuredWidth() / 2, paramViewGroup.getMeasuredHeight() / 2);
       return;
     }
   }
@@ -216,7 +204,7 @@ public class WSLikeAnimationManger
       localObject = (WsSingleClickLikeAnimation)((Map)localObject).get(paramString);
       if (localObject != null)
       {
-        ((WsSingleClickLikeAnimation)localObject).a();
+        ((WsSingleClickLikeAnimation)localObject).e();
         this.a.remove(localObject);
       }
     }
@@ -231,10 +219,22 @@ public class WSLikeAnimationManger
       }
     }
   }
+  
+  public void b()
+  {
+    Map localMap = this.a;
+    if (localMap != null) {
+      localMap.clear();
+    }
+    localMap = this.b;
+    if (localMap != null) {
+      localMap.clear();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSLikeAnimationManger
  * JD-Core Version:    0.7.0.1
  */

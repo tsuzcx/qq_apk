@@ -2,6 +2,7 @@ package a.a.a.a;
 
 import java.io.InputStream;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 
 public class d
   implements c, Cloneable
@@ -42,13 +43,13 @@ public class d
     paramArrayOfByte = this.j;
     b.a(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
     paramArrayOfByte = this.j;
-    this.a = new String(paramArrayOfByte, 0, paramArrayOfByte.length, "UTF-8");
+    this.a = new String(paramArrayOfByte, 0, paramArrayOfByte.length, StandardCharsets.UTF_8);
     int k = this.i;
     if (k > 0)
     {
       paramArrayOfByte = new byte[k];
       b.a(paramInputStream, paramArrayOfByte, 0, k);
-      new String(paramArrayOfByte, 0, paramArrayOfByte.length, "UTF-8");
+      new String(paramArrayOfByte, 0, paramArrayOfByte.length, StandardCharsets.UTF_8);
     }
     k = this.h;
     if (k > 0)

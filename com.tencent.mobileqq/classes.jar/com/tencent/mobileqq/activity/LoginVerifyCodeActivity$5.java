@@ -13,14 +13,14 @@ class LoginVerifyCodeActivity$5
   public void run()
   {
     QLog.d("LoginVerifyCodeActivity", 1, "identifying code auto-fill start");
-    String str = Utils.b(LoginVerifyCodeActivity.b(this.this$0), LoginVerifyCodeActivity.c(this.this$0));
-    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.this$0) != null))
+    String str = Utils.b(LoginVerifyCodeActivity.o(this.this$0), LoginVerifyCodeActivity.p(this.this$0));
+    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.g(this.this$0) != null))
     {
       QLog.d("LoginVerifyCodeActivity", 1, new Object[] { "get identifying code: ", str });
-      if ((!str.equals(LoginVerifyCodeActivity.d(this.this$0))) && (TextUtils.isEmpty(LoginVerifyCodeActivity.a(this.this$0).a())))
+      if ((!str.equals(LoginVerifyCodeActivity.q(this.this$0))) && (TextUtils.isEmpty(LoginVerifyCodeActivity.g(this.this$0).getCode())))
       {
         LoginVerifyCodeActivity.a(this.this$0, str);
-        LoginVerifyCodeActivity.a(this.this$0).setCode(str);
+        LoginVerifyCodeActivity.g(this.this$0).setCode(str);
         return;
       }
       QLog.d("LoginVerifyCodeActivity", 1, "identifying code same with last one, or user already has inputs, auto-fill skipped.");
@@ -31,7 +31,7 @@ class LoginVerifyCodeActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.5
  * JD-Core Version:    0.7.0.1
  */

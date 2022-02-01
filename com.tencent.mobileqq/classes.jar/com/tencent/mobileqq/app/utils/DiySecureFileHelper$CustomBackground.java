@@ -57,7 +57,7 @@ public class DiySecureFileHelper$CustomBackground
             ((StringBuilder)localObject3).append((String)localObject2);
             ((StringBuilder)localObject3).append("/.moveflag");
             FileUtils.createFileIfNotExits(((StringBuilder)localObject3).toString());
-            DiySecureFileHelper.a(((File)localObject1).getAbsolutePath(), (String)localObject2);
+            DiySecureFileHelper.b(((File)localObject1).getAbsolutePath(), (String)localObject2);
           }
         }
         i += 1;
@@ -128,13 +128,13 @@ public class DiySecureFileHelper$CustomBackground
         k += 1;
       }
     }
-    a();
+    c();
     return true;
   }
   
   public boolean needMigration()
   {
-    return a();
+    return b();
   }
   
   public File oldBusinessDir(String paramString)
@@ -154,7 +154,7 @@ public class DiySecureFileHelper$CustomBackground
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.DiySecureFileHelper.CustomBackground
  * JD-Core Version:    0.7.0.1
  */

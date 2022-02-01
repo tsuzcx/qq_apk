@@ -23,13 +23,13 @@ class IliveMsfChannelService$1
         localStringBuilder.append(str);
         QLog.i("IliveMsfChannelService", 2, localStringBuilder.toString());
       }
-      IliveMsfChannelService.a(this.this$0).edit().putString(IliveMsfChannelService.a(this.this$0), str).apply();
+      IliveMsfChannelService.a(this.this$0).edit().putString(IliveMsfChannelService.b(this.this$0), str).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveMsfChannelService.1
  * JD-Core Version:    0.7.0.1
  */

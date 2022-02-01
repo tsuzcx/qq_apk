@@ -9,55 +9,55 @@ import com.tencent.qphone.base.util.QLog;
 class ReadInJoyPullToZoomListView$ScalingRunnalable
   implements Runnable
 {
-  float jdField_a_of_type_Float;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean = true;
-  long b;
+  long a;
+  boolean b = true;
+  float c;
+  long d;
   
   ReadInJoyPullToZoomListView$ScalingRunnalable(ReadInJoyPullToZoomListView paramReadInJoyPullToZoomListView) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
+    this.b = true;
+    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.c())) {
       QLog.e("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# abortAnimation(): ");
     }
   }
   
   public void a(long paramLong)
   {
-    this.b = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = (ReadInJoyPullToZoomListView.a(this.this$0).getBottom() / ReadInJoyPullToZoomListView.a(this.this$0));
-    this.jdField_a_of_type_Boolean = false;
+    this.d = AnimationUtils.currentAnimationTimeMillis();
+    this.a = paramLong;
+    this.c = (ReadInJoyPullToZoomListView.c(this.this$0).getBottom() / ReadInJoyPullToZoomListView.d(this.this$0));
+    this.b = false;
     this.this$0.post(this);
-    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a()))
+    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.c()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("#ScalingRunnalable# startAnimation(): duration =");
       localStringBuilder.append(paramLong);
       localStringBuilder.append(", mScale=");
-      localStringBuilder.append(this.jdField_a_of_type_Float);
+      localStringBuilder.append(this.c);
       QLog.d("Q.readinjoy.video.PullToZoomListView", 2, localStringBuilder.toString());
     }
   }
   
   public void run()
   {
-    ReadInJoyPullToZoomListView.a(this.this$0);
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Float > 1.0D))
+    ReadInJoyPullToZoomListView.b(this.this$0);
+    if ((!this.b) && (this.c > 1.0D))
     {
-      float f1 = ((float)AnimationUtils.currentAnimationTimeMillis() - (float)this.b) / (float)this.jdField_a_of_type_Long;
-      float f2 = this.jdField_a_of_type_Float;
-      f2 -= (f2 - 1.0F) * ReadInJoyPullToZoomListView.a().getInterpolation(f1);
-      Object localObject = ReadInJoyPullToZoomListView.a(this.this$0).getLayoutParams();
+      float f1 = ((float)AnimationUtils.currentAnimationTimeMillis() - (float)this.d) / (float)this.a;
+      float f2 = this.c;
+      f2 -= (f2 - 1.0F) * ReadInJoyPullToZoomListView.d().getInterpolation(f1);
+      Object localObject = ReadInJoyPullToZoomListView.c(this.this$0).getLayoutParams();
       if (f2 > 1.0F)
       {
-        ((ViewGroup.LayoutParams)localObject).height = ReadInJoyPullToZoomListView.a(this.this$0);
-        ((ViewGroup.LayoutParams)localObject).height = ((int)(ReadInJoyPullToZoomListView.a(this.this$0) * f2));
-        ReadInJoyPullToZoomListView.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
+        ((ViewGroup.LayoutParams)localObject).height = ReadInJoyPullToZoomListView.d(this.this$0);
+        ((ViewGroup.LayoutParams)localObject).height = ((int)(ReadInJoyPullToZoomListView.d(this.this$0) * f2));
+        ReadInJoyPullToZoomListView.c(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
         this.this$0.post(this);
-        if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a()))
+        if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.c()))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("#ScalingRunnalable# runing...... f1 = ");
@@ -68,7 +68,7 @@ class ReadInJoyPullToZoomListView$ScalingRunnalable
         }
         return;
       }
-      if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a()))
+      if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.c()))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("#ScalingRunnalable# run() end! f1 = ");
@@ -77,13 +77,13 @@ class ReadInJoyPullToZoomListView$ScalingRunnalable
         ((StringBuilder)localObject).append(f2);
         QLog.w("Q.readinjoy.video.PullToZoomListView", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.view.ReadInJoyPullToZoomListView.ScalingRunnalable
  * JD-Core Version:    0.7.0.1
  */

@@ -18,24 +18,24 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class MaterialViewHolder
   extends RecyclerView.ViewHolder
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ImageView a;
-  public RelativeLayout a;
-  public AEDownLoadingView a;
   public URLImageView a;
   public ImageView b;
   public ImageView c;
+  public ImageView d;
+  public AEDownLoadingView e;
+  public RelativeLayout f;
+  private int g = 0;
+  private Context h;
   
   public MaterialViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2064122705));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122606));
-    this.b = ((ImageView)paramView.findViewById(2064122119));
-    this.c = ((ImageView)paramView.findViewById(2064122722));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2064122512));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2064122846));
+    this.a = ((URLImageView)paramView.findViewById(2063991486));
+    this.b = ((ImageView)paramView.findViewById(2063991419));
+    this.c = ((ImageView)paramView.findViewById(2063991019));
+    this.d = ((ImageView)paramView.findViewById(2063991502));
+    this.e = ((AEDownLoadingView)paramView.findViewById(2063991328));
+    this.f = ((RelativeLayout)paramView.findViewById(2063991619));
   }
   
   private static int a(boolean paramBoolean)
@@ -48,75 +48,75 @@ public class MaterialViewHolder
   
   private void a(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.b.setVisibility(8);
     this.c.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.d.setVisibility(8);
+    this.f.setVisibility(8);
   }
   
   private void b(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.b.setVisibility(8);
     c(paramAEMaterialMetaData);
     e(paramAEMaterialMetaData);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(paramAEMaterialMetaData.a));
+    this.f.setVisibility(a(paramAEMaterialMetaData.u));
   }
   
   private void c(AEMaterialMetaData paramAEMaterialMetaData)
   {
     if (paramAEMaterialMetaData.a())
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
+      this.c.setVisibility(8);
+      this.e.setVisibility(8);
       return;
     }
-    if (paramAEMaterialMetaData.e)
+    if (paramAEMaterialMetaData.A)
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
+      this.c.setVisibility(8);
+      this.e.setVisibility(8);
       return;
     }
-    if (paramAEMaterialMetaData.jdField_f_of_type_Boolean)
+    if (paramAEMaterialMetaData.B)
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgress(paramAEMaterialMetaData.jdField_f_of_type_Int);
+      this.c.setVisibility(8);
+      this.e.setVisibility(0);
+      this.e.setProgress(paramAEMaterialMetaData.C);
       return;
     }
-    this.b.setVisibility(0);
-    this.b.setImageResource(2064056681);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
+    this.c.setVisibility(0);
+    this.c.setImageResource(2063925646);
+    this.e.setVisibility(8);
   }
   
   private void d(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844642);
+    this.b.setVisibility(0);
+    this.b.setImageResource(2063925330);
     c(paramAEMaterialMetaData);
     e(paramAEMaterialMetaData);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(paramAEMaterialMetaData.a));
+    this.f.setVisibility(a(paramAEMaterialMetaData.u));
   }
   
   private void e(AEMaterialMetaData paramAEMaterialMetaData)
   {
     if (paramAEMaterialMetaData.a())
     {
-      this.c.setVisibility(0);
-      this.c.setImageResource(2130846136);
+      this.d.setVisibility(0);
+      this.d.setImageResource(2130847606);
       return;
     }
     if (paramAEMaterialMetaData.b())
     {
-      this.c.setVisibility(0);
-      this.c.setImageResource(paramAEMaterialMetaData.a());
+      this.d.setVisibility(0);
+      this.d.setImageResource(paramAEMaterialMetaData.c());
       return;
     }
-    this.c.setVisibility(8);
+    this.d.setVisibility(8);
   }
   
   private void f(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.g;
     if (i != 0)
     {
       if (i != 1)
@@ -139,48 +139,48 @@ public class MaterialViewHolder
   
   private void g(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    if (TextUtils.isEmpty(paramAEMaterialMetaData.m)) {
+    if (TextUtils.isEmpty(paramAEMaterialMetaData.q)) {
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    int i = AIOUtils.b(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2064056680);
+    int i = AIOUtils.b(60.0F, this.h.getResources());
+    Drawable localDrawable = this.h.getResources().getDrawable(2063925645);
     localURLDrawableOptions.mRequestWidth = i;
     localURLDrawableOptions.mRequestHeight = i;
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
     localURLDrawableOptions.mRetryCount = 3;
-    paramAEMaterialMetaData = URLDrawable.getDrawable(paramAEMaterialMetaData.m, localURLDrawableOptions);
+    paramAEMaterialMetaData = URLDrawable.getDrawable(paramAEMaterialMetaData.q, localURLDrawableOptions);
     if (paramAEMaterialMetaData.getStatus() == 2) {
       paramAEMaterialMetaData.restartDownload();
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramAEMaterialMetaData);
+    this.a.setImageDrawable(paramAEMaterialMetaData);
   }
   
   public void a(int paramInt, AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
     f(paramAEMaterialMetaData);
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.h = paramContext;
     int i = AIOUtils.b(6.0F, paramContext.getResources());
     int j = AIOUtils.b(2.0F, paramContext.getResources());
     int k = AIOUtils.b(16.0F, paramContext.getResources());
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setBgCorner(k / 2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setMinimumHeight(k);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setMinimumWidth(k);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setBgColor(-1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgressColor(-16725252);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.a(false);
+    this.e.setBgCorner(k / 2);
+    this.e.setMinimumHeight(k);
+    this.e.setMinimumWidth(k);
+    this.e.setProgressSizeAndMode(i, j, false);
+    this.e.setBgColor(-1);
+    this.e.setProgressColor(-16725252);
+    this.e.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.MaterialViewHolder
  * JD-Core Version:    0.7.0.1
  */

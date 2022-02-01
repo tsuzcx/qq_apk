@@ -11,12 +11,12 @@ class VideoFeedsCommentManager$4
   
   public void a(UserLevelInfo paramUserLevelInfo)
   {
-    VideoFeedsCommentManager.a(this.a).d();
+    VideoFeedsCommentManager.f(this.a).i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsCommentManager.4
  * JD-Core Version:    0.7.0.1
  */

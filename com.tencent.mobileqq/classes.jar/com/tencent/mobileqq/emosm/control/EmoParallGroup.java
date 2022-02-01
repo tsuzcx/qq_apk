@@ -4,43 +4,43 @@ public class EmoParallGroup
   extends EmoStepGroup
   implements IEmoResultListener
 {
-  protected int d;
-  
-  protected int a()
-  {
-    this.d = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    for (;;)
-    {
-      EmoAsyncStep localEmoAsyncStep = a();
-      if ((localEmoAsyncStep == null) || (this.jdField_a_of_type_Int == 8)) {
-        break;
-      }
-      localEmoAsyncStep.a = this;
-      this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAutomator.a(localEmoAsyncStep);
-    }
-    return 2;
-  }
+  protected int a;
   
   public void a(EmoAsyncStep paramEmoAsyncStep, int paramInt)
   {
     try
     {
-      paramInt = this.d - 1;
-      this.d = paramInt;
+      paramInt = this.a - 1;
+      this.a = paramInt;
       if (paramInt == 0)
       {
         a(7);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep = null;
+        this.k = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAutomator.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep);
+      this.f.a(this.k);
       return;
     }
     finally {}
   }
+  
+  protected int b()
+  {
+    this.a = this.n.length;
+    for (;;)
+    {
+      EmoAsyncStep localEmoAsyncStep = c();
+      if ((localEmoAsyncStep == null) || (this.d == 8)) {
+        break;
+      }
+      localEmoAsyncStep.c = this;
+      this.f.a(localEmoAsyncStep);
+    }
+    return 2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoParallGroup
  * JD-Core Version:    0.7.0.1
  */

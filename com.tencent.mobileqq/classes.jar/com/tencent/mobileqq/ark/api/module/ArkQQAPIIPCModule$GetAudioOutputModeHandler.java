@@ -11,7 +11,7 @@ import eipc.EIPCResult;
 public class ArkQQAPIIPCModule$GetAudioOutputModeHandler
   implements IPCSyncMethodHandler
 {
-  private int a()
+  private int b()
   {
     if (AudioDeviceHelper.a(BaseApplicationImpl.getContext())) {
       return 1;
@@ -19,7 +19,7 @@ public class ArkQQAPIIPCModule$GetAudioOutputModeHandler
     if (AudioDeviceHelper.b(BaseApplicationImpl.getContext())) {
       return 2;
     }
-    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.a();
+    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.d();
     if (localQQAppInterface != null)
     {
       if (AudioDeviceHelper.a(localQQAppInterface)) {
@@ -32,12 +32,12 @@ public class ArkQQAPIIPCModule$GetAudioOutputModeHandler
   
   public EIPCResult a(Bundle paramBundle)
   {
-    if (ArkQQAPIIPCModule.a() == null)
+    if (ArkQQAPIIPCModule.d() == null)
     {
       QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
       return EIPCResult.createResult(-102, new Bundle());
     }
-    int i = a();
+    int i = b();
     paramBundle = new Bundle();
     paramBundle.putInt("mode", i);
     return EIPCResult.createResult(0, paramBundle);
@@ -50,7 +50,7 @@ public class ArkQQAPIIPCModule$GetAudioOutputModeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetAudioOutputModeHandler
  * JD-Core Version:    0.7.0.1
  */

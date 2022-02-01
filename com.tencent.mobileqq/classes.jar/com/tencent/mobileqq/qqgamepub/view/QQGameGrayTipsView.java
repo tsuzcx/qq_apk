@@ -34,17 +34,17 @@ public class QQGameGrayTipsView
   extends FrameLayout
   implements View.OnClickListener, SimpleEventReceiver
 {
-  private long jdField_a_of_type_Long;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQGameMsgInfo jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo = new QQGameMsgInfo();
-  private boolean jdField_a_of_type_Boolean;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_b_of_type_Boolean;
-  LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_c_of_type_Boolean;
+  LinearLayout a;
+  LinearLayout b;
+  LinearLayout c;
+  private TextView d;
+  private ImageView e;
+  private ImageView f;
+  private QQGameMsgInfo g = new QQGameMsgInfo();
+  private boolean h;
+  private boolean i;
+  private boolean j;
+  private long k;
   
   public QQGameGrayTipsView(Context paramContext)
   {
@@ -64,72 +64,72 @@ public class QQGameGrayTipsView
   
   private void a()
   {
-    int i;
-    if (this.jdField_c_of_type_Boolean) {
-      i = 2130840211;
+    int m;
+    if (this.j) {
+      m = 2130840523;
     } else {
-      i = 2130840194;
+      m = 2130840506;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(getContext().getResources().getDrawable(i));
+    this.f.setBackgroundDrawable(getContext().getResources().getDrawable(m));
   }
   
   private void a(Context paramContext)
   {
-    View.inflate(paramContext, 2131559164, this);
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370261));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379902));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369514));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369513));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370314));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370322));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    setId(2131374421);
+    View.inflate(paramContext, 2131624919, this);
+    this.c = ((LinearLayout)findViewById(2131437468));
+    this.d = ((TextView)findViewById(2131448776));
+    this.e = ((ImageView)findViewById(2131436601));
+    this.f = ((ImageView)findViewById(2131436600));
+    this.a = ((LinearLayout)findViewById(2131437564));
+    this.b = ((LinearLayout)findViewById(2131437572));
+    this.a.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    setId(2131442588);
     SimpleEventBus.getInstance().registerReceiver(this);
   }
   
   private void a(QQGameMsgInfo paramQQGameMsgInfo)
   {
-    Object localObject = getResources().getString(2131695226);
+    Object localObject = getResources().getString(2131892960);
     if (!TextUtils.isEmpty(paramQQGameMsgInfo.desc)) {
       localObject = paramQQGameMsgInfo.desc;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131695178), new Object[] { localObject }));
-    paramQQGameMsgInfo = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.d.setText(String.format(getResources().getString(2131892911), new Object[] { localObject }));
+    paramQQGameMsgInfo = this.d;
     localObject = getResources();
-    int i;
-    if (this.jdField_c_of_type_Boolean) {
-      i = 2131166506;
+    int m;
+    if (this.j) {
+      m = 2131167349;
     } else {
-      i = 2131166505;
+      m = 2131167348;
     }
-    paramQQGameMsgInfo.setTextColor(((Resources)localObject).getColor(i));
+    paramQQGameMsgInfo.setTextColor(((Resources)localObject).getColor(m));
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(getContext().getResources().getDrawable(2130840209));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(UIUtils.a(8.0F, getResources()), UIUtils.a(3.0F, getResources()), UIUtils.a(8.0F, getResources()), UIUtils.a(3.0F, getResources()));
+      this.b.setVisibility(8);
+      this.e.setBackgroundDrawable(getContext().getResources().getDrawable(2130840521));
+      this.a.setPadding(UIUtils.a(8.0F, getResources()), UIUtils.a(3.0F, getResources()), UIUtils.a(8.0F, getResources()), UIUtils.a(3.0F, getResources()));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    int i;
-    if (this.jdField_c_of_type_Boolean) {
-      i = 2130840205;
+    this.b.setVisibility(0);
+    int m;
+    if (this.j) {
+      m = 2130840517;
     } else {
-      i = 2130840204;
+      m = 2130840516;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(getContext().getResources().getDrawable(i));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(UIUtils.a(8.0F, getResources()), UIUtils.a(3.0F, getResources()), UIUtils.a(28.0F, getResources()), UIUtils.a(3.0F, getResources()));
+    this.e.setBackgroundDrawable(getContext().getResources().getDrawable(m));
+    this.a.setPadding(UIUtils.a(8.0F, getResources()), UIUtils.a(3.0F, getResources()), UIUtils.a(28.0F, getResources()), UIUtils.a(3.0F, getResources()));
   }
   
   private boolean a(QQGameSubscribeBusEvent paramQQGameSubscribeBusEvent)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId;
+    String str = this.g.gameAppId;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramQQGameSubscribeBusEvent.subscribeInfo.appid.get());
     localStringBuilder.append("");
@@ -145,7 +145,7 @@ public class QQGameGrayTipsView
   {
     Object localObject = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 1.5F, 1.0F });
     PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 1.5F, 1.0F });
-    localObject = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidWidgetImageView, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder });
+    localObject = ObjectAnimator.ofPropertyValuesHolder(this.e, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder });
     ((ObjectAnimator)localObject).addListener(new QQGameGrayTipsView.2(this));
     ((ObjectAnimator)localObject).setDuration(300L);
     ((ObjectAnimator)localObject).start();
@@ -153,7 +153,7 @@ public class QQGameGrayTipsView
   
   public void a(QQGameMsgInfo paramQQGameMsgInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
       if (QLog.isColorLevel()) {
         QLog.i("QQGamePub_GameGrayTipsView", 2, "refreshUi...isAnimating just return");
@@ -166,8 +166,8 @@ public class QQGameGrayTipsView
       return;
     }
     setVisibility(0);
-    this.jdField_c_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo = paramQQGameMsgInfo;
+    this.j = paramBoolean2;
+    this.g = paramQQGameMsgInfo;
     a();
     a(paramQQGameMsgInfo);
     a(paramBoolean1);
@@ -194,20 +194,20 @@ public class QQGameGrayTipsView
   public void onClick(View paramView)
   {
     Object localObject = (IQQGameSubscribeService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameSubscribeService.class, "all");
-    if (2131370314 == paramView.getId())
+    if (2131437564 == paramView.getId())
     {
-      ((IQQGameSubscribeService)localObject).putToGameInfoMap(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId, new IQQGameSubscribeService.GameBaseInfo(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.desc, this.jdField_a_of_type_Boolean));
-      ((IQQGameSubscribeService)localObject).enterSingleGameMsgPage(MobileQQ.sMobileQQ, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId, 1);
+      ((IQQGameSubscribeService)localObject).putToGameInfoMap(this.g.gameAppId, new IQQGameSubscribeService.GameBaseInfo(this.g.gameAppId, this.g.desc, this.h));
+      ((IQQGameSubscribeService)localObject).enterSingleGameMsgPage(MobileQQ.sMobileQQ, this.g.gameAppId, 1);
     }
-    else if (2131370322 == paramView.getId())
+    else if (2131437572 == paramView.getId())
     {
-      if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      if ((!this.h) && (!this.i))
       {
-        if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) >= 1000L) {
+        if (Math.abs(System.currentTimeMillis() - this.k) >= 1000L) {
           if (!AppNetConnInfo.isNetSupport()) {
-            QQToast.a(getContext(), 1, getResources().getString(2131695216), 0).a();
+            QQToast.makeText(getContext(), 1, getResources().getString(2131892950), 0).show();
           } else {
-            this.jdField_a_of_type_Long = ((IQQGameSubscribeService)localObject).reqSetSubscribeStatus(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId, 1, 1);
+            this.k = ((IQQGameSubscribeService)localObject).reqSetSubscribeStatus(this.g.gameAppId, 1, 1);
           }
         }
       }
@@ -215,11 +215,11 @@ public class QQGameGrayTipsView
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onClick:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo);
+        ((StringBuilder)localObject).append(this.g);
         ((StringBuilder)localObject).append(",mGameInfo:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.h);
         ((StringBuilder)localObject).append(",isAnimating:");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.i);
         ((StringBuilder)localObject).append(",can not click");
         QLog.i("QQGamePub_GameGrayTipsView", 1, ((StringBuilder)localObject).toString());
       }
@@ -241,14 +241,14 @@ public class QQGameGrayTipsView
       if ((paramSimpleBaseEvent instanceof QQGameSubscribeBusEvent))
       {
         localObject = (QQGameSubscribeBusEvent)paramSimpleBaseEvent;
-        int i = ((QQGameSubscribeBusEvent)localObject).eventType;
-        if (i == 4)
+        int m = ((QQGameSubscribeBusEvent)localObject).eventType;
+        if (m == 4)
         {
-          if ((a((QQGameSubscribeBusEvent)localObject)) && (((QQGameSubscribeBusEvent)localObject).seq == this.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Boolean)) {
+          if ((a((QQGameSubscribeBusEvent)localObject)) && (((QQGameSubscribeBusEvent)localObject).seq == this.k) && (!this.h)) {
             b();
           }
         }
-        else if ((i == 5) && (a((QQGameSubscribeBusEvent)localObject)) && (!this.jdField_a_of_type_Boolean)) {
+        else if ((m == 5) && (a((QQGameSubscribeBusEvent)localObject)) && (!this.h)) {
           a(true);
         }
       }
@@ -269,7 +269,7 @@ public class QQGameGrayTipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.QQGameGrayTipsView
  * JD-Core Version:    0.7.0.1
  */

@@ -22,26 +22,26 @@ class UpComingMsgChatPie$7
   
   protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    UpComingMsgChatPie.a(this.a).removeMessages(24);
-    Object localObject = this.a.c;
+    UpComingMsgChatPie.c(this.a).removeMessages(24);
+    Object localObject = this.a.ao;
     int i = 1;
-    if ((localObject != null) && (this.a.c.isShowing()))
+    if ((localObject != null) && (this.a.ao.isShowing()))
     {
-      if (MultiMsgManager.a().jdField_a_of_type_Int != 2) {
-        this.a.c.dismiss();
+      if (MultiMsgManager.a().e != 2) {
+        this.a.ao.dismiss();
       }
-      MultiMsgManager.a().b.clear();
+      MultiMsgManager.a().d.clear();
       if ((paramBoolean) && (paramObject != null)) {
-        MultiMsgManager.a().b.putAll((Map)paramObject);
+        MultiMsgManager.a().d.putAll((Map)paramObject);
       }
-      if (MultiMsgManager.a().b.size() == 0) {
-        QQToast.a(this.a.a.getApp(), 2131698526, 0).b(this.a.a());
+      if (MultiMsgManager.a().d.size() == 0) {
+        QQToast.makeText(this.a.d.getApp(), 2131896472, 0).show(this.a.A());
       } else if (paramObject != null) {
-        ((MultiForwardHelper)UpComingMsgChatPie.a(this.a).a(1)).a((Map)paramObject, MultiMsgManager.a().jdField_a_of_type_JavaUtilArrayList, MultiMsgManager.a().jdField_a_of_type_Int);
+        ((MultiForwardHelper)UpComingMsgChatPie.d(this.a).a(1)).a((Map)paramObject, MultiMsgManager.a().c, MultiMsgManager.a().e);
       }
       if (QLog.isDevelopLevel())
       {
-        localObject = this.a.b;
+        localObject = this.a.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onGetFriendNickBatch = ");
         localStringBuilder.append(paramObject);
@@ -63,12 +63,12 @@ class UpComingMsgChatPie$7
     paramObject.append(NetworkUtil.getSystemNetwork(BaseApplication.getContext()));
     paramObject.append("");
     ((HashMap)localObject).put("netType", paramObject.toString());
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.a.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, (HashMap)localObject, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.d.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, (HashMap)localObject, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.UpComingMsgChatPie.7
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.av.config;
 
 class ConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo
 {
-  byte jdField_a_of_type_Byte = 0;
+  byte a = 0;
   byte b = 0;
   byte c = 0;
   byte d = 0;

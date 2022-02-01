@@ -4,25 +4,25 @@ public abstract interface ITroopFileDownloader
 {
   public abstract void a(ITroopFileDownloaderSink paramITroopFileDownloaderSink);
   
-  public abstract int b();
+  public abstract void k();
   
-  public abstract void b();
+  public abstract void l();
   
-  public abstract boolean b();
+  public abstract int m();
   
-  public abstract int c();
+  public abstract boolean n();
   
-  public abstract void c();
+  public abstract String o();
   
-  public abstract int d();
+  public abstract String p();
   
-  public abstract String d();
+  public abstract int q();
   
-  public abstract String e();
+  public abstract int r();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.ITroopFileDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,7 @@ public class QQStoryTakeVideoActivityLauncher
     paramIntent.append(this.a.getCurrentAccountUin());
     paramContext.getSharedPreferences(paramIntent.toString(), 4).getBoolean("flow_filter_reddot_key", false);
     PtvFilterSoLoad.a(this.a, BaseApplicationImpl.getContext());
-    PlusPanelUtils.a(QQStoryConstant.f);
+    PlusPanelUtils.a(QQStoryConstant.g);
     paramContext = new File(AppConstants.SDCARD_IMG_CAMERA);
     if (!paramContext.exists()) {
       paramContext.mkdirs();

@@ -18,9 +18,9 @@ class QQToast$1
       if (QLog.isColorLevel()) {
         QLog.d("QQToast", 2, "start to cancel toast");
       }
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast, true);
-      View.OnTouchListener localOnTouchListener = this.jdField_a_of_type_AndroidViewView$OnTouchListener;
+      this.val$toast.cancel();
+      QQToast.access$002(this.this$0, true);
+      View.OnTouchListener localOnTouchListener = this.val$touchListener;
       if (localOnTouchListener != null) {
         return localOnTouchListener.onTouch(paramView, paramMotionEvent);
       }
@@ -31,7 +31,7 @@ class QQToast$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.1
  * JD-Core Version:    0.7.0.1
  */

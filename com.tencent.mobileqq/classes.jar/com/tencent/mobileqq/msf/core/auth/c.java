@@ -4,8 +4,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.msf.service.protocol.e.h;
 import com.tencent.msf.service.protocol.e.i;
@@ -307,7 +307,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.c
  * JD-Core Version:    0.7.0.1
  */

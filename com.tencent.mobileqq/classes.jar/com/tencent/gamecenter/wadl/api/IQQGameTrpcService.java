@@ -27,11 +27,13 @@ public abstract interface IQQGameTrpcService
   
   public abstract void reportTianJi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8);
   
+  public abstract void reportToDcByTrpc(JSONObject paramJSONObject);
+  
   public abstract void requestTrpc(TrpcProxy.TrpcListReq paramTrpcListReq, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.IQQGameTrpcService
  * JD-Core Version:    0.7.0.1
  */

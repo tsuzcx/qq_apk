@@ -15,12 +15,12 @@ public class SpineTextPainter
       return null;
     }
     FontPixelsFactory.FontOption localFontOption = new FontPixelsFactory.FontOption();
-    localFontOption.jdField_a_of_type_Int = paramInt1;
-    localFontOption.jdField_b_of_type_Int = paramInt2;
-    localFontOption.jdField_a_of_type_Float = paramFloat1;
-    localFontOption.jdField_b_of_type_Float = paramFloat2;
-    localFontOption.c = paramFloat3;
-    localFontOption.d = paramFloat4;
+    localFontOption.a = paramInt1;
+    localFontOption.b = paramInt2;
+    localFontOption.c = paramFloat1;
+    localFontOption.d = paramFloat2;
+    localFontOption.e = paramFloat3;
+    localFontOption.f = paramFloat4;
     return mFontPixelsFactory.a(paramString, localFontOption);
   }
   
@@ -31,7 +31,7 @@ public class SpineTextPainter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.font.SpineTextPainter
  * JD-Core Version:    0.7.0.1
  */

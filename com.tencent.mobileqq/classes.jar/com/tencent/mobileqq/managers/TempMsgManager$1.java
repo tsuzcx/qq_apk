@@ -15,7 +15,7 @@ class TempMsgManager$1
     if (QLog.isColorLevel()) {
       QLog.d("TempMsgManager", 2, "dialog cancel");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(1);
+    this.a.f(1);
   }
 }
 

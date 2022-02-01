@@ -76,7 +76,7 @@ class QQMusicPlayClient$IncomingHandler
         }
         QQMusicPlayClient.a(localQQMusicPlayClient, str, i);
         if ((i == 4) && (QQMusicPlayClient.a(localQQMusicPlayClient))) {
-          QQMusicPlayClient.a(localQQMusicPlayClient);
+          QQMusicPlayClient.b(localQQMusicPlayClient);
         }
       }
       else
@@ -98,7 +98,7 @@ class QQMusicPlayClient$IncomingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayClient.IncomingHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -8,34 +8,34 @@ import java.lang.ref.WeakReference;
 class VideoFeedsShareController$WeChatShareResultCallback
   implements ShareResultCallback
 {
-  private int jdField_a_of_type_Int;
-  private VideoInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> a;
   private int b;
   private int c;
   private int d;
+  private int e;
+  private VideoInfo f;
   
   public VideoFeedsShareController$WeChatShareResultCallback(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo = paramVideoInfo;
+    this.a = new WeakReference(paramContext);
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
+    this.f = paramVideoInfo;
   }
   
   public void a(boolean paramBoolean)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      VideoFeedsShareController.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, this.c, this.d, false, paramBoolean);
+      VideoFeedsShareController.a((Context)this.a.get(), this.b, this.c, this.f, this.d, this.e, false, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.WeChatShareResultCallback
  * JD-Core Version:    0.7.0.1
  */

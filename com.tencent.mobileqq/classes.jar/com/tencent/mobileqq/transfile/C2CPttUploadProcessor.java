@@ -577,9 +577,9 @@ public class C2CPttUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       localObject = new UpCallBack.SendResult();
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+      ((UpCallBack.SendResult)localObject).a = -1;
       ((UpCallBack.SendResult)localObject).b = this.mProcessorReport.errCode;
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      ((UpCallBack.SendResult)localObject).c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
     Object localObject = this.app;
@@ -841,23 +841,20 @@ public class C2CPttUploadProcessor
     {
       i = j;
       if (k == 1020) {
-        break label209;
+        break label194;
       }
       if (k != 9999) {
-        if ((k != 10002) && (k != 10004)) {
-          if (k != 10009)
-          {
-            i = j;
-            if (k == 1000) {
-              break label209;
-            }
-            if (k == 1001) {
-              break label181;
-            }
+        if ((k != 10002) && (k != 10004))
+        {
+          i = j;
+          if (k == 1000) {
+            break label194;
+          }
+          if (k != 1001) {
             if (k != 1008) {
               if (k != 1009) {
                 if ((k == 1023) || (k == 1024)) {
-                  break label207;
+                  break label192;
                 }
               }
             }
@@ -875,26 +872,23 @@ public class C2CPttUploadProcessor
       break;
     case 1004: 
       i = 105;
-      break label209;
+      break label194;
       i = 103;
-      break label209;
+      break label194;
       i = 101;
-      break label209;
-      i = 130;
-      break label209;
-      label181:
+      break label194;
       i = 100;
-      break label209;
+      break label194;
       i = 114;
-      break label209;
+      break label194;
       if (paramPttUpReq.forceViaOffline) {
         i = 500;
       }
       break;
     }
-    label207:
+    label192:
     int i = 0;
-    label209:
+    label194:
     paramExtensionReq.uint64_type.set(i);
   }
   
@@ -977,7 +971,7 @@ public class C2CPttUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPttUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

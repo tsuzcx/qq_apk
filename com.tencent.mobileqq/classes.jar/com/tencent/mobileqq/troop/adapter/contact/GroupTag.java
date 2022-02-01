@@ -8,16 +8,16 @@ import com.tencent.widget.SingleLineTextView;
 public class GroupTag
 {
   public int a;
-  public CheckBox a;
-  public ProgressBar a;
-  public SimpleTextView a;
-  public SingleLineTextView a;
-  public StringBuilder a;
-  public SingleLineTextView b;
+  public CheckBox b;
+  public ProgressBar c;
+  public SingleLineTextView d;
+  public SingleLineTextView e;
+  public SimpleTextView f;
+  public StringBuilder g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.contact.GroupTag
  * JD-Core Version:    0.7.0.1
  */

@@ -25,18 +25,42 @@ import mqq.os.MqqHandler;
 public class SougouInputGrayTips
   implements GrayTipsTask, Runnable
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private QQAppInterface a;
+  private TipsManager b;
+  private Context c;
+  private SessionInfo d;
+  private Time e;
+  private boolean f;
+  private boolean g;
+  private StringBuilder h;
   
-  private String a(Context paramContext)
+  private boolean a(Context paramContext)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+    long l1 = System.currentTimeMillis();
+    paramContext = b(paramContext);
+    boolean bool;
+    if ((!paramContext.contains(HardCodeUtil.a(2131911625))) && (!paramContext.contains("QQ输入法"))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("hasInstallSougouOrQQInput ret = ");
+      paramContext.append(bool);
+      paramContext.append(", cost:");
+      paramContext.append(l2 - l1);
+      paramContext.append(" ms");
+      QLog.d("SougouInputGrayTips", 2, paramContext.toString());
+    }
+    return bool;
+  }
+  
+  private String b(Context paramContext)
+  {
+    Object localObject = this.h;
     int j = 0;
     ((StringBuilder)localObject).setLength(0);
     localObject = (InputMethodManager)paramContext.getSystemService("input_method");
@@ -62,45 +86,11 @@ public class SougouInputGrayTips
     while (j < i)
     {
       InputMethodInfo localInputMethodInfo = (InputMethodInfo)((List)localObject).get(j);
-      this.jdField_a_of_type_JavaLangStringBuilder.append(localInputMethodInfo.loadLabel(paramContext.getPackageManager()));
-      this.jdField_a_of_type_JavaLangStringBuilder.append(" ");
+      this.h.append(localInputMethodInfo.loadLabel(paramContext.getPackageManager()));
+      this.h.append(" ");
       j += 1;
     }
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    long l1 = System.currentTimeMillis();
-    paramContext = a(paramContext);
-    boolean bool;
-    if ((!paramContext.contains(HardCodeUtil.a(2131714094))) && (!paramContext.contains("QQ输入法"))) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder();
-      paramContext.append("hasInstallSougouOrQQInput ret = ");
-      paramContext.append(bool);
-      paramContext.append(", cost:");
-      paramContext.append(l2 - l1);
-      paramContext.append(" ms");
-      QLog.d("SougouInputGrayTips", 2, paramContext.toString());
-    }
-    return bool;
-  }
-  
-  public MessageRecord a(Object... paramVarArgs)
-  {
-    paramVarArgs = MessageRecordFactory.a(-1014);
-    long l = MessageCache.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1043, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
-    paramVarArgs.isread = true;
-    return paramVarArgs;
+    return this.h.toString();
   }
   
   public void a(int paramInt, Object... paramVarArgs)
@@ -122,9 +112,14 @@ public class SougouInputGrayTips
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L);
   }
   
-  public int[] a()
+  public MessageRecord a_(Object... paramVarArgs)
   {
-    return TipsConstants.a;
+    paramVarArgs = MessageRecordFactory.a(-1014);
+    long l = MessageCache.c();
+    String str = this.a.getCurrentAccountUin();
+    paramVarArgs.init(str, this.d.b, str, "", l, -1043, this.d.a, l);
+    paramVarArgs.isread = true;
+    return paramVarArgs;
   }
   
   public int b()
@@ -132,17 +127,22 @@ public class SougouInputGrayTips
     return 1002;
   }
   
+  public int[] c()
+  {
+    return TipsConstants.a;
+  }
+  
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SougouInputGrayTips", 2, ".....run......");
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
-      this.b = a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Boolean = true;
+      this.g = a(this.c);
+      this.f = true;
     }
-    if (this.b)
+    if (this.g)
     {
       if (QLog.isColorLevel()) {
         QLog.d("SougouInputGrayTips", 2, "installSougouOrQQInput, just return");
@@ -150,7 +150,7 @@ public class SougouInputGrayTips
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    Object localObject1 = this.a.getMessageFacade().o(this.d.b, this.d.a);
     long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
@@ -196,11 +196,11 @@ public class SougouInputGrayTips
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("key_sougou_input_gray_tips_");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject1).append(this.a.getCurrentAccountUin());
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("key_sougou_input_gray_tips_count_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject2).append(this.a.getCurrentAccountUin());
     localObject2 = ((StringBuilder)localObject2).toString();
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
     Object localObject3 = localSharedPreferences.getString((String)localObject1, "");
@@ -226,17 +226,17 @@ public class SougouInputGrayTips
     {
       i = 0;
     }
-    l1 = MessageCache.a() * 1000L;
+    l1 = MessageCache.c() * 1000L;
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
-      if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-        this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+      if (this.e == null) {
+        this.e = new Time();
       }
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
-      j = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      int k = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      int m = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      int n = this.jdField_a_of_type_AndroidTextFormatTime.hour;
+      this.e.set(l1);
+      j = this.e.year;
+      int k = this.e.month;
+      int m = this.e.monthDay;
+      int n = this.e.hour;
       if (QLog.isColorLevel())
       {
         localObject4 = new StringBuilder();
@@ -251,11 +251,11 @@ public class SougouInputGrayTips
         QLog.d("SougouInputGrayTips", 2, ((StringBuilder)localObject4).toString());
       }
       l2 = Long.parseLong((String)localObject3);
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l2);
-      j = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      k = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      m = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      n = this.jdField_a_of_type_AndroidTextFormatTime.hour;
+      this.e.set(l2);
+      j = this.e.year;
+      k = this.e.month;
+      m = this.e.monthDay;
+      n = this.e.hour;
       if (QLog.isColorLevel())
       {
         localObject3 = new StringBuilder();
@@ -279,16 +279,16 @@ public class SougouInputGrayTips
     {
       QLog.d("SougouInputGrayTips", 2, "has never shown sougouInput Gray Tips");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]))
+    if (this.b.a(this, new Object[0]))
     {
       localSharedPreferences.edit().putString((String)localObject1, String.valueOf(l1)).putString((String)localObject2, String.valueOf(i + 1)).commit();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
+      ReportController.b(this.a, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.SougouInputGrayTips
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ import java.util.Set;
 class ComponentAdapter$ViolaImageListener
   implements URLDrawable.URLDrawableListener
 {
-  private WeakReference<ImageAction> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<ImageAction> b;
+  private boolean c;
   
   public ComponentAdapter$ViolaImageListener(ComponentAdapter paramComponentAdapter, boolean paramBoolean, ImageAction paramImageAction)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageAction);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = new WeakReference(paramImageAction);
+    this.c = paramBoolean;
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -29,14 +29,14 @@ class ComponentAdapter$ViolaImageListener
       return;
     }
     ((ImageAction)localObject).onCancel();
-    ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter).remove(paramURLDrawable);
+    ComponentAdapter.b(this.a).remove(paramURLDrawable);
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.b;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter, (ImageAction)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramURLDrawable, paramThrowable);
+      ComponentAdapter.a(this.a, (ImageAction)this.b.get(), paramURLDrawable, paramThrowable);
     }
   }
   
@@ -44,16 +44,16 @@ class ComponentAdapter$ViolaImageListener
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.b;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter, (ImageAction)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramURLDrawable, this.jdField_a_of_type_Boolean);
+      ComponentAdapter.a(this.a, (ImageAction)this.b.get(), paramURLDrawable, this.c);
     }
-    ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter).remove(paramURLDrawable);
+    ComponentAdapter.b(this.a).remove(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.ui.ComponentAdapter.ViolaImageListener
  * JD-Core Version:    0.7.0.1
  */

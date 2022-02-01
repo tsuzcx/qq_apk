@@ -83,7 +83,7 @@ class NearbyProfileFragment$7
         {
           QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
         }
-        paramArrayOfByte = NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
+        paramArrayOfByte = NearbyProfileFragment.b(this.a, paramArrayOfByte.visitors);
         NearbyProfileFragment.a(this.a, paramArrayOfByte);
         return;
       }
@@ -102,7 +102,7 @@ class NearbyProfileFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.7
  * JD-Core Version:    0.7.0.1
  */

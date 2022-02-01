@@ -37,20 +37,20 @@ import mqq.manager.Manager;
 public class NotifyIdManager
   implements Manager
 {
-  static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-  private int jdField_a_of_type_Int;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private Map<String, Boolean> jdField_b_of_type_JavaUtilMap;
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private Map<String, Boolean> c;
+  static AtomicBoolean a = new AtomicBoolean(true);
+  private final QQAppInterface b;
+  private Map<String, Integer> c;
+  private int d;
+  private Map<String, Boolean> e;
+  private Map<String, Boolean> f;
+  private AtomicBoolean g = new AtomicBoolean(false);
   
   public NotifyIdManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.c = new ConcurrentHashMap();
-    e();
+    this.b = paramQQAppInterface;
+    this.e = new ConcurrentHashMap();
+    this.f = new ConcurrentHashMap();
+    g();
   }
   
   /* Error */
@@ -64,13 +64,13 @@ public class NotifyIdManager
     //   8: aconst_null
     //   9: areturn
     //   10: aload_0
-    //   11: invokevirtual 52	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   14: invokevirtual 58	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   11: invokevirtual 55	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   14: invokevirtual 61	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   17: astore_0
     //   18: aload_0
-    //   19: ldc 60
+    //   19: ldc 63
     //   21: iconst_2
-    //   22: anewarray 62	java/lang/String
+    //   22: anewarray 65	java/lang/String
     //   25: dup
     //   26: iconst_0
     //   27: aload_1
@@ -79,24 +79,24 @@ public class NotifyIdManager
     //   30: iconst_1
     //   31: aload_2
     //   32: aastore
-    //   33: invokevirtual 68	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   36: checkcast 60	com/tencent/mobileqq/data/troop/TroopMemberInfo
+    //   33: invokevirtual 71	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   36: checkcast 63	com/tencent/mobileqq/data/troop/TroopMemberInfo
     //   39: astore_1
     //   40: aload_0
-    //   41: invokevirtual 71	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   41: invokevirtual 74	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   44: aload_1
     //   45: areturn
     //   46: astore_1
     //   47: goto +14 -> 61
     //   50: astore_1
     //   51: aload_1
-    //   52: invokevirtual 74	java/lang/Exception:printStackTrace	()V
+    //   52: invokevirtual 77	java/lang/Exception:printStackTrace	()V
     //   55: aload_0
-    //   56: invokevirtual 71	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   56: invokevirtual 74	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   59: aconst_null
     //   60: areturn
     //   61: aload_0
-    //   62: invokevirtual 71	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   62: invokevirtual 74	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   65: aload_1
     //   66: athrow
     //   67: aconst_null
@@ -113,18 +113,6 @@ public class NotifyIdManager
     //   18	40	50	java/lang/Exception
   }
   
-  private ColorNickText a(String paramString)
-  {
-    paramString = new ColorNickText(paramString, 16);
-    paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.context.getResources().getColor(2131166272)), 0, paramString.length(), 33);
-    return paramString;
-  }
-  
-  public static NotifyIdManager a()
-  {
-    return a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-  }
-  
   public static NotifyIdManager a(QQAppInterface paramQQAppInterface)
   {
     return (NotifyIdManager)paramQQAppInterface.getManager(QQManagerFactory.NOTIFY_ID_MANAGER);
@@ -132,17 +120,17 @@ public class NotifyIdManager
   
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    a.set(paramBoolean);
   }
   
   public static boolean a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return a.get();
   }
   
   public static boolean a(int paramInt, String paramString)
   {
-    return (ProcessorFactory.a(paramInt)) && (a(paramString));
+    return (ProcessorFactory.a(paramInt)) && (d(paramString));
   }
   
   public static boolean a(Message paramMessage)
@@ -155,28 +143,40 @@ public class NotifyIdManager
     if (ProcessorFactory.a(paramMessage.istroop))
     {
       bool1 = bool2;
-      if (a(paramMessage.frienduin)) {
+      if (d(paramMessage.frienduin)) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  private static boolean a(String paramString)
+  public static NotifyIdManager b()
+  {
+    return a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+  }
+  
+  private static boolean d(String paramString)
   {
     return Friends.isValidUin(paramString);
   }
   
-  private void c()
+  private ColorNickText e(String paramString)
+  {
+    paramString = new ColorNickText(paramString, 16);
+    paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.context.getResources().getColor(2131167005)), 0, paramString.length(), 33);
+    return paramString;
+  }
+  
+  private void e()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Object localObject = this.c.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
       localStringBuilder.append(str);
       localStringBuilder.append("=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.get(str));
+      localStringBuilder.append(this.c.get(str));
       localStringBuilder.append(",");
     }
     if (localStringBuilder.length() >= 1) {
@@ -189,24 +189,24 @@ public class NotifyIdManager
       ((StringBuilder)localObject).append(localStringBuilder);
       QLog.i("NotifyIdManager", 2, ((StringBuilder)localObject).toString());
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences((String)localObject, 4).edit().putString("SP_KEY_CURRENT_NOTIFY_ID_MAP", localStringBuilder.toString()).apply();
+    localObject = this.b.getCurrentAccountUin();
+    this.b.getApp().getSharedPreferences((String)localObject, 4).edit().putString("SP_KEY_CURRENT_NOTIFY_ID_MAP", localStringBuilder.toString()).apply();
   }
   
-  private void d()
+  private void f()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(str, 4).edit().putInt("SP_KEY_CURRENT_NOTIFY_ID", this.jdField_a_of_type_Int).apply();
+    String str = this.b.getCurrentAccountUin();
+    this.b.getApp().getSharedPreferences(str, 4).edit().putInt("SP_KEY_CURRENT_NOTIFY_ID", this.d).apply();
     if (QLog.isColorLevel()) {
-      QLog.d("NotifyIdManager", 2, new Object[] { "saveCurrentIdToSp: invoked. ", " mCurrentMinId: ", Integer.valueOf(this.jdField_a_of_type_Int) });
+      QLog.d("NotifyIdManager", 2, new Object[] { "saveCurrentIdToSp: invoked. ", " mCurrentMinId: ", Integer.valueOf(this.d) });
     }
   }
   
-  private void e()
+  private void g()
   {
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences((String)localObject, 4);
+    Object localObject = this.b.getCurrentAccountUin();
+    localObject = this.b.getApp().getSharedPreferences((String)localObject, 4);
     String str = ((SharedPreferences)localObject).getString("SP_KEY_CURRENT_NOTIFY_ID_MAP", "");
     if (!TextUtils.isEmpty(str)) {
       try
@@ -232,8 +232,8 @@ public class NotifyIdManager
       QLog.d("NotifyIdManager", 2, new Object[] { "restoreUinIdMapFromSp: invoked. ", " mapStr: ", str });
     }
     label157:
-    this.jdField_a_of_type_JavaUtilMap = localConcurrentHashMap;
-    this.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("SP_KEY_CURRENT_NOTIFY_ID", 512);
+    this.c = localConcurrentHashMap;
+    this.d = ((SharedPreferences)localObject).getInt("SP_KEY_CURRENT_NOTIFY_ID", 512);
   }
   
   public int a(String paramString)
@@ -241,53 +241,33 @@ public class NotifyIdManager
     if (QLog.isColorLevel()) {
       QLog.d("NotifyIdManager", 2, new Object[] { "uniqueNotifyIdByUin: invoked. ", " friendUin: ", paramString });
     }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue();
+    if (this.c.containsKey(paramString)) {
+      return ((Integer)this.c.get(paramString)).intValue();
     }
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int >= 522) {
-      this.jdField_a_of_type_Int = 512;
+    this.d += 1;
+    if (this.d >= 522) {
+      this.d = 512;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(this.jdField_a_of_type_Int));
-    c();
-    d();
-    return this.jdField_a_of_type_Int;
+    this.c.put(paramString, Integer.valueOf(this.d));
+    e();
+    f();
+    return this.d;
   }
   
   public String a(String paramString, Message paramMessage)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.b.getCurrentAccountUin());
     localStringBuilder.append(paramMessage.frienduin);
     paramMessage = paramString;
     if (QvipSpecialCareUtil.a(localStringBuilder.toString()))
     {
       paramMessage = new StringBuilder();
-      paramMessage.append(HardCodeUtil.a(2131707647));
+      paramMessage.append(HardCodeUtil.a(2131905462));
       paramMessage.append(paramString);
       paramMessage = paramMessage.toString();
     }
     return paramMessage;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotifyIdManager", 2, "cancelAllNotification: invoked. ");
-    }
-    ThreadManager.excute(new NotifyIdManager.2(this, QQNotificationManager.getInstance()), 16, null, false);
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    c();
-  }
-  
-  public void a(Message paramMessage)
-  {
-    Handler localHandler = ThreadManager.getUIHandlerV2();
-    if ((b(paramMessage)) && (localHandler != null))
-    {
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      localHandler.postDelayed(new NotifyIdManager.1(this), 5000L);
-    }
   }
   
   public void a(Message paramMessage, Intent paramIntent, SpannableStringBuilder paramSpannableStringBuilder)
@@ -301,7 +281,7 @@ public class NotifyIdManager
       localStringBuilder.append(paramIntent);
       localStringBuilder.append("]");
       paramSpannableStringBuilder.append(new ColorNickText(localStringBuilder.toString(), 16));
-      paramSpannableStringBuilder.append(a(HardCodeUtil.a(2131707646)));
+      paramSpannableStringBuilder.append(e(HardCodeUtil.a(2131905461)));
       paramSpannableStringBuilder.append(new ColorNickText(paramMessage.nickName, 16));
     }
   }
@@ -309,37 +289,21 @@ public class NotifyIdManager
   public void a(Message paramMessage, SpannableStringBuilder paramSpannableStringBuilder)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.b.getCurrentAccountUin());
     localStringBuilder.append(paramMessage.senderuin);
     if ((QvipSpecialCareUtil.a(localStringBuilder.toString())) && (paramMessage.istroop == 0)) {
-      paramSpannableStringBuilder.append(a(HardCodeUtil.a(2131707648)));
+      paramSpannableStringBuilder.append(e(HardCodeUtil.a(2131905463)));
     }
   }
   
   public void a(SessionInfo paramSessionInfo)
   {
-    paramSessionInfo = paramSessionInfo.a;
+    paramSessionInfo = paramSessionInfo.b;
     if (QLog.isColorLevel()) {
       QLog.d("NotifyIdManager", 2, new Object[] { "onAioResume: invoked. ", " curFriendUin: ", paramSessionInfo });
     }
+    c(paramSessionInfo);
     b(paramSessionInfo);
-    a(paramSessionInfo);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("clearUinNeedShowCareMap: invoked.  friendOrTroopUin: ");
-      localStringBuilder.append(paramString);
-      QLog.i("NotifyIdManager", 2, localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString);
-      this.c.remove(paramString);
-    }
   }
   
   public boolean a(@Nullable String paramString1, @Nullable String paramString2)
@@ -353,7 +317,7 @@ public class NotifyIdManager
       if ((Looper.myLooper() == Looper.getMainLooper()) && (QLog.isColorLevel())) {
         QLog.i("NotifyIdManager", 2, "troopMemberIsCared: invoked. run on ui thread. ");
       }
-      paramString1 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
+      paramString1 = a(this.b, paramString1, paramString2);
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
@@ -371,7 +335,7 @@ public class NotifyIdManager
   public String b(String paramString, Message paramMessage)
   {
     Resources localResources = BaseApplication.getContext().getResources();
-    boolean bool = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramMessage.frienduin, paramMessage.senderuin);
+    boolean bool = a(this.b).a(paramMessage.frienduin, paramMessage.senderuin);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -379,52 +343,75 @@ public class NotifyIdManager
       ((StringBuilder)localObject).append(bool);
       QLog.i("NotifyIdManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (Boolean)this.jdField_b_of_type_JavaUtilMap.get(paramMessage.frienduin);
-    Boolean localBoolean = (Boolean)this.c.get(paramMessage.frienduin);
+    Object localObject = (Boolean)this.e.get(paramMessage.frienduin);
+    Boolean localBoolean = (Boolean)this.f.get(paramMessage.frienduin);
     if ((!bool) && ((localObject == null) || (!((Boolean)localObject).booleanValue())))
     {
       if ((paramMessage.bizType != 16) && ((localBoolean == null) || (!localBoolean.booleanValue()))) {
         return paramString;
       }
       if (localBoolean == null) {
-        this.c.put(paramMessage.frienduin, Boolean.valueOf(true));
+        this.f.put(paramMessage.frienduin, Boolean.valueOf(true));
       }
       paramMessage = new StringBuilder();
-      paramMessage.append(localResources.getString(2131699491));
+      paramMessage.append(localResources.getString(2131897522));
       paramMessage.append(paramString);
       return paramMessage.toString();
     }
     if (localObject == null) {
-      this.jdField_b_of_type_JavaUtilMap.put(paramMessage.frienduin, Boolean.valueOf(true));
+      this.e.put(paramMessage.frienduin, Boolean.valueOf(true));
     }
     paramMessage = new StringBuilder();
-    paramMessage.append(HardCodeUtil.a(2131707649));
+    paramMessage.append(HardCodeUtil.a(2131905464));
     paramMessage.append(paramString);
     return paramMessage.toString();
   }
   
-  public void b()
-  {
-    TempGetProfileDetailProcessor localTempGetProfileDetailProcessor = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TempGetProfileDetailProcessor.class);
-    if (localTempGetProfileDetailProcessor != null) {
-      localTempGetProfileDetailProcessor.getCareBarEnable();
-    }
-  }
-  
-  public void b(Message paramMessage)
-  {
-    if (paramMessage != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NotifyIdManager", 2, new Object[] { "cancelNotificationByMessage: invoked. ", " message: ", paramMessage });
-      }
-      if (!d(paramMessage)) {
-        b(paramMessage.frienduin);
-      }
-    }
-  }
-  
   public void b(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearUinNeedShowCareMap: invoked.  friendOrTroopUin: ");
+      localStringBuilder.append(paramString);
+      QLog.i("NotifyIdManager", 2, localStringBuilder.toString());
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.e.remove(paramString);
+      this.f.remove(paramString);
+    }
+  }
+  
+  public boolean b(Message paramMessage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b.getCurrentAccountUin());
+    localStringBuilder.append(paramMessage.senderuin);
+    return QvipSpecialCareUtil.a(localStringBuilder.toString());
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NotifyIdManager", 2, "cancelAllNotification: invoked. ");
+    }
+    ThreadManager.excute(new NotifyIdManager.2(this, QQNotificationManager.getInstance()), 16, null, false);
+    this.c.clear();
+    e();
+  }
+  
+  public void c(Message paramMessage)
+  {
+    Handler localHandler = ThreadManager.getUIHandlerV2();
+    if ((b(paramMessage)) && (localHandler != null))
+    {
+      this.g.set(true);
+      localHandler.postDelayed(new NotifyIdManager.1(this), 5000L);
+    }
+  }
+  
+  public void c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
@@ -432,7 +419,7 @@ public class NotifyIdManager
     if (QLog.isColorLevel()) {
       QLog.e("NotifyIdManager", 2, "cancelNotificationByUin: call stack: ", new RuntimeException());
     }
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    Integer localInteger = (Integer)this.c.get(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -445,37 +432,50 @@ public class NotifyIdManager
     if (localInteger != null) {
       QQNotificationManager.getInstance().cancel("NotifyIdManager", localInteger.intValue());
     }
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    c();
+    this.c.remove(paramString);
+    e();
   }
   
-  public boolean b(Message paramMessage)
+  public void d()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localStringBuilder.append(paramMessage.senderuin);
-    return QvipSpecialCareUtil.a(localStringBuilder.toString());
-  }
-  
-  public boolean c(Message paramMessage)
-  {
-    return (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!b(paramMessage));
+    TempGetProfileDetailProcessor localTempGetProfileDetailProcessor = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.b, TempGetProfileDetailProcessor.class);
+    if (localTempGetProfileDetailProcessor != null) {
+      localTempGetProfileDetailProcessor.getCareBarEnable();
+    }
   }
   
   public boolean d(Message paramMessage)
+  {
+    return (this.g.get()) && (!b(paramMessage));
+  }
+  
+  public void e(Message paramMessage)
+  {
+    if (paramMessage != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NotifyIdManager", 2, new Object[] { "cancelNotificationByMessage: invoked. ", " message: ", paramMessage });
+      }
+      if (!f(paramMessage)) {
+        c(paramMessage.frienduin);
+      }
+    }
+  }
+  
+  public boolean f(Message paramMessage)
   {
     return (paramMessage != null) && (paramMessage.counter > 0);
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    c();
+    this.c.clear();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.notification.NotifyIdManager
  * JD-Core Version:    0.7.0.1
  */

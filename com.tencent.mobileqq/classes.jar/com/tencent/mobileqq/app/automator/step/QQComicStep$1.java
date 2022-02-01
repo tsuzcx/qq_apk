@@ -35,7 +35,7 @@ class QQComicStep$1
           {
             String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
             if (arrayOfString.length >= 8) {
-              ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(this.a.mAutomator.a, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], AIOGallerySceneWithBusiness.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+              ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(this.a.mAutomator.l, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], AIOGallerySceneWithBusiness.c(((StructMsgForImageShare)localObject).mMsgActionData) });
             }
           }
         }
@@ -45,7 +45,7 @@ class QQComicStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.QQComicStep.1
  * JD-Core Version:    0.7.0.1
  */

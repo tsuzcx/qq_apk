@@ -10,8 +10,8 @@ final class FeedbackSheetHelper$1
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    FeedbackSheetHelper.ClickItemListener localClickItemListener = this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ClickItemListener;
+    this.a.dismiss();
+    FeedbackSheetHelper.ClickItemListener localClickItemListener = this.b;
     if (localClickItemListener != null) {
       localClickItemListener.a(true);
     }

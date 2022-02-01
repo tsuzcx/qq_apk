@@ -10,17 +10,17 @@ public class Program32Header
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
     ByteOrder localByteOrder;
-    if (paramHeader.jdField_a_of_type_Boolean) {
+    if (paramHeader.a) {
       localByteOrder = ByteOrder.BIG_ENDIAN;
     } else {
       localByteOrder = ByteOrder.LITTLE_ENDIAN;
     }
     localByteBuffer.order(localByteOrder);
-    paramLong = paramHeader.jdField_a_of_type_Long + paramLong * paramHeader.b;
-    this.jdField_a_of_type_Long = paramElfParser.b(localByteBuffer, paramLong);
-    this.b = paramElfParser.b(localByteBuffer, 4L + paramLong);
-    this.c = paramElfParser.b(localByteBuffer, 8L + paramLong);
-    this.d = paramElfParser.b(localByteBuffer, paramLong + 20L);
+    paramLong = paramHeader.c + paramLong * paramHeader.e;
+    this.a = paramElfParser.c(localByteBuffer, paramLong);
+    this.b = paramElfParser.c(localByteBuffer, 4L + paramLong);
+    this.c = paramElfParser.c(localByteBuffer, 8L + paramLong);
+    this.d = paramElfParser.c(localByteBuffer, paramLong + 20L);
   }
 }
 

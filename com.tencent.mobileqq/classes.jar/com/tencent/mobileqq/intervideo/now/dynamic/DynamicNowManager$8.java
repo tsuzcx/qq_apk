@@ -17,25 +17,25 @@ class DynamicNowManager$8
   public void a(IBusinessExpireObserver.IBusinessInitFinish paramIBusinessInitFinish)
   {
     QLog.i("DynamicNowManager", 1, "Recv Business Expire");
-    DynamicNowManager.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager, this.jdField_a_of_type_AndroidOsBundle);
-    if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a())
+    DynamicNowManager.b(this.c, this.a);
+    if (DynamicNowManager.d(this.c).a())
     {
-      DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(null, new DynamicNowManager.8.1(this, paramIBusinessInitFinish));
+      DynamicNowManager.d(this.c).a(null, new DynamicNowManager.8.1(this, paramIBusinessInitFinish));
       return;
     }
     BizLoginRequest localBizLoginRequest = new BizLoginRequest();
-    localBizLoginRequest.jdField_a_of_type_JavaLangString = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(this.jdField_a_of_type_AndroidOsBundle);
-    localBizLoginRequest.jdField_a_of_type_Int = 8;
-    localBizLoginRequest.g = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a();
-    localBizLoginRequest.f = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).b();
-    localBizLoginRequest.b = this.jdField_a_of_type_JavaLangString;
+    localBizLoginRequest.a = DynamicNowManager.a(this.c).b(this.a);
+    localBizLoginRequest.b = 8;
+    localBizLoginRequest.i = DynamicNowManager.d(this.c).c();
+    localBizLoginRequest.h = DynamicNowManager.d(this.c).d();
+    localBizLoginRequest.c = this.b;
     LiteLiveSDKFactory.a().a(localBizLoginRequest);
     paramIBusinessInitFinish.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.8
  * JD-Core Version:    0.7.0.1
  */

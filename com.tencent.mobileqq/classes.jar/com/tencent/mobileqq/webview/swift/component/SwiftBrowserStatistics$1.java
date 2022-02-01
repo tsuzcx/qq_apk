@@ -24,14 +24,14 @@ class SwiftBrowserStatistics$1
         localObject1 = "";
       }
       if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserStatistics", 2, new Object[] { Integer.valueOf(AppSetting.a()), "FeedbackReport", "", localObject2, localObject1 });
+        QLog.d("SwiftBrowserStatistics", 2, new Object[] { Integer.valueOf(AppSetting.d()), "FeedbackReport", "", localObject2, localObject1 });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.1
  * JD-Core Version:    0.7.0.1
  */

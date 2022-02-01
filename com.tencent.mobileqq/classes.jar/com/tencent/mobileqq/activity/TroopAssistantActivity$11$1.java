@@ -10,14 +10,14 @@ class TroopAssistantActivity$11$1
   
   public void run()
   {
-    if ((this.a.a.a.getAdapter() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.getAdapter()).notifyDataSetChanged();
+    if ((this.a.a.b.getAdapter() instanceof BaseAdapter)) {
+      ((BaseAdapter)this.a.a.b.getAdapter()).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

@@ -46,7 +46,7 @@ class TeamWorkFileImportJobForDisc$1
         paramString3 = new JSONArray();
         paramString3.put(0, paramString1.toString());
         paramString2.put("urls", paramString3);
-        paramString2.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+        paramString2.put("filename", this.a.b.c);
         paramString2.put("cookie", paramString5);
         paramInt1 = 1;
       }
@@ -68,7 +68,7 @@ class TeamWorkFileImportJobForDisc$1
         paramString1.append("---OnDiscDownloadInfo retCode: ");
         paramString1.append(paramLong1);
         paramString1.append(",fileName: ");
-        paramString1.append(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+        paramString1.append(this.a.b.c);
         paramString1.append("----");
         QLog.e("TeamWorkFileImportJobForDisc", 1, paramString1.toString());
       }
@@ -76,20 +76,20 @@ class TeamWorkFileImportJobForDisc$1
     paramInt2 = i;
     try
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+      if (this.a.a != null)
       {
         if (paramInt1 == 0) {
-          paramString2.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+          paramString2.put("filename", this.a.b.c);
         }
         paramString2.put("filetype", 2);
-        paramString2.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-        paramString2.put("discussuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin));
-        paramString2.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-        paramString2.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
-        paramString2.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g);
-        paramString2.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-        this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-        this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.i = 2;
+        paramString2.put("fileid", this.a.a.Uuid);
+        paramString2.put("discussuin", Long.valueOf(this.a.a.peerUin));
+        paramString2.put("md5", this.a.a.strFileMd5);
+        paramString2.put("sha", this.a.a.strFileSHA);
+        paramString2.put("importoption", this.a.b.B);
+        paramString2.put("filesize", this.a.a.fileSize);
+        this.a.b.D = this.a.a.Uuid;
+        this.a.b.E = 2;
         paramInt2 = 1;
       }
     }
@@ -103,7 +103,7 @@ class TeamWorkFileImportJobForDisc$1
     }
     if (((paramInt2 != 0) || (paramInt1 != 0)) && (TeamWorkConvertUtils.a(paramString2)) && (TeamWorkFileImportJobForDisc.a(this.a, paramString2)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromUrl(paramString2, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, this.a.hashCode());
+      this.a.c.fileImportFromUrl(paramString2, this.a.b, this.a.hashCode());
       return;
     }
     this.a.a(true);
@@ -111,7 +111,7 @@ class TeamWorkFileImportJobForDisc$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForDisc.1
  * JD-Core Version:    0.7.0.1
  */

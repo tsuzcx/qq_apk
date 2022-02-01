@@ -11,7 +11,7 @@ class GameRoomTransActivity$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQToast.a(this.a, HardCodeUtil.a(2131705165), 0).a();
+    QQToast.makeText(this.a, HardCodeUtil.a(2131903055), 0).show();
     this.a.finish();
   }
   
@@ -22,7 +22,7 @@ class GameRoomTransActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity.1
  * JD-Core Version:    0.7.0.1
  */

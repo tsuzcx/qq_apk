@@ -26,11 +26,11 @@ class QzoneFeedItemBuilder$1
   
   public void onClick(View paramView)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed;
-    ((MessageForQzoneFeed)localObject1).actionUrl = QzoneFeedItemBuilder.a(((MessageForQzoneFeed)localObject1).actionUrl);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl))
+    Object localObject1 = this.a;
+    ((MessageForQzoneFeed)localObject1).actionUrl = QzoneFeedItemBuilder.b(((MessageForQzoneFeed)localObject1).actionUrl);
+    if (!TextUtils.isEmpty(this.a.actionUrl))
     {
-      Map localMap = URLUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+      Map localMap = URLUtil.a(this.a.actionUrl);
       Object localObject2 = null;
       if (localMap != null) {
         localObject1 = (String)localMap.get("g");
@@ -39,15 +39,15 @@ class QzoneFeedItemBuilder$1
       }
       if ((!"110".equals(localObject1)) && (!"279".equals(localObject1)) && (!"318".equals(localObject1)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+        this.b.a(this.a.actionUrl);
       }
       else
       {
         localObject1 = paramView.getContext();
         QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-        localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getCurrentAccountUin();
-        localUserInfo.nickname = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getCurrentNickname();
-        QZoneHelper.forwardFromAIOToFeedDetail((Activity)localObject1, localUserInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
+        localUserInfo.qzone_uin = this.b.a.getCurrentAccountUin();
+        localUserInfo.nickname = this.b.a.getCurrentNickname();
+        QZoneHelper.forwardFromAIOToFeedDetail((Activity)localObject1, localUserInfo, this.a.actionUrl, "mqqChat.QzoneCard", this.a.appId, -1);
         localObject1 = new QZoneClickReport.ReportInfo();
         ((QZoneClickReport.ReportInfo)localObject1).actionType = "1";
         ((QZoneClickReport.ReportInfo)localObject1).subactionType = "0";
@@ -55,12 +55,12 @@ class QzoneFeedItemBuilder$1
         ((QZoneClickReport.ReportInfo)localObject1).sourceType = "3";
         ((QZoneClickReport.ReportInfo)localObject1).sourceFrom = "AIO";
         ((QZoneClickReport.ReportInfo)localObject1).sourceTo = "detailPage";
-        QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), (QZoneClickReport.ReportInfo)localObject1);
+        QZoneClickReport.startReportImediately(this.b.a.getAccount(), (QZoneClickReport.ReportInfo)localObject1);
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("source_type", "3");
         ((HashMap)localObject1).put("source_from", "AIO");
         ((HashMap)localObject1).put("source_to", "detailPage");
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject1, null);
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.b.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject1, null);
       }
       if (localMap != null) {
         localObject2 = (String)localMap.get("a");
@@ -79,22 +79,22 @@ class QzoneFeedItemBuilder$1
         ((QZoneClickReport.ReportInfo)localObject2).actionType = "330";
         ((QZoneClickReport.ReportInfo)localObject2).subactionType = "2";
         ((QZoneClickReport.ReportInfo)localObject2).reserves = ((String)localObject1);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.isFirstMsgWithNewFriend) {
+        if (this.a.isFirstMsgWithNewFriend) {
           ((QZoneClickReport.ReportInfo)localObject2).reserves10 = "1";
         }
         ((QZoneClickReport.ReportInfo)localObject2).reservesExt = new ArrayList();
-        ((QZoneClickReport.ReportInfo)localObject2).reservesExt.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-        QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), (QZoneClickReport.ReportInfo)localObject2);
+        ((QZoneClickReport.ReportInfo)localObject2).reservesExt.add(this.a.actionUrl);
+        QZoneClickReport.startReportImediately(this.b.a.getAccount(), (QZoneClickReport.ReportInfo)localObject2);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "2", "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a, "CliOper", "", "", "0X8006000", "0X8006000", 0, 0, "", "", "", "");
+      ReportController.b(this.b.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "2", "", "");
+      ReportController.b(this.b.a, "CliOper", "", "", "0X8006000", "0X8006000", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

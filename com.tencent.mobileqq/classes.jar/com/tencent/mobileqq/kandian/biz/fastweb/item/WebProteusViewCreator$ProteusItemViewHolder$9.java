@@ -16,13 +16,13 @@ class WebProteusViewCreator$ProteusItemViewHolder$9
   
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    FastWebDislikeUtils.b(paramContext, paramProteusItemData.b, paramProteusItemData.a);
-    RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(paramProteusItemData.b.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_SHARE, 0, 0, 0), 5);
+    FastWebDislikeUtils.b(paramContext, paramProteusItemData.aQ, paramProteusItemData.aR);
+    RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(paramProteusItemData.aQ.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_SHARE, 0, 0, 0), 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.9
  * JD-Core Version:    0.7.0.1
  */

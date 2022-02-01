@@ -31,25 +31,25 @@ public class ApolloTianshuReportUtil
     localStringBuilder.append("_");
     localStringBuilder.append(l);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.75";
-    localTianShuReportData.jdField_f_of_type_JavaLangString = "tianshu.75";
-    localTianShuReportData.g = paramString1;
-    localTianShuReportData.h = "";
-    localTianShuReportData.jdField_a_of_type_Long = l;
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.jdField_f_of_type_Int = 1;
-    localTianShuReportData.l = paramString2;
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = "tianshu.75";
+    localTianShuReportData.g = "tianshu.75";
+    localTianShuReportData.h = paramString1;
+    localTianShuReportData.i = "";
+    localTianShuReportData.o = l;
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.r = 1;
+    localTianShuReportData.s = paramString2;
     if (!TextUtils.isEmpty(paramString3)) {
-      localTianShuReportData.m = paramString3;
+      localTianShuReportData.t = paramString3;
     }
     TianShuManager.getInstance().report(localTianShuReportData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.ApolloTianshuReportUtil
  * JD-Core Version:    0.7.0.1
  */

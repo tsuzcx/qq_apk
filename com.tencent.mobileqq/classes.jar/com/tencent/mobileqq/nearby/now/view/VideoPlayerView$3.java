@@ -17,7 +17,7 @@ class VideoPlayerView$3
       ((IVideoPlayerView.VideoInfoListener)this.a.mVideoInfoListener).onComplete();
     }
     this.a.mHandler.removeMessages(2025);
-    paramIVideoView = VideoPlayerView.access$200(this.a).a;
+    paramIVideoView = VideoPlayerView.access$200(this.a).c;
     int i;
     if (this.a.isVideoCached()) {
       i = 1;
@@ -29,7 +29,7 @@ class VideoPlayerView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.3
  * JD-Core Version:    0.7.0.1
  */

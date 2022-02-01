@@ -26,14 +26,14 @@ public class NearbyMsgListRefresher
   {
     if ((AppConstants.SYSTEM_MSG_UIN.equalsIgnoreCase(paramMessageRecord.frienduin)) && (!paramMessageRecord.isread))
     {
-      this.a.a().a(paramMessageRecord, this.a.a().getMessageFacade().a());
+      this.a.z().a(paramMessageRecord, this.a.a().getMessageFacade().B());
       return;
     }
-    if (this.a.a())
+    if (this.a.j())
     {
-      paramMessageRecord = this.a.a().a();
+      paramMessageRecord = this.a.e().e();
       paramMessageRecord.a(true);
-      paramMessageRecord.b();
+      paramMessageRecord.c();
       paramChatMessage.mMsgAnimFlag = true;
       a(196608);
     }
@@ -42,7 +42,7 @@ public class NearbyMsgListRefresher
   
   protected void a(Object paramObject, MessageRecord paramMessageRecord)
   {
-    if (((paramMessageRecord.istroop == 1001) || (paramMessageRecord.istroop == 10002)) && (this.a.a().jdField_a_of_type_JavaLangString.equals(paramMessageRecord.senderuin)) && (UinTypeUtil.b(this.a.a().jdField_a_of_type_Int)))
+    if (((paramMessageRecord.istroop == 1001) || (paramMessageRecord.istroop == 10002)) && (this.a.O().b.equals(paramMessageRecord.senderuin)) && (UinTypeUtil.b(this.a.O().a)))
     {
       a((ChatMessage)paramObject, paramMessageRecord);
       return;
@@ -52,12 +52,12 @@ public class NearbyMsgListRefresher
   
   protected boolean a(MessageRecord paramMessageRecord)
   {
-    return (this.a.a().jdField_a_of_type_JavaLangString.equals(paramMessageRecord.frienduin)) && ((this.a.a().jdField_a_of_type_Int == paramMessageRecord.istroop) || ((UinTypeUtil.b(this.a.a().jdField_a_of_type_Int)) && (UinTypeUtil.b(paramMessageRecord.istroop))));
+    return (this.a.O().b.equals(paramMessageRecord.frienduin)) && ((this.a.O().a == paramMessageRecord.istroop) || ((UinTypeUtil.b(this.a.O().a)) && (UinTypeUtil.b(paramMessageRecord.istroop))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.NearbyMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

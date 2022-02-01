@@ -48,7 +48,7 @@ public class MiniLogManager
   
   public static void compressAndUploadLog(String paramString, int paramInt)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return;
     }
     ThreadManagerV2.executeOnFileThread(new MiniLogManager.5(MiniLog.getMiniLogFolderPath(paramString), paramString, paramInt));
@@ -56,9 +56,9 @@ public class MiniLogManager
   
   private static void doUploadFile(String paramString1, String paramString2)
   {
-    if (!StringUtil.a(paramString1))
+    if (!StringUtil.isEmpty(paramString1))
     {
-      if (StringUtil.a(paramString2)) {
+      if (StringUtil.isEmpty(paramString2)) {
         return;
       }
       ThreadManager.excute(new MiniLogManager.7(paramString1, paramString2), 128, null, false);
@@ -114,7 +114,7 @@ public class MiniLogManager
   
   public static void upload(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((!StringUtil.a(paramString1)) && (!StringUtil.a(paramString2)))
+    if ((!StringUtil.isEmpty(paramString1)) && (!StringUtil.isEmpty(paramString2)))
     {
       if (!new File(paramString2).exists()) {
         return;
@@ -122,10 +122,10 @@ public class MiniLogManager
       String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Android|");
-      localStringBuilder.append(DeviceInfoUtil.e());
+      localStringBuilder.append(DeviceInfoUtil.g());
       localStringBuilder.append("|");
-      localStringBuilder.append(DeviceInfoUtil.i());
-      paramString1 = new GetMiniAppReq(paramString1, paramInt2, paramInt1, "", str, localStringBuilder.toString(), DeviceInfoUtil.c());
+      localStringBuilder.append(DeviceInfoUtil.u());
+      paramString1 = new GetMiniAppReq(paramString1, paramInt2, paramInt1, "", str, localStringBuilder.toString(), DeviceInfoUtil.e());
       ((IQWalletApi)QRoute.api(IQWalletApi.class)).servletSendRequest(paramString1, new MiniLogManager.6(paramString2, paramInt1));
     }
   }
@@ -294,7 +294,7 @@ public class MiniLogManager
     //   336: aload 12
     //   338: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   341: aload_0
-    //   342: invokestatic 397	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   342: invokestatic 398	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   345: aload_1
     //   346: invokevirtual 387	java/io/BufferedOutputStream:close	()V
     //   349: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -314,13 +314,13 @@ public class MiniLogManager
     //   383: athrow
     //   384: astore_0
     //   385: aload_0
-    //   386: invokevirtual 400	java/io/IOException:printStackTrace	()V
+    //   386: invokevirtual 401	java/io/IOException:printStackTrace	()V
     //   389: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   392: ifeq +13 -> 405
     //   395: getstatic 89	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   398: iconst_2
-    //   399: ldc_w 402
-    //   402: invokestatic 404	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   399: ldc_w 403
+    //   402: invokestatic 405	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   405: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -376,7 +376,7 @@ public class MiniLogManager
     //   13: new 186	java/io/File
     //   16: dup
     //   17: aload_0
-    //   18: invokestatic 412	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:getZipLogFilePath	(Ljava/io/File;)Ljava/lang/String;
+    //   18: invokestatic 413	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:getZipLogFilePath	(Ljava/io/File;)Ljava/lang/String;
     //   21: invokespecial 252	java/io/File:<init>	(Ljava/lang/String;)V
     //   24: invokespecial 319	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   27: invokespecial 322	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
@@ -395,33 +395,33 @@ public class MiniLogManager
     //   55: new 351	java/util/zip/ZipEntry
     //   58: dup
     //   59: aload_0
-    //   60: invokevirtual 413	java/io/File:getName	()Ljava/lang/String;
+    //   60: invokevirtual 414	java/io/File:getName	()Ljava/lang/String;
     //   63: invokespecial 352	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
     //   66: astore 6
     //   68: aload 6
     //   70: aload_0
-    //   71: invokevirtual 414	java/io/File:length	()J
-    //   74: invokevirtual 417	java/util/zip/ZipEntry:setSize	(J)V
+    //   71: invokevirtual 415	java/io/File:length	()J
+    //   74: invokevirtual 418	java/util/zip/ZipEntry:setSize	(J)V
     //   77: aload 6
     //   79: aload_0
-    //   80: invokevirtual 420	java/io/File:lastModified	()J
-    //   83: invokevirtual 423	java/util/zip/ZipEntry:setTime	(J)V
+    //   80: invokevirtual 421	java/io/File:lastModified	()J
+    //   83: invokevirtual 424	java/util/zip/ZipEntry:setTime	(J)V
     //   86: aload 4
     //   88: aload 6
     //   90: invokevirtual 356	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   93: new 425	java/io/BufferedInputStream
+    //   93: new 426	java/io/BufferedInputStream
     //   96: dup
     //   97: new 365	java/io/FileInputStream
     //   100: dup
     //   101: aload_0
     //   102: invokespecial 366	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   105: invokespecial 428	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   105: invokespecial 429	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   108: astore_0
     //   109: aload_0
     //   110: aload 5
     //   112: iconst_0
     //   113: sipush 8192
-    //   116: invokevirtual 431	java/io/InputStream:read	([BII)I
+    //   116: invokevirtual 432	java/io/InputStream:read	([BII)I
     //   119: istore_1
     //   120: iload_1
     //   121: iconst_m1
@@ -437,12 +437,12 @@ public class MiniLogManager
     //   142: aload_2
     //   143: invokevirtual 387	java/io/BufferedOutputStream:close	()V
     //   146: aload_0
-    //   147: invokevirtual 432	java/io/InputStream:close	()V
+    //   147: invokevirtual 433	java/io/InputStream:close	()V
     //   150: iconst_1
     //   151: ireturn
     //   152: astore_0
     //   153: aload_0
-    //   154: invokevirtual 433	java/lang/Throwable:printStackTrace	()V
+    //   154: invokevirtual 434	java/lang/Throwable:printStackTrace	()V
     //   157: iconst_1
     //   158: ireturn
     //   159: astore_3
@@ -473,7 +473,7 @@ public class MiniLogManager
     //   198: aload 4
     //   200: astore_2
     //   201: aload_3
-    //   202: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   202: invokevirtual 435	java/lang/Exception:printStackTrace	()V
     //   205: aload_2
     //   206: ifnull +10 -> 216
     //   209: aload_2
@@ -482,11 +482,11 @@ public class MiniLogManager
     //   216: aload_0
     //   217: ifnull +13 -> 230
     //   220: aload_0
-    //   221: invokevirtual 432	java/io/InputStream:close	()V
+    //   221: invokevirtual 433	java/io/InputStream:close	()V
     //   224: iconst_0
     //   225: ireturn
     //   226: aload_0
-    //   227: invokevirtual 433	java/lang/Throwable:printStackTrace	()V
+    //   227: invokevirtual 434	java/lang/Throwable:printStackTrace	()V
     //   230: iconst_0
     //   231: ireturn
     //   232: astore_3
@@ -498,10 +498,10 @@ public class MiniLogManager
     //   244: aload_0
     //   245: ifnull +14 -> 259
     //   248: aload_0
-    //   249: invokevirtual 432	java/io/InputStream:close	()V
+    //   249: invokevirtual 433	java/io/InputStream:close	()V
     //   252: goto +7 -> 259
     //   255: aload_0
-    //   256: invokevirtual 433	java/lang/Throwable:printStackTrace	()V
+    //   256: invokevirtual 434	java/lang/Throwable:printStackTrace	()V
     //   259: goto +5 -> 264
     //   262: aload_3
     //   263: athrow
@@ -550,7 +550,7 @@ public class MiniLogManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager
  * JD-Core Version:    0.7.0.1
  */

@@ -29,17 +29,17 @@ import java.util.ArrayList;
 public class QzoneEditVideoActivity
   extends EditVideoActivity
 {
-  private static final String jdField_a_of_type_JavaLangString = "QzoneEditVideoActivity";
-  private QzEditVideoPartManager jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager;
-  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final String c = "QzoneEditVideoActivity";
+  private QzEditVideoPartManager d;
+  private boolean e = false;
+  private QzoneVerticalVideoTopicInfo f;
   
   private void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     b(paramIntent);
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("QzoneEditVideoActivity finish --- resultCode : ");
       localStringBuilder.append(paramInt1);
@@ -87,7 +87,106 @@ public class QzoneEditVideoActivity
     ((IMediaCodecSendTask)QRoute.api(IMediaCodecSendTask.class)).execute(localVideoSendPublicParamBase);
   }
   
-  private boolean a()
+  private void b(@Nullable Intent paramIntent)
+  {
+    if (paramIntent != null)
+    {
+      Object localObject = this.d;
+      if (localObject != null)
+      {
+        paramIntent.putExtra("key_content", ((QzEditVideoPartManager)localObject).g);
+        paramIntent.putExtra("key_topic_sync_qzone", this.d.i);
+        paramIntent.putExtra("key_priv", this.d.d);
+        paramIntent.putExtra("key_priv_uin_list", this.d.c);
+        paramIntent.putExtra("key_font_id", this.d.o);
+        paramIntent.putExtra("key_font_format_type", this.d.p);
+        paramIntent.putExtra("key_font_url", this.d.q);
+        paramIntent.putExtra("key_super_font_id", this.d.r);
+        paramIntent.putExtra("key_super_font_info", this.d.s);
+        paramIntent.putExtra("key_timer_delete", this.d.z);
+        paramIntent.putExtra("key_sync_to_qqstory", this.d.x);
+        paramIntent.putExtra("param.isUploadOrigin", this.d.y);
+        if ((QzoneSlideShowPhotoListManager.a().d() == 14) || (QzoneSlideShowPhotoListManager.a().d() == 19)) {
+          c(paramIntent);
+        }
+        localObject = c;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QzoneEditVideoActivity ");
+        localStringBuilder.append(paramIntent.getExtras());
+        QLog.i((String)localObject, 2, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  private boolean c(Intent paramIntent)
+  {
+    if (paramIntent != null)
+    {
+      Object localObject2 = paramIntent.getStringExtra("key_content");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      int j = paramIntent.getIntExtra("key_priv", 1);
+      Object localObject3 = (ArrayList)paramIntent.getSerializableExtra("key_priv_uin_list");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = new ArrayList();
+      }
+      if (c().getIntent() != null) {
+        c().getIntent().putExtra("from_qzone_slideshow", true);
+      }
+      int k = paramIntent.getIntExtra("key_font_id", -1);
+      int m = paramIntent.getIntExtra("key_font_format_type", 0);
+      localObject3 = paramIntent.getStringExtra("key_font_url");
+      int n = paramIntent.getIntExtra("key_super_font_id", -1);
+      String str = paramIntent.getStringExtra("key_super_font_info");
+      boolean bool1 = paramIntent.getBooleanExtra("key_generate_gif", false);
+      boolean bool2 = paramIntent.getBooleanExtra("key_timer_delete", false);
+      boolean bool3 = paramIntent.getBooleanExtra("key_sync_to_qqstory", false);
+      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
+      int i;
+      if (localPublishParam.n <= 5) {
+        i = localPublishParam.n;
+      } else {
+        i = 0;
+      }
+      int i1 = (int)localPublishParam.j;
+      boolean bool4 = paramIntent.getBooleanExtra("param.isUploadOrigin", false);
+      a(localPublishParam.u, i, localPublishParam.t, localPublishParam.c, localPublishParam.b, i1, null, (String)localObject1, j, (ArrayList)localObject2, false, k, m, (String)localObject3, n, str, bool1, bool2, bool3, bool4);
+      return true;
+    }
+    return false;
+  }
+  
+  private void e()
+  {
+    this.d.u = h();
+    this.d.h = getIntent().getBooleanExtra("mIsQzoneVip", false);
+  }
+  
+  private void f()
+  {
+    boolean bool = getIntent().getBooleanExtra("enable_input_text", true);
+    QzEditVideoPartManager localQzEditVideoPartManager = this.d;
+    localQzEditVideoPartManager.k = bool;
+    localQzEditVideoPartManager.l = getIntent().getBooleanExtra("enable_sync_qzone", false);
+    this.d.m = getIntent().getBooleanExtra("enable_priv_list", true);
+    if (!TextUtils.isEmpty(getIntent().getStringExtra("topic_id"))) {
+      this.d.j = true;
+    }
+    this.d.o = getIntent().getIntExtra("key_font_id", -1);
+    this.d.r = getIntent().getIntExtra("key_super_font_id", -1);
+    this.d.s = getIntent().getStringExtra("key_super_font_info");
+  }
+  
+  private void g()
+  {
+    this.f = ((QzoneVerticalVideoTopicInfo)getIntent().getParcelableExtra("key_qzone_topic"));
+    this.d.w = this.f;
+  }
+  
+  private boolean h()
   {
     Intent localIntent = getIntent();
     boolean bool2 = false;
@@ -103,112 +202,13 @@ public class QzoneEditVideoActivity
     return bool1;
   }
   
-  private boolean a(Intent paramIntent)
-  {
-    if (paramIntent != null)
-    {
-      Object localObject2 = paramIntent.getStringExtra("key_content");
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      int j = paramIntent.getIntExtra("key_priv", 1);
-      Object localObject3 = (ArrayList)paramIntent.getSerializableExtra("key_priv_uin_list");
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = new ArrayList();
-      }
-      if (a().getIntent() != null) {
-        a().getIntent().putExtra("from_qzone_slideshow", true);
-      }
-      int k = paramIntent.getIntExtra("key_font_id", -1);
-      int m = paramIntent.getIntExtra("key_font_format_type", 0);
-      localObject3 = paramIntent.getStringExtra("key_font_url");
-      int n = paramIntent.getIntExtra("key_super_font_id", -1);
-      String str = paramIntent.getStringExtra("key_super_font_info");
-      boolean bool1 = paramIntent.getBooleanExtra("key_generate_gif", false);
-      boolean bool2 = paramIntent.getBooleanExtra("key_timer_delete", false);
-      boolean bool3 = paramIntent.getBooleanExtra("key_sync_to_qqstory", false);
-      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
-      int i;
-      if (localPublishParam.f <= 5) {
-        i = localPublishParam.f;
-      } else {
-        i = 0;
-      }
-      int i1 = (int)localPublishParam.jdField_a_of_type_Long;
-      boolean bool4 = paramIntent.getBooleanExtra("param.isUploadOrigin", false);
-      a(localPublishParam.k, i, localPublishParam.j, localPublishParam.jdField_c_of_type_JavaLangString, localPublishParam.b, i1, null, (String)localObject1, j, (ArrayList)localObject2, false, k, m, (String)localObject3, n, str, bool1, bool2, bool3, bool4);
-      return true;
-    }
-    return false;
-  }
-  
-  private void b(@Nullable Intent paramIntent)
-  {
-    if (paramIntent != null)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager;
-      if (localObject != null)
-      {
-        paramIntent.putExtra("key_content", ((QzEditVideoPartManager)localObject).jdField_c_of_type_JavaLangString);
-        paramIntent.putExtra("key_topic_sync_qzone", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_b_of_type_Boolean);
-        paramIntent.putExtra("key_priv", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_Int);
-        paramIntent.putExtra("key_priv_uin_list", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_JavaUtilArrayList);
-        paramIntent.putExtra("key_font_id", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_b_of_type_Int);
-        paramIntent.putExtra("key_font_format_type", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_c_of_type_Int);
-        paramIntent.putExtra("key_font_url", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_JavaLangString);
-        paramIntent.putExtra("key_super_font_id", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_Int);
-        paramIntent.putExtra("key_super_font_info", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_e_of_type_JavaLangString);
-        paramIntent.putExtra("key_timer_delete", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.l);
-        paramIntent.putExtra("key_sync_to_qqstory", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.j);
-        paramIntent.putExtra("param.isUploadOrigin", this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.k);
-        if ((QzoneSlideShowPhotoListManager.a().a() == 14) || (QzoneSlideShowPhotoListManager.a().a() == 19)) {
-          a(paramIntent);
-        }
-        localObject = jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("QzoneEditVideoActivity ");
-        localStringBuilder.append(paramIntent.getExtras());
-        QLog.i((String)localObject, 2, localStringBuilder.toString());
-      }
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.i = a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("mIsQzoneVip", false);
-  }
-  
-  private void d()
-  {
-    boolean bool = getIntent().getBooleanExtra("enable_input_text", true);
-    QzEditVideoPartManager localQzEditVideoPartManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager;
-    localQzEditVideoPartManager.jdField_d_of_type_Boolean = bool;
-    localQzEditVideoPartManager.jdField_e_of_type_Boolean = getIntent().getBooleanExtra("enable_sync_qzone", false);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.f = getIntent().getBooleanExtra("enable_priv_list", true);
-    if (!TextUtils.isEmpty(getIntent().getStringExtra("topic_id"))) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_c_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_b_of_type_Int = getIntent().getIntExtra("key_font_id", -1);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_Int = getIntent().getIntExtra("key_super_font_id", -1);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("key_super_font_info");
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = ((QzoneVerticalVideoTopicInfo)getIntent().getParcelableExtra("key_qzone_topic"));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
-  }
-  
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager = new QzEditVideoPartManager(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager;
-    d();
-    c();
+    this.d = new QzEditVideoPartManager(this);
+    this.b = this.d;
+    f();
     e();
+    g();
   }
   
   public void a(Intent paramIntent)
@@ -227,9 +227,9 @@ public class QzoneEditVideoActivity
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           paramIntent = new StringBuilder();
-          paramIntent.append(HardCodeUtil.a(2131711681));
+          paramIntent.append(HardCodeUtil.a(2131909319));
           paramIntent.append((String)localObject);
-          QQToast.a(this, paramIntent.toString(), 0).a();
+          QQToast.makeText(this, paramIntent.toString(), 0).show();
           finish();
           return;
         }
@@ -239,7 +239,7 @@ public class QzoneEditVideoActivity
         setIntent(paramIntent);
         doOnCreate(null);
         doOnResume();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.dismissLoadingDialog();
+        this.d.H.dismissLoadingDialog();
       }
     }
   }
@@ -255,9 +255,9 @@ public class QzoneEditVideoActivity
       getIntent().putExtra("edit_video_type", 10001);
       getIntent().putExtra("qq_sub_business_id", 3);
       getIntent().putExtra("qzone_slide_enable_mask", 50043L);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.showLoadingDialog(HardCodeUtil.a(2131711677), false, 500L);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.u_();
-      this.jdField_a_of_type_Boolean = true;
+      this.d.H.showLoadingDialog(HardCodeUtil.a(2131909315), false, 500L);
+      this.d.av_();
+      this.e = true;
       ((CaptureComboManager)QIMManager.a(5)).a(this);
       QzoneSlideShowPhotoListManager.a().a(this, new QzoneEditVideoActivity.1(this), 2);
       return;
@@ -267,9 +267,9 @@ public class QzoneEditVideoActivity
   
   public void doOnBackPressed()
   {
-    QzEditVideoPartManager localQzEditVideoPartManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager;
+    QzEditVideoPartManager localQzEditVideoPartManager = this.d;
     if (localQzEditVideoPartManager != null) {
-      localQzEditVideoPartManager.n = true;
+      localQzEditVideoPartManager.B = true;
     }
     super.doOnBackPressed();
   }
@@ -277,32 +277,32 @@ public class QzoneEditVideoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    findViewById(2064122522).setVisibility(8);
+    findViewById(2063991341).setVisibility(8);
     return bool;
   }
   
   protected void doOnDestroy()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (QzoneSlideShowPhotoListManager.a().b() == 22)) {
-      if (QzoneSlideShowPhotoListManager.a().a() == 19)
+    if ((!this.e) && (QzoneSlideShowPhotoListManager.a().e() == 22)) {
+      if (QzoneSlideShowPhotoListManager.a().d() == 19)
       {
         QzoneSlideShowPhotoListManager.a().b(14);
       }
-      else if (QzoneSlideShowPhotoListManager.a().a() == 14)
+      else if (QzoneSlideShowPhotoListManager.a().d() == 14)
       {
         QzoneSlideShowPhotoListManager.a().c(20);
         QzoneSlideShowPhotoListManager.a().b(99);
       }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.e) {
+      this.e = false;
     }
     super.doOnDestroy();
   }
   
   public void finish(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzEditVideoPartManager.n)
+    if (this.d.B)
     {
       a(paramInt1, paramIntent, paramInt2, paramInt3, false);
       return;
@@ -317,7 +317,7 @@ public class QzoneEditVideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditVideoActivity
  * JD-Core Version:    0.7.0.1
  */

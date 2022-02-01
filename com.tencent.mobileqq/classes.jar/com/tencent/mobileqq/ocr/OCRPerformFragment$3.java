@@ -11,21 +11,21 @@ class OCRPerformFragment$3
   public void a()
   {
     OCRPerformUtil.a("0X800AAE1", 0);
-    if (OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(false);
+    if (OCRPerformFragment.d(this.a).a()) {
+      OCRPerformFragment.d(this.a).setShowTextMask(false);
     }
   }
   
   public void b()
   {
-    if (!OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(true);
+    if (!OCRPerformFragment.d(this.a).a()) {
+      OCRPerformFragment.d(this.a).setShowTextMask(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.3
  * JD-Core Version:    0.7.0.1
  */

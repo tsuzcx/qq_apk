@@ -17,11 +17,10 @@ import com.tencent.aelight.camera.cmsshow.api.CmShowAssetsData;
 import com.tencent.aelight.camera.cmsshow.api.CmShowDataWrapper;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.crossengine.CEApplication;
-import com.tencent.crossengine.CEApplication.Builder;
-import com.tencent.crossengine.CESurfaceView;
-import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
+import com.tencent.crossengine.CEApplicationBuilder;
+import com.tencent.crossengine.CERenderView;
 import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager.ApolloDressInfoListener;
+import com.tencent.mobileqq.apollo.ipc.business.ICMResManager;
 import com.tencent.mobileqq.apollo.statistics.ApolloQualityReportUtil;
 import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
@@ -34,6 +33,8 @@ import com.tencent.mobileqq.cmshow.crossengine.CEEngineContext;
 import com.tencent.mobileqq.cmshow.crossengine.CEScriptService;
 import com.tencent.mobileqq.cmshow.crossengine.util.CEFontPixelsFactory;
 import com.tencent.mobileqq.cmshow.crossengine.util.CELogger;
+import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager.ApolloDressInfoListener;
 import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -57,37 +58,31 @@ public class CmShowMakeupFragment
   extends WebViewFragment
   implements IApolloJsCallBack
 {
-  private static final float[] jdField_a_of_type_ArrayOfFloat = { 0.827F, 0.843F, 0.8475F };
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "blush", "eyeshadow", "eyeline", "freckle", "lipstick", "tatoo", "wing", "eyeglasses", "headDress" };
-  private int jdField_a_of_type_Int;
-  private volatile long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private CmShowAssetsData jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData;
-  private CEApplication jdField_a_of_type_ComTencentCrossengineCEApplication;
-  private CESurfaceView jdField_a_of_type_ComTencentCrossengineCESurfaceView;
-  private CmShowCrossEngineLoader.CEInitListener jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitListener = new CmShowMakeupFragment.2(this);
-  private CmShowEALoader.InitListener jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitListener = new CmShowMakeupFragment.1(this);
-  private CmShowEALoader jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader;
-  private IApolloResManager.ApolloDressInfoListener jdField_a_of_type_ComTencentMobileqqApolloResApiIApolloResManager$ApolloDressInfoListener;
-  private CmShowAESurfaceView jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView;
-  private CEScriptService jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEScriptService;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private volatile long jdField_b_of_type_Long = 0L;
-  private CmShowAssetsData jdField_b_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private volatile boolean c = false;
-  private volatile boolean d = true;
-  
-  @NotNull
-  private IApolloResManager.ApolloDressInfoListener a(@NotNull CmShowDataWrapper paramCmShowDataWrapper)
-  {
-    return new CmShowMakeupFragment.DressInfoListener(this, this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData, paramCmShowDataWrapper, null);
-  }
+  private static final float[] u = { 0.827F, 0.843F, 0.8475F };
+  private static final String[] w = { "blush", "eyeshadow", "eyeline", "freckle", "lipstick", "tatoo", "wing", "eyeglasses", "headDress" };
+  private CEApplication a;
+  private CERenderView b;
+  private int c;
+  private volatile boolean d;
+  private boolean e;
+  private CEScriptService f;
+  private HashMap<String, String> g;
+  private String h;
+  private CmShowAESurfaceView i;
+  private ImageView j;
+  private String k;
+  private CmShowAssetsData l;
+  private CmShowAssetsData m;
+  private int n;
+  private volatile boolean o = false;
+  private Handler p = new Handler(Looper.getMainLooper());
+  private CmShowEALoader q;
+  private volatile long r = 0L;
+  private volatile long s = 0L;
+  private volatile boolean t = true;
+  private IApolloResManager.ApolloDressInfoListener v;
+  private CmShowEALoader.InitListener x = new CmShowMakeupFragment.1(this);
+  private CmShowCrossEngineLoader.CEInitListener y = new CmShowMakeupFragment.2(this);
   
   private void a(CmShowAssetsData paramCmShowAssetsData)
   {
@@ -96,74 +91,77 @@ public class CmShowMakeupFragment
       QLog.d("[cmshow]CmShowMakeupFragment", 0, "[cmShowSetKapuModel] assetsData is null, return!");
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData = paramCmShowAssetsData;
-    if (CmShowWnsUtils.w()) {
-      if ((this.jdField_a_of_type_ComTencentCrossengineCESurfaceView != null) && (this.jdField_a_of_type_ComTencentCrossengineCEApplication != null))
+    this.l = paramCmShowAssetsData;
+    if (CMShowPlatform.a.b(Scene.MAKE_UP_3D)) {
+      if ((this.b != null) && (this.a != null))
       {
-        localObject1 = paramCmShowAssetsData.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        localObject1 = paramCmShowAssetsData.b.entrySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
           localObject2 = (String)((Map.Entry)localObject3).getKey();
-          localObject3 = ((String)((Map.Entry)localObject3).getValue()).replace(ApolloConstant.j, "");
-          if (!TextUtils.equals((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2), (CharSequence)localObject3))
+          if (!TextUtils.isEmpty((CharSequence)((Map.Entry)localObject3).getValue()))
           {
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localObject3);
-            localObject2 = String.format("ce.Level.CMShow.putOn('', '%s');", new Object[] { localObject3 });
-            this.jdField_a_of_type_ComTencentCrossengineCEApplication.evaluateJs((String)localObject2);
+            localObject3 = ((String)((Map.Entry)localObject3).getValue()).replace(ApolloConstant.k, "");
+            if (!TextUtils.equals((CharSequence)this.g.get(localObject2), (CharSequence)localObject3))
+            {
+              this.g.put(localObject2, localObject3);
+              localObject2 = String.format("ce.Level.CMShow.putOn('', '%s');", new Object[] { localObject3 });
+              this.a.evaluateJs((String)localObject2);
+            }
           }
         }
-        localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
+        localObject1 = w;
+        int i2 = localObject1.length;
+        int i1 = 0;
+        while (i1 < i2)
         {
-          localObject2 = localObject1[i];
-          if ((!paramCmShowAssetsData.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)))
+          localObject2 = localObject1[i1];
+          if ((!paramCmShowAssetsData.b.containsKey(localObject2)) && (this.g.containsKey(localObject2)))
           {
-            this.jdField_a_of_type_JavaUtilHashMap.remove(localObject2);
+            this.g.remove(localObject2);
             localObject2 = String.format("ce.Level.CMShow.takeOff('%s')", new Object[] { localObject2 });
-            this.jdField_a_of_type_ComTencentCrossengineCEApplication.evaluateJs((String)localObject2);
+            this.a.evaluateJs((String)localObject2);
           }
-          i += 1;
+          i1 += 1;
         }
-        if (TextUtils.isEmpty(paramCmShowAssetsData.jdField_b_of_type_JavaLangString)) {
-          break label468;
+        if (TextUtils.isEmpty(paramCmShowAssetsData.c)) {
+          break label493;
         }
         localObject1 = null;
       }
     }
     try
     {
-      localObject2 = new JSONObject(paramCmShowAssetsData.jdField_b_of_type_JavaLangString);
+      localObject2 = new JSONObject(paramCmShowAssetsData.c);
       ((JSONObject)localObject2).remove("callback");
       localObject2 = ((JSONObject)localObject2).toString();
       localObject1 = localObject2;
     }
     catch (Exception localException)
     {
-      label305:
-      break label305;
+      label330:
+      break label330;
     }
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[CrossEngine] doSetCmShowAssetsData error json format. json=");
-    ((StringBuilder)localObject2).append(paramCmShowAssetsData.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(paramCmShowAssetsData.c);
     QLog.e("[cmshow]CmShowMakeupFragment", 1, ((StringBuilder)localObject2).toString());
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, (CharSequence)localObject1))
+    if (!TextUtils.equals(this.h, (CharSequence)localObject1))
     {
-      this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      paramCmShowAssetsData = String.format("ce.Level.CMShow.setFaceJson('%s');", new Object[] { paramCmShowAssetsData.jdField_b_of_type_JavaLangString });
-      this.jdField_a_of_type_ComTencentCrossengineCEApplication.evaluateJs(paramCmShowAssetsData);
+      this.h = ((String)localObject1);
+      paramCmShowAssetsData = String.format("ce.Level.CMShow.setFaceJson('%s');", new Object[] { paramCmShowAssetsData.c });
+      this.a.evaluateJs(paramCmShowAssetsData);
       return;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[CrossEngine] doSetCmShowAssetsData ");
-      if (this.jdField_a_of_type_ComTencentCrossengineCEApplication == null) {
+      if (this.a == null) {
         paramCmShowAssetsData = "mCEApplication == null";
       } else {
         paramCmShowAssetsData = "mCEApplication != null";
       }
       ((StringBuilder)localObject1).append(paramCmShowAssetsData);
-      if (this.jdField_a_of_type_ComTencentCrossengineCESurfaceView == null) {
+      if (this.b == null) {
         paramCmShowAssetsData = "mCESurfaceView == null";
       } else {
         paramCmShowAssetsData = "mCESurfaceView != null";
@@ -171,20 +169,20 @@ public class CmShowMakeupFragment
       ((StringBuilder)localObject1).append(paramCmShowAssetsData);
       QLog.e("[cmshow]CmShowMakeupFragment", 1, ((StringBuilder)localObject1).toString());
     }
-    label468:
+    label493:
     return;
-    if (!this.c)
+    if (!this.o)
     {
       QLog.d("[cmshow]CmShowMakeupFragment", 0, "[cmShowSetKapuModel] not init AEKitView, return!");
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView;
+    Object localObject1 = this.i;
     if (localObject1 != null) {
-      ((CmShowAESurfaceView)localObject1).a(paramCmShowAssetsData.jdField_a_of_type_JavaUtilHashMap, paramCmShowAssetsData.jdField_b_of_type_JavaLangString, new CmShowMakeupFragment.5(this));
+      ((CmShowAESurfaceView)localObject1).a(paramCmShowAssetsData.b, paramCmShowAssetsData.c, new CmShowMakeupFragment.5(this));
     } else {
       QLog.e("[cmshow]CmShowMakeupFragment", 0, "[cmShowSetKapuModel] AEKitView is null, return!");
     }
-    paramCmShowAssetsData = paramCmShowAssetsData.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    paramCmShowAssetsData = paramCmShowAssetsData.b.entrySet().iterator();
     while (paramCmShowAssetsData.hasNext())
     {
       localObject1 = (Map.Entry)paramCmShowAssetsData.next();
@@ -207,13 +205,19 @@ public class CmShowMakeupFragment
     while (localIterator.hasNext()) {
       localArrayList.add((Integer)localIterator.next());
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloResApiIApolloResManager$ApolloDressInfoListener = a(paramCmShowDataWrapper);
-    ApolloIPCModule.a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqApolloResApiIApolloResManager$ApolloDressInfoListener);
+    this.v = b(paramCmShowDataWrapper);
+    ((ICMResManager)ApolloIPCModule.a(ICMResManager.class)).a(localArrayList, 1, this.v);
   }
   
-  private void c()
+  @NotNull
+  private IApolloResManager.ApolloDressInfoListener b(@NotNull CmShowDataWrapper paramCmShowDataWrapper)
   {
-    if (this.jdField_a_of_type_ComTencentCrossengineCEApplication != null) {
+    return new CmShowMakeupFragment.DressInfoListener(this, this.l, paramCmShowDataWrapper, null);
+  }
+  
+  private void d()
+  {
+    if (this.a != null) {
       return;
     }
     TraceReportUtil.a(126, 8);
@@ -223,7 +227,7 @@ public class CmShowMakeupFragment
       return;
     }
     CmShowMakeupFragment.3 local3 = new CmShowMakeupFragment.3(this);
-    String str = ApolloConstant.j;
+    String str = ApolloConstant.k;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -231,36 +235,39 @@ public class CmShowMakeupFragment
       localStringBuilder.append(str);
       QLog.d("[cmshow]CmShowMakeupFragment", 3, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentCrossengineCEApplication = CEApplication.Builder.createBuilder().withContext(getActivity()).setStartUpWorld("Contents/World/EmptyScene.nda").setAssetsPath(str).setLifeCycle(local3).setLogger(new CELogger()).setFontPixelsFactory(new CEFontPixelsFactory()).build();
-    this.jdField_a_of_type_ComTencentCrossengineCESurfaceView = this.jdField_a_of_type_ComTencentCrossengineCEApplication.createSurfaceView(getActivity());
-    this.jdField_a_of_type_ComTencentCrossengineCESurfaceView.setGestureDetector(new GestureDetector(getActivity(), new CmShowMakeupFragment.CEGestureListener(this)));
+    this.a = CEApplicationBuilder.createBuilder().withContext(getActivity()).setStartUpWorld("Contents/World/EmptyScene.nda").setAssetsPath(str).setLifeCycle(local3).setLogger(new CELogger()).setFontPixelsFactory(new CEFontPixelsFactory()).build();
+    this.b = this.a.createRenderView(getActivity());
+    this.b.setGestureDetector(new GestureDetector(getActivity(), new CmShowMakeupFragment.CEGestureListener(this)));
     if (getUIStyleHandler() == null) {
       QLog.w("[cmshow]CmShowMakeupFragment", 1, "[CrossEngine] getUIStyleHandler()==null");
-    } else if (getUIStyleHandler().c == null) {
+    } else if (getUIStyleHandler().u == null) {
       QLog.w("[cmshow]CmShowMakeupFragment", 1, "[CrossEngine] getUIStyleHandler().webviewWrapper == null");
     }
-    this.jdField_a_of_type_Boolean = false;
-    if ((getUIStyleHandler() != null) && (getUIStyleHandler().c != null)) {
-      d();
+    this.d = false;
+    if ((getUIStyleHandler() != null) && (getUIStyleHandler().u != null)) {
+      e();
     }
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEScriptService = new CEScriptService(new CEEngineContext(getContext(), this.jdField_a_of_type_ComTencentCrossengineCEApplication, Scene.MAKEUP_PAGE));
-    this.jdField_a_of_type_ComTencentCrossengineCEApplication.setCEJSEventListener(new CmShowMakeupFragment.4(this));
-    this.jdField_a_of_type_ComTencentCrossengineCEApplication.startGame();
+    this.f = new CEScriptService(new CEEngineContext(getContext(), this.a, Scene.MAKE_UP_3D));
+    this.a.setCEJSEventListener(new CmShowMakeupFragment.4(this));
+    this.a.setEnableGPUSkinning(false);
+    try
+    {
+      this.a.startGame();
+    }
+    catch (Exception localException)
+    {
+      QLog.e("[cmshow]CmShowMakeupFragment", 1, "[CrossEngine] initCrossEngine error", localException);
+    }
     TraceReportUtil.a(126, 8, 0, new Object[0]);
   }
   
-  private void d()
+  private void e()
   {
     QLog.i("[cmshow]CmShowMakeupFragment", 1, "[CrossEngine] add CESurfaceView");
-    this.jdField_a_of_type_Int = (ViewUtils.b() / 2);
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, this.jdField_a_of_type_Int);
-    getUIStyleHandler().c.addView(this.jdField_a_of_type_ComTencentCrossengineCESurfaceView, 0, localLayoutParams);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public CmShowAssetsData a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData;
+    this.c = (ViewUtils.getScreenHeight() / 2);
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, this.c);
+    getUIStyleHandler().u.addView(this.b, 0, localLayoutParams);
+    this.d = true;
   }
   
   protected CmShowAssetsData a(CmShowAssetsData paramCmShowAssetsData1, CmShowAssetsData paramCmShowAssetsData2, int paramInt)
@@ -279,21 +286,21 @@ public class CmShowMakeupFragment
         {
           if (paramInt == 3)
           {
-            paramCmShowAssetsData1.jdField_b_of_type_JavaLangString = paramCmShowAssetsData2.jdField_b_of_type_JavaLangString;
-            paramCmShowAssetsData1.jdField_a_of_type_JavaUtilHashMap = paramCmShowAssetsData2.jdField_a_of_type_JavaUtilHashMap;
+            paramCmShowAssetsData1.c = paramCmShowAssetsData2.c;
+            paramCmShowAssetsData1.b = paramCmShowAssetsData2.b;
           }
         }
         else {
-          paramCmShowAssetsData1.jdField_a_of_type_JavaUtilHashMap = paramCmShowAssetsData2.jdField_a_of_type_JavaUtilHashMap;
+          paramCmShowAssetsData1.b = paramCmShowAssetsData2.b;
         }
       }
       else
       {
-        String str2 = paramCmShowAssetsData1.jdField_b_of_type_JavaLangString;
-        String str1 = paramCmShowAssetsData2.jdField_b_of_type_JavaLangString;
+        String str2 = paramCmShowAssetsData1.c;
+        String str1 = paramCmShowAssetsData2.c;
         if (!TextUtils.isEmpty(str1)) {
           if (TextUtils.isEmpty(str2)) {
-            paramCmShowAssetsData1.jdField_b_of_type_JavaLangString = paramCmShowAssetsData2.jdField_b_of_type_JavaLangString;
+            paramCmShowAssetsData1.c = paramCmShowAssetsData2.c;
           } else {
             try
             {
@@ -311,7 +318,7 @@ public class CmShowMakeupFragment
                 localStringBuilder.append(str2);
                 QLog.d("[cmshow]CmShowMakeupFragment", 1, localStringBuilder.toString());
               }
-              paramCmShowAssetsData1.jdField_b_of_type_JavaLangString = str2;
+              paramCmShowAssetsData1.c = str2;
             }
             catch (Exception paramCmShowAssetsData2)
             {
@@ -322,10 +329,10 @@ public class CmShowMakeupFragment
       }
     }
     else {
-      paramCmShowAssetsData1.jdField_b_of_type_JavaLangString = paramCmShowAssetsData2.jdField_b_of_type_JavaLangString;
+      paramCmShowAssetsData1.c = paramCmShowAssetsData2.c;
     }
-    if (paramCmShowAssetsData1.jdField_a_of_type_JavaUtilHashMap != null) {
-      paramCmShowAssetsData1.jdField_a_of_type_JavaUtilHashMap.put("role", paramCmShowAssetsData1.jdField_a_of_type_JavaLangString);
+    if (paramCmShowAssetsData1.b != null) {
+      paramCmShowAssetsData1.b.put("role", paramCmShowAssetsData1.a);
     }
     return paramCmShowAssetsData1;
   }
@@ -334,10 +341,10 @@ public class CmShowMakeupFragment
   {
     try
     {
-      if (this.c)
+      if (this.o)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.setMaterialPath(this.jdField_b_of_type_JavaLangString);
+        if (this.i != null) {
+          this.i.setMaterialPath(this.k);
         }
         return;
       }
@@ -347,19 +354,19 @@ public class CmShowMakeupFragment
         QLog.d("[cmshow]CmShowMakeupFragment", 1, "[initAEKitView] activity is null  ");
         return;
       }
-      if ((getUIStyleHandler() != null) && (getUIStyleHandler().c != null))
+      if ((getUIStyleHandler() != null) && (getUIStyleHandler().u != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView = new CmShowAESurfaceView(getActivity());
+        this.i = new CmShowAESurfaceView(getActivity());
         Object localObject1 = new ViewGroup.LayoutParams(-1, -1);
-        getUIStyleHandler().c.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView, 0, (ViewGroup.LayoutParams)localObject1);
-        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-          getUIStyleHandler().c.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+        getUIStyleHandler().u.addView(this.i, 0, (ViewGroup.LayoutParams)localObject1);
+        if (this.j != null) {
+          getUIStyleHandler().u.removeView(this.j);
         }
         com.tencent.aekit.openrender.AEDebugConfig.ENABLE_GENDER_DETECT = false;
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.setFrameInterval(33);
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.setBackgroundColor(jdField_a_of_type_ArrayOfFloat[0], jdField_a_of_type_ArrayOfFloat[1], jdField_a_of_type_ArrayOfFloat[2]);
-        if (this.jdField_b_of_type_JavaLangString != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.setMaterialPath(this.jdField_b_of_type_JavaLangString);
+        this.i.setFrameInterval(33);
+        this.i.setBackgroundColor(u[0], u[1], u[2]);
+        if (this.k != null) {
+          this.i.setMaterialPath(this.k);
         }
         localObject1 = new Rect(0, 0, this.webView.getMeasuredWidth(), this.webView.getMeasuredHeight() / 2);
         if (QLog.isColorLevel())
@@ -369,13 +376,13 @@ public class CmShowMakeupFragment
           localStringBuilder.append(localObject1);
           QLog.d("[cmshow]CmShowMakeupFragment", 1, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.setTouchableRect((Rect)localObject1);
+        this.i.setTouchableRect((Rect)localObject1);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[initAEKitView] mMaterialPath  ");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.k);
         QLog.d("[cmshow]CmShowMakeupFragment", 1, ((StringBuilder)localObject1).toString());
-        this.c = true;
-        ApolloQualityReportUtil.a("dressup_ini_aekit_view", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        this.o = true;
+        ApolloQualityReportUtil.a("dressup_ini_aekit_view", String.valueOf(System.currentTimeMillis() - this.r));
         TraceReportUtil.a(126, 3, 0, new Object[0]);
         return;
       }
@@ -399,16 +406,16 @@ public class CmShowMakeupFragment
       }
       localObject = CameraController.CameraViewType.HEAD;
     }
-    if (CmShowWnsUtils.w())
+    if (CMShowPlatform.a.b(Scene.MAKE_UP_3D))
     {
-      if (this.jdField_a_of_type_ComTencentCrossengineCEApplication != null)
+      if (this.a != null)
       {
         localObject = String.format("ce.Level.CMShow.switchCameraType(%d);", new Object[] { Integer.valueOf(paramInt) });
-        this.jdField_a_of_type_ComTencentCrossengineCEApplication.evaluateJs((String)localObject);
+        this.a.evaluateJs((String)localObject);
       }
       return;
     }
-    CmShowAESurfaceView localCmShowAESurfaceView = this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView;
+    CmShowAESurfaceView localCmShowAESurfaceView = this.i;
     if (localCmShowAESurfaceView != null)
     {
       localCmShowAESurfaceView.a((CameraController.CameraViewType)localObject);
@@ -419,8 +426,8 @@ public class CmShowMakeupFragment
   
   public void a(CmShowAssetsData paramCmShowAssetsData, int paramInt)
   {
-    this.jdField_b_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData = paramCmShowAssetsData;
-    this.jdField_b_of_type_Int = paramInt;
+    this.m = paramCmShowAssetsData;
+    this.n = paramInt;
     QLog.d("[cmshow]CmShowMakeupFragment", 0, "[setCmShowAssetsPartData]:");
     b();
   }
@@ -435,13 +442,18 @@ public class CmShowMakeupFragment
         QLog.e("[cmshow]CmShowMakeupFragment", 1, "[updateAssetsData2Render] return! Fragment is destroyed!");
         return;
       }
-      CmShowAssetsData localCmShowAssetsData = a(this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData, this.jdField_b_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData, this.jdField_b_of_type_Int);
-      if ((localCmShowAssetsData != null) && (localCmShowAssetsData.jdField_a_of_type_JavaUtilHashMap != null) && ((localCmShowAssetsData.jdField_a_of_type_JavaUtilHashMap.get("role") != null) || (CmShowWnsUtils.w()))) {
+      CmShowAssetsData localCmShowAssetsData = a(this.l, this.m, this.n);
+      if ((localCmShowAssetsData != null) && (localCmShowAssetsData.b != null) && ((localCmShowAssetsData.b.get("role") != null) || (CMShowPlatform.a.b(Scene.MAKE_UP_3D)))) {
         a(localCmShowAssetsData);
       }
       return;
     }
     finally {}
+  }
+  
+  public CmShowAssetsData c()
+  {
+    return this.l;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -454,9 +466,9 @@ public class CmShowMakeupFragment
         return;
       }
       a(paramIntent);
-      ApolloJsPluginImpl localApolloJsPluginImpl = (ApolloJsPluginImpl)this.webView.getPluginEngine().a("apollo");
+      ApolloJsPluginImpl localApolloJsPluginImpl = (ApolloJsPluginImpl)this.webView.getPluginEngine().b("apollo");
       if (localApolloJsPluginImpl != null) {
-        localApolloJsPluginImpl.callbackCmShowFaceCameraResult(0, new Gson().toJson(paramIntent.dressidMaps), paramIntent.cmJsonString);
+        localApolloJsPluginImpl.notifyCmShowFaceCameraResult(0, new Gson().toJson(paramIntent.dressidMaps), paramIntent.cmJsonString);
       }
     }
   }
@@ -467,50 +479,50 @@ public class CmShowMakeupFragment
     localStringBuilder.append("apollo_client CmShowMakeupFragment start create! HashCode=");
     localStringBuilder.append(hashCode());
     QLog.i("[cmshow]CmShowMakeupFragment", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    ApolloQualityReportUtil.a("dressup_page_expose", String.valueOf(this.jdField_a_of_type_Long));
-    this.jdField_b_of_type_Boolean = CmShowWnsUtils.w();
+    this.r = System.currentTimeMillis();
+    ApolloQualityReportUtil.a("dressup_page_expose", String.valueOf(this.r));
+    this.e = CMShowPlatform.a.b(Scene.MAKE_UP_3D);
     TraceReportUtil.a(126);
-    int i;
-    if (this.jdField_b_of_type_Boolean) {
-      i = 6;
+    int i1;
+    if (this.e) {
+      i1 = 6;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    TraceReportUtil.a(126, i);
-    if (this.jdField_b_of_type_Boolean) {
-      i = 7;
+    TraceReportUtil.a(126, i1);
+    if (this.e) {
+      i1 = 7;
     } else {
-      i = 5;
+      i1 = 5;
     }
-    TraceReportUtil.a(126, i);
-    if (this.jdField_b_of_type_Boolean) {
-      i = 9;
+    TraceReportUtil.a(126, i1);
+    if (this.e) {
+      i1 = 9;
     } else {
-      i = 4;
+      i1 = 4;
     }
-    TraceReportUtil.a(126, i);
+    TraceReportUtil.a(126, i1);
     boolean bool = super.doOnCreate(paramBundle);
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded()) {
       ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(getActivity().getApplicationContext());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
       paramBundle = new CmShowCrossEngineLoader(getUin());
-      paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitListener);
+      paramBundle.a(this.y);
       paramBundle.a(getActivity().getBaseContext());
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_JavaLangString = null;
+      this.g = new HashMap();
+      this.h = null;
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader = new CmShowEALoader(getUin());
-      this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader.a(this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitListener);
-      this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader.a(getActivity().getBaseContext());
+      this.q = new CmShowEALoader(getUin());
+      this.q.a(this.x);
+      this.q.a(getActivity().getBaseContext());
     }
     paramBundle = new StringBuilder();
     paramBundle.append("apollo_client CmShowMakeupFragment end create! use:");
-    paramBundle.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    paramBundle.append(System.currentTimeMillis() - this.r);
     QLog.d("[cmshow]CmShowMakeupFragment", 1, paramBundle.toString());
     return bool;
   }
@@ -523,14 +535,14 @@ public class CmShowMakeupFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView = null;
-    this.jdField_a_of_type_ComTencentMobileqqApolloResApiIApolloResManager$ApolloDressInfoListener = null;
-    CEApplication localCEApplication = this.jdField_a_of_type_ComTencentCrossengineCEApplication;
+    this.i = null;
+    this.v = null;
+    CEApplication localCEApplication = this.a;
     if (localCEApplication != null)
     {
       localCEApplication.exit();
-      this.jdField_a_of_type_ComTencentCrossengineCEApplication.destroy();
-      this.jdField_a_of_type_ComTencentCrossengineCEApplication = null;
+      this.a.destroy();
+      this.a = null;
     }
     TraceReportUtil.b(126);
   }
@@ -539,30 +551,30 @@ public class CmShowMakeupFragment
   {
     super.onLowMemory();
     ApolloQualityReportUtil.a("dressup_web_page_low_memory");
-    int i;
-    if (this.jdField_b_of_type_Boolean) {
-      i = 1003;
+    int i1;
+    if (this.e) {
+      i1 = 1003;
     } else {
-      i = 1001;
+      i1 = 1001;
     }
-    TraceReportUtil.a(126, null, new int[] { i });
+    TraceReportUtil.a(126, null, new int[] { i1 });
   }
   
   public void onPause()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView != null) && (getActivity().isFinishing())) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.onPause();
+    if ((this.i != null) && (getActivity().isFinishing())) {
+      this.i.onPause();
     }
-    if ((this.jdField_a_of_type_ComTencentCrossengineCEApplication != null) && (getActivity().isFinishing())) {
-      this.jdField_a_of_type_ComTencentCrossengineCEApplication.pause();
+    if ((this.a != null) && (getActivity().isFinishing())) {
+      this.a.pause();
     }
     super.onPause();
-    if (this.jdField_a_of_type_Long != 0L)
+    if (this.r != 0L)
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("duration", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      localHashMap.put("duration", String.valueOf(System.currentTimeMillis() - this.r));
       ApolloDtReportUtil.a("dressup_3d_page", "home_page", "stay", localHashMap);
-      this.jdField_a_of_type_Long = 0L;
+      this.r = 0L;
     }
   }
   
@@ -570,10 +582,10 @@ public class CmShowMakeupFragment
   {
     super.onResume();
     ApolloDtReportUtil.a("dressup_3d_page", "home_page", "expose", null);
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (this.r == 0L) {
+      this.r = System.currentTimeMillis();
     }
-    CEApplication localCEApplication = this.jdField_a_of_type_ComTencentCrossengineCEApplication;
+    CEApplication localCEApplication = this.a;
     if (localCEApplication != null) {
       localCEApplication.resume();
     }
@@ -581,7 +593,7 @@ public class CmShowMakeupFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupFragment
  * JD-Core Version:    0.7.0.1
  */

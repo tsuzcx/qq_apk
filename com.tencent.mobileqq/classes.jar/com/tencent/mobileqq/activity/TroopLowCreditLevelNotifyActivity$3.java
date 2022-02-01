@@ -21,25 +21,25 @@ class TroopLowCreditLevelNotifyActivity$3
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onGetTroopCreditLevelInfo:");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a.k);
       ((StringBuilder)localObject).append(",");
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.i("troop.credit.act", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.a.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a.k;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("");
     if (!((String)localObject).equals(localStringBuilder.toString())) {
       return;
     }
-    this.a.d();
+    this.a.f();
     if (paramBoolean)
     {
       localObject = (TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
       if (localObject != null)
       {
-        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
+        localObject = ((TroopManager)localObject).f(this.a.k);
         if (localObject != null)
         {
           paramLong = ((TroopInfo)localObject).troopCreditLevel;
@@ -47,7 +47,7 @@ class TroopLowCreditLevelNotifyActivity$3
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("onGetTroopCreditLevelInfo:");
-            ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.a.k);
             ((StringBuilder)localObject).append(",");
             ((StringBuilder)localObject).append(paramLong);
             QLog.i("troop.credit.act", 2, ((StringBuilder)localObject).toString());
@@ -57,15 +57,15 @@ class TroopLowCreditLevelNotifyActivity$3
           }
           if (paramLong == 1L)
           {
-            localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131719632)).setMessage(HardCodeUtil.a(2131715258));
-            ((QQCustomDialog)localObject).setPositiveButton(2131697558, new TroopLowCreditLevelNotifyActivity.3.1(this));
+            localObject = DialogUtil.a(this.a.c, 230).setTitle(this.a.getString(2131917233)).setMessage(HardCodeUtil.a(2131912740));
+            ((QQCustomDialog)localObject).setPositiveButton(2131895331, new TroopLowCreditLevelNotifyActivity.3.1(this));
             ((QQCustomDialog)localObject).setNegativeButton("", null);
             ((QQCustomDialog)localObject).setCancelable(false);
             ((QQCustomDialog)localObject).show();
             return;
           }
-          localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131719632)).setMessage(HardCodeUtil.a(2131715259));
-          ((QQCustomDialog)localObject).setPositiveButton(2131697558, new TroopLowCreditLevelNotifyActivity.3.2(this));
+          localObject = DialogUtil.a(this.a.c, 230).setTitle(this.a.getString(2131917233)).setMessage(HardCodeUtil.a(2131912741));
+          ((QQCustomDialog)localObject).setPositiveButton(2131895331, new TroopLowCreditLevelNotifyActivity.3.2(this));
           ((QQCustomDialog)localObject).setNegativeButton("", null);
           ((QQCustomDialog)localObject).setCancelable(false);
           ((QQCustomDialog)localObject).show();
@@ -76,7 +76,7 @@ class TroopLowCreditLevelNotifyActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity.3
  * JD-Core Version:    0.7.0.1
  */

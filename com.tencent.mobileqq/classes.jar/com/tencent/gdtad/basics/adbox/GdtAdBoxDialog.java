@@ -45,28 +45,27 @@ public class GdtAdBoxDialog
   implements GdtAdBoxView
 {
   protected Activity a;
-  protected View a;
-  protected GridLayout a;
-  private AdExposureChecker.ExposureCallback jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
-  protected GdtAdBox a;
-  protected GdtAdBoxModel a;
-  protected GdtAdBoxPresenter a;
-  private final GdtMotiveVideoClickCoordinateReportHelper jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMotiveVideoClickCoordinateReportHelper = new GdtMotiveVideoClickCoordinateReportHelper();
-  public GdtThirdProcessorProxy a;
-  private final List<AdExposureChecker> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected GdtAdBox b;
+  protected GdtAdBoxPresenter c;
+  protected GdtAdBoxModel d;
+  protected GridLayout e;
+  protected View f;
+  public GdtThirdProcessorProxy g = new GdtThirdProcessorProxy();
+  private final GdtMotiveVideoClickCoordinateReportHelper h = new GdtMotiveVideoClickCoordinateReportHelper();
+  private final List<AdExposureChecker> i = new ArrayList();
+  private AdExposureChecker.ExposureCallback j = null;
   
   public GdtAdBoxDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131756189);
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy = new GdtThirdProcessorProxy();
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+    super(paramContext, 2131953338);
+    this.a = ((Activity)paramContext);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxModel = new GdtAdBoxModel();
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter = new GdtAdBoxPresenter(this, this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxModel);
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter.a();
+    this.d = new GdtAdBoxModel();
+    this.c = new GdtAdBoxPresenter(this, this.d);
+    this.c.a();
   }
   
   private void d()
@@ -74,18 +73,152 @@ public class GdtAdBoxDialog
     Object localObject = getWindow();
     ((Window)localObject).setDimAmount(0.3F);
     localObject = (FrameLayout)((Window)localObject).getDecorView();
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2131559178, (ViewGroup)localObject, false);
-    setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.f = getLayoutInflater().inflate(2131624933, (ViewGroup)localObject, false);
+    setContentView(this.f);
     setOnDismissListener(new GdtAdBoxDialog.1(this));
-    this.jdField_a_of_type_AndroidWidgetGridLayout = ((GridLayout)((FrameLayout)localObject).findViewById(2131367722));
+    this.e = ((GridLayout)((FrameLayout)localObject).findViewById(2131434287));
     a();
-    localObject = findViewById(2131380358);
+    localObject = findViewById(2131449302);
     ((View)localObject).setOnClickListener(new GdtAdBoxDialog.2(this));
-    ((View)localObject).setContentDescription(HardCodeUtil.a(2131689572));
+    ((View)localObject).setContentDescription(HardCodeUtil.a(2131886182));
     setCanceledOnTouchOutside(false);
   }
   
-  public GdtMotiveVideoClickCoordinateReportHelper.AdBoxReportParams a(View paramView)
+  protected void a() {}
+  
+  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, LinearLayout paramLinearLayout)
+  {
+    Object localObject1 = this.b.a().getAds();
+    paramInt5 = paramInt7 * paramInt1 + paramInt8;
+    if (paramInt5 >= ((List)localObject1).size()) {
+      return;
+    }
+    localObject1 = (GdtAd)((List)localObject1).get(paramInt5);
+    ImageView localImageView = (ImageView)paramLinearLayout.findViewById(2131435219);
+    Object localObject2 = ((GdtAd)localObject1).info.display_info.basic_info.img.get();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append("bindView() i = [");
+    ((StringBuilder)localObject4).append(paramInt7);
+    ((StringBuilder)localObject4).append("], j = [");
+    ((StringBuilder)localObject4).append(paramInt8);
+    ((StringBuilder)localObject4).append("], url = [");
+    ((StringBuilder)localObject4).append((String)localObject2);
+    ((StringBuilder)localObject4).append("]");
+    GdtLog.a("GdtAdBoxDialog", ((StringBuilder)localObject4).toString());
+    try
+    {
+      localObject2 = this.g.a(this.a, (String)localObject2);
+      if (localObject2 != null) {
+        localImageView.setImageDrawable((Drawable)localObject2);
+      }
+    }
+    catch (Exception localException)
+    {
+      GdtLog.d("GdtAdBoxDialog", "bad url params", localException);
+    }
+    Object localObject3 = (TextView)paramLinearLayout.findViewById(2131439121);
+    localObject4 = ((GdtAd)localObject1).info.display_info.mini_program_name.get().trim();
+    ((TextView)localObject3).setText((CharSequence)localObject4);
+    localImageView.setContentDescription((CharSequence)localObject4);
+    ((TextView)localObject3).setContentDescription((CharSequence)localObject4);
+    this.h.a(localImageView);
+    localObject3 = new GridLayout.LayoutParams();
+    ((GridLayout.LayoutParams)localObject3).rowSpec = GridLayout.spec(paramInt7, 1, GridLayout.LEFT);
+    ((GridLayout.LayoutParams)localObject3).columnSpec = GridLayout.spec(paramInt8, 1, GridLayout.TOP);
+    ((GridLayout.LayoutParams)localObject3).width = paramInt4;
+    ((GridLayout.LayoutParams)localObject3).rightMargin = paramInt6;
+    ((GridLayout.LayoutParams)localObject3).bottomMargin = paramInt6;
+    if (paramInt7 == 0) {
+      ((GridLayout.LayoutParams)localObject3).topMargin = paramInt3;
+    }
+    if (paramInt8 % paramInt1 == 0) {
+      ((GridLayout.LayoutParams)localObject3).leftMargin = paramInt2;
+    }
+    paramLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    localImageView.setOnClickListener(new GdtAdBoxDialog.4(this));
+    localImageView.setTag(2131434080, localObject1);
+    localImageView.setTag(2131449865, localObject1);
+    GdtOriginalExposureReporter.a((GdtAd)localObject1, this.a);
+    b();
+    paramLinearLayout = new AdExposureChecker((Ad)localObject1, new WeakReference(localImageView));
+    paramLinearLayout.setCallback(new WeakReference(this.j));
+    this.i.add(paramLinearLayout);
+    paramLinearLayout.startCheck();
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject = paramView.getTag(2131449865);
+    if ((localObject != null) && ((localObject instanceof GdtAd)))
+    {
+      localObject = (GdtAd)localObject;
+      paramView = this.h.b(((GdtAd)localObject).getUrlForImpression(), b(paramView));
+      GdtReporter.doCgiReport(paramView);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportImpression exposure report url: ");
+      ((StringBuilder)localObject).append(paramView);
+      QLog.d("GdtAdBoxDialog", 1, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void a(GdtAdBox paramGdtAdBox)
+  {
+    this.b = paramGdtAdBox;
+  }
+  
+  protected void a(GdtAdBoxModel paramGdtAdBoxModel)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("bindData() called with: model = [");
+    ((StringBuilder)localObject).append(paramGdtAdBoxModel);
+    ((StringBuilder)localObject).append("]");
+    GdtLog.a("GdtAdBoxDialog", ((StringBuilder)localObject).toString());
+    int m = this.b.a().getAds().size();
+    if (m == 0)
+    {
+      paramGdtAdBoxModel = new StringBuilder();
+      paramGdtAdBoxModel.append("bindData() called with: total = [");
+      paramGdtAdBoxModel.append(m);
+      paramGdtAdBoxModel.append("]");
+      GdtLog.a("GdtAdBoxDialog", paramGdtAdBoxModel.toString());
+      this.f.post(new GdtAdBoxDialog.3(this));
+      return;
+    }
+    if (m > 9) {
+      m = 9;
+    }
+    int i1 = (int)Math.ceil(m * 1.0F / 3);
+    this.e.setColumnCount(3);
+    this.e.setRowCount(i1);
+    int i2 = ViewUtils.dip2px(26.0F);
+    int i3 = ViewUtils.dip2px(38.0F);
+    int i4 = ViewUtils.dip2px(4.0F);
+    int i5 = ViewUtils.dip2px(98.0F);
+    int i6 = ViewUtils.dip2px(65.0F);
+    int i7 = i6 + ViewUtils.dip2px(24.0F);
+    int i8 = ViewUtils.dip2px(22.0F);
+    this.e.removeAllViews();
+    paramGdtAdBoxModel = LayoutInflater.from(this.a);
+    int k = 0;
+    while (k < i1)
+    {
+      int n = 0;
+      while ((n < 3) && (3 * k + n < m))
+      {
+        localObject = (LinearLayout)paramGdtAdBoxModel.inflate(2131624924, null);
+        a(3, i2, i3, i6, i7, i8, k, n, (LinearLayout)localObject);
+        this.e.addView((View)localObject);
+        n += 1;
+      }
+      k += 1;
+    }
+    paramGdtAdBoxModel = this.f.getLayoutParams();
+    paramGdtAdBoxModel.width = (i2 + (i6 + i8) * 3 + i4);
+    paramGdtAdBoxModel.height = (i3 + (i7 + i8) * i1 + i5);
+    this.f.setLayoutParams(paramGdtAdBoxModel);
+  }
+  
+  public GdtMotiveVideoClickCoordinateReportHelper.AdBoxReportParams b(View paramView)
   {
     try
     {
@@ -101,144 +234,10 @@ public class GdtAdBoxDialog
     return null;
   }
   
-  protected void a() {}
-  
-  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, LinearLayout paramLinearLayout)
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBox.a().getAds();
-    paramInt5 = paramInt7 * paramInt1 + paramInt8;
-    if (paramInt5 >= ((List)localObject1).size()) {
-      return;
-    }
-    localObject1 = (GdtAd)((List)localObject1).get(paramInt5);
-    ImageView localImageView = (ImageView)paramLinearLayout.findViewById(2131368343);
-    Object localObject2 = ((GdtAd)localObject1).info.display_info.basic_info.img.get();
-    Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append("bindView() i = [");
-    ((StringBuilder)localObject4).append(paramInt7);
-    ((StringBuilder)localObject4).append("], j = [");
-    ((StringBuilder)localObject4).append(paramInt8);
-    ((StringBuilder)localObject4).append("], url = [");
-    ((StringBuilder)localObject4).append((String)localObject2);
-    ((StringBuilder)localObject4).append("]");
-    GdtLog.a("GdtAdBoxDialog", ((StringBuilder)localObject4).toString());
-    try
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject2);
-      if (localObject2 != null) {
-        localImageView.setImageDrawable((Drawable)localObject2);
-      }
-    }
-    catch (Exception localException)
-    {
-      GdtLog.d("GdtAdBoxDialog", "bad url params", localException);
-    }
-    Object localObject3 = (TextView)paramLinearLayout.findViewById(2131371697);
-    localObject4 = ((GdtAd)localObject1).info.display_info.mini_program_name.get().trim();
-    ((TextView)localObject3).setText((CharSequence)localObject4);
-    localImageView.setContentDescription((CharSequence)localObject4);
-    ((TextView)localObject3).setContentDescription((CharSequence)localObject4);
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMotiveVideoClickCoordinateReportHelper.a(localImageView);
-    localObject3 = new GridLayout.LayoutParams();
-    ((GridLayout.LayoutParams)localObject3).rowSpec = GridLayout.spec(paramInt7, 1, GridLayout.LEFT);
-    ((GridLayout.LayoutParams)localObject3).columnSpec = GridLayout.spec(paramInt8, 1, GridLayout.TOP);
-    ((GridLayout.LayoutParams)localObject3).width = paramInt4;
-    ((GridLayout.LayoutParams)localObject3).rightMargin = paramInt6;
-    ((GridLayout.LayoutParams)localObject3).bottomMargin = paramInt6;
-    if (paramInt7 == 0) {
-      ((GridLayout.LayoutParams)localObject3).topMargin = paramInt3;
-    }
-    if (paramInt8 % paramInt1 == 0) {
-      ((GridLayout.LayoutParams)localObject3).leftMargin = paramInt2;
-    }
-    paramLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-    localImageView.setOnClickListener(new GdtAdBoxDialog.4(this));
-    localImageView.setTag(2131367538, localObject1);
-    localImageView.setTag(2131380882, localObject1);
-    GdtOriginalExposureReporter.a((GdtAd)localObject1, this.jdField_a_of_type_AndroidAppActivity);
-    b();
-    paramLinearLayout = new AdExposureChecker((Ad)localObject1, new WeakReference(localImageView));
-    paramLinearLayout.setCallback(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-    this.jdField_a_of_type_JavaUtilList.add(paramLinearLayout);
-    paramLinearLayout.startCheck();
-  }
-  
-  public void a(View paramView)
-  {
-    Object localObject = paramView.getTag(2131380882);
-    if ((localObject != null) && ((localObject instanceof GdtAd)))
-    {
-      localObject = (GdtAd)localObject;
-      paramView = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtMotiveVideoClickCoordinateReportHelper.b(((GdtAd)localObject).getUrlForImpression(), a(paramView));
-      GdtReporter.doCgiReport(paramView);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("reportImpression exposure report url: ");
-      ((StringBuilder)localObject).append(paramView);
-      QLog.d("GdtAdBoxDialog", 1, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public void a(GdtAdBox paramGdtAdBox)
-  {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBox = paramGdtAdBox;
-  }
-  
-  protected void a(GdtAdBoxModel paramGdtAdBoxModel)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("bindData() called with: model = [");
-    ((StringBuilder)localObject).append(paramGdtAdBoxModel);
-    ((StringBuilder)localObject).append("]");
-    GdtLog.a("GdtAdBoxDialog", ((StringBuilder)localObject).toString());
-    int j = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBox.a().getAds().size();
-    if (j == 0)
-    {
-      paramGdtAdBoxModel = new StringBuilder();
-      paramGdtAdBoxModel.append("bindData() called with: total = [");
-      paramGdtAdBoxModel.append(j);
-      paramGdtAdBoxModel.append("]");
-      GdtLog.a("GdtAdBoxDialog", paramGdtAdBoxModel.toString());
-      this.jdField_a_of_type_AndroidViewView.post(new GdtAdBoxDialog.3(this));
-      return;
-    }
-    if (j > 9) {
-      j = 9;
-    }
-    int m = (int)Math.ceil(j * 1.0F / 3);
-    this.jdField_a_of_type_AndroidWidgetGridLayout.setColumnCount(3);
-    this.jdField_a_of_type_AndroidWidgetGridLayout.setRowCount(m);
-    int n = ViewUtils.a(26.0F);
-    int i1 = ViewUtils.a(38.0F);
-    int i2 = ViewUtils.a(4.0F);
-    int i3 = ViewUtils.a(98.0F);
-    int i4 = ViewUtils.a(65.0F);
-    int i5 = i4 + ViewUtils.a(24.0F);
-    int i6 = ViewUtils.a(22.0F);
-    this.jdField_a_of_type_AndroidWidgetGridLayout.removeAllViews();
-    paramGdtAdBoxModel = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity);
-    int i = 0;
-    while (i < m)
-    {
-      int k = 0;
-      while ((k < 3) && (3 * i + k < j))
-      {
-        localObject = (LinearLayout)paramGdtAdBoxModel.inflate(2131559169, null);
-        a(3, n, i1, i4, i5, i6, i, k, (LinearLayout)localObject);
-        this.jdField_a_of_type_AndroidWidgetGridLayout.addView((View)localObject);
-        k += 1;
-      }
-      i += 1;
-    }
-    paramGdtAdBoxModel = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramGdtAdBoxModel.width = (n + (i4 + i6) * 3 + i2);
-    paramGdtAdBoxModel.height = (i1 + (i5 + i6) * m + i3);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramGdtAdBoxModel);
-  }
-  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdBoxDialog.5(this);
+    if (this.j == null) {
+      this.j = new GdtAdBoxDialog.5(this);
     }
   }
   
@@ -249,7 +248,7 @@ public class GdtAdBoxDialog
   
   public void onBackPressed()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter.a()) {
+    if (this.c.e()) {
       return;
     }
     super.onBackPressed();
@@ -270,8 +269,8 @@ public class GdtAdBoxDialog
   protected void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c.b();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((AdExposureChecker)localIterator.next()).onActivityResume();
     }
@@ -280,8 +279,8 @@ public class GdtAdBoxDialog
   protected void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter.c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c.c();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((AdExposureChecker)localIterator.next()).onActivityPause();
     }
@@ -299,7 +298,7 @@ public class GdtAdBoxDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.adbox.GdtAdBoxDialog
  * JD-Core Version:    0.7.0.1
  */

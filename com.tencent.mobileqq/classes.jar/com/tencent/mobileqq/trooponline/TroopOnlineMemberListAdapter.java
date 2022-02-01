@@ -21,49 +21,48 @@ import java.util.List;
 public class TroopOnlineMemberListAdapter
   extends BaseAdapter
 {
-  protected QQAppInterface a;
-  protected String a;
-  protected List<TroopOnlineMemberItem> a;
+  protected List<TroopOnlineMemberItem> a = new ArrayList(15);
   protected List<String> b = new ArrayList(15);
+  protected QQAppInterface c;
+  protected String d;
   
   public TroopOnlineMemberListAdapter(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(15);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramQQAppInterface;
+    this.d = paramString;
   }
   
   private void a(TroopOnlineMemberListAdapter.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-      paramViewHolder.jdField_a_of_type_JavaLangStringBuilder.delete(0, paramViewHolder.jdField_a_of_type_JavaLangStringBuilder.length());
+    if (paramViewHolder.g.length() > 0) {
+      paramViewHolder.g.delete(0, paramViewHolder.g.length());
     }
-    StringBuilder localStringBuilder = paramViewHolder.jdField_a_of_type_JavaLangStringBuilder;
-    localStringBuilder.append(paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+    StringBuilder localStringBuilder = paramViewHolder.g;
+    localStringBuilder.append(paramViewHolder.e.getText().toString());
     localStringBuilder.append(",");
-    localStringBuilder.append(paramViewHolder.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.getText().toString());
-    paramViewHolder.jdField_a_of_type_AndroidViewView.setContentDescription(paramViewHolder.jdField_a_of_type_JavaLangStringBuilder.toString());
+    localStringBuilder.append(paramViewHolder.d.getText().toString());
+    paramViewHolder.a.setContentDescription(paramViewHolder.g.toString());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.clear();
   }
   
   public void a(List<TroopOnlineMemberItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -76,53 +75,53 @@ public class TroopOnlineMemberListAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560689, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626734, paramViewGroup, false);
       localObject = new TroopOnlineMemberListAdapter.ViewHolder(this);
-      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView;
-      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369350));
-      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView = ((RoundTextView)paramView.findViewById(2131379918));
-      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
+      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).a = paramView;
+      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).c = ((ImageView)paramView.findViewById(2131436366));
+      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).d = ((RoundTextView)paramView.findViewById(2131448793));
+      ((TroopOnlineMemberListAdapter.ViewHolder)localObject).e = ((TextView)paramView.findViewById(2131448598));
       paramView.setTag(localObject);
       localView = paramView;
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramView.setFocusable(true);
-        ((TroopOnlineMemberListAdapter.ViewHolder)localObject).jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+        ((TroopOnlineMemberListAdapter.ViewHolder)localObject).g = new StringBuilder();
         localView = paramView;
       }
     }
     TroopOnlineMemberListAdapter.ViewHolder localViewHolder = (TroopOnlineMemberListAdapter.ViewHolder)localView.getTag();
-    TroopOnlineMemberItem localTroopOnlineMemberItem = (TroopOnlineMemberItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localViewHolder.jdField_a_of_type_ComTencentMobileqqTroopOnlinememberDataTroopOnlineMemberItem = localTroopOnlineMemberItem;
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localTroopOnlineMemberItem.jdField_a_of_type_JavaLangString));
-    if ((localTroopOnlineMemberItem.jdField_b_of_type_JavaLangString != null) && (localTroopOnlineMemberItem.jdField_b_of_type_JavaLangString.startsWith("LV")))
+    TroopOnlineMemberItem localTroopOnlineMemberItem = (TroopOnlineMemberItem)this.a.get(paramInt);
+    localViewHolder.f = localTroopOnlineMemberItem;
+    localViewHolder.c.setImageDrawable(FaceDrawable.getFaceDrawable(this.c, 1, localTroopOnlineMemberItem.b));
+    if ((localTroopOnlineMemberItem.c != null) && (localTroopOnlineMemberItem.c.startsWith("LV")))
     {
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setVisibility(8);
+      localViewHolder.d.setVisibility(8);
     }
     else
     {
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setVisibility(0);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setText(localTroopOnlineMemberItem.jdField_b_of_type_JavaLangString);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setRoundBgColor(localTroopOnlineMemberItem.jdField_b_of_type_Int);
+      localViewHolder.d.setVisibility(0);
+      localViewHolder.d.setText(localTroopOnlineMemberItem.c);
+      localViewHolder.d.setRoundBgColor(localTroopOnlineMemberItem.d);
     }
-    localViewHolder.jdField_a_of_type_JavaLangString = localTroopOnlineMemberItem.jdField_a_of_type_JavaLangString;
-    Object localObject = (TroopOnlineMemberListAdapter.TmiCallBackForName)localViewHolder.jdField_a_of_type_AndroidWidgetTextView.getTag();
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopOnlineMemberItem.c);
+    localViewHolder.b = localTroopOnlineMemberItem.b;
+    Object localObject = (TroopOnlineMemberListAdapter.TmiCallBackForName)localViewHolder.e.getTag();
+    localViewHolder.e.setText(localTroopOnlineMemberItem.e);
     paramView = (View)localObject;
     if (localObject == null)
     {
       paramView = new TroopOnlineMemberListAdapter.TmiCallBackForName(this, null);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTag(paramView);
+      localViewHolder.e.setTag(paramView);
     }
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       a(localViewHolder);
     }
     paramView.a = localViewHolder;
-    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(this.jdField_a_of_type_JavaLangString, localViewHolder.jdField_a_of_type_JavaLangString, paramView);
-    if (!this.b.contains(localViewHolder.jdField_a_of_type_JavaLangString))
+    ((TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER)).a(this.d, localViewHolder.b, paramView);
+    if (!this.b.contains(localViewHolder.b))
     {
-      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_online").c("online_box").d("exp_mberHead").a(new String[] { this.jdField_a_of_type_JavaLangString, localTroopOnlineMemberItem.jdField_b_of_type_JavaLangString }).a();
-      this.b.add(localViewHolder.jdField_a_of_type_JavaLangString);
+      new ReportTask(this.c).a("dc00899").b("Grp_online").c("online_box").d("exp_mberHead").a(new String[] { this.d, localTroopOnlineMemberItem.c }).a();
+      this.b.add(localViewHolder.b);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -130,7 +129,7 @@ public class TroopOnlineMemberListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,24 @@ import java.util.Map;
 
 public class DownloaderGetCodeServer
 {
-  private static DownloaderGetCodeServer jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new DownloaderGetCodeServer.1(this, "Module_DownloaderGetCodeServer");
-  private DownloaderGetCodeServer.GetAuthCodeObserver jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer$GetAuthCodeObserver = new DownloaderGetCodeServer.GetAuthCodeObserver(this, null);
-  private Map<String, Bundle> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+  private static DownloaderGetCodeServer a;
+  private DownloaderGetCodeServer.GetAuthCodeObserver b = new DownloaderGetCodeServer.GetAuthCodeObserver(this, null);
+  private Map<String, Bundle> c = Collections.synchronizedMap(new HashMap());
+  private QIPCModule d = new DownloaderGetCodeServer.1(this, "Module_DownloaderGetCodeServer");
   
-  private QQAppInterface a()
+  public static DownloaderGetCodeServer a()
+  {
+    if (a == null) {
+      try
+      {
+        a = new DownloaderGetCodeServer();
+      }
+      finally {}
+    }
+    return a;
+  }
+  
+  private QQAppInterface c()
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -23,26 +35,14 @@ public class DownloaderGetCodeServer
     return null;
   }
   
-  public static DownloaderGetCodeServer a()
+  public QIPCModule b()
   {
-    if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer == null) {
-      try
-      {
-        jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer = new DownloaderGetCodeServer();
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer;
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeServer
  * JD-Core Version:    0.7.0.1
  */

@@ -6,31 +6,26 @@ import org.json.JSONObject;
 
 class ArkSecurityReporter$ReportItem
 {
-  public int a;
-  public String a;
-  public int b;
+  public String a = "android";
   public String b;
-  public int c;
   public String c;
-  public String d = ArkSecurityReporter.a();
-  
-  public ArkSecurityReporter$ReportItem()
-  {
-    this.jdField_a_of_type_JavaLangString = "android";
-  }
+  public int d;
+  public int e;
+  public int f;
+  public String g = ArkSecurityReporter.a();
   
   public String toString()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("result", this.jdField_a_of_type_Int);
-      localJSONObject.put("scene", this.jdField_b_of_type_Int);
-      localJSONObject.put("type", this.jdField_c_of_type_Int);
-      localJSONObject.put("ver", this.d);
+      localJSONObject.put("os", this.a);
+      localJSONObject.put("app", this.b);
+      localJSONObject.put("url", this.c);
+      localJSONObject.put("result", this.d);
+      localJSONObject.put("scene", this.e);
+      localJSONObject.put("type", this.f);
+      localJSONObject.put("ver", this.g);
     }
     catch (JSONException localJSONException)
     {
@@ -41,7 +36,7 @@ class ArkSecurityReporter$ReportItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.secure.ArkSecurityReporter.ReportItem
  * JD-Core Version:    0.7.0.1
  */

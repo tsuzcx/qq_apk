@@ -12,12 +12,13 @@ class RestartAction$1$1
   public void run()
   {
     MiniSDK.init(MiniAppEnv.g().getContext());
+    this.val$miniAppInfo.launchParam.forceReload = 3;
     MiniSDK.startMiniApp(null, this.val$miniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.RestartAction.1.1
  * JD-Core Version:    0.7.0.1
  */

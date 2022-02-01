@@ -38,8 +38,7 @@ public class HippyListView
   public static final String EVENT_TYPE_HEADER_RELEASED = "onHeaderReleased";
   public static final int REFRESH_STATE_IDLE = 0;
   public static final int REFRESH_STATE_LOADING = 1;
-  private Context mContext;
-  protected boolean mEnableRefresh = true;
+  protected final boolean mEnableRefresh = true;
   protected boolean mExposureEventEnable = false;
   protected int mFooterRefreshState = 0;
   private NativeGestureDispatcher mGestureDispatcher;
@@ -135,13 +134,12 @@ public class HippyListView
   {
     this.mHippyContext = ((HippyInstanceContext)paramContext).getEngineContext();
     setLayoutManager(new LinearLayoutManager(paramContext, paramInt, false));
-    this.mContext = paramContext;
     setRepeatableSuspensionMode(false);
     this.mListAdapter = createAdapter(this, this.mHippyContext);
     setAdapter(this.mListAdapter);
   }
   
-  private boolean shouldStopReleaseGlowsForHorizontal()
+  private boolean shouldStopReleaseGlowsForHorizontal(boolean paramBoolean)
   {
     int i = this.mAdapter.getTotalHeight();
     if ((this.mOffsetX > 0) && (getWidth() <= i - this.mState.mCustomHeaderWidth))
@@ -155,7 +153,7 @@ public class HippyListView
           this.mFooterRefreshState = 1;
         }
         View localView = getCustomFooterView();
-        if ((localView != null) && ((localView instanceof HippyPullFooterView)) && (((HippyPullFooterView)localView).getStickEnabled()))
+        if (((localView instanceof HippyPullFooterView)) && (((HippyPullFooterView)localView).getStickEnabled()))
         {
           smoothScrollBy(j - this.mOffsetX, 0, false, true);
           return true;
@@ -163,16 +161,18 @@ public class HippyListView
       }
       return false;
     }
-    if (this.mHeaderRefreshState == 0)
+    if ((this.mHeaderRefreshState == 0) && (paramBoolean))
     {
       sendPullHeaderEvent("onHeaderReleased", new HippyMap());
       this.mHeaderRefreshState = 1;
     }
-    smoothScrollBy(-this.mOffsetX, 0, false, true);
+    if (this.mOffsetX < 0) {
+      smoothScrollBy(-this.mOffsetX, 0, false, true);
+    }
     return true;
   }
   
-  private boolean shouldStopReleaseGlowsForVertical()
+  private boolean shouldStopReleaseGlowsForVertical(boolean paramBoolean)
   {
     int i = this.mAdapter.getTotalHeight();
     if ((getOffsetY() > 0) && (getHeight() <= i - this.mState.mCustomHeaderHeight))
@@ -186,7 +186,7 @@ public class HippyListView
           this.mFooterRefreshState = 1;
         }
         View localView = getCustomFooterView();
-        if ((localView != null) && ((localView instanceof HippyPullFooterView)) && (((HippyPullFooterView)localView).getStickEnabled()))
+        if (((localView instanceof HippyPullFooterView)) && (((HippyPullFooterView)localView).getStickEnabled()))
         {
           smoothScrollBy(0, j - this.mOffsetY, false, true);
           return true;
@@ -194,81 +194,80 @@ public class HippyListView
       }
       return false;
     }
-    if (this.mHeaderRefreshState == 0)
+    if ((this.mHeaderRefreshState == 0) && (paramBoolean))
     {
       sendPullHeaderEvent("onHeaderReleased", new HippyMap());
       this.mHeaderRefreshState = 1;
     }
-    smoothScrollBy(0, -this.mOffsetY, false, true);
+    if (getOffsetY() < 0) {
+      smoothScrollBy(0, -this.mOffsetY, false, true);
+    }
     return true;
   }
   
   protected void checkExposureView(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramView != null)
+    if (!(paramView instanceof HippyListItemView)) {
+      return;
+    }
+    if (this.mLayout.canScrollHorizontally()) {
+      paramInt4 = paramView.getLeft();
+    } else {
+      paramInt4 = paramView.getTop();
+    }
+    int i;
+    if (this.mLayout.canScrollHorizontally()) {
+      i = paramView.getRight();
+    } else {
+      i = paramView.getBottom();
+    }
+    paramInt4 += paramInt3;
+    i += paramInt3;
+    HippyListItemView localHippyListItemView = (HippyListItemView)paramView;
+    HippyMap localHippyMap = getItemViewProps(localHippyListItemView.getId());
+    if (localHippyMap == null) {
+      return;
+    }
+    int j = localHippyListItemView.getExposureState();
+    if (this.mLayout.canScrollHorizontally()) {
+      paramInt3 = paramView.getWidth();
+    } else {
+      paramInt3 = paramView.getHeight();
+    }
+    paramInt3 = (int)Math.ceil(paramInt3 * 0.1F);
+    if ((i > paramInt1 + paramInt3) && (paramInt4 < paramInt2 - paramInt3))
     {
-      if (!(paramView instanceof HippyListItemView)) {
-        return;
-      }
-      if (this.mLayout.canScrollHorizontally()) {
-        paramInt4 = paramView.getLeft();
-      } else {
-        paramInt4 = paramView.getTop();
-      }
-      int i;
-      if (this.mLayout.canScrollHorizontally()) {
-        i = paramView.getRight();
-      } else {
-        i = paramView.getBottom();
-      }
-      paramInt4 += paramInt3;
-      i += paramInt3;
-      HippyListItemView localHippyListItemView = (HippyListItemView)paramView;
-      HippyMap localHippyMap = getItemViewProps(localHippyListItemView.getId());
-      if (localHippyMap == null) {
-        return;
-      }
-      int j = localHippyListItemView.getExposureState();
-      if (this.mLayout.canScrollHorizontally()) {
-        paramInt3 = paramView.getWidth();
-      } else {
-        paramInt3 = paramView.getHeight();
-      }
-      paramInt3 = (int)Math.ceil(paramInt3 * 0.1F);
-      if ((i > paramInt1 + paramInt3) && (paramInt4 < paramInt2 - paramInt3))
+      if (((paramInt4 < paramInt1) && (i > paramInt1)) || ((paramInt4 < paramInt2) && (i > paramInt2)))
       {
-        if (((paramInt4 < paramInt1) && (i > paramInt1)) || ((paramInt4 < paramInt2) && (i > paramInt2)))
-        {
-          if (j == 1) {
-            sendExposureEvent(paramView, "onWillDisappear", localHippyMap);
-          }
-          for (paramInt1 = 3;; paramInt1 = 0)
-          {
-            localHippyListItemView.setExposureState(paramInt1);
-            return;
-            if (j != 2) {
-              break;
-            }
-            sendExposureEvent(paramView, "onWillAppear", localHippyMap);
-          }
-        }
-        if (((paramInt4 >= paramInt1) && (i <= paramInt2)) || ((paramInt4 <= paramInt1) && (i > paramInt2) && (localHippyListItemView.getExposureState() != 1)))
-        {
-          if (localHippyListItemView.getExposureState() == 2) {
-            sendExposureEvent(paramView, "onWillAppear", localHippyMap);
-          }
-          sendExposureEvent(paramView, "onAppear", localHippyMap);
-          localHippyListItemView.setExposureState(1);
-        }
-      }
-      else if (localHippyListItemView.getExposureState() != 2)
-      {
-        if (localHippyListItemView.getExposureState() == 1) {
+        if (j == 1) {
           sendExposureEvent(paramView, "onWillDisappear", localHippyMap);
         }
-        sendExposureEvent(paramView, "onDisAppear", localHippyMap);
-        localHippyListItemView.setExposureState(2);
+        for (paramInt1 = 3;; paramInt1 = 0)
+        {
+          localHippyListItemView.setExposureState(paramInt1);
+          return;
+          if (j != 2) {
+            break;
+          }
+          sendExposureEvent(paramView, "onWillAppear", localHippyMap);
+        }
       }
+      if (((paramInt4 >= paramInt1) && (i <= paramInt2)) || ((paramInt4 <= paramInt1) && (i > paramInt2) && (localHippyListItemView.getExposureState() != 1)))
+      {
+        if (localHippyListItemView.getExposureState() == 2) {
+          sendExposureEvent(paramView, "onWillAppear", localHippyMap);
+        }
+        sendExposureEvent(paramView, "onAppear", localHippyMap);
+        localHippyListItemView.setExposureState(1);
+      }
+    }
+    else if (localHippyListItemView.getExposureState() != 2)
+    {
+      if (localHippyListItemView.getExposureState() == 1) {
+        sendExposureEvent(paramView, "onWillDisappear", localHippyMap);
+      }
+      sendExposureEvent(paramView, "onDisAppear", localHippyMap);
+      localHippyListItemView.setExposureState(2);
     }
   }
   
@@ -639,7 +638,7 @@ public class HippyListView
   {
     paramString = new HippyListView.PullElementEvent(this, paramString);
     View localView = getCustomFooterView();
-    if ((localView != null) && ((localView instanceof HippyPullFooterView))) {
+    if ((localView instanceof HippyPullFooterView)) {
       paramString.send(localView, paramHippyMap);
     }
   }
@@ -648,7 +647,7 @@ public class HippyListView
   {
     paramString = new HippyListView.PullElementEvent(this, paramString);
     View localView = getCustomHeaderView();
-    if ((localView != null) && ((localView instanceof HippyPullHeaderView))) {
+    if ((localView instanceof HippyPullHeaderView)) {
       paramString.send(localView, paramHippyMap);
     }
   }
@@ -667,7 +666,12 @@ public class HippyListView
   {
     LogUtils.d("hippylistview", "setListData");
     this.mListAdapter.notifyDataSetChanged();
+    int i = getChildCount();
     dispatchLayout();
+    int j = getChildCount();
+    if ((i == 0) && (j > i) && (this.mExposureEventEnable)) {
+      dispatchExposureEvent();
+    }
   }
   
   public void setMomentumScrollBeginEventEnable(boolean paramBoolean)
@@ -707,22 +711,18 @@ public class HippyListView
   
   protected boolean shouldStopReleaseGlows(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.mEnableRefresh)
-    {
-      if (!paramBoolean1) {
-        return false;
-      }
-      if (this.mLayout.canScrollHorizontally()) {
-        return shouldStopReleaseGlowsForHorizontal();
-      }
-      return shouldStopReleaseGlowsForVertical();
+    if (!paramBoolean1) {
+      return false;
     }
-    return false;
+    if (this.mLayout.canScrollHorizontally()) {
+      return shouldStopReleaseGlowsForHorizontal(paramBoolean2);
+    }
+    return shouldStopReleaseGlowsForVertical(paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.list.HippyListView
  * JD-Core Version:    0.7.0.1
  */

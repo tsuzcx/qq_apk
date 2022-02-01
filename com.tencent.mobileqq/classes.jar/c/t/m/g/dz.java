@@ -10,6 +10,8 @@ import android.os.Build.VERSION;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.util.Locale;
@@ -36,9 +38,9 @@ public final class dz
       if (i()) {
         paramContext = c(dp.a());
       } else if (Build.VERSION.SDK_INT >= 26) {
-        paramContext = paramContext.getImei();
+        paramContext = PhoneInfoMonitor.getImei(paramContext);
       } else {
-        paramContext = paramContext.getDeviceId();
+        paramContext = PhoneInfoMonitor.getDeviceId(paramContext);
       }
       a = dx.a(paramContext, dx.a).toUpperCase(Locale.ENGLISH);
     }
@@ -75,7 +77,7 @@ public final class dz
     }
     try
     {
-      b = dx.a(((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId(), dx.b);
+      b = dx.a(PhoneInfoMonitor.getSubscriberId((TelephonyManager)paramContext.getSystemService("phone")), dx.b);
       label55:
       return a(b);
     }
@@ -149,7 +151,7 @@ public final class dz
     if ((TextUtils.isEmpty(c)) || ("0123456789ABCDEF".equals(c))) {}
     try
     {
-      Enumeration localEnumeration = NetworkInterface.getNetworkInterfaces();
+      Enumeration localEnumeration = NetworkMonitor.getNetworkInterfaces();
       while (localEnumeration.hasMoreElements())
       {
         Object localObject = (NetworkInterface)localEnumeration.nextElement();

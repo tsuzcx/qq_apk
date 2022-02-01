@@ -34,33 +34,33 @@ class TroopAllMessageSearchDialog$4
     {
     default: 
       break;
-    case 2131377047: 
-    case 2131377048: 
+    case 2131445413: 
+    case 2131445414: 
       if (QLog.isColorLevel()) {
         QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
       }
       localObject = this.a;
-      ((TroopAllMessageSearchDialog)localObject).c = false;
+      ((TroopAllMessageSearchDialog)localObject).x = false;
       TroopAllMessageSearchDialog.a((TroopAllMessageSearchDialog)localObject).setVisibility(8);
       TroopAllMessageSearchDialog.a(this.a, 0, null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.a(TroopAllMessageSearchDialog.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.notifyDataSetChanged();
-      this.a.b = 1;
+      this.a.o.a(TroopAllMessageSearchDialog.b(this.a), this.a.z, this.a.B);
+      this.a.o.notifyDataSetChanged();
+      this.a.n = 1;
       break;
-    case 2131367180: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null)
+    case 2131433636: 
+      if (this.a.j != null)
       {
         localObject = new Bundle();
         ((Bundle)localObject).putInt("forward_type", -1);
-        ((Bundle)localObject).putString("forward_text", this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a.msg);
-        Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+        ((Bundle)localObject).putString("forward_text", this.a.j.b.msg);
+        Intent localIntent = new Intent(this.a.c, ForwardRecentActivity.class);
         localIntent.putExtras((Bundle)localObject);
-        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
+        ((Activity)this.a.c).startActivityForResult(localIntent, 21);
       }
       break;
-    case 2131365311: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null) {
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a.msg);
+    case 2131431492: 
+      if (this.a.j != null) {
+        ((ClipboardManager)this.a.c.getSystemService("clipboard")).setText(this.a.j.b.msg);
       }
       break;
     }
@@ -69,7 +69,7 @@ class TroopAllMessageSearchDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TroopAllMessageSearchDialog.4
  * JD-Core Version:    0.7.0.1
  */

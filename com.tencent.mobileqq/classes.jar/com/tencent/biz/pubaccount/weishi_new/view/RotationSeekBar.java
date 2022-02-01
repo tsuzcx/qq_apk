@@ -13,11 +13,11 @@ import android.widget.SeekBar;
 public class RotationSeekBar
   extends SeekBar
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
-  private RotationSeekBar.OnRotationChangeListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener;
-  private float[] jdField_a_of_type_ArrayOfFloat = null;
+  private static float d = -1.0F;
+  private RotationSeekBar.OnRotationChangeListener a;
+  private float[] b = null;
+  private Paint c = null;
+  private int e;
   
   public RotationSeekBar(Context paramContext)
   {
@@ -37,14 +37,6 @@ public class RotationSeekBar
     a();
   }
   
-  private float a()
-  {
-    if (jdField_a_of_type_Float == -1.0F) {
-      jdField_a_of_type_Float = getContext().getResources().getDisplayMetrics().density;
-    }
-    return jdField_a_of_type_Float;
-  }
-  
   private MotionEvent a(MotionEvent paramMotionEvent)
   {
     if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 2))
@@ -55,7 +47,7 @@ public class RotationSeekBar
       int i = arrayOfInt[1];
       int m = (int)paramMotionEvent.getRawX();
       int j = (int)paramMotionEvent.getRawY();
-      int n = this.jdField_a_of_type_Int;
+      int n = this.e;
       if (n != 90)
       {
         if (n != 180)
@@ -87,10 +79,18 @@ public class RotationSeekBar
     return paramMotionEvent;
   }
   
+  private float getDensity()
+  {
+    if (d == -1.0F) {
+      d = getContext().getResources().getDisplayMetrics().density;
+    }
+    return d;
+  }
+  
   protected int a(float paramFloat)
   {
-    a();
-    return Math.round(paramFloat * jdField_a_of_type_Float);
+    getDensity();
+    return Math.round(paramFloat * d);
   }
   
   void a() {}
@@ -99,9 +99,9 @@ public class RotationSeekBar
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      RotationSeekBar.OnRotationChangeListener localOnRotationChangeListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener;
+      RotationSeekBar.OnRotationChangeListener localOnRotationChangeListener = this.a;
       if (localOnRotationChangeListener != null) {
-        this.jdField_a_of_type_Int = localOnRotationChangeListener.a();
+        this.e = localOnRotationChangeListener.a();
       }
     }
     return super.dispatchTouchEvent(a(paramMotionEvent));
@@ -110,19 +110,19 @@ public class RotationSeekBar
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ArrayOfFloat != null)
+    if (this.b != null)
     {
       int j = getMeasuredWidth();
       int i = getMeasuredHeight();
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3355444);
+        this.c = new Paint();
+        this.c.setStyle(Paint.Style.FILL);
+        this.c.setColor(-3355444);
       }
       int k = a(2.0F);
       int m = i / 2;
-      float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      float[] arrayOfFloat = this.b;
       int n = arrayOfFloat.length;
       i = 0;
       while (i < n)
@@ -132,7 +132,7 @@ public class RotationSeekBar
         {
           paramCanvas.save();
           paramCanvas.translate(f * j, m);
-          paramCanvas.drawCircle(0.0F, 0.0F, k, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawCircle(0.0F, 0.0F, k, this.c);
           paramCanvas.restore();
         }
         i += 1;
@@ -147,12 +147,12 @@ public class RotationSeekBar
   
   public void setOnRotationChangeListener(RotationSeekBar.OnRotationChangeListener paramOnRotationChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener = paramOnRotationChangeListener;
+    this.a = paramOnRotationChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

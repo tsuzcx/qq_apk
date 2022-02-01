@@ -13,12 +13,12 @@ final class CommentProteusListenerUtil$Companion$initCommentHideButtonClickListe
   
   public final void onClick(ViewBase paramViewBase)
   {
-    CommentProteusUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem);
+    CommentProteusUtil.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentHideButtonClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

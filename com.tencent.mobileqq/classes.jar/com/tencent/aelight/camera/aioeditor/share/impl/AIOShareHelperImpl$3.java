@@ -18,23 +18,23 @@ class AIOShareHelperImpl$3
   public void run()
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a())
+    if (this.a.g())
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putStringArrayList("images", new ArrayList(Collections.singletonList(this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a())));
-      QZoneShareManager.publishToQzone(AECaptureContext.a(), this.jdField_a_of_type_AndroidAppActivity, (Bundle)localObject, null, this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a());
+      ((Bundle)localObject).putStringArrayList("images", new ArrayList(Collections.singletonList(this.a.b())));
+      QZoneShareManager.publishToQzone(AECaptureContext.a(), this.b, (Bundle)localObject, null, this.a.a());
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.b())
+    if (this.a.h())
     {
       localObject = QZoneHelper.UserInfo.getInstance();
-      QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_AndroidAppActivity, (QZoneHelper.UserInfo)localObject, this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a());
+      QZoneHelper.forwardToPublishMood(this.b, (QZoneHelper.UserInfo)localObject, this.a.b(), this.a.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,13 @@ public final class TroopAskAnonymouslyHelper$1
       paramString = Message.obtain();
       paramString.obj = Long.valueOf(paramLong);
       paramString.what = 0;
-      this.a.a().sendMessage(paramString);
+      this.a.c().sendMessage(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper.1
  * JD-Core Version:    0.7.0.1
  */

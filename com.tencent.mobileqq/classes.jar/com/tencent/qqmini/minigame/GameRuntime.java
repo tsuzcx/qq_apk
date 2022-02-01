@@ -3,13 +3,11 @@ package com.tencent.qqmini.minigame;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.util.Pair;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import com.tencent.mobileqq.triton.TritonEngine;
 import com.tencent.mobileqq.triton.TritonPlatform;
 import com.tencent.mobileqq.triton.engine.EngineState;
@@ -32,6 +30,7 @@ import com.tencent.qqmini.minigame.api.MiniGamePackage;
 import com.tencent.qqmini.minigame.debug.QQDebugWebSocket;
 import com.tencent.qqmini.minigame.manager.GameInfoManager;
 import com.tencent.qqmini.minigame.manager.GameReportManager;
+import com.tencent.qqmini.minigame.manager.HeavyPluginPreloadManager;
 import com.tencent.qqmini.minigame.manager.JsApiUpdateManager;
 import com.tencent.qqmini.minigame.plugins.RaffleJsPlugin;
 import com.tencent.qqmini.minigame.report.GameFrameReport;
@@ -48,9 +47,9 @@ import com.tencent.qqmini.sdk.core.manager.PreCacheManager;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.NetworkUtil;
+import com.tencent.qqmini.sdk.core.utils.WebViewUtils;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.core.utils.thread.ThreadPools;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IPage;
 import com.tencent.qqmini.sdk.launcher.core.IRuntimeLifecycleListener;
@@ -90,7 +89,6 @@ public class GameRuntime
   private static boolean killAllGamesWhenDestroy = GameWnsUtils.killAllGamesWhenDestroy();
   private static boolean killAllGamesWhenReuse = ;
   public static boolean sStorageReport = false;
-  public static volatile boolean webviewDataDirectoryInited = false;
   private Activity mActivity;
   private long mAttachWindowTime;
   private final Runnable mFpsListener = new GameRuntime.1(this);
@@ -101,6 +99,7 @@ public class GameRuntime
   private boolean mIsForground = true;
   private GameJsPluginEngine mJsPluginEngine;
   private int mLaunchResult = 0;
+  private volatile boolean mLoadingAdEnabled = true;
   private MiniAppInfo mMiniAppInfo;
   private boolean mNeedLaunchGameOnResume;
   private boolean mOnFirstBlackScreenReport = true;
@@ -123,19 +122,6 @@ public class GameRuntime
   public GameRuntime(Context paramContext)
   {
     super(paramContext);
-    try
-    {
-      if ((!webviewDataDirectoryInited) && (Build.VERSION.SDK_INT >= 28))
-      {
-        webviewDataDirectoryInited = true;
-        WebView.setDataDirectorySuffix(AppLoaderFactory.g().getProcessName());
-        return;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      QMLog.e("GameRuntime", "setDataDirectorySuffix error", paramContext);
-    }
   }
   
   @NonNull
@@ -322,6 +308,14 @@ public class GameRuntime
         paramTritonEngine.start();
       }
     }
+    boolean bool = this.mGamePage.isOrientationLandscape();
+    int i = 0;
+    if ((bool) && (!isLoadingAdShowing()))
+    {
+      this.mGamePage.adjustViewForOrientation();
+      this.mLoadingAdEnabled = false;
+      QMLog.i("GameRuntime", "onGameLaunched: disable loadingAd for landscape");
+    }
     long l = paramGameLaunchStatistic.getEngineInitStatistic().getCreateEGLContextTimeMs();
     MiniReportManager.reportEventType(this.mMiniAppInfo, 1039, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
     paramTritonEngine = new StringBuilder();
@@ -329,7 +323,6 @@ public class GameRuntime
     paramTritonEngine.append(l);
     paramTritonEngine.append("(from create SurfaceView)");
     QMLog.e("[minigame][timecost] ", paramTritonEngine.toString());
-    int i = 0;
     this.mLaunchResult = 0;
     l = paramGameLaunchStatistic.getLaunchTimesMs();
     if (!isGameLaunchSuccess(paramGameLaunchStatistic)) {
@@ -657,6 +650,7 @@ public class GameRuntime
   public void init(TritonPlatform paramTritonPlatform)
   {
     this.mTritonPlatform = paramTritonPlatform;
+    WebViewUtils.a();
     initJsPluginEngine();
     initGamePage();
   }
@@ -664,6 +658,11 @@ public class GameRuntime
   public boolean isForground()
   {
     return this.mIsForground;
+  }
+  
+  public boolean isLoadingAdEnabled()
+  {
+    return this.mLoadingAdEnabled;
   }
   
   public boolean isMiniGame()
@@ -686,7 +685,9 @@ public class GameRuntime
     if (localActivity == null) {
       return;
     }
-    if (!this.mIsForground)
+    boolean bool = this.mIsForground;
+    String str = null;
+    if (!bool)
     {
       SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "load_fail", "not_foreground");
       MiniAppReportManager2.reportPageView("2launch_fail", "not_foreground", null, this.mMiniAppInfo);
@@ -695,7 +696,12 @@ public class GameRuntime
       return;
     }
     this.mNeedLaunchGameOnResume = false;
-    localActivity.runOnUiThread(new GameRuntime.7(this));
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if (localMiniAppInfo != null) {
+      str = localMiniAppInfo.appId;
+    }
+    HeavyPluginPreloadManager.a(localActivity, str);
+    this.mActivity.runOnUiThread(new GameRuntime.7(this));
   }
   
   public void loadMiniApp(MiniAppInfo paramMiniAppInfo)
@@ -729,6 +735,19 @@ public class GameRuntime
     this.mGamePage.onCreate(paramMiniAppInfo);
     this.mPerformanceStatics.setMiniAppInfo(paramMiniAppInfo);
     this.mPerformanceStatics.setVersion(getJsVersion(), getTritonVersion());
+  }
+  
+  public void onLoadingAdShowBegin()
+  {
+    setLoadingAdStatus(2);
+  }
+  
+  public void onLoadingAdShowEnd()
+  {
+    this.mGamePage.adjustViewForOrientation();
+    resumeEngineOnly();
+    setLoadingAdStatus(3);
+    checkPayForFriendLogic(this.mMiniAppInfo);
   }
   
   public void onRuntimeAttachActivity(Activity paramActivity, ViewGroup paramViewGroup)
@@ -888,7 +907,7 @@ public class GameRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntime
  * JD-Core Version:    0.7.0.1
  */

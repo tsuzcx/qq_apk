@@ -29,8 +29,8 @@ class MessageForQQWalletTips$2
   
   public void onClick(View paramView)
   {
-    paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    Object localObject1 = (QQAppInterface)this.jdField_b_of_type_JavaLangRefSoftReference.get();
+    paramView = (Context)this.a.get();
+    Object localObject1 = (QQAppInterface)this.b.get();
     if (localObject1 != null)
     {
       if (paramView == null) {
@@ -39,60 +39,60 @@ class MessageForQQWalletTips$2
       Object localObject2 = MessageForQQWalletTips.access$000();
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("rich click, msgtype: ");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.msgType);
+      ((StringBuilder)localObject3).append(this.i.msgType);
       ((StringBuilder)localObject3).append(", msgsubtype: ");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subType);
+      ((StringBuilder)localObject3).append(this.i.subType);
       ((StringBuilder)localObject3).append(",isEq:");
-      ((StringBuilder)localObject3).append(TextUtils.equals(((QQAppInterface)localObject1).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.reciverUin));
+      ((StringBuilder)localObject3).append(TextUtils.equals(((QQAppInterface)localObject1).getCurrentAccountUin(), this.i.reciverUin));
       QLog.i((String)localObject2, 2, ((StringBuilder)localObject3).toString());
-      if ((this.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl)))
+      if ((this.c == 1) && (!TextUtils.isEmpty(this.i.bytes_jumpurl)))
       {
         QLog.i(MessageForQQWalletTips.access$000(), 2, "gold red package...");
-        localObject1 = QwUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl, MessageForQQWalletTips.access$100(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), true);
-        int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl.indexOf(':');
-        if (i == -1) {
+        localObject1 = QwUtils.a(this.i.bytes_jumpurl, MessageForQQWalletTips.access$100(this.i, this.d), true);
+        int j = this.i.bytes_jumpurl.indexOf(':');
+        if (j == -1) {
           return;
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl.substring(0, i);
+        localObject2 = this.i.bytes_jumpurl.substring(0, j);
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           return;
         }
         if ((((String)localObject2).compareTo("http") != 0) && (((String)localObject2).compareTo("https") != 0))
         {
           if (((String)localObject2).compareTo("mqqapi") == 0) {
-            ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(this.jdField_a_of_type_AndroidContentContext, (String)localObject1);
+            ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(this.e, (String)localObject1);
           }
         }
         else
         {
-          localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl);
+          localObject1 = new Intent(this.e, QQBrowserActivity.class);
+          ((Intent)localObject1).putExtra("url", this.i.bytes_jumpurl);
           ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
           paramView.startActivity((Intent)localObject1);
         }
         return;
       }
-      if ((MessageForQQWalletTips.access$200(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips) == 524288) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper != null))
+      if ((MessageForQQWalletTips.access$200(this.i) == 524288) && (this.f != null))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService;
+        localObject2 = this.g;
         if (localObject2 != null)
         {
-          localObject2 = ((IPasswdRedBagService)localObject2).getPasswdRedBagInfoById(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
-          if ((localObject2 != null) && (!((PasswdRedBagInfo)localObject2).a) && (!((PasswdRedBagInfo)localObject2).b) && (!((PasswdRedBagInfo)localObject2).a()))
+          localObject2 = ((IPasswdRedBagService)localObject2).getPasswdRedBagInfoById(MessageForQQWalletTips.access$300(this.i));
+          if ((localObject2 != null) && (!((PasswdRedBagInfo)localObject2).f) && (!((PasswdRedBagInfo)localObject2).g) && (!((PasswdRedBagInfo)localObject2).a()))
           {
-            if (!StringUtil.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.getLastIdiomPinyin(((PasswdRedBagInfo)localObject2).e))) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips), ((PasswdRedBagInfo)localObject2).e, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subChannel);
+            if (!StringUtil.isEmpty(this.g.getLastIdiomPinyin(((PasswdRedBagInfo)localObject2).i))) {
+              this.f.a(MessageForQQWalletTips.access$300(this.i), ((PasswdRedBagInfo)localObject2).i, this.i.subChannel);
             }
             return;
           }
         }
       }
-      if (TextUtils.isEmpty(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips)))
+      if (TextUtils.isEmpty(MessageForQQWalletTips.access$300(this.i)))
       {
         QLog.i(MessageForQQWalletTips.access$000(), 2, "error, listId is null");
         return;
       }
-      localObject2 = MessageForQQWalletTips.access$400(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, (QQAppInterface)localObject1);
+      localObject2 = MessageForQQWalletTips.access$400(this.i, (QQAppInterface)localObject1);
       localObject3 = (String)((Map)localObject2).get("grouptype");
       String str1 = (String)((Map)localObject2).get("name");
       String str2 = (String)((Map)localObject2).get("groupId");
@@ -100,12 +100,12 @@ class MessageForQQWalletTips$2
       localObject2 = new JSONObject();
       try
       {
-        localJSONObject.put("listid", MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
+        localJSONObject.put("listid", MessageForQQWalletTips.access$300(this.i));
         localJSONObject.put("name", str1);
         localJSONObject.put("grouptype", localObject3);
         localJSONObject.put("groupid", str2);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey != null) {
-          localJSONObject.put("authkey", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey);
+        if (this.i.authKey != null) {
+          localJSONObject.put("authkey", this.i.authKey);
         }
         ((JSONObject)localObject2).put("userId", ((QQAppInterface)localObject1).getCurrentAccountUin());
         ((JSONObject)localObject2).put("viewTag", "redgiftDetail");
@@ -130,14 +130,14 @@ class MessageForQQWalletTips$2
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_b_of_type_Int);
+    paramTextPaint.setColor(this.h);
     paramTextPaint.setUnderlineText(false);
     paramTextPaint.clearShadowLayer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.2
  * JD-Core Version:    0.7.0.1
  */

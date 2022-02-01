@@ -20,7 +20,7 @@ public class MultiVideoDecoder
 {
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if (!paramDecodeProtoPkgContext.d)
+    if (!paramDecodeProtoPkgContext.j)
     {
       if (!VideoConstants.a) {
         return;
@@ -35,13 +35,13 @@ public class MultiVideoDecoder
         paramDecodeProtoPkgContext.append("]");
         QLog.d("AVMsg", 2, paramDecodeProtoPkgContext.toString());
       }
-      paramMessageHandler.a.getGAudioHandler().a(paramList, paramMsg);
+      paramMessageHandler.n.getGAudioHandler().a(paramList, paramMsg);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.MultiVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

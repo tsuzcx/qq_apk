@@ -22,20 +22,20 @@ public final class VipTagView
   extends TextView
   implements DragAndDropDetector.Draggable
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131298637, 2131298638, 2131298639, 2131298640, 2131298641 };
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ShakeEffectGenerator jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator;
-  private ValueAnimation<Float> jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private static final int[] a = { 2131299354, 2131299355, 2131299356, 2131299357, 2131299358 };
+  private int b = 0;
+  private boolean c = false;
+  private Paint d;
+  private ValueAnimation<Float> e;
+  private ShakeEffectGenerator f;
+  private float g;
+  private boolean h = false;
+  private Bitmap i;
   
   public VipTagView(Context paramContext)
   {
     super(paramContext);
-    b();
+    c();
   }
   
   public VipTagView(Context paramContext, AttributeSet paramAttributeSet)
@@ -56,7 +56,7 @@ public final class VipTagView
         if (paramAttributeSet != null) {
           setLabelText(paramAttributeSet);
         }
-        b();
+        c();
         return;
       }
       finally
@@ -66,68 +66,51 @@ public final class VipTagView
     }
   }
   
-  private void a(int paramInt)
-  {
-    setBackgroundResource(2130847642);
-    if ((paramInt > 0) && (paramInt <= 5))
-    {
-      Object localObject = getBackground();
-      if ((localObject instanceof GradientDrawable))
-      {
-        Resources localResources = getResources();
-        localObject = (GradientDrawable)localObject;
-        ((GradientDrawable)localObject).mutate();
-        paramInt = localResources.getDimensionPixelSize(jdField_a_of_type_ArrayOfInt[(paramInt - 1)]);
-        ((GradientDrawable)localObject).setSize(paramInt, paramInt);
-      }
-    }
-  }
-  
   private void a(Canvas paramCanvas)
   {
-    if (this.b)
+    if (this.h)
     {
-      int i = getHeight();
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      float f1 = this.jdField_a_of_type_Float;
+      int j = getHeight();
+      int k = this.i.getHeight();
+      float f1 = this.g;
       paramCanvas.save();
-      float f2 = getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      float f3 = i * 0.8F + j;
-      paramCanvas.translate(f2, f3 + -f3 * this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F - this.jdField_a_of_type_Float * 200.0F));
+      float f2 = getWidth() - this.i.getWidth();
+      float f3 = j * 0.8F + k;
+      paramCanvas.translate(f2, f3 + -f3 * this.g);
+      this.d.setAlpha((int)(255.0F - this.g * 200.0F));
       paramCanvas.scale(f1, f1);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.i, 0.0F, 0.0F, this.d);
       paramCanvas.restore();
     }
   }
   
-  private void b()
+  private void c()
   {
     setClickable(true);
     Object localObject = getResources();
-    setTextSize(0, ((Resources)localObject).getDimensionPixelSize(2131298628));
-    int i = ((Resources)localObject).getDimensionPixelSize(2131298633);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
-    float f = i;
-    ((Paint)localObject).setTextSize(f);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
-    new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator = new ShakeEffectGenerator(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new VipTagView.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setDuration(800L);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new VipTagView.2(this));
+    setTextSize(0, ((Resources)localObject).getDimensionPixelSize(2131299345));
+    int j = ((Resources)localObject).getDimensionPixelSize(2131299350);
+    this.d = new Paint();
+    this.d.setColor(-16777216);
+    localObject = this.d;
+    float f1 = j;
+    ((Paint)localObject).setTextSize(f1);
+    this.d.setTextAlign(Paint.Align.LEFT);
+    this.i = Bitmap.createBitmap((int)this.d.measureText("+1"), j, Bitmap.Config.ARGB_4444);
+    new Canvas(this.i).drawText("+1", 0.0F, f1, this.d);
+    this.f = new ShakeEffectGenerator(this);
+    this.e = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new VipTagView.1(this));
+    this.e.setDuration(800L);
+    this.e.setInterpolator(new DecelerateInterpolator());
+    this.e.setAnimationListener(new VipTagView.2(this));
   }
   
-  private void c()
+  private void d()
   {
-    int i = this.jdField_a_of_type_Int;
+    int j = this.b;
     String str1;
-    if (i <= 99) {
-      str1 = String.valueOf(i);
+    if (j <= 99) {
+      str1 = String.valueOf(j);
     } else {
       str1 = "99+";
     }
@@ -144,28 +127,45 @@ public final class VipTagView
     }
   }
   
+  private void setBackgroundDrawableAdaptive(int paramInt)
+  {
+    setBackgroundResource(2130849302);
+    if ((paramInt > 0) && (paramInt <= 5))
+    {
+      Object localObject = getBackground();
+      if ((localObject instanceof GradientDrawable))
+      {
+        Resources localResources = getResources();
+        localObject = (GradientDrawable)localObject;
+        ((GradientDrawable)localObject).mutate();
+        paramInt = localResources.getDimensionPixelSize(a[(paramInt - 1)]);
+        ((GradientDrawable)localObject).setSize(paramInt, paramInt);
+      }
+    }
+  }
+  
   public void a()
   {
-    this.jdField_a_of_type_Int += 1;
-    this.b = true;
-    startAnimation(this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation);
-    c();
+    this.b += 1;
+    this.h = true;
+    startAnimation(this.e);
+    d();
   }
-  
-  public void a(DragAndDropDetector.DragSource paramDragSource, float paramFloat1, float paramFloat2) {}
   
   public void a(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.DropTarget paramDropTarget, float paramFloat1, float paramFloat2) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.a();
-  }
   
   public boolean a(DragAndDropDetector.DragSource paramDragSource, float paramFloat1, float paramFloat2)
   {
     bringToFront();
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.b();
+    this.f.b();
     return true;
+  }
+  
+  public void b(DragAndDropDetector.DragSource paramDragSource, float paramFloat1, float paramFloat2) {}
+  
+  public boolean b()
+  {
+    return this.f.c();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -177,42 +177,42 @@ public final class VipTagView
   public void setLabelAndPraise(String paramString, int paramInt)
   {
     setLabelText(paramString);
-    this.jdField_a_of_type_Int = paramInt;
-    c();
+    this.b = paramInt;
+    d();
   }
   
   public void setLabelText(String paramString)
   {
-    int j = paramString.length();
-    int i = 0;
+    int k = paramString.length();
+    int j = 0;
     String str = paramString;
-    if (j > 5) {
+    if (k > 5) {
       str = paramString.substring(0, 5);
     }
     paramString = str.toCharArray();
     StringBuilder localStringBuilder = new StringBuilder();
-    while (i < paramString.length)
+    while (j < paramString.length)
     {
-      localStringBuilder.append(paramString[i]);
-      if ((str.length() > 3) && (i == 1)) {
+      localStringBuilder.append(paramString[j]);
+      if ((str.length() > 3) && (j == 1)) {
         localStringBuilder.append('\n');
       }
-      i += 1;
+      j += 1;
     }
     localStringBuilder.append("\n(0)");
     setText(localStringBuilder);
-    a(str.length());
+    setBackgroundDrawableAdaptive(str.length());
   }
   
   public void setShakingState(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    this.c = paramBoolean;
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.a();
+      this.f.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.b();
+    this.f.b();
   }
   
   public void setTagColor(int paramInt1, int paramInt2)
@@ -228,7 +228,7 @@ public final class VipTagView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipTagView
  * JD-Core Version:    0.7.0.1
  */

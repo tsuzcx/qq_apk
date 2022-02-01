@@ -9,10 +9,10 @@ class AVGameControlUIImpl$5
   
   public void run()
   {
-    if (AVGameControlUIImpl.a(this.this$0).isShown())
+    if (AVGameControlUIImpl.f(this.this$0).isShown())
     {
-      String str = String.format("翻译耗时:%d ms 翻译结果:%s ", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString });
-      AVGameControlUIImpl.a(this.this$0).setText(str);
+      String str = String.format("翻译耗时:%d ms 翻译结果:%s ", new Object[] { Integer.valueOf(this.a), this.b });
+      AVGameControlUIImpl.f(this.this$0).setText(str);
     }
   }
 }

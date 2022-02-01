@@ -30,7 +30,7 @@ public class PCWalletPayDecoder
     int i = paramMsg.msg_head.msg_seq.get();
     long l2 = paramMsg.msg_head.msg_uid.get();
     int j = paramMsg.msg_head.msg_type.get();
-    MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.a());
+    MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.b());
     paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
     paramMsg = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     ((IQWalletPushApi)QRoute.api(IQWalletPushApi.class)).parseMsg0x210Sub0x66(paramMsg, paramMsgType0x210, l1, i, l2, j);
@@ -38,7 +38,7 @@ public class PCWalletPayDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.PCWalletPayDecoder
  * JD-Core Version:    0.7.0.1
  */

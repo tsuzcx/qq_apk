@@ -14,20 +14,20 @@ class SubscribeVideoDetailFragment$1
   
   public void onClick(View paramView)
   {
-    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
+    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.b(this.a) != null))
     {
       Object localObject = SubscribeVideoDetailFragment.a(this.a);
       boolean bool2 = true;
-      localObject = ((VideoHeaderBlock)localObject).a(1);
+      localObject = ((VideoHeaderBlock)localObject).b(1);
       boolean bool1 = bool2;
-      if (SubscribeVideoDetailFragment.a(this.a).f()) {
-        if (!SubscribeVideoDetailFragment.a(this.a).h()) {
+      if (SubscribeVideoDetailFragment.b(this.a).u()) {
+        if (!SubscribeVideoDetailFragment.b(this.a).w()) {
           bool1 = bool2;
         } else {
           bool1 = false;
         }
       }
-      ((ShareInfoBean)localObject).c = bool1;
+      ((ShareInfoBean)localObject).h = bool1;
       this.a.a((ShareInfoBean)localObject);
     }
     EventCollector.getInstance().onViewClicked(paramView);

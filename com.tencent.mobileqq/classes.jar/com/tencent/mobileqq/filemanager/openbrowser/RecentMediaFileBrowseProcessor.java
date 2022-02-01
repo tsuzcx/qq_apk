@@ -32,7 +32,7 @@ public class RecentMediaFileBrowseProcessor
           k = j;
           if (localFileManagerEntity.nSessionId == paramFileManagerEntity.nSessionId)
           {
-            this.jdField_a_of_type_Int = i;
+            this.c = i;
             k = 1;
           }
         }
@@ -49,15 +49,15 @@ public class RecentMediaFileBrowseProcessor
             continue;
           }
         }
-        this.jdField_a_of_type_JavaUtilList.add(a(i, localFileManagerEntity));
+        this.b.add(a(i, localFileManagerEntity));
         IFileViewerAdapter localIFileViewerAdapter = FileViewerAdapterBase.a(paramQQAppInterface, localFileManagerEntity);
-        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(localFileManagerEntity.nSessionId), Integer.valueOf(i));
-        this.b.add(localIFileViewerAdapter);
+        this.f.put(String.valueOf(localFileManagerEntity.nSessionId), Integer.valueOf(i));
+        this.e.add(localIFileViewerAdapter);
         i += 1;
         j = k;
       }
     }
-    b();
+    d();
   }
   
   public RecentMediaFileBrowseProcessor(QQAppInterface paramQQAppInterface, List<WeiYunFileInfo> paramList, WeiYunFileInfo paramWeiYunFileInfo)
@@ -70,36 +70,36 @@ public class RecentMediaFileBrowseProcessor
     for (int j = 0; paramList.hasNext(); j = k)
     {
       Object localObject = (WeiYunFileInfo)paramList.next();
-      k = FileManagerUtil.a(((WeiYunFileInfo)localObject).c);
-      if ((k != 0) && (k != 2) && ((!((WeiYunFileInfo)localObject).jdField_a_of_type_Boolean) || (!((WeiYunFileInfo)localObject).c.toLowerCase().endsWith("heic")))) {
+      k = FileManagerUtil.c(((WeiYunFileInfo)localObject).c);
+      if ((k != 0) && (k != 2) && ((!((WeiYunFileInfo)localObject).o) || (!((WeiYunFileInfo)localObject).c.toLowerCase().endsWith("heic")))) {
         break label18;
       }
       k = j;
       if (j == 0)
       {
         k = j;
-        if (((WeiYunFileInfo)localObject).jdField_a_of_type_JavaLangString != null)
+        if (((WeiYunFileInfo)localObject).a != null)
         {
           k = j;
-          if (((WeiYunFileInfo)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString))
+          if (((WeiYunFileInfo)localObject).a.equalsIgnoreCase(paramWeiYunFileInfo.a))
           {
-            this.jdField_a_of_type_Int = i;
+            this.c = i;
             k = 1;
           }
         }
       }
       localObject = FileViewerAdapterBase.a(paramQQAppInterface, (WeiYunFileInfo)localObject);
-      this.jdField_a_of_type_JavaUtilList.add(a(i, (IFileViewerAdapter)localObject));
-      this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(((IFileViewerAdapter)localObject).a()), Integer.valueOf(i));
-      this.b.add(localObject);
+      this.b.add(a(i, (IFileViewerAdapter)localObject));
+      this.f.put(String.valueOf(((IFileViewerAdapter)localObject).a()), Integer.valueOf(i));
+      this.e.add(localObject);
       i += 1;
     }
-    b();
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.RecentMediaFileBrowseProcessor
  * JD-Core Version:    0.7.0.1
  */

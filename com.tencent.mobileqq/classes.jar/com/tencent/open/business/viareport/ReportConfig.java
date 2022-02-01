@@ -9,22 +9,12 @@ import com.tencent.open.business.base.OpenConfig;
 public class ReportConfig
   extends BaseReportConfig
 {
-  public static int a()
-  {
-    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_BusinessReportMaxcount");
-    int i = j;
-    if (j == 0) {
-      i = 20;
-    }
-    return i;
-  }
-  
   public static int a(int paramInt)
   {
     int i;
     if (paramInt == 0)
     {
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_ViaSuccessRatioFrequencySuccess");
+      i = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Common_ViaSuccessRatioFrequencySuccess");
       paramInt = i;
       if (i == 0) {
         return 20;
@@ -32,7 +22,7 @@ public class ReportConfig
     }
     else
     {
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_ViaSuccessRatioFrequencyFail");
+      i = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Common_ViaSuccessRatioFrequencyFail");
       paramInt = i;
       if (i == 0) {
         paramInt = 50;
@@ -41,9 +31,37 @@ public class ReportConfig
     return paramInt;
   }
   
-  public static int a(String paramString)
+  public static String a()
   {
-    int j = OpenConfig.a(CommonDataAdapter.a().a(), paramString).b("Common_BusinessReportFrequency");
+    if (CommonDataAdapter.a().b() == null) {
+      return "";
+    }
+    return b().getString("uin", "");
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (CommonDataAdapter.a().b() == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = b().edit();
+    localEditor.putLong("lastTime", paramLong);
+    localEditor.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (CommonDataAdapter.a().b() == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = b().edit();
+    localEditor.putString("uin", paramString);
+    localEditor.commit();
+  }
+  
+  public static int b(String paramString)
+  {
+    int j = OpenConfig.a(CommonDataAdapter.a().b(), paramString).d("Common_BusinessReportFrequency");
     int i = j;
     if (j == 0) {
       i = 100;
@@ -51,67 +69,49 @@ public class ReportConfig
     return i;
   }
   
-  public static long a()
+  protected static SharedPreferences b()
   {
-    return CommonDataAdapter.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
+    return CommonDataAdapter.a().b().getSharedPreferences("reportConfig", 0);
   }
   
-  protected static SharedPreferences a()
+  public static long c()
   {
-    return CommonDataAdapter.a().a().getSharedPreferences("reportConfig", 0);
+    return CommonDataAdapter.a().b().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
   }
   
-  public static String a()
+  public static int d()
   {
-    if (CommonDataAdapter.a().a() == null) {
-      return "";
-    }
-    return a().getString("uin", "");
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (CommonDataAdapter.a().a() == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putLong("lastTime", paramLong);
-    localEditor.commit();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (CommonDataAdapter.a().a() == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putString("uin", paramString);
-    localEditor.commit();
-  }
-  
-  public static int b()
-  {
-    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_HttpRetryCount");
+    int j = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Common_BusinessReportMaxcount");
     int i = j;
     if (j == 0) {
-      i = 2;
+      i = 20;
     }
     return i;
   }
   
-  public static long b()
+  public static long e()
   {
-    long l2 = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_BusinessReportTimeinterval");
+    long l2 = OpenConfig.a(CommonDataAdapter.a().b(), null).e("Common_BusinessReportTimeinterval");
     long l1 = l2;
     if (l2 == 0L) {
       l1 = 3600L;
     }
     return l1;
   }
+  
+  public static int f()
+  {
+    int j = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Common_HttpRetryCount");
+    int i = j;
+    if (j == 0) {
+      i = 2;
+    }
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportConfig
  * JD-Core Version:    0.7.0.1
  */

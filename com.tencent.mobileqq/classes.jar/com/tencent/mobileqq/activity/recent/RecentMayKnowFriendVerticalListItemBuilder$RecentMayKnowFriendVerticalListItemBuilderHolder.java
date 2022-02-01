@@ -10,21 +10,21 @@ import com.tencent.widget.SingleLineTextView;
 public class RecentMayKnowFriendVerticalListItemBuilder$RecentMayKnowFriendVerticalListItemBuilderHolder
   extends RecentItemBaseBuilder.RecentItemBaseHolder
 {
-  public Button a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
   public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public TextView c;
+  public SingleLineTextView b;
+  public Button c;
   public TextView d;
   public TextView e;
+  public TextView f;
+  public TextView g;
+  public RelativeLayout h;
+  public RelativeLayout i;
+  public TroopLabelLayout j;
+  public TextView k;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder
  * JD-Core Version:    0.7.0.1
  */

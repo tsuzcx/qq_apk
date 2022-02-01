@@ -6,9 +6,9 @@ import com.tencent.widget.ThemeImageView;
 
 class MatchEmptyItemBuilder$ViewHolder
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  ViewGroup a;
+  ThemeImageView b;
+  TextView c;
 }
 
 

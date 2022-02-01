@@ -2,20 +2,20 @@ package com.tencent.mobileqq.qwallet.hb.grap.draw.impl;
 
 class ChooseItemView$ItemInfo
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  String a;
   boolean b;
+  boolean c;
   
   public ChooseItemView$ItemInfo(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    this.a = paramString;
+    this.b = paramBoolean1;
+    this.c = paramBoolean2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.ChooseItemView.ItemInfo
  * JD-Core Version:    0.7.0.1
  */

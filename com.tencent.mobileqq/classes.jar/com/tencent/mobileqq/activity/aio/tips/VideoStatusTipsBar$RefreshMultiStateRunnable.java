@@ -16,13 +16,13 @@ class VideoStatusTipsBar$RefreshMultiStateRunnable
   {
     VideoStatusTipsBar localVideoStatusTipsBar = (VideoStatusTipsBar)this.a.get();
     if (localVideoStatusTipsBar != null) {
-      localVideoStatusTipsBar.c();
+      localVideoStatusTipsBar.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar.RefreshMultiStateRunnable
  * JD-Core Version:    0.7.0.1
  */

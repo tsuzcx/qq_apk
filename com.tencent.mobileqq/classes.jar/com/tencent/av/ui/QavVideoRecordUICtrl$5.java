@@ -19,15 +19,15 @@ class QavVideoRecordUICtrl$5
     if (i <= 220)
     {
       f = i / 220.0F;
-      QavVideoRecordUICtrl.a(this.a).setAlpha(f);
+      QavVideoRecordUICtrl.d(this.a).setAlpha(f);
     }
     if (i <= 160)
     {
       f = i / 100.0F;
-      QavVideoRecordUICtrl.a(this.a).setAlpha(f);
+      QavVideoRecordUICtrl.e(this.a).setAlpha(f);
     }
-    if (QavVideoRecordUICtrl.a(this.a) != null) {
-      QavVideoRecordUICtrl.a(this.a).requestLayout();
+    if (QavVideoRecordUICtrl.f(this.a) != null) {
+      QavVideoRecordUICtrl.f(this.a).requestLayout();
     }
   }
 }

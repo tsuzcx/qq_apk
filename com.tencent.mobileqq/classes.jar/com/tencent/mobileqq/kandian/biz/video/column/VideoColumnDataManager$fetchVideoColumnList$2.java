@@ -19,14 +19,14 @@ final class VideoColumnDataManager$fetchVideoColumnList$2
   {
     NewIntent localNewIntent = new NewIntent((Context)BaseApplicationImpl.context, ProtoServlet.class);
     localNewIntent.putExtra("cmd", "MQUpdateSvc_com_qq_kandian.web.JsOidbProxy.oidb_0xdd7_1");
-    localNewIntent.putExtra("data", VideoColumnDataManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b).toByteArray());
-    localNewIntent.setObserver((BusinessObserver)new VideoColumnBusinessObserver(this.this$0, this.jdField_a_of_type_JavaLangString, this.b));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    localNewIntent.putExtra("data", VideoColumnDataManager.a(this.this$0, this.a, this.b).toByteArray());
+    localNewIntent.setObserver((BusinessObserver)new VideoColumnBusinessObserver(this.this$0, this.a, this.b));
+    this.c.startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnDataManager.fetchVideoColumnList.2
  * JD-Core Version:    0.7.0.1
  */

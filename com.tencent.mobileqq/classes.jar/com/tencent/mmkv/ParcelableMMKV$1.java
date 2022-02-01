@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
 import android.os.Parcelable.Creator;
 
-final class ParcelableMMKV$1
+class ParcelableMMKV$1
   implements Parcelable.Creator<ParcelableMMKV>
 {
   public ParcelableMMKV a(Parcel paramParcel)
@@ -26,7 +26,7 @@ final class ParcelableMMKV$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mmkv.ParcelableMMKV.1
  * JD-Core Version:    0.7.0.1
  */

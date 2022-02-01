@@ -26,13 +26,13 @@ final class MiniScanReport$4
       if (QLog.isColorLevel()) {
         QLog.i("MiniRecog.MiniScanReport", 2, String.format("onDetectSupportEasyReport [model,sdkver]=[%s,%d]", new Object[] { Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT) }));
       }
-      MiniScanReport.a("report_tag_detect_support_easy", l2);
+      MiniScanReport.b("report_tag_detect_support_easy", l2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniScanReport.4
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ class AutoReplyEditActivity$4
     if ((paramCharSequence instanceof QQTextBuilder)) {
       return (Editable)paramCharSequence;
     }
-    return new QQTextBuilder(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+    return new QQTextBuilder(paramCharSequence, 3, (int)(AutoReplyEditActivity.b(this.a).getTextSize() / AutoReplyEditActivity.b(this.a).getPaint().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ class ListenTogetherManager$6
     localObject = ListenTogetherUtils.a(1, paramString);
     if (ListenTogetherManager.a(this.a).equals(localObject))
     {
-      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).i = 3;
-      ListenTogetherAIOStatusHelper.a(ListenTogetherManager.a(this.a), paramString, false);
+      ((ListenTogetherSession)ListenTogetherManager.b(this.a).get(ListenTogetherManager.a(this.a))).p = 3;
+      ((ListenTogetherSession)ListenTogetherManager.b(this.a).get(ListenTogetherManager.a(this.a))).q = 3;
+      ListenTogetherAIOStatusHelper.a(ListenTogetherManager.j(this.a), paramString, false);
       localObject = this.a;
-      ((ListenTogetherManager)localObject).a(true, (ListenTogetherSession)ListenTogetherManager.a((ListenTogetherManager)localObject).get(ListenTogetherManager.a(this.a)), 1007);
+      ((ListenTogetherManager)localObject).a(true, (ListenTogetherSession)ListenTogetherManager.b((ListenTogetherManager)localObject).get(ListenTogetherManager.a(this.a)), 1007);
       this.a.a(1, paramString, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.6
  * JD-Core Version:    0.7.0.1
  */

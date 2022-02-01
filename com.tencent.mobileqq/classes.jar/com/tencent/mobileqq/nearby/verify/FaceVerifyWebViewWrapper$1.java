@@ -44,8 +44,8 @@ class FaceVerifyWebViewWrapper$1
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (FaceVerifyWebViewWrapper.s(this.a) != null) {
-      FaceVerifyWebViewWrapper.t(this.a).onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    if (FaceVerifyWebViewWrapper.u(this.a) != null) {
+      FaceVerifyWebViewWrapper.v(this.a).onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
     }
     return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
@@ -90,28 +90,28 @@ class FaceVerifyWebViewWrapper$1
   
   public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    if (WBH5FaceVerifySDK.a().a(paramWebView, paramValueCallback, FaceVerifyWebViewWrapper.b(this.a), paramFileChooserParams)) {
+    if (WBH5FaceVerifySDK.a().a(paramWebView, paramValueCallback, FaceVerifyWebViewWrapper.r(this.a), paramFileChooserParams)) {
       return true;
     }
-    if ((paramValueCallback != null) && (FaceVerifyWebViewWrapper.q(this.a) != null)) {
-      return FaceVerifyWebViewWrapper.r(this.a).onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    if ((paramValueCallback != null) && (FaceVerifyWebViewWrapper.s(this.a) != null)) {
+      return FaceVerifyWebViewWrapper.t(this.a).onShowFileChooser(paramValueCallback, paramFileChooserParams);
     }
     return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
   }
   
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    if (WBH5FaceVerifySDK.a().a(paramValueCallback, paramString1, FaceVerifyWebViewWrapper.a(this.a))) {
+    if (WBH5FaceVerifySDK.a().a(paramValueCallback, paramString1, FaceVerifyWebViewWrapper.o(this.a))) {
       return;
     }
-    if (FaceVerifyWebViewWrapper.o(this.a) != null) {
-      FaceVerifyWebViewWrapper.p(this.a).openFileChooser(paramValueCallback, paramString1, paramString2);
+    if (FaceVerifyWebViewWrapper.p(this.a) != null) {
+      FaceVerifyWebViewWrapper.q(this.a).openFileChooser(paramValueCallback, paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.verify.FaceVerifyWebViewWrapper.1
  * JD-Core Version:    0.7.0.1
  */

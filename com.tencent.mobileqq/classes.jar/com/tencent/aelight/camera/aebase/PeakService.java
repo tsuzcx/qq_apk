@@ -24,9 +24,12 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.capture.util.CameraHelper;
 import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
+import com.tencent.mobileqq.startup.step.InitUrlDrawable;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.CommonImgThumbHelper;
 import com.tencent.mobileqq.utils.FolderUtils;
+import com.tencent.mobileqq.wink.editor.export.WinkExportManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.initializer.VoiceChangerInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
@@ -56,7 +59,7 @@ public class PeakService
     }
     if (paramICompressionCallBack != null)
     {
-      if (paramCompressInfo.a) {
+      if (paramCompressInfo.c) {
         paramICompressionCallBack.a(paramCompressInfo);
       } else {
         paramICompressionCallBack.b(paramCompressInfo);
@@ -85,48 +88,53 @@ public class PeakService
     ((StringBuilder)localObject).append("onHandleIntent, action = ");
     ((StringBuilder)localObject).append(i);
     AEQLog.b("PeakService", ((StringBuilder)localObject).toString());
-    if (i != 1)
+    boolean bool;
+    long l;
+    switch (i)
     {
-      long l;
-      if (i != 2)
-      {
-        if (i != 3)
-        {
-          if (i != 4)
-          {
-            if (i != 5)
-            {
-              paramIntent = ThreadManager.getFileThreadHandler();
-              if (paramIntent != null)
-              {
-                paramIntent.removeCallbacks(FolderUtils.a);
-                paramIntent.postDelayed(FolderUtils.a, 1000L);
-              }
-              ThreadManager.excute(new PeakService.2(this), 64, null, true);
-              return;
-            }
-            bool = paramIntent.getBooleanExtra("key_alive", false);
-            AEEditorProcessManager.a().a(bool);
-            return;
-          }
-          AEQLog.b("PeakService", "[ACTION_START_EDITOR_MISSON] receive");
-          paramIntent = paramIntent.getStringExtra("generate_mission");
-          AEEditorProcessManager.a().a();
-          AEEditorProcessManager.a().a(paramIntent);
-          return;
-        }
-        l = System.currentTimeMillis();
-        i = CameraHelper.a();
-        DovSVParamManager.a();
-        AEKitForQQ.a();
-        bool = CaptureUtil.b();
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("PeakService", 2, new Object[] { "cameraCreate finish, cost:", Long.valueOf(System.currentTimeMillis() - l), " soloaded:", Boolean.valueOf(bool), " selectCamera:", Integer.valueOf(i) });
+    default: 
+      paramIntent = ThreadManager.getFileThreadHandler();
+      if (paramIntent == null) {
+        break label839;
+      }
+      paramIntent.removeCallbacks(FolderUtils.b);
+      paramIntent.postDelayed(FolderUtils.b, 1000L);
+      break;
+    case 7: 
+      AEQLog.b("PeakService", "[ACTION_RETRY_MISSON] receive");
+      paramIntent = paramIntent.getStringExtra("generate_mission");
+      WinkExportManager.a().a(paramIntent);
+      return;
+    case 6: 
+      bool = paramIntent.getBooleanExtra("key_alive", false);
+      AEEditorProcessManager.a().a(bool);
+      AECaptureContext.a();
+      new InitMemoryCache().step();
+      new InitUrlDrawable().step();
+      return;
+    case 5: 
+      bool = paramIntent.getBooleanExtra("key_alive", false);
+      AEEditorProcessManager.a().a(bool);
+      return;
+    case 4: 
+      AEQLog.b("PeakService", "[ACTION_START_EDITOR_MISSON] receive");
+      paramIntent = paramIntent.getStringExtra("generate_mission");
+      AEEditorProcessManager.a().b();
+      AEEditorProcessManager.a().a(paramIntent);
+      return;
+    case 3: 
+      l = System.currentTimeMillis();
+      i = CameraHelper.a();
+      DovSVParamManager.a();
+      AEKitForQQ.a();
+      bool = CaptureUtil.b();
+      if (!QLog.isColorLevel()) {
         return;
       }
-      boolean bool = paramIntent.getBooleanExtra("key_alive", false);
+      QLog.d("PeakService", 2, new Object[] { "cameraCreate finish, cost:", Long.valueOf(System.currentTimeMillis() - l), " soloaded:", Boolean.valueOf(bool), " selectCamera:", Integer.valueOf(i) });
+      return;
+    case 2: 
+      bool = paramIntent.getBooleanExtra("key_alive", false);
       AEEditorProcessManager.a().a(bool);
       try
       {
@@ -140,7 +148,7 @@ public class PeakService
           QLog.d("PeakService", 2, paramIntent.toString());
         }
         l = System.currentTimeMillis();
-        new QIMCameraCaptureActivity();
+        ThreadManager.getUIHandler().post(new PeakService.1(this));
         if (QLog.isColorLevel())
         {
           paramIntent = new StringBuilder();
@@ -167,7 +175,7 @@ public class PeakService
           QLog.d("PeakService", 1, paramIntent.toString());
         }
         AECameraGLSurfaceView.initSdk();
-        if (AEResUtil.a(AEResInfo.AE_RES_BASE_PACKAGE))
+        if (AEResUtil.c(AEResInfo.AE_RES_BASE_PACKAGE))
         {
           AEQLog.d("PeakService", "[loadBasicFeatures] start");
           FeatureManager.loadBasicFeatures();
@@ -178,7 +186,7 @@ public class PeakService
         }
         AECaptureContext.a();
         QIMEffectCameraCaptureUnitBuilder.a(-1000, null, null);
-        AECameraPrefsUtil.a().a("fake_key", "", 4);
+        AECameraPrefsUtil.a().b("fake_key", "", 4);
         AECircleResourcePreloader.a().a(BaseApplicationImpl.getContext());
         new AECirclePhotoListLogic(null);
         return;
@@ -217,11 +225,14 @@ public class PeakService
       a((CompressInfo)localObject, paramIntent);
     }
     CommonImgThumbHelper.initAioThumbSizeByDpc();
+    return;
+    label839:
+    ThreadManager.excute(new PeakService.3(this), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.PeakService
  * JD-Core Version:    0.7.0.1
  */

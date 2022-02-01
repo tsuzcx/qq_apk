@@ -1,5 +1,6 @@
 package cooperation.qqcircle.report;
 
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import java.util.HashMap;
 
 public class QCircleLpReportDc05504$DataBuilder
@@ -37,6 +38,44 @@ public class QCircleLpReportDc05504$DataBuilder
   
   public QCircleLpReportDc05504$DataBuilder() {}
   
+  public QCircleLpReportDc05504$DataBuilder(QCircleLpReportDc05504DataBuilder paramQCircleLpReportDc05504DataBuilder)
+  {
+    if (paramQCircleLpReportDc05504DataBuilder == null) {
+      return;
+    }
+    this.toUin = paramQCircleLpReportDc05504DataBuilder.getToUin();
+    this.actionType = paramQCircleLpReportDc05504DataBuilder.getActionType();
+    this.subActionType = paramQCircleLpReportDc05504DataBuilder.getSubActionType();
+    this.thrActionType = paramQCircleLpReportDc05504DataBuilder.getThrActionType();
+    this.pageId = paramQCircleLpReportDc05504DataBuilder.getPageId();
+    this.fPageId = paramQCircleLpReportDc05504DataBuilder.getfPageId();
+    this.ffPageId = paramQCircleLpReportDc05504DataBuilder.getFfPageId();
+    this.vid = paramQCircleLpReportDc05504DataBuilder.getVid();
+    this.ext1 = paramQCircleLpReportDc05504DataBuilder.getExt1();
+    this.ext2 = paramQCircleLpReportDc05504DataBuilder.getExt2();
+    this.ext3 = paramQCircleLpReportDc05504DataBuilder.getExt3();
+    this.ext4 = paramQCircleLpReportDc05504DataBuilder.getExt4();
+    this.ext5 = paramQCircleLpReportDc05504DataBuilder.getExt5();
+    this.ext6 = paramQCircleLpReportDc05504DataBuilder.getExt6();
+    this.ext7 = paramQCircleLpReportDc05504DataBuilder.getExt7();
+    this.ext8 = paramQCircleLpReportDc05504DataBuilder.getExt8();
+    this.ext9 = paramQCircleLpReportDc05504DataBuilder.getExt9();
+    this.ext10 = paramQCircleLpReportDc05504DataBuilder.getExt10();
+    this.ext11 = paramQCircleLpReportDc05504DataBuilder.getExt11();
+    this.ext12 = paramQCircleLpReportDc05504DataBuilder.getExt12();
+    this.ext13 = paramQCircleLpReportDc05504DataBuilder.getExt13();
+    this.ext14 = paramQCircleLpReportDc05504DataBuilder.getExt14();
+    this.ext15 = paramQCircleLpReportDc05504DataBuilder.getExt15();
+    this.ext16 = paramQCircleLpReportDc05504DataBuilder.getExt16();
+    this.ext17 = paramQCircleLpReportDc05504DataBuilder.getExt17();
+    this.ext18 = paramQCircleLpReportDc05504DataBuilder.getExt18();
+    this.feedReportInfo = paramQCircleLpReportDc05504DataBuilder.getFeedReportInfo();
+    this.msgReportInfo = paramQCircleLpReportDc05504DataBuilder.getMsgReportInfo();
+    this.commExtReportInfo = paramQCircleLpReportDc05504DataBuilder.getCommExtReportInfo();
+    this.extras = new HashMap();
+    this.extras.putAll(paramQCircleLpReportDc05504DataBuilder.getExtras());
+  }
+  
   public QCircleLpReportDc05504$DataBuilder(DataBuilder paramDataBuilder)
   {
     if (paramDataBuilder == null) {
@@ -73,6 +112,156 @@ public class QCircleLpReportDc05504$DataBuilder
     this.commExtReportInfo = paramDataBuilder.commExtReportInfo;
     this.extras = new HashMap();
     this.extras.putAll(paramDataBuilder.extras);
+  }
+  
+  public int getActionType()
+  {
+    return this.actionType;
+  }
+  
+  public byte[] getCommExtReportInfo()
+  {
+    return this.commExtReportInfo;
+  }
+  
+  public String getExt1()
+  {
+    return this.ext1;
+  }
+  
+  public String getExt10()
+  {
+    return this.ext10;
+  }
+  
+  public String getExt11()
+  {
+    return this.ext11;
+  }
+  
+  public String getExt12()
+  {
+    return this.ext12;
+  }
+  
+  public String getExt13()
+  {
+    return this.ext13;
+  }
+  
+  public String getExt14()
+  {
+    return this.ext14;
+  }
+  
+  public String getExt15()
+  {
+    return this.ext15;
+  }
+  
+  public String getExt16()
+  {
+    return this.ext16;
+  }
+  
+  public String getExt17()
+  {
+    return this.ext17;
+  }
+  
+  public String getExt18()
+  {
+    return this.ext18;
+  }
+  
+  public String getExt2()
+  {
+    return this.ext2;
+  }
+  
+  public String getExt3()
+  {
+    return this.ext3;
+  }
+  
+  public String getExt4()
+  {
+    return this.ext4;
+  }
+  
+  public String getExt5()
+  {
+    return this.ext5;
+  }
+  
+  public String getExt6()
+  {
+    return this.ext6;
+  }
+  
+  public String getExt7()
+  {
+    return this.ext7;
+  }
+  
+  public String getExt8()
+  {
+    return this.ext8;
+  }
+  
+  public String getExt9()
+  {
+    return this.ext9;
+  }
+  
+  public HashMap<String, String> getExtras()
+  {
+    return this.extras;
+  }
+  
+  public byte[] getFeedReportInfo()
+  {
+    return this.feedReportInfo;
+  }
+  
+  public int getFfPageId()
+  {
+    return this.ffPageId;
+  }
+  
+  public byte[] getMsgReportInfo()
+  {
+    return this.msgReportInfo;
+  }
+  
+  public int getPageId()
+  {
+    return this.pageId;
+  }
+  
+  public int getSubActionType()
+  {
+    return this.subActionType;
+  }
+  
+  public int getThrActionType()
+  {
+    return this.thrActionType;
+  }
+  
+  public String getToUin()
+  {
+    return this.toUin;
+  }
+  
+  public String getVid()
+  {
+    return this.vid;
+  }
+  
+  public int getfPageId()
+  {
+    return this.fPageId;
   }
   
   public DataBuilder setActionType(int paramInt)
@@ -207,6 +396,12 @@ public class QCircleLpReportDc05504$DataBuilder
     return this;
   }
   
+  public DataBuilder setFfPageId(int paramInt)
+  {
+    this.ffPageId = paramInt;
+    return this;
+  }
+  
   public DataBuilder setMsgReportInfo(byte[] paramArrayOfByte)
   {
     this.msgReportInfo = paramArrayOfByte;
@@ -243,12 +438,6 @@ public class QCircleLpReportDc05504$DataBuilder
     return this;
   }
   
-  public DataBuilder setffPageId(int paramInt)
-  {
-    this.ffPageId = paramInt;
-    return this;
-  }
-  
   public DataBuilder setvid(String paramString)
   {
     this.vid = paramString;
@@ -257,7 +446,7 @@ public class QCircleLpReportDc05504$DataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05504.DataBuilder
  * JD-Core Version:    0.7.0.1
  */

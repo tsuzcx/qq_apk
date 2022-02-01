@@ -22,16 +22,16 @@ import org.json.JSONObject;
 public class MergeEditVideo
 {
   public static int a = 1280;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private Object b = new Object();
+  private volatile boolean c = false;
   
   private void a(MergeEditVideo.EditParam paramEditParam, DecodeConfig paramDecodeConfig, EncodeConfig paramEncodeConfig, PublishVideoEntry paramPublishVideoEntry)
   {
-    boolean bool1 = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("local_import", false);
-    int j = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getIntExtra("video_rotation", 0);
-    boolean bool2 = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false);
+    boolean bool1 = paramEditParam.b.getBooleanExtra("local_import", false);
+    int j = paramEditParam.b.getIntExtra("video_rotation", 0);
+    boolean bool2 = paramEditParam.b.getBooleanExtra("landscape_video", false);
     int i;
-    if (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId == 14) {
+    if (paramEditParam.b.businessId == 14) {
       i = 1;
     } else {
       i = 0;
@@ -48,32 +48,32 @@ public class MergeEditVideo
     {
       if (j != 0)
       {
-        paramEncodeConfig.h = j;
+        paramEncodeConfig.m = j;
         if (i != 0) {
-          paramEncodeConfig.g = 0;
+          paramEncodeConfig.l = 0;
         } else if (bool2) {
-          paramEncodeConfig.g = 270;
+          paramEncodeConfig.l = 270;
         } else {
-          paramEncodeConfig.g = 0;
+          paramEncodeConfig.l = 0;
         }
       }
-      i = paramEncodeConfig.jdField_a_of_type_Int;
-      j = paramEncodeConfig.b;
-      if (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId != 14)
+      i = paramEncodeConfig.c;
+      j = paramEncodeConfig.d;
+      if (paramEditParam.b.businessId != 14)
       {
-        i = Math.min(paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.b);
-        j = Math.max(paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.b);
+        i = Math.min(paramEncodeConfig.c, paramEncodeConfig.d);
+        j = Math.max(paramEncodeConfig.c, paramEncodeConfig.d);
       }
       else if ((!paramPublishVideoEntry.getBooleanExtra("KEY_VIDEO_STORY_CAMERA_TYPE", false)) && (bool2))
       {
-        paramEncodeConfig.d = false;
+        paramEncodeConfig.u = false;
       }
       else
       {
-        i = Math.min(paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.b);
-        j = Math.max(paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.b);
+        i = Math.min(paramEncodeConfig.c, paramEncodeConfig.d);
+        j = Math.max(paramEncodeConfig.c, paramEncodeConfig.d);
       }
-      int k = jdField_a_of_type_Int;
+      int k = a;
       double d1;
       double d2;
       double d3;
@@ -88,15 +88,15 @@ public class MergeEditVideo
         i = (int)(d1 * d2 / d3);
         j = k;
       }
-      paramEncodeConfig.jdField_a_of_type_Int = CompositeUtil.a(i);
-      paramEncodeConfig.b = CompositeUtil.a(j);
-      paramDecodeConfig.width = paramEncodeConfig.jdField_a_of_type_Int;
-      paramDecodeConfig.height = paramEncodeConfig.b;
-      if (paramEncodeConfig.c)
+      paramEncodeConfig.c = CompositeUtil.a(i);
+      paramEncodeConfig.d = CompositeUtil.a(j);
+      paramDecodeConfig.width = paramEncodeConfig.c;
+      paramDecodeConfig.height = paramEncodeConfig.d;
+      if (paramEncodeConfig.r)
       {
-        int m = paramEncodeConfig.jdField_a_of_type_Int;
-        int n = (int)(paramEncodeConfig.jdField_a_of_type_Int * 16.0F / 9.0F);
-        k = jdField_a_of_type_Int;
+        int m = paramEncodeConfig.c;
+        int n = (int)(paramEncodeConfig.c * 16.0F / 9.0F);
+        k = a;
         j = m;
         i = n;
         if (n > k)
@@ -110,8 +110,8 @@ public class MergeEditVideo
           j = (int)(d1 * d2 / d3);
           i = k;
         }
-        paramEncodeConfig.jdField_a_of_type_Int = CompositeUtil.a(j);
-        paramEncodeConfig.b = CompositeUtil.a(i);
+        paramEncodeConfig.c = CompositeUtil.a(j);
+        paramEncodeConfig.d = CompositeUtil.a(i);
       }
     }
     if (QLog.isColorLevel())
@@ -133,14 +133,14 @@ public class MergeEditVideo
     int k = -1;
     if (paramEditParam != null)
     {
-      if (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry == null) {
+      if (paramEditParam.b == null) {
         return -1;
       }
-      paramEditParam.a(paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.saveMode);
-      boolean bool1 = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("hasAVFilter", false);
-      Object localObject3 = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getJSONArrayExtra("jsonAVFilterData");
-      String str = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getStringExtra("transfer_effect_data", null);
-      boolean bool2 = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("extra_is_need_gaussion_blur", false);
+      paramEditParam.a(paramEditParam.b.saveMode);
+      boolean bool1 = paramEditParam.b.getBooleanExtra("hasAVFilter", false);
+      Object localObject3 = paramEditParam.b.getJSONArrayExtra("jsonAVFilterData");
+      String str = paramEditParam.b.getStringExtra("transfer_effect_data", null);
+      boolean bool2 = paramEditParam.b.getBooleanExtra("extra_is_need_gaussion_blur", false);
       Object localObject1;
       if (localObject3 == null) {
         localObject1 = null;
@@ -154,7 +154,7 @@ public class MergeEditVideo
           break;
         }
       }
-      if ((paramEditParam.c == 0) && (paramEditParam.b == 0) && (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath == null) && (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.mosaicPath == null) && (!bool1) && (str == null) && (!bool2)) {
+      if ((paramEditParam.d == 0) && (paramEditParam.c == 0) && (paramEditParam.b.doodlePath == null) && (paramEditParam.b.mosaicPath == null) && (!bool1) && (str == null) && (!bool2)) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -172,17 +172,17 @@ public class MergeEditVideo
         QLog.d("MergeEditVideo", 1, "mergeVideo reEncoder false");
         return -1;
       }
-      i = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeStart;
-      int j = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeEnd;
-      if (paramEditParam.c == 5)
+      i = paramEditParam.b.videoRangeStart;
+      int j = paramEditParam.b.videoRangeEnd;
+      if (paramEditParam.d == 5)
       {
-        ??? = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.mIFrameVideoPath;
+        ??? = paramEditParam.b.mIFrameVideoPath;
         i = 0;
         j = 0;
       }
       if (localObject1 != null)
       {
-        localObject2 = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getJSONExtra("jsonMusicData");
+        localObject2 = paramEditParam.b.getJSONExtra("jsonMusicData");
         if (localObject2 != null) {
           localObject2 = new MusicItemInfo((JSONObject)localObject2);
         } else {
@@ -217,33 +217,33 @@ public class MergeEditVideo
         QLog.d("MergeEditVideo", 1, "useHwAudioRecorder");
         localObject2 = new Mp4ReEncoderWithAudio();
       }
-      paramString2 = new EncodeConfig(paramString2, m, n, paramEditParam.jdField_a_of_type_Int, 1, 30, paramEditParam.b, false, i1, paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath, paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.mosaicPath, null, paramEditParam.jdField_a_of_type_Boolean);
-      ??? = new DecodeConfig(???, paramEditParam.c, false, true, i, j);
+      paramString2 = new EncodeConfig(paramString2, m, n, paramEditParam.a, 1, 30, paramEditParam.c, false, i1, paramEditParam.b.doodlePath, paramEditParam.b.mosaicPath, null, paramEditParam.g);
+      ??? = new DecodeConfig(???, paramEditParam.d, false, true, i, j);
       ???.width = m;
       ???.height = n;
-      paramString2.c = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("extra_is_need_gaussion_blur", false);
+      paramString2.r = paramEditParam.b.getBooleanExtra("extra_is_need_gaussion_blur", false);
       a(paramEditParam, ???, paramString2, paramPublishVideoEntry);
-      ???.isLocal = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("local_import", false);
-      ???.isLandscape = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false);
+      ???.isLocal = paramEditParam.b.getBooleanExtra("local_import", false);
+      ???.isLandscape = paramEditParam.b.getBooleanExtra("landscape_video", false);
       ???.adjustRotation = i1;
-      paramString2.i = paramEditParam.d;
-      paramString2.j = paramEditParam.e;
-      paramEditParam = paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getStringExtra("dynamic_Sticker_data", null);
+      paramString2.p = paramEditParam.e;
+      paramString2.q = paramEditParam.f;
+      paramEditParam = paramEditParam.b.getStringExtra("dynamic_Sticker_data", null);
       if (paramEditParam != null) {
-        ((Mp4ReEncoder)localObject2).a(CompositeUtil.a(paramEditParam));
+        ((Mp4ReEncoder)localObject2).a(CompositeUtil.b(paramEditParam));
       }
       if (str != null) {
         ((Mp4ReEncoder)localObject2).a(str);
       }
       ((Mp4ReEncoder)localObject2).a(???, paramString2, new MergeEditVideo.1(this, (QQEncodeFilterRender)localObject1, paramString2, paramPublishVideoEntry, (Mp4ReEncoder)localObject2), (Mp4ReEncoder.EncodeFilterRender)localObject1);
-      if (!this.jdField_a_of_type_Boolean) {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (!this.c) {
+        synchronized (this.b)
         {
-          bool1 = this.jdField_a_of_type_Boolean;
+          bool1 = this.c;
           if (!bool1) {
             try
             {
-              this.jdField_a_of_type_JavaLangObject.wait();
+              this.b.wait();
             }
             catch (InterruptedException paramString2)
             {
@@ -255,7 +255,7 @@ public class MergeEditVideo
       if (paramPublishVideoEntry.isCancel) {
         return -16;
       }
-      if (((Mp4ReEncoder)localObject2).jdField_a_of_type_Int == 0) {
+      if (((Mp4ReEncoder)localObject2).e == 0) {
         return 0;
       }
       return 1;
@@ -275,21 +275,21 @@ public class MergeEditVideo
       return true;
     }
     long l = CompositeUtil.a(paramPublishVideoEntry.mLocalRawVideoDir);
-    if (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeStart <= 0)
+    if (paramEditParam.b.videoRangeStart <= 0)
     {
-      if (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeEnd < l) {
+      if (paramEditParam.b.videoRangeEnd < l) {
         return true;
       }
-      if ((paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId != 11) && (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId != 12) && (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId != 14)) {
+      if ((paramEditParam.b.businessId != 11) && (paramEditParam.b.businessId != 12) && (paramEditParam.b.businessId != 14)) {
         return false;
       }
-      paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false);
-      if (Math.max(paramInt1, paramInt2) <= jdField_a_of_type_Int) {
+      paramEditParam.b.getBooleanExtra("landscape_video", false);
+      if (Math.max(paramInt1, paramInt2) <= a) {
         paramInt1 = 1;
       } else {
         paramInt1 = 0;
       }
-      if ((paramInt1 != 0) && ((paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId == 11) || (paramEditParam.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.businessId == 12))) {
+      if ((paramInt1 != 0) && ((paramEditParam.b.businessId == 11) || (paramEditParam.b.businessId == 12))) {
         return false;
       }
     }
@@ -298,7 +298,7 @@ public class MergeEditVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.MergeEditVideo
  * JD-Core Version:    0.7.0.1
  */

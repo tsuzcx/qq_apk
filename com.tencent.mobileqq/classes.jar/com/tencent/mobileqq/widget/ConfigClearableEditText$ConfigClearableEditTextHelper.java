@@ -20,7 +20,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
   
   protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
+    if ((ConfigClearableEditText.c(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
       return 0;
     }
     return -1;
@@ -28,7 +28,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
   
   protected void getVisibleVirtualViews(List<Integer> paramList)
   {
-    if (ConfigClearableEditText.a(this.a)) {
+    if (ConfigClearableEditText.c(this.a)) {
       paramList.add(Integer.valueOf(0));
     }
   }
@@ -48,7 +48,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
   protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
   {
     if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(QQUIDelegate.a(2131702137));
+      paramAccessibilityEvent.setContentDescription(QQUIDelegate.a(2131900145));
     }
   }
   
@@ -56,7 +56,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
   {
     if (paramInt == 0)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(QQUIDelegate.a(2131702137));
+      paramAccessibilityNodeInfoCompat.setContentDescription(QQUIDelegate.a(2131900145));
       paramAccessibilityNodeInfoCompat.addAction(16);
       paramInt = ConfigClearableEditText.a(this.a);
       paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
@@ -65,7 +65,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText.ConfigClearableEditTextHelper
  * JD-Core Version:    0.7.0.1
  */

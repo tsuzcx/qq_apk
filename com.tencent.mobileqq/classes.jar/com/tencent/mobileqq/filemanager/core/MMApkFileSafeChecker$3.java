@@ -14,28 +14,28 @@ class MMApkFileSafeChecker$3
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[MMApkCheck] onCheckResult. nSessionId=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject).append(this.a.nSessionId);
     ((StringBuilder)localObject).append(" errCode:");
     ((StringBuilder)localObject).append(paramInt1);
     QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+      localObject = this.a;
       ((FileManagerEntity)localObject).apkSafeLevel = paramInt2;
       ((FileManagerEntity)localObject).apkSafeMsg = paramString1;
       ((FileManagerEntity)localObject).apkSafeDetailUrl = paramString2;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      if (this.b.b != null) {
+        this.b.b.getFileManagerDataCenter().c(this.a);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a.getFileManagerNotifyCenter().a(true, 200, new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
+    if (this.b.b != null) {
+      this.b.b.getFileManagerNotifyCenter().a(true, 200, new Object[] { Long.valueOf(this.a.nSessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.3
  * JD-Core Version:    0.7.0.1
  */

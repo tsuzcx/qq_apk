@@ -13,7 +13,7 @@ final class Changeset$2
   
   public String a(Matcher paramMatcher)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(Changeset.a(paramMatcher.group(1)));
+    Object localObject = this.a.a(Changeset.b(paramMatcher.group(1)));
     if (localObject != null)
     {
       int k = 0;
@@ -22,28 +22,28 @@ final class Changeset$2
       for (;;)
       {
         j = k;
-        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        if (i >= this.b.size()) {
           break;
         }
-        paramMatcher = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramMatcher = (Pair)this.b.get(i);
         if (((String)paramMatcher.first).equals(((Pair)localObject).first))
         {
-          if ((Utils.a((String)((Pair)localObject).second)) && (!this.jdField_a_of_type_Boolean))
+          if ((Utils.a((String)((Pair)localObject).second)) && (!this.c))
           {
-            Utils.a(this.jdField_a_of_type_JavaUtilList, i, 1);
+            Utils.a(this.b, i, 1);
           }
           else
           {
             paramMatcher = new Pair(paramMatcher.first, ((Pair)localObject).second);
-            this.jdField_a_of_type_JavaUtilList.set(i, paramMatcher);
+            this.b.set(i, paramMatcher);
           }
           j = 1;
           break;
         }
         i += 1;
       }
-      if ((j == 0) && ((!Utils.a((String)((Pair)localObject).second)) || (this.jdField_a_of_type_Boolean))) {
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
+      if ((j == 0) && ((!Utils.a((String)((Pair)localObject).second)) || (this.c))) {
+        this.b.add(localObject);
       }
       return "";
     }
@@ -59,7 +59,7 @@ final class Changeset$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.2
  * JD-Core Version:    0.7.0.1
  */

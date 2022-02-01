@@ -25,20 +25,15 @@ public class BreatheEffectView
   extends ImageView
   implements DragAndDropDetector.DropTarget
 {
-  private static int jdField_a_of_type_Int;
-  public static final int[] a;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private TypeEvaluator jdField_a_of_type_AndroidAnimationTypeEvaluator = new BreatheEffectView.1(this);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private Rect[] jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-  private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  private int[] b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 170, 112, 112 };
-  }
+  public static final int[] a = { 170, 112, 112 };
+  private static int c;
+  private AnimatorSet b;
+  private LayerDrawable d;
+  private Drawable[] e;
+  private Rect[] f;
+  private int[] g;
+  private Rect h;
+  private TypeEvaluator i = new BreatheEffectView.1(this);
   
   public BreatheEffectView(Context paramContext)
   {
@@ -58,23 +53,18 @@ public class BreatheEffectView
     e();
   }
   
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable != null) && (getBackground() == this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
-  }
-  
   private void e()
   {
-    jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298626);
-    setBackgroundResource(2130847641);
+    c = getResources().getDimensionPixelSize(2131299343);
+    setBackgroundResource(2130849301);
     Drawable localDrawable = getBackground();
     if ((localDrawable instanceof LayerDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)localDrawable);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[3];
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363509);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363511);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363501);
+      this.d = ((LayerDrawable)localDrawable);
+      this.e = new Drawable[3];
+      this.e[2] = this.d.findDrawableByLayerId(2131429411);
+      this.e[1] = this.d.findDrawableByLayerId(2131429414);
+      this.e[0] = this.d.findDrawableByLayerId(2131429403);
       return;
     }
     throw new RuntimeException("Background is not a layer drawable!");
@@ -82,46 +72,51 @@ public class BreatheEffectView
   
   private void f()
   {
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = new Rect[3];
-      int i = 0;
-      while (i < 3)
+      this.f = new Rect[3];
+      int j = 0;
+      while (j < 3)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i] = new Rect(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i].getBounds());
-        i += 1;
+        this.f[j] = new Rect(this.e[j].getBounds());
+        j += 1;
       }
-      i = 1;
-      while (i < 3)
+      j = 1;
+      while (j < 3)
       {
-        Drawable localDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i];
-        Rect localRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
-        int j = localRect.centerX();
-        int k = localRect.centerY();
-        localDrawable.setBounds(j, k, j, k);
-        i += 1;
+        Drawable localDrawable = this.e[j];
+        Rect localRect = this.f[j];
+        int k = localRect.centerX();
+        int m = localRect.centerY();
+        localDrawable.setBounds(k, m, k, m);
+        j += 1;
       }
     }
   }
   
+  private boolean g()
+  {
+    return (this.d != null) && (getBackground() == this.d);
+  }
+  
   public void a()
   {
-    if (a())
+    if (g())
     {
-      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-        int i = 0;
-        while (i < 3)
+        this.b = new AnimatorSet();
+        int j = 0;
+        while (j < 3)
         {
-          Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i];
+          Object localObject1 = this.e[j];
           Object localObject2 = new Rect();
-          ((Rect)localObject2).left = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].left - jdField_a_of_type_Int);
-          ((Rect)localObject2).top = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].top - jdField_a_of_type_Int);
-          ((Rect)localObject2).right = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].right + jdField_a_of_type_Int);
-          ((Rect)localObject2).bottom = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].bottom + jdField_a_of_type_Int);
-          localObject2 = ObjectAnimator.ofObject(localObject1, "bounds", this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i], localObject2 });
-          long l = i * 180;
+          ((Rect)localObject2).left = (this.f[j].left - c);
+          ((Rect)localObject2).top = (this.f[j].top - c);
+          ((Rect)localObject2).right = (this.f[j].right + c);
+          ((Rect)localObject2).bottom = (this.f[j].bottom + c);
+          localObject2 = ObjectAnimator.ofObject(localObject1, "bounds", this.i, new Object[] { this.f[j], localObject2 });
+          long l = j * 180;
           ((ValueAnimator)localObject2).setStartDelay(l);
           ((ValueAnimator)localObject2).setDuration(600L);
           ((ValueAnimator)localObject2).setInterpolator(new CycleInterpolator(0.5F));
@@ -129,40 +124,40 @@ public class BreatheEffectView
           ((ValueAnimator)localObject1).setInterpolator(new CycleInterpolator(0.5F));
           ((ValueAnimator)localObject1).setStartDelay(l);
           ((ValueAnimator)localObject1).setDuration(600L);
-          this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject1 });
-          if (2 == i) {
+          this.b.playTogether(new Animator[] { localObject1 });
+          if (2 == j) {
             ((ValueAnimator)localObject2).addListener(new BreatheEffectView.2(this));
           }
-          this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject2 });
-          i += 1;
+          this.b.playTogether(new Animator[] { localObject2 });
+          j += 1;
         }
       }
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+      this.b.start();
     }
   }
   
   public void a(BreatheEffectView.BreatheListener paramBreatheListener)
   {
-    if (a())
+    if (g())
     {
       b();
       f();
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      int i = 1;
-      while (i < 3)
+      int j = 1;
+      while (j < 3)
       {
-        Drawable localDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i];
-        Object localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
-        int j = ((Rect)localObject).centerX();
-        int k = ((Rect)localObject).centerY();
-        Rect localRect = new Rect(j, k, j, k);
+        Drawable localDrawable = this.e[j];
+        Object localObject = this.f[j];
+        int k = ((Rect)localObject).centerX();
+        int m = ((Rect)localObject).centerY();
+        Rect localRect = new Rect(k, m, k, m);
         localDrawable.setBounds(localRect);
-        localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { localRect, localObject });
+        localObject = ObjectAnimator.ofObject(this.i, new Object[] { localRect, localObject });
         ((ValueAnimator)localObject).addUpdateListener(new BreatheEffectView.3(this, localDrawable));
         ((ValueAnimator)localObject).setDuration(400L);
-        ((ValueAnimator)localObject).setStartDelay(i * 50);
+        ((ValueAnimator)localObject).setStartDelay(j * 50);
         localAnimatorSet.playTogether(new Animator[] { localObject });
-        i += 1;
+        j += 1;
       }
       if (paramBreatheListener != null) {
         localAnimatorSet.addListener(new BreatheEffectView.4(this, paramBreatheListener));
@@ -172,41 +167,35 @@ public class BreatheEffectView
     }
   }
   
-  public void a(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2)
-  {
-    d();
-    a();
-  }
-  
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    Object localObject = this.h;
     if (localObject != null) {
       return ((Rect)localObject).contains((int)paramFloat1, (int)paramFloat2);
     }
-    if (this.b == null)
+    if (this.g == null)
     {
-      this.b = new int[2];
-      getLocationOnScreen(this.b);
+      this.g = new int[2];
+      getLocationOnScreen(this.g);
     }
-    int i = getWidth();
-    localObject = this.b;
+    int j = getWidth();
+    localObject = this.g;
     boolean bool2 = false;
-    int j = localObject[0];
-    int k = getHeight();
-    localObject = this.b;
-    int m = localObject[1];
+    int k = localObject[0];
+    int m = getHeight();
+    localObject = this.g;
+    int n = localObject[1];
     boolean bool1 = bool2;
     if (paramFloat1 >= localObject[0])
     {
       bool1 = bool2;
-      if (paramFloat1 <= i + j)
+      if (paramFloat1 <= j + k)
       {
         bool1 = bool2;
         if (paramFloat2 >= localObject[1])
         {
           bool1 = bool2;
-          if (paramFloat2 <= k + m) {
+          if (paramFloat2 <= m + n) {
             bool1 = true;
           }
         }
@@ -222,43 +211,41 @@ public class BreatheEffectView
   
   public void b()
   {
-    if ((a()) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect != null))
+    if ((g()) && (this.f != null))
     {
       clearAnimation();
-      int i = 0;
-      while (i < 3)
+      int j = 0;
+      while (j < 3)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i].setBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i]);
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i].setAlpha(255);
-        i += 1;
+        this.e[j].setBounds(this.f[j]);
+        this.e[j].setAlpha(255);
+        j += 1;
       }
     }
   }
   
   public void b(BreatheEffectView.BreatheListener paramBreatheListener)
   {
-    if (a())
+    if (g())
     {
       clearAnimation();
       paramBreatheListener = new AnimatorSet();
-      int i = 1;
-      while (i < 3)
+      int j = 1;
+      while (j < 3)
       {
-        Drawable localDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i];
-        Object localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
-        int j = ((Rect)localObject).centerX();
-        int k = ((Rect)localObject).centerY();
-        localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { localObject, new Rect(j, k, j, k) });
+        Drawable localDrawable = this.e[j];
+        Object localObject = this.f[j];
+        int k = ((Rect)localObject).centerX();
+        int m = ((Rect)localObject).centerY();
+        localObject = ObjectAnimator.ofObject(this.i, new Object[] { localObject, new Rect(k, m, k, m) });
         ((ValueAnimator)localObject).addUpdateListener(new BreatheEffectView.5(this, localDrawable));
         ((ValueAnimator)localObject).setDuration(400L);
         paramBreatheListener.playTogether(new Animator[] { localObject });
-        i += 1;
+        j += 1;
       }
       paramBreatheListener.start();
     }
   }
-  
-  public void b(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2) {}
   
   public boolean b(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2)
   {
@@ -268,36 +255,44 @@ public class BreatheEffectView
   
   public void c()
   {
-    if (a())
+    if (g())
     {
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      int i = 0;
-      while (i < 3)
+      int j = 0;
+      while (j < 3)
       {
-        Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i];
-        Object localObject2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
+        Object localObject1 = this.e[j];
+        Object localObject2 = this.f[j];
         Object localObject3 = new Rect();
-        ((Rect)localObject2).left -= jdField_a_of_type_Int;
-        ((Rect)localObject2).top -= jdField_a_of_type_Int;
-        ((Rect)localObject2).right += jdField_a_of_type_Int;
-        ((Rect)localObject2).bottom += jdField_a_of_type_Int;
-        localObject2 = ObjectAnimator.ofObject(localObject1, "bounds", this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { localObject2, localObject3 }).setDuration(800L);
+        ((Rect)localObject2).left -= c;
+        ((Rect)localObject2).top -= c;
+        ((Rect)localObject2).right += c;
+        ((Rect)localObject2).bottom += c;
+        localObject2 = ObjectAnimator.ofObject(localObject1, "bounds", this.i, new Object[] { localObject2, localObject3 }).setDuration(800L);
         ((ValueAnimator)localObject2).setInterpolator(new AccelerateInterpolator(0.24F));
         localObject1 = ObjectAnimator.ofInt(localObject1, "alpha", new int[] { 204, 0 }).setDuration(800L);
         ((ValueAnimator)localObject1).setInterpolator(new AccelerateInterpolator(0.24F));
         localObject3 = ObjectAnimator.ofInt(new int[] { 0, 0 });
         ((ValueAnimator)localObject3).setDuration(1000L);
         localAnimatorSet.playTogether(new Animator[] { localObject2, localObject1, localObject3 });
-        i += 1;
+        j += 1;
       }
       localAnimatorSet.start();
     }
+  }
+  
+  public void c(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2)
+  {
+    d();
+    a();
   }
   
   public void d()
   {
     b();
   }
+  
+  public void d(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2) {}
   
   protected void onDraw(Canvas paramCanvas)
   {
@@ -312,34 +307,34 @@ public class BreatheEffectView
   
   public void setHaloColor(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null)
+    if (this.e != null)
     {
-      int i = 0;
-      while (i < 3)
+      int j = 0;
+      while (j < 3)
       {
-        Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-        if ((arrayOfDrawable[i] instanceof GradientDrawable))
+        Drawable[] arrayOfDrawable = this.e;
+        if ((arrayOfDrawable[j] instanceof GradientDrawable))
         {
-          int j = 0xFFFFFF & paramInt | jdField_a_of_type_ArrayOfInt[i] << 24;
-          if (i != 0) {
-            ((GradientDrawable)arrayOfDrawable[i]).setColor(j);
+          int k = 0xFFFFFF & paramInt | a[j] << 24;
+          if (j != 0) {
+            ((GradientDrawable)arrayOfDrawable[j]).setColor(k);
           } else {
-            ((GradientDrawable)arrayOfDrawable[i]).setStroke(2, j);
+            ((GradientDrawable)arrayOfDrawable[j]).setStroke(2, k);
           }
         }
-        i += 1;
+        j += 1;
       }
     }
   }
   
   public void setHoverHotArea(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.h = paramRect;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.BreatheEffectView
  * JD-Core Version:    0.7.0.1
  */

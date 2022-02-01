@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ol9" android:background="#7f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/p63" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/olb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:scaleType="centerInside" />
-        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/ybj" />
-    </LinearLayout>
-</FrameLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <Button android:textSize="12.0dip" android:textColor="@color/aw9" android:gravity="center" android:id="@id/g6j" android:background="@null" android:padding="@dimen/a3w" android:layout_width="@dimen/a3x" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="@dimen/a3u" android:scaleType="centerCrop" android:text="" android:drawableTop="@drawable/db6" android:drawablePadding="4.0dip" android:layout_below="@id/d9m" android:layout_alignParentLeft="true" android:contentDescription="@string/dl8" />
+</RelativeLayout>

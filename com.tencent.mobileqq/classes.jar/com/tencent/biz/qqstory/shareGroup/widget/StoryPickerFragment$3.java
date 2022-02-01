@@ -8,15 +8,15 @@ class StoryPickerFragment$3
 {
   StoryPickerFragment$3(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a() {}
-  
   public boolean a(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a());
+    if (this.a.e != null) {
+      this.a.e.a(this.a.b.b());
     }
     return true;
   }
+  
+  public void bx_() {}
 }
 
 

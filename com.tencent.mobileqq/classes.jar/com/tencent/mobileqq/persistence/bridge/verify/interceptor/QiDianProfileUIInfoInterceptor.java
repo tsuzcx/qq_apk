@@ -8,7 +8,7 @@ public class QiDianProfileUIInfoInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if (QidianProfileUiInfo.class.getSimpleName().equals(a(paramChain))) {
+    if (QidianProfileUiInfo.class.getSimpleName().equals(b(paramChain))) {
       return QidianProfileUiInfo.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class QiDianProfileUIInfoInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.QiDianProfileUIInfoInterceptor
  * JD-Core Version:    0.7.0.1
  */

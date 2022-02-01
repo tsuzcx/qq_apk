@@ -27,7 +27,7 @@ public class TroopNameHelperServiceImpl
   
   public boolean isInReturnTaskList(String paramString)
   {
-    return getTroopNameHelper().a(paramString);
+    return getTroopNameHelper().c(paramString);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -60,7 +60,7 @@ public class TroopNameHelperServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopNameHelperServiceImpl
  * JD-Core Version:    0.7.0.1
  */

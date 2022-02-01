@@ -10,15 +10,15 @@ final class ReadInJoyAdUtils$1
   public void run()
   {
     boolean bool = ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist();
-    Object localObject = ReadinjoyAdCache.a(2);
+    Object localObject = ReadinjoyAdCache.b(2);
     if ((localObject != null) && ((localObject instanceof GameLoadData))) {
-      ((GameLoadData)localObject).a = bool;
+      ((GameLoadData)localObject).g = bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils.1
  * JD-Core Version:    0.7.0.1
  */

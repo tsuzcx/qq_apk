@@ -12,7 +12,7 @@ public class QIMCameraCaptureImpl
 {
   public Intent getLaunchIntent(Context paramContext, Bundle paramBundle)
   {
-    return QIMCameraCaptureActivity.a(paramContext, paramBundle);
+    return QIMCameraCaptureActivity.b(paramContext, paramBundle);
   }
   
   public Class getQIMCameraCaptureActivityClass()
@@ -32,7 +32,7 @@ public class QIMCameraCaptureImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.api.impl.QIMCameraCaptureImpl
  * JD-Core Version:    0.7.0.1
  */

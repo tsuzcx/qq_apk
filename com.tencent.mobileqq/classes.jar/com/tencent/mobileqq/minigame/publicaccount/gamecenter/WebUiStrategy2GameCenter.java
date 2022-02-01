@@ -76,7 +76,7 @@ public class WebUiStrategy2GameCenter
   
   public void initView(Activity paramActivity, View paramView, MiniGamePublicAccountWebView paramMiniGamePublicAccountWebView)
   {
-    this.mGameCenterBtn = ((URLImageView)paramView.findViewById(2030239750));
+    this.mGameCenterBtn = ((URLImageView)paramView.findViewById(2030305303));
     this.mGameCenterBtn.setVisibility(0);
     this.mGameCenterBtn.setBackgroundURL(GameWnsUtils.getMiniGamePublicAccountGameStoreButtonUrl());
     this.mGameCenterBtn.setOnClickListener(new WebUiStrategy2GameCenter.1(this, paramActivity));
@@ -90,7 +90,7 @@ public class WebUiStrategy2GameCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.gamecenter.WebUiStrategy2GameCenter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,18 @@ class ADVideoAppDownloadManager$2
 {
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d;
-    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.a;
-    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.e;
+    Object localObject1 = this.a.d;
+    String str1 = this.a.a;
+    String str2 = this.a.e;
     Object localObject2;
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
     {
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.b)))
+      if ((TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.b)))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        localObject2 = this.a;
         ((ADVideoAppDownloadData)localObject2).c = ADVideoAppDownloadManager.a(this.this$0, ((ADVideoAppDownloadData)localObject2).b, 1);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c;
+      localObject2 = this.a.c;
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         if (QLog.isColorLevel()) {
@@ -53,8 +53,8 @@ class ADVideoAppDownloadManager$2
       ((Bundle)localObject3).putBoolean(DownloadConstants.h, true);
       ((Bundle)localObject3).putBoolean(DownloadConstants.s, false);
       ((Bundle)localObject3).putBoolean(DownloadConstants.L, false);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.f)) {
-        ((Bundle)localObject3).putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.f);
+      if (!TextUtils.isEmpty(this.a.h)) {
+        ((Bundle)localObject3).putString(DownloadConstants.i, this.a.h);
       }
       ((Bundle)localObject3).putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
       if (QLog.isColorLevel())
@@ -70,9 +70,9 @@ class ADVideoAppDownloadManager$2
         localStringBuilder.append((String)localObject2);
         QLog.d("ADVideoAppDownloadManager", 2, localStringBuilder.toString());
       }
-      this.this$0.a.remove(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-      this.this$0.a.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-      localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      this.this$0.a.remove(this.a);
+      this.this$0.a.add(this.a);
+      localObject1 = (Activity)this.b.get();
       if ((localObject1 != null) && (!((Activity)localObject1).isFinishing()))
       {
         DownloadProxy.a().a((Activity)localObject1, (Bundle)localObject3, "biz_src_feeds_kandianads", null, 0);
@@ -98,7 +98,7 @@ class ADVideoAppDownloadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

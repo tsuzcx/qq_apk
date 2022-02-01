@@ -1,48 +1,77 @@
 package com.tencent.mobileqq.profilesetting;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.friends.intimate.IntimateInfoObserver;
+import com.tencent.mobileqq.app.ShieldListObserver;
 import com.tencent.mobileqq.profilecard.data.AllInOne;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
 class ProfileCardMoreActivity$11
-  extends IntimateInfoObserver
+  extends ShieldListObserver
 {
   ProfileCardMoreActivity$11(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.a.uin)))
-    {
-      if (paramBoolean) {
-        ProfileCardMoreActivity.a(this.a);
-      }
+    if (this.a.b == null) {
       return;
     }
-    QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    String str = this.a.b.uin;
+    if (ProfilePAUtils.isPaTypeStrangerInContact(this.a.b)) {
+      str = this.a.d();
+    }
+    int i;
+    if (paramList == null) {
+      i = 0;
+    } else {
+      i = paramList.size();
+    }
+    int k = 0;
+    int j = 0;
+    while ((k == 0) && (j < i))
+    {
+      if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+        k = 1;
+      }
+      j += 1;
+    }
+    if (k != 0) {
+      this.a.a(paramBoolean, false);
+    }
   }
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.a.uin)))
-    {
-      if (paramBoolean1) {
-        ProfileCardMoreActivity.a(this.a);
-      }
+    if (this.a.b == null) {
       return;
     }
-    QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    String str = this.a.b.uin;
+    if (ProfilePAUtils.isPaTypeStrangerInContact(this.a.b)) {
+      str = this.a.d();
+    }
+    int k = 0;
+    int i;
+    if (paramList == null) {
+      i = 0;
+    } else {
+      i = paramList.size();
+    }
+    int j = 0;
+    while ((k == 0) && (j < i))
+    {
+      if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+        k = 1;
+      }
+      j += 1;
+    }
+    if (k != 0) {
+      this.a.a(paramBoolean, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.11
  * JD-Core Version:    0.7.0.1
  */

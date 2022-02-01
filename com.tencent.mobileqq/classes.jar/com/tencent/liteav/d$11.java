@@ -21,14 +21,28 @@ class d$11
         if (this.b == null) {
           return;
         }
-        if ((d.a(this.e) == null) || (d.p(this.e)) || (d.c(this.e).width != this.c) || (d.c(this.e).height != this.d) || (d.c(this.e).encodeType != 2) || (d.c(this.e).gop != d.e(this.e).i)) {
-          d.a(this.e, this.c, this.d, 2, null, d.e(this.e).C, true);
+        boolean bool = d.c(this.e).isH265EncoderEnabled;
+        int j = 0;
+        int i = j;
+        if (!bool)
+        {
+          i = j;
+          if (d.c(this.e).encodeType != 2) {
+            i = 1;
+          }
+        }
+        if ((d.a(this.e) == null) || (d.p(this.e)) || (d.c(this.e).width != this.c) || (d.c(this.e).height != this.d) || (i != 0) || (d.c(this.e).gop != d.e(this.e).j) || (d.d(this.e) != d.c(this.e).isH265EncoderEnabled)) {
+          if (d.c(this.e).isH265EncoderEnabled) {
+            d.a(this.e, this.c, this.d, d.c(this.e).encodeType, null, d.e(this.e).D, true);
+          } else {
+            d.a(this.e, this.c, this.d, 2, null, d.e(this.e).D, true);
+          }
         }
         if (((d.b(this.e) == null) || (d.h(this.e).encodeType != 2)) && (d.q(this.e))) {
           d.a(this.e, null, 2, true);
         }
-        int i = this.a.getWidth();
-        int j = this.a.getHeight();
+        i = this.a.getWidth();
+        j = this.a.getHeight();
         b localb = d.a(this.e);
         if (localb != null) {
           localb.a(this.b.array(), 2, i, j, TXCTimeUtil.generatePtsMS());
@@ -51,7 +65,7 @@ class d$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.d.11
  * JD-Core Version:    0.7.0.1
  */

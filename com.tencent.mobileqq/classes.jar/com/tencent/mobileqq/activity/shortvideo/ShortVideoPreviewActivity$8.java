@@ -14,11 +14,11 @@ class ShortVideoPreviewActivity$8
     if (paramInt == 1)
     {
       this.a.mCover.setVisibility(8);
-      this.a.mOperatorBtn.setImageResource(2130846309);
+      this.a.mOperatorBtn.setImageResource(2130847780);
     }
     else
     {
-      this.a.mOperatorBtn.setImageResource(2130846308);
+      this.a.mOperatorBtn.setImageResource(2130847779);
     }
     if (QLog.isColorLevel())
     {
@@ -31,7 +31,7 @@ class ShortVideoPreviewActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

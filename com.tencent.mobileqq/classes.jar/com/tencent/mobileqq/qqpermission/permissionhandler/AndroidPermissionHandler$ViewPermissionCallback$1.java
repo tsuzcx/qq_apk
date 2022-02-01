@@ -14,14 +14,14 @@ class AndroidPermissionHandler$ViewPermissionCallback$1
   @RequiresApi(api=23)
   public void onClick(View paramView)
   {
-    AndroidPermissionHandler.ViewPermissionCallback.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler$ViewPermissionCallback, true);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler$ViewPermissionCallback.a.b(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler$ViewPermissionCallback);
+    AndroidPermissionHandler.ViewPermissionCallback.a(this.b, true);
+    this.b.a.b(this.a, this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.AndroidPermissionHandler.ViewPermissionCallback.1
  * JD-Core Version:    0.7.0.1
  */

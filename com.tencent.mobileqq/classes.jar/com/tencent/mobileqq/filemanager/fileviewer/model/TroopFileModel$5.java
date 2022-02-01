@@ -16,13 +16,13 @@ class TroopFileModel$5
   
   public void a()
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileStatusInfo localTroopFileStatusInfo = this.a.a(localFileManagerEntity);
+    FileManagerEntity localFileManagerEntity = this.a.c.r();
+    TroopFileStatusInfo localTroopFileStatusInfo = this.a.e(localFileManagerEntity);
     if ((TextUtils.isEmpty(TroopFileModel.a(this.a))) && (localTroopFileStatusInfo.a != null)) {
       TroopFileModel.a(this.a, localTroopFileStatusInfo.a.toString());
     }
-    TroopFileItemOperation localTroopFileItemOperation = new TroopFileItemOperation(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localTroopFileStatusInfo.b == 3) || (localTroopFileStatusInfo.b == 2)) && (localTroopFileStatusInfo.a != null)) {
+    TroopFileItemOperation localTroopFileItemOperation = new TroopFileItemOperation(localFileManagerEntity.TroopUin, this.a.a, this.a.i);
+    if (((localTroopFileStatusInfo.e == 3) || (localTroopFileStatusInfo.e == 2)) && (localTroopFileStatusInfo.a != null)) {
       localTroopFileItemOperation.a(localTroopFileStatusInfo.a);
     }
     localFileManagerEntity.status = 2;
@@ -30,19 +30,19 @@ class TroopFileModel$5
   
   public void b()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = this.a.a((FileManagerEntity)localObject);
+    Object localObject = this.a.c.r();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.a, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.e((FileManagerEntity)localObject);
     if (!TextUtils.isEmpty(TroopFileModel.a(this.a)))
     {
-      localTroopFileTransferManager.a(UUID.fromString(TroopFileModel.a(this.a)));
+      localTroopFileTransferManager.b(UUID.fromString(TroopFileModel.a(this.a)));
       TroopFileModel.a(this.a, (TroopFileStatusInfo)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.5
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ public final class TweetTopicView$setTextClearClickListener$1
   
   public void b(@Nullable View paramView, @Nullable Drawable paramDrawable)
   {
-    TweetTopicView.a(this.a).setText((CharSequence)"");
+    TweetTopicView.b(this.a).setText((CharSequence)"");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TweetTopicView.setTextClearClickListener.1
  * JD-Core Version:    0.7.0.1
  */

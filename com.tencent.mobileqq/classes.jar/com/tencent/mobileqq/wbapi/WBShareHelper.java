@@ -43,30 +43,22 @@ public class WBShareHelper
     WBAPIFactory.createWBAPI(null).registerApp(localBaseApplication, localAuthInfo);
   }
   
-  private static int a(Bitmap paramBitmap)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramBitmap.getAllocationByteCount();
-    }
-    return paramBitmap.getByteCount();
-  }
-  
   /* Error */
   public static Bitmap a(String paramString)
   {
     // Byte code:
-    //   0: new 81	java/io/FileInputStream
+    //   0: new 65	java/io/FileInputStream
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 84	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 68	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
     //   10: astore_0
     //   11: aload_1
-    //   12: invokestatic 90	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   12: invokestatic 74	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   17: invokestatic 79	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
     //   20: aload_2
     //   21: areturn
     //   22: astore_1
@@ -86,11 +78,11 @@ public class WBShareHelper
     //   44: astore_0
     //   45: ldc 18
     //   47: iconst_1
-    //   48: ldc 97
+    //   48: ldc 81
     //   50: aload_2
-    //   51: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   51: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   54: aload_1
-    //   55: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   55: invokestatic 79	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
     //   58: aconst_null
     //   59: areturn
     //   60: astore_2
@@ -100,15 +92,15 @@ public class WBShareHelper
     //   64: astore_0
     //   65: ldc 18
     //   67: iconst_1
-    //   68: ldc 103
+    //   68: ldc 87
     //   70: aload_2
-    //   71: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   71: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   74: aload_1
-    //   75: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   75: invokestatic 79	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
     //   78: aconst_null
     //   79: areturn
     //   80: aload_0
-    //   81: invokestatic 95	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
+    //   81: invokestatic 79	com/tencent/mobileqq/forward/ForwardSdkUtil:a	(Ljava/io/Closeable;)V
     //   84: aload_1
     //   85: athrow
     // Local variable table:
@@ -135,45 +127,12 @@ public class WBShareHelper
     //   0	9	60	java/lang/Exception
   }
   
-  private IWBAPI a(Activity paramActivity)
-  {
-    Object localObject = this.a.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      WBShareHelper.SharePair localSharePair = (WBShareHelper.SharePair)((Iterator)localObject).next();
-      if (localSharePair.a.get() == null) {
-        ((Iterator)localObject).remove();
-      }
-      if ((localSharePair.a.get() == paramActivity) && (localSharePair.b.get() != null)) {
-        return (IWBAPI)localSharePair.b.get();
-      }
-    }
-    localObject = WBAPIFactory.createWBAPI(paramActivity);
-    ((IWBAPI)localObject).setLoggerEnable(false);
-    this.a.add(new WBShareHelper.SharePair(paramActivity, (IWBAPI)localObject));
-    return localObject;
-  }
-  
   public static WBShareHelper a(int paramInt)
   {
     if ((paramInt <= 0) || (paramInt >= 4)) {
       QLog.e("WBShareHelper", 1, new Object[] { "getInstance Exception", Log.getStackTraceString(new Throwable()) });
     }
     return WBShareHelper.SingletonHolder.a();
-  }
-  
-  private void a(Activity paramActivity, WeiboMultiMessage paramWeiboMultiMessage)
-  {
-    QLog.d("WBShareHelper", 1, "doShare");
-    try
-    {
-      a(paramActivity).shareMessage(paramWeiboMultiMessage, false);
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("WBShareHelper", 1, "Exception", paramActivity);
-    }
   }
   
   public static boolean a(Activity paramActivity)
@@ -187,8 +146,8 @@ public class WBShareHelper
   
   private boolean a(Activity paramActivity, WeiboMultiMessage paramWeiboMultiMessage)
   {
-    if ("com.tencent.mobileqq".equals(Common.r())) {
-      a(paramActivity, paramWeiboMultiMessage);
+    if ("com.tencent.mobileqq".equals(Common.x())) {
+      b(paramActivity, paramWeiboMultiMessage);
     } else {
       WBQIPCClient.a(new WBShareHelper.1(this, paramActivity, paramWeiboMultiMessage));
     }
@@ -217,37 +176,61 @@ public class WBShareHelper
     return bool1;
   }
   
+  private void b(Activity paramActivity, WeiboMultiMessage paramWeiboMultiMessage)
+  {
+    QLog.d("WBShareHelper", 1, "doShare");
+    try
+    {
+      c(paramActivity).shareMessage(paramWeiboMultiMessage, false);
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.e("WBShareHelper", 1, "Exception", paramActivity);
+    }
+  }
+  
+  private boolean b(Activity paramActivity)
+  {
+    if ((paramActivity != null) && (!paramActivity.isFinishing())) {
+      return true;
+    }
+    QLog.d("WBShareHelper", 1, "shareImage activity == null || activity.isFinishing()");
+    ForwardSdkUtil.a(MobileQQ.sMobileQQ, "UI 已经销毁");
+    return false;
+  }
+  
   /* Error */
-  private static byte[] a(Bitmap paramBitmap)
+  private static byte[] b(Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: new 249	java/io/ByteArrayOutputStream
+    //   0: new 210	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 250	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 211	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore_2
     //   8: aload_2
     //   9: astore_1
     //   10: aload_0
-    //   11: getstatic 256	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   11: getstatic 217	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   14: bipush 85
     //   16: aload_2
-    //   17: invokevirtual 260	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   17: invokevirtual 223	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   20: pop
     //   21: aload_2
     //   22: astore_1
     //   23: aload_2
-    //   24: invokevirtual 264	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   24: invokevirtual 227	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   27: astore_0
     //   28: aload_2
-    //   29: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
+    //   29: invokevirtual 230	java/io/ByteArrayOutputStream:close	()V
     //   32: aload_0
     //   33: areturn
     //   34: astore_1
     //   35: ldc 18
     //   37: iconst_1
-    //   38: ldc 103
+    //   38: ldc 87
     //   40: aload_1
-    //   41: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   41: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   44: aload_0
     //   45: areturn
     //   46: astore_0
@@ -269,34 +252,34 @@ public class WBShareHelper
     //   68: astore_1
     //   69: ldc 18
     //   71: iconst_1
-    //   72: ldc 103
+    //   72: ldc 87
     //   74: aload_2
-    //   75: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   75: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: aload_0
     //   79: ifnull +19 -> 98
     //   82: aload_0
-    //   83: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
+    //   83: invokevirtual 230	java/io/ByteArrayOutputStream:close	()V
     //   86: aconst_null
     //   87: areturn
     //   88: astore_0
     //   89: ldc 18
     //   91: iconst_1
-    //   92: ldc 103
+    //   92: ldc 87
     //   94: aload_0
-    //   95: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   95: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   98: aconst_null
     //   99: areturn
     //   100: aload_1
     //   101: ifnull +20 -> 121
     //   104: aload_1
-    //   105: invokevirtual 267	java/io/ByteArrayOutputStream:close	()V
+    //   105: invokevirtual 230	java/io/ByteArrayOutputStream:close	()V
     //   108: goto +13 -> 121
     //   111: astore_1
     //   112: ldc 18
     //   114: iconst_1
-    //   115: ldc 103
+    //   115: ldc 87
     //   117: aload_1
-    //   118: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   118: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   121: aload_0
     //   122: athrow
     // Local variable table:
@@ -323,14 +306,31 @@ public class WBShareHelper
     //   104	108	111	java/io/IOException
   }
   
-  private boolean b(Activity paramActivity)
+  private static int c(Bitmap paramBitmap)
   {
-    if ((paramActivity != null) && (!paramActivity.isFinishing())) {
-      return true;
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramBitmap.getAllocationByteCount();
     }
-    QLog.d("WBShareHelper", 1, "shareImage activity == null || activity.isFinishing()");
-    ForwardSdkUtil.a(MobileQQ.sMobileQQ, "UI 已经销毁");
-    return false;
+    return paramBitmap.getByteCount();
+  }
+  
+  private IWBAPI c(Activity paramActivity)
+  {
+    Object localObject = this.a.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WBShareHelper.SharePair localSharePair = (WBShareHelper.SharePair)((Iterator)localObject).next();
+      if (localSharePair.a.get() == null) {
+        ((Iterator)localObject).remove();
+      }
+      if ((localSharePair.a.get() == paramActivity) && (localSharePair.b.get() != null)) {
+        return (IWBAPI)localSharePair.b.get();
+      }
+    }
+    localObject = WBAPIFactory.createWBAPI(paramActivity);
+    ((IWBAPI)localObject).setLoggerEnable(false);
+    this.a.add(new WBShareHelper.SharePair(paramActivity, (IWBAPI)localObject));
+    return localObject;
   }
   
   private boolean c(Activity paramActivity, String paramString)
@@ -349,7 +349,7 @@ public class WBShareHelper
       while ((localImageObject.imageData != null) && (localImageObject.imageData.length >= 630784))
       {
         ForwardSdkUtil.a(paramActivity, "图片太大，请业务压缩");
-        QLog.d("WBShareHelper", 1, new Object[] { "shareSingleBitmap compress getBitmapSize=", Integer.valueOf(a(paramString)), ", arr=", Integer.valueOf(localImageObject.imageData.length) });
+        QLog.d("WBShareHelper", 1, new Object[] { "shareSingleBitmap compress getBitmapSize=", Integer.valueOf(c(paramString)), ", arr=", Integer.valueOf(localImageObject.imageData.length) });
         paramString = a(paramString);
         localImageObject.setImageData(paramString);
       }
@@ -386,7 +386,7 @@ public class WBShareHelper
   public void a(Activity paramActivity, Intent paramIntent, WbShareCallback paramWbShareCallback)
   {
     QLog.d("WBShareHelper", 1, "doResultIntent");
-    a(paramActivity).doResultIntent(paramIntent, paramWbShareCallback);
+    c(paramActivity).doResultIntent(paramIntent, paramWbShareCallback);
   }
   
   public boolean a(Activity paramActivity, String paramString)
@@ -415,7 +415,7 @@ public class WBShareHelper
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (!a(paramActivity).isWBAppSupportMultipleImage())
+      if (!c(paramActivity).isWBAppSupportMultipleImage())
       {
         QLog.d("WBShareHelper", 1, "shareVideo not support Multi Image");
         ForwardSdkUtil.a(paramActivity, "版本较低，不支持视频分享");
@@ -473,10 +473,10 @@ public class WBShareHelper
     localWebpageObject.actionUrl = paramString3;
     localWebpageObject.defaultText = paramString4;
     if (paramBitmap != null) {
-      for (localWebpageObject.thumbData = a(paramBitmap); (localWebpageObject.thumbData != null) && (localWebpageObject.thumbData.length >= 32768); localWebpageObject.thumbData = a(paramBitmap))
+      for (localWebpageObject.thumbData = b(paramBitmap); (localWebpageObject.thumbData != null) && (localWebpageObject.thumbData.length >= 32768); localWebpageObject.thumbData = b(paramBitmap))
       {
         ForwardSdkUtil.a(paramActivity, "图片太大，请业务压缩");
-        QLog.d("WBShareHelper", 1, new Object[] { "shareUrl compress getBitmapSize=", Integer.valueOf(a(paramBitmap)), "arr=", Integer.valueOf(localWebpageObject.thumbData.length) });
+        QLog.d("WBShareHelper", 1, new Object[] { "shareUrl compress getBitmapSize=", Integer.valueOf(c(paramBitmap)), "arr=", Integer.valueOf(localWebpageObject.thumbData.length) });
         paramBitmap = a(paramBitmap);
       }
     }
@@ -495,7 +495,7 @@ public class WBShareHelper
     }
     if ((!TextUtils.isEmpty(paramString)) && (paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      if (!a(paramActivity).isWBAppSupportMultipleImage())
+      if (!c(paramActivity).isWBAppSupportMultipleImage())
       {
         QLog.d("WBShareHelper", 1, "shareMultImage not support Multi Image");
         ForwardSdkUtil.a(paramActivity, "版本较低，不支持多图分享");
@@ -549,7 +549,7 @@ public class WBShareHelper
       return false;
     }
     QLog.d("WBShareHelper", 1, "shareImage");
-    if (a(paramActivity).isWBAppSupportMultipleImage()) {
+    if (c(paramActivity).isWBAppSupportMultipleImage()) {
       return a(paramActivity, " ", new String[] { paramString });
     }
     return c(paramActivity, paramString);
@@ -557,7 +557,7 @@ public class WBShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.wbapi.WBShareHelper
  * JD-Core Version:    0.7.0.1
  */

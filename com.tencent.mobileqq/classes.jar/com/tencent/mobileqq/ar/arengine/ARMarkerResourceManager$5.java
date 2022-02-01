@@ -9,15 +9,15 @@ class ARMarkerResourceManager$5
   
   public void a()
   {
-    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.a;
     if (localARMarkerResourceCallback != null) {
-      localARMarkerResourceCallback.f();
+      localARMarkerResourceCallback.i();
     }
   }
   
   public void a(int paramInt)
   {
-    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.a;
     if (localARMarkerResourceCallback != null) {
       localARMarkerResourceCallback.c(paramInt);
     }
@@ -25,20 +25,20 @@ class ARMarkerResourceManager$5
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.a;
   }
   
   public void a(boolean paramBoolean)
   {
-    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.a;
     if (localARMarkerResourceCallback != null) {
-      localARMarkerResourceCallback.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+      localARMarkerResourceCallback.c(paramBoolean, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager.5
  * JD-Core Version:    0.7.0.1
  */

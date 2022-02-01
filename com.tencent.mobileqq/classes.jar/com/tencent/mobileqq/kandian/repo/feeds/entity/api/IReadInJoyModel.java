@@ -6,49 +6,49 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 
 public abstract interface IReadInJoyModel
 {
-  public abstract int a();
-  
-  public abstract VafContext a();
-  
-  public abstract IReadInJoyBaseAdapter a();
-  
-  public abstract AbsBaseArticleInfo a();
-  
   public abstract boolean a();
   
   public abstract int b();
-  
-  public abstract AbsBaseArticleInfo b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
   
   public abstract boolean c();
   
   public abstract int d();
   
-  public abstract boolean d();
-  
-  public abstract int e();
-  
   public abstract boolean e();
   
-  public abstract int f();
-  
   public abstract boolean f();
-  
-  public abstract int g();
   
   public abstract boolean g();
   
   public abstract boolean h();
   
   public abstract boolean i();
+  
+  public abstract boolean j();
+  
+  public abstract AbsBaseArticleInfo k();
+  
+  public abstract AbsBaseArticleInfo l();
+  
+  public abstract int m();
+  
+  public abstract int o();
+  
+  public abstract int p();
+  
+  public abstract int q();
+  
+  public abstract int r();
+  
+  public abstract boolean s();
+  
+  public abstract VafContext t();
+  
+  public abstract IReadInJoyBaseAdapter u();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel
  * JD-Core Version:    0.7.0.1
  */

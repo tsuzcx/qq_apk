@@ -16,26 +16,26 @@ class ReceiptMessageReadMemberListFragment$MemberAdapter$1
     ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a, paramInt);
     if (ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a) == 0)
     {
-      if (ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).isPausing()) {
-        ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).resume();
+      if (ReceiptMessageReadMemberListFragment.MemberAdapter.b(this.a).isPausing()) {
+        ReceiptMessageReadMemberListFragment.MemberAdapter.b(this.a).resume();
       }
-      int i = ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).getChildCount();
+      int i = ReceiptMessageReadMemberListFragment.MemberAdapter.c(this.a).getChildCount();
       paramInt = 0;
       while (paramInt < i)
       {
-        paramRecyclerView = ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).getChildAt(paramInt);
-        paramRecyclerView = (ReceiptMessageReadMemberListFragment.MemberViewHolder)ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).getChildViewHolder(paramRecyclerView);
-        ReceiptMessageReadMemberListFragment.MemberViewHolder.a(paramRecyclerView).setImageBitmap(ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a, ReceiptMessageReadMemberListFragment.MemberViewHolder.a(paramRecyclerView)));
+        paramRecyclerView = ReceiptMessageReadMemberListFragment.MemberAdapter.c(this.a).getChildAt(paramInt);
+        paramRecyclerView = (ReceiptMessageReadMemberListFragment.MemberViewHolder)ReceiptMessageReadMemberListFragment.MemberAdapter.c(this.a).getChildViewHolder(paramRecyclerView);
+        ReceiptMessageReadMemberListFragment.MemberViewHolder.b(paramRecyclerView).setImageBitmap(ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a, ReceiptMessageReadMemberListFragment.MemberViewHolder.c(paramRecyclerView)));
         paramInt += 1;
       }
     }
-    ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).cancelPendingRequests();
-    ReceiptMessageReadMemberListFragment.MemberAdapter.a(this.a).pause();
+    ReceiptMessageReadMemberListFragment.MemberAdapter.b(this.a).cancelPendingRequests();
+    ReceiptMessageReadMemberListFragment.MemberAdapter.b(this.a).pause();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberAdapter.1
  * JD-Core Version:    0.7.0.1
  */

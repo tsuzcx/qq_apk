@@ -12,13 +12,13 @@ class EmoView$2
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GridView initPage:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("  currentView size:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetGridView.getWidth());
+    localStringBuilder.append(this.b.getWidth());
     localStringBuilder.append("  ");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetGridView.getHeight());
+    localStringBuilder.append(this.b.getHeight());
     localStringBuilder.append("  dataSize:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoWindowAdapter.getCount());
+    localStringBuilder.append(this.c.getCount());
     QLog.d("CommentInputPopupWindow", 1, localStringBuilder.toString());
   }
 }

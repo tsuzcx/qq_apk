@@ -15,35 +15,29 @@ import android.graphics.drawable.Drawable;
 public class BubbleDrawable
   extends Drawable
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public BitmapShader a;
-  public Paint a;
-  public Path a;
   public RectF a;
-  public boolean a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  
-  public BubbleDrawable()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  }
+  public Path b = new Path();
+  public BitmapShader c;
+  public Paint d = new Paint(1);
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public int i;
+  public Bitmap j;
+  public int k;
+  public int l;
+  public boolean m;
   
   private void a()
   {
     Matrix localMatrix = new Matrix();
     localMatrix.set(null);
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    localMatrix.postScale(getIntrinsicWidth() / i, getIntrinsicHeight() / j);
-    localMatrix.postTranslate(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(localMatrix);
+    int n = this.j.getWidth();
+    int i1 = this.j.getHeight();
+    localMatrix.postScale(getIntrinsicWidth() / n, getIntrinsicHeight() / i1);
+    localMatrix.postTranslate(this.a.left, this.a.top);
+    this.c.setLocalMatrix(localMatrix);
   }
   
   private void a(int paramInt, Path paramPath)
@@ -57,132 +51,132 @@ public class BubbleDrawable
           if (paramInt != 3) {
             return;
           }
-          d(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+          d(this.a, paramPath);
           return;
         }
-        b(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+        b(this.a, paramPath);
         return;
       }
-      c(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+      c(this.a, paramPath);
       return;
     }
-    a(this.jdField_a_of_type_AndroidGraphicsRectF, paramPath);
+    a(this.a, paramPath);
   }
   
   private void a(Canvas paramCanvas)
   {
-    int i = this.jdField_c_of_type_Int;
-    if (i != 0)
+    int n = this.l;
+    if (n != 0)
     {
-      if (i == 1)
+      if (n == 1)
       {
-        Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        Bitmap localBitmap = this.j;
         if (localBitmap == null) {
           return;
         }
-        if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null) {
-          this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        if (this.c == null) {
+          this.c = new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
+        this.d.setShader(this.c);
         a();
       }
     }
     else {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+      this.d.setColor(this.i);
     }
-    a(this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPath);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    a(this.k, this.b);
+    paramCanvas.drawPath(this.b, this.d);
   }
   
   private void a(RectF paramRectF, Path paramPath)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    if (this.m) {
+      this.h = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.e / 2.0F);
     }
-    paramPath.moveTo(this.jdField_a_of_type_Float + paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.jdField_b_of_type_Float, paramRectF.bottom);
+    paramPath.moveTo(this.e + paramRectF.left + this.f, paramRectF.top);
+    paramPath.lineTo(paramRectF.width() - this.f, paramRectF.top);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f, paramRectF.top, paramRectF.right, this.f + paramRectF.top), 270.0F, 90.0F);
+    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.f);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f, paramRectF.bottom - this.f, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left + this.e + this.f, paramRectF.bottom);
     float f1 = paramRectF.left;
-    float f2 = this.jdField_a_of_type_Float;
+    float f2 = this.e;
     float f3 = paramRectF.bottom;
-    float f4 = this.jdField_b_of_type_Float;
-    paramPath.arcTo(new RectF(f1 + f2, f3 - f4, f4 + paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.jdField_c_of_type_Float + this.d);
-    paramPath.lineTo(paramRectF.left, this.d + this.jdField_c_of_type_Float / 2.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, this.d);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.top + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left + this.jdField_a_of_type_Float, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
+    float f4 = this.f;
+    paramPath.arcTo(new RectF(f1 + f2, f3 - f4, f4 + paramRectF.left + this.e, paramRectF.bottom), 90.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left + this.e, this.g + this.h);
+    paramPath.lineTo(paramRectF.left, this.h + this.g / 2.0F);
+    paramPath.lineTo(paramRectF.left + this.e, this.h);
+    paramPath.lineTo(paramRectF.left + this.e, paramRectF.top + this.f);
+    paramPath.arcTo(new RectF(paramRectF.left + this.e, paramRectF.top, this.f + paramRectF.left + this.e, this.f + paramRectF.top), 180.0F, 90.0F);
     paramPath.close();
   }
   
   private void b(RectF paramRectF, Path paramPath)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.right - paramRectF.left) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    if (this.m) {
+      this.h = ((paramRectF.right - paramRectF.left) / 2.0F - this.e / 2.0F);
     }
-    paramPath.moveTo(paramRectF.left + Math.min(this.d, this.jdField_b_of_type_Float), paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.d, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float / 2.0F + this.d, paramRectF.top);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.d, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top + this.jdField_c_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top + this.jdField_c_of_type_Float, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.bottom);
+    paramPath.moveTo(paramRectF.left + Math.min(this.h, this.f), paramRectF.top + this.g);
+    paramPath.lineTo(paramRectF.left + this.h, paramRectF.top + this.g);
+    paramPath.lineTo(paramRectF.left + this.e / 2.0F + this.h, paramRectF.top);
+    paramPath.lineTo(paramRectF.left + this.e + this.h, paramRectF.top + this.g);
+    paramPath.lineTo(paramRectF.right - this.f, paramRectF.top + this.g);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f, paramRectF.top + this.g, paramRectF.right, this.f + paramRectF.top + this.g), 270.0F, 90.0F);
+    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.f);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f, paramRectF.bottom - this.f, paramRectF.right, paramRectF.bottom), 0.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left + this.f, paramRectF.bottom);
     float f1 = paramRectF.left;
     float f2 = paramRectF.bottom;
-    float f3 = this.jdField_b_of_type_Float;
+    float f3 = this.f;
     paramPath.arcTo(new RectF(f1, f2 - f3, f3 + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top + this.jdField_c_of_type_Float, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top + this.jdField_c_of_type_Float), 180.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left, paramRectF.top + this.g + this.f);
+    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top + this.g, this.f + paramRectF.left, this.f + paramRectF.top + this.g), 180.0F, 90.0F);
     paramPath.close();
   }
   
   private void c(RectF paramRectF, Path paramPath)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    if (this.m) {
+      this.h = ((paramRectF.bottom - paramRectF.top) / 2.0F - this.e / 2.0F);
     }
-    paramPath.moveTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.top, paramRectF.right - this.jdField_a_of_type_Float, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, this.d);
-    paramPath.lineTo(paramRectF.right, this.d + this.jdField_c_of_type_Float / 2.0F);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, this.d + this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float - this.jdField_a_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float, paramRectF.right - this.jdField_a_of_type_Float, paramRectF.bottom), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float, paramRectF.bottom);
+    paramPath.moveTo(paramRectF.left + this.f, paramRectF.top);
+    paramPath.lineTo(paramRectF.width() - this.f - this.e, paramRectF.top);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f - this.e, paramRectF.top, paramRectF.right - this.e, this.f + paramRectF.top), 270.0F, 90.0F);
+    paramPath.lineTo(paramRectF.right - this.e, this.h);
+    paramPath.lineTo(paramRectF.right, this.h + this.g / 2.0F);
+    paramPath.lineTo(paramRectF.right - this.e, this.h + this.g);
+    paramPath.lineTo(paramRectF.right - this.e, paramRectF.bottom - this.f);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f - this.e, paramRectF.bottom - this.f, paramRectF.right - this.e, paramRectF.bottom), 0.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left + this.e, paramRectF.bottom);
     float f1 = paramRectF.left;
     float f2 = paramRectF.bottom;
-    float f3 = this.jdField_b_of_type_Float;
+    float f3 = this.f;
     paramPath.arcTo(new RectF(f1, f2 - f3, f3 + paramRectF.left, paramRectF.bottom), 90.0F, 90.0F);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
+    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.f + paramRectF.left, this.f + paramRectF.top), 180.0F, 90.0F);
     paramPath.close();
   }
   
   private void d(RectF paramRectF, Path paramPath)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.d = ((paramRectF.right - paramRectF.left) / 2.0F - this.jdField_a_of_type_Float / 2.0F);
+    if (this.m) {
+      this.h = ((paramRectF.right - paramRectF.left) / 2.0F - this.e / 2.0F);
     }
-    paramPath.moveTo(paramRectF.left + this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.lineTo(paramRectF.width() - this.jdField_b_of_type_Float, paramRectF.top);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.top, paramRectF.right, this.jdField_b_of_type_Float + paramRectF.top), 270.0F, 90.0F);
-    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.jdField_c_of_type_Float - this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.right - this.jdField_b_of_type_Float, paramRectF.bottom - this.jdField_b_of_type_Float - this.jdField_c_of_type_Float, paramRectF.right, paramRectF.bottom - this.jdField_c_of_type_Float), 0.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left + this.jdField_a_of_type_Float + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + this.d + this.jdField_a_of_type_Float / 2.0F, paramRectF.bottom);
-    paramPath.lineTo(paramRectF.left + this.d, paramRectF.bottom - this.jdField_c_of_type_Float);
-    paramPath.lineTo(paramRectF.left + Math.min(this.jdField_b_of_type_Float, this.d), paramRectF.bottom - this.jdField_c_of_type_Float);
+    paramPath.moveTo(paramRectF.left + this.f, paramRectF.top);
+    paramPath.lineTo(paramRectF.width() - this.f, paramRectF.top);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f, paramRectF.top, paramRectF.right, this.f + paramRectF.top), 270.0F, 90.0F);
+    paramPath.lineTo(paramRectF.right, paramRectF.bottom - this.g - this.f);
+    paramPath.arcTo(new RectF(paramRectF.right - this.f, paramRectF.bottom - this.f - this.g, paramRectF.right, paramRectF.bottom - this.g), 0.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left + this.e + this.h, paramRectF.bottom - this.g);
+    paramPath.lineTo(paramRectF.left + this.h + this.e / 2.0F, paramRectF.bottom);
+    paramPath.lineTo(paramRectF.left + this.h, paramRectF.bottom - this.g);
+    paramPath.lineTo(paramRectF.left + Math.min(this.f, this.h), paramRectF.bottom - this.g);
     float f1 = paramRectF.left;
     float f2 = paramRectF.bottom;
-    float f3 = this.jdField_b_of_type_Float;
-    paramPath.arcTo(new RectF(f1, f2 - f3 - this.jdField_c_of_type_Float, f3 + paramRectF.left, paramRectF.bottom - this.jdField_c_of_type_Float), 90.0F, 90.0F);
-    paramPath.lineTo(paramRectF.left, paramRectF.top + this.jdField_b_of_type_Float);
-    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.jdField_b_of_type_Float + paramRectF.left, this.jdField_b_of_type_Float + paramRectF.top), 180.0F, 90.0F);
+    float f3 = this.f;
+    paramPath.arcTo(new RectF(f1, f2 - f3 - this.g, f3 + paramRectF.left, paramRectF.bottom - this.g), 90.0F, 90.0F);
+    paramPath.lineTo(paramRectF.left, paramRectF.top + this.f);
+    paramPath.arcTo(new RectF(paramRectF.left, paramRectF.top, this.f + paramRectF.left, this.f + paramRectF.top), 180.0F, 90.0F);
     paramPath.close();
   }
   
@@ -193,12 +187,12 @@ public class BubbleDrawable
   
   public int getIntrinsicHeight()
   {
-    return (int)this.jdField_a_of_type_AndroidGraphicsRectF.height();
+    return (int)this.a.height();
   }
   
   public int getIntrinsicWidth()
   {
-    return (int)this.jdField_a_of_type_AndroidGraphicsRectF.width();
+    return (int)this.a.width();
   }
   
   public int getOpacity()
@@ -213,12 +207,12 @@ public class BubbleDrawable
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.d.setAlpha(paramInt);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.d.setColorFilter(paramColorFilter);
   }
 }
 

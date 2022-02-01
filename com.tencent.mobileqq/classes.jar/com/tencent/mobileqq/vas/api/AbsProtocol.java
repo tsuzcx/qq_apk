@@ -14,8 +14,8 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbsProtocol
 {
   public static final AbsProtocol.Companion Companion = new AbsProtocol.Companion(null);
-  private static final ArrayList<AbsProtocol.JceIntercept> jceWatcher = new ArrayList();
-  private static boolean needIntercept;
+  private static boolean a;
+  private static final ArrayList<AbsProtocol.JceIntercept> b = new ArrayList();
   
   @Nullable
   public final JceStruct interceptJce(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull JceStruct paramJceStruct)
@@ -24,10 +24,10 @@ public abstract class AbsProtocol
     Intrinsics.checkParameterIsNotNull(paramString2, "cmd");
     Intrinsics.checkParameterIsNotNull(paramString3, "funcName");
     Intrinsics.checkParameterIsNotNull(paramJceStruct, "req");
-    if (!needIntercept) {
+    if (!a) {
       return null;
     }
-    Iterator localIterator = ((Iterable)jceWatcher).iterator();
+    Iterator localIterator = ((Iterable)b).iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -48,7 +48,7 @@ public abstract class AbsProtocol
     label130:
     paramString1 = (AbsProtocol.JceIntercept)paramString1;
     if (paramString1 != null) {
-      return (JceStruct)paramString1.a().invoke(paramJceStruct);
+      return (JceStruct)paramString1.d().invoke(paramJceStruct);
     }
     return null;
   }
@@ -62,7 +62,7 @@ public abstract class AbsProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.AbsProtocol
  * JD-Core Version:    0.7.0.1
  */

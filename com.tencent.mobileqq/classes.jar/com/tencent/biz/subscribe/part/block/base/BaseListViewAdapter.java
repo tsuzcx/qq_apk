@@ -11,51 +11,46 @@ public abstract class BaseListViewAdapter<E>
   extends RecyclerView.Adapter
 {
   private Handler a;
-  protected ArrayList<E> a;
+  protected ArrayList<E> j = new ArrayList();
   
-  public BaseListViewAdapter()
+  public Handler M()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper());
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.a;
   }
   
-  public void a()
+  public ArrayList<E> N()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    return this.j;
   }
   
   public void a(E paramE, int paramInt)
   {
     if (paramE != null)
     {
-      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt >= this.j.size()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, paramE);
+      this.j.set(paramInt, paramE);
     }
   }
   
-  public void a(ArrayList<E> paramArrayList)
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.j.clear();
+  }
+  
+  public void b(ArrayList<E> paramArrayList)
+  {
+    this.j.clear();
     notifyDataSetChanged();
     if (paramArrayList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    this.j.addAll(paramArrayList);
     notifyDataSetChanged();
-  }
-  
-  public ArrayList<E> b()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void b(List<E> paramList)
@@ -63,19 +58,19 @@ public abstract class BaseListViewAdapter<E>
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilArrayList.size(), paramList.size());
+    this.j.addAll(paramList);
+    notifyItemRangeInserted(this.j.size(), paramList.size());
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.j.size();
   }
   
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    a().removeCallbacksAndMessages(null);
+    M().removeCallbacksAndMessages(null);
   }
 }
 

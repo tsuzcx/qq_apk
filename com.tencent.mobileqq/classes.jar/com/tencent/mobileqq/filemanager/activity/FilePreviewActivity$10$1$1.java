@@ -10,10 +10,10 @@ class FilePreviewActivity$10$1$1
   
   public void run()
   {
-    this.a.a.a.c = System.currentTimeMillis();
+    this.a.a.a.L = System.currentTimeMillis();
     try
     {
-      this.a.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
+      this.a.a.a.d.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
       return;
     }
@@ -25,7 +25,7 @@ class FilePreviewActivity$10$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1.1
  * JD-Core Version:    0.7.0.1
  */

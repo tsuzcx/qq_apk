@@ -13,68 +13,50 @@ import org.json.JSONObject;
 public class MagicFaceDataEntityMultiResult
   extends MagicFaceDataEntity
 {
-  Rect a;
-  protected MagicfaceDataMultiResultJason a;
-  int b;
+  protected MagicfaceDataMultiResultJason m;
+  Rect n;
+  int o;
   
   public MagicFaceDataEntityMultiResult(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
     super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
     boolean bool2 = false;
-    this.jdField_b_of_type_Int = 0;
+    this.o = 0;
     try
     {
       paramVideoAppInterface = new JSONObject(paramString3);
       if (paramVideoAppInterface.has("multiresult")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = ((MagicfaceDataMultiResultJason)JSONUtils.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
+        this.m = ((MagicfaceDataMultiResultJason)JSONUtils.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
       }
     }
     catch (JSONException paramVideoAppInterface)
     {
       paramVideoAppInterface.printStackTrace();
     }
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason == null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = new MagicfaceDataMultiResultJason();
+    if (this.m == null) {
+      this.m = new MagicfaceDataMultiResultJason();
     }
     paramVideoAppInterface = new StringBuilder();
     paramVideoAppInterface.append("multi: ");
-    paramVideoAppInterface.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.toString());
+    paramVideoAppInterface.append(this.m.toString());
     AVLog.printErrorLog("MagicFaceDataEntityMultiResult", paramVideoAppInterface.toString());
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_wid, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_hei);
+    this.n = new Rect(this.m.divers_x, this.m.divers_y, this.m.divers_x + this.m.divers_wid, this.m.divers_y + this.m.divers_hei);
     boolean bool1;
-    if ((!paramBoolean) || (!this.jdField_a_of_type_JavaUtilBitSet.get(1)))
+    if ((!paramBoolean) || (!this.i.get(1)))
     {
       bool1 = bool2;
       if (!paramBoolean)
       {
         bool1 = bool2;
-        if (!this.jdField_a_of_type_JavaUtilBitSet.get(0)) {}
+        if (!this.i.get(0)) {}
       }
     }
     else
     {
       bool1 = true;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.g = bool1;
     AVLog.printColorLog("MagicFaceDataEntityMultiResult", "MagicFaceDataEntityMultiResult constructor:");
-  }
-  
-  private String a(int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" getResultString:");
-    localStringBuilder.append(paramInt2);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start);
-    AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
-    if (paramInt2 != 0)
-    {
-      if (paramInt2 != 1) {
-        return "";
-      }
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss;
   }
   
   private String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason, String paramString)
@@ -86,7 +68,7 @@ public class MagicFaceDataEntityMultiResult
       if (paramMagicfaceDataPendantJason.mirror)
       {
         str = paramString;
-        if (!this.jdField_b_of_type_Boolean)
+        if (!this.h)
         {
           paramMagicfaceDataPendantJason = new StringBuilder();
           paramMagicfaceDataPendantJason.append(paramString);
@@ -107,21 +89,21 @@ public class MagicFaceDataEntityMultiResult
       i = 2;
     }
     int k = i * 64 * 2;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > k) && (this.jdField_a_of_type_AndroidGraphicsRect != null))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > k) && (this.n != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isShot:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.o);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.w);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start);
+      localStringBuilder.append(this.m.divers_ani_start);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRect.toString());
+      localStringBuilder.append(this.n.toString());
       localStringBuilder.append("|");
       localStringBuilder.append(paramArrayOfByte.length);
       AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
-      if ((this.jdField_b_of_type_Int == 0) && (this.d >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start - 2) && (this.d < this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start))
+      if ((this.o == 0) && (this.w >= this.m.divers_ani_start - 2) && (this.w < this.m.divers_ani_start))
       {
         paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
         int j;
@@ -143,10 +125,10 @@ public class MagicFaceDataEntityMultiResult
         paramArrayOfByte.append("|");
         paramArrayOfByte.append(f2);
         paramArrayOfByte.append("|");
-        paramArrayOfByte.append(this.jdField_a_of_type_AndroidGraphicsRect.toString());
+        paramArrayOfByte.append(this.n.toString());
         AVLog.printColorLog("MagicFaceDataEntityMultiResult", paramArrayOfByte.toString());
-        if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
-          this.jdField_b_of_type_Int = 1;
+        if (this.n.contains((int)f1, (int)f2)) {
+          this.o = 1;
         }
       }
     }
@@ -156,22 +138,45 @@ public class MagicFaceDataEntityMultiResult
     }
   }
   
-  private int b()
+  private String b(int paramInt1, int paramInt2)
   {
-    int i = this.jdField_b_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" getResultString:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.m.divers_ani_start);
+    AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
+    if (paramInt2 != 0)
+    {
+      if (paramInt2 != 1) {
+        return "";
+      }
+      return this.m.divers_ani_hit;
+    }
+    return this.m.divers_ani_miss;
+  }
+  
+  private boolean l()
+  {
+    return (this.i.get(1)) && (!TextUtils.isEmpty(this.r.tips));
+  }
+  
+  private int m()
+  {
+    int i = this.o;
     if (i != 0)
     {
       if (i != 1) {
         return 0;
       }
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit_frame;
+      return this.m.divers_ani_hit_frame;
     }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss_frame;
+    return this.m.divers_ani_miss_frame;
   }
   
-  private String c()
+  private String n()
   {
-    int i = this.jdField_b_of_type_Int;
+    int i = this.o;
     if (i != 0)
     {
       if (i != 1) {
@@ -182,72 +187,31 @@ public class MagicFaceDataEntityMultiResult
     return "miss";
   }
   
-  private boolean d()
-  {
-    return (this.jdField_a_of_type_JavaUtilBitSet.get(1)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips));
-  }
-  
-  protected int a()
-  {
-    return super.a() + b();
-  }
-  
-  protected String a()
-  {
-    boolean bool = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes;
-    Object localObject = "";
-    if (bool)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append("_");
-      localObject = ((StringBuilder)localObject).toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append((String)localObject);
-      if (this.jdField_a_of_type_Boolean) {
-        localObject = "mirror";
-      } else {
-        localObject = "normal";
-      }
-      localStringBuilder.append((String)localObject);
-      localObject = localStringBuilder.toString();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getMirrorPath:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("|");
-    localStringBuilder.append((String)localObject);
-    AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
-    return localObject;
-  }
-  
   public String a(int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id))
+    if (!TextUtils.isEmpty(this.r.common_id))
     {
-      int i = a();
+      int i = d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" getResPath:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start);
+      localStringBuilder.append(this.m.divers_ani_start);
       localStringBuilder.append("|");
       localStringBuilder.append(i);
       AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
-      if ((paramInt >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start) && (paramInt < i))
+      if ((paramInt >= this.m.divers_ani_start) && (paramInt < i))
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id);
+        localStringBuilder.append(this.r.common_id);
         localStringBuilder.append("_");
-        localStringBuilder.append(a(paramInt, this.jdField_b_of_type_Int));
-        localStringBuilder.append(a());
+        localStringBuilder.append(b(paramInt, this.o));
+        localStringBuilder.append(h());
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id);
-      localStringBuilder.append(a());
+      localStringBuilder.append(this.r.common_id);
+      localStringBuilder.append(h());
       return localStringBuilder.toString();
     }
     return super.a(paramInt);
@@ -264,7 +228,7 @@ public class MagicFaceDataEntityMultiResult
     if (!TextUtils.isEmpty(str)) {
       if (!TextUtils.isEmpty(paramMagicfaceDataPendantJason.trigger))
       {
-        localObject = c();
+        localObject = n();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getDecorateName 2:");
         localStringBuilder.append(paramMagicfaceDataPendantJason.trigger);
@@ -293,7 +257,7 @@ public class MagicFaceDataEntityMultiResult
   public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
   {
     super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0))
+    if (this.i.get(0))
     {
       if (!a(paramString)) {
         a(paramArrayOfByte, paramBoolean);
@@ -304,32 +268,68 @@ public class MagicFaceDataEntityMultiResult
     }
   }
   
-  protected void c()
+  protected int d()
   {
-    super.c();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
+    return super.d() + m();
+  }
+  
+  protected void e()
+  {
+    super.e();
+    if (this.i.get(0)) {
       a(true);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("processStart:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilBitSet.get(2));
+    localStringBuilder.append(this.i.get(2));
     AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
-    if ((!this.jdField_a_of_type_JavaUtilBitSet.get(2)) && (d())) {
-      a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips);
+    if ((!this.i.get(2)) && (l())) {
+      c(this.r.tips);
     }
   }
   
-  protected void d()
+  protected void f()
   {
-    super.d();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
+    super.f();
+    if (this.i.get(0)) {
       a(false);
     }
-    b(0);
-    b(1);
-    if (d()) {
-      a(null);
+    c(0);
+    c(1);
+    if (l()) {
+      c(null);
     }
+  }
+  
+  protected String h()
+  {
+    boolean bool = this.r.hasMirrorRes;
+    Object localObject = "";
+    if (bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append("_");
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      if (this.g) {
+        localObject = "mirror";
+      } else {
+        localObject = "normal";
+      }
+      localStringBuilder.append((String)localObject);
+      localObject = localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getMirrorPath:");
+    localStringBuilder.append(this.r.hasMirrorRes);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("|");
+    localStringBuilder.append((String)localObject);
+    AVLog.printColorLog("MagicFaceDataEntityMultiResult", localStringBuilder.toString());
+    return localObject;
   }
 }
 

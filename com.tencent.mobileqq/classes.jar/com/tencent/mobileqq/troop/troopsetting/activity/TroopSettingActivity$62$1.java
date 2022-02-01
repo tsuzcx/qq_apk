@@ -16,12 +16,12 @@ class TroopSettingActivity$62$1
   {
     if (paramInt == 1)
     {
-      this.a.this$0.a.cancel();
+      this.a.this$0.aW.cancel();
       return;
     }
     try
     {
-      ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).startGameSdkCallback(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
+      ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).startGameSdkCallback(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.aj).longValue(), -1, this.a.a);
     }
     catch (Exception paramDialogInterface)
     {
@@ -30,13 +30,13 @@ class TroopSettingActivity$62$1
       localStringBuilder.append(paramDialogInterface);
       QLog.e("Q.chatopttroop", 1, localStringBuilder.toString());
     }
-    this.a.this$0.a.cancel();
+    this.a.this$0.aW.cancel();
     this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.62.1
  * JD-Core Version:    0.7.0.1
  */

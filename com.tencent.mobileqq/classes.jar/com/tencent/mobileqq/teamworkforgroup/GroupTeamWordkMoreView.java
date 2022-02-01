@@ -13,10 +13,10 @@ import android.widget.TextView;
 public class GroupTeamWordkMoreView
   extends RelativeLayout
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RelativeLayout a = null;
+  TextView b;
+  Context c;
+  Drawable d;
   
   public GroupTeamWordkMoreView(Context paramContext)
   {
@@ -31,67 +31,67 @@ public class GroupTeamWordkMoreView
   public GroupTeamWordkMoreView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560652, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373862));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373863));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131626697, this);
+    this.a = ((RelativeLayout)findViewById(2131441536));
+    this.b = ((TextView)findViewById(2131441537));
+    this.c = paramContext;
   }
   
   public void a()
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.d;
     if (localDrawable == null) {
       return;
     }
     ((Animatable)localDrawable).stop();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.d = null;
+    this.b.setCompoundDrawables(null, null, null, null);
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(paramInt);
+    this.a.setBackgroundResource(paramInt);
   }
   
   public void setGone()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.setVisibility(8);
+    this.b.setVisibility(8);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramOnClickListener);
+    this.a.setOnClickListener(paramOnClickListener);
   }
   
   public void setText(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.b.setText(paramInt);
   }
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+    this.b.setTextColor(paramInt);
   }
   
   public void setTextLeftDrawable(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(paramInt);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-    ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
+    this.d = this.c.getResources().getDrawable(paramInt);
+    Drawable localDrawable = this.d;
+    localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), this.d.getMinimumHeight());
+    this.b.setCompoundDrawables(this.d, null, null, null);
+    ((Animatable)this.d).start();
   }
   
   public void setVisible()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.setVisibility(0);
+    this.b.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWordkMoreView
  * JD-Core Version:    0.7.0.1
  */

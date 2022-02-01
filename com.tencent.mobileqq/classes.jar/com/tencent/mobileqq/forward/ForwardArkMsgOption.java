@@ -34,18 +34,6 @@ public class ForwardArkMsgOption
     super(paramIntent);
   }
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-      }
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -53,62 +41,44 @@ public class ForwardArkMsgOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))) {
+      if ((localRecentUser != null) && (!Utils.b(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.i))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.q, localRecentUser.uin, localRecentUser.getType())))) {
         localArrayList.add(localRecentUser);
       }
     }
     return localArrayList;
   }
   
-  protected void a()
-  {
-    super.a();
-    SdkShareReporter.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
     super.a(paramQQAppInterface, paramActivity);
-    ((IArkHelper)QRoute.api(IArkHelper.class)).preDownloadApp(this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name"), this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view"));
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    e();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct"))
-    {
-      d();
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-    return true;
+    ((IArkHelper)QRoute.api(IArkHelper.class)).preDownloadApp(this.t.getString("forward_ark_app_name"), this.t.getString("forward_ark_app_view"));
   }
   
   protected boolean a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt1;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    int i = localSessionInfo.jdField_a_of_type_Int;
+    localSessionInfo.a = paramInt1;
+    localSessionInfo.b = paramString1;
+    localSessionInfo.c = paramString2;
+    int i = localSessionInfo.a;
     paramInt1 = 0;
-    if ((i >= 0) && (!TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString)))
+    if ((i >= 0) && (!TextUtils.isEmpty(localSessionInfo.b)))
     {
-      this.jdField_a_of_type_AndroidOsBundle.keySet();
-      paramString1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name");
-      paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
-      localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-      str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_ver");
-      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-      String str4 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_meta");
-      String str5 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_config");
-      String str6 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_compat");
-      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_list");
-      str1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_text");
+      this.t.keySet();
+      paramString1 = this.t.getString("forward_ark_app_name");
+      paramString2 = this.t.getString("forward_ark_app_view");
+      localObject2 = this.t.getString("forward_ark_app_desc");
+      str2 = this.t.getString("forward_ark_app_ver");
+      String str3 = this.t.getString("forward_ark_app_prompt");
+      String str4 = this.t.getString("forward_ark_app_meta");
+      String str5 = this.t.getString("forward_ark_app_config");
+      String str6 = this.t.getString("forward_ark_app_compat");
+      localObject1 = this.t.getString("forward_ark_app_list");
+      str1 = this.t.getString("forward_ark_app_text");
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
       {
-        if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-          ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
+        if (this.t.getBoolean("forward_ark_app_direct")) {
+          ReportCenter.a().a(this.q.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
         }
         paramString2 = new ArkAppMessage(str3, paramString1, (String)localObject2, paramString2, str2, str4, str5, str6);
         if (!TextUtils.isEmpty(str1)) {
@@ -140,16 +110,16 @@ public class ForwardArkMsgOption
       break label358;
     }
     QLog.e("ForwardOption.ForwardBaseOption", 1, "appList error");
-    Object localObject1 = (ArkAppMessage)ArkAppCenterCheckEvent.a(2, paramString1, this.jdField_a_of_type_AndroidOsBundle, paramString2);
+    Object localObject1 = (ArkAppMessage)ArkAppCenterCheckEvent.a(2, paramString1, this.t, paramString2);
     paramString1 = (String)localObject1;
     if (localObject1 == null) {
       paramString1 = paramString2;
     }
-    paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_appId_ark_from_sdk");
-    localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_name");
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_action_data");
-    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_a_action_data");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_url");
+    paramString2 = this.t.getString("forward_appId_ark_from_sdk");
+    localObject1 = this.t.getString("struct_share_key_source_name");
+    String str1 = this.t.getString("struct_share_key_source_action_data");
+    Object localObject2 = this.t.getString("struct_share_key_source_a_action_data");
+    String str2 = this.t.getString("struct_share_key_source_url");
     if (!TextUtils.isEmpty(paramString2))
     {
       paramString1.appId = paramString2;
@@ -158,11 +128,11 @@ public class ForwardArkMsgOption
       paramString1.mSource_A_ActionData = ((String)localObject2);
       paramString1.mSourceUrl = str2;
     }
-    i = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
+    i = this.t.getInt("KEY_MSG_FORWARD_ID");
     paramInt1 = i;
     if (i == 0)
     {
-      paramString2 = this.jdField_a_of_type_AndroidOsBundle.getIntArray("KEY_MSG_FORWARD_ID_ARRAY");
+      paramString2 = this.t.getIntArray("KEY_MSG_FORWARD_ID_ARRAY");
       paramInt1 = i;
       if (paramString2 != null) {
         if (paramString2.length > paramInt2)
@@ -176,41 +146,54 @@ public class ForwardArkMsgOption
         }
       }
     }
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1, paramInt1);
+    ChatActivityFacade.a(this.q, localSessionInfo, paramString1, paramInt1);
     return true;
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+    if (this.t.getBoolean("forward_ark_app_direct")) {
+      ReportCenter.a().a(this.q.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
     }
     return false;
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+    if (this.t.getBoolean("forward_ark_app_direct")) {
+      ReportCenter.a().a(this.q.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
     }
     return false;
   }
   
   protected void b()
   {
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    super.b();
+    SdkShareReporter.a(this.t, this.G);
+  }
+  
+  protected void c()
+  {
+    if (ag()) {
+      this.C.add(e);
     }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
+    if (ah()) {
+      this.C.add(d);
     }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
+    if (ai()) {
+      this.C.add(c);
     }
   }
   
-  public boolean b()
+  public boolean e()
   {
+    super.e();
+    p();
+    if (this.t.getBoolean("forward_ark_app_direct"))
+    {
+      o();
+      this.s.finish();
+    }
     return true;
   }
   
-  protected boolean c()
+  protected boolean f()
   {
-    if (j())
+    if (K())
     {
-      List localList = b();
+      List localList = M();
       int i = 0;
       while (i < localList.size())
       {
@@ -218,23 +201,40 @@ public class ForwardArkMsgOption
         a(localResultRecord.uin, localResultRecord.getUinType(), localResultRecord.groupUin, i);
         i += 1;
       }
-      return super.c();
+      return super.f();
     }
-    d();
-    return super.c();
+    o();
+    return super.f();
   }
   
-  protected boolean d()
+  public boolean l()
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"), 0);
+    return true;
   }
   
-  public void e()
+  public String n()
   {
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_h5_from_js");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
+    if (TextUtils.isEmpty(this.u))
+    {
+      this.u = this.t.getString("forward_ark_app_prompt");
+      if (TextUtils.isEmpty(this.u)) {
+        this.u = this.t.getString("forward_ark_app_desc");
+      }
+    }
+    return this.u;
+  }
+  
+  protected boolean o()
+  {
+    int i = this.t.getInt("uintype");
+    return a(this.t.getString("uin"), i, this.t.getString("troop_uin"), 0);
+  }
+  
+  public void p()
+  {
+    String str1 = this.t.getString("forward_ark_app_name");
+    String str2 = this.t.getString("forward_ark_h5_from_js");
+    String str3 = this.t.getString("forward_ark_app_view");
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
       ((IArkSecure)QRoute.api(IArkSecure.class)).checkShareUrl(str1, str3, str2, new ForwardArkMsgOption.1(this));
     }
@@ -242,7 +242,7 @@ public class ForwardArkMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkMsgOption
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class TroopFileSearchEngine$5
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      this.this$0.jdField_a_of_type_JavaUtilList = TroopFileSearchManager.a(this.jdField_a_of_type_JavaUtilList);
+      this.this$0.a = TroopFileSearchManager.a(this.b);
       TroopFileSearchEngine localTroopFileSearchEngine = this.this$0;
-      TroopFileSearchEngine.a(localTroopFileSearchEngine, TroopFileSearchEngine.a(localTroopFileSearchEngine), TroopFileSearchEngine.b(this.this$0), this.this$0.jdField_a_of_type_JavaUtilList, TroopFileSearchEngine.a(this.this$0), TroopFileSearchEngine.b(this.this$0));
-      this.jdField_a_of_type_JavaUtilList.clear();
+      TroopFileSearchEngine.a(localTroopFileSearchEngine, TroopFileSearchEngine.f(localTroopFileSearchEngine), TroopFileSearchEngine.m(this.this$0), this.this$0.a, TroopFileSearchEngine.d(this.this$0), TroopFileSearchEngine.k(this.this$0));
+      this.b.clear();
       return;
     }
     TroopFileSearchEngine.a(this.this$0, false, null);
@@ -23,7 +23,7 @@ class TroopFileSearchEngine$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.5
  * JD-Core Version:    0.7.0.1
  */

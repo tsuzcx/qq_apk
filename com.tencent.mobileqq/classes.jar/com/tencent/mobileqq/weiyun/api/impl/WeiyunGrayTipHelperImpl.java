@@ -18,7 +18,7 @@ public class WeiyunGrayTipHelperImpl
       Object localObject2;
       if (paramInt2 == 1127)
       {
-        localObject2 = paramAppInterface.getApp().getString(2131693529);
+        localObject2 = paramAppInterface.getApp().getString(2131891085);
         localObject1 = ((IWeiyunHelper)localObject1).getOpenQQVipH5(paramAppInterface.getCurrentAccountUin(), "mvip.n.a.zcwy_xht");
       }
       for (;;)
@@ -26,22 +26,22 @@ public class WeiyunGrayTipHelperImpl
         break;
         if (paramInt2 == 22000)
         {
-          localObject2 = paramAppInterface.getApp().getString(2131693529);
+          localObject2 = paramAppInterface.getApp().getString(2131891085);
           localObject1 = ((IWeiyunHelper)localObject1).getOpenQQVipH5(paramAppInterface.getCurrentAccountUin(), "mvip.n.a.zcwy_xht");
         }
         else if (paramInt2 == 1053)
         {
-          localObject2 = paramAppInterface.getApp().getString(2131693532);
+          localObject2 = paramAppInterface.getApp().getString(2131891096);
           localObject1 = ((IWeiyunHelper)localObject1).getOpenWeiyunVipH5(paramAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
         }
         else if (paramInt2 == 22081)
         {
-          localObject2 = paramAppInterface.getApp().getString(2131693531);
+          localObject2 = paramAppInterface.getApp().getString(2131891095);
           localObject1 = ((IWeiyunHelper)localObject1).getOpenWeiyunVipH5(paramAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
         }
         else if (paramInt2 == 22121)
         {
-          localObject2 = paramAppInterface.getApp().getString(2131693530);
+          localObject2 = paramAppInterface.getApp().getString(2131891094);
           localObject1 = ((IWeiyunHelper)localObject1).getOpenWeiyunBuySpaceH5();
         }
         else
@@ -63,7 +63,7 @@ public class WeiyunGrayTipHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunGrayTipHelperImpl
  * JD-Core Version:    0.7.0.1
  */

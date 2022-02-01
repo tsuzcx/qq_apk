@@ -9,61 +9,47 @@ public class ChatRoomInfo
 {
   public static final Parcelable.Creator<ChatRoomInfo> CREATOR = new ChatRoomInfo.1();
   public int a;
-  public long a;
-  public boolean a;
-  public int b;
   public long b;
-  public boolean b;
-  public int c;
   public long c;
-  public boolean c;
-  public int d;
   public long d;
-  private int e = 0;
+  public int e = 0;
+  public int f = 0;
+  public int g = 0;
+  public boolean h = false;
+  public boolean i = false;
+  public boolean j = false;
+  public long k = 0L;
+  private int l = 0;
   
   public ChatRoomInfo(int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
+    this.a = paramInt;
+    this.b = paramLong1;
+    this.c = paramLong2;
+    this.d = paramLong3;
   }
   
   protected ChatRoomInfo(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readLong();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readLong();
   }
   
   public void a()
   {
-    this.e += 1;
-  }
-  
-  public boolean a()
-  {
-    return this.e <= 3;
+    this.l += 1;
   }
   
   public boolean a(int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_Long == paramLong1) && (this.jdField_b_of_type_Long == paramLong2) && (this.jdField_c_of_type_Long == paramLong3);
+    return (this.a == paramInt) && (this.b == paramLong1) && (this.c == paramLong2) && (this.d == paramLong3);
+  }
+  
+  public boolean b()
+  {
+    return this.l <= 3;
   }
   
   public int describeContents()
@@ -80,16 +66,16 @@ public class ChatRoomInfo
     }
     paramObject = (ChatRoomInfo)paramObject;
     bool1 = bool2;
-    if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+    if (this.a == paramObject.a)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+      if (this.b == paramObject.b)
       {
         bool1 = bool2;
-        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
+        if (this.c == paramObject.c)
         {
           bool1 = bool2;
-          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long) {
+          if (this.d == paramObject.d) {
             bool1 = true;
           }
         }
@@ -103,27 +89,27 @@ public class ChatRoomInfo
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("ChatRoomInfo{");
     localStringBuilder.append("type: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", roomID: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", id: ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", createTime: ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", isFromSwitchTerminal: ");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", preRoomId: ");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeLong(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeLong(this.d);
   }
 }
 

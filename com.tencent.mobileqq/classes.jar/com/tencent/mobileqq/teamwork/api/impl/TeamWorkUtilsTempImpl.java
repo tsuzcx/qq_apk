@@ -104,7 +104,7 @@ public class TeamWorkUtilsTempImpl
       QQAppInterface localQQAppInterface = (QQAppInterface)paramAppInterface;
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkUtils");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("troopFormLog getTroopFormGrayContent =.");
@@ -143,7 +143,7 @@ public class TeamWorkUtilsTempImpl
             else
             {
               k = i;
-              localObject1 = ContactUtils.f(localQQAppInterface, str1);
+              localObject1 = ContactUtils.g(localQQAppInterface, str1);
             }
             j = i;
             localObject2 = localObject1;
@@ -229,7 +229,7 @@ public class TeamWorkUtilsTempImpl
             return;
           }
           if (QLog.isColorLevel()) {
-            QLog.d(TeamWorkConstants.i, 2, "tencentdoc also need insert into fm db");
+            QLog.d(TeamWorkConstants.j, 2, "tencentdoc also need insert into fm db");
           }
           msg_comm.Msg localMsg = new msg_comm.Msg();
           Object localObject1 = new msg_comm.MsgHead();
@@ -284,7 +284,7 @@ public class TeamWorkUtilsTempImpl
             catch (JSONException paramMessageRecord)
             {
               if (QLog.isColorLevel()) {
-                QLog.e(TeamWorkConstants.i, 2, paramMessageRecord.getMessage());
+                QLog.e(TeamWorkConstants.j, 2, paramMessageRecord.getMessage());
               }
             }
             ((im_msg_body.NotOnlineFile)localObject1).bytes_note.set(ByteStringMicro.copyFromUtf8(((StructMsgForGeneralShare)localObject2).mContentCover));
@@ -320,7 +320,7 @@ public class TeamWorkUtilsTempImpl
       {
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("TeamWorkUtils");
-        ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+        ((StringBuilder)localObject1).append(TeamWorkConstants.j);
         localObject1 = ((StringBuilder)localObject1).toString();
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("addTeamWorkGrayTips. docsGrayTipsInfo = ");
@@ -334,7 +334,7 @@ public class TeamWorkUtilsTempImpl
             i = TencentDocStructMsgGrayTipsConfigProcessor.a().b();
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("TeamWorkUtils");
-            ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+            ((StringBuilder)localObject1).append(TeamWorkConstants.j);
             localObject1 = ((StringBuilder)localObject1).toString();
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("addTeamWorkGrayTips. groupFlag = ");
@@ -343,11 +343,11 @@ public class TeamWorkUtilsTempImpl
             if (i == 0) {
               return;
             }
-            i = SharedPreUtils.aF(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin()) + 1;
+            i = SharedPreUtils.bR(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin()) + 1;
             int j = TencentDocStructMsgGrayTipsConfigProcessor.a().a();
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("TeamWorkUtils");
-            ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+            ((StringBuilder)localObject1).append(TeamWorkConstants.j);
             localObject1 = ((StringBuilder)localObject1).toString();
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("addTeamWorkGrayTips. groupShowedCount = ");
@@ -358,21 +358,21 @@ public class TeamWorkUtilsTempImpl
             if (i > j) {
               return;
             }
-            SharedPreUtils.T(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin(), i);
+            SharedPreUtils.X(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin(), i);
           }
           else
           {
             if (TencentDocStructMsgGrayTipsConfigProcessor.a().d() == 0) {
               return;
             }
-            i = SharedPreUtils.aE(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin()) + 1;
+            i = SharedPreUtils.bQ(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin()) + 1;
             if (i > TencentDocStructMsgGrayTipsConfigProcessor.a().c()) {
               return;
             }
-            SharedPreUtils.S(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin(), i);
+            SharedPreUtils.W(paramAppInterface.getApp(), paramAppInterface.getCurrentAccountUin(), i);
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("TeamWorkUtils");
-            ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+            ((StringBuilder)localObject1).append(TeamWorkConstants.j);
             localObject1 = ((StringBuilder)localObject1).toString();
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("yunying gray tip showed count = ");
@@ -423,7 +423,7 @@ public class TeamWorkUtilsTempImpl
           }
           ReportController.b(null, "CliOper", "", "", "0X80095F1", "0X80095F1", paramInt, 0, "", "", "", "");
         }
-        if (localDocsGrayTipsInfo.s.equals(TeamWorkConstants.k)) {
+        if (localDocsGrayTipsInfo.s.equals(TeamWorkConstants.l)) {
           ReportController.b(paramAppInterface, "dc00898", "", "", "0X8009C78", "0X8009C78", 0, 0, "", "", "", "");
         }
       }
@@ -431,7 +431,7 @@ public class TeamWorkUtilsTempImpl
       {
         paramAppInterface = new StringBuilder();
         paramAppInterface.append("TeamWorkUtils");
-        paramAppInterface.append(TeamWorkConstants.i);
+        paramAppInterface.append(TeamWorkConstants.j);
         QLog.e(paramAppInterface.toString(), 1, "addTeamWorkGrayTips. docsGrayTipsInfo is null.");
       }
     }
@@ -507,9 +507,9 @@ public class TeamWorkUtilsTempImpl
         ((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mSourceAppid = ((TencentDocData)localObject).appid;
         ((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mMsgUrl = ((TencentDocData)localObject).docUrl;
         localObject = new StructMsgItemLayout2();
-        ((AbsStructMsgItem)localObject).b(0);
+        ((AbsStructMsgItem)localObject).c(0);
         StructMsgItemCover localStructMsgItemCover = new StructMsgItemCover(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentCover);
-        localStructMsgItemCover.t = StructMsgItemCover.q;
+        localStructMsgItemCover.aC = StructMsgItemCover.az;
         ((AbsStructMsgItem)localObject).a(localStructMsgItemCover);
         ((AbsStructMsgItem)localObject).a(new StructMsgItemTitle(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle));
         ((AbsStructMsgItem)localObject).a(new StructMsgItemSummary(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentSummary));
@@ -578,7 +578,7 @@ public class TeamWorkUtilsTempImpl
         localStringBuilder.append("groupid=");
         localStringBuilder.append(paramString);
         localStringBuilder.append("&groupname=");
-        localStringBuilder.append(ContactUtils.f(paramAppInterface, paramString));
+        localStringBuilder.append(ContactUtils.g(paramAppInterface, paramString));
         localStringBuilder.append("&uinType=");
         localStringBuilder.append(paramInt);
         return localStringBuilder.toString();
@@ -601,13 +601,13 @@ public class TeamWorkUtilsTempImpl
         paramMessageMicro = (SubMsgType0x119.MsgBody)paramMessageMicro;
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("TeamWorkUtils");
-        ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+        ((StringBuilder)localObject1).append(TeamWorkConstants.j);
         localObject1 = ((StringBuilder)localObject1).toString();
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("troopFormLog insertTroopFormGrayTips c2c = ");
         ((StringBuilder)localObject2).append(paramMessageMicro.toString());
         QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-        localObject1 = paramAppInterface.getApp().getString(2131719869);
+        localObject1 = paramAppInterface.getApp().getString(2131917474);
         localObject2 = paramMessageMicro.bytes_opt_bytes_url.get().toStringUtf8();
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(paramMessageMicro.uint64_writer_uin.get());
@@ -659,7 +659,7 @@ public class TeamWorkUtilsTempImpl
       }
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("TeamWorkUtils");
-      paramAppInterface.append(TeamWorkConstants.i);
+      paramAppInterface.append(TeamWorkConstants.j);
       QLog.e(paramAppInterface.toString(), 1, "troopFormLog insertTroopFormGrayTipsInfo is null.");
     }
   }
@@ -677,13 +677,13 @@ public class TeamWorkUtilsTempImpl
         Object localObject2 = (TroopTips0x857.TroopFormGrayTipsInfo)paramMessageMicro;
         paramMessageMicro = new StringBuilder();
         paramMessageMicro.append("TeamWorkUtils");
-        paramMessageMicro.append(TeamWorkConstants.i);
+        paramMessageMicro.append(TeamWorkConstants.j);
         paramMessageMicro = paramMessageMicro.toString();
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("troopFormLog insertTroopFormGrayTips troop = ");
         ((StringBuilder)localObject1).append(localObject2.toString());
         QLog.i(paramMessageMicro, 1, ((StringBuilder)localObject1).toString());
-        paramMessageMicro = paramAppInterface.getApp().getString(2131719869);
+        paramMessageMicro = paramAppInterface.getApp().getString(2131917474);
         localObject1 = ((TroopTips0x857.TroopFormGrayTipsInfo)localObject2).bytes_opt_bytes_url.get().toStringUtf8();
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(((TroopTips0x857.TroopFormGrayTipsInfo)localObject2).uint64_writer_uin.get());
@@ -743,7 +743,7 @@ public class TeamWorkUtilsTempImpl
       }
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("TeamWorkUtils");
-      paramAppInterface.append(TeamWorkConstants.i);
+      paramAppInterface.append(TeamWorkConstants.j);
       QLog.e(paramAppInterface.toString(), 1, "troopFormLog insertTroopFormGrayTips Info is null.");
     }
   }
@@ -790,14 +790,14 @@ public class TeamWorkUtilsTempImpl
         DocsGrayTipsInfo localDocsGrayTipsInfo = (DocsGrayTipsInfo)paramArrayOfObject[0];
         String str = (String)paramArrayOfObject[1];
         long l = ((Long)paramArrayOfObject[2]).longValue();
-        if (paramAppInterface.getApp().getString(2131719549).equals(str))
+        if (paramAppInterface.getApp().getString(2131917112).equals(str))
         {
-          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(localDocsGrayTipsInfo.jdField_a_of_type_JavaLangString, 1, l);
+          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(localDocsGrayTipsInfo.a, 1, l);
           if ((paramContext != null) && ((paramContext instanceof MessageForUniteGrayTip)))
           {
             paramArrayOfObject = (MessageForUniteGrayTip)paramContext;
             if (paramArrayOfObject.tipParam != null) {
-              paramArrayOfObject.tipParam.a();
+              paramArrayOfObject.tipParam.c();
             }
             paramArrayOfObject.updateUniteGrayTipMsg((QQAppInterface)paramAppInterface, str);
             paramAppInterface = new Message();
@@ -811,11 +811,11 @@ public class TeamWorkUtilsTempImpl
         }
         else
         {
-          QQToast.a(paramContext, str, 0).a();
+          QQToast.makeText(paramContext, str, 0).show();
         }
         paramAppInterface = new StringBuilder();
         paramAppInterface.append("TeamWorkUtils");
-        paramAppInterface.append(TeamWorkConstants.i);
+        paramAppInterface.append(TeamWorkConstants.j);
         paramAppInterface = paramAppInterface.toString();
         paramContext = new StringBuilder();
         paramContext.append(" onGetGroupAuth  isSuccess = ");
@@ -829,7 +829,7 @@ public class TeamWorkUtilsTempImpl
       {
         paramContext = new StringBuilder();
         paramContext.append("TeamWorkUtils");
-        paramContext.append(TeamWorkConstants.i);
+        paramContext.append(TeamWorkConstants.j);
         paramContext = paramContext.toString();
         paramMqqHandler = new StringBuilder();
         paramMqqHandler.append(" onGetGroupAuth  exception = ");
@@ -851,14 +851,14 @@ public class TeamWorkUtilsTempImpl
         DocsGrayTipsInfo localDocsGrayTipsInfo = (DocsGrayTipsInfo)paramArrayOfObject[0];
         String str = (String)paramArrayOfObject[1];
         long l = ((Long)paramArrayOfObject[2]).longValue();
-        if (paramAppInterface.getApp().getString(2131719549).equals(str))
+        if (paramAppInterface.getApp().getString(2131917112).equals(str))
         {
-          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(localDocsGrayTipsInfo.jdField_a_of_type_JavaLangString, 0, l);
+          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(localDocsGrayTipsInfo.a, 0, l);
           if ((paramContext != null) && ((paramContext instanceof MessageForUniteGrayTip)))
           {
             paramArrayOfObject = (MessageForUniteGrayTip)paramContext;
             if (paramArrayOfObject.tipParam != null) {
-              paramArrayOfObject.tipParam.a();
+              paramArrayOfObject.tipParam.c();
             }
             paramArrayOfObject.updateUniteGrayTipMsg((QQAppInterface)paramAppInterface, str);
             paramAppInterface = new Message();
@@ -872,9 +872,9 @@ public class TeamWorkUtilsTempImpl
         }
         else
         {
-          QQToast.a(paramContext, str, 0).a();
+          QQToast.makeText(paramContext, str, 0).show();
         }
-        paramAppInterface = TeamWorkConstants.i;
+        paramAppInterface = TeamWorkConstants.j;
         paramContext = new StringBuilder();
         paramContext.append(" onGetUserAuth  isSuccess = ");
         paramContext.append(paramBoolean);
@@ -885,7 +885,7 @@ public class TeamWorkUtilsTempImpl
       }
       catch (Exception paramAppInterface)
       {
-        paramContext = TeamWorkConstants.i;
+        paramContext = TeamWorkConstants.j;
         paramMqqHandler = new StringBuilder();
         paramMqqHandler.append(" onGetUserAuth  exception = ");
         paramMqqHandler.append(paramAppInterface.toString());
@@ -905,7 +905,7 @@ public class TeamWorkUtilsTempImpl
       {
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("TeamWorkUtils");
-        ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+        ((StringBuilder)localObject1).append(TeamWorkConstants.j);
         localObject1 = ((StringBuilder)localObject1).toString();
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(" onSetGroupAuth  isSuccess = ");
@@ -916,12 +916,12 @@ public class TeamWorkUtilsTempImpl
         long l = ((Long)paramArrayOfObject[2]).longValue();
         if (paramBoolean)
         {
-          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(((DocsGrayTipsInfo)localObject2).jdField_a_of_type_JavaLangString, 1, l);
+          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(((DocsGrayTipsInfo)localObject2).a, 1, l);
           if ((paramContext != null) && ((paramContext instanceof MessageForUniteGrayTip)))
           {
             paramArrayOfObject = (MessageForUniteGrayTip)paramContext;
             if (paramArrayOfObject.tipParam != null) {
-              paramArrayOfObject.tipParam.a();
+              paramArrayOfObject.tipParam.c();
             }
             paramArrayOfObject.updateUniteGrayTipMsg((QQAppInterface)paramAppInterface, (String)localObject1);
             paramAppInterface = new Message();
@@ -935,7 +935,7 @@ public class TeamWorkUtilsTempImpl
         }
         else
         {
-          QQToast.a(paramContext, (CharSequence)localObject1, 0).a();
+          QQToast.makeText(paramContext, (CharSequence)localObject1, 0).show();
           return;
         }
       }
@@ -943,7 +943,7 @@ public class TeamWorkUtilsTempImpl
       {
         paramContext = new StringBuilder();
         paramContext.append("TeamWorkUtils");
-        paramContext.append(TeamWorkConstants.i);
+        paramContext.append(TeamWorkConstants.j);
         paramContext = paramContext.toString();
         paramMqqHandler = new StringBuilder();
         paramMqqHandler.append(" onSetGroupAuth  exception  = ");
@@ -962,7 +962,7 @@ public class TeamWorkUtilsTempImpl
       }
       try
       {
-        String str = TeamWorkConstants.i;
+        String str = TeamWorkConstants.j;
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(" onSetUserAuth  isSuccess = ");
         ((StringBuilder)localObject).append(paramBoolean);
@@ -972,12 +972,12 @@ public class TeamWorkUtilsTempImpl
         long l = ((Long)paramArrayOfObject[2]).longValue();
         if (paramBoolean)
         {
-          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(((DocsGrayTipsInfo)localObject).jdField_a_of_type_JavaLangString, 0, l);
+          paramContext = ((QQAppInterface)paramAppInterface).getMessageFacade().a(((DocsGrayTipsInfo)localObject).a, 0, l);
           if ((paramContext != null) && ((paramContext instanceof MessageForUniteGrayTip)))
           {
             paramArrayOfObject = (MessageForUniteGrayTip)paramContext;
             if (paramArrayOfObject.tipParam != null) {
-              paramArrayOfObject.tipParam.a();
+              paramArrayOfObject.tipParam.c();
             }
             paramArrayOfObject.updateUniteGrayTipMsg((QQAppInterface)paramAppInterface, str);
             paramAppInterface = new Message();
@@ -991,13 +991,13 @@ public class TeamWorkUtilsTempImpl
         }
         else
         {
-          QQToast.a(paramContext, str, 0).a();
+          QQToast.makeText(paramContext, str, 0).show();
           return;
         }
       }
       catch (Exception paramAppInterface)
       {
-        paramContext = TeamWorkConstants.i;
+        paramContext = TeamWorkConstants.j;
         paramMqqHandler = new StringBuilder();
         paramMqqHandler.append(" onSetUserAuth  exception  = ");
         paramMqqHandler.append(paramAppInterface.toString());
@@ -1016,7 +1016,7 @@ public class TeamWorkUtilsTempImpl
       String str = QFileUtils.a((QQAppInterface)paramAppInterface, paramLong1, paramLong3);
       if (!TextUtils.isEmpty(str))
       {
-        QQToast.a(paramActivity, str, 0).a();
+        QQToast.makeText(paramActivity, str, 0).show();
         return;
       }
       ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).openGroupPadTemplateListUrl(paramAppInterface, paramActivity, paramInt, paramString, paramLong1, paramLong2);
@@ -1103,12 +1103,12 @@ public class TeamWorkUtilsTempImpl
       Object localObject = TencentDocLocalCooperationProcessor.a();
       boolean bool;
       if (localObject != null) {
-        bool = ((TencentDocLocalCooperationBean)localObject).a(paramTeamWorkFileImportInfo.b);
+        bool = ((TencentDocLocalCooperationBean)localObject).b(paramTeamWorkFileImportInfo.c);
       } else {
         bool = false;
       }
       int i;
-      if (((paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 1) || (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 0) || (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 3000)) && (TextUtils.isEmpty(paramTeamWorkFileImportInfo.n))) {
+      if (((paramTeamWorkFileImportInfo.a == 1) || (paramTeamWorkFileImportInfo.a == 0) || (paramTeamWorkFileImportInfo.a == 3000)) && (TextUtils.isEmpty(paramTeamWorkFileImportInfo.G))) {
         i = 1;
       } else {
         i = 0;
@@ -1122,11 +1122,11 @@ public class TeamWorkUtilsTempImpl
       localIntent.putExtra("image_url_remote", paramTencentDocData.docIcon);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramAppInterface.getCurrentNickname());
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714583));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912092));
       if (bool) {
-        paramAppInterface = HardCodeUtil.a(2131714574);
+        paramAppInterface = HardCodeUtil.a(2131912083);
       } else {
-        paramAppInterface = HardCodeUtil.a(2131714587);
+        paramAppInterface = HardCodeUtil.a(2131912096);
       }
       ((StringBuilder)localObject).append(paramAppInterface);
       ((StringBuilder)localObject).append("《");
@@ -1164,7 +1164,7 @@ public class TeamWorkUtilsTempImpl
       localIntent.putExtra("struct_share_key_content_action", "web");
       localIntent.putExtra("struct_share_key_source_action", "web");
       localIntent.putExtra("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
-      localIntent.putExtra("app_name", paramActivity.getString(2131719569));
+      localIntent.putExtra("app_name", paramActivity.getString(2131917132));
       localIntent.putExtra("source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2097154");
       localIntent.putExtra("forward _key_nojump", true);
       paramAppInterface = StructMsgFactory.a(localIntent.getExtras());
@@ -1173,15 +1173,15 @@ public class TeamWorkUtilsTempImpl
         localIntent.putExtra("stuctmsg_bytes", paramAppInterface.getBytes());
         if (i != 0)
         {
-          localIntent.putExtra("uintype", paramTeamWorkFileImportInfo.jdField_a_of_type_Int);
-          localIntent.putExtra("uin", paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
-          localIntent.putExtra("troop_uin", paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
-          localIntent.putExtra("uinname", ContactUtils.a(localQQAppInterface, paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, paramTeamWorkFileImportInfo.jdField_a_of_type_Int));
+          localIntent.putExtra("uintype", paramTeamWorkFileImportInfo.a);
+          localIntent.putExtra("uin", paramTeamWorkFileImportInfo.b);
+          localIntent.putExtra("troop_uin", paramTeamWorkFileImportInfo.b);
+          localIntent.putExtra("uinname", ContactUtils.a(localQQAppInterface, paramTeamWorkFileImportInfo.b, paramTeamWorkFileImportInfo.a));
         }
-        paramAppInterface = new StringBuilder(HardCodeUtil.a(2131714547));
-        if ((paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 1) && (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000))
+        paramAppInterface = new StringBuilder(HardCodeUtil.a(2131912056));
+        if ((paramTeamWorkFileImportInfo.a != 1) && (paramTeamWorkFileImportInfo.a != 3000))
         {
-          if (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 0) {
+          if (paramTeamWorkFileImportInfo.a == 0) {
             paramAppInterface.append("好友");
           }
         }
@@ -1229,7 +1229,7 @@ public class TeamWorkUtilsTempImpl
       localIntent.putExtra("image_url_remote", paramFileManagerEntity.strThumbPath);
       localIntent.putExtra("req_share_id", 101458937L);
       localIntent.putExtra("source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2");
-      localIntent.putExtra("app_name", HardCodeUtil.a(2131714592));
+      localIntent.putExtra("app_name", HardCodeUtil.a(2131912101));
       localIntent.putExtra("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
       localIntent.putExtra("struct_share_key_source_action", "web");
       localIntent.putExtra("pubUin", "");
@@ -1247,7 +1247,7 @@ public class TeamWorkUtilsTempImpl
           paramAppInterface = paramAppInterface.toString();
         }
       }
-      String str = HardCodeUtil.a(2131714615);
+      String str = HardCodeUtil.a(2131912124);
       localIntent.putExtra("title", paramAppInterface);
       localObject = str;
       if (str != null)
@@ -1265,7 +1265,7 @@ public class TeamWorkUtilsTempImpl
       localIntent.putExtra("forward_thumb", paramFileManagerEntity.strThumbPath);
       localIntent.putExtra("struct_share_key_content_action", "web");
       localIntent.putExtra("req_share_id", -1L);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.sApplication.getString(2131696401, new Object[] { paramAppInterface }));
+      localIntent.putExtra("brief_key", BaseApplicationImpl.sApplication.getString(2131894173, new Object[] { paramAppInterface }));
       localIntent.putExtra("to_uin", paramString);
       localIntent.putExtra("uin_type", paramInt);
       localObject = localIntent.getExtras();
@@ -1284,7 +1284,7 @@ public class TeamWorkUtilsTempImpl
   
   public void setPreloadToolProcess(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    SharedPreUtils.c(paramAppInterface.getApp(), paramAppInterface.getCurrentUin(), "tencent_docs_config_preload_tool_process", paramBoolean);
+    SharedPreUtils.e(paramAppInterface.getApp(), paramAppInterface.getCurrentUin(), "tencent_docs_config_preload_tool_process", paramBoolean);
     paramAppInterface = (ITeamWorkHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER);
     if (paramAppInterface != null) {
       paramAppInterface.setPreloadToolProcess(paramBoolean);
@@ -1293,7 +1293,7 @@ public class TeamWorkUtilsTempImpl
   
   public void setTencentDocsAssitantEnable(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    SharedPreUtils.c(paramAppInterface.getApp(), paramAppInterface.getCurrentUin(), "tencent_docs_config_enable_assistant", paramBoolean);
+    SharedPreUtils.e(paramAppInterface.getApp(), paramAppInterface.getCurrentUin(), "tencent_docs_config_enable_assistant", paramBoolean);
     paramAppInterface = (ITeamWorkHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER);
     if (paramAppInterface != null) {
       paramAppInterface.setEnableTencentDocsAssistant(paramBoolean);
@@ -1334,7 +1334,7 @@ public class TeamWorkUtilsTempImpl
     //   42: aload_1
     //   43: getfield 162	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
     //   46: getfield 167	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgUrl	Ljava/lang/String;
-    //   49: invokestatic 1355	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
+    //   49: invokestatic 1360	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
     //   52: ifeq +423 -> 475
     //   55: aload_1
     //   56: getfield 162	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
@@ -1348,32 +1348,32 @@ public class TeamWorkUtilsTempImpl
     //   76: getfield 306	com/tencent/mobileqq/structmsg/StructMsgForGeneralShare:mMsgUrl	Ljava/lang/String;
     //   79: aload_1
     //   80: getfield 225	com/tencent/mobileqq/data/MessageForStructing:selfuin	Ljava/lang/String;
-    //   83: invokestatic 1107	com/tencent/mobileqq/teamwork/TeamWorkHandlerUtils:a	(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
+    //   83: invokestatic 1110	com/tencent/mobileqq/teamwork/TeamWorkHandlerUtils:a	(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
     //   86: astore 5
     //   88: aload 5
-    //   90: ldc_w 1109
-    //   93: invokevirtual 817	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   90: ldc_w 1112
+    //   93: invokevirtual 818	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   96: ifne +28 -> 124
     //   99: aload 4
     //   101: aload 5
-    //   103: ldc_w 1357
-    //   106: invokevirtual 1360	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   103: ldc_w 1362
+    //   106: invokevirtual 1365	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   109: checkcast 90	org/json/JSONObject
-    //   112: ldc_w 1191
-    //   115: invokevirtual 1360	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   112: ldc_w 1194
+    //   115: invokevirtual 1365	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   118: checkcast 81	java/lang/String
     //   121: putfield 312	com/tencent/mobileqq/structmsg/StructMsgForGeneralShare:mContentTitle	Ljava/lang/String;
     //   124: aload_0
     //   125: aload_1
     //   126: aload_2
-    //   127: invokespecial 1125	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:tdDocMessageRecordSaveToFMDB	(Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/common/app/AppInterface;)V
+    //   127: invokespecial 1128	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:tdDocMessageRecordSaveToFMDB	(Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/common/app/AppInterface;)V
     //   130: return
     //   131: astore 4
     //   133: goto +26 -> 159
     //   136: astore 4
     //   138: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   141: ifeq -17 -> 124
-    //   144: getstatic 33	com/tencent/mobileqq/teamwork/TeamWorkConstants:i	Ljava/lang/String;
+    //   144: getstatic 33	com/tencent/mobileqq/teamwork/TeamWorkConstants:j	Ljava/lang/String;
     //   147: iconst_2
     //   148: aload 4
     //   150: invokevirtual 358	org/json/JSONException:getMessage	()Ljava/lang/String;
@@ -1382,19 +1382,19 @@ public class TeamWorkUtilsTempImpl
     //   159: aload_0
     //   160: aload_1
     //   161: aload_2
-    //   162: invokespecial 1125	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:tdDocMessageRecordSaveToFMDB	(Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/common/app/AppInterface;)V
+    //   162: invokespecial 1128	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:tdDocMessageRecordSaveToFMDB	(Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/common/app/AppInterface;)V
     //   165: aload 4
     //   167: athrow
     //   168: return
     //   169: aload_1
-    //   170: instanceof 1362
+    //   170: instanceof 1367
     //   173: ifeq +271 -> 444
     //   176: aload_1
-    //   177: checkcast 1362	com/tencent/mobileqq/data/MessageForArkApp
+    //   177: checkcast 1367	com/tencent/mobileqq/data/MessageForArkApp
     //   180: astore_1
     //   181: aload_1
-    //   182: getfield 1366	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
-    //   185: getfield 1371	com/tencent/mobileqq/data/ArkAppMessage:metaList	Ljava/lang/String;
+    //   182: getfield 1371	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
+    //   185: getfield 1376	com/tencent/mobileqq/data/ArkAppMessage:metaList	Ljava/lang/String;
     //   188: astore_2
     //   189: aload_2
     //   190: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1405,133 +1405,133 @@ public class TeamWorkUtilsTempImpl
     //   201: aload_2
     //   202: invokespecial 93	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   205: astore_2
-    //   206: ldc_w 1373
+    //   206: ldc_w 1378
     //   209: aload_1
-    //   210: getfield 1366	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
-    //   213: getfield 1376	com/tencent/mobileqq/data/ArkAppMessage:appName	Ljava/lang/String;
+    //   210: getfield 1371	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
+    //   213: getfield 1381	com/tencent/mobileqq/data/ArkAppMessage:appName	Ljava/lang/String;
     //   216: invokevirtual 130	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   219: istore_3
     //   220: iload_3
     //   221: ifeq +62 -> 283
     //   224: aload_2
-    //   225: ldc_w 1378
+    //   225: ldc_w 1383
     //   228: invokevirtual 99	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   231: ifeq +244 -> 475
     //   234: aload_2
-    //   235: ldc_w 1378
-    //   238: invokevirtual 1382	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   235: ldc_w 1383
+    //   238: invokevirtual 1387	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   241: astore_2
     //   242: aload_2
     //   243: ifnull +232 -> 475
     //   246: aload_2
-    //   247: ldc_w 1384
-    //   250: invokevirtual 1387	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   247: ldc_w 1389
+    //   250: invokevirtual 1392	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   253: astore_2
     //   254: aload_2
     //   255: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   258: ifne +217 -> 475
     //   261: aload_2
-    //   262: invokestatic 1355	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
+    //   262: invokestatic 1360	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
     //   265: ifeq +210 -> 475
     //   268: aload_0
     //   269: aload_2
-    //   270: ldc_w 1389
-    //   273: invokevirtual 1393	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   270: ldc_w 1394
+    //   273: invokevirtual 1398	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   276: iconst_0
     //   277: aaload
     //   278: aload_1
-    //   279: invokevirtual 1087	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
+    //   279: invokevirtual 1090	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
     //   282: return
-    //   283: ldc_w 1395
+    //   283: ldc_w 1400
     //   286: aload_1
-    //   287: getfield 1366	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
-    //   290: getfield 1376	com/tencent/mobileqq/data/ArkAppMessage:appName	Ljava/lang/String;
+    //   287: getfield 1371	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
+    //   290: getfield 1381	com/tencent/mobileqq/data/ArkAppMessage:appName	Ljava/lang/String;
     //   293: invokevirtual 130	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   296: ifeq +62 -> 358
     //   299: aload_2
-    //   300: ldc_w 1397
+    //   300: ldc_w 1402
     //   303: invokevirtual 99	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   306: ifeq +169 -> 475
     //   309: aload_2
-    //   310: ldc_w 1397
-    //   313: invokevirtual 1382	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   310: ldc_w 1402
+    //   313: invokevirtual 1387	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   316: astore_2
     //   317: aload_2
     //   318: ifnull +157 -> 475
     //   321: aload_2
-    //   322: ldc_w 1384
-    //   325: invokevirtual 1387	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   322: ldc_w 1389
+    //   325: invokevirtual 1392	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   328: astore_2
     //   329: aload_2
     //   330: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   333: ifne +142 -> 475
     //   336: aload_2
-    //   337: invokestatic 1355	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
+    //   337: invokestatic 1360	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
     //   340: ifeq +135 -> 475
     //   343: aload_0
     //   344: aload_2
-    //   345: ldc_w 1389
-    //   348: invokevirtual 1393	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   345: ldc_w 1394
+    //   348: invokevirtual 1398	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   351: iconst_0
     //   352: aaload
     //   353: aload_1
-    //   354: invokevirtual 1087	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
+    //   354: invokevirtual 1090	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
     //   357: return
-    //   358: ldc_w 1399
+    //   358: ldc_w 1404
     //   361: aload_1
-    //   362: getfield 1366	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
-    //   365: getfield 1376	com/tencent/mobileqq/data/ArkAppMessage:appName	Ljava/lang/String;
+    //   362: getfield 1371	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
+    //   365: getfield 1381	com/tencent/mobileqq/data/ArkAppMessage:appName	Ljava/lang/String;
     //   368: invokevirtual 130	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   371: ifeq +104 -> 475
     //   374: aload_2
-    //   375: ldc_w 1401
+    //   375: ldc_w 1406
     //   378: invokevirtual 99	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   381: ifeq +94 -> 475
     //   384: aload_2
-    //   385: ldc_w 1401
-    //   388: invokevirtual 1404	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   385: ldc_w 1406
+    //   388: invokevirtual 1409	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   391: astore_2
     //   392: aload_2
     //   393: ifnull +82 -> 475
     //   396: aload_2
-    //   397: ldc_w 1406
-    //   400: invokevirtual 1387	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   397: ldc_w 1411
+    //   400: invokevirtual 1392	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   403: astore_2
     //   404: aload_2
     //   405: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   408: ifne +67 -> 475
     //   411: aload_2
-    //   412: invokestatic 1355	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
+    //   412: invokestatic 1360	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
     //   415: ifeq +60 -> 475
     //   418: aload_0
     //   419: aload_2
     //   420: aload_1
-    //   421: invokevirtual 1087	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
+    //   421: invokevirtual 1090	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
     //   424: return
     //   425: astore_1
     //   426: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   429: ifeq +46 -> 475
-    //   432: getstatic 33	com/tencent/mobileqq/teamwork/TeamWorkConstants:i	Ljava/lang/String;
+    //   432: getstatic 33	com/tencent/mobileqq/teamwork/TeamWorkConstants:j	Ljava/lang/String;
     //   435: iconst_2
     //   436: aload_1
     //   437: invokevirtual 358	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   440: invokestatic 361	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   443: return
     //   444: aload_1
-    //   445: instanceof 1408
+    //   445: instanceof 1413
     //   448: ifeq +27 -> 475
     //   451: aload_1
-    //   452: checkcast 1408	com/tencent/mobileqq/data/MessageForText
+    //   452: checkcast 1413	com/tencent/mobileqq/data/MessageForText
     //   455: astore_1
     //   456: aload_1
-    //   457: getfield 1411	com/tencent/mobileqq/data/MessageForText:msg	Ljava/lang/String;
-    //   460: invokestatic 1355	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
+    //   457: getfield 1416	com/tencent/mobileqq/data/MessageForText:msg	Ljava/lang/String;
+    //   460: invokestatic 1360	com/tencent/mobileqq/filemanager/data/FMConstants:a	(Ljava/lang/String;)Z
     //   463: ifeq +12 -> 475
     //   466: aload_0
     //   467: aload_1
-    //   468: getfield 1411	com/tencent/mobileqq/data/MessageForText:msg	Ljava/lang/String;
+    //   468: getfield 1416	com/tencent/mobileqq/data/MessageForText:msg	Ljava/lang/String;
     //   471: aload_1
-    //   472: invokevirtual 1087	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
+    //   472: invokevirtual 1090	com/tencent/mobileqq/teamwork/api/impl/TeamWorkUtilsTempImpl:processTDDocFileUrl	(Ljava/lang/String;Lcom/tencent/mobileqq/data/ChatMessage;)V
     //   475: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1564,7 +1564,7 @@ public class TeamWorkUtilsTempImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkUtilsTempImpl
  * JD-Core Version:    0.7.0.1
  */

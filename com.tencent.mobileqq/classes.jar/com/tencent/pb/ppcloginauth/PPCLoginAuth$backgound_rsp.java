@@ -14,7 +14,7 @@ public final class PPCLoginAuth$backgound_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.ppcloginauth.PPCLoginAuth.backgound_rsp
  * JD-Core Version:    0.7.0.1
  */

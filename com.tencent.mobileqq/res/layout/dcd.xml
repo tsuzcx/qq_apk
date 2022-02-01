@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/relativeItem" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/au0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.RecentDynamicAvatarView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/hm" />
+    <RelativeLayout android:id="@id/iag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+        <com.tencent.widget.IntimateSingleLineTextView android:textSize="@dimen/j1" android:id="@id/title" android:paddingRight="16.0dip" android:duplicateParentState="true" android:layout_marginBottom="@dimen/ajw" android:includeFontPadding="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/hn" />
+        <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" android:duplicateParentState="true" android:layout_marginRight="@dimen/bq1" android:includeFontPadding="true" android:layout_below="@id/title" android:layout_alignParentRight="true" style="@style/cg" />
+        <LinearLayout android:id="@id/bgw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_toLeftOf="@id/unreadmsg" android:layout_below="@id/title" android:layout_alignLeft="@id/title">
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_red_theme_version2" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/c0i" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:singleLine="true" />
+            <TextView android:textSize="@dimen/j9" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <com.tencent.widget.IntimateSingleLineTextView android:textSize="@dimen/j9" android:layout_gravity="center_vertical" android:id="@id/bgt" android:paddingRight="10.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\# 游戏交流" android:includeFontPadding="true" android:layout_weight="1.0" android:layout_toLeftOf="@id/unreadmsg" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

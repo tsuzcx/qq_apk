@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 public final class Target
 {
   @NonNull
-  public static final Target a;
+  public static final Target a = new Target();
   @NonNull
   public static final Target b;
   @NonNull
@@ -17,22 +17,21 @@ public final class Target
   public static final Target e;
   @NonNull
   public static final Target f;
-  boolean jdField_a_of_type_Boolean = true;
-  final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  final float[] b;
-  final float[] c;
+  final float[] g = new float[3];
+  final float[] h = new float[3];
+  final float[] i = new float[3];
+  boolean j = true;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqUtilsPaletteTarget = new Target();
-    c(jdField_a_of_type_ComTencentMobileqqUtilsPaletteTarget);
-    d(jdField_a_of_type_ComTencentMobileqqUtilsPaletteTarget);
-    jdField_b_of_type_ComTencentMobileqqUtilsPaletteTarget = new Target();
-    b(jdField_b_of_type_ComTencentMobileqqUtilsPaletteTarget);
-    d(jdField_b_of_type_ComTencentMobileqqUtilsPaletteTarget);
-    jdField_c_of_type_ComTencentMobileqqUtilsPaletteTarget = new Target();
-    a(jdField_c_of_type_ComTencentMobileqqUtilsPaletteTarget);
-    d(jdField_c_of_type_ComTencentMobileqqUtilsPaletteTarget);
+    c(a);
+    d(a);
+    b = new Target();
+    b(b);
+    d(b);
+    c = new Target();
+    a(c);
+    d(c);
     d = new Target();
     c(d);
     e(d);
@@ -46,16 +45,14 @@ public final class Target
   
   Target()
   {
-    this.jdField_b_of_type_ArrayOfFloat = new float[3];
-    this.jdField_c_of_type_ArrayOfFloat = new float[3];
-    a(this.jdField_a_of_type_ArrayOfFloat);
-    a(this.jdField_b_of_type_ArrayOfFloat);
-    b();
+    a(this.g);
+    a(this.h);
+    l();
   }
   
   private static void a(Target paramTarget)
   {
-    paramTarget = paramTarget.jdField_b_of_type_ArrayOfFloat;
+    paramTarget = paramTarget.h;
     paramTarget[1] = 0.26F;
     paramTarget[2] = 0.45F;
   }
@@ -67,17 +64,9 @@ public final class Target
     paramArrayOfFloat[2] = 1.0F;
   }
   
-  private void b()
-  {
-    float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
-    arrayOfFloat[0] = 0.24F;
-    arrayOfFloat[1] = 0.52F;
-    arrayOfFloat[2] = 0.24F;
-  }
-  
   private static void b(Target paramTarget)
   {
-    paramTarget = paramTarget.jdField_b_of_type_ArrayOfFloat;
+    paramTarget = paramTarget.h;
     paramTarget[0] = 0.3F;
     paramTarget[1] = 0.5F;
     paramTarget[2] = 0.7F;
@@ -85,114 +74,122 @@ public final class Target
   
   private static void c(Target paramTarget)
   {
-    paramTarget = paramTarget.jdField_b_of_type_ArrayOfFloat;
+    paramTarget = paramTarget.h;
     paramTarget[0] = 0.55F;
     paramTarget[1] = 0.74F;
   }
   
   private static void d(Target paramTarget)
   {
-    paramTarget = paramTarget.jdField_a_of_type_ArrayOfFloat;
+    paramTarget = paramTarget.g;
     paramTarget[0] = 0.35F;
     paramTarget[1] = 1.0F;
   }
   
   private static void e(Target paramTarget)
   {
-    paramTarget = paramTarget.jdField_a_of_type_ArrayOfFloat;
+    paramTarget = paramTarget.g;
     paramTarget[1] = 0.3F;
     paramTarget[2] = 0.4F;
+  }
+  
+  private void l()
+  {
+    float[] arrayOfFloat = this.i;
+    arrayOfFloat[0] = 0.24F;
+    arrayOfFloat[1] = 0.52F;
+    arrayOfFloat[2] = 0.24F;
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float a()
   {
-    return this.jdField_a_of_type_ArrayOfFloat[0];
-  }
-  
-  void a()
-  {
-    int k = this.jdField_c_of_type_ArrayOfFloat.length;
-    int j = 0;
-    int i = 0;
-    float f2;
-    for (float f1 = 0.0F; i < k; f1 = f2)
-    {
-      float f3 = this.jdField_c_of_type_ArrayOfFloat[i];
-      f2 = f1;
-      if (f3 > 0.0F) {
-        f2 = f1 + f3;
-      }
-      i += 1;
-    }
-    if (f1 != 0.0F)
-    {
-      k = this.jdField_c_of_type_ArrayOfFloat.length;
-      i = j;
-      while (i < k)
-      {
-        float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
-        if (arrayOfFloat[i] > 0.0F) {
-          arrayOfFloat[i] /= f1;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.g[0];
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float b()
   {
-    return this.jdField_a_of_type_ArrayOfFloat[1];
+    return this.g[1];
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float c()
   {
-    return this.jdField_a_of_type_ArrayOfFloat[2];
+    return this.g[2];
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float d()
   {
-    return this.jdField_b_of_type_ArrayOfFloat[0];
+    return this.h[0];
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float e()
   {
-    return this.jdField_b_of_type_ArrayOfFloat[1];
+    return this.h[1];
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float f()
   {
-    return this.jdField_b_of_type_ArrayOfFloat[2];
+    return this.h[2];
   }
   
   public float g()
   {
-    return this.jdField_c_of_type_ArrayOfFloat[0];
+    return this.i[0];
   }
   
   public float h()
   {
-    return this.jdField_c_of_type_ArrayOfFloat[1];
+    return this.i[1];
   }
   
   public float i()
   {
-    return this.jdField_c_of_type_ArrayOfFloat[2];
+    return this.i[2];
+  }
+  
+  public boolean j()
+  {
+    return this.j;
+  }
+  
+  void k()
+  {
+    int n = this.i.length;
+    int m = 0;
+    int k = 0;
+    float f2;
+    for (float f1 = 0.0F; k < n; f1 = f2)
+    {
+      float f3 = this.i[k];
+      f2 = f1;
+      if (f3 > 0.0F) {
+        f2 = f1 + f3;
+      }
+      k += 1;
+    }
+    if (f1 != 0.0F)
+    {
+      n = this.i.length;
+      k = m;
+      while (k < n)
+      {
+        float[] arrayOfFloat = this.i;
+        if (arrayOfFloat[k] > 0.0F) {
+          arrayOfFloat[k] /= f1;
+        }
+        k += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Target
  * JD-Core Version:    0.7.0.1
  */

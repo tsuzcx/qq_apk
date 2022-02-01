@@ -19,7 +19,7 @@ public class MsgReporterSwitchConfigProcessor
   {
     MsgReporterSwitchConfigProcessor.Config localConfig = new MsgReporterSwitchConfigProcessor.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      MsgReporterSwitchConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      MsgReporterSwitchConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -55,7 +55,7 @@ public class MsgReporterSwitchConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.MsgReporterSwitchConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

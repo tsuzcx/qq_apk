@@ -10,7 +10,7 @@ class DetailVideoInfoWidget$SubscribeStatusReceiver$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    this.a.a(this.b);
   }
 }
 

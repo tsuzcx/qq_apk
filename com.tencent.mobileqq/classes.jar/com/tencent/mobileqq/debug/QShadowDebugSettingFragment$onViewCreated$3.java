@@ -20,11 +20,11 @@ final class QShadowDebugSettingFragment$onViewCreated$3
   public final void onClick(View paramView)
   {
     Object localObject;
-    if (!PluginUpdater.a((Context)this.a.getActivity()))
+    if (!PluginUpdater.b((Context)this.a.getActivity()))
     {
       localObject = new QQToast((Context)this.a.getActivity());
-      ((QQToast)localObject).a((CharSequence)"请先打开自定义加载开关！");
-      ((QQToast)localObject).a();
+      ((QQToast)localObject).setToastMsg((CharSequence)"请先打开自定义加载开关！");
+      ((QQToast)localObject).show();
     }
     else
     {
@@ -48,13 +48,13 @@ final class QShadowDebugSettingFragment$onViewCreated$3
         }
         if (i == 0)
         {
-          QShadowDebugSettingFragment.a(this.a);
+          QShadowDebugSettingFragment.b(this.a);
           break label210;
         }
       }
       localObject = new QQToast((Context)this.a.getActivity());
-      ((QQToast)localObject).a((CharSequence)"请先输入插件信息！");
-      ((QQToast)localObject).a();
+      ((QQToast)localObject).setToastMsg((CharSequence)"请先输入插件信息！");
+      ((QQToast)localObject).show();
     }
     label210:
     EventCollector.getInstance().onViewClicked(paramView);
@@ -62,7 +62,7 @@ final class QShadowDebugSettingFragment$onViewCreated$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.QShadowDebugSettingFragment.onViewCreated.3
  * JD-Core Version:    0.7.0.1
  */

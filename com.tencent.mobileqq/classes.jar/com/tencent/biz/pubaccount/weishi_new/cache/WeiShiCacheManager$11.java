@@ -10,7 +10,7 @@ class WeiShiCacheManager$11
   
   public void run()
   {
-    if (!this.this$0.a()) {
+    if (!this.this$0.c()) {
       return;
     }
     stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = WeiShiCacheManager.a(this.this$0, 4);
@@ -19,7 +19,7 @@ class WeiShiCacheManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.11
  * JD-Core Version:    0.7.0.1
  */

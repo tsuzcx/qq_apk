@@ -1,9 +1,8 @@
 package com.tencent.liteav.videoencoder;
 
 import com.tencent.liteav.basic.d.c;
-import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.lang.ref.WeakReference;
 import java.util.TimerTask;
 
@@ -30,7 +29,7 @@ class b$b
     Object localObject2;
     if (b.i((b)localObject1) < b.j((b)localObject1))
     {
-      localObject2 = f.a();
+      localObject2 = h.a();
       b.k((b)localObject1);
       b.a((b)localObject1, b.l((b)localObject1) + localObject2[0] / 10);
       b.b((b)localObject1, b.m((b)localObject1) + localObject2[1] / 10);
@@ -55,9 +54,7 @@ class b$b
       ((StringBuilder)localObject2).append("][checkCount:");
       ((StringBuilder)localObject2).append(b.j((b)localObject1));
       ((StringBuilder)localObject2).append("]");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      Monitor.a(2, (String)localObject2, "", 0);
-      TXCLog.i(b.f(), (String)localObject2);
+      Monitor.a(2, ((StringBuilder)localObject2).toString(), "", 0);
       b.o((b)localObject1);
     }
     b.p((b)localObject1);
@@ -65,7 +62,7 @@ class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.b.b
  * JD-Core Version:    0.7.0.1
  */

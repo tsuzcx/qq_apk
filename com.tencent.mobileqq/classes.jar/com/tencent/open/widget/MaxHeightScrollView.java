@@ -39,7 +39,7 @@ public class MaxHeightScrollView
     this.a = (a(getContext()) - DisplayUtil.a(getContext(), 56.0F));
   }
   
-  public int a()
+  public int getMaxHeight()
   {
     return this.a;
   }
@@ -68,7 +68,7 @@ public class MaxHeightScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.widget.MaxHeightScrollView
  * JD-Core Version:    0.7.0.1
  */

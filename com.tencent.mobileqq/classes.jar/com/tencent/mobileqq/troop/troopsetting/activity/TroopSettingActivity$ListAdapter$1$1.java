@@ -13,20 +13,20 @@ class TroopSettingActivity$ListAdapter$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter$1.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter.a.c) {
+    if (this.b.d.a.l) {
       return;
     }
-    if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter$1.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ViewHolder.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter$1.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(this.b.a.c, this.b.b)) {
       return;
     }
-    SpannableString localSpannableString = ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).getSpannableStringFromColorNickText(this.jdField_a_of_type_JavaLangString, 12);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter$1.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-    ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).setColorText(TroopSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter$1.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter.a), this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter$1.jdField_a_of_type_AndroidWidgetTextView, localSpannableString);
+    SpannableString localSpannableString = ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).getSpannableStringFromColorNickText(this.a, 12);
+    this.b.c.setText(localSpannableString);
+    ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).setColorText(TroopSettingActivity.a(this.b.d.a), this.b.c, localSpannableString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.ListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

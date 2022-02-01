@@ -4,25 +4,25 @@ import java.util.concurrent.ScheduledFuture;
 
 class TimerTaskManager$InternalTaskEntry
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
+  private Runnable a = new TimerTaskManager.InternalTaskEntry.1(this);
+  private long b = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable c;
+  private String d;
+  private ScheduledFuture<?> e;
   
   public static InternalTaskEntry a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
   {
     InternalTaskEntry localInternalTaskEntry = new InternalTaskEntry();
     TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
-    localInternalTaskEntry.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
+    localInternalTaskEntry.c = paramTimerTaskRunnable;
     return localInternalTaskEntry;
   }
   
   public String toString()
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     boolean bool2 = false;
-    TimerTaskManager.TimerTaskRunnable localTimerTaskRunnable = this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
+    TimerTaskManager.TimerTaskRunnable localTimerTaskRunnable = this.c;
     boolean bool1 = bool2;
     if (localTimerTaskRunnable != null)
     {
@@ -36,7 +36,7 @@ class TimerTaskManager$InternalTaskEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry
  * JD-Core Version:    0.7.0.1
  */

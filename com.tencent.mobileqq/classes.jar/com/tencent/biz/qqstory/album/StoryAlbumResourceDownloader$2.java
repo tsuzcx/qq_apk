@@ -18,8 +18,8 @@ class StoryAlbumResourceDownloader$2
       }
       else
       {
-        if (this.jdField_a_of_type_Boolean) {
-          StoryAlbumResourceDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryAlbumResourceDownloader);
+        if (this.a) {
+          StoryAlbumResourceDownloader.a(this.b);
         }
         SLog.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
       }
@@ -30,7 +30,7 @@ class StoryAlbumResourceDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.2
  * JD-Core Version:    0.7.0.1
  */

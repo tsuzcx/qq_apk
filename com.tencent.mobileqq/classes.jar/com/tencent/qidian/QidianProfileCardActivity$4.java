@@ -15,13 +15,13 @@ class QidianProfileCardActivity$4
   public void onClick(View paramView)
   {
     QidianProfileCardActivity localQidianProfileCardActivity = this.a;
-    ProfileCardUtil.a(localQidianProfileCardActivity, localQidianProfileCardActivity.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin);
+    ProfileCardUtil.a(localQidianProfileCardActivity, localQidianProfileCardActivity.a, this.a.e.allInOne.uin);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.4
  * JD-Core Version:    0.7.0.1
  */

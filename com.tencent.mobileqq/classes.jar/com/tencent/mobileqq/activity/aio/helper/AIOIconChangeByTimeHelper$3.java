@@ -11,16 +11,16 @@ class AIOIconChangeByTimeHelper$3
   
   public void a(boolean paramBoolean)
   {
-    AIOIconChangeByTimeHelper.a(this.a).a.a();
-    SimpleUIAIOHelper localSimpleUIAIOHelper = (SimpleUIAIOHelper)AIOIconChangeByTimeHelper.a(this.a).a(29);
+    AIOIconChangeByTimeHelper.b(this.a).W.getPlusRedTouchAndUpdate();
+    SimpleUIAIOHelper localSimpleUIAIOHelper = (SimpleUIAIOHelper)AIOIconChangeByTimeHelper.b(this.a).q(29);
     if (localSimpleUIAIOHelper != null) {
-      localSimpleUIAIOHelper.f();
+      localSimpleUIAIOHelper.m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.3
  * JD-Core Version:    0.7.0.1
  */

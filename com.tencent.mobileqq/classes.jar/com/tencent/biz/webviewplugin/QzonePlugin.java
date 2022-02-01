@@ -23,16 +23,16 @@ public class QzonePlugin
   implements IPostCreatePluginChecker, IPreCreatePluginChecker
 {
   public static final String a = "QzonePlugin";
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  private String c = "";
-  private String d;
+  private boolean b = false;
+  private String c = null;
+  private String d = "";
+  private WebView e;
+  private String f;
+  private boolean g = false;
   
   public QzonePlugin()
   {
-    this.mPluginNameSpace = jdField_a_of_type_JavaLangString;
+    this.mPluginNameSpace = a;
   }
   
   private void a()
@@ -44,50 +44,19 @@ public class QzonePlugin
   {
     if (paramArrayOfByte != null)
     {
-      String str1 = this.d;
+      String str1 = this.f;
       if (str1 == null) {
         return;
       }
       if (str1 != null)
       {
-        String str2 = this.c;
+        String str2 = this.d;
         if ((str2 != null) && (str2.equals(str1))) {
           return;
         }
       }
       new Handler().post(new QzonePlugin.1(this, paramArrayOfByte));
-      this.c = this.d;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (new JSONObject(paramString).getInt("resultCode") != 0) {
-          break label77;
-        }
-        bool = true;
-        this.jdField_b_of_type_Boolean = bool;
-        if (QLog.isColorLevel())
-        {
-          paramString = this.TAG;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("onActivityResult: mPayActionSucc=");
-          localStringBuilder.append(this.jdField_b_of_type_Boolean);
-          QLog.d(paramString, 2, localStringBuilder.toString());
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      return;
-      label77:
-      boolean bool = false;
+      this.d = this.f;
     }
   }
   
@@ -107,13 +76,13 @@ public class QzonePlugin
   
   public boolean a(String paramString)
   {
-    Intent localIntent = this.mRuntime.a().getIntent();
+    Intent localIntent = this.mRuntime.d().getIntent();
     Bundle localBundle = localIntent.getExtras();
     byte[] arrayOfByte = localBundle.getByteArray("post_data");
     boolean bool = localBundle.getBoolean("UrlorData", true);
-    this.d = paramString;
+    this.f = paramString;
     if (localBundle.getString("originalURL") != null) {
-      this.d = localBundle.getString("originalURL");
+      this.f = localBundle.getString("originalURL");
     }
     if (arrayOfByte == null)
     {
@@ -128,6 +97,37 @@ public class QzonePlugin
     return true;
   }
   
+  public void b(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).getInt("resultCode") != 0) {
+          break label77;
+        }
+        bool = true;
+        this.g = bool;
+        if (QLog.isColorLevel())
+        {
+          paramString = this.mTAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onActivityResult: mPayActionSucc=");
+          localStringBuilder.append(this.g);
+          QLog.d(paramString, 2, localStringBuilder.toString());
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return;
+      label77:
+      boolean bool = false;
+    }
+  }
+  
   public long getWebViewSchemaByNameSpace(String paramString)
   {
     return 11L;
@@ -137,16 +137,16 @@ public class QzonePlugin
   {
     if (paramLong == 8589934601L)
     {
-      paramString = this.jdField_b_of_type_JavaLangString;
+      paramString = this.c;
       if ((paramString != null) && (!"".equals(paramString)))
       {
         paramString = new Intent();
-        paramString.setAction(this.jdField_b_of_type_JavaLangString);
-        paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", this.jdField_a_of_type_Boolean);
-        if (("com.tencent.mobileqq.opencenter.vipInfo".equals(this.jdField_b_of_type_JavaLangString)) && (this.mRuntime.a(this.mRuntime.a()) != null)) {
-          paramString.putExtra("key_pay_action_result", this.jdField_b_of_type_Boolean);
+        paramString.setAction(this.c);
+        paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", this.b);
+        if (("com.tencent.mobileqq.opencenter.vipInfo".equals(this.c)) && (this.mRuntime.a(this.mRuntime.d()) != null)) {
+          paramString.putExtra("key_pay_action_result", this.g);
         }
-        this.mRuntime.a().sendBroadcast(paramString);
+        this.mRuntime.d().sendBroadcast(paramString);
       }
     }
     return false;
@@ -156,10 +156,10 @@ public class QzonePlugin
   {
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equalsIgnoreCase("pay://requestQzoneOpenVip")))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return true;
     }
-    if ((this.mRuntime.a().getIntent().getBooleanExtra("fromQZone", false)) && ((paramString2.equals("http")) || (paramString2.equals("https")))) {
+    if ((this.mRuntime.d().getIntent().getBooleanExtra("fromQZone", false)) && ((paramString2.equals("http")) || (paramString2.equals("https")))) {
       return a(paramString1);
     }
     return false;
@@ -190,21 +190,21 @@ public class QzonePlugin
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = null;
+    this.e = null;
   }
   
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
-    if (this.mRuntime.a().getIntent() != null) {
-      this.jdField_b_of_type_JavaLangString = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
+    this.e = this.mRuntime.a();
+    if (this.mRuntime.d().getIntent() != null) {
+      this.c = this.mRuntime.d().getIntent().getStringExtra("broadcastAction");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QzonePlugin
  * JD-Core Version:    0.7.0.1
  */

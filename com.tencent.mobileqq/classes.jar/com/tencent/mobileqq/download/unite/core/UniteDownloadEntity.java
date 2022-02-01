@@ -24,9 +24,9 @@ public class UniteDownloadEntity
   {
     UniteDownloadEntity localUniteDownloadEntity = new UniteDownloadEntity();
     localUniteDownloadEntity.downloadTimestamp = NetConnInfoCenter.getServerTimeMillis();
-    localUniteDownloadEntity.apkPath = paramDownloadInfo.l;
-    localUniteDownloadEntity.apkMd5 = MD5.a(new File(paramDownloadInfo.l));
-    localUniteDownloadEntity.source = paramDownloadInfo.m;
+    localUniteDownloadEntity.apkPath = paramDownloadInfo.q;
+    localUniteDownloadEntity.apkMd5 = MD5.a(new File(paramDownloadInfo.q));
+    localUniteDownloadEntity.source = paramDownloadInfo.r;
     localUniteDownloadEntity.appId = paramDownloadInfo.c;
     if (QLog.isColorLevel()) {
       QLog.d("[UniteDownload] UniteDownloadEntity", 2, new Object[] { "[db] fromDownloadInfo: invoked. ", " uniteDownloadEntity: ", localUniteDownloadEntity });
@@ -62,7 +62,7 @@ public class UniteDownloadEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadEntity
  * JD-Core Version:    0.7.0.1
  */

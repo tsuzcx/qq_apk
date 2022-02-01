@@ -9,10 +9,10 @@ class StorageReport$MyFileAccessComparator
   {
     paramObject1 = (StorageItem)paramObject1;
     paramObject2 = (StorageItem)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
+    if (paramObject1.d > paramObject2.d) {
       return -1;
     }
-    if (paramObject1.b < paramObject2.b) {
+    if (paramObject1.d < paramObject2.d) {
       return 1;
     }
     return 0;
@@ -20,7 +20,7 @@ class StorageReport$MyFileAccessComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.storage.StorageReport.MyFileAccessComparator
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ import android.widget.TextView;
 
 public class GridListAdapter$Holder
 {
-  public View a;
   public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TroopGiftAioItemData a = null;
   public ImageView b;
-  public TextView b;
-  public ImageView c;
   public TextView c;
   public TextView d;
   public TextView e;
   public TextView f;
   public TextView g;
+  public View h;
+  public TextView i;
+  public LinearLayout j;
+  public TextView k;
+  public TroopGiftAioItemData l = null;
+  public ImageView m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListAdapter.Holder
  * JD-Core Version:    0.7.0.1
  */

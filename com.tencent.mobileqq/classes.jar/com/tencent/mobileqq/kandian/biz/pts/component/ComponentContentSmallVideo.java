@@ -12,7 +12,7 @@ import com.tencent.mobileqq.kandian.repo.pts.UtilsForComponent;
 public class ComponentContentSmallVideo
   extends ComponentContentSmall
 {
-  TextView a;
+  TextView d;
   
   public ComponentContentSmallVideo(Context paramContext)
   {
@@ -29,15 +29,10 @@ public class ComponentContentSmallVideo
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560134, this, true);
-  }
-  
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131365996));
+    this.d = ((TextView)paramView.findViewById(2131432267));
   }
   
   public void a(Object paramObject)
@@ -45,12 +40,17 @@ public class ComponentContentSmallVideo
     super.a(paramObject);
     if ((paramObject instanceof IReadInJoyModel))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a();
+      paramObject = ((IReadInJoyModel)paramObject).k();
       if (paramObject == null) {
         return;
       }
-      this.a.setText(UtilsForComponent.a(paramObject.mVideoDuration));
+      this.d.setText(UtilsForComponent.a(paramObject.mVideoDuration));
     }
+  }
+  
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626181, this, true);
   }
   
   public void b()
@@ -60,7 +60,7 @@ public class ComponentContentSmallVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentSmallVideo
  * JD-Core Version:    0.7.0.1
  */

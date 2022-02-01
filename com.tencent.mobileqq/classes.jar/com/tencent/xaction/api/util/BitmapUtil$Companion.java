@@ -1,15 +1,56 @@
 package com.tencent.xaction.api.util;
 
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import com.tencent.xaction.api.IMemoryLruCache;
+import com.tencent.xaction.impl.XAEngine;
+import com.tencent.xaction.impl.XAEngine.Companion;
+import com.tencent.xaction.log.QLog;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.math.MathKt;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/BitmapUtil$Companion;", "", "()V", "calculateInSampleSize", "", "options", "Landroid/graphics/BitmapFactory$Options;", "reqWidth", "reqHeight", "loadBitmap", "Landroid/graphics/Bitmap;", "resources", "Landroid/content/res/Resources;", "path", "", "isAssets", "", "wh", "", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/BitmapUtil$Companion;", "", "()V", "calculateInSampleSize", "", "options", "Landroid/graphics/BitmapFactory$Options;", "reqWidth", "reqHeight", "getInputStream", "Ljava/io/InputStream;", "resources", "Landroid/content/res/Resources;", "isAssets", "", "path", "", "loadBitmap", "Landroid/graphics/Bitmap;", "wh", "", "inputStream", "locadBitmapCache", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class BitmapUtil$Companion
 {
+  private final InputStream a(Resources paramResources, boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      if (paramResources == null) {
+        return null;
+      }
+    }
+    try
+    {
+      return (InputStream)new BufferedInputStream(paramResources.getAssets().open(paramString));
+    }
+    catch (OutOfMemoryError paramResources)
+    {
+      QLog.a("loadBitmap", 1, "getInputStream oom", (Throwable)paramResources);
+      return null;
+    }
+    catch (Exception paramResources)
+    {
+      QLog.a("loadBitmap", 1, "getInputStream exception", (Throwable)paramResources);
+    }
+    if (!new File(paramString).exists()) {
+      return null;
+    }
+    paramResources = (InputStream)new BufferedInputStream((InputStream)new FileInputStream(paramString));
+    return paramResources;
+    return null;
+  }
+  
   @JvmStatic
   public final int a(@NotNull BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
@@ -59,181 +100,182 @@ public final class BitmapUtil$Companion
     return m;
   }
   
+  @Nullable
+  public final Bitmap a(@Nullable Resources paramResources, @NotNull String paramString, @NotNull BitmapFactory.Options paramOptions, boolean paramBoolean, @Nullable int[] paramArrayOfInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "path");
+    Intrinsics.checkParameterIsNotNull(paramOptions, "options");
+    Bitmap localBitmap = XAEngine.Companion.e().a(paramString);
+    Object localObject = localBitmap;
+    if (localBitmap == null)
+    {
+      paramResources = ((Companion)this).b(paramResources, paramString, paramOptions, paramBoolean, paramArrayOfInt);
+      localObject = paramResources;
+      if (paramResources != null)
+      {
+        XAEngine.Companion.e().a(paramString, paramResources);
+        localObject = paramResources;
+      }
+    }
+    return localObject;
+  }
+  
   /* Error */
   @JvmStatic
-  @org.jetbrains.annotations.Nullable
-  public final android.graphics.Bitmap a(@org.jetbrains.annotations.Nullable android.content.res.Resources paramResources, @NotNull java.lang.String paramString, @NotNull BitmapFactory.Options paramOptions, boolean paramBoolean, @org.jetbrains.annotations.Nullable int[] paramArrayOfInt)
+  @Nullable
+  public final Bitmap a(@NotNull InputStream paramInputStream, @NotNull BitmapFactory.Options paramOptions, @Nullable int[] paramArrayOfInt)
   {
     // Byte code:
-    //   0: aload_2
-    //   1: ldc 84
-    //   3: invokestatic 48	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   6: aload_3
-    //   7: ldc 42
-    //   9: invokestatic 48	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   12: aload_3
-    //   13: sipush 320
-    //   16: putfield 87	android/graphics/BitmapFactory$Options:inDensity	I
-    //   19: aload_1
-    //   20: ifnull +14 -> 34
-    //   23: aload_3
-    //   24: aload_1
-    //   25: invokevirtual 93	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   28: getfield 98	android/util/DisplayMetrics:densityDpi	I
-    //   31: putfield 101	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   34: iload 4
-    //   36: ifeq +31 -> 67
-    //   39: aload_1
-    //   40: ifnonnull +5 -> 45
-    //   43: aconst_null
-    //   44: areturn
-    //   45: new 103	java/io/BufferedInputStream
-    //   48: dup
-    //   49: aload_1
-    //   50: invokevirtual 107	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   53: aload_2
-    //   54: invokevirtual 113	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   57: invokespecial 116	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   60: checkcast 118	java/io/InputStream
-    //   63: astore_1
-    //   64: goto +41 -> 105
-    //   67: new 120	java/io/File
-    //   70: dup
-    //   71: aload_2
-    //   72: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;)V
-    //   75: invokevirtual 127	java/io/File:exists	()Z
-    //   78: ifne +5 -> 83
-    //   81: aconst_null
-    //   82: areturn
-    //   83: new 103	java/io/BufferedInputStream
-    //   86: dup
-    //   87: new 129	java/io/FileInputStream
-    //   90: dup
-    //   91: aload_2
-    //   92: invokespecial 130	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   95: checkcast 118	java/io/InputStream
-    //   98: invokespecial 116	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   101: checkcast 118	java/io/InputStream
-    //   104: astore_1
-    //   105: aconst_null
-    //   106: checkcast 132	android/graphics/Bitmap
-    //   109: astore 6
-    //   111: aload 5
-    //   113: ifnull +39 -> 152
-    //   116: aload_3
-    //   117: iconst_1
-    //   118: putfield 136	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   121: aload_2
-    //   122: aload_3
-    //   123: invokestatic 142	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   126: pop
-    //   127: aload_3
-    //   128: iconst_0
-    //   129: putfield 136	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   132: aload_3
-    //   133: aload_0
-    //   134: checkcast 2	com/tencent/xaction/api/util/BitmapUtil$Companion
-    //   137: aload_3
-    //   138: aload 5
-    //   140: iconst_0
-    //   141: iaload
-    //   142: aload 5
-    //   144: iconst_1
-    //   145: iaload
-    //   146: invokevirtual 144	com/tencent/xaction/api/util/BitmapUtil$Companion:a	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   149: putfield 147	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   0: aload_1
+    //   1: ldc 158
+    //   3: invokestatic 100	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: aload_2
+    //   7: ldc 94
+    //   9: invokestatic 100	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   12: aconst_null
+    //   13: checkcast 160	android/graphics/Bitmap
+    //   16: astore 4
+    //   18: aload_3
+    //   19: ifnull +68 -> 87
+    //   22: aload_3
+    //   23: arraylength
+    //   24: iconst_2
+    //   25: if_icmpne +62 -> 87
+    //   28: aload_3
+    //   29: iconst_0
+    //   30: iaload
+    //   31: ifle +56 -> 87
+    //   34: aload_3
+    //   35: iconst_1
+    //   36: iaload
+    //   37: ifle +50 -> 87
+    //   40: aload_2
+    //   41: iconst_1
+    //   42: putfield 164	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   45: aload_1
+    //   46: aload_1
+    //   47: invokevirtual 167	java/io/InputStream:available	()I
+    //   50: invokevirtual 171	java/io/InputStream:mark	(I)V
+    //   53: aload_1
+    //   54: aconst_null
+    //   55: aload_2
+    //   56: invokestatic 177	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   59: pop
+    //   60: aload_2
+    //   61: iconst_0
+    //   62: putfield 164	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   65: aload_1
+    //   66: invokevirtual 180	java/io/InputStream:reset	()V
+    //   69: aload_2
+    //   70: aload_0
+    //   71: checkcast 2	com/tencent/xaction/api/util/BitmapUtil$Companion
+    //   74: aload_2
+    //   75: aload_3
+    //   76: iconst_0
+    //   77: iaload
+    //   78: aload_3
+    //   79: iconst_1
+    //   80: iaload
+    //   81: invokevirtual 182	com/tencent/xaction/api/util/BitmapUtil$Companion:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   84: putfield 185	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   87: aload_1
+    //   88: aconst_null
+    //   89: aload_2
+    //   90: invokestatic 177	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   93: astore_3
+    //   94: aload_3
+    //   95: astore_2
+    //   96: aload_1
+    //   97: invokevirtual 188	java/io/InputStream:close	()V
+    //   100: aload_3
+    //   101: areturn
+    //   102: astore_1
+    //   103: aload_1
+    //   104: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   107: aload_2
+    //   108: areturn
+    //   109: astore_2
+    //   110: goto +49 -> 159
+    //   113: astore_2
+    //   114: ldc 79
+    //   116: iconst_1
+    //   117: ldc 193
+    //   119: aload_2
+    //   120: checkcast 83	java/lang/Throwable
+    //   123: invokestatic 88	com/tencent/xaction/log/QLog:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   126: aload 4
+    //   128: astore_2
+    //   129: aload_1
+    //   130: invokevirtual 188	java/io/InputStream:close	()V
+    //   133: aload 4
+    //   135: areturn
+    //   136: astore_2
+    //   137: ldc 79
+    //   139: iconst_1
+    //   140: ldc 195
+    //   142: aload_2
+    //   143: checkcast 83	java/lang/Throwable
+    //   146: invokestatic 88	com/tencent/xaction/log/QLog:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   149: aload 4
+    //   151: astore_2
     //   152: aload_1
-    //   153: aconst_null
-    //   154: aload_3
-    //   155: invokestatic 151	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   158: astore_3
-    //   159: aload_3
-    //   160: astore_2
-    //   161: aload_1
-    //   162: invokevirtual 154	java/io/InputStream:close	()V
-    //   165: aload_3
-    //   166: areturn
-    //   167: astore_1
-    //   168: aload_1
-    //   169: invokevirtual 157	java/io/IOException:printStackTrace	()V
-    //   172: aload_2
-    //   173: areturn
-    //   174: astore_2
-    //   175: goto +49 -> 224
-    //   178: astore_2
-    //   179: ldc 158
-    //   181: iconst_1
-    //   182: ldc 160
-    //   184: aload_2
-    //   185: checkcast 162	java/lang/Throwable
-    //   188: invokestatic 167	com/tencent/xaction/log/QLog:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   191: aload 6
-    //   193: astore_2
-    //   194: aload_1
-    //   195: invokevirtual 154	java/io/InputStream:close	()V
-    //   198: aload 6
-    //   200: areturn
-    //   201: astore_2
-    //   202: ldc 158
-    //   204: iconst_1
-    //   205: ldc 169
-    //   207: aload_2
-    //   208: checkcast 162	java/lang/Throwable
-    //   211: invokestatic 167	com/tencent/xaction/log/QLog:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   214: aload 6
-    //   216: astore_2
-    //   217: aload_1
-    //   218: invokevirtual 154	java/io/InputStream:close	()V
-    //   221: aload 6
-    //   223: areturn
-    //   224: aload_1
-    //   225: invokevirtual 154	java/io/InputStream:close	()V
-    //   228: goto +8 -> 236
-    //   231: astore_1
-    //   232: aload_1
-    //   233: invokevirtual 157	java/io/IOException:printStackTrace	()V
-    //   236: aload_2
-    //   237: athrow
-    //   238: astore_1
-    //   239: ldc 158
-    //   241: iconst_1
-    //   242: ldc 171
-    //   244: aload_1
-    //   245: checkcast 162	java/lang/Throwable
-    //   248: invokestatic 167	com/tencent/xaction/log/QLog:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   251: aconst_null
-    //   252: areturn
+    //   153: invokevirtual 188	java/io/InputStream:close	()V
+    //   156: aload 4
+    //   158: areturn
+    //   159: aload_1
+    //   160: invokevirtual 188	java/io/InputStream:close	()V
+    //   163: goto +8 -> 171
+    //   166: astore_1
+    //   167: aload_1
+    //   168: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   171: aload_2
+    //   172: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	253	0	this	Companion
-    //   0	253	1	paramResources	android.content.res.Resources
-    //   0	253	2	paramString	java.lang.String
-    //   0	253	3	paramOptions	BitmapFactory.Options
-    //   0	253	4	paramBoolean	boolean
-    //   0	253	5	paramArrayOfInt	int[]
-    //   109	113	6	localBitmap	android.graphics.Bitmap
+    //   0	173	0	this	Companion
+    //   0	173	1	paramInputStream	InputStream
+    //   0	173	2	paramOptions	BitmapFactory.Options
+    //   0	173	3	paramArrayOfInt	int[]
+    //   16	141	4	localBitmap	Bitmap
     // Exception table:
     //   from	to	target	type
-    //   161	165	167	java/io/IOException
-    //   194	198	167	java/io/IOException
-    //   217	221	167	java/io/IOException
-    //   116	152	174	finally
-    //   152	159	174	finally
-    //   179	191	174	finally
-    //   202	214	174	finally
-    //   116	152	178	java/lang/OutOfMemoryError
-    //   152	159	178	java/lang/OutOfMemoryError
-    //   116	152	201	java/lang/Exception
-    //   152	159	201	java/lang/Exception
-    //   224	228	231	java/io/IOException
-    //   45	64	238	java/lang/Exception
-    //   67	81	238	java/lang/Exception
-    //   83	105	238	java/lang/Exception
+    //   96	100	102	java/io/IOException
+    //   129	133	102	java/io/IOException
+    //   152	156	102	java/io/IOException
+    //   22	28	109	finally
+    //   40	87	109	finally
+    //   87	94	109	finally
+    //   114	126	109	finally
+    //   137	149	109	finally
+    //   22	28	113	java/lang/OutOfMemoryError
+    //   40	87	113	java/lang/OutOfMemoryError
+    //   87	94	113	java/lang/OutOfMemoryError
+    //   22	28	136	java/lang/Exception
+    //   40	87	136	java/lang/Exception
+    //   87	94	136	java/lang/Exception
+    //   159	163	166	java/io/IOException
+  }
+  
+  @JvmStatic
+  @Nullable
+  public final Bitmap b(@Nullable Resources paramResources, @NotNull String paramString, @NotNull BitmapFactory.Options paramOptions, boolean paramBoolean, @Nullable int[] paramArrayOfInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "path");
+    Intrinsics.checkParameterIsNotNull(paramOptions, "options");
+    paramOptions.inDensity = 320;
+    if (paramResources != null) {
+      paramOptions.inTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+    }
+    paramResources = ((Companion)this).a(paramResources, paramBoolean, paramString);
+    if (paramResources != null) {
+      return BitmapUtil.a.a(paramResources, paramOptions, paramArrayOfInt);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.util.BitmapUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

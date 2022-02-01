@@ -4,39 +4,39 @@ import android.content.Context;
 
 public class GdtAdBoxBuilder
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData;
-  private GdtAdBoxListener jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener;
+  private Context a;
+  private GdtAdBoxData b;
+  private GdtAdBoxListener c;
   
   GdtAdBoxBuilder(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public GdtAdBox a()
   {
     GdtAdBox localGdtAdBox = new GdtAdBox();
-    localGdtAdBox.a(this.jdField_a_of_type_AndroidContentContext);
-    localGdtAdBox.a(this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData);
-    localGdtAdBox.a(this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener);
+    localGdtAdBox.b(this.a);
+    localGdtAdBox.a(this.b);
+    localGdtAdBox.a(this.c);
     return localGdtAdBox;
   }
   
   public GdtAdBoxBuilder a(GdtAdBoxData paramGdtAdBoxData)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData = paramGdtAdBoxData;
+    this.b = paramGdtAdBoxData;
     return this;
   }
   
   public GdtAdBoxBuilder a(GdtAdBoxListener paramGdtAdBoxListener)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener = paramGdtAdBoxListener;
+    this.c = paramGdtAdBoxListener;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.adbox.GdtAdBoxBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,7 @@ class MethodAnimation$2
     paramAnimator = this.val$instance;
     if ((paramAnimator != null) && (!paramAnimator.isDestroy()))
     {
+      MethodAnimation.access$100(this.this$0, this.val$component);
       this.val$component.removeAnimationInfo(this.val$info);
       ViolaBridgeManager.getInstance().callbackJavascript(this.val$instance.getInstanceId(), "animate", "callback", this.val$callBack, null, true);
       return;
@@ -27,7 +28,7 @@ class MethodAnimation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAnimation.2
  * JD-Core Version:    0.7.0.1
  */

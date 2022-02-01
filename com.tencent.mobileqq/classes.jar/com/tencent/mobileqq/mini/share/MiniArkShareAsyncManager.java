@@ -56,7 +56,7 @@ public class MiniArkShareAsyncManager
         localTransferRequest.mCommandId = 62;
         localTransferRequest.mUniseq = ((Math.random() * 1000000.0D));
         localTransferRequest.mPeerUin = "0";
-        localTransferRequest.mSelfUin = String.valueOf(CommonDataAdapter.a().a());
+        localTransferRequest.mSelfUin = String.valueOf(CommonDataAdapter.a().c());
         localTransferRequest.mFileType = 24;
         localTransferRequest.mRichTag = "miniAppArkShareUploadPicHit";
         paramString = new Bdh_extinfo.CommFileExtReq();
@@ -91,7 +91,7 @@ public class MiniArkShareAsyncManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncManager
  * JD-Core Version:    0.7.0.1
  */

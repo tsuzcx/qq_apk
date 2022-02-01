@@ -22,21 +22,21 @@ final class VideoReportController$reportPlayDuration$1
   
   public final void invoke()
   {
-    Object localObject1 = this.this$0.a();
+    Object localObject1 = this.this$0.g();
     if (localObject1 != null)
     {
-      localObject1 = ((VideoPlayController)localObject1).a();
+      localObject1 = ((VideoPlayController)localObject1).k();
       if (localObject1 != null)
       {
-        Object localObject2 = this.this$0.a();
+        Object localObject2 = this.this$0.g();
         if (localObject2 != null)
         {
-          localObject2 = ((VideoPlayController)localObject2).a();
+          localObject2 = ((VideoPlayController)localObject2).i();
           if (localObject2 != null)
           {
-            localObject1 = VideoReportUtil.a.a((AbsBaseArticleInfo)localObject1, ((IPlayer)localObject2).b());
+            localObject1 = VideoReportUtil.a.a((AbsBaseArticleInfo)localObject1, ((IPlayer)localObject2).o());
             ((RIJTransMergeKanDianReport.ReportR5Builder)localObject1).addStringNotThrow("watch_duration", String.valueOf(this.this$0.a()));
-            ((RIJTransMergeKanDianReport.ReportR5Builder)localObject1).addStringNotThrow("current_duration", String.valueOf(((IPlayer)localObject2).b()));
+            ((RIJTransMergeKanDianReport.ReportR5Builder)localObject1).addStringNotThrow("current_duration", String.valueOf(((IPlayer)localObject2).o()));
             localObject2 = VideoReportUtil.a;
             localObject1 = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject1).build();
             Intrinsics.checkExpressionValueIsNotNull(localObject1, "reportBuilder.build()");
@@ -49,7 +49,7 @@ final class VideoReportController$reportPlayDuration$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoReportController.reportPlayDuration.1
  * JD-Core Version:    0.7.0.1
  */

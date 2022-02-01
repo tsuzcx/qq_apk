@@ -26,7 +26,7 @@ class GdtDanmakuItemView
   public GdtDanmakuItemView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
   public GdtDanmakuItemView a(ObjectAnimator paramObjectAnimator)
@@ -35,7 +35,17 @@ class GdtDanmakuItemView
     return this;
   }
   
-  public void a()
+  public boolean a()
+  {
+    ObjectAnimator localObjectAnimator = this.a;
+    if (localObjectAnimator == null) {
+      return false;
+    }
+    localObjectAnimator.start();
+    return true;
+  }
+  
+  public void b()
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     setTextColor(Color.parseColor("#FFFFFFFF"));
@@ -49,20 +59,10 @@ class GdtDanmakuItemView
     setPadding(AdUIUtils.dp2px(10.0F, getResources()), AdUIUtils.dp2px(2.0F, getResources()), AdUIUtils.dp2px(10.0F, getResources()), AdUIUtils.dp2px(2.0F, getResources()));
     setClickable(true);
   }
-  
-  public boolean a()
-  {
-    ObjectAnimator localObjectAnimator = this.a;
-    if (localObjectAnimator == null) {
-      return false;
-    }
-    localObjectAnimator.start();
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.danmaku.GdtDanmakuItemView
  * JD-Core Version:    0.7.0.1
  */

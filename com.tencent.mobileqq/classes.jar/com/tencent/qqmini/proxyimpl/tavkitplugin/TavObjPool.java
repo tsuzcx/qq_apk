@@ -22,30 +22,54 @@ public class TavObjPool
   
   public String a(@NotNull Object paramObject)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(System.identityHashCode(paramObject));
-    localObject = ((StringBuilder)localObject).toString();
-    if (this.a.containsKey(localObject)) {
-      return localObject;
+    if (paramObject == null) {
+      return "-1";
+    }
+    String str = b(paramObject);
+    if (this.a.containsKey(str)) {
+      return str;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("put() called with: obj = [");
     localStringBuilder.append(paramObject);
     localStringBuilder.append("]");
     Logger.d("TavObjPool", localStringBuilder.toString());
-    this.a.put(localObject, paramObject);
-    return localObject;
+    this.a.put(str, paramObject);
+    return str;
   }
   
-  public void a(String paramString)
+  @NotNull
+  public String b(@NotNull Object paramObject)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(System.identityHashCode(paramObject));
+    return localStringBuilder.toString();
+  }
+  
+  public void b(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("release() called with: identifier = [");
     localStringBuilder.append(paramString);
     localStringBuilder.append("]");
     Log.v("TavObjPool", localStringBuilder.toString());
-    this.a.remove(paramString);
+    paramString = this.a.remove(paramString);
+    if ((paramString instanceof ITAVReleaseAble)) {
+      ((ITAVReleaseAble)paramString).a();
+    }
+    paramString = new StringBuilder();
+    paramString.append("release: objMap = ");
+    paramString.append(this.a);
+    Logger.d("TavObjPool", paramString.toString());
+  }
+  
+  public void c(Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    b(b(paramObject));
   }
   
   public String toString()
@@ -59,7 +83,7 @@ public class TavObjPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.TavObjPool
  * JD-Core Version:    0.7.0.1
  */

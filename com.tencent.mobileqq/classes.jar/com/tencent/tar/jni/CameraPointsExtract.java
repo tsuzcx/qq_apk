@@ -16,34 +16,32 @@ import java.util.ArrayList;
 public class CameraPointsExtract
   implements Camera.PreviewCallback, Handler.Callback, CameraProxy.OnCameraPreviewCallback
 {
-  public final int a;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("CameraPointsExtract_thread");
-  private CameraPointsExtract.OnReceiveResultListener jdField_a_of_type_ComTencentTarJniCameraPointsExtract$OnReceiveResultListener;
-  private TARMarkerNative jdField_a_of_type_ComTencentTarJniTARMarkerNative = new TARMarkerNative();
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  public final int b;
-  private long jdField_b_of_type_Long = 500L;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long = -1L;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int e;
-  private int f = 150;
+  public final int a = 101;
+  public final int b = 102;
+  private HandlerThread c = new HandlerThread("CameraPointsExtract_thread");
+  private Handler d;
+  private TARMarkerNative e = new TARMarkerNative();
+  private int f;
+  private int g;
+  private int h;
+  private byte[] i;
+  private byte[] j;
+  private long k;
+  private int l = 150;
+  private ArrayList<Integer> m = new ArrayList();
+  private ArrayList<Integer> n = new ArrayList();
+  private boolean o = false;
+  private boolean p = false;
+  private boolean q = false;
+  private boolean r = false;
+  private long s = 500L;
+  private long t = -1L;
+  private CameraPointsExtract.OnReceiveResultListener u;
   
   public CameraPointsExtract()
   {
-    this.jdField_a_of_type_Int = 101;
-    this.jdField_b_of_type_Int = 102;
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.c.start();
+    this.d = new Handler(this.c.getLooper(), this);
   }
   
   private boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -53,36 +51,36 @@ public class CameraPointsExtract
   
   public static byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    int i = 0;
-    int j = 0;
-    int k;
-    while (i < paramInt1)
+    int i1 = 0;
+    int i2 = 0;
+    int i3;
+    while (i1 < paramInt1)
     {
-      k = paramInt2 - 1;
-      while (k >= 0)
+      i3 = paramInt2 - 1;
+      while (i3 >= 0)
       {
-        paramArrayOfByte2[j] = paramArrayOfByte1[(k * paramInt1 + i)];
-        j += 1;
-        k -= 1;
+        paramArrayOfByte2[i2] = paramArrayOfByte1[(i3 * paramInt1 + i1)];
+        i2 += 1;
+        i3 -= 1;
       }
-      i += 1;
+      i1 += 1;
     }
-    int m = paramInt1 * paramInt2;
-    i = m * 3 / 2 - 1;
-    j = paramInt1 - 1;
-    while (j > 0)
+    int i4 = paramInt1 * paramInt2;
+    i1 = i4 * 3 / 2 - 1;
+    i2 = paramInt1 - 1;
+    while (i2 > 0)
     {
-      k = 0;
-      while (k < paramInt2 / 2)
+      i3 = 0;
+      while (i3 < paramInt2 / 2)
       {
-        int n = k * paramInt1 + m;
-        paramArrayOfByte2[i] = paramArrayOfByte1[(n + j)];
-        i -= 1;
-        paramArrayOfByte2[i] = paramArrayOfByte1[(n + (j - 1))];
-        i -= 1;
-        k += 1;
+        int i5 = i3 * paramInt1 + i4;
+        paramArrayOfByte2[i1] = paramArrayOfByte1[(i5 + i2)];
+        i1 -= 1;
+        paramArrayOfByte2[i1] = paramArrayOfByte1[(i5 + (i2 - 1))];
+        i1 -= 1;
+        i3 += 1;
       }
-      j -= 2;
+      i2 -= 2;
     }
     return paramArrayOfByte2;
   }
@@ -100,19 +98,19 @@ public class CameraPointsExtract
       int[] tmp35_31 = tmp31_27;
       tmp35_31[2] = 0;
       tmp35_31;
-      long l = System.currentTimeMillis();
-      if (this.jdField_d_of_type_Boolean)
+      long l1 = System.currentTimeMillis();
+      if (this.r)
       {
-        ((IImgProcessApi)QRoute.api(IImgProcessApi.class)).YUVrotate(this.jdField_b_of_type_ArrayOfByte, paramArrayOfByte, paramInt1, paramInt2);
-        paramArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+        ((IImgProcessApi)QRoute.api(IImgProcessApi.class)).YUVrotate(this.j, paramArrayOfByte, paramInt1, paramInt2);
+        paramArrayOfByte = this.j;
       }
       else
       {
-        paramArrayOfByte = a(paramArrayOfByte, paramInt1, paramInt2, this.jdField_b_of_type_ArrayOfByte);
+        paramArrayOfByte = a(paramArrayOfByte, paramInt1, paramInt2, this.j);
       }
-      TARMarkerNative localTARMarkerNative = this.jdField_a_of_type_ComTencentTarJniTARMarkerNative;
+      TARMarkerNative localTARMarkerNative = this.e;
       boolean bool;
-      if (this.jdField_c_of_type_Int == 842094169) {
+      if (this.f == 842094169) {
         bool = true;
       } else {
         bool = false;
@@ -132,7 +130,7 @@ public class CameraPointsExtract
       paramArrayOfByte.append(" out[2]=");
       paramArrayOfByte.append(arrayOfInt1[2]);
       paramArrayOfByte.append(" use time:");
-      paramArrayOfByte.append(System.currentTimeMillis() - l);
+      paramArrayOfByte.append(System.currentTimeMillis() - l1);
       Log.d("CameraPointsExtract", paramArrayOfByte.toString());
       paramArrayList1.clear();
       if (arrayOfInt1[1] > 0)
@@ -147,9 +145,9 @@ public class CameraPointsExtract
       }
       paramArrayList2.clear();
       paramArrayList2.add(Integer.valueOf(arrayOfInt1[2]));
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentTarJniCameraPointsExtract$OnReceiveResultListener;
-      if ((paramArrayOfByte != null) && (this.jdField_b_of_type_Boolean)) {
-        paramArrayOfByte.a(arrayOfInt1, paramArrayList1, this.e, this.jdField_d_of_type_Int);
+      paramArrayOfByte = this.u;
+      if ((paramArrayOfByte != null) && (this.p)) {
+        paramArrayOfByte.a(arrayOfInt1, paramArrayList1, this.h, this.g);
       }
       return arrayOfInt1[0];
     }
@@ -164,54 +162,54 @@ public class CameraPointsExtract
   
   public boolean handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 101) && (this.jdField_b_of_type_Boolean)) {
-      a(this.jdField_d_of_type_Int, this.e, this.jdField_a_of_type_ArrayOfByte, 1, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList);
+    if ((paramMessage.what == 101) && (this.p)) {
+      a(this.g, this.h, this.i, 1, this.m, this.n);
     } else if (paramMessage.what == 102) {
-      this.jdField_a_of_type_Boolean = ARShell.loadARFeatureNativeLibrary();
+      this.o = ARShell.loadARFeatureNativeLibrary();
     }
     return true;
   }
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
+    if ((this.p) && (this.o))
     {
-      if (System.currentTimeMillis() < this.jdField_c_of_type_Long + this.jdField_b_of_type_Long) {
+      if (System.currentTimeMillis() < this.t + this.s) {
         return;
       }
-      paramCamera = this.jdField_a_of_type_AndroidOsHandler;
+      paramCamera = this.d;
       if ((paramCamera != null) && (!paramCamera.hasMessages(101)))
       {
-        long l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long < this.f) {
+        long l1 = System.currentTimeMillis();
+        if (l1 - this.k < this.l) {
           return;
         }
-        if (a(paramArrayOfByte, this.jdField_d_of_type_Int, this.e))
+        if (a(paramArrayOfByte, this.g, this.h))
         {
-          paramCamera = this.jdField_a_of_type_ArrayOfByte;
+          paramCamera = this.i;
           if ((paramCamera == null) || ((paramCamera != null) && (paramCamera.length != paramArrayOfByte.length)))
           {
-            this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
-            this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+            this.i = new byte[paramArrayOfByte.length];
+            this.j = new byte[paramArrayOfByte.length];
           }
-          System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
-          this.jdField_a_of_type_Long = l;
+          System.arraycopy(paramArrayOfByte, 0, this.i, 0, paramArrayOfByte.length);
+          this.k = l1;
         }
         else
         {
-          this.jdField_d_of_type_Int = 0;
-          this.e = 0;
-          this.jdField_a_of_type_Long = 0L;
+          this.g = 0;
+          this.h = 0;
+          this.k = 0L;
         }
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(101);
+        this.d.removeMessages(101);
+        this.d.sendEmptyMessage(101);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tar.jni.CameraPointsExtract
  * JD-Core Version:    0.7.0.1
  */

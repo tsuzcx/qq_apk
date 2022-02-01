@@ -19,8 +19,8 @@ class EditVideoDoodle$6
   {
     SLog.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
     Object localObject = this.a;
-    ((EditVideoDoodle)localObject).jdField_a_of_type_Boolean = true;
-    ((EditVideoDoodle)localObject).jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    ((EditVideoDoodle)localObject).f = true;
+    ((EditVideoDoodle)localObject).g.removeCallbacks(this.a.k);
     localObject = paramList;
     if (paramList == null) {
       localObject = Collections.EMPTY_LIST;
@@ -30,7 +30,7 @@ class EditVideoDoodle$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoDoodle.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,34 @@
 package com.tencent.mobileqq.apollo.game;
 
-import android.util.LruCache;
+import com.tencent.mobileqq.apollo.game.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.model.ApolloGameData;
+import com.tencent.mobileqq.apollo.model.StartCheckParam;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
+import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ApolloGameResManager$1
-  extends LruCache<String, ApolloGameResManager.ApolloGameRes>
+final class ApolloGameResManager$1
+  implements Runnable
 {
-  ApolloGameResManager$1(ApolloGameResManager paramApolloGameResManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  ApolloGameResManager$1(QQAppInterface paramQQAppInterface, StartCheckParam paramStartCheckParam) {}
   
-  protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
+  public void run()
   {
-    if ((paramApolloGameRes != null) && (paramApolloGameRes.a != null)) {
-      return paramApolloGameRes.a.length;
+    Object localObject = (ApolloDaoManagerServiceImpl)this.a.getRuntimeService(IApolloDaoManagerService.class, "all");
+    ((ApolloDaoManagerServiceImpl)localObject).readApolloGameVerFromFile(this.b.game.gameId);
+    localObject = ((ApolloDaoManagerServiceImpl)localObject).getApolloGameVer();
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(Integer.valueOf(this.b.game.gameId))))
+    {
+      localObject = (String)((ConcurrentHashMap)localObject).get(Integer.valueOf(this.b.game.gameId));
+      ApolloGameUtil.a(this.a, this.b.game.gameId, (String)localObject);
     }
-    return 0;
+    ApolloGameUtil.a(this.b.gameId, this.b.viewMode);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameResManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class PresenceInterfaceImpl$10
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0.a, 232, null, this.a, new PresenceInterfaceImpl.10.1(this), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0.f, 232, null, this.a, new PresenceInterfaceImpl.10.1(this), null);
     try
     {
       localQQCustomDialog.show();
@@ -30,7 +30,7 @@ class PresenceInterfaceImpl$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10
  * JD-Core Version:    0.7.0.1
  */

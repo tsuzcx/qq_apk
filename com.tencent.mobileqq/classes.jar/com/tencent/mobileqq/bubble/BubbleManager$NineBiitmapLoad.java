@@ -7,101 +7,101 @@ import com.tencent.qphone.base.util.QLog;
 
 class BubbleManager$NineBiitmapLoad
 {
-  private int jdField_a_of_type_Int;
-  private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
-  private BubbleInfo jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private BubbleInfo c;
+  private boolean d;
+  private String e;
+  private BitmapFactory.Options f;
   
   public BubbleManager$NineBiitmapLoad(BubbleManager paramBubbleManager, int paramInt, BubbleInfo paramBubbleInfo, boolean paramBoolean, String paramString, BitmapFactory.Options paramOptions)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = paramBubbleInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = paramOptions;
+    this.b = paramInt;
+    this.c = paramBubbleInfo;
+    this.d = paramBoolean;
+    this.e = paramString;
+    this.f = paramOptions;
   }
   
-  public NineBiitmapLoad a()
+  public boolean a()
+  {
+    return this.d;
+  }
+  
+  public String b()
+  {
+    return this.e;
+  }
+  
+  public NineBiitmapLoad c()
   {
     Object localObject2;
     Object localObject1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      localObject2 = BubbleManager.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+      localObject2 = BubbleManager.a(this.c.b, this.f);
       if (localObject2 != null)
       {
         localObject1 = ((Bitmap)localObject2).getNinePatchChunk();
         if ((localObject1 != null) && (NinePatch.isNinePatchChunk((byte[])localObject1)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch((Bitmap)localObject2, (byte[])localObject1, null);
+          this.c.c = new NinePatch((Bitmap)localObject2, (byte[])localObject1, null);
         }
         else
         {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_JavaLangString = "nor9pngErr";
+          this.d = false;
+          this.e = "nor9pngErr";
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("createBubbleInfo, normal bg chunk null or not nine patch, chunk=");
           ((StringBuilder)localObject2).append(localObject1);
           ((StringBuilder)localObject2).append(", bubbleId=");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(this.b);
           QLog.e("BubbleManager", 1, ((StringBuilder)localObject2).toString());
         }
       }
       else
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaLangString = "norDecodeErr";
+        this.d = false;
+        this.e = "norDecodeErr";
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("createBubbleInfo, decode normal bg null, bubbleId=");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(this.b);
         QLog.e("BubbleManager", 1, ((StringBuilder)localObject1).toString());
       }
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      localObject2 = BubbleManager.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+      localObject2 = BubbleManager.a(this.c.d, this.f);
       if (localObject2 != null)
       {
         localObject1 = ((Bitmap)localObject2).getNinePatchChunk();
         if ((localObject1 != null) && (NinePatch.isNinePatchChunk((byte[])localObject1)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_b_of_type_AndroidGraphicsNinePatch = new NinePatch((Bitmap)localObject2, (byte[])localObject1, null);
+          this.c.e = new NinePatch((Bitmap)localObject2, (byte[])localObject1, null);
           return this;
         }
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaLangString = "9pngErr";
+        this.d = false;
+        this.e = "9pngErr";
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("createBubbleInfo, animation bg chunk null or not nine patch, chunk=");
         ((StringBuilder)localObject2).append(localObject1);
         ((StringBuilder)localObject2).append(", bubbleId=");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(this.b);
         QLog.e("BubbleManager", 1, ((StringBuilder)localObject2).toString());
         return this;
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = "decodeErr";
+      this.d = false;
+      this.e = "decodeErr";
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("createBubbleInfo, decode animation bg null, bubbleId=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.b);
       QLog.e("BubbleManager", 1, ((StringBuilder)localObject1).toString());
     }
     return this;
   }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleManager.NineBiitmapLoad
  * JD-Core Version:    0.7.0.1
  */

@@ -16,66 +16,50 @@ import mqq.manager.Manager;
 public class InputStatusPushManager
   implements Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = "InputStatusPushManager";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusPushManager.1(this);
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final String a = "InputStatusPushManager";
+  private QQAppInterface b;
+  private WeakReference<BaseChatPie> c;
+  private Handler d;
+  private boolean e = false;
+  private Runnable f = new InputStatusPushManager.1(this);
   
   public InputStatusPushManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  private InputStatusHelper a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      return (InputStatusHelper)((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(16);
-    }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && ((localWeakReference.get() instanceof LimitChatPie))) {
-      return c();
-    }
-    return b();
+    this.b = paramQQAppInterface;
   }
   
   private boolean b()
   {
-    try
-    {
-      InputStatusConfig.Config localConfig = (InputStatusConfig.Config)QConfigManager.a().a(445);
-      if (localConfig != null)
-      {
-        boolean bool = localConfig.jdField_a_of_type_Boolean;
-        return bool;
-      }
+    WeakReference localWeakReference = this.c;
+    if ((localWeakReference != null) && ((localWeakReference.get() instanceof LimitChatPie))) {
+      return d();
     }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return false;
+    return c();
   }
   
   private boolean c()
   {
     try
     {
-      InputStatusConfig.Config localConfig = (InputStatusConfig.Config)QConfigManager.a().a(445);
+      InputStatusConfig.Config localConfig = (InputStatusConfig.Config)QConfigManager.b().b(445);
+      if (localConfig != null)
+      {
+        boolean bool = localConfig.a;
+        return bool;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e(a, 1, localException, new Object[0]);
+    }
+    return false;
+  }
+  
+  private boolean d()
+  {
+    try
+    {
+      InputStatusConfig.Config localConfig = (InputStatusConfig.Config)QConfigManager.b().b(445);
       if (localConfig != null)
       {
         boolean bool = localConfig.b;
@@ -84,14 +68,30 @@ public class InputStatusPushManager
     }
     catch (Exception localException)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+      QLog.e(a, 1, localException, new Object[0]);
     }
     return true;
   }
   
+  private Handler e()
+  {
+    if (this.d == null) {
+      this.d = new Handler(Looper.getMainLooper());
+    }
+    return this.d;
+  }
+  
+  private InputStatusHelper f()
+  {
+    if (this.c.get() != null) {
+      return (InputStatusHelper)((BaseChatPie)this.c.get()).q(16);
+    }
+    return null;
+  }
+  
   void a()
   {
-    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    e().removeCallbacks(this.f);
   }
   
   public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, String paramString)
@@ -99,7 +99,7 @@ public class InputStatusPushManager
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("receive fromUin =");
       ((StringBuilder)localObject2).append(paramLong1);
@@ -115,17 +115,17 @@ public class InputStatusPushManager
       ((StringBuilder)localObject2).append(paramString);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (a()))
+    Object localObject1 = this.c;
+    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (b()))
     {
-      a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (a() != null)
+      e().removeCallbacks(this.f);
+      if (f() != null)
       {
-        a().a = (paramInt1 * 1000);
-        a().b = paramLong3;
+        f().a = (paramInt1 * 1000);
+        f().b = paramLong3;
       }
-      localObject1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      localObject2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localObject1 = ((BaseChatPie)this.c.get()).ah.b;
+      localObject2 = ((BaseChatPie)this.c.get()).d.getCurrentAccountUin();
       if ((TextUtils.equals((CharSequence)localObject1, String.valueOf(paramLong1))) && (TextUtils.equals((CharSequence)localObject2, String.valueOf(paramLong2))))
       {
         boolean bool;
@@ -140,20 +140,20 @@ public class InputStatusPushManager
           if (TextUtils.isEmpty(paramString))
           {
             if (paramInt3 == 1) {
-              paramInt1 = 2131705860;
+              paramInt1 = 2131903745;
             } else {
-              paramInt1 = 2131705861;
+              paramInt1 = 2131903746;
             }
             localObject1 = HardCodeUtil.a(paramInt1);
           }
-          a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
+          e().postDelayed(this.f, paramInt2 * 1000);
         }
         else
         {
           localObject1 = "";
         }
-        if (a() != null) {
-          a().a(bool, (String)localObject1);
+        if (f() != null) {
+          f().a(bool, (String)localObject1);
         }
       }
     }
@@ -161,20 +161,20 @@ public class InputStatusPushManager
   
   public void a(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    this.c = new WeakReference(paramBaseChatPie);
   }
   
   public void onDestroy()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.d;
     if (localHandler != null) {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      localHandler.removeCallbacks(this.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusPushManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.layout;
+import androidx.appcompat.R.style;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.view.menu.ListMenuPresenter;
@@ -78,7 +81,7 @@ public final class AppCompatDelegateImpl$PanelFeatureState
     }
     if (this.listMenuPresenter == null)
     {
-      this.listMenuPresenter = new ListMenuPresenter(this.listPresenterContext, 2131558416);
+      this.listMenuPresenter = new ListMenuPresenter(this.listPresenterContext, R.layout.abc_list_menu_item_layout);
       this.listMenuPresenter.setCallback(paramCallback);
       this.menu.addMenuPresenter(this.listMenuPresenter);
     }
@@ -148,15 +151,15 @@ public final class AppCompatDelegateImpl$PanelFeatureState
     TypedValue localTypedValue = new TypedValue();
     Resources.Theme localTheme = paramContext.getResources().newTheme();
     localTheme.setTo(paramContext.getTheme());
-    localTheme.resolveAttribute(2131034119, localTypedValue, true);
+    localTheme.resolveAttribute(R.attr.actionBarPopupTheme, localTypedValue, true);
     if (localTypedValue.resourceId != 0) {
       localTheme.applyStyle(localTypedValue.resourceId, true);
     }
-    localTheme.resolveAttribute(2131034928, localTypedValue, true);
+    localTheme.resolveAttribute(R.attr.panelMenuListTheme, localTypedValue, true);
     if (localTypedValue.resourceId != 0) {
       localTheme.applyStyle(localTypedValue.resourceId, true);
     } else {
-      localTheme.applyStyle(2131755631, true);
+      localTheme.applyStyle(R.style.Theme_AppCompat_CompactMenu, true);
     }
     paramContext = new ContextThemeWrapper(paramContext, 0);
     paramContext.getTheme().setTo(localTheme);

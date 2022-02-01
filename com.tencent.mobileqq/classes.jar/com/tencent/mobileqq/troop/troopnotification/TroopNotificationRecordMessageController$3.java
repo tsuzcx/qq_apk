@@ -13,13 +13,13 @@ class TroopNotificationRecordMessageController$3
   
   public void run()
   {
-    IMessageFacade localIMessageFacade = (IMessageFacade)this.this$0.a.getRuntimeService(IMessageFacade.class, "");
+    IMessageFacade localIMessageFacade = (IMessageFacade)this.this$0.c.getRuntimeService(IMessageFacade.class, "");
     if (localIMessageFacade != null)
     {
       List localList = TroopNotificationRecordMessageController.a(this.this$0);
-      String str = String.valueOf(this.this$0.a.getAccount());
+      String str = String.valueOf(this.this$0.c.getAccount());
       boolean bool;
-      if ((TroopSystemMsgUtils.a((ArrayList)TroopNotificationRecordMessageController.a(this.this$0))) && (this.this$0.a.isBackgroundStop)) {
+      if ((TroopSystemMsgUtils.a((ArrayList)TroopNotificationRecordMessageController.a(this.this$0))) && (this.this$0.c.isBackgroundStop)) {
         bool = true;
       } else {
         bool = false;
@@ -30,7 +30,7 @@ class TroopNotificationRecordMessageController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationRecordMessageController.3
  * JD-Core Version:    0.7.0.1
  */

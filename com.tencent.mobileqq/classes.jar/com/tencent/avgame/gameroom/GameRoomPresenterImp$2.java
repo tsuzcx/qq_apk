@@ -10,7 +10,7 @@ class GameRoomPresenterImp$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.e();
+    this.a.a.i();
   }
 }
 

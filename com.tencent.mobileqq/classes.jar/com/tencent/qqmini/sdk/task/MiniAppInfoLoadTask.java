@@ -2,7 +2,6 @@ package com.tencent.qqmini.sdk.task;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import android.content.Context;
-import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
@@ -22,7 +21,7 @@ public class MiniAppInfoLoadTask
   extends AsyncTask
 {
   private static final String TAG = "MiniAppInfoLoadTask";
-  private MiniAppInfo mMiniAppInfo;
+  private volatile MiniAppInfo mMiniAppInfo;
   
   public MiniAppInfoLoadTask(Context paramContext, BaseRuntimeLoader paramBaseRuntimeLoader)
   {
@@ -62,7 +61,7 @@ public class MiniAppInfoLoadTask
           QMLog.d("MiniAppInfoLoadTask", "start by Id cache.");
           replaceByIdInfo((MiniAppInfo)localObject);
           onTaskSucceed();
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.mMiniAppInfo.appId, str1, str2, new MiniAppInfoLoadTask.2(this, str2, localMiniAppCacheProxy, str1));
+          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.mMiniAppInfo.appId, str1, str2, new MiniAppInfoLoadTask.1(this, str2, localMiniAppCacheProxy, str1));
           return;
         }
         catch (Throwable localThrowable)
@@ -71,7 +70,7 @@ public class MiniAppInfoLoadTask
         }
       }
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.mMiniAppInfo.appId, str1, str2, new MiniAppInfoLoadTask.3(this, str2, localMiniAppCacheProxy, str1));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.mMiniAppInfo.appId, str1, str2, new MiniAppInfoLoadTask.2(this, str2, localMiniAppCacheProxy, str1));
   }
   
   private void doRequestByLink()
@@ -91,7 +90,7 @@ public class MiniAppInfoLoadTask
           QMLog.d("MiniAppInfoLoadTask", "start by Link cache.");
           replaceByLinkInfo((MiniAppInfo)localObject2, (String)localObject1);
           onTaskSucceed();
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.mMiniAppInfo.link, this.mMiniAppInfo.linkType, new MiniAppInfoLoadTask.4(this, localMiniAppCacheProxy));
+          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.mMiniAppInfo.link, this.mMiniAppInfo.linkType, new MiniAppInfoLoadTask.3(this, localMiniAppCacheProxy));
           return;
         }
         catch (Throwable localThrowable)
@@ -105,36 +104,37 @@ public class MiniAppInfoLoadTask
   
   private void getAppInfoByLink(MiniAppCacheProxy paramMiniAppCacheProxy)
   {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.mMiniAppInfo.link, this.mMiniAppInfo.linkType, new MiniAppInfoLoadTask.5(this, paramMiniAppCacheProxy));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.mMiniAppInfo.link, this.mMiniAppInfo.linkType, new MiniAppInfoLoadTask.4(this, paramMiniAppCacheProxy));
   }
   
-  private void reloadMiniAppInfoIfNeeded()
+  private void reloadMiniAppInfoIfNeeded(MiniAppInfo paramMiniAppInfo)
   {
-    QMLog.i("MiniAppInfoLoadTask", "start executing");
-    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
-    if (localMiniAppInfo == null)
+    if (paramMiniAppInfo == null)
     {
-      QMLog.e("MiniAppInfoLoadTask", "MiniAppInfo must not be null");
+      QMLog.e("MiniAppInfoLoadTask", "error: miniAppInfo == null");
       onTaskFailed();
       return;
     }
-    if (localMiniAppInfo.isShortcutFakeApp())
+    boolean bool2 = paramMiniAppInfo.isFakeAppInfo();
+    boolean bool1 = false;
+    if (bool2)
     {
-      QMLog.i("MiniAppInfoLoadTask", "Start from shortcut, download MiniAppInfo ");
-      doRequestByAppId();
+      if (paramMiniAppInfo.link != null) {
+        bool1 = true;
+      }
+      requestMiniAppInfo(bool1);
       return;
     }
-    if (this.mMiniAppInfo.isFakeAppInfo())
+    if (paramMiniAppInfo.isShortcutFakeApp())
     {
-      if (this.mMiniAppInfo.link != null)
-      {
-        doRequestByLink();
-        return;
-      }
-      doRequestByAppId();
+      requestMiniAppInfo(false);
       return;
     }
     onTaskSucceed();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[reloadMiniAppInfoIfNeeded] succeed:");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.i("MiniAppInfoLoadTask", localStringBuilder.toString());
   }
   
   private void replaceByIdInfo(MiniAppInfo paramMiniAppInfo)
@@ -142,7 +142,7 @@ public class MiniAppInfoLoadTask
     paramMiniAppInfo.launchParam.clone(this.mMiniAppInfo.launchParam);
     paramMiniAppInfo.apkgInfo = this.mMiniAppInfo.apkgInfo;
     paramMiniAppInfo.launchParam.miniAppId = paramMiniAppInfo.appId;
-    ThreadManager.executeOnNetworkIOThreadPool(new MiniAppInfoLoadTask.6(this, paramMiniAppInfo));
+    ThreadManager.executeOnNetworkIOThreadPool(new MiniAppInfoLoadTask.5(this, paramMiniAppInfo));
     if ((paramMiniAppInfo.firstPage != null) && (!TextUtils.isEmpty(paramMiniAppInfo.firstPage.pagePath)))
     {
       if (paramMiniAppInfo.firstPage.pagePath.startsWith("/")) {
@@ -169,7 +169,7 @@ public class MiniAppInfoLoadTask
       paramMiniAppInfo.extendData = this.mMiniAppInfo.launchParam.extendData;
     }
     if (paramMiniAppInfo.verType != 3) {
-      paramMiniAppInfo.forceReroad = 3;
+      paramMiniAppInfo.launchParam.forceReload = 3;
     }
     this.mMiniAppInfo = paramMiniAppInfo;
   }
@@ -178,7 +178,7 @@ public class MiniAppInfoLoadTask
   {
     paramMiniAppInfo.launchParam.clone(this.mMiniAppInfo.launchParam);
     paramMiniAppInfo.apkgInfo = this.mMiniAppInfo.apkgInfo;
-    ThreadManager.executeOnNetworkIOThreadPool(new MiniAppInfoLoadTask.7(this, paramMiniAppInfo));
+    ThreadManager.executeOnNetworkIOThreadPool(new MiniAppInfoLoadTask.6(this, paramMiniAppInfo));
     Object localObject;
     if ((paramMiniAppInfo.firstPage != null) && (!TextUtils.isEmpty(paramMiniAppInfo.firstPage.pagePath)))
     {
@@ -222,9 +222,23 @@ public class MiniAppInfoLoadTask
       paramString.reportData = ((StringBuilder)localObject).toString();
     }
     if (paramMiniAppInfo.verType != 3) {
-      paramMiniAppInfo.forceReroad = 3;
+      paramMiniAppInfo.launchParam.forceReload = 3;
     }
     this.mMiniAppInfo = paramMiniAppInfo;
+  }
+  
+  private void requestMiniAppInfo(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[requestMiniAppInfo] isRequestByLink=");
+    localStringBuilder.append(paramBoolean);
+    QMLog.i("MiniAppInfoLoadTask", localStringBuilder.toString());
+    if (paramBoolean)
+    {
+      doRequestByLink();
+      return;
+    }
+    doRequestByAppId();
   }
   
   private void saveIdInfo(JSONObject paramJSONObject, byte[] paramArrayOfByte, String paramString1, MiniAppCacheProxy paramMiniAppCacheProxy, String paramString2, String paramString3)
@@ -283,17 +297,12 @@ public class MiniAppInfoLoadTask
   public void setMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
     this.mMiniAppInfo = paramMiniAppInfo;
-    if (!isMainThread())
-    {
-      reloadMiniAppInfoIfNeeded();
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new MiniAppInfoLoadTask.1(this));
+    reloadMiniAppInfoIfNeeded(paramMiniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppInfoLoadTask
  * JD-Core Version:    0.7.0.1
  */

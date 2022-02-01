@@ -16,30 +16,28 @@ import java.util.Iterator;
 public abstract class CustomFragmentStatePagerAdapter
   extends PagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidxFragmentAppFragment = null;
-  private final FragmentManager jdField_a_of_type_AndroidxFragmentAppFragmentManager;
-  private FragmentTransaction jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = null;
-  private ArrayList<Fragment.SavedState> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<Fragment> b = new ArrayList();
+  private final FragmentManager a;
+  private FragmentTransaction b = null;
+  private ArrayList<Fragment.SavedState> c = new ArrayList();
+  private ArrayList<Fragment> d = new ArrayList();
+  private Fragment e = null;
   
   public CustomFragmentStatePagerAdapter(FragmentManager paramFragmentManager)
   {
-    this.jdField_a_of_type_AndroidxFragmentAppFragmentManager = paramFragmentManager;
+    this.a = paramFragmentManager;
   }
-  
-  public abstract Fragment a(int paramInt);
   
   public void c()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b.clear();
+    this.c.clear();
+    this.d.clear();
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     Fragment localFragment = (Fragment)paramObject;
-    if (this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.beginTransaction();
+    if (this.b == null) {
+      this.b = this.a.beginTransaction();
     }
     if (QLog.isColorLevel())
     {
@@ -52,45 +50,47 @@ public abstract class CustomFragmentStatePagerAdapter
       paramViewGroup.append(localFragment.getView());
       QLog.d("FragmentStatePagerAdapter", 2, paramViewGroup.toString());
     }
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(null);
+    while (this.c.size() <= paramInt) {
+      this.c.add(null);
     }
-    paramObject = this.jdField_a_of_type_JavaUtilArrayList;
+    paramObject = this.c;
     if (localFragment.isAdded()) {
-      paramViewGroup = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.saveFragmentInstanceState(localFragment);
+      paramViewGroup = this.a.saveFragmentInstanceState(localFragment);
     } else {
       paramViewGroup = null;
     }
     paramObject.set(paramInt, paramViewGroup);
-    if ((paramInt >= 0) && (paramInt < this.b.size())) {
-      this.b.set(paramInt, null);
+    if ((paramInt >= 0) && (paramInt < this.d.size())) {
+      this.d.set(paramInt, null);
     }
-    this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction.remove(localFragment);
+    this.b.remove(localFragment);
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction;
+    paramViewGroup = this.b;
     if (paramViewGroup != null)
     {
       paramViewGroup.commitAllowingStateLoss();
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = null;
+      this.b = null;
     }
   }
   
+  public abstract Fragment i(int paramInt);
+  
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.b.size() > paramInt)
+    if (this.d.size() > paramInt)
     {
-      localFragment = (Fragment)this.b.get(paramInt);
+      localFragment = (Fragment)this.d.get(paramInt);
       if (localFragment != null) {
         return localFragment;
       }
     }
-    if (this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.beginTransaction();
+    if (this.b == null) {
+      this.b = this.a.beginTransaction();
     }
-    Fragment localFragment = a(paramInt);
+    Fragment localFragment = i(paramInt);
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -103,21 +103,21 @@ public abstract class CustomFragmentStatePagerAdapter
     }
     if (localFragment != null)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)
+      if (this.c.size() > paramInt)
       {
-        localObject = (Fragment.SavedState)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        localObject = (Fragment.SavedState)this.c.get(paramInt);
         if (localObject != null) {
           localFragment.setInitialSavedState((Fragment.SavedState)localObject);
         }
       }
-      while (this.b.size() <= paramInt) {
-        this.b.add(null);
+      while (this.d.size() <= paramInt) {
+        this.d.add(null);
       }
       localFragment.setMenuVisibility(false);
       localFragment.setUserVisibleHint(false);
-      this.b.set(paramInt, localFragment);
+      this.d.set(paramInt, localFragment);
       if (!localFragment.isAdded()) {
-        this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction.add(paramViewGroup.getId(), localFragment);
+        this.b.add(paramViewGroup.getId(), localFragment);
       }
     }
     return localFragment;
@@ -136,15 +136,15 @@ public abstract class CustomFragmentStatePagerAdapter
       Bundle localBundle = (Bundle)paramParcelable;
       localBundle.setClassLoader(paramClassLoader);
       paramParcelable = localBundle.getParcelableArray("states");
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.b.clear();
+      this.c.clear();
+      this.d.clear();
       int i;
       if (paramParcelable != null)
       {
         i = 0;
         while (i < paramParcelable.length)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add((Fragment.SavedState)paramParcelable[i]);
+          this.c.add((Fragment.SavedState)paramParcelable[i]);
           i += 1;
         }
       }
@@ -158,8 +158,8 @@ public abstract class CustomFragmentStatePagerAdapter
           StringBuilder localStringBuilder;
           try
           {
-            if (this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.getFragments() != null) {
-              paramParcelable = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.getFragment(localBundle, str);
+            if (this.a.getFragments() != null) {
+              paramParcelable = this.a.getFragment(localBundle, str);
             }
           }
           catch (Exception paramParcelable)
@@ -172,11 +172,11 @@ public abstract class CustomFragmentStatePagerAdapter
           }
           if (paramParcelable != null)
           {
-            while (this.b.size() <= i) {
-              this.b.add(null);
+            while (this.d.size() <= i) {
+              this.d.add(null);
             }
             paramParcelable.setMenuVisibility(false);
-            this.b.set(i, paramParcelable);
+            this.d.set(i, paramParcelable);
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("restoreState key: ");
             localStringBuilder.append(str);
@@ -200,11 +200,11 @@ public abstract class CustomFragmentStatePagerAdapter
   {
     Object localObject2;
     Object localObject1;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.c.size() > 0)
     {
       localObject2 = new Bundle();
-      localObject1 = new Fragment.SavedState[this.jdField_a_of_type_JavaUtilArrayList.size()];
-      this.jdField_a_of_type_JavaUtilArrayList.toArray((Object[])localObject1);
+      localObject1 = new Fragment.SavedState[this.c.size()];
+      this.c.toArray((Object[])localObject1);
       ((Bundle)localObject2).putParcelableArray("states", (Parcelable[])localObject1);
     }
     else
@@ -213,9 +213,9 @@ public abstract class CustomFragmentStatePagerAdapter
     }
     int i = 0;
     Object localObject3;
-    while (i < this.b.size())
+    while (i < this.d.size())
     {
-      Object localObject4 = (Fragment)this.b.get(i);
+      Object localObject4 = (Fragment)this.d.get(i);
       localObject1 = localObject2;
       if (localObject4 != null)
       {
@@ -238,7 +238,7 @@ public abstract class CustomFragmentStatePagerAdapter
           QLog.d("FragmentStatePagerAdapter", 2, localStringBuilder.toString());
           try
           {
-            this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.putFragment((Bundle)localObject1, (String)localObject2, (Fragment)localObject4);
+            this.a.putFragment((Bundle)localObject1, (String)localObject2, (Fragment)localObject4);
           }
           catch (Exception localException)
           {
@@ -258,20 +258,20 @@ public abstract class CustomFragmentStatePagerAdapter
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramViewGroup = (Fragment)paramObject;
-    paramObject = this.jdField_a_of_type_AndroidxFragmentAppFragment;
+    paramObject = this.e;
     if (paramViewGroup != paramObject)
     {
       if (paramObject != null)
       {
         paramObject.setMenuVisibility(false);
-        this.jdField_a_of_type_AndroidxFragmentAppFragment.setUserVisibleHint(false);
+        this.e.setUserVisibleHint(false);
       }
       if (paramViewGroup != null)
       {
         paramViewGroup.setMenuVisibility(true);
         paramViewGroup.setUserVisibleHint(true);
       }
-      this.jdField_a_of_type_AndroidxFragmentAppFragment = paramViewGroup;
+      this.e = paramViewGroup;
     }
   }
   
@@ -289,7 +289,7 @@ public abstract class CustomFragmentStatePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.CustomFragmentStatePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

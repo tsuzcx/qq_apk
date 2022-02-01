@@ -29,23 +29,23 @@ import java.util.List;
 
 public class MultiAIOHelper
 {
-  private static List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static boolean jdField_a_of_type_Boolean = true;
+  private static List<Integer> a = new ArrayList();
+  private static boolean b = true;
   
   static
   {
-    jdField_a_of_type_JavaUtilList.clear();
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(3000));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1004));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1000));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1022));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1001));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10002));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1006));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1005));
-    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10008));
+    a.clear();
+    a.add(Integer.valueOf(0));
+    a.add(Integer.valueOf(1));
+    a.add(Integer.valueOf(3000));
+    a.add(Integer.valueOf(1004));
+    a.add(Integer.valueOf(1000));
+    a.add(Integer.valueOf(1022));
+    a.add(Integer.valueOf(1001));
+    a.add(Integer.valueOf(10002));
+    a.add(Integer.valueOf(1006));
+    a.add(Integer.valueOf(1005));
+    a.add(Integer.valueOf(10008));
   }
   
   public static Bitmap a(Bitmap paramBitmap, int paramInt, Activity paramActivity)
@@ -106,8 +106,8 @@ public class MultiAIOHelper
     }
     try
     {
-      if (localProxyManager.a().a(false).size() > 0) {
-        localArrayList.addAll(RecentDataListManager.a().jdField_a_of_type_JavaUtilList);
+      if (localProxyManager.g().a(false).size() > 0) {
+        localArrayList.addAll(RecentDataListManager.a().c);
       }
     }
     catch (Exception localException)
@@ -173,11 +173,9 @@ public class MultiAIOHelper
     return localArrayList;
   }
   
-  public static void a() {}
-  
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    b = paramBoolean;
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof QQAppInterface))
     {
@@ -212,14 +210,14 @@ public class MultiAIOHelper
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("multiaio_switch_sp");
       localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
-      jdField_a_of_type_Boolean = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("key_multiaio_switch", true);
+      b = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("key_multiaio_switch", true);
     }
-    return jdField_a_of_type_Boolean;
+    return b;
   }
   
   public static boolean a(int paramInt)
   {
-    return jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
+    return a.contains(Integer.valueOf(paramInt));
   }
   
   public static boolean a(Activity paramActivity)
@@ -246,6 +244,8 @@ public class MultiAIOHelper
     return a(paramRecentBaseData.getRecentUserType());
   }
   
+  public static void b() {}
+  
   private static boolean b(RecentBaseData paramRecentBaseData)
   {
     return paramRecentBaseData.mUnreadFlag == 3;
@@ -253,7 +253,7 @@ public class MultiAIOHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOHelper
  * JD-Core Version:    0.7.0.1
  */

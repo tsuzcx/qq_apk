@@ -7,14 +7,14 @@ import java.util.List;
 
 public abstract class AVGameScreenLayoutStyle
 {
-  protected Context a;
-  protected AVGameAppInterface a;
-  protected int b;
+  protected int e;
+  protected Context f;
+  protected AVGameAppInterface g;
   
   public AVGameScreenLayoutStyle(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    this.f = paramContext;
+    this.g = paramAVGameAppInterface;
   }
   
   public static AVGameScreenLayoutStyle a(int paramInt, Context paramContext, AVGameAppInterface paramAVGameAppInterface)

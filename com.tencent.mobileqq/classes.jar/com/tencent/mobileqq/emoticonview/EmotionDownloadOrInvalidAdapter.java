@@ -37,12 +37,12 @@ public class EmotionDownloadOrInvalidAdapter
       {
         this.contentHight = getCurrentListView().getHeight();
         if (this.contentHight == 0) {
-          this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966));
+          this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131297347));
         }
       }
       else
       {
-        this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966));
+        this.contentHight = (XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131297347));
       }
     }
   }
@@ -82,7 +82,7 @@ public class EmotionDownloadOrInvalidAdapter
           paramViewHolder.append(";view form inflater");
           QLog.d("EmotionDownloadOrInvalidAdapter", 2, paramViewHolder.toString());
         }
-        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561589, null);
+        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131627952, null);
       }
       else
       {
@@ -98,9 +98,9 @@ public class EmotionDownloadOrInvalidAdapter
         }
       }
       paramViewHolder.setLayoutParams(paramViewGroup);
-      this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365284));
-      this.holder.name = ((TextView)paramViewHolder.findViewById(2131365367));
-      this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365365));
+      this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131431458));
+      this.holder.name = ((TextView)paramViewHolder.findViewById(2131431560));
+      this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131431558));
       recycleView(this.panelType, paramViewHolder);
       paramViewHolder.setTag(this.holder);
     }
@@ -111,7 +111,7 @@ public class EmotionDownloadOrInvalidAdapter
     updateDownloadUI(this.holder);
     if (this.interactionListener != null)
     {
-      paramInt = XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296966);
+      paramInt = XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131297347);
       if (paramInt != this.contentHight)
       {
         this.contentHight = paramInt;
@@ -128,7 +128,7 @@ public class EmotionDownloadOrInvalidAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionDownloadOrInvalidAdapter
  * JD-Core Version:    0.7.0.1
  */

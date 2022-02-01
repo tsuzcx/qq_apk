@@ -17,12 +17,67 @@ import mqq.util.WeakReference;
 
 public class ZipResourcesDownloader
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  WeakReference<IPreDownloadController> jdField_a_of_type_MqqUtilWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  ArrayList<ZipResourcesDownloader.CallbackCacheItem> b = new ArrayList();
+  WeakReference<IPreDownloadController> a;
+  ArrayList<String> b = new ArrayList();
+  ArrayList<ZipResourcesDownloader.CallbackCacheItem> c = new ArrayList();
+  boolean d = false;
   
-  private static String a()
+  public static String a(String paramString1, String paramString2)
+  {
+    return e(paramString2);
+  }
+  
+  private void a(String paramString1, String arg2, boolean paramBoolean, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
+  {
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ???.append("onDownloadEnd url:");
+      ???.append(paramString1);
+      ???.append(" success:");
+      ???.append(paramBoolean);
+      ???.append(" mDestroyed:");
+      ???.append(this.d);
+      QLog.d("ZipResourcesDownloader", 2, ???.toString());
+    }
+    if (this.d) {
+      return;
+    }
+    int i;
+    synchronized (this.b)
+    {
+      this.b.remove(paramString1);
+      if (paramOnZipResourcesDownloadCallback != null) {
+        paramOnZipResourcesDownloadCallback.a(paramBoolean);
+      }
+      synchronized (this.c)
+      {
+        i = this.c.size() - 1;
+        if (i >= 0)
+        {
+          paramOnZipResourcesDownloadCallback = (ZipResourcesDownloader.CallbackCacheItem)this.c.get(i);
+          if ((paramOnZipResourcesDownloadCallback != null) && (TextUtils.equals(paramString1, paramOnZipResourcesDownloadCallback.a)))
+          {
+            if (paramOnZipResourcesDownloadCallback.b != null) {
+              paramOnZipResourcesDownloadCallback.b.a(paramBoolean);
+            }
+            this.c.remove(i);
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+    }
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return c(paramString1, paramString2, paramArrayOfString);
+  }
+  
+  private static String b()
   {
     Object localObject1 = BaseApplicationImpl.sApplication.getFilesDir();
     if (localObject1 != null)
@@ -46,82 +101,50 @@ public class ZipResourcesDownloader
     return localObject1;
   }
   
-  public static String a(String paramString1, String paramString2)
-  {
-    return c(paramString2);
-  }
-  
-  private void a(String paramString1, String arg2, boolean paramBoolean, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
-  {
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ???.append("onDownloadEnd url:");
-      ???.append(paramString1);
-      ???.append(" success:");
-      ???.append(paramBoolean);
-      ???.append(" mDestroyed:");
-      ???.append(this.jdField_a_of_type_Boolean);
-      QLog.d("ZipResourcesDownloader", 2, ???.toString());
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    int i;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramString1);
-      if (paramOnZipResourcesDownloadCallback != null) {
-        paramOnZipResourcesDownloadCallback.a(paramBoolean);
-      }
-      synchronized (this.b)
-      {
-        i = this.b.size() - 1;
-        if (i >= 0)
-        {
-          paramOnZipResourcesDownloadCallback = (ZipResourcesDownloader.CallbackCacheItem)this.b.get(i);
-          if ((paramOnZipResourcesDownloadCallback != null) && (TextUtils.equals(paramString1, paramOnZipResourcesDownloadCallback.jdField_a_of_type_JavaLangString)))
-          {
-            if (paramOnZipResourcesDownloadCallback.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader$OnZipResourcesDownloadCallback != null) {
-              paramOnZipResourcesDownloadCallback.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader$OnZipResourcesDownloadCallback.a(paramBoolean);
-            }
-            this.b.remove(i);
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-    }
-  }
-  
-  private static boolean a(String paramString)
+  private static boolean c(String paramString)
   {
     return new File(paramString).exists();
   }
   
-  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
+  private static boolean c(String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    return c(paramString1, paramString2, paramArrayOfString);
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      paramString1 = a(paramString1, paramString2);
+      if (!c(paramString1)) {
+        return false;
+      }
+      if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
+      {
+        int j = paramArrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          paramString2 = paramArrayOfString[i];
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append("/");
+          localStringBuilder.append(paramString2);
+          paramString2 = localStringBuilder.toString();
+          if (!c(paramString2))
+          {
+            QLog.e("ZipResourcesDownloader", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { paramString2 }));
+            return false;
+          }
+          i += 1;
+        }
+      }
+      return true;
+    }
+    return false;
   }
   
-  private static String b(String paramString)
+  private static String d(String paramString)
   {
-    return String.format("%s/%s.zip", new Object[] { a(), paramString });
+    return String.format("%s/%s.zip", new Object[] { b(), paramString });
   }
   
-  private static void b(String paramString)
-  {
-    FileUtils.delete(paramString, false);
-  }
-  
-  private static String c(String paramString)
-  {
-    return String.format("%s/%s", new Object[] { a(), paramString });
-  }
-  
-  private static boolean c(String paramString1, String paramString2)
+  private static boolean d(String paramString1, String paramString2)
   {
     boolean bool3 = new File(paramString1).exists();
     boolean bool2 = false;
@@ -141,40 +164,12 @@ public class ZipResourcesDownloader
     return bool1;
   }
   
-  private static boolean c(String paramString1, String paramString2, String[] paramArrayOfString)
+  private static String e(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      paramString1 = a(paramString1, paramString2);
-      if (!a(paramString1)) {
-        return false;
-      }
-      if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
-      {
-        int j = paramArrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          paramString2 = paramArrayOfString[i];
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramString1);
-          localStringBuilder.append("/");
-          localStringBuilder.append(paramString2);
-          paramString2 = localStringBuilder.toString();
-          if (!a(paramString2))
-          {
-            QLog.e("ZipResourcesDownloader", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { paramString2 }));
-            return false;
-          }
-          i += 1;
-        }
-      }
-      return true;
-    }
-    return false;
+    return String.format("%s/%s", new Object[] { b(), paramString });
   }
   
-  private static boolean d(String paramString1, String paramString2)
+  private static boolean e(String paramString1, String paramString2)
   {
     try
     {
@@ -188,15 +183,20 @@ public class ZipResourcesDownloader
     return false;
   }
   
+  private static void f(String paramString)
+  {
+    FileUtils.delete(paramString, false);
+  }
+  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    this.d = true;
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      synchronized (this.b)
+      this.b.clear();
+      synchronized (this.c)
       {
-        this.b.clear();
+        this.c.clear();
         return;
       }
     }
@@ -210,7 +210,7 @@ public class ZipResourcesDownloader
     if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (??? != null))
     {
       Object localObject1 = null;
-      Object localObject2 = this.jdField_a_of_type_MqqUtilWeakReference;
+      Object localObject2 = this.a;
       if (localObject2 != null) {
         localObject1 = (IPreDownloadController)((WeakReference)localObject2).get();
       }
@@ -218,28 +218,28 @@ public class ZipResourcesDownloader
       if (localObject1 == null)
       {
         localObject2 = (IPreDownloadController)???.getRuntimeService(IPreDownloadController.class);
-        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject2);
+        this.a = new WeakReference(localObject2);
       }
       if (localObject2 == null) {
         return;
       }
-      localObject1 = b(paramString3);
-      if (!c((String)localObject1, paramString3)) {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      localObject1 = d(paramString3);
+      if (!d((String)localObject1, paramString3)) {
+        synchronized (this.b)
         {
-          bool1 = this.jdField_a_of_type_JavaUtilArrayList.contains(paramString2);
+          bool1 = this.b.contains(paramString2);
           if (bool1)
           {
             if (paramOnZipResourcesDownloadCallback != null) {
-              synchronized (this.b)
+              synchronized (this.c)
               {
-                this.b.add(new ZipResourcesDownloader.CallbackCacheItem(this, paramString2, paramOnZipResourcesDownloadCallback));
+                this.c.add(new ZipResourcesDownloader.CallbackCacheItem(this, paramString2, paramOnZipResourcesDownloadCallback));
                 return;
               }
             }
             return;
           }
-          b((String)localObject1);
+          f((String)localObject1);
           ??? = new HttpNetReq();
           ((HttpNetReq)???).mCallback = new ZipResourcesDownloader.1(this);
           ((HttpNetReq)???).mReqUrl = paramString2;
@@ -248,9 +248,9 @@ public class ZipResourcesDownloader
           ((HttpNetReq)???).mPrioty = 0;
           ((HttpNetReq)???).mSupportBreakResume = true;
           ((IPreDownloadController)localObject2).requestPreDownload(paramInt, paramString1, paramString3, 0, paramString2, (String)localObject1, 2, 0, false, new HttpEngineTask(???, paramString3, new ZipResourcesDownloader.2(this, paramString3, paramArrayOfString, paramOnZipResourcesDownloadCallback), (HttpNetReq)???));
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          synchronized (this.b)
           {
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
+            this.b.add(paramString2);
             return;
           }
         }
@@ -259,7 +259,7 @@ public class ZipResourcesDownloader
       boolean bool1 = bool2;
       if (!bool2)
       {
-        bool2 = d((String)localObject1, c(paramString3));
+        bool2 = e((String)localObject1, e(paramString3));
         bool1 = c(paramString2, paramString3, paramArrayOfString);
         if (QLog.isColorLevel()) {
           QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
@@ -275,7 +275,7 @@ public class ZipResourcesDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.ZipResourcesDownloader
  * JD-Core Version:    0.7.0.1
  */

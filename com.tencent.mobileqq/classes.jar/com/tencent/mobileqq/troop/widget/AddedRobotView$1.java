@@ -19,22 +19,22 @@ class AddedRobotView$1
     ((StringBuilder)localObject).append("onDecodeTaskCompleted uin: ");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("AddedRobotView", 1, ((StringBuilder)localObject).toString());
-    if (AddedRobotView.a(this.a) == null) {
+    if (AddedRobotView.c(this.a) == null) {
       return;
     }
-    if (AddedRobotView.a(this.a).isPausing()) {
+    if (AddedRobotView.b(this.a).isPausing()) {
       return;
     }
     paramInt1 = 0;
-    paramInt2 = AddedRobotView.a(this.a).getChildCount();
+    paramInt2 = AddedRobotView.c(this.a).getChildCount();
     while (paramInt1 < paramInt2)
     {
-      localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
+      localObject = AddedRobotView.c(this.a).getChildViewHolder(AddedRobotView.c(this.a).getChildAt(paramInt1));
       if ((localObject instanceof AddedRobotView.RobotListAdapter.RobotViewHolder))
       {
         localObject = (AddedRobotView.RobotListAdapter.RobotViewHolder)localObject;
-        if ((!TextUtils.isEmpty(((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_JavaLangString)) && (((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-          ((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        if ((!TextUtils.isEmpty(((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).d)) && (((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).d.equals(paramString))) {
+          ((AddedRobotView.RobotListAdapter.RobotViewHolder)localObject).b.setImageBitmap(paramBitmap);
         }
       }
       else
@@ -47,7 +47,7 @@ class AddedRobotView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView.1
  * JD-Core Version:    0.7.0.1
  */

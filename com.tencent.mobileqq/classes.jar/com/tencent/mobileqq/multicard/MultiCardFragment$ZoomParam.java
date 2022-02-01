@@ -6,22 +6,22 @@ import android.view.ViewGroup.LayoutParams;
 
 class MultiCardFragment$ZoomParam
 {
-  public float a;
-  public int a;
   public ViewGroup.LayoutParams a;
-  public MultiCardCustomLayout a;
-  public MultiCardCustomViewDelegate a;
-  public MultiCardRootLayout a;
   public float b;
-  public int b;
-  public int c;
+  public float c;
+  public int d;
+  public MultiCardRootLayout e;
+  public MultiCardCustomLayout f;
+  public MultiCardCustomViewDelegate g;
+  public int h;
+  public int i;
   
   public MultiCardFragment$ZoomParam(MultiCardFragment paramMultiCardFragment, MultiCardRootLayout paramMultiCardRootLayout, MultiCardCustomLayout paramMultiCardCustomLayout, MultiCardCustomViewDelegate paramMultiCardCustomViewDelegate, MultiCardCustomViewDelegate.MultiCardCustomViewDelegateListener paramMultiCardCustomViewDelegateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = paramMultiCardRootLayout;
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = paramMultiCardCustomLayout;
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate = paramMultiCardCustomViewDelegate;
-    paramMultiCardFragment = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate;
+    this.e = paramMultiCardRootLayout;
+    this.f = paramMultiCardCustomLayout;
+    this.g = paramMultiCardCustomViewDelegate;
+    paramMultiCardFragment = this.g;
     if (paramMultiCardFragment != null) {
       paramMultiCardFragment.a(paramMultiCardCustomViewDelegateListener);
     }
@@ -29,38 +29,38 @@ class MultiCardFragment$ZoomParam
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout;
+    Object localObject = this.e;
     if (localObject != null)
     {
       ((MultiCardRootLayout)localObject).a(false);
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleX();
-      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleY();
+      this.b = this.e.getScaleX();
+      this.c = this.e.getScaleY();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
+    localObject = this.f;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = ((MultiCardCustomLayout)localObject).getLayoutParams();
+      this.a = ((MultiCardCustomLayout)localObject).getLayoutParams();
       localObject = new int[2];
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLocationOnScreen((int[])localObject);
-      this.jdField_b_of_type_Int = localObject[0];
-      this.c = localObject[1];
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.findViewById(2131371609);
+      this.f.getLocationOnScreen((int[])localObject);
+      this.h = localObject[0];
+      this.i = localObject[1];
+      this.f.a(true);
+      localObject = this.f.findViewById(2131439021);
       if (localObject != null)
       {
-        this.jdField_a_of_type_Int = ((View)localObject).getVisibility();
+        this.d = ((View)localObject).getVisibility();
         ((View)localObject).setVisibility(8);
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout;
+    localObject = this.e;
     if (localObject != null)
     {
-      MultiCardCustomLayout localMultiCardCustomLayout = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
+      MultiCardCustomLayout localMultiCardCustomLayout = this.f;
       if (localMultiCardCustomLayout != null) {
         ((MultiCardRootLayout)localObject).removeView(localMultiCardCustomLayout);
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate;
+    localObject = this.g;
     if (localObject != null) {
       ((MultiCardCustomViewDelegate)localObject).b(0);
     }
@@ -68,20 +68,20 @@ class MultiCardFragment$ZoomParam
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null))
+    Object localObject = this.f;
+    if ((localObject != null) && (this.e != null))
     {
       if ((((MultiCardCustomLayout)localObject).getParent() instanceof ViewGroup)) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+        ((ViewGroup)this.f.getParent()).removeView(this.f);
       }
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleX(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleY(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.addView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout, 0);
+      this.f.a(false);
+      this.f.setLayoutParams(this.a);
+      this.f.setScaleX(1.0F);
+      this.f.setScaleY(1.0F);
+      this.e.a(true);
+      this.e.addView(this.f, 0);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate;
+    localObject = this.g;
     if (localObject != null) {
       ((MultiCardCustomViewDelegate)localObject).b(1);
     }
@@ -89,7 +89,7 @@ class MultiCardFragment$ZoomParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.ZoomParam
  * JD-Core Version:    0.7.0.1
  */

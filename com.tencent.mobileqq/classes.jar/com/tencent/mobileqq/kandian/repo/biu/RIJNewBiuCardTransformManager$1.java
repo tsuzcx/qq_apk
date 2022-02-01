@@ -11,18 +11,18 @@ class RIJNewBiuCardTransformManager$1
   
   public void a(int paramInt)
   {
-    if ((RIJNewBiuCardTransformManager.a(this.a) != null) && (RIJNewBiuCardTransformManager.a(this.a).a != null))
+    if ((RIJNewBiuCardTransformManager.a(this.a) != null) && (RIJNewBiuCardTransformManager.a(this.a).e != null))
     {
-      if (RIJNewBiuCardTransformManager.a(this.a).a.mSocialFeedInfo == null) {
-        RIJNewBiuCardTransformManager.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
+      if (RIJNewBiuCardTransformManager.a(this.a).e.mSocialFeedInfo == null) {
+        RIJNewBiuCardTransformManager.a(this.a).e.mSocialFeedInfo = new SocializeFeedsInfo();
       }
-      RIJNewBiuCardTransformManager.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
+      RIJNewBiuCardTransformManager.a(this.a).e.mSocialFeedInfo.c.b = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.biu.RIJNewBiuCardTransformManager.1
  * JD-Core Version:    0.7.0.1
  */

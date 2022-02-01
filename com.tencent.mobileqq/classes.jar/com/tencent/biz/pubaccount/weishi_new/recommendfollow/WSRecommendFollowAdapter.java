@@ -17,18 +17,18 @@ public class WSRecommendFollowAdapter
   extends BaseAdapter<stSimpleMetaPerson, BaseViewHolder<stSimpleMetaPerson>>
   implements WSRecommendFollowListener
 {
-  private stFeed jdField_a_of_type_UserGrowthStFeed;
-  private WSFollowAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter;
+  private WSFollowAdapter a;
+  private stFeed b;
   
   public WSRecommendFollowAdapter(Context paramContext, WSFollowAdapter paramWSFollowAdapter)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter = paramWSFollowAdapter;
+    this.a = paramWSFollowAdapter;
   }
   
   public void a(stFeed paramstFeed)
   {
-    this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
+    this.b = paramstFeed;
   }
   
   public void a(stSimpleMetaPerson paramstSimpleMetaPerson)
@@ -37,9 +37,9 @@ public class WSRecommendFollowAdapter
     removeItem(paramstSimpleMetaPerson);
     paramstSimpleMetaPerson = getDataList();
     if ((paramstSimpleMetaPerson == null) || (paramstSimpleMetaPerson.size() == 0)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter.removeItem(this.jdField_a_of_type_UserGrowthStFeed);
+      this.a.removeItem(this.b);
     }
-    ToastUtil.a().a(2131720425);
+    ToastUtil.a().a(2131918101);
   }
   
   public void a(BaseViewHolder<stSimpleMetaPerson> paramBaseViewHolder)
@@ -47,16 +47,16 @@ public class WSRecommendFollowAdapter
     super.onViewAttachedToWindow(paramBaseViewHolder);
     if ((paramBaseViewHolder instanceof WSRecommendFollowHolder))
     {
-      WSFollowAdapter localWSFollowAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter;
-      if ((localWSFollowAdapter != null) && (localWSFollowAdapter.a().getUserVisibleHint())) {
-        ((WSRecommendFollowHolder)paramBaseViewHolder).b();
+      WSFollowAdapter localWSFollowAdapter = this.a;
+      if ((localWSFollowAdapter != null) && (localWSFollowAdapter.g().getUserVisibleHint())) {
+        ((WSRecommendFollowHolder)paramBaseViewHolder).c();
       }
     }
   }
   
   public void b(stSimpleMetaPerson paramstSimpleMetaPerson)
   {
-    WSFeedUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter.a(), paramstSimpleMetaPerson.avatarSchema, 702, paramstSimpleMetaPerson.id);
+    WSFeedUtils.a(this.a.f(), paramstSimpleMetaPerson.avatarSchema, 702, paramstSimpleMetaPerson);
   }
   
   public int getCustomItemViewType(int paramInt)
@@ -82,7 +82,7 @@ public class WSRecommendFollowAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSRecommendFollowAdapter
  * JD-Core Version:    0.7.0.1
  */

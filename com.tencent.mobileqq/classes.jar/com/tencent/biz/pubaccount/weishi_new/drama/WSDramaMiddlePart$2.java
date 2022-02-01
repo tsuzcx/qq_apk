@@ -16,22 +16,22 @@ class WSDramaMiddlePart$2
   public void a(WSEpisodeItemData paramWSEpisodeItemData, int paramInt)
   {
     WSDramaMiddlePart.a(this.a, 1);
-    WSDramaBeaconReport.a(paramWSEpisodeItemData, this.a.b(), this.a.a());
-    WSDramaMiddlePart.a(this.a);
+    WSDramaBeaconReport.a(paramWSEpisodeItemData, this.a.i(), this.a.k());
+    WSDramaMiddlePart.b(this.a);
     WSDramaMiddlePart.a(this.a, paramWSEpisodeItemData, paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSDramaMiddlePart.java][episodeChecked] mDramaId:");
-    localStringBuilder.append(WSDramaMiddlePart.a(this.a));
+    localStringBuilder.append(WSDramaMiddlePart.c(this.a));
     WSLog.e("WSDramaMiddlePartnel-log", localStringBuilder.toString());
-    this.a.a(false, paramWSEpisodeItemData.a(), paramWSEpisodeItemData.a());
-    WSDramaMiddlePart.a(this.a).getLayoutManager().smoothScrollToPosition(WSDramaMiddlePart.a(this.a), new RecyclerView.State(), paramInt);
+    this.a.a(false, paramWSEpisodeItemData.b(), paramWSEpisodeItemData.c());
+    WSDramaMiddlePart.d(this.a).getLayoutManager().smoothScrollToPosition(WSDramaMiddlePart.d(this.a), new RecyclerView.State(), paramInt);
   }
   
   public void b(WSEpisodeItemData paramWSEpisodeItemData, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaMiddlePart.2
  * JD-Core Version:    0.7.0.1
  */

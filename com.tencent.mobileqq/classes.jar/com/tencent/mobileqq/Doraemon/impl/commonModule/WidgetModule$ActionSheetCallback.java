@@ -15,39 +15,13 @@ import org.json.JSONObject;
 class WidgetModule$ActionSheetCallback
   implements DialogInterface.OnCancelListener, ActionSheet.OnButtonClickListener, ActionSheet.OnDismissListener
 {
-  APICallback jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
-  ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  ActionSheet a;
+  APICallback b;
   
   public WidgetModule$ActionSheetCallback(ActionSheet paramActionSheet, APICallback paramAPICallback)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback = paramAPICallback;
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("cancel", false);
-      paramView.put("tapIndex", paramInt);
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramView);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      String str = paramView.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
-      }
-      APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      DoraemonUtil.a(localAPICallback, -2, paramView);
-    }
+    this.a = paramActionSheet;
+    this.b = paramAPICallback;
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
@@ -57,7 +31,7 @@ class WidgetModule$ActionSheetCallback
     {
       paramDialogInterface.put("cancel", true);
       paramDialogInterface.put("tapIndex", -1);
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramDialogInterface);
+      DoraemonUtil.a(this.b, paramDialogInterface);
       return;
     }
     catch (JSONException paramDialogInterface)
@@ -66,12 +40,38 @@ class WidgetModule$ActionSheetCallback
       if (QLog.isColorLevel()) {
         QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
       }
-      APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+      APICallback localAPICallback = this.b;
       paramDialogInterface = str;
       if (str == null) {
         paramDialogInterface = "";
       }
       DoraemonUtil.a(localAPICallback, -2, paramDialogInterface);
+    }
+  }
+  
+  public void onClick(View paramView, int paramInt)
+  {
+    this.a.dismiss();
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("cancel", false);
+      paramView.put("tapIndex", paramInt);
+      DoraemonUtil.a(this.b, paramView);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      String str = paramView.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
+      }
+      APICallback localAPICallback = this.b;
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      DoraemonUtil.a(localAPICallback, -2, paramView);
     }
   }
   
@@ -82,7 +82,7 @@ class WidgetModule$ActionSheetCallback
     {
       localJSONObject.put("cancel", true);
       localJSONObject.put("tapIndex", -1);
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, localJSONObject);
+      DoraemonUtil.a(this.b, localJSONObject);
       return;
     }
     catch (JSONException localJSONException)
@@ -91,7 +91,7 @@ class WidgetModule$ActionSheetCallback
       if (QLog.isColorLevel()) {
         QLog.w("DoraemonOpenAPI.widget", 2, str, localJSONException);
       }
-      APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+      APICallback localAPICallback = this.b;
       Object localObject = str;
       if (str == null) {
         localObject = "";
@@ -102,7 +102,7 @@ class WidgetModule$ActionSheetCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.WidgetModule.ActionSheetCallback
  * JD-Core Version:    0.7.0.1
  */

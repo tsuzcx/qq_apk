@@ -10,53 +10,47 @@ public class EmoCaptureAsyncAutomator
   extends EmoAutomator
   implements Runnable
 {
-  protected EmoAsyncStep a;
-  protected ThreadPoolExecutor a;
-  protected final LinkedList<EmoAsyncStep> b;
-  
-  public EmoCaptureAsyncAutomator()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAsyncStep = null;
-    this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
-  }
+  protected EmoAsyncStep e = null;
+  protected final LinkedList<EmoAsyncStep> f = new LinkedList();
+  protected ThreadPoolExecutor g;
   
   private void b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new EmoCaptureAsyncAutomator.MyThreadFactory(this, null));
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
+    this.g = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new EmoCaptureAsyncAutomator.MyThreadFactory(this, null));
+    this.g.allowCoreThreadTimeOut(true);
   }
   
   private void c(EmoAsyncStep paramEmoAsyncStep)
   {
-    this.jdField_b_of_type_JavaUtilLinkedList.add(paramEmoAsyncStep);
+    this.f.add(paramEmoAsyncStep);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addWaitingMode_Locked ");
-      localStringBuilder.append(paramEmoAsyncStep.a);
+      localStringBuilder.append(paramEmoAsyncStep.h);
       QLog.d("EmoCaptureAsyncAutomator", 2, localStringBuilder.toString());
     }
   }
   
   public void a(EmoAsyncStep paramEmoAsyncStep)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.d)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CameraEmo, mCountRunning ");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.c);
       QLog.d("EmoCaptureAsyncAutomator", 1, localStringBuilder.toString());
-      if (this.jdField_b_of_type_Int < 3)
+      if (this.c < 3)
       {
-        this.jdField_b_of_type_Int += 1;
-        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null) {
+        this.c += 1;
+        if (this.g == null) {
           b();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramEmoAsyncStep);
+        this.g.execute(paramEmoAsyncStep);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(paramEmoAsyncStep);
+        this.d.add(paramEmoAsyncStep);
       }
       return;
     }
@@ -68,25 +62,25 @@ public class EmoCaptureAsyncAutomator
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("start ");
-      ((StringBuilder)???).append(paramEmoAsyncStep.a);
+      ((StringBuilder)???).append(paramEmoAsyncStep.h);
       QLog.d("EmoCaptureAsyncAutomator", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
+    synchronized (this.f)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAsyncStep == null)
+      if (this.e == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAsyncStep = paramEmoAsyncStep;
+        this.e = paramEmoAsyncStep;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("run ");
-          localStringBuilder.append(paramEmoAsyncStep.a);
+          localStringBuilder.append(paramEmoAsyncStep.h);
           QLog.d("EmoCaptureAsyncAutomator", 2, localStringBuilder.toString());
         }
-        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null) {
+        if (this.g == null) {
           b();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(this);
+        this.g.execute(this);
       }
       else
       {
@@ -100,14 +94,14 @@ public class EmoCaptureAsyncAutomator
   {
     for (;;)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAsyncStep;
+      ??? = this.e;
       if (??? != null) {
         ((EmoAsyncStep)???).run();
       }
-      synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
+      synchronized (this.f)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAsyncStep = ((EmoAsyncStep)this.jdField_b_of_type_JavaUtilLinkedList.poll());
-        if (this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAsyncStep == null) {
+        this.e = ((EmoAsyncStep)this.f.poll());
+        if (this.e == null) {
           return;
         }
       }
@@ -120,7 +114,7 @@ public class EmoCaptureAsyncAutomator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoCaptureAsyncAutomator
  * JD-Core Version:    0.7.0.1
  */

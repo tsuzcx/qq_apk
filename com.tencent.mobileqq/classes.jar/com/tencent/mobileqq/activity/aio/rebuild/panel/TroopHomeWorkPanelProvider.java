@@ -46,9 +46,9 @@ public class TroopHomeWorkPanelProvider
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
-    paramXPanelContainer = this.a.a().a;
+    paramXPanelContainer = this.a.O().b;
     QQAppInterface localQQAppInterface = this.a.a();
-    HWTroopUtils.a(localQQAppInterface, this.a.a(), paramXPanelContainer);
+    HWTroopUtils.a(localQQAppInterface, this.a.b(), paramXPanelContainer);
     TroopReportor.a(localQQAppInterface, paramXPanelContainer, "homework", "AioAssign_Clk", 0, 0, new String[] { paramXPanelContainer, "", "", TroopReportor.a(localQQAppInterface, paramXPanelContainer) });
   }
   
@@ -58,7 +58,7 @@ public class TroopHomeWorkPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.TroopHomeWorkPanelProvider
  * JD-Core Version:    0.7.0.1
  */

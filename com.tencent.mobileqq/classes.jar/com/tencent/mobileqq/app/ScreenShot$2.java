@@ -14,20 +14,20 @@ class ScreenShot$2
 {
   public void run()
   {
-    synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+    synchronized (this.this$0.o)
     {
-      View localView = this.this$0.jdField_a_of_type_AndroidViewWindow.getDecorView();
+      View localView = this.this$0.b.getDecorView();
       localView.setDrawingCacheEnabled(true);
       localView.buildDrawingCache();
       Bitmap localBitmap = localView.getDrawingCache();
       Rect localRect = new Rect();
-      this.this$0.jdField_a_of_type_AndroidViewWindow.getDecorView().getWindowVisibleDisplayFrame(localRect);
+      this.this$0.b.getDecorView().getWindowVisibleDisplayFrame(localRect);
       int i = localRect.top;
-      int j = ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindowManager().getDefaultDisplay().getWidth();
-      int k = ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindowManager().getDefaultDisplay().getHeight();
+      int j = ((Activity)this.this$0.a).getWindowManager().getDefaultDisplay().getWidth();
+      int k = ((Activity)this.this$0.a).getWindowManager().getDefaultDisplay().getHeight();
       try
       {
-        this.this$0.d = Bitmap.createBitmap(localBitmap, 0, i, j, k - i);
+        this.this$0.n = Bitmap.createBitmap(localBitmap, 0, i, j, k - i);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
@@ -36,14 +36,14 @@ class ScreenShot$2
         }
       }
       localView.destroyDrawingCache();
-      this.this$0.jdField_a_of_type_JavaLangObject.notifyAll();
+      this.this$0.o.notifyAll();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ScreenShot.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,22 @@ class TroopEntranceBar$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    if (this.this$0.c != null)
     {
-      String str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      Object localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).queryAccountDetail(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+      String str = this.this$0.c.b;
+      Object localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).queryAccountDetail(this.this$0.a, str);
       if (localObject != null) {
         localObject = ((IPublicAccountDetail)localObject).getUin();
       } else {
         localObject = "";
       }
-      ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str, (String)localObject, "", "");
+      ReportController.b(this.this$0.a, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str, (String)localObject, "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ public class BiuInfoUtil
         if (paramBiuInfo != null) {
           paramBiuInfo = paramBiuInfo.nick;
         } else {
-          paramBiuInfo = ReadInJoyUserInfoModule.a();
+          paramBiuInfo = ReadInJoyUserInfoModule.d();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("@");
@@ -78,7 +78,7 @@ public class BiuInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.BiuInfoUtil
  * JD-Core Version:    0.7.0.1
  */

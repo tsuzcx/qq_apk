@@ -23,15 +23,15 @@ class KandianSubscribeManager$3
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject == null) {
       return;
     }
     QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).getMessageFacade();
-    MessageRecord localMessageRecord = localQQMessageFacade.b(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
-    if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForText)) && (!TextUtils.isEmpty(localMessageRecord.msg)) && (localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) && (TextUtils.equals(localMessageRecord.extStr, paramString)))
+    MessageRecord localMessageRecord = localQQMessageFacade.r(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
+    if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForText)) && (!TextUtils.isEmpty(localMessageRecord.msg)) && (localMessageRecord.msg.contains(ReadInJoyUserInfoModule.d())) && (TextUtils.equals(localMessageRecord.extStr, paramString)))
     {
-      localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+      localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.d(), paramReadInJoyUserInfo.nick);
       localMessageRecord.createMessageUniseq();
       localQQMessageFacade.a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
       paramReadInJoyUserInfo = ((QQAppInterface)localObject).getHandler(Conversation.class);
@@ -50,7 +50,7 @@ class KandianSubscribeManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianSubscribeManager.3
  * JD-Core Version:    0.7.0.1
  */

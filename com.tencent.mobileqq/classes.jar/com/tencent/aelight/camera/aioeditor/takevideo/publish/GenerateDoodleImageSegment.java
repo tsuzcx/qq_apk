@@ -29,10 +29,10 @@ public class GenerateDoodleImageSegment
   extends MeasureJobSegment<GenerateContext, GenerateContext>
   implements KeepConstructor
 {
-  public final int a;
-  public final String a;
   public final WeakReference<EditDoodleExport> a;
   public final WeakReference<EditFilterExport> b;
+  public final String c;
+  public final int d;
   
   public GenerateDoodleImageSegment(EditDoodleExport paramEditDoodleExport)
   {
@@ -48,10 +48,10 @@ public class GenerateDoodleImageSegment
   {
     if (paramEditDoodleExport != null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEditDoodleExport);
+      this.a = new WeakReference(paramEditDoodleExport);
       this.b = new WeakReference(paramEditFilterExport);
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Int = paramInt;
+      this.c = paramString;
+      this.d = paramInt;
       return;
     }
     throw new NullPointerException("doodleLayout should not be null");
@@ -73,10 +73,10 @@ public class GenerateDoodleImageSegment
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("generateOrientation end, cost:");
         long l2 = System.currentTimeMillis();
-        double d = l2 - l1;
-        Double.isNaN(d);
-        d /= 1000.0D;
-        ((StringBuilder)localObject).append(d);
+        double d1 = l2 - l1;
+        Double.isNaN(d1);
+        d1 /= 1000.0D;
+        ((StringBuilder)localObject).append(d1);
         SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", ((StringBuilder)localObject).toString());
         return paramBitmap;
       }
@@ -98,28 +98,28 @@ public class GenerateDoodleImageSegment
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
     long l1 = SystemClock.uptimeMillis();
-    paramJobContext = paramGenerateContext.jdField_a_of_type_JavaLangString;
+    paramJobContext = paramGenerateContext.j;
     if (TextUtils.isEmpty(paramJobContext))
     {
       super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
       StoryReportor.b("take_video", "create_doodle_result", 0, -1, new String[0]);
       return;
     }
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.get();
     EditFilterExport localEditFilterExport = (EditFilterExport)this.b.get();
     Object localObject1;
     Object localObject2;
     BitmapFactory.Options localOptions;
-    if ((localEditDoodleExport != null) && ((!localEditDoodleExport.a(this.jdField_a_of_type_Int)) || ((localEditFilterExport != null) && (localEditFilterExport.a(this.jdField_a_of_type_Int)))))
+    if ((localEditDoodleExport != null) && ((!localEditDoodleExport.a(this.d)) || ((localEditFilterExport != null) && (localEditFilterExport.a(this.d)))))
     {
-      localObject1 = localEditDoodleExport.a().a(this.jdField_a_of_type_Int);
+      localObject1 = localEditDoodleExport.b().f(this.d);
       if (localObject1 != null)
       {
-        localObject2 = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, "mosaic.png");
+        localObject2 = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, "mosaic.png");
         try
         {
           BitmapUtils.a((Bitmap)localObject1, (String)localObject2, null);
-          paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.mosaicPath = ((String)localObject2);
+          paramGenerateContext.d.mosaicPath = ((String)localObject2);
           SLog.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateMosaicBitmap success %s", localObject2);
         }
         catch (IOException paramJobContext)
@@ -139,42 +139,42 @@ public class GenerateDoodleImageSegment
         ImageUtil.a(paramJobContext, localOptions);
         int i = localOptions.outWidth;
         int j = localOptions.outHeight;
-        paramJobContext = localEditDoodleExport.a().a();
+        paramJobContext = localEditDoodleExport.b().getDynamicFaceLayer();
         if (paramJobContext != null)
         {
           paramJobContext = paramJobContext.a(i, j, true);
           if (paramJobContext != null) {
-            paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.putExtra("dynamic_Sticker_data", paramJobContext);
+            paramGenerateContext.d.putExtra("dynamic_Sticker_data", paramJobContext);
           }
         }
-        localObject2 = localEditDoodleExport.a(this.jdField_a_of_type_Int, false);
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject2 = localEditDoodleExport.a(this.d, false);
+        localObject1 = this.c;
         paramJobContext = (JobContext)localObject1;
         if (localObject1 == null) {
-          paramJobContext = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, ".png");
+          paramJobContext = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".png");
         }
         if (localObject2 != null)
         {
           if (localEditFilterExport == null) {
-            break label826;
+            break label827;
           }
           try
           {
-            if (!localEditFilterExport.a(this.jdField_a_of_type_Int)) {
-              break label826;
+            if (!localEditFilterExport.a(this.d)) {
+              break label827;
             }
-            localEditFilterExport.a(this.jdField_a_of_type_Int, new Canvas((Bitmap)localObject2), ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
-            if ((!(paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditLocalVideoSource)) || (!paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false))) {
-              break label829;
+            localEditFilterExport.a(this.d, new Canvas((Bitmap)localObject2), ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
+            if ((!(paramGenerateContext.c instanceof EditLocalVideoSource)) || (!paramGenerateContext.d.getBooleanExtra("landscape_video", false))) {
+              break label830;
             }
             i = localOptions.outHeight;
             j = localOptions.outWidth;
-            int k = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGenerateThumbArgs.c;
-            int m = paramGenerateContext.jdField_a_of_type_Int;
+            int k = paramGenerateContext.i.g;
+            int m = paramGenerateContext.b;
             if ((m != 2) && (m != 3) && (m != 5) && (m != 6)) {
-              break label832;
+              break label833;
             }
-            if ((paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditLocalVideoSource))
+            if ((paramGenerateContext.c instanceof EditLocalVideoSource))
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("resizedBitmap orientation=");
@@ -184,7 +184,7 @@ public class GenerateDoodleImageSegment
             }
             localObject1 = a((Bitmap)localObject2, k);
             if (localObject1 == null) {
-              break label832;
+              break label833;
             }
             localObject1 = BitmapUtils.c((Bitmap)localObject1, i, j, true, false);
             boolean bool;
@@ -206,13 +206,13 @@ public class GenerateDoodleImageSegment
               ((StringBuilder)localObject1).append(l2 - l1);
               StoryReportor.b("take_video", "create_doodle_time", 0, 0, new String[] { ((StringBuilder)localObject1).toString() });
               StoryReportor.b("take_video", "create_doodle_result", 0, 0, new String[0]);
-              paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath = paramJobContext;
+              paramGenerateContext.d.doodlePath = paramJobContext;
               super.notifyResult(paramGenerateContext);
               return;
             }
             SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and save doodle image failed");
             StoryReportor.b("take_video", "create_doodle_result", 0, -2, new String[0]);
-            paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath = null;
+            paramGenerateContext.d.doodlePath = null;
             super.notifyError(new ErrorMessage(-1, "Resize or store doodle failed"));
             return;
           }
@@ -223,7 +223,7 @@ public class GenerateDoodleImageSegment
         }
         SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "get doodle bitmap failed");
         StoryReportor.b("take_video", "create_doodle_result", 0, -2, new String[0]);
-        paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath = null;
+        paramGenerateContext.d.doodlePath = null;
         super.notifyError(new ErrorMessage(-1, "DoodleLayout get bitmap failed"));
         return;
       }
@@ -234,21 +234,21 @@ public class GenerateDoodleImageSegment
         return;
       }
       SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "do not generate doodle image because doodle is empty");
-      paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath = null;
+      paramGenerateContext.d.doodlePath = null;
       super.notifyResult(paramGenerateContext);
       return;
-      label826:
+      label827:
       continue;
-      label829:
+      label830:
       continue;
-      label832:
+      label833:
       localObject1 = localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.GenerateDoodleImageSegment
  * JD-Core Version:    0.7.0.1
  */

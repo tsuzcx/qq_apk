@@ -11,7 +11,7 @@ public class IliveManagerConfProcessor
 {
   public static IliveManagerCfgBean a()
   {
-    return (IliveManagerCfgBean)QConfigManager.a().a(689);
+    return (IliveManagerCfgBean)QConfigManager.b().b(689);
   }
   
   @NonNull
@@ -31,10 +31,10 @@ public class IliveManagerConfProcessor
             localObject = paramArrayOfQConfItem[i];
             if (localObject != null)
             {
-              IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerCfgBean.a(((QConfItem)localObject).a);
+              IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerCfgBean.a(((QConfItem)localObject).b);
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("onParsed content = ");
-              localStringBuilder.append(((QConfItem)localObject).a);
+              localStringBuilder.append(((QConfItem)localObject).b);
               QLog.e("IliveManagerConfProcessor", 1, localStringBuilder.toString());
               if (localIliveManagerCfgBean != null) {
                 return localIliveManagerCfgBean;
@@ -62,15 +62,15 @@ public class IliveManagerConfProcessor
     return new IliveManagerCfgBean();
   }
   
-  @NonNull
-  public IliveManagerCfgBean c()
-  {
-    return new IliveManagerCfgBean();
-  }
-  
   public Class<IliveManagerCfgBean> clazz()
   {
     return IliveManagerCfgBean.class;
+  }
+  
+  @NonNull
+  public IliveManagerCfgBean e()
+  {
+    return new IliveManagerCfgBean();
   }
   
   public int type()
@@ -80,7 +80,7 @@ public class IliveManagerConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.config.IliveManagerConfProcessor
  * JD-Core Version:    0.7.0.1
  */

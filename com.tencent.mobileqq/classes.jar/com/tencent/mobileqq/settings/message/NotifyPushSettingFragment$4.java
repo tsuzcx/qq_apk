@@ -15,8 +15,8 @@ class NotifyPushSettingFragment$4
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.a(paramBoolean);
-    String str2 = NotifyPushSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqSettingsMessageNotifyPushSettingFragment).getCurrentAccountUin();
+    this.a.m.a(paramBoolean);
+    String str2 = NotifyPushSettingFragment.c(this.b).getCurrentAccountUin();
     String str1;
     if (paramBoolean) {
       str1 = "1";
@@ -29,7 +29,7 @@ class NotifyPushSettingFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

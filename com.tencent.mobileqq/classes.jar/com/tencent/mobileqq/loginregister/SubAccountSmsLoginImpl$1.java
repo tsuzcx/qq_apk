@@ -32,28 +32,28 @@ class SubAccountSmsLoginImpl$1
       paramString1.put("param_FailCode", "12005");
       paramString1.put("fail_step", "getKeyEmpty");
       paramString1.put("fail_location", "subLogin");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
-      this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a();
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
+      this.b.b();
       if (QLog.isColorLevel()) {
         QLog.d("SubAccountSmsLoginImpl", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
       }
-      this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719345), 0);
+      this.b.a(this.c.getString(2131916897), 0);
       return;
     }
     paramString1 = new HashMap();
     paramString1.put("param_FailCode", "12006");
     paramString1.put("fail_step", "getKeyNotEmpty");
     paramString1.put("fail_location", "subLogin");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
     if (QLog.isColorLevel()) {
       QLog.d("SubAccountSmsLoginImpl", 2, "onGetKeyBack: key not null");
     }
     if (QLog.isColorLevel()) {
       QLog.d("SubAccountSmsLoginImpl", 2, "subaccount onGetKeyBack goto bind");
     }
-    paramString1 = (ISubAccountProtocService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ISubAccountProtocService.class, "");
+    paramString1 = (ISubAccountProtocService)this.a.getRuntimeService(ISubAccountProtocService.class, "");
     if (paramString1 != null) {
-      paramString1.bindAccount(paramString2, paramString3, SubAccountSmsLoginImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterSubAccountSmsLoginImpl));
+      paramString1.bindAccount(paramString2, paramString3, SubAccountSmsLoginImpl.a(this.d));
     }
     if (QLog.isColorLevel()) {
       QLog.d("SubAccountSmsLoginImpl", 2, "onGetKeyBack: success .........");
@@ -62,7 +62,7 @@ class SubAccountSmsLoginImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.SubAccountSmsLoginImpl.1
  * JD-Core Version:    0.7.0.1
  */

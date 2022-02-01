@@ -31,7 +31,7 @@ class JoinGroupTransitActivity$UIHandler
         localJoinGroupTransitActivity.finish();
         return;
       }
-      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      JoinGroupTransitActivity.c(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.b(localJoinGroupTransitActivity));
     }
   }
 }

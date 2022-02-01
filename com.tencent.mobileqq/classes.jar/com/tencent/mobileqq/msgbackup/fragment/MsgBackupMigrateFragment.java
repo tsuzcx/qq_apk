@@ -21,27 +21,27 @@ public class MsgBackupMigrateFragment
   protected void c()
   {
     super.c();
-    a(getActivity().getString(2131690554));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(new MsgBackupMigrateFragment.1(this));
+    a(getActivity().getString(2131887465));
+    this.p.setOnItemSelectListener(new MsgBackupMigrateFragment.1(this));
   }
   
   protected void d()
   {
     super.d();
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690531);
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690531));
+    this.w.setEnabled(true);
+    this.w.setText(2131887442);
+    if (AppSetting.e) {
+      this.w.setContentDescription(getString(2131887442));
     }
-    this.g.setText(getActivity().getString(2131690552));
-    this.c.setVisibility(0);
-    this.b.post(this.jdField_a_of_type_JavaLangRunnable);
+    this.y.setText(getActivity().getString(2131887463));
+    this.d.setVisibility(0);
+    this.J.post(this.N);
   }
   
   protected void e()
   {
     super.e();
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.w.setOnClickListener(this);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -53,29 +53,29 @@ public class MsgBackupMigrateFragment
       if (i != 1) {
         bool = false;
       }
-      if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(bool);
+      if (this.w != null) {
+        this.w.setEnabled(bool);
       }
       if (!bool)
       {
-        if ((this.g != null) && (!isDetached()))
+        if ((this.y != null) && (!isDetached()))
         {
-          this.g.setTextColor(getResources().getColor(2131165880));
-          this.g.setText(getActivity().getString(2131690551));
+          this.y.setTextColor(getResources().getColor(2131166523));
+          this.y.setText(getActivity().getString(2131887462));
         }
-        if ((this.h != null) && (!isDetached())) {
-          this.h.setText(getActivity().getString(2131690575));
+        if ((this.z != null) && (!isDetached())) {
+          this.z.setText(getActivity().getString(2131887486));
         }
       }
       else
       {
-        if ((this.g != null) && (!isDetached()))
+        if ((this.y != null) && (!isDetached()))
         {
-          this.g.setTextColor(getResources().getColor(2131167056));
-          this.g.setText(getActivity().getString(2131690552));
+          this.y.setTextColor(getResources().getColor(2131167993));
+          this.y.setText(getActivity().getString(2131887463));
         }
-        if ((this.h != null) && (!isDetached())) {
-          this.h.setText(getActivity().getString(2131690576));
+        if ((this.z != null) && (!isDetached())) {
+          this.z.setText(getActivity().getString(2131887487));
         }
       }
     }
@@ -84,7 +84,7 @@ public class MsgBackupMigrateFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131371025)
+    if (paramView.getId() == 2131438364)
     {
       QPublicFragmentActivity.startForResult(getActivity(), MsgBackupSelectionFragment.class, 1000);
       if (QLog.isColorLevel()) {
@@ -98,8 +98,8 @@ public class MsgBackupMigrateFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.b.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.N != null) {
+      this.J.removeCallbacks(this.N);
     }
   }
   
@@ -110,7 +110,7 @@ public class MsgBackupMigrateFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment
  * JD-Core Version:    0.7.0.1
  */

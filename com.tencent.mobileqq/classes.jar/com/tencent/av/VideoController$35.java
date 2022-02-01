@@ -13,31 +13,31 @@ class VideoController$35
   
   public void run()
   {
-    VideoController.a(this.this$0).clear();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    VideoController.d(this.this$0).clear();
+    Object localObject1 = this.a.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject3 = (Memberinfo)((Iterator)localObject1).next();
       localObject2 = new VideoController.GAudioFriends();
-      ((VideoController.GAudioFriends)localObject2).d = 0;
-      ((VideoController.GAudioFriends)localObject2).jdField_a_of_type_Long = ((Memberinfo)localObject3).jdField_a_of_type_Long;
-      ((VideoController.GAudioFriends)localObject2).h = false;
-      ((VideoController.GAudioFriends)localObject2).e = ((Memberinfo)localObject3).b;
-      VideoController.a(this.this$0).add(localObject2);
+      ((VideoController.GAudioFriends)localObject2).n = 0;
+      ((VideoController.GAudioFriends)localObject2).a = ((Memberinfo)localObject3).a;
+      ((VideoController.GAudioFriends)localObject2).w = false;
+      ((VideoController.GAudioFriends)localObject2).x = ((Memberinfo)localObject3).b;
+      VideoController.d(this.this$0).add(localObject2);
       if (QLog.isColorLevel())
       {
-        localObject3 = VideoController.jdField_a_of_type_JavaLangString;
+        localObject3 = VideoController.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("InviteMemberList saveInviteMembers add: member uin:=");
-        localStringBuilder.append(((VideoController.GAudioFriends)localObject2).jdField_a_of_type_Long);
+        localStringBuilder.append(((VideoController.GAudioFriends)localObject2).a);
         QLog.d((String)localObject3, 2, localStringBuilder.toString());
       }
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), VideoController.a(this.this$0) });
-    localObject1 = VideoController.jdField_a_of_type_JavaLangString;
+    this.this$0.e.a(new Object[] { Integer.valueOf(708), Long.valueOf(this.b), Long.valueOf(this.c), VideoController.d(this.this$0) });
+    localObject1 = VideoController.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("InviteMemberList saveInviteMembers + mIviteMemberLists size=");
-    ((StringBuilder)localObject2).append(VideoController.a(this.this$0).size());
+    ((StringBuilder)localObject2).append(VideoController.d(this.this$0).size());
     QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
   }
 }

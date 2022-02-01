@@ -6,12 +6,12 @@ import java.io.File;
 public class DeviceCapability$CodecPlayerCallback$CodecTestInfo
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
   public String d;
+  public int e;
+  public int f;
+  public String g;
   
   public int a()
   {
@@ -31,28 +31,28 @@ public class DeviceCapability$CodecPlayerCallback$CodecTestInfo
     return 0;
   }
   
-  public String a()
+  public String b()
   {
     GlStringParser localGlStringParser = new GlStringParser('=', ';');
-    localGlStringParser.set("s_path", this.jdField_b_of_type_JavaLangString);
-    if (a())
+    localGlStringParser.set("s_path", this.c);
+    if (c())
     {
-      localGlStringParser.set("i_fps", this.jdField_b_of_type_Int);
-      localGlStringParser.set("i_bitrate", this.jdField_c_of_type_Int);
-      localGlStringParser.set("s_outpath", this.d);
-      File localFile = new File(this.d);
+      localGlStringParser.set("i_fps", this.e);
+      localGlStringParser.set("i_bitrate", this.f);
+      localGlStringParser.set("s_outpath", this.g);
+      File localFile = new File(this.g);
       if (localFile.exists()) {
         localFile.delete();
       }
     }
     else
     {
-      localGlStringParser.set("s_expMd5", this.jdField_c_of_type_JavaLangString);
+      localGlStringParser.set("s_expMd5", this.d);
     }
     return localGlStringParser.flatten();
   }
   
-  public boolean a()
+  public boolean c()
   {
     int i = this.a;
     if (i != 2)

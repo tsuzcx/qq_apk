@@ -19,7 +19,7 @@ class TroopWithCommonFriendsFragment$3
       Object localObject = (TroopCommonHolder)paramView.getTag();
       if (localObject != null)
       {
-        localObject = TroopInfoUIUtil.a(((TroopCommonHolder)localObject).b, 4);
+        localObject = TroopInfoUIUtil.a(((TroopCommonHolder)localObject).j, 4);
         ((Bundle)localObject).putInt("t_s_f", 1002);
         TroopUtils.a(this.a.getActivity(), (Bundle)localObject, 2);
       }
@@ -29,7 +29,7 @@ class TroopWithCommonFriendsFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -48,19 +48,19 @@ public class RecentItemNewFriendMsgData
     else
     {
       this.mMsgExtroInfo = "";
-      if (localNewFriendMessage.a(paramQQAppInterface) != null) {
-        paramQQAppInterface = localNewFriendMessage.a(paramQQAppInterface);
+      if (localNewFriendMessage.b(paramQQAppInterface) != null) {
+        paramQQAppInterface = localNewFriendMessage.b(paramQQAppInterface);
       } else {
         paramQQAppInterface = this.mLastMsg;
       }
       this.mLastMsg = paramQQAppInterface;
       this.mUnreadNum = localINewFriendService.getAllUnreadMessageCount();
-      if (this.mDisplayTime < localNewFriendMessage.a) {
-        this.mDisplayTime = localNewFriendMessage.a;
+      if (this.mDisplayTime < localNewFriendMessage.d) {
+        this.mDisplayTime = localNewFriendMessage.d;
       }
       this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(this.mTitleName);
@@ -97,7 +97,7 @@ public class RecentItemNewFriendMsgData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData
  * JD-Core Version:    0.7.0.1
  */

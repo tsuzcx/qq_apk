@@ -20,12 +20,12 @@ class PublicAccountChatPie$12
     if ((paramBoolean) && (paramArrayOfString != null))
     {
       paramArrayOfString = paramArrayOfString[0];
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.b.contains(paramArrayOfString))
+      if (this.a.bU.r.contains(paramArrayOfString))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.a.put(paramArrayOfString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramArrayOfString, 1)));
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.d();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.e();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.c();
+        this.a.bU.s.put(paramArrayOfString, Integer.valueOf(this.a.d.getConversationFacade().a(paramArrayOfString, 1)));
+        this.a.bU.d();
+        this.a.bU.e();
+        this.a.bU.c();
       }
     }
   }
@@ -37,10 +37,10 @@ class PublicAccountChatPie$12
       if (paramString.length() == 0) {
         return;
       }
-      if (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+      if (paramString.equals(this.a.ah.b))
       {
         paramString = this.a;
-        paramString.m = true;
+        paramString.as = true;
         paramString.a(262144, null, paramLong);
       }
     }
@@ -48,16 +48,16 @@ class PublicAccountChatPie$12
   
   protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    this.a.e(65536);
+    this.a.j(65536);
   }
   
   protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if ((paramString1 != null) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if ((paramString1 != null) && (paramString1.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.a))
     {
       if (QLog.isColorLevel())
       {
-        paramSendMessageHandler = this.a.b;
+        paramSendMessageHandler = this.a.c;
         paramString2 = new StringBuilder();
         paramString2.append("onUpdateSendMsgError uin ");
         paramString2.append(paramString1);
@@ -67,12 +67,12 @@ class PublicAccountChatPie$12
         paramString2.append(paramLong2);
         QLog.d(paramSendMessageHandler, 2, paramString2.toString());
       }
-      this.a.e(196608);
+      this.a.j(196608);
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramSendMessageHandler = this.a.b;
+      paramSendMessageHandler = this.a.c;
       paramString2 = new StringBuilder();
       paramString2.append("onUpdateSendMsgError exception uin ");
       paramString2.append(paramString1);
@@ -86,7 +86,7 @@ class PublicAccountChatPie$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.12
  * JD-Core Version:    0.7.0.1
  */

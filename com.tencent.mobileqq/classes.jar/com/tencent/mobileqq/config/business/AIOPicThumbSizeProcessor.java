@@ -17,36 +17,26 @@ import org.json.JSONObject;
 public class AIOPicThumbSizeProcessor
   extends IQConfigProcessor<AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig>
 {
-  public static final int a;
-  private static volatile AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig a;
-  
-  static
-  {
-    jdField_a_of_type_Int = ((IPicValue)QRoute.api(IPicValue.class)).getAioOtherSpaceValue();
-  }
+  public static final int a = ((IPicValue)QRoute.api(IPicValue.class)).getAioOtherSpaceValue();
+  private static volatile AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig b;
   
   public static AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOPicThumbSizeProcessor$AIOPicThumbSizeConfig == null) {
-        jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOPicThumbSizeProcessor$AIOPicThumbSizeConfig = (AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig)QConfigManager.a().a(672);
+      if (b == null) {
+        b = (AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig)QConfigManager.b().b(672);
       }
-      AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOPicThumbSizeProcessor$AIOPicThumbSizeConfig;
+      AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = b;
       return localAIOPicThumbSizeConfig;
     }
     finally {}
   }
   
-  public DisplayMetrics a()
-  {
-    return MobileQQ.getContext().getResources().getDisplayMetrics();
-  }
-  
   @NonNull
   public AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig a(int paramInt)
   {
-    return b();
+    return c();
   }
   
   @Nullable
@@ -56,7 +46,7 @@ public class AIOPicThumbSizeProcessor
     AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      str = paramArrayOfQConfItem[0].a;
+      str = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         paramArrayOfQConfItem = new StringBuilder();
@@ -69,37 +59,37 @@ public class AIOPicThumbSizeProcessor
     try
     {
       JSONObject localJSONObject = new JSONObject(str);
-      localAIOPicThumbSizeConfig.jdField_a_of_type_Boolean = localJSONObject.optBoolean("useNewConfig", true);
+      localAIOPicThumbSizeConfig.a = localJSONObject.optBoolean("useNewConfig", true);
       paramArrayOfQConfItem = localAIOPicThumbSizeConfig;
-      if (!localAIOPicThumbSizeConfig.jdField_a_of_type_Boolean) {
+      if (!localAIOPicThumbSizeConfig.a) {
         break label400;
       }
-      localAIOPicThumbSizeConfig.jdField_b_of_type_Double = localJSONObject.optDouble("minRatio", 0.0D);
-      localAIOPicThumbSizeConfig.jdField_a_of_type_Double = localJSONObject.optDouble("maxRatio", 0.0D);
-      localAIOPicThumbSizeConfig.jdField_a_of_type_Int = localJSONObject.optInt("textOtherSpace", jdField_a_of_type_Int);
-      localAIOPicThumbSizeConfig.jdField_b_of_type_Int = localJSONObject.optInt("picSizeLimit", 650);
-      if ((localAIOPicThumbSizeConfig.jdField_a_of_type_Double > 0.0D) && (localAIOPicThumbSizeConfig.jdField_b_of_type_Double > 0.0D) && (localAIOPicThumbSizeConfig.jdField_a_of_type_Int > 0))
+      localAIOPicThumbSizeConfig.c = localJSONObject.optDouble("minRatio", 0.0D);
+      localAIOPicThumbSizeConfig.b = localJSONObject.optDouble("maxRatio", 0.0D);
+      localAIOPicThumbSizeConfig.d = localJSONObject.optInt("textOtherSpace", a);
+      localAIOPicThumbSizeConfig.e = localJSONObject.optInt("picSizeLimit", 650);
+      if ((localAIOPicThumbSizeConfig.b > 0.0D) && (localAIOPicThumbSizeConfig.c > 0.0D) && (localAIOPicThumbSizeConfig.d > 0))
       {
-        paramArrayOfQConfItem = a();
-        double d1 = (int)(Math.min(paramArrayOfQConfItem.widthPixels, paramArrayOfQConfItem.heightPixels) / paramArrayOfQConfItem.density - localAIOPicThumbSizeConfig.jdField_a_of_type_Int);
-        double d2 = localAIOPicThumbSizeConfig.jdField_b_of_type_Double;
+        paramArrayOfQConfItem = b();
+        double d1 = (int)(Math.min(paramArrayOfQConfItem.widthPixels, paramArrayOfQConfItem.heightPixels) / paramArrayOfQConfItem.density - localAIOPicThumbSizeConfig.d);
+        double d2 = localAIOPicThumbSizeConfig.c;
         Double.isNaN(d1);
         int i = (int)(d2 * d1);
-        localAIOPicThumbSizeConfig.d = i;
-        d2 = localAIOPicThumbSizeConfig.jdField_a_of_type_Double;
+        localAIOPicThumbSizeConfig.g = i;
+        d2 = localAIOPicThumbSizeConfig.b;
         Double.isNaN(d1);
         i = (int)(d1 * d2);
-        localAIOPicThumbSizeConfig.c = i;
+        localAIOPicThumbSizeConfig.f = i;
       }
       else
       {
-        localAIOPicThumbSizeConfig.d = localJSONObject.optInt("aioImageMinSize", 45);
-        localAIOPicThumbSizeConfig.c = localJSONObject.optInt("aioImageMaxSize", 135);
+        localAIOPicThumbSizeConfig.g = localJSONObject.optInt("aioImageMinSize", 45);
+        localAIOPicThumbSizeConfig.f = localJSONObject.optInt("aioImageMaxSize", 135);
       }
-      localAIOPicThumbSizeConfig.f = localJSONObject.optInt("aioImageMinSizeUnderLimit", 45);
-      localAIOPicThumbSizeConfig.e = localJSONObject.optInt("aioImageMaxSizeUnderLimit", 135);
-      localAIOPicThumbSizeConfig.h = localJSONObject.optInt("aioImageDynamicMinSize", 45);
-      localAIOPicThumbSizeConfig.g = localJSONObject.optInt("aioImageDynamicMaxSize", 135);
+      localAIOPicThumbSizeConfig.i = localJSONObject.optInt("aioImageMinSizeUnderLimit", 45);
+      localAIOPicThumbSizeConfig.h = localJSONObject.optInt("aioImageMaxSizeUnderLimit", 135);
+      localAIOPicThumbSizeConfig.k = localJSONObject.optInt("aioImageDynamicMinSize", 45);
+      localAIOPicThumbSizeConfig.j = localJSONObject.optInt("aioImageDynamicMaxSize", 135);
       return localAIOPicThumbSizeConfig;
     }
     catch (Exception paramArrayOfQConfItem)
@@ -111,10 +101,10 @@ public class AIOPicThumbSizeProcessor
     paramArrayOfQConfItem.append("onParsed error, content:");
     paramArrayOfQConfItem.append(str);
     QLog.d("AIOPicThumbSizeProcessor", 1, paramArrayOfQConfItem.toString());
-    paramArrayOfQConfItem = b();
+    paramArrayOfQConfItem = c();
     label400:
     return paramArrayOfQConfItem;
-    return b();
+    return c();
   }
   
   public void a(AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig paramAIOPicThumbSizeConfig)
@@ -124,22 +114,27 @@ public class AIOPicThumbSizeProcessor
       if (QLog.isColorLevel()) {
         QLog.d("AIOPicThumbSizeProcessor", 2, "onUpdate");
       }
-      jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOPicThumbSizeProcessor$AIOPicThumbSizeConfig = (AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig)QConfigManager.a().a(672);
+      b = (AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig)QConfigManager.b().b(672);
       return;
     }
     finally {}
   }
   
-  public AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig b()
+  public DisplayMetrics b()
+  {
+    return MobileQQ.getContext().getResources().getDisplayMetrics();
+  }
+  
+  public AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig c()
   {
     AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = new AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig();
-    localAIOPicThumbSizeConfig.jdField_b_of_type_Int = 650;
-    localAIOPicThumbSizeConfig.d = 45;
-    localAIOPicThumbSizeConfig.c = 135;
-    localAIOPicThumbSizeConfig.f = 45;
-    localAIOPicThumbSizeConfig.e = 135;
-    localAIOPicThumbSizeConfig.h = 45;
-    localAIOPicThumbSizeConfig.g = 135;
+    localAIOPicThumbSizeConfig.e = 650;
+    localAIOPicThumbSizeConfig.g = 45;
+    localAIOPicThumbSizeConfig.f = 135;
+    localAIOPicThumbSizeConfig.i = 45;
+    localAIOPicThumbSizeConfig.h = 135;
+    localAIOPicThumbSizeConfig.k = 45;
+    localAIOPicThumbSizeConfig.j = 135;
     return localAIOPicThumbSizeConfig;
   }
   
@@ -177,7 +172,7 @@ public class AIOPicThumbSizeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor
  * JD-Core Version:    0.7.0.1
  */

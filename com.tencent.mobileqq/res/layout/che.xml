@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mou" android:layout_width="fill_parent" android:layout_height="72.0dip"
+<com.tencent.mobileqq.guild.live.widget.GuildLiveSwipeBackLayout android:id="@id/nqw" android:background="@android:color/transparent" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/mos" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.5dip" android:layout_centerVertical="true" />
-    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:gravity="center_vertical" android:id="@id/mow" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="13.0dip" android:maxWidth="200.0dip" android:text="11111" android:includeFontPadding="false" android:layout_toRightOf="@id/mos" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mot" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/mow" android:layout_alignBottom="@id/mow" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/mov" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="2.0dip" android:singleLine="true" android:layout_below="@id/mow" android:layout_alignLeft="@id/mow" />
-    <TextView android:textSize="8.0dip" android:layout_gravity="center_vertical" android:id="@id/mox" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</RelativeLayout>
+    <RelativeLayout android:background="@color/aph" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.guild.live.widget.GuildLiveFixVideoTransView android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.guild.live.widget.GuildLiveBlurURLImageView android:id="@id/nqv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <View android:background="@color/by" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/nrr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:id="@id/nrg" android:background="@drawable/diz" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_alignParentTop="true" />
+        <FrameLayout android:id="@id/nre" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nr6" />
+        <FrameLayout android:id="@id/nqy" android:layout_width="wrap_content" android:layout_height="52.0dip" android:layout_marginLeft="@dimen/ng" android:layout_marginTop="@dimen/na" android:layout_marginBottom="@dimen/mp" android:layout_below="@id/nre" />
+        <FrameLayout android:id="@id/nqs" android:layout_width="wrap_content" android:layout_height="@dimen/n7" android:layout_marginLeft="@dimen/ng" android:layout_below="@id/nqy" />
+        <FrameLayout android:id="@id/nri" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <FrameLayout android:id="@id/nr6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nri" />
+        <FrameLayout android:id="@id/nqg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/nre" />
+        <FrameLayout android:id="@id/nqk" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</com.tencent.mobileqq.guild.live.widget.GuildLiveSwipeBackLayout>

@@ -24,28 +24,28 @@ class ChannelCoverInfoModule$6
   
   public void run()
   {
-    List localList = this.this$0.c();
+    List localList = this.this$0.e();
     if (localList.isEmpty())
     {
-      localList.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, HardCodeUtil.a(2131701757), HardCodeUtil.a(2131701729)));
-      localList.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, HardCodeUtil.a(2131701746), HardCodeUtil.a(2131701755)));
+      localList.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, HardCodeUtil.a(2131899775), HardCodeUtil.a(2131899749)));
+      localList.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, HardCodeUtil.a(2131899765), HardCodeUtil.a(2131899773)));
     }
     Object localObject2 = new HashMap();
     Object localObject1 = localList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (ChannelSection)((Iterator)localObject1).next();
-      ((HashMap)localObject2).put(Long.valueOf(((ChannelSection)localObject3).jdField_a_of_type_Long), ((ChannelSection)localObject3).jdField_a_of_type_JavaUtilList);
+      ((HashMap)localObject2).put(Long.valueOf(((ChannelSection)localObject3).a), ((ChannelSection)localObject3).d);
     }
-    localObject1 = ((ChannelSection)localList.get(0)).jdField_a_of_type_JavaUtilList;
-    Object localObject3 = ChannelCoverInfoModule.a(this.this$0);
+    localObject1 = ((ChannelSection)localList.get(0)).d;
+    Object localObject3 = ChannelCoverInfoModule.b(this.this$0);
     Object localObject4;
     Object localObject5;
     if ((localObject3 != null) && (((List)localObject3).size() > 0))
     {
       localObject4 = localList.iterator();
       while (((Iterator)localObject4).hasNext()) {
-        ((ChannelSection)((Iterator)localObject4).next()).jdField_a_of_type_JavaUtilList.clear();
+        ((ChannelSection)((Iterator)localObject4).next()).d.clear();
       }
       localObject3 = ((List)localObject3).iterator();
       while (((Iterator)localObject3).hasNext())
@@ -75,14 +75,14 @@ class ChannelCoverInfoModule$6
       }
       localObject2 = localList.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        Collections.sort(((ChannelSection)((Iterator)localObject2).next()).jdField_a_of_type_JavaUtilList, new ChannelCoverInfoModule.6.1(this));
+        Collections.sort(((ChannelSection)((Iterator)localObject2).next()).d, new ChannelCoverInfoModule.6.1(this));
       }
       if (((List)localObject1).size() == 0)
       {
         QLog.d("ChannelCoverInfoModule", 2, "loadAllChannelCoverListFromDb mylist empty");
-        ((List)localObject1).addAll(this.this$0.b());
-        ((ChannelSection)localList.get(1)).jdField_a_of_type_JavaUtilList.clear();
-        localObject2 = ChannelCoverInfoModule.b(this.this$0).iterator();
+        ((List)localObject1).addAll(this.this$0.d());
+        ((ChannelSection)localList.get(1)).d.clear();
+        localObject2 = ChannelCoverInfoModule.c(this.this$0).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (TabChannelCoverInfo)((Iterator)localObject2).next();
@@ -99,7 +99,7 @@ class ChannelCoverInfoModule$6
           int i = 0;
           label549:
           if (i == 0) {
-            ((ChannelSection)localList.get(1)).jdField_a_of_type_JavaUtilList.add(localObject3);
+            ((ChannelSection)localList.get(1)).d.add(localObject3);
           }
         }
       }
@@ -110,10 +110,10 @@ class ChannelCoverInfoModule$6
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ChannelSection)((Iterator)localObject2).next();
-        localObject4 = ((ChannelSection)localObject3).jdField_a_of_type_JavaUtilList;
+        localObject4 = ((ChannelSection)localObject3).d;
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append("loadAllChannelCoverListFromDb ");
-        ((StringBuilder)localObject5).append(((ChannelSection)localObject3).jdField_a_of_type_Long);
+        ((StringBuilder)localObject5).append(((ChannelSection)localObject3).a);
         ChannelCoverInfoModule.a((List)localObject4, ((StringBuilder)localObject5).toString());
       }
       ChannelCoverInfoModule.a(this.this$0, true, (List)localObject1);
@@ -123,17 +123,17 @@ class ChannelCoverInfoModule$6
       if (QLog.isColorLevel()) {
         QLog.d("ChannelCoverInfoModule", 2, "loadAllChannelCoverListFromDb list is null");
       }
-      ((List)localObject1).addAll(this.this$0.b());
-      ((ChannelSection)localList.get(1)).jdField_a_of_type_JavaUtilList.clear();
-      ((ChannelSection)localList.get(1)).jdField_a_of_type_JavaUtilList.addAll(ChannelCoverInfoModule.b(this.this$0));
+      ((List)localObject1).addAll(this.this$0.d());
+      ((ChannelSection)localList.get(1)).d.clear();
+      ((ChannelSection)localList.get(1)).d.addAll(ChannelCoverInfoModule.c(this.this$0));
       localObject2 = localList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ChannelSection)((Iterator)localObject2).next();
-        localObject4 = ((ChannelSection)localObject3).jdField_a_of_type_JavaUtilList;
+        localObject4 = ((ChannelSection)localObject3).d;
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append("loadAllChannelCoverListFromDb default");
-        ((StringBuilder)localObject5).append(((ChannelSection)localObject3).jdField_a_of_type_Long);
+        ((StringBuilder)localObject5).append(((ChannelSection)localObject3).a);
         ChannelCoverInfoModule.a((List)localObject4, ((StringBuilder)localObject5).toString());
       }
       ChannelCoverInfoModule.a(this.this$0, true, (List)localObject1);
@@ -144,7 +144,7 @@ class ChannelCoverInfoModule$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule.6
  * JD-Core Version:    0.7.0.1
  */

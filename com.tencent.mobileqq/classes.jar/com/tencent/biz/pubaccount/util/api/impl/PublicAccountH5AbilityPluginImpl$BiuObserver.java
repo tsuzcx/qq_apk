@@ -9,13 +9,13 @@ import org.json.JSONObject;
 class PublicAccountH5AbilityPluginImpl$BiuObserver
   extends ReadInJoyObserver
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
+  final String a;
+  final int b;
   
   public PublicAccountH5AbilityPluginImpl$BiuObserver(PublicAccountH5AbilityPluginImpl paramPublicAccountH5AbilityPluginImpl, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public void a(long paramLong, int paramInt, String paramString)
@@ -33,8 +33,8 @@ class PublicAccountH5AbilityPluginImpl$BiuObserver
       paramString = new JSONObject();
       paramString.put("feedsId", String.valueOf(paramLong));
       paramString.put("retCode", paramInt);
-      paramString.put("feedsType", this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      paramString.put("feedsType", this.b);
+      this.c.callJs(this.a, new String[] { paramString.toString() });
       ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPluginImpl.BiuObserver.1(this));
       return;
     }
@@ -46,7 +46,7 @@ class PublicAccountH5AbilityPluginImpl$BiuObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.BiuObserver
  * JD-Core Version:    0.7.0.1
  */

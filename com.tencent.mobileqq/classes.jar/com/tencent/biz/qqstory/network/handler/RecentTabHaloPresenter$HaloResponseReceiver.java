@@ -15,15 +15,15 @@ public class RecentTabHaloPresenter$HaloResponseReceiver
   
   public void a(@NonNull RecentTabHaloPresenter paramRecentTabHaloPresenter, @NonNull RecentTabHaloBatchLoader.RecentTabHaloEvent paramRecentTabHaloEvent)
   {
-    if (paramRecentTabHaloPresenter.a()) {
+    if (paramRecentTabHaloPresenter.b()) {
       return;
     }
-    if (paramRecentTabHaloEvent.jdField_a_of_type_Boolean)
+    if (paramRecentTabHaloEvent.a)
     {
       RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
       return;
     }
-    if ((paramRecentTabHaloEvent.a() != null) && (!paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    if ((paramRecentTabHaloEvent.b() != null) && (!paramRecentTabHaloEvent.g.isFail()))
     {
       RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
       return;
@@ -32,7 +32,7 @@ public class RecentTabHaloPresenter$HaloResponseReceiver
     {
       paramRecentTabHaloPresenter = new StringBuilder();
       paramRecentTabHaloPresenter.append("onEvent: failed. Message: exception: ");
-      paramRecentTabHaloPresenter.append(paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      paramRecentTabHaloPresenter.append(paramRecentTabHaloEvent.g);
       QLog.e("HaloResponseReceiver", 2, paramRecentTabHaloPresenter.toString());
     }
   }
@@ -44,7 +44,7 @@ public class RecentTabHaloPresenter$HaloResponseReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.HaloResponseReceiver
  * JD-Core Version:    0.7.0.1
  */

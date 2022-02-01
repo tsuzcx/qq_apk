@@ -2,6 +2,10 @@ package com.tencent.ad.tangram.views.canvas.components.appbutton;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.downloader.AdDownloadConstants;
 import com.tencent.ad.tangram.downloader.IAdDownloader;
 import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
 
@@ -83,9 +87,50 @@ public class g
     }
   }
   
-  public void startRealDownload(Activity paramActivity, AdAppBtnData paramAdAppBtnData, boolean paramBoolean)
+  public void startRealDownload(Activity paramActivity, AdAppBtnData paramAdAppBtnData)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    if (paramActivity != null)
+    {
+      if (paramAdAppBtnData == null) {
+        return;
+      }
+      String str1 = paramAdAppBtnData.packageName;
+      String str2 = paramAdAppBtnData.mGdtAd_appId;
+      String str3 = paramAdAppBtnData.apkUrlhttp;
+      String str4 = paramAdAppBtnData.name;
+      String str5 = paramAdAppBtnData.via;
+      Object localObject = paramActivity.getIntent().getStringExtra(AdDownloadConstants.KEY_REF_ID);
+      paramAdAppBtnData = (AdAppBtnData)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramAdAppBtnData = paramActivity.getIntent().getStringExtra(AdDownloadConstants.KEY);
+      }
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)))
+      {
+        if (TextUtils.isEmpty(str4)) {
+          return;
+        }
+        localObject = new Bundle();
+        ((Bundle)localObject).putString(AdDownloadConstants.PARAM_TASK_PACKNAME, str1);
+        ((Bundle)localObject).putString(AdDownloadConstants.PARAM_SNG_APPID, str2);
+        ((Bundle)localObject).putString(AdDownloadConstants.PARAM_URL, str3);
+        ((Bundle)localObject).putString(AdDownloadConstants.PARAM_APPNAME, str4);
+        ((Bundle)localObject).putInt(AdDownloadConstants.PARAM_ACTIONCODE, 2);
+        ((Bundle)localObject).putInt(AdDownloadConstants.PARAM_WOWNLOAD_TYPE, 0);
+        ((Bundle)localObject).putBoolean(AdDownloadConstants.PARAM_BLOCK_NOTIFY, false);
+        ((Bundle)localObject).putInt(AdDownloadConstants.PARAM_SHOW_NOTIFICATION, 0);
+        ((Bundle)localObject).putBoolean(AdDownloadConstants.PARAM_IS_APK, true);
+        ((Bundle)localObject).putBoolean(AdDownloadConstants.PARAM_AUTO_INSTALL, true);
+        ((Bundle)localObject).putBoolean(AdDownloadConstants.PARAM_SHOW_NETWORK_DIALOG, false);
+        ((Bundle)localObject).putBoolean(AdDownloadConstants.PARAM_IS_AUTOINSTALL_BY_SDK, false);
+        ((Bundle)localObject).putString(AdDownloadConstants.PARAM_VIA, str5);
+        ((Bundle)localObject).putString(AdDownloadConstants.KEY_REF_ID, paramAdAppBtnData);
+        ((Bundle)localObject).putInt("hideInstallSuccessPage", 1);
+        paramAdAppBtnData = this.mDownloader;
+        if (paramAdAppBtnData != null) {
+          paramAdAppBtnData.doDownloadAction(paramActivity, (Bundle)localObject, "biz_src_ads", 0);
+        }
+      }
+    }
   }
   
   public void unregisterListener(IAdDownloader.Callback paramCallback)

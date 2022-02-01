@@ -10,19 +10,19 @@ class QvipSpecialSoundManagerImpl$2
   
   public void run()
   {
-    Object localObject = QvipSpecialSoundManagerImpl.a(this.this$0);
-    QvipSpecialSoundManagerImpl.b(this.this$0, (String)localObject);
+    Object localObject = this.this$0.a();
+    QvipSpecialSoundManagerImpl.c(this.this$0, (String)localObject);
     localObject = QvipSpecialConstants.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_special_sound_list");
-    localStringBuilder.append(QvipSpecialSoundManagerImpl.a(this.this$0).getCurrentAccountUin());
+    localStringBuilder.append(QvipSpecialSoundManagerImpl.b(this.this$0).getCurrentAccountUin());
     boolean bool = ((HashMap)localObject).containsKey(localStringBuilder.toString());
     QvipSpecialSoundManagerImpl.a(this.this$0, this.a, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

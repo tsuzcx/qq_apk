@@ -10,11 +10,11 @@ import org.json.JSONObject;
 class SetAvatarNativePlugin$AvatarResultCallback
   implements EIPCResultCallback
 {
-  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+  private RequestEvent b;
   
   SetAvatarNativePlugin$AvatarResultCallback(SetAvatarNativePlugin paramSetAvatarNativePlugin, RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
+    this.b = paramRequestEvent;
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
@@ -75,10 +75,10 @@ class SetAvatarNativePlugin$AvatarResultCallback
       label254:
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok((JSONObject)localObject);
+        this.b.ok((JSONObject)localObject);
         return;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail((JSONObject)localObject, paramEIPCResult);
+      this.b.fail((JSONObject)localObject, paramEIPCResult);
       return;
     }
     catch (Exception localException)
@@ -89,7 +89,7 @@ class SetAvatarNativePlugin$AvatarResultCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.SetAvatarNativePlugin.AvatarResultCallback
  * JD-Core Version:    0.7.0.1
  */

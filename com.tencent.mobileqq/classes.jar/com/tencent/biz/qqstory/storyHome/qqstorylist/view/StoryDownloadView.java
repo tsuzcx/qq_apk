@@ -19,19 +19,12 @@ import android.view.View.MeasureSpec;
 public class StoryDownloadView
   extends View
 {
-  public static final int a;
-  public static final int b;
-  public static final int c;
-  public float a;
-  public AnimatorSet a;
-  public boolean a;
-  public float b;
-  public AnimatorSet b;
-  public float c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
+  public static final int a = Color.parseColor("#FFFFFF");
+  public static final int b = Color.parseColor("#BCBFC4");
+  public static final int c = Color.parseColor("#7f8393");
+  public boolean d = false;
+  public int e = 0;
+  public float f = 1.0F;
   public float g;
   public float h;
   public float i;
@@ -43,15 +36,15 @@ public class StoryDownloadView
   public float o;
   public float p;
   public float q;
-  public float r = -45.0F;
-  public float s = 0.1F;
-  
-  static
-  {
-    jdField_a_of_type_Int = Color.parseColor("#FFFFFF");
-    jdField_b_of_type_Int = Color.parseColor("#BCBFC4");
-    jdField_c_of_type_Int = Color.parseColor("#7f8393");
-  }
+  public float r;
+  public float s;
+  public float t;
+  public float u;
+  public float v;
+  public float w = -45.0F;
+  public float x = 0.1F;
+  public AnimatorSet y;
+  public AnimatorSet z;
   
   public StoryDownloadView(Context paramContext)
   {
@@ -66,10 +59,7 @@ public class StoryDownloadView
   public StoryDownloadView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 1.0F;
-    a(this.jdField_a_of_type_Float);
+    a(this.f);
   }
   
   private float a(float paramFloat1, float paramFloat2)
@@ -79,27 +69,27 @@ public class StoryDownloadView
   
   private void a(float paramFloat)
   {
-    this.jdField_b_of_type_Float = a(46.0F, paramFloat);
-    this.jdField_c_of_type_Float = a(46.0F, paramFloat);
-    this.jdField_d_of_type_Float = a(5.0F, paramFloat);
-    this.e = a(5.0F, paramFloat);
-    this.f = a(6.0F, paramFloat);
-    this.g = a(4.0F, paramFloat);
-    this.h = a(5.0F, paramFloat);
-    this.i = a(2.0F, paramFloat);
-    this.j = a(18.0F, paramFloat);
-    this.k = (this.jdField_c_of_type_Float - a(7.0F, paramFloat));
-    this.l = a(6.0F, paramFloat);
-    this.m = a(28.0F, paramFloat);
-    this.n = (this.jdField_b_of_type_Float - a(8.0F, paramFloat));
-    this.o = a(20.0F, paramFloat);
-    this.p = this.f;
-    this.q = (this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
+    this.g = a(46.0F, paramFloat);
+    this.h = a(46.0F, paramFloat);
+    this.i = a(5.0F, paramFloat);
+    this.j = a(5.0F, paramFloat);
+    this.k = a(6.0F, paramFloat);
+    this.l = a(4.0F, paramFloat);
+    this.m = a(5.0F, paramFloat);
+    this.n = a(2.0F, paramFloat);
+    this.o = a(18.0F, paramFloat);
+    this.p = (this.h - a(7.0F, paramFloat));
+    this.q = a(6.0F, paramFloat);
+    this.r = a(28.0F, paramFloat);
+    this.s = (this.g - a(8.0F, paramFloat));
+    this.t = a(20.0F, paramFloat);
+    this.u = this.k;
+    this.v = (this.h - this.l - this.m / 2.0F);
   }
   
   public void a()
   {
-    this.jdField_d_of_type_Int = 0;
+    this.e = 0;
     super.setEnabled(true);
     b();
     super.invalidate();
@@ -109,45 +99,45 @@ public class StoryDownloadView
   {
     Paint localPaint = new Paint();
     int i1;
-    if (this.jdField_a_of_type_Boolean) {
-      i1 = jdField_a_of_type_Int;
+    if (this.d) {
+      i1 = a;
     } else {
-      i1 = jdField_c_of_type_Int;
+      i1 = c;
     }
     localPaint.setColor(i1);
     localPaint.setAntiAlias(true);
     Object localObject = new Path();
-    ((Path)localObject).moveTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p + this.i);
-    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F - this.h / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-    float f1 = this.jdField_b_of_type_Float;
-    ((Path)localObject).lineTo(f1 / 2.0F - this.h / 2.0F - f1 * 8.0F / 46.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 25.0F / 46.0F);
-    f1 = this.jdField_b_of_type_Float;
-    ((Path)localObject).lineTo(f1 / 2.0F + this.h / 2.0F + f1 * 8.0F / 46.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i + this.jdField_c_of_type_Float * 13.0F / 46.0F);
-    ((Path)localObject).lineTo(this.jdField_b_of_type_Float / 2.0F + this.h / 2.0F, this.p + this.i);
+    ((Path)localObject).moveTo(this.g / 2.0F - this.m / 2.0F, this.u + this.n);
+    ((Path)localObject).lineTo(this.g / 2.0F - this.m / 2.0F, this.u + this.n + this.h * 13.0F / 46.0F);
+    float f1 = this.g;
+    ((Path)localObject).lineTo(f1 / 2.0F - this.m / 2.0F - f1 * 8.0F / 46.0F, this.u + this.n + this.h * 13.0F / 46.0F);
+    ((Path)localObject).lineTo(this.g / 2.0F, this.u + this.n + this.h * 25.0F / 46.0F);
+    f1 = this.g;
+    ((Path)localObject).lineTo(f1 / 2.0F + this.m / 2.0F + f1 * 8.0F / 46.0F, this.u + this.n + this.h * 13.0F / 46.0F);
+    ((Path)localObject).lineTo(this.g / 2.0F + this.m / 2.0F, this.u + this.n + this.h * 13.0F / 46.0F);
+    ((Path)localObject).lineTo(this.g / 2.0F + this.m / 2.0F, this.u + this.n);
     localPaint.setStyle(Paint.Style.FILL);
     paramCanvas.drawPath((Path)localObject, localPaint);
-    f1 = this.jdField_b_of_type_Float;
+    f1 = this.g;
     float f2 = f1 / 2.0F;
-    float f3 = this.h;
+    float f3 = this.m;
     float f4 = f3 / 2.0F;
-    float f5 = this.p;
-    paramCanvas.drawArc(new RectF(f2 - f4, f5, f1 / 2.0F + f3 / 2.0F, this.i * 2.0F + f5), 180.0F, 360.0F, true, localPaint);
-    f1 = this.jdField_b_of_type_Float - this.e - this.i;
-    f3 = this.jdField_c_of_type_Float;
-    f4 = this.g;
-    f2 = f3 - f4 - this.h;
+    float f5 = this.u;
+    paramCanvas.drawArc(new RectF(f2 - f4, f5, f1 / 2.0F + f3 / 2.0F, this.n * 2.0F + f5), 180.0F, 360.0F, true, localPaint);
+    f1 = this.g - this.j - this.n;
+    f3 = this.h;
+    f4 = this.l;
+    f2 = f3 - f4 - this.m;
     f3 -= f4;
     localObject = new Path();
-    ((Path)localObject).moveTo(this.jdField_d_of_type_Float + this.i, this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
-    ((Path)localObject).quadTo(this.jdField_b_of_type_Float / 2.0F, this.q, f1, this.jdField_c_of_type_Float - this.g - this.h / 2.0F);
+    ((Path)localObject).moveTo(this.i + this.n, this.h - this.l - this.m / 2.0F);
+    ((Path)localObject).quadTo(this.g / 2.0F, this.v, f1, this.h - this.l - this.m / 2.0F);
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setStrokeWidth(this.h);
+    localPaint.setStrokeWidth(this.m);
     paramCanvas.drawPath((Path)localObject, localPaint);
-    f4 = this.jdField_d_of_type_Float;
-    localObject = new RectF(f4, f2, this.i * 2.0F + f4, f3);
     f4 = this.i;
+    localObject = new RectF(f4, f2, this.n * 2.0F + f4, f3);
+    f4 = this.n;
     RectF localRectF = new RectF(f1 - f4, f2, f1 + f4, f3);
     localPaint.setStyle(Paint.Style.FILL);
     paramCanvas.drawArc((RectF)localObject, 90.0F, 360.0F, true, localPaint);
@@ -156,19 +146,19 @@ public class StoryDownloadView
   
   public void b()
   {
-    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    AnimatorSet localAnimatorSet = this.y;
     if (localAnimatorSet != null)
     {
       localAnimatorSet.end();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
+      this.y.cancel();
+      this.y = null;
     }
-    localAnimatorSet = this.jdField_b_of_type_AndroidAnimationAnimatorSet;
+    localAnimatorSet = this.z;
     if (localAnimatorSet != null)
     {
       localAnimatorSet.end();
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.cancel();
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet = null;
+      this.z.cancel();
+      this.z = null;
     }
   }
   
@@ -177,35 +167,35 @@ public class StoryDownloadView
     Paint localPaint = new Paint();
     Path localPath = new Path();
     int i1;
-    if (this.jdField_a_of_type_Boolean) {
-      i1 = jdField_a_of_type_Int;
+    if (this.d) {
+      i1 = a;
     } else {
-      i1 = jdField_c_of_type_Int;
+      i1 = c;
     }
     localPaint.setColor(i1);
     localPaint.setAntiAlias(true);
-    localPaint.setStrokeWidth(this.h);
+    localPaint.setStrokeWidth(this.m);
     localPaint.setStyle(Paint.Style.STROKE);
     paramCanvas.save();
-    paramCanvas.rotate(this.r, this.j, this.k);
-    float f1 = this.s;
-    paramCanvas.scale(f1, f1, this.j, this.k);
-    localPath.moveTo(this.l, this.m);
-    localPath.lineTo(this.j, this.k);
-    localPath.moveTo(this.j, this.k);
-    localPath.lineTo(this.n, this.o);
+    paramCanvas.rotate(this.w, this.o, this.p);
+    float f1 = this.x;
+    paramCanvas.scale(f1, f1, this.o, this.p);
+    localPath.moveTo(this.q, this.r);
+    localPath.lineTo(this.o, this.p);
+    localPath.moveTo(this.o, this.p);
+    localPath.lineTo(this.s, this.t);
     paramCanvas.drawPath(localPath, localPaint);
     localPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(this.l, this.m, this.h / 2.0F, localPaint);
-    paramCanvas.drawCircle(this.n, this.o, this.h / 2.0F, localPaint);
-    paramCanvas.drawCircle(this.j, this.k, this.h / 2.0F, localPaint);
+    paramCanvas.drawCircle(this.q, this.r, this.m / 2.0F, localPaint);
+    paramCanvas.drawCircle(this.s, this.t, this.m / 2.0F, localPaint);
+    paramCanvas.drawCircle(this.o, this.p, this.m / 2.0F, localPaint);
     paramCanvas.restore();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.translate(super.getPaddingLeft(), super.getPaddingTop());
-    int i1 = this.jdField_d_of_type_Int;
+    int i1 = this.e;
     if (i1 == 2)
     {
       b(paramCanvas);
@@ -233,12 +223,12 @@ public class StoryDownloadView
       f2 = paramInt2 / a(46.0F, 1.0F);
     }
     a(Math.min(f1, f2));
-    super.setMeasuredDimension(super.getPaddingLeft() + (int)this.jdField_b_of_type_Float + super.getPaddingRight(), super.getPaddingTop() + (int)this.jdField_c_of_type_Float + super.getPaddingBottom());
+    super.setMeasuredDimension(super.getPaddingLeft() + (int)this.g + super.getPaddingRight(), super.getPaddingTop() + (int)this.h + super.getPaddingBottom());
   }
   
   public void setWhiteMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
 }
 

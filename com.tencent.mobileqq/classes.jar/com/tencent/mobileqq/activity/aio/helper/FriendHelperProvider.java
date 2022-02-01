@@ -38,21 +38,21 @@ public class FriendHelperProvider
     a(60, new AIOTofuMsgHelper(paramFriendChatPie));
     a(61, new QidianHelper(paramFriendChatPie));
     a(new WTEntranceHelper(paramFriendChatPie));
-    Object localObject = new FriendTipsHelper(paramFriendChatPie.b());
+    Object localObject = new FriendTipsHelper(paramFriendChatPie.bv());
     a(109, (ILifeCycleHelper)localObject);
     a((Handler.Callback)localObject);
-    localObject = new FriendAddFriendHelper(paramFriendChatPie.b());
+    localObject = new FriendAddFriendHelper(paramFriendChatPie.bv());
     a(113, (ILifeCycleHelper)localObject);
     a((OnActivityResultCallback)localObject);
     localObject = new WTEntranceHelper(paramFriendChatPie);
     a(122, (ILifeCycleHelper)localObject);
     a((OnActivityResultCallback)localObject);
-    a(129, new FriendOnlineStatusHelper(paramFriendChatPie.b()));
+    a(129, new FriendOnlineStatusHelper(paramFriendChatPie.bv()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FriendHelperProvider
  * JD-Core Version:    0.7.0.1
  */

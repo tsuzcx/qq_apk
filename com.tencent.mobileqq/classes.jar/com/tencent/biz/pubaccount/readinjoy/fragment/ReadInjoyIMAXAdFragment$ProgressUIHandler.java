@@ -27,10 +27,10 @@ public class ReadInjoyIMAXAdFragment$ProgressUIHandler
     if (paramMessage.what != -2) {
       return;
     }
-    if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
+    if (ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment) != null)
     {
-      long l1 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getCurrentPostion();
-      long l2 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getDuration();
+      long l1 = ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment).getCurrentPostion();
+      long l2 = ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment).getDuration();
       if (l1 >= l2 - 300L)
       {
         ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, true);
@@ -45,19 +45,19 @@ public class ReadInjoyIMAXAdFragment$ProgressUIHandler
           paramMessage.append(", remainDuration=");
           paramMessage.append(i);
           paramMessage.append(", mHasCallEndingSoon=");
-          paramMessage.append(ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment));
+          paramMessage.append(ReadInjoyIMAXAdFragment.w(localReadInjoyIMAXAdFragment));
           QLog.d("ReadInjoyIMAXAdFragment", 2, paramMessage.toString());
         }
-        if (!ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment))
+        if (!ReadInjoyIMAXAdFragment.w(localReadInjoyIMAXAdFragment))
         {
           ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, true);
           if (QLog.isColorLevel()) {
             QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: !!!");
           }
-          ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment);
+          ReadInjoyIMAXAdFragment.x(localReadInjoyIMAXAdFragment);
         }
       }
-      else if ((l1 <= 500L) && (l1 >= 0L) && (ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment)))
+      else if ((l1 <= 500L) && (l1 >= 0L) && (ReadInjoyIMAXAdFragment.y(localReadInjoyIMAXAdFragment)))
       {
         if (QLog.isColorLevel())
         {
@@ -68,25 +68,25 @@ public class ReadInjoyIMAXAdFragment$ProgressUIHandler
         }
         ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, false);
         ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, false);
-        if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
+        if (ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment) != null)
         {
-          ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).pause();
-          ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
+          ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment).pause();
+          ReadInjoyIMAXAdFragment.e(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
         }
       }
       ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, l1);
     }
     else
     {
-      ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment) + 100);
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment));
+      ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.z(localReadInjoyIMAXAdFragment) + 100);
+      ReadInjoyIMAXAdFragment.g(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.z(localReadInjoyIMAXAdFragment));
     }
-    ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
+    ReadInjoyIMAXAdFragment.e(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.ProgressUIHandler
  * JD-Core Version:    0.7.0.1
  */

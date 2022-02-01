@@ -5,12 +5,12 @@ import android.widget.TextView;
 
 class TroopEmptyViewItemBuilder$Holder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
+  ImageView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopEmptyViewItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

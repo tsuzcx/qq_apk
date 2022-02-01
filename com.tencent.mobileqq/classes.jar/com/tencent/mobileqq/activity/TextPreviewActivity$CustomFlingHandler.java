@@ -7,26 +7,26 @@ import java.lang.ref.WeakReference;
 final class TextPreviewActivity$CustomFlingHandler
   extends FlingGestureHandler
 {
-  private WeakReference<TextPreviewActivity> b;
+  private WeakReference<TextPreviewActivity> a;
   
   private TextPreviewActivity$CustomFlingHandler(TextPreviewActivity paramTextPreviewActivity)
   {
     super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
+    this.a = new WeakReference(paramTextPreviewActivity);
   }
   
   public void flingLToR()
   {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.a.get();
     int j = 0;
     int i = j;
     if (localTextPreviewActivity != null)
     {
       i = j;
-      if (localTextPreviewActivity.a != null)
+      if (localTextPreviewActivity.T != null)
       {
         i = j;
-        if (localTextPreviewActivity.a.getVisibility() == 0) {
+        if (localTextPreviewActivity.T.getVisibility() == 0) {
           i = 1;
         }
       }
@@ -38,7 +38,7 @@ final class TextPreviewActivity$CustomFlingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.CustomFlingHandler
  * JD-Core Version:    0.7.0.1
  */

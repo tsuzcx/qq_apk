@@ -8,12 +8,12 @@ final class FileCategoryUtil$1
 {
   public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    return -Long.valueOf(paramFileInfo1.g()).compareTo(Long.valueOf(paramFileInfo2.g()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileCategoryUtil.1
  * JD-Core Version:    0.7.0.1
  */

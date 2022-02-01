@@ -17,8 +17,10 @@ import com.tencent.mobileqq.qqfloatingwindow.listener.IWindowClickListener;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IWindowStatusListener;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
+import com.tencent.mobileqq.qroute.annotation.QRouteFactory;
 
 @QAPI(process={"all"})
+@QRouteFactory(singleton=false)
 public abstract interface IFloatingWrapperManager
   extends QRouteApi
 {
@@ -43,6 +45,8 @@ public abstract interface IFloatingWrapperManager
   public abstract boolean getContainerIsFloating();
   
   public abstract boolean getContainerIsSmallFloating();
+  
+  public abstract int getFloatWindowShapeType();
   
   public abstract int getFloatingContainerCenterX();
   
@@ -72,6 +76,8 @@ public abstract interface IFloatingWrapperManager
   
   public abstract void initWidgetWrapper(View paramView);
   
+  public abstract boolean isFloatWindowHasZoomed();
+  
   public abstract void onViewClick(View paramView, IUpdateUICallbackListener paramIUpdateUICallbackListener);
   
   public abstract void quitWindowFloat(int paramInt);
@@ -83,6 +89,10 @@ public abstract interface IFloatingWrapperManager
   public abstract void removeRootLayoutParent();
   
   public abstract void removeWidgetWrapperParent();
+  
+  public abstract void resetFloatWindowScale();
+  
+  public abstract void resetWindowSize();
   
   public abstract void restoreLastCenterPosition(FloatingScreenParams paramFloatingScreenParams);
   
@@ -96,9 +106,15 @@ public abstract interface IFloatingWrapperManager
   
   public abstract void setFloatingContainerBackPressListener(IContainerBackPressListener paramIContainerBackPressListener);
   
+  public abstract void setFloatingContainerBackground(Drawable paramDrawable);
+  
+  public abstract void setFloatingContainerBackgroundRes(int paramInt);
+  
   public abstract void setFloatingContainerDragListener(IDragListener paramIDragListener);
   
   public abstract void setFloatingContainerOrientation(boolean paramBoolean);
+  
+  public abstract void setFloatingContainerPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public abstract void setFloatingContainerVisibility(boolean paramBoolean);
   
@@ -124,8 +140,6 @@ public abstract interface IFloatingWrapperManager
   
   public abstract void setVideoWrapperBackground();
   
-  public abstract void setVideoWrapperCorners(int paramInt1, int paramInt2);
-  
   public abstract void setViewEnabled(boolean paramBoolean, View... paramVarArgs);
   
   public abstract void setViewsClick(View.OnClickListener paramOnClickListener, View... paramVarArgs);
@@ -136,13 +150,17 @@ public abstract interface IFloatingWrapperManager
   
   public abstract void updateFloatingView();
   
+  public abstract void updateLocation(int paramInt1, int paramInt2);
+  
   public abstract void updateRatio(float paramFloat);
   
   public abstract void updateShapeType(int paramInt);
+  
+  public abstract void updateSize(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.IFloatingWrapperManager
  * JD-Core Version:    0.7.0.1
  */

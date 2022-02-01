@@ -32,7 +32,7 @@ public class ContactUtilsApiImpl
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     String str = paramString;
     if ((localAppRuntime instanceof QQAppInterface)) {
-      str = ContactUtils.g((QQAppInterface)localAppRuntime, paramString);
+      str = ContactUtils.h((QQAppInterface)localAppRuntime, paramString);
     }
     return str;
   }
@@ -61,7 +61,7 @@ public class ContactUtilsApiImpl
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     String str = paramString;
     if ((localAppRuntime instanceof QQAppInterface)) {
-      str = ContactUtils.f((QQAppInterface)localAppRuntime, paramString);
+      str = ContactUtils.g((QQAppInterface)localAppRuntime, paramString);
     }
     return str;
   }
@@ -119,18 +119,18 @@ public class ContactUtilsApiImpl
     Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MobileQQ.sMobileQQ.getString(2131719133));
+    localStringBuilder.append(MobileQQ.sMobileQQ.getString(2131916669));
     localStringBuilder.append(((AppRuntime)localObject).getCurrentAccountUin());
     localObject = localStringBuilder.toString();
     if (localSharedPreferences.contains((String)localObject)) {
       return localSharedPreferences.getBoolean((String)localObject, true);
     }
-    return OnlineStatusUtils.a(paramFriends) ^ true;
+    return OnlineStatusUtils.b(paramFriends) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relation.api.impl.ContactUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

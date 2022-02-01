@@ -9,20 +9,20 @@ import android.widget.ImageView;
 public class SmartMusicAdapter$SmartMusicVH
   extends RecyclerView.ViewHolder
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  private final View b;
+  private ImageView c;
+  private View d;
+  private boolean e;
   
   public SmartMusicAdapter$SmartMusicVH(SmartMusicAdapter paramSmartMusicAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122329));
-    this.b = paramView.findViewById(2064122214);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122445);
+    this.c = ((ImageView)paramView.findViewById(2063991211));
+    this.d = paramView.findViewById(2063991095);
+    this.b = paramView.findViewById(2063991273);
   }
   
-  private RotateAnimation a()
+  private RotateAnimation e()
   {
     RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
     localRotateAnimation.setDuration(3000L);
@@ -40,35 +40,35 @@ public class SmartMusicAdapter$SmartMusicVH
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (this.c.getVisibility() == 8) {
+        this.c.setVisibility(0);
       }
-      if (this.b.getVisibility() == 8) {
-        this.b.setVisibility(0);
+      if (this.d.getVisibility() == 8) {
+        this.d.setVisibility(0);
       }
     }
-    else if (this.b.getVisibility() == 0)
+    else if (this.d.getVisibility() == 0)
     {
-      this.b.setVisibility(8);
+      this.d.setVisibility(8);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_Boolean = false;
+    this.c.clearAnimation();
+    this.e = false;
   }
   
   public void b(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.b.getVisibility() == 8) {
+        this.b.setVisibility(0);
       }
     }
-    else if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    else if (this.b.getVisibility() == 0) {
+      this.b.setVisibility(8);
     }
   }
   
@@ -79,16 +79,16 @@ public class SmartMusicAdapter$SmartMusicVH
   
   public void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
-      this.jdField_a_of_type_Boolean = true;
+      this.c.startAnimation(e());
+      this.e = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.SmartMusicAdapter.SmartMusicVH
  * JD-Core Version:    0.7.0.1
  */

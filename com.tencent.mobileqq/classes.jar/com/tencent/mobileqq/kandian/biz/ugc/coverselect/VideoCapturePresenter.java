@@ -21,36 +21,36 @@ import java.util.List;
 public class VideoCapturePresenter
   implements CapturePreparedListener
 {
-  private static float jdField_a_of_type_Float = 0.8F;
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private IVideoCaptureView jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView;
-  private CandidateCaptureManager jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager;
-  private ICaptureProxy jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy;
-  private PreviewCaptureManager jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCapturePreviewCaptureManager;
-  private String jdField_a_of_type_JavaLangString;
-  private List<CaptureTask> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private List<CaptureTask> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private static float a = 0.8F;
+  private Activity b;
+  private IVideoCaptureView c;
+  private PreviewCaptureManager d;
+  private CandidateCaptureManager e;
+  private ICaptureProxy f;
+  private List<CaptureTask> g = new ArrayList();
+  private List<CaptureTask> h = new ArrayList();
+  private String i;
+  private float j;
+  private String k;
+  private int l;
+  private int m;
   
   public VideoCapturePresenter(Activity paramActivity, Bundle paramBundle, IVideoCaptureView paramIVideoCaptureView)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView = paramIVideoCaptureView;
+    this.b = paramActivity;
+    this.c = paramIVideoCaptureView;
     a(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy = new SystemCaptureProxy();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager = new CandidateCaptureManager();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCapturePreviewCaptureManager = new PreviewCaptureManager(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager.a(new VideoCapturePresenter.1(this, paramIVideoCaptureView));
+    this.f = new SystemCaptureProxy();
+    this.f.a(this);
+    this.e = new CandidateCaptureManager();
+    this.d = new PreviewCaptureManager(this.f);
+    this.e.a(new VideoCapturePresenter.1(this, paramIVideoCaptureView));
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, List<CaptureTask> paramList)
   {
-    CaptureTask localCaptureTask = new CaptureTask(1, this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2, paramInt3, new VideoCapturePresenter.PreviewCaptureCallback(this, paramList.size()));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCapturePreviewCaptureManager.c(localCaptureTask);
+    CaptureTask localCaptureTask = new CaptureTask(1, this.i, paramInt1, paramInt2, paramInt3, new VideoCapturePresenter.PreviewCaptureCallback(this, paramList.size()));
+    this.d.c(localCaptureTask);
     paramList.add(localCaptureTask);
   }
   
@@ -60,79 +60,79 @@ public class VideoCapturePresenter
     localStringBuilder1.append(URLDrawableHelper.diskCachePath);
     localStringBuilder1.append(File.separator);
     StringBuilder localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder2.append(this.i);
     localStringBuilder2.append("-");
     localStringBuilder2.append(paramInt);
     localStringBuilder1.append(AbsDownloader.getFileName(localStringBuilder2.toString()));
-    this.jdField_b_of_type_JavaLangString = localStringBuilder1.toString();
-    new SavePicTask(paramBitmap, this.jdField_b_of_type_JavaLangString).a();
+    this.k = localStringBuilder1.toString();
+    new SavePicTask(paramBitmap, this.k).a();
   }
   
   private void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("ARG_VIDEO_URL");
-    this.jdField_b_of_type_Float = paramBundle.getFloat("ARG_INITIAL_PROGRESS");
+    this.i = paramBundle.getString("ARG_VIDEO_URL");
+    this.j = paramBundle.getFloat("ARG_INITIAL_PROGRESS");
   }
   
   private void b(int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramInt2)
     {
-      this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.b() * jdField_a_of_type_Float));
-      this.jdField_b_of_type_Int = (paramInt2 * this.jdField_a_of_type_Int / paramInt1);
+      this.l = ((int)(this.c.b() * a));
+      this.m = (paramInt2 * this.l / paramInt1);
     }
     else
     {
-      this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.b() * jdField_a_of_type_Float));
-      this.jdField_a_of_type_Int = (paramInt1 * this.jdField_b_of_type_Int / paramInt2);
+      this.m = ((int)(this.c.b() * a));
+      this.l = (paramInt1 * this.m / paramInt2);
     }
-    paramInt1 = (int)(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.b() * jdField_a_of_type_Float);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt1;
+    paramInt1 = (int)(this.c.b() * a);
+    this.m = paramInt1;
+    this.l = paramInt1;
   }
   
   private void f()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.a();
-    float f;
-    if (j > 0) {
-      f = (float)this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy.a() / j;
+    int i1 = this.c.a();
+    float f1;
+    if (i1 > 0) {
+      f1 = (float)this.f.b() / i1;
     } else {
-      f = 0.0F;
+      f1 = 0.0F;
     }
-    int i = 0;
-    while (i < j)
+    int n = 0;
+    while (n < i1)
     {
-      a((int)(i * f), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-      i += 1;
+      a((int)(n * f1), this.l, this.m, this.g);
+      n += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.a(this.jdField_a_of_type_JavaUtilList);
+    this.c.a(this.g);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.a(), new VideoCapturePresenter.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy.a(this.jdField_a_of_type_JavaLangString, null);
+    this.e.a(this.i, this.c.c(), new VideoCapturePresenter.2(this));
+    this.f.a(this.i, null);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager.a(paramInt);
+    this.e.a(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.h.clear();
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.a())
+    int n = 0;
+    while (n < this.c.a())
     {
-      int j = (i - paramInt2) * CaptureOperateTouchLayout.jdField_a_of_type_Int + paramInt1;
-      a(j, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaUtilList);
-      localArrayList.add(Integer.valueOf(j));
-      i += 1;
+      int i1 = (n - paramInt2) * CaptureOperateTouchLayout.a + paramInt1;
+      a(i1, this.l, this.m, this.h);
+      localArrayList.add(Integer.valueOf(i1));
+      n += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.b(this.jdField_b_of_type_JavaUtilList);
+    this.c.b(this.h);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -150,38 +150,38 @@ public class VideoCapturePresenter
   {
     b(paramInt1, paramInt2);
     f();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy.a());
+    this.c.a(this.f.b());
   }
   
   public void a(OutputPicListener paramOutputPicListener)
   {
-    paramOutputPicListener.a(this.jdField_b_of_type_JavaLangString);
+    paramOutputPicListener.a(this.k);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectIVideoCaptureView.b(this.jdField_a_of_type_JavaUtilList);
+    this.c.b(this.g);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCapturePreviewCaptureManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager.c();
+    this.d.a();
+    this.e.c();
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager.a();
+    this.e.a();
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCandidateCaptureManager.b();
+    this.e.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.VideoCapturePresenter
  * JD-Core Version:    0.7.0.1
  */

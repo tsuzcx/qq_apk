@@ -21,33 +21,28 @@ import org.jetbrains.annotations.NotNull;
 
 public class StickerDrawableDownloader
 {
-  public static final DownloadParams.DecodeHandler a;
-  private int jdField_a_of_type_Int = (int)(BaseApplication.getContext().getResources().getDisplayMetrics().density * 6.0F);
-  private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130838246);
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new StickerDrawableDownloader.1(this);
-  private StickerDrawableDownloader.IResultListener jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader$IResultListener;
-  private ArrayList<URLDrawable> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new StickerDrawableDownloader.2();
-  }
+  public static final DownloadParams.DecodeHandler a = new StickerDrawableDownloader.2();
+  private ArrayList<URLDrawable> b = new ArrayList(5);
+  private boolean c;
+  private long d;
+  private int e = (int)(BaseApplication.getContext().getResources().getDisplayMetrics().density * 6.0F);
+  private Drawable f = BaseApplication.getContext().getResources().getDrawable(2130838305);
+  private StickerDrawableDownloader.IResultListener g;
+  private URLDrawable.URLDrawableListener h = new StickerDrawableDownloader.1(this);
   
   @NotNull
   private URLDrawable.URLDrawableOptions a(IStickerRecEmoticon paramIStickerRecEmoticon)
   {
-    Object localObject = paramIStickerRecEmoticon.a();
+    Object localObject = paramIStickerRecEmoticon.c();
     paramIStickerRecEmoticon = (IStickerRecEmoticon)localObject;
     if (localObject == null) {
       paramIStickerRecEmoticon = URLDrawable.URLDrawableOptions.obtain();
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localObject = this.f;
     paramIStickerRecEmoticon.mLoadingDrawable = ((Drawable)localObject);
     paramIStickerRecEmoticon.mFailedDrawable = ((Drawable)localObject);
     paramIStickerRecEmoticon.mPlayGifImage = true;
-    paramIStickerRecEmoticon.mGifRoundCorner = this.jdField_a_of_type_Int;
+    paramIStickerRecEmoticon.mGifRoundCorner = this.e;
     return paramIStickerRecEmoticon;
   }
   
@@ -70,7 +65,7 @@ public class StickerDrawableDownloader
       return;
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("first_sticker", String.valueOf(this.jdField_a_of_type_Boolean ^ true));
+    localHashMap.put("first_sticker", String.valueOf(this.c ^ true));
     paramURLDrawable = paramURLDrawable.getURL();
     if (paramURLDrawable != null) {
       localHashMap.put("sticker_url", paramURLDrawable.toString());
@@ -80,60 +75,60 @@ public class StickerDrawableDownloader
   
   public void a(StickerDrawableDownloader.IResultListener paramIResultListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader$IResultListener = paramIResultListener;
+    this.g = paramIResultListener;
   }
   
   public void a(List<IStickerRecEmoticon> paramList)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
     int j = paramList.size();
     int i = 5;
     if (j < 5) {
       i = paramList.size();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b.clear();
     j = 0;
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     while (j < i)
     {
       IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)paramList.get(j);
       if (localIStickerRecEmoticon != null)
       {
-        URLDrawable localURLDrawable = localIStickerRecEmoticon.a(localIStickerRecEmoticon.a(), a(localIStickerRecEmoticon));
+        URLDrawable localURLDrawable = localIStickerRecEmoticon.a(localIStickerRecEmoticon.k(), a(localIStickerRecEmoticon));
         if (localURLDrawable != null) {
-          if (((localIStickerRecEmoticon instanceof StickerRecData)) && (((StickerRecData)localIStickerRecEmoticon).e() == 3))
+          if (((localIStickerRecEmoticon instanceof StickerRecData)) && (((StickerRecData)localIStickerRecEmoticon).s() == 3))
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.c = true;
           }
           else
           {
-            localURLDrawable.setDecodeHandler(jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler);
-            localURLDrawable.setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
+            localURLDrawable.setDecodeHandler(a);
+            localURLDrawable.setURLDrawableListener(this.h);
             if (localURLDrawable.getStatus() != 1)
             {
-              this.jdField_a_of_type_JavaUtilArrayList.add(localURLDrawable);
+              this.b.add(localURLDrawable);
               localURLDrawable.addHeader("my_uin", MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
               localURLDrawable.addHeader("emo_big", "true");
               localURLDrawable.startDownload();
             }
             else
             {
-              this.jdField_a_of_type_Boolean = true;
+              this.c = true;
             }
           }
         }
       }
       j += 1;
     }
-    paramList = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader$IResultListener;
+    paramList = this.g;
     if (paramList != null) {
-      paramList.a(this.jdField_a_of_type_Boolean);
+      paramList.a(this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.StickerDrawableDownloader
  * JD-Core Version:    0.7.0.1
  */

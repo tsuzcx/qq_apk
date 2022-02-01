@@ -15,48 +15,48 @@ import mqq.os.MqqHandler;
 public class SystemCaptureProxy
   implements ICaptureProxy
 {
-  private int jdField_a_of_type_Int;
-  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
-  private SparseArray<CaptureTask.OnCaptureCallback> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private String jdField_a_of_type_JavaLangString;
-  private Set<CapturePreparedListener> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private int c;
+  private MediaMetadataRetriever a = new MediaMetadataRetriever();
+  private SparseArray<CaptureTask.OnCaptureCallback> b = new SparseArray();
+  private Set<CapturePreparedListener> c = new HashSet();
+  private String d;
+  private int e;
+  private int f;
+  private int g;
+  private volatile boolean h = true;
+  private volatile boolean i;
   
   private int a(int paramInt)
   {
-    return Integer.parseInt(this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.extractMetadata(paramInt));
+    return Integer.parseInt(this.a.extractMetadata(paramInt));
   }
   
   private Bitmap a(MediaMetadataRetriever paramMediaMetadataRetriever, CaptureTask paramCaptureTask)
   {
     try
     {
-      paramMediaMetadataRetriever = paramMediaMetadataRetriever.getFrameAtTime(paramCaptureTask.c * 1000, 0);
+      paramMediaMetadataRetriever = paramMediaMetadataRetriever.getFrameAtTime(paramCaptureTask.d * 1000, 0);
       return paramMediaMetadataRetriever;
     }
     catch (Throwable paramMediaMetadataRetriever)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getFrameAtTime failed for captureTask");
-      localStringBuilder.append(paramCaptureTask.c);
+      localStringBuilder.append(paramCaptureTask.d);
       QLog.e("SystemCaptureProxy", 1, localStringBuilder.toString(), paramMediaMetadataRetriever);
     }
     return null;
   }
   
-  private void d()
+  private void e()
   {
     try
     {
       QLog.d("SystemCaptureProxy", 1, "prepare...");
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(this.jdField_a_of_type_JavaLangString);
+      this.a.setDataSource(this.d);
       QLog.d("SystemCaptureProxy", 1, "prepare after...");
-      this.jdField_a_of_type_Int = a(9);
-      this.jdField_b_of_type_Int = a(18);
-      this.c = a(19);
+      this.e = a(9);
+      this.f = a(18);
+      this.g = a(19);
       ThreadManager.getUIHandler().post(new SystemCaptureProxy.3(this));
       return;
     }
@@ -66,27 +66,22 @@ public class SystemCaptureProxy
     }
   }
   
-  private void e()
+  private void f()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       CapturePreparedListener localCapturePreparedListener = (CapturePreparedListener)localIterator.next();
       if (localCapturePreparedListener != null) {
-        localCapturePreparedListener.a(this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
+        localCapturePreparedListener.a(this.f, this.g, this.e);
       }
     }
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public void a()
   {
-    this.jdField_b_of_type_Boolean = true;
-    MediaMetadataRetriever localMediaMetadataRetriever = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+    this.i = true;
+    MediaMetadataRetriever localMediaMetadataRetriever = this.a;
     if (localMediaMetadataRetriever != null) {
       localMediaMetadataRetriever.release();
     }
@@ -96,7 +91,7 @@ public class SystemCaptureProxy
   
   public void a(CapturePreparedListener paramCapturePreparedListener)
   {
-    this.jdField_a_of_type_JavaUtilSet.add(paramCapturePreparedListener);
+    this.c.add(paramCapturePreparedListener);
   }
   
   public void a(CaptureTask paramCaptureTask, CaptureTask.OnCaptureCallback paramOnCaptureCallback)
@@ -115,18 +110,23 @@ public class SystemCaptureProxy
   
   public void a(String paramString, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
     QLog.d("SystemCaptureProxy", 1, "prepare before...");
     ThreadManager.excute(new SystemCaptureProxy.1(this), 16, null, true);
   }
   
-  public void b() {}
+  public long b()
+  {
+    return this.e;
+  }
   
   public void c() {}
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.capture.SystemCaptureProxy
  * JD-Core Version:    0.7.0.1
  */

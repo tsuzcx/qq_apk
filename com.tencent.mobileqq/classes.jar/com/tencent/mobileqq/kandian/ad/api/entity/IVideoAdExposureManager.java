@@ -7,8 +7,6 @@ import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam;
 
 public abstract interface IVideoAdExposureManager
 {
-  public abstract VideoInfo a(int paramInt);
-  
   public abstract void a();
   
   public abstract void a(int paramInt1, int paramInt2, VideoInfo paramVideoInfo);
@@ -25,15 +23,17 @@ public abstract interface IVideoAdExposureManager
   
   public abstract boolean a(int paramInt);
   
-  public abstract VideoInfo b(int paramInt);
-  
-  public abstract void b(int paramInt);
-  
   public abstract void b(int paramInt, VideoPlayParam paramVideoPlayParam, Object paramObject);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract VideoInfo d(int paramInt);
+  
+  public abstract VideoInfo i(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.entity.IVideoAdExposureManager
  * JD-Core Version:    0.7.0.1
  */

@@ -40,13 +40,13 @@ public class BaseViewHolder<M>
     return localView1;
   }
   
-  public void a() {}
-  
   public void a(M paramM) {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder
  * JD-Core Version:    0.7.0.1
  */

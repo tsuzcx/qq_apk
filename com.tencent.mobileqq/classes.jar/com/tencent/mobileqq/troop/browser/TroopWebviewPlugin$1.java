@@ -31,7 +31,7 @@ class TroopWebviewPlugin$1
         localJSONObject.put("ret", -1);
         localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      this.b.callJs(this.a, new String[] { localJSONObject.toString() });
       return;
     }
     catch (JSONException paramBundle)
@@ -42,7 +42,7 @@ class TroopWebviewPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopWebviewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

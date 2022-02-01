@@ -16,62 +16,62 @@ public class WSDramaCommonTopAreaController
   extends AbsWsUIGroup<Object>
   implements View.OnClickListener
 {
-  private final WSDramaPageFragment a;
+  private final WSDramaPageFragment g;
   
   public WSDramaCommonTopAreaController(WSDramaPageFragment paramWSDramaPageFragment)
   {
     super(paramWSDramaPageFragment.getContext());
-    this.a = paramWSDramaPageFragment;
+    this.g = paramWSDramaPageFragment;
   }
   
-  private void f()
+  private void l()
   {
-    if (this.a.getBaseActivity() != null)
+    if (this.g.getBaseActivity() != null)
     {
-      this.a.getBaseActivity().doOnBackPressed();
-      g();
+      this.g.getBaseActivity().doOnBackPressed();
+      m();
     }
   }
   
-  private void g()
+  private void m()
   {
-    AbsWSDramaHolder localAbsWSDramaHolder = this.a.a();
-    String str = this.a.a();
-    WSDramaBeaconReport.c(WSDramaUtils.b(localAbsWSDramaHolder), WSDramaUtils.a(localAbsWSDramaHolder), WSDramaUtils.c(localAbsWSDramaHolder), WSDramaUtils.a(localAbsWSDramaHolder), str);
+    AbsWSDramaHolder localAbsWSDramaHolder = this.g.e();
+    String str = this.g.b();
+    WSDramaBeaconReport.c(WSDramaUtils.b(localAbsWSDramaHolder), WSDramaUtils.a(localAbsWSDramaHolder), WSDramaUtils.c(localAbsWSDramaHolder), WSDramaUtils.d(localAbsWSDramaHolder), str);
   }
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 1929641987;
-  }
-  
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    if (this.a == null) {
+    return 1929773067;
+  }
+  
+  protected void j()
+  {
+    if (this.g == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(1929576453);
-    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
-    a(1929576454).setOnClickListener(this);
+    RelativeLayout localRelativeLayout = (RelativeLayout)c(1929707528);
+    WSVerticalUtils.a(this.g.getBaseActivity(), localRelativeLayout);
+    c(1929707529).setOnClickListener(this);
   }
   
   @SuppressLint({"NonConstantResourceId"})
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 1929576454) {
-      f();
+    if (paramView.getId() == 1929707529) {
+      l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.topbar.WSDramaCommonTopAreaController
  * JD-Core Version:    0.7.0.1
  */

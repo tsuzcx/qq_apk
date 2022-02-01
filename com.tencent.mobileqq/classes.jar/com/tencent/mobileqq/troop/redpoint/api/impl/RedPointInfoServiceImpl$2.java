@@ -15,16 +15,16 @@ class RedPointInfoServiceImpl$2
   public void run()
   {
     RedPointInfoServiceImpl.2.1 local1 = new RedPointInfoServiceImpl.2.1(this);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     while (localIterator.hasNext()) {
       local1.add((Integer)((Map.Entry)localIterator.next()).getKey());
     }
-    RedPointInfoServiceImpl.access$000(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqTroopRedpointRedPointInfo, local1);
+    RedPointInfoServiceImpl.access$000(this.this$0, this.b, this.c, this.d, local1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.api.impl.RedPointInfoServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ class SubAccountApiImpl$1
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountControlService$SubAccountUnReadItem.jdField_a_of_type_Int;
+    return this.a.a;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountControlService$SubAccountUnReadItem.jdField_a_of_type_Boolean;
+    return this.a.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

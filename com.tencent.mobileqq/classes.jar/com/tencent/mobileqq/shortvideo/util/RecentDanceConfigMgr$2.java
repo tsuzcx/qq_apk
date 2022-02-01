@@ -20,23 +20,23 @@ final class RecentDanceConfigMgr$2
       paramNetResp = paramNetResp.mReq;
       if (new File(paramNetResp.mOutPath).exists())
       {
-        localObject = RecentDanceConfigMgr.a(paramNetResp.mOutPath);
-        if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
+        localObject = RecentDanceConfigMgr.c(paramNetResp.mOutPath);
+        if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(this.a.icon_md5)))
         {
           if (QLog.isColorLevel()) {
             QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
           }
-          FileUtils.rename(paramNetResp.mOutPath, this.jdField_a_of_type_JavaLangString);
-          RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
+          FileUtils.rename(paramNetResp.mOutPath, this.b);
+          RecentDanceConfigMgr.a(this.a, this.b);
           return;
         }
         FileUtils.deleteFile(paramNetResp.mOutPath);
-        FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+        FileUtils.deleteFile(this.b);
         if (QLog.isColorLevel())
         {
           paramNetResp = new StringBuilder();
           paramNetResp.append("processNetWork onResp: item.icon_md5");
-          paramNetResp.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5);
+          paramNetResp.append(this.a.icon_md5);
           paramNetResp.append(" md5=");
           paramNetResp.append((String)localObject);
           QLog.i("RecentDanceConfigMgr", 2, paramNetResp.toString());
@@ -78,7 +78,7 @@ final class RecentDanceConfigMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.2
  * JD-Core Version:    0.7.0.1
  */

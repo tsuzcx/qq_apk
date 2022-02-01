@@ -10,13 +10,13 @@ class ReadInJoyChannelActivity$2
   
   public void run()
   {
-    ReadInJoyGlobalReporter.a().a(true);
-    ReadInJoyGlobalReporter.a().b(this.this$0.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
+    ReadInJoyGlobalReporter.e().a(true);
+    ReadInJoyGlobalReporter.e().b(this.this$0.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyChannelActivity.2
  * JD-Core Version:    0.7.0.1
  */

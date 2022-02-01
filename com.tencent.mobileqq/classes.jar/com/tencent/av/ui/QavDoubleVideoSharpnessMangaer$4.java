@@ -22,18 +22,18 @@ class QavDoubleVideoSharpnessMangaer$4
     {
       ReportController.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
       this.a.c();
-      if (!UITools.a(QavDoubleVideoSharpnessMangaer.a(this.a)))
+      if (!UITools.e(QavDoubleVideoSharpnessMangaer.d(this.a)))
       {
-        QavDoubleVideoSharpnessMangaer.a(this.a).a(QavDoubleVideoSharpnessMangaer.a(this.a));
+        QavDoubleVideoSharpnessMangaer.c(this.a).a(QavDoubleVideoSharpnessMangaer.d(this.a));
         return;
       }
-      QavDoubleVideoSharpnessMangaer.a(this.a).b(QavDoubleVideoSharpnessMangaer.a(this.a));
+      QavDoubleVideoSharpnessMangaer.c(this.a).b(QavDoubleVideoSharpnessMangaer.d(this.a));
       return;
     }
     if (paramInt == 0)
     {
       paramDialogInterface = this.a;
-      QavDoubleVideoSharpnessMangaer.a(paramDialogInterface, QavDoubleVideoSharpnessMangaer.a(paramDialogInterface).a().w);
+      QavDoubleVideoSharpnessMangaer.a(paramDialogInterface, QavDoubleVideoSharpnessMangaer.a(paramDialogInterface).k().ai);
     }
   }
 }

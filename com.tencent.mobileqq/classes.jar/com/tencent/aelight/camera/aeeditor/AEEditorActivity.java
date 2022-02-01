@@ -7,23 +7,28 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.FrameLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 import com.tencent.aelight.camera.ae.AEKitForQQ;
+import com.tencent.aelight.camera.ae.biz.circle.AECircleAutoTemplateMidPageFragment;
 import com.tencent.aelight.camera.ae.download.AEResUtil;
 import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
 import com.tencent.aelight.camera.ae.util.AEThemeUtil;
+import com.tencent.aelight.camera.aeeditor.arch.AEEditorBaseFragment;
 import com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectIpcModule;
+import com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment;
 import com.tencent.aelight.camera.entry.api.AECameraEntry;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
+import com.tencent.qcircle.tavcut.TAVCut;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
-import com.tencent.tavcut.TAVCut;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
@@ -32,7 +37,6 @@ import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 import java.util.ArrayList;
@@ -43,36 +47,19 @@ public class AEEditorActivity
   extends PeakFragmentActivity
   implements LifecycleOwner, ViewModelStoreOwner
 {
-  private final LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-  private ViewModelStore jdField_a_of_type_AndroidxLifecycleViewModelStore;
-  private AEEditorModuleManager jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
-  private List<AEEditorActivity.InitResult> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<String> b = new ArrayList();
-  private List<String> c = new ArrayList();
-  
-  private void a()
-  {
-    if (!AEKitForQQ.a())
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new AEEditorActivity.InitResult(-1));
-    }
-    else
-    {
-      a(FeatureManager.Features.YT_COMMON.init(), -2);
-      a(FeatureManager.Features.PTU_TOOLS.init(), -3);
-      a(FeatureManager.Features.PTU_ALGO.init(), -4);
-      a(FeatureManager.Features.LIGHT_SDK.init(), -8);
-      a(FeatureManager.Features.IMAGE_ALGO.init(), -7);
-    }
-    TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), AEResUtil.g(), new AEEditorActivity.1(this));
-  }
+  private final LifecycleRegistry a = new LifecycleRegistry(this);
+  private ViewModelStore b;
+  private AEEditorModuleManager c;
+  private List<AEEditorActivity.InitResult> d = new ArrayList();
+  private List<String> e = new ArrayList();
+  private List<String> f = new ArrayList();
+  private boolean g;
   
   private void a(Lifecycle.Event paramEvent)
   {
     try
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(paramEvent);
+      this.a.handleLifecycleEvent(paramEvent);
       return;
     }
     catch (Throwable paramEvent)
@@ -86,11 +73,28 @@ public class AEEditorActivity
   private void a(boolean paramBoolean, int paramInt)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.add(new AEEditorActivity.InitResult(paramInt));
+      this.d.add(new AEEditorActivity.InitResult(paramInt));
     }
   }
   
   private void b()
+  {
+    if (!AEKitForQQ.a())
+    {
+      this.d.add(new AEEditorActivity.InitResult(-1));
+    }
+    else
+    {
+      a(FeatureManager.Features.YT_COMMON.init(), -2);
+      a(FeatureManager.Features.PTU_TOOLS.init(), -3);
+      a(FeatureManager.Features.PTU_ALGO.init(), -4);
+      a(FeatureManager.Features.LIGHT_SDK.init(), -8);
+      a(FeatureManager.Features.IMAGE_ALGO.init(), -7);
+    }
+    TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), AEResUtil.n(), new AEEditorActivity.1(this));
+  }
+  
+  private void c()
   {
     VideoReport.addToDetectionWhitelist(getActivity());
     String str;
@@ -104,12 +108,12 @@ public class AEEditorActivity
     QLog.i("AEEditorActivity", 1, "reportDaTongRegister  subPage: AEEditorActivity");
   }
   
-  private void c()
+  private void d()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (this.d.size() > 0)
     {
       localObject1 = new StringBuilder();
-      Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject2 = this.d.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         AEEditorActivity.InitResult localInitResult = (AEEditorActivity.InitResult)((Iterator)localObject2).next();
@@ -126,26 +130,26 @@ public class AEEditorActivity
       return;
     }
     VideoThumbProviderManager.initLruCacheSize(3072);
-    Object localObject1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2064056533);
+    Object localObject1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2063925492);
     if ((localObject1 instanceof BitmapDrawable)) {
       VideoThumbProviderManager.getInstance().setDefaultBitmap(((BitmapDrawable)localObject1).getBitmap());
     } else if ((localObject1 instanceof SkinnableBitmapDrawable)) {
       VideoThumbProviderManager.getInstance().setDefaultBitmap(((SkinnableBitmapDrawable)localObject1).getBitmap());
     }
-    d();
+    e();
   }
   
-  private void d()
+  private void e()
   {
     Bundle localBundle = new Bundle();
     if (getIntent().getExtras() != null) {
       localBundle = getIntent().getExtras();
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager = new AEEditorModuleManager(getSupportFragmentManager());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager.a(localBundle);
+    this.c = new AEEditorModuleManager(getSupportFragmentManager());
+    this.c.a(localBundle);
   }
   
-  private void e()
+  private void f()
   {
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("editorType", -1);
@@ -153,28 +157,28 @@ public class AEEditorActivity
     if ((j != AECameraEntry.x.a()) && (j != AECameraEntry.z.a()))
     {
       if ((j != AECameraEntry.y.a()) && (j != AECameraEntry.A.a())) {
-        AEBaseReportParam.a().a().b = AEBaseReportParam.a.longValue();
+        AEBaseReportParam.a().n().v = AEBaseReportParam.a.longValue();
       } else if (i == 0) {
-        AEBaseReportParam.a().a().b = AEBaseReportParam.d.longValue();
+        AEBaseReportParam.a().n().v = AEBaseReportParam.d.longValue();
       } else if (i == 1) {
-        AEBaseReportParam.a().a().b = AEBaseReportParam.e.longValue();
+        AEBaseReportParam.a().n().v = AEBaseReportParam.e.longValue();
       } else {
-        AEBaseReportParam.a().a().b = AEBaseReportParam.a.longValue();
+        AEBaseReportParam.a().n().v = AEBaseReportParam.a.longValue();
       }
     }
     else if (i == 0) {
-      AEBaseReportParam.a().a().b = AEBaseReportParam.b.longValue();
+      AEBaseReportParam.a().n().v = AEBaseReportParam.b.longValue();
     } else if (i == 1) {
-      AEBaseReportParam.a().a().b = AEBaseReportParam.c.longValue();
+      AEBaseReportParam.a().n().v = AEBaseReportParam.c.longValue();
     } else {
-      AEBaseReportParam.a().a().b = AEBaseReportParam.a.longValue();
+      AEBaseReportParam.a().n().v = AEBaseReportParam.a.longValue();
     }
-    AEBaseReportParam.a().a().a = AEBaseReportParam.a().b();
+    AEBaseReportParam.a().n().d = AEBaseReportParam.a().S();
   }
   
   public AEEditorModuleManager a()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
+    return this.c;
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -186,7 +190,7 @@ public class AEEditorActivity
     ((StringBuilder)localObject).append(", resultCode=");
     ((StringBuilder)localObject).append(paramInt2);
     AEQLog.b("AEEditorActivity", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
+    localObject = this.c;
     if (localObject != null) {
       ((AEEditorModuleManager)localObject).a(paramInt1, paramInt2, paramIntent);
     }
@@ -194,7 +198,7 @@ public class AEEditorActivity
   
   public void doOnBackPressed()
   {
-    AEEditorModuleManager localAEEditorModuleManager = this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
+    AEEditorModuleManager localAEEditorModuleManager = this.c;
     if (localAEEditorModuleManager != null) {
       localAEEditorModuleManager.a(this, true);
     }
@@ -203,10 +207,10 @@ public class AEEditorActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     AEThemeUtil.a();
-    this.jdField_a_of_type_Boolean = AEThemeUtil.a();
+    this.g = AEThemeUtil.b();
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
-    setImmersiveStatus(getResources().getColor(2063925252));
+    setImmersiveStatus(getResources().getColor(2063794180));
     try
     {
       super.doOnCreate(paramBundle);
@@ -217,32 +221,48 @@ public class AEEditorActivity
       paramBundle.printStackTrace();
     }
     a(Lifecycle.Event.ON_CREATE);
-    setContentView(2064318547);
+    setContentView(2064056419);
     if (Build.VERSION.SDK_INT >= 19)
     {
-      paramBundle = (FrameLayout)findViewById(2064122578);
+      paramBundle = (FrameLayout)findViewById(2063991396);
       int i = getStatusBarHeight();
       paramBundle.setPadding(paramBundle.getPaddingLeft(), paramBundle.getPaddingTop() + i, paramBundle.getPaddingRight(), paramBundle.getPaddingBottom());
     }
     if (ImmersiveUtils.couldSetStatusTextColor()) {
       ImmersiveUtils.setStatusTextColor(true, getWindow());
     }
-    a();
-    c();
-    AEEditorEffectIpcModule.a();
-    e();
     b();
+    d();
+    AEEditorEffectIpcModule.b();
+    f();
+    c();
     return true;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    AEEditorEffectIpcModule.b();
+    AEEditorEffectIpcModule.c();
     a(Lifecycle.Event.ON_DESTROY);
     VideoThumbProviderManager.getInstance().release(String.valueOf(hashCode()));
-    if ((this.jdField_a_of_type_AndroidxLifecycleViewModelStore != null) && (!isChangingConfigurations())) {
-      this.jdField_a_of_type_AndroidxLifecycleViewModelStore.clear();
+    if ((this.b != null) && (!isChangingConfigurations())) {
+      this.b.clear();
+    }
+  }
+  
+  protected void doOnNewIntent(Intent paramIntent)
+  {
+    super.doOnNewIntent(paramIntent);
+    Object localObject = getSupportFragmentManager().findFragmentById(2063990865);
+    if (((localObject instanceof AEEditorVideoEditFragment)) || ((localObject instanceof AECircleAutoTemplateMidPageFragment)))
+    {
+      localObject = (AEEditorBaseFragment)localObject;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("editor_video_template_id", paramIntent.getExtras().getString("editor_video_template_id"));
+      localBundle.putSerializable("ae_album_selected_media_models", paramIntent.getExtras().getSerializable("ae_album_selected_media_models"));
+      localBundle.putBoolean("ae_video_editor_entrance_mid_page", paramIntent.getExtras().getBoolean("ae_video_editor_entrance_mid_page"));
+      localBundle.putSerializable("AE_AUTO_TEMPLATE_DOWNLOADED_MATERIAL", paramIntent.getExtras().getSerializable("AE_AUTO_TEMPLATE_DOWNLOADED_MATERIAL"));
+      ((AEEditorBaseFragment)localObject).b().b(null, localBundle);
     }
   }
   
@@ -279,7 +299,7 @@ public class AEEditorActivity
     ((StringBuilder)localObject).append("doOnWindowFocusChanged isFocused:");
     ((StringBuilder)localObject).append(paramBoolean);
     AEQLog.b("AEEditorActivity", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
+    localObject = this.c;
     if (localObject != null) {
       ((AEEditorModuleManager)localObject).a(paramBoolean);
     }
@@ -290,10 +310,10 @@ public class AEEditorActivity
   {
     if (BaseApplicationImpl.getApplication() != null)
     {
-      if (this.jdField_a_of_type_AndroidxLifecycleViewModelStore == null) {
-        this.jdField_a_of_type_AndroidxLifecycleViewModelStore = new ViewModelStore();
+      if (this.b == null) {
+        this.b = new ViewModelStore();
       }
-      return this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
+      return this.b;
     }
     throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
   }
@@ -305,7 +325,7 @@ public class AEEditorActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.AEEditorActivity
  * JD-Core Version:    0.7.0.1
  */

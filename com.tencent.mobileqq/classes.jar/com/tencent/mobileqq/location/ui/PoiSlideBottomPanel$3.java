@@ -12,16 +12,16 @@ class PoiSlideBottomPanel$3
   public void onAnimationCancel(Animator paramAnimator)
   {
     PoiSlideBottomPanel.c(this.a, false);
-    if (PoiSlideBottomPanel.e(this.a) != null) {
-      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
+    if (PoiSlideBottomPanel.g(this.a) != null) {
+      PoiSlideBottomPanel.h(this.a).displayPanelFinish();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     PoiSlideBottomPanel.b(this.a, false);
-    if (PoiSlideBottomPanel.c(this.a) != null) {
-      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
+    if (PoiSlideBottomPanel.e(this.a) != null) {
+      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
     }
   }
   
@@ -34,7 +34,7 @@ class PoiSlideBottomPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.PoiSlideBottomPanel.3
  * JD-Core Version:    0.7.0.1
  */

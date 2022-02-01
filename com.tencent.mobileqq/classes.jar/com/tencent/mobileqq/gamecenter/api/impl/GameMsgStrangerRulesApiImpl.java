@@ -18,7 +18,7 @@ public class GameMsgStrangerRulesApiImpl
   {
     GameMsgStrangerRules localGameMsgStrangerRules = this.mInstance;
     if (localGameMsgStrangerRules != null) {
-      return localGameMsgStrangerRules.a();
+      return localGameMsgStrangerRules.b();
     }
     return false;
   }
@@ -27,13 +27,13 @@ public class GameMsgStrangerRulesApiImpl
   {
     GameMsgStrangerRules localGameMsgStrangerRules = this.mInstance;
     if (localGameMsgStrangerRules != null) {
-      localGameMsgStrangerRules.b();
+      localGameMsgStrangerRules.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.GameMsgStrangerRulesApiImpl
  * JD-Core Version:    0.7.0.1
  */

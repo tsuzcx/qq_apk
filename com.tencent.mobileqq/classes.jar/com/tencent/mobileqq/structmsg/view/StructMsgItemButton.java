@@ -24,47 +24,45 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemButton
   extends AbsStructMsgTextElement
 {
-  View.OnClickListener a;
-  public String as = null;
-  public String at = null;
-  public String au = null;
-  public String av = null;
-  long c;
-  public int o = 999;
+  public String aM = null;
+  public String aN = null;
+  public String aO = null;
+  public String aP = null;
+  public int aQ = 999;
+  long aR = -1L;
+  View.OnClickListener aS = new StructMsgItemButton.3(this);
   
   public StructMsgItemButton()
   {
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new StructMsgItemButton.3(this);
-    this.jdField_a_of_type_JavaLangString = "button";
+    this.b = "button";
   }
   
-  private void b()
+  private void t()
   {
-    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (this.jdField_c_of_type_JavaLangString.equals("pay")))
+    if ((!TextUtils.isEmpty(this.e)) && (this.e.equals("pay")))
     {
       Object localObject;
-      if (TextUtils.isEmpty(this.e)) {
-        localObject = this.d;
+      if (TextUtils.isEmpty(this.g)) {
+        localObject = this.f;
       } else {
-        localObject = this.e;
+        localObject = this.g;
       }
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
           localObject = new JSONObject((String)localObject);
           if (((JSONObject)localObject).has("appId")) {
-            this.as = ((JSONObject)localObject).getString("appId");
+            this.aM = ((JSONObject)localObject).getString("appId");
           }
           if (((JSONObject)localObject).has("orderId")) {
-            this.at = ((JSONObject)localObject).getString("orderId");
+            this.aN = ((JSONObject)localObject).getString("orderId");
           }
           if (((JSONObject)localObject).has("package")) {
-            this.av = ((JSONObject)localObject).getString("package");
+            this.aP = ((JSONObject)localObject).getString("package");
           }
           if (((JSONObject)localObject).has("expireTime"))
           {
-            this.au = ((JSONObject)localObject).getString("expireTime");
+            this.aO = ((JSONObject)localObject).getString("expireTime");
             return;
           }
         }
@@ -87,32 +85,32 @@ public class StructMsgItemButton
     int i = paramBundle.getInt("Layout3ButtonCount", 0);
     int j = paramBundle.getInt("Layout3ButtonIndex", -1);
     paramContext = (TextView)super.a(paramContext, paramView, paramBundle);
-    paramContext.setBackgroundResource(2130838254);
+    paramContext.setBackgroundResource(2130838313);
     if (i > 1) {
       if (j == 0)
       {
-        paramContext.setBackgroundResource(2130838247);
+        paramContext.setBackgroundResource(2130838306);
       }
       else
       {
         if (j == i - 1)
         {
-          paramContext.setBackgroundResource(2130838251);
+          paramContext.setBackgroundResource(2130838310);
           i = 2;
           break label91;
         }
-        paramContext.setBackgroundResource(2130838249);
+        paramContext.setBackgroundResource(2130838308);
         i = 1;
         break label91;
       }
     }
     i = 0;
     label91:
-    paramContext.setTag(2131377956, Integer.valueOf(i));
+    paramContext.setTag(2131446443, Integer.valueOf(i));
     paramContext.setGravity(17);
     paramContext.setSingleLine();
     paramContext.setEllipsize(null);
-    if ((b()) && ((!b()) || (!a())))
+    if ((r()) && ((!r()) || (!q())))
     {
       paramContext.setClickable(false);
       paramContext.setOnClickListener(null);
@@ -121,52 +119,35 @@ public class StructMsgItemButton
       return paramContext;
     }
     paramContext.setClickable(true);
-    paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramContext.setOnClickListener(this.aS);
     paramContext.setOnLongClickListener(new StructMsgItemButton.1(this));
     paramContext.setOnTouchListener(new StructMsgItemButton.2(this));
     return paramContext;
   }
   
-  public String a()
-  {
-    return "Confirm";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.b = paramObjectInput.readUTF();
-    this.jdField_c_of_type_JavaLangString = paramObjectInput.readUTF();
     this.d = paramObjectInput.readUTF();
     this.e = paramObjectInput.readUTF();
     this.f = paramObjectInput.readUTF();
-    if (this.jdField_a_of_type_Int > 5)
+    this.g = paramObjectInput.readUTF();
+    this.h = paramObjectInput.readUTF();
+    if (this.a > 5)
     {
-      this.j = paramObjectInput.readUTF();
-      this.k = paramObjectInput.readUTF();
       this.l = paramObjectInput.readUTF();
+      this.m = paramObjectInput.readUTF();
+      this.n = paramObjectInput.readUTF();
     }
-    b();
+    t();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    Object localObject = this.b;
+    Object localObject = this.d;
     String str = "";
     if (localObject == null) {
-      localObject = "";
-    } else {
-      localObject = this.b;
-    }
-    paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_c_of_type_JavaLangString == null) {
-      localObject = "";
-    } else {
-      localObject = this.jdField_c_of_type_JavaLangString;
-    }
-    paramObjectOutput.writeUTF((String)localObject);
-    if (this.d == null) {
       localObject = "";
     } else {
       localObject = this.d;
@@ -184,24 +165,36 @@ public class StructMsgItemButton
       localObject = this.f;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_a_of_type_Int > 5)
+    if (this.g == null) {
+      localObject = "";
+    } else {
+      localObject = this.g;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.h == null) {
+      localObject = "";
+    } else {
+      localObject = this.h;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.a > 5)
     {
-      if (this.j == null) {
-        localObject = "";
-      } else {
-        localObject = this.j;
-      }
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.k == null) {
-        localObject = "";
-      } else {
-        localObject = this.k;
-      }
-      paramObjectOutput.writeUTF((String)localObject);
       if (this.l == null) {
-        localObject = str;
+        localObject = "";
       } else {
         localObject = this.l;
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      if (this.m == null) {
+        localObject = "";
+      } else {
+        localObject = this.m;
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      if (this.n == null) {
+        localObject = str;
+      } else {
+        localObject = this.n;
       }
       paramObjectOutput.writeUTF((String)localObject);
     }
@@ -239,7 +232,7 @@ public class StructMsgItemButton
             int j = 1;
             if (!bool) {
               i = -4;
-            } else if (c()) {
+            } else if (s()) {
               i = -6;
             } else {
               j = 0;
@@ -247,71 +240,70 @@ public class StructMsgItemButton
             k = i;
             if (j != 0)
             {
-              paramStructMsgForGeneralShare.savePayInfo(paramString.getApplication(), this.at, i);
+              paramStructMsgForGeneralShare.savePayInfo(paramString.getApplication(), this.aN, i);
               k = i;
             }
           }
         }
       }
     }
-    b(k);
+    c(k);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
     super.a(paramXmlSerializer);
     paramXmlSerializer.startTag(null, "button");
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "action", this.jdField_c_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      paramXmlSerializer.attribute(null, "actionData", this.d);
-    }
     if (!TextUtils.isEmpty(this.e)) {
-      paramXmlSerializer.attribute(null, "a_actionData", this.e);
+      paramXmlSerializer.attribute(null, "action", this.e);
     }
     if (!TextUtils.isEmpty(this.f)) {
-      paramXmlSerializer.attribute(null, "i_actionData", this.f);
+      paramXmlSerializer.attribute(null, "actionData", this.f);
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      paramXmlSerializer.attribute(null, "url", this.b);
+    if (!TextUtils.isEmpty(this.g)) {
+      paramXmlSerializer.attribute(null, "a_actionData", this.g);
     }
-    if (!TextUtils.isEmpty(this.j)) {
-      paramXmlSerializer.attribute(null, "index", this.j);
+    if (!TextUtils.isEmpty(this.h)) {
+      paramXmlSerializer.attribute(null, "i_actionData", this.h);
     }
-    if (!TextUtils.isEmpty(this.k)) {
-      paramXmlSerializer.attribute(null, "index_name", this.k);
+    if (!TextUtils.isEmpty(this.d)) {
+      paramXmlSerializer.attribute(null, "url", this.d);
     }
     if (!TextUtils.isEmpty(this.l)) {
-      paramXmlSerializer.attribute(null, "index_type", this.l);
+      paramXmlSerializer.attribute(null, "index", this.l);
+    }
+    if (!TextUtils.isEmpty(this.m)) {
+      paramXmlSerializer.attribute(null, "index_name", this.m);
+    }
+    if (!TextUtils.isEmpty(this.n)) {
+      paramXmlSerializer.attribute(null, "index_type", this.n);
     }
     paramXmlSerializer.endTag(null, "button");
-  }
-  
-  public boolean a()
-  {
-    int i = this.o;
-    return (i != -6) && (i != -4) && (i != 0) && (i != 23001027);
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
   {
     super.a(paramStructMsgNode);
-    this.jdField_c_of_type_JavaLangString = paramStructMsgNode.a("action");
-    this.d = paramStructMsgNode.a("actionData");
-    this.e = paramStructMsgNode.a("a_actionData");
-    this.f = paramStructMsgNode.a("i_actionData");
-    this.b = paramStructMsgNode.a("url");
-    this.j = paramStructMsgNode.a("index");
-    this.k = paramStructMsgNode.a("index_name");
-    this.l = paramStructMsgNode.a("index_type");
-    b();
+    this.e = paramStructMsgNode.a("action");
+    this.f = paramStructMsgNode.a("actionData");
+    this.g = paramStructMsgNode.a("a_actionData");
+    this.h = paramStructMsgNode.a("i_actionData");
+    this.d = paramStructMsgNode.a("url");
+    this.l = paramStructMsgNode.a("index");
+    this.m = paramStructMsgNode.a("index_name");
+    this.n = paramStructMsgNode.a("index_type");
+    t();
     return true;
   }
   
-  public void b(int paramInt)
+  public String b()
   {
-    this.o = paramInt;
+    return "Confirm";
+  }
+  
+  public void c(int paramInt)
+  {
+    this.aQ = paramInt;
     if (paramInt != -6)
     {
       if (paramInt != 23001027)
@@ -325,39 +317,55 @@ public class StructMsgItemButton
         }
         else
         {
-          a(HardCodeUtil.a(2131714417));
-          b("#ff777777");
+          b(HardCodeUtil.a(2131911928));
+          c("#ff777777");
         }
       }
       else {
-        this.o = 0;
+        this.aQ = 0;
       }
-      a(HardCodeUtil.a(2131714410));
-      b("#ff777777");
+      b(HardCodeUtil.a(2131911921));
+      c("#ff777777");
     }
     else
     {
-      a(HardCodeUtil.a(2131714408));
-      b("#ff777777");
+      b(HardCodeUtil.a(2131911919));
+      c("#ff777777");
     }
   }
   
-  public boolean b()
+  protected int f()
   {
-    return (!TextUtils.isEmpty(this.as)) && (!TextUtils.isEmpty(this.au)) && (!TextUtils.isEmpty(this.at)) && ("pay".equals(this.jdField_c_of_type_JavaLangString));
+    return 2131429846;
   }
   
-  protected int c()
+  public int i()
   {
-    return 2131363896;
+    return -16734752;
   }
   
-  public boolean c()
+  public int j()
+  {
+    return 32;
+  }
+  
+  public boolean q()
+  {
+    int i = this.aQ;
+    return (i != -6) && (i != -4) && (i != 0) && (i != 23001027);
+  }
+  
+  public boolean r()
+  {
+    return (!TextUtils.isEmpty(this.aM)) && (!TextUtils.isEmpty(this.aO)) && (!TextUtils.isEmpty(this.aN)) && ("pay".equals(this.e));
+  }
+  
+  public boolean s()
   {
     long l1 = NetConnInfoCenter.getServerTime();
     try
     {
-      long l2 = Long.parseLong(this.au);
+      long l2 = Long.parseLong(this.aO);
       if (l2 > l1) {
         return false;
       }
@@ -369,20 +377,10 @@ public class StructMsgItemButton
     }
     return true;
   }
-  
-  public int e()
-  {
-    return -16734752;
-  }
-  
-  public int f()
-  {
-    return 32;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton
  * JD-Core Version:    0.7.0.1
  */

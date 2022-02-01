@@ -17,37 +17,37 @@ class QQSpecialCareSettingActivity$3
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
+    if (NetworkUtil.isNetworkAvailable(this.c))
     {
-      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      str = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      boolean bool = this.jdField_a_of_type_Boolean;
+      paramDialogInterface = QQSpecialCareSettingActivity.e(this.c);
+      str = QQSpecialCareSettingActivity.d(this.c);
+      boolean bool = this.a;
       paramDialogInterface.setSpecialCareSwitch(1, new String[] { str }, new boolean[] { bool });
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      paramDialogInterface = this.c.a.obtainMessage(8193);
+      this.c.a.sendMessage(paramDialogInterface);
     }
     else
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
+      paramDialogInterface = this.c.a.obtainMessage(8195);
       paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692183;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
-      paramDialogInterface.a(QQSpecialCareSettingActivity.a(paramDialogInterface), true ^ QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a());
+      paramDialogInterface.arg2 = 2131889169;
+      this.c.a.sendMessage(paramDialogInterface);
+      paramDialogInterface = this.c;
+      paramDialogInterface.a(QQSpecialCareSettingActivity.f(paramDialogInterface), true ^ QQSpecialCareSettingActivity.f(this.c).a());
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
-    if (this.jdField_a_of_type_Boolean) {
+    String str = this.c.app.getCurrentAccountUin();
+    if (this.a) {
       paramDialogInterface = "SwitchOn";
     } else {
       paramDialogInterface = "SwitchOff";
     }
-    VasWebviewUtil.a(str, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyPushForSpecialCareDialog.a();
+    VasWebviewUtil.a(str, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.g(this.c)), 1, 0, 0, null, null, null);
+    this.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

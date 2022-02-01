@@ -22,9 +22,9 @@ class MsgNotifyPushDialog$3
         i = 127;
       }
       if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+        this.a.setImageAlpha(i);
       } else {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+        this.a.setAlpha(i);
       }
     }
     return false;
@@ -32,7 +32,7 @@ class MsgNotifyPushDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.playfeeds;
 
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,12 +21,12 @@ class VideoFeedsCPUMonitor$1$1
       Thread.sleep(10000L);
       localThread.start();
       long l1 = System.currentTimeMillis();
-      long l2 = VideoFeedsCPUMonitor.a();
-      if (VideoFeedsCPUMonitor.a().get() != 2) {
-        break label254;
+      long l2 = VideoFeedsCPUMonitor.e();
+      if (VideoFeedsCPUMonitor.b().get() != 2) {
+        break label244;
       }
       long l3 = System.currentTimeMillis();
-      VideoFeedsCPUMonitor.b().getAndAdd(1);
+      VideoFeedsCPUMonitor.c().getAndAdd(1);
       if (QLog.isColorLevel())
       {
         localObject = VideoFeedsCPUMonitor.a();
@@ -43,34 +42,34 @@ class VideoFeedsCPUMonitor$1$1
       {
         ((JSONObject)localObject).put("result", String.valueOf(l2));
         ((JSONObject)localObject).put("costTime", String.valueOf(l3 - l1));
-        ((JSONObject)localObject).put("deviceModel", DeviceInfoUtil.d());
-        ((JSONObject)localObject).put("manufactureInfo", DeviceInfoUtil.h());
-        ((JSONObject)localObject).put("uin", RIJQQAppInterfaceUtil.a());
+        ((JSONObject)localObject).put("deviceModel", DeviceInfoUtil.f());
+        ((JSONObject)localObject).put("manufactureInfo", DeviceInfoUtil.t());
+        ((JSONObject)localObject).put("uin", RIJQQAppInterfaceUtil.d());
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009576", "0X8009576", 0, 0, RIJQQAppInterfaceUtil.a(), "1", "", ((JSONObject)localObject).toString(), false);
+      PublicAccountReportUtils.a(null, null, "0X8009576", "0X8009576", 0, 0, RIJQQAppInterfaceUtil.d(), "1", "", ((JSONObject)localObject).toString(), false);
     }
     catch (InterruptedException localInterruptedException)
     {
-      label239:
-      break label239;
+      label229:
+      break label229;
     }
     if (QLog.isColorLevel()) {
       QLog.d(VideoFeedsCPUMonitor.a(), 2, "InterruptedException");
     }
-    label254:
+    label244:
     if (localThread.isAlive()) {
       localThread.interrupt();
     }
-    VideoFeedsCPUMonitor.a().set(0);
+    VideoFeedsCPUMonitor.b().set(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsCPUMonitor.1.1
  * JD-Core Version:    0.7.0.1
  */

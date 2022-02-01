@@ -17,17 +17,17 @@ import java.util.ArrayList;
 class VideoLayerUI$MyGestureListener
   implements GestureDetector.OnGestureListener
 {
-  private long jdField_a_of_type_Long = -1L;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private long c = -1L;
   
   private VideoLayerUI$MyGestureListener(VideoLayerUI paramVideoLayerUI) {}
   
   private void a(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -38,48 +38,48 @@ class VideoLayerUI$MyGestureListener
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     a(false);
-    int i = VideoLayerUI.e(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI);
+    int i = VideoLayerUI.r(this.a);
     if (i == 0) {
       return false;
     }
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a((int)-paramFloat1, 0, i);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b();
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1000L);
+    VideoLayerUI.n(this.a).a((int)-paramFloat1, 0, i);
+    this.a.m();
+    VideoLayerUI.b(this.a, -1000L);
     return true;
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     a(true);
-    if (VideoLayerUI.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI)) {}
+    if (VideoLayerUI.s(this.a)) {}
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     a(false);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a(Math.round(paramFloat1), 0, VideoLayerUI.e(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI));
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b();
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1001L);
+    VideoLayerUI.n(this.a).b(Math.round(paramFloat1), 0, VideoLayerUI.r(this.a));
+    this.a.m();
+    VideoLayerUI.b(this.a, -1001L);
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 100L)
+    if (l - this.c > 100L)
     {
       ReportController.b(null, "CliOper", "", "", "0X8009F62", "0X8009F62", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Long = l;
+      this.c = l;
     }
     return true;
   }
   
   public void onShowPress(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(paramMotionEvent.getX()) != -1)
+    if (this.a.a(paramMotionEvent.getX()) != -1)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return;
     }
-    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "error condition print onShowPress");
+    QLog.d(this.a.U, 1, "error condition print onShowPress");
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
@@ -87,68 +87,68 @@ class VideoLayerUI$MyGestureListener
     boolean bool3 = false;
     boolean bool1 = false;
     a(false);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1002L);
-    if (!VideoLayerUI.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI))
+    VideoLayerUI.b(this.a, -1002L);
+    if (!VideoLayerUI.s(this.a))
     {
-      if (!VideoLayerUI.c(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI)) {
+      if (!VideoLayerUI.q(this.a)) {
         return true;
       }
-      int j = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(paramMotionEvent.getX());
+      int j = this.a.a(paramMotionEvent.getX());
       Object localObject2;
       int k;
       Object localObject1;
       int i;
-      if (VideoLayerUI.e(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI))
+      if (VideoLayerUI.t(this.a))
       {
         if (j == -1) {
           return true;
         }
-        localObject2 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0];
-        Object localObject3 = ((GLVideoView)localObject2).c();
-        k = ((GLVideoView)localObject2).g();
+        localObject2 = this.a.ae[0];
+        Object localObject3 = ((GLVideoView)localObject2).R();
+        k = ((GLVideoView)localObject2).S();
         if (TextUtils.isEmpty((CharSequence)localObject3))
         {
-          QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "onSingleTapUp with empty UIN");
+          QLog.d(this.a.U, 1, "onSingleTapUp with empty UIN");
           return true;
         }
-        localObject1 = VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a();
-        if (((ArrayList)localObject1).size() > VideoLayerUI.f(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI)) {
+        localObject1 = VideoLayerUI.u(this.a).b();
+        if (((ArrayList)localObject1).size() > VideoLayerUI.v(this.a)) {
           i = 1;
         } else {
           i = 0;
         }
-        if ((j == VideoLayerUI.f(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) - 2) && (i != 0))
+        if ((j == VideoLayerUI.v(this.a) - 2) && (i != 0))
         {
           ReportController.b(null, "CliOper", "", "", "0X800A069", "0X800A069", 0, 0, "", "", "", "");
-          paramMotionEvent = (AVActivity)this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_AndroidContentContext;
-          if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().S) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().T)) {
+          paramMotionEvent = (AVActivity)this.a.X;
+          if ((this.a.Z.k().bg) || (this.a.Z.k().bh)) {
             bool1 = true;
           }
-          VideoMsgTools.a(paramMotionEvent, String.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().f), bool1, true);
-          QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "onSingleTapUp jumpTo lists");
+          VideoMsgTools.a(paramMotionEvent, String.valueOf(this.a.Z.k().aN), bool1, true);
+          QLog.d(this.a.U, 1, "onSingleTapUp jumpTo lists");
           return true;
         }
         i = j + 1;
         if (i > ((ArrayList)localObject1).size() - 1)
         {
-          QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "onSingleTapUp ArrayOutOfList");
+          QLog.d(this.a.U, 1, "onSingleTapUp ArrayOutOfList");
           return true;
         }
         paramMotionEvent = (VideoMemberInfo)((ArrayList)localObject1).get(i);
-        if ((paramMotionEvent != null) && (paramMotionEvent.c())) {
+        if ((paramMotionEvent != null) && (paramMotionEvent.e())) {
           bool1 = true;
         } else {
           bool1 = false;
         }
         boolean bool2;
-        if ((paramMotionEvent != null) && (((String)localObject3).equalsIgnoreCase(String.valueOf(paramMotionEvent.jdField_a_of_type_Long))) && (paramMotionEvent.b() == k)) {
+        if ((paramMotionEvent != null) && (((String)localObject3).equalsIgnoreCase(String.valueOf(paramMotionEvent.b))) && (paramMotionEvent.c() == k)) {
           bool2 = true;
         } else {
           bool2 = false;
         }
         if (QLog.isColorLevel())
         {
-          String str = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+          String str = this.a.U;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onSingleTapUp, isVideoIn[");
           localStringBuilder.append(bool1);
@@ -165,16 +165,16 @@ class VideoLayerUI$MyGestureListener
         }
         if ((paramMotionEvent != null) && (!bool2))
         {
-          bool2 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.b();
+          bool2 = this.a.aj.d();
           if ((bool2) && (bool1))
           {
             ReportController.b(null, "CliOper", "", "", "0X8009F63", "0X8009F63", 0, 0, "", "", "", "");
-            localObject3 = ((GLVideoView)localObject2).c();
-            i = ((GLVideoView)localObject2).g();
-            long l = paramMotionEvent.jdField_a_of_type_Long;
-            k = paramMotionEvent.b();
-            this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(115), localObject3, Integer.valueOf(i), String.valueOf(l), Integer.valueOf(k) });
-            localObject2 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+            localObject3 = ((GLVideoView)localObject2).R();
+            i = ((GLVideoView)localObject2).S();
+            long l = paramMotionEvent.b;
+            k = paramMotionEvent.c();
+            this.a.Y.a(new Object[] { Integer.valueOf(115), localObject3, Integer.valueOf(i), String.valueOf(l), Integer.valueOf(k) });
+            localObject2 = this.a.U;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("onSingleTapUp mTargetIndex:=");
             ((StringBuilder)localObject3).append(j);
@@ -184,7 +184,7 @@ class VideoLayerUI$MyGestureListener
           }
           else if (QLog.isColorLevel())
           {
-            localObject1 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+            localObject1 = this.a.U;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("onSingleTapUp, canSwitchView[");
             ((StringBuilder)localObject2).append(bool2);
@@ -195,18 +195,18 @@ class VideoLayerUI$MyGestureListener
           }
           if (!bool1)
           {
-            if (paramMotionEvent.a())
+            if (paramMotionEvent.b())
             {
               bool1 = bool3;
-              if (paramMotionEvent.a() == this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin()) {
+              if (paramMotionEvent.g() == this.a.Y.getLongAccountUin()) {
                 bool1 = true;
               }
               if (bool1) {
-                TipsUtil.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1051);
+                TipsUtil.a(this.a.Y, 1051);
               } else {
-                TipsUtil.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1052);
+                TipsUtil.a(this.a.Y, 1052);
               }
-              paramMotionEvent = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+              paramMotionEvent = this.a.U;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("not open camera isSelfUin:=");
               ((StringBuilder)localObject1).append(bool1);
@@ -214,8 +214,8 @@ class VideoLayerUI$MyGestureListener
             }
             else
             {
-              TipsUtil.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1053);
-              QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "not attend video talking");
+              TipsUtil.a(this.a.Y, 1053);
+              QLog.d(this.a.U, 1, "not attend video talking");
             }
             ReportController.b(null, "CliOper", "", "", "0X800A068", "0X800A068", 0, 0, "", "", "", "");
           }
@@ -225,30 +225,30 @@ class VideoLayerUI$MyGestureListener
       if (j != -1)
       {
         i = j + 1;
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (i > 0) && (i < this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length))
+        if ((this.a.ae != null) && (i > 0) && (i < this.a.ae.length))
         {
-          localObject2 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0];
-          paramMotionEvent = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i];
+          localObject2 = this.a.ae[0];
+          paramMotionEvent = this.a.ae[i];
           if ((localObject2 != null) && (paramMotionEvent != null))
           {
-            if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.b())
+            if (this.a.aj.d())
             {
               ReportController.b(null, "CliOper", "", "", "0X8009F63", "0X8009F63", 0, 0, "", "", "", "");
-              localObject1 = ((GLVideoView)localObject2).c();
-              j = ((GLVideoView)localObject2).g();
-              localObject2 = paramMotionEvent.c();
-              k = paramMotionEvent.g();
-              this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(115), localObject1, Integer.valueOf(j), localObject2, Integer.valueOf(k) });
+              localObject1 = ((GLVideoView)localObject2).R();
+              j = ((GLVideoView)localObject2).S();
+              localObject2 = paramMotionEvent.R();
+              k = paramMotionEvent.S();
+              this.a.Y.a(new Object[] { Integer.valueOf(115), localObject1, Integer.valueOf(j), localObject2, Integer.valueOf(k) });
             }
-            if (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) != null) {
-              VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a(i);
+            if (VideoLayerUI.w(this.a) != null) {
+              VideoLayerUI.w(this.a).a(i);
             }
-            paramMotionEvent = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+            paramMotionEvent = this.a.U;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("condition print onSingleTapUp mTargetIndex:=");
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t);
+            ((StringBuilder)localObject1).append(this.a.ah);
             ((StringBuilder)localObject1).append(",canSwitchView=");
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.b());
+            ((StringBuilder)localObject1).append(this.a.aj.d());
             QLog.d(paramMotionEvent, 1, ((StringBuilder)localObject1).toString());
             return true;
           }
@@ -256,7 +256,7 @@ class VideoLayerUI$MyGestureListener
         }
         return true;
       }
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "error condition print onSingleTapUp");
+      QLog.d(this.a.U, 1, "error condition print onSingleTapUp");
     }
     return true;
   }

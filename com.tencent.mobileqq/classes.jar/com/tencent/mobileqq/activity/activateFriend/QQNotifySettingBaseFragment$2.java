@@ -18,21 +18,21 @@ class QQNotifySettingBaseFragment$2
       if (paramBoolean) {}
       try
       {
-        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
+        QQNotifySettingBaseFragment.b(this.b).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
         return;
       }
       catch (Throwable paramBundle)
       {
         QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.b(3, "system error");
+      this.b.b(3, "system error");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

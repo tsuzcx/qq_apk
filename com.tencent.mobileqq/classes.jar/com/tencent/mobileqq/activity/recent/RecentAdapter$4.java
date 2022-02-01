@@ -11,12 +11,12 @@ class RecentAdapter$4
   
   public void run()
   {
-    ((BlessManager)this.this$0.a.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).b(true);
+    ((BlessManager)this.this$0.d.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.4
  * JD-Core Version:    0.7.0.1
  */

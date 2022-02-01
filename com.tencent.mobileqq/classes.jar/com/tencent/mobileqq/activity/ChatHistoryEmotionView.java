@@ -38,92 +38,84 @@ public class ChatHistoryEmotionView
   extends ChatHistoryViewBase
   implements Handler.Callback, AbsListView.OnScrollListener, AdapterView.OnItemClickListener, GestureSelectGridView.OnSelectListener
 {
-  private int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  public ChatHistoryEmotionView.OperateCallBack a;
   public ChatHistoryEmotionAdapter a;
-  private EmotionDataManager jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDataManager;
-  private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private GestureSelectGridView jdField_a_of_type_ComTencentWidgetGestureSelectGridView;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = -2147483648;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 2147483647;
-  private boolean jdField_d_of_type_Boolean = false;
+  public ChatHistoryEmotionView.OperateCallBack b;
+  long c = 0L;
+  boolean d = false;
+  private Activity e;
+  private View f;
+  private GestureSelectGridView g;
+  private View h;
+  private final WeakReferenceHandler i = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private int j = 0;
+  private int k;
+  private String l;
+  private EmotionDataManager m;
+  private boolean n = false;
+  private boolean o;
+  private boolean p = false;
+  private int q = -2147483648;
+  private int r = 2147483647;
   
   private boolean a(EmotionPreviewData paramEmotionPreviewData, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null)
+    if (this.D != null)
     {
-      if (paramEmotionPreviewData.jdField_a_of_type_Boolean != paramBoolean)
+      if (paramEmotionPreviewData.b != paramBoolean)
       {
         if (paramBoolean)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a()) {
+          if (this.D.b()) {
             return false;
           }
-          paramEmotionPreviewData.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(paramEmotionPreviewData);
+          paramEmotionPreviewData.b = true;
+          this.D.a(paramEmotionPreviewData);
           return true;
         }
-        paramEmotionPreviewData.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b(paramEmotionPreviewData);
+        paramEmotionPreviewData.b = false;
+        this.D.b(paramEmotionPreviewData);
         return true;
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView$OperateCallBack != null) && (paramEmotionPreviewData.jdField_a_of_type_Boolean != paramBoolean))
+    else if ((this.b != null) && (paramEmotionPreviewData.b != paramBoolean))
     {
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView$OperateCallBack.a()) {
+        if (this.b.a()) {
           return false;
         }
-        paramEmotionPreviewData.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView$OperateCallBack.a(paramEmotionPreviewData);
+        paramEmotionPreviewData.b = true;
+        this.b.a(paramEmotionPreviewData);
         return true;
       }
-      paramEmotionPreviewData.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView$OperateCallBack.b(paramEmotionPreviewData);
+      paramEmotionPreviewData.b = false;
+      this.b.b(paramEmotionPreviewData);
     }
     return true;
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    ChatHistoryEmotionAdapter localChatHistoryEmotionAdapter = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter;
-    if (localChatHistoryEmotionAdapter != null) {
-      localChatHistoryEmotionAdapter.a();
-    }
+    return this.f;
   }
   
   public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a();
+    Object localObject = this.a.e();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         if (((MessageRecord)((Iterator)localObject).next()).uniseq == paramLong)
         {
-          i = 1;
+          i1 = 1;
           break label58;
         }
       }
     }
-    int i = 0;
+    int i1 = 0;
     label58:
-    if (i == 0)
+    if (i1 == 0)
     {
       if (QLog.isColorLevel())
       {
@@ -134,110 +126,108 @@ public class ChatHistoryEmotionView
       }
       return;
     }
-    if (paramLong == this.jdField_a_of_type_Long)
+    if (paramLong == this.c)
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new ChatHistoryEmotionView.4(this));
+      this.i.post(new ChatHistoryEmotionView.4(this));
       return;
     }
-    g();
+    j();
   }
   
   public void a(Intent paramIntent, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-    this.jdField_b_of_type_Int = paramIntent.getIntExtra("uintype", -1);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("uin");
-    this.jdField_a_of_type_Long = paramIntent.getLongExtra("msg_revoke_uniseq", 0L);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDataManager = new EmotionDataManager(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560814, null);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367813));
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelectMode(false);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366237);
-    if (AppSetting.jdField_d_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131692409));
+    this.e = ((Activity)paramContext);
+    this.k = paramIntent.getIntExtra("uintype", -1);
+    this.l = paramIntent.getStringExtra("uin");
+    this.c = paramIntent.getLongExtra("msg_revoke_uniseq", 0L);
+    this.m = new EmotionDataManager(this.l, this.k);
+    this.f = LayoutInflater.from(paramContext).inflate(2131627072, null);
+    this.g = ((GestureSelectGridView)this.f.findViewById(2131434388));
+    this.g.setSelectMode(false);
+    this.h = this.f.findViewById(2131432529);
+    if (AppSetting.e) {
+      this.h.setContentDescription(this.e.getString(2131889397));
     }
-    int i = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297488);
-    int j = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297489);
-    int k = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297490);
-    int m = (ViewUtils.a() - i * 2 - j * 3) / 4;
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setGravity(3);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(4);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(m);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setHorizontalSpacing(j);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setVerticalSpacing(k);
-    paramIntent = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView;
-    paramIntent.setPadding(i, paramIntent.getPaddingTop(), i, this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getPaddingBottom());
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter = new ChatHistoryEmotionAdapter(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDataManager, this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, m, this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnItemClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnScrollListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelectMode(false);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setTouchSlopRate(3);
-    AccessibilityUtil.a(this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView, false);
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(true);
+    int i1 = this.e.getResources().getDimensionPixelSize(2131298139);
+    int i2 = this.e.getResources().getDimensionPixelSize(2131298140);
+    int i3 = this.e.getResources().getDimensionPixelSize(2131298141);
+    int i4 = (ViewUtils.getScreenWidth() - i1 * 2 - i2 * 3) / 4;
+    this.g.setGravity(3);
+    this.g.setScrollBarStyle(0);
+    this.g.setNumColumns(4);
+    this.g.setColumnWidth(i4);
+    this.g.setHorizontalSpacing(i2);
+    this.g.setVerticalSpacing(i3);
+    paramIntent = this.g;
+    paramIntent.setPadding(i1, paramIntent.getPaddingTop(), i1, this.g.getPaddingBottom());
+    this.a = new ChatHistoryEmotionAdapter(this.e, this.m, this.i, i4, this.g);
+    this.a.a(true);
+    this.a.a(this.k);
+    this.g.setAdapter(this.a);
+    this.g.setOnItemClickListener(this);
+    this.g.setOnScrollListener(this);
+    this.g.setOnIndexChangedListener(this);
+    this.g.setSelectMode(false);
+    this.g.setTouchSlopRate(3);
+    AccessibilityUtil.a(this.g, false);
+    this.a.b(true);
     ThreadManager.excute(new ChatHistoryEmotionView.1(this), 32, null, false);
   }
   
-  public boolean a()
+  public void b()
   {
-    ChatHistoryEmotionAdapter localChatHistoryEmotionAdapter = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter;
+    ChatHistoryEmotionAdapter localChatHistoryEmotionAdapter = this.a;
+    if (localChatHistoryEmotionAdapter != null) {
+      localChatHistoryEmotionAdapter.b();
+    }
+  }
+  
+  public boolean c()
+  {
+    ChatHistoryEmotionAdapter localChatHistoryEmotionAdapter = this.a;
     if (localChatHistoryEmotionAdapter != null) {
       return localChatHistoryEmotionAdapter.a();
     }
     return false;
   }
   
-  public void b()
-  {
-    AbstractGifImage.resumeAll();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    AbstractGifImage.pauseAll();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.b();
+    AbstractGifImage.resumeAll();
+    this.d = true;
   }
   
   public void e()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelectMode(true);
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.notifyDataSetChanged();
-    }
+    AbstractGifImage.pauseAll();
+    this.d = false;
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelectMode(false);
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.notifyDataSetChanged();
-    }
+    this.a.f();
   }
   
   public void g()
   {
-    ThreadManager.excute(new ChatHistoryEmotionView.2(this), 32, null, false);
+    if (!this.a.g)
+    {
+      this.n = true;
+      this.a.g = true;
+      this.g.setSelectMode(true);
+      this.a.notifyDataSetChanged();
+    }
+  }
+  
+  public void h()
+  {
+    if (this.a.g)
+    {
+      this.n = false;
+      this.a.g = false;
+      this.g.setSelectMode(false);
+      this.a.notifyDataSetChanged();
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -253,41 +243,51 @@ public class ChatHistoryEmotionView
     }
     if (paramMessage.arg1 == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a((List)localObject);
+      this.a.a((List)localObject);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.b((List)localObject);
+      this.a.b((List)localObject);
       if (((List)localObject).isEmpty()) {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.h.setVisibility(0);
       }
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryEmotionView$OperateCallBack;
+    paramMessage = this.b;
     if (paramMessage != null) {
-      paramMessage.a();
+      paramMessage.b();
     }
     return false;
   }
   
+  public boolean i()
+  {
+    return this.n;
+  }
+  
+  public void j()
+  {
+    ThreadManager.excute(new ChatHistoryEmotionView.2(this), 32, null, false);
+  }
+  
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.getItem(paramInt);
+    paramAdapterView = this.a.getItem(paramInt);
     if (!EmotionPreviewData.class.isInstance(paramAdapterView)) {
       return;
     }
     paramAdapterView = (EmotionPreviewData)paramAdapterView;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.n)
     {
-      if (a(paramAdapterView, paramAdapterView.jdField_a_of_type_Boolean ^ true)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.notifyDataSetChanged();
+      if (a(paramAdapterView, paramAdapterView.b ^ true)) {
+        this.a.notifyDataSetChanged();
       }
     }
     else
     {
       SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-      AIOEmotionFragment.a(paramView.getContext(), paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localSessionInfo, AnimationUtils.a(paramView));
+      localSessionInfo.b = this.l;
+      localSessionInfo.a = this.k;
+      AIOEmotionFragment.a(paramView.getContext(), paramAdapterView.a, localSessionInfo, AnimationUtils.a(paramView));
     }
   }
   
@@ -297,20 +297,20 @@ public class ChatHistoryEmotionView
   {
     if (paramInt == 0)
     {
-      paramInt = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getLastVisiblePosition();
-      int i = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a();
-      int j = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.b();
-      if (((paramInt >= i - 28) || (paramInt == i)) && (this.jdField_a_of_type_Int != j))
+      paramInt = this.g.getLastVisiblePosition();
+      int i1 = this.a.c();
+      int i2 = this.a.d();
+      if (((paramInt >= i1 - 28) || (paramInt == i1)) && (this.j != i2))
       {
         if (QLog.isColorLevel())
         {
           paramAbsListView = new StringBuilder();
           paramAbsListView.append("[onScroll] loadEmotion: mLastLoadingCount=");
-          paramAbsListView.append(this.jdField_a_of_type_Int);
+          paramAbsListView.append(this.j);
           QLog.d("ChatHistoryEmotionView", 2, paramAbsListView.toString());
         }
-        this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(true);
+        this.j = i2;
+        this.a.b(true);
         ThreadManager.excute(new ChatHistoryEmotionView.3(this), 32, null, false);
       }
     }
@@ -318,22 +318,22 @@ public class ChatHistoryEmotionView
   
   public void onSelectBegin(int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.n) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a() <= paramInt) {
+    if (this.a.c() <= paramInt) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(paramInt);
+    Object localObject = this.a.b(paramInt);
     if (!EmotionPreviewData.class.isInstance(localObject)) {
       return;
     }
     localObject = (EmotionPreviewData)localObject;
-    this.jdField_d_of_type_Boolean = ((EmotionPreviewData)localObject).jdField_a_of_type_Boolean;
-    if (a((EmotionPreviewData)localObject, this.jdField_d_of_type_Boolean ^ true)) {
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
+    this.p = ((EmotionPreviewData)localObject).b;
+    if (a((EmotionPreviewData)localObject, this.p ^ true)) {
+      this.g.invalidateViews();
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.o = true;
     if (QLog.isColorLevel()) {
       QLog.d("ChatHistoryEmotionView", 2, "onSelectBegin");
     }
@@ -341,79 +341,79 @@ public class ChatHistoryEmotionView
   
   public void onSelectChanged(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.n) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.o) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ChatHistoryEmotionView", 2, new Object[] { "onSelectBegin beginIndex:", Integer.valueOf(paramInt1), "  selectIndex:", Integer.valueOf(paramInt2) });
     }
-    int i;
-    int j;
+    int i1;
+    int i2;
     if (paramInt2 < paramInt1)
     {
-      if (this.jdField_d_of_type_Int > paramInt2) {
-        this.jdField_d_of_type_Int = paramInt2;
+      if (this.r > paramInt2) {
+        this.r = paramInt2;
       }
-      i = paramInt2;
-      j = paramInt1;
+      i1 = paramInt2;
+      i2 = paramInt1;
     }
     else
     {
-      i = paramInt1;
-      j = paramInt2;
-      if (this.jdField_c_of_type_Int < paramInt2)
+      i1 = paramInt1;
+      i2 = paramInt2;
+      if (this.q < paramInt2)
       {
-        this.jdField_c_of_type_Int = paramInt2;
-        j = paramInt2;
-        i = paramInt1;
+        this.q = paramInt2;
+        i2 = paramInt2;
+        i1 = paramInt1;
       }
     }
-    paramInt1 = i;
+    paramInt1 = i1;
     Object localObject;
-    while (paramInt1 <= j)
+    while (paramInt1 <= i2)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(paramInt1);
+      localObject = this.a.b(paramInt1);
       if (EmotionPreviewData.class.isInstance(localObject)) {
-        a((EmotionPreviewData)localObject, this.jdField_d_of_type_Boolean ^ true);
+        a((EmotionPreviewData)localObject, this.p ^ true);
       }
       paramInt1 += 1;
     }
-    paramInt1 = j + 1;
-    while (paramInt1 <= this.jdField_c_of_type_Int)
+    paramInt1 = i2 + 1;
+    while (paramInt1 <= this.q)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(paramInt1);
+      localObject = this.a.b(paramInt1);
       if (EmotionPreviewData.class.isInstance(localObject)) {
-        a((EmotionPreviewData)localObject, this.jdField_d_of_type_Boolean);
+        a((EmotionPreviewData)localObject, this.p);
       }
       paramInt1 += 1;
     }
-    paramInt1 = this.jdField_d_of_type_Int;
-    while (paramInt1 < i)
+    paramInt1 = this.r;
+    while (paramInt1 < i1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateChatHistoryEmotionAdapter.a(paramInt1);
+      localObject = this.a.b(paramInt1);
       if (EmotionPreviewData.class.isInstance(localObject)) {
-        a((EmotionPreviewData)localObject, this.jdField_d_of_type_Boolean);
+        a((EmotionPreviewData)localObject, this.p);
       }
       paramInt1 += 1;
     }
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
+    this.g.invalidateViews();
   }
   
   public void onSelectEnd()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.n) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.o) {
       return;
     }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = -2147483648;
-    this.jdField_d_of_type_Int = 2147483647;
+    this.o = false;
+    this.p = false;
+    this.q = -2147483648;
+    this.r = 2147483647;
     if (QLog.isColorLevel()) {
       QLog.d("ChatHistoryEmotionView", 2, "onSelectEnd");
     }
@@ -421,7 +421,7 @@ public class ChatHistoryEmotionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryEmotionView
  * JD-Core Version:    0.7.0.1
  */

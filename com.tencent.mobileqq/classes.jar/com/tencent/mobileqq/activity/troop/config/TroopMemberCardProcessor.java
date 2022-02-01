@@ -27,7 +27,7 @@ public class TroopMemberCardProcessor
     if (paramMemberInfo.str_card.has())
     {
       paramTroopMemberCard.colorCard = ColorNickManager.a(paramMemberInfo.str_card.get());
-      paramTroopMemberCard.colorCardId = ColorNickManager.a(paramMemberInfo.str_card.get().toByteArray());
+      paramTroopMemberCard.colorCardId = ColorNickManager.c(paramMemberInfo.str_card.get().toByteArray());
       paramTroopMemberCard.card = ColorNickManager.b(paramTroopMemberCard.colorCard);
     }
     if (paramMemberInfo.bytes_group_honor.has())
@@ -69,7 +69,7 @@ public class TroopMemberCardProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMemberCardProcessor
  * JD-Core Version:    0.7.0.1
  */

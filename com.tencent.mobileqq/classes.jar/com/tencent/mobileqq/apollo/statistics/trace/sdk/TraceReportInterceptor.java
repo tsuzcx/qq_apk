@@ -3,8 +3,9 @@ package com.tencent.mobileqq.apollo.statistics.trace.sdk;
 import android.os.Bundle;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
 import com.tencent.mobileqq.apollo.utils.ProcessUtil;
-import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.apollo.web.ipc.IStoreAvatar2D;
 import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -14,7 +15,7 @@ public class TraceReportInterceptor
 {
   public static void a(int paramInt, String paramString)
   {
-    if (!TraceReportInstance.a()) {
+    if (!TraceReportInstance.d()) {
       return;
     }
     Bundle localBundle = new Bundle();
@@ -31,7 +32,7 @@ public class TraceReportInterceptor
   
   public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
   {
-    if (!TraceReportInstance.a()) {
+    if (!TraceReportInstance.d()) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
@@ -78,7 +79,7 @@ public class TraceReportInterceptor
   
   public static void a(int paramInt, String paramString1, String paramString2)
   {
-    if (!TraceReportInstance.a()) {
+    if (!TraceReportInstance.d()) {
       return;
     }
     Bundle localBundle = new Bundle();
@@ -99,7 +100,7 @@ public class TraceReportInterceptor
   
   public static void a(int paramInt, String paramString1, String paramString2, int... paramVarArgs)
   {
-    if (!TraceReportInstance.a()) {
+    if (!TraceReportInstance.d()) {
       return;
     }
     int j = 0;
@@ -136,7 +137,7 @@ public class TraceReportInterceptor
   
   public static void a(int paramInt, boolean paramBoolean)
   {
-    if (!TraceReportInstance.a()) {
+    if (!TraceReportInstance.d()) {
       return;
     }
     if (BaseApplicationImpl.sProcessId == 1)
@@ -152,7 +153,7 @@ public class TraceReportInterceptor
   
   public static void a(TraceConfig paramTraceConfig)
   {
-    if (!TraceReportInstance.a()) {
+    if (!TraceReportInstance.d()) {
       return;
     }
     if (ProcessUtil.a())
@@ -164,7 +165,7 @@ public class TraceReportInterceptor
     if (paramTraceConfig != null)
     {
       int i = paramTraceConfig.a();
-      paramTraceConfig = paramTraceConfig.a();
+      paramTraceConfig = paramTraceConfig.f();
       localBundle.putInt("appId", i);
       localBundle.putString("currentAccount", paramTraceConfig);
     }
@@ -184,8 +185,7 @@ public class TraceReportInterceptor
       return;
     }
     paramBundle.putString("action", paramString);
-    paramString = DataFactory.a("ipc_trace_report", "", 0, paramBundle);
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramString);
+    ((IStoreAvatar2D)ApolloIPCModule.a(IStoreAvatar2D.class)).a(paramBundle);
   }
   
   private static void b(String paramString, Bundle paramBundle)
@@ -198,7 +198,7 @@ public class TraceReportInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceReportInterceptor
  * JD-Core Version:    0.7.0.1
  */

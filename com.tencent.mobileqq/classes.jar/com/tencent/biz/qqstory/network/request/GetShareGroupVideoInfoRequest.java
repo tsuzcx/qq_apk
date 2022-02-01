@@ -16,15 +16,15 @@ import java.util.List;
 public class GetShareGroupVideoInfoRequest
   extends NetworkRequest<GetShareGroupVideoInfoResponse>
 {
-  private final String a;
-  public List<String> a;
+  public List<String> e;
+  private final String f = StoryApi.a("StoryGroupSvc.datacard_batch_get_video_info");
   
-  public GetShareGroupVideoInfoRequest()
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.datacard_batch_get_video_info");
+    return this.f;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
     try
@@ -39,15 +39,10 @@ public class GetShareGroupVideoInfoRequest
     return null;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -58,7 +53,7 @@ public class GetShareGroupVideoInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareGroupVideoInfoRequest
  * JD-Core Version:    0.7.0.1
  */

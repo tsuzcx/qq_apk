@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -263,7 +263,7 @@ public class i
         if (this.b == null) {
           break label59;
         }
-        i = f.e(this.b);
+        i = h.e(this.b);
         if (i != 0) {
           break label62;
         }
@@ -329,7 +329,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.i
  * JD-Core Version:    0.7.0.1
  */

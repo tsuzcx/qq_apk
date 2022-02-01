@@ -22,7 +22,7 @@ class PersonalityLabelGalleryActivity$5
       if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
       {
         paramContext = this.a;
-        paramContext.a = true;
+        paramContext.c = true;
         PersonalityLabelGalleryActivity.a(paramContext);
       }
     }
@@ -30,7 +30,7 @@ class PersonalityLabelGalleryActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.5
  * JD-Core Version:    0.7.0.1
  */

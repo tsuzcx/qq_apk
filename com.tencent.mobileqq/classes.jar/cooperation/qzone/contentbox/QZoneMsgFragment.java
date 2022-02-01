@@ -52,7 +52,6 @@ import cooperation.qzone.contentbox.model.MQPhotoCell;
 import cooperation.qzone.contentbox.model.MsgOnClickListener;
 import cooperation.qzone.provider.LocalPhotoGroupData;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import cooperation.qzone.thread.QzoneBaseThread;
@@ -130,8 +129,8 @@ public class QZoneMsgFragment
     this.viewFooterContainer.setGravity(1);
     this.listView.addFooterView(this.viewFooterContainer);
     this.viewListFooter = new MsgFootTips(getBaseActivity(), this.handler);
-    this.viewListFooter.setLoadingDataText(getString(2131692248));
-    this.viewListFooter.setLoadingMoreDataText(getString(2131692249));
+    this.viewListFooter.setLoadingDataText(getString(2131889235));
+    this.viewListFooter.setLoadingMoreDataText(getString(2131889236));
     if (!paramBoolean)
     {
       setFooterState(5);
@@ -183,7 +182,7 @@ public class QZoneMsgFragment
   private void loadMoreFinish(boolean paramBoolean)
   {
     if ((!paramBoolean) && (this.manual)) {
-      ToastUtil.a().a(HardCodeUtil.a(2131711977));
+      ToastUtil.a().a(HardCodeUtil.a(2131909602));
     }
     setMoreFootState(paramBoolean);
     this.requestState = 0;
@@ -346,8 +345,8 @@ public class QZoneMsgFragment
     if (paramQZoneMsgEntityNew == null)
     {
       paramQZoneMsgEntityNew = new ArrayList();
-      paramQZoneMsgEntityNew.add(new BottomItem(HardCodeUtil.a(2131719439), "mqqzone://arouse/activefeed"));
-      paramQZoneMsgEntityNew.add(new BottomItem(HardCodeUtil.a(2131711973), "mqqzone://arouse/albumlist"));
+      paramQZoneMsgEntityNew.add(new BottomItem(HardCodeUtil.a(2131916999), "mqqzone://arouse/activefeed"));
+      paramQZoneMsgEntityNew.add(new BottomItem(HardCodeUtil.a(2131909598), "mqqzone://arouse/albumlist"));
     }
     else
     {
@@ -419,7 +418,7 @@ public class QZoneMsgFragment
           QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         }
       }
-      if (((((MQMsg)localObject1).msgBody == null) || (((MQMsg)localObject1).msgBody.photolist == null) || (((MQMsg)localObject1).msgBody.photolist.isEmpty()) || (StringUtil.a(((MQPhotoCell)((MQMsg)localObject1).msgBody.photolist.get(0)).coverUrl))) && (((MQMsg)localObject1).msgType == 9))
+      if (((((MQMsg)localObject1).msgBody == null) || (((MQMsg)localObject1).msgBody.photolist == null) || (((MQMsg)localObject1).msgBody.photolist.isEmpty()) || (StringUtil.isEmpty(((MQPhotoCell)((MQMsg)localObject1).msgBody.photolist.get(0)).coverUrl))) && (((MQMsg)localObject1).msgType == 9))
       {
         ((MQMsg)localObject1).uniKey = this.mLocalPhotoGroupData.unikey;
         ((MQMsg)localObject1).eventTitle = this.mLocalPhotoGroupData.title;
@@ -503,7 +502,7 @@ public class QZoneMsgFragment
       return;
     }
     QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "msg.jumpUrlToDetail is null");
-    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!StringUtil.a(paramMQMsg.uniKey)))
+    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!StringUtil.isEmpty(paramMQMsg.uniKey)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mqqzone://arouse/photogrouprecommenddetail?usecache=true&checkgroup=false&unikey=");
@@ -511,7 +510,6 @@ public class QZoneMsgFragment
       localObject = ((StringBuilder)localObject).toString();
       jumpToPhotoGroupRecommendDetail((String)localObject);
       LpReportInfo_dc02880.report(2, 2, (String)localObject, "29", false, true, paramMQMsg.getReportRev6());
-      LpReportInfo_pf00064.allReport(133, 14, String.valueOf(paramMQMsg.msgType));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("jumpToPhotoGroupRecommendDetail: uniKey=");
       ((StringBuilder)localObject).append(paramMQMsg.uniKey);
@@ -585,7 +583,7 @@ public class QZoneMsgFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.isNightMode = QQTheme.d();
+    this.isNightMode = QQTheme.isNowThemeIsNightForQzone();
     if (this.isNightMode) {
       paramViewGroup.setBackgroundColor(-16777216);
     } else {
@@ -784,7 +782,7 @@ public class QZoneMsgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment
  * JD-Core Version:    0.7.0.1
  */

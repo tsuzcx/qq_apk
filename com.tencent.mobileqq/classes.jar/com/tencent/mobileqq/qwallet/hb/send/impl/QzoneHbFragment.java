@@ -53,118 +53,33 @@ public class QzoneHbFragment
   extends BaseHbFragment
   implements View.OnClickListener, FragmentInterface, RollNumberView.OnRollListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  protected TextWatcher a;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QzoneHbFragment.SendHbHandler jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler = new QzoneHbFragment.SendHbHandler(this);
-  private RollNumberView jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView;
-  IPreloadImgApi.OnSingleDownloadCallback jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadImgApi$OnSingleDownloadCallback = new QzoneHbFragment.4(this);
-  private String jdField_a_of_type_JavaLangString;
-  private JSONArray jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
-  private int jdField_b_of_type_Int = 1;
-  private View jdField_b_of_type_AndroidViewView;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private String jdField_b_of_type_JavaLangString;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString = "1.00";
-  private boolean jdField_c_of_type_Boolean = false;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean = false;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
-  
-  public QzoneHbFragment()
-  {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new QzoneHbFragment.1(this);
-  }
-  
-  private String a()
-  {
-    new JSONArray();
-    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONArray;
-    if (localObject1 != null)
-    {
-      int m = ((JSONArray)localObject1).length();
-      if (m > 0)
-      {
-        Random localRandom = new Random();
-        int k = 0;
-        int i = k;
-        Object localObject2;
-        try
-        {
-          Object localObject4 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("hb_key_rand_amount", "");
-          Object localObject3 = null;
-          localObject1 = localObject3;
-          i = k;
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            i = k;
-            localObject4 = new JSONArray((String)localObject4);
-            localObject1 = localObject3;
-            i = k;
-            if (((JSONArray)localObject4).length() == this.jdField_a_of_type_OrgJsonJSONArray.length()) {
-              localObject1 = localObject4;
-            }
-          }
-          localObject3 = localObject1;
-          if (localObject1 == null)
-          {
-            i = k;
-            localObject1 = new JSONArray();
-            j = 0;
-            for (;;)
-            {
-              localObject3 = localObject1;
-              i = k;
-              if (j >= this.jdField_a_of_type_OrgJsonJSONArray.length()) {
-                break;
-              }
-              i = k;
-              ((JSONArray)localObject1).put(j, 0);
-              j += 1;
-            }
-          }
-          i = k;
-          int j = a(localObject3, localRandom.nextInt(m));
-          i = j;
-          localObject3.put(j, 1);
-          i = j;
-          localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-          i = j;
-          ((SharedPreferences.Editor)localObject1).putString("hb_key_rand_amount", localObject3.toString());
-          i = j;
-          ((SharedPreferences.Editor)localObject1).commit();
-          i = j;
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-          localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-          ((SharedPreferences.Editor)localObject2).remove("hb_key_rand_amount");
-          ((SharedPreferences.Editor)localObject2).commit();
-        }
-        try
-        {
-          localObject2 = this.jdField_a_of_type_OrgJsonJSONArray.get(i).toString();
-          return localObject2;
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-        }
-      }
-    }
-    return "";
-  }
+  private String A;
+  private View B;
+  private RollNumberView C;
+  private long D = 0L;
+  private boolean E = false;
+  private QzoneHbFragment.SendHbHandler F = new QzoneHbFragment.SendHbHandler(this);
+  private SharedPreferences G = null;
+  private int H = 1;
+  protected TextWatcher a = new QzoneHbFragment.1(this);
+  IPreloadImgApi.OnSingleDownloadCallback b = new QzoneHbFragment.4(this);
+  private View c;
+  private ImageView d;
+  private TextView l;
+  private EditText m;
+  private Button n;
+  private Button o;
+  private JSONArray p = new JSONArray();
+  private String q;
+  private View r;
+  private Animation s;
+  private boolean t = false;
+  private String u;
+  private String v = "1.00";
+  private String w;
+  private String x;
+  private String y;
+  private String z;
   
   public static void a(Handler paramHandler, EditText paramEditText)
   {
@@ -178,28 +93,81 @@ public class QzoneHbFragment
     if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(R.id.bh);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(R.id.bl));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(R.id.bi));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(R.id.bf));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(R.id.bg));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(R.id.bS));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(R.id.bN);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(R.id.O);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView = ((RollNumberView)paramView.findViewById(R.id.bm));
+    this.c = paramView.findViewById(R.id.br);
+    this.d = ((ImageView)paramView.findViewById(R.id.bv));
+    this.l = ((TextView)paramView.findViewById(R.id.bs));
+    this.m = ((EditText)paramView.findViewById(R.id.bp));
+    this.n = ((Button)paramView.findViewById(R.id.bq));
+    this.o = ((Button)paramView.findViewById(R.id.ce));
+    this.B = paramView.findViewById(R.id.bZ);
+    this.s = AnimationUtils.loadAnimation(getActivity(), R.anim.a);
+    this.r = paramView.findViewById(R.id.T);
+    this.C = ((RollNumberView)paramView.findViewById(R.id.bw));
   }
   
-  private boolean a()
+  private void e()
   {
-    this.jdField_b_of_type_Int = ((IQWalletConfigService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "")).getInt("grap_hb_verify", 1, new String[] { "videoRedMinValue" });
-    return Integer.valueOf(QwUtils.a(this.jdField_b_of_type_JavaLangString)).intValue() >= this.jdField_b_of_type_Int;
+    this.n.setOnClickListener(this);
+    this.o.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.B.setOnClickListener(this);
+    this.C.setLisener(this);
+    this.m.addTextChangedListener(this.a);
   }
   
-  private boolean b()
+  private void f()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetEditText.getText().length();
-    String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    this.G = getActivity().getPreferences(0);
+    try
+    {
+      this.p.put("1.00");
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    Object localObject = getArguments();
+    if (localObject != null)
+    {
+      this.y = ((Bundle)localObject).getString("recv_name");
+      this.z = ((Bundle)localObject).getString("feedsid");
+      this.w = ((Bundle)localObject).getString("recv_uin");
+      this.A = ((Bundle)localObject).getString("recv_type");
+      if ((32768 == this.i) && (!this.A.equals("1"))) {
+        this.w = ((Bundle)localObject).getString("grab_uin_list");
+      }
+      this.x = ((Bundle)localObject).getString("send_uin");
+      if (!TextUtils.isEmpty(this.y))
+      {
+        if (this.y.length() > 8)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.y.substring(0, 7));
+          ((StringBuilder)localObject).append("...");
+          this.y = ((StringBuilder)localObject).toString();
+        }
+        this.l.setText(this.y);
+      }
+      this.u = "1.00";
+      this.m.setText(this.u);
+    }
+    this.m.setEnabled(false);
+    this.d.setImageDrawable(FaceDrawable.getFaceDrawable(this.g, 1, this.w));
+    this.F.postDelayed(new QzoneHbFragment.2(this), 10L);
+    this.C.setVisibility(8);
+    this.m.setVisibility(0);
+  }
+  
+  private boolean g()
+  {
+    this.H = ((IQWalletConfigService)this.g.getRuntimeService(IQWalletConfigService.class, "")).getInt("grap_hb_verify", 1, new String[] { "videoRedMinValue" });
+    return Integer.valueOf(QwUtils.b(this.u)).intValue() >= this.H;
+  }
+  
+  private boolean h()
+  {
+    int i = this.m.getText().length();
+    String str = this.m.getText().toString();
     if ((i != 0) && (!str.startsWith(".")))
     {
       if (str.endsWith(".")) {
@@ -215,7 +183,7 @@ public class QzoneHbFragment
       {
         str = getString(R.string.J);
         if (str != null) {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.showQzoneHbToast(str);
+          this.f.showQzoneHbToast(str);
         }
         return false;
       }
@@ -230,65 +198,92 @@ public class QzoneHbFragment
     return false;
   }
   
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView.setLisener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = getActivity().getPreferences(0);
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONArray.put("1.00");
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    Object localObject = getArguments();
-    if (localObject != null)
-    {
-      this.f = ((Bundle)localObject).getString("recv_name");
-      this.g = ((Bundle)localObject).getString("feedsid");
-      this.jdField_d_of_type_JavaLangString = ((Bundle)localObject).getString("recv_uin");
-      this.h = ((Bundle)localObject).getString("recv_type");
-      if ((32768 == this.jdField_a_of_type_Int) && (!this.h.equals("1"))) {
-        this.jdField_d_of_type_JavaLangString = ((Bundle)localObject).getString("grab_uin_list");
-      }
-      this.e = ((Bundle)localObject).getString("send_uin");
-      if (!TextUtils.isEmpty(this.f))
-      {
-        if (this.f.length() > 8)
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.f.substring(0, 7));
-          ((StringBuilder)localObject).append("...");
-          this.f = ((StringBuilder)localObject).toString();
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.f);
-      }
-      this.jdField_b_of_type_JavaLangString = "1.00";
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_b_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, 1, this.jdField_d_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler.postDelayed(new QzoneHbFragment.2(this), 10L);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplRollNumberView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(0);
-  }
-  
-  private void f()
+  private void i()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((isAdded()) && (localFragmentActivity != null)) {
-      this.jdField_c_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new QzoneHbFragment.5(this, localFragmentActivity));
+      this.B.getViewTreeObserver().addOnGlobalLayoutListener(new QzoneHbFragment.5(this, localFragmentActivity));
     }
+  }
+  
+  private String j()
+  {
+    new JSONArray();
+    Object localObject1 = this.p;
+    if (localObject1 != null)
+    {
+      int i1 = ((JSONArray)localObject1).length();
+      if (i1 > 0)
+      {
+        Random localRandom = new Random();
+        int k = 0;
+        int i = k;
+        Object localObject2;
+        try
+        {
+          Object localObject4 = this.G.getString("hb_key_rand_amount", "");
+          Object localObject3 = null;
+          localObject1 = localObject3;
+          i = k;
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
+          {
+            i = k;
+            localObject4 = new JSONArray((String)localObject4);
+            localObject1 = localObject3;
+            i = k;
+            if (((JSONArray)localObject4).length() == this.p.length()) {
+              localObject1 = localObject4;
+            }
+          }
+          localObject3 = localObject1;
+          if (localObject1 == null)
+          {
+            i = k;
+            localObject1 = new JSONArray();
+            j = 0;
+            for (;;)
+            {
+              localObject3 = localObject1;
+              i = k;
+              if (j >= this.p.length()) {
+                break;
+              }
+              i = k;
+              ((JSONArray)localObject1).put(j, 0);
+              j += 1;
+            }
+          }
+          i = k;
+          int j = a(localObject3, localRandom.nextInt(i1));
+          i = j;
+          localObject3.put(j, 1);
+          i = j;
+          localObject1 = this.G.edit();
+          i = j;
+          ((SharedPreferences.Editor)localObject1).putString("hb_key_rand_amount", localObject3.toString());
+          i = j;
+          ((SharedPreferences.Editor)localObject1).commit();
+          i = j;
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+          localObject2 = this.G.edit();
+          ((SharedPreferences.Editor)localObject2).remove("hb_key_rand_amount");
+          ((SharedPreferences.Editor)localObject2).commit();
+        }
+        try
+        {
+          localObject2 = this.p.get(i).toString();
+          return localObject2;
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+        }
+      }
+    }
+    return "";
   }
   
   protected int a(Context paramContext)
@@ -326,28 +321,28 @@ public class QzoneHbFragment
         i = k;
         try
         {
-          int n = paramJSONArray.length();
+          int i2 = paramJSONArray.length();
           j = 0;
-          while (j < n)
+          while (j < i2)
           {
-            int m = (paramInt + j) % n;
+            int i1 = (paramInt + j) % i2;
             i = k;
-            int i1 = paramJSONArray.optInt(m);
-            if (i1 == 0)
+            int i3 = paramJSONArray.optInt(i1);
+            if (i3 == 0)
             {
-              i = m;
+              i = i1;
               break label91;
             }
             j += 1;
           }
           i = 0;
           label91:
-          if (j == n)
+          if (j == i2)
           {
             j = 0;
             for (;;)
             {
-              if (j < n) {
+              if (j < i2) {
                 try
                 {
                   paramJSONArray.put(j, 0);
@@ -380,7 +375,7 @@ public class QzoneHbFragment
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.D = System.currentTimeMillis();
   }
   
   public void a(JSONObject paramJSONObject)
@@ -388,7 +383,7 @@ public class QzoneHbFragment
     if (paramJSONObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_Int == 32768) {
+    if (this.i == 32768) {
       paramJSONObject = paramJSONObject.optJSONObject("mk_svideo_hb");
     } else {
       paramJSONObject = paramJSONObject.optJSONObject("mk_qzone_hb");
@@ -398,15 +393,15 @@ public class QzoneHbFragment
     }
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("comment");
-      this.jdField_a_of_type_OrgJsonJSONArray = paramJSONObject.optJSONArray("money_array");
-      this.jdField_b_of_type_JavaLangString = a();
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      this.q = paramJSONObject.optString("comment");
+      this.p = paramJSONObject.optJSONArray("money_array");
+      this.u = j();
+      if (!TextUtils.isEmpty(this.u)) {
+        this.v = this.u;
       }
-      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler.obtainMessage();
+      paramJSONObject = this.F.obtainMessage();
       paramJSONObject.what = 100;
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler.sendMessage(paramJSONObject);
+      this.F.sendMessage(paramJSONObject);
       return;
     }
     catch (Exception paramJSONObject)
@@ -415,7 +410,7 @@ public class QzoneHbFragment
     }
   }
   
-  public void b()
+  public void c()
   {
     if (!isAdded()) {
       return;
@@ -423,107 +418,107 @@ public class QzoneHbFragment
     getActivity();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath());
-    ((StringBuilder)localObject).append(this.e);
+    ((StringBuilder)localObject).append(this.x);
     ((StringBuilder)localObject).append("/hbThemeConfig.cfg");
     localObject = ((StringBuilder)localObject).toString();
     ThreadManager.getFileThreadHandler().post(new QzoneHbFragment.7(this, (String)localObject));
   }
   
-  public void c()
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QzoneHbFragment", 2, "complete---");
     }
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler.obtainMessage();
+    Message localMessage = this.F.obtainMessage();
     localMessage.what = 101;
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler.sendMessage(localMessage);
+    this.F.sendMessage(localMessage);
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == R.id.bh)
+    if (i == R.id.br)
     {
       if (isAdded())
       {
         try
         {
-          ((InputMethodManager)getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_b_of_type_AndroidViewView.getWindowToken(), 0);
+          ((InputMethodManager)getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.r.getWindowToken(), 0);
         }
         catch (Exception paramView)
         {
           paramView.printStackTrace();
         }
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.cancelCallBack();
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.finish();
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.overridePendingTransition(0, 0);
-        if (this.jdField_a_of_type_Int != 32768) {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addQZoneHbUploadData(300, "rewardhongbao.wrap.close", 2);
+        this.f.cancelCallBack();
+        this.f.finish();
+        this.f.overridePendingTransition(0, 0);
+        if (this.i != 32768) {
+          this.f.addQZoneHbUploadData(300, "rewardhongbao.wrap.close", 2);
         }
       }
     }
     else
     {
-      if (i == R.id.bg)
+      if (i == R.id.bq)
       {
-        if (!this.jdField_c_of_type_Boolean)
+        if (!this.t)
         {
-          this.jdField_c_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(R.string.bV));
-          this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(true);
-          this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-          this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-          if (this.jdField_a_of_type_Int != 32768) {
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addQZoneHbUploadData(300, "rewardhongbao.wrap.custom", 2);
+          this.t = true;
+          this.n.setText(HardCodeUtil.a(R.string.ak));
+          this.m.setEnabled(true);
+          this.m.setFocusable(true);
+          this.m.setText("");
+          if (this.i != 32768) {
+            this.f.addQZoneHbUploadData(300, "rewardhongbao.wrap.custom", 2);
           }
-          a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplQzoneHbFragment$SendHbHandler, this.jdField_a_of_type_AndroidWidgetEditText);
+          a(this.F, this.m);
           return;
         }
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_c_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(R.string.bT));
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
+        this.t = false;
+        this.m.setText(this.v);
+        this.m.setEnabled(false);
+        this.n.setText(HardCodeUtil.a(R.string.bX));
+        this.m.setSelection(0);
         return;
       }
-      if (i == R.id.bS)
+      if (i == R.id.ce)
       {
-        long l = System.currentTimeMillis();
-        if ((this.jdField_a_of_type_Long != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)) {
+        long l1 = System.currentTimeMillis();
+        if ((this.D != 0L) && (System.currentTimeMillis() - this.D < 1000L)) {
           return;
         }
-        this.jdField_a_of_type_Long = l;
-        paramView = this.jdField_a_of_type_AndroidWidgetEditText;
+        this.D = l1;
+        paramView = this.m;
         if (paramView != null) {
-          this.jdField_b_of_type_JavaLangString = paramView.getText().toString();
+          this.u = paramView.getText().toString();
         }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getMapPacketExtra();
+        paramView = this.f.getMapPacketExtra();
         paramView.put("total_num", "1");
-        paramView.put("total_amount", QwUtils.a(this.jdField_b_of_type_JavaLangString));
+        paramView.put("total_amount", QwUtils.b(this.u));
         paramView.put("wishing", "");
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.i);
         localStringBuilder.append("");
         paramView.put("channel", localStringBuilder.toString());
-        paramView.put("feeds_name", this.f);
-        paramView.put("feeds_sid", this.g);
-        if (this.jdField_a_of_type_Int == 32768)
+        paramView.put("feeds_name", this.y);
+        paramView.put("feeds_sid", this.z);
+        if (this.i == 32768)
         {
-          if (!a())
+          if (!g())
           {
             paramView = new StringBuilder();
-            paramView.append(this.jdField_b_of_type_Int);
+            paramView.append(this.H);
             paramView.append("");
             paramView = QwUtils.a(paramView.toString(), 0, true);
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(HardCodeUtil.a(R.string.bW));
+            localStringBuilder.append(HardCodeUtil.a(R.string.bZ));
             localStringBuilder.append(paramView);
-            localStringBuilder.append(HardCodeUtil.a(R.string.bU));
+            localStringBuilder.append(HardCodeUtil.a(R.string.bY));
             paramView = localStringBuilder.toString();
             DialogUtil.a(getActivity(), 230, null, paramView, null, getString(R.string.w), new QzoneHbFragment.3(this), null).show();
             return;
           }
-          if (this.h.equals("1"))
+          if (this.A.equals("1"))
           {
             paramView.put("channel", String.valueOf(1));
             paramView.put("bus_type", "1");
@@ -534,10 +529,10 @@ public class QzoneHbFragment
           }
           paramView.put("type", String.valueOf(1));
         }
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplSendHbLogic.a(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.overridePendingTransition(0, 0);
-        if (this.jdField_a_of_type_Int != 32768) {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addQZoneHbUploadData(300, "rewardhongbao.wrap.send", 2);
+        this.h.a(paramView);
+        this.f.overridePendingTransition(0, 0);
+        if (this.i != 32768) {
+          this.f.addQZoneHbUploadData(300, "rewardhongbao.wrap.send", 2);
         }
       }
     }
@@ -546,29 +541,29 @@ public class QzoneHbFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getWindow().setSoftInputMode(32);
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.o, null);
+    this.f.getWindow().setSoftInputMode(32);
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.r, null);
     a(paramLayoutInflater);
-    e();
-    d();
-    b();
     f();
-    if (this.jdField_a_of_type_Int != 32768) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addQZoneHbUploadData(300, "rewardhongbao.wrap.show", 2);
+    e();
+    c();
+    i();
+    if (this.i != 32768) {
+      this.f.addQZoneHbUploadData(300, "rewardhongbao.wrap.show", 2);
     }
     return paramLayoutInflater;
   }
   
   public void onDestroyView()
   {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.m;
     if (localEditText != null)
     {
-      TextWatcher localTextWatcher = this.jdField_a_of_type_AndroidTextTextWatcher;
+      TextWatcher localTextWatcher = this.a;
       if (localTextWatcher != null)
       {
         localEditText.removeTextChangedListener(localTextWatcher);
-        this.jdField_a_of_type_AndroidTextTextWatcher = null;
+        this.a = null;
       }
     }
     super.onDestroyView();
@@ -576,7 +571,7 @@ public class QzoneHbFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.QzoneHbFragment
  * JD-Core Version:    0.7.0.1
  */

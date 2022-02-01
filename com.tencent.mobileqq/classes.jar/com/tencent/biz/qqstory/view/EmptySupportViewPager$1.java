@@ -13,11 +13,11 @@ class EmptySupportViewPager$1
     PagerAdapter localPagerAdapter = this.a.getAdapter();
     if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
     {
-      this.a.a(8);
+      this.a.setAllEmptyViewVisibility(8);
       EmptySupportViewPager.a(this.a, 0);
       return;
     }
-    this.a.a(0);
+    this.a.setAllEmptyViewVisibility(0);
     EmptySupportViewPager.b(this.a, 8);
   }
 }

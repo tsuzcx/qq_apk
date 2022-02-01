@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:background="@drawable/bg_texture" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ob2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/hzl" />
-        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/np4" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="jsv" formItem:leftText="@string/hzl" formItem:rightText="@string/yix" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ob1" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:switchChecked="true" formItem:switchText="@string/hzb" />
-        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/np2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/hzb" formItem:rightText="@string/yix" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ob0" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/hza" />
-        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/np1" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/hza" formItem:rightText="@string/yix" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/np0" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al1" formItem:bgType="abp" formItem:leftText="@string/yis" formItem:rightText="@string/yix" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/np3" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/yiu" formItem:showArrow="true" />
-    </LinearLayout>
-</com.tencent.mobileqq.widget.BounceScrollView>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o6t" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" />
+    <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_secondary" android:id="@id/qlm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" />
+</LinearLayout>

@@ -14,7 +14,7 @@ final class DeviceCapabilityExamination$1
   
   public void run()
   {
-    Object localObject2 = AVTestforEncDecConfig.a(this.jdField_a_of_type_Int);
+    Object localObject2 = AVTestforEncDecConfig.b(this.a);
     if (localObject2 == null)
     {
       QLog.w("DeviceCapabilityExamination", 1, "startEncoderTest, error", new Throwable("打印调用栈"));
@@ -31,7 +31,7 @@ final class DeviceCapabilityExamination$1
       QLog.w("DeviceCapabilityExamination", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    localObject2 = DeviceCapabilityExamination.a(((AVTestforEncDecConfig.Sample)localObject1).jdField_a_of_type_JavaLangString);
+    localObject2 = DeviceCapabilityExamination.a(((AVTestforEncDecConfig.Sample)localObject1).a);
     if (!new File((String)localObject2).exists())
     {
       localObject1 = new StringBuilder();
@@ -40,10 +40,10 @@ final class DeviceCapabilityExamination$1
       QLog.w("DeviceCapabilityExamination", 1, ((StringBuilder)localObject1).toString(), new Throwable("打印调用栈"));
       return;
     }
-    localObject2 = DeviceCapabilityExamination.a(DeviceCapabilityExamination.a(), ((AVTestforEncDecConfig.Sample)localObject1).jdField_a_of_type_JavaLangString, ((AVTestforEncDecConfig.Sample)localObject1).jdField_a_of_type_Int, ((AVTestforEncDecConfig.Sample)localObject1).b);
-    ((AVTestforEncDecConfig.Sample)localObject1).c = localObject2[1].intValue();
-    ((AVTestforEncDecConfig.Sample)localObject1).d = localObject2[4].intValue();
-    DeviceCapabilityExamination.a(AudioHelper.b(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, (AVTestforEncDecConfig.Sample)localObject1, null);
+    localObject2 = DeviceCapabilityExamination.b(DeviceCapabilityExamination.c(), ((AVTestforEncDecConfig.Sample)localObject1).a, ((AVTestforEncDecConfig.Sample)localObject1).d, ((AVTestforEncDecConfig.Sample)localObject1).e);
+    ((AVTestforEncDecConfig.Sample)localObject1).g = localObject2[1].intValue();
+    ((AVTestforEncDecConfig.Sample)localObject1).h = localObject2[4].intValue();
+    DeviceCapabilityExamination.a(AudioHelper.c(), this.b, this.a, (AVTestforEncDecConfig.Sample)localObject1, null);
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.contacts.base.Contacts;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
 import com.tencent.mobileqq.leba.ILebaFrameApi;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -21,7 +21,7 @@ final class ReadinjoySPEventReport$2
 {
   public void run()
   {
-    if (ReadinjoySPEventReport.b(8))
+    if (ReadinjoySPEventReport.j(8))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = new oidb_cmd0x80a.AttributeList();
@@ -30,7 +30,7 @@ final class ReadinjoySPEventReport$2
       ((PBUInt32Field)localObject2).set(1);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("DTHasRed");
       localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
-      if (!ReadinjoySPEventReport.b()) {
+      if (!ReadinjoySPEventReport.v()) {
         i = 0;
       }
       ((PBStringField)localObject2).set(String.valueOf(i));
@@ -41,7 +41,7 @@ final class ReadinjoySPEventReport$2
         localObject2 = (MainFragment)((SplashActivity)localObject1).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
         localObject1 = null;
         if (localObject2 != null) {
-          localObject1 = ((MainFragment)localObject2).c();
+          localObject1 = ((MainFragment)localObject2).z();
         }
         if (localObject1 != null)
         {
@@ -64,14 +64,14 @@ final class ReadinjoySPEventReport$2
         }
       }
       ReadinjoyReportUtils.a(8, localArrayList);
-      ReadinjoySPEventReport.b(System.currentTimeMillis());
-      ReadinjoySPEventReport.o();
+      ReadinjoySPEventReport.d(System.currentTimeMillis());
+      ReadinjoySPEventReport.w();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.2
  * JD-Core Version:    0.7.0.1
  */

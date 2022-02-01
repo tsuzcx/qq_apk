@@ -16,7 +16,7 @@ class CommentFloatDialog$OnCommentListViewStateChangeListener
   
   public void a()
   {
-    if (!CommentFloatDialog.b(this.a)) {
+    if (!CommentFloatDialog.j(this.a)) {
       this.a.a();
     }
   }
@@ -33,29 +33,29 @@ class CommentFloatDialog$OnCommentListViewStateChangeListener
     if (paramErrorMessage.isSuccess())
     {
       CommentFloatDialog.a(this.a, paramDetailFeedItem);
-      CommentFloatDialog.a(this.a).setVisibility(0);
+      CommentFloatDialog.e(this.a).setVisibility(0);
       paramErrorMessage = this.a;
-      CommentFloatDialog.a(paramErrorMessage, new DetailCommentHelper(paramErrorMessage.getContext(), CommentFloatDialog.b(this.a), paramDetailFeedItem, false, 4444, new CommentFloatDialog.OnCommentHelperCallback(this.a, null)));
-      if (CommentFloatDialog.a(this.a).a != null) {
-        CommentFloatDialog.a(this.a).a.setText(CommentFloatDialog.a(this.a).a);
+      CommentFloatDialog.a(paramErrorMessage, new DetailCommentHelper(paramErrorMessage.getContext(), CommentFloatDialog.f(this.a), paramDetailFeedItem, false, 4444, new CommentFloatDialog.OnCommentHelperCallback(this.a, null)));
+      if (CommentFloatDialog.g(this.a).a != null) {
+        CommentFloatDialog.a(this.a).a.setText(CommentFloatDialog.g(this.a).a);
       }
-      if (CommentFloatDialog.a(this.a))
+      if (CommentFloatDialog.h(this.a))
       {
         CommentFloatDialog.a(this.a, false);
-        CommentFloatDialog.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
+        CommentFloatDialog.i(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
       }
     }
     else
     {
-      CommentFloatDialog.a(this.a).setVisibility(8);
+      CommentFloatDialog.e(this.a).setVisibility(8);
     }
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 1) && (CommentFloatDialog.a(this.a) != null) && (CommentFloatDialog.a(this.a).a()))
+    if ((paramMotionEvent.getAction() == 1) && (CommentFloatDialog.a(this.a) != null) && (CommentFloatDialog.a(this.a).c()))
     {
-      CommentFloatDialog.a(this.a).c();
+      CommentFloatDialog.a(this.a).d();
       return true;
     }
     return false;
@@ -70,7 +70,7 @@ class CommentFloatDialog$OnCommentListViewStateChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener
  * JD-Core Version:    0.7.0.1
  */

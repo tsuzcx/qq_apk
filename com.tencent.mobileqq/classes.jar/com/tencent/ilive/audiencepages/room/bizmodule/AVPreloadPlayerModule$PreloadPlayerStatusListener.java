@@ -12,13 +12,13 @@ class AVPreloadPlayerModule$PreloadPlayerStatusListener
   
   public void onReadyCompleted()
   {
-    this.b.getLog().i(AVPreloadPlayerModule.a(this.b), "PreloadPlayerStatusListener -- onReadyCompleted", new Object[0]);
+    this.b.getLog().i(AVPreloadPlayerModule.b(this.b), "PreloadPlayerStatusListener -- onReadyCompleted", new Object[0]);
     AVPreloadPlayerModule.c(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AVPreloadPlayerModule.PreloadPlayerStatusListener
  * JD-Core Version:    0.7.0.1
  */

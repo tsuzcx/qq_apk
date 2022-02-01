@@ -20,19 +20,19 @@ import tencent.im.c2s.imax.IMaxService.RspBody;
 public class ImaxAdPresenter$IMaxServiceObserver
   extends ProtoUtils.AppProtocolObserver
 {
-  int jdField_a_of_type_Int = 0;
-  AdvertisementItem jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem;
-  WeakReference<QQAppInterface> b;
+  int b = 0;
+  AdvertisementItem c;
+  WeakReference<QQAppInterface> d;
   
   public ImaxAdPresenter$IMaxServiceObserver(ImaxAdPresenter paramImaxAdPresenter, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public ImaxAdPresenter$IMaxServiceObserver(ImaxAdPresenter paramImaxAdPresenter, AdvertisementItem paramAdvertisementItem, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem = paramAdvertisementItem;
-    this.b = new WeakReference(paramQQAppInterface);
+    this.c = paramAdvertisementItem;
+    this.d = new WeakReference(paramQQAppInterface);
   }
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
@@ -57,9 +57,9 @@ public class ImaxAdPresenter$IMaxServiceObserver
           break label326;
         }
         paramInt = paramBundle.int32_type.get();
-        if ((paramInt == 2) && (this.jdField_a_of_type_Int == 3))
+        if ((paramInt == 2) && (this.b == 3))
         {
-          Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131705825), 0).show();
+          Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131903710), 0).show();
           return;
         }
         if (paramInt != 1) {
@@ -67,7 +67,7 @@ public class ImaxAdPresenter$IMaxServiceObserver
         }
         if (paramBundle.int32_exposure_flag.get() == 1)
         {
-          paramArrayOfByte = (QQAppInterface)this.b.get();
+          paramArrayOfByte = (QQAppInterface)this.d.get();
           if (paramArrayOfByte == null)
           {
             if (!QLog.isColorLevel()) {
@@ -76,13 +76,13 @@ public class ImaxAdPresenter$IMaxServiceObserver
             QLog.d("ImaxAdNetPresenter", 2, "request EXPOSURE succ ,but app == null");
             return;
           }
-          AdvertisementRecentUserManager.a().a(paramArrayOfByte, 1, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
-          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_Boolean = true;
+          AdvertisementRecentUserManager.a().a(paramArrayOfByte, 1, this.c);
+          this.c.f = true;
           if (QLog.isColorLevel()) {
             QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
           }
-          this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
-          ReportController.a(paramArrayOfByte, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8009129", "0X8009129", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+          this.e.a(this.c);
+          ReportController.a(paramArrayOfByte, "dc00898", "", this.c.g.a, "0X8009129", "0X8009129", 0, 0, this.c.g.c, "", PublicAccountAdUtil.c(), this.c.g.b);
           return;
         }
         if (!QLog.isColorLevel()) {
@@ -102,8 +102,8 @@ public class ImaxAdPresenter$IMaxServiceObserver
       if (QLog.isColorLevel()) {
         QLog.e("ImaxAdNetPresenter", 2, "request service fail");
       }
-      if (this.jdField_a_of_type_Int == 3) {
-        Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131705824), 0).show();
+      if (this.b == 3) {
+        Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131903709), 0).show();
       }
     }
     label326:
@@ -112,7 +112,7 @@ public class ImaxAdPresenter$IMaxServiceObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdPresenter.IMaxServiceObserver
  * JD-Core Version:    0.7.0.1
  */

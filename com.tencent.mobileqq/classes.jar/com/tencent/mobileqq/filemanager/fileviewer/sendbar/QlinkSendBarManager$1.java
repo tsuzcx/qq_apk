@@ -22,10 +22,10 @@ class QlinkSendBarManager$1
       localStringBuilder.append("");
       localStringBuilder.append(l);
       ReportController.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", 4, 0, localStringBuilder.toString(), "0", "", "");
-      if ((1 == QlinkSendBarManager.a(this.a)) && (!QlinkSendBarManager.b(this.a))) {
-        FMDialogUtil.a(QlinkSendBarManager.a(this.a), 2131698425, 2131698424, new QlinkSendBarManager.1.1(this));
+      if ((1 == QlinkSendBarManager.b(this.a)) && (!QlinkSendBarManager.c(this.a))) {
+        FMDialogUtil.a(QlinkSendBarManager.d(this.a), 2131896349, 2131896348, new QlinkSendBarManager.1.1(this));
       } else {
-        QlinkSendBarManager.a(this.a);
+        QlinkSendBarManager.e(this.a);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -33,7 +33,7 @@ class QlinkSendBarManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.sendbar.QlinkSendBarManager.1
  * JD-Core Version:    0.7.0.1
  */

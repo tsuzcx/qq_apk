@@ -2,48 +2,44 @@ package com.tencent.mobileqq.monitor;
 
 public class CaptureFreqMonitorItem
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt;
-  public long[] a;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int[] jdField_b_of_type_ArrayOfInt;
-  int c;
+  volatile boolean a = false;
+  public long[] b = new long[4];
+  public int c;
+  long d;
+  long e;
+  int f;
+  int g;
+  int[] h;
+  int[] i;
   
-  public CaptureFreqMonitorItem()
-  {
-    this.jdField_a_of_type_ArrayOfLong = new long[4];
-  }
+  public CaptureFreqMonitorItem() {}
   
   public CaptureFreqMonitorItem(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[4];
-    this.jdField_a_of_type_ArrayOfLong = new long[paramInt];
+    this.b = new long[paramInt];
   }
   
   public void a()
   {
-    int i = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
+    int j = 0;
+    this.f = 0;
+    this.g = 0;
     for (;;)
     {
-      long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
-      if (i >= arrayOfLong.length) {
+      long[] arrayOfLong = this.b;
+      if (j >= arrayOfLong.length) {
         break;
       }
-      arrayOfLong[i] = 0L;
-      i += 1;
+      arrayOfLong[j] = 0L;
+      j += 1;
     }
   }
   
   public void a(int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      long[] arrayOfLong = this.b;
       if (arrayOfLong[paramInt] == 0L) {
         arrayOfLong[paramInt] = paramLong;
       }
@@ -54,61 +50,61 @@ public class CaptureFreqMonitorItem
   {
     if (paramVarArgs != null)
     {
-      if (this.jdField_b_of_type_Int >= 400) {
+      if (this.f >= 400) {
         return;
       }
       if (paramVarArgs.length == 1)
       {
-        if (this.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ArrayOfInt = new int[400];
+        if (this.h == null) {
+          this.h = new int[400];
         }
-        this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
+        this.h[this.f] = paramVarArgs[0].intValue();
       }
       else if (paramVarArgs.length == 2)
       {
-        if (this.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ArrayOfInt = new int[400];
+        if (this.h == null) {
+          this.h = new int[400];
         }
-        if (this.jdField_b_of_type_ArrayOfInt == null) {
-          this.jdField_b_of_type_ArrayOfInt = new int[400];
+        if (this.i == null) {
+          this.i = new int[400];
         }
-        this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[0].intValue();
-        this.jdField_b_of_type_ArrayOfInt[this.jdField_b_of_type_Int] = paramVarArgs[1].intValue();
+        this.h[this.f] = paramVarArgs[0].intValue();
+        this.i[this.f] = paramVarArgs[1].intValue();
       }
-      this.jdField_b_of_type_Int += 1;
+      this.f += 1;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean a(int paramInt)
   {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= paramInt;
+    return System.currentTimeMillis() - this.d >= paramInt;
   }
   
-  public void b()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a();
+    return this.a;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    if (this.a) {
+      return;
+    }
+    this.a = true;
+    this.d = System.currentTimeMillis();
+    a();
+  }
+  
+  public void d()
+  {
+    this.a = false;
+    this.e = System.currentTimeMillis();
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.monitor.CaptureFreqMonitorItem
  * JD-Core Version:    0.7.0.1
  */

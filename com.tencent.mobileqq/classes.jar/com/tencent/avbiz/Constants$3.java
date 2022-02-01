@@ -7,7 +7,7 @@ final class Constants$3
 {
   Constants$3()
   {
-    addAll(Constants.Priority.c);
+    addAll(Constants.Priority.AUDIO_SET_SECOND_LEVEL);
   }
 }
 

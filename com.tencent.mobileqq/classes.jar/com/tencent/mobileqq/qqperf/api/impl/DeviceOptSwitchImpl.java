@@ -9,22 +9,22 @@ public class DeviceOptSwitchImpl
 {
   public Set<Integer> getPreDownloadWhiteList()
   {
-    return DeviceOptSwitch.jdField_a_of_type_JavaUtilSet;
+    return DeviceOptSwitch.a;
   }
   
   public boolean isDisablePreDownload()
   {
-    return DeviceOptSwitch.jdField_a_of_type_Boolean;
+    return DeviceOptSwitch.b;
   }
   
   public void setDisablePreDownloadTime(long paramLong)
   {
-    DeviceOptSwitch.c = paramLong;
+    DeviceOptSwitch.n = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqperf.api.impl.DeviceOptSwitchImpl
  * JD-Core Version:    0.7.0.1
  */

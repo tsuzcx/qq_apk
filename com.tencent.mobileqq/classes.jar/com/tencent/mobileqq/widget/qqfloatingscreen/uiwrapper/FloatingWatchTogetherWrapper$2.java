@@ -10,17 +10,17 @@ class FloatingWatchTogetherWrapper$2
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_AndroidViewView);
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getInnerRoundCorner(), this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams.getOuterRoundCorner());
-    this.this$0.d();
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowFloatingScreenParams);
-    this.this$0.aT_();
-    this.this$0.c();
+    this.this$0.a(this.a);
+    this.this$0.a(this.b.getInnerRoundCorner(), this.b.getOuterRoundCorner());
+    this.this$0.s();
+    this.this$0.b(this.b);
+    this.this$0.dz_();
+    this.this$0.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper.2
  * JD-Core Version:    0.7.0.1
  */

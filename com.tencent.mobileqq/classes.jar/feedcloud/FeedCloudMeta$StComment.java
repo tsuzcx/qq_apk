@@ -19,10 +19,13 @@ public final class FeedCloudMeta$StComment
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField content = PBField.initString("");
   public final PBUInt64Field createTime = PBField.initUInt64(0L);
+  public final PBUInt64Field createTimeNs = PBField.initUInt64(0L);
   public final PBStringField id = PBField.initString("");
   public FeedCloudMeta.StLike likeInfo = new FeedCloudMeta.StLike();
   public FeedCloudMeta.StUser postUser = new FeedCloudMeta.StUser();
   public final PBUInt32Field replyCount = PBField.initUInt32(0);
+  public final PBRepeatMessageField<FeedCloudCommon.Entry> storeExtInfo = PBField.initRepeatMessage(FeedCloudCommon.Entry.class);
+  public final PBStringField thirdId = PBField.initString("");
   public final PBUInt32Field typeFlag = PBField.initUInt32(0);
   public final PBUInt32Field typeFlag2 = PBField.initUInt32(0);
   public final PBRepeatMessageField<FeedCloudMeta.StReply> vecReply = PBField.initRepeatMessage(FeedCloudMeta.StReply.class);
@@ -31,12 +34,12 @@ public final class FeedCloudMeta$StComment
   {
     Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 50, 58, 66, 72, 82, 88 }, new String[] { "id", "postUser", "createTime", "content", "replyCount", "vecReply", "busiData", "likeInfo", "typeFlag", "atUinList", "typeFlag2" }, new Object[] { "", null, Long.valueOf(0L), "", localInteger, null, localByteStringMicro, null, localInteger, "", localInteger }, StComment.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 50, 58, 66, 72, 82, 88, 96, 106, 114 }, new String[] { "id", "postUser", "createTime", "content", "replyCount", "vecReply", "busiData", "likeInfo", "typeFlag", "atUinList", "typeFlag2", "createTimeNs", "storeExtInfo", "thirdId" }, new Object[] { "", null, Long.valueOf(0L), "", localInteger, null, localByteStringMicro, null, localInteger, "", localInteger, Long.valueOf(0L), null, "" }, StComment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StComment
  * JD-Core Version:    0.7.0.1
  */

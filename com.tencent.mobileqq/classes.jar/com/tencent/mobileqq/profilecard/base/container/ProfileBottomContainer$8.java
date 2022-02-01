@@ -17,7 +17,7 @@ class ProfileBottomContainer$8
 {
   ProfileBottomContainer$8(ProfileBottomContainer paramProfileBottomContainer, int[] paramArrayOfInt, VideoActionSheet paramVideoActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i = this.val$showItems[paramInt];
     if (QLog.isColorLevel())
@@ -38,10 +38,10 @@ class ProfileBottomContainer$8
         return;
       }
       paramView = new SessionInfo();
-      paramView.jdField_a_of_type_Int = ProfileCardUtil.a(((ProfileCardInfo)ProfileBottomContainer.access$2800(this.this$0)).allInOne);
-      paramView.jdField_a_of_type_JavaLangString = ((ProfileCardInfo)ProfileBottomContainer.access$2900(this.this$0)).allInOne.uin;
-      paramView.d = ProfileBottomContainer.access$3100((ProfileCardInfo)ProfileBottomContainer.access$3000(this.this$0), this.this$0.mQQAppInterface);
-      paramView.b = ((ProfileCardInfo)ProfileBottomContainer.access$3200(this.this$0)).allInOne.troopUin;
+      paramView.a = ProfileCardUtil.b(((ProfileCardInfo)ProfileBottomContainer.access$2800(this.this$0)).allInOne);
+      paramView.b = ((ProfileCardInfo)ProfileBottomContainer.access$2900(this.this$0)).allInOne.uin;
+      paramView.e = ProfileBottomContainer.access$3100((ProfileCardInfo)ProfileBottomContainer.access$3000(this.this$0), this.this$0.mQQAppInterface);
+      paramView.c = ((ProfileCardInfo)ProfileBottomContainer.access$3200(this.this$0)).allInOne.troopUin;
       PlusPanelUtils.a(this.this$0.mQQAppInterface, ProfileBottomContainer.access$3300(this.this$0), paramView, false, null, null);
       ReportController.b(ProfileBottomContainer.access$3400(this.this$0), "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
       return;
@@ -52,7 +52,7 @@ class ProfileBottomContainer$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileBottomContainer.8
  * JD-Core Version:    0.7.0.1
  */

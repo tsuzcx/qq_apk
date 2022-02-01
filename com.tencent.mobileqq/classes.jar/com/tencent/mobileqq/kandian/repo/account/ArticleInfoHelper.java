@@ -8,7 +8,24 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo;
 
 public class ArticleInfoHelper
 {
-  public static long a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c()))
+    {
+      if (RIJItemViewTypeUtils.e(paramAbsBaseArticleInfo)) {
+        return true;
+      }
+      return b(paramAbsBaseArticleInfo) ^ true;
+    }
+    return false;
+  }
+  
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return c(paramAbsBaseArticleInfo) == RIJQQAppInterfaceUtil.c();
+  }
+  
+  public static long c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     long l1 = 0L;
     long l2 = l1;
@@ -17,9 +34,9 @@ public class ArticleInfoHelper
       if (paramAbsBaseArticleInfo.mSocialFeedInfo == null) {
         return 0L;
       }
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
       {
-        l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.a.a;
+        l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
         if (l1 != 0L) {
           return l1;
         }
@@ -38,24 +55,7 @@ public class ArticleInfoHelper
     return l2;
   }
   
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a()))
-    {
-      if (RIJItemViewTypeUtils.e(paramAbsBaseArticleInfo)) {
-        return true;
-      }
-      return b(paramAbsBaseArticleInfo) ^ true;
-    }
-    return false;
-  }
-  
-  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return a(paramAbsBaseArticleInfo) == RIJQQAppInterfaceUtil.a();
-  }
-  
-  public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -64,7 +64,7 @@ public class ArticleInfoHelper
       if (paramAbsBaseArticleInfo.mSocialFeedInfo == null) {
         return false;
       }
-      if (!paramAbsBaseArticleInfo.mSocialFeedInfo.a()) {
+      if (!paramAbsBaseArticleInfo.mSocialFeedInfo.c()) {
         return false;
       }
       bool1 = bool2;
@@ -81,7 +81,7 @@ public class ArticleInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.account.ArticleInfoHelper
  * JD-Core Version:    0.7.0.1
  */

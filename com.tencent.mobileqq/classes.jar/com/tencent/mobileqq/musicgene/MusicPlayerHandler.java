@@ -27,8 +27,8 @@ public class MusicPlayerHandler
   private long a()
   {
     String str;
-    if (!TextUtils.isEmpty("8.7.0")) {
-      str = "8.7.0".replace(".", "");
+    if (!TextUtils.isEmpty("8.8.17")) {
+      str = "8.8.17".replace(".", "");
     }
     try
     {
@@ -171,7 +171,7 @@ public class MusicPlayerHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class SubmitHomeWorkFragment$4
     if (paramInt != 1) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
+    if (this.b.G > 0L)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
+      this.b.a(this.a);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
+    this.b.a(3, null, null, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.4
  * JD-Core Version:    0.7.0.1
  */

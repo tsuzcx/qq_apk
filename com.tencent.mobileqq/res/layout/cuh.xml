@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/nh7" android:background="@drawable/k0" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/puq" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/cue" />
-    <TextView android:textSize="20.0sp" android:textColor="#ff03081a" android:id="@id/mn1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/mmz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-    <Button android:textSize="17.0sp" android:textColor="@color/ah5" android:id="@id/mn0" android:background="@drawable/common_btn_blue" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="28.0dip" android:layout_marginBottom="38.0dip" />
-</LinearLayout>
+    <FrameLayout android:layout_gravity="bottom" android:background="@drawable/ewf" android:layout_width="fill_parent" android:layout_height="290.0dip">
+        <RelativeLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:id="@id/q1d" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/ald" android:gravity="center_vertical" android:id="@id/q1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/q1d" android:layout_alignBottom="@id/q1d" android:layout_alignParentRight="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/q1b" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.0dip">
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/q17" android:layout_width="0.0dip" android:layout_height="150.0dip" android:layout_marginRight="15.0dip" android:layout_weight="1.0">
+                    <RelativeLayout android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginBottom="-6.0dip">
+                        <ImageView android:id="@id/q1a" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/inb" />
+                        <ImageView android:id="@id/q1_" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/inc" />
+                    </RelativeLayout>
+                    <ImageView android:id="@id/q1g" android:layout_width="55.5dip" android:layout_height="20.0dip" android:src="@drawable/ind" android:scaleType="centerInside" android:minHeight="20.0dip" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/q1h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="还不错少投点" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/q16" android:clipChildren="false" android:layout_width="0.0dip" android:layout_height="150.0dip" android:layout_marginLeft="15.0dip" android:layout_weight="1.0">
+                    <RelativeLayout android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginBottom="-6.0dip">
+                        <ImageView android:id="@id/q19" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/inf" />
+                        <ImageView android:id="@id/q18" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/ing" />
+                    </RelativeLayout>
+                    <ImageView android:id="@id/q1e" android:layout_width="55.5dip" android:layout_height="20.0dip" android:src="@drawable/ini" android:scaleType="centerInside" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/q1f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="太棒了多投点" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/q1c" android:background="@drawable/enx" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="22.0dip" android:text="投币" android:layout_below="@id/q1b" />
+        </RelativeLayout>
+    </FrameLayout>
+</FrameLayout>

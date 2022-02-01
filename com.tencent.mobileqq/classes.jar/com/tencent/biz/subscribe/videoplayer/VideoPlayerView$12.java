@@ -13,25 +13,25 @@ class VideoPlayerView$12
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, false);
+      VideoPlayerView.a(this.e, this.b, this.a, this.d, false);
       return;
     }
-    if ((this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if ((this.a == 0) && (VideoPlayerView.x() != null) && (!VideoPlayerView.x().get(this.b.getId()))) {
+      this.b.setVisibility(8);
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if ((this.a == 1) && (VideoPlayerView.x() != null) && (!VideoPlayerView.x().get(this.b.getId()))) {
+      this.b.setVisibility(0);
     }
-    if ((this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId())))
+    if ((this.a == 0) && (VideoPlayerView.x() != null) && (!VideoPlayerView.x().get(this.b.getId())))
     {
-      paramAnimator = VideoPlayerView.a();
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      paramAnimator = VideoPlayerView.y();
+      View localView = this.b;
       paramAnimator.put(localView, Integer.valueOf(localView.getVisibility()));
     }
   }

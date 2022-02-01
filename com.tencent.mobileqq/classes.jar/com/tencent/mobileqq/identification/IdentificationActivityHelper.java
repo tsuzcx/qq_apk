@@ -18,19 +18,18 @@ import mqq.os.MqqHandler;
 public class IdentificationActivityHelper
   implements EIPCResultCallback
 {
-  public static boolean a = false;
+  public static boolean b = false;
   public int a;
-  private QQIdentiferActivity jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity;
-  private IdentificationBaseModel jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel;
-  public AtomicBoolean a;
+  public AtomicBoolean c = new AtomicBoolean(false);
+  private QQIdentiferActivity d;
+  private IdentificationBaseModel e;
   
   @RequiresApi(api=18)
   public IdentificationActivityHelper(QQIdentiferActivity paramQQIdentiferActivity, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity = paramQQIdentiferActivity;
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel = IdentificationBaseModel.a(paramInt, paramQQIdentiferActivity.getIntent(), paramQQIdentiferActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramQQIdentiferActivity;
+    this.e = IdentificationBaseModel.a(paramInt, paramQQIdentiferActivity.getIntent(), paramQQIdentiferActivity);
+    this.a = paramInt;
   }
   
   private void a(Runnable paramRunnable)
@@ -43,16 +42,10 @@ public class IdentificationActivityHelper
     new Handler(Looper.getMainLooper()).post(paramRunnable);
   }
   
-  private boolean c()
-  {
-    QQIdentiferActivity localQQIdentiferActivity = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity;
-    return (localQQIdentiferActivity == null) || (localQQIdentiferActivity.isFinishing());
-  }
-  
-  public static void f()
+  public static void j()
   {
     QLog.d("qq_Identification.Helper", 1, "start preResDownload");
-    if ((!FaceConfigManager.a()) || (FaceConfigManager.b()))
+    if ((!FaceConfigManager.b()) || (FaceConfigManager.c()))
     {
       FaceSharedPreUtils.a("");
       FaceSharedPreUtils.a(0);
@@ -61,10 +54,10 @@ public class IdentificationActivityHelper
     }
   }
   
-  protected int a()
+  private boolean l()
   {
-    String str = FaceConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity);
-    return this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity, str);
+    QQIdentiferActivity localQQIdentiferActivity = this.d;
+    return (localQQIdentiferActivity == null) || (localQQIdentiferActivity.isFinishing());
   }
   
   public void a()
@@ -83,44 +76,25 @@ public class IdentificationActivityHelper
     a(new IdentificationActivityHelper.3(this, paramBoolean, paramInt));
   }
   
-  protected boolean a()
-  {
-    return (!FaceConfigManager.b()) && (FaceConfigManager.a());
-  }
-  
-  protected int b()
-  {
-    return YTCommonInterface.initAuthForQQ(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity);
-  }
-  
   protected void b()
   {
     QLog.d("qq_Identification.Helper", 1, "start init res");
-    if (a())
+    if (c())
     {
-      QLog.d("qq_Identification.Helper", 1, new Object[] { "preCheck is pass, so version is ", Integer.valueOf(FaceSharedPreUtils.a()), " current bits is : ", Integer.valueOf(FaceConfigManager.a()) });
-      d();
+      QLog.d("qq_Identification.Helper", 1, new Object[] { "preCheck is pass, so version is ", Integer.valueOf(FaceSharedPreUtils.b()), " current bits is : ", Integer.valueOf(FaceConfigManager.f()) });
+      e();
       return;
     }
     QLog.d("qq_Identification.Helper", 1, "local res is invalid");
-    c();
+    d();
   }
   
-  protected boolean b()
+  protected boolean c()
   {
-    if (jdField_a_of_type_Boolean) {
-      return true;
-    }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel.a(IdentificationBaseModel.b);
-    String str = FaceConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity);
-    IdentificationBaseModel localIdentificationBaseModel = this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("identification/so/");
-    return bool & localIdentificationBaseModel.a(localStringBuilder.toString(), IdentificationBaseModel.a);
+    return (!FaceConfigManager.c()) && (FaceConfigManager.b());
   }
   
-  protected void c()
+  protected void d()
   {
     FaceSharedPreUtils.a("");
     FaceSharedPreUtils.a(0);
@@ -128,49 +102,74 @@ public class IdentificationActivityHelper
     a(this);
   }
   
-  public void d()
+  public void e()
   {
-    if (c())
+    if (l())
     {
       QLog.e("qq_Identification.Helper", 1, "initYoutuSdk, activity invalid");
       return;
     }
-    jdField_a_of_type_Boolean = b();
-    QLog.d("qq_Identification.Helper", 1, new Object[] { "start init youtu sdk, mIsLoadSo is ", Boolean.valueOf(jdField_a_of_type_Boolean) });
-    if (!jdField_a_of_type_Boolean)
+    b = g();
+    QLog.d("qq_Identification.Helper", 1, new Object[] { "start init youtu sdk, mIsLoadSo is ", Boolean.valueOf(b) });
+    if (!b)
     {
       a(false, 207);
       return;
     }
-    int i = b();
+    int i = i();
     QLog.d("qq_Identification.Helper", 1, new Object[] { "yt init result is : ", Integer.valueOf(i) });
     if (i != 0)
     {
       a(false, 207);
       return;
     }
-    i = a();
+    i = h();
     QLog.d("qq_Identification.Helper", 1, new Object[] { "initFaceResMode result is ", Integer.valueOf(i) });
     if (i != 0)
     {
       a(false, 207);
       return;
     }
-    e();
+    f();
   }
   
-  protected void e()
+  protected void f()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel.a(true, this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferActivity);
+    this.c.set(true);
+    this.e.a(true, this.d);
     YtLogger.setLoggerListener(new IdentificationActivityHelper.2(this));
     a(true, 0);
   }
   
-  public void g()
+  protected boolean g()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationBaseModel.a();
+    if (b) {
+      return true;
+    }
+    boolean bool = this.e.a(IdentificationBaseModel.d);
+    String str = FaceConfigManager.a(this.d);
+    IdentificationBaseModel localIdentificationBaseModel = this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("identification/so/");
+    return bool & localIdentificationBaseModel.a(localStringBuilder.toString(), IdentificationBaseModel.c);
+  }
+  
+  protected int h()
+  {
+    String str = FaceConfigManager.a(this.d);
+    return this.e.a(this.d, str);
+  }
+  
+  protected int i()
+  {
+    return YTCommonInterface.initAuthForQQ(this.d);
+  }
+  
+  public void k()
+  {
+    this.c.set(false);
+    this.e.a();
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
@@ -182,19 +181,19 @@ public class IdentificationActivityHelper
       a(false, 214);
       return;
     }
-    bool = FaceConfigManager.a();
+    bool = FaceConfigManager.b();
     QLog.d("qq_Identification.Helper", 1, new Object[] { "checkLocalResValid : ", Boolean.valueOf(bool) });
     if (!bool)
     {
       a(false, 215);
       return;
     }
-    d();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationActivityHelper
  * JD-Core Version:    0.7.0.1
  */

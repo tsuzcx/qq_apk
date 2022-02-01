@@ -9,10 +9,10 @@ final class FromService$1
   public FromService a(Parcel paramParcel)
   {
     FromService localFromService = new FromService();
-    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.a = paramParcel.readInt();
     localFromService.b = paramParcel.readInt();
     localFromService.c = paramParcel.readInt();
-    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    localFromService.d = paramParcel.readBundle();
     return localFromService;
   }
   

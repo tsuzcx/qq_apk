@@ -15,21 +15,21 @@ import java.util.Map;
 public class RoundedTransformation
   implements Transformation
 {
-  private float jdField_a_of_type_Float = 1.0F;
   protected final int a;
-  public Bitmap a;
-  private String jdField_a_of_type_JavaLangString;
-  public Map<String, Bitmap> a;
   protected final int b;
+  public Map<String, Bitmap> c;
+  public Bitmap d;
+  private float e = 1.0F;
+  private String f;
   
   public RoundedTransformation(int paramInt1, int paramInt2, float paramFloat, Map<String, Bitmap> paramMap, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_JavaLangString = StringAppendTool.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
+    this.e = paramFloat;
+    this.c = paramMap;
+    this.d = null;
+    this.f = StringAppendTool.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
   }
   
   public Bitmap a(Bitmap paramBitmap)
@@ -46,24 +46,24 @@ public class RoundedTransformation
         int j;
         int m;
         int k;
-        if (f3 > this.jdField_a_of_type_Float)
+        if (f3 > this.e)
         {
-          j = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
+          j = (int)(paramBitmap.getWidth() * this.e);
           m = (paramBitmap.getHeight() - j) / 2;
           k = 0;
           n = j;
         }
         else
         {
-          i = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
+          i = (int)(paramBitmap.getHeight() / this.e);
           j = (paramBitmap.getWidth() - i) / 2;
           m = 0;
           k = j;
         }
-        localObject1 = this.jdField_a_of_type_JavaUtilMap;
+        localObject1 = this.c;
         if (localObject1 != null)
         {
-          localObject1 = this.jdField_a_of_type_JavaUtilMap;
+          localObject1 = this.c;
           Object localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("RT:w=");
           ((StringBuilder)localObject2).append(i);
@@ -79,9 +79,9 @@ public class RoundedTransformation
           {
             paramBitmap = Bitmap.createBitmap(paramBitmap, k, m, i, n);
             localObject1 = paramBitmap;
-            if (this.jdField_a_of_type_JavaUtilMap != null)
+            if (this.c != null)
             {
-              localObject1 = this.jdField_a_of_type_JavaUtilMap;
+              localObject1 = this.c;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("RT:w=");
               ((StringBuilder)localObject2).append(i);
@@ -94,13 +94,13 @@ public class RoundedTransformation
           localObject2 = new Paint();
           ((Paint)localObject2).setAntiAlias(true);
           ((Paint)localObject2).setShader(new BitmapShader((Bitmap)localObject1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-          if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-            paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+          if ((this.d != null) && (!this.d.isRecycled())) {
+            paramBitmap = this.d;
           } else {
             paramBitmap = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
           }
           paramBitmap.eraseColor(0);
-          new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, ((Bitmap)localObject1).getWidth() - this.b, ((Bitmap)localObject1).getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, (Paint)localObject2);
+          new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, ((Bitmap)localObject1).getWidth() - this.b, ((Bitmap)localObject1).getHeight() - this.b), this.a, this.a, (Paint)localObject2);
           return paramBitmap;
         }
       }
@@ -118,7 +118,7 @@ public class RoundedTransformation
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.f;
   }
 }
 

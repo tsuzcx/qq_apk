@@ -25,7 +25,7 @@ class ReuseCodecWrapper$4
       }
       catch (Throwable localThrowable)
       {
-        LogUtils.w("ReuseCodecWrapper", "recycle codec ignore error,", localThrowable);
+        LogUtils.w(this.this$0.TAG, "recycle codec ignore error,", localThrowable);
         if (ReuseCodecWrapper.access$500(this.this$0) == null) {
           return;
         }
@@ -39,7 +39,7 @@ class ReuseCodecWrapper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.ReuseCodecWrapper.4
  * JD-Core Version:    0.7.0.1
  */

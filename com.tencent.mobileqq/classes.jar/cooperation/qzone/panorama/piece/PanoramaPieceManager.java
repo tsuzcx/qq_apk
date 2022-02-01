@@ -272,9 +272,9 @@ public class PanoramaPieceManager
       ((StringBuilder)localObject).append(this.orgHeight);
       QZLog.i("PanoramaPieceManager", 4, new Object[] { "orgWidth = ", Integer.valueOf(i), ((StringBuilder)localObject).toString() });
     }
-    this.screenWidth = ViewUtils.a();
-    this.screenHeight = ViewUtils.b();
-    this.maxSize = (MemoryManager.a() / 8L);
+    this.screenWidth = ViewUtils.getScreenWidth();
+    this.screenHeight = ViewUtils.getScreenHeight();
+    this.maxSize = (MemoryManager.d() / 8L);
     if (this.cachePieceDataList == null) {
       this.cachePieceDataList = new PieceCacheList(this.maxSize);
     }
@@ -647,7 +647,7 @@ public class PanoramaPieceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.panorama.piece.PanoramaPieceManager
  * JD-Core Version:    0.7.0.1
  */

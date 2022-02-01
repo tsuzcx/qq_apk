@@ -6,9 +6,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsHelper;
-import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
+import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -32,20 +31,20 @@ public class VideoFeedsWeiShiUtils
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString = localJSONObject.getString("appid");
-      ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString = localJSONObject.getString("url");
+      ((DownloadInfo)localObject).c = localJSONObject.getString("appid");
+      ((DownloadInfo)localObject).d = localJSONObject.getString("url");
       ((DownloadInfo)localObject).e = localJSONObject.getString("packageName");
       ((DownloadInfo)localObject).h = localJSONObject.getString("via");
-      ((DownloadInfo)localObject).a = true;
-      ((DownloadInfo)localObject).jdField_d_of_type_Boolean = true;
-      ((DownloadInfo)localObject).i = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;
+      ((DownloadInfo)localObject).w = true;
+      ((DownloadInfo)localObject).G = true;
+      ((DownloadInfo)localObject).C = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;
       String str = localJSONObject.getString("isAutoInstall");
       if (str != null) {
-        ((DownloadInfo)localObject).a = str.equals("1");
+        ((DownloadInfo)localObject).w = str.equals("1");
       }
       str = localJSONObject.getString("isAutoInstallBySDK");
       if (str != null) {
-        ((DownloadInfo)localObject).jdField_d_of_type_Boolean = str.equals("1");
+        ((DownloadInfo)localObject).G = str.equals("1");
       }
       str = localJSONObject.getString("isShowNotification");
       if (str != null)
@@ -56,17 +55,17 @@ public class VideoFeedsWeiShiUtils
         } else {
           i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
         }
-        ((DownloadInfo)localObject).i = i;
+        ((DownloadInfo)localObject).C = i;
       }
-      ((DownloadInfo)localObject).jdField_c_of_type_Boolean = true;
-      ((DownloadInfo)localObject).m = ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).getSourceForDownloadAndJumpOtherApp(40677);
+      ((DownloadInfo)localObject).A = true;
+      ((DownloadInfo)localObject).r = RIJJumpUtils.a(40677);
       ((DownloadInfo)localObject).f = localJSONObject.getString("appName");
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      label206:
-      break label206;
+      label196:
+      break label196;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("json err:");
@@ -75,7 +74,86 @@ public class VideoFeedsWeiShiUtils
     return null;
   }
   
-  private static String a(String paramString)
+  public static void a(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.putExtra("big_brother_source_key", RIJJumpUtils.a(40677));
+    localIntent.putExtra("big_brother_ref_source_key", RIJJumpUtils.a(0));
+    localIntent.setData(Uri.parse(e(paramString)));
+    if (VideoFeedsHelper.a(paramContext, localIntent)) {
+      paramContext.startActivity(localIntent);
+    }
+  }
+  
+  public static DownloadInfo b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Object localObject = new DownloadInfo();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (!localJSONObject.optBoolean("isWeb", false))
+      {
+        ((DownloadInfo)localObject).d = localJSONObject.optString("url");
+        ((DownloadInfo)localObject).e = localJSONObject.optString("packageName", null);
+        ((DownloadInfo)localObject).r = RIJJumpUtils.a(0);
+        return localObject;
+      }
+      return null;
+    }
+    catch (JSONException localJSONException)
+    {
+      label69:
+      break label69;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("json err:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.e("VideoFeedsWeiShiUtils", 4, ((StringBuilder)localObject).toString());
+    return null;
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (!TextUtils.isEmpty(d(paramString))) {
+      a = a(d(paramString));
+    }
+    if (a != null)
+    {
+      if (NetworkState.getNetworkType() == 1)
+      {
+        DownloadManager.b().a(a);
+        return;
+      }
+      paramContext = DialogUtil.a(paramContext, 230);
+      paramContext.setTitle(null);
+      paramContext.setMessage(HardCodeUtil.a(2131913425));
+      paramContext.setNegativeButton(HardCodeUtil.a(2131898212), new VideoFeedsWeiShiUtils.3()).setPositiveButton(HardCodeUtil.a(2131913370), new VideoFeedsWeiShiUtils.2());
+      paramContext.show();
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", c(paramString));
+    localIntent.putExtra("big_brother_source_key", RIJJumpUtils.a(40677));
+    paramContext.startActivity(localIntent);
+  }
+  
+  private static String c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -92,91 +170,12 @@ public class VideoFeedsWeiShiUtils
     return null;
   }
   
-  public static void a(Context paramContext, String paramString)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.putExtra("big_brother_source_key", ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).getSourceForDownloadAndJumpOtherApp(40677));
-    localIntent.putExtra("big_brother_ref_source_key", ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).getSourceForDownloadAndJumpOtherApp(0));
-    localIntent.setData(Uri.parse(c(paramString)));
-    if (((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).isIntentAvailable(paramContext, localIntent)) {
-      paramContext.startActivity(localIntent);
-    }
-  }
-  
-  public static DownloadInfo b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    Object localObject = new DownloadInfo();
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (!localJSONObject.optBoolean("isWeb", false))
-      {
-        ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString = localJSONObject.optString("url");
-        ((DownloadInfo)localObject).e = localJSONObject.optString("packageName", null);
-        ((DownloadInfo)localObject).m = ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).getSourceForDownloadAndJumpOtherApp(0);
-        return localObject;
-      }
-      return null;
-    }
-    catch (JSONException localJSONException)
-    {
-      label79:
-      break label79;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("json err:");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.e("VideoFeedsWeiShiUtils", 4, ((StringBuilder)localObject).toString());
-    return null;
-  }
-  
-  private static String b(String paramString)
+  private static String d(String paramString)
   {
     return null;
   }
   
-  public static void b(Context paramContext, String paramString)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (!TextUtils.isEmpty(b(paramString))) {
-      a = a(b(paramString));
-    }
-    if (a != null)
-    {
-      if (NetworkState.getNetworkType() == 1)
-      {
-        DownloadManager.a().a(a);
-        return;
-      }
-      paramContext = DialogUtil.a(paramContext, 230);
-      paramContext.setTitle(null);
-      paramContext.setMessage(HardCodeUtil.a(2131715971));
-      paramContext.setNegativeButton(HardCodeUtil.a(2131715959), new VideoFeedsWeiShiUtils.3()).setPositiveButton(HardCodeUtil.a(2131715915), new VideoFeedsWeiShiUtils.2());
-      paramContext.show();
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", a(paramString));
-    localIntent.putExtra("big_brother_source_key", ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).getSourceForDownloadAndJumpOtherApp(40677));
-    paramContext.startActivity(localIntent);
-  }
-  
-  private static String c(String paramString)
+  private static String e(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -195,7 +194,7 @@ public class VideoFeedsWeiShiUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.api.impl.VideoFeedsWeiShiUtils
  * JD-Core Version:    0.7.0.1
  */

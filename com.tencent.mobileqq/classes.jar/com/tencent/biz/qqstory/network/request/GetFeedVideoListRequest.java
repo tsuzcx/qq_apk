@@ -16,11 +16,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetFeedVideoListRequest
   extends NetworkRequest<GetFeedVideoListResponse>
 {
-  public String a = "";
-  public String b = "";
-  public int c;
+  public String e = "";
+  public String f = "";
+  public int g;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StorySvc.homepage_feed_loadmore_720");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     Object localObject = new qqstory_service.RspFriendStoryFeedVideoList();
     try
@@ -38,21 +43,16 @@ public class GetFeedVideoListRequest
     return null;
   }
   
-  public String a()
-  {
-    return StoryApi.a("StorySvc.homepage_feed_loadmore_720");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    if (!TextUtils.isEmpty(this.e)) {
+      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.e));
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (!TextUtils.isEmpty(this.f)) {
+      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.f));
     }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
+    localReqFriendStoryFeedVideoList.pull_type.set(this.g);
     return localReqFriendStoryFeedVideoList.toByteArray();
   }
   
@@ -60,20 +60,20 @@ public class GetFeedVideoListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetFeedVideoListRequest{, feedId='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", startCookie='");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", pullType=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedVideoListRequest
  * JD-Core Version:    0.7.0.1
  */

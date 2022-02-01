@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.cmshow.brickengine.apollo;
 
 import android.view.View;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
 
 class ApolloRender$3
   implements Runnable
@@ -15,7 +14,7 @@ class ApolloRender$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender.3
  * JD-Core Version:    0.7.0.1
  */

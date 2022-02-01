@@ -4,19 +4,19 @@ import android.text.TextUtils;
 
 public class SearchRespData
 {
-  public int a;
   public String a;
+  public int b;
   
   public SearchRespData(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public boolean a(String paramString)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString.equals(paramString);
+    if (!TextUtils.isEmpty(this.a)) {
+      return this.a.equals(paramString);
     }
     return false;
   }
@@ -25,15 +25,15 @@ public class SearchRespData
   {
     StringBuilder localStringBuilder = new StringBuilder(20);
     localStringBuilder.append("keyword:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" status:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.model.SearchRespData
  * JD-Core Version:    0.7.0.1
  */

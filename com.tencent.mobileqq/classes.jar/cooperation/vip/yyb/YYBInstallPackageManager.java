@@ -16,21 +16,21 @@ import mqq.app.NewIntent;
 
 public class YYBInstallPackageManager
 {
-  private static YYBInstallPackageManager jdField_a_of_type_CooperationVipYybYYBInstallPackageManager;
-  private long jdField_a_of_type_Long = -1L;
+  private static YYBInstallPackageManager a;
+  private long b = -1L;
   
   public static YYBInstallPackageManager a()
   {
-    if (jdField_a_of_type_CooperationVipYybYYBInstallPackageManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_CooperationVipYybYYBInstallPackageManager == null) {
-          jdField_a_of_type_CooperationVipYybYYBInstallPackageManager = new YYBInstallPackageManager();
+        if (a == null) {
+          a = new YYBInstallPackageManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationVipYybYYBInstallPackageManager;
+    return a;
   }
   
   public static void a(long paramLong)
@@ -56,13 +56,13 @@ public class YYBInstallPackageManager
           break;
         }
         localObject = (String)localIterator.next();
-      } while (PackageUtil.a(BaseApplicationImpl.getApplication(), (String)localObject));
+      } while (PackageUtil.d(BaseApplicationImpl.getApplication(), (String)localObject));
       localArrayList.add(localObject);
     } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
     if (localArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      a(this.jdField_a_of_type_Long);
+      this.b = paramLong;
+      a(this.b);
       paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), YYBInstallPackageReportServlet.class);
       paramLong = 0L;
       try
@@ -98,7 +98,7 @@ public class YYBInstallPackageManager
         QLog.d("YYBInstallPackageManager", 1, "invokeReport");
       }
       l = System.currentTimeMillis() / 1000L;
-      if (((this.jdField_a_of_type_Long < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (this.jdField_a_of_type_Long > paramMobileCommConf.new_mobile_user_conf.uEndTime)) && (l >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (l <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) {
+      if (((this.b < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (this.b > paramMobileCommConf.new_mobile_user_conf.uEndTime)) && (l >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (l <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) {
         a(paramMobileCommConf, l);
       }
     }
@@ -106,7 +106,7 @@ public class YYBInstallPackageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.yyb.YYBInstallPackageManager
  * JD-Core Version:    0.7.0.1
  */

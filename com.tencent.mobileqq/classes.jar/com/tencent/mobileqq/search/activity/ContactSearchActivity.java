@@ -19,11 +19,11 @@ import java.util.Stack;
 public class ContactSearchActivity
   extends BaseSearchActivity
 {
-  private int jdField_a_of_type_Int;
-  private ContactSearchActivity.GroupFileSearchListener jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener;
-  private boolean c;
-  private int e;
-  private int f;
+  private int a;
+  private int b;
+  private boolean q;
+  private int r;
+  private ContactSearchActivity.GroupFileSearchListener s;
   
   public static void a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -53,25 +53,25 @@ public class ContactSearchActivity
     localObject = ((Intent)localObject).getStringExtra("watch_together_uin");
     if (i != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener = new ContactSearchActivity.GroupFileSearchListener(this, i, j, (String)localObject);
+      this.s = new ContactSearchActivity.GroupFileSearchListener(this, i, j, (String)localObject);
       ReportController.b(null, "dc00898", "", "", "0X800B625", "0X800B625", 0, 0, "", "", "", "");
     }
   }
   
-  protected BaseSearchFragment a()
+  protected BaseSearchFragment c()
   {
-    return ContactSearchFragment.a(this.e, this.jdField_a_of_type_Int, null, null, this.jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener, this.c, this.f, -1L);
+    return ContactSearchFragment.a(this.b, this.a, null, null, this.s, this.q, this.r, -1L);
   }
   
-  protected String a()
+  protected String d()
   {
     if ((getIntent() != null) && (getIntent().getIntExtra("key_from_type", 0) != 0)) {
-      return HardCodeUtil.a(2131699551);
+      return HardCodeUtil.a(2131897582);
     }
-    if (this.jdField_a_of_type_Int != 197437) {
-      return HardCodeUtil.a(2131702727);
+    if (this.a != 33751869) {
+      return HardCodeUtil.a(2131900717);
     }
-    return HardCodeUtil.a(2131702709);
+    return HardCodeUtil.a(2131900699);
   }
   
   @Override
@@ -106,20 +106,20 @@ public class ContactSearchActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.e = getIntent().getIntExtra("fromType", -1);
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("contactSearchSource", 197437);
-    this.c = getIntent().getBooleanExtra("isApproximate", false);
-    this.f = getIntent().getIntExtra("ContactCombineType", 0);
+    this.k = true;
+    this.b = getIntent().getIntExtra("fromType", -1);
+    this.a = getIntent().getIntExtra("contactSearchSource", 33751869);
+    this.q = getIntent().getBooleanExtra("isApproximate", false);
+    this.r = getIntent().getIntExtra("ContactCombineType", 0);
     b();
-    WTBusinessForWebPlugin.a.push(this);
+    WTBusinessForWebPlugin.b.push(this);
     super.doOnCreate(paramBundle);
     return true;
   }
   
   protected void doOnDestroy()
   {
-    WTBusinessForWebPlugin.a.pop();
+    WTBusinessForWebPlugin.b.pop();
     super.doOnDestroy();
   }
   
@@ -132,7 +132,7 @@ public class ContactSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity
  * JD-Core Version:    0.7.0.1
  */

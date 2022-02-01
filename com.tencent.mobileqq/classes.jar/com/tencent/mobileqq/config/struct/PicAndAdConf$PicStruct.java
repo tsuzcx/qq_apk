@@ -5,84 +5,75 @@ import java.io.DataOutputStream;
 
 public class PicAndAdConf$PicStruct
 {
-  protected byte a;
-  protected int a;
-  protected long a;
-  protected String a;
-  protected short a;
-  protected boolean a;
-  protected byte[] a;
+  protected long a = 0L;
   protected String b = null;
   protected String c = null;
   protected String d = null;
-  protected String e = "";
-  protected String f = "";
+  protected byte[] e = null;
+  protected String f = null;
+  protected byte g = 3;
+  protected String h = "";
+  protected short i = 0;
+  protected String j = "";
+  protected int k = 0;
+  protected boolean l = true;
   
-  public PicAndAdConf$PicStruct(PicAndAdConf paramPicAndAdConf)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Byte = 3;
-    this.jdField_a_of_type_Short = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public PicAndAdConf$PicStruct(PicAndAdConf paramPicAndAdConf) {}
   
   public void a(DataInputStream paramDataInputStream)
   {
-    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
-    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
+    this.a = paramDataInputStream.readLong();
     this.b = paramDataInputStream.readUTF();
-    this.d = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
     this.c = paramDataInputStream.readUTF();
-    this.e = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
+    this.f = paramDataInputStream.readUTF();
+    this.g = paramDataInputStream.readByte();
+    this.d = paramDataInputStream.readUTF();
+    this.h = paramDataInputStream.readUTF();
+    this.i = paramDataInputStream.readShort();
   }
   
   public void a(DataOutputStream paramDataOutputStream)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
-    }
     if (this.b == null) {
       this.b = "";
-    }
-    if (this.d == null) {
-      this.d = "";
     }
     if (this.c == null) {
       this.c = "";
     }
-    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
+    if (this.f == null) {
+      this.f = "";
+    }
+    if (this.d == null) {
+      this.d = "";
+    }
+    paramDataOutputStream.writeLong(this.a);
     paramDataOutputStream.writeUTF(this.b);
-    paramDataOutputStream.writeUTF(this.d);
-    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
     paramDataOutputStream.writeUTF(this.c);
-    paramDataOutputStream.writeUTF(this.e);
-    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
+    paramDataOutputStream.writeUTF(this.f);
+    paramDataOutputStream.writeByte(this.g);
+    paramDataOutputStream.writeUTF(this.d);
+    paramDataOutputStream.writeUTF(this.h);
+    paramDataOutputStream.writeShort(this.i);
   }
   
   public void b(DataInputStream paramDataInputStream)
   {
     a(paramDataInputStream);
-    this.f = paramDataInputStream.readUTF();
+    this.j = paramDataInputStream.readUTF();
   }
   
   public void b(DataOutputStream paramDataOutputStream)
   {
     a(paramDataOutputStream);
-    if (this.f == null) {
-      this.f = "";
+    if (this.j == null) {
+      this.j = "";
     }
-    paramDataOutputStream.writeUTF(this.f);
+    paramDataOutputStream.writeUTF(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.PicAndAdConf.PicStruct
  * JD-Core Version:    0.7.0.1
  */

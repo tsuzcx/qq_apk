@@ -29,13 +29,13 @@ class ReadInJoySocializeRecommendFollowView$9
       {
         paramBundle = new oidb_0xc2f.RspBody();
         paramBundle.mergeFrom(paramArrayOfByte);
-        ReadInJoySocializeRecommendFollowView.a(this.a).mRecommendFollowInfos = RecommendFollowInfos.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
-        if ((ReadInJoySocializeRecommendFollowView.a(this.a).mRecommendFollowInfos.a != null) && (ReadInJoySocializeRecommendFollowView.a(this.a).mRecommendFollowInfos.a.size() >= 3))
+        ReadInJoySocializeRecommendFollowView.g(this.b).mRecommendFollowInfos = RecommendFollowInfos.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
+        if ((ReadInJoySocializeRecommendFollowView.g(this.b).mRecommendFollowInfos.c != null) && (ReadInJoySocializeRecommendFollowView.g(this.b).mRecommendFollowInfos.c.size() >= 3))
         {
-          ReadInJoySocializeRecommendFollowView.a(this.a).a(ReadInJoySocializeRecommendFollowView.a(this.a).mRecommendFollowInfos.a);
-          ReadInJoySocializeRecommendFollowView.a(this.a).isShowRecommendList = true;
-          ReadInJoySocializeRecommendFollowView.a(this.a);
-          ReadInJoySocializeRecommendFollowView.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
+          ReadInJoySocializeRecommendFollowView.c(this.b).a(ReadInJoySocializeRecommendFollowView.g(this.b).mRecommendFollowInfos.c);
+          ReadInJoySocializeRecommendFollowView.g(this.b).isShowRecommendList = true;
+          ReadInJoySocializeRecommendFollowView.a(this.b);
+          ReadInJoySocializeRecommendFollowView.b(this.b).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
           return;
         }
         if (QLog.isColorLevel())
@@ -56,7 +56,7 @@ class ReadInJoySocializeRecommendFollowView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.9
  * JD-Core Version:    0.7.0.1
  */

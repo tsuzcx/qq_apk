@@ -8,43 +8,26 @@ import java.util.List;
 public abstract class Topic
   implements ITopic
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  String[] jdField_a_of_type_ArrayOfJavaLangString = new String[3];
+  int a = 0;
   String b = "";
+  String c = "";
+  String[] d = new String[3];
+  long e = 0L;
+  boolean f = false;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public abstract ITopic a();
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public List<? extends ITopic> a()
-  {
-    return null;
+    return this.a;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public boolean a(ITopic paramITopic)
@@ -52,26 +35,43 @@ public abstract class Topic
     return (paramITopic != null) && (paramITopic.a() == a()) && (paramITopic.b() == b());
   }
   
-  public String[] a()
+  public String c()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return "";
   }
   
   @Nullable
-  public String b()
+  public String d()
+  {
+    return this.c;
+  }
+  
+  public String e()
   {
     return this.b;
   }
   
-  public int c()
+  public int f()
   {
     return 0;
   }
   
-  public String c()
+  public String[] g()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
+  
+  public long h()
+  {
+    return this.e;
+  }
+  
+  public List<? extends ITopic> i()
+  {
+    return null;
+  }
+  
+  public abstract ITopic j();
   
   @NonNull
   public String toString()
@@ -79,11 +79,11 @@ public abstract class Topic
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("isTopicBank");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("|");
     localStringBuilder.append("gameType");
     localStringBuilder.append("=");
@@ -91,23 +91,23 @@ public abstract class Topic
     localStringBuilder.append("|");
     localStringBuilder.append("content");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
     localStringBuilder.append("answer");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("|");
     localStringBuilder.append("buff type");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    localStringBuilder.append(this.d[0]);
     localStringBuilder.append("|");
     localStringBuilder.append("buff point");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    localStringBuilder.append(this.d[1]);
     localStringBuilder.append("|");
     localStringBuilder.append("buff color");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString[2]);
+    localStringBuilder.append(this.d[2]);
     localStringBuilder.append("|");
     return localStringBuilder.toString();
   }

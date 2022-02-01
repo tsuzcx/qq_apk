@@ -43,6 +43,7 @@ public class QQText
   public String mSource;
   public int mSpanCount;
   private int[] mSpanData;
+  private ISpanRefreshCallback mSpanRefreshCallback = null;
   public Object[] mSpans;
   protected String mText;
   
@@ -85,6 +86,11 @@ public class QQText
   
   protected QQText(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Object paramObject)
   {
+    this(paramCharSequence, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramObject, null);
+  }
+  
+  protected QQText(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Object paramObject, ISpanRefreshCallback paramISpanRefreshCallback)
+  {
     if (paramCharSequence == null)
     {
       this.mText = "";
@@ -93,6 +99,7 @@ public class QQText
     }
     this.mSource = paramCharSequence.toString();
     this.mText = this.mSource;
+    this.mSpanRefreshCallback = paramISpanRefreshCallback;
     this.mGrabParams = new GrabParams(this.mText, paramInt3, paramInt1, paramInt2);
     this.mGrabParams.setEmoSize(paramInt4);
     this.mGrabParams.setUinType(paramInt5);
@@ -113,9 +120,9 @@ public class QQText
     paramObject = sSpanProcessorList.iterator();
     while (paramObject.hasNext())
     {
-      ISpanProcessor localISpanProcessor = (ISpanProcessor)paramObject.next();
-      if (localISpanProcessor.matchGrab(paramInt3)) {
-        localISpanProcessor.doGrab(this.mGrabParams, this);
+      paramISpanRefreshCallback = (ISpanProcessor)paramObject.next();
+      if (paramISpanRefreshCallback.matchGrab(paramInt3)) {
+        paramISpanRefreshCallback.doGrab(this.mGrabParams, this);
       }
     }
     this.mText = this.mGrabParams.text;
@@ -149,6 +156,11 @@ public class QQText
   public QQText(CharSequence paramCharSequence, int paramInt1, int paramInt2, Object paramObject)
   {
     this(paramCharSequence, 0, i, paramInt1, paramInt2, -1, paramObject);
+  }
+  
+  public QQText(CharSequence paramCharSequence, int paramInt1, int paramInt2, Object paramObject, ISpanRefreshCallback paramISpanRefreshCallback)
+  {
+    this(paramCharSequence, 0, i, paramInt1, paramInt2, -1, paramObject, paramISpanRefreshCallback);
   }
   
   private void checkRange(String paramString, int paramInt1, int paramInt2)
@@ -291,16 +303,20 @@ public class QQText
     if (i + 1 >= this.mSpans.length)
     {
       i = idealIntArraySize(i + 1);
-      arrayOfObject = new Object[i];
+      localObject = new Object[i];
       int[] arrayOfInt = new int[i * 3];
-      System.arraycopy(this.mSpans, 0, arrayOfObject, 0, this.mSpanCount);
+      System.arraycopy(this.mSpans, 0, localObject, 0, this.mSpanCount);
       System.arraycopy(this.mSpanData, 0, arrayOfInt, 0, this.mSpanCount * 3);
-      this.mSpans = arrayOfObject;
+      this.mSpans = ((Object[])localObject);
       this.mSpanData = arrayOfInt;
     }
-    Object[] arrayOfObject = this.mSpans;
+    Object localObject = this.mSpanRefreshCallback;
+    if ((localObject != null) && ((paramObject instanceof IEmoticonSpanRefreshCallback))) {
+      ((IEmoticonSpanRefreshCallback)paramObject).setSpanRefreshCallback((ISpanRefreshCallback)localObject);
+    }
+    localObject = this.mSpans;
     i = this.mSpanCount;
-    arrayOfObject[i] = paramObject;
+    localObject[i] = paramObject;
     paramObject = this.mSpanData;
     paramObject[(i * 3 + 0)] = paramInt1;
     paramObject[(i * 3 + 1)] = paramInt2;
@@ -845,7 +861,7 @@ public class QQText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class BaseAuthorityAccountView$2
   public void run()
   {
     SSOLog.a("BaseAuthorityAccountView", new Object[] { "--> handler message UPDATE_DROP_DOWN_VIEWS" });
-    this.this$0.e();
+    this.this$0.h();
     ThreadManager.getUIHandler().post(new BaseAuthorityAccountView.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseAuthorityAccountView.2
  * JD-Core Version:    0.7.0.1
  */

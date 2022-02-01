@@ -30,8 +30,6 @@ import java.util.List;
 public class CIImage
   implements Cloneable
 {
-  private static Bitmap.Config[] SUPPORT_CONFIGS = { Bitmap.Config.ALPHA_8, Bitmap.Config.RGB_565, Bitmap.Config.ARGB_4444, Bitmap.Config.ARGB_8888 };
-  private final String TAG;
   @FloatRange(from=0.0D, to=1.0D)
   private float alpha;
   @Nullable
@@ -39,11 +37,10 @@ public class CIImage
   @Nullable
   private CGRect frame;
   private boolean isHardMode;
-  @NonNull
+  private final String mTAG;
   private final List<CIImage> overlayImages;
   private int preferRotation;
   private int rotation;
-  @NonNull
   private final CGSize size;
   private String textureCacheKey;
   @Nullable
@@ -56,11 +53,11 @@ public class CIImage
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("CIImage@");
     ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
-    this.TAG = ((StringBuilder)localObject).toString();
+    this.mTAG = ((StringBuilder)localObject).toString();
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
-    localObject = this.TAG;
+    localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CIImage() called with: bitmap = [");
     localStringBuilder.append(paramBitmap);
@@ -75,11 +72,11 @@ public class CIImage
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("CIImage@");
     ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
-    this.TAG = ((StringBuilder)localObject).toString();
+    this.mTAG = ((StringBuilder)localObject).toString();
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
-    localObject = this.TAG;
+    localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CIImage() called with: renderSize = [");
     localStringBuilder.append(paramCGSize);
@@ -93,11 +90,11 @@ public class CIImage
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("CIImage@");
     ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
-    this.TAG = ((StringBuilder)localObject).toString();
+    this.mTAG = ((StringBuilder)localObject).toString();
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
-    localObject = this.TAG;
+    localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CIImage() called with: textureInfo = [");
     localStringBuilder.append(paramTextureInfo);
@@ -117,7 +114,7 @@ public class CIImage
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("CIImage@");
     ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
-    this.TAG = ((StringBuilder)localObject).toString();
+    this.mTAG = ((StringBuilder)localObject).toString();
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
@@ -129,7 +126,7 @@ public class CIImage
     if (localObject != null)
     {
       this.size = new CGSize(((Bitmap)localObject).getWidth(), this.bitmap.getHeight());
-      localObject = this.TAG;
+      localObject = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CIImage() called with: imagePath = [");
       localStringBuilder.append(paramString);
@@ -142,7 +139,7 @@ public class CIImage
       Logger.v((String)localObject, localStringBuilder.toString());
       return;
     }
-    paramCGSize = this.TAG;
+    paramCGSize = this.mTAG;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("CIImage: 图片解码失败！imagePath = ");
     ((StringBuilder)localObject).append(paramString);
@@ -158,6 +155,24 @@ public class CIImage
       return;
     }
     finally {}
+  }
+  
+  private void applyFrameOriginTransition(PointF paramPointF)
+  {
+    if ((paramPointF.x != 0.0F) || (paramPointF.y != 0.0F))
+    {
+      Matrix localMatrix = new Matrix();
+      localMatrix.postTranslate(-paramPointF.x, -paramPointF.y);
+      imageByApplyingTransform(localMatrix);
+    }
+  }
+  
+  private CGRect applyRotationToFrame(CGRect paramCGRect, int paramInt)
+  {
+    if (paramInt % 2 != 0) {
+      return new CGRect(paramCGRect.origin.y, paramCGRect.origin.x, paramCGRect.size.height, paramCGRect.size.width);
+    }
+    return paramCGRect.clone();
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
@@ -181,6 +196,11 @@ public class CIImage
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F });
     return localMatrix;
+  }
+  
+  private boolean isByTransform()
+  {
+    return (this.preferRotation != 0) || (this.transform != null) || (this.rotation != 0);
   }
   
   public void applyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
@@ -287,7 +307,7 @@ public class CIImage
     if (this.rotation == 0) {
       return;
     }
-    Object localObject = this.TAG;
+    Object localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("applyPreferRotation: textureInfo.preferRotation = ");
     localStringBuilder.append(this.rotation);
@@ -334,33 +354,33 @@ public class CIImage
     return TAVGLUtils.saveBitmap(this);
   }
   
-  public void draw(TextureFilter paramTextureFilter)
+  public void drawTo(Renderer paramRenderer)
   {
     Object localObject1 = getDrawTextureInfo();
     if (localObject1 != null)
     {
-      localObject2 = this.TAG;
+      localObject2 = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("draw: with drawTexture = ");
       localStringBuilder.append(localObject1);
       localStringBuilder.append(", filter = ");
-      localStringBuilder.append(paramTextureFilter);
+      localStringBuilder.append(paramRenderer);
       Logger.v((String)localObject2, localStringBuilder.toString());
-      paramTextureFilter.applyFilter((TextureInfo)localObject1, this.transform, ((TextureInfo)localObject1).getTextureMatrix(), this.alpha, this.frame);
+      paramRenderer.render((TextureInfo)localObject1, this.transform, ((TextureInfo)localObject1).getTextureMatrix(), this.alpha, this.frame);
     }
     if (this.overlayImages.isEmpty()) {
       return;
     }
-    localObject1 = this.TAG;
+    localObject1 = this.mTAG;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("draw: with: draw overlayImages = ");
     ((StringBuilder)localObject2).append(this.overlayImages);
     ((StringBuilder)localObject2).append(", filter = ");
-    ((StringBuilder)localObject2).append(paramTextureFilter);
+    ((StringBuilder)localObject2).append(paramRenderer);
     Logger.v((String)localObject1, ((StringBuilder)localObject2).toString());
     localObject1 = this.overlayImages.iterator();
     while (((Iterator)localObject1).hasNext()) {
-      ((CIImage)((Iterator)localObject1).next()).draw(paramTextureFilter);
+      ((CIImage)((Iterator)localObject1).next()).drawTo(paramRenderer);
     }
   }
   
@@ -400,7 +420,7 @@ public class CIImage
       GLUtils.texImage2D(3553, 0, this.bitmap, 0);
       GLES20.glBindTexture(3553, 0);
       ThreadLocalTextureCache.getInstance().putTextureInfo(this.textureCacheKey, (TextureInfo)localObject2);
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getDrawTextureInfo: bind bitmap texture, texture = ");
       localStringBuilder.append(localObject2);
@@ -411,7 +431,7 @@ public class CIImage
       {
         this.bitmap.recycle();
         this.bitmap = null;
-        Logger.v(this.TAG, "getDrawTextureInfo: isHardMode, bitmap.recycle()");
+        Logger.v(this.mTAG, "getDrawTextureInfo: isHardMode, bitmap.recycle()");
       }
       return localObject2;
     }
@@ -441,6 +461,11 @@ public class CIImage
     return this.transform;
   }
   
+  public boolean hasOverlay()
+  {
+    return this.overlayImages.isEmpty() ^ true;
+  }
+  
   public CIImage imageApplyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
   {
     if (paramTAVVideoConfigurationContentMode == TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill) {
@@ -456,7 +481,7 @@ public class CIImage
       this.transform = new Matrix();
     }
     this.transform.postConcat(paramMatrix);
-    String str = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("imageByApplyingTransform() called with: in transform = [");
     localStringBuilder.append(paramMatrix);
@@ -468,7 +493,7 @@ public class CIImage
   
   public CIImage imageByCompositingOverImage(CIImage paramCIImage)
   {
-    String str = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("imageByCompositingOverImage() called with: destImage = [");
     localStringBuilder.append(paramCIImage);
@@ -483,7 +508,7 @@ public class CIImage
     if (!Utils.isRectValid(paramCGRect)) {
       return this;
     }
-    Object localObject = this.TAG;
+    Object localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("imageByCroppingToRect: frame = [");
     localStringBuilder.append(paramCGRect);
@@ -491,36 +516,50 @@ public class CIImage
     Logger.v((String)localObject, localStringBuilder.toString());
     this.size.width = paramCGRect.size.width;
     this.size.height = paramCGRect.size.height;
-    if (this.rotation % 2 != 0) {
-      this.frame = new CGRect(paramCGRect.origin.y, paramCGRect.origin.x, paramCGRect.size.height, paramCGRect.size.width);
+    int j = this.rotation;
+    localObject = this.textureInfo;
+    int i;
+    if (localObject != null) {
+      i = ((TextureInfo)localObject).preferRotation;
     } else {
-      this.frame = paramCGRect.clone();
+      i = 0;
     }
-    paramCGRect = paramCGRect.origin;
-    if ((paramCGRect.x != 0.0F) || (paramCGRect.y != 0.0F))
-    {
-      localObject = new Matrix();
-      ((Matrix)localObject).postTranslate(-paramCGRect.x, -paramCGRect.y);
-      imageByApplyingTransform((Matrix)localObject);
-    }
+    this.frame = applyRotationToFrame(paramCGRect, j + i);
+    applyFrameOriginTransition(paramCGRect.origin);
     return this;
   }
   
   public boolean isCanvasImage()
   {
-    return (this.bitmap == null) && (this.textureInfo == null);
+    return (this.bitmap == null) && (this.textureInfo == null) && (this.overlayImages.isEmpty());
   }
   
   public boolean isOriginal()
   {
-    return (this.preferRotation == 0) && (this.transform == null) && (this.frame == null) && (this.overlayImages.isEmpty()) && (this.rotation == 0) && (this.alpha == 1.0F);
+    boolean bool3 = isByTransform();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      if (this.frame != null) {
+        return false;
+      }
+      if (hasOverlay()) {
+        return false;
+      }
+      bool1 = bool2;
+      if (this.alpha == 1.0F) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public void release()
   {
     try
     {
-      Logger.d(this.TAG, "release() start");
+      Logger.d(this.mTAG, "release() start");
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
         this.bitmap.recycle();
@@ -536,7 +575,7 @@ public class CIImage
         }
       }
       this.overlayImages.clear();
-      Logger.d(this.TAG, "release() end");
+      Logger.d(this.mTAG, "release() end");
       return;
     }
     finally {}
@@ -558,7 +597,7 @@ public class CIImage
   
   public void reset()
   {
-    String str = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reset() called, before transform = ");
     localStringBuilder.append(this.transform);
@@ -575,7 +614,7 @@ public class CIImage
       if (paramMatrix.isIdentity()) {
         return this;
       }
-      Object localObject = this.TAG;
+      Object localObject = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("safeApplyTransform: transform = [");
       localStringBuilder.append(paramMatrix);
@@ -642,7 +681,7 @@ public class CIImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIImage
  * JD-Core Version:    0.7.0.1
  */

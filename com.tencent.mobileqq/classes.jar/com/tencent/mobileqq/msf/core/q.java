@@ -2,6 +2,9 @@ package com.tencent.mobileqq.msf.core;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class q
 {
@@ -10,75 +13,22 @@ public class q
   public static final String c = "LightSender";
   public static final String d = "LightTcpSenderThread";
   public static final String e = "MSFSubHandlerThread";
-  private static HandlerThread f;
-  private static Handler g;
+  public static final int f = 2;
+  private static final String g = "MsfThreadManager";
   private static HandlerThread h;
   private static Handler i;
   private static HandlerThread j;
   private static Handler k;
+  private static Executor l;
+  private static HandlerThread m;
+  private static Handler n;
   
   public static HandlerThread a()
-  {
-    if (f == null) {
-      try
-      {
-        HandlerThread localHandlerThread = new HandlerThread("MSF_StatReportThread");
-        localHandlerThread.start();
-        f = localHandlerThread;
-      }
-      finally {}
-    }
-    return f;
-  }
-  
-  public static Handler b()
-  {
-    if (g == null) {
-      try
-      {
-        if (g == null) {
-          g = new Handler(a().getLooper());
-        }
-      }
-      finally {}
-    }
-    return g;
-  }
-  
-  public static HandlerThread c()
-  {
-    if (j == null) {
-      try
-      {
-        HandlerThread localHandlerThread = new HandlerThread("MSFNetHandlerThread");
-        localHandlerThread.start();
-        j = localHandlerThread;
-      }
-      finally {}
-    }
-    return j;
-  }
-  
-  public static Handler d()
-  {
-    if (k == null) {
-      try
-      {
-        if (k == null) {
-          k = new Handler(c().getLooper());
-        }
-      }
-      finally {}
-    }
-    return k;
-  }
-  
-  public static HandlerThread e()
   {
     if (h == null) {
       try
       {
-        HandlerThread localHandlerThread = new HandlerThread("MSFSubHandlerThread");
+        HandlerThread localHandlerThread = new HandlerThread("MSF_StatReportThread");
         localHandlerThread.start();
         h = localHandlerThread;
       }
@@ -87,23 +37,88 @@ public class q
     return h;
   }
   
-  public static Handler f()
+  public static void a(Runnable paramRunnable, q.a parama)
+  {
+    if (l == null) {
+      l = Executors.newFixedThreadPool(2);
+    }
+    l.execute(new r(parama, paramRunnable));
+    QLog.d("MsfThreadManager", 1, new Object[] { "[postFileTask] task: ", paramRunnable });
+  }
+  
+  public static Handler b()
   {
     if (i == null) {
       try
       {
         if (i == null) {
-          i = new Handler(e().getLooper());
+          i = new Handler(a().getLooper());
         }
       }
       finally {}
     }
     return i;
   }
+  
+  public static HandlerThread c()
+  {
+    if (m == null) {
+      try
+      {
+        HandlerThread localHandlerThread = new HandlerThread("MSFNetHandlerThread");
+        localHandlerThread.start();
+        m = localHandlerThread;
+      }
+      finally {}
+    }
+    return m;
+  }
+  
+  public static Handler d()
+  {
+    if (n == null) {
+      try
+      {
+        if (n == null) {
+          n = new Handler(c().getLooper());
+        }
+      }
+      finally {}
+    }
+    return n;
+  }
+  
+  public static HandlerThread e()
+  {
+    if (j == null) {
+      try
+      {
+        HandlerThread localHandlerThread = new HandlerThread("MSFSubHandlerThread");
+        localHandlerThread.start();
+        j = localHandlerThread;
+      }
+      finally {}
+    }
+    return j;
+  }
+  
+  public static Handler f()
+  {
+    if (k == null) {
+      try
+      {
+        if (k == null) {
+          k = new Handler(e().getLooper());
+        }
+      }
+      finally {}
+    }
+    return k;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.q
  * JD-Core Version:    0.7.0.1
  */

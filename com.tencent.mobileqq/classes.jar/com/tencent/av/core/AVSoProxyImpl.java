@@ -21,12 +21,12 @@ public class AVSoProxyImpl
   
   public String getAVMediaEngineSoDir()
   {
-    return ResMgr.d();
+    return ResMgr.i();
   }
   
   public String getAVTraeSoDir()
   {
-    return ResMgr.c();
+    return ResMgr.g();
   }
   
   public String getAndroidCodecInfo()
@@ -148,17 +148,17 @@ public class AVSoProxyImpl
   
   public String getHardwareDetectSoDir()
   {
-    return AVSoUtils.g();
+    return AVSoUtils.j();
   }
   
   public String getHevcDecSoDir()
   {
-    return AVSoUtils.f();
+    return AVSoUtils.i();
   }
   
   public String getHevcEncSoDir()
   {
-    return AVSoUtils.e();
+    return AVSoUtils.h();
   }
   
   public void updateHevcCodecSoDir() {}

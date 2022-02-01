@@ -7,18 +7,18 @@ public class VoiceAdapter$VoiceViewHolder
   extends RecyclerView.ViewHolder
 {
   public int a;
-  public View a;
+  public View b;
   
   public VoiceAdapter$VoiceViewHolder(VoiceAdapter paramVoiceAdapter, int paramInt, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramInt;
+    this.b = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoiceAdapter.VoiceViewHolder
  * JD-Core Version:    0.7.0.1
  */

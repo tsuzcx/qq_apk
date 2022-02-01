@@ -80,7 +80,7 @@ public class AppBrandProxy
     this.mLaunchManagerClient.onAppLifecycle(1, AppLoaderFactory.g().getProcessName(), paramMiniAppInfo, localBundle);
   }
   
-  public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo)
+  public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preloadDownloadPackage. pName=");
@@ -89,7 +89,7 @@ public class AppBrandProxy
     localStringBuilder.append(paramMiniAppInfo);
     QMLog.e("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     if (!AppLoaderFactory.g().isMainProcess()) {
-      this.mLaunchManagerClient.preloadPackage(paramMiniAppInfo);
+      this.mLaunchManagerClient.preloadPackage(paramMiniAppInfo, paramResultReceiver);
     }
   }
   
@@ -149,7 +149,7 @@ public class AppBrandProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ class QlinkServiceProxy$2
   
   public void run()
   {
-    while (!QlinkServiceProxy.a(this.this$0).isEmpty())
+    while (!QlinkServiceProxy.d(this.this$0).isEmpty())
     {
-      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.a(this.this$0).poll();
+      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.d(this.this$0).poll();
       if (localSendMsg != null) {
         try
         {
@@ -27,7 +27,7 @@ class QlinkServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

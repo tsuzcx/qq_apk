@@ -10,15 +10,15 @@ class AppBrandRuntime$6
   
   public void run()
   {
-    ICaptureImageCallback localICaptureImageCallback = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreUtilsICaptureImageCallback;
+    ICaptureImageCallback localICaptureImageCallback = this.a;
     if (localICaptureImageCallback != null) {
-      localICaptureImageCallback.onResult(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localICaptureImageCallback.onResult(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime.6
  * JD-Core Version:    0.7.0.1
  */

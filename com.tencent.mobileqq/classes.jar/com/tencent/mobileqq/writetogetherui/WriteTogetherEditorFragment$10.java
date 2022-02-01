@@ -11,13 +11,13 @@ class WriteTogetherEditorFragment$10
   
   public void onClick(View paramView)
   {
-    WriteTogetherEditorFragment.g(this.a);
+    WriteTogetherEditorFragment.o(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.10
  * JD-Core Version:    0.7.0.1
  */

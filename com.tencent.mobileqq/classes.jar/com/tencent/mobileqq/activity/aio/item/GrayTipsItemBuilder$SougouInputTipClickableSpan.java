@@ -22,19 +22,19 @@ import java.lang.ref.WeakReference;
 class GrayTipsItemBuilder$SougouInputTipClickableSpan
   extends ClickableSpan
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
+  private WeakReference<QQAppInterface> b;
+  private WeakReference<Context> c;
   
   GrayTipsItemBuilder$SougouInputTipClickableSpan(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramContext);
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject1 = (Context)this.b.get();
+    paramView = (QQAppInterface)this.b.get();
+    Object localObject1 = (Context)this.c.get();
     if (paramView != null)
     {
       if (localObject1 == null) {
@@ -44,18 +44,18 @@ class GrayTipsItemBuilder$SougouInputTipClickableSpan
       {
         if (!NetworkUtil.isNetSupport((Context)localObject1))
         {
-          QQToast.a((Context)localObject1, 2131692183, 0).b(((Context)localObject1).getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText((Context)localObject1, 2131889169, 0).show(((Context)localObject1).getResources().getDimensionPixelSize(2131299920));
           return;
         }
         long l = System.currentTimeMillis();
-        if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) != 0L) && (l > GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) && (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) <= 800L))
+        if ((GrayTipsItemBuilder.f(this.a) != 0L) && (l > GrayTipsItemBuilder.f(this.a)) && (l - GrayTipsItemBuilder.f(this.a) <= 800L))
         {
           if (QLog.isColorLevel()) {
             QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
           }
           return;
         }
-        GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
+        GrayTipsItemBuilder.a(this.a, l);
         Object localObject2;
         if (NetworkUtil.isWifiConnected((Context)localObject1))
         {
@@ -65,7 +65,7 @@ class GrayTipsItemBuilder$SougouInputTipClickableSpan
           ((Bundle)localObject2).putString(DownloadConstants.f, "com.sohu.inputmethod.sogou");
           ((Bundle)localObject2).putInt(DownloadConstants.k, 2);
           ((Bundle)localObject2).putString(DownloadConstants.i, "ANDROIDQQ.MSG.SOUGOU");
-          ((Bundle)localObject2).putString(DownloadConstants.l, HardCodeUtil.a(2131705422));
+          ((Bundle)localObject2).putString(DownloadConstants.l, HardCodeUtil.a(2131903303));
           ((Bundle)localObject2).putBoolean(DownloadConstants.y, false);
           DownloadApi.a((Activity)localObject1, (Bundle)localObject2, "biz_src_yyb", null, 0);
         }
@@ -91,7 +91,7 @@ class GrayTipsItemBuilder$SougouInputTipClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.SougouInputTipClickableSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -48,10 +48,10 @@ class ChannelProxyImpl$1
           while (paramJSONObject.hasNext())
           {
             localObject = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
-            localArrayList2.add(ChannelProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplChannelProxyImpl, (INTERFACE.StUserSettingInfo)localObject));
+            localArrayList2.add(ChannelProxyImpl.a(this.b, (INTERFACE.StUserSettingInfo)localObject));
           }
-          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult != null) {
-            this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult.onReceiveResult(true, localArrayList1, localArrayList2);
+          if (this.a != null) {
+            this.a.onReceiveResult(true, localArrayList1, localArrayList2);
           }
           return;
         }
@@ -65,7 +65,7 @@ class ChannelProxyImpl$1
         }
       }
     }
-    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult;
+    paramJSONObject = this.a;
     if (paramJSONObject != null) {
       paramJSONObject.onReceiveResult(false, localArrayList1, localArrayList2);
     }
@@ -73,7 +73,7 @@ class ChannelProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

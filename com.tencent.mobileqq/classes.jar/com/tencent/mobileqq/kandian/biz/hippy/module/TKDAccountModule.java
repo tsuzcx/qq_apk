@@ -3,11 +3,10 @@ package com.tencent.mobileqq.kandian.biz.hippy.module;
 import androidx.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.hippy.entity.AccountInfo;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -47,7 +46,7 @@ public class TKDAccountModule
   @NonNull
   public static AccountInfo getCurAccountInfo()
   {
-    long l = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    long l = RIJQQAppInterfaceUtil.c();
     AccountInfo localAccountInfo = new AccountInfo();
     Object localObject = ReadInJoyUserInfoModule.a(l, null);
     if (localObject != null)
@@ -61,7 +60,7 @@ public class TKDAccountModule
       localAccountInfo.skey = ((TicketManager)localObject).getSkey(localAccountInfo.qqNum);
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(AppSetting.a());
+    ((StringBuilder)localObject).append(AppSetting.d());
     ((StringBuilder)localObject).append("");
     localAccountInfo.appid = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
@@ -79,7 +78,7 @@ public class TKDAccountModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDAccountModule
  * JD-Core Version:    0.7.0.1
  */

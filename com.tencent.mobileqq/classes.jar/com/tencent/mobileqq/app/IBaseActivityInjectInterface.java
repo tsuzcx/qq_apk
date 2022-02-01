@@ -7,8 +7,6 @@ import android.view.MotionEvent;
 
 public abstract interface IBaseActivityInjectInterface
 {
-  public abstract BroadcastReceiver a();
-  
   public abstract Intent a(QBaseActivity paramQBaseActivity);
   
   public abstract ShakeListener a();
@@ -22,10 +20,12 @@ public abstract interface IBaseActivityInjectInterface
   public abstract boolean a(QBaseActivity paramQBaseActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
   
   public abstract boolean a(QBaseActivity paramQBaseActivity, MotionEvent paramMotionEvent);
+  
+  public abstract BroadcastReceiver b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.IBaseActivityInjectInterface
  * JD-Core Version:    0.7.0.1
  */

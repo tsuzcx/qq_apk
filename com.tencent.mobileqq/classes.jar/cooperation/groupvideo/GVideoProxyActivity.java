@@ -21,8 +21,8 @@ public class GVideoProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299168));
-    paramActivity.a(HardCodeUtil.a(2131705526));
+    paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299920));
+    paramActivity.a(HardCodeUtil.a(2131903414));
     paramActivity.setOnDismissListener(new GVideoProxyActivity.1());
     return paramActivity;
   }
@@ -30,22 +30,22 @@ public class GVideoProxyActivity
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "group_video_plugin.apk";
-    localPluginParams.e = PluginInfo.k;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString2;
-    localPluginParams.f = paramString1;
-    localPluginParams.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
+    localPluginParams.d = "group_video_plugin.apk";
+    localPluginParams.g = PluginInfo.k;
+    localPluginParams.c = paramString2;
+    localPluginParams.h = paramString1;
+    localPluginParams.i = GVideoProxyActivity.class;
     paramString1 = paramIntent;
     if (paramIntent == null) {
       paramString1 = new Intent();
     }
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramString1;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    localPluginParams.c = paramInt;
-    localPluginParams.d = 20000;
-    localPluginParams.g = null;
+    localPluginParams.j = paramString1;
+    localPluginParams.l = paramDialog;
+    localPluginParams.j.putExtra("userQqResources", 2);
+    localPluginParams.j.putExtra("param_plugin_gesturelock", true);
+    localPluginParams.k = paramInt;
+    localPluginParams.r = 20000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
   }
   
@@ -87,7 +87,7 @@ public class GVideoProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.groupvideo.GVideoProxyActivity
  * JD-Core Version:    0.7.0.1
  */

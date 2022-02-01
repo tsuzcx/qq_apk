@@ -9,32 +9,32 @@ public class SonicPreloadData
 {
   public static final Parcelable.Creator<SonicPreloadData> CREATOR = new SonicPreloadData.1();
   public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
+  public String b;
+  public boolean c;
+  public long d;
+  public int e;
   
   public SonicPreloadData(int paramInt1, String paramString, boolean paramBoolean, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramInt2;
+    this.a = paramInt1;
+    this.b = paramString;
+    this.c = paramBoolean;
+    this.d = paramLong;
+    this.e = paramInt2;
   }
   
   public SonicPreloadData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
     int i = paramParcel.readInt();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.b = paramParcel.readInt();
+    this.c = bool;
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -46,19 +46,19 @@ public class SonicPreloadData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SonicPreloadData{id='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append("url='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", accountRelated='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", templateChangeTime='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", noCacheFilePreloadType='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -71,7 +71,7 @@ public class SonicPreloadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.data.SonicPreloadData
  * JD-Core Version:    0.7.0.1
  */

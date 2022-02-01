@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.kandian.biz.reward.aidl;
 
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.reward.RIJRewardTask;
 import com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskConfig;
 import com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskRemoteRepo.IReportTaskProgressCallback;
 import com.tencent.mobileqq.kandian.biz.reward.mvp.RIJRewardTaskTimingModel;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import kotlin.Lazy;
 import kotlin.LazyKt;
 import kotlin.Metadata;
@@ -17,101 +17,101 @@ public final class RIJAidlServerRewardTaskModule
 {
   private final Lazy a = LazyKt.lazy((Function0)RIJAidlServerRewardTaskModule.model.2.INSTANCE);
   
-  private final RIJRewardTaskTimingModel a()
+  private final RIJRewardTaskTimingModel k()
   {
     return (RIJRewardTaskTimingModel)this.a.getValue();
-  }
-  
-  public int a()
-  {
-    return a().a();
   }
   
   @Nullable
   public RIJRewardTask a()
   {
-    return a().a();
+    return k().a();
   }
   
   public void a(int paramInt)
   {
-    a().a(paramInt, true);
+    k().a(paramInt, true);
   }
   
   public void a(@Nullable RIJRewardTask paramRIJRewardTask)
   {
-    a().a(paramRIJRewardTask);
-  }
-  
-  public void a(@Nullable String paramString)
-  {
-    if (paramString != null) {
-      a().a(paramString);
-    }
+    k().a(paramRIJRewardTask);
   }
   
   public void a(@Nullable String paramString, int paramInt, @Nullable IReportTaskProgressCallback paramIReportTaskProgressCallback)
   {
-    a().a(paramString, paramInt, (RIJRewardTaskRemoteRepo.IReportTaskProgressCallback)new RIJAidlServerRewardTaskModule.reportTaskCompleted.1(paramIReportTaskProgressCallback));
-  }
-  
-  public boolean a()
-  {
-    return RIJXTabFrameUtils.INSTANCE.isNowInKanDianTab();
+    k().a(paramString, paramInt, (RIJRewardTaskRemoteRepo.IReportTaskProgressCallback)new RIJAidlServerRewardTaskModule.reportTaskCompleted.1(paramIReportTaskProgressCallback));
   }
   
   public boolean a(@Nullable String paramString)
   {
     if (paramString != null) {
-      return a().a(paramString);
+      return k().a(paramString);
     }
     return false;
-  }
-  
-  public int b()
-  {
-    return a().a(true);
   }
   
   @Nullable
   public RIJRewardTask b()
   {
-    return a().b();
+    return k().b();
   }
   
   public void b(@Nullable RIJRewardTask paramRIJRewardTask)
   {
-    a().b(paramRIJRewardTask);
+    k().b(paramRIJRewardTask);
   }
   
-  public boolean b()
+  public void b(@Nullable String paramString)
   {
-    return RIJRewardTaskConfig.a();
+    if (paramString != null) {
+      k().b(paramString);
+    }
   }
   
   public int c()
   {
-    return RIJRewardTaskConfig.a();
+    return k().c();
   }
   
   public int d()
   {
+    return k().a(true);
+  }
+  
+  public boolean e()
+  {
+    return RIJXTabFrameUtils.INSTANCE.isNowInKanDianTab();
+  }
+  
+  public boolean f()
+  {
+    return RIJRewardTaskConfig.a();
+  }
+  
+  public int g()
+  {
     return RIJRewardTaskConfig.b();
   }
   
-  public int e()
+  public int h()
   {
     return RIJRewardTaskConfig.c();
   }
   
-  public int f()
+  public int i()
   {
     return RIJRewardTaskConfig.d();
+  }
+  
+  public int j()
+  {
+    return RIJRewardTaskConfig.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.aidl.RIJAidlServerRewardTaskModule
  * JD-Core Version:    0.7.0.1
  */

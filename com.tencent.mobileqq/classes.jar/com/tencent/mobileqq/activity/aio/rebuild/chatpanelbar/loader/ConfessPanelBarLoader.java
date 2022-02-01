@@ -21,69 +21,69 @@ public class ConfessPanelBarLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.d);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.e);
+    this.a.add(AIOPanelUtiles.p);
     b();
     d();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.h);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return SessionTypeUtil.c(paramSessionInfo.a);
+    this.a.add(AIOPanelUtiles.i);
   }
   
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().e())
+    boolean bool = this.c.a().i();
+    if (this.c.a().k())
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.b);
-      paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
+      this.a.clear();
+      this.a.add(AIOPanelUtiles.c);
+      paramBaseChatPie = this.a;
       if (bool) {
-        paramSessionInfo = AIOPanelUtiles.q;
+        paramSessionInfo = AIOPanelUtiles.r;
       } else {
-        paramSessionInfo = AIOPanelUtiles.m;
+        paramSessionInfo = AIOPanelUtiles.n;
       }
       paramBaseChatPie.add(paramSessionInfo);
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.t);
-      if (HotPicManager.a(paramQQAppInterface).b()) {
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.R);
+      this.a.add(AIOPanelUtiles.u);
+      if (HotPicManager.a(paramQQAppInterface).j()) {
+        this.a.add(AIOPanelUtiles.S);
       }
-      paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+      paramSessionInfo = this.a;
       if (bool) {
-        paramQQAppInterface = AIOPanelUtiles.j;
+        paramQQAppInterface = AIOPanelUtiles.k;
       } else {
-        paramQQAppInterface = AIOPanelUtiles.f;
+        paramQQAppInterface = AIOPanelUtiles.g;
       }
       paramSessionInfo.add(paramQQAppInterface);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.a);
-    paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
+    this.a.add(AIOPanelUtiles.b);
+    paramBaseChatPie = this.a;
     if (bool) {
-      paramSessionInfo = AIOPanelUtiles.p;
+      paramSessionInfo = AIOPanelUtiles.q;
     } else {
-      paramSessionInfo = AIOPanelUtiles.l;
+      paramSessionInfo = AIOPanelUtiles.m;
     }
     paramBaseChatPie.add(paramSessionInfo);
     c();
-    if (HotPicManager.a(paramQQAppInterface).b()) {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.N);
+    if (HotPicManager.a(paramQQAppInterface).j()) {
+      this.a.add(AIOPanelUtiles.O);
     }
-    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    paramSessionInfo = this.a;
     if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.i;
+      paramQQAppInterface = AIOPanelUtiles.j;
     } else {
-      paramQQAppInterface = AIOPanelUtiles.e;
+      paramQQAppInterface = AIOPanelUtiles.f;
     }
     paramSessionInfo.add(paramQQAppInterface);
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return SessionTypeUtil.c(paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.ConfessPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class MediaPlayerImpl$3
   
   public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaPlayerImpl, paramInt);
+    this.a.onBufferingUpdate(this.b, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MediaPlayerImpl.3
  * JD-Core Version:    0.7.0.1
  */

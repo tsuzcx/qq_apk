@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.xtab;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
@@ -18,7 +17,7 @@ public final class RIJXTabReport
   @JvmStatic
   public static final void a(boolean paramBoolean, @Nullable String paramString)
   {
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a().addTime().addKandianModeNew();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g().addTime().addKandianModeNew();
     String str1;
     if (paramBoolean) {
       str1 = "1";
@@ -36,7 +35,7 @@ public final class RIJXTabReport
         localStringBuilder.append(localJSONException);
         QLog.d("RIJXTabReport", 2, localStringBuilder.toString());
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, "", "", "", localReportR5Builder.build(), false);
+      PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, "", "", "", localReportR5Builder.build(), false);
       return;
       String str2 = "0";
     }
@@ -44,7 +43,7 @@ public final class RIJXTabReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabReport
  * JD-Core Version:    0.7.0.1
  */

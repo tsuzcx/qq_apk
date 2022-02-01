@@ -28,8 +28,8 @@ import org.json.JSONObject;
 public class QQComicIPCModule
   extends QIPCModule
 {
-  private static QQComicIPCModule jdField_a_of_type_ComTencentComicIpcQQComicIPCModule;
-  QQComicIPCModule.ComicConfigCallback jdField_a_of_type_ComTencentComicIpcQQComicIPCModule$ComicConfigCallback;
+  private static QQComicIPCModule b;
+  QQComicIPCModule.ComicConfigCallback a;
   
   public QQComicIPCModule(String paramString)
   {
@@ -38,16 +38,16 @@ public class QQComicIPCModule
   
   public static QQComicIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentComicIpcQQComicIPCModule == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentComicIpcQQComicIPCModule == null) {
-          jdField_a_of_type_ComTencentComicIpcQQComicIPCModule = new QQComicIPCModule("QQComicIPCModule");
+        if (b == null) {
+          b = new QQComicIPCModule("QQComicIPCModule");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentComicIpcQQComicIPCModule;
+    return b;
   }
   
   private void a(int paramInt)
@@ -72,7 +72,7 @@ public class QQComicIPCModule
       QLog.d("QQComicIPCModule", 2, paramBundle.toString());
       return null;
     }
-    Object localObject = AppHelper.a();
+    Object localObject = AppHelper.b();
     if (!(localObject instanceof BaseQQAppInterface))
     {
       if (QLog.isColorLevel()) {
@@ -175,10 +175,10 @@ public class QQComicIPCModule
         paramString = (IVasQuickUpdateService)((AppInterface)localObject).getRuntimeService(IVasQuickUpdateService.class, "");
         if ((paramInt > 0) && (paramString != null))
         {
-          if (this.jdField_a_of_type_ComTencentComicIpcQQComicIPCModule$ComicConfigCallback == null) {
-            this.jdField_a_of_type_ComTencentComicIpcQQComicIPCModule$ComicConfigCallback = new QQComicIPCModule.ComicConfigCallback(this, paramInt);
+          if (this.a == null) {
+            this.a = new QQComicIPCModule.ComicConfigCallback(this, paramInt);
           }
-          paramString.addCallBacker(this.jdField_a_of_type_ComTencentComicIpcQQComicIPCModule$ComicConfigCallback);
+          paramString.addCallBacker(this.a);
         }
         paramString = VasUpdateUtil.a((AppRuntime)localObject, "vipComic_config_v2.json", true, null);
         if (paramString != null)
@@ -205,7 +205,7 @@ public class QQComicIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ipc.QQComicIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -26,21 +26,21 @@ public class PublicAcntSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  protected BaseSearchFragment a()
+  protected BaseSearchFragment c()
   {
     return PublicAcntSearchFragment.a(a);
   }
   
-  protected String a()
+  protected String d()
   {
     if (a == 12)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131708732));
+      localStringBuilder.append(HardCodeUtil.a(2131906513));
       localStringBuilder.append(((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName((AppInterface)getAppRuntime(), getApplicationContext()));
       return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131708790);
+    return HardCodeUtil.a(2131906566);
   }
   
   @Override
@@ -61,7 +61,7 @@ public class PublicAcntSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.PublicAcntSearchActivity
  * JD-Core Version:    0.7.0.1
  */

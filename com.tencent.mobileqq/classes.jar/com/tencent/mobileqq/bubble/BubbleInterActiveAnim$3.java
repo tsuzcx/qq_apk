@@ -16,10 +16,10 @@ class BubbleInterActiveAnim$3
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationCancel ");
-      paramAnimator.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_Long);
+      paramAnimator.append(this.a.g);
       QLog.i("BubbleInterActiveAnim", 2, paramAnimator.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder);
+    this.b.a(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
@@ -28,10 +28,10 @@ class BubbleInterActiveAnim$3
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationEnd ");
-      paramAnimator.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_Long);
+      paramAnimator.append(this.a.g);
       QLog.i("BubbleInterActiveAnim", 2, paramAnimator.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder);
+    this.b.a(this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
@@ -40,7 +40,7 @@ class BubbleInterActiveAnim$3
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationRepeat ");
-      paramAnimator.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_Long);
+      paramAnimator.append(this.a.g);
       QLog.i("BubbleInterActiveAnim", 2, paramAnimator.toString());
     }
   }
@@ -51,15 +51,15 @@ class BubbleInterActiveAnim$3
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("onAnimationStart ");
-      paramAnimator.append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_Long);
+      paramAnimator.append(this.a.g);
       QLog.i("BubbleInterActiveAnim", 2, paramAnimator.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.e.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.3
  * JD-Core Version:    0.7.0.1
  */

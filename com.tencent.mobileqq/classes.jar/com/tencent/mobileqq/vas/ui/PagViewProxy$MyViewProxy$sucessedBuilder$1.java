@@ -20,14 +20,14 @@ final class PagViewProxy$MyViewProxy$sucessedBuilder$1
   @NotNull
   public final PAGView invoke()
   {
-    PAGView localPAGView = new PAGView(this.this$0.a().getContext());
+    PAGView localPAGView = new PAGView(this.this$0.g().getContext());
     localPAGView.addPAGFlushListener((PAGView.PAGFlushListener)PagViewProxy.MyViewProxy.sucessedBuilder.1.1.a);
     return localPAGView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagViewProxy.MyViewProxy.sucessedBuilder.1
  * JD-Core Version:    0.7.0.1
  */

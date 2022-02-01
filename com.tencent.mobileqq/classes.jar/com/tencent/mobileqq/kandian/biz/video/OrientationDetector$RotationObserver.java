@@ -23,14 +23,14 @@ class OrientationDetector$RotationObserver
     return null;
   }
   
-  public void a()
+  public void b()
   {
     if (a() != null) {
       a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
     }
   }
   
-  public void b()
+  public void c()
   {
     if (a() != null) {
       a().unregisterContentObserver(this);
@@ -66,7 +66,7 @@ class OrientationDetector$RotationObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.OrientationDetector.RotationObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -188,7 +188,7 @@ public class MethodAddElement
               return;
             }
           }
-          localVComponentContainer.notifyChange();
+          localVComponentContainer.notifyChange(3);
           if (localVComponent == null)
           {
             ViolaLogUtils.d(TAG, "component is null");
@@ -239,7 +239,7 @@ public class MethodAddElement
           localVComponent.applyLayout();
           localVComponent.applyEvents();
           localVComponent.bindData();
-          localVComponent.notifyChange();
+          localVComponent.notifyChange(3);
           localVComponent.notifyWhenChange("add", this.mAddDom);
           tryHidePreCreateBody(localViolaInstance, this.mAddDom);
           return;
@@ -267,7 +267,7 @@ public class MethodAddElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAddElement
  * JD-Core Version:    0.7.0.1
  */

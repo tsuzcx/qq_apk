@@ -68,7 +68,7 @@ public class RelatedEmoticonListAdapter
     this.mContext = paramContext;
     this.mCallback = paramEmoticonCallback;
     this.mApp = paramBaseQQAppInterface;
-    this.mWidthPixels = ViewUtils.a();
+    this.mWidthPixels = ViewUtils.getScreenWidth();
     this.mDensity = paramContext.getResources().getDisplayMetrics().density;
   }
   
@@ -108,7 +108,7 @@ public class RelatedEmoticonListAdapter
     localURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localURLImageView.setAdjustViewBounds(false);
     localURLImageView.setLayoutParams(localLayoutParams);
-    localURLImageView.setContentDescription(this.mContext.getString(2131691247));
+    localURLImageView.setContentDescription(this.mContext.getString(2131888193));
     return localURLImageView;
   }
   
@@ -132,20 +132,20 @@ public class RelatedEmoticonListAdapter
       EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramEmotionPanelData;
       paramView.setTag(localEmoticonInfo);
       paramView.setVisibility(0);
-      if ((QLog.isColorLevel()) && (!StringUtil.a(localEmoticonInfo.action)))
+      if ((QLog.isColorLevel()) && (!StringUtil.isEmpty(localEmoticonInfo.action)))
       {
         paramView = new StringBuilder();
         paramView.append("updateUI info = ");
         paramView.append(localEmoticonInfo.action);
         QLog.d("RelatedEmoticonListAdapter", 2, paramView.toString());
       }
-      if (((URLImageView)localObject).getTag(2131380884) == paramEmotionPanelData) {
+      if (((URLImageView)localObject).getTag(2131449867) == paramEmotionPanelData) {
         return;
       }
       ((URLImageView)localObject).setOnClickListener(new RelatedEmoticonListAdapter.1(this, localEmoticonInfo));
       ((URLImageView)localObject).setFocusable(true);
       ((URLImageView)localObject).setOnLongClickListener(this);
-      ((URLImageView)localObject).setTag(2131380884, paramEmotionPanelData);
+      ((URLImageView)localObject).setTag(2131449867, paramEmotionPanelData);
       ((URLImageView)localObject).setVisibility(0);
       ((URLImageView)localObject).setURLDrawableDownListener(null);
       paramView = localEmoticonInfo.getBigDrawable(this.mContext, this.mDensity);
@@ -155,7 +155,7 @@ public class RelatedEmoticonListAdapter
       ((URLImageView)localObject).setImageDrawable(paramView);
       paramView = this.mApp;
       paramEmotionPanelData = this.mCurFriendUin;
-      int j = EmoticonPanelUtils.a(this.mCurType);
+      int j = EmoticonPanelUtils.e(this.mCurType);
       localObject = new StringBuilder();
       paramInt += 1;
       ((StringBuilder)localObject).append(paramInt);
@@ -250,7 +250,7 @@ public class RelatedEmoticonListAdapter
       ((LinearLayout)localObject).setFocusableInTouchMode(false);
       ((LinearLayout)localObject).setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       ((LinearLayout)localObject).setOrientation(0);
-      ((LinearLayout)localObject).setPadding(0, ViewUtils.a(2.0F), 0, 0);
+      ((LinearLayout)localObject).setPadding(0, ViewUtils.dip2px(2.0F), 0, 0);
       paramInt = 0;
       int k;
       for (;;)
@@ -300,7 +300,7 @@ public class RelatedEmoticonListAdapter
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362241)
+    if (paramView.getId() == 2131427822)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RelatedEmoticonListAdapter", 4, " add_to_custom_face ");
@@ -350,7 +350,7 @@ public class RelatedEmoticonListAdapter
       return false;
     }
     showAddCustomFacePop(paramView);
-    this.mMenuShowInfo = ((RelatedEmoSearchEmoticonInfo)paramView.getTag(2131380884));
+    this.mMenuShowInfo = ((RelatedEmoSearchEmoticonInfo)paramView.getTag(2131449867));
     if (this.mMenuShowInfo != null)
     {
       paramView = this.mApp;
@@ -391,17 +391,17 @@ public class RelatedEmoticonListAdapter
     localLinearLayout.setOrientation(1);
     localLinearLayout.setGravity(1);
     Object localObject = new TextView(this.mContext);
-    ((TextView)localObject).setId(2131362241);
+    ((TextView)localObject).setId(2131427822);
     ((TextView)localObject).setOnClickListener(this);
-    ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131167394));
+    ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131168464));
     ((TextView)localObject).setTextSize(14.0F);
     ((TextView)localObject).setGravity(17);
-    ((TextView)localObject).setText(this.mContext.getResources().getString(2131699745));
-    ((TextView)localObject).setBackgroundResource(2130838897);
-    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.a(65.0F), ViewUtils.a(46.0F)));
+    ((TextView)localObject).setText(this.mContext.getResources().getString(2131897778));
+    ((TextView)localObject).setBackgroundResource(2130839051);
+    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.dip2px(65.0F), ViewUtils.dip2px(46.0F)));
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setImageDrawable(this.mContext.getResources().getDrawable(2130838864));
-    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.a(20.0F), ViewUtils.a(10.0F)));
+    ((ImageView)localObject).setImageDrawable(this.mContext.getResources().getDrawable(2130839043));
+    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.dip2px(20.0F), ViewUtils.dip2px(10.0F)));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
     localLayoutParams.topMargin = (-EmotionUtils.a(7.0F, this.mContext.getResources()));
     localLayoutParams.bottomMargin = EmotionUtils.a(3.0F, this.mContext.getResources());
@@ -417,7 +417,7 @@ public class RelatedEmoticonListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonListAdapter
  * JD-Core Version:    0.7.0.1
  */

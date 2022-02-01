@@ -11,18 +11,18 @@ import java.lang.ref.WeakReference;
 class MultiCardRootLayout$3
   implements FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener
 {
-  float jdField_a_of_type_Float;
-  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getContext()));
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
+  final int a = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.g.getContext()));
+  int b;
   float c;
   float d;
+  float e;
+  float f;
   
   MultiCardRootLayout$3(MultiCardRootLayout paramMultiCardRootLayout) {}
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, false);
+    MultiCardRootLayout.a(this.g, false);
     int i = paramMotionEvent.getActionMasked();
     float f1;
     Object localObject;
@@ -30,30 +30,30 @@ class MultiCardRootLayout$3
     {
       if ((i != 1) && (i == 2))
       {
-        i = this.jdField_b_of_type_Int;
+        i = this.b;
         if (i != -1)
         {
           i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
           if ((i >= 0) && (i <= paramMotionEvent.getPointerCount() - 1))
           {
             float f2 = MotionEventCompat.getX(paramMotionEvent, i);
-            f1 = Math.abs(f2 - this.d);
-            float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
+            f1 = Math.abs(f2 - this.f);
+            float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.c;
             float f4 = Math.abs(f3);
-            if ((f4 > this.jdField_a_of_type_Int) && (f4 * 0.5F > f1))
+            if ((f4 > this.a) && (f4 * 0.5F > f1))
             {
-              MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, false);
+              MultiCardRootLayout.a(this.g, false);
               if (f3 > 0.0F) {
-                f1 = this.c + this.jdField_a_of_type_Int;
+                f1 = this.e + this.a;
               } else {
-                f1 = this.c - this.jdField_a_of_type_Int;
+                f1 = this.e - this.a;
               }
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_b_of_type_Float = f2;
+              this.c = f1;
+              this.d = f2;
             }
-            else if (f1 > this.jdField_a_of_type_Int)
+            else if (f1 > this.a)
             {
-              MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, true);
+              MultiCardRootLayout.a(this.g, true);
             }
             else if (QLog.isColorLevel())
             {
@@ -70,18 +70,18 @@ class MultiCardRootLayout$3
     else
     {
       f1 = paramMotionEvent.getX();
+      this.f = f1;
       this.d = f1;
-      this.jdField_b_of_type_Float = f1;
       f1 = paramMotionEvent.getY();
+      this.e = f1;
       this.c = f1;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+      this.b = MotionEventCompat.getPointerId(paramMotionEvent, 0);
     }
-    if (MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout) != null)
+    if (MultiCardRootLayout.b(this.g) != null)
     {
-      localObject = (MultiCardRootLayout.MultiCardRootLayoutListener)MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout).get();
+      localObject = (MultiCardRootLayout.MultiCardRootLayoutListener)MultiCardRootLayout.b(this.g).get();
       if (localObject != null) {
-        MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, ((MultiCardRootLayout.MultiCardRootLayoutListener)localObject).a(paramMotionEvent));
+        MultiCardRootLayout.a(this.g, ((MultiCardRootLayout.MultiCardRootLayoutListener)localObject).a(paramMotionEvent));
       }
     }
     if (QLog.isColorLevel())
@@ -90,15 +90,15 @@ class MultiCardRootLayout$3
       ((StringBuilder)localObject).append("onInterceptTouchEvent() called with: ev = [");
       ((StringBuilder)localObject).append(paramMotionEvent);
       ((StringBuilder)localObject).append("], intercept = ");
-      ((StringBuilder)localObject).append(MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout));
+      ((StringBuilder)localObject).append(MultiCardRootLayout.a(this.g));
       QLog.d("placeholder", 2, ((StringBuilder)localObject).toString());
     }
-    return MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+    return MultiCardRootLayout.a(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRootLayout.3
  * JD-Core Version:    0.7.0.1
  */

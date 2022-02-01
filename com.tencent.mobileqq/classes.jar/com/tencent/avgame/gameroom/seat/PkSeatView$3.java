@@ -11,7 +11,7 @@ class PkSeatView$3
   public void run()
   {
     GameRoomViewLayoutParamsDef.a(this.this$0);
-    PkSeatView.a(this.this$0).a();
+    PkSeatView.e(this.this$0).a();
   }
 }
 

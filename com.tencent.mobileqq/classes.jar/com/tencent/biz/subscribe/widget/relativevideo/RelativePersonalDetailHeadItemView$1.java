@@ -14,13 +14,13 @@ class RelativePersonalDetailHeadItemView$1
   
   public void onClick(View paramView)
   {
-    SubscribeLaucher.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
+    SubscribeLaucher.a(this.a.schema.get());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView.1
  * JD-Core Version:    0.7.0.1
  */

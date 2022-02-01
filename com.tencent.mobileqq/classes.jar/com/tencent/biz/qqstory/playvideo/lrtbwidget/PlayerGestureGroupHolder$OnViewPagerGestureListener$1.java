@@ -10,13 +10,13 @@ class PlayerGestureGroupHolder$OnViewPagerGestureListener$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetPlayerGestureGroupHolder$OnViewPagerGestureListener.a.a.setVisibility(8);
+    this.a.stop();
+    this.b.a.i.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1
  * JD-Core Version:    0.7.0.1
  */

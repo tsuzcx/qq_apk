@@ -14,16 +14,16 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class HomeworkTroopTipsBar
   implements View.OnClickListener, TipsBarTask
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private String jdField_a_of_type_JavaLangString;
+  View a;
+  private Activity b;
+  private String c;
+  private SessionInfo d;
   
   public HomeworkTroopTipsBar(Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramActivity;
+    this.d = paramSessionInfo;
+    this.c = paramString;
   }
   
   public int a()
@@ -33,12 +33,12 @@ public class HomeworkTroopTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560671, null);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      this.a = LayoutInflater.from(this.b).inflate(2131626716, null);
+      this.a.setOnClickListener(this);
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
   
   public void a(int paramInt, Object... paramVarArgs) {}
@@ -54,26 +54,21 @@ public class HomeworkTroopTipsBar
       if (!bool)
       {
         paramTipsManager.a(this, new Object[0]);
-        TroopReportor.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
+        TroopReportor.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.d.b });
       }
     }
     else if (bool) {
-      paramTipsManager.a();
+      paramTipsManager.c();
     }
   }
   
   public boolean a(@NonNull TipsManager paramTipsManager)
   {
-    int i = paramTipsManager.a();
+    int i = paramTipsManager.b();
     if (QLog.isColorLevel()) {
       QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
     }
     return i == b();
-  }
-  
-  public int[] a()
-  {
-    return null;
   }
   
   public int b()
@@ -81,19 +76,24 @@ public class HomeworkTroopTipsBar
     return 19;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
       QLog.d("HomeworkTroopTipsBar", 2, "click tips, jump to web");
     }
-    HWTroopUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aioTip");
-    TroopReportor.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
+    HWTroopUtils.a(this.b, this.c, this.d.b, "aioTip");
+    TroopReportor.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.d.b });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HomeworkTroopTipsBar
  * JD-Core Version:    0.7.0.1
  */

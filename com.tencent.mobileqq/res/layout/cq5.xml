@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/gb3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/gb2" android:layout_width="@dimen/bmy" android:layout_height="@dimen/bmy">
+        <ImageView android:id="@id/g81" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:src="@drawable/c4k" android:scaleType="fitXY" android:layout_centerInParent="true" />
+        <FrameLayout android:id="@id/nbu" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="6.5dip" android:layout_marginBottom="6.5dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <com.tencent.av.ui.effect.view.CircleProgressWithBg android:layout_gravity="center" android:id="@id/g83" android:layout_width="12.0dip" android:layout_height="12.0dip" android:scaleType="fitXY" />
+            <ImageView android:layout_gravity="center" android:id="@id/g7x" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/f7u" />
+        </FrameLayout>
+        <ImageView android:id="@id/p5n" android:visibility="gone" android:layout_width="58.0dip" android:layout_height="58.0dip" android:src="@drawable/ik5" android:scaleType="centerInside" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/hid" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" />
+</LinearLayout>

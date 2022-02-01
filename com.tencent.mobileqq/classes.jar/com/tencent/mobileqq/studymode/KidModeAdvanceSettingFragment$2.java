@@ -15,9 +15,9 @@ class KidModeAdvanceSettingFragment$2
   {
     if (!NetworkUtil.isNetSupport(this.a.getBaseActivity()))
     {
-      QQToast.a(this.a.getBaseActivity(), 1, 2131694475, 1).a();
+      QQToast.makeText(this.a.getBaseActivity(), 1, 2131892157, 1).show();
       KidModeAdvanceSettingFragment localKidModeAdvanceSettingFragment = this.a;
-      KidModeAdvanceSettingFragment.a(localKidModeAdvanceSettingFragment, KidModeAdvanceSettingFragment.a(localKidModeAdvanceSettingFragment), paramBoolean ^ true, KidModeAdvanceSettingFragment.a(this.a));
+      KidModeAdvanceSettingFragment.a(localKidModeAdvanceSettingFragment, KidModeAdvanceSettingFragment.a(localKidModeAdvanceSettingFragment), paramBoolean ^ true, KidModeAdvanceSettingFragment.b(this.a));
     }
     else
     {
@@ -29,7 +29,7 @@ class KidModeAdvanceSettingFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ public class ForwardCompositeOption
     super(paramIntent);
   }
   
-  protected boolean c()
+  protected boolean f()
   {
-    Intent localIntent = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    Intent localIntent = AIOUtils.a(new Intent(this.s, SplashActivity.class), null);
+    localIntent.putExtras(this.t);
+    this.s.setResult(-1, localIntent);
+    this.s.finish();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardCompositeOption
  * JD-Core Version:    0.7.0.1
  */

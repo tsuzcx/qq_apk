@@ -22,24 +22,24 @@ class RandomSizeTextItem$2
     ((StringBuilder)localObject1).append(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
     ((StringBuilder)localObject1).append(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString());
     localObject1 = ((StringBuilder)localObject1).toString();
-    String str = TroopFileUtils.b((String)localObject1);
-    Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextRandomSizeTextItem.a(str);
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextRandomSizeTextItem.a((String)localObject2);
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextRandomSizeTextItem.a((String[])localObject2);
-    if (StaticLayoutWithMaxLines.a((CharSequence)localObject2, 0, ((CharSequence)localObject2).length(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextRandomSizeTextItem.a, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextRandomSizeTextItem.b, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4).getLineCount() > 3)
+    String str = TroopFileUtils.c((String)localObject1);
+    Object localObject2 = this.a.a(str);
+    localObject2 = this.a.b((String)localObject2);
+    localObject2 = this.a.b((String[])localObject2);
+    if (StaticLayoutWithMaxLines.a((CharSequence)localObject2, 0, ((CharSequence)localObject2).length(), this.a.b, this.a.g, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4).getLineCount() > 3)
     {
       if (!TextUtils.equals("", paramCharSequence)) {
         a();
       }
       return "";
     }
-    this.jdField_a_of_type_Int = (((String)localObject1).length() - str.length() + 20);
+    this.b = (((String)localObject1).length() - str.length() + 20);
     return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.RandomSizeTextItem.2
  * JD-Core Version:    0.7.0.1
  */

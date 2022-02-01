@@ -19,15 +19,15 @@ import java.util.ArrayList;
 public class BaseForwardSelectionActivity
   extends BaseActivity
 {
-  protected Bundle a;
   protected ForwardBaseOption a;
-  protected boolean a;
   protected boolean b;
+  protected boolean c;
+  protected Bundle d;
   
   private void a()
   {
     Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
-    Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = new Bundle(this.d);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
     ((Bundle)localObject).putInt("PhotoConst.SEND_BUSINESS_TYPE", 1031);
@@ -63,7 +63,7 @@ public class BaseForwardSelectionActivity
         if (paramInt1 != 20002) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(paramInt1, paramInt2, paramIntent);
+        this.a.a(paramInt1, paramInt2, paramIntent);
         return;
       }
       setResult(-1, paramIntent);
@@ -77,11 +77,11 @@ public class BaseForwardSelectionActivity
     paramBundle = getIntent();
     if (paramBundle != null)
     {
-      this.b = getIntent().getBooleanExtra("call_by_forward", false);
-      if (this.b)
+      this.c = getIntent().getBooleanExtra("call_by_forward", false);
+      if (this.c)
       {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = ForwardOptionBuilder.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a();
+        this.a = ForwardOptionBuilder.a(paramBundle, this.app, this);
+        this.d = this.a.al();
       }
     }
     return true;
@@ -89,9 +89,9 @@ public class BaseForwardSelectionActivity
   
   protected void doOnDestroy()
   {
-    ForwardBaseOption localForwardBaseOption = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption;
+    ForwardBaseOption localForwardBaseOption = this.a;
     if (localForwardBaseOption != null) {
-      localForwardBaseOption.z();
+      localForwardBaseOption.ad();
     }
     super.doOnDestroy();
   }
@@ -111,16 +111,16 @@ public class BaseForwardSelectionActivity
           return;
         }
         paramIntent = (String)paramIntent.get(0);
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
-        int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-        if ((i != ForwardAbility.ForwardAbilityType.f.intValue()) && (i != ForwardAbility.ForwardAbilityType.k.intValue()))
+        this.d.putBoolean("FORWARD_IS_EDITED", true);
+        int i = this.d.getInt("key_forward_ability_type", 0);
+        if ((i != ForwardAbility.ForwardAbilityType.g.intValue()) && (i != ForwardAbility.ForwardAbilityType.l.intValue()))
         {
-          this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
+          this.d.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
           a();
           ReportController.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.b(i);
+        this.a.b(i);
       }
     }
   }
@@ -128,7 +128,7 @@ public class BaseForwardSelectionActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130772002, 2130772003);
+    overridePendingTransition(2130772005, 2130772006);
   }
   
   @Override
@@ -140,7 +140,7 @@ public class BaseForwardSelectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseForwardSelectionActivity
  * JD-Core Version:    0.7.0.1
  */

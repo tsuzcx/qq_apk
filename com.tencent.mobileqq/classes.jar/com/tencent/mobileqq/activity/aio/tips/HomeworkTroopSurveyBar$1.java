@@ -19,12 +19,12 @@ class HomeworkTroopSurveyBar$1
       new Handler(localLooper).post(new HomeworkTroopSurveyBar.1.1(this, paramTroopMemberInfo));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, paramTroopMemberInfo);
+    this.c.a(this.a, this.b, paramTroopMemberInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar.1
  * JD-Core Version:    0.7.0.1
  */

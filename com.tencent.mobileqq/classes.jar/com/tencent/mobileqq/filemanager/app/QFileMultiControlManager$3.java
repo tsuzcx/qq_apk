@@ -18,7 +18,7 @@ class QFileMultiControlManager$3
   protected void a(long paramLong, float paramFloat)
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (QFileMultiControlManager.a(this.a).getMessageFacade().a(i).a(paramLong) == null) {
+    if (QFileMultiControlManager.a(this.a).getMessageFacade().d(i).a(paramLong) == null) {
       return;
     }
     Object localObject1 = this.a;
@@ -29,7 +29,7 @@ class QFileMultiControlManager$3
     localObject1 = ((QFileMultiControlManager)localObject1).a("6000", (String)localObject2, localStringBuilder.toString());
     if (localObject1 != null)
     {
-      localObject1 = ((QFileControlReq)localObject1).a();
+      localObject1 = ((QFileControlReq)localObject1).b();
       if (localObject1 != null)
       {
         i = (int)(paramFloat * 100.0F);
@@ -42,7 +42,7 @@ class QFileMultiControlManager$3
   protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (QFileMultiControlManager.a(this.a).getMessageFacade().a(i).a(paramLong) == null) {
+    if (QFileMultiControlManager.a(this.a).getMessageFacade().d(i).a(paramLong) == null) {
       return;
     }
     paramString = this.a;
@@ -51,9 +51,9 @@ class QFileMultiControlManager$3
     ((StringBuilder)localObject2).append(paramLong);
     ((StringBuilder)localObject2).append("");
     paramString = paramString.a("6000", (String)localObject1, ((StringBuilder)localObject2).toString());
-    if ((paramString != null) && (paramString.a() != null))
+    if ((paramString != null) && (paramString.b() != null))
     {
-      localObject1 = paramString.a();
+      localObject1 = paramString.b();
       localObject2 = new Bundle();
       ((QFileControlCallback)localObject1).a(paramBoolean, 6000, AppConstants.DATALINE_PC_UIN, (Bundle)localObject2);
     }
@@ -64,7 +64,7 @@ class QFileMultiControlManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMultiControlManager.3
  * JD-Core Version:    0.7.0.1
  */

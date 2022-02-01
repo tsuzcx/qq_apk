@@ -19,23 +19,23 @@ class MultiIncomingCallUICtr$1
     long l = SeqUtil.a(paramIntent);
     if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      if (this.a.b == 1)
+      if (this.a.g == 1)
       {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
+        this.a.c.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
         return;
       }
-      paramContext = SessionMgr.a().a();
+      paramContext = SessionMgr.a().b();
       this.a.a(l, paramContext);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-      if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
+      this.a.c.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.d), Integer.valueOf(3) });
+      if (this.a.o != null) {
+        this.a.o.a();
       }
     }
     else
     {
       if (paramContext.equals("tencent.video.invite.multiaccept"))
       {
-        paramContext = SessionMgr.a().a();
+        paramContext = SessionMgr.a().b();
         this.a.a(l, paramContext);
         return;
       }

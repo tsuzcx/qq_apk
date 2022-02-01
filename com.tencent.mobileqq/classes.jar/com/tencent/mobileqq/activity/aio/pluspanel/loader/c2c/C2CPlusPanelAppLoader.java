@@ -23,11 +23,10 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class C2CPlusPanelAppLoader
   extends PlusPanelAppLoader
 {
-  protected boolean a;
+  protected boolean f = false;
   
   protected C2CPlusPanelAppLoader()
   {
-    this.jdField_a_of_type_Boolean = false;
     a(new C2CCommonAppInfoOrderFilter());
     a(new QavWTFilter());
   }
@@ -35,23 +34,23 @@ public abstract class C2CPlusPanelAppLoader
   private PluginData a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo)
   {
     PluginData localPluginData = new PluginData();
-    localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanelAppInfo);
-    localPluginData.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.c = String.valueOf(paramPlusPanelAppInfo.getRedDotID());
-    localPluginData.e = paramPlusPanelAppInfo.actionType;
-    localPluginData.d = paramPlusPanelAppInfo.action;
-    localPluginData.jdField_a_of_type_JavaLangString = a(paramPlusPanelAppInfo);
+    localPluginData.k = a(paramBaseChatPie.d, paramPlusPanelAppInfo);
+    localPluginData.a = paramPlusPanelAppInfo.getAppID();
+    localPluginData.b = paramPlusPanelAppInfo.getAppID();
+    localPluginData.f = String.valueOf(paramPlusPanelAppInfo.getRedDotID());
+    localPluginData.h = paramPlusPanelAppInfo.actionType;
+    localPluginData.g = paramPlusPanelAppInfo.action;
+    localPluginData.d = a(paramPlusPanelAppInfo);
     paramBaseChatPie = new StringBuilder();
-    paramBaseChatPie.append(localPluginData.jdField_a_of_type_JavaLangString);
-    paramBaseChatPie.append(HardCodeUtil.a(2131708295));
-    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
+    paramBaseChatPie.append(localPluginData.d);
+    paramBaseChatPie.append(HardCodeUtil.a(2131906085));
+    localPluginData.e = paramBaseChatPie.toString();
     return localPluginData;
   }
   
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a();
+    QQAppInterface localQQAppInterface = paramBaseChatPie.i();
     if (localQQAppInterface == null)
     {
       if (QLog.isColorLevel()) {
@@ -73,23 +72,23 @@ public abstract class C2CPlusPanelAppLoader
   private PluginData b(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo)
   {
     PluginData localPluginData = new PluginData();
-    localPluginData.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.e = paramPlusPanelAppInfo.actionType;
-    localPluginData.d = paramPlusPanelAppInfo.action;
-    localPluginData.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getTitle();
+    localPluginData.a = paramPlusPanelAppInfo.getAppID();
+    localPluginData.b = paramPlusPanelAppInfo.getAppID();
+    localPluginData.h = paramPlusPanelAppInfo.actionType;
+    localPluginData.g = paramPlusPanelAppInfo.action;
+    localPluginData.d = paramPlusPanelAppInfo.getTitle();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localPluginData.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(HardCodeUtil.a(2131708295));
-    localPluginData.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(localPluginData.d);
+    localStringBuilder.append(HardCodeUtil.a(2131906085));
+    localPluginData.e = localStringBuilder.toString();
     if (paramPlusPanelAppInfo.getAppID() == 209)
     {
-      localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-      localPluginData.jdField_a_of_type_JavaLangString = MiniAppConfProcessor.a().g();
+      localPluginData.k = AioPanelMiniAppManager.a(paramBaseChatPie.d).c();
+      localPluginData.d = MiniAppConfProcessor.a().o();
     }
     else
     {
-      localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(paramPlusPanelAppInfo.defaultDrawableID());
+      localPluginData.k = BaseApplicationImpl.getContext().getResources().getDrawable(paramPlusPanelAppInfo.defaultDrawableID());
     }
     if (paramPlusPanelAppInfo.getAppID() == 204)
     {
@@ -98,20 +97,20 @@ public abstract class C2CPlusPanelAppLoader
       }
     }
     else if (paramPlusPanelAppInfo.getAppID() == 209) {
-      localPluginData.jdField_a_of_type_Boolean = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+      localPluginData.c = AioPanelMiniAppManager.a(paramBaseChatPie.d).d();
     } else {
-      localPluginData.jdField_a_of_type_Boolean = false;
+      localPluginData.c = false;
     }
     paramBaseChatPie = new StringBuilder();
     paramBaseChatPie.append(paramPlusPanelAppInfo.getTitle());
-    paramBaseChatPie.append(HardCodeUtil.a(2131708303));
-    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
+    paramBaseChatPie.append(HardCodeUtil.a(2131906093));
+    localPluginData.e = paramBaseChatPie.toString();
     return localPluginData;
   }
   
   public PluginData a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return a(paramBaseChatPie, paramPlusPanelAppInfo);
     }
     return b(paramBaseChatPie, paramPlusPanelAppInfo);
@@ -120,29 +119,29 @@ public abstract class C2CPlusPanelAppLoader
   public void a(BaseChatPie paramBaseChatPie)
   {
     super.a(paramBaseChatPie);
-    a(paramBaseChatPie, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    a(paramBaseChatPie, paramBaseChatPie.ah);
+    a(paramBaseChatPie.d, paramBaseChatPie.ah.a, paramBaseChatPie.ah.b);
   }
   
   protected abstract void b(BaseChatPie paramBaseChatPie);
   
-  protected void c(int paramInt)
+  protected void d(int paramInt)
   {
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       a(paramInt, 217);
       a(paramInt, 218);
     }
   }
+  
+  public boolean d()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.C2CPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

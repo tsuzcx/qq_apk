@@ -17,30 +17,24 @@ import org.json.JSONObject;
 
 public class ADVideoAppDownloadData
 {
-  public int a;
-  public AdvertisementInfo a;
-  public GameAdComData a;
-  public WadlParams a;
-  public AdData a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
   public String c;
   public String d;
   public String e;
-  public String f;
-  public String g = "";
-  public String h = "";
-  public String i;
-  public String j;
-  
-  public ADVideoAppDownloadData()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public int f = 0;
+  public int g;
+  public String h;
+  public String i = "";
+  public String j = "";
+  public AdvertisementInfo k;
+  public boolean l;
+  public WadlParams m;
+  public String n;
+  public AdData o;
+  public GameAdComData p;
+  public String q;
+  public boolean r = false;
   
   public static ADVideoAppDownloadData a(AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean)
   {
@@ -64,9 +58,9 @@ public class ADVideoAppDownloadData
           localObject1 = localADVideoAppDownloadData;
           try
           {
-            localADVideoAppDownloadData.jdField_a_of_type_Boolean = true;
+            localADVideoAppDownloadData.l = true;
             localObject1 = localADVideoAppDownloadData;
-            localADVideoAppDownloadData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("game_app_id");
+            localADVideoAppDownloadData.a = ((JSONObject)localObject4).optString("game_app_id");
             localObject1 = localADVideoAppDownloadData;
             localADVideoAppDownloadData.d = ((JSONObject)localObject4).optString("game_pkg_name");
             localObject1 = localADVideoAppDownloadData;
@@ -74,15 +68,15 @@ public class ADVideoAppDownloadData
             localObject1 = localADVideoAppDownloadData;
             localADVideoAppDownloadData.c = ((JSONObject)localObject4).optString("game_apk_url");
             localObject1 = localADVideoAppDownloadData;
-            localADVideoAppDownloadData.g = ((JSONObject)localObject4).optString("game_adtag");
+            localADVideoAppDownloadData.i = ((JSONObject)localObject4).optString("game_adtag");
             localObject1 = localADVideoAppDownloadData;
-            localADVideoAppDownloadData.h = ((JSONObject)localObject4).optString("__ADSTR__");
+            localADVideoAppDownloadData.j = ((JSONObject)localObject4).optString("__ADSTR__");
             localObject1 = localADVideoAppDownloadData;
-            localADVideoAppDownloadData.jdField_b_of_type_Int = 0;
+            localADVideoAppDownloadData.g = 0;
             localObject1 = localADVideoAppDownloadData;
-            localADVideoAppDownloadData.jdField_a_of_type_Int = 0;
+            localADVideoAppDownloadData.f = 0;
             localObject1 = localADVideoAppDownloadData;
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+            localADVideoAppDownloadData.k = paramAdvertisementInfo;
             localObject1 = localADVideoAppDownloadData;
           }
           catch (JSONException localJSONException2)
@@ -101,7 +95,7 @@ public class ADVideoAppDownloadData
           localObject2 = localObject1;
           localObject3 = new ADVideoAppDownloadData();
           localObject1 = localObject3;
-          ((ADVideoAppDownloadData)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("appid");
+          ((ADVideoAppDownloadData)localObject3).a = localJSONObject.optString("appid");
           if (paramBoolean)
           {
             localObject1 = localObject3;
@@ -113,7 +107,7 @@ public class ADVideoAppDownloadData
             localObject2 = paramAdvertisementInfo.mAdDownloadApiUrl;
           }
           localObject1 = localObject3;
-          ((ADVideoAppDownloadData)localObject3).jdField_b_of_type_JavaLangString = ((String)localObject2);
+          ((ADVideoAppDownloadData)localObject3).b = ((String)localObject2);
           localObject1 = localObject3;
           ((ADVideoAppDownloadData)localObject3).d = localJSONObject.optString("pkg_name");
           localObject1 = localObject3;
@@ -123,10 +117,10 @@ public class ADVideoAppDownloadData
           if (localObject2 != null)
           {
             localObject1 = localObject3;
-            if (paramAdvertisementInfo.mAdvertisementExtInfo.j == 32)
+            if (paramAdvertisementInfo.mAdvertisementExtInfo.o == 32)
             {
               localObject1 = localObject3;
-              if (!TextUtils.isEmpty(((ADVideoAppDownloadData)localObject3).jdField_b_of_type_JavaLangString)) {
+              if (!TextUtils.isEmpty(((ADVideoAppDownloadData)localObject3).b)) {
                 continue;
               }
               localObject1 = localObject3;
@@ -149,16 +143,16 @@ public class ADVideoAppDownloadData
           ((ADVideoAppDownloadData)localObject3).c = ((String)localObject2);
           label430:
           localObject1 = localObject3;
-          ((ADVideoAppDownloadData)localObject3).jdField_b_of_type_Int = 0;
+          ((ADVideoAppDownloadData)localObject3).g = 0;
           localObject1 = localObject3;
-          ((ADVideoAppDownloadData)localObject3).jdField_a_of_type_Int = 0;
+          ((ADVideoAppDownloadData)localObject3).f = 0;
           localObject1 = localObject3;
-          ((ADVideoAppDownloadData)localObject3).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+          ((ADVideoAppDownloadData)localObject3).k = paramAdvertisementInfo;
           localObject1 = localObject3;
           if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdVia))
           {
             localObject1 = localObject3;
-            ((ADVideoAppDownloadData)localObject3).f = paramAdvertisementInfo.mAdVia;
+            ((ADVideoAppDownloadData)localObject3).h = paramAdvertisementInfo.mAdVia;
           }
         }
       }
@@ -173,7 +167,7 @@ public class ADVideoAppDownloadData
         localObject3 = localObject2;
       }
       if (localObject3 != null) {
-        ((ADVideoAppDownloadData)localObject3).j = paramAdvertisementInfo.mAdBtnTxt;
+        ((ADVideoAppDownloadData)localObject3).q = paramAdvertisementInfo.mAdBtnTxt;
       }
       return localObject3;
     }
@@ -188,26 +182,26 @@ public class ADVideoAppDownloadData
     }
     try
     {
-      if (paramGameAdComData.t == null) {
+      if (paramGameAdComData.u == null) {
         return localJSONObject;
       }
-      localJSONObject = new JSONObject(paramGameAdComData.t);
-      paramGameAdComData.a = new GameAdDownloadInfo(localJSONObject);
+      localJSONObject = new JSONObject(paramGameAdComData.u);
+      paramGameAdComData.I = new GameAdDownloadInfo(localJSONObject);
       Object localObject1 = new ADVideoAppDownloadData();
       try
       {
-        ((ADVideoAppDownloadData)localObject1).jdField_a_of_type_JavaLangString = paramGameAdComData.g;
-        ((ADVideoAppDownloadData)localObject1).d = paramGameAdComData.d;
-        ((ADVideoAppDownloadData)localObject1).e = paramGameAdComData.c;
+        ((ADVideoAppDownloadData)localObject1).a = paramGameAdComData.h;
+        ((ADVideoAppDownloadData)localObject1).d = paramGameAdComData.e;
+        ((ADVideoAppDownloadData)localObject1).e = paramGameAdComData.d;
         ((ADVideoAppDownloadData)localObject1).c = localJSONObject.optString("sGameDownloadUrl");
-        ((ADVideoAppDownloadData)localObject1).jdField_b_of_type_Int = 0;
-        ((ADVideoAppDownloadData)localObject1).jdField_a_of_type_Int = 0;
-        ((ADVideoAppDownloadData)localObject1).jdField_a_of_type_Boolean = true;
-        ((ADVideoAppDownloadData)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData = paramGameAdComData;
-        localJSONObject = new JSONObject(paramGameAdComData.E);
-        ((ADVideoAppDownloadData)localObject1).h = localJSONObject.optString("ADSTR", "");
-        ((ADVideoAppDownloadData)localObject1).g = localJSONObject.optString("ADTAG", "");
-        ((ADVideoAppDownloadData)localObject1).j = paramGameAdComData.v;
+        ((ADVideoAppDownloadData)localObject1).g = 0;
+        ((ADVideoAppDownloadData)localObject1).f = 0;
+        ((ADVideoAppDownloadData)localObject1).l = true;
+        ((ADVideoAppDownloadData)localObject1).p = paramGameAdComData;
+        localJSONObject = new JSONObject(paramGameAdComData.F);
+        ((ADVideoAppDownloadData)localObject1).j = localJSONObject.optString("ADSTR", "");
+        ((ADVideoAppDownloadData)localObject1).i = localJSONObject.optString("ADTAG", "");
+        ((ADVideoAppDownloadData)localObject1).q = paramGameAdComData.w;
         return localObject1;
       }
       catch (JSONException localJSONException2)
@@ -239,21 +233,21 @@ public class ADVideoAppDownloadData
       return null;
     }
     ADVideoAppDownloadData localADVideoAppDownloadData = new ADVideoAppDownloadData();
-    localADVideoAppDownloadData.jdField_a_of_type_JavaLangString = paramAdvertisementSoftInfo.p;
-    localADVideoAppDownloadData.jdField_b_of_type_JavaLangString = paramAdvertisementSoftInfo.r;
-    localADVideoAppDownloadData.d = paramAdvertisementSoftInfo.o;
-    localADVideoAppDownloadData.e = paramAdvertisementSoftInfo.q;
-    localADVideoAppDownloadData.c = paramAdvertisementSoftInfo.r;
-    localADVideoAppDownloadData.g = paramAdvertisementSoftInfo.v;
-    localADVideoAppDownloadData.h = paramAdvertisementSoftInfo.w;
+    localADVideoAppDownloadData.a = paramAdvertisementSoftInfo.z;
+    localADVideoAppDownloadData.b = paramAdvertisementSoftInfo.B;
+    localADVideoAppDownloadData.d = paramAdvertisementSoftInfo.y;
+    localADVideoAppDownloadData.e = paramAdvertisementSoftInfo.A;
+    localADVideoAppDownloadData.c = paramAdvertisementSoftInfo.B;
+    localADVideoAppDownloadData.i = paramAdvertisementSoftInfo.F;
+    localADVideoAppDownloadData.j = paramAdvertisementSoftInfo.G;
     boolean bool = false;
-    localADVideoAppDownloadData.jdField_b_of_type_Int = 0;
-    localADVideoAppDownloadData.jdField_a_of_type_Int = 0;
+    localADVideoAppDownloadData.g = 0;
+    localADVideoAppDownloadData.f = 0;
     if (paramInt != 0) {
       bool = true;
     }
-    localADVideoAppDownloadData.jdField_a_of_type_Boolean = bool;
-    localADVideoAppDownloadData.j = paramAdvertisementSoftInfo.M;
+    localADVideoAppDownloadData.l = bool;
+    localADVideoAppDownloadData.q = paramAdvertisementSoftInfo.W;
     return localADVideoAppDownloadData;
   }
   
@@ -264,9 +258,9 @@ public class ADVideoAppDownloadData
     }
     try
     {
-      if (paramVideoAdInfo.r != null)
+      if (paramVideoAdInfo.A != null)
       {
-        paramVideoAdInfo = new JSONObject(paramVideoAdInfo.r).optString("pkg_name");
+        paramVideoAdInfo = new JSONObject(paramVideoAdInfo.A).optString("pkg_name");
         return paramVideoAdInfo;
       }
     }
@@ -288,12 +282,12 @@ public class ADVideoAppDownloadData
   
   public boolean a(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    return (paramADVideoAppDownloadData != null) && (paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) && (paramADVideoAppDownloadData.d.equals(this.d)) && (paramADVideoAppDownloadData.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString));
+    return (paramADVideoAppDownloadData != null) && (paramADVideoAppDownloadData.a.equals(this.a)) && (paramADVideoAppDownloadData.d.equals(this.d)) && (paramADVideoAppDownloadData.b.equals(this.b));
   }
   
   public boolean b()
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
   }
   
   public boolean equals(Object paramObject)
@@ -329,23 +323,23 @@ public class ADVideoAppDownloadData
   public int hashCode()
   {
     String str = this.c;
-    int m = 0;
-    int k;
+    int i2 = 0;
+    int i1;
     if (str != null) {
-      k = str.hashCode();
+      i1 = str.hashCode();
     } else {
-      k = 0;
+      i1 = 0;
     }
     str = this.d;
     if (str != null) {
-      m = str.hashCode();
+      i2 = str.hashCode();
     }
-    return k * 31 + m;
+    return i1 * 31 + i2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData
  * JD-Core Version:    0.7.0.1
  */

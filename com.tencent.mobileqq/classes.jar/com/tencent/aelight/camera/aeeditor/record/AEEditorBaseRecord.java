@@ -1,11 +1,14 @@
 package com.tencent.aelight.camera.aeeditor.record;
 
 import android.text.TextUtils;
+import com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerViewModel;
+import com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextViewModel;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.tavcut.bean.TextItem;
-import com.tencent.weseevideo.model.effect.StickerModel;
+import com.tencent.qcircle.tavcut.bean.TextItem;
+import com.tencent.qcircle.weseevideo.model.effect.StickerModel;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,6 +16,8 @@ import org.json.JSONObject;
 public abstract class AEEditorBaseRecord
 {
   public static final String a = AEEditorBaseRecord.class.toString();
+  private AEEditorTextViewModel b;
+  private AEEditorStickerViewModel c;
   
   /* Error */
   public static <T> T a(JSONObject paramJSONObject, String paramString, Class<T> paramClass)
@@ -20,38 +25,38 @@ public abstract class AEEditorBaseRecord
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokevirtual 31	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2: invokevirtual 35	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   5: astore_0
     //   6: aload_0
-    //   7: invokestatic 37	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   10: ifne +124 -> 134
-    //   13: new 39	java/io/ByteArrayInputStream
+    //   13: new 43	java/io/ByteArrayInputStream
     //   16: dup
     //   17: aload_0
     //   18: iconst_0
-    //   19: invokestatic 45	android/util/Base64:decode	(Ljava/lang/String;I)[B
-    //   22: invokespecial 48	java/io/ByteArrayInputStream:<init>	([B)V
+    //   19: invokestatic 49	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   22: invokespecial 52	java/io/ByteArrayInputStream:<init>	([B)V
     //   25: astore_3
-    //   26: new 50	java/io/ObjectInputStream
+    //   26: new 54	java/io/ObjectInputStream
     //   29: dup
     //   30: aload_3
-    //   31: invokespecial 53	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   31: invokespecial 57	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   34: astore_1
     //   35: aload_1
     //   36: astore_0
     //   37: aload_1
-    //   38: invokevirtual 57	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   38: invokevirtual 61	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   41: astore_2
     //   42: aload_3
-    //   43: invokevirtual 60	java/io/ByteArrayInputStream:close	()V
+    //   43: invokevirtual 64	java/io/ByteArrayInputStream:close	()V
     //   46: aload_1
-    //   47: invokevirtual 61	java/io/ObjectInputStream:close	()V
+    //   47: invokevirtual 65	java/io/ObjectInputStream:close	()V
     //   50: aload_2
     //   51: areturn
     //   52: astore_0
-    //   53: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   53: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   56: aload_0
-    //   57: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   57: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   60: aload_2
     //   61: areturn
     //   62: astore_2
@@ -65,35 +70,35 @@ public abstract class AEEditorBaseRecord
     //   74: astore_1
     //   75: aload_1
     //   76: astore_0
-    //   77: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   77: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   80: aload_2
-    //   81: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   81: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   84: aload_3
-    //   85: invokevirtual 60	java/io/ByteArrayInputStream:close	()V
+    //   85: invokevirtual 64	java/io/ByteArrayInputStream:close	()V
     //   88: aload_1
     //   89: ifnull +45 -> 134
     //   92: aload_1
-    //   93: invokevirtual 61	java/io/ObjectInputStream:close	()V
+    //   93: invokevirtual 65	java/io/ObjectInputStream:close	()V
     //   96: aconst_null
     //   97: areturn
     //   98: astore_0
-    //   99: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   99: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   102: aload_0
-    //   103: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   103: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   106: aconst_null
     //   107: areturn
     //   108: astore_1
     //   109: aload_3
-    //   110: invokevirtual 60	java/io/ByteArrayInputStream:close	()V
+    //   110: invokevirtual 64	java/io/ByteArrayInputStream:close	()V
     //   113: aload_0
     //   114: ifnull +18 -> 132
     //   117: aload_0
-    //   118: invokevirtual 61	java/io/ObjectInputStream:close	()V
+    //   118: invokevirtual 65	java/io/ObjectInputStream:close	()V
     //   121: goto +11 -> 132
     //   124: astore_0
-    //   125: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   125: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   128: aload_0
-    //   129: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   129: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   132: aload_1
     //   133: athrow
     //   134: aconst_null
@@ -125,37 +130,37 @@ public abstract class AEEditorBaseRecord
     //   0: aload_2
     //   1: ifnonnull +4 -> 5
     //   4: return
-    //   5: new 71	java/io/ByteArrayOutputStream
+    //   5: new 75	java/io/ByteArrayOutputStream
     //   8: dup
-    //   9: invokespecial 72	java/io/ByteArrayOutputStream:<init>	()V
+    //   9: invokespecial 76	java/io/ByteArrayOutputStream:<init>	()V
     //   12: astore 6
     //   14: aconst_null
     //   15: astore 5
     //   17: aconst_null
     //   18: astore_3
-    //   19: new 74	java/io/ObjectOutputStream
+    //   19: new 78	java/io/ObjectOutputStream
     //   22: dup
     //   23: aload 6
-    //   25: invokespecial 77	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   25: invokespecial 81	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   28: astore 4
     //   30: aload 4
     //   32: aload_2
-    //   33: invokevirtual 81	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   33: invokevirtual 85	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   36: aload_0
     //   37: aload_1
-    //   38: new 83	java/lang/String
+    //   38: new 87	java/lang/String
     //   41: dup
     //   42: aload 6
-    //   44: invokevirtual 87	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   44: invokevirtual 91	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   47: iconst_0
-    //   48: invokestatic 91	android/util/Base64:encode	([BI)[B
-    //   51: invokespecial 92	java/lang/String:<init>	([B)V
-    //   54: invokevirtual 96	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   48: invokestatic 95	android/util/Base64:encode	([BI)[B
+    //   51: invokespecial 96	java/lang/String:<init>	([B)V
+    //   54: invokevirtual 100	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   57: pop
     //   58: aload 6
-    //   60: invokevirtual 97	java/io/ByteArrayOutputStream:close	()V
+    //   60: invokevirtual 101	java/io/ByteArrayOutputStream:close	()V
     //   63: aload 4
-    //   65: invokevirtual 98	java/io/ObjectOutputStream:close	()V
+    //   65: invokevirtual 102	java/io/ObjectOutputStream:close	()V
     //   68: return
     //   69: astore_0
     //   70: goto +53 -> 123
@@ -172,32 +177,32 @@ public abstract class AEEditorBaseRecord
     //   90: astore_0
     //   91: aload_0
     //   92: astore_3
-    //   93: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   93: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   96: aload_1
-    //   97: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   97: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   100: aload 6
-    //   102: invokevirtual 97	java/io/ByteArrayOutputStream:close	()V
+    //   102: invokevirtual 101	java/io/ByteArrayOutputStream:close	()V
     //   105: aload_0
     //   106: ifnull +16 -> 122
     //   109: aload_0
-    //   110: invokevirtual 98	java/io/ObjectOutputStream:close	()V
+    //   110: invokevirtual 102	java/io/ObjectOutputStream:close	()V
     //   113: return
     //   114: astore_0
-    //   115: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   115: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   118: aload_0
-    //   119: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   119: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   122: return
     //   123: aload 6
-    //   125: invokevirtual 97	java/io/ByteArrayOutputStream:close	()V
+    //   125: invokevirtual 101	java/io/ByteArrayOutputStream:close	()V
     //   128: aload 4
     //   130: ifnull +19 -> 149
     //   133: aload 4
-    //   135: invokevirtual 98	java/io/ObjectOutputStream:close	()V
+    //   135: invokevirtual 102	java/io/ObjectOutputStream:close	()V
     //   138: goto +11 -> 149
     //   141: astore_1
-    //   142: getstatic 16	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
+    //   142: getstatic 20	com/tencent/aelight/camera/aeeditor/record/AEEditorBaseRecord:a	Ljava/lang/String;
     //   145: aload_1
-    //   146: invokestatic 66	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   146: invokestatic 70	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   149: aload_0
     //   150: athrow
     // Local variable table:
@@ -225,8 +230,14 @@ public abstract class AEEditorBaseRecord
   
   public List<StickerModel> a(JSONArray paramJSONArray)
   {
+    String str1 = "scale";
+    String str2 = "offset";
     ArrayList localArrayList = new ArrayList();
     int i = 0;
+    label449:
+    label458:
+    label465:
+    label471:
     for (;;)
     {
       try
@@ -236,28 +247,28 @@ public abstract class AEEditorBaseRecord
           Object localObject1 = paramJSONArray.optJSONObject(i);
           if (localObject1 != null)
           {
-            Object localObject2 = ((JSONObject)localObject1).optString("id");
-            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            String str3 = ((JSONObject)localObject1).optString("id");
+            if (!TextUtils.isEmpty(str3))
             {
-              String str = ((JSONObject)localObject1).optString("dir");
-              if (new File(str).exists())
+              Object localObject2 = ((JSONObject)localObject1).optString("dir");
+              if (new File((String)localObject2).exists())
               {
-                if (((JSONObject)localObject1).optJSONObject("offset") == null) {
-                  break label378;
+                if (((JSONObject)localObject1).optJSONObject(str2) == null) {
+                  break label449;
                 }
-                f1 = (float)((JSONObject)localObject1).getJSONObject("offset").getDouble("x");
-                f2 = (float)((JSONObject)localObject1).getJSONObject("offset").getDouble("y");
-                if (Double.compare(((JSONObject)localObject1).optDouble("scale"), (0.0D / 0.0D)) == 0) {
-                  break label387;
+                f1 = (float)((JSONObject)localObject1).getJSONObject(str2).getDouble("x");
+                f2 = (float)((JSONObject)localObject1).getJSONObject(str2).getDouble("y");
+                if (Double.compare(((JSONObject)localObject1).optDouble(str1), (0.0D / 0.0D)) == 0) {
+                  break label458;
                 }
-                f3 = (float)((JSONObject)localObject1).optDouble("scale");
+                f3 = (float)((JSONObject)localObject1).optDouble(str1);
                 if (Double.compare(((JSONObject)localObject1).optDouble("rotation"), (0.0D / 0.0D)) == 0) {
-                  break label394;
+                  break label465;
                 }
                 f4 = (float)((JSONObject)localObject1).optDouble("rotation");
                 StickerModel localStickerModel = new StickerModel();
-                localStickerModel.setMaterialId((String)localObject2);
-                localStickerModel.setFilePath(str);
+                localStickerModel.setMaterialId(str3);
+                localStickerModel.setFilePath((String)localObject2);
                 localStickerModel.setCenterX(f1);
                 localStickerModel.setCenterY(f2);
                 localStickerModel.setScale(f3);
@@ -277,7 +288,16 @@ public abstract class AEEditorBaseRecord
                   localObject2 = new ArrayList();
                   ((ArrayList)localObject2).add(localObject1);
                   localStickerModel.setTextItems((List)localObject2);
+                  if (this.b == null) {
+                    break label471;
+                  }
+                  this.b.b(Arrays.asList(new String[] { str3 }));
+                  break label471;
                 }
+                if (this.c == null) {
+                  break label471;
+                }
+                this.c.b(Arrays.asList(new String[] { str3 }));
                 localArrayList.add(localStickerModel);
               }
             }
@@ -293,14 +313,11 @@ public abstract class AEEditorBaseRecord
       {
         AEQLog.a(a, paramJSONArray);
       }
-      label378:
       float f1 = 0.5F;
       float f2 = 0.5F;
       continue;
-      label387:
       float f3 = 0.5F;
       continue;
-      label394:
       float f4 = 0.0F;
     }
   }
@@ -355,10 +372,16 @@ public abstract class AEEditorBaseRecord
       }
     }
   }
+  
+  public void a(AEEditorTextViewModel paramAEEditorTextViewModel, AEEditorStickerViewModel paramAEEditorStickerViewModel)
+  {
+    this.b = paramAEEditorTextViewModel;
+    this.c = paramAEEditorStickerViewModel;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.record.AEEditorBaseRecord
  * JD-Core Version:    0.7.0.1
  */

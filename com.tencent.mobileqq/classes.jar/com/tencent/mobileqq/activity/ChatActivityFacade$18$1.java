@@ -29,28 +29,28 @@ class ChatActivityFacade$18$1
 {
   ChatActivityFacade$18$1(ChatActivityFacade.18 param18) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
-      if ((ChatActivityFacade.b != null) && (ChatActivityFacade.b.isShowing())) {
-        ChatActivityFacade.b.dismiss();
+      if ((ChatActivityFacade.e != null) && (ChatActivityFacade.e.isShowing())) {
+        ChatActivityFacade.e.dismiss();
       }
     }
     else
     {
-      if ((ChatActivityFacade.b != null) && (ChatActivityFacade.b.isShowing())) {
-        ChatActivityFacade.b.dismiss();
+      if ((ChatActivityFacade.e != null) && (ChatActivityFacade.e.isShowing())) {
+        ChatActivityFacade.e.dismiss();
       }
       paramInt = 0;
       Object localObject;
-      while (paramInt < ChatActivityFacade.a.size())
+      while (paramInt < ChatActivityFacade.f.size())
       {
-        paramView = (ChatMessage)ChatActivityFacade.a.get(paramInt);
+        paramView = (ChatMessage)ChatActivityFacade.f.get(paramInt);
         if (paramView.msgtype == -2005)
         {
-          localObject = FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)paramView);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(((FileManagerEntity)localObject).nSessionId);
+          localObject = FileManagerUtil.a(this.a.c, (MessageForFile)paramView);
+          this.a.c.getFileManagerEngine().c(((FileManagerEntity)localObject).nSessionId);
         }
         localObject = paramView.getExtInfoFromExtStr("tim_aio_gary_uniseq");
         if (QLog.isDebugVersion())
@@ -68,7 +68,7 @@ class ChatActivityFacade$18$1
           try
           {
             long l = Long.parseLong((String)localObject);
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramView.frienduin, paramView.istroop, l, true);
+            this.a.c.getMessageFacade().b(paramView.frienduin, paramView.istroop, l, true);
           }
           catch (Exception paramView)
           {
@@ -78,41 +78,41 @@ class ChatActivityFacade$18$1
         }
         paramInt += 1;
       }
-      if (BaseChatItemLayout.a)
+      if (BaseChatItemLayout.ad)
       {
-        paramView = ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+        paramView = ((BaseActivity)this.a.a).getChatFragment().k();
         paramView.a(false, null, true);
-        if (paramView.a.jdField_a_of_type_Int == 1008)
+        if (paramView.ah.a == 1008)
         {
           localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", paramView.a.jdField_a_of_type_JavaLangString, "0X80064FA", "0X80064FA", 0, 0, (String)localObject, "", "", "");
+          ReportController.b(this.a.c, "dc00899", "Pb_account_lifeservice", paramView.ah.b, "0X80064FA", "0X80064FA", 0, 0, (String)localObject, "", "", "");
         }
       }
-      if (((!(this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) && (!(this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))) || (((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() == null) || (((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a() == null)) {
+      if (((!(this.a.a instanceof SplashActivity)) && (!(this.a.a instanceof ChatActivity))) || (((BaseActivity)this.a.a).getChatFragment() == null) || (((BaseActivity)this.a.a).getChatFragment().k() == null)) {
         break label544;
       }
-      if (ChatActivityFacade.a.size() == 1) {
-        ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)ChatActivityFacade.a.get(0));
+      if (ChatActivityFacade.f.size() == 1) {
+        ((BaseActivity)this.a.a).getChatFragment().k().a((ChatMessage)ChatActivityFacade.f.get(0));
       } else {
-        ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(ChatActivityFacade.a);
+        ((BaseActivity)this.a.a).getChatFragment().k().a(ChatActivityFacade.f);
       }
-      QQGamePubAIOHelper.a(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a(), ChatActivityFacade.a, new ChatMessage[0]);
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "del_multi_msg");
+      QQGamePubAIOHelper.a(((BaseActivity)this.a.a).getChatFragment().k(), ChatActivityFacade.f, new ChatMessage[0]);
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.c, "del_multi_msg");
     }
     return;
     label544:
     paramInt = 0;
-    while (paramInt < ChatActivityFacade.a.size())
+    while (paramInt < ChatActivityFacade.f.size())
     {
-      ChatActivityFacade.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)ChatActivityFacade.a.get(paramInt));
+      ChatActivityFacade.b(this.a.c, (ChatMessage)ChatActivityFacade.f.get(paramInt));
       paramInt += 1;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(ChatActivityFacade.a, false);
+    this.a.c.getMessageFacade().a(ChatActivityFacade.f, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.18.1
  * JD-Core Version:    0.7.0.1
  */

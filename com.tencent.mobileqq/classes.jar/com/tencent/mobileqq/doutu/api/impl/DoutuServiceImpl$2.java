@@ -16,14 +16,14 @@ class DoutuServiceImpl$2
       if ((paramInt != 1) && (paramInt != 3)) {
         return;
       }
-      localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      localMqqHandler = this.a;
       if (localMqqHandler != null) {
         localMqqHandler.sendEmptyMessageDelayed(80, 5000L);
       }
     }
     else
     {
-      localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      localMqqHandler = this.a;
       if (localMqqHandler != null) {
         localMqqHandler.removeMessages(80);
       }
@@ -32,7 +32,7 @@ class DoutuServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.api.impl.DoutuServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

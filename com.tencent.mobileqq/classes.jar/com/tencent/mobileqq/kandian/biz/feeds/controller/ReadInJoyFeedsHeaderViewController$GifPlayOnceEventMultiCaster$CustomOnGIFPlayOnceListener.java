@@ -19,7 +19,7 @@ class ReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster$CustomOnGIF
   
   public void onPlayOnce()
   {
-    Object localObject = (List)ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().get(this.a);
+    Object localObject = (List)ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.b().get(this.a);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -27,18 +27,18 @@ class ReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster$CustomOnGIF
       {
         WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
         if (localWeakReference.get() != null) {
-          ((ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener)localWeakReference.get()).a();
+          ((ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener)localWeakReference.get()).b();
         }
       }
     }
     this.a.setGIFPlayOnceListener(null);
+    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.c().remove(this.a);
     ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.b().remove(this.a);
-    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.CustomOnGIFPlayOnceListener
  * JD-Core Version:    0.7.0.1
  */

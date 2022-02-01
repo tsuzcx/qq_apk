@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="false" android:drawable="@drawable/f80" />
-    <item android:state_pressed="true" android:drawable="@drawable/f81" />
+    <item android:state_pressed="false" android:drawable="@drawable/qq_search_clear_normal" />
+    <item android:state_pressed="true" android:drawable="@drawable/qq_search_clear_pressed" />
 </selector>

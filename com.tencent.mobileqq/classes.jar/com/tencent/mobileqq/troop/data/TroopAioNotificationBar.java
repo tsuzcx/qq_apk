@@ -48,34 +48,26 @@ public class TroopAioNotificationBar
   extends TroopAioAgent
   implements View.OnClickListener, Animation.AnimationListener
 {
-  protected Animation a;
-  protected List<TroopAIONotifyItem> a;
-  private View jdField_b_of_type_AndroidViewView;
-  protected Animation b;
-  private boolean jdField_b_of_type_Boolean = false;
-  private View c;
-  protected Animation c;
-  
-  public TroopAioNotificationBar()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
-  }
+  protected List<TroopAIONotifyItem> d = new ArrayList();
+  protected Animation e = null;
+  protected Animation f = null;
+  protected Animation g = null;
+  private View h;
+  private boolean i = false;
+  private View j;
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.M)
     {
-      this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewAnimationAnimation != null))
+      this.i = false;
+      if ((this.h != null) && (this.f != null))
       {
-        View localView = this.jdField_c_of_type_AndroidViewView;
+        View localView = this.j;
         if ((localView != null) && (localView.getVisibility() == 0))
         {
-          this.jdField_b_of_type_AndroidViewView.clearAnimation();
-          this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+          this.h.clearAnimation();
+          this.h.startAnimation(this.f);
         }
       }
     }
@@ -93,12 +85,12 @@ public class TroopAioNotificationBar
       ((StringBuilder)localObject1).append(paramTroopAIONotifyItem.toString());
       QLog.d("TroopAioNotificationBar", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = (URLThemeImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379145);
+    Object localObject1 = (URLThemeImageView)this.h.findViewById(2131447881);
     try
     {
       Object localObject2 = new URL(paramTroopAIONotifyItem.icon);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = ImageUtil.e();
+      Drawable localDrawable = ImageUtil.j();
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localObject2 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
@@ -106,21 +98,21 @@ public class TroopAioNotificationBar
         ((URLDrawable)localObject2).restartDownload();
       }
       ((URLThemeImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379148)).setText(paramTroopAIONotifyItem.title);
-      localObject1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379147);
+      ((TextView)this.h.findViewById(2131447884)).setText(paramTroopAIONotifyItem.title);
+      localObject1 = (TextView)this.h.findViewById(2131447883);
       ((TextView)localObject1).setText(paramTroopAIONotifyItem.summary);
       if (TextUtils.isEmpty(paramTroopAIONotifyItem.summary)) {
         ((TextView)localObject1).setVisibility(8);
       } else {
         ((TextView)localObject1).setVisibility(0);
       }
-      ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379144)).setBackgroundResource(2130851086);
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      ((ImageView)this.h.findViewById(2131447880)).setBackgroundResource(2130853321);
+      if (ThemeUtil.isInNightMode(this.D))
       {
-        this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130851084);
+        this.h.setBackgroundResource(2130853319);
         return;
       }
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130851085);
+      this.h.setBackgroundResource(2130853320);
       return;
     }
     catch (MalformedURLException paramTroopAIONotifyItem)
@@ -131,7 +123,7 @@ public class TroopAioNotificationBar
     }
   }
   
-  private void f()
+  private void e()
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
@@ -143,29 +135,29 @@ public class TroopAioNotificationBar
   
   private void g()
   {
-    if (this.jdField_c_of_type_AndroidViewView.getVisibility() == 8)
+    if (this.j.getVisibility() == 8)
     {
-      Object localObject = this.jdField_b_of_type_AndroidViewView;
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidViewAnimationAnimation != null))
+      Object localObject = this.h;
+      if ((localObject != null) && (this.e != null))
       {
         ((View)localObject).clearAnimation();
-        this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        localObject = this.jdField_a_of_type_JavaUtilList;
+        this.h.startAnimation(this.e);
+        this.j.setVisibility(0);
+        this.h.setVisibility(0);
+        localObject = this.d;
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
-          localObject = (TroopAIONotifyItem)this.jdField_a_of_type_JavaUtilList.get(0);
+          localObject = (TroopAIONotifyItem)this.d.get(0);
           if ((localObject != null) && (((TroopAIONotifyItem)localObject).hideMode == 1)) {
-            TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (TroopAIONotifyItem)localObject);
+            TroopAioNotifyManager.a(this.D, (TroopAIONotifyItem)localObject);
           }
           QQAppInterface localQQAppInterface;
           String str;
           StringBuilder localStringBuilder;
           if ((localObject != null) && (((TroopAIONotifyItem)localObject).type == 1))
           {
-            localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a;
+            localQQAppInterface = this.D;
+            str = this.F.b;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("");
             localStringBuilder.append(((TroopAIONotifyItem)localObject).appId);
@@ -173,8 +165,8 @@ public class TroopAioNotificationBar
           }
           else if ((localObject != null) && (((TroopAIONotifyItem)localObject).type == 2))
           {
-            localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a;
+            localQQAppInterface = this.D;
+            str = this.F.b;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("");
             localStringBuilder.append(((TroopAIONotifyItem)localObject).appId);
@@ -183,101 +175,96 @@ public class TroopAioNotificationBar
         }
       }
     }
-    b();
+    w();
   }
   
-  public View a()
+  protected void a()
   {
-    return this.jdField_c_of_type_AndroidViewView;
+    if (this.e == null)
+    {
+      this.e = new TranslateAnimation(2, 1.0F, 2, 0.0F, 2, 0.0F, 2, 0.0F);
+      this.e.setDuration(500L);
+      this.e.setAnimationListener(this);
+    }
+    if (this.f == null)
+    {
+      this.f = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
+      this.f.setDuration(500L);
+      this.f.setAnimationListener(this);
+    }
+    if (this.g == null)
+    {
+      this.g = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
+      this.g.setDuration(500L);
+      this.g.setFillAfter(true);
+    }
   }
   
   public void a(List<TroopAIONotifyItem> paramList)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.M) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+    this.d = paramList;
+    if (this.G == null) {
       return;
     }
-    if (this.jdField_c_of_type_AndroidViewView == null) {
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560607, null);
+    if (this.j == null) {
+      this.j = LayoutInflater.from(this.E).inflate(2131626652, null);
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
+    if (this.G.indexOfChild(this.j) == -1)
     {
       paramList = new RelativeLayout.LayoutParams(-2, -2);
-      paramList.topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+      paramList.topMargin = DisplayUtil.a(this.E, 18.0F);
       paramList.addRule(11);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, paramList);
+      this.G.addView(this.j, paramList);
     }
-    paramList = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
-    int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131379333, 2131374119, 2131374255, 2131374250 });
-    if (i > 0) {
-      paramList.addRule(3, i);
+    paramList = (RelativeLayout.LayoutParams)this.j.getLayoutParams();
+    int k = TroopAioMsgNavigateBar.a(this.G, new int[] { 2131448070, 2131442214, 2131442350, 2131442345 });
+    if (k > 0) {
+      paramList.addRule(3, k);
     }
-    if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131379143);
+    if (this.h == null) {
+      this.h = this.j.findViewById(2131447879);
     }
-    this.jdField_c_of_type_AndroidViewView.setBackgroundResource(17170445);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    a((TroopAIONotifyItem)this.jdField_a_of_type_JavaUtilList.get(0));
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130844014);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.j.setBackgroundResource(17170445);
+    this.j.setVisibility(8);
+    a((TroopAIONotifyItem)this.d.get(0));
+    this.h.setBackgroundResource(2130844969);
+    this.h.setOnClickListener(this);
   }
   
-  boolean a()
+  protected void b()
   {
-    View localView = this.jdField_c_of_type_AndroidViewView;
-    return (localView != null) && (localView.getVisibility() != 8);
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    if (this.j != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 1.0F, 2, 0.0F, 2, 0.0F, 2, 0.0F);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-    }
-    if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null)
-    {
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-    }
-    if (this.jdField_c_of_type_AndroidViewAnimationAnimation == null)
-    {
-      this.jdField_c_of_type_AndroidViewAnimationAnimation = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    }
-  }
-  
-  protected void d()
-  {
-    if (this.jdField_c_of_type_AndroidViewView != null)
-    {
-      localObject = this.jdField_b_of_type_AndroidViewView;
+      localObject = this.h;
       if (localObject != null)
       {
         ((View)localObject).clearAnimation();
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        localObject = (ViewGroup)this.jdField_c_of_type_AndroidViewView.getParent();
+        this.j.setVisibility(8);
+        localObject = (ViewGroup)this.j.getParent();
         if (localObject != null) {
-          ((ViewGroup)localObject).removeView(this.jdField_c_of_type_AndroidViewView);
+          ((ViewGroup)localObject).removeView(this.j);
         }
       }
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.d;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
   }
   
-  public void e()
+  boolean c()
+  {
+    View localView = this.j;
+    return (localView != null) && (localView.getVisibility() != 8);
+  }
+  
+  public void d()
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
@@ -287,23 +274,28 @@ public class TroopAioNotificationBar
     g();
   }
   
+  public View f()
+  {
+    return this.j;
+  }
+  
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation.equals(this.jdField_b_of_type_AndroidViewAnimationAnimation))
+    if (paramAnimation.equals(this.f))
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
+      int k = this.d.size();
       if (QLog.isColorLevel())
       {
         paramAnimation = new StringBuilder();
         paramAnimation.append("onAnimationEnd: list.size=");
-        paramAnimation.append(i);
+        paramAnimation.append(k);
         paramAnimation.append(", mArrowImageRotated:");
-        paramAnimation.append(this.jdField_b_of_type_Boolean);
+        paramAnimation.append(this.i);
         QLog.d("TroopAioNotificationBar", 2, paramAnimation.toString());
       }
-      this.jdField_b_of_type_AndroidViewView.clearAnimation();
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.h.clearAnimation();
+      this.j.setVisibility(8);
+      this.h.setVisibility(8);
     }
   }
   
@@ -321,22 +313,22 @@ public class TroopAioNotificationBar
     }
     else
     {
-      int i = paramView.getId();
-      if (i != 2131362331)
+      int k = paramView.getId();
+      if (k != 2131427931)
       {
-        if ((i == 2131379143) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo != null))
+        if ((k == 2131447879) && (this.F != null))
         {
-          Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+          Object localObject1 = this.d;
           if ((localObject1 != null) && (((List)localObject1).size() != 0))
           {
-            localObject1 = (TroopAIONotifyItem)this.jdField_a_of_type_JavaUtilList.remove(0);
+            localObject1 = (TroopAIONotifyItem)this.d.remove(0);
             Object localObject2;
             String str;
             StringBuilder localStringBuilder;
             if (((TroopAIONotifyItem)localObject1).type == 1)
             {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a;
+              localObject2 = this.D;
+              str = this.F.b;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("");
               localStringBuilder.append(((TroopAIONotifyItem)localObject1).appId);
@@ -344,8 +336,8 @@ public class TroopAioNotificationBar
             }
             else if (((TroopAIONotifyItem)localObject1).type == 2)
             {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a;
+              localObject2 = this.D;
+              str = this.F.b;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("");
               localStringBuilder.append(((TroopAIONotifyItem)localObject1).appId);
@@ -353,28 +345,28 @@ public class TroopAioNotificationBar
             }
             if (((TroopAIONotifyItem)localObject1).url.startsWith("http"))
             {
-              localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+              localObject2 = new Intent(this.E, QQBrowserActivity.class);
               ((Intent)localObject2).putExtra("url", ((TroopAIONotifyItem)localObject1).url);
               ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded((Intent)localObject2, ((TroopAIONotifyItem)localObject1).url);
-              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+              this.E.startActivity((Intent)localObject2);
             }
             else if (((TroopAIONotifyItem)localObject1).url.startsWith("mqqapi"))
             {
-              if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface instanceof QQAppInterface)) {
-                JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, ((TroopAIONotifyItem)localObject1).url).a();
+              if ((this.D instanceof QQAppInterface)) {
+                JumpParser.a(this.D, this.E, ((TroopAIONotifyItem)localObject1).url).a();
               } else {
-                this.jdField_a_of_type_AndroidContentContext.startActivity(new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class).setData(Uri.parse(((TroopAIONotifyItem)localObject1).url)));
+                this.E.startActivity(new Intent(this.E, JumpActivity.class).setData(Uri.parse(((TroopAIONotifyItem)localObject1).url)));
               }
             }
             if (((TroopAIONotifyItem)localObject1).hideMode == 2) {
-              TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (TroopAIONotifyItem)localObject1);
+              TroopAioNotifyManager.a(this.D, (TroopAIONotifyItem)localObject1);
             }
-            f();
+            e();
           }
         }
       }
       else {
-        f();
+        e();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -382,7 +374,7 @@ public class TroopAioNotificationBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioNotificationBar
  * JD-Core Version:    0.7.0.1
  */

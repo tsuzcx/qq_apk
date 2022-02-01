@@ -21,7 +21,7 @@ public class DownloadReceiver
       String str3 = paramIntent.getStringExtra("processName");
       if (!TextUtils.isEmpty(str3))
       {
-        if (!str3.equalsIgnoreCase(Common.r())) {
+        if (!str3.equalsIgnoreCase(Common.x())) {
           return;
         }
         String str1 = paramIntent.getAction();
@@ -36,7 +36,7 @@ public class DownloadReceiver
         ((StringBuilder)localObject).append(str2);
         if (((StringBuilder)localObject).toString().equals(str1))
         {
-          AppUtil.a(paramContext, paramIntent.d);
+          AppUtil.c(paramContext, paramIntent.d);
           return;
         }
         localObject = new StringBuilder();
@@ -70,7 +70,7 @@ public class DownloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.DownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

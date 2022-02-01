@@ -15,11 +15,11 @@ class QQSettingChatOperationFragment$2$1
   
   public void run()
   {
-    QQSettingChatOperationFragment.a(this.a.a).getMsgHandler().d(true);
-    QQSettingChatOperationFragment.a(this.a.a).getMessageFacade().j();
-    TroopAssistantManager.a().j(QQSettingChatOperationFragment.a(this.a.a));
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    MqqHandler localMqqHandler = QQSettingChatOperationFragment.a(this.a.a).getHandler(Conversation.class);
+    QQSettingChatOperationFragment.a(this.a.b).getMsgHandler().f(true);
+    QQSettingChatOperationFragment.a(this.a.b).getMessageFacade().v();
+    TroopAssistantManager.a().r(QQSettingChatOperationFragment.a(this.a.b));
+    this.a.b.d.sendEmptyMessageDelayed(0, 1000L);
+    MqqHandler localMqqHandler = QQSettingChatOperationFragment.a(this.a.b).getHandler(Conversation.class);
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(1009);
     }
@@ -27,7 +27,7 @@ class QQSettingChatOperationFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

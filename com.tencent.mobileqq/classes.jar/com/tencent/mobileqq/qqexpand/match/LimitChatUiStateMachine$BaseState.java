@@ -5,15 +5,14 @@ import com.tencent.qphone.base.util.QLog;
 
 public class LimitChatUiStateMachine$BaseState
 {
-  public int a;
-  protected ExtendFriendLimitChatManager a;
-  protected LimitChatUiStateMachine a;
+  public int a = -1;
+  protected ExtendFriendLimitChatManager b;
+  protected LimitChatUiStateMachine c;
   
   public LimitChatUiStateMachine$BaseState(LimitChatUiStateMachine paramLimitChatUiStateMachine, ExtendFriendLimitChatManager paramExtendFriendLimitChatManager)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager = paramExtendFriendLimitChatManager;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine = paramLimitChatUiStateMachine;
+    this.b = paramExtendFriendLimitChatManager;
+    this.c = paramLimitChatUiStateMachine;
   }
   
   public void a()
@@ -22,7 +21,7 @@ public class LimitChatUiStateMachine$BaseState
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("state ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" onEnd");
       QLog.d("LimitChatUiStateMachine", 2, localStringBuilder.toString());
     }
@@ -34,7 +33,7 @@ public class LimitChatUiStateMachine$BaseState
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("state ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" onStart subinfo:");
       localStringBuilder.append(paramInt);
       QLog.d("LimitChatUiStateMachine", 2, localStringBuilder.toString());
@@ -47,7 +46,7 @@ public class LimitChatUiStateMachine$BaseState
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("state ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" start handle event ");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(", subEvent ");
@@ -63,7 +62,7 @@ public class LimitChatUiStateMachine$BaseState
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("state ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" onForceEnd");
       QLog.d("LimitChatUiStateMachine", 2, localStringBuilder.toString());
     }
@@ -71,7 +70,7 @@ public class LimitChatUiStateMachine$BaseState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.match.LimitChatUiStateMachine.BaseState
  * JD-Core Version:    0.7.0.1
  */

@@ -2,32 +2,32 @@ package com.tencent.mobileqq.msgbackup.data;
 
 public class MsgBackupConfirmQrRsp$Builder
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private MsgBackupUserData c;
+  private int d;
   
   public Builder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     return this;
   }
   
   public Builder a(MsgBackupUserData paramMsgBackupUserData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.c = paramMsgBackupUserData;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public MsgBackupConfirmQrRsp a()
   {
-    return new MsgBackupConfirmQrRsp(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+    return new MsgBackupConfirmQrRsp(this.a, this.b, this.c, this.d);
   }
   
   public Builder b(String paramString)
@@ -38,7 +38,7 @@ public class MsgBackupConfirmQrRsp$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupConfirmQrRsp.Builder
  * JD-Core Version:    0.7.0.1
  */

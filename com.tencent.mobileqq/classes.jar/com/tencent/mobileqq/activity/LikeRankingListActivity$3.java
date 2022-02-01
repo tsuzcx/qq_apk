@@ -22,7 +22,7 @@ class LikeRankingListActivity$3
     if ((paramBoolean) && ((paramObject instanceof Card)))
     {
       paramObject = (Card)paramObject;
-      if (paramObject.uin.equals(this.a.b)) {
+      if (paramObject.uin.equals(this.a.g)) {
         this.a.app.execute(new LikeRankingListActivity.3.1(this, paramObject));
       }
     }
@@ -30,7 +30,7 @@ class LikeRankingListActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.3
  * JD-Core Version:    0.7.0.1
  */

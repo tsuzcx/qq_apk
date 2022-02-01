@@ -15,13 +15,13 @@ public class OneFeedNodeInfoPullHandler$RequestFeedObserver
   {
     super.onNext(paramHomeFeedData);
     SLog.b("Q.qqstory.home.data:OneFeedNodeInfoPullHandler", "refresh data finish %s", paramHomeFeedData);
-    if (paramHomeFeedData.b.size() == 0)
+    if (paramHomeFeedData.f.size() == 0)
     {
       SLog.d("Q.qqstory.home.data:OneFeedNodeInfoPullHandler", "error size");
       return;
     }
     OneFeedNodeInfoPullHandler.SingleFeedInfoEvent localSingleFeedInfoEvent = new OneFeedNodeInfoPullHandler.SingleFeedInfoEvent();
-    localSingleFeedInfoEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed = ((StoryHomeFeed)paramHomeFeedData.b.get(0));
+    localSingleFeedInfoEvent.a = ((StoryHomeFeed)paramHomeFeedData.f.get(0));
     StoryDispatcher.a().dispatch(localSingleFeedInfoEvent);
   }
   
@@ -36,7 +36,7 @@ public class OneFeedNodeInfoPullHandler$RequestFeedObserver
     super.onError(paramError);
     paramError = (ErrorMessage)paramError;
     OneFeedNodeInfoPullHandler.SingleFeedInfoEvent localSingleFeedInfoEvent = new OneFeedNodeInfoPullHandler.SingleFeedInfoEvent();
-    localSingleFeedInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramError;
+    localSingleFeedInfoEvent.g = paramError;
     StoryDispatcher.a().dispatch(localSingleFeedInfoEvent);
   }
 }

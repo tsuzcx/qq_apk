@@ -29,23 +29,23 @@ class KanDianViewController$SkinChangedHandler
         if (i != 3) {
           return;
         }
-        if (KanDianViewController.a(localKanDianViewController) != null) {
-          KanDianViewController.a(localKanDianViewController).b();
+        if (KanDianViewController.f(localKanDianViewController) != null) {
+          KanDianViewController.f(localKanDianViewController).b();
         }
       }
-      else if (KanDianViewController.a(localKanDianViewController) != null)
+      else if (KanDianViewController.f(localKanDianViewController) != null)
       {
-        KanDianViewController.a(localKanDianViewController).a(KanDianViewController.a(localKanDianViewController));
+        KanDianViewController.f(localKanDianViewController).a(KanDianViewController.h(localKanDianViewController));
       }
     }
     else {
-      KanDianViewController.a(localKanDianViewController);
+      KanDianViewController.g(localKanDianViewController);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.KanDianViewController.SkinChangedHandler
  * JD-Core Version:    0.7.0.1
  */

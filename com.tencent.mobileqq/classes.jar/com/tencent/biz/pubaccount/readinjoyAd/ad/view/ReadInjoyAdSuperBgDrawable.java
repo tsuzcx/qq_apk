@@ -17,14 +17,14 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadInjoyAdSuperBgDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private Paint a = new Paint();
   private int b = 0;
+  private int c = 0;
+  private Bitmap d;
   
   public ReadInjoyAdSuperBgDrawable(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.a.setAntiAlias(true);
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
       ThreadManager.executeOnSubThread(new ReadInjoyAdSuperBgDrawable.1(this, paramDrawable, paramInt1, paramInt2));
@@ -185,17 +185,17 @@ public class ReadInjoyAdSuperBgDrawable
   
   public void a()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.d;
     if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.d.recycle();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.c = paramInt1;
+    this.b = paramInt2;
+    if (this.d != null)
     {
       invalidateSelf();
       return;
@@ -207,9 +207,9 @@ public class ReadInjoyAdSuperBgDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.d;
     if (localBitmap != null) {
-      paramCanvas.drawBitmap(localBitmap, -this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(localBitmap, -this.c, this.b, this.a);
     }
   }
   
@@ -224,7 +224,7 @@ public class ReadInjoyAdSuperBgDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyAdSuperBgDrawable
  * JD-Core Version:    0.7.0.1
  */

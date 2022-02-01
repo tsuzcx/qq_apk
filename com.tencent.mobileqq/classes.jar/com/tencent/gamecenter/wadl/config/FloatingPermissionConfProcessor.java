@@ -12,7 +12,7 @@ public class FloatingPermissionConfProcessor
 {
   public static FloatingPermissionConfBean a()
   {
-    FloatingPermissionConfBean localFloatingPermissionConfBean = (FloatingPermissionConfBean)QConfigManager.a().a(737);
+    FloatingPermissionConfBean localFloatingPermissionConfBean = (FloatingPermissionConfBean)QConfigManager.b().b(737);
     if ((QLog.isColorLevel()) && (localFloatingPermissionConfBean != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -99,7 +99,7 @@ public class FloatingPermissionConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.config.FloatingPermissionConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ class ChatHistoryImageView$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    if ((this.a.k != null) && (this.a.k.isShowing()))
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask.a(false);
+      this.a.k.cancel();
+      if (this.a.x != null) {
+        this.a.x.a(false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.6
  * JD-Core Version:    0.7.0.1
  */

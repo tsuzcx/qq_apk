@@ -11,14 +11,14 @@ class DiscussionInfoCardActivity$11$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
-      this.a.a.a.dismiss();
+    if ((this.a.a.j != null) && (this.a.a.j.isShowing()) && (this.a.a.j.getWindow() != null)) {
+      this.a.a.j.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ import java.io.File;
 public class GifImageWithText
   extends NativeGifImage
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ZhituTextManager.DrawTextParam jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam;
-  private boolean jdField_a_of_type_Boolean = false;
+  private ZhituTextManager.DrawTextParam a;
   private Paint b;
+  private Paint c;
+  private boolean d = false;
   
   public GifImageWithText(File paramFile, boolean paramBoolean, float paramFloat)
   {
@@ -23,7 +23,7 @@ public class GifImageWithText
   
   private void a(Canvas paramCanvas, Rect paramRect)
   {
-    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (!this.d))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" dst rect is ");
@@ -33,43 +33,43 @@ public class GifImageWithText
       localStringBuilder.append(" / ");
       localStringBuilder.append(getHeight());
       QLog.d("ZhituManager", 2, localStringBuilder.toString());
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
     }
     float f2 = paramRect.width() / getWidth();
     float f1;
     if (Math.abs(f2 - 1.0F) < 0.01D)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint;
-        this.b = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b;
+        this.b = this.a.c;
+        this.c = this.a.d;
       }
       f1 = 1.0F;
     }
     else
     {
       f1 = f2;
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f2);
+        this.b = new Paint(this.a.c);
+        this.b.setTextSize(this.a.c.getTextSize() * f2);
         f1 = f2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b != null)
+        if (this.a.d != null)
         {
-          this.b = new Paint(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b);
-          this.b.setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b.getTextSize() * f2);
+          this.c = new Paint(this.a.d);
+          this.c.setTextSize(this.a.d.getTextSize() * f2);
           f1 = f2;
         }
       }
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfFloat.length)
+    while (i < this.a.a.length)
     {
-      f2 = paramRect.top + this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfFloat[i] * f1;
-      if (this.b != null) {
-        paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
+      f2 = paramRect.top + this.a.a[i] * f1;
+      if (this.c != null) {
+        paramCanvas.drawText(this.a.b[i], paramRect.exactCenterX(), f2, this.c);
       }
-      paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText(this.a.b[i], paramRect.exactCenterX(), f2, this.b);
       i += 1;
     }
   }
@@ -77,17 +77,6 @@ public class GifImageWithText
   public int a()
   {
     return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
-  }
-  
-  public Bitmap a()
-  {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
   }
   
   public void a(Canvas paramCanvas)
@@ -109,7 +98,7 @@ public class GifImageWithText
   
   public void a(ZhituTextManager.DrawTextParam paramDrawTextParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam = paramDrawTextParam;
+    this.a = paramDrawTextParam;
   }
   
   public int b()
@@ -122,9 +111,9 @@ public class GifImageWithText
     return this.mCurrentFrameIndex;
   }
   
-  public int d()
+  public Bitmap d()
   {
-    return this.mMetaData[WIDTH_INDEX];
+    return this.mCurrentFrameBitmap;
   }
   
   public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
@@ -138,10 +127,21 @@ public class GifImageWithText
     super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
     a(paramCanvas, paramRect);
   }
+  
+  public void e()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int f()
+  {
+    return this.mMetaData[WIDTH_INDEX];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifImageWithText
  * JD-Core Version:    0.7.0.1
  */

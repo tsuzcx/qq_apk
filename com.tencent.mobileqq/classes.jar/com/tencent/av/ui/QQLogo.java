@@ -3,6 +3,7 @@ package com.tencent.av.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
@@ -35,7 +36,7 @@ public class QQLogo
   {
     boolean bool = false;
     this.a = false;
-    int i = getResources().getDimensionPixelSize(2131298026);
+    int i = getResources().getDimensionPixelSize(2131298696);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("dispearLogo_internal:");
@@ -54,26 +55,6 @@ public class QQLogo
       return;
     }
     d();
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("QQLogo:");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("|");
-    localStringBuilder.append(getVisibility());
-    AVLog.printColorLog("QQLogo", localStringBuilder.toString());
-    if ((getVisibility() == 8) && (!this.a) && (paramBoolean))
-    {
-      b();
-      return;
-    }
-    if ((getVisibility() == 0) && (this.a) && (!paramBoolean)) {
-      a();
-    }
   }
   
   private void b()
@@ -112,6 +93,38 @@ public class QQLogo
     startAnimation(localAlphaAnimation);
   }
   
+  private void setLogoBottomOffset(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setLogoBottomOffset:");
+    ((StringBuilder)localObject).append(paramInt);
+    AVLog.printColorLog("QQLogo", ((StringBuilder)localObject).toString());
+    int i = getResources().getDimensionPixelSize(2131298696);
+    localObject = (RelativeLayout.LayoutParams)getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = (i + paramInt);
+    setLayoutParams((ViewGroup.LayoutParams)localObject);
+  }
+  
+  private void setQQLogoAttr(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQLogo:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append(getVisibility());
+    AVLog.printColorLog("QQLogo", localStringBuilder.toString());
+    if ((getVisibility() == 8) && (!this.a) && (paramBoolean))
+    {
+      b();
+      return;
+    }
+    if ((getVisibility() == 0) && (this.a) && (!paramBoolean)) {
+      a();
+    }
+  }
+  
   public void setQQLogo(boolean paramBoolean, int paramInt)
   {
     if (this.b) {
@@ -126,7 +139,7 @@ public class QQLogo
       }
     }
     else {
-      a(paramBoolean);
+      setQQLogoAttr(paramBoolean);
     }
   }
 }

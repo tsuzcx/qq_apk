@@ -12,45 +12,45 @@ class AVGameControlUI$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.jdField_a_of_type_JavaLangString;
+    String str = this.e.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onClick_Camera, deny, i[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], mRequestPermissionIng[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e.f);
     localStringBuilder.append("], permissions[");
     localStringBuilder.append(QQAudioHelper.a(paramArrayOfString));
     localStringBuilder.append("], grantResults[");
     localStringBuilder.append(QQAudioHelper.a(paramArrayOfInt));
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    paramArrayOfString = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
-    paramArrayOfString.jdField_a_of_type_Boolean = false;
-    paramArrayOfString.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    paramArrayOfString = this.e;
+    paramArrayOfString.f = false;
+    paramArrayOfString.a(this.b, this.a);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.jdField_a_of_type_JavaLangString;
+    String str = this.e.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onClick_Camera, grant, i[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], mRequestPermissionIng[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e.f);
     localStringBuilder.append("], permissions[");
     localStringBuilder.append(QQAudioHelper.a(paramArrayOfString));
     localStringBuilder.append("], grantResults[");
     localStringBuilder.append(QQAudioHelper.a(paramArrayOfInt));
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.jdField_a_of_type_Boolean = false;
-    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString))
+    this.e.f = false;
+    if ("android.permission.CAMERA".equals(this.a))
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView);
+      this.e.a(this.b, this.c, this.d);
       return;
     }
-    if ("android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+    if ("android.permission.RECORD_AUDIO".equals(this.a)) {
+      this.e.b(this.b, this.d);
     }
   }
 }

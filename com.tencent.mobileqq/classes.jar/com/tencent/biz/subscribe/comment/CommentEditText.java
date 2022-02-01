@@ -12,8 +12,8 @@ public class CommentEditText
   extends EditText
   implements ISkinIgnoreTypeface
 {
-  private int jdField_a_of_type_Int = 140;
-  private CommentEditText.OnInputBackListener jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText$OnInputBackListener;
+  private CommentEditText.OnInputBackListener a;
+  private int b = 140;
   
   public CommentEditText(Context paramContext)
   {
@@ -52,12 +52,12 @@ public class CommentEditText
   
   public void setMaxLength(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setOnInputBackListener(CommentEditText.OnInputBackListener paramOnInputBackListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText$OnInputBackListener = paramOnInputBackListener;
+    this.a = paramOnInputBackListener;
   }
 }
 

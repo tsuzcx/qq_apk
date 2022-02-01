@@ -11,12 +11,12 @@ class ForwardNewVersionDialog$1
   public void a(int paramInt, boolean paramBoolean)
   {
     ForwardNewVersionDialog.a(this.a, SoftKeyboardHeight.a(paramInt));
-    ForwardNewVersionDialog.a(this.a).height = ForwardNewVersionDialog.a(this.a);
+    ForwardNewVersionDialog.a(this.a).height = ForwardNewVersionDialog.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.1
  * JD-Core Version:    0.7.0.1
  */

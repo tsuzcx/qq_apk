@@ -10,7 +10,7 @@ class LyricViewController$1
   public void a(int paramInt)
   {
     LyricViewController localLyricViewController = this.a;
-    localLyricViewController.a = true;
+    localLyricViewController.e = true;
     localLyricViewController.c(paramInt);
   }
   
@@ -25,7 +25,7 @@ class LyricViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController.1
  * JD-Core Version:    0.7.0.1
  */

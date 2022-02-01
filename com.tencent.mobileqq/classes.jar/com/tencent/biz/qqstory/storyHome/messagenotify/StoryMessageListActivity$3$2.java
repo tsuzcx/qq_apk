@@ -7,7 +7,7 @@ class StoryMessageListActivity$3$2
   
   public void run()
   {
-    this.a.a.b();
+    this.a.d.b();
   }
 }
 

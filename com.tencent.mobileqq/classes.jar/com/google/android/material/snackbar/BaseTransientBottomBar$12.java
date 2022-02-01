@@ -10,12 +10,12 @@ class BaseTransientBottomBar$12
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar.c(this.jdField_a_of_type_Int);
+    this.b.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.12
  * JD-Core Version:    0.7.0.1
  */

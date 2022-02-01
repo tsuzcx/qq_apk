@@ -32,19 +32,19 @@ public class AutomatorFinish
   
   protected int doStep()
   {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    long l = jdField_a_of_type_Long - this.mAutomator.jdField_a_of_type_Long;
-    DeviceOptSwitch.a |= 0x20;
-    DeviceOptSwitch.e = jdField_a_of_type_Long;
-    this.mAutomator.jdField_a_of_type_Long = 0L;
+    a = System.currentTimeMillis();
+    long l = a - this.mAutomator.a;
+    DeviceOptSwitch.k |= 0x20;
+    DeviceOptSwitch.q = a;
+    this.mAutomator.a = 0L;
     Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_threadOpId", String.valueOf(ThreadOptimizer.a().a()));
-    StatisticCollector.getInstance(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).collectPerformance(null, "actQQInit", true, l, this.mAutomator.b, (HashMap)localObject, null);
+    ((HashMap)localObject).put("param_threadOpId", String.valueOf(ThreadOptimizer.a().c()));
+    StatisticCollector.getInstance(this.mAutomator.k.getApp()).collectPerformance(null, "actQQInit", true, l, this.mAutomator.c, (HashMap)localObject, null);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("QQInitialize, cost=");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append(", totalFailCount=");
-    ((StringBuilder)localObject).append(this.mAutomator.b);
+    ((StringBuilder)localObject).append(this.mAutomator.c);
     Log.i("AutoMonitor", ((StringBuilder)localObject).toString());
     try
     {
@@ -62,7 +62,7 @@ public class AutomatorFinish
     if (i != 0) {}
     try
     {
-      StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "qqDetectAttack", true, 0L, 0L, null, null);
+      StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(this.mAutomator.k.getCurrentUin(), "qqDetectAttack", true, 0L, 0L, null, null);
       localObject = BaseApplicationImpl.sApplication.getSharedPreferences("QQDetectAttack", 0);
       i = ((SharedPreferences)localObject).getInt("AttackCount", 0);
       if (i >= 10)
@@ -75,14 +75,14 @@ public class AutomatorFinish
         int j = BaseApplicationImpl.sApplication.getSharedPreferences("SecSig", 0).getInt("SecResEntry", -1);
         localSignatureKickData.u32_check_result.set(j & 0x12);
         Resources localResources = BaseApplicationImpl.sApplication.getResources();
-        localSignatureKickData.str_right_button.set(localResources.getString(2131691827));
+        localSignatureKickData.str_right_button.set(localResources.getString(2131888790));
         localSignatureKickData.str_url.set("https://im.qq.com");
         localIntent.putExtra("data", localSignatureKickData.toByteArray());
-        localIntent.putExtra("title", localResources.getString(2131719638));
-        localIntent.putExtra("msg", localResources.getString(2131698748));
+        localIntent.putExtra("title", localResources.getString(2131917239));
+        localIntent.putExtra("msg", localResources.getString(2131896706));
         MsfSdkUtils.updateSimpleAccount(this.mAutomator.getCurrentAccountUin(), false);
         BaseApplicationImpl.sApplication.setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-        this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.logout(true);
+        this.mAutomator.k.logout(true);
         localIntent.setFlags(872415232);
         RouteUtils.a(BaseApplicationImpl.sApplication, localIntent, "/base/notification");
       }
@@ -94,9 +94,9 @@ public class AutomatorFinish
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
-      if (DeviceOptSwitch.b)
+      if (DeviceOptSwitch.c)
       {
-        localObject = (IFTSTroopInterface)((IFTSDBRuntimeService)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(2);
+        localObject = (IFTSTroopInterface)((IFTSDBRuntimeService)this.mAutomator.k.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(2);
         if (QLog.isColorLevel()) {
           QLog.d("Perf", 0, "after automator finish,fts get the troop list");
         }
@@ -112,7 +112,7 @@ public class AutomatorFinish
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.AutomatorFinish
  * JD-Core Version:    0.7.0.1
  */

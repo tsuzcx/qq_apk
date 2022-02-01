@@ -34,19 +34,13 @@ public class RunningBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  private boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.J;
-  }
+  public static final int a = BannerTypeCollections.K;
+  private boolean b = true;
   
   public RunningBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -59,16 +53,11 @@ public class RunningBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("RunningBar", 2, "initRunningBar");
     }
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsText(HardCodeUtil.a(2131701149));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsText(HardCodeUtil.a(2131899166));
     paramBanner.b(true);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838319));
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130838367));
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
@@ -106,7 +95,7 @@ public class RunningBannerProcessor
         localObject2 = null;
         if (l == 1L)
         {
-          ((TipsBar)paramBanner.a).setTipsText(HardCodeUtil.a(2131701146));
+          ((TipsBar)paramBanner.c).setTipsText(HardCodeUtil.a(2131899163));
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("&ADTAG=aio.run.click");
@@ -115,7 +104,7 @@ public class RunningBannerProcessor
         }
         if (localLong.longValue() == 2L)
         {
-          ((TipsBar)paramBanner.a).setTipsText(HardCodeUtil.a(2131701138));
+          ((TipsBar)paramBanner.c).setTipsText(HardCodeUtil.a(2131899155));
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("&ADTAG=aio.run.click");
@@ -125,20 +114,20 @@ public class RunningBannerProcessor
         if (localLong.longValue() != 3L) {
           break label608;
         }
-        ((TipsBar)paramBanner.a).setTipsText(str);
+        ((TipsBar)paramBanner.c).setTipsText(str);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append("&ADTAG=qqlist.tongzhi.hongbao.click");
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = ((JSONObject)paramMessage.obj).optString("icon");
-        paramBanner.a.setOnClickListener(new RunningBannerProcessor.1(this, (String)localObject2, localLong, i));
+        paramBanner.c.setOnClickListener(new RunningBannerProcessor.1(this, (String)localObject2, localLong, i));
         if (localLong.longValue() == 3L)
         {
           localObject2 = new LpReportInfo_dc00307(LpReportInfo_dc00307.ACTION_TYPE_RED_PACK, LpReportInfo_dc00307.SUB_ACTION_TYPE_RED_PACK_EXPOSURE, i);
           LpReportManager.getInstance().reportToDC00307((LpReportInfo_dc00307)localObject2, false, true);
         }
-        if ((paramBanner.a instanceof TipsBar)) {
-          ((TipsBar)paramBanner.a).setCloseListener(new RunningBannerProcessor.2(this));
+        if ((paramBanner.c instanceof TipsBar)) {
+          ((TipsBar)paramBanner.c).setCloseListener(new RunningBannerProcessor.2(this));
         }
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
@@ -147,7 +136,7 @@ public class RunningBannerProcessor
           paramMessage = Message.obtain(paramMessage);
           ImageLoader.a().a((String)localObject1, new RunningBannerProcessor.3(this, paramBanner, paramMessage));
         }
-        ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDF", "0X8009EDF", 9, 0, "", "", "", "");
+        ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDF", "0X8009EDF", 9, 0, "", "", "", "");
         return;
       }
       catch (JSONException paramBanner)
@@ -160,7 +149,7 @@ public class RunningBannerProcessor
         if (paramMessage.containsKey("icon"))
         {
           paramMessage = (Bitmap)paramMessage.getParcelable("icon");
-          ((TipsBar)paramBanner.a).setTipsIcon(new BitmapDrawable(paramMessage));
+          ((TipsBar)paramBanner.c).setTipsIcon(new BitmapDrawable(paramMessage));
         }
       }
       return;
@@ -175,27 +164,32 @@ public class RunningBannerProcessor
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b() {}
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
+  }
+  
+  public void d() {}
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 3000) {
-      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
+      BannerManager.a().a(a, 0, paramMessage);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.RunningBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

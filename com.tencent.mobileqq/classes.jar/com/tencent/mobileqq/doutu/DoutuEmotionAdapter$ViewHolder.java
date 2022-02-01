@@ -6,15 +6,15 @@ import com.tencent.image.URLImageView;
 
 class DoutuEmotionAdapter$ViewHolder
 {
-  int jdField_a_of_type_Int;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
+  RelativeLayout a;
+  URLImageView b;
+  ProgressBar c;
+  DoutuData d;
+  int e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

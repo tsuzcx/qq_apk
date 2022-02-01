@@ -23,24 +23,19 @@ import org.json.JSONObject;
 
 public class SoLibraryChecker
 {
-  private static Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private static Map<String, Boolean> f = new ConcurrentHashMap();
+  int a = 0;
+  private Context b;
   private String c;
+  private String d;
+  private String e;
   
   public SoLibraryChecker(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  private DownloaderInterface a()
-  {
-    return ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    this.b = paramContext.getApplicationContext();
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
   }
   
   public static String a(Context paramContext, String paramString)
@@ -55,7 +50,7 @@ public class SoLibraryChecker
   private void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.optInt("code");
-    String str = OfflineEnvHelper.b(this.jdField_a_of_type_JavaLangString);
+    String str = OfflineEnvHelper.c(this.c);
     boolean bool1 = TextUtils.isEmpty(str);
     boolean bool2 = true;
     if (!bool1)
@@ -64,7 +59,7 @@ public class SoLibraryChecker
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(".7z");
         str = ((StringBuilder)localObject).toString();
         bool1 = true;
@@ -75,7 +70,7 @@ public class SoLibraryChecker
         QLog.e("SoLibraryLoader", 1, "do not know what format, use default zip name!");
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(".zip");
         str = ((StringBuilder)localObject).toString();
       }
@@ -83,7 +78,7 @@ public class SoLibraryChecker
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(".zip");
         str = ((StringBuilder)localObject).toString();
         bool1 = false;
@@ -104,26 +99,17 @@ public class SoLibraryChecker
     }
   }
   
-  public static boolean a(Context paramContext, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContext.getFilesDir().getAbsolutePath());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    return new File(localStringBuilder.toString()).exists();
-  }
-  
   private boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     try
     {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.c;
       boolean bool2 = TextUtils.isEmpty(str);
       bool1 = false;
       if (bool2) {
         return false;
       }
-      bool2 = TextUtils.isEmpty(OfflineEnvHelper.b(str));
+      bool2 = TextUtils.isEmpty(OfflineEnvHelper.c(str));
       if (bool2) {
         return false;
       }
@@ -145,7 +131,7 @@ public class SoLibraryChecker
       ((StringBuilder)localObject1).append(File.separator);
       ((StringBuilder)localObject1).append(str);
       localObject1 = ((StringBuilder)localObject1).toString();
-      localObject3 = BidDownloader.a(paramString);
+      localObject3 = BidDownloader.d(paramString);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -268,8 +254,8 @@ public class SoLibraryChecker
   
   private void b()
   {
-    this.jdField_a_of_type_Int = 0;
-    HtmlOffline.a();
+    this.a = 0;
+    HtmlOffline.b();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     boolean bool;
     if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() % 10L == 6L)) {
@@ -277,8 +263,8 @@ public class SoLibraryChecker
     } else {
       bool = false;
     }
-    HtmlOffline.a = bool;
-    Object localObject = HtmlOffline.a(this.jdField_a_of_type_JavaLangString);
+    HtmlOffline.i = bool;
+    Object localObject = HtmlOffline.d(this.c);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -287,57 +273,71 @@ public class SoLibraryChecker
       QLog.d("SoLibraryLoader", 2, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(OfflineEnvHelper.a(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(OfflineEnvHelper.b(this.c));
+    localStringBuilder.append(this.c);
     localStringBuilder.append("/");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     if ((!new File(localStringBuilder.toString()).exists()) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!"0".equals(localObject)))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(OfflineEnvHelper.a(this.jdField_a_of_type_JavaLangString));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(OfflineEnvHelper.b(this.c));
+      ((StringBuilder)localObject).append(this.c);
       FileUtils.deleteDirectory(((StringBuilder)localObject).toString());
     }
     if (localQQAppInterface == null) {
       return;
     }
-    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new SoLibraryChecker.1(this), false);
+    HtmlOffline.a(this.c, localQQAppInterface, new SoLibraryChecker.1(this), false);
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return new File(localStringBuilder.toString()).exists();
   }
   
   private void c()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("https://");
-    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("?_bid=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c);
     localObject = ((StringBuilder)localObject).toString();
     long l = System.currentTimeMillis();
     if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), (String)localObject, new SoLibraryChecker.2(this, l))) && (QLog.isColorLevel()))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("so file = ");
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(" transToLocalUrl: return false");
       QLog.i("SoLibraryLoader", 2, ((StringBuilder)localObject).toString());
     }
   }
   
+  private DownloaderInterface d()
+  {
+    return ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+  }
+  
   public void a()
   {
-    if (!jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    if (!f.containsKey(this.c)) {
+      f.put(this.c, Boolean.valueOf(false));
     }
-    if ((!a(this.jdField_a_of_type_AndroidContentContext, this.b)) || (!((Boolean)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).booleanValue()))
+    if ((!b(this.b, this.d)) || (!((Boolean)f.get(this.c)).booleanValue()))
     {
       b();
-      jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+      f.put(this.c, Boolean.valueOf(true));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoLibraryChecker
  * JD-Core Version:    0.7.0.1
  */

@@ -8,28 +8,28 @@ import android.widget.TextView;
 
 class LinkAdapter$ViewHolder
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  private TextView c;
+  private View a;
+  private CheckBox b;
+  private ImageView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
+  private RelativeLayout g;
   
   public LinkAdapter$ViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369172);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370092));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370099));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378876));
-    this.b = ((TextView)paramView.findViewById(2131365418));
-    this.c = ((TextView)paramView.findViewById(2131371874));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365529));
+    this.a = paramView.findViewById(2131436145);
+    this.b = ((CheckBox)paramView.findViewById(2131437254));
+    this.c = ((ImageView)paramView.findViewById(2131437261));
+    this.d = ((TextView)paramView.findViewById(2131447576));
+    this.e = ((TextView)paramView.findViewById(2131431622));
+    this.f = ((TextView)paramView.findViewById(2131439317));
+    this.g = ((RelativeLayout)paramView.findViewById(2131431747));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.LinkAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

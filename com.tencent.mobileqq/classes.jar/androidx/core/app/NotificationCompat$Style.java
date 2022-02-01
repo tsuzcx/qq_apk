@@ -15,6 +15,11 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.widget.RemoteViews;
 import androidx.annotation.RestrictTo;
+import androidx.core.R.dimen;
+import androidx.core.R.drawable;
+import androidx.core.R.id;
+import androidx.core.R.integer;
+import androidx.core.R.string;
 import androidx.core.graphics.drawable.IconCompat;
 import java.text.NumberFormat;
 
@@ -29,8 +34,8 @@ public abstract class NotificationCompat$Style
   private int calculateTopPadding()
   {
     Resources localResources = this.mBuilder.mContext.getResources();
-    int i = localResources.getDimensionPixelSize(2131297505);
-    int j = localResources.getDimensionPixelSize(2131297506);
+    int i = localResources.getDimensionPixelSize(R.dimen.notification_top_pad);
+    int j = localResources.getDimensionPixelSize(R.dimen.notification_top_pad_large_text);
     float f = (constrain(localResources.getConfiguration().fontScale, 1.0F, 1.3F) - 1.0F) / 0.3F;
     return Math.round((1.0F - f) * i + f * j);
   }
@@ -76,11 +81,12 @@ public abstract class NotificationCompat$Style
   
   private Bitmap createIconWithBackground(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    int j = R.drawable.notification_icon_background;
     int i = paramInt4;
     if (paramInt4 == 0) {
       i = 0;
     }
-    Bitmap localBitmap = createColoredBitmap(2130841465, i, paramInt2);
+    Bitmap localBitmap = createColoredBitmap(j, i, paramInt2);
     Canvas localCanvas = new Canvas(localBitmap);
     Drawable localDrawable = this.mBuilder.mContext.getResources().getDrawable(paramInt1).mutate();
     localDrawable.setFilterBitmap(true);
@@ -94,9 +100,9 @@ public abstract class NotificationCompat$Style
   
   private void hideNormalContent(RemoteViews paramRemoteViews)
   {
-    paramRemoteViews.setViewVisibility(2131378784, 8);
-    paramRemoteViews.setViewVisibility(2131378463, 8);
-    paramRemoteViews.setViewVisibility(2131378460, 8);
+    paramRemoteViews.setViewVisibility(R.id.title, 8);
+    paramRemoteViews.setViewVisibility(R.id.text2, 8);
+    paramRemoteViews.setViewVisibility(R.id.text, 8);
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -110,7 +116,9 @@ public abstract class NotificationCompat$Style
   {
     Resources localResources = this.mBuilder.mContext.getResources();
     RemoteViews localRemoteViews = new RemoteViews(this.mBuilder.mContext.getPackageName(), paramInt);
-    if (this.mBuilder.getPriority() < -1) {
+    paramInt = this.mBuilder.getPriority();
+    int k = 0;
+    if (paramInt < -1) {
       paramInt = 1;
     } else {
       paramInt = 0;
@@ -118,110 +126,116 @@ public abstract class NotificationCompat$Style
     if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 21)) {
       if (paramInt != 0)
       {
-        localRemoteViews.setInt(2131371988, "setBackgroundResource", 2130841460);
-        localRemoteViews.setInt(2131368343, "setBackgroundResource", 2130841468);
+        localRemoteViews.setInt(R.id.notification_background, "setBackgroundResource", R.drawable.notification_bg_low);
+        localRemoteViews.setInt(R.id.icon, "setBackgroundResource", R.drawable.notification_template_icon_low_bg);
       }
       else
       {
-        localRemoteViews.setInt(2131371988, "setBackgroundResource", 2130841459);
-        localRemoteViews.setInt(2131368343, "setBackgroundResource", 2130841467);
+        localRemoteViews.setInt(R.id.notification_background, "setBackgroundResource", R.drawable.notification_bg);
+        localRemoteViews.setInt(R.id.icon, "setBackgroundResource", R.drawable.notification_template_icon_bg);
       }
     }
-    Bitmap localBitmap = this.mBuilder.mLargeIcon;
-    int k = 8;
-    if (localBitmap != null)
+    int i;
+    Object localObject;
+    if (this.mBuilder.mLargeIcon != null)
     {
       if (Build.VERSION.SDK_INT >= 16)
       {
-        localRemoteViews.setViewVisibility(2131368343, 0);
-        localRemoteViews.setImageViewBitmap(2131368343, this.mBuilder.mLargeIcon);
+        localRemoteViews.setViewVisibility(R.id.icon, 0);
+        localRemoteViews.setImageViewBitmap(R.id.icon, this.mBuilder.mLargeIcon);
       }
       else
       {
-        localRemoteViews.setViewVisibility(2131368343, 8);
+        localRemoteViews.setViewVisibility(R.id.icon, 8);
       }
       if ((paramBoolean1) && (this.mBuilder.mNotification.icon != 0))
       {
-        paramInt = localResources.getDimensionPixelSize(2131297500);
-        i = localResources.getDimensionPixelSize(2131297502);
-        if (Build.VERSION.SDK_INT >= 21) {
-          localRemoteViews.setImageViewBitmap(2131376568, createIconWithBackground(this.mBuilder.mNotification.icon, paramInt, paramInt - i * 2, this.mBuilder.getColor()));
-        } else {
-          localRemoteViews.setImageViewBitmap(2131376568, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+        paramInt = localResources.getDimensionPixelSize(R.dimen.notification_right_icon_size);
+        i = localResources.getDimensionPixelSize(R.dimen.notification_small_icon_background_padding);
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          localObject = createIconWithBackground(this.mBuilder.mNotification.icon, paramInt, paramInt - i * 2, this.mBuilder.getColor());
+          localRemoteViews.setImageViewBitmap(R.id.right_icon, (Bitmap)localObject);
         }
-        localRemoteViews.setViewVisibility(2131376568, 0);
+        else
+        {
+          localRemoteViews.setImageViewBitmap(R.id.right_icon, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+        }
+        localRemoteViews.setViewVisibility(R.id.right_icon, 0);
       }
     }
     else if ((paramBoolean1) && (this.mBuilder.mNotification.icon != 0))
     {
-      localRemoteViews.setViewVisibility(2131368343, 0);
+      localRemoteViews.setViewVisibility(R.id.icon, 0);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramInt = localResources.getDimensionPixelSize(2131297497);
-        i = localResources.getDimensionPixelSize(2131297494);
-        j = localResources.getDimensionPixelSize(2131297503);
-        localRemoteViews.setImageViewBitmap(2131368343, createIconWithBackground(this.mBuilder.mNotification.icon, paramInt - i, j, this.mBuilder.getColor()));
+        paramInt = localResources.getDimensionPixelSize(R.dimen.notification_large_icon_width);
+        i = localResources.getDimensionPixelSize(R.dimen.notification_big_circle_margin);
+        j = localResources.getDimensionPixelSize(R.dimen.notification_small_icon_size_as_large);
+        localObject = createIconWithBackground(this.mBuilder.mNotification.icon, paramInt - i, j, this.mBuilder.getColor());
+        localRemoteViews.setImageViewBitmap(R.id.icon, (Bitmap)localObject);
       }
       else
       {
-        localRemoteViews.setImageViewBitmap(2131368343, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+        localRemoteViews.setImageViewBitmap(R.id.icon, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
       }
     }
     if (this.mBuilder.mContentTitle != null) {
-      localRemoteViews.setTextViewText(2131378784, this.mBuilder.mContentTitle);
+      localRemoteViews.setTextViewText(R.id.title, this.mBuilder.mContentTitle);
     }
     if (this.mBuilder.mContentText != null)
     {
-      localRemoteViews.setTextViewText(2131378460, this.mBuilder.mContentText);
-      paramInt = 1;
+      localRemoteViews.setTextViewText(R.id.text, this.mBuilder.mContentText);
+      i = 1;
     }
     else
     {
-      paramInt = 0;
+      i = 0;
     }
     if ((Build.VERSION.SDK_INT < 21) && (this.mBuilder.mLargeIcon != null)) {
-      i = 1;
+      paramInt = 1;
     } else {
-      i = 0;
+      paramInt = 0;
     }
     if (this.mBuilder.mContentInfo != null)
     {
-      localRemoteViews.setTextViewText(2131368773, this.mBuilder.mContentInfo);
-      localRemoteViews.setViewVisibility(2131368773, 0);
+      localRemoteViews.setTextViewText(R.id.info, this.mBuilder.mContentInfo);
+      localRemoteViews.setViewVisibility(R.id.info, 0);
     }
     for (;;)
     {
       i = 1;
       paramInt = 1;
-      break label627;
+      break label658;
       if (this.mBuilder.mNumber <= 0) {
         break;
       }
-      paramInt = localResources.getInteger(2131427376);
-      if (this.mBuilder.mNumber > paramInt) {
-        localRemoteViews.setTextViewText(2131368773, localResources.getString(2131719220));
-      } else {
-        localRemoteViews.setTextViewText(2131368773, NumberFormat.getIntegerInstance().format(this.mBuilder.mNumber));
+      paramInt = localResources.getInteger(R.integer.status_bar_notification_info_maxnum);
+      if (this.mBuilder.mNumber > paramInt)
+      {
+        localRemoteViews.setTextViewText(R.id.info, localResources.getString(R.string.status_bar_notification_info_overflow));
       }
-      localRemoteViews.setViewVisibility(2131368773, 0);
+      else
+      {
+        localObject = NumberFormat.getIntegerInstance();
+        localRemoteViews.setTextViewText(R.id.info, ((NumberFormat)localObject).format(this.mBuilder.mNumber));
+      }
+      localRemoteViews.setViewVisibility(R.id.info, 0);
     }
-    localRemoteViews.setViewVisibility(2131368773, 8);
-    int j = paramInt;
-    paramInt = i;
-    int i = j;
-    label627:
+    localRemoteViews.setViewVisibility(R.id.info, 8);
+    label658:
     if ((this.mBuilder.mSubText != null) && (Build.VERSION.SDK_INT >= 16))
     {
-      localRemoteViews.setTextViewText(2131378460, this.mBuilder.mSubText);
+      localRemoteViews.setTextViewText(R.id.text, this.mBuilder.mSubText);
       if (this.mBuilder.mContentText != null)
       {
-        localRemoteViews.setTextViewText(2131378463, this.mBuilder.mContentText);
-        localRemoteViews.setViewVisibility(2131378463, 0);
+        localRemoteViews.setTextViewText(R.id.text2, this.mBuilder.mContentText);
+        localRemoteViews.setViewVisibility(R.id.text2, 0);
         j = 1;
       }
       else
       {
-        localRemoteViews.setViewVisibility(2131378463, 8);
+        localRemoteViews.setViewVisibility(R.id.text2, 8);
       }
     }
     else
@@ -230,40 +244,45 @@ public abstract class NotificationCompat$Style
     }
     if ((j != 0) && (Build.VERSION.SDK_INT >= 16))
     {
-      if (paramBoolean2) {
-        localRemoteViews.setTextViewTextSize(2131378460, 0, localResources.getDimensionPixelSize(2131297504));
+      if (paramBoolean2)
+      {
+        float f = localResources.getDimensionPixelSize(R.dimen.notification_subtext_size);
+        localRemoteViews.setTextViewTextSize(R.id.text, 0, f);
       }
-      localRemoteViews.setViewPadding(2131370044, 0, 0, 0, 0);
+      localRemoteViews.setViewPadding(R.id.line1, 0, 0, 0, 0);
     }
     if (this.mBuilder.getWhenIfShowing() != 0L)
     {
       if ((this.mBuilder.mUseChronometer) && (Build.VERSION.SDK_INT >= 16))
       {
-        localRemoteViews.setViewVisibility(2131364636, 0);
-        localRemoteViews.setLong(2131364636, "setBase", this.mBuilder.getWhenIfShowing() + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
-        localRemoteViews.setBoolean(2131364636, "setStarted", true);
+        localRemoteViews.setViewVisibility(R.id.chronometer, 0);
+        localRemoteViews.setLong(R.id.chronometer, "setBase", this.mBuilder.getWhenIfShowing() + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
+        localRemoteViews.setBoolean(R.id.chronometer, "setStarted", true);
         if ((this.mBuilder.mChronometerCountDown) && (Build.VERSION.SDK_INT >= 24)) {
-          localRemoteViews.setChronometerCountDown(2131364636, this.mBuilder.mChronometerCountDown);
+          localRemoteViews.setChronometerCountDown(R.id.chronometer, this.mBuilder.mChronometerCountDown);
         }
       }
       else
       {
-        localRemoteViews.setViewVisibility(2131378688, 0);
-        localRemoteViews.setLong(2131378688, "setTime", this.mBuilder.getWhenIfShowing());
+        localRemoteViews.setViewVisibility(R.id.time, 0);
+        localRemoteViews.setLong(R.id.time, "setTime", this.mBuilder.getWhenIfShowing());
       }
       paramInt = 1;
     }
+    int j = R.id.right_side;
     if (paramInt != 0) {
       paramInt = 0;
     } else {
       paramInt = 8;
     }
-    localRemoteViews.setViewVisibility(2131376592, paramInt);
-    paramInt = k;
+    localRemoteViews.setViewVisibility(j, paramInt);
+    j = R.id.line3;
     if (i != 0) {
-      paramInt = 0;
+      paramInt = k;
+    } else {
+      paramInt = 8;
     }
-    localRemoteViews.setViewVisibility(2131370046, paramInt);
+    localRemoteViews.setViewVisibility(j, paramInt);
     return localRemoteViews;
   }
   
@@ -280,11 +299,11 @@ public abstract class NotificationCompat$Style
   public void buildIntoRemoteViews(RemoteViews paramRemoteViews1, RemoteViews paramRemoteViews2)
   {
     hideNormalContent(paramRemoteViews1);
-    paramRemoteViews1.removeAllViews(2131371993);
-    paramRemoteViews1.addView(2131371993, paramRemoteViews2.clone());
-    paramRemoteViews1.setViewVisibility(2131371993, 0);
+    paramRemoteViews1.removeAllViews(R.id.notification_main_column);
+    paramRemoteViews1.addView(R.id.notification_main_column, paramRemoteViews2.clone());
+    paramRemoteViews1.setViewVisibility(R.id.notification_main_column, 0);
     if (Build.VERSION.SDK_INT >= 21) {
-      paramRemoteViews1.setViewPadding(2131371994, 0, calculateTopPadding(), 0, 0);
+      paramRemoteViews1.setViewPadding(R.id.notification_main_column_container, 0, calculateTopPadding(), 0, 0);
     }
   }
   

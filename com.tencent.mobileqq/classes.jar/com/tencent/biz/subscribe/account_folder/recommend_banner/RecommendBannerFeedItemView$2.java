@@ -17,7 +17,7 @@ class RecommendBannerFeedItemView$2
       SimpleEventBus.getInstance().dispatchEvent(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
       return;
     }
-    QQToast.a(this.a.getContext(), 2131719379, 0).a();
+    QQToast.makeText(this.a.getContext(), 2131916934, 0).show();
   }
 }
 

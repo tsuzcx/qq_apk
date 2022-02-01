@@ -27,26 +27,20 @@ import mqq.app.MobileQQ;
 
 public class LocalTbsViewManager
 {
-  private static LocalTbsViewManager jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager;
-  private int jdField_a_of_type_Int = -1;
-  private TbsReaderView jdField_a_of_type_ComTencentTbsReaderTbsReaderView = null;
-  private final HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private TbsReaderView jdField_b_of_type_ComTencentTbsReaderTbsReaderView = null;
-  private boolean jdField_b_of_type_Boolean = false;
+  private static LocalTbsViewManager a;
+  private TbsReaderView b = null;
+  private int c = -1;
+  private TbsReaderView d = null;
+  private boolean e = false;
+  private final HashMap<String, String> f = new HashMap();
+  private boolean g = false;
   
   public static LocalTbsViewManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager == null) {
-      jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager = new LocalTbsViewManager();
+    if (a == null) {
+      a = new LocalTbsViewManager();
     }
-    return jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager;
-  }
-  
-  private void a()
-  {
-    LocalTbsViewManager.3 local3 = new LocalTbsViewManager.3(this);
-    ThreadManagerV2.getUIHandlerV2().post(new LocalTbsViewManager.4(this, local3));
+    return a;
   }
   
   private void a(Context paramContext, String paramString, Bundle paramBundle)
@@ -55,7 +49,7 @@ public class LocalTbsViewManager
     ((Bundle)localObject).putAll(paramBundle);
     ((Bundle)localObject).putString("big_brother_source_key", "biz_src_jc_file");
     paramBundle = new Bundle();
-    paramBundle.putString("_filename_from_dlg", paramContext.getString(2131694576));
+    paramBundle.putString("_filename_from_dlg", paramContext.getString(2131892260));
     paramBundle.putString("big_brother_source_key", "biz_src_jc_file");
     paramBundle.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
     paramBundle.putBundle("_user_data", (Bundle)localObject);
@@ -92,79 +86,55 @@ public class LocalTbsViewManager
     ReportController.b(null, "dc00898", "", "", "0X800B00C", "0X800B00C", i, 0, "", "", "", "");
   }
   
-  public Bundle a(String paramString)
+  private void c()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("filePath", paramString);
-    paramString = FMSettings.a().getDefaultRecvPath();
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getTbsFileReaderOpenParams: barSwitch[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("LocalTbsViewManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    }
-    localBundle.putString("tempPath", paramString);
-    localBundle.putBoolean("file_reader_tool_bar_hide", this.jdField_a_of_type_Boolean ^ true);
-    localBundle.putInt("file_reader_download_type", 1);
-    localBundle.putString("reader_tokenid", "Y29tLnRlbmNlbnQubW9iaWxlcXE=");
-    localBundle.putString("reader_pkgname", "com.tencent.mobileqq");
-    localBundle.putBoolean("file_reader_click_action_disable", true);
-    localBundle.putInt("style", 2);
-    localBundle.putInt("file_reader_bg_content_color", -1);
-    localBundle.putBoolean("file_reader_add_view_to_toolbar", this.jdField_b_of_type_Boolean);
-    localBundle.putString("big_brother_source_key", "biz_src_jc_file");
-    return localBundle;
+    LocalTbsViewManager.3 local3 = new LocalTbsViewManager.3(this);
+    ThreadManagerV2.getUIHandlerV2().post(new LocalTbsViewManager.4(this, local3));
   }
   
   public TbsReaderView a(Activity paramActivity, String paramString, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback)
   {
-    if ((this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
-      return this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+    if ((this.b != null) && (paramActivity.hashCode() == this.c)) {
+      return this.b;
     }
-    if (!FileUtil.a(paramString)) {
+    if (!FileUtil.b(paramString)) {
       return null;
     }
-    Object localObject = this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView;
+    Object localObject = this.d;
     if (localObject != null)
     {
       ((TbsReaderView)localObject).onStop();
-      this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView = null;
+      this.d = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+    localObject = this.b;
     if (localObject != null)
     {
       ((TbsReaderView)localObject).onStop();
-      this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView = null;
+      this.b = null;
     }
     QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: new TbsReaderView");
-    this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView = new TbsReaderView(paramActivity, new LocalTbsViewManager.TbsFileReaderEventCallback(this, paramLocalTbsViewManagerCallback, paramActivity, paramString));
+    this.b = new TbsReaderView(paramActivity, new LocalTbsViewManager.TbsFileReaderEventCallback(this, paramLocalTbsViewManagerCallback, paramActivity, paramString));
     QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: TbsReaderView openFile");
-    this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.setBackgroundColor(-1);
+    this.b.setBackgroundColor(-1);
     localObject = FileUtil.a(paramString);
     paramLocalTbsViewManagerCallback = (LocalTbsViewManager.LocalTbsViewManagerCallback)localObject;
     if (((String)localObject).startsWith(".")) {
       paramLocalTbsViewManagerCallback = ((String)localObject).replaceFirst(".", "");
     }
-    localObject = this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+    localObject = this.b;
     boolean bool = false;
     if (((TbsReaderView)localObject).preOpen(paramLocalTbsViewManagerCallback, false))
     {
-      paramString = a(paramString);
-      if (this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.openFile(paramString) == 0) {
+      paramString = b(paramString);
+      if (this.b.openFile(paramString) == 0) {
         bool = true;
       }
       a(true, bool);
-      this.jdField_a_of_type_Int = paramActivity.hashCode();
-      return this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+      this.c = paramActivity.hashCode();
+      return this.b;
     }
-    this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.onStop();
-    this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView = null;
+    this.b.onStop();
+    this.b = null;
     return null;
   }
   
@@ -180,26 +150,26 @@ public class LocalTbsViewManager
     {
       paramActivity = new StringBuilder();
       paramActivity.append("LocalTbsViewManager destroy hashCode[");
-      paramActivity.append(this.jdField_a_of_type_Int);
+      paramActivity.append(this.c);
       paramActivity.append("],activity[");
       paramActivity.append(i);
       paramActivity.append("]");
       QLog.d("LocalTbsViewManager<FileAssistant>", 4, paramActivity.toString());
     }
-    if (this.jdField_a_of_type_Int != i) {
+    if (this.c != i) {
       return;
     }
-    paramActivity = this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView;
+    paramActivity = this.d;
     if (paramActivity != null)
     {
       paramActivity.onStop();
-      this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView = null;
+      this.d = null;
     }
-    paramActivity = this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+    paramActivity = this.b;
     if (paramActivity != null)
     {
       paramActivity.onStop();
-      this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView = null;
+      this.b = null;
     }
   }
   
@@ -224,17 +194,17 @@ public class LocalTbsViewManager
       QLog.e("LocalTbsViewManager<FileAssistant>", 1, "downloadQQBrowser params null!");
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put("stat_download_start", paramBundle.getString("stat_download_start", ""));
-    this.jdField_a_of_type_JavaUtilHashMap.put("stat_download_downloading", paramBundle.getString("stat_download_downloading", ""));
-    this.jdField_a_of_type_JavaUtilHashMap.put("stat_download_success", paramBundle.getString("stat_download_success", ""));
-    this.jdField_a_of_type_JavaUtilHashMap.put("stat_download_failed", paramBundle.getString("stat_download_failed", ""));
-    this.jdField_a_of_type_JavaUtilHashMap.put("stat_download_installed_success", paramBundle.getString("stat_download_installed_success", ""));
-    this.jdField_a_of_type_JavaUtilHashMap.put("stat_open_qb_success", paramBundle.getString("stat_open_qb_success", ""));
+    this.f.put("stat_download_start", paramBundle.getString("stat_download_start", ""));
+    this.f.put("stat_download_downloading", paramBundle.getString("stat_download_downloading", ""));
+    this.f.put("stat_download_success", paramBundle.getString("stat_download_success", ""));
+    this.f.put("stat_download_failed", paramBundle.getString("stat_download_failed", ""));
+    this.f.put("stat_download_installed_success", paramBundle.getString("stat_download_installed_success", ""));
+    this.f.put("stat_open_qb_success", paramBundle.getString("stat_open_qb_success", ""));
     paramBundle = paramBundle.getString("download_url", "");
     if (((IUniformDownloadMgr)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IUniformDownloadMgr.class, "")).isExistedDownloadOfUrl(paramBundle))
     {
       QLog.w("LocalTbsViewManager<FileAssistant>", 1, "downloadQQBrowser isExistedDownloadOfUrl show toast!");
-      QQToast.a(paramContext, 0, 2131698305, 0).a();
+      QQToast.makeText(paramContext, 0, 2131896206, 0).show();
       return;
     }
     Bundle localBundle = new Bundle();
@@ -294,7 +264,7 @@ public class LocalTbsViewManager
   
   public void a(Object paramObject, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback)
   {
-    paramLocalTbsViewManagerCallback = paramLocalTbsViewManagerCallback.a();
+    paramLocalTbsViewManagerCallback = paramLocalTbsViewManagerCallback.b();
     if (((paramObject instanceof ViewGroup)) && ((paramLocalTbsViewManagerCallback instanceof View))) {
       ((ViewGroup)paramObject).addView(paramLocalTbsViewManagerCallback);
     }
@@ -308,9 +278,9 @@ public class LocalTbsViewManager
     if (((Integer)paramObject).intValue() != 0) {
       return;
     }
-    paramObject = a(paramString);
+    paramObject = b(paramString);
     boolean bool;
-    if (this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.openFile(paramObject) == 0) {
+    if (this.b.openFile(paramObject) == 0) {
       bool = true;
     } else {
       bool = false;
@@ -323,14 +293,14 @@ public class LocalTbsViewManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    String str = (String)this.f.get(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reportQQBrowserDownloadEvent: reportType[");
     localStringBuilder.append(paramString);
     localStringBuilder.append("]");
     QLog.i("LocalTbsViewManager<FileAssistant>", 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView != null) && (!TextUtils.isEmpty(str))) {
-      this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.userStatistics(str);
+    if ((this.b != null) && (!TextUtils.isEmpty(str))) {
+      this.b.userStatistics(str);
     }
     if (paramString.equals("stat_download_success"))
     {
@@ -344,26 +314,21 @@ public class LocalTbsViewManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return ReaderEngine.getInstance().getVersionCode() >= 5060010;
+    this.e = paramBoolean;
   }
   
   public boolean a(Activity paramActivity, String paramString, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback, boolean paramBoolean)
   {
-    if (!a(true)) {
+    if (!c(true)) {
       return false;
     }
-    if (this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView != null)
+    if (this.d != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "canOpenFile return 2-------");
       }
-      this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView.onStop();
-      this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView = null;
+      this.d.onStop();
+      this.d = null;
     }
     if (TextUtils.isEmpty(paramString))
     {
@@ -395,11 +360,51 @@ public class LocalTbsViewManager
     if (QLog.isColorLevel()) {
       QLog.i("LocalTbsViewManager<FileAssistant>", 1, "pre open file true! wait callback!");
     }
-    this.jdField_b_of_type_ComTencentTbsReaderTbsReaderView = localTbsReaderView;
+    this.d = localTbsReaderView;
     return true;
   }
   
-  public boolean a(boolean paramBoolean)
+  public Bundle b(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("filePath", paramString);
+    paramString = FMSettings.a().getDefaultRecvPath();
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTbsFileReaderOpenParams: barSwitch[");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("LocalTbsViewManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    }
+    localBundle.putString("tempPath", paramString);
+    localBundle.putBoolean("file_reader_tool_bar_hide", this.e ^ true);
+    localBundle.putInt("file_reader_download_type", 1);
+    localBundle.putString("reader_tokenid", "Y29tLnRlbmNlbnQubW9iaWxlcXE=");
+    localBundle.putString("reader_pkgname", "com.tencent.mobileqq");
+    localBundle.putBoolean("file_reader_click_action_disable", true);
+    localBundle.putInt("style", 2);
+    localBundle.putInt("file_reader_bg_content_color", -1);
+    localBundle.putBoolean("file_reader_add_view_to_toolbar", this.g);
+    localBundle.putString("big_brother_source_key", "biz_src_jc_file");
+    return localBundle;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.g = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return ReaderEngine.getInstance().getVersionCode() >= 5060010;
+  }
+  
+  public boolean c(boolean paramBoolean)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("tbs reader engine init. isForeground[");
@@ -411,22 +416,17 @@ public class LocalTbsViewManager
     if (paramBoolean)
     {
       QLog.i("LocalTbsViewManager<FileAssistant>", 1, "tbs reader engine had downloaded.");
-      a();
+      c();
       return paramBoolean;
     }
     QLog.i("LocalTbsViewManager<FileAssistant>", 1, "tbs reader engine not download.");
     ReportController.b(null, "dc00898", "", "", "0X800B009", "0X800B009", 0, 0, "", "", "", "");
     return paramBoolean;
   }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileview.LocalTbsViewManager
  * JD-Core Version:    0.7.0.1
  */

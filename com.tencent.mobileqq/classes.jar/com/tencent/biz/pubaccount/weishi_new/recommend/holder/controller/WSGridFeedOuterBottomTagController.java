@@ -13,17 +13,17 @@ import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
 public class WSGridFeedOuterBottomTagController
   extends AbsWsUIGroup<stSimpleMetaFeed>
 {
-  private stVideoTag jdField_a_of_type_UserGrowthStVideoTag;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView g;
+  private stVideoTag h;
   
   public WSGridFeedOuterBottomTagController(Context paramContext)
   {
     super(paramContext);
   }
   
-  private void f()
+  private void l()
   {
-    stVideoTag localstVideoTag = this.jdField_a_of_type_UserGrowthStVideoTag;
+    stVideoTag localstVideoTag = this.h;
     if ((localstVideoTag != null) && (!TextUtils.isEmpty(localstVideoTag.text)))
     {
       Object localObject1;
@@ -56,44 +56,44 @@ public class WSGridFeedOuterBottomTagController
         localObject2 = "#1A000000";
       }
       localGradientDrawable.setColor(Color.parseColor((String)localObject2));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localstVideoTag.text);
-      Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+      this.g.setText(localstVideoTag.text);
+      Object localObject2 = this.g;
       if (!WeishiUIUtil.a((String)localObject1)) {
         localObject1 = "#000000";
       }
       ((TextView)localObject2).setTextColor(Color.parseColor((String)localObject1));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.g.setBackgroundDrawable(localGradientDrawable);
+      this.g.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.g.setVisibility(8);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_UserGrowthStVideoTag = ((stSimpleMetaFeed)a()).bottomTag;
-  }
-  
-  protected int b()
-  {
-    return 2131560421;
+    this.h = ((stSimpleMetaFeed)c()).bottomTag;
   }
   
   protected void b()
   {
-    f();
+    l();
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363770));
+    return 2131626466;
+  }
+  
+  protected void j()
+  {
+    this.g = ((TextView)c(2131429701));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterBottomTagController
  * JD-Core Version:    0.7.0.1
  */

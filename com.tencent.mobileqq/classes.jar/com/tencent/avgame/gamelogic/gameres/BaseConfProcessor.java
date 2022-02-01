@@ -65,9 +65,9 @@ public abstract class BaseConfProcessor<T>
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0)) {
       try
       {
-        int i = paramArrayOfQConfItem[0].jdField_a_of_type_Int;
+        int i = paramArrayOfQConfItem[0].a;
         CJPreloadMonitorReporter.a(type(), i);
-        CJPreloadMonitorReporter.a(type(), MD5.toMD5(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString));
+        CJPreloadMonitorReporter.a(type(), MD5.toMD5(paramArrayOfQConfItem[0].b));
         paramArrayOfQConfItem = a(paramArrayOfQConfItem);
         return paramArrayOfQConfItem;
       }
@@ -76,17 +76,17 @@ public abstract class BaseConfProcessor<T>
         if (localObject != null)
         {
           if ((paramArrayOfQConfItem instanceof JSONException)) {
-            CJPreloadMonitorReporter.a(2, 5, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
+            CJPreloadMonitorReporter.a(2, 5, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
           } else {
-            CJPreloadMonitorReporter.a(2, 4, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
+            CJPreloadMonitorReporter.a(2, 4, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
           }
-          CJPreloadMonitorReporter.a((AppInterface)localObject, 1, 1, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, CJPreloadMonitorReporter.a(type()));
+          CJPreloadMonitorReporter.a((AppInterface)localObject, 1, 1, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, CJPreloadMonitorReporter.b(type()));
         }
         throw new QConfigureException(paramArrayOfQConfItem.getMessage());
       }
     }
     if (localObject != null) {
-      CJPreloadMonitorReporter.a(2, 3, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { "parse config fail!" });
+      CJPreloadMonitorReporter.a(2, 3, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { "parse config fail!" });
     }
     return null;
   }
@@ -120,10 +120,10 @@ public abstract class BaseConfProcessor<T>
       {
         localException.printStackTrace();
       }
-      CJPreloadMonitorReporter.a(2, i, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[0]);
+      CJPreloadMonitorReporter.a(2, i, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[0]);
       if (paramInt != -1)
       {
-        CJPreloadMonitorReporter.a((AppInterface)localObject, 1, 1, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, CJPreloadMonitorReporter.a(type()));
+        CJPreloadMonitorReporter.a((AppInterface)localObject, 1, 1, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, CJPreloadMonitorReporter.b(type()));
         return;
       }
       label162:
@@ -161,7 +161,7 @@ public abstract class BaseConfProcessor<T>
     try
     {
       paramT = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      CJPreloadMonitorReporter.a(paramT, 1, 0, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.a().a(type(), paramT.getCurrentAccountUin()), false, CJPreloadMonitorReporter.a(type()));
+      CJPreloadMonitorReporter.a(paramT, 1, 0, type(), CJPreloadMonitorReporter.a(type()), QConfigManager.b().a(type(), paramT.getCurrentAccountUin()), false, CJPreloadMonitorReporter.b(type()));
       return;
     }
     catch (Throwable paramT)

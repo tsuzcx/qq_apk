@@ -9,14 +9,14 @@ class SwiftFloatViewUI$3
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a != null)) {
-      WebViewUIUtils.b(this.this$0.a.a.getHostActivity());
+    if ((this.this$0.a != null) && (this.this$0.a.r != null)) {
+      WebViewUIUtils.b(this.this$0.a.r.getHostActivity());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI.3
  * JD-Core Version:    0.7.0.1
  */

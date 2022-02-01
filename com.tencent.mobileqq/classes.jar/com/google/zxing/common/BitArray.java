@@ -2,35 +2,35 @@ package com.google.zxing.common;
 
 public final class BitArray
 {
-  private int jdField_a_of_type_Int = 0;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  private int[] a = new int[1];
+  private int b = 0;
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
-    if (paramInt > this.jdField_a_of_type_ArrayOfInt.length << 5)
+    if (paramInt > this.a.length << 5)
     {
-      int[] arrayOfInt1 = a(paramInt);
-      int[] arrayOfInt2 = this.jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt1 = c(paramInt);
+      int[] arrayOfInt2 = this.a;
       System.arraycopy(arrayOfInt2, 0, arrayOfInt1, 0, arrayOfInt2.length);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt1;
+      this.a = arrayOfInt1;
     }
   }
   
-  private static int[] a(int paramInt)
+  private static int[] c(int paramInt)
   {
     return new int[paramInt + 31 >> 5];
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if ((paramInt2 >= 0) && (paramInt2 <= 32))
     {
-      a(this.jdField_a_of_type_Int + paramInt2);
+      b(this.b + paramInt2);
       while (paramInt2 > 0)
       {
         boolean bool = true;
@@ -72,8 +72,8 @@ public final class BitArray
   
   public void a(BitArray paramBitArray)
   {
-    int j = paramBitArray.jdField_a_of_type_Int;
-    a(this.jdField_a_of_type_Int + j);
+    int j = paramBitArray.b;
+    b(this.b + j);
     int i = 0;
     while (i < j)
     {
@@ -84,39 +84,39 @@ public final class BitArray
   
   public void a(boolean paramBoolean)
   {
-    a(this.jdField_a_of_type_Int + 1);
+    b(this.b + 1);
     if (paramBoolean)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      int i = this.jdField_a_of_type_Int;
+      int[] arrayOfInt = this.a;
+      int i = this.b;
       int j = i >> 5;
       arrayOfInt[j] = (1 << (i & 0x1F) | arrayOfInt[j]);
     }
-    this.jdField_a_of_type_Int += 1;
+    this.b += 1;
   }
   
   public boolean a(int paramInt)
   {
-    return (1 << (paramInt & 0x1F) & this.jdField_a_of_type_ArrayOfInt[(paramInt >> 5)]) != 0;
+    return (1 << (paramInt & 0x1F) & this.a[(paramInt >> 5)]) != 0;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int + 7 >> 3;
+    return this.b + 7 >> 3;
   }
   
   public void b(BitArray paramBitArray)
   {
-    if (this.jdField_a_of_type_ArrayOfInt.length == paramBitArray.jdField_a_of_type_ArrayOfInt.length)
+    if (this.a.length == paramBitArray.a.length)
     {
       int i = 0;
       for (;;)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        int[] arrayOfInt = this.a;
         if (i >= arrayOfInt.length) {
           break;
         }
-        arrayOfInt[i] ^= paramBitArray.jdField_a_of_type_ArrayOfInt[i];
+        arrayOfInt[i] ^= paramBitArray.a[i];
         i += 1;
       }
       return;
@@ -130,9 +130,9 @@ public final class BitArray
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder(this.b);
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.b)
     {
       if ((i & 0x7) == 0) {
         localStringBuilder.append(' ');
@@ -151,7 +151,7 @@ public final class BitArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.common.BitArray
  * JD-Core Version:    0.7.0.1
  */

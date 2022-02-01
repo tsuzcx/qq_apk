@@ -54,73 +54,73 @@ class AdProxyImpl$SDKBlockAdView$1
             {
               if (new JSONObject(str1).optJSONArray("pos_ads_info").getJSONObject(0).optInt("ret", -1) != 0)
               {
-                if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null) {
-                  this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
+                if (this.b.b != null) {
+                  this.b.b.onNoAD(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
                 }
                 return;
               }
               paramJSONObject = AdUtils.convertJson2GdtAds(str1);
-              this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.setAdMiniAppInfo(paramJSONObject);
-              this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_JavaUtilArrayList = BlockAdManager.getInstance().getReportUrlList(paramJSONObject);
-              this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView = BlockAdManager.getInstance().genarateBlockAdView(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo);
-              i = this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView.getRealAdNum();
-              j = this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.getRealWidth();
-              int k = this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.getRealHeight();
+              this.b.d.setAdMiniAppInfo(paramJSONObject);
+              this.b.o = BlockAdManager.getInstance().getReportUrlList(paramJSONObject);
+              this.b.c = BlockAdManager.getInstance().genarateBlockAdView(this.a, this.b.d);
+              i = this.b.c.getRealAdNum();
+              j = this.b.d.getRealWidth();
+              int k = this.b.d.getRealHeight();
               if (i < 1)
               {
-                if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener == null) {
+                if (this.b.b == null) {
                   break label544;
                 }
-                this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1009, PluginConst.AdConst.ERROR_MSG_INVALID_POSITION);
+                this.b.b.onNoAD(1009, PluginConst.AdConst.ERROR_MSG_INVALID_POSITION);
                 return;
               }
               if (paramJSONObject != null)
               {
-                if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null) {
-                  this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onADReceive(i, j, k);
+                if (this.b.b != null) {
+                  this.b.b.onADReceive(i, j, k);
                 }
-                AdProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, str1, this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.b);
+                AdProxyImpl.a(this.b.p, str1, this.b.h);
                 return;
               }
-              if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener == null) {
+              if (this.b.b == null) {
                 break label508;
               }
-              this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+              this.b.b.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
               return;
             }
             catch (Throwable paramJSONObject)
             {
               QLog.e("AdProxyImpl", 1, "check adsJson exception:", paramJSONObject);
-              if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener == null) {
+              if (this.b.b == null) {
                 break label545;
               }
             }
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+            this.b.b.onNoAD(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
             return;
           }
         }
-        if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null)
+        if (this.b.b != null)
         {
           j = PluginConst.AdConst.getRetCodeByServerResult(i);
           if (j == -1) {
             break label546;
           }
           i = j;
-          this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(i, str2);
+          this.b.b.onNoAD(i, str2);
           return;
         }
       }
       catch (JSONException paramJSONObject)
       {
         QLog.e("AdProxyImpl", 1, "loadAD, err", paramJSONObject);
-        if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null) {
-          this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        if (this.b.b != null) {
+          this.b.b.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
         }
       }
       label508:
       return;
-      if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null) {
-        this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBlockAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+      if (this.b.b != null) {
+        this.b.b.onNoAD(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
       }
       return;
       paramJSONObject = str1;
@@ -132,7 +132,7 @@ class AdProxyImpl$SDKBlockAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBlockAdView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -81,20 +81,20 @@ class RecommendFriendFragment$1
     }
     if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsMayknowRecommendsAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsMayknowRecommendsAdapter.notifyDataSetChanged();
+      if (this.a.d != null) {
+        this.a.d.notifyDataSetChanged();
       }
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+      if (this.a.b != null)
       {
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+        this.a.b.removeCallbacks(this.a.h);
+        this.a.b.postDelayed(this.a.h, 1600L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.RecommendFriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

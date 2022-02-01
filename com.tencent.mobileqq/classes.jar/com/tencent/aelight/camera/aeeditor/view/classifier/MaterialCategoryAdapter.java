@@ -16,46 +16,46 @@ import java.util.List;
 public class MaterialCategoryAdapter
   extends RecyclerView.Adapter<MaterialCategoryAdapter.CategoryItemVH>
 {
-  private int jdField_a_of_type_Int = 0;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private final MaterialCategoryAdapter.ItemListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter$ItemListener;
-  private final List<MetaCategory> jdField_a_of_type_JavaUtilList;
+  private RecyclerView a;
+  private final List<MetaCategory> b;
+  private final MaterialCategoryAdapter.ItemListener c;
+  private int d = 0;
   
   public MaterialCategoryAdapter(List<MetaCategory> paramList, MaterialCategoryAdapter.ItemListener paramItemListener)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter$ItemListener = paramItemListener;
+    this.b = paramList;
+    this.c = paramItemListener;
   }
   
   public MaterialCategoryAdapter.CategoryItemVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MaterialCategoryAdapter.CategoryItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318604, paramViewGroup, false));
+    return new MaterialCategoryAdapter.CategoryItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056482, paramViewGroup, false));
   }
   
   public void a(int paramInt)
   {
     if (paramInt >= 0) {
-      AdapterUtil.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Int, paramInt);
+      AdapterUtil.a(this.a, this.d, paramInt);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(MaterialCategoryAdapter.CategoryItemVH paramCategoryItemVH, int paramInt)
   {
-    MetaCategory localMetaCategory = (MetaCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter$ItemListener.a(paramInt, localMetaCategory);
+    MetaCategory localMetaCategory = (MetaCategory)this.b.get(paramInt);
+    this.c.a(paramInt, localMetaCategory);
     if (localMetaCategory != null) {
       paramCategoryItemVH.a.setText(localMetaCategory.name);
     }
-    if (this.jdField_a_of_type_Int == paramInt)
+    if (this.d == paramInt)
     {
-      paramCategoryItemVH.a.setTextColor(paramCategoryItemVH.itemView.getContext().getResources().getColor(2131166293));
+      paramCategoryItemVH.a.setTextColor(paramCategoryItemVH.itemView.getContext().getResources().getColor(2131167030));
       paramCategoryItemVH.a.setTypeface(Typeface.defaultFromStyle(1));
     }
     else
     {
-      paramCategoryItemVH.a.setTextColor(paramCategoryItemVH.itemView.getContext().getResources().getColor(2131166295));
+      paramCategoryItemVH.a.setTextColor(paramCategoryItemVH.itemView.getContext().getResources().getColor(2131167032));
       paramCategoryItemVH.a.setTypeface(Typeface.defaultFromStyle(0));
     }
     paramCategoryItemVH.a.setOnClickListener(new MaterialCategoryAdapter.1(this, paramInt, localMetaCategory));
@@ -63,7 +63,7 @@ public class MaterialCategoryAdapter
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
@@ -73,12 +73,12 @@ public class MaterialCategoryAdapter
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.a = paramRecyclerView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialCategoryAdapter
  * JD-Core Version:    0.7.0.1
  */

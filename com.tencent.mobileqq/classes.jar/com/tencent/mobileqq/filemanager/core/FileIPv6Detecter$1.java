@@ -9,13 +9,13 @@ class FileIPv6Detecter$1
   public void run()
   {
     // Byte code:
-    //   0: new 31	java/net/Socket
+    //   0: new 33	java/net/Socket
     //   3: dup
-    //   4: invokespecial 32	java/net/Socket:<init>	()V
+    //   4: invokespecial 34	java/net/Socket:<init>	()V
     //   7: astore 5
     //   9: aload_0
-    //   10: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
-    //   13: getfield 37	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:jdField_a_of_type_Int	I
+    //   10: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:a	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
+    //   13: getfield 39	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:b	I
     //   16: istore_2
     //   17: iload_2
     //   18: istore_1
@@ -24,21 +24,21 @@ class FileIPv6Detecter$1
     //   23: bipush 80
     //   25: istore_1
     //   26: aload 5
-    //   28: new 39	java/net/InetSocketAddress
+    //   28: new 41	java/net/InetSocketAddress
     //   31: dup
     //   32: aload_0
-    //   33: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
-    //   36: invokevirtual 42	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:a	()Ljava/lang/String;
+    //   33: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:a	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
+    //   36: invokevirtual 44	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:a	()Ljava/lang/String;
     //   39: iload_1
-    //   40: invokespecial 45	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
+    //   40: invokespecial 47	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
     //   43: sipush 6000
-    //   46: invokevirtual 49	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   46: invokevirtual 51	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
     //   49: aload 5
-    //   51: invokevirtual 52	java/net/Socket:close	()V
+    //   51: invokevirtual 54	java/net/Socket:close	()V
     //   54: goto +10 -> 64
     //   57: astore 5
     //   59: aload 5
-    //   61: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   61: invokevirtual 57	java/lang/Exception:printStackTrace	()V
     //   64: iconst_0
     //   65: istore_1
     //   66: goto +32 -> 98
@@ -46,129 +46,129 @@ class FileIPv6Detecter$1
     //   71: goto +244 -> 315
     //   74: astore 6
     //   76: aload 6
-    //   78: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   78: invokevirtual 57	java/lang/Exception:printStackTrace	()V
     //   81: aload 5
-    //   83: invokevirtual 52	java/net/Socket:close	()V
+    //   83: invokevirtual 54	java/net/Socket:close	()V
     //   86: goto +10 -> 96
     //   89: astore 5
     //   91: aload 5
-    //   93: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   93: invokevirtual 57	java/lang/Exception:printStackTrace	()V
     //   96: iconst_1
     //   97: istore_1
-    //   98: invokestatic 61	java/lang/System:currentTimeMillis	()J
+    //   98: invokestatic 63	java/lang/System:currentTimeMillis	()J
     //   101: lstore_3
-    //   102: new 63	java/lang/StringBuilder
+    //   102: new 65	java/lang/StringBuilder
     //   105: dup
-    //   106: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   106: invokespecial 66	java/lang/StringBuilder:<init>	()V
     //   109: astore 5
     //   111: aload 5
-    //   113: ldc 66
-    //   115: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc 68
+    //   115: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload 5
     //   121: iload_1
     //   122: iconst_1
     //   123: ixor
-    //   124: invokevirtual 73	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   124: invokevirtual 75	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   127: pop
     //   128: aload 5
-    //   130: ldc 75
-    //   132: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: ldc 77
+    //   132: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: pop
     //   136: aload 5
     //   138: lload_3
     //   139: aload_0
-    //   140: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_Long	J
+    //   140: getfield 22	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:b	J
     //   143: lsub
-    //   144: invokevirtual 78	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   144: invokevirtual 80	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   147: pop
     //   148: aload 5
-    //   150: ldc 80
-    //   152: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc 82
+    //   152: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload 5
     //   158: aload_0
-    //   159: getfield 22	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$DomainInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
-    //   162: getfield 85	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   165: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: getfield 24	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:c	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
+    //   162: getfield 87	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo:a	Ljava/lang/String;
+    //   165: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: pop
     //   169: aload 5
-    //   171: ldc 87
-    //   173: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: ldc 89
+    //   173: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: pop
     //   177: aload 5
     //   179: aload_0
-    //   180: getfield 22	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$DomainInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
-    //   183: getfield 88	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo:jdField_a_of_type_Int	I
-    //   186: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   180: getfield 24	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:c	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
+    //   183: getfield 90	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo:b	I
+    //   186: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   189: pop
     //   190: aload 5
-    //   192: ldc 93
-    //   194: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: ldc 95
+    //   194: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: pop
     //   198: aload 5
     //   200: aload_0
-    //   201: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
-    //   204: getfield 94	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   207: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:a	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
+    //   204: getfield 96	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:a	Ljava/lang/String;
+    //   207: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: pop
     //   211: aload 5
-    //   213: ldc 87
-    //   215: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   213: ldc 89
+    //   215: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   218: pop
     //   219: aload 5
     //   221: aload_0
-    //   222: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
-    //   225: getfield 37	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:jdField_a_of_type_Int	I
-    //   228: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   222: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:a	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
+    //   225: getfield 39	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:b	I
+    //   228: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   231: pop
     //   232: aload 5
-    //   234: ldc 96
-    //   236: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: ldc 98
+    //   236: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: pop
-    //   240: ldc 98
+    //   240: ldc 100
     //   242: iconst_1
     //   243: aload 5
-    //   245: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   248: invokestatic 107	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   245: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   248: invokestatic 109	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   251: aload_0
-    //   252: getfield 16	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:this$0	Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;
+    //   252: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:this$0	Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;
     //   255: aload_0
-    //   256: getfield 22	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$DomainInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
-    //   259: invokestatic 112	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter:a	(Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;)Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter$DomainDetectResult;
+    //   256: getfield 24	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:c	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
+    //   259: invokestatic 114	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter:a	(Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;)Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter$DomainDetectResult;
     //   262: astore 5
     //   264: aload 5
     //   266: ifnull +48 -> 314
     //   269: aload 5
     //   271: iconst_0
-    //   272: putfield 118	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$DomainDetectResult:b	Z
+    //   272: putfield 119	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$DomainDetectResult:b	Z
     //   275: aload 5
     //   277: iload_1
     //   278: iconst_1
     //   279: ixor
-    //   280: putfield 120	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$DomainDetectResult:a	Z
+    //   280: putfield 121	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$DomainDetectResult:a	Z
     //   283: aload_0
-    //   284: getfield 16	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:this$0	Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;
+    //   284: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:this$0	Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;
     //   287: iload_1
     //   288: iconst_1
     //   289: ixor
     //   290: aload_0
-    //   291: getfield 22	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$DomainInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
-    //   294: getfield 85	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   291: getfield 24	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:c	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo;
+    //   294: getfield 87	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$DomainInfo:a	Ljava/lang/String;
     //   297: aload_0
-    //   298: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
-    //   301: invokevirtual 42	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:a	()Ljava/lang/String;
+    //   298: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:a	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
+    //   301: invokevirtual 44	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:a	()Ljava/lang/String;
     //   304: aload_0
-    //   305: getfield 18	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileIPv6StrateyController$IPInfo	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
-    //   308: getfield 37	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:jdField_a_of_type_Int	I
-    //   311: invokestatic 123	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter:a	(Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;ZLjava/lang/String;Ljava/lang/String;I)V
+    //   305: getfield 20	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter$1:a	Lcom/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo;
+    //   308: getfield 39	com/tencent/mobileqq/filemanager/core/FileIPv6StrateyController$IPInfo:b	I
+    //   311: invokestatic 124	com/tencent/mobileqq/filemanager/core/FileIPv6Detecter:a	(Lcom/tencent/mobileqq/filemanager/core/FileIPv6Detecter;ZLjava/lang/String;Ljava/lang/String;I)V
     //   314: return
     //   315: aload 5
-    //   317: invokevirtual 52	java/net/Socket:close	()V
+    //   317: invokevirtual 54	java/net/Socket:close	()V
     //   320: goto +10 -> 330
     //   323: astore 5
     //   325: aload 5
-    //   327: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   327: invokevirtual 57	java/lang/Exception:printStackTrace	()V
     //   330: aload 6
     //   332: athrow
     // Local variable table:
@@ -198,7 +198,7 @@ class FileIPv6Detecter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6Detecter.1
  * JD-Core Version:    0.7.0.1
  */

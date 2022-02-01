@@ -54,7 +54,7 @@ public class QueryUinFlagReceiver
           int i = paramToServiceMsg.get();
           localBundle.putLong("uin", l);
           localBundle.putInt("safety_flag", i & 0x1F);
-          ((FriendHandler)a()).notifyUI(71, true, localBundle);
+          ((FriendHandler)c()).notifyUI(71, true, localBundle);
           return;
         }
       }
@@ -67,16 +67,16 @@ public class QueryUinFlagReceiver
           paramFromServiceMsg.append(paramToServiceMsg.getMessage());
           QLog.d("QueryUinFlagReceiver", 2, paramFromServiceMsg.toString());
         }
-        ((FriendHandler)a()).notifyUI(71, false, localBundle);
+        ((FriendHandler)c()).notifyUI(71, false, localBundle);
         return;
       }
     }
-    ((FriendHandler)a()).notifyUI(71, false, localBundle);
+    ((FriendHandler)c()).notifyUI(71, false, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.QueryUinFlagReceiver
  * JD-Core Version:    0.7.0.1
  */

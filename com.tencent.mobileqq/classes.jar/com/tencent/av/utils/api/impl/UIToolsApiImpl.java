@@ -81,9 +81,15 @@ public class UIToolsApiImpl
   private Boolean mHasShowDialog;
   private Boolean mHasShowPressSpeakerModeFirstGuider;
   private Boolean mHasShowPressSpeakerModeSecondGuider;
-  private final String sFirstGuiderTag = "press_speak_first_guider";
-  private Boolean sHasRoundedInScreen = null;
-  private final String sSecondGuiderTag = "press_speak_second_guider";
+  private Boolean sHasRoundedInScreen;
+  
+  public UIToolsApiImpl()
+  {
+    Boolean localBoolean = Boolean.valueOf(true);
+    this.mHasShowPressSpeakerModeFirstGuider = localBoolean;
+    this.mHasShowPressSpeakerModeSecondGuider = localBoolean;
+    this.sHasRoundedInScreen = null;
+  }
   
   public void avLog(String paramString1, String paramString2)
   {
@@ -156,7 +162,7 @@ public class UIToolsApiImpl
       if (str != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramAppInterface.getApp().getString(2131694980));
+        localStringBuilder.append(paramAppInterface.getApp().getString(2131892707));
         localStringBuilder.append(str);
         bool1 = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
       }
@@ -215,26 +221,20 @@ public class UIToolsApiImpl
   
   public void clearPressSpeakerGuiderFlag(boolean paramBoolean)
   {
-    Object localObject = Boolean.valueOf(true);
-    if (paramBoolean) {
-      this.mHasShowPressSpeakerModeFirstGuider = ((Boolean)localObject);
-    } else {
-      this.mHasShowPressSpeakerModeSecondGuider = ((Boolean)localObject);
+    Boolean localBoolean = Boolean.valueOf(true);
+    if (paramBoolean)
+    {
+      this.mHasShowPressSpeakerModeFirstGuider = localBoolean;
+      return;
     }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).edit();
-    if (paramBoolean) {
-      localObject = "press_speak_first_guider";
-    } else {
-      localObject = "press_speak_second_guider";
-    }
-    SharedPreUtils.a(localEditor.putBoolean((String)localObject, true));
+    this.mHasShowPressSpeakerModeSecondGuider = localBoolean;
   }
   
   public void clearSpeakerStatus(Context paramContext)
   {
     if (paramContext != null)
     {
-      paramContext = SharedPreUtils.a(paramContext);
+      paramContext = SharedPreUtils.B(paramContext);
       Object localObject = paramContext.edit();
       ((SharedPreferences.Editor)localObject).putBoolean("qav_random_speakeron", false);
       ((SharedPreferences.Editor)localObject).commit();
@@ -257,9 +257,9 @@ public class UIToolsApiImpl
       str = "slide_enable_switch";
     }
     if (paramInt == 1) {
-      UITools.jdField_a_of_type_Int = 0;
+      UITools.c = 0;
     } else {
-      UITools.b = 0;
+      UITools.d = 0;
     }
     SharedPreUtils.a(BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).edit().putInt(str, 0));
   }
@@ -539,7 +539,7 @@ public class UIToolsApiImpl
   
   public void doScreenShareReport(String paramString)
   {
-    doScreenShareReport(paramString, SessionMgr.a().a().d);
+    doScreenShareReport(paramString, SessionMgr.a().b().g);
   }
   
   public void doScreenShareReport(String paramString, int paramInt)
@@ -727,7 +727,7 @@ public class UIToolsApiImpl
     if (bool) {
       return null;
     }
-    Object localObject3 = ((FriendsManager)paramBaseQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString);
+    Object localObject3 = ((FriendsManager)paramBaseQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(paramString);
     Object localObject1 = localObject2;
     if (localObject3 != null)
     {
@@ -757,7 +757,7 @@ public class UIToolsApiImpl
         else
         {
           localObject2 = localObject1;
-          if (PermissionChecker.a().c())
+          if (PermissionChecker.a().e())
           {
             paramBaseQQAppInterface = paramBaseQQAppInterface.queryPhoneContactByUin(paramString);
             localObject2 = localObject1;
@@ -773,15 +773,8 @@ public class UIToolsApiImpl
   
   public boolean getPressSpeakerGuiderFlag(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if (this.mHasShowPressSpeakerModeFirstGuider == null) {
-        this.mHasShowPressSpeakerModeFirstGuider = Boolean.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).getBoolean("press_speak_first_guider", false));
-      }
+    if (paramBoolean) {
       return this.mHasShowPressSpeakerModeFirstGuider.booleanValue();
-    }
-    if (this.mHasShowPressSpeakerModeSecondGuider == null) {
-      this.mHasShowPressSpeakerModeSecondGuider = Boolean.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).getBoolean("press_speak_second_guider", false));
     }
     return this.mHasShowPressSpeakerModeSecondGuider.booleanValue();
   }
@@ -823,7 +816,7 @@ public class UIToolsApiImpl
   
   public String getTimeDesc(String paramString)
   {
-    Object localObject1 = HardCodeUtil.a(2131715644);
+    Object localObject1 = HardCodeUtil.a(2131913112);
     Object localObject2 = paramString.split(":");
     int i = localObject2.length;
     int k = 0;
@@ -857,7 +850,7 @@ public class UIToolsApiImpl
       paramString = new StringBuilder();
       paramString.append((String)localObject1);
       paramString.append(k);
-      paramString.append(HardCodeUtil.a(2131715642));
+      paramString.append(HardCodeUtil.a(2131913110));
       paramString = paramString.toString();
     }
     if (j > 0)
@@ -865,7 +858,7 @@ public class UIToolsApiImpl
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(j);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131715641));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131913109));
       paramString = ((StringBuilder)localObject1).toString();
     }
     localObject1 = paramString;
@@ -874,7 +867,7 @@ public class UIToolsApiImpl
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(i);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131715640));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131913108));
       localObject1 = ((StringBuilder)localObject1).toString();
     }
     return localObject1;
@@ -913,19 +906,19 @@ public class UIToolsApiImpl
     boolean bool1 = false;
     if (paramInt == 1)
     {
-      if (UITools.jdField_a_of_type_Int == -1) {
-        UITools.jdField_a_of_type_Int = BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).getInt("grid_enable_switch", 1);
+      if (UITools.c == -1) {
+        UITools.c = BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).getInt("grid_enable_switch", 1);
       }
-      if (UITools.jdField_a_of_type_Int == 1) {
+      if (UITools.c == 1) {
         bool1 = true;
       }
       return bool1;
     }
-    if (UITools.b == -1) {
-      UITools.b = BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).getInt("slide_enable_switch", 1);
+    if (UITools.d == -1) {
+      UITools.d = BaseApplicationImpl.getApplication().getSharedPreferences("UIToolsApiImpl", 4).getInt("slide_enable_switch", 1);
     }
     bool1 = bool2;
-    if (UITools.b == 1) {
+    if (UITools.d == 1) {
       bool1 = true;
     }
     return bool1;
@@ -1232,7 +1225,7 @@ public class UIToolsApiImpl
   
   public void setAccText(View paramView, String paramString)
   {
-    if (UITools.jdField_a_of_type_Boolean)
+    if (UITools.b)
     {
       if (QLog.isColorLevel())
       {
@@ -1251,11 +1244,11 @@ public class UIToolsApiImpl
   
   public void setAccText(View paramView, String paramString, int paramInt)
   {
-    if (UITools.jdField_a_of_type_Boolean)
+    if (UITools.b)
     {
       String str = paramString;
       if (paramInt == 2) {
-        str = paramString.replace(paramView.getResources().getString(2131695369), HardCodeUtil.a(2131715643));
+        str = paramString.replace(paramView.getResources().getString(2131893110), HardCodeUtil.a(2131913111));
       }
       if (QLog.isColorLevel())
       {
@@ -1364,7 +1357,7 @@ public class UIToolsApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.utils.api.impl.UIToolsApiImpl
  * JD-Core Version:    0.7.0.1
  */

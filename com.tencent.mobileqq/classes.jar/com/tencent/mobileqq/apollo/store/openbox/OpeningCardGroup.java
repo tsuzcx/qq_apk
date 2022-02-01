@@ -18,18 +18,18 @@ public class OpeningCardGroup
   extends MultilScreenlLayout
   implements Handler.Callback
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  private IApolloOpenBoxListener jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private int b;
+  private IApolloOpenBoxListener b;
+  private AnimationSet c;
+  private float d;
+  private int e;
+  private int f;
+  private WeakReferenceHandler g;
   
   public OpeningCardGroup(Context paramContext, IApolloOpenBoxListener paramIApolloOpenBoxListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener = paramIApolloOpenBoxListener;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.b = paramIApolloOpenBoxListener;
+    this.g = new WeakReferenceHandler(Looper.getMainLooper(), this);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -39,31 +39,31 @@ public class OpeningCardGroup
     while (i < j)
     {
       View localView = super.getChildAt(i);
-      float f = this.jdField_a_of_type_Float;
+      float f1 = this.d;
       AnimationSet localAnimationSet = new AnimationSet(false);
-      Object localObject = new ScaleAnimation(1.0F, f, 1.0F, f, 1, 0.5F, 1, 0.5F);
+      Object localObject = new ScaleAnimation(1.0F, f1, 1.0F, f1, 1, 0.5F, 1, 0.5F);
       ((ScaleAnimation)localObject).setDuration(400L);
       localAnimationSet.addAnimation((Animation)localObject);
       localAnimationSet.setFillAfter(true);
-      localObject = new TranslateAnimation(0.0F, paramInt2 * i + paramInt1 - (localView.getLeft() + localView.getWidth() / 2), 0.0F, paramInt3 - this.jdField_a_of_type_Int);
+      localObject = new TranslateAnimation(0.0F, paramInt2 * i + paramInt1 - (localView.getLeft() + localView.getWidth() / 2), 0.0F, paramInt3 - this.e);
       ((TranslateAnimation)localObject).setDuration(400L);
       localAnimationSet.addAnimation((Animation)localObject);
       localView.clearAnimation();
       localView.startAnimation(localAnimationSet);
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(15);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(15, 400L);
+    this.g.removeMessages(15);
+    this.g.sendEmptyMessageDelayed(15, 400L);
   }
   
   public void a(int paramInt1, int paramInt2, ApolloBoxData paramApolloBoxData)
   {
     if (paramApolloBoxData != null)
     {
-      if (paramApolloBoxData.b == null) {
+      if (paramApolloBoxData.n == null) {
         return;
       }
-      int j = Math.min(super.getChildCount(), paramApolloBoxData.b.size());
+      int j = Math.min(super.getChildCount(), paramApolloBoxData.n.size());
       int i = 0;
       while (i < j)
       {
@@ -73,7 +73,7 @@ public class OpeningCardGroup
         localLayoutParams.width = paramInt1;
         localLayoutParams.height = paramInt2;
         if ((localView instanceof ApolloCardLayout)) {
-          ((ApolloCardLayout)localView).a(1, (ApolloBoxData.ApolloBoxDataItem)paramApolloBoxData.b.get(i), paramInt1, paramInt2);
+          ((ApolloCardLayout)localView).a(1, (ApolloBoxData.ApolloBoxDataItem)paramApolloBoxData.n.get(i), paramInt1, paramInt2);
         }
         i += 1;
       }
@@ -88,16 +88,16 @@ public class OpeningCardGroup
     super.clearAnimation();
     super.setLayoutStyle(0);
     super.setCurrentFrame(0);
-    float f = paramInt3;
-    paramInt4 = (int)(0.706F * f);
+    float f1 = paramInt3;
+    paramInt4 = (int)(0.706F * f1);
     int i = paramInt4 * 760 / 530;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.d = 1.0F;
+    this.f = paramInt1;
+    this.e = paramInt2;
     int j = Math.min(paramList1.size(), paramList.size());
     if (j == 1)
     {
-      this.jdField_a_of_type_Float = 1.818182F;
+      this.d = 1.818182F;
       paramInt4 = (int)(paramInt4 * 0.55F);
       i = (int)(i * 0.55F);
       paramList1 = (ApolloCardLayout)paramList1.get(0);
@@ -111,10 +111,10 @@ public class OpeningCardGroup
     }
     if (j == 2)
     {
-      this.jdField_a_of_type_Float = 1.818182F;
+      this.d = 1.818182F;
       paramInt4 = (int)(paramInt4 * 0.55F);
       i = (int)(i * 0.55F);
-      j = (int)(f * 0.016F);
+      j = (int)(f1 * 0.016F);
       localApolloCardLayout = (ApolloCardLayout)paramList1.get(0);
       localApolloCardLayout.a(2, (ApolloBoxData.ApolloBoxDataItem)paramList.get(0), paramInt4, i);
       localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
@@ -135,7 +135,7 @@ public class OpeningCardGroup
     }
     if (j == 3)
     {
-      this.jdField_a_of_type_Float = 2.631579F;
+      this.d = 2.631579F;
       paramInt4 = (int)(paramInt4 * 0.38F);
       i = (int)(i * 0.38F);
       localApolloCardLayout = (ApolloCardLayout)paramList1.get(0);
@@ -164,10 +164,10 @@ public class OpeningCardGroup
       super.addView(paramList1, paramList);
       return;
     }
-    this.jdField_a_of_type_Float = 3.571429F;
+    this.d = 3.571429F;
     paramInt4 = (int)(paramInt4 * 0.28F);
     i = (int)(i * 0.28F);
-    j = (int)(f * 0.008F);
+    j = (int)(f1 * 0.008F);
     ApolloCardLayout localApolloCardLayout = (ApolloCardLayout)paramList1.get(0);
     localApolloCardLayout.a(4, (ApolloBoxData.ApolloBoxDataItem)paramList.get(0), paramInt4, i);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
@@ -204,29 +204,29 @@ public class OpeningCardGroup
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener = null;
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultilScreenlLayout$OnClickScrollLayoutListener = null;
+      this.b = null;
+      this.a = null;
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
+      this.c = new AnimationSet(true);
       ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 0.25F, 0.0F, 0.25F, 1, 0.5F, 1, 0.5F);
       localScaleAnimation.setDuration(150L);
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(localScaleAnimation);
+      this.c.addAnimation(localScaleAnimation);
       localScaleAnimation = new ScaleAnimation(1.0F, 4.0F, 1.0F, 4.0F, 1, 0.5F, 1, 0.5F);
       localScaleAnimation.setDuration(150L);
       localScaleAnimation.setStartOffset(450L);
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(localScaleAnimation);
+      this.c.addAnimation(localScaleAnimation);
     }
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.reset();
-    super.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    this.c.reset();
+    super.startAnimation(this.c);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -246,7 +246,7 @@ public class OpeningCardGroup
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloCardWindow", 2, "MSG_CODE_ANIMATION_END");
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener;
+    paramMessage = this.b;
     if (paramMessage != null) {
       paramMessage.a(10, 0, 0);
     }
@@ -255,7 +255,7 @@ public class OpeningCardGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.OpeningCardGroup
  * JD-Core Version:    0.7.0.1
  */

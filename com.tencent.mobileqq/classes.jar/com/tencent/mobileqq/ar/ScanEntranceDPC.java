@@ -8,164 +8,164 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ScanEntranceDPC
 {
-  private static ScanEntranceDPC a;
-  public float a;
-  public int a;
+  private static ScanEntranceDPC l;
   public boolean a;
   public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
+  public float c;
   public boolean d;
-  public boolean e;
+  public int e;
   public boolean f;
   public boolean g;
+  public int h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
   
   public static ScanEntranceDPC a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArScanEntranceDPC == null)
+    if (l == null)
     {
-      jdField_a_of_type_ComTencentMobileqqArScanEntranceDPC = new ScanEntranceDPC();
-      jdField_a_of_type_ComTencentMobileqqArScanEntranceDPC.a();
+      l = new ScanEntranceDPC();
+      l.b();
     }
-    return jdField_a_of_type_ComTencentMobileqqArScanEntranceDPC;
+    return l;
   }
   
-  private void a()
+  private void b()
   {
-    long l = System.currentTimeMillis();
-    b();
+    long l1 = System.currentTimeMillis();
+    c();
     Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.ARCfg.name());
     QLog.d("ScanEntranceDPC", 1, String.format("loadDPC dpcValue=%s", new Object[] { localObject }));
     boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-    int k = -1;
-    int m = k;
-    int j;
+    int i1 = -1;
+    int i2 = i1;
+    int n;
     if (!bool) {
-      j = k;
+      n = i1;
     }
     for (;;)
     {
       try
       {
         localObject = ((String)localObject).split("\\|");
-        j = k;
+        n = i1;
         if (localObject.length >= 9)
         {
-          j = k;
+          n = i1;
           if (Integer.valueOf(localObject[1]).intValue() != 1) {
             break label713;
           }
           bool = true;
-          j = k;
-          this.jdField_a_of_type_Boolean = bool;
-          j = k;
-          int i = Integer.valueOf(localObject[2]).intValue();
-          if (i >= 0)
+          n = i1;
+          this.a = bool;
+          n = i1;
+          int m = Integer.valueOf(localObject[2]).intValue();
+          if (m >= 0)
           {
-            j = k;
-            this.jdField_a_of_type_Int = i;
+            n = i1;
+            this.b = m;
           }
-          j = k;
+          n = i1;
           float f1 = Float.valueOf(localObject[3]).floatValue();
           if ((f1 >= 0.05F) && (f1 <= 0.95F))
           {
-            j = k;
-            this.jdField_a_of_type_Float = f1;
+            n = i1;
+            this.c = f1;
           }
-          j = k;
+          n = i1;
           if (Integer.valueOf(localObject[4]).intValue() != 1) {
             break label719;
           }
           bool = true;
-          j = k;
-          this.jdField_b_of_type_Boolean = bool;
-          j = k;
-          i = Integer.valueOf(localObject[5]).intValue();
-          if (i >= 0)
+          n = i1;
+          this.d = bool;
+          n = i1;
+          m = Integer.valueOf(localObject[5]).intValue();
+          if (m >= 0)
           {
-            j = k;
-            this.jdField_b_of_type_Int = i;
+            n = i1;
+            this.e = m;
           }
-          j = k;
+          n = i1;
           if (Integer.valueOf(localObject[6]).intValue() != 1) {
             break label725;
           }
           bool = true;
-          j = k;
-          this.jdField_c_of_type_Boolean = bool;
-          j = k;
+          n = i1;
+          this.f = bool;
+          n = i1;
           if (Integer.valueOf(localObject[7]).intValue() != 1) {
             break label731;
           }
           bool = true;
-          j = k;
-          this.d = bool;
-          j = k;
-          i = Integer.valueOf(localObject[8]).intValue();
-          if ((i >= 0) && (i <= 255))
+          n = i1;
+          this.g = bool;
+          n = i1;
+          m = Integer.valueOf(localObject[8]).intValue();
+          if ((m >= 0) && (m <= 255))
           {
-            j = k;
-            this.jdField_c_of_type_Int = i;
+            n = i1;
+            this.h = m;
           }
-          j = k;
+          n = i1;
           if (localObject.length >= 12)
           {
-            j = k;
+            n = i1;
             if (Integer.valueOf(localObject[11]).intValue() != 1) {
               break label737;
             }
             bool = true;
-            j = k;
-            this.e = bool;
+            n = i1;
+            this.i = bool;
           }
-          i = k;
-          j = k;
+          m = i1;
+          n = i1;
           if (localObject.length > 12)
           {
-            j = k;
-            i = Integer.valueOf(localObject[12]).intValue();
+            n = i1;
+            m = Integer.valueOf(localObject[12]).intValue();
           }
-          j = i;
+          n = m;
           if (localObject.length >= 18)
           {
-            j = i;
+            n = m;
             if (Integer.valueOf(localObject[17]).intValue() != 1) {
               break label743;
             }
             bool = true;
-            j = i;
-            this.f = bool;
+            n = m;
+            this.j = bool;
           }
-          j = i;
-          m = i;
+          n = m;
+          i2 = m;
           if (localObject.length >= 19)
           {
-            j = i;
+            n = m;
             if (Integer.valueOf(localObject[18]).intValue() != 1) {
               break label749;
             }
             bool = true;
-            j = i;
-            this.g = bool;
-            m = i;
+            n = m;
+            this.k = bool;
+            i2 = m;
           }
         }
         else
         {
-          j = k;
+          n = i1;
           QLog.e("ScanEntranceDPC", 1, "loadDPC dpc length invalid, use default value.");
-          m = k;
+          i2 = i1;
         }
       }
       catch (Exception localException)
       {
         QLog.e("ScanEntranceDPC", 1, "loadDPC fail, use default value.", localException);
-        b();
-        m = j;
+        c();
+        i2 = n;
       }
-      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC mHighPerfDevice=%s mCameraZoom=%s mScanRectRadio=%s mContinuousFocus=%s mARRecogInterval=%s mRecycleFaceResource=%s mRecordEnable=%s mDarkThreshold=%s mNeonCfgSwitch=%s, disableWorldCup=%s mMiniDecodeSwitch=%s mMiniDetectSwitch=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.d), Integer.valueOf(this.jdField_c_of_type_Int), Boolean.valueOf(this.e), Integer.valueOf(m), Boolean.valueOf(this.f), Boolean.valueOf(this.g) }));
-      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC mHighPerfDevice=%s mCameraZoom=%s mScanRectRadio=%s mContinuousFocus=%s mARRecogInterval=%s mRecycleFaceResource=%s mRecordEnable=%s mDarkThreshold=%s mNeonCfgSwitch=%s, disableWorldCup=%s mMiniDecodeSwitch=%s mMiniDetectSwitch=%s", new Object[] { Boolean.valueOf(this.a), Integer.valueOf(this.b), Float.valueOf(this.c), Boolean.valueOf(this.d), Integer.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g), Integer.valueOf(this.h), Boolean.valueOf(this.i), Integer.valueOf(i2), Boolean.valueOf(this.j), Boolean.valueOf(this.k) }));
+      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) }));
       return;
       label713:
       bool = false;
@@ -190,24 +190,24 @@ public class ScanEntranceDPC
     }
   }
   
-  private void b()
+  private void c()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Float = 0.7F;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 500;
-    this.jdField_c_of_type_Boolean = true;
-    this.d = true;
-    this.jdField_c_of_type_Int = 28;
-    this.e = false;
-    this.f = false;
-    this.g = false;
+    this.a = false;
+    this.b = 2;
+    this.c = 0.7F;
+    this.d = false;
+    this.e = 500;
+    this.f = true;
+    this.g = true;
+    this.h = 28;
+    this.i = false;
+    this.j = false;
+    this.k = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceDPC
  * JD-Core Version:    0.7.0.1
  */

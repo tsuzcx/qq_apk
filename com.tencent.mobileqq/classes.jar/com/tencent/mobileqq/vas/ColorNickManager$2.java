@@ -17,9 +17,9 @@ class ColorNickManager$2
       localObject = ColorNickManager.a(this.this$0, (File)localObject, this.a);
       if (localObject != null)
       {
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localObject);
-        if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
-          this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(258);
+        this.this$0.d.put(Integer.valueOf(this.a), localObject);
+        if (this.this$0.c != null) {
+          this.this$0.c.sendEmptyMessage(258);
         }
       }
     }
@@ -31,7 +31,7 @@ class ColorNickManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.2
  * JD-Core Version:    0.7.0.1
  */

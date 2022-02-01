@@ -20,10 +20,10 @@ public class WSServlet
 {
   private String a(WSRequest paramWSRequest)
   {
-    Object localObject = WSConfigManager.a().a();
+    Object localObject = WSConfigManager.a().b();
     boolean bool;
-    if ((localObject != null) && (((WeSeeConfigBean)localObject).a != null)) {
-      bool = ((WeSeeConfigBean)localObject).a.a();
+    if ((localObject != null) && (((WeSeeConfigBean)localObject).d != null)) {
+      bool = ((WeSeeConfigBean)localObject).d.a();
     } else {
       bool = false;
     }
@@ -67,7 +67,7 @@ public class WSServlet
     paramPacket.putSendData((byte[])localObject1);
     paramWSRequest.getTimeRecord().d();
     if (paramWSRequest.isNeedLaunchCalculator()) {
-      WSInitializeHelper.a().a().b();
+      WSInitializeHelper.a().h().b();
     }
   }
   
@@ -117,7 +117,7 @@ public class WSServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSServlet
  * JD-Core Version:    0.7.0.1
  */

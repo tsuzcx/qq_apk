@@ -7,11 +7,6 @@ import org.json.JSONObject;
 public class ReadinjoyPlayerReporter$SkipOneFrameAction
   extends ReadinjoyPlayerReporter.ReportInfoAction
 {
-  public ReadinjoyPlayerReporter$SkipOneFrameAction(ReadinjoyPlayerReporter paramReadinjoyPlayerReporter)
-  {
-    super(paramReadinjoyPlayerReporter);
-  }
-  
   public void a(int paramInt, Object paramObject)
   {
     int i = 0;
@@ -38,10 +33,10 @@ public class ReadinjoyPlayerReporter$SkipOneFrameAction
     if (i > 0)
     {
       paramObject = this.a.a;
-      paramObject.r += i;
+      paramObject.X += i;
     }
     paramObject = this.a.a;
-    paramObject.s += i;
+    paramObject.Y += i;
     if (QLog.isColorLevel())
     {
       paramObject = new StringBuilder();
@@ -50,16 +45,16 @@ public class ReadinjoyPlayerReporter$SkipOneFrameAction
       paramObject.append(", skipFrameCount = ");
       paramObject.append(i);
       paramObject.append(", totalSkipCount = ");
-      paramObject.append(this.a.a.r);
+      paramObject.append(this.a.a.X);
       paramObject.append(", finalSkipCount = ");
-      paramObject.append(this.a.a.s);
+      paramObject.append(this.a.a.Y);
       QLog.d("ReadinjoyPlayerReporter", 2, paramObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.player.ReadinjoyPlayerReporter.SkipOneFrameAction
  * JD-Core Version:    0.7.0.1
  */

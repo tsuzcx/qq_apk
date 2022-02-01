@@ -31,18 +31,18 @@ import java.util.Set;
 public class MagicFaceDataEntity
   extends MagicfaceData
 {
-  int jdField_a_of_type_Int;
-  protected Handler a;
-  VideoController jdField_a_of_type_ComTencentAvVideoController;
   protected VideoAppInterface a;
-  protected MagicFaceDataEntity.MyDataObserver a;
-  MagicFaceDataEntity.MyDownloadListener jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDownloadListener;
-  MagicFaceDataEntity.StopSelfDecorationRunnable jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable;
-  EffectPendantTools jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools;
-  BitSet jdField_a_of_type_JavaUtilBitSet;
-  boolean jdField_a_of_type_Boolean;
-  int[] jdField_a_of_type_ArrayOfInt;
-  boolean b;
+  protected Handler b;
+  protected MagicFaceDataEntity.MyDataObserver c;
+  VideoController d;
+  int[] e;
+  int f;
+  boolean g;
+  boolean h;
+  BitSet i;
+  MagicFaceDataEntity.StopSelfDecorationRunnable j;
+  EffectPendantTools k;
+  MagicFaceDataEntity.MyDownloadListener l;
   
   public MagicFaceDataEntity(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
@@ -55,46 +55,23 @@ public class MagicFaceDataEntity
     paramString2.append("|");
     paramString2.append(paramInt);
     AVLog.printColorLog("MagicFaceDataEntity", paramString2.toString());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.b = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler = new MagicFaceDataEntity.MyHandler(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ArrayOfInt = a();
-    this.jdField_a_of_type_JavaUtilBitSet = new BitSet();
+    this.a = paramVideoAppInterface;
+    this.h = paramBoolean;
+    this.b = new MagicFaceDataEntity.MyHandler(this, Looper.getMainLooper());
+    this.e = h();
+    this.i = new BitSet();
     if ((paramInt & 0x1) != 0) {
-      this.jdField_a_of_type_JavaUtilBitSet.set(0);
+      this.i.set(0);
     }
     if ((paramInt & 0x2) != 0) {
-      this.jdField_a_of_type_JavaUtilBitSet.set(1);
+      this.i.set(1);
     }
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools = ((EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2));
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDownloadListener = new MagicFaceDataEntity.MyDownloadListener(this);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDataObserver = new MagicFaceDataEntity.MyDataObserver(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDataObserver);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  @Nullable
-  private PendantItem a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools;
-    StringBuilder localStringBuilder = null;
-    Iterator localIterator = ((EffectPendantTools)localObject).a(null).iterator();
-    do
-    {
-      localObject = localStringBuilder;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (PendantItem)localIterator.next();
-    } while (!paramString.equals(((PendantItem)localObject).getName()));
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getPtvTemplateInfo 1:");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("|");
-    localStringBuilder.append(localObject);
-    AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    return localObject;
+    this.d = this.a.b();
+    this.k = ((EffectPendantTools)this.a.c(2));
+    this.l = new MagicFaceDataEntity.MyDownloadListener(this);
+    this.c = new MagicFaceDataEntity.MyDataObserver(this);
+    this.a.a(this.c);
+    this.f = 0;
   }
   
   private void a(long paramLong, PendantItem paramPendantItem)
@@ -106,11 +83,11 @@ public class MagicFaceDataEntity
     ((StringBuilder)localObject1).append(paramLong);
     ((StringBuilder)localObject1).append("]");
     QLog.w("MagicFaceDataEntity", 1, ((StringBuilder)localObject1).toString());
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.a(paramLong, paramPendantItem);
+    this.k.a(paramLong, paramPendantItem);
     if (!TextUtils.isEmpty(paramPendantItem.getName()))
     {
-      Object localObject2 = a(paramPendantItem.getName());
-      localObject1 = (MagicfaceDataPendantJason)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+      Object localObject2 = b(paramPendantItem.getName());
+      localObject1 = (MagicfaceDataPendantJason)this.t.get(localObject2);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startSelfDecoration 2:");
       localStringBuilder.append((String)localObject2);
@@ -123,18 +100,10 @@ public class MagicFaceDataEntity
         ((StringBuilder)localObject2).append("startSelfDecoration 3:");
         ((StringBuilder)localObject2).append(((MagicfaceDataPendantJason)localObject1).duration);
         AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject2).toString());
-        int i = ((MagicfaceDataPendantJason)localObject1).duration;
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable = new MagicFaceDataEntity.StopSelfDecorationRunnable(this, paramPendantItem);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable, i);
+        int m = ((MagicfaceDataPendantJason)localObject1).duration;
+        this.j = new MagicFaceDataEntity.StopSelfDecorationRunnable(this, paramPendantItem);
+        this.b.postDelayed(this.j, m);
       }
-    }
-  }
-  
-  private void a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason)
-  {
-    paramMagicfaceDataPendantJason = a(paramMagicfaceDataPendantJason);
-    if (paramMagicfaceDataPendantJason != null) {
-      c(paramMagicfaceDataPendantJason);
     }
   }
   
@@ -152,13 +121,13 @@ public class MagicFaceDataEntity
     boolean bool;
     if (localObject2 != null)
     {
-      paramArrayOfByte = ((Tlv)localObject2).a();
+      paramArrayOfByte = ((Tlv)localObject2).c();
       bool = true;
     }
     else
     {
       if (paramArrayOfByte != null) {
-        paramArrayOfByte = paramArrayOfByte.a();
+        paramArrayOfByte = paramArrayOfByte.c();
       } else {
         paramArrayOfByte = null;
       }
@@ -173,11 +142,11 @@ public class MagicFaceDataEntity
       short s1;
       if (localObject2 != null)
       {
-        localObject2 = ((Tlv)localObject2).a();
-        int i = localObject2[0];
-        s2 = (short)(localObject2[1] & 0xFF | i << 8);
-        i = localObject2[2];
-        s3 = (short)(localObject2[3] & 0xFF | i << 8);
+        localObject2 = ((Tlv)localObject2).c();
+        int m = localObject2[0];
+        s2 = (short)(localObject2[1] & 0xFF | m << 8);
+        m = localObject2[2];
+        s3 = (short)(localObject2[3] & 0xFF | m << 8);
         s4 = (short)(localObject2[4] << 8 | localObject2[5] & 0xFF);
         s1 = (short)(localObject2[6] << 8 | localObject2[7] & 0xFF);
       }
@@ -191,7 +160,7 @@ public class MagicFaceDataEntity
     }
     paramArrayOfByte = (Tlv)((SparseArray)localObject1).get(2);
     if (paramArrayOfByte != null) {
-      a(paramString, ByteBuffer.wrap(paramArrayOfByte.a()).getShort());
+      a(paramString, ByteBuffer.wrap(paramArrayOfByte.c()).getShort());
     }
   }
   
@@ -211,85 +180,40 @@ public class MagicFaceDataEntity
     a((String)paramArrayOfObject[1], (byte[])paramArrayOfObject[2]);
   }
   
-  private boolean a(int paramInt)
+  private void b(MagicfaceDataPendantJason paramMagicfaceDataPendantJason)
   {
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      int i = 0;
-      for (;;)
-      {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-        if (i >= arrayOfInt.length) {
-          break;
-        }
-        if (arrayOfInt[i] == paramInt) {
-          return true;
-        }
-        i += 1;
-      }
+    paramMagicfaceDataPendantJason = a(paramMagicfaceDataPendantJason);
+    if (paramMagicfaceDataPendantJason != null) {
+      f(paramMagicfaceDataPendantJason);
     }
-    return false;
-  }
-  
-  private int[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      int i = this.jdField_a_of_type_JavaUtilMap.size();
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getPendantStartFrames 11:");
-      ((StringBuilder)localObject1).append(i);
-      AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject1).toString());
-      if (i > 0)
-      {
-        localObject1 = new int[i];
-        i = 0;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (Map.Entry)localIterator.next();
-          String str = (String)((Map.Entry)localObject2).getKey();
-          localObject1[i] = ((MagicfaceDataPendantJason)((Map.Entry)localObject2).getValue()).startframe;
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("getPendantStartFrames 22:");
-          ((StringBuilder)localObject2).append(str);
-          ((StringBuilder)localObject2).append("|");
-          ((StringBuilder)localObject2).append(localObject1[i]);
-          AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject2).toString());
-          i += 1;
-        }
-        return localObject1;
-      }
-    }
-    return null;
   }
   
   @Nullable
-  private String b(String paramString)
+  private String d(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
+    if (this.t == null) {
       return null;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    int i = 0;
+    Object localObject = this.t.entrySet().iterator();
+    int m = 0;
     String str;
     if (localObject != null)
     {
       str = null;
-      i = 0;
+      m = 0;
       while (((Iterator)localObject).hasNext())
       {
         MagicfaceDataPendantJason localMagicfaceDataPendantJason = (MagicfaceDataPendantJason)((Map.Entry)((Iterator)localObject).next()).getValue();
         if (!TextUtils.isEmpty(localMagicfaceDataPendantJason.belongto))
         {
-          if ((localMagicfaceDataPendantJason.belongto.equals("sender")) && (this.jdField_a_of_type_JavaUtilBitSet.get(0))) {
+          if ((localMagicfaceDataPendantJason.belongto.equals("sender")) && (this.i.get(0))) {
             str = localMagicfaceDataPendantJason.name;
           }
           for (;;)
           {
-            i += 1;
+            m += 1;
             break;
-            if ((localMagicfaceDataPendantJason.belongto.equals("reciever")) && (this.jdField_a_of_type_JavaUtilBitSet.get(1)))
+            if ((localMagicfaceDataPendantJason.belongto.equals("reciever")) && (this.i.get(1)))
             {
               str = localMagicfaceDataPendantJason.name;
             }
@@ -310,28 +234,28 @@ public class MagicFaceDataEntity
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getDecorateNameById: ");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(m);
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(str);
     AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject).toString());
-    if (i == 1) {
+    if (m == 1) {
       return str;
     }
     return null;
   }
   
-  private void b(String paramString)
+  private void e(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reloadDecrateList 1:");
     localStringBuilder.append(paramString);
     AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    PtvTemplateManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(new MagicFaceDataEntity.1(this, paramString));
+    PtvTemplateManager.a(this.a).a(new MagicFaceDataEntity.1(this, paramString));
   }
   
-  private void c(String paramString)
+  private void f(String paramString)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("startSelfPendant 1:");
@@ -339,10 +263,10 @@ public class MagicFaceDataEntity
     AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject).toString());
     if (paramString != null)
     {
-      localObject = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+      localObject = PtvTemplateManager.a(this.a).d();
       if ((localObject != null) && (((ArrayList)localObject).size() != 0))
       {
-        d(paramString);
+        g(paramString);
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -356,21 +280,41 @@ public class MagicFaceDataEntity
       localStringBuilder.append(bool);
       localStringBuilder.append("]");
       QLog.w("MagicFaceDataEntity", 1, localStringBuilder.toString());
-      b(paramString);
+      e(paramString);
     }
   }
   
-  private void d(String paramString)
+  private boolean f(int paramInt)
   {
-    paramString = a(paramString);
+    if (this.e != null)
+    {
+      int m = 0;
+      for (;;)
+      {
+        int[] arrayOfInt = this.e;
+        if (m >= arrayOfInt.length) {
+          break;
+        }
+        if (arrayOfInt[m] == paramInt) {
+          return true;
+        }
+        m += 1;
+      }
+    }
+    return false;
+  }
+  
+  private void g(String paramString)
+  {
+    paramString = h(paramString);
     if (paramString != null)
     {
-      long l = AudioHelper.b();
-      if (AudioHelper.b())
+      long l1 = AudioHelper.c();
+      if (AudioHelper.e())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("doStartSelfDecoration, seq[");
-        localStringBuilder.append(l);
+        localStringBuilder.append(l1);
         localStringBuilder.append("], target[");
         localStringBuilder.append(paramString);
         localStringBuilder.append("]");
@@ -378,23 +322,65 @@ public class MagicFaceDataEntity
       }
       if (!paramString.isUsable())
       {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.a(l, paramString);
+        this.k.b(l1, paramString);
         return;
       }
-      a(l, paramString);
+      a(l1, paramString);
     }
   }
   
-  protected int a()
+  @Nullable
+  private PendantItem h(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count;
+    Object localObject = this.k;
+    StringBuilder localStringBuilder = null;
+    Iterator localIterator = ((EffectPendantTools)localObject).c(null).iterator();
+    do
+    {
+      localObject = localStringBuilder;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = (PendantItem)localIterator.next();
+    } while (!paramString.equals(((PendantItem)localObject).getName()));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getPtvTemplateInfo 1:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(localObject);
+    AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
+    return localObject;
   }
   
-  public PendantItem a()
+  private int[] h()
   {
-    String str = b(this.jdField_a_of_type_JavaLangString);
-    if (str != null) {
-      return a(str);
+    if (this.t != null)
+    {
+      int m = this.t.size();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getPendantStartFrames 11:");
+      ((StringBuilder)localObject1).append(m);
+      AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject1).toString());
+      if (m > 0)
+      {
+        localObject1 = new int[m];
+        m = 0;
+        Iterator localIterator = this.t.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          String str = (String)((Map.Entry)localObject2).getKey();
+          localObject1[m] = ((MagicfaceDataPendantJason)((Map.Entry)localObject2).getValue()).startframe;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getPendantStartFrames 22:");
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append("|");
+          ((StringBuilder)localObject2).append(localObject1[m]);
+          AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject2).toString());
+          m += 1;
+        }
+        return localObject1;
+      }
     }
     return null;
   }
@@ -409,58 +395,15 @@ public class MagicFaceDataEntity
     return paramMagicfaceDataPendantJason.name;
   }
   
-  String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.endsWith("_mirror")) {
-        str = paramString.substring(0, paramString.length() - 7);
-      }
-    }
-    return str;
-  }
-  
   protected void a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.p);
     localStringBuilder.append("|");
     localStringBuilder.append(this);
     AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2).sendToTarget();
-  }
-  
-  protected void a(int paramInt)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("processStartDecoration:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject1).append("|");
-    ((StringBuilder)localObject1).append(paramInt);
-    ((StringBuilder)localObject1).append("|");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilBitSet.get(0));
-    ((StringBuilder)localObject1).append("|");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilBitSet.get(1));
-    AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject1).toString());
-    localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      String str = (String)((Map.Entry)localObject2).getKey();
-      localObject2 = (MagicfaceDataPendantJason)((Map.Entry)localObject2).getValue();
-      if ((paramInt == ((MagicfaceDataPendantJason)localObject2).startframe) && (!TextUtils.isEmpty(((MagicfaceDataPendantJason)localObject2).belongto))) {
-        if ((((MagicfaceDataPendantJason)localObject2).belongto.equals("sender")) && (this.jdField_a_of_type_JavaUtilBitSet.get(0))) {
-          a((MagicfaceDataPendantJason)localObject2);
-        } else if ((((MagicfaceDataPendantJason)localObject2).belongto.equals("reciever")) && (this.jdField_a_of_type_JavaUtilBitSet.get(1))) {
-          a((MagicfaceDataPendantJason)localObject2);
-        } else if (((MagicfaceDataPendantJason)localObject2).belongto.equals("both")) {
-          a((MagicfaceDataPendantJason)localObject2);
-        }
-      }
-    }
+    this.b.obtainMessage(2).sendToTarget();
   }
   
   protected void a(int paramInt1, int paramInt2)
@@ -472,14 +415,14 @@ public class MagicFaceDataEntity
     localStringBuilder.append(paramInt2);
     localStringBuilder.append("|");
     AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    this.d = paramInt1;
-    if (a(paramInt1))
+    this.w = paramInt1;
+    if (f(paramInt1))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(" inPendantStartFrames:");
       localStringBuilder.append(paramInt1);
       AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, Integer.valueOf(paramInt1)).sendToTarget();
+      this.b.obtainMessage(4, Integer.valueOf(paramInt1)).sendToTarget();
     }
   }
   
@@ -509,29 +452,19 @@ public class MagicFaceDataEntity
         localStringBuilder.append("|");
         localStringBuilder.append(paramString);
         AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-        c(paramInt);
+        d(paramInt);
         return;
       }
       if (paramString.equals("STOP")) {
-        b(paramInt);
+        c(paramInt);
       }
     }
   }
   
   protected void a(PendantItem paramPendantItem)
   {
-    long l = AudioHelper.b();
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.a(l, null);
-  }
-  
-  protected void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      TipsUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1016);
-      return;
-    }
-    TipsUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1016, paramString);
+    long l1 = AudioHelper.c();
+    this.k.a(l1, null);
   }
   
   public void a(String paramString, int paramInt)
@@ -568,77 +501,144 @@ public class MagicFaceDataEntity
     localStringBuilder.append("|");
     localStringBuilder.append(str);
     AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvVideoController.a(6, str);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilBitSet.get(0);
+    this.d.e(6, str);
   }
   
   protected boolean a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin().equals(paramString);
+    return this.a.getCurrentAccountUin().equals(paramString);
+  }
+  
+  String b(String paramString)
+  {
+    String str = paramString;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.endsWith("_mirror")) {
+        str = paramString.substring(0, paramString.length() - 7);
+      }
+    }
+    return str;
   }
   
   protected void b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stop:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.p);
     AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3).sendToTarget();
+    this.b.obtainMessage(3).sendToTarget();
   }
   
   protected void b(int paramInt)
   {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    EffectsRenderController localEffectsRenderController = this.jdField_a_of_type_ComTencentAvVideoController.a(false);
-    if (localEffectsRenderController != null) {
-      localEffectsRenderController.c(paramInt);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("processStartDecoration:");
+    ((StringBuilder)localObject1).append(this.p);
+    ((StringBuilder)localObject1).append("|");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append("|");
+    ((StringBuilder)localObject1).append(this.i.get(0));
+    ((StringBuilder)localObject1).append("|");
+    ((StringBuilder)localObject1).append(this.i.get(1));
+    AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject1).toString());
+    localObject1 = this.t.entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      String str = (String)((Map.Entry)localObject2).getKey();
+      localObject2 = (MagicfaceDataPendantJason)((Map.Entry)localObject2).getValue();
+      if ((paramInt == ((MagicfaceDataPendantJason)localObject2).startframe) && (!TextUtils.isEmpty(((MagicfaceDataPendantJason)localObject2).belongto))) {
+        if ((((MagicfaceDataPendantJason)localObject2).belongto.equals("sender")) && (this.i.get(0))) {
+          b((MagicfaceDataPendantJason)localObject2);
+        } else if ((((MagicfaceDataPendantJason)localObject2).belongto.equals("reciever")) && (this.i.get(1))) {
+          b((MagicfaceDataPendantJason)localObject2);
+        } else if (((MagicfaceDataPendantJason)localObject2).belongto.equals("both")) {
+          b((MagicfaceDataPendantJason)localObject2);
+        }
+      }
     }
-    localSessionInfo.jdField_a_of_type_JavaUtilBitSet.clear(0);
-  }
-  
-  protected void c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("processStart:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this);
-    AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.a(-1041L, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDownloadListener);
   }
   
   protected void c(int paramInt)
   {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    EffectsRenderController localEffectsRenderController = this.jdField_a_of_type_ComTencentAvVideoController.a(true);
+    SessionInfo localSessionInfo = this.d.k();
+    EffectsRenderController localEffectsRenderController = this.d.m(false);
+    if (localEffectsRenderController != null) {
+      localEffectsRenderController.c(paramInt);
+    }
+    localSessionInfo.bG.clear(0);
+  }
+  
+  protected void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      TipsUtil.b(this.a, 1016);
+      return;
+    }
+    TipsUtil.a(this.a, 1016, paramString);
+  }
+  
+  public boolean c()
+  {
+    return this.i.get(0);
+  }
+  
+  protected int d()
+  {
+    return this.r.frame_count;
+  }
+  
+  protected void d(int paramInt)
+  {
+    SessionInfo localSessionInfo = this.d.k();
+    EffectsRenderController localEffectsRenderController = this.d.m(true);
     if (localEffectsRenderController != null) {
       localEffectsRenderController.b(paramInt);
     }
-    localSessionInfo.jdField_a_of_type_JavaUtilBitSet.set(0);
+    localSessionInfo.bG.set(0);
   }
   
-  protected void d()
+  protected void e()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("processStart:");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this);
+    AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
+    this.k.a(-1041L, this.l);
+  }
+  
+  protected void f()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("processStop:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.p);
     AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject).toString());
-    if (a() != null) {
+    if (g() != null) {
       a(null);
     }
-    localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable;
+    localObject = this.j;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable.run();
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable = null;
+      this.b.removeCallbacks((Runnable)localObject);
+      this.j.run();
+      this.j = null;
     }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.b(-1042L, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDownloadListener);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$MyDataObserver);
+    this.k.b(-1042L, this.l);
+    this.a.b(this.c);
+  }
+  
+  public PendantItem g()
+  {
+    String str = d(this.p);
+    if (str != null) {
+      return h(str);
+    }
+    return null;
   }
 }
 

@@ -16,8 +16,8 @@ class DatalineSessionAdapter$3
   
   public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), HardCodeUtil.a(2131694380), HardCodeUtil.a(2131694380));
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800513D", "0X800513D", 0, 0, "", "", "", "");
+    FileManagerUtil.a(this.a.c, this.a.d.getCurrentAccountUin(), HardCodeUtil.a(2131892059), HardCodeUtil.a(2131892059));
+    ReportController.b(this.a.d, "CliOper", "", "", "0X800513D", "0X800513D", 0, 0, "", "", "", "");
   }
   
   public void updateDrawState(TextPaint paramTextPaint)

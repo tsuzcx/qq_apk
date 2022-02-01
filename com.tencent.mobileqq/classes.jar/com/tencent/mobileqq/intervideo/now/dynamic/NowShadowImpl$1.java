@@ -22,7 +22,7 @@ class NowShadowImpl$1
         try
         {
           QLog.i("NowPluginManager", 1, "create PluginManager");
-          NowShadowImpl.a(this.this$0, this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b));
+          NowShadowImpl.a(this.this$0, this.this$0.a(this.a, this.b, this.c));
         }
         catch (ExecutionException localExecutionException)
         {
@@ -54,7 +54,7 @@ class NowShadowImpl$1
       }
       QLog.d("NowPluginManager", 1, "enterShadowSdk start");
       if (NowShadowImpl.a(this.this$0) != null) {
-        NowShadowImpl.a(this.this$0).enter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback);
+        NowShadowImpl.a(this.this$0).enter(this.a, this.d, this.e, this.f);
       }
       return;
     }
@@ -63,7 +63,7 @@ class NowShadowImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1
  * JD-Core Version:    0.7.0.1
  */

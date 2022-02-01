@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/ab3" android:paddingLeft="@dimen/mw" android:paddingTop="@dimen/n2" android:paddingRight="@dimen/mw" android:paddingBottom="@dimen/n2" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:id="@id/og0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:gravity="center" android:id="@id/ofz" android:paddingLeft="@dimen/n3" android:paddingTop="@dimen/nh" android:paddingRight="@dimen/n3" android:paddingBottom="@dimen/nh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/mw" android:layout_alignLeft="@id/odi" android:layout_alignTop="@id/odi" android:layout_alignRight="@id/odi" android:layout_alignBottom="@id/odi" />
+    <com.tencent.mobileqq.now.widget.NiceImageView android:id="@id/odi" android:clickable="false" android:layout_width="fill_parent" android:layout_height="195.0dip" android:scaleType="fitXY" app:corner_radius_value="@dimen/mw" />
 </RelativeLayout>

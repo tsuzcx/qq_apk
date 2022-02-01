@@ -4,7 +4,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJStringUtils;
-import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyTimeUtils;
+import com.tencent.mobileqq.kandian.base.utils.api.impl.ReadInJoyTimeUtilsImpl;
 import com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeSummaryView;
 import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule.RefreshUserInfoCallBack;
 import com.tencent.mobileqq.kandian.glue.utils.Utils;
@@ -14,7 +14,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IArticleViewModelUtil;
 import com.tencent.mobileqq.kandian.repo.handler.BiuCommentInfo;
 import com.tencent.mobileqq.kandian.repo.handler.BiuInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import kotlin.Metadata;
@@ -30,7 +29,7 @@ public final class ArticleViewModelUtilImpl
   public static final ArticleViewModelUtilImpl.Companion Companion = new ArticleViewModelUtilImpl.Companion(null);
   public static final int MAX_LENGTH = 36;
   private static final String TAG = "ArticleViewModelUtilImpl";
-  private final String JUST_MINS = HardCodeUtil.a(2131712679);
+  private final String JUST_MINS = HardCodeUtil.a(2131910257);
   
   @Nullable
   public CharSequence convertBiuTime(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -43,20 +42,20 @@ public final class ArticleViewModelUtilImpl
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
         l1 = l2;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.e > 0) {
-          l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.e;
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.k > 0) {
+          l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.k;
         }
       }
       String str1;
       if (l1 > 0L) {
-        str1 = ((IReadInJoyTimeUtils)QRoute.api(IReadInJoyTimeUtils.class)).getRelativeDisplayForTime(l1, true);
+        str1 = new ReadInJoyTimeUtilsImpl().getRelativeDisplayForTime(l1, true);
       } else {
         str1 = this.JUST_MINS;
       }
       Object localObject;
       if ((isRecommendUnFollowedCard(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null))
       {
-        localObject = paramAbsBaseArticleInfo.mSocialFeedInfo.d;
+        localObject = paramAbsBaseArticleInfo.mSocialFeedInfo.w;
       }
       else
       {
@@ -64,12 +63,12 @@ public final class ArticleViewModelUtilImpl
         if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
         {
           localObject = str2;
-          if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.mSocialFeedInfo.d))
+          if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.mSocialFeedInfo.w))
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append(str1);
             ((StringBuilder)localObject).append(" · ");
-            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSocialFeedInfo.d);
+            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSocialFeedInfo.w);
             localObject = ((StringBuilder)localObject).toString();
           }
         }
@@ -99,7 +98,7 @@ public final class ArticleViewModelUtilImpl
     if (paramAbsBaseArticleInfo != null)
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.h == 1) {
+      if (paramAbsBaseArticleInfo.o == 1) {
         bool1 = true;
       }
     }
@@ -118,22 +117,22 @@ public final class ArticleViewModelUtilImpl
     if (localObject2 != null)
     {
       localObject2 = paramAbsBaseArticleInfo.mSocialFeedInfo;
-      if ((((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a != null) && (((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a.size() > 0) && ((((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a.size() != 1) || ((!TextUtils.isEmpty((CharSequence)((BiuCommentInfo)((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a.get(0)).mBiuComment)) && (!TextUtils.equals((CharSequence)((BiuCommentInfo)((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a.get(0)).mBiuComment, (CharSequence)":")) && (!TextUtils.equals((CharSequence)((BiuCommentInfo)((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a.get(0)).mBiuComment, (CharSequence)"：")))))
+      if ((((SocializeFeedsInfo)localObject2).n != null) && (((SocializeFeedsInfo)localObject2).n.a != null) && (((SocializeFeedsInfo)localObject2).n.a.size() > 0) && ((((SocializeFeedsInfo)localObject2).n.a.size() != 1) || ((!TextUtils.isEmpty((CharSequence)((BiuCommentInfo)((SocializeFeedsInfo)localObject2).n.a.get(0)).mBiuComment)) && (!TextUtils.equals((CharSequence)((BiuCommentInfo)((SocializeFeedsInfo)localObject2).n.a.get(0)).mBiuComment, (CharSequence)":")) && (!TextUtils.equals((CharSequence)((BiuCommentInfo)((SocializeFeedsInfo)localObject2).n.a.get(0)).mBiuComment, (CharSequence)"：")))))
       {
         localObject1 = new SpannableStringBuilder();
-        localObject2 = (CharSequence)SocializeFeedsInfoUtils.a(paramInt, paramAbsBaseArticleInfo, "5", paramRefreshUserInfoCallBack, ((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a);
+        localObject2 = (CharSequence)SocializeFeedsInfoUtils.a(paramInt, paramAbsBaseArticleInfo, "5", paramRefreshUserInfoCallBack, ((SocializeFeedsInfo)localObject2).n.a);
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2);
         }
         localObject1 = (CharSequence)localObject1;
         break label381;
       }
-      if (!TextUtils.isEmpty((CharSequence)((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty((CharSequence)((SocializeFeedsInfo)localObject2).e))
       {
-        if (((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString.length() >= 100)
+        if (((SocializeFeedsInfo)localObject2).e.length() >= 100)
         {
           localObject1 = new StringBuilder();
-          String str = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString;
+          String str = ((SocializeFeedsInfo)localObject2).e;
           Intrinsics.checkExpressionValueIsNotNull(str, "socializeFeedsInfo.mCommentWording");
           if (str != null)
           {
@@ -141,14 +140,14 @@ public final class ArticleViewModelUtilImpl
             Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
             ((StringBuilder)localObject1).append(str);
             ((StringBuilder)localObject1).append('…');
-            ((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+            ((SocializeFeedsInfo)localObject2).e = ((StringBuilder)localObject1).toString();
           }
           else
           {
             throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
           }
         }
-        localObject1 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_JavaLangString;
+        localObject1 = ((SocializeFeedsInfo)localObject2).e;
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "socializeFeedsInfo.mCommentWording");
         localObject1 = (CharSequence)localObject1;
         break label381;
@@ -205,7 +204,7 @@ public final class ArticleViewModelUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.api.impl.ArticleViewModelUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,27 +14,27 @@ class SSOChannel$2
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket;
+      localObject = this.a;
       boolean bool;
       if (localObject != null) {
         bool = ((ResponsePacket)localObject).isSuc.booleanValue();
       } else {
         bool = false;
       }
-      QLog.d("QFlutter.SSOChannel", 2, String.format("notifyResult, cmd: %s, isSuc: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) }));
+      QLog.d("QFlutter.SSOChannel", 2, String.format("notifyResult, cmd: %s, isSuc: %s", new Object[] { this.b, Boolean.valueOf(bool) }));
     }
-    if (this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result != null)
+    if (this.c != null)
     {
-      localObject = ResponsePacket.toMap(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket);
-      this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(localObject);
+      localObject = ResponsePacket.toMap(this.a);
+      this.c.success(localObject);
       return;
     }
-    QLog.d("QFlutter.SSOChannel", 1, String.format("notifyResult, cmd: %s result method is null", new Object[] { this.jdField_a_of_type_JavaLangString }));
+    QLog.d("QFlutter.SSOChannel", 1, String.format("notifyResult, cmd: %s result method is null", new Object[] { this.b }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2
  * JD-Core Version:    0.7.0.1
  */

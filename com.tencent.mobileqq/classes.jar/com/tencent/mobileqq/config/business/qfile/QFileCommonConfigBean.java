@@ -9,8 +9,7 @@ import org.json.JSONObject;
 public class QFileCommonConfigBean
   implements IQStorageSafable<String>
 {
-  public String a;
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
   public boolean c = false;
   public boolean d = false;
@@ -26,12 +25,7 @@ public class QFileCommonConfigBean
   public boolean n = false;
   public boolean o = false;
   public boolean p = false;
-  
-  public QFileCommonConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public String q = "";
   
   private void a(JSONObject paramJSONObject)
   {
@@ -90,13 +84,13 @@ public class QFileCommonConfigBean
     }
     try
     {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("c2c_up");
+      this.a = paramJSONObject.getBoolean("c2c_up");
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("https_c2c_up = ");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.a);
         QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
       }
       this.b = paramJSONObject.getBoolean("c2c_down");
@@ -227,7 +221,7 @@ public class QFileCommonConfigBean
       QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396configContent is empty");
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.q = paramString;
     try
     {
       paramString = new JSONObject(paramString);
@@ -244,7 +238,7 @@ public class QFileCommonConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileCommonConfigBean
  * JD-Core Version:    0.7.0.1
  */

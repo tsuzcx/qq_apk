@@ -22,37 +22,37 @@ import mqq.app.MobileQQ;
 
 public class SosoSrvAddrProvider
 {
-  public static int a;
-  private static SosoSrvAddrProvider jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider;
-  public static int b = jdField_a_of_type_Int + 1;
-  Application jdField_a_of_type_AndroidAppApplication;
-  SosoSrvAddrProvider.SrvAddrChooser jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider$SrvAddrChooser = new SosoSrvAddrProvider.SrvAddrChooser(this);
-  private List<ISvrAddr> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
+  public static int c;
+  public static int d = c + 1;
+  private static SosoSrvAddrProvider g;
+  SosoSrvAddrProvider.SrvAddrChooser a = new SosoSrvAddrProvider.SrvAddrChooser(this);
+  Application b;
+  private List<ISvrAddr> e;
+  private boolean f = false;
   
   private SosoSrvAddrProvider(Application paramApplication)
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+    this.b = paramApplication;
   }
   
   public static SosoSrvAddrProvider a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider == null) {
+    if (g == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider = new SosoSrvAddrProvider(MobileQQ.sMobileQQ);
+        if (g == null) {
+          g = new SosoSrvAddrProvider(MobileQQ.sMobileQQ);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider;
+    return g;
   }
   
   private List<ISvrAddr> a(int paramInt)
   {
     if (paramInt == 0) {
-      return this.jdField_a_of_type_JavaUtilList;
+      return this.e;
     }
     return null;
   }
@@ -64,11 +64,11 @@ public class SosoSrvAddrProvider
     {
       try
       {
-        Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider$SrvAddrChooser.a(paramInt, paramBoolean1);
+        Object localObject4 = this.a.a(paramInt, paramBoolean1);
         if (localObject4 != null)
         {
           Object localObject3 = ((ISvrAddr)localObject4).a();
-          paramInt = ((ISvrAddr)localObject4).a();
+          paramInt = ((ISvrAddr)localObject4).b();
           localObject1 = localObject3;
           if (localObject3 == null) {
             localObject1 = "";
@@ -135,17 +135,17 @@ public class SosoSrvAddrProvider
           }
           else
           {
-            if ((!this.jdField_a_of_type_Boolean) && (NetworkUtil.isNetworkAvailable(BaseApplication.getContext())))
+            if ((!this.f) && (NetworkUtil.isNetworkAvailable(BaseApplication.getContext())))
             {
               HwServlet.getConfig(paramAppInterface, paramAppInterface.getCurrentAccountUin());
-              this.jdField_a_of_type_Boolean = true;
+              this.f = true;
             }
-            localObject = this.jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider$SrvAddrChooser.a(paramInt, paramBoolean1);
+            localObject = this.a.a(paramInt, paramBoolean1);
             if (localObject == null) {
               break label329;
             }
             paramAppInterface = ((ISvrAddr)localObject).a();
-            paramInt = ((ISvrAddr)localObject).a();
+            paramInt = ((ISvrAddr)localObject).b();
             paramBoolean2 = bool;
           }
           localObject = localStringBuilder;
@@ -197,23 +197,12 @@ public class SosoSrvAddrProvider
     }
   }
   
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidAppApplication.getSharedPreferences("SosoSrvAddrList", 0).edit();
-    if (localObject != null) {
-      ((SharedPreferences.Editor)localObject).remove("SosoSrvAddrList_key").commit();
-    }
-    localObject = new Intent("com.tencent.receiver.soso");
-    ((Intent)localObject).putExtra("com.tencent.receiver.soso.type", b);
-    this.jdField_a_of_type_AndroidAppApplication.sendBroadcast((Intent)localObject);
-  }
-  
   public void a(List<ISvrAddr> paramList)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider$SrvAddrChooser.a(paramList);
+      this.e = paramList;
+      this.a.a(paramList);
       return;
     }
     finally
@@ -224,6 +213,17 @@ public class SosoSrvAddrProvider
   }
   
   public void b()
+  {
+    Object localObject = this.b.getSharedPreferences("SosoSrvAddrList", 0).edit();
+    if (localObject != null) {
+      ((SharedPreferences.Editor)localObject).remove("SosoSrvAddrList_key").commit();
+    }
+    localObject = new Intent("com.tencent.receiver.soso");
+    ((Intent)localObject).putExtra("com.tencent.receiver.soso.type", d);
+    this.b.sendBroadcast((Intent)localObject);
+  }
+  
+  public void c()
   {
     ArrayList localArrayList = new ArrayList();
     HwConfig localHwConfig = (HwConfig)((ITroopCardApi)QRoute.api(ITroopCardApi.class)).getHighwayConfig();
@@ -237,9 +237,9 @@ public class SosoSrvAddrProvider
         while (i < localHwConfig.ipv6List.size())
         {
           localSvrAddr = new SvrAddr();
-          localSvrAddr.jdField_a_of_type_JavaLangString = ((EndPoint)localHwConfig.ipv6List.get(i)).host;
-          localSvrAddr.jdField_a_of_type_Int = ((EndPoint)localHwConfig.ipv6List.get(i)).port;
-          localSvrAddr.jdField_a_of_type_Boolean = true;
+          localSvrAddr.a = ((EndPoint)localHwConfig.ipv6List.get(i)).host;
+          localSvrAddr.b = ((EndPoint)localHwConfig.ipv6List.get(i)).port;
+          localSvrAddr.c = true;
           localArrayList.add(localSvrAddr);
           i += 1;
         }
@@ -250,9 +250,9 @@ public class SosoSrvAddrProvider
         while (i < localHwConfig.ipList.size())
         {
           localSvrAddr = new SvrAddr();
-          localSvrAddr.jdField_a_of_type_JavaLangString = ((EndPoint)localHwConfig.ipList.get(i)).host;
-          localSvrAddr.jdField_a_of_type_Int = ((EndPoint)localHwConfig.ipList.get(i)).port;
-          localSvrAddr.jdField_a_of_type_Boolean = false;
+          localSvrAddr.a = ((EndPoint)localHwConfig.ipList.get(i)).host;
+          localSvrAddr.b = ((EndPoint)localHwConfig.ipList.get(i)).port;
+          localSvrAddr.c = false;
           localArrayList.add(localSvrAddr);
           i += 1;
         }
@@ -266,7 +266,7 @@ public class SosoSrvAddrProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.soso.SosoSrvAddrProvider
  * JD-Core Version:    0.7.0.1
  */

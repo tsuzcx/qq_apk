@@ -12,8 +12,8 @@ class BuddyListDevices$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839393);
+    this.a.b("");
+    this.b.setBackgroundResource(2130839577);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -22,7 +22,7 @@ class BuddyListDevices$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.BuddyListDevices.1
  * JD-Core Version:    0.7.0.1
  */

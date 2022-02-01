@@ -34,16 +34,16 @@ public class QAssistantConfigProcessor
     if (paramArrayOfQConfItem.length > 0)
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0];
-      localQAssistantConfigContent.jdField_a_of_type_Int = paramArrayOfQConfItem.jdField_a_of_type_Int;
-      localQAssistantConfigContent.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.jdField_a_of_type_JavaLangString;
+      localQAssistantConfigContent.a = paramArrayOfQConfItem.a;
+      localQAssistantConfigContent.b = paramArrayOfQConfItem.b;
     }
     if (QLog.isColorLevel())
     {
       paramArrayOfQConfItem = new StringBuilder();
       paramArrayOfQConfItem.append("onParsed taskId = ");
-      paramArrayOfQConfItem.append(localQAssistantConfigContent.jdField_a_of_type_Int);
+      paramArrayOfQConfItem.append(localQAssistantConfigContent.a);
       paramArrayOfQConfItem.append(" | content = ");
-      paramArrayOfQConfItem.append(localQAssistantConfigContent.jdField_a_of_type_JavaLangString);
+      paramArrayOfQConfItem.append(localQAssistantConfigContent.b);
       QLog.d("QAssistantConfigProcessor", 2, paramArrayOfQConfItem.toString());
     }
     return localQAssistantConfigContent;
@@ -51,17 +51,17 @@ public class QAssistantConfigProcessor
   
   public void a(QAssistantConfigProcessor.QAssistantConfigContent paramQAssistantConfigContent)
   {
-    if ((paramQAssistantConfigContent != null) && (paramQAssistantConfigContent.jdField_a_of_type_JavaLangString != null))
+    if ((paramQAssistantConfigContent != null) && (paramQAssistantConfigContent.b != null))
     {
       try
       {
-        String str = paramQAssistantConfigContent.jdField_a_of_type_JavaLangString;
+        String str = paramQAssistantConfigContent.b;
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onUpdate content = ");
-          localStringBuilder.append(paramQAssistantConfigContent.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(paramQAssistantConfigContent.b);
           QLog.d("QAssistantConfigProcessor", 2, localStringBuilder.toString());
         }
         ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).updateQAssistantConfig(localQQAppInterface, str);
@@ -129,7 +129,7 @@ public class QAssistantConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QAssistantConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

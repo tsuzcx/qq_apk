@@ -17,39 +17,39 @@ class WebSocketProxyImpl$WebSocketTask$1
   
   public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    paramWebSocket = this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask;
-    paramWebSocket.jdField_a_of_type_Boolean = true;
-    paramWebSocket.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int, paramInt, paramString);
-    this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl.a.remove(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int));
+    paramWebSocket = this.b;
+    paramWebSocket.e = true;
+    paramWebSocket.c.onClose(this.b.a, paramInt, paramString);
+    this.b.f.a.remove(Integer.valueOf(this.b.a));
   }
   
   public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
     QLog.e("WebSocketProxyImpl", 1, "onFailure : ", paramThrowable);
-    this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onError(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int, HttpUtil.a(paramThrowable, -1), paramThrowable.getMessage());
-    this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl.a.remove(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int));
+    this.b.c.onError(this.b.a, HttpUtil.a(paramThrowable, -1), paramThrowable.getMessage());
+    this.b.f.a.remove(Integer.valueOf(this.b.a));
   }
   
   public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int, paramString);
+    this.b.c.onMessage(this.b.a, paramString);
   }
   
   public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int, paramByteString.toByteArray());
+    this.b.c.onMessage(this.b.a, paramByteString.toByteArray());
   }
   
   public void onOpen(WebSocket paramWebSocket, Response paramResponse)
   {
-    WebSocketProxyImpl.WebSocketTask localWebSocketTask = this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask;
-    localWebSocketTask.jdField_a_of_type_Okhttp3WebSocket = paramWebSocket;
-    localWebSocketTask.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onOpen(this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Int, paramResponse.code(), paramResponse.headers().toMultimap());
+    WebSocketProxyImpl.WebSocketTask localWebSocketTask = this.b;
+    localWebSocketTask.d = paramWebSocket;
+    localWebSocketTask.c.onOpen(this.b.a, paramResponse.code(), paramResponse.headers().toMultimap());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.WebSocketTask.1
  * JD-Core Version:    0.7.0.1
  */

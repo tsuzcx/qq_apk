@@ -11,7 +11,7 @@ class TCWNumberPicker$NumberPickerInputFilter
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
     if (TCWNumberPicker.a(this.a) == null) {
-      return TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return TCWNumberPicker.b(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
     paramCharSequence = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
     Object localObject = new StringBuilder();
@@ -34,7 +34,7 @@ class TCWNumberPicker$NumberPickerInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TCWNumberPicker.NumberPickerInputFilter
  * JD-Core Version:    0.7.0.1
  */

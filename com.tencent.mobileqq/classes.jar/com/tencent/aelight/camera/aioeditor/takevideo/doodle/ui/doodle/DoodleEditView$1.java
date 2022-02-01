@@ -33,23 +33,23 @@ class DoodleEditView$1
   
   private void c(SelectedItem paramSelectedItem, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper)
   {
-    if (!this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.b()) {
+    if (!this.a.a.d()) {
       return;
     }
     paramSegmentKeeper = DoodleUtil.a(paramSelectedItem, paramFloat1, paramFloat2, paramFloat3);
-    paramSelectedItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a().a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a(), paramSelectedItem.jdField_a_of_type_JavaLangString, paramSelectedItem.b, paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramSegmentKeeper, paramString, paramSelectedItem.jdField_a_of_type_Int, false, null, null, this.a.a());
-    this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.b(paramSelectedItem);
+    paramSelectedItem = this.a.l.getFaceLayer().a(this.a.a.h(), paramSelectedItem.a, paramSelectedItem.b, paramSelectedItem.c, paramSegmentKeeper, paramString, paramSelectedItem.d, false, null, null, this.a.getFrom());
+    this.a.a.b(paramSelectedItem);
     this.a.postInvalidate();
   }
   
   public void a()
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.d();
+    this.a.a.i();
   }
   
   public void a(InformationFacePackage.Item paramItem, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.b())
+    if (this.a.a.d())
     {
       if (paramItem == null) {
         return;
@@ -61,15 +61,15 @@ class DoodleEditView$1
       SLog.b("DoodleEditView", ((StringBuilder)localObject2).toString());
       boolean bool = this.a.getContext() instanceof EditPicActivity;
       if (bool) {
-        paramItem.d = 0;
+        paramItem.o = 0;
       } else {
-        paramItem.d = 3;
+        paramItem.o = 3;
       }
       localObject2 = InformationFaceConstant.a(paramItem, this.a.getContext(), -1L);
       if (bool)
       {
         if (localObject2 != null) {
-          localObject1 = new BitmapDrawable(this.a.getContext().getResources(), ((InfoStickerDrawable)localObject2).a());
+          localObject1 = new BitmapDrawable(this.a.getContext().getResources(), ((InfoStickerDrawable)localObject2).h());
         }
       }
       else {
@@ -95,19 +95,19 @@ class DoodleEditView$1
           ((StringBuilder)localObject2).append(paramFloat1);
           QLog.d("DoodleEditView", 2, ((StringBuilder)localObject2).toString());
         }
-        bool = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a instanceof FaceLayer.FaceItem;
+        bool = this.a.a.b instanceof FaceLayer.FaceItem;
         float f2 = 0.0F;
         float f1;
         if (bool)
         {
-          localObject2 = (FaceLayer.FaceItem)this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a;
-          if (((FaceLayer.FaceItem)localObject2).j > 4.0D) {
-            ((FaceLayer.FaceItem)localObject2).j = 1.0F;
+          localObject2 = (FaceLayer.FaceItem)this.a.a.b;
+          if (((FaceLayer.FaceItem)localObject2).B > 4.0D) {
+            ((FaceLayer.FaceItem)localObject2).B = 1.0F;
           }
-          f2 = ((FaceLayer.FaceItem)localObject2).a.x - ((FaceLayer.FaceItem)localObject2).j * ((Drawable)localObject1).getIntrinsicWidth() / 2.0F + ((FaceLayer.FaceItem)localObject2).l;
-          f1 = ((FaceLayer.FaceItem)localObject2).a.x;
+          f2 = ((FaceLayer.FaceItem)localObject2).A.x - ((FaceLayer.FaceItem)localObject2).B * ((Drawable)localObject1).getIntrinsicWidth() / 2.0F + ((FaceLayer.FaceItem)localObject2).D;
+          f1 = ((FaceLayer.FaceItem)localObject2).A.x;
           if (f2 < ScreenUtil.dip2px(23.0F)) {
-            f1 = ((FaceLayer.FaceItem)localObject2).a.x - f2 + ScreenUtil.dip2px(23.0F);
+            f1 = ((FaceLayer.FaceItem)localObject2).A.x - f2 + ScreenUtil.dip2px(23.0F);
           }
         }
         else
@@ -129,18 +129,18 @@ class DoodleEditView$1
         }
         if ((localObject1 instanceof InfoStickerDrawable))
         {
-          paramItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a().a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a(), paramItem.m, paramString, (Drawable)localObject1, (FaceLayer.LayerParams)localObject2, "", paramItem.d, paramItem.a, paramItem.l, ((InfoStickerDrawable)localObject1).c(), this.a.a());
+          paramItem = this.a.l.getDynamicFaceLayer().a(this.a.a.h(), paramItem.t, paramString, (Drawable)localObject1, (FaceLayer.LayerParams)localObject2, "", paramItem.o, paramItem.p, paramItem.q, ((InfoStickerDrawable)localObject1).g(), this.a.getFrom());
         }
         else
         {
-          paramItem.d = 0;
-          paramItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a().a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a(), paramItem.m, paramString, (Drawable)localObject1, (FaceLayer.LayerParams)localObject2, "", paramItem.d, false, paramItem.l, null, this.a.a());
+          paramItem.o = 0;
+          paramItem = this.a.l.getFaceLayer().a(this.a.a.h(), paramItem.t, paramString, (Drawable)localObject1, (FaceLayer.LayerParams)localObject2, "", paramItem.o, false, paramItem.q, null, this.a.getFrom());
         }
-        if (((paramItem instanceof FaceLayer.FaceItem)) && ((this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a instanceof FaceLayer.FaceItem))) {
-          ((FaceLayer.FaceItem)paramItem).g = ((FaceLayer.FaceItem)this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a).g;
+        if (((paramItem instanceof FaceLayer.FaceItem)) && ((this.a.a.b instanceof FaceLayer.FaceItem))) {
+          ((FaceLayer.FaceItem)paramItem).x = ((FaceLayer.FaceItem)this.a.a.b).x;
         }
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.b(paramItem);
-        paramItem.a.x = f1;
+        this.a.a.b(paramItem);
+        paramItem.A.x = f1;
         this.a.postInvalidate();
       }
     }
@@ -148,19 +148,19 @@ class DoodleEditView$1
   
   public void a(LocationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (!this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.b()) {
+    if (!this.a.a.d()) {
       return;
     }
     FaceLayer.LayerParams localLayerParams = DoodleUtil.a(paramItem, this.a.getWidth(), this.a.getHeight(), paramFloat1, paramFloat2);
     if (localLayerParams != null)
     {
-      if ((paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)))
+      if ((paramItem.e != null) && ((paramItem.e instanceof URLDrawable)))
       {
-        File localFile = ((URLDrawable)paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getFileInLocal();
+        File localFile = ((URLDrawable)paramItem.e).getFileInLocal();
         if ((localFile != null) && (localFile.exists()))
         {
-          paramItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a().a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.a(), paramItem.g, paramItem.c, paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localLayerParams, localFile.getAbsolutePath(), paramItem.jdField_a_of_type_Int, false, null, null, this.a.a());
-          this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.b(paramItem);
+          paramItem = this.a.l.getFaceLayer().a(this.a.a.h(), paramItem.i, paramItem.c, paramItem.e, localLayerParams, localFile.getAbsolutePath(), paramItem.j, false, null, null, this.a.getFrom());
+          this.a.a.b(paramItem);
         }
       }
     }
@@ -186,7 +186,7 @@ class DoodleEditView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleEditView.1
  * JD-Core Version:    0.7.0.1
  */

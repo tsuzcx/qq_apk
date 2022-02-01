@@ -12,14 +12,14 @@ class GdtVideoImaxFragment$3
   public void onClick(View paramView)
   {
     boolean bool = this.a.a(paramView);
-    GdtVideoImaxFragment.a(this.a, bool);
-    GdtVideoImaxFragment.a(this.a);
+    GdtVideoImaxFragment.b(this.a, bool);
+    GdtVideoImaxFragment.g(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ class QFileMsgForwardManager$2
   public void run()
   {
     QFileMsgForwardManager.QFileUploadRequest localQFileUploadRequest;
-    if (QFileMsgForwardManager.a(this.this$0).containsKey(this.a)) {
-      localQFileUploadRequest = (QFileMsgForwardManager.QFileUploadRequest)QFileMsgForwardManager.a(this.this$0).remove(this.a);
+    if (QFileMsgForwardManager.b(this.this$0).containsKey(this.a)) {
+      localQFileUploadRequest = (QFileMsgForwardManager.QFileUploadRequest)QFileMsgForwardManager.b(this.this$0).remove(this.a);
     } else {
       localQFileUploadRequest = null;
     }
@@ -28,7 +28,7 @@ class QFileMsgForwardManager$2
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject = localQFileUploadRequest.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject = localQFileUploadRequest.i.keySet().iterator();
     for (;;)
     {
       boolean bool = ((Iterator)localObject).hasNext();
@@ -37,14 +37,14 @@ class QFileMsgForwardManager$2
         break;
       }
       String str = (String)((Iterator)localObject).next();
-      ArrayList localArrayList3 = (ArrayList)localQFileUploadRequest.jdField_a_of_type_JavaUtilHashMap.get(str);
+      ArrayList localArrayList3 = (ArrayList)localQFileUploadRequest.i.get(str);
       while (i < localArrayList3.size())
       {
         MessageRecord localMessageRecord = (MessageRecord)localArrayList3.get(i);
         if (FileManagerUtil.a(localMessageRecord)) {
           if (String.valueOf(2).equalsIgnoreCase(localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileStatus")))
           {
-            localQFileUploadRequest.jdField_a_of_type_ComTencentMobileqqFilemanagerDataMsgforwardQFileMsgForwardRequest.a(str, localArrayList3, localMessageRecord, i);
+            localQFileUploadRequest.b.a(str, localArrayList3, localMessageRecord, i);
             localArrayList2.add(localMessageRecord);
           }
           else
@@ -55,7 +55,7 @@ class QFileMsgForwardManager$2
         i += 1;
       }
     }
-    if (localQFileUploadRequest.d.size() > 0)
+    if (localQFileUploadRequest.g.size() > 0)
     {
       if (QLog.isColorLevel())
       {
@@ -65,7 +65,7 @@ class QFileMsgForwardManager$2
         ((StringBuilder)localObject).append("] resultCode[1]");
         QLog.i("FileMultiMsgManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       }
-      localQFileUploadRequest.jdField_a_of_type_ComTencentMobileqqFilemanagerDataMsgforwardQFileMsgForwardRequest.a(1, localArrayList1, localArrayList2);
+      localQFileUploadRequest.b.a(1, localArrayList1, localArrayList2);
       return;
     }
     if (QLog.isColorLevel())
@@ -76,12 +76,12 @@ class QFileMsgForwardManager$2
       ((StringBuilder)localObject).append("] resultCode[0]");
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
-    localQFileUploadRequest.jdField_a_of_type_ComTencentMobileqqFilemanagerDataMsgforwardQFileMsgForwardRequest.a(0, localArrayList1, localArrayList2);
+    localQFileUploadRequest.b.a(0, localArrayList1, localArrayList2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.2
  * JD-Core Version:    0.7.0.1
  */

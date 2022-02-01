@@ -206,7 +206,7 @@ public class QIMSlidingTabView
           {
             localObject2 = (Bundle)((View)localObject1).getTag();
             if (localObject2 != null) {
-              ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("checked_image_bg_id", 2130846887));
+              ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("checked_image_bg_id", 2130848439));
             }
           }
           else if ((localObject1 instanceof RedDotTextView))
@@ -228,7 +228,7 @@ public class QIMSlidingTabView
         {
           localObject2 = (Bundle)((View)localObject1).getTag();
           if (localObject2 != null) {
-            ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("normal_image_bg_id", 2130846886));
+            ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("normal_image_bg_id", 2130848438));
           }
         }
         else if ((localObject1 instanceof RedDotTextView))
@@ -265,10 +265,10 @@ public class QIMSlidingTabView
     while (i < paramArrayList.size())
     {
       Object localObject;
-      if (((QIMSlidingItemView.SlidingItemData)paramArrayList.get(i)).jdField_a_of_type_Int == 0)
+      if (((QIMSlidingItemView.SlidingItemData)paramArrayList.get(i)).b == 0)
       {
         localObject = new TextView(getContext());
-        ((TextView)localObject).setText(((QIMSlidingItemView.SlidingItemData)paramArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        ((TextView)localObject).setText(((QIMSlidingItemView.SlidingItemData)paramArrayList.get(i)).a);
         ((TextView)localObject).setGravity(17);
         ((TextView)localObject).setSingleLine();
         ((TextView)localObject).setTextSize(0, this.mTabTextSize);
@@ -299,14 +299,14 @@ public class QIMSlidingTabView
       while (i < paramArrayList.size())
       {
         RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-        localRedDotTextView.setText(((QIMSlidingTabView.TabIcon)paramArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        localRedDotTextView.setText(((QIMSlidingTabView.TabIcon)paramArrayList.get(i)).a);
         localRedDotTextView.setGravity(17);
         localRedDotTextView.setSingleLine();
         localRedDotTextView.setTextSize(0, this.mTabTextSize);
         int j = this.mTabPadding;
         localRedDotTextView.setPadding(j, 0, j, 0);
-        localRedDotTextView.a(((QIMSlidingTabView.TabIcon)paramArrayList.get(i)).jdField_a_of_type_Boolean);
-        String str = ((QIMSlidingTabView.TabIcon)paramArrayList.get(i)).b;
+        localRedDotTextView.a(((QIMSlidingTabView.TabIcon)paramArrayList.get(i)).b);
+        String str = ((QIMSlidingTabView.TabIcon)paramArrayList.get(i)).c;
         if (!TextUtils.isEmpty(str)) {
           localRedDotTextView.setContentDescription(str);
         }
@@ -400,7 +400,7 @@ public class QIMSlidingTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

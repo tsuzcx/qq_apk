@@ -16,23 +16,23 @@ class SurvivalRoomController$5
   
   public void run()
   {
-    String str = ((IAVGameRootContainer)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).getRoomId();
+    String str = ((IAVGameRootContainer)this.a).getRoomId();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onEnterRoom run mGameExited:");
-    localStringBuilder.append(((IAVGameRootContainer)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).getGameExitStatus());
+    localStringBuilder.append(((IAVGameRootContainer)this.a).getGameExitStatus());
     localStringBuilder.append(" retCode:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" mRoomId:");
     localStringBuilder.append(str);
     QLog.i("SurvivalRoomController", 1, localStringBuilder.toString());
-    if (((IAVGameRootContainer)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).getGameExitStatus()) {
+    if (((IAVGameRootContainer)this.a).getGameExitStatus()) {
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 0)
     {
-      if ((!TextUtils.isEmpty(str)) && (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime() != null)) {
-        ((IAVGameAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).a().a(1, str);
+      if ((!TextUtils.isEmpty(str)) && (this.a.getAppRuntime() != null)) {
+        ((IAVGameAppInterface)this.a.getAppRuntime()).a().b(1, str);
       }
     }
     else if (i != 5)
@@ -40,10 +40,10 @@ class SurvivalRoomController$5
       if (i == 6) {
         return;
       }
-      if ((IGameEngine.a().i()) && (IGameEngine.a().g())) {
-        AVGameExceptionReporter.a().a(8, null, String.valueOf(this.jdField_a_of_type_Int), null);
+      if ((IGameEngine.I().D()) && (IGameEngine.I().B())) {
+        AVGameExceptionReporter.a().a(8, null, String.valueOf(this.b), null);
       }
-      SurvivalRoomController.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2, this.jdField_a_of_type_Int);
+      SurvivalRoomController.a(this.this$0, this.a, 2, this.b);
     }
   }
 }

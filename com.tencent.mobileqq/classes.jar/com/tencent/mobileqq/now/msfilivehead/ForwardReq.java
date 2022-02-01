@@ -9,23 +9,23 @@ import java.util.Arrays;
 public final class ForwardReq
   extends MessageNano
 {
-  public int a;
   public long a;
-  public String a;
-  public byte[] a;
-  public AuthInfo[] a;
-  public int b;
   public long b;
-  public String b;
-  public byte[] b;
-  public int c;
   public String c;
   public int d;
-  public String d;
-  public int e;
   public String e;
-  public int f;
+  public byte[] f;
   public int g;
+  public int h;
+  public String i;
+  public String j;
+  public int k;
+  public int l;
+  public String m;
+  public int n;
+  public AuthInfo[] o;
+  public byte[] p;
+  public int q;
   
   public ForwardReq()
   {
@@ -34,23 +34,23 @@ public final class ForwardReq
   
   public ForwardReq a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = WireFormatNano.EMPTY_BYTES;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.f = 0;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo = AuthInfo.a();
-    this.jdField_b_of_type_ArrayOfByte = WireFormatNano.EMPTY_BYTES;
+    this.a = 0L;
+    this.b = 0L;
+    this.c = "";
+    this.d = 0;
+    this.e = "";
+    this.f = WireFormatNano.EMPTY_BYTES;
     this.g = 0;
+    this.h = 0;
+    this.i = "";
+    this.j = "";
+    this.k = 0;
+    this.l = 0;
+    this.m = "";
+    this.n = 0;
+    this.o = AuthInfo.a();
+    this.p = WireFormatNano.EMPTY_BYTES;
+    this.q = 0;
     this.cachedSize = -1;
     return this;
   }
@@ -59,87 +59,87 @@ public final class ForwardReq
   {
     for (;;)
     {
-      int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      int i1 = paramCodedInputByteBufferNano.readTag();
+      switch (i1)
       {
       default: 
-        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i1)) {
           return this;
         }
         break;
       case 136: 
-        this.g = paramCodedInputByteBufferNano.readUInt32();
+        this.q = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 130: 
-        this.jdField_b_of_type_ArrayOfByte = paramCodedInputByteBufferNano.readBytes();
+        this.p = paramCodedInputByteBufferNano.readBytes();
         break;
       case 122: 
-        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 122);
-        AuthInfo[] arrayOfAuthInfo = this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
+        int i2 = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 122);
+        AuthInfo[] arrayOfAuthInfo = this.o;
         if (arrayOfAuthInfo == null) {
-          i = 0;
+          i1 = 0;
         } else {
-          i = arrayOfAuthInfo.length;
+          i1 = arrayOfAuthInfo.length;
         }
-        arrayOfAuthInfo = new AuthInfo[j + i];
-        j = i;
-        if (i != 0)
+        arrayOfAuthInfo = new AuthInfo[i2 + i1];
+        i2 = i1;
+        if (i1 != 0)
         {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo, 0, arrayOfAuthInfo, 0, i);
-          j = i;
+          System.arraycopy(this.o, 0, arrayOfAuthInfo, 0, i1);
+          i2 = i1;
         }
-        while (j < arrayOfAuthInfo.length - 1)
+        while (i2 < arrayOfAuthInfo.length - 1)
         {
-          arrayOfAuthInfo[j] = new AuthInfo();
-          paramCodedInputByteBufferNano.readMessage(arrayOfAuthInfo[j]);
+          arrayOfAuthInfo[i2] = new AuthInfo();
+          paramCodedInputByteBufferNano.readMessage(arrayOfAuthInfo[i2]);
           paramCodedInputByteBufferNano.readTag();
-          j += 1;
+          i2 += 1;
         }
-        arrayOfAuthInfo[j] = new AuthInfo();
-        paramCodedInputByteBufferNano.readMessage(arrayOfAuthInfo[j]);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo = arrayOfAuthInfo;
+        arrayOfAuthInfo[i2] = new AuthInfo();
+        paramCodedInputByteBufferNano.readMessage(arrayOfAuthInfo[i2]);
+        this.o = arrayOfAuthInfo;
         break;
       case 112: 
-        this.f = paramCodedInputByteBufferNano.readUInt32();
+        this.n = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 106: 
-        this.jdField_e_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.m = paramCodedInputByteBufferNano.readString();
         break;
       case 96: 
-        this.jdField_e_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.l = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 88: 
-        this.jdField_d_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.k = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 82: 
-        this.jdField_d_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.j = paramCodedInputByteBufferNano.readString();
         break;
       case 74: 
-        this.jdField_c_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.i = paramCodedInputByteBufferNano.readString();
         break;
       case 64: 
-        this.jdField_c_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.h = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 56: 
-        this.jdField_b_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.g = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 50: 
-        this.jdField_a_of_type_ArrayOfByte = paramCodedInputByteBufferNano.readBytes();
+        this.f = paramCodedInputByteBufferNano.readBytes();
         break;
       case 42: 
-        this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.e = paramCodedInputByteBufferNano.readString();
         break;
       case 32: 
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.d = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 26: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.c = paramCodedInputByteBufferNano.readString();
         break;
       case 16: 
-        this.jdField_b_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.b = paramCodedInputByteBufferNano.readUInt64();
         break;
       case 8: 
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.a = paramCodedInputByteBufferNano.readUInt64();
       }
     }
     return this;
@@ -147,190 +147,190 @@ public final class ForwardReq
   
   protected int computeSerializedSize()
   {
-    int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
-    int i = j;
-    if (l != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
+    int i2 = super.computeSerializedSize();
+    long l1 = this.a;
+    int i1 = i2;
+    if (l1 != 0L) {
+      i1 = i2 + CodedOutputByteBufferNano.computeUInt64Size(1, l1);
     }
-    l = this.jdField_b_of_type_Long;
-    j = i;
-    if (l != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, l);
+    l1 = this.b;
+    i2 = i1;
+    if (l1 != 0L) {
+      i2 = i1 + CodedOutputByteBufferNano.computeUInt64Size(2, l1);
     }
-    i = j;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.jdField_a_of_type_JavaLangString);
+    i1 = i2;
+    if (!this.c.equals("")) {
+      i1 = i2 + CodedOutputByteBufferNano.computeStringSize(3, this.c);
     }
-    int k = this.jdField_a_of_type_Int;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, k);
+    int i3 = this.d;
+    i2 = i1;
+    if (i3 != 0) {
+      i2 = i1 + CodedOutputByteBufferNano.computeUInt32Size(4, i3);
     }
-    i = j;
-    if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(5, this.jdField_b_of_type_JavaLangString);
+    i1 = i2;
+    if (!this.e.equals("")) {
+      i1 = i2 + CodedOutputByteBufferNano.computeStringSize(5, this.e);
     }
-    j = i;
-    if (!Arrays.equals(this.jdField_a_of_type_ArrayOfByte, WireFormatNano.EMPTY_BYTES)) {
-      j = i + CodedOutputByteBufferNano.computeBytesSize(6, this.jdField_a_of_type_ArrayOfByte);
+    i2 = i1;
+    if (!Arrays.equals(this.f, WireFormatNano.EMPTY_BYTES)) {
+      i2 = i1 + CodedOutputByteBufferNano.computeBytesSize(6, this.f);
     }
-    k = this.jdField_b_of_type_Int;
-    i = j;
-    if (k != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(7, k);
+    i3 = this.g;
+    i1 = i2;
+    if (i3 != 0) {
+      i1 = i2 + CodedOutputByteBufferNano.computeUInt32Size(7, i3);
     }
-    k = this.jdField_c_of_type_Int;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(8, k);
+    i3 = this.h;
+    i2 = i1;
+    if (i3 != 0) {
+      i2 = i1 + CodedOutputByteBufferNano.computeUInt32Size(8, i3);
     }
-    i = j;
-    if (!this.jdField_c_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(9, this.jdField_c_of_type_JavaLangString);
+    i1 = i2;
+    if (!this.i.equals("")) {
+      i1 = i2 + CodedOutputByteBufferNano.computeStringSize(9, this.i);
     }
-    j = i;
-    if (!this.jdField_d_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(10, this.jdField_d_of_type_JavaLangString);
+    i2 = i1;
+    if (!this.j.equals("")) {
+      i2 = i1 + CodedOutputByteBufferNano.computeStringSize(10, this.j);
     }
-    k = this.jdField_d_of_type_Int;
-    i = j;
-    if (k != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(11, k);
+    i3 = this.k;
+    i1 = i2;
+    if (i3 != 0) {
+      i1 = i2 + CodedOutputByteBufferNano.computeUInt32Size(11, i3);
     }
-    k = this.jdField_e_of_type_Int;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(12, k);
+    i3 = this.l;
+    i2 = i1;
+    if (i3 != 0) {
+      i2 = i1 + CodedOutputByteBufferNano.computeUInt32Size(12, i3);
     }
-    k = j;
-    if (!this.jdField_e_of_type_JavaLangString.equals("")) {
-      k = j + CodedOutputByteBufferNano.computeStringSize(13, this.jdField_e_of_type_JavaLangString);
+    i3 = i2;
+    if (!this.m.equals("")) {
+      i3 = i2 + CodedOutputByteBufferNano.computeStringSize(13, this.m);
     }
-    j = this.f;
-    i = k;
-    if (j != 0) {
-      i = k + CodedOutputByteBufferNano.computeUInt32Size(14, j);
+    i2 = this.n;
+    i1 = i3;
+    if (i2 != 0) {
+      i1 = i3 + CodedOutputByteBufferNano.computeUInt32Size(14, i2);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
-    j = i;
+    Object localObject = this.o;
+    i2 = i1;
     if (localObject != null)
     {
-      j = i;
+      i2 = i1;
       if (localObject.length > 0)
       {
-        k = 0;
+        i3 = 0;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
-          j = i;
-          if (k >= localObject.length) {
+          localObject = this.o;
+          i2 = i1;
+          if (i3 >= localObject.length) {
             break;
           }
-          localObject = localObject[k];
-          j = i;
+          localObject = localObject[i3];
+          i2 = i1;
           if (localObject != null) {
-            j = i + CodedOutputByteBufferNano.computeMessageSize(15, (MessageNano)localObject);
+            i2 = i1 + CodedOutputByteBufferNano.computeMessageSize(15, (MessageNano)localObject);
           }
-          k += 1;
-          i = j;
+          i3 += 1;
+          i1 = i2;
         }
       }
     }
-    i = j;
-    if (!Arrays.equals(this.jdField_b_of_type_ArrayOfByte, WireFormatNano.EMPTY_BYTES)) {
-      i = j + CodedOutputByteBufferNano.computeBytesSize(16, this.jdField_b_of_type_ArrayOfByte);
+    i1 = i2;
+    if (!Arrays.equals(this.p, WireFormatNano.EMPTY_BYTES)) {
+      i1 = i2 + CodedOutputByteBufferNano.computeBytesSize(16, this.p);
     }
-    k = this.g;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(17, k);
+    i3 = this.q;
+    i2 = i1;
+    if (i3 != 0) {
+      i2 = i1 + CodedOutputByteBufferNano.computeUInt32Size(17, i3);
     }
-    return j;
+    return i2;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (l != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, l);
+    long l1 = this.a;
+    if (l1 != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l1);
     }
-    l = this.jdField_b_of_type_Long;
-    if (l != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(2, l);
+    l1 = this.b;
+    if (l1 != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(2, l1);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(3, this.jdField_a_of_type_JavaLangString);
+    if (!this.c.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(3, this.c);
     }
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, i);
+    int i1 = this.d;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i1);
     }
-    if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(5, this.jdField_b_of_type_JavaLangString);
+    if (!this.e.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(5, this.e);
     }
-    if (!Arrays.equals(this.jdField_a_of_type_ArrayOfByte, WireFormatNano.EMPTY_BYTES)) {
-      paramCodedOutputByteBufferNano.writeBytes(6, this.jdField_a_of_type_ArrayOfByte);
+    if (!Arrays.equals(this.f, WireFormatNano.EMPTY_BYTES)) {
+      paramCodedOutputByteBufferNano.writeBytes(6, this.f);
     }
-    i = this.jdField_b_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(7, i);
+    i1 = this.g;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(7, i1);
     }
-    i = this.jdField_c_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(8, i);
+    i1 = this.h;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(8, i1);
     }
-    if (!this.jdField_c_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(9, this.jdField_c_of_type_JavaLangString);
+    if (!this.i.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(9, this.i);
     }
-    if (!this.jdField_d_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(10, this.jdField_d_of_type_JavaLangString);
+    if (!this.j.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(10, this.j);
     }
-    i = this.jdField_d_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(11, i);
+    i1 = this.k;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(11, i1);
     }
-    i = this.jdField_e_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(12, i);
+    i1 = this.l;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(12, i1);
     }
-    if (!this.jdField_e_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(13, this.jdField_e_of_type_JavaLangString);
+    if (!this.m.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(13, this.m);
     }
-    i = this.f;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(14, i);
+    i1 = this.n;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(14, i1);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
+    Object localObject = this.o;
     if ((localObject != null) && (localObject.length > 0))
     {
-      i = 0;
+      i1 = 0;
       for (;;)
       {
-        localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
-        if (i >= localObject.length) {
+        localObject = this.o;
+        if (i1 >= localObject.length) {
           break;
         }
-        localObject = localObject[i];
+        localObject = localObject[i1];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(15, (MessageNano)localObject);
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    if (!Arrays.equals(this.jdField_b_of_type_ArrayOfByte, WireFormatNano.EMPTY_BYTES)) {
-      paramCodedOutputByteBufferNano.writeBytes(16, this.jdField_b_of_type_ArrayOfByte);
+    if (!Arrays.equals(this.p, WireFormatNano.EMPTY_BYTES)) {
+      paramCodedOutputByteBufferNano.writeBytes(16, this.p);
     }
-    i = this.g;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(17, i);
+    i1 = this.q;
+    if (i1 != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(17, i1);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.msfilivehead.ForwardReq
  * JD-Core Version:    0.7.0.1
  */

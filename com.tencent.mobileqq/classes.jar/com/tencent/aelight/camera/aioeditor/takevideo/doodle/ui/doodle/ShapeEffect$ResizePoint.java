@@ -24,28 +24,28 @@ class ShapeEffect$ResizePoint
       if (i == 1)
       {
         ShapeEffect.a(this.b, false);
-        ShapeEffect.b(this.b);
+        ShapeEffect.d(this.b);
         ShapeEffect localShapeEffect = this.b;
-        ShapeEffect.a(localShapeEffect, ShapeEffect.a(localShapeEffect).left);
+        ShapeEffect.a(localShapeEffect, ShapeEffect.e(localShapeEffect).left);
         localShapeEffect = this.b;
-        ShapeEffect.b(localShapeEffect, ShapeEffect.a(localShapeEffect).top);
+        ShapeEffect.b(localShapeEffect, ShapeEffect.e(localShapeEffect).top);
         localShapeEffect = this.b;
-        ShapeEffect.c(localShapeEffect, ShapeEffect.a(localShapeEffect).right);
+        ShapeEffect.c(localShapeEffect, ShapeEffect.e(localShapeEffect).right);
         localShapeEffect = this.b;
-        ShapeEffect.d(localShapeEffect, ShapeEffect.a(localShapeEffect).bottom);
+        ShapeEffect.d(localShapeEffect, ShapeEffect.e(localShapeEffect).bottom);
       }
     }
     else
     {
       ShapeEffect.a(this.b, true);
-      ShapeEffect.a(this.b);
+      ShapeEffect.c(this.b);
     }
     return super.a(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.ShapeEffect.ResizePoint
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class DelDownloadHolder
 {
-  public int a;
-  public FrameLayout a;
-  public ImageView a;
-  public TextView a;
-  public FileInfo a;
   public AsyncImageView a;
-  public EllipsizingTextView a;
-  public int b;
   public ImageView b;
+  public ImageView c;
+  public EllipsizingTextView d;
+  public FrameLayout e;
+  public TextView f;
+  public FileInfo g;
+  public int h;
+  public int i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.DelDownloadHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -18,32 +18,32 @@ class GAudioMemberListCtrl$2
   public void onClick(View paramView)
   {
     Object localObject = (GAudioMemberListCtrl.GAudioMemberInfo)paramView.getTag();
-    if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).c)
+    if (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).i)
     {
-      if (this.a.jdField_a_of_type_Int == 1) {
+      if (this.a.c == 1) {
         ReportController.b(null, "CliOper", "", "", "0X8005C2A", "0X8005C2A", 0, 0, "", "", "", "");
-      } else if (this.a.jdField_a_of_type_Int == 2) {
+      } else if (this.a.c == 2) {
         ReportController.b(null, "CliOper", "", "", "0X8005C25", "0X8005C25", 0, 0, "", "", "", "");
       }
     }
-    else if (this.a.jdField_a_of_type_Int == 1) {
+    else if (this.a.c == 1) {
       ReportController.b(null, "CliOper", "", "", "0X8005C29", "0X8005C29", 0, 0, "", "", "", "");
-    } else if (this.a.jdField_a_of_type_Int == 2) {
+    } else if (this.a.c == 2) {
       ReportController.b(null, "CliOper", "", "", "0X8005C24", "0X8005C24", 0, 0, "", "", "", "");
     }
-    if ((((GAudioMemberListCtrl.GAudioMemberInfo)localObject).c) && (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).d))
+    if ((((GAudioMemberListCtrl.GAudioMemberInfo)localObject).i) && (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).j))
     {
-      QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131695708, 1).a();
-      if (this.a.jdField_a_of_type_Int == 1) {
+      QQToast.makeText((Context)this.a.a.get(), 2131893467, 1).show();
+      if (this.a.c == 1) {
         localObject = "0x8007CB5";
       } else {
         localObject = "0x8007CB6";
       }
       DoodleUtils.a((String)localObject);
     }
-    else if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a(((GAudioMemberListCtrl.GAudioMemberInfo)localObject).a, ((GAudioMemberListCtrl.GAudioMemberInfo)localObject).c ^ true)) && (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).c))
+    else if ((this.a.d.a(((GAudioMemberListCtrl.GAudioMemberInfo)localObject).a, ((GAudioMemberListCtrl.GAudioMemberInfo)localObject).i ^ true)) && (((GAudioMemberListCtrl.GAudioMemberInfo)localObject).i))
     {
-      QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131695547, 1).a();
+      QQToast.makeText((Context)this.a.a.get(), 2131893306, 1).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

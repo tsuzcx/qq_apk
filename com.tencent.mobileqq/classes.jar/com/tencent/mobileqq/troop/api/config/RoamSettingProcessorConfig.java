@@ -7,31 +7,31 @@ import java.util.Iterator;
 
 public class RoamSettingProcessorConfig
 {
-  private static RoamSettingProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigRoamSettingProcessorConfig;
-  private static ArrayList<AbsRoamSettingProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsRoamSettingProcessor> a = new ArrayList();
+  private static RoamSettingProcessorConfig b;
   
   private RoamSettingProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static RoamSettingProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigRoamSettingProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigRoamSettingProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigRoamSettingProcessorConfig = new RoamSettingProcessorConfig();
+        if (b == null) {
+          b = new RoamSettingProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigRoamSettingProcessorConfig;
+    return b;
   }
   
   public int a(String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       int i = ((AbsRoamSettingProcessor)localIterator.next()).a(paramString);
@@ -44,7 +44,7 @@ public class RoamSettingProcessorConfig
   
   public String a(int paramInt)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       String str = ((AbsRoamSettingProcessor)localIterator.next()).a(paramInt);
@@ -55,30 +55,9 @@ public class RoamSettingProcessorConfig
     return "";
   }
   
-  public void a()
-  {
-    if (BizTroopCustomizedProcessorRegister.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = BizTroopCustomizedProcessorRegister.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Class)localIterator.next();
-        try
-        {
-          localObject = (AbsRoamSettingProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.i("RoamSettingProcessorConfig", 1, "Init Fail", localThrowable);
-        }
-      }
-    }
-  }
-  
   public void a(String paramString1, String paramString2)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsRoamSettingProcessor)localIterator.next()).a(paramString1, paramString2);
     }
@@ -86,7 +65,7 @@ public class RoamSettingProcessorConfig
   
   public void a(ArrayList<String> paramArrayList)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsRoamSettingProcessor)localIterator.next()).a(paramArrayList);
     }
@@ -94,7 +73,7 @@ public class RoamSettingProcessorConfig
   
   public String b(int paramInt)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       String str = ((AbsRoamSettingProcessor)localIterator.next()).b(paramInt);
@@ -104,10 +83,31 @@ public class RoamSettingProcessorConfig
     }
     return "0";
   }
+  
+  public void b()
+  {
+    if (BizTroopCustomizedProcessorRegister.a != null)
+    {
+      Iterator localIterator = BizTroopCustomizedProcessorRegister.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Class)localIterator.next();
+        try
+        {
+          localObject = (AbsRoamSettingProcessor)((Class)localObject).newInstance();
+          a.add(localObject);
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.i("RoamSettingProcessorConfig", 1, "Init Fail", localThrowable);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.RoamSettingProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

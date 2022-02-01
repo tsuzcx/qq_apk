@@ -37,7 +37,7 @@ public class AutoStatusHintFragment
   {
     super.initWindowStyleAndAnimation(paramActivity);
     paramActivity.getWindow().setSoftInputMode(3);
-    paramActivity.overridePendingTransition(2130772000, 2130771999);
+    paramActivity.overridePendingTransition(2130772003, 2130772002);
   }
   
   public boolean isWrapContent()
@@ -57,7 +57,7 @@ public class AutoStatusHintFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131372968)
+    if (paramView.getId() == 2131440536)
     {
       ReportHelperKt.a("0X800B0F4");
       getQBaseActivity().finish();
@@ -68,9 +68,9 @@ public class AutoStatusHintFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558445, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131623981, null);
     paramLayoutInflater.setOnClickListener(this);
-    this.a = ((Button)paramLayoutInflater.findViewById(2131372968));
+    this.a = ((Button)paramLayoutInflater.findViewById(2131440536));
     this.a.setOnClickListener(this);
     ReportHelperKt.a("0X800B0F3");
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
@@ -81,14 +81,14 @@ public class AutoStatusHintFragment
   {
     QBaseActivity localQBaseActivity = getQBaseActivity();
     if (localQBaseActivity != null) {
-      localQBaseActivity.overridePendingTransition(2130772000, 2130771999);
+      localQBaseActivity.overridePendingTransition(2130772003, 2130772002);
     }
     super.onFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AutoStatusHintFragment
  * JD-Core Version:    0.7.0.1
  */

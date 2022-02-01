@@ -30,12 +30,19 @@ import java.util.List;
 public class StudyRoomDebugSettingFragment
   extends QIphoneTitleBarFragment
 {
-  private String a(String paramString1, String paramString2)
+  private void a(String paramString1, String paramString2)
+  {
+    SharedPreferences.Editor localEditor = getQBaseActivity().getApplication().getSharedPreferences("studyroom_config_", 0).edit();
+    localEditor.putString(paramString1, paramString2);
+    localEditor.apply();
+  }
+  
+  private String b(String paramString1, String paramString2)
   {
     return getQBaseActivity().getApplication().getSharedPreferences("studyroom_config_", 0).getString(paramString1, paramString2);
   }
   
-  private void a()
+  private void b()
   {
     Iterator localIterator = ((ActivityManager)getQBaseActivity().getSystemService("activity")).getRunningAppProcesses().iterator();
     while (localIterator.hasNext())
@@ -47,26 +54,19 @@ public class StudyRoomDebugSettingFragment
     }
   }
   
-  private void a(String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = getQBaseActivity().getApplication().getSharedPreferences("studyroom_config_", 0).edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
   private void c()
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.b.findViewById(2131378011);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.t.findViewById(2131446498);
     localFormSwitchItem.setChecked(StudyRoomUtils.a());
     localFormSwitchItem.setOnCheckedChangeListener(new StudyRoomDebugSettingFragment.1(this));
   }
   
   private void d()
   {
-    boolean bool = PluginUpdater.a(getQBaseActivity());
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.b.findViewById(2131378015);
-    EditText localEditText = (EditText)this.b.findViewById(2131378013);
-    Button localButton = (Button)this.b.findViewById(2131378014);
+    boolean bool = PluginUpdater.b(getQBaseActivity());
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.t.findViewById(2131446502);
+    EditText localEditText = (EditText)this.t.findViewById(2131446500);
+    Button localButton = (Button)this.t.findViewById(2131446501);
     localFormSwitchItem.setChecked(bool);
     localEditText.setEnabled(bool);
     localButton.setEnabled(bool);
@@ -75,17 +75,17 @@ public class StudyRoomDebugSettingFragment
   
   private void e()
   {
-    EditText localEditText = (EditText)this.b.findViewById(2131378013);
-    Button localButton1 = (Button)this.b.findViewById(2131378014);
-    Button localButton2 = (Button)this.b.findViewById(2131378012);
-    localEditText.setText(a("studyroom_plugin_name", ""));
+    EditText localEditText = (EditText)this.t.findViewById(2131446500);
+    Button localButton1 = (Button)this.t.findViewById(2131446501);
+    Button localButton2 = (Button)this.t.findViewById(2131446499);
+    localEditText.setText(b("studyroom_plugin_name", ""));
     localButton1.setOnClickListener(new StudyRoomDebugSettingFragment.3(this));
     localButton2.setOnClickListener(new StudyRoomDebugSettingFragment.4(this));
   }
   
   private void f()
   {
-    String str = ((EditText)this.b.findViewById(2131378013)).getText().toString();
+    String str = ((EditText)this.t.findViewById(2131446500)).getText().toString();
     PluginInfo localPluginInfo = new PluginInfo();
     localPluginInfo.mID = "StudyRoom";
     localPluginInfo.mURL = StudyRoomUtils.a(str);
@@ -103,7 +103,7 @@ public class StudyRoomDebugSettingFragment
       if (localQQAppInterface == null) {
         return;
       }
-      a();
+      b();
       ((IPluginManager)localQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).a(localPluginInfo, new StudyRoomDebugSettingFragment.5(this, (QQProgressDialog)localObject, str));
       return;
     }
@@ -115,19 +115,19 @@ public class StudyRoomDebugSettingFragment
   
   private void g()
   {
-    ((EditText)this.b.findViewById(2131378013)).setText("");
+    ((EditText)this.t.findViewById(2131446500)).setText("");
     a("studyroom_plugin_name", "");
     QQAppInterface localQQAppInterface = (QQAppInterface)getQBaseActivity().getAppRuntime();
     if (localQQAppInterface != null)
     {
-      a();
+      b();
       ((IPluginManager)localQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).b();
     }
   }
   
   protected int a()
   {
-    return 2131562872;
+    return 2131629324;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -146,7 +146,7 @@ public class StudyRoomDebugSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomDebugSettingFragment
  * JD-Core Version:    0.7.0.1
  */

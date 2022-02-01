@@ -16,24 +16,24 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   NoSSLv3SocketFactory$DelegateSSLSocket(NoSSLv3SocketFactory paramNoSSLv3SocketFactory, SSLSocket paramSSLSocket)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket = paramSSLSocket;
+    this.a = paramSSLSocket;
   }
   
   public void addHandshakeCompletedListener(HandshakeCompletedListener paramHandshakeCompletedListener)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.addHandshakeCompletedListener(paramHandshakeCompletedListener);
+    this.a.addHandshakeCompletedListener(paramHandshakeCompletedListener);
   }
   
   public void bind(SocketAddress paramSocketAddress)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.bind(paramSocketAddress);
+    this.a.bind(paramSocketAddress);
   }
   
   public void close()
   {
     try
     {
-      this.jdField_a_of_type_JavaxNetSslSSLSocket.close();
+      this.a.close();
       return;
     }
     finally
@@ -45,94 +45,94 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public void connect(SocketAddress paramSocketAddress)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.connect(paramSocketAddress);
+    this.a.connect(paramSocketAddress);
   }
   
   public void connect(SocketAddress paramSocketAddress, int paramInt)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.connect(paramSocketAddress, paramInt);
+    this.a.connect(paramSocketAddress, paramInt);
   }
   
   public boolean equals(Object paramObject)
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.equals(paramObject);
+    return this.a.equals(paramObject);
   }
   
   public SocketChannel getChannel()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getChannel();
+    return this.a.getChannel();
   }
   
   public boolean getEnableSessionCreation()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getEnableSessionCreation();
+    return this.a.getEnableSessionCreation();
   }
   
   public String[] getEnabledCipherSuites()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getEnabledCipherSuites();
+    return this.a.getEnabledCipherSuites();
   }
   
   public String[] getEnabledProtocols()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getEnabledProtocols();
+    return this.a.getEnabledProtocols();
   }
   
   public InetAddress getInetAddress()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getInetAddress();
+    return this.a.getInetAddress();
   }
   
   public InputStream getInputStream()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getInputStream();
+    return this.a.getInputStream();
   }
   
   public boolean getKeepAlive()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getKeepAlive();
+    return this.a.getKeepAlive();
   }
   
   public InetAddress getLocalAddress()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getLocalAddress();
+    return this.a.getLocalAddress();
   }
   
   public int getLocalPort()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getLocalPort();
+    return this.a.getLocalPort();
   }
   
   public SocketAddress getLocalSocketAddress()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getLocalSocketAddress();
+    return this.a.getLocalSocketAddress();
   }
   
   public boolean getNeedClientAuth()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getNeedClientAuth();
+    return this.a.getNeedClientAuth();
   }
   
   public boolean getOOBInline()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getOOBInline();
+    return this.a.getOOBInline();
   }
   
   public OutputStream getOutputStream()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getOutputStream();
+    return this.a.getOutputStream();
   }
   
   public int getPort()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getPort();
+    return this.a.getPort();
   }
   
   public int getReceiveBufferSize()
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaxNetSslSSLSocket.getReceiveBufferSize();
+      int i = this.a.getReceiveBufferSize();
       return i;
     }
     finally
@@ -144,19 +144,19 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public SocketAddress getRemoteSocketAddress()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getRemoteSocketAddress();
+    return this.a.getRemoteSocketAddress();
   }
   
   public boolean getReuseAddress()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getReuseAddress();
+    return this.a.getReuseAddress();
   }
   
   public int getSendBufferSize()
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaxNetSslSSLSocket.getSendBufferSize();
+      int i = this.a.getSendBufferSize();
       return i;
     }
     finally
@@ -168,19 +168,19 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public SSLSession getSession()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSession();
+    return this.a.getSession();
   }
   
   public int getSoLinger()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSoLinger();
+    return this.a.getSoLinger();
   }
   
   public int getSoTimeout()
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaxNetSslSSLSocket.getSoTimeout();
+      int i = this.a.getSoTimeout();
       return i;
     }
     finally
@@ -192,109 +192,109 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public String[] getSupportedCipherSuites()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSupportedCipherSuites();
+    return this.a.getSupportedCipherSuites();
   }
   
   public String[] getSupportedProtocols()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getSupportedProtocols();
+    return this.a.getSupportedProtocols();
   }
   
   public boolean getTcpNoDelay()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getTcpNoDelay();
+    return this.a.getTcpNoDelay();
   }
   
   public int getTrafficClass()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getTrafficClass();
+    return this.a.getTrafficClass();
   }
   
   public boolean getUseClientMode()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getUseClientMode();
+    return this.a.getUseClientMode();
   }
   
   public boolean getWantClientAuth()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.getWantClientAuth();
+    return this.a.getWantClientAuth();
   }
   
   public boolean isBound()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isBound();
+    return this.a.isBound();
   }
   
   public boolean isClosed()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isClosed();
+    return this.a.isClosed();
   }
   
   public boolean isConnected()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isConnected();
+    return this.a.isConnected();
   }
   
   public boolean isInputShutdown()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isInputShutdown();
+    return this.a.isInputShutdown();
   }
   
   public boolean isOutputShutdown()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.isOutputShutdown();
+    return this.a.isOutputShutdown();
   }
   
   public void removeHandshakeCompletedListener(HandshakeCompletedListener paramHandshakeCompletedListener)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.removeHandshakeCompletedListener(paramHandshakeCompletedListener);
+    this.a.removeHandshakeCompletedListener(paramHandshakeCompletedListener);
   }
   
   public void sendUrgentData(int paramInt)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.sendUrgentData(paramInt);
+    this.a.sendUrgentData(paramInt);
   }
   
   public void setEnableSessionCreation(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setEnableSessionCreation(paramBoolean);
+    this.a.setEnableSessionCreation(paramBoolean);
   }
   
   public void setEnabledCipherSuites(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setEnabledCipherSuites(paramArrayOfString);
+    this.a.setEnabledCipherSuites(paramArrayOfString);
   }
   
   public void setEnabledProtocols(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setEnabledProtocols(paramArrayOfString);
+    this.a.setEnabledProtocols(paramArrayOfString);
   }
   
   public void setKeepAlive(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setKeepAlive(paramBoolean);
+    this.a.setKeepAlive(paramBoolean);
   }
   
   public void setNeedClientAuth(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setNeedClientAuth(paramBoolean);
+    this.a.setNeedClientAuth(paramBoolean);
   }
   
   public void setOOBInline(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setOOBInline(paramBoolean);
+    this.a.setOOBInline(paramBoolean);
   }
   
   public void setPerformancePreferences(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setPerformancePreferences(paramInt1, paramInt2, paramInt3);
+    this.a.setPerformancePreferences(paramInt1, paramInt2, paramInt3);
   }
   
   public void setReceiveBufferSize(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_JavaxNetSslSSLSocket.setReceiveBufferSize(paramInt);
+      this.a.setReceiveBufferSize(paramInt);
       return;
     }
     finally
@@ -306,14 +306,14 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public void setReuseAddress(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setReuseAddress(paramBoolean);
+    this.a.setReuseAddress(paramBoolean);
   }
   
   public void setSendBufferSize(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_JavaxNetSslSSLSocket.setSendBufferSize(paramInt);
+      this.a.setSendBufferSize(paramInt);
       return;
     }
     finally
@@ -325,14 +325,14 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public void setSoLinger(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setSoLinger(paramBoolean, paramInt);
+    this.a.setSoLinger(paramBoolean, paramInt);
   }
   
   public void setSoTimeout(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_JavaxNetSslSSLSocket.setSoTimeout(paramInt);
+      this.a.setSoTimeout(paramInt);
       return;
     }
     finally
@@ -344,47 +344,47 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
   
   public void setTcpNoDelay(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setTcpNoDelay(paramBoolean);
+    this.a.setTcpNoDelay(paramBoolean);
   }
   
   public void setTrafficClass(int paramInt)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setTrafficClass(paramInt);
+    this.a.setTrafficClass(paramInt);
   }
   
   public void setUseClientMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setUseClientMode(paramBoolean);
+    this.a.setUseClientMode(paramBoolean);
   }
   
   public void setWantClientAuth(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.setWantClientAuth(paramBoolean);
+    this.a.setWantClientAuth(paramBoolean);
   }
   
   public void shutdownInput()
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.shutdownInput();
+    this.a.shutdownInput();
   }
   
   public void shutdownOutput()
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.shutdownOutput();
+    this.a.shutdownOutput();
   }
   
   public void startHandshake()
   {
-    this.jdField_a_of_type_JavaxNetSslSSLSocket.startHandshake();
+    this.a.startHandshake();
   }
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaxNetSslSSLSocket.toString();
+    return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory.DelegateSSLSocket
  * JD-Core Version:    0.7.0.1
  */

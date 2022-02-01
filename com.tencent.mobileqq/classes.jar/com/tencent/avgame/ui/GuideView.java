@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -24,15 +25,15 @@ import java.util.List;
 public class GuideView
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1308622848;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private List<HoleBean> jdField_a_of_type_JavaUtilList;
+  private int a = -1308622848;
+  private float b;
+  private Paint c;
+  private Bitmap d;
+  private RectF e;
+  private Canvas f;
+  private List<HoleBean> g;
+  private PorterDuffXfermode h;
+  private Button i;
   
   public GuideView(Context paramContext)
   {
@@ -60,10 +61,10 @@ public class GuideView
   private RectF a(RectF paramRectF)
   {
     RectF localRectF = new RectF();
-    paramRectF.left -= this.jdField_a_of_type_Float / 2.0F;
-    paramRectF.top -= this.jdField_a_of_type_Float / 2.0F;
-    paramRectF.right += this.jdField_a_of_type_Float / 2.0F;
-    paramRectF.bottom += this.jdField_a_of_type_Float / 2.0F;
+    paramRectF.left -= this.b / 2.0F;
+    paramRectF.top -= this.b / 2.0F;
+    paramRectF.right += this.b / 2.0F;
+    paramRectF.bottom += this.b / 2.0F;
     return localRectF;
   }
   
@@ -74,12 +75,12 @@ public class GuideView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(new BlurMaskFilter(10.0F, BlurMaskFilter.Blur.INNER));
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.h = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.c.setColor(this.a);
+    this.c.setMaskFilter(new BlurMaskFilter(10.0F, BlurMaskFilter.Blur.INNER));
+    this.e = new RectF();
     setClickable(true);
     setWillNotDraw(false);
   }
@@ -89,42 +90,55 @@ public class GuideView
     setVisibility(0);
   }
   
+  public Rect getFirstHoleRect()
+  {
+    RectF localRectF;
+    if (this.g.size() > 0) {
+      localRectF = ((HoleBean)this.g.get(0)).b();
+    } else {
+      localRectF = new RectF();
+    }
+    Rect localRect = new Rect();
+    localRectF.round(localRect);
+    return localRect;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.g;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.c.setXfermode(this.h);
+      this.c.setStyle(Paint.Style.FILL);
+      localObject = this.g.iterator();
       while (((Iterator)localObject).hasNext())
       {
         HoleBean localHoleBean = (HoleBean)((Iterator)localObject).next();
-        RectF localRectF = localHoleBean.a();
-        localRectF.offset(-this.jdField_a_of_type_AndroidGraphicsRectF.left, -this.jdField_a_of_type_AndroidGraphicsRectF.top);
-        int i = localHoleBean.b();
-        if (i != 0)
+        RectF localRectF = localHoleBean.b();
+        localRectF.offset(-this.e.left, -this.e.top);
+        int j = localHoleBean.c();
+        if (j != 0)
         {
-          if (i != 1)
+          if (j != 1)
           {
-            if (i == 2) {
-              this.jdField_a_of_type_AndroidGraphicsCanvas.drawOval(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+            if (j == 2) {
+              this.f.drawOval(localRectF, this.c);
             }
           }
           else {
-            this.jdField_a_of_type_AndroidGraphicsCanvas.drawRect(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+            this.f.drawRect(localRectF, this.c);
           }
         }
         else {
-          this.jdField_a_of_type_AndroidGraphicsCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localHoleBean.a(), this.jdField_a_of_type_AndroidGraphicsPaint);
+          this.f.drawCircle(localRectF.centerX(), localRectF.centerY(), localHoleBean.a(), this.c);
         }
       }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top, null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float + 0.1F);
-      paramCanvas.drawRect(a(this.jdField_a_of_type_AndroidGraphicsRectF), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.d, this.e.left, this.e.top, null);
+      this.c.setXfermode(null);
+      this.c.setStyle(Paint.Style.STROKE);
+      this.c.setStrokeWidth(this.b + 0.1F);
+      paramCanvas.drawRect(a(this.e), this.c);
     }
   }
   
@@ -135,37 +149,37 @@ public class GuideView
   
   public void setHoleList(List<HoleBean> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramList = this.jdField_a_of_type_JavaUtilList;
+    this.g = paramList;
+    paramList = this.g;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramList = this.g.iterator();
       while (paramList.hasNext())
       {
         HoleBean localHoleBean = (HoleBean)paramList.next();
-        this.jdField_a_of_type_AndroidGraphicsRectF.union(localHoleBean.a());
+        this.e.union(localHoleBean.b());
       }
     }
-    this.jdField_a_of_type_Float = Math.max(Math.max(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top), Math.max(a(getContext()) - this.jdField_a_of_type_AndroidGraphicsRectF.right, b(getContext()) - this.jdField_a_of_type_AndroidGraphicsRectF.bottom));
-    if ((this.jdField_a_of_type_AndroidGraphicsRectF.width() > 0.0F) && (this.jdField_a_of_type_AndroidGraphicsRectF.height() > 0.0F)) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height(), Bitmap.Config.ARGB_8888);
+    this.b = Math.max(Math.max(this.e.left, this.e.top), Math.max(a(getContext()) - this.e.right, b(getContext()) - this.e.bottom));
+    if ((this.e.width() > 0.0F) && (this.e.height() > 0.0F)) {
+      this.d = Bitmap.createBitmap((int)this.e.width(), (int)this.e.height(), Bitmap.Config.ARGB_8888);
     } else {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
+      this.d = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(getContext());
-    this.jdField_a_of_type_AndroidWidgetButton.setX(this.jdField_a_of_type_AndroidGraphicsRectF.left);
-    this.jdField_a_of_type_AndroidWidgetButton.setY(this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(2131690382));
-    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(new FrameLayout.LayoutParams((int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height()));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(0);
-    addView(this.jdField_a_of_type_AndroidWidgetButton);
+    this.f = new Canvas(this.d);
+    this.f.drawColor(this.a);
+    this.i = new Button(getContext());
+    this.i.setX(this.e.left);
+    this.i.setY(this.e.top);
+    this.i.setContentDescription(getContext().getString(2131887293));
+    this.i.setLayoutParams(new FrameLayout.LayoutParams((int)this.e.width(), (int)this.e.height()));
+    this.i.setBackgroundColor(0);
+    addView(this.i);
   }
   
   public void setHoleOnClick(View.OnClickListener paramOnClickListener)
   {
-    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+    Button localButton = this.i;
     if (localButton != null) {
       localButton.setOnClickListener(paramOnClickListener);
     }

@@ -13,47 +13,47 @@ public class PicSelectAdapter$PicItemViewHolder
   implements View.OnClickListener
 {
   public ImageView a;
-  private PicSelectAdapter.OnImgClickListener a;
-  public NumberCheckBox a;
-  public ImageView[] a;
-  public NumberCheckBox[] a;
-  public ImageView b;
   public NumberCheckBox b;
-  public ImageView[] b;
   public ImageView c;
-  public NumberCheckBox c;
   public ImageView d;
-  public ImageView e;
+  public NumberCheckBox e;
   public ImageView f;
+  public ImageView g;
+  public NumberCheckBox h;
+  public ImageView i;
+  public ImageView[] j;
+  public NumberCheckBox[] k;
+  public ImageView[] l;
+  private PicSelectAdapter.OnImgClickListener m;
   
   public PicSelectAdapter$PicItemViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368660));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364614));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368695));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368661));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364615));
-    this.d = ((ImageView)paramView.findViewById(2131368696));
-    this.e = ((ImageView)paramView.findViewById(2131368662));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364616));
-    this.f = ((ImageView)paramView.findViewById(2131368697));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, this.e };
-    paramView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-    int j = paramView.length;
-    int i = 0;
-    while (i < j)
+    this.a = ((ImageView)paramView.findViewById(2131435573));
+    this.b = ((NumberCheckBox)paramView.findViewById(2131430691));
+    this.c = ((ImageView)paramView.findViewById(2131435608));
+    this.d = ((ImageView)paramView.findViewById(2131435574));
+    this.e = ((NumberCheckBox)paramView.findViewById(2131430692));
+    this.f = ((ImageView)paramView.findViewById(2131435609));
+    this.g = ((ImageView)paramView.findViewById(2131435575));
+    this.h = ((NumberCheckBox)paramView.findViewById(2131430693));
+    this.i = ((ImageView)paramView.findViewById(2131435610));
+    this.j = new ImageView[] { this.a, this.d, this.g };
+    paramView = this.j;
+    int i1 = paramView.length;
+    int n = 0;
+    while (n < i1)
     {
-      paramView[i].setOnClickListener(this);
-      i += 1;
+      paramView[n].setOnClickListener(this);
+      n += 1;
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox = new NumberCheckBox[] { this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox };
-    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_b_of_type_AndroidWidgetImageView, this.d, this.f };
+    this.k = new NumberCheckBox[] { this.b, this.e, this.h };
+    this.l = new ImageView[] { this.c, this.f, this.i };
   }
   
   void a(PicSelectAdapter.OnImgClickListener paramOnImgClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener = paramOnImgClickListener;
+    this.m = paramOnImgClickListener;
   }
   
   public void onClick(View paramView)
@@ -67,7 +67,7 @@ public class PicSelectAdapter$PicItemViewHolder
       ((StringBuilder)localObject).append(this.itemView.getTag());
       QLog.i("picOnClick.1", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener;
+    Object localObject = this.m;
     if (localObject != null) {
       ((PicSelectAdapter.OnImgClickListener)localObject).a(((Integer)this.itemView.getTag()).intValue(), paramView.getId());
     }
@@ -76,7 +76,7 @@ public class PicSelectAdapter$PicItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.PicItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

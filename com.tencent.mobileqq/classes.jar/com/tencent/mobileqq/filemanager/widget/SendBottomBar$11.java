@@ -14,18 +14,18 @@ class SendBottomBar$11
   public void a()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(FMDataCache.a());
+    localArrayList.addAll(FMDataCache.g());
     Intent localIntent = new Intent();
     localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a).finish();
+    SendBottomBar.c(this.a).setResult(-1, localIntent);
+    SendBottomBar.c(this.a).finish();
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.11
  * JD-Core Version:    0.7.0.1
  */

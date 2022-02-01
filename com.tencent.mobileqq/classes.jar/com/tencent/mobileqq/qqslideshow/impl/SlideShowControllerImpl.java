@@ -26,12 +26,12 @@ public class SlideShowControllerImpl
   
   public List<SlideItemInfo> getPhotoList()
   {
-    return SlideShowPhotoListManager.a().a();
+    return SlideShowPhotoListManager.a().f();
   }
   
   public List<SlideItemInfo> getTemp()
   {
-    return SlideShowPhotoListManager.a().c();
+    return SlideShowPhotoListManager.a().h();
   }
   
   public void initPhotoListController(Activity paramActivity, View paramView, SlideShowActionListener paramSlideShowActionListener, boolean paramBoolean)
@@ -42,9 +42,9 @@ public class SlideShowControllerImpl
     SlideShowPhotoListManager.a().a(paramActivity);
     if (paramBoolean)
     {
-      paramActivity = (TransitionHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.b);
+      paramActivity = (TransitionHandler)QQStoryContext.k().getBusinessHandler(PeakAppInterface.c);
       if (paramActivity != null) {
-        paramActivity.a();
+        paramActivity.b();
       }
     }
   }
@@ -74,19 +74,19 @@ public class SlideShowControllerImpl
   
   public void onPhotoListDestroy()
   {
-    SlideShowPhotoListManager.a().d();
+    SlideShowPhotoListManager.a().k();
     this.photoListController = null;
   }
   
   public void onPhotoPreviewDestroy()
   {
-    SlideShowPhotoListManager.a().d();
+    SlideShowPhotoListManager.a().k();
     this.photoPreviewController = null;
   }
   
   public void onResume()
   {
-    SlideShowPhotoListManager.a().b();
+    SlideShowPhotoListManager.a().i();
   }
   
   public void setData(List<SlideItemInfo> paramList)
@@ -119,7 +119,7 @@ public class SlideShowControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqslideshow.impl.SlideShowControllerImpl
  * JD-Core Version:    0.7.0.1
  */

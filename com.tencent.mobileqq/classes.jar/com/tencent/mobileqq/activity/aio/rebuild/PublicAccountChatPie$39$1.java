@@ -25,8 +25,8 @@ class PublicAccountChatPie$39$1
   
   public void run()
   {
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).find(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject = this.a.c.d.getEntityManagerFactory().createEntityManager();
+    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).find(EqqDetail.class, this.a.c.ah.b);
     ((EntityManager)localObject).close();
     if (localEqqDetail == null) {
       return;
@@ -45,14 +45,14 @@ class PublicAccountChatPie$39$1
         while (localIterator2.hasNext())
         {
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(HardCodeUtil.a(2131708747))) {
+          if (localConfigInfo.title.get().equals(HardCodeUtil.a(2131906527))) {
             localConfigInfo.state.set(1);
           }
         }
       }
       localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((EqqDetailDataManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER)).a(localEqqDetail);
-      this.a.a.jdField_a_of_type_ComTencentQidianQidianManager.a(true);
+      ((EqqDetailDataManager)this.a.c.d.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER)).a(localEqqDetail);
+      this.a.c.cL.a(true);
       return;
     }
     catch (Exception localException) {}
@@ -60,7 +60,7 @@ class PublicAccountChatPie$39$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.39.1
  * JD-Core Version:    0.7.0.1
  */

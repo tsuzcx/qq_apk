@@ -12,7 +12,7 @@ class QRDisplayActivity$15$1
     if (this.a.this$0.isFinishing()) {
       return;
     }
-    QRUtils.a(1, 2131696480);
+    QRUtils.a(1, 2131894252);
   }
 }
 

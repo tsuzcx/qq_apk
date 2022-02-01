@@ -11,6 +11,7 @@ import androidx.lifecycle.LifecycleOwner;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.falco.utils.ThreadCenter;
+import com.tencent.ilive.EnterRoomConfig;
 import com.tencent.ilive.interfaces.IAudienceRoomPager;
 import com.tencent.ilivesdk.roomswitchservice_interface.SwitchRoomInfo;
 import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
@@ -20,6 +21,7 @@ import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodul
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.WebviewWrapper;
 import com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager;
 import com.tencent.mobileqq.litelivesdk.framework.room.RoomManager;
+import com.tencent.mobileqq.litelivesdk.utils.UriUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import cooperation.ilive.lite.IliveLiteMonitorUtil;
@@ -28,40 +30,20 @@ import cooperation.ilive.lite.event.IliveLiteEventCenter.Observer;
 import cooperation.ilive.lite.js.IliveSingleWebviewWrapper;
 import cooperation.ilive.lite.rommswitch.LiveLiteRoomSwitchService;
 import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class IliveSingleWebModule
   extends IliveWebBizModule
 {
-  private static IliveSingleWebviewWrapper jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper;
-  private static String jdField_b_of_type_JavaLangString;
-  private static boolean jdField_b_of_type_Boolean = true;
-  private long jdField_a_of_type_Long;
-  private IliveLiteEventCenter.Observer jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter$Observer = new IliveSingleWebModule.1(this);
-  private boolean c = false;
-  private boolean d = false;
-  
-  private TouchWebView a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = WebViewPool.a.a();
-    }
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
-  }
-  
-  private HashMap<String, String> a()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (b())) {
-      return (HashMap)RoomManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    return null;
-  }
-  
-  private JSONObject a()
-  {
-    return new JSONObject(a());
-  }
+  private static String a;
+  private static boolean b = true;
+  private static IliveSingleWebviewWrapper q;
+  private boolean n = false;
+  private boolean o = false;
+  private long p;
+  private IliveLiteEventCenter.Observer r = new IliveSingleWebModule.1(this);
   
   private JSONObject a(long paramLong)
   {
@@ -78,16 +60,28 @@ public class IliveSingleWebModule
     return localJSONObject;
   }
   
+  public static void a()
+  {
+    QLog.e("IliveSingleWebModule", 1, "destorySingleWebView");
+    a = "";
+    IliveSingleWebviewWrapper localIliveSingleWebviewWrapper = q;
+    if (localIliveSingleWebviewWrapper != null)
+    {
+      localIliveSingleWebviewWrapper.d();
+      q = null;
+    }
+  }
+  
   private void a(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return;
     }
     paramBundle = paramBundle.getString("callback_id");
-    TouchWebView localTouchWebView = a();
+    TouchWebView localTouchWebView = t();
     if ((localTouchWebView != null) && (!TextUtils.isEmpty(paramBundle)))
     {
-      long l = a();
+      long l = m();
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -111,18 +105,37 @@ public class IliveSingleWebModule
     if (paramBundle == null) {
       return;
     }
-    ThreadCenter.postDefaultUITask(new IliveSingleWebModule.2(this, paramBundle));
-  }
-  
-  public static void c()
-  {
-    QLog.e("IliveSingleWebModule", 1, "destorySingleWebView");
-    jdField_b_of_type_JavaLangString = "";
-    IliveSingleWebviewWrapper localIliveSingleWebviewWrapper = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper;
-    if (localIliveSingleWebviewWrapper != null)
+    Object localObject1 = paramBundle.getString("callback_id");
+    int i = paramBundle.getInt("code");
+    String str = paramBundle.getString("message");
+    paramBundle = t();
+    if ((paramBundle != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      localIliveSingleWebviewWrapper.b();
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper = null;
+      long l = m();
+      Object localObject2 = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject2).put("code", i);
+        ((JSONObject)localObject2).put("message", str);
+        ((JSONObject)localObject2).put("roomId", l);
+        str = ((JSONObject)localObject2).toString();
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("callbackNeedShowGiftIcon resultString:");
+          ((StringBuilder)localObject2).append(str);
+          QLog.d("IliveSingleWebModule", 2, ((StringBuilder)localObject2).toString());
+        }
+        paramBundle.callJs((String)localObject1, new String[] { str });
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("callbackNeedShowGiftIcon throw e:");
+        ((StringBuilder)localObject1).append(paramBundle.getMessage());
+        QLog.e("IliveSingleWebModule", 1, ((StringBuilder)localObject1).toString());
+      }
     }
   }
   
@@ -131,19 +144,35 @@ public class IliveSingleWebModule
     if (paramBundle == null) {
       return;
     }
+    ThreadCenter.postDefaultUITask(new IliveSingleWebModule.2(this, paramBundle));
+  }
+  
+  private void d(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
     ThreadCenter.postDefaultUITask(new IliveSingleWebModule.3(this, paramBundle));
   }
   
-  private boolean c()
+  private TouchWebView t()
   {
-    TouchWebView localTouchWebView = a();
+    if (this.f == null) {
+      this.f = WebViewPool.a.b();
+    }
+    return this.f;
+  }
+  
+  private boolean u()
+  {
+    TouchWebView localTouchWebView = t();
     if (localTouchWebView == null) {
       return false;
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
+    while (i < this.g.getChildCount())
     {
-      if (this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i) == localTouchWebView) {
+      if (this.g.getChildAt(i) == localTouchWebView) {
         return true;
       }
       i += 1;
@@ -151,21 +180,21 @@ public class IliveSingleWebModule
     return false;
   }
   
-  private void h()
+  private void v()
   {
-    if (TextUtils.isEmpty(jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(a))
     {
       QLog.e("IliveSingleWebModule", 1, "preloadNextRoom mSwitchCallbackId = null");
       return;
     }
-    TouchWebView localTouchWebView = a();
+    TouchWebView localTouchWebView = t();
     if (localTouchWebView != null)
     {
-      long l1 = LiveLiteRoomSwitchService.a(a() - 1);
-      long l2 = LiveLiteRoomSwitchService.a(a() + 1);
+      long l1 = LiveLiteRoomSwitchService.a(c() - 1);
+      long l2 = LiveLiteRoomSwitchService.a(c() + 1);
       JSONObject localJSONObject1 = new JSONObject();
       Object localObject = new JSONObject();
-      JSONObject localJSONObject2 = a();
+      JSONObject localJSONObject2 = w();
       JSONObject localJSONObject3 = a(l1);
       JSONObject localJSONObject4 = a(l2);
       try
@@ -179,7 +208,7 @@ public class IliveSingleWebModule
         ((StringBuilder)localObject).append(localJSONObject1.toString());
         QLog.e("IliveSingleWebModule", 1, ((StringBuilder)localObject).toString());
         IliveLiteMonitorUtil.a("live_switch_consume");
-        localTouchWebView.callJs(jdField_b_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
+        localTouchWebView.callJs(a, new String[] { localJSONObject1.toString() });
         return;
       }
       catch (JSONException localJSONException)
@@ -189,32 +218,17 @@ public class IliveSingleWebModule
     }
   }
   
-  protected App a()
+  private JSONObject w()
   {
-    IliveSingleWebviewWrapper localIliveSingleWebviewWrapper = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper;
-    if (localIliveSingleWebviewWrapper != null) {
-      return localIliveSingleWebviewWrapper.a();
-    }
-    return super.a();
+    return new JSONObject(x());
   }
   
-  protected WebviewWrapper a()
+  private HashMap<String, String> x()
   {
-    return jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper;
-  }
-  
-  protected void a()
-  {
-    if (jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper == null) {
-      return;
+    if ((!TextUtils.isEmpty(this.h)) && (b())) {
+      return (HashMap)RoomManager.a(this.h);
     }
-    QLog.e("IliveSingleWebModule", 1, "registerJsModule");
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a();
-    super.a();
+    return null;
   }
   
   protected void a(int paramInt)
@@ -225,70 +239,116 @@ public class IliveSingleWebModule
     QLog.e("IliveSingleWebModule", 1, localStringBuilder.toString());
   }
   
-  protected void d()
+  public String d()
+  {
+    Object localObject2 = super.d();
+    Object localObject3 = BusinessManager.a.c();
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
+    {
+      localObject1 = localObject2;
+      if (((EnterRoomConfig)localObject3).extData != null)
+      {
+        Map localMap = RoomManager.a(((EnterRoomConfig)localObject3).extData.getString("mqqschema"));
+        localObject1 = localObject2;
+        if (localMap.containsKey("room_type")) {
+          localObject1 = UriUtil.b((String)localObject2, "room_type", (String)localMap.get("room_type"));
+        }
+        localObject2 = localObject1;
+        if (localMap.containsKey("game_id")) {
+          localObject2 = UriUtil.b((String)localObject1, "game_id", (String)localMap.get("game_id"));
+        }
+        localObject3 = localObject2;
+        if (localMap.containsKey("game_tag_id")) {
+          localObject3 = UriUtil.b((String)localObject2, "game_tag_id", (String)localMap.get("game_tag_id"));
+        }
+        localObject1 = localObject3;
+        if (localMap.containsKey("video_source")) {
+          localObject1 = UriUtil.b((String)localObject3, "video_source", (String)localMap.get("video_source"));
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  protected void j()
+  {
+    if (q == null) {
+      return;
+    }
+    QLog.e("IliveSingleWebModule", 1, "registerJsModule");
+    this.k = q.a();
+    if (this.k == null) {
+      return;
+    }
+    this.k.removeAllJsModule();
+    super.j();
+  }
+  
+  protected void n()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("ilivetime  initWebview mSwitchCallbackId = ");
-    ((StringBuilder)localObject).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(a);
     QLog.e("IliveSingleWebModule", 1, ((StringBuilder)localObject).toString());
-    if ((jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper != null) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)))
+    if ((q != null) && (!TextUtils.isEmpty(a)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.a();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = a();
+      this.c = q.b();
+      this.f = t();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider = new LiteLiveJsProvider();
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper = new IliveSingleWebviewWrapper(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider, this, getRootView());
+      this.k = new LiteLiveJsProvider();
+      q = new IliveSingleWebviewWrapper(BaseApplicationImpl.getContext(), this.l, this.k, this, getRootView());
       QLog.e("IliveSingleWebModule", 1, "initWebview create WebviewWrapper ");
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.getWebview());
-      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings();
+      this.f = ((TouchWebView)q.getWebview());
+      localObject = this.f.getSettings();
       ((WebSettings)localObject).setUserAgentString(a(((WebSettings)localObject).getUserAgentString()));
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setHorizontalScrollBarEnabled(false);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVerticalScrollBarEnabled(false);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOverScrollMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp = new App(this.context.getApplicationContext(), getAudienceRoomPager(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp);
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.onInit((Activity)this.context, ((Activity)this.context).getIntent(), "", this);
-      e();
-      a();
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.a();
-      a(this.jdField_a_of_type_JavaLangString);
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.setOnWebviewTouchListener(this);
+      this.f.setBackgroundColor(0);
+      this.f.setHorizontalScrollBarEnabled(false);
+      this.f.setVerticalScrollBarEnabled(false);
+      this.f.setOverScrollMode(2);
+      this.c = new App(this.context.getApplicationContext(), getAudienceRoomPager(), this.i, this.j);
+      q.a(this.c);
+      q.onInit((Activity)this.context, ((Activity)this.context).getIntent(), "", this);
+      o();
+      j();
+      q.c();
+      b(this.h);
+      q.setOnWebviewTouchListener(this);
       if ((getAudienceRoomPager() != null) && (this.isUserVisibleHint))
       {
         localObject = getAudienceRoomPager();
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.j) {
           ((IAudienceRoomPager)localObject).setScrollForbidden(true);
         } else {
           ((IAudienceRoomPager)localObject).setScrollForbidden(false);
         }
       }
     }
-    f();
+    p();
   }
   
-  protected void e()
+  protected void o()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("addWebView mIsLoadUrl = ");
-    ((StringBuilder)localObject1).append(this.d);
+    ((StringBuilder)localObject1).append(this.o);
     ((StringBuilder)localObject1).append(" mIsShow = ");
-    ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append(this.n);
     QLog.e("IliveSingleWebModule", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = a();
+    localObject1 = t();
     if (localObject1 == null) {
       return;
     }
-    if ((this.d) && (this.c)) {
+    if ((this.o) && (this.n)) {
       ((TouchWebView)localObject1).setVisibility(0);
     }
-    Object localObject2 = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper;
+    Object localObject2 = q;
     if (localObject2 != null) {
       ((IliveSingleWebviewWrapper)localObject2).onResume();
     }
-    if (c()) {
+    if (u()) {
       return;
     }
     try
@@ -296,11 +356,11 @@ public class IliveSingleWebModule
       if (((TouchWebView)localObject1).getParent() != null) {
         ((ViewGroup)((TouchWebView)localObject1).getParent()).removeView((View)localObject1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp != null) {
-        ((TouchWebView)localObject1).addJavascriptInterface(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp, "__WEBVIEW_APP");
+      this.c = q.b();
+      if (this.c != null) {
+        ((TouchWebView)localObject1).addJavascriptInterface(this.c, "__WEBVIEW_APP");
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, new ViewGroup.LayoutParams(-1, -1));
+      this.g.addView((View)localObject1, new ViewGroup.LayoutParams(-1, -1));
       return;
     }
     catch (Throwable localThrowable)
@@ -311,25 +371,6 @@ public class IliveSingleWebModule
       ((StringBuilder)localObject2).append(localThrowable.getMessage());
       QLog.e("IliveSingleWebModule", 1, ((StringBuilder)localObject2).toString());
     }
-  }
-  
-  protected void f()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("start loadUrl roomid = ");
-    localStringBuilder.append(a());
-    localStringBuilder.append(" mSwitchCallbackId = ");
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" isForceLoad = ");
-    localStringBuilder.append(jdField_b_of_type_Boolean);
-    QLog.e("IliveSingleWebModule", 1, localStringBuilder.toString());
-    this.d = true;
-    if ((!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (!BusinessManager.a.a().jdField_a_of_type_Boolean) && (!jdField_b_of_type_Boolean))
-    {
-      e();
-      return;
-    }
-    super.f();
   }
   
   public void onActivityPause(LifecycleOwner paramLifecycleOwner)
@@ -363,23 +404,23 @@ public class IliveSingleWebModule
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    IliveLiteEventCenter.a().a(this.jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter$Observer);
+    IliveLiteEventCenter.a().a(this.r);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    IliveLiteEventCenter.a().b(this.jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter$Observer);
+    IliveLiteEventCenter.a().b(this.r);
   }
   
   public void onExitRoom(boolean paramBoolean)
   {
     super.onExitRoom(paramBoolean);
-    this.d = false;
-    this.c = false;
+    this.o = false;
+    this.n = false;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExitRoom roomId = ");
-    localStringBuilder.append(a());
+    localStringBuilder.append(m());
     QLog.e("IliveSingleWebModule", 1, localStringBuilder.toString());
   }
   
@@ -388,23 +429,62 @@ public class IliveSingleWebModule
     super.onSwitchRoom(paramSwitchRoomInfo);
     paramSwitchRoomInfo = new StringBuilder();
     paramSwitchRoomInfo.append("onSwitchRoom roomId = ");
-    paramSwitchRoomInfo.append(a());
+    paramSwitchRoomInfo.append(m());
     QLog.e("IliveSingleWebModule", 1, paramSwitchRoomInfo.toString());
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a();
-    paramSwitchRoomInfo = jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper;
+    this.p = System.currentTimeMillis();
+    j();
+    paramSwitchRoomInfo = q;
     if (paramSwitchRoomInfo != null)
     {
-      paramSwitchRoomInfo.a(this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
-      jdField_a_of_type_CooperationIliveLiteJsIliveSingleWebviewWrapper.setOnWebviewTouchListener(this);
+      paramSwitchRoomInfo.a(this.context, this.l);
+      q.setOnWebviewTouchListener(this);
     }
-    g();
-    h();
+    q();
+    v();
+  }
+  
+  public void onVisibleToUser(boolean paramBoolean)
+  {
+    super.onVisibleToUser(paramBoolean);
+    IliveLiteEventCenter.a().a("ACTION_WEBVIEW_SHOW_GIFT_ICON_EVENT", null);
+  }
+  
+  protected void p()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start loadUrl roomid = ");
+    localStringBuilder.append(m());
+    localStringBuilder.append(" mSwitchCallbackId = ");
+    localStringBuilder.append(a);
+    localStringBuilder.append(" isForceLoad = ");
+    localStringBuilder.append(b);
+    QLog.e("IliveSingleWebModule", 1, localStringBuilder.toString());
+    this.o = true;
+    if ((!TextUtils.isEmpty(a)) && (!BusinessManager.a.b().k) && (!b))
+    {
+      o();
+      return;
+    }
+    super.p();
+  }
+  
+  protected App r()
+  {
+    IliveSingleWebviewWrapper localIliveSingleWebviewWrapper = q;
+    if (localIliveSingleWebviewWrapper != null) {
+      return localIliveSingleWebviewWrapper.b();
+    }
+    return super.r();
+  }
+  
+  protected WebviewWrapper s()
+  {
+    return q;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveSingleWebModule
  * JD-Core Version:    0.7.0.1
  */

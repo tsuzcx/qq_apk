@@ -1,28 +1,37 @@
 package com.tencent.mobileqq.msf.core.quicksend;
 
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.msf.core.b.a;
+import com.tencent.mobileqq.msf.core.net.d.a.a;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
 class c
-  extends Handler
+  implements a.a
 {
   c(b paramb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramMessage.what != 1) {
-      return;
+    QLog.d("MsfQuickUdpClient", 1, new Object[] { "[onMessageReceived] ", a.a(paramFromServiceMsg) });
+    if (paramFromServiceMsg != null) {
+      this.a.a(paramToServiceMsg, paramFromServiceMsg, -1);
     }
-    int i = paramMessage.arg1;
-    paramMessage = this.a;
-    b.a(paramMessage, (ToServiceMsg)b.a(paramMessage).get(Integer.valueOf(i)));
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, Exception paramException)
+  {
+    QLog.d("MsfQuickUdpClient", 1, new Object[] { "[onMessageFailure] ", paramToServiceMsg, ", error: ", paramException });
+    if (this.a.c(paramToServiceMsg))
+    {
+      b.a(this.a, paramToServiceMsg);
+      QLog.d("MsfQuickUdpClient", 1, new Object[] { "[onMessageFailure] resend msg: ", paramToServiceMsg });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quicksend.c
  * JD-Core Version:    0.7.0.1
  */

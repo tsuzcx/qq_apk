@@ -5,11 +5,8 @@ import android.content.res.TypedArray;
 public class LyricViewAttribute
 {
   public int a;
-  public boolean a;
   public int b;
-  public boolean b;
   public int c;
-  public boolean c;
   public int d;
   public int e;
   public int f;
@@ -18,13 +15,16 @@ public class LyricViewAttribute
   public int i;
   public int j;
   public int k;
-  public int l;
+  public boolean l;
+  public boolean m;
+  public int n;
+  public boolean o;
   
   public void a(TypedArray paramTypedArray)
   {
-    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(19, 16);
-    this.jdField_b_of_type_Int = paramTypedArray.getInt(18, 255);
-    this.jdField_c_of_type_Int = paramTypedArray.getInt(20, 255);
+    this.a = paramTypedArray.getDimensionPixelSize(19, 16);
+    this.b = paramTypedArray.getInt(18, 255);
+    this.c = paramTypedArray.getInt(20, 255);
     this.d = paramTypedArray.getDimensionPixelSize(8, 20);
     this.i = paramTypedArray.getDimensionPixelSize(9, 20);
     this.j = paramTypedArray.getDimensionPixelSize(0, 15);
@@ -33,15 +33,15 @@ public class LyricViewAttribute
     this.g = paramTypedArray.getInt(5, 255);
     this.h = paramTypedArray.getDimensionPixelSize(3, 20);
     this.k = paramTypedArray.getDimensionPixelSize(12, 20);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(11, false);
-    this.l = paramTypedArray.getDimensionPixelSize(7, 10);
-    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
-    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(1, true);
+    this.l = paramTypedArray.getBoolean(11, false);
+    this.n = paramTypedArray.getDimensionPixelSize(7, 10);
+    this.o = paramTypedArray.getBoolean(6, false);
+    this.m = paramTypedArray.getBoolean(1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewAttribute
  * JD-Core Version:    0.7.0.1
  */

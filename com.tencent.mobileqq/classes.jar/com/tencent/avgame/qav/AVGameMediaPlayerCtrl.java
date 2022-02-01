@@ -28,106 +28,106 @@ import mqq.util.WeakReference;
 public class AVGameMediaPlayerCtrl
   implements AVGameMediaPlayerWrapper.OnAVGameMediaPlayerCallBack, IAVGameMediaPlayerCtrl
 {
-  private RGBToI420Filter jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = null;
-  private RecordParam jdField_a_of_type_ComTencentAvcoreDataRecordParam = new RecordParam();
   protected AVGameMediaPlayerWrapper a;
-  private AVGameMediaPlayerCtrl.CustomHandler jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
-  private AVGameVideoPreLoadMgr jdField_a_of_type_ComTencentAvgameQavAVGameVideoPreLoadMgr;
-  private EglHandlerThread jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private volatile Float jdField_a_of_type_JavaLangFloat;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private String jdField_a_of_type_JavaLangString;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
-  private CopyOnWriteArrayList<WeakReference<IAVGameMediaPlayerCtrl.PushDecodeMsg>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-  private Integer jdField_b_of_type_JavaLangInteger;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private boolean c = true;
-  private volatile boolean d = true;
+  private EglHandlerThread b;
+  private AVGameMediaPlayerCtrl.CustomHandler c;
+  private float[] d = new float[16];
+  private float[] e = new float[16];
+  private RenderBuffer f;
+  private TextureRender g;
+  private RenderBuffer h = null;
+  private ByteBuffer i = null;
+  private byte[] j = null;
+  private RGBToI420Filter k = null;
+  private boolean l = false;
+  private RecordParam m = new RecordParam();
+  private boolean n = false;
+  private boolean o = true;
+  private AVGameVideoPreLoadMgr p;
+  private String q;
+  private Integer r;
+  private Integer s;
+  private volatile boolean t = true;
+  private CopyOnWriteArrayList<WeakReference<IAVGameMediaPlayerCtrl.PushDecodeMsg>> u = new CopyOnWriteArrayList();
+  private volatile Float v;
   
   private void a(int paramInt1, int paramInt2)
   {
-    Integer localInteger = this.jdField_a_of_type_JavaLangInteger;
-    if ((localInteger != null) && (paramInt1 == localInteger.intValue()) && (paramInt2 == this.jdField_b_of_type_JavaLangInteger.intValue()))
+    Integer localInteger = this.r;
+    if ((localInteger != null) && (paramInt1 == localInteger.intValue()) && (paramInt2 == this.s.intValue()))
     {
       paramInt1 = 0;
     }
     else
     {
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt1);
-      this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
+      this.r = Integer.valueOf(paramInt1);
+      this.s = Integer.valueOf(paramInt2);
       paramInt1 = 1;
     }
     if (paramInt1 != 0) {
-      l();
+      o();
     }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), 33984);
-      Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-      Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+      this.f = new RenderBuffer(this.r.intValue(), this.s.intValue(), 33984);
+      Matrix.setIdentityM(this.e, 0);
+      Matrix.scaleM(this.e, 0, 1.0F, -1.0F, 1.0F);
     }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    if (this.g == null) {
+      this.g = new TextureRender();
     }
-    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null)
+    if (this.h == null)
     {
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), 33985);
-      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_a_of_type_JavaLangInteger.intValue() * this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 2);
-      this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_JavaLangInteger.intValue() * this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 2];
+      this.h = new RenderBuffer(this.r.intValue(), this.s.intValue(), 33985);
+      this.i = ByteBuffer.allocate(this.r.intValue() * this.s.intValue() * 3 / 2);
+      this.j = new byte[this.r.intValue() * this.s.intValue() * 3 / 2];
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter == null)
+    if (this.k == null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = new RGBToI420Filter();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.b();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.a(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue());
+      this.k = new RGBToI420Filter();
+      this.k.b();
+      this.k.a(this.r.intValue(), this.s.intValue());
     }
   }
   
   private void a(int paramInt1, int paramInt2, long paramLong)
   {
     a(paramInt1 / 16 * 16, paramInt2 / 8 * 8);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper.a(), this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
-    GLES20.glReadPixels(0, 0, this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 8, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_JavaLangInteger.intValue() * this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 2);
-    this.jdField_a_of_type_JavaNioByteBuffer.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    this.f.bind();
+    this.g.drawTexture(36197, this.a.e(), this.d, this.e);
+    this.f.unbind();
+    this.h.bind();
+    this.k.a(this.f.getTexId());
+    GLES20.glReadPixels(0, 0, this.r.intValue(), this.s.intValue() * 3 / 8, 6408, 5121, this.i);
+    this.h.unbind();
+    this.i.get(this.j, 0, this.r.intValue() * this.s.intValue() * 3 / 2);
+    this.i.clear();
+    Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((IAVGameMediaPlayerCtrl.PushDecodeMsg)localWeakReference.get()).a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), paramLong);
+        ((IAVGameMediaPlayerCtrl.PushDecodeMsg)localWeakReference.get()).a(this.j, this.r.intValue(), this.s.intValue(), paramLong);
       }
     }
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), 15);
+    if (this.n) {
+      this.m.update(this.r.intValue(), this.s.intValue(), 15);
     }
   }
   
   private void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, long paramLong)
   {
-    paramSurfaceTexture = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
-    if ((paramSurfaceTexture != null) && (paramSurfaceTexture.a() != null))
+    paramSurfaceTexture = this.a;
+    if ((paramSurfaceTexture != null) && (paramSurfaceTexture.f() != null))
     {
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper.a() == -1) {
+      if (this.a.e() == -1) {
         return;
       }
       try
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper.a().updateTexImage();
-        this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper.a().getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        if (this.d)
+        this.a.f().updateTexImage();
+        this.a.f().getTransformMatrix(this.d);
+        if (this.t)
         {
           a(paramInt1, paramInt2, paramLong);
           return;
@@ -140,91 +140,69 @@ public class AVGameMediaPlayerCtrl
     }
   }
   
-  private void j()
+  private void m()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread = new EglHandlerThread("eglHandelr_thread", null);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.start();
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler = new AVGameMediaPlayerCtrl.CustomHandler(this, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.getLooper());
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler.sendEmptyMessage(152);
+      this.b = new EglHandlerThread("eglHandelr_thread", null);
+      this.b.start();
+      this.c = new AVGameMediaPlayerCtrl.CustomHandler(this, this.b.getLooper());
+      this.c.sendEmptyMessage(152);
     }
   }
   
-  private void k()
+  private void n()
   {
     QLog.d("AVGameMediaPlayerCtrl", 1, "initEgl");
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper.a(this, this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler);
+    Matrix.setIdentityM(this.d, 0);
+    Matrix.setIdentityM(this.e, 0);
+    this.a.a(this, this.c);
   }
   
-  private void l()
+  private void o()
   {
     QLog.d("AVGameMediaPlayerCtrl", 1, "unInitEgl");
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    Object localObject = this.f;
     if (localObject != null)
     {
       ((RenderBuffer)localObject).destroy();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+      this.f = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    localObject = this.g;
     if (localObject != null)
     {
       ((TextureRender)localObject).release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+      this.g = null;
     }
-    localObject = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.h;
     if (localObject != null)
     {
       ((RenderBuffer)localObject).destroy();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+      this.h = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter;
+    localObject = this.k;
     if (localObject != null)
     {
       ((RGBToI420Filter)localObject).c();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = null;
+      this.k = null;
     }
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_ArrayOfByte = null;
-  }
-  
-  public long a()
-  {
-    AVGameMediaPlayerWrapper localAVGameMediaPlayerWrapper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
-    if (localAVGameMediaPlayerWrapper != null) {
-      return localAVGameMediaPlayerWrapper.a();
-    }
-    return 0L;
+    this.i = null;
+    this.j = null;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "relasePlayVideo");
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
-    if (localObject != null) {
-      ((AVGameMediaPlayerWrapper)localObject).a();
-    }
-    localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
-    if (localObject != null) {
-      ((AVGameMediaPlayerCtrl.CustomHandler)localObject).sendEmptyMessage(258);
-    }
+    return this.q;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangFloat = Float.valueOf(paramInt3 * 1.0F / paramInt2);
+    this.v = Float.valueOf(paramInt3 * 1.0F / paramInt2);
   }
   
   public void a(IAVGameMediaPlayerCtrl.PushDecodeMsg paramPushDecodeMsg)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -232,65 +210,65 @@ public class AVGameMediaPlayerCtrl
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(new WeakReference(paramPushDecodeMsg));
+    this.u.add(new WeakReference(paramPushDecodeMsg));
   }
   
   public void a(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    if (!this.c) {
+    if (!this.o) {
       return;
     }
-    i();
+    l();
     if (Build.VERSION.SDK_INT >= 16)
     {
       if (paramTPAudioFrameBuffer.getChannelLayout() == 3L)
       {
-        int n = paramTPAudioFrameBuffer.getSize()[0] / 2;
-        byte[] arrayOfByte1 = new byte[n];
-        int k = 0;
-        int m = 0;
-        while (k < n)
+        int i5 = paramTPAudioFrameBuffer.getSize()[0] / 2;
+        byte[] arrayOfByte1 = new byte[i5];
+        int i3 = 0;
+        int i4 = 0;
+        while (i3 < i5)
         {
           byte[] arrayOfByte2 = paramTPAudioFrameBuffer.data[0];
-          int i4 = k * 2;
-          int i2 = (short)arrayOfByte2[i4];
-          int i1 = (short)paramTPAudioFrameBuffer.data[0][(i4 + 1)];
-          int i3 = (short)paramTPAudioFrameBuffer.data[0][(i4 + 2)];
-          i4 = (short)paramTPAudioFrameBuffer.data[0][(i4 + 3)];
-          i2 = (i2 + i3) / 2;
-          i1 = (i1 + i4) / 2;
-          i3 = m + 1;
-          int j = -128;
-          int i;
-          if (i2 > 127) {
-            i = 127;
-          } else if (i2 < -128) {
-            i = -128;
+          int i9 = i3 * 2;
+          int i7 = (short)arrayOfByte2[i9];
+          int i6 = (short)paramTPAudioFrameBuffer.data[0][(i9 + 1)];
+          int i8 = (short)paramTPAudioFrameBuffer.data[0][(i9 + 2)];
+          i9 = (short)paramTPAudioFrameBuffer.data[0][(i9 + 3)];
+          i7 = (i7 + i8) / 2;
+          i6 = (i6 + i9) / 2;
+          i8 = i4 + 1;
+          int i2 = -128;
+          int i1;
+          if (i7 > 127) {
+            i1 = 127;
+          } else if (i7 < -128) {
+            i1 = -128;
           } else {
-            i = (byte)i2;
+            i1 = (byte)i7;
           }
-          arrayOfByte1[m] = i;
-          m = i3 + 1;
-          if (i1 > 127) {
-            i = 127;
-          } else if (i1 < -128) {
-            i = j;
+          arrayOfByte1[i4] = i1;
+          i4 = i8 + 1;
+          if (i6 > 127) {
+            i1 = 127;
+          } else if (i6 < -128) {
+            i1 = i2;
           } else {
-            i = (byte)i1;
+            i1 = (byte)i6;
           }
-          arrayOfByte1[i3] = i;
-          k += 2;
+          arrayOfByte1[i8] = i1;
+          i3 += 2;
         }
-        if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < 0.99F) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > 1.01F)) {
-          AudioProcess.a(arrayOfByte1, this.jdField_a_of_type_JavaLangFloat.floatValue());
+        if ((this.v.floatValue() < 0.99F) || (this.v.floatValue() > 1.01F)) {
+          AudioProcess.a(arrayOfByte1, this.v.floatValue());
         }
         AudioProcess.a(arrayOfByte1, arrayOfByte1.length);
         return;
       }
       if (paramTPAudioFrameBuffer.getChannelLayout() == 4L)
       {
-        if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < 0.99F) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > 1.01F)) {
-          AudioProcess.a(paramTPAudioFrameBuffer.data[0], this.jdField_a_of_type_JavaLangFloat.floatValue());
+        if ((this.v.floatValue() < 0.99F) || (this.v.floatValue() > 1.01F)) {
+          AudioProcess.a(paramTPAudioFrameBuffer.data[0], this.v.floatValue());
         }
         AudioProcess.a(paramTPAudioFrameBuffer.data[0], paramTPAudioFrameBuffer.data[0].length);
       }
@@ -299,7 +277,7 @@ public class AVGameMediaPlayerCtrl
   
   public void a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -312,11 +290,11 @@ public class AVGameMediaPlayerCtrl
   public void a(String paramString, long paramLong)
   {
     QLog.d("AVGameMediaPlayerCtrl", 1, "playAudioByURL");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameVideoPreLoadMgr.a(this.jdField_a_of_type_JavaLangString);
-    paramString = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
+    this.q = paramString;
+    this.p.a(this.q);
+    paramString = this.a;
     if (paramString != null) {
-      paramString.a(this.jdField_a_of_type_JavaLangString, paramLong);
+      paramString.a(this.q, paramLong);
     }
     if (Build.VERSION.SDK_INT >= 16) {
       AudioProcess.a(3);
@@ -329,20 +307,20 @@ public class AVGameMediaPlayerCtrl
     localStringBuilder.append("playVideoByURl hasAVRoom:=");
     localStringBuilder.append(paramBoolean);
     QLog.d("AVGameMediaPlayerCtrl", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean))
+    this.q = paramString;
+    if ((this.l) || (!this.n))
     {
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.n) {
         if (paramBoolean) {
           AVGameBusinessCtrl.b().b(true);
         } else {
           AVGameBusinessCtrl.b().a(true);
         }
       }
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameVideoPreLoadMgr.a(this.jdField_a_of_type_JavaLangString);
-      paramString = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
+      this.p.a(this.q);
+      paramString = this.a;
       if (paramString != null) {
-        paramString.b(this.jdField_a_of_type_JavaLangString, paramLong);
+        paramString.b(this.q, paramLong);
       }
     }
     if (Build.VERSION.SDK_INT >= 16) {
@@ -360,51 +338,27 @@ public class AVGameMediaPlayerCtrl
     while (paramList.hasNext())
     {
       localObject = (AVGameMediaFileInfo)paramList.next();
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameVideoPreLoadMgr.a(((AVGameMediaFileInfo)localObject).jdField_a_of_type_JavaLangString, ((AVGameMediaFileInfo)localObject).jdField_a_of_type_Long, 3000L);
+      this.p.a(((AVGameMediaFileInfo)localObject).a, ((AVGameMediaFileInfo)localObject).c, 3000L);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.n = paramBoolean;
   }
   
-  public boolean a()
+  public long b()
   {
-    boolean bool3 = this.jdField_b_of_type_Boolean;
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (bool3)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper.a()) {
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    AVGameMediaPlayerWrapper localAVGameMediaPlayerWrapper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
+    AVGameMediaPlayerWrapper localAVGameMediaPlayerWrapper = this.a;
     if (localAVGameMediaPlayerWrapper != null) {
-      bool1 = localAVGameMediaPlayerWrapper.a();
+      return localAVGameMediaPlayerWrapper.a();
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "stopVideoPlay");
-    AVGameMediaPlayerWrapper localAVGameMediaPlayerWrapper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
-    if (localAVGameMediaPlayerWrapper != null) {
-      localAVGameMediaPlayerWrapper.b();
-    }
+    return 0L;
   }
   
   public void b(IAVGameMediaPlayerCtrl.PushDecodeMsg paramPushDecodeMsg)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.u.iterator();
     label11:
     WeakReference localWeakReference;
     for (Object localObject = null; localIterator.hasNext(); localObject = localWeakReference)
@@ -415,13 +369,13 @@ public class AVGameMediaPlayerCtrl
       }
     }
     if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
+      this.u.remove(localObject);
     }
   }
   
   public void b(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -433,28 +387,17 @@ public class AVGameMediaPlayerCtrl
   
   public void b(boolean paramBoolean)
   {
-    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
+    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.c;
     if (localCustomHandler == null) {
       return;
     }
     localCustomHandler.post(new AVGameMediaPlayerCtrl.1(this, paramBoolean));
   }
   
-  public void c()
-  {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "stopVideoSend");
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
-      return;
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      AVGameBusinessCtrl.b().b(false);
-    }
-  }
-  
   public void c(String paramString)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B1F3", "0X800B1F3", 0, 0, "", "", "", "");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -464,20 +407,46 @@ public class AVGameMediaPlayerCtrl
     }
   }
   
+  public boolean c()
+  {
+    boolean bool3 = this.n;
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (this.l)
+      {
+        bool1 = bool2;
+        if (this.a.d()) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    AVGameMediaPlayerWrapper localAVGameMediaPlayerWrapper = this.a;
+    if (localAVGameMediaPlayerWrapper != null) {
+      bool1 = localAVGameMediaPlayerWrapper.d();
+    }
+    return bool1;
+  }
+  
   public void d()
   {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "stopNoAVRoomVideoSend");
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
-      return;
+    QLog.d("AVGameMediaPlayerCtrl", 1, "relasePlayVideo");
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((AVGameMediaPlayerWrapper)localObject).b();
     }
-    if (!this.jdField_b_of_type_Boolean) {
-      AVGameBusinessCtrl.b().a(false);
+    localObject = this.c;
+    if (localObject != null) {
+      ((AVGameMediaPlayerCtrl.CustomHandler)localObject).sendEmptyMessage(258);
     }
   }
   
   public void d(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -489,62 +458,93 @@ public class AVGameMediaPlayerCtrl
   
   public void e()
   {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "init");
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameVideoPreLoadMgr = new AVGameVideoPreLoadMgr();
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper = new AVGameMediaPlayerWrapper();
-    j();
+    QLog.d("AVGameMediaPlayerCtrl", 1, "stopVideoPlay");
+    AVGameMediaPlayerWrapper localAVGameMediaPlayerWrapper = this.a;
+    if (localAVGameMediaPlayerWrapper != null) {
+      localAVGameMediaPlayerWrapper.c();
+    }
   }
   
   public void f()
   {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "doOnResume");
-    this.d = true;
+    QLog.d("AVGameMediaPlayerCtrl", 1, "stopVideoSend");
+    if ((this.l) && (this.n)) {
+      return;
+    }
+    if (!this.n) {
+      AVGameBusinessCtrl.b().b(false);
+    }
   }
   
   public void g()
   {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "doOnStop");
-    this.d = false;
-    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
-    if (localCustomHandler != null) {
-      localCustomHandler.sendEmptyMessage(258);
+    QLog.d("AVGameMediaPlayerCtrl", 1, "stopNoAVRoomVideoSend");
+    if ((this.l) && (this.n)) {
+      return;
+    }
+    if (!this.n) {
+      AVGameBusinessCtrl.b().a(false);
     }
   }
   
   public void h()
   {
-    QLog.d("AVGameMediaPlayerCtrl", 1, "unInit");
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper;
-    if (localObject != null) {
-      ((AVGameMediaPlayerWrapper)localObject).c();
-    }
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameVideoPreLoadMgr.a();
-    c();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
-      if (localObject != null) {
-        ((AVGameMediaPlayerCtrl.CustomHandler)localObject).sendEmptyMessage(153);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread.quitSafely();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread = null;
-    }
+    QLog.d("AVGameMediaPlayerCtrl", 1, "init");
+    this.p = new AVGameVideoPreLoadMgr();
+    this.a = new AVGameMediaPlayerWrapper();
+    m();
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_JavaLangFloat != null) {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "doOnResume");
+    this.t = true;
+  }
+  
+  public void j()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "doOnStop");
+    this.t = false;
+    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.c;
+    if (localCustomHandler != null) {
+      localCustomHandler.sendEmptyMessage(258);
+    }
+  }
+  
+  public void k()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "unInit");
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((AVGameMediaPlayerWrapper)localObject).g();
+    }
+    this.p.a();
+    f();
+    this.u.clear();
+    this.l = false;
+    if (this.b != null)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        ((AVGameMediaPlayerCtrl.CustomHandler)localObject).sendEmptyMessage(153);
+      }
+      this.b.quitSafely();
+      this.b = null;
+    }
+  }
+  
+  public void l()
+  {
+    if (this.v != null) {
       return;
     }
     Object localObject = (AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio");
-    int i = ((AudioManager)localObject).getStreamVolume(0);
-    int j = ((AudioManager)localObject).getStreamMaxVolume(0);
-    this.jdField_a_of_type_JavaLangFloat = Float.valueOf(i * 1.0F / j);
+    int i1 = ((AudioManager)localObject).getStreamVolume(0);
+    int i2 = ((AudioManager)localObject).getStreamMaxVolume(0);
+    this.v = Float.valueOf(i1 * 1.0F / i2);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("init scaleFacors:=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangFloat);
+    ((StringBuilder)localObject).append(this.v);
     AVLog.d("AVGameMediaPlayerCtrl", ((StringBuilder)localObject).toString());
   }
 }

@@ -16,60 +16,60 @@ class NearbyProfileDisplayTribePanel$31
   public void installSucceed(String paramString1, String paramString2)
   {
     paramString1 = this.a;
-    paramString1.jdField_a_of_type_Int = 4;
-    paramString1.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (NearbyProfileDisplayTribePanel.a(this.a) != null) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+    paramString1.U = 4;
+    paramString1.aA.sendEmptyMessage(4);
+    if (NearbyProfileDisplayTribePanel.j(this.a) != null) {
+      ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
     }
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    this.a.jdField_a_of_type_Int = 2;
+    this.a.U = 2;
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    this.a.aA.sendEmptyMessage(5);
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
     paramDownloadInfo = this.a;
-    paramDownloadInfo.jdField_a_of_type_Int = 3;
-    paramDownloadInfo.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(5);
+    paramDownloadInfo.U = 3;
+    paramDownloadInfo.aA.sendEmptyMessage(3);
+    if (this.a.S != null) {
+      this.a.S.a(5);
     }
-    if (NearbyProfileDisplayTribePanel.a(this.a) != null) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+    if (NearbyProfileDisplayTribePanel.j(this.a) != null) {
+      ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
     }
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    this.a.jdField_a_of_type_Int = 2;
+    this.a.U = 2;
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    this.a.jdField_a_of_type_Int = 1;
+    this.a.U = 1;
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      Message localMessage = this.a.aA.obtainMessage();
       localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
+      localMessage.arg1 = paramList.t;
       localMessage.sendToTarget();
-      if ((paramList.f == 0) && (NearbyProfileDisplayTribePanel.a(this.a) != null)) {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+      if ((paramList.t == 0) && (NearbyProfileDisplayTribePanel.j(this.a) != null)) {
+        ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
       }
     }
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    this.a.jdField_a_of_type_Int = 2;
+    this.a.U = 2;
   }
   
   public void packageReplaced(String paramString1, String paramString2) {}
@@ -78,7 +78,7 @@ class NearbyProfileDisplayTribePanel$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.31
  * JD-Core Version:    0.7.0.1
  */

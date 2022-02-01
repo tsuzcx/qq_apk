@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="24px" viewBox="0 0 12 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/Outlined/back</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/Outlined/back" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.9">
+        <g id="3.Icons/Outlined/back" fill="#000000">
+            <g id="Icons/Tint-Color/Black" transform="translate(1.000000, 3.000000)">
+                <path d="M9,16.4375 L7.95453228,17.5 L0.289492864,9.71008525 C-0.0963897671,9.317916 -0.0915538699,8.67716932 0.289492864,8.28991475 L7.95453228,0.5 L9,1.5625 L1.68172599,9 L9,16.4375 Z" id="图标颜色"></path>
+            </g>
+        </g>
+    </g>
+</svg>

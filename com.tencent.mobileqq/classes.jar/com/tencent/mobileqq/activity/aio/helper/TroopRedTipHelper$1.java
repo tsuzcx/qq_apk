@@ -24,21 +24,21 @@ class TroopRedTipHelper$1
   
   public void a()
   {
-    ChatActivityUtils.a(TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ChatActivityUtils.a(TroopRedTipHelper.a(this.a).ah.b, TroopRedTipHelper.a(this.a).d.getCurrentAccountUin());
     if (QLog.isColorLevel()) {
       QLog.d(".troop.notify_feeds.aio", 2, "getAppIds onFailed, reqNotifyItems");
     }
-    TroopAioNotifyManager.a(TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    TroopAioNotifyManager.a(TroopRedTipHelper.a(this.a).d, TroopRedTipHelper.a(this.a).ah.b);
   }
   
   public void a(ArrayList<TroopAppInfo> paramArrayList)
   {
-    if ((TroopRedTipHelper.a(this.a) != null) && (TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((TroopRedTipHelper.a(this.a) != null) && (TroopRedTipHelper.a(this.a).d != null))
     {
-      if (TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      if (TroopRedTipHelper.a(this.a).ah == null) {
         return;
       }
-      if (ChatActivityUtils.a(TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) {
+      if (ChatActivityUtils.a(TroopRedTipHelper.a(this.a).ah.b, TroopRedTipHelper.a(this.a).d.getCurrentAccountUin()) != null) {
         return;
       }
       ArrayList localArrayList = new ArrayList();
@@ -56,8 +56,8 @@ class TroopRedTipHelper$1
       localArrayList.add(Long.valueOf(101872323L));
       localArrayList.add(Long.valueOf(101890494L));
       localArrayList.add(Long.valueOf(101896870L));
-      Object localObject = ((TroopManager)TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((localObject != null) && (((TroopInfo)localObject).isOwnerOrAdmin(TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      Object localObject = ((TroopManager)TroopRedTipHelper.a(this.a).d.getManager(QQManagerFactory.TROOP_MANAGER)).f(TroopRedTipHelper.a(this.a).ah.b);
+      if ((localObject != null) && (((TroopInfo)localObject).isOwnerOrAdmin(TroopRedTipHelper.a(this.a).d.getCurrentAccountUin()))) {
         localArrayList.add(Long.valueOf(101913298L));
       }
       if ((paramArrayList != null) && (paramArrayList.size() > 0))
@@ -67,7 +67,7 @@ class TroopRedTipHelper$1
           localArrayList.add(Long.valueOf(((TroopAppInfo)paramArrayList.next()).appId));
         }
       }
-      paramArrayList = (ITroopRedDotHandler)TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER);
+      paramArrayList = (ITroopRedDotHandler)TroopRedTipHelper.a(this.a).d.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER);
       if (paramArrayList != null)
       {
         if (QLog.isColorLevel())
@@ -77,14 +77,14 @@ class TroopRedTipHelper$1
           ((StringBuilder)localObject).append(localArrayList.size());
           QLog.d(".troop.notify_feeds.aio", 2, ((StringBuilder)localObject).toString());
         }
-        paramArrayList.a(TroopRedTipHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, false);
+        paramArrayList.a(TroopRedTipHelper.a(this.a).ah.b, localArrayList, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRedTipHelper.1
  * JD-Core Version:    0.7.0.1
  */

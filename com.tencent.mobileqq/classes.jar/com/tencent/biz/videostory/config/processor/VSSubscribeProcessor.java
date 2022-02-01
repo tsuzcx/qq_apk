@@ -21,11 +21,11 @@ public class VSSubscribeProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      VSSubscribeConfBean localVSSubscribeConfBean = VSSubscribeConfBean.a(paramArrayOfQConfItem[0].a);
+      VSSubscribeConfBean localVSSubscribeConfBean = VSSubscribeConfBean.a(paramArrayOfQConfItem[0].b);
       a(localVSSubscribeConfBean);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed ");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, localStringBuilder.toString());
       return localVSSubscribeConfBean;
     }
@@ -41,11 +41,11 @@ public class VSSubscribeProcessor
       localStringBuilder.append("onUpdate ");
       localStringBuilder.append(paramVSSubscribeConfBean.toString());
       QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, localStringBuilder.toString());
-      VSConfigManager.a().a("subscribe_entrance_enable", paramVSSubscribeConfBean.a());
-      VSConfigManager.a().a("is_open_sharing", paramVSSubscribeConfBean.b());
-      VSConfigManager.a().a("subscribe_account_title", paramVSSubscribeConfBean.c());
-      VSConfigManager.a().a("newfollowlist", paramVSSubscribeConfBean.d());
-      VSConfigManager.a().a("subscribe_publish_entrance_enable", paramVSSubscribeConfBean.e());
+      VSConfigManager.a().b("subscribe_entrance_enable", paramVSSubscribeConfBean.a());
+      VSConfigManager.a().b("is_open_sharing", paramVSSubscribeConfBean.b());
+      VSConfigManager.a().b("subscribe_account_title", paramVSSubscribeConfBean.c());
+      VSConfigManager.a().b("newfollowlist", paramVSSubscribeConfBean.d());
+      VSConfigManager.a().b("subscribe_publish_entrance_enable", paramVSSubscribeConfBean.e());
     }
   }
   
@@ -83,7 +83,7 @@ public class VSSubscribeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSSubscribeProcessor
  * JD-Core Version:    0.7.0.1
  */

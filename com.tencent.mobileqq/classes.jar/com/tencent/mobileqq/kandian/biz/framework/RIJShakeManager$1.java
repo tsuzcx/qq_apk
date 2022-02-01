@@ -19,17 +19,17 @@ class RIJShakeManager$1
   protected void a()
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (ReadInJoyNoteCardUtil.a(RIJShakeManager.a(this.a).a().a(), str) < ScripCmsInfo.d)
+    if (ReadInJoyNoteCardUtil.a(RIJShakeManager.a(this.a).a().A(), str) < ScripCmsInfo.o)
     {
-      ((ReadInJoyXListView)RIJShakeManager.a(this.a).a().a().a()).c(6);
+      ((ReadInJoyXListView)RIJShakeManager.a(this.a).a().v().d()).d(6);
       return;
     }
-    QQToast.a(RIJShakeManager.a(this.a).a().a(), 0, RIJShakeManager.a(this.a).a().a().getString(2131718069), 0).a();
+    QQToast.makeText(RIJShakeManager.a(this.a).a().A(), 0, RIJShakeManager.a(this.a).a().A().getString(2131915546), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJShakeManager.1
  * JD-Core Version:    0.7.0.1
  */

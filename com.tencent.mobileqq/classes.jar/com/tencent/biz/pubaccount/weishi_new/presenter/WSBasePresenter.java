@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.presenter;
 
 import android.support.annotation.UiThread;
+import androidx.annotation.Nullable;
 import com.tencent.biz.pubaccount.weishi_new.IWSBaseView;
 import com.tencent.biz.pubaccount.weishi_new.IWSPresenter;
 import java.lang.ref.WeakReference;
@@ -8,44 +9,52 @@ import java.lang.ref.WeakReference;
 public class WSBasePresenter<V extends IWSBaseView>
   implements IWSPresenter<V>
 {
-  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean presenterDestroyed = false;
+  private WeakReference<V> viewRef;
   
   @UiThread
-  public V a()
+  public void attachView(V paramV)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.viewRef = new WeakReference(paramV);
+    this.presenterDestroyed = false;
+  }
+  
+  public void destroy()
+  {
+    this.presenterDestroyed = true;
+  }
+  
+  public void detachView()
+  {
+    WeakReference localWeakReference = this.viewRef;
+    if (localWeakReference != null)
+    {
+      localWeakReference.clear();
+      this.viewRef = null;
+    }
+  }
+  
+  @UiThread
+  @Nullable
+  public V getView()
+  {
+    WeakReference localWeakReference = this.viewRef;
     if (localWeakReference == null) {
       return null;
     }
     return (IWSBaseView)localWeakReference.get();
   }
   
-  public void a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localWeakReference != null)
-    {
-      localWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-  }
-  
   @UiThread
-  public void a(V paramV)
+  public boolean isViewAttached()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    WeakReference localWeakReference = this.viewRef;
+    return (localWeakReference != null) && (localWeakReference.get() != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSBasePresenter
  * JD-Core Version:    0.7.0.1
  */

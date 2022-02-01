@@ -15,7 +15,7 @@ class TextDrawableHelper$1
     TextDrawableHelper.a(this.a, true);
     TextDrawableHelper.TextDrawableDelegate localTextDrawableDelegate = (TextDrawableHelper.TextDrawableDelegate)TextDrawableHelper.a(this.a).get();
     if (localTextDrawableDelegate != null) {
-      localTextDrawableDelegate.a();
+      localTextDrawableDelegate.f();
     }
   }
   
@@ -27,13 +27,13 @@ class TextDrawableHelper$1
     TextDrawableHelper.a(this.a, true);
     paramTypeface = (TextDrawableHelper.TextDrawableDelegate)TextDrawableHelper.a(this.a).get();
     if (paramTypeface != null) {
-      paramTypeface.a();
+      paramTypeface.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.TextDrawableHelper.1
  * JD-Core Version:    0.7.0.1
  */

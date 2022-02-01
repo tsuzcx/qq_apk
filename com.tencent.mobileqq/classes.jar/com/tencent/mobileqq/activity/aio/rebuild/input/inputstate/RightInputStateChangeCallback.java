@@ -20,7 +20,7 @@ public class RightInputStateChangeCallback
     if (paramInt == 0)
     {
       ReplyHelper localReplyHelper = (ReplyHelper)paramAIOContext.a(119);
-      if ((paramAIOContext.a().a().a().a().length() > 0) && (localReplyHelper.a() == null) && (!(paramAIOContext instanceof GameRoomContext)) && (RichTextChatManager.a(paramAIOContext.a()).b(paramAIOContext.a()))) {
+      if ((paramAIOContext.p().d().f().a().length() > 0) && (localReplyHelper.a() == null) && (!(paramAIOContext instanceof GameRoomContext)) && (RichTextChatManager.a(paramAIOContext.a()).c(paramAIOContext.a()))) {
         localAIOInputRightHelper.a();
       }
     }
@@ -32,7 +32,7 @@ public class RightInputStateChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.inputstate.RightInputStateChangeCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -3,16 +3,14 @@ package com.tencent.mobileqq.a.a;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.a.g;
 import com.tencent.mobileqq.msf.core.a.g.a;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.ak;
-import com.tencent.mobileqq.msf.core.ak.f;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.al;
+import com.tencent.mobileqq.msf.core.al.f;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.i;
 import com.tencent.mobileqq.msf.core.net.x;
 import com.tencent.mobileqq.msf.core.quicksend.b;
-import com.tencent.mobileqq.msf.core.quicksend.f;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -22,7 +20,7 @@ import java.util.HashMap;
 
 public class a
   extends c
-  implements ak.f
+  implements al.f
 {
   public static final boolean a = ;
   public static boolean b = false;
@@ -35,10 +33,10 @@ public class a
   {
     if (a)
     {
-      if (ak.a().b() != null)
+      if (al.a().b() != null)
       {
-        ak.a().a(this);
-        QLog.i("ConnQualityStat", 1, ak.a().b().toString());
+        al.a().a(this);
+        QLog.i("ConnQualityStat", 1, al.a().b().toString());
       }
     }
     else
@@ -57,7 +55,7 @@ public class a
   
   public static boolean b()
   {
-    return (a) && (ak.a().c());
+    return (a) && (al.a().c());
   }
   
   public void a(int paramInt) {}
@@ -67,7 +65,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(paramInt, paramLong, paramx);
+        al.a().a(paramInt, paramLong, paramx);
       }
       catch (Exception paramx)
       {
@@ -82,7 +80,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(paramLong1, paramLong2);
+        al.a().a(paramLong1, paramLong2);
         return;
       }
       catch (Exception localException)
@@ -97,7 +95,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(parama);
+        al.a().a(parama);
       }
       catch (Exception parama)
       {
@@ -112,7 +110,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(paramToServiceMsg);
+        al.a().a(paramToServiceMsg);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -127,7 +125,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(paramToServiceMsg, paramFromServiceMsg);
+        al.a().a(paramToServiceMsg, paramFromServiceMsg);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -137,12 +135,12 @@ public class a
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, f paramf)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, com.tencent.mobileqq.msf.core.quicksend.g paramg)
   {
     if (a) {
       try
       {
-        ak.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+        al.a().a(paramToServiceMsg, paramFromServiceMsg, paramg);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -183,7 +181,7 @@ public class a
       {
         try
         {
-          ak.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
+          al.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
           return;
         }
         finally {}
@@ -204,7 +202,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(paramToServiceMsg, paramBoolean);
+        al.a().a(paramToServiceMsg, paramBoolean);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -220,9 +218,9 @@ public class a
       try
       {
         if (NetConnInfoCenter.isWifiConn()) {
-          ak.a().a(paramSocket, paramInt2);
+          al.a().a(paramSocket, paramInt2);
         } else {
-          ak.a().b(paramSocket, paramInt2);
+          al.a().b(paramSocket, paramInt2);
         }
       }
       catch (Exception paramSocket)
@@ -256,7 +254,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().a(paramBoolean);
+        al.a().a(paramBoolean);
       }
       catch (Exception localException)
       {
@@ -272,7 +270,7 @@ public class a
     }
     try
     {
-      if ((i.a().e()) && (MsfCore.sCore.quicksender != null)) {
+      if ((i.a().g()) && (MsfCore.sCore.quicksender != null)) {
         MsfCore.sCore.quicksender.a(2000L);
       } else {
         MsfCore.sCore.sender.g();
@@ -290,7 +288,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().b(paramToServiceMsg);
+        al.a().b(paramToServiceMsg);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -303,7 +301,7 @@ public class a
   public void c()
   {
     if (a) {
-      ak.a().d();
+      al.a().d();
     }
     a.c.a().a(false);
   }
@@ -313,7 +311,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().c(paramToServiceMsg);
+        al.a().c(paramToServiceMsg);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -328,7 +326,7 @@ public class a
     if (a) {
       try
       {
-        ak.a().e();
+        al.a().e();
         return;
       }
       catch (Exception localException)
@@ -340,7 +338,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.a.a.a
  * JD-Core Version:    0.7.0.1
  */

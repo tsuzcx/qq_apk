@@ -16,7 +16,7 @@ public class Section64Header
       localByteOrder = ByteOrder.LITTLE_ENDIAN;
     }
     localByteBuffer.order(localByteOrder);
-    this.a = paramElfParser.b(localByteBuffer, paramHeader.b + paramInt * paramHeader.d + 44L);
+    this.a = paramElfParser.c(localByteBuffer, paramHeader.d + paramInt * paramHeader.g + 44L);
   }
 }
 

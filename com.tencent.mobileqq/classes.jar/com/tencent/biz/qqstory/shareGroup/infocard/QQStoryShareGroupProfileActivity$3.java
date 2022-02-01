@@ -14,8 +14,8 @@ class QQStoryShareGroupProfileActivity$3
   public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
     VidToSimpleInfoHandler.GetSimpleInfoListEvent localGetSimpleInfoListEvent = new VidToSimpleInfoHandler.GetSimpleInfoListEvent();
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    localGetSimpleInfoListEvent.a = paramVideoCollectionItem.collectionId;
+    localGetSimpleInfoListEvent.b = paramVideoCollectionItem.collectionVideoUIItemList;
     StoryDispatcher.a().dispatch(localGetSimpleInfoListEvent);
   }
 }

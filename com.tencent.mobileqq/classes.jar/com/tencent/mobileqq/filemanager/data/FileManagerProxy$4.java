@@ -23,14 +23,14 @@ class FileManagerProxy$4
     ((StringBuilder)localObject1).append("select * from ( select * from ");
     ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
     ((StringBuilder)localObject1).append(" where bDelInFM = 0  and nRelatedSessionId = ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append("  order by srvTime desc limit ");
     ((StringBuilder)localObject1).append(2000);
     ((StringBuilder)localObject1).append(") ");
     Object localObject3 = ((StringBuilder)localObject1).toString();
-    localObject1 = FileManagerProxy.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    localObject1 = FileManagerProxy.b(this.this$0).getEntityManagerFactory().createEntityManager();
     localObject3 = ((EntityManager)localObject1).rawQuery(FileManagerEntity.class, (String)localObject3, null);
-    synchronized (FileManagerProxy.a(this.this$0))
+    synchronized (FileManagerProxy.c(this.this$0))
     {
       FileManagerProxy.a(this.this$0, new HashMap());
       if (QLog.isColorLevel())
@@ -54,7 +54,7 @@ class FileManagerProxy$4
           if (((Iterator)localObject3).hasNext())
           {
             ??? = (FileManagerEntity)((Iterator)localObject3).next();
-            if ((this.jdField_a_of_type_JavaLangString != null) && (((FileManagerEntity)???).zipFileId != null) && (!((FileManagerEntity)???).zipFileId.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
+            if ((this.b != null) && (((FileManagerEntity)???).zipFileId != null) && (!((FileManagerEntity)???).zipFileId.equalsIgnoreCase(this.b)))
             {
               if (QLog.isDevelopLevel())
               {
@@ -76,7 +76,7 @@ class FileManagerProxy$4
               ((FileManagerEntity)???).setStatus(1001);
               ((EntityManager)localObject1).remove((Entity)???);
             }
-            else if (!FileUtil.a(((FileManagerEntity)???).getFilePath()))
+            else if (!FileUtil.b(((FileManagerEntity)???).getFilePath()))
             {
               if (QLog.isDevelopLevel())
               {
@@ -92,9 +92,9 @@ class FileManagerProxy$4
             {
               try
               {
-                synchronized (FileManagerProxy.a(this.this$0))
+                synchronized (FileManagerProxy.c(this.this$0))
                 {
-                  FileManagerProxy.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
+                  FileManagerProxy.c(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
                 }
               }
               catch (Exception localException)
@@ -120,7 +120,7 @@ class FileManagerProxy$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.4
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class WSLiveAnimationManager
 {
-  private static volatile WSLiveAnimationManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private static volatile WSLiveAnimationManager b;
+  private Bitmap a;
   
   public static WSLiveAnimationManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager == null) {
-          jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager = new WSLiveAnimationManager();
+        if (b == null) {
+          b = new WSLiveAnimationManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager;
+    return b;
   }
   
   private void a(DiniFlyAnimationView paramDiniFlyAnimationView, Bitmap paramBitmap, WSLiveAnimationManager.WSLiveAnimationCallback paramWSLiveAnimationCallback)
@@ -33,19 +33,19 @@ public class WSLiveAnimationManager
     localStringBuilder.append("[WSLiveAnimationManager.java]:[startAnimation()]:");
     localStringBuilder.append(paramDiniFlyAnimationView);
     WSLog.a("WSLiveAnimation", localStringBuilder.toString());
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = WSLiveAnimation.a(paramDiniFlyAnimationView);
+    if (this.a == null) {
+      this.a = WSLiveAnimation.a(paramDiniFlyAnimationView);
     }
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSLiveAnimationManager.java]:[startAnimation()]sBitmapLiveLogo:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localStringBuilder.append(this.a);
     WSLog.a("WSLiveAnimation", localStringBuilder.toString());
-    WSLiveAnimation.a(paramDiniFlyAnimationView, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, paramWSLiveAnimationCallback);
+    WSLiveAnimation.a(paramDiniFlyAnimationView, this.a, paramBitmap, paramWSLiveAnimationCallback);
   }
   
   private void b(DiniFlyAnimationView paramDiniFlyAnimationView, String paramString, WSLiveAnimationManager.WSLiveAnimationCallback paramWSLiveAnimationCallback)
   {
-    paramString = WeishiUtils.a(paramString);
+    paramString = WeishiUtils.c(paramString);
     ImageRequest localImageRequest = new ImageRequest();
     localImageRequest.a = paramString;
     ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, new WSLiveAnimationManager.1(this, paramDiniFlyAnimationView, paramWSLiveAnimationCallback));
@@ -69,7 +69,7 @@ public class WSLiveAnimationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.live.WSLiveAnimationManager
  * JD-Core Version:    0.7.0.1
  */

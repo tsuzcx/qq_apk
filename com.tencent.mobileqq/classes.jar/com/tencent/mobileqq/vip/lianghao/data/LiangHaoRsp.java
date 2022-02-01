@@ -8,44 +8,40 @@ import org.json.JSONObject;
 
 public class LiangHaoRsp
 {
-  public int a;
-  public String a;
-  public List<LiangHaoUinData> a;
   public boolean a;
-  public String b;
+  public int b = -30009;
   public String c;
+  public String d;
+  public String e;
+  public List<LiangHaoUinData> f;
   
-  public LiangHaoRsp()
-  {
-    this.jdField_a_of_type_Int = -30009;
-  }
+  public LiangHaoRsp() {}
   
   public LiangHaoRsp(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
+    this.c = paramJSONObject.optString("msg");
     int j = paramJSONObject.optInt("openflag");
     int i = 0;
     boolean bool = true;
     if (j != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-    this.c = paramJSONObject.optString("content");
-    this.b = paramJSONObject.optString("url");
+    this.a = bool;
+    this.b = paramJSONObject.optInt("ret", -30009);
+    this.e = paramJSONObject.optString("content");
+    this.d = paramJSONObject.optString("url");
     paramJSONObject = paramJSONObject.optString("list");
     if (TextUtils.isEmpty(paramJSONObject)) {
       return;
     }
     paramJSONObject = new JSONArray(paramJSONObject);
     j = paramJSONObject.length();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.f = new ArrayList();
     while (i < j)
     {
       JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
       if (localJSONObject != null) {
-        this.jdField_a_of_type_JavaUtilList.add(new LiangHaoUinData(localJSONObject.optString("num"), localJSONObject.optString("light")));
+        this.f.add(new LiangHaoUinData(localJSONObject.optString("num"), localJSONObject.optString("light")));
       }
       i += 1;
     }
@@ -55,17 +51,17 @@ public class LiangHaoRsp
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LiangHaoRsp{openFlag=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ret=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", msg='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", moreUrl='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", content='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -73,7 +69,7 @@ public class LiangHaoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.data.LiangHaoRsp
  * JD-Core Version:    0.7.0.1
  */

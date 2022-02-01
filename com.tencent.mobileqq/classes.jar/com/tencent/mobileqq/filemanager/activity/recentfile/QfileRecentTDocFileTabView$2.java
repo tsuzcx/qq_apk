@@ -23,7 +23,7 @@ class QfileRecentTDocFileTabView$2
   
   public void d()
   {
-    Object localObject = FMDataCache.b();
+    Object localObject = FMDataCache.h();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = ((List)localObject).iterator();
@@ -39,12 +39,12 @@ class QfileRecentTDocFileTabView$2
   
   public void f()
   {
-    this.a.a.a().E();
+    this.a.C.A().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

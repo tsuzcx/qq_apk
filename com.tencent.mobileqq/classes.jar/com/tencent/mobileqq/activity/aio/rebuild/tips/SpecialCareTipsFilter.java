@@ -36,26 +36,26 @@ public class SpecialCareTipsFilter
     return paramAIOContext;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    return null;
-  }
-  
   public void a(AIOContext paramAIOContext) {}
   
   public void a(AIOContext paramAIOContext, Message paramMessage)
   {
-    NotifyIdManager.a(paramAIOContext.a()).a(paramMessage);
+    NotifyIdManager.a(paramAIOContext.a()).c(paramMessage);
   }
   
   public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
-    return NotifyIdManager.a(paramAIOContext.a()).c(paramMessage);
+    return NotifyIdManager.a(paramAIOContext.a()).d(paramMessage);
+  }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.SpecialCareTipsFilter
  * JD-Core Version:    0.7.0.1
  */

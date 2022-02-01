@@ -16,12 +16,12 @@ import org.jetbrains.annotations.Nullable;
 public abstract class UniversalItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final SparseArray<UniversalItemDecoration.Decoration> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private final Paint a = new Paint(1);
+  private final SparseArray<UniversalItemDecoration.Decoration> b = new SparseArray();
   
   public UniversalItemDecoration()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.a.setStyle(Paint.Style.FILL);
   }
   
   public static final UniversalItemDecoration.Decoration a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -76,7 +76,7 @@ public abstract class UniversalItemDecoration
     {
       paramRect = new UniversalItemDecoration.Decoration();
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRect);
+    this.b.put(i, paramRect);
   }
   
   public void onDraw(@NotNull Canvas paramCanvas, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
@@ -88,8 +88,8 @@ public abstract class UniversalItemDecoration
     {
       paramState = paramRecyclerView.getChildAt(i);
       int k = ((Integer)paramState.getTag()).intValue();
-      UniversalItemDecoration.Decoration localDecoration = (UniversalItemDecoration.Decoration)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localDecoration.e);
+      UniversalItemDecoration.Decoration localDecoration = (UniversalItemDecoration.Decoration)this.b.get(k);
+      this.a.setColor(localDecoration.e);
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
       k = paramState.getBottom() + localLayoutParams.bottomMargin;
       int m = paramState.getLeft() - localLayoutParams.leftMargin;
@@ -97,21 +97,21 @@ public abstract class UniversalItemDecoration
       int i1 = paramState.getTop() - localLayoutParams.topMargin;
       float f2 = m - localDecoration.a;
       float f1 = k;
-      paramCanvas.drawRect(f2, f1, localDecoration.b + n, k + localDecoration.d, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(f2, f1, localDecoration.b + n, k + localDecoration.d, this.a);
       f2 = m - localDecoration.a;
       float f3 = i1 - localDecoration.c;
       float f4 = localDecoration.b + n;
       float f5 = i1;
-      paramCanvas.drawRect(f2, f3, f4, f5, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(m - localDecoration.a, f5, m, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(n, f5, n + localDecoration.b, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(f2, f3, f4, f5, this.a);
+      paramCanvas.drawRect(m - localDecoration.a, f5, m, f1, this.a);
+      paramCanvas.drawRect(n, f5, n + localDecoration.b, f1, this.a);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.UniversalItemDecoration
  * JD-Core Version:    0.7.0.1
  */

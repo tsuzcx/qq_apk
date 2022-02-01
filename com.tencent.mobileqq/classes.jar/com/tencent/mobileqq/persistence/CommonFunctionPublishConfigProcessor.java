@@ -11,7 +11,7 @@ public class CommonFunctionPublishConfigProcessor
 {
   public static CommonFunctionPublishConfigProcessor.Config a()
   {
-    CommonFunctionPublishConfigProcessor.Config localConfig = (CommonFunctionPublishConfigProcessor.Config)QConfigManager.a().a(730);
+    CommonFunctionPublishConfigProcessor.Config localConfig = (CommonFunctionPublishConfigProcessor.Config)QConfigManager.b().b(730);
     if (localConfig != null)
     {
       com.tencent.mobileqq.app.SQLiteOpenHelper.WAL_ENABLE = localConfig.b;
@@ -31,7 +31,7 @@ public class CommonFunctionPublishConfigProcessor
   {
     CommonFunctionPublishConfigProcessor.Config localConfig = new CommonFunctionPublishConfigProcessor.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      CommonFunctionPublishConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      CommonFunctionPublishConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -77,7 +77,7 @@ public class CommonFunctionPublishConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.CommonFunctionPublishConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

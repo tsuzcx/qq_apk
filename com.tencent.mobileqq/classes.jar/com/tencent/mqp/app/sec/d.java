@@ -30,7 +30,7 @@ public class d
   
   public static void e(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte)
   {
-    QSecFramework.a().a(1, 0, paramInt, new Object[] { d.class, paramArrayOfObject, paramArrayOfByte }, null);
+    QSecFramework.c().a(1, 0, paramInt, new Object[] { d.class, paramArrayOfObject, paramArrayOfByte }, null);
   }
   
   public static void e1(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte)
@@ -72,7 +72,7 @@ public class d
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       localObject2 = "";
     }
-    Object localObject3 = QPMiscUtils.b(2);
+    Object localObject3 = QPMiscUtils.c(2);
     Object localObject1 = localObject3;
     if (localObject3 == null) {
       localObject1 = "";
@@ -98,12 +98,12 @@ public class d
     } else {
       localObject3 = "";
     }
-    Object localObject5 = QPMiscUtils.b(1);
+    Object localObject5 = QPMiscUtils.c(1);
     Object localObject4 = localObject5;
     if (localObject5 == null) {
       localObject4 = "";
     }
-    Object localObject6 = QPMiscUtils.b(3);
+    Object localObject6 = QPMiscUtils.c(3);
     localObject5 = localObject6;
     if (localObject6 == null) {
       localObject5 = "";
@@ -117,12 +117,12 @@ public class d
     if (str != null) {
       localObject7 = str;
     }
-    return new Object[] { localBaseApplication, d.class, Build.VERSION.RELEASE, Integer.valueOf(AppSetting.a()), NetConnInfoCenter.GUID, ((String)localObject4).getBytes(), ((String)localObject2).getBytes(), Integer.valueOf(i), "mobileqq.service", localObject3, "req_pb_protocol_flag", ((String)localObject5).getBytes(), localObject1, localObject6, localObject7 };
+    return new Object[] { localBaseApplication, d.class, Build.VERSION.RELEASE, Integer.valueOf(AppSetting.d()), NetConnInfoCenter.GUID, ((String)localObject4).getBytes(), ((String)localObject2).getBytes(), Integer.valueOf(i), "mobileqq.service", localObject3, "req_pb_protocol_flag", ((String)localObject5).getBytes(), localObject1, localObject6, localObject7 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.d
  * JD-Core Version:    0.7.0.1
  */

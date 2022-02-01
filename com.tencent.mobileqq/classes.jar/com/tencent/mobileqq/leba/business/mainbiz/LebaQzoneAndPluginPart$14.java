@@ -7,12 +7,12 @@ class LebaQzoneAndPluginPart$14
   
   public void run()
   {
-    this.this$0.v();
+    this.this$0.F();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.14
  * JD-Core Version:    0.7.0.1
  */

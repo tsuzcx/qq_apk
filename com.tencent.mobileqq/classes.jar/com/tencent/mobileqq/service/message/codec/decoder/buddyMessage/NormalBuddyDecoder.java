@@ -59,7 +59,7 @@ public class NormalBuddyDecoder
           if (((List)localObject).size() <= 0) {
             return;
           }
-          paramMessageHandler = BaseApplicationImpl.getApplication().getString(2131690244);
+          paramMessageHandler = BaseApplicationImpl.getApplication().getString(2131887155);
           paramMsg = new MessagePBElemDecoder().a((List)localObject);
           if (TextUtils.isEmpty(paramMsg)) {
             return;
@@ -83,12 +83,12 @@ public class NormalBuddyDecoder
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    a(paramMessageHandler, paramList, paramMsg, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.b, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.d);
+    a(paramMessageHandler, paramList, paramMsg, paramDecodeProtoPkgContext.x, paramDecodeProtoPkgContext.h, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.buddyMessage.NormalBuddyDecoder
  * JD-Core Version:    0.7.0.1
  */

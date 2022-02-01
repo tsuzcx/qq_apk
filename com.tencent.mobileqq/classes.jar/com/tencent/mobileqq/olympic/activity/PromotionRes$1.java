@@ -15,34 +15,34 @@ class PromotionRes$1
   
   public void a(PromotionConfigInfo paramPromotionConfigInfo)
   {
-    Object localObject1 = PromotionRes.jdField_a_of_type_JavaLangString;
+    Object localObject1 = PromotionRes.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("getRes, promotionConfigInfo[");
     ((StringBuilder)localObject2).append(paramPromotionConfigInfo);
     ((StringBuilder)localObject2).append("], activityID[");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.a);
     ((StringBuilder)localObject2).append("], isDestroyed[");
-    ((StringBuilder)localObject2).append(PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes));
+    ((StringBuilder)localObject2).append(PromotionRes.a(this.c));
     ((StringBuilder)localObject2).append("]");
     QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    if (PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes)) {
+    if (PromotionRes.a(this.c)) {
       return;
     }
     localObject2 = null;
     if (paramPromotionConfigInfo != null)
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a;
       if (localObject1 != null) {
         localObject1 = paramPromotionConfigInfo.getItem((String)localObject1);
       } else {
         localObject1 = paramPromotionConfigInfo.getActivityItem();
       }
-      String str = PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes).getCurrentAccountUin();
+      String str = PromotionRes.b(this.c).getCurrentAccountUin();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append("AR_PROMOTION_ENTRY_SHOWONCE");
       int i = UniformUtils.a(((StringBuilder)localObject2).toString());
-      int j = ARPromotionConfigSP.b(str);
+      int j = ARPromotionConfigSP.e(str);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append("AR_PROMOTION_ENTRY_SERVER_VERSION");
@@ -66,7 +66,7 @@ class PromotionRes$1
       if ((!paramPromotionConfigInfo.showOnce) || (i == 0)) {
         bool = true;
       }
-      PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes).a(bool, paramPromotionConfigInfo.showInTopView);
+      PromotionRes.c(this.c).a(bool, paramPromotionConfigInfo.showInTopView);
       localObject2 = localObject1;
       if (bool)
       {
@@ -81,12 +81,12 @@ class PromotionRes$1
         }
       }
     }
-    PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes, this.jdField_a_of_type_ComTencentCommonAppAppInterface, (PromotionConfigInfo.PromotionItem)localObject2);
+    PromotionRes.a(this.c, this.b, (PromotionConfigInfo.PromotionItem)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionRes.1
  * JD-Core Version:    0.7.0.1
  */

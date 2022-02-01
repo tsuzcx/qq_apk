@@ -9,23 +9,23 @@ import java.util.Arrays;
 public final class AdjustedCornerSize
   implements CornerSize
 {
-  private final float jdField_a_of_type_Float;
-  private final CornerSize jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize;
+  private final CornerSize a;
+  private final float b;
   
   public AdjustedCornerSize(float paramFloat, @NonNull CornerSize paramCornerSize)
   {
     while ((paramCornerSize instanceof AdjustedCornerSize))
     {
-      paramCornerSize = ((AdjustedCornerSize)paramCornerSize).jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-      paramFloat += ((AdjustedCornerSize)paramCornerSize).jdField_a_of_type_Float;
+      paramCornerSize = ((AdjustedCornerSize)paramCornerSize).a;
+      paramFloat += ((AdjustedCornerSize)paramCornerSize).b;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramCornerSize;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramCornerSize;
+    this.b = paramFloat;
   }
   
   public float a(@NonNull RectF paramRectF)
   {
-    return Math.max(0.0F, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize.a(paramRectF) + this.jdField_a_of_type_Float);
+    return Math.max(0.0F, this.a.a(paramRectF) + this.b);
   }
   
   public boolean equals(Object paramObject)
@@ -37,17 +37,17 @@ public final class AdjustedCornerSize
       return false;
     }
     paramObject = (AdjustedCornerSize)paramObject;
-    return (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize.equals(paramObject.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize)) && (this.jdField_a_of_type_Float == paramObject.jdField_a_of_type_Float);
+    return (this.a.equals(paramObject.a)) && (this.b == paramObject.b);
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize, Float.valueOf(this.jdField_a_of_type_Float) });
+    return Arrays.hashCode(new Object[] { this.a, Float.valueOf(this.b) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.AdjustedCornerSize
  * JD-Core Version:    0.7.0.1
  */

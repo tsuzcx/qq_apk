@@ -14,25 +14,12 @@ import mqq.app.AppRuntime;
 public class QQSettingMeBaseProcessor
   implements IQQSettingMeProcessor
 {
-  protected QBaseActivity a;
-  protected LifeCycleAndViewModelStoreOwner a;
-  protected String a;
-  protected HashSet<Integer> a;
-  protected AppRuntime a;
-  protected boolean a;
-  
-  public QQSettingMeBaseProcessor()
-  {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a() {}
+  protected AppRuntime c;
+  protected QBaseActivity d;
+  protected LifeCycleAndViewModelStoreOwner e;
+  protected HashSet<Integer> f = new HashSet();
+  protected boolean g;
+  protected String h = "";
   
   public void a(QQSettingMe paramQQSettingMe) {}
   
@@ -40,39 +27,42 @@ public class QQSettingMeBaseProcessor
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.c = paramAppRuntime;
   }
   
   public void a(AppRuntime paramAppRuntime, QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner = ((ILifeCycleFragmentInjectApi)QRoute.api(ILifeCycleFragmentInjectApi.class)).checkAndAddLifeCycleFragment(paramQBaseActivity);
+    this.c = paramAppRuntime;
+    this.d = paramQBaseActivity;
+    this.e = ((ILifeCycleFragmentInjectApi)QRoute.api(ILifeCycleFragmentInjectApi.class)).checkAndAddLifeCycleFragment(paramQBaseActivity);
   }
   
   public void a(boolean paramBoolean) {}
   
-  @CallSuper
-  public void b()
+  public String b()
   {
-    this.jdField_a_of_type_Boolean = true;
+    return this.h;
+  }
+  
+  public void c() {}
+  
+  @CallSuper
+  public void d()
+  {
+    this.g = true;
   }
   
   @CallSuper
-  public void c()
+  public void e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.g = false;
+    this.f.clear();
   }
-  
-  public void d() {}
-  
-  public void e() {}
   
   public void f() {}
   
@@ -82,11 +72,15 @@ public class QQSettingMeBaseProcessor
   
   public void i() {}
   
+  public void j() {}
+  
+  public void k() {}
+  
   public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeBaseProcessor
  * JD-Core Version:    0.7.0.1
  */

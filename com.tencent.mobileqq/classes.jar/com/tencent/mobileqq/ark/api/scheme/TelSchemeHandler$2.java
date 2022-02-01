@@ -16,13 +16,13 @@ class TelSchemeHandler$2
   
   public void run()
   {
-    Object localObject1 = ark.Application.Create(this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject1 = ark.Application.Create(this.a, this.b);
     if (localObject1 == null)
     {
       QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate create application error");
       return;
     }
-    if (!ArkAPIPermission.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, (ark.Application)localObject1, "permission.TELEPHONE"))
+    if (!ArkAPIPermission.a(this.a, this.c, (ark.Application)localObject1, "permission.TELEPHONE"))
     {
       ((ark.Application)localObject1).Release();
       QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate check Permission fail");
@@ -35,7 +35,7 @@ class TelSchemeHandler$2
     if (TextUtils.isEmpty(str)) {
       try
       {
-        localObject3 = StringUtil.a(new JSONObject(this.c)).get("number");
+        localObject3 = StringUtil.a(new JSONObject(this.d)).get("number");
         localObject1 = str;
         if (localObject3 != null) {
           localObject1 = localObject3.toString();
@@ -55,7 +55,7 @@ class TelSchemeHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.TelSchemeHandler.2
  * JD-Core Version:    0.7.0.1
  */

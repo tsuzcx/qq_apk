@@ -13,12 +13,12 @@ class RIJInvokeHandler$25
   
   public void a(IBaseHandler paramIBaseHandler)
   {
-    this.jdField_a_of_type_JavaLangObject = paramIBaseHandler.a();
+    this.g = paramIBaseHandler.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.RIJInvokeHandler.25
  * JD-Core Version:    0.7.0.1
  */

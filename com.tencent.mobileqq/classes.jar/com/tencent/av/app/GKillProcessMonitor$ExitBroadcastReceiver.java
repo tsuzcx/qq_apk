@@ -21,11 +21,11 @@ class GKillProcessMonitor$ExitBroadcastReceiver
       paramIntent = paramIntent.getExtras().getString("verify");
       if ((GKillProcessMonitor.a(this.a, paramIntent, paramContext)) && (GKillProcessMonitor.a(this.a, paramContext)))
       {
-        paramContext = GKillProcessMonitor.a(this.a).a();
-        if ((paramContext == null) || (paramContext.a().e()))
+        paramContext = GKillProcessMonitor.a(this.a).b();
+        if ((paramContext == null) || (paramContext.k().e()))
         {
           if (paramContext != null) {
-            paramContext.A();
+            paramContext.an();
           }
           QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
           Process.killProcess(Process.myPid());

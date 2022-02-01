@@ -9,12 +9,12 @@ public class AccountApiImpl
 {
   public boolean isIdentityFirstInit()
   {
-    return AccountLifeCycleClient.a().a();
+    return AccountLifeCycleClient.a().g();
   }
   
   public void onAccountLoginOrSwitch()
   {
-    AccountLifeCycleClient.a().a();
+    AccountLifeCycleClient.a().b();
   }
   
   public void onActivityDestroy(Activity paramActivity)
@@ -29,27 +29,27 @@ public class AccountApiImpl
   
   public void onBackgroundSwitch()
   {
-    AccountLifeCycleClient.a().af_();
+    AccountLifeCycleClient.a().bX_();
   }
   
   public void onConversationResume()
   {
-    AccountLifeCycleClient.a().d();
+    AccountLifeCycleClient.a().e();
   }
   
   public void onForegroundSwitch()
   {
-    AccountLifeCycleClient.a().b();
+    AccountLifeCycleClient.a().c();
   }
   
   public void release()
   {
-    AccountLifeCycleClient.a().e();
+    AccountLifeCycleClient.a().f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.impl.AccountApiImpl
  * JD-Core Version:    0.7.0.1
  */

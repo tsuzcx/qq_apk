@@ -1,26 +1,30 @@
 package com.tencent.turingfd.sdk.xq;
 
-public final class Hydra
-  extends case
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+
+public abstract class Hydra
+  implements Application.ActivityLifecycleCallbacks
 {
-  public String G = "";
-  public String H = "";
+  public abstract void a(Activity paramActivity, String paramString);
   
-  public void a(byte parambyte)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
   {
-    parambyte.b(this.G, 0);
-    parambyte.b(this.H, 1);
+    a(paramActivity, "onActivityStarted");
   }
   
-  public void a(try paramtry)
-  {
-    this.G = paramtry.a(0, true);
-    this.H = paramtry.a(1, true);
-  }
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Hydra
  * JD-Core Version:    0.7.0.1
  */

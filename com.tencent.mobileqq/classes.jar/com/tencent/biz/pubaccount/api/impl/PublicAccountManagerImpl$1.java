@@ -22,9 +22,9 @@ class PublicAccountManagerImpl$1
   public void run()
   {
     Object localObject2;
-    if (!this.this$0.mPublicAccountMenuButtonLists.containsKey(this.jdField_a_of_type_JavaLangString))
+    if (!this.this$0.mPublicAccountMenuButtonLists.containsKey(this.a))
     {
-      localObject2 = (PublicAccountMenuEntity)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager().find(PublicAccountMenuEntity.class, this.jdField_a_of_type_JavaLangString);
+      localObject2 = (PublicAccountMenuEntity)this.b.getEntityManagerFactory().createEntityManager().find(PublicAccountMenuEntity.class, this.a);
       if (localObject2 == null) {}
     }
     try
@@ -63,11 +63,11 @@ class PublicAccountManagerImpl$1
       }
       l = ((PublicAccountMenuEntity)localObject2).savedDateTime;
       i = ((PublicAccountMenuEntity)localObject2).seqno;
-      this.this$0.menuSettingLastSaveDateTimeMap.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l));
-      this.this$0.updateMenuSettingLocalSeqno(this.jdField_a_of_type_JavaLangString, i);
-      this.this$0.mPublicAccountMenuButtonLists.put(this.jdField_a_of_type_JavaLangString, localObject3);
+      this.this$0.menuSettingLastSaveDateTimeMap.put(this.a, Long.valueOf(l));
+      this.this$0.updateMenuSettingLocalSeqno(this.a, i);
+      this.this$0.mPublicAccountMenuButtonLists.put(this.a, localObject3);
       localObject2 = this.this$0.mPublicAccountMenuType;
-      localObject3 = this.jdField_a_of_type_JavaLangString;
+      localObject3 = this.a;
       if (((mobileqq_mp.GetPublicAccountMenuResponse)localObject1).menu_type.has()) {
         i = ((mobileqq_mp.GetPublicAccountMenuResponse)localObject1).menu_type.get();
       } else {
@@ -75,17 +75,17 @@ class PublicAccountManagerImpl$1
       }
       ((Map)localObject2).put(localObject3, Integer.valueOf(i));
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager$InitDoneObserver.a();
+    this.c.a();
     return;
     localObject1 = new PublicAccountManagerImpl.1.1(this);
-    this.this$0.getMenuSetting(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, (BusinessObserver)localObject1, false);
+    this.this$0.getMenuSetting(this.d, this.b, this.a, (BusinessObserver)localObject1, false);
     return;
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager$InitDoneObserver.a();
+    this.c.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,19 +33,9 @@ public class ShortVideoArtResourceMgr
     return "artfilter000_0";
   }
   
-  private static void a()
-  {
-    ThreadManager.post(new ShortVideoArtResourceMgr.1(), 5, null, false);
-  }
-  
-  static boolean a()
-  {
-    return PtvFilterSoLoad.d();
-  }
-  
   static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    if (!PtvFilterSoLoad.c()) {
+    if (!PtvFilterSoLoad.e()) {
       return false;
     }
     int i = QmcfDevicesStrategy.a();
@@ -135,7 +125,7 @@ public class ShortVideoArtResourceMgr
             bool1 = true;
           }
         }
-        a();
+        d();
         return bool1;
       }
     }
@@ -155,17 +145,27 @@ public class ShortVideoArtResourceMgr
   
   public static String b()
   {
-    String str = PtvFilterSoLoad.a();
+    String str = PtvFilterSoLoad.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("art_res_cache");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
+  
+  static boolean c()
+  {
+    return PtvFilterSoLoad.f();
+  }
+  
+  private static void d()
+  {
+    ThreadManager.post(new ShortVideoArtResourceMgr.1(), 5, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class ReadInJoyVoicePlayController$2
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     ReadInJoyVoicePlayController.a(this.a).isPlaying = false;
-    paramMediaPlayer = (ReadInJoyVoicePlayController.IPlayCallback)ReadInJoyVoicePlayController.a(this.a).get();
+    paramMediaPlayer = (ReadInJoyVoicePlayController.IPlayCallback)ReadInJoyVoicePlayController.b(this.a).get();
     if (paramMediaPlayer != null)
     {
       paramMediaPlayer.b(ReadInJoyVoicePlayController.a(this.a));
@@ -22,7 +22,7 @@ class ReadInJoyVoicePlayController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.voice.ReadInJoyVoicePlayController.2
  * JD-Core Version:    0.7.0.1
  */

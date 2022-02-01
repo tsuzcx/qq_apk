@@ -11,9 +11,9 @@ class VideoNodeReporter$2
   
   public void run()
   {
-    if (this.this$0.a.size() > 0)
+    if (this.this$0.e.size() > 0)
     {
-      Iterator localIterator = this.this$0.a.iterator();
+      Iterator localIterator = this.this$0.e.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (VideoNodeReporter.SeesionRecord)localIterator.next();

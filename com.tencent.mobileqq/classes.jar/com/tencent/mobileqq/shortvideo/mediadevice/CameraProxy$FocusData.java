@@ -7,21 +7,18 @@ import com.tencent.mobileqq.shortvideo.camera2.CameraFocusParams;
 
 public class CameraProxy$FocusData
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback;
-  public Camera2RequestData a;
-  public CameraFocusParams a;
-  public boolean a;
+  Rect a;
   Rect b;
+  public CameraFocusParams c;
+  Camera.AutoFocusCallback d;
+  public Camera2RequestData e;
+  public boolean f = false;
   
-  public CameraProxy$FocusData(CameraProxy paramCameraProxy)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public CameraProxy$FocusData(CameraProxy paramCameraProxy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.FocusData
  * JD-Core Version:    0.7.0.1
  */

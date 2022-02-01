@@ -4,17 +4,17 @@ import com.tencent.thumbplayer.core.common.TPThumbplayerCapabilityHelper;
 
 public class HDRUtil
 {
-  private static StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static StringBuilder b = new StringBuilder();
   
   public static String a()
   {
     try
     {
-      if (jdField_a_of_type_Boolean) {
+      if (a) {
         break label113;
       }
-      jdField_a_of_type_Boolean = true;
+      a = true;
       i = 0;
     }
     finally
@@ -35,25 +35,25 @@ public class HDRUtil
     {
       if (TPThumbplayerCapabilityHelper.isHDRsupport(i, 0, 0))
       {
-        jdField_a_of_type_JavaLangStringBuilder.append(i);
-        jdField_a_of_type_JavaLangStringBuilder.append(",");
+        b.append(i);
+        b.append(",");
       }
     }
     else
     {
-      if ((jdField_a_of_type_JavaLangStringBuilder.length() > 0) && (jdField_a_of_type_JavaLangStringBuilder.lastIndexOf(",") == jdField_a_of_type_JavaLangStringBuilder.length() - 1)) {
-        jdField_a_of_type_JavaLangStringBuilder.deleteCharAt(jdField_a_of_type_JavaLangStringBuilder.length() - 1);
-      } else if (jdField_a_of_type_JavaLangStringBuilder.length() == 0) {
-        jdField_a_of_type_JavaLangStringBuilder.append("notSupport");
+      if ((b.length() > 0) && (b.lastIndexOf(",") == b.length() - 1)) {
+        b.deleteCharAt(b.length() - 1);
+      } else if (b.length() == 0) {
+        b.append("notSupport");
       }
-      str = jdField_a_of_type_JavaLangStringBuilder.toString();
+      str = b.toString();
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.utils.HDRUtil
  * JD-Core Version:    0.7.0.1
  */

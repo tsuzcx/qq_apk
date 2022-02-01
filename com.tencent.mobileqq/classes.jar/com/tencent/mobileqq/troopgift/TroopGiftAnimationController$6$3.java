@@ -18,16 +18,16 @@ class TroopGiftAnimationController$6$3
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$6.this$0.a == null) {
+    if (this.b.this$0.a == null) {
       return;
     }
-    paramURLDrawable = TroopUtils.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$6.this$0.a.b(new TroopGiftAnimationController.6.3.1(this, paramURLDrawable));
+    paramURLDrawable = TroopUtils.a(this.a);
+    this.b.this$0.a.b(new TroopGiftAnimationController.6.3.1(this, paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.6.3
  * JD-Core Version:    0.7.0.1
  */

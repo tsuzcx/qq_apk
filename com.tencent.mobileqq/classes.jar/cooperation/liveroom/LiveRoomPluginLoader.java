@@ -24,11 +24,11 @@ public class LiveRoomPluginLoader
     localIntent.putExtra("preloadEntry", 9999);
     localIntent.putExtra("sendTime", SystemClock.elapsedRealtime());
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "LiveRoomPlugin.apk";
-    localPluginParams.e = "直播SDK";
-    localPluginParams.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localPluginParams.f = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localPluginParams.d = "LiveRoomPlugin.apk";
+    localPluginParams.g = "直播SDK";
+    localPluginParams.c = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localPluginParams.h = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginService";
+    localPluginParams.j = localIntent;
     if (QLog.isColorLevel()) {
       QLog.d("LiveRoomPluginLoader", 2, "[LiveRoomPluginLoader] launchPluginService");
     }
@@ -43,7 +43,7 @@ public class LiveRoomPluginLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginLoader
  * JD-Core Version:    0.7.0.1
  */

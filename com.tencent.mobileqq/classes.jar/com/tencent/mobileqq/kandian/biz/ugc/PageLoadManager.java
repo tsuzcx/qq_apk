@@ -5,15 +5,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PageLoadManager<T>
 {
-  private int jdField_a_of_type_Int = 0;
-  private PageLoadManager.QueryProvider<T> jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager$QueryProvider = null;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 100;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int a = 0;
+  private int b = 100;
+  private boolean c = true;
+  private boolean d = false;
+  private PageLoadManager.QueryProvider<T> e = null;
   
   public void a()
   {
-    PageLoadManager.QueryProvider localQueryProvider = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager$QueryProvider;
+    PageLoadManager.QueryProvider localQueryProvider = this.e;
     if (localQueryProvider == null)
     {
       if (QLog.isColorLevel()) {
@@ -21,19 +21,19 @@ public class PageLoadManager<T>
       }
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.w("PageLoadManager", 2, "requestNextPage cancel for mHasMore is false");
       }
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.d = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestNextPage mOffset:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" mPageSize:$mPageSize");
       QLog.i("PageLoadManager", 2, localStringBuilder.toString());
     }
@@ -42,34 +42,34 @@ public class PageLoadManager<T>
   
   public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.w("PageLoadManager", 2, "onPositionShow return for mHasMore is false");
       }
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.d)
     {
       if (QLog.isColorLevel()) {
         QLog.w("PageLoadManager", 2, "query is doing...");
       }
       return;
     }
-    int i = this.jdField_a_of_type_Int;
-    if (paramInt >= (i - this.jdField_b_of_type_Int + i) / 2) {
+    int i = this.a;
+    if (paramInt >= (i - this.b + i) / 2) {
       a();
     }
   }
   
   public void a(PageLoadManager.QueryProvider<T> paramQueryProvider)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager$QueryProvider = paramQueryProvider;
+    this.e = paramQueryProvider;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.PageLoadManager
  * JD-Core Version:    0.7.0.1
  */

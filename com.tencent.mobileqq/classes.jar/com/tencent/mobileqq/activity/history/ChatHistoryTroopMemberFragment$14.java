@@ -14,22 +14,22 @@ class ChatHistoryTroopMemberFragment$14
   public void onClick(View paramView)
   {
     ChatHistoryTroopMemberFragment localChatHistoryTroopMemberFragment = this.a;
-    localChatHistoryTroopMemberFragment.f = false;
-    localChatHistoryTroopMemberFragment.u = "";
-    localChatHistoryTroopMemberFragment.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    localChatHistoryTroopMemberFragment.z = false;
+    localChatHistoryTroopMemberFragment.br = "";
+    localChatHistoryTroopMemberFragment.N.setVisibility(8);
+    this.a.O.setVisibility(0);
+    if (this.a.az != 22) {
+      this.a.P.setVisibility(0);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+    if (this.a.K != null) {
+      this.a.K.c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.14
  * JD-Core Version:    0.7.0.1
  */

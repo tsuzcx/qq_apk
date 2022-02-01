@@ -1,6 +1,5 @@
 package com.tencent.tavkit.composition.builder;
 
-import android.support.annotation.NonNull;
 import com.tencent.tav.asset.Asset;
 import com.tencent.tav.core.AudioMix;
 import com.tencent.tav.core.AudioMixInputParameters;
@@ -19,7 +18,6 @@ import java.util.List;
 public class TAVCompositionBuilder
 {
   private static final String TAG = "TAVCompositionBuilder";
-  @NonNull
   private final BuilderModel builderModel;
   private boolean isAudioTracksMerge = true;
   private boolean isReloadChannels = true;
@@ -112,7 +110,7 @@ public class TAVCompositionBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.TAVCompositionBuilder
  * JD-Core Version:    0.7.0.1
  */

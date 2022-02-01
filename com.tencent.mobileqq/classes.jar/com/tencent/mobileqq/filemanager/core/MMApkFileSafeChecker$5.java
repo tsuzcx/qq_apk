@@ -19,43 +19,43 @@ class MMApkFileSafeChecker$5
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[MMApkCheck] onCheckResult. Item.Id=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId());
+    ((StringBuilder)localObject).append(this.a.getId());
     ((StringBuilder)localObject).append(" errCode:");
     ((StringBuilder)localObject).append(paramInt1);
     QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
+      localObject = this.a;
       ((TroopFileTransferManager.Item)localObject).apkSafeLevel = paramInt2;
       ((TroopFileTransferManager.Item)localObject).apkSafeMsg = paramString1;
       ((TroopFileTransferManager.Item)localObject).apkSafeDetailUrl = paramString2;
-      TroopFileDataCenter.a(this.jdField_a_of_type_Long, (TroopFileTransferManager.Item)localObject);
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null))
+      TroopFileDataCenter.a(this.b, (TroopFileTransferManager.Item)localObject);
+      if ((this.c.b != null) && (this.a.Id != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.troopuin, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString());
+        localObject = this.c.b.getFileManagerDataCenter().c(this.a.troopuin, this.a.Id.toString());
         if (localObject != null)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("[MMApkCheck] onCheckResult. Item.Id=");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId());
+          localStringBuilder.append(this.a.getId());
           localStringBuilder.append(" update about entity:");
           localStringBuilder.append(((FileManagerEntity)localObject).nSessionId);
           QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
           ((FileManagerEntity)localObject).apkSafeLevel = paramInt2;
           ((FileManagerEntity)localObject).apkSafeMsg = paramString1;
           ((FileManagerEntity)localObject).apkSafeDetailUrl = paramString2;
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a.getFileManagerDataCenter().c((FileManagerEntity)localObject);
+          this.c.b.getFileManagerDataCenter().c((FileManagerEntity)localObject);
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a != null) {
-      ((TroopFileHandler)this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).d(new Object[] { this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
+    if (this.c.b != null) {
+      ((TroopFileHandler)this.c.b.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).d(new Object[] { this.a.getInfo(this.b), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.5
  * JD-Core Version:    0.7.0.1
  */

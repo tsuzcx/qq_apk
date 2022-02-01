@@ -346,7 +346,7 @@ public class PublicAccountHandlerImpl
     boolean bool3;
     if (handleGetUserFollowListIsResSuccess(paramIntent, paramFromServiceMsg, paramArrayOfByte))
     {
-      localGetUserFollowListRet.jdField_a_of_type_Int = 0;
+      localGetUserFollowListRet.a = 0;
       l1 = paramIntent.getLongExtra("time_stamp", 0L);
       l2 = paramIntent.getLongExtra("get_user_follow_list_begin", 0L);
       l5 = paramIntent.getLongExtra("get_user_follow_list_follow_seq", 0L);
@@ -398,7 +398,7 @@ public class PublicAccountHandlerImpl
       else
       {
         handleGetUserFollowListInnerLogic2(paramBoolean, localGetUserFollowListRet, l1, l2, bool3, paramIntent, bool2, l3, paramFromServiceMsg);
-        localGetUserFollowListRet.jdField_a_of_type_Int = 0;
+        localGetUserFollowListRet.a = 0;
         paramBoolean = true;
         bool1 = true;
       }
@@ -415,12 +415,12 @@ public class PublicAccountHandlerImpl
         } else {
           i = 0;
         }
-        localGetUserFollowListRet.jdField_a_of_type_Int = i;
+        localGetUserFollowListRet.a = i;
         handleGetUserFollowListQLogHasnext(paramIntent, i);
         if (i != 0)
         {
           paramBoolean = true;
-          localGetUserFollowListRet.jdField_a_of_type_Boolean = true;
+          localGetUserFollowListRet.c = true;
         }
         else
         {
@@ -460,7 +460,7 @@ public class PublicAccountHandlerImpl
         i = paramIntent.total_count.get();
         l5 = Utils.a(i);
         paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoList(paramIntent.info.get(), l1);
-        localGetUserFollowListRet.jdField_a_of_type_JavaLangObject = paramFromServiceMsg;
+        localGetUserFollowListRet.d = paramFromServiceMsg;
         if (!paramIntent.has_next.has()) {
           break label714;
         }
@@ -468,10 +468,10 @@ public class PublicAccountHandlerImpl
           break label708;
         }
         break label714;
-        localGetUserFollowListRet.jdField_a_of_type_Boolean = bool1;
-        localGetUserFollowListRet.jdField_a_of_type_Long = l5;
+        localGetUserFollowListRet.c = bool1;
+        localGetUserFollowListRet.b = l5;
         paramIntent = (IPublicAccountDataManager)this.app.getRuntimeService(IPublicAccountDataManager.class, "all");
-        savePublicAccountInfos(paramFromServiceMsg, l1, bool3, localGetUserFollowListRet.jdField_a_of_type_Boolean);
+        savePublicAccountInfos(paramFromServiceMsg, l1, bool3, localGetUserFollowListRet.c);
         handleGetUserFollowListInnerLogic3(paramBoolean, localGetUserFollowListRet, l1, l2, bool3, l3, l4, (PublicAccountDataManagerImpl)paramIntent);
         setCurDataSeq(l4, paramBoolean);
         paramBoolean = true;
@@ -481,12 +481,12 @@ public class PublicAccountHandlerImpl
       {
         break label620;
       }
-      localGetUserFollowListRet.jdField_a_of_type_Int = -1;
-      localGetUserFollowListRet.jdField_a_of_type_Boolean = true;
+      localGetUserFollowListRet.a = -1;
+      localGetUserFollowListRet.c = true;
       break label659;
-      localGetUserFollowListRet.jdField_a_of_type_Int = -1;
-      localGetUserFollowListRet.jdField_a_of_type_Boolean = true;
-      handleGetUserFollowListQLogErrCode("<<---handleGetUserFollowList ", localGetUserFollowListRet.jdField_a_of_type_Int);
+      localGetUserFollowListRet.a = -1;
+      localGetUserFollowListRet.c = true;
+      handleGetUserFollowListQLogErrCode("<<---handleGetUserFollowList ", localGetUserFollowListRet.a);
       bool1 = false;
       paramBoolean = true;
       handleGetUserFollowListNeedNotify(localGetUserFollowListRet, paramBoolean, bool1, 100);
@@ -499,13 +499,13 @@ public class PublicAccountHandlerImpl
     paramStGetFollowListRsp = paramStGetFollowListRsp.account_list.get();
     long l = paramStGetFollowListRsp.size();
     paramStGetFollowListRsp = PublicAccountInfo.createPublicAccountInfoListCf8(paramStGetFollowListRsp, paramLong1);
-    paramGetUserFollowListRet.jdField_a_of_type_JavaLangObject = paramStGetFollowListRsp;
-    paramGetUserFollowListRet.jdField_a_of_type_Boolean = (paramBoolean3 ^ true);
-    paramGetUserFollowListRet.jdField_a_of_type_Long = l;
+    paramGetUserFollowListRet.d = paramStGetFollowListRsp;
+    paramGetUserFollowListRet.c = (paramBoolean3 ^ true);
+    paramGetUserFollowListRet.b = l;
     IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.app.getRuntimeService(IPublicAccountDataManager.class, "all");
-    savePublicAccountInfos(paramStGetFollowListRsp, paramLong1, paramBoolean2, paramGetUserFollowListRet.jdField_a_of_type_Boolean);
+    savePublicAccountInfos(paramStGetFollowListRsp, paramLong1, paramBoolean2, paramGetUserFollowListRet.c);
     handleGetUserFollowListRetmIsFinish(paramGetUserFollowListRet, (PublicAccountDataManagerImpl)localIPublicAccountDataManager);
-    if (!paramGetUserFollowListRet.jdField_a_of_type_Boolean)
+    if (!paramGetUserFollowListRet.c)
     {
       if (paramBoolean2) {
         getUserFollowList(paramLong3, 0L, 0L, 20L, paramLong1, true, true, paramString);
@@ -523,17 +523,17 @@ public class PublicAccountHandlerImpl
   
   private void handleGetUserFollowListInnerLogic3(boolean paramBoolean1, IPublicAccountObserver.GetUserFollowListRet paramGetUserFollowListRet, long paramLong1, long paramLong2, boolean paramBoolean2, long paramLong3, long paramLong4, PublicAccountDataManagerImpl paramPublicAccountDataManagerImpl)
   {
-    if (paramGetUserFollowListRet.jdField_a_of_type_Boolean)
+    if (paramGetUserFollowListRet.c)
     {
       TroopBarAssistantManager.a().a(this.app, (List)paramPublicAccountDataManagerImpl.getPublicAccountEqqInfoList());
-      ServiceAccountFolderManager.a().c(this.app);
-      TroopBarAssistantManager.a().g(this.app);
-      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().e();
+      ServiceAccountFolderManager.a().d(this.app);
+      TroopBarAssistantManager.a().m(this.app);
+      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().y();
       paramPublicAccountDataManagerImpl = new PublicAccountHandlerImpl.FolderRefreshRunnable(this.app, paramPublicAccountDataManagerImpl);
       ThreadManager.getSubThreadHandler().postDelayed(paramPublicAccountDataManagerImpl, 15000L);
       ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountHandlerImpl.2(this), 500L);
     }
-    if (!paramGetUserFollowListRet.jdField_a_of_type_Boolean)
+    if (!paramGetUserFollowListRet.c)
     {
       if (paramBoolean2)
       {
@@ -653,12 +653,12 @@ public class PublicAccountHandlerImpl
   
   private void handleGetUserFollowListRetmIsFinish(IPublicAccountObserver.GetUserFollowListRet paramGetUserFollowListRet, PublicAccountDataManagerImpl paramPublicAccountDataManagerImpl)
   {
-    if (paramGetUserFollowListRet.jdField_a_of_type_Boolean)
+    if (paramGetUserFollowListRet.c)
     {
       TroopBarAssistantManager.a().a(this.app, (List)paramPublicAccountDataManagerImpl.getPublicAccountEqqInfoList());
-      ServiceAccountFolderManager.a().c(this.app);
-      TroopBarAssistantManager.a().g(this.app);
-      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().e();
+      ServiceAccountFolderManager.a().d(this.app);
+      TroopBarAssistantManager.a().m(this.app);
+      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().y();
       paramGetUserFollowListRet = new PublicAccountHandlerImpl.FolderRefreshRunnable(this.app, paramPublicAccountDataManagerImpl);
       ThreadManager.getSubThreadHandler().postDelayed(paramGetUserFollowListRet, 15000L);
       ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountHandlerImpl.3(this), 500L);
@@ -698,12 +698,12 @@ public class PublicAccountHandlerImpl
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(l);
             localStringBuilder.append("");
-            paramRspFollowList.jdField_a_of_type_JavaLangObject = localIPublicAccountDataManager.getAccountInfo(localStringBuilder.toString());
+            paramRspFollowList.a = localIPublicAccountDataManager.getAccountInfo(localStringBuilder.toString());
             if (((SubMsgType0x28.FollowList)localObject1).uint32_disable_cancel_chat.get() != 1) {
-              this.app.getMessageFacade().a((String)localObject2, 1008);
+              this.app.getMessageFacade().c((String)localObject2, 1008);
             }
             TroopBarAssistantManager.a().a(this.app, (List)localIPublicAccountDataManager.getPublicAccountEqqInfoList());
-            ServiceAccountFolderManager.a().c(this.app);
+            ServiceAccountFolderManager.a().d(this.app);
             localObject1 = (EcShopAssistantManager)this.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
             if (localObject1 != null)
             {
@@ -857,10 +857,10 @@ public class PublicAccountHandlerImpl
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (PublicAccountInfo)((Iterator)localObject1).next();
-      localObject2 = paramList.a().b(((PublicAccountInfo)localObject2).getUin(), 1008);
+      localObject2 = paramList.g().c(((PublicAccountInfo)localObject2).getUin(), 1008);
       if (localObject2 != null)
       {
-        paramList.a().a((RecentUser)localObject2);
+        paramList.g().a((RecentUser)localObject2);
         i = 1;
       }
     }
@@ -895,7 +895,7 @@ public class PublicAccountHandlerImpl
       QLog.d("PublicAccountHandler", 2, paramSosoLbsInfo.toString());
     }
     String str = "";
-    Object localObject1 = "8.7.0".replaceAll("\\.", "");
+    Object localObject1 = "8.8.17".replaceAll("\\.", "");
     paramSosoLbsInfo = new WeatherReportInfo.PbReqMsgHead();
     paramSosoLbsInfo.uint32_platform_type.set(1);
     paramSosoLbsInfo.uint32_version.set(Integer.parseInt((String)localObject1));
@@ -925,7 +925,7 @@ public class PublicAccountHandlerImpl
         localGetWeatherMessageReq.source.set(0);
       }
       paramSosoLbsInfo.put("platform", 109);
-      paramSosoLbsInfo.put("version", "8.7.0");
+      paramSosoLbsInfo.put("version", "8.8.17");
       localObject1 = paramSosoLbsInfo.toString();
       localObject2 = localGetWeatherMessageReq.extra;
       paramSosoLbsInfo = (SosoLbsInfo)localObject1;
@@ -1498,31 +1498,31 @@ public class PublicAccountHandlerImpl
   public void onFollowPublicAccount(Object paramObject)
   {
     IPublicAccountObserver.FollowRet localFollowRet = new IPublicAccountObserver.FollowRet();
-    localFollowRet.jdField_a_of_type_Int = 0;
+    localFollowRet.b = 0;
     long l = SystemClock.uptimeMillis();
     Object localObject = (IPublicAccountDataManager)this.app.getRuntimeService(IPublicAccountDataManager.class, "all");
     boolean bool = paramObject instanceof PublicAccountDetailImpl;
     if (bool)
     {
-      localFollowRet.jdField_a_of_type_JavaLangObject = PublicAccountInfo.createPublicAccount((IPublicAccountDetail)paramObject, l);
+      localFollowRet.a = PublicAccountInfo.createPublicAccount((IPublicAccountDetail)paramObject, l);
       ((IPublicAccountDataManager)localObject).saveAccountDetailInfoCache((PublicAccountDetailImpl)paramObject);
     }
     else if ((paramObject instanceof EqqDetail))
     {
-      localFollowRet.jdField_a_of_type_JavaLangObject = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
+      localFollowRet.a = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
     }
-    ((IPublicAccountDataManager)localObject).savePublicAccountInfo((PublicAccountInfo)localFollowRet.jdField_a_of_type_JavaLangObject);
+    ((IPublicAccountDataManager)localObject).savePublicAccountInfo((PublicAccountInfo)localFollowRet.a);
     TroopBarAssistantManager.a().a(this.app, (List)((IPublicAccountDataManager)localObject).getPublicAccountEqqInfoList());
     if ((bool) && (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) <= 0)) {
-      ServiceAccountFolderManager.a().a(this.app, ((PublicAccountInfo)localFollowRet.jdField_a_of_type_JavaLangObject).getUin());
+      ServiceAccountFolderManager.a().c(this.app, ((PublicAccountInfo)localFollowRet.a).getUin());
     }
     localObject = (EcShopAssistantManager)this.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
     if (localObject != null)
     {
-      if (localFollowRet.jdField_a_of_type_JavaLangObject == null) {
+      if (localFollowRet.a == null) {
         paramObject = null;
       } else {
-        paramObject = ((PublicAccountInfo)localFollowRet.jdField_a_of_type_JavaLangObject).getUin();
+        paramObject = ((PublicAccountInfo)localFollowRet.a).getUin();
       }
       ((EcShopAssistantManager)localObject).a(paramObject, "onFollow");
     }
@@ -1694,7 +1694,7 @@ public class PublicAccountHandlerImpl
           localObject2 = XMLMessageUtils.a(localMessageRecord);
           if ((localObject2 != null) && (((PAMessage)localObject2).mMsgId == l))
           {
-            this.app.getMessageFacade().b((String)localObject1, 1008, localMessageRecord.uniseq);
+            this.app.getMessageFacade().h((String)localObject1, 1008, localMessageRecord.uniseq);
             continue;
           }
           localObject2 = localMessageRecord.getExtInfoFromExtStr("pa_msgId");
@@ -1715,7 +1715,7 @@ public class PublicAccountHandlerImpl
         if (Long.parseLong((String)localObject2) != l) {
           continue;
         }
-        this.app.getMessageFacade().b((String)localObject1, 1008, localMessageRecord.uniseq);
+        this.app.getMessageFacade().h((String)localObject1, 1008, localMessageRecord.uniseq);
       }
       catch (Exception localException) {}
       paramArrayOfByte = (SubMsgType0x28.MsgBody)new SubMsgType0x28.MsgBody().mergeFrom(paramArrayOfByte);
@@ -1742,7 +1742,7 @@ public class PublicAccountHandlerImpl
   public void onUnfollowPublicAccount(Object paramObject)
   {
     IPublicAccountObserver.FollowRet localFollowRet = new IPublicAccountObserver.FollowRet();
-    localFollowRet.jdField_a_of_type_Int = 0;
+    localFollowRet.b = 0;
     long l = SystemClock.uptimeMillis();
     Object localObject1 = (IPublicAccountDataManager)this.app.getRuntimeService(IPublicAccountDataManager.class, "all");
     boolean bool = paramObject instanceof PublicAccountDetailImpl;
@@ -1750,14 +1750,14 @@ public class PublicAccountHandlerImpl
     if (bool)
     {
       localObject2 = (PublicAccountDetailImpl)paramObject;
-      localFollowRet.jdField_a_of_type_JavaLangObject = PublicAccountInfo.createPublicAccount((IPublicAccountDetail)localObject2, l);
+      localFollowRet.a = PublicAccountInfo.createPublicAccount((IPublicAccountDetail)localObject2, l);
       ((IPublicAccountDataManager)localObject1).delAccountDetailInfoCache(((PublicAccountDetailImpl)localObject2).uin);
     }
     else if ((paramObject instanceof EqqDetail))
     {
-      localFollowRet.jdField_a_of_type_JavaLangObject = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
+      localFollowRet.a = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
     }
-    ((IPublicAccountDataManager)localObject1).delPublicAccountInfo(((PublicAccountInfo)localFollowRet.jdField_a_of_type_JavaLangObject).getUin());
+    ((IPublicAccountDataManager)localObject1).delPublicAccountInfo(((PublicAccountInfo)localFollowRet.a).getUin());
     if ((paramObject instanceof EqqDetail))
     {
       localObject2 = (EqqDetailDataManager)this.app.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
@@ -1767,15 +1767,15 @@ public class PublicAccountHandlerImpl
     }
     TroopBarAssistantManager.a().a(this.app, (List)((IPublicAccountDataManager)localObject1).getPublicAccountEqqInfoList());
     if (bool) {
-      ServiceAccountFolderManager.a().a(this.app, ((PublicAccountInfo)localFollowRet.jdField_a_of_type_JavaLangObject).getUin());
+      ServiceAccountFolderManager.a().c(this.app, ((PublicAccountInfo)localFollowRet.a).getUin());
     }
     localObject1 = (EcShopAssistantManager)this.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
     if (localObject1 != null)
     {
-      if (localFollowRet.jdField_a_of_type_JavaLangObject == null) {
+      if (localFollowRet.a == null) {
         paramObject = null;
       } else {
-        paramObject = ((PublicAccountInfo)localFollowRet.jdField_a_of_type_JavaLangObject).getUin();
+        paramObject = ((PublicAccountInfo)localFollowRet.a).getUin();
       }
       ((EcShopAssistantManager)localObject1).a(paramObject, "onUnfollow");
     }
@@ -1844,7 +1844,7 @@ public class PublicAccountHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

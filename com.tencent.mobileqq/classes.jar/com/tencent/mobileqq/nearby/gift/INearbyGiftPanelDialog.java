@@ -9,11 +9,11 @@ public abstract interface INearbyGiftPanelDialog
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
   
-  public abstract boolean a();
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.INearbyGiftPanelDialog
  * JD-Core Version:    0.7.0.1
  */

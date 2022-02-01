@@ -20,37 +20,37 @@ class BubbleInterActiveAnim$6
     if (QLog.isColorLevel()) {
       QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
     }
-    paramAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+    paramAnimator = this.a;
     if (paramAnimator != null) {
       paramAnimator.start();
     }
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder;
+    paramAnimator = this.b;
     if (paramAnimator != null)
     {
-      if (paramAnimator.a == null) {
+      if (paramAnimator.c == null) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.istroop == 0) {
+      if (this.b.c.istroop == 0) {
         paramAnimator = "1";
       }
       for (;;)
       {
         break;
-        if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.istroop == 1) {
+        if (this.b.c.istroop == 1) {
           paramAnimator = "2";
-        } else if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.istroop == 3000) {
+        } else if (this.b.c.istroop == 3000) {
           paramAnimator = "3";
         } else {
           paramAnimator = "";
         }
       }
-      VasWebviewUtil.a("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(SVIPHandlerConstants.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.vipBubbleID)), "");
+      VasWebviewUtil.a("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(SVIPHandlerConstants.a(this.b.c.vipBubbleID)), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.6
  * JD-Core Version:    0.7.0.1
  */

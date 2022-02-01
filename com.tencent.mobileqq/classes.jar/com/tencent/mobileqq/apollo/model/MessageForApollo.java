@@ -7,6 +7,8 @@ import com.tencent.mobileqq.apollo.utils.api.impl.ApolloMessageUtilImpl;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.message.RecordForTest;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -117,10 +119,8 @@ public class MessageForApollo
         this.stickerHeight = localJSONObject.optInt("stickerHeight");
         this.stickerWidth = localJSONObject.optInt("stickerWidth");
         this.welcomeId = localJSONObject.optLong("welcomeId");
-        boolean bool = localJSONObject.has("welcomeUinList");
-        int j = 0;
         int i;
-        if (bool)
+        if (localJSONObject.has("welcomeUinList"))
         {
           this.welcomeUinList.clear();
           localObject = localJSONObject.getJSONArray("welcomeUinList");
@@ -154,7 +154,7 @@ public class MessageForApollo
           localObject = localJSONObject.getJSONArray("winnerList");
           if ((localObject != null) && (((JSONArray)localObject).length() > 0))
           {
-            i = j;
+            i = 0;
             while (i < ((JSONArray)localObject).length())
             {
               this.winnerList.add(Long.valueOf(((JSONArray)localObject).getLong(i)));
@@ -181,6 +181,9 @@ public class MessageForApollo
             this.mApollo3DMessage = new Apollo3DMessage();
           }
           this.mApollo3DMessage.setMessageWithJSONObject(localJSONObject);
+        }
+        if (this.msgType == 12) {
+          this.actionType = 0;
         }
       }
       if ((TextUtils.isEmpty(this.inputText)) && (this.istroop == 0) && (this.mApolloMessage.text != null))
@@ -252,12 +255,12 @@ public class MessageForApollo
     return bool1;
   }
   
-  public boolean isNewAnimation()
+  public boolean isMeme()
   {
     if (CmShowWnsUtils.c())
     {
       int i = this.msgType;
-      if ((i == 10) || (i == 11)) {
+      if ((i == 10) || (i == 11) || ((i == 12) && (CMShowPlatform.a.b(Scene.MEME_PLAYER)))) {
         return true;
       }
     }
@@ -266,7 +269,7 @@ public class MessageForApollo
   
   public boolean needVipBubble()
   {
-    return (this.istroop == 1) && (isNewAnimation());
+    return (this.istroop == 1) && (isMeme());
   }
   
   protected void postRead()
@@ -298,7 +301,7 @@ public class MessageForApollo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.model.MessageForApollo
  * JD-Core Version:    0.7.0.1
  */

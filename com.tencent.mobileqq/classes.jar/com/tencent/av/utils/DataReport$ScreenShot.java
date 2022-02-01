@@ -7,7 +7,7 @@ public class DataReport$ScreenShot
 {
   public static void a()
   {
-    DataReport.a("0X800A3D8", VideoController.a().a().d);
+    DataReport.a("0X800A3D8", VideoController.f().k().g);
   }
 }
 

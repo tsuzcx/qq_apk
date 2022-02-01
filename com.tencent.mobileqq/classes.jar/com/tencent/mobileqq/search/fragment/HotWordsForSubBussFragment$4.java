@@ -15,7 +15,7 @@ class HotWordsForSubBussFragment$4
     super.handleBusiHotWordError(paramInt, paramString);
     if (QLog.isColorLevel())
     {
-      String str = HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString;
+      String str = HotWordsForSubBussFragment.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleBusiHotWordError code=");
       localStringBuilder.append(paramInt);
@@ -27,21 +27,21 @@ class HotWordsForSubBussFragment$4
   
   public void handleBusiHotWordResult(int paramInt, List<BusinessGroupWord> paramList)
   {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.i = paramInt;
     HotWordsForSubBussFragment.a(this.a, paramList);
     if (QLog.isColorLevel())
     {
-      paramList = HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString;
+      paramList = HotWordsForSubBussFragment.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleTabSearchResult expireTime;");
-      localStringBuilder.append(HotWordsForSubBussFragment.jdField_a_of_type_Int);
+      localStringBuilder.append(HotWordsForSubBussFragment.i);
       QLog.i(paramList, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment.4
  * JD-Core Version:    0.7.0.1
  */

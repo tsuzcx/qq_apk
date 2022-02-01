@@ -27,17 +27,17 @@ public class TroopRedDotHandlerProcessor
 {
   private void b(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    if (paramTroopUnreadMsgInfo.b == -1)
+    if (paramTroopUnreadMsgInfo.d == -1)
     {
       Object localObject = (HotChatManager)paramAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       if (localObject != null)
       {
         String str = String.valueOf(paramLong);
-        localObject = ((HotChatManager)localObject).a(str);
+        localObject = ((HotChatManager)localObject).c(str);
         if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
         {
           ((HotChatInfo)localObject).setHasRedPoint();
-          ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.b, true, new Object[] { str });
+          ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.c, true, new Object[] { str });
         }
       }
     }
@@ -45,51 +45,51 @@ public class TroopRedDotHandlerProcessor
     {
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("handle_oidb_0x8c9_2_response, msgInfo.nUnreadMsgNum:");
-      paramAppInterface.append(paramTroopUnreadMsgInfo.jdField_a_of_type_Int);
+      paramAppInterface.append(paramTroopUnreadMsgInfo.c);
       QLog.d("TroopRedDotHandlerProcessorQ.hotchat.aio_post_red_point", 2, paramAppInterface.toString());
     }
   }
   
   private void c(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_photo_new", String.valueOf(paramLong), paramTroopUnreadMsgInfo.b);
-    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).updateRedPointInfo(paramAppInterface, String.valueOf(paramLong), "troop", 2, paramTroopUnreadMsgInfo.b);
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_photo_message", String.valueOf(paramLong), paramTroopUnreadMsgInfo.jdField_a_of_type_Int);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_photo_new", String.valueOf(paramLong), paramTroopUnreadMsgInfo.d);
+    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).updateRedPointInfo(paramAppInterface, String.valueOf(paramLong), "troop", 2, paramTroopUnreadMsgInfo.d);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_photo_message", String.valueOf(paramLong), paramTroopUnreadMsgInfo.c);
   }
   
   private void d(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_file_new", String.valueOf(paramLong), paramTroopUnreadMsgInfo.b);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_file_new", String.valueOf(paramLong), paramTroopUnreadMsgInfo.d);
   }
   
   private void e(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_notification_new", String.valueOf(paramLong), paramTroopUnreadMsgInfo.b);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "troop_notification_new", String.valueOf(paramLong), paramTroopUnreadMsgInfo.d);
   }
   
   private void f(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "group_activity_new_message", String.valueOf(paramLong), paramTroopUnreadMsgInfo.b);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramAppInterface.getCurrentAccountUin(), "group_activity_new_message", String.valueOf(paramLong), paramTroopUnreadMsgInfo.d);
   }
   
   private void g(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    if ((paramTroopUnreadMsgInfo.b != -1) && (paramTroopUnreadMsgInfo.b <= 0))
+    if ((paramTroopUnreadMsgInfo.d != -1) && (paramTroopUnreadMsgInfo.d <= 0))
     {
-      if (paramTroopUnreadMsgInfo.b == 0) {
-        ChatActivityUtils.a((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(0));
+      if (paramTroopUnreadMsgInfo.d == 0) {
+        ChatActivityUtils.a((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.b, Integer.valueOf(0));
       }
     }
     else {
-      ChatActivityUtils.a((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(-1));
+      ChatActivityUtils.a((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.b, Integer.valueOf(-1));
     }
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("handle_oidb_0x8c9_2_response, troopUin=");
-      paramAppInterface.append(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString);
-      paramAppInterface.append(", nNewNum=");
       paramAppInterface.append(paramTroopUnreadMsgInfo.b);
+      paramAppInterface.append(", nNewNum=");
+      paramAppInterface.append(paramTroopUnreadMsgInfo.d);
       QLog.i(".troop.notify_feeds.data", 2, paramAppInterface.toString());
     }
   }
@@ -100,41 +100,41 @@ public class TroopRedDotHandlerProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handle_oidb_0x8c9_2_response, troopUin=");
-      localStringBuilder.append(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(", nNewNum=");
       localStringBuilder.append(paramTroopUnreadMsgInfo.b);
+      localStringBuilder.append(", nNewNum=");
+      localStringBuilder.append(paramTroopUnreadMsgInfo.d);
       QLog.i("hw_troop", 2, localStringBuilder.toString());
     }
-    ((IHWTroopUtilsApi)QRoute.api(IHWTroopUtilsApi.class)).setAIOHomeworkBtnRedPoint((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, paramTroopUnreadMsgInfo.b);
-    ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.jdField_a_of_type_Int, true, new Object[] { String.valueOf(paramLong), String.valueOf(1104445552), Boolean.valueOf(false) });
+    ((IHWTroopUtilsApi)QRoute.api(IHWTroopUtilsApi.class)).setAIOHomeworkBtnRedPoint((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.b, paramTroopUnreadMsgInfo.d);
+    ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.b, true, new Object[] { String.valueOf(paramLong), String.valueOf(1104445552), Boolean.valueOf(false) });
   }
   
   private void i(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
     paramAppInterface = ((ITroopBatchAddFriendService)paramAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr();
-    if ((paramTroopUnreadMsgInfo.b > 0) && (paramAppInterface != null)) {
-      paramAppInterface.d(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString);
+    if ((paramTroopUnreadMsgInfo.d > 0) && (paramAppInterface != null)) {
+      paramAppInterface.p(paramTroopUnreadMsgInfo.b);
     }
   }
   
   private void j(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    if (paramTroopUnreadMsgInfo.b == -1)
+    if (paramTroopUnreadMsgInfo.d == -1)
     {
-      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupPadTemplateNewsInfoTips(paramAppInterface.getCurrentAccountUin(), "group_pad_template_tips", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, true);
+      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupPadTemplateNewsInfoTips(paramAppInterface.getCurrentAccountUin(), "group_pad_template_tips", paramTroopUnreadMsgInfo.b, true);
       return;
     }
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupPadTemplateNewsInfoTips(paramAppInterface.getCurrentAccountUin(), "group_pad_template_tips", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, false);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupPadTemplateNewsInfoTips(paramAppInterface.getCurrentAccountUin(), "group_pad_template_tips", paramTroopUnreadMsgInfo.b, false);
   }
   
   private void k(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    if (paramTroopUnreadMsgInfo.b == -1)
+    if (paramTroopUnreadMsgInfo.d == -1)
     {
-      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupTIMFileNewsInfo(paramAppInterface.getCurrentAccountUin(), "group_file_reddot_tim", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, true);
+      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupTIMFileNewsInfo(paramAppInterface.getCurrentAccountUin(), "group_file_reddot_tim", paramTroopUnreadMsgInfo.b, true);
       return;
     }
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupTIMFileNewsInfo(paramAppInterface.getCurrentAccountUin(), "group_file_reddot_tim", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, false);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupTIMFileNewsInfo(paramAppInterface.getCurrentAccountUin(), "group_file_reddot_tim", paramTroopUnreadMsgInfo.b, false);
   }
   
   private void l(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
@@ -142,13 +142,13 @@ public class TroopRedDotHandlerProcessor
     if (paramTroopUnreadMsgInfo == null) {
       return;
     }
-    if (paramTroopUnreadMsgInfo.b > 0)
+    if (paramTroopUnreadMsgInfo.d > 0)
     {
-      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, true);
-      ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.d, true, new Object[] { paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString });
+      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.b, true);
+      ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.e, true, new Object[] { paramTroopUnreadMsgInfo.b });
       return;
     }
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, false);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp((QQAppInterface)paramAppInterface, paramTroopUnreadMsgInfo.b, false);
   }
   
   private void m(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
@@ -157,13 +157,13 @@ public class TroopRedDotHandlerProcessor
       QLog.d("hw_troop", 2, "onLinePush receive 0x210_0x26_cmd0x1 troop mini app entrance.");
     }
     boolean bool;
-    if (paramTroopUnreadMsgInfo.b != 0) {
+    if (paramTroopUnreadMsgInfo.d != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setAIOTroopMiniAppEntranceRedPoint(paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, bool);
-    ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.c, true, new Object[] { paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) });
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setAIOTroopMiniAppEntranceRedPoint(paramAppInterface, paramTroopUnreadMsgInfo.b, bool);
+    ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.d, true, new Object[] { paramTroopUnreadMsgInfo.b, Boolean.valueOf(bool) });
   }
   
   private void n(@NonNull AppInterface paramAppInterface, long paramLong, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
@@ -172,7 +172,7 @@ public class TroopRedDotHandlerProcessor
       QLog.d("hw_troop", 2, "onLinePush receive 0x210_0x26_cmd0x1 remindAddTroopAppGrayTips.");
     }
     paramAppInterface = (TroopShortcutBarManager)paramAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
-    paramAppInterface.a(paramLong, paramTroopUnreadMsgInfo.b);
+    paramAppInterface.a(paramLong, paramTroopUnreadMsgInfo.d);
     paramAppInterface.a(String.valueOf(paramLong));
   }
   
@@ -181,77 +181,77 @@ public class TroopRedDotHandlerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("hw_troop", 2, "onLinePush receive 0x210_0x26_cmd0x1 troopAppTroopMgr.");
     }
-    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).updateRedPointInfo(paramAppInterface, String.valueOf(paramLong), "troop", 5, paramTroopUnreadMsgInfo.b);
+    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).updateRedPointInfo(paramAppInterface, String.valueOf(paramLong), "troop", 5, paramTroopUnreadMsgInfo.d);
   }
   
   public void a(@NonNull AppInterface paramAppInterface, long paramLong, @NonNull TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1105933138L)
+    if (paramTroopUnreadMsgInfo.a == 1105933138L)
     {
       b(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 2L)
+    if (paramTroopUnreadMsgInfo.a == 2L)
     {
       c(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1L)
+    if (paramTroopUnreadMsgInfo.a == 1L)
     {
       d(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1101236949L)
+    if (paramTroopUnreadMsgInfo.a == 1101236949L)
     {
       e(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1101484419L)
+    if (paramTroopUnreadMsgInfo.a == 1101484419L)
     {
       f(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1102858908L)
+    if (paramTroopUnreadMsgInfo.a == 1102858908L)
     {
       g(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1104445552L)
+    if (paramTroopUnreadMsgInfo.a == 1104445552L)
     {
       h(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101509131L)
+    if (paramTroopUnreadMsgInfo.a == 101509131L)
     {
       i(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1106588005L)
+    if (paramTroopUnreadMsgInfo.a == 1106588005L)
     {
       j(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1106664488L)
+    if (paramTroopUnreadMsgInfo.a == 1106664488L)
     {
       k(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101618516L)
+    if (paramTroopUnreadMsgInfo.a == 101618516L)
     {
       m(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101872323L)
+    if (paramTroopUnreadMsgInfo.a == 101872323L)
     {
       l(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101896870L)
+    if (paramTroopUnreadMsgInfo.a == 101896870L)
     {
       n(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
     }
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101913298L)
+    if (paramTroopUnreadMsgInfo.a == 101913298L)
     {
       o(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
       return;
@@ -270,7 +270,7 @@ public class TroopRedDotHandlerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopRedDotHandlerProcessor
  * JD-Core Version:    0.7.0.1
  */

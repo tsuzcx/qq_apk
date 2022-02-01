@@ -11,14 +11,14 @@ public class QVipProfileMusicBoxProcessor
 {
   public static QVipProfileMusicBoxConfig a()
   {
-    return (QVipProfileMusicBoxConfig)QConfigManager.a().a(563);
+    return (QVipProfileMusicBoxConfig)QConfigManager.b().b(563);
   }
   
   @NonNull
   public QVipProfileMusicBoxConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     QVipProfileMusicBoxConfig localQVipProfileMusicBoxConfig = new QVipProfileMusicBoxConfig();
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     if (paramArrayOfQConfItem != null) {
       try
       {
@@ -44,15 +44,15 @@ public class QVipProfileMusicBoxProcessor
     return new QVipProfileMusicBoxConfig();
   }
   
-  @NonNull
-  public QVipProfileMusicBoxConfig c()
-  {
-    return new QVipProfileMusicBoxConfig();
-  }
-  
   public Class<QVipProfileMusicBoxConfig> clazz()
   {
     return QVipProfileMusicBoxConfig.class;
+  }
+  
+  @NonNull
+  public QVipProfileMusicBoxConfig e()
+  {
+    return new QVipProfileMusicBoxConfig();
   }
   
   public int type()
@@ -62,7 +62,7 @@ public class QVipProfileMusicBoxProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipProfileMusicBoxProcessor
  * JD-Core Version:    0.7.0.1
  */

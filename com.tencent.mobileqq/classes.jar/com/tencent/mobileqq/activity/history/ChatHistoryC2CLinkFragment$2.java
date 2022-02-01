@@ -38,10 +38,10 @@ class ChatHistoryC2CLinkFragment$2
     int j;
     if (this.a)
     {
-      localObject1 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-      str = this.this$0.jdField_c_of_type_JavaLangString;
-      i = this.this$0.jdField_a_of_type_Int;
-      j = ChatHistoryC2CLinkFragment.d();
+      localObject1 = this.this$0.u.getMessageFacade();
+      str = this.this$0.A;
+      i = this.this$0.B;
+      j = ChatHistoryC2CLinkFragment.v();
       localObject1 = ((QQMessageFacade)localObject1).a(str, i, new int[] { -2011, -1000, -1035, -1049, -5008 }, j);
     }
     else
@@ -49,28 +49,28 @@ class ChatHistoryC2CLinkFragment$2
       long l1;
       long l2;
       int k;
-      if (UinTypeUtil.g(this.this$0.jdField_a_of_type_Int))
+      if (UinTypeUtil.h(this.this$0.B))
       {
         localObject1 = this.this$0;
-        ((ChatHistoryC2CLinkFragment)localObject1).jdField_b_of_type_Long -= 1L;
-        localObject1 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        str = this.this$0.jdField_c_of_type_JavaLangString;
-        i = this.this$0.jdField_a_of_type_Int;
-        l1 = this.this$0.jdField_a_of_type_Long;
-        j = this.this$0.jdField_b_of_type_Int;
-        l2 = this.this$0.jdField_b_of_type_Long;
-        k = ChatHistoryC2CLinkFragment.d();
+        ((ChatHistoryC2CLinkFragment)localObject1).G -= 1L;
+        localObject1 = this.this$0.u.getMessageFacade();
+        str = this.this$0.A;
+        i = this.this$0.B;
+        l1 = this.this$0.F;
+        j = this.this$0.I;
+        l2 = this.this$0.G;
+        k = ChatHistoryC2CLinkFragment.v();
         localObject1 = ((QQMessageFacade)localObject1).a(str, i, l1, j, l2, new int[] { -2011, -1000, -1035, -1049, -5008 }, k);
       }
       else
       {
-        localObject1 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        str = this.this$0.jdField_c_of_type_JavaLangString;
-        i = this.this$0.jdField_a_of_type_Int;
-        l1 = this.this$0.jdField_a_of_type_Long;
-        j = this.this$0.jdField_b_of_type_Int;
-        l2 = this.this$0.jdField_c_of_type_Long;
-        k = ChatHistoryC2CLinkFragment.d();
+        localObject1 = this.this$0.u.getMessageFacade();
+        str = this.this$0.A;
+        i = this.this$0.B;
+        l1 = this.this$0.F;
+        j = this.this$0.I;
+        l2 = this.this$0.H;
+        k = ChatHistoryC2CLinkFragment.v();
         localObject1 = ((QQMessageFacade)localObject1).a(str, i, l1, j, l2, new int[] { -2011, -1000, -1035, -1049, -5008 }, k);
       }
     }
@@ -90,7 +90,7 @@ class ChatHistoryC2CLinkFragment$2
       QLog.d("ChatHistoryStruct", 2, new Object[] { "isInited:", Boolean.valueOf(bool), ((StringBuilder)localObject2).toString() });
     }
     if ((localObject1 != null) && (((List)localObject1).size() == 0)) {
-      this.this$0.d = true;
+      this.this$0.E = true;
     }
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     localLinkedHashMap.putAll(ChatHistoryC2CLinkFragment.a(this.this$0));
@@ -111,17 +111,17 @@ class ChatHistoryC2CLinkFragment$2
           Object localObject3;
           if (ChatHistoryStructAdapter.a((MessageRecord)localObject2))
           {
-            if (((MessageRecord)localObject2).shmsgseq < this.this$0.jdField_b_of_type_Long) {
-              this.this$0.jdField_b_of_type_Long = ((MessageRecord)localObject2).shmsgseq;
+            if (((MessageRecord)localObject2).shmsgseq < this.this$0.G) {
+              this.this$0.G = ((MessageRecord)localObject2).shmsgseq;
             }
-            if (((MessageRecord)localObject2).versionCode < this.this$0.jdField_b_of_type_Int) {
-              this.this$0.jdField_b_of_type_Int = ((MessageRecord)localObject2).versionCode;
+            if (((MessageRecord)localObject2).versionCode < this.this$0.I) {
+              this.this$0.I = ((MessageRecord)localObject2).versionCode;
             }
-            if ((((MessageRecord)localObject2).getId() > 0L) && (((MessageRecord)localObject2).getId() < this.this$0.jdField_a_of_type_Long)) {
-              this.this$0.jdField_a_of_type_Long = ((MessageRecord)localObject2).getId();
+            if ((((MessageRecord)localObject2).getId() > 0L) && (((MessageRecord)localObject2).getId() < this.this$0.F)) {
+              this.this$0.F = ((MessageRecord)localObject2).getId();
             }
-            if (((MessageRecord)localObject2).time < this.this$0.jdField_c_of_type_Long) {
-              this.this$0.jdField_c_of_type_Long = ((MessageRecord)localObject2).time;
+            if (((MessageRecord)localObject2).time < this.this$0.H) {
+              this.this$0.H = ((MessageRecord)localObject2).time;
             }
             if ((localObject2 instanceof MessageForStructing))
             {
@@ -145,10 +145,10 @@ class ChatHistoryC2CLinkFragment$2
             localObject3 = ContentHelper.a((MessageRecord)localObject2);
             if (!TextUtils.isEmpty((CharSequence)localObject3))
             {
-              if (((MessageRecord)localObject2).time < this.this$0.jdField_c_of_type_Long) {
-                this.this$0.jdField_c_of_type_Long = ((MessageRecord)localObject2).time;
+              if (((MessageRecord)localObject2).time < this.this$0.H) {
+                this.this$0.H = ((MessageRecord)localObject2).time;
               }
-              if ((Patterns.b.matcher((CharSequence)localObject3).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject3).find()))
+              if ((Patterns.b.matcher((CharSequence)localObject3).find()) && (ChatHistoryC2CLinkFragment.t.matcher((CharSequence)localObject3).find()))
               {
                 localObject3 = QfileTimeUtils.a(((MessageRecord)localObject2).time * 1000L);
                 if (!localLinkedHashMap.containsKey(localObject3)) {
@@ -166,25 +166,25 @@ class ChatHistoryC2CLinkFragment$2
         }
       }
     }
-    if (this.this$0.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.this$0.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.this$0.D == null) {
+      this.this$0.D = new ArrayList();
     }
-    this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.this$0.D.clear();
     Object localObject1 = localLinkedHashMap.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       str = (String)((Iterator)localObject1).next();
-      if (!this.this$0.jdField_a_of_type_JavaUtilArrayList.contains(str)) {
-        this.this$0.jdField_a_of_type_JavaUtilArrayList.add(str);
+      if (!this.this$0.D.contains(str)) {
+        this.this$0.D.add(str);
       }
-      this.this$0.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localLinkedHashMap.get(str));
+      this.this$0.D.addAll((Collection)localLinkedHashMap.get(str));
     }
     ChatHistoryC2CLinkFragment.a(this.this$0, localLinkedHashMap);
-    this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+    this.this$0.K.sendEmptyMessage(1);
     if (QLog.isColorLevel())
     {
       i = 0;
-      j = this.this$0.jdField_a_of_type_JavaUtilArrayList.size();
+      j = this.this$0.D.size();
       if (ChatHistoryC2CLinkFragment.a(this.this$0) != null) {
         i = ChatHistoryC2CLinkFragment.a(this.this$0).size();
       }
@@ -194,7 +194,7 @@ class ChatHistoryC2CLinkFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment.2
  * JD-Core Version:    0.7.0.1
  */

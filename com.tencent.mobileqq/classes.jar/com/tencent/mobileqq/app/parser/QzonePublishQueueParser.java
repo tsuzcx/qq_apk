@@ -11,15 +11,15 @@ public class QzonePublishQueueParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QzonePublishQueueAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qzone";
-    paramBaseQQAppInterface.c = "to_publish_queue";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qzone";
+    paramBaseQQAppInterface.e = "to_publish_queue";
     return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzonePublishQueueParser
  * JD-Core Version:    0.7.0.1
  */

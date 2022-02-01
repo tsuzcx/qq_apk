@@ -12,12 +12,12 @@ class UserOperationModule$4
   
   public void run()
   {
-    ((Ox978RespCallBack)this.jdField_a_of_type_ComTencentMobileqqKandianRepoAccountApiBaseOx978RespCallBack).a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_TencentImOidbCmd0x978Oidb_cmd0x978$OneFollowOperationResult.enum_follow_status.get());
+    ((Ox978RespCallBack)this.a).a(true, this.b, this.c.enum_follow_status.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule.4
  * JD-Core Version:    0.7.0.1
  */

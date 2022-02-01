@@ -51,7 +51,7 @@ class HealthStepCounterPlugin$3
                   this.a.b.put(paramBundle, Long.valueOf(((WebSSOAgent.UniSsoServerRsp)localObject2).comm.delayms.get()));
                 }
                 if (((WebSSOAgent.UniSsoServerRsp)localObject2).comm.packagesize.has()) {
-                  this.a.jdField_a_of_type_JavaUtilHashMap.put(paramBundle, Long.valueOf(((WebSSOAgent.UniSsoServerRsp)localObject2).comm.packagesize.get()));
+                  this.a.a.put(paramBundle, Long.valueOf(((WebSSOAgent.UniSsoServerRsp)localObject2).comm.packagesize.get()));
                 }
                 l1 = l2;
                 if (((WebSSOAgent.UniSsoServerRsp)localObject2).comm.proctime.has()) {
@@ -91,27 +91,27 @@ class HealthStepCounterPlugin$3
         {
           paramInt = paramBundle.getInt("extra_result_code");
           if (paramInt != 1001) {
-            break label922;
+            break label923;
           }
           localJSONObject.put("ssoRet", 201);
           localJSONObject.put("businessRet", 0);
-          localJSONObject.put("msg", HardCodeUtil.a(2131705551));
+          localJSONObject.put("msg", HardCodeUtil.a(2131903437));
           continue;
           localJSONObject.put("ssoRet", 255);
           localJSONObject.put("businessRet", 0);
-          localJSONObject.put("msg", HardCodeUtil.a(2131705542));
+          localJSONObject.put("msg", HardCodeUtil.a(2131903428));
           continue;
           localJSONObject.put("ssoRet", 202);
           localJSONObject.put("businessRet", 0);
-          localJSONObject.put("msg", HardCodeUtil.a(2131705547));
+          localJSONObject.put("msg", HardCodeUtil.a(2131903433));
         }
         paramBundle = new StringBuilder();
         paramBundle.append("result:");
         paramBundle.append(localJSONObject.toString());
         QLog.i("HealthStepCounterPlugin", 1, paramBundle.toString());
-        if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        if (this.a.i.get())
         {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          this.a.i.set(false);
           localObject2 = new JSONObject();
         }
       }
@@ -138,19 +138,19 @@ class HealthStepCounterPlugin$3
       }
       try
       {
-        paramBoolean = TextUtils.isEmpty(this.a.e);
+        paramBoolean = TextUtils.isEmpty(this.a.k);
         localObject1 = "";
         if (paramBoolean) {
           paramBundle = "";
         } else {
-          paramBundle = this.a.e;
+          paramBundle = this.a.k;
         }
         ((JSONObject)localObject2).put("msg", paramBundle);
         ((JSONObject)localObject2).put("report_result", localJSONObject.toString());
-        if (TextUtils.isEmpty(this.a.f)) {
+        if (TextUtils.isEmpty(this.a.m)) {
           paramBundle = (Bundle)localObject1;
         } else {
-          paramBundle = this.a.f;
+          paramBundle = this.a.m;
         }
         ((JSONObject)localObject2).put("msf_json", paramBundle);
       }
@@ -165,10 +165,10 @@ class HealthStepCounterPlugin$3
         paramBundle.append(((JSONObject)localObject2).toString());
         QLog.i("HealthStepCounterPlugin", 2, paramBundle.toString());
       }
-      if (TextUtils.isEmpty(this.a.d)) {
+      if (TextUtils.isEmpty(this.a.j)) {
         break;
       }
-      this.a.callJs(this.a.d, new String[] { ((JSONObject)localObject2).toString() });
+      this.a.callJs(this.a.j, new String[] { ((JSONObject)localObject2).toString() });
       return;
       WebSSOAgentServlet.d = System.currentTimeMillis();
       l1 = WebSSOAgentServlet.d;
@@ -187,7 +187,7 @@ class HealthStepCounterPlugin$3
       localJSONObject.put("speedPoint", paramBundle);
       this.a.callJs((String)localObject1, new String[] { localJSONObject.toString() });
       return;
-      label922:
+      label923:
       if (paramInt != 1002) {
         if (paramInt != 1013) {}
       }
@@ -196,7 +196,7 @@ class HealthStepCounterPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthStepCounterPlugin.3
  * JD-Core Version:    0.7.0.1
  */

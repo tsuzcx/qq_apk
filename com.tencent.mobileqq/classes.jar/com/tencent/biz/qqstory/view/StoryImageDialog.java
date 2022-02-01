@@ -16,82 +16,82 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class StoryImageDialog
   extends ReportDialog
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private ImageView a;
+  private TextView b;
+  private Button c;
+  private Button d;
+  private ImageView e;
+  private Drawable f;
+  private String g;
+  private String h;
+  private String i;
+  private View.OnClickListener j;
+  private View.OnClickListener k;
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561627);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374487));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374529));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374528));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131374533));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374534));
-    ((RelativeLayout)findViewById(2131374486)).setOnClickListener(new StoryImageDialog.1(this));
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    setContentView(2131628006);
+    this.a = ((ImageView)findViewById(2131442657));
+    this.b = ((TextView)findViewById(2131442699));
+    this.e = ((ImageView)findViewById(2131442698));
+    this.d = ((Button)findViewById(2131442703));
+    this.c = ((Button)findViewById(2131442704));
+    ((RelativeLayout)findViewById(2131442656)).setOnClickListener(new StoryImageDialog.1(this));
+    if (this.f != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.a.setVisibility(0);
+      this.a.setImageDrawable(this.f);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.setVisibility(8);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.g))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_JavaLangString) > UIUtils.a(getContext(), 280.0F)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
+      this.b.setVisibility(0);
+      if (this.b.getPaint().measureText(this.g) > UIUtils.a(getContext(), 280.0F)) {
+        this.b.setGravity(3);
       } else {
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+        this.b.setGravity(17);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      this.b.setText(this.g);
     }
-    if (TextUtils.isEmpty(this.c))
+    if (TextUtils.isEmpty(this.i))
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.c.setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.c);
-      paramBundle = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      this.c.setVisibility(0);
+      this.c.setText(this.i);
+      paramBundle = this.j;
       if (paramBundle != null) {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramBundle);
+        this.c.setOnClickListener(paramBundle);
       } else {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new StoryImageDialog.2(this));
+        this.c.setOnClickListener(new StoryImageDialog.2(this));
       }
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.h))
     {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.d.setVisibility(8);
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_b_of_type_JavaLangString);
-      paramBundle = this.jdField_b_of_type_AndroidViewView$OnClickListener;
+      this.d.setVisibility(0);
+      this.d.setTag(this.h);
+      paramBundle = this.k;
       if (paramBundle != null) {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(paramBundle);
+        this.d.setOnClickListener(paramBundle);
       } else {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new StoryImageDialog.3(this));
+        this.d.setOnClickListener(new StoryImageDialog.3(this));
       }
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new StoryImageDialog.4(this));
+    this.e.setOnClickListener(new StoryImageDialog.4(this));
   }
 }
 

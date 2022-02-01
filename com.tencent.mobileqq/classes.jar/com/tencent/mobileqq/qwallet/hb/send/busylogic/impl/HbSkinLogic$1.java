@@ -64,17 +64,17 @@ class HbSkinLogic$1
           ((HbSkinLogic)localObject2).b(paramInt);
           if (localGetSkinListRsp.is_hide_list)
           {
-            if (HbSkinLogic.a(this.a) == -1)
+            if (HbSkinLogic.b(this.a) == -1)
             {
-              HbSkinInfo.c = HbSkinLogic.a(this.a, -1);
+              HbSkinInfo.d = HbSkinLogic.a(this.a, -1);
               return;
             }
             HbSkinLogic.b(this.a, true);
             paramBundle = this.a;
-            HbSkinInfo.c = HbSkinLogic.a(paramBundle, HbSkinLogic.a(paramBundle));
+            HbSkinInfo.d = HbSkinLogic.a(paramBundle, HbSkinLogic.b(paramBundle));
             return;
           }
-          HbSkinInfo.jdField_a_of_type_Boolean = paramBundle.getBoolean("isCache");
+          HbSkinInfo.e = paramBundle.getBoolean("isCache");
           HbSkinLogic.a(this.a, localGetSkinListRsp.selected_id);
           if (QLog.isColorLevel())
           {
@@ -82,18 +82,18 @@ class HbSkinLogic$1
             paramBundle.append("rsp size = ");
             paramBundle.append(localGetSkinListRsp.skin_list.size());
             paramBundle.append(" serverSkinID = ");
-            paramBundle.append(HbSkinLogic.b(this.a));
+            paramBundle.append(HbSkinLogic.c(this.a));
             QLog.d("HbSkinLogic", 2, paramBundle.toString());
           }
-          HbSkinInfo.c = localGetSkinListRsp.selected_id;
+          HbSkinInfo.d = localGetSkinListRsp.selected_id;
           if (QLog.isColorLevel())
           {
             paramBundle = new StringBuilder();
             paramBundle.append("select restor: ");
-            paramBundle.append(HbSkinInfo.c);
+            paramBundle.append(HbSkinInfo.d);
             QLog.d("HbSkinLogic", 2, paramBundle.toString());
           }
-          HbSkinLogic.a(this.a).clear();
+          HbSkinLogic.d(this.a).clear();
           paramInt = 0;
           while (paramInt < localGetSkinListRsp.skin_list.size())
           {
@@ -124,8 +124,8 @@ class HbSkinLogic$1
             }
             paramBundle = new HbSkinInfo((SkinInfo)localObject2);
             paramInt += 1;
-            paramBundle.jdField_a_of_type_Int = paramInt;
-            HbSkinLogic.a(this.a).add(paramBundle);
+            paramBundle.a = paramInt;
+            HbSkinLogic.d(this.a).add(paramBundle);
           }
           if (!TextUtils.isEmpty(localGetSkinListRsp.more_skin_url)) {
             ((List)localObject1).add(HbSkinInfo.HbSkinFactory.c(localGetSkinListRsp.more_skin_url));
@@ -134,14 +134,14 @@ class HbSkinLogic$1
         HbSkinInfo.a((List)localObject1);
         HbSkinLogic.a(this.a).notifyDataSetChanged();
         paramBundle = this.a;
-        HbSkinLogic.b(paramBundle, HbSkinLogic.a(paramBundle));
+        HbSkinLogic.b(paramBundle, HbSkinLogic.d(paramBundle));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinLogic.1
  * JD-Core Version:    0.7.0.1
  */

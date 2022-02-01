@@ -86,7 +86,7 @@ public class WidgetContainer
   public void remove(ConstraintWidget paramConstraintWidget)
   {
     this.mChildren.remove(paramConstraintWidget);
-    paramConstraintWidget.setParent(null);
+    paramConstraintWidget.reset();
   }
   
   public void removeAllChildren()
@@ -126,7 +126,7 @@ public class WidgetContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.WidgetContainer
  * JD-Core Version:    0.7.0.1
  */

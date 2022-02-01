@@ -33,23 +33,11 @@ public class QFlutterReporter
     return 0L;
   }
   
-  public static String a()
-  {
-    return a;
-  }
-  
-  private static HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("qflutterVersion", a);
-    return localHashMap;
-  }
-  
   public static void a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     if (a())
     {
-      HashMap localHashMap = a();
+      HashMap localHashMap = c();
       localHashMap.put("errCode", String.valueOf(paramInt));
       localHashMap.put("launchCost", String.valueOf(paramLong1));
       localHashMap.put("installCost", String.valueOf(paramLong2));
@@ -87,7 +75,7 @@ public class QFlutterReporter
         str1 = "0";
       }
       localHashMap.put("isQuickInstall", str1);
-      localHashMap.put("flutterUin", b());
+      localHashMap.put("flutterUin", d());
       StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_launch_result_v2", true, 0L, 0L, localHashMap, "", false);
       if (QLog.isColorLevel()) {
         QLog.d("QFlutter.Reporter", 2, String.format("reportLaunchResult, errCode: %s, launchCost: %s, installCost: %s,loadAssetCost: %s, loadEngineCost: %s, isPreloadProcess: %s, isLocalEngineExist: %s, isLocalAppExist: %s, isQuickInstall: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean4) }));
@@ -104,7 +92,7 @@ public class QFlutterReporter
   {
     if (a())
     {
-      HashMap localHashMap = a();
+      HashMap localHashMap = c();
       localHashMap.put("pagePath", paramString);
       localHashMap.put("fps", String.valueOf(paramInt));
       localHashMap.put("dropRate", String.valueOf(paramDouble));
@@ -116,7 +104,7 @@ public class QFlutterReporter
   {
     if (a())
     {
-      HashMap localHashMap = a();
+      HashMap localHashMap = c();
       localHashMap.put("pagePath", paramString);
       localHashMap.put("cost", String.valueOf(paramLong));
       StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_page_render_cost", true, 0L, 0L, localHashMap, "", false);
@@ -128,7 +116,7 @@ public class QFlutterReporter
     if (!a()) {
       return;
     }
-    HashMap localHashMap = a();
+    HashMap localHashMap = c();
     String str2 = "1";
     String str1;
     if (paramBoolean1) {
@@ -165,7 +153,7 @@ public class QFlutterReporter
       QLog.d("QFlutter.Reporter", 1, "is first launch but trace is null");
       return;
     }
-    HashMap localHashMap = a();
+    HashMap localHashMap = c();
     if (TextUtils.isEmpty(paramString)) {
       paramString = "unknown";
     }
@@ -184,7 +172,7 @@ public class QFlutterReporter
     localHashMap.put("isFirstLaunch", str);
     boolean bool1 = bool2;
     if (paramLaunchTrace != null) {
-      if (paramLaunchTrace.a()) {
+      if (paramLaunchTrace.h()) {
         bool1 = bool2;
       } else {
         bool1 = false;
@@ -203,8 +191,8 @@ public class QFlutterReporter
     long l2;
     if (paramLaunchTrace != null)
     {
-      paramLong1 = paramLaunchTrace.jdField_a_of_type_Long;
-      bool2 = paramLaunchTrace.jdField_a_of_type_Boolean;
+      paramLong1 = paramLaunchTrace.a;
+      bool2 = paramLaunchTrace.f;
       paramLong2 = paramLaunchTrace.b;
       l1 = paramLaunchTrace.d;
       l2 = paramLaunchTrace.e - paramLong1 - paramLong2 - l1;
@@ -230,7 +218,7 @@ public class QFlutterReporter
     localHashMap.put("loadEngineCost", String.valueOf(l1));
     localHashMap.put("otherCost", String.valueOf(l2));
     localHashMap.put("openPageCost", String.valueOf(paramLong3));
-    localHashMap.put("flutterUin", b());
+    localHashMap.put("flutterUin", d());
     localHashMap.put("pageUrl", str);
     if (bool2) {
       paramString = "1";
@@ -290,15 +278,15 @@ public class QFlutterReporter
       int i = Build.VERSION.SDK_INT;
       long l1 = DeviceInfoUtil.a() / 1024L / 1024L;
       float f = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
-      Object localObject = DeviceInfoUtil.a(BaseApplicationImpl.getContext());
+      Object localObject = DeviceInfoUtil.b(BaseApplicationImpl.getContext());
       long l2 = a("summary.total-pss", paramMap, (Map)localObject);
       long l3 = a("summary.java-heap", paramMap, (Map)localObject);
       long l4 = a("summary.native-heap", paramMap, (Map)localObject);
       long l5 = a("summary.graphics", paramMap, (Map)localObject);
       long l6 = a("summary.code", paramMap, (Map)localObject);
       long l7 = a("summary.private-other", paramMap, (Map)localObject);
-      localObject = DeviceInfoUtil.l();
-      HashMap localHashMap = a();
+      localObject = DeviceInfoUtil.x();
+      HashMap localHashMap = c();
       if (paramBoolean1) {
         paramMap = "1";
       } else {
@@ -329,10 +317,42 @@ public class QFlutterReporter
   
   public static boolean a()
   {
-    return QFlutterDPC.a().c();
+    return QFlutterDPC.a().e();
   }
   
-  private static String b()
+  public static String b()
+  {
+    return a;
+  }
+  
+  public static void b(String paramString)
+  {
+    if (a())
+    {
+      HashMap localHashMap = c();
+      localHashMap.put("pagePath", paramString);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_exception", true, 0L, 0L, localHashMap, "", false);
+    }
+  }
+  
+  private static HashMap<String, String> c()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("qflutterVersion", a);
+    return localHashMap;
+  }
+  
+  public static void c(String paramString)
+  {
+    if (a())
+    {
+      HashMap localHashMap = c();
+      localHashMap.put("pagePath", paramString);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_pv", true, 0L, 0L, localHashMap, "", false);
+    }
+  }
+  
+  private static String d()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime != null) {
@@ -340,30 +360,10 @@ public class QFlutterReporter
     }
     return "";
   }
-  
-  public static void b(String paramString)
-  {
-    if (a())
-    {
-      HashMap localHashMap = a();
-      localHashMap.put("pagePath", paramString);
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_exception", true, 0L, 0L, localHashMap, "", false);
-    }
-  }
-  
-  public static void c(String paramString)
-  {
-    if (a())
-    {
-      HashMap localHashMap = a();
-      localHashMap.put("pagePath", paramString);
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_pv", true, 0L, 0L, localHashMap, "", false);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.report.QFlutterReporter
  * JD-Core Version:    0.7.0.1
  */

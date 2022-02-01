@@ -23,6 +23,8 @@ import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.WebAccelerator;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseTroopChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,6 +37,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.StructMsgNode;
 import com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils;
+import com.tencent.mobileqq.troop.temporaryban.api.ITemporarilyBannedTroopUtilApi;
 import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.mobileqq.widget.QQToast;
@@ -47,17 +50,8 @@ import mqq.os.MqqHandler;
 public final class AIOUtils
   extends BaseAIOUtils
 {
-  public static volatile int a = 0;
-  private static SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private static Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-  private static String jdField_a_of_type_JavaLangString = "OPPO;R7Plusm;22|OPPO;R7007;18|OPPO;R2017;18|OPPO;N5117;18|OPPO;A33;22|OPPO;OPPO A33;22";
-  private static ThreadLocal<char[]> jdField_a_of_type_JavaLangThreadLocal = new AIOUtils.1();
-  private static Field jdField_a_of_type_JavaLangReflectField;
   public static volatile boolean a = false;
-  public static volatile int b = 0;
-  private static String b = "HM NOTE 1LTETD";
   public static volatile boolean b = false;
-  private static String c = "NX507J";
   public static volatile boolean c = false;
   public static volatile boolean d = false;
   public static volatile boolean e = false;
@@ -70,8 +64,17 @@ public final class AIOUtils
   public static volatile boolean l = false;
   public static volatile boolean m = false;
   public static volatile boolean n = false;
-  public static boolean o = false;
-  private static boolean p = false;
+  public static volatile int o = 0;
+  public static volatile int p = 0;
+  public static boolean q = false;
+  private static boolean r = false;
+  private static SparseIntArray s = new SparseIntArray();
+  private static Field t;
+  private static Boolean u = Boolean.valueOf(true);
+  private static ThreadLocal<char[]> v = new AIOUtils.1();
+  private static String w = "OPPO;R7Plusm;22|OPPO;R7007;18|OPPO;R2017;18|OPPO;N5117;18|OPPO;A33;22|OPPO;OPPO A33;22";
+  private static String x = "HM NOTE 1LTETD";
+  private static String y = "NX507J";
   
   public static final float a(int paramInt1, int paramInt2, Resources paramResources)
   {
@@ -100,7 +103,7 @@ public final class AIOUtils
       int i1;
       try
       {
-        if (p) {
+        if (r) {
           return b(paramInt);
         }
         Object localObject1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1");
@@ -128,12 +131,12 @@ public final class AIOUtils
               }
               int i4 = Integer.valueOf(localObject2[0]).intValue();
               int i5 = Integer.valueOf(localObject2[1]).intValue();
-              jdField_a_of_type_AndroidUtilSparseIntArray.put(i4, i5);
+              s.put(i4, i5);
               break label313;
             }
           }
         }
-        p = true;
+        r = true;
         i1 = b(paramInt);
       }
       catch (Exception localException)
@@ -181,7 +184,7 @@ public final class AIOUtils
   
   public static int a(Context paramContext)
   {
-    return paramContext.getResources().getDimensionPixelSize(2131299168);
+    return paramContext.getResources().getDimensionPixelSize(2131299920);
   }
   
   public static int a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Intent paramIntent)
@@ -212,7 +215,7 @@ public final class AIOUtils
             paramQQAppInterface.a(3);
             paramQQAppInterface.onPause();
             paramQQAppInterface.onStop();
-            paramQQAppInterface.d();
+            paramQQAppInterface.l();
             paramQQAppInterface.onStart();
             paramQQAppInterface.onResume();
             i1 = 1;
@@ -251,46 +254,14 @@ public final class AIOUtils
     return null;
   }
   
-  public static ChatMessage a(long paramLong, ListAdapter paramListAdapter)
-  {
-    if (paramListAdapter == null) {
-      return null;
-    }
-    int i1 = paramListAdapter.getCount() - 1;
-    while (i1 > 0)
-    {
-      Object localObject = paramListAdapter.getItem(i1);
-      if ((localObject instanceof ChatMessage))
-      {
-        localObject = (ChatMessage)localObject;
-        if (((ChatMessage)localObject).uniseq == paramLong) {
-          return localObject;
-        }
-      }
-      i1 -= 1;
-    }
-    return null;
-  }
-  
   @Deprecated
   public static final ChatMessage a(View paramView)
   {
-    paramView = (ChatItemBuilder.BaseHolder)a(paramView);
+    paramView = (ChatItemBuilder.BaseHolder)b(paramView);
     if (paramView != null) {
-      return paramView.a;
+      return paramView.q;
     }
     return null;
-  }
-  
-  public static final Object a(View paramView)
-  {
-    if (paramView == null) {
-      return null;
-    }
-    if ((paramView.getParent() != null) && (!(paramView.getParent() instanceof ListView))) {
-      return a((View)paramView.getParent());
-    }
-    return paramView.getTag();
   }
   
   public static StringBuilder a()
@@ -298,60 +269,19 @@ public final class AIOUtils
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      if (jdField_a_of_type_JavaLangBoolean.booleanValue())
+      if (u.booleanValue())
       {
-        jdField_a_of_type_JavaLangReflectField = StringBuilder.class.getSuperclass().getDeclaredField("value");
-        jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+        t = StringBuilder.class.getSuperclass().getDeclaredField("value");
+        t.setAccessible(true);
+        u = Boolean.valueOf(false);
       }
-      if (jdField_a_of_type_JavaLangReflectField != null) {
-        jdField_a_of_type_JavaLangReflectField.set(localStringBuilder, jdField_a_of_type_JavaLangThreadLocal.get());
+      if (t != null) {
+        t.set(localStringBuilder, v.get());
       }
       return localStringBuilder;
     }
     catch (Exception localException) {}
     return localStringBuilder;
-  }
-  
-  protected static void a()
-  {
-    Object localObject;
-    if (WebAccelerator.jdField_a_of_type_Int == -1)
-    {
-      localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name());
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length > 3)
-        {
-          boolean bool2 = localObject[0].equals("1");
-          boolean bool1 = true;
-          if ((!bool2) || (!localObject[1].equals("1"))) {
-            bool1 = false;
-          }
-          WebAccelerator.b = bool1;
-          if ("0".equals(localObject[3])) {}
-        }
-      }
-    }
-    try
-    {
-      i1 = Integer.parseInt(localObject[3]);
-    }
-    catch (Exception localException)
-    {
-      int i1;
-      label106:
-      break label106;
-    }
-    i1 = 0;
-    if (!WebAccelerator.jdField_a_of_type_Boolean) {
-      i1 = 0;
-    }
-    WebAccelerator.jdField_a_of_type_Int = i1;
-    if (WebAccelerator.jdField_a_of_type_Int == -1) {
-      WebAccelerator.jdField_a_of_type_Int = 0;
-    }
   }
   
   public static void a(Drawable paramDrawable)
@@ -399,7 +329,7 @@ public final class AIOUtils
   public static final void a(QQAppInterface paramQQAppInterface, int paramInt, List<ChatMessage> paramList, ChatMessage paramChatMessage)
   {
     
-    if (WebAccelerator.jdField_a_of_type_Int <= 0) {
+    if (WebAccelerator.c <= 0) {
       return;
     }
     a(paramQQAppInterface, a(paramInt, paramList, paramChatMessage));
@@ -463,34 +393,6 @@ public final class AIOUtils
     n = paramBoolean;
   }
   
-  public static boolean a()
-  {
-    if (c.equalsIgnoreCase(Build.MODEL)) {
-      return true;
-    }
-    if (b.equalsIgnoreCase(Build.MODEL)) {
-      return true;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(Build.MANUFACTURER);
-    ((StringBuilder)localObject).append(";");
-    ((StringBuilder)localObject).append(Build.MODEL);
-    ((StringBuilder)localObject).append(";");
-    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
-    localObject = ((StringBuilder)localObject).toString();
-    String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\|");
-    int i2 = arrayOfString.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if (arrayOfString[i1].equalsIgnoreCase((String)localObject)) {
-        return true;
-      }
-      i1 += 1;
-    }
-    return false;
-  }
-  
   protected static boolean a(int paramInt, List<ChatMessage> paramList, ChatMessage paramChatMessage)
   {
     boolean bool2 = false;
@@ -504,8 +406,8 @@ public final class AIOUtils
         if (paramList.size() > 0)
         {
           int i3 = paramList.size();
-          if (WebAccelerator.jdField_a_of_type_Int > 1) {
-            i1 = WebAccelerator.jdField_a_of_type_Int;
+          if (WebAccelerator.c > 1) {
+            i1 = WebAccelerator.c;
           } else {
             i1 = 10;
           }
@@ -556,13 +458,13 @@ public final class AIOUtils
       }
       if (i1 == -1)
       {
-        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131719063), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.makeText(paramBaseActivity, paramBaseActivity.getString(2131916599), 0).show(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       if (paramIntent.hasExtra("account"))
       {
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "1", "", "", "");
-        if (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str))
+        if (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(str))
         {
           paramIntent.removeExtra("account");
           paramIntent.putExtra("shotcut_forward", ChatActivity.class.getName());
@@ -581,9 +483,9 @@ public final class AIOUtils
     }
     try
     {
-      if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str)))
+      if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(str)))
       {
-        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131719064), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.makeText(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131916600), 0).show(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       return true;
@@ -607,6 +509,9 @@ public final class AIOUtils
       paramQQAppInterface.addFlags(262144);
       RouteUtils.a(paramBaseActivity, paramQQAppInterface, "/base/login");
       paramBaseActivity.finish();
+      return true;
+    }
+    if (((ITemporarilyBannedTroopUtilApi)QRoute.api(ITemporarilyBannedTroopUtilApi.class)).checkTemporarilyBannedTroop(paramBaseActivity, paramQQAppInterface, paramIntent)) {
       return true;
     }
     if (TroopBlockUtils.a(paramBaseActivity, paramQQAppInterface, paramIntent)) {
@@ -666,7 +571,7 @@ public final class AIOUtils
     int i1;
     try
     {
-      i1 = jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, i2);
+      i1 = s.get(paramInt, i2);
     }
     catch (Exception localException)
     {
@@ -681,7 +586,7 @@ public final class AIOUtils
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("AIOTime getVisibilityFromCache|");
-      localStringBuilder.append(jdField_a_of_type_AndroidUtilSparseIntArray.toString());
+      localStringBuilder.append(s.toString());
       localStringBuilder.append("|");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("|");
@@ -689,6 +594,79 @@ public final class AIOUtils
       QLog.d("AIOUtils", 2, localStringBuilder.toString());
     }
     return i1;
+  }
+  
+  public static ChatMessage b(long paramLong, ListAdapter paramListAdapter)
+  {
+    if (paramListAdapter == null) {
+      return null;
+    }
+    int i1 = paramListAdapter.getCount() - 1;
+    while (i1 > 0)
+    {
+      Object localObject = paramListAdapter.getItem(i1);
+      if ((localObject instanceof ChatMessage))
+      {
+        localObject = (ChatMessage)localObject;
+        if (((ChatMessage)localObject).uniseq == paramLong) {
+          return localObject;
+        }
+      }
+      i1 -= 1;
+    }
+    return null;
+  }
+  
+  public static final Object b(View paramView)
+  {
+    if (paramView == null) {
+      return null;
+    }
+    if ((paramView.getParent() != null) && (!(paramView.getParent() instanceof ListView))) {
+      return b((View)paramView.getParent());
+    }
+    return paramView.getTag();
+  }
+  
+  protected static void b()
+  {
+    Object localObject;
+    if (WebAccelerator.c == -1)
+    {
+      localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name());
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length > 3)
+        {
+          boolean bool2 = localObject[0].equals("1");
+          boolean bool1 = true;
+          if ((!bool2) || (!localObject[1].equals("1"))) {
+            bool1 = false;
+          }
+          WebAccelerator.d = bool1;
+          if ("0".equals(localObject[3])) {}
+        }
+      }
+    }
+    try
+    {
+      i1 = Integer.parseInt(localObject[3]);
+    }
+    catch (Exception localException)
+    {
+      int i1;
+      label106:
+      break label106;
+    }
+    i1 = 0;
+    if (!WebAccelerator.b) {
+      i1 = 0;
+    }
+    WebAccelerator.c = i1;
+    if (WebAccelerator.c == -1) {
+      WebAccelerator.c = 0;
+    }
   }
   
   private static int c(int paramInt)
@@ -700,10 +678,62 @@ public final class AIOUtils
     }
     return 0;
   }
+  
+  public static boolean c()
+  {
+    if (y.equalsIgnoreCase(Build.MODEL)) {
+      return true;
+    }
+    if (x.equalsIgnoreCase(Build.MODEL)) {
+      return true;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+    localObject = ((StringBuilder)localObject).toString();
+    String[] arrayOfString = w.split("\\|");
+    int i2 = arrayOfString.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (arrayOfString[i1].equalsIgnoreCase((String)localObject)) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
+  }
+  
+  public static boolean d()
+  {
+    if ((BaseActivity.sTopActivity instanceof BaseActivity))
+    {
+      localObject = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localObject != null)
+      {
+        localObject = ((ChatFragment)localObject).k();
+        if (((localObject instanceof BaseTroopChatPie)) && (((BaseChatPie)localObject).bb() >= 2))
+        {
+          localObject = ((BaseChatPie)localObject).ae();
+          break label66;
+        }
+      }
+    }
+    Object localObject = "";
+    label66:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[isInAIO] curPieUin = ");
+    localStringBuilder.append((String)localObject);
+    QLog.i("AIOUtils", 2, localStringBuilder.toString());
+    return TextUtils.isEmpty((CharSequence)localObject) ^ true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOUtils
  * JD-Core Version:    0.7.0.1
  */

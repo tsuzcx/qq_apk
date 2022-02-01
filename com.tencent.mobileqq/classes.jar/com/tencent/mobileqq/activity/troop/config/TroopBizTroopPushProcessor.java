@@ -51,7 +51,7 @@ public class TroopBizTroopPushProcessor
       try
       {
         label62:
-        boolean bool = paramAppInterface.getAVNotifyCenter().c(Long.parseLong(paramString));
+        boolean bool = paramAppInterface.getAVNotifyCenter().d(Long.parseLong(paramString));
         if (bool) {
           BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
         }
@@ -83,7 +83,7 @@ public class TroopBizTroopPushProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopBizTroopPushProcessor
  * JD-Core Version:    0.7.0.1
  */

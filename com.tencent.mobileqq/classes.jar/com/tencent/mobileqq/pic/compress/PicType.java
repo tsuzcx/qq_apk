@@ -15,19 +15,18 @@ import com.tencent.mobileqq.utils.FileUtils;
 public abstract class PicType
   extends AbstractPicType
 {
-  public static int j = 960;
-  CompressInfo a;
-  protected String a;
-  protected int k;
+  public static int k = 960;
+  protected String j = getClass().getSimpleName();
+  CompressInfo l;
+  protected int m;
   
   PicType(CompressInfo paramCompressInfo)
   {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    if ((paramCompressInfo != null) && (!TextUtils.isEmpty(paramCompressInfo.c)))
+    if ((paramCompressInfo != null) && (!TextUtils.isEmpty(paramCompressInfo.h)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = paramCompressInfo;
+      this.l = paramCompressInfo;
       int i = a(paramCompressInfo);
-      this.k = i;
+      this.m = i;
       if (i != -1) {
         return;
       }
@@ -36,42 +35,12 @@ public abstract class PicType
     throw new IllegalArgumentException("info == null || TextUtils.isEmpty(info.srcPath)");
   }
   
-  protected int a()
-  {
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.g == 2)
-    {
-      i = 100;
-    }
-    else
-    {
-      i = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.h;
-      if (i != 1)
-      {
-        if (i != 4) {
-          i = b;
-        } else {
-          i = c;
-        }
-      }
-      else {
-        i = jdField_a_of_type_Int;
-      }
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("compressQuality = ");
-    localStringBuilder.append(i);
-    Logger.a(str, "getCompressQuality", localStringBuilder.toString());
-    return i;
-  }
-  
   protected abstract int a(CompressInfo paramCompressInfo);
   
   public int a(String paramString1, String paramString2, boolean paramBoolean)
   {
     boolean bool = TextUtils.isEmpty(paramString1);
-    int m = 0;
+    int n = 0;
     int i;
     if ((!bool) && (!TextUtils.isEmpty(paramString2)) && (FileUtils.fileExistsAndNotEmpty(paramString1)))
     {
@@ -86,9 +55,9 @@ public abstract class PicType
       localObject1 = SafeBitmapFactory.decodeFile(paramString1, (BitmapFactory.Options)localObject2);
       if (localObject1 == null)
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(this.l.a);
         ((StringBuilder)localObject3).append(" sampleCompress()");
         Logger.b(localObject1, ((StringBuilder)localObject3).toString(), " bm == null, maybe is broken");
         return 0;
@@ -104,10 +73,10 @@ public abstract class PicType
       StringBuilder localStringBuilder;
       break label135;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(true);
-    localObject1 = this.jdField_a_of_type_JavaLangString;
+    this.l.a(true);
+    localObject1 = this.j;
     localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(this.l.a);
     ((StringBuilder)localObject3).append(" sampleCompress()");
     localObject3 = ((StringBuilder)localObject3).toString();
     localStringBuilder = new StringBuilder();
@@ -122,22 +91,22 @@ public abstract class PicType
       try
       {
         paramString1 = SafeBitmapFactory.decodeFile(paramString1, (BitmapFactory.Options)localObject2);
-        paramBoolean = Utils.a(paramString2, paramString1, a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
+        paramBoolean = Utils.a(paramString2, paramString1, c(), this.l.a, this.l);
         if (paramString1 != null) {
           paramString1.recycle();
         }
         if (paramBoolean) {
-          m = i;
+          n = i;
         }
-        return m;
+        return n;
       }
       catch (OutOfMemoryError paramString1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(false);
+        this.l.a(false);
         paramString1.printStackTrace();
-        paramString1 = this.jdField_a_of_type_JavaLangString;
+        paramString1 = this.j;
         paramString2 = new StringBuilder();
-        paramString2.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        paramString2.append(this.l.a);
         paramString2.append(" sampleCompress()");
         paramString2 = paramString2.toString();
         localObject1 = new StringBuilder();
@@ -147,9 +116,9 @@ public abstract class PicType
       }
     }
     return 0;
-    localObject1 = this.jdField_a_of_type_JavaLangString;
+    localObject1 = this.j;
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.l.a);
     ((StringBuilder)localObject2).append(" sampleCompress()");
     localObject2 = ((StringBuilder)localObject2).toString();
     localObject3 = new StringBuilder();
@@ -163,272 +132,302 @@ public abstract class PicType
   
   final boolean a()
   {
-    boolean bool2 = FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
+    boolean bool2 = FileUtils.fileExistsAndNotEmpty(this.l.h);
     boolean bool1 = false;
     Object localObject;
     StringBuilder localStringBuilder;
     if (!bool2)
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.j;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.l.a);
       localStringBuilder.append(" startThumbnail()");
       Logger.b(localObject, localStringBuilder.toString(), " src file does not exist");
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString == null)
+    if (this.l.l == null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-      ((CompressInfo)localObject).jdField_e_of_type_JavaLangString = Utils.a(((CompressInfo)localObject).c);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString))
+      localObject = this.l;
+      ((CompressInfo)localObject).l = Utils.b(((CompressInfo)localObject).h);
+      if (TextUtils.isEmpty(this.l.l))
       {
-        localObject = this.jdField_a_of_type_JavaLangString;
+        localObject = this.j;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.l.a);
         localStringBuilder.append(" startThumbnail()");
         Logger.b(localObject, localStringBuilder.toString(), " destPath is empty");
         return false;
       }
     }
-    if ((FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Boolean))
+    if ((FileUtils.fileExistsAndNotEmpty(this.l.l)) && (!this.l.u))
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.j;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.l.a);
       localStringBuilder.append(" startThumbnail()");
       Logger.b(localObject, localStringBuilder.toString(), " destPath exist. return true");
       return true;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Int == 2)
+      if (this.l.o == 2)
       {
-        bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.d, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_ComTencentMobileqqDataThumbWidthHeightDP);
+        bool2 = Utils.a(this.l.h, this.l.l, this.l.g, this.l.a, 3, this.l.x);
         bool1 = bool2;
       }
       else
       {
-        bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.d, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_ComTencentMobileqqDataThumbWidthHeightDP);
+        bool2 = Utils.a(this.l.h, this.l.l, this.l.g, this.l.a, 0, this.l.x);
         bool1 = bool2;
       }
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      Logger.b(this.jdField_a_of_type_JavaLangString, "startThumbnail()", localException.getMessage());
+      Logger.b(this.j, "startThumbnail()", localException.getMessage());
     }
     if (!bool1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-      String str = this.jdField_a_of_type_JavaLangString;
+      this.l.l = "";
+      String str = this.j;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.l.a);
       localStringBuilder.append(" startThumbnail()");
       Logger.b(str, localStringBuilder.toString(), " compressAIOThumbnail is failed");
     }
     return bool1;
   }
   
-  final int b()
+  final boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.h == 1) {
+    if (this.m == 2) {
+      return e();
+    }
+    return f();
+  }
+  
+  protected int c()
+  {
+    int i;
+    if (this.l.p == 2)
+    {
+      i = 100;
+    }
+    else
+    {
+      i = this.l.q;
+      if (i != 1)
+      {
+        if (i != 4) {
+          i = b;
+        } else {
+          i = c;
+        }
+      }
+      else {
+        i = a;
+      }
+    }
+    String str = this.j;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compressQuality = ");
+    localStringBuilder.append(i);
+    Logger.a(str, "getCompressQuality", localStringBuilder.toString());
+    return i;
+  }
+  
+  final int d()
+  {
+    if (this.l.q == 1) {
       return 20971520;
     }
     return 4194304;
   }
   
-  final boolean b()
-  {
-    if (this.k == 2) {
-      return c();
-    }
-    return d();
-  }
-  
-  final boolean c()
+  final boolean e()
   {
     Object localObject1;
     Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.g == 2)
+    if (this.l.p == 2)
     {
-      if (Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c) <= ((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit())
+      if (Utils.a(this.l.h) <= ((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit())
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-        ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString = ((CompressInfo)localObject1).c;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+        localObject1 = this.l;
+        ((CompressInfo)localObject1).l = ((CompressInfo)localObject1).h;
+        localObject1 = this.l;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708169));
-        ((CompressInfo)localObject1).jdField_f_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        ((StringBuilder)localObject2).append(this.j);
+        ((StringBuilder)localObject2).append(this.l.a);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131905964));
+        ((CompressInfo)localObject1).s = ((StringBuilder)localObject2).toString();
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" commonCompress()");
-        Logger.a(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131708168));
-        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Int != 2)
+        Logger.a(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131905963));
+        if (this.l.o != 2)
         {
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_Boolean = true;
+          this.l.t = true;
           return true;
         }
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" commonCompress()");
-        Logger.b(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131708173));
+        Logger.b(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131905968));
         return true;
       }
     }
     else
     {
-      int i = b();
-      long l1 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
+      int i = d();
+      long l1 = Utils.a(this.l.h);
       long l2 = i;
       if (l1 > l2)
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" commonCompress()");
         localObject2 = ((StringBuilder)localObject2).toString();
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(" src file size > max, file size:");
-        ((StringBuilder)localObject3).append(Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c));
+        ((StringBuilder)localObject3).append(Utils.a(this.l.h));
         ((StringBuilder)localObject3).append(" max:");
         ((StringBuilder)localObject3).append(i);
         Logger.a(localObject1, (String)localObject2, ((StringBuilder)localObject3).toString());
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-        ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString = Utils.a(((CompressInfo)localObject1).c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.g);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString))
+        localObject1 = this.l;
+        ((CompressInfo)localObject1).l = Utils.a(((CompressInfo)localObject1).h, this.l.p);
+        if (TextUtils.isEmpty(this.l.l))
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.j;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.l.a);
           ((StringBuilder)localObject2).append(" commonCompress()");
           Logger.b(localObject1, ((StringBuilder)localObject2).toString(), " destPath is empty");
           return false;
         }
-        if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString))
+        if (FileUtils.fileExistsAndNotEmpty(this.l.l))
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.j;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.l.a);
           ((StringBuilder)localObject2).append(" commonCompress()");
           Logger.b(localObject1, ((StringBuilder)localObject2).toString(), " destPath exist. return true");
           return true;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-        ((CompressInfo)localObject1).i = 0;
-        int m = a(((CompressInfo)localObject1).c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, true);
-        if (m != 0)
+        localObject1 = this.l;
+        ((CompressInfo)localObject1).r = 0;
+        int n = a(((CompressInfo)localObject1).h, this.l.l, true);
+        if (n != 0)
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-          ((CompressInfo)localObject1).i += m;
-          if (Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString) > l2)
+          localObject1 = this.l;
+          ((CompressInfo)localObject1).r += n;
+          if (Utils.a(this.l.l) > l2)
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.i >= 2)
+            if (this.l.r >= 2)
             {
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(false);
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+              this.l.a(false);
+              localObject1 = this.l;
               localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-              ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(this.j);
+              ((StringBuilder)localObject2).append(this.l.a);
               ((StringBuilder)localObject2).append(" commonCompress() 面积是原来的1/16，不能再小了fileSize:");
-              ((StringBuilder)localObject2).append(Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString));
+              ((StringBuilder)localObject2).append(Utils.a(this.l.l));
               ((StringBuilder)localObject2).append(" max:");
               ((StringBuilder)localObject2).append(i);
-              ((CompressInfo)localObject1).jdField_f_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-              localObject1 = this.jdField_a_of_type_JavaLangString;
+              ((CompressInfo)localObject1).s = ((StringBuilder)localObject2).toString();
+              localObject1 = this.j;
               localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(this.l.a);
               ((StringBuilder)localObject2).append(" commonCompress()");
               localObject2 = ((StringBuilder)localObject2).toString();
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append(" 面积是原来的1/16，不能再小了fileSize:");
-              ((StringBuilder)localObject3).append(Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString));
+              ((StringBuilder)localObject3).append(Utils.a(this.l.l));
               ((StringBuilder)localObject3).append(" max:");
               ((StringBuilder)localObject3).append(i);
               Logger.b(localObject1, (String)localObject2, ((StringBuilder)localObject3).toString());
-              FileUtils.deleteFile(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
+              FileUtils.deleteFile(this.l.l);
+              this.l.l = "";
               return false;
             }
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString;
+            localObject2 = this.l.l;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append((String)localObject2);
             ((StringBuilder)localObject1).append("_second");
             localObject1 = ((StringBuilder)localObject1).toString();
-            this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-            m = a((String)localObject2, (String)localObject1, false);
+            this.l.l = "";
+            n = a((String)localObject2, (String)localObject1, false);
             FileUtils.deleteFile((String)localObject2);
-            if (m != 0)
+            if (n != 0)
             {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-              ((CompressInfo)localObject2).i += m;
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = ((String)localObject1);
+              localObject2 = this.l;
+              ((CompressInfo)localObject2).r += n;
+              this.l.l = ((String)localObject1);
               if (Utils.a((String)localObject1) > l2)
               {
-                this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(false);
-                localObject2 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+                this.l.a(false);
+                localObject2 = this.l;
                 localObject3 = new StringBuilder();
-                ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
-                ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)localObject3).append(this.j);
+                ((StringBuilder)localObject3).append(this.l.a);
                 ((StringBuilder)localObject3).append(" commonCompress()");
-                ((StringBuilder)localObject3).append(HardCodeUtil.a(2131708174));
+                ((StringBuilder)localObject3).append(HardCodeUtil.a(2131905969));
                 ((StringBuilder)localObject3).append(Utils.a((String)localObject1));
                 ((StringBuilder)localObject3).append(" max:");
                 ((StringBuilder)localObject3).append(i);
-                ((CompressInfo)localObject2).jdField_f_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
-                localObject2 = this.jdField_a_of_type_JavaLangString;
+                ((CompressInfo)localObject2).s = ((StringBuilder)localObject3).toString();
+                localObject2 = this.j;
                 localObject3 = new StringBuilder();
-                ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)localObject3).append(this.l.a);
                 ((StringBuilder)localObject3).append(" commonCompress()");
                 localObject3 = ((StringBuilder)localObject3).toString();
                 StringBuilder localStringBuilder = new StringBuilder();
-                localStringBuilder.append(HardCodeUtil.a(2131708175));
+                localStringBuilder.append(HardCodeUtil.a(2131905970));
                 localStringBuilder.append(Utils.a((String)localObject1));
                 localStringBuilder.append(" max:");
                 localStringBuilder.append(i);
                 Logger.b(localObject2, (String)localObject3, localStringBuilder.toString());
-                FileUtils.deleteFile(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
-                this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
+                FileUtils.deleteFile(this.l.l);
+                this.l.l = "";
                 return false;
               }
             }
             else
             {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-              ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString = "";
+              localObject1 = this.l;
+              ((CompressInfo)localObject1).l = "";
               localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-              ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(this.j);
+              ((StringBuilder)localObject2).append(this.l.a);
               ((StringBuilder)localObject2).append(" commonCompress()");
-              ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708172));
-              ((CompressInfo)localObject1).jdField_f_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-              localObject1 = this.jdField_a_of_type_JavaLangString;
+              ((StringBuilder)localObject2).append(HardCodeUtil.a(2131905967));
+              ((CompressInfo)localObject1).s = ((StringBuilder)localObject2).toString();
+              localObject1 = this.j;
               localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(this.l.a);
               ((StringBuilder)localObject2).append(" commonCompress()");
-              Logger.b(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131708170));
+              Logger.b(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131905965));
               return false;
             }
           }
         }
         else
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-          ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString = "";
+          localObject1 = this.l;
+          ((CompressInfo)localObject1).l = "";
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.j);
+          ((StringBuilder)localObject2).append(this.l.a);
           ((StringBuilder)localObject2).append(" commonCompress() sampleCompress failed");
-          ((CompressInfo)localObject1).jdField_f_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          ((CompressInfo)localObject1).s = ((StringBuilder)localObject2).toString();
+          localObject1 = this.j;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.l.a);
           ((StringBuilder)localObject2).append(" commonCompress()");
           Logger.b(localObject1, ((StringBuilder)localObject2).toString(), " sampleCompress failed");
           return false;
@@ -436,32 +435,32 @@ public abstract class PicType
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-        ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString = ((CompressInfo)localObject1).c;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+        localObject1 = this.l;
+        ((CompressInfo)localObject1).l = ((CompressInfo)localObject1).h;
+        localObject1 = this.l;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708176));
-        ((CompressInfo)localObject1).jdField_f_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        ((StringBuilder)localObject2).append(this.j);
+        ((StringBuilder)localObject2).append(this.l.a);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131905971));
+        ((CompressInfo)localObject1).s = ((StringBuilder)localObject2).toString();
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" commonCompress()");
-        Logger.a(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131708171));
-        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Int != 2) {
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_Boolean = true;
+        Logger.a(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131905966));
+        if (this.l.o != 2) {
+          this.l.t = true;
         }
       }
     }
     return true;
   }
   
-  protected abstract boolean d();
+  protected abstract boolean f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.PicType
  * JD-Core Version:    0.7.0.1
  */

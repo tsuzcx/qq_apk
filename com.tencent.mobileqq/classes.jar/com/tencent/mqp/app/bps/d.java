@@ -24,55 +24,54 @@ import mqq.app.MobileQQ;
 
 public class d
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  public static Runnable a;
-  private static String jdField_a_of_type_JavaLangString = StringManager.a(StringManager.a);
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static String jdField_b_of_type_JavaLangString = StringManager.a(StringManager.a);
-  private static boolean jdField_b_of_type_Boolean = false;
+  public static Runnable a = new d.1();
+  private static String b = StringManager.a(StringManager.a);
   private static String c = StringManager.a(StringManager.a);
   private static String d = StringManager.a(StringManager.a);
-  private static String e = "";
-  private static String f;
-  private static String g;
-  private static String h;
-  private static String i;
+  private static String e = StringManager.a(StringManager.a);
+  private static String f = "";
+  private static boolean g;
+  private static boolean h;
+  private static int i;
   private static String j;
   private static String k;
   private static String l;
   private static String m;
   private static String n;
   private static String o;
+  private static String p;
+  private static String q;
+  private static String r;
+  private static String s;
+  private static Handler t;
   
   static
   {
-    e = StringManager.a(StringManager.b);
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-    f = "";
-    f = StringManager.a(StringManager.c);
-    g = "";
-    g = StringManager.a(StringManager.d);
-    h = "";
-    h = StringManager.a(StringManager.e);
-    i = "";
+    f = StringManager.a(StringManager.b);
+    g = false;
+    h = false;
+    i = 0;
     j = "";
+    j = StringManager.a(StringManager.c);
     k = "";
+    k = StringManager.a(StringManager.d);
     l = "";
+    l = StringManager.a(StringManager.e);
     m = "";
     n = "";
-    i = StringManager.a(StringManager.f);
-    j = StringManager.a(StringManager.g);
-    k = StringManager.a(StringManager.h);
-    l = StringManager.a(StringManager.i);
-    m = StringManager.a(StringManager.j);
-    n = StringManager.a(StringManager.k);
     o = "";
-    o = StringManager.a(StringManager.l);
-    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
-    jdField_a_of_type_JavaLangRunnable = new d.1();
+    p = "";
+    q = "";
+    r = "";
+    m = StringManager.a(StringManager.f);
+    n = StringManager.a(StringManager.g);
+    o = StringManager.a(StringManager.h);
+    p = StringManager.a(StringManager.i);
+    q = StringManager.a(StringManager.j);
+    r = StringManager.a(StringManager.k);
+    s = "";
+    s = StringManager.a(StringManager.l);
+    t = new Handler(ThreadManager.getFileThreadLooper());
   }
   
   /* Error */
@@ -81,13 +80,13 @@ public class d
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokevirtual 126	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   2: invokevirtual 130	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   5: astore_1
     //   6: aload_1
     //   7: astore_0
-    //   8: getstatic 128	com/tencent/mqp/app/bps/StringManager:m	[B
-    //   11: invokestatic 37	com/tencent/mqp/app/bps/StringManager:a	([B)Ljava/lang/String;
-    //   14: invokestatic 134	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   8: getstatic 132	com/tencent/mqp/app/bps/StringManager:m	[B
+    //   11: invokestatic 41	com/tencent/mqp/app/bps/StringManager:a	([B)Ljava/lang/String;
+    //   14: invokestatic 138	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   17: astore_3
     //   18: aload_1
     //   19: astore_0
@@ -98,7 +97,7 @@ public class d
     //   28: astore_0
     //   29: aload_1
     //   30: aload 4
-    //   32: invokevirtual 140	java/io/InputStream:read	([B)I
+    //   32: invokevirtual 144	java/io/InputStream:read	([B)I
     //   35: istore_2
     //   36: iload_2
     //   37: iconst_m1
@@ -109,23 +108,23 @@ public class d
     //   44: aload 4
     //   46: iconst_0
     //   47: iload_2
-    //   48: invokevirtual 144	java/security/MessageDigest:update	([BII)V
+    //   48: invokevirtual 148	java/security/MessageDigest:update	([BII)V
     //   51: goto -24 -> 27
     //   54: aload_1
     //   55: astore_0
     //   56: aload_3
-    //   57: invokevirtual 148	java/security/MessageDigest:digest	()[B
-    //   60: invokestatic 151	com/tencent/mqp/app/bps/TXSafeCheckUtilClone:a	([B)Ljava/lang/String;
+    //   57: invokevirtual 152	java/security/MessageDigest:digest	()[B
+    //   60: invokestatic 155	com/tencent/mqp/app/bps/TXSafeCheckUtilClone:a	([B)Ljava/lang/String;
     //   63: astore_3
     //   64: aload_1
     //   65: ifnull +14 -> 79
     //   68: aload_1
-    //   69: invokevirtual 154	java/io/InputStream:close	()V
+    //   69: invokevirtual 158	java/io/InputStream:close	()V
     //   72: aload_3
     //   73: areturn
     //   74: astore_0
     //   75: aload_0
-    //   76: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   76: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   79: aload_3
     //   80: areturn
     //   81: astore_1
@@ -142,26 +141,26 @@ public class d
     //   98: aload_1
     //   99: astore_0
     //   100: aload_3
-    //   101: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   101: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   104: aload_1
     //   105: ifnull +14 -> 119
     //   108: aload_1
-    //   109: invokevirtual 154	java/io/InputStream:close	()V
+    //   109: invokevirtual 158	java/io/InputStream:close	()V
     //   112: aconst_null
     //   113: areturn
     //   114: astore_0
     //   115: aload_0
-    //   116: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   116: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   119: aconst_null
     //   120: areturn
     //   121: aload_0
     //   122: ifnull +15 -> 137
     //   125: aload_0
-    //   126: invokevirtual 154	java/io/InputStream:close	()V
+    //   126: invokevirtual 158	java/io/InputStream:close	()V
     //   129: goto +8 -> 137
     //   132: astore_0
     //   133: aload_0
-    //   134: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   134: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   137: goto +5 -> 142
     //   140: aload_1
     //   141: athrow
@@ -199,83 +198,83 @@ public class d
   private static String a(String paramString)
   {
     // Byte code:
-    //   0: new 122	com/tencent/commonsdk/zip/QZipFile
+    //   0: new 126	com/tencent/commonsdk/zip/QZipFile
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 165	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 169	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
     //   10: astore_0
     //   11: aload_1
-    //   12: invokevirtual 169	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   12: invokevirtual 173	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   15: astore_2
     //   16: aload_1
     //   17: astore_0
     //   18: aload_2
-    //   19: invokeinterface 175 1 0
+    //   19: invokeinterface 179 1 0
     //   24: ifeq +117 -> 141
     //   27: aload_1
     //   28: astore_0
     //   29: aload_2
-    //   30: invokeinterface 179 1 0
-    //   35: checkcast 181	java/util/zip/ZipEntry
+    //   30: invokeinterface 183 1 0
+    //   35: checkcast 185	java/util/zip/ZipEntry
     //   38: astore_3
     //   39: aload_1
     //   40: astore_0
     //   41: aload_3
-    //   42: invokevirtual 184	java/util/zip/ZipEntry:isDirectory	()Z
+    //   42: invokevirtual 188	java/util/zip/ZipEntry:isDirectory	()Z
     //   45: ifeq +6 -> 51
     //   48: goto -32 -> 16
     //   51: aload_1
     //   52: astore_0
     //   53: aload_3
-    //   54: invokevirtual 188	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   54: invokevirtual 192	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   57: astore 4
     //   59: aload_1
     //   60: astore_0
     //   61: aload 4
-    //   63: ldc 190
-    //   65: invokevirtual 196	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   63: ldc 194
+    //   65: invokevirtual 200	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   68: ifeq +6 -> 74
     //   71: goto -55 -> 16
     //   74: aload_1
     //   75: astore_0
     //   76: aload 4
-    //   78: getstatic 198	com/tencent/mqp/app/bps/StringManager:n	[B
-    //   81: invokestatic 37	com/tencent/mqp/app/bps/StringManager:a	([B)Ljava/lang/String;
-    //   84: invokevirtual 202	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   78: getstatic 202	com/tencent/mqp/app/bps/StringManager:n	[B
+    //   81: invokestatic 41	com/tencent/mqp/app/bps/StringManager:a	([B)Ljava/lang/String;
+    //   84: invokevirtual 206	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   87: ifeq -71 -> 16
     //   90: aload_1
     //   91: astore_0
     //   92: aload 4
-    //   94: getstatic 204	com/tencent/mqp/app/bps/StringManager:o	[B
-    //   97: invokestatic 37	com/tencent/mqp/app/bps/StringManager:a	([B)Ljava/lang/String;
-    //   100: invokevirtual 207	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   94: getstatic 208	com/tencent/mqp/app/bps/StringManager:o	[B
+    //   97: invokestatic 41	com/tencent/mqp/app/bps/StringManager:a	([B)Ljava/lang/String;
+    //   100: invokevirtual 211	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   103: ifeq -87 -> 16
     //   106: aload_1
     //   107: astore_0
     //   108: aload 4
     //   110: bipush 47
-    //   112: invokevirtual 211	java/lang/String:lastIndexOf	(I)I
+    //   112: invokevirtual 215	java/lang/String:lastIndexOf	(I)I
     //   115: bipush 8
     //   117: if_icmpne -101 -> 16
     //   120: aload_1
     //   121: astore_0
     //   122: aload_1
     //   123: aload_3
-    //   124: invokestatic 213	com/tencent/mqp/app/bps/d:a	(Lcom/tencent/commonsdk/zip/QZipFile;Ljava/util/zip/ZipEntry;)Ljava/lang/String;
+    //   124: invokestatic 217	com/tencent/mqp/app/bps/d:a	(Lcom/tencent/commonsdk/zip/QZipFile;Ljava/util/zip/ZipEntry;)Ljava/lang/String;
     //   127: astore_2
     //   128: aload_1
-    //   129: invokevirtual 214	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   129: invokevirtual 218	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   132: aload_2
     //   133: areturn
     //   134: astore_0
     //   135: aload_0
-    //   136: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   136: invokevirtual 219	java/io/IOException:printStackTrace	()V
     //   139: aload_2
     //   140: areturn
     //   141: aload_1
-    //   142: invokevirtual 214	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   142: invokevirtual 218	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   145: aconst_null
     //   146: areturn
     //   147: astore_2
@@ -292,11 +291,11 @@ public class d
     //   164: aload_1
     //   165: astore_0
     //   166: aload_2
-    //   167: invokevirtual 216	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   167: invokevirtual 220	java/lang/OutOfMemoryError:printStackTrace	()V
     //   170: aload_1
     //   171: ifnull +33 -> 204
     //   174: aload_1
-    //   175: invokevirtual 214	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   175: invokevirtual 218	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   178: aconst_null
     //   179: areturn
     //   180: astore_2
@@ -305,27 +304,27 @@ public class d
     //   183: aload_1
     //   184: astore_0
     //   185: aload_2
-    //   186: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   186: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   189: aload_1
     //   190: ifnull +14 -> 204
     //   193: aload_1
-    //   194: invokevirtual 214	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   194: invokevirtual 218	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   197: aconst_null
     //   198: areturn
     //   199: astore_0
     //   200: aload_0
-    //   201: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   201: invokevirtual 219	java/io/IOException:printStackTrace	()V
     //   204: aconst_null
     //   205: areturn
     //   206: astore_1
     //   207: aload_0
     //   208: ifnull +15 -> 223
     //   211: aload_0
-    //   212: invokevirtual 214	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   212: invokevirtual 218	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   215: goto +8 -> 223
     //   218: astore_0
     //   219: aload_0
-    //   220: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   220: invokevirtual 219	java/io/IOException:printStackTrace	()V
     //   223: goto +5 -> 228
     //   226: aload_1
     //   227: athrow
@@ -390,34 +389,19 @@ public class d
   
   public static void a()
   {
-    jdField_a_of_type_AndroidOsHandler.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, 210000L);
+    t.removeCallbacks(a);
+    t.postDelayed(a, 210000L);
   }
   
   private static void a(long paramLong)
   {
-    jdField_a_of_type_AndroidOsHandler.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, paramLong);
-  }
-  
-  private static boolean a()
-  {
-    try
-    {
-      long l1 = BaseApplication.getContext().getSharedPreferences(f, 0).getLong(i, 0L);
-      long l2 = System.currentTimeMillis();
-      return l2 - l1 >= 86400000L;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return true;
+    t.removeCallbacks(a);
+    t.postDelayed(a, paramLong);
   }
   
   public static void b()
   {
-    if (a() == true) {
+    if (e() == true) {
       c();
     }
     a(86400000L);
@@ -429,9 +413,9 @@ public class d
     {
       long l1 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d(o, 2, "start");
+        QLog.d(s, 2, "start");
       }
-      if (!jdField_a_of_type_Boolean)
+      if (!g)
       {
         localObject = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
         if (localObject == null) {
@@ -441,15 +425,15 @@ public class d
         if (localObject == null) {
           return;
         }
-        jdField_a_of_type_Int = TXVerifyAPKUtilClone.a((String)localObject, g);
-        jdField_a_of_type_Boolean = true;
+        i = TXVerifyAPKUtilClone.a((String)localObject, k);
+        g = true;
       }
       long l2 = System.currentTimeMillis();
       d();
       long l3 = System.currentTimeMillis();
-      e();
+      f();
       long l4 = System.currentTimeMillis();
-      Object localObject = o;
+      Object localObject = s;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("cost(");
       localStringBuilder.append(l2 - l1);
@@ -477,53 +461,53 @@ public class d
       }
       c localc = new c();
       localc.uint32_cmd.set(3);
-      localc.uint32_result.set(jdField_a_of_type_Int);
-      localc.uint32_appid.set(AppSetting.a());
+      localc.uint32_result.set(i);
+      localc.uint32_appid.set(AppSetting.d());
       Object localObject1 = localQQAppInterface.getApplication().getApplicationInfo().sourceDir;
       if (localObject1 == null) {
         return;
       }
-      boolean bool = jdField_b_of_type_Boolean;
+      boolean bool = h;
       if (!bool)
       {
-        Object localObject3 = BaseApplication.getContext().getSharedPreferences(f, 0);
-        localObject2 = ((SharedPreferences)localObject3).getString(j, null);
-        String str1 = ((SharedPreferences)localObject3).getString(k, null);
-        String str2 = ((SharedPreferences)localObject3).getString(l, null);
-        String str3 = ((SharedPreferences)localObject3).getString(m, null);
-        localObject3 = ((SharedPreferences)localObject3).getString(n, null);
+        Object localObject3 = BaseApplication.getContext().getSharedPreferences(j, 0);
+        localObject2 = ((SharedPreferences)localObject3).getString(n, null);
+        String str1 = ((SharedPreferences)localObject3).getString(o, null);
+        String str2 = ((SharedPreferences)localObject3).getString(p, null);
+        String str3 = ((SharedPreferences)localObject3).getString(q, null);
+        localObject3 = ((SharedPreferences)localObject3).getString(r, null);
         String str4 = a((String)localObject1);
         if (str4 != null) {
-          jdField_b_of_type_JavaLangString = str4;
+          c = str4;
         }
-        if ((str2 != null) && (str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) && (localObject3 != null) && (((String)localObject3).equalsIgnoreCase("8.7.0.5295")))
+        if ((str2 != null) && (str2.equalsIgnoreCase(c)) && (localObject3 != null) && (((String)localObject3).equalsIgnoreCase("8.8.17.5770")))
         {
           if (localObject2 != null) {
-            d = (String)localObject2;
+            e = (String)localObject2;
           }
           if (str3 != null) {
-            jdField_a_of_type_JavaLangString = str3;
+            b = str3;
           }
           if (str1 != null) {
-            c = str1;
+            d = str1;
           }
         }
         else
         {
-          d = u.a(BaseApplication.getContext());
-          jdField_a_of_type_JavaLangString = u.a((String)localObject1);
+          e = u.a(BaseApplication.getContext());
+          b = u.a((String)localObject1);
           localObject2 = new byte[16];
-          TXSafeCheckUtilClone.a((String)localObject1, g, (byte[])localObject2);
-          c = u.a((byte[])localObject2);
-          jdField_b_of_type_Boolean = true;
+          TXSafeCheckUtilClone.a((String)localObject1, k, (byte[])localObject2);
+          d = u.a((byte[])localObject2);
+          h = true;
         }
       }
-      localc.str_signature.set(d);
-      localc.str_apkmd5.set(jdField_a_of_type_JavaLangString);
-      localc.str_rsamd5.set(jdField_b_of_type_JavaLangString);
-      localc.str_txsfcfgkmd5.set(c);
-      localc.str_apkversion.set("8.7.0.5295");
-      localc.str_channelid.set(AppSetting.c());
+      localc.str_signature.set(e);
+      localc.str_apkmd5.set(b);
+      localc.str_rsamd5.set(c);
+      localc.str_txsfcfgkmd5.set(d);
+      localc.str_apkversion.set("8.8.17.5770");
+      localc.str_channelid.set(AppSetting.e());
       localc.str_uin.set(localQQAppInterface.getCurrentAccountUin());
       localc.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
       localc.str_sysversion.set(Build.VERSION.RELEASE);
@@ -535,7 +519,7 @@ public class d
         localObject1 = "com.tencent.mobileqq";
       }
       localc.package_name.set((String)localObject1);
-      localObject1 = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), e);
+      localObject1 = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), f);
       ((ToServiceMsg)localObject1).putWupBuffer(localc.toByteArray());
       ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
       ((ToServiceMsg)localObject1).setNeedCallback(false);
@@ -548,17 +532,32 @@ public class d
     }
   }
   
-  private static void e()
+  private static boolean e()
   {
     try
     {
-      SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(f, 0).edit();
-      localEditor.putLong(i, System.currentTimeMillis());
-      localEditor.putString(j, d);
-      localEditor.putString(k, c);
-      localEditor.putString(l, jdField_b_of_type_JavaLangString);
-      localEditor.putString(m, jdField_a_of_type_JavaLangString);
-      localEditor.putString(n, "8.7.0.5295");
+      long l1 = BaseApplication.getContext().getSharedPreferences(j, 0).getLong(m, 0L);
+      long l2 = System.currentTimeMillis();
+      return l2 - l1 >= 86400000L;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return true;
+  }
+  
+  private static void f()
+  {
+    try
+    {
+      SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(j, 0).edit();
+      localEditor.putLong(m, System.currentTimeMillis());
+      localEditor.putString(n, e);
+      localEditor.putString(o, d);
+      localEditor.putString(p, c);
+      localEditor.putString(q, b);
+      localEditor.putString(r, "8.8.17.5770");
       localEditor.commit();
       return;
     }
@@ -570,7 +569,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.bps.d
  * JD-Core Version:    0.7.0.1
  */

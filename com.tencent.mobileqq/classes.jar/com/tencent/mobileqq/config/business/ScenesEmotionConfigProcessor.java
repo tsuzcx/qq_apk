@@ -33,16 +33,16 @@ public class ScenesEmotionConfigProcessor
     if (paramArrayOfQConfItem.length > 0)
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0];
-      localScencesEmotionConfigContent.jdField_a_of_type_Int = paramArrayOfQConfItem.jdField_a_of_type_Int;
-      localScencesEmotionConfigContent.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.jdField_a_of_type_JavaLangString;
+      localScencesEmotionConfigContent.a = paramArrayOfQConfItem.a;
+      localScencesEmotionConfigContent.b = paramArrayOfQConfItem.b;
     }
     if (QLog.isColorLevel())
     {
       paramArrayOfQConfItem = new StringBuilder();
       paramArrayOfQConfItem.append("onParsed taskId = ");
-      paramArrayOfQConfItem.append(localScencesEmotionConfigContent.jdField_a_of_type_Int);
+      paramArrayOfQConfItem.append(localScencesEmotionConfigContent.a);
       paramArrayOfQConfItem.append(" | content = ");
-      paramArrayOfQConfItem.append(localScencesEmotionConfigContent.jdField_a_of_type_JavaLangString);
+      paramArrayOfQConfItem.append(localScencesEmotionConfigContent.b);
       QLog.d("ScencesEmotionConfigProcessor", 2, paramArrayOfQConfItem.toString());
     }
     return localScencesEmotionConfigContent;
@@ -50,16 +50,16 @@ public class ScenesEmotionConfigProcessor
   
   public void a(ScenesEmotionConfigProcessor.ScencesEmotionConfigContent paramScencesEmotionConfigContent)
   {
-    if ((paramScencesEmotionConfigContent != null) && (paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString != null))
+    if ((paramScencesEmotionConfigContent != null) && (paramScencesEmotionConfigContent.b != null))
     {
       try
       {
-        String str = paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString;
+        String str = paramScencesEmotionConfigContent.b;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onUpdate content = ");
-          localStringBuilder.append(paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(paramScencesEmotionConfigContent.b);
           QLog.d("ScencesEmotionConfigProcessor", 2, localStringBuilder.toString());
         }
         paramScencesEmotionConfigContent = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -128,7 +128,7 @@ public class ScenesEmotionConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.ScenesEmotionConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

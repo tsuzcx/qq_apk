@@ -20,7 +20,7 @@ public class HeartRiseLayerDrawable
   public static Bitmap a(Resources paramResources)
   {
     Paint localPaint = new Paint();
-    localPaint.setColor(paramResources.getColor(2131166618));
+    localPaint.setColor(paramResources.getColor(2131167538));
     Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
     localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
     paramResources = new Canvas(localBitmap);
@@ -55,7 +55,7 @@ public class HeartRiseLayerDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable
  * JD-Core Version:    0.7.0.1
  */

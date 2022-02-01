@@ -16,14 +16,14 @@ class TimePickerView$2
     } else {
       paramInt = 0;
     }
-    if ((TimePickerView.a(this.a) != null) && (paramBoolean)) {
-      TimePickerView.a(this.a).b(paramInt);
+    if ((TimePickerView.b(this.a) != null) && (paramBoolean)) {
+      TimePickerView.b(this.a).b(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.timepicker.TimePickerView.2
  * JD-Core Version:    0.7.0.1
  */

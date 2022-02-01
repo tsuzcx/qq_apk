@@ -7,31 +7,26 @@ import java.util.ArrayList;
 public class AnimStateTypeEvaluator
   implements TypeEvaluator<ArrayList<Integer>>
 {
-  private long jdField_a_of_type_Long = 0L;
-  private ArrayList<AnimStateTypeEvaluator.AnimInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<AnimStateTypeEvaluator.AnimInfo> a = new ArrayList();
   private ArrayList<Integer> b = new ArrayList();
   private ArrayList<Integer> c = new ArrayList();
   private ArrayList<Integer> d = new ArrayList();
   private ArrayList<TimeInterpolator> e = new ArrayList();
+  private long f = 0L;
   
   public int a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, TimeInterpolator paramTimeInterpolator)
   {
     int i = this.c.size();
     paramString = new AnimStateTypeEvaluator.AnimInfo(paramLong1, paramLong2, i);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+    this.a.add(paramString);
     this.c.add(Integer.valueOf(paramInt1));
     this.d.add(Integer.valueOf(paramInt2));
     this.e.add(paramTimeInterpolator);
     paramLong1 += paramLong2;
-    if (paramLong1 > this.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = paramLong1;
+    if (paramLong1 > this.f) {
+      this.f = paramLong1;
     }
     return i;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
   }
   
   public ArrayList<Integer> a()
@@ -59,9 +54,9 @@ public class AnimStateTypeEvaluator
       {
         int k = ((Integer)paramArrayList1.get(i)).intValue();
         int m = ((Integer)paramArrayList2.get(i)).intValue();
-        long l1 = ((AnimStateTypeEvaluator.AnimInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
-        long l2 = ((AnimStateTypeEvaluator.AnimInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
-        long l3 = (int)((float)this.jdField_a_of_type_Long * paramFloat);
+        long l1 = ((AnimStateTypeEvaluator.AnimInfo)this.a.get(i)).a;
+        long l2 = ((AnimStateTypeEvaluator.AnimInfo)this.a.get(i)).b;
+        long l3 = (int)((float)this.f * paramFloat);
         if (l3 < l1)
         {
           this.b.add(Integer.valueOf(0));
@@ -72,8 +67,8 @@ public class AnimStateTypeEvaluator
         }
         else
         {
-          float f = ((TimeInterpolator)this.e.get(i)).getInterpolation((float)(l3 - l1) / (float)l2);
-          this.b.add(Integer.valueOf((int)(k + (m - k) * f)));
+          float f1 = ((TimeInterpolator)this.e.get(i)).getInterpolation((float)(l3 - l1) / (float)l2);
+          this.b.add(Integer.valueOf((int)(k + (m - k) * f1)));
         }
         i += 1;
       }
@@ -84,17 +79,22 @@ public class AnimStateTypeEvaluator
   
   public ArrayList<Integer> a(long paramLong)
   {
-    return a((float)paramLong / (float)this.jdField_a_of_type_Long, this.c, this.d);
+    return a((float)paramLong / (float)this.f, this.c, this.d);
   }
   
   public ArrayList<Integer> b()
   {
     return this.c;
   }
+  
+  public long c()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.AnimStateTypeEvaluator
  * JD-Core Version:    0.7.0.1
  */

@@ -8,42 +8,40 @@ public class Friend
   implements Parcelable
 {
   public static final Parcelable.Creator<Friend> CREATOR = new Friend.1();
-  public int a;
   public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
   public String d;
-  public String e;
+  public int e = -1;
   public String f;
-  public String g;
+  public int g;
+  public int h;
+  public String i;
+  public String j;
   
   public Friend()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
     this.d = "";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.f = "";
-    this.g = "";
+    this.g = -1;
+    this.h = -1;
+    this.i = "";
+    this.j = "";
   }
   
   public Friend(Friend paramFriend)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramFriend.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramFriend.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramFriend.jdField_c_of_type_JavaLangString;
+    this.a = paramFriend.a;
+    this.b = paramFriend.b;
+    this.c = paramFriend.c;
     this.d = paramFriend.d;
-    this.jdField_b_of_type_Int = paramFriend.jdField_b_of_type_Int;
-    this.jdField_c_of_type_Int = paramFriend.jdField_c_of_type_Int;
-    this.f = paramFriend.f;
     this.g = paramFriend.g;
-    this.jdField_a_of_type_Int = paramFriend.jdField_a_of_type_Int;
+    this.h = paramFriend.h;
+    this.i = paramFriend.i;
+    this.j = paramFriend.j;
     this.e = paramFriend.e;
+    this.f = paramFriend.f;
   }
   
   public int describeContents()
@@ -63,16 +61,16 @@ public class Friend
       return false;
     }
     paramObject = (Friend)paramObject;
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null) {
-      return str.equals(paramObject.jdField_a_of_type_JavaLangString);
+      return str.equals(paramObject.a);
     }
     return false;
   }
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null) {
       return str.hashCode();
     }
@@ -81,17 +79,17 @@ public class Friend
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.e);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.Friend
  * JD-Core Version:    0.7.0.1
  */

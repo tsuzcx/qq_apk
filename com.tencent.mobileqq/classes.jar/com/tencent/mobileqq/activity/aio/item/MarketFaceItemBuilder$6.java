@@ -19,15 +19,15 @@ class MarketFaceItemBuilder$6
   
   public void run()
   {
-    Intent localIntent = new Intent(this.this$0.b, H5MagicPlayerActivity.class);
+    Intent localIntent = new Intent(this.this$0.A, H5MagicPlayerActivity.class);
     localIntent.putExtra("clickTime", System.currentTimeMillis());
-    localIntent.putExtra("autoPlay", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("senderUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
-    localIntent.putExtra("selfUin", this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localIntent.putExtra("sessionInfo", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localIntent.putExtra("emoticon", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon());
-    Object localObject = (IEmoticonManagerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
-    EmoticonPackage localEmoticonPackage = ((IEmoticonManagerService)localObject).syncFindEmoticonPackageById(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId);
+    localIntent.putExtra("autoPlay", this.a);
+    localIntent.putExtra("senderUin", this.b.q.senderuin);
+    localIntent.putExtra("selfUin", this.this$0.d.getCurrentAccountUin());
+    localIntent.putExtra("sessionInfo", this.this$0.f);
+    localIntent.putExtra("emoticon", this.b.a.getEmoticon());
+    Object localObject = (IEmoticonManagerService)this.this$0.d.getRuntimeService(IEmoticonManagerService.class);
+    EmoticonPackage localEmoticonPackage = ((IEmoticonManagerService)localObject).syncFindEmoticonPackageById(this.b.a.getEmoticon().epId);
     if (localEmoticonPackage != null)
     {
       localObject = ((IEmoticonManagerService)localObject).syncGetSubEmoticonsByPackageId(localEmoticonPackage.childEpId);
@@ -35,12 +35,12 @@ class MarketFaceItemBuilder$6
         localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
       }
     }
-    this.this$0.b.startActivity(localIntent);
+    this.this$0.A.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

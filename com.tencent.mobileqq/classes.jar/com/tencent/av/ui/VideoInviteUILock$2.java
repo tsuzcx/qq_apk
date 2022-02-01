@@ -15,8 +15,8 @@ class VideoInviteUILock$2
     if (paramDialogInterface != null)
     {
       paramDialogInterface.dismiss();
-      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-        this.a.a.a.a.b();
+      if ((this.a.a.Q != null) && (this.a.a.Q.q != null)) {
+        this.a.a.Q.q.b();
       }
     }
   }

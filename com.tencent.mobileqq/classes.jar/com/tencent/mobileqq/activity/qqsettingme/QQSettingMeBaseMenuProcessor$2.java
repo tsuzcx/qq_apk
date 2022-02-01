@@ -10,16 +10,16 @@ class QQSettingMeBaseMenuProcessor$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo, this.b);
+    if (this.a) {
+      this.this$0.b(this.b, this.c);
     }
-    QQSettingMeRedTouchUtil.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo, this.this$0.jdField_a_of_type_JavaUtilHashSet);
-    this.this$0.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    QQSettingMeRedTouchUtil.a(this.this$0.c, this.b, this.this$0.f);
+    this.this$0.a.setValue(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeBaseMenuProcessor.2
  * JD-Core Version:    0.7.0.1
  */

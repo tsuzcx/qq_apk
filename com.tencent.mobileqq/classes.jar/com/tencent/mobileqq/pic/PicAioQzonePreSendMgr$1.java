@@ -33,11 +33,11 @@ final class PicAioQzonePreSendMgr$1
         localStringBuilder.append("picPreSendProcess request Result, resultCode:");
         localStringBuilder.append(i);
         localStringBuilder.append(", selfUin:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.a);
         localStringBuilder.append(", friendUin:");
         localStringBuilder.append(this.b);
         localStringBuilder.append(", md5:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5);
+        localStringBuilder.append(this.c.rawMd5);
         localStringBuilder.append(", commonInfo:");
         localStringBuilder.append(paramRichProtoReq.toString());
         QLog.i("PicAioQzonePreSendMgr", 2, localStringBuilder.toString());
@@ -48,7 +48,7 @@ final class PicAioQzonePreSendMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicAioQzonePreSendMgr.1
  * JD-Core Version:    0.7.0.1
  */

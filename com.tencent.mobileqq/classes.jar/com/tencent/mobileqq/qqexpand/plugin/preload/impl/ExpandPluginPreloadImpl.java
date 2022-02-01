@@ -19,7 +19,7 @@ public class ExpandPluginPreloadImpl
     if (paramAppInterface == null) {
       return false;
     }
-    boolean bool = ((ExpandManager)paramAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).g();
+    boolean bool = ((ExpandManager)paramAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).F();
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
@@ -37,7 +37,7 @@ public class ExpandPluginPreloadImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.preload.impl.ExpandPluginPreloadImpl
  * JD-Core Version:    0.7.0.1
  */

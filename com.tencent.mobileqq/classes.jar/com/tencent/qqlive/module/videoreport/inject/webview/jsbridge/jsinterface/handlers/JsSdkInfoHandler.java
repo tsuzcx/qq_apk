@@ -17,7 +17,7 @@ public class JsSdkInfoHandler
   
   private int getSdkVersion()
   {
-    return 2200;
+    return 2225;
   }
   
   public void handle(String paramString, JSONObject paramJSONObject)
@@ -31,7 +31,7 @@ public class JsSdkInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.handlers.JsSdkInfoHandler
  * JD-Core Version:    0.7.0.1
  */

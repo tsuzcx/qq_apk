@@ -9,8 +9,8 @@ import android.widget.ImageView;
 public class PressScaleImageView
   extends ImageView
 {
-  private final PressScaleAnimDelegate a;
-  public boolean a;
+  public boolean a = true;
+  private final PressScaleAnimDelegate b = new PressScaleAnimDelegate(this);
   
   public PressScaleImageView(Context paramContext)
   {
@@ -25,19 +25,17 @@ public class PressScaleImageView
   public PressScaleImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate = new PressScaleAnimDelegate(this);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate.a())
+    if (this.b.a())
     {
       paramCanvas.save();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate.a(paramCanvas);
+      this.b.a(paramCanvas);
     }
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate.a()) {
+    if (this.b.a()) {
       paramCanvas.restore();
     }
   }
@@ -45,15 +43,15 @@ public class PressScaleImageView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionMasked();
-    if (i != 0 ? i != 1 : this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate.a();
+    if (i != 0 ? i != 1 : this.a) {
+      this.b.b();
     }
     return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.PressScaleImageView
  * JD-Core Version:    0.7.0.1
  */

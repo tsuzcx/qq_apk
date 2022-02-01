@@ -18,10 +18,10 @@ public abstract class ILebaRedTouchBiz
   {
     if (paramRedTouch != null)
     {
-      if (!paramRedTouch.a()) {
+      if (!paramRedTouch.c()) {
         return 0;
       }
-      paramRedTouch = paramRedTouch.a();
+      paramRedTouch = paramRedTouch.getRedType();
       if (paramRedTouch == null) {
         return 0;
       }
@@ -58,7 +58,7 @@ public abstract class ILebaRedTouchBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.ILebaRedTouchBiz
  * JD-Core Version:    0.7.0.1
  */

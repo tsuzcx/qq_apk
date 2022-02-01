@@ -100,11 +100,11 @@ class OpenUrlMethod
     if (!TextUtils.isEmpty(str1))
     {
       paramHippyMap = str1;
-      if (URLUtil.a(str1)) {}
+      if (URLUtil.e(str1)) {}
     }
     else
     {
-      paramHippyMap = SearchConfigUtils.a(str2, 5, SearchConfigUtils.b(10));
+      paramHippyMap = SearchConfigUtils.a(str2, 5, SearchConfigUtils.d(10));
     }
     SearchUtils.a(this.app, this.context, paramHippyMap);
   }
@@ -157,7 +157,7 @@ class OpenUrlMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.OpenUrlMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -11,29 +11,41 @@ class SimpleUIHandler$2
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SimpleUILog.SimpleUIHandler", 2, new Object[] { "type:", Integer.valueOf(paramInt), " success:", Boolean.valueOf(paramBoolean), " data:", paramObject });
-      if ((paramObject instanceof UniSetRsp)) {
-        QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "ret: ", Integer.valueOf(((UniSetRsp)paramObject).ret) });
-      }
+    StringBuilder localStringBuilder = new StringBuilder("sendSwitchBubbleUnread onUpdate");
+    localStringBuilder.append(" type=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",success=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(",data=");
+    if (paramObject == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0))
+    localStringBuilder.append(bool);
+    boolean bool = paramObject instanceof UniSetRsp;
+    if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Long);
+      localStringBuilder.append(",ret=");
+      localStringBuilder.append(((UniSetRsp)paramObject).ret);
+    }
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, localStringBuilder.toString());
+    if ((paramBoolean) && (bool) && (((UniSetRsp)paramObject).ret == 0))
+    {
+      this.f.a(this.a, this.b, this.c, this.d, this.e);
       return;
     }
-    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret != 0)) {
+    if ((paramBoolean) && (bool) && (((UniSetRsp)paramObject).ret != 0)) {
       paramBoolean = true;
     } else {
       paramBoolean = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler.a(false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.c, this.b, paramBoolean);
+    this.f.a(false, this.a, this.b, this.d, this.c, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIHandler.2
  * JD-Core Version:    0.7.0.1
  */

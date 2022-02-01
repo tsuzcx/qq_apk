@@ -13,11 +13,11 @@ class CommonMenuPopupView$1
   
   public void run()
   {
-    Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
+    Context localContext = this.a.getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing())) {
       try
       {
-        CommonMenuPopupView.a(this.this$0).showAtLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
+        CommonMenuPopupView.a(this.this$0).showAtLocation(this.a, this.b, this.c, true);
         return;
       }
       catch (Exception localException)
@@ -29,7 +29,7 @@ class CommonMenuPopupView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.CommonMenuPopupView.1
  * JD-Core Version:    0.7.0.1
  */

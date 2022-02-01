@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class HippyNativeModuleBase
 {
-  protected HippyEngineContext mContext;
+  protected final HippyEngineContext mContext;
   private HashMap<String, Integer> mEventMaps;
   
   public HippyNativeModuleBase(HippyEngineContext paramHippyEngineContext)
@@ -63,7 +63,7 @@ public class HippyNativeModuleBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase
  * JD-Core Version:    0.7.0.1
  */

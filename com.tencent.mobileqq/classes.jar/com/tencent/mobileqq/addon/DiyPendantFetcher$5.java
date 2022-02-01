@@ -24,7 +24,7 @@ class DiyPendantFetcher$5
       {
         DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
-          this.this$0.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
+          this.this$0.d.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
         }
       }
       if (QLog.isColorLevel())
@@ -39,7 +39,7 @@ class DiyPendantFetcher$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.5
  * JD-Core Version:    0.7.0.1
  */

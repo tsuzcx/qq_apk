@@ -17,10 +17,10 @@ final class VideoPlayController$startPlayer$1
   
   public final void invoke()
   {
-    if (this.this$0.b())
+    if (this.this$0.q())
     {
       VideoPlayController.b(this.this$0);
-      VideoPlayListener localVideoPlayListener = this.this$0.a();
+      VideoPlayListener localVideoPlayListener = this.this$0.e();
       if (localVideoPlayListener != null) {
         localVideoPlayListener.a();
       }
@@ -30,7 +30,7 @@ final class VideoPlayController$startPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.startPlayer.1
  * JD-Core Version:    0.7.0.1
  */

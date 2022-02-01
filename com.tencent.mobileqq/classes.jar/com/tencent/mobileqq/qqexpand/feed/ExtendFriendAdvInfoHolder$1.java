@@ -10,14 +10,14 @@ class ExtendFriendAdvInfoHolder$1
   
   public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.g(this.a.getPosition());
+    if (this.a.c != null) {
+      this.a.c.g(this.a.getPosition());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.ExtendFriendAdvInfoHolder.1
  * JD-Core Version:    0.7.0.1
  */

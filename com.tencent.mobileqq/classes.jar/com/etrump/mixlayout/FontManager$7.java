@@ -11,8 +11,8 @@ class FontManager$7
   
   public void a(Void paramVoid)
   {
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
-      VasUtils.a(FontManager.a(this.jdField_a_of_type_ComEtrumpMixlayoutFontManager));
+    if (this.b.a(this.a) != null) {
+      VasUtils.a(FontManager.a(this.b));
     }
   }
 }

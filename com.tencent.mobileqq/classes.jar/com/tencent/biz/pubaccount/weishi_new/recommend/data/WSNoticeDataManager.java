@@ -15,37 +15,37 @@ public class WSNoticeDataManager
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[WSNoticeDataManager.java][handleOnTaskResponse] resultCode:");
-    ((StringBuilder)localObject1).append(paramWeishiTask.b);
+    ((StringBuilder)localObject1).append(paramWeishiTask.e);
     ((StringBuilder)localObject1).append(", resultBean:");
-    ((StringBuilder)localObject1).append(paramWeishiTask.jdField_a_of_type_JavaLangObject);
+    ((StringBuilder)localObject1).append(paramWeishiTask.m);
     ((StringBuilder)localObject1).append(", thread:");
     ((StringBuilder)localObject1).append(Thread.currentThread().getName());
     WSLog.e("WSNoticeDataManagerLog", ((StringBuilder)localObject1).toString());
     paramLong = System.currentTimeMillis() - paramLong;
-    if (!paramWeishiTask.a())
+    if (!paramWeishiTask.b())
     {
-      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, paramWeishiTask.d, paramWeishiTask.c);
       if (paramIWSNoticeRspListener != null) {
-        paramIWSNoticeRspListener.a(paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+        paramIWSNoticeRspListener.a(paramWeishiTask.d, paramWeishiTask.c);
       }
       return;
     }
-    if (!(paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
+    if (!(paramWeishiTask.m instanceof stNotificationRsp))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[WSNoticeDataManager.java][handleOnTaskResponse] task.mResultBean instanceof stNotificationRsp: false! error:");
-      ((StringBuilder)localObject1).append(paramWeishiTask.b);
+      ((StringBuilder)localObject1).append(paramWeishiTask.e);
       ((StringBuilder)localObject1).append(", errorMsg:");
-      ((StringBuilder)localObject1).append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramWeishiTask.c);
       WSLog.d("WSNoticeDataManagerLog", ((StringBuilder)localObject1).toString());
-      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, -1, "数据无法解析或为空");
       if (paramIWSNoticeRspListener != null) {
-        paramIWSNoticeRspListener.a(paramWeishiTask.b, paramWeishiTask.jdField_a_of_type_JavaLangString);
+        paramIWSNoticeRspListener.a(paramWeishiTask.e, paramWeishiTask.c);
       }
       return;
     }
-    WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "feeds", true);
-    localObject1 = (stNotificationRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
+    WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, "feeds", true);
+    localObject1 = (stNotificationRsp)paramWeishiTask.m;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[WSNoticeDataManager.java][handleOnTaskResponse] type:");
     ((StringBuilder)localObject2).append(((stNotificationRsp)localObject1).type);
@@ -56,7 +56,7 @@ public class WSNoticeDataManager
     ((StringBuilder)localObject2).append(", schema:");
     ((StringBuilder)localObject2).append(((stNotificationRsp)localObject1).scheme_url);
     WSLog.e("WSNoticeDataManagerLog", ((StringBuilder)localObject2).toString());
-    localObject2 = paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean;
+    localObject2 = paramWeishiTask.n;
     if (localObject2 != null) {
       WSRecommendReportManager.a().a(((stNotificationRsp)localObject1).trace_id, ((RspHeaderBean)localObject2).a);
     }
@@ -67,7 +67,7 @@ public class WSNoticeDataManager
       }
     }
     else if (paramIWSNoticeRspListener != null) {
-      paramIWSNoticeRspListener.a(paramWeishiTask.b, paramWeishiTask.jdField_a_of_type_JavaLangString);
+      paramIWSNoticeRspListener.a(paramWeishiTask.e, paramWeishiTask.c);
     }
   }
   
@@ -80,7 +80,7 @@ public class WSNoticeDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSNoticeDataManager
  * JD-Core Version:    0.7.0.1
  */

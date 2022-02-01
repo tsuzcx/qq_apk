@@ -19,15 +19,15 @@ class LiteActivity$26
 {
   LiteActivity$26(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long)))
+    if ((paramInt == 0) && (this.e.a(this.a)))
     {
-      paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-      if (paramView.a(this.jdField_a_of_type_JavaUtilList))
+      paramView = (DataLineHandler)this.e.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      this.b.setPaused(false);
+      if (paramView.b(this.c))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+        paramView = this.b.values().iterator();
         while (paramView.hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
@@ -38,14 +38,14 @@ class LiteActivity$26
             localDataLineMsgRecord.progress = 0.0F;
           }
         }
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
+        this.e.m.notifyDataSetChanged();
       }
       else
       {
-        FMToastUtil.a(2131693760);
+        FMToastUtil.a(2131891335);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.d.cancel();
   }
 }
 

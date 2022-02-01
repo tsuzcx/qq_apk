@@ -21,7 +21,7 @@ public class C2CLocationPushDecoder
     {
       localPushExtInfo.mergeFrom(paramMsgBody);
       long l = localPushExtInfo.peer_uin.get();
-      LocationShareRoomManager.a().a.a(0, String.valueOf(l));
+      LocationShareRoomManager.a().c.a(0, String.valueOf(l));
       return;
     }
     catch (Exception paramMsgBody)
@@ -42,7 +42,7 @@ public class C2CLocationPushDecoder
         ((qq_lbs_share.PushExtInfo)localObject).mergeFrom(paramMsgBody);
         long l2 = ((qq_lbs_share.PushExtInfo)localObject).peer_uin.get();
         paramMsgBody = new LocationRoom.RoomKey(0, String.valueOf(l2));
-        LocationShareRoomManager.a().a.a(0, String.valueOf(l2));
+        LocationShareRoomManager.a().c.a(0, String.valueOf(l2));
         switch (paramInt)
         {
         case 103: 
@@ -82,7 +82,7 @@ public class C2CLocationPushDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.C2CLocationPushDecoder
  * JD-Core Version:    0.7.0.1
  */

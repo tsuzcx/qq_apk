@@ -14,25 +14,25 @@ class ShareModeBase$15
     super(paramStoryVideoItem);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    String str = (String)a("result");
+    String str = (String)b("result");
     AssertUtils.checkNotEmpty(str);
-    AssertUtils.checkNotEmpty(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d == null)
+    AssertUtils.checkNotEmpty(this.c.g);
+    if (this.c.g == null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d = "";
-      SLog.c(this.b, "imageLocalPath is null", new Throwable());
+      this.c.g = "";
+      SLog.c(this.e, "imageLocalPath is null", new Throwable());
     }
     a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a));
+    a("DownloadPic2FileJob_isfp", this.c.g);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.c.i));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.15
  * JD-Core Version:    0.7.0.1
  */

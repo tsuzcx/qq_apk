@@ -35,7 +35,7 @@ public class WeiyunSaveTipsHelperImpl
       ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).enterCloudFileBrowser(paramActivity);
       return;
     }
-    FMToastUtil.a(MobileQQ.sMobileQQ.getString(2131694422));
+    FMToastUtil.a(MobileQQ.sMobileQQ.getString(2131892102));
   }
   
   public void showTopTips(AppInterface paramAppInterface, Activity paramActivity, int paramInt)
@@ -54,8 +54,8 @@ public class WeiyunSaveTipsHelperImpl
     int i = PreferenceUtils.a(paramContext, paramAppInterface.getCurrentAccountUin());
     if (i == 1)
     {
-      String str = PreferenceUtils.a(paramContext, paramAppInterface.getCurrentAccountUin());
-      i = PreferenceUtils.b(paramContext, paramAppInterface.getCurrentAccountUin());
+      String str = PreferenceUtils.b(paramContext, paramAppInterface.getCurrentAccountUin());
+      i = PreferenceUtils.c(paramContext, paramAppInterface.getCurrentAccountUin());
       if (!TextUtils.isEmpty(str))
       {
         ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).startWeiYunMiniApp(paramActivity, str, i, null);
@@ -79,7 +79,7 @@ public class WeiyunSaveTipsHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunSaveTipsHelperImpl
  * JD-Core Version:    0.7.0.1
  */

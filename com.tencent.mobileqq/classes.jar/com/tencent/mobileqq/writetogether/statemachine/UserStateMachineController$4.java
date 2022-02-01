@@ -19,22 +19,22 @@ class UserStateMachineController$4
   public void a(int paramInt)
   {
     super.a(paramInt);
-    a((UserState)UserStateMachineController.a(this.a).b());
+    a((UserState)UserStateMachineController.b(this.a).b());
   }
   
   public void a(UserState paramUserState)
   {
-    UserStateMachineController.a(this.a).b();
-    if (UserStateMachineController.a(this.a).a()) {
-      UserStateMachineController.a(this.a).d();
+    UserStateMachineController.c(this.a).b();
+    if (UserStateMachineController.c(this.a).c()) {
+      UserStateMachineController.c(this.a).e();
     }
-    UserStateMachineController.a(this.a).a(WriteTogetherUtils.c(UserStateMachineController.a(this.a).getString(2131720179), UserStateMachineController.a(this.a).a()), 0);
-    UserStateMachineController.a(this.a).j();
+    UserStateMachineController.c(this.a).a(WriteTogetherUtils.c(UserStateMachineController.e(this.a).getString(2131917809), UserStateMachineController.f(this.a).i()), 0);
+    UserStateMachineController.c(this.a).k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.4
  * JD-Core Version:    0.7.0.1
  */

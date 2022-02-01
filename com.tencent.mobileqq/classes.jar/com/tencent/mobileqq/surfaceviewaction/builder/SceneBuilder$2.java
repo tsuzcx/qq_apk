@@ -11,14 +11,14 @@ class SceneBuilder$2
   
   public void a(Sprite paramSprite)
   {
-    if (SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) != null) {
-      SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer, paramSprite, this.jdField_a_of_type_JavaLangString);
+    if (SceneBuilder.b(this.c) != null) {
+      SceneBuilder.b(this.c).a(this.a, paramSprite, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.2
  * JD-Core Version:    0.7.0.1
  */

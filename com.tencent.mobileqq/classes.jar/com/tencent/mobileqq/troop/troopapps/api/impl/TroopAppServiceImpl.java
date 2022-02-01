@@ -93,7 +93,7 @@ public class TroopAppServiceImpl
   
   private void initTroopAppInfoList()
   {
-    if (AppSetting.a("6.0") < 0) {
+    if (AppSetting.b("6.0") < 0) {
       return;
     }
     EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
@@ -135,12 +135,12 @@ public class TroopAppServiceImpl
       return false;
     }
     Calendar localCalendar = Calendar.getInstance();
-    return !((SimpleDateFormat)this.mDateFormat.get()).format(localCalendar.getTime()).equals(localTroopAIOAppInfoListItem.jdField_a_of_type_JavaLangString);
+    return !((SimpleDateFormat)this.mDateFormat.get()).format(localCalendar.getTime()).equals(localTroopAIOAppInfoListItem.b);
   }
   
   private void loadAllAppConfigs()
   {
-    ITroopAppService.AppConfig[] arrayOfAppConfig = ITroopAppService.AppConfig.jdField_a_of_type_ArrayOfComTencentMobileqqTroopTroopappsApiITroopAppService$AppConfig;
+    ITroopAppService.AppConfig[] arrayOfAppConfig = ITroopAppService.AppConfig.b;
     int j = arrayOfAppConfig.length;
     int i = 0;
     while (i < j)
@@ -149,12 +149,12 @@ public class TroopAppServiceImpl
       Object localObject = this.app.getPreferences();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("KEY_APP_CONFIG_PREFIX-");
-      localStringBuilder.append(localAppConfig.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(localAppConfig.a);
       localObject = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), null);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = localAppConfig.a((String)localObject);
-        this.mAppConfig.put(localAppConfig.jdField_a_of_type_JavaLangString, localObject);
+        this.mAppConfig.put(localAppConfig.a, localObject);
       }
       i += 1;
     }
@@ -363,7 +363,7 @@ public class TroopAppServiceImpl
           int k = arrayOfInt[i];
           Object localObject2 = (TroopAIOAppInfoListItem)this.mAppListItems.get(k);
           AssertUtils.a(localObject2);
-          localObject2 = (TroopAIOAppInfo)((TroopAIOAppInfoListItem)localObject2).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          localObject2 = (TroopAIOAppInfo)((TroopAIOAppInfoListItem)localObject2).d.get(Integer.valueOf(paramInt));
           if (localObject2 == null) {
             break label235;
           }
@@ -484,7 +484,7 @@ public class TroopAppServiceImpl
     if (localTroopAIOAppInfoListItem == null) {
       return false;
     }
-    if ((TroopAIOAppInfo)localTroopAIOAppInfoListItem.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i)) != null) {
+    if ((TroopAIOAppInfo)localTroopAIOAppInfoListItem.d.get(Integer.valueOf(i)) != null) {
       return true;
     }
     localTroopAIOAppInfoListItem.a(paramTroopAIOAppInfo.appid, paramTroopAIOAppInfo);
@@ -517,7 +517,7 @@ public class TroopAppServiceImpl
     }
     synchronized (this.lock)
     {
-      localObject3 = (TroopAIOAppInfo)((TroopAIOAppInfoListItem)localObject3).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+      localObject3 = (TroopAIOAppInfo)((TroopAIOAppInfoListItem)localObject3).d.get(Integer.valueOf(paramInt1));
       if (localObject3 != null) {
         localTroopAIOAppInfo = new TroopAIOAppInfo((TroopAIOAppInfo)localObject3);
       }
@@ -540,7 +540,7 @@ public class TroopAppServiceImpl
           if (localTroopAIOAppInfoListItem == null) {
             return false;
           }
-          paramInt = localTroopAIOAppInfoListItem.jdField_a_of_type_Int;
+          paramInt = localTroopAIOAppInfoListItem.a;
           if ((paramInt & 0x2) != 0) {
             bool1 = bool2;
           } else {
@@ -567,7 +567,7 @@ public class TroopAppServiceImpl
     if (localTroopAIOAppInfoListItem == null) {
       return 0;
     }
-    return localTroopAIOAppInfoListItem.b;
+    return localTroopAIOAppInfoListItem.c;
   }
   
   public List<TroopAIOAppInfo> getCopyAppInfos(List<TroopAIOAppInfo> paramList)
@@ -617,7 +617,7 @@ public class TroopAppServiceImpl
       bool = true;
     }
     AssertUtils.a(bool);
-    if (AppSetting.a("6.0") < 0) {
+    if (AppSetting.b("6.0") < 0) {
       return Collections.emptyList();
     }
     if (paramBoolean)
@@ -737,7 +737,7 @@ public class TroopAppServiceImpl
           if (localTroopAIOAppInfoListItem == null) {
             return false;
           }
-          paramInt = localTroopAIOAppInfoListItem.jdField_a_of_type_Int;
+          paramInt = localTroopAIOAppInfoListItem.a;
           if ((paramInt & 0x1) != 0) {
             bool1 = bool2;
           } else {
@@ -775,7 +775,7 @@ public class TroopAppServiceImpl
         return false;
       }
       new ArrayList();
-      if (paramList.size() != localTroopAIOAppInfoListItem.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) {
+      if (paramList.size() != localTroopAIOAppInfoListItem.d.size()) {
         bool1 = bool2;
       } else {
         bool1 = false;
@@ -828,7 +828,7 @@ public class TroopAppServiceImpl
     if (localObject == null) {
       return true;
     }
-    localObject = (TroopAIOAppInfo)((TroopAIOAppInfoListItem)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+    localObject = (TroopAIOAppInfo)((TroopAIOAppInfoListItem)localObject).d.get(Integer.valueOf(i));
     if (localObject == null) {
       return true;
     }
@@ -867,19 +867,19 @@ public class TroopAppServiceImpl
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("appinfo_date_");
       localStringBuilder.append(k);
-      localTroopAIOAppInfoListItem.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(localStringBuilder.toString(), "");
+      localTroopAIOAppInfoListItem.b = localSharedPreferences.getString(localStringBuilder.toString(), "");
       localSharedPreferences = this.app.getPreferences();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("KEY_APP_LIST_TIME_STAMP_");
       localStringBuilder.append(k);
-      localTroopAIOAppInfoListItem.b = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+      localTroopAIOAppInfoListItem.c = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
       this.mAppListItems.put(k, localTroopAIOAppInfoListItem);
       i += 1;
     }
     initTroopAppInfoList();
     initAppIdNums();
     this.mAppIdDate = this.app.getPreferences().getString("appid_click_date", null);
-    this.mAllAppString = this.app.getPreferences().getString("appinfo_all_app_string", HardCodeUtil.a(2131714969));
+    this.mAllAppString = this.app.getPreferences().getString("appinfo_all_app_string", HardCodeUtil.a(2131912465));
     if (this.troopAppInfoCache == null) {
       try
       {
@@ -919,9 +919,9 @@ public class TroopAppServiceImpl
         setCheckedUpdateAfterLogined(false, k);
         TroopAIOAppInfoListItem localTroopAIOAppInfoListItem = (TroopAIOAppInfoListItem)this.mAppListItems.get(k);
         AssertUtils.a(localTroopAIOAppInfoListItem);
-        localTroopAIOAppInfoListItem.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        localTroopAIOAppInfoListItem.a();
-        localTroopAIOAppInfoListItem.b = 0;
+        localTroopAIOAppInfoListItem.d.clear();
+        localTroopAIOAppInfoListItem.b();
+        localTroopAIOAppInfoListItem.c = 0;
         i += 1;
       }
       return;
@@ -945,7 +945,7 @@ public class TroopAppServiceImpl
     if (localTroopAIOAppInfoListItem == null) {
       return;
     }
-    TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localTroopAIOAppInfoListItem.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt1));
+    TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localTroopAIOAppInfoListItem.d.remove(Integer.valueOf(paramInt1));
     if (localTroopAIOAppInfo != null)
     {
       AssertUtils.a(localTroopAIOAppInfoListItem.a(localTroopAIOAppInfo));
@@ -973,7 +973,7 @@ public class TroopAppServiceImpl
     if (localObject == null) {
       return;
     }
-    ((TroopAIOAppInfoListItem)localObject).b = paramInt1;
+    ((TroopAIOAppInfoListItem)localObject).c = paramInt1;
     localObject = this.app.getPreferences().edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("KEY_APP_LIST_TIME_STAMP_");
@@ -996,9 +996,9 @@ public class TroopAppServiceImpl
         return;
       }
       if (paramBoolean) {
-        ((TroopAIOAppInfoListItem)localObject1).jdField_a_of_type_Int |= 0x2;
+        ((TroopAIOAppInfoListItem)localObject1).a |= 0x2;
       } else {
-        ((TroopAIOAppInfoListItem)localObject1).jdField_a_of_type_Int &= 0xFFFFFFFD;
+        ((TroopAIOAppInfoListItem)localObject1).a &= 0xFFFFFFFD;
       }
       return;
     }
@@ -1020,9 +1020,9 @@ public class TroopAppServiceImpl
             return;
           }
           if (paramBoolean) {
-            localTroopAIOAppInfoListItem.jdField_a_of_type_Int |= 0x1;
+            localTroopAIOAppInfoListItem.a |= 0x1;
           } else {
-            localTroopAIOAppInfoListItem.jdField_a_of_type_Int &= 0xFFFFFFFE;
+            localTroopAIOAppInfoListItem.a &= 0xFFFFFFFE;
           }
           return;
         }
@@ -1083,7 +1083,7 @@ public class TroopAppServiceImpl
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        if (!localTroopAIOAppInfoListItem.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localInteger))
+        if (!localTroopAIOAppInfoListItem.d.containsKey(localInteger))
         {
           QLog.w(".troop.troop_app", 1, "sortTroopAppList error, there is no appid in hashtable");
           return;
@@ -1095,15 +1095,15 @@ public class TroopAppServiceImpl
   
   public void tryParseAppConfig(JSONObject paramJSONObject)
   {
-    ITroopAppService.AppConfig[] arrayOfAppConfig = ITroopAppService.AppConfig.jdField_a_of_type_ArrayOfComTencentMobileqqTroopTroopappsApiITroopAppService$AppConfig;
+    ITroopAppService.AppConfig[] arrayOfAppConfig = ITroopAppService.AppConfig.b;
     int j = arrayOfAppConfig.length;
     int i = 0;
     while (i < j)
     {
       ITroopAppService.AppConfig localAppConfig = arrayOfAppConfig[i];
-      JSONObject localJSONObject = localAppConfig.a(paramJSONObject.optJSONObject(localAppConfig.jdField_a_of_type_JavaLangString));
+      JSONObject localJSONObject = localAppConfig.a(paramJSONObject.optJSONObject(localAppConfig.a));
       if (localJSONObject != null) {
-        setAppConfig(localAppConfig.jdField_a_of_type_JavaLangString, localJSONObject);
+        setAppConfig(localAppConfig.a, localJSONObject);
       }
       i += 1;
     }
@@ -1129,7 +1129,7 @@ public class TroopAppServiceImpl
     }
     AssertUtils.a(bool);
     if (localObject2 != null) {
-      ((TroopAIOAppInfoListItem)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      ((TroopAIOAppInfoListItem)localObject2).b = ((String)localObject1);
     }
     localObject2 = this.app.getPreferences().edit();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1140,7 +1140,7 @@ public class TroopAppServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopAppServiceImpl
  * JD-Core Version:    0.7.0.1
  */

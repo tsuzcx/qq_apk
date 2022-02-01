@@ -15,15 +15,15 @@ final class QQGameUIHelper$1
   
   public void run()
   {
-    GameSessionView localGameSessionView = this.jdField_a_of_type_ComTencentMobileqqQqgamepubWebViewGameContentView.a();
+    GameSessionView localGameSessionView = this.a.getGameSessionView();
     if (localGameSessionView == null) {
       return;
     }
     Object localObject2 = new int[2];
     Object localObject1 = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject2);
-    localObject2[0] += this.jdField_a_of_type_AndroidViewView.getWidth() / 2;
-    localObject2[1] += this.jdField_a_of_type_AndroidViewView.getHeight() / 2;
+    this.b.getLocationInWindow((int[])localObject2);
+    localObject2[0] += this.b.getWidth() / 2;
+    localObject2[1] += this.b.getHeight() / 2;
     localGameSessionView.getLocationInWindow((int[])localObject1);
     localObject1[0] += localGameSessionView.getWidth() / 2;
     localObject1[1] += localGameSessionView.getHeight() / 2;
@@ -46,7 +46,7 @@ final class QQGameUIHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.QQGameUIHelper.1
  * JD-Core Version:    0.7.0.1
  */

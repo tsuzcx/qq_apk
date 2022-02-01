@@ -10,22 +10,22 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2$1
   
   public void run()
   {
-    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0, this.jdField_a_of_type_JavaUtilList);
-    if ((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) && (!NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).isEmpty()))
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.b.this$0, this.a);
+    if ((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.e(this.b.this$0) != null) && (!NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.e(this.b.this$0).isEmpty()))
     {
-      if (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
-        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(8);
+      if (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0) != null) {
+        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0).setVisibility(8);
       }
     }
-    else if (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
-      NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(0);
+    else if (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0) != null) {
+      NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0).setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0.notifyDataSetChanged();
+    this.b.this$0.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

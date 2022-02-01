@@ -8,16 +8,16 @@ import cooperation.ilive.pb.LiveGroupTips.GetLiveGroupTipsRsp;
 
 public class IliveGroupTipsEntity
 {
-  public int a;
   public long a;
-  public String a;
-  public boolean a;
-  public long b;
   public String b;
-  public long c;
   public String c;
   public String d;
   public String e;
+  public boolean f;
+  public int g;
+  public long h;
+  public long i;
+  public String j;
   
   public static IliveGroupTipsEntity a(LiveGroupTips.GetLiveGroupTipsRsp paramGetLiveGroupTipsRsp)
   {
@@ -27,36 +27,36 @@ public class IliveGroupTipsEntity
     IliveGroupTipsEntity localIliveGroupTipsEntity = new IliveGroupTipsEntity();
     if (paramGetLiveGroupTipsRsp.room_id.has())
     {
-      localIliveGroupTipsEntity.jdField_a_of_type_Long = paramGetLiveGroupTipsRsp.room_id.get();
+      localIliveGroupTipsEntity.a = paramGetLiveGroupTipsRsp.room_id.get();
       if (paramGetLiveGroupTipsRsp.room_title.has()) {
-        localIliveGroupTipsEntity.jdField_a_of_type_JavaLangString = paramGetLiveGroupTipsRsp.room_title.get();
+        localIliveGroupTipsEntity.b = paramGetLiveGroupTipsRsp.room_title.get();
       }
       if (paramGetLiveGroupTipsRsp.room_icon.has()) {
-        localIliveGroupTipsEntity.jdField_b_of_type_JavaLangString = paramGetLiveGroupTipsRsp.room_icon.get();
+        localIliveGroupTipsEntity.c = paramGetLiveGroupTipsRsp.room_icon.get();
       }
       if (paramGetLiveGroupTipsRsp.room_viewer.has()) {
-        localIliveGroupTipsEntity.jdField_b_of_type_Long = paramGetLiveGroupTipsRsp.room_viewer.get();
+        localIliveGroupTipsEntity.h = paramGetLiveGroupTipsRsp.room_viewer.get();
       }
       if (paramGetLiveGroupTipsRsp.viewer_text.has()) {
-        localIliveGroupTipsEntity.jdField_c_of_type_JavaLangString = paramGetLiveGroupTipsRsp.viewer_text.get();
+        localIliveGroupTipsEntity.d = paramGetLiveGroupTipsRsp.viewer_text.get();
       }
       if (paramGetLiveGroupTipsRsp.puin.has()) {
-        localIliveGroupTipsEntity.jdField_c_of_type_Long = paramGetLiveGroupTipsRsp.puin.get();
+        localIliveGroupTipsEntity.i = paramGetLiveGroupTipsRsp.puin.get();
       }
       if (paramGetLiveGroupTipsRsp.room_schema.has()) {
-        localIliveGroupTipsEntity.d = paramGetLiveGroupTipsRsp.room_schema.get();
+        localIliveGroupTipsEntity.e = paramGetLiveGroupTipsRsp.room_schema.get();
       }
       if (paramGetLiveGroupTipsRsp.is_living.has())
       {
-        int i = paramGetLiveGroupTipsRsp.is_living.get();
+        int k = paramGetLiveGroupTipsRsp.is_living.get();
         boolean bool = true;
-        if (i != 1) {
+        if (k != 1) {
           bool = false;
         }
-        localIliveGroupTipsEntity.jdField_a_of_type_Boolean = bool;
+        localIliveGroupTipsEntity.f = bool;
       }
       if (paramGetLiveGroupTipsRsp.interval.has()) {
-        localIliveGroupTipsEntity.jdField_a_of_type_Int = paramGetLiveGroupTipsRsp.interval.get();
+        localIliveGroupTipsEntity.g = paramGetLiveGroupTipsRsp.interval.get();
       }
       return localIliveGroupTipsEntity;
     }
@@ -68,25 +68,25 @@ public class IliveGroupTipsEntity
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mRoomId = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mRoomTitle = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" mRoomSubTitle = ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" mIsLiving = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" mPollTime = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" mViewNum = ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" puin = ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.i);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.group.entity.IliveGroupTipsEntity
  * JD-Core Version:    0.7.0.1
  */

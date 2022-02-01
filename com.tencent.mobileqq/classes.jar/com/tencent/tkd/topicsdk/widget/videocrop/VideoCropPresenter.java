@@ -20,28 +20,23 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoCropPresenter
   implements VideoCropContract.IPresenter
 {
-  public static final VideoCropPresenter.Companion a;
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private DisplayItem jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem;
-  private VideoTrimmer jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecMergeVideoTrimmer;
-  private VideoCropContract.IView jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropContract$IView;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public static final VideoCropPresenter.Companion a = new VideoCropPresenter.Companion(null);
   private int b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropPresenter$Companion = new VideoCropPresenter.Companion(null);
-  }
+  private int c;
+  private VideoCropContract.IView d;
+  @Nullable
+  private DisplayItem e;
+  private VideoTrimmer f;
+  private boolean g;
+  @NotNull
+  private final String h;
   
   public VideoCropPresenter(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
     paramString = new DisplayItem(new Media(MediaType.VIDEO));
-    paramString.getMedia().setFilePath(a());
-    MediaMetadataRetriever localMediaMetadataRetriever = MmrExtensionsKt.a(new MediaMetadataRetriever(), a());
+    paramString.getMedia().setFilePath(g());
+    MediaMetadataRetriever localMediaMetadataRetriever = MmrExtensionsKt.a(new MediaMetadataRetriever(), g());
     if (localMediaMetadataRetriever != null)
     {
       String str = localMediaMetadataRetriever.extractMetadata(18);
@@ -72,49 +67,32 @@ public final class VideoCropPresenter
         paramString.getMedia().setWidth(k);
       }
       localMediaMetadataRetriever.release();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem = paramString;
+      this.e = paramString;
     }
   }
   
-  private final void d()
+  private final void h()
   {
-    VideoTrimmer localVideoTrimmer = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecMergeVideoTrimmer;
+    VideoTrimmer localVideoTrimmer = this.f;
     if (localVideoTrimmer != null) {
       localVideoTrimmer.a();
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecMergeVideoTrimmer = new VideoTrimmer();
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public final DisplayItem a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem;
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.f = new VideoTrimmer();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropContract$IView = ((VideoCropContract.IView)null);
+    this.d = ((VideoCropContract.IView)null);
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    DisplayItem localDisplayItem = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem;
+    DisplayItem localDisplayItem = this.e;
     if (localDisplayItem != null)
     {
       localDisplayItem.setStartMergeTime(paramInt1);
@@ -125,7 +103,7 @@ public final class VideoCropPresenter
   public void a(@NotNull VideoCropContract.IView paramIView)
   {
     Intrinsics.checkParameterIsNotNull(paramIView, "view");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropContract$IView = paramIView;
+    this.d = paramIView;
   }
   
   public final int b()
@@ -133,40 +111,57 @@ public final class VideoCropPresenter
     return this.b;
   }
   
-  @RequiresApi(18)
-  public void b()
+  public final void b(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    d();
+    this.c = paramInt;
+  }
+  
+  public final int c()
+  {
+    return this.c;
+  }
+  
+  @Nullable
+  public final DisplayItem d()
+  {
+    return this.e;
+  }
+  
+  @RequiresApi(18)
+  public void e()
+  {
+    this.g = false;
+    h();
     long l = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropVideoCropContract$IView;
+    Object localObject = this.d;
     if (localObject != null) {
       ((VideoCropContract.IView)localObject).a(true);
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem;
+    localObject = this.e;
     if (localObject != null) {
       ThreadManagerKt.c((Function0)new VideoCropPresenter.startVideoCrop.1(this, (DisplayItem)localObject, l));
     }
   }
   
-  public final void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void c()
+  public void f()
   {
     TLog.b("VideoCropPresenter", "View stop video crop.");
-    VideoTrimmer localVideoTrimmer = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecMergeVideoTrimmer;
+    VideoTrimmer localVideoTrimmer = this.f;
     if (localVideoTrimmer != null) {
       localVideoTrimmer.a();
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.g = true;
+  }
+  
+  @NotNull
+  public String g()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPresenter
  * JD-Core Version:    0.7.0.1
  */

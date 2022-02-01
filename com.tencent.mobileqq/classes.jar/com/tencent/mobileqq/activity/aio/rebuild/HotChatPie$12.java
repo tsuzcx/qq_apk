@@ -16,14 +16,14 @@ class HotChatPie$12
   
   public void onClick(View paramView)
   {
-    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare.handleShare(localHotChatInfo);
+    HotChatInfo localHotChatInfo = ((HotChatManager)this.b.d.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(this.a);
+    this.b.bV.handleShare(localHotChatInfo);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.12
  * JD-Core Version:    0.7.0.1
  */

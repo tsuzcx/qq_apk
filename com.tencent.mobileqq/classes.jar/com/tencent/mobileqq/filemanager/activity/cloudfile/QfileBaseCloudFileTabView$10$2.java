@@ -10,12 +10,12 @@ class QfileBaseCloudFileTabView$10$2
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.10.2
  * JD-Core Version:    0.7.0.1
  */

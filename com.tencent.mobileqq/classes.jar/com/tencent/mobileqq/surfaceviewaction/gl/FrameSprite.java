@@ -8,71 +8,33 @@ import java.util.LinkedList;
 public class FrameSprite
   extends Sprite
 {
-  private long jdField_a_of_type_Long;
-  public FrameSprite.OnFrameEndListener a;
-  private LinkedList<Texture> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Texture[] jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  public boolean b = false;
-  private boolean c;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f = false;
-  public int g = 0;
-  private int h = 10;
-  private int i = -1;
+  private int E = 10;
+  private Texture[] F;
+  private String[] G;
+  private boolean H;
+  private long I;
+  private int J = -1;
+  private LinkedList<Texture> K = new LinkedList();
+  private boolean L = false;
+  private boolean M = false;
+  private boolean N = false;
+  public int s = 0;
+  public boolean t = false;
+  public FrameSprite.OnFrameEndListener u;
   
   public FrameSprite(SpriteGLView paramSpriteGLView, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture = new Texture[paramArrayOfString.length];
+    this.v = paramSpriteGLView;
+    this.G = paramArrayOfString;
+    this.F = new Texture[paramArrayOfString.length];
     e(10);
-  }
-  
-  private Texture a(int paramInt)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null)
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[paramInt]);
-        Texture localTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[paramInt];
-        return localTexture;
-      }
-      return null;
-    }
-    finally {}
   }
   
   private void a(int paramInt, Texture paramTexture)
   {
-    Texture[] arrayOfTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
+    Texture[] arrayOfTexture = this.F;
     if ((arrayOfTexture != null) && (arrayOfTexture.length > paramInt)) {
       arrayOfTexture[paramInt] = paramTexture;
-    }
-  }
-  
-  private void e()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null)
-      {
-        int j = 0;
-        while (j < this.jdField_a_of_type_JavaUtilLinkedList.size())
-        {
-          ((Texture)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).c();
-          j += 1;
-        }
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
     }
   }
   
@@ -80,45 +42,45 @@ public class FrameSprite
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture.length > paramInt) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[paramInt] != null))
+      if ((this.K != null) && (this.F != null) && (this.F.length > paramInt) && (this.F[paramInt] != null))
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[paramInt]);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[paramInt].a();
+        this.K.add(this.F[paramInt]);
+        this.F[paramInt].a();
       }
       return;
     }
     finally {}
   }
   
-  public void a()
+  private Texture g(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null)
-    {
-      int j = 0;
-      for (;;)
-      {
-        Texture[] arrayOfTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
-        if (j >= arrayOfTexture.length) {
-          break;
-        }
-        if (arrayOfTexture[j] != null)
-        {
-          arrayOfTexture[j].c();
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[j] = null;
-        }
-        j += 1;
-      }
-    }
     try
     {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      if (this.K != null)
+      {
+        this.K.remove(this.F[paramInt]);
+        Texture localTexture = this.F[paramInt];
+        return localTexture;
       }
-      this.jdField_a_of_type_JavaUtilLinkedList = null;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture = null;
-      this.e = true;
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
-      super.a();
+      return null;
+    }
+    finally {}
+  }
+  
+  private void r()
+  {
+    try
+    {
+      if (this.K != null)
+      {
+        int i = 0;
+        while (i < this.K.size())
+        {
+          ((Texture)this.K.get(i)).c();
+          i += 1;
+        }
+        this.K.clear();
+      }
       return;
     }
     finally {}
@@ -130,41 +92,41 @@ public class FrameSprite
   
   protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    if ((this.c) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null))
+    if ((this.H) && (this.F != null))
     {
-      int j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
-      int k = this.i;
-      if (j > k)
+      int i = (int)((float)(System.currentTimeMillis() - this.I) / (1000.0F / this.E));
+      int j = this.J;
+      if (i > j)
       {
-        if (j > k + 1) {
-          this.i = (k + 1);
+        if (i > j + 1) {
+          this.J = (j + 1);
         } else {
-          this.i = j;
+          this.J = i;
         }
-        j = this.i;
-        Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
-        if (j < localObject.length)
+        i = this.J;
+        Object localObject = this.F;
+        if (i < localObject.length)
         {
-          if ((localObject[j] != null) && (localObject[j].a))
+          if ((localObject[i] != null) && (localObject[i].c))
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-              this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
+            if (this.w != null) {
+              this.w.c();
             }
-            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = a(this.i);
+            this.w = g(this.J);
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("FrameSprite: mTexture = ");
-              ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
+              ((StringBuilder)localObject).append(this.w);
               QLog.d("FrameSprite", 2, ((StringBuilder)localObject).toString());
             }
-            g();
+            m();
             super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
             if (QLog.isColorLevel())
             {
               paramArrayOfFloat = new StringBuilder();
               paramArrayOfFloat.append("FrameSprite: draw1:");
-              paramArrayOfFloat.append(this.i);
+              paramArrayOfFloat.append(this.J);
               QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
             }
           }
@@ -174,37 +136,37 @@ public class FrameSprite
             {
               paramArrayOfFloat = new StringBuilder();
               paramArrayOfFloat.append("FrameSprite: mTexture = null:");
-              paramArrayOfFloat.append(this.i);
+              paramArrayOfFloat.append(this.J);
               QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
             }
-            e();
+            r();
           }
         }
         else
         {
-          if (this.d)
+          if (this.L)
           {
             super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
             if (QLog.isColorLevel())
             {
               paramArrayOfFloat = new StringBuilder();
               paramArrayOfFloat.append("FrameSprite: draw3:");
-              paramArrayOfFloat.append(this.i);
+              paramArrayOfFloat.append(this.J);
               QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
             }
           }
           else
           {
-            this.c = false;
-            if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-              this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
+            this.H = false;
+            if (this.w != null) {
+              this.w.c();
             }
           }
-          paramArrayOfFloat = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
+          paramArrayOfFloat = this.u;
           if (paramArrayOfFloat != null)
           {
             paramArrayOfFloat.a();
-            this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
+            this.u = null;
           }
         }
       }
@@ -215,7 +177,7 @@ public class FrameSprite
         {
           paramArrayOfFloat = new StringBuilder();
           paramArrayOfFloat.append("FrameSprite: draw2:");
-          paramArrayOfFloat.append(this.i);
+          paramArrayOfFloat.append(this.J);
           QLog.d("FrameSprite", 2, paramArrayOfFloat.toString());
         }
       }
@@ -229,42 +191,36 @@ public class FrameSprite
   
   public void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
-  }
-  
-  public void aO_()
-  {
-    this.c = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.L = paramBoolean;
   }
   
   protected void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    if (this.c)
+    if (this.H)
     {
-      int j = (int)((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / (1000.0F / this.h));
-      Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture;
-      if (j < localObject.length)
+      int i = (int)((float)(System.currentTimeMillis() - this.I) / (1000.0F / this.E));
+      Object localObject = this.F;
+      if (i < localObject.length)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = localObject[j];
+        this.w = localObject[i];
       }
-      else if (this.b)
+      else if (this.t)
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture[0];
+        this.I = System.currentTimeMillis();
+        this.w = this.F[0];
       }
-      else if (this.d)
+      else if (this.L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = localObject[(localObject.length - 1)];
+        this.w = localObject[(localObject.length - 1)];
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = null;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
+        this.w = null;
+        localObject = this.u;
         if (localObject != null)
         {
           ((FrameSprite.OnFrameEndListener)localObject).a();
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
+          this.u = null;
         }
       }
       super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
@@ -273,27 +229,71 @@ public class FrameSprite
   
   public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    if (this.G != null)
     {
       a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
       return;
     }
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlTexture != null) {
+    if (this.F != null) {
       b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
     }
   }
   
+  public void dp_()
+  {
+    this.H = true;
+    this.I = System.currentTimeMillis();
+  }
+  
   public void e(int paramInt)
   {
-    this.h = paramInt;
-    double d1 = this.h;
-    Double.isNaN(d1);
-    this.g = ((int)(d1 * 0.8D));
+    this.E = paramInt;
+    double d = this.E;
+    Double.isNaN(d);
+    this.s = ((int)(d * 0.8D));
+  }
+  
+  public void f()
+  {
+    if (this.F != null)
+    {
+      int i = 0;
+      for (;;)
+      {
+        Texture[] arrayOfTexture = this.F;
+        if (i >= arrayOfTexture.length) {
+          break;
+        }
+        if (arrayOfTexture[i] != null)
+        {
+          arrayOfTexture[i].c();
+          this.F[i] = null;
+        }
+        i += 1;
+      }
+    }
+    try
+    {
+      if (this.K != null) {
+        this.K.clear();
+      }
+      this.K = null;
+      this.F = null;
+      this.M = true;
+      this.u = null;
+      super.f();
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite
  * JD-Core Version:    0.7.0.1
  */

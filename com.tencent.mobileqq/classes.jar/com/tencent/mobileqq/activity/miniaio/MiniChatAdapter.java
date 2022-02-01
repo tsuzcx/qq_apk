@@ -27,16 +27,14 @@ import java.util.List;
 public class MiniChatAdapter
   extends ChatAdapter1
 {
-  public final String a;
-  protected List<ChatMessage> b;
+  public final String r = "MiniPie.MiniChatAdapter";
+  protected List<ChatMessage> s = new ArrayList();
   
   public MiniChatAdapter(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
-    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory = new MiniChatItemFactory(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1$BubbleOnlongClickListener = null;
+    this.c = new MiniChatItemFactory(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
+    this.f = null;
   }
   
   public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
@@ -47,9 +45,9 @@ public class MiniChatAdapter
     while (paramInt < paramList.size())
     {
       ChatMessage localChatMessage = (ChatMessage)paramList.get(paramInt);
-      boolean bool2 = MessageUtils.b(localChatMessage.msgtype);
+      boolean bool2 = MessageUtils.c(localChatMessage.msgtype);
       boolean bool1;
-      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.jdField_b_of_type_Long) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.jdField_b_of_type_Long) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L)))) {
+      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.m) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.m) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.n.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L)))) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -59,7 +57,7 @@ public class MiniChatAdapter
       {
         long l2 = localChatMessage.time;
         l1 = l2;
-        if (localChatMessage.time < this.jdField_b_of_type_Long)
+        if (localChatMessage.time < this.m)
         {
           TimestampReporter.a(localChatMessage);
           l1 = l2;
@@ -70,7 +68,7 @@ public class MiniChatAdapter
         if ((localChatMessage instanceof MessageForUniteGrayTip))
         {
           localObject = paramCharSequence;
-          if (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1) {}
+          if (((MessageForUniteGrayTip)localChatMessage).tipParam.i == 1) {}
         }
         else
         {
@@ -84,9 +82,9 @@ public class MiniChatAdapter
       paramCharSequence = (CharSequence)localObject;
     }
     if (paramList.size() > 0) {
-      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
+      this.n.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     paramCharSequence = new StringBuilder();
     paramCharSequence.append("list addr = ");
     paramCharSequence.append(paramList.hashCode());
@@ -98,57 +96,57 @@ public class MiniChatAdapter
   
   public void a(boolean paramBoolean)
   {
-    ((MiniChatItemFactory)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory).a(paramBoolean);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    ((MiniChatItemFactory)this.c).a(paramBoolean);
   }
   
   public void b(List<ChatMessage> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.s = paramList;
   }
   
-  public void c()
+  public void d()
   {
-    super.c();
+    super.d();
+  }
+  
+  protected boolean g()
+  {
+    return false;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject1;
     Object localObject2;
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt >= this.a.size())
     {
       localObject1 = paramView;
     }
     else
     {
-      localObject1 = this.jdField_b_of_type_JavaUtilList;
+      localObject1 = this.s;
       if ((localObject1 != null) && (((List)localObject1).size() > paramInt)) {
-        localObject1 = (ChatMessage)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+        localObject1 = (ChatMessage)this.s.get(paramInt);
       } else {
-        localObject1 = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localObject1 = (ChatMessage)this.a.get(paramInt);
       }
       localObject2 = AIOUtils.a();
       ((StringBuilder)localObject2).append("AIO_ChatAdapter_getView");
       ((StringBuilder)localObject2).append(" | ");
       ((StringBuilder)localObject2).append(localObject1.getClass().getName());
       StartupTracker.a(null, ((StringBuilder)localObject2).toString());
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory.a((ChatMessage)localObject1, this);
+      Object localObject3 = this.c.a((ChatMessage)localObject1, this);
       if (paramInt != 0)
       {
-        localObject2 = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+        localObject2 = (ChatMessage)this.a.get(paramInt - 1);
         if ((localObject2 != null) && ((localObject2 instanceof MessageForTroopUnreadTips))) {
           ((ChatMessage)localObject1).mNeedTimeStamp = true;
         }
       }
-      localObject2 = ((ChatItemBuilder)localObject3).a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), (ChatMessage)localObject1, paramView, paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1$BubbleOnlongClickListener);
+      localObject2 = ((ChatItemBuilder)localObject3).a(paramInt, this.a.size(), (ChatMessage)localObject1, paramView, paramViewGroup, this.f);
       if (localObject2 != null)
       {
-        ((View)localObject2).setTag(2131364534, localObject1);
+        ((View)localObject2).setTag(2131430591, localObject1);
         if (((localObject3 instanceof AbstractChatItemBuilder)) && ((localObject2 instanceof IChatShieldClick))) {
           localObject3 = (IChatShieldClick)localObject2;
         }
@@ -164,9 +162,9 @@ public class MiniChatAdapter
     {
       localObject2 = (IChatShieldClick)localObject1;
       ((IChatShieldClick)localObject2).setIsShieldTouchForItem(true);
-      ((IChatShieldClick)localObject2).setFrom(((MiniChatItemFactory)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory).a);
+      ((IChatShieldClick)localObject2).setFrom(((MiniChatItemFactory)this.c).f);
       if ((localObject1 instanceof BaseChatItemLayout)) {
-        ((BaseChatItemLayout)localObject1).d();
+        ((BaseChatItemLayout)localObject1).j();
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -177,13 +175,13 @@ public class MiniChatAdapter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("list.addr = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.hashCode());
+    localStringBuilder.append(this.a.hashCode());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatAdapter
  * JD-Core Version:    0.7.0.1
  */

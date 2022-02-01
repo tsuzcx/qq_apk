@@ -34,32 +34,32 @@ class GdtInterstitialFragmentForJS$5
     }
     else
     {
-      long l = paramGdtAdLoader.a().jdField_a_of_type_Long;
-      k = paramGdtAdLoader.a().jdField_a_of_type_Int;
-      if (paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp == null) {}
+      long l = paramGdtAdLoader.a().d;
+      k = paramGdtAdLoader.a().c;
+      if (paramGdtAdLoader.a().b == null) {}
       do
       {
         j = -2147483648;
         break;
-        i = paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get();
-      } while ((i == 0) && (paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.size() <= 0));
-      j = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ret.get();
-      if ((j == 0) && (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.size() > 0))
+        i = paramGdtAdLoader.a().b.ret.get();
+      } while ((i == 0) && (paramGdtAdLoader.a().b.pos_ads_info.size() <= 0));
+      j = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.a().b.pos_ads_info.get(0)).ret.get();
+      if ((j == 0) && (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.a().b.pos_ads_info.get(0)).ads_info.size() > 0))
       {
-        paramGdtAdLoader = (qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.get(0);
-        GdtInterstitialFragmentForJS.a(this.a).a.a = new GdtAd(paramGdtAdLoader);
-        GdtInterstitialFragmentForJS.a(this.a, ((IGdtInterstitialAPI)QRoute.api(IGdtInterstitialAPI.class)).build(this.a.getBaseActivity(), GdtInterstitialFragmentForJS.a(this.a)));
+        paramGdtAdLoader = (qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.a().b.pos_ads_info.get(0)).ads_info.get(0);
+        GdtInterstitialFragmentForJS.d(this.a).d.a = new GdtAd(paramGdtAdLoader);
+        GdtInterstitialFragmentForJS.a(this.a, ((IGdtInterstitialAPI)QRoute.api(IGdtInterstitialAPI.class)).build(this.a.getBaseActivity(), GdtInterstitialFragmentForJS.d(this.a)));
       }
     }
     paramGdtAdLoader = this.a;
-    i = paramGdtAdLoader.a(GdtInterstitialFragmentForJS.a(paramGdtAdLoader).a.a, k, i, j);
+    i = paramGdtAdLoader.a(GdtInterstitialFragmentForJS.d(paramGdtAdLoader).d.a, k, i, j);
     GdtInterstitialFragmentForJS.a(this.a, new GdtAdError(i));
-    Toast.makeText(this.a.getBaseActivity().getApplicationContext(), String.format("on response:%s", new Object[] { GdtInterstitialFragmentForJS.a(this.a).a() }), 0).show();
+    Toast.makeText(this.a.getBaseActivity().getApplicationContext(), String.format("on response:%s", new Object[] { GdtInterstitialFragmentForJS.e(this.a).b() }), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.5
  * JD-Core Version:    0.7.0.1
  */

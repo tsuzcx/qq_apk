@@ -10,8 +10,8 @@ class PermissionPrivacyFragment$5
   
   public void run()
   {
-    int i = FriendIntimateRelationshipHelper.a(PermissionPrivacyFragment.a(this.this$0));
-    Activity localActivity = PermissionPrivacyFragment.a(this.this$0);
+    int i = FriendIntimateRelationshipHelper.a(PermissionPrivacyFragment.b(this.this$0));
+    Activity localActivity = PermissionPrivacyFragment.c(this.this$0);
     if (localActivity == null) {
       return;
     }
@@ -20,7 +20,7 @@ class PermissionPrivacyFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.5
  * JD-Core Version:    0.7.0.1
  */

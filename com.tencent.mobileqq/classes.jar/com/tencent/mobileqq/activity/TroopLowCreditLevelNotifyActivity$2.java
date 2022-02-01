@@ -16,14 +16,14 @@ class TroopLowCreditLevelNotifyActivity$2
     if (paramRspBody.group_id.has())
     {
       paramRspBody = String.valueOf(paramRspBody.group_id.get());
-      if (!TextUtils.equals(this.a.a, paramRspBody)) {
+      if (!TextUtils.equals(this.a.k, paramRspBody)) {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onGetNewTroopAppList troopUin not match. rsp uin=");
           localStringBuilder.append(paramRspBody);
           localStringBuilder.append(", current uin=");
-          localStringBuilder.append(this.a.a);
+          localStringBuilder.append(this.a.k);
           QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, localStringBuilder.toString());
         }
       }
@@ -32,10 +32,10 @@ class TroopLowCreditLevelNotifyActivity$2
     {
       paramRspBody = new StringBuilder();
       paramRspBody.append("onGetNewTroopAppList group_id lost. current uin=");
-      paramRspBody.append(this.a.a);
+      paramRspBody.append(this.a.k);
       QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, paramRspBody.toString());
     }
-    this.a.d();
+    this.a.f();
     paramRspBody = this.a.a(1101236949L);
     if (paramRspBody != null) {
       this.a.a(paramRspBody);
@@ -44,7 +44,7 @@ class TroopLowCreditLevelNotifyActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity.2
  * JD-Core Version:    0.7.0.1
  */

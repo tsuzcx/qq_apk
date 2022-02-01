@@ -25,25 +25,6 @@ import org.libpag.PAGText;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"DEFAULT_ID", "", "FONT_PATTERN", "FONT_PATTERN_NON_ID", "FONT_STYLE", "FONT_STYLE_NON_ID", "FONT_TYPE", "KEY_NOT_INTERACTIVE", "", "TAG", "TEXT_KUOLIE_ID", "value", "", "angle", "Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;", "getAngle", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)F", "setAngle", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;F)V", "backgroundColor", "getBackgroundColor", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)I", "setBackgroundColor", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;I)V", "blurTextPath", "getBlurTextPath", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Ljava/lang/String;", "setBlurTextPath", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Ljava/lang/String;)V", "blurTexturePath", "getBlurTexturePath", "setBlurTexturePath", "configJsonPath", "getConfigJsonPath", "setConfigJsonPath", "content", "getContent", "setContent", "defaultColor", "getDefaultColor", "setDefaultColor", "fontId", "getFontId", "setFontId", "", "isInteractive", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Z", "setInteractive", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Z)V", "isTextReady", "setTextReady", "maxScale", "getMaxScale", "setMaxScale", "minScale", "getMinScale", "setMinScale", "pagFilePath", "getPagFilePath", "setPagFilePath", "scale", "getScale", "setScale", "textColor", "getTextColor", "setTextColor", "textStickerResourceType", "getTextStickerResourceType", "setTextStickerResourceType", "type", "getType", "setType", "initTextMaterials", "", "categoryId", "materials", "init", "", "updateTextByPagStickerConfig", "config", "Lcom/tencent/aelight/camera/aeeditor/manage/AEEditorPagStickerConfig;", "aelight_impl_release"}, k=2, mv={1, 1, 16})
 public final class TextMetaMaterialKt
 {
-  public static final float a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$scale");
-    return MetaMaterialKt.a(paramMetaMaterial, "scale", 0.5F);
-  }
-  
-  public static final int a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$textColor");
-    return MetaMaterialKt.a(paramMetaMaterial, "textColor");
-  }
-  
-  @NotNull
-  public static final String a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$type");
-    return MetaMaterialKt.a(paramMetaMaterial, "type");
-  }
-  
   @NotNull
   public static final List<MetaMaterial> a(@NotNull String paramString, @NotNull List<MetaMaterial> paramList)
   {
@@ -84,26 +65,26 @@ public final class TextMetaMaterialKt
       Object localObject = paramAEEditorPagStickerConfig.type;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "config.type");
       a(paramMetaMaterial, (String)localObject);
-      if (TextUtils.isEmpty((CharSequence)a(paramMetaMaterial)))
+      if (TextUtils.isEmpty((CharSequence)b(paramMetaMaterial)))
       {
         a(paramMetaMaterial, "fixed_text");
       }
-      else if (Intrinsics.areEqual(a(paramMetaMaterial), "blur"))
+      else if (Intrinsics.areEqual(b(paramMetaMaterial), "blur"))
       {
-        g(paramMetaMaterial, AEEditorResourceManager.a().g(paramMetaMaterial));
-        h(paramMetaMaterial, AEEditorResourceManager.a().h(paramMetaMaterial));
+        g(paramMetaMaterial, AEEditorResourceManager.a().h(paramMetaMaterial));
+        h(paramMetaMaterial, AEEditorResourceManager.a().i(paramMetaMaterial));
       }
       try
       {
-        if (new File(f(paramMetaMaterial)).exists())
+        if (new File(m(paramMetaMaterial)).exists())
         {
-          localObject = PAGFile.Load(f(paramMetaMaterial));
+          localObject = PAGFile.Load(m(paramMetaMaterial));
         }
         else
         {
           localObject = AEEditorResourceManager.a();
           Intrinsics.checkExpressionValueIsNotNull(localObject, "AEEditorResourceManager.getInstance()");
-          localObject = PAGFile.Load(((AEEditorResourceManager)localObject).c());
+          localObject = PAGFile.Load(((AEEditorResourceManager)localObject).C());
         }
         if (((PAGFile)localObject).numTexts() > 0)
         {
@@ -120,14 +101,14 @@ public final class TextMetaMaterialKt
       if ((paramAEEditorPagStickerConfig.styleConfig != null) && (!TextUtils.isEmpty((CharSequence)paramAEEditorPagStickerConfig.styleConfig.defaultColor)))
       {
         b(paramMetaMaterial, Color.parseColor(paramAEEditorPagStickerConfig.styleConfig.defaultColor));
-        paramAEEditorPagStickerConfig = a(paramMetaMaterial);
+        paramAEEditorPagStickerConfig = b(paramMetaMaterial);
         int i = paramAEEditorPagStickerConfig.hashCode();
         if (i != 1021751938)
         {
           if ((i == 1289680009) && (paramAEEditorPagStickerConfig.equals("color_text")))
           {
-            c(paramMetaMaterial, b(paramMetaMaterial));
-            int j = c(paramMetaMaterial);
+            c(paramMetaMaterial, h(paramMetaMaterial));
+            int j = i(paramMetaMaterial);
             i = -1;
             if (j == -1) {
               i = AEEditorColorSelectorView.a;
@@ -136,7 +117,7 @@ public final class TextMetaMaterialKt
           }
         }
         else if (paramAEEditorPagStickerConfig.equals("plain_text")) {
-          a(paramMetaMaterial, b(paramMetaMaterial));
+          a(paramMetaMaterial, h(paramMetaMaterial));
         }
       }
       a(paramMetaMaterial, true);
@@ -158,26 +139,14 @@ public final class TextMetaMaterialKt
   public static final boolean a(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isTextReady");
-    return MetaMaterialKt.a(paramMetaMaterial, "isTextReady") == 1;
-  }
-  
-  public static final float b(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$minScale");
-    return MetaMaterialKt.a(paramMetaMaterial, "minScale", 0.18F);
-  }
-  
-  public static final int b(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$defaultColor");
-    return MetaMaterialKt.a(paramMetaMaterial, "defaultColor");
+    return MetaMaterialKt.e(paramMetaMaterial, "isTextReady") == 1;
   }
   
   @NotNull
   public static final String b(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$configJsonPath");
-    return MetaMaterialKt.a(paramMetaMaterial, "configJsonPath");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$type");
+    return MetaMaterialKt.d(paramMetaMaterial, "type");
   }
   
   public static final void b(@NotNull MetaMaterial paramMetaMaterial, float paramFloat)
@@ -199,29 +168,11 @@ public final class TextMetaMaterialKt
     MetaMaterialKt.a(paramMetaMaterial, "configJsonPath", paramString);
   }
   
-  public static final boolean b(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isInteractive");
-    return MetaMaterialKt.a(paramMetaMaterial, "interactive") > 0;
-  }
-  
-  public static final float c(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$maxScale");
-    return MetaMaterialKt.a(paramMetaMaterial, "maxScale", 1.0F);
-  }
-  
-  public static final int c(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$backgroundColor");
-    return MetaMaterialKt.a(paramMetaMaterial, "backgroundColor");
-  }
-  
   @NotNull
   public static final String c(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$textStickerResourceType");
-    return MetaMaterialKt.a(paramMetaMaterial, "textStickerResourceType");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$configJsonPath");
+    return MetaMaterialKt.d(paramMetaMaterial, "configJsonPath");
   }
   
   public static final void c(@NotNull MetaMaterial paramMetaMaterial, float paramFloat)
@@ -246,8 +197,8 @@ public final class TextMetaMaterialKt
   @NotNull
   public static final String d(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$fontId");
-    return MetaMaterialKt.a(paramMetaMaterial, "fontID");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$textStickerResourceType");
+    return MetaMaterialKt.d(paramMetaMaterial, "textStickerResourceType");
   }
   
   public static final void d(@NotNull MetaMaterial paramMetaMaterial, float paramFloat)
@@ -266,8 +217,8 @@ public final class TextMetaMaterialKt
   @NotNull
   public static final String e(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$content");
-    return MetaMaterialKt.a(paramMetaMaterial, "content");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$fontId");
+    return MetaMaterialKt.d(paramMetaMaterial, "fontID");
   }
   
   public static final void e(@NotNull MetaMaterial paramMetaMaterial, @NotNull String paramString)
@@ -277,11 +228,11 @@ public final class TextMetaMaterialKt
     MetaMaterialKt.a(paramMetaMaterial, "content", paramString);
   }
   
-  @Nullable
+  @NotNull
   public static final String f(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$pagFilePath");
-    return MetaMaterialKt.a(paramMetaMaterial, "pagFilePath");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$content");
+    return MetaMaterialKt.d(paramMetaMaterial, "content");
   }
   
   public static final void f(@NotNull MetaMaterial paramMetaMaterial, @Nullable String paramString)
@@ -290,11 +241,10 @@ public final class TextMetaMaterialKt
     MetaMaterialKt.a(paramMetaMaterial, "pagFilePath", paramString);
   }
   
-  @Nullable
-  public static final String g(@NotNull MetaMaterial paramMetaMaterial)
+  public static final int g(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$blurTextPath");
-    return MetaMaterialKt.a(paramMetaMaterial, "blurTextPath");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$textColor");
+    return MetaMaterialKt.e(paramMetaMaterial, "textColor");
   }
   
   public static final void g(@NotNull MetaMaterial paramMetaMaterial, @Nullable String paramString)
@@ -303,11 +253,10 @@ public final class TextMetaMaterialKt
     MetaMaterialKt.a(paramMetaMaterial, "blurTextPath", paramString);
   }
   
-  @Nullable
-  public static final String h(@NotNull MetaMaterial paramMetaMaterial)
+  public static final int h(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$blurTexturePath");
-    return MetaMaterialKt.a(paramMetaMaterial, "blurTexturePath");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$defaultColor");
+    return MetaMaterialKt.e(paramMetaMaterial, "defaultColor");
   }
   
   public static final void h(@NotNull MetaMaterial paramMetaMaterial, @Nullable String paramString)
@@ -316,24 +265,30 @@ public final class TextMetaMaterialKt
     MetaMaterialKt.a(paramMetaMaterial, "blurTexturePath", paramString);
   }
   
+  public static final int i(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$backgroundColor");
+    return MetaMaterialKt.e(paramMetaMaterial, "backgroundColor");
+  }
+  
   public static final void i(@NotNull MetaMaterial paramMetaMaterial, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$init");
     Intrinsics.checkParameterIsNotNull(paramString, "categoryId");
     MetaMaterialKt.a(paramMetaMaterial, paramString);
-    paramString = c(paramMetaMaterial);
+    paramString = d(paramMetaMaterial);
     int i = paramString.hashCode();
     if (i != 2195567)
     {
       if ((i == 80227729) && (paramString.equals("Style")))
       {
-        paramString = AEEditorResourceManager.a().e(paramMetaMaterial);
+        paramString = AEEditorResourceManager.a().f(paramMetaMaterial);
         Intrinsics.checkExpressionValueIsNotNull(paramString, "AEEditorResourceManager.…tTextConfigJsonPath(this)");
         b(paramMetaMaterial, paramString);
-        f(paramMetaMaterial, AEEditorResourceManager.a().f(paramMetaMaterial));
+        f(paramMetaMaterial, AEEditorResourceManager.a().g(paramMetaMaterial));
         paramString = BaseApplicationImpl.getContext();
         Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getContext()");
-        paramString = paramString.getResources().getString(2064515191);
+        paramString = paramString.getResources().getString(2064187537);
         Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getC…tor_text_default_content)");
         e(paramMetaMaterial, paramString);
       }
@@ -342,31 +297,76 @@ public final class TextMetaMaterialKt
     {
       paramString = AEEditorResourceManager.a();
       Intrinsics.checkExpressionValueIsNotNull(paramString, "AEEditorResourceManager.getInstance()");
-      paramString = paramString.d();
+      paramString = paramString.D();
       Intrinsics.checkExpressionValueIsNotNull(paramString, "AEEditorResourceManager.…textDefaultConfigJsonPath");
       b(paramMetaMaterial, paramString);
       paramString = AEEditorResourceManager.a();
       Intrinsics.checkExpressionValueIsNotNull(paramString, "AEEditorResourceManager.getInstance()");
-      f(paramMetaMaterial, paramString.c());
+      f(paramMetaMaterial, paramString.C());
       paramString = paramMetaMaterial.id;
       Intrinsics.checkExpressionValueIsNotNull(paramString, "id");
       d(paramMetaMaterial, paramString);
       paramString = BaseApplicationImpl.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getContext()");
-      paramString = paramString.getResources().getString(2064515191);
+      paramString = paramString.getResources().getString(2064187537);
       Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getC…tor_text_default_content)");
       e(paramMetaMaterial, paramString);
       return;
     }
-    paramString = AEEditorResourceManager.a().e(paramMetaMaterial);
+    paramString = AEEditorResourceManager.a().f(paramMetaMaterial);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "AEEditorResourceManager.…tTextConfigJsonPath(this)");
     b(paramMetaMaterial, paramString);
-    f(paramMetaMaterial, AEEditorResourceManager.a().f(paramMetaMaterial));
+    f(paramMetaMaterial, AEEditorResourceManager.a().g(paramMetaMaterial));
+  }
+  
+  public static final float j(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$scale");
+    return MetaMaterialKt.a(paramMetaMaterial, "scale", 0.5F);
+  }
+  
+  public static final float k(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$minScale");
+    return MetaMaterialKt.a(paramMetaMaterial, "minScale", 0.18F);
+  }
+  
+  public static final float l(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$maxScale");
+    return MetaMaterialKt.a(paramMetaMaterial, "maxScale", 1.0F);
+  }
+  
+  @Nullable
+  public static final String m(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$pagFilePath");
+    return MetaMaterialKt.d(paramMetaMaterial, "pagFilePath");
+  }
+  
+  @Nullable
+  public static final String n(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$blurTextPath");
+    return MetaMaterialKt.d(paramMetaMaterial, "blurTextPath");
+  }
+  
+  @Nullable
+  public static final String o(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$blurTexturePath");
+    return MetaMaterialKt.d(paramMetaMaterial, "blurTexturePath");
+  }
+  
+  public static final boolean p(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isInteractive");
+    return MetaMaterialKt.e(paramMetaMaterial, "interactive") > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.TextMetaMaterialKt
  * JD-Core Version:    0.7.0.1
  */

@@ -9,26 +9,15 @@ import com.tencent.widget.XBaseAdapter;
 public abstract class SystemMsgListBaseAdapter
   extends XBaseAdapter
 {
-  public int a;
-  public SystemMsgListView a;
+  public int d = -1;
+  public SystemMsgListView e;
   
   public SystemMsgListBaseAdapter(SystemMsgListView paramSystemMsgListView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiViewSystemMsgListView = paramSystemMsgListView;
-  }
-  
-  public int a()
-  {
-    return 0;
+    this.e = paramSystemMsgListView;
   }
   
   public Bitmap a(int paramInt, String paramString)
-  {
-    return null;
-  }
-  
-  public IFaceDecoder a()
   {
     return null;
   }
@@ -37,23 +26,33 @@ public abstract class SystemMsgListBaseAdapter
   
   public void a(NewFriendBaseBuilder paramNewFriendBaseBuilder) {}
   
-  public int b()
-  {
-    return -1;
-  }
-  
   public void b(int paramInt1, int paramInt2) {}
   
-  public int c()
+  public abstract void c();
+  
+  public IFaceDecoder d()
+  {
+    return null;
+  }
+  
+  public int i()
   {
     return 0;
   }
   
-  public abstract void c();
+  public int m()
+  {
+    return -1;
+  }
+  
+  public int n()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.SystemMsgListBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

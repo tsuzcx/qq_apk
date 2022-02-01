@@ -12,7 +12,7 @@ class EditTroopFingerMemoService$2
   
   public void delete()
   {
-    TextUtils.backspace(EditTroopFingerMemoService.a(this.a));
+    TextUtils.backspace(EditTroopFingerMemoService.b(this.a));
   }
   
   public void emoticonMall() {}
@@ -30,14 +30,14 @@ class EditTroopFingerMemoService$2
   
   public void send(EmoticonInfo paramEmoticonInfo)
   {
-    paramEmoticonInfo.send(EditTroopFingerMemoService.a(this.a), EditTroopFingerMemoService.a(this.a), EditTroopFingerMemoService.a(this.a), null);
+    paramEmoticonInfo.send(EditTroopFingerMemoService.c(this.a), EditTroopFingerMemoService.d(this.a), EditTroopFingerMemoService.b(this.a), null);
   }
   
   public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editservice.EditTroopFingerMemoService.2
  * JD-Core Version:    0.7.0.1
  */

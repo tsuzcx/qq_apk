@@ -36,14 +36,14 @@ public class CommonWebAppInfo
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
-    paramSessionInfo = this.url.replace("$UIN$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramSessionInfo.jdField_a_of_type_JavaLangString).replace("$APPID$", String.valueOf(getAppID()));
+    paramSessionInfo = this.url.replace("$UIN$", paramBaseChatPie.d.getCurrentAccountUin()).replace("$GCODE$", paramSessionInfo.b).replace("$APPID$", String.valueOf(getAppID()));
     j = 0;
     i = j;
     try
     {
       if (TextUtils.equals(new URI(paramSessionInfo).getScheme(), "mqqapi"))
       {
-        localObject = JumpParser.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
+        localObject = JumpParser.a(paramBaseChatPie.d, paramBaseChatPie.aX(), paramSessionInfo);
         i = j;
         if (localObject != null)
         {
@@ -62,25 +62,25 @@ public class CommonWebAppInfo
     }
     if (i == 0)
     {
-      localObject = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
+      localObject = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramSessionInfo);
-      ((Intent)localObject).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131715493));
-      paramBaseChatPie.a().startActivity((Intent)localObject);
+      ((Intent)localObject).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
+      paramBaseChatPie.aX().startActivity((Intent)localObject);
     }
   }
   
   private void a(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     paramPlusPanelViewModel.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
     paramPlusPanelViewModel.b(paramBaseChatPie);
-    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).gotoAIOTencentDocListWebH5(localQQAppInterface, paramBaseChatPie.a(), paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).gotoAIOTencentDocListWebH5(localQQAppInterface, paramBaseChatPie.aX(), paramBaseChatPie.ah.b, paramBaseChatPie.ah.a, paramBaseChatPie.ah.e);
+    if (paramBaseChatPie.ah.a == 1)
     {
       Object localObject = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       paramPlusPanelViewModel = null;
       if (localObject != null) {
-        paramPlusPanelViewModel = ((TroopManager)localObject).b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        paramPlusPanelViewModel = ((TroopManager)localObject).f(paramBaseChatPie.ah.b);
       }
       if (paramPlusPanelViewModel != null)
       {
@@ -93,7 +93,7 @@ public class CommonWebAppInfo
       {
         paramPlusPanelViewModel = "";
       }
-      paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      paramBaseChatPie = paramBaseChatPie.ah.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(paramPlusPanelViewModel);
@@ -112,8 +112,8 @@ public class CommonWebAppInfo
       if (TextUtils.isEmpty(this.url)) {
         return false;
       }
-      localObject = this.url.replace("$UIN$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).replace("$APPID$", String.valueOf(paramInt));
-      return ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramBaseChatPie.a(), (String)localObject, 2016, paramBaseChatPie.a(), null);
+      localObject = this.url.replace("$UIN$", paramBaseChatPie.d.getCurrentAccountUin()).replace("$GCODE$", paramBaseChatPie.ah.b).replace("$APPID$", String.valueOf(paramInt));
+      return ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramBaseChatPie.aX(), (String)localObject, 2016, paramBaseChatPie.aV(), null);
     }
     return false;
   }
@@ -152,12 +152,12 @@ public class CommonWebAppInfo
       return;
     }
     a(paramBaseChatPie, paramSessionInfo);
-    paramPlusPanelViewModel.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getAppID(), paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramPlusPanelViewModel.a(paramBaseChatPie.d, getAppID(), paramSessionInfo.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.CommonWebAppInfo
  * JD-Core Version:    0.7.0.1
  */

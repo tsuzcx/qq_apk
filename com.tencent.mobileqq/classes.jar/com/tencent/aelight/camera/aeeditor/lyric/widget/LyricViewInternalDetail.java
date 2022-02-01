@@ -7,11 +7,11 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.LyricCharacter;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceAttachInfo;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.LyricCharacter;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Sentence;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.SentenceAttachInfo;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
 import java.util.ArrayList;
 
 public class LyricViewInternalDetail
@@ -24,16 +24,16 @@ public class LyricViewInternalDetail
   
   private int d(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric;
+    Object localObject = this.u;
     int k = 0;
-    if ((localObject != null) && (!this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.isEmpty()))
+    if ((localObject != null) && (!this.u.isEmpty()))
     {
-      int j = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.size() - 1;
+      int j = this.u.size() - 1;
       int i;
-      if (this.jdField_c_of_type_Boolean)
+      if (this.C)
       {
-        i = this.r;
-        j = this.s;
+        i = this.F;
+        j = this.G;
       }
       else
       {
@@ -46,8 +46,8 @@ public class LyricViewInternalDetail
         if (i > j) {
           break;
         }
-        m = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(i)).getUiLineSize();
-        k += this.jdField_d_of_type_Int * m + this.e * (m - 1) + this.e;
+        m = ((Sentence)this.u.mSentences.get(i)).getUiLineSize();
+        k += this.m * m + this.n * (m - 1) + this.n;
         if (paramInt < k)
         {
           m = i;
@@ -70,28 +70,28 @@ public class LyricViewInternalDetail
   public int a(int paramInt)
   {
     super.a(paramInt);
-    paramInt = d(paramInt + this.jdField_d_of_type_Int);
+    paramInt = d(paramInt + this.m);
     postInvalidate();
     return paramInt;
   }
   
   public void a()
   {
-    if (this.jdField_l_of_type_Int != 70) {
+    if (this.x != 70) {
       return;
     }
-    int k = this.jdField_d_of_type_Int;
-    int m = this.e;
-    int n = this.t;
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences;
+    int k = this.m;
+    int m = this.n;
+    int n = this.H;
+    ArrayList localArrayList = this.u.mSentences;
     if (localArrayList == null) {
       return;
     }
     int j = localArrayList.size() - 1;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.C)
     {
-      i = this.r;
-      j = this.s;
+      i = this.F;
+      j = this.G;
     }
     else
     {
@@ -106,28 +106,28 @@ public class LyricViewInternalDetail
       j += ((Sentence)localArrayList.get(i)).getUiLineSize();
       i += 1;
     }
-    int i = this.A;
-    if (this.z > 0) {
-      if (this.z < this.A) {
-        i = this.z;
+    int i = this.U;
+    if (this.T > 0) {
+      if (this.T < this.U) {
+        i = this.T;
       } else {
-        i = this.A;
+        i = this.U;
       }
     }
-    this.v = (this.jdField_k_of_type_Int + (k + m) * (j - (int)(i * 0.3F) + 1));
-    if (this.v < 0) {
-      this.v = 0;
+    this.J = (this.t + (k + m) * (j - (int)(i * 0.3F) + 1));
+    if (this.J < 0) {
+      this.J = 0;
     }
   }
   
   protected void a(Canvas paramCanvas, int paramInt)
   {
-    this.jdField_k_of_type_Int = ((int)(((View)((View)getParent()).getParent()).getMeasuredHeight() * 0.3F) + this.jdField_d_of_type_Int / 2);
-    int m = this.jdField_d_of_type_Int;
-    int n = this.e;
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences;
+    this.t = ((int)(((View)((View)getParent()).getParent()).getMeasuredHeight() * 0.3F) + this.m / 2);
+    int m = this.m;
+    int n = this.n;
+    ArrayList localArrayList = this.u.mSentences;
     int i1 = localArrayList.size();
-    int j = this.t;
+    int j = this.H;
     int i = j;
     if (j < 0) {
       i = 0;
@@ -138,15 +138,15 @@ public class LyricViewInternalDetail
     }
     if (!localArrayList.isEmpty())
     {
-      int i2 = paramInt + c();
-      int k = this.jdField_k_of_type_Int;
+      int i2 = paramInt + getAdJust();
+      int k = this.t;
       i = 0;
       while (i <= i1 - 1)
       {
         Sentence localSentence = (Sentence)localArrayList.get(i);
         if (i == j)
         {
-          if ((this.h) && (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mType == 2) && (!this.jdField_l_of_type_Boolean))
+          if ((this.R) && (this.u.mType == 2) && (!this.ac))
           {
             a(localSentence, paramCanvas, i2, k);
             paramInt = localSentence.getUiLineSize();
@@ -159,7 +159,7 @@ public class LyricViewInternalDetail
         }
         else
         {
-          a(localSentence, paramCanvas, i2, k, this.jdField_a_of_type_AndroidGraphicsPaint);
+          a(localSentence, paramCanvas, i2, k, this.a);
           paramInt = localSentence.getUiLineSize();
         }
         k += paramInt * (m + n);
@@ -171,7 +171,7 @@ public class LyricViewInternalDetail
   public void a(LyricViewAttribute paramLyricViewAttribute)
   {
     super.a(paramLyricViewAttribute);
-    this.x = ((this.jdField_d_of_type_Int + this.e) * 2);
+    this.O = ((this.m + this.n) * 2);
   }
   
   protected void a(Sentence paramSentence, Canvas paramCanvas, int paramInt1, int paramInt2)
@@ -182,9 +182,9 @@ public class LyricViewInternalDetail
       {
         localObject1 = paramSentence.getUILyricLineList();
         i = ((ArrayList)localObject1).size();
-        i3 = this.u;
+        i3 = this.I;
         localPaint = this.b;
-        if ((!this.i) || (paramSentence.mNormalLeftAttachInfo == null)) {
+        if ((!this.S) || (paramSentence.mNormalLeftAttachInfo == null)) {
           continue;
         }
         localPaint.setColor(paramSentence.mNormalLeftAttachInfo.mSentenceColor);
@@ -236,15 +236,15 @@ public class LyricViewInternalDetail
         i1 = localSentenceUI.mText.length();
         if (k == 0)
         {
-          n = this.e;
+          n = this.n;
           continue;
         }
-        n = this.e + this.jdField_f_of_type_Int;
+        n = this.n + this.o;
         continue;
-        if (!this.jdField_k_of_type_Boolean) {
+        if (!this.Z) {
           continue;
         }
-        localSentenceUI.drawLyricContour(paramCanvas, paramInt1, m + n, this.jdField_f_of_type_AndroidGraphicsPaint, true);
+        localSentenceUI.drawLyricContour(paramCanvas, paramInt1, m + n, this.f, true);
         l1 = localSentenceUI.mStartTime;
         l2 = i3;
         if ((l1 <= l2) && (localSentenceUI.mEndTime >= l2))
@@ -306,53 +306,61 @@ public class LyricViewInternalDetail
       if (i == i4 - 1) {}
       try
       {
-        f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localSentenceUI.mText.substring(((LyricCharacter)localObject1).mStart, i1));
+        f1 = this.d.measureText(localSentenceUI.mText.substring(((LyricCharacter)localObject1).mStart, i1));
         continue;
         if (localSentenceUI.mText.length() >= ((LyricCharacter)localObject1).mEnd) {
-          f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localSentenceUI.mText.substring(((LyricCharacter)localObject1).mStart, ((LyricCharacter)localObject1).mEnd));
+          f1 = this.d.measureText(localSentenceUI.mText.substring(((LyricCharacter)localObject1).mStart, ((LyricCharacter)localObject1).mEnd));
         } else {
-          f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localSentenceUI.mText.substring(((LyricCharacter)localObject1).mStart, i1));
+          f1 = this.d.measureText(localSentenceUI.mText.substring(((LyricCharacter)localObject1).mStart, i1));
         }
       }
       catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException1)
       {
         continue;
       }
-      f1 = this.jdField_d_of_type_AndroidGraphicsPaint.measureText(localSentenceUI.mText.substring(0, i1));
+      f1 = this.d.measureText(localSentenceUI.mText.substring(0, i1));
       j = localPaint.getColor();
-      i1 = this.jdField_c_of_type_AndroidGraphicsPaint.getColor();
-      localSentenceUI.paint(paramCanvas, paramInt1, m + n, this.jdField_c_of_type_AndroidGraphicsPaint, localPaint, this.jdField_d_of_type_AndroidGraphicsPaint, i, f1, f4, new int[] { j, i1 }, new float[] { f3, f2 });
+      i1 = this.c.getColor();
+      localSentenceUI.paint(paramCanvas, paramInt1, m + n, this.c, localPaint, this.d, i, f1, f4, new int[] { j, i1 }, new float[] { f3, f2 });
       continue;
       if (localSentenceUI.getEndTime() < l2) {
         localSentenceUI.paint(paramCanvas, paramInt1, m + n, localPaint, true);
       } else {
-        localSentenceUI.paint(paramCanvas, paramInt1, m + n, this.jdField_c_of_type_AndroidGraphicsPaint, true);
+        localSentenceUI.paint(paramCanvas, paramInt1, m + n, this.c, true);
       }
-      i = this.g;
+      i = this.p;
       m += n + i;
       k += 1;
     }
   }
   
-  public int b()
+  public int b(int paramInt)
   {
-    int i = this.jdField_l_of_type_Int;
+    super.b(paramInt);
+    paramInt = d(paramInt + this.m);
+    postInvalidate();
+    return paramInt;
+  }
+  
+  public int getEndScrollY()
+  {
+    int i = this.x;
     int j = 0;
     if (i != 70) {
       return 0;
     }
-    int m = this.jdField_d_of_type_Int;
-    int n = this.e;
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences;
+    int m = this.m;
+    int n = this.n;
+    ArrayList localArrayList = this.u.mSentences;
     if (localArrayList == null) {
       return 0;
     }
     i = localArrayList.size();
     int k;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.C)
     {
-      i = this.r;
-      k = this.s;
+      i = this.F;
+      k = this.G;
     }
     else
     {
@@ -364,28 +372,20 @@ public class LyricViewInternalDetail
       j += ((Sentence)localArrayList.get(i)).getUiLineSize();
       i += 1;
     }
-    i = this.A;
-    if (this.z > 0) {
-      if (this.z < this.A) {
-        i = this.z;
+    i = this.U;
+    if (this.T > 0) {
+      if (this.T < this.U) {
+        i = this.T;
       } else {
-        i = this.A;
+        i = this.U;
       }
     }
-    return this.jdField_k_of_type_Int + (m + n) * (j - (int)(i * 0.3F) + 1);
-  }
-  
-  public int b(int paramInt)
-  {
-    super.b(paramInt);
-    paramInt = d(paramInt + this.jdField_d_of_type_Int);
-    postInvalidate();
-    return paramInt;
+    return this.t + (m + n) * (j - (int)(i * 0.3F) + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewInternalDetail
  * JD-Core Version:    0.7.0.1
  */

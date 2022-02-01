@@ -4,19 +4,19 @@ import android.util.Log;
 
 class MessageHandler$ClassInfo
 {
-  Class<?> jdField_a_of_type_JavaLangClass;
-  String jdField_a_of_type_JavaLangString;
+  String a;
   Class<?> b;
+  Class<?> c;
   
   void a(String paramString, long paramLong)
   {
-    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null))
+    if ((this.c == null) || (this.b == null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("check ClassInfo, seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("], ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       Log.d(paramString, localStringBuilder.toString());
     }
   }

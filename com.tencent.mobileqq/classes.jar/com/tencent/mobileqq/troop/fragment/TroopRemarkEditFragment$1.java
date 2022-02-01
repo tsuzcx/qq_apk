@@ -14,13 +14,13 @@ class TroopRemarkEditFragment$1
   
   public void onClick(View paramView)
   {
-    TroopRemarkEditFragment.a(this.a).setText(TroopRemarkEditFragment.a(this.a));
-    ReportController.b(TroopRemarkEditFragment.a(this.a), "dc00899", "Grp_set_new", "", "groupnameRemarks", "filling", 0, 0, TroopRemarkEditFragment.b(this.a), "", "", "");
+    TroopRemarkEditFragment.b(this.a).setText(TroopRemarkEditFragment.a(this.a));
+    ReportController.b(TroopRemarkEditFragment.c(this.a), "dc00899", "Grp_set_new", "", "groupnameRemarks", "filling", 0, 0, TroopRemarkEditFragment.d(this.a), "", "", "");
     try
     {
-      TroopRemarkEditFragment.a(this.a).setSelection(TroopRemarkEditFragment.a(this.a).length());
+      TroopRemarkEditFragment.b(this.a).setSelection(TroopRemarkEditFragment.a(this.a).length());
       if (TroopRemarkEditFragment.a(this.a).getBytes("utf-8").length > 60) {
-        TextUtils.backspace(TroopRemarkEditFragment.a(this.a));
+        TextUtils.backspace(TroopRemarkEditFragment.b(this.a));
       }
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ class TroopRemarkEditFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

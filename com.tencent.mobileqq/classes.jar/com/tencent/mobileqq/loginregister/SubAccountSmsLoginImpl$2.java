@@ -31,69 +31,69 @@ class SubAccountSmsLoginImpl$2
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("LoginVerifyCodeActivity.onBindSubAccount() mainAccount=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.b);
-        ((StringBuilder)localObject).append(" subAccount=");
         ((StringBuilder)localObject).append(paramSubAccountBackProtocData.c);
+        ((StringBuilder)localObject).append(" subAccount=");
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.d);
         ((StringBuilder)localObject).append(" errType=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.a);
         ((StringBuilder)localObject).append(" errMsg=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.b);
         QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a();
+    this.a.b();
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719305), 2);
+      this.a.a(this.b.getString(2131916857), 2);
       if (QLog.isColorLevel()) {
         QLog.d("SubAccountSmsLoginImpl", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
       }
-      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closeSubAccountBindActivity(this.jdField_a_of_type_MqqAppAppRuntime);
-      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closeSubAccountUgActivity(this.jdField_a_of_type_MqqAppAppRuntime);
-      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closeSubLoginActivity(this.jdField_a_of_type_MqqAppAppRuntime);
-      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closePhoneNumActivity(this.jdField_a_of_type_MqqAppAppRuntime);
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, SplashActivity.class);
-      ((Intent)localObject).putExtra("tab_index", FrameControllerUtil.jdField_a_of_type_Int);
+      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closeSubAccountBindActivity(this.c);
+      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closeSubAccountUgActivity(this.c);
+      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closeSubLoginActivity(this.c);
+      ((ISubAccountAssistantForward)QRoute.api(ISubAccountAssistantForward.class)).closePhoneNumActivity(this.c);
+      localObject = new Intent(this.b, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", FrameControllerUtil.a);
       ((Intent)localObject).setFlags(67108864);
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
+      this.b.startActivity((Intent)localObject);
+      this.b.finish();
     }
     else if (paramSubAccountBackProtocData != null)
     {
-      switch (paramSubAccountBackProtocData.jdField_a_of_type_Int)
+      switch (paramSubAccountBackProtocData.a)
       {
       default: 
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719296), 0);
+        this.a.a(this.b.getString(2131916848), 0);
         break;
       case 1004: 
-        String str = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
+        String str = paramSubAccountBackProtocData.b;
         localObject = str;
         if (TextUtils.isEmpty(str)) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719298);
+          localObject = this.b.getString(2131916850);
         }
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a((String)localObject, 0);
+        this.a.a((String)localObject, 0);
         break;
       case 1003: 
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterILoginSmsPageView.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131719297), 0);
+        this.a.a(this.b.getString(2131916849), 0);
         break;
       case 1002: 
-        ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).showMaxHintDialog(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+        ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).showMaxHintDialog(this.c, this.b);
       }
     }
     if ((paramSubAccountBackProtocData != null) && (QLog.isColorLevel()))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = ");
-      ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramSubAccountBackProtocData.b);
       ((StringBuilder)localObject).append("...errorType = ");
-      ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramSubAccountBackProtocData.a);
       QLog.d("SubAccountSmsLoginImpl", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.SubAccountSmsLoginImpl.2
  * JD-Core Version:    0.7.0.1
  */

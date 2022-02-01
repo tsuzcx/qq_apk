@@ -5,138 +5,138 @@ import java.io.File;
 
 public class AECaptureParam
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 960;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
   public String a;
-  private int b = 720;
-  private int c = 960;
-  private int d = 720;
-  private int e;
+  private int b = 960;
+  private int c = 720;
+  private int d = 960;
+  private int e = 720;
   private int f;
-  private int g = 2000000;
-  private int h = 1;
-  private int i = 1;
-  private int j = -1;
-  private int k = -1;
+  private int g;
+  private float h = 1.0F;
+  private int i = 2000000;
+  private int j = 1;
+  private int k = 1;
+  private int l = -1;
+  private int m = -1;
+  private long n = System.currentTimeMillis();
   
   public AECaptureParam()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AEPath.CAMERA.FILES.c);
     localStringBuilder.append(File.separator);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
+    localStringBuilder.append(this.n);
+    this.a = localStringBuilder.toString();
   }
   
   public int a()
   {
-    return this.g;
+    return this.i;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.h = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public int c()
   {
-    return this.b;
+    return this.c;
   }
   
   public void c(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
   
   public int d()
   {
-    return this.e;
+    return this.f;
   }
   
   public void d(int paramInt)
   {
-    this.d = paramInt;
+    this.e = paramInt;
   }
   
   public int e()
   {
-    return this.f;
+    return this.g;
   }
   
   public void e(int paramInt)
   {
-    this.g = paramInt;
+    this.i = paramInt;
   }
   
-  public int f()
+  public float f()
   {
     return this.h;
   }
   
   public void f(int paramInt)
   {
-    this.h = paramInt;
+    this.j = paramInt;
   }
   
   public int g()
   {
-    return this.i;
+    return this.j;
   }
   
   public void g(int paramInt)
   {
-    this.i = paramInt;
+    this.k = paramInt;
   }
   
   public int h()
   {
-    return this.j;
+    return this.k;
   }
   
   public void h(int paramInt)
   {
-    this.j = paramInt;
+    this.l = paramInt;
   }
   
   public int i()
   {
-    return this.k;
+    return this.l;
   }
   
   public void i(int paramInt)
   {
-    this.e = paramInt;
+    this.f = paramInt;
+  }
+  
+  public int j()
+  {
+    return this.m;
   }
   
   public void j(int paramInt)
   {
-    this.f = paramInt;
+    this.g = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.AECaptureParam
  * JD-Core Version:    0.7.0.1
  */

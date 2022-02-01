@@ -9,13 +9,13 @@ import android.widget.RelativeLayout;
 public class ContentWrapView
   extends RelativeLayout
 {
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private ContentWrapView.TransformationInfo jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
+  private Matrix mMatrix = new Matrix();
+  private ContentWrapView.TransformationInfo mTransInfo;
   
   public ContentWrapView(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public ContentWrapView(Context paramContext, AttributeSet paramAttributeSet)
@@ -26,59 +26,59 @@ public class ContentWrapView
   public ContentWrapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a()
-  {
-    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
-    if (localTransformationInfo == null) {
-      return;
-    }
-    if (localTransformationInfo.jdField_a_of_type_Boolean)
-    {
-      ContentWrapView.TransformationInfo.a(localTransformationInfo).setTranslate(localTransformationInfo.jdField_a_of_type_Float, localTransformationInfo.b);
-      localTransformationInfo.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  private void a(Context paramContext)
+  private void init(Context paramContext)
   {
     setWillNotDraw(false);
   }
   
+  private void updateMatrix()
+  {
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo == null) {
+      return;
+    }
+    if (localTransformationInfo.mMatrixDirty)
+    {
+      ContentWrapView.TransformationInfo.access$000(localTransformationInfo).setTranslate(localTransformationInfo.mTranslationX, localTransformationInfo.mTranslationY);
+      localTransformationInfo.mMatrixDirty = false;
+    }
+  }
+  
   public void draw(Canvas paramCanvas)
   {
-    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
     if (localTransformationInfo != null)
     {
-      a();
-      paramCanvas.concat(ContentWrapView.TransformationInfo.a(localTransformationInfo));
+      updateMatrix();
+      paramCanvas.concat(ContentWrapView.TransformationInfo.access$000(localTransformationInfo));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo = new ContentWrapView.TransformationInfo();
+    if (this.mTransInfo == null) {
+      this.mTransInfo = new ContentWrapView.TransformationInfo();
     }
   }
   
   public float getTransX()
   {
-    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
     if (localTransformationInfo != null) {
-      return localTransformationInfo.jdField_a_of_type_Float;
+      return localTransformationInfo.mTranslationX;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
     if (localTransformationInfo != null) {
-      return localTransformationInfo.b;
+      return localTransformationInfo.mTranslationY;
     }
     return 0.0F;
   }
@@ -86,11 +86,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
-    if (localTransformationInfo.jdField_a_of_type_Float != paramFloat)
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo.mTranslationX != paramFloat)
     {
-      localTransformationInfo.jdField_a_of_type_Float = paramFloat;
-      localTransformationInfo.jdField_a_of_type_Boolean = true;
+      localTransformationInfo.mTranslationX = paramFloat;
+      localTransformationInfo.mMatrixDirty = true;
       invalidate();
     }
   }
@@ -105,11 +105,11 @@ public class ContentWrapView
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
-    if (localTransformationInfo.b != paramFloat)
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo.mTranslationY != paramFloat)
     {
-      localTransformationInfo.b = paramFloat;
-      localTransformationInfo.jdField_a_of_type_Boolean = true;
+      localTransformationInfo.mTranslationY = paramFloat;
+      localTransformationInfo.mMatrixDirty = true;
       invalidate();
     }
   }
@@ -123,7 +123,7 @@ public class ContentWrapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ContentWrapView
  * JD-Core Version:    0.7.0.1
  */

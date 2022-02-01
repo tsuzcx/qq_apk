@@ -41,10 +41,10 @@ class TestAppFragment$6$1
         i += 1;
       }
       localJSONObject1.put("scoreList", localJSONArray1);
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("reportScore", localJSONObject1, new TestAppFragment.MyAPICallback(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
-      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null)
+      this.a.a.c.a("reportScore", localJSONObject1, new TestAppFragment.MyAPICallback(this.a.a.d));
+      if (this.a.a.d != null)
       {
-        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
+        new AlertDialog.Builder(this.a.a.d.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
         return;
       }
     }
@@ -56,7 +56,7 @@ class TestAppFragment$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

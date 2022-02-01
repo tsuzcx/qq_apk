@@ -61,12 +61,12 @@ class HWEditLocalVideoPlayer$ConvertIFramesRunnable
         ((StringBuilder)localObject2).append(".IFrames.mp4");
         localObject2 = ((StringBuilder)localObject2).toString();
         if (this.b != 0) {
-          HWEditLocalVideoPlayer.a(this.this$0).b = (this.b * this.a);
+          HWEditLocalVideoPlayer.d(this.this$0).f = (this.b * this.a);
         }
-        localObject3 = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.this$0.a.get(this.c);
+        localObject3 = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.this$0.c.get(this.c);
         long l1 = HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.a((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject3);
         long l2 = HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.b((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject3);
-        HWEditLocalVideoPlayer.a(this.this$0).a(new DecodeConfig(HWEditLocalVideoPlayer.a(this.this$0), 0, false, true, l1, l2), new EncodeConfig((String)localObject2, Integer.valueOf((String)localObject1).intValue(), Integer.valueOf(str).intValue(), 12582912, this.b, this.a, 0, false, i, null, null, null, false), new HWEditLocalVideoPlayer.ConvertIFramesRunnable.1(this, (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject3), null);
+        HWEditLocalVideoPlayer.d(this.this$0).a(new DecodeConfig(HWEditLocalVideoPlayer.a(this.this$0), 0, false, true, l1, l2), new EncodeConfig((String)localObject2, Integer.valueOf((String)localObject1).intValue(), Integer.valueOf(str).intValue(), 12582912, this.b, this.a, 0, false, i, null, null, null, false), new HWEditLocalVideoPlayer.ConvertIFramesRunnable.1(this, (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject3), null);
       }
       return;
     }
@@ -80,7 +80,7 @@ class HWEditLocalVideoPlayer$ConvertIFramesRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable
  * JD-Core Version:    0.7.0.1
  */

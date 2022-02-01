@@ -17,19 +17,19 @@ class FileManagerEngine$1
   
   public void run()
   {
-    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if (this.jdField_a_of_type_Boolean) {
-      this.this$0.a.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.b, true, this.c, 0L, true, this.jdField_a_of_type_Int, this.d, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, -1L, MessageCache.a());
+    FileManagerUtil.g(this.a);
+    if (this.b) {
+      this.this$0.a.getFileManagerDataCenter().a(this.c, this.d, true, this.e, 0L, true, this.f, this.g, this.a.msgSeq, this.h, this.a.msgUid, -1L, MessageCache.c());
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_=k Id[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject).append(this.a.nSessionId);
       ((StringBuilder)localObject).append("] SendLocalfile[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+      ((StringBuilder)localObject).append(this.a.fileName);
       ((StringBuilder)localObject).append("], peerType[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
+      ((StringBuilder)localObject).append(this.a.peerType);
       ((StringBuilder)localObject).append("]");
       QLog.i("FileManagerEngine<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
@@ -37,22 +37,22 @@ class FileManagerEngine$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_=k Id[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject).append(this.a.nSessionId);
       ((StringBuilder)localObject).append("] SendLocalfileToWeiyun[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+      ((StringBuilder)localObject).append(this.a.fileName);
       ((StringBuilder)localObject).append("]");
       QLog.i("FileManagerEngine<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
     Object localObject = new Bundle();
-    if (!TextUtils.isEmpty(this.e)) {
-      ((Bundle)localObject).putString("emptyPathCallStack", this.e);
+    if (!TextUtils.isEmpty(this.i)) {
+      ((Bundle)localObject).putString("emptyPathCallStack", this.i);
     }
-    this.this$0.a.getFileManagerRSCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, (Bundle)localObject);
+    this.this$0.a.getFileManagerRSCenter().a(this.a, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileManagerEngine.1
  * JD-Core Version:    0.7.0.1
  */

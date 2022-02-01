@@ -21,17 +21,17 @@ import java.util.List;
 public class MaterialClassifierView
   extends LinearLayout
 {
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private MaterialCategoryAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter;
-  private MaterialClassifierView.CategoryItemListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView$CategoryItemListener;
-  private MaterialContentAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter;
-  private List<MetaCategory> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
-  private List<MetaMaterial> jdField_b_of_type_JavaUtilList;
+  private LinearLayout a;
+  private RecyclerView b;
+  private RecyclerView c;
+  private ImageView d;
+  private LinearLayoutManager e;
+  private MaterialCategoryAdapter f;
+  private MaterialContentAdapter g;
+  private MaterialClassifierView.CategoryItemListener h;
+  private List<MetaCategory> i;
+  private List<MetaMaterial> j;
+  private boolean k;
   
   public MaterialClassifierView(Context paramContext)
   {
@@ -52,47 +52,47 @@ public class MaterialClassifierView
   private void b()
   {
     setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2064056464);
-    int i = DisplayUtil.a(getContext(), 11.0F);
-    int j = DisplayUtil.a(getContext(), 6.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, j, i, j);
+    this.a = new LinearLayout(getContext());
+    this.a.setOrientation(0);
+    this.a.setGravity(16);
+    this.d = new ImageView(getContext());
+    this.d.setImageResource(2063925432);
+    int m = DisplayUtil.a(getContext(), 11.0F);
+    int n = DisplayUtil.a(getContext(), 6.0F);
+    this.d.setPadding(m, n, m, n);
     Object localObject = new LinearLayout.LayoutParams(DisplayUtil.a(getContext(), 42.0F), DisplayUtil.a(getContext(), 32.0F));
     ((LinearLayout.LayoutParams)localObject).setMargins(DisplayUtil.a(getContext(), 14.0F), 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(getContext());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 0, false));
-    localObject = (SimpleItemAnimator)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator();
+    this.a.addView(this.d, (ViewGroup.LayoutParams)localObject);
+    this.b = new RecyclerView(getContext());
+    this.b.setOverScrollMode(2);
+    this.b.setLayoutManager(new LinearLayoutManager(getContext(), 0, false));
+    localObject = (SimpleItemAnimator)this.b.getItemAnimator();
     if (localObject != null) {
       ((SimpleItemAnimator)localObject).setSupportsChangeAnimations(false);
     }
     localObject = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, (ViewGroup.LayoutParams)localObject);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new LinearLayout.LayoutParams(-1, DisplayUtil.a(getContext(), 32.0F)));
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(getContext());
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setAutoMeasureEnabled(false);
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    localObject = (SimpleItemAnimator)this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator();
+    this.a.addView(this.b, (ViewGroup.LayoutParams)localObject);
+    addView(this.a, new LinearLayout.LayoutParams(-1, DisplayUtil.a(getContext(), 32.0F)));
+    this.c = new RecyclerView(getContext());
+    this.c.setOverScrollMode(2);
+    this.e = new LinearLayoutManager(getContext(), 0, false);
+    this.e.setAutoMeasureEnabled(false);
+    this.c.setLayoutManager(this.e);
+    localObject = (SimpleItemAnimator)this.c.getItemAnimator();
     if (localObject != null) {
       ((SimpleItemAnimator)localObject).setSupportsChangeAnimations(false);
     }
-    addView(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView, new LinearLayout.LayoutParams(-1, -2));
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new MaterialClassifierView.1(this));
+    addView(this.c, new LinearLayout.LayoutParams(-1, -2));
+    this.c.addOnScrollListener(new MaterialClassifierView.1(this));
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter;
+    Object localObject = this.f;
     if (localObject != null) {
       ((MaterialCategoryAdapter)localObject).notifyDataSetChanged();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter;
+    localObject = this.g;
     if (localObject != null) {
       ((MaterialContentAdapter)localObject).notifyDataSetChanged();
     }
@@ -100,20 +100,20 @@ public class MaterialClassifierView
   
   public void setCategoryItemListener(MaterialClassifierView.CategoryItemListener paramCategoryItemListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView$CategoryItemListener = paramCategoryItemListener;
+    this.h = paramCategoryItemListener;
   }
   
   public void setCategoryLayoutVisibility(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    int i;
+    Object localObject = this.a;
+    int m;
     if (paramBoolean) {
-      i = 0;
+      m = 0;
     } else {
-      i = 8;
+      m = 8;
     }
-    ((LinearLayout)localObject).setVisibility(i);
-    localObject = (ViewGroup.MarginLayoutParams)this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutParams();
+    ((LinearLayout)localObject).setVisibility(m);
+    localObject = (ViewGroup.MarginLayoutParams)this.c.getLayoutParams();
     if (localObject != null)
     {
       if (paramBoolean) {
@@ -121,42 +121,42 @@ public class MaterialClassifierView
       } else {
         ((ViewGroup.MarginLayoutParams)localObject).topMargin = DisplayUtil.a(getContext(), 18.0F);
       }
-      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
   public void setClearButtonEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    int i;
+    this.d.setEnabled(paramBoolean);
+    ImageView localImageView = this.d;
+    int m;
     if (paramBoolean) {
-      i = 2064056463;
+      m = 2063925431;
     } else {
-      i = 2064056464;
+      m = 2063925432;
     }
-    localImageView.setImageResource(i);
+    localImageView.setImageResource(m);
   }
   
   public void setOnClearButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.d.setOnClickListener(paramOnClickListener);
   }
   
   public void setup(MaterialContentAdapter paramMaterialContentAdapter, @NonNull List<MetaCategory> paramList, @NonNull List<MetaMaterial> paramList1)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter = paramMaterialContentAdapter;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter = new MaterialCategoryAdapter(paramList, new MaterialClassifierView.2(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter.a(this.jdField_b_of_type_JavaUtilList);
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter);
+    this.g = paramMaterialContentAdapter;
+    this.i = paramList;
+    this.j = paramList1;
+    this.f = new MaterialCategoryAdapter(paramList, new MaterialClassifierView.2(this));
+    this.b.setAdapter(this.f);
+    this.g.a(this.j);
+    this.c.setAdapter(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialClassifierView
  * JD-Core Version:    0.7.0.1
  */

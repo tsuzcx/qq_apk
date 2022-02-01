@@ -12,35 +12,21 @@ import java.io.File;
 public class DBOpenHelper
   extends SQLiteOpenHelper
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private Context jdField_a_of_type_AndroidContentContext;
+  private static final String a;
+  private Context b;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ToggleSetting.h());
+    localStringBuilder.append(ToggleSetting.s());
     localStringBuilder.append("toggle.db");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   DBOpenHelper(Context paramContext)
   {
-    super(paramContext, jdField_a_of_type_JavaLangString, null, 3);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  void a(SQLiteDatabase paramSQLiteDatabase)
-  {
-    if (a(paramSQLiteDatabase))
-    {
-      onCreate(paramSQLiteDatabase);
-      return;
-    }
-    LogUtils.b("drop fail delete db", new Object[0]);
-    paramSQLiteDatabase = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(jdField_a_of_type_JavaLangString);
-    if ((paramSQLiteDatabase != null) && (paramSQLiteDatabase.canWrite())) {
-      paramSQLiteDatabase.delete();
-    }
+    super(paramContext, a, null, 3);
+    this.b = paramContext;
   }
   
   /* Error */
@@ -50,11 +36,11 @@ public class DBOpenHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: iconst_1
-    //   3: anewarray 74	java/lang/String
+    //   3: anewarray 44	java/lang/String
     //   6: astore 4
     //   8: aload 4
     //   10: iconst_0
-    //   11: ldc 76
+    //   11: ldc 46
     //   13: aastore
     //   14: aload 4
     //   16: arraylength
@@ -68,22 +54,22 @@ public class DBOpenHelper
     //   27: iload_2
     //   28: aaload
     //   29: astore 5
-    //   31: new 11	java/lang/StringBuilder
+    //   31: new 12	java/lang/StringBuilder
     //   34: dup
-    //   35: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   35: invokespecial 15	java/lang/StringBuilder:<init>	()V
     //   38: astore 6
     //   40: aload 6
-    //   42: ldc 78
-    //   44: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: ldc 48
+    //   44: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: pop
     //   48: aload 6
     //   50: aload 5
-    //   52: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: aload_1
     //   57: aload 6
-    //   59: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokevirtual 84	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   59: invokevirtual 30	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokevirtual 54	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
     //   65: iload_2
     //   66: iconst_1
     //   67: iadd
@@ -97,10 +83,10 @@ public class DBOpenHelper
     //   77: goto +19 -> 96
     //   80: astore_1
     //   81: aload_1
-    //   82: invokestatic 87	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
+    //   82: invokestatic 59	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
     //   85: ifne +7 -> 92
     //   88: aload_1
-    //   89: invokevirtual 90	java/lang/Throwable:printStackTrace	()V
+    //   89: invokevirtual 62	java/lang/Throwable:printStackTrace	()V
     //   92: aload_0
     //   93: monitorexit
     //   94: iconst_0
@@ -129,6 +115,20 @@ public class DBOpenHelper
     //   2	8	80	java/lang/Throwable
     //   14	18	80	java/lang/Throwable
     //   31	65	80	java/lang/Throwable
+  }
+  
+  void b(SQLiteDatabase paramSQLiteDatabase)
+  {
+    if (a(paramSQLiteDatabase))
+    {
+      onCreate(paramSQLiteDatabase);
+      return;
+    }
+    LogUtils.b("drop fail delete db", new Object[0]);
+    paramSQLiteDatabase = this.b.getDatabasePath(a);
+    if ((paramSQLiteDatabase != null) && (paramSQLiteDatabase.canWrite())) {
+      paramSQLiteDatabase.delete();
+    }
   }
   
   /* Error */
@@ -160,28 +160,28 @@ public class DBOpenHelper
     //   30: goto +52 -> 82
     //   33: ldc 98
     //   35: iconst_1
-    //   36: anewarray 49	java/lang/Object
+    //   36: anewarray 72	java/lang/Object
     //   39: dup
     //   40: iconst_0
     //   41: iload_1
     //   42: invokestatic 104	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   45: aastore
-    //   46: invokestatic 107	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   46: invokestatic 108	com/tencent/featuretoggle/utils/LogUtils:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   49: pop
     //   50: iload_1
     //   51: iconst_5
     //   52: if_icmpne +13 -> 65
-    //   55: ldc 109
+    //   55: ldc 110
     //   57: iconst_0
-    //   58: anewarray 49	java/lang/Object
-    //   61: invokestatic 111	com/tencent/featuretoggle/utils/LogUtils:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   58: anewarray 72	java/lang/Object
+    //   61: invokestatic 113	com/tencent/featuretoggle/utils/LogUtils:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   64: pop
-    //   65: ldc2_w 112
-    //   68: invokestatic 119	java/lang/Thread:sleep	(J)V
+    //   65: ldc2_w 114
+    //   68: invokestatic 121	java/lang/Thread:sleep	(J)V
     //   71: goto -65 -> 6
     //   74: astore_3
     //   75: aload_3
-    //   76: invokevirtual 120	java/lang/InterruptedException:printStackTrace	()V
+    //   76: invokevirtual 122	java/lang/InterruptedException:printStackTrace	()V
     //   79: goto -73 -> 6
     //   82: aload_0
     //   83: monitorexit
@@ -234,9 +234,9 @@ public class DBOpenHelper
       {
         for (;;)
         {
-          LogUtils.a("[Database] try db %d", new Object[] { Integer.valueOf(i) });
+          LogUtils.c("[Database] try db %d", new Object[] { Integer.valueOf(i) });
           if (i == 5) {
-            LogUtils.b("[Database] get db fail!", new Object[0]);
+            LogUtils.d("[Database] get db fail!", new Object[0]);
           }
           try
           {
@@ -258,7 +258,7 @@ public class DBOpenHelper
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[Database] db error :");
         localStringBuilder.append((String)localObject2);
-        LogUtils.b(localStringBuilder.toString(), new Object[0]);
+        LogUtils.d(localStringBuilder.toString(), new Object[0]);
       }
       finally {}
       do
@@ -277,120 +277,120 @@ public class DBOpenHelper
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 11	java/lang/StringBuilder
+    //   2: new 12	java/lang/StringBuilder
     //   5: dup
-    //   6: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   6: invokespecial 15	java/lang/StringBuilder:<init>	()V
     //   9: astore_2
     //   10: aload_2
-    //   11: ldc 145
-    //   13: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: ldc 147
+    //   13: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
     //   17: aload_2
-    //   18: ldc 76
-    //   20: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: ldc 46
+    //   20: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload_2
-    //   25: ldc 147
-    //   27: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc 149
+    //   27: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload_2
-    //   32: ldc 149
-    //   34: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: ldc 151
+    //   34: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: pop
     //   38: aload_2
-    //   39: ldc 151
-    //   41: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: ldc 153
+    //   41: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: pop
     //   45: aload_2
-    //   46: ldc 153
-    //   48: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: ldc 155
+    //   48: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: pop
     //   52: aload_2
-    //   53: ldc 155
-    //   55: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: ldc 157
+    //   55: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: pop
     //   59: aload_2
-    //   60: ldc 157
-    //   62: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: ldc 159
+    //   62: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: aload_2
-    //   67: ldc 159
-    //   69: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc 161
+    //   69: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload_2
-    //   74: ldc 161
-    //   76: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: ldc 163
+    //   76: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: aload_2
-    //   81: ldc 163
-    //   83: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: ldc 165
+    //   83: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: pop
     //   87: aload_2
-    //   88: ldc 165
-    //   90: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: ldc 167
+    //   90: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: pop
     //   94: aload_2
-    //   95: ldc 163
-    //   97: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: ldc 165
+    //   97: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: pop
     //   101: aload_2
-    //   102: ldc 167
-    //   104: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: ldc 169
+    //   104: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   107: pop
     //   108: aload_2
-    //   109: ldc 155
-    //   111: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: ldc 157
+    //   111: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload_2
-    //   116: ldc 169
-    //   118: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: ldc 171
+    //   118: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   121: pop
     //   122: aload_2
-    //   123: ldc 155
-    //   125: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: ldc 157
+    //   125: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: pop
     //   129: aload_2
-    //   130: ldc 171
-    //   132: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: ldc 173
+    //   132: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: pop
     //   136: aload_2
-    //   137: ldc 155
-    //   139: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: ldc 157
+    //   139: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: pop
     //   143: aload_2
-    //   144: ldc 173
-    //   146: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: ldc 175
+    //   146: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: pop
     //   150: aload_2
-    //   151: ldc 175
-    //   153: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: ldc 177
+    //   153: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: aload_2
-    //   158: ldc 177
-    //   160: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: ldc 179
+    //   160: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: pop
-    //   164: ldc 179
+    //   164: ldc 181
     //   166: iconst_1
-    //   167: anewarray 49	java/lang/Object
+    //   167: anewarray 72	java/lang/Object
     //   170: dup
     //   171: iconst_0
     //   172: aload_2
-    //   173: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokevirtual 30	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   176: aastore
-    //   177: invokestatic 55	com/tencent/featuretoggle/utils/LogUtils:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   177: invokestatic 75	com/tencent/featuretoggle/utils/LogUtils:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   180: aload_1
     //   181: aload_2
-    //   182: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokevirtual 84	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   182: invokevirtual 30	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: invokevirtual 54	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
     //   188: goto +19 -> 207
     //   191: astore_1
     //   192: goto +18 -> 210
     //   195: astore_1
     //   196: aload_1
-    //   197: invokestatic 87	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
+    //   197: invokestatic 59	com/tencent/featuretoggle/utils/LogUtils:a	(Ljava/lang/Throwable;)Z
     //   200: ifne +7 -> 207
     //   203: aload_1
-    //   204: invokevirtual 90	java/lang/Throwable:printStackTrace	()V
+    //   204: invokevirtual 62	java/lang/Throwable:printStackTrace	()V
     //   207: aload_0
     //   208: monitorexit
     //   209: return
@@ -415,10 +415,10 @@ public class DBOpenHelper
   {
     try
     {
-      if (DeviceUtils.a() >= 11)
+      if (DeviceUtils.c() >= 11)
       {
         LogUtils.b("downgrade %d to %d drop tables!}", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        a(paramSQLiteDatabase);
+        b(paramSQLiteDatabase);
       }
       return;
     }
@@ -440,7 +440,7 @@ public class DBOpenHelper
     }
     catch (Exception localException)
     {
-      a(paramSQLiteDatabase);
+      b(paramSQLiteDatabase);
       if (LogUtils.a(localException)) {
         return;
       }
@@ -452,13 +452,13 @@ public class DBOpenHelper
       paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s varchar(20);", new Object[] { "t_f_e", "_dsvid" }));
       return;
     }
-    a(paramSQLiteDatabase);
+    b(paramSQLiteDatabase);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.db.DBOpenHelper
  * JD-Core Version:    0.7.0.1
  */

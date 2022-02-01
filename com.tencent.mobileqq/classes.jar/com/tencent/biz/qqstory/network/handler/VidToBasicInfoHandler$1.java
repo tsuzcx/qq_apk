@@ -18,11 +18,11 @@ class VidToBasicInfoHandler$1
     Object localObject;
     if (VidToBasicInfoHandler.a(this.this$0))
     {
-      localObject = this.this$0.a.iterator();
+      localObject = this.this$0.c.iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)VidToBasicInfoHandler.a().get(str);
+        Long localLong = (Long)VidToBasicInfoHandler.e().get(str);
         if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 300000L))
         {
           ((Iterator)localObject).remove();
@@ -30,22 +30,22 @@ class VidToBasicInfoHandler$1
         }
         else
         {
-          VidToBasicInfoHandler.a().put(str, Long.valueOf(System.currentTimeMillis()));
+          VidToBasicInfoHandler.e().put(str, Long.valueOf(System.currentTimeMillis()));
         }
       }
     }
-    if (this.this$0.a.size() > 0)
+    if (this.this$0.c.size() > 0)
     {
-      SLog.a("Q.qqstory.net:VidToBasicInfoHandler", "request for vid info:%s", this.this$0.a);
+      SLog.a("Q.qqstory.net:VidToBasicInfoHandler", "request for vid info:%s", this.this$0.c);
       localObject = new GetVideoFullInfoListRequest();
-      ((GetVideoFullInfoListRequest)localObject).a = this.this$0.a;
+      ((GetVideoFullInfoListRequest)localObject).e = this.this$0.c;
       CmdTaskManger.a().a((NetworkRequest)localObject, this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

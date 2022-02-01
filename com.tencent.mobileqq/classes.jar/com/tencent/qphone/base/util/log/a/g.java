@@ -1,6 +1,6 @@
 package com.tencent.qphone.base.util.log.a;
 
-import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.d.d;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Calendar;
@@ -43,7 +43,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.g
  * JD-Core Version:    0.7.0.1
  */

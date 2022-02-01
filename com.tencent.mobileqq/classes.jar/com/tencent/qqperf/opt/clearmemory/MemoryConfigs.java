@@ -14,40 +14,27 @@ import mqq.app.MobileQQ;
 
 public class MemoryConfigs
 {
-  public float a;
-  public int a;
-  public long a;
-  public ClearMemoryConfig a;
-  public String a;
-  public boolean a;
-  public float b;
-  public long b;
-  private String b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public boolean d;
-  public boolean e = true;
+  public String a = "";
+  public float b = 0.0F;
+  public boolean c = false;
+  public int d = 15;
+  public long e = 900000L;
+  public float f = 1.1F;
+  public float g = 1.1F;
+  public ClearMemoryConfig h;
+  public boolean i = false;
+  public boolean j = false;
+  public boolean k = true;
+  public boolean l = true;
+  public float m = -1.0F;
+  public long n = -1L;
+  private String o = "key_heap_level_AB_ramdom";
   
   public MemoryConfigs()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 15;
-    this.jdField_a_of_type_Long = 900000L;
-    this.jdField_b_of_type_Float = 1.1F;
-    this.jdField_c_of_type_Float = 1.1F;
-    this.jdField_b_of_type_JavaLangString = "key_heap_level_AB_ramdom";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Long = -1L;
-    Object localObject = MagnifierSDK.a().a().b();
-    this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig = new ClearMemoryConfig("-1");
-    this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = true;
+    Object localObject = MagnifierSDK.b().d().b();
+    this.h = new ClearMemoryConfig("-1");
+    this.h.b = true;
     a();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -69,16 +56,16 @@ public class MemoryConfigs
         arrayOfString = localObject[1].split(";");
         if (arrayOfString[0].equals("1"))
         {
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
-          if (this.jdField_a_of_type_Int > 50) {
-            this.jdField_a_of_type_Int = 50;
+          this.c = true;
+          this.d = Integer.parseInt(arrayOfString[1]);
+          if (this.d > 50) {
+            this.d = 50;
           }
-          if (this.jdField_a_of_type_Int < 1) {
-            this.jdField_a_of_type_Int = 1;
+          if (this.d < 1) {
+            this.d = 1;
           }
         }
-        this.jdField_a_of_type_JavaLangString = localObject[2];
+        this.a = localObject[2];
       }
       catch (Exception localException1)
       {
@@ -91,36 +78,36 @@ public class MemoryConfigs
     }
     try
     {
-      this.jdField_a_of_type_Float = Float.valueOf(localObject[4]).floatValue();
-      if (this.jdField_a_of_type_Float <= 1.0F) {
+      this.b = Float.valueOf(localObject[4]).floatValue();
+      if (this.b <= 1.0F) {
         break label297;
       }
-      this.jdField_a_of_type_Float = 1.0F;
+      this.b = 1.0F;
     }
     catch (Exception localException2)
     {
       break label292;
     }
-    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
     try
     {
       label297:
-      this.jdField_b_of_type_Float = Float.parseFloat(localObject[6]);
+      this.f = Float.parseFloat(localObject[6]);
     }
     catch (Exception localException3)
     {
       label311:
       break label311;
     }
-    this.jdField_b_of_type_Float = 0.001F;
+    this.f = 0.001F;
     if (localObject.length >= 9) {
       a((String[])localObject);
     }
     if (localObject.length >= 10) {
       if ("1".equalsIgnoreCase(localObject[9])) {
-        this.e = true;
+        this.l = true;
       } else {
-        this.e = false;
+        this.l = false;
       }
     }
     if (localObject.length >= 11)
@@ -128,8 +115,8 @@ public class MemoryConfigs
       arrayOfString = localObject[10].split(";");
       if (arrayOfString.length >= 2)
       {
-        this.jdField_d_of_type_Float = Float.parseFloat(arrayOfString[0]);
-        this.jdField_b_of_type_Long = Long.parseLong(arrayOfString[1]);
+        this.m = Float.parseFloat(arrayOfString[0]);
+        this.n = Long.parseLong(arrayOfString[1]);
       }
     }
     b((String[])localObject);
@@ -139,11 +126,11 @@ public class MemoryConfigs
   private void a()
   {
     Object localObject = MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 4);
-    if (((SharedPreferences)localObject).getInt(this.jdField_b_of_type_JavaLangString, -1) == -1)
+    if (((SharedPreferences)localObject).getInt(this.o, -1) == -1)
     {
-      int i = new Random().nextInt(1000);
+      int i1 = new Random().nextInt(1000);
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt(this.jdField_b_of_type_JavaLangString, i);
+      ((SharedPreferences.Editor)localObject).putInt(this.o, i1);
       if (Build.VERSION.SDK_INT < 9) {
         ((SharedPreferences.Editor)localObject).commit();
       } else {
@@ -156,7 +143,7 @@ public class MemoryConfigs
     } else {
       bool = false;
     }
-    this.jdField_c_of_type_Boolean = bool;
+    this.j = bool;
   }
   
   private void a(String[] paramArrayOfString)
@@ -166,48 +153,48 @@ public class MemoryConfigs
       paramArrayOfString = paramArrayOfString[8].split(";");
       if (paramArrayOfString.length >= 5)
       {
-        if (this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig == null) {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig = new ClearMemoryConfig(this.jdField_a_of_type_JavaLangString);
+        if (this.h == null) {
+          this.h = new ClearMemoryConfig(this.a);
         } else {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          this.h.a = this.a;
         }
         if (paramArrayOfString[0].equals("1")) {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = true;
+          this.h.b = true;
         } else if (paramArrayOfString[0].equals("0")) {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = false;
+          this.h.b = false;
         } else if (MobileQQ.sProcessId == 1) {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = true;
+          this.h.b = true;
         } else if (paramArrayOfString[0].equals("3")) {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = true;
+          this.h.b = true;
         } else if (paramArrayOfString[0].equals("4")) {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = false;
+          this.h.b = false;
         } else {
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean = true;
+          this.h.b = true;
         }
-        this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.b = Integer.parseInt(paramArrayOfString[1]);
+        this.h.d = Integer.parseInt(paramArrayOfString[1]);
         Object localObject = paramArrayOfString[2].split(",");
         if (localObject.length >= 4)
         {
           localObject = new ClearMemoryConfig.MemoryLevelInfo(Integer.parseInt(localObject[0]), Integer.parseInt(localObject[1]), Float.parseFloat(localObject[2]), Float.parseFloat(localObject[3]));
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_AndroidUtilSparseArray.put(1, localObject);
+          this.h.e.put(1, localObject);
         }
         localObject = paramArrayOfString[3].split(",");
         if (localObject.length >= 4)
         {
           localObject = new ClearMemoryConfig.MemoryLevelInfo(Integer.parseInt(localObject[0]), Integer.parseInt(localObject[1]), Float.parseFloat(localObject[2]), Float.parseFloat(localObject[3]));
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
+          this.h.e.put(2, localObject);
         }
         paramArrayOfString = paramArrayOfString[4].split(",");
         if (paramArrayOfString.length >= 4)
         {
           paramArrayOfString = new ClearMemoryConfig.MemoryLevelInfo(Integer.parseInt(paramArrayOfString[0]), Integer.parseInt(paramArrayOfString[1]), Float.parseFloat(paramArrayOfString[2]), Float.parseFloat(paramArrayOfString[3]));
-          this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_AndroidUtilSparseArray.put(3, paramArrayOfString);
+          this.h.e.put(3, paramArrayOfString);
         }
         if (QLog.isColorLevel())
         {
           paramArrayOfString = new StringBuilder();
           paramArrayOfString.append("mClearMemoryConfig= ");
-          paramArrayOfString.append(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig);
+          paramArrayOfString.append(this.h);
           QLog.d("Q.Memory.MemoryConfigs", 2, paramArrayOfString.toString());
           return;
         }
@@ -225,16 +212,16 @@ public class MemoryConfigs
     {
       if ("1".equalsIgnoreCase(paramArrayOfString[11]))
       {
-        this.jdField_d_of_type_Boolean = true;
+        this.k = true;
         return;
       }
-      this.jdField_d_of_type_Boolean = false;
+      this.k = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.MemoryConfigs
  * JD-Core Version:    0.7.0.1
  */

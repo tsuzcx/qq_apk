@@ -26,28 +26,28 @@ class IdentificationIpcServer$4
     paramArrayOfByte.append("BDH.Upload fail  : result:");
     paramArrayOfByte.append(paramInt);
     QLog.i("qqidentification_server", 1, paramArrayOfByte.toString());
-    paramArrayOfByte = this.jdField_a_of_type_MqqAppAppRuntime;
+    paramArrayOfByte = this.c;
     paramHashMap = new StringBuilder();
-    paramHashMap.append(this.c);
+    paramHashMap.append(this.f);
     paramHashMap.append("");
     ReportController.b(paramArrayOfByte, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, "", "", paramHashMap.toString(), "");
-    this.jdField_a_of_type_EipcEIPCResult.code = -102;
+    this.b.code = -102;
     paramArrayOfByte = new Bundle();
     paramArrayOfByte.putInt("ret", 209);
     paramHashMap = new StringBuilder();
     paramHashMap.append("UPLOAD onFailed I=");
     paramHashMap.append(paramInt);
     paramArrayOfByte.putString("subError", paramHashMap.toString());
-    paramArrayOfByte.putString("errMsg", HardCodeUtil.a(2131705788));
-    this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer;
-    paramArrayOfByte.callbackResult(IdentificationIpcServer.a(paramArrayOfByte), this.jdField_a_of_type_EipcEIPCResult);
+    paramArrayOfByte.putString("errMsg", HardCodeUtil.a(2131903673));
+    this.b.data = paramArrayOfByte;
+    paramArrayOfByte = this.g;
+    paramArrayOfByte.callbackResult(IdentificationIpcServer.a(paramArrayOfByte), this.b);
   }
   
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
     QLog.d("qqidentification_server", 1, "upload file success");
-    this.jdField_a_of_type_JavaIoFile.delete();
+    this.a.delete();
     paramHashMap = new faceproto.Response();
     try
     {
@@ -66,20 +66,20 @@ class IdentificationIpcServer$4
       localStringBuilder.append(i);
       QLog.d("qqidentification_server", 1, new Object[] { localStringBuilder.toString(), "idKey : ", localObject2 });
       ((Bundle)localObject1).putString("idKey", (String)localObject2);
-      this.jdField_a_of_type_EipcEIPCResult.data = ((Bundle)localObject1);
+      this.b.data = ((Bundle)localObject1);
       if (i == 0)
       {
-        paramArrayOfByte = this.jdField_a_of_type_MqqAppAppRuntime;
+        paramArrayOfByte = this.c;
         paramHashMap = new StringBuilder();
-        paramHashMap.append(this.jdField_a_of_type_Int);
+        paramHashMap.append(this.d);
         paramHashMap.append("");
         paramHashMap = paramHashMap.toString();
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
-        ((StringBuilder)localObject1).append(this.b);
+        ((StringBuilder)localObject1).append(this.e);
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.c);
+        ((StringBuilder)localObject2).append(this.f);
         ((StringBuilder)localObject2).append("");
         ReportController.b(paramArrayOfByte, "dc00898", "", "", "0X80097ED", "0X80097ED", 0, 0, paramHashMap, (String)localObject1, ((StringBuilder)localObject2).toString(), "");
       }
@@ -91,17 +91,17 @@ class IdentificationIpcServer$4
         paramHashMap.append(", ");
         paramHashMap.append(paramArrayOfByte);
         QLog.e("qqidentification_server", 1, paramHashMap.toString());
-        paramArrayOfByte = this.jdField_a_of_type_MqqAppAppRuntime;
+        paramArrayOfByte = this.c;
         paramHashMap = new StringBuilder();
-        paramHashMap.append(this.jdField_a_of_type_Int);
+        paramHashMap.append(this.d);
         paramHashMap.append("");
         paramHashMap = paramHashMap.toString();
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
-        ((StringBuilder)localObject1).append(this.b);
+        ((StringBuilder)localObject1).append(this.e);
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.c);
+        ((StringBuilder)localObject2).append(this.f);
         ((StringBuilder)localObject2).append("");
         localObject2 = ((StringBuilder)localObject2).toString();
         localStringBuilder = new StringBuilder();
@@ -113,28 +113,28 @@ class IdentificationIpcServer$4
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       QLog.e("qqidentification_server", 1, new Object[] { "parse bytes error : ", paramArrayOfByte.getMessage() });
-      this.jdField_a_of_type_EipcEIPCResult.code = -102;
+      this.b.code = -102;
       paramArrayOfByte = new Bundle();
       paramArrayOfByte.putString("subError", "InvalidProtocolBufferMicroException");
       paramArrayOfByte.putInt("ret", 208);
-      paramArrayOfByte.putString("errMsg", HardCodeUtil.a(2131705788));
-      this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-      paramArrayOfByte = this.jdField_a_of_type_MqqAppAppRuntime;
+      paramArrayOfByte.putString("errMsg", HardCodeUtil.a(2131903673));
+      this.b.data = paramArrayOfByte;
+      paramArrayOfByte = this.c;
       paramHashMap = new StringBuilder();
-      paramHashMap.append(this.jdField_a_of_type_Int);
+      paramHashMap.append(this.d);
       paramHashMap.append("");
       paramHashMap = paramHashMap.toString();
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(this.e);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append(this.f);
       ((StringBuilder)localObject2).append("");
       ReportController.b(paramArrayOfByte, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, paramHashMap, (String)localObject1, ((StringBuilder)localObject2).toString(), "");
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer;
-    paramArrayOfByte.callbackResult(IdentificationIpcServer.a(paramArrayOfByte), this.jdField_a_of_type_EipcEIPCResult);
+    paramArrayOfByte = this.g;
+    paramArrayOfByte.callbackResult(IdentificationIpcServer.a(paramArrayOfByte), this.b);
   }
   
   public void onSwitch2BackupChannel() {}
@@ -145,7 +145,7 @@ class IdentificationIpcServer$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationIpcServer.4
  * JD-Core Version:    0.7.0.1
  */

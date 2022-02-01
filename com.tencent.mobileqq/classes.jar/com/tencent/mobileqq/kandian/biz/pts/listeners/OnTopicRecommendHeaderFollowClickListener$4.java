@@ -17,9 +17,9 @@ class OnTopicRecommendHeaderFollowClickListener$4
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("关注 handleResp request businessID = ");
-      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnTopicRecommendHeaderFollowClickListener).a);
+      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.b(this.b).a);
       localStringBuilder.append(" requestFollowType = ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" isSuccess = ");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" distUin = ");
@@ -43,16 +43,16 @@ class OnTopicRecommendHeaderFollowClickListener$4
       localStringBuilder.append(" data = ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" isfollow ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" businessId = ");
-      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnTopicRecommendHeaderFollowClickListener).a);
+      localStringBuilder.append(OnTopicRecommendHeaderFollowClickListener.b(this.b).a);
       QLog.e("OnTopicRecommendHeaderFollowClickListener", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnTopicRecommendHeaderFollowClickListener.4
  * JD-Core Version:    0.7.0.1
  */

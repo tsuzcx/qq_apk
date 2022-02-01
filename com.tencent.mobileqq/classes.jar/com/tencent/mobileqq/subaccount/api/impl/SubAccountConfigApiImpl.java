@@ -9,7 +9,7 @@ public class SubAccountConfigApiImpl
 {
   public boolean getIsHideSubAccountTroopMsg()
   {
-    SubAccountConfigBean localSubAccountConfigBean = (SubAccountConfigBean)QConfigManager.a().a(607);
+    SubAccountConfigBean localSubAccountConfigBean = (SubAccountConfigBean)QConfigManager.b().b(607);
     if (localSubAccountConfigBean != null) {
       return localSubAccountConfigBean.a;
     }
@@ -18,7 +18,7 @@ public class SubAccountConfigApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountConfigApiImpl
  * JD-Core Version:    0.7.0.1
  */

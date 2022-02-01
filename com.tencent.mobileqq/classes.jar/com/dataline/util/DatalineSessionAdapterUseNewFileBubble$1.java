@@ -30,7 +30,7 @@ class DatalineSessionAdapterUseNewFileBubble$1
           QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop send but no sessionid");
         }
         localDataLineMsgSet.setPaused(true);
-        ((DataLineHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgSet.getGroupId(), l, false);
+        ((DataLineHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgSet.getGroupId(), l, false);
         DatalineSessionAdapterUseNewFileBubble.a(this.a, localItemHolder, localDataLineMsgSet);
       }
     }

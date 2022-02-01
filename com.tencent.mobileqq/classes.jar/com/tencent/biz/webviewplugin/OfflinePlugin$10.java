@@ -9,198 +9,198 @@ final class OfflinePlugin$10
   public void run()
   {
     // Byte code:
-    //   0: getstatic 26	com/tencent/biz/webviewplugin/OfflinePlugin:a	Ljava/util/concurrent/ConcurrentHashMap;
+    //   0: getstatic 27	com/tencent/biz/webviewplugin/OfflinePlugin:r	Ljava/util/concurrent/ConcurrentHashMap;
     //   3: aload_0
     //   4: getfield 12	com/tencent/biz/webviewplugin/OfflinePlugin$10:a	Ljava/lang/String;
-    //   7: invokevirtual 32	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   7: invokevirtual 33	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   10: pop
-    //   11: new 34	java/util/ArrayList
+    //   11: new 35	java/util/ArrayList
     //   14: dup
-    //   15: invokespecial 35	java/util/ArrayList:<init>	()V
+    //   15: invokespecial 36	java/util/ArrayList:<init>	()V
     //   18: astore 5
     //   20: aload_0
     //   21: getfield 12	com/tencent/biz/webviewplugin/OfflinePlugin$10:a	Ljava/lang/String;
-    //   24: invokestatic 40	com/tencent/biz/common/offline/OfflineEnvHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   24: invokestatic 42	com/tencent/biz/common/offline/OfflineEnvHelper:b	(Ljava/lang/String;)Ljava/lang/String;
     //   27: astore_2
     //   28: aload_2
-    //   29: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   29: invokestatic 48	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   32: ifeq +4 -> 36
     //   35: return
-    //   36: new 48	java/lang/StringBuilder
+    //   36: new 50	java/lang/StringBuilder
     //   39: dup
-    //   40: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   40: invokespecial 51	java/lang/StringBuilder:<init>	()V
     //   43: astore_3
     //   44: aload_3
     //   45: aload_2
-    //   46: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: pop
     //   50: aload_3
     //   51: aload_0
     //   52: getfield 12	com/tencent/biz/webviewplugin/OfflinePlugin$10:a	Ljava/lang/String;
-    //   55: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: pop
     //   59: aload_3
-    //   60: getstatic 58	java/io/File:separator	Ljava/lang/String;
-    //   63: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: getstatic 60	java/io/File:separator	Ljava/lang/String;
+    //   63: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: pop
     //   67: aload_3
-    //   68: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   71: astore 6
-    //   73: new 48	java/lang/StringBuilder
+    //   73: new 50	java/lang/StringBuilder
     //   76: dup
-    //   77: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   77: invokespecial 51	java/lang/StringBuilder:<init>	()V
     //   80: astore_2
     //   81: aload_2
     //   82: aload 6
-    //   84: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: pop
     //   88: aload_2
-    //   89: ldc 64
-    //   91: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: ldc 66
+    //   91: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
-    //   95: new 55	java/io/File
+    //   95: new 57	java/io/File
     //   98: dup
     //   99: aload_2
-    //   100: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokespecial 66	java/io/File:<init>	(Ljava/lang/String;)V
+    //   100: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
     //   106: astore_3
     //   107: aload_3
-    //   108: invokevirtual 70	java/io/File:exists	()Z
+    //   108: invokevirtual 72	java/io/File:exists	()Z
     //   111: ifne +87 -> 198
-    //   114: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   114: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   117: ifeq +35 -> 152
-    //   120: new 48	java/lang/StringBuilder
+    //   120: new 50	java/lang/StringBuilder
     //   123: dup
-    //   124: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   124: invokespecial 51	java/lang/StringBuilder:<init>	()V
     //   127: astore_2
     //   128: aload_2
-    //   129: ldc 77
-    //   131: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: ldc 79
+    //   131: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload_2
     //   136: aload 6
-    //   138: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: pop
-    //   142: ldc 79
+    //   142: ldc 81
     //   144: iconst_2
     //   145: aload_2
-    //   146: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 83	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   152: new 48	java/lang/StringBuilder
+    //   146: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokestatic 85	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   152: new 50	java/lang/StringBuilder
     //   155: dup
-    //   156: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   156: invokespecial 51	java/lang/StringBuilder:<init>	()V
     //   159: astore_2
     //   160: aload_2
     //   161: aload 6
-    //   163: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   166: pop
     //   167: aload_2
-    //   168: ldc 85
-    //   170: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: ldc 87
+    //   170: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   173: pop
     //   174: aload 5
     //   176: aload_2
-    //   177: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: invokevirtual 89	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   177: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokevirtual 91	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   183: pop
-    //   184: getstatic 26	com/tencent/biz/webviewplugin/OfflinePlugin:a	Ljava/util/concurrent/ConcurrentHashMap;
+    //   184: getstatic 27	com/tencent/biz/webviewplugin/OfflinePlugin:r	Ljava/util/concurrent/ConcurrentHashMap;
     //   187: aload_0
     //   188: getfield 12	com/tencent/biz/webviewplugin/OfflinePlugin$10:a	Ljava/lang/String;
     //   191: aload 5
-    //   193: invokevirtual 93	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   193: invokevirtual 95	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   196: pop
     //   197: return
     //   198: aconst_null
     //   199: astore 4
     //   201: aconst_null
     //   202: astore_2
-    //   203: new 95	com/tencent/commonsdk/zip/QZipFile
+    //   203: new 97	com/tencent/commonsdk/zip/QZipFile
     //   206: dup
     //   207: aload_3
-    //   208: invokespecial 98	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
+    //   208: invokespecial 100	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   211: astore_3
     //   212: aload_3
-    //   213: invokevirtual 102	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   213: invokevirtual 104	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   216: astore_2
     //   217: aload_3
-    //   218: invokevirtual 106	com/tencent/commonsdk/zip/QZipFile:size	()I
+    //   218: invokevirtual 108	com/tencent/commonsdk/zip/QZipFile:size	()I
     //   221: ifne +9 -> 230
     //   224: bipush 16
     //   226: istore_1
     //   227: goto +12 -> 239
     //   230: aload_3
-    //   231: invokevirtual 106	com/tencent/commonsdk/zip/QZipFile:size	()I
+    //   231: invokevirtual 108	com/tencent/commonsdk/zip/QZipFile:size	()I
     //   234: sipush 128
     //   237: imul
     //   238: istore_1
-    //   239: new 48	java/lang/StringBuilder
+    //   239: new 50	java/lang/StringBuilder
     //   242: dup
     //   243: iload_1
-    //   244: invokespecial 109	java/lang/StringBuilder:<init>	(I)V
+    //   244: invokespecial 111	java/lang/StringBuilder:<init>	(I)V
     //   247: astore 4
     //   249: aload_2
-    //   250: invokeinterface 114 1 0
+    //   250: invokeinterface 116 1 0
     //   255: ifeq +105 -> 360
     //   258: aload_2
-    //   259: invokeinterface 118 1 0
-    //   264: checkcast 120	java/util/zip/ZipEntry
+    //   259: invokeinterface 120 1 0
+    //   264: checkcast 122	java/util/zip/ZipEntry
     //   267: astore 7
     //   269: aload 7
-    //   271: invokevirtual 123	java/util/zip/ZipEntry:isDirectory	()Z
+    //   271: invokevirtual 125	java/util/zip/ZipEntry:isDirectory	()Z
     //   274: ifne -25 -> 249
-    //   277: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   277: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   280: ifeq +38 -> 318
     //   283: aload 4
-    //   285: ldc 125
-    //   287: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: ldc 127
+    //   287: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   290: pop
     //   291: aload 4
     //   293: aload 6
-    //   295: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   295: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   298: pop
     //   299: aload 4
     //   301: aload 7
-    //   303: invokevirtual 128	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   306: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: invokevirtual 130	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   306: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
     //   310: aload 4
-    //   312: ldc 130
-    //   314: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   312: ldc 132
+    //   314: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: pop
-    //   318: new 48	java/lang/StringBuilder
+    //   318: new 50	java/lang/StringBuilder
     //   321: dup
-    //   322: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   322: invokespecial 51	java/lang/StringBuilder:<init>	()V
     //   325: astore 8
     //   327: aload 8
     //   329: aload 6
-    //   331: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   331: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   334: pop
     //   335: aload 8
     //   337: aload 7
-    //   339: invokevirtual 128	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   342: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 130	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   342: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: pop
     //   346: aload 5
     //   348: aload 8
-    //   350: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: invokevirtual 89	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   350: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   353: invokevirtual 91	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   356: pop
     //   357: goto -108 -> 249
-    //   360: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   360: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   363: ifeq +14 -> 377
-    //   366: ldc 79
+    //   366: ldc 81
     //   368: iconst_2
     //   369: aload 4
-    //   371: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   374: invokestatic 83	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   377: getstatic 26	com/tencent/biz/webviewplugin/OfflinePlugin:a	Ljava/util/concurrent/ConcurrentHashMap;
+    //   371: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   374: invokestatic 85	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   377: getstatic 27	com/tencent/biz/webviewplugin/OfflinePlugin:r	Ljava/util/concurrent/ConcurrentHashMap;
     //   380: aload_0
     //   381: getfield 12	com/tencent/biz/webviewplugin/OfflinePlugin$10:a	Ljava/lang/String;
     //   384: aload 5
-    //   386: invokevirtual 93	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   386: invokevirtual 95	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   389: pop
     //   390: aload_3
-    //   391: invokevirtual 133	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   391: invokevirtual 135	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   394: return
     //   395: astore_2
     //   396: goto +52 -> 448
@@ -219,28 +219,28 @@ final class OfflinePlugin$10
     //   419: astore 4
     //   421: aload_3
     //   422: astore_2
-    //   423: ldc 79
+    //   423: ldc 81
     //   425: iconst_1
-    //   426: ldc 135
+    //   426: ldc 137
     //   428: aload 4
-    //   430: invokestatic 139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   430: invokestatic 141	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   433: aload_3
     //   434: ifnull +13 -> 447
     //   437: aload_3
-    //   438: invokevirtual 133	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   438: invokevirtual 135	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   441: return
     //   442: astore_2
     //   443: aload_2
-    //   444: invokevirtual 142	java/io/IOException:printStackTrace	()V
+    //   444: invokevirtual 144	java/io/IOException:printStackTrace	()V
     //   447: return
     //   448: aload_3
     //   449: ifnull +15 -> 464
     //   452: aload_3
-    //   453: invokevirtual 133	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   453: invokevirtual 135	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   456: goto +8 -> 464
     //   459: astore_3
     //   460: aload_3
-    //   461: invokevirtual 142	java/io/IOException:printStackTrace	()V
+    //   461: invokevirtual 144	java/io/IOException:printStackTrace	()V
     //   464: goto +5 -> 469
     //   467: aload_2
     //   468: athrow
@@ -291,7 +291,7 @@ final class OfflinePlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.10
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class ForwardFileOption$3
   
   public void onClick(View paramView)
   {
-    ForwardFileOption.a(this.a);
+    ForwardFileOption.b(this.a);
     ForwardFileOption.a(this.a, paramView);
     ReportController.b(null, "dc00898", "", "", "0X800AEEA", "0X800AEEA", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -20,7 +20,7 @@ class ForwardFileOption$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.3
  * JD-Core Version:    0.7.0.1
  */

@@ -329,75 +329,75 @@ public class AIOGalleryUtils
       }
       return null;
     }
-    int i = FileManagerUtil.a(paramMessageForTroopFile.fileName);
+    int i = FileManagerUtil.c(paramMessageForTroopFile.fileName);
     boolean bool = true;
     if (i != 0)
     {
       QLog.e("AIOGalleryUtils", 1, "unknow file Type");
       return null;
     }
-    if (localTroopFileStatusInfo.jdField_b_of_type_Int == 12)
+    if (localTroopFileStatusInfo.e == 12)
     {
       if (QLog.isColorLevel())
       {
         paramMessageForTroopFile = new StringBuilder();
         paramMessageForTroopFile.append("id:");
-        paramMessageForTroopFile.append(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        paramMessageForTroopFile.append(localTroopFileStatusInfo.a);
         paramMessageForTroopFile.append(" file is deleted!");
         QLog.w("AIOGalleryUtilstoTroopAIOFilePicData", 1, paramMessageForTroopFile.toString());
       }
       return null;
     }
-    if ((localTroopFileStatusInfo.jdField_b_of_type_Int != 4) && (localTroopFileStatusInfo.jdField_b_of_type_Int != 5))
+    if ((localTroopFileStatusInfo.e != 4) && (localTroopFileStatusInfo.e != 5))
     {
-      if ((FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) && ((localTroopFileStatusInfo.jdField_b_of_type_Int == 1) || (localTroopFileStatusInfo.jdField_b_of_type_Int == 2) || (localTroopFileStatusInfo.jdField_b_of_type_Int == 3)))
+      if ((FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.k)) && ((localTroopFileStatusInfo.e == 1) || (localTroopFileStatusInfo.e == 2) || (localTroopFileStatusInfo.e == 3)))
       {
         if (QLog.isColorLevel())
         {
           paramMessageForTroopFile = new StringBuilder();
           paramMessageForTroopFile.append("id:");
-          paramMessageForTroopFile.append(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+          paramMessageForTroopFile.append(localTroopFileStatusInfo.a);
           paramMessageForTroopFile.append(" file is:");
-          paramMessageForTroopFile.append(localTroopFileStatusInfo.jdField_b_of_type_Int);
+          paramMessageForTroopFile.append(localTroopFileStatusInfo.e);
           QLog.w("AIOGalleryUtilstoTroopAIOFilePicData", 1, paramMessageForTroopFile.toString());
         }
         return null;
       }
-      ((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(localTroopFileStatusInfo.jdField_g_of_type_JavaLangString));
-      Object localObject = localTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
+      ((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(localTroopFileStatusInfo.t));
+      Object localObject = localTroopFileStatusInfo.n;
       if ((paramMessageForTroopFile.isMultiMsg) && (TextUtils.isEmpty((CharSequence)localObject))) {
-        FileManagerUtil.a(paramMessageForTroopFile);
+        FileManagerUtil.e(paramMessageForTroopFile);
       }
       localObject = new AIOFilePicData();
-      ((AIOFilePicData)localObject).jdField_f_of_type_Long = paramMessageForTroopFile.uniseq;
-      ((AIOFilePicData)localObject).jdField_g_of_type_Long = paramMessageForTroopFile.time;
-      ((AIOFilePicData)localObject).jdField_i_of_type_Long = paramMessageForTroopFile.shmsgseq;
-      ((AIOFilePicData)localObject).jdField_h_of_type_Long = paramMessageForTroopFile.fileSize;
-      ((AIOFilePicData)localObject).jdField_a_of_type_JavaLangString = paramMessageForTroopFile.frienduin;
-      ((AIOFilePicData)localObject).jdField_a_of_type_Int = paramMessageForTroopFile.istroop;
-      ((AIOFilePicData)localObject).jdField_f_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-      ((AIOFilePicData)localObject).jdField_b_of_type_Int = paramMessageForTroopFile.issend;
-      ((AIOFilePicData)localObject).jdField_g_of_type_Int = paramMessageForTroopFile.istroop;
-      ((AIOFilePicData)localObject).jdField_k_of_type_Boolean = paramMessageForTroopFile.isMultiMsg;
-      ((AIOFilePicData)localObject).jdField_c_of_type_Int = paramMessageForTroopFile.width;
-      ((AIOFilePicData)localObject).d = paramMessageForTroopFile.height;
-      ((AIOFilePicData)localObject).jdField_e_of_type_Int = localTroopFileStatusInfo.j;
-      ((AIOFilePicData)localObject).jdField_h_of_type_JavaLangString = paramMessageForTroopFile.url;
-      if (localTroopFileStatusInfo.jdField_b_of_type_Int != 8) {
+      ((AIOFilePicData)localObject).L = paramMessageForTroopFile.uniseq;
+      ((AIOFilePicData)localObject).N = paramMessageForTroopFile.time;
+      ((AIOFilePicData)localObject).P = paramMessageForTroopFile.shmsgseq;
+      ((AIOFilePicData)localObject).O = paramMessageForTroopFile.fileSize;
+      ((AIOFilePicData)localObject).a = paramMessageForTroopFile.frienduin;
+      ((AIOFilePicData)localObject).b = paramMessageForTroopFile.istroop;
+      ((AIOFilePicData)localObject).o = paramQQAppInterface.getCurrentAccountUin();
+      ((AIOFilePicData)localObject).p = paramMessageForTroopFile.issend;
+      ((AIOFilePicData)localObject).Q = paramMessageForTroopFile.istroop;
+      ((AIOFilePicData)localObject).R = paramMessageForTroopFile.isMultiMsg;
+      ((AIOFilePicData)localObject).u = paramMessageForTroopFile.width;
+      ((AIOFilePicData)localObject).v = paramMessageForTroopFile.height;
+      ((AIOFilePicData)localObject).w = localTroopFileStatusInfo.H;
+      ((AIOFilePicData)localObject).r = paramMessageForTroopFile.url;
+      if (localTroopFileStatusInfo.e != 8) {
         bool = false;
       }
-      ((AIOFilePicData)localObject).jdField_f_of_type_Boolean = bool;
+      ((AIOFilePicData)localObject).s = bool;
       ((AIOFilePicData)localObject).a(localTroopFileStatusInfo);
-      ((AIOFilePicData)localObject).m = MessageHandlerUtils.b(paramMessageForTroopFile);
+      ((AIOFilePicData)localObject).T = MessageHandlerUtils.b(paramMessageForTroopFile);
       return localObject;
     }
     if (QLog.isColorLevel())
     {
       paramMessageForTroopFile = new StringBuilder();
       paramMessageForTroopFile.append("id:");
-      paramMessageForTroopFile.append(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+      paramMessageForTroopFile.append(localTroopFileStatusInfo.a);
       paramMessageForTroopFile.append(" file is:");
-      paramMessageForTroopFile.append(localTroopFileStatusInfo.jdField_b_of_type_Int);
+      paramMessageForTroopFile.append(localTroopFileStatusInfo.e);
       QLog.w("AIOGalleryUtilstoTroopAIOFilePicData", 1, paramMessageForTroopFile.toString());
     }
     return null;
@@ -406,22 +406,22 @@ public class AIOGalleryUtils
   public static AIOImageData a(MessageForPic paramMessageForPic)
   {
     AIOImageData localAIOImageData = new AIOImageData();
-    localAIOImageData.jdField_f_of_type_Long = paramMessageForPic.uniseq;
-    localAIOImageData.jdField_f_of_type_Int = paramMessageForPic.subMsgId;
-    localAIOImageData.jdField_g_of_type_Long = paramMessageForPic.time;
-    localAIOImageData.jdField_i_of_type_Long = paramMessageForPic.shmsgseq;
-    localAIOImageData.jdField_h_of_type_Long = paramMessageForPic.size;
-    localAIOImageData.jdField_g_of_type_Int = paramMessageForPic.istroop;
-    localAIOImageData.jdField_f_of_type_JavaLangString = paramMessageForPic.md5;
-    localAIOImageData.jdField_j_of_type_JavaLangString = paramMessageForPic.rawMsgUrl;
-    localAIOImageData.jdField_k_of_type_JavaLangString = paramMessageForPic.senderuin;
-    localAIOImageData.jdField_l_of_type_JavaLangString = paramMessageForPic.frienduin;
+    localAIOImageData.L = paramMessageForPic.uniseq;
+    localAIOImageData.M = paramMessageForPic.subMsgId;
+    localAIOImageData.N = paramMessageForPic.time;
+    localAIOImageData.P = paramMessageForPic.shmsgseq;
+    localAIOImageData.O = paramMessageForPic.size;
+    localAIOImageData.Q = paramMessageForPic.istroop;
+    localAIOImageData.q = paramMessageForPic.md5;
+    localAIOImageData.A = paramMessageForPic.rawMsgUrl;
+    localAIOImageData.B = paramMessageForPic.senderuin;
+    localAIOImageData.F = paramMessageForPic.frienduin;
     Object localObject1;
     Object localObject2;
-    if (AnonymousChatHelper.a(paramMessageForPic))
+    if (AnonymousChatHelper.c(paramMessageForPic))
     {
-      localObject1 = AnonymousChatHelper.a(paramMessageForPic);
-      if ((((AnonymousChatHelper.AnonymousExtInfo)localObject1).jdField_a_of_type_JavaLangString == null) && (((AnonymousChatHelper.AnonymousExtInfo)localObject1).jdField_a_of_type_Int != 2))
+      localObject1 = AnonymousChatHelper.g(paramMessageForPic);
+      if ((((AnonymousChatHelper.AnonymousExtInfo)localObject1).b == null) && (((AnonymousChatHelper.AnonymousExtInfo)localObject1).a != 2))
       {
         if (QLog.isColorLevel()) {
           QLog.i("AIOGalleryUtils", 2, "toAIOImageData anonymousExtInfo : an_id is null");
@@ -430,12 +430,12 @@ public class AIOGalleryUtils
       else
       {
         localObject2 = ((AnonymousChatHelper.AnonymousExtInfo)localObject1).a();
-        if ((localObject2 != null) && (((AnonymousChatHelper.AnonymousExtInfo)localObject1).jdField_a_of_type_Int != 2))
+        if ((localObject2 != null) && (((AnonymousChatHelper.AnonymousExtInfo)localObject1).a != 2))
         {
           localObject1 = URLEncoder.encode(Base64.encodeToString((byte[])localObject2, 2));
           AnonymousChatHelper.a().a(paramMessageForPic.frienduin, (String)localObject1, paramMessageForPic);
-          localAIOImageData.jdField_j_of_type_Boolean = true;
-          localAIOImageData.n = AnonymousChatHelper.a().a(paramMessageForPic.frienduin, (String)localObject1);
+          localAIOImageData.G = true;
+          localAIOImageData.I = AnonymousChatHelper.a().a(paramMessageForPic.frienduin, (String)localObject1);
         }
       }
     }
@@ -443,13 +443,13 @@ public class AIOGalleryUtils
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("toAIOImageData, pic_server_url = ");
-      ((StringBuilder)localObject1).append(localAIOImageData.jdField_j_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(localAIOImageData.A);
       ((StringBuilder)localObject1).append("  send_uin = ");
-      ((StringBuilder)localObject1).append(localAIOImageData.jdField_k_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(localAIOImageData.B);
       QLog.d("AIOGalleryUtils", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramMessageForPic.picExtraData != null) {
-      localAIOImageData.jdField_i_of_type_JavaLangString = paramMessageForPic.picExtraData.doutuSupplier;
+      localAIOImageData.z = paramMessageForPic.picExtraData.doutuSupplier;
     }
     int i;
     if (paramMessageForPic.isMixed) {
@@ -457,127 +457,50 @@ public class AIOGalleryUtils
     } else {
       i = 65537;
     }
-    localAIOImageData.jdField_a_of_type_JavaLangString = AbsDownloader.getFilePath(URLDrawableHelper.getURL(paramMessageForPic, i, "chatthumb").toString());
+    localAIOImageData.a = AbsDownloader.getFilePath(URLDrawableHelper.getURL(paramMessageForPic, i, "chatthumb").toString());
     if (paramMessageForPic.isMixed)
     {
-      localAIOImageData.jdField_b_of_type_JavaLangString = localAIOImageData.jdField_a_of_type_JavaLangString;
+      localAIOImageData.b = localAIOImageData.a;
     }
     else
     {
       localObject1 = URLDrawableHelper.getURL(paramMessageForPic, 1, null);
-      localAIOImageData.jdField_b_of_type_JavaLangString = AbsDownloader.getFilePath(((URL)localObject1).toString());
+      localAIOImageData.b = AbsDownloader.getFilePath(((URL)localObject1).toString());
       if (paramMessageForPic.fileSizeFlag != 1)
       {
         long l = paramMessageForPic.size;
-        localObject2 = new File(localAIOImageData.jdField_b_of_type_JavaLangString);
+        localObject2 = new File(localAIOImageData.b);
         if ((((File)localObject2).exists()) && (((File)localObject2).length() < l)) {
-          localAIOImageData.jdField_d_of_type_Boolean = true;
+          localAIOImageData.h = true;
         }
-        localAIOImageData.jdField_d_of_type_JavaLangString = AbsDownloader.getDisplayFilePath(((URL)localObject1).toString());
+        localAIOImageData.d = AbsDownloader.getDisplayFilePath(((URL)localObject1).toString());
         if ((paramMessageForPic.mShowLength > 0) && (paramMessageForPic.mShowLength < paramMessageForPic.mDownloadLength)) {
-          localAIOImageData.jdField_f_of_type_Boolean = true;
+          localAIOImageData.k = true;
         }
       }
     }
     if (paramMessageForPic.fileSizeFlag == 1) {
-      localAIOImageData.jdField_c_of_type_JavaLangString = AbsDownloader.getFilePath(URLDrawableHelper.getURL(paramMessageForPic, 131075, null).toString());
+      localAIOImageData.c = AbsDownloader.getFilePath(URLDrawableHelper.getURL(paramMessageForPic, 131075, null).toString());
     }
-    localAIOImageData.jdField_e_of_type_JavaLangString = paramMessageForPic.uuid;
-    localAIOImageData.jdField_d_of_type_Long = paramMessageForPic.groupFileID;
-    localAIOImageData.jdField_a_of_type_Long = paramMessageForPic.width;
-    localAIOImageData.jdField_b_of_type_Long = paramMessageForPic.height;
-    localAIOImageData.jdField_e_of_type_Boolean = paramMessageForPic.isSendFromLocal();
-    localAIOImageData.jdField_a_of_type_Int = paramMessageForPic.imageType;
-    localAIOImageData.jdField_k_of_type_Boolean = paramMessageForPic.isMultiMsg;
-    localAIOImageData.jdField_i_of_type_Boolean = paramMessageForPic.isSend();
+    localAIOImageData.n = paramMessageForPic.uuid;
+    localAIOImageData.p = paramMessageForPic.groupFileID;
+    localAIOImageData.l = paramMessageForPic.width;
+    localAIOImageData.m = paramMessageForPic.height;
+    localAIOImageData.j = paramMessageForPic.isSendFromLocal();
+    localAIOImageData.i = paramMessageForPic.imageType;
+    localAIOImageData.R = paramMessageForPic.isMultiMsg;
+    localAIOImageData.E = paramMessageForPic.isSend();
     if (paramMessageForPic.picExtraData != null)
     {
       if (paramMessageForPic.picExtraData.isHotPics()) {
-        localAIOImageData.jdField_b_of_type_Int = 4;
+        localAIOImageData.r = 4;
       }
-      localAIOImageData.jdField_e_of_type_Int = paramMessageForPic.picExtraData.imageBizType;
-      localAIOImageData.o = paramMessageForPic.picExtraData.mTemplateId;
-      localAIOImageData.p = paramMessageForPic.picExtraData.mTemplateName;
+      localAIOImageData.D = paramMessageForPic.picExtraData.imageBizType;
+      localAIOImageData.J = paramMessageForPic.picExtraData.mTemplateId;
+      localAIOImageData.K = paramMessageForPic.picExtraData.mTemplateName;
     }
-    localAIOImageData.jdField_l_of_type_Boolean = paramMessageForPic.isInMixedMsg;
-    localAIOImageData.m = MessageHandlerUtils.b(paramMessageForPic);
-    return localAIOImageData;
-  }
-  
-  public static AIOImageData a(MessageForTroopFile paramMessageForTroopFile, QQAppInterface paramQQAppInterface)
-  {
-    AIOImageData localAIOImageData = new AIOImageData();
-    localAIOImageData.jdField_f_of_type_Long = paramMessageForTroopFile.uniseq;
-    boolean bool = false;
-    localAIOImageData.jdField_f_of_type_Int = 0;
-    localAIOImageData.jdField_g_of_type_Long = paramMessageForTroopFile.time;
-    localAIOImageData.jdField_i_of_type_Long = paramMessageForTroopFile.shmsgseq;
-    localAIOImageData.jdField_h_of_type_Long = paramMessageForTroopFile.fileSize;
-    localAIOImageData.jdField_g_of_type_Int = paramMessageForTroopFile.istroop;
-    localAIOImageData.jdField_h_of_type_Boolean = true;
-    localAIOImageData.jdField_k_of_type_JavaLangString = paramMessageForTroopFile.senderuin;
-    localAIOImageData.jdField_k_of_type_Boolean = paramMessageForTroopFile.isMultiMsg;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("toAIOImageData file, isFromFile = ");
-      ((StringBuilder)localObject).append(localAIOImageData.jdField_h_of_type_Boolean);
-      ((StringBuilder)localObject).append("  send_uin = ");
-      ((StringBuilder)localObject).append(localAIOImageData.jdField_k_of_type_JavaLangString);
-      QLog.d("AIOGalleryUtils", 2, ((StringBuilder)localObject).toString());
-    }
-    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(paramQQAppInterface, paramMessageForTroopFile);
-    if (localTroopFileStatusInfo.jdField_d_of_type_JavaLangString != null) {
-      localObject = localTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
-    } else {
-      localObject = localTroopFileStatusInfo.jdField_b_of_type_JavaLangString;
-    }
-    localAIOImageData.jdField_a_of_type_JavaLangString = ((String)localObject);
-    if (localAIOImageData.jdField_a_of_type_JavaLangString == null) {
-      localAIOImageData.jdField_a_of_type_JavaLangString = "I:N";
-    }
-    if (!TextUtils.isEmpty(localTroopFileStatusInfo.jdField_c_of_type_JavaLangString)) {
-      localAIOImageData.jdField_b_of_type_JavaLangString = localTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
-    }
-    if ((!TextUtils.isEmpty(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) && (FileUtils.fileExists(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString))) {
-      localAIOImageData.jdField_c_of_type_JavaLangString = localTroopFileStatusInfo.jdField_a_of_type_JavaLangString;
-    }
-    if (localTroopFileStatusInfo.jdField_b_of_type_Int == 8) {
-      bool = true;
-    }
-    localAIOImageData.jdField_f_of_type_Boolean = bool;
-    localAIOImageData.jdField_e_of_type_JavaLangString = paramMessageForTroopFile.uuid;
-    localAIOImageData.jdField_d_of_type_Long = localTroopFileStatusInfo.jdField_a_of_type_Int;
-    try
-    {
-      localObject = TroopFileItemBuilder.a(paramQQAppInterface.getApplication(), localTroopFileStatusInfo, paramMessageForTroopFile);
-      paramQQAppInterface = (QQAppInterface)localObject;
-      if (localObject != null) {
-        break label317;
-      }
-      paramQQAppInterface = URLDrawableHelper.getLoadingDrawable();
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      label313:
-      label317:
-      break label313;
-    }
-    paramQQAppInterface = URLDrawableHelper.getLoadingDrawable();
-    Object localObject = paramQQAppInterface;
-    if (paramQQAppInterface == null) {
-      localObject = URLDrawableHelper.getLoadingDrawable();
-    }
-    localAIOImageData.jdField_a_of_type_Long = ((Drawable)localObject).getIntrinsicWidth();
-    localAIOImageData.jdField_b_of_type_Long = ((Drawable)localObject).getIntrinsicHeight();
-    localAIOImageData.jdField_e_of_type_Boolean = paramMessageForTroopFile.isSendFromLocal();
-    localAIOImageData.jdField_a_of_type_Int = 1000;
-    localAIOImageData.jdField_g_of_type_Boolean = true;
-    localAIOImageData.jdField_g_of_type_JavaLangString = localTroopFileStatusInfo.jdField_g_of_type_JavaLangString;
-    localAIOImageData.jdField_h_of_type_JavaLangString = localTroopFileStatusInfo.jdField_e_of_type_JavaLangString;
-    localAIOImageData.jdField_e_of_type_Long = localTroopFileStatusInfo.jdField_c_of_type_Long;
-    localAIOImageData.jdField_c_of_type_Int = localTroopFileStatusInfo.h;
-    localAIOImageData.jdField_b_of_type_Int = 3;
+    localAIOImageData.S = paramMessageForPic.isInMixedMsg;
+    localAIOImageData.T = MessageHandlerUtils.b(paramMessageForPic);
     return localAIOImageData;
   }
   
@@ -597,7 +520,7 @@ public class AIOGalleryUtils
     if (localAIORichMediaData != null)
     {
       QLog.i("AIOGalleryUtils<QFile>", 1, "toAIOFileMediaData: media data is null.");
-      localAIORichMediaData.m = MessageHandlerUtils.b(paramChatMessage);
+      localAIORichMediaData.T = MessageHandlerUtils.b(paramChatMessage);
     }
     return localAIORichMediaData;
   }
@@ -646,7 +569,7 @@ public class AIOGalleryUtils
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       localUserInfo.qzone_uin = paramString1;
       AIOImageData localAIOImageData = (AIOImageData)paramAIORichMediaInfo.a;
-      paramString1 = localAIOImageData.jdField_a_of_type_JavaLangString;
+      paramString1 = localAIOImageData.a;
       if (!paramString1.endsWith("_hd"))
       {
         paramAIORichMediaInfo = new StringBuilder();
@@ -657,11 +580,11 @@ public class AIOGalleryUtils
           paramString1 = paramAIORichMediaInfo;
         }
       }
-      paramAIORichMediaInfo = localAIOImageData.jdField_e_of_type_JavaLangString;
-      long l2 = localAIOImageData.jdField_c_of_type_Long;
+      paramAIORichMediaInfo = localAIOImageData.n;
+      long l2 = localAIOImageData.o;
       long l1;
       if (paramBoolean) {
-        l1 = localAIOImageData.jdField_d_of_type_Long;
+        l1 = localAIOImageData.p;
       } else {
         l1 = 0L;
       }
@@ -687,12 +610,12 @@ public class AIOGalleryUtils
       if (AIOImageData.class.isInstance(paramString1.a))
       {
         AIOImageData localAIOImageData = (AIOImageData)paramString1.a;
-        localArrayList2.add(localAIOImageData.jdField_e_of_type_JavaLangString);
-        localArrayList3.add(Long.valueOf(localAIOImageData.jdField_c_of_type_Long));
+        localArrayList2.add(localAIOImageData.n);
+        localArrayList3.add(Long.valueOf(localAIOImageData.o));
         if (paramBoolean) {
-          localArrayList4.add(Long.valueOf(localAIOImageData.jdField_d_of_type_Long));
+          localArrayList4.add(Long.valueOf(localAIOImageData.p));
         }
-        paramList = localAIOImageData.jdField_a_of_type_JavaLangString;
+        paramList = localAIOImageData.a;
         paramString1 = paramList;
         if (!paramList.endsWith("_hd"))
         {
@@ -710,9 +633,9 @@ public class AIOGalleryUtils
         {
           paramList = new StringBuilder();
           paramList.append("fowardToQZoneGroupAlbums(), uuid:");
-          paramList.append(localAIOImageData.jdField_e_of_type_JavaLangString);
+          paramList.append(localAIOImageData.n);
           paramList.append(" time:");
-          paramList.append(localAIOImageData.jdField_c_of_type_Long);
+          paramList.append(localAIOImageData.o);
           paramList.append(" path:");
           paramList.append(paramString1);
           QLog.d("AIOGalleryUtils", 2, paramList.toString());
@@ -771,7 +694,7 @@ public class AIOGalleryUtils
   
   public static void a(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, CustomEmotionData paramCustomEmotionData)
   {
-    paramStructMsgForImageShare = AIOGallerySceneWithBusiness.a(paramStructMsgForImageShare);
+    paramStructMsgForImageShare = AIOGallerySceneWithBusiness.c(paramStructMsgForImageShare);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramStructMsgForImageShare)) && (paramStructMsgForImageShare.startsWith("comic_plugin.apk")) && (paramCustomEmotionData != null) && (!TextUtils.isEmpty(paramCustomEmotionData.md5)))
     {
       IVipComicMqqManagerService localIVipComicMqqManagerService = (IVipComicMqqManagerService)paramQQAppInterface.getRuntimeService(IVipComicMqqManagerService.class);
@@ -813,22 +736,99 @@ public class AIOGalleryUtils
     return arrayOfAIOImageData;
   }
   
+  public static AIOImageData b(MessageForTroopFile paramMessageForTroopFile, QQAppInterface paramQQAppInterface)
+  {
+    AIOImageData localAIOImageData = new AIOImageData();
+    localAIOImageData.L = paramMessageForTroopFile.uniseq;
+    boolean bool = false;
+    localAIOImageData.M = 0;
+    localAIOImageData.N = paramMessageForTroopFile.time;
+    localAIOImageData.P = paramMessageForTroopFile.shmsgseq;
+    localAIOImageData.O = paramMessageForTroopFile.fileSize;
+    localAIOImageData.Q = paramMessageForTroopFile.istroop;
+    localAIOImageData.C = true;
+    localAIOImageData.B = paramMessageForTroopFile.senderuin;
+    localAIOImageData.R = paramMessageForTroopFile.isMultiMsg;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toAIOImageData file, isFromFile = ");
+      ((StringBuilder)localObject).append(localAIOImageData.C);
+      ((StringBuilder)localObject).append("  send_uin = ");
+      ((StringBuilder)localObject).append(localAIOImageData.B);
+      QLog.d("AIOGalleryUtils", 2, ((StringBuilder)localObject).toString());
+    }
+    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(paramQQAppInterface, paramMessageForTroopFile);
+    if (localTroopFileStatusInfo.n != null) {
+      localObject = localTroopFileStatusInfo.n;
+    } else {
+      localObject = localTroopFileStatusInfo.l;
+    }
+    localAIOImageData.a = ((String)localObject);
+    if (localAIOImageData.a == null) {
+      localAIOImageData.a = "I:N";
+    }
+    if (!TextUtils.isEmpty(localTroopFileStatusInfo.m)) {
+      localAIOImageData.b = localTroopFileStatusInfo.m;
+    }
+    if ((!TextUtils.isEmpty(localTroopFileStatusInfo.k)) && (FileUtils.fileExists(localTroopFileStatusInfo.k))) {
+      localAIOImageData.c = localTroopFileStatusInfo.k;
+    }
+    if (localTroopFileStatusInfo.e == 8) {
+      bool = true;
+    }
+    localAIOImageData.k = bool;
+    localAIOImageData.n = paramMessageForTroopFile.uuid;
+    localAIOImageData.p = localTroopFileStatusInfo.b;
+    try
+    {
+      localObject = TroopFileItemBuilder.a(paramQQAppInterface.getApplication(), localTroopFileStatusInfo, paramMessageForTroopFile);
+      paramQQAppInterface = (QQAppInterface)localObject;
+      if (localObject != null) {
+        break label317;
+      }
+      paramQQAppInterface = URLDrawableHelper.getLoadingDrawable();
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      label313:
+      label317:
+      break label313;
+    }
+    paramQQAppInterface = URLDrawableHelper.getLoadingDrawable();
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null) {
+      localObject = URLDrawableHelper.getLoadingDrawable();
+    }
+    localAIOImageData.l = ((Drawable)localObject).getIntrinsicWidth();
+    localAIOImageData.m = ((Drawable)localObject).getIntrinsicHeight();
+    localAIOImageData.j = paramMessageForTroopFile.isSendFromLocal();
+    localAIOImageData.i = 1000;
+    localAIOImageData.t = true;
+    localAIOImageData.v = localTroopFileStatusInfo.t;
+    localAIOImageData.w = localTroopFileStatusInfo.r;
+    localAIOImageData.u = localTroopFileStatusInfo.i;
+    localAIOImageData.x = localTroopFileStatusInfo.u;
+    localAIOImageData.r = 3;
+    return localAIOImageData;
+  }
+  
   /* Error */
   private static AIORichMediaData b(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface)
   {
     // Byte code:
     //   0: aload_0
-    //   1: checkcast 710	com/tencent/mobileqq/data/MessageForFile
+    //   1: checkcast 689	com/tencent/mobileqq/data/MessageForFile
     //   4: astore 8
     //   6: aload_1
-    //   7: invokevirtual 882	com/tencent/mobileqq/app/QQAppInterface:getFileManagerDataCenter	()Lcom/tencent/mobileqq/filemanager/core/FileManagerDataCenter;
+    //   7: invokevirtual 920	com/tencent/mobileqq/app/QQAppInterface:getFileManagerDataCenter	()Lcom/tencent/mobileqq/filemanager/core/FileManagerDataCenter;
     //   10: aload 8
-    //   12: getfield 883	com/tencent/mobileqq/data/MessageForFile:uniseq	J
+    //   12: getfield 921	com/tencent/mobileqq/data/MessageForFile:uniseq	J
     //   15: aload 8
-    //   17: getfield 884	com/tencent/mobileqq/data/MessageForFile:frienduin	Ljava/lang/String;
+    //   17: getfield 922	com/tencent/mobileqq/data/MessageForFile:frienduin	Ljava/lang/String;
     //   20: aload 8
-    //   22: getfield 885	com/tencent/mobileqq/data/MessageForFile:istroop	I
-    //   25: invokevirtual 890	com/tencent/mobileqq/filemanager/core/FileManagerDataCenter:a	(JLjava/lang/String;I)Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   22: getfield 923	com/tencent/mobileqq/data/MessageForFile:istroop	I
+    //   25: invokevirtual 928	com/tencent/mobileqq/filemanager/core/FileManagerDataCenter:a	(JLjava/lang/String;I)Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   28: astore 6
     //   30: aconst_null
     //   31: astore 5
@@ -839,62 +839,62 @@ public class AIOGalleryUtils
     //   41: aconst_null
     //   42: areturn
     //   43: aload 6
-    //   45: getfield 895	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nFileType	I
+    //   45: getfield 933	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nFileType	I
     //   48: istore_2
     //   49: iconst_1
     //   50: istore_3
     //   51: iload_2
     //   52: ifne +188 -> 240
-    //   55: new 382	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData
+    //   55: new 385	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData
     //   58: dup
-    //   59: invokespecial 383	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:<init>	()V
+    //   59: invokespecial 386	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:<init>	()V
     //   62: astore 4
     //   64: aload 4
     //   66: aload 8
-    //   68: getfield 883	com/tencent/mobileqq/data/MessageForFile:uniseq	J
-    //   71: putfield 390	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_f_of_type_Long	J
+    //   68: getfield 921	com/tencent/mobileqq/data/MessageForFile:uniseq	J
+    //   71: putfield 393	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:L	J
     //   74: aload 4
     //   76: aload 8
-    //   78: getfield 896	com/tencent/mobileqq/data/MessageForFile:time	J
-    //   81: putfield 395	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_g_of_type_Long	J
+    //   78: getfield 934	com/tencent/mobileqq/data/MessageForFile:time	J
+    //   81: putfield 399	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:N	J
     //   84: aload 4
     //   86: aload 8
-    //   88: getfield 897	com/tencent/mobileqq/data/MessageForFile:shmsgseq	J
-    //   91: putfield 400	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_i_of_type_Long	J
+    //   88: getfield 935	com/tencent/mobileqq/data/MessageForFile:shmsgseq	J
+    //   91: putfield 405	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:P	J
     //   94: aload 4
     //   96: aload 8
-    //   98: getfield 898	com/tencent/mobileqq/data/MessageForFile:fileSize	J
-    //   101: putfield 406	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_h_of_type_Long	J
+    //   98: getfield 936	com/tencent/mobileqq/data/MessageForFile:fileSize	J
+    //   101: putfield 411	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:O	J
     //   104: aload 4
     //   106: aload 8
-    //   108: getfield 884	com/tencent/mobileqq/data/MessageForFile:frienduin	Ljava/lang/String;
-    //   111: putfield 410	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   108: getfield 922	com/tencent/mobileqq/data/MessageForFile:frienduin	Ljava/lang/String;
+    //   111: putfield 416	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	Ljava/lang/String;
     //   114: aload 4
     //   116: aload 8
-    //   118: getfield 885	com/tencent/mobileqq/data/MessageForFile:istroop	I
-    //   121: putfield 415	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_a_of_type_Int	I
+    //   118: getfield 923	com/tencent/mobileqq/data/MessageForFile:istroop	I
+    //   121: putfield 421	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:b	I
     //   124: aload 4
     //   126: aload_1
     //   127: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   130: putfield 417	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   130: putfield 424	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:o	Ljava/lang/String;
     //   133: aload 4
     //   135: aload 8
-    //   137: getfield 899	com/tencent/mobileqq/data/MessageForFile:issend	I
-    //   140: putfield 421	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_b_of_type_Int	I
+    //   137: getfield 937	com/tencent/mobileqq/data/MessageForFile:issend	I
+    //   140: putfield 430	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:p	I
     //   143: aload 4
     //   145: aload_0
-    //   146: getfield 902	com/tencent/mobileqq/data/ChatMessage:istroop	I
-    //   149: putfield 423	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_g_of_type_Int	I
+    //   146: getfield 940	com/tencent/mobileqq/data/ChatMessage:istroop	I
+    //   149: putfield 433	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:Q	I
     //   152: aload 4
     //   154: aload_0
-    //   155: getfield 903	com/tencent/mobileqq/data/ChatMessage:isMultiMsg	Z
-    //   158: putfield 426	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_k_of_type_Boolean	Z
+    //   155: getfield 941	com/tencent/mobileqq/data/ChatMessage:isMultiMsg	Z
+    //   158: putfield 436	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:R	Z
     //   161: aload 4
     //   163: aload 6
-    //   165: getfield 906	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   168: putfield 447	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   165: getfield 944	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
+    //   168: putfield 459	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:r	Ljava/lang/String;
     //   171: aload 6
-    //   173: getfield 909	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
+    //   173: getfield 947	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
     //   176: iconst_2
     //   177: if_icmpne +6 -> 183
     //   180: goto +5 -> 185
@@ -902,34 +902,34 @@ public class AIOGalleryUtils
     //   184: istore_3
     //   185: aload 4
     //   187: iload_3
-    //   188: putfield 449	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_f_of_type_Boolean	Z
+    //   188: putfield 462	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:s	Z
     //   191: aload 4
     //   193: aload 6
-    //   195: getfield 912	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFileMd5	Ljava/lang/String;
-    //   198: putfield 913	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_i_of_type_JavaLangString	Ljava/lang/String;
+    //   195: getfield 950	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFileMd5	Ljava/lang/String;
+    //   198: putfield 951	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:t	Ljava/lang/String;
     //   201: aload 4
     //   203: aload 6
-    //   205: getfield 916	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
-    //   208: putfield 432	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_c_of_type_Int	I
+    //   205: getfield 954	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
+    //   208: putfield 442	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:u	I
     //   211: aload 4
     //   213: aload 6
-    //   215: getfield 919	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
-    //   218: putfield 437	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:d	I
+    //   215: getfield 957	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
+    //   218: putfield 448	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:v	I
     //   221: aload 4
     //   223: aload 6
-    //   225: getfield 922	com/tencent/mobileqq/filemanager/data/FileManagerEntity:thumbInvalidCode	I
-    //   228: putfield 442	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_e_of_type_Int	I
+    //   225: getfield 960	com/tencent/mobileqq/filemanager/data/FileManagerEntity:thumbInvalidCode	I
+    //   228: putfield 453	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:w	I
     //   231: aload 4
     //   233: aload_1
-    //   234: invokevirtual 925	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   234: invokevirtual 963	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   237: aload 4
     //   239: areturn
     //   240: aload 6
-    //   242: getfield 895	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nFileType	I
+    //   242: getfield 933	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nFileType	I
     //   245: iconst_2
     //   246: if_icmpne +704 -> 950
     //   249: aload 6
-    //   251: getfield 909	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
+    //   251: getfield 947	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
     //   254: bipush 16
     //   256: if_icmpne +56 -> 312
     //   259: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -939,27 +939,27 @@ public class AIOGalleryUtils
     //   269: invokespecial 247	java/lang/StringBuilder:<init>	()V
     //   272: astore_0
     //   273: aload_0
-    //   274: ldc_w 333
+    //   274: ldc_w 334
     //   277: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   280: pop
     //   281: aload_0
     //   282: aload 6
-    //   284: getfield 928	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   287: invokevirtual 801	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   284: getfield 966	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   287: invokevirtual 781	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   290: pop
     //   291: aload_0
-    //   292: ldc_w 930
+    //   292: ldc_w 968
     //   295: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   298: pop
-    //   299: ldc_w 932
+    //   299: ldc_w 970
     //   302: iconst_1
     //   303: aload_0
     //   304: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   307: invokestatic 346	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   307: invokestatic 347	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   310: aconst_null
     //   311: areturn
     //   312: aload 6
-    //   314: invokevirtual 935	com/tencent/mobileqq/filemanager/data/FileManagerEntity:sendCloudUnsuccessful	()Z
+    //   314: invokevirtual 973	com/tencent/mobileqq/filemanager/data/FileManagerEntity:sendCloudUnsuccessful	()Z
     //   317: ifeq +56 -> 373
     //   320: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   323: ifeq +48 -> 371
@@ -968,33 +968,33 @@ public class AIOGalleryUtils
     //   330: invokespecial 247	java/lang/StringBuilder:<init>	()V
     //   333: astore_0
     //   334: aload_0
-    //   335: ldc_w 333
+    //   335: ldc_w 334
     //   338: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   341: pop
     //   342: aload_0
     //   343: aload 6
-    //   345: getfield 928	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   348: invokevirtual 801	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   345: getfield 966	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   348: invokevirtual 781	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   351: pop
     //   352: aload_0
-    //   353: ldc_w 937
+    //   353: ldc_w 975
     //   356: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: pop
-    //   360: ldc_w 932
+    //   360: ldc_w 970
     //   363: iconst_1
     //   364: aload_0
     //   365: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   368: invokestatic 346	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   368: invokestatic 347	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   371: aconst_null
     //   372: areturn
     //   373: aload 6
-    //   375: invokevirtual 939	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   378: invokestatic 351	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   375: invokevirtual 977	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
+    //   378: invokestatic 353	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
     //   381: istore_3
     //   382: iload_3
     //   383: ifeq +65 -> 448
     //   386: aload 6
-    //   388: getfield 909	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
+    //   388: getfield 947	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
     //   391: iconst_1
     //   392: if_icmpeq +56 -> 448
     //   395: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1004,57 +1004,57 @@ public class AIOGalleryUtils
     //   405: invokespecial 247	java/lang/StringBuilder:<init>	()V
     //   408: astore_0
     //   409: aload_0
-    //   410: ldc_w 333
+    //   410: ldc_w 334
     //   413: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   416: pop
     //   417: aload_0
     //   418: aload 6
-    //   420: getfield 928	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   423: invokevirtual 801	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   420: getfield 966	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   423: invokevirtual 781	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   426: pop
     //   427: aload_0
-    //   428: ldc_w 941
+    //   428: ldc_w 979
     //   431: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   434: pop
-    //   435: ldc_w 932
+    //   435: ldc_w 970
     //   438: iconst_1
     //   439: aload_0
     //   440: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: invokestatic 346	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   443: invokestatic 347	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   446: aconst_null
     //   447: areturn
     //   448: aload_1
-    //   449: ldc_w 358
+    //   449: ldc_w 360
     //   452: ldc 151
-    //   454: invokevirtual 361	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   457: checkcast 358	com/tencent/mobileqq/filemanager/api/IQFileConfigManager
+    //   454: invokevirtual 363	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   457: checkcast 360	com/tencent/mobileqq/filemanager/api/IQFileConfigManager
     //   460: aload 6
-    //   462: getfield 942	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileName	Ljava/lang/String;
-    //   465: invokestatic 367	com/tencent/mobileqq/troop/utils/HWTroopUtils:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   468: invokeinterface 371 2 0
+    //   462: getfield 980	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileName	Ljava/lang/String;
+    //   465: invokestatic 369	com/tencent/mobileqq/troop/utils/HWTroopUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   468: invokeinterface 373 2 0
     //   473: astore 9
     //   475: aload 6
-    //   477: getfield 945	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strLargeThumPath	Ljava/lang/String;
-    //   480: invokestatic 949	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
+    //   477: getfield 983	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strLargeThumPath	Ljava/lang/String;
+    //   480: invokestatic 987	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
     //   483: ifeq +12 -> 495
     //   486: aload 6
-    //   488: getfield 945	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strLargeThumPath	Ljava/lang/String;
+    //   488: getfield 983	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strLargeThumPath	Ljava/lang/String;
     //   491: astore_1
     //   492: goto +45 -> 537
     //   495: aload 6
-    //   497: getfield 952	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strMiddleThumPath	Ljava/lang/String;
-    //   500: invokestatic 949	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
+    //   497: getfield 990	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strMiddleThumPath	Ljava/lang/String;
+    //   500: invokestatic 987	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
     //   503: ifeq +12 -> 515
     //   506: aload 6
-    //   508: getfield 952	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strMiddleThumPath	Ljava/lang/String;
+    //   508: getfield 990	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strMiddleThumPath	Ljava/lang/String;
     //   511: astore_1
     //   512: goto +25 -> 537
     //   515: aload 6
-    //   517: getfield 955	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
-    //   520: invokestatic 949	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
+    //   517: getfield 993	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
+    //   520: invokestatic 987	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
     //   523: ifeq +12 -> 535
     //   526: aload 6
-    //   528: getfield 955	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
+    //   528: getfield 993	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
     //   531: astore_1
     //   532: goto +5 -> 537
     //   535: aconst_null
@@ -1067,118 +1067,118 @@ public class AIOGalleryUtils
     //   548: invokespecial 247	java/lang/StringBuilder:<init>	()V
     //   551: astore 7
     //   553: aload 7
-    //   555: ldc_w 957
+    //   555: ldc_w 995
     //   558: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   561: pop
     //   562: aload 7
     //   564: aload 6
-    //   566: getfield 928	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   569: invokevirtual 801	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   566: getfield 966	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   569: invokevirtual 781	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   572: pop
     //   573: aload 7
-    //   575: ldc_w 959
+    //   575: ldc_w 997
     //   578: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   581: pop
     //   582: ldc 45
     //   584: iconst_1
     //   585: aload 7
     //   587: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   590: invokestatic 346	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   590: invokestatic 347	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   593: new 191	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData
     //   596: dup
     //   597: aload_1
-    //   598: invokespecial 960	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:<init>	(Ljava/lang/String;)V
+    //   598: invokespecial 998	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:<init>	(Ljava/lang/String;)V
     //   601: astore 7
     //   603: aload 7
     //   605: aload 8
-    //   607: getfield 884	com/tencent/mobileqq/data/MessageForFile:frienduin	Ljava/lang/String;
-    //   610: putfield 961	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   607: getfield 922	com/tencent/mobileqq/data/MessageForFile:frienduin	Ljava/lang/String;
+    //   610: putfield 999	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:r	Ljava/lang/String;
     //   613: aload 7
     //   615: aload 8
-    //   617: getfield 885	com/tencent/mobileqq/data/MessageForFile:istroop	I
-    //   620: putfield 962	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_c_of_type_Int	I
+    //   617: getfield 923	com/tencent/mobileqq/data/MessageForFile:istroop	I
+    //   620: putfield 1001	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:s	I
     //   623: aload 7
     //   625: aload 8
-    //   627: getfield 899	com/tencent/mobileqq/data/MessageForFile:issend	I
-    //   630: putfield 963	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:d	I
+    //   627: getfield 937	com/tencent/mobileqq/data/MessageForFile:issend	I
+    //   630: putfield 1003	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:t	I
     //   633: aload 7
     //   635: aload 6
-    //   637: getfield 906	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   640: putfield 964	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_i_of_type_JavaLangString	Ljava/lang/String;
+    //   637: getfield 944	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
+    //   640: putfield 1005	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:u	Ljava/lang/String;
     //   643: aload 7
     //   645: aload 6
-    //   647: getfield 912	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFileMd5	Ljava/lang/String;
-    //   650: putfield 965	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_j_of_type_JavaLangString	Ljava/lang/String;
+    //   647: getfield 950	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFileMd5	Ljava/lang/String;
+    //   650: putfield 1006	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:v	Ljava/lang/String;
     //   653: aload 7
     //   655: aload 8
-    //   657: getfield 883	com/tencent/mobileqq/data/MessageForFile:uniseq	J
-    //   660: putfield 966	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_f_of_type_Long	J
+    //   657: getfield 921	com/tencent/mobileqq/data/MessageForFile:uniseq	J
+    //   660: putfield 1007	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:L	J
     //   663: aload 7
     //   665: aload 8
-    //   667: getfield 896	com/tencent/mobileqq/data/MessageForFile:time	J
-    //   670: putfield 967	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_g_of_type_Long	J
+    //   667: getfield 934	com/tencent/mobileqq/data/MessageForFile:time	J
+    //   670: putfield 1008	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:N	J
     //   673: aload 7
     //   675: aload 8
-    //   677: getfield 897	com/tencent/mobileqq/data/MessageForFile:shmsgseq	J
-    //   680: putfield 968	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_i_of_type_Long	J
+    //   677: getfield 935	com/tencent/mobileqq/data/MessageForFile:shmsgseq	J
+    //   680: putfield 1009	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:P	J
     //   683: aload 7
     //   685: aload 6
-    //   687: getfield 969	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileSize	J
-    //   690: putfield 970	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_h_of_type_Long	J
+    //   687: getfield 1010	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileSize	J
+    //   690: putfield 1011	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:O	J
     //   693: aload 7
     //   695: aload 6
-    //   697: getfield 942	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileName	Ljava/lang/String;
-    //   700: putfield 971	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   697: getfield 980	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileName	Ljava/lang/String;
+    //   700: putfield 1012	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:a	Ljava/lang/String;
     //   703: aload 7
     //   705: aload_0
-    //   706: getfield 902	com/tencent/mobileqq/data/ChatMessage:istroop	I
-    //   709: putfield 972	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_g_of_type_Int	I
+    //   706: getfield 940	com/tencent/mobileqq/data/ChatMessage:istroop	I
+    //   709: putfield 1013	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:Q	I
     //   712: aload 7
     //   714: aload 6
-    //   716: getfield 919	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
-    //   719: putfield 973	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_b_of_type_Int	I
+    //   716: getfield 957	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
+    //   719: putfield 1016	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:f	I
     //   722: aload 7
     //   724: aload 6
-    //   726: getfield 916	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
-    //   729: putfield 974	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_a_of_type_Int	I
+    //   726: getfield 954	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
+    //   729: putfield 1017	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:e	I
     //   732: aload 7
     //   734: aload 9
-    //   736: getfield 977	com/tencent/mobileqq/filemanager/data/DownloadFileConfig:jdField_b_of_type_Int	I
+    //   736: getfield 1020	com/tencent/mobileqq/filemanager/data/DownloadFileConfig:b	I
     //   739: i2l
-    //   740: putfield 978	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_a_of_type_Long	J
+    //   740: putfield 1022	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:d	J
     //   743: iload_3
     //   744: ifeq +194 -> 938
     //   747: aload 7
     //   749: aload 6
-    //   751: invokevirtual 939	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   754: putfield 979	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   751: invokevirtual 977	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
+    //   754: putfield 1023	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:c	Ljava/lang/String;
     //   757: aload 7
     //   759: iconst_1
-    //   760: putfield 981	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_c_of_type_Boolean	Z
+    //   760: putfield 1025	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:o	Z
     //   763: aload 4
     //   765: astore_1
-    //   766: new 983	android/media/MediaMetadataRetriever
+    //   766: new 1027	android/media/MediaMetadataRetriever
     //   769: dup
-    //   770: invokespecial 984	android/media/MediaMetadataRetriever:<init>	()V
+    //   770: invokespecial 1028	android/media/MediaMetadataRetriever:<init>	()V
     //   773: astore 4
     //   775: aload 4
     //   777: aload 7
-    //   779: getfield 979	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   782: invokevirtual 987	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   779: getfield 1023	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:c	Ljava/lang/String;
+    //   782: invokevirtual 1031	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   785: aload 4
     //   787: bipush 24
-    //   789: invokevirtual 991	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   789: invokevirtual 1035	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   792: astore_1
     //   793: aload 4
     //   795: bipush 19
-    //   797: invokevirtual 991	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   797: invokevirtual 1035	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   800: astore 5
     //   802: aload 4
     //   804: bipush 18
-    //   806: invokevirtual 991	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   806: invokevirtual 1035	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   809: astore 6
     //   811: aload_1
-    //   812: invokestatic 996	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   812: invokestatic 1040	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   815: istore_2
     //   816: iload_2
     //   817: bipush 90
@@ -1189,23 +1189,23 @@ public class AIOGalleryUtils
     //   829: goto +26 -> 855
     //   832: aload 7
     //   834: aload 6
-    //   836: invokestatic 996	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   839: putfield 974	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_a_of_type_Int	I
+    //   836: invokestatic 1040	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   839: putfield 1017	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:e	I
     //   842: aload 7
     //   844: aload 5
-    //   846: invokestatic 996	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   849: putfield 973	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_b_of_type_Int	I
+    //   846: invokestatic 1040	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   849: putfield 1016	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:f	I
     //   852: goto +23 -> 875
     //   855: aload 7
     //   857: aload 5
-    //   859: invokestatic 996	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   862: putfield 974	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_a_of_type_Int	I
+    //   859: invokestatic 1040	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   862: putfield 1017	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:e	I
     //   865: aload 7
     //   867: aload 6
-    //   869: invokestatic 996	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   872: putfield 973	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_b_of_type_Int	I
+    //   869: invokestatic 1040	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   872: putfield 1016	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:f	I
     //   875: aload 4
-    //   877: invokevirtual 999	android/media/MediaMetadataRetriever:release	()V
+    //   877: invokevirtual 1043	android/media/MediaMetadataRetriever:release	()V
     //   880: goto +58 -> 938
     //   883: astore_0
     //   884: aload 4
@@ -1223,28 +1223,28 @@ public class AIOGalleryUtils
     //   907: aload 4
     //   909: astore_1
     //   910: aload 5
-    //   912: invokevirtual 1002	java/lang/Exception:printStackTrace	()V
+    //   912: invokevirtual 1046	java/lang/Exception:printStackTrace	()V
     //   915: aload 4
     //   917: ifnull +21 -> 938
     //   920: aload 4
-    //   922: invokevirtual 999	android/media/MediaMetadataRetriever:release	()V
+    //   922: invokevirtual 1043	android/media/MediaMetadataRetriever:release	()V
     //   925: goto +13 -> 938
     //   928: aload_1
     //   929: ifnull +7 -> 936
     //   932: aload_1
-    //   933: invokevirtual 999	android/media/MediaMetadataRetriever:release	()V
+    //   933: invokevirtual 1043	android/media/MediaMetadataRetriever:release	()V
     //   936: aload_0
     //   937: athrow
     //   938: aload 7
     //   940: aload_0
-    //   941: getfield 903	com/tencent/mobileqq/data/ChatMessage:isMultiMsg	Z
-    //   944: putfield 1003	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:jdField_k_of_type_Boolean	Z
+    //   941: getfield 941	com/tencent/mobileqq/data/ChatMessage:isMultiMsg	Z
+    //   944: putfield 1047	com/tencent/mobileqq/activity/aio/photo/AIOFileVideoData:R	Z
     //   947: aload 7
     //   949: areturn
     //   950: ldc 45
     //   952: iconst_1
-    //   953: ldc_w 324
-    //   956: invokestatic 327	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   953: ldc_w 325
+    //   956: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   959: aconst_null
     //   960: areturn
     // Local variable table:
@@ -1276,7 +1276,7 @@ public class AIOGalleryUtils
   
   public static void b(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, CustomEmotionData paramCustomEmotionData)
   {
-    paramStructMsgForImageShare = AIOGallerySceneWithBusiness.a(paramStructMsgForImageShare);
+    paramStructMsgForImageShare = AIOGallerySceneWithBusiness.c(paramStructMsgForImageShare);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramStructMsgForImageShare)) && (paramStructMsgForImageShare.startsWith("comic_plugin.apk")) && (paramCustomEmotionData != null) && (!TextUtils.isEmpty(paramCustomEmotionData.md5)))
     {
       IVipComicMqqManagerService localIVipComicMqqManagerService = (IVipComicMqqManagerService)paramQQAppInterface.getRuntimeService(IVipComicMqqManagerService.class);
@@ -1307,80 +1307,80 @@ public class AIOGalleryUtils
       }
       return null;
     }
-    if (FileManagerUtil.a(localMessageForTroopFile.fileName) != 2)
+    if (FileManagerUtil.c(localMessageForTroopFile.fileName) != 2)
     {
       QLog.e("AIOGalleryUtils", 1, "unknow file Type");
       return null;
     }
-    if (localTroopFileStatusInfo.jdField_b_of_type_Int == 12)
+    if (localTroopFileStatusInfo.e == 12)
     {
       if (QLog.isColorLevel())
       {
         paramChatMessage = new StringBuilder();
         paramChatMessage.append("id:");
-        paramChatMessage.append(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        paramChatMessage.append(localTroopFileStatusInfo.a);
         paramChatMessage.append(" file is deleted!");
         QLog.w("AIOGalleryUtilsFileVideo", 1, paramChatMessage.toString());
       }
       return null;
     }
-    if ((localTroopFileStatusInfo.jdField_b_of_type_Int != 4) && (localTroopFileStatusInfo.jdField_b_of_type_Int != 5))
+    if ((localTroopFileStatusInfo.e != 4) && (localTroopFileStatusInfo.e != 5))
     {
-      if ((FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) && ((localTroopFileStatusInfo.jdField_b_of_type_Int == 1) || (localTroopFileStatusInfo.jdField_b_of_type_Int == 2) || (localTroopFileStatusInfo.jdField_b_of_type_Int == 3)))
+      if ((FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.k)) && ((localTroopFileStatusInfo.e == 1) || (localTroopFileStatusInfo.e == 2) || (localTroopFileStatusInfo.e == 3)))
       {
         if (QLog.isColorLevel())
         {
           paramChatMessage = new StringBuilder();
           paramChatMessage.append("id:");
-          paramChatMessage.append(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+          paramChatMessage.append(localTroopFileStatusInfo.a);
           paramChatMessage.append(" file is:");
-          paramChatMessage.append(localTroopFileStatusInfo.jdField_b_of_type_Int);
+          paramChatMessage.append(localTroopFileStatusInfo.e);
           QLog.w("AIOGalleryUtilsFileVideo", 1, paramChatMessage.toString());
         }
         return null;
       }
-      DownloadFileConfig localDownloadFileConfig = ((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(localTroopFileStatusInfo.jdField_g_of_type_JavaLangString));
-      Object localObject = localTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
+      DownloadFileConfig localDownloadFileConfig = ((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(localTroopFileStatusInfo.t));
+      Object localObject = localTroopFileStatusInfo.n;
       paramQQAppInterface = (QQAppInterface)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramQQAppInterface = localTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
+        paramQQAppInterface = localTroopFileStatusInfo.m;
       }
       localObject = paramQQAppInterface;
       if (localMessageForTroopFile.isMultiMsg)
       {
         localObject = paramQQAppInterface;
         if (TextUtils.isEmpty(paramQQAppInterface)) {
-          localObject = FileManagerUtil.a(localMessageForTroopFile);
+          localObject = FileManagerUtil.e(localMessageForTroopFile);
         }
       }
       paramQQAppInterface = new AIOFileVideoData((String)localObject);
-      paramQQAppInterface.jdField_h_of_type_JavaLangString = localMessageForTroopFile.frienduin;
-      paramQQAppInterface.jdField_c_of_type_Int = localMessageForTroopFile.istroop;
-      paramQQAppInterface.d = localMessageForTroopFile.issend;
-      paramQQAppInterface.jdField_f_of_type_Long = localMessageForTroopFile.uniseq;
-      paramQQAppInterface.jdField_g_of_type_Long = localMessageForTroopFile.time;
-      paramQQAppInterface.jdField_i_of_type_Long = localMessageForTroopFile.shmsgseq;
-      paramQQAppInterface.jdField_h_of_type_Long = localMessageForTroopFile.fileSize;
-      paramQQAppInterface.jdField_a_of_type_JavaLangString = localMessageForTroopFile.fileName;
-      paramQQAppInterface.jdField_g_of_type_Int = localMessageForTroopFile.istroop;
-      paramQQAppInterface.jdField_a_of_type_Long = localDownloadFileConfig.jdField_b_of_type_Int;
-      paramQQAppInterface.jdField_a_of_type_Int = localMessageForTroopFile.width;
-      paramQQAppInterface.jdField_b_of_type_Int = localMessageForTroopFile.height;
-      if (FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString))
+      paramQQAppInterface.r = localMessageForTroopFile.frienduin;
+      paramQQAppInterface.s = localMessageForTroopFile.istroop;
+      paramQQAppInterface.t = localMessageForTroopFile.issend;
+      paramQQAppInterface.L = localMessageForTroopFile.uniseq;
+      paramQQAppInterface.N = localMessageForTroopFile.time;
+      paramQQAppInterface.P = localMessageForTroopFile.shmsgseq;
+      paramQQAppInterface.O = localMessageForTroopFile.fileSize;
+      paramQQAppInterface.a = localMessageForTroopFile.fileName;
+      paramQQAppInterface.Q = localMessageForTroopFile.istroop;
+      paramQQAppInterface.d = localDownloadFileConfig.b;
+      paramQQAppInterface.e = localMessageForTroopFile.width;
+      paramQQAppInterface.f = localMessageForTroopFile.height;
+      if (FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.k))
       {
-        paramQQAppInterface.jdField_c_of_type_JavaLangString = localTroopFileStatusInfo.jdField_a_of_type_JavaLangString;
-        paramQQAppInterface.jdField_c_of_type_Boolean = true;
+        paramQQAppInterface.c = localTroopFileStatusInfo.k;
+        paramQQAppInterface.o = true;
       }
-      paramQQAppInterface.jdField_k_of_type_Boolean = paramChatMessage.isMultiMsg;
+      paramQQAppInterface.R = paramChatMessage.isMultiMsg;
       return paramQQAppInterface;
     }
     if (QLog.isColorLevel())
     {
       paramChatMessage = new StringBuilder();
       paramChatMessage.append("id:");
-      paramChatMessage.append(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+      paramChatMessage.append(localTroopFileStatusInfo.a);
       paramChatMessage.append(" file is:");
-      paramChatMessage.append(localTroopFileStatusInfo.jdField_b_of_type_Int);
+      paramChatMessage.append(localTroopFileStatusInfo.e);
       QLog.w("AIOGalleryUtilsFileVideo", 1, paramChatMessage.toString());
     }
     return null;
@@ -1389,7 +1389,7 @@ public class AIOGalleryUtils
   private static AIORichMediaData d(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface)
   {
     Object localObject1 = (MessageForDLFile)paramChatMessage;
-    Object localObject2 = paramQQAppInterface.getMessageFacade().a(((MessageForDLFile)localObject1).deviceType);
+    Object localObject2 = paramQQAppInterface.getMessageFacade().d(((MessageForDLFile)localObject1).deviceType);
     if (localObject2 == null) {
       return null;
     }
@@ -1397,7 +1397,7 @@ public class AIOGalleryUtils
     if (localObject2 == null) {
       return null;
     }
-    int i = FileManagerUtil.a(((DataLineMsgRecord)localObject2).filename);
+    int i = FileManagerUtil.c(((DataLineMsgRecord)localObject2).filename);
     if (i == 0)
     {
       paramQQAppInterface = new AIOFilePicData();
@@ -1410,11 +1410,11 @@ public class AIOGalleryUtils
       }
       localObject1 = new AIOFileVideoData();
       ((AIOFileVideoData)localObject1).a((DataLineMsgRecord)localObject2);
-      ((AIOFileVideoData)localObject1).jdField_a_of_type_Long = ((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(((DataLineMsgRecord)localObject2).filename)).jdField_b_of_type_Int;
+      ((AIOFileVideoData)localObject1).d = ((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(((DataLineMsgRecord)localObject2).filename)).b;
       paramQQAppInterface = (QQAppInterface)localObject1;
     }
-    paramQQAppInterface.jdField_f_of_type_Long = paramChatMessage.uniseq;
-    paramQQAppInterface.jdField_k_of_type_Boolean = paramChatMessage.isMultiMsg;
+    paramQQAppInterface.L = paramChatMessage.uniseq;
+    paramQQAppInterface.R = paramChatMessage.isMultiMsg;
     return paramQQAppInterface;
     label145:
     return null;
@@ -1422,7 +1422,7 @@ public class AIOGalleryUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils
  * JD-Core Version:    0.7.0.1
  */

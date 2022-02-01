@@ -9,17 +9,17 @@ class RobotAdapter$5
   
   public void run()
   {
-    RobotAdapter.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString);
-    RobotAdapter.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+    RobotAdapter.e(this.this$0).contains(this.a);
+    RobotAdapter.e(this.this$0).remove(this.a);
     this.this$0.notifyDataSetChanged();
-    if (!this.jdField_a_of_type_Boolean) {
-      this.this$0.a(this.jdField_a_of_type_Int);
+    if (!this.b) {
+      this.this$0.a(this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RobotAdapter.5
  * JD-Core Version:    0.7.0.1
  */

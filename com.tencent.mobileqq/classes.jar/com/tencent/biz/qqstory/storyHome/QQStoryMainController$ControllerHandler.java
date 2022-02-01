@@ -13,7 +13,7 @@ class QQStoryMainController$ControllerHandler
     if (paramMessage.what != 1) {
       return;
     }
-    this.a.a.a(false);
+    this.a.i.a(false);
   }
 }
 

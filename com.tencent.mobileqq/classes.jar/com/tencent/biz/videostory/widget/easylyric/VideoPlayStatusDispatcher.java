@@ -5,31 +5,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class VideoPlayStatusDispatcher
 {
-  private static final VideoPlayStatusDispatcher.Instance jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricVideoPlayStatusDispatcher$Instance = new VideoPlayStatusDispatcher.Instance(null);
-  private CopyOnWriteArrayList<OnLyricListener> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final VideoPlayStatusDispatcher.Instance a = new VideoPlayStatusDispatcher.Instance(null);
+  private CopyOnWriteArrayList<OnLyricListener> b = new CopyOnWriteArrayList();
+  private boolean c = false;
   
   public static VideoPlayStatusDispatcher a()
   {
-    return (VideoPlayStatusDispatcher)jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricVideoPlayStatusDispatcher$Instance.getInstance();
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if (localObject != null)
-    {
-      localObject = ((CopyOnWriteArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((OnLyricListener)((Iterator)localObject).next()).b();
-      }
-    }
+    return (VideoPlayStatusDispatcher)a.getInstance();
   }
   
   public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if ((localObject != null) && (!this.jdField_a_of_type_Boolean))
+    Object localObject = this.b;
+    if ((localObject != null) && (!this.c))
     {
       localObject = ((CopyOnWriteArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -40,12 +28,29 @@ public class VideoPlayStatusDispatcher
   
   public void a(OnLyricListener paramOnLyricListener)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramOnLyricListener);
+    this.b.add(paramOnLyricListener);
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      localObject = ((CopyOnWriteArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((OnLyricListener)((Iterator)localObject).next()).b();
+      }
+    }
+  }
+  
+  public void b(OnLyricListener paramOnLyricListener)
+  {
+    this.b.remove(paramOnLyricListener);
+  }
+  
+  public void c()
+  {
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((CopyOnWriteArrayList)localObject).iterator();
@@ -54,15 +59,10 @@ public class VideoPlayStatusDispatcher
       }
     }
   }
-  
-  public void b(OnLyricListener paramOnLyricListener)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramOnLyricListener);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.VideoPlayStatusDispatcher
  * JD-Core Version:    0.7.0.1
  */

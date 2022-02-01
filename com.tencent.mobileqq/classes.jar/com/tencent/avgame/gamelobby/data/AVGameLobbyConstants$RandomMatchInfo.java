@@ -6,7 +6,7 @@ import java.util.List;
 public class AVGameLobbyConstants$RandomMatchInfo
 {
   public int a;
-  public List<Long> a = new ArrayList();
+  public List<Long> b = new ArrayList();
 }
 
 

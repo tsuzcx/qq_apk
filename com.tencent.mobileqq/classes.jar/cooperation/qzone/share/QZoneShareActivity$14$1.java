@@ -18,11 +18,11 @@ class QZoneShareActivity$14$1
     if (this.val$exceedCount > 0)
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131712280));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131909880));
       ((StringBuilder)localObject).append(this.val$exceedCount);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131712292));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131909892));
       localObject = ((StringBuilder)localObject).toString();
-      int i = this.this$1.this$0.getResources().getColor(2131166800);
+      int i = this.this$1.this$0.getResources().getColor(2131167720);
       this.this$1.this$0.viewTextCount.setTextColor(i);
       this.this$1.this$0.viewTextCount.setText((CharSequence)localObject);
       if (this.this$1.this$0.viewTextCount.getVisibility() != 0) {
@@ -30,7 +30,7 @@ class QZoneShareActivity$14$1
       }
       if (this.this$1.this$0.showMaxLen)
       {
-        QQToast.a(this.this$1.this$0, 2131717731, 0).a();
+        QQToast.makeText(this.this$1.this$0, 2131915206, 0).show();
         this.this$1.this$0.showMaxLen = false;
       }
     }
@@ -42,7 +42,7 @@ class QZoneShareActivity$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,14 @@ import mqq.app.MobileQQ;
 public class AudioRouter
   implements SurvivalAssistCallback
 {
-  private int jdField_a_of_type_Int = -1;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AudioRouter.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
+  private boolean a = true;
+  private int b = -1;
+  private boolean c = false;
+  private final BroadcastReceiver d = new AudioRouter.1(this);
   
   private void a(int paramInt1, int paramInt2)
   {
-    QLog.d("AudioRouter", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s subType = %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(a()), Boolean.valueOf(b()), Integer.valueOf(paramInt2) }));
+    QLog.d("AudioRouter", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s subType = %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(e()), Boolean.valueOf(f()), Integer.valueOf(paramInt2) }));
     c(paramInt1);
     b(paramInt1, paramInt2);
   }
@@ -36,26 +36,20 @@ public class AudioRouter
     if (str == null) {
       return;
     }
-    AVGameHandler.a().a().post(new AudioRouter.3(this, paramIntent, str));
-  }
-  
-  private boolean a()
-  {
-    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-    return ((AudioManager)MobileQQ.getContext().getSystemService("audio")).isWiredHeadsetOn();
+    AVGameHandler.a().b().post(new AudioRouter.3(this, paramIntent, str));
   }
   
   private void b(int paramInt)
   {
     int j = 1;
     int i = 0;
-    if ((paramInt != 0) && (a()))
+    if ((paramInt != 0) && (e()))
     {
       c(0);
       paramInt = 0;
       i = 3;
     }
-    else if ((paramInt != 2) && (b()))
+    else if ((paramInt != 2) && (f()))
     {
       c(2);
       paramInt = 2;
@@ -70,12 +64,62 @@ public class AudioRouter
   
   private void b(int paramInt1, int paramInt2)
   {
-    if (IAVGameBusinessCtrl.a() != null) {
-      IAVGameBusinessCtrl.a().a(paramInt1, paramInt2);
+    if (IAVGameBusinessCtrl.p() != null) {
+      IAVGameBusinessCtrl.p().a(paramInt1, paramInt2);
     }
   }
   
-  private boolean b()
+  private void c(int paramInt)
+  {
+    Object localObject = MobileQQ.sMobileQQ;
+    localObject = (AudioManager)MobileQQ.getContext().getSystemService("audio");
+    if (paramInt == 0) {}
+    try
+    {
+      ((AudioManager)localObject).stopBluetoothSco();
+      ((AudioManager)localObject).setBluetoothScoOn(false);
+      ((AudioManager)localObject).setSpeakerphoneOn(false);
+      if (Build.VERSION.SDK_INT >= 21) {
+        ((AudioManager)localObject).setMode(3);
+      } else {
+        ((AudioManager)localObject).setMode(2);
+      }
+      this.b = paramInt;
+      return;
+    }
+    catch (Exception localException)
+    {
+      label121:
+      break label121;
+    }
+    if (paramInt == 1)
+    {
+      ((AudioManager)localObject).stopBluetoothSco();
+      ((AudioManager)localObject).setBluetoothScoOn(false);
+      ((AudioManager)localObject).setSpeakerphoneOn(true);
+      ((AudioManager)localObject).setMode(3);
+      this.b = paramInt;
+      return;
+    }
+    if (paramInt == 2)
+    {
+      ((AudioManager)localObject).startBluetoothSco();
+      ((AudioManager)localObject).setBluetoothScoOn(true);
+      ((AudioManager)localObject).setSpeakerphoneOn(false);
+      ((AudioManager)localObject).setMode(3);
+      this.b = paramInt;
+      return;
+      AVLog.a("AudioRouter", "setAudioRouteInternal fail.", (Throwable)localObject);
+    }
+  }
+  
+  private boolean e()
+  {
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    return ((AudioManager)MobileQQ.getContext().getSystemService("audio")).isWiredHeadsetOn();
+  }
+  
+  private boolean f()
   {
     Object localObject = BluetoothAdapter.getDefaultAdapter();
     boolean bool2 = ((BluetoothAdapter)localObject).isEnabled();
@@ -113,69 +157,20 @@ public class AudioRouter
     return bool1;
   }
   
-  private void c(int paramInt)
-  {
-    Object localObject = MobileQQ.sMobileQQ;
-    localObject = (AudioManager)MobileQQ.getContext().getSystemService("audio");
-    if (paramInt == 0) {}
-    try
-    {
-      ((AudioManager)localObject).stopBluetoothSco();
-      ((AudioManager)localObject).setBluetoothScoOn(false);
-      ((AudioManager)localObject).setSpeakerphoneOn(false);
-      if (Build.VERSION.SDK_INT >= 21) {
-        ((AudioManager)localObject).setMode(3);
-      } else {
-        ((AudioManager)localObject).setMode(2);
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    catch (Exception localException)
-    {
-      label121:
-      break label121;
-    }
-    if (paramInt == 1)
-    {
-      ((AudioManager)localObject).stopBluetoothSco();
-      ((AudioManager)localObject).setBluetoothScoOn(false);
-      ((AudioManager)localObject).setSpeakerphoneOn(true);
-      ((AudioManager)localObject).setMode(3);
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    if (paramInt == 2)
-    {
-      ((AudioManager)localObject).startBluetoothSco();
-      ((AudioManager)localObject).setBluetoothScoOn(true);
-      ((AudioManager)localObject).setSpeakerphoneOn(false);
-      ((AudioManager)localObject).setMode(3);
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      AVLog.a("AudioRouter", "setAudioRouteInternal fail.", (Throwable)localObject);
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public void a()
   {
     QLog.d("AudioRouter", 1, "start");
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
+    this.a = true;
+    this.b = -1;
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
     localIntentFilter.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
     localIntentFilter.addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
     localIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
     MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-    MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.b = true;
-    AVGameHandler.a().a().post(new AudioRouter.2(this));
+    MobileQQ.getContext().registerReceiver(this.d, localIntentFilter);
+    this.c = true;
+    AVGameHandler.a().b().post(new AudioRouter.2(this));
   }
   
   public void a(int paramInt)
@@ -187,25 +182,30 @@ public class AudioRouter
   public void b()
   {
     QLog.d("AudioRouter", 1, "stop");
-    this.jdField_a_of_type_Int = -1;
-    if (this.b)
+    this.b = -1;
+    if (this.c)
     {
       MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-      MobileQQ.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.b = false;
+      MobileQQ.getContext().unregisterReceiver(this.d);
+      this.c = false;
     }
   }
   
   public void c()
   {
-    if (a()) {
+    if (e()) {
       c(0);
-    } else if (b()) {
+    } else if (f()) {
       c(2);
     } else {
       c(1);
     }
-    b(this.jdField_a_of_type_Int, -1);
+    b(this.b, -1);
+  }
+  
+  public int d()
+  {
+    return this.b;
   }
   
   public void onEnterSurvivalRoom()

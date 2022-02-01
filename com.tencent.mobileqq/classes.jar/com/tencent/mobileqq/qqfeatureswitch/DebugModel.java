@@ -13,39 +13,39 @@ import java.util.Set;
 public class DebugModel
   implements ISwitchModel
 {
-  private final ISwitchModel jdField_a_of_type_ComTencentMobileqqQqfeatureswitchISwitchModel;
-  private final Map<String, FeatureSwitch> jdField_a_of_type_JavaUtilMap;
+  private final ISwitchModel a;
+  private final Map<String, FeatureSwitch> b;
   
-  private boolean a(String paramString)
+  private boolean c(String paramString)
   {
-    return a().containsKey(paramString) ^ true;
+    return b().containsKey(paramString) ^ true;
   }
   
-  private void b(String paramString, boolean paramBoolean)
+  private void d(String paramString, boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (!b(paramString, paramBoolean))) {
+    if ((!this.b.containsKey(paramString)) && (!e(paramString, paramBoolean))) {
       return;
     }
-    c(paramString, paramBoolean);
+    f(paramString, paramBoolean);
   }
   
-  private boolean b(String paramString, boolean paramBoolean)
+  private boolean e(String paramString, boolean paramBoolean)
   {
-    if (a(paramString))
+    if (c(paramString))
     {
       QLog.e("DebugModel", 1, new Object[] { "saveToMemoryCache, but no switch with this name : ", paramString });
       return false;
     }
-    FeatureSwitch localFeatureSwitch = a(paramString, true);
+    FeatureSwitch localFeatureSwitch = b(paramString, true);
     localFeatureSwitch.mSwitchEnable = paramBoolean;
     localFeatureSwitch.mSwitchName = paramString;
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, localFeatureSwitch);
+    this.b.put(paramString, localFeatureSwitch);
     return true;
   }
   
-  private void c(String paramString, boolean paramBoolean)
+  private void f(String paramString, boolean paramBoolean)
   {
-    Object localObject = a(paramString, true);
+    Object localObject = b(paramString, true);
     ((FeatureSwitch)localObject).mSwitchEnable = paramBoolean;
     ((FeatureSwitch)localObject).mSwitchName = paramString;
     localObject = new Gson().toJson(localObject);
@@ -54,14 +54,35 @@ public class DebugModel
   
   protected FeatureSwitch a(String paramString)
   {
-    paramString = SharePreferenceUtils.a(BaseApplication.getContext(), "tabSwitchSp", paramString);
+    paramString = SharePreferenceUtils.b(BaseApplication.getContext(), "tabSwitchSp", paramString);
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     return (FeatureSwitch)new Gson().fromJson(paramString, FeatureSwitch.class);
   }
   
-  public FeatureSwitch a(String paramString, boolean paramBoolean)
+  public void a()
+  {
+    this.b.clear();
+    SharePreferenceUtils.c(BaseApplication.getContext(), "tabSwitchSp");
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("DebugModel", 1, "FeatureSwitch illegal");
+      return;
+    }
+    d(paramString, paramBoolean);
+  }
+  
+  protected FeatureSwitch b(String paramString)
+  {
+    return (FeatureSwitch)this.b.get(paramString);
+  }
+  
+  public FeatureSwitch b(String paramString, boolean paramBoolean)
   {
     FeatureSwitch localFeatureSwitch = b(paramString);
     if (localFeatureSwitch != null) {
@@ -70,15 +91,15 @@ public class DebugModel
     localFeatureSwitch = a(paramString);
     if (localFeatureSwitch != null)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localFeatureSwitch);
+      this.b.put(paramString, localFeatureSwitch);
       return localFeatureSwitch;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchISwitchModel.a(paramString, paramBoolean);
+    return this.a.b(paramString, paramBoolean);
   }
   
-  public Map<String, FeatureSwitch> a()
+  public Map<String, FeatureSwitch> b()
   {
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchISwitchModel.a();
+    Map localMap = this.a.b();
     if (localMap == null) {
       return Collections.emptyMap();
     }
@@ -96,7 +117,7 @@ public class DebugModel
         localFeatureSwitch = a(str);
         if (localFeatureSwitch != null)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(str, localFeatureSwitch);
+          this.b.put(str, localFeatureSwitch);
           localMap.put(str, localFeatureSwitch);
         }
       }
@@ -104,35 +125,14 @@ public class DebugModel
     return localMap;
   }
   
-  public void a()
+  public boolean c(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    SharePreferenceUtils.b(BaseApplication.getContext(), "tabSwitchSp");
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("DebugModel", 1, "FeatureSwitch illegal");
-      return;
-    }
-    b(paramString, paramBoolean);
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    return a(paramString, paramBoolean).mSwitchEnable;
-  }
-  
-  protected FeatureSwitch b(String paramString)
-  {
-    return (FeatureSwitch)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return b(paramString, paramBoolean).mSwitchEnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfeatureswitch.DebugModel
  * JD-Core Version:    0.7.0.1
  */

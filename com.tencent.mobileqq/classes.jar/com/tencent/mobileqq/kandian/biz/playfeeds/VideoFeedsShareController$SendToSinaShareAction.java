@@ -11,17 +11,17 @@ class VideoFeedsShareController$SendToSinaShareAction
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com")))
+    if ((paramVideoInfo.z != null) && (paramVideoInfo.z.contains("kandianshare.html5.qq.com")))
     {
-      VideoFeedsShareController.a(this.a, paramVideoInfo.c, "", paramVideoInfo.n, paramVideoInfo.b);
+      VideoFeedsShareController.a(this.a, paramVideoInfo.g, "", paramVideoInfo.z, paramVideoInfo.f);
       return;
     }
     paramActionSheetItem = this.a;
-    String str = paramVideoInfo.c;
+    String str = paramVideoInfo.g;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("&sourcefrom=4");
-    VideoFeedsShareController.a(paramActionSheetItem, str, "", localStringBuilder.toString(), paramVideoInfo.b);
+    VideoFeedsShareController.a(paramActionSheetItem, str, "", localStringBuilder.toString(), paramVideoInfo.f);
   }
   
   public int b()
@@ -36,7 +36,7 @@ class VideoFeedsShareController$SendToSinaShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.SendToSinaShareAction
  * JD-Core Version:    0.7.0.1
  */

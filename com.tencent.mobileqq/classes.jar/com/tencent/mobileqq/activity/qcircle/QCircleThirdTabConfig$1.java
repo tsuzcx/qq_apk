@@ -39,19 +39,19 @@ class QCircleThirdTabConfig$1
       if (QCircleThirdTabConfig.a(this.this$0))
       {
         QLog.d("QCircleThirdTabConfig", 1, "hasLocalRecord directly notify");
-        QCircleThirdTabConfig.a(this.this$0);
+        QCircleThirdTabConfig.b(this.this$0);
         return;
       }
       localObject = new CountDownLatch(1);
       QCircleThirdTabConfig.a(this.this$0, (CountDownLatch)localObject);
       ((CountDownLatch)localObject).await(1L, TimeUnit.SECONDS);
-      QCircleThirdTabConfig.a(this.this$0);
+      QCircleThirdTabConfig.b(this.this$0);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QCircleThirdTabConfig.a(this.this$0);
+      QCircleThirdTabConfig.b(this.this$0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("request exception notify kanDianTab:");
       localStringBuilder.append(localException.getMessage());
@@ -63,7 +63,7 @@ class QCircleThirdTabConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleThirdTabConfig.1
  * JD-Core Version:    0.7.0.1
  */

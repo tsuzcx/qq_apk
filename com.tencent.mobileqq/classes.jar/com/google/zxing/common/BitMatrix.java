@@ -2,19 +2,19 @@ package com.google.zxing.common;
 
 public final class BitMatrix
 {
-  private final int jdField_a_of_type_Int;
-  private final int[] jdField_a_of_type_ArrayOfInt;
+  private final int a;
   private final int b;
   private final int c;
+  private final int[] d;
   
   public BitMatrix(int paramInt1, int paramInt2)
   {
     if ((paramInt1 >= 1) && (paramInt2 >= 1))
     {
-      this.jdField_a_of_type_Int = paramInt1;
+      this.a = paramInt1;
       this.b = paramInt2;
       this.c = (paramInt1 + 31 >> 5);
-      this.jdField_a_of_type_ArrayOfInt = new int[this.c * paramInt2];
+      this.d = new int[this.c * paramInt2];
       return;
     }
     throw new IllegalArgumentException("Both dimensions must be greater than 0");
@@ -22,7 +22,7 @@ public final class BitMatrix
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -33,7 +33,7 @@ public final class BitMatrix
       {
         int i = paramInt3 + paramInt1;
         paramInt4 += paramInt2;
-        if ((paramInt4 <= this.b) && (i <= this.jdField_a_of_type_Int))
+        if ((paramInt4 <= this.b) && (i <= this.a))
         {
           while (paramInt2 < paramInt4)
           {
@@ -41,7 +41,7 @@ public final class BitMatrix
             paramInt3 = paramInt1;
             while (paramInt3 < i)
             {
-              localObject = this.jdField_a_of_type_ArrayOfInt;
+              localObject = this.d;
               int k = (paramInt3 >> 5) + j * paramInt2;
               localObject[k] |= 1 << (paramInt3 & 0x1F);
               paramInt3 += 1;
@@ -64,7 +64,7 @@ public final class BitMatrix
   public boolean a(int paramInt1, int paramInt2)
   {
     int i = this.c;
-    return (this.jdField_a_of_type_ArrayOfInt[(paramInt2 * i + (paramInt1 >> 5))] >>> (paramInt1 & 0x1F) & 0x1) != 0;
+    return (this.d[(paramInt2 * i + (paramInt1 >> 5))] >>> (paramInt1 & 0x1F) & 0x1) != 0;
   }
   
   public int b()
@@ -78,19 +78,19 @@ public final class BitMatrix
       return false;
     }
     paramObject = (BitMatrix)paramObject;
-    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (this.c == paramObject.c))
+    if ((this.a == paramObject.a) && (this.b == paramObject.b) && (this.c == paramObject.c))
     {
-      if (this.jdField_a_of_type_ArrayOfInt.length != paramObject.jdField_a_of_type_ArrayOfInt.length) {
+      if (this.d.length != paramObject.d.length) {
         return false;
       }
       int i = 0;
       for (;;)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        int[] arrayOfInt = this.d;
         if (i >= arrayOfInt.length) {
           break;
         }
-        if (arrayOfInt[i] != paramObject.jdField_a_of_type_ArrayOfInt[i]) {
+        if (arrayOfInt[i] != paramObject.d[i]) {
           return false;
         }
         i += 1;
@@ -102,9 +102,9 @@ public final class BitMatrix
   
   public int hashCode()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     int j = ((i * 31 + i) * 31 + this.b) * 31 + this.c;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.d;
     int k = arrayOfInt.length;
     i = 0;
     while (i < k)
@@ -117,12 +117,12 @@ public final class BitMatrix
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.b * (this.jdField_a_of_type_Int + 1));
+    StringBuilder localStringBuilder = new StringBuilder(this.b * (this.a + 1));
     int i = 0;
     while (i < this.b)
     {
       int j = 0;
-      while (j < this.jdField_a_of_type_Int)
+      while (j < this.a)
       {
         String str;
         if (a(j, i)) {
@@ -141,7 +141,7 @@ public final class BitMatrix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.common.BitMatrix
  * JD-Core Version:    0.7.0.1
  */
